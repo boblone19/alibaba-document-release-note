@@ -3,16 +3,133 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 158
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Developer Guide 20260831.pdf"
+source_pdf: "26220dd7f4d68d5e_Secondary Edition) Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary/Secondary%20Edition%29%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/Secondary Edition) Developer Guide 20260831
 
-## API reference
+## Table of Contents
 
-### API overview
+- 1 API reference
+  - 1.1 API overview
+  - 1.2 Make API requests
+    - 1.2.1 Request structure
+    - 1.2.2 Common parameters
+      - 1.2.2.1 Common request parameters
+      - 1.2.2.2 Common response parameters
+    - 1.2.3 Responses
+      - 1.2.3.1 Sample success responses
+      - 1.2.3.2 Sample error responses
+  - 1.3 Instance management
+    - 1.3.1 CreateDBInstance
+    - 1.3.2 DeleteDBInstance
+    - 1.3.3 RestartDBInstance
+    - 1.3.4 DescribeDBInstanceAttribute
+    - 1.3.5 DescribeDBInstances
+    - 1.3.6 ModifyDBInstanceSpec
+    - 1.3.7 AllocateInstancePublicConnection
+    - 1.3.8 ReleaseInstancePublicConnection
+    - 1.3.9 SwitchDBInstanceNetType
+    - 1.3.10 DescribeDBInstanceNetInfo
+    - 1.3.11 ModifyDBInstanceConnectionString
+    - 1.3.12 ModifyDBInstanceConnectionMode
+    - 1.3.13 ModifyDBInstanceNetworkType
+    - 1.3.14 DescribeDBInstanceIPArrayList
+    - 1.3.15 ModifySecurityIps
+    - 1.3.16 DescribeRegions
+    - 1.3.17 DescribeDBInstanceHAConfig
+    - 1.3.18 MigrateToOtherZone
+    - 1.3.19 PurgeDBInstanceLog
+    - 1.3.20 ModifyDBInstanceDescription
+    - 1.3.21 ModifyDBInstanceMaintainTime
+    - 1.3.22 ModifyDBInstanceHAConfig
+    - 1.3.23 SwitchDBInstanceHA
+    - 1.3.24 CreateReadOnlyDBInstance
+    - 1.3.25 DescribeDBInstanceSSL
+    - 1.3.26 ModifyDBInstanceSSL
+    - 1.3.27 DescribeDBInstanceTDE
+    - 1.3.28 ModifyDBInstanceTDE
+  - 1.4 Database management
+    - 1.4.1 CreateDatabase
+    - 1.4.2 DeleteDatabase
+    - 1.4.3 DescribeDatabases
+    - 1.4.4 ModifyDBDescription
+  - 1.5 Account management
+    - 1.5.1 CreateAccount
+    - 1.5.2 DeleteAccount
+    - 1.5.3 DescribeAccounts
+    - 1.5.4 GrantAccountPrivilege
+    - 1.5.5 RevokeAccountPrivilege
+    - 1.5.6 ModifyAccountDescription
+    - 1.5.7 ResetAccountPassword
+    - 1.5.8 ResetAccount
+  - 1.6 Backup and restoration
+    - 1.6.1 CreateBackup
+    - 1.6.2 CloneDBInstance
+    - 1.6.3 DescribeBackups
+    - 1.6.4 CreateTempDBInstance
+    - 1.6.5 DescribeBackupPolicy
+    - 1.6.6 Query available point-in-time recovery range
+    - 1.6.7 ModifyBackupPolicy
+    - 1.6.8 RestoreDBInstance
+    - 1.6.9 DeleteBackup
+  - 1.7 Plugin management
+    - 1.7.1 Uninstall a plugin
+    - 1.7.2 Update a plugin
+    - 1.7.3 Query details of a plugin
+    - 1.7.4 Install plugins
+  - 1.8 Monitoring management
+    - 1.8.1 DescribeResourceUsage
+    - 1.8.2 DescribeDBInstancePerformance
+    - 1.8.3 DescribeDBInstanceMonitor
+    - 1.8.4 ModifyDBInstanceMonitor
+  - 1.9 Parameter management
+    - 1.9.1 DescribeParameterTemplates
+    - 1.9.2 DescribeParameters
+    - 1.9.3 ModifyParameter
+  - 1.10 Log management
+    - 1.10.1 DescribeSlowLogs
+    - 1.10.2 DescribeSlowLogRecords
+    - 1.10.3 DescribeErrorLogs
+    - 1.10.4 DescribeSQLCollectorPolicy
+    - 1.10.5 ModifySQLCollectorPolicy
+    - 1.10.6 DescribeSQLLogRecords
+    - 1.10.7 DescribeSQLLogFiles
+  - 1.11 Data migration
+    - 1.11.1 CreateUploadPathForSQLServer
+    - 1.11.2 ImportDatabaseBetweenInstances
+    - 1.11.3 CancelImport
+  - 1.12 Tag management
+    - 1.12.1 AddTagsToResource
+    - 1.12.2 DescribeTags
+    - 1.12.3 RemoveTagsFromResource
+  - 1.13 RAM authorization
+  - 1.14 Appendix
+    - 1.14.1 Client error codes
+      - 1.14.1.1 Common errors
+      - 1.14.1.2 Specific errors
+    - 1.14.2 Error codes on the server
+    - 1.14.3 Instance states
+    - 1.14.4 Character set tables
+- 2 SDK reference
+  - 2.1 Obtain the SDK source code
+  - 2.2 SDK for Java
+    - 2.2.1 Use the SDK
+      - 2.2.1.1 Use CommonRequest to call API operations
+  - 2.3 SDK for Python
+    - 2.3.1 Use the SDK
+      - 2.3.1.1 Use CommonRequest to call API operations
+  - 2.4 SDK for PHP
+    - 2.4.1 Getting started
+  - 2.5 SDK for C#
+- 3 Obtain an endpoint
+- 4 Obtain an AccessKey pair
+
+## 1 API reference
+
+### 1.1 API overview
 
 The following tables list the API operations available for use in PolarDB.
 
@@ -148,9 +265,9 @@ The following tables list the API operations available for use in PolarDB.
 |---|---|
 | RemoveTagsFromResource | Removes tags. |
 
-### Make API requests
+### 1.2 Make API requests
 
-#### Request structure
+#### 1.2.1 Request structure
 
 This topic describes the request structure of the PolarDB API.
 
@@ -174,9 +291,9 @@ In each request, you must set the Action parameter to specify the operation that
 
 Requests and responses are both encoded in UTF-8.
 
-#### Common parameters
+#### 1.2.2 Common parameters
 
-##### Common request parameters
+##### 1.2.2.1 Common request parameters
 
 Common request parameters must be included in all PolarDB API requests.
 
@@ -199,7 +316,7 @@ Common request parameters must be included in all PolarDB API requests.
 https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8gokVnxxxxx &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &OwnerId=12345678 &Timestamp=2024-07-12T12:00:00Z
 ```
 
-##### Common response parameters
+##### 1.2.2.2 Common response parameters
 
 Every response returns a unique request ID regardless of whether the call is successful.
 
@@ -213,9 +330,9 @@ Every response returns a unique request ID regardless of whether the call is suc
 </Operation name + Response>
 ```
 
-#### Responses
+#### 1.2.3 Responses
 
-##### Sample success responses
+##### 1.2.3.1 Sample success responses
 
 The response data for API requests is displayed in a uniform format. In the response data, a 2xx HTTP status code indicates that the API operation is called. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. The response examples in this section have been formatted with line breaks or indents for a clear view. The actual responses are not properly formatted as these examples. Responses in the XML format include the result of the request and the details of the operation. Examples:
 
@@ -229,7 +346,7 @@ JSON format
 { "RequestId": "4C467B38-****-447D-****-AC04*******16", /* Return result data */}
 ```
 
-##### Sample error responses
+##### 1.2.3.2 Sample error responses
 
 If an error occurs when you call an API operation, no result data is returned. You can identify the cause of the error by referring to the error codes in Appendix. If an error occurs when you call an API operation, a 4XX or 5XX HTTP status code is returned. The returned message contains the specific error code and error message. The RequestId parameter uniquely identifies the request, and the HostId parameter indicates the ID of the site requested to be accessed. You can contact Apsara Stack technical support if the cause of the error cannot be found. We recommend that you provide the HostId and RequestId parameters to help technical support engineers resolve the issue at the earliest opportunity. XML format
 
@@ -245,9 +362,9 @@ JSON format
 
 `}`
 
-### Instance management
+### 1.3 Instance management
 
-#### CreateDBInstance
+#### 1.3.1 CreateDBInstance
 
 Creates a PolarDB instance. For more information about instance types, see Instance types in Appendix.
 
@@ -298,7 +415,7 @@ JSON format
 { "OrderId": "100789370******", "ConnectionString": "rm-5ob3ye******.o.polardb.rds.inter.env17e.shuguang.com", "DBInstanceId": "polardb-****", "Port": "3433", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DeleteDBInstance
+#### 1.3.2 DeleteDBInstance
 
 Releases a PolarDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not manually locked. The instance is a pay-as-you-go primary instance, read-only instance, disaster recovery instance, or temporary instance.
 
@@ -333,7 +450,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### RestartDBInstance
+#### 1.3.3 RestartDBInstance
 
 Restarts an instance. The instance will be restarted in 10 seconds. If a large number of transactions must be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, make sure that the following requirements are met: The instance is in use. The instance does not have ongoing backup tasks.
 
@@ -360,7 +477,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeDBInstanceAttribute
+#### 1.3.4 DescribeDBInstanceAttribute
 
 Queries the attributes of instances.
 
@@ -429,8 +546,6 @@ You can call the DescribeDBInstanceHAConfig operation to query the information a
 https://polardb.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 JSON format
 
 ```json
@@ -470,15 +585,13 @@ JSON format
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-**Sample error responses**
-
 JSON format
 
 ```json
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeDBInstances
+#### 1.3.5 DescribeDBInstances
 
 Queries a list of instances or Resource Access Management (RAM)-authorized instances.
 
@@ -532,8 +645,6 @@ Queries a list of instances or Resource Access Management (RAM)-authorized insta
 https://polardb.example.com/?Action=DescribeDBInstances &RegionId=cn-hangzhou &Engine=PolarDB_PG &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -568,17 +679,13 @@ JSON format
     "TotalRecordCount":2
 ```
 
-`}`
-
-**Sample error responses**
-
-JSON format
+`}` JSON format
 
 ```json
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### ModifyDBInstanceSpec
+#### 1.3.6 ModifyDBInstanceSpec
 
 Modifies the configurations of an instance, such as the instance type or storage capacity. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance does not have ongoing backup tasks. One of the DBInstanceClass and DBInstanceStorage parameters is specified. The new storage capacity is at least 1.1 times the used storage space. The instance is a primary instance or read-only instance.
 
@@ -609,8 +716,6 @@ Modifies the configurations of an instance, such as the instance type or storage
 https://polardb.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=polardb-xxxxx &PayType=Postpaid &DBInstanceStorage=10 &Common request parameters
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -623,15 +728,13 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-**Sample error responses**
-
 JSON format
 
 ```json
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### AllocateInstancePublicConnection
+#### 1.3.7 AllocateInstancePublicConnection
 
 Applies for a public endpoint for an instance.
 
@@ -668,7 +771,7 @@ JSON format
 { "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64"}
 ```
 
-#### ReleaseInstancePublicConnection
+#### 1.3.8 ReleaseInstancePublicConnection
 
 Releases the public endpoint of an instance.
 
@@ -704,7 +807,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### SwitchDBInstanceNetType
+#### 1.3.9 SwitchDBInstanceNetType
 
 You can call this operation to switch the network type of an instance between internal and public networks. After switching, the endpoint of the instance changes. You must modify the endpoint in the code and restart the application. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The number of times that you have switched the instance between its internal and public endpoints within the last 24 hours does not reach 20.
 
@@ -716,7 +819,7 @@ You can call this operation to switch the network type of an instance between in
 
 For more information, see Common response parameters.
 
-#### DescribeDBInstanceNetInfo
+#### 1.3.10 DescribeDBInstanceNetInfo
 
 Queries the connection information of an instance.
 
@@ -744,7 +847,7 @@ DBInstanceNetInfo parameters
 | VPCId | String | The VPC ID. |
 | VSwitchId | String | The vSwitch ID. |
 
-#### ModifyDBInstanceConnectionString
+#### 1.3.11 ModifyDBInstanceConnectionString
 
 Modifies the endpoint and port of an instance. PolarDB provides the internal and public endpoints for an instance and allows both endpoint types to coexist in a specific access mode.
 
@@ -758,7 +861,7 @@ Modifies the endpoint and port of an instance. PolarDB provides the internal and
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### ModifyDBInstanceConnectionMode
+#### 1.3.12 ModifyDBInstanceConnectionMode
 
 Changes the access mode of an instance. PolarDB supports the following access modes: Standard access mode Secure access mode
 
@@ -770,7 +873,7 @@ Changes the access mode of an instance. PolarDB supports the following access mo
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### ModifyDBInstanceNetworkType
+#### 1.3.13 ModifyDBInstanceNetworkType
 
 Switches the network type of an instance between virtual private cloud (VPC) and classic network.
 
@@ -791,7 +894,7 @@ Only the classic network instances whose ConnectionMode is Safety can have their
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### DescribeDBInstanceIPArrayList
+#### 1.3.14 DescribeDBInstanceIPArrayList
 
 Queries the IP address whitelist of an instance.
 
@@ -815,7 +918,7 @@ DBInstanceIPArray parameters
 | SecurityIPList | Strin g | The IP addresses in the IP address whitelist. The IP address whitelist can contain a maximum of 1,000 IP addresses. Multiple IP addresses are separated by commas (,). Supported formats include 0.0.0.0/0, 10.23.12.24, and 10.23.12.24/24. 10.23.12.24 is an IP address. 10.23.12.24/24 is a CIDR block, in which the suffix /24 indicates the number of bits for the prefix of the IP address. The suffix ranges from 1 to 32. |
 |---|---|---|
 
-#### ModifySecurityIps
+#### 1.3.15 ModifySecurityIps
 
 Modifies the IP address whitelist of an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not locked by the system.
 
@@ -851,7 +954,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeRegions
+#### 1.3.16 DescribeRegions
 
 Queries available regions and zones. You must call the DescribeRegions operation to query available regions before you call the CreateDBInstance operation.
 
@@ -902,7 +1005,7 @@ JSON format
 
 `}`
 
-#### DescribeDBInstanceHAConfig
+#### 1.3.17 DescribeDBInstanceHAConfig
 
 Queries the zone information and data replication status of an instance.
 
@@ -933,7 +1036,7 @@ NodeInfo parameters
 | LogSyncTime | String | The time when the secondary instance receives logs. |
 | DataSyncTime | String | The time when the secondary instance receives data. |
 
-#### MigrateToOtherZone
+#### 1.3.18 MigrateToOtherZone
 
 Migrates an instance from one zone to another. For example, if Instance 1 resides in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
 
@@ -971,7 +1074,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### PurgeDBInstanceLog
+#### 1.3.19 PurgeDBInstanceLog
 
 Clears all binlogs of an instance.
 
@@ -1004,7 +1107,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ModifyDBInstanceDescription
+#### 1.3.20 ModifyDBInstanceDescription
 
 Modifies the description of an instance to help identify the instance. For example, you can modify the description of an instance to Alibaba_Cloud_testing_environment_instance.
 
@@ -1038,7 +1141,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ModifyDBInstanceMaintainTime
+#### 1.3.21 ModifyDBInstanceMaintainTime
 
 Modifies the maintenance window of an instance. You can set the maintenance window to offpeak hours. Apsara Stack performs routine maintenance during the maintenance window to minimize the impacts on your business.
 
@@ -1072,7 +1175,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### ModifyDBInstanceHAConfig
+#### 1.3.22 ModifyDBInstanceHAConfig
 
 Modifies the data replication mode and high availability switching rules of an instance.
 
@@ -1085,7 +1188,7 @@ Modifies the data replication mode and high availability switching rules of an i
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### SwitchDBInstanceHA
+#### 1.3.23 SwitchDBInstanceHA
 
 Switches between the primary and secondary instances. PolarDB instances are composed of primary and secondary instances distributed across different servers. The primary instance bears the service traffic.
 
@@ -1100,7 +1203,7 @@ Switches between the primary and secondary instances. PolarDB instances are comp
 
 This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### CreateReadOnlyDBInstance
+#### 1.3.24 CreateReadOnlyDBInstance
 
 Creates a read-only instance for a primary instance. Before you call this operation, make sure that the following requirements are met: The primary instance is in the Running state, but not in the Failover state. The read-only instance and the primary instance are in the same region. A primary instance can have up to five read-only instances.
 
@@ -1147,8 +1250,6 @@ Creates a read-only instance for a primary instance. Before you call this operat
 https://polardb.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou &ZoneId=cn-hangzhou-b &DBInstanceId=polardb-xxxxx &EngineVersion=16 &DBInstanceClass=polardb.g4.4xlarge.2 &DBInstanceStorage=10 &PayType=Postpaid &ClientToken=ETnLK******
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1161,7 +1262,7 @@ JSON format
 { "OrderId": "10078937023****", "ConnectionString": "rm-5obp******.o.polardb.rds.inter.env17e.shuguang.com", "DBInstanceId": "polardb-xxxxx", "Port": "3433", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DescribeDBInstanceSSL
+#### 1.3.25 DescribeDBInstanceSSL
 
 Queries the SSL link of an instance.
 
@@ -1178,7 +1279,7 @@ Queries the SSL link of an instance.
 | RequireUpdate | String | Indicates whether an immediate update is required. Valid values: Yes and No. |
 | RequireUpdateRe ason | String | The reason why an update is required. |
 
-#### ModifyDBInstanceSSL
+#### 1.3.26 ModifyDBInstanceSSL
 
 Modifies the SSL link of a PolarDB instance.
 
@@ -1195,7 +1296,7 @@ Modifies the SSL link of a PolarDB instance.
 | <Common response parameters> | - | For more information, see Common response parameters. |
 | SSLExpireTime | String | The expiration time of the SSL certificate. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 
-#### DescribeDBInstanceTDE
+#### 1.3.27 DescribeDBInstanceTDE
 
 Queries the Transparent Data Encryption (TDE) status of a PolarDB instance.
 
@@ -1217,7 +1318,7 @@ DataBase
 | DBName | String | The database name. |
 | TDEStatus | String | The TDE status of the database. Valid values: Enabled and Disabled. |
 
-#### ModifyDBInstanceTDE
+#### 1.3.28 ModifyDBInstanceTDE
 
 Modifies the Transparent Data Encryption (TDE) status of a PolarDB instance.
 
@@ -1230,9 +1331,9 @@ Modifies the Transparent Data Encryption (TDE) status of a PolarDB instance.
 
 For more information, see Common response parameters.
 
-### Database management
+### 1.4 Database management
 
-#### CreateDatabase
+#### 1.4.1 CreateDatabase
 
 Creates a database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance.
 
@@ -1258,8 +1359,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=CreateDatabase &CharacterSetName=GBK &DBName=testDB &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1272,7 +1371,7 @@ JSON format
 { "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DeleteDatabase
+#### 1.4.2 DeleteDatabase
 
 Deletes a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance.
 
@@ -1298,8 +1397,6 @@ This operation is not supported for PolarDB. You can delete databases from Polar
 https://polardb.example.com/?Action=DeleteDatabase &DBName=testDB &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1312,7 +1409,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DescribeDatabases
+#### 1.4.3 DescribeDatabases
 
 Queries a list of databases of an instance and the information about a database. If you specify invalid request parameters, an error message is returned and the returned data is empty.
 
@@ -1361,8 +1458,6 @@ Parameters in AccountPrivilegeInfo
 https://polardb.example.com/?Action=DescribeDatabases &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1385,7 +1480,7 @@ JSON format
 
 `}`
 
-#### ModifyDBDescription
+#### 1.4.4 ModifyDBDescription
 
 Modifies the description of a database to help identify the database. For example, you can change the description of a database to Database A for the Alibaba Cloud testing environment.
 
@@ -1406,8 +1501,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=ModifyDBDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testDBdescribe &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1420,9 +1513,9 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### Account management
+### 1.5 Account management
 
-#### CreateAccount
+#### 1.5.1 CreateAccount
 
 Creates an account for a database. In the same instance, one account can manage multiple databases by using different permissions. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The instance is not locked. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance.
 
@@ -1445,8 +1538,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1459,7 +1550,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DeleteAccount
+#### 1.5.2 DeleteAccount
 
 Deletes a database account of an instance. Before you call this operation, make sure that the instance is in the Running state.
 
@@ -1479,8 +1570,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=DeleteAccount &DBInstanceId=rds-xxxxx &AccountName=testacc01 &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1493,7 +1582,7 @@ JSON format
 { "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DescribeAccounts
+#### 1.5.3 DescribeAccounts
 
 Queries a list of accounts for a database in an instance and the information about an account.
 
@@ -1536,8 +1625,6 @@ DatabasePrivilege
 https://polardb.example.com/?Action=DescribeAccounts &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1557,7 +1644,7 @@ JSON format
  "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### GrantAccountPrivilege
+#### 1.5.4 GrantAccountPrivilege
 
 Grants database access permissions to an account. An account can be associated with one or more databases. If the specified account already has access permissions on the specified database, the operation directly returns a success response. Before you call this operation, make sure that the instance is in the running state.
 
@@ -1581,8 +1668,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=GrantAccountPrivilege &AccountName=testacc02 &AccountPrivilege=readwrite &DBName=testdb03 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1595,7 +1680,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### RevokeAccountPrivilege
+#### 1.5.5 RevokeAccountPrivilege
 
 Revokes database access permissions from an account. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state.
 
@@ -1618,8 +1703,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=RevokeAccountPrivilege &AccountName=testacc02 &DBName=testdb03 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1632,7 +1715,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ModifyAccountDescription
+#### 1.5.6 ModifyAccountDescription
 
 Modifies the description of an account to help identify the account. For example, you can change the description of an account to Account A for the Alibaba Cloud testing environment.
 
@@ -1657,8 +1740,6 @@ Modifies the description of an account to help identify the account. For example
 https://polardb.example.com/?Action=ModifyAccountDescription &DBInstanceId=polardb-xxxxx &AccountName=testacc01 &AccountDescription=testAccoutdescribe &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1671,7 +1752,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ResetAccountPassword
+#### 1.5.7 ResetAccountPassword
 
 Resets the password of an account for an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state and not locked.
 
@@ -1692,8 +1773,6 @@ For more information, see Common response parameters.
 https://polardb.example.com/?Action=ResetAccountPassword &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1706,7 +1785,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ResetAccount
+#### 1.5.8 ResetAccount
 
 You can call this operation to reset the initial account of an instance.
 
@@ -1724,9 +1803,9 @@ You can call this operation to reset the initial account of an instance.
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-### Backup and restoration
+### 1.6 Backup and restoration
 
-#### CreateBackup
+#### 1.6.1 CreateBackup
 
 Creates a backup. You can create up to 10 backups for an instance in a single day. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The last backup is complete.
 
@@ -1753,8 +1832,6 @@ Creates a backup. You can create up to 10 backups for an instance in a single da
 https://polardb.example.com/?Action= CreateBackup &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1767,7 +1844,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### CloneDBInstance
+#### 1.6.2 CloneDBInstance
 
 Clones a new instance from an existing instance by using data from either a backup file or a specific point in time. The new instance inherits the whitelist, SQL audit, alert threshold, backup, and parameter settings from the original instance. The data in the new instance is the same as that in the backup file. The clone feature is available only for PolarDB for MySQL instances. The new instance handles database account information based on the following rules: If the original instance is cloned by using a privileged account, the new instance inherits that privileged account. If the original instance is cloned by using a standard account, the new instance inherits the account information from the backup file or the specified point in time.
 
@@ -1790,7 +1867,7 @@ Clones a new instance from an existing instance by using data from either a back
 | DBInstanceId | String | The instance ID. |
 | OrderId | Integer | The order ID. |
 
-#### DescribeBackups
+#### 1.6.3 DescribeBackups
 
 Queries the backup sets of an instance. Only backup sets in the Success state can be used for database restoration. PolarDB allows you to download backup files. A null value of DownloadLink indicates that no URL is available for downloading a backup file. A non-null value of DownloadLink provides a URL for downloading a backup file by using wget (enclose the URL in double quotation marks), a web browser, or a custom program. The URL expires at the time specified by LinkExpiredTime. Download the backup file before it expires. If you attempt to download a backup file by using an expired URL, the following error code is returned:
 
@@ -1820,7 +1897,7 @@ Queries the backup sets of an instance. Only backup sets in the Success state ca
 | PageRecordCount | Integer | The number of backup sets on the current page. |
 | Items | List<Backup> | The list of backup files. |
 
-#### CreateTempDBInstance
+#### 1.6.4 CreateTempDBInstance
 
 **Note**
 
@@ -1846,8 +1923,6 @@ Creates a temporary instance from a backup set or a point in time within the las
 https://polardb.example.com/?Action=CreateTempDBInstance &BackupId=90262 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -1860,7 +1935,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "TempDBInstanceId":"sub-xxxxx"}
 ```
 
-#### DescribeBackupPolicy
+#### 1.6.5 DescribeBackupPolicy
 
 Queries the backup policy configured for an instance. PolarDB periodically backs up an instance based on the user-defined system configuration.
 
@@ -1880,7 +1955,7 @@ Queries the backup policy configured for an instance. PolarDB periodically backs
 | BackupLog | String | Indicates whether log backup is enabled. Valid values: Enable and Disabled. |
 | LogBackupRetention Period | String | The log backup retention period. Unit: days. Valid values: 1 to 30. |
 
-#### Query available point-in-time recovery
+#### 1.6.6 Query available point-in-time recovery range
 
 **range**
 
@@ -1959,7 +2034,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | MissingUserID | MissingUserID | The request is missing a user id parameter. _ |
 | 400 | MissingUID | MissingUID | The request is missing a uid parameter. |
 
-#### ModifyBackupPolicy
+#### 1.6.7 ModifyBackupPolicy
 
 Modifies the backup policy configured for an instance. PolarDB periodically backs up an instance based on the user-defined system configuration.
 
@@ -1987,8 +2062,6 @@ Modifies the backup policy configured for an instance. PolarDB periodically back
 https://polardb.example.com/?Action=ModifyBackupPolicy &DBInstanceId=polardb-xxxxx &PreferredBackupTime=00:00Z-01:00Z &PreferredBackupPeriod=Monday &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2001,7 +2074,7 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### RestoreDBInstance
+#### 1.6.8 RestoreDBInstance
 
 Restores an instance from a backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
 
@@ -2023,8 +2096,6 @@ Restores an instance from a backup set. Before you call this operation, make sur
 https://polardb.example.com/?Action=RestoreDBInstance &BackupId=103312 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2037,7 +2108,7 @@ JSON format
 {"RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DeleteBackup
+#### 1.6.9 DeleteBackup
 
 Deletes data backup files that have been stored for longer than seven days or longer than the log backup retention period. This operation deletes only the specified backup sets of a specific instance. It does not delete the backup sets of associated instances, such as read-only, disaster recovery, or cloned instances. Before you call this operation, make sure that the instance is in the Running state.
 
@@ -2049,9 +2120,9 @@ Deletes data backup files that have been stored for longer than seven days or lo
 
 For more information, see Common response parameters.
 
-### Plugin management
+### 1.7 Plugin management
 
-#### Uninstall a plugin
+#### 1.7.1 Uninstall a plugin
 
 Uninstalls a plugin.
 
@@ -2092,7 +2163,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteExtensions &Action=DeleteExtensions &DBInstanceId=pc-**************** &Extensions=pase,hstore &DBNames=auto_test_db &Common request parameters
 ```
 
-Sample success responses `JSON` format
+`JSON` format
 
 ```
 HTTP/1.1 200 OK Content-Type:application/json
@@ -2133,7 +2204,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | Extension.Depende ncy | Extension.Dependency | The required extension list exists, but some extensions are missing. |
 | 400 | -2001 | Extension.Dependency.Invalid | The required extension list exists, but some extensions are missing: %s |
 
-#### Update a plugin
+#### 1.7.2 Update a plugin
 
 Updates a plugin.
 
@@ -2172,7 +2243,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateExtensions &Action=UpdateExtensions &DBInstanceId=pc-**************** &Extensions=postgres_fdw &DBNames=auto_test_db &Common request parameters
 ```
 
-Sample success responses `JSON` format
+`JSON` format
 
 ```
 HTTP/1.1 200 OK Content-Type:application/json
@@ -2214,7 +2285,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 403 | CurMinorVersionUn supportUpdateGive nExtension | CurMinorVersionUnsupportUpd ateGivenExtension | The current minor version does not support updating the given extension. |
 | 400 | Extension.Depende ncy | Extension.Dependency | The database was not found. |
 
-#### Query details of a plugin
+#### 1.7.3 Query details of a plugin
 
 Queries details of an installed plugin.
 
@@ -2278,7 +2349,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeExtensions &Action=DescribeExtensions &DBInstanceId=pc-**************** &DBName=testdb &Common request parameters
 ```
 
-Sample success responses `JSON` format
+`JSON` format
 
 ```
 HTTP/1.1 200 OK Content-Type:application/json
@@ -2379,7 +2450,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 404 | InternalError.Exten sionConfigNotFoun d | InternalError.ExtensionConfigN otFound | The extension configuration was not found. |
 | 400 | InternalError.Exten sionConfigEmpty | InternalError.ExtensionConfigE mpty | The extension configuration is empty. |
 
-#### Install plugins
+#### 1.7.4 Install plugins
 
 Installs plugins.
 
@@ -2422,7 +2493,7 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateExtensions &Action=CreateExtensions &DBInstanceId=pc-**************** &DBNames=testdb01 &AccountName=test_acc &Common request parameters
 ```
 
-Sample success responses `JSON` format
+`JSON` format
 
 ```
 HTTP/1.1 200 OK Content-Type:application/json
@@ -2471,9 +2542,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InternalError.Exten sionConfigEmpty | InternalError.ExtensionConfigE mpty | The extension configuration is empty. |
 | 400 | AccountNameOwne rNotDBOwner | AccountNameOwnerNotDBOw ner | The account name is not the owner of the database. |
 
-### Monitoring management
+### 1.8 Monitoring management
 
-#### DescribeResourceUsage
+#### 1.8.1 DescribeResourceUsage
 
 You can call this operation to query the disk space usage of an instance. When this operation is called, the system returns the amount of space occupied by the specified instance. The DBInstanceId parameter is used to obtain instance resource usage information.
 
@@ -2494,7 +2565,7 @@ You can call this operation to query the disk space usage of an instance. When t
 | ColdBackupSize | Integer | The total space occupied by cold backup data. Unit: bytes. -1 indicates that no space is used. |
 | SQLSize | Integer | The total space occupied by SQL data. Unit: bytes. -1 indicates that no space is used. |
 
-#### DescribeDBInstancePerformance
+#### 1.8.2 DescribeDBInstancePerformance
 
 Queries the performance metrics of an instance over a period of time based on the performance parameters. The output format depends on the length of the query time range: If the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. If the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. If the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals.
 
@@ -2535,8 +2606,6 @@ If the instance space usage key is MySQL_SpaceUsage, performance metric data can
 https://polardb.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId=polardb-xxxxx &key= PolarDB_PG_xxxxx &StartTime=2025-05-30T03:29Z &EndTime=2025-05-30T04:29Z &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2554,7 +2623,7 @@ JSON format
         "Values": { "PerformanceValue":[] } } ] }}
 ```
 
-#### DescribeDBInstanceMonitor
+#### 1.8.3 DescribeDBInstanceMonitor
 
 You can call this operation to query the monitoring behavior of an instance.
 
@@ -2568,7 +2637,7 @@ You can call this operation to query the monitoring behavior of an instance.
 | <Common response parameters> | - | For more information, see Common response parameters. |
 | Period | String | The monitoring data collection interval. Unit: seconds. |
 
-#### ModifyDBInstanceMonitor
+#### 1.8.4 ModifyDBInstanceMonitor
 
 You can call this operation to modify the monitoring behavior of an instance.
 
@@ -2584,9 +2653,9 @@ You can call this operation to modify the monitoring behavior of an instance.
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-### Parameter management
+### 1.9 Parameter management
 
-#### DescribeParameterTemplates
+#### 1.9.1 DescribeParameterTemplates
 
 Queries a list of parameter templates. The list includes parameter names, default parameter values, whether the parameters can be modified, whether the database must be restarted for the parameters to take effect, and regular expressions that act as parameter validation rules.
 
@@ -2618,8 +2687,6 @@ Queries a list of parameter templates. The list includes parameter names, defaul
 https://polardb.example.com/?Action=DescribeParameterTemplates &Engine=PolarDB_PG &EngineVersion=16 &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2642,7 +2709,7 @@ JSON format
 "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeParameters
+#### 1.9.2 DescribeParameters
 
 Queries the parameter settings of an instance.
 
@@ -2682,8 +2749,6 @@ DBInstanceParameter
 https://polardb.example.com/?Action=DescribeParameters &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2708,7 +2773,7 @@ JSON format
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ModifyParameter
+#### 1.9.3 ModifyParameter
 
 Modifies the parameters of an instance. After you submit the parameter modification request, PolarDB starts a task to apply the new parameter values to the instance. If a database restart is required for a new parameter value to take effect, PolarDB restarts the database. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. Parameter values fall into the following categories: Numeric range (1-65535): The minimum and maximum values are extracted by using regular expressions. Input parameters are validated against this range and must also be a multiple of a specific factor. Fixed values (utf8, gbk, and latin1): The valid values are extracted by using regular expressions. Input parameters are validated against these fixed values. Other: Values in this category must match a defined regular expression. Before the task is started, PolarDB performs the following parameter checks:
 1. Checks whether the parameters exist.
@@ -2741,8 +2806,6 @@ If a parameter is invalid, PolarDB returns the 400 HTTP status code and informat
 https://polardb.example.com/?Action=ModifyeParameter &DBInstanceId=polardb-xxxxx &Parameters={"key_buffer_size":"456","character_set_client":"gbk"} &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2755,9 +2818,9 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC",}
 ```
 
-### Log management
+### 1.10 Log management
 
-#### DescribeSlowLogs
+#### 1.10.1 DescribeSlowLogs
 
 Queries the slow log summary of a database in an instance over a period of time. This operation supports pagination.
 
@@ -2791,8 +2854,6 @@ Queries the slow log summary of a database in an instance over a period of time.
 https://polardb.example.com/?Action=DescribeSlowLogs &DBInstanceId=polardb-xxxxx &StartTime=2025-05-30Z &EndTime=2025-06-30Z &SortKey= Totaxxxxx &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2812,7 +2873,7 @@ JSON format
         "ReportTime":"2025-06-30Z" }]}}
 ```
 
-#### DescribeSlowLogRecords
+#### 1.10.2 DescribeSlowLogRecords
 
 Queries the slow log details of a database in an instance over a period of time.
 
@@ -2861,8 +2922,6 @@ SQLSlowRecord
 https://polardb.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-xxxxx &StartTime=2025-06-11 T15:00:08Z &EndTime=2025-06-11 T16:00:08Z &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2884,7 +2943,7 @@ JSON format
   ExecutionStartTime:"2025-06-11T15:00:08Z"}]}}
 ```
 
-#### DescribeErrorLogs
+#### 1.10.3 DescribeErrorLogs
 
 Queries the error logs generated for an instance over a period of time.
 
@@ -2922,8 +2981,6 @@ ErrorLogs
 https://polardb.example.com/?Action=DescribeErrorLogs &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00Z &EndTime=2011-06-11T20:00Z &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -2940,7 +2997,7 @@ ational message only; no user action is required",
   CreateTime:"2013-06-04T15:00:00"}]}}
 ```
 
-#### DescribeSQLCollectorPolicy
+#### 1.10.4 DescribeSQLCollectorPolicy
 
 Checks whether the SQL collection feature is enabled for a PolarDB instance.
 
@@ -2956,7 +3013,7 @@ Checks whether the SQL collection feature is enabled for a PolarDB instance.
 | <Common response parameters> |   | For more information, see Common response parameters. |
 | SQLCollectorStatu s | String | Indicates whether the SQL collection feature is enabled. Valid values: Enable and Disabled. |
 
-#### ModifySQLCollectorPolicy
+#### 1.10.5 ModifySQLCollectorPolicy
 
 Enables or disables the SQL collection feature for an instance.
 
@@ -2968,7 +3025,7 @@ Enables or disables the SQL collection feature for an instance.
 
 For more information, see Common response parameters.
 
-#### DescribeSQLLogRecords
+#### 1.10.6 DescribeSQLLogRecords
 
 Queries the SQL audit logs of an instance.
 
@@ -3018,8 +3075,6 @@ SQLRecord
 ```
 https://polardb.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z &<Common request parameters>
 ```
-
-**Sample success responses**
 
 XML format
 
@@ -3072,7 +3127,7 @@ JSON format
 
 `}`
 
-#### DescribeSQLLogFiles
+#### 1.10.7 DescribeSQLLogFiles
 
 Queries a list of SQL audit log files of an instance.
 
@@ -3103,9 +3158,9 @@ Parameters in LogFile
 | LogDownloadU RL | String | The URL for downloading the SQL audit log file. If no download URL is available, an empty string is returned. |
 | LogSize | Long | The size of the SQL audit log file. Unit: bytes. |
 
-### Data migration
+### 1.11 Data migration
 
-#### CreateUploadPathForSQLServer
+#### 1.11.1 CreateUploadPathForSQLServer
 
 Creates a username and a password for the file server and generates the upload path. You can then use these credentials to upload your data files to the specified path. After the upload is complete, call the data import operation to migrate external data.
 
@@ -3136,8 +3191,6 @@ Creates a username and a password for the file server and generates the upload p
 https://polardb.example.com/?Action= CreateUploadPathForSQLServer &DBInstanceId=polardb-xxxxx &DBName=testdb01 &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -3156,7 +3209,7 @@ JSON format
  "FileName":"testdb01_xxxxx.bak"}
 ```
 
-#### ImportDatabaseBetweenInstances
+#### 1.11.2 ImportDatabaseBetweenInstances
 
 Migrates data from a PolarDB instance. This operation is supported only for dedicated PolarDB for MySQL instances. PolarDB for MySQL instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The source instance is in the running state. The databases to be migrated in the source instance are in the running state. The destination instance is not locked. The reserved storage space of the destination instance is greater than the space calculated by the following formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Databases to be migrated exist in both the source and destination instances and are activated.
 
@@ -3186,8 +3239,6 @@ DBInfo
 https://polardb.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=polardb-xxxxx &SourceDBInstanceId=polardb-xxxxx &{"DBNames":["mydb","mydb2"]} &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -3204,7 +3255,7 @@ JSON format
  RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### CancelImport
+#### 1.11.3 CancelImport
 
 Cancels a migration from a PolarDB for MySQL instance. Migrations from PolarDB for MySQL instances can be canceled.
 
@@ -3228,8 +3279,6 @@ Cancels a migration from a PolarDB for MySQL instance. Migrations from PolarDB f
 https://polardb.example.com/?Action=CancelImport &DBInstanceId=polardb-xxxxx &ImportId=127562 &<Common request parameters>
 ```
 
-**Sample success responses**
-
 XML format
 
 ```xml
@@ -3242,9 +3291,9 @@ JSON format
 {"RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### Tag management
+### 1.12 Tag management
 
-#### AddTagsToResource
+#### 1.12.1 AddTagsToResource
 
 Adds existing or newly created tags to instances. Each tag consists of a tag key and a tag value. The tag key cannot be blank, but the tag value can. The tag keys and tag values cannot start with aliyun. The tag keys and tag values are not case-sensitive. The maximum length of a tag key is 64 characters and the maximum length of a tag value is 128 characters. Each instance can have a maximum of 10 tags. Tag keys must be unique for each tag added to an instance. If tags with duplicate tag keys are added to an instance, the last tag added takes precedence.
 
@@ -3259,7 +3308,7 @@ Adds existing or newly created tags to instances. Each tag consists of a tag key
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-#### DescribeTags
+#### 1.12.2 DescribeTags
 
 Queries the tags that are added to a PolarDB instance within an account. If an instance ID is specified, all tags added to the instance are returned, regardless of other filter criteria. If only a tag key is specified, all matching tags are returned. If both a tag key and a tag value are specified, only tags that match both criteria are returned.
 
@@ -3291,7 +3340,7 @@ DBInstanceId
 |---|---|---|
 | DBInstanceId | String | The instance ID. |
 
-#### RemoveTagsFromResource
+#### 1.12.3 RemoveTagsFromResource
 
 You can call this operation to remove tags from an instance. This operation must meet the following requirements: A maximum of 10 tags can be removed in a single request. If a tag is removed from all instances to which the tag is added, the tag is automatically deleted. If the TagKey of a key is provided without a TagValue, all tags matching the TagKey are removed.
 
@@ -3306,7 +3355,7 @@ You can call this operation to remove tags from an instance. This operation must
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-### RAM authorization
+### 1.13 RAM authorization
 
 **Use RAM to authorize PolarDB resources**
 
@@ -3423,11 +3472,11 @@ When you call PolarDB API operations to access resources as a RAM user, PolarDB 
 | ModifyeParameter | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
 
-### Appendix
+### 1.14 Appendix
 
-#### Client error codes
+#### 1.14.1 Client error codes
 
-##### Common errors
+##### 1.14.1.1 Common errors
 
 | Error code | Description | HTTP status code |
 |---|---|---|
@@ -3456,7 +3505,7 @@ When you call PolarDB API operations to access resources as a RAM user, PolarDB 
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
 
-##### Specific errors
+##### 1.14.1.2 Specific errors
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
@@ -3582,14 +3631,14 @@ When you call PolarDB API operations to access resources as a RAM user, PolarDB 
 |---|---|---|
 | bpcIzNoNotEqualsRdsMultIzNo | Specified vpc IzNo not equal rds IzNo. | 400 |
 
-#### Error codes on the server
+#### 1.14.2 Error codes on the server
 
 | Error code | Description | HTTP status code |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
 
-#### Instance states
+#### 1.14.3 Instance states
 
 | State | Description |
 |---|---|
@@ -3611,7 +3660,7 @@ When you call PolarDB API operations to access resources as a RAM user, PolarDB 
 | GuardSwitching | The instance is undergoing a switchover for disaster recovery. |
 | INS CLONING _ | The instance is being cloned. |
 
-#### Character set tables
+#### 1.14.4 Character set tables
 
 This topic describes character sets that are supported by PolarDB.
 
@@ -3635,9 +3684,9 @@ This topic describes character sets that are supported by PolarDB.
 | koi8u | latin9 |   |
 | iso 8859 5 _ _ | latin10 |   |
 
-## SDK reference
+## 2 SDK reference
 
-### Obtain the SDK source code
+### 2.1 Obtain the SDK source code
 
 You can use SDK tools to customize SDK for a specific programming language.
 
@@ -3654,11 +3703,11 @@ i. In the address bar of the web browser, enter the URL of the Apsara Uni-manage
 3. Download the SDK source code.
 i. In the left-side navigation pane, choose **Versions > SDK Tools**. ii. Click **Customize SDK** in the upper-right corner. iii. In the **Customize Apsara Stack SDK** dialog box that appears, select an Apsara Stack version, a service name, a service version, an SDK version, an API version, and an SDK language. iv. After you complete the configuration, click **Create SDK**. v. Click **Download** to download the SDK.
 
-### SDK for Java
+### 2.2 SDK for Java
 
-#### Use the SDK
+#### 2.2.1 Use the SDK
 
-##### Use CommonRequest to call API operations
+##### 2.2.1.1 Use CommonRequest to call API operations
 
 If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call all API operations.
 
@@ -3739,11 +3788,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-### SDK for Python
+### 2.3 SDK for Python
 
-#### Use the SDK
+#### 2.3.1 Use the SDK
 
-##### Use CommonRequest to call API operations
+##### 2.3.1.1 Use CommonRequest to call API operations
 
 If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call all API operations.
 
@@ -3777,9 +3826,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 ern='/clusters') response = client.do_action_with_exception(request)
 ```
 
-### SDK for PHP
+### 2.4 SDK for PHP
 
-#### Getting started
+#### 2.4.1 Getting started
 
 PolarDB SDK for PHP allows you to access PolarDB without performing complex programming operations. This topic describes how to obtain and use PolarDB SDK for PHP.
 
@@ -3837,7 +3886,7 @@ try {
 
 `}` ?>
 
-### SDK for C#
+### 2.5 SDK for C#
 
 **Environment preparations**
 
@@ -3854,7 +3903,7 @@ Download the source code of SDK for C# from https://github.com/aliyun/aliyun-ope
 using MonoDevelop, follow the MonoDevelop instructions to import the DLL file.
 3. Select the DLL file and click **OK**. Then, you can use SDK for C# in your project.
 
-## Obtain an endpoint
+## 3 Obtain an endpoint
 
 You can obtain the endpoint of PolarDB in the Apsara Uni-manager Operations Console.
 
@@ -3891,7 +3940,7 @@ Apsara Infrastructure Management Framework page.
 7. Find the endpoint of PolarDB based on the service ID (polardb-yaochi) and key value (polard
 b.openapi.endpoint) of PolarDB.
 
-## Obtain an AccessKey pair
+## 4 Obtain an AccessKey pair
 
 You can obtain an AccessKey pair in the Apsara Uni-manager Management Console.
 

@@ -2,22 +2,81 @@
 title: "Apsara Stack Resilience ASR for Geo-disaster Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 360
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Geo-disaster Developer Guide 20260701.pdf"
+source_pdf: "c1fd408bef599171_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Geo-disaster Developer Guide 2026"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%82%E5%9C%B0%E5%AE%B9%E7%81%BEASRDR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Stack Resilience ASR for Geo-disaster Developer Guide 20260701
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+## Table of Contents
 
-## Procedure for API calls
+- 1 Procedure for API calls
+- 2 Preparations
+  - 2.1 Obtain an AccessKey pair
+  - 2.2 Obtain the information and the endpoint of an API operation
+  - 2.3 Obtain an SDK
+- 3 Use the SDK for Java
+  - 3.1 Install the SDK for Java
+  - 3.2 Configure authentication credentials
+  - 3.3 Initiate a request
+  - 3.4 Handle exceptions
+- 4 API reference
+  - 4.1 Cloud instances
+    - 4.1.1 Cloud instance management
+      - 4.1.1.1 ListSupportProducts
+      - 4.1.1.2 DescribeCloudInstance
+      - 4.1.1.3 DescribeCloudCredentials
+      - 4.1.1.4 SaveCloudCredentials
+      - 4.1.1.5 DescribeCloudInstanceByPage
+      - 4.1.1.6 DescribeLocalCloudInstance
+      - 4.1.1.7 DescribeLocalRegion
+      - 4.1.1.8 ListRegions
+      - 4.1.1.9 RemoveCloudInstance
+  - 4.2 Protection groups
+    - 4.2.1 Protection group management
+      - 4.2.1.1 CreateProtectGroup
+      - 4.2.1.2 UpdateProtectGroup
+      - 4.2.1.3 RemoveProtectGroup
+      - 4.2.1.4 DescribeProtectGroup
+      - 4.2.1.5 ListProtectGroup
+      - 4.2.1.6 StartProtectGroup
+      - 4.2.1.7 StopProtectGroup
+      - 4.2.1.8 ReprotectProtectGroup
+      - 4.2.1.9 GetStartupProtectGroupDetail
+    - 4.2.2 Synchronization entity management
+      - 4.2.2.1 AddSyncEntity
+      - 4.2.2.2 RemoveSyncEntity
+    - 4.2.3 Protection group switch
+      - 4.2.3.1 DescribeProtectGroupSwitch
+      - 4.2.3.2 DescribeProtectGroupSwitchInstance
+      - 4.2.3.3 StartProtectGroupSwitch
+  - 4.3 Disaster recovery plans
+    - 4.3.1 Plan management
+      - 4.3.1.1 DeleteRecoveryPlan
+      - 4.3.1.2 GetRecoveryPlan
+      - 4.3.1.3 ListRecoveryPlanByPage
+      - 4.3.1.4 SaveRecoveryPlan
+    - 4.3.2 Plan execution
+      - 4.3.2.1 ExecRecoveryTask
+      - 4.3.2.2 AbortRecoveryTask
+      - 4.3.2.3 GetRecoveryTask
+      - 4.3.2.4 GetRecoveryPlanSnapshot
+      - 4.3.2.5 CompleteSequence
+      - 4.3.2.6 ListRecoveryTaskDataByPage
+      - 4.3.2.7 RerunSequence
+      - 4.3.2.8 SkipSequence
+
+## 1 Procedure for API calls
 
 You can use the POP gateway to call API operations in ASR for Geo-disaster Recovery.
 
 **Flowchart**
 
 The following figure shows the flowchart for calling API operations in ASR for Geo-disaster Recovery.
+
+**Procedure**
+
 1. Obtain API information.
 For more information, see API Reference.
 2. Obtain the AccessKey ID and AccessKey secret. For more information, see Obtain an
@@ -32,11 +91,11 @@ see Obtain the SDK package.
 
 **Note**
 
-Only users who are granted the permissions of the operations administrator, organization administrator, global disaster recovery administrator, or organization disaster recovery administrator role can call API operations in ASR for Geo-disaster Recovery. ASR for Geo-disaster Developer Apsara Stack Resilience
+Only users who are granted the permissions of the operations administrator, organization administrator, global disaster recovery administrator, or organization disaster recovery administrator role can call API operations in ASR for Geo-disaster Recovery.
 
-## Preparations
+## 2 Preparations
 
-### Obtain an AccessKey pair
+### 2.1 Obtain an AccessKey pair
 
 This topic describes how to obtain an AccessKey ID and an AccessKey secret.
 
@@ -80,8 +139,6 @@ The AccessKey pair provides full access to cloud resources within your Apsara St
 
 **Obtain the AccessKey pair of an organization**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Warning**
 
 The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
@@ -93,7 +150,7 @@ want to obtain.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain the information and
+### 2.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -102,6 +159,9 @@ To call an API operation, you must obtain the information about the operation, i
 **Background information**
 
 The API information on the debugging page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the ASR for Geo-disaster Recovery Developer Guide. If the information on the API Directory page is different from the information in the developer guide of a cloud service, the information in the developer guide takes precedence.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products > Development Tools > OpenAPI Explorer**
 **> OpenAPI Explorer**.
@@ -110,19 +170,19 @@ The API information on the debugging page of the Apsara Uni-manager Management C
 5. Select an API version from the **Version** drop-down list.
 6. In the API list, you can view all API operations of the current version.
 7. Click the operation that you want to call. Obtain the information such as endpoint and
-region ID on the Parameter tab. ASR for Geo-disaster Developer Apsara Stack Resilience
+region ID on the Parameter tab.
 
-### Obtain an SDK
+### 2.3 Obtain an SDK
 
 If you want to call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) by using the POP gateway, you must obtain the SDK core library from SDK Center and integrate the SDK dependencies of ASR-DR. Obtain the SDK core library: Go to SDK Center and download the **SDK core library** for your programming language. Integrate the SDK dependencies of ASR-DR: For more information, see the documentation of Alibaba Cloud SDKs.
 
 **Note**
 
-We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. ASR-DR SDK supports Java. Apsara Stack Resilience ASR for Geo-disaster Developer
+We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. ASR-DR SDK supports Java.
 
-## Use the SDK for Java
+## 3 Use the SDK for Java
 
-### Install the SDK for Java
+### 3.1 Install the SDK for Java
 
 This topic describes how to install Apsara Stack Resilience for Geo-disaster Recovery (ASR- DR) SDK for Java.
 
@@ -150,7 +210,7 @@ If you use Apache Maven to manage a Java project, you need to only import the JA
 </dependencies>
 ```
 
-### Configure authentication
+### 3.2 Configure authentication credentials
 
 **credentials**
 
@@ -158,7 +218,7 @@ When you use Apsara Stack SDKs to access Apsara Stack services, you must provide
 
 **Important**
 
-Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks. ASR for Geo-disaster Developer Apsara Stack Resilience
+Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be exposed to risks.
 
 ```
 // Configure the endpoint of the API. DefaultProfile.addEndpoint(
@@ -166,20 +226,29 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
     "<RegionId>",      // The region ID.
     "<ProductCode>",     // The code of the cloud service. Example: Asrdr.
     "<Endpoint>"        // The endpoint of the cloud service.
-); // Configure authentication credentials. DefaultProfile profile = DefaultProfile.getProfile(
+```
+
+);
+
+```
+// Configure authentication credentials. DefaultProfile profile = DefaultProfile.getProfile(
     "<yourRegionID>",         // The region ID.
     "<yourAccessKeyID>",      // The AccessKey ID of your personal account.
     "<yourAccessKeySecret>",  // The AccessKey secret of your personal account.
-);
 ```
+
+);
 
 **Note**
 
 In the preceding sample code, replace the variables `<yourRegionID>` , `<yourAccessKeyID>` , and `<yourAccessKeySecret>` with actual values and remove the angle brackets (<>) from the code. You must call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) as a user that is assigned one of the following roles: operations administrator, organization administrator, global disaster recovery administrator, and organization disaster recovery administrator.
 
-### Initiate a request
+### 3.3 Initiate a request
 
 This topic describes how to use the SDK for Java to initiate a request.
+
+**Procedure**
+
 1. Create an AcsClient instance.
 
 ```
@@ -201,7 +270,7 @@ DescribeBackupCloudRequest request = new DescribeBackupCloudRequest();
 
 **Complete sample code**
 
-The following sample code calls the `DescribeBackupCloud` operation of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR): Apsara Stack Resilience ASR for Geo-disaster Developer
+The following sample code calls the `DescribeBackupCloud` operation of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR):
 
 ```java
 import com.aliyuncs.asrdr.model.v20220209.*; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.http.MethodType; import com.chenxue.product.api.base.ApiBaseInfo; import com.chenxue.product.api.base.ProductBaseApi; import com.google.gson.Gson; import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class AsrdrApi extends ProductBaseApi {
@@ -214,13 +283,21 @@ xception {
             "<RegionId>",      // The region ID.
             "<ProductCode>",     // The code of the cloud service. Example: Asrdr.
             "<Endpoint>"        // The endpoint of the cloud service.
-        );
+```
+
+);
+
+```
         // Configure authentication credentials.
         DefaultProfile profile = DefaultProfile.getProfile(
             "<yourRegionID>",         // The region ID.
             "<yourAccessKeyID>",      // The AccessKey ID of your personal account.
             "<yourAccessKeySecret>",  // The AccessKey secret of your personal account.
-        );
+```
+
+);
+
+```java
         // Construct the client.
         DefaultAcsClient client = new DefaultAcsClient(profile);
         //Construct request parameters.
@@ -231,14 +308,13 @@ xception {
         // Call the API operation.
         DescribeBackupCloudResponse response = client.getAcsResponse(request);
         System.out.println(response.getData());
-      }
-    }
-}
 ```
 
-### Handle exceptions
+`}` `}` `}`
 
-If the server or client encounters an exception when you use the SDK for Java, the SDK returns the exception information. The exception information contains an error code and an error message. In most cases, you do not need to handle exceptions based on the exception information returned by the SDK for Java. You need to only handle server exceptions based on error messages generated on the server side. ServerException indicates a server exception. ASR for Geo-disaster Developer Apsara Stack Resilience ClientException indicates a client exception. For example, when the following exception occurs, you can modify the AccessKey ID based on the error message:
+### 3.4 Handle exceptions
+
+If the server or client encounters an exception when you use the SDK for Java, the SDK returns the exception information. The exception information contains an error code and an error message. In most cases, you do not need to handle exceptions based on the exception information returned by the SDK for Java. You need to only handle server exceptions based on error messages generated on the server side. ServerException indicates a server exception. ClientException indicates a client exception. For example, when the following exception occurs, you can modify the AccessKey ID based on the error message:
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
@@ -259,23 +335,17 @@ try {
     e.printStackTrace();
 } catch (ServerException e) {
     e.printStackTrace();
-}
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
-| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+`}`
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+## 4 API reference
 
-## API reference
+### 4.1 Cloud instances
 
-### Cloud instances
+#### 4.1.1 Cloud instance management
 
-#### Cloud instance management
-
-##### ListSupportProducts
+##### 4.1.1.1 ListSupportProducts
 
 Queries the cloud services that are supported by Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) in a region.
 
@@ -285,22 +355,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is a parameter of the Apsara Stack API (ASAPI). You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | CloudInsta nceId | Strin g | Quer y | Yes | ffe1********6d6d | The ID of the cloud instance. |
 | RgnId | Strin g | Quer y | Yes | cn *** 01 _ _ | The region ID. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Response parameters**
 
@@ -314,8 +383,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | nodeHost | String | B-W0Y1***R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Examples**
 
 Sample requests
@@ -324,17 +391,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListSupportProducts &CloudInstanceId=ffe1********6d6d &RgnId=cn_***_01 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8*****04bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
-| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y1***R-1914.local",
  "code":"200",
@@ -342,16 +401,15 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
  "requestId":"75ef********dafe8",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y1***R-1914.local</nodeHost> <code>200</code> <data>[&quot;RDS&quot;, &quot;ECS&quot;]</data> <requestId>75ef********dafe8</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeCloudInstance
+##### 4.1.1.2 DescribeCloudInstance
 
 Queries the information about a cloud instance.
 
@@ -361,26 +419,25 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8*****04bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
+| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is a parameter of the Apsara Stack API (ASAPI). You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter is used to specify the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | CloudInsta nceId | Strin g | Quer y | Yes | ffe1********6d6d | The ID of the cloud instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | requestId | String | b870********433d | The request ID. |
 |---|---|---|---|
@@ -389,15 +446,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y***6R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The information about the resource. |
+| data | Struct |   | The information about the resource. |
 | - aliyunAccount Uid | String | 178511195726779 6 | The unique ID (UID) of the Apsara Stack tenant account to which the resource belongs. |
 | -ownerUid | String | 239724*****88687 32 | The UID of the resource owner. |
 | -creator | String | 2397245****88687 32 | The UID of the user who created the resource. |
 | -lastModifier | String | 23972451****6873 2 | The UID of the user who last modified the resource. |
 | - resourceRegio nId | String | cn-hangzhou | The region ID of the resource. |
 | - resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | -createdDate | Long | 1713514782222 | The time when the resource was created. |
 |---|---|---|---|
@@ -411,16 +466,12 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. This type is generally used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. This type is generally used in cross- cloud disaster recovery scenarios. |
 | - consoleApiEnd point | String | http://internal.API.c n-XXXXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | - adminCredenti alsId | String | **************32 32 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | - accountCrede ntialsId | String | **************72 00 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | - internetDomai n | String | inter.example.com | The Internet domain name. |
 | - intranetDomai n | String | intra.example.com | The internal domain name. |
 | -status | String | REGULAR | The state of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -430,10 +481,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeCloudInstance &CloudInstanceId=ffe1********6d6d &<Common request parameters>
 ```
 
-Apsara Stack Resilience ASR for Geo-disaster Developer Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y***6R-1914.local",
  "code":"200",
@@ -459,19 +509,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer Sample success responses 
   "accountCredentialsId":"3399442290****7200",
   "consoleType":"ASCM",
   "status":"REGULAR"
- },
+```
+
+`},`
+
+```json
  "requestId":"b870********433d",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y***6R-1914.local</nodeHost> <code>200</code> <data>
@@ -499,7 +547,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 </data> <requestId>b870********433d</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeCloudCredentials
+##### 4.1.1.3 DescribeCloudCredentials
 
 Queries various credentials of a cloud instance.
 
@@ -509,31 +557,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is a parameter of the Apsara Stack API (ASAPI). You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter is used to specify the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-|  |  |  |  |  | When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
+|   |   |   |   |   | When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | CloudInsta nceId | Strin g | Quer y | Yes | ffe1********6d6d | The ID of the cloud instance. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Credential sLevel | Strin g | Quer y | Yes | user | The level of the credentials. Valid values: user: the credentials of a Resource Access Management (RAM) user. account: the credentials of a Apsara Stack tenant account. admin: the credentials of an operations administrator. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -543,12 +588,8 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y***6R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The credentials of the cloud instance. |
+| data | Struct |   | The credentials of the cloud instance. |
 | - aliyunAccount Uid | String | 1785111***67796 | The unique ID (UID) of the Apsara Stack tenant account to which the resource belongs. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | -ownerUid | String | 2397****18988687 32 | The UID of the resource owner. |
 |---|---|---|---|
@@ -561,13 +602,9 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -type | String | security-token | The type of the credentials. Valid values: access-key: AccessKey ID & AccessKey Secret security-token: STS Token |
 | -accessKeyId | String | AC4Gr9N****77grR | The AccessKey ID. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | - accessKeySecr et | String | cTJNbuS*****TVwy KkV5I | The AccessKey secret. The value is masked and cannot be directly used. |
 |---|---|---|---|
 | -securityToken | String | cTJNbuS3qE2****** **wyKkV5I | The STS token. The value is masked and cannot be directly used. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
@@ -577,10 +614,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeCloudCredentials &CloudInstanceId=ffe1********6d6d &CredentialsLevel=user &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y***6R-1914.local",
  "code":"200",
@@ -597,21 +633,17 @@ Sample success responses `JSON` format
   "id":"339944*****3187200",
   "ownerUid":"2397****1898868732",
   "type":"security-token"
- },
+```
+
+`},`
+
+```json
  "requestId":"b870********433d",
  "success":false,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9*****bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
-| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y***6R-1914.local</nodeHost> <code>200</code> <data>
@@ -630,7 +662,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 </data> <requestId>b870********433d</requestId> <success>false</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### SaveCloudCredentials
+##### 4.1.1.4 SaveCloudCredentials
 
 Saves the credentials of a cloud instance.
 
@@ -640,26 +672,27 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9*****bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
+| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | CloudInsta nceId | Strin g | Body | Yes | ffe1********6d6 | The ID of the cloud instance. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Credential sLevel | Strin g | Body | Yes | user | The level of the credentials. Set the value to user . |
 |---|---|---|---|---|---|
 | Credential sAccessKe yId | Strin g | Body | Yes | AC4Gr9N***7grR | The AccessKey ID of your personal account. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as a regular user, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 | Credential sAccessKe ySecret | Strin g | Body | Yes | *******************HTV wyKkV5I | The AccessKey secret of your personal account. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as a regular user, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -667,15 +700,11 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 | success | Boolean | true | Indicates whether the request was successful. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
-
 | code | String | 200 | The response code. |
 |---|---|---|---|
 | nodeHost | String | B-W0Y***6R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The credentials of the cloud instance. |
+| data | Struct |   | The credentials of the cloud instance. |
 | - aliyunAccount Uid | String | 1785111***67796 | The unique ID (UID) of the Apsara Stack tenant account to which the resource belongs. |
 | -ownerUid | String | 2397****18988687 32 | The UID of the resource owner. |
 | -creator | String | 2397****18988687 32 | The UID of the user who created the resource. |
@@ -686,14 +715,10 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -id | String | 339944229******2 00 | The ID of the credentials. |
 | -type | String | security-token | The type of the credentials. Valid values: access-key: AccessKey ID and AccessKey secret. security-token: Security Token Service (STS) token. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -accessKeyId | String | CU********Yh | The AccessKey ID. |
 |---|---|---|---|
 | - accessKeySecr et | String | ClHm********Xxqf | The AccessKey secret. The value is masked and cannot be directly used. |
 | -securityToken | String | cTJNbu********rQj4 WwHTVwyKkV5I | The STS token. The value is masked and cannot be directly used. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -703,10 +728,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=SaveCloudCredentials &****************************6d6 &CredentialsLevel=user &*********************************7grR &**********************************************HTVwyKkV5I &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y***6R-1914.local",
  "code":"200",
@@ -723,21 +747,17 @@ Sample success responses `JSON` format
   "id":"339944229******200",
   "ownerUid":"2397****1898868732",
   "type":"security-token"
- },
+```
+
+`},`
+
+```json
  "requestId":"b870********433d",
  "success":"",
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
-| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y***6R-1914.local</nodeHost> <code>200</code> <data>
@@ -756,7 +776,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 </data> <requestId>b870********433d</requestId> <success /> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeCloudInstanceByPage
+##### 4.1.1.5 DescribeCloudInstanceByPage
 
 Queries cloud instances by page.
 
@@ -766,23 +786,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
+| AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | InstanceN ame | Strin g | Quer y | No | XXX | The name of the cloud instance that you want to query. This parameter is used to query data in fuzzy match mode. The value is not case- sensitive. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-| psara Stack R | esilienc | e |  | ASR | for Geo-disaster Developer Guide·API referenc |
+| psara Stack R | esilienc | e |   | ASR | for Geo-disaster Developer Guide·API referenc |
 |---|---|---|---|---|---|
 
 | InstanceId | Strin g | Quer y | No | 383********53c7 | The ID of the cloud instance that you want to query. This parameter is used to query data in exact match mode. |
@@ -793,11 +812,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | Sort | Strin g | Quer y | No | createdDate | The criterion by which cloud instances are sorted. Set the value to createdDate. |
 | Order | Strin g | Quer y | No | DESC | The order in which cloud instances are sorted. Valid values: DESC: descending order. This is the default value. ASC: ascending order. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | 4383********53c7 | The request ID. |
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -805,16 +824,14 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y****R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The information about the resource. |
-| -rows | Array |  | The queried entries. |
+| data | Struct |   | The information about the resource. |
+| -rows | Array |   | The queried entries. |
 | -- aliyunAccount Uid | String | 1785111***67796 | The ID of the Apsara Stack tenant account to which the resource belongs. |
 | --ownerUid | String | 2397****18988687 32 | The unique ID (UID) of the resource owner. |
 | --creator | String | 2397****18988687 32 | The UID of the user who created the resource. |
 | --lastModifier | String | 2397****18988687 32 | The UID of the user who last modified the resource. |
 | -- resourceRegio nId | String | region 01 _ | The region ID of the resource. |
 | -- resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | --createdDate | Long | 1713514782222 | The time when the resource was created. |
 |---|---|---|---|
@@ -828,8 +845,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. This type is generally used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. This type is generally used in cross- cloud disaster recovery scenarios. |
 | -- consoleApiEnd point | String | http://internal.API- XXXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | -- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
@@ -838,13 +853,9 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
 | -pageNum | Integer | 4 | The page number. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | -pageSize | Integer | 5 | The number of entries per page. This parameter indicates the expected number of entries per page. The value is the same as the value of the corresponding parameter specified in the request. If the actual length of the returned rows parameter is less than the value of this parameter, the last page is returned. |
 |---|---|---|---|
 | -total | Integer | 20 | The total number of entries that meet query conditions. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
@@ -854,10 +865,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeCloudInstanceByPage &PageNum=55 &PageSize=5 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Stack Resilience
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****R-1914.local",
  "code":"200",
@@ -885,22 +895,24 @@ Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Sta
    "accountCredentialsId":"339944229083187200",
    "consoleType":"ASCM",
    "status":"REGULAR"
-  },
+```
+
+`},`
+
+```json
   "pageSize":5,
   "pageNum":4
- },
+```
+
+`},`
+
+```json
  "requestId":"4383********53c7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****R-1914.local</nodeHost> <code>200</code> <data>
@@ -933,7 +945,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 </data> <requestId>4383********53c7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeLocalCloudInstance
+##### 4.1.1.6 DescribeLocalCloudInstance
 
 Queries the information about the cloud instance that corresponds to the cloud on which Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) is deployed.
 
@@ -943,32 +955,27 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9*****bca | The ID of the primary cloud instance. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | b870********433d | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -976,7 +983,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y***6R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The information about the resource. |
+| data | Struct |   | The information about the resource. |
 | - aliyunAccount Uid | String | 17851119****7796 | The ID of the Apsara Stack tenant account to which the resource belongs. |
 | -ownerUid | String | 2397245*****8687 32 | The unique ID (UID) of the resource owner. |
 | -creator | String | 2397245*****8687 32 | The UID of the user who created the resource. |
@@ -984,8 +991,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | - resourceRegio nId | String | cn-hangzhou | The region ID of the resource. |
 | - resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
 | -createdDate | Long | 1713514782222 | The time when the resource was created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | - lastModifiedDa te | Long | 1713514782222 | The time when the resource was last modified. |
 |---|---|---|---|
@@ -998,16 +1003,12 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -consoleType | String | ASRDR | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | - consoleApiEnd point | String | http://internal.API- XXXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | - adminCredenti alsId | String | *************832 32 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | - accountCrede ntialsId | String | *************832 32 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | - internetDomai n | String | inter.example.com | The Internet domain name. |
 | - intranetDomai n | String | intra.example.com | The internal domain name. |
 | -status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -1017,10 +1018,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeLocalCloudInstance &<Common request parameters>
 ```
 
-Apsara Stack Resilience ASR for Geo-disaster Developer Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y***6R-1914.local",
  "code":"200",
@@ -1046,20 +1046,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer Sample success responses 
   "accountCredentialsId":"339944225****83232",
   "consoleType":"ASRDR",
   "status":"REGULAR"
- },
+```
+
+`},`
+
+```json
  "requestId":"b870********433d",
  "success":"",
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****04bca | The ID of the primary cloud instance. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y***6R-1914.local</nodeHost> <code>200</code> <data>
@@ -1087,7 +1084,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 </data> <requestId>b870********433d</requestId> <success /> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeLocalRegion
+##### 4.1.1.7 DescribeLocalRegion
 
 Queries the information about the region in which Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) resides.
 
@@ -1097,31 +1094,27 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****04bca | The ID of the primary cloud instance. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | b870********433d | The request ID. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -1129,18 +1122,16 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y***6R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The returned data. |
+| data | Struct |   | The returned data. |
 | -pk | String | 33994****2006277 12 | The primary key of the region data in ASR- DR. |
 | -regionId | String | cn-hangzhou | The region ID. |
 | -regionName | String | region 01 _ | The name of the region. |
 | -regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 | -consoleType | String | ASRDR | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | - consoleApiEnd point | String | http://internal.APIle .cn-xxxxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 |---|---|---|---|
-| -cloudInstance | Struct |  | The information about the cloud instance. |
+| -cloudInstance | Struct |   | The information about the cloud instance. |
 | -- aliyunAccount Uid | String | 1785111****67796 | The ID of the Apsara Stack tenant account to which the resource belongs. |
 | --ownerUid | String | 2397*****8988687 32 | The unique ID (UID) of the resource owner. |
 | --creator | String | 2397*****8988687 32 | The UID of the user who created the resource. |
@@ -1154,8 +1145,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --pk | String | 339944229200627 712 | The primary key of the cloud instance. |
 | -- cloudUniqueId | String | 0179 | The UID of the cloud. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --cloudOsType | String | ENTERPRISE | The edition of the cloud instance. Only ENTERPRISE may be returned, which indicates Apsara Stack. |
 |---|---|---|---|
 | --version | String | 1.0.0 | The version number of the cloud instance. |
@@ -1164,14 +1153,10 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 | -- accountCrede ntialsId | String | 339944225551583 232 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -- internetDomai n | String | inter.example.com | The Internet domain name. |
 |---|---|---|---|
 | -- intranetDomai n | String | intra.example.com | The internal domain name. |
 | --status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -1181,10 +1166,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeLocalRegion &<Common request parameters>
 ```
 
-Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disaster Developer
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y***6R-1914.local",
  "code":"200",
@@ -1216,21 +1200,23 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
    "accountCredentialsId":"339944225551583232",
    "consoleType":"ASRDR",
    "status":"REGULAR"
-  },
+```
+
+`},`
+
+```json
   "consoleType":"ASRDR"
- },
+```
+
+`},`
+
+```json
  "requestId":"b870********433d",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y***6R-1914.local</nodeHost> <code>200</code> <data>
@@ -1266,7 +1252,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 </data> <requestId>b870********433d</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### ListRegions
+##### 4.1.1.8 ListRegions
 
 Queries the available regions of a cloud instance.
 
@@ -1276,34 +1262,29 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | CloudInsta nceId | Strin g | Quer y | Yes | 383********53c7 | The ID of the cloud instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Array |  | The response data. |
+| data | Array |   | The response data. |
 | -pk | String | 33994****2006277 12 | The primary key of the region data in ASR- DR. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
 
 | -regionId | String | cn-hangzhou | The region ID. |
 |---|---|---|---|
@@ -1311,14 +1292,12 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -regionType | String | UNIT | The type of the region. Valid values: CENTRAL UNIT |
 | -consoleType | String | ASRDR | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | - consoleApiEnd point | String | http://internal.exa mple-XXXXXX | The endpoint of the cloud management API in the region. |
-| -cloudInstance | Struct |  | The information about the cloud instance. |
+| -cloudInstance | Struct |   | The information about the cloud instance. |
 | -- aliyunAccount Uid | String | 1785111****67796 | The ID of the Apsara Stack tenant account to which the resource belongs. |
 | --ownerUid | String | 2397*****8988687 32 | The unique ID (UID) of the resource owner. |
 | --creator | String | 2397*****8988687 32 | The UID of the user who created the resource. |
 | --lastModifier | String | 2397*****8988687 32 | The UID of the user who last modified the resource. |
 | -- resourceRegio nId | String | region 01 _ | The region ID of the resource. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | -- resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
 |---|---|---|---|
@@ -1332,8 +1311,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --version | String | 1.0.0 | The version number of the cloud instance. |
 | --consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | -- consoleApiEnd point | String | http://internal.exa mple-XXXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 |---|---|---|---|
 | -- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
@@ -1343,8 +1320,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
 | requestId | String | 4383********53c7 | The request ID. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request was successful. |
@@ -1352,20 +1327,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&CloudInstanceId=383********53c7 &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListRegions &CloudInstanceId=383********53c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disaster Developer
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****R-1914.local",
  "code":"200",
@@ -1397,16 +1369,23 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
    "accountCredentialsId":"339944225551583232",
    "consoleType":"ASCM",
    "status":"REGULAR"
-  },
+```
+
+`},`
+
+```json
   "consoleType":"ASRDR"
- },
+```
+
+`},`
+
+```json
  "requestId":"4383********53c7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****R-1914.local</nodeHost> <code>200</code> <data>
@@ -1444,7 +1423,7 @@ region**.example.com/API/v3APIsoleApiEndpoint>
 </data> <requestId>4383********53c7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### RemoveCloudInstance
+##### 4.1.1.9 RemoveCloudInstance
 
 Deletes a cloud instance.
 
@@ -1459,29 +1438,21 @@ This operation does not have operation-specific request headers and uses only co
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). You do not need to specify this parameter. |
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. You do not need to specify this parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | CloudInsta nceId | Strin g | Quer y | Yes | ffe1********6d6d | The ID of the cloud instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | 75ef********dafe8 | The request ID. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -1489,8 +1460,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y1***R- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
@@ -1500,36 +1469,28 @@ Sample requests
 http(s)://[Endpoint]/?Action=RemoveCloudInstance &CloudInstanceId=ffe1********6d6d &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y1***R-1914.local",
  "code":"200",
  "requestId":"75ef********dafe8",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y1***R-1914.local</nodeHost> <code>200</code> <requestId>75ef********dafe8</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+### 4.2 Protection groups
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+#### 4.2.1 Protection group management
 
-### Protection groups
-
-#### Protection group management
-
-##### CreateProtectGroup
+##### 4.2.1.1 CreateProtectGroup
 
 Creates a protection group.
 
@@ -1539,20 +1500,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
@@ -1560,13 +1519,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | BackupClo udId | Strin g | Quer y | Yes | 0d3a********2cd3 | The ID of the secondary cloud. |
 | MainRegio nId | Strin g | Quer y | Yes | cn-xxxx-d01 | The ID of the primary region. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | BackupRe gionId | Strin g | Quer y | Yes | cn-xxxx-d01 | The ID of the secondary region. |
 |---|---|---|---|---|---|
 | ProtectGro upName | Strin g | Quer y | Yes | openapi-test | The name of the protection group. |
 | Direction | Strin g | Quer y | Yes | FORWARD | The direction of the protection group. Valid values: FORWARD REVERSE |
 | Descriptio n | Strin g | Quer y | No | test | The description of the protection group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1576,16 +1535,10 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The information about the protection group. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
+| data | Struct |   | The information about the protection group. |
 
 | - protectGroupI d | String | 379e********98c7 | The ID of the protection group. |
 |---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -1595,23 +1548,25 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateProtectGroup &MainCloudId=ffe1********6d6d &BackupCloudId=0d3a********2cd3 &MainRegionId=cn-xxxx-d01 &BackupRegionId=cn-xxxx-d01 &ProtectGroupName=openapi-test &Direction=FORWARD &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "data":{
   "protectGroupId":"379e********98c7"
- },
+```
+
+`},`
+
+```json
  "requestId":"5daf********f0c7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -1619,44 +1574,38 @@ Sample success responses `JSON` format
 </data> <requestId>5daf********f0c7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### UpdateProtectGroup
+##### 4.2.1.2 UpdateProtectGroup
 
 Updates a protection group.
 
 **Request headers**
 
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
 | ProtectGro upName | Strin g | Quer y | Yes | OSS1 | The name of the protection group. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Descriptio n | Strin g | Quer y | No | XXX protection group | The description of the protection group. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1667,10 +1616,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
@@ -1679,31 +1624,24 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateProtectGroup &ProtectGroupId=379e********98c7 &ProtectGroupName=OSS1 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### RemoveProtectGroup
+##### 4.2.1.3 RemoveProtectGroup
 
 Deletes a protection group.
 
@@ -1713,37 +1651,30 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+| Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+|---|---|---|---|---|---|
 
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
 |---|---|---|---|
@@ -1751,8 +1682,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
@@ -1762,32 +1691,24 @@ Sample requests
 http(s)://[Endpoint]/?Action=RemoveProtectGroup &ProtectGroupId=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeProtectGroup
+##### 4.2.1.4 DescribeProtectGroup
 
 Queries the information about a protection group.
 
@@ -1799,21 +1720,19 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
+| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Departme nt | Strin g | Query | No | 3 | The organization ID. This is an API parameter of the Apsara Uni- manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Resource Group | Strin g | Query | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1821,11 +1740,11 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ProtectGr oupId | Strin g | Query | Yes | 379e********98c7 | The ID of the protection group. |
 | PageNum | Integ er | Query | Yes | 55 | The page number. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageSize | Integ er | Query | Yes | 5 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1835,17 +1754,13 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The information about the resource. |
+| data | Struct |   | The information about the resource. |
 | - aliyunAccount Uid | String | 167333***8012 | The ID of the Apsara Stack tenant account to which the resource belongs. |
 | -ownerUid | String | 21733******12 | The unique ID (UID) of the resource owner. |
 | -creator | String | 2173333****12 | The UID of the user who created the resource. |
 | -lastModifier | String | 217333***12 | The UID of the user who last modified the resource. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
-
-| SR for Geo-disast Guide·API referen | er Developer ce |  | Apsara Stack Resilienc |
+| SR for Geo-disast Guide·API referen | er Developer ce |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1866,7 +1781,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | - backupOrganiz ationName | String | asrdr | The organization name of the secondary cloud. |
 | - mainOrganizat ionId | Integer | 9 | The organization ID of the primary cloud. |
 
-| psara Stack Resil | ience |  | ASR for Geo-disaster Developer Guide·API referenc |
+| psara Stack Resil | ience |   | ASR for Geo-disaster Developer Guide·API referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1884,13 +1799,11 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 |---|---|---|---|
 | - rpoAlarmLevel | String | WARN | The alert level. If the synchronization latency of the protection group is higher than the specified threshold, WARN is returned. Otherwise, NORMAL is returned. Valid values: WARN and NORMAL. |
 | -createTime | Long | 1673333258000 | The time when the protection group was created. |
-| -priority | Struct |  | The information about the synchronization entities. |
-| --rows | Normal |  | The synchronization entities, in the JSON format. |
+| -priority | Struct |   | The information about the synchronization entities. |
+| --rows | Normal |   | The synchronization entities, in the JSON format. |
 | --total | Integer | 12 | The total number of entries returned. |
 | --pageSize | Integer | 10 | The number of entries per page. The value is set to 10. |
 | --pageNum | Integer | 1 | The page number. The value is an integer. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -1900,10 +1813,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeProtectGroup &ProtectGroupId=379e********98c7 &PageNum=55 &PageSize=5 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disaster Developer
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -1927,7 +1839,11 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
    "pageSize":10,
    "rows":"",
    "pageNum":1
-  },
+```
+
+`},`
+
+```json
   "direction":"FORWARD",
   "creator":"2173333****12",
   "maxRPO":9000,
@@ -1943,14 +1859,17 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
   "name":"openapi-test",
   "ownerUid":"21733******12",
   "mainOrganizationName":"asrdr"
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -1992,7 +1911,7 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### ListProtectGroup
+##### 4.2.1.5 ListProtectGroup
 
 Queries protection groups.
 
@@ -2000,32 +1919,24 @@ Queries protection groups.
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Request parameters**
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | No | 379e********98c7 | The ID of the protection group. |
 | ProtectGro upIds | Strin g | Quer y | No | 379e********98c7,224g** ******d43c | The IDs of the protection groups. Separate multiple IDs with commas (,). |
 | ProtectGro upName | Strin g | Quer y | No | ProtectGroup1 | The name of the protection group. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Direction | Strin g | Quer y | No | FORWARD | The direction of the protection group. Valid values: FORWARD REVERSE |
 |---|---|---|---|---|---|
@@ -2038,22 +1949,20 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | PageNum | Integ er | Quer y | Yes | 10 | The page number. Specify an integer. |
 | PageSize | Integ er | Quer y | Yes | 1 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 |---|---|---|---|
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The queried protection groups. |
-| -rows | Array |  | The number of rows. |
+| data | Struct |   | The queried protection groups. |
+| -rows | Array |   | The number of rows. |
 | -- aliyunAccount Uid | String | 1673*****8012 | The ID of the Apsara Stack tenant account to which the resource belongs. |
 | --ownerUid | String | 21733*****012 | The unique ID (UID) of the resource owner. |
 | --creator | String | 21733*****012 | The UID of the user who created the resource. |
@@ -2063,9 +1972,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --createdDate | Long | 1673333258000 | The time when the resource was created. |
 | -- lastModifiedDa te | Long | 1673333258012 | The time when the resource was last modified. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-| psara Stack Resil | ience |  | ASR for Geo-disaster Developer Guide·API referenc |
+| psara Stack Resil | ience |   | ASR for Geo-disaster Developer Guide·API referenc |
 |---|---|---|---|
 
 | --instanceId | String | 79e********98c7 | The instance ID of the resource. |
@@ -2086,13 +1993,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -- rpoAlarmLevel | String | WARN | The alert level. If the synchronization latency of the protection group is higher than the specified threshold, WARN is returned. Otherwise, NORMAL is returned. Valid values: WARN and NORMAL. |
 | --gmtCreate | Long | 123666000012 | The time when the protection group was created. |
 | -- syncEntityNum | Integer | 12 | The number of synchronization entities. |
-| -- latestSwitchOv erPlan | Struct |  | The details of the last switchover or failover. |
-| ---taskInfos | Array |  | The details of the tasks. |
+| -- latestSwitchOv erPlan | Struct |   | The details of the last switchover or failover. |
+| ---taskInfos | Array |   | The details of the tasks. |
 | ----taskNum | Integer | 20 | The total number of tasks. |
 | ----taskName | String | TASK | The name of the task. |
 | ----ipAddr | String | 127.0.0.1 | The IP address of the node that ran the task. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | ---- taskDescriptio n | String | XXX failover task | The description of the task. |
 |---|---|---|---|
@@ -2110,9 +2015,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --- protectGroupN ame | String | openapi-test | The name of the protection group. |
 | --- resourceGroup Name | String | resourceGroup1 | The name of the resource group. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-| --- deploymentId | String |  | A reserved parameter. |
+| --- deploymentId | String |   | A reserved parameter. |
 |---|---|---|---|
 | ---createTime | String | 1673333258000 | The time when the switch was created. |
 | ---status | String | IDLE | The status of the switch. Valid values: IDLE RUNNING |
@@ -2120,15 +2023,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ---planType | String | FAILOVER | The type of the switch. Valid values: FAILOVER SWITCHOVER |
 | --- planInstanceN um | String | 2 | The total number of instances involved. |
 | --- latestPlanInsta nceId | String | 2b22********92c7 | The ID of the latest involved instance. |
-| ---entityType | String |  | A reserved parameter. |
+| ---entityType | String |   | A reserved parameter. |
 | ---planStatus | String | IDLE | The status of the switch. Valid values: IDLE RUNNING |
 | ---cloudId | String | 79e********98c7 | The cloud ID. |
-| --- failoverMode | String |  | A reserved parameter. |
-| -- latestSwitchBa ckPlan | Struct |  | The details of the last switchback or failback. |
-| ---taskInfos | Array |  | The details of the tasks. |
+| --- failoverMode | String |   | A reserved parameter. |
+| -- latestSwitchBa ckPlan | Struct |   | The details of the last switchback or failback. |
+| ---taskInfos | Array |   | The details of the tasks. |
 | ----taskNum | Integer | 20 | The total number of tasks. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | ----taskName | String | TASK | The name of the task. |
 |---|---|---|---|
@@ -2147,43 +2048,36 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --- protectGroupI d | String | 379e********98c7 | The ID of the protection group. |
 | --- protectGroupN ame | String | openapi-test | The name of the protection group. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | --- resourceGroup Name | String | resourceGroup1 | The name of the resource group. |
 |---|---|---|---|
-| --- deploymentId | String |  | A reserved parameter. |
+| --- deploymentId | String |   | A reserved parameter. |
 | ---createTime | String | 1673333258000 | The time when the switch was created. |
 | ---status | String | IDLE | The status of the switch. Valid values: IDLE RUNNING |
 | ---stepStatus | String | IDLE | The status of the next step. |
 | ---planType | String | FAILBACK | The type of the switch. Valid values: FAILBACK SWITCHBACK |
 | --- planInstanceN um | String | 2 | The total number of instances involved. |
 | --- latestPlanInsta nceId | String | 2b22********92c7 | The ID of the latest involved instance. |
-| ---entityType | String |  | A reserved parameter. |
+| ---entityType | String |   | A reserved parameter. |
 | ---planStatus | String | IDLE | The status of the switch. Valid values: IDLE RUNNING |
 | ---cloudId | String | 79e********98c7 | The cloud ID. |
-| --- failoverMode | String |  | A reserved parameter. |
+| --- failoverMode | String |   | A reserved parameter. |
 | -pageNum | Integer | 10 | The number of entries per page. |
 | -pageSize | Integer | 1 | The page number. The value is an integer. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | -total | Integer | 50 | The total number of entries returned. |
 |---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
 Sample requests
 
 ```
-&PageNum=10 &PageSize=1 &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListProtectGroup &PageNum=10 &PageSize=1 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -2217,20 +2111,28 @@ Sample success responses `JSON` format
      "taskNum":20,
      "ipAddr":"127.0.0.1",
      "status":"IDLE"
-    },
+```
+
+`},`
+
+```json
     "createTime":"1673333258000",
     "deploymentId":"",
     "cloudId":"79e********98c7",
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience ,
+`,`
 
 ```json
     "planId":"79e********98c7",
     "protectGroupId":"379e********98c7",
     "stepStatus":"IDLE",
     "status":"IDLE"
-   },
+```
+
+`},`
+
+```json
    "lastModifier":"21733*****012",
    "description":"Protection group for XXX business application",
    "mainCloudId":"cn_01",
@@ -2260,7 +2162,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience ,
      "taskNum":20,
      "ipAddr":"127.0.0.1",
      "status":"IDLE"
-    },
+```
+
+`},`
+
+```json
     "createTime":"1673333258000",
     "deploymentId":"",
     "cloudId":"79e********98c7",
@@ -2268,7 +2174,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience ,
     "protectGroupId":"379e********98c7",
     "stepStatus":"IDLE",
     "status":"IDLE"
-   },
+```
+
+`},`
+
+```json
    "protectGroupId":"379e********98c7",
    "direction":"FORWARD",
    "creator":"21733*****012",
@@ -2282,22 +2192,27 @@ ASR for Geo-disaster Developer Apsara Stack Resilience ,
    "aveRPO":0,
 ```
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 ```json
    "name":"openapi-test",
    "ownerUid":"21733*****012"
-  },
+```
+
+`},`
+
+```json
   "pageSize":1,
   "pageNum":10
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -2339,8 +2254,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
    <stepStatus>IDLE</stepStatus>
    <status>IDLE</status>
 ```
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 ```xml
 status /status
@@ -2400,18 +2313,12 @@ status /status
  <pageSize>1</pageSize>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 ```xml
  <pageNum>10</pageNum>
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### StartProtectGroup
+##### 4.2.1.6 StartProtectGroup
 
 Starts a protection group.
 
@@ -2421,60 +2328,63 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
 | Direction | Strin g | Quer y | Yes | FORWARD | The direction of the protection group. Valid values: FORWARD REVERSE |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | IsStop | Bool ean | Quer y | No | true | Specifies whether to stop the synchronization entity configuration process. Valid values: true false |
 |---|---|---|---|---|---|
-| SyncEntiti es | Strin g | Quer y | Yes |  | The configurations of the synchronization entity. For more information, see the following configurations. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+| SyncEntiti es | Strin g | Quer y | Yes |   | The configurations of the synchronization entity. For more information, see the following configurations. |
 
 **Common parameters of synchronization entities**
 
+`{`
+
 ```json
-{ "protectGroupId":"379e********98c7", // The ID of the protection group. "mainCloudId":"379e********98c7", // The ID of the primary cloud instance. "backupCloudId":"379e********98c7", // The ID of the secondary cloud instance. "srcRegionId":"rn-hangzhou", // The region ID of the primary cloud. "dstRegionId":"cn-beijing", // The region ID of the secondary cloud. "mainInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the primary cl oud. "backupInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the secondar y cloud. "mainInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service insta nce in the primary cloud. "backupInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service ins tance in the secondary cloud. "syncType": "FULL", // The type of synchronization. Valid values: FULL and HOT. "priorityNumber": "1", // The priority. }
+"protectGroupId":"379e********98c7", // The ID of the protection group. "mainCloudId":"379e********98c7", // The ID of the primary cloud instance. "backupCloudId":"379e********98c7", // The ID of the secondary cloud instance. "srcRegionId":"rn-hangzhou", // The region ID of the primary cloud. "dstRegionId":"cn-beijing", // The region ID of the secondary cloud. "mainInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the primary cl oud. "backupInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the secondar y cloud. "mainInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service insta nce in the primary cloud. "backupInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service ins tance in the secondary cloud. "syncType": "FULL", // The type of synchronization. Valid values: FULL and HOT. "priorityNumber": "1", // The priority.
 ```
+
+`}`
 
 **RDS-MySQL**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`{`
 
 ```json
-{ "entityType": "RDS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. This parameter takes e ffect only when syncType is set to HOT. "srcSuperAccount":"rds_admin", // The name of the privileged account of the primary ins tance. "srcSuperPassword":"rds_passd", // The password of the privileged account of the primar y instance. "dstSuperAccount":"rds_admin", // The name of the privileged account of the secondary i nstance. "dstSuperPassword":"rds_passd", // The password of the privileged account of the second ary instance. }
+"entityType": "RDS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. This parameter takes e ffect only when syncType is set to HOT. "srcSuperAccount":"rds_admin", // The name of the privileged account of the primary ins tance. "srcSuperPassword":"rds_passd", // The password of the privileged account of the primar y instance. "dstSuperAccount":"rds_admin", // The name of the privileged account of the secondary i nstance. "dstSuperPassword":"rds_passd", // The password of the privileged account of the second ary instance.
 ```
+
+`}`
 
 **ADB3**
 
+`{`
+
 ```json
-{ "entityType": "ADB3" "mainAccountName":"rds_admin", // The name of the account used to synchronize data from or to the primary instance. "mainAccountPassword":"rds_passd", // The password of the account used to synchronize d ata from or to the primary instance. "backupAccountName":"rds_admin", // The name of the account used to synchronize data fr om or to the secondary instance. "backupAccountPassword":"rds_passd", // The password of the account used to synchronize data from or to the secondary instance. }
+"entityType": "ADB3" "mainAccountName":"rds_admin", // The name of the account used to synchronize data from or to the primary instance. "mainAccountPassword":"rds_passd", // The password of the account used to synchronize d ata from or to the primary instance. "backupAccountName":"rds_admin", // The name of the account used to synchronize data fr om or to the secondary instance. "backupAccountPassword":"rds_passd", // The password of the account used to synchronize data from or to the secondary instance.
 ```
+
+`}`
 
 **Cross-cloud DNS**
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`{`
 
 ```json
-{
     "entityType": "DNS", // The type of the synchronization entity.
     "srcZoneId": "e39d0b92-0cb8-****-b426-16d7d617ce66", // The ID of the primary domai
 n name.
@@ -2492,13 +2402,15 @@ the secondary domain name.
     ], // The values of the DNS record.
     "type": "A", // The type of the DNS record.
     "ttl": 30 // The time to live (TTL) of the DNS record.
-}
 ```
+
+`}`
 
 **DNS within Cloud**
 
+`{`
+
 ```json
-{
     "entityType": "GLOBALDNS", // The type of the synchronization entity.
     "srcZoneId": "5ba01d2b-56 ae-****-8257-cc88bc****5b", // The ID of the primary doma
 in name.
@@ -2518,105 +2430,144 @@ the secondary domain name.
     ], // The values of the DNS record.
     "type": "CNAME", // The type of the DNS record.
     "ttl": 30 // The TTL of the DNS record.
-}
 ```
+
+`}`
 
 **DRDS**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`{`
 
 ```json
-{ "entityType": "DRDS" "dstDrdsDBPassword": "db_passd" // The password of the destination database. "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. }
+"entityType": "DRDS" "dstDrdsDBPassword": "db_passd" // The password of the destination database. "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds.
 ```
+
+`}`
 
 **ECS**
 
+`{`
+
 ```json
-{ "entityType": "ECS" "reuseHdrPg": false // Specifies whether to reuse the Hybrid Disaster Recovery (HDR) pr otection group. "hdrProtectGroupId": "err_id" // The ID of the HDR protection group. You can leave this parameter empty. "sitePairMainZoneId":"zoneID", // The zone ID of the primary region. "sitePairBackupZoneId":"zoneID", // The zone ID of the secondary region. "mainVpcId":"1714121073", // The virtual private cloud (VPC) ID of the primary region. "backupVpcId":"1714121073", // The VPC ID of the secondary region. "mainVSwitchId":"zoneID", // The vSwitch ID of the primary region. "backupVSwitchId":"zoneID", // The vSwitch ID of the secondary region. "mainSecurityGroupId":"1714121073", // The security group ID of the primary region. "backupSecurityGroupId":"1714121073", // The security group ID of the secondary region. "expectRpo": 200, // The expected latency of data synchronization. "replicaBandwidth": 1009, // The available bandwidth. "reuseSitePair": false, // Specifies whether to reuse the site pair. "sitePairId":"zoneID", // The ID of the site pair to be reused. You can leave this para meter empty. "mainEcsId":"id,id", // The Elastic Compute Service (ECS) instance IDs of the primary r egion. Separate multiple IDs with commas (,). "backupEcsId":"id,id", // The ECS instance IDs of the secondary region. Separate multip le IDs with commas (,). }
+"entityType": "ECS" "reuseHdrPg": false // Specifies whether to reuse the Hybrid Disaster Recovery (HDR) pr otection group. "hdrProtectGroupId": "err_id" // The ID of the HDR protection group. You can leave this parameter empty. "sitePairMainZoneId":"zoneID", // The zone ID of the primary region. "sitePairBackupZoneId":"zoneID", // The zone ID of the secondary region. "mainVpcId":"1714121073", // The virtual private cloud (VPC) ID of the primary region. "backupVpcId":"1714121073", // The VPC ID of the secondary region. "mainVSwitchId":"zoneID", // The vSwitch ID of the primary region. "backupVSwitchId":"zoneID", // The vSwitch ID of the secondary region. "mainSecurityGroupId":"1714121073", // The security group ID of the primary region. "backupSecurityGroupId":"1714121073", // The security group ID of the secondary region. "expectRpo": 200, // The expected latency of data synchronization. "replicaBandwidth": 1009, // The available bandwidth. "reuseSitePair": false, // Specifies whether to reuse the site pair. "sitePairId":"zoneID", // The ID of the site pair to be reused. You can leave this para meter empty. "mainEcsId":"id,id", // The Elastic Compute Service (ECS) instance IDs of the primary r egion. Separate multiple IDs with commas (,). "backupEcsId":"id,id", // The ECS instance IDs of the secondary region. Separate multip le IDs with commas (,).
 ```
+
+`}`
 
 **Hologres**
 
+`{`
+
 ```json
-{ "entityType": "HOLOGRES" }
+"entityType": "HOLOGRES"
 ```
+
+`}`
 
 **Lindorm**
 
+`{`
+
 ```json
-{ "entityType": "LINDORM" "ltsId":"lts-test", // The Lindorm Tunnel Service (LTS) instance ID. "checkpoint":"1714121073" // The UNIX timestamp. Unit: seconds. }
+"entityType": "LINDORM" "ltsId":"lts-test", // The Lindorm Tunnel Service (LTS) instance ID. "checkpoint":"1714121073" // The UNIX timestamp. Unit: seconds.
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}`
 
 **MongoDB**
 
+`{`
+
 ```json
-{ "entityType": "MONGODB" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. "mainShardAccount":"rds_admin", // The name of the shard account of the primary instanc
+"entityType": "MONGODB" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. "mainShardAccount":"rds_admin", // The name of the shard account of the primary instanc
 ```
 
 `e.`
 
 ```json
-"mainShardPassword":"rds_passd", // The password of the shard account of the primary in stance. "backupShardAccount":"rds_admin", // The name of the shard account of the secondary ins tance. "backupShardPassword":"rds_passd", // The password of the shard account of the secondar y instance. }
+"mainShardPassword":"rds_passd", // The password of the shard account of the primary in stance. "backupShardAccount":"rds_admin", // The name of the shard account of the secondary ins tance. "backupShardPassword":"rds_passd", // The password of the shard account of the secondar y instance.
 ```
+
+`}`
 
 **MQ**
 
+`{`
+
 ```json
-{ "entityType": "MQ" "mqTopics":"t1,t2" // The names of topics. Separate multiple names with commas (,). }
+"entityType": "MQ" "mqTopics":"t1,t2" // The names of topics. Separate multiple names with commas (,).
 ```
+
+`}`
 
 **DataWorks**
 
+`{`
+
 ```json
-{ "entityType": "ODPS" "cloudScene":"MULTIPLE_CLOUD/MULTIPLE_REGION" // The cloud scenario. Valid values: MULT IPLE_CLOUD and MULTIPLE_REGION. "mainTenantId": "Org-11783", // The primary tenant ID of DataWorks. "backupTenantId": "Org-11783", // The secondary tenant ID of DataWorks. "mainEngineName": "odsp-1,odsp-2", // The names of MaxCompute projects in the primary c loud. Separate multiple names with commas (,). "backupEngineName": "odps-1,odps-2", // The names of MaxCompute projects in the seconda ry cloud. Separate multiple names with commas (,). "syncTime": 1600 // The synchronization interval. Unit: seconds. "dataworkPolicy": "" // The synchronization policy of DataWorks resources. "maxComputePolicy": "" // The synchronization policy of MaxCompute resources. "nodeId": "" // The ID of the MaxCompute node. "nodeType": "" // The type of the MaxCompute node. }
+"entityType": "ODPS" "cloudScene":"MULTIPLE_CLOUD/MULTIPLE_REGION" // The cloud scenario. Valid values: MULT IPLE_CLOUD and MULTIPLE_REGION. "mainTenantId": "Org-11783", // The primary tenant ID of DataWorks. "backupTenantId": "Org-11783", // The secondary tenant ID of DataWorks. "mainEngineName": "odsp-1,odsp-2", // The names of MaxCompute projects in the primary c loud. Separate multiple names with commas (,). "backupEngineName": "odps-1,odps-2", // The names of MaxCompute projects in the seconda ry cloud. Separate multiple names with commas (,). "syncTime": 1600 // The synchronization interval. Unit: seconds. "dataworkPolicy": "" // The synchronization policy of DataWorks resources. "maxComputePolicy": "" // The synchronization policy of MaxCompute resources. "nodeId": "" // The ID of the MaxCompute node. "nodeType": "" // The type of the MaxCompute node.
 ```
 
+`}`
+
 **OSS**
+
+`{`
+
+```json
+"entityType": "OSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
+```
+
+`.`
+
+```json
+"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT.
+```
+
+`}`
+
+**CDSOSS**
+
+`{`
+
+```json
+"entityType": "CDSOSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
+```
+
+`.`
+
+```json
+"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT.
+```
+
+`}`
+
+**OTS**
+
+`{`
+
+```json
+"entityType": "OTS" "tables":"t1,t2" // The names of the tables to be synchronized. Separate multiple names with commas (,). "checkpoint": "1714121073" // The UNIX timestamp. Unit: seconds.
+```
+
+`}`
+
+**Redis**
+
+`{`
+
+```json
+"entityType": "REDIS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds.
+```
+
+`}`
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-```json
-{ "entityType": "OSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
-```
-
-.
-
-```json
-"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT. }
-```
-
-**CDSOSS**
-
-```json
-{ "entityType": "CDSOSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
-```
-
-.
-
-```json
-"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT. }
-```
-
-**OTS**
-
-```json
-{ "entityType": "OTS" "tables":"t1,t2" // The names of the tables to be synchronized. Separate multiple names with commas (,). "checkpoint": "1714121073" // The UNIX timestamp. Unit: seconds. }
-```
-
-**Redis**
-
-```json
-{ "entityType": "REDIS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. }
-```
-
-**Response parameters**
 
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 |---|---|---|---|
@@ -2624,42 +2575,34 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&ProtectGroupId=379e********98c7 &Direction=FORWARD &SyncEntities= &<Common request parameters>
+http(s)://[Endpoint]/?Action=StartProtectGroup &ProtectGroupId=379e********98c7 &Direction=FORWARD &SyncEntities= &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### StopProtectGroup
+##### 4.2.1.7 StopProtectGroup
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer Stops a protection group.
+Stops a protection group.
 
 **Request headers**
 
@@ -2667,32 +2610,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
 |---|---|---|---|
@@ -2701,42 +2640,32 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&ProtectGroupId=379e********98c7 &<Common request parameters>
+http(s)://[Endpoint]/?Action=StopProtectGroup &ProtectGroupId=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### ReprotectProtectGroup
+##### 4.2.1.8 ReprotectProtectGroup
 
 Reprotects a protection group.
 
@@ -2746,32 +2675,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upIds | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
 |---|---|---|---|
@@ -2779,8 +2704,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -2790,32 +2713,24 @@ Sample requests
 http(s)://[Endpoint]/?Action=ReprotectProtectGroup &ProtectGroupIds=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### GetStartupProtectGroupDetail
+##### 4.2.1.9 GetStartupProtectGroupDetail
 
 Queries the information about a started protection group.
 
@@ -2825,32 +2740,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
 |---|---|---|---|
@@ -2858,16 +2769,14 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The returned data. |
-| - protectGroupS tartDto | Array |  | The information about the protection group. |
-| -- rdsEngineInfoL ist | Array |  | The engines of ApsaraDB RDS. |
+| data | Struct |   | The returned data. |
+| - protectGroupS tartDto | Array |   | The information about the protection group. |
+| -- rdsEngineInfoL ist | Array |   | The engines of ApsaraDB RDS. |
 | ---entityId | String | 379e********98c7 | The ID of the synchronization entity. |
 | ---engineName | String | 1.0.0 | The engine version. |
 | ---engineName | String | 1.0.0 | The engine version. |
 | -- protectGroupI d | String | 379e********98c7 | The ID of the protection group. |
 | --name | String | OSS | The name of the protection group. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | --direction | String | FORWARD | The direction of the protection group. Valid values: FORWARD REVERSE |
 |---|---|---|---|
@@ -2876,9 +2785,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -- backupCloudId | Long | 12 | The ID of the secondary cloud. |
 | -- mainRegionId | Long | 33 | The region ID of the primary cloud. |
 | -- backupRegionI d | String | region-2 | The region ID of the secondary cloud. |
-| --syncEntities | String |  | A reserved parameter. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+| --syncEntities | String |   | A reserved parameter. |
 
 **Examples**
 
@@ -2888,10 +2795,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetStartupProtectGroupDetail &ProtectGroupId=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Stack Resilience
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -2905,20 +2811,26 @@ Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Sta
    "--rdsEngineInfoList":{
     "entityId":"379e********98c7",
     "engineName":"1.0.0"
-   },
+```
+
+`},`
+
+```json
    "protectGroupId":"379e********98c7",
    "backupRegionId":"region-2",
    "mainRegionId":33,
    "direction":"FORWARD"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -2940,15 +2852,9 @@ Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Sta
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+#### 4.2.2 Synchronization entity management
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-#### Synchronization entity management
-
-##### AddSyncEntity
+##### 4.2.2.1 AddSyncEntity
 
 Adds a synchronization entity.
 
@@ -2958,60 +2864,63 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | ProtectGro upId | Strin g | Quer y | Yes | 379e********98c7 | The ID of the protection group. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Direction | Strin g | Quer y | Yes | FORWARD | The direction of the protection group. Valid values: FORWARD REVERSE |
 |---|---|---|---|---|---|
 | IsStop | Bool ean | Quer y | Yes | true | Specifies whether to stop data synchronization. Valid values: true false |
 | SyncEntiti es | Strin g | Quer y | Yes | - | The configurations of the synchronization entity. For more information, see the following configurations. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Common parameters of synchronization entities**
 
+`{`
+
 ```json
-{ "protectGroupId":"379e********98c7", // The ID of the protection group. "mainCloudId":"379e********98c7", // The ID of the primary cloud instance. "backupCloudId":"379e********98c7", // The ID of the secondary cloud instance. "srcRegionId":"rn-hangzhou", // The region ID of the primary cloud. "dstRegionId":"cn-beijing", // The region ID of the secondary cloud. "mainInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the primary cl oud. "backupInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the secondar y cloud. "mainInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service insta nce in the primary cloud. "backupInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service ins tance in the secondary cloud. "syncType": "FULL", // The type of synchronization. Valid values: FULL and HOT. "priorityNumber": "1", // The priority. }
+"protectGroupId":"379e********98c7", // The ID of the protection group. "mainCloudId":"379e********98c7", // The ID of the primary cloud instance. "backupCloudId":"379e********98c7", // The ID of the secondary cloud instance. "srcRegionId":"rn-hangzhou", // The region ID of the primary cloud. "dstRegionId":"cn-beijing", // The region ID of the secondary cloud. "mainInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the primary cl oud. "backupInstanceId":"rm-xxdsss", // The ID of the cloud service instance in the secondar y cloud. "mainInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service insta nce in the primary cloud. "backupInstanceName":"ApsaraDB RDS instance name", // The name of the cloud service ins tance in the secondary cloud. "syncType": "FULL", // The type of synchronization. Valid values: FULL and HOT. "priorityNumber": "1", // The priority.
 ```
+
+`}`
 
 **ApsaraDB RDS for MySQL**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`{`
 
 ```json
-{ "entityType": "RDS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. This parameter takes e ffect only when syncType is set to HOT. "srcSuperAccount":"rds_admin", // The name of the privileged account of the primary ins tance. "srcSuperPassword":"rds_passd", // The password of the privileged account of the primar y instance. "dstSuperAccount":"rds_admin", // The name of the privileged account of the secondary i nstance. "dstSuperPassword":"rds_passd", // The password of the privileged account of the second ary instance. }
+"entityType": "RDS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. This parameter takes e ffect only when syncType is set to HOT. "srcSuperAccount":"rds_admin", // The name of the privileged account of the primary ins tance. "srcSuperPassword":"rds_passd", // The password of the privileged account of the primar y instance. "dstSuperAccount":"rds_admin", // The name of the privileged account of the secondary i nstance. "dstSuperPassword":"rds_passd", // The password of the privileged account of the second ary instance.
 ```
+
+`}`
 
 **AnalyticDB for MySQL V3.0**
 
+`{`
+
 ```json
-{ "entityType": "ADB3" "mainAccountName":"rds_admin", // The name of the account used to synchronize data from or to the primary instance. "mainAccountPassword":"rds_passd", // The password of the account used to synchronize d ata from or to the primary instance. "backupAccountName":"rds_admin", // The name of the account used to synchronize data fr om or to the secondary instance. "backupAccountPassword":"rds_passd", // The password of the account used to synchronize data from or to the secondary instance. }
+"entityType": "ADB3" "mainAccountName":"rds_admin", // The name of the account used to synchronize data from or to the primary instance. "mainAccountPassword":"rds_passd", // The password of the account used to synchronize d ata from or to the primary instance. "backupAccountName":"rds_admin", // The name of the account used to synchronize data fr om or to the secondary instance. "backupAccountPassword":"rds_passd", // The password of the account used to synchronize data from or to the secondary instance.
 ```
+
+`}`
 
 **Cross-cloud DNS**
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`{`
 
 ```json
-{
     "entityType": "DNS", // The type of the synchronization entity.
     "srcZoneId": "e39d0b92-0cb8-4074-****-16d7d6****66", // The ID of the primary domai
 n name.
@@ -3029,13 +2938,15 @@ the secondary domain name.
     ], // The values of the DNS record.
     "type": "A", // The type of the DNS record.
     "ttl": 30 // The time to live (TTL) of the DNS record.
-}
 ```
+
+`}`
 
 **DNS within Cloud**
 
+`{`
+
 ```json
-{
     "entityType": "GLOBALDNS", // The type of the synchronization entity.
     "srcZoneId": "5ba01d2b-56ae-****-8257-cc****6d155b", // The ID of the primary domai
 n name.
@@ -3055,105 +2966,144 @@ the secondary domain name.
     ], // The values of the DNS record.
     "type": "CNAME", // The type of the DNS record.
     "ttl": 30 // The TTL of the DNS record.
-}
 ```
+
+`}`
 
 **DRDS**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`{`
 
 ```json
-{ "entityType": "DRDS" "dstDrdsDBPassword": "db_passd" // The password of the destination database. "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. }
+"entityType": "DRDS" "dstDrdsDBPassword": "db_passd" // The password of the destination database. "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds.
 ```
+
+`}`
 
 **ECS**
 
+`{`
+
 ```json
-{ "entityType": "ECS" "reuseHdrPg": false // Specifies whether to reuse the Hybrid Disaster Recovery (HDR) pr otection group. "hdrProtectGroupId": "err_id" // The ID of the HDR protection group. You can leave this parameter empty. "sitePairMainZoneId":"zoneID", // The zone ID of the primary region. "sitePairBackupZoneId":"zoneID", // The zone ID of the secondary region. "mainVpcId":"1714121073", // The virtual private cloud (VPC) ID of the primary region. "backupVpcId":"1714121073", // The VPC ID of the secondary region. "mainVSwitchId":"zoneID", // The vSwitch ID of the primary region. "backupVSwitchId":"zoneID", // The vSwitch ID of the secondary region. "mainSecurityGroupId":"1714121073", // The security group ID of the primary region. "backupSecurityGroupId":"1714121073", // The security group ID of the secondary region. "expectRpo": 200, // The expected latency of data synchronization. "replicaBandwidth": 1009, // The available bandwidth. "reuseSitePair": false, // Specifies whether to reuse the site pair. "sitePairId":"zoneID", // The ID of the site pair to be reused. You can leave this para meter empty. "mainEcsId":"id,id", // The Elastic Compute Service (ECS) instance IDs of the primary r egion. Separate multiple IDs with commas (,). "backupEcsId":"id,id", // The ECS instance IDs of the secondary region. Separate multip le IDs with commas (,). }
+"entityType": "ECS" "reuseHdrPg": false // Specifies whether to reuse the Hybrid Disaster Recovery (HDR) pr otection group. "hdrProtectGroupId": "err_id" // The ID of the HDR protection group. You can leave this parameter empty. "sitePairMainZoneId":"zoneID", // The zone ID of the primary region. "sitePairBackupZoneId":"zoneID", // The zone ID of the secondary region. "mainVpcId":"1714121073", // The virtual private cloud (VPC) ID of the primary region. "backupVpcId":"1714121073", // The VPC ID of the secondary region. "mainVSwitchId":"zoneID", // The vSwitch ID of the primary region. "backupVSwitchId":"zoneID", // The vSwitch ID of the secondary region. "mainSecurityGroupId":"1714121073", // The security group ID of the primary region. "backupSecurityGroupId":"1714121073", // The security group ID of the secondary region. "expectRpo": 200, // The expected latency of data synchronization. "replicaBandwidth": 1009, // The available bandwidth. "reuseSitePair": false, // Specifies whether to reuse the site pair. "sitePairId":"zoneID", // The ID of the site pair to be reused. You can leave this para meter empty. "mainEcsId":"id,id", // The Elastic Compute Service (ECS) instance IDs of the primary r egion. Separate multiple IDs with commas (,). "backupEcsId":"id,id", // The ECS instance IDs of the secondary region. Separate multip le IDs with commas (,).
 ```
+
+`}`
 
 **Hologres**
 
+`{`
+
 ```json
-{ "entityType": "HOLOGRES" }
+"entityType": "HOLOGRES"
 ```
+
+`}`
 
 **Lindorm**
 
+`{`
+
 ```json
-{ "entityType": "LINDORM" "ltsId":"lts-test", // The Lindorm Tunnel Service (LTS) instance ID. "checkpoint":"1714121073" // The UNIX timestamp. Unit: seconds. }
+"entityType": "LINDORM" "ltsId":"lts-test", // The Lindorm Tunnel Service (LTS) instance ID. "checkpoint":"1714121073" // The UNIX timestamp. Unit: seconds.
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}`
 
 **ApsaraDB for MongoDB**
 
+`{`
+
 ```json
-{ "entityType": "MONGODB" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. "mainShardAccount":"rds_admin", // The name of the shard account of the primary instanc
+"entityType": "MONGODB" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "syncObjects":"[{"dbName": "a", "excludeTables" : "t1,t2,t3"}]", // The objects to be s ynchronized. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. "mainShardAccount":"rds_admin", // The name of the shard account of the primary instanc
 ```
 
 `e.`
 
 ```json
-"mainShardPassword":"rds_passd", // The password of the shard account of the primary in stance. "backupShardAccount":"rds_admin", // The name of the shard account of the secondary ins tance. "backupShardPassword":"rds_passd", // The password of the shard account of the secondar y instance. }
+"mainShardPassword":"rds_passd", // The password of the shard account of the primary in stance. "backupShardAccount":"rds_admin", // The name of the shard account of the secondary ins tance. "backupShardPassword":"rds_passd", // The password of the shard account of the secondar y instance.
 ```
+
+`}`
 
 **ApsaraMQ**
 
+`{`
+
 ```json
-{ "entityType": "MQ" "mqTopics":"t1,t2" // The names of topics. Separate multiple names with commas (,). }
+"entityType": "MQ" "mqTopics":"t1,t2" // The names of topics. Separate multiple names with commas (,).
 ```
+
+`}`
 
 **DataWorks**
 
+`{`
+
 ```json
-{ "entityType": "ODPS" "cloudScene":"MULTIPLE_CLOUD/MULTIPLE_REGION" // The cloud scenario. Valid values: MULT IPLE_CLOUD and MULTIPLE_REGION. "mainTenantId": "Org-11783", // The primary tenant ID of DataWorks. "backupTenantId": "Org-11783", // The secondary tenant ID of DataWorks. "mainEngineName": "odsp-1,odsp-2", // The names of MaxCompute projects in the primary c loud. Separate multiple names with commas (,). "backupEngineName": "odps-1,odps-2", // The names of MaxCompute projects in the seconda ry cloud. Separate multiple names with commas (,). "syncTime": 1600 // The synchronization interval. Unit: seconds. "dataworkPolicy": "" // The synchronization policy of DataWorks resources. "maxComputePolicy": "" // The synchronization policy of MaxCompute resources. "nodeId": "" // The ID of the MaxCompute node. "nodeType": "" // The type of the MaxCompute node. }
+"entityType": "ODPS" "cloudScene":"MULTIPLE_CLOUD/MULTIPLE_REGION" // The cloud scenario. Valid values: MULT IPLE_CLOUD and MULTIPLE_REGION. "mainTenantId": "Org-11783", // The primary tenant ID of DataWorks. "backupTenantId": "Org-11783", // The secondary tenant ID of DataWorks. "mainEngineName": "odsp-1,odsp-2", // The names of MaxCompute projects in the primary c loud. Separate multiple names with commas (,). "backupEngineName": "odps-1,odps-2", // The names of MaxCompute projects in the seconda ry cloud. Separate multiple names with commas (,). "syncTime": 1600 // The synchronization interval. Unit: seconds. "dataworkPolicy": "" // The synchronization policy of DataWorks resources. "maxComputePolicy": "" // The synchronization policy of MaxCompute resources. "nodeId": "" // The ID of the MaxCompute node. "nodeType": "" // The type of the MaxCompute node.
 ```
 
+`}`
+
 **OSS**
+
+`{`
+
+```json
+"entityType": "OSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
+```
+
+`.`
+
+```json
+"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT.
+```
+
+`}`
+
+**CDS-OSS**
+
+`{`
+
+```json
+"entityType": "CDSOSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
+```
+
+`.`
+
+```json
+"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT.
+```
+
+`}`
+
+**Tablestore**
+
+`{`
+
+```json
+"entityType": "OTS" "tables":"t1,t2" // The names of the tables to be synchronized. Separate multiple names with commas (,). "checkpoint": "1714121073" // The UNIX timestamp. Unit: seconds.
+```
+
+`}`
+
+**ApsaraDB for Redis**
+
+`{`
+
+```json
+"entityType": "REDIS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds.
+```
+
+`}`
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-```json
-{ "entityType": "OSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
-```
-
-.
-
-```json
-"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT. }
-```
-
-**CDS-OSS**
-
-```json
-{ "entityType": "CDSOSS" "objectPrefixList":"[prefix,prefix2]" // The prefixes of the objects to be synchronized
-```
-
-.
-
-```json
-"replicationAction": "ALL/DELETE" // The operations to be synchronized. Valid values: A LL and PUT. }
-```
-
-**Tablestore**
-
-```json
-{ "entityType": "OTS" "tables":"t1,t2" // The names of the tables to be synchronized. Separate multiple names with commas (,). "checkpoint": "1714121073" // The UNIX timestamp. Unit: seconds. }
-```
-
-**ApsaraDB for Redis**
-
-```json
-{ "entityType": "REDIS" "roAccounts":"[{"dbName": "a", "readonlyAccounts" : "u1,u2,u3"}]", // The read-only acc ounts. "checkpoint":"1714121073", // The UNIX timestamp. Unit: seconds. }
-```
-
-**Response parameters**
 
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
 |---|---|---|---|
@@ -3161,42 +3111,32 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&ProtectGroupId=379e********98c7 &Direction=FORWARD &IsStop=true &SyncEntities=- &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddSyncEntity &ProtectGroupId=379e********98c7 &Direction=FORWARD &IsStop=true &SyncEntities=- &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-##### RemoveSyncEntity
+##### 4.2.2.2 RemoveSyncEntity
 
 Removes a synchronization entity.
 
@@ -3206,32 +3146,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | EntityId | Strin g | Quer y | Yes | e1********6d6d | The ID of the synchronization entity. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
 |---|---|---|---|
@@ -3240,43 +3176,34 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&EntityId=e1********6d6d &<Common request parameters>
+http(s)://[Endpoint]/?Action=RemoveSyncEntity &EntityId=e1********6d6d &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-#### Protection group switch
+#### 4.2.3 Protection group switch
 
-##### DescribeProtectGroupSwitch
+##### 4.2.3.1 DescribeProtectGroupSwitch
 
 Queries the information about a protection group switch, such as a switchover or switchback. This operation does not support failover or failback.
 
@@ -3288,39 +3215,34 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Departme nt | Strin g | Query | No | 3 | The organization ID. This is an API parameter of the Apsara Uni- manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Resource Group | Strin g | Query | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 | PlanId | Strin g | Query | No | bc6********00e7 | The ID of the switch. If you specify this parameter, the ProtectGroupId and SwitchType parameters are invalid. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProtectGr oupId | Strin g | Query | No | 379e********98c7 | The ID of the protection group. To use this parameter, the values of the PlanInstanceId and PlanId parameters must be empty. |
 | SwitchTyp e | Strin g | Query | No | SWITCHOVER | The switch type. To use this parameter, the values of the PlanInstanceId and PlanId parameters must be empty. Valid values: SWITCHOVER SWITCHBACK |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3332,11 +3254,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 | data | Struct | - | The returned data. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
-
-| A | SR for Geo-disast Guide·API referen | er Developer ce |  | Apsara Stack Resilienc | e |
+| A | SR for Geo-disast Guide·API referen | er Developer ce |   | Apsara Stack Resilienc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3356,7 +3274,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | - protectGroupI d | String | 379e********98c7 | The ID of the protection group. |
 | - protectGroupN ame | String | ProtectGroup1 | The name of the protection group. |
 
-| A | psara Stack Resil | ience |  | ASR for Geo-disaster Developer Guide·API referenc | e |
+| A | psara Stack Resil | ience |   | ASR for Geo-disaster Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3378,10 +3296,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeProtectGroupSwitch &<Common request parameters>
 ```
 
-Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Stack Resilience
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -3399,7 +3316,11 @@ Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Sta
    "priority":1,
    "taskNum":12,
    "ipAddr":"127.0.0.1"
-  },
+```
+
+`},`
+
+```json
   "priorityInfoMap":"",
   "mainCloudId":"ebc6********00e7",
   "protectGroupName":"ProtectGroup1",
@@ -3409,19 +3330,17 @@ Sample success responses `JSON` format ASR for Geo-disaster Developer Apsara Sta
   "planId":"bc6********00e7",
   "protectGroupId":"379e********98c7",
   "backupRegionId":"Region_02"
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -3451,7 +3370,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### DescribeProtectGroupSwitchInstance
+##### 4.2.3.2 DescribeProtectGroupSwitchInstance
 
 Queries the details of a protection group switch instance.
 
@@ -3463,34 +3382,27 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Departme nt | Strin g | Query | No | 3 | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Resource Group | Strin g | Query | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 | PlanInstan ceId | Strin g | Query | No | fs6********2dd4 | The ID of the switchover or switchback instance. If this parameter is specified, the PlanId, ProtectGroupId, and SwitchType parameters are invalid. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3498,15 +3410,15 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | ProtectGr oupId | Strin g | Query | No | 379e********98c7 | The ID of the protection group. To use this parameter, the values of the PlanInstanceId and PlanId parameters must be empty. |
 | SwitchTyp e | Strin g | Query | No | SWITCHOVER | The switch type. To use this parameter, the values of the PlanInstanceId and PlanId parameters must be empty. Valid values: SWITCHOVER SWITCHBACK |
 
+To call this operation, we recommend that you use the **ProtectGroupId** and **SwitchType** parameters.
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED |
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true false |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer To call this operation, we recommend that you use the **ProtectGroupId** and **SwitchType** parameters.
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3525,9 +3437,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer To call this operation, w
 | -- taskDescriptio n | String | XXX task | The description of the task. |
 | --taskType | String | SWITCH | The type of the task. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-| A | psara Stack Resil | ience |  | ASR for Geo-disaster Developer Guide·API referenc | e |
+| A | psara Stack Resil | ience |   | ASR for Geo-disaster Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3545,7 +3455,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -endTime | Long | 1714360563 | The time when the task stopped. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 | - activitiProInsId | String | - | A reserved parameter. This parameter is not returned. |
 
-| SR for Geo-disast | er Developer |  |  |
+| SR for Geo-disast | er Developer |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3576,8 +3486,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -cloudId | String | ebc6********00e7 | The cloud ID. |
 | -failoverMode | String | - | A reserved parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Examples**
 
 Sample requests
@@ -3586,10 +3494,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeProtectGroupSwitchInstance &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -3600,13 +3507,11 @@ Sample success responses `JSON` format
   "description":"Plan1-DESC",
 ```
 
-"l
+`"``l`
 
 ```
 Stt ""IDLE"
 ```
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 ```json
   "planStatus":"IDLE",
@@ -3622,7 +3527,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
    "taskNum":1,
    "ipAddr":"127.0.0.1",
    "status":"SUCCESS"
-  },
+```
+
+`},`
+
+```json
   "mainRegionId":"cn-beijing",
   "priorityInfoMap":"",
   "number":"2",
@@ -3650,14 +3559,17 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
   "progress":"100",
   "endTime":1714360563,
   "status":"IDLE"
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -3709,13 +3621,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-##### StartProtectGroupSwitch
+##### 4.2.3.3 StartProtectGroupSwitch
 
 Starts protection group switchover or switchback.
 
@@ -3727,35 +3633,33 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
-|  |  |  |  |  | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to |
+| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a*****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
+|   |   |   |   |   | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to |
 
 | Parame Dteerpartme nt | Typ Setrin g | Positi on Query | Require d No | Example 3 | indicate that the Deresscoruirpctei odones not exist. If you do not |
 |---|---|---|---|---|---|
-|  |  |  |  |  | specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account |
-|  |  |  |  |  | within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+|   |   |   |   |   | specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account |
+|   |   |   |   |   | within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Resource Group | Strin g | Query | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 | PlanId | Strin g | Body | No | e3f4*******dj8s | The switch ID of the protection group. If this parameter is specified, the ProtectGroupId and SwitchType parameters are invalid. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProtectGr oupId | Strin g | Body | No | d19k*******9xj7 | The ID of the protection group. To specify the ProtectGroupId and SwitchType parameters, the PlanId parameter must be empty. |
 | SwitchTyp e | Strin g | Body | No | SWITCHOVER | The switch type. To specify the ProtectGroupId and SwitchType parameters, the PlanId parameter must be empty. Valid values: SWITCHOVER SWITCHBACK |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3765,17 +3669,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 | data | Struct | - | The returned data. |
 | - planInstanceId | String | ebc6********00e7 | The ID of the switch instance that was started. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -3785,23 +3683,25 @@ Sample requests
 http(s)://[Endpoint]/?Action=StartProtectGroupSwitch &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "data":{
   "planInstanceId":"ebc6********00e7"
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -3809,17 +3709,11 @@ Sample success responses `JSON` format
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-### Disaster recovery plans
+### 4.3 Disaster recovery plans
 
-#### Plan management
+#### 4.3.1 Plan management
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-##### DeleteRecoveryPlan
+##### 4.3.1.1 DeleteRecoveryPlan
 
 Deletes a disaster recovery plan.
 
@@ -3829,32 +3723,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | Id | Long | Quer y | Yes | 379****31233246 | The ID of the disaster recovery plan that you want to delete. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | a62a********bcd1 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -3862,8 +3752,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
@@ -3873,32 +3761,24 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteRecoveryPlan &Id=379****31233246 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"a62a********bcd1",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>a62a********bcd1</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### GetRecoveryPlan
+##### 4.3.1.2 GetRecoveryPlan
 
 Queries the information about a disaster recovery plan.
 
@@ -3908,32 +3788,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | Id | Long | Quer y | Yes | 1234567 | The ID of the disaster recovery plan. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | 123456789 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -3941,15 +3817,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | localhost:8080 | The name of the node that processed the request. |
 | nodeIp | String | 192.168.1.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The data of the disaster recovery plan. |
-| -sequence | Normal |  | The steps of the disaster recovery plan, in the JSON format. |
-| - relatedProtect Groups | Array |  | The protection groups that are associated with the disaster recovery plan. |
+| data | Struct |   | The data of the disaster recovery plan. |
+| -sequence | Normal |   | The steps of the disaster recovery plan, in the JSON format. |
+| - relatedProtect Groups | Array |   | The protection groups that are associated with the disaster recovery plan. |
 | -- aliyunAccount Uid | String | 1785******267796 | The unique ID (UID) of the Apsara Stack tenant account to which the protection group belongs. |
 | --ownerUid | String | 2397******988687 32 | The UID of the protection group owner. |
 | --creator | String | 2397******988687 32 | The UID of the user who created the protection group. |
 | --lastModifier | String | 2397******988687 32 | The UID of the user who last modified the protection group. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | -- resourceRegio nId | String | cn-hangzhou | The region ID of the protection group. |
 |---|---|---|---|
@@ -3966,8 +3840,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | - resourceRegio nId | String | cn-hangzhou | The region ID of the resource. |
 | - resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -createdDate | Long | 1713514782222 | The time when the resource was created. |
 |---|---|---|---|
 | - lastModifiedDa te | Long | 1713514782222 | The time when the resource was last modified. |
@@ -3977,18 +3849,16 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -type | String | DRILL ONLY _ | The type of the disaster recovery plan. Valid values: DRILL ONLY _ DRILL AND DR _ _ |
 | -stability | String | GREEN | The stability of the disaster recovery plan. Valid values: GREEN: stable. GRAY: unknown. RED: unstable. |
 | -description | String | This is an example instance. | The description of the disaster recovery plan. |
-| -mainRegion | Struct |  | The information about the primary region. |
+| -mainRegion | Struct |   | The information about the primary region. |
 | --pk | String | 33994422***27712 | The primary key of the primary cloud instance. |
 | --regionId | String | cn-guznagxi | The region ID of the primary cloud. |
 | --regionName | String | guznagxi | The region name of the primary cloud. |
 | --regionType | String | UNIT | The type of the region. Valid values: CENTRAL UNIT |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 |---|---|---|---|
 | -- consoleApiEnd point | String | http://example.co m/******** | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| -- cloudInstance | Struct |  | The information about the primary cloud instance. |
+| -- cloudInstance | Struct |   | The information about the primary cloud instance. |
 | --- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the primary cloud instance belongs. |
 | ---ownerUid | String | 23972451*****687 32 | The UID of the owner of the primary cloud instance. |
 | ---creator | String | 23972451*****687 32 | The UID of the user who created the primary cloud instance. |
@@ -3996,8 +3866,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --- resourceRegio nId | String | cn-hangzhou | The region ID of the primary cloud instance. |
 | --- resourceGroup Id | String | 103 | The ID of the resource group to which the primary cloud instance belongs. |
 | ---createdDate | Long | 1704366334000 | The time when the primary cloud instance was created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | --- lastModifiedDa te | Long | 1704366334000 | The time when the primary cloud instance was last modified. |
 |---|---|---|---|
@@ -4010,18 +3878,14 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ---consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://example.co m/******** | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | --- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | --- internetDomai n | String | inter.***.shuguang. com | The Internet domain name. |
 | --- intranetDomai n | String | intra.***.shuguang. com | The internal domain name. |
 | ---status | String | REGULAR | The status of the primary cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-| -backupRegion | Struct |  | The information about the secondary region. |
+| -backupRegion | Struct |   | The information about the secondary region. |
 | --pk | String | 33994422***27712 | The primary key of the secondary cloud instance. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | --regionId | String | cn-guznagxi | The region ID of the secondary cloud. |
 |---|---|---|---|
@@ -4029,14 +3893,12 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --regionType | String | UNIT | The type of the region. Valid values: CENTRAL UNIT |
 | --consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | -- consoleApiEnd point | String | http://example.co m/******** | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| -- cloudInstance | Struct |  | The information about the secondary cloud instance. |
+| -- cloudInstance | Struct |   | The information about the secondary cloud instance. |
 | --- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the secondary cloud instance belongs. |
 | ---ownerUid | String | 23972451*****687 32 | The UID of the owner of the secondary cloud instance. |
 | ---creator | String | 23972451*****687 32 | The UID of the user who created the secondary cloud instance. |
 | ---lastModifier | String | 23972451*****687 32 | The UID of the user who last modified the secondary cloud instance. |
 | --- resourceRegio nId | String | cn-hangzhou | The region ID of the secondary cloud instance. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | --- resourceGroup Id | String | 103 | The ID of the resource group to which the secondary cloud instance belongs. |
 |---|---|---|---|
@@ -4051,19 +3913,15 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | ---consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://example.co m/******** | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | --- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | --- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | --- internetDomai n | String | inter.***.shuguang. com | The Internet domain name. |
 | --- intranetDomai n | String | intra.***.shuguang. com | The internal domain name. |
 | ---status | String | REGULAR | The status of the secondary cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-| -latestTask | Struct |  | The status of the task that was last run for the plan. If null is returned, no task is run for the plan. |
+| -latestTask | Struct |   | The status of the task that was last run for the plan. If null is returned, no task is run for the plan. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-| -- sequenceTask s | Normal |  | The tasks that were run for steps, in the JSON format. |
+| -- sequenceTask s | Normal |   | The tasks that were run for steps, in the JSON format. |
 |---|---|---|---|
 | --taskId | String | 21 | The task ID. |
 | -- recoveryPlanId | String | 19 | The ID of the disaster recovery plan. |
@@ -4075,25 +3933,20 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -- exceptionThro wn | Boolean | true | Indicates whether an exception was thrown when the task was running. Valid values: true false |
 | -- exceptionMsg | String | 400 | The error message returned if an exception was thrown. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | --nodeId | String | Local 001 _ | The ID of the node that was processing the task. |
 |---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Examples**
 
 Sample requests
 
 ```
-&Id=1234567 &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetRecoveryPlan &Id=1234567 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"localhost:8080",
  "code":"200",
@@ -4126,15 +3979,21 @@ Sample success responses `JSON` format
     "accountCredentialsId":"339944229083187200",
     "consoleType":"ASCM",
     "status":"REGULAR"
-   },
+```
+
+`},`
+
+```json
    "consoleType":"ASCM"
-  },
+```
+
+`},`
+
+```json
   "creator":"239724*****8868732",
   "lastModifiedDate":1713514782222,
 "-mainRegion":{
 ```
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 ```json
 mainRegion:{
@@ -4165,9 +4024,17 @@ mainRegion:{
     "accountCredentialsId":"339944229083187200",
     "consoleType":"ASCM",
     "status":"REGULAR"
-   },
+```
+
+`},`
+
+```json
    "consoleType":"ASCM"
-  },
+```
+
+`},`
+
+```json
   "resourceRegionId":"cn-hangzhou",
   "lastModifier":"239724*****8868732",
   "description":"This is an example instance.",
@@ -4184,7 +4051,11 @@ mainRegion:{
    "resourceGroupId":"103",
    "id":"e250008c-a02a-455c-b957-8*****4ef58",
    "ownerUid":"2397******98868732"
-  },
+```
+
+`},`
+
+```json
   "sequence":"",
   "createdDate":1713514782222,
   "instanceId":"e250008c-a02a-455c-b957-8d*****ef58",
@@ -4194,7 +4065,7 @@ mainRegion:{
   "id":"e250008c-a02a-455c-b957-8d*****ef58",
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience ,
+`,`
 
 ```json
   "-latestTask":{
@@ -4209,17 +4080,24 @@ ASR for Geo-disaster Developer Apsara Stack Resilience ,
    "taskId":"21",
    "recoveryPlanId":"19",
    "status":"PENDING"
-  },
+```
+
+`},`
+
+```json
   "ownerUid":"239724*****8868732",
   "stability":"GREEN"
- },
+```
+
+`},`
+
+```json
  "requestId":"123456789",
  "success":true,
  "nodeIp":"192.168.1.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>localhost:8080</nodeHost> <code>200</code> <data>
@@ -4251,8 +4129,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience ,
    <accountCredentialsId>339944229083187200</accountCredentialsId>
 <consoleType>ASCM</consoleType>
 ```
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 ```xml
    <consoleType>ASCM</consoleType>
@@ -4312,11 +4188,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 </-relatedProtectGroups>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 ```xml
  </relatedProtectGroups>
  <sequence  />
@@ -4346,7 +4217,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 
 Asrdr 2023-10-01
 
-##### ListRecoveryPlanByPage
+##### 4.3.1.3 ListRecoveryPlanByPage
 
 Queries a list of disaster recovery plans by page.
 
@@ -4356,28 +4227,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | InstanceId | Long | Quer y | No | e250008c-a02a-455c- b957-8*****4ef58 | The ID of the disaster recovery plan. This parameter is used to query data in exact match mode. |
 | Name | Strin g | Quer y | No | OSS switchover plan | The name of the disaster recovery plan. This parameter is used to query data in fuzzy match mode. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Type | Strin g | Quer y | No | DRILL ONLY _ | The type of the disaster recovery plan. This parameter is used to query data in exact match mode. Valid values: DRILL ONLY _ DRILL AND DR _ _ |
 |---|---|---|---|---|---|
@@ -4387,13 +4253,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | PageNum | Integ er | Quer y | Yes | 1 | The page number. Pages start from page 1. |
 | PageSize | Integ er | Quer y | Yes | 10 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ebc6********00e7 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -4401,15 +4265,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The returned data. |
-| -rows | Array |  | The queried results. |
-| --sequence | Normal |  | The steps of the disaster recovery plan, in the JSON format. |
-| -- relatedProtect Groups | Array |  | The protection groups that are associated with the disaster recovery plan. |
+| data | Struct |   | The returned data. |
+| -rows | Array |   | The queried results. |
+| --sequence | Normal |   | The steps of the disaster recovery plan, in the JSON format. |
+| -- relatedProtect Groups | Array |   | The protection groups that are associated with the disaster recovery plan. |
 | --- aliyunAccount Uid | String | 1785******267796 | The unique ID (UID) of the Apsara Stack tenant account to which the protection group belongs. |
 | ---ownerUid | String | 2397******988687 32 | The UID of the protection group owner. |
 | ---creator | String | 2397******988687 32 | The UID of the user who created the protection group. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | ---lastModifier | String | 2397******988687 32 | The UID of the user who last modified the protection group. |
 |---|---|---|---|
@@ -4426,8 +4288,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --lastModifier | String | 239724*****88687 32 | The UID of the user who last modified the resource. |
 | -- resourceRegio nId | String | cn-hangzhou | The region ID of the resource. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -- resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
 |---|---|---|---|
 | --createdDate | Long | 1713514782222 | The time when the resource was created. |
@@ -4438,26 +4298,22 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --type | String | DRILL ONLY _ | The type of the disaster recovery plan. Valid values: DRILL ONLY _ DRILL AND DR _ _ |
 | --stability | String | GREEN | The stability of the disaster recovery plan. Valid values: GREEN: stable. GRAY: unknown. RED: unstable. |
 | --description | String | This is an example instance. | The description of the disaster recovery plan. |
-| --mainRegion | Struct |  | The information about the primary region. |
+| --mainRegion | Struct |   | The information about the primary region. |
 | ---pk | String | 33994422***27712 | The primary key of the primary cloud instance. |
 | ---regionId | String | cn-guznagxi | The region ID of the primary cloud. |
 | ---regionName | String | guznagxi | The region name of the primary cloud. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | ---regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 |---|---|---|---|
 | ---consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. This type is generally used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. This type is generally used in cross- cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://internal.exa mple.com-XXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| --- cloudInstance | Struct |  | The information about the primary cloud instance. |
+| --- cloudInstance | Struct |   | The information about the primary cloud instance. |
 | ---- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the primary cloud instance belongs. |
 | ----ownerUid | String | 23972451*****687 32 | The UID of the owner of the primary cloud instance. |
 | ----creator | String | 23972451*****687 32 | The UID of the user who created the primary cloud instance. |
 | ----lastModifier | String | 23972451*****687 32 | The UID of the user who last modified the primary cloud instance. |
 | ---- resourceRegio nId | String | cn-hangzhou | The region ID of the secondary cloud instance. |
 | ---- resourceGroup Id | String | 103 | The ID of the resource group to which the primary cloud instance belongs. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | ---- createdDate | Long | 1673333258000 | The time when the primary cloud instance was created. |
 |---|---|---|---|
@@ -4471,8 +4327,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ---- consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. This type is generally used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. This type is generally used in cross- cloud disaster recovery scenarios. |
 | ---- consoleApiEnd point | String | http://internal.exa mple.com-XXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ---- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | ---- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
@@ -4480,9 +4334,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | ---- intranetDomai n | String | intra.***.example.c om | The internal domain name. |
 | ----status | String | REGULAR | The state of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-| -- backupRegion | Struct |  | The information about the secondary region. |
+| -- backupRegion | Struct |   | The information about the secondary region. |
 |---|---|---|---|
 | ---pk | String | 33994422***27712 | The primary key of the secondary cloud instance. |
 | ---regionId | String | cn-guznagxi | The region ID of the secondary cloud. |
@@ -4490,12 +4342,10 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ---regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 | ---consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. This type is generally used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. This type is generally used in cross- cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://internal.exa mple.com-XXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| --- cloudInstance | Struct |  | The information about the secondary cloud instance. |
+| --- cloudInstance | Struct |   | The information about the secondary cloud instance. |
 | ---- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the secondary cloud instance belongs. |
 | ----ownerUid | String | 23972451*****687 32 | The UID of the owner of the secondary cloud instance. |
 | ----creator | String | 23972451*****687 32 | The UID of the user who created the secondary cloud instance. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | ----lastModifier | String | 23972451*****687 32 | The UID of the user who last modified the secondary cloud instance. |
 |---|---|---|---|
@@ -4510,29 +4360,23 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | ---- cloudOsType | String | ENTERPRISE | The edition of the cloud instance. Only ENTERPRISE may be returned, which indicates Apsara Stack. |
 | ----version | String | 1.0.0 | The version number of the secondary cloud instance. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ---- consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. This type is generally used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. This type is generally used in cross- cloud disaster recovery scenarios. |
 |---|---|---|---|
 | ---- consoleApiEnd point | String | http://internal.exa mple.com-XXXXX | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 | ---- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 | ---- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ---- internetDomai n | String | inter.***.example.c om | The Internet domain name. |
 |---|---|---|---|
 | ---- intranetDomai n | String | intra.***.example.c om | The internal domain name. |
 | ----status | String | REGULAR | The state of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-| --latestTask | Struct |  | The state of the task that was last run for the plan. If null is returned, no task is run for the plan. |
-| --- sequenceTask s | Normal |  | The tasks that were run for steps, in the JSON format. |
+| --latestTask | Struct |   | The state of the task that was last run for the plan. If null is returned, no task is run for the plan. |
+| --- sequenceTask s | Normal |   | The tasks that were run for steps, in the JSON format. |
 | ---taskId | String | 21 | The task ID. |
 | --- recoveryPlanId | String | 19 | The ID of the disaster recovery plan. |
 | ---createsAt | Long | 1675393101718 | The time when the task was created. |
 | ---runsAt | Long | 1675393101718 | The time when the task started. |
 | ---completesAt | Long | 1675393101720 | The time when the task was complete. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | ---status | String | PENDING | The state of the task. Valid values: PENDING INITIALIZING RUNNING SWITCHING OVER _ WAITING RECOVER _ SWITCHING BACK _ ABORTING ABORTED TIMEOUT FAILED COMPLETED |
 |---|---|---|---|
@@ -4544,20 +4388,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -pageSize | Integer | 10 | The number of entries per page. This parameter indicates the expected number of entries per page. The value is the same as the value of the corresponding parameter specified in the request. If the actual length of the returned rows parameter is less than the value of this parameter, the last page is returned. |
 | -total | Integer | 55 | The total number of entries that meet query conditions. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ListRecoveryPlanByPage &PageNum=1 &PageSize=10 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -4596,14 +4437,20 @@ Sample success responses `JSON` format
      "accountCredentialsId":"339944229083187200",
      "consoleType":"ASCM",
      "status":"REGULAR"
-    },
-    "pk":"33994422***27712",
-    "consoleType":"ASCM"
-   },
-"type":"DRILLONLY",
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`},`
+
+```json
+    "pk":"33994422***27712",
+    "consoleType":"ASCM"
+```
+
+`},`
+
+```json
+"type":"DRILLONLY",
+```
 
 ```json
    type:DRILL_ONLY,
@@ -4619,7 +4466,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
     "taskId":"21",
     "recoveryPlanId":"19",
     "status":"PENDING"
-   },
+```
+
+`},`
+
+```json
    "sequence":"",
    "--relatedProtectGroups":{
     "creator":"2397******98868732",
@@ -4633,7 +4484,11 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
     "resourceGroupId":"103",
     "id":"e250008c-a02a-455c-b957-8*****4ef58",
     "ownerUid":"2397******98868732"
-   },
+```
+
+`},`
+
+```json
    "createdDate":1713514782222,
    "instanceId":"e250008c-a02a-455c-b957-8d*****ef58",
    "aliyunAccountUid":"1785111957*****236",
@@ -4663,7 +4518,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
      "resourceGroupId":"103",
 ```
 
-Apsara Stack Resilience ASR for Geo-disaster Developer p ,
+`p` `,`
 
 ```json
      "pk":"339944229200627712",
@@ -4672,23 +4527,38 @@ Apsara Stack Resilience ASR for Geo-disaster Developer p ,
      "accountCredentialsId":"339944229083187200",
      "consoleType":"ASCM",
      "status":"REGULAR"
-    },
+```
+
+`},`
+
+```json
     "pk":"33994422***27712",
     "consoleType":"ASCM"
-   },
+```
+
+`},`
+
+```json
    "ownerUid":"239724*****8868732",
    "stability":"GREEN"
-  },
+```
+
+`},`
+
+```json
   "pageSize":10,
   "pageNum":1
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -4720,8 +4590,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer p ,
     <aliyunAccountUid>178511195******96</aliyunAccountUid>
 <internetDomain>inter***examplecom</internetDomain>
 ```
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 ```xml
     <internetDomain>inter.***.example.com</internetDomain>
@@ -4781,11 +4649,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 <lastModifiedDate>1673333258012</lastModifiedDate>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 ```xml
 astod edate 673333580 /astod edate
     <instanceName>XXX</instanceName>
@@ -4818,7 +4681,7 @@ astod edate 673333580 /astod edate
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### SaveRecoveryPlan
+##### 4.3.1.4 SaveRecoveryPlan
 
 Creates or modifies a disaster recovery plan.
 
@@ -4828,49 +4691,40 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-| A | psara Stack R | esilienc | e |  | ASR | for Geo-disaster Developer Guide·API referenc | e |
+| A | psara Stack R | esilienc | e |   | ASR | for Geo-disaster Developer Guide·API referenc | e |
 |---|---|---|---|---|---|---|---|
-|  | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |  |
+|   | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |   |
 
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
-|  |  |  |  |  | The data of the disaster recovery plan, in the JSON format. { "name": "Plan name", "type": "DRILL AND DR", _ _ "mainRegion": { "regionId": "cn-hangzhou" |
+|   |   |   |   |   | The data of the disaster recovery plan, in the JSON format. { "name": "Plan name", "type": "DRILL AND DR", _ _ "mainRegion": { "regionId": "cn-hangzhou" |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-|  |  |  |  |  |  | g }, "backupRegion": { "regionId": "cn-shanghai" }, "description": "Drill plan", "sequence": [ { "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "id": 27, "strategy": { "silenceExpression" : "0", "action": |  |
+|   |   |   |   |   |   | g }, "backupRegion": { "regionId": "cn-shanghai" }, "description": "Drill plan", "sequence": [ { "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "id": 27, "strategy": { "silenceExpression" : "0", "action": |   |
 |---|---|---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-|  |  |  |  | { "name": "Plan name", "type": "DRILL AND DR", _ _ "mainRegion": { "regionId": "cn-hangzhou" }, "backupRegion": { "regionId": "cn-shanghai" }, "description": "Drill plan", "sequence": [ { "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "id": 27, "strategy": { "silenceExpression": "0", "action": "HOLD", "type": "action" }, "description": "Manual checkpoint", "type": "checkpoint" }, { "id": 26, "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onPartialSucceed": { |  | "HOLD", "type": "action" }, "description": "Manual checkpoint", "type": "checkpoint" }, { "id": 26, "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onPartialSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "concurrent" }, "description": "Concurrent steps", "subSequence": [ |  |
+|   |   |   |   | { "name": "Plan name", "type": "DRILL AND DR", _ _ "mainRegion": { "regionId": "cn-hangzhou" }, "backupRegion": { "regionId": "cn-shanghai" }, "description": "Drill plan", "sequence": [ { "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "id": 27, "strategy": { "silenceExpression": "0", "action": "HOLD", "type": "action" }, "description": "Manual checkpoint", "type": "checkpoint" }, { "id": 26, "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onPartialSucceed": { |   | "HOLD", "type": "action" }, "description": "Manual checkpoint", "type": "checkpoint" }, { "id": 26, "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onPartialSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "concurrent" }, "description": "Concurrent steps", "subSequence": [ |   |
 |---|---|---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-| Data | Strin g | Body | Yes | "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "concurrent" }, "description": "Concurrent steps", "subSequence": [ { "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" } ], "type": "concurrent" }, { "strategy": { "silenceExpression": "0", "action": "HOLD", "type": "action" }, "description": "Primary cloud status checkpoint", "type": "checkpoint-main-cloud- status" }, { "strategy": { "onSucceed": { "silenceExpression": "0", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchback", "pg": { "id": "Protection group ID" }, "type": "switch-back" } ] } |  | { "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" "0" |  |
+| Data | Strin g | Body | Yes | "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "concurrent" }, "description": "Concurrent steps", "subSequence": [ { "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "strategy": { "onSucceed": { "silenceExpression": "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" } ], "type": "concurrent" }, { "strategy": { "silenceExpression": "0", "action": "HOLD", "type": "action" }, "description": "Primary cloud status checkpoint", "type": "checkpoint-main-cloud- status" }, { "strategy": { "onSucceed": { "silenceExpression": "0", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression": "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchback", "pg": { "id": "Protection group ID" }, "type": "switch-back" } ] } |   | { "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" }, { "strategy": { "onSucceed": { "silenceExpression" : "1d", "action": "NEXT", "type": "action" }, "onFailed": { "silenceExpression" "0" |   |
 |---|---|---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-|  |  |  |  |  |  | : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" } ], "type": "concurrent" }, { "strategy": { "silenceExpression" : "0", "action": "HOLD", "type": "action" }, "description": "Primary cloud status checkpoint", "type": "checkpoint-main- cloud-status" }, { "strategy": { "onSucceed": { "silenceExpression" : "0", "action": "NEXT", "type": "action" |  |
+|   |   |   |   |   |   | : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchover", "pg": { "id": "Protection group ID" }, "type": "switch-over" } ], "type": "concurrent" }, { "strategy": { "silenceExpression" : "0", "action": "HOLD", "type": "action" }, "description": "Primary cloud status checkpoint", "type": "checkpoint-main- cloud-status" }, { "strategy": { "onSucceed": { "silenceExpression" : "0", "action": "NEXT", "type": "action" |   |
 |---|---|---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-|  |  |  |  |  | action }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchback", "pg": { "id": "Protection group ID" }, "type": "switch-back" } ] } |
+|   |   |   |   |   | action }, "onFailed": { "silenceExpression" : "0", "action": "ABORT", "type": "action" }, "type": "pg" }, "description": "Switchback", "pg": { "id": "Protection group ID" }, "type": "switch-back" } ] } |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4878,17 +4732,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 | success | Boolean | true | Indicates whether the request was successful. true false |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
-
 | code | String | 200 | The response code. |
 |---|---|---|---|
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The data of the saved disaster recovery plan. |
-| -sequence | Normal |  | The steps of the disaster recovery plan, in the JSON format. |
-| - relatedProtect Groups | Array |  | The protection groups that are associated with the disaster recovery plan. |
+| data | Struct |   | The data of the saved disaster recovery plan. |
+| -sequence | Normal |   | The steps of the disaster recovery plan, in the JSON format. |
+| - relatedProtect Groups | Array |   | The protection groups that are associated with the disaster recovery plan. |
 | -- aliyunAccount Uid | String | 1785******267796 | The unique ID (UID) of the Apsara Stack tenant account to which the protection group belongs. |
 | --ownerUid | String | 2397******988687 32 | The UID of the protection group owner. |
 | --creator | String | 2397******988687 32 | The UID of the user who created the protection group. |
@@ -4897,8 +4747,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -- resourceGroup Id | String | 103 | The ID of the resource group to which the protection group belongs. |
 | --createdDate | Long | 1713514782222 | The time when the protection group was created. |
 | -- lastModifiedDa te | Long | 1713514782222 | The time when the protection group was last modified. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | --instanceId | String | e250008c-a02a- 455c-b957- 8*****4ef58 | The ID of the protection group. |
 |---|---|---|---|
@@ -4915,25 +4763,21 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -instanceId | String | e250008c-a02a- 455c-b957- 8d*****ef58 | The instance ID of the resource. |
 | -id | String | e250008c-a02a- 455c-b957- 8d*****ef58 | The ID of the disaster recovery plan. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | -name | String | name2 | The name of the disaster recovery plan. |
 |---|---|---|---|
 | -type | String | security-token | The type of the disaster recovery plan. Valid values: DRILL ONLY _ DRILL AND DR _ _ |
 | -stability | String | GREEN | The stability of the disaster recovery plan. Valid values: GREEN: stable. GRAY: unknown. RED: unstable. |
 | -description | String | Test the switchback step performed by calling an API operation | The description of the disaster recovery plan. |
-| -mainRegion | Struct |  | The information about the primary region. |
+| -mainRegion | Struct |   | The information about the primary region. |
 | --pk | String | 33994422***27712 | The primary key of the primary cloud instance. |
 | --regionId | String | cn-guznagxi | The region ID of the primary cloud. |
 | --regionName | String | guznagxi | The region name of the primary cloud. |
 | --regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 | --consoleType | String | ASRDR | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -- consoleApiEnd point | String | http://internal.exa mple.com-xxxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 |---|---|---|---|
-| -- cloudInstance | Struct |  | The information about the primary cloud instance. |
+| -- cloudInstance | Struct |   | The information about the primary cloud instance. |
 | --- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the primary cloud instance belongs. |
 | ---ownerUid | String | 23972451*****687 32 | The UID of the owner of the primary cloud instance. |
 | ---creator | String | 23972451*****687 32 | The UID of the user who created the primary cloud instance. |
@@ -4946,8 +4790,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --- instanceName | String | XXX | The name of the primary cloud instance. |
 | ---pk | String | 339944229200627 712 | The primary key of the primary cloud instance. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --- cloudUniqueId | String | 0179 | The UID of the primary cloud. |
 |---|---|---|---|
 | ---cloudOsType | String | ENTERPRISE | The edition of the primary cloud instance. Only ENTERPRISE may be returned, which indicates Apsara Stack. |
@@ -4956,25 +4798,21 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --- consoleApiEnd point | String | http://internal.exa mple.com-xxxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 | --- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | --- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 |---|---|---|---|
 | --- internetDomai n | String | inter.***.shuguang. com | The Internet domain name. |
 | --- intranetDomai n | String | intra.***.shuguang. com | The internal domain name. |
 | ---status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-| -backupRegion | Struct |  | The information about the secondary region. |
+| -backupRegion | Struct |   | The information about the secondary region. |
 | --pk | String | 33994422***27712 | The primary key of the secondary cloud instance. |
 | --regionId | String | cn-guznagxi | The region ID of the secondary cloud. |
 | --regionName | String | guznagxi | The region name of the secondary cloud. |
 | --regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --consoleType | String | ASRDR | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 |---|---|---|---|
 | -- consoleApiEnd point | String | http://internal.exa mple.com-xxxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| -- cloudInstance | Struct |  | The information about the secondary cloud instance. |
+| -- cloudInstance | Struct |   | The information about the secondary cloud instance. |
 | --- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the secondary cloud instance belongs. |
 | ---ownerUid | String | 23972451*****687 32 | The UID of the owner of the secondary cloud instance. |
 | ---creator | String | 23972451*****687 32 | The UID of the user who created the secondary cloud instance. |
@@ -4982,8 +4820,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --- resourceRegio nId | String | cn-hangzhou | The region ID of the secondary cloud instance. |
 | --- resourceGroup Id | String | 103 | The ID of the resource group to which the secondary cloud instance belongs. |
 | ---createdDate | Long | 1704366334000 | The time when the secondary cloud instance was created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | --- lastModifiedDa te | Long | 1704366334000 | The time when the secondary cloud instance was last modified. |
 |---|---|---|---|
@@ -4996,19 +4832,15 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ---consoleType | String | ASRDR | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://internal.exa mple.com-xxxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | --- accountCrede ntialsId | String | 339944229083187 200 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | --- internetDomai n | String | inter.***.shuguang. com | The Internet domain name. |
 | --- intranetDomai n | String | intra.***.shuguang. com | The internal domain name. |
 | ---status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-| -latestTask | Struct |  | The status of the task that was last run for the plan. If null is returned, no task is run for the plan. |
+| -latestTask | Struct |   | The status of the task that was last run for the plan. If null is returned, no task is run for the plan. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-| -- sequenceTask s | Normal |  | The tasks that were run for steps, in the JSON format. |
+| -- sequenceTask s | Normal |   | The tasks that were run for steps, in the JSON format. |
 |---|---|---|---|
 | --taskId | String | 21 | The task ID. |
 | -- recoveryPlanId | String | 19 | The ID of the disaster recovery plan. |
@@ -5020,12 +4852,8 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -- exceptionThro wn | Boolean | true | Indicates whether an exception was thrown when the task was running. Valid values: true false |
 | -- exceptionMsg | String | 400 | The error message returned if an exception was thrown. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --nodeId | String | Local 001 _ | The ID of the node that was processing the task. |
 |---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
@@ -5033,7 +4861,7 @@ Sample requests
 
 ```json
 ```json
-&Data={
+http(s)://[Endpoint]/?Action=SaveRecoveryPlan &Data={
   "taskId": 21,
   "recoveryPlanId": 19,
   "runMode": "DR",
@@ -5050,7 +4878,11 @@ Sample requests
   "loggerId": 123,
   "loggerToken": "xxx-xxx-xxx",
   "sequenceTasks": [
-    {
+```
+
+`{`
+
+```json
       "sequenceTaskId": 35,
       "sequenceId": 55,
       "recoveryTaskId": 21,
@@ -5063,27 +4895,23 @@ Sample requests
       "switchId": "b9b***96-8a5b-4fc2-b292-af9c*****0ee",
       "switchTaskId": "97***d37-2361-47e8-8a63-c3c*****b501",
       "sequenceType": "switch-over"
-    }
 ```
 
-]
+`}` `]` `}`
 
 ```
-} &<Common request parameters>
+&<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "data":{
 "-backupRegion":{
 ```
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 ```json
 backupRegion:{
@@ -5114,9 +4942,17 @@ backupRegion:{
     "accountCredentialsId":"339944229083187200",
     "consoleType":"ASRDR",
     "status":"REGULAR"
-   },
+```
+
+`},`
+
+```json
    "consoleType":"ASRDR"
-  },
+```
+
+`},`
+
+```json
   "creator":"239724*****8868732",
   "lastModifiedDate":1713514782222,
   "-mainRegion":{
@@ -5143,7 +4979,7 @@ backupRegion:{
     "resourceGroupId":"103",
 ```
 
-Apsara Stack Resilience ASR for Geo-disaster Developer p ,
+`p` `,`
 
 ```json
     "pk":"339944229200627712",
@@ -5152,9 +4988,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer p ,
     "accountCredentialsId":"339944229083187200",
     "consoleType":"ASRDR",
     "status":"REGULAR"
-   },
+```
+
+`},`
+
+```json
    "consoleType":"ASRDR"
-  },
+```
+
+`},`
+
+```json
   "resourceRegionId":"cn-hangzhou",
   "lastModifier":"239724*****8868732",
   "description":"Test the switchback step performed by calling an API operation",
@@ -5171,7 +5015,11 @@ Apsara Stack Resilience ASR for Geo-disaster Developer p ,
    "resourceGroupId":"103",
    "id":"e250008c-a02a-455c-b957-8*****4ef58",
    "ownerUid":"2397******98868732"
-  },
+```
+
+`},`
+
+```json
   "sequence":"",
   "createdDate":1713514782222,
   "instanceId":"e250008c-a02a-455c-b957-8d*****ef58",
@@ -5191,17 +5039,24 @@ Apsara Stack Resilience ASR for Geo-disaster Developer p ,
    "taskId":"21",
    "recoveryPlanId":"19",
    "status":"COMPLETED"
-  },
+```
+
+`},`
+
+```json
   "ownerUid":"239724*****8868732",
   "stability":"GREEN"
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience `XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -5254,8 +5109,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience `XML` format
    <lastModifier>23972451*****68732</lastModifier>
    <adminCredentialsId>339944225551583232</adminCredentialsId>
 ```
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 ```xml
    <version>1.0.0</version>
@@ -5315,21 +5168,15 @@ operation</description>
 <onerUid>239724*****8868732</onerUid>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 ```xml
  <ownerUid>239724*****8868732</ownerUid>
  <stability>GREEN</stability>
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-#### Plan execution
+#### 4.3.2 Plan execution
 
-##### ExecRecoveryTask
+##### 4.3.2.1 ExecRecoveryTask
 
 Runs a disaster recovery plan.
 
@@ -5339,32 +5186,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | RecoveryPl anId | Long | Body | Yes | 379e********98c7 | The ID of the disaster recovery plan. |
 | RunMode | Strin g | Body | No | DRILL | The mode in which the disaster recovery plan is run. Valid values: DRILL DR |
 
-| 90 |  |  | > Document Version: 2026070 |
-|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Response parameters**
+
+| 90 |   |   | > Document Version: 2026070 |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5376,25 +5219,17 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 | data | Long | 1245789352 | The task ID. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Examples**
 
 Sample requests
 
 ```
-&RecoveryPlanId=379e********98c7 &<Common request parameters>
+http(s)://[Endpoint]/?Action=ExecRecoveryTask &RecoveryPlanId=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -5402,16 +5237,15 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
  "requestId":"a62a********bcd1",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>1245789352</data> <requestId>a62a********bcd1</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### AbortRecoveryTask
+##### 4.3.2.2 AbortRecoveryTask
 
 Aborts a task that is run for a disaster recovery plan.
 
@@ -5421,21 +5255,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 |---|---|---|---|---|---|
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
@@ -5443,7 +5274,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | Message | Strin g | Body | No | The plan is canceled. | The reason for aborting the disaster recovery plan or other necessary information. |
 | Force | Bool ean | Body | No | true | Specifies whether to forcibly abort the task. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5454,42 +5285,32 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&TaskId=12345 &<Common request parameters>
+http(s)://[Endpoint]/?Action=AbortRecoveryTask &TaskId=12345 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience `XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### GetRecoveryTask
+##### 4.3.2.3 GetRecoveryTask
 
 Queries the information about a task that is run for a disaster recovery plan.
 
@@ -5499,32 +5320,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | TaskId | Long | Quer y | Yes | 379e********98c7 | The task ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | a62a********bcd1 | The request ID. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -5532,15 +5349,13 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The returned data. |
-| - sequenceTask s | Normal |  | The tasks that were run for steps, in the JSON format. |
+| data | Struct |   | The returned data. |
+| - sequenceTask s | Normal |   | The tasks that were run for steps, in the JSON format. |
 | -taskId | String | 14 | The task ID. |
 | - recoveryPlanId | String | 21 | The ID of the disaster recovery plan. |
 | - recoveryPlanN ame | String | recoveryPlan1 | The name of the disaster recovery plan. |
 | -runMode | String | DRILL | The mode in which the disaster recovery plan is run. Valid values: DRILL DR |
 | - creatorAliyunA ccountUid | String | 2397******988687 32 | The unique ID (UID) of the Apsara Stack tenant account that is used to create the task. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | -createsAt | Long | 1713514782222 | The time when the task was created. |
 |---|---|---|---|
@@ -5555,9 +5370,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -loggerId | Long | 1232342443 | The ID of the task logger. |
 | -loggerToken | String | XXX-XXX-XXX | The credentials for querying task logs. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-| -statistic | Struct |  | The statistics about tasks. |
+| -statistic | Struct |   | The statistics about tasks. |
 |---|---|---|---|
 | --taskId | String | 14 | The task ID. |
 | --durationMillis | Long | 0 | The duration of the task. Unit: milliseconds. |
@@ -5572,8 +5385,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | -- protectGroupS witchBackTota lCount | Integer | 1 | The total number of protection groups that involve switchback or failback in the task. |
 | -- protectGroupS witchOverSucc eedCount | Integer | 1 | The total number of protection groups whose switchover or failover was successful in the task. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | -- protectGroupS witchBackSucc eedCount | Integer | 1 | The total number of protection groups whose switchback or failback was successful in the task. |
 |---|---|---|---|
 | -- instanceTotalC ount | Integer | 1 | The total number of synchronization entities included in the task. |
@@ -5583,20 +5394,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -- instanceSwitch OverDurationQ ualifiedCount | Integer | 1 | The number of synchronization entities whose switchover or failover duration meets expectations. |
 | -- instanceSwitch BackDuration QualifiedCount | Integer | 1 | The number of synchronization entities whose switchback or failback duration meets expectations. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&TaskId=379e********98c7 &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetRecoveryTask &TaskId=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disaster Developer
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -5633,20 +5441,27 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
    "execSucceedCount":5,
    "taskId":"14",
    "protectGroupSwitchBackSucceedCount":1
-  },
+```
+
+`},`
+
+```json
   "loggerId":1232342443,
   "nodeId":"Local_001",
   "taskId":"14",
   "recoveryPlanId":"21",
   "status":"PENDING"
- },
+```
+
+`},`
+
+```json
  "requestId":"a62a********bcd1",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -5691,13 +5506,9 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
 </data> <requestId>a62a********bcd1</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### GetRecoveryPlanSnapshot
+##### 4.3.2.4 GetRecoveryPlanSnapshot
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer Queries the snapshot data of a disaster recovery plan. Snapshot data refers to the status of the disaster recovery plan data at the moment when a task begins execution for a disaster recovery plan.
+Queries the snapshot data of a disaster recovery plan. Snapshot data refers to the status of the disaster recovery plan data at the moment when a task begins execution for a disaster recovery plan.
 
 **Request headers**
 
@@ -5705,32 +5516,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | TaskId | Long | Quer y | Yes | 379e********98c7 | The task ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | a62a********bcd1 | The request ID. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | result | String | SUCCESS | Indicates whether the request was successful. Valid values: SUCCESS FAILED This parameter is maintained for compatibility and has the same meaning as the success parameter. We recommend that you use the success parameter. |
 |---|---|---|---|
@@ -5738,15 +5545,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The snapshot data of the disaster recovery plan. |
-| -sequence | Normal |  | The steps of the disaster recovery plan, in the JSON format. |
-| - relatedProtect Groups | Array |  | The protection groups that are associated with the disaster recovery plan. |
+| data | Struct |   | The snapshot data of the disaster recovery plan. |
+| -sequence | Normal |   | The steps of the disaster recovery plan, in the JSON format. |
+| - relatedProtect Groups | Array |   | The protection groups that are associated with the disaster recovery plan. |
 | -- aliyunAccount Uid | String | 1785******267796 | The unique ID (UID) of the Apsara Stack tenant account to which the protection group belongs. |
 | --ownerUid | String | 2397******988687 32 | The UID of the protection group owner. |
 | --creator | String | 2397******988687 32 | The UID of the user who created the protection group. |
 | --lastModifier | String | 2397******988687 32 | The UID of the user who last modified the protection group. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | -- resourceRegio nId | String | cn-hangzhou | The region ID of the protection group. |
 |---|---|---|---|
@@ -5764,8 +5569,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | - resourceGroup Id | String | 103 | The ID of the resource group to which the resource belongs. |
 | -createdDate | Long | 1713514782222 | The time when the resource was created. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | - lastModifiedDa te | Long | 1713514782222 | The time when the resource was last modified. |
 |---|---|---|---|
 | -instanceId | String | e250008c-a02a- 455c-b957- 8d*****ef58 | The instance ID of the resource. |
@@ -5774,18 +5577,16 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | -type | String | DRILL ONLY _ | The type of the disaster recovery plan. Valid values: DRILL ONLY _ DRILL AND DR _ _ |
 | -stability | String | GREEN | The stability of the disaster recovery plan. Valid values: GREEN: stable. GRAY: unknown. RED: unstable. |
 | -description | String | This is an example instance. | The description of the disaster recovery plan. |
-| -mainRegion | Struct |  | The information about the primary region. |
+| -mainRegion | Struct |   | The information about the primary region. |
 | --pk | String | 33994422***27712 | The primary key of the primary cloud instance. |
 | --regionId | String | cn-guznagxi | The region ID of the primary cloud. |
 | --regionName | String | guznagxi | The region name of the primary cloud. |
 | --regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 |---|---|---|---|
 | -- consoleApiEnd point | String | http://internal.exa mple.com.xxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| -- cloudInstance | Struct |  | The information about the primary cloud instance. |
+| -- cloudInstance | Struct |   | The information about the primary cloud instance. |
 | --- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the primary cloud instance belongs. |
 | ---ownerUid | String | 23972451*****687 32 | The UID of the owner of the primary cloud instance. |
 | ---creator | String | 23972451*****687 32 | The UID of the user who created the primary cloud instance. |
@@ -5794,8 +5595,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --- resourceGroup Id | String | 103 | The ID of the resource group to which the primary cloud instance belongs. |
 | ---createdDate | Long | 1704366334000 | The time when the primary cloud instance was created. |
 | --- lastModifiedDa te | Long | 1704366334000 | The time when the primary cloud instance was last modified. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | ---instanceId | String | e250008c-a02a- 455c-b957- 8d*****4ef58 | The ID of the primary cloud instance. |
 |---|---|---|---|
@@ -5807,18 +5606,14 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | ---consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://internal.exa mple.com.xxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | --- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | --- accountCrede ntialsId | String | 339944225551583 232 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | --- internetDomai n | String | inter.***.shuguang. com | The Internet domain name. |
 | --- intranetDomai n | String | intra.***.shuguang. com | The internal domain name. |
 | ---status | String | REGULAR | The status of the primary cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
-| -backupRegion | Struct |  | The information about the secondary region. |
+| -backupRegion | Struct |   | The information about the secondary region. |
 | --pk | String | 33994422***27712 | The primary key of the secondary cloud instance. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | --regionId | String | cn-guznagxi | The region ID of the secondary cloud. |
 |---|---|---|---|
@@ -5826,14 +5621,12 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --regionType | String | CENTRAL | The type of the region. Valid values: CENTRAL UNIT |
 | --consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | -- consoleApiEnd point | String | http://internal.exa mple.com.xxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
-| -- cloudInstance | Struct |  | The information about the secondary cloud instance. |
+| -- cloudInstance | Struct |   | The information about the secondary cloud instance. |
 | --- aliyunAccount Uid | String | 178511195******9 6 | The UID of the Apsara Stack tenant account to which the secondary cloud instance belongs. |
 | ---ownerUid | String | 23972451*****687 32 | The UID of the owner of the secondary cloud instance. |
 | ---creator | String | 23972451*****687 32 | The UID of the user who created the secondary cloud instance. |
 | ---lastModifier | String | 23972451*****687 32 | The UID of the user who last modified the secondary cloud instance. |
 | --- resourceRegio nId | String | cn-hangzhou | The region ID of the secondary cloud instance. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | --- resourceGroup Id | String | 103 | The ID of the resource group to which the secondary cloud instance belongs. |
 |---|---|---|---|
@@ -5848,8 +5641,6 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | ---consoleType | String | ASCM | The type of cloud management. Valid values: ASCM: The API of the Apsara Uni- manager Management Console is used. The endpoint of the API is used as the endpoint of the cloud management API. In most cases, this type is used in cross- region disaster recovery scenarios. ASRDR: The API of ASR-DR is used. The endpoint of the ASR-DR API is used as the endpoint of the cloud management API. In most cases, this type is used in cross-cloud disaster recovery scenarios. |
 | --- consoleApiEnd point | String | http://internal.exa mple.com.xxxxx | The endpoint of the cloud management API. The value of this parameter depends on the value of the consoleType parameter. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | --- adminCredenti alsId | String | 339944225551583 232 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
 | --- accountCrede ntialsId | String | 339944225551583 232 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
@@ -5857,20 +5648,17 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --- intranetDomai n | String | intra.***.shuguang. com | The internal domain name. |
 | ---status | String | REGULAR | The status of the secondary cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
-Apsara Stack Resilience ASR for Geo-disaster Developer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=GetRecoveryPlanSnapshot &TaskId=379e********98c7 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -5903,9 +5691,17 @@ Sample success responses `JSON` format
     "accountCredentialsId":"339944225551583232",
     "consoleType":"ASCM",
     "status":"REGULAR"
-   },
+```
+
+`},`
+
+```json
    "consoleType":"ASCM"
-  },
+```
+
+`},`
+
+```json
   "creator":"239724*****8868732",
   "lastModifiedDate":1713514782222,
   "-mainRegion":{
@@ -5916,8 +5712,6 @@ Sample success responses `JSON` format
    "pk":"33994422***27712",
 "--cloudInstance":{
 ```
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 ```json
 cloudInstance:{
@@ -5942,9 +5736,17 @@ cloudInstance:{
     "accountCredentialsId":"339944225551583232",
     "consoleType":"ASCM",
     "status":"REGULAR"
-   },
+```
+
+`},`
+
+```json
    "consoleType":"ASCM"
-  },
+```
+
+`},`
+
+```json
   "resourceRegionId":"cn-hangzhou",
   "lastModifier":"239724*****8868732",
   "description":"This is an example instance.",
@@ -5961,7 +5763,11 @@ cloudInstance:{
    "resourceGroupId":"fe1********6d6d",
    "id":"79e********98c7",
    "ownerUid":"2397******98868732"
-  },
+```
+
+`},`
+
+```json
   "sequence":"",
   "createdDate":1713514782222,
   "instanceId":"e250008c-a02a-455c-b957-8d*****ef58",
@@ -5971,19 +5777,17 @@ cloudInstance:{
   "id":"e250008c-a02a-455c-b957-8d*****ef58",
   "ownerUid":"239724*****8868732",
   "stability":"GREEN"
- },
+```
+
+`},`
+
+```json
  "requestId":"a62a********bcd1",
  "success":true,
  "nodeIp":"127.0.0.1"
 ```
 
-Apsara Stack Resilience ASR for Geo-disaster Developer p
-
-```
-}
-```
-
-`XML` format
+`p` `}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -6035,8 +5839,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer p
 <resourceRegionId>cn-hangzhou</resourceRegionId>
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 ```xml
    <resourceRegionId>cn-hangzhou</resourceRegionId>
    <lastModifier>23972451*****68732</lastModifier>
@@ -6086,15 +5888,9 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 </data> <requestId>a62a********bcd1</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### CompleteSequence
+##### 4.3.2.5 CompleteSequence
 
 Completes a step when you run a disaster recovery plan.
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Request headers**
 
@@ -6102,20 +5898,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
@@ -6123,12 +5917,10 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | SequenceT askId | Long | Body | Yes | 21 | The task ID of the step. |
 | Message | Strin g | Body | No | Manually confirm the step | The remarks. |
 
-| > Document Versi | on: 20260701 |  | 33 |
-|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Response parameters**
+
+| > Document Versi | on: 20260701 |   | 33 |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6139,42 +5931,32 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Examples**
 
 Sample requests
 
 ```
-&TaskId=14 &SequenceTaskId=21 &<Common request parameters>
+http(s)://[Endpoint]/?Action=CompleteSequence &TaskId=14 &SequenceTaskId=21 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### ListRecoveryTaskDataByPage
+##### 4.3.2.6 ListRecoveryTaskDataByPage
 
 Queries a list of tasks that are run for disaster recovery plans by page.
 
@@ -6186,27 +5968,23 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
+| AsrMainCl oudInstan ceId | Strin g | Query | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainRe gionId | Strin g | Query | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Departme nt | Strin g | Query | No | 3 | The organization ID. This is a parameter of the Apsara Stack API. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Resource Group | Strin g | Query | No | 3 | The ID of the resource set. This is a parameter of the Apsara Stack API. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Query | No | cn-hangzhou | The region ID of the resource. This is a parameter of the Apsara Stack API. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console page. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6214,8 +5992,6 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | RecoveryP lanId | Long | Query | No | 12467733*****0098 | The ID of the disaster recovery plan. This parameter is used to query data in exact match mode. |
 | RecoveryP lanName | Strin g | Query | No | RecoveryPlan1 | The name of the disaster recovery plan. This parameter is used to query data in fuzzy match mode. |
 | Status | Strin g | Query | No | PENDING | The state of the task. This parameter is used to query data in exact match mode. You can specify one or more states. Separate multiple states with commas ( , ). Valid values: PENDING INITIALIZING RUNNING SWITCHING OVER _ WAITING RECOVER _ SWITCHING BACK _ ABORTING ABORTED TIMEOUT FAILED COMPLETED |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6226,12 +6002,10 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | Sort | Strin g | Query | No | createsAt | The sorting field. Valid values: createsAt: sorts tasks by the time when the task was created. completesAt: sorts tasks by the time when the task was complete. Incomplete tasks are always ranked first regardless of whether tasks are sorted in ascending or descending order. |
 | Order | Strin g | Query | No | DESC | The sorting order. Valid values: DESC ASC |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6241,15 +6015,13 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | code | String | 200 | The response code. |
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
-| data | Struct |  | The returned data. |
-| -rows | Array |  | The queried entries. |
-| -- sequenceTask s | Normal |  | The tasks that were run for steps, in the JSON format. |
+| data | Struct |   | The returned data. |
+| -rows | Array |   | The queried entries. |
+| -- sequenceTask s | Normal |   | The tasks that were run for steps, in the JSON format. |
 | --taskId | String | 14 | The task ID. |
 | -- recoveryPlanId | String | 21 | The ID of the disaster recovery plan. |
 | -- recoveryPlanN ame | String | recoveryPlan1 | The name of the disaster recovery plan. |
 | --runMode | String | DRILL | The mode in which the disaster recovery plan is run. Valid values: DRILL DR |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6265,16 +6037,14 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | --nodeId | String | Local 001 _ | The ID of the node that was processing the task. |
 | -- sequenceCoun t | Integer | 12 | The number of steps included in the task. Only the root step is counted. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
-| A | SR for Geo-disast Guide·API referen | er Developer ce |  | Apsara Stack Resilienc | e |
+| A | SR for Geo-disast Guide·API referen | er Developer ce |   | Apsara Stack Resilienc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | --loggerId | Long | 1232342443 | The ID of the task logger. |
 | --loggerToken | String | xxx-xxx-xxx | The credentials for querying task logs. |
-| --statistic | Struct |  | The statistics about tasks. |
+| --statistic | Struct |   | The statistics about tasks. |
 | ---taskId | String | 12 | The task ID. |
 | --- durationMillis | Long | 0 | The duration of the task, in milliseconds. |
 | ---succeed | Boolean | true | Indicates whether the task was successful. |
@@ -6288,7 +6058,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | --- protectGroupS witchBackTota lCount | Integer | 1 | The total number of protection groups that involve switchback or failback in the task. |
 | --- protectGroupS witchOverSucc eedCount | Integer | 1 | The total number of protection groups whose switchover or failover was successful in the task. |
 
-| psara Stack Resil | ience |  | ASR for Geo-disaster Developer |
+| psara Stack Resil | ience |   | ASR for Geo-disaster Developer |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6306,16 +6076,15 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 
 **Examples**
 
-Sample requests ASR for Geo-disaster Developer Apsara Stack Resilience
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ListRecoveryTaskDataByPage &PageNum=1 &PageSize=10 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disaster Developer
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
@@ -6358,19 +6127,30 @@ Sample success responses `JSON` format Apsara Stack Resilience ASR for Geo-disas
     "execSucceedCount":5,
     "taskId":"12",
     "protectGroupSwitchBackSucceedCount":1
-   },
+```
+
+`},`
+
+```json
    "status":"PENDING"
-  },
+```
+
+`},`
+
+```json
   "pageSize":10,
   "pageNum":1
- },
+```
+
+`},`
+
+```json
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience `XML` format Apsara Stack Resilience ASR for Geo-disaster Developer
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <data>
@@ -6420,13 +6200,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience `XML` format Apsara Stack
 </data> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
-##### RerunSequence
+##### 4.3.2.7 RerunSequence
 
 Retries a step when you run a disaster recovery plan.
 
@@ -6436,20 +6210,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
@@ -6457,12 +6229,10 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | SequenceT askId | Long | Body | Yes | 47632984***3240 | The task ID of the step. |
 | Message | Strin g | Body | No | Retry the step | The remarks. |
 
-| 52 |  |  | > Document Version: 2026070 |
-|---|---|---|---|
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 **Response parameters**
+
+| 52 |   |   | > Document Version: 2026070 |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6473,42 +6243,32 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Examples**
 
 Sample requests
 
 ```
-&TaskId=12467733*****0098 &SequenceTaskId=47632984***3240 &<Common request parameters>
+http(s)://[Endpoint]/?Action=RerunSequence &TaskId=12467733*****0098 &SequenceTaskId=47632984***3240 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>
 ```
 
-##### SkipSequence
+##### 4.3.2.8 SkipSequence
 
 Skips a step when you run a disaster recovery plan.
 
@@ -6518,28 +6278,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AsrMainClo udInstance Id | Strin g | Quer y | No | f8f72032-5e49-4a38- 9750-f8a9****4bca | The ID of the primary cloud instance. This is a common parameter of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR). When you query or modify a resource, this parameter determines the primary cloud instance to which the resource belongs. If the primary cloud instance to which the resource to be queried or modified belongs is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary cloud instance in which the resource is to be created. |
+
 | AsrMainRe gionId | Strin g | Quer y | No | cn-hangzhou | The ID of the primary region. This is a common parameter of ASR-DR. When you query or modify a resource, this parameter determines the primary region in which the resource resides. If the primary region in which the resource to be queried or modified resides is different from that specified by this parameter, an error is reported to indicate that the resource does not exist. When you create a resource, this parameter determines the primary region in which the resource is to be created. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | Departme nt | Strin g | Quer y | No | 3 | The organization ID. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the organization that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the organization that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the Apsara Stack tenant account to which the resource belongs. If the resource to be queried or modified is not within the Apsara Stack tenant account to which the organization belongs, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified within the Apsara Stack tenant account to which your organization belongs. When you create a resource, this parameter determines the Apsara Stack tenant account within which the resource is to be created. If you do not specify this parameter, the resource is created within the Apsara Stack tenant account to which your organization belongs. |
 |---|---|---|---|---|---|
 
-ASR for Geo-disaster Developer Apsara Stack Resilience
-
 | ResourceG roup | Strin g | Quer y | No | 3 | The ID of the resource set. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the resource set that is visible to you. If you use the Apsara Uni- manager Management Console, you can specify the ID of the resource set that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the resource group to which the resource belongs. If the resource to be queried or modified does not belong to the resource group, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in all resource groups that are visible to you. When you create a resource, this parameter determines the resource group in which the resource is to be created. If you do not specify this parameter, the resource does not belong to a resource group. |
 |---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Geo-disaster Developer
 
 | RegionId | Strin g | Quer y | No | cn-hangzhou | The region ID of the resource. This is an API parameter of the Apsara Uni-manager Management Console. You can specify only the ID of the region that is visible to you. If you use the Apsara Uni-manager Management Console, you can specify the ID of the region that is selected in the top navigation bar of the console. When you query or modify a resource, this parameter determines the region in which the resource resides. If the resource to be queried or modified does not reside in the region, an error is reported to indicate that the resource does not exist. If you do not specify this parameter, the resource is queried or modified in the region of the node that processes the request. When you create a resource, this parameter determines the region in which the resource is to be created. If you do not specify this parameter, the resource is created in the region of the node that processes the request. |
 |---|---|---|---|---|---|
 | TaskId | Long | Body | Yes | 3dcc********9f64 | The task ID of the disaster recovery plan. |
 | SequenceT askId | Long | Body | Yes | 432nd****3d8r | The task ID of the step. |
 | Message | Strin g | Body | No | Skip the step | The remarks. |
-
-ASR for Geo-disaster Developer Apsara Stack Resilience
 
 **Response parameters**
 
@@ -6552,30 +6308,26 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 | nodeHost | String | B-W0Y****- 1914.local | The name of the node that processed the request. |
 | nodeIp | String | 127.0.0.1 | The IP address of the node that processed the request. |
 
-Apsara Stack Resilience ASR for Geo-disaster Developer
-
 **Examples**
 
 Sample requests
 
 ```
-&TaskId=3dcc********9f64 &SequenceTaskId=432nd****3d8r &<Common request parameters>
+http(s)://[Endpoint]/?Action=SkipSequence &TaskId=3dcc********9f64 &SequenceTaskId=432nd****3d8r &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "result":"SUCCESS",
  "nodeHost":"B-W0Y****-1914.local",
  "code":"200",
  "requestId":"ebc6********00e7",
  "success":true,
  "nodeIp":"127.0.0.1"
-}
 ```
 
-ASR for Geo-disaster Developer Apsara Stack Resilience `XML` format
+`}` `XML` format
 
 ```xml
 <result>SUCCESS</result> <nodeHost>B-W0Y****-1914.local</nodeHost> <code>200</code> <requestId>ebc6********00e7</requestId> <success>true</success> <nodeIp>127.0.0.1</nodeIp>

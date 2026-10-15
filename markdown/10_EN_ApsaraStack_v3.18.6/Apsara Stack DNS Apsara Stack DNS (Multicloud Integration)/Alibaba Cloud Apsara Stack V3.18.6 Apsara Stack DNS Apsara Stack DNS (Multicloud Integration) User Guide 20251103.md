@@ -2,20 +2,35 @@
 title: "Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20251103"
 product_version: "V3.18.6"
 pdf_pages: 19
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20251103.pdf"
+source_pdf: "e85b60f9fa8c5eb5_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%A7%A3%E6%9E%90DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Multicloud%20Integration%29%20User%20Guide%2020251103.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20251103
 
-Apsara Stack DNS (Multicloud Int Apsara Stack DNS S (Multicloud Integration)?
+## Table of Contents
 
-## What is DNS (Multicloud
+- 1 What is DNS (Multicloud Integration)?
+- 2 User roles and permissions
+- 3 Log on to the DNS (Multicloud Integration) console
+- 4 Cross-cloud shared domain names
+  - 4.1 Overview
+  - 4.2 Add and manage domain names
+  - 4.3 Parsing settings
+    - 4.3.1 Add and manage DNS records
+- 5 Resolution lines
+  - 5.1 Add and manage lines
+
+S (Multicloud Integration)?
+
+## 1 What is DNS (Multicloud Integration)?
 
 **Integration)?**
 
-DNS (Multicloud Integration) is a domain name resolution product designed for Apsara Stack environments. It provides shared domain name resolution across multiple Apsara Stack environments. DNS (Multicloud Integration) uses rules and policies to map domain names to IP addresses. This process redirects client requests to resources such as cloud resources, business systems on a corporate intranet, and service resources from an Internet Service Provider.
+DNS (Multicloud Integration) is a domain name resolution product designed for Apsara Stack environments. It provides shared domain name resolution across multiple Apsara Stack environments. DNS (Multicloud Integration) uses rules and policies to map domain names to IP addresses. This process redirects client requests to resources such as cloud resources, business systems on a corporate intranet, and service resources from an Internet Service Provider. nd permissions
+
+## 2 User roles and permissions
 
 | User role | Permission |
 |---|---|
@@ -25,13 +40,9 @@ DNS (Multicloud Integration) is a domain name resolution product designed for Ap
 | Resource user | A user of this role does not have permissions on Apsara Stack DNS. The user does not have permissions on level-1 organization resources to which the user belongs, and does not have permissions on level-1 organization resources, global resources, or system configurations to which other users belong. |
 | Other roles | A user of such role does not have permissions on Apsara Stack DNS. The user does not have permissions on level-1 organization resources to which the user belongs, and does not have permissions on level-1 organization resources, global resources, or system configurations to which other users belong. |
 
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
+e DNS (Multicloud Integration) co nsole
 
-## User roles and permissions
-
-Apsara Stack DNS (Multicloud Int Apsara Stack DNS
-
-## Log on to the DNS
+## 3 Log on to the DNS (Multicloud Integration) console
 
 **(Multicloud Integration)**
 
@@ -46,15 +57,9 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key.
-
-**Note**
-
-You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。 Apsara Stack DNS Apsara Stack DNS (Multicloud Int
+press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. 由于浏览器证书过期或环境开启HTTPS认证等出现多次单击继续访问或无Apsara Unimanager运营控制台地址入口等现象，此时需要安装证书才能正常访问。单击页面右上角的**浏览器证书安装**，可打开浏览器证书安装指南。 e DNS (Multicloud Integration) co nsole
 2. Enter the correct username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
-
-**Note**
 
 **First logon**
 
@@ -65,25 +70,20 @@ The first time that you log on to the Apsara Uni-manager Management Console, you
 If you forgot your password, click Forgot Password and enter the username of your account, the email address that was used to create your account, and the verification code. Then, a URL is sent to the specified email address. You can click the URL to reset the password.
 3. Click **Log On**.
 4. If your account has MFA (Multi-Factor Authentication) enabled, perform the following
-operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**.
-
-**Note**
-
-For information about how to bind and enable MFA, see the **Security Center** >
+operations based on your scenario: Scenario 1: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter the 6-digit MFA code and click **Authenticate**. For information about how to bind and enable MFA, see the **Security Center** >
 **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
 the Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, choose **Products > Network > Cross-cloud DNS**.
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
 
-## Cross-cloud shared domain
+## 4 Cross-cloud shared domain names
 
 **names**
 
-### Overview
+### 4.1 Overview
 
 Suitable for multicloud integration scenarios. The configuration information is globally synchronized among multiple clouds to provide global domain name resolution for all applications after multicloud integration.
 
-### Add and manage domain
+### 4.2 Add and manage domain names
 
 **names**
 
@@ -96,11 +96,7 @@ You can add and manage domain names in the Apsara Uni-manager Management Console
 **cloud Shared Domain Names**.
 3. On the **Multicloud Domain Names** page, click **Add Domain Name**.
 4. In the **Create Scheduling Domain** dialog box, enter a **Scheduling Domain Name** and
-click **OK**.
-
-**Note**
-
-i. A domain name cannot exceed 220 characters, including the trailing period (.). ii. A domain name is divided into segments by periods (.). Each segment cannot exceed 63 characters and cannot be empty. This means you cannot have consecutive periods. iii. A domain name can contain only letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). iv. Domain names are case-insensitive. v. A domain name must end with a period (.).
+click **OK**. i. A domain name cannot exceed 220 characters, including the trailing period (.). ii. A domain name is divided into segments by periods (.). Each segment cannot exceed 63 characters and cannot be empty. This means you cannot have consecutive periods. iii. A domain name can contain only letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). iv. Domain names are case-insensitive. v. A domain name must end with a period (.).
 
 **What to do next**
 
@@ -112,26 +108,21 @@ You can enter a domain name to search for it. Click the icon in the upper-right 
 
 **Add a note to a domain name**
 
-| Name | Description |
-|---|---|
-
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int You can add a note to a domain name to mark it with information, such as a hostname or internal system info.
+You can add a note to a domain name to mark it with information, such as a hostname or internal system info.
 1. On the **Multicloud Domain Names** page, find the domain name that you want to add a
 note to, and click **Description** in the **Actions** column.
 2. In the **Add Description** dialog box, enter the **Description** and click **OK**.
 
 **Delete a domain name**
 
-**Note**
-
 When you delete a scheduling domain, all its scheduling instances are also deleted. This action cannot be undone. Proceed with caution.
 1. (Method 1) On the **Multicloud Domain Names** page, find the domain name that you want
 to delete and click **Delete** in the **Actions** column. (Method 2) On the **Multicloud Domain Names** page, select the check boxes for one or more domain names that you want to delete and click **Batch Delete** in the lower-left corner.
 2. In the confirmation dialog box, click **OK**.
 
-### Parsing settings
+### 4.3 Parsing settings
 
-#### Add and manage DNS records
+#### 4.3.1 Add and manage DNS records
 
 You can configure parsing settings in the Apsara Uni-manager Management Console.
 
@@ -145,19 +136,18 @@ in the **Record Sets** column, or click **Actions** in the **Configure DNS Recor
 4. On the **DNS Settings** page, click **Add DNS Record** in the upper-left corner.
 5. On the **Add DNS Record** page, configure the DNS record as described below and click **OK**.
 
+| Name | Description |
+|---|---|
+
 | Record Name | Enter a record name. The domain name is automatically appended to the record name. Note The record name consists of a host record and a domain name suffix. The host record can be a single asterisk (*) for wildcard DNS, but must otherwise meet the following format requirements: i. A domain name cannot exceed 254 characters in length, including the trailing period (.). ii. A domain name is divided into labels separated by periods (.). Each label cannot exceed 63 characters and cannot be empty. This means you cannot have consecutive periods. iii. Domain names can contain only uppercase or lowercase letters (a-z, A- Z), digits (0-9), hyphens (-), and underscores ( ). Other characters are _ not allowed. iv. A domain name must start with a letter, digit, or underscore ( ) and end _ with a letter, digit, or a trailing period (.). Other characters are not allowed at the start or end. v. Domain names are not case-sensitive. vi. The trailing period (.) is optional. If you omit it, the system automatically adds it. For example, for the domain name suffix example.com., common DNS records are configured as follows: Website application: Leave the host record empty. The resolved domain name is example.com. Website application: Set the host record to www. The resolved domain name is www.example.com. Mail server: Set the host record to mail. The resolved domain name is mail.example.com. Wireless application: Set the host record to m. The resolved domain name is m.example.com. Mobile application: Set the host record to webapp. The resolved domain name is webapp.example.com. Wildcard DNS: Set the host record to *. The resolved domain name is *.example.com., which matches all subdomains of example.com. Subdomain: Set the host record to abc. The resolved domain name is abc.example.com. |
 |---|---|
 | Load Balancing Policy | Select a load balancing policy. Polling: For DNS queries from any source, all addresses in the IPAM pool are returned. The addresses are rotated for each query. Weight: Allows you to set a different weight for each address. DNS queries are then returned based on the weight ratio. |
-
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
 
 | Record Type | Select a record type. If you set Load Balancing Policy to Polling, you can select one of the following types: A - Points a domain name to an IPv4 address AAAA - Points a domain name to an IPv6 address CNAME - Points one domain name to another MX - Points a domain name to an email server address TXT - Serves as a Sender Policy Framework (SPF) record to protect against spam (Maximum length: 255 characters) PTR - Points an IP address to a domain name SRV - Specifies the servers that host specific services NAPTR - Records the Naming Authority Pointer (NAPTR) and is usually used in ENUM CAA - Specifies which certificate authorities (CAs) are allowed to issue certificates for a domain name NS - Points a subdomain to other DNS servers If you set Load Balancing Policy to Weight, you can select one of the following types: A - Points a domain name to an IPv4 address AAAA - Points a domain name to an IPv6 address CNAME - Points one domain name to another |
 |---|---|
 | TTL (Seconds) | TTL indicates the cache time (in seconds) of record values on a local DNS server. The value ranges from 0 to 2147483647. The value 0 indicates that the record values are not cached. If your IP addresses frequently change, specify a small TTL value. If your IP address do not frequently change, specify a large TTL value. |
 | Resolution Line | Select one or more lines. |
 | Record Values | Add a record value collection. Value: Enter a record value based on the selected Record Type. For more information about how to enter the value, see Record value format. Weight: Enter a weight. The value must be an integer from 0 to 999. A larger value indicates a greater weight. This parameter is required only if you set Load Balancing Policy to Weight. Note Click Add Entry to add multiple record values. Click in the Actions column of the target record value to delete the record value. |
-
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
 
 **Record value format**
 
@@ -169,24 +159,16 @@ Apsara Stack DNS Apsara Stack DNS (Multicloud Int
 | MX - Points a domain name to an email server address | Enter one mail server record per line. You can enter up to 100 unique records. Format: [Priority] [Mail server hostname] Priority: An integer from 0 to 999. A smaller value indicates a higher priority. Mail server hostname: An FQDN that ends with a period (.) and is up to 254 ASCII characters in length. Examples: 10 mailserver1.example.com. 20 mailserver2.example.com. |
 | TXT - Serves as a Sender Policy Framework (SPF) record to protect against spam (Maximum length: 255 characters) | Enter one text string per line. You can enter up to 100 unique text strings. Format: Each text string cannot be empty and can be up to 254 ASCII characters in length. Example: v=spf1 ip4:192.168.0.1/16 ip6:2001::1/96 ~all |
 
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
-
 | PTR - Points an IP address to a domain name | Enter one domain name per line. You can enter up to 100 unique domain names. Format: An FQDN that ends with a period (.) and is up to 254 ASCII characters in length. Examples: www1.example.com. www2.example.com. www3.example.com. |
 |---|---|
 | SRV - Specifies the servers that host specific services | Enter one application service record per line. You can enter up to 100 unique records. Format: [Priority] [Weight] [Port] [Application server hostname] Priority: An integer from 0 to 999. A smaller value indicates a higher priority. Weight: An integer from 0 to 999. A larger value indicates a greater weight. Port: An integer from 0 to 65535, which indicates the TCP or UDP port number. Application server hostname: An FQDN that ends with a period (.) and is up to 254 ASCII characters in length. Examples: 1 10 8080 www1.example.com. 2 20 8081 www2.example.com. |
-
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
 
 | NAPTR - Records the Naming Authority Pointer (NAPTR) and is usually used in ENUM | Enter one NAPTR record per line. You can enter up to 100 unique records. Format: [Ordinal number] [Priority] [Flag] [Service information] [Regular expression] [Replacement domain name] Ordinal number: An integer from 0 to 999. A smaller value is processed first. Priority: An integer from 0 to 999. For records with the same ordinal number, the one with the smaller priority value is processed first. Flag: This can be empty or a single character from A-Z, a- z, or 0-9. The value is case-insensitive and must be enclosed in double quotation marks (""). Service information: This can be empty or a string of up to 32 ASCII characters. It must start with a letter and be enclosed in double quotation marks (""). Regular expression: This can be empty or a string of up to 255 ASCII characters. It must be enclosed in double quotation marks (""). Replacement domain name: An FQDN that ends with a period (.) and is up to 254 ASCII characters in length. Examples: 100 50 "S" "Z3950+I2L+I2C" "" z3950. tcp.example.com. _ _ 100 50 "S" "RCDS+I2C" "" rcds. udp.example.com. _ _ 100 50 "S" "HTTP+I2L+I2C+I2R" "" http. tcp.example.com. _ _ |
 |---|---|
 | CAA - Specifies which certificate authorities (CAs) are allowed to issue certificates for a domain name | Enter one CAA record per line. You can enter up to 100 unique records. Format: [Flag] [Tag] [Value] Flag: An integer from 0 to 255. Tag: Supported values are issue, issuewild, and iodef. Value: This cannot be empty. It can be up to 254 ASCII characters in length and must be enclosed in double quotation marks (""). Examples: 0 issue "caa.example.com" 0 issuewild ";" 0 iodef "mailto:example@example.com" |
 
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
-
 | NS - Points a subdomain to other DNS servers | Enter one DNS server address per line. You can enter up to 100 unique addresses. Format: An FQDN that ends with a period (.) and is up to 254 ASCII characters in length. Wildcard domain names are not allowed. Examples: ns1.example.com. ns2.example.com. |
 |---|---|
-
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int
 
 **More operations**
 
@@ -197,21 +179,13 @@ You can use **Advanced Search** to search by **Record name**. Click the icon in 
 **Record** dialog box, modify the settings and then click **OK**. For more information about the
 settings, see Add a DNS record. Add a description for a DNS record Find the target DNS record and click **Description** in the **Actions** column. In the **Add**
 **Description** dialog box, enter a description in the **Description** field, and then click **OK**.
-Delete a DNS record Find the desired DNS record, click **Delete** in the **Actions** column, and then click **OK**. Delete multiple DNS records at a time Select the DNS records that you want to delete. Click **Batch Delete** in the lower-left corner of the page, and then click **OK**.
+Delete a DNS record Find the desired DNS record, click **Delete** in the **Actions** column, and then click **OK**. Delete multiple DNS records at a time Select the DNS records that you want to delete. Click **Batch Delete** in the lower-left corner of the page, and then click **OK**. ines
 
-| Parameter | Description |
-|---|---|
-| Line Name | Enter a line name. |
-| Sorting Method | Select a sorting behavior. Insert at the Beginning Insert at the End Insert Before Selected Line Note The line sorting number determines the priority of the line. A smaller number indicates a higher priority. |
-| Insert Before Current Line | Select the line to insert the new line before. Note This parameter is required if you set Sorting Method to Insert Before Selected Line. |
-
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int ines
-
-## Resolution lines
+## 5 Resolution lines
 
 A resolution line is an address library that identifies the source of a Domain Name System (DNS) request. Resolution lines can be referenced by cross-cloud shared domain names.
 
-### Add and manage lines
+### 5.1 Add and manage lines
 
 **Add a line**
 
@@ -221,11 +195,18 @@ A resolution line is an address library that identifies the source of a Domain N
 3. On the **Resolution Line** page, click **Add Line**.
 4. In the **Add Line** dialog box, set the following parameters.
 
+| Parameter | Description |
+|---|---|
+| Line Name | Enter a line name. |
+| Sorting Method | Select a sorting behavior. Insert at the Beginning Insert at the End Insert Before Selected Line Note The line sorting number determines the priority of the line. A smaller number indicates a higher priority. |
+| Insert Before Current Line | Select the line to insert the new line before. Note This parameter is required if you set Sorting Method to Insert Before Selected Line. |
+
+ines
+
 | IPv4 Address Range | Enter the IPv4 address range. You must specify either an IPv4 Address Range or an IPv6 Address Range. Format: Standard IPv4 address format Example: 192.168.1.1 192.168.1.2 Note Enter an IPv4 address in one row. You can enter up to 1,000 IPv4 addresses in multiple rows.. |
 |---|---|
 | IPv6 Address Range | Enter the IPv6 address range. You must specify either an IPv4 Address Range or an IPv6 Address Range. Format: Standard IPv6 address format Example: 2400:3200::6666 2400:3200::6688 Note Enter one IPv6 address per line. You can enter a maximum of 1,000 lines. Duplicate entries are not allowed. |
 
-Apsara Stack DNS Apsara Stack DNS (Multicloud Int ines
 5. Click **OK**.
 
 **More operations**
@@ -241,10 +222,7 @@ Click **Advanced Filter** and enter filter conditions to find a specific line. C
 1. On the **Resolution Line** page, find the target line and click **Modify** in the **Actions** column.
 2. In the **Modify Line** dialog box, modify the **Line Name**, **IPv4 Address Range**, or **IPv6**
 **Address Range**, and then click **OK**.
-
-**Note**
-
-You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**. Apsara Stack DNS Apsara Stack DNS (Multicloud Int ines
+You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**. ines
 
 **Sort lines**
 
@@ -252,8 +230,6 @@ You must specify either an **IPv4 Address Range** or an **IPv6 Address Range**. 
 2. In the **Sort Line** dialog box, set the **Sorting Method** and click **OK**.
 
 **Delete a line**
-
-**Note**
 
 To delete a line, you must first dissociate it from all scheduling instances.
 1. (Method 1) On the **Resolution Line** page, find the target line and click **Delete** in the

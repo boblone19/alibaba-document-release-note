@@ -3,14 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Product In
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 35
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Product Introduction 20260901.pdf"
+source_pdf: "4d5dd09f2686d5a5_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Product Introduction 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20Dev%20Product%20Introduction%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Product Introduction 20260901
 
-## Product details
+## Table of Contents
+
+- 1 Product details
+- 2 Product value
+- 3 Use cases
+- 4 Functions and features
+
+## 1 Product details
 
 Model Studio-Enterprise Edition is an enterprise-grade development platform for large model agents, providing a one-stop toolchain for domain-specific knowledge processing and management, agent building, and capability evaluation.
 
@@ -22,7 +29,7 @@ As large model technology moves into real-world production, enterprises face thr
 
 Model Studio-Enterprise Edition is an enterprise-grade dual platform for large model application development and knowledge processing. It provides a full lifecycle toolchain covering development, debugging, evaluation, observability, and O&M, and integrates core capabilities such as knowledge processing, agent building, and tool ecosystem management. For knowledge processing, the platform uses end-to-end multimodal parsing to manage various data modalities, including documents, images, audio/video, and data tables. It includes built-in deep-parsing templates to accurately process over 10 types of professional content, such as financial reports, academic papers, and policy documents. The platform enables complex table parsing, formula recognition, and image understanding, helping enterprises quickly build a high-quality knowledge base and providing foundational support for AI applications like RAG Q&A. For agent development, the platform provides comprehensive support for a wide range of scenarios: On the one hand, by integrating RAG for knowledge enhancement, custom workflow orchestration, and ReAct reasoning and decision-making mechanisms, developers can flexibly build various types of agents, such as knowledge Q&A, workflow-driven, and autonomous planning agents, meeting a wide range of needs from simple interactions to complex decision-making. On the other hand, the platform offers an open MCP and tool ecosystem that expands agent capabilities while ensuring stability under high concurrency and secure script execution. Additionally, the platform features a fine-grained memory management mechanism. Shortterm memory supports context compression and entity extraction, while long-term memory enables personalized services through user profiles and task maps. Combined with custom generation and retrieval strategies, this allows agents to continuously evolve. With these capabilities, Model Studio-Enterprise Edition provides a one-stop service for knowledge processing, agent development, evaluation, and O&M, establishing it as a core engine driving intelligent transformation across industries.
 
-## Product value
+## 2 Product value
 
 Model Studio Dedicated Edition integrates extensive industry-specific knowledge and data to support a wide range of applications. It addresses questions across multiple domains and provides accurate, comprehensive answers. This platform lets you efficiently manage solutions for all your use cases in one place.
 
@@ -42,7 +49,7 @@ Customer value Integrate diverse tools efficiently to enhance development flexib
 
 Customer value Effectively manage long context for agent tasks using short-term memory, and deliver personalized experiences through long-term memory. This helps your agents improve and become more helpful with each interaction. Key capabilities Short-term memory management includes features like history round setting, long context compression, key entity extraction, and custom memory read and write. Long-term memory supports key Q&A, user profiling, and task mapping. It also lets you define custom memory generation, organization, and recall strategies.
 
-## Use cases
+## 3 Use cases
 
 This topic describes how Model Studio can be applied in various industries. Model Studio lets organizations across various industries build powerful AI applications. The following sections highlight several key use cases.
 
@@ -74,7 +81,7 @@ You can build an agent that combines retrieval from a local knowledge base with 
 
 Using a multimodal model, you can build a tool that comprehensively understands both video and audio content from educational lectures. This capability automatically extracts key concepts, organizes them into a structured knowledge system, and generates concise summaries.
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the functions and features of Model Studio Exclusive.
 

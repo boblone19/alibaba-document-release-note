@@ -2,14 +2,172 @@
 title: "Apsara Uni-manager Operations Console Developer Guide 20260703"
 product_version: "V3.18.6"
 pdf_pages: 580
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Developer Guide 20260703.pdf"
+source_pdf: "f96b05bd0b0dd405_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Developer Guide 20260703.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020260703.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Uni-manager Operations Console Developer Guide 20260703
 
-## Usage notes on
+## Table of Contents
+
+- 1 Usage notes on development documentation
+- 2 Release notes for Apsara Uni-manager Operations Console SDK
+- 3 Unrecommended and unavailable APIs
+- 4 Preparations
+  - 4.1 Log on to the Apsara Uni-manager Operations Console
+  - 4.2 Obtain a region ID
+  - 4.3 Permissions required to call APIs
+  - 4.4 Obtain an AccessKey pair
+  - 4.5 Obtain the service domain name
+  - 4.6 Test network connectivity
+  - 4.7 Obtain the ASO Console SDKs
+  - 4.8 Confirm the QPS limits of API operations
+- 5 Call Examples for SDK for Java
+  - 5.1 Getting started
+  - 5.2 Use the SDK
+    - 5.2.1 Install Apsara Uni-manager Operations Console SDK for Java
+    - 5.2.2 Initiate an API request
+- 6 Use Apsara Uni-manager Operations Console SDK for Python to call API operations
+  - 6.1 Getting started
+  - 6.2 Use the SDK
+    - 6.2.1 Install Apsara Uni-manager Operations Console SDK for Python
+    - 6.2.2 Initiate an API request
+- 7 API Reference
+  - 7.1 Apsara Uni-manager Operations Console
+    - 7.1.1 Monitoring and alerting
+      - 7.1.1.1 GetIncidentAlertList
+        - 7.1.1.1.1 Supplementary details on GetIncidentAlertList
+      - 7.1.1.2 GetMetricData
+        - 7.1.1.2.1 GetMetricData monitoring metric details
+      - 7.1.1.3 ListAlertByUpdateTime
+      - 7.1.1.4 GetCpuMetrics
+      - 7.1.1.5 GetDiskMetrics
+      - 7.1.1.6 GetIoMetrics
+      - 7.1.1.7 GetLoadMetrics
+      - 7.1.1.8 GetMemMetrics
+      - 7.1.1.9 GetTrafficMetrics
+    - 7.1.2 Inventory management
+      - 7.1.2.1 GetOverview
+      - 7.1.2.2 GetSlbInventoryInfo
+      - 7.1.2.3 GetEcsInventoryByCurrent
+      - 7.1.2.4 GetEcsInventoryList
+      - 7.1.2.5 GetEcsInventoryByZoneId
+      - 7.1.2.6 GetVms
+      - 7.1.2.7 GetEbsClusterTypeInfo
+      - 7.1.2.8 GetNasInventoryInfo
+      - 7.1.2.9 GetOssInventoryInfo
+      - 7.1.2.10 GetOtsInnerInventoryInfo
+      - 7.1.2.11 GetRdsInventoryInfo
+      - 7.1.2.12 GetSlsInnerInfo
+      - 7.1.2.13 GetPanguInventoryByClusterName
+      - 7.1.2.14 GetInventoryStat
+      - 7.1.2.15 GetIntegratedProductInventory
+        - 7.1.2.15.1 Supplementary details on GetIntegratedProductInventory capacity metrics
+    - 7.1.3 Inspections
+      - 7.1.3.1 InspectionGetTaskList
+      - 7.1.3.2 InspectionGetTaskExecution
+      - 7.1.3.3 InspectionGetReport
+    - 7.1.4 Platform products
+      - 7.1.4.1 GetProductListDetail
+      - 7.1.4.2 GetProductList
+      - 7.1.4.3 GetProductVersion
+      - 7.1.4.4 DescribeProductStatus
+      - 7.1.4.5 GetClusterListByProductDetail
+      - 7.1.4.6 GetClusterListByProduct
+      - 7.1.4.7 GetClusters
+      - 7.1.4.8 GetServiceInstanceDetail
+      - 7.1.4.9 GetServerRoleList
+      - 7.1.4.10 GetServerroleVersion
+      - 7.1.4.11 GetServiceRole
+      - 7.1.4.12 GetServerRoleMachinesDetail
+    - 7.1.5 Equipment assets
+      - 7.1.5.1 GetMachineByIp
+      - 7.1.5.2 GetMachineByName
+      - 7.1.5.3 GetMachineListDetail
+      - 7.1.5.4 GetMachineList
+      - 7.1.5.5 GetNetworkMachineByIp
+      - 7.1.5.6 GetNetworkMachineByName
+    - 7.1.6 Platform data
+      - 7.1.6.1 GetCurrentUserStats
+      - 7.1.6.2 ListUsers
+      - 7.1.6.3 CheckUserRole
+      - 7.1.6.4 RevokeRoleFromUser
+      - 7.1.6.5 GrantRoleToUser
+    - 7.1.7 Event Center
+      - 7.1.7.1 GetEventList
+      - 7.1.7.2 GetRelationAlert
+      - 7.1.7.3 GetEventProcessLog
+      - 7.1.7.4 HandleEvent
+      - 7.1.7.5 GetSubIncidentByCondition
+  - 7.2 Network Operations Console
+    - 7.2.1 Network element management
+      - 7.2.1.1 GetSwitchInfo
+      - 7.2.1.2 GetTopoInfo
+      - 7.2.1.3 ListPorts
+      - 7.2.1.4 ListSwTotal
+      - 7.2.1.5 GetPortInfo
+      - 7.2.1.6 GetXnetFlow
+      - 7.2.1.7 GetHardwareUtilization
+      - 7.2.1.8 GetPortTransPowerByName
+    - 7.2.2 Networking services
+      - 7.2.2.1 AllSlbClusters
+      - 7.2.2.2 GetNodeList
+      - 7.2.2.3 GetSlbLvsNodeStats
+      - 7.2.2.4 GetSlbLvsClusterStats
+      - 7.2.2.5 GetLbStats
+      - 7.2.2.6 GetSlbProxyClusterStats
+      - 7.2.2.7 GetSlbProxyNodeStats
+      - 7.2.2.8 GetXgwClusterList
+      - 7.2.2.9 GetXgwClusterAll
+      - 7.2.2.10 GetXgwMachineList
+  - 7.3 Storage Operations Console
+    - 7.3.1 Apsara Distributed File System O&M
+      - 7.3.1.1 GetPanguStorageCapacity
+    - 7.3.2 CDS O&M
+      - 7.3.2.1 DescribeOssCluster
+      - 7.3.2.2 DescribeClusterCapacity
+      - 7.3.2.3 DescribeHosts
+      - 7.3.2.4 DescribeMetrics
+      - 7.3.2.5 DescribeStorageClusters
+      - 7.3.2.6 DescribeBlockClusters
+    - 7.3.3 EBS O&M
+      - 7.3.3.1 ListOnLineDiskInfo
+      - 7.3.3.2 QueryDiskInfo
+  - 7.4 ApsaraDB Operations and Maintenance System
+    - 7.4.1 RDS O&M
+      - 7.4.1.1 DescribeHostInfoByDbType
+      - 7.4.1.2 DescribeCustInsSlaveInfo
+      - 7.4.1.3 DescribeResourceInventory
+      - 7.4.1.4 DescribeComboInventory
+  - 7.5 Disaster Recovery Management
+    - 7.5.1 Important notes
+    - 7.5.2 Error codes
+    - 7.5.3 Primary data center: zone-disaster recovery management platform
+      - 7.5.3.1 GetProdcutSwitchLogs
+      - 7.5.3.2 GetProdcutSwitchProcess
+      - 7.5.3.3 GetSyncCheckResult
+      - 7.5.3.4 FinishProdcutSwitch
+      - 7.5.3.5 ListProductDrillPlan
+      - 7.5.3.6 ExcuteProdcutSwitch
+      - 7.5.3.7 GetDrillProductStatus
+    - 7.5.4 Zone disaster recovery management platform for secondary data centers
+      - 7.5.4.1 GetProdcutSwitchLogs
+      - 7.5.4.2 GetProductSwitchProcess
+      - 7.5.4.3 GetSyncCheckResult
+      - 7.5.4.4 ListProductDrillPlan
+      - 7.5.4.5 ExcuteProdcutSwitch
+      - 7.5.4.6 GetDrillProductStatus
+      - 7.5.4.7 FinishProductSwitch
+  - 7.6 Apsara Uni-manager Management Console
+    - 7.6.1 Platform data
+      - 7.6.1.1 GetCurrentUserStats
+- 8 References
+  - 8.1 Troubleshooting based on logs when an API operation call is abnormal
+
+development documentation
+
+## 1 Usage notes on development documentation
 
 **development documentation**
 
@@ -33,6 +191,17 @@ use.
 4. In the left-side navigation pane, select the name of the product that you want to view.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
+or Apsara Uni-manager Operation s Console SDK
+
+## 2 Release notes for Apsara Uni-manager Operations Console SDK
+
+**Uni-manager Operations**
+
+**Console SDK**
+
+This topic describes the release notes for the Apsara Uni-manager Operations Console SDK of Apsara Stack V3.18.6, including API releases, modifications, and known issues.
+
+**SDK version hisstory**
 
 | Version | Release date | Description |
 |---|---|---|
@@ -44,15 +213,18 @@ use.
 | 3.18.6-1 | September 2025 | Two API operations are added to the event center. |
 | 3.18.6-0 | April 2025 | Released Apsara Uni-manager Operations Console from which external API operations of Apsara Stack V3.18.6 can be called. |
 
-## Release notes for Apsara
+d and unavailable APIs
 
-**Uni-manager Operations**
+## 3 Unrecommended and unavailable APIs
 
-**Console SDK**
+**unavailable APIs**
 
-This topic describes the release notes for the Apsara Uni-manager Operations Console SDK of Apsara Stack V3.18.6, including API releases, modifications, and known issues.
+Some APIs provided by the Apsara Uni-manager Operations Console of versions earlier than 3.18.1 are not supported or not recommended for use. This topic describes the APIs that are not supported or not recommended for use.
 
-**SDK version hisstory**
+**Note**
+
+**Unrecommended** APIs are still described in the API reference, and alternative APIs
+are provided. In general, unrecommended APIs will no longer be supported in later versions of the Apsara Uni-manager Operations Console. Most **unsupported** APIs do not have alternative APIs and are not described in the API reference. Only a small number of unsupported APIs have alternative APIs with similar functions.
 
 | API | Availability | Alternative API |
 |---|---|---|
@@ -69,16 +241,7 @@ This topic describes the release notes for the Apsara Uni-manager Operations Con
 | GetOverview | Not recommended | GetIntegratedProductInventory |
 | GetSlbInventoryInfo | Not recommended | GetIntegratedProductInventory |
 
-## Unrecommended and
-
-**unavailable APIs**
-
-Some APIs provided by the Apsara Uni-manager Operations Console of versions earlier than 3.18.1 are not supported or not recommended for use. This topic describes the APIs that are not supported or not recommended for use.
-
-**Note**
-
-**Unrecommended** APIs are still described in the API reference, and alternative APIs
-are provided. In general, unrecommended APIs will no longer be supported in later versions of the Apsara Uni-manager Operations Console. Most **unsupported** APIs do not have alternative APIs and are not described in the API reference. Only a small number of unsupported APIs have alternative APIs with similar functions.
+d and unavailable APIs
 
 | GetEcsInventoryByCurrent | Not recommended | GetIntegratedProductInventory |
 |---|---|---|
@@ -101,9 +264,9 @@ are provided. In general, unrecommended APIs will no longer be supported in late
 | GetTaskInfo | No longer supported | N/A |
 | GetTaskList | No longer supported | N/A |
 
-## Preparations
+## 4 Preparations
 
-### Log on to the Apsara Uni-
+### 4.1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -129,7 +292,7 @@ You can click the current language in the upper-right corner to switch to anothe
 Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-### Obtain a region ID
+### 4.2 Obtain a region ID
 
 This topic describes how to obtain a region ID.
 
@@ -142,7 +305,7 @@ You must obtain a region ID before you call API operations of the Apsara Uni-man
 1. Log on to the Apsara Uni-manager Operations Console.
 2. On the left side of the top navigation bar, you can view the region ID.
 
-### Permissions required to call
+### 4.3 Permissions required to call APIs
 
 **APIs**
 
@@ -160,107 +323,113 @@ When you use the Apsara Stack software development kit (SDK) to access Apsara St
 
 **Uni-manager Operations Console User Guide.**
 
+**Apsara Uni-manager Operations Console**
+
 | Categor y | API name | Permitted roles |
 |---|---|---|
 | Monitori ng and alerts | GetIncidentAlertList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
-|  | GetMetricData | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
-|  | ListAlertByUpdateTime | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
-|  | GetAlertList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
-|  | GetCpuMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetDiskMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetIoMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetLoadMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetMetricData | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+|   | ListAlertByUpdateTime | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+|   | GetAlertList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+|   | GetCpuMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetDiskMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetIoMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetLoadMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
 
-|  | GetMemMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetMemMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
 |---|---|---|
-|  | GetTrafficMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetOverview | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetSlbInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetEcsInventoryByCurrent | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetEcsInventoryList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetEcsInventoryByZoneId | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetVms | Preset roles: system administrator, system viewer |
-|  | GetEbsClusterTypeInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetTrafficMetrics | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetOverview | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetSlbInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetEcsInventoryByCurrent | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetEcsInventoryList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetEcsInventoryByZoneId | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetVms | Preset roles: system administrator, system viewer |
+|   | GetEbsClusterTypeInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
 
-| Inventor y manage ment |  |  |
+| Inventor y manage ment |   |   |
 |---|---|---|
-|  | GetNasInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetOssInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetOtsInnerInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetRdsInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetSlsInnerInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetPanguInventoryByClusterNam e | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetInventoryStat | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | GetIntegratedProductInventory | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | InspectionGetTaskList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Inspection Management Read- _ only", "Inspection Management Read/Write". _ |
+|   | GetNasInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetOssInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetOtsInnerInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetRdsInventoryInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetSlsInnerInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetPanguInventoryByClusterNam e | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetInventoryStat | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | GetIntegratedProductInventory | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | InspectionGetTaskList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Inspection Management Read- _ only", "Inspection Management Read/Write". _ |
 
-| Developer G |  |  |
+| Developer G |   |   |
 |---|---|---|
-| Inspecti on manage ment |  |  |
-|  | InspectionGetTaskExecution | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Inspection Management Read- _ only", "Inspection Management Read/Write". _ |
-|  | InspectionGetReport | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Inspection Management Read- _ only", "Inspection Management Read/Write". _ |
-|  | GetProductListDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetProductList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetProductVersion | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | DescribeProductStatus | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetClusterListByProductDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+| Inspecti on manage ment |   |   |
+|   | InspectionGetTaskExecution | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Inspection Management Read- _ only", "Inspection Management Read/Write". _ |
+|   | InspectionGetReport | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Inspection Management Read- _ only", "Inspection Management Read/Write". _ |
+|   | GetProductListDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetProductList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetProductVersion | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | DescribeProductStatus | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetClusterListByProductDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
 
-| Platform products |  |  |
+| Platform products |   |   |
 |---|---|---|
-|  | GetClusterListByProduct | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetClusters | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetServiceInstanceDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetServerRoleList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetServerroleVersion | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetServiceRole | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetServerRoleMachinesDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetClusterListByProduct | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetClusters | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetServiceInstanceDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetServerRoleList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetServerroleVersion | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetServiceRole | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetServerRoleMachinesDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
 
 | Asset devices | GetMachineByIp | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
 |---|---|---|
-|  | GetMachineByName | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetMachineListDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetMachineList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetNetworkMachineByIp | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
-|  | GetNetworkMachineByName | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetMachineByName | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetMachineListDetail | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetMachineList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetNetworkMachineByIp | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
+|   | GetNetworkMachineByName | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Infrastructure Management Basics Read-only", "Apsara _ Infrastructure Management Basics Read/Write". _ |
 | Platform data | GetCurrentUserStats | Preset roles: system administrator, system viewer |
-|  | ListUsers | Preset roles: system administrator, system viewer |
-|  | GrantRoleToUser | Role administrator |
-|  | RevokeRoleFromUser | Role administrator |
-|  | CheckUserRole | Role administrator, Role viewer |
+|   | ListUsers | Preset roles: system administrator, system viewer |
+|   | GrantRoleToUser | Role administrator |
+|   | RevokeRoleFromUser | Role administrator |
+|   | CheckUserRole | Role administrator, Role viewer |
 
 | Event Center | GetEventList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
 |---|---|---|
-|  | GetRelationAlert | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
-|  | GetEventProcessLog | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
-|  | HandleEvent | Preset roles: system administrator, system viewer Custom roles with the "Alert Event Read/Write" _ permission point. |
-|  | GetSubIncidentByCondition | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+|   | GetRelationAlert | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+|   | GetEventProcessLog | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+|   | HandleEvent | Preset roles: system administrator, system viewer Custom roles with the "Alert Event Read/Write" _ permission point. |
+|   | GetSubIncidentByCondition | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Alert Event Read-only", "Alert _ Event Read/Write". _ |
+
+**Network Operations Console**
 
 | Catego ry | API name | Permitted roles |
 |---|---|---|
-|  | GetSwitchInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetTopoInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | ListPorts | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetSwitchInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetTopoInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | ListPorts | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
 
-| Network element manage ment |  |  |
+| Network element manage ment |   |   |
 |---|---|---|
-|  | ListSwTotal | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetPortInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetXnetFlow | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetHardwareUtilization | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetPortTransPowerByName | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | AllSlbClusters | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetNodeList | ASO system administrator, ASO product O&M, ASO product O&M - network administrator, ASO product O&M - network inspector |
-|  | GetSlbLvsNodeStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | ListSwTotal | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetPortInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetXnetFlow | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetHardwareUtilization | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetPortTransPowerByName | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | AllSlbClusters | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetNodeList | ASO system administrator, ASO product O&M, ASO product O&M - network administrator, ASO product O&M - network inspector |
+|   | GetSlbLvsNodeStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
 
-|  | GetSlbLvsClusterStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetSlbLvsClusterStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
 |---|---|---|
-|  | GetLbStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-| Network product s |  |  |
-|  | GetSlbProxyClusterStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetSlbProxyNodeStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetXgwClusterList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetXgwClusterAll | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
-|  | GetXgwMachineList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetLbStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+| Network product s |   |   |
+|   | GetSlbProxyClusterStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetSlbProxyNodeStats | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetXgwClusterList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetXgwClusterAll | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+|   | GetXgwMachineList | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Network Operations Console Read-only", "Network Operations _ Console Read/Write". _ |
+
+**Storage Operations Console**
 
 | Catego ry | API name | Permitted roles |
 |---|---|---|
@@ -268,50 +437,54 @@ When you use the Apsara Stack software development kit (SDK) to access Apsara St
 | Pangu O&M | GetPanguStorageCapacity | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Apsara Distributed File System O&M Read-only", "Apsara Distributed File System _ O&M Read/Write". _ |
 |---|---|---|
 | CDS O&M | DescribeClusterCapacity | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
-|  | DescribeMetrics | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
-|  | DescribeStorageClusters | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
-|  | DescribeOssCluster | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
-|  | DescribeBlockClusters | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
-|  | DescribeHosts | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
+|   | DescribeMetrics | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
+|   | DescribeStorageClusters | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
+|   | DescribeOssCluster | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
+|   | DescribeBlockClusters | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
+|   | DescribeHosts | Preset role: system administrator Custom roles with the "Cloud-defined Storage O&M Read-only" permission point. _ |
+
+**Database Operations Console**
 
 | Category | API name | Permitted roles |
 |---|---|---|
 | RDS O&M | DescribeComboInventory | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
-|  | DescribeCustInsSlaveInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | DescribeCustInsSlaveInfo | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
 
-**Database Operations Console**
-
-|  | DescribeHostInfoByDbType | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | DescribeHostInfoByDbType | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
 |---|---|---|
-|  | DescribeResourceInventory | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+|   | DescribeResourceInventory | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Capacity Management Read- _ only", "Capacity Management Read/Write". _ |
+
+**Disaster recovery management**
 
 | Category | API name | Permitted roles |
 |---|---|---|
 | Primary data center zone- disaster recovery management platform | GetDrillProductStatus | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | ExecuteProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | ListProductDrillPlan | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | FinishProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | GetSyncCheckResult | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | ExecuteProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | ListProductDrillPlan | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | FinishProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetSyncCheckResult | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
 
-|  | GetProductSwitchProcess | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetProductSwitchProcess | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
 |---|---|---|
-|  | GetProductSwitchLogs | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | GetDrillProductStatus | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | ExecuteProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-| Secondary data center zone-disaster recovery management platform |  |  |
-|  | ListProductDrillPlan | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | FinishProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
-|  | GetSyncCheckResult | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetProductSwitchLogs | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetDrillProductStatus | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | ExecuteProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+| Secondary data center zone-disaster recovery management platform |   |   |
+|   | ListProductDrillPlan | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | FinishProductSwitch | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetSyncCheckResult | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
 
-|  | GetProductSwitchProcess | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetProductSwitchProcess | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
 |---|---|---|
-|  | GetProductSwitchLogs | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+|   | GetProductSwitchLogs | Preset roles: system administrator, system viewer Custom roles with one or more of the following permission points: "Zone-Disaster Recovery DR _ Monitoring", "Zone-Disaster Recovery System _ Administrator". |
+
+**Apsara Uni-manager Management Console**
 
 | Catego ry | API name | Permitted roles |
 |---|---|---|
 | Platfor m data | GetCurrentUserStats | Preset roles: system administrator, system viewer |
 
-### Obtain an AccessKey pair
+### 4.4 Obtain an AccessKey pair
 
 This topic describes how to obtain an AccessKey ID and AccessKey secret.
 
@@ -337,7 +510,7 @@ AccessKey pair.
 
 You can create up to two AccessKey pairs for RAM users per account. The Create Accesskey button is automatically disabled after two AccessKey pairs are already created.
 
-### Obtain the service domain
+### 4.5 Obtain the service domain name
 
 **name**
 
@@ -355,7 +528,7 @@ You must obtain the intranet and Internet domain names before you call API opera
 4. You can view the intranet and Internet domain names in the **Apsara Stack API calls**
 section.
 
-### Test network connectivity
+### 4.6 Test network connectivity
 
 This topic describes how to test the network connectivity of machines on which you want to call API operations.
 
@@ -365,6 +538,8 @@ The Central Region ID and Local Region ID are obtained. The Internet domain name
 
 **Test methods**
 
+**Apsara Uni-manager Operations Console**
+
 ```bash
 # The domain name of the cloud service in the Central Region.
 aso-mgr-pop-ops.${internetDomain}
@@ -372,20 +547,34 @@ aso-mgr-pop-ops.${internetDomain}
 aso-mgr-pop-ops.${region}.${internetDomain}
 ```
 
+**Examples**
+
 Run the ping or curl command to test the network connectivity of a cloud service that you want to access by calling an API.
 
 ```bash
 curl http://aso-mgr-pop-ops.inter.demo.aliyun.com curl http://aso-mgr-pop-ops.cn-region02-d02.inter.demo.aliyun.com
+```
+
+**Network Operations Console**
+
+```bash
 # The domain name of the cloud service in the Central Region.
 full-link-pop.${intranetDomain}
 # The domain name of the cloud service in the Local Region.
 full-link-pop.${region}.${intranetDomain}
 ```
 
+**Examples**
+
 Run the ping or curl command to test the network connectivity of a cloud service that you want to access by calling an API.
 
 ```bash
 curl http://full-link-pop.intra.demo.aliyun.com curl http://full-link-pop.cn-region02-d02.intra.demo.aliyun.com
+```
+
+**Storage Operations Console**
+
+```bash
 # The domain name of CDS in the Central Region and the Local Region. CDS has the same d
 omain name in the two regions. cds-management-ops-pop.${region}.${internetDomain}
 # The domain name of pgmon in the Central Region.
@@ -394,6 +583,8 @@ slalink-pgmon-pop.${intranetDomain}
 slalink-pgmon-pop.${Local Region}.${intranetDomain}
 ```
 
+**Examples**
+
 Run the ping or curl command to test the network connectivity of a cloud service that you want to access by calling an API.
 
 ```bash
@@ -401,11 +592,18 @@ Run the ping or curl command to test the network connectivity of a cloud service
 curl http://cds-management-ops-pop.cn-region01-d01.inter.demo.aliyun.com curl http://cds-management-ops-pop.cn-region02-d02.inter.demo.aliyun.com
 #pgmon
 curl http://slalink-pgmon-pop.intra.demo.aliyun.com curl http://slalink-pgmon-pop.cn-region02-d02.intra.demo.aliyun.com
+```
+
+**Apsara Uni-manager Management Console**
+
+```bash
 # The domain name of the cloud service in the Central Region.
 ascm-ops.${internetDomain}
 # The domain name of the cloud service in the Local Region.
 ascm-ops.${Local Region}.${internetDomain}
 ```
+
+**Examples**
 
 Run the ping or curl command to test the network connectivity of a cloud service that you want to access by calling an API.
 
@@ -417,21 +615,21 @@ curl http://ascm-ops.inter.demo.aliyun.com curl http://ascm-ops.cn-region02-d02.
 
 Determine whether the network connection is normal based on the returned result. If the returned result contains "InvalidAction.NotFound" or "Specified api is not found. please check your url and method", it indicates that the network connection of the domain name is normal. If the returned result contains "Connection refused", it indicates that the network connection of the domain name failed. You must create an anyTunnel-type tunnel and set the port number to 80 or 443. The "Could not resolve host" or "nodename nor servname provided, or not known" error message in the returned result indicates that the domain name resolution failed. You must check the DNS configuration of your machine.
 
-### Obtain the ASO Console SDKs
+### 4.7 Obtain the ASO Console SDKs
 
 When you call API operations of a cloud service in Apsara Stack by using the POP gateway, you must use an SDK. This topic describes how to obtain the ASO Console SDKs. The ASO Console SDKs contain sample code and examples. The SDK for Java is provided. For more information, see Alibaba Cloud SDKs. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
-### Confirm the QPS limits of API
+### 4.8 Confirm the QPS limits of API operations
 
 **operations**
 
-To ensure the stability of the Apsara Uni-manager Operations Console, the queries per second (QPS) of OpenAPI operations is limited to 10 by default, which indicates that a maximum of 10 requests are allowed per second. Generally, the return data of an OpenAPI operation is realtime data at the minute level. Therefore, the QPS of 10 can meet business requirements.
+To ensure the stability of the Apsara Uni-manager Operations Console, the queries per second (QPS) of OpenAPI operations is limited to 10 by default, which indicates that a maximum of 10 requests are allowed per second. Generally, the return data of an OpenAPI operation is realtime data at the minute level. Therefore, the QPS of 10 can meet business requirements. or SDK for Java
 
-## Call Examples for SDK for
+## 5 Call Examples for SDK for Java
 
 **Java**
 
-### Getting started
+### 5.1 Getting started
 
 This topic describes how to obtain and use Apsara Uni-manager Operations Console SDK for Java.
 
@@ -439,7 +637,7 @@ This topic describes how to obtain and use Apsara Uni-manager Operations Console
 
 Create an Apsara Uni-manager Operations Console account with the required permissions and obtain an AccessKey pair. For more information, see Obtain an AccessKey pair. Obtain the endpoints of the Apsara Uni-manager Operations Console. For more information, see Obtain the service domain name. Install Java Development Kit (JDK) 1.8 or later.
 
-#### Install Apsara Uni-manager Operations Console SDK for Java
+**Install Apsara Uni-manager Operations Console SDK for Java**
 
 If you use Apache Maven to manage Java projects, you only need to copy the content of the JAR file to the pom.xml file of the project. To use Apsara Uni-manager Operations Console SDK for Java, you must install the SDK for Java core library, Gson, and Apsara Uni-manager Operations Console SDK for Java. We recommend that you use the SDK for Java core library 4.6.0 or later, Gson 2.9.1 or later, and the latest version of Apsara Uni-manager Operations Console SDK for Java. For more information, see Release notes for Apsara Uni-manager Operations Console SDK. The following sample code provides an example on how to configure the pom.xml file:
 
@@ -469,7 +667,7 @@ latest SDK}.jar</systemPath>
 
 **Use Apsara Uni-manager Operations Console SDK for Java**
 
-To use Apsara Uni-manager Operations Console SDK for Java, perform the following steps:
+or SDK for Java To use Apsara Uni-manager Operations Console SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initiate it.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
@@ -510,6 +708,8 @@ region, isCenterRegion);
         try {
 ```
 
+or SDK for Java
+
 ```java
             GetMachineListDetailRequest getMachineListDetailRequest =
 sdkManager.getModel(GetMachineListDetailRequest.class);
@@ -532,32 +732,37 @@ client.getAcsResponse(getMachineListDetailRequest);
             // For Apsara Stack V3.18.0 and later, we recommend that you use
 Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess()) to determine whether t he API operation is called successfully.
             // For Apsara Stack of earlier versions, you can use
-"success".equalsIgnoreCase(getMachineListDetailResponse.getResult()) to determine whe ther the API operation is called successfully if the success field is not contained i n the response parameters. Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess())) {
+"success".equalsIgnoreCase(getMachineListDetailResponse.getResult()) to determine whe ther the API operation is called successfully if the success field is not contained i n the response parameters.
+            if (getMachineListDetailResponse != null &&
+Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess())) {
                 // Specify the response if the API operation is called successfully.
 System.out.println(getMachineListDetailResponse.getData().get(0).getHostName());
             } else {
                 // Print the error message if an error occurs on the backend servers.
                 System.out.println("GetMachineListDetail Request failed");
+                if (getMachineListDetailResponse != null) {
                     System.out.println("Error response is: " +
 JSONObject.toJSONString(getMachineListDetailResponse));
                 } else {
                     System.out.println("Error getting GetMachineListDetail Response, r
 esponse is null");
-                }
-            }
+```
+
+`}` `}`
+
+```java
         } catch (Exception e) {
             // Print the error message if an error occurs on the client, gateways, or
 backend servers.
             System.out.println("GetMachineListDetail Request failed");
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Use the SDK
+`}` `}` `}` or SDK for Java
 
-#### Install Apsara Uni-manager Operations
+### 5.2 Use the SDK
+
+#### 5.2.1 Install Apsara Uni-manager Operations Console SDK for Java
 
 **Console SDK for Java**
 
@@ -592,14 +797,14 @@ latest SDK}.jar</systemPath>
 </dependencies>
 ```
 
-#### Initiate an API request
+#### 5.2.2 Initiate an API request
 
 This topic describes how to use Apsara Uni-manager Operations Console SDK for Java to initiate an API request.
 
 **Procedure**
 
 1. Configure the pom.xml file.
-For more information about how to configure the pom.xml file, see Install Apsara Unimanager Operations Console SDK for Java.
+For more information about how to configure the pom.xml file, see Install Apsara Unimanager Operations Console SDK for Java. or SDK for Java
 2. Initialize Apsara Uni-manager Operations Console SDK for Java by specifying the region and
 AccessKey pair of your account. Each account has a unique AccessKey pair that consists of an AccessKey ID and an AccessKey secret. Make sure that the account has the permissions to call the API operation. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. For more information about the required role permissions, see Permissions required to call API operations.
 
@@ -640,7 +845,7 @@ SdkManager sdkManager = new SdkManager(internetDomain, intranetDomain, region, i
 ```
 
 6. Create an API request by using SDKManager.
-The request name must be in the ${apiName}Request format. Replace ${apiName} with the name of the API operation. Example: GetMachineListDetailRequest. If Apsara Uni-manager Operations Console SDK for Java includes API operations that belong to multiple services, the API requests may have identical class names. We recommend that you differentiate the identical requests based on package names.
+The request name must be in the ${apiName}Request format. Replace ${apiName} with the name of the API operation. Example: GetMachineListDetailRequest. or SDK for Java If Apsara Uni-manager Operations Console SDK for Java includes API operations that belong to multiple services, the API requests may have identical class names. We recommend that you differentiate the identical requests based on package names.
 
 ```
 GetMachineListDetailRequest getMachineListDetailRequest = sdkManager.getModel(GetMachineListDetailRequest.class); // ======== Configure operation-specific parameters. Some parameters are optional and others are required. ======== getMachineListDetailRequest.setPageNum(1); getMachineListDetailRequest.setPageSize(10); // ======== End of parameter information ========
@@ -653,7 +858,7 @@ If a request fails, Apsara Uni-manager Operations Console SDK for Java or backen
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified ac cess key is not found.
 ```
 
-To handle the errors that are returned by the backend servers, you must parse the responses. For Apsara Uni-manager Operations Console 3.18.0 or later, the exception information is specified by the success, errorCode, and errorMessage parameters in the response. success is a Boolean expression that indicates whether the request succeeded or failed. errorCode and errorMessage are both strings that indicate the error code and error message, respectively. The following sample code shows how to handle exceptions returned by the GetMachineListDetail operation:
+To handle the errors that are returned by the backend servers, you must parse the responses. For Apsara Uni-manager Operations Console 3.18.0 or later, the exception information is specified by the success, errorCode, and errorMessage parameters in the response. success is a Boolean expression that indicates whether the request succeeded or failed. errorCode and errorMessage are both strings that indicate the error code and error message, respectively. The following sample code shows how to handle exceptions returned by the GetMachineListDetail operation: or SDK for Java
 
 ```java
 try {
@@ -677,26 +882,39 @@ client.getAcsResponse(getMachineListDetailRequest);
     // For Apsara Stack V3.18.0 and later, we recommend that you use
 Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess()) to determine whether the API operation is called successfully.
     // For Apsara Stack of earlier versions, you can use
-"success".equalsIgnoreCase(getMachineListDetailResponse.getResult()) to determine w hether the API operation is called successfully if the success field is not contain ed in the response parameters. Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess())) {
+"success".equalsIgnoreCase(getMachineListDetailResponse.getResult()) to determine w hether the API operation is called successfully if the success field is not contain ed in the response parameters.
+    if (getMachineListDetailResponse != null &&
+Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess())) {
         // Specify the response if the API operation is called successfully.
 System.out.println(getMachineListDetailResponse.getData().get(0).getHostName());
     } else {
         // Print the error message if an error occurs on the backend servers.
         System.out.println("GetMachineListDetail Request failed");
+        if (getMachineListDetailResponse != null) {
             System.out.println("Error response is: " +
 JSONObject.toJSONString(getMachineListDetailResponse));
         } else {
             System.out.println("Error getting GetMachineListDetail Response,
 response is null");
-        }
-    }
+```
+
+`}` `}`
+
+```java
 } catch (Exception e) {
     // Print the error message if an error occurs on the client, gateways, or backe
 nd servers.
     System.out.println("GetMachineListDetail Request failed");
     e.printStackTrace();
-} import com.aliyun.apsarabase.unisdk.SdkManager; importcom.aliyuncs.DefaultAcsClient;
 ```
+
+`}`
+
+```java
+import com.aliyun.apsarabase.unisdk.SdkManager; importcom.aliyuncs.DefaultAcsClient;
+```
+
+or SDK for Java
 
 ```java
 potco.a yucs.eautcsC et; import com.aliyuncs.IAcsClient; import com.aliyuncs.asoops.model.v20220118.GetMachineListDetailRequest; import com.aliyuncs.asoops.model.v20220118.GetMachineListDetailResponse; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.profile.DefaultProfile; public class Example {
@@ -742,6 +960,8 @@ troubleshooting.
             getMachineListDetailRequest.putHeaderParameter("test-request-id", uuid);
 ```
 
+or SDK for Java
+
 ```java
             System.out.println("request uuid" + uuid);
             // ======== Configure operation-specific parameters. Some parameters are
@@ -754,38 +974,41 @@ client.getAcsResponse(getMachineListDetailRequest);
             // For Apsara Stack V3.18.0 and later, we recommend that you use
 Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess()) to determine whether the API operation is called successfully.
             // For Apsara Stack of earlier versions, you can use
-"success".equalsIgnoreCase(getMachineListDetailResponse.getResult()) to determine wheth er the API operation is called successfully if the success field is not contained in th e response parameters. Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess())) {
+"success".equalsIgnoreCase(getMachineListDetailResponse.getResult()) to determine wheth er the API operation is called successfully if the success field is not contained in th e response parameters.
+            if (getMachineListDetailResponse != null &&
+Boolean.TRUE.equals(getMachineListDetailResponse.getSuccess())) {
                 // Specify the response if the API operation is called successfully.
 System.out.println(getMachineListDetailResponse.getData().get(0).getHostName());
             } else {
                 // Print the error message if an error occurs on the backend servers.
                 System.out.println("GetMachineListDetail Request failed");
+                if (getMachineListDetailResponse != null) {
                     System.out.println("Error response is: " +
 JSONObject.toJSONString(getMachineListDetailResponse));
                 } else {
                     System.out.println("Error getting GetMachineListDetail Response, res
 ponse is null");
-                }
-            }
+```
+
+`}` `}`
+
+```java
         } catch (Exception e) {
             // Print the error message if an error occurs on the client, gateways, or ba
 ckend servers.
             System.out.println("GetMachineListDetail Request failed");
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-s
+`}` `}` `}` manager Operations Console SD K for Python to call API operation s
 
-## Use Apsara Uni-manager
+## 6 Use Apsara Uni-manager Operations Console SDK for Python to call API operations
 
 **Operations Console SDK for**
 
 **Python to call API operations**
 
-### Getting started
+### 6.1 Getting started
 
 This topic describes how to obtain and use Apsara Uni-manager Operations Console SDK for Python.
 
@@ -793,7 +1016,7 @@ This topic describes how to obtain and use Apsara Uni-manager Operations Console
 
 Create an Apsara Uni-manager Operations Console account with the required permissions and obtain an AccessKey pair. For more information, see Obtain an AccessKey pair. Obtain the endpoints of the Apsara Uni-manager Operations Console. For more information, see Obtain the service domain name.
 
-#### Install Apsara Uni-manager Operations Console SDK for Python
+**Install Apsara Uni-manager Operations Console SDK for Python**
 
 To call the API operations of Apsara Uni-manager, you must install the SDK for Python core library and Apsara Uni-manager Operations Console SDK for Python. We recommend that you use the SDK for Python core library 2.11.5 or later, and use the latest version of Apsara Unimanager Operations Console SDK for Python. For more information about the latest version, see Release notes for Apsara Uni-manager Operations Console SDK. For more information about how to install the SDK for Python, see Install Apsara Uni-manager Operations Console SDK for Python.
 
@@ -818,10 +1041,12 @@ from aliyuncs.sdk_manager import UniSdk from aliyunsdkcore.acs_exception.excepti
 region=region, isCenterRegion=isCenterRegion)
 ```
 
-s
+manager Operations Console SD K for Python to call API operation s
 
 ```python
+  print("Start GetMachineListDetail Request")
   try:
+        describeProductStatusInstance =
 sdkManager.get_class(DescribeProductStatusRequest)
         # Configure the timeout period. Unit: milliseconds. Default value: 10000.
         readTimeoutMillis = 30000
@@ -834,20 +1059,26 @@ ubleshooting.
         # ======== Configure operation-specific parameters. Some parameters are optio
 nal and others are required. ========
         describeProductStatusInstance.set_project("aso")
+        describeProductStatusResponse =
 client.do_action_with_exception(describeProductStatusInstance)
         strDescribeProductStatusResponse = str(describeProductStatusResponse,
-encoding="utf-8") json.loads(strDescribeProductStatusResponse)
+encoding="utf-8")
+        describeProductStatusJsonResponse =
+json.loads(strDescribeProductStatusResponse)
         # For earlier versions, you need to use
 describeProductStatusJsonResponse["message"] == "success" to determine whether the AP I operation is called successfully if the success field is not contained in the respo nse parameters.
         if (
+            describeProductStatusJsonResponse != None
             and describeProductStatusJsonResponse["success"]
 ```
 
-)
+`)`
 
 ```python
+            print(strDescribeProductStatusResponse)
         else:
             // Print the error message if an error occurs on the backend server.
+            print("GetMachineListDetail request failed:")
             if describeProductStatusJsonResponse is not None:
                 print(f"Error response is: {strDescribeProductStatusResponse}")
             else:
@@ -862,11 +1093,11 @@ when an error occurs. Example: print error messages. if __name__ == "__main__":
   testUniSDK()
 ```
 
-### Use the SDK
+### 6.2 Use the SDK
 
-s
+manager Operations Console SD K for Python to call API operation s
 
-#### Install Apsara Uni-manager Operations
+#### 6.2.1 Install Apsara Uni-manager Operations Console SDK for Python
 
 **Console SDK for Python**
 
@@ -892,7 +1123,7 @@ If you did not install pip, you can decompress the tar package and run a setup.p
 tar -zxvf aliyun-python-uni-sdk-3.18.1.0.tar.gz cd aliyun-python-uni-sdk-3.18.1.0 python setup.py install
 ```
 
-#### Initiate an API request
+#### 6.2.2 Initiate an API request
 
 This topic describes how to use Apsara Uni-manager Operations Console SDK for Python to initiate an API request.
 
@@ -908,7 +1139,7 @@ region = "<yourRegion>" # Replace the value with the region ID. ak = "<yourAcces
 ```
 
 3. (Optional) Configure connectivity settings, including the proxy.
-If you want to use a proxy server, you must configure the proxy. Assume that the IP address of the proxy is 10.0.0.0 and the port number is 54321. The following sample code provides an example on how to configure the proxy: s
+If you want to use a proxy server, you must configure the proxy. Assume that the IP address of the proxy is 10.0.0.0 and the port number is 54321. The following sample code provides an example on how to configure the proxy: manager Operations Console SD K for Python to call API operation s
 
 ```
 proxy = "http://10.0.0.0:54321" client = AcsClient(ak=ak, secret=sk, region_id=region, proxy={"http": proxy})
@@ -948,7 +1179,7 @@ from aliyuncs.aliyunsdkascmops.request.v20220531.GetCurrentUserStatsRequest impo
 ```
 
 7. Initiate a request and handle exceptions.
-If a request fails, Apsara Uni-manager Operations Console SDK for Python or backend servers will return an error message. All the errors need to be handled manually. Apsara Uni-manager Operations Console SDK for Python may return the following types of error messages: ServerException and ClientException. ServerException indicates a server error, and ClientException indicates a client error. s For example, if the following error message is returned, it indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
+If a request fails, Apsara Uni-manager Operations Console SDK for Python or backend servers will return an error message. All the errors need to be handled manually. Apsara Uni-manager Operations Console SDK for Python may return the following types of error messages: ServerException and ClientException. ServerException indicates a server error, and ClientException indicates a client error. manager Operations Console SD K for Python to call API operation s For example, if the following error message is returned, it indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
 ```
 aliyunsdkcore.acs_exception.exceptions.ServerException: HTTP Status: 404 Error:Inva lidAccessKeyId.NotFound Specified access key is not found.
@@ -958,7 +1189,7 @@ To handle the errors that are returned by the backend servers, you must parse th
 
 ```python
 # Initiate a request and view the result.
-client.do_action_with_exception(describeProductStatusInstance)
+describeProductStatusResponse = client.do_action_with_exception(describeProductStatusInstance)
 # Configure the required parameters.
 describeProductStatusRequest.set_project("ASO") print(str(describeProductStatusResponse, encoding="utf-8")) from aliyuncs.sdk_manager import UniSdk from aliyunsdkcore.acs_exception.exceptions import ServerException, ClientException from aliyunsdkcore.client import AcsClient from aliyuncs.aliyunsdkasoops.request.v20220118.DescribeProductStatusRequest import Des cribeProductStatusRequest def testUniSDK():
   interDomain="<yourInternetDomain>"
@@ -970,7 +1201,9 @@ describeProductStatusRequest.set_project("ASO") print(str(describeProductStatusR
   client = AcsClient(ak=ak, secret=sk, region_id=region)
   sdkManager = UniSdk(interDomain=interDomain, intraDomain=intraDomain, region=region,
 isCenterRegion=isCenterRegion)
+  print("Start GetMachineListDetail Request")
   try:
+        describeProductStatusInstance =
 sdkManager.get_class(DescribeProductStatusRequest)
         # Configure the timeout period. Unit: milliseconds. Default value: 10000.
         readTimeoutMillis = 30000
@@ -984,26 +1217,32 @@ leshooting.
 Someparametersare
 ```
 
-s
+manager Operations Console SD K for Python to call API operation s
 
 ```bash
         # ======== Configure operation-specific parameters. Some parameters are
 optional and others are required. ========
         describeProductStatusInstance.set_project("aso")
+        describeProductStatusResponse =
 client.do_action_with_exception(describeProductStatusInstance)
         strDescribeProductStatusResponse = str(describeProductStatusResponse,
-encoding="utf-8") json.loads(strDescribeProductStatusResponse)
+encoding="utf-8")
+        describeProductStatusJsonResponse =
+json.loads(strDescribeProductStatusResponse)
         # For earlier versions, you need to use
 describeProductStatusJsonResponse["message"] == "success" to determine whether the API operation is called successfully if the success field is not contained in the response parameters.
         if (
+            describeProductStatusJsonResponse != None
             and describeProductStatusJsonResponse["success"]
 ```
 
-)
+`)`
 
 ```python
+            print(strDescribeProductStatusResponse)
         else:
             // Print the error message if an error occurs on the backend server.
+            print("GetMachineListDetail request failed:")
             if describeProductStatusJsonResponse is not None:
                 print(f"Error response is: {strDescribeProductStatusResponse}")
             else:
@@ -1018,20 +1257,15 @@ en an error occurs. Example: print error messages. if __name__ == "__main__":
   testUniSDK()
 ```
 
-| Parameter | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lang _ | Strin g | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
-| aliyun territor _ y | Strin g | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
+## 7 API Reference
 
-## API Reference
-
-### Apsara Uni-manager
+### 7.1 Apsara Uni-manager Operations Console
 
 **Operations Console**
 
-#### Monitoring and alerting
+#### 7.1.1 Monitoring and alerting
 
-##### GetIncidentAlertList
+##### 7.1.1.1 GetIncidentAlertList
 
 Query the list of alerts.
 1. The result of this operation is similar to that of the Alerts page on the Apsara Uni-manager
@@ -1042,6 +1276,11 @@ Reference in the Maintenance ASO section on the Help and Open Platform page. You
 after Apsara Stack V3.14.
 
 **Request headers**
+
+| Parameter | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| aliyun lang _ | Strin g | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
+| aliyun territor _ y | Strin g | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
 
 **Request syntax**
 
@@ -1067,11 +1306,11 @@ GET /openapi/popResource/aso/incident/api/alert/list HTTP/1.1
 | orderByStart TimeAsc | Boolean | Query | Not required | true | Specify whether to sort the alerts in ascending order based on the time when they are triggered. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorMessage | String | "" | The error message. |
-
-**Response parameters**
 
 | data | Map | {"pageSize":"1","total":"42589","pa ge":"1","totalPage":"42589","object List": [{"shield":"false","cluster":"","check Interval":"0","metricName":"base b _ ase meta project checker","code":" _ _ _ base base meta project checker"," _ _ _ _ source":"bcc","type":"default","dura tion":"183463223","alarmCount":"3 052","hostname":"docker01021201 2134","startTime":"2022-11- 12T00:01:16.000+0000","id":"3136 0","product":"","handleUserName":" ","level":"2","updateTime":"2022- 11- 14T02:58:38.000+0000","alarmNa me":"base base meta project chec _ _ _ _ ker","message":"base - base base meta project checker - _ _ _ _ warning - The Job: [mc export ] _ state is Failed!","lastAlarmTime":"2022-11- 14T02:58:38.000+0000","serverRol e":"","alarmRule":"","createTime":" 2022-11- 12T00:01:16.000+0000","service":" ","endTime":"1970-01- 01T00:00:00.000+0000","region":"c n-XX-XX- XX","currentValue":"","dimensions": [{"standard":"true","value":"docker 0123456789","key":"hostname"}, {"standard":"false","value":"tcheck" ,"key":"source"}],"status":"0"}]} | The returned result. |
 |---|---|---|---|
@@ -1093,7 +1332,11 @@ GET /openapi/popResource/aso/incident/api/alert/list HTTP/1.1
 | errorTitle | String | Service fault | The error title. |
 | requestId | String | ab05b875-165f-43c1-ba0a- 83b973201800 | The ID of the request. |
 
-The data parameters include the following fields: totalPage: The total number of returned pages. pageSize: The number of entries per page. total: The total number of returned alerts. page: The page number. objectList: The list of returned alerts. id: The alert ID. startTime: The time when the alert was triggered. endTime: The time when the alert was closed. duration: The duration of the alert. message: The alert message. code: The alert code. metricName: The metric name. metricProject: The monitored project. alarmName: The name of the alert. alarmRule: The rule that describes how the alert is triggered. currentValue: The current value. source: The alert source. type: The type of the alert. dimensions: The alert dimensions. key: The dimension key. value: The dimension value. standard: Indicate whether the dimension is a standard dimension. level: The severity level of the alert. The values 1 to 4 indicate P1 to P4. status: The status of the alert. 0 indicates that the alert is not handled, 1 indicates that the alert is being processed, and 2 indicates that the alert is closed. alarmCount: The number of alerts. handleUserName: The user who handled the alert. shield: Indicate whether the alert is under shield. region: The ID of the region. product: The product that triggered the alert. cluster: The cluster. service: The service. hostname: The host name. checkInterval: The interval at which the system checks for alerts. lastAlarmTime: The last time when an alert was triggered. updateTime: The update time. description: The description of the alert. Example for request
+The data parameters include the following fields: totalPage: The total number of returned pages. pageSize: The number of entries per page. total: The total number of returned alerts. page: The page number. objectList: The list of returned alerts. id: The alert ID. startTime: The time when the alert was triggered. endTime: The time when the alert was closed. duration: The duration of the alert. message: The alert message. code: The alert code. metricName: The metric name. metricProject: The monitored project. alarmName: The name of the alert. alarmRule: The rule that describes how the alert is triggered. currentValue: The current value. source: The alert source. type: The type of the alert. dimensions: The alert dimensions. key: The dimension key. value: The dimension value. standard: Indicate whether the dimension is a standard dimension. level: The severity level of the alert. The values 1 to 4 indicate P1 to P4. status: The status of the alert. 0 indicates that the alert is not handled, 1 indicates that the alert is being processed, and 2 indicates that the alert is closed. alarmCount: The number of alerts. handleUserName: The user who handled the alert. shield: Indicate whether the alert is under shield. region: The ID of the region. product: The product that triggered the alert. cluster: The cluster. service: The service. hostname: The host name. checkInterval: The interval at which the system checks for alerts. lastAlarmTime: The last time when an alert was triggered. updateTime: The update time. description: The description of the alert.
+
+**Examples**
+
+Example for request
 
 ```
 GET /openapi/popResource/aso/incident/api/alert/list HTTP/1.1
@@ -1101,8 +1344,13 @@ GET /openapi/popResource/aso/incident/api/alert/list HTTP/1.1
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"\"\"",
  "eagleEyeTraceId":"0acd10a616545993190765214d002a",
  "cost":30,
@@ -1113,7 +1361,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "pageSize":"1",
   "page":"1",
   "objectList":[
-   {
+```
+
+`{`
+
+```json
     "shield":"false",
     "cluster":"",
     "checkInterval":"0",
@@ -1142,36 +1394,33 @@ state is Failed!",
     "region":"cn-XX-XX-XX",
     "currentValue":"",
     "dimensions":[
-     {
+```
+
+`{`
+
+```json
       "standard":"true",
       "value":"docker0123456789",
       "key":"hostname"
-},
 ```
 
-| Alert item | Code parameter value | Value of $.data.objectList[*].di mensions[*].key | Value of $. data.objectList[*].dime nsions[*].value |
-|---|---|---|---|
+`},` `},` `{`
 
 ```json
-     },
-     {
       "standard":"false",
       "value":"tcheck",
       "key":"source"
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "status":"0"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "errorMessage":"\"\"",
  "errorCode":"\"\"",
  "message":"\"\"",
@@ -1184,12 +1433,11 @@ state is Failed!",
  "errorTitle":"Service error",
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "errorStack":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-###### Supplementary details on
+###### 7.1.1.1.1 Supplementary details on GetIncidentAlertList
 
 ##### GetIncidentAlertList
 
@@ -1199,36 +1447,35 @@ This topic provides supplementary details on the request and response parameters
 
 Multiple key-value pairs may be returned for $.data.objectList[*].dimensions[*]. The following table describes the key-value pair that matches each alert item. N/A indicates any key-value pair. For more information about the alert ID and alert information, see Alarm Reference in the Maintenance ASO section on the Help and Open Platform page. You can find the page by clicking the Help documentation icon in the upper-right corner of the Apsara Uni-manager Operations Console.
 
+| Alert item | Code parameter value | Value of $.data.objectList[*].di mensions[*].key | Value of $. data.objectList[*].dime nsions[*].value |
+|---|---|---|---|
+
 | High CPU temperature | hardware monitor ne _ _ w alarm _ | monitor | CPUMonitor |
 |---|---|---|---|
-| Abnormal motherboard voltage |  |  | BoardMonitor |
-| Memory ECC error |  |  | MemoryMonitor |
-| Number of hard disk media exceptions ≥ 100 |  |  | DiskError |
-| Input packet receiving error rate of the network interface controller (NIC) > 1/100000 |  |  | NetworkCableMonitor |
-| NIC flapping |  |  | NetworkCableMonitor |
-| Power outage |  |  | PowerMonitor |
-| RAID controller failure |  |  | RaidCard |
-| Hard disk media exception |  |  | DiskError |
-| High NVMe SSD temperature |  |  | PcieFlashMonitor |
-| RAID controller restart or exception |  |  | SasRaidMonitor |
-| Fan speed < 1,000 RPM |  |  | FanMonitor |
+| Abnormal motherboard voltage |   |   | BoardMonitor |
+| Memory ECC error |   |   | MemoryMonitor |
+| Number of hard disk media exceptions ≥ 100 |   |   | DiskError |
+| Input packet receiving error rate of the network interface controller (NIC) > 1/100000 |   |   | NetworkCableMonitor |
+| NIC flapping |   |   | NetworkCableMonitor |
+| Power outage |   |   | PowerMonitor |
+| RAID controller failure |   |   | RaidCard |
+| Hard disk media exception |   |   | DiskError |
+| High NVMe SSD temperature |   |   | PcieFlashMonitor |
+| RAID controller restart or exception |   |   | SasRaidMonitor |
+| Fan speed < 1,000 RPM |   |   | FanMonitor |
 | NTP offset | host ntp sync state al _ _ _ _ arm | N/A | N/A |
 | Damaged disk of Apsara Distributed File System | check pangu disk err _ _ _ or | N/A | N/A |
 
-##### GetMetricData
+##### 7.1.1.2 GetMetricData
+
+Queries monitoring data. GetMetricData can be used for on-demand display of monitoring dashboards, but is not suitable for directly connecting to three-party monitoring and alerting systems (scheduled collection). If you need to connect to three-party monitoring and alerting systems, we recommend that you use the GetIncidentAlertList operation.
+
+**Request headers**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Hea der | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun terr _ itory | Strin g | Hea der | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| metricProj ect | Strin g | Quer y | Yes | tjm tianji _ | The monitoring project. |
-
-Queries monitoring data. GetMetricData can be used for on-demand display of monitoring dashboards, but is not suitable for directly connecting to three-party monitoring and alerting systems (scheduled collection). If you need to connect to three-party monitoring and alerting systems, we recommend that you use the GetIncidentAlertList operation.
-
-**Request headers**
 
 **Request syntax**
 
@@ -1238,17 +1485,16 @@ GET /openapi/popResource/aso/incident/api/metric/getMetricData HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| metricProj ect | Strin g | Quer y | Yes | tjm tianji _ | The monitoring project. |
+
 | metricNam e | Strin g | Quer y | Yes | cpu host _ | The metric name. |
 |---|---|---|---|---|---|
 | startTime | Long | Quer y | Yes | 1654582166000 | The beginning of the time range to query. Unit: milliseconds. |
 | endTime | Long | Quer y | Yes | 1654582166000 | The end of the time range to query. Unit: milliseconds. |
 | period | Integ er | Quer y | Yes | 600 | The monitoring period for which data is queried. Unit: seconds. |
 | dimension s | Strin g | Quer y | Yes | {"host": "d22XXXX.XXX.XXX.XXX" } | Dimensions of the metric in the JSON format. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO INCIDENT SYS _ _ TEM ERROR _ | The error code. |
-| errorMessage | String | Response error caused by: query tianjimon error, code=400 | The error message. |
 
 The following code block shows an example of how to specify the key-value pairs of dimensions:
 
@@ -1259,6 +1505,11 @@ Map<String, String> dimensionsMap = new HashMap<>(); dimensionsMap.put("cluster"
 For more information about the key-value pairs that can be set in `dimensionsMap` , see the Supplementary details on GetMetricData topic.
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO INCIDENT SYS _ _ TEM ERROR _ | The error code. |
+| errorMessage | String | Response error caused by: query tianjimon error, code=400 | The error message. |
 
 | data | Map | {"size":"1","datapo ints": [{"util max":"1.1"," _ hirq avg":"0.0","sy _ s avg":"0.4333333 _ 333333333","sirq _ avg":"0.0","wait av _ g":"0.0999999999 9999999","util avg _ ":"0.86666666666 66667","user max" _ :"0.5","hirq max":" _ 0.0","host":"d22i0X X.XXX.XXX.XXX","s irq max":"0.0","sys _ max":"0.6","user _ _ avg":"0.422222222 2222222","wait m _ ax":"0.1","timesta mp":"1654582200 000"}],"total":"1"} | The response. |
 |---|---|---|---|
@@ -1281,6 +1532,8 @@ For more information about the key-value pairs that can be set in `dimensionsMap
 | errorTitle | String | Response error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -1289,14 +1542,23 @@ GET /openapi/popResource/aso/incident/api/metric/getMetricData HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0acd18e316545993193995236d0029",
  "cost":30,
  "code":"500",
  "data":{
   "datapoints":[
-   {
+```
+
+`{`
+
+```json
     "util_max":"1.1",
     "hirq_avg":"0.0",
     "sys_avg":"0.4333333333333333",
@@ -1311,15 +1573,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "user_avg":"0.4222222222222222",
     "wait_max":"0.1",
     "timestamp":"1654582200000"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "total":"1",
   "size":"1"
- },
+```
+
+`},`
+
+```json
  "errTitle":"\"\"",
  "serviceRole":"\"\"",
  "errorMessage":"Response error caused by: query tianjimon error, code=400",
@@ -1335,620 +1600,615 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "errorTitle":"Response error",
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "errMessage":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-###### GetMetricData monitoring metric details
-
-| Metric | Metric name (metricNa me request parameter) | Metric dimensions (keys for the dimensions parameter, set in JSON format) | Minimum granularity (minimum value for the period parameter) | Metric field (key for elements in the $.data.data points array) | Field description | Unit |
-|---|---|---|---|---|---|---|
-| Process status on the server | check task _ host _ | cluster host | 60 | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |  |
-|  |  |  |  | thread usa _ ge | Host thread usage | % |
-|  |  |  |  | z count _ | Number of zombie processes | Unit |
-|  |  |  |  | d count _ | Number of defunct processes | count |
-|  |  |  |  | pid usage _ | Host PID usage | % |
-| DNS configurati on status of the server | check dns _ _ host | cluster host | 60 | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |  |
-|  |  |  |  | dns state _ | The status of the DNS service. 0: success. 1: failed. |  |
+###### 7.1.1.2.1 GetMetricData monitoring metric details
 
 This topic provides additional information about the request and response parameters for the `GetMetricData` API.
 1. Set the `metricProject` request parameter to tjm_tianji.
 2. The other parameters are described as follows:
 
-| Disk mount status | check mou _ nt host _ | cluster host | 60 | state | Indicates whether the required file does not exist or fails to be parsed. 0: success. 1: failed. |  |
+| Metric | Metric name (metricNa me request parameter) | Metric dimensions (keys for the dimensions parameter, set in JSON format) | Minimum granularity (minimum value for the period parameter) | Metric field (key for elements in the $.data.data points array) | Field description | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | mount stat _ e | Indicates whether the device specified in /etc/fstab is mounted. 0: mounted. 1: not mounted. |  |
-|  |  |  |  | mount poi _ nt state _ | Indicates whether a mounted device is incorrectly mounted in read-only (ro) mode. 0: no error. 1: error. |  |
-| Kernel out- of-memory (OOM) error check status | check kern _ el host _ | cluster host | 60 | cluster | Cluster name |  |
-|  |  |  |  | host | Physical machine name |  |
-|  |  |  |  | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |  |
-|  |  |  |  | kernel stat _ e | Kernel status |  |
+| Process status on the server | check task _ host _ | cluster host | 60 | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |   |
+|   |   |   |   | thread usa _ ge | Host thread usage | % |
+|   |   |   |   | z count _ | Number of zombie processes | Unit |
+|   |   |   |   | d count _ | Number of defunct processes | count |
+|   |   |   |   | pid usage _ | Host PID usage | % |
+| DNS configurati on status of the server | check dns _ _ host | cluster host | 60 | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |   |
+|   |   |   |   | dns state _ | The status of the DNS service. 0: success. 1: failed. |   |
 
-| Network connection status of the server | check netw _ ork host _ | cluster host | 60 | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |  |
+| Disk mount status | check mou _ nt host _ | cluster host | 60 | state | Indicates whether the required file does not exist or fails to be parsed. 0: success. 1: failed. |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | close wait _ _ count | Number of TCP connection s in the CLOSE WAI _ T state | Unit |
-| Service load | load host _ | cluster host | 60 | host | Physical machine name |  |
-|  |  |  |  | load1 avg _ | Average system load over one minute | % |
-|  |  |  |  | load1 max _ | Maximum system load over one minute | % |
-|  |  |  |  | load5 avg _ | Average system load over five minutes | % |
-|  |  |  |  | load5 max _ | Maximum system load over five minutes | % |
-|  |  |  |  | load15 avg _ | Average system load over 15 minutes | % |
-|  |  |  |  | load15 ma _ x | Maximum system load over 15 minutes | % |
+|   |   |   |   | mount stat _ e | Indicates whether the device specified in /etc/fstab is mounted. 0: mounted. 1: not mounted. |   |
+|   |   |   |   | mount poi _ nt state _ | Indicates whether a mounted device is incorrectly mounted in read-only (ro) mode. 0: no error. 1: error. |   |
+| Kernel out- of-memory (OOM) error check status | check kern _ el host _ | cluster host | 60 | cluster | Cluster name |   |
+|   |   |   |   | host | Physical machine name |   |
+|   |   |   |   | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |   |
+|   |   |   |   | kernel stat _ e | Kernel status |   |
 
-| Server CPU utilization | cpu host _ | cluster host | 60 | host | Physical machine name |  |
+| Network connection status of the server | check netw _ ork host _ | cluster host | 60 | state | Indicates whether the script ran successfull y. 0: success. 1: fail. |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | user avg _ | Average time in user mode | 0 |
-|  |  |  |  | sys avg _ | Average time in kernel mode | 0 |
-|  |  |  |  | wait avg _ | Average I/O wait time | 0 |
-|  |  |  |  | hirq avg _ | Average CPU time for processing hardware interrupts | 0 |
-|  |  |  |  | sirq avg _ | Average CPU time for processing software interrupts | 0 |
-|  |  |  |  | util avg _ | Average CPU utilization | 0 |
-|  |  |  |  | util max _ | Maximum CPU utilization | 0 |
-|  |  |  |  | host | Physical machine name |  |
-|  |  |  |  | used avg _ | Average used memory | KiB |
-|  |  |  |  | used max _ | Maximum used memory | KiB |
+|   |   |   |   | close wait _ _ count | Number of TCP connection s in the CLOSE WAI _ T state | Unit |
+| Service load | load host _ | cluster host | 60 | host | Physical machine name |   |
+|   |   |   |   | load1 avg _ | Average system load over one minute | % |
+|   |   |   |   | load1 max _ | Maximum system load over one minute | % |
+|   |   |   |   | load5 avg _ | Average system load over five minutes | % |
+|   |   |   |   | load5 max _ | Maximum system load over five minutes | % |
+|   |   |   |   | load15 avg _ | Average system load over 15 minutes | % |
+|   |   |   |   | load15 ma _ x | Maximum system load over 15 minutes | % |
 
-|  |  |  |  | buff avg _ | Average buffer memory | KiB |
+| Server CPU utilization | cpu host _ | cluster host | 60 | host | Physical machine name |   |
 |---|---|---|---|---|---|---|
-| Server memory usage | memo host _ | cluster host | 60 |  |  |  |
-|  |  |  |  | buff max _ | Maximum buffer memory | KiB |
-|  |  |  |  | cach avg _ | Average cache memory | KiB |
-|  |  |  |  | cach max _ | Maximum cache memory | KiB |
-|  |  |  |  | total avg _ | Average total memory | KiB |
-|  |  |  |  | total max _ | Maximum total memory | KiB |
-|  |  |  |  | util avg _ | Average memory usage. Formula: (total - free - buff - cache) / total × 100% | 0 |
-|  |  |  |  | util max _ | Maximum memory usage. Formula: (total - free - buff - cache) / total × 100% | 0 |
-|  |  |  |  | host | Physical machine name |  |
-|  |  |  |  | partition | Partition name |  |
+|   |   |   |   | user avg _ | Average time in user mode | 0 |
+|   |   |   |   | sys avg _ | Average time in kernel mode | 0 |
+|   |   |   |   | wait avg _ | Average I/O wait time | 0 |
+|   |   |   |   | hirq avg _ | Average CPU time for processing hardware interrupts | 0 |
+|   |   |   |   | sirq avg _ | Average CPU time for processing software interrupts | 0 |
+|   |   |   |   | util avg _ | Average CPU utilization | 0 |
+|   |   |   |   | util max _ | Maximum CPU utilization | 0 |
+|   |   |   |   | host | Physical machine name |   |
+|   |   |   |   | used avg _ | Average used memory | KiB |
+|   |   |   |   | used max _ | Maximum used memory | KiB |
 
-| Developer Guid | e·API Referen | ce |  |  |  |  |
+|   |   |   |   | buff avg _ | Average buffer memory | KiB |
 |---|---|---|---|---|---|---|
-| Server disk space usage | disk host _ | cluster host partition | 60 |  |  |  |
-|  |  |  |  | free avg _ | Average free space on the partition | bytes |
-|  |  |  |  | free max _ | Maximum free space on the partition | Byte |
-|  |  |  |  | used avg _ | Average used space on the partition | Byte |
-|  |  |  |  | used max _ | Maximum used space on the partition | Byte |
-|  |  |  |  | totl avg _ | Average total space on the partition | Byte |
-|  |  |  |  | totl max _ | Maximum total space on the partition | bytes |
-|  |  |  |  | util avg _ | Average space usage of the partition | 0 |
-|  |  |  |  | util max _ | Maximum space usage of the partition | 0 |
-|  |  |  |  | ifree avg _ | Average number of free inodes | Unit |
-|  |  |  |  | ifree max _ | Maximum number of free inodes | Unit |
+| Server memory usage | memo host _ | cluster host | 60 |   |   |   |
+|   |   |   |   | buff max _ | Maximum buffer memory | KiB |
+|   |   |   |   | cach avg _ | Average cache memory | KiB |
+|   |   |   |   | cach max _ | Maximum cache memory | KiB |
+|   |   |   |   | total avg _ | Average total memory | KiB |
+|   |   |   |   | total max _ | Maximum total memory | KiB |
+|   |   |   |   | util avg _ | Average memory usage. Formula: (total - free - buff - cache) / total × 100% | 0 |
+|   |   |   |   | util max _ | Maximum memory usage. Formula: (total - free - buff - cache) / total × 100% | 0 |
+|   |   |   |   | host | Physical machine name |   |
+|   |   |   |   | partition | Partition name |   |
 
-|  |  |  |  | itotl avg _ | Average total number of inodes | Unit |
+| Developer Guid | e·API Referen | ce |   |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | itotl max _ | Maximum total number of inodes | Item |
-|  |  |  |  | iused avg _ | Average number of used inodes | Unit |
-|  |  |  |  | iused max _ | Maximum number of used inodes | Unit |
-|  |  |  |  | iutil avg _ | Average inode usage | % |
-|  |  |  |  | iutil max _ | Maximum inode usage | % |
-|  |  |  |  | host | Physical machine name |  |
-|  |  |  |  | ifin avg _ | Average inbound traffic of the network interface card (NIC) | bytes/s |
-|  |  |  |  | ifin max _ | Maximum inbound traffic of the NIC | bytes/s |
-|  |  |  |  | ifout avg _ | Average outbound traffic of the NIC | bytes/s |
+| Server disk space usage | disk host _ | cluster host partition | 60 |   |   |   |
+|   |   |   |   | free avg _ | Average free space on the partition | bytes |
+|   |   |   |   | free max _ | Maximum free space on the partition | Byte |
+|   |   |   |   | used avg _ | Average used space on the partition | Byte |
+|   |   |   |   | used max _ | Maximum used space on the partition | Byte |
+|   |   |   |   | totl avg _ | Average total space on the partition | Byte |
+|   |   |   |   | totl max _ | Maximum total space on the partition | bytes |
+|   |   |   |   | util avg _ | Average space usage of the partition | 0 |
+|   |   |   |   | util max _ | Maximum space usage of the partition | 0 |
+|   |   |   |   | ifree avg _ | Average number of free inodes | Unit |
+|   |   |   |   | ifree max _ | Maximum number of free inodes | Unit |
 
-| Server network traffic | traffic host _ | cluster host | 60 |  |  |  |
+|   |   |   |   | itotl avg _ | Average total number of inodes | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | ifout max _ | Maximum outbound traffic of the NIC | bytes/s |
-|  |  |  |  | pktin | Packet receiving rate of the NIC | packets/s |
-|  |  |  |  | pktout | Packet sending rate of the NIC | packets/s |
-|  |  |  |  | pkterr avg _ | Average packet error rate of the NIC | packets/s |
-|  |  |  |  | pkterr max _ | Maximum packet error rate of the NIC | packets/s |
-|  |  |  |  | pktdrp avg _ | Average packet drop rate of the NIC | packets/s |
-|  |  |  |  | pktdrp ma _ x | Maximum packet drop rate of the NIC | packets/s |
-|  |  |  |  | host | Physical machine name |  |
-|  |  |  |  | TCP _ | Total number of TCP connection s | Unit |
-|  |  |  |  | TCP avg _ _ | Average number of TCP connection s | Unit |
+|   |   |   |   | itotl max _ | Maximum total number of inodes | Item |
+|   |   |   |   | iused avg _ | Average number of used inodes | Unit |
+|   |   |   |   | iused max _ | Maximum number of used inodes | Unit |
+|   |   |   |   | iutil avg _ | Average inode usage | % |
+|   |   |   |   | iutil max _ | Maximum inode usage | % |
+|   |   |   |   | host | Physical machine name |   |
+|   |   |   |   | ifin avg _ | Average inbound traffic of the network interface card (NIC) | bytes/s |
+|   |   |   |   | ifin max _ | Maximum inbound traffic of the NIC | bytes/s |
+|   |   |   |   | ifout avg _ | Average outbound traffic of the NIC | bytes/s |
 
-|  |  |  |  | TCP max _ _ | Maximum number of TCP connection s | Unit |
+| Server network traffic | traffic host _ | cluster host | 60 |   |   |   |
 |---|---|---|---|---|---|---|
-| Server TCP connection status | tcp conns _ _ host | cluster host | 60 |  |  |  |
-|  |  |  |  | estab _ | Number of connection s in the ESTABLISH ED state | Unit |
-|  |  |  |  | estab ma _ _ x | Maximum number of connection s in the ESTABLISH ED state | count |
-|  |  |  |  | estab su _ _ m | Total number of connection s in the ESTABLISH ED state | Unit |
-|  |  |  |  | estab avg _ _ | Average number of connection s in the ESTABLISH ED state | Unit |
-|  |  |  |  | synrecv _ | Number of connection s in the SYN RCVD _ state | Unit |
-|  |  |  |  | synrecv a _ _ vg | Average number of connection s in the SYN RCVD _ state | unit |
-|  |  |  |  | closed _ | Number of connection s in the CLOSED state | count |
+|   |   |   |   | ifout max _ | Maximum outbound traffic of the NIC | bytes/s |
+|   |   |   |   | pktin | Packet receiving rate of the NIC | packets/s |
+|   |   |   |   | pktout | Packet sending rate of the NIC | packets/s |
+|   |   |   |   | pkterr avg _ | Average packet error rate of the NIC | packets/s |
+|   |   |   |   | pkterr max _ | Maximum packet error rate of the NIC | packets/s |
+|   |   |   |   | pktdrp avg _ | Average packet drop rate of the NIC | packets/s |
+|   |   |   |   | pktdrp ma _ x | Maximum packet drop rate of the NIC | packets/s |
+|   |   |   |   | host | Physical machine name |   |
+|   |   |   |   | TCP _ | Total number of TCP connection s | Unit |
+|   |   |   |   | TCP avg _ _ | Average number of TCP connection s | Unit |
 
-|  |  |  |  | closed ma _ _ x | Maximum number of connection s in the CLOSED state | Unit |
+|   |   |   |   | TCP max _ _ | Maximum number of TCP connection s | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | closed su _ _ m | Total number of connection s in the CLOSED state | Unit |
-|  |  |  |  | closed av _ _ g | Average number of connection s in the CLOSED state | Unit |
-|  |  |  |  | timewait _ | Number of connection s in the TIME WAIT _ state | count |
-|  |  |  |  | timewait _ _ max | Maximum number of connection s in the TIME WAIT _ state | Unit |
-|  |  |  |  | timewait _ _ sum | Total number of connection s in the TIME WAIT _ state | Item |
-|  |  |  |  | timewait _ _ avg | Average number of connection s in the TIME WAIT _ state | Unit |
-|  |  |  |  | ports _ | Number of ports | count |
-| 1 |  |  |  |  |  |  |
+| Server TCP connection status | tcp conns _ _ host | cluster host | 60 |   |   |   |
+|   |   |   |   | estab _ | Number of connection s in the ESTABLISH ED state | Unit |
+|   |   |   |   | estab ma _ _ x | Maximum number of connection s in the ESTABLISH ED state | count |
+|   |   |   |   | estab su _ _ m | Total number of connection s in the ESTABLISH ED state | Unit |
+|   |   |   |   | estab avg _ _ | Average number of connection s in the ESTABLISH ED state | Unit |
+|   |   |   |   | synrecv _ | Number of connection s in the SYN RCVD _ state | Unit |
+|   |   |   |   | synrecv a _ _ vg | Average number of connection s in the SYN RCVD _ state | unit |
+|   |   |   |   | closed _ | Number of connection s in the CLOSED state | count |
 
-|  |  |  |  | ports avg _ _ | Average number of ports | Item |
+|   |   |   |   | closed ma _ _ x | Maximum number of connection s in the CLOSED state | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | ports max _ _ | Maximum number of ports | Unit |
-| Server TCP traffic status | tcp host _ | cluster host | 60 | host | Physical machine name |  |
-|  |  |  |  | active avg _ | Average number of active TCP connection openings | Unit |
-|  |  |  |  | pasive avg _ | Average number of passive TCP connection openings | count |
-|  |  |  |  | EstReset a _ vg | Average number of resets that occurred in the ESTABLISH ED state | Unit |
-|  |  |  |  | retran avg _ | Average TCP retransmis sion rate | % |
-|  |  |  |  | host | Physical machine name |  |
-|  |  |  |  | disk | Disk device name, such as sda, sdg, or sdb |  |
+|   |   |   |   | closed su _ _ m | Total number of connection s in the CLOSED state | Unit |
+|   |   |   |   | closed av _ _ g | Average number of connection s in the CLOSED state | Unit |
+|   |   |   |   | timewait _ | Number of connection s in the TIME WAIT _ state | count |
+|   |   |   |   | timewait _ _ max | Maximum number of connection s in the TIME WAIT _ state | Unit |
+|   |   |   |   | timewait _ _ sum | Total number of connection s in the TIME WAIT _ state | Item |
+|   |   |   |   | timewait _ _ avg | Average number of connection s in the TIME WAIT _ state | Unit |
+|   |   |   |   | ports _ | Number of ports | count |
+| 1 |   |   |   |   |   |   |
 
-|  |  |  |  | util avg _ | Average percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
+|   |   |   |   | ports avg _ _ | Average number of ports | Item |
 |---|---|---|---|---|---|---|
-|  |  |  |  | util max _ | Maximum percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
-|  |  |  |  | rrqms avg _ | Average number of merged read requests sent to the device per second | requests/s |
-|  |  |  |  | rrqms max _ | Maximum number of merged read requests sent to the device per second | requests/s |
-|  |  |  |  | wrqms avg _ | Average number of merged write requests sent to the device per second | requests/s |
+|   |   |   |   | ports max _ _ | Maximum number of ports | Unit |
+| Server TCP traffic status | tcp host _ | cluster host | 60 | host | Physical machine name |   |
+|   |   |   |   | active avg _ | Average number of active TCP connection openings | Unit |
+|   |   |   |   | pasive avg _ | Average number of passive TCP connection openings | count |
+|   |   |   |   | EstReset a _ vg | Average number of resets that occurred in the ESTABLISH ED state | Unit |
+|   |   |   |   | retran avg _ | Average TCP retransmis sion rate | % |
+|   |   |   |   | host | Physical machine name |   |
+|   |   |   |   | disk | Disk device name, such as sda, sdg, or sdb |   |
 
-| Server disk I/O usage | io host _ | cluster host disk | 60 |  |  |  |
+|   |   |   |   | util avg _ | Average percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
 |---|---|---|---|---|---|---|
-|  |  |  |  | wrqms ma _ x | Maximum number of merged write requests sent to the device per second | requests/s |
-|  |  |  |  | rs avg _ | Average number of read requests sent to the device per second | requests/s |
-|  |  |  |  | rs max _ | Maximum number of read requests sent to the device per second | Requests per second |
-|  |  |  |  | ws avg _ | Average number of write requests sent to the device per second | requests/s |
-|  |  |  |  | ws max _ | Maximum number of write requests sent to the device per second | requests/s |
-|  |  |  |  | rsecs avg _ | Average number of sectors read from the device per second | sectors/s |
-| > Document V | ersion: 202607 | 03 |  |  |  |  |
+|   |   |   |   | util max _ | Maximum percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
+|   |   |   |   | rrqms avg _ | Average number of merged read requests sent to the device per second | requests/s |
+|   |   |   |   | rrqms max _ | Maximum number of merged read requests sent to the device per second | requests/s |
+|   |   |   |   | wrqms avg _ | Average number of merged write requests sent to the device per second | requests/s |
 
-|  |  |  |  | rsecs max _ | Maximum number of sectors read from the device per second | sectors/s |
+| Server disk I/O usage | io host _ | cluster host disk | 60 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | wsecs avg _ | Average number of sectors written to the device per second | sectors/s |
-|  |  |  |  | wsecs max _ | Maximum number of sectors written to the device per second | sectors/s |
-|  |  |  |  | rqsize avg _ | Average size of requests sent to the device | KB |
-|  |  |  |  | rqsize max _ | Maximum size of requests sent to the device | KB |
-|  |  |  |  | qusize avg _ | Average queue length of requests sent to the device | Unit |
-|  |  |  |  | qusize ma _ x | Maximum queue length of requests sent to the device | Unit |
+|   |   |   |   | wrqms ma _ x | Maximum number of merged write requests sent to the device per second | requests/s |
+|   |   |   |   | rs avg _ | Average number of read requests sent to the device per second | requests/s |
+|   |   |   |   | rs max _ | Maximum number of read requests sent to the device per second | Requests per second |
+|   |   |   |   | ws avg _ | Average number of write requests sent to the device per second | requests/s |
+|   |   |   |   | ws max _ | Maximum number of write requests sent to the device per second | requests/s |
+|   |   |   |   | rsecs avg _ | Average number of sectors read from the device per second | sectors/s |
+| > Document V | ersion: 202607 | 03 |   |   |   |   |
 
-|  |  |  |  | await avg _ | Average wait time for each device I/O operation | ms |
+|   |   |   |   | rsecs max _ | Maximum number of sectors read from the device per second | sectors/s |
 |---|---|---|---|---|---|---|
-|  |  |  |  | await max _ | Maximum wait time for each device I/O operation | ms |
-|  |  |  |  | svctm avg _ | Average service time for I/O requests sent to the device | ms |
-|  |  |  |  | svctm max _ | Maximum service time for each device I/O operation | ms |
-| Service NTP clock status | ntp host _ | cluster host | 60 | host | Physical machine name |  |
-|  |  |  |  | sync _ | Indicates whether the clock is synchroniz ed with the Network Time Protocol (NTP) server. 0: no. 1: yes. |  |
-|  |  |  |  | offset _ (The offset depends on sync. If sync is 1, the offset is 0.) | The time offset compared with the NTP server. | ms |
-|  |  |  |  | cluster | Cluster name |  |
+|   |   |   |   | wsecs avg _ | Average number of sectors written to the device per second | sectors/s |
+|   |   |   |   | wsecs max _ | Maximum number of sectors written to the device per second | sectors/s |
+|   |   |   |   | rqsize avg _ | Average size of requests sent to the device | KB |
+|   |   |   |   | rqsize max _ | Maximum size of requests sent to the device | KB |
+|   |   |   |   | qusize avg _ | Average queue length of requests sent to the device | Unit |
+|   |   |   |   | qusize ma _ x | Maximum queue length of requests sent to the device | Unit |
 
-| Developer Guid | e·API Referen | ce |  | Apsara Uni-manager Operations Consol |  |  |
+|   |   |   |   | await avg _ | Average wait time for each device I/O operation | ms |
 |---|---|---|---|---|---|---|
-| Cluster- level load statistics | load cluste _ r | cluster | 60 |  |  |  |
-|  |  |  |  | load1 avg _ | Average system load over one minute | 0 |
-|  |  |  |  | load1 max _ | Maximum system load over one minute |  |
-|  |  |  |  | load5 avg _ | Average system load over five minutes | 0 |
-|  |  |  |  | load5 max _ | Maximum system load over five minutes | 0 |
-|  |  |  |  | load15 avg _ | Average system load over 15 minutes | 0 |
-|  |  |  |  | load15 ma _ x | Maximum system load over 15 minutes |  |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | user avg _ | Average time in user mode | 0 |
-|  |  |  |  | sys avg _ | Average time in kernel mode | 0 |
-|  |  |  |  | wait avg _ | Average I/O wait time | 0 |
+|   |   |   |   | await max _ | Maximum wait time for each device I/O operation | ms |
+|   |   |   |   | svctm avg _ | Average service time for I/O requests sent to the device | ms |
+|   |   |   |   | svctm max _ | Maximum service time for each device I/O operation | ms |
+| Service NTP clock status | ntp host _ | cluster host | 60 | host | Physical machine name |   |
+|   |   |   |   | sync _ | Indicates whether the clock is synchroniz ed with the Network Time Protocol (NTP) server. 0: no. 1: yes. |   |
+|   |   |   |   | offset _ (The offset depends on sync. If sync is 1, the offset is 0.) | The time offset compared with the NTP server. | ms |
+|   |   |   |   | cluster | Cluster name |   |
 
-| Cluster- level CPU utilization statistics | cpu cluster _ | cluster | 60 |  |  |  |
+| Developer Guid | e·API Referen | ce |   | Apsara Uni-manager Operations Consol |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | hirq avg _ | Average CPU time for processing hardware interrupts | 0 |
-|  |  |  |  | sirq avg _ | Average CPU time for processing software interrupts | 0 |
-|  |  |  |  | util avg _ | Average CPU utilization | 0 |
-|  |  |  |  | util max _ | Maximum CPU utilization | 0 |
-| Cluster- level memory usage statistics | memo clus _ ter | cluster | 60 | cluster | Cluster name |  |
-|  |  |  |  | used avg _ | Average used memory | KiB |
-|  |  |  |  | used max _ | Maximum used memory | KiB |
-|  |  |  |  | buff avg _ | Average buffer memory | KiB |
-|  |  |  |  | buff max _ | Maximum buffer memory | KiB |
-|  |  |  |  | cach avg _ | Average cache memory | KiB |
-|  |  |  |  | cach max _ | Maximum cache memory | KiB |
+| Cluster- level load statistics | load cluste _ r | cluster | 60 |   |   |   |
+|   |   |   |   | load1 avg _ | Average system load over one minute | 0 |
+|   |   |   |   | load1 max _ | Maximum system load over one minute |   |
+|   |   |   |   | load5 avg _ | Average system load over five minutes | 0 |
+|   |   |   |   | load5 max _ | Maximum system load over five minutes | 0 |
+|   |   |   |   | load15 avg _ | Average system load over 15 minutes | 0 |
+|   |   |   |   | load15 ma _ x | Maximum system load over 15 minutes |   |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | user avg _ | Average time in user mode | 0 |
+|   |   |   |   | sys avg _ | Average time in kernel mode | 0 |
+|   |   |   |   | wait avg _ | Average I/O wait time | 0 |
 
-|  |  |  |  | total avg _ | Average total memory | KiB |
+| Cluster- level CPU utilization statistics | cpu cluster _ | cluster | 60 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | total max _ | Maximum total memory | KiB |
-|  |  |  |  | util avg _ | Average memory usage. Formula: (total - free - buff - cache) / total × 100% | % |
-|  |  |  |  | util max _ | Maximum memory usage. Formula: (total - free - buff - cache) / total × 100% | % |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | partition | Partition name |  |
-|  |  |  |  | free avg _ | Average free space on the partition | bytes |
-|  |  |  |  | free max _ | Maximum free space on the partition | bytes |
-|  |  |  |  | used avg _ | Average used space on the partition | Byte |
+|   |   |   |   | hirq avg _ | Average CPU time for processing hardware interrupts | 0 |
+|   |   |   |   | sirq avg _ | Average CPU time for processing software interrupts | 0 |
+|   |   |   |   | util avg _ | Average CPU utilization | 0 |
+|   |   |   |   | util max _ | Maximum CPU utilization | 0 |
+| Cluster- level memory usage statistics | memo clus _ ter | cluster | 60 | cluster | Cluster name |   |
+|   |   |   |   | used avg _ | Average used memory | KiB |
+|   |   |   |   | used max _ | Maximum used memory | KiB |
+|   |   |   |   | buff avg _ | Average buffer memory | KiB |
+|   |   |   |   | buff max _ | Maximum buffer memory | KiB |
+|   |   |   |   | cach avg _ | Average cache memory | KiB |
+|   |   |   |   | cach max _ | Maximum cache memory | KiB |
 
-|  |  |  |  | used max _ | Maximum used space on the partition | Byte |
+|   |   |   |   | total avg _ | Average total memory | KiB |
 |---|---|---|---|---|---|---|
-|  |  |  |  | totl avg _ | Average total space on the partition | Byte |
-|  |  |  |  | totl max _ | Maximum total space on the partition | Byte |
-| Cluster- level disk space usage statistics | disk cluste _ r | cluster partition | 60 |  |  |  |
-|  |  |  |  | util avg _ | Average space usage of the partition | % |
-|  |  |  |  | util max _ | Maximum space usage of the partition | % |
-|  |  |  |  | ifree avg _ | Average number of free inodes | count |
-|  |  |  |  | ifree max _ | Maximum number of free inodes | Unit |
-|  |  |  |  | itotl avg _ | Average total number of inodes | Unit |
-|  |  |  |  | itotl max _ | Maximum total number of inodes | count |
-|  |  |  |  | iused avg _ | Average number of used inodes | Unit |
+|   |   |   |   | total max _ | Maximum total memory | KiB |
+|   |   |   |   | util avg _ | Average memory usage. Formula: (total - free - buff - cache) / total × 100% | % |
+|   |   |   |   | util max _ | Maximum memory usage. Formula: (total - free - buff - cache) / total × 100% | % |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | partition | Partition name |   |
+|   |   |   |   | free avg _ | Average free space on the partition | bytes |
+|   |   |   |   | free max _ | Maximum free space on the partition | bytes |
+|   |   |   |   | used avg _ | Average used space on the partition | Byte |
 
-|  |  |  |  | iused max _ | Maximum number of used inodes | Unit |
+|   |   |   |   | used max _ | Maximum used space on the partition | Byte |
 |---|---|---|---|---|---|---|
-|  |  |  |  | iutil avg _ | Average inode usage | % |
-|  |  |  |  | iutil max _ | Maximum inode usage | % |
-| Cluster- level network traffic statistics | traffic clust _ er | cluster | 60 | cluster | Cluster name |  |
-|  |  |  |  | ifin avg _ | Average inbound traffic of the NIC | bytes/s |
-|  |  |  |  | ifin max _ | Maximum inbound traffic of the NIC | bytes/s |
-|  |  |  |  | ifout avg _ | Average outbound traffic of the NIC | bytes/s |
-|  |  |  |  | ifout max _ | Maximum outbound traffic of the NIC | bytes/s |
-|  |  |  |  | pktin | Packet receiving rate of the NIC | packets/s |
-|  |  |  |  | pktout | Packet sending rate of the NIC | packets/s |
+|   |   |   |   | totl avg _ | Average total space on the partition | Byte |
+|   |   |   |   | totl max _ | Maximum total space on the partition | Byte |
+| Cluster- level disk space usage statistics | disk cluste _ r | cluster partition | 60 |   |   |   |
+|   |   |   |   | util avg _ | Average space usage of the partition | % |
+|   |   |   |   | util max _ | Maximum space usage of the partition | % |
+|   |   |   |   | ifree avg _ | Average number of free inodes | count |
+|   |   |   |   | ifree max _ | Maximum number of free inodes | Unit |
+|   |   |   |   | itotl avg _ | Average total number of inodes | Unit |
+|   |   |   |   | itotl max _ | Maximum total number of inodes | count |
+|   |   |   |   | iused avg _ | Average number of used inodes | Unit |
 
-|  |  |  |  | pkterr avg _ | Average packet error rate of the NIC | packets/s |
+|   |   |   |   | iused max _ | Maximum number of used inodes | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | pkterr max _ | Maximum packet error rate of the NIC | packets/s |
-|  |  |  |  | pktdrp avg _ | Average packet drop rate of the NIC | packets/s |
-|  |  |  |  | pktdrp ma _ x | Maximum packet drop rate of the NIC | packets/s |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | TCP _ | Total number of TCP connection s | Unit |
-|  |  |  |  | TCP avg _ _ | Average number of TCP connection s | Unit |
-|  |  |  |  | TCP max _ _ | Maximum number of TCP connection s | count |
-|  |  |  |  | estab _ | Number of connection s in the ESTABLISH ED state | count |
+|   |   |   |   | iutil avg _ | Average inode usage | % |
+|   |   |   |   | iutil max _ | Maximum inode usage | % |
+| Cluster- level network traffic statistics | traffic clust _ er | cluster | 60 | cluster | Cluster name |   |
+|   |   |   |   | ifin avg _ | Average inbound traffic of the NIC | bytes/s |
+|   |   |   |   | ifin max _ | Maximum inbound traffic of the NIC | bytes/s |
+|   |   |   |   | ifout avg _ | Average outbound traffic of the NIC | bytes/s |
+|   |   |   |   | ifout max _ | Maximum outbound traffic of the NIC | bytes/s |
+|   |   |   |   | pktin | Packet receiving rate of the NIC | packets/s |
+|   |   |   |   | pktout | Packet sending rate of the NIC | packets/s |
 
-|  |  |  |  | estab ma _ _ x | Maximum number of connection s in the ESTABLISH ED state | Count |
+|   |   |   |   | pkterr avg _ | Average packet error rate of the NIC | packets/s |
 |---|---|---|---|---|---|---|
-|  |  |  |  | estab su _ _ m | Total number of connection s in the ESTABLISH ED state | count |
-|  |  |  |  | estab avg _ _ | Average number of connection s in the ESTABLISH ED state | Unit |
-| Cluster- level TCP connection statistics | tcp conns _ _ cluster | cluster | 60 |  |  |  |
-|  |  |  |  | synrecv _ | Number of connection s in the SYN RCVD _ state | count |
-|  |  |  |  | synrecv a _ _ vg | Average number of connection s in the SYN RCVD _ state | Item |
-|  |  |  |  | closed _ | Number of connection s in the CLOSED state | Unit |
-|  |  |  |  | closed ma _ _ x | Maximum number of connection s in the CLOSED state | Unit |
+|   |   |   |   | pkterr max _ | Maximum packet error rate of the NIC | packets/s |
+|   |   |   |   | pktdrp avg _ | Average packet drop rate of the NIC | packets/s |
+|   |   |   |   | pktdrp ma _ x | Maximum packet drop rate of the NIC | packets/s |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | TCP _ | Total number of TCP connection s | Unit |
+|   |   |   |   | TCP avg _ _ | Average number of TCP connection s | Unit |
+|   |   |   |   | TCP max _ _ | Maximum number of TCP connection s | count |
+|   |   |   |   | estab _ | Number of connection s in the ESTABLISH ED state | count |
 
-|  |  |  |  | closed su _ _ m | Total number of connection s in the CLOSED state | Unit |
+|   |   |   |   | estab ma _ _ x | Maximum number of connection s in the ESTABLISH ED state | Count |
 |---|---|---|---|---|---|---|
-|  |  |  |  | closed av _ _ g | Average number of connection s in the CLOSED state | Item |
-|  |  |  |  | timewait _ | Number of connection s in the TIME WAIT _ state | Unit |
-|  |  |  |  | timewait _ _ max | Maximum number of connection s in the TIME WAIT _ state | Unit |
-|  |  |  |  | timewait _ _ sum | Total number of connection s in the TIME WAIT _ state | Item |
-|  |  |  |  | timewait _ _ avg | Average number of connection s in the TIME WAIT _ state | Unit |
-|  |  |  |  | ports _ | Number of ports | Unit |
-|  |  |  |  | ports avg _ _ | Average number of ports | Unit |
-|  |  |  |  | ports max _ _ | Maximum number of ports | count |
+|   |   |   |   | estab su _ _ m | Total number of connection s in the ESTABLISH ED state | count |
+|   |   |   |   | estab avg _ _ | Average number of connection s in the ESTABLISH ED state | Unit |
+| Cluster- level TCP connection statistics | tcp conns _ _ cluster | cluster | 60 |   |   |   |
+|   |   |   |   | synrecv _ | Number of connection s in the SYN RCVD _ state | count |
+|   |   |   |   | synrecv a _ _ vg | Average number of connection s in the SYN RCVD _ state | Item |
+|   |   |   |   | closed _ | Number of connection s in the CLOSED state | Unit |
+|   |   |   |   | closed ma _ _ x | Maximum number of connection s in the CLOSED state | Unit |
 
-| Cluster- level TCP network traffic statistics | tcp cluster _ | cluster | 60 | cluster | Cluster name |  |
+|   |   |   |   | closed su _ _ m | Total number of connection s in the CLOSED state | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | active avg _ | Average number of active TCP connection openings | Unit |
-|  |  |  |  | pasive avg _ | Average number of passive TCP connection openings | count |
-|  |  |  |  | EstReset a _ vg | Average number of resets that occurred in the ESTABLISH ED state | count |
-|  |  |  |  | retran avg _ | Average TCP retransmis sion rate | % |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | disk | Disk device name, such as sda, sdg, or sdb |  |
-|  |  |  |  | util avg _ | Average percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
+|   |   |   |   | closed av _ _ g | Average number of connection s in the CLOSED state | Item |
+|   |   |   |   | timewait _ | Number of connection s in the TIME WAIT _ state | Unit |
+|   |   |   |   | timewait _ _ max | Maximum number of connection s in the TIME WAIT _ state | Unit |
+|   |   |   |   | timewait _ _ sum | Total number of connection s in the TIME WAIT _ state | Item |
+|   |   |   |   | timewait _ _ avg | Average number of connection s in the TIME WAIT _ state | Unit |
+|   |   |   |   | ports _ | Number of ports | Unit |
+|   |   |   |   | ports avg _ _ | Average number of ports | Unit |
+|   |   |   |   | ports max _ _ | Maximum number of ports | count |
 
-|  |  |  |  | util max _ | Maximum percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
+| Cluster- level TCP network traffic statistics | tcp cluster _ | cluster | 60 | cluster | Cluster name |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | rrqms avg _ | Average number of merged read requests sent to the device per second | requests/s |
-|  |  |  |  | rrqms max _ | Maximum number of merged read requests sent to the device per second | times per second |
-|  |  |  |  | wrqms avg _ | Average number of merged write requests sent to the device per second | requests/s |
-|  |  |  |  | wrqms ma _ x | Maximum number of merged write requests sent to the device per second | requests/s |
+|   |   |   |   | active avg _ | Average number of active TCP connection openings | Unit |
+|   |   |   |   | pasive avg _ | Average number of passive TCP connection openings | count |
+|   |   |   |   | EstReset a _ vg | Average number of resets that occurred in the ESTABLISH ED state | count |
+|   |   |   |   | retran avg _ | Average TCP retransmis sion rate | % |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | disk | Disk device name, such as sda, sdg, or sdb |   |
+|   |   |   |   | util avg _ | Average percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
 
-| Cluster- level disk I/O statistics | io cluster _ | cluster disk | 60 |  |  |  |
+|   |   |   |   | util max _ | Maximum percentage of CPU time spent on I/O requests to the device (device bandwidth utilization) | % |
 |---|---|---|---|---|---|---|
-|  |  |  |  | rs avg _ | Average number of read requests sent to the device per second | requests/s |
-|  |  |  |  | rs max _ | Maximum number of read requests sent to the device per second | requests/s |
-|  |  |  |  | ws avg _ | Average number of write requests sent to the device per second | requests/s |
-|  |  |  |  | ws max _ | Maximum number of write requests sent to the device per second | requests/s |
-|  |  |  |  | rsecs avg _ | Average number of sectors read from the device per second | sectors/s |
-|  |  |  |  | rsecs max _ | Maximum number of sectors read from the device per second | sectors/s |
-|  |  |  |  | wsecs avg _ | Average number of sectors written to the device per second | sectors/s |
+|   |   |   |   | rrqms avg _ | Average number of merged read requests sent to the device per second | requests/s |
+|   |   |   |   | rrqms max _ | Maximum number of merged read requests sent to the device per second | times per second |
+|   |   |   |   | wrqms avg _ | Average number of merged write requests sent to the device per second | requests/s |
+|   |   |   |   | wrqms ma _ x | Maximum number of merged write requests sent to the device per second | requests/s |
 
-|  |  |  |  | wsecs max _ | Maximum number of sectors written to the device per second | sectors/s |
+| Cluster- level disk I/O statistics | io cluster _ | cluster disk | 60 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | rqsize avg _ | Average size of requests sent to the device | KB |
-|  |  |  |  | rqsize max _ | Maximum size of requests sent to the device | KB |
-|  |  |  |  | qusize avg _ | Average queue length of requests sent to the device | count |
-|  |  |  |  | qusize ma _ x | Maximum queue length of requests sent to the device | Unit |
-|  |  |  |  | await avg _ | Average wait time for each device I/O operation | ms |
-|  |  |  |  | await max _ | Maximum wait time for each device I/O operation | ms |
-|  |  |  |  | svctm avg _ | Maximum service time for I/O requests sent to the device | ms |
+|   |   |   |   | rs avg _ | Average number of read requests sent to the device per second | requests/s |
+|   |   |   |   | rs max _ | Maximum number of read requests sent to the device per second | requests/s |
+|   |   |   |   | ws avg _ | Average number of write requests sent to the device per second | requests/s |
+|   |   |   |   | ws max _ | Maximum number of write requests sent to the device per second | requests/s |
+|   |   |   |   | rsecs avg _ | Average number of sectors read from the device per second | sectors/s |
+|   |   |   |   | rsecs max _ | Maximum number of sectors read from the device per second | sectors/s |
+|   |   |   |   | wsecs avg _ | Average number of sectors written to the device per second | sectors/s |
 
-|  |  |  |  | svctm max _ | Maximum service time for each device I/O operation | ms |
+|   |   |   |   | wsecs max _ | Maximum number of sectors written to the device per second | sectors/s |
 |---|---|---|---|---|---|---|
-| CPU usage of the Tianji Docker instance | docker cpu _ usage _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. A server role (SR) can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | cpu usage _ min _ | Minimum user CPU usage | % |
-|  |  |  |  | cpu usage _ max _ | Maximum user CPU usage | % |
-|  |  |  |  | cpu usage _ avg _ | Average user CPU usage | % |
-|  |  |  |  | cpu util av _ _ g | User CPU usage | % |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
+|   |   |   |   | rqsize avg _ | Average size of requests sent to the device | KB |
+|   |   |   |   | rqsize max _ | Maximum size of requests sent to the device | KB |
+|   |   |   |   | qusize avg _ | Average queue length of requests sent to the device | count |
+|   |   |   |   | qusize ma _ x | Maximum queue length of requests sent to the device | Unit |
+|   |   |   |   | await avg _ | Average wait time for each device I/O operation | ms |
+|   |   |   |   | await max _ | Maximum wait time for each device I/O operation | ms |
+|   |   |   |   | svctm avg _ | Maximum service time for I/O requests sent to the device | ms |
 
-| psara Uni-ma onsole | nager Operatio | ns |  |  |  |  |
+|   |   |   |   | svctm max _ | Maximum service time for each device I/O operation | ms |
 |---|---|---|---|---|---|---|
-| System CPU usage of the Tianji Docker instance | docker cpu _ system _ | cluster hostname serverRole app dockerNam e | 60 |  |  |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | cpu syste _ m min _ | Minimum system CPU usage | % |
-|  |  |  |  | cpu syste _ m max _ | Maximum system CPU usage | % |
-|  |  |  |  | cpu syste _ m avg _ | Average system CPU usage | % |
-| User CPU usage of the Tianji Docker instance | docker cpu _ user _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | cpu user _ _ min | Minimum total CPU usage | % |
+| CPU usage of the Tianji Docker instance | docker cpu _ usage _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. A server role (SR) can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | cpu usage _ min _ | Minimum user CPU usage | % |
+|   |   |   |   | cpu usage _ max _ | Maximum user CPU usage | % |
+|   |   |   |   | cpu usage _ avg _ | Average user CPU usage | % |
+|   |   |   |   | cpu util av _ _ g | User CPU usage | % |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
 
-|  |  |  |  | cpu user _ _ max | Maximum total CPU usage | % |
+| psara Uni-ma onsole | nager Operatio | ns |   |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | cpu user a _ _ vg | Average total CPU usage | % |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-| Memory usage of the Tianji Docker instance | docker me _ mory max _ | cluster hostname serverRole app dockerNam e | 60 |  |  |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | memory m _ ax min _ | Minimum value of the maximum memory usage | byte |
-|  |  |  |  | memory m _ ax max _ | Maximum value of the maximum memory usage | byte |
-|  |  |  |  | memory m _ ax avg _ | Average value of the maximum memory usage | byte |
+| System CPU usage of the Tianji Docker instance | docker cpu _ system _ | cluster hostname serverRole app dockerNam e | 60 |   |   |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | cpu syste _ m min _ | Minimum system CPU usage | % |
+|   |   |   |   | cpu syste _ m max _ | Maximum system CPU usage | % |
+|   |   |   |   | cpu syste _ m avg _ | Average system CPU usage | % |
+| User CPU usage of the Tianji Docker instance | docker cpu _ user _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | cpu user _ _ min | Minimum total CPU usage | % |
 
-| Memory usage of the Tianji Docker instance | docker me _ mory used _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
+|   |   |   |   | cpu user _ _ max | Maximum total CPU usage | % |
 |---|---|---|---|---|---|---|
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | memory u _ sed min _ | Minimum memory usage | byte |
-|  |  |  |  | memory u _ sed max _ | Maximum memory usage | byte |
-|  |  |  |  | memory u _ sed avg _ | Average memory usage | byte |
-|  | docker me _ mory limit _ |  | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
+|   |   |   |   | cpu user a _ _ vg | Average total CPU usage | % |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+| Memory usage of the Tianji Docker instance | docker me _ mory max _ | cluster hostname serverRole app dockerNam e | 60 |   |   |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | memory m _ ax min _ | Minimum value of the maximum memory usage | byte |
+|   |   |   |   | memory m _ ax max _ | Maximum value of the maximum memory usage | byte |
+|   |   |   |   | memory m _ ax avg _ | Average value of the maximum memory usage | byte |
 
-| Memory limit of the Tianji Docker instance |  | cluster hostname serverRole app dockerNam e |  |  |  |  |
+| Memory usage of the Tianji Docker instance | docker me _ mory used _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | memory li _ mit min _ | Minimum memory limit | byte |
-|  |  |  |  | memory li _ mit max _ | Maximum memory limit | byte |
-|  |  |  |  | memory li _ mit avg _ | Average memory limit | byte |
-| Memory usage of the Tianji Docker instance | docker me _ mory util _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | memory ut _ il min _ | Minimum memory usage | % |
-|  |  |  |  | memory ut _ il max _ | Maximum memory usage | % |
-|  |  |  |  | memory ut _ il avg _ | Average memory usage | % |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | memory u _ sed min _ | Minimum memory usage | byte |
+|   |   |   |   | memory u _ sed max _ | Maximum memory usage | byte |
+|   |   |   |   | memory u _ sed avg _ | Average memory usage | byte |
+|   | docker me _ mory limit _ |   | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
 
-| Number of memory faults in the Tianji Docker instance | docker me _ mory failcn _ t | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
+| Memory limit of the Tianji Docker instance |   | cluster hostname serverRole app dockerNam e |   |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | memory fa _ ilcnt min _ | Minimum number of memory allocation failures | Unit |
-|  |  |  |  | memory fa _ ilcnt max _ | Maximum number of memory allocation failures | Unit |
-|  |  |  |  | memory fa _ ilcnt avg _ | Average number of memory allocation failures | count |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | memory li _ mit min _ | Minimum memory limit | byte |
+|   |   |   |   | memory li _ mit max _ | Maximum memory limit | byte |
+|   |   |   |   | memory li _ mit avg _ | Average memory limit | byte |
+| Memory usage of the Tianji Docker instance | docker me _ mory util _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | memory ut _ il min _ | Minimum memory usage | % |
+|   |   |   |   | memory ut _ il max _ | Maximum memory usage | % |
+|   |   |   |   | memory ut _ il avg _ | Average memory usage | % |
 
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
+| Number of memory faults in the Tianji Docker instance | docker me _ mory failcn _ t | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
 |---|---|---|---|---|---|---|
-| Disk I/O read speed of the Tianji Docker instance | docker io r _ _ ead speed _ | cluster hostname serverRole app dockerNam e | 60 |  |  |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | io read sp _ _ eed min _ | Minimum I/O read speed | bytes/s |
-|  |  |  |  | io read sp _ _ eed max _ | Maximum I/O read speed | bytes/s |
-|  |  |  |  | io read sp _ _ eed avg _ | Average I/O read speed | bytes/s |
-| Disk I/O write speed of the Tianji Docker instance | docker io _ _ write spee _ d | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | io write sp _ _ eed min _ | Minimum I/O write speed | bytes/s |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | memory fa _ ilcnt min _ | Minimum number of memory allocation failures | Unit |
+|   |   |   |   | memory fa _ ilcnt max _ | Maximum number of memory allocation failures | Unit |
+|   |   |   |   | memory fa _ ilcnt avg _ | Average number of memory allocation failures | count |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
 
-|  |  |  |  | io write sp _ _ eed max _ | Maximum I/O write speed | bytes/s |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | io write sp _ _ eed avg _ | Average I/O write speed | bytes/s |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-| Network receiving speed of the Tianji Docker instance | docker net _ work recei _ ve speed _ | cluster hostname serverRole app dockerNam e | 60 |  |  |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | network re _ ceive spee _ d min _ | Minimum network receiving speed | bytes/s |
-|  |  |  |  | network re _ ceive spee _ d max _ | Maximum network receiving speed | bytes/s |
-|  |  |  |  | network re _ ceive spee _ d avg _ | Average network receiving speed | bytes/s |
+| Disk I/O read speed of the Tianji Docker instance | docker io r _ _ ead speed _ | cluster hostname serverRole app dockerNam e | 60 |   |   |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | io read sp _ _ eed min _ | Minimum I/O read speed | bytes/s |
+|   |   |   |   | io read sp _ _ eed max _ | Maximum I/O read speed | bytes/s |
+|   |   |   |   | io read sp _ _ eed avg _ | Average I/O read speed | bytes/s |
+| Disk I/O write speed of the Tianji Docker instance | docker io _ _ write spee _ d | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | io write sp _ _ eed min _ | Minimum I/O write speed | bytes/s |
 
-| Network sending speed of the Tianji Docker instance | docker net _ work trans _ mit speed _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |  |
+|   |   |   |   | io write sp _ _ eed max _ | Maximum I/O write speed | bytes/s |
 |---|---|---|---|---|---|---|
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | dockerNam e | Container monitoring name |  |
-|  |  |  |  | network tr _ ansmit spe _ ed min _ | Minimum network sending speed | bytes/s |
-|  |  |  |  | network tr _ ansmit spe _ ed max _ | Maximum network sending speed | bytes/s |
-|  |  |  |  | network tr _ ansmit spe _ ed avg _ | Average network sending speed | bytes/s |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
+|   |   |   |   | io write sp _ _ eed avg _ | Average I/O write speed | bytes/s |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+| Network receiving speed of the Tianji Docker instance | docker net _ work recei _ ve speed _ | cluster hostname serverRole app dockerNam e | 60 |   |   |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | network re _ ceive spee _ d min _ | Minimum network receiving speed | bytes/s |
+|   |   |   |   | network re _ ceive spee _ d max _ | Maximum network receiving speed | bytes/s |
+|   |   |   |   | network re _ ceive spee _ d avg _ | Average network receiving speed | bytes/s |
 
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
+| Network sending speed of the Tianji Docker instance | docker net _ work trans _ mit speed _ | cluster hostname serverRole app dockerNam e | 60 | cluster | Cluster name |   |
 |---|---|---|---|---|---|---|
-| CPU usage of the Tianji SR process instance | process cp _ u usage _ | cluster hostname serverRole app processTyp e | 60 |  |  |  |
-|  |  |  |  | processTyp e | Container Monitor Name |  |
-|  |  |  |  | cpu usage _ min _ | Minimum CPU usage of the ontianji process | % |
-|  |  |  |  | cpu usage _ max _ | Maximum CPU usage of the ontianji process | % |
-|  |  |  |  | cpu usage _ avg _ | Average CPU usage of the ontianji process | % |
-| Memory usage of the Tianji SR process instance | process m _ em usage _ | cluster hostname serverRole app processTyp e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | processTyp e | Container Monitor Name |  |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | dockerNam e | Container monitoring name |   |
+|   |   |   |   | network tr _ ansmit spe _ ed min _ | Minimum network sending speed | bytes/s |
+|   |   |   |   | network tr _ ansmit spe _ ed max _ | Maximum network sending speed | bytes/s |
+|   |   |   |   | network tr _ ansmit spe _ ed avg _ | Average network sending speed | bytes/s |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
 
-|  |  |  |  | mem usag _ e min _ | Minimum memory usage of the ontianji process | % |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | mem usag _ e max _ | Maximum memory usage of the ontianji process | % |
-|  |  |  |  | mem usag _ e avg _ | Memory usage of the ontianji process | % |
-| Number of open file handles of the Tianji SR process instance | process op _ en fd _ | cluster hostname serverRole app processTyp e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | processTyp e | Container monitor name |  |
-|  |  |  |  | open fd mi _ _ n | Minimum number of open file handles for the ontianji process | Unit |
-|  |  |  |  | open fd m _ _ ax | Maximum number of open file handles for the ontianji process | count |
+| CPU usage of the Tianji SR process instance | process cp _ u usage _ | cluster hostname serverRole app processTyp e | 60 |   |   |   |
+|   |   |   |   | processTyp e | Container Monitor Name |   |
+|   |   |   |   | cpu usage _ min _ | Minimum CPU usage of the ontianji process | % |
+|   |   |   |   | cpu usage _ max _ | Maximum CPU usage of the ontianji process | % |
+|   |   |   |   | cpu usage _ avg _ | Average CPU usage of the ontianji process | % |
+| Memory usage of the Tianji SR process instance | process m _ em usage _ | cluster hostname serverRole app processTyp e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | processTyp e | Container Monitor Name |   |
 
-|  |  |  |  | open fd av _ _ g | Average number of open file handles for the ontianji process | Unit |
+|   |   |   |   | mem usag _ e min _ | Minimum memory usage of the ontianji process | % |
 |---|---|---|---|---|---|---|
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | processTyp e | Container Monitor Name |  |
-| Number of threads of the Tianji SR process instance | process thr _ ead num _ | cluster hostname serverRole app processTyp e | 60 |  |  |  |
-|  |  |  |  | thread nu _ m min _ | Minimum number of threads in the ontianji process | Unit |
-|  |  |  |  | thread nu _ m max _ | Maximum number of threads in the ontianji process | Unit |
-|  |  |  |  | thread nu _ m avg _ | Average number of threads in the ontianji process | Unit |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
+|   |   |   |   | mem usag _ e max _ | Maximum memory usage of the ontianji process | % |
+|   |   |   |   | mem usag _ e avg _ | Memory usage of the ontianji process | % |
+| Number of open file handles of the Tianji SR process instance | process op _ en fd _ | cluster hostname serverRole app processTyp e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | processTyp e | Container monitor name |   |
+|   |   |   |   | open fd mi _ _ n | Minimum number of open file handles for the ontianji process | Unit |
+|   |   |   |   | open fd m _ _ ax | Maximum number of open file handles for the ontianji process | count |
 
-| Developer Guid | e·API Referen | ce |  |  |  |  |
+|   |   |   |   | open fd av _ _ g | Average number of open file handles for the ontianji process | Unit |
 |---|---|---|---|---|---|---|
-| Resident Set Size (RSS) of the Tianji SR process instance | process rss _ | cluster hostname serverRole app processTyp e | 60 |  |  |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | processTyp e | Container Monitoring Name |  |
-|  |  |  |  | rss min _ | Minimum physical memory size (RSS) occupied by the ontianji process | KB |
-|  |  |  |  | rss max _ | Maximum physical memory size (RSS) occupied by the ontianji process | KB |
-|  |  |  |  | rss avg _ | Average physical memory size (RSS) occupied by the ontianji process | KB |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | processTyp e | Container Monitor Name |   |
+| Number of threads of the Tianji SR process instance | process thr _ ead num _ | cluster hostname serverRole app processTyp e | 60 |   |   |   |
+|   |   |   |   | thread nu _ m min _ | Minimum number of threads in the ontianji process | Unit |
+|   |   |   |   | thread nu _ m max _ | Maximum number of threads in the ontianji process | Unit |
+|   |   |   |   | thread nu _ m avg _ | Average number of threads in the ontianji process | Unit |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
 
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
+| Developer Guid | e·API Referen | ce |   |   |   |   |
 |---|---|---|---|---|---|---|
-| Disk read speed of the Tianji SR process instance | process re _ ad bytes _ | cluster hostname serverRole app processTyp e | 60 |  |  |  |
-|  |  |  |  | processTyp e | Container monitor name |  |
-|  |  |  |  | read bytes _ min _ | Minimum I/O read speed of the ontianji process | bytes/s |
-|  |  |  |  | read bytes _ max _ | Maximum I/O read speed of the ontianji process | bytes/s |
-|  |  |  |  | read bytes _ avg _ | Average I/O read speed of the ontianji process | bytes/s |
-| Disk write speed of the Tianji SR process instance | process wri _ te bytes _ | cluster hostname serverRole app processTyp e | 60 | cluster | Cluster name |  |
-|  |  |  |  | hostname | Hostname |  |
-|  |  |  |  | serverRole | Server role |  |
-|  |  |  |  | app | Application name. An SR can have multiple application s. |  |
-|  |  |  |  | processTyp e | Container Monitor Name |  |
+| Resident Set Size (RSS) of the Tianji SR process instance | process rss _ | cluster hostname serverRole app processTyp e | 60 |   |   |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | processTyp e | Container Monitoring Name |   |
+|   |   |   |   | rss min _ | Minimum physical memory size (RSS) occupied by the ontianji process | KB |
+|   |   |   |   | rss max _ | Maximum physical memory size (RSS) occupied by the ontianji process | KB |
+|   |   |   |   | rss avg _ | Average physical memory size (RSS) occupied by the ontianji process | KB |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
 
-|  |  |  |  | write bytes _ min _ | Minimum I/O write speed of the ontianji process | bytes/s |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | write bytes _ max _ | Maximum I/O write speed of the ontianji process | bytes/s |
-|  |  |  |  | write bytes _ avg _ | Average I/O write speed of the ontianji process | bytes/s |
-| Thread deadlock status of the JVM service instance | jvm.thread. deadlock cl _ uster serve _ rrole | cluster serverrole host | 60 | cluster | Cluster name |  |
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
-|  |  |  |  | count avg _ | Average number of threads | Unit |
-|  |  |  |  | count max _ | Maximum number of threads | Unit |
-|  |  |  |  | deamon co _ unt avg _ | Average number of daemon threads | Unit |
-|  |  |  |  | deamon co _ unt max _ | Maximum number of daemon threads | Unit |
-|  |  |  |  | deadlock c _ ount avg _ | Average number of deadlocked threads | count |
-| 03 |  |  |  | > Document Version: 2026070 |  |  |
+| Disk read speed of the Tianji SR process instance | process re _ ad bytes _ | cluster hostname serverRole app processTyp e | 60 |   |   |   |
+|   |   |   |   | processTyp e | Container monitor name |   |
+|   |   |   |   | read bytes _ min _ | Minimum I/O read speed of the ontianji process | bytes/s |
+|   |   |   |   | read bytes _ max _ | Maximum I/O read speed of the ontianji process | bytes/s |
+|   |   |   |   | read bytes _ avg _ | Average I/O read speed of the ontianji process | bytes/s |
+| Disk write speed of the Tianji SR process instance | process wri _ te bytes _ | cluster hostname serverRole app processTyp e | 60 | cluster | Cluster name |   |
+|   |   |   |   | hostname | Hostname |   |
+|   |   |   |   | serverRole | Server role |   |
+|   |   |   |   | app | Application name. An SR can have multiple application s. |   |
+|   |   |   |   | processTyp e | Container Monitor Name |   |
 
-|  |  |  |  | deadlock c _ ount max _ | Maximum number of deadlocked threads | Unit |
+|   |   |   |   | write bytes _ min _ | Minimum I/O write speed of the ontianji process | bytes/s |
 |---|---|---|---|---|---|---|
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
-|  |  |  |  | blocked av _ g | Average number of threads in the BLOCKED state | count |
-|  |  |  |  | blocked m _ ax | Maximum number of threads in the BLOCKED state | Unit |
-|  |  |  |  | new avg _ | Average number of threads in the NEW state | Unit |
-|  |  |  |  | new max _ | Maximum number of threads in the NEW state | Unit |
-|  |  |  |  | runnable a _ vg | Average number of threads in the RUNNABLE state | Unit |
+|   |   |   |   | write bytes _ max _ | Maximum I/O write speed of the ontianji process | bytes/s |
+|   |   |   |   | write bytes _ avg _ | Average I/O write speed of the ontianji process | bytes/s |
+| Thread deadlock status of the JVM service instance | jvm.thread. deadlock cl _ uster serve _ rrole | cluster serverrole host | 60 | cluster | Cluster name |   |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
+|   |   |   |   | count avg _ | Average number of threads | Unit |
+|   |   |   |   | count max _ | Maximum number of threads | Unit |
+|   |   |   |   | deamon co _ unt avg _ | Average number of daemon threads | Unit |
+|   |   |   |   | deamon co _ unt max _ | Maximum number of daemon threads | Unit |
+|   |   |   |   | deadlock c _ ount avg _ | Average number of deadlocked threads | count |
+| 03 |   |   |   | > Document Version: 2026070 |   |   |
 
-| Thread status of the JVM service instance | jvm.thread. state clust _ er serverro _ le | cluster serverrole host | 60 |  |  |  |
+|   |   |   |   | deadlock c _ ount max _ | Maximum number of deadlocked threads | Unit |
 |---|---|---|---|---|---|---|
-|  |  |  |  | runnable _ max | Maximum number of threads in the RUNNABLE state | Unit |
-|  |  |  |  | terminated avg _ | Average number of threads in the TERMINATE D state | Unit |
-|  |  |  |  | terminated max _ | Maximum number of threads in the TERMINATE D state | Unit |
-|  |  |  |  | timed waiti _ ng avg _ | Average number of threads in the TIMED WAI _ TING state | Unit |
-|  |  |  |  | timed waiti _ ng max _ | Maximum number of threads in the TIMED WAI _ TING state | Unit |
-|  |  |  |  | waiting av _ g | Average number of threads in the WAITING state | Unit |
-|  |  |  |  | waiting ma _ x | Maximum number of threads in the WAITING state | Unit |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
+|   |   |   |   | blocked av _ g | Average number of threads in the BLOCKED state | count |
+|   |   |   |   | blocked m _ ax | Maximum number of threads in the BLOCKED state | Unit |
+|   |   |   |   | new avg _ | Average number of threads in the NEW state | Unit |
+|   |   |   |   | new max _ | Maximum number of threads in the NEW state | Unit |
+|   |   |   |   | runnable a _ vg | Average number of threads in the RUNNABLE state | Unit |
 
-| Garbage collection (GC) status of the JVM service instance | jvm.gc clus _ ter serverr _ ole | cluster serverrole host name | 60 | cluster | Cluster name |  |
+| Thread status of the JVM service instance | jvm.thread. state clust _ er serverro _ le | cluster serverrole host | 60 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
-|  |  |  |  | count avg _ | Average number of GC events during the collection epoch | Item |
-|  |  |  |  | count max _ | Maximum number of GC events during the collection epoch | Unit |
-|  |  |  |  | time avg _ | Average time consumed by GC during the collection epoch | ms |
-|  |  |  |  | time max _ | Maximum time consumed by GC during the collection epoch | ms |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
+|   |   |   |   | runnable _ max | Maximum number of threads in the RUNNABLE state | Unit |
+|   |   |   |   | terminated avg _ | Average number of threads in the TERMINATE D state | Unit |
+|   |   |   |   | terminated max _ | Maximum number of threads in the TERMINATE D state | Unit |
+|   |   |   |   | timed waiti _ ng avg _ | Average number of threads in the TIMED WAI _ TING state | Unit |
+|   |   |   |   | timed waiti _ ng max _ | Maximum number of threads in the TIMED WAI _ TING state | Unit |
+|   |   |   |   | waiting av _ g | Average number of threads in the WAITING state | Unit |
+|   |   |   |   | waiting ma _ x | Maximum number of threads in the WAITING state | Unit |
 
-| Polling the status of the JVM service instance | jvm.mem.p oll cluster _ _ serverrole | cluster serverrole host name | 60 |  |  |  |
+| Garbage collection (GC) status of the JVM service instance | jvm.gc clus _ ter serverr _ ole | cluster serverrole host name | 60 | cluster | Cluster name |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | name | Memory pool name |  |
-|  |  |  |  | init avg _ | Average initial memory size | byte |
-|  |  |  |  | init max _ | Maximum initial memory size | byte |
-|  |  |  |  | committed avg _ | Average committed memory size. This includes used memory. | byte |
-|  |  |  |  | committed max _ | Maximum committed memory size. This includes used memory. | byte |
-|  |  |  |  | used avg _ | Average used memory | byte |
-|  |  |  |  | used max _ | Maximum used memory | byte |
-|  |  |  |  | max avg _ | Average maximum available memory | byte |
-|  |  |  |  | max max _ | Maximum value of the maximum available memory | byte |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
+|   |   |   |   | count avg _ | Average number of GC events during the collection epoch | Item |
+|   |   |   |   | count max _ | Maximum number of GC events during the collection epoch | Unit |
+|   |   |   |   | time avg _ | Average time consumed by GC during the collection epoch | ms |
+|   |   |   |   | time max _ | Maximum time consumed by GC during the collection epoch | ms |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
 
-|  |  |  |  | usage avg _ | Average memory usage, calculated as used/max | % |
+| Polling the status of the JVM service instance | jvm.mem.p oll cluster _ _ serverrole | cluster serverrole host name | 60 |   |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | usage max _ | Maximum memory usage, calculated as used/max | % |
-| Memory status of the JVM service instance | jvm.mem.t otal cluster _ serverrole _ | cluster serverrole host | 60 | cluster | Cluster name |  |
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
-|  |  |  |  | init avg _ | Average initial memory size | byte |
-|  |  |  |  | init max _ | Maximum initial memory size | byte |
-|  |  |  |  | max avg _ | Average used memory | byte |
-|  |  |  |  | max max _ | Maximum used memory | byte |
-|  |  |  |  | used avg _ | Average maximum available memory | byte |
+|   |   |   |   | name | Memory pool name |   |
+|   |   |   |   | init avg _ | Average initial memory size | byte |
+|   |   |   |   | init max _ | Maximum initial memory size | byte |
+|   |   |   |   | committed avg _ | Average committed memory size. This includes used memory. | byte |
+|   |   |   |   | committed max _ | Maximum committed memory size. This includes used memory. | byte |
+|   |   |   |   | used avg _ | Average used memory | byte |
+|   |   |   |   | used max _ | Maximum used memory | byte |
+|   |   |   |   | max avg _ | Average maximum available memory | byte |
+|   |   |   |   | max max _ | Maximum value of the maximum available memory | byte |
 
-|  |  |  |  | used max _ | Maximum value of the maximum available memory | byte |
+|   |   |   |   | usage avg _ | Average memory usage, calculated as used/max | % |
 |---|---|---|---|---|---|---|
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
-|  |  |  |  | init avg _ | Average initial memory size | byte |
-|  |  |  |  | init max _ | Maximum initial memory size | byte |
-| Heap memory status of the JVM service instance | jvm.mem.h eap cluster _ serverrole _ | cluster serverrole host | 60 |  |  |  |
-|  |  |  |  | committed avg _ | Average committed memory size. This includes used memory. | byte |
-|  |  |  |  | committed max _ | Maximum committed memory size. This includes used memory. | byte |
-|  |  |  |  | used avg _ | Average used memory | byte |
-|  |  |  |  | used max _ | Maximum used memory | byte |
+|   |   |   |   | usage max _ | Maximum memory usage, calculated as used/max | % |
+| Memory status of the JVM service instance | jvm.mem.t otal cluster _ serverrole _ | cluster serverrole host | 60 | cluster | Cluster name |   |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
+|   |   |   |   | init avg _ | Average initial memory size | byte |
+|   |   |   |   | init max _ | Maximum initial memory size | byte |
+|   |   |   |   | max avg _ | Average used memory | byte |
+|   |   |   |   | max max _ | Maximum used memory | byte |
+|   |   |   |   | used avg _ | Average maximum available memory | byte |
 
-|  |  |  |  | max avg _ | Average maximum available memory | byte |
+|   |   |   |   | used max _ | Maximum value of the maximum available memory | byte |
 |---|---|---|---|---|---|---|
-|  |  |  |  | max max _ | Maximum value of the maximum available memory | byte |
-|  |  |  |  | usage avg _ | Average memory usage, calculated as used/max | % |
-|  |  |  |  | usage max _ | Maximum memory usage, calculated as used/max | % |
-|  |  |  |  | cluster | Cluster name |  |
-|  |  |  |  | serverrole | Server role |  |
-|  |  |  |  | host | Hostname |  |
-| Class loading status of the JVM service instance | jvm.classlo ader cluste _ r serverrol _ e | cluster serverrole host | 60 |  |  |  |
-|  |  |  |  | loaded avg _ | Average number of loaded classes | Unit |
-|  |  |  |  | loaded ma _ x | Maximum number of loaded classes | Count |
-|  |  |  |  | unloaded a _ vg | Average count of loaded classes | Unit |
-| > Document V | ersion: 202607 | 03 |  | 11 |  |  |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
+|   |   |   |   | init avg _ | Average initial memory size | byte |
+|   |   |   |   | init max _ | Maximum initial memory size | byte |
+| Heap memory status of the JVM service instance | jvm.mem.h eap cluster _ serverrole _ | cluster serverrole host | 60 |   |   |   |
+|   |   |   |   | committed avg _ | Average committed memory size. This includes used memory. | byte |
+|   |   |   |   | committed max _ | Maximum committed memory size. This includes used memory. | byte |
+|   |   |   |   | used avg _ | Average used memory | byte |
+|   |   |   |   | used max _ | Maximum used memory | byte |
 
-|  |  |  |  | unloaded _ max | Maximum loaded class count | Unit |
+|   |   |   |   | max avg _ | Average maximum available memory | byte |
+|---|---|---|---|---|---|---|
+|   |   |   |   | max max _ | Maximum value of the maximum available memory | byte |
+|   |   |   |   | usage avg _ | Average memory usage, calculated as used/max | % |
+|   |   |   |   | usage max _ | Maximum memory usage, calculated as used/max | % |
+|   |   |   |   | cluster | Cluster name |   |
+|   |   |   |   | serverrole | Server role |   |
+|   |   |   |   | host | Hostname |   |
+| Class loading status of the JVM service instance | jvm.classlo ader cluste _ r serverrol _ e | cluster serverrole host | 60 |   |   |   |
+|   |   |   |   | loaded avg _ | Average number of loaded classes | Unit |
+|   |   |   |   | loaded ma _ x | Maximum number of loaded classes | Count |
+|   |   |   |   | unloaded a _ vg | Average count of loaded classes | Unit |
+| > Document V | ersion: 202607 | 03 |   | 11 |   |   |
+
+|   |   |   |   | unloaded _ max | Maximum loaded class count | Unit |
 |---|---|---|---|---|---|---|
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-|  |  |  |  | zh | The language code. Valid values: zh: Chinese. en: English. |
-| aliyun lan _ g | Strin g | Hea der | No |  |  |
-| aliyun terri _ tory | Strin g | Hea der | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang is set to zh). _ US (can be specified only when aliyun lang is set to en). _ TW (can be specified only when aliyun lang is set to zh). _ |
-
-| Parameter | Type | Positio n | Require d | Example | Description |
-|---|---|---|---|---|---|
-| page | Integ er | Query | Yes | 1 | The page number. |
-
-##### ListAlertByUpdateTime
+##### 7.1.1.3 ListAlertByUpdateTime
 
 Traverses alerts by update time.
 
 **Request headers**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+|   |   |   |   | zh | The language code. Valid values: zh: Chinese. en: English. |
+| aliyun lan _ g | Strin g | Hea der | No |   |   |
+| aliyun terri _ tory | Strin g | Hea der | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang is set to zh). _ US (can be specified only when aliyun lang is set to en). _ TW (can be specified only when aliyun lang is set to zh). _ |
 
 **Request syntax**
 
@@ -1958,25 +2218,29 @@ GET /openapi/popResource/aso/incident/api/alert/listByUpdateTime HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Positio n | Require d | Example | Description |
+|---|---|---|---|---|---|
+| page | Integ er | Query | Yes | 1 | The page number. |
+
 | minUpdate Time | Long | Query | Yes | 1920001300000 | The minimum value of the time at which the system traverses alerts. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: seconds. |
 |---|---|---|---|---|---|
 | project | String | Query | No | ecs | Service |
 | source | String | Query | No | tianjimon | Source |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorMessage | String | System error | The error message. |
-| data | Struct |  | The response. |
+| data | Struct |   | The response. |
 | totalPage | Integer | 262 | The total number of returned pages. |
 | pageSize | Integer | 100 | The number of entries per page. (100 entries of data per page) |
 | total | Integer | 26166 | The total number of entries returned. |
 | page | Integer | 1 | The page number. |
-| objectList | Array of objectItem |  | The returned alerts. |
+| objectList | Array of objectItem |   | The returned alerts. |
 | id | Long | 844934 | The alert ID. |
 | startTime | String | 2022-02- 24T08:33:29.000+ 0000 | The time when the alert was triggered. |
 | endTime | String | 1970-01- 01T00:00:00.000+ 0000 | The time when the alert was closed. |
-
-**Response parameters**
 
 | duration | Long | 37197 | The duration of the alert. |
 |---|---|---|---|
@@ -1988,7 +2252,7 @@ GET /openapi/popResource/aso/incident/api/alert/listByUpdateTime HTTP/1.1
 | currentValue | String | {\"level\":\"error\"} | The current value of the metric. |
 | source | String | "" | The alert source. |
 | type | String | metric | The type of the alert. |
-| dimensions | Array of dimension |  | The metric dimensions. |
+| dimensions | Array of dimension |   | The metric dimensions. |
 | key | String | cluste | The dimension key. |
 | value | String | ECS-CPU-X-XXXX | The dimension value. |
 | standard | Boolean | true | Indicates whether the dimension is a standard dimension. |
@@ -2010,9 +2274,9 @@ GET /openapi/popResource/aso/incident/api/alert/listByUpdateTime HTTP/1.1
 | updateTime | String | 2022-11- 14T02:58:38.000+ 0000 | The time when the alert information was updated. |
 | description | String | test description _ | The description of the alert. By default, the alert is described in Chinese. You can obtain multilingual results by setting request headers aliyun lang and _ aliyun territory . _ |
 
-|  | aliyun lang _ |
+|   | aliyun lang _ |
 |---|---|
-| aliyun territory _ |  |
+| aliyun territory _ |   |
 
 | cost | Long | 30 | The period of time required to process the request. Unit: milliseconds. |
 |---|---|---|---|
@@ -2032,6 +2296,8 @@ GET /openapi/popResource/aso/incident/api/alert/listByUpdateTime HTTP/1.1
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2040,8 +2306,13 @@ http(s)://[Endpoint]/?Action=ListAlertByUpdateTime &page=1 &minUpdateTime=192000
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"\"\"",
  "eagleEyeTraceId":"0acd0d0416595961080397999d0027",
  "cost":30,
@@ -2077,10 +2348,6 @@ client",
 "alarmRule":"$level==\\\"error\\\"||$level==\\\"ERROR\\\"||$level==\\\"FATAL\\\"||$level=
 ```
 
-| Parameter | Type | Position | Required | Exampl e | Description |
-|---|---|---|---|---|---|
-| aliyun lang _ | String | Header | No | zh | The language code for internationalization. Valid values: zh: Chinese en: English |
-
 $
 
 ```json
@@ -2093,10 +2360,17 @@ $
     "standard":true,
     "value":"ECS-CPU-X-XXXX ",
     "key":"cluste"
-   },
+```
+
+`},`
+
+```json
    "status":0
-  }
- },
+```
+
+`}` `},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_INCIDENT_SYSTEM_ERROR",
  "message":"\"\"",
@@ -2108,31 +2382,22 @@ $
  "errorTitle":"Service error",
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "errorStack":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetCpuMetrics
+##### 7.1.1.4 GetCpuMetrics
 
 Returns CPU utilization metrics.
 
 **Request headers**
 
+| Parameter | Type | Position | Required | Exampl e | Description |
+|---|---|---|---|---|---|
+| aliyun lang _ | String | Header | No | zh | The language code for internationalization. Valid values: zh: Chinese en: English |
+
 | aliyun territo _ ry | String | Header | No | CN | The country and region code for internationalization. Valid values: CN (used with zh) US (used with en) TW (used with zh) |
 |---|---|---|---|---|---|
-
-| Parameter | Type | Positio n | Requi red | Example | Description |
-|---|---|---|---|---|---|
-| hostname | String | Query | Yes | m54a01212.cloud.a0 4.amtest11 | The hostname. |
-| interval | String | Query | No | 60 | The time interval in seconds. The default value is 60. |
-| startTime | String | Query | Yes | 1638348739166 | The start time of the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
-| endTime | String | Query | Yes | 1638352339166 | The end time of the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
-| action | String | Query | Yes | util avg _ | The metric dimension to query. Pass this parameter using the putQueryParameter method. For example: request.putQueryParameter("a ction", "util avg"); _ |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYSTEM ER _ _ _ ROR | The error code. |
 
 **Request syntax**
 
@@ -2142,7 +2407,19 @@ GET /openapi/popResource/aso/psm/metrics/cpu HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Positio n | Requi red | Example | Description |
+|---|---|---|---|---|---|
+| hostname | String | Query | Yes | m54a01212.cloud.a0 4.amtest11 | The hostname. |
+| interval | String | Query | No | 60 | The time interval in seconds. The default value is 60. |
+| startTime | String | Query | Yes | 1638348739166 | The start time of the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
+| endTime | String | Query | Yes | 1638352339166 | The end time of the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
+| action | String | Query | Yes | util avg _ | The metric dimension to query. Pass this parameter using the putQueryParameter method. For example: request.putQueryParameter("a ction", "util avg"); _ |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYSTEM ER _ _ _ ROR | The error code. |
 
 | errorMessage | String | System error. | The error message. |
 |---|---|---|---|
@@ -2163,6 +2440,8 @@ GET /openapi/popResource/aso/psm/metrics/cpu HTTP/1.1
 |---|---|---|---|
 | errorTitle | String | Service error. | The title of the error. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -2171,15 +2450,24 @@ GET /openapi/popResource/aso/psm/metrics/cpu HTTP/1.1
 
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":54,
  "code":"200",
  "data":{
   "data":{
    "series":[
-    {
+```
+
+`{`
+
+```json
      "data":[
       0.4,
       0.3,
@@ -2192,10 +2480,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
      "name":"util_avg"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "categories":[
@@ -2206,12 +2493,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     1638352320000
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "type":"CPU"
- },
+```
+
+`},`
+
+```json
  "level":"null",
  "errorMessage":"System error.",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -2224,28 +2514,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error.",
  "key":"null"
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetDiskMetrics
+##### 7.1.1.5 GetDiskMetrics
 
 Queries disk usage metrics.
+
+**Request headers**
 
 | Parameter | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Heade r | No | zh | The language code for internationalization. Valid values: zh: Chinese en: English |
 | aliyun territ _ ory | String | Heade r | No | CN | The country and region code for internationalization. Valid values: CN (used with zh) US (used with en) TW (used with zh) |
-
-| Parameter | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| hostname | String | Query | Yes | m5XXX.cloud.aX X.amXXX | The hostname. |
-| interval | String | Query | No | 60 | The time interval in seconds. The default value is 60. |
-| startTime | String | Query | Yes | 1638348739166 | The start time for the query. The format is YYYY-mm-dd or a UNIX timestamp in milliseconds. |
-| endTime | String | Query | Yes | 1638352339166 | The end time for the query. The format is YYYY-mm-dd or a UNIX timestamp in milliseconds. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -2255,8 +2537,17 @@ GET /openapi/popResource/aso/psm/metrics/disk HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| hostname | String | Query | Yes | m5XXX.cloud.aX X.amXXX | The hostname. |
+| interval | String | Query | No | 60 | The time interval in seconds. The default value is 60. |
+| startTime | String | Query | Yes | 1638348739166 | The start time for the query. The format is YYYY-mm-dd or a UNIX timestamp in milliseconds. |
+| endTime | String | Query | Yes | 1638352339166 | The end time for the query. The format is YYYY-mm-dd or a UNIX timestamp in milliseconds. |
+
 | action | String | Query | Yes | util avg _ | The dimension of the statistics. Pass this parameter using the putQueryParameter method. For example: request.putQueryParameter("actio n", "util avg"); _ |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2272,14 +2563,14 @@ GET /openapi/popResource/aso/psm/metrics/disk HTTP/1.1
 | level | String | null | The severity of the request error. |
 | eagleEyeTraceId | String | 0ab408f416805112341264 295d00c9 | The EagleEye trace ID. |
 
-**Response parameters**
-
 | serverRole | String | aso-mgr.asmgr# | Submit a Service Request (SR). |
 |---|---|---|---|
 | path | String | /aso/psm/metrics/disk | The API path. |
 | responseVersion | String | v1 | The version of the response format. |
 | success | Boolean | true | Indicates whether the request was successful. true: The request was successful. Failed: false |
 | errorTitle | String | Service error | Fault title |
+
+**Examples**
 
 Example request
 
@@ -2289,15 +2580,24 @@ GET /openapi/popResource/aso/psm/metrics/disk HTTP/1.1
 
 Example response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
  "data":{
   "data":{
    "series":[
-    {
+```
+
+`{`
+
+```json
      "data":[
       7.8,
       7.8,
@@ -2310,10 +2610,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
      "name":"util_avg"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "categories":[
@@ -2324,12 +2623,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     1638349020000
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "type":"DISK"
- },
+```
+
+`},`
+
+```json
  "level":"null",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -2342,28 +2644,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"null"
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetIoMetrics
+##### 7.1.1.6 GetIoMetrics
 
 Queries disk I/O metrics.
+
+**Request headers**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | No | zh | The language code for internationalization. Valid values: zh: Chinese English: en |
 | aliyun territ _ ory | String | Header | No | CN | The country and region code for internationalization. Valid values: CN (used with zh) US (used with en) TW (used with zh) |
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| hostname | Strin g | Query | Yes | m5XXX.cloud.aXX .amXXX | The hostname. |
-| interval | Strin g | Query | No | 60 | The time interval in seconds. The default value is 60. |
-| startTime | Strin g | Query | Yes | 1638348739166 | The start time of the query. The value can be in the YYYY- mm-dd format or a UNIX timestamp in milliseconds. |
-| endTime | Strin g | Query | Yes | 1638352339166 | The end time of the query. The value can be in the YYYY- mm-dd format or a UNIX timestamp in milliseconds. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -2373,8 +2667,17 @@ GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| hostname | Strin g | Query | Yes | m5XXX.cloud.aXX .amXXX | The hostname. |
+| interval | Strin g | Query | No | 60 | The time interval in seconds. The default value is 60. |
+| startTime | Strin g | Query | Yes | 1638348739166 | The start time of the query. The value can be in the YYYY- mm-dd format or a UNIX timestamp in milliseconds. |
+| endTime | Strin g | Query | Yes | 1638352339166 | The end time of the query. The value can be in the YYYY- mm-dd format or a UNIX timestamp in milliseconds. |
+
 | action | Strin g | Query | Yes | util avg _ | The dimension to query. Pass this parameter using the putQueryParameter method. For example: request.putQueryParameter("acti on", "util avg"); _ |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2389,8 +2692,6 @@ GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1
 | key | String | null | The keyword of the error. |
 | level | String | null | The severity of the error. |
 
-**Response parameters**
-
 | eagleEyeTraceId | String | 0ab408f41680511234126429 5d00c9 | The EagleEye trace ID. |
 |---|---|---|---|
 | serverRole | String | aso-mgr.asmgr# | Submit a support request. |
@@ -2398,6 +2699,8 @@ GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1
 | responseVersion | String | v1 | The version of the response format. |
 | success | Boolean | true | Indicates whether the request was successful. Valid values: Success: true failed: false |
 | errorTitle | String | Service error | The title of the error. |
+
+**Examples**
 
 Sample request
 
@@ -2407,15 +2710,24 @@ GET /openapi/popResource/aso/psm/metrics/io HTTP/1.1
 
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
  "data":{
   "data":{
    "series":[
-    {
+```
+
+`{`
+
+```json
      "data":[
 ```
 
@@ -2423,10 +2735,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
      "name":"util_avg"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "categories":[
@@ -2438,12 +2749,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     1638349080000
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "type":"IO"
- },
+```
+
+`},`
+
+```json
  "level":"null",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -2456,28 +2770,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"null"
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetLoadMetrics
+##### 7.1.1.7 GetLoadMetrics
 
 This operation queries system load metrics.
+
+**Request headers**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | No | zh | The language code for internationalization. Valid values: zh: Chinese English: en |
 | aliyun territ _ ory | String | Header | No | CN | The country and region code for internationalization. Valid values: CN (use with zh) US (use with en) TW (use with zh) |
-
-| Parameter | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| hostname | String | Query | Yes | mXXXX.cloud.aX X.amXX | The hostname. |
-| interval | String | Query | No | 60 | The time interval. Unit: seconds. The default value is 60. |
-| startTime | String | Query | Yes | 1638348739166 | The beginning of the time range to query. Specify the time in the YYYY-mm- dd format or as a timestamp in milliseconds. |
-| endTime | String | Query | Yes | 1638352339166 | The end of the time range to query. Specify the time in the YYYY-mm- dd format or as a timestamp in milliseconds. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -2487,8 +2793,17 @@ GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| hostname | String | Query | Yes | mXXXX.cloud.aX X.amXX | The hostname. |
+| interval | String | Query | No | 60 | The time interval. Unit: seconds. The default value is 60. |
+| startTime | String | Query | Yes | 1638348739166 | The beginning of the time range to query. Specify the time in the YYYY-mm- dd format or as a timestamp in milliseconds. |
+| endTime | String | Query | Yes | 1638352339166 | The end of the time range to query. Specify the time in the YYYY-mm- dd format or as a timestamp in milliseconds. |
+
 | action | String | Query | Yes | load1 avg _ | The metric dimension to query. Use the putQueryParameter method to pass this parameter. For example: request.putQueryParameter("actio n", "load1 avg"); _ |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2503,8 +2818,6 @@ GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1
 | key | String | null | The keyword for the error. |
 | level | String | null | The severity level of the error. |
 
-**Response parameters**
-
 | eagleEyeTrace Id | String | 0ab408f4168051123412642 95d00c9 | The EagleEye trace ID. |
 |---|---|---|---|
 | serverRole | String | aso-mgr.asmgr# | The server role. |
@@ -2512,6 +2825,8 @@ GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1
 | responseVersi on | String | v1 | The version of the response format. |
 | success | Boolean | true | Indicates whether the request was successful. Valid values: The operation was successful. Failed: false |
 | errorTitle | String | Service error | The title of the error. |
+
+**Examples**
 
 Request example
 
@@ -2521,15 +2836,24 @@ GET /openapi/popResource/aso/psm/metrics/load HTTP/1.1
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
  "data":{
   "data":{
    "series":[
-    {
+```
+
+`{`
+
+```json
      "data":[
       1.1,
       1.1,
@@ -2546,10 +2870,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
      "name":"load1_avg"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "categories":[
@@ -2560,12 +2883,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     1638349020000
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "type":"LOAD"
- },
+```
+
+`},`
+
+```json
  "level":"null",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -2578,28 +2904,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"null"
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetMemMetrics
+##### 7.1.1.8 GetMemMetrics
 
 Queries memory usage metrics.
+
+**Request headers**
 
 | Parameter | Type | Location | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | No | zh | The language code for internationalization. Valid values: zh: Chinese English: en |
 | aliyun terri _ tory | String | Header | No | CN | The country and region code for internationalization. Valid values: CN (used with zh) US (used with en) TW (used with zh) |
-
-| Parameter | Type | Locatio n | Require d | Example | Description |
-|---|---|---|---|---|---|
-| hostname | String | Query | Yes | mXXX.cloud.a XX.amXX | The hostname. |
-| interval | String | Query | No | 60 | The time interval. Unit: seconds. The default value is 60. |
-| startTime | String | Query | Yes | 16383487391 66 | The start time of the query. The value can be in the YYYY-mm- dd format or a UNIX timestamp in milliseconds. |
-| endTime | String | Query | Yes | 16383523391 66 | The end time of the query. The value can be in the YYYY-mm- dd format or a UNIX timestamp in milliseconds. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -2609,8 +2927,17 @@ GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Locatio n | Require d | Example | Description |
+|---|---|---|---|---|---|
+| hostname | String | Query | Yes | mXXX.cloud.a XX.amXX | The hostname. |
+| interval | String | Query | No | 60 | The time interval. Unit: seconds. The default value is 60. |
+| startTime | String | Query | Yes | 16383487391 66 | The start time of the query. The value can be in the YYYY-mm- dd format or a UNIX timestamp in milliseconds. |
+| endTime | String | Query | Yes | 16383523391 66 | The end time of the query. The value can be in the YYYY-mm- dd format or a UNIX timestamp in milliseconds. |
+
 | action | String | Query | Yes | util avg _ | The dimension of the statistics. Pass this parameter using the putQueryParameter method. For example: request.putQueryParameter("action ", "util avg"); _ |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2625,8 +2952,6 @@ GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1
 | key | String | null | The keyword of the error. |
 | level | String | null | The error level. |
 
-**Response parameters**
-
 | eagleEyeTraceId | String | 0ab408f4168051123412 64295d0 | The EagleEye trace ID. |
 |---|---|---|---|
 | serverRole | String | aso-mgr.asmgr# | Submit a service request (SR). |
@@ -2634,6 +2959,8 @@ GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1
 | responseVersion | String | v1 | This operation returns the format version. |
 | success | Boolean | true | Indicates whether the request was successful. Valid values: Success: true failed: false |
 | errorTitle | String | Business error | The title of the error. |
+
+**Examples**
 
 Sample request
 
@@ -2643,15 +2970,24 @@ GET /openapi/popResource/aso/psm/metrics/mem HTTP/1.1
 
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d0",
  "cost":30,
  "code":"200",
  "data":{
   "data":{
    "series":[
-    {
+```
+
+`{`
+
+```json
      "data":[
       10.7,
       10.7,
@@ -2664,10 +3000,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
      "name":"util_avg"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "categories":[
@@ -2678,12 +3013,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     1638349020000
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "type":"MEM"
- },
+```
+
+`},`
+
+```json
  "level":"null",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -2696,28 +3034,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Business error",
  "key":"null"
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetTrafficMetrics
+##### 7.1.1.9 GetTrafficMetrics
 
 Queries the traffic metrics of a host.
+
+**Request headers**
 
 | Parameter | Type | Position | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | No | zh | The language code for internationalization. Valid values: zh: Chinese en: English |
 | aliyun territ _ ory | String | Header | No | CN | The country and region code for internationalization. Valid values: CN (used with zh) US (used with en) TW (used with zh) |
-
-| Paramete r | Type | Positio n | Require d | Example | Description |
-|---|---|---|---|---|---|
-| hostname | String | Query | Yes | m54a01212.cloud. a04.amtest11 | The hostname. |
-| interval | String | Query | No | 60 | The time interval in seconds. The default value is 60. |
-| startTime | String | Query | Yes | 1638348739166 | The start time for the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
-| endTime | String | Query | Yes | 1638352339166 | The end time for the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -2727,8 +3057,17 @@ GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1
 
 **Request parameters**
 
+| Paramete r | Type | Positio n | Require d | Example | Description |
+|---|---|---|---|---|---|
+| hostname | String | Query | Yes | m54a01212.cloud. a04.amtest11 | The hostname. |
+| interval | String | Query | No | 60 | The time interval in seconds. The default value is 60. |
+| startTime | String | Query | Yes | 1638348739166 | The start time for the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
+| endTime | String | Query | Yes | 1638352339166 | The end time for the query. The format is YYYY-mm-dd or a timestamp in milliseconds. |
+
 | action | String | Query | Yes | ifin avg _ | The metric dimension to query. Pass this parameter using the putQueryParameter method. For example: request.putQueryParameter("ac tion", "ifin avg"); _ |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2743,8 +3082,6 @@ GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1
 | key | String | null | The keyword for the error. |
 | level | String | null | The severity level of the error. |
 
-**Response parameters**
-
 | success | Boolean | true | Indicates whether the request was successful. Valid values: Success: true failed: false |
 |---|---|---|---|
 | errorTitle | String | Service error | The title of the error. |
@@ -2752,6 +3089,8 @@ GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1
 | path | String | /aso/psm/metrics/traffic | The API path. |
 | serverRole | String | aso-mgr.asmgr# | The request ID. |
 | responseVersion | String | v1 | The version of the response format. |
+
+**Examples**
 
 Sample request
 
@@ -2761,15 +3100,24 @@ GET /openapi/popResource/aso/psm/metrics/traffic HTTP/1.1
 
 Sample success response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
  "data":{
   "data":{
    "series":[
-    {
+```
+
+`{`
+
+```json
      "data":[
       2.77,
       3.08,
@@ -2782,10 +3130,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
      "name":"ifin_avg"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
    "categories":[
@@ -2796,12 +3143,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     1638349020000
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "type":"TRAFFIC"
- },
+```
+
+`},`
+
+```json
  "level":"null",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -2814,26 +3164,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"null"
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-#### Inventory management
+#### 7.1.2 Inventory management
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
-| cost | Long | 30 | The time spent on querying the inventory information. Unit: milliseconds. |
-| data | Struct |  | The data returned. |
-| ecs | Array of ecs |  | The Elastic Compute Service (ECS) inventory information. |
-| flavors | Array of JSONArray |  | The list of ECS instance types. |
-| flavor | String | ecs.sn1ne.8xlarge | The type of the ECS instance. |
-| soldAmount | Integer | 3 | The number of sold resources. |
-| totalAmount | Integer | 8 | The total number of resources. |
-| vendibleAmou nt | Integer | 5 | The number of available resources. |
-
-##### GetOverview
+##### 7.1.2.1 GetOverview
 
 Queries the inventory overview. We recommend that you use `GetIntegratedProductInventory` rather than this API.
 
@@ -2853,23 +3190,35 @@ None
 
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
+| cost | Long | 30 | The time spent on querying the inventory information. Unit: milliseconds. |
+| data | Struct |   | The data returned. |
+| ecs | Array of ecs |   | The Elastic Compute Service (ECS) inventory information. |
+| flavors | Array of JSONArray |   | The list of ECS instance types. |
+| flavor | String | ecs.sn1ne.8xlarge | The type of the ECS instance. |
+| soldAmount | Integer | 3 | The number of sold resources. |
+| totalAmount | Integer | 8 | The total number of resources. |
+| vendibleAmou nt | Integer | 5 | The number of available resources. |
+
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | zoneId | Integer | 132 | The region ID. |
 |---|---|---|---|
 | zoneName | String | ECS-XX-XX-XX-X | The region name. |
-| nas | Struct |  | The File Storage NAS (NAS) inventory information. |
+| nas | Struct |   | The File Storage NAS (NAS) inventory information. |
 | clusters | Map | {"StandardNasClus ter-XX-XX-XX": {"disk usage":"9.3 _ 00003","disk used" _ :"13250.83","disk t _ otal":"142482.0","d isk remain":"1292 _ 31.17"}} | The cluster information. |
-| oss | Struct |  | The Object Storage Service (OSS) inventory information. |
-| overview | Struct |  | The inventory information. |
+| oss | Struct |   | The Object Storage Service (OSS) inventory information. |
+| overview | Struct |   | The inventory information. |
 | cluster | String | "" | The cluster information. |
 | disk remain _ | Float | 945318.56 | The free space of the disk. |
 | disk total _ | Float | 1064488 | The total capacity of the disk. |
 | disk usage _ | Float | 11.195 | The usage of the disk in percentage. |
 | disk used _ | Float | 119169.43 | The used disk size. |
-| ots | Struct |  | The Tablestore inventory information. |
-| overview | Struct |  | The inventory information. |
+| ots | Struct |   | The Tablestore inventory information. |
+| overview | Struct |   | The inventory information. |
 | cluster | String | "" | The cluster information. |
 | disk remain _ | Float | 347621.84 | The free space of the disk. |
 
@@ -2877,9 +3226,9 @@ None
 |---|---|---|---|
 | disk usage _ | Float | 10.840136 | The usage of the disk in percentage. |
 | disk used _ | Float | 42264.17 | The used disk size. |
-| rds | Struct |  | The ApsaraDB RDS inventory information. |
+| rds | Struct |   | The ApsaraDB RDS inventory information. |
 | engines | Map | {"hawq": {"mem used":"0.0 _ ","cpu used":"0.0", _ "mem usage":"0.0 _ ","disk total":"0.0", _ "disk used":"0.0"," _ disk remain":"0.0", _ "cpu remain":"0.0" _ ,"disk usage":"0.0", _ "mem remain":"0. _ 0","cpu total":"0.0" _ ,"cpu usage":"0.0", _ "mem total":"0.0"} _ } | The information about ApsaraDB RDS inventory on each engine. |
-| overview | Struct |  | The inventory information. |
+| overview | Struct |   | The inventory information. |
 | cluster | String | "" | The cluster information. |
 | disk remain _ | Float | 55302 | The free space of the disk. |
 | disk total _ | Float | 82826 | The total capacity of the disk. |
@@ -2888,8 +3237,8 @@ None
 
 | slb | Map | {"INTERNET": {"ip usage":"8.984 _ 375","ip used":"23 _ ","ip remain":"233" _ ,"ip total":"256","ty _ pe":"INTERNET"},"I NTRANET": {"ip usage":"14.33 _ 59375","ip used":" _ 367","ip remain":" _ 2193","ip total":"2 _ 560","type":"INTRA NET"}} | The Server Load Balancer (SLB) inventory information. |
 |---|---|---|---|
-| sls | Struct |  | The Simple Log Service inventory information. |
-| overview | Struct |  | The information overview. |
+| sls | Struct |   | The Simple Log Service inventory information. |
+| overview | Struct |   | The information overview. |
 | cluster | String | "" | The cluster information. |
 | disk remain _ | Float | 245040.0 | The free space of the disk. |
 | disk total _ | Float | 266122.0 | The total capacity of the disk. |
@@ -2903,16 +3252,17 @@ None
 |---|---|---|---|
 | successRespo nse | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 
+**Examples**
+
 Sample requests
 
 ```
 GET /openapi/popResource/aso/inventory/openapi/getOverview HTTP/1.1 OpsProduct: ASOOps
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "successResponse": "true",
     "code": "200",
     "cost": "30",
@@ -2920,25 +3270,26 @@ Sample success responses `JSON` format
         "slb": "{\"INTERNET\":
 {\"ip_usage\":\"8.984375\",\"ip_used\":\"23\",\"ip_remain\":\"233\",\"ip_total\":\"256\", type\":\"INTERNET\"},\"INTRANET\": {\"ip_usage\":\"14.3359375\",\"ip_used\":\"367\",\"ip_remain\":\"2193\",\"ip_total\":\"25 \",\"type\":\"INTRANET\"}}",
         "ecs": [
-            {
+```
+
+`{`
+
+```json
                 "zoneId": "132",
                 "zoneName": "ECS-XX-XX-XX-X",
                 "flavors": [
-                    {
+```
+
+`{`
+
+```json
                         "flavor": "ecs.sn1ne.8xlarge",
                         "totalAmount": "8",
                         "vendibleAmount": "5",
                         "soldAmount": "3"
-                    }
 ```
 
-]
-
-```
-            }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
         "rds": {
@@ -2954,8 +3305,11 @@ Sample success responses `JSON` format
                 "disk_total": "82826",
                 "disk_remain": "55302",
                 "disk_usage": "33.23232"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "sls": {
             "overview": {
                 "cluster": "\"\"",
@@ -2963,8 +3317,11 @@ Sample success responses `JSON` format
                 "disk_total": "266122.0",
                 "disk_remain": "245040.0",
                 "disk_usage": "7.9219303"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "ots": {
             "overview": {
                 "cluster": "\"\"",
@@ -2972,12 +3329,19 @@ Sample success responses `JSON` format
                 "disk_total": "389886",
                 "disk_remain": "347621.84",
                 "disk_usage": "10.840136"
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "nas": {
             "clusters": "{\"StandardNasCluster-XX-XX-XX\":
 {\"disk_usage\":\"9.300003\",\"disk_used\":\"13250.83\",\"disk_total\":\"142482.0\",\"dis remain\":\"129231.17\"}}"
-        },
+```
+
+`},`
+
+```json
         "oss": {
             "overview": {
                 "cluster": "\"\"",
@@ -2985,17 +3349,20 @@ Sample success responses `JSON` format
                 "disk_total": "1064488",
                 "disk_remain": "945318.56",
                 "disk_usage": "11.195"
-            }
-        }
-    },
+```
+
+`}` `}` `},`
+
+```json
     "level": "\"\"",
     "requestId": "c6cb0637-40a1-4ac0-abe7-ad45efc848ac",
     "message": "success",
     "key": "\"\""
-}
 ```
 
-##### GetSlbInventoryInfo
+`}`
+
+##### 7.1.2.2 GetSlbInventoryInfo
 
 Query SLB inventory information. You should prioritize using `GetIntegratedProductInventory` operation instead of this operation.
 
@@ -3006,13 +3373,6 @@ Query SLB inventory information. You should prioritize using `GetIntegratedProdu
 | aliyun lang _ | String | Header | Not require d | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 | aliyun terri _ tory | String | Header | Not require d | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Map | {"INTERNET": {"ip usage":"5.078 _ 125","ip used":"26 _ ","ip remain":"486" _ ,"ip total":"512","ty _ pe":"INTERNET"},"I NTRANET": {"ip usage":"22.97 _ 3633","ip used":"9 _ 41","ip remain":"3 _ 155","ip total":"40 _ 96","type":"INTRAN ET"}} | The response data. |
-| cost | Long | 30 | The response time. Unit: milliseconds. |
-
 **Request syntax**
 
 ```
@@ -3020,6 +3380,13 @@ GET /openapi/popResource/aso/inventory/openapi/getSlbInventoryInfo HTTP/1.1
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Map | {"INTERNET": {"ip usage":"5.078 _ 125","ip used":"26 _ ","ip remain":"486" _ ,"ip total":"512","ty _ pe":"INTERNET"},"I NTRANET": {"ip usage":"22.97 _ 3633","ip used":"9 _ 41","ip remain":"3 _ 155","ip total":"40 _ 96","type":"INTRAN ET"}} | The response data. |
+| cost | Long | 30 | The response time. Unit: milliseconds. |
 
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 |---|---|---|---|
@@ -3035,6 +3402,8 @@ GET /openapi/popResource/aso/inventory/openapi/getSlbInventoryInfo HTTP/1.1
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3043,8 +3412,13 @@ GET /openapi/popResource/aso/inventory/openapi/getSlbInventoryInfo HTTP/1.1
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3055,15 +3429,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ip_used":"26",
    "ip_remain":"486",
    "type":"INTERNET"
-  },
+```
+
+`},`
+
+```json
   "INTRANET":{
    "ip_usage":"22.973633",
    "ip_total":"4096",
    "ip_used":"941",
    "ip_remain":"3155",
    "type":"INTRANET"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3076,26 +3457,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetEcsInventoryByCurrent
+##### 7.1.2.3 GetEcsInventoryByCurrent
 
 Query the current CPU and memory information of an Elastic Compute Service (ECS) instance. You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
+
+**Request headers**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 | aliyun terri _ tory | String | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -3104,6 +3479,11 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryByCurrent HTTP/1.1
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
 
 | data | Map | {"ECS-XXXX-X- XXXX-X": {"mem used":"0.0 _ ","cpu used":"0.0", _ "mem usage":"0.0 _ ","cpu remain":"56 _ 0.0","mem remain _ ":"2240.0","cpu tot _ al":"560.0","cpu us _ age":"0.0","mem t _ otal":"2240.0"},"EC S-XXX-X-XXXX-X": {"mem used":"656 _ .0","cpu used":"29 _ 2.0","mem usage": _ "47.67","cpu remai _ n":"52.0","mem re _ main":"720.0","cpu total":"344.0","cp _ u usage":"84.88"," _ mem total":"1376. _ 0"},"ECS-XXX-X- XXXX-X": {"mem used":"384 _ .0","cpu used":"96. _ 0","mem usage":" _ 25.0","cpu remain" _ :"288.0","mem re _ main":"1152.0","cp u total":"384.0","c _ pu usage":"25.0"," _ mem total":"1536. _ 0"}} | The response data. |
 |---|---|---|---|
@@ -3123,6 +3503,8 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryByCurrent HTTP/1.1
 | serverRole | String | aso-mgr.asmgr# | The service role. |
 | responseVersi on | String | v1 | The version of the response format. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3131,8 +3513,13 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryByCurrent HTTP/1.1
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3146,7 +3533,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "cpu_total":"384.0",
    "cpu_usage":"25.0",
    "mem_total":"1536.0"
-  },
+```
+
+`},`
+
+```json
   "ECS-XXXX-X-XXXX-X":{
    "mem_used":"0.0",
    "cpu_used":"0.0",
@@ -3156,8 +3547,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "cpu_total":"560.0",
    "cpu_usage":"0.0",
    "mem_total":"2240.0"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3170,30 +3564,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASM 2022-01-18
+`}` ASM 2022-01-18
 
-##### GetEcsInventoryList
+##### 7.1.2.4 GetEcsInventoryList
 
 Queries the inventory information of Elastic Compute Service (ECS). We recommend that you use `GetIntegratedProductInventory` rather than this API.
+
+**Request headers**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun terri _ tory | String | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang is set _ to zh). US (can be specified only when aliyun lang is set _ to en). TW (can be specified only when aliyun lang is set _ to zh). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYSTEM ER _ _ _ ROR | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Array of JSONArray |  | The data returned. |
-| zoneId | Integer | 131 | The region ID. |
-| zoneName | String | ECS-XX-XX-XX | The region name. |
-| flavors | Array of JSONArray |  | The list of ECS instance types. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -3202,6 +3586,15 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryList HTTP/1.1
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYSTEM ER _ _ _ ROR | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Array of JSONArray |   | The data returned. |
+| zoneId | Integer | 131 | The region ID. |
+| zoneName | String | ECS-XX-XX-XX | The region name. |
+| flavors | Array of JSONArray |   | The list of ECS instance types. |
 
 | flavor | String | ecs.mn4v2.2xlarge | The type of the ECS instance. |
 |---|---|---|---|
@@ -3224,6 +3617,8 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryList HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3232,8 +3627,13 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryList HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3243,10 +3643,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "totalAmount":48,
    "vendibleAmount":44,
    "soldAmount":4
-  },
+```
+
+`},`
+
+```json
   "zoneId":131,
   "zoneName":"ECS-XX-XX-XX "
- },
+```
+
+`},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3259,27 +3667,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASO
+`}` ASO 2022-01-18
+
+##### 7.1.2.5 GetEcsInventoryByZoneId
+
+Queries the capacity information of Elastic Compute Service (ECS) based on region IDs. We recommend that you use `GetIntegratedProductInventory` rather than this API.
+
+**Request headers**
 
 | Parameter | Type | Position | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun terri _ tory | String | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang is set to _ zh). US (can be specified only when aliyun lang is set to _ en). TW (can be specified only when aliyun lang is set to _ zh). |
-
-| Parameter | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| zoneId | String | Query | Yes | 133 | The region ID. You can query the region ID by calling the GetEcsInventoryList operation. |
-
-2022-01-18
-
-##### GetEcsInventoryByZoneId
-
-Queries the capacity information of Elastic Compute Service (ECS) based on region IDs. We recommend that you use `GetIntegratedProductInventory` rather than this API.
-
-**Request headers**
 
 **Request syntax**
 
@@ -3288,6 +3689,10 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryByZoneId HTTP/1.1
 ```
 
 **Request parameters**
+
+| Parameter | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| zoneId | String | Query | Yes | 133 | The region ID. You can query the region ID by calling the GetEcsInventoryList operation. |
 
 **Response parameters**
 
@@ -3309,14 +3714,16 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryByZoneId HTTP/1.1
 | path | String | /aso/inventory/openap i/getEcsInventoryByZo neId | The URL of the API. |
 |---|---|---|---|
 | key | String | "" | The keyword of the error. |
-| data | Array of data |  | The data returned. |
+| data | Array of data |   | The data returned. |
 | zoneId | String | 133 | The region ID. |
 | zoneName | String | ECS-XXX-X-XXXX-X | The region name. |
-| flavors | Array of flavors |  | The list of ECS instance types. |
+| flavors | Array of flavors |   | The list of ECS instance types. |
 | flavor | String | ecs.XXX.XXX | The type of the ECS instance. |
 | totalAmount | Integer | 1 | The total number of resources. |
 | soldAmount | Integer | 0 | The number of sold resources. |
 | vendibleAmount | Integer | 1 | The number of available resources. |
+
+**Examples**
 
 Sample requests
 
@@ -3326,12 +3733,13 @@ GET /openapi/popResource/aso/inventory/openapi/getEcsInventoryByZoneId HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
  "cost":30,
@@ -3341,10 +3749,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "totalAmount":1,
    "vendibleAmount":1,
    "soldAmount":0
-  },
+```
+
+`},`
+
+```json
   "zoneId":"133",
   "zoneName":"ECS-XXX-X-XXXX-X"
- },
+```
+
+`},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "message":"\"\"",
@@ -3356,12 +3772,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "errorTitle":"Service error",
  "requestId":"fa07ab18-06cf-470f-9417-c6ae644bbe2c",
  "key":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetVms
+##### 7.1.2.6 GetVms
 
 Queries the information about Elastic Compute Service (ECS) instances. You can call this operation once per second.
 
@@ -3369,12 +3784,11 @@ Queries the information about Elastic Compute Service (ECS) instances. You can c
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| region | Strin g | Query | Yes | cn-env-XXX-XXX | The region ID. |
-| instanceId s | Strin g | Query | No | i- 3ar015df5d2dagqh****,i -3ar00ogdk61lnsgl**** | The IDs of the ECS instances. You can enter multiple IDs and separate them with commas (,). |
+| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
 **Request syntax**
 
@@ -3386,19 +3800,24 @@ GET /openapi/popResource/aso/api-adapter/ecs/getVms HTTP/1.1
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| region | Strin g | Query | Yes | cn-env-XXX-XXX | The region ID. |
+| instanceId s | Strin g | Query | No | i- 3ar015df5d2dagqh****,i -3ar00ogdk61lnsgl**** | The IDs of the ECS instances. You can enter multiple IDs and separate them with commas (,). |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | status | Strin g | Query | No | Running | The status of the instance. Valid values: Running: The instance is running. Shutted: The instance is stopped. Pending: The instance is to be started. Starting: The instance is being started. Shutting: The instance is being stopped. Resetting: The instance is being reset. StartFailure: The startup failed. ShutFailure: The stop failed. ResetFailure: The reset failed. |
 | pageNum ber | Integ er | Query | No | 1 | The page number. Default value: 1. |
 | pageSize | Integ er | Query | No | 10 | The number of entries per page. Default value: 10. Maximum value: 10. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
 | errorMessage | String | System error | The error message. |
-| data | Struct |  | The response. |
-| items | Array of items |  | The ECS instance information. |
+| data | Struct |   | The response. |
+| items | Array of items |   | The ECS instance information. |
 | regionId | String | cn-env-XXX-XXX | The region ID. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3428,6 +3847,8 @@ GET /openapi/popResource/aso/api-adapter/ecs/getVms HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -3436,11 +3857,13 @@ GET /openapi/popResource/aso/api-adapter/ecs/getVms HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parameter | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":1200,
  "code":"200",
@@ -3456,8 +3879,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "zoneId":"cn-env-XXX-XXX-XXX",
    "clusterId":"ECS-XXX-XXX-XXX-XXX",
    "status":"Running"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3470,25 +3896,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-##### GetEbsClusterTypeInfo
+`}`
+
+##### 7.1.2.7 GetEbsClusterTypeInfo
 
 Query the inventory information of Elastic Block Storage (EBS). You should prioritize using `GetIntegratedProductInventory` operation instead of this operation.
 
 **Request headers**
 
+| Parameter | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | aliyun lang _ | String | Header | No | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|---|
 | aliyun territ _ ory | String | Header | No | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Map | {"EbsBlockSsdClus ter": [{"cluster":"ECS- XX-XX- XX","freeSize":"283 45.57","totalSize":" 28391.00","modify Date":"165021078 0000","project":"ec s","id":"23233","re gion":"cn-XX-XX- XX","userdSize":"4 5.43","usedSpaceP ercent":"0.16"}]} | The response data. |
-| cost | Long | 30 | The response time. Unit: milliseconds. |
 
 **Request syntax**
 
@@ -3497,6 +3920,13 @@ GET /openapi/popResource/aso/inventory/pgmon/queryEbsClusterTypeInventory HTTP/1
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Map | {"EbsBlockSsdClus ter": [{"cluster":"ECS- XX-XX- XX","freeSize":"283 45.57","totalSize":" 28391.00","modify Date":"165021078 0000","project":"ec s","id":"23233","re gion":"cn-XX-XX- XX","userdSize":"4 5.43","usedSpaceP ercent":"0.16"}]} | The response data. |
+| cost | Long | 30 | The response time. Unit: milliseconds. |
 
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 |---|---|---|---|
@@ -3512,6 +3942,8 @@ GET /openapi/popResource/aso/inventory/pgmon/queryEbsClusterTypeInventory HTTP/1
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3520,14 +3952,23 @@ GET /openapi/popResource/aso/inventory/pgmon/queryEbsClusterTypeInventory HTTP/1
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
  "data":{
   "EbsBlockSsdCluster":[
-   {
+```
+
+`{`
+
+```json
     "cluster":"ECS-XX-XX-XX",
     "freeSize":"28345.57",
     "totalSize":"28391.00",
@@ -3537,13 +3978,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "region":"cn-XX-XX-XX",
     "userdSize":"45.43",
     "usedSpacePercent":"0.16"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3556,27 +3995,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASM 2022-01-18
+`}` ASM 2022-01-18
 
-##### GetNasInventoryInfo
+##### 7.1.2.8 GetNasInventoryInfo
 
 Query the inventory information of Network Attached Storage (NAS). You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
+
+**Request headers**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 | aliyun territo _ ry | String | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Struct |  | The respons data. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -3585,6 +4017,12 @@ GET /openapi/popResource/aso/inventory/openapi/getNasInventoryInfo HTTP/1.1
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Struct |   | The respons data. |
 
 | clusters | Map | {"StandardNasClus te r-XX-XX-XX": {"disk usage":"9.3 _ 00 003","disk used":" _ 1 3250.83","disk tota _ l ":"142482.0","disk _ r emain":"129231.17 "} } | The cluster information. |
 |---|---|---|---|
@@ -3604,6 +4042,8 @@ GET /openapi/popResource/aso/inventory/openapi/getNasInventoryInfo HTTP/1.1
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3612,11 +4052,13 @@ GET /openapi/popResource/aso/inventory/openapi/getNasInventoryInfo HTTP/1.1
 
 Example for successful response `JSON` format
 
-| The name of the parameter | Type | Position | Required | Example | Descriptions |
-|---|---|---|---|---|---|
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3627,9 +4069,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "disk_remain":"129231.17",
     "disk_usage":"9.300003",
     "disk_total":"142482.0"
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3642,32 +4086,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASM 2022-01-18
+`}` ASM 2022-01-18
 
-##### GetOssInventoryInfo
+##### 7.1.2.9 GetOssInventoryInfo
 
 Queries OSS inventory information. You should use `GetIntegratedProductInventory` instead of this operation.
 
 **Request header**
 
+| The name of the parameter | Type | Position | Required | Example | Descriptions |
+|---|---|---|---|---|---|
+
 | aliyun lang _ | String | Header | No | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|---|
 | aliyun territ _ ory | String | Header | No | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| The name of the parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYSTEM E _ _ _ RROR | The unified error code. |
-| errorMessage | String | System error | The unified error message. |
-| data | Struct |  | The data. |
-| overview | Struct |  | The OSS inventory information. |
-| disk total _ | Float | 119169.43 | The total capacity of the disk. |
-| disk used _ | Float | 119169.43 | The used space of the disk. |
-| disk remain _ | Float | 945318.56 | The free space of the disk. |
-| disk usage _ | Float | 945318.56 | The free space of the disk. |
-| cluster | String | "" | The cluster information. |
 
 **Request syntax**
 
@@ -3676,6 +4110,18 @@ GET /openapi/popResource/aso/inventory/openapi/getOssInventoryInfo HTTP/1.1
 ```
 
 **Return data**
+
+| The name of the parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYSTEM E _ _ _ RROR | The unified error code. |
+| errorMessage | String | System error | The unified error message. |
+| data | Struct |   | The data. |
+| overview | Struct |   | The OSS inventory information. |
+| disk total _ | Float | 119169.43 | The total capacity of the disk. |
+| disk used _ | Float | 119169.43 | The used space of the disk. |
+| disk remain _ | Float | 945318.56 | The free space of the disk. |
+| disk usage _ | Float | 945318.56 | The free space of the disk. |
+| cluster | String | "" | The cluster information. |
 
 | cost | Long | 30 | The time spent on querying OSS inventory information. Unit: milliseconds. |
 |---|---|---|---|
@@ -3694,17 +4140,19 @@ GET /openapi/popResource/aso/inventory/openapi/getOssInventoryInfo HTTP/1.1
 
 Query example
 
-| Parameter | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-
 ```
 GET /openapi/popResource/aso/inventory/openapi/getOssInventoryInfo HTTP/1.1
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3715,8 +4163,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "disk_used":119169.43,
    "disk_remain":945318.56,
    "disk_usage":945318.56
-  }
- },
+```
+
+`}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3729,32 +4180,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASM 2022-01-18
+`}` ASM 2022-01-18
 
-##### GetOtsInnerInventoryInfo
+##### 7.1.2.10 GetOtsInnerInventoryInfo
 
 Query the inventory information of Tablestore (OTS). You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
 
 **Request headers**
 
+| Parameter | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | aliyun lang _ | String | Heade r | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|---|
 | aliyun territo _ ry | String | Heade r | Not required | CN | The country or region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Struct |  | The response data. |
-| overview | Struct |  | The Tablestore inventory information. |
-| disk total _ | Float | 389886 | The total capacity of the disk. |
-| disk used _ | Float | 347621.84 | The used space of the disk. |
-| disk remain _ | Float | 347621.84 | The free space of the disk. |
-| disk usage _ | Float | 10.840136 | The disk utilization. |
-| cluster | String | "" | The cluster information. |
 
 **Request syntax**
 
@@ -3763,6 +4204,18 @@ GET /openapi/popResource/aso/inventory/openapi/getOtsInnerInventoryInfo HTTP/1.
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Struct |   | The response data. |
+| overview | Struct |   | The Tablestore inventory information. |
+| disk total _ | Float | 389886 | The total capacity of the disk. |
+| disk used _ | Float | 347621.84 | The used space of the disk. |
+| disk remain _ | Float | 347621.84 | The free space of the disk. |
+| disk usage _ | Float | 10.840136 | The disk utilization. |
+| cluster | String | "" | The cluster information. |
 
 | cost | Long | 30 | The response time. Unit: milliseconds. |
 |---|---|---|---|
@@ -3779,6 +4232,8 @@ GET /openapi/popResource/aso/inventory/openapi/getOtsInnerInventoryInfo HTTP/1.
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3787,8 +4242,13 @@ GET /openapi/popResource/aso/inventory/openapi/getOtsInnerInventoryInfo HTTP/1.1
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3799,8 +4259,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "disk_used":347621.84,
    "disk_remain":347621.84,
    "disk_usage":10.840136
-  }
- },
+```
+
+`}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3813,12 +4276,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASM 2022-01-18
+`}` ASM 2022-01-18
 
-##### GetRdsInventoryInfo
+##### 7.1.2.11 GetRdsInventoryInfo
 
 Query the inventory information of ApsaraDB RDS. You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
 
@@ -3829,16 +4291,6 @@ Query the inventory information of ApsaraDB RDS. You should prioritize using the
 | aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 | aliyun territ _ ory | String | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Struct |  | The response data. |
-| overview | Struct |  | The overview information of the ApsaraDB RDS inventory. |
-| cpu total _ | Float | 1.0 | The total CPU capacity. |
-| cpu used _ | Float | 0 | The used CPU capacity. |
-| cpu remain _ | Float | 1.0 | The available CPU capacity. |
-
 **Request syntax**
 
 ```
@@ -3846,6 +4298,16 @@ GET /openapi/popResource/aso/inventory/openapi/getRdsInventoryInfo HTTP/1.1
 ```
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Struct |   | The response data. |
+| overview | Struct |   | The overview information of the ApsaraDB RDS inventory. |
+| cpu total _ | Float | 1.0 | The total CPU capacity. |
+| cpu used _ | Float | 0 | The used CPU capacity. |
+| cpu remain _ | Float | 1.0 | The available CPU capacity. |
 
 | cpu usage _ | Float | 0 | The CPU utilization. |
 |---|---|---|---|
@@ -3874,6 +4336,8 @@ GET /openapi/popResource/aso/inventory/openapi/getRdsInventoryInfo HTTP/1.1
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3882,8 +4346,13 @@ GET /openapi/popResource/aso/inventory/openapi/getRdsInventoryInfo HTTP/1.1
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -3901,7 +4370,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "cpu_total":1.0,
    "cpu_usage":0.0,
    "mem_total":200.0
-  },
+```
+
+`},`
+
+```json
   "engines":{
    "hawq":{
     "mem_used":"0.0",
@@ -3916,9 +4389,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "cpu_total":"0.0",
     "cpu_usage":"0.0",
     "mem_total":"0.0"
-   }
-  }
- },
+```
+
+`}` `}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -3931,29 +4406,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASO
+`}` ASO 2022-01-18
+
+##### 7.1.2.12 GetSlsInnerInfo
+
+Query the inventory information of Simple Log Service (SLS). You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
+
+**Request headers**
 
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 | aliyun territ _ ory | String | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Struct |  | The response data. |
-
-2022-01-18
-
-##### GetSlsInnerInfo
-
-Query the inventory information of Simple Log Service (SLS). You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
-
-**Request headers**
 
 **Request syntax**
 
@@ -3963,7 +4429,13 @@ GET /openapi/popResource/aso/inventory/openapi/getSlsInnerInfo HTTP/1.1
 
 **Response parameters**
 
-| overview | Struct |  | The overview information of the SLS inventory. |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Struct |   | The response data. |
+
+| overview | Struct |   | The overview information of the SLS inventory. |
 |---|---|---|---|
 | disk total _ | Float | 266122 | The total capacity of the disk. |
 | disk used _ | Float | 21082 | The used space of the disk. |
@@ -3986,6 +4458,8 @@ GET /openapi/popResource/aso/inventory/openapi/getSlsInnerInfo HTTP/1.1
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -3994,12 +4468,13 @@ GET /openapi/popResource/aso/inventory/openapi/getSlsInnerInfo HTTP/1.1
 
 Example for successful response `JSON` format
 
-| Parameter | Type | Position | Required | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -4010,8 +4485,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "disk_used":21082.0,
    "disk_remain":245040.0,
    "disk_usage":7.9219303
-  }
- },
+```
+
+`}` `},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -4024,31 +4502,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetPanguInventoryByClusterName
+##### 7.1.2.13 GetPanguInventoryByClusterName
 
 Query the inventory information of Apsara Distributed File System based on cluster names. You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
 
 **Request headers**
 
+| Parameter | Type | Position | Required | Example | Description |
+|---|---|---|---|---|---|
+| aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
+
 | aliyun territ _ ory | String | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
 |---|---|---|---|---|---|
-
-| Parameter | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| clusterNam e | Strin g | Query | Required | ECS-XXX-X-XXXX | The cluster name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| requestId | String | 2740eec5-a674- 4651-b959- 9f24e71ab2ba | The request ID. |
-| successRespo nse | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
-| message | String | "" | The returned message. An empty string is returned if the request is successful. |
 
 **Request syntax**
 
@@ -4058,13 +4527,25 @@ GET /openapi/popResource/aso/inventory/openapi/getPanguInventoryByClusterName HT
 
 **Request parameters**
 
+| Parameter | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| clusterNam e | Strin g | Query | Required | ECS-XXX-X-XXXX | The cluster name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| requestId | String | 2740eec5-a674- 4651-b959- 9f24e71ab2ba | The request ID. |
+| successRespo nse | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
+| message | String | "" | The returned message. An empty string is returned if the request is successful. |
 
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 |---|---|---|---|
 | cost | Long | 30 | The response time. Unit: milliseconds. |
 | path | String | /aso/inventory/ope napi/getPanguInve ntoryByClusterNam e | The path of the API. |
-| data | Array of data |  | The response data. |
+| data | Array of data |   | The response data. |
 | modifyDate | Long | 1657295602000 | The latest modification time of the inventory information. |
 | regionId | String | "" | The region ID. |
 | id | Long | 91 | The record ID. You can ignore this parameter. |
@@ -4084,6 +4565,8 @@ GET /openapi/popResource/aso/inventory/openapi/getPanguInventoryByClusterName HT
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -4092,11 +4575,13 @@ GET /openapi/popResource/aso/inventory/openapi/getPanguInventoryByClusterName HT
 
 Example for successful response `JSON` format
 
-| Parameter | Type | Position | Required | Example | Description |
-|---|---|---|---|---|---|
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
  "cost":30,
@@ -4111,7 +4596,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "region":"cn-XXXX-XXXX-XX ",
   "userdSize":"0.0000",
   "usedSpacePercent":"0.0000"
- },
+```
+
+`},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "message":"\"\"",
@@ -4123,31 +4612,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASM 2022-01-18
+`}` ASM 2022-01-18
 
-##### GetInventoryStat
+##### 7.1.2.14 GetInventoryStat
 
 Query the inventory information of Server Load Balancer (SLB). You should prioritize using the `GetIntegratedProductInventory` operation instead of this operation.
 
 **Request headers**
 
+| Parameter | Type | Position | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | aliyun lang _ | String | Header | Not required | zh | The language code used for internationalization. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|---|
 | aliyun territ _ ory | String | Header | Not required | CN | The country and region code used for internationalization. Valid values: CN (can be used when aliyun lang is set to zh) _ US (can be used when aliyun lang is set to en) _ TW (can be used when aliyun lang is set to zh) _ |
-
-| Parameter | Type | Position | Required | Example | Description |
-|---|---|---|---|---|---|
-| label | String | Query | Not required | default | The label. |
-| clusterNa me | String | Query | Not required | slbCluster-XXXXX- XXXX | The cluster name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| requestId | String | 82ecd983-62d8- 4be4-8d87- 1957cd09b796 | The request ID. |
 
 **Request syntax**
 
@@ -4157,7 +4637,18 @@ GET /openapi/popResource/aso/inventory/slb/stat HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Position | Required | Example | Description |
+|---|---|---|---|---|---|
+| label | String | Query | Not required | default | The label. |
+| clusterNa me | String | Query | Not required | slbCluster-XXXXX- XXXX | The cluster name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| requestId | String | 82ecd983-62d8- 4be4-8d87- 1957cd09b796 | The request ID. |
 
 | successRespo nse | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 |---|---|---|---|
@@ -4165,7 +4656,7 @@ GET /openapi/popResource/aso/inventory/slb/stat HTTP/1.1
 | path | String | /aso/inventory/slb/ openapi/stat | The path of the API. |
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | cost | Long | 30 | The response time. Unit: milliseconds. |
-| data | Array of data |  | The response data. |
+| data | Array of data |   | The response data. |
 | modifyDate | Long | 1660780800000 | The latest modification time of the inventory information. |
 | regionId | String | cn-XXXX-XXXX-XX | The region ID. |
 | id | Integer | 84 | The primary key ID. |
@@ -4187,6 +4678,8 @@ GET /openapi/popResource/aso/inventory/slb/stat HTTP/1.1
 | success | Boolean | true | Indicate whether the request was successful. Valid values: true: The request is successful. false: The request fails. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Example for request
 
 ```
@@ -4195,11 +4688,13 @@ GET /openapi/popResource/aso/inventory/slb/stat HTTP/1.1
 
 Wxample for successful response `JSON` format
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
  "cost":30,
@@ -4216,7 +4711,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "label":"default",
   "type":"INTRANET",
   "suName":"su_0"
- },
+```
+
+`},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "message":"\"\"",
@@ -4228,12 +4727,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-ASO 2022-01-18
+`}` ASO 2022-01-18
 
-##### GetIntegratedProductInventory
+##### 7.1.2.15 GetIntegratedProductInventory
 
 Queries the capacity information of a cloud service.
 
@@ -4242,6 +4740,9 @@ Queries the capacity information of a cloud service.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
 
 **Request parameters**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | region | Strin g | Quer y | No | cn-XX-XX-XX | The region. |
 |---|---|---|---|---|---|
@@ -4252,12 +4753,12 @@ This operation does not have operation-specific request headers and uses only co
 | cluster | Strin g | Quer y | No | OssHybridCluster-A-XX- XX | The logical cluster of the cloud service. |
 | pageIndex | Integ er | Quer y | No | 1 | The page number. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. Valid values: true false |
 | cost | Long | 22 | The response time. Unit: milliseconds. |
-
-**Response parameters**
 
 | path | String | /aso/inventory/inte grate/presentDetail | The request path. |
 |---|---|---|---|
@@ -4268,8 +4769,8 @@ This operation does not have operation-specific request headers and uses only co
 | errorMessage | String | "" | The error message. |
 | requestId | String | 0ab408921688116 7637553107d0045 | The request ID. |
 | eagleEyeTrace Id | String | 0ab408921688116 7637553107d0045 | The EagleEye ID. |
-| data | Struct |  | The response data. |
-| -list | Array |  | The returned data. |
+| data | Struct |   | The response data. |
+| -list | Array |   | The returned data. |
 | --regionId | String | cn-XX-XX-XX | The region. |
 | --cluster | String | OssHybridCluster- A-XX-XX | The cluster name. |
 | --dimension | String | sale | The dimension. For more information, see the Supplementary details on GetIntegratedProductInventory. |
@@ -4283,11 +4784,13 @@ This operation does not have operation-specific request headers and uses only co
 | --used | Integer | 58142 | The used capacity. |
 | --free | Integer | 70635 | The remaining capacity. |
 | --usage | Integer | 45 | The usage. For example, a value of 45 indicates that the utilization is 45%. |
-| -pageInfo | Struct |  | The pagination information. |
+| -pageInfo | Struct |   | The pagination information. |
 | --currentPage | Integer | 1 | The page number. |
 | --pageSize | Integer | 20 | The number of entries per page. |
 | --total | Long | 30 | The total number of entries returned. |
 | --totalPage | Long | 2 | The total number of pages returned. |
+
+**Examples**
 
 Sample requests
 
@@ -4295,14 +4798,9 @@ Sample requests
 GET /openapi/popResource/aso/inventory/integrate/presentDetail HTTP/1.1 &product=oss &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
-
-| Request parameters | Response parameters |  |  |  |  |
-|---|---|---|---|---|---|
-| Service code | Dimension | Dimension value | Unit | Metric | Metric value |
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "serverRole":"aso-mgr.asmgr#",
  "path":"/aso/inventory/integrate/presentDetail",
  "eagleEyeTraceId":"0ab4089216881167637553107d0045",
@@ -4314,7 +4812,11 @@ Sample success responses `JSON` format
    "totalPage":2,
    "pageSize":20,
    "currentPage":1
-  },
+```
+
+`},`
+
+```json
   "list":{
    "cluster":"OssHybridCluster-A-XX-XX",
    "unit":"GB",
@@ -4327,26 +4829,34 @@ Sample success responses `JSON` format
    "used":58142,
    "free":70635,
    "dimension":"sale"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "errorTitle":"\"\"",
  "requestId":"0ab4089216881167637553107d0045",
  "errorMessage":"\"\"",
  "errorCode":"\"\""
-}
 ```
 
-###### Supplementary details on
+`}`
+
+###### 7.1.2.15.1 Supplementary details on GetIntegratedProductInventory capacity metrics
 
 **GetIntegratedProductInventory capacity metrics**
 
 This topic provides supplementary details on the request and response parameters of the `GetIntegratedProductInventory` API and describes the business data that the API currently supports.
 
+| Request parameters | Response parameters |   |   |   |   |
+|---|---|---|---|---|---|
+| Service code | Dimension | Dimension value | Unit | Metric | Metric value |
+
 | ecs | sale - service logical capacity | flavor - capacity | Core | cpu type _ | share: shared ECS instance. exclude: dedicated ECS instance. bareMetal: ECS bare metal instance. default: unknown. |
 |---|---|---|---|---|---|
-|  | sale - service logical capacity | flavor - capacity | GB | mem typ _ e | default: the default value, which is of a non-enumeration type. |
-|  | sale - service logical capacity | flavor - capacity |  | Card | gpu type _ |
+|   | sale - service logical capacity | flavor - capacity | GB | mem typ _ e | default: the default value, which is of a non-enumeration type. |
+|   | sale - service logical capacity | flavor - capacity |   | Card | gpu type _ |
 | ebs | sale - service logical capacity | flavor - capacity | GB | disk type _ | Non- enumeration value. This value represents the specifications supported by EBS. Multiple specifications are separated by commas (,). For example: IO7,IO8,IO15,IO1 6 |
 | oss | sale - service logical capacity | flavor - capacity | GB | disk type _ | HYBRID: hybrid flash storage. SSD: all-flash storage. |
 | nas | sale - service logical capacity | flavor - capacity | GB | disk type _ | HYBRID: hybrid flash storage. SSD: all-flash storage. |
@@ -4355,30 +4865,34 @@ This topic provides supplementary details on the request and response parameters
 |---|---|---|---|---|---|
 | sls | sale - service logical capacity | flavor - capacity | GB | disk type _ | HYBRID: hybrid flash storage. SSD: all-flash storage. |
 | slb | sale - service logical capacity | flavor - capacity | None | internet | default: the default value, which is of a non-enumeration type. |
-|  |  |  | None | intranet | default: the default value, which is of a non-enumeration type. |
+|   |   |   | None | intranet | default: the default value, which is of a non-enumeration type. |
 | rds | sale - service logical capacity | The instance engine. Valid values: redis pgsql mongodb mysql gpdb ppassql | Core | cpu type _ | blank: empty host. share: shared ECS instance. exclusive: dedicated ECS instance. |
-|  |  |  | GB | mem typ _ e |  |
-|  |  |  | GB | disk type _ |  |
+|   |   |   | GB | mem typ _ e |   |
+|   |   |   | GB | disk type _ |   |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
+#### 7.1.3 Inspections
 
-#### Inspections
-
-##### InspectionGetTaskList
+##### 7.1.3.1 InspectionGetTaskList
 
 Queries inspection scenarios.
 
 **Request headers**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | aliyun lan _ g | Strin g | Hea der | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 |---|---|---|---|---|---|
 | aliyun terr _ itory | Strin g | Hea der | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | pageSize | Integ er | Quer y | No | 15 | The number of entries per page. |
 | page | Integ er | Quer y | No | 1 | The page number. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4387,10 +4901,6 @@ Queries inspection scenarios.
 | path | String | /aso/inspection/so mepath | The request path. |
 | serverRole | String | inspection# | The server role. |
 
-**Request parameters**
-
-**Response parameters**
-
 | responseVersi on | String | v1 | The version of the response. |
 |---|---|---|---|
 | errorCode | String | "" | The error code. |
@@ -4398,9 +4908,9 @@ Queries inspection scenarios.
 | errorMessage | String | "" | The error message. |
 | requestId | String | 8ae2a476-52b1- 4bac-98c4- 4ca17671482a | The request ID. |
 | eagleEyeTrace Id | String | "" | The EagleEye ID. |
-| data | Struct |  | The response data. |
-| -objectList | Array |  | The queried inspection scenarios. |
-| -- inspectionItem s | Array |  | The inspection items. |
+| data | Struct |   | The response data. |
+| -objectList | Array |   | The queried inspection scenarios. |
+| -- inspectionItem s | Array |   | The inspection items. |
 | ---id | Long | 10001 | The inspection item ID. |
 | --- inspectionCate goryId | Long | 10001 | The ID of the inspection item category. |
 | ---name | String | Network inspection | The name of the inspection item. |
@@ -4411,7 +4921,7 @@ Queries inspection scenarios.
 | --- capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 |---|---|---|---|
 | ---active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| --- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| --- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | ----id | Long | 1 | The ID of the atomic capability. |
 | ----name | String | Network inspection | The name of the atomic capability. |
 | ----description | String | Network inspection | The description of the atomic capability. |
@@ -4420,11 +4930,11 @@ Queries inspection scenarios.
 | ---- capabilityType Name | String | Script | The name of the atomic capability category. |
 | ----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | ----content | Map | {"":""} | The parameters of the atomic capability. |
-| --- executionResu lt | Struct |  | The execution result of the inspection item. |
+| --- executionResu lt | Struct |   | The execution result of the inspection item. |
 
 | ---- dimensionTitle s | String | "" | The dimensions of the inspection item. |
 |---|---|---|---|
-| ---- checkResults | Array |  | The details of the inspection result. |
+| ---- checkResults | Array |   | The details of the inspection result. |
 | -----dimensions | String | "" | The returned values of the dimensions. |
 | -----id | Long | 1 | The ID of the dimension entry. |
 | ----- atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -4446,7 +4956,7 @@ Queries inspection scenarios.
 | ---- executionType | Integer | 0 | The execution type. |
 | ---- taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | ----configId | Long | 1 | The configuration ID. |
-| ----capability | Struct |  | The information about the atomic capability. |
+| ----capability | Struct |   | The information about the atomic capability. |
 | -----id | Long | 1 | The ID of the atomic capability. |
 | -----name | String | Network inspection | The name of the atomic capability. |
 | -----description | String | Network inspection | The description of the atomic capability. |
@@ -4457,7 +4967,7 @@ Queries inspection scenarios.
 | ----- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -----content | Map | {"":""} | The parameters of the atomic capability. |
-| ----statistics | Struct |  | The statistics of inspection items. |
+| ----statistics | Struct |   | The statistics of inspection items. |
 | ----- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ----- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ----- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -4474,13 +4984,13 @@ Queries inspection scenarios.
 | ----- normalDetailC ount | Integer | 10 | The number of normal check items. |
 | ----- cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | ----- totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
-| --schedules | Array |  | The configuration for scheduled inspection items. |
+| --schedules | Array |   | The configuration for scheduled inspection items. |
 | ---weekDays | Integer | 1 | The day of the week to execute the inspection item. |
 | ---timeStr | String | 12:01:26 | The time to execute the inspection item. |
-| -- inspectionCate gories | Array |  | The information about the inspection category. |
-| --- subCategories | Array |  | The information about the inspection sub- category. |
+| -- inspectionCate gories | Array |   | The information about the inspection category. |
+| --- subCategories | Array |   | The information about the inspection sub- category. |
 
-| ---- inspectionItem s | Array |  | The inspection items. |
+| ---- inspectionItem s | Array |   | The inspection items. |
 |---|---|---|---|
 | -----id | Long | 1 | The inspection item ID. |
 | ----- inspectionCate goryId | Long | 1 | The ID of the inspection item category. |
@@ -4490,7 +5000,7 @@ Queries inspection scenarios.
 | ----- capabilityId | Long | 1 | The ID of the atomic capability. |
 | ----- capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ----- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ----- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | ------id | Long | 1 | The ID of the atomic capability. |
 | ------name | String | Network inspection | The name of the atomic capability. |
 | ------ description | String | Network inspection | The description of the atomic capability. |
@@ -4501,9 +5011,9 @@ Queries inspection scenarios.
 | ------ capabilityType Name | String | Script | The name of the atomic capability category. |
 | ------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | ------content | Map | {"":""} | The parameters of the atomic capability. |
-| ----- executionResu lt | Struct |  | The execution result of the inspection item. |
+| ----- executionResu lt | Struct |   | The execution result of the inspection item. |
 | ------ dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ------ checkResults | Array |  | The details of the inspection result. |
+| ------ checkResults | Array |   | The details of the inspection result. |
 | ------- dimensions | String | "" | The returned values of the dimensions. |
 | -------id | Long | 1 | The ID of the dimension entry. |
 | ------- atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -4527,7 +5037,7 @@ Queries inspection scenarios.
 |---|---|---|---|
 | ------ taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | ------configId | Long | 1 | The configuration ID. |
-| ------capability | Struct |  | The information about the atomic capability. |
+| ------capability | Struct |   | The information about the atomic capability. |
 | -------id | Long | 1 | The ID of the atomic capability. |
 | -------name | String | Network inspection | The name of the atomic capability. |
 | ------- description | String | Network inspection | The description of the atomic capability. |
@@ -4536,7 +5046,7 @@ Queries inspection scenarios.
 | ------- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -------content | Map | {"":""} | The parameters of the atomic capability. |
-| ------statistics | Struct |  | The statistics of inspection items. |
+| ------statistics | Struct |   | The statistics of inspection items. |
 | ------- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 
 | ------- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
@@ -4564,7 +5074,7 @@ Queries inspection scenarios.
 | ---- executionStat us | Integer | 0 | The state of the task. Valid values: 0: The task is being initialized. 1: The task is being executed. 2: The task is successful. 3: The task failed. 4: The task was skipped. |
 | ---- checkStatus | Integer | 0 | The inspection result. Valid values: 0: normal. 1: alerting. 2: error. |
 | ----order | Integer | 0 | The order of inspection items. |
-| ---- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| ---- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | ----- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 
 | ----- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
@@ -4583,7 +5093,7 @@ Queries inspection scenarios.
 | ----- cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 |---|---|---|---|
 | ----- totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
-| --- inspectionItem s | Array |  | The inspection items. |
+| --- inspectionItem s | Array |   | The inspection items. |
 | ----id | Long | 10001 | The inspection item ID. |
 | ---- inspectionCate goryId | Long | 10001 | The ID of the inspection item category. |
 | ----name | String | Network inspection | The name of the inspection item. |
@@ -4592,7 +5102,7 @@ Queries inspection scenarios.
 | ----capabilityId | Long | 1 | The ID of the atomic capability. |
 | ---- capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 | ----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ---- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ---- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | -----id | Long | 1 | The ID of the atomic capability. |
 
 | -----name | String | Network inspection | The name of the atomic capability. |
@@ -4603,9 +5113,9 @@ Queries inspection scenarios.
 | ----- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -----content | Map | {"":""} | The parameters of the atomic capability. |
-| ---- executionResu lt | Struct |  | The execution result of the inspection item. |
+| ---- executionResu lt | Struct |   | The execution result of the inspection item. |
 | ----- dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ----- checkResults | Array |  | The details of the inspection result. |
+| ----- checkResults | Array |   | The details of the inspection result. |
 | ------ dimensions | String | "" | The returned values of the dimensions. |
 | ------id | Long | 1 | The ID of the dimension entry. |
 | ------ atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -4629,7 +5139,7 @@ Queries inspection scenarios.
 | ----- executionType | Integer | 0 | The execution type. |
 | ----- taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | -----configId | Long | 1 | The configuration ID. |
-| -----capability | Struct |  | The information about the atomic capability. |
+| -----capability | Struct |   | The information about the atomic capability. |
 | ------id | Long | 1 | The ID of the atomic capability. |
 | ------name | String | Network inspection | The name of the atomic capability. |
 | ------ description | String | Network inspection | The description of the atomic capability. |
@@ -4640,7 +5150,7 @@ Queries inspection scenarios.
 
 | ------content | Map | {"":""} | The parameters of the atomic capability. |
 |---|---|---|---|
-| -----statistics | Struct |  | The statistics of inspection items. |
+| -----statistics | Struct |   | The statistics of inspection items. |
 | ------ totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ------ executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ------ executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -4668,7 +5178,7 @@ Queries inspection scenarios.
 
 | ---order | Integer | 0 | The order of inspection items. |
 |---|---|---|---|
-| --- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| --- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | ---- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ---- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ---- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -4708,10 +5218,9 @@ Sample requests
 GET /openapi/popResource/aso/inspection/api/inspection/getTaskList HTTP/1.1 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "serverRole":"inspection#",
  "path":"/aso/inspection/somepath",
  "eagleEyeTraceId":"\"\"",
@@ -4750,7 +5259,11 @@ Sample success responses `JSON` format
      "cancelDetailCount":0,
      "executionFailedItemsCount":0,
      "executingItemsCount":1
-    },
+```
+
+`},`
+
+```json
     "inspectionItems":{
      "executionResult":{
       "capabilityId":1,
@@ -4766,8 +5279,11 @@ Sample success responses `JSON` format
        "capabilityType":1,
        "content":{
         "":""
-       }
-      },
+```
+
+`}` `},`
+
+```json
       "updateTime":"2023-08-25T12:01:26.000+0000",
       "message":"Inspection succeeded",
       "statistics":{
@@ -4785,12 +5301,20 @@ Sample success responses `JSON` format
        "cancelDetailCount":0,
        "executionFailedItemsCount":0,
        "executingItemsCount":1
-      },
+```
+
+`},`
+
+```json
       "checkStatus":0,
       "taskExecutionId":1,
       "param":{
        "":""
-      },
+```
+
+`},`
+
+```json
       "configId":1,
       "checkResults":{
 ```
@@ -4802,12 +5326,21 @@ Sample success responses `JSON` format
        "detail":"Inspection succeeded",
        "dimensions":"\"\"",
        "atomCapabilityExecutionId":1
-      },
+```
+
+`},`
+
+```json
       "startTime":"2023-07-25T12:01:26.000+0000",
       "id":1,
       "endTime":"2023-09-25T12:01:26.000+0000",
       "status":0,
-     },
+      "extraInfo":"Inspection succeeded"
+```
+
+`},`
+
+```json
      "inspectionCategoryId":10001,
      "capabilityId":1,
      "preinstall":true,
@@ -4822,15 +5355,21 @@ Sample success responses `JSON` format
       "capabilityType":1,
       "content":{
        "":""
-      }
-     },
+```
+
+`}` `},`
+
+```json
      "description":"Network inspection",
      "active":true,
      "id":10001,
      "capabilityParam":{
       "":""
-     }
-    },
+```
+
+`}` `},`
+
+```json
     "startTime":"2023-07-25T12:01:26.000+0000",
     "subCategories":{
      "checkStatus":0,
@@ -4851,7 +5390,7 @@ Sample success responses `JSON` format
       "executionFailedItemsCount":0,
 ```
 
-" `ti` `It`
+`"` `ti` `It`
 
 ```
 t"1
@@ -4859,7 +5398,11 @@ t"1
 
 ```json
       "executingItemsCount":1
-     },
+```
+
+`},`
+
+```json
      "inspectionItems":{
       "atomCapability":{
        "preinstall":true,
@@ -4871,8 +5414,11 @@ t"1
        "capabilityType":1,
        "content":{
         "":""
-       }
-      },
+```
+
+`}` `},`
+
+```json
       "inspectionCategoryId":1,
       "capabilityId":1,
       "preinstall":true,
@@ -4882,7 +5428,11 @@ t"1
       "id":1,
       "capabilityParam":{
        "":""
-      },
+```
+
+`},`
+
+```json
       "executionResult":{
        "checkResults":{
         "checkStatus":0,
@@ -4891,7 +5441,11 @@ t"1
         "detail":"Inspection succeeded",
         "dimensions":"\"\"",
         "atomCapabilityExecutionId":1
-       },
+```
+
+`},`
+
+```json
        "capabilityId":1,
        "dimensionTitles":"\"\"",
        "executionType":1,
@@ -4910,7 +5464,11 @@ t"1
         "cancelDetailCount":0,
         "executionFailedItemsCount":0,
         "executingItemsCount":1
-       },
+```
+
+`},`
+
+```json
        "capability":{
 "preinstall":true
 ```
@@ -4925,22 +5483,33 @@ t"1
         "capabilityType":1,
         "content":{
          "":""
-        }
-       },
+```
+
+`}` `},`
+
+```json
        "updateTime":"2023-08-25T12:01:26.000+0000",
        "message":"Inspection succeeded",
        "checkStatus":0,
        "taskExecutionId":1,
        "param":{
         "":""
-       },
+```
+
+`},`
+
+```json
        "configId":1,
        "startTime":"2023-07-25T12:01:26.000+0000",
        "id":1,
        "endTime":"2023-09-25T12:01:26.000+0000",
        "status":0,
-      }
-     },
+       "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
      "executionStatus":0,
      "name":"Basic inspection",
      "startTime":"2023-07-25T12:01:26.000+0000",
@@ -4948,12 +5517,20 @@ t"1
      "endTime":"2023-09-25T12:01:26.000+0000",
      "parentId":0,
      "order":0
-    },
+```
+
+`},`
+
+```json
     "id":1,
     "endTime":"2023-09-25T12:01:26.000+0000",
     "parentId":0,
     "order":0
-   },
+```
+
+`},`
+
+```json
    "inspectionItems":{
     "inspectionCategoryId":10001,
     "capabilityId":1,
@@ -4976,8 +5553,11 @@ t"1
 capab tyype:,
       "content":{
        "":""
-      }
-     },
+```
+
+`}` `},`
+
+```json
      "capabilityId":1,
      "dimensionTitles":"\"\"",
      "executionType":0,
@@ -4988,7 +5568,11 @@ capab tyype:,
       "detail":"Inspection succeeded",
       "dimensions":"\"\"",
       "atomCapabilityExecutionId":1
-     },
+```
+
+`},`
+
+```json
      "updateTime":"2023-08-25T12:01:26.000+0000",
      "message":"Inspection succeeded",
      "statistics":{
@@ -5006,18 +5590,31 @@ capab tyype:,
       "cancelDetailCount":0,
       "executionFailedItemsCount":0,
       "executingItemsCount":1
-     },
+```
+
+`},`
+
+```json
      "checkStatus":0,
      "taskExecutionId":1,
      "param":{
       "":""
-     },
+```
+
+`},`
+
+```json
      "configId":1,
      "startTime":"2023-07-25T12:01:26.000+0000",
      "id":1,
      "endTime":"2023-09-25T12:01:26.000+0000",
      "status":0,
-    },
+     "extraInfo":"Inspection succeeded"
+```
+
+`},`
+
+```json
     "atomCapability":{
      "preinstall":true,
      "name":"Network inspection",
@@ -5029,40 +5626,50 @@ capab tyype:,
      "content":{
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+      "":""
+```
+
+`}` `},`
 
 ```json
-      "":""
-     }
-    },
     "id":10001,
     "capabilityParam":{
      "":""
-    }
-   },
+```
+
+`}` `},`
+
+```json
    "inspectionItemsCount":100,
    "schedules":{
     "weekDays":1,
     "timeStr":"12:01:26"
-   },
+```
+
+`},`
+
+```json
    "createTime":"2023-07-25T12:01:26.000+0000",
    "name":"Network inspection",
    "executionCount":10,
    "orders":0,
    "id":1
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "errorTitle":"\"\"",
  "requestId":"8ae2a476-52b1-4bac-98c4-4ca17671482a",
  "errorMessage":"\"\"",
  "errorCode":"\"\""
-}
 ```
 
-##### InspectionGetTaskExecution
+`}`
+
+##### 7.1.3.2 InspectionGetTaskExecution
 
 Queries inspection records.
 
@@ -5070,13 +5677,21 @@ Queries inspection records.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | pageSize | Integ er | Query | No | 15 | The number of entries per page. |
 | page | Integ er | Query | No | 1 | The page number. |
 | taskId | Long | Query | No | 1 | The ID of the inspection scenario. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5087,11 +5702,7 @@ Queries inspection records.
 | responseVersi on | String | v1 | The version of the response. |
 | errorCode | String | "" | The error code. |
 
-**Request parameters**
-
-**Response parameters**
-
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5100,8 +5711,8 @@ Queries inspection records.
 | errorMessage | String | "" | The error message. |
 | requestId | String | 8ae2a476-52b1- 4bac-98c4- 4ca17671482a | The request ID. |
 | eagleEyeTrace Id | String | "" | The EagleEye ID. |
-| data | Struct |  | The response data. |
-| -objectList | Array |  | The queried inspection records. |
+| data | Struct |   | The response data. |
+| -objectList | Array |   | The queried inspection records. |
 | --id | Long | 1 | The ID of the inspection task. |
 | -- executionStat us | Integer | 0 | The state of the task. Valid values: 0: The task is being initialized. 1: The task is being executed. 2: The task is successful. 3: The task failed. 4: The task was skipped. |
 | --createTime | String | 2023-07- 25T12:01:26.000+ 0000 | The time when the automatic snapshot policy was created. |
@@ -5110,12 +5721,12 @@ Queries inspection records.
 | -- executorUserN ame | String | opsadmin | The user who executed the inspection item. |
 | --message | String | Inspection succeeded | The message that indicates the inspection result. |
 | --extraInfo | String | Inspection succeeded | The details of the inspection result. |
-| -- inspectionTask | Struct |  | The information about the inspection scenario. |
+| -- inspectionTask | Struct |   | The information about the inspection scenario. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
-| --- inspectionItem s | Array |  | The inspection items. |
+| --- inspectionItem s | Array |   | The inspection items. |
 | ----id | Long | 10001 | The inspection item ID. |
 | ---- inspectionCate goryId | Long | 10001 | The ID of the inspection category. |
 | ----name | String | Network inspection | The name of the inspection item. |
@@ -5124,7 +5735,7 @@ Queries inspection records.
 | ----capabilityId | Long | 1 | The ID of the atomic capability. |
 | ---- capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 | ----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ---- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ---- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | -----id | Long | 1 | The ID of the atomic capability. |
 | -----name | String | Network inspection | The name of the atomic capability. |
 | -----description | String | Network inspection | The description of the atomic capability. |
@@ -5136,9 +5747,9 @@ Queries inspection records.
 | ----- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -----content | Map | {"":""} | The parameters of the atomic capability. |
-| ---- executionResu lt | Struct |  | The execution result of the inspection item. |
+| ---- executionResu lt | Struct |   | The execution result of the inspection item. |
 | ----- dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ----- checkResults | Array |  | The details of the inspection result. |
+| ----- checkResults | Array |   | The details of the inspection result. |
 | ------ dimensions | String | "" | The returned values of the dimensions. |
 | ------id | Long | 1 | The ID of the dimension entry. |
 | ------ atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -5148,7 +5759,7 @@ Queries inspection records.
 | -----id | Long | 1 | The ID of the execution result. |
 | ----- capabilityId | Long | 1 | The ID of the atomic capability. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5164,11 +5775,11 @@ Queries inspection records.
 | ----- executionType | Integer | 0 | The execution type. |
 | ----- taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | -----configId | Long | 1 | The configuration ID. |
-| -----capability | Struct |  | The information about the atomic capability. |
+| -----capability | Struct |   | The information about the atomic capability. |
 | ------id | Long | 1 | The ID of the atomic capability. |
 | ------name | String | Network inspection | The name of the atomic capability. |
 
-| A C | psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc | e |
+| A C | psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5179,7 +5790,7 @@ Queries inspection records.
 | ------ capabilityType Name | String | Script | The name of the atomic capability category. |
 | ------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | ------content | Map | {"":""} | The parameters of the atomic capability. |
-| -----statistics | Struct |  | The statistics of inspection items. |
+| -----statistics | Struct |   | The statistics of inspection items. |
 | ------ totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ------ executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ------ executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -5188,7 +5799,7 @@ Queries inspection records.
 | ------ executionFaile dItemsCount | Integer | 0 | The number of failed inspection items. |
 | ------ errorItemsCou nt | Integer | 0 | The number of inspection items on which an error occurred. |
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5200,16 +5811,16 @@ Queries inspection records.
 | ------ normalDetailC ount | Integer | 10 | The number of normal check items. |
 | ------ cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | ------ totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
-| ---schedules | Array |  | The configuration for scheduled inspection items. |
+| ---schedules | Array |   | The configuration for scheduled inspection items. |
 | ----weekDays | Integer | 1 | The day of the week to execute the inspection item. |
 | ----timeStr | String | 12:01:26 | The time to execute the inspection item. |
-| --- inspectionCate gories | Array |  | The information about the inspection category. |
-| ---- subCategories | Array |  | The information about the inspection sub- category. |
-| ----- inspectionItem s | Array |  | The inspection items. |
+| --- inspectionCate gories | Array |   | The information about the inspection category. |
+| ---- subCategories | Array |   | The information about the inspection sub- category. |
+| ----- inspectionItem s | Array |   | The inspection items. |
 | ------id | Long | 1 | The inspection item ID. |
 | ------ inspectionCate goryId | Long | 1 | The ID of the inspection category. |
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5220,7 +5831,7 @@ Queries inspection records.
 | ------ capabilityId | Long | 1 | The ID of the atomic capability. |
 | ------ capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 | ------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ------ atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ------ atomCapabilit y | Struct |   | The information about the atomic capability. |
 | -------id | Long | 1 | The ID of the atomic capability. |
 | -------name | String | Network inspection | The name of the atomic capability. |
 | ------- description | String | Network inspection | The description of the atomic capability. |
@@ -5232,9 +5843,9 @@ Queries inspection records.
 |---|---|---|---|
 | -------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -------content | Map | {"":""} | The parameters of the atomic capability. |
-| ------ executionResu lt | Struct |  | The execution result of the inspection item. |
+| ------ executionResu lt | Struct |   | The execution result of the inspection item. |
 | ------- dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ------- checkResults | Array |  | The details of the inspection result. |
+| ------- checkResults | Array |   | The details of the inspection result. |
 | -------- dimensions | String | "" | The returned values of the dimensions. |
 | --------id | Long | 1 | The ID of the dimension entry. |
 | -------- atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -5257,12 +5868,12 @@ Queries inspection records.
 | ------- executionType | Integer | 1 | The execution type. |
 | ------- taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | -------configId | Long | 1 | The configuration ID. |
-| -------capability | Struct |  | The information about the atomic capability. |
+| -------capability | Struct |   | The information about the atomic capability. |
 | --------id | Long | 1 | The ID of the atomic capability. |
 | --------name | String | Network inspection | The name of the atomic capability. |
 | -------- description | String | Network inspection | The description of the atomic capability. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5272,7 +5883,7 @@ Queries inspection records.
 | -------- capabilityType Name | String | Script | The name of the atomic capability category. |
 | --------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | --------content | Map | {"":""} | The parameters of the atomic capability. |
-| -------statistics | Struct |  | The statistics of inspection items. |
+| -------statistics | Struct |   | The statistics of inspection items. |
 | -------- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | -------- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | -------- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -5302,7 +5913,7 @@ Queries inspection records.
 |---|---|---|---|
 | ----- checkStatus | Integer | 0 | The state of the task. Valid values: 0: normal. 1: alerting. 2: error. |
 | -----order | Integer | 0 | The order of inspection items. |
-| ----- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| ----- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | ------ totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ------ executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ------ executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -5315,7 +5926,7 @@ Queries inspection records.
 | ------ errorDetailCou nt | Integer | 0 | The number of returned inspection errors. |
 | ------ warningDetail Count | Integer | 0 | The number of returned inspection alerts. |
 
-| A C | psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc | e |
+| A C | psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5323,7 +5934,7 @@ Queries inspection records.
 | ------ normalDetailC ount | Integer | 10 | The number of normal check items. |
 | ------ cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | ------ totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
-| ---- inspectionItem s | Array |  | The inspection items. |
+| ---- inspectionItem s | Array |   | The inspection items. |
 | -----id | Long | 10001 | The inspection item ID. |
 | ----- inspectionCate goryId | Long | 10001 | The ID of the inspection category. |
 | -----name | String | Network inspection | The name of the inspection item. |
@@ -5332,10 +5943,10 @@ Queries inspection records.
 | ----- capabilityId | Long | 1 | The ID of the atomic capability. |
 | ----- capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ----- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ----- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | ------id | Long | 1 | The ID of the atomic capability. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5347,9 +5958,9 @@ Queries inspection records.
 | ------ capabilityType Name | String | Script | The name of the atomic capability category. |
 | ------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | ------content | Map | {"":""} | The parameters of the atomic capability. |
-| ----- executionResu lt | Struct |  | The execution result of the inspection item. |
+| ----- executionResu lt | Struct |   | The execution result of the inspection item. |
 | ------ dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ------ checkResults | Array |  | The details of the inspection result. |
+| ------ checkResults | Array |   | The details of the inspection result. |
 | ------- dimensions | String | "" | The returned values of the dimensions. |
 | -------id | Long | 1 | The ID of the dimension entry. |
 | ------- atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -5372,13 +5983,13 @@ Queries inspection records.
 | ------ executionType | Integer | 0 | The execution type. |
 | ------ taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ------configId | Long | 1 | The configuration ID. |
-| ------capability | Struct |  | The information about the atomic capability. |
+| ------capability | Struct |   | The information about the atomic capability. |
 | -------id | Long | 1 | The ID of the atomic capability. |
 | -------name | String | Network inspection | The name of the atomic capability. |
 | ------- description | String | Network inspection | The description of the atomic capability. |
@@ -5387,7 +5998,7 @@ Queries inspection records.
 | ------- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -------content | Map | {"":""} | The parameters of the atomic capability. |
-| ------statistics | Struct |  | The statistics of inspection items. |
+| ------statistics | Struct |   | The statistics of inspection items. |
 | ------- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ------- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ------- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -5410,7 +6021,7 @@ Queries inspection records.
 | ----code | String | network | The code of the inspection category. |
 | ----parentId | Long | 0 | The ID of the inspection category. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5420,7 +6031,7 @@ Queries inspection records.
 | ---- executionStat us | Integer | 0 | The state of the task. Valid values: 0: The task is being initialized. 1: The task is being executed. 2: The task is successful. 3: The task failed. 4: The task was skipped. |
 | ---- checkStatus | Integer | 0 | The state of the task. Valid values: 0: normal. 1: alerting. 2: error. |
 | ----order | Integer | 0 | The order of inspection items. |
-| ---- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| ---- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | ----- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ----- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ----- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -5445,7 +6056,7 @@ Queries inspection records.
 | ---preinstall | Boolean | true | Indicates whether the scenario is preset. Valid values: true false |
 | ---active | Boolean | true | Indicates whether the scenario is activated. Valid values: true false |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5454,7 +6065,7 @@ Queries inspection records.
 | --- createUserNa me | String | opsadmin | The user who created the inspection item. |
 | --- executionCoun t | Integer | 10 | The number of times the inspection item was executed. |
 | ---orders | Integer | 0 | The order of inspection scenarios. |
-| -- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| -- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | --- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | --- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | --- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -5465,7 +6076,7 @@ Queries inspection records.
 | --- warningItemsC ount | Integer | 0 | The number of inspection items that triggered an alert. |
 | --- normalItemsC ount | Integer | 10 | The number of normal inspection items. |
 
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5480,10 +6091,11 @@ Queries inspection records.
 | -total | Integer | 20 | The total number of entries. |
 | -page | Integer | 1 | The page number. |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
-{
  "serverRole":"\"\"",
  "path":"/aso/inspection/somepath",
  "eagleEyeTraceId":"\"\"",
@@ -5504,7 +6116,7 @@ Queries inspection records.
      "code":"network",
 ```
 
-,
+`,`
 
 ```json
      "inspectionItemStatistics":{
@@ -5522,7 +6134,11 @@ Queries inspection records.
       "cancelDetailCount":0,
       "executionFailedItemsCount":0,
       "executingItemsCount":1
-     },
+```
+
+`},`
+
+```json
      "inspectionItems":{
       "atomCapability":{
        "preinstall":true,
@@ -5534,8 +6150,11 @@ Queries inspection records.
        "capabilityType":1,
        "content":{
         "":""
-       }
-      },
+```
+
+`}` `},`
+
+```json
       "inspectionCategoryId":10001,
       "capabilityId":1,
       "preinstall":true,
@@ -5545,7 +6164,11 @@ Queries inspection records.
       "id":10001,
       "capabilityParam":{
        "":""
-      },
+```
+
+`},`
+
+```json
       "executionResult":{
        "checkResults":{
         "checkStatus":0,
@@ -5554,7 +6177,11 @@ Queries inspection records.
         "detail":"Inspection succeeded",
         "dimensions":"\"\"",
         "atomCapabilityExecutionId":1
-       },
+```
+
+`},`
+
+```json
        "capabilityId":1,
        "dimensionTitles":"\"\"",
        "executionType":0,
@@ -5576,7 +6203,11 @@ Queries inspection records.
         "cancelDetailCount":0,
         "executionFailedItemsCount":0,
         "executingItemsCount":1
-       },
+```
+
+`},`
+
+```json
        "capability":{
         "preinstall":true,
         "name":"Network inspection",
@@ -5587,22 +6218,33 @@ Queries inspection records.
         "capabilityType":1,
         "content":{
          "":""
-        }
-       },
+```
+
+`}` `},`
+
+```json
        "updateTime":"2023-08-25T12:01:26.000+0000",
        "message":"Inspection succeeded",
        "checkStatus":0,
        "taskExecutionId":1,
        "param":{
         "":""
-       },
+```
+
+`},`
+
+```json
        "configId":1,
        "startTime":"2023-07-25T12:01:26.000+0000",
        "id":1,
        "endTime":"2023-09-25T12:01:26.000+0000",
        "status":0,
-      }
-     },
+       "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
      "executionStatus":0,
      "name":"Network inspection",
      "startTime":"2023-07-25T12:01:26.000+0000",
@@ -5623,7 +6265,11 @@ Queries inspection records.
        "id":1,
        "capabilityParam":{
         "":""
-       },
+```
+
+`},`
+
+```json
        "atomCapability":{
         "preinstall":true,
         "name":"Network inspection",
@@ -5634,8 +6280,11 @@ Queries inspection records.
         "capabilityType":1,
         "content":{
          "":""
-        }
-       },
+```
+
+`}` `},`
+
+```json
        "executionResult":{
         "checkResults":{
          "checkStatus":0,
@@ -5644,7 +6293,11 @@ Queries inspection records.
          "detail":"Inspection succeeded",
          "dimensions":"\"\"",
          "atomCapabilityExecutionId":1
-        },
+```
+
+`},`
+
+```json
         "capabilityId":1,
         "dimensionTitles":"\"\"",
         "executionType":1,
@@ -5658,8 +6311,11 @@ Queries inspection records.
          "capabilityType":1,
          "content":{
           "":""
-         }
-        },
+```
+
+`}` `},`
+
+```json
         "updateTime":"2023-08-25T12:01:26.000+0000",
         "message":"Inspection succeeded",
         "statistics":{
@@ -5676,7 +6332,7 @@ Queries inspection records.
          "normalDetailCount":10,
 ```
 
-"
+`"`
 
 ```
 lDtilC t"0
@@ -5686,19 +6342,31 @@ lDtilC t"0
          "cancelDetailCount":0,
          "executionFailedItemsCount":0,
          "executingItemsCount":1
-        },
+```
+
+`},`
+
+```json
         "checkStatus":0,
         "taskExecutionId":1,
         "param":{
          "":""
-        },
+```
+
+`},`
+
+```json
         "configId":1,
         "startTime":"2023-07-25T12:01:26.000+0000",
         "id":1,
         "endTime":"2023-09-25T12:01:26.000+0000",
         "status":0,
-       }
-      },
+        "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
       "code":"network",
       "executionStatus":0,
       "name":"Basic inspection",
@@ -5721,19 +6389,35 @@ lDtilC t"0
        "cancelDetailCount":0,
        "executionFailedItemsCount":0,
        "executingItemsCount":1
-      },
+```
+
+`},`
+
+```json
       "order":0
-     },
+```
+
+`},`
+
+```json
      "parentId":0,
      "order":0
-    },
+```
+
+`},`
+
+```json
     "description":"Network inspection",
     "active":true,
     "createUserName":"opsadmin",
     "schedules":{
      "weekDays":1,
      "timeStr":"12:01:26"
-    },
+```
+
+`},`
+
+```json
     "inspectionItemsCount":100,
     "createTime":"2023-09-25T12:01:26.000+0000",
 "name":"Networkinspection"
@@ -5756,8 +6440,11 @@ lDtilC t"0
        "capabilityType":1,
        "content":{
         "":""
-       }
-      },
+```
+
+`}` `},`
+
+```json
       "updateTime":"2023-08-25T12:01:26.000+0000",
       "message":"Inspection succeeded",
       "statistics":{
@@ -5775,12 +6462,20 @@ lDtilC t"0
        "cancelDetailCount":0,
        "executionFailedItemsCount":0,
        "executingItemsCount":1
-      },
+```
+
+`},`
+
+```json
       "checkStatus":0,
       "taskExecutionId":1,
       "param":{
        "":""
-      },
+```
+
+`},`
+
+```json
       "configId":1,
       "checkResults":{
        "checkStatus":0,
@@ -5789,17 +6484,21 @@ lDtilC t"0
        "detail":"Inspection succeeded",
        "dimensions":"\"\"",
        "atomCapabilityExecutionId":1
-      },
+```
+
+`},`
+
+```json
       "startTime":"2023-07-25T12:01:26.000+0000",
       "id":1,
       "endTime":"2023-09-25T12:01:26.000+0000",
       "status":0,
+      "extraInfo":"Inspection succeeded"
 ```
 
-p
+`p` `},`
 
 ```json
-     },
      "inspectionCategoryId":10001,
      "capabilityId":1,
      "preinstall":true,
@@ -5814,19 +6513,29 @@ p
       "capabilityType":1,
       "content":{
        "":""
-      }
-     },
+```
+
+`}` `},`
+
+```json
      "description":"Network inspection",
      "active":true,
      "id":10001,
      "capabilityParam":{
       "":""
-     }
-    },
+```
+
+`}` `},`
+
+```json
     "executionCount":10,
     "orders":0,
     "id":1
-   },
+```
+
+`},`
+
+```json
    "inspectionItemStatistics":{
     "totalItemsCount":10,
     "totalDetailCount":10,
@@ -5842,47 +6551,56 @@ p
     "cancelDetailCount":0,
     "executionFailedItemsCount":0,
     "executingItemsCount":1
-   },
+```
+
+`},`
+
+```json
    "executionStatus":0,
    "startTime":"2023-07-25T12:01:26.000+0000",
    "id":1,
    "endTime":"2023-09-25T12:01:26.000+0000",
    "message":"Inspection succeeded",
-  }
- },
+   "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
  "success":true,
  "errorTitle":"\"\"",
 ```
+
+```json
+ "requestId":"8ae2a476-52b1-4bac-98c4-4ca17671482a",
+ "errorMessage":"\"\"",
+ "errorCode":"\"\""
+```
+
+`}`
+
+##### 7.1.3.3 InspectionGetReport
+
+Queries inspection reports.
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | executionI d | Long | Query | Yes | 1 | The ID of the inspection task. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. true false. |
-
-```json
- "requestId":"8ae2a476-52b1-4bac-98c4-4ca17671482a",
- "errorMessage":"\"\"",
- "errorCode":"\"\""
-}
-```
-
-##### InspectionGetReport
-
-Queries inspection reports.
-
-**Request headers**
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5895,9 +6613,9 @@ Queries inspection reports.
 | errorMessage | String | "" | The error message. |
 | requestId | String | 8ae2a476-52b1- 4bac-98c4- 4ca17671482a | The request ID. |
 | eagleEyeTrace Id | String | "" | The EagleEye ID. |
-| data | Struct |  | The response data. |
+| data | Struct |   | The response data. |
 | -suggestion | String | Inspection succeeded | The suggestion. |
-| - inspectionTask Execution | Struct |  | The information of the inspection task. |
+| - inspectionTask Execution | Struct |   | The information of the inspection task. |
 | --id | Long | 1 | The ID of the inspection task. |
 | -- executionStat us | Integer | 0 | The state of the task. Valid values: 0: The task is being initialized. 1: The task is being executed. 2: The task is successful. 3: The task failed. 4: The task was skipped. |
 | --createTime | String | 2023-07- 25T12:01:26.000+ 0000 | The time when the inspection task was created. |
@@ -5909,8 +6627,8 @@ Queries inspection reports.
 | -- executorUserN ame | String | opsadmin | The user who executed the inspection task. |
 | --message | String | Inspection succeeded | The message that indicates the inspection result. |
 | --extraInfo | String | Inspection succeeded | The details of the inspection result. |
-| -- inspectionTask | Struct |  | The information about the inspection scenario. |
-| --- inspectionItem s | Array |  | The inspection items. |
+| -- inspectionTask | Struct |   | The information about the inspection scenario. |
+| --- inspectionItem s | Array |   | The inspection items. |
 | ----id | Long | 10001 | The inspection item ID. |
 | ---- inspectionCate goryId | Long | 10001 | The ID of the inspection category. |
 | ----name | String | Network inspection | The name of the inspection item. |
@@ -5922,7 +6640,7 @@ Queries inspection reports.
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ---- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ---- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | -----id | Long | 1 | The ID of the atomic capability. |
 | -----name | String | Network inspection | The name of the atomic capability. |
 | -----description | String | Network inspection | The description of the atomic capability. |
@@ -5931,12 +6649,12 @@ Queries inspection reports.
 | ----- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -----content | Map | {"":""} | The parameters of the atomic capability. |
-| ---- executionResu lt | Struct |  | The execution result of the inspection item. |
+| ---- executionResu lt | Struct |   | The execution result of the inspection item. |
 | ----- dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ----- checkResults | Array |  | The details of the inspection result. |
+| ----- checkResults | Array |   | The details of the inspection result. |
 | ------ dimensions | String | "" | The returned values of the dimensions. |
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5955,7 +6673,7 @@ Queries inspection reports.
 | ----- checkStatus | Integer | 0 | The state of the task. Valid values: 0: normal. 1: alerting. 2: error. |
 | -----startTime | String | 2023-07- 25T12:01:26.000+ 0000 | The start time of the inspection. |
 
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5965,7 +6683,7 @@ Queries inspection reports.
 | ----- executionType | Integer | 0 | The execution type. |
 | ----- taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | -----configId | Long | 1 | The configuration ID. |
-| -----capability | Struct |  | The information about the atomic capability. |
+| -----capability | Struct |   | The information about the atomic capability. |
 | ------id | Long | 1 | The ID of the atomic capability. |
 | ------name | String | Network inspection | The name of the atomic capability. |
 | ------ description | String | Network inspection | The description of the atomic capability. |
@@ -5974,9 +6692,9 @@ Queries inspection reports.
 | ------ capabilityType Name | String | Script | The name of the atomic capability category. |
 | ------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | ------content | Map | {"":""} | The parameters of the atomic capability. |
-| -----statistics | Struct |  | The statistics of inspection items. |
+| -----statistics | Struct |   | The statistics of inspection items. |
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5996,29 +6714,29 @@ Queries inspection reports.
 | ------ cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | ------ totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ---schedules | Array |  | The configuration for scheduled inspection items. |
+| ---schedules | Array |   | The configuration for scheduled inspection items. |
 | ----weekDays | Integer | 1 | The day of the week to execute the inspection item. |
 | ----timeStr | String | 12:01:26 | The time to execute the inspection item. |
-| --- inspectionCate gories | Array |  | The information about the inspection category. |
-| ---- subCategories | Array |  | The information about the inspection sub- category. |
-| ----- inspectionItem s | Array |  | The inspection items. |
+| --- inspectionCate gories | Array |   | The information about the inspection category. |
+| ---- subCategories | Array |   | The information about the inspection sub- category. |
+| ----- inspectionItem s | Array |   | The inspection items. |
 | ------id | Long | 1 | The inspection item ID. |
 | ------ inspectionCate goryId | Long | 1 | The ID of the inspection category. |
 | ------name | String | Network inspection | The name of the inspection item. |
 | ------ description | String | Network inspection | The description of the inspection item. |
 | ------preinstall | Boolean | true | Indicates whether the inspection item is preset. Valid values: true false |
 | ------ capabilityId | Long | 1 | The ID of the atomic capability. |
-| ------ capabilityPara m | Map |  | The parameters of the atomic capability. |
-| ------active | Boolean |  | Indicates whether the inspection item is activated. Valid values: true false |
+| ------ capabilityPara m | Map |   | The parameters of the atomic capability. |
+| ------active | Boolean |   | Indicates whether the inspection item is activated. Valid values: true false |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ------ atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ------ atomCapabilit y | Struct |   | The information about the atomic capability. |
 | -------id | Long | 1 | The ID of the atomic capability. |
 | -------name | String | Network inspection | The name of the atomic capability. |
 | ------- description | String | Network inspection | The description of the atomic capability. |
@@ -6027,14 +6745,14 @@ Queries inspection reports.
 | ------- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -------content | Map | {"":""} | The parameters of the atomic capability. |
-| ------ executionResu lt | Struct |  | The execution result of the inspection item. |
+| ------ executionResu lt | Struct |   | The execution result of the inspection item. |
 | ------- dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ------- checkResults | Array |  | The details of the inspection result. |
+| ------- checkResults | Array |   | The details of the inspection result. |
 | -------- dimensions | String | "" | The returned values of the dimensions. |
 | --------id | Long | 1 | The ID of the dimension entry. |
 | -------- atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
 
-| A C | psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc | e |
+| A C | psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6053,7 +6771,7 @@ Queries inspection reports.
 | -------endTime | String | 2023-09- 25T12:01:26.000+ 0000 | The end time of the inspection. |
 | ------- updateTime | String | 2023-08- 25T12:01:26.000+ 0000 | The update time of the inspection. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6061,7 +6779,7 @@ Queries inspection reports.
 | ------- executionType | Integer | 1 | The execution type. |
 | ------- taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | -------configId | Long | 1 | The configuration ID. |
-| -------capability | Struct |  | The information about the atomic capability. |
+| -------capability | Struct |   | The information about the atomic capability. |
 | --------id | Long | 1 | The ID of the atomic capability. |
 | --------name | String | Network inspection | The name of the atomic capability. |
 | -------- description | String | Network inspection | The description of the atomic capability. |
@@ -6070,11 +6788,11 @@ Queries inspection reports.
 | -------- capabilityType Name | String | Script | The name of the atomic capability category. |
 | --------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | --------content | Map | {"":""} | The parameters of the atomic capability. |
-| -------statistics | Struct |  | The statistics of inspection items. |
+| -------statistics | Struct |   | The statistics of inspection items. |
 | -------- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | -------- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
@@ -6103,13 +6821,13 @@ Queries inspection reports.
 | ----- executionStat us | Integer | 0 | The state of the task. Valid values: 0: The task is being initialized. 1: The task is being executed. 2: The task is successful. 3: The task failed. 4: The task was skipped. |
 | ----- checkStatus | Integer | 0 | The state of the task. Valid values: 0: normal. 1: alerting. 2: error. |
 | -----order | Integer | 0 | The order of inspection items. |
-| ----- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| ----- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | ------ totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ------ executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ------ executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
 | ------ executingItem sCount | Integer | 1 | The number of inspection items that are being executed. |
 
-| psara Uni-manag | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6124,13 +6842,13 @@ Queries inspection reports.
 | ------ normalDetailC ount | Integer | 10 | The number of normal check items. |
 | ------ cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | ------ totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
-| ---- inspectionItem s | Array |  | The inspection items. |
+| ---- inspectionItem s | Array |   | The inspection items. |
 | -----id | Long | 10001 | The inspection item ID. |
 | ----- inspectionCate goryId | Long | 10001 | The ID of the inspection category. |
 | -----name | String | Network inspection | The name of the inspection item. |
 | -----description | String | Network inspection | The description of the inspection item. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6139,7 +6857,7 @@ Queries inspection reports.
 | ----- capabilityId | Long | 1 | The ID of the atomic capability. |
 | ----- capabilityPara m | Map | {"":""} | The parameters of the atomic capability. |
 | -----active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
-| ----- atomCapabilit y | Struct |  | The information about the atomic capability. |
+| ----- atomCapabilit y | Struct |   | The information about the atomic capability. |
 | ------id | Long | 1 | The ID of the atomic capability. |
 | ------name | String | Network inspection | The name of the atomic capability. |
 | ------ description | String | Network inspection | The description of the atomic capability. |
@@ -6149,14 +6867,14 @@ Queries inspection reports.
 | ------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | ------content | Map | {"":""} | The parameters of the atomic capability. |
 
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ----- executionResu lt | Struct |  | The execution result of the inspection item. |
+| ----- executionResu lt | Struct |   | The execution result of the inspection item. |
 | ------ dimensionTitle s | String | "" | The dimensions of the inspection item. |
-| ------ checkResults | Array |  | The details of the inspection result. |
+| ------ checkResults | Array |   | The details of the inspection result. |
 | ------- dimensions | String | "" | The returned values of the dimensions. |
 | -------id | Long | 1 | The ID of the dimension entry. |
 | ------- atomCapabilit yExecutionId | Long | 1 | The ID of the atomic capability task. |
@@ -6169,7 +6887,7 @@ Queries inspection reports.
 | ------status | Integer | 0 | The state of the task. Valid values: 0: The task is being initialized. 1: The task is being executed. 2: The task is successful. 3: The task failed. 4: The task was skipped. |
 | ------message | String | Inspection succeeded | The message that indicates the inspection result. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6182,7 +6900,7 @@ Queries inspection reports.
 | ------ executionType | Integer | 0 | The execution type. |
 | ------ taskExecutionI d | Long | 1 | The ID of the scenario-specific inspection task. |
 | ------configId | Long | 1 | The configuration ID. |
-| ------capability | Struct |  | The information about the atomic capability. |
+| ------capability | Struct |   | The information about the atomic capability. |
 | -------id | Long | 1 | The ID of the atomic capability. |
 | -------name | String | Network inspection | The name of the atomic capability. |
 | ------- description | String | Network inspection | The description of the atomic capability. |
@@ -6194,7 +6912,7 @@ Queries inspection reports.
 | ------- capabilityType Name | String | Script | The name of the atomic capability category. |
 | -------active | Boolean | true | Indicates whether the inspection item is activated. Valid values: true false |
 | -------content | Map | {"":""} | The parameters of the atomic capability. |
-| ------statistics | Struct |  | The statistics of inspection items. |
+| ------statistics | Struct |   | The statistics of inspection items. |
 | ------- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ------- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ------- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -6206,7 +6924,7 @@ Queries inspection reports.
 | ------- normalItemsC ount | Integer | 10 | The number of normal inspection items. |
 | ------- errorDetailCou nt | Integer | 0 | The number of returned inspection errors. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6227,7 +6945,7 @@ Queries inspection reports.
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ---- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| ---- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | ----- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 | ----- executionSkip pedItemsCoun t | Integer | 1 | The number of inspection items that were skipped. |
 | ----- executionInitC ount | Integer | 1 | The number of inspection items that are being initialized. |
@@ -6255,10 +6973,10 @@ Queries inspection reports.
 | --- createUserNa me | String | opsadmin | The user who created the inspection item. |
 | --- executionCoun t | Integer | 10 | The number of times the inspection item was executed. |
 | ---orders | Integer | 0 | The order of inspection scenarios. |
-| -- inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| -- inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 | --- totalItemsCou nt | Integer | 10 | The total number of inspection items. |
 
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6276,9 +6994,9 @@ Queries inspection reports.
 | --- normalDetailC ount | Integer | 10 | The number of normal check items. |
 | --- cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | --- totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
-| - inspectionItem Statistics | Struct |  | The statistics of inspection items. |
+| - inspectionItem Statistics | Struct |   | The statistics of inspection items. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6298,16 +7016,17 @@ Queries inspection reports.
 | -- cancelDetailCo unt | Integer | 0 | The number of cancelled check items. |
 | -- totalDetailCou nt | Integer | 10 | The total number of inspection errors, alerts, normal check items, and cancelled check items. |
 
+**Examples**
+
 Sample requests
 
 ```
 GET /openapi/popResource/aso/inspection/api/inspection/getReport HTTP/1.1 &executionId=1 &<Common request parameters>
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "serverRole":"\"\"",
  "path":"/aso/inspection/somepath",
  "eagleEyeTraceId":"\"\"",
@@ -6330,7 +7049,11 @@ Sample success responses `JSON` format
    "cancelDetailCount":0,
    "executionFailedItemsCount":0,
    "executingItemsCount":1
-  },
+```
+
+`},`
+
+```json
   "inspectionTaskExecution":{
    "executorUserName":"opsadmin",
    "createTime":"2023-07-25T12:01:26.000+0000",
@@ -6357,7 +7080,11 @@ Sample success responses `JSON` format
       "cancelDetailCount":0,
       "executionFailedItemsCount":0,
       "executingItemsCount":1
-     },
+```
+
+`},`
+
+```json
      "inspectionItems":{
       "atomCapability":{
        "preinstall":true,
@@ -6369,8 +7096,11 @@ Sample success responses `JSON` format
        "capabilityType":1,
        "content":{
         "":""
-       }
-      },
+```
+
+`}` `},`
+
+```json
       "inspectionCategoryId":10001,
       "capabilityId":1,
       "preinstall":true,
@@ -6380,7 +7110,11 @@ Sample success responses `JSON` format
       "id":10001,
       "capabilityParam":{
        "":""
-      },
+```
+
+`},`
+
+```json
       "executionResult":{
        "checkResults":{
         "checkStatus":0,
@@ -6389,7 +7123,11 @@ Sample success responses `JSON` format
         "detail":"Inspection succeeded",
         "dimensions":"\"\"",
         "atomCapabilityExecutionId":1
-       },
+```
+
+`},`
+
+```json
        "capabilityId":1,
        "dimensionTitles":"\"\"",
        "executionType":0,
@@ -6411,7 +7149,11 @@ Sample success responses `JSON` format
 
 ```json
         "executingItemsCount":1
-       },
+```
+
+`},`
+
+```json
        "capability":{
         "preinstall":true,
         "name":"Network inspection",
@@ -6422,22 +7164,33 @@ Sample success responses `JSON` format
         "capabilityType":1,
         "content":{
          "":""
-        }
-       },
+```
+
+`}` `},`
+
+```json
        "updateTime":"2023-08-25T12:01:26.000+0000",
        "message":"Inspection succeeded",
        "checkStatus":0,
        "taskExecutionId":1,
        "param":{
         "":""
-       },
+```
+
+`},`
+
+```json
        "configId":1,
        "startTime":"2023-07-25T12:01:26.000+0000",
        "id":1,
        "endTime":"2023-09-25T12:01:26.000+0000",
        "status":0,
-      }
-     },
+       "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
      "executionStatus":0,
      "name":"Network inspection",
      "startTime":"2023-07-25T12:01:26.000+0000",
@@ -6466,10 +7219,13 @@ Sample success responses `JSON` format
 """"
 ```
 
-```json
+```
          "":""
-        }
-       },
+```
+
+`}` `},`
+
+```json
        "executionResult":{
         "checkResults":{
          "checkStatus":0,
@@ -6478,7 +7234,11 @@ Sample success responses `JSON` format
          "detail":"Inspection succeeded",
          "dimensions":"\"\"",
          "atomCapabilityExecutionId":1
-        },
+```
+
+`},`
+
+```json
         "capabilityId":1,
         "dimensionTitles":"\"\"",
         "executionType":1,
@@ -6492,8 +7252,11 @@ Sample success responses `JSON` format
          "capabilityType":1,
          "content":{
           "":""
-         }
-        },
+```
+
+`}` `},`
+
+```json
         "updateTime":"2023-08-25T12:01:26.000+0000",
         "message":"Inspection succeeded",
         "statistics":{
@@ -6511,12 +7274,20 @@ Sample success responses `JSON` format
          "cancelDetailCount":0,
          "executionFailedItemsCount":0,
          "executingItemsCount":1
-        },
+```
+
+`},`
+
+```json
         "checkStatus":0,
         "taskExecutionId":1,
         "param":{
          "":""
-        },
+```
+
+`},`
+
+```json
         "configId":1,
         "startTime":"2023-07-25T12:01:26.000+0000",
         "id":1,
@@ -6526,8 +7297,12 @@ Sample success responses `JSON` format
 
 ```json
         status:0,
-       }
-      },
+        "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
       "code":"network",
       "executionStatus":0,
       "name":"Basic inspection",
@@ -6550,19 +7325,35 @@ Sample success responses `JSON` format
        "cancelDetailCount":0,
        "executionFailedItemsCount":0,
        "executingItemsCount":1
-      },
+```
+
+`},`
+
+```json
       "order":0
-     },
+```
+
+`},`
+
+```json
      "parentId":0,
      "order":0
-    },
+```
+
+`},`
+
+```json
     "description":"Network inspection",
     "active":true,
     "createUserName":"opsadmin",
     "schedules":{
      "weekDays":1,
      "timeStr":"12:01:26"
-    },
+```
+
+`},`
+
+```json
     "inspectionItemsCount":10,
     "createTime":"2023-09-25T12:01:26.000+0000",
     "name":"Network inspection",
@@ -6585,8 +7376,11 @@ Sample success responses `JSON` format
 capab tyype:,
        "content":{
         "":""
-       }
-      },
+```
+
+`}` `},`
+
+```json
       "updateTime":"2023-08-25T12:01:26.000+0000",
       "message":"Inspection succeeded",
       "statistics":{
@@ -6604,12 +7398,20 @@ capab tyype:,
        "cancelDetailCount":0,
        "executionFailedItemsCount":0,
        "executingItemsCount":1
-      },
+```
+
+`},`
+
+```json
       "checkStatus":0,
       "taskExecutionId":1,
       "param":{
        "":""
-      },
+```
+
+`},`
+
+```json
       "configId":1,
       "checkResults":{
        "checkStatus":0,
@@ -6618,12 +7420,21 @@ capab tyype:,
        "detail":"Inspection succeeded",
        "dimensions":"\"\"",
        "atomCapabilityExecutionId":1
-      },
+```
+
+`},`
+
+```json
       "startTime":"2023-07-25T12:01:26.000+0000",
       "id":1,
       "endTime":"2023-09-25T12:01:26.000+0000",
       "status":0,
-     },
+      "extraInfo":"Inspection succeeded"
+```
+
+`},`
+
+```json
      "inspectionCategoryId":10001,
      "capabilityId":1,
      "preinstall":true,
@@ -6641,19 +7452,29 @@ capab tyype:,
 ```json
       "content":{
        "":""
-      }
-     },
+```
+
+`}` `},`
+
+```json
      "description":"Network inspection",
      "active":true,
      "id":10001,
      "capabilityParam":{
       "":""
-     }
-    },
+```
+
+`}` `},`
+
+```json
     "executionCount":10,
     "orders":0,
     "id":1
-   },
+```
+
+`},`
+
+```json
    "inspectionItemStatistics":{
     "totalItemsCount":10,
     "totalDetailCount":10,
@@ -6669,46 +7490,43 @@ capab tyype:,
     "cancelDetailCount":0,
     "executionFailedItemsCount":0,
     "executingItemsCount":1
-   },
+```
+
+`},`
+
+```json
    "executionStatus":0,
    "startTime":"2023-07-25T12:01:26.000+0000",
    "id":1,
    "endTime":"2023-09-25T12:01:26.000+0000",
    "message":"Inspection succeeded",
-  }
- },
+   "extraInfo":"Inspection succeeded"
+```
+
+`}` `},`
+
+```json
  "success":true,
  "errorTitle":"\"\"",
  "requestId":"8ae2a476-52b1-4bac-98c4-4ca17671482a",
  "errorMessage":"\"\"",
  "errorCode":"\"\""
-}
 ```
 
-#### Platform products
+`}`
 
-##### GetProductListDetail
+#### 7.1.4 Platform products
 
-Queries the information about all products.
+##### 7.1.4.1 GetProductListDetail
+
+Queries the information about all products. We recommend that you use this API rather than `GetProductList` .
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 1000 | The number of entries per page. Default value: 20. |
-| pageNum | Integ er | Query | No | 1 | The page number. Default value: 1. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
-We recommend that you use this API rather than `GetProductList` .
-
-**Request headers**
 
 **Request syntax**
 
@@ -6718,9 +7536,19 @@ GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 1000 | The number of entries per page. Default value: 20. |
+| pageNum | Integ er | Query | No | 1 | The page number. Default value: 1. |
+
 **Response parameters**
 
-| psara Uni-manag | er Operations |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6750,6 +7578,8 @@ GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -6758,12 +7588,13 @@ GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -6788,10 +7619,11 @@ taokeeper\",\"ans\",\"apigateway\",\"appstreaming\"]",
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetProductList
+`}`
+
+##### 7.1.4.2 GetProductList
 
 Queries the information about all products. We recommend that you use `GetProductListDetail` rather than this API.
 
@@ -6799,7 +7631,19 @@ Queries the information about all products. We recommend that you use `GetProduc
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+
+**Request syntax**
+
+```
+GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
+```
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6810,14 +7654,6 @@ Queries the information about all products. We recommend that you use `GetProduc
 | errorMsg | String | "" | The error message. An empty string is returned if the request is successful. |
 | errorDetail | String | "" | The error details. An empty string is returned if the request is successful. |
 | data | String | [\"ans\",\"asa\",\"as cm\",\"asd\",\"aso\" ,\"astc\",\"baseServ iceAll\",\"buffer\",\" cms\",\"config- assist\",\"ecs\"] | The response. |
-
-**Request syntax**
-
-```
-GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
-```
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6837,12 +7673,14 @@ GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | Service error | The title of the error message. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 |---|---|---|---|
+
+**Examples**
 
 Sample requests
 
@@ -6852,8 +7690,13 @@ GET /openapi/popResource/aso/cmdb/machines/getProductList HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -6878,30 +7721,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetProductVersion
+`}`
+
+##### 7.1.4.3 GetProductVersion
 
 Queries the version of a product.
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| project | Strin g | Query | No | aso | The product name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
-**Request headers**
 
 **Request syntax**
 
@@ -6911,14 +7744,25 @@ GET /openapi/popResource/aso/cmdb/machines/getProductVersion HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| project | Strin g | Query | No | aso | The product name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | result | String | success | Indicates whether the request was successful. Valid values: success. failed. |
 | responseCode | String | 200 | The response code. The status code 200 indicates that the request was successful. The status code 500 indicates that the request failed. |
 | errorMsg | String | "" | The error subcode message. An empty string is returned if the request is successful. |
-| errorDetail | String |  | The error subcode details. An empty string is returned if the request is successful. |
+| errorDetail | String |   | The error subcode details. An empty string is returned if the request is successful. |
 | data | String | [{\"product\":\"aso\ ",\"product version _ \":\"ccec1cf3-91ec- 4c89-9e9e- fa65ccfc33ae\",\"id c\":\"A\"}] | The response. |
 | pageSize | Integer | 15 | The number of entries per page. |
 | pageNum | Integer | 1 | The page number. |
@@ -6940,6 +7784,8 @@ GET /openapi/popResource/aso/cmdb/machines/getProductVersion HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -6948,12 +7794,13 @@ GET /openapi/popResource/aso/cmdb/machines/getProductVersion HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -6978,10 +7825,11 @@ e9e-fa65ccfc33ae\\\",\\\"idc\\\":\\\"A\\\"}]",
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":""
-}
 ```
 
-##### DescribeProductStatus
+`}`
+
+##### 7.1.4.4 DescribeProductStatus
 
 Queries the desired states of clusters and services of a product based on the product name.
 
@@ -6989,19 +7837,11 @@ Queries the desired states of clusters and services of a product based on the pr
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| project | Strin g | Query | Yes | aso | The product name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| successRespo nse | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
-| code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
-| message | String | failed | The returned message. If the request was successful, a success message is returned. If the request failed, a failed message is returned. |
+| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
 **Request syntax**
 
@@ -7011,15 +7851,27 @@ GET /openapi/popResource/aso/cmdb/getComponentStatus HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| project | Strin g | Query | Yes | aso | The product name. |
+
 **Response parameters**
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| successRespo nse | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
+| code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
+| message | String | failed | The returned message. If the request was successful, a success message is returned. If the request failed, a failed message is returned. |
+
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
-| data | Struct |  | The response. |
+| data | Struct |   | The response. |
 | product | Map | {"aso":"notfinal"} | The name and desired state of the product. |
 | cluster | Map | {"asoCluster- XXXXXXXXX":"notfi nal"} | The name and desired state of the cluster. |
 | service | Map | {"aso- scm":"final","aso- ecsops":"final","as o- tools":"final","aso- doc":"final","os":"fi nal","aso- mgr":"notfinal","tia nji":"final","aso- systemMgr":"final", "aso- inventoryMgr":"fina l","aso- opr":"final","aso- physicalOps":"final ","tianji- dockerdaemon":"fi nal","aso- cplatformOps":"fin al","staragent- client":"final","aso- standalone":"final", "aso- slalink":"final","aso - console":"final","tia nji-sshtunnel- client":"final","aso- emergency":"final", "aso- monitor":"final"} | The name and desired state of the service. |
@@ -7028,7 +7880,7 @@ GET /openapi/popResource/aso/cmdb/getComponentStatus HTTP/1.1
 | key | String | ASO-GW-1- INTERNAL SERVER _ ERROR _ | The keyword of the error. |
 | eagleEyeTrace Id | String | 0ab408f41680511 2341264295d00c9 | The EagleEye ID. |
 
-| psara Uni-manag Console | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag Console | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7038,6 +7890,8 @@ GET /openapi/popResource/aso/cmdb/getComponentStatus HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | resource not found | The title of the error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7046,18 +7900,31 @@ GET /openapi/popResource/aso/cmdb/getComponentStatus HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
  "cost":63,
  "data":{
   "cluster":{
    "asoCluster-X\u0002XXXX\u0002XXXX":"notfinal"
-  },
+```
+
+`},`
+
+```json
   "product":{
    "aso":"notfinal"
-  },
+```
+
+`},`
+
+```json
   "service":{
    "aso-scm":"final",
    "aso-ecsops":"final",
@@ -7079,8 +7946,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "tianji-sshtunnel-client":"final",
    "aso-emergency":"final",
    "aso-monitor":"final"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "message":"failed",
@@ -7092,32 +7962,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"resource not found",
  "key":"ASO-GW-1-INTERNAL_SERVER_ERROR"
-}
 ```
 
-##### GetClusterListByProductDetail
+`}`
 
-Queries a list of clusters of a product.
+##### 7.1.4.5 GetClusterListByProductDetail
+
+Queries a list of clusters of a product. We recommend that you use this API rather than `GetClusterListByProduct` .
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 10 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| project | Strin g | Query | No | aso | The product name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
-We recommend that you use this API rather than `GetClusterListByProduct` .
-
-**Request headers**
 
 **Request syntax**
 
@@ -7127,9 +7985,20 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProductDetail HTTP/1.
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 10 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| project | Strin g | Query | No | aso | The product name. |
+
 **Response parameters**
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7147,7 +8016,7 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProductDetail HTTP/1.
 | eagleEyeTrace Id | String | 0ab408f41680511 2341264295d00c9 | The EagleEye ID. |
 | code | String | 200 | The response code. |
 
-| A C | psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc | e |
+| A C | psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7162,6 +8031,8 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProductDetail HTTP/1.
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | fccbab1d-a496- 4ae6-88e8- 83557f883a85 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7170,8 +8041,13 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProductDetail HTTP/1.
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -7218,10 +8094,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ManageCluster-XX-XX-XX"
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "pageSize":10,
@@ -7240,32 +8115,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"fccbab1d-a496-4ae6-88e8-83557f883a85",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetClusterListByProduct
+`}`
 
-Queries the information about clusters of a product.
+##### 7.1.4.6 GetClusterListByProduct
+
+Queries the information about clusters of a product. We recommend that you use `GetClusterListByProductDetail` rather than this API.
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 10 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| project | Strin g | Query | No | aso | The product name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO MANAGE SYS _ _ TEM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
-We recommend that you use `GetClusterListByProductDetail` rather than this API.
-
-**Request headers**
 
 **Request syntax**
 
@@ -7275,9 +8138,20 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProduct HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 10 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| project | Strin g | Query | No | aso | The product name. |
+
 **Response parameters**
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO MANAGE SYS _ _ TEM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7307,6 +8181,8 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProduct HTTP/1.1
 | serverRole | String | aso-mgr.asmgr# | The service role. |
 | responseVersi on | String | v1 | The version of the response format. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7315,12 +8191,13 @@ GET /openapi/popResource/aso/cmdb/machines/getClusterListByProduct HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -7345,10 +8222,11 @@ StandardCloudCluster-XX-XX-XX\\\"]}\"",
  "requestId":"fccbab1d-a496-4ae6-88e8-83557f883a85",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetClusters
+`}`
+
+##### 7.1.4.7 GetClusters
 
 Queries a list of clusters and their status. We recommend that you use this API rather than `GetClusterListByProduct` .
 
@@ -7356,20 +8234,11 @@ Queries a list of clusters and their status. We recommend that you use this API 
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| productNa me | Strin g | Query | No | aso | The product name. |
-| clusterNa me | Strin g | Query | No | asoCluster-XXXX-XX | The cluster name. |
-| clusterSta tus | Strin g | Query | No | final | The status of the cluster. Valid values: final: desired state. notfinal: not reach the desired state. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| pageSize | Integ er | Query | No | 10 | The number of entries per page. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
+| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
 **Request syntax**
 
@@ -7379,15 +8248,28 @@ GET /openapi/popResource/aso/cmdb/clusters HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| productNa me | Strin g | Query | No | aso | The product name. |
+| clusterNa me | Strin g | Query | No | asoCluster-XXXX-XX | The cluster name. |
+| clusterSta tus | Strin g | Query | No | final | The status of the cluster. Valid values: final: desired state. notfinal: not reach the desired state. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| pageSize | Integ er | Query | No | 10 | The number of entries per page. |
+
 **Response parameters**
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Struct |  | The response. |
-| result | Array of result |  | The returned result set. |
+| data | Struct |   | The response. |
+| result | Array of result |   | The returned result set. |
 | region | String | cn-XX-XX-XX | The region ID. |
 | projectName | String | aso | The product name. |
 | name | String | asoCluster-XX-XX- XX | The cluster name. |
@@ -7415,6 +8297,8 @@ GET /openapi/popResource/aso/cmdb/clusters HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7423,12 +8307,13 @@ GET /openapi/popResource/aso/cmdb/clusters HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -7440,12 +8325,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "region":"cn-XX-XX-XX",
    "projectName":"aso",
    "status":"notfinal"
-  },
+```
+
+`},`
+
+```json
   "total":100,
   "totalPage":4,
   "pageSize":10,
   "currentPage":1
- },
+```
+
+`},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -7458,10 +8351,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-##### GetServiceInstanceDetail
+`}`
+
+##### 7.1.4.8 GetServiceInstanceDetail
 
 Queries service instance information.
 
@@ -7469,20 +8363,11 @@ Queries service instance information.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 20 | The number of entries per page. Default value: 20. |
-| pageNum | Integ er | Query | No | 1 | The page number. Default value: 1. |
-| project | Strin g | Query | Yes | aso | The product name. |
-| cluster | Strin g | Query | Yes | asoCluster-XX-XX-XX | The cluster name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| result | String | success | Indicates whether the request was successful. Valid values: success. failed. |
+| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
 **Request syntax**
 
@@ -7492,9 +8377,22 @@ GET /openapi/popResource/aso/cmdb/machines/getServiceInstanceDetail HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 20 | The number of entries per page. Default value: 20. |
+| pageNum | Integ er | Query | No | 1 | The page number. Default value: 1. |
+| project | Strin g | Query | Yes | aso | The product name. |
+| cluster | Strin g | Query | Yes | asoCluster-XX-XX-XX | The cluster name. |
+
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| result | String | success | Indicates whether the request was successful. Valid values: success. failed. |
+
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7502,7 +8400,7 @@ GET /openapi/popResource/aso/cmdb/machines/getServiceInstanceDetail HTTP/1.1
 | responseCode | String | 200 | The response code. |
 | errorMsg | String | "" | The error message. An empty string is returned if the request is successful. |
 | errorDetail | String | "" | The error details. An empty string is returned if the request is successful. |
-| data | Array of data |  | The response. |
+| data | Array of data |   | The response. |
 | name | String | aso-console | The service name. |
 | state | String | good | The status of the service. Valid values: good: normal. probation: observation window. error: abnormal. |
 | expectedServe rRoleCount | Integer | 1 | The number of expected server roles. |
@@ -7528,6 +8426,8 @@ GET /openapi/popResource/aso/cmdb/machines/getServiceInstanceDetail HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7536,12 +8436,13 @@ GET /openapi/popResource/aso/cmdb/machines/getServiceInstanceDetail HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -7552,7 +8453,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "name":"aso-console",
   "deletingServerRoleCount":0,
   "state":"good"
- },
+```
+
+`},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "pageSize":10,
@@ -7571,10 +8476,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetServerRoleList
+`}`
+
+##### 7.1.4.9 GetServerRoleList
 
 Queries a list of server roles.
 
@@ -7582,7 +8488,19 @@ Queries a list of server roles.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+
+**Request syntax**
+
+```
+GET /openapi/popResource/aso/cmdb/machines/getServerRoleList HTTP/1.1
+```
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7595,14 +8513,6 @@ Queries a list of server roles.
 | type | Strin g | Query | No | vm | The type of the machine. |
 | machineIp | Strin g | Query | No | 10.66.XX.XX | The IP address of the machine. |
 | machine | Strin g | Query | No | vm01006600XXXX | The machine name. |
-
-**Request syntax**
-
-```
-GET /openapi/popResource/aso/cmdb/machines/getServerRoleList HTTP/1.1
-```
-
-**Request parameters**
 
 **Response parameters**
 
@@ -7635,20 +8545,23 @@ GET /openapi/popResource/aso/cmdb/machines/getServerRoleList HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
 GET /openapi/popResource/aso/cmdb/machines/getServerRoleList HTTP/1.1
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
-
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -7673,10 +8586,11 @@ XXXX\\\",\\\"dockerIp\\\":\\\"\\\",\\\"id\\\":3044,\\\"idc\\\":\\\"A\\\",\\\"mac
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetServerroleVersion
+`}`
+
+##### 7.1.4.10 GetServerroleVersion
 
 Queries the version information of a server role.
 
@@ -7684,19 +8598,11 @@ Queries the version information of a server role.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
+| aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| serverrole | Strin g | Query | No | ApiInit# | The service role. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| result | String | success | Indicates whether the request was successful. Valid values: success. failed. |
+| aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
 **Request syntax**
 
@@ -7706,7 +8612,19 @@ GET /openapi/popResource/aso/cmdb/machines/getServerroleVersion HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| serverrole | Strin g | Query | No | ApiInit# | The service role. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| result | String | success | Indicates whether the request was successful. Valid values: success. failed. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7734,6 +8652,8 @@ GET /openapi/popResource/aso/cmdb/machines/getServerroleVersion HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | fa07ab18-06cf- 470f-9417- c6ae644bbe2c | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7742,8 +8662,13 @@ GET /openapi/popResource/aso/cmdb/machines/getServerroleVersion HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -7768,10 +8693,11 @@ XXXX\\\",\\\"serverrole\\\":\\\"ApiInit#\\\",\\\"serverrole_version\\\":\\\"3474
  "requestId":"fa07ab18-06cf-470f-9417-c6ae644bbe2c",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetServiceRole
+`}`
+
+##### 7.1.4.11 GetServiceRole
 
 Queries a list of server roles and their status.
 
@@ -7782,6 +8708,14 @@ Queries a list of server roles and their status.
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
+**Request syntax**
+
+```
+GET /openapi/popResource/aso/cmdb/serviceRole HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | productNa me | Strin g | Query | No | aso | The product name. |
@@ -7791,27 +8725,21 @@ Queries a list of server roles and their status.
 | status | Strin g | Query | No | good | The status of the service role. Valid values: GOOD: normal. PROBATION: observation window. ERROR: abnormal. |
 | pageNum | Integ er | Query | No | 1 | The page number. |
 
-**Request syntax**
-
-```
-GET /openapi/popResource/aso/cmdb/serviceRole HTTP/1.1
-```
-
-**Request parameters**
-
-| Developer Gui | de·API R | eference |  | Apsa | ra Uni-manager Operations |
+| Developer Gui | de·API R | eference |   | Apsa | ra Uni-manager Operations |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | pageSize | Integ er | Query | No | 15 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
 | errorMessage | String | System error | The error message. |
-| data | Struct |  | The response. |
-| result | Array of result |  | An array of returned data. |
+| data | Struct |   | The response. |
+| result | Array of result |   | An array of returned data. |
 | region | String | cn-XX-XX-XX | The region name. |
 | product | String | aso | The product name. |
 | clusterName | String | asoCluster-XX-XX- XX | The cluster name. |
@@ -7823,14 +8751,12 @@ GET /openapi/popResource/aso/cmdb/serviceRole HTTP/1.1
 | normalMachin esCount | Integer | 2 | The number of normal machines. |
 | alarmCount | Integer | 0 | The number of machine alerts. |
 
-**Response parameters**
-
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| machineInfoLi st | Array of machineInfoLi st |  | The machines. |
+| machineInfoLi st | Array of machineInfoLi st |   | The machines. |
 | machine | String | test vm _ | The machine name. |
 | machine ip _ | String | 10.25.XX.X | The IP address of the machine. |
 | status | String | GOOD | The status of the machine. Valid values: GOOD: normal. OS ERROR: OS exception. _ PROBATION: observation window. ERROR: abnormal. OS PROBATION: OS observation _ window. |
@@ -7844,7 +8770,7 @@ GET /openapi/popResource/aso/cmdb/serviceRole HTTP/1.1
 | successRespo nse | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | requestId | String | b91429a7-0762- 4b21-882d- 35eb5a80ff2d | The request ID. |
 
-|  |  |  | Apsara Uni-manager Operations |
+|   |   |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7859,6 +8785,8 @@ GET /openapi/popResource/aso/cmdb/serviceRole HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7867,8 +8795,13 @@ GET /openapi/popResource/aso/cmdb/serviceRole HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -7886,16 +8819,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "machine_ip":"10.25.XX.X",
     "sn":"test_vm",
     "status":"GOOD"
-   },
+```
+
+`},`
+
+```json
    "region":"cn-XX-XX-XX",
    "serviceName":"aso-mgr",
    "status":"GOOD"
-  },
+```
+
+`},`
+
+```json
   "total":1,
   "totalPage":1,
   "pageSize":10,
   "currentPage":1
- },
+```
+
+`},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -7908,10 +8853,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-##### GetServerRoleMachinesDetail
+`}`
+
+##### 7.1.4.12 GetServerRoleMachinesDetail
 
 Queries the association information between server roles and machines.
 
@@ -7922,6 +8868,14 @@ Queries the association information between server roles and machines.
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
+**Request syntax**
+
+```
+GET /openapi/popResource/aso/cmdb/machines/getServerRoleMachinesDetail HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | pageSize | Integ er | Query | No | 20 | The number of entries per page. Default value: 20. |
@@ -7930,14 +8884,6 @@ Queries the association information between server roles and machines.
 | cluster | Strin g | Query | Yes | asoCluster-XX-XX-XX | The cluster name. |
 | service | Strin g | Query | Yes | aso-mgr | The service name. |
 | serverrole | Strin g | Query | Yes | asmgr# | The service role. |
-
-**Request syntax**
-
-```
-GET /openapi/popResource/aso/cmdb/machines/getServerRoleMachinesDetail HTTP/1.1
-```
-
-**Request parameters**
 
 **Response parameters**
 
@@ -7949,7 +8895,7 @@ GET /openapi/popResource/aso/cmdb/machines/getServerRoleMachinesDetail HTTP/1.1
 | responseCode | String | 200 | The response code. |
 | errorMsg | String | "" | The error message. An empty string is returned if the request is successful. |
 | errorDetail | String | "" | The error details. An empty string is returned if the request is successful. |
-| data | Array of data |  | The response. |
+| data | Array of data |   | The response. |
 | sn | String | test vm _ | The serial number of the machine. |
 | state | String | good | The status of the service role. Valid values: good: normal. probation: observation window. error: abnormal. |
 | cluster | String | asoCluster-XX-XX- XX | The cluster name. |
@@ -7959,7 +8905,7 @@ GET /openapi/popResource/aso/cmdb/machines/getServerRoleMachinesDetail HTTP/1.1
 | pageSize | Integer | 20 | The number of entries per page. |
 | pageNum | Integer | 1 | The page number. |
 
-|  |  |  | Apsara Uni-manager Operations |
+|   |   |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7979,6 +8925,8 @@ GET /openapi/popResource/aso/cmdb/machines/getServerRoleMachinesDetail HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -7987,8 +8935,13 @@ GET /openapi/popResource/aso/cmdb/machines/getServerRoleMachinesDetail HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"500",
@@ -8000,7 +8953,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "idc":"test_idc",
   "sn":"test_vm",
   "state":"good"
- },
+```
+
+`},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "pageSize":20,
@@ -8019,12 +8976,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-#### Equipment assets
+`}`
 
-##### GetMachineByIp
+#### 7.1.5 Equipment assets
+
+##### 7.1.5.1 GetMachineByIp
 
 Queries the information about physical machines based on IP addresses.
 
@@ -8035,17 +8993,6 @@ Queries the information about physical machines based on IP addresses.
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| ip | Strin g | Query | No | 10.66.XX.XX | The IP address of the machine. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
 **Request syntax**
 
 ```
@@ -8054,7 +9001,18 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineByIp HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| ip | Strin g | Query | No | 10.66.XX.XX | The IP address of the machine. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8084,13 +9042,15 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineByIp HTTP/1.1
 | cost | Long | 67 | The response time. Unit: milliseconds. |
 | path | String | "" | The URL of the API. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | serverRole | String | aso-mgr.asmgr# | The service role of the machine. |
 | responseVersi on | String | v1 | The version of the response format. |
+
+**Examples**
 
 Sample requests
 
@@ -8100,8 +9060,13 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineByIp HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -8126,10 +9091,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetMachineByName
+`}`
+
+##### 7.1.5.2 GetMachineByName
 
 Queries the information about physical machines based on machine names.
 
@@ -8140,17 +9106,6 @@ Queries the information about physical machines based on machine names.
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| name | Strin g | Query | No | vm01006602XXXX | The machine name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
 **Request syntax**
 
 ```
@@ -8159,7 +9114,18 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineByName HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| name | Strin g | Query | No | vm01006602XXXX | The machine name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8194,6 +9160,8 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineByName HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -8202,8 +9170,13 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineByName HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -8228,10 +9201,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetMachineListDetail
+`}`
+
+##### 7.1.5.3 GetMachineListDetail
 
 Queries the information about machines. We recommend that you use this API rather than `GetProductList` .
 
@@ -8242,18 +9216,6 @@ Queries the information about machines. We recommend that you use this API rathe
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 20 | The number of entries per page. Default value: 20. |
-| pageNum | Integ er | Query | No | 1 | The page number. Default value: 1. |
-| project | Strin g | Query | No | aso | The product name. |
-| cluster | Strin g | Query | No | asoCluster-XX-XX-XX | The cluster name. |
-| idc | Strin g | Query | No | amtestxxx | The data center. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-
 **Request syntax**
 
 ```
@@ -8262,9 +9224,21 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineListDetail HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 20 | The number of entries per page. Default value: 20. |
+| pageNum | Integ er | Query | No | 1 | The page number. Default value: 1. |
+| project | Strin g | Query | No | aso | The product name. |
+| cluster | Strin g | Query | No | asoCluster-XX-XX-XX | The cluster name. |
+| idc | Strin g | Query | No | amtestxxx | The data center. |
+
 **Response parameters**
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | errorMessage | String | System error | The error message. |
@@ -8272,7 +9246,7 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineListDetail HTTP/1.1
 | responseCode | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | errorMsg | String | "" | The error message. An empty string is returned if the request is successful. |
 | errorDetail | String | "" | The error details. An empty string is returned if the request is successful. |
-| data | Array of data |  | The response. |
+| data | Array of data |   | The response. |
 | sn | String | test vm _ | The serial number of the machine. |
 | hostName | String | test vm _ | The hostname. |
 | ip | String | 10.205.XX.XX | The IP address of the host. |
@@ -8299,7 +9273,7 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineListDetail HTTP/1.1
 | project | String | aso | The product name. |
 | cpuAvg | Integer | 57 | The CPU utilization of the machine. |
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8330,6 +9304,8 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineListDetail HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -8338,8 +9314,13 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineListDetail HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -8376,7 +9357,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "ioAvg":14,
   "status":"GOOD",
   "memAvg":3
- },
+```
+
+`},`
+
+```json
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
  "pageSize":20,
@@ -8395,10 +9380,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetMachineList
+`}`
+
+##### 7.1.5.4 GetMachineList
 
 Queries a list of physical machines. We recommend that you use `GetProductListDetail` rather than this API.
 
@@ -8409,6 +9395,14 @@ Queries a list of physical machines. We recommend that you use `GetProductListDe
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
+**Request syntax**
+
+```
+GET /openapi/popResource/aso/cmdb/machines/getMachineList HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | dataVersi on | Strin g | Query | No | v3 | The version of the data. Default value: v3. |
@@ -8417,14 +9411,6 @@ Queries a list of physical machines. We recommend that you use `GetProductListDe
 | project | Strin g | Query | No | oss | The product name. |
 | cluster | Strin g | Query | No | OssHybridCluster-XX-XX- XX | The cluster name. |
 | idc | Strin g | Query | No | test idc _ | The data center. |
-
-**Request syntax**
-
-```
-GET /openapi/popResource/aso/cmdb/machines/getMachineList HTTP/1.1
-```
-
-**Request parameters**
 
 **Response parameters**
 
@@ -8457,6 +9443,8 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineList HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -8465,8 +9453,13 @@ GET /openapi/popResource/aso/cmdb/machines/getMachineList HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -8491,10 +9484,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
 
-##### GetNetworkMachineByIp
+`}`
+
+##### 7.1.5.5 GetNetworkMachineByIp
 
 Queries network device information based on IP addresses.
 
@@ -8505,17 +9499,6 @@ Queries network device information based on IP addresses.
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| ip | Strin g | Query | No | 10.66.XX.X | The IP address of the network device. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-
 **Request syntax**
 
 ```
@@ -8524,7 +9507,18 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByIp HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| ip | Strin g | Query | No | 10.66.XX.X | The IP address of the network device. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8538,7 +9532,7 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByIp HTTP/1.1
 | data | String | [{\"stack\":\"false\" ,\"role\":\"ASW.10G E\",\"expected link\ _ ":\"- startport:\ name: EthernetXXXX\ speed: \\\"40000\\\"\ endport:\ name: FortyGigE0/XXXX\ speed: \\\"40000\\\"\ enddevice: DSW- VM-XX-X- X.AMTEXXXX\- startport:\ name: EthernetXXXX\ speed: \\\"40000\\\"\ endport:\ name: EthernetXXXX\ speed: \\\"40000\\\"\ enddevice: ASW- XX-X- XX.AMTEXXXX- X.AMTEXXXX\\",\"d evice type\":\"netw _ ork device\",\"host _ type\":\"network _ _ device\",\"TianjiClu ster\":\"amteXXXX\ ",\"manufacturer\": \"Cisco\",\"hostnam e\":\"ASW-XX-X- DXX.AMTEXXXX- 1.AMTEXXXX\",\"np od id\":\"ASW.XXX _ X- X\",\"model\":\"N9K -C921XXXX- X\",\"power\":\"0\",\ "sn\":\"FDO2351XX XX\",\"location in r _ _ ack\":\"52\",\"rack\" :\"D13\",\"device id _ \":\"ASW.XXXX- X.X\",\"ip\":\"10.66. XXX.XX\",\"idc\":\"A MTEXXXX\",\"index \":\"2\",\"weight\":\" 0\",\"pair\":\"true\", \"room\":\"A3- 4\",\"is ops with v _ _ _ m\":\"N/A\",\"pod i _ d\":\"ASW.XXXX- X\"}] | The response. |
 | pageSize | Integer | 15 | The number of entries per page. |
 
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8559,6 +9553,8 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByIp HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -8567,8 +9563,13 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByIp HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -8593,29 +9594,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
+
+`}`
+
+##### 7.1.5.6 GetNetworkMachineByName
+
+Queries network device information based on device names.
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
-| pageNum | Integ er | Query | No | 1 | The page number. |
-| name | Strin g | Query | No | OSW-XX-4-XX-S- 1.AMTESTXXXX | The device name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-
-##### GetNetworkMachineByName
-
-Queries network device information based on device names.
-
-**Request headers**
 
 **Request syntax**
 
@@ -8625,9 +9617,19 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByName HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| pageSize | Integ er | Query | No | 15 | The number of entries per page. |
+| pageNum | Integ er | Query | No | 1 | The page number. |
+| name | Strin g | Query | No | OSW-XX-4-XX-S- 1.AMTESTXXXX | The device name. |
+
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8644,7 +9646,7 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByName HTTP/1.1
 | pageSize | Integer | 15 | The number of entries per page. |
 | pageNum | Integer | 1 | The page number. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8664,6 +9666,8 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByName HTTP/1.1
 | errorTitle | String | Service error | The title of the error message. |
 | requestId | String | ab05b875-165f- 43c1-ba0a- 83b973201800 | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -8672,8 +9676,13 @@ GET /openapi/popResource/aso/cmdb/machines/getNetworkMachineByName HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "return_subCode":"\"\"",
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "code":"200",
@@ -8698,29 +9707,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"ab05b875-165f-43c1-ba0a-83b973201800",
  "return_subMsg":"\"\"",
  "errorDetail":"\"\""
-}
 ```
+
+`}`
+
+#### 7.1.6 Platform data
+
+##### 7.1.6.1 GetCurrentUserStats
+
+Queries the login user statistics of Apsara Uni-manager Operations Console.
+
+**Request headers**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | aliyun lan _ g | Strin g | Header | No | zh | The language code. Valid values: zh: Chinese. en: English. |
 | aliyun ter _ ritory | Strin g | Header | No | CN | The country and region code. Valid values: CN (can be specified only when aliyun lang _ is set to zh). US (can be specified only when aliyun lang _ is set to en). TW (can be specified only when aliyun lang _ is set to zh). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
-| errorMessage | String | System error | The error message. |
-| data | Array of AsoUserStat |  | The response. |
-| username | String | admin | The username. |
-| loginName | String | admin | The logon name. |
-
-#### Platform data
-
-##### GetCurrentUserStats
-
-Queries the login user statistics of Apsara Uni-manager Operations Console.
-
-**Request headers**
 
 **Request syntax**
 
@@ -8730,13 +9732,21 @@ GET /openapi/popResource/aso/auth/user/getCurrentUserStats HTTP/1.1
 
 **Response parameters**
 
-| psara Uni-manag | er Operations |  | Developer Guide·API Referenc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | ASO ASMGR SYST _ _ EM ERROR _ | The error code. |
+| errorMessage | String | System error | The error message. |
+| data | Array of AsoUserStat |   | The response. |
+| username | String | admin | The username. |
+| loginName | String | admin | The logon name. |
+
+| psara Uni-manag | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | lastLoginTime | Long | 1654596285000 | The last logon time. |
-| sessionInfoList | Array of SessionInfo |  | The information about users who are in the valid logon state. |
+| sessionInfoList | Array of SessionInfo |   | The information about users who are in the valid logon state. |
 | loginTime | Long | 1654589231158 | The time when the user logged on. |
 | cost | Long | 30 | The response time. Unit: milliseconds. |
 | code | String | 200 | The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
@@ -8755,6 +9765,8 @@ GET /openapi/popResource/aso/auth/user/getCurrentUserStats HTTP/1.1
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true. false. |
 | errorTitle | String | Service error | The title of the error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -8763,8 +9775,13 @@ GET /openapi/popResource/aso/auth/user/getCurrentUserStats HTTP/1.1
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ab408f416805112341264295d00c9",
  "cost":30,
  "code":"200",
@@ -8773,9 +9790,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "loginName":"admin",
   "sessionInfoList":{
    "loginTime":1654589231158
-  },
+```
+
+`},`
+
+```json
   "username":"admin"
- },
+```
+
+`},`
+
+```json
  "level":"\"\"",
  "errorMessage":"System error",
  "errorCode":"ASO_ASMGR_SYSTEM_ERROR",
@@ -8788,20 +9813,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errorTitle":"Service error",
  "key":"\"\""
-}
 ```
 
-##### ListUsers
+`}`
+
+##### 7.1.6.2 ListUsers
 
 Queries a list of users.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| name | Strin g | Query | No | test | The username, which can be used for fuzzy search. |
-| pageSize | Integ er | Query | Yes | 15 | The number of entries per page. |
-| lock | Boole an | Query | Yes | false | Specifies whether to move the user to the recycle bin. |
-| currentPa ge | Integ er | Query | Yes | 1 | The page number. |
-| role | Strin g | Query | No | Product DevOps personnel | The name of the role. |
 
 **Request headers**
 
@@ -8811,19 +9829,27 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| deptName | Strin g | Query | No | root-dept | The organization name. If you leave this parameter and the name parameter empty, all users in your department are returned. If you set this parameter to root-dept and leave the name parameter empty, all users are returned. If you set this parameter to a specific department but leave the name parameter empty, all users in the specified department are returned. If you specify both this parameter and the name parameter, users who meet the fuzzy search conditions are returned. If you leave this parameter empty but specify the name parameter, users who meet the fuzzy search conditions in your department are returned. If you set this parameter to root-dept and specify the name parameter, users who meet the fuzzy search conditions in all departments are returned. |
+| name | Strin g | Query | No | test | The username, which can be used for fuzzy search. |
+| pageSize | Integ er | Query | Yes | 15 | The number of entries per page. |
+| lock | Boole an | Query | Yes | false | Specifies whether to move the user to the recycle bin. |
+| currentPa ge | Integ er | Query | Yes | 1 | The page number. |
+| role | Strin g | Query | No | Product DevOps personnel | The name of the role. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| deptName | Strin g | Query | No | root-dept | The organization name. If you leave this parameter and the name parameter empty, all users in your department are returned. If you set this parameter to root-dept and leave the name parameter empty, all users are returned. If you set this parameter to a specific department but leave the name parameter empty, all users in the specified department are returned. If you specify both this parameter and the name parameter, users who meet the fuzzy search conditions are returned. If you leave this parameter empty but specify the name parameter, users who meet the fuzzy search conditions in your department are returned. If you set this parameter to root-dept and specify the name parameter, users who meet the fuzzy search conditions in all departments are returned. |
 
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. Valid values: |
-| data | Struct |  | The response data. |
-| items | Array of user |  | The users. |
-| roles | Array of role |  | The roles. |
+| data | Struct |   | The response data. |
+| items | Array of user |   | The users. |
+| roles | Array of role |   | The roles. |
 | roleName | String | Product DevOps personnel | The name of the role. |
 | aliuid | String | 165238201113541 2 | The account ID. |
 | parentAliuid | String | 140688221715314 3 | The ID of the Alibaba Cloud account. If the current account is an Alibaba Cloud account, this parameter is empty. If the current account is a RAM user, the value is the ID of the Alibaba Cloud account to which the RAM user belongs. |
@@ -8842,7 +9868,7 @@ This operation does not have operation-specific request headers and uses only co
 | userExternalId | String | "" | The foreign key ID of the user, which is used for Identity-as-a-Service (IDaaS) scenarios. |
 | deptExternalId | String | "" | The foreign key ID of the department, which is used for IDaaS scenarios. |
 | createTime | String | 2023-04-21 01:18:55 | The time when the user was created. |
-| page | Struct |  | The pagination information. |
+| page | Struct |   | The pagination information. |
 | currentPage | Integer | 1 | The page number. |
 | pageSize | Integer | 15 | The number of entries per page. |
 | total | Long | 20 | The total number of entries returned. |
@@ -8857,16 +9883,23 @@ This operation does not have operation-specific request headers and uses only co
 | requestId | String | 8ae2a476-52b1- 4bac-98c4- 4ca17671482a | The request ID. |
 | eagleEyeTrace Id | String | "" | The EagleEye ID, which is used as a trace ID. |
 
+**Examples**
+
 Sample requests
 
 ```
-&pageSize=20 &lock=false &currentPage=1 &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListUsers &pageSize=20 &lock=false &currentPage=1 &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "serverRole":"\"\"",
  "path":"/aso/auth/user/openapi/listUsers",
  "eagleEyeTraceId":"\"\"",
@@ -8878,13 +9911,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "totalPage":2,
    "pageSize":15,
    "currentPage":1
-  },
+```
+
+`},`
+
+```json
   "items":{
    "deptName":"root-dept",
    "deptExternalId":"\"\"",
    "roles":{
     "roleName":"Product DevOps personnel"
-   },
+```
+
+`},`
+
+```json
    "departmentId":1,
    "fullName":"fullname_1682303525103",
    "parentAliuid":"1406882217153143",
@@ -8897,17 +9938,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "aliuid":"1652382011135412",
    "email":"a***@alibaba-inc.com",
    "status":"ACTIVE"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "success":true,
  "errorTitle":"\"\"",
  "requestId":"8ae2a476-52b1-4bac-98c4-4ca17671482a",
  "errorMessage":"\"\"",
  "errorCode":"\"\""
-}
 ```
 
-##### CheckUserRole
+`}`
+
+##### 7.1.6.3 CheckUserRole
 
 Checks whether a specified user has a specific role. This API is available in version v3.18.6r-aso-hotfeature-sp003 and later.
 
@@ -8923,6 +9968,8 @@ This operation uses common request headers and has no special request headers. F
 | userName | Strin g | Query | No | opsadmin | The username. You must specify either userName or aliyunId. |
 | aliyunId | Strin g | Query | No | 171710408091**** | The Alibaba Cloud account ID. You must specify either userName or aliyunId. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request was successful. true: The request was successful. false: The request failed. |
@@ -8935,9 +9982,7 @@ This operation uses common request headers and has no special request headers. F
 | serverRole | String | aso-mgr.asmgr# | Submit an SR for the corresponding backend service. |
 | responseVersi on | String | v1 | The version of the response model. |
 
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | errorCode | String | "" | The error code returned if the request fails. |
@@ -8955,19 +10000,23 @@ This operation uses common request headers and has no special request headers. F
 | msg | String | "" | The error message. |
 | errorStack | String | "" | Error message. |
 
+**Examples**
+
 Request example
 
 ```
 http(s)://[Endpoint]/?Action=ops.api.ASO.CheckUserRole.2022-01-18 &roleId= &<Common request parameters>
 ```
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"\"\"",
  "eagleEyeTraceId":"0a880c8717059272470618228d002d",
  "product":"aso",
@@ -8975,7 +10024,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "containsRole":true
- },
+```
+
+`},`
+
+```json
  "serviceRole":"aso-mgr.asmgr#",
  "level":1,
  "errorMessage":"\"\"",
@@ -8992,14 +10045,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "errorHelp":"\"\"",
  "errorStack":"\"\"",
  "key":"\"\""
-}
 ```
+
+`}`
 
 **Additional information**
 
 Note: This operation checks for roles granted to a user, including roles granted directly by a role administrator and roles granted through a user group.
 
-##### RevokeRoleFromUser
+##### 7.1.6.4 RevokeRoleFromUser
 
 Revokes roles that are attached to a user. This operation is available in version v3.18.6r-aso-hotfeature-sp003 and later.
 
@@ -9011,9 +10065,14 @@ This operation has no special request headers. For more information about common
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | roleIdList | Strin g | Body | No | system administrator,system viewer | The IDs of the roles. Separate multiple IDs with commas. You can obtain the role IDs from the role list in the console. |
 | aliyunId | Strin g | Body | No | 171710408091**** | The Alibaba Cloud account ID. You must specify either aliyunId or userName. |
 | userName | Strin g | Body | No | opsadmin | The username. You must specify either userName or aliyunId. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9026,9 +10085,7 @@ This operation has no special request headers. For more information about common
 | domain | String | example.com | The endpoint. |
 | serverRole | String | aso-mgr.asmgr# | You can request the SR for the corresponding backend service. |
 
-**Response data**
-
-| A C | psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc | e |
+| A C | psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9049,6 +10106,8 @@ This operation has no special request headers. For more information about common
 | msg | String | "" | The error message. |
 | errorStack | String | "" | The error stack. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -9057,8 +10116,13 @@ http(s)://[Endpoint]/?Action=ops.api.ASO.RevokeRoleFromUser.2022-01-18 &<Common 
 
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"\"\"",
  "eagleEyeTraceId":"0a880c8717059272470618228d002d",
  "product":"aso",
@@ -9066,7 +10130,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "success":true
- },
+```
+
+`},`
+
+```json
  "serviceRole":"aso-mgr.asmgr#",
  "level":1,
  "errorMessage":"\"\"",
@@ -9083,14 +10151,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "errorHelp":"\"\"",
  "errorStack":"\"\"",
  "key":"\"\""
-}
 ```
+
+`}`
 
 **Additional information**
 
 This operation removes only the roles that are directly attached to a user. You cannot use this operation to remove roles that a user inherits from a user group. To remove an inherited role, remove the user from the user group. The role is then automatically removed from the user.
 
-##### GrantRoleToUser
+##### 7.1.6.5 GrantRoleToUser
 
 Grants a role to a user. This operation is available in version v3.18.6r-aso-hotfeature-sp003 or later.
 
@@ -9106,6 +10175,8 @@ This operation uses only common request headers. For more information, see Commo
 | aliyunId | Strin g | Body | No | 171710408091**** | The ID of the Alibaba Cloud account. Specify either this parameter or userName. |
 | userName | Strin g | Body | No | opsadmin | The username. Specify either this parameter or aliyunId. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | The result of the request. Valid values: true: The request was successful. false: The request failed. |
@@ -9117,9 +10188,7 @@ This operation uses only common request headers. For more information, see Commo
 | domain | String | example.com | The endpoint. |
 | serverRole | String | aso-mgr.asmgr# | The server role (SR) of the backend service that processes the request. |
 
-**Response parameters**
-
-|  |  |  | Apsara Uni-manager Operations |
+|   |   |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9140,19 +10209,23 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | "" | The error message. |
 | errorStack | String | "" | The error stack. |
 
+**Examples**
+
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=ops.api.ASO.GrantRoleToUser.2022-01-18 &<Common request parameters>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"\"\"",
  "eagleEyeTraceId":"0a880c8717059272470618228d002d",
  "product":"aso",
@@ -9160,7 +10233,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "success":true
- },
+```
+
+`},`
+
+```json
  "serviceRole":"aso-mgr.asmgr#",
  "level":1,
  "errorMessage":"\"\"",
@@ -9177,12 +10254,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "errorHelp":"\"\"",
  "errorStack":"\"\"",
  "key":"\"\""
-}
 ```
 
-#### Event Center
+`}`
 
-##### GetEventList
+#### 7.1.7 Event Center
+
+##### 7.1.7.1 GetEventList
 
 This topic describes the queries of the event list in the ASO Event Center based on specified query conditions.
 
@@ -9191,6 +10269,9 @@ This topic describes the queries of the event list in the ASO Event Center based
 The GetEventList API does not have specific request headers and uses only common request headers. For more information, see the Common request parameters document.
 
 **Request parameters**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | sortByPrior ity | Strin g | Quer y | Not required | DESC | Sort the list of events in order of their priority levels. DESC: Descending order. Events are sorted by their priority levels in descending order. If the number after L is larger, the ranking will be higher. ASC: Ascending order. Events are sorted by their priority levels in ascending order. If the number after L is smaller, the ranking will be higher. |
 |---|---|---|---|---|---|
@@ -9213,29 +10294,29 @@ The GetEventList API does not have specific request headers and uses only common
 | title | Strin g | Quer y | Not required | Event title | The event title. It supports fuzzy search. |
 | operateUs er | Strin g | Quer y | Not required | admin | Based on the current handler. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicate whether the request was successful. |
-| data | Struct |  | The data structure. |
+| data | Struct |   | The data structure. |
 | totalPage | Integer | 100 | The total number of pages. |
 | pageSize | Integer | 10 | The number of entries per page. |
 | total | Integer | 10 | The total number of events. |
 | page | Integer | 1 | The page number. |
-| objectList | Array of EventDTO |  | The event data structure. |
+| objectList | Array of EventDTO |   | The event data structure. |
 | id | Long | 10 | The event ID. |
-| groupId | String |  |  |
+| groupId | String |   |   |
 | title | String | DUMP FAILED _ | The event title. |
 | tags | Map | {"ruleCode": "DUMP FAILED"} _ | The extended information of the event. |
 | summarySimpl e | String | {\"fbb70e90818fb9 af6565a3515fe137 5c\":\" {\\\"diffRows\\\":\\\" 2\\\",\\\"eventType\ \\":\\\"DUMP FAILE _ D\\\",\\\"dumpCoun t\\\":\\\"0\\\",\\\"tabl e\\\":\\\"ecs alarm. _ nc monitor excepti _ _ on\\\"}\"} | The event content. |
 | itemNames | List | null | The names of objects contained in the event. |
 
-**Response parameters**
-
 | itemTypes | List | UNKNOWN | The types of objects contained in the event. |
 |---|---|---|---|
 | itemIds | List | null | The IDs of objects contained in the event. |
 | ruleNames | List | DUMP FAILED _ | The rule name. |
-| alertKeys | List |  |  |
+| alertKeys | List |   |   |
 | sources | List | IaaS-Ops | The alert source in the event. |
 | priority | String | L7 | The event level. |
 | priorityNum | Integer | 7 | The priority number of the event. |
@@ -9248,28 +10329,28 @@ The GetEventList API does not have specific request headers and uses only common
 | resolvedTime | Long | 1705920063423 | The resolution time of the event. |
 | eventRuleId | Long | 3 | The ID of the rule that the event matched. |
 | operateUser | String | admin | The current handler of the event. |
-| historyOperate User | List | ["admin"] |  |
+| historyOperate User | List | ["admin"] |   |
 | validStatus | String | VALID | The validity of the event. |
 
-| eventCause | Struct |  |  |
+| eventCause | Struct |   |   |
 |---|---|---|---|
-| ids | List |  |  |
-| validStatus | String |  |  |
-| causeType | String |  | The cause of the event. |
-| causeInfo | String |  | The specific cause. |
-| disposeResult | String |  | The handling result. |
-| customExpres sContent | Map |  |  |
-| mergerSumma ry | String |  |  |
+| ids | List |   |   |
+| validStatus | String |   |   |
+| causeType | String |   | The cause of the event. |
+| causeInfo | String |   | The specific cause. |
+| disposeResult | String |   | The handling result. |
+| customExpres sContent | Map |   |   |
+| mergerSumma ry | String |   |   |
 | createDate | String | 2024-01- 21T16:00:00.000+ 0000 | The time when the event was created. |
 | modifyDate | String | 2024-01- 21T16:00:00.000+ 0000 | The time of the last modification of the event. |
 | creator | String | admin | The creator. |
 | modifier | String | admin | The modifier. |
 | cost | Long | 30 | The time consumed by the API call. |
-| path | String | /aso/incident/api/e vent/list |  |
-| serviceRole | String | aso- emergency.Inciden t# |  |
-| serverRole | String | aso- emergency.Inciden t# |  |
+| path | String | /aso/incident/api/e vent/list |   |
+| serviceRole | String | aso- emergency.Inciden t# |   |
+| serverRole | String | aso- emergency.Inciden t# |   |
 
-| responseVersi on | String | v1 |  |
+| responseVersi on | String | v1 |   |
 |---|---|---|---|
 | errorCode | String | SYSTEM ERROR _ | The error code. |
 | errorTitle | String | An internal error occurred | The error title. |
@@ -9279,10 +10360,12 @@ The GetEventList API does not have specific request headers and uses only common
 | code | String | 200 | The returned code. |
 | message | String | Successful request | The details of returned information. |
 | level | Integer | 1 | The API level. |
-| key | String |  |  |
+| key | String |   |   |
 | successRespo nse | Boolean | true | The response is successful. |
-| msg | String |  | The returned message. |
+| msg | String |   | The returned message. |
 | errorStack | String | - | The error stack. |
+
+**Examples**
 
 Example for request
 
@@ -9293,8 +10376,10 @@ http(s)://[Endpoint]/?Action=ops.api.ASO.GetEventList.2023-11-30 &Common request
 Example for successful response `JSON` format
 
 ```
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
 ```
+
+`{`
 
 ```json
  "msg":"",
@@ -9337,28 +10422,27 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "priority":"L7",
    "tags":{
     "ruleCode":"DUMP_FAILED"
-   },
+```
+
+`},`
+
+```json
    "eventCause":{
     "validStatus":"",
     "causeType":"",
     "causeInfo":"",
     "disposeResult":"",
     "ids":""
-   },
-   "ruleNames":"DUMP_FAILED",
-   "endTime":1705920063423
-  }
- },
 ```
 
-| Parameter name | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| eventId | Long | Quer y | Required | 10 | The unique identifier of the ASO event. |
+`},`
 
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicate whether the request was successful. |
-| data | Array of CloudAlertDTO |  | The data. |
+```json
+   "ruleNames":"DUMP_FAILED",
+   "endTime":1705920063423
+```
+
+`}` `},`
 
 ```json
  "serviceRole":"aso-emergency.Incident#",
@@ -9375,12 +10459,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"0a880c8717059272470618228d002d",
  "errorStack":"-",
  "key":""
-}
 ```
 
-ASO 2023-11-30
+`}` ASO 2023-11-30
 
-##### GetRelationAlert
+##### 7.1.7.2 GetRelationAlert
 
 This topic describes the queries of alert information related to ASO events based on the event ID.
 
@@ -9390,14 +10473,23 @@ The GetRelationAlert API operations does not have specific request headers and u
 
 **Request parameters**
 
+| Parameter name | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| eventId | Long | Quer y | Required | 10 | The unique identifier of the ASO event. |
+
 **Response parameters**
+
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicate whether the request was successful. |
+| data | Array of CloudAlertDTO |   | The data. |
 
 | id | Long | 12 | The alert ID. |
 |---|---|---|---|
 | alertSource | String | IaaS-Ops | The source of the alert. |
 | title | String | DUMP FAILED _ | The title of the alert. |
-| alertBizId | String |  |  |
-| alertKey | String |  |  |
+| alertBizId | String |   |   |
+| alertKey | String |   |   |
 | itemId | String | itemId | The ID of the item that triggers the alert. |
 | itemName | String | SR# | The name of the item that triggers the alert. |
 | itemType | String | CLOUD INSTANCE _ | The type of the item that triggers the alert. |
@@ -9425,7 +10517,7 @@ The GetRelationAlert API operations does not have specific request headers and u
 | messageCount | Long | 1 | The count of alerts. |
 | status | String | CLOSED | The status. |
 | hitRuleData | Boolean | false | Indicate whether the alert checklist is hit. |
-| localItemId | String |  |  |
+| localItemId | String |   |   |
 | eventId | Long | 10 | The event ID. |
 | count | Long | 111 | The count. |
 | createDate | String | 2024-01- 21T16:00:00.000+ 0000 | The creation time. |
@@ -9435,27 +10527,29 @@ The GetRelationAlert API operations does not have specific request headers and u
 | creator | String | null | The creator. |
 | modifier | String | null | The updater. |
 | detail | Map | { "checkInterval": "", "product": "ASO", "metricName": "DUMP FAILED", _ "alarmRule": "", "type": "default", "currentValue": "" } | The details of extended information. |
-| customExpres sContent | Map |  |  |
+| customExpres sContent | Map |   |   |
 | tags | Map | { "isThreeCopy": "false", "product": "ASO", "regionId": "cn-xxx-xxx-xxx", "processRuleId": "1", "parentId": "0" } | The extended information. |
 | cost | Long | 30 | The request duration. |
 | path | String | /aso/incident/api/e vent/getRelationAl ert | The request path. |
 | serviceRole | String | aso- emergency.Inciden t# | The service role. |
 | serverRole | String | aso- emergency.Inciden t# | The server role. |
 | responseVersi on | String | v1 | The version. |
-| errorCode | String |  | The error code. |
+| errorCode | String |   | The error code. |
 
-| errorTitle | String |  |  |
+| errorTitle | String |   |   |
 |---|---|---|---|
-| errorMessage | String |  | The error message. |
+| errorMessage | String |   | The error message. |
 | requestId | String | 0a880c871705927 2470618228d002d | The ID of the request. |
 | eagleEyeTrace Id | String | 0a880c871705927 2470618228d002d | The Eagle Eye ID. |
 | code | String | 200 | The code. |
 | message | String | null | The description. |
-| level | Integer | 1 |  |
-| key | String |  |  |
-| successRespo nse | Boolean | true |  |
-| msg | String |  |  |
+| level | Integer | 1 |   |
+| key | String |   |   |
+| successRespo nse | Boolean | true |   |
+| msg | String |   |   |
 | errorStack | String | null | The error stack. |
+
+**Examples**
 
 Example for request
 
@@ -9465,8 +10559,13 @@ http(s)://[Endpoint]/?Action=ops.api.ASO.GetRelationAlert.2023-11-30 &eventId=10
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"",
  "eagleEyeTraceId":"0a880c8717059272470618228d002d",
  "cost":30,
@@ -9476,7 +10575,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 "it
 ```
 
-T
+`T`
 
 ```
 ""CLOUDINSTANCE"
@@ -9520,7 +10619,11 @@ T
    "regionId":"cn-xxx-xxx-xxx",
    "processRuleId":"1",
    "parentId":"0"
-  },
+```
+
+`},`
+
+```json
   "ruleCode":"DUMP_FAILED",
   "itemId":"itemId",
   "itemLayer":"CLOUD",
@@ -9533,23 +10636,18 @@ T
    "alarmRule":"",
    "type":"default",
    "currentValue":""
-  },
-  "firstMessageTime":1705920063423,
-  "status":"CLOSED"
-}
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| eventId | Long | Quer y | Required | 1 | The unique identifier of the ASO event. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicate whether the request is successful. |
-| data | Array of ProcessLogDT O |  | The response body. |
+`},`
 
 ```json
- },
+  "firstMessageTime":1705920063423,
+  "status":"CLOSED"
+```
+
+`}` `},`
+
+```json
  "serviceRole":"aso-emergency.Incident#",
  "level":1,
  "errorMessage":"",
@@ -9564,12 +10662,11 @@ T
  "requestId":"0a880c8717059272470618228d002d",
  "errorStack":"null",
  "key":""
-}
 ```
 
-ASO 2023-11-30
+`}` ASO 2023-11-30
 
-##### GetEventProcessLog
+##### 7.1.7.3 GetEventProcessLog
 
 This topic describes the queries of the operation track information of an event in the ASO Event Center by event ID.
 
@@ -9579,7 +10676,16 @@ The GetEventProcessLog API operations use common request headers without specifi
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| eventId | Long | Quer y | Required | 1 | The unique identifier of the ASO event. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicate whether the request is successful. |
+| data | Array of ProcessLogDT O |   | The response body. |
 
 | id | Long | 10 | The track ID. |
 |---|---|---|---|
@@ -9596,10 +10702,10 @@ The GetEventProcessLog API operations use common request headers without specifi
 | modifier | String | system | The modifier. |
 | cost | Long | 16 | The request duration. |
 | path | String | /aso/incident/api/e vent/getProcessLo g | The path of request operation. |
-| serviceRole | String |  |  |
-| serverRole | String |  |  |
+| serviceRole | String |   |   |
+| serverRole | String |   |   |
 
-| responseVersi on | String |  |  |
+| responseVersi on | String |   |   |
 |---|---|---|---|
 | errorCode | String | SYSTEM ERROR _ | The error code. |
 | errorTitle | String | Internal error | The error title. |
@@ -9607,12 +10713,14 @@ The GetEventProcessLog API operations use common request headers without specifi
 | requestId | String | 0a880c871705927 2470618228d002d | The request ID. |
 | eagleEyeTrace Id | String | 0a880c871705927 2470618228d002d | The Eagle Eye ID. |
 | code | String | 200 | The request code. |
-| message | String |  |  |
-| level | Integer | 1 |  |
-| key | String |  |  |
-| successRespo nse | Boolean | true |  |
-| msg | String |  |  |
-| errorStack | String |  |  |
+| message | String |   |   |
+| level | Integer | 1 |   |
+| key | String |   |   |
+| successRespo nse | Boolean | true |   |
+| msg | String |   |   |
+| errorStack | String |   |   |
+
+**Examples**
 
 Example for request
 
@@ -9622,8 +10730,13 @@ http(s)://[Endpoint]/?Action=ops.api.ASO.GetEventProcessLog.2023-11-30 &eventId=
 
 Example for successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"",
  "eagleEyeTraceId":"0a880c8717059272470618228d002d",
  "cost":16,
@@ -9641,7 +10754,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "user":"system",
   "processTime":1705920080210,
   "createDate":"2024-01-21T16:00:00.000+0000"
- },
+```
+
+`},`
+
+```json
  "serviceRole":"",
  "level":1,
  "errorMessage":"SYSTEM_ERROR",
@@ -9656,12 +10773,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"0a880c8717059272470618228d002d",
  "errorStack":"",
  "key":""
-}
 ```
 
-ASO 2023-11-30
+`}` ASO 2023-11-30
 
-##### HandleEvent
+##### 7.1.7.4 HandleEvent
 
 Handles ASO events.
 
@@ -9709,6 +10825,8 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | "" | The error message. |
 | errorStack | String | "" | The error stack. |
 
+**Examples**
+
 Request example
 
 ```
@@ -9717,8 +10835,13 @@ http(s)://[Endpoint]/?Action=ops.api.ASO.HandleEvent.2024-07-30 &eventId=4 &sour
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg": "",
  "eagleEyeTraceId": "",
  "cost": 30,
@@ -9738,23 +10861,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId": "",
  "errorStack": "",
  "key": "null"
-}
 ```
 
-| Parameter | Data type | Loc atio n | Requir ed | Example | Description |
-|---|---|---|---|---|---|
-| id | Long | Bod y | No | 1 | The unique ID of the sub-event. |
-| ids | JSON array | Bod y | No | [1,2,3] | The unique IDs of the sub- events to retrieve in a batch. This parameter is an array. |
-| alertBizId | String | Bod y | No |  |  |
-| startTime Before | Long | Bod y | No | A 13-digit timestamp | The end of the start time range to query. |
-| startTime After | Long | Bod y | No | A 13-digit timestamp | The beginning of the start time range to query. |
-| endTimeB efore | Long | Bod y | No | A 13-digit timestamp | The end of the recovery time range to query. |
-| endTimeA fter | Long | Bod y | No | A 13-digit timestamp | The beginning of the recovery time range to query. |
-| title | String | Bod y | No | A component on a machine has not reached its desired state. | Performs a fuzzy search by sub-event title. |
-| itemId | String | Bod y | No | c3e57aad483161cfd51b 12daad809ca0 | The unique ID of the object. |
-| itemName | String | Bod y | No | Server#(c01) | The name of the object. |
+`}`
 
-##### GetSubIncidentByCondition
+##### 7.1.7.5 GetSubIncidentByCondition
 
 Retrieves specific sub-events from the ASO Event Hub.
 
@@ -9764,6 +10875,19 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
+| Parameter | Data type | Loc atio n | Requir ed | Example | Description |
+|---|---|---|---|---|---|
+| id | Long | Bod y | No | 1 | The unique ID of the sub-event. |
+| ids | JSON array | Bod y | No | [1,2,3] | The unique IDs of the sub- events to retrieve in a batch. This parameter is an array. |
+| alertBizId | String | Bod y | No |   |   |
+| startTime Before | Long | Bod y | No | A 13-digit timestamp | The end of the start time range to query. |
+| startTime After | Long | Bod y | No | A 13-digit timestamp | The beginning of the start time range to query. |
+| endTimeB efore | Long | Bod y | No | A 13-digit timestamp | The end of the recovery time range to query. |
+| endTimeA fter | Long | Bod y | No | A 13-digit timestamp | The beginning of the recovery time range to query. |
+| title | String | Bod y | No | A component on a machine has not reached its desired state. | Performs a fuzzy search by sub-event title. |
+| itemId | String | Bod y | No | c3e57aad483161cfd51b 12daad809ca0 | The unique ID of the object. |
+| itemName | String | Bod y | No | Server#(c01) | The name of the object. |
+
 | itemIds | JSON array | Bod y | No | ["c3e57aad483161cfd5 1b12daad809ca0","c3e 57aad483161cfd51b12 daad809ca1"] | A list of object IDs used to filter sub-events. |
 |---|---|---|---|---|---|
 | itemName s | JSON array | Bod y | No | ["Server# (c01)","Server#(c02)"] | A list of object names used to filter sub-events. |
@@ -9771,7 +10895,7 @@ This operation uses common request headers. No special request headers are requi
 | itemType Enums | JSON array | Bod y | No | ["COMPONENT","COMPO NENT INSTANCE"] _ | Retrieving a range of object types. |
 | alertSourc eInclude | JSON array | Bod y | No | ["tianjimon","cms"] | A range of sources to include in the search. |
 | alertSourc eExclude | JSON array | Bod y | No | ["drds"] | A range of sources to exclude from the search. |
-| ruleName | String | Bod y | No |  | The name of the alert rule used to filter sub-events. |
+| ruleName | String | Bod y | No |   | The name of the alert rule used to filter sub-events. |
 | ruleCode | String | Bod y | No | tianji sr monitor alarm _ _ _ | The alert code. |
 | summary | String | Bod y | No | Tianji component has not reached | Performs a fuzzy search by sub-event description. |
 | alertSourc e | String | Bod y | No | tianjimon | The source of the alert. |
@@ -9787,10 +10911,12 @@ This operation uses common request headers. No special request headers are requi
 | pageNo | Intege r | Bod y | Yes | 1 | The page number. |
 | pageSize | Intege r | Bod y | Yes | 10 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Data type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request was successful. |
-| data | Map |  | Data |
+| data | Map |   | Data |
 | cost | Long | 18 | The time it took to process the request, in milliseconds (ms). |
 | path | String | /aso/incident/some path | The URI of the request. |
 | serviceRole | String | "" | The related service role. |
@@ -9798,8 +10924,6 @@ This operation uses common request headers. No special request headers are requi
 | responseVersi on | String | v1 | The version of the response model. |
 | errorCode | String | "" | The error code. |
 | errorTitle | String | null | The title of the error. |
-
-**Response parameters**
 
 | errorMessage | String | null | The error message. |
 |---|---|---|---|
@@ -9813,6 +10937,8 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | "" | A description of the request information. |
 | errorStack | String | "" | The error stack. |
 
+**Examples**
+
 Request example
 
 ```
@@ -9821,17 +10947,13 @@ http(s)://[Endpoint]/?Action=ops.api.ASO.GetSubIncidentByCondition.2025-08-30 &p
 
 Response example `JSON` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetSwitchInfo | The operation that you want to perform. Set the value to GetSwitchInfo. |
-| ip | String | Yes | 10.205.XX.XX | The IP address of the switch. |
-| OpsProduct | String | No | NrmOps | The product name. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "msg":"\"\"",
  "eagleEyeTraceId":"",
  "cost":18,
@@ -9851,22 +10973,32 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "requestId":"",
  "errorStack":"\"\"",
  "key":"null"
-}
 ```
 
-### Network Operations Console
+`}`
 
-#### Network element management
+### 7.2 Network Operations Console
 
-##### GetSwitchInfo
+#### 7.2.1 Network element management
+
+##### 7.2.1.1 GetSwitchInfo
 
 Queries switch information.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetSwitchInfo | The operation that you want to perform. Set the value to GetSwitchInfo. |
+| ip | String | Yes | 10.205.XX.XX | The IP address of the switch. |
+| OpsProduct | String | No | NrmOps | The product name. |
+
 **Response parameters**
 
-| Data | Array of JSONArray |  | The details of the switch. |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+
+| Data | Array of JSONArray |   | The details of the switch. |
 |---|---|---|---|
 | GmtCreate | Long | 1654593453 | The timestamp that specifies when the entry was created. |
 | HostName | String | ASW-XX-XX-XXXX | The SYSNAME of the switch. |
@@ -9886,10 +11018,12 @@ Queries switch information.
 | message | String | success | The message that indicates whether the request was successful. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
-&ip=10.205.XX.XX &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetSwitchInfo &ip=10.205.XX.XX &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -9913,21 +11047,9 @@ Sample success responses `XML` format
 </Data> <message>success</message>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetTopoInfo | The operation that you want to perform. Set the value to GetTopoInfo. |
-| idc | String | Yes | amtestXXX | The data center. |
-| query type _ | String | No | base | The topology type. Valid values: base (default): reference topology. dynamic: real-time topology. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Code | String | 200 | The response code. |
-| Data | Struct |  | The network topology information. |
+`JSON` format `{`
 
 ```json
-{
     "Data": {
         "LastUpdate": 1654593453,
         "IP": "10.205.XX.XX",
@@ -9943,20 +11065,36 @@ Sample success responses `XML` format
         "Manufacturer": "Huawei",
         "SN": "210XXXXXXXXX",
         "HostName": "ASW-XX-XX-XXXX"
-    },
-    "message": "success"
-}
 ```
 
-##### GetTopoInfo
+`},`
+
+```json
+    "message": "success"
+```
+
+`}`
+
+##### 7.2.1.2 GetTopoInfo
 
 Queries network topology information.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetTopoInfo | The operation that you want to perform. Set the value to GetTopoInfo. |
+| idc | String | Yes | amtestXXX | The data center. |
+| query type _ | String | No | base | The topology type. Valid values: base (default): reference topology. dynamic: real-time topology. |
+
 **Response parameters**
 
-| Edges | Array of JSONArray |  | The information about network topology edges. |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Code | String | 200 | The response code. |
+| Data | Struct |   | The network topology information. |
+
+| Edges | Array of JSONArray |   | The information about network topology edges. |
 |---|---|---|---|
 | Color | String | #ccc | The color of the network topology edge. |
 | EdgeFrom | String | 10.205.XX.XX | The source device of the topology edge. |
@@ -9966,28 +11104,28 @@ Queries network topology information.
 | IDC | String | amtestXXX | The data center. |
 | NodePair | String | 54XXXXXXXXXXXX | The hash value of the edge. Edges that have the same hash value are represented by a line. |
 | StartPort | String | 40GE X/X/X | The port of the source device of the topology edge. |
-| Groups | Struct |  | The node groups. |
-| ASW | Struct |  | The ASW device group. |
+| Groups | Struct |   | The node groups. |
+| ASW | Struct |   | The ASW device group. |
 | Image | String | /assets/bdm/ASW.p ng | The icon of the group. |
 | Shape | String | image | The icon type. |
-| CSW | Struct |  | The CSW device group. |
+| CSW | Struct |   | The CSW device group. |
 | Image | String | /assets/bdm/CSW.p ng | The icon of the group. |
 | Shape | String | image | The icon type. |
-| DSW | Struct |  | The DSW device group. |
+| DSW | Struct |   | The DSW device group. |
 
 | Image | String | /assets/bdm/DSW.p ng | The icon of the group. |
 |---|---|---|---|
 | Shape | String | image | The icon type. |
-| HSW | Struct |  | The HSW device group. |
+| HSW | Struct |   | The HSW device group. |
 | Image | String | /assets/bdm/HSW.p ng | The icon of the group. |
 | Shape | String | image | The icon type. |
-| ISW | Struct |  | The ISW device group. |
+| ISW | Struct |   | The ISW device group. |
 | Image | String | /assets/bdm/ISW.p ng | The icon of the group. |
 | Shape | String | image | The icon type. |
-| LSW | Struct |  | The LSW device group. |
+| LSW | Struct |   | The LSW device group. |
 | Image | String | /assets/bdm/LSW.p ng | The icon of the group. |
 | Shape | String | image | The icon type. |
-| Nodes | Array of JSONArray |  | The topology nodes. |
+| Nodes | Array of JSONArray |   | The topology nodes. |
 | ID | String | 10.205.XX.XX | The element ID. |
 | IDC | String | amtestXXX | The data center. |
 | Label | String | ASW-XX-XX-XXXX | The element tag. |
@@ -10005,10 +11143,12 @@ Queries network topology information.
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
 | successRespo nse | String | true | Indicates whether the request was successful. Valid values: true and false. |
 
+**Examples**
+
 Sample requests
 
 ```
-&idc=amtestXXX &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetTopoInfo &idc=amtestXXX &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -10068,10 +11208,9 @@ Sample success responses `XML` format
 </Data> <Code>200</Code> <Success>true</Success>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "successResponse": true,
     "RequestId": "256XXXXXXXXXXXXXXXXXXX",
     "ErrMsg": "ok",
@@ -10086,14 +11225,15 @@ Sample success responses `XML` format
 "Color":"#ccc"
 ```
 
-| 19 |  |  |  | > Document Version: 2026070 |
-|---|---|---|---|---|
-
 ```json
             Color: #ccc,
             "IDC": "amtestXXX",
             "ID": "256XXXXXXXXXXX"
-        },
+```
+
+`},`
+
+```json
         "Nodes": {
             "X": -200,
             "SubIDs": "[ \"10.XX.XX.03\",\"10.XX.XX.04\" ]",
@@ -10104,44 +11244,74 @@ Sample success responses `XML` format
             "ID": "10.205.XX.XX",
             "NodeGroup": "ASW",
             "Name": "ASW-XX-XX-XXXX"
-        },
+```
+
+`},`
+
+```json
         "Groups": {
             "ASW": {
                 "Shape": "image",
                 "Image": "/assets/bdm/ASW.png"
-            },
+```
+
+`},`
+
+```json
             "CSW": {
                 "Shape": "image",
                 "Image": "/assets/bdm/CSW.png"
-            },
+```
+
+`},`
+
+```json
             "DSW": {
                 "Shape": "image",
                 "Image": "/assets/bdm/DSW.png"
-            },
+```
+
+`},`
+
+```json
             "ISW": {
                 "Shape": "image",
                 "Image": "/assets/bdm/ISW.png"
-            },
+```
+
+`},`
+
+```json
             "HSW": {
                 "Shape": "image",
                 "Image": "/assets/bdm/HSW.png"
-            },
+```
+
+`},`
+
+```json
             "LSW": {
                 "Shape": "image",
                 "Image": "/assets/bdm/LSW.png"
-            }
-        }
-    },
-    "Code": 200,
-    "Success": true
-}
 ```
 
-##### ListPorts
+`}` `}` `},`
+
+```json
+    "Code": 200,
+    "Success": true
+```
+
+`}`
+
+##### 7.2.1.3 ListPorts
 
 Queries a list of device ports.
 
 **Request parameters**
+
+| 19 |   |   |   | > Document Version: 2026070 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -10149,9 +11319,11 @@ Queries a list of device ports.
 | ip | String | Yes | 10.205.XX.XX | The IP address of the device. |
 | OpsProduct | String | No | NrmOps | The product name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array of JSONArray |  | The ports of the device. |
+| Data | Array of JSONArray |   | The ports of the device. |
 | EndDevice | String | d22i0XX.XXX.XX | The name of the peer device. |
 | EndPort | String | ethX | The name of the peer port. |
 | EndPortIfAlias | String | Link XXXXX-X _ | The description of the peer port. |
@@ -10162,18 +11334,18 @@ Queries a list of device ports.
 | IfIndex | String | 10 | The interface index that was assigned to the port. |
 | IfOperStatus | String | 1 | The operational status of the port. Valid values: 1: UP. 2: DOWN. |
 
-**Response parameters**
-
 | IfSpeed | String | 10000 | The data transfer rate on the port. |
 |---|---|---|---|
 | LastUpdate | Long | 1654593824 | The timestamp that specifies when the entry was last updated. |
 | ifName | String | 10GEX/X/X | The port name. |
 | message | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 
+**Examples**
+
 Sample requests
 
 ```
-&ip=10.205.XX.XX &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListPorts &ip=10.205.XX.XX &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -10195,22 +11367,9 @@ Sample success responses `XML` format
 </Data> <message>success</message>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ListSwTotal | The operation that you want to perform. Set the value to ListSwTotal. |
-| idc | String | No | amtestXXX | The data center. Default value: None. You can select "all" or a specific data center. |
-| OpsProduct | String | No | NrmOps | The product name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Data | Array of JSONArray |  | The list of switches. |
-| GmtCreate | Long | 1653585092 | The timestamp that specifies when the entry was created. |
-| HostName | String | ASW-XX-XX-XXXX | The SYSNAME of the switch. |
+`JSON` format `{`
 
 ```json
-{
     "Data": {
         "IfSpeed": 10000,
         "IfAdminStatus": 1,
@@ -10224,18 +11383,35 @@ Sample success responses `XML` format
         "IfIndex": 10,
         "IfAlias": "Link_XXXX-XX",
         "IfOperStatus": 1
-    },
-    "message": "success"
-}
 ```
 
-##### ListSwTotal
+`},`
+
+```json
+    "message": "success"
+```
+
+`}`
+
+##### 7.2.1.4 ListSwTotal
 
 Queries a list of switches.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ListSwTotal | The operation that you want to perform. Set the value to ListSwTotal. |
+| idc | String | No | amtestXXX | The data center. Default value: None. You can select "all" or a specific data center. |
+| OpsProduct | String | No | NrmOps | The product name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Data | Array of JSONArray |   | The list of switches. |
+| GmtCreate | Long | 1653585092 | The timestamp that specifies when the entry was created. |
+| HostName | String | ASW-XX-XX-XXXX | The SYSNAME of the switch. |
 
 | IDC | String | amtestXXX | The data center. |
 |---|---|---|---|
@@ -10253,10 +11429,12 @@ Queries a list of switches.
 | UpTime | String | 2693524135 | The startup time of the main processing unit of the switch. |
 | message | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 
+**Examples**
+
 Sample requests
 
 ```
-&<Common request parameters>
+http(s)://[Endpoint]/?Action=ListSwTotal &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -10281,10 +11459,9 @@ Sample success responses `XML` format
 </Data> <message>success</message>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Data": {
         "ScanSource": "null",
         "LastUpdate": 1654593453,
@@ -10301,12 +11478,21 @@ Sample success responses `XML` format
         "Manufacturer": "Huawei",
         "SN": "210XXXXXXXXXXXXX",
         "HostName": "ASW-XX-XX-XXXX"
-    },
-    "message": "success"
-}
 ```
 
-##### GetPortInfo
+`},`
+
+```json
+    "message": "success"
+```
+
+`}`
+
+##### 7.2.1.5 GetPortInfo
+
+Queries the port information of a network device.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -10314,9 +11500,11 @@ Sample success responses `XML` format
 | ip | String | Yes | 10.205.XX.XX | The IP address of the network device. |
 | port | String | Yes | Ten- GigabitEthernet 1/0/1 | The port name of the network device. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Struct |  | The information about the network device port. |
+| Data | Struct |   | The information about the network device port. |
 | EndDevice | String | d22i0XX.XXX.X | The name of the peer device. |
 | EndPort | String | ethX | The name of the peer port. |
 | EndPortIfAlias | String | Link XXXXX-X _ | The description of the peer port. |
@@ -10326,12 +11514,6 @@ Sample success responses `XML` format
 | IfAlias | String | Link XXXX-XX _ | The description of the port. |
 | IfIndex | String | 100 | The interface index that was assigned to the port. |
 
-Queries the port information of a network device.
-
-**Request parameters**
-
-**Response parameters**
-
 | IfOperStatus | String | 1 | The operational status of the port. Valid values: 1: UP. 2: DOWN. |
 |---|---|---|---|
 | IfSpeed | String | 1000 | The data transfer rate on the port. |
@@ -10339,10 +11521,12 @@ Queries the port information of a network device.
 | ifName | String | 10GEX/X/X | The port name. |
 | Message | String | ok | The message that indicates whether the request was successful. |
 
+**Examples**
+
 Sample requests
 
 ```
-&ip=10.205.XX,XX &port=Ten-GigabitEthernet1/0/1 &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetPortInfo &ip=10.205.XX,XX &port=Ten-GigabitEthernet1/0/1 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -10364,22 +11548,9 @@ Sample success responses `XML` format
 </Data>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetXnetFlow | The operation that you want to perform. Set the value to GetXnetFlow. |
-| end time _ | Long | Yes | 1655894604 | The timestamp that specifies the end of the time range to query. |
-| hostname | String | Yes | ASW-C4-3-AXXX | The SYSNAME of the network device. |
-| info type _ | String | Yes | interface | The type of the data to query. The value is specified as interface. |
-| item | String | Yes | 10GE1/0/6 | The port name of the network device. |
-| start time _ | Long | Yes | 1655891004 | The timestamp that specifies the beginning of the time range to query. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+`JSON` format `{`
 
 ```json
-{
     "Message": "ok",
     "Data": {
         "IfSpeed": 1000,
@@ -10394,31 +11565,45 @@ Sample success responses `XML` format
         "IfIndex": 100,
         "IfAlias": "Link_XXXX-XX",
         "IfOperStatus": 1
-    }
-}
 ```
 
-##### GetXnetFlow
+`}` `}`
+
+##### 7.2.1.6 GetXnetFlow
 
 Queries the data transfer volume of a network device port.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetXnetFlow | The operation that you want to perform. Set the value to GetXnetFlow. |
+| end time _ | Long | Yes | 1655894604 | The timestamp that specifies the end of the time range to query. |
+| hostname | String | Yes | ASW-C4-3-AXXX | The SYSNAME of the network device. |
+| info type _ | String | Yes | interface | The type of the data to query. The value is specified as interface. |
+| item | String | Yes | 10GE1/0/6 | The port name of the network device. |
+| start time _ | Long | Yes | 1655891004 | The timestamp that specifies the beginning of the time range to query. |
+
 **Response parameters**
 
-| Data | Array of JSONArray |  | The information about the network device port. |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| Array | Array of JSONArray |  | Details of the data transfer volume of the network device port. |
+
+| Data | Array of JSONArray |   | The information about the network device port. |
+|---|---|---|---|
+| Array | Array of JSONArray |   | Details of the data transfer volume of the network device port. |
 | TimeStamp | Long | 1655894040 | The timestamp that specifies the time when the data was returned. |
 | Value | Long | 21808258 | The data transfer volume of the network device port. |
 | Calc | Boolean | true | Indicates whether the returned data needs to be converted to rate. |
 | Item | String | in discard _ | The metric of the data transfer volume. Valid values: in discard, in pps, in bps, _ _ _ in error, out discard, out pps, out bps, _ _ _ _ and out error. _ |
 | Message | String | success | The message that indicates whether the request was successful. |
 
+**Examples**
+
 Sample requests
 
 ```
-&end_time=1655894604 &hostname=ASW-C4-3-AXXX &info_type=interface &item=10GE1/0/6 &start_time=1655891004 &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetXnetFlow &end_time=1655894604 &hostname=ASW-C4-3-AXXX &info_type=interface &item=10GE1/0/6 &start_time=1655891004 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -10434,6 +11619,26 @@ Sample success responses `XML` format
 </Data>
 ```
 
+`JSON` format `{`
+
+```json
+    "Message": "success",
+    "Data": {
+        "Item": "in_discard",
+        "Calc": true,
+        "Array": {
+            "Value": 21808258,
+            "TimeStamp": 1655894040
+```
+
+`}` `}` `}`
+
+##### 7.2.1.7 GetHardwareUtilization
+
+Queries the CPU or memory utilization of a network device.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | GetHardwareUtil ization | The operation that you want to perform. Set the value to GetHardwareUtilization. |
@@ -10443,40 +11648,20 @@ Sample success responses `XML` format
 | start time _ | Long | No | 1654593453 | The timestamp that specifies the beginning of the time range to query. |
 | end time _ | Long | No | 1654598453 | The timestamp that specifies the end of the time range to query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | Integer | 200 | The response code. |
 
-`JSON` format
-
-```json
-{
-    "Message": "success",
-    "Data": {
-        "Item": "in_discard",
-        "Calc": true,
-        "Array": {
-            "Value": 21808258,
-            "TimeStamp": 1655894040
-        }
-    }
-}
-```
-
-##### GetHardwareUtilization
-
-Queries the CPU or memory utilization of a network device.
-
-**Request parameters**
-
-**Response parameters**
-
-| Data | Array of JSONArray |  | The information about the hardware utilization. |
+| Data | Array of JSONArray |   | The information about the hardware utilization. |
 |---|---|---|---|
 | Item | String | CPU CE6XXX- _ 48S6Q-HI.X | The hardware model. |
 | Utiliz | String | 28 | The hardware utilization. |
 | Message | String | success | The message that indicates whether the request was successful. |
 | SuccessRespo nse | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
+
+**Examples**
 
 Sample requests
 
@@ -10493,21 +11678,29 @@ Sample success responses `XML` format
 </Data> <Code>200</Code>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "SuccessResponse": true,
     "Message": "success",
     "Data": {
         "Item": "CPU_CE6XXX-48S6Q-HI.X",
         "Utiliz": 28
-    },
-    "Code": 200
-}
 ```
 
-##### GetPortTransPowerByName
+`},`
+
+```json
+    "Code": 200
+```
+
+`}`
+
+##### 7.2.1.8 GetPortTransPowerByName
+
+Queries the optical RX/TX power of a network device port.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -10517,9 +11710,11 @@ Sample success responses `XML` format
 | StartTime | Long | No | 1655604751 | The timestamp that specifies the beginning of the time range to query. |
 | EndTime | Long | No | 1655608351 | The timestamp that specifies the end of the time range to query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Struct |  | The information about the optical RX/TX power of the network device port. |
+| Data | Struct |   | The information about the optical RX/TX power of the network device port. |
 | IP | String | 10.205.XX.XX | The IP address of the network device. |
 | IfIndex | String | 16850178 | The interface index that was assigned to the port. |
 | Port | String | 10GEI/X/X | The port name of the network device. |
@@ -10528,11 +11723,7 @@ Sample success responses `XML` format
 | TransceiverCu rTXPower | List | ["-261","-259","- 259"] | The optical TX power data. |
 | Message | String | ok | The message that indicates whether the request was successful. |
 
-Queries the optical RX/TX power of a network device port.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -10553,10 +11744,9 @@ Sample success responses `XML` format
 </Data>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Message": "ok",
     "Data": {
         "Port": "10GEI/X/X",
@@ -10565,13 +11755,13 @@ Sample success responses `XML` format
         "TransceiverCurRXPower": "[\"-220\",\"-220\",\"-223\"]",
         "TransceiverCurTXPower": "[\"-261\",\"-259\",\"-259\"]",
         "Timestamps": "[\"1655607000\",\"1655607060\",\"1655607060\"]"
-    }
-}
 ```
 
-#### Networking services
+`}` `}`
 
-##### AllSlbClusters
+#### 7.2.2 Networking services
+
+##### 7.2.2.1 AllSlbClusters
 
 Queries a list of Server Load Balancer (SLB) clusters or SLB proxy clusters.
 
@@ -10584,6 +11774,8 @@ This operation does not have operation-specific request headers and uses only co
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Service | Strin g | Query | No | slb-lvs | The service name. Valid values: slb-lvs: SLB cluster. slb-proxy: SLB proxy cluster. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10600,9 +11792,7 @@ This operation does not have operation-specific request headers and uses only co
 | requestURI | String | /slalink/fulllink/clas sic/XXXXXX | The URL of the request. |
 | serviceRole | String | baseXXXXX.baseX XXXXXX.XXXX# | The service role. |
 
-**Response parameters**
-
-| psara Uni-manag Console | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag Console | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
@@ -10612,16 +11802,23 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
-&<Common request parameters>
+http(s)://[Endpoint]/?Action=AllSlbClusters &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -10632,7 +11829,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "ErrNo":"0",
  "Data":{
   "slbCluster-A-XXXXXXX-XXXX":"slbCluster-B-XXXXXXX-XXXX"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -10640,24 +11841,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetNodeList
+`}`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterNa me | Strin g | Query | Yes | slbCluster-A-XXXXXXX | The name of the SLB cluster or SLB proxy cluster. Set this parameter to the value returned by the AllSlbClusters operation. |
-| Service | Strin g | Query | No | slb-lvs | The service name. Valid values: slb-lvs: SLB cluster. slb-proxy: SLB proxy cluster. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ErrMsg | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
-| ErrNo | String | 0 | The custom response code. |
-| RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
-| Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Array of TestListModel |  | The nodes. |
-| enabled | Integer | 1 | The status of the node. Valid values: 1: enabled. 0: disabled. |
+##### 7.2.2.2 GetNodeList
 
 Queries a node list of a Server Load Balancer (SLB) cluster or an SLB proxy cluster.
 
@@ -10667,7 +11855,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterNa me | Strin g | Query | Yes | slbCluster-A-XXXXXXX | The name of the SLB cluster or SLB proxy cluster. Set this parameter to the value returned by the AllSlbClusters operation. |
+| Service | Strin g | Query | No | slb-lvs | The service name. Valid values: slb-lvs: SLB cluster. slb-proxy: SLB proxy cluster. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ErrMsg | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
+| ErrNo | String | 0 | The custom response code. |
+| RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
+| Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
+| Data | Array of TestListModel |   | The nodes. |
+| enabled | Integer | 1 | The status of the node. Valid values: 1: enabled. 0: disabled. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10689,7 +11891,7 @@ This operation does not have operation-specific request headers and uses only co
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
 | requestURI | String | /slalink/fulllink/clas sic/XXXXXX | The URL of the request. |
 
-|  |  |  | Apsara Uni-manager Operations |
+|   |   |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10700,19 +11902,23 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
-&ClusterName=slbCluster-A-XXXXXXX &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetNodeList &ClusterName=slbCluster-A-XXXXXXX &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -10734,7 +11940,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "enabled":1,
   "MachineState":"good",
   "status":"online"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -10742,10 +11952,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetSlbLvsNodeStats
+`}`
+
+##### 7.2.2.3 GetSlbLvsNodeStats
 
 Queries the usage data of a Server Load Balancer (SLB) node.
 
@@ -10755,11 +11966,16 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | ClusterNa me | Strin g | Quer y | Yes | slbCluster-A-XXXXXXX | The SLB cluster name. Set this parameter to the value returned by the AllSlbClusters operation. |
 |---|---|---|---|---|---|
 | NodeIP | Strin g | Quer y | Yes | 1.XX.XX.X | The IP address of the node. The value is the value of the IPAddr parameter that is returned by the GetNodeList operation. |
 | StartTime | Strin g | Quer y | No | 1681446655 | The timestamp that specifies the beginning of the time range to query. Default value: the timestamp 1 hour before the current time. |
 | EndTime | Strin g | Quer y | No | 1685082869 | The timestamp that specifies the end of the time range to query. Default value: the timestamp of the current time. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10767,10 +11983,8 @@ This operation does not have operation-specific request headers and uses only co
 | ErrNo | String | 0 | The response code. |
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Struct |  | The usage data. |
+| Data | Struct |   | The usage data. |
 | actConnsPS | List | [0,0,0,0,0] | The number of active connections. Unit: connections per seconds (CPS). |
-
-**Response parameters**
 
 | connsPS | List | [1,2,2,3,4] | The number of new connections. Unit: CPS. |
 |---|---|---|---|
@@ -10801,6 +12015,8 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -10809,8 +12025,13 @@ http(s)://[Endpoint]/?Action=GetSlbLvsNodeStats &ClusterName=slbCluster-A-XXXXXX
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -10841,7 +12062,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "connsPS":"[1,2,2,3,4]",
   "failConnPS":"[1,2,2,3,4]",
   "outDPktsPS":"[0,0,0,0,0]"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -10849,12 +12074,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-Nrm 2022-04-25
+`}` Nrm 2022-04-25
 
-##### GetSlbLvsClusterStats
+##### 7.2.2.4 GetSlbLvsClusterStats
 
 Queries the usage data of a Server Load Balancer (SLB) cluster.
 
@@ -10862,11 +12086,15 @@ Queries the usage data of a Server Load Balancer (SLB) cluster.
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterNa me | Strin g | Query | Yes | slbCluster-A-XXXXXXX | The SLB cluster name. Set this parameter to the value returned by the AllSlbClusters operation. |
 | StartTime | Strin g | Query | No | 1681446655 | The timestamp that specifies the beginning of the time range to query. Default value: the timestamp 1 hour before the current time. |
 | EndTime | Strin g | Query | No | 1681446655 | The timestamp that specifies the end of the time range to query. Default value: the timestamp of the current time. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10874,15 +12102,11 @@ This operation does not have operation-specific request headers and uses only co
 | ErrNo | String | 0 | The response code. |
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Struct |  | The usage data. |
+| Data | Struct |   | The usage data. |
 | aclDBitsPS | List | [1,2,2,3,4] | The number of bits that were blocked by access control lists (ACLs) per second. |
 | aclDPktsPS | List | [1,2,2,3,4] | The number of packets blocked by ACLs per second. |
 
-**Request parameters**
-
-**Response parameters**
-
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10902,7 +12126,7 @@ This operation does not have operation-specific request headers and uses only co
 | outDPktsPS | List | [0,0,0,0,0] | The number of dropped outbound packets per second. |
 | outPktsPS | List | [0,0,0,0,0] | The number of outbound packets per second. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10920,6 +12144,8 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -10928,8 +12154,13 @@ http(s)://[Endpoint]/?Action=GetSlbLvsClusterStats &ClusterName=slbCluster-A-XXX
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -10962,7 +12193,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "connsPS":"[1,2,2,3,4]",
   "failConnPS":"[1,2,2,3,4]",
   "outDPktsPS":"[0,0,0,0,0]"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -10970,10 +12205,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetLbStats
+`}`
+
+##### 7.2.2.5 GetLbStats
 
 Queries the usage data of a Server Load Balancer (SLB) instance.
 
@@ -10990,19 +12226,19 @@ This operation does not have operation-specific request headers and uses only co
 | StartTime | Long | Query | No | 1681446655 | The timestamp that specifies the beginning of the time range to query. Default value: the timestamp 1 hour before the current time. |
 | EndTime | Long | Query | No | 1681446655 | The timestamp that specifies the end of the time range to query. Default value: the timestamp of the current time. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrMsg | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 | ErrNo | String | 0 | The response code. |
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Array of TestListModel |  | The usage data. |
-| Array | Struct |  | The usage data. |
+| Data | Array of TestListModel |   | The usage data. |
+| Array | Struct |   | The usage data. |
 | actConnsPS | List | [0,0,0,0,0] | The number of active connections. Unit: connections per seconds (CPS). |
 
-**Response parameters**
-
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11022,7 +12258,7 @@ This operation does not have operation-specific request headers and uses only co
 | outDPktsPS | List | [0,0,0,0,0] | The number of dropped outbound packets per second. |
 | outPktsPS | List | [0,0,0,0,0] | The number of outbound packets per second. |
 
-|  |  |  | Apsara Uni-manager Operations |
+|   |   |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11041,16 +12277,23 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
-&ClusterName=slbCluster-A-XXXXXXX &LbIndex=1.XX.XX.X &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetLbStats &ClusterName=slbCluster-A-XXXXXXX &LbIndex=1.XX.XX.X &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -11082,10 +12325,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "connsPS":"[1,2,2,3,4]",
    "failConnPS":"[1,2,2,3,4]",
    "outDPktsPS":"[0,0,0,0,0]"
-  },
+```
+
+`},`
+
+```json
   "Port":"80",
   "Protocol":"tcp"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -11093,10 +12344,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetSlbProxyClusterStats
+`}`
+
+##### 7.2.2.6 GetSlbProxyClusterStats
 
 Queries the usage data of a Server Load Balancer (SLB) proxy cluster.
 
@@ -11104,11 +12356,15 @@ Queries the usage data of a Server Load Balancer (SLB) proxy cluster.
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterNa me | Strin g | Query | Yes | slbCluster-A-XXXXXXX | The SLB cluster name. Set this parameter to the value returned by the AllSlbClusters operation. |
 | StartTime | Strin g | Query | No | 1681446655 | The timestamp that specifies the beginning of the time range to query. Default value: the timestamp 1 hour before the current time. |
 | EndTime | Strin g | Query | No | 1681446655 | The timestamp that specifies the end of the time range to query. Default value: the timestamp of the current time. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11116,13 +12372,9 @@ This operation does not have operation-specific request headers and uses only co
 | ErrNo | String | 0 | The response code. |
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Struct |  | The usage data. |
+| Data | Struct |   | The usage data. |
 | ClusterName | String | slbCluster-A- XXXXXXX | The cluster name. |
-| Info | Struct |  | The usage data. |
-
-**Request parameters**
-
-**Response parameters**
+| Info | Struct |   | The usage data. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11141,7 +12393,7 @@ This operation does not have operation-specific request headers and uses only co
 | wait | List | [1,2,2,3,4] | The number of queued persistent connections. |
 | write | List | [2.0,2.0,2.0] | The number of connections that wrote response data to users. |
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11167,6 +12419,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -11175,8 +12429,13 @@ http(s)://[Endpoint]/?Action=GetSlbProxyClusterStats &ClusterName=slbCluster-A-X
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -11214,8 +12473,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "h2qps":"[2.3,2.4,2.4]",
    "httpqps":"[2.3,2.4,2.4]",
    "write":"[2.0,2.0,2.0]"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -11223,14 +12485,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetSlbProxyNodeStats
+`}`
+
+##### 7.2.2.7 GetSlbProxyNodeStats
 
 Queries the usage data of a Server Load Balancer (SLB) proxy node.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11239,6 +12506,8 @@ Queries the usage data of a Server Load Balancer (SLB) proxy node.
 | StartTime | Strin g | Quer y | No. | 1681446655 | The timestamp that specifies the beginning of the time range to query. Default value: the timestamp 1 hour before the current time. |
 | EndTime | Strin g | Quer y | No. | 1681446655 | The timestamp that specifies the end of the time range to query. Default value: the timestamp of the current time. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ErrMsg | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
@@ -11246,15 +12515,9 @@ Queries the usage data of a Server Load Balancer (SLB) proxy node.
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Data | Struct |  | The usage data. |
+| Data | Struct |   | The usage data. |
 |---|---|---|---|
-| slb proxy cpu _ _ | Struct |  | The CPU usage data. |
+| slb proxy cpu _ _ | Struct |   | The CPU usage data. |
 | hirq | List | [2.3,2.4,2.4] | The percentage of the time that the CPU spent processing hardware interrupt requests. |
 | sirq | List | [2.3,2.4,2.4] | The percentage of time that the CPU spent processing software interrupt requests. |
 | sys | List | [1.1,1.2] | The percentage of time during which the CPU ran in kernel mode. A high value indicates that bottlenecks existed in the system. A low value indicates high CPU performance. |
@@ -11262,7 +12525,7 @@ This operation does not have operation-specific request headers and uses only co
 | util | List | [2.0,2.0,2.0] | The memory utilization. |
 | wait | List | [2.3,2.4,2.4] | The number of queued persistent connections. |
 | msTimestamp | List | ["1681446655000" ,"1681446713000", "1681446771000", "1681446829000", "1681446887000"] | The time when the monitoring data was collected. The value is a UNIX timestamp. Unit: milliseconds. |
-| slb proxy disk _ _ io | Struct |  | The disk usage data. |
+| slb proxy disk _ _ io | Struct |   | The disk usage data. |
 | msTimestamp | List | ["1681446655000" ,"1681446713000", "1681446771000", "1681446829000", "1681446887000"] | The time when the monitoring data was collected. The value is a UNIX timestamp. Unit: milliseconds. |
 | await | List | [2.0,2.0,2.0] | The average amount of time that was consumed to send I/O requests to the serving device. Unit: milliseconds. The value is the sum of the time that was consumed to handle the requests in the queue and the time that was consumed to serve them. |
 
@@ -11277,7 +12540,7 @@ This operation does not have operation-specific request headers and uses only co
 | wrqms | List | [2.0,2.0,2.0] | The number of concurrent write requests sent to the device per second. |
 | ws | List | [2.0,2.0,2.0] | The number of write requests sent to the device per second. |
 | wsecs | List | [1.1,1.2] | The number of sectors written to the device per second. |
-| slb proxy load _ _ | Struct |  | The load usage data. |
+| slb proxy load _ _ | Struct |   | The load usage data. |
 | load1 | List | [1.1,1.2] | The average system loads over the previous minute. |
 | load15 | List | [1.1,1.2] | The average system loads over the previous 15 minutes. |
 | load5 | List | [1.1,1.2] | The average system loads over the previous 5 minutes. |
@@ -11286,7 +12549,7 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | runq | List | [1.1,1.2] | The number of tasks in the queue when the data point was collected. The value is the same as the value of the procs running field in /proc/stat. _ |
 | msTimestamp | List | ["1681446655000" ,"1681446713000", "1681446771000", "1681446829000", "1681446887000"] | The time when the monitoring data was collected. The value is a UNIX timestamp. Unit: milliseconds. |
-| slb proxy me _ _ m | Struct |  | The memory usage data. |
+| slb proxy me _ _ m | Struct |   | The memory usage data. |
 | Dirty | List | [1.1,1.2] | The size of data waiting to be written back to the disk. |
 | SReclaimable | List | [1.1,1.2] | The slab memory that can be reclaimed. |
 | Shmem | List | [1.1,1.2] | The size of shared memory that has been allocated. |
@@ -11301,7 +12564,7 @@ This operation does not have operation-specific request headers and uses only co
 
 | msTimestamp | List | ["1681446655000" ,"1681446713000", "1681446771000", "1681446829000", "1681446887000"] | The time when the monitoring data was collected. The value is a UNIX timestamp. Unit: milliseconds. |
 |---|---|---|---|
-| slb proxy qps _ _ | Struct |  | The QPS usage data. |
+| slb proxy qps _ _ | Struct |   | The QPS usage data. |
 | accept | List | [1.1,1.2] | The total number of new connections received. |
 | active | List | [1.1,1.2] | The number of active connections, including read, write, and waiting requests. |
 | cps | List | [1.1,1.2] | The average number of connections received per second. |
@@ -11323,7 +12586,7 @@ This operation does not have operation-specific request headers and uses only co
 | wait | List | [1.1,1.2] | The number of queued persistent connections. |
 | write | List | [1.1,1.2] | The number of connections that wrote response data to users. |
 | msTimestamp | List | ["1681446655000" ,"1681446713000", "1681446771000", "1681446829000", "1681446887000"] | The time when the monitoring data was collected. The value is a UNIX timestamp. Unit: milliseconds. |
-| slb proxy tcp _ _ | Struct |  | The TCP connection data. |
+| slb proxy tcp _ _ | Struct |   | The TCP connection data. |
 | AtmpFa | List | [1.1,1.2] | The number of times that a connection failed to be initiated per second. For example, syn packets are discarded due to a full semi-connection queue. |
 | CurrEs | List | [1.1,1.2] | The number of current TCP connections. |
 | EstRes | List | [1.1,1.2] | The number of times that connections were reset per second. |
@@ -11348,6 +12611,8 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -11356,8 +12621,13 @@ http(s)://[Endpoint]/?Action=GetSlbProxyNodeStats &ClusterName=slbCluster-A-XXXX
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -11386,7 +12656,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ws":"[2.0,2.0,2.0]",
    "wrqms":"[2.0,2.0,2.0]",
    "qusize":"[1.1,1.2]"
-  },
+```
+
+`},`
+
+```json
   "slb_proxy_cpu":{
    "hirq":"[2.3,2.4,2.4]",
    "sirq":"[2.3,2.4,2.4]",
@@ -11401,7 +12675,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
    "sys":"[1.1,1.2]",
    "user":"[1.1,1.2]"
-  },
+```
+
+`},`
+
+```json
   "slb_proxy_load":{
    "plit":"[1.1,1.2]",
    "runq":"[1.1,1.2]",
@@ -11418,7 +12696,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "load5":"[1.1,1.2]",
    "load1":"[1.1,1.2]",
    "load15":"[1.1,1.2]"
-  },
+```
+
+`},`
+
+```json
   "slb_proxy_tcp":{
    "lisove":"[1.1,1.2]",
    "retran":"[1.1,1.2]",
@@ -11436,7 +12718,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "CurrEs":"[1.1,1.2]",
    "iseg":"[1.1,1.2]",
    "pasive":"[1.1,1.2]"
-  },
+```
+
+`},`
+
+```json
   "slb_proxy_qps":{
    "reqs":"[1.1,1.2]",
    "rt":"[1.1,1.2]",
@@ -11463,7 +12749,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "h2qps":"[1.1,1.2]",
    "httpqps":"[1.1,1.2]",
    "write":"[1.1,1.2]"
-  },
+```
+
+`},`
+
+```json
   "slb_proxy_mem":{
    "SReclaimable":"[1.1,1.2]",
    "Shmem":"[1.1,1.2]",
@@ -11480,24 +12770,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "used":"[1.1,1.2]",
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ProductNa me | Strin g | Query | Yes | vpc | The service name. Set the value to vpc. |
-| ClusterTy pe | Strin g | Query | No | xgw | The type of the cluster. Default value: xgw. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ErrMsg | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
-| ErrNo | String | 0 | The response code. |
-
 ```json
    "free":"[1.1,1.2]",
    "Dirty":"[1.1,1.2]",
    "Slab":"[1.1,1.2]",
    "buff":"[1.1,1.2]",
    "cach":"[1.1,1.2]"
-  }
- },
+```
+
+`}` `},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -11505,12 +12788,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-Nrm 2022-04-25
+`}` Nrm 2022-04-25
 
-##### GetXgwClusterList
+##### 7.2.2.8 GetXgwClusterList
 
 Queries a list of extendable gateways.
 
@@ -11520,9 +12802,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ProductNa me | Strin g | Query | Yes | vpc | The service name. Set the value to vpc. |
+| ClusterTy pe | Strin g | Query | No | xgw | The type of the cluster. Default value: xgw. |
+
 **Response parameters**
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ErrMsg | String | success | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
+| ErrNo | String | 0 | The response code. |
+
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11542,19 +12834,23 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
-&ProductName=vpc &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetXgwClusterList &ProductName=vpc &<Common request parameters>
 ```
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -11565,7 +12861,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "ErrNo":"0",
  "Data":{
   "vpcAzoneCluster-A-XXXXXXX-XXXX":"vpcAzoneCluster-B-XXXXXXX-XXXX"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -11573,10 +12873,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetXgwClusterAll
+`}`
+
+##### 7.2.2.9 GetXgwClusterAll
 
 Queries the usage data of extendable gateways and their nodes.
 
@@ -11588,10 +12889,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Host | Strin g | Query | No | c27b02007.cloudXXXXX XXXXXX | The hostname of the node. You must specify this parameter when you query the usage data of the node. The value is the value of the Hostname parameter that is returned by the GetXgwMachineList operation. |
 | ClusterTy pe | Strin g | Query | No | xgw | The type of the cluster. Default value: xgw. |
 | StartTime | Long | Query | No. | 1681446655 | The timestamp that specifies the beginning of the time range to query. |
 | EndTime | Long | Query | No. | 1681446655 | The timestamp that specifies the end of the time range to query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11599,11 +12905,9 @@ This operation does not have operation-specific request headers and uses only co
 | ErrNo | String | 0 | The custom response code. |
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Struct |  | The usage data. |
+| Data | Struct |   | The usage data. |
 
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11625,7 +12929,7 @@ This operation does not have operation-specific request headers and uses only co
 | responseVersi on | String | v1 | The version of the response. |
 | errCode | String | ASO NETWORK EX _ _ ISTING | The error code. |
 
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11633,16 +12937,23 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
-&<Common request parameters>
+http(s)://[Endpoint]/?Action=GetXgwClusterAll &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -11659,7 +12970,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "PacketRateIn":"[\"51\",\"68\",\"70\"]",
   "InByteRate":"[\"49560\",\"66968\",\"64744\"]",
   "TimeStamp":"[1681446660000,1681446720000,1681446780000]"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -11667,19 +12982,26 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-##### GetXgwMachineList
+`}`
+
+##### 7.2.2.10 GetXgwMachineList
 
 Queries a list of the nodes of extendable gateways.
 
 **Request headers**
 
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterNa me | Strin g | Query | Yes | vpcAzoneCluster- AXXXXXXX | The name of the cluster. Set the value to the value returned by the GetXgwClusterList operation. |
 | ClusterTy pe | Strin g | Query | No | xgw | The type of the cluster. Default value: xgw. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11687,19 +13009,13 @@ Queries a list of the nodes of extendable gateways.
 | ErrNo | String | 0 | The response code. |
 | RequestId | String | 0ED8XXXX-XXXX- XXXX-XXXX | The request ID. |
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true and false. |
-| Data | Array of TestListModel |  | The clusters. |
+| Data | Array of TestListModel |   | The clusters. |
 | HostName | String | c27b0XXXXXXXXX XX | The hostname of the node. |
 | IDC | String | amXXXX | The data center where the node is deployed. |
 | IP | String | 10.XX.XX.X | The IP address of the node. |
 | State | String | good | The status of the node. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common headers" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11716,20 +13032,23 @@ This operation does not have operation-specific request headers and uses only co
 | errTitle | String | The data already exists. | The title of the error message. |
 | errMessage | String | The data already exists. Check the parameter value. | The error message. |
 
+**Examples**
+
 Sample requests
 
 ```
-&ClusterName=vpcAzoneCluster-AXXXXXXX &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetXgwMachineList &ClusterName=vpcAzoneCluster-AXXXXXXX &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| productCo de | Strin g | Query | Yes | hologres | The product name. Examples: oss, nas, cds, hologres, ecs, tianji, and odps. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0a421xxxxxxxxxxxxxxxxxxxxxxx",
  "cost":905,
  "RequestId":"0ED8XXXX-XXXX-XXXX-XXXX",
@@ -11743,7 +13062,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "IP":"10.XX.XX.X",
   "IDC":"amXXXX",
   "HostName":"c27b0XXXXXXXXXXX"
- },
+```
+
+`},`
+
+```json
  "requestURI":"/slalink/fulllink/classic/XXXXXX",
  "Code":"200",
  "Success":true,
@@ -11751,14 +13074,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "success":true,
  "errCode":"ASO_NETWORK_EXISTING",
  "errMessage":"The data already exists. Check the parameter value."
-}
 ```
 
-### Storage Operations Console
+`}`
 
-#### Apsara Distributed File System O&M
+### 7.3 Storage Operations Console
 
-##### GetPanguStorageCapacity
+#### 7.3.1 Apsara Distributed File System O&M
+
+##### 7.3.1.1 GetPanguStorageCapacity
 
 Queries the capacity of a product in Apsara Distributed File System.
 
@@ -11768,17 +13092,27 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| productCo de | Strin g | Query | Yes | hologres | The product name. Examples: oss, nas, cds, hologres, ecs, tianji, and odps. |
+
+To query the values that you can specify for productCode, log on to the **ApsaraUni-manager**
+
+**Operations Console**
+
+, click **Products** , and select **Apsara Distributed File System** from the drop-down list. Then, click **Dashboard** in the left-side navigation pane.
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | String | 200 | The response code. Valid values: 200: The request is successful. 500: An unknown exception occurred. You must troubleshoot the backend service port. |
-| data | Array of PanguStorage Capacity |  | The information about the capacity of the product in Apsara Distributed File System. |
+| data | Array of PanguStorage Capacity |   | The information about the capacity of the product in Apsara Distributed File System. |
 | totalSize | String | 88542 | The total capacity of the product. Unit: GB. |
 | totalFreeSize | String | 83801 | The remaining capacity of the product. Unit: GB. |
 | usedSpacePer cent | String | 5.3500 | The proportion of the used capacity. |
 
-To query the values that you can specify for productCode, log on to the **ApsaraUni-manager** , click **Products** , and select **Apsara Distributed File System** from the drop-down list. Then, click **Dashboard** in the left-side navigation pane.
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -11788,43 +13122,48 @@ http(s)://[Endpoint]/?Action=GetPanguStorageCapacity &productCode=hologres &<Com
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":[{
   "totalSize":"88542",
   "totalFreeSize":"83801",
   "usedSpacePercent":"5.3500"
- }]
-}
 ```
 
-#### CDS O&M
+`}]` `}`
+
+#### 7.3.2 CDS O&M
+
+##### 7.3.2.1 DescribeOssCluster
+
+Queries the information about an Object Storage Service (OSS) cluster based on the cluster ID.
+
+**Request headers**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
-| OpsProduc t | Strin g | Hea der | No |  |  |
+| OpsProduc t | Strin g | Hea der | No |   |   |
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | storageClu sterId | Strin g | Body | No | sc- 0000266w2des2hk08oj6 | The storage cluster ID. You can call the DescribeStorageClusters operation to query storage clusters and obtain their IDs. |
 | ossClusterI d | Strin g | Body | No | oc- 0000266w2des2hk08oj6 | The OSS cluster ID. You must specify this parameter or the storageClusterId parameter. If you specify both parameters, the value of storageClusterId prevails. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. Valid values: true and false. |
 | requestId | String | 2b88c1d1-dbcd- 4204-b0ea- ed768a7ef863 | The request ID. |
 | code | String | 200 | The returned HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
-
-##### DescribeOssCluster
-
-Queries the information about an Object Storage Service (OSS) cluster based on the cluster ID.
-
-**Request headers**
-
-**Request parameters**
-
-**Response parameters**
 
 | message | String | successful | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 |---|---|---|---|
@@ -11851,26 +13190,17 @@ Queries the information about an Object Storage Service (OSS) cluster based on t
 | ossTotalSizeT | Float | 432 | The total capacity. Unit: TiB. |
 | ossUsedT | Float | 3.41 | The used capacity. Unit: TiB. |
 
-Sample requests
+**Examples**
+
+Sample requests `{`
 
 ```json
-{
     "storageClusterId":"sc-0000266w2des2hk08oj6"
-}
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| OpsProduc t | Strin g | Hea der | No |  |  |
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| clusterNa me | Strin g | Body | No | CdsOtsSearchSsdCluster- A-20230910-004c | The name of the storage cluster. Separate multiple names with commas (,). |
+`}` Sample success responses `JSON` format `{`
 
 ```json
-{
  "updatedTime": 0,
  "ossUsed": 0,
  "totalObjectCount": 516829340,
@@ -11895,22 +13225,31 @@ Sample success responses `JSON` format
  "bucketCount": 82,
  "ossUsedRate": 38.81,
  "totalWriteRequest": 80184
-}
 ```
 
-##### DescribeClusterCapacity
+`}`
+
+##### 7.3.2.2 DescribeClusterCapacity
 
 Queries the capacity statistics about storage clusters.
 
 **Request headers**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| OpsProduc t | Strin g | Hea der | No |   |   |
+
 **Request parameters**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| clusterNa me | Strin g | Body | No | CdsOtsSearchSsdCluster- A-20230910-004c | The name of the storage cluster. Separate multiple names with commas (,). |
 
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -clusterName | String | CdsEbsHybridClust er-A-20230910- 0048 | The cluster name. |
 | - clusterAliasNa me | String | CdsEbsHybridClust er-A-20230910- 0048 | The cluster alias. |
 | -ioType | String | io8,io16 | The I/O type of a block cluster. This parameter takes effect only when the queried cluster is a block storage cluster. |
@@ -11929,25 +13268,18 @@ Queries the capacity statistics about storage clusters.
 | code | String | 200 | The response code. |
 | message | String | successful | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 
-Sample requests
+**Examples**
+
+Sample requests `{`
 
 ```json
-{
     "clusterName": "CdsEbsHybridCluster-A-20230910-0048,CdsOssHybridCluster-A-20230830-
-004e" }
+004e"
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| OpsProduc t | Strin g | Hea der | No |  |  |
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
+`}` Sample success responses `JSON` format `{`
 
 ```json
-{
  "code": "200",
  "data": [{
    "allocatedBytes": 8761529272893,
@@ -11961,8 +13293,11 @@ Sample success responses `JSON` format
    "plannedBytes": 544326237028352,
    "provisionedBytes": 726580450151103,
    "storageType": "EBS"
-  },
-  {
+```
+
+`},` `{`
+
+```json
    "allocatedBytes": 81972049518,
    "clusterAliasName": "CdsOssHybridCluster-A-20230830-004e",
    "clusterName": "CdsOssHybridCluster-A-20230830-004e",
@@ -11973,25 +13308,32 @@ Sample success responses `JSON` format
    "provisionedBytes": 244256501399552,
    "media": "hybrid",
    "storageType": "OSS"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "message": "successful",
  "requestId": "7ac0e3b8-1f9e-4793-aa0c-850fba0394c0",
  "success": true
-}
 ```
 
-##### DescribeHosts
+`}`
+
+##### 7.3.2.3 DescribeHosts
 
 Queries a list of hosts.
 
 **Request headers**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| OpsProduc t | Strin g | Hea der | No |   |   |
+
 **Request parameters**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | storageClu sterId | Strin g | Body | No | sc- 0009x1sadxxl4s399d40 | The storage cluster ID. |
 |---|---|---|---|---|---|
@@ -12000,15 +13342,15 @@ Queries a list of hosts.
 | page | Integ er | Body | No | 1 | The page number. Default value: 1. |
 | size | Integ er | Body | No | 10 | The number of entries per page. Valid values: 1 to 100. Default value: 10. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| hosts | Array |  | The hosts. |
+| hosts | Array |   | The hosts. |
 | - storageCluster Id | String | sc- 000ekx55q5mf27z d5a3p | The storage cluster ID. |
 | -hostId | String | hs- 000ekx55q5mf27z g1z2m | The host ID. |
 | -hostName | String | 21e03018.cloud.e0 3.amtest212 | The hostname. |
 | -clusterName | String | CdsOssHybridClust er-A-20230820- 013c | The cluster name. |
-
-**Response parameters**
 
 | - clusterAliasNa me | String | CdsOssHybridClust er-A-20230820- 013c | The cluster alias. |
 |---|---|---|---|
@@ -12041,25 +13383,28 @@ Queries a list of hosts.
 | page | Integer | 1 | The page number. |
 | size | Integer | 10 | The number of entries per page. |
 
-Sample requests
+**Examples**
+
+Sample requests `{`
 
 ```json
-{
  "storageClusterId": "sc-0009x1sadxxl4s399d40",
  "page": 1,
  "size": 10
-}
 ```
 
-Sample success responses `JSON` format
+`}` Sample success responses `JSON` format `{`
 
 ```json
-{
     "paged": true,
     "code": "200",
     "lastPage": true,
     "hosts": [
-        {
+```
+
+`{`
+
+```json
             "hostName": "c21e03018.cloud.e03.amtest212",
             "rack": "E03",
             "memory": 274877906944,
@@ -12077,8 +13422,11 @@ Sample success responses `JSON` format
             "azone": "cn-wulan-env212-amtest212001-a",
             "machineType": "PN68P2M1S1.22",
             "status": "NORMAL"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hostName": "c21e03117.cloud.e04.amtest212",
             "rack": "E04",
             "memory": 274877906944,
@@ -12096,9 +13444,9 @@ Sample success responses `JSON` format
             "azone": "cn-wulan-env212-amtest212001-a",
             "machineType": "PN68P2M1S1.22",
             "status": "NORMAL"
-        },
-        {
 ```
+
+`},` `{`
 
 ```json
             "hostName": "c21e05016.cloud.e05.amtest212",
@@ -12118,8 +13466,11 @@ Sample success responses `JSON` format
             "azone": "cn-wulan-env212-amtest212001-a",
             "machineType": "PN68P2M1S1.22",
             "status": "NORMAL"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hostName": "c21e05114.cloud.e06.amtest212",
             "rack": "E06",
             "memory": 274877906944,
@@ -12137,8 +13488,11 @@ Sample success responses `JSON` format
             "azone": "cn-wulan-env212-amtest212001-a",
             "machineType": "PN68P2M1S1.22",
             "status": "NORMAL"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hostName": "c21e07017.cloud.e07.amtest212",
             "rack": "E07",
             "memory": 274877906944,
@@ -12159,8 +13513,11 @@ Sample success responses `JSON` format
 
 ```json
             "status": "NORMAL"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "hostName": "c21e07102.cloud.e08.amtest212",
             "rack": "E08",
             "memory": 274877906944,
@@ -12178,10 +13535,9 @@ Sample success responses `JSON` format
             "azone": "cn-wulan-env212-amtest212001-a",
             "machineType": "PN68P2M1S1.22",
             "status": "NORMAL"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "message": "successful",
@@ -12194,25 +13550,24 @@ Sample success responses `JSON` format
     "success": true,
     "totalPages": 1,
     "page": 1
-}
 ```
 
-##### DescribeMetrics
+`}`
 
-Queries metric data. Metric types STORAGE_CLUSTER: metrics related to storage clusters. To query the metric data of a storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeStorageClusters operation to obtain the ID of the storage cluster. BLOCK_CLUSTER: metrics related to block storage clusters. To query the metric data of a block storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeBlockClusters operation to obtain the ID of the block storage cluster.
+##### 7.3.2.4 DescribeMetrics
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| OpsProduc t | Strin g | Hea der | No |  |  |
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-OSS_CLUSTER: metrics related to Object Storage Service (OSS) clusters. To query the metric data of an OSS cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeOssCluster operation to obtain the ID of the OSS cluster. HOST HOST: metrics related to hosts. To query the metric data of a host, you must obtain the host ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeHosts operation to obtain the ID of the host. OSS_BUCKET OSS_BUCKET: metrics related to OSS buckets. To query the metric data of an OSS bucket, you can call the DescribeMetrics operation and set the entityId parameter to oss_bucket and the Tags parameter to the name of the bucket. You can call the ListBucket operation to obtain the name of the bucket. You want to obtain the data points of the qps1 and qps2 metrics of an OSS cluster. You can perform the following steps to obtain the metric data points: Step 1: Obtain the storage cluster ID Call the DescribeStorageClusters operation to obtain the value of storageClusterId. Step 2: Obtain the OSS cluster ID Specify the value of storageClusterId obtained in Step 1 as the value of ossClusterId and call the DescribeOssCluster operation to obtain the corresponding OSS cluster ID. Step 3: Obtain the data points of metrics Specify the value of ossClusterId obtained in Step 2 as the value of entiryId and set the metrics parameter to qps1 and qps2. Then, call the DescribeMetrics operation to obtain the data points of qps1 and qps2 metrics.
+Queries metric data. Metric types STORAGE_CLUSTER STORAGE_CLUSTER: metrics related to storage clusters. To query the metric data of a storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeStorageClusters operation to obtain the ID of the storage cluster. BLOCK_CLUSTER BLOCK_CLUSTER: metrics related to block storage clusters. To query the metric data of a block storage cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeBlockClusters operation to obtain the ID of the block storage cluster. OSS_CLUSTER OSS_CLUSTER: metrics related to Object Storage Service (OSS) clusters. To query the metric data of an OSS cluster, you must obtain the cluster ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeOssCluster operation to obtain the ID of the OSS cluster. HOST HOST: metrics related to hosts. To query the metric data of a host, you must obtain the host ID, specify the ID as the value of entityId, and then call the DescribeMetrics operation. You can call the DescribeHosts operation to obtain the ID of the host. OSS_BUCKET OSS_BUCKET: metrics related to OSS buckets. To query the metric data of an OSS bucket, you can call the DescribeMetrics operation and set the entityId parameter to oss_bucket and the Tags parameter to the name of the bucket. You can call the ListBucket operation to obtain the name of the bucket. You want to obtain the data points of the qps1 and qps2 metrics of an OSS cluster. You can perform the following steps to obtain the metric data points: Step 1: Obtain the storage cluster ID Call the DescribeStorageClusters operation to obtain the value of storageClusterId. Step 2: Obtain the OSS cluster ID Specify the value of storageClusterId obtained in Step 1 as the value of ossClusterId and call the DescribeOssCluster operation to obtain the corresponding OSS cluster ID. Step 3: Obtain the data points of metrics Specify the value of ossClusterId obtained in Step 2 as the value of entiryId and set the metrics parameter to qps1 and qps2. Then, call the DescribeMetrics operation to obtain the data points of qps1 and qps2 metrics.
 
 **Request headers**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| OpsProduc t | Strin g | Hea der | No |   |   |
+
 **Request parameters**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | entityId | Strin g | Body | No | oc- 0000266w2des2hjxvno4 | The ID of the entity whose metric information you want to query. Supported entity types: STORAGE CLUSTER: _ storage cluster. BLOCK CLUSTER: block _ storage cluster. OSS CLUSTER: OSS _ cluster. HOST: host. To query the metric information of an OSS bucket, set this parameter to oss bucket _ and specify the bucket name in the Tags parameter. |
 |---|---|---|---|---|---|
@@ -12224,17 +13579,50 @@ OSS_CLUSTER: metrics related to Object Storage Service (OSS) clusters. To query 
 |---|---|---|---|---|---|
 | tags | List | Body | No | [{"key":"bucket","value":" aes202308281511"}] | The tag key-value pair of the bucket whose metric information you want to query. You need to specify this parameter only for metrics of the OSS BUCKET type. _ Example: {"key":"bucket","value":" aes202308281511"}. This example indicates that you want to query the metric information of the bucket whose tag value is aes202308281511. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the call was successful. Valid values: true and false. |
-
-**Response parameters**
 
 | requestId | String | 2b88c1d1-dbcd- 4204-b0ea- ed768a7ef863 | The request ID. |
 |---|---|---|---|
 | code | String | 200 | The returned HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | message | String | successful | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 | body | String | [{\"columns\": [\"time\", \"value\"],\"name\": \"sync in intranet _ _ _ recv\",\"values\": [[1692938670000, 0.0], [1692938680000, 0.0], [1692938690000, 0.0], [1692938700000, 0.0]] }, {\"columns\": [\"time\", \"value\"],\"name\": \"sync in intranet _ _ _ send\", \"values\": [[1692938670000, 0.0], [1692938680000, 0.0], [1692938690000, 0.0], [1692938700000, 0.0], [1692938710000, 0.0]]}] | The metric information. The value is a JSON string that contains the following fields: name, columns, and values. name The metric name. columns The returned metric data. - time: the time when the data point was collected. -value: the data point of the metric. values The array of the values field corresponds to the array of the columns field. For example, the [1692938670000, 0.0] array can be converted to the {"time": 1692938670,000, "value": 0.0} object. |
+
+**Examples**
+
+Sample requests `{`
+
+```json
+ "_tag": "default",
+ "entityId": "oc-0000266w2des2hjxvno4",
+ "startTs": 1693185016323,
+ "endTs": 1693188616323,
+ "metrics": "sync_in_intranet_recv,sync_in_intranet_send",
+ "tags": [],
+ "resolution": 400
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
+    "code": "200",
+    "success": true,
+    "requestId": "a3ff0f3d-bff6-4b29-8e27-d05aae23f069",
+    "message": "successful",
+    "body": "[{\"columns\": [\"time\", \"value\"],\"name\":
+\"sync_in_intranet_recv\",\"values\": [[1692938670000, 0.0],[1692938680000, 0.0],[16929 38690000, 0.0],[1692938700000, 0.0]] }, {\"columns\": [\"time\", \"value\"],\"name\":\"sync_in_intranet_send\", \"values\": [[1692938670000, 0.0],[16929 38680000, 0.0],[1692938690000, 0.0], [1692938700000, 0.0],[1692938710000, 0.0]]}]"
+```
+
+`}`
+
+**Metrics**
+
+Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER, BLOCK_CLUSTER, HOST, and OSS_BUCKET.
+
+**HOST**
 
 | Description | Metric |
 |---|---|
@@ -12244,36 +13632,6 @@ OSS_CLUSTER: metrics related to Object Storage Service (OSS) clusters. To query 
 | Average loads over the previous 5 minutes | host load5 avg _ _ |
 | Average loads over the previous 15 minutes | host load15 avg _ _ |
 
-Sample requests
-
-```json
-{
- "_tag": "default",
- "entityId": "oc-0000266w2des2hjxvno4",
- "startTs": 1693185016323,
- "endTs": 1693188616323,
- "metrics": "sync_in_intranet_recv,sync_in_intranet_send",
- "tags": [],
- "resolution": 400
-}
-```
-
-Sample success responses `JSON` format
-
-```json
-{
-    "code": "200",
-    "success": true,
-    "requestId": "a3ff0f3d-bff6-4b29-8e27-d05aae23f069",
-    "message": "successful",
-    "body": "[{\"columns\": [\"time\", \"value\"],\"name\":
-\"sync_in_intranet_recv\",\"values\": [[1692938670000, 0.0],[1692938680000, 0.0],[16929 38690000, 0.0],[1692938700000, 0.0]] }, {\"columns\": [\"time\", \"value\"],\"name\":\"sync_in_intranet_send\", \"values\": [[1692938670000, 0.0],[16929 38680000, 0.0],[1692938690000, 0.0], [1692938700000, 0.0],[1692938710000, 0.0]]}]" }
-```
-
-Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER, BLOCK_CLUSTER, HOST, and OSS_BUCKET.
-
-**HOST**
-
 | iops | host iops _ |
 |---|---|
 | Outbound traffic | host traffic out _ _ |
@@ -12281,6 +13639,8 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | iops | host iops _ |
 | Offset between the time of the host and the time of the NTP server. Unit: ms. | host ntp offset _ _ |
 | NTP server synchronization status. 0 indicates normal. | host ntp sync _ _ |
+
+**STORAGE_CLUSTER**
 
 | Description | Metric |
 |---|---|
@@ -12291,17 +13651,23 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | Average loads over the previous 15 minutes | cluster load15 avg _ _ |
 | Disk IOPS | cluster disk iops _ _ |
 
-| Description | Metric |
-|---|---|
-| QPSI(PUT/POST/DELETE) | qps1 |
-| QPSII(GET/Head) | qps2 |
+**OSS_CLUSTER**
 
 **OSS cluster QPS**
 
 | Description | Metric |
 |---|---|
+| QPSI(PUT/POST/DELETE) | qps1 |
+| QPSII(GET/Head) | qps2 |
+
+**OSS cluster bandwidth**
+
+| Description | Metric |
+|---|---|
 | Inbound traffic over the internal network | private net in traffic _ _ _ |
 | Outbound traffic over the internal network | private net out traffic _ _ _ |
+
+**OSS management bandwidth**
 
 | Description | Metric |
 |---|---|
@@ -12318,13 +13684,11 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | Outbound VPC traffic | vpc out _ |
 | Outbound traffic of synchronization requests over the Internet | sync out _ |
 
-**OSS cluster bandwidth**
-
-**OSS management bandwidth**
-
 | Outbound traffic of synchronization requests over the internal network | sync in intranet send _ _ _ |
 |---|---|
 | Outbound QoS | qos bw out _ _ |
+
+**QPS**
 
 | Description | Metric |
 |---|---|
@@ -12343,8 +13707,6 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | put object(0~100KB) _ | small2 put object count _ _ _ |
 | put object(100~200KB) _ | small1 put object count _ _ _ |
 | put object(200~1MB) _ | small put object count _ _ _ |
-
-**QPS**
 
 | put object(1MB~) _ | big put object count _ _ _ |
 |---|---|
@@ -12367,6 +13729,8 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | img process(200~1MB) _ | small img process count _ _ _ |
 | img process(1MB~) _ | big img process count _ _ _ |
 
+**Storage capacity**
+
 | Description | Metric |
 |---|---|
 | Archive storage capacity | ar real storage _ _ |
@@ -12380,6 +13744,8 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | Total storage capacity | storage quota _ |
 | Storage capacity increment | storage quota inc _ _ |
 
+**Latency**
+
 | Description | Metric |
 |---|---|
 | avg sl put(0~100KB) _ _ | small2 put object sl _ _ _ |
@@ -12388,8 +13754,6 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | avg sl put(1MB~) _ _ | big put object sl _ _ _ |
 | max sl put(0~100KB) _ _ | max small2 put object sl _ _ _ _ |
 | max sl put(100~200KB) _ _ | max small1 put object sl _ _ _ _ |
-
-**Latency**
 
 | max sl put(200~1MB) _ _ | max small put object sl _ _ _ _ |
 |---|---|
@@ -12509,19 +13873,19 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | max rl img(200~1MB) _ _ | max small img process request latency _ _ _ _ _ |
 | max rl img(1MB~) _ _ | max big img process request latency _ _ _ _ _ |
 
+**SLA**
+
 | Description | Metric |
 |---|---|
 | Standard storage SLA | sla |
+
+**HTTP status codes**
 
 | Description | Metric |
 |---|---|
 | error 5xx _ | error 5xx _ |
 | error 503 _ | error 503 _ |
 | error 403 _ | error 403 _ |
-
-**SLA**
-
-**HTTP status codes**
 
 | error 404 _ | error 404 _ |
 |---|---|
@@ -12531,30 +13895,38 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | success 3xx _ | success 3xx _ |
 | sync in5xx count _ _ | sync in5xx count _ _ |
 
+**BLOCK_CLUSTER**
+
+**Capacity**
+
 | Description | Metric |
 |---|---|
 | Used logical space | cluster total sale _ _ |
 | Used physical space | cluster total pangu usage _ _ _ |
 | Total physical space | cluster total _ |
 
+**Disks and snapshots**
+
 | Description | Metric |
 |---|---|
 | Number of disks | device total _ |
 | Number of snapshots | snapshot total _ |
+
+**Total IOPS of block storage clusters**
 
 | Description | Metric |
 |---|---|
 | Read IOPS | read sum iops _ _ |
 | Write IOPS | write sum iops _ _ |
 
-**Disks and snapshots**
-
-**Total IOPS of block storage clusters**
+**Total throughput of block storage clusters**
 
 | Description | Metric |
 |---|---|
 | Read throughput | read sum bps _ _ |
 | Write throughput | write sum bps _ _ |
+
+**Cluster monitoring**
 
 | Description | Metric |
 |---|---|
@@ -12565,58 +13937,56 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | Average loads over the previous 15 minutes | cluster load15 avg _ _ |
 | Disk IOPS | cluster disk iops _ _ |
 
+**Average latency**
+
 | Description | Metric |
 |---|---|
 | Read latency | read latency _ |
 | Write latency | write latency _ |
+
+**Average latency of Netcat commands**
 
 | Description | Metric |
 |---|---|
 | Read latency of Netcat commands | nc read latency _ _ |
 | Write latency of Netcat commands | nc write latency _ _ |
 
-**Total throughput of block storage clusters**
-
-**Cluster monitoring**
-
-**Average latency**
-
-**Average latency of Netcat commands**
+**Read/write IOPS of Netcat commands**
 
 | Description | Metric |
 |---|---|
 | Read IOPS of Netcat commands | nc read iops _ _ |
 | Write IOPS of Netcat commands | nc write iops _ _ |
 
+**Throughput of Netcat commands**
+
 | Description | Metric |
 |---|---|
 | Read throughput of Netcat commands | nc read bps _ _ |
 | Write throughput of Netcat commands | nc write bps _ _ |
+
+**Average disk latency**
 
 | Description | Metric |
 |---|---|
 | Disk read latency | device read latency _ _ |
 | Disk write latency | device write latency _ _ |
 
+**Disk read/write IOPS**
+
 | Description | Metric |
 |---|---|
 | Disk read IOPS | device read iops _ _ |
 | Disk write IOPS | device write iops _ _ |
+
+**Disk throughput**
 
 | Description | Metric |
 |---|---|
 | Disk read throughput | device read bps _ _ |
 | Disk write throughput | device write bps _ _ |
 
-**Read/write IOPS of Netcat commands**
-
-**Throughput of Netcat commands**
-
-**Average disk latency**
-
-**Disk read/write IOPS**
-
-**Disk throughput**
+**OSS_BUCKET**
 
 | Description | Metric |
 |---|---|
@@ -12636,8 +14006,6 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | Inbound QoS | bucket qos bw in _ _ _ |
 | Outbound QoS | bucket qos bw out _ _ _ |
 | Total number of requests | bucket total request _ _ |
-
-**OSS_BUCKET**
 
 | QPS throttling | bucket qos qps _ _ |
 |---|---|
@@ -12823,17 +14191,7 @@ Metrics are classified into the following types: STORAGE_CLUSTER, BLOCK_CLUSTER,
 | Volume of written data | bucket delta add _ _ |
 | Volume of deleted data | bucket delta del _ _ |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| storageCluster s | Array |  | The storage clusters. |
-| - storageService s | Array |  | The service information of the storage cluster. |
-| --tags | Array |  | The information about the tag. |
-| ---id | Long | 29 | The tag ID. |
-| ---tagName | String | io16 | The tag name. |
-| ---tagJsonInfo | String | {\"closeable\":false ,\"color\":\"purple\", \"tagKey\":\"ioType \"} | The tag configurations. closeable: indicates whether a tag was used. color: the color of the tag. tagKey: the tag key, which is globally unique. |
-| ---gmtCreate | Long | 1691395655 | The time when the tag was created. |
-
-##### DescribeStorageClusters
+##### 7.3.2.5 DescribeStorageClusters
 
 Queries a list of storage clusters.
 
@@ -12843,13 +14201,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Response parameters**
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| storageCluster s | Array |   | The storage clusters. |
+| - storageService s | Array |   | The service information of the storage cluster. |
+| --tags | Array |   | The information about the tag. |
+| ---id | Long | 29 | The tag ID. |
+| ---tagName | String | io16 | The tag name. |
+| ---tagJsonInfo | String | {\"closeable\":false ,\"color\":\"purple\", \"tagKey\":\"ioType \"} | The tag configurations. closeable: indicates whether a tag was used. color: the color of the tag. tagKey: the tag key, which is globally unique. |
+| ---gmtCreate | Long | 1691395655 | The time when the tag was created. |
+
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ---gmtModify | Long | 1691395655 | The time when the tag was last modified. |
-| --service | String |  | The name of the service. |
+| --service | String |   | The name of the service. |
 | -- isPluginServic e | Boolean | false | Indicates whether the storage cluster can be scaled. |
 | --isManaged | Boolean | true | Indicates whether the storage cluster is a primary cluster. |
 | - storageCluster Id | String | sc- 0000266w2des2fk qw7r5 | The storage cluster ID. |
@@ -12864,7 +14232,7 @@ This operation does not have operation-specific request headers and uses only co
 | -totalFreeSize | Long | 564899868573696 | The used capacity. Unit: bytes. |
 | - totalChunkNu mber | Long | 10 | The total number of snapshots. |
 
-|  |  |  | Apsara Uni-manager Operations |
+|   |   |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -12885,15 +14253,20 @@ This operation does not have operation-specific request headers and uses only co
 | code | String | 200 | The returned HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | message | String | successful | The returned message. |
 
-`JSON` format
+**Examples**
+
+`JSON` format `{`
 
 ```json
-{
     "code": "200",
     "message": "successful",
     "requestId": "75dcfee2-57f2-4f9a-8d2a-57480f244823",
     "storageClusters": [
-        {
+```
+
+`{`
+
+```json
             "abnormalChunkServerNumber": 0,
             "abnormalDiskNumber": 0,
             "abnormalHostNumber": 0,
@@ -12911,20 +14284,23 @@ This operation does not have operation-specific request headers and uses only co
             products: CDS:3.16
 ```
 
-,
+`,`
 
 ```json
             "refreshErrors": "[]",
             "storageClusterId": "sc-0009itmtcei3le3zs43z",
             "storageServices": [
-                {
+```
+
+`{`
+
+```json
                     "isManaged": true,
                     "isPluginService": true,
                     "service": "cpfs"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "totalChunkNumber": 0,
@@ -12938,8 +14314,11 @@ This operation does not have operation-specific request headers and uses only co
             "updatedTime": 1695188782,
             "zoneInfo": "
 {\"isMasterZone\":\"true\",\"oppositeCluster\":\"\",\"zone\":\"cn-wulan-env38-amtest380 01-a\"}"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "abnormalChunkServerNumber": 0,
             "abnormalDiskNumber": 0,
             "abnormalHostNumber": 0,
@@ -12954,14 +14333,17 @@ This operation does not have operation-specific request headers and uses only co
             "refreshErrors": "[]",
             "storageClusterId": "sc-0009itmtcei3le45xoie",
             "storageServices": [
-                {
+```
+
+`{`
+
+```json
                     "isManaged": true,
                     "isPluginService": true,
                     "service": "cpfs"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "totalChunkNumber": 0,
@@ -12979,10 +14361,13 @@ This operation does not have operation-specific request headers and uses only co
 
 `pp`
 
-```json
+```
 01-a\"}"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "abnormalChunkServerNumber": 0,
             "abnormalDiskNumber": 0,
             "abnormalHostNumber": 0,
@@ -12996,14 +14381,17 @@ This operation does not have operation-specific request headers and uses only co
             "refreshErrors": "[]",
             "storageClusterId": "sc-0009itmtcei3le42sqol",
             "storageServices": [
-                {
+```
+
+`{`
+
+```json
                     "isManaged": true,
                     "isPluginService": true,
                     "service": "cpfs"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "totalChunkNumber": 0,
@@ -13017,8 +14405,11 @@ This operation does not have operation-specific request headers and uses only co
             "updatedTime": 1695188800,
             "zoneInfo": "
 {\"isMasterZone\":\"true\",\"oppositeCluster\":\"\",\"zone\":\"cn-wulan-env38-amtest380 01-a\"}"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "abnormalChunkServerNumber": 0,
             "abnormalDiskNumber": 0,
             "abnormalHostNumber": 0,
@@ -13033,7 +14424,11 @@ This operation does not have operation-specific request headers and uses only co
             "refreshErrors": "[]",
             "storageClusterId": "sc-0009itmtcei3le46tifx",
             "storageServices": [
-                {
+```
+
+`{`
+
+```json
                     "isManaged": true,
                     "isPluginService": false,
                     "service": "ebs",
@@ -13041,29 +14436,29 @@ This operation does not have operation-specific request headers and uses only co
 
 ```json
                     "tags": [
-                        {
+```
+
+`{`
+
+```json
                             "gmtCreate": 1693816339,
                             "gmtModify": 1693816339,
                             "id": 5,
                             "tagJsonInfo": "
 {\"closeable\":false,\"color\":\"purple\",\"tagKey\":\"ioType\"}",
                             "tagName": "io16"
-                        }
 ```
 
-]
+`}` `]` `},` `{`
 
 ```json
-                },
-                {
                     "isManaged": true,
                     "isPluginService": false,
                     "service": "oss",
                     "tags": []
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "totalChunkNumber": 22116432,
@@ -13077,17 +14472,15 @@ This operation does not have operation-specific request headers and uses only co
             "updatedTime": 1695188801,
             "zoneInfo": "
 {\"isMasterZone\":\"true\",\"myClusterName\":\"CdsEbsOssHybridCluster-A-20221210-0068\" ,\"oppositeCluster\":\"\",\"zone\":\"cn-wulan-env38-amtest38001-a\"}"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "success": true
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <code>200</code> <message>successful</message> <requestId>75dcfee2-57f2-4f9a-8d2a-57480f244823</requestId> <storageClusters>
@@ -13110,7 +14503,7 @@ This operation does not have operation-specific request headers and uses only co
 stoageCuste dsc0009ttce3e3s3 /stoageCuste
 ```
 
-d
+`d`
 
 ```xml
  <storageServices>
@@ -13216,14 +14609,6 @@ d
   </tags>
 ```
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| OpsProduc t | Strin g | Hea der | No |  |  |
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| storageClu sterId | Strin g | Body | No | sc- 000ekx55q5me4udn21jp | The block storage cluster ID. |
-
 ```xml
  </storageServices>
  <storageServices>
@@ -13245,19 +14630,27 @@ d
 {&quot;isMasterZone&quot;:&quot;true&quot;,&quot;myClusterName&quot;:&quot;CdsEbsOssHybri luster-A-20221210- 0068&quot;,&quot;oppositeCluster&quot;:&quot;&quot;,&quot;zone&quot;:&quot;cn-wulan-env 38-amtest38001-a&quot;}</zoneInfo> </storageClusters> <success>true</success>
 ```
 
-##### DescribeBlockClusters
+##### 7.3.2.6 DescribeBlockClusters
 
 This topic describes the calls of DescribeBlockClusters interface to query the information about a block storage cluster based on the cluster ID.
 
 **Request headers**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| OpsProduc t | Strin g | Hea der | No |   |   |
+
 **Request parameters**
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| storageClu sterId | Strin g | Body | No | sc- 000ekx55q5me4udn21jp | The block storage cluster ID. |
 
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| blockClusters | Array |  |  |
+| blockClusters | Array |   |   |
 | -blockClusterId | String | bc- 000021owan7tk5o sxnf0 | The block storage cluster ID. It contains main fields in response parameters. |
 | -clusterName | String | ECS-IO7-A-00a4 | The block storage cluster name. |
 | - clusterAliasNa me | String | ECS-IO7-A-00a4 | The block storage cluster alias. |
@@ -13281,18 +14674,17 @@ This topic describes the calls of DescribeBlockClusters interface to query the i
 | code | String | 200 | The returned HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. |
 | message | String | successful | The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned. |
 
-Example for request
+**Examples**
+
+Example for request `{`
 
 ```json
-{
     "storageClusterId":"sc-0000266w2des2hk08oj6"
-}
 ```
 
-Example for successful response `JSON` format
+`}` Example for successful response `JSON` format `{`
 
 ```json
-{
  "code": "200",
  "data": {
   "blockClusters": [{
@@ -13318,17 +14710,22 @@ Example for successful response `JSON` format
   "success": true,
   "requestId": "f893bad3-66f3-4b84-9411-85375d3429b0",
   "message": "successful"
- },
+```
+
+`},`
+
+```json
  "cost": 27,
  "apiCost": 25,
  "eagleEyeTraceId": "0ad414c416932924601235587e0033",
  "successResponse": true
-}
 ```
 
-#### EBS O&M
+`}`
 
-##### ListOnLineDiskInfo
+#### 7.3.3 EBS O&M
+
+##### 7.3.3.1 ListOnLineDiskInfo
 
 Queries all online disks of a cluster.
 
@@ -13342,6 +14739,8 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | cluster | Strin g | Query | Yes | ECS-IO8River-A-00b2 | The cluster name. You can specify only one cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | status | String | SUCCESS | Indicates whether the request was successful. |
@@ -13354,7 +14753,7 @@ This operation does not have operation-specific request headers and uses only co
 | success | Boolean | true | Indicates whether the request was successful. |
 | data | Map | {"total":5,"list": [{"cluster":"ECS- IO8River-A- 00b2","disk names _ ":["d- y2e01j7qb7us8m9 usvfa","d- y2e0271xnmnx8ro op5mr","d- y2e01j7qb7ussgj1k qp4","d- y2e01j7qb7uscmb 40vpu","d- y2e0271xnmnuq85 mmhgq"]}]} | The disk information. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -13364,8 +14763,13 @@ http(s)://[Endpoint]/?Action=ops.api.aso_slalink_pgmon.ListOnLineDiskInfo.2024-0
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0acd18b217343308601007372d0087",
  "code":"200",
  "responseVersion":"v1",
@@ -13373,7 +14777,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "data":{
   "total":5,
   "list":[
-   {
+```
+
+`{`
+
+```json
     "cluster":"ECS-IO8River-A-00b2",
     "disk_names":[
      "d-y2e01j7qb7us8m9usvfa",
@@ -13383,25 +14791,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
      "d-y2e0271xnmnuq85mmhgq"
 ```
 
-]
-
-```
-   }
-```
-
-]
+`]` `}` `]` `},`
 
 ```json
- },
  "serviceRole":"aso-slalink.pgmon#",
  "success":true,
  "requestURI":"/slalink/ebs/ops/ListOnLineDiskInfo?cluster=ECS-IO8River-A-00b2&RegionId
 =cn-wulan-envxxx-d01",
  "status":"SUCCESS"
-}
 ```
 
-##### QueryDiskInfo
+`}`
+
+##### 7.3.3.2 QueryDiskInfo
 
 Queries the cluster to which a disk belongs by disk name.
 
@@ -13416,6 +14818,10 @@ This operation does not have operation-specific request headers and uses only co
 | query typ _ e | Strin g | Query | Yes | disk name _ | The field by which the cluster is queried. Only disk name is supported. _ |
 | query val _ ue | Strin g | Query | Yes | d- ob601gxfrign0e01izlq,d- ob601gxfrign0a1zavne | The value of the disk name field. You can _ specify a maximum of 200 disk names in a single request. |
 
+Only parameters whose Content-Type is in the application/json format can be parsed.
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | status | String | SUCCESS | Indicates whether the request was successful. |
@@ -13427,13 +14833,11 @@ This operation does not have operation-specific request headers and uses only co
 | cost | Integer | 5 | The time consumed by the request. |
 | success | Boolean | true | Indicates whether the request was successful. |
 
-Only parameters whose Content-Type is in the application/json format can be parsed.
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | Map | {"total":2,"list": [{"disk name":"d- _ ob601gxfrign0a1za vne","storage clust _ er":"CdsEbsSsdClu ster-A-20241129- 0068"}, {"disk name":"d- _ ob601gxfrign0e01i zlq","storage clust _ er":"CdsEbsSsdClu ster-A-20241129- 0068"}]} | The cluster to which the disk belongs. |
+
+**Examples**
 
 Sample requests
 
@@ -13443,8 +14847,13 @@ http(s)://[Endpoint]/?Action=ops.api.aso_slalink_pgmon.QueryDiskInfo.2024-10-12 
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "eagleEyeTraceId":"0ad4147a17361323296631879d01a9",
  "code":"200",
  "responseVersion":"v1",
@@ -13452,49 +14861,40 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "data":{
   "total":2,
   "list":[
-   {
-    "disk_name":"d-ob601gxfrign0a1zavne",
-    "storage_cluster":"CdsEbsSsdCluster-A-20241129-0068"
-   },
-   {
-    "disk_name":"d-ob601gxfrign0e01izlq",
-    "storage_cluster":"CdsEbsSsdCluster-A-20241129-0068"
-   }
 ```
 
-]
+`{`
 
 ```json
- },
+    "disk_name":"d-ob601gxfrign0a1zavne",
+    "storage_cluster":"CdsEbsSsdCluster-A-20241129-0068"
+```
+
+`},` `{`
+
+```json
+    "disk_name":"d-ob601gxfrign0e01izlq",
+    "storage_cluster":"CdsEbsSsdCluster-A-20241129-0068"
+```
+
+`}` `]` `},`
+
+```json
  "serviceRole":"aso-slalink.pgmon#",
  "success":true,
  "requestURI":"/slalink/ebs/ops/QueryDiskInfo?RegionId=cn-wulan-envxxx-d01",
  "status":"SUCCESS"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Engine | Strin g | Query | Yes | mysql | The database engine of the instance. |
-| CpuLabel | Strin g | Query | No | intel | The chip type. |
-| IsolateHos t | Strin g | Query | No | 0 | The isolation level. |
-| RequestId | Strin g | Query | Yes | 0ab4107a1t3wq6a6aaq 73561d0a106144 | The request ID. |
-| Action | Strin g | Query | No | DescribeHostInfoByDbTy pe | The operation that you want to perform. |
+`}`
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Code | String | 200 | The returned HTTP status code. |
-| Message | String | successful | The returned message that indicates whether the request is successful. |
-| Data | Struct |  | The response data. |
-| Items | Array of Items |  | The returned data. |
-
-### ApsaraDB Operations and
+### 7.4 ApsaraDB Operations and Maintenance System
 
 **Maintenance System**
 
-#### RDS O&M
+#### 7.4.1 RDS O&M
 
-##### DescribeHostInfoByDbType
+##### 7.4.1.1 DescribeHostInfoByDbType
 
 Queries host information based on the specified database engine.
 
@@ -13504,9 +14904,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Engine | Strin g | Query | Yes | mysql | The database engine of the instance. |
+| CpuLabel | Strin g | Query | No | intel | The chip type. |
+| IsolateHos t | Strin g | Query | No | 0 | The isolation level. |
+| RequestId | Strin g | Query | Yes | 0ab4107a1t3wq6a6aaq 73561d0a106144 | The request ID. |
+| Action | Strin g | Query | No | DescribeHostInfoByDbTy pe | The operation that you want to perform. |
+
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Code | String | 200 | The returned HTTP status code. |
+| Message | String | successful | The returned message that indicates whether the request is successful. |
+| Data | Struct |   | The response data. |
+| Items | Array of Items |   | The returned data. |
+
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -13529,7 +14944,7 @@ This operation does not have operation-specific request headers and uses only co
 | diskSizeUsedS cale | Integer | 3412795 | The disk size available for use. |
 | diskSizeSold | Integer | 4817920 | The disk size that is sold. |
 
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | dataSpaceUse d | Integer | 38427 | The used disk size. |
@@ -13547,6 +14962,8 @@ This operation does not have operation-specific request headers and uses only co
 | requestId | String | "" | The request ID. |
 | traceId | String | "" | The trace ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -13555,8 +14972,13 @@ http(s)://[Endpoint]/?Action=ops.api.rds.DescribeHostInfoByDbType.2023-08-17 &En
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "summary":"""",
  "traceId":"""",
  "exceptionStack":false,
@@ -13591,31 +15013,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "comment":"Available now.",
    "cabinet":"a36b041",
    "status":1
-  }
- },
- "Code":"200"
-}
 ```
 
-##### DescribeCustInsSlaveInfo
+`}` `},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| instanceN ame | Strin g | Query | Yes | dds- 3jl17fbba9336e74.2023 0816145326 | The name of the instance. |
-| RequestId | Strin g | Query | Yes | 0ab4107a1t3wq6a6aaq 73561d0a106145 | The request ID. |
-| Action | Strin g | Query | No | DescribeCustInsSlaveInf o | The operation that you want to perform. |
+```json
+ "Code":"200"
+```
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Code | String | 200 | The returned HTTP status code. |
-| Message | String | successful | The returned message that indicates whether the request is successful. |
-| Data | Struct |  | The response data. |
-| describeCustIn sSlaveInfo | Array of describeCustIn sSlaveInfo |  | The returned data. |
-| hostId | String | 21 | The ID of the secondary database. |
-| ip | String | 10.10.1.1 | The IP address of the secondary database. |
-| port | String | 3005 | The port of the secondary database. |
-| summary | String | "" | The summary. |
-| exceptionStac k | Boolean | "" | The error stack. |
+`}`
+
+##### 7.4.1.2 DescribeCustInsSlaveInfo
 
 Queries the connection information about the secondary database based on the specified instance name.
 
@@ -13625,15 +15033,35 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| instanceN ame | Strin g | Query | Yes | dds- 3jl17fbba9336e74.2023 0816145326 | The name of the instance. |
+| RequestId | Strin g | Query | Yes | 0ab4107a1t3wq6a6aaq 73561d0a106145 | The request ID. |
+| Action | Strin g | Query | No | DescribeCustInsSlaveInf o | The operation that you want to perform. |
+
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Code | String | 200 | The returned HTTP status code. |
+| Message | String | successful | The returned message that indicates whether the request is successful. |
+| Data | Struct |   | The response data. |
+| describeCustIn sSlaveInfo | Array of describeCustIn sSlaveInfo |   | The returned data. |
+| hostId | String | 21 | The ID of the secondary database. |
+| ip | String | 10.10.1.1 | The IP address of the secondary database. |
+| port | String | 3005 | The port of the secondary database. |
+| summary | String | "" | The summary. |
+| exceptionStac k | Boolean | "" | The error stack. |
+
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | "" | The request ID. |
 | traceId | String | "" | The trace ID. |
+
+**Examples**
 
 Sample requests
 
@@ -13643,24 +15071,34 @@ http(s)://[Endpoint]/?Action=ops.api.rds.DescribeCustInsSlaveInfo.2023-08-17 &in
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "summary":"""",
  "traceId":"""",
  "exceptionStack":false,
  "Message":"successful",
  "requestId":"""",
  "Data":{
+  "describeCustInsSlaveInfo":{
    "port":"3005",
    "ip":"10.10.1.1",
    "hostId":"21"
-  }
- },
- "Code":"200"
-}
 ```
 
-##### DescribeResourceInventory
+`}` `},`
+
+```json
+ "Code":"200"
+```
+
+`}`
+
+##### 7.4.1.3 DescribeResourceInventory
 
 Obtains the resource information of the specified subdomain name.
 
@@ -13677,22 +15115,22 @@ This operation does not have operation-specific request headers and uses only co
 | SubDomai n | Strin g | Query | Yes | cn-XXX-XXX-XXX | The subdomain name. |
 | Action | Strin g | Query | No | DescribeResourceInvent ory | The operation that you want to perform. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | 200 | The returned HTTP status code. |
 | Message | String | successful | The returned message that indicates whether the request is successful. |
-| Data | Struct |  | The response data. |
+| Data | Struct |   | The response data. |
 | SubDomain | String | cn-XXX-XXX-XXX | The subdomain name. |
-| Items | Array of Items |  | The returned data. |
+| Items | Array of Items |   | The returned data. |
 | Engine | String | Redis | The database engine of the instance. |
 | HostType | String | 0 | The type of the host. 0: SSD 1: SATA 3: HyBird |
 | ResourceType | String | cpu | The type of the resource. Valid values: memory, disk, and cpu. |
 | ResourceUnit | String | core | The unit of the resource type. |
 | ResourceTotal | String | 160 | The total number of resources. |
 
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -13705,6 +15143,8 @@ This operation does not have operation-specific request headers and uses only co
 | requestId | String | "" | The request ID. |
 | traceId | String | "" | The trace ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -13713,15 +15153,13 @@ http(s)://[Endpoint]/?Action=ops.api.rds.DescribeResourceInventory.2023-08-17 &R
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Engine | Strin g | Query | No | mysql | The database engine of the instance. |
-| RequestId | Strin g | Query | Yes | 0ab4107a1t3wq6a6aaq 73561d0a106147 | The request ID. |
-| SubDomai n | Strin g | Query | Yes | cn-XXX-XXX-XXX | The subdomain name. |
-| Action | Strin g | Query | No | DescribeComboInventor y | The operation that you want to perform. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "summary":"""",
  "traceId":"""",
  "exceptionStack":false,
@@ -13738,13 +15176,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ResourceType":"cpu",
    "Engine":"Redis",
    "ResourceSoldCeiling":"144"
-  }
- },
- "Code":"200"
-}
 ```
 
-##### DescribeComboInventory
+`}` `},`
+
+```json
+ "Code":"200"
+```
+
+`}`
+
+##### 7.4.1.4 DescribeComboInventory
 
 Queries the inventory of a resource combination.
 
@@ -13754,15 +15196,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Engine | Strin g | Query | No | mysql | The database engine of the instance. |
+| RequestId | Strin g | Query | Yes | 0ab4107a1t3wq6a6aaq 73561d0a106147 | The request ID. |
+| SubDomai n | Strin g | Query | Yes | cn-XXX-XXX-XXX | The subdomain name. |
+| Action | Strin g | Query | No | DescribeComboInventor y | The operation that you want to perform. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | 200 | The returned HTTP status code. |
 | Message | String | successful | The returned message that indicates whether the request is successful. |
-| Data | Struct |  | The response data. |
+| Data | Struct |   | The response data. |
 | SubDomain | String | cn-XXX-XXX-XXX | The subdomain name. |
-| Items | Array of Items |  | The returned data. |
+| Items | Array of Items |   | The returned data. |
 | Engine | String | redis | The database engine of the instance. |
 | EngineVersion | String | 2.8 | The version of the database engine. |
 | HostType | String | 0 | The type of the host. 0: SSD 1: SATA 3: HyBird |
@@ -13780,6 +15229,8 @@ This operation does not have operation-specific request headers and uses only co
 | requestId | String | "" | The request ID. |
 | traceId | String | "" | The trace ID. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -13788,8 +15239,13 @@ http(s)://[Endpoint]/?Action=ops.api.rds.DescribeComboInventory.2023-08-17 &Requ
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "summary":"""",
  "traceId":"""",
  "exceptionStack":false,
@@ -13807,25 +15263,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "CpuCores":3,
    "AvailableCount":0,
    "Engine":"redis"
-  }
- },
- "Code":"200"
-}
 ```
 
-### Disaster Recovery
+`}` `},`
+
+```json
+ "Code":"200"
+```
+
+`}`
+
+### 7.5 Disaster Recovery Management
 
 **Management**
 
-| Status code | Error code | Error message | Scenario |
-|---|---|---|---|
-| 404 | InvalidProduct.Not Found | Cannot find product according to your specified domain. | The Domain is incorrect. The product cannot be found using the specified Domain. |
-| 404 | InvalidApi.NotFoun d | Specified api is not found,please check your url and method. | The API does not exist, or the API is private and the current user is not on the authorization list. |
-| 400 | InvalidProtocol.Ne edSsl | Your request is denied as lack of ssl protect. | The API must use the HTTPS protocol. |
-| 400 | Missing{Paramete rName} | {ParameterName} is mandatory for this action. | A required parameter is missing. {ParameterName} is replaced with the specific parameter name. |
-| 404 | InvalidAccessKeyI d.NotFound | Specified access key is not found. | The AccessKeyId cannot be found. |
-
-#### Important notes
+#### 7.5.1 Important notes
 
 This topic describes important considerations for using the disaster recovery management API.
 
@@ -13837,9 +15289,17 @@ The disaster recovery switchover API is a high-risk operation because it initiat
 
 The ASR primary and secondary data centers support different disaster recovery drill capabilities. When you use an API, you must confirm which data center it is for. You can identify the data center by its API path. For example, the com.aliyuncs.asr_xmops.model.v20250903.ExecuteProductSwitchRequest class sends switchover requests to the primary data center. In the path, asr_xmops represents the primary data center (master), and asr_xsops represents the secondary data center (slave).
 
-#### Error codes
+#### 7.5.2 Error codes
 
 When you call the Automatic Speech Recognition (ASR) API, you may encounter two types of errors: SDK call exceptions and backend service exceptions. If an API request fails, the system returns an error message. These errors are typically caused by incorrect API calls. You can adjust the request parameters based on the error message. The following table describes common SDK exceptions.
+
+| Status code | Error code | Error message | Scenario |
+|---|---|---|---|
+| 404 | InvalidProduct.Not Found | Cannot find product according to your specified domain. | The Domain is incorrect. The product cannot be found using the specified Domain. |
+| 404 | InvalidApi.NotFoun d | Specified api is not found,please check your url and method. | The API does not exist, or the API is private and the current user is not on the authorization list. |
+| 400 | InvalidProtocol.Ne edSsl | Your request is denied as lack of ssl protect. | The API must use the HTTPS protocol. |
+| 400 | Missing{Paramete rName} | {ParameterName} is mandatory for this action. | A required parameter is missing. {ParameterName} is replaced with the specific parameter name. |
+| 404 | InvalidAccessKeyI d.NotFound | Specified access key is not found. | The AccessKeyId cannot be found. |
 
 | 400 | InvalidAccessKeyI d.Inactive | Specified access key is disabled. | The AccessKeyId is disabled. |
 |---|---|---|---|
@@ -13847,19 +15307,19 @@ When you call the Automatic Speech Recognition (ASR) API, you may encounter two 
 | 400 | InvalidTimeStamp. Expired | Specified time stamp or date value is expired. | The timestamp has expired. Make sure the device time is in sync with the server time. The allowed time drift is within 15 minutes. |
 | 413 | PayloadTooLarge | The request payload is too large, the limitation is xxx bytes. | The request body is too large and exceeds the limit (xxx bytes maximum). Reduce the request data size and retry. |
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| requestId | Strin g | Query | Yes | 1759048441762 | The request ID. |
-
 For backend service exceptions, the API returns a response, but the Success field is false. The response contains a specific error code and an error message. Contact the zonedisaster recovery development team with this information to locate and resolve the issue.
 
-#### Primary data center: zone-disaster
+#### 7.5.3 Primary data center: zone-disaster recovery management platform
 
 **recovery management platform**
 
-##### GetProdcutSwitchLogs
+##### 7.5.3.1 GetProdcutSwitchLogs
 
-This API retrieves the switch logs for a product during a drill by calling the ASR API in the primary data center. API description This API retrieves the switch logs for a product during a drill by calling the ASR API in the primary data center. You must provide the requestId of the switch task.
+This API retrieves the switch logs for a product during a drill by calling the ASR API in the primary data center. API description
+
+**Preparations**
+
+This API retrieves the switch logs for a product during a drill by calling the ASR API in the primary data center. You must provide the requestId of the switch task.
 
 **Request headers**
 
@@ -13869,9 +15329,15 @@ This API uses common request headers. No special request headers are required. F
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| requestId | Strin g | Query | Yes | 1759048441762 | The request ID. |
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | productTy pe | Strin g | Query | No | PRODUCT | The product type. Valid values: PRODUCT and FEATURE. |
 | product | Strin g | Query | No | RDS | The product name. |
 | historyInd ex | Integ er | Body | No | 0 | The log index. You do not need to specify this parameter. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -13885,13 +15351,13 @@ This API uses common request headers. No special request headers are required. F
 | actionType | String | SWITCH | The operation type. SWITCH: switch SWITCHBACK: failback |
 | stepName | String | call script _ | The name of the step that is being executed. |
 
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | stepMsg | String | start executing script... | The detailed log information for the step. This includes the status, a list of DBs, and the time consumed. |
 | gmtCreated | Long | 1759112859656 | The UNIX timestamp when the step was created. |
 | gmtModified | Long | 1759112859656 | The UNIX timestamp when the step was last modified. |
+
+**Examples**
 
 Request example
 
@@ -13901,8 +15367,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xm.GetProductSwitchLogs.2025-09-03 &req
 
 Successful response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "actionType":"SWITCH",
@@ -13913,20 +15384,37 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "requestId":"1759112859656",
   "stepMsg":"start executing script...",
   "id":865
- },
- "success":true,
- "message":"SUCCESS"
-}
 ```
 
-##### GetProdcutSwitchProcess
+`},`
 
-This operation retrieves the switch status of a product during a drill by calling the ASR API of the primary data center. API description You must provide the drill plan ID or the request ID of the switch task.
+```json
+ "success":true,
+ "message":"SUCCESS"
+```
+
+`}`
+
+##### 7.5.3.2 GetProdcutSwitchProcess
+
+This operation retrieves the switch status of a product during a drill by calling the ASR API of the primary data center. API description
+
+**Preparations**
+
+You must provide the drill plan ID or the request ID of the switch task.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | planId | Long | Query | Yes | 4 | The ID of the drill plan. |
 | requestId | Strin g | Query | No | 1759048441762 | The request ID. |
+
+**Response parameters**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -13941,15 +15429,7 @@ This operation retrieves the switch status of a product during a drill by callin
 | sourceIdc | String | amtest217 | The name of the source IDC. |
 | destIdc | LIST | amtest218 | The list of destination IDCs. |
 
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -13959,6 +15439,8 @@ This operation uses common request headers. No special request headers are requi
 | tenantProduct s | LIST | [] | The list of products for the tenant. |
 | switchBackInfo | Map | {} | The details of the failback task. |
 | operationSet | Map | {} | The operation information for the drill plan. This parameter is used by the frontend and can be ignored. |
+
+**Examples**
 
 Sample request
 
@@ -13995,11 +15477,29 @@ response: {
 ```json
       "actionType": "SWITCH",
       "sourceIdc": "amtest217"
-    }
-  },
-  "success": true
-}
 ```
+
+`}` `},`
+
+```json
+  "success": true
+```
+
+`}`
+
+##### 7.5.3.3 GetSyncCheckResult
+
+You can call this operation to retrieve all executable drill plans from the ASR API of the primary data center. API description
+
+**Notes**
+
+You can call this operation to retrieve all executable drill plans from the ASR API of the primary data center. The response includes the planId parameter. You can use this parameter to check the status of drill products and perform switches.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14014,17 +15514,7 @@ response: {
 | location | String | "" | The location of the primary service. |
 | centerRegionD ependent | Boolean | true | Indicates whether the service depends on the central region. |
 
-##### GetSyncCheckResult
-
-You can call this operation to retrieve all executable drill plans from the ASR API of the primary data center. API description You can call this operation to retrieve all executable drill plans from the ASR API of the primary data center. The response includes the planId parameter. You can use this parameter to check the status of drill products and perform switches.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
-
-**Response data**
-
-| psara Uni-manag Console | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag Console | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -14036,6 +15526,8 @@ This operation uses common request headers and has no special request headers. F
 | msg | String | "" | The detailed check information. |
 | gmtModified | Long | 1759111881000 | The UNIX timestamp of the last update. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -14044,15 +15536,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xm.GetSyncCheckResult.2025-09-03
 
 Sample response `JSON` format
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| requestId | Strin g | Body | Yes | 1759048441762 | The request ID. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "category":"DATABASE",
@@ -14067,16 +15557,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "disasterRecoveryForm":"MASTER_SLAVE",
    "location":"\"\"",
    "productType":"FEATURE"
-  }
- },
- "success":true,
- "message":"success"
-}
 ```
 
-##### FinishProdcutSwitch
+`}` `},`
 
-This operation ends a product drill in the primary data center. Description Before you call this operation, you must obtain the request ID of the switch task. Then, pass the request ID to the requestId parameter to end the drill.
+```json
+ "success":true,
+ "message":"success"
+```
+
+`}`
+
+##### 7.5.3.4 FinishProdcutSwitch
+
+This operation ends a product drill in the primary data center.
+
+**Preparations**
+
+Before you call this operation, you must obtain the request ID of the switch task. Then, pass the request ID to the requestId parameter to end the drill.
 
 **Request headers**
 
@@ -14084,7 +15582,14 @@ This operation uses only common request headers. For more information, see the c
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| requestId | Strin g | Body | Yes | 1759048441762 | The request ID. |
+
 **Response data**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14092,6 +15597,8 @@ This operation uses only common request headers. For more information, see the c
 | code | String | 200 | The status code. A value of 200 indicates that the call is successful. |
 | message | String | SUCCESS | The response message. |
 | data | Map | {} | The response data. |
+
+**Examples**
 
 Request example
 
@@ -14101,24 +15608,38 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xm.FinishProdcutSwitch.2025-09-03 &requ
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{},
  "success":true,
  "message":"SUCCESS"
-}
 ```
 
-##### ListProductDrillPlan
+`}`
 
-This API retrieves all executable drill plans from the primary data center. Description You can use this API to retrieve all executable drill plans from the primary data center. The response includes the planId parameter. You can use this parameter to check the status of drill products and perform switchovers.
+##### 7.5.3.5 ListProductDrillPlan
+
+This API retrieves all executable drill plans from the primary data center.
+
+**Preparations**
+
+You can use this API to retrieve all executable drill plans from the primary data center. The response includes the planId parameter. You can use this parameter to check the status of drill products and perform switchovers.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
 
 **Response parameters**
+
+**p**
+
+**p**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14139,11 +15660,7 @@ This operation uses common request headers. No special request headers are requi
 | createUser | String | DEFAULT DRILL CR _ _ EATOR | Creator |
 | gmtCreated | Long | 1759048441762 | Creation timestamp. |
 
-**p**
-
-**p**
-
-| psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc |
+| psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -14167,7 +15684,7 @@ This operation uses common request headers. No special request headers are requi
 | products | String | REDIS | The product involved. |
 | idcRole | String | slave | The IDC role is master. |
 
-|  | Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol | e |
+|   | Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -14187,6 +15704,8 @@ This operation uses common request headers. No special request headers are requi
 | status | String | “” | The current status. |
 | scenarioType | String | DEFAULT | The type of the scenario. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -14196,11 +15715,12 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xm.ListProductDrillPlan.2025-09-03
 Sample response `JSON` format
 
 ```
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
+`{` `{`
+
 ```json
-{
  "code":"200",
  "data":{
   "plans":{
@@ -14225,7 +15745,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "id":1,
     "expectRto":20,
     "status":"“”"
-   },
+```
+
+`},`
+
+```json
    "single":{
     "details":{
      "latestRTO":20,
@@ -14247,15 +15771,44 @@ HTTP/1.1 200 OK Content-Type:application/json {
      "id":1,
      "expectRto":20,
      "status":"“”"
-    },
+```
+
+`},`
+
+```json
     "category":"APSARA_BASE"
-   }
-  },
+```
+
+`}` `},`
+
+```json
   "idc":"amtest82"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "message":"success"
 ```
+
+```
+}<br/><br/><br/><br/><br/><br/><br/><br/>
+```
+
+##### 7.5.3.6 ExcuteProdcutSwitch
+
+Use this API to perform a drill switch for a product using the ASR API in the primary data center.
+
+**Preparations**
+
+When you call this API, pass a timestamp as the value for the requestId parameter. Record this parameter to facilitate future log queries. If you do not specify the requestId parameter, the backend uses the request timestamp as the default requestId for the switch.
+
+**Request header**
+
+This API uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -14264,6 +15817,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | requestId | Strin g | Query | No | 1759048441762 | The ID of the request. |
 | ignoreSyn cCheck | Boole an | Query | No | false | Specifies whether to ignore inspection exceptions. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | The returned status. Success: true failed: false |
@@ -14271,26 +15826,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | message | String | SUCCESS | The returned message. |
 | data | String | "" | The returned data. |
 
-```
-}<br/><br/><br/><br/><br/><br/><br/><br/>
-```
-
-##### ExcuteProdcutSwitch
-
-Use this API to perform a drill switch for a product using the ASR API in the primary data center. Description When you call this API, pass a timestamp as the value for the requestId parameter. Record this parameter to facilitate future log queries. If you do not specify the requestId parameter, the backend uses the request timestamp as the default requestId for the switch.
-
-**Request header**
-
-This API uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Query | Yes | 4 | The ID of the drill plan. |
-| requestId | Strin g | Query | No | 1759048441762 | The request ID. |
+**Examples**
 
 Request example
 
@@ -14300,24 +15836,39 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xm.ExecuteProductSwitch.2025-09-03 &act
 
 Successful response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":"\"\"",
  "success":true,
  "message":"SUCCESS"
-}
 ```
 
-##### GetDrillProductStatus
+`}`
 
-This operation queries the status of a drill product using the ASR API of the primary data center to determine whether a switch is possible. API description You can call this operation to query the status of a drill product using the ASR API of the primary data center. This helps determine whether a switch is possible. If a product has an abnormal status, you must investigate the issue before you proceed. Switching a product that is in an abnormal status poses business risks.
+##### 7.5.3.7 GetDrillProductStatus
+
+This operation queries the status of a drill product using the ASR API of the primary data center to determine whether a switch is possible. API description
+
+**Notes**
+
+You can call this operation to query the status of a drill product using the ASR API of the primary data center. This helps determine whether a switch is possible. If a product has an abnormal status, you must investigate the issue before you proceed. Switching a product that is in an abnormal status poses business risks.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Query | Yes | 4 | The ID of the drill plan. |
+| requestId | Strin g | Query | No | 1759048441762 | The request ID. |
 
 **Response parameters**
 
@@ -14336,6 +15887,8 @@ This operation uses only common request headers. For more information, see the C
 | gmtModified | Long | 1756088254000 | The timestamp when the entry was last modified. |
 | tag | String | "" | The tag information. |
 
+**Examples**
+
 Request example
 
 ```
@@ -14344,14 +15897,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xm.GetDrillProductStatus.2025-09-03 &id
 
 Successful response example `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| requestId | Strin g | Query | Yes | 1759048441762 | The request ID. |
-| productTy pe | Strin g | Query | No | PRODUCT | The product type. Valid values: PRODUCT and FEATURE. |
-| product | Strin g | Query | No | RDS | The product name. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "msg":"\"\"",
@@ -14362,19 +15914,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "tag":"\"\"",
   "productType":"PRODUCT",
   "master":"amtest82"
- },
- "success":true,
- "message":"success"
-}
 ```
 
-#### Zone disaster recovery management
+`},`
+
+```json
+ "success":true,
+ "message":"success"
+```
+
+`}`
+
+#### 7.5.4 Zone disaster recovery management platform for secondary data centers
 
 **platform for secondary data centers**
 
-##### GetProdcutSwitchLogs
+##### 7.5.4.1 GetProdcutSwitchLogs
 
-This operation retrieves the switch logs for a product drill from the ASR API in a secondary data center. Description This operation retrieves the switch logs for a product drill from the ASR API in a secondary data center. You must provide the request ID of the switch task.
+This operation retrieves the switch logs for a product drill from the ASR API in a secondary data center.
+
+**Preparations**
+
+This operation retrieves the switch logs for a product drill from the ASR API in a secondary data center. You must provide the request ID of the switch task.
 
 **Request headers**
 
@@ -14382,12 +15943,20 @@ This operation uses common request headers and does not have any special request
 
 **Request parameters**
 
-|  | Developer Gui | de·API R | eference |  | Apsa | ra Uni-manager Operations Consol | e |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| requestId | Strin g | Query | Yes | 1759048441762 | The request ID. |
+| productTy pe | Strin g | Query | No | PRODUCT | The product type. Valid values: PRODUCT and FEATURE. |
+| product | Strin g | Query | No | RDS | The product name. |
+
+|   | Developer Gui | de·API R | eference |   | Apsa | ra Uni-manager Operations Consol | e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | historyInd ex | Integ er | Body | No | 0 | The log index. Do not specify this parameter. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14404,11 +15973,7 @@ This operation uses common request headers and does not have any special request
 | gmtCreated | Long | 1759112859656 | The UNIX timestamp for when the step was created. |
 | gmtModified | Long | 1759112859656 | The UNIX timestamp for when the step was last modified. |
 
-**Response parameters**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| planId | Long | Query | Yes | 4 | The ID of the drill plan. |
+**Examples**
 
 Example request
 
@@ -14418,8 +15983,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.GetProductSwitchLogs.2025-09-03 &req
 
 Example of a successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "actionType":"SWITCH",
@@ -14430,15 +16000,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "requestId":"1759112859656",
   "stepMsg":"start executing script...",
   "id":865
- },
- "success":true,
- "message":"SUCCESS"
-}
 ```
 
-##### GetProductSwitchProcess
+`},`
 
-Retrieves the switch status of a product during a drill from the ASR API of a secondary data center. You must specify the drill plan ID or the request ID of the switch task. Description This operation retrieves the switch status of a product during a drill using the ASR API of a secondary data center. You must specify the drill plan ID or the request ID of a dispatched switch task.
+```json
+ "success":true,
+ "message":"SUCCESS"
+```
+
+`}`
+
+##### 7.5.4.2 GetProductSwitchProcess
+
+Retrieves the switch status of a product during a drill from the ASR API of a secondary data center. You must specify the drill plan ID or the request ID of the switch task.
+
+**Preparations**
+
+This operation retrieves the switch status of a product during a drill using the ASR API of a secondary data center. You must specify the drill plan ID or the request ID of a dispatched switch task.
 
 **Request header**
 
@@ -14446,12 +16025,18 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  | Apsa | ra Uni-manager Operations Consol |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| planId | Long | Query | Yes | 4 | The ID of the drill plan. |
+
+| Developer Gui | de·API R | eference |   | Apsa | ra Uni-manager Operations Consol |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | requestId | Strin g | Query | No | 1759048441762 | The request ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14470,14 +16055,14 @@ This operation uses common request headers. No special request headers are requi
 | tenantProduct s | LIST | [] | The list of products that the tenant uses. |
 | switchBackInfo | Map | {} | The details of the failback task. |
 
-**Response parameters**
-
-| Apsara Uni-manag | er Operations |  | Developer Guide·API Referenc |
+| Apsara Uni-manag | er Operations |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | operationSet | Map | {} | The operation information of the drill plan. This parameter is used by the frontend. You can ignore it. |
+
+**Examples**
 
 Request example
 
@@ -14487,8 +16072,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.GetProductSwitchProcess.2025-09-03 &
 
 Successful response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "processInfo":{
@@ -14501,19 +16091,36 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "baseProducts":"[]",
    "tenantProducts":"[]",
    "sourceIdc":"amtest217"
-  },
-  "operationSet":{}
- },
- "success":true,
- "message":"SUCCESS"
-}
 ```
 
-##### GetSyncCheckResult
+`},`
 
-This operation retrieves inspection information for all products from the ASR API in the secondary data center. Description This operation retrieves inspection information for all products from the ASR API in the secondary data center. You can switch over a product during a drill only if the product passes the inspection.
+```json
+  "operationSet":{}
+```
+
+`},`
+
+```json
+ "success":true,
+ "message":"SUCCESS"
+```
+
+`}`
+
+##### 7.5.4.3 GetSyncCheckResult
+
+This operation retrieves inspection information for all products from the ASR API in the secondary data center.
+
+**Usage notes**
+
+This operation retrieves inspection information for all products from the ASR API in the secondary data center. You can switch over a product during a drill only if the product passes the inspection.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see the document about common request parameters.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14531,11 +16138,7 @@ This operation retrieves inspection information for all products from the ASR AP
 | disasterRecov eryForm | String | MASTER SLAVE _ | The disaster recovery architecture. Valid values: MASTER SLAVE, THREEAZ, or _ ACTIVE ACTIVE. _ |
 | instanceCount | Integer | 10 | The total number of instances. |
 
-This operation uses only common request headers. For more information, see the document about common request parameters.
-
-**Response parameters**
-
-| psara Uni-manag | er Operations |  |  |
+| psara Uni-manag | er Operations |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -14543,6 +16146,8 @@ This operation uses only common request headers. For more information, see the d
 | inventoryStatu s | Integer | 0 | The inventory status. 0: Normal 1: Abnormal |
 | msg | String | “” | The detailed inspection information. |
 | gmtModified | Long | 1759111881000 | The timestamp of the last update. |
+
+**Examples**
 
 Request example
 
@@ -14552,8 +16157,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.GetSyncCheckResult.2025-09-03
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "category":"DATABASE",
@@ -14568,16 +16178,30 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "disasterRecoveryForm":"MASTER_SLAVE",
    "location":"\"\"",
    "productType":"FEATURE"
-  }
- },
- "success":true,
- "message":"SUCCESS"
-}
 ```
 
-##### ListProductDrillPlan
+`}` `},`
 
-Call this operation to retrieve all executable drill plans from the ASR API of the secondary data center. Description
+```json
+ "success":true,
+ "message":"SUCCESS"
+```
+
+`}`
+
+##### 7.5.4.4 ListProductDrillPlan
+
+Call this operation to retrieve all executable drill plans from the ASR API of the secondary data center.
+
+**Notes**
+
+Call this operation to retrieve all executable drill plans from the ASR API of the secondary data center. You can use the planId parameter from the response as an input parameter to check the status of drilled products and execute switches.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14595,15 +16219,7 @@ Call this operation to retrieve all executable drill plans from the ASR API of t
 | idcRole | String | master | The role of the data center. Valid values: master and third. |
 | idcName | String | amtest82 | The name of the data center. |
 
-Call this operation to retrieve all executable drill plans from the ASR API of the secondary data center. You can use the planId parameter from the response as an input parameter to check the status of drilled products and execute switches.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Response parameters**
-
-| A C | psara Uni-manag onsole | er Operations |  | Developer Guide·API Referenc | e |
+| A C | psara Uni-manag onsole | er Operations |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -14627,7 +16243,7 @@ This operation uses only common request headers. For more information, see Commo
 | id | Integer | 9 | The unique ID of the drill plan. |
 | drillId | Integer | 9 | The ID of the drill task. |
 
-| Developer Guide·A | PI Reference |  | Apsara Uni-manager Operations Consol |
+| Developer Guide·A | PI Reference |   | Apsara Uni-manager Operations Consol |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | name | String | REDIS | The name of the plan. |
@@ -14648,6 +16264,8 @@ This operation uses only common request headers. For more information, see Commo
 | status | String | "" | The current status. |
 | scenarioType | String | DEFAULT | The scenario type. |
 
+**Examples**
+
 Request example
 
 ```
@@ -14656,8 +16274,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.ListProductDrillPlan.2025-09-03
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "plans":{
@@ -14682,7 +16305,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "id":1,
     "expectRto":20,
     "status":"“”"
-   },
+```
+
+`},`
+
+```json
    "single":{
     "details":{
      "latestRTO":20,
@@ -14705,33 +16332,37 @@ HTTP/1.1 200 OK Content-Type:application/json {
      "expectRto":20,
 ```
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| actionTyp e | Strin g | Query | Yes | SWITCH | The switch type. |
-| id | Long | Query | Yes | 4 | The ID of the drill plan. |
-| requestId | Strin g | Query | No | 1759048441762 | The request ID. |
-| ignoreSyn cCheck | Boole an | Query | No | false | Specifies whether to ignore inspection exceptions. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | The status of the response. true: The request was successful. Failed: false |
-
 ```json
      "status":"“”"
-    },
+```
+
+`},`
+
+```json
     "category":"APSARA_BASE"
-   }
-  },
+```
+
+`}` `},`
+
+```json
   "idc":"amtest82"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "message":"SUCCESS"
 }<br/><br/><br/><br/><br/><br/>
 ```
 
-##### ExcuteProdcutSwitch
+##### 7.5.4.5 ExcuteProdcutSwitch
 
-This API executes a product switch for a drill via the ASR API of a secondary data center. API description You can specify a timestamp for the requestId parameter and record it for future log investigation. If you do not specify the requestId parameter, the backend uses the request timestamp as the requestId by default.
+This API executes a product switch for a drill via the ASR API of a secondary data center. API description
+
+**Preparations**
+
+You can specify a timestamp for the requestId parameter and record it for future log investigation. If you do not specify the requestId parameter, the backend uses the request timestamp as the requestId by default.
 
 **Request headers**
 
@@ -14739,13 +16370,26 @@ This API uses common request headers and has no special request headers. For mor
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| actionTyp e | Strin g | Query | Yes | SWITCH | The switch type. |
+| id | Long | Query | Yes | 4 | The ID of the drill plan. |
+| requestId | Strin g | Query | No | 1759048441762 | The request ID. |
+| ignoreSyn cCheck | Boole an | Query | No | false | Specifies whether to ignore inspection exceptions. |
+
 **Returned Data**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | The status of the response. true: The request was successful. Failed: false |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
 | message | String | SUCCESS | The returned message. |
 | data | String | "" | The returned data. |
+
+**Examples**
 
 Request example
 
@@ -14755,18 +16399,28 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.ExecuteProductSwitch.2025-09-03 &act
 
 Success response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":"\"\"",
  "success":true,
  "message":"SUCCESS"
-}
 ```
 
-##### GetDrillProductStatus
+`}`
 
-Call this operation to query the status of a product during a drill using the ASR API in a secondary data center to determine if a switch is possible. Description This operation queries the status of a product during a drill using the ASR API in a secondary data center to determine if a switch is possible. If a product has an abnormal status, you must troubleshoot the product first. Switching a product that is in an abnormal state poses business threats.
+##### 7.5.4.6 GetDrillProductStatus
+
+Call this operation to query the status of a product during a drill using the ASR API in a secondary data center to determine if a switch is possible.
+
+**Usage notes**
+
+This operation queries the status of a product during a drill using the ASR API in a secondary data center to determine if a switch is possible. If a product has an abnormal status, you must troubleshoot the product first. Switching a product that is in an abnormal state poses business threats.
 
 **Request headers**
 
@@ -14778,6 +16432,8 @@ This operation uses common request headers and does not have any special request
 |---|---|---|---|---|---|
 | id | Integ er | Query | Yes | 4 | The ID of the drill plan. |
 | requestId | Strin g | Query | No | 1759048441762 | The request ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -14794,11 +16450,7 @@ This operation uses common request headers and does not have any special request
 | gmtModified | Long | 1756088254000 | The timestamp of the last modification. |
 | tag | String | "" | Tag information. |
 
-**Response parameters**
-
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| requestId | Strin g | Body | Yes | 1759048441762 | The request ID. |
+**Examples**
 
 Request example
 
@@ -14808,8 +16460,13 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.GetDrillProductStatus.2025-09-03 &id
 
 Successful response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{
   "msg":"",
@@ -14820,21 +16477,34 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "tag":"\"\"",
   "productType":"PRODUCT",
   "master":"amtest82"
- },
- "success":true,
- "message":"SUCCESS"
-}
 ```
 
-##### FinishProductSwitch
+`},`
 
-This API operation ends a product drill flow that uses Automatic Speech Recognition (ASR) in a secondary data center. Description Before you call this API, you must obtain the request ID of the initiated switchover task. Include this ID in your request to end the drill flow.
+```json
+ "success":true,
+ "message":"SUCCESS"
+```
+
+`}`
+
+##### 7.5.4.7 FinishProductSwitch
+
+This API operation ends a product drill flow that uses Automatic Speech Recognition (ASR) in a secondary data center.
+
+**Preparations**
+
+Before you call this API, you must obtain the request ID of the initiated switchover task. Include this ID in your request to end the drill flow.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
 **Request parameters**
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| requestId | Strin g | Body | Yes | 1759048441762 | The request ID. |
 
 **Response parameters**
 
@@ -14845,6 +16515,8 @@ This operation uses only common request headers. For more information, see Commo
 | message | String | SUCCESS | The returned message. |
 | data | Map | {} | The returned data. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -14853,45 +16525,32 @@ http(s)://[Endpoint]/?Action=ops.api.asr-xs.FinishProductSwitch.2025-09-03 &requ
 
 Sample successful response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "code":"200",
  "data":{},
  "success":true,
  "message":"SUCCESS"
-}
 ```
 
-### Apsara Uni-manager
+`}`
+
+### 7.6 Apsara Uni-manager Management Console
 
 **Management Console**
 
-#### Platform data
+#### 7.6.1 Platform data
 
-##### GetCurrentUserStats
+##### 7.6.1.1 GetCurrentUserStats
 
 Queries the user statistics of Apsara Uni-manager Management Console.
 
 **Request headers**
-
-| Parameter | Type | Posit ion | Requir ed | Example | Description |
-|---|---|---|---|---|---|
-| currentPage | Integer | Body | No | 1 | The page number. |
-| pageSize | Integer | Body | No | 10 | The number of entries per page. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| code | Integer | 200 | The response code. |
-| cost | Integer | 17 | The time spent on querying the user statistics. Unit: milliseconds. |
-| data | Array of JSONArray |  | The returned data. |
-| loginName | String | test login name _ _ | The account name used to log on to Apsara Uni-manager Management Console. |
-| sessionInfoList | Array of JSONArray |  | The login information of the user. |
-| loginTime | Long | 1655045432302 | The time when the user logged on. |
-| username | String | test user _ | The user name. |
-| pageInfo | Struct |  | The pagination information. |
-| currentPage | Integer | 1 | The page number. |
-| pageSize | Integer | 10 | The number of entries per page. |
-| total | Integer | 27 | The total number of entries returned. |
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -14903,12 +16562,33 @@ POST /openapi/popResource/ascm/auth/stat/user HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Requir ed | Example | Description |
+|---|---|---|---|---|---|
+| currentPage | Integer | Body | No | 1 | The page number. |
+| pageSize | Integer | Body | No | 10 | The number of entries per page. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| code | Integer | 200 | The response code. |
+| cost | Integer | 17 | The time spent on querying the user statistics. Unit: milliseconds. |
+| data | Array of JSONArray |   | The returned data. |
+| loginName | String | test login name _ _ | The account name used to log on to Apsara Uni-manager Management Console. |
+| sessionInfoList | Array of JSONArray |   | The login information of the user. |
+| loginTime | Long | 1655045432302 | The time when the user logged on. |
+| username | String | test user _ | The user name. |
+| pageInfo | Struct |   | The pagination information. |
+| currentPage | Integer | 1 | The page number. |
+| pageSize | Integer | 10 | The number of entries per page. |
+| total | Integer | 27 | The total number of entries returned. |
 
 | totalPage | Integer | 24 | The total number of pages returned. |
 |---|---|---|---|
 | message | String | Parameter error | The error message. |
 | success | Boolean | true | Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed. |
+
+**Examples**
 
 Sample requests
 
@@ -14916,29 +16596,29 @@ Sample requests
 POST /openapi/popResource/ascm/auth/stat/user HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "cost": "17",
     "code": "200",
     "data": [
-        {
+```
+
+`{`
+
+```json
             "loginName": "test_login_name",
             "username": "test_user",
             "sessionInfoList": [
-                {
+```
+
+`{`
+
+```json
                     "loginTime": "1655045432302"
-                }
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
     "success": "true",
@@ -14947,14 +16627,19 @@ Sample success responses `JSON` format
         "totalPage": "24",
         "pageSize": "10",
         "currentPage": "1"
-    },
-    "message": "Parameter error"
-}
 ```
 
-## References
+`},`
 
-### Troubleshooting based on logs
+```json
+    "message": "Parameter error"
+```
+
+`}`
+
+## 8 References
+
+### 8.1 Troubleshooting based on logs when an API operation call is abnormal
 
 **when an API operation call is**
 
@@ -14981,6 +16666,7 @@ ooting. uuidstr = str(uuid.uuid4()) describeProductStatusInstance.add_header("te
 
 ii. Return value printing
 
-```
+```python
 strDescribeProductStatusResponse = str(describeProductStatusResponse, encoding="utf -8") describeProductStatusJsonResponse = json.loads(strDescribeProductStatusResponse) if describeProductStatusJsonResponse != None and describeProductStatusJsonResponse.message == "success":
+    print(strDescribeProductStatusResponse)
 ```

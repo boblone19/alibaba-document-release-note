@@ -3,14 +3,59 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall User Gui
 product_version: "V3.18.6_2607"
 doc_version: "20260911"
 pdf_pages: 51
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall User Guide 20260911.pdf"
+source_pdf: "0502fa7254d8ca78_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall User Guide 20260911.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20User%20Guide%2020260911.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall User Guide 20260911
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 云防火墙
+  - 3.1 访问控制
+    - 3.1.1 Configure access control policies for the Internet firewall
+    - 3.1.2 Configure access control policies on an internal firewall
+    - 3.1.3 Create an access control policy for a VPC firewall
+    - 3.1.4 Create an access control policy for an IDC-VPC firewall
+    - 3.1.5 Manage address books
+  - 3.2 View the traffic blocked by IPS
+  - 3.3 策略配置
+    - 3.3.1 Synchronize information about IP addresses for the Internet firewall
+    - 3.3.2 Create a VPC firewall
+    - 3.3.3 Create an IDC-VPC firewall
+  - 3.4 Configure intrusion prevention policies
+  - 3.5 View event logs
+  - 3.6 View traffic logs
+- 4 Apsara Stack Security configurations
+  - 4.1 Log on to the Apsara Uni-manager Management Console
+  - 4.2 规则运营
+    - 4.2.1 Create and manage IPS rules
+    - 4.2.2 Manage Anti-DDoS Service rules
+    - 4.2.3 Manage Server Guard rules
+    - 4.2.4 Create and manage WAF rules
+  - 4.3 Configure alert settings
+  - 4.4 全局设置
+    - 4.4.1 Configure the attack blocking feature
+  - 4.5 Cloud Firewall monitoring
+  - 4.6 账号管理
+    - 4.6.1 Manage Apsara Stack tenant accounts
+    - 4.6.2 Manage Alibaba Cloud accounts
+  - 4.7 Migration to Apsara Uni-manager Operations Console
+    - 4.7.1 Log on to Cloud Security Operations Center
+    - 4.7.2 View the system monitoring data
+    - 4.7.3 Global settings
+      - 4.7.3.1 Configure host security rules
+      - 4.7.3.2 Whitelist configuration
+    - 4.7.4 Upgrade center
+      - 4.7.4.1 Upgrade center overview
+      - 4.7.4.2 Update feature libraries or the version of Apsara Stack Security
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, you must verify that your computer meets the configuration requirements. For more information about the configuration requirements, see . Table 1. Configuration requirements
 
@@ -19,9 +64,9 @@ Before you log on to Apsara Stack Security Center, you must verify that your com
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. All roles in Apsara Stack Security Center are provided by default. You cannot create custom roles. Before you log on to Apsara Stack Security Center, make sure that your account is assigned the required role. For more information, see Default roles in Apsara Stack Security. Table 1. Default roles in Apsara Stack Security
 
@@ -33,7 +78,7 @@ This topic describes the user roles involved in Apsara Stack Security. All roles
 If you do not have an account that assumes the required role, contact the administrator to create an account and assign the role to the account. For more information, see the **Create a**
 **user** topic in **Apsara Uni-manager Management Console User Guide** .
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -68,11 +113,11 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, specify the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-## 云防火墙
+## 3 云防火墙
 
-### 访问控制
+### 3.1 访问控制
 
-#### Configure access control policies for
+#### 3.1.1 Configure access control policies for the Internet firewall
 
 **the Internet firewall**
 
@@ -113,7 +158,7 @@ internal network.
 
 After the policy is created, it is displayed in the policy list. You can also perform the following operations: Download the policy: Click the icon above the policy list. Modify or delete the policy: Click **Modify** or **Delete** in the **Actions** column of the policy. Insert a new policy: Click **Insert** in the **Actions** column of the policy. Change the priority of the policy: Click **Move** in the **Actions** column of the policy. Enable or disable the policy: Turn on or turn off the switch in the **Policy Status** column of the policy. Import multiple policies at a time: Click **Download Template** above the policy list, enter the policy information in the downloaded file, click **Import Policy**, and then upload the file as prompted.
 
-#### Configure access control policies on an
+#### 3.1.2 Configure access control policies on an internal firewall
 
 **internal firewall**
 
@@ -151,7 +196,7 @@ iv. Click **Submit**. The access control policy is created.
 7. On the **Internal Firewall** tab, find the required policy group and click **Publish** in the
 **Actions** column to apply the policy and synchronize it to ECS security groups.
 
-#### Create an access control policy for a
+#### 3.1.3 Create an access control policy for a VPC firewall
 
 **VPC firewall**
 
@@ -190,7 +235,7 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 
 After the policy is created, it is displayed in the policy list. You can also perform the following operations: Download the policy: Click the icon above the policy list. Modify or delete a policy: Click **Modify** or **Delete** in the **Actions** column of the policy. Insert a new policy: Click **Insert** in the **Actions** column of the policy. Change the priority of the policy: Click **Move** in the **Actions** column of the policy. Enable or disable the policy: Click the switch in the **Policy Status** column of the policy. Import multiple policies at a time: Click **Download Template** above the policy list, enter the policy information in the downloaded file, click **Import Policy**, and then upload the file as prompted.
 
-#### Create an access control policy for an
+#### 3.1.4 Create an access control policy for an IDC-VPC firewall
 
 **IDC-VPC firewall**
 
@@ -235,7 +280,7 @@ internal network.
 
 After the policy is created, it is displayed in the policy list. You can also perform the following operations: Download the policy: Click the icon above the policy list. Modify or delete the policy: Click **Modify** or **Delete** in the **Actions** column of the policy. Insert a new policy: Click **Insert** in the **Actions** column of the policy. Change the priority of the policy: Click **Move** in the **Actions** column of the policy. Enable or disable the policy: Click the switch in the **Policy Status** column of the policy. Import multiple policies at a time: Click **Download Template** above the policy list, enter the policy information in the downloaded file, click **Import Policy**, and then upload the file as prompted.
 
-#### Manage address books
+#### 3.1.5 Manage address books
 
 You can store frequently used IP addresses and ports in address books to facilitate configurations of the Internet firewall. This topic describes how to create and manage IP address books and port address books. You can use address books to store one or more CIDR blocks or ports.
 
@@ -285,7 +330,7 @@ After the address book is created, you can view the address book on the **IP Add
 information about the address books in the downloaded file. You can enter the information about IP address books and port address books.
 6. Click **Import Address Book** and upload the file as prompted.
 
-### View the traffic blocked by IPS
+### 3.2 View the traffic blocked by IPS
 
 This topic describes how to view the details about Internet and VPC attacks that are blocked by the intrusion prevention system (IPS) feature of Cloud Firewall.
 1. Log on to Apsara Stack Security Center.
@@ -315,9 +360,9 @@ the risk level, number of times the event occurred, source IP address, and desti
 
 The **VPC Traffic Blocking** tab displays the suspicious traffic blocked by IPS between VPCs. You can view the details of a traffic blocking event over a specific time range. The details include the event name, risk level, and attack type. On the **VPC Traffic Blocking** tab, you can perform the following operations: Specify a risk level, defense mode, attack type, or time range to search for events. After you specify the search conditions, you must click **Search**. Find a traffic blocking event and click **View Details** in the **Action** column to view the details. The details include the event description and defense mode.
 
-### 策略配置
+### 3.3 策略配置
 
-#### Synchronize information about IP
+#### 3.3.1 Synchronize information about IP addresses for the Internet firewall
 
 **addresses for the Internet firewall**
 
@@ -342,7 +387,7 @@ dialog box that appears, select a traffic redirection group and click **OK**.
 **Redirection for Virtual Gateways** in the Actions column of the IP address. In the
 message that appears, click **OK**.
 
-#### Create a VPC firewall
+#### 3.3.2 Create a VPC firewall
 
 A virtual private cloud (VPC) firewall is a distributed firewall that can detect and control traffic between VPCs. Cloud Firewall can be used to analyze and control traffic between two VPCs only after a VPC firewall is created and enabled. This topic describes how to create a VPC firewall.
 
@@ -369,7 +414,7 @@ click **Create** in the Actions column.
 5. Click **Submit**.
 If Firewall Status of the VPC firewall changes to **Enabled**, the VPC firewall takes effect.
 
-#### Create an IDC-VPC firewall
+#### 3.3.3 Create an IDC-VPC firewall
 
 An IDC-VPC firewall can detect the traffic between a data center and a virtual private cloud (VPC). Cloud Firewall allows you to control traffic by using IDC-VPC firewalls. This topic describes how to create an IDC-VPC firewall. 1. 2. 3.
 4. On the **Firewall Switches** page, click the **IDC-VPC** tab. In the upper-right corner of the
@@ -398,7 +443,7 @@ tab, click **Create**.
 5. Click **Submit**.
 If the status of the IDC-VPC firewall changes to **Enabled**, the IDC-VPC firewall is in effect.
 
-### Configure intrusion
+### 3.4 Configure intrusion prevention policies
 
 **prevention policies**
 
@@ -419,7 +464,7 @@ Cloud Firewall allows traffic from IP addresses in the whitelists that you confi
 Virtual patches are installation-free. You can use them to protect against common highrisk application vulnerabilities. a. Turn on **Patches** to enable the virtual patching feature. b. In the **Virtual Patches** section, click **Customize**. In the **Customize Virtual Patches**
 **Policies** dialog box, customize one or more basic virtual patching policies.
 
-### View event logs
+### 3.5 View event logs
 
 All traffic that passes through Cloud Firewall is recorded on the Log Audit page. The logs are classified into traffic logs and event logs. You can use the logs to audit your network traffic in real time and take specific actions. This topic describes how to view event logs.
 1. Log on to Apsara Stack Security Center.
@@ -442,7 +487,7 @@ If you want to view all event logs, skip this step.
 6. View the required information in the event list. The information includes the detection time,
 threat type, traffic direction (inbound or outbound), source IP address, destination IP address, application type, severity, and policy action.
 
-### View traffic logs
+### 3.6 View traffic logs
 
 All traffic that passes through Cloud Firewall is recorded on the Log Audit page. The logs are classified into traffic logs and event logs. You can use the logs to audit your network traffic in real time and take specific actions. This topic describes how to view traffic logs. 1.
 2. In the upper-right corner of Apsara Stack Security Center, click **Security**. Choose **Network**
@@ -471,11 +516,11 @@ Click **List Configuration** to select columns for the traffic list.
 6. View the required information of access traffic. The information includes the start time and
 end time, traffic direction (inbound or outbound), source IP address, destination IP address, application type, supported protocol, action, bytes, and packets.
 
-## Apsara Stack Security
+## 4 Apsara Stack Security configurations
 
 **configurations**
 
-### Log on to the Apsara Uni-
+### 4.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -510,9 +555,9 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, specify the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-### 规则运营
+### 4.2 规则运营
 
-#### Create and manage IPS rules
+#### 4.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -542,7 +587,7 @@ configure the parameters and click **OK**.
 
 After you create a custom IPS rule, you can perform the following operations on the rule: View the details of the rule You can filter rules. Find the rule whose details you want to view and click **Details** in the **Actions** column to view the rule details. Enable the rule Find the rule that you want to enable and turn on the switch in the **Enable or not** column to change the status of the rule from **Disable** to **Enable**. Disable the rule If a rule does not meet your business requirements, you can disable the rule. Find the rule that you want to disable and turn off the switch in the **Enable or not** column to change the status of the rule from **Enable** to **Disable**.
 
-#### Manage Anti-DDoS Service rules
+#### 4.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -562,7 +607,7 @@ ii. In the **Modify Threshold** dialog box, specify custom thresholds and click 
 **Automatic Redirection** message, click **OK**.
 By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on custom thresholds. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on custom thresholds. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
-#### Manage Server Guard rules
+#### 4.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -580,7 +625,7 @@ You can view vulnerabilities, baselines, and server exceptions on the Server Gua
 | Baselines (marked 2 in the preceding figure) | On the Baselines tab, you can view the baseline types and check the items that are used. To search for a baseline, you can select a baseline type from the Baseline Type drop-down list, select a severity from the Risk Level drop-down list, and enter a check item category or name in the search box. In the baseline list, you can view the following information about a baseline: Baseline Type, Check Item Category, Check Item Name, Risk Level, Updated At, and Status. |
 | Server Exceptions (marked 2 in the preceding figure) | On the Server Exceptions tab, you can view the following information: Rule Alert Types and Webshell & Malicious Processes. To search for an exception on a server, you can select a rule category from the Rule Category drop-down list, select a severity level from the Risk Level drop-down list, and then enter a rule subcategory name in the search box. In the server exception list, you can view the following information: Rule Subcategory, Rule Category, Risk Level, Updated At, Source, and Status. |
 
-#### Create and manage WAF rules
+#### 4.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
@@ -608,7 +653,7 @@ WAF rules are global custom rules that take effect on all tenants. Proceed with 
 
 After you create a rule, you can perform the following operations on the rule: Configure search conditions to filter WAF rules. Find the rule and click **Modify** in the **Actions** column to modify the information about the rule.
 
-### Configure alert settings
+### 4.3 Configure alert settings
 
 On the Alert Settings page, you can configure alert contacts and alert rules. When monitoring data meets the conditions of an alert rule, the system automatically sends an alert to specified alert contacts by email and DingTalk message. This topic describes how to configure alert contacts and alert rules.
 
@@ -646,9 +691,9 @@ the Contact Name, DingTalk Chatbot Token, and Email parameters, and click **Dete
 | Application whitelist event | Unauthorized process start | All levels |   |   |
 | Tampering | File modification File addition File deletion | All levels |   |   |
 
-### 全局设置
+### 4.4 全局设置
 
-#### Configure the attack blocking feature
+#### 4.4.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -660,7 +705,7 @@ The attack blocking feature protects your servers from web attacks. This topic d
 4. On the **Global Settings** tab, turn on or off the switch in the Actions column to enable or
 disable the attack blocking feature. After you disable the attack blocking feature, Server Guard generates alerts for web attacks but does not block them.
 
-### Cloud Firewall monitoring
+### 4.5 Cloud Firewall monitoring
 
 You can use the Cloud Firewall monitoring feature to monitor the status of Cloud Firewall, detect abnormal traffic, and handle abnormal events at the earliest opportunity. This topic describes how to perform system inspection and service monitoring.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -706,9 +751,9 @@ After you complete the configuration, you can test the connectivity to the IP ad
 
 Click the **CCFW** tab to view the following information: Cloud Firewall Taskflows, Cloud Firewall Status Self-check, Device Status Self-check, Interface Status, and Connectivity Test.
 
-### 账号管理
+### 4.6 账号管理
 
-#### Manage Apsara Stack tenant accounts
+#### 4.6.1 Manage Apsara Stack tenant accounts
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
@@ -724,7 +769,7 @@ All assets in Apsara Stack Security are bound to your Apsara Stack tenant accoun
 4. On the **Apsara Stack Account** tab, modify the information about your Apsara Stack
 tenant account. i. Find your Apsara Stack tenant account and click **Revised** in the **Operation** column. ii. In the **Change Account** dialog box, modify Apsara Stack Account, Access Key, and Access Secret, and click **OK**. After the modification, you can click Details in the **Operation** column to view the details of the Apsara Stack tenant account.
 
-#### Manage Alibaba Cloud accounts
+#### 4.6.2 Manage Alibaba Cloud accounts
 
 After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -744,11 +789,11 @@ i.
 
 After the Alibaba Cloud account is added, you can view the account in the account list. You can **modify** or **remove** the account.
 
-### Migration to Apsara Uni-
+### 4.7 Migration to Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
-#### Log on to Cloud Security Operations
+#### 4.7.1 Log on to Cloud Security Operations Center
 
 **Center**
 
@@ -770,7 +815,7 @@ To obtain the username and password that are used to log on to the Apsara Uniman
 
 On the **Cloud Security Operations Center** page, you can view the following information.
 
-#### View the system monitoring data
+#### 4.7.2 View the system monitoring data
 
 You can use the system monitoring feature to monitor integrated cloud services and identify exceptions in the cloud services at the earliest opportunity. This facilitates service O&M. This topic describes how to view the system monitoring data.
 1. Log on to Cloud Security Operations Center.
@@ -786,9 +831,9 @@ services. On the **Monitoring Overview** tab, view the following information. Ov
 | Middle ware | You can specify the monitoring time range and monitoring view to view the details of basic monitoring and middleware monitoring. Valid values for the time range: 3 Hours, 6 Hours, 12 Hours, 1 Day, 2 Days, and Custom. You can click the icon to manually refresh the monitoring data. You can also turn on Automatic Refresh to automatically refresh the monitoring data. Valid values for the View parameter: Cluster View and Single-server View. You can view the following monitoring data: the QPS of MetaQ, the number of GCs in the JVM, the amount of time consumed to monitor GCs in the JVM, the amount of JVM memory, the number of loaded classes in the JVM, the numbers of JVM threads in different statuses, the number of JVM threads, the QPS of HSF, the response time of HSF (ms), and database usage (%). |
 | Health check | Check the health status of all hosts in an application by using TCP or HTTP. |
 
-#### Global settings
+#### 4.7.3 Global settings
 
-##### Configure host security rules
+##### 4.7.3.1 Configure host security rules
 
 1. Log on to Alibaba Cloud Security Operations Hub.
 2. In the navigation pane on the left, choose **Cloud Product Management > Server Guard**
@@ -807,7 +852,7 @@ After you modify these rules, the brute-force attack detection rules for all hos
 | Suspicious Account Logon | If a remote logon account is in the suspicious account list, an alert for suspicious account logon is generated. Click Manage Suspicious Account List. In the Suspicious Account Management panel, manually enter suspicious accounts or upload a suspicious account list based on a template. Make sure that the size of the uploaded file is less than 5 KB. Due to the Windows system mechanism, use only lowercase letters when you enter Windows accounts. |
 | Important Command Audit | You can set the silent threshold for important command audit policies. After you complete this setting, when the number of alerts for this rule reaches the threshold, the rule enters silent mode and does not generate more alerts until it resumes in the next epoch. |
 
-##### Whitelist configuration
+##### 4.7.3.2 Whitelist configuration
 
 1. Log on to Alibaba Cloud Security Operations Hub.
 2. In the navigation pane on the left, choose **Cloud Product Management > Server Guard**
@@ -825,9 +870,9 @@ complete the configuration and click **OK**.
 
 After a whitelist is added, you can click **Delete** to remove unwanted whitelists.
 
-#### Upgrade center
+#### 4.7.4 Upgrade center
 
-##### Upgrade center overview
+##### 4.7.4.1 Upgrade center overview
 
 The upgrade center allows you to manually or automatically update the feature library and the version of Apsara Stack Security to ensure up-to-date protection. You can perform the following steps for an update:
 1. Configure the import mode of your update package.
@@ -835,7 +880,7 @@ The upgrade center supports**automatic import** and **manual import**. If Apsara
 2. Update the feature library and the version of Apsara Stack Security. For more information,
 see Update the feature library or the version of Apsara Stack Security.
 
-##### Update feature libraries or the version of
+##### 4.7.4.2 Update feature libraries or the version of Apsara Stack Security
 
 **Apsara Stack Security**
 

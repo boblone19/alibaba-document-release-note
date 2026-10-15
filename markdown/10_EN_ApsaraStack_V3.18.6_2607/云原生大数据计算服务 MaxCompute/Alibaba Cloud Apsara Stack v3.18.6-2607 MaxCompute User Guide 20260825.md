@@ -3,20 +3,359 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute User Guide 20260825"
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 631
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute User Guide 20260825.pdf"
+source_pdf: "fce3c3f7145ac99d_Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute User Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%20MaxCompute/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20MaxCompute%20User%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute User Guide 20260825
 
+## Table of Contents
+
+- 1 What is MaxCompute?
+- 2 Usage notes
+- 3 Preparations
+  - 3.1 Log on to the Apsara Uni-manager Management Console
+  - 3.2 Create a task account
+  - 3.3 Create a project
+  - 3.4 Create a quota group
+- 4 Quick start
+  - 4.1 Overview
+  - 4.2 Configure the MaxCompute client
+  - 4.3 Add and remove users
+  - 4.4 Grant and view permissions
+    - 4.4.1 Overview
+    - 4.4.2 ACL-based access control
+    - 4.4.3 Policy-based access control
+    - 4.4.4 Query permissions
+  - 4.5 Create roles and grant permissions
+  - 4.6 Create or delete a table
+    - 4.6.1 Create a table
+    - 4.6.2 Query table information
+    - 4.6.3 Delete a table
+  - 4.7 Import or export data
+  - 4.8 Run SQL
+    - 4.8.1 Overview
+    - 4.8.2 SELECT
+    - 4.8.3 INSERT
+    - 4.8.4 JOIN
+    - 4.8.5 Other limits
+  - 4.9 Compile and use UDFs
+    - 4.9.1 Overview
+    - 4.9.2 UDF examples
+    - 4.9.3 UDAF example
+    - 4.9.4 UDTF example
+  - 4.10 Write and run a MapReduce program
+- 5 Basic concepts and common commands
+  - 5.1 Terms
+  - 5.2 Common commands
+    - 5.2.1 Overview
+    - 5.2.2 Project operations
+    - 5.2.3 Table operations
+    - 5.2.4 Instance operations
+    - 5.2.5 Resource operations
+    - 5.2.6 Function operations
+    - 5.2.7 Time zone configuration operations
+    - 5.2.8 Tunnel operations
+    - 5.2.9 Other operations
+- 6 MaxCompute Tunnel
+  - 6.1 Overview
+  - 6.2 Introduction to the tools
+  - 6.3 Selection of tools to migrate data to the cloud
+  - 6.4 Tunnel SDK overview
+    - 6.4.1 Overview
+    - 6.4.2 TableTunnel
+    - 6.4.3 InstanceTunnel
+    - 6.4.4 UploadSession
+    - 6.4.5 DownloadSession
+    - 6.4.6 TunnelBufferedWriter
+  - 6.5 Tunnel SDK example
+    - 6.5.1 Example of simple uploads
+    - 6.5.2 Example of simple downloads
+    - 6.5.3 Example of multi-thread uploads
+    - 6.5.4 Example of multi-thread downloads
+    - 6.5.5 Example of uploading data by using BufferedWriter
+    - 6.5.6 Example of uploading data by using BufferedWriter in multithreading mode
+    - 6.5.7 Examples of uploading and downloading data of complex data types
+  - 6.6 Appendix
+    - 6.6.1 FAQ related to data upload and download by using MaxCompute Tunnel
+    - 6.6.2 Common tunnel error codes
+- 7 Multi-engine support
+  - 7.1 MaxCompute MapReduce
+    - 7.1.1 Overview
+      - 7.1.1.1 MapReduce
+      - 7.1.1.2 MapReduce 2
+    - 7.1.2 Limits
+    - 7.1.3 Features
+      - 7.1.3.1 Run command
+      - 7.1.3.2 Concepts
+        - 7.1.3.2.1 Map/Reduce
+        - 7.1.3.2.2 Sorting
+        - 7.1.3.2.3 Partition
+        - 7.1.3.2.4 Combiner
+      - 7.1.3.3 Submit a job
+      - 7.1.3.4 Inputs and outputs
+      - 7.1.3.5 Use resources
+      - 7.1.3.6 Run jobs in local mode
+    - 7.1.4 SDK introduction
+      - 7.1.4.1 Overview of major MapReduce APIs
+      - 7.1.4.2 API description
+        - 7.1.4.2.1 MapperBase
+        - 7.1.4.2.2 ReducerBase
+        - 7.1.4.2.3 TaskContext
+        - 7.1.4.2.4 JobConf
+        - 7.1.4.2.5 JobClient
+        - 7.1.4.2.6 RunningJob
+        - 7.1.4.2.7 InputUtils
+        - 7.1.4.2.8 OutputUtils
+        - 7.1.4.2.9 Pipeline
+      - 7.1.4.3 Compatibility with Hadoop MapReduce
+    - 7.1.5 Data types
+    - 7.1.6 Sample programs
+      - 7.1.6.1 WordCount example
+      - 7.1.6.2 MapOnly example
+      - 7.1.6.3 MultipleInOut example
+      - 7.1.6.4 MultiJobs example
+      - 7.1.6.5 SecondarySort example
+      - 7.1.6.6 Resource usage example
+      - 7.1.6.7 Counter usage example
+      - 7.1.6.8 Grep example
+      - 7.1.6.9 Join example
+      - 7.1.6.10 Sleep example
+      - 7.1.6.11 Unique example
+      - 7.1.6.12 Sort example
+      - 7.1.6.13 Partitioned table input examples
+      - 7.1.6.14 Pipeline example
+- 8 MaxCompute MCP Server
+- 9 PyODPS
+  - 9.1 Overview
+  - 9.2 Getting started
+  - 9.3 Use PyODPS in DataWorks
+  - 9.4 Use PyODPS in an on-premises environment
+    - 9.4.1 Install PyODPS
+    - 9.4.2 Use PyODPS on an on-premises environment
+  - 9.5 Basic operations
+    - 9.5.1 Overview
+    - 9.5.2 Projects
+    - 9.5.3 Tables
+    - 9.5.4 SQL
+    - 9.5.5 Task instances
+    - 9.5.6 Resources
+    - 9.5.7 Functions
+    - 9.5.8 XFlow and models
+    - 9.5.9 SQLAlchemy
+  - 9.6 DataFrame
+    - 9.6.1 Overview
+    - 9.6.2 DataFrame quick start
+    - 9.6.3 Create a DataFrame object
+    - 9.6.4 Sequence
+    - 9.6.5 Collection
+    - 9.6.6 Execution
+    - 9.6.7 Column operations
+    - 9.6.8 Aggregation
+    - 9.6.9 Sort, deduplicate, sample, and scale data
+    - 9.6.10 Use UDFs and the third-party Python libraries
+    - 9.6.11 Use custom functions
+    - 9.6.12 Use third-party packages in PyODPS DataFrame UDFs
+    - 9.6.13 MapReduce API
+    - 9.6.14 Merge data
+    - 9.6.15 Window functions
+    - 9.6.16 Plotting
+    - 9.6.17 Debugging
+  - 9.7 Configurations
+  - 9.8 Generate a third-party package for PyODPS
+  - 9.9 Best practices
+    - 9.9.1 Runtime environments of PyODPS DataFrame
+    - 9.9.2 Reference a third-party package in a PyODPS node
+    - 9.9.3 Use a PyODPS node to query data based on specific criteria
+    - 9.9.4 Use a PyODPS node to pass parameters
+    - 9.9.5 Use a PyODPS node to read data from a partitioned table
+    - 9.9.6 View a first-level partition with PyODPS
+    - 9.9.7 PyODPS: Sequence and execution
+    - 9.9.8 Use a PyODPS node to aggregate data
+    - 9.9.9 Use a PyODPS node to perform column operations
+    - 9.9.10 Use a PyODPS node to sort data
+    - 9.9.11 Use a PyODPS node to deduplicate data
+    - 9.9.12 Use a PyODPS node to sample data
+    - 9.9.13 Use a PyODPS node to scale data
+    - 9.9.14 Use a PyODPS node to process null values
+  - 9.10 FAQ about PyODPS
+  - 9.11 PyODPS API overview
+- 10 Java sandbox limitations
+- 11 MaxCompute feature enhancement packages
+  - 11.1 Joint computing enhancement package
+    - 11.1.1 Overview
+    - 11.1.2 Use VolumeFs in Spark on MaxCompute
+    - 11.1.3 Spark on MaxCompute
+      - 11.1.3.1 Overview
+      - 11.1.3.2 Project resources
+      - 11.1.3.3 Environment settings
+        - 11.1.3.3.1 Decompress the Spark on MaxCompute release package
+        - 11.1.3.3.2 Set environment variables
+        - 11.1.3.3.3 Configure Spark-defaults.conf
+      - 11.1.3.4 Quick start
+      - 11.1.3.5 Demo
+      - 11.1.3.6 Common cases
+        - 11.1.3.6.1 WordCount example
+        - 11.1.3.6.2 OSS access example
+        - 11.1.3.6.3 MaxCompute table read and write example
+        - 11.1.3.6.4 MaxCompute Table Spark-SQL example
+        - 11.1.3.6.5 MaxCompute Table PySpark example
+        - 11.1.3.6.6 MLlib example
+        - 11.1.3.6.7 Example of Spark Streaming-NetworkWordCount
+      - 11.1.3.7 Maven dependencies
+      - 11.1.3.8 Special notes
+        - 11.1.3.8.1 Running mode
+        - 11.1.3.8.2 Spark Streaming tasks
+        - 11.1.3.8.3 Job diagnosis
+      - 11.1.3.9 APIs supported by Spark
+        - 11.1.3.9.1 Spark Shell
+        - 11.1.3.9.2 Spark R
+        - 11.1.3.9.3 Spark SQL
+        - 11.1.3.9.4 Spark JDBC
+      - 11.1.3.10 Dynamic resource allocation of Spark
+      - 11.1.3.11 FAQ of Spark on MaxCompute
+    - 11.1.4 OSS data source
+      - 11.1.4.1 Overview
+      - 11.1.4.2 Use a built-in extractor to read data from OSS
+        - 11.1.4.2.1 Overview
+        - 11.1.4.2.2 Create an external table
+        - 11.1.4.2.3 Query an external table
+        - 11.1.4.2.4 MSCK REPAIR TABLE
+        - 11.1.4.2.5 Read data from the CSV or TSV files compressed in the GZIP format
+      - 11.1.4.3 Use a custom extractor to read data from OSS
+        - 11.1.4.3.1 Overview
+        - 11.1.4.3.2 Define a storage handler
+        - 11.1.4.3.3 Define an extractor
+        - 11.1.4.3.4 Compile and package code
+        - 11.1.4.3.5 Create an external table
+        - 11.1.4.3.6 Query an external table
+      - 11.1.4.4 Use a custom extractor to read external unstructured data
+      - 11.1.4.5 Data partitions
+        - 11.1.4.5.1 Overview
+        - 11.1.4.5.2 Standard path format for partitioned data on OSS
+        - 11.1.4.5.3 Custom directories of partition data in OSS
+        - 11.1.4.5.4 Access fully-customized non-partitioned data subsets
+      - 11.1.4.6 Output OSS data
+        - 11.1.4.6.1 Create an external table
+        - 11.1.4.6.2 Write data to a TSV text file by using an INSERT statement on an external table
+        - 11.1.4.6.3 Write data to an unstructured file by using an INSERT statement on an external table
+        - 11.1.4.6.4 Migrate data between different storage media by using MaxCompute
+      - 11.1.4.7 STS mode authorization for OSS
+    - 11.1.5 Tablestore data source
+      - 11.1.5.1 Overview
+      - 11.1.5.2 Use MaxCompute to read and calculate data in Tablestore
+        - 11.1.5.2.1 Create an external table
+        - 11.1.5.2.2 Use an external table to access Tablestore data
+      - 11.1.5.3 Write data from MaxCompute to Tablestore
+    - 11.1.6 AnalyticDB data source
+      - 11.1.6.1 Overview
+      - 11.1.6.2 Write data to AnalyticDB
+        - 11.1.6.2.1 Create an external table
+        - 11.1.6.2.2 Write and query data
+      - 11.1.6.3 Read data from AnalyticDB
+    - 11.1.7 RDS data source
+      - 11.1.7.1 Introduction
+      - 11.1.7.2 Write data to RDS
+        - 11.1.7.2.1 Create an external table
+        - 11.1.7.2.2 Write and query data
+      - 11.1.7.3 Read data from RDS
+    - 11.1.8 Unstructured data access and processing (inside MaxCompute)
+      - 11.1.8.1 Overview
+      - 11.1.8.2 Create a volume external table
+        - 11.1.8.2.1 Create table syntax
+        - 11.1.8.2.2 Create tables using the built-in StorageHandler
+        - 11.1.8.2.3 Create a table with a custom StorageHandler
+      - 11.1.8.3 Access a volume external table
+  - 11.2 Security enhancement package
+    - 11.2.1 Label-based access control
+    - 11.2.2 MaxCompute permission system enhancements
+    - 11.2.3 Storage encryption
+  - 11.3 Intelligent metadata enhancement package
+    - 11.3.1 Metadata capabilities
+    - 11.3.2 Information schema
+      - 11.3.2.1 Overview of Information Schema
+      - 11.3.2.2 Metadata views
+      - 11.3.2.3 Information Schema FAQ
+  - 11.4 MaxCompute multi-region deployment
+    - 11.4.1 MaxCompute multi-region deployment
+    - 11.4.2 Multi-region deployment
+    - 11.4.3 Examples of multi-region deployment
+      - 11.4.3.1 Synchronize table data across clusters
+      - 11.4.3.2 Query primary/standby cluster data sync status
+      - 11.4.3.3 Cross-region direct read
+      - 11.4.3.4 Cross-region join
+- 12 Security solution
+  - 12.1 Target users
+  - 12.2 Quick start
+  - 12.3 User authentication
+  - 12.4 Project user and authorization management
+    - 12.4.1 Overview
+    - 12.4.2 User management
+    - 12.4.3 Role management
+    - 12.4.4 ACL-based authorization
+    - 12.4.5 View permissions
+    - 12.4.6 Download permission control
+  - 12.5 Cross-project resource sharing
+    - 12.5.1 Overview
+    - 12.5.2 Package usage
+      - 12.5.2.1 Package creator operations
+      - 12.5.2.2 User operations for packages
+  - 12.6 Project protection
+    - 12.6.1 Data protection overview
+    - 12.6.2 Data protection mechanism
+    - 12.6.3 Exporting data from a protected project
+    - 12.6.4 Resource sharing and data protection
+  - 12.7 Project security configuration
+  - 12.8 Authorization policies
+    - 12.8.1 Policy overview
+    - 12.8.2 Key policy concepts
+    - 12.8.3 Access policy structure
+      - 12.8.3.1 Access policy language structure
+      - 12.8.3.2 Statement structure
+      - 12.8.3.3 Condition block structure
+      - 12.8.3.4 Condition operator types
+      - 12.8.3.5 Condition keywords
+    - 12.8.4 Access policy norm
+      - 12.8.4.1 Principal naming conventions
+      - 12.8.4.2 Resource naming conventions
+      - 12.8.4.3 Action naming conventions
+      - 12.8.4.4 Condition key naming conventions
+      - 12.8.4.5 Access policy sample
+    - 12.8.5 Differences between Policy and ACL
+    - 12.8.6 Limits
+  - 12.9 Collection of security statements
+    - 12.9.1 Project security configuration
+    - 12.9.2 Permission management in a project
+    - 12.9.3 Share resources with packages
+- 13 Frequently-used tools
+  - 13.1 MaxCompute console
+    - 13.1.1 Usage notes
+    - 13.1.2 Install the MaxCompute client
+    - 13.1.3 MaxCompute client configuration
+  - 13.2 Eclipse development plugin
+    - 13.2.1 Install the Eclipse development plug-in
+    - 13.2.2 Create a project
+    - 13.2.3 MapReduce running example
+      - 13.2.3.1 Run a WordCount program
+      - 13.2.3.2 Run a custom MapReduce program
+    - 13.2.4 UDF development and running example
+      - 13.2.4.1 Local debug UDF programs
+        - 13.2.4.1.1 Run a UDF from the menu bar
+        - 13.2.4.1.2 Use the right-click shortcut menu to run a UDF
+      - 13.2.4.2 Run a UDF
+  - 13.3 Logview
+    - 13.3.1 Use LogView to view job information
+    - 13.3.2 Use LogView V2.0 to view job information
+- 14 FAQ about MaxCompute
+
 ?
 
-## What is MaxCompute?
+## 1 What is MaxCompute?
 
 MaxCompute is a data processing platform developed by Alibaba Group to process large amounts of data. MaxCompute provides channels for data uploads and downloads, a range of computing and analysis features including MaxCompute SQL and MaxCompute MapReduce, and comprehensive security solutions. MaxCompute is used to store and compute large amounts of structured data. It provides warehousing solutions for large amounts of data, as well as big data analytics and modeling services. As data collection techniques are becoming increasingly diverse and comprehensive, industries are amassing larger amounts of data. The data amount has increased from 100 GB, 1 TB to even 1 PB, far exceeding the processing capabilities of traditional software. Analysis tasks for large amounts of data often require distributed computing instead of a single server. However, distributed computing models require skilled data analysts and are difficult to maintain. To use a distributed computing model, data analysts must understand business requirements and underlying computing models. MaxCompute is designed to provide an intuitive approach to analyze and process large amounts of data. You can analyze big data without deep knowledge of distributed computing. MaxCompute is widely implemented within Alibaba Group for multiple scenarios. The scenarios include data warehousing and Business Intelligence (BI) analysis for large Internet enterprises, website log analysis, e-commerce transaction analysis, and exploration of user characteristics and interests. MaxCompute provides the following features: Data channels Tunnel: provides highly concurrent offline data upload and download services.concurrent offline data upload and download services. MaxCompute Tunnel enables you to upload or download large amounts of data to or from MaxCompute. MaxCompute Tunnel provides a Java API. Computing and analysis SQL: MaxCompute stores data in tables and allows data queries by using SQL statements. MaxCompute can be used as traditional database software. However, it is capable of processing terabytes and petabytes of data. The SQL syntax of MaxCompute complies with the ANSI99 specification and is compatible with all TPCDS queries and Hive. However, MaxCompute is different from Oracle and MySQL. In addition, the MaxCompute SQL engine is optimized for high throughput, cost-effectiveness, and stable output. Even though, MaxCompute cannot guarantee millisecond-level response for high QPS query tasks in batch processing scenarios. MaxCompute SQL is easy to learn. You can get started with MaxCompute SQL based on your prior experience of database operations, without a deep knowledge of distributed computing. MapReduce: First proposed by Google, MapReduce is a distributed data processing model that has gained extensive attention and been used in a wide range of business scenarios. This document briefly describes the MapReduce model. You must have a basic knowledge of distributed computing and relevant programming experience before you use MapReduce. MapReduce provides a Java API. Graph: an iterative graph computing framework provided by MaxCompute. Graph computing jobs use graphs to build models. A graph is a collection of vertices and edges that have values. MaxCompute Graph performs iterations to edit graphs, enable graphs to evolve, and obtain analysis results. ? Unstructured data access and processing in integrated computing scenarios: MaxCompute SQL cannot directly process external data, such as unstructured data from Object Storage Service (OSS). Data must be imported to MaxCompute tables by using relevant tools before computation. The MaxCompute team introduces the unstructured data processing framework to the MaxCompute system architecture to handle this issue. MaxCompute allows you to create external tables to process data from the following data sources: Internal data sources: OSS, Tablestore, AnalyticDB for MySQL, ApsaraDB RDS, Apsara File Storage for HDFS, and Taobao Distributed Data Layer (TDDL) External data sources: open source Hadoop Distributed File System (HDFS), ApsaraDB for MongoDB, and ApsaraDB for HBase Unstructured data access and processing in MaxCompute: MaxCompute reads and writes volumes to store and process unstructured data, which otherwise must be stored in an external storage system. Spark on MaxCompute: a big data analytics engine developed by Alibaba Cloud. It is used to provide big data processing capabilities for Alibaba, government agencies, and enterprises. For more information, see Spark on MaxCompute. Elasticsearch on MaxCompute: an enterprise-class full-text retrieval system developed by Alibaba Cloud to retrieve large amounts of data. It provides near-real-time (NRT) search for government agencies and enterprises. For more information, see Elasticsearch on MaxCompute. SDK: a toolkit provided for developers. Security solution: MaxCompute provides powerful security features to ensure data security.
 
-## Usage notes
+## 2 Usage notes
 
 You can selectively read topics in this document based on your requirements. This topic provides reading recommendations based on your roles.
 
@@ -36,9 +375,9 @@ If you have development experience, understand the distributed architecture, and
 
 If you are a project owner or an administrator, we recommend that you familiarize yourself with the following topics: Create a project: A project is a basic organizational unit of MaxCompute and is used to isolate users and control access requests. Grant and view permissions: A project owner or an administrator of a project can grant a user the permissions to perform certain operations on objects, such as tables, tasks, and resources in MaxCompute. The permissions include the read, write, and view permissions. Security solution: This topic describes how to grant permissions to users, share resources across projects, configure data protection for projects, and perform policy-based authorization.
 
-## Preparations
+## 3 Preparations
 
-### Log on to the Apsara Uni-
+### 3.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -70,7 +409,7 @@ operations in the following scenarios: The first time you log on to the Apsara U
 For more information, see the **"Manage MFA"** section in **Apsara Uni-manager**
 **Management Console User Guide**.
 
-### Create a task account
+### 3.2 Create a task account
 
 This topic describes how to create a task account.
 
@@ -95,7 +434,7 @@ following table describes the parameters.
 Search for a task account You can enter a keyword into the **Account Name** search box to search for a task account in fuzzy match mode. Modify a task account To modify a task account, you can click **Modify** in the **Actions** column of the task account. You can modify the name and description of the task account. Customize the columns displayed in the task account list You can click the icon in the upper-right corner to customize the columns displayed in the task account list, such as **Account Primary Key** and **Account ID**. By default, the
 **Account Name** column is displayed.
 
-### Create a project
+### 3.3 Create a project
 
 This topic describes how to create a MaxCompute project.
 
@@ -284,7 +623,7 @@ For more information about the parameters, see the **Unified Cloud Management**
 6. After you **Submit** and create the Service Catalog, you can use it to create MaxCompute
 projects and manage changes to the **Configured Logical Storage Space**.
 
-### Create a quota group
+### 3.4 Create a quota group
 
 This topic describes how to manage the lifecycle of a MaxCompute quota group, including creating, querying, modifying, sharing, and overselling CU resources. Learn how to efficiently allocate, adjust, and optimize your computing resources.
 
@@ -402,9 +741,9 @@ For more information about the parameters, see the **Unified Cloud Management**
 6. After you click **Submit** to create the service catalog, you can create a MaxCompute project
 based on this catalog and manage changes to the **quota group CUs**.
 
-## Quick start
+## 4 Quick start
 
-### Overview
+### 4.1 Overview
 
 This topic describes the procedure to use MaxCompute. It provides you with step-by-step instructions on basic MaxCompute operations. The following figure shows the procedure to use MaxCompute.
 1. Configure the client.
@@ -424,7 +763,7 @@ You can familiarize yourself with the limits on a few common SQL statements. For
 8. Perform the following optional operations:
 Use UDFs. After you install the MaxCompute client, you can try to use user-defined functions (UDFs). MaxCompute supports user-defined scalar functions, user-defined aggregate functions (UDAFs), and user-defined table-valued functions (UDTFs). Run a MapReduce program. After you install the MaxCompute client, you can run a MapReduce program. Run a Graph program. After you install the MaxCompute client, you can run a Graph program.
 
-### Configure the MaxCompute
+### 4.2 Configure the MaxCompute client
 
 **client**
 
@@ -478,7 +817,7 @@ create table tbl1(id bigint); insert overwrite table tbl1 select count(*) from t
 
 For more information about SQL statements, see MaxCompute SQL. You can run the help; command to obtain help information about all commands or the help <keyword>; command to obtain help information about related commands. For example, you can run the help table; command to obtain help information about table operations. You can run the quit; or q; command to exit the client.
 
-### Add and remove users
+### 4.3 Add and remove users
 
 To perform operations in a MaxCompute project, users who are not project Owners must be added to the project and granted the required permissions. This topic describes how a project Owner can add and remove users from a project.
 
@@ -546,13 +885,13 @@ Before you remove a user, revoke all their permissions.
 
 If you remove a user without revoking their permissions, the project retains those permissions. If you add the user back to the project, their previous permissions are automatically restored. For more information, see User management.
 
-### Grant and view permissions
+### 4.4 Grant and view permissions
 
-#### Overview
+#### 4.4.1 Overview
 
 After you add a user, you must authorize the user to perform operations on the project. A user can perform operations on the project only after the user is authorized. Authorization is a process of granting permissions to perform operations on objects, such as tables, tasks, and resources, in MaxCompute. The permissions include read, write, and view permissions. The following topics are intended for project administrators. If you are a regular MaxCompute user, make sure that you have obtained the required permissions. MaxCompute provides two authorization mechanisms. For more information, see ACL-based access control and Policy-based access control.
 
-#### ACL-based access control
+#### 4.4.2 ACL-based access control
 
 This topic describes the command syntax for access control list (ACL)-based authorization and provides examples on how to use the GRANT command to assign operation permissions to users or roles.
 
@@ -587,7 +926,7 @@ Scenario 2: Assume that Allen is a RAM user that belongs to `ali***@aliyun.com` 
 -- Add a RAM user. ADD USER ram$ali***@aliyun.com:Allen; -- Create a role named worker. CREATE role worker; -- Assign the worker role to the added member. GRANT worker TO ram$ali***@aliyun.com:Allen;
 ```
 
-#### Policy-based access control
+#### 4.4.3 Policy-based access control
 
 This topic describes the commands that you can use for policy-based access control and provides examples on how to configure a policy. Policy-based access control is subject-based authorization. For more information, see Authorization policies. Commands:
 
@@ -646,7 +985,7 @@ Example on how to configure a policy: `{`
 
 The preceding example disables the Tunnel feature of $user_project_name, and grants the user the LIST, READ, DESCRIBE, and SELECT permissions only on the project and table a in the project.
 
-#### Query permissions
+#### 4.4.4 Query permissions
 
 You can execute a statement to query user permissions in MaxCompute. Execute the following statement to query the permissions of a user:
 
@@ -658,7 +997,7 @@ show grants for $user_name;
 
 For more information, see View permissions.
 
-### Create roles and grant
+### 4.5 Create roles and grant permissions
 
 **permissions**
 
@@ -718,9 +1057,9 @@ Before you delete a role, remove all users from it.
 
 Granting permissions to a role is similar to granting them to a user. For instructions, see Grant and view user permissions. For more information about roles, see Role management.
 
-### Create or delete a table
+### 4.6 Create or delete a table
 
-#### Create a table
+#### 4.6.1 Create a table
 
 This topic describes how to create a table. Syntax:
 
@@ -736,7 +1075,7 @@ create table test1 (key string); -- Create a non-partitioned table. create table
 
 You can specify partitions and lifecycles for MaxCompute tables. For more information about how to create a table, see Create a table. For more information about how to modify partitions, see Add a partition and Delete a partition. For more information about how to modify lifecycle settings, see Modify the lifecycle of a table.
 
-#### Query table information
+#### 4.6.2 Query table information
 
 This topic describes how to query table information. Syntax:
 
@@ -750,7 +1089,7 @@ Examples:
 desc test3; -- Query information about test3. desc test4; -- Query information about test4.
 ```
 
-#### Delete a table
+#### 4.6.3 Delete a table
 
 This topic describes how to delete a table. Syntax:
 
@@ -768,17 +1107,17 @@ drop table test2;
 
 For more information, see Delete a table.
 
-### Import or export data
+### 4.7 Import or export data
 
 This topic describes how to compile Java programs by using the MaxCompute Tunnel SDK and import data to or export data from MaxCompute. For more information about data import and export, see Tunnel SDK example.
 
-### Run SQL
+### 4.8 Run SQL
 
-#### Overview
+#### 4.8.1 Overview
 
 This topic describes the precautions when you execute SQL statements. For more information about how to execute SQL statements, see MaxCompute SQL. Take note of the following points when you use MaxCompute SQL: The SQL syntax of MaxCompute is different from the SQL syntax of Oracle or MySQL. You cannot directly migrate SQL statements from other database engines to MaxCompute. MaxCompute SQL does not respond to queries in real time. It requires a few minutes to return query results, instead of seconds or milliseconds.
 
-#### SELECT
+#### 4.8.2 SELECT
 
 This topic describes limits of the SELECT statements. The following limits apply to the SELECT statements: The key of the GROUP BY clause can be the name of a column in the input table, or the expression composed of columns in the input table. However, the key of the GROUP BY clause cannot be the output column of the SELECT operation.
 
@@ -798,7 +1137,7 @@ select col2 as c from tbl order by col2 limit 100; -- This statement cannot be e
 
 In most cases, the SELECT operation is performed before the ORDER BY, SORT BY, and DISTRIBUTE BY clauses during the parsing of SQL statements. Therefore, only the aliases of output columns from the SELECT operation can be used as keys of these clauses. `ORDER BY` cannot be used at the same time with `DISTRIBUTE BY` or `SORT BY` . Similarly, `GROUP BY` cannot be used at the same time with `DISTRIBUTE BY` or `SORT BY` . For more information about the SELECT statements, see SELECT.
 
-#### INSERT
+#### 4.8.3 INSERT
 
 This topic describes the limits of the INSERT statements. The following limits apply to the INSERT statements: If you execute an INSERT statement to insert data into a partition, the partition key columns cannot be included in the SELECT clause.
 
@@ -814,17 +1153,17 @@ insert overwrite table sale_detail_dypart partition (sale_date='2017', region) s
 
 `e.` For more information about the INSERT statements, see INSERT.
 
-#### JOIN
+#### 4.8.4 JOIN
 
 This topic describes the limits on JOIN statements. Limits: MaxCompute SQL supports the following JOIN operations:LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN, INNER JOIN, NATURAL JOIN, and implicit JOIN. MaxCompute SQL supports a maximum of 128 parallel JOIN operations. For more information about JOIN statements, see JOIN.
 
-#### Other limits
+#### 4.8.5 Other limits
 
 This topic describes other limits on MaxCompute SQL. MaxCompute SQL supports a maximum of 256 concurrent UNION operations. MaxCompute SQL supports a maximum of 256 concurrent INSERT OVERWRITE or INSERT INTO operations.
 
-### Compile and use UDFs
+### 4.9 Compile and use UDFs
 
-#### Overview
+#### 4.9.1 Overview
 
 This topic describes how to write and run a MaxCompute user-defined function (UDF). MaxCompute supports user-defined scalar functions, user-defined aggregate functions (UDAFs), and user-defined table-valued functions (UDTFs).
 
@@ -832,7 +1171,7 @@ This topic describes how to write and run a MaxCompute user-defined function (UD
 
 If you want to write a UDF program, you can upload UDF code to your project as a resource and execute the required statement to create a UDF. This topic provides code examples of user-defined scalar functions, UDAFs, and UDTFs.
 
-#### UDF examples
+#### 4.9.2 UDF examples
 
 This topic describes the complete workflow for developing a MaxCompute user-defined function (UDF): writing code, packaging it, adding a resource, registering the function, and calling it. These examples help you quickly develop and use UDFs to extend your SQL processing capabilities.
 
@@ -878,7 +1217,7 @@ The following example shows how to use this function in an SQL statement:
 SELECT test_lower('A') FROM my_test_table;
 ```
 
-#### UDAF example
+#### 4.9.3 UDAF example
 
 This topic provides the code example of a user-defined aggregate function (UDAF) for your reference. UDAFs are registered in the same way as UDFs and are used in the same way as built-in aggregate functions. UDAF code example:
 
@@ -930,7 +1269,7 @@ public class UDAFExample extends Aggregator {
 
 `}` `}`
 
-#### UDTF example
+#### 4.9.4 UDTF example
 
 This topic provides a sample UDTF that you can use as a reference to develop your own functions.
 
@@ -950,7 +1289,7 @@ package org.alidata.odps.udtf.examples; import com.aliyun.odps.udf.UDTF; import 
 
 `}` `}` `}`
 
-### Write and run a MapReduce
+### 4.10 Write and run a MapReduce program
 
 **program**
 
@@ -1017,11 +1356,11 @@ select * from wc_out;
 
 ommon commands
 
-## Basic concepts and
+## 5 Basic concepts and common commands
 
 ### common commands
 
-### Terms
+### 5.1 Terms
 
 This topic describes the basic terms of MaxCompute.
 
@@ -1150,11 +1489,7 @@ A per-process limit on the use of system resources. Two types of quotas are invo
 
 **ACID semantics**
 
-This section describes the atomicity, consistency, isolation, durability (ACID) semantics of MaxCompute parallel write jobs. ommon commands
-
-**Terms**
-
-Operation: a single job submitted in MaxCompute. Data object: an object that stores data, such as a non-partitioned table or a partition. INTO jobs: an SQL job that contains the INTO keyword, such as INSERT INTO and DYNAMIC INSERT INTO. OVERWRITE jobs: an SQL job that contains the OVERWRITE keyword, such as INSERT OVERWRITE and DYNAMIC INSERT OVERWRITE. Data upload by using Tunnel: an INTO or OVERWRITE job.
+This section describes the atomicity, consistency, isolation, durability (ACID) semantics of MaxCompute parallel write jobs. ommon commands Operation: a single job submitted in MaxCompute. Data object: an object that stores data, such as a non-partitioned table or a partition. INTO jobs: an SQL job that contains the INTO keyword, such as INSERT INTO and DYNAMIC INSERT INTO. OVERWRITE jobs: an SQL job that contains the OVERWRITE keyword, such as INSERT OVERWRITE and DYNAMIC INSERT OVERWRITE. Data upload by using Tunnel: an INTO or OVERWRITE job.
 
 **ACID semantics**
 
@@ -1164,9 +1499,9 @@ Atomicity: An operation is completely performed or not performed at all. An oper
 
 Atomicity When multiple jobs conflict with each other, MaxCompute ensures that only one job succeeds. The atomicity of the CREATE, OVERWRITE, and DROP operations on a single table or partition is ensured. The atomicity of cross-table operations, such as MULTI-INSERT, cannot be ensured. In extreme cases, the following operations may not be atomic: The DYNAMIC INSERT OVERWRITE operation that is performed on more than 10,000 partitions. An INTO operation. The atomicity of INTO operations cannot be ensured because data cleansing fails during a transaction rollback. However, the data cleansing failure does not cause the loss of original data. Consistency The consistency can be ensured for OVERWRITE jobs. If an INTO job fails due to a conflict, data from the failed job may remain. Isolation For non-INTO operations, MaxCompute ensures that read operations are submitted. For INTO operations, some read operations may not be submitted. Durability MaxCompute ensures data durability.
 
-### Common commands
+### 5.2 Common commands
 
-#### Overview
+#### 5.2.1 Overview
 
 MaxCompute allows you to perform operations on objects, such as projects, tables, resources, and instances. You can run command and execute statements on the client or use SDKs to perform operations on these objects. ommon commands This topic describes how to run the commands and execute the statements on the MaxCompute client.
 
@@ -1174,7 +1509,7 @@ MaxCompute allows you to perform operations on objects, such as projects, tables
 
 For more information about how to download and configure the client, see Configure the client. For more information about the SDKs, see SDK for Java.
 
-#### Project operations
+#### 5.2.2 Project operations
 
 This document describes common commands for managing projects, including how to enter and view them, and how to manage the recycle bin.
 
@@ -1272,7 +1607,7 @@ Permanently deletes the specified table from the recycle bin and reclaims its st
 
 If the table still exists, only the Project Owner or users with write permission on the table can run this command. If the table has already been deleted, only the Project Owner can run this command.
 
-#### Table operations
+#### 5.2.3 Table operations
 
 This topic describes common statements for table operations.
 
@@ -1469,7 +1804,7 @@ partition_col1=col1_value1/partition_col2=col2_value1 partition_col1=col1_value2
 **col1_value1**, **col2_value1**, **col1_value2**, and **col2_value2**: the values in the
 partition key columns.
 
-#### Instance operations
+#### 5.2.4 Instance operations
 
 This topic describes common statements for instance operations.
 
@@ -1631,7 +1966,7 @@ R2_1:
                 TableSink_REL5213309: 8  (min: 8, max: 8, avg: 8)
 ```
 
-#### Resource operations
+#### 5.2.5 Resource operations
 
 This topic describes common statements for resource operations.
 
@@ -1738,7 +2073,7 @@ get resource odps-udf-examples.jar d:\;
 
 The following result is returned: `OK`
 
-#### Function operations
+#### 5.2.6 Function operations
 
 This topic describes common statements for function operations.
 
@@ -1805,7 +2140,7 @@ Syntax:
 LIST FUNCTIONS; -- Query all UDFs in the current project. LIST FUNCTIONS -p project_name; -- Query all UDFs in a specific project.
 ```
 
-#### Time zone configuration operations
+#### 5.2.7 Time zone configuration operations
 
 This topic describes how to use a SET command to configure the time zone for a MaxCompute project.
 
@@ -1852,7 +2187,7 @@ The modification of time zone configurations for the new client or SDK for Java 
 **spark.driver.extraJavaOptions -Duser.timezone=America/Los_Angeles**. The
 **timezone** parameter indicates the time zone that you want to use.
 
-#### Tunnel operations
+#### 5.2.8 Tunnel operations
 
 This topic describes the core commands of Tunnel: `upload` , `download` , `resume` , `show` , `purge` , and `help` , which are used for uploading and downloading data, resuming transfers, querying status, clearing history, and obtaining help.
 
@@ -2351,7 +2686,7 @@ Example:
 
 `n` is the number of days to retain historical logs. The default is 3 days.
 
-#### Other operations
+#### 5.2.9 Other operations
 
 ommon commands This topic describes common commands for other operations.
 
@@ -2514,9 +2849,9 @@ The command returns the following output:
 ID = 20190715113033121xxxxxxx Input:65727592 Bytes UDF:0 Complexity:1.0
 ```
 
-## MaxCompute Tunnel
+## 6 MaxCompute Tunnel
 
-### Overview
+### 6.1 Overview
 
 This topic describes how to upload data to MaxCompute or download data from MaxCompute. This topic also describes related limits. MaxCompute provides two types of channels for data uploads and downloads: DataHub: This channel is used to upload or download data in real time. It includes the OGG, Flume, Logstash, and Fluentd plug-ins. Tunnel: This channel is used to upload or download large amounts of data at a time. It includes the MaxCompute client, DataWorks, DTS, Sqoop, Kettle plug-in, and MaxCompute Migration Assist (MMA). DataHub and Tunnel provide their own SDKs. A variety of data upload and download tools are derived from the SDKs. The tools can meet the data upload and download requirements of most common scenarios in which data is migrated to the cloud.
 
@@ -2534,7 +2869,7 @@ By default, a project supports a maximum of 2,000 concurrent Tunnel connections.
 
 The size of a string cannot exceed 8 MB. During an upload, multiple data records are packaged. Limits on TableTunnel SDK interfaces: A block ID must be greater than or equal to 0 but less than 20,000. The size of the data that you want to upload in a block cannot exceed 100 GB. The lifecycle of a session is 24 hours. If you want to transfer large amounts of data, more than 24 hours are required. In this case, we recommend that you transfer the data in multiple sessions. The lifecycle of an HTTP request that corresponds to a RecordWriter is 120 seconds. If no data flows over an HTTP connection within 120 seconds, the server closes the connection.
 
-### Introduction to the tools
+### 6.2 Introduction to the tools
 
 MaxCompute supports a wide range of data upload and download tools. The source code for most of the tools can be found and maintained on the open source community GitHub. You can select the appropriate tools to upload and download data based on usage scenarios. This topic describes these tools.
 
@@ -2546,7 +2881,7 @@ Data Integration of DataWorks (Tunnel) Data Integration of DataWorks is a stable
 
 The projects that correspond to each product are open-sourced. You can visit aliyunmaxcompute-data-collectors to view details. Sqoop (Tunnel) Sqoop 1.4.6 in the community is further developed to provide enhanced MaxCompute support. It imports data from relational databases such as MySQL and data from HDFS or Hive to MaxCompute tables. It also exports data from MaxCompute tables to relational databases such as MySQL. Kettle (Tunnel) Kettle is an open source extract, transform, load (ETL) tool that is developed in Java. It runs on Windows, UNIX, or Linux, and provides graphic interfaces for you to define the data transmission topology by using drag-and-drop components. Apache Flume (DataHub) Apache Flume is a distributed and reliable system. It efficiently collects large volumes of log data from different data sources and then aggregates and stores the data in a centralized data storage. It supports multiple Source and Sink plug-ins. The DataHub Sink plug-in of Apache Flume allows you to upload log data to DataHub in real time and archive the data in MaxCompute tables. Fluentd (DataHub) Fluentd is an open source software product. It collects logs, such as application logs, system logs, and access logs, from various sources. It allows you to use plug-ins to filter log data and store the data in different data processors, including MySQL, Oracle, MongoDB, Hadoop, and Treasure Data. The DataHub plug-in of Fluentd allows you to upload log data to DataHub in real time and archive the data in MaxCompute tables. Logstash (DataHub) Logstash is an open source log collection and processing framework. The logstashoutput-datahub plug-in allows you to import data to DataHub. This tool can be easily configured to collect and transmit data. It can be used together with MaxCompute or StreamCompute to easily create an all-in-one streaming data solution from data collection to analytics. The DataHub plug-in of Logstash allows you to upload log data to DataHub in real time and archive the data in MaxCompute tables. OGG (DataHub) The DataHub plug-in of OGG allows you to incrementally synchronize data in an Oracle database to DataHub in real time and archive the data in MaxCompute tables. MMA MaxCompute Migration Assist (MMA) uses Meta Carrier to access your Hive metastore service and capture Hive metadata. It then generates DDL statements that are used to create MaxCompute tables and partitions, as well as Hive UDTF SQL statements for data migration.
 
-### Selection of tools to migrate
+### 6.3 Selection of tools to migrate data to the cloud
 
 **data to the cloud**
 
@@ -2564,9 +2899,9 @@ To synchronize data from a database to MaxCompute, you must select a tool based 
 
 You can use tools such as Flume, Fluentd, and Logstash to collect logs.
 
-### Tunnel SDK overview
+### 6.4 Tunnel SDK overview
 
-#### Overview
+#### 6.4.1 Overview
 
 Data upload and download tools provided by MaxCompute are developed based on Tunnel SDK. This topic describes the major APIs of Tunnel SDK. The usage of the SDK varies based on its version. For more information, see SDK Java Doc.
 
@@ -2592,7 +2927,7 @@ If you use Maven, you can search for odps-sdk-core in the Maven repository to fi
 
 The endpoint of MaxCompute Tunnel supports automatic routing based on the MaxCompute endpoint settings.
 
-#### TableTunnel
+#### 6.4.2 TableTunnel
 
 | DownloadSession |   | ob |
 |---|---|---|
@@ -2651,7 +2986,7 @@ When writing log data to MaxCompute, unpredictable data arrival times can cause 
 
 severely degrade the performance of subsequent operations in MaxCompute. Buffer at least `64 MB` of data in your application before using a single `RecordWriter` to write the data in one batch. A `RecordReader` times out after `300s` .
 
-#### InstanceTunnel
+#### 6.4.3 InstanceTunnel
 
 This topic describes the InstanceTunnel API. InstanceTunnel is an entry class to access the MaxCompute Tunnel service. You can use InstanceTunnel to download the execution results of an SQL instance that executes a SELECT statement.
 
@@ -2675,7 +3010,7 @@ olean limitEnabled);
 
 InstanceTunnel provides an easy way to obtain instance execution results. However, it is subject to the following permission limits to ensure data security: If the number of data records is less than or equal to 10,000, all users who have read permissions on the specified instance can use InstanceTunnel to download the data records. The same rule applies to data queries by calling a RESTful API. If the number of data records is greater than 10,000, only users who have the read permissions on all the source tables from which the specified instance queries data can use InstanceTunnel to download the data records.
 
-#### UploadSession
+#### 6.4.4 UploadSession
 
 The UploadSession interface supports block upload and includes an automatic retry mechanism to help you manage data uploads to MaxCompute tables. This topic describes the interface definition, its lifecycle, request modes, and overwrite mode for data submission.
 
@@ -2731,7 +3066,7 @@ Request mode: synchronous. Call the **commit(Long[] blocks)** method. The **bloc
 **Status reference**:
 UNKNOWN: The initial status of a newly created session. NORMAL: The upload session is active and ready for operations. CLOSING: When you call the **Complete** method (to complete the upload), the server will first set the state to CLOSING. CLOSED: The upload is complete (that is, the data has been moved to the result table's directory). EXPIRED: Upload timeout. CRITICAL: Service error.
 
-#### DownloadSession
+#### 6.4.5 DownloadSession
 
 This topic describes the DownloadSession API. This API is used to download data from MaxCompute tables.
 
@@ -2759,7 +3094,7 @@ public class DownloadSession {
 
 Lifecycle: indicates the period from the time a download instance is created to the time data is downloaded. Download instance: You can call the constructor method or use TableTunnel to create a download instance. Request mode: synchronous. The server creates a session for the download instance and generates a unique download ID to identify the download instance. You can call the `getId` method on the client to obtain the download ID. This operation results in high overheads. The server creates indexes for data files. If a large number of data files exists, it takes a long time to create indexes for the data files. The server returns the total number of records. You can start multiple download sessions at the same time to download data based on the total number of data records. Data download Request mode: asynchronous. Call the **openRecordReader** API to generate a RecordReader instance. The **start** parameter identifies the start position of the data record in this download session. The value of this parameter starts from 0 and must be greater than or equal to 0. The count parameter identifies the number of data records that are downloaded in this session. The value of the count parameter must be greater than 0. Download status Request mode: synchronous. Call the `getStatus` method to obtain the download status. Status description UNKNOWN: This is the initial state when the server creates a download session. NORMAL: The download object is created. CLOSED: The download is complete. EXPIRED: The download session times out.
 
-#### TunnelBufferedWriter
+#### 6.4.6 TunnelBufferedWriter
 
 The TunnelBufferedWriter interface simplifies the data upload process. You can adjust the buffer size and configure a retry strategy to optimize upload performance and reduce the risk of connection timeouts.
 
@@ -2809,9 +3144,9 @@ RetryStrategy retry = new RetryStrategy(6,4,RetryStrategy.BackoffStrategy.EXPONE
 
 For most cases, we recommend using the default backoff settings.
 
-### Tunnel SDK example
+### 6.5 Tunnel SDK example
 
-#### Example of simple uploads
+#### 6.5.1 Example of simple uploads
 
 This topic provides an example of simple uploads. Example:
 
@@ -2897,7 +3232,7 @@ onnection. In this case, the writer becomes unavailable and you must rewrite dat
 
 `}` `}` `}`
 
-#### Example of simple downloads
+#### 6.5.2 Example of simple downloads
 
 This topic provides an example of simple downloads. Example:
 
@@ -2971,7 +3306,7 @@ System.out.println();
 
 `}` `}`
 
-#### Example of multi-thread uploads
+#### 6.5.3 Example of multi-thread uploads
 
 This topic provides an example of multi-thread uploads. Example:
 
@@ -3112,7 +3447,7 @@ uploadSession.getSchema()));
 
 `}` `}` `}`
 
-#### Example of multi-thread downloads
+#### 6.5.4 Example of multi-thread downloads
 
 This topic provides an example of multi-thread downloads. Example:
 
@@ -3214,7 +3549,7 @@ RecordReader recordReader = downloadSession.openRecordReader(step * (threadNum -
 
 `}` `}` `}`
 
-#### Example of uploading data by using
+#### 6.5.5 Example of uploading data by using BufferedWriter
 
 **BufferedWriter**
 
@@ -3249,7 +3584,7 @@ This topic provides an example on how to upload data by using BufferedWriter of 
 // Commit the upload session to end the data upload. uploadSession.commit();
 ```
 
-#### Example of uploading data by using
+#### 6.5.6 Example of uploading data by using BufferedWriter in multithreading mode
 
 **BufferedWriter in multithreading mode**
 
@@ -3300,7 +3635,7 @@ bleName);
 
 `}`
 
-#### Examples of uploading and
+#### 6.5.7 Examples of uploading and downloading data of complex data types
 
 **downloading data of complex data types**
 
@@ -3413,9 +3748,9 @@ rtitionSpec);
 
 `}` `}` `}`
 
-### Appendix
+### 6.6 Appendix
 
-#### FAQ related to data upload and
+#### 6.6.1 FAQ related to data upload and download by using MaxCompute Tunnel
 
 **download by using MaxCompute Tunnel**
 
@@ -3524,7 +3859,7 @@ ErrorCode=FlowExceeded, ErrorMessage=Your flow quota is exceeded.**
 
 The maximum number of concurrent upload or download requests is exceeded. By default, the quota for concurrent requests allowed by MaxCompute Tunnel is 2,000. A request counts against the quota after the request is sent and complete. If you encounter similar errors, we recommend that you use one of the following solutions to resolve the issue: Make the system work in sleep mode and try again after the system awakes. Increase the quota for the project. Before you perform this operation, contact the administrator to estimate the traffic pressure. Report the issue to the project owner to locate and control the requests that consume most resources.
 
-#### Common tunnel error codes
+#### 6.6.2 Common tunnel error codes
 
 This topic describes common tunnel error codes. The following table describes the common tunnel error codes.
 
@@ -3554,13 +3889,13 @@ This topic describes common tunnel error codes. The following table describes th
 | DataVersionConfl ict | Cross-cluster replication is performed. | Try again later. |
 | InternalServerErr or | An internal error occurs. | Try again later or contact the administrator. |
 
-## Multi-engine support
+## 7 Multi-engine support
 
-### MaxCompute MapReduce
+### 7.1 MaxCompute MapReduce
 
-#### Overview
+#### 7.1.1 Overview
 
-##### MapReduce
+##### 7.1.1.1 MapReduce
 
 This topic describes the MapReduce programming interfaces supported by MaxCompute. MaxCompute provides the following types of MapReduce programming APIs: MaxCompute MapReduce: the native MapReduce API of MaxCompute, which runs fast and allows you to develop a program without the need to expose file systems. Extended MaxCompute MapReduce (MR2): an extension of MaxCompute MapReduce, which supports the logic used to schedule complex jobs. The implementation method is the same as that of MaxCompute MapReduce.
 
@@ -3609,17 +3944,17 @@ and accumulates the count value with the same key value (word value) to obtain t
 
 All the MaxCompute data is stored in tables. Therefore, the input and output data of MaxCompute MapReduce can be saved only as tables. You cannot specify the output format, and no interfaces similar to file systems are provided.
 
-##### MapReduce 2
+##### 7.1.1.2 MapReduce 2
 
 This topic describes MapReduce 2 (MR2) supported by MaxCompute. In MapReduce, data must be stored in a MaxCompute table or distributed file system, such as a Hadoop Distributed File System (HDFS), after each round of MapReduce operations. Typically, MapReduce runs multiple MapReduce jobs at the same time. After each job is complete, data is written to disks. However, data may need to be read only once in subsequent map operations to prepare for the shuffle operation. In this case, redundant I/O operations are performed on the disk. The computing scheduling logic of MaxCompute supports more complicated programming models. Reduce operations can be consecutively performed without having a map operation in between. MaxCompute supports MR2 to allow reduce operations to be consecutively performed after a map operation. MR2 supported by MaxCompute changes the underlying scheduling and I/O model to avoid redundant I/O operations when you run a job. Hadoop ChainMapper and ChainReducer also support map or reduce operations in a chained fashion. However, they are essentially different from MR2. Hadoop ChainMapper and ChainReducer follow the working mechanism used by MapReduce. They allow more than one map operation to be performed after a map or reduce operation. A map or reduce operation cannot be followed by reduce operations. This way, you can reuse the preceding map operation logic to split a map or reduce operation into multiple map stages. This does not change the underlying scheduling or I/O model.
 
-#### Limits
+#### 7.1.2 Limits
 
 This topic describes the limits of MapReduce. The memory consumed by a map or reduce worker can be 256 MB to 12 GB. By default, a single map or reduce worker occupies 2,048 MB memory of the MapReduce framework, and occupies 1,024 MB heap memory of a JVM. The number of resources referenced by a single task cannot exceed 256. A partitioned table is considered one resource. The number of input data records for a single task cannot exceed 1,024 and the number of output data records for a single task cannot exceed 256. The number of custom counters in a single task cannot exceed 64. The total bytes of resources referenced by a single task cannot exceed 2 GB. The number of map workers in a job is calculated by the MapReduce framework based on the split size. If no input table is specified, you can use **odps.stage.mapper.num** to specify the number of map workers. The number is in the range of 1 to 100,000. By default, the number of reduce workers in a job is one fourth of the number of map workers. You can set the number to a value that ranges from 0 to 2000. If reducers process much more data than mappers, the data processing in the reduce stage is time-consuming. A maximum of 2,000 reducers can be created. The maximum number of retries that are allowed for a map or reduce worker is 3. Exceptions that do not allow retries may cause jobs to fail. If the MapReduce program works in local mode, the default number of map workers is 2 and the default number of reduce workers is 1. The maximum number of map workers or reduce workers cannot exceed 100. The default number of download records is 100 and the number cannot exceed 10,000. The number of times that a map or reduce worker repeatedly reads a resource cannot exceed 64. The MapReduce framework determines the number of map workers based on the split size. Each column of the STRING type in a MaxCompute table cannot exceed 8 MB in length. If a map or reduce worker does not read or write data, or stops sending heartbeats by using `context.progress()` , the default timeout period is 600 seconds. When a MapReduce task references a table resource, the supported data types are BIGINT, DOUBLE, STRING, DATETIME, and BOOLEAN. An error is reported for tables of other data types. MapReduce does not read OSS data. MapReduce does not support the data types that are added to MaxCompute V2.0.
 
-#### Features
+#### 7.1.3 Features
 
-##### Run command
+##### 7.1.3.1 Run command
 
 This topic describes the command that is used to run MapReduce jobs. The MaxCompute client provides a jar command for running MapReduce jobs. Syntax:
 
@@ -3652,9 +3987,9 @@ In the preceding example, the JobConf file defines the import.filename variable.
 jar -resources mapreduce-examples.jar -classpath mapreduce-examples.jar org.alidata.odps.mr.examples.WordCount wc_in wc_out add file data/src.txt jar -resources src.txt,mapreduce-examples.jar -classpath mapreduce-examples.jar org.ali data.odps.mr.examples.WordCount wc_in wc_out add file data/a.txt add table wc_in as test_table add jar work.jar jar -conf odps-mapred.xml -resources a.txt,test_table,work.jar -classpath work.jar:otherlib.jar -D import.filename=resource.txt org.alidata.odps.mr.examples.WordCount args
 ```
 
-##### Concepts
+##### 7.1.3.2 Concepts
 
-###### Map/Reduce
+###### 7.1.3.2.1 Map/Reduce
 
 This topic describes Map and Reduce, which are basic concepts in MaxCompute MapReduce. If a map or reduce task runs, the setup(), map() or reduce(), and cleanup() methods are called. The setup() method is called before the map() or reduce() method. Each worker calls the setup() method only once. The cleanup() method is called after the map() or reduce() method. Each worker calls the cleanup() method only once.
 
@@ -3662,7 +3997,7 @@ This topic describes Map and Reduce, which are basic concepts in MaxCompute MapR
 
 For more information about the usage examples, see Sample programs.
 
-###### Sorting
+###### 7.1.3.2.2 Sorting
 
 This topic describes sorting, a basic concept in MaxCompute MapReduce. Some columns in the key records generated by a map can be used as sort columns. These columns do not support a custom comparator. You can select a few sort columns as group columns. These columns do not support a custom group comparator. Sort columns are used to sort your data, whereas group columns are used for secondary sorting.
 
@@ -3670,11 +4005,11 @@ This topic describes sorting, a basic concept in MaxCompute MapReduce. Some colu
 
 For more information about the detailed examples, see Secondary sorting example.
 
-###### Partition
+###### 7.1.3.2.3 Partition
 
 This topic describes partition, a basic concept in MaxCompute MapReduce. MaxCompute allows you to configure partition key columns and custom partitioners. Partition key columns take precedence over custom partitioners. Partitioners are used to allocate data generated by a mapper to different reducers based on the partition logic.
 
-###### Combiner
+###### 7.1.3.2.4 Combiner
 
 This topic describes the combiner function, a basic concept in MaxCompute MapReduce. The combiner function combines adjacent records at the shuffle stage. You can determine whether to use the combiner function based on your business logic. The combiner function is the optimization of the MapReduce computing framework. The combiner logic is the same as the reducer logic. After a mapper generates data, the framework combines the data with the same key at the map stage.
 
@@ -3682,7 +4017,7 @@ This topic describes the combiner function, a basic concept in MaxCompute MapRed
 
 For detailed examples, see Sample programs.
 
-##### Submit a job
+##### 7.1.3.3 Submit a job
 
 This topic describes how to run a JAR command on the MaxCompute client to submit a MapReduce job. The MaxCompute client provides a JAR command to submit MapReduce jobs. Command syntax:
 
@@ -3751,7 +4086,7 @@ program debugging. Example:
 jar -conf \home\admin\myconf -resources a.txt,example.jar -classpath ..\lib\example.jar:.\other_lib.jar -D java.library.path=.\native;
 ```
 
-##### Inputs and outputs
+##### 7.1.3.4 Inputs and outputs
 
 This topic describes the inputs and outputs of MapReduce jobs in MaxCompute. The inputs and outputs of MapReduce jobs in MaxCompute support built-in data types of MaxCompute, including BIGINT, DOUBLE, STRING, DATETIME, and BOOLEAN. User-defined data types are not supported. MapReduce supports input data from multiple tables with different schemas. You can use the map function to obtain the table information that corresponds to the current record. MapReduce supports null values as input data but does not support views as input data. A reduce job can write data to different tables or different partitions of a table. The destination tables or partitions can have different schemas. You can specify labels to distinguish outputs. If you want to use the default output, you do not need to specify a label. MapReduce does not support a function without output returned.
 
@@ -3759,7 +4094,7 @@ This topic describes the inputs and outputs of MapReduce jobs in MaxCompute. The
 
 For more information about input and output examples, see MultipleInOut example.
 
-##### Use resources
+##### 7.1.3.5 Use resources
 
 This topic describes how MapReduce uses resources. You can use the Map or Reduce function to read data from MaxCompute resources. A Map or Reduce worker loads resources to the memory for you to write code.
 
@@ -3767,7 +4102,7 @@ This topic describes how MapReduce uses resources. You can use the Map or Reduce
 
 For a detailed example, see Resource usage example.
 
-##### Run jobs in local mode
+##### 7.1.3.6 Run jobs in local mode
 
 MaxCompute allows you to debug MapReduce jobs in local mode. This topic describes the differences between running MapReduce jobs in local mode and distributed mode, and provides examples for running MapReduce jobs in local mode.
 
@@ -3893,9 +4228,9 @@ The client downloads the metadata of the wc_out table from MaxCompute and saves 
 
 You can also edit the schema and data files and save the files in corresponding table directories. If you run a job in local mode and the client detects that the table directory exists, the client does not download the information about this table from MaxCompute. The local table directory can contain a table that does not exist in MaxCompute.
 
-#### SDK introduction
+#### 7.1.4 SDK introduction
 
-##### Overview of major MapReduce APIs
+##### 7.1.4.1 Overview of major MapReduce APIs
 
 This topic describes major MapReduce APIs. If you use Maven, you can obtain Maven dependencies from the Maven Central Repository.
 
@@ -3916,9 +4251,9 @@ This topic describes major MapReduce APIs. If you use Maven, you can obtain Mave
 | RunningJob | Defines a running job. The objects of this class are used to track the instances on which MapReduce jobs are running. |
 | JobConf | Describes the configuration of a MapReduce job. The JobConf object is defined in the main function. Then, a job client submits a job to MaxCompute based on the JobConf object. |
 
-##### API description
+##### 7.1.4.2 API description
 
-###### MapperBase
+###### 7.1.4.2.1 MapperBase
 
 This topic covers the key methods of the MapperBase interface.
 
@@ -3930,7 +4265,7 @@ This topic covers the key methods of the MapperBase interface.
 | void map(long key, Record record, TaskContext context) | Processes each record from the input table. |
 | void setup(TaskContext context) | Called once at the start of the Map phase, before the first call to the Map method. |
 
-###### ReducerBase
+###### 7.1.4.2.2 ReducerBase
 
 ReducerBase defines the main methods for the Reduce phase.
 
@@ -3942,7 +4277,7 @@ ReducerBase defines the main methods for the Reduce phase.
 | void reduce(Record key, Iterator<Record> values, TaskContext context) | Processes records from the input table. |
 | void setup(TaskContext context) | Called at the beginning of the Reduce phase, before the first call to the Reduce method. |
 
-###### TaskContext
+###### 7.1.4.2.3 TaskContext
 
 This topic describes the main methods of the `TaskContext` interface.
 
@@ -3970,7 +4305,7 @@ This topic describes the main methods of the `TaskContext` interface.
 
 This method prevents the framework from terminating a long-running worker due to a timeout. It acts as a heartbeat to the framework, not as a way to report the worker's completion progress. By default, the timeout for a worker in MaxCompute MapReduce is 10 minutes, a non-modifiable system configuration. If a worker fails to send a heartbeat by calling the `progress()` method within 10 minutes, the framework will forcibly terminate the worker, and the MapReduce task will fail. To avoid this, periodically call the `progress()` method in your Mapper and Reducer functions.
 
-###### JobConf
+###### 7.1.4.2.4 JobConf
 
 This topic describes the main methods in the JobConf interface.
 
@@ -3999,7 +4334,7 @@ This topic describes the main methods in the JobConf interface.
 
 Typically, the grouping columns are a subset of the sort columns. Both the sort columns and partition columns must be included in the Key. On the map side, the framework calculates a hash value for each output Record based on the partition columns. This hash value determines which Reducer receives the Record. The Records are then sorted based on the sort columns. On the reduce side, the framework sorts incoming Records by the sort columns and then groups them based on the specified grouping columns. All Records with identical values in the grouping columns are processed together in a single call to the Reducer function.
 
-###### JobClient
+###### 7.1.4.2.5 JobClient
 
 This topic describes the main methods of the JobClient interface.
 
@@ -4010,7 +4345,7 @@ This topic describes the main methods of the JobClient interface.
 | static RunningJob runJob(JobConf job) | Submits a MapReduce job and blocks (synchronously) until it completes. |
 | static RunningJob submitJob(JobConf job) | Submits a MapReduce job asynchronously (non-blocking), returning immediately. |
 
-###### RunningJob
+###### 7.1.4.2.6 RunningJob
 
 Describes the key methods of the RunningJob interface.
 
@@ -4028,7 +4363,7 @@ Describes the key methods of the RunningJob interface.
 | void killJob() | Terminates the job. |
 | Counters getCounters() | Returns the job's Counters. |
 
-###### InputUtils
+###### 7.1.4.2.7 InputUtils
 
 This topic describes the key functions in the InputUtils class.
 
@@ -4039,7 +4374,7 @@ This topic describes the key functions in the InputUtils class.
 | static void addTable(TableInfo table, JobConf conf) | Adds a table to the job input. You can call this function multiple times to append additional tables to the input queue. |
 | static void setTables(TableInfo [] tables, JobConf conf) | Sets the job's input to the specified list of tables. |
 
-###### OutputUtils
+###### 7.1.4.2.8 OutputUtils
 
 This topic describes the main functions of OutputUtils.
 
@@ -4050,7 +4385,7 @@ This topic describes the main functions of OutputUtils.
 | static void addTable(TableInfo table, JobConf conf) | Adds a table to the job output. Subsequent calls append new tables to the output queue. |
 | static void setTables(TableInfo[] tables, JobConf conf) | Adds multiple tables to the job output. |
 
-###### Pipeline
+###### 7.1.4.2.9 Pipeline
 
 This topic details the key interfaces of the Pipeline class.
 
@@ -4092,7 +4427,7 @@ The example code creates a MapReduce task in the main function that chains two R
 
 Before using MR2, you should be familiar with the basic usage of MapReduce. `JobConf` can configure only MapReduce tasks that consist of a single Map stage followed by a single Reduce stage.
 
-##### Compatibility with Hadoop MapReduce
+##### 7.1.4.3 Compatibility with Hadoop MapReduce
 
 This topic describes the compatibility between specific MaxCompute MapReduce interfaces and Hadoop MapReduce.
 
@@ -4444,7 +4779,7 @@ The following table describes whether specific MaxCompute MapReduce interfaces a
 | org.apache.hadoop.mapreduce. lib.jobcontrol | N/A | No. An exception is reported. |
 | org.apache.hadoop.mapreduce. lib.chain | N/A | No. An exception is reported. |
 
-#### Data types
+#### 7.1.5 Data types
 
 This topic describes the data types supported by MapReduce. MapReduce supports the following data types: BIGINT, DOUBLE, STRING, DATETIME, BOOLEAN, and DECIMAL. The following table lists the mappings between MaxCompute data types and Java data types.
 
@@ -4457,9 +4792,9 @@ This topic describes the data types supported by MapReduce. MapReduce supports t
 | STRING | STRING |
 | DATETIME | DATE |
 
-#### Sample programs
+#### 7.1.6 Sample programs
 
-##### WordCount example
+##### 7.1.6.1 WordCount example
 
 This topic provides a WordCount example. Example:
 
@@ -4609,7 +4944,7 @@ ey-value pairs. The intermediate output of the mapper exists as records.
 
 `}` `}`
 
-##### MapOnly example
+##### 7.1.6.2 MapOnly example
 
 This topic provides a MapOnly example of MapReduce. For MapOnly jobs, a mapper directly generates key-value pairs to MaxCompute tables. You need only to specify output tables. You do not need to specify the key-value metadata for the output of a mapper. Example:
 
@@ -4719,7 +5054,7 @@ of the context to query the configurations in a mapper.
 
 `}` `}`
 
-##### MultipleInOut example
+##### 7.1.6.3 MultipleInOut example
 
 This topic provides a MultipleInOut example. MaxCompute jobs can read data from multiple input tables and write data to multiple output tables. To read data from multiple input tables, you must make sure that the input tables have the same number of columns and the same data types. These requirements do not apply to output tables. Example:
 
@@ -4923,7 +5258,7 @@ OutputUtils.addTable(TableInfo.builder().tableName(ss[0]).partSpec(map)
 
 `}` `}`
 
-##### MultiJobs example
+##### 7.1.6.4 MultiJobs example
 
 This topic provides a MultiJobs example. Example:
 
@@ -5052,7 +5387,7 @@ decJob);
 
 `}` `}` `}`
 
-##### SecondarySort example
+##### 7.1.6.5 SecondarySort example
 
 This topic provides a SecondarySort example. Example:
 
@@ -5179,7 +5514,7 @@ context)
 
 `}` `}`
 
-##### Resource usage example
+##### 7.1.6.6 Resource usage example
 
 This topic provides an example of using resources in MapReduce. Example:
 
@@ -5279,7 +5614,7 @@ he JobConf interface.
 
 You can use one of the following methods to set the JobConf file: Use the JobConf interface in the SDK. This method is used in this example. Use the **-conf** parameter in a jar command to specify a new JobConf file.
 
-##### Counter usage example
+##### 7.1.6.7 Counter usage example
 
 This topic provides an example on how to use counters in MapReduce.
 
@@ -5402,7 +5737,7 @@ eturned.
 
 `}` `}`
 
-##### Grep example
+##### 7.1.6.8 Grep example
 
 This topic provides a Grep example. Example:
 
@@ -5588,7 +5923,7 @@ context) throws IOException {
 
 `}` `}`
 
-##### Join example
+##### 7.1.6.9 Join example
 
 This topic provides a Join example. The MaxCompute MapReduce framework does not support Join operations. However, you can join data by using a custom map or reduce function. Example:
 
@@ -5725,7 +6060,7 @@ InputUtils.addTable(TableInfo.builder().tableName(args[0]).label("left").build()
 
 `}` `}`
 
-##### Sleep example
+##### 7.1.6.10 Sleep example
 
 This topic provides a Sleep example. Example:
 
@@ -5769,7 +6104,7 @@ ovided.
 
 `}` `}`
 
-##### Unique example
+##### 7.1.6.11 Unique example
 
 This topic provides a Unique example. Example:
 
@@ -5932,7 +6267,7 @@ job.setMapOutputKeySchema(SchemaUtils.fromString("key:bigint,value:bigint")); jo
 
 `}` `}` `}`
 
-##### Sort example
+##### 7.1.6.12 Sort example
 
 This Sort example for MaxCompute MapReduce demonstrates how to fragment a small dataset and produce globally sorted output by defining an IdentityMapper and an IdentityReducer, configuring a JobConf, specifying the input and output tables, and submitting a job.
 
@@ -6024,7 +6359,7 @@ er approaches, such as TeraSort.
 
 `}` `}`
 
-##### Partitioned table input examples
+##### 7.1.6.13 Partitioned table input examples
 
 This topic provides code examples for using MaxCompute MapReduce and the SDK to read data from a partitioned table. You will learn how to configure a MapReduce job and specify input partitions.
 
@@ -6097,7 +6432,7 @@ String>();
 
 This example uses the MaxCompute and MapReduce SDKs to create a MapReduce job that reads data from a partition range. This snippet of the main function is for demonstration only and cannot be compiled or run directly. In the example, the `applicable` function contains user-defined logic for selecting input partitions for the MapReduce job.
 
-##### Pipeline example
+##### 7.1.6.14 Pipeline example
 
 This topic provides a Pipeline example. Example:
 
@@ -6237,7 +6572,7 @@ rtitionColumns, and OutputGroupingColumns for a mapper, the framework uses Outpu
 
 `}` `}` rver
 
-## MaxCompute MCP Server
+## 8 MaxCompute MCP Server
 
 MaxCompute uses the MCP protocol. You can call APIs through the Apsara Assistant-hosted mode to retrieve project instance information. You can also deploy your own MCP Server to integrate with platforms such as AI Studio, Alibaba Cloud Model Studio Agent, Dify, and Cherry Studio to run ODPS SQL queries. This lets you build natural language-driven data query agents and create an end-to-end intelligent data processing flow, from query to visualization.
 
@@ -6276,15 +6611,15 @@ application, agent, or Robotic Process Automation (RPA) flow.
 4. Call MCP features using RESTful APIs. To grant read-only access to table data in a project
 instance through MCP, you must grant the required permissions to the user. For more information, see ACL authorization.
 
-## PyODPS
+## 9 PyODPS
 
-### Overview
+### 9.1 Overview
 
 PyODPS is an SDK for Python of MaxCompute. PyODPS provides a simple and convenient Python programming interface. This way, you can use Python to write code for MaxCompute jobs, query MaxCompute tables and views, and manage MaxCompute resources. PyODPS provides features that are similar to the features of the MaxCompute CLI tool. For example, you can use PyODPS to upload and download files, create tables, and execute MaxCompute SQL statements to query data. PyODPS also provides specific advanced features. For example, you can use PyODPS to commit MapReduce tasks and run MaxCompute userdefined functions (UDFs). This topic describes the use scenarios and supported platforms of PyODPS and the precautions when you use PyODPS.
 
 **Scenarios**
 
-For more information about the use scenarios of PyODPS, see the following topics: Getting started Use a PyODPS node to read data from a partitioned table Use a PyODPS node to pass parameters Reference a third-party package in a PyODPS node Use a PyODPS node to read data from the level-1 partition of the specified table Use a PyODPS node to query data based on specific criteria Use a PyODPS node to perform sequence operations
+For more information about the use scenarios of PyODPS, see the following topics: Use a PyODPS node to read data from the level-1 partition of the specified table Use a PyODPS node to perform sequence operations
 
 **Supported platforms**
 
@@ -6356,7 +6691,7 @@ Use the apply method to perform distributed execution. The complex logic is incl
 
 MaxCompute has limits on SQL statements. For more information, see MaxCompute SQL limits. PyODPS nodes in DataWorks have limits. For more information, see Use PyODPS in DataWorks. Due to the limits of the sandbox, specific programs that are locally debugged by using the pandas computing backend cannot be debugged in MaxCompute.
 
-### Getting started
+### 9.2 Getting started
 
 PyODPS can be called as a data development node on a data development platform, such as DataWorks. These platforms provide an environment to run PyODPS and allow you to schedule and run nodes. You do not need to manually create a MaxCompute entry object. Similar to pandas, PyODPS provides fast, flexible, and expressive data structures. The data processing feature of PyODPS is similar to that of pandas. You can use the data processing feature of PyODPS by calling the DataFrame API provided by PyODPS. This topic describes how to use PyODPS in your projects in the DataWorks console.
 
@@ -6404,7 +6739,7 @@ table.drop()
 
 ii. Run the code. After you write the code, click the icon in the top toolbar. After the code is run, you can view the running result of the PyODPS 3 node on the **Runtime Log** tab. The result in the following figure indicates that the code is successfully run.
 
-### Use PyODPS in DataWorks
+### 9.3 Use PyODPS in DataWorks
 
 PyODPS is the Python SDK for MaxCompute. You can use it to develop and run PyODPS tasks in DataWorks. This topic covers the limitations of PyODPS in DataWorks, explains how to use it, and provides simple examples.
 
@@ -6431,7 +6766,7 @@ DataWorks supports Python 3 nodes starting from Enterprise Edition V3.14.
 1. Create a PyODPS node.
 Go to the **Data Development** page in DataWorks to create a PyODPS node. There are two types of PyODPS nodes: PyODPS 2 uses Python 2. PyODPS 3 uses Python 3. Create the node based on the Python version you use.
 2. Develop the PyODPS task code.
-After you create the node, use the examples in the following sections to learn the core capabilities of PyODPS: ODPS entrypoint Execute SQL DataFrame Get scheduling parameters Set runtime parameters (hints) For more guidance, see Basic Operations and DataFrame Overview.
+After you create the node, use the examples in the following sections to learn the core capabilities of PyODPS: ODPS entrypoint Execute SQL Get scheduling parameters Set runtime parameters (hints) For more guidance, see Basic Operations and DataFrame Overview.
 3. Configure scheduling, then Save, Submit, and Publish the node. The task will then run as
 scheduled.
 
@@ -6483,7 +6818,7 @@ with instance.open_reader(tunnel=True, limit=False) as reader:
 
 **DataFrame**
 
-Execution In DataWorks, you must explicitly call an immediate execution method, such as `execute` or `persist` , to run a DataFrame operation. The following code is an example.
+In DataWorks, you must explicitly call an immediate execution method, such as `execute` or `persist` , to run a DataFrame operation. The following code is an example.
 
 ```python
 # Call an immediate execution method to process each Record and print all data where
@@ -6715,11 +7050,11 @@ The following figure shows an example of the authorization result:
 
 Follow the instructions in Step 1: Create a table and import data in the PyODPS conditional query topic to create the pyodps_iris table and write data to it in DataWorks. The examples in this topic use this table as the sample dataset to demonstrate basic operations.
 
-### Use PyODPS in an on-premises
+### 9.4 Use PyODPS in an on-premises environment
 
 **environment**
 
-#### Install PyODPS
+#### 9.4.1 Install PyODPS
 
 PyODPS is MaxCompute SDK for Python. PyODPS provides the DataFrame framework and basic operations on MaxCompute objects to help you analyze data in MaxCompute by using Python. You can use PyODPS in DataWorks or an on-premises environment. This topic describes how to install PyODPS when you use PyODPS in an on-premises environment.
 
@@ -6778,7 +7113,7 @@ We recommend that you use the environment variables rather than the AccessKey ID
 
 Unless otherwise specified, the o object in this topic is a MaxCompute object.
 
-#### Use PyODPS on an on-premises
+#### 9.4.2 Use PyODPS on an on-premises environment
 
 **environment**
 
@@ -6796,7 +7131,7 @@ section in Use PyODPS in DataWorks to download the dataset, create a table named
 
 1. Open the Python editor and create a Python file.
 2. Develop code for a PyODPS task.
-After you create a PyODPS task, follow the steps in this topic to learn about the main capabilities of PyODPS. Create a MaxCompute entry point Execute SQL statements DataFrame Configure the hints parameter For more information about how to use PyODPS, see Overview of basic operations and Overview of DataFrame.
+After you create a PyODPS task, follow the steps in this topic to learn about the main capabilities of PyODPS. Create a MaxCompute entry point Execute SQL statements Configure the hints parameter For more information about how to use PyODPS, see Overview of basic operations and Overview of DataFrame.
 3. Run the Python file on the on-premises environment.
 
 **Create a MaxCompute entry point**
@@ -6938,13 +7273,13 @@ The following result is returned:
 111 aaa 222 bbb 333 ccc 444 Chinese Use open_reader to read data from the pyodps_iris table. 4.9 3.0 4.7 3.2 4.6 3.1
 ```
 
-### Basic operations
+### 9.5 Basic operations
 
-#### Overview
+#### 9.5.1 Overview
 
-You can use PyODPS to perform basic operations on MaxCompute objects. PyODPS allows you to use Python-compliant programming methods to perform operations on MaxCompute. You can use PyODPS to perform basic operations on the following MaxCompute objects: SQL Projects Tables Task instances Resources Functions For more information about the methods involved in commands that you run to perform basic operations, see Definitions.
+You can use PyODPS to perform basic operations on MaxCompute objects. PyODPS allows you to use Python-compliant programming methods to perform operations on MaxCompute. You can use PyODPS to perform basic operations on the following MaxCompute objects: For more information about the methods involved in commands that you run to perform basic operations, see Definitions.
 
-#### Projects
+#### 9.5.2 Projects
 
 This topic describes how to perform basic operations on projects by using PyODPS.
 
@@ -6972,7 +7307,7 @@ print(o.exist_project('doc_test'))
 
 If `True` is returned, the project doc_test exists.
 
-#### Tables
+#### 9.5.3 Tables
 
 This topic is a comprehensive guide to managing MaxCompute tables with PyODPS. It covers core features such as schema definition, table creation and deletion, data reading and writing (including via Tunnel), partition management, and DataFrame conversion. This guide helps you efficiently develop, maintain, and analyze MaxCompute data in a Python environment.
 
@@ -7456,7 +7791,7 @@ with download_session.open_record_reader(0, download_session.count) as reader:
 
 PyODPS does not support uploading data to an external table, such as an OSS or OTS table. We do not recommend that you use the Tunnel API directly. We recommend that you use the table object's read and write APIs instead. If you have CPython installed, C code is compiled during the PyODPS installation to accelerate Tunnel uploads and downloads.
 
-#### SQL
+#### 9.5.4 SQL
 
 PyODPS supports basic SQL statements that are supported on MaxCompute. This topic describes how to use SQL statements in PyODPS.
 
@@ -7594,7 +7929,7 @@ In specific scenarios, you must specify **biz_id** for the SQL statement to exec
 from odps import options options.biz_id = 'my_biz_id' o.execute_sql('select * from pyodps_iris')
 ```
 
-#### Task instances
+#### 9.5.5 Task instances
 
 A task, such as an SQL task, is the basic compute unit in MaxCompute. This topic describes the basic operations for task instances in PyODPS.
 
@@ -7733,7 +8068,7 @@ Example output:
 20160519101349613gzbzufck2 2016-05-19 18:14:03 M1_Stg1_job0:0/1/1[100%]
 ```
 
-#### Resources
+#### 9.5.6 Resources
 
 PyODPS supports two types of resources: file resources and table resources. This topic describes the common operations you can perform on resources in PyODPS.
 
@@ -7821,7 +8156,7 @@ with table_resource.open_reader() as reader:
         print(rec)
 ```
 
-#### Functions
+#### 9.5.7 Functions
 
 You can create user defined functions (UDFs) and use them in MaxCompute SQL.
 
@@ -7860,7 +8195,7 @@ You can call the `update()` method to update a function. The following code show
 function = o.get_function('test_function') new_resource = o.get_resource('my_udf2.py') function.class_type = 'my_udf2.Test' function.resources = [new_resource, ] function.update() # Update the function.
 ```
 
-#### XFlow and models
+#### 9.5.8 XFlow and models
 
 XFlow is a MaxCompute algorithm package. You can use PyODPS to execute XFlow tasks.
 
@@ -8004,7 +8339,7 @@ o.delete_online_model('* online_model_name *', async=True)
  model.wait_for_deletion()
 ```
 
-#### SQLAlchemy
+#### 9.5.9 SQLAlchemy
 
 PyODPS is integrated with SQLAlchemy. You can use SQLAlchemy to query data in MaxCompute. This topic describes how to connect SQLAlchemy to a MaxCompute project and call the SQLAlchemy interface.
 
@@ -8043,7 +8378,7 @@ from sqlalchemy import create_engine o.to_global() # set ODPS object as global o
 
 **Call the SQLAlchemy interface**
 
-After you connect SQLAlchemy to a MaxCompute project, you can call the SQLAlchemy interface. The following statements show how to create tables, insert data into tables, and query data from tables. Create a table
+After you connect SQLAlchemy to a MaxCompute project, you can call the SQLAlchemy interface. The following statements show how to create tables, insert data into tables, and query data from tables.
 
 ```python
 from sqlalchemy import Table, Column, Integer, String, MetaData metadata = MetaData() users = Table('users', metadata,
@@ -8077,13 +8412,13 @@ Return value
 (1, 'jack', 'Jack Jones')
 ```
 
-### DataFrame
+### 9.6 DataFrame
 
-#### Overview
+#### 9.6.1 Overview
 
 PyODPS provides a pandas-like interface called PyODPS DataFrame. This interface operates on MaxCompute tables and makes full use of the capabilities of MaxCompute. You can also change the data source from MaxCompute tables to pandas DataFrame. This way, the same code can be executed on pandas. Getting started: describes how to create and manage a DataFrame object and how to use DataFrame to process data. Create a DataFrame object: describes how to create a DataFrame project to reference a data source. Sequence: introduces sequence objects in DataFrame. SequenceExpr represents a column in a two-dimensional dataset. You cannot manually create a SequenceExpr object. You can only retrieve one from a collection object. Collection: introduces collection objects in DataFrame. CollectionExpr supports various operations on two-dimensional datasets, such as column operations, data filtering, and data transformation. Execution: introduces the execution methods that you can call to perform operations in DataFrame. MapReduce API: describes how to use the MapReduce API in DataFrame. Column operations: describes the column operations supported by DataFrame. Aggregation: describes the aggregation operations supported by DataFrame. It also describes how to implement group aggregation and write aggregate functions. Sort, deduplicate, sample, and transform data: describes how to perform sorting, deduplication, sampling, and data transformation on DataFrame objects. Merge data: describes the data merge operations supported by DataFrame. These operations include the JOIN and UNION operations. Window functions: describes the window functions supported by DataFrame. Plotting: describes the plotting methods provided by DataFrame. Debugging: describes how to perform DataFrame debugging. DataFrame can optimize and display the entire execution. You can visualize the execution.
 
-#### DataFrame quick start
+#### 9.6.2 DataFrame quick start
 
 This topic explains how to create and use DataFrame objects for basic data processing.
 
@@ -8461,7 +8796,7 @@ types='float').rename('sepaladd').head(3))
 0 1.9 7.9 1 1.2 1.6 2 1.5 7.9 3 1.1 1.5 4 1.5 7.7
 ```
 
-#### Create a DataFrame object
+#### 9.6.3 Create a DataFrame object
 
 This topic describes how to create a DataFrame object. After this object is created, it can be used to reference a data source.
 
@@ -8588,7 +8923,7 @@ conn_string = 'odps://%s:%s@<project>/?endpoint=<endpoint>' % (
 engine = sqlalchemy.create_engine(conn_string) metadata = sqlalchemy.MetaData(bind=engine) # Bind the metadata to a database engine. table = sqlalchemy.Table('pyodps_iris', metadata, extend_existing=True, autoload=True) iris = DataFrame(table)
 ```
 
-#### Sequence
+#### 9.6.4 Sequence
 
 SequenceExpr represents a column in a two-dimensional dataset. You cannot manually create a SequenceExpr object. You can only retrieve one from a collection object.
 
@@ -8727,7 +9062,7 @@ If two columns are used for calculations, PyODPS cannot determine the column nam
 
 For more information about column calculations, see Column operations.
 
-#### Collection
+#### 9.6.5 Collection
 
 CollectionExpr supports all operations on DataFrame two-dimensional datasets. It can be considered as a MaxCompute table or a spreadsheet. DataFrame objects are also CollectionExpr objects. CollectionExpr supports various operations on two-dimensional datasets, such as column operations, data filtering, and data transformation.
 
@@ -9256,7 +9591,7 @@ The following result is returned:
 
 You can perform slice operations on Collection objects, not Sequence objects.
 
-#### Execution
+#### 9.6.6 Execution
 
 This topic describes the execution methods that you can use for DataFrame operations.
 
@@ -9563,7 +9898,7 @@ print(future1.result())
 
 In the preceding example, PyODPS DataFrame first executes the object of the shared dependency. Then, PyODPS DataFrame sets the concurrency to 3 and executes objects from `future1` to `future3` . You can specify the `async` parameter in `delay.execute()` to specify whether to enable asynchronous execution. If asynchronous execution is enabled, you can also use the `timeout` parameter to specify the timeout period.
 
-#### Column operations
+#### 9.6.7 Column operations
 
 This topic describes the column operation features of the DataFrame API, including numerical calculations, conditional logic, string manipulation, and datetime processing. You can also use collection types and call MaxCompute functions for complex data analysis.
 
@@ -9914,7 +10249,7 @@ If you need to call built-in or user-defined functions in MaxCompute to generate
 
 The Pandas backend does not support executing expressions that contain `func` .
 
-#### Aggregation
+#### 9.6.8 Aggregation
 
 This topic describes the aggregation operations that are supported by Alibaba Cloud MaxCompute SDK for Python (PyODPS) DataFrames and describes how to group and aggregate data and write custom aggregations. PyODPS DataFrames also provide a HyperLogLog operation for you to count the number of distinct values in columns.
 
@@ -10199,7 +10534,7 @@ The following result is returned:
 
 The `splitter` parameter is used to split columns and calculate the number of distinct values.
 
-#### Sort, deduplicate, sample, and scale
+#### 9.6.9 Sort, deduplicate, sample, and scale data
 
 **data**
 
@@ -10448,7 +10783,7 @@ df.fillna(method='bfill', subset=['f1', 'f2', 'f3', 'f4'])
 | fillna(method='bfill') |   |   |   |   |   |   |
 |   |   |   | . |   |   |   |
 
-#### Use UDFs and the third-party Python
+#### 9.6.10 Use UDFs and the third-party Python libraries
 
 **libraries**
 
@@ -10708,7 +11043,7 @@ In an immediately-invoked method, locally specify the libraries to be used.
 >>> df.apply(my_func, axis=1).to_pandas(libraries=['six.whl', 'python_dateutil.whl'])
 ```
 
-#### Use custom functions
+#### 9.6.11 Use custom functions
 
 The DataFrame `map` function applies a custom function to each element of a Sequence.
 
@@ -10897,7 +11232,7 @@ e parameter. iris[iris.name, func.your_udf(iris.sepalwidth, iris.sepallength, rt
 
 Expressions that contain func are not supported by the Pandas backend.
 
-#### Use third-party packages in PyODPS
+#### 9.6.12 Use third-party packages in PyODPS DataFrame UDFs
 
 **DataFrame UDFs**
 
@@ -11002,7 +11337,7 @@ You can compile the code and specify the libraries to use only after you upload 
 
 For more information about related documentation, see PyODPS: ODPS Python SDK and data analysis framework. For more information about related code, visit aliyun-odps-python-sdk.
 
-#### MapReduce API
+#### 9.6.13 MapReduce API
 
 This topic describes the MapReduce API.
 
@@ -11235,7 +11570,7 @@ Use the `to_kv` method to convert data to the key-value format.
 0 name1 k1=1,k2=3,k5=10 1 name1 k1=7.1,k7=8.2 2 name2 k2=1.2,k3=1.5 3 name2 k9=1.1,k2=1
 ```
 
-#### Merge data
+#### 9.6.14 Merge data
 
 This topic describes the join and union operations that are supported by Alibaba Cloud MaxCompute SDK for Python (PyODPS) DataFrame to merge data in tables.
 
@@ -11362,7 +11697,7 @@ If the fields and field types of the two tables are the same, you can use `union
 
 You can separately perform `union` operations on PyODPS and Pandas collections. You can also separately perform `union` operations on PyODPS and database collections. In this case, the calculation is performed on PyODPS.
 
-#### Window functions
+#### 9.6.15 Window functions
 
 This topic describes window functions that are supported by the DataFrame API.
 
@@ -11433,7 +11768,7 @@ The `cumsum` , `cummax` , `cummin` , `cummean` , `cummedian` , `cumcount` , and 
 | preceding | The start of a window. |
 | following | The end of a window. |
 
-#### Plotting
+#### 9.6.16 Plotting
 
 This topic describes the plotting feature that is provided by Alibaba Cloud MaxCompute SDK for Python (PyODPS) DataFrame. To enable the plotting feature, install the pandas and Matplotlib libraries. Run the `pip install matplotlib` command to install the Matplotlib library, and run the following sample code in Jupyter to create plots.
 
@@ -11496,7 +11831,7 @@ The `plot` function also supports the following parameters.
 | titlesize | The size of the title. |
 | annotate | Specifies whether to add an annotation. |
 
-#### Debugging
+#### 9.6.17 Debugging
 
 Alibaba Cloud MaxCompute SDK for Python (PyODPS) DataFrame optimizes the execution process of each operation. You can enable the system to display the entire computation process in a visualized manner.
 
@@ -11521,7 +11856,7 @@ In this case, the entire execution process runs in two steps because a cache ope
 Call the `compile` method to view compiled results of SQL statements at the MaxCompute SQL backend.
 
 ```
->>> df = iris.groupby('name').agg(sepalwidth=iris.sepalwidth.max()) >>> df.compile() Stage 1: SQL compiled: SELECT
+>>> df = iris.groupby('name').agg(sepalwidth=iris.sepalwidth.max()) >>> df.compile() Stage 1: SQL compiled:
   t1.`name`,
   MAX(t1.`sepalwidth`) AS `sepalwidth`
 FROM test_pyodps_dev.`pyodps_iris` t1 GROUP BY
@@ -11556,7 +11891,7 @@ At the end of compiling, set `DEBUG` to False to complete computation on MaxComp
 
 Some programs that pass local debugging may fail to run on MaxCompute because of the limits of the sandbox.
 
-### Configurations
+### 9.7 Configurations
 
 This topic describes the parameters provided by PyODPS. You can use `odps.options` to obtain the parameters provided by PyODPS.
 
@@ -11634,7 +11969,7 @@ ation to set the limit to a relatively large value during a sort operation. opti
 | ml.use model transfer _ _ | Specifies whether to use ModelTransfer to obtain the Predictive Model Markup Language (PMML) files of models. | False |
 | ml.model volume _ | The name of the volume used by ModelTransfer. | pyodps volume _ |
 
-### Generate a third-party
+### 9.8 Generate a third-party package for PyODPS
 
 **package for PyODPS**
 
@@ -11873,9 +12208,9 @@ The following table describes the parameters available for `pyodps-pack` command
 
 For more information about how to use third-party packages, see Reference a third-party package in a PyODPS node.
 
-### Best practices
+### 9.9 Best practices
 
-#### Runtime environments of PyODPS
+#### 9.9.1 Runtime environments of PyODPS DataFrame
 
 ### DataFrame
 
@@ -11918,7 +12253,7 @@ The **directory structure** in DataStudio is not an actual directory structure i
 
 Personal computer or on-premises server: Locally access the MaxCompute table. If you can access the endpoint, use PyODPS or DataFrame to access the MaxCompute table. Notebook/DataWorks: Access the MaxCompute table by using on-premises code. If you can access the endpoint, use PyODPS/DataFrame to access the MaxCompute table. If you cannot access the endpoint, contact the platform provider for technical support. Map, apply, map_reduce, and custom aggregate functions: The MaxCompute executor does not support access to endpoints or Tunnel endpoints, and no PyODPS package is available. Therefore, you cannot directly use ODPS entry objects or PyODPS DataFrame to access other MaxCompute tables. You cannot pass these objects from outside of UDFs. If the table does not contain a large amount of data, we recommend that you specify a DataFrame as a resource. For more information, see Reference resources. If the table contains a large amount of data, we recommend that you join tables.
 
-#### Reference a third-party package in a
+#### 9.9.2 Reference a third-party package in a PyODPS node
 
 **PyODPS node**
 
@@ -12190,7 +12525,7 @@ You can compress binary packages that contain only source code into WHL files by
 python setup.py bdist_wheel
 ```
 
-#### Use a PyODPS node to query data
+#### 9.9.3 Use a PyODPS node to query data based on specific criteria
 
 **based on specific criteria**
 
@@ -12278,7 +12613,7 @@ h=http://service.cn.maxcompute.aliyun.com/api&p=xxxx&i=2019xxxx&token=xxxx
 0 4.8 3.4 1.6 0.2 Iris-setosa 1 4.8 3.4 1.9 0.2 Iris-setosa 2 4.7 3.2 1.6 0.2 Iris-setosa 3 4.8 3.1 1.6 0.2 Iris-setosa 4 4.9 2.4 3.3 1.0 Iris-versicolor
 ```
 
-#### Use a PyODPS node to pass parameters
+#### 9.9.4 Use a PyODPS node to pass parameters
 
 This topic describes how to use a PyODPS node to pass parameters.
 
@@ -12353,7 +12688,7 @@ vii. Click the **Run with Parameters** icon on the toolbar. viii. In the **Param
 **dt**: Set this parameter to **dt=20190715**.
 ix. View the execution result of the node on the **Runtime Log** tab.
 
-#### Use a PyODPS node to read data from a
+#### 9.9.5 Use a PyODPS node to read data from a partitioned table
 
 **partitioned table**
 
@@ -12439,7 +12774,7 @@ print("Query data in the partitioned table by using Method 3:") for record in o.
 
 vii. Click **Advanced Run with Parameters**. viii. In the **Parameters** dialog box, configure the parameters and click **Run**. Configuration Parameter **dt**: Set this parameter to **dt=20190715**. ix. View the execution result of the node on the **Runtime Log** tab.
 
-#### View a first-level partition with PyODPS
+#### 9.9.6 View a first-level partition with PyODPS
 
 This topic shows you how to view a first-level partition in PyODPS.
 
@@ -12514,7 +12849,7 @@ pt_df = DataFrame(o.get_table('user_detail').get_partition('dt=20190715')) print
 
 v. Click the icon. vi. You can view the execution results in the **Running Log**.
 
-#### PyODPS: Sequence and execution
+#### 9.9.7 PyODPS: Sequence and execution
 
 This topic describes how to perform sequence and execution operations in PyODPS.
 
@@ -12620,7 +12955,7 @@ Executing user script with PyODPS 0.8.0 Sql compiled: CREATE TABLE tmp_pyodps_4a
 0 4.9 3.0 1.4 0.2 Iris-setosa 1 4.7 3.2 1.3 0.2 Iris-setosa 2 4.6 3.1 1.5 0.2 Iris-setosa 454.6 3.05100671141 4.4 2019-08-13 10:52:48 INFO ================================================================= 2019-08-13 10:52:48 INFO Exit code of the Shell command 0 2019-08-13 10:52:48 INFO --- Invocation of Shell command completed --- 2019-08-13 10:52:48 INFO Shell run successfully! 2019-08-13 10:52:48 INFO Current task status: FINISH
 ```
 
-#### Use a PyODPS node to aggregate data
+#### 9.9.8 Use a PyODPS node to aggregate data
 
 This topic describes how to use a PyODPS node to aggregate data.
 
@@ -12706,7 +13041,7 @@ df5 = DataFrame(pd.DataFrame({'a': np.random.randint(100000, size=100000)})) pri
 In this example, the following result is returned:
 
 ```
-Executing user script with PyODPS 0.8.0 Sql compiled: CREATE TABLE tmp_pyodps_28b83337_87f9_4b11_a084_f1896758d53b LIFECYCLE 1 AS SELECT pyodps_udf_1567394092_9467b7ba_3121_4105_81dc_431e8e68be39(t3.`sepallength_count`, t3 .`sepallength_mean`, t3.`sepallength_std`, t3.`sepallength_min`, t3.`sepallength_quantile_25`, t3.`sepallength_quantile_50`, t3.`sepallength_quantile_75`, t3.`sepallength_max`, t3.`sepalwidth_count`, t3.`sepalw idth_mean`, t3.`sepalwidth_std`, t3.`sepalwidth_min`, t3.`sepalwidth_quantile_25`, t3 .`sepalwidth_quantile_50`, t3.`sepalwidth_quantile_75`, t3.`sepalwidth_max`, t3.`peta llength_count`, t3.`petallength_mean`, t3.`petallength_std`, t3.`petallength_min`, t3 .`petallength_quantile_25`, t3.`petallength_quantile_50`, t3.`petallength_quantile_75`, t3.`petallength_max`, t3.`petalwidth_count`, t3.`petalw idth_mean`, t3.`petalwidth_std`, t3.`petalwidth_min`, t3.`petalwidth_quantile_25`, t3 .`petalwidth_quantile_50`, t3.`petalwidth_quantile_75`, t3.`petalwidth_max`) AS (`typ e`, `sepallength`, `sepalwidth`, `petallength`, `petalwidth`) FROM (
+Executing user script with PyODPS 0.8.0 Sql compiled: CREATE TABLE tmp_pyodps_28b83337_87f9_4b11_a084_f1896758d53b LIFECYCLE 1 AS pyodps_udf_1567394092_9467b7ba_3121_4105_81dc_431e8e68be39(t3.`sepallength_count`, t3 .`sepallength_mean`, t3.`sepallength_std`, t3.`sepallength_min`, t3.`sepallength_quantile_25`, t3.`sepallength_quantile_50`, t3.`sepallength_quantile_75`, t3.`sepallength_max`, t3.`sepalwidth_count`, t3.`sepalw idth_mean`, t3.`sepalwidth_std`, t3.`sepalwidth_min`, t3.`sepalwidth_quantile_25`, t3 .`sepalwidth_quantile_50`, t3.`sepalwidth_quantile_75`, t3.`sepalwidth_max`, t3.`peta llength_count`, t3.`petallength_mean`, t3.`petallength_std`, t3.`petallength_min`, t3 .`petallength_quantile_25`, t3.`petallength_quantile_50`, t3.`petallength_quantile_75`, t3.`petallength_max`, t3.`petalwidth_count`, t3.`petalw idth_mean`, t3.`petalwidth_std`, t3.`petalwidth_min`, t3.`petalwidth_quantile_25`, t3 .`petalwidth_quantile_50`, t3.`petalwidth_quantile_75`, t3.`petalwidth_max`) AS (`typ e`, `sepallength`, `sepalwidth`, `petallength`, `petalwidth`) FROM (
   SELECT COUNT(t2.`sepallength`) AS `sepallength_count`, AVG(t2.`sepallength`) AS `se
 pallength_mean`, STDDEV_SAMP(t2.`sepallength`) AS `sepallength_std`, MIN(t2.`sepallength`) AS `sepallength_min`, PERCENTILE(t2.`sepallength`, 0.25) AS `se pallength_quantile_25`, PERCENTILE(t2.`sepallength`, 0.5) AS `sepallength_quantile_50`, PERCENTILE(t2.`sepallength`, 0.75) AS `sepallength_quantile_75`, MAX(t2.`sepallength`) AS `sepallength_max`, COUNT(t2.`sepalwidth`) AS `sepalwidth_count`, AVG(t2.`sepalwidth`) AS `sepalwidth_mean`, STDDEV_SAMP(t2.`sepalwidth`) AS `sepalwidth_std`, MIN(t2.`sepalwidth`) AS `sepalwidth_min`, PERCENTILE(t2.`sepalwidth`, 0.25) AS `sepal width_quantile_25`, PERCENTILE(t2.`sepalwidth`, 0.5) AS `sepalwidth_quantile_50`, PER CENTILE(t2.`sepalwidth`, 0.75) AS `sepalwidth_quantile_75`, MAX(t2.`sepalwidth`) AS ` sepalwidth_max`, COUNT(t2.`petallength`) AS `petallength_count`, AVG(t2.`petallength`) AS`petallength_mean`, STDDEV_SAMP(t2.`petallength`) AS `petalle ngth_std`, MIN(t2.`petallength`) AS `petallength_min`, PERCENTILE(t2.`petallength`, 0 .25) AS `petallength_quantile_25`, PERCENTILE(t2.`petallength`, 0.5) AS `petallength_quantile_50`, PERCENTILE(t2.`petallength`, 0.75) AS `petallength_quantile_75`, MAX(t2.`petallength`) AS `petallength_max`, COUNT(t2`petalwidth`)AS`petalwidthcount` AVG(t2`petalwidth`)AS
 ```
@@ -12753,7 +13088,7 @@ SELECT t1.`name`, pyodps_udf_1567394220_49231d7a_faeb_4f2f_9de5_36c4aefaa29b(t1.
 0 Iris-setosa -77.8 1 Iris-versicolor -158.3 2 Iris-virginica -180.7 63021
 ```
 
-#### Use a PyODPS node to perform column
+#### 9.9.9 Use a PyODPS node to perform column operations
 
 **operations**
 
@@ -12893,7 +13228,7 @@ Sql compiled: CREATE TABLE tmp_pyodps_d684aded_8ad8_4119_8558_1fddd774dd3f LIFEC
 0 4-5 1 4-5 2 4-5 3 4-5 4 None Sql compiled: CREATE TABLE tmp_pyodps_080a677e_904b_4edc_a961_160f8c664d7f LIFECYCLE 1 AS SELECT CASE WHEN (0 < t1.`sepallength`) AND (t1.`sepallength` <= 1) THEN '0-1' WHEN ( 1 < t1.`sepallength`) AND (t1.`sepallength` <= 2) THEN '1-2' WHEN (2 < t1.`sepallength`) AND (t1.`sepallength` <= 3) THEN '2-3' WHEN (3 < t1.`sepallength`) AND (t1.`sepallength` <= 4) THEN '3-4' WHEN (4 < t1.`sepallength`) AND (t1.`sepallength` <= 5) THEN '4-5' WHEN 5 < t1.`sepallength` THEN '5-' END AS `sepall ength_cut` FROM DQC_0221_dev.`tmp_pyodps_d9e5d64e_1f21_4ffb_993f_70d3f36b6553` t1
 ```
 
-#### Use a PyODPS node to sort data
+#### 9.9.10 Use a PyODPS node to sort data
 
 This topic describes how to use a PyODPS node to sort data.
 
@@ -12968,7 +13303,7 @@ LIMIT 10000 Instance ID: 20191010061616553gw3m9592
 0 5.0 2.0 3.5 1.0 Iris-versicolor 1 6.0 2.2 5.0 1.5 Iris-virginica 2 6.2 2.2 4.5 1.5 Iris-versicolor 3 6.0 2.2 4.0 1.0 Iris-versicolor 4 6.3 2.3 4.4 1.3 Iris-versicolor
 ```
 
-#### Use a PyODPS node to deduplicate
+#### 9.9.11 Use a PyODPS node to deduplicate data
 
 **data**
 
@@ -13027,7 +13362,7 @@ Sql compiled: CREATE TABLE tmp_pyodps_ed85ebd5_d678_44dd_9ece_bff1822376f6 LIFEC
 0 Iris-setosa 1 Iris-versicolor 2 Iris-virginica
 ```
 
-#### Use a PyODPS node to sample data
+#### 9.9.12 Use a PyODPS node to sample data
 
 This topic describes how to use a PyODPS node to sample data.
 
@@ -13198,7 +13533,7 @@ Sub Instance: stratified_sampling (20191010064831874g7fbn62m_fc9eddb7_42f1_49fe_
 13 5.0 3.4 1.6 0.4 Iris-setosa 14 5.2 3.5 1.5 0.2 Iris-setosa 15 5.2 3.4 1.4 0.2 Iris-setosa 16 4.7 3.2 1.6 0.2 Iris-setosa 17 5.2 4.1 1.5 0.1 Iris-setosa 18 5.0 3.2 1.2 0.2 Iris-setosa 19 5.1 3.4 1.5 0.2 Iris-setosa 20 4.5 2.3 1.3 0.3 Iris-setosa 21 5.0 3.5 1.6 0.6 Iris-setosa 22 5.1 3.8 1.9 0.4 Iris-setosa 23 5.1 3.8 1.6 0.2 Iris-setosa 24 5.3 3.7 1.5 0.2 Iris-setosa 25 7.0 3.2 4.7 1.4 Iris-versicolor 26 6.4 3.2 4.5 1.5 Iris-versicolor 27 6.9 3.1 4.9 1.5 Iris-versicolor 28 6.5 2.8 4.6 1.5 Iris-versicolor 29 5.7 2.8 4.5 1.3 Iris-versicolor 30 6.6 2.9 4.6 1.3 Iris-versicolor 31 5.6 2.9 3.6 1.3 Iris-versicolor 32 5.6 3.0 4.5 1.5 Iris-versicolor 33 5.6 2.5 3.9 1.1 Iris-versicolor 34 6.1 2.8 4.7 1.2 Iris-versicolor 35 6.8 2.8 4.8 1.4 Iris-versicolor 36 5.5 2.4 3.8 1.1 Iris-versicolor 37 5.5 2.4 3.7 1.0 Iris-versicolor 38 6.0 2.7 5.1 1.6 Iris-versicolor 39 5.6 3.0 4.1 1.3 Iris-versicolor 40 5.5 2.6 4.4 1.2 Iris-versicolor 41 6.1 3.0 4.6 1.4 Iris-versicolor 42 5.7 3.0 4.2 1.2 Iris-versicolor 43 5.7 2.9 4.2 1.3 Iris-versicolor 44 6.2 2.9 4.3 1.3 Iris-versicolor
 ```
 
-#### Use a PyODPS node to scale data
+#### 9.9.13 Use a PyODPS node to scale data
 
 This topic describes how to use a PyODPS node to scale data.
 
@@ -13346,7 +13681,7 @@ ON t2.`idx_col_1570691157` == t5.`idx_col_1570691157` Instance ID: 2019101007055
 0 name1 4 1.436467 1 name2 2 0.026118 2 name2 3 -1.540938 3 name1 4 0.574587 4 name1 3 -0.992468 5 name1 3 0.496234
 ```
 
-#### Use a PyODPS node to process null
+#### 9.9.14 Use a PyODPS node to process null values
 
 **values**
 
@@ -13431,7 +13766,7 @@ Sql compiled: CREATE TABLE tmp_pyodps_d0c7d8c2_be38_4d48_b0eb_e89bae5bde01 LIFEC
 0 0 name1 1.0 1.0 3.0 4.0 1 1 name1 2.0 2.0 2.0 1.0 2 2 name1 3.0 4.0 1.0 1.0 3 3 name1 NaN 1.0 2.0 3.0 4 4 name1 1.0 1.0 3.0 4.0 5 5 name1 1.0 2.0 3.0 4.0 6 6 name1 NaN NaN NaN NaN
 ```
 
-### FAQ about PyODPS
+### 9.10 FAQ about PyODPS
 
 This topic provides answers to some frequently asked questions (FAQ) about PyODPS.
 
@@ -13859,11 +14194,11 @@ You can use one of the following methods to resolve this issue: Upgrade your SDK
 fromodps.typesimportDecimal Decimal._max_precision=38
 ```
 
-### PyODPS API overview
+### 9.11 PyODPS API overview
 
 This topic provides the links to PyODPS API documentation, which provides parameter descriptions and examples of each function: Definitions DataFrame Reference ons
 
-## Java sandbox limitations
+## 10 Java sandbox limitations
 
 This document outlines the Java sandbox limitations for MaxCompute MapReduce and UDF programs in a distributed environment.
 
@@ -13873,19 +14208,19 @@ This document outlines the Java sandbox limitations for MaxCompute MapReduce and
 
 These limitations do not apply to the main program of a MapReduce job. You cannot access local files directly. Instead, you must use the MaxCompute MapReduce interfaces. You cannot access the distributed file system directly. Instead, you must use MaxCompute MapReduce to access table records. You cannot make JNI calls. You cannot create Java threads or spawn a child process to execute Linux commands. You cannot perform network operations, such as retrieving the local IP address. Your use of Java reflection is restricted. You do not have the **suppressAccessChecks** permission, so you cannot call setAccessible(true) on a private property or method to read its value or invoke it. If you attempt to use these methods, your code will throw an **access denied** exception. enhancement packages
 
-## MaxCompute feature
+## 11 MaxCompute feature enhancement packages
 
 **enhancement packages**
 
-### Joint computing
+### 11.1 Joint computing enhancement package
 
 **enhancement package**
 
-#### Overview
+#### 11.1.1 Overview
 
 The joint computing enhancement package allows you to access tables or data of Object Storage Service (OSS), Tablestore, and ApsaraDB RDS by using external tables in MaxCompute and provides computing capabilities such as Spark on MaxCompute based on a joint computing platform. This way, you can use the joint computing enhancement package to process data in MaxCompute based on open source technical solutions. This topic describes the joint computing enhancement package. Compared with open source Spark of earlier versions, the joint computing enhancement package significantly improves the performance, stability, version compatibility, management capabilities, and compatibility with OSS and Hadoop. The joint computing enhancement package also provides the external table feature. The external table feature allows you to directly access data in data lakes. Spark on MaxCompute is a computing service that is provided by MaxCompute and is compatible with open source Spark. Spark on MaxCompute provides a Spark computing framework based on unified computing resource and dataset permission systems. The service allows you to use your preferred development method to submit and run Spark jobs. Spark on MaxCompute can fulfill diverse data processing and analysis requirements. Spark on MaxCompute allows you to migrate data in OSS to data warehouses based on the capabilities of Spark. This helps establish a connection between data warehouses and data lakes. As the performance of Spark on MaxCompute is gradually improved, Spark on MaxCompute can provide better performance and management capabilities than open source Spark based on the large-scale storage and computing capabilities of MaxCompute. Spark on MaxCompute also supports Spark 2.3.0 and Spark 2.4.5. As big data services continuously grow, new data use scenarios constantly emerge. The powerful computing capabilities of MaxCompute is gradually optimized to process different external data instead of only internal data in special formats. MaxCompute provides external tables to process data that is stored outside MaxCompute internal tables. You can execute simple DDL statements to create external tables in MaxCompute. Then, you can associate the external tables with various external data sources. This way, you can use the external tables to read data from or write data to the external data sources. In most cases, external tables can be used in the same manner as MaxCompute internal tables. This way, you can fully utilize the computing capabilities of MaxCompute SQL to process external data. External tables provide built-in extractors for accessing external data sources. You can also configure custom extractors to access external unstructured data. You can use Hive SerDe handlers to process various open source data formats in a flexible manner. MaxCompute external tables support various external data sources by using a Java Database Connectivity (JDBC) driver, including OSS, Tablestore, ApsaraDB for HBase, ApsaraDB RDS, and Hologres.
 
-#### Use VolumeFs in Spark on
+#### 11.1.2 Use VolumeFs in Spark on MaxCompute
 
 **MaxCompute**
 
@@ -14070,19 +14405,19 @@ modelLoadOss.predict(feature) + " feature:" + feature.toArray.mkString(",")).col
 
 `}` `}`
 
-#### Spark on MaxCompute
+#### 11.1.3 Spark on MaxCompute
 
-##### Overview
+##### 11.1.3.1 Overview
 
 This topic describes the definition and core features of Spark on MaxCompute. Spark on MaxCompute is a solution developed by Alibaba Cloud to enable the seamless use of Spark on the MaxCompute platform. It supplements a wide variety of features to MaxCompute. Spark on MaxCompute ensures the same user experience as native Spark and offers native Spark components and APIs. Spark on MaxCompute can access MaxCompute data sources and enhance security for multi-tenant scenarios. Spark on MaxCompute can also act as a management platform to share resources, storage, and user systems between Spark and MaxCompute jobs and ensure high performance at low costs. Spark can work with MaxCompute to create more efficient data processing solutions. Spark community applications can run seamlessly on Spark on MaxCompute. Spark on MaxCompute has an independent data development node in DataWorks and supports data development in DataWorks.
 
-##### Project resources
+##### 11.1.3.2 Project resources
 
 enhancement packages This topic describes the project resources that you must obtain before you can use Spark on MaxCompute. Before you use Spark on MaxCompute, you must obtain the following project resources: Spark on MaxCompute release package: You must download the latest Spark on MaxCompute release package. Spark on MaxCompute plug-in: This is an open source plug-in. You can download it from Aliyun Cupid SDK. After you prepare the preceding project resources, you must complete environment configuration. Then, you can run related GitHub demos.
 
-##### Environment settings
+##### 11.1.3.3 Environment settings
 
-###### Decompress the Spark on MaxCompute
+###### 11.1.3.3.1 Decompress the Spark on MaxCompute release package
 
 **release package**
 
@@ -14105,7 +14440,7 @@ This topic describes the structure of the obtained folders and files after you d
 |-- yarn
 ```
 
-###### Set environment variables
+###### 11.1.3.3.2 Set environment variables
 
 This topic describes how to set the environment variables required by Spark on MaxCompute. Set environment variables based on your business requirements. The main environment variables are **JAVA_HOME** and **SPARK_HOME**.
 
@@ -14135,7 +14470,7 @@ If you use PySpark, install Python 2.7. Then, run the following command to set t
 export PATH=/path/to/python/bin/:$PATH
 ```
 
-###### Configure Spark-defaults.conf
+###### 11.1.3.3.3 Configure Spark-defaults.conf
 
 This topic describes how to configure the Spark-defaults.conf file, which is required when you use Spark on MaxCompute. The $SPARK_HOME/conf directory contains a file named **Spark-defaults.conf**. Before you submit a Spark task to MaxCompute, you must configure your MaxCompute account in this file. The following information is the default configuration in the file. You need only to specify the blank parameters based on your account information.
 
@@ -14158,7 +14493,7 @@ spark.driver.extraJavaOptions - Dscala.repl.reader=com.aliyun.odps.spark_repl.Od
 spark.hadoop.odps.cupid.bearer.token.enable=false spark.hadoop.odps.exec.dynamic.partition.mode=nonstrict
 ```
 
-##### Quick start
+##### 11.1.3.4 Quick start
 
 enhancement packages This topic describes the basic operations for you to get started with Spark on MaxCompute.
 1. Obtain and decompress the Spark on MaxCompute release package.
@@ -14224,7 +14559,7 @@ h=http://***:80/api&p=odps_smoke_test&i=20180209075148695gbkp8e01&t=spark&id=app
 18/02/09 15:52:28 INFO ShutdownHookManager: Shutdown hook called 18/02/09 15:52:28 INFO ShutdownHookManager: Deleting directory /tmp/spark-d77416ad-79a8 -49f7-931d-0533663b5d85
 ```
 
-##### Demo
+##### 11.1.3.5 Demo
 
 This topic provides a demo on how to use Spark on MaxCompute. The demo consists of the following steps:
 1. Modify the configuration file.
@@ -14245,11 +14580,11 @@ bin/spark-submit --class com.aliyun.odps.spark.examples.WordCount --master yarn-
 ```
 
 3. Access the link in the command output.
-Logview SparkUI Spark History enhancement packages
+SparkUI Spark History enhancement packages
 
-##### Common cases
+##### 11.1.3.6 Common cases
 
-###### WordCount example
+###### 11.1.3.6.1 WordCount example
 
 This topic provides an example of using Spark on MaxCompute to run WordCount. You must download the GitHub project and compile the project before you can run related demos.
 
@@ -14280,7 +14615,7 @@ package com.aliyun.odps.spark.examples import org.apache.spark.sql.SparkSession 
 bin/spark-submit \ --master yarn-cluster \ --class com.aliyun.odps.spark.examples.WordCount \ /path/to/aliyun-cupid-sdk/examples/spark-examples/target/spark-examples_2.11-1.0.0- SNAPSHOT-shaded.jar
 ```
 
-###### OSS access example
+###### 11.1.3.6.2 OSS access example
 
 This topic provides an example of using Spark on MaxCompute to access OSS. Example: enhancement packages
 
@@ -14310,7 +14645,7 @@ package com.aliyun.odps.spark.examples.oss import org.apache.spark.sql.SparkSess
 ./bin/spark-submit --jars cupid/hadoop-aliyun-package-3.0.0-alpha2-odps-jar-with-dependencies.jar --class com.aliyun.odps.spark.examples.oss.SparkUnstructuredDataCompute /path/to/aliyun-cupid-sdk/examples/spark-examples/target/spark-examples_2.11-1.0.0-SNAP SHOT-shaded.jar
 ```
 
-###### MaxCompute table read and write
+###### 11.1.3.6.3 MaxCompute table read and write example
 
 **example**
 
@@ -14447,7 +14782,7 @@ bin/spark-submit \ --master yarn-cluster \ --class com.aliyun.odps.spark.example
 
 You can use one of the following methods to adjust the MaxCompute table read concurrency: Change the value of the **spark.hadoop.odps.input.split.size** parameter. A larger value indicates fewer Map tasks. The default value is 256 MB. Set **numPartition** in **OdpsOps.readTable**. The value determines the number of Map tasks. The number is calculated based on **spark.hadoop.odps.input.split.size**.
 
-###### MaxCompute Table Spark-SQL example
+###### 11.1.3.6.4 MaxCompute Table Spark-SQL example
 
 enhancement packages This topic provides an example of using SQLContext in Spark on MaxCompute to read data from and write data to a MaxCompute Table.
 
@@ -14499,7 +14834,7 @@ package com.aliyun.odps.spark.examples import org.apache.spark.sql.SparkSession 
 bin/spark-submit \ --master yarn-cluster \ --class com.aliyun.odps.spark.examples.OdpsTableReadWrite \ /path/to/aliyun-cupid-sdk/examples/spark-examples/target/spark-examples_2.11-1.0.0-SNAP SHOT-shaded.jar
 ```
 
-###### MaxCompute Table PySpark example
+###### 11.1.3.6.5 MaxCompute Table PySpark example
 
 This topic provides an example of using PySpark in Spark on MaxCompute to read data from and write data to a MaxCompute table. Example:
 
@@ -14526,7 +14861,7 @@ Run the following command to submit the job:
 spark-submit \ --master yarn-cluster \ --jars /path/to/aliyun-cupid-sdk/external/cupid-datasource/target/cupiddatasource_2.11-1.0.0-SNAPSHOT.jar \ --py-files /path/to/aliyun-cupid-sdk/examples/spark-examples/src/main/python/odps.zip \ /path/to/aliyun-cupid-sdk/examples/spark-examples/src/main/python/odps_table_rw.py
 ```
 
-###### MLlib example
+###### 11.1.3.6.6 MLlib example
 
 This topic provides an example of using MLlib in Spark on MaxCompute. We recommend that you use OSS for read and write operations in the MLlib model. Example: enhancement packages
 
@@ -14576,7 +14911,7 @@ modelLoadOss.predict(feature) + " feature:" + feature.toArray.mkString(",")).col
 ./bin/spark-submit --jars cupid/hadoop-aliyun-package-3.0.0-alpha2-odps-jar-with-dependencies.jar --class com.aliyun.odps.spark.examples.mllib.KmeansModelSaveToOss /path/to/aliyun-cupid-sdk/examples/spark-examples/target/spark-examples_2.11-1.0.0-SNAP SHOT-shaded.jar
 ```
 
-###### Example of Spark Streaming-
+###### 11.1.3.6.7 Example of Spark Streaming-NetworkWordCount
 
 **NetworkWordCount**
 
@@ -14622,7 +14957,7 @@ StorageLevel.MEMORY_AND_DISK_SER)
 bin/spark-submit \ --master local[4] \ --class com.aliyun.odps.spark.examples.streaming.NetworkWordCount \ /path/to/aliyun-cupid-sdk/examples/spark-examples/target/spark-examples_2.11-1.0.0-SNAP SHOT-shaded.jar localhost 9999
 ```
 
-##### Maven dependencies
+##### 11.1.3.7 Maven dependencies
 
 This topic describes Maven dependencies of Spark on MaxCompute. The GitHub project described in the Common cases topic can be used as a template for your quick start. For custom development, use the following pom.xml file.
 
@@ -14691,9 +15026,9 @@ Client: encapsulates an SDK in Cupid client mode.
 
 enhancement packages
 
-##### Special notes
+##### 11.1.3.8 Special notes
 
-###### Running mode
+###### 11.1.3.8.1 Running mode
 
 This topic describes the running mode of Spark on MaxCompute. Spark on MaxCompute supports three running modes: local, cluster, and DataWorks.
 
@@ -14733,7 +15068,7 @@ and Jobview from the log for further analysis and diagnosis.
 5. After the Spark job is defined, orchestrate and schedule services of different types in the
 business flow as required.
 
-###### Spark Streaming tasks
+###### 11.1.3.8.2 Spark Streaming tasks
 
 This topic describes the configurations that are required to run Spark Streaming tasks. MaxCompute supports Spark Streaming. To support Spark Streaming tasks that run for a long period of time, you must add the following special configurations to the **spark-defaults.conf** file:
 
@@ -14749,7 +15084,7 @@ spark.streaming.receiver.writeAheadLog.enable=true
 loss but reduces data processing efficiency.
 ```
 
-###### Job diagnosis
+###### 11.1.3.8.3 Job diagnosis
 
 This topic describes job diagnosis of Spark on MaxCompute. After you submit a job, you must check the job log to determine whether the job is submitted and executed as expected. MaxCompute provides Logview and Spark web UI for you to diagnose jobs. The following example demonstrates how to submit a job in spark-submit mode. Logs are also generated when you use DataWorks to run Spark jobs.
 
@@ -14788,9 +15123,9 @@ The tracking URL in the log indicates that your job is submitted to the MaxCompu
 2. Click **StdOut** in the Logs column that corresponds to the driver to view the output of the
 Spark job.
 
-##### APIs supported by Spark
+##### 11.1.3.9 APIs supported by Spark
 
-###### Spark Shell
+###### 11.1.3.9.1 Spark Shell
 
 This topic describes the Spark shell API of Spark on MaxCompute. Run the following commands to start the application of the Spark shell API:
 
@@ -14804,7 +15139,7 @@ Example:
 sc.parallelize(0 to 100, 2).collect sql("show tables").show sql("select * from spark_user_data").show(200,100)
 ```
 
-###### Spark R
+###### 11.1.3.9.2 Spark R
 
 enhancement packages This topic describes the SparkR API of Spark on MaxCompute. Run the following commands to start the application of the SparkR API:
 
@@ -14826,7 +15161,7 @@ df <- as.DataFrame(faithful)
 head(select(df, df$eruptions)) head(select(df, "eruptions")) head(filter(df, df$waiting < 50)) results <- sql("FROM spark_user_data SELECT *") head(results)
 ```
 
-###### Spark SQL
+###### 11.1.3.9.3 Spark SQL
 
 This topic describes the Spark SQL API of Spark on MaxCompute. Run the following commands to start the application of the Spark SQL API:
 
@@ -14840,7 +15175,7 @@ Example:
 show tables; select * from spark_user_data limit 3;; quit;
 ```
 
-###### Spark JDBC
+###### 11.1.3.9.4 Spark JDBC
 
 This topic describes the Spark Java Database Connectivity (JDBC) API of Spark on MaxCompute. Run the following commands to start the application of the Spark JDBC API:
 
@@ -14854,7 +15189,7 @@ Example: enhancement packages
 !connect jdbc:hive2://localhost:10000/odps_smoke_test show tables; select * from mr_input limit 3; !quit
 ```
 
-##### Dynamic resource allocation of Spark
+##### 11.1.3.10 Dynamic resource allocation of Spark
 
 This topic describes the dynamic resource allocation (DRA) feature of Spark on MaxCompute. This feature is supported only in Spark 2.4.5 or later, which corresponds to Apsara Stack Enterprise Edition V3.13.0 or later.
 
@@ -14880,7 +15215,7 @@ spark.hadoop.odps.cupid.shuffleservice.enable=true // Required. This parameter s
 
 If DRA is enabled, the **spark.executor.instances** parameter is optional. If you configure the spark.executor.instances parameter, the effect of this parameter is equivalent to the effect of the `spark.dynamicAllocation.initialExecutors` parameter.
 
-##### FAQ of Spark on MaxCompute
+##### 11.1.3.11 FAQ of Spark on MaxCompute
 
 This topic provides answers to some frequently asked questions about Spark on MaxCompute.
 
@@ -14949,23 +15284,23 @@ No space left on device
 
 Spark on MaxCompute uses online storage to replace local storage. Shuffled data and overflow data of BlockManager are all stored online. Therefore, you must check the setting of the online storage space. The storage space is determined by the `spark.hadoop.odps.cupid.disk.driver.device_size` parameter. The default storage space is 20 GB and the maximum storage space is 100 GB. If the error persists after you increase the storage space to 100 GB, conduct further analysis. The most common cause is data skew. Data is unevenly distributed among blocks during the shuffle and cache processes. If this is the case, you can decrease the number of concurrent tasks in each executor (spark.executor.cores) or increase the number of executors (spark.executor.instances).
 
-#### OSS data source
+#### 11.1.4 OSS data source
 
 enhancement packages
 
-##### Overview
+##### 11.1.4.1 Overview
 
 This topic describes how to access and process Object Storage Service (OSS) data sources in MaxCompute. As a core computing component of the Alibaba Cloud big data platform, MaxCompute provides powerful computing capabilities. It can schedule a large number of nodes for parallel computing, and effectively manage the failover and retry mechanisms in a distributed computing environment. MaxCompute SQL implements a variety of logic to process data based on simple semantics. It is widely used within and outside Alibaba Group. It allows interoperability among different data sources and is crucial for building a data ecosystem for Alibaba Cloud. Some examples are provided to demonstrate how MaxCompute accesses and processes OSS data.
 
-##### Use a built-in extractor to read data from
+##### 11.1.4.2 Use a built-in extractor to read data from OSS
 
 **OSS**
 
-###### Overview
+###### 11.1.4.2.1 Overview
 
 This topic describes how to use a built-in extractor of MaxCompute to read data from Object Storage Service (OSS). You can use the built-in extractor of MaxCompute. This provides an easy way to read data that is stored in the specified format from OSS. You need only to create an external table as a source table for data queries. For example, a CSV file is stored in OSS. The **endpoint** is oss-cn-shanghaiinternal.aliyuncs.com, the **bucket** is oss-odps-test, and the data file is saved in /demo/SampleData/CSV/AmbulanceData/vehicle.csv. Some examples are provided to demonstrate how to use the built-in extractor to read data from OSS.
 
-###### Create an external table
+###### 11.1.4.2.2 Create an external table
 
 This topic describes how to create an external table when a built-in extractor is used. It also provides an example for reference. Execute the following statements to create an external table: enhancement packages
 
@@ -15004,7 +15339,7 @@ DESC EXTENDED <table_name>;
 
 In the output, you can view basic table information, which is similar to the information returned for a created internal table. In addition to the basic table information, you can view the storage handler and the OSS directory.
 
-###### Query an external table
+###### 11.1.4.2.3 Query an external table
 
 This topic describes how to query an external table when a built-in extractor is used. It also provides an example for reference. After an external table is created, you can use it the same way that you use a standard table. In this example, the vehicle.csv file in the /demo/SampleData/CSV/AmbulanceData/ directory contains the following data: enhancement packages
 
@@ -15041,7 +15376,7 @@ An external table can be managed only by using MaxCompute SQL, not MaxCompute Ma
 The system provides the following built-in storage handlers:
 **CsvStorageHandler**, **TsvStorageHandler**, and **TextStorageHandler**.
 
-###### MSCK REPAIR TABLE
+###### 11.1.4.2.4 MSCK REPAIR TABLE
 
 This topic describes the syntax of the MSCK REPAIR TABLE command in MaxCompute and provides usage examples.
 
@@ -15092,7 +15427,7 @@ external table.
 MSCK REPAIR TABLE orc_pt_v0 ADD PARTITIONS; --This command is equivalent to running the following three ALTER TABLE statements. ALTER TABLE orc_pt_v0 ADD PARTITION (pt=1); ALTER TABLE orc_pt_v0 ADD PARTITION (pt=10); ALTER TABLE orc_pt_v0 ADD PARTITION (pt=100);
 ```
 
-###### Read data from the CSV or TSV files
+###### 11.1.4.2.5 Read data from the CSV or TSV files compressed in the GZIP format
 
 **compressed in the GZIP format**
 
@@ -15154,15 +15489,15 @@ enhancement packages
 If you want to read data from and write data to an external table that is associated with compressed OSS data, configure both **odps.text.option.gzip.input.enabled** and
 **odps.text.option.gzip.output.enabled** as True when you create the external table.
 
-##### Use a custom extractor to read data from
+##### 11.1.4.3 Use a custom extractor to read data from OSS
 
 **OSS**
 
-###### Overview
+###### 11.1.4.3.1 Overview
 
 This topic describes how to use a custom extractor to read data from Object Storage Service (OSS). If OSS data is in a complex format and cannot be processed by the built-in extractor, you must use a custom extractor to read the OSS data. For example, a text file is stored in OSS. The columns of data records in the file are separated by vertical bars (**|**). The data file vehicle.csv is saved in the /demo/SampleData/CustomTxt/AmbulanceData/ directory. Some examples are provided to demonstrate how to use a custom extractor to read data from OSS.
 
-###### Define a storage handler
+###### 11.1.4.3.2 Define a storage handler
 
 This topic describes how to define a storage handler when a custom extractor is used. It also provides an example for reference. You can customize the logic to parse data. StorageHandler is the unified entrance of your custom logic. You can use StorageHandler to specify the types of custom extractors and enhancement packages Outputer. StorageHandler provides only a simple definition. For example, you can customize a **SpeicalTextStorageHandler**:
 
@@ -15183,7 +15518,7 @@ package com.aliyun.odps.udf.example.text; public class SpeicalTextStorageHandler
 **TextStorageHandler** that is built-in to MaxCompute can process the text
 data in which columns are separated by vertical bars (**|**). This example demonstrates how to customize a storage handler by using an SDK to process specially formatted data, especially in scenarios in which you use an extractor.
 
-###### Define an extractor
+###### 11.1.4.3.3 Define an extractor
 
 This topic describes how to define a custom extractor and provides an example.
 
@@ -15237,7 +15572,7 @@ return textLineToRecord(line); // `textLineToRecord` splits a line of data into 
 
 `}` `}` enhancement packages
 
-###### Compile and package code
+###### 11.1.4.3.4 Compile and package code
 
 This topic describes how to compile and package code when you use a custom extractor. You can compile and package Java code, and run the following command to upload the package to MaxCompute. The procedure is the same as that for a common Java user-defined function (UDF).
 
@@ -15245,7 +15580,7 @@ This topic describes how to compile and package code when you use a custom extra
 add jar odps-udf-example.jar;
 ```
 
-###### Create an external table
+###### 11.1.4.3.5 Create an external table
 
 This topic describes how to create an external table when a custom extractor is used. It also provides an example for reference. After you upload a JAR package, you must run the following command to create an external table. This command is similar to that you run when a built-in extractor is used. The difference is that a custom storage handler is used in this command.
 
@@ -15265,7 +15600,7 @@ vehicleId int, recordId int, patientId int, calls int, locationLatitute double, 
 STORED BY 'com.aliyun.odps.udf.example.text.SpeicalTextStorageHandler' -- STORED BY specifies the class name of a custom storage handler. WITH SERDEPROPERTIES('delimiter'='|') -- SERDEPROPERITES can be used to specify parameters. These parameters are transferred to an extractor by using DataAttributes. LOCATION 'oss://<*your-id*>:<*your-secret-key*>@oss-cn-shanghaiinternal.aliyuncs.com/oss-odps-test/Demo/SampleData/CustomTxt/AmbulanceData/' USING 'odps-udf-example.jar'; -- Specify the JAR package in which the class definition is located.
 ```
 
-###### Query an external table
+###### 11.1.4.3.6 Query an external table
 
 This topic describes how to query an external table when a custom extractor is used. It also provides an example for reference. In this example, the vehicle.csv file in the /demo/SampleData/CustomTxt/AmbulanceData/ directory contains the following data: enhancement packages
 
@@ -15295,7 +15630,7 @@ The following result is returned:
 +------------+------------+-----------+
 ```
 
-##### Use a custom extractor to read external
+##### 11.1.4.4 Use a custom extractor to read external unstructured data
 
 **unstructured data**
 
@@ -15400,13 +15735,13 @@ SELECT sentence_snr, id FROM speech_sentence_snr_external WHERE sentence_snr > 1
 
 A custom extractor allows you to execute SQL statements to process multiple audio files in OSS in a distributed manner. Similarly, you can use the large-scale computation capabilities of MaxCompute to process unstructured data, such as images and videos.
 
-##### Data partitions
+##### 11.1.4.5 Data partitions
 
-###### Overview
+###### 11.1.4.5.1 Overview
 
 This topic describes the data partitioning feature of external tables. enhancement packages LOCATION is used to specify an OSS directory, which is associated with an external table. MaxCompute reads all data in the OSS directory, including all files in the subdirectories. Due to a large amount of data accumulated in the directory, a full-text scan is performed. This operation results in extra I/O operations and prolongs the time required to process data. Two solutions are provided to address this issue: Reduce the amount of data: Plan data storage directories properly. Create multiple external tables for data from different parts, with LOCATION of each external table pointing to a subset of data. Partition data: Similar to internal tables, external tables support data partitioning. You can create partitions to manage the data. Some examples are provided to demonstrate how to use the data partitioning feature of external tables.
 
-###### Standard path format for partitioned
+###### 11.1.4.5.2 Standard path format for partitioned data on OSS
 
 **data on OSS**
 
@@ -15510,7 +15845,7 @@ SELECT count(distinct(ip)) FROM log_table_external WHERE year = '2017' AND month
 
 This query accesses only the logs from the second half of the year that are stored in OSS.
 
-###### Custom directories of partition data in
+###### 11.1.4.5.3 Custom directories of partition data in OSS
 
 **OSS**
 
@@ -15540,15 +15875,15 @@ enhancement packages
 
 The LOCATION parameter specifies an OSS directory. This directory maps to the partition that is added to the external table by using **ADD PARTITION**. This way, MaxCompute can access data in the OSS directory even if the directory is not in the partitionKey1=value1\partitionKey2=value2\...format. In addition, you can access the partition data in the subdirectory.
 
-###### Access fully-customized non-partitioned
+###### 11.1.4.5.4 Access fully-customized non-partitioned data subsets
 
 **data subsets**
 
 This topic describes how to access fully-customized non-partitioned data subsets. In some special cases, you may need to access an arbitrary subset of a file in an OSS directory, and the format of the directory where the files in this file subset are saved is not deterministic. The unstructured data processing framework of MaxCompute is able to handle this situation, but is not discussed in this topic. For more information about advanced operations, contact the MaxCompute technical team.
 
-##### Output OSS data
+##### 11.1.4.6 Output OSS data
 
-###### Create an external table
+###### 11.1.4.6.1 Create an external table
 
 This topic describes how to create an external table to write data to OSS.
 
@@ -15583,7 +15918,7 @@ The preceding DDL statement creates an external table named
 **tpch_lineitem_tsv_external** and defines its two key properties:
 Data storage location: The LOCATION clause maps the external table to an OSS path. This path is the target for all read and write operations on the table. Data storage format: The StorageHandler specifies how data is read and written. This example uses **com.aliyun.odps.TsvStorageHandler**, a built-in MaxCompute handler for reading and writing TSV files. You can also create a custom StorageHandler with the MaxCompute SDK.
 
-###### Write data to a TSV text file by using an
+###### 11.1.4.6.2 Write data to a TSV text file by using an INSERT statement on an external table
 
 **INSERT statement on an external table**
 
@@ -15609,13 +15944,13 @@ Data exported from MaxCompute to OSS is stored in a special file structure. If y
 **DISTRIBUTE BY l_discount** to the **INSERT OVERWRITE** statement. Then, a reduce stage
 with only one reducer is added at the end so that only one TSV file is generated.
 
-###### Write data to an unstructured file by
+###### 11.1.4.6.3 Write data to an unstructured file by using an INSERT statement on an external table
 
 **using an INSERT statement on an external table**
 
 This topic describes how to write data to an unstructured file by using an INSERT statement on an external table. MaxCompute provides the Outputer interface for data output. You can call this interface to write user data to a custom unstructured data file by using OutputStream. Further details are not provided in this topic. If you have related requirements, contact the MaxCompute technical team.
 
-###### Migrate data between different storage
+###### 11.1.4.6.4 Migrate data between different storage media by using MaxCompute
 
 **media by using MaxCompute**
 
@@ -15635,7 +15970,7 @@ further computations. Finally, the required information is extracted from the re
 
 You can perform the preceding steps based on your business requirements.
 
-##### STS mode authorization for OSS
+##### 11.1.4.7 STS mode authorization for OSS
 
 This topic describes the Security Token Service (STS) mode authorization for Object Storage Service (OSS), and provides an example for reference. When you create an external table, the Location-based OSS access account allows you to enter **************** and ******************** in plaintext mode. However, the account information may be exposed. To prevent account information from being exposed, MaxCompute provides a more secure way to access OSS. MaxCompute integrates RAM and STS of Alibaba Cloud to enhance account security. You can use one of the following methods to grant permissions: If the owners of MaxCompute and OSS use the same Alibaba Cloud account, you can authorize access to OSS with one click in the RAM console. Custom authorization is supported. i. You can log on to the RAM console and authorize access to OSS. Create a role named ************************* or ****************************** and enhancement packages compile the following policy content:
 
@@ -15732,9 +16067,9 @@ iii. Grant the **AliyunODPSRolePolicy** permission to the role.
 
 After authorization is complete, view the role details to obtain the RAM information of this role. You must specify the RAM information when you create an OSS external table later.
 
-#### Tablestore data source
+#### 11.1.5 Tablestore data source
 
-##### Overview
+##### 11.1.5.1 Overview
 
 This topic describes how to access and process data of Tablestore data sources in As the core computing component of the Alibaba Cloud big data platform, MaxCompute meets most distributed computing requirements within and outside Alibaba Group. MaxCompute SQL provides powerful support for the quick processing and storage of exabytes of offline data. As big data businesses continue to grow, many new data usage scenarios emerge. To adapt to the new scenarios, the MaxCompute computing framework is constantly evolving. Its powerful computation capabilities, originally designed to process internal data in special formats, have expanded to process external data sources in various formats. This topic describes how to import data from Tablestore to MaxCompute, which implements seamless interoperability between data sources. In online service scenarios, NoSQL KV storage (such as Bigtable or HBase) features flexible schema, easy scalability, and high real-time performance, compared with traditional databases. Alibaba Cloud Tablestore is a large-scale NoSQL data storage service based on the Apsara distributed operating system. It stores and allows real-time access to large volumes of key-value pairs. Tablestore is widely used by all business units in Alibaba Group and the Alibaba Cloud ecosystem. In particular, Tablestore features, such as row-level real-time update and override writing, supplement the append-only operations of MaxCompute tables. As a storage-oriented service, Tablestore does not provide sufficient computing capabilities to concurrently process large volumes of data. In this case, MaxCompute allows you to create external tables to access Tablestore data sources. Examples are provided to demonstrate how MaxCompute accesses and processes Tablestore data. enhancement packages
 
@@ -15742,11 +16077,11 @@ This topic describes how to access and process data of Tablestore data sources i
 
 This topic assumes that you have a basic knowledge of Tablestore operations. If you are not familiar with Tablestore or are new to the concept of key-value tables, you can first learn some basic Tablestore concepts, such as primary keys, partition keys, and attribute columns.
 
-##### Use MaxCompute to read and calculate
+##### 11.1.5.2 Use MaxCompute to read and calculate data in Tablestore
 
 **data in Tablestore**
 
-###### Create an external table
+###### 11.1.5.2.1 Create an external table
 
 This topic describes how to create an external table for a Table Store data source and provides an example.
 
@@ -15807,7 +16142,7 @@ enhancement packages
 
 The preceding example maps a Table Store table to a MaxCompute external table. You can then process the Table Store data directly through this external table.
 
-###### Use an external table to access
+###### 11.1.5.2.2 Use an external table to access Tablestore data
 
 **Tablestore data**
 
@@ -15829,7 +16164,7 @@ CREATE TABLE internal_orders AS SELECT odps_orderkey, odps_orderdate, odps_custk
 
 In this example, **internal_orders** is a MaxCompute table that you are familiar with. This table has all features of MaxCompute internal tables, such as efficient column compression for data storage and complete metadata. This table is stored in MaxCompute. Therefore, it can be accessed faster than an external table in Tablestore. This feature is particularly suitable for hotspot data that is used for multiple computations.
 
-##### Write data from MaxCompute to
+##### 11.1.5.3 Write data from MaxCompute to Tablestore
 
 **Tablestore**
 
@@ -15851,9 +16186,9 @@ enhancement packages
 
 Tablestore is a NoSQL service that stores data in the format of key-value pairs. Data outputs from MaxCompute affect only the rows that contain the primary keys of the Tablestore table. In addition, only the attribute columns specified when you create the table are updated. The columns that are not included in the external table are not modified. If you execute the `INSERT OVERWRITE` statement on the external table, MaxCompute inserts 200 data records into the table at a time by default. You can adjust a batch size to limit the total batch size to 4 MB.
 
-#### AnalyticDB data source
+#### 11.1.6 AnalyticDB data source
 
-##### Overview
+##### 11.1.6.1 Overview
 
 This topic describes how to create an external table in MaxCompute to access and process data from AnalyticDB. This enables efficient joint computation and synchronization with MaxCompute data after data in AnalyticDB is updated or processed.
 
@@ -15861,9 +16196,9 @@ This topic describes how to create an external table in MaxCompute to access and
 
 When you update or process data in AnalyticDB and need to perform joint computation with data in MaxCompute, you can create an external table to access AnalyticDB data directly. This eliminates the need to first synchronize the data to MaxCompute. The following example shows how to use MaxCompute to access and process data from AnalyticDB.
 
-##### Write data to AnalyticDB
+##### 11.1.6.2 Write data to AnalyticDB
 
-###### Create an external table
+###### 11.1.6.2.1 Create an external table
 
 This topic describes how to create an external table for an AnalyticDB data source. An external table establishes a data connection between MaxCompute and AnalyticDB, allowing you to run a federated query to analyze data across both services.
 
@@ -15901,7 +16236,7 @@ SET odps.sql.hive.compatible=true; DROP TABLE IF EXISTS ads_table_external; CREA
 STORED BY 'com.aliyun.odps.jdbc.JdbcStorageHandler' location 'jdbc:mysql://host:port/databasename? useSSL=false&user=${user}&password=${password}&table=${tablename}';
 ```
 
-###### Write and query data
+###### 11.1.6.2.2 Write and query data
 
 This topic describes how to write to and query data from AnalyticDB using an external table.
 
@@ -15918,7 +16253,7 @@ was written. For more information about these statements, see the following topi
 
 **statement > SELECT operations**
 
-##### Read data from AnalyticDB
+##### 11.1.6.3 Read data from AnalyticDB
 
 This topic describes how to read data from AnalyticDB and provides an example of how to verify an external table connection and retrieve source data.
 
@@ -15956,9 +16291,9 @@ SET odps.sql.hive.compatible=true; DROP TABLE IF EXISTS ads_read_external; CREAT
 STORED BY 'com.aliyun.odps.jdbc.JdbcStorageHandler' location 'jdbc:mysql://host:port/databasename? useSSL=false&user=${user}&password=${password}&table=${tablename}' -- Create an external table. SELECT * FROM ads_read_external; -- Query the external table.
 ```
 
-#### RDS data source
+#### 11.1.7 RDS data source
 
-##### Introduction
+##### 11.1.7.1 Introduction
 
 This topic describes how to create an external table in MaxCompute to access and process data from an RDS data source. This allows you to efficiently perform a federated query and synchronize data with MaxCompute after you update or process the data in RDS.
 
@@ -15970,9 +16305,9 @@ To perform a federated query with data in MaxCompute after updating or processin
 
 The corresponding table in RDS is not required when you create the external table. However, the table must exist in RDS before you perform `SELECT` or `INSERT` operations on the external table.
 
-##### Write data to RDS
+##### 11.1.7.2 Write data to RDS
 
-###### Create an external table
+###### 11.1.7.2.1 Create an external table
 
 Learn how to create an external table for an RDS data source. Run the following command: enhancement packages
 
@@ -15991,7 +16326,7 @@ SET odps.sql.hive.compatible=true; DROP TABLE IF EXISTS rds_table_external; CREA
 useSSL=false&user=${user}&password=${password}&table=${tablename}'
 ```
 
-###### Write and query data
+###### 11.1.7.2.2 Write and query data
 
 This topic describes how to use external tables to write data to and query RDS.
 
@@ -16007,7 +16342,7 @@ in the **MaxCompute Developer Guide**.
 **MaxCompute SQL > DML statement > SELECT statement > SELECT operation** in
 the **MaxCompute Developer Guide**.
 
-##### Read data from RDS
+##### 11.1.7.3 Read data from RDS
 
 This topic explains how to read data from RDS and provides an example of how to verify an external table connection and retrieve source data.
 
@@ -16037,11 +16372,11 @@ Before you run the command, replace `host` , `port` , `databasename` , ${user} ,
 STORED BY 'com.aliyun.odps.jdbc.JdbcStorageHandler' location 'jdbc:mysql://host:port/databasename? useSSL=false&user=${user}&password=${password}&table=${tablename}'; -- Query the data. SELECT * FROM rds_read_external;
 ```
 
-#### Unstructured data access and
+#### 11.1.8 Unstructured data access and processing (inside MaxCompute)
 
 **processing (inside MaxCompute)**
 
-##### Overview
+##### 11.1.8.1 Overview
 
 This topic describes how to create a volume external table to read, write, and process unstructured data stored in a MaxCompute volume, without exporting it to an external system.
 
@@ -16049,9 +16384,9 @@ This topic describes how to create a volume external table to read, write, and p
 
 You can store unstructured data in a MaxCompute volume. A common challenge is processing this data directly within MaxCompute without first exporting it to an external system. To address this challenge, MaxCompute uses its external table framework to connect with various data sources. Similar to accessing unstructured data in OSS, you can use an external table to read from and write to volumes. This enables in-place processing of this unstructured data. The following sections describe how to create and access a volume external table.
 
-##### Create a volume external table
+##### 11.1.8.2 Create a volume external table
 
-###### Create table syntax
+###### 11.1.8.2.1 Create table syntax
 
 This topic describes the syntax and parameters for creating a Volume external table.
 
@@ -16110,7 +16445,7 @@ The location of a non-partitioned external table must point to a Volume partitio
 
 To use a custom StorageHandler, export it to a JAR package and add the package to MaxCompute as a JAR resource. This clause specifies the JAR resource to use.
 
-###### Create tables using the built-in
+###### 11.1.8.2.2 Create tables using the built-in StorageHandler
 
 **StorageHandler**
 
@@ -16158,7 +16493,7 @@ key string, value string
 PARTITIONED BY (ds string) STORED BY 'com.aliyun.odps.CsvStorageHandler' LOCATION 'volume://test_project/volume_data'; ALTER TABLE volume_ext_pt DROP IF EXISTS PARTITION (ds="20190102"); ALTER TABLE volume_ext_pt ADD PARTITION (ds="20190102") LOCATION "volume://test_project/volume_data/20190102";
 ```
 
-###### Create a table with a custom
+###### 11.1.8.2.3 Create a table with a custom StorageHandler
 
 **StorageHandler**
 
@@ -16210,7 +16545,7 @@ LOCATION 'volume://myproject/volume_data/20190102' USING 'odps-volume-example.ja
 
 Once created, you can use the external table to access and process the data in the Volume.
 
-##### Access a volume external table
+##### 11.1.8.3 Access a volume external table
 
 This topic describes how to access a volume external table.
 
@@ -16222,13 +16557,13 @@ The following example shows a process that is similar to accessing MaxCompute in
 SELECT key,value FROM volume_ext_pt WHERE ds="20190102";
 ```
 
-### Security enhancement
+### 11.2 Security enhancement package
 
 **package**
 
 enhancement packages
 
-#### Label-based access control
+#### 11.2.1 Label-based access control
 
 MaxCompute allows you to implement label-based access control at the project level by setting user labels for users and sensitivity labels for tables or columns. Users can only access data in a table or column if its sensitivity label is less than or equal to their user label. This topic explains how to use label-based authorization and provides examples.
 
@@ -16452,7 +16787,7 @@ enhancement packages
 +-------------+--------------+--------------------------+ -- Revoke all of Allen's explicit grants on the sale_detail table. REVOKE Label ON TABLE sale_detail FROM USER RAM$Bob***@aliyun.com:Allen; -- View the result after revoking all grants. Allen can only access data according to their base user label. SHOW label grants ON TABLE sale_detail FOR USER RAM$Bob***@aliyun.com:Allen; -- The following result is returned, indicating no active explicit grants. User Label: 1
 ```
 
-#### MaxCompute permission system
+#### 11.2.2 MaxCompute permission system enhancements
 
 **enhancements**
 
@@ -16534,7 +16869,7 @@ enhancement packages The following table shows the mapping for comparison operat
 
 **Policy-based authorization using the GRANT statement**
 
-Usage notes Policy-based authorization can be granted only to a role, not to a user.
+Policy-based authorization can be granted only to a role, not to a user.
 
 | n privilegeproperties , {"policy" = "true"} olicy. {"allow"="[true\|false]"} specifies whe true ) or a denylist ( false ). | privilegeproperties |   |   |   | , | {"policy" = "true"} |
 |---|---|---|---|---|---|---|
@@ -16890,7 +17225,7 @@ indicates success.
 
 `}` `}` `}`
 
-#### Storage encryption
+#### 11.2.3 Storage encryption
 
 Storage encryption uses transparent data encryption (TDE) to encrypt data as it is written to the Pangu cluster. When your workloads interact with MaxCompute, the data is in plaintext. This feature protects against data leaks if unauthorized parties bypass MaxCompute security controls and directly copy static data from the Pangu cluster. Storage encryption uses Key Management Service (KMS). This topic describes the data encryption mechanism and related operations.
 
@@ -16974,11 +17309,11 @@ enhancement packages
 |   |   |   | If this para value of th |
 |   | e = 10000 |   |   |
 
-### Intelligent metadata
+### 11.3 Intelligent metadata enhancement package
 
 **enhancement package**
 
-#### Metadata capabilities
+#### 11.3.1 Metadata capabilities
 
 Metadata is defined as the data that provides information about the data. Metadata is classified into technical metadata and business metadata. This topic describes the metadata of MaxCompute.
 
@@ -16990,9 +17325,9 @@ Technical metadata is the metadata that is generated by technical solutions and 
 
 Logs in the metadata warehouse of MaxCompute do not contain businesslayer information, such as the client type and task identifier of services, network proxy at the service layer, and service user information. MaxCompute records only the last-hop IP address information of the network that is submitted to the big data platform and the account information that passes the logon authentication.
 
-#### Information schema
+#### 11.3.2 Information schema
 
-##### Overview of Information Schema
+##### 11.3.2.1 Overview of Information Schema
 
 This topic describes the basic concepts, usage, and limitations of the MaxCompute metadata service, Information Schema, to help you efficiently manage and monitor project metadata.
 
@@ -17068,7 +17403,7 @@ You can run the LIST ROLES; command in the MaxCompute client to list the role na
 GRANT Read ON package Information_Schema.systables TO USER RAM$Bob***@aliyun.com:user01;
 ```
 
-##### Metadata views
+##### 11.3.2.2 Metadata views
 
 The Information Schema service of MaxCompute contains the metadata of key objects in a project and provides historical information about job execution, data upload, and data download.
 
@@ -17585,7 +17920,7 @@ enhancement packages
 | columns | STRING | The columns that are specified when the data is downloaded over a data tunnel. |
 | ds | STRING | The date when the data was collected. Example: 20190101. |
 
-##### Information Schema FAQ
+##### 11.3.2.3 Information Schema FAQ
 
 This topic answers frequently asked questions about using Information Schema.
 
@@ -17605,11 +17940,11 @@ For more information, see Information Schema overview.
 
 MaxCompute metadata updates are delayed by at least 3 hours. Check the table creation time and wait for at least 3 hours before you check again.
 
-### MaxCompute multi-region
+### 11.4 MaxCompute multi-region deployment
 
 **deployment**
 
-#### MaxCompute multi-region deployment
+#### 11.4.1 MaxCompute multi-region deployment
 
 MaxCompute supports multi-region deployment. This architecture uses separate deployment modes for the control cluster and computing clusters.
 
@@ -17617,7 +17952,7 @@ MaxCompute supports multi-region deployment. This architecture uses separate dep
 
 Control cluster: Deployed centrally to configure resources and manage computing tasks. Computing cluster: Deployed independently in each region to create projects and execute computing tasks.
 
-#### Multi-region deployment
+#### 11.4.2 Multi-region deployment
 
 enhancement packages This topic explains the core principles and use cases of multi-region deployment in MaxCompute. Learn how to synchronize data across clusters and design for high availability.
 
@@ -17637,9 +17972,9 @@ Managing and replicating data between clusters requires a clear strategy and reg
 
 Compute jobs for Projects with data located exclusively in the primary region are not affected. A typical use case is to partition and replicate data based on business needs, and then run computations on the specific clusters where the data resides. Finally, the application layer combines the results from these different MaxCompute jobs.
 
-#### Examples of multi-region deployment
+#### 11.4.3 Examples of multi-region deployment
 
-##### Synchronize table data across clusters
+##### 11.4.3.1 Synchronize table data across clusters
 
 This topic explains how to synchronize table data across clusters for multi-region applications and provides a working example.
 
@@ -17680,7 +18015,7 @@ pu ls product/aliyun/odps/multiregion/data/t1
 5. If both clusters have the data, the table data was synchronized successfully between the
 clusters.
 
-##### Query primary/standby cluster data sync
+##### 11.4.3.2 Query primary/standby cluster data sync status
 
 **status**
 
@@ -17756,7 +18091,7 @@ CLTrelease/bin/odpscmd --project=admin_task_project -e "wait 20180711050550317gn
 6. On the page that opens, click **Job Details** to view the data synchronization status between
 the primary/standby clusters.
 
-##### Cross-region direct read
+##### 11.4.3.3 Cross-region direct read
 
 This topic describes cross-region direct read in a multi-region deployment and provides examples.
 
@@ -17826,7 +18161,7 @@ USE testcross5kn; SELECT * FROM testmdu.testrep;
 
 If data is returned, the cross-region direct read is successful.
 
-##### Cross-region join
+##### 11.4.3.4 Cross-region join
 
 This topic demonstrates how to perform a cross-region join in a multi-region deployment.
 
@@ -17880,9 +18215,9 @@ SELECT pro.pid,pro.name,pro.type,pro.color,bus.name,bus.phone FROM crossregion02
 
 If the command returns the expected data, the cross-region join is successful.
 
-## Security solution
+## 12 Security solution
 
-### Target users
+### 12.1 Target users
 
 This article describes the target users for the MaxCompute security solution.
 
@@ -17890,7 +18225,7 @@ This article describes the target users for the MaxCompute security solution.
 
 The security solution is for MaxCompute project owners, administrators, and users interested in the MaxCompute multi-tenant data security model. This model includes the following: User authentication. User and authorization management within a project. Cross-project resource sharing. Data protection within a project.
 
-### Quick start
+### 12.2 Quick start
 
 This topic is a quick guide to the security features in MaxCompute, covering the basic steps for common security operations.
 
@@ -17987,7 +18322,7 @@ USE prj1; ADD trustedproject prj2;
 
 Package-based resource sharing and the project protection mode are two independent security mechanisms. MaxCompute prioritizes resource sharing. In a protected project, if an object is shared with another project via a package, the `ProjectProtection` setting does not restrict access to it.
 
-### User authentication
+### 12.3 User authentication
 
 This topic describes user authentication in the MaxCompute security solution.
 
@@ -17995,11 +18330,11 @@ This topic describes user authentication in the MaxCompute security solution.
 
 User authentication primarily verifies the identity of the request sender. It typically includes the following aspects: Verifying the identity of the request sender. Verifying that the received request has not been tampered with in transit.
 
-### Project user and
+### 12.4 Project user and authorization management
 
 **authorization management**
 
-#### Overview
+#### 12.4.1 Overview
 
 This topic describes user management, role management, and authorization for projects.
 
@@ -18007,7 +18342,7 @@ This topic describes user management, role management, and authorization for pro
 
 Projects are the foundation of the MaxCompute multi-tenant system and the basic unit for data management and computing. If you create a project, you are the owner of the project. You can manage all objects in the project, such as tables, instances, resources, and userdefined functions (UDFs). Users, except the project owner, can access objects in the project only after these users acquire approvals from the project owner. For example, if Alice is the owner of the test_project project, and another user from the project team of Alice requests to access the resources in the test_project project, Alice can use the methods described in this topic to perform user management and authorization. If the user is not from the project team of Alice, we recommend that Alice conduct cross-project resource sharing. For more information, see Cross-project resource sharing.
 
-#### User management
+#### 12.4.2 User management
 
 This topic describes how to manage users within a project, including adding users, removing users, and purging their privileges.
 
@@ -18036,7 +18371,7 @@ You must revoke all of a user's roles before removing the user. For more informa
 
 authorizations. Note that this command fails and returns a `Principal still exist` `in the project` error if the user is still in the project.
 
-#### Role management
+#### 12.4.3 Role management
 
 This topic describes role management in a project, including adding and removing roles and the permission cleanup strategy.
 
@@ -18054,7 +18389,7 @@ A role is a collection of access permissions. Use a role to grant the same set o
 
 When you attempt to delete a role, MaxCompute checks if the role is still assigned to any users. If so, the operation fails. You can delete a role only after you revoke it from all associated users.
 
-#### ACL-based authorization
+#### 12.4.4 ACL-based authorization
 
 MaxCompute projects support access control list (ACL)-based authorization. You can manage user permissions based on subjects, objects, and actions. This topic describes the syntax and scenarios of authorization commands.
 
@@ -18136,7 +18471,7 @@ Scenario 2: Assume that Allen is a RAM user that belongs to `ali***@aliyun.com` 
 -- Add a RAM user. ADD USER ram$ali***@aliyun.com:Allen; -- Create a role named worker. CREATE role worker; -- Assign the worker role to the added member. GRANT worker TO ram$ali***@aliyun.com:Allen;
 ```
 
-#### View permissions
+#### 12.4.5 View permissions
 
 MaxCompute allows you to view permissions from various perspectives. You can view the permissions for a specific user or role, or see the authorization list for a specific object.
 
@@ -18170,7 +18505,7 @@ When displaying permissions for a user or role, MaxCompute uses the following in
 odps@test_project> SHOW grants FOR aliyun$odpstest1***@aliyun.com; [roles] dev Authorization Type: ACL [role/dev] A projects/test_project/tables/t1: Select [user/odpstest1***@aliyun.com] A projects/test_project: CreateTable | CreateInstance | CreateFunction | List A projects/test_project/tables/t1: Describe | Select Authorization Type: Policy [role/dev] AC projects/test_project/tables/test_*: Describe DC projects/test_project/tables/alifinance_*: Select [user/odpstest1***@aliyun.com] A projects/test_project: Create* | List AC projects/test_project/tables/alipay_*: Describe | Select Authorization Type: ObjectCreator AG projects/test_project/tables/t6: All AG projects/test_project/tables/t7: All
 ```
 
-#### Download permission control
+#### 12.4.6 Download permission control
 
 MaxCompute provides a Download permission control feature to manage the download of tables and instances by users or roles through Tunnel. This feature enhances project data security and prevents data leaks. This topic describes the commands for managing Download authorizations in MaxCompute and provides authorization examples.
 
@@ -18266,11 +18601,11 @@ Based on Example 3, revoke the authorization from the users Alice and Tom.
 -- As the project owner, enter the test_project_a project. USE test_project_a; -- Revoke the Worker role from the users Alice and Tom. REVOKE Worker FROM RAM$username***@example.com:Alice; REVOKE Worker FROM RAM$username***@example.com:Tom; -- View the authorization result for Alice. The authorization list no longer includes t he Download authorization. SHOW grants FOR RAM$username***@example.com:Alice;
 ```
 
-### Cross-project resource
+### 12.5 Cross-project resource sharing
 
 **sharing**
 
-#### Overview
+#### 12.5.1 Overview
 
 This topic introduces the cross-project resource sharing mechanism and explains how to use a Package for secure data sharing across projects.
 
@@ -18289,9 +18624,9 @@ As the Owner or an administrator with the Admin role for a project, you may rece
 
 them individually. However, for security reasons, the `Alipay` project administrator may not want to manage permissions for every user from the `Alifinance` project. Packages solve this by allowing the `Alifinance` project administrator to manage access for their own team members. With a Package, the `Alipay` project administrator can bundle the required resources into a Package and authorize the `Alifinance` project to install it. After the `Alifinance` project administrator installs the Package, they can then manage access to the shared resources for their own project members. The Package creator's project acts as the resource provider, while the Package user's project serves as the resource user. The resource provider bundles shared resources into a Package and authorizes the resource user's project to install it. After the resource user's project installs the Package, its members can access the shared resources. The following sections explain the tasks for both the Package creator and the Package user.
 
-#### Package usage
+#### 12.5.2 Package usage
 
-##### Package creator operations
+##### 12.5.2.1 Package creator operations
 
 This guide for package creators covers the complete workflow for managing packages. It explains how to create, delete, manage resources, grant and revoke permissions, and view package details to share data efficiently.
 
@@ -18341,7 +18676,7 @@ SHOW packages;
 DESCRIBE package <pkgname>;
 ```
 
-##### User operations for packages
+##### 12.5.2.2 User operations for packages
 
 This topic describes how to install, uninstall, and view a MaxCompute package, and how to configure `Read` permission using an Access Control List (ACL) or a policy. This process enables secure and controlled cross-project data sharing.
 
@@ -18400,9 +18735,9 @@ uninstall package <pkgname>;
 -- View a list of created and installed packages. SHOW packages; -- View package details. DESCRIBE package <pkgname>;
 ```
 
-### Project protection
+### 12.6 Project protection
 
-#### Data protection overview
+#### 12.6.1 Data protection overview
 
 This topic describes the data protection controls in a project for preventing sensitive data exfiltration.
 
@@ -18410,7 +18745,7 @@ This topic describes the data protection controls in a project for preventing se
 
 In practice, some organizations, such as financial institutions, are highly sensitive to data security. To prevent sensitive data exfiltration, they typically prohibit employees from taking work home, restrict operations to the corporate network, and disable USB storage ports on all company computers. Therefore, as a MaxCompute project administrator, if a project contains highly sensitive data that must not be transferred to other projects, you must apply the following configurations so that MaxCompute blocks all operations that could lead to data exfiltration.
 
-#### Data protection mechanism
+#### 12.6.2 Data protection mechanism
 
 This topic describes the data protection mechanism for a MaxCompute project.
 
@@ -18424,7 +18759,7 @@ SET security.ProjectProtection=true; -- Enforces an inbound-only data flow for t
 
 After you enable ProjectProtection, data can only flow into the project, not out. By default, ProjectProtection is disabled. This allows users with permissions for multiple projects to transfer data out of a project by using cross-project operations. If a project contains highly sensitive data, an administrator should enable the data protection mechanism.
 
-#### Exporting data from a protected
+#### 12.6.3 Exporting data from a protected project
 
 **project**
 
@@ -18475,7 +18810,7 @@ If a project has data protection enabled, you can designate other projects as tr
 -- View all TrustedProjects in the current project. LIST trustedprojects; -- Add a TrustedProject to the current project. ADD trustedproject <projectname>; -- Remove a TrustedProject from the current project. REMOVE trustedproject <projectname>;
 ```
 
-#### Resource sharing and data protection
+#### 12.6.4 Resource sharing and data protection
 
 This topic describes how resource sharing and data protection interact within a MaxCompute project.
 
@@ -18487,7 +18822,7 @@ In MaxCompute, package-based resource sharing and project-level data protection 
 
 To prevent data leakage from a project, you must check the following settings after you set ProjectProtection=True: Ensure that no TrustedProject is added. If a TrustedProject is configured, evaluate the potential risks. Ensure that no ExceptionPolicy is configured. If an ExceptionPolicy is configured, evaluate the potential risks, especially the TOCTOU data leakage risk. Ensure that you do not share data using packages. If you do, ensure that the packages do not contain sensitive data.
 
-### Project security
+### 12.7 Project security configuration
 
 **configuration**
 
@@ -18511,9 +18846,9 @@ MaxCompute supports multiple orthogonal authorization mechanisms, such as ACL au
 SET security.ObjectCreatorHasGrantPermission=true/false; -- Enable or disable LabelSecurity. SET security.LabelSecurity=true/false; -- Enable or disable Project Protection, which prevents or allows data to flow out of t he project. SET security.ProjectProtection=true/false;
 ```
 
-### Authorization policies
+### 12.8 Authorization policies
 
-#### Policy overview
+#### 12.8.1 Policy overview
 
 MaxCompute supports permission management by using custom access control list (ACL) languages, which are suitable for complex authorization scenarios and conditional authorization. This topic describes how to work with the policy-based authorization mechanism, including principal-based authorization, policy types, commands, and modification procedures.
 
@@ -18591,7 +18926,7 @@ operations to create instances and tables and view the operations that are perfo
 
 `}` `]` `}`
 
-#### Key policy concepts
+#### 12.8.2 Key policy concepts
 
 This topic describes the fundamental concepts of a policy, including permission, access policy, and its core elements: principal, action, resource, condition, and effect.
 
@@ -18627,9 +18962,9 @@ The effect specifies whether the statement will `Allow` or `Deny` access. A `Den
 
 Note that an explicit `Deny` is different from not having a permission. A statement with a `Deny` effect explicitly blocks access. In contrast, revoking a permission usually means removing the corresponding `Allow` statement. Without an `Allow` statement, access is denied by default (an implicit deny).
 
-#### Access policy structure
+#### 12.8.3 Access policy structure
 
-##### Access policy language structure
+##### 12.8.3.1 Access policy language structure
 
 This topic describes the structure of the access policy language.
 
@@ -18683,7 +19018,7 @@ Action
 
 **Resource**
 
-##### Statement structure
+##### 12.8.3.2 Statement structure
 
 This topic describes the structure of a Statement in a policy, including elements such as Effect, Principal, Action, Resource, and the condition block, to help you manage permissions more effectively.
 
@@ -18699,7 +19034,7 @@ A Statement includes the following elements:
 | Resource | Specifies the objects to which the statement applies. You can use wildcard characters such as * and ? . For example, Resource = * refers to all resources. |
 | condition block | Specifies the conditions that must be met for the statement to apply. |
 
-##### Condition block structure
+##### 12.8.3.3 Condition block structure
 
 This topic explains the structure of a condition block within a policy statement and its evaluation logic.
 
@@ -18707,7 +19042,7 @@ This topic explains the structure of a condition block within a policy statement
 
 A condition block consists of one or more condition clauses. A condition clause consists of a condition operator type, a condition key, and a condition value. A condition block is evaluated as follows: During a condition check, the condition is satisfied if the value of the key matches any of the specified values. A condition clause is satisfied only if all condition keys that share the same operator type are met. A condition block is satisfied only when all of its condition clauses are met.
 
-##### Condition operator types
+##### 12.8.3.4 Condition operator types
 
 This topic lists the condition operators available for string, numeric, date and time, boolean, and IP address data types in a policy condition clause.
 
@@ -18723,7 +19058,7 @@ This topic lists the condition operators available for string, numeric, date and
 | BOOLEAN | Bool |
 | IP Address | IpAddress NotIpAddress |
 
-##### Condition keywords
+##### 12.8.3.5 Condition keywords
 
 This topic describes the reserved Aliyun Cloud Service (ACS) condition keywords that MaxCompute supports. You can use these keywords in the condition clause of a policy.
 
@@ -18755,9 +19090,9 @@ MaxCompute supports the following reserved ACS condition keywords.
 **acs:SourceIp** refers to the Remote_ip of the HTTP connection, not an IP address listed in
 the x-forwarded-for HTTP header. For example, if `10.230.205.105` is a LAN IP, **acs:SourceIp** is the network's gateway egress IP. If the request passes through a proxy server, **acs:SourceIp** is the IP address of that proxy server. If multiple proxy servers are used, acs:SourceIp is the IP address of the final proxy server in the request path. The rules configured on the proxy server also affect **acs:SourceIp**.
 
-#### Access policy norm
+#### 12.8.4 Access policy norm
 
-##### Principal naming conventions
+##### 12.8.4.1 Principal naming conventions
 
 This topic describes the naming conventions for the Principal element in a policy, including supported identity types and their required syntax.
 
@@ -18769,7 +19104,7 @@ The Principal identifies the requester. Currently, only Alibaba Cloud accounts, 
 "Principal": "43274" "Principal": "ALIYUN$bob***@aliyun.com" "Principal": ["ALIYUN$bob***@aliyun.com","ALIYUN$jack***@aliyun.com", "TAOBAO$alice"]
 ```
 
-##### Resource naming conventions
+##### 12.8.4.2 Resource naming conventions
 
 This topic describes the naming conventions for MaxCompute resources in the access policy language, including the naming format `acs:<service-name>:<namespace>:<relative-id>` and descriptions of its parameters, to help you manage and access resources.
 
@@ -18817,7 +19152,7 @@ acs:<service-name>:<namespace>:<relative-id>
 |---|---|---|
 | aobao* |   |   |
 
-##### Action naming conventions
+##### 12.8.4.3 Action naming conventions
 
 This topic explains the naming conventions for Actions in a MaxCompute policy. It covers the required format for services and operations, and provides examples.
 
@@ -18841,7 +19176,7 @@ This topic explains the naming conventions for Actions in a MaxCompute policy. I
 | odps:CreateTable | The MaxCompute CreateTable operation. |
 | odps:Create* | All MaxCompute operations that start with Create. |
 
-##### Condition key naming conventions
+##### 12.8.4.4 Condition key naming conventions
 
 This topic describes the naming conventions for condition keys in the policy language.
 
@@ -18873,7 +19208,7 @@ Condition keys for other services use the following format.
 
 The `condition-key` parameter specifies a custom condition key defined by a specific service.
 
-##### Access policy sample
+##### 12.8.4.5 Access policy sample
 
 An access policy provides flexible user permission management. By defining a policy in JSON, you can specify the permitted actions, resources, and conditions. This topic provides a sample access policy.
 
@@ -18928,7 +19263,7 @@ An access policy provides flexible user permission management. By defining a pol
 
 This policy allows the principal `alice***@aliyun.com` to perform the `CreateInstance` , `CreateTable` , and `List` actions in the `prj1` project. These permissions apply only to requests made before `2019-11-11T23:59:59Z` and from the `10.32.180.0/23` IP address range. The policy also explicitly denies this principal permission to delete any table in the `prj1` project.
 
-#### Differences between Policy and ACL
+#### 12.8.5 Differences between Policy and ACL
 
 This topic outlines the key differences between Policy and ACL authorization in MaxCompute to help you choose the best access control strategy.
 
@@ -18945,7 +19280,7 @@ You can grant or revoke Policy authorization even if the Grantee or Object does 
 
 `projects/tbproj/tables/taobao*` refers to all tables in the tbproj project whose names start with "taobao". This behavior is similar to MySQL's authorization model. It allows authorization for Objects that do not yet exist, but the authorizer must consider the potential security risk of deleting and then recreating an object with the same name. Deleting an Object does not remove its associated Policy authorization. Policy authorization supports both Allow (whitelisting) and Deny (blacklisting). If both an Allow and a Deny authorization apply to a request, Deny takes precedence. Policy authorization supports conditional authorization. You can apply conditions to an Allow or Deny authorization (20 condition operators are currently supported). For example, you can allow access only if the requester's IP address is within a specified range and the access time is before a specified time. Best suited for more complex authorization scenarios that require conditional authorization, Deny rules, or authorization for future Objects. It uses more complex Policy authorization commands.
 
-#### Limits
+#### 12.8.6 Limits
 
 This topic describes the limits for policy authorization, including those for users, roles, and packages.
 
@@ -18980,11 +19315,11 @@ This topic describes the limits for policy authorization, including those for us
 |---|---|---|
 | E PROJECT _ |   |   |
 
-### Collection of security
+### 12.9 Collection of security statements
 
 **statements**
 
-#### Project security configuration
+#### 12.9.1 Project security configuration
 
 This topic describes statements for configuring the security of a project.
 
@@ -19008,7 +19343,7 @@ This topic describes statements for configuring the security of a project.
 | ADD TrustedProject <projectName>; | Add a trusted project. |
 | REMOVE TrustedProject <projectName>; | Remove a trusted project. |
 
-#### Permission management in a project
+#### 12.9.2 Permission management in a project
 
 This topic describes the statements for managing permissions in a project.
 
@@ -19061,7 +19396,7 @@ This topic describes the statements for managing permissions in a project.
 | SHOW acl FOR <objectName> [ON type <objectType>]; | Shows the authorization details for a specific object. |
 | DESCRIBE role <roleName>; | Shows the permissions of a role and the users assigned to it. |
 
-#### Share resources with packages
+#### 12.9.3 Share resources with packages
 
 This topic describes statements for sharing and viewing resources with packages.
 
@@ -19092,11 +19427,11 @@ This topic describes statements for sharing and viewing resources with packages.
 | SHOW packages; | Lists all packages that you created or installed. |
 | DESCRIBE package <pkgName>; | Displays the details of a package. |
 
-## Frequently-used tools
+## 13 Frequently-used tools
 
-### MaxCompute console
+### 13.1 MaxCompute console
 
-#### Usage notes
+#### 13.1.1 Usage notes
 
 This topic describes the usage notes for the MaxCompute client.
 
@@ -19104,7 +19439,7 @@ This topic describes the usage notes for the MaxCompute client.
 
 Do not parse data based on the output format of the MaxCompute client. The output format of the client may not be forward compatible. The command syntax and execution rules vary based on the client version. The MaxCompute client is a Java program. It requires Java runtime environment (JRE). You must download and install JRE V1.8 to run the MaxCompute client. Before you configure the client, make sure that a project is created by using an Apsara Stack tenant account and the **************** and ******************** of the account are obtained. For more information about how to use the MaxCompute client, see Configure the MaxCompute client.
 
-#### Install the MaxCompute client
+#### 13.1.2 Install the MaxCompute client
 
 This topic describes how to install and run the MaxCompute client, including client downloading and extraction, authentication configuration, and verification.
 
@@ -19141,7 +19476,7 @@ operating system or the ./bin/odpscmd.bat command in the Windows operating syste
 CREATE TABLE tbl1(id bigint); INSERT OVERWRITE TABLE tbl1 SELECT count(*) FROM tbl1; SELECT 'welcome to MaxCompute!' FROM tbl1;
 ```
 
-#### MaxCompute client configuration
+#### 13.1.3 MaxCompute client configuration
 
 This topic describes how to configure the MaxCompute client and the related parameters.
 
@@ -19306,9 +19641,9 @@ If you execute statements, such as INSERT or CREATE TABLE AS, on the MaxCompute 
 ODPS- 0110999: Critical! Internal error happened in commit operation and rollback failed, po ssible breach of atomicity
 ```
 
-### Eclipse development plugin
+### 13.2 Eclipse development plugin
 
-#### Install the Eclipse development plug-
+#### 13.2.1 Install the Eclipse development plug-in
 
 **in**
 
@@ -19333,7 +19668,7 @@ right corner, as shown in the following figure.
 5. The
 icon appears in the upper-right corner, which indicates that the Eclipse development plug-in is in effect, as shown in the following figure.
 
-#### Create a project
+#### 13.2.2 Create a project
 
 This topic describes how to create a project with the Eclipse development plug-in.
 
@@ -19359,9 +19694,9 @@ Make sure that the MaxCompute client is installed in advance.
 3. After the project is created, you can view the directory structure on the Package Explorer
 tab, as shown in the following figure.
 
-#### MapReduce running example
+#### 13.2.3 MapReduce running example
 
-##### Run a WordCount program
+##### 13.2.3.1 Run a WordCount program
 
 This topic describes how to use MapReduce to run a WordCount program by using the Eclipse development plug-in.
 
@@ -19377,7 +19712,7 @@ ODPS Project section and click **Finish**, as shown in the following figure. Fig
 4. After you run the WordCount program, the result is displayed, as shown in the following
 figure. Figure 4. Result returned by the WordCount program
 
-##### Run a custom MapReduce program
+##### 13.2.3.2 Run a custom MapReduce program
 
 This topic provides an example on how to run a custom MapReduce program by using the Eclipse development plug-in.
 
@@ -19533,13 +19868,13 @@ Example of a data file:
 
 Before the MapReduce program runs in local mode, the program automatically checks for data tables or resources in the warehouse folder first. If the tables or resources are not found, the program downloads the tables or resources from a server to the warehouse folder. After you run the MapReduce program, right-click the warehouse folder in the navigation tree on the Package Explorer tab and select Refresh to view the output result.
 
-#### UDF development and running
+#### 13.2.4 UDF development and running example
 
 **example**
 
-##### Local debug UDF programs
+##### 13.2.4.1 Local debug UDF programs
 
-###### Run a UDF from the menu bar
+###### 13.2.4.1.1 Run a UDF from the menu bar
 
 This topic describes how to use the menu bar to run a user-defined function (UDF) with the Eclipse development plug-in.
 
@@ -19556,7 +19891,7 @@ In the preceding figure, the Table parameter indicates the input table of the UD
 3. Click **Run**. The result is displayed in the console, as shown in the following figure.
 Figure 3. Console
 
-###### Use the right-click shortcut menu to run
+###### 13.2.4.1.2 Use the right-click shortcut menu to run a UDF
 
 **a UDF**
 
@@ -19574,7 +19909,7 @@ as shown in the following figure. Figure 2. ODPS UDF|UDTF|UDAF Run Configuration
 In the ODPS UDF|UDTF|UDAF Run Configuration dialog box, the Table parameter indicates the input table of the UDF. The Partitions parameter indicates the partitions from which you want to read data. Separate multiple partitions with commas (,). The Columns parameter indicates the columns that are passed as the parameters of the UDF. Separate multiple columns with commas (,).
 3. Click **Finish** to run the UDF and obtain the output result.
 
-##### Run a UDF
+##### 13.2.4.2 Run a UDF
 
 This topic describes how to run a user-defined function (UDF) with the Eclipse development plug-in.
 
@@ -19612,9 +19947,9 @@ ss2s:A1,A2 ss2s:A1,A2 ss2s:A1,A2 ss2s:A1,A2
 
 This example shows how to run a UDF. You can use the same method to run a userdefined table-valued function (UDTF).
 
-### Logview
+### 13.3 Logview
 
-#### Use LogView to view job information
+#### 13.3.1 Use LogView to view job information
 
 This topic describes how to use LogView to view job information. You can view the status, progress details, and execution results of jobs and the causes of exceptions.
 
@@ -19684,7 +20019,7 @@ output records: R2_1_Stg1: 199998999 (min: 22552459, max: 177446540, avg: 999994
 
 If the difference between the min and max values is large, data skew occurs. For example, if a specific value appears more frequently than other values in a column, data skew occurs when you execute a JOIN statement based on this column.
 
-#### Use LogView V2.0 to view job
+#### 13.3.2 Use LogView V2.0 to view job information
 
 **information**
 
@@ -19801,7 +20136,7 @@ This tab shows the detailed information about a job, including the status code, 
 
 Fuxi Sensor is a resource view that displays information about a MaxCompute job in all dimensions. You can use Fuxi Sensor to view the memory usage and CPU utilization of a Fuxi instance. You can also use Fuxi Sensor to identify job issues and analyze job performance. For example, you can use Fuxi Sensor in the following scenarios: If an out-of-memory (OOM) error occurs, analyze the size of memory that is used. Compare the numbers of requested and used resources to optimize the resource request process. For example, you can use Fuxi Sensor to view the resource usage of a Fuxi instance. CPU utilization The cpu_usage chart has two lines. One line indicates the number of CPUs requested (cpu_plan), and the other line indicates the number of CPUs used (cpu_usage). In the y-axis, 400 indicates four processors. Memory usage The mem_usage chart has two lines. One line indicates the number of memory resources requested (mem_plan), and the other line indicates the number of memory resources used (mem_usage). mem_usage contains Resident Set Size (RSS) and PageCache. RSS indicates the memory that is allocated after kernel page faults occur. RSS is used when you call Malloc to request memory by using non-file mappings. If the memory is insufficient, RSS cannot be reclaimed. PageCache is the memory that is occupied by the kernel to cache the files that are required by read and write requests, such as log files. If the memory is insufficient, PageCache can be reclaimed. Memory capacity RSS usage PageCache usage ute
 
-## FAQ about MaxCompute
+## 14 FAQ about MaxCompute
 
 This topic provides answers to some frequently asked questions about MaxCompute.
 

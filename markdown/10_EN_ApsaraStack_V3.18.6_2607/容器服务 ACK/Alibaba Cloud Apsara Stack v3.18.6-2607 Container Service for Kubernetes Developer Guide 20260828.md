@@ -3,18 +3,110 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 185
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Developer Guide 20260828.pdf"
+source_pdf: "b6812a23b5cab52a_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Developer Guide 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Developer Guide 20260828
 
-## SDK reference
+## Table of Contents
 
-### Preparations
+- 1 SDK reference
+  - 1.1 Preparations
+    - 1.1.1 Log on to OpenAPI Explorer
+    - 1.1.2 View the information about an operation
+    - 1.1.3 Obtain an AccessKey pair
+    - 1.1.4 Obtain an STS AccessKey pair
+    - 1.1.5 Obtain the values of common header parameters
+    - 1.1.6 Obtain the information and the endpoint of an API operation
+    - 1.1.7 Obtain the Container Service SDK package
+  - 1.2 Examples of using Container Service SDK for Java
+    - 1.2.1 Install Container Service SDK for Java
+    - 1.2.2 Use Container Service SDK for Java
+    - 1.2.3 Use CommonRequest
+  - 1.3 Examples of using Container Service SDK for Python
+    - 1.3.1 Install Container Service SDK for Python
+    - 1.3.2 Use Container Service SDK for Python
+    - 1.3.3 Use CommonRequest
+  - 1.4 Examples of using Container Service SDK for Go
+    - 1.4.1 Install Container Service SDK for Go
+    - 1.4.2 Use Container Service SDK for Go
+    - 1.4.3 Use CommonRequest
+- 2 Cluster API list
+  - 2.1 Container Service API invocation
+    - 2.1.1 Overview
+    - 2.1.2 Common parameters
+    - 2.1.3 Request syntax
+    - 2.1.4 Response parameters
+    - 2.1.5 Sign API requests
+  - 2.2 Clusters
+    - 2.2.1 Create an ACK cluster
+    - 2.2.2 Delete a cluster
+    - 2.2.3 Query the kubeconfig file of a cluster
+    - 2.2.4 Query
+      - 2.2.4.1 Query information about all clusters
+      - 2.2.4.2 DescribeClusterDetail
+      - 2.2.4.3 Query resources in a cluster
+      - 2.2.4.4 Query the namespaces of a cluster
+      - 2.2.4.5 Query the agent of a cluster
+      - 2.2.4.6 Query resource quotas
+      - 2.2.4.7 Query the logs of a cluster
+      - 2.2.4.8 Query information about a Kubernetes version supported by Container Service
+    - 2.2.5 Modify
+      - 2.2.5.1 Modify cluster configurations
+      - 2.2.5.2 Modify the labels of a cluster
+    - 2.2.6 Upgrade
+      - 2.2.6.1 Upgrade a cluster
+      - 2.2.6.2 Query the upgrade status of a cluster
+      - 2.2.6.3 Suspend the upgrade of a cluster
+      - 2.2.6.4 Cancel the upgrade of a cluster
+      - 2.2.6.5 Resume the upgrade of a cluster
+  - 2.3 Nodes
+    - 2.3.1 Query nodes in a cluster
+    - 2.3.2 Remove nodes from a cluster
+    - 2.3.3 Add existing ECS instances to a cluster
+    - 2.3.4 Manually add existing instances to a cluster
+    - 2.3.5 Node pools
+      - 2.3.5.1 Create a node pool
+      - 2.3.5.2 Synchronize node pool information
+      - 2.3.5.3 Scale out a node pool
+      - 2.3.5.4 Modify the configuration of a node pool
+      - 2.3.5.5 Query node pools
+      - 2.3.5.6 Query the details of a node pool
+      - 2.3.5.7 Delete a node pool
+  - 2.4 Templates
+    - 2.4.1 Create an orchestration template
+    - 2.4.2 Delete an orchestration template
+    - 2.4.3 Query all orchestration templates
+    - 2.4.4 Query an orchestration template
+    - 2.4.5 Update an orchestration template
+  - 2.5 Add-ons
+    - 2.5.1 Install a component in a cluster
+    - 2.5.2 Query the details of the components in a cluster
+    - 2.5.3 Query components
+    - 2.5.4 Query the upgrade status of components in a cluster
+    - 2.5.5 Upgrade a component in a cluster
+    - 2.5.6 Uninstall components from a cluster
+  - 2.6 Policies
+    - 2.6.1 Deploy a policy instance in an ACK cluster
+    - 2.6.2 DescribePolicyInstancesStatus
+    - 2.6.3 Update a policy instance in an ACK cluster
+    - 2.6.4 Query policy instances that are deployed in an ACK cluster
+    - 2.6.5 Query information about policies in an ACK cluster
+    - 2.6.6 Query information about a policy
+    - 2.6.7 DescribePolicies
+    - 2.6.8 Delete policy instances from an ACK cluster
+- 3 Appendixes
+  - 3.1 STS overview
+    - 3.1.1 What is STS?
+    - 3.1.2 Obtain an STS token
 
-#### Log on to OpenAPI Explorer
+## 1 SDK reference
+
+### 1.1 Preparations
+
+#### 1.1.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -43,7 +135,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
-#### View the information about an
+#### 1.1.2 View the information about an operation
 
 **operation**
 
@@ -77,7 +169,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 7. In the **Version** drop-down list, select the required API version.
 8. Below the API list, you can view all API interfaces for the current version.
 
-#### Obtain an AccessKey pair
+#### 1.1.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -119,7 +211,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-#### Obtain an STS AccessKey pair
+#### 1.1.4 Obtain an STS AccessKey pair
 
 This topic describes how to use STS to make API calls.
 
@@ -223,7 +315,7 @@ public class DescribeUserQuota {
             e.printStackTrace();
 ```
 
-#### Obtain the values of common header
+#### 1.1.5 Obtain the values of common header parameters
 
 **parameters**
 
@@ -276,7 +368,7 @@ The following response parameters are returned by default when you call list-typ
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-#### Obtain the information and the
+#### 1.1.6 Obtain the information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -299,7 +391,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-#### Obtain the Container Service SDK
+#### 1.1.7 Obtain the Container Service SDK package
 
 **package**
 
@@ -309,11 +401,11 @@ When you call API operations in Apsara Stack by using the Portable OpenAPI Proxy
 
 We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
-### Examples of using Container
+### 1.2 Examples of using Container Service SDK for Java
 
 **Service SDK for Java**
 
-#### Install Container Service SDK for Java
+#### 1.2.1 Install Container Service SDK for Java
 
 This topic describes how to install Container Service SDK for Java.
 
@@ -341,7 +433,7 @@ To install Container Service SDK for Java by using Apache Maven, add the followi
 </dependency>
 ```
 
-#### Use Container Service SDK for Java
+#### 1.2.2 Use Container Service SDK for Java
 
 This topic describes how to use Container Service SDK for Java.
 
@@ -435,7 +527,7 @@ rinted.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-#### Use CommonRequest
+#### 1.2.3 Use CommonRequest
 
 To use an SDK for POP Java to call the API of an Apsara Stack service, you must first learn the remote procedure call (RPC) or resource-oriented architecture (ROA) API style.
 
@@ -544,11 +636,11 @@ common Header parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-re
 
 By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
 
-### Examples of using Container
+### 1.3 Examples of using Container Service SDK for Python
 
 **Service SDK for Python**
 
-#### Install Container Service SDK for
+#### 1.3.1 Install Container Service SDK for Python
 
 **Python**
 
@@ -576,7 +668,7 @@ PyPI Anaconda
 conde install aliyun-python-sdk-cs=4.8.1
 ```
 
-#### Use Container Service SDK for Python
+#### 1.3.2 Use Container Service SDK for Python
 
 This topic describes how to use Install Container Service SDK for Python.
 
@@ -642,7 +734,7 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 print(str(response, encoding='utf-8'))
 ```
 
-#### Use CommonRequest
+#### 1.3.3 Use CommonRequest
 
 To use an SDK for POP Python to call the API of an Apsara Stack service, you must first learn the remote procedure call (RPC) or resource-oriented architecture (ROA) API style.
 
@@ -756,11 +848,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-### Examples of using Container
+### 1.4 Examples of using Container Service SDK for Go
 
 **Service SDK for Go**
 
-#### Install Container Service SDK for Go
+#### 1.4.1 Install Container Service SDK for Go
 
 This topic describes how to install Container Service SDK for Go.
 
@@ -780,7 +872,7 @@ Install Container Service SDK for Go by running the go get command:
 go get github.com/aliyun/alibaba-cloud-sdk-go/services/CS
 ```
 
-#### Use Container Service SDK for Go
+#### 1.4.2 Use Container Service SDK for Go
 
 This topic describes how to use Container Service SDK for Go.
 
@@ -869,7 +961,7 @@ printed.
   fmt.Println(response.RequestId)
 ```
 
-#### Use CommonRequest
+#### 1.4.3 Use CommonRequest
 
 This topic describes how to work with the SDK for POP Go.
 
@@ -1037,21 +1129,17 @@ By default, if you send HTTPS requests, the SDK enables certificate verification
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-## Cluster API list
+## 2 Cluster API list
 
-### Container Service API
+### 2.1 Container Service API invocation
 
 **invocation**
 
-#### Overview
+#### 2.1.1 Overview
 
 To use the APIs provided by Container Service, you can send HTTP requests to the endpoint of Container Service APIs and include specific parameters in the requests. The system returns a response after processing the request.
-1. Common parameters
-2. Request syntax
-3. Response parameters
-4. Sign API requests
 
-#### Common parameters
+#### 2.1.2 Common parameters
 
 This topic lists the common request headers, common response headers when you make Container Service API requests.
 
@@ -1104,7 +1192,7 @@ JSON format `{`
     /* Return Result Data */
 ```
 
-#### Request syntax
+#### 2.1.3 Request syntax
 
 This topic describes the syntax that you must follow when you make Container Service API requests.
 
@@ -1128,7 +1216,7 @@ Each request must contain common request parameters and parameters unique to spe
 
 All requests and responses are encoded in the UTF-8 format.
 
-#### Response parameters
+#### 2.1.4 Response parameters
 
 |   | 2xx |
 |---|---|
@@ -1136,7 +1224,7 @@ All requests and responses are encoded in the UTF-8 format.
 
 The response data is returned in a unified format. If status code `2xx` is returned, it indicates that the API call is successful. If status code `4xx` or `5xx` is returned, it indicates that the API call has failed. For successful API calls, response data is returned in XML or JSON format. You can pass a parameter to specify the format when you call the API. The default format is XML. The following example is formatted for readability. The actual result is not formatted with line feeds or indentation.
 
-#### Sign API requests
+#### 2.1.5 Sign API requests
 
 This topic describes how to sign API requests to protect Container Service from unauthorized access.
 
@@ -1208,8 +1296,6 @@ The value of `CanonicalizedResource` must be in the following format:
 ```
 
 **Example**
-
-**Overview**
 
 The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
 
@@ -1291,9 +1377,9 @@ POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept
 0,"ecs_image_id": "m-253ll****"}
 ```
 
-### Clusters
+### 2.2 Clusters
 
-#### Create an ACK cluster
+#### 2.2.1 Create an ACK cluster
 
 You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) dedicated cluster.
 
@@ -1444,7 +1530,7 @@ Sample success responses `XML` format
     "request_id": "687C5BAA-D103-4993-884B-C35E4314A1E1"
 ```
 
-#### Delete a cluster
+#### 2.2.2 Delete a cluster
 
 You can call the DeleteCluster operation to delete a cluster by ID and release all nodes in the cluster.
 
@@ -1487,7 +1573,7 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-#### Query the kubeconfig file of a cluster
+#### 2.2.3 Query the kubeconfig file of a cluster
 
 You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file of a cluster. The kubeconfig file contains the details of the current user and is used to configure access to the cluster.
 
@@ -1543,9 +1629,9 @@ Sample success responses `XML` format
     "config": "apiVersion: v1****"
 ```
 
-#### Query
+#### 2.2.4 Query
 
-##### Query information about all clusters
+##### 2.2.4.1 Query information about all clusters
 
 You can call the DescribeClustersV1 operation to query information about all clusters.
 
@@ -1763,7 +1849,7 @@ c8a16bf0****",
             "maintenance_time": "03:00:00Z"
 ```
 
-##### DescribeClusterDetail
+##### 2.2.4.2 DescribeClusterDetail
 
 You can call the DescribeClusterDetail operation to query the information about a cluster by the cluster ID.
 
@@ -1803,7 +1889,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"0ED8D006-F706-4D23-88ED-E11ED28D****"
 ```
 
-##### Query resources in a cluster
+##### 2.2.4.3 Query resources in a cluster
 
 You can call the DescribeClusterResources operation to query all resources in a cluster.
 
@@ -1884,7 +1970,7 @@ Sample success responses `XML` format
         "dependencies": "[]"
 ```
 
-##### Query the namespaces of a cluster
+##### 2.2.4.4 Query the namespaces of a cluster
 
 You can call the DescribeClusterNamespaces operation to query the namespaces of a cluster.
 
@@ -1936,7 +2022,7 @@ Sample success responses `XML` format
     "namespaces": ["kube-system"]
 ```
 
-##### Query the agent of a cluster
+##### 2.2.4.5 Query the agent of a cluster
 
 You can call the DescribeExternalAgent operation to query the agent configurations of an external cluster that is registered in the Container Service console. You can deploy the agent configurations in an external cluster. This allows you to access the API server of the cluster.
 
@@ -1989,7 +2075,7 @@ Sample success responses `XML` format
     "config": "apiVersion: v1****"
 ```
 
-##### Query resource quotas
+##### 2.2.4.6 Query resource quotas
 
 You can call the DescribeUserQuota operation to query resource quotas.
 
@@ -2036,7 +2122,7 @@ Sample success responses `XML` format
     "node_quota": 100
 ```
 
-##### Query the logs of a cluster
+##### 2.2.4.7 Query the logs of a cluster
 
 You can call the DescribeClusterLogs operation to query the logs of a cluster.
 
@@ -2109,7 +2195,7 @@ Sample success responses `XML` format
         "updated": "2020-09-11T10:11:51+08:00"
 ```
 
-##### Query information about a Kubernetes
+##### 2.2.4.8 Query information about a Kubernetes version supported by Container Service
 
 **version supported by Container Service**
 
@@ -2249,9 +2335,9 @@ Sample success responses `XML` format
             "AuditProjectName": "k8s-log-c9bd1***"
 ```
 
-#### Modify
+#### 2.2.5 Modify
 
-##### Modify cluster configurations
+##### 2.2.5.1 Modify cluster configurations
 
 You can call the ModifyCluster operation to modify the configurations of a cluster.
 
@@ -2324,7 +2410,7 @@ Sample success responses `XML` format
     "request_id": "687C5BAA-D103-4993-884B-C35E4314****"
 ```
 
-##### Modify the labels of a cluster
+##### 2.2.5.2 Modify the labels of a cluster
 
 You can call the ModifyClusterTags operation to modify the labels of a cluster.
 
@@ -2380,9 +2466,9 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-#### Upgrade
+#### 2.2.6 Upgrade
 
-##### Upgrade a cluster
+##### 2.2.6.1 Upgrade a cluster
 
 You can call the UpgradeCluster operation to upgrade a cluster.
 
@@ -2431,7 +2517,7 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-##### Query the upgrade status of a cluster
+##### 2.2.6.2 Query the upgrade status of a cluster
 
 You can call the GetUpgradeStatus operation to query the upgrade status of a cluster.
 
@@ -2503,7 +2589,7 @@ Sample success responses `XML` format
     "upgrade_step": "prechecking"
 ```
 
-##### Suspend the upgrade of a cluster
+##### 2.2.6.3 Suspend the upgrade of a cluster
 
 You can call the PauseClusterUpgrade operation to suspend the upgrade of a cluster.
 
@@ -2543,7 +2629,7 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-##### Cancel the upgrade of a cluster
+##### 2.2.6.4 Cancel the upgrade of a cluster
 
 You can call the CancelClusterUpgrade operation to cancel the upgrade of a cluster.
 
@@ -2583,7 +2669,7 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-##### Resume the upgrade of a cluster
+##### 2.2.6.5 Resume the upgrade of a cluster
 
 You can call the ResumeUpgradeCluster operation to resume the upgrade of a cluster.
 
@@ -2625,9 +2711,9 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-### Nodes
+### 2.3 Nodes
 
-#### Query nodes in a cluster
+#### 2.3.1 Query nodes in a cluster
 
 You can call the DescribeClusterNodes operation to query information about the nodes in a cluster.
 
@@ -2766,7 +2852,7 @@ Sample success responses `XML` format
         "page_size": 10
 ```
 
-#### Remove nodes from a cluster
+#### 2.3.2 Remove nodes from a cluster
 
 You can call the RemoveClusterNodes operation to remove nodes from a cluster.
 
@@ -2821,7 +2907,7 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-#### Add existing ECS instances to a cluster
+#### 2.3.3 Add existing ECS instances to a cluster
 
 You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
 
@@ -2901,7 +2987,7 @@ Sample success responses `XML` format
         "message": "successful"
 ```
 
-#### Manually add existing instances to a
+#### 2.3.4 Manually add existing instances to a cluster
 
 **cluster**
 
@@ -2961,9 +3047,9 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-#### Node pools
+#### 2.3.5 Node pools
 
-##### Create a node pool
+##### 2.3.5.1 Create a node pool
 
 You can call the CreateClusterNodePool operation to create a node pool for a cluster.
 
@@ -3143,7 +3229,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "nodepool_id" : "np31da1b38983f4511b490fc62108a****"
 ```
 
-##### Synchronize node pool information
+##### 2.3.5.2 Synchronize node pool information
 
 You can synchronize node pool information, including metadata and node information.
 
@@ -3189,7 +3275,7 @@ Sample success responses `JSON` format `{`
  "RequestId":"2D69A58F-345C-4FDE-88E4-BF51894XXXXX"
 ```
 
-##### Scale out a node pool
+##### 2.3.5.3 Scale out a node pool
 
 You can call the ScaleClusterNodePool operation to scale out a node pool.
 
@@ -3246,7 +3332,7 @@ Sample success responses `XML` format
     "task_id": "T-5faa48fb31b6b8078d00****"
 ```
 
-##### Modify the configuration of a node pool
+##### 2.3.5.4 Modify the configuration of a node pool
 
 You can call the ModifyClusterNodePool operation to modify the configuration of a node pool.
 
@@ -3361,7 +3447,7 @@ HTTP/1.1 200 OK Content-Type:application/json
     "nodepool_id": "np737c3ac1ac684703b9e10673aa2c****"
 ```
 
-##### Query node pools
+##### 2.3.5.5 Query node pools
 
 You can call the DescribeClusterNodePools operation to query node pools in a cluster.
 
@@ -3693,7 +3779,7 @@ Sample success responses `XML` format
             "healthy_nodes": 3
 ```
 
-##### Query the details of a node pool
+##### 2.3.5.6 Query the details of a node pool
 
 You can call the DescribeClusterNodePoolDetail operation to query the details of a node pool.
 
@@ -4012,7 +4098,7 @@ data_dss:{
         "healthy_nodes": 3
 ```
 
-##### Delete a node pool
+##### 2.3.5.7 Delete a node pool
 
 You can call the DeleteClusterNodepool operation to delete a node pool.
 
@@ -4066,9 +4152,9 @@ Sample success responses `XML` format
     "request_id": "7263C978-3DBD-4E06-B319-793B38A2****"
 ```
 
-### Templates
+### 2.4 Templates
 
-#### Create an orchestration template
+#### 2.4.1 Create an orchestration template
 
 You can call the CreateTemplate operation to create an orchestration template.
 
@@ -4131,7 +4217,7 @@ Sample success responses `XML` format
     "template_id": "ba1fe77b-b01e-4640-b77e-8f1b80e3****"
 ```
 
-#### Delete an orchestration template
+#### 2.4.2 Delete an orchestration template
 
 You can call the DeleteTemplate operation to delete an orchestration template.
 
@@ -4177,7 +4263,7 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-#### Query all orchestration templates
+#### 2.4.3 Query all orchestration templates
 
 You can call the DescribeTemplates operation to query all orchestration templates.
 
@@ -4285,7 +4371,7 @@ deployment-basic\\n labels:\\n app: nginx\\nspec:\\n replicas: 2\\n selector:\\n
         "page_size": 3
 ```
 
-#### Query an orchestration template
+#### 2.4.4 Query an orchestration template
 
 You can call the DescribeTemplateAttributeoperation to query the details of an orchestration template.
 
@@ -4372,7 +4458,7 @@ Sample success responses `XML` format
         "tags": "sa"
 ```
 
-#### Update an orchestration template
+#### 2.4.5 Update an orchestration template
 
 You can call the UpdateTemplate operation to update an orchestration template.
 
@@ -4424,9 +4510,9 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-### Add-ons
+### 2.5 Add-ons
 
-#### Install a component in a cluster
+#### 2.5.1 Install a component in a cluster
 
 You can call the InstallClusterAddons to install a component in a cluster.
 
@@ -4476,7 +4562,7 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-#### Query the details of the components in
+#### 2.5.2 Query the details of the components in a cluster
 
 **a cluster**
 
@@ -4571,7 +4657,7 @@ Sample success responses `XML` format
             "name": "flexvolume"
 ```
 
-#### Query components
+#### 2.5.3 Query components
 
 You can call the DescribeClusterAddonsVersion operation to query the components that are installed in a cluster.
 
@@ -4663,7 +4749,7 @@ Kubernetes event center.",
         "next_version": "1.2.1"
 ```
 
-#### Query the upgrade status of
+#### 2.5.4 Query the upgrade status of components in a cluster
 
 **components in a cluster**
 
@@ -4713,7 +4799,7 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
 
-#### Upgrade a component in a cluster
+#### 2.5.5 Upgrade a component in a cluster
 
 You can call the UpgradeClusterAddons operation to upgrade a specified component in a cluster to the required version.
 
@@ -4761,7 +4847,7 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-#### Uninstall components from a cluster
+#### 2.5.6 Uninstall components from a cluster
 
 You can call the UnInstallClusterAddons operation to uninstall components from a cluster.
 
@@ -4806,9 +4892,9 @@ Sample success responses `JSON` format
 HTTP/1.1 200 OK
 ```
 
-### Policies
+### 2.6 Policies
 
-#### Deploy a policy instance in an ACK
+#### 2.6.1 Deploy a policy instance in an ACK cluster
 
 **cluster**
 
@@ -4875,7 +4961,7 @@ POST /clusters/c8155823d057948c69a****/policies/ACKAllowedRepos HTTP/1.1
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
-#### DescribePolicyInstancesStatus
+#### 2.6.2 DescribePolicyInstancesStatus
 
 You can call the DescribePolicyInstancesStatus operation to query information about policy instances in a Container Service for Kubernetes (ACK) cluster. The information includes the number of instances deployed from each policy and the number of policy instances of each severity level.
 
@@ -5127,7 +5213,7 @@ al storage.",
 <policy_name>ACKPSPAllowPrivilegeEscalationContainer</policy_name> <policy_description>Controls restricting escalation to root privileges. </policy_description><policy_severity>medium</policy_severity></policy_instances><polic y_instances><policy_category>psp</policy_category> <policy_name>ACKPSPFSGroup</policy_name><policy_description>Controls allocating an FSGr oup that owns the Pod&#x27;s volumes.</policy_description> <policy_severity>medium</policy_severity></policy_instances><policy_instances><policy_c ategory>compliance</policy_category> <policy_name>ACKPodsRequireSecurityContext</policy_name><policy_description>Requires th at Pods must have a `securityContext` defined.</policy_description> <policy_severity>low</policy_severity></policy_instances><policy_instances> <policy_category>compliance</policy_category> <policy_name>ACKRestrictNamespaces</policy_name><policy_description>Restricts resources from using the `default` namespace.</policy_description> <policy_severity>low</policy_severity></policy_instances><policy_instances> <policy_category>k8s-general</policy_category> <policy_name>ACKContainerLimits</policy_name><policy_description>Requires containers to have memory and CPU limits set and within a specified maximum amount.</policy_descripti on><policy_severity>low</policy_severity></policy_instances><policy_instances><policy_c ategory>psp</policy_category><policy_name>ACKPSPHostNetworkingPorts</policy_name><polic y_description>Controls usage of host networking and ports.</policy_description><policy_ severity>high</policy_severity></policy_instances><policy_instances> <policy_category>k8s-general</policy_category> <policy_name>ACKBlockAutomountToken</policy_name><policy_description>Disable automounti ng API credentials.</policy_description><policy_severity>high</policy_severity></policy _instances><policy_instances><policy_category>k8s-general</policy_category> <policy_name>ACKRequiredLabels</policy_name><policy_description>Requires all resources to contain a specified label with a value matching a provided regular expression.</poli cy_description><policy_severity>low</policy_severity></policy_instances> <policy_instances><policy_category>psp</policy_category> <policy_name>ACKPSPFlexVolumes</policy_name><policy_description>Controls the allowlist of Flexvolume drivers.</policy_description><policy_severity>medium</policy_severity></p olicy_instances><policy_instances><policy_category>k8s-general</policy_category><policy _name>ACKAllowedRepos</policy_name><policy_description>Requires container images to beg in with a repo string from a specified list.</policy_description> <policy_severity>high</policy_severity> <policy_instances_count>4</policy_instances_count></policy_instances><policy_instances> <policy_category>compliance</policy_category> <policy_name>ACKNoEnvVarSecrets</policy_name><policy_description>Restricts secrets used in pod envs.</policy_description><policy_severity>medium</policy_severity> <policy_instances_count>1</policy_instances_count></policy_instances><policy_instances> <policy_category>compliance</policy_category> <policy_name>ACKRestrictRoleBindings</policy_name><policy_description>Restricts use of the cluster-admin role.</policy_description><policy_severity>medium</policy_severity></ policy_instances><policy_instances><policy_category>infra</policy_category><policy_name >ACKLocalStorageRequireSafeToEvict</policy_name><policy_description>Restricts safe to e vict annotation existing in pod with local storage.</policy_description> <policy_severity>low</policy_severity></policy_instances><policy_instances> <policy_category>k8s-general</policy_category> <policy_name>ACKRequiredProbes</policy_name><policy_description>Requires Pods to have r eadiness and/or liveness probes.</policy_description> <policy_severity>medium</policy_severity></policy_instances><instances_severity_count>< high>11</high><medium>1</medium></instances_severity_count>
 ```
 
-#### Update a policy instance in an ACK
+#### 2.6.3 Update a policy instance in an ACK cluster
 
 **cluster**
 
@@ -5197,7 +5283,7 @@ Sample success responses `JSON` format `{`
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
-#### Query policy instances that are
+#### 2.6.4 Query policy instances that are deployed in an ACK cluster
 
 **deployed in an ACK cluster**
 
@@ -5272,7 +5358,7 @@ Sample success responses `JSON` format
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
-#### Query information about policies in an
+#### 2.6.5 Query information about policies in an ACK cluster
 
 **ACK cluster**
 
@@ -5561,7 +5647,7 @@ from a specified list.</policyDescription>
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
-#### Query information about a policy
+#### 2.6.6 Query information about a policy
 
 You can call the DescribePolicyDetails operation to query information about a policy.
 
@@ -5630,7 +5716,7 @@ list</description>
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
-#### DescribePolicies
+#### 2.6.7 DescribePolicies
 
 You can call the DescribePolicies operation to query a list of policies.
 
@@ -5706,7 +5792,7 @@ Armor", "ACKPSPCapabilities", "ACKPSPFSGroup", "ACKPSPFlexVolumes", "ACKPSPForbi
 </DescribePoliciesResponse>
 ```
 
-#### Delete policy instances from an ACK
+#### 2.6.8 Delete policy instances from an ACK cluster
 
 **cluster**
 
@@ -5760,11 +5846,11 @@ Sample success responses `JSON` format `{`
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 
-## Appendixes
+## 3 Appendixes
 
-### STS overview
+### 3.1 STS overview
 
-#### What is STS?
+#### 3.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -5776,7 +5862,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### Obtain an STS token
+#### 3.1.2 Obtain an STS token
 
 You can call the AssumeRole operation to obtain a Security Token Service (STS) token. A Resource Access Management (RAM) user can use the STS token to assume a RAM role whose trusted entity is an Alibaba Cloud account.
 

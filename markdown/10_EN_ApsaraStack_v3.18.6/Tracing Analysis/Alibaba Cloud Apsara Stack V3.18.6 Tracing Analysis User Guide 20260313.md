@@ -2,16 +2,50 @@
 title: "Tracing Analysis User Guide 20260313"
 product_version: "V3.18.6"
 pdf_pages: 84
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis User Guide 20260313.pdf"
+source_pdf: "27a40a99aac0bfab_Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis User Guide 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tracing%20Analysis%20User%20Guide%2020260313.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Tracing Analysis User Guide 20260313
 
-## Getting started
+## Table of Contents
 
-### Log on to the Tracing Analysis
+- 1 Getting started
+  - 1.1 Log on to the Tracing Analysis console
+  - 1.2 Get the endpoint
+  - 1.3 OpenTelemetry integration guide
+  - 1.4 Obtain OpenTelemetry Access Configuration
+  - 1.5 Monitor Java applications
+    - 1.5.1 Use Jaeger to report the trace data of Java applications
+    - 1.5.2 Use Zipkin to report the trace data of Java applications
+  - 1.6 Monitor PHP applications
+    - 1.6.1 Use Zipkin to report the trace data of PHP applications
+  - 1.7 Monitor Go applications
+    - 1.7.1 Use Jaeger to report the trace data of Go applications
+    - 1.7.2 Use Zipkin to report the trace data of a Go application
+  - 1.8 Monitor Node.js applications
+    - 1.8.1 Use Jaeger to report the trace data of Node.js applications
+  - 1.9 Monitor .NET applications
+    - 1.9.1 Use Jaeger to report the trace data of .NET applications
+    - 1.9.2 Use Zipkin to report the trace data of .NET applications
+  - 1.10 Monitor NGINX
+    - 1.10.1 Use Zipkin to perform tracing analysis on NGINX
+- 2 Tutorial
+  - 2.1 View applications
+  - 2.2 View the overall information about an application
+  - 2.3 View application details
+  - 2.4 View the details of span calls
+  - 2.5 View database calls
+  - 2.6 Perform diagnosis
+  - 2.7 Configure application settings
+  - 2.8 Run a multidimensional query
+  - 2.9 Global topology
+  - 2.10 Usage statistics
+
+## 1 Getting started
+
+### 1.1 Log on to the Tracing Analysis console
 
 **console**
 
@@ -24,15 +58,8 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key.
-
-**Note**
-
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key. You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-
-**Note**
-
 Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
@@ -46,11 +73,7 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**.
-
-**Note**
-
-For more information about how to enable MFA and bind an MFA device, see the
+Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
 **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, choose **Products > Middleware > Cloud Native Observability >**
 **Application Real-Time Monitoring Service (ARMS)**.
@@ -59,7 +82,7 @@ region, and click **Administrative Access** to open the ARMS console.
 7. In the navigation pane on the left, choose **Tracing Analysis** to open the Tracing Analysis
 console.
 
-### Get the endpoint
+### 1.2 Get the endpoint
 
 Obtain an endpoint to connect your application. Connecting an application means reporting its trace data to Tracing Analysis through a client, enabling distributed tracing. You can report trace data from applications written in Java, PHP, Go, Python, JavaScript, .NET, C++, and other languages to Tracing Analysis.
 
@@ -72,7 +95,7 @@ Obtain an endpoint to connect your application. Connecting an application means 
 4. In the **Client** section, click the **OpenTelemetry** tab.
 In the table, the information next to **Endpoint** under the **Related Information** column is your endpoint.
 
-### OpenTelemetry integration
+### 1.3 OpenTelemetry integration guide
 
 **guide**
 
@@ -84,7 +107,9 @@ Obtain an endpoint. For more information, see Obtain an endpoint.
 
 **Data reporting**
 
-The following figure shows how to report data using OpenTelemetry.
+The following figure shows how to report data using OpenTelemetry. Collector UI (Tracing Analysis) (Tracing Analysis) Host or container Application Linked Data OpenTelemetry Storage Report call chain data over an HTTP API Client with JSON serialization Query Log storage
+
+**Recommended scenarios for ARMS and Tracing Analysis**
 
 | Programming language | ARMS Application Monitoring (proprietary agent, SLA guaranteed) | Tracing Analysis (OpenTelemetry, open source client, self-managed) | Recommended connection type |
 |---|---|---|---|
@@ -96,10 +121,6 @@ The following figure shows how to report data using OpenTelemetry.
 | Erlang | Not supported | Automatic instrumentation | OpenTelemetry |
 | C++ | Not supported | Manual instrumentation | OpenTelemetry |
 | Ruby | Not supported | Manual instrumentation | OpenTelemetry |
-
-Collector UI Host or container Linked Data Storage Report call chain data Client over an HTTP API with JSON serialization Log storage
-
-**Recommended scenarios for ARMS and Tracing Analysis**
 
 | Rust | Not supported | Manual instrumentation | OpenTelemetry |
 |---|---|---|---|
@@ -193,14 +214,17 @@ point information obtained in the Prerequisites section.
 .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
                 .buildAndRegisterGlobal();
         tracer = openTelemetry.getTracer("OpenTelemetry Tracer", "1.0.0");
-    }
+```
+
+`}`
+
+```java
     private static Tracer tracer;
     public static Tracer getTracer() {
         return tracer;
-    }
-}
 ```
 
+`}` `}`
 3. Create a span.
 
 ```java
@@ -215,8 +239,11 @@ span").startSpan();
             span.setStatus(StatusCode.ERROR, "handle parent span error");
         } finally {
             span.end();
-        }
-    }
+```
+
+`}` `}`
+
+```
     public static void childMethod() {
         Span span = OpenTelemetrySupport.getTracer().spanBuilder("child
 span").startSpan();
@@ -226,14 +253,16 @@ span").startSpan();
             span.setStatus(StatusCode.ERROR, "handle child span error");
         } finally {
             span.end();
-        }
-    }
-    public static void main(String[] args) {
-        parentMethod();
-    }
-}
 ```
 
+`}` `}`
+
+```
+    public static void main(String[] args) {
+        parentMethod();
+```
+
+`}` `}`
 4. Start the application.
 In the application list on the Tracing Analysis page, you can select the target application to view its traces.
 
@@ -289,7 +318,7 @@ from django.urls import path from . import views urlpatterns = [
     path('', views.hello_world_view, name='helloworld')
 ```
 
-] iii. Modify the `AutoAndManualDemo/AutoAndManualDemo/urls.py` file to add the helloworld URL.
+`]` iii. Modify the `AutoAndManualDemo/AutoAndManualDemo/urls.py` file to add the helloworld URL.
 
 ```
 from django.contrib import admin from django.urls import path, include urlpatterns = [
@@ -297,7 +326,7 @@ from django.contrib import admin from django.urls import path, include urlpatter
  path('helloworld/', include('helloworld.urls')),
 ```
 
-]
+`]`
 4. Run the project.
 To report data over HTTP, replace `<your-service-name>` with your application name and `<http-endpoint>` with the HTTP endpoint.
 
@@ -327,7 +356,11 @@ from opentelemetry import trace, baggage from opentelemetry.exporter.otlp.proto.
     resource = Resource(attributes={
         SERVICE_NAME: "<service-name>",
         HOST_NAME: "<host-name>"
-    })
+```
+
+`})`
+
+```bash
     # Report data over HTTP
      span_processor = BatchSpanProcessor(OTLPSpanHttpExporter(
          endpoint="<endpoint>",
@@ -427,7 +460,7 @@ from django.urls import path from . import views urlpatterns = [
     path('', views.hello_world_view, name='helloworld')
 ```
 
-] ii. Modify the `AutoAndManualDemo/AutoAndManualDemo/urls.py` file to add the helloworld URL.
+`]` ii. Modify the `AutoAndManualDemo/AutoAndManualDemo/urls.py` file to add the helloworld URL.
 
 ```
 from django.contrib import admin from django.urls import path, include urlpatterns = [
@@ -435,7 +468,7 @@ from django.contrib import admin from django.urls import path, include urlpatter
  path('helloworld/', include('helloworld.urls')),
 ```
 
-]
+`]`
 5. Modify the code in the manage.py file. Add the following content to the application
 initialization code.
 
@@ -446,7 +479,12 @@ from opentelemetry import trace from opentelemetry.exporter.otlp.proto.grpc.trac
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource, HOST_NAME from opentelemetry.sdk.trace import TracerProvider from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter resource = Resource(attributes={
         SERVICE_NAME: "<service-name>",
         HOST_NAME: "<host-name>"
-}) trace.set_tracer_provider(TracerProvider(resource=resource)) trace.get_tracer_provider().add_span_processor(
+```
+
+`})`
+
+```bash
+trace.set_tracer_provider(TracerProvider(resource=resource)) trace.get_tracer_provider().add_span_processor(
     BatchSpanProcessor(OTLPSpanExporter(
         endpoint="<endpoint>",
         headers="Authentication=<token>" # The headers parameter is required for gRPC
@@ -492,7 +530,7 @@ backend.
             semconv.HostNameKey.String(common.ClientServiceHostName),
 ```
 
-`),` )
+`),` `)`
 
 ```
     handleErr(err, "failed to create resource")
@@ -503,7 +541,7 @@ backend.
         sdktrace.WithSpanProcessor(bsp),
 ```
 
-)
+`)`
 
 ```
     // Set the global propagator to tracecontext (not set by default).
@@ -515,11 +553,9 @@ backend.
         defer cancel()
         if err := traceExp.Shutdown(cxt); err != nil {
             otel.Handle(err)
-        }
-    }
-}
 ```
 
+`}` `}` `}`
 3. Add instrumentation.
 
 ```
@@ -533,9 +569,9 @@ tracer := otel.Tracer(common.TraceInstrumentationName)
         makeRequest(ctx)
         span.End()
         time.Sleep(time.Duration(1) * time.Second)
-    }
 ```
 
+`}`
 4. Start the application.
 
 **Report data from C++ applications using OpenTelemetry**
@@ -550,7 +586,7 @@ docker pull gcc # This image uses the Debian system docker run -it --name otel-c
 2. Install the required dependencies.
 protobuf grpc
 
-```bash
+```python
 apt-get update apt-get install sudo sudo apt-get install git cmake g++ libcurl4-openssl-dev
 # Install protobuf
 sudo apt-get install protobuf-compiler libprotobuf-dev
@@ -589,7 +625,7 @@ cmake_minimum_required(VERSION 3.25.1) # Set version to your cmake version. Use 
     opentelemetry_resources
 ```
 
-)
+`)`
 3. Write the demo code.
 The test code contains only one http_exporter.cc file. Replace ${ServiceName} with your application name and ${HostName} with your hostname.
 
@@ -614,10 +650,19 @@ The test code contains only one http_exporter.cc file. Replace ${ServiceName} wi
 
 ```
 #include <string>
-namespace trace = opentelemetry::trace; namespace trace_sdk = opentelemetry::sdk::trace; namespace otlp = opentelemetry::exporter::otlp; namespace internal_log = opentelemetry::sdk::common::internal_log; namespace resource = opentelemetry::sdk::resource; namespace nostd = opentelemetry::nostd; namespace {
+namespace trace = opentelemetry::trace; namespace trace_sdk = opentelemetry::sdk::trace; namespace otlp = opentelemetry::exporter::otlp; namespace internal_log = opentelemetry::sdk::common::internal_log; namespace resource = opentelemetry::sdk::resource; namespace nostd = opentelemetry::nostd; namespace
+```
+
+`{`
+
+```
     opentelemetry::exporter::otlp::OtlpHttpExporterOptions opts;
     void InitTracer()
-    {
+```
+
+`{`
+
+```
         // Create an OTLP exporter
         auto exporter  = otlp::OtlpHttpExporterFactory::Create(opts);
         auto processor =
@@ -626,44 +671,92 @@ trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
                 {resource::SemanticConventions::kServiceName, "${ServiceName}"}, // Appl
 ication name
                 {resource::SemanticConventions::kHostName, "${HostName}"}
-        };
+```
+
+};
+
+```
         auto resource = opentelemetry::sdk::resource::Resource::Create(attributes);
         std::shared_ptr<opentelemetry::trace::TracerProvider> provider =
                 trace_sdk::TracerProviderFactory::Create(std::move(processor), std::move
 (resource));
         // Set the Trace provider
         trace::Provider::SetTracerProvider(provider);
-    }
+```
+
+`}`
+
+```
     void CleanupTracer()
-    {
+```
+
+`{`
+
+```
         std::shared_ptr<opentelemetry::trace::TracerProvider> none;
         trace::Provider::SetTracerProvider(none);
-    }
+```
+
+`}`
+
+```
     nostd::shared_ptr<trace::Tracer> get_tracer()
-    {
+```
+
+`{`
+
+```
         auto provider = trace::Provider::GetTracerProvider();
         return provider->GetTracer("library name to trace", OPENTELEMETRY_SDK_VERSION);
-    }
+```
+
+`}`
+
+```
     void f1()
-    {
+```
+
+`{`
+
+```
         auto scoped_span = trace::Scope(get_tracer()->StartSpan("f1"));
-    }
+```
+
+`}`
+
+```
     void f2()
-    {
+```
+
+`{`
+
+```
         auto scoped_span = trace::Scope(get_tracer()->StartSpan("f2"));
         f1();
         f1();
-    }
+```
+
+`}`
+
+```
     void foo_library()
-    {
+```
+
+`{`
+
+```
         auto scopedspan = trace::Scope(gettracer()->StartSpan("library"));
 ```
 
-_ _
+`_` `_`
 
 ```
         f2();
-    }
+```
+
+`}`
+
+```
 } // namespace
 ```
 
@@ -682,34 +775,69 @@ _ _
 `*/`
 
 ```
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+```
+
+`{`
+
+```
     if (argc > 1)
-    {
+```
+
+`{`
+
+```
         opts.url = argv[1];
         if (argc > 2)
-        {
+```
+
+`{`
+
+```
             std::string debug  = argv[2];
             opts.console_debug = debug != "" && debug != "0" && debug != "no";
-        }
+```
+
+`}`
+
+```
         if (argc > 3)
-        {
+```
+
+`{`
+
+```
             std::string binary_mode = argv[3];
             if (binary_mode.size() >= 3 && binary_mode.substr(0, 3) == "bin")
-            {
+```
+
+`{`
+
+```
                 opts.content_type = otlp::HttpRequestContentType::kBinary;
-            }
-        }
-    }
+```
+
+`}` `}` `}`
+
+```
     if (opts.console_debug)
-    {
+```
+
+`{`
+
+```
         internal_log::GlobalLogHandler::SetLogLevel(internal_log::LogLevel::Debug);
-    }
+```
+
+`}`
+
+```
     InitTracer();
     foo_library();
     CleanupTracer();
-}
 ```
 
+`}`
 4. Compile the project.
 
 ```
@@ -722,15 +850,9 @@ mkdir build && cd build && cmake .. && make
 ./otel-http-export-demo ${http-endpoint}
 ```
 
-### Obtain OpenTelemetry Access
+### 1.4 Obtain OpenTelemetry Access Configuration
 
 **Configuration**
-
-| Parameter | Description |
-|---|---|
-| domain | The domain information obtained from arms- pop. |
-| userId | You can organize the userId information. |
-| agentType | The value is OpenTelemetry. |
 
 This topic describes how to obtain OpenTelemetry access configurations.
 
@@ -759,6 +881,12 @@ curl -v http://<domain>:8099/pop/xtrace/XtraceGetToken.json? duserId="149666****
 
 Parameter description:
 
+| Parameter | Description |
+|---|---|
+| domain | The domain information obtained from arms- pop. |
+| userId | You can organize the userId information. |
+| agentType | The value is OpenTelemetry. |
+
 | regionId | The unique identity of a region. |
 |---|---|
 
@@ -774,9 +902,9 @@ When using the Endpoint obtained from ARMS, add protocol information, such as HT
 2. In the navigation pane on the left, select **Tracing Analysis > Application List**.
 3. If you find the configured application on the Application List page, the access is successful.
 
-### Monitor Java applications
+### 1.5 Monitor Java applications
 
-#### Use Jaeger to report the trace data of
+#### 1.5.1 Use Jaeger to report the trace data of Java applications
 
 **Java applications**
 
@@ -828,7 +956,12 @@ operation of a request. If you want to record the previous and subsequent operat
 ```
 Tracer tracer = GlobalTracer.get(); Span parentspan = tracer.activeSpan(); Tracer.SpanBuilder spanBuilder = tracer.buildSpan("childSpan").withTag("myTag", "span Second"); if (parentspan !=null) {
     spanBuilder.asChildOf(parentspan).start();
-} Span childSpan = spanBuilder.start(); tracer.scopeManager().activate(childSpan, false); // The business logic. childSpan.finish(); tracer.activeSpan().setTag("methodName", "testCall");
+```
+
+`}`
+
+```
+Span childSpan = spanBuilder.start(); tracer.scopeManager().activate(childSpan, false); // The business logic. childSpan.finish(); tracer.activeSpan().setTag("methodName", "testCall");
 ```
 
 6. **Optional.** To troubleshoot issues in an efficient manner, you can add custom tags to a
@@ -854,19 +987,26 @@ private void attachTraceInfo(Tracer tracer, Span span, final Request request) {
             @Override
             public void put(String key, String value) {
                 request.setHeader(key, value);
-            }
+```
+
+`}`
+
+```java
             @Override
             public Iterator<Map.Entry<String, String>> iterator() {
                 throw new UnsupportedOperationException("TextMapInjectAdapter should
 only be used with Tracer.inject()");
-            }
+```
+
+`}`
+
+```
         });
-    }
 ```
 
-ii. Call the Extract method on the server to extract the context information.
+`}` ii. Call the Extract method on the server to extract the context information.
 
-```
+```java
 protected Span extractTraceInfo(Request request, Tracer tracer) {
     Tracer.SpanBuilder spanBuilder = tracer.buildSpan("/api/xtrace/test03");
     try {
@@ -874,14 +1014,23 @@ protected Span extractTraceInfo(Request request, Tracer tracer) {
 apExtractAdapter(request.getAttachments()));
         if (spanContext != null) {
             spanBuilder.asChildOf(spanContext);
-        }
+```
+
+`}`
+
+```
     } catch (Exception e) {
         spanBuilder.withTag("Error", "extract from request fail, error msg:" +
 e.getMessage());
-    }
-    return spanBuilder.start();
-}
 ```
+
+`}`
+
+```
+    return spanBuilder.start();
+```
+
+`}`
 
 **Use Spring Cloud to instrument a Java application**
 
@@ -916,8 +1065,9 @@ io.jaegertracing.Configuration.SamplerConfiguration().withType("const").withPara
     config.withReporter(new
 io.jaegertracing.Configuration.ReporterConfiguration().withSender(sender).withMaxQueueS e(10000));
     return config.getTracer();
-}
 ```
+
+`}`
 
 **Use gRPC to instrument a Java application**
 
@@ -953,10 +1103,9 @@ ServerTracingInterceptor();
                 .addService(tracingInterceptor.intercept(someServiceDef))
                 .build()
                 .start();
-        }
-    }
 ```
 
+`}` `}`
 4. Initialize the Tracer object on the client, create the ClientTracingInterceptor class, and then
 add an interceptor to the client.
 
@@ -977,9 +1126,9 @@ ClientTracingInterceptor(this.tracer);
 ClientTracingInterceptor();
             blockingStub =
 GreeterGrpc.newBlockingStub(tracingInterceptor.intercept(channel));
-        }
-    }
 ```
+
+`}` `}`
 
 **FAQ**
 
@@ -989,7 +1138,7 @@ Q: What do I do if no data is reported to the console after I run the demo progr
 
 Jaeger official website Jaeger client for Java Component library of OpenTracing OpenTracing Spring Cloud
 
-#### Use Zipkin to report the trace data of
+#### 1.5.2 Use Zipkin to report the trace data of Java applications
 
 **Java applications**
 
@@ -1009,11 +1158,7 @@ The following figure shows how to report data by using Zipkin.
 
 **Manually instrument a Java application**
 
-If you want to manually instrument a Java application, you must write instrumentation code.
-
-**Note**
-
-Click to download the demo project. Then, go to the **manualDemo** directory and follow the instructions in the README.md file to run the program.
+If you want to manually instrument a Java application, you must write instrumentation code. Click to download the demo project. Then, go to the **manualDemo** directory and follow the instructions in the README.md file to run the program.
 1. Add a JAR package as a dependency.
 
 ```xml
@@ -1052,7 +1197,11 @@ private void firstBiz() {
         span.tag("key", "firstBiz");
         secondBiz();
         span.finish();
-    }
+```
+
+`}`
+
+```java
     private void secondBiz() {
         tracing.tracer().startScopedSpanWithParent("childSpan",
 tracing.tracer().currentSpan().context());
@@ -1060,9 +1209,9 @@ tracing.tracer().currentSpan().context());
         chindSpan.tag("key", "secondBiz");
         chindSpan.finish();
         System.out.println("end tracing,id:" + chindSpan.context().traceIdString());
-    }
 ```
 
+`}`
 4. Optional. Add custom tags to a span for quick troubleshooting. For example, you can add a
 custom tag to record the return value of a request or check whether an error occurs.
 
@@ -1105,11 +1254,9 @@ ii. Call the Extract method on the server to extract the context information.
 
 **Use Spring 2.5 MVC or Spring 3.0 MVC to instrument a Java**
 
-You can use Spring 2.5 MVC or Spring 3.0 MVC to instrument a Java application.
+**application**
 
-**Note**
-
-Click to download the demo project. Then, go to the
+You can use Spring 2.5 MVC or Spring 3.0 MVC to instrument a Java application. Click to download the demo project. Then, go to the
 **springMvcDemo\webmvc3|webmvc25** directory and follow the instructions in the
 README.md file to run the program.
 1. Configure the tracing object in the **applicationContext.xml** file.
@@ -1187,11 +1334,9 @@ class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMa
 
 **Use Spring 4.0 MVC or Spring Boot to instrument a Java**
 
-You can use Spring 4.0 MVC or Spring Boot to instrument a Java application.
+**application**
 
-**Note**
-
-Click to download the demo project. Then, go to the **springMvcDemo\webmvc4-**
+You can use Spring 4.0 MVC or Spring Boot to instrument a Java application. Click to download the demo project. Then, go to the **springMvcDemo\webmvc4-**
 **boot|webmv4** directory and follow the instructions in the README.md file to run the
 program.
 1. Configure the tracing and filter objects.
@@ -1200,12 +1345,17 @@ program.
 /** Configuration for how to send spans to Zipkin */
   @Bean Sender sender() {
     return OkHttpSender.create("<endpoint>");
-  }
+```
+
+`}`
+
+```
   /** Configuration for how to buffer spans into messages for Zipkin */
   @Bean AsyncReporter<Span> spanReporter() {
     return AsyncReporter.create(sender());
-  }
 ```
+
+`}`
 
 ```
   /** Controls aspects of tracing such as the name that shows up in the UI */
@@ -1220,24 +1370,37 @@ logs
             .build()
 ```
 
-)
+`)`
 
-```java
+```
         .spanReporter(spanReporter()).build();
-  }
+```
+
+`}`
+
+```
   /** decides how to name and tag spans. By default they are named the same as the ht
 tp method. */
   @Bean HttpTracing httpTracing(Tracing tracing) {
     return HttpTracing.create(tracing);
-  }
+```
+
+`}`
+
+```java
   /** Creates client spans for http requests */
   // We are using a BPP as the Frontend supplies a RestTemplate bean prior to this co
+nfiguration
   @Bean BeanPostProcessor connectionFactoryDecorator(final BeanFactory beanFactory) {
     return new BeanPostProcessor() {
       @Override public Object postProcessBeforeInitialization(Object bean, String bea
 nName) {
         return bean;
-      }
+```
+
+`}`
+
+```java
       @Override public Object postProcessAfterInitialization(Object bean, String bean
 Name) {
         if (!(bean instanceof RestTemplate)) return bean;
@@ -1247,28 +1410,35 @@ Name) {
         interceptors.add(0, getTracingInterceptor());
         restTemplate.setInterceptors(interceptors);
         return bean;
-      }
+```
+
+`}`
+
+```
       // Lazy lookup so that the BPP doesn't end up needing to proxy anything.
       ClientHttpRequestInterceptor getTracingInterceptor() {
         return
 TracingClientHttpRequestInterceptor.create(beanFactory.getBean(HttpTracing.class));
-      }
-    };
-  }
+```
+
+`}` }; `}`
+
+```
   /** Creates server spans for http requests */
   @Bean Filter tracingFilter(HttpTracing httpTracing) {
     return TracingFilter.create(httpTracing);
-  }
 ```
+
+`}`
 
 ```java
   @Autowired SpanCustomizingAsyncHandlerInterceptor webMvcTracingCustomizer;
   /** Decorates server spans with application-defined web tags */
   @Override public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(webMvcTracingCustomizer);
-  }
 ```
 
+`}`
 2. Configure auto-configuration in the spring.factories file.
 
 ```
@@ -1277,11 +1447,7 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\ brave.webmvc.Tr
 
 **Use Dubbo to instrument a Java application**
 
-You can use Dubbo to instrument a Java application.
-
-**Note**
-
-Click to download the demo project. Then, go to the **dubboDem** directory and follow the instructions in the README.md file to run the program.
+You can use Dubbo to instrument a Java application. Click to download the demo project. Then, go to the **dubboDem** directory and follow the instructions in the README.md file to run the program.
 1. Add a JAR package as a dependency.
 
 ```xml
@@ -1319,7 +1485,7 @@ Click to download the demo project. Then, go to the **dubboDem** directory and f
 
 2. Configure the tracing object.
 
-```xml
+```
 <bean class="zipkin2.reporter.beans.OkHttpSenderFactoryBean">
         <property name="endpoint" value="<endpoint>"/>
     </bean>
@@ -1345,17 +1511,13 @@ Click to download the demo project. Then, go to the **dubboDem** directory and f
 
 3. Configure the filter object.
 
-```xml
+```
 // The configurations on the server. <dubbo:provider filter="tracing" /> // The configurations on the client. <dubbo:consumer filter="tracing" />
 ```
 
 **Use Spring Sleuth to instrument a Java application**
 
-You can use Spring Sleuth to instrument a Java application.
-
-**Note**
-
-Click to download the demo project. Then, go to the **sleuthDemo** directory and follow the instructions in the README.md file to run the program.
+You can use Spring Sleuth to instrument a Java application. Click to download the demo project. Then, go to the **sleuthDemo** directory and follow the instructions in the README.md file to run the program.
 1. Add a JAR package as a dependency.
 
 ```xml
@@ -1387,9 +1549,6 @@ Click to download the demo project. Then, go to the **sleuthDemo** directory and
 ```
 
 2. Configure the application.yml file.
-
-**Note**
-
 You must replace `<endpoint_short>` with the endpoint for your client and region. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the public endpoint that ends with api/v2/spans on the Access point information tab of the **Cluster Configurations** page.
 
 ```bash
@@ -1418,11 +1577,11 @@ data. If a 403 error is returned, the username configuration is invalid. You mus
 
 **References**
 
-brave-webmvc-example brave-instrumentation
+brave-webmvc-example brave-instrumentation spring-cloud-zipkin-sleuth-tutorial
 
-### Monitor PHP applications
+### 1.6 Monitor PHP applications
 
-#### Use Zipkin to report the trace data of
+#### 1.6.1 Use Zipkin to report the trace data of PHP applications
 
 **PHP applications**
 
@@ -1449,7 +1608,12 @@ composer require openzipkin/zipkin
 operations. Tracers contain information such as the endpoint from which data is reported, the IP address of the on-premises machine, and the sampling rate. You can adjust the sampling rate to reduce the cost of reporting data.
 
 ```
-function create_tracing($endpointName, $ipv4) {
+function create_tracing($endpointName, $ipv4)
+```
+
+`{`
+
+```
     $endpoint = Endpoint::create($endpointName, $ipv4, null, 2555);
     /* Do not copy this logger into production.
      * Read https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md#log-levels
@@ -1469,9 +1633,9 @@ Zipkin\Reporters\Http(\Zipkin\Reporters\Http\CurlFactory::create());
         ->havingReporter($reporter)
         ->build();
     return $tracing;
-}
 ```
 
+`}`
 3. Record the request data.
 
 ```
@@ -1479,21 +1643,18 @@ $rootSpan = $tracer->newTrace(); $rootSpan->setName('encode') $rootSpan->start()
   doSomethingExpensive();
 } finally {
   $rootSpan->finish();
-}
 ```
 
-**Note**
-
-You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Example:
+`}` You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Example:
 
 ```
 $span = $tracer->newChild($parentSpan->getContext()); $span->setName('encode'); $span->start(); try {
   doSomethingExpensive();
 } finally {
   $span->finish();
-}
 ```
 
+`}`
 4. **Optional.** To troubleshoot issues in an efficient manner, you can add custom tags to a
 record. For example, you can add custom tags to a request to indicate whether an error occurs or describe the returned values of the request.
 
@@ -1511,11 +1672,15 @@ private function newTrace(Request $request) {
     $flags = DefaultSamplingFlags::createAsSampled();
   } else if (strpos($request->getUri(), '/static') === 0) {
     $flags = DefaultSamplingFlags::createAsSampled();
-  }
-  return $tracer->newTrace($flags);
-}
 ```
 
+`}`
+
+```
+  return $tracer->newTrace($flags);
+```
+
+`}`
 6. In a distributed system, remote procedure call (RPC) requests are sent together with trace
 data. Trace data contains the values of the TraceId, ParentSpanId, SpanId, and Sampled parameters. You can call the Extract or Inject method to pass through trace data in HTTP request headers. The following figure shows the entire process.
 
@@ -1535,6 +1700,8 @@ ii. Call the Extract method to extract the context information.
 ```
 // configure a function that extracts the trace context from a request $extracted = $tracing->getPropagation()->extractor(new RequestHeaders); $span = $tracer->newChild($extracted) $span->setKind(Kind\SERVER);
 ```
+
+**Getting started**
 
 The following official Zipkin PHP example shows how to use Zipkin to report the trace data of a PHP application.
 1. Download the Demo file.
@@ -1574,9 +1741,9 @@ Q: Why is no data reported after I perform the preceding operations? A: Check wh
 
 Zipkin official website Zipkin source code for PHP zipkin-php-example
 
-### Monitor Go applications
+### 1.7 Monitor Go applications
 
-#### Use Jaeger to report the trace data of
+#### 1.7.1 Use Jaeger to report the trace data of Go applications
 
 **Go applications**
 
@@ -1589,6 +1756,9 @@ The endpoint is obtained. For more information, see Get the endpoint.
 **Report data**
 
 The following figure shows how to report data without using the Jaeger agent.
+
+**Getting started**
+
 1. Run the following command to download the Demo file to the GOPATH/src directory:
 
 ```
@@ -1603,14 +1773,12 @@ sender := transport.NewHTTPTransport(
         "<endpoint>",
 ```
 
-)
+`)`
 3. Run the following command to upload data:
 
 ```
 go run main.go http done grpc done
 ```
-
-**Note**
 
 The following errors indicate that the specified account and password are invalid. Specify a valid account and password and try again.
 
@@ -1638,16 +1806,16 @@ func NewJaegerTracer(service string) (opentracing.Tracer, io.Closer) {
         "<endpoint>",
 ```
 
-)
+`)`
 
 ```
    tracer, closer:= jaeger.NewTracer(service,
         jaeger.NewConstSampler(true),
    jaeger.NewRemoteReporter(sender))
    return tracer, closer
-}
 ```
 
+`}`
 3. Create a span and pass data.
 If no parent span is available, use the following code:
 
@@ -1661,7 +1829,7 @@ If a parent span is available, use the following code:
 // Extract a SpanContext from an HTTP request or an RPC request. spanCtx, _ := tracer.Extract(opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(r.Header)) span := tracer.StartSpan("myspan", opentracing.ChildOf(spanCtx)) ... defer span.Finish()
 ```
 
-#### Use Zipkin to report the trace data of a
+#### 1.7.2 Use Zipkin to report the trace data of a Go application
 
 **Go application**
 
@@ -1708,20 +1876,18 @@ hz.aliyuncs.com/adapt_aokcdqnxyz@123456ff_abcdef123@abcdef123/api/v2/spans")
     zipkin.WithSampler(sampler),
 ```
 
-)
+`)`
 
 ```
   return tracer;
-}
 ```
 
+`}`
 3. Record the request data.
 
 ```
 // tracer can now be used to create spans. span := tracer.StartSpan("some_operation") // ... do some work ... span.Finish() // Output:
 ```
-
-**Note**
 
 You can run the preceding code to create a root span that records the root operation of a request. If you want to record the previous and next operations of a request, specify the context information. Sample code:
 
@@ -1746,8 +1912,6 @@ data. Trace data contains the values of the TraceId, ParentSpanId, SpanId, and S
 ┌──────────────────┐ ┌──────────────────┐ │ │ │ │ │ TraceContext │ Http Request Headers │ TraceContext │ │ ┌──────────────┐ │ ┌───────────────────┐ │ ┌──────────────┐ │ │ │ TraceId │ │ │ X-B3-TraceId │ │ │ TraceId │ │ │ │ │ │ │ │ │ │ │ │ │ │ ParentSpanId │ │ Inject │ X-B3-ParentSpanId │Extract │ │ ParentSpanId │ │ │ │ ├─┼─────────>│ ├────────┼>│ │ │ │ │ SpanId │ │ │ X-B3-SpanId │ │ │ SpanId │ │ │ │ │ │ │ │ │ │ │ │ │ │ Sampled │ │ │ X-B3-Sampled │ │ │ Sampled │ │ │ └──────────────┘ │ └───────────────────┘ │ └──────────────┘ │ │ │ │ │ └──────────────────┘ └──────────────────┘
 ```
 
-**Note**
-
 Zipkin allows you to pass through context information over HTTP or Google Remote Procedure Call (gRPC). i. Call the Inject method on the client to specify the context information.
 
 ```
@@ -1762,6 +1926,8 @@ req, _ := http.NewRequest("GET", "/", nil)
         b.ResetTimer()
         _ = b3.ExtractHTTP(copyRequest(req))
 ```
+
+**Getting started with Zipkin**
 
 The following example shows how to use Zipkin to report the trace data of a Go application.
 1. Download the Demo file.
@@ -1788,9 +1954,9 @@ Q: Why is no data reported after I perform the preceding steps? A: You can check
 
 Zipkin official website Zipkin Library for Go
 
-### Monitor Node.js applications
+### 1.8 Monitor Node.js applications
 
-#### Use Jaeger to report the trace data of
+#### 1.8.1 Use Jaeger to report the trace data of Node.js applications
 
 **Node.js applications**
 
@@ -1803,10 +1969,9 @@ Dependencies on the jaeger-client library are added to the package of the Node.j
 ```json
 "dependencies": {
     "jaeger-client": "^3.12.0"
-  }
 ```
 
-The endpoint is obtained. For more information, see Get the endpoint.
+`}` The endpoint is obtained. For more information, see Get the endpoint.
 
 **Report data**
 
@@ -1822,13 +1987,16 @@ const initTracer = require("jaeger-client").initTracer; const config = {
     sampler: {
         type: "const",
         param: 1
-    },
-    reporter: {
-        collectorEndpoint: "<endpoint>"
-    },
-};
 ```
 
+`},`
+
+```
+    reporter: {
+        collectorEndpoint: "<endpoint>"
+```
+
+`},` };
 2. Create a Tracer object.
 
 ```
@@ -1851,11 +2019,19 @@ const express = require("express"); const initTracer = require("jaeger-client").
     sampler: {
         type: "const",
         param: 1
-    },
+```
+
+`},`
+
+```
     reporter: {
         collectorEndpoint: "<endpoint>"
-    },
-}; const tracer = initTracer(config); app.all('*', function (req, res, next) {
+```
+
+`},` };
+
+```
+const tracer = initTracer(config); app.all('*', function (req, res, next) {
     req.span = tracer.startSpan("say-hello");
     next();
 }); app.get("/api", function (req, res) {
@@ -1872,9 +2048,9 @@ const express = require("express"); const initTracer = require("jaeger-client").
 
 jaeger-client-node opentracing-javascript
 
-### Monitor .NET applications
+### 1.9 Monitor .NET applications
 
-#### Use Jaeger to report the trace data of
+#### 1.9.1 Use Jaeger to report the trace data of .NET applications
 
 **.NET applications**
 
@@ -1894,11 +2070,9 @@ The following figure shows how to report data without using the Jaeger agent.
 
 **Use ASP.NET Core to automatically instrument a .NET**
 
-Use ASP.NET Core to instrument an application by performing the following steps:
+**application**
 
-**Note**
-
-You can click here to download the demo project. Then, you can go to the webapi.dotnetcore directory and perform the steps in the README.md file to run the demo program.
+Use ASP.NET Core to instrument an application by performing the following steps: You can click here to download the demo project. Then, you can go to the webapi.dotnetcore directory and perform the steps in the README.md file to run the demo program.
 1. Install the NuGet packages.
 
 ```
@@ -1914,7 +2088,12 @@ You can click here to download the demo project. Then, you can go to the webapi.
 3. Initialize and register Jaeger.
 
 ```
-// Add a Jaeger tracer. services.AddSingleton<ITracer>(serviceProvider => {
+// Add a Jaeger tracer. services.AddSingleton<ITracer>(serviceProvider =>
+```
+
+`{`
+
+```
     string serviceName = serviceProvider.GetRequiredService<IHostingEnvironment>().Ap
 plicationName;
     ILoggerFactory loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>
@@ -1938,11 +2117,7 @@ RemoteReporter.Builder().WithSender(senderConfiguration.GetSender()).Build())
 
 **Use gRPC to automatically instrument a .NET application**
 
-Use gRPC to instrument an application by performing the following steps:
-
-**Note**
-
-You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+Use gRPC to instrument an application by performing the following steps: You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
 1. Install the NuGet packages.
 
 ```
@@ -1953,7 +2128,11 @@ You can click here to download the demo project. Then, you can perform the steps
 
 ```
 public static Tracer InitTracer(string serviceName, ILoggerFactory loggerFactory)
-        {
+```
+
+`{`
+
+```
             Configuration.SamplerConfiguration samplerConfiguration = new
 Configuration.SamplerConfiguration(loggerFactory)
                 .WithType(ConstSampler.Type)
@@ -1970,21 +2149,29 @@ Configuration.ReporterConfiguration(loggerFactory)
                 .WithSampler(samplerConfiguration)
                 .WithReporter(reporterConfiguration)
                 .GetTracer();
-        }
 ```
 
+`}`
 3. Add instrumentation on the server. Build the ServerTracingInterceptor object and bind the
 object to the application.
 
 ```
 ILoggerFactory loggerFactory = new LoggerFactory().AddConsole(); ITracer tracer = TracingHelper.InitTracer("dotnetGrpcServer", loggerFactory); ServerTracingInterceptor tracingInterceptor = new ServerTracingInterceptor(tracer); Server server = new Server
- {
-    Services = { Greeter.BindService(new GreeterImpl()).Intercept(tracingInterceptor)
-},
-     Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
- };
 ```
 
+`{`
+
+```
+    Services = { Greeter.BindService(new GreeterImpl()).Intercept(tracingInterceptor)
+```
+
+`},`
+
+```
+     Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
+```
+
+};
 4. Add instrumentation on the client. Build the ServerTracingInterceptor object and bind the
 object to the specified channel.
 
@@ -1994,11 +2181,7 @@ ILoggerFactory loggerFactory = new LoggerFactory().AddConsole(); ITracer tracer 
 
 **Manually instrument a .NET application**
 
-The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Jaeger to report the trace data of the applications to the ARMS console.
-
-**Note**
-
-You can click here to download the demo project. Then, you can go to the ManualDemo directory and perform the steps in the README.md file to run the demo program.
+The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Jaeger to report the trace data of the applications to the ARMS console. You can click here to download the demo project. Then, you can go to the ManualDemo directory and perform the steps in the README.md file to run the demo program.
 1. Install the NuGet packages.
 
 ```
@@ -2010,7 +2193,11 @@ Jaeger to build this object. When you build this object, you can configure the o
 
 ```
 public static ITracer InitTracer(string serviceName, ILoggerFactory loggerFactory)
- {
+```
+
+`{`
+
+```
     Configuration.SamplerConfiguration samplerConfiguration = new
 Configuration.SamplerConfiguration(loggerFactory)
           .WithType(ConstSampler.Type)
@@ -2027,9 +2214,9 @@ Configuration.ReporterConfiguration(loggerFactory)
           .WithSampler(samplerConfiguration)
           .WithReporter(reporterConfiguration)
         .GetTracer();
-}
 ```
 
+`}`
 3. Register the ITracer object with GlobalTracer to facilitate code calling.
 
 ```
@@ -2041,8 +2228,6 @@ GlobalTracer.Register(InitTracer("dotnetManualDemo", loggerFactory ));
 ```
 ITracer tracer = GlobalTracer.Instance; ISpan span = tracer.BuildSpan("parentSpan").WithTag("mytag","parentSapn").Start(); tracer.ScopeManager.Activate(span, false); // ... do something span.Finish();
 ```
-
-**Note**
 
 You can run the preceding code to record the root operation of a request. If you want to record the previous and next operations of the request, call the AsChildOf method. Sample code:
 
@@ -2092,7 +2277,7 @@ sz.aliyuncs.com/adapt_your_token/api/traces");
 
 Jaeger official website jaeger-client-csharp csharp-netcore csharp-grpc
 
-#### Use Zipkin to report the trace data of
+#### 1.9.2 Use Zipkin to report the trace data of .NET applications
 
 **.NET applications**
 
@@ -2108,11 +2293,9 @@ The following figure shows how to report data by using Zipkin.
 
 **Use ASP.NET Core to automatically instrument a .NET**
 
-Perform the following steps to use ASP.NET Core to instrument an application:
+**application**
 
-**Note**
-
-You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+Perform the following steps to use ASP.NET Core to instrument an application: You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
 1. Install the NuGet packages.
 
 ```
@@ -2139,19 +2322,22 @@ lifetime.ApplicationStopped.Register(() => TraceManager.Stop()); app.UseTracing(
 3. Add TracingHandler to HttpClient that sends GET or POST requests.
 
 ```
-public override void ConfigureServices(IServiceCollection services) {
+public override void ConfigureServices(IServiceCollection services)
+```
+
+`{`
+
+```
     services.AddHttpClient("Tracer").AddHttpMessageHandler(provider =>
         TracingHandler.WithoutInnerHandler(provider.GetService<IConfiguration>()["app
-licationName"])); }
+licationName"]));
 ```
+
+`}`
 
 **Use OWIN to automatically instrument a .NET application**
 
-Use Open Web Interface for .NET (OWIN) to instrument an application by performing the following steps:
-
-**Note**
-
-You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+Use Open Web Interface for .NET (OWIN) to instrument an application by performing the following steps: You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
 1. Install the NuGet packages.
 
 ```
@@ -2161,10 +2347,22 @@ You can click here to download the demo project. Then, you can perform the steps
 2. Register and start Zipkin.
 
 ```
-// Configure tracing. TraceManager.SamplingRate = 1.0f; var logger = new ConsoleLogger(); // Obtain the Zipkin endpoint in the ARMS console. Take note that the endpoint does not contain /api/v2/spans. var httpSender = new HttpZipkinSender("http://tracing-analysis-dchz.aliyuncs.com/adapt_your_token", "application/json"); var tracer = new ZipkinTracer(httpSender, new JSONSpanSerializer()); TraceManager.RegisterTracer(tracer); TraceManager.Start(logger); //Stop TraceManager on app dispose var properties = new AppProperties(appBuilder.Properties); var token = properties.OnAppDisposing; if (token != CancellationToken.None) { token.Register(() => { TraceManager.Stop(); }); }
+// Configure tracing. TraceManager.SamplingRate = 1.0f; var logger = new ConsoleLogger(); // Obtain the Zipkin endpoint in the ARMS console. Take note that the endpoint does not contain /api/v2/spans. var httpSender = new HttpZipkinSender("http://tracing-analysis-dchz.aliyuncs.com/adapt_your_token", "application/json"); var tracer = new ZipkinTracer(httpSender, new JSONSpanSerializer()); TraceManager.RegisterTracer(tracer); TraceManager.Start(logger); //Stop TraceManager on app dispose var properties = new AppProperties(appBuilder.Properties); var token = properties.OnAppDisposing; if (token != CancellationToken.None)
 ```
 
-`//`
+`{`
+
+```
+token.Register(() =>
+```
+
+`{`
+
+```
+TraceManager.Stop(); });
+```
+
+`}` `//`
 
 ```
 // Setup Owin Middleware appBuilder.UseZipkinTracer(System.Configuration.ConfigurationManager.AppSettings["appli tionName"]);
@@ -2174,20 +2372,21 @@ You can click here to download the demo project. Then, you can perform the steps
 
 ```
 using (var httpClient = new HttpClient(new TracingHandler(applicationName)))
-    {
+```
+
+`{`
+
+```
        var response = await httpClient.GetAsync(callServiceUrl);
        var content = await response.Content.ReadAsStringAsync();
        await context.Response.WriteAsync(content);
-    }
 ```
+
+`}`
 
 **Manually instrument a .NET application**
 
-The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Zipkin to report the trace data of the applications to the ARMS console.
-
-**Note**
-
-You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
+The preceding sections describe how to use existing components to instrument .NET applications. You can also manually instrument .NET applications. In this case, you can use Zipkin to report the trace data of the applications to the ARMS console. You can click here to download the demo project. Then, you can perform the steps in the README.md file to run the demo program.
 1. Install the NuGet packages.
 
 ```
@@ -2205,8 +2404,6 @@ TraceManager.SamplingRate = 1.0f; var logger = new ConsoleLogger(); // Obtain th
 ```
 var trace = Trace.Create(); Trace.Current = trace; trace.Record(Annotations.ClientSend()); trace.Record(Annotations.Rpc("client")); trace.Record(Annotations.Tag("mytag", "spanFrist")); trace.Record(Annotations.ServiceName("dotnetManual")); // ...do something testCall(); trace.Record(Annotations.ClientRecv());
 ```
-
-**Note**
 
 You can run the preceding code to record the root operation of a request. If you want to record the previous and next operations of the request, call the ChildOf method. Sample code:
 
@@ -2253,9 +2450,9 @@ Q: What do I do if no data is reported to the console after I run the demo progr
 
 Zipkin official website .NET client for Zipkin
 
-### Monitor NGINX
+### 1.10 Monitor NGINX
 
-#### Use Zipkin to perform tracing analysis
+#### 1.10.1 Use Zipkin to perform tracing analysis on NGINX
 
 **on NGINX**
 
@@ -2277,7 +2474,7 @@ If a slow response occurs in a microservice that uses NGINX as a proxy, you cann
 
 1. Pull an image from the registry.
 
-```bash
+```python
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/public-community/nginx-zipkin:0.1
 ```
 
@@ -2329,7 +2526,7 @@ wget http://nginx.org/download/nginx-1.14.2.tar.gz tar -xzvf nginx-1.14.2.tar.gz
 
 ii. Compile the NGINX source code.
 
-```bash
+```python
 cd nginx-1.14.2 ./configure --with-compat make sudo make install
 ```
 
@@ -2342,14 +2539,14 @@ wget https://github.com/opentracing-contrib/nginxopentracing/releases/download/v
 
 ii. Copy the .so file to the modules folder of NGINX. If the folder does not exist, create one.
 
-```bash
+```python
 sudo mkdir /usr/local/nginx/modules sudo cp ngx_http_opentracing_module.so /usr/local/nginx/modules/ngx_http_opentracing_module.so
 ```
 
 3. Use Zipkin to perform tracing analysis.
 i. Download Zipkin to a working directory.
 
-```bash
+```python
 wget https://github.com/rnburn/zipkin-cppopentracing/releases/download/v0.5.2/linux-amd64-libzipkin_opentracing_plugin.so.gz gunzip linux-amd64-libzipkin_opentracing_plugin.so.gz sudo cp linux-amd64-libzipkin_opentracing_plugin.so /usr/local/lib/libzipkin_opentracing_plugin.so
 ```
 
@@ -2370,27 +2567,16 @@ g.json;
 sed on your business requirements.
       proxy_pass http://127.0.0.1:8081;
       opentracing_propagate_context;
-    }
-  }
-}
 ```
 
-**Note**
-
-For more information, see the configuration in opentracing-contrib. iii. Configure the Zipkin parameters in the /etc/zipkin-config.json file.
+`}` `}` `}` For more information, see the configuration in opentracing-contrib. iii. Configure the Zipkin parameters in the /etc/zipkin-config.json file. `{`
 
 ```json
-{
   "service_name": "nginx",
   "collector_host": "zipkin"
-}
 ```
 
-If you use the Zipkin service that is managed by Alibaba Cloud, set thecollector_hostparameter to an endpoint of Zipkin.
-
-**Note**
-
-Enter the V1 endpoint of Zipkin that you obtain, but remove http:// and add a question mark (?) to the value as the suffix.
+`}` If you use the Zipkin service that is managed by Alibaba Cloud, set thecollector_hostparameter to an endpoint of Zipkin. Enter the V1 endpoint of Zipkin that you obtain, but remove http:// and add a question mark (?) to the value as the suffix.
 
 ```json
 "collector_host": "tracing-analysis-dchz.aliyuncs.com/adapt_abc123@abc456_abc123@abc356/api/v1/spans?"
@@ -2404,7 +2590,7 @@ iv. Configure thesample_rateparameter to specify the sampling rate.
 
 v. Run NGINX and access the NGINX service:
 
-```bash
+```python
 sudo /usr/local/nginx/sbin/nginx curl "http://localhost"
 ```
 
@@ -2416,9 +2602,9 @@ Wait for a moment. Then, log on to the ARMS console. If monitoring data appears,
 
 nginx-opentracing project jaeger-client-cpp project zipkin-cpp-opentracing Jaeger Example Zipkin Example
 
-## Tutorial
+## 2 Tutorial
 
-### View applications
+### 2.1 View applications
 
 On the Applications page, you can view the key metrics of all monitored applications, including the number of requests and errors in the current day and the response time. You can also add custom tags to applications and filter applications by tag.
 
@@ -2456,7 +2642,7 @@ the icon in the **Labels** column, and then select the tag that you specify.
 
 On the Applications page, you can click one or more tags in the **Select Label** section to search for all applications that have at least one of the selected tags.
 
-### View the overall information
+### 2.2 View the overall information about an application
 
 **about an application**
 
@@ -2487,13 +2673,9 @@ The topology of service calls for the application in the specified time range. T
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-**Note**
-
-The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
-
-### View application details
+### 2.3 View application details
 
 On the Application Details page of an application, you can view the key metrics, call topology, and traces of an application on each server where it is deployed.
 
@@ -2504,25 +2686,13 @@ On the **Application Details** page of an application, the **Overview** tab disp
 2. In the left-side navigation pane, choose **Tracing > Applications**.
 3. On the **Applications** page, click the name of your application.
 4. In the left-side navigation pane, click **Application Details**. Then, click **All** or select a
-server from the server list on the left. Then, you can view the call topology and key metrics on the **Overview** tab.
-
-**Note**
-
-To sort the servers where the application is deployed, you can click the **Response**
+server from the server list on the left. Then, you can view the call topology and key metrics on the **Overview** tab. To sort the servers where the application is deployed, you can click the **Response**
 **Time**, **Requests**, or **Exceptions** tab, and then click the upward or downward arrow
-next to the name of the tab. To filter the servers, you can enter a keyword in the search box and click the search icon.
-
-**Note**
-
-If you want to switch to a different application, select the new application from the Application Name drop-down list in the upper-left corner of the page.
+next to the name of the tab. To filter the servers, you can enter a keyword in the search box and click the search icon. If you want to switch to a different application, select the new application from the Application Name drop-down list in the upper-left corner of the page.
 
 **View traces**
 
-The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces tab
-
-**Note**
-
-In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` . On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Generation Time** or **Status** to sort the traces in descending or ascending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
+The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces tab In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` . On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Generation Time** or **Status** to sort the traces in descending or ascending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
 
 **View the waterfall chart of a trace**
 
@@ -2530,13 +2700,9 @@ The **Traces** tab displays the following information about a trace: start time,
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
 
-**Note**
-
-The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
-
-### View the details of span calls
+### 2.4 View the details of span calls
 
 On the Interface Calls page of an application, you can view the performance metrics of the span calls on the client, span calls on the server, and internal span calls of an application. You can also view the details of span calls for the upstream services that call the application and the downstream services that are called by the application.
 
@@ -2557,11 +2723,7 @@ This feature is not supported by the current version.
 
 **View traces**
 
-The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces page
-
-**Note**
-
-In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` . On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Consumed Time** or **Status** to sort the traces in ascending or descending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
+The **Traces** tab displays up to 100 traces that consume the most amount of time on the specified host within the specified period of time. Figure 1 Traces page In the **Status** column, the green icon indicates that the time consumed is less than 500 milliseconds. The yellow icon indicates that the time consumed ranges from 500 milliseconds to 1,000 milliseconds. The red icon indicates that the time consumed is greater than 1,000 milliseconds or that one of the tag keys of the trace is set to `error` . On the **Traces** tab, you can perform one of the following operations based on your business requirements: Enter a value that is accurate to milliseconds in the **Takes Longer Than (ms)** field and click **Query**. Then, the traces whose time consumed is greater than the specified value are displayed on the Traces tab. Select **Exceptions** and click **Query**. Then, abnormal traces are displayed on the Traces tab. Click the up or down arrow next to **Consumed Time** or **Status** to sort the traces in ascending or descending order. Click the ID of a trace to go to the **Traces** page. The page displays the waterfall chart of the trace.
 
 **View the waterfall chart of a trace**
 
@@ -2569,13 +2731,9 @@ The **Traces** tab displays the following information about a trace: start time,
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
 
-**Note**
-
-The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
-
-### View database calls
+### 2.5 View database calls
 
 On the **Database Calls** page of an application, you can analyze SQL statements or query traces.
 
@@ -2592,13 +2750,9 @@ Click **Call Statistics** in the **Actions** column. The number of times that th
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-**Note**
-
-The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
-
-### Perform diagnosis
+### 2.6 Perform diagnosis
 
 This topic describes how to perform diagnosis on exceptions.
 
@@ -2619,13 +2773,9 @@ traces of the exception.
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-**Note**
-
-The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
-
-### Configure application settings
+### 2.7 Configure application settings
 
 This topic describes how to enable and manage tags and delete applications.
 
@@ -2668,7 +2818,7 @@ Alternatively, click the name of your application and click **Application Settin
 
 After an application is deleted, all monitoring data of the application is cleared. The deleted data cannot be restored.
 
-### Run a multidimensional query
+### 2.8 Run a multidimensional query
 
 This topic describes how to use the multidimensional query feature to query traces.
 
@@ -2677,32 +2827,27 @@ This topic describes how to use the multidimensional query feature to query trac
 1. Log on to the Application Real-Time Monitoring Service (ARMS) console.
 2. In the left-side navigation pane, choose **Tracing > Multidimensional Query**.
 3. On the **Advanced Query** page, configure the following parameters based on your business
-requirements and click **Search**: Required query parameters TraceID Takes Longer Than (ms) Application Name Span Name Date Optional query parameter: Tag Key Enter a value in the **Tag Key** field and then enter a value in the **Tag Value** field. To add more tag keys and tag values as query conditions, click the blue plus sign to the right of the Tag Value field.
-
-**Note**
-
-In the search results, click the ID of a trace to go to the **Traces** tab and view the trace details.
+requirements and click **Search**: Required query parameters TraceID Takes Longer Than (ms) Application Name Span Name Date Optional query parameter: Tag Key Enter a value in the **Tag Key** field and then enter a value in the **Tag Value** field. To add more tag keys and tag values as query conditions, click the blue plus sign to the right of the Tag Value field. In the search results, click the ID of a trace to go to the **Traces** tab and view the trace details.
 4. To save the current configuration of query parameters, click **Favorite** and specify an alias.
 5. To delete the favorite configuration of query parameters, click the Delete icon to the right
 of the configuration alias.
 
 **Specify a time range**
 
-You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**.
+You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-**Note**
-
-The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
-
-### Global topology
+### 2.9 Global topology
 
 On the Global Topology page, you can view the upstream and downstream dependencies of an application.
+
+**View the global topology**
+
 1. Log on to the Application Real-Time Monitoring Service (ARMS) console.
 2. In the left-side navigation pane, choose **Tracing > Global Topology**.
 3. In the upper-right corner of the **Global Topology** page, specify a time range based on your
 business requirements. You can perform the following operations on the Global Topology page: Click the plus icon or scroll the mouse wheel up to zoom in the topology. Click the minus icon or scroll the mouse wheel down to zoom out the topology. Click the RESET icon to restore the topology to the default size. Click a node to highlight the topology that is associated with the node. Right-click an application node and click View Details to view the details of the application. For more information, see View application details. Click the dots on the lines between nodes to view the queries per second (QPS), response time, number of exceptions, and corresponding time series curve.
 
-### Usage statistics
+### 2.10 Usage statistics
 
 On the Usage statistics page, you can view the statistics on resource consumption. You can also specify filter conditions to view the resource consumption details of an application within the specified time range.
 1. Log on to the Application Real-Time Monitoring Service (ARMS) console.

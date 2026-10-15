@@ -3,14 +3,43 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 33
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 20260828.pdf"
+source_pdf: "95aec4d006082c28_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Network%20Detection%20and%20Response%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response User Guide 20260828
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 Network Detection and Response
+  - 3.1 Change the organization to view the menu items
+  - 3.2 View traffic trends
+  - 3.3 View traffic statistics
+    - 3.3.1 Analyze Internet traffic
+    - 3.3.2 Analyze internal network traffic
+  - 3.4 Search for logs
+  - 3.5 View an attacker profile
+  - 3.6 Use the Threat Detection module
+    - 3.6.1 View threat detection results
+    - 3.6.2 View logs of blocked traffic
+  - 3.7 Use the Behavior Analysis module
+    - 3.7.1 Outbound Connection Analysis
+    - 3.7.2 View DNS behavior analysis results
+    - 3.7.3 View encrypted traffic analysis results
+  - 3.8 Policy configuration
+    - 3.8.1 Configure network layer policies
+    - 3.8.2 Configure application-layer policies
+    - 3.8.3 Configure spoofing policies for port scanning
+    - 3.8.4 Manage address books
+    - 3.8.5 Manage IDS rules
+    - 3.8.6 Manage internal CIDR blocks for traffic monitoring
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, make sure that your computer meets the configuration requirements. For more information, see the Configuration requirements table of this topic. Table 1. Configuration requirements
 
@@ -19,9 +48,9 @@ Before you log on to Apsara Stack Security Center, make sure that your computer 
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. All roles in Apsara Stack Security Center are provided by default. You cannot create custom roles. Before you log on to Apsara Stack Security Center, make sure that your account is assigned the required role. For more information, see Default roles in Apsara Stack Security. Table 1. Default roles in Apsara Stack Security
 
@@ -33,7 +62,7 @@ This topic describes the user roles involved in Apsara Stack Security. All roles
 If you do not have an account that assumes the required role, contact the administrator to create an account and assign the role to the account. For more information, see the **Create a**
 **user** topic in **Apsara Uni-manager Management Console User Guide** .
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -62,11 +91,11 @@ operations in the following scenarios: It is the first time that you log on to t
 For more information, see the **Bind a virtual MFA device to enable MFA** topic in
 **Apsara Uni-manager Management Console User Guide** .
 
-## Network Detection and
+## 3 Network Detection and Response
 
 **Response**
 
-### Change the organization to
+### 3.1 Change the organization to view the menu items
 
 **view the menu items**
 
@@ -81,7 +110,7 @@ the **Region** drop-down list and click **Access with Authorized Role**.
 3. If you are using a level-1 or lower organization, click the
 icon in the top navigation bar to change the organization to the security administrator level (root level) to view the full menu.
 
-### View traffic trends
+### 3.2 View traffic trends
 
 Organization security administrators and global organization security administrators can analyze traffic trends and obtain the traffic rate, peaks, and troughs. The top five IP addresses that have the largest amount of traffic can also be viewed to identify malicious IP addresses. This topic describes how to view network traffic trends and statistics about inbound and outbound traffic.
 
@@ -99,9 +128,9 @@ traffic trends within the specified time range.
 6. View network traffic information in the following sections.
 Network Traffic Trend View the network traffic trends within the specified time range, including the average traffic, peak traffic, as well as the inbound and outbound traffic measured in bytes per second (BPS) and packets per second (PPS). Inbound Traffic View statistics about inbound sessions, inbound applications, and destination IP addresses that receive most requests. Outbound Traffic View statistics about outbound sessions, outbound applications, and source IP addresses that send most requests.
 
-### View traffic statistics
+### 3.3 View traffic statistics
 
-#### Analyze Internet traffic
+#### 3.3.1 Analyze Internet traffic
 
 Network Detection and Response (NDR) allows you to view traffic at the Internet border. You can use traffic information to identify abnormal Internet traffic. This topic describes how to view traffic at the Internet border.
 
@@ -145,7 +174,7 @@ If you select **Outbound**, the traffic information is displayed in the Traffic 
 **Actions** column to view the traffic trends, basic information, and sessions of the IP
 address.
 
-#### Analyze internal network traffic
+#### 3.3.2 Analyze internal network traffic
 
 Network Detection and Response (NDR) allows you to view traffic at the internal network border. You can use traffic information to identify suspicious traffic from the internal network. This topic describes how to view traffic at the internal network border.
 
@@ -194,7 +223,7 @@ If you select **Outbound**, the traffic information is displayed in the Traffic 
 **Actions** column to view the traffic trends, basic information, and sessions of the IP
 address.
 
-### Search for logs
+### 3.4 Search for logs
 
 This topic describes how to search for and view logs.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -226,7 +255,7 @@ You can click **Download Task Management** in the upper-right corner of the Log 
 **encoding**,**Hex encoding**, and **Base64 encoding**.
 View the percentage of a field: Click the icon next to a field in the lower-left corner of the **Log Retrieval** page to view the percentage of the field. To hide the data, click the icon again. View field descriptions: Move the pointer over a field in the lower-left corner of the Log Retrieval page to view the description of the field.
 
-### View an attacker profile
+### 3.5 View an attacker profile
 
 The attacker profile feature analyzes and displays the basic information, threat intelligence, attack methods, attack targets, and attack processes of attacks that are initiated from IP addresses in a centralized manner. This topic describes how to view an attacker profile.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -253,11 +282,11 @@ from the specified IP address. Click the **Basic Information** tab to view the b
 **Download Attack Packets** in the upper-right corner of the **Basic Information** tab to
 download attack evidence messages. You can click **Download Task Management** in the upper-right corner of the Attacker Profile page to view the download results. Click the **Attack Method** tab to view the attack details, including the attack events, attack results, victim IP addresses, victim assets, departments, IP address types, and listening ports. Click the **Top Victim IP Addresses** tab to view the top five hosts and IP addresses that receive the highest number of attacks. You can also view the number of attack attempts, the number of successful attacks, and the number of attacks by severity. Click the **Attack Process** tab to view the detailed process of the attacks. Click a rightwards arrow on the **Attack Process** tab to view the details of the attack.
 
-### Use the Threat Detection
+### 3.6 Use the Threat Detection module
 
 **module**
 
-#### View threat detection results
+#### 3.6.1 View threat detection results
 
 This topic describes how to view threat detection results.
 
@@ -337,7 +366,7 @@ You can also select multiple attacks and click **Block (Batch Operation)**, or *
 **(Batch Operation)** to handle the attacks at a time.
 Export the attack list: Click **Export All Records** above the attack list to export the returned attacks. You can click **Download Task Management** in the upper-right corner of the Threat Detection page to view export results.
 
-#### View logs of blocked traffic
+#### 3.6.2 View logs of blocked traffic
 
 Logs of blocked traffic record the traffic that matches a blocking policy. This topic describes how to view the logs of blocked traffic.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -373,11 +402,11 @@ generates an alert but does not block the detected traffic.
 added to the whitelist. Change the actions of the blocking policies that multiple logs of blocked traffic match: Select multiple logs of blocked traffic and click **Add to Whitelist (Batch Operation)**,
 **Block (Batch Operation)**, or **Monitor (Batch Operation)**.
 
-### Use the Behavior Analysis
+### 3.7 Use the Behavior Analysis module
 
 **module**
 
-#### Outbound Connection Analysis
+#### 3.7.1 Outbound Connection Analysis
 
 Outbound connection analysis monitors and analyzes unauthorized or anomalous external connection attempts from hosts to identify potential threats. This topic describes how to view outbound connection analysis.
 
@@ -404,7 +433,7 @@ icon to switch the organization to the security administrator level (root) and v
 **IP|Destination IP Top 5**, **Outbound Connection Trend**, and the outbound connection
 analysis list. In the outbound connection analysis list, you can perform the following operations: View detailed information about an outbound connection: Click **Details** in the **Actions** column of the target record. Export the outbound connection list: Click **Export All Records** above the list. You can view the export result by clicking **Download Task Management** in the upper-right corner of the page. View the allowlist: Click **Whitelist** above the list. The **Whitelist** allows you to add or delete entries.
 
-#### View DNS behavior analysis results
+#### 3.7.2 View DNS behavior analysis results
 
 DNS behavior analysis can analyze the characteristics of suspicious domain names to detect suspicious DNS behaviors. This topic describes how to view DNS behavior analysis results.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -432,7 +461,7 @@ the sections. You can perform the following operations in the DNS behavior list:
 **Operation)** to add the behaviors to the whitelist at the same time.
 Export the DNS behavior list: Click **Export All Records** above the DNS behavior list to export all DNS behaviors. You can click **Download Task Management** in the upperright corner of the Behavior Analysis page to view export results. View the whitelist: Click **Whitelist** above the DNS behavior list to view the details of the whitelist. In the **Whitelist** dialog box, you can query, add, or remove a behavior. Configure a rule to detect DNS tunneling attacks: Click **DNS Tunneling Detection Rule** above the DNS behavior list. In the Configure DNS Tunneling Detection Rule dialog box, configure the Request Scope(Minutes), Requests(Minutes), and DNS Domain Name Length(Character) parameters and click **OK**.
 
-#### View encrypted traffic analysis results
+#### 3.7.3 View encrypted traffic analysis results
 
 Encrypted traffic analysis can detect suspicious encrypted traffic by analyzing the characteristics of traffic. This topic describes how to view encrypted traffic analysis results.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -464,9 +493,9 @@ the same time. Export encrypted traffic list: Click **Export All Records** above
 **Management** in the upper-right corner of the Behavior Analysis page to view export
 results. View the whitelist: Click **Whitelist** above the encrypted traffic list to view the details of the whitelist. In the **Whitelist** dialog box, you can query, add, or remove a behavior.
 
-### Policy configuration
+### 3.8 Policy configuration
 
-#### Configure network layer policies
+#### 3.8.1 Configure network layer policies
 
 This article describes how to create and view network layer policies.
 
@@ -505,7 +534,7 @@ On the **Network Layer Policy** tab, you can select the rule action of the polic
 **Batch Operation** below the policy list. Supports **Batch Delete**, **Batch Enable**, **Batch**
 **Disable**, **Batch Export**.
 
-#### Configure application-layer policies
+#### 3.8.2 Configure application-layer policies
 
 This topic describes how to create an application-layer policy, view application-layer policies, and view policies for web application detection.
 
@@ -556,7 +585,7 @@ or icon for **Web Application**
 **Detection**.
 The icon indicates that all policies are enabled. The icon indicates that all policies are disabled.
 
-#### Configure spoofing policies for port
+#### 3.8.3 Configure spoofing policies for port scanning
 
 **scanning**
 
@@ -589,7 +618,7 @@ On the **Port Scan Spoofing Policy** tab, you can query and view policies by dep
 **Batch Delete**.
 Enable or disable a policy: Find the policy that you want to manage and click the or icon in the **Status** column. The icon indicates that the policy is enabled. The icon indicates that the policy is disabled.
 
-#### Manage address books
+#### 3.8.4 Manage address books
 
 An address book is a collection of IP addresses. You can create an address book to improve protection configuration efficiency. This topic describes how to create an address book and query address books.
 
@@ -618,7 +647,7 @@ following table describes the parameters.
 
 On the **Address Book Management** tab, perform the following operations to manage the address books in the address book list. Filter address books: Specify an address book name, address book description, or IP address in the upper part of the page and click **Query** to filter address books. Modify an address book: Find the address book that you want to modify and click **Edit** in the **Actions** column. Delete an address book: Find the address book that you want to delete and click **Delete** in the **Actions** column. Delete multiple address books at a time: Select the address books that you want to delete and click **Batch Delete**.
 
-#### Manage IDS rules
+#### 3.8.5 Manage IDS rules
 
 Network Detection and Response (NDR) provides built-in intrusion detection system (IDS) rules. You can configure custom IDS rules based on your business requirements and network environment. This topic describes how to create and manage IDS rules.
 
@@ -654,7 +683,7 @@ describes the parameters.
 
 After you create an IDS rule, you can manage the rule in the IDS rule list. View the details of an IDS rule. You can specify filter conditions in the upper part of the page to query specific IDS rules. Find the rule that you want to manage and click **Details** in the **Actions** column. Enable an IDS rule. Find the rule that you want to enable and turn on the switch in the **Effective Status** column to change the status of the rule from **Disabled** to **Enabled**. Disable an IDS rule. If a rule is not suitable for your business, you can disable the rule. Find the rule that you want to disable and turn off the switch in the **Effective Status** column to change the status of the rule from **Enabled** to **Disabled**.
 
-#### Manage internal CIDR blocks for traffic
+#### 3.8.6 Manage internal CIDR blocks for traffic monitoring
 
 **monitoring**
 

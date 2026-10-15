@@ -3,16 +3,130 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Management Developer 
 product_version: "V3.16.2"
 doc_version: "20220916"
 pdf_pages: 232
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Management Developer Guide 20220916.pdf"
+source_pdf: "3e14f604ad4d0e11_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Management Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230602/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Data%20Management%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Management Developer Guide 20220916
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Call an API operation
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about an API operation
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the endpoint of DMS
+  - 2.6 Obtain an SDK installation package of DMS
+- 3 Call examples for SDK for Java
+  - 3.1 Get started with DMS SDK for Java
+  - 3.2 Use SDK
+    - 3.2.1 Install DMS SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+- 4 Call examples for SDK for Python
+  - 4.1 Get started with DMS SDK for Python
+  - 4.2 Use SDK
+    - 4.2.1 Install DMS SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+- 5 Call examples for SDK for Go
+  - 5.1 Get started with DMS SDK for Go
+  - 5.2 Use SDK
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+- 6 API Reference
+  - 6.1 List of operations by function
+  - 6.2 User management
+    - 6.2.1 RegisterUser
+    - 6.2.2 DisableUser
+    - 6.2.3 EnableUser
+    - 6.2.4 UpdateUser
+    - 6.2.5 DeleteUser
+    - 6.2.6 ListUsers
+    - 6.2.7 ListUserTenants
+    - 6.2.8 GetUserActiveTenant
+    - 6.2.9 GetUser
+  - 6.3 Instance management
+    - 6.3.1 RegisterInstance
+    - 6.3.2 ListInstances
+    - 6.3.3 GetInstance
+    - 6.3.4 UpdateInstance
+    - 6.3.5 DeleteInstance
+  - 6.4 Operation logs
+    - 6.4.1 GetOpLog
+  - 6.5 Approval processes
+    - 6.5.1 ListWorkFlowTemplates
+    - 6.5.2 ListWorkFlowNodes
+  - 6.6 Metadata of databases and tables
+    - 6.6.1 SearchDatabase
+    - 6.6.2 SearchTable
+    - 6.6.3 ListDatabases
+    - 6.6.4 ListLogicDatabases
+    - 6.6.5 ListTables
+    - 6.6.6 ListLogicTables
+    - 6.6.7 ListColumns
+    - 6.6.8 ListIndexes
+    - 6.6.9 GetDatabase
+    - 6.6.10 GetLogicDatabase
+    - 6.6.11 GetMetaTableDetailInfo
+    - 6.6.12 GetTableDBTopology
+    - 6.6.13 GetMetaTableColumn
+    - 6.6.14 SyncDatabaseMeta
+    - 6.6.15 SyncInstanceMeta
+  - 6.7 Ticket operations
+    - 6.7.1 General
+      - 6.7.1.1 ApproveOrder
+      - 6.7.1.2 CloseOrder
+      - 6.7.1.3 GetApprovalDetail
+      - 6.7.1.4 GetOrderBaseInfo
+      - 6.7.1.5 ListOrders
+      - 6.7.1.6 SubmitOrderApproval
+      - 6.7.1.7 CreateOrder
+    - 6.7.2 Data changes
+      - 6.7.2.1 ExecuteDataCorrect
+      - 6.7.2.2 GetDataCorrectBackupFiles
+      - 6.7.2.3 GetDataCorrectOrderDetail
+    - 6.7.3 Schema design
+      - 6.7.3.1 CreatePublishGroupTask
+    - 6.7.4 Data export
+      - 6.7.4.1 ExecuteDataExport
+      - 6.7.4.2 GetDataExportDownloadURL
+      - 6.7.4.3 GetDataExportOrderDetail
+  - 6.8 Permission management
+    - 6.8.1 RevokeUserPermission
+    - 6.8.2 ListDatabaseUserPermssions
+    - 6.8.3 SetOwners
+    - 6.8.4 ListUserPermissions
+    - 6.8.5 GrantUserPermission
+  - 6.9 Security management
+    - 6.9.1 ListSensitiveColumns
+    - 6.9.2 ListSensitiveColumnsDetail
+  - 6.10 Data query
+    - 6.10.1 ExecuteScript
+- 7 Appendixes
+  - 7.1 Process of API calls by using the ASAPI gateway
+  - 7.2 Use the ASAPI gateway to make API calls
+    - 7.2.1 Obtain an endpoint of ASAPI
+    - 7.2.2 Generate an endpoint for ASAPI
+    - 7.2.3 Obtain Apsara Stack SDKs
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Centerpage by using a browser.
@@ -22,7 +136,7 @@ documentation This topic describes how to view the desired product development d
 5. In the upper-right corner of the product documentation section, click View Det ails or Download
 PDF.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway. Not e You can still use the ASAPI gateway to call API operations. For more information, see Process of API calls by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain an ASAPI SDK. Flowchart Procedure
 1. Obtain AccessKey credentials.
@@ -36,9 +150,9 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 5. Obtain the endpoint of the cloud service.
 6. Obtain an SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -48,7 +162,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the information about an
+### 2.2 View the information about an API operation
 
 API operation This topic describes how to view the information about API operations. Before you use SDKs, you need to obtain service names, API operation names, and API versions. Context The API operations on the API Directory page are only for reference. For information about how to call API operations, see developer guide of the corresponding cloud service. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
 1. Log on to the API Tool console.
@@ -57,7 +171,7 @@ API operation This topic describes how to view the information about API operati
 of an operation name in the search box, and then click Search.
 4. View and record the service name, API operation name, and API version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by RAM or STS. You can use one type of AccessKey credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of the request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is authorized by an administrator. This ensures security.
 
@@ -84,7 +198,7 @@ to obtain.
 5. Click Management Accesskey on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use STS to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS? Procedure
 1. Obtain the `RAM role` .
@@ -193,7 +307,7 @@ evious step.
 
 `}` `}`
 
-### Obtain the endpoint of DMS
+### 2.5 Obtain the endpoint of DMS
 
 This topic describes how to obtain the endpoint of Data Management (DMS). Background information To use the POP gateway to call API operations of a service in Apsara Stack, you must obtain endpoint of the service. You can obtain an endpoint from onsite Apsara Stack O&M engineers. You can also perform the following steps to obtain the endpoint. Procedure
 1. Log on to the Apsara Infrastructure Management console.
@@ -209,7 +323,7 @@ icon next to Service and search for
 5. Find the dts-dtm service, right-click in the Service Regist rat ion column, and then select Show
 More from the shortcut menu. In the Det ails dialog box, view the value of dms_open_api_domain. The value indicates the endpoint of DMS.
 
-### Obtain an SDK installation
+### 2.6 Obtain an SDK installation package of DMS
 
 package of DMS To call API operations of DMS in Apsara Stack by using the POP gateway, you must use an SDK. This topic provides links for you to download Alibaba Cloud SDKs.
 
@@ -224,9 +338,9 @@ package of DMS To call API operations of DMS in Apsara Stack by using the POP ga
 
 Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Get started with DMS SDK for Java
+### 3.1 Get started with DMS SDK for Java
 
 This topic describes how to obtain and use DMS SDK for Java. Prerequisites An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. You can obtain an AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of DMS is obtained. For more information, see Obtain the endpoint of DMS. Java Development Kit (JDK) 1.8 or later is installed. Install the SDK If you use Apache Maven to manage your Java project, you need to only import the JAR file to the pom.xml file of the project. To use DMS SDK for Java, you must install the SDK core library and the SDK. We recommend that you use the core library version 4.5.17 or later and use the SDK version 1.18.0. Use the SDK To use DMS SDK for Java, perform the following steps:
 1. Create and initialize a DefaultAcsClient instance.
@@ -270,9 +384,9 @@ ey);
 
 `}` `}` `}`
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install DMS SDK for Java
+#### 3.2.1 Install DMS SDK for Java
 
 This topic describes how to install and use DMS SDK for Java. Alibaba Cloud SDK for Java supports JDK 1.8 or later. You can install SDKs for Java by adding Maven dependencies or downloading Alibaba Cloud SDKs. SDK for Java To use DMS SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and DMS SDK for Java. We recommend that you use the core library version 4.5.17 or later and use the SDK version 1.18.0. To use DMS SDK for Java, you must also add the following dependency to the pom.xml file. For information about the SDK version, see Obtain an SDK installation package of DMS.
 
@@ -288,7 +402,7 @@ This topic describes how to install and use DMS SDK for Java. Alibaba Cloud SDK 
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. DMS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance. Not e Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -301,7 +415,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Not e In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. SDK for Java Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
@@ -321,7 +435,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use DMS SDK for Java to initiate a request. Procedure
 1. Create an AcsClient instance.
@@ -356,7 +470,7 @@ If an exception occurs or you need to obtain the original HTTP response, call `d
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -387,11 +501,11 @@ try {
 
 `}` SDK for Python
 
-## Call examples for SDK for
+## 4 Call examples for SDK for Python
 
 Python
 
-### Get started with DMS SDK for
+### 4.1 Get started with DMS SDK for Python
 
 Python This topic describes how to obtain and use DMS SDK for Python. Prerequisites An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. For more information, see Obtain an AccessKey pair. The endpoint of DMS is obtained. For more information, see Obtain the endpoint of DMS. Install DMS SDK for Python
 1. Install the SDK core library.
@@ -435,9 +549,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 print(str(response, encoding='utf-8'))
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install DMS SDK for Python
+#### 4.2.1 Install DMS SDK for Python
 
 This topic describes how to install and use DMS SDK for Python. Alibaba Cloud SDK for Python supports Python 2.6.x, Python 2.7.x, Python 3.x, and later versions. You can install Alibaba Cloud SDK for Python by using pip. Not e To use the SDK for Python of a cloud service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use DMS SDK for Python, you must install the core library of Alibaba Cloud SDK for Python and DMS SDK for Python. If you use Python 2.x, run the following command to install the SDK core library:
 
@@ -463,7 +577,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-dms-enterprise
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. DMS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance. Not ice Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -471,7 +585,7 @@ When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python.
 
@@ -499,7 +613,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use DMS SDK for Python to initiate a request. Procedure
 1. Import DMS SDK for Python.
@@ -528,7 +642,7 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding='utf-8')) response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. SDK for Python Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -551,9 +665,9 @@ except ServerException as e:
 
 SDK for Go
 
-## Call examples for SDK for Go
+## 5 Call examples for SDK for Go
 
-### Get started with DMS SDK for Go
+### 5.1 Get started with DMS SDK for Go
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use DMS SDK for Go. Prerequisites An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. The endpoint of DMS is obtained. For more information, see Obtain the endpoint of DMS. Install the core package of Alibaba Cloud SDK for Go Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -600,15 +714,15 @@ ID>", "<yourAccessKeySecret>")
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. DMS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance. Not ice Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised. The following code provides an example on how to initialize a DMS client instance: SDK for Go
 
@@ -621,7 +735,7 @@ When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide
 
 `.` Not e In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use DMS SDK for Go to initiate a request. To use DMS SDK for Go to initiate a request, perform the following steps:
 1. Import DMS SDK for Go.
@@ -653,7 +767,7 @@ request := dms_enterprise.CreateGetOpLogRequest() request.Scheme = "https" reque
 response, err := client.GetOpLog(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 SDK for Go When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a similar way as standard Go errors. Troubleshooting You can use the following code to troubleshoot an error:
 
@@ -712,9 +826,9 @@ response, err := Client.DescribeInstances(request) if serverError, ok := err.(*e
 
 `}`
 
-## API Reference
+## 6 API Reference
 
-### List of operations by function
+### 6.1 List of operations by function
 
 The following tables describe the API operations available for use in Data Management (DMS). User management
 
@@ -820,9 +934,9 @@ Data query
 |---|---|
 | ExecuteScript | Executes an SQL script. |
 
-### User management
+### 6.2 User management
 
-#### RegisterUser
+#### 6.2.1 RegisterUser
 
 Adds a user to your enterprise. The administ rat or of Data Management (DMS) Enterprise can call this operation to add users to DMS Enterprise. To check the users that assume the administrator role, perform the following steps: Log on to the DMS Enterprise console and choose System Management > User Management. Request parameters
 
@@ -872,7 +986,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DisableUser
+#### 6.2.2 DisableUser
 
 Disables an Apsara Stack tenant account. This operation is related to the disable user feature of Data Management (DMS). To use this feature, perform the following steps: Log on to the DMS console, choose System Management > User Management. The administrator of DMS Enterprise can call this operation to disable an Apsara Stack tenant account that is temporarily not used in DMS Enterprise. After an Apsara Stack tenant account is disabled, the permissions that are granted to the Apsara Stack tenant account are revoked. The data owner configurations and database administrator (DBA) configurations are also disabled. Not e This operation only stops an Apsara Stack tenant account from logging on to your DMS Enterprise console. The Apsara Stack tenant account is not disabled After an Apsara Stack tenant account is disabled, you cannot use the account to log on to your DMS Enterprise console until the account is enabled again. However, the disabled account still exists in DMS Enterprise. Request parameters
 
@@ -916,7 +1030,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### EnableUser
+#### 6.2.3 EnableUser
 
 Enables a disabled Apsara Stack tenant account. This operation is related to the enable user feature of Data Management (DMS) Enterprise. To use this feature, perform the following steps: Log on to the DMS Enterprise console, choose System Management > User Management. The administrator of DMS Enterprise can call this operation to enable an Apsara Stack tenant account that is disabled in DMS Enterprise. After an Apsara Stack tenant account is enabled, you can use the account to log on to the DMS Enterprise console and perform the required operations. Not e This operation only removes the limit of a disabled Apsara Stack tenant account that cannot be used to log on to the DMS Enterprise console. Other operations that can be performed by the Apsara Stack tenant account are not affected. Request parameters
 
@@ -966,7 +1080,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpdateUser
+#### 6.2.4 UpdateUser
 
 Updates the information of a user. Request parameters
 
@@ -1018,7 +1132,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteUser
+#### 6.2.5 DeleteUser
 
 Deletes an Apsara Stack tenant account. This operation is related to the delete user feature of Data Management (DMS). To use this feature, perform the following steps: Log on to the DMS console, choose System Management > User Management. The administrator of DMS Enterprise can call this operation to delete an Apsara Stack tenant account that is no longer used in DMS Enterprise. After an Apsara Stack tenant account is deleted, the permissions that are granted to the Apsara Stack tenant account are revoked. The data owner configurations and database administrator (DBA) configurations are disabled. Not e This operation only removes the relationship between an Apsara Stack tenant account and your DMS Enterprise. The Apsara Stack tenant account is not deleted. After you delete an Apsara Stack tenant account, you cannot use this account to log on to DMS Enterprise until the account is recreated. Request parameters
 
@@ -1062,7 +1176,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListUsers
+#### 6.2.6 ListUsers
 
 Queries the details about users. Request parameters
 
@@ -1221,7 +1335,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListUserTenants
+#### 6.2.7 ListUserTenants
 
 Queries tenants. Request parameters
 
@@ -1300,7 +1414,7 @@ Sample success responses `XML` format
 
 `}` `]` `}`
 
-#### GetUserActiveTenant
+#### 6.2.8 GetUserActiveTenant
 
 Queries the details about a tenant. Request parameters
 
@@ -1356,7 +1470,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetUser
+#### 6.2.9 GetUser
 
 Queries the details of a user. Request parameters
 
@@ -1462,9 +1576,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Instance management
+### 6.3 Instance management
 
-#### RegisterInstance
+#### 6.3.1 RegisterInstance
 
 Adds a database instance to your enterprise. The administ rat or and dat abase administ rat or (DBA) of Data Management (DMS) Enterprise can call this operation to add database instances to DMS Enterprise. To check users who assume the administrator or DBA role, perform the following steps: Log on to the DMS Enterprise console and choose System Management > User Management. Request parameters
 
@@ -1592,7 +1706,7 @@ in DMS Enterprise. request.set_InstanceAlias("Alias of the instance")
 tance. The user must first be added to DMS Enterprise by using the console or the required API operation. request.set_DbaUid(-1) request.set_SafeRule("Name of the security rule that is configured in DMS Enterprise") request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do_action_with_exception(request) print response
 ```
 
-#### ListInstances
+#### 6.3.2 ListInstances
 
 Queries the details about instances. Request parameters
 
@@ -1677,7 +1791,7 @@ Sample success responses `XML` format
 
 `]` `}` `}`
 
-#### GetInstance
+#### 6.3.3 GetInstance
 
 Queries the details about an instance. Request parameters
 
@@ -1806,7 +1920,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpdateInstance
+#### 6.3.4 UpdateInstance
 
 Updates the information about a database instance and checks the connectivity of the instance. Before you call this operation to update the information about an instance, we recommend that you call the GetInstance operation to obtain the complete information about the instance. Then, you can set the required parameters based on the information that you obtain. Request parameters
 
@@ -1879,7 +1993,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteInstance
+#### 6.3.5 DeleteInstance
 
 Removes a database instance from Data Management (DMS) Enterprise. This operation only removes a database instance from the DMS Enterprise console. The database instance is not disabled. Request parameters
 
@@ -1922,9 +2036,9 @@ Sample success responses `XML` format
 {"RequestId":"B4B07137-F6AE-4756-8474-7F92BB6C4E04","ErrorCode":"UnknownError","ErrorMessag e":"UnknownError","Success":"true"}
 ```
 
-### Operation logs
+### 6.4 Operation logs
 
-#### GetOpLog
+#### 6.4.1 GetOpLog
 
 Queries the details about operation logs that are generated in a specified period. The administ rat or and securit y administ rat or roles of an account can all this operation. For more information about account roles, see User management. Request parameters
 
@@ -2404,9 +2518,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkdms_enterprise.request.
 request = GetOpLogRequest() request.set_Tid("Enter the tenant ID of your enterprise") request.set_StartTime("2018-11-20 00:00:00") request.set_EndTime("2018-11-23 00:00:00") request.set_PageNumber(1) request.set_PageSize(50) response = client.do_action_with_exception(request) print response
 ```
 
-### Approval processes
+### 6.5 Approval processes
 
-#### ListWorkFlowTemplates
+#### 6.5.1 ListWorkFlowTemplates
 
 Queries the details about approval templates. Request parameters
 
@@ -2638,7 +2752,7 @@ re reviewed by an administrator.",
 
 `}` `]` `}` `}`
 
-#### ListWorkFlowNodes
+#### 6.5.2 ListWorkFlowNodes
 
 Queries the details about approval nodes. Request parameters
 
@@ -2727,11 +2841,11 @@ ts are reviewed by an administrator.",
 
 `}`
 
-### Metadata of databases and
+### 6.6 Metadata of databases and tables
 
 tables
 
-#### SearchDatabase
+#### 6.6.1 SearchDatabase
 
 Queries the details about databases. Request parameters
 
@@ -2887,7 +3001,7 @@ archName>
 
 `}`
 
-#### SearchTable
+#### 6.6.2 SearchTable
 
 Queries the details about tables. Request parameters
 
@@ -3033,7 +3147,7 @@ tabase]",
 
 `}`
 
-#### ListDatabases
+#### 6.6.3 ListDatabases
 
 Queries the details of databases in an instance. Request parameters
 
@@ -3167,7 +3281,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### ListLogicDatabases
+#### 6.6.4 ListLogicDatabases
 
 Queries the details about logical databases. Request parameters
 
@@ -3325,7 +3439,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListTables
+#### 6.6.5 ListTables
 
 Queries the details of tables in a database. Request parameters
 
@@ -3508,7 +3622,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListLogicTables
+#### 6.6.6 ListLogicTables
 
 Queries the details of logical tables in a logical database. Request parameters
 
@@ -3627,7 +3741,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListColumns
+#### 6.6.7 ListColumns
 
 Queries the details about columns in a table. Request parameters
 
@@ -3803,7 +3917,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListIndexes
+#### 6.6.8 ListIndexes
 
 Queries the details of indexes for a table. Request parameters
 
@@ -3880,7 +3994,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetDatabase
+#### 6.6.9 GetDatabase
 
 Queries the details about a database. Request parameters
 
@@ -4002,7 +4116,7 @@ ame>
 
 `}`
 
-#### GetLogicDatabase
+#### 6.6.10 GetLogicDatabase
 
 Queries the details about a logical database. Request parameters
 
@@ -4104,7 +4218,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetMetaTableDetailInfo
+#### 6.6.11 GetMetaTableDetailInfo
 
 Queries the details of a table. These details include columns and indexes. Request parameters
 
@@ -4276,7 +4390,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetTableDBTopology
+#### 6.6.12 GetTableDBTopology
 
 Queries the topology of a table. This operation is available only for logical databases. Request parameters
 
@@ -4451,7 +4565,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetMetaTableColumn
+#### 6.6.13 GetMetaTableColumn
 
 Queries the details about columns in a table. Request parameters
 
@@ -4549,7 +4663,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SyncDatabaseMeta
+#### 6.6.14 SyncDatabaseMeta
 
 Synchronizes the metadata of a database dictionary. Request parameters
 
@@ -4591,7 +4705,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SyncInstanceMeta
+#### 6.6.15 SyncInstanceMeta
 
 Synchronizes the metadata of all database dictionaries in an instance. Request parameters
 
@@ -4636,11 +4750,11 @@ Sample success responses `XML` format
 
 `}`
 
-### Ticket operations
+### 6.7 Ticket operations
 
-#### General
+#### 6.7.1 General
 
-##### ApproveOrder
+##### 6.7.1.1 ApproveOrder
 
 Reviews a ticket. Request parameters
 
@@ -4686,7 +4800,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### CloseOrder
+##### 6.7.1.2 CloseOrder
 
 Closes a ticket. Request parameters
 
@@ -4728,7 +4842,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetApprovalDetail
+##### 6.7.1.3 GetApprovalDetail
 
 Queries the approval details of a ticket. Request parameters
 
@@ -4872,7 +4986,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetOrderBaseInfo
+##### 6.7.1.4 GetOrderBaseInfo
 
 Queries the basic information about a ticket. Request parameters
 
@@ -4951,7 +5065,7 @@ Sample success responses `XML` format
 {"OrderBaseInfo":{"Comment":"test","CreateTime":"2019-10-10 00:00:00","LastModifyTime":"201 9-10-10 00:00:00","OrderId":"12345","CommitterId":"1","PluginType":"DC_COMMON","StatusCode" :"success","RelatedUserNickList":{"UserNicks":"a,b,c"},"StatusDesc":"success","WorkflowStat usDesc":"approved","WorkflowInstanceId":"1","Committer":"xxx","RelatedUserList":{"UserIds": "1,2,3"}},"RequestId":"7133DF67-5B25-460F-8285-C4CC93472C2F","ErrorCode":"UnknownError","Er rorMessage":"UnknownError","Success":"true"}
 ```
 
-##### ListOrders
+##### 6.7.1.5 ListOrders
 
 Queries the details of tickets. Request parameters
 
@@ -5183,7 +5297,7 @@ tusDesc>
 
 `}`
 
-##### SubmitOrderApproval
+##### 6.7.1.6 SubmitOrderApproval
 
 Submits a ticket for approval. Request parameters
 
@@ -5224,7 +5338,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### CreateOrder
+##### 6.7.1.7 CreateOrder
 
 Creates a ticket. Request parameters
 
@@ -5371,9 +5485,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Data changes
+#### 6.7.2 Data changes
 
-##### ExecuteDataCorrect
+##### 6.7.2.1 ExecuteDataCorrect
 
 Creates a ticket to modify data. Request parameters
 
@@ -5418,7 +5532,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetDataCorrectBackupFiles
+##### 6.7.2.2 GetDataCorrectBackupFiles
 
 Queries the download URL of an attachment that includes the backup files of data changes. Request parameters
 
@@ -5475,7 +5589,7 @@ Sa97B52GzF4fGqu&Signature=ykWSysajKcQjXjG0X4ApOQvlIXQ%3D"
 
 `}`
 
-##### GetDataCorrectOrderDetail
+##### 6.7.2.3 GetDataCorrectOrderDetail
 
 Queries the details about a ticket that is used to modify data. Request parameters
 
@@ -5631,9 +5745,9 @@ al number of affected rows is subject to the SQL statement that is executed.",
 
 `}`
 
-#### Schema design
+#### 6.7.3 Schema design
 
-##### CreatePublishGroupTask
+##### 6.7.3.1 CreatePublishGroupTask
 
 Creates a ticket to modify the schema design of a database. Request parameters
 
@@ -5686,9 +5800,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Data export
+#### 6.7.4 Data export
 
-##### ExecuteDataExport
+##### 6.7.4.1 ExecuteDataExport
 
 Executes a ticket to export data. Request parameters
 
@@ -5733,7 +5847,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetDataExportDownloadURL
+##### 6.7.4.2 GetDataExportDownloadURL
 
 Queries the download URL of the file that includes export results for a data export ticket. Request parameters
 
@@ -5797,7 +5911,7 @@ mp;OSSAccessKeyId=wSa97B52GzF4fGqu&amp;Signature=HQQWBRSKiVV6cupugh1/eAVSqXg%3D<
 
 `}`
 
-##### GetDataExportOrderDetail
+##### 6.7.4.3 GetDataExportOrderDetail
 
 Queries the details about a ticket that is used to export data. Request parameters
 
@@ -5901,9 +6015,9 @@ ar database</Database>
 
 `}`
 
-### Permission management
+### 6.8 Permission management
 
-#### RevokeUserPermission
+#### 6.8.1 RevokeUserPermission
 
 Revokes the permissions on a specified resource from a user. Request parameters q p
 
@@ -5951,7 +6065,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListDatabaseUserPermssions
+#### 6.8.2 ListDatabaseUserPermssions
 
 Queries the permissions of users on a database. Request parameters
 
@@ -6132,7 +6246,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SetOwners
+#### 6.8.3 SetOwners
 
 Sets the owners of a database or a table. Request parameters
 
@@ -6181,7 +6295,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListUserPermissions
+#### 6.8.4 ListUserPermissions
 
 Queries the permissions of a user on databases and tables. Request parameters
 
@@ -6347,7 +6461,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GrantUserPermission
+#### 6.8.5 GrantUserPermission
 
 Grants permissions on a database or a table to a user. Request parameters
 
@@ -6401,9 +6515,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Security management
+### 6.9 Security management
 
-#### ListSensitiveColumns
+#### 6.9.1 ListSensitiveColumns
 
 Queries sensitive columns. Request parameters
 
@@ -6552,7 +6666,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListSensitiveColumnsDetail
+#### 6.9.2 ListSensitiveColumnsDetail
 
 Queries the details of sensitive fields. Request parameters
 
@@ -6646,9 +6760,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Data query
+### 6.10 Data query
 
-#### ExecuteScript
+#### 6.10.1 ExecuteScript
 
 Executes SQL statements. This operation is available only for instances that are managed in the security collaboration mode. Request parameters
 
@@ -6707,9 +6821,9 @@ Sample success responses `XML` format
 {"RequestId":"FE8EE2F1-4880-46BC-A704-5CF63EAF9A04","Results":[{"Message":"UnknownError","R owCount":"1","Success":"true"},{"ColumnNames":"[\"col1\", \"col2\"]","Rows":"[{\"col1\": \" value1\", \"col2\":\"value2\"}]"}],"ErrorCode":"UnknownError","ErrorMessage":"UnknownError" ,"Success":"true"}
 ```
 
-## Appendixes
+## 7 Appendixes
 
-### Process of API calls by using the
+### 7.1 Process of API calls by using the ASAPI gateway
 
 ASAPI gateway You can use the ASAPI gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Flowchart Procedure
 1. Obtain an ASAPI SDK.
@@ -6763,11 +6877,11 @@ erFeature.PrettyFormat));
 
 `}`
 
-### Use the ASAPI gateway to make
+### 7.2 Use the ASAPI gateway to make API calls
 
 API calls
 
-#### Obtain an endpoint of ASAPI
+#### 7.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -6839,7 +6953,7 @@ name.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
 file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Generate an endpoint for ASAPI
+#### 7.2.2 Generate an endpoint for ASAPI
 
 This topic describes how to generate an endpoint for ASAPI.
 1. Log on to the OPS1 server.
@@ -6857,7 +6971,7 @@ kubectl get ingress -n ascm |grep asapiserver
 https://<domain>/asapi/v3
 ```
 
-#### Obtain Apsara Stack SDKs
+#### 7.2.3 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -6898,13 +7012,13 @@ Apsara Stack SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-#### What is STS?
+#### 7.3.1 What is STS?
 
 STS allows you to manage temporary credentials to your Apsara Stack resources. RAM provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

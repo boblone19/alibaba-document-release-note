@@ -3,14 +3,33 @@ title: "Container Service for Kubernetes Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 26
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "412d4949b6f70a82_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1Kubernetes%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Container Service for Kubernetes Operations and Maintenance Guide
 
-## Before you start
+## Table of Contents
+
+- 1 Before you start
+- 2 Architecture
+  - 2.1 System architecture
+  - 2.2 Architecture
+  - 2.3 Deployment architecture
+  - 2.4 Server roles
+- 3 ACK cluster O&M
+- 4 Component O&M
+  - 4.1 Components
+- 5 GUI-based changes
+  - 5.1 Kubernetes version baselines
+  - 5.2 Troopers configurations
+- 6 Log management
+- 7 Operation audit
+- 8 etcd O&M
+  - 8.1 etcd backup
+
+## 1 Before you start
 
 Container Service for Kubernetes (ACK) provides container services. You may encounter service interruptions if you perform improper operations on applications in your ACK clusters. This topic describes the usage notes of ACK clusters and instructions on high-risk operations. This helps you learn the risks that may arise when you use ACK clusters.
 
@@ -183,9 +202,9 @@ The following high-risk operations may adversely affect your business when you w
 |---|---|---|
 | Uninstall the logging component. | Logs cannot be collected. | Reinstall the logging component and manually create the aliyunlogconfig CRD objects. Logs that are generated within the period of time during which the logging component and the aliyunlogconfig CRD objects do not exist cannot be collected. If you delete the logging component, the aliyunlogconfig CRD objects and Logtail are also deleted. Logs that are generated within the period of time during which the logging component does not exist cannot be collected. |
 
-## Architecture
+## 2 Architecture
 
-### System architecture
+### 2.1 System architecture
 
 This topic describes the system architecture of Container Service for Kubernetes (ACK). Container Service is adapted and enhanced based on native Kubernetes. This service simplifies cluster creation and scaling, and is integrated with Apsara Stack virtualization, storage, network, and security capabilities. This service provides the optimal environment to run Kubernetes-based containerized applications in the cloud.
 
@@ -198,7 +217,7 @@ This topic describes the system architecture of Container Service for Kubernetes
 | Convenient and efficient use | ACK provides services through the web console, APIs, and SDK. |
 |---|---|
 
-### Architecture
+### 2.2 Architecture
 
 This topic describes the component architecture of Container Service for Kubernetes (ACK).
 
@@ -221,7 +240,7 @@ This topic describes the component architecture of Container Service for Kuberne
 |   | ServiceTest | Self-check service. |
 |   | DiagnosticTool | Quick diagnostic tool. |
 
-### Deployment architecture
+### 2.3 Deployment architecture
 
 This topic describes the deployment architecture of Container Service for Kubernetes (ACK).
 
@@ -231,7 +250,7 @@ This topic describes the deployment architecture of Container Service for Kubern
 | Apsara Stack Container Service controller | Containerized deployment |
 | Container Service tools | Containerized deployment |
 
-### Server roles
+### 2.4 Server roles
 
 This topic describes the server roles of Container Service for Kubernetes (ACK).
 
@@ -252,7 +271,7 @@ This topic describes the server roles of Container Service for Kubernetes (ACK).
 |   |   |   | ServiceTest | Self-check service. |
 |   |   |   | DiagnosticTool | Quick diagnostic tool. |
 
-## ACK cluster O&M
+## 3 ACK cluster O&M
 
 This topic described how to view the basic information about all Container Service for Kubernetes (ACK) clusters on the ACK Clusters page.
 
@@ -285,9 +304,9 @@ column to go to the cluster details page. The following parameters are displayed
 **Pod Network CIDR**, **Service CIDR**, **Kube-proxy Mode**, **Node IP Addresses**, and
 **Network Plug-ins**.
 
-## Component O&M
+## 4 Component O&M
 
-### Components
+### 4.1 Components
 
 This topic describes how to view the basic information about all components on the Component List page.
 
@@ -307,9 +326,9 @@ You can also click **View Cluster** in the **Actions** column to view the status
 following parameters are displayed: **Component Name**, **Component ID**, **Component**
 **Type**, **Created At**, **Component Description**, and **Component Template**.
 
-## GUI-based changes
+## 5 GUI-based changes
 
-### Kubernetes version baselines
+### 5.1 Kubernetes version baselines
 
 This topic describes how to view the information about baselines on the **K8S version**
 **baseline** page.
@@ -327,7 +346,7 @@ Operation. You can also search for baselines by name.
 
 To view the YAML or JSON file of the baseline, click the file in the **Actions** column.
 
-### Troopers configurations
+### 5.2 Troopers configurations
 
 This topic describes how to view and modify the information about troopers configurations on the Troopers Configurations page.
 
@@ -341,7 +360,7 @@ Configurations page, view the name, content, creation time, and update time of e
 **Actions** column to view the configuration. You can also click **Update configuration** in the
 **Actions** column to modify the configuration.
 
-## Log management
+## 6 Log management
 
 This topic describes how to query and view service logs such as troopers logs.
 
@@ -352,7 +371,7 @@ This topic describes how to query and view service logs such as troopers logs.
 2. In the left-side navigation pane, click **Log Management**. On the page that appears, search
 for logs, such as troopers logs, by Logstore and time range.
 
-## Operation audit
+## 7 Operation audit
 
 This topic describes how to view the information about operations.
 
@@ -368,9 +387,9 @@ the operation information in the following columns: **Change Name**, **Change De
 
 In the **Actions** column, click **View Change** to view the change in read-only mode or click **Roll Back Change** to roll back the change.
 
-## etcd O&M
+## 8 etcd O&M
 
-### etcd backup
+### 8.1 etcd backup
 
 This topic describes how to back up the etcd data of a Container Service for Kubernetes (ACK) cluster and view historical backup information on the ETCD Backup Records page.
 

@@ -3,20 +3,48 @@ title: "Database Security Audit Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 29
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Database Security Audit Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "1113405ababc55a3_Alibaba Cloud Apsara Stack V3.18.6 Database Security Audit Operations and Maintenance Guide 20260701"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Database%20Security%20Audit%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Database Security Audit Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 System configuration and monitoring
+  - 1.1 Log on to the Apsara Uni-manager Management Console
+  - 1.2 View service alerts
+  - 1.3 View service configuration parameters
+- 2 Troubleshooting
+  - 2.1 FAQ about audit
+    - 2.1.1 What do I do if no audit is performed?
+    - 2.1.2 What do I do if some SQL statements are not audited?
+    - 2.1.3 What do I do if usernames and database client information are not audited?
+    - 2.1.4 What do I do if the number of affected rows or response time is 0 in audit results?
+  - 2.2 FAQ about rules
+    - 2.2.1 What do I do if a rule is not triggered as expected?
+  - 2.3 FAQ about notification
+    - 2.3.1 What do I do if notifications cannot be sent by email?
+    - 2.3.2 What do I do if the number of alert notifications is less than the number of times that a risk is triggered?
+    - 2.3.3 What do I do if no syslog server can be selected?
+  - 2.4 FAQ about log retrieval
+    - 2.4.1 What do I do if a result set is not fully displayed or is not displayed?
+  - 2.5 FAQ about data maintenance
+    - 2.5.1 What do I do if audit data is cleared?
+    - 2.5.2 What do I do if backup data cannot be restored?
+    - 2.5.3 What do I do if backup data fails to be uploaded over FTP?
+- 3 Developer tools
+  - 3.1 Use tcpdump to capture packets
+  - 3.2 Use Wireshark
+
 m configuration and monitoring
 
-## System configuration and
+## 1 System configuration and monitoring
 
 **monitoring**
 
-### Log on to the Apsara Uni-
+### 1.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -45,11 +73,11 @@ operations in the following scenarios: It is the first time that you log on to t
 For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
-### View service alerts
+### 1.2 View service alerts
 
 m configuration and monitoring This topic describes the alerts that are triggered when Database Security Audit determines that its status is abnormal. Database Security Audit supports the following service alerts: Data partition usage: An alert is triggered if the disk usage of a data partition exceeds a threshold. You can configure thresholds in the console by performing the following steps: i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Security** > **Data Security** > **Database Audit**. iii. On the Database Audit page, find the Database Security Audit instance that you want to manage and click **Details** in the **Actions** column to log in to Database Security Audit. iv. In the left-side navigation pane, choose **Maintenance** > **Alerts & Data Cleanup**. v. Configure thresholds for the disk usage of data partitions based on your business requirements. Abnormal shutdown: An alert is triggered if a server shuts down due to unexpected causes such as power failure. CPU utilization: An alert is triggered if the CPU utilization exceeds 90%. Memory usage: An alert is triggered if the memory usage exceeds 90%. Number of sessions: An alert is triggered if the number of database sessions exceeds the upper limit supported by the system. The maximum number varies based on the instance specifications. Number of packets: An alert is triggered if the number of packets received by the system exceeds the upper limit supported by the system. The maximum number varies based on the instance specifications. Number of SQL statements: An alert is triggered if the number of SQL statements exceeds the upper limit supported by the system. The maximum number varies based on the instance specifications. Agent alert: An alert is triggered if RMAgent is disconnected or abnormal.
 
-### View service configuration
+### 1.3 View service configuration parameters
 
 **parameters**
 
@@ -67,11 +95,11 @@ m configuration and monitoring
 | Maximum number of rows saved in a result set | Used to control the maximum number of rows that the system saves to the SQL result set. The range is 1 to 2,147,483,647. | We recommend that you keep the default value of 3 rows. When not necessary, the smaller the result set, the smaller the performance loss. |
 | User name resolution switch | Used to control whether the SQL Server database and client-side encrypted transmitted user information are parsed. Open: parses encrypted user information. Disable: does not parse encrypted user information. | Configure the settings based on your business requirements. |
 
-## Troubleshooting
+## 2 Troubleshooting
 
-### FAQ about audit
+### 2.1 FAQ about audit
 
-#### What do I do if no audit is performed?
+#### 2.1.1 What do I do if no audit is performed?
 
 This topic describes the possible causes and solutions in scenarios where no data is available on the audit overview page.
 
@@ -113,7 +141,7 @@ Npcap when reinstalling RMAgent). If Winpcap is already installed, you need to u
 5. In the top navigation pane, choose **Maintenance** > **Engine Management**. On the **Audit**
 **Options** page, set **Audit Options** to **All Audit**.
 
-#### What do I do if some SQL statements
+#### 2.1.2 What do I do if some SQL statements are not audited?
 
 **are not audited?**
 
@@ -131,7 +159,7 @@ i. Log in to the Apsara Uni-manager Management Console. ii. In the top navigatio
 protected databases or purchase an instance with higher specifications.
 3. Disable the dynamic port feature for protected databases.
 
-#### What do I do if usernames and
+#### 2.1.3 What do I do if usernames and database client information are not audited?
 
 **database client information are not audited?**
 
@@ -167,7 +195,7 @@ or configure the sa user for the SQL Server database.
 6. Request a network engineer to resolve the network issue and ensure the connectivity
 between the management IP address and the IP address of the SQL Server database.
 
-#### What do I do if the number of affected
+#### 2.1.4 What do I do if the number of affected rows or response time is 0 in audit results?
 
 **rows or response time is 0 in audit results?**
 
@@ -181,9 +209,9 @@ Packet loss occurs because the size of a single packet exceeds the default forwa
 
 Modify the pcap_snap_len parameter of RMAgent in the RMAgent configuration file rmagent.ini, and then restart RMAgent. You can modify the parameter based on the actual size of packets or set the parameter to the maximum value. Modify the pcap_buffer parameter of RMAgent in the RMAgent configuration file rmagent.ini, and then restart RMAgent. You can modify the parameter based on the actual size of packets or set the parameter to the maximum value.
 
-### FAQ about rules
+### 2.2 FAQ about rules
 
-#### What do I do if a rule is not triggered
+#### 2.2.1 What do I do if a rule is not triggered as expected?
 
 **as expected?**
 
@@ -204,9 +232,9 @@ A is higher than that of Rule B, resolve the issue by referring to the Solutions
 
 Combine Rule A and Rule B. Disable Rule A. Execute the SELECT statement again to query more than 20 rows of data. In this case, Rule B is triggered. Modify the priorities of rules so that the priority of Rule B is higher than that of Rule A.
 
-### FAQ about notification
+### 2.3 FAQ about notification
 
-#### What do I do if notifications cannot be
+#### 2.3.1 What do I do if notifications cannot be sent by email?
 
 **sent by email?**
 
@@ -226,7 +254,7 @@ Transmit the packet capture file to a Windows system and use Wireshark to analyz
 
 Obtain the valid password of the sender and configure it in Database Security Audit. In email configurations on a web page, grant the SMTP permissions to the sender.
 
-#### What do I do if the number of alert
+#### 2.3.2 What do I do if the number of alert notifications is less than the number of times that a risk is triggered?
 
 **notifications is less than the number of times**
 
@@ -249,7 +277,7 @@ maximum number of alert notifications per day. By default, a maximum of 10,000 a
 
 Modify the rule and set the maximum number of alert notifications per day to the expected value.
 
-#### What do I do if no syslog server can be
+#### 2.3.3 What do I do if no syslog server can be selected?
 
 **selected?**
 
@@ -270,9 +298,9 @@ page that appears, click the **SYSLOG** tab.
 
 On the **System** > **Notification Management** > **SYSLOG** page, add a SYSLOG server and select **Rule Alert CEF File Style** for **Log Type**.
 
-### FAQ about log retrieval
+### 2.4 FAQ about log retrieval
 
-#### What do I do if a result set is not fully
+#### 2.4.1 What do I do if a result set is not fully displayed or is not displayed?
 
 **displayed or is not displayed?**
 
@@ -292,9 +320,9 @@ manage and click **Details** in the **Actions** column to log in to Database Sec
 
 On the **Engine Management** page, modify the **Maximum Save Length of Result Set** parameter. Valid values: 1 to 1024. Unit: KB.
 
-### FAQ about data maintenance
+### 2.5 FAQ about data maintenance
 
-#### What do I do if audit data is cleared?
+#### 2.5.1 What do I do if audit data is cleared?
 
 This topic describes the possible causes and solutions in scenarios where audit data is cleared.
 
@@ -315,7 +343,7 @@ In the left-side navigation pane, click Overview / All. On the Overview / All pa
 
 If you need to store more online data, increase the cleanup threshold of online data. If you need more available space in Database Security Audit, increase the cleanup threshold of all data. To ensure system feasibility, we recommend that you set the cleanup threshold of all data to at most 95%.
 
-#### What do I do if backup data cannot be
+#### 2.5.2 What do I do if backup data cannot be restored?
 
 **restored?**
 
@@ -337,7 +365,7 @@ a partition exceeds the specified threshold. When Database Security Audit proces
 If you need to restore data, you can decrease the cleanup threshold of all data on the **Alerts**
 **& Data Cleanup** page. Then, you can restore data the next day.
 
-#### What do I do if backup data fails to be
+#### 2.5.3 What do I do if backup data fails to be uploaded over FTP?
 
 **uploaded over FTP?**
 
@@ -363,15 +391,15 @@ identified.
 3. Delete special characters from the password of the FTP user. Set a password that contains
 only letters and digits. oper tools
 
-## Developer tools
+## 3 Developer tools
 
-### Use tcpdump to capture
+### 3.1 Use tcpdump to capture packets
 
 **packets**
 
 When you troubleshoot traffic issues, you can use tcpdump to capture traffic. This topic describes the parameters of tcpdump. Parameters: -s: the size of data to be captured from each packet. Unit: bytes. To prevent packets from being truncated, we recommend that you set this parameter to 0. A value of 0 specifies that the maximum size of data is captured. -i: the network interface whose traffic is captured. A value of any specifies that traffic is captured from all network interfaces. -r: reads traffic from files instead of network interfaces. and: the AND relationship among multiple filter conditions. If and is specified, all the specified filter conditions must be met. or: the OR relationship among multiple filter conditions. If or is specified, one of the specified filter conditions must be met. host: the IP address from which traffic is captured. If you do not specify this parameter, traffic is captured from all IP addresses. port: the port from which traffic is captured. If you do not specify this parameter, traffic is captured from all ports. -w: saves the captured results to a file. -n: resolves the domain name and displays the IP address instead of the hostname in the output. Examples: Capture the traffic of the network interface eth0: tcpdump -s 0 -i eth0 Capture the traffic of the network interface bond0 from the server whose IP address is 192.168.XX.XX: tcpdump -s 0 -i bond0 host 192.168.XX.XX Capture the traffic of the network interface bond0 from the server whose IP address is 192.168.XX.XX and port number is 1521: tcpdump -s 0 -i bond0 host 192.168.XX.XX and port 1521 Capture the traffic of the network interface bond0 between the server whose IP address is 192.168.XX.XX and the server whose IP address is 192.168.XX.XX: tcpdump -s 0 -i eth0 host 192.XX.XX and 192.168.XX.XX Capture the traffic of the network interface eth0 from the server whose IP address is 192.168.XX.XX or 192.168.XX.XX, and save the captured results to the test.cap file: tcpdump -s 0 -i eth0 host 192.168.XX.XX or 192.168.XX.XX -w test.cap Read traffic from the capfie file and resolve the domain name: tcpdump -s 0 -r /tmp/nfw4web_pcap_recv.fifo -n
 
-### Use Wireshark
+### 3.2 Use Wireshark
 
 When you troubleshoot traffic issues, you can use Wireshark to analyze traffic in Windows. This topic describes the operations that you can perform by using Wireshark. oper tools
 

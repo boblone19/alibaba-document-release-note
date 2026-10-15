@@ -3,14 +3,96 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a se
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 60
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service User Guide 20260828.pdf"
+source_pdf: "9b755361f8418f9b_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service User Guide 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86%20BMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Data%20Center%20as%20a%20service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service User Guide 20260828
 
-## What is BMS?
+## Table of Contents
+
+- 1 What is BMS?
+- 2 getting started with IoV CC
+  - 2.1 Work with BMS
+  - 2.2 Log on to the Bare Metal Management BMS console
+- 3 Bare Metal Instance Management
+  - 3.1 Overview
+  - 3.2 ECS Bare Metal instances
+    - 3.2.1 Create an instance
+    - 3.2.2 Create multiple instances at a time
+    - 3.2.3 Re-apply for an instance
+    - 3.2.4 Release an instance
+    - 3.2.5 View instance details
+    - 3.2.6 Search for a BMS instance
+    - 3.2.7 Restart an instance
+    - 3.2.8 Stop an instance
+    - 3.2.9 Start an instance
+    - 3.2.10 Storage integration
+    - 3.2.11 Add tags to VPCs
+    - 3.2.12 Deletes a tag.
+    - 3.2.13 Queries logs of a specific type of operation
+    - 3.2.14 Remotely log on to an SAG device
+    - 3.2.15 Modify Disk Property
+    - 3.2.16 Change the hostname of a BMS instance
+    - 3.2.17 Reset the password of an instance
+    - 3.2.18 Change the status of instance release protection
+    - 3.2.19 Use an activation code to activate Cloud Assistant
+    - 3.2.20 Log on to the out-of-band console
+  - 3.3 Images
+    - 3.3.1 Upload a custom image
+    - 3.3.2 Public image
+    - 3.3.3 Query Images
+    - 3.3.4 Delete an image
+    - 3.3.5 Image status management
+    - 3.3.6 Image export
+  - 3.4 Bare Metal Instance Monitoring
+    - 3.4.1 View the monitoring information of a bare metal instance
+  - 3.5 Bare-metal instance alerts
+    - 3.5.1 Query alerts for bare metal instances
+    - 3.5.2 View unhandled alerts
+    - 3.5.3 View handled alerts
+    - 3.5.4 Handle alerts
+  - 3.6 Key pairs
+    - 3.6.1 Create a key pair
+    - 3.6.2 Bind a key pair to an ECS bare metal instance
+    - 3.6.3 Unbind a key pair from an ECS bare metal instance
+    - 3.6.4 Delete a key pair
+  - 3.7 Bare metal network
+    - 3.7.1 Bind an ECR
+    - 3.7.2 Unbind an ECR
+- 4 Manage managed instances
+  - 4.1 Overview
+  - 4.2 Out-of-band managed instance
+    - 4.2.1 Add an out-of-band managed instance
+    - 4.2.2 Add managed instances in batches
+    - 4.2.3 Re-hosting
+    - 4.2.4 View the details of an out-of-band managed instance
+    - 4.2.5 Query out-of-band managed instances
+    - 4.2.6 Delete a managed instance
+    - 4.2.7 Restart a managed instance
+    - 4.2.8 Stop a managed instance
+    - 4.2.9 Launch a managed instance
+    - 4.2.10 Queries logs of a specific type of operation
+    - 4.2.11 Modify Disk Property
+    - 4.2.12 Log on to the out-of-band console
+  - 4.3 Managed instance alerts
+    - 4.3.1 Query managed instance alerts
+    - 4.3.2 View unhandled alerts
+    - 4.3.3 View Handle Alerts
+    - 4.3.4 Handle alerts
+- 5 O&M and Monitoring
+  - 5.1 Bare Metal Cloud Assistant
+    - 5.1.1 Overview
+    - 5.1.2 Use Cloud Assistant
+      - 5.1.2.1 Create a command
+      - 5.1.2.2 Run the commands.
+      - 5.1.2.3 Clone a command
+      - 5.1.2.4 View the command list
+      - 5.1.2.5 View a command execution result
+      - 5.1.2.6 Delete a command
+
+## 1 What is BMS?
 
 Bare Metal Management Service (BMS) is a cloud service that allows tenants to use physical machines on a cloud platform on an elastic and pay-as-you-go basis. BMS is commonly used to provide computing resources for core databases, key application systems, and highperformance computing systems. BMS provides the Elastic Compute Service (ECS) bare metal instance management, managed instance management, and O&M and monitoring features. BMS is powered by the one-stop operations console of Apsara Stack, allowing you to manage instances in a fine-grained manner. It allows administrators to run node-level physical machine management tasks, including but not limited to tasks for adding and deleting ECS bare metal instances, power management, and system deployment. After servers are installed and preparations are complete, administrators can batch deploy bare metal devices in the web interface. After the deployment, you can create ECS bare metal instances on these bare metal devices. BMS allows you to install the following OSs in ECS bare metal instances: Alibaba Cloud Linux and CentOS for x86 and Alibaba Cloud Linux, Ubuntu, and Kylin for Arm. It also allows you to manage the lifecycle of these OSs.
 
@@ -48,9 +130,9 @@ The **Out-of-band Managed Instances** module allows you to add, query, and relea
 **Bare Metal Cloud Assistant** is developed based on ECS Cloud Assistant. It is an automated
 O&M tool developed for BMS-related businesses to allow you to batch maintain ECS bare metal instances and batch execute shell, PowerShell, and batch scripts on instances without passwords, logins, or jumpers. In most cases, you can use Bare Metal Cloud Assistant to install and uninstall software, start and stop services, and run common commands (or scripts). oV CC
 
-## getting started with IoV CC
+## 2 getting started with IoV CC
 
-### Work with BMS
+### 2.1 Work with BMS
 
 This topic describes how to work with Elastic Compute Service (ECS) bare metal instances and managed instances.
 
@@ -76,7 +158,7 @@ oV CC
 | Delete an out-of-band managed instance | You can delete out-of-band managed instances that are no longer needed. | Delete a managed instance |
 |---|---|---|
 
-### Log on to the Bare Metal
+### 2.2 Log on to the Bare Metal Management BMS console
 
 **Management BMS console**
 
@@ -93,13 +175,13 @@ The first time you log on to the Apsara Uni-manager Management Console, you must
 4. In the top navigation bar, choose **Products > Computing > Bare Metal**
 **ManagementBMS**.
 
-## Bare Metal Instance
+## 3 Bare Metal Instance Management
 
 **Management**
 
 The bare metal instance management module allows you to create, query, and unrun bare metal instances, manage images, monitor and manage bare metal instances, and handle alerts for bare metal instances.
 
-### Overview
+### 3.1 Overview
 
 The Overview page provides dashboards to display the monitoring information of instances created on existing servers. The page displays the total number of instances in the resource pool, total number of instances that you have applied for, total number of running instances, images, usage of the bare metal service, CPU utilization, and memory usage. This helps you learn about the status of your managed service in real time. The Overview page consists of the following parts:
 
@@ -109,13 +191,13 @@ Instances in the resource pool: displays **Total Instances in Resource Pool**, *
 **Applied Instances**, **Total Running Instances**, and **Total Images** to help you learn
 about the global resource usage. Resource planning: compares and analyzes the total number of instances and the types of images to help you assess the appropriation of resource allocation, identifies issues such as a low reuse ratio of images, and optimizes image management policies.
 **Bare metal service**: displays the different states of instances that you have applied for,
-including Running, Shutdown, Error, and Others, and the number of instances in each state. This helps you learn about the health status of instances. O&M and Monitoring Core metrics: CPU utilization and memory usage: tracks the peak resource usage in real time and estimates scale-out demands based on historical trends. Disk read/write rate: monitors the I/O throughput of disks and identifies performance bottlenecks. Network bandwidth and TCP connection status: analyzes traffic fluctuations, such as unexpected traffic spikes, and connection status to help troubleshoot network exceptions. System load analysis: analyzes system loads and core metrics such as CPU utilization and memory usage to comprehensively assess server loads and avoid resource overloading.
+including Running, Shutdown, Error, and Others, and the number of instances in each state. This helps you learn about the health status of instances. Core metrics: CPU utilization and memory usage: tracks the peak resource usage in real time and estimates scale-out demands based on historical trends. Disk read/write rate: monitors the I/O throughput of disks and identifies performance bottlenecks. Network bandwidth and TCP connection status: analyzes traffic fluctuations, such as unexpected traffic spikes, and connection status to help troubleshoot network exceptions. System load analysis: analyzes system loads and core metrics such as CPU utilization and memory usage to comprehensively assess server loads and avoid resource overloading.
 
-### ECS Bare Metal instances
+### 3.2 ECS Bare Metal instances
 
 Bare-metal instances allow you to create, batch create, release, reapply, and query asset operations. You can also perform remote O&M operations on existing instances, such as on, off, and restart.
 
-#### Create an instance
+#### 3.2.1 Create an instance
 
 This topic describes how to create an instance. Bare metal instances are registered in a resource pool by the O&M administrator of Baremetal Management Service (BMS) in theApsara Uni-Manager Operations Console. A virtual private cloud (VPC) and a vSwitch are created. For more information, see the
 **Create and manage a VPC** and **Create and manage a vSwitch** topics in the **VPC User**
@@ -165,7 +247,7 @@ the relevant parameters and click **Confirm Order**. If the service management d
 the relevant parameters and click **Submit**. For more information about service management, see the **Service management** topic in
 **Apsara Uni-Manager Management Console User Guide** .
 
-#### Create multiple instances at a time
+#### 3.2.2 Create multiple instances at a time
 
 The bare metal management service allows you to create multiple bare metal instances by uploading local files. The bare metal service O&M administrator of the Apsara Uni-manager Operations console has registered a bare metal instance in the resource pool. You have uploaded a local file in the. csv/xls/xlsx format with the relevant parameters set. In the bare metal management service, users can create bare metal instances in batches by uploading files in the. xls format.
 1. Log on to the BMS console.
@@ -206,7 +288,7 @@ specified, the system will automatically assign an IP address.
 **Instance Name**: the name of the instance.
 **Instance Description**: the description of the instance.
 
-#### Re-apply for an instance
+#### 3.2.3 Re-apply for an instance
 
 This topic describes how to re-apply for an Elastic Compute Service (ECS) bare metal instance. You can re-apply for a created instance to re-install the instance. An ECS bare metal instance is created. For more information, see Create an instance. The ECS bare metal instance is in a stable state, such as Running, Stopped, Create Failed, or No Heartbeat. Bare Metal Management Service (BMS) allows you to re-apply for ECS bare metal instances if the instances are faulty or you need to meet certain operations requirements.
 1. Log on to the Bare Metal Management BMS console.
@@ -218,7 +300,7 @@ Actions column.
 instance.
 5. After you complete the configuration, click **Submit** to re-apply for the instance.
 
-#### Release an instance
+#### 3.2.4 Release an instance
 
 This section describes how to release bare metal. A bare metal instance is created. For more information, see Create a bare metal instance. The bare metal instance in the instance list must be in the steady state, such as running, stopped, creation failed, and no heartbeat. You can release bare metal instances in the instance list. After the bare metal is released, it enters the resource pool and reinstates it. After the bare metal is released, you can apply for it again. Method a:
 1. Log on to the BMS console.
@@ -242,7 +324,7 @@ and click **Manage** in the Actions column.
 select **Clear Data Disk**, only the system disk is deleted. If you select the check box, both the system disk and the data disk are deleted.
 7. Click **Release** to release the bare metal.
 
-#### View instance details
+#### 3.2.5 View instance details
 
 You can view all Elastic Compute Service (ECS) bare metal instances created within your account and the details of each ECS bare metal instance. The details of an ECS bare metal instance include the basic information and configuration information of the instance.
 
@@ -262,7 +344,7 @@ and **Instance Description**.
 5. The configuration information includes **Model**, **GPU**, **Instance Release Protection**, **CPU**,
 **Operating System**, **Network**, **NIC**, **Disk**, and **GPU**.
 
-#### Search for a BMS instance
+#### 3.2.6 Search for a BMS instance
 
 This topic describes how to query instances and view instance details. An instance is created. For more information, see Create an instance. You can query and view the information about existing instances based on your business requirements.
 1. Log on to the BMS console.
@@ -273,7 +355,7 @@ in the search box, and then click the **Search icon**. The following filter cond
 4. Find the bare metal instance and click **Manage** next to the instance. On the **Instances**
 page, you can view the details of the instance, such as the instance name, SN, region, online status, power status, agent status, creation time, and bare metal configuration.
 
-#### Restart an instance
+#### 3.2.7 Restart an instance
 
 This section describes how to restart a bare metal instance. A bare metal instance is created. For more information, see Create a bare metal instance. The bare metal instance in the instance list must be in the steady state, such as running, stopped, creation failed, and no heartbeat. You can restart a specified bare metal instance. After the instance is restarted, the status of the bare metal instance changes to Restarting. Method a:
 1. Log on to the Bare Metal Management BMS console.
@@ -295,7 +377,7 @@ and click **Manage** in the Actions column.
 6. In the **Are you sure you want to restart the instance?** dialog box, click **OK****to** restart
 the bare metal instance.
 
-#### Stop an instance
+#### 3.2.8 Stop an instance
 
 You can stop Elastic Compute Service (ECS) bare metal instances. After an instance is stopped, it enters the No Heartbeat state. This section describes how to stop an ECS bare metal instance. An ECS bare metal instance is created. For more information, see Create an instance. The ECS bare metal instance is in a stable state, such as Running, Failed, or No Heartbeat. Method A:
 1. Log on to the Bare Metal Management BMS console.
@@ -315,7 +397,7 @@ stop and click **Manage** in the Actions column.
 5. In the **Are you sure you want to stop this instance?** message, click **OK** to stop the
 instance.
 
-#### Start an instance
+#### 3.2.9 Start an instance
 
 This section describes how to turn on bare metal. You can turn on a specified bare metal. After the bare metal is turned on, the status of the bare metal becomes Normal. A bare metal instance is created. For more information, see Create a bare metal instance. Has bare metal that has been shut down. Method a:
 1. Log on to the BMS console.
@@ -334,7 +416,7 @@ and click **Manage** in the Actions column.
 4. On the instance details page, click **Start** in the upper-right corner**.**
 5. In the dialog box that appears, click **OK**.
 
-#### Storage integration
+#### 3.2.10 Storage integration
 
 This section describes how to attach third-party storage to a bare metal instance. An instance is created. For more information, see Create an instance. The bare metal to be operated must be in the running state. The operation status of the bare metal to be operated must be Completed. You can attach third-party storage to a bare metal instance based on your actual needs. A bare metal instance can be attached to multiple storages.
 1. Log on to the BMS console.
@@ -353,7 +435,7 @@ Currently, three storage types are supported: ISCSI, NFS, and Direct Mount.
 6. After you configure the preceding parameters, you can click **Add Storage** in the lower part
 of the page to add a storage, or click **Submit** to mount the storage.
 
-#### Add tags to VPCs
+#### 3.2.11 Add tags to VPCs
 
 This topic describes how to bind tags to bare metal instances for tag classification management. A bare metal instance is created. For more information, see Create a bare metal instance. You can bind tags to bare metal instances and classify them. You can bind up to 20 tags to a bare metal instance.
 1. Log on to the BMS console.
@@ -368,7 +450,7 @@ Label column.
 
 You can create up to 20 tags and bind them to resources at the same time. A tag key must be unique.
 
-#### Deletes a tag.
+#### 3.2.12 Deletes a tag.
 
 This topic describes how to unbind and delete tags from bare metal. A bare metal instance is created. For more information, see Create a bare metal instance. Tags are bound to bare metal. For more information, see Bind tags. You can remove tags from bare metal instances that have tags attached to them.
 1. Log on to the BMS console.
@@ -380,7 +462,7 @@ the Tag column.
 and then click Delete.
 5. Click **OK**.
 
-#### Queries logs of a specific type of
+#### 3.2.13 Queries logs of a specific type of operation
 
 **operation**
 
@@ -396,7 +478,7 @@ Failed, and No Heartbeat, or **Operation Log.**
 5. In the **Operation Log** dialog box that appears, view the operation information about the
 bare metal instance, such as the operation status, status sub-items, start time, execution status, and description.
 
-#### Remotely log on to an SAG device
+#### 3.2.14 Remotely log on to an SAG device
 
 This section describes how to remotely log on to a bare metal. A bare metal instance is created. For more information, see Create a bare metal instance. The bare metal to be operated must be in the running state. The operation status of the bare metal to be operated must be Completed. You can remotely log on to a bare metal instance by using WorkBench.
 1. Log on to the BMS console.
@@ -407,7 +489,7 @@ in the Actions column.
 4. On the Workbench page, enter the **username** and **password** to log on to the Workbench
 console.
 
-#### Modify Disk Property
+#### 3.2.15 Modify Disk Property
 
 This section describes how to modify the properties of bare metal. A bare metal instance is created. For more information, see Create a bare metal instance. You can modify the name and description of a bare metal instance.
 1. Log on to the BMS console.
@@ -419,7 +501,7 @@ and click **Manage** in the Actions column.
 5. In the dialog box that appears, click **Edit Properties**.
 6. In the dialog box that appears, enter the name or description of the instance and click **OK**.
 
-#### Change the hostname of a BMS
+#### 3.2.16 Change the hostname of a BMS instance
 
 **instance**
 
@@ -433,7 +515,7 @@ and click **Manage** in the Actions column.
 5. Click **Modify Host Name** in the drop-down list.
 6. In the dialog box that appears, enter the hostname and click **OK**.
 
-#### Reset the password of an instance
+#### 3.2.17 Reset the password of an instance
 
 This section describes how to reset the instance password. A bare metal instance is created. For more information, see Create a bare metal instance. The bare metal instance in the instance list must be in the steady state, such as running, stopped, creation failed, and no heartbeat. You can reset the logon password of a bare metal instance.
 1. Log on to the BMS console.
@@ -446,7 +528,7 @@ and click **Manage** in the Actions column.
 6. In the dialog box that appears, enter a new password, enter a new password, and then click
 **OK**.
 
-#### Change the status of instance release
+#### 3.2.18 Change the status of instance release protection
 
 **protection**
 
@@ -460,7 +542,7 @@ You can enable instance release protection for Elastic Compute Service (ECS) bar
 5. Click **Modify Instance Release Protection Settings** in the drop-down list.
 6. In the dialog box that appears, enable or disable instance release protection and click **OK**.
 
-#### Use an activation code to activate
+#### 3.2.19 Use an activation code to activate Cloud Assistant
 
 **Cloud Assistant**
 
@@ -475,7 +557,7 @@ and click **Manage** in the Actions column.
 6. In the dialog box that appears, copy or download the Cloud Assistant activation code as
 prompted, and click **OK** to close the dialog box.
 
-#### Log on to the out-of-band console
+#### 3.2.20 Log on to the out-of-band console
 
 This topic describes how to log on to the out-of-band console of a bare metal instance. A bare metal instance is created. For more information, see Create a bare metal instance. The selected instance already has an out-of-band IP address. You can log on to the out-of-band console of an instance to troubleshoot faults based on your business requirements.
 1. Log on to the BMS console.
@@ -488,11 +570,11 @@ Actions column.
 6. On the out-of-band console logon page that appears, enter the account information and
 click **Log On.**
 
-### Images
+### 3.3 Images
 
 Image management is used to maintain the metadata of images used when bare metal machines are installed. It provides functions such as query, status management, deletion, and export of custom images, and query, status management, and export of public images. You can customize images to upload as needed.
 
-#### Upload a custom image
+#### 3.3.1 Upload a custom image
 
 This topic describes how to upload a custom image. A custom image file that meets the specifications is available locally. You can upload custom image files based on your business requirements. The formats of custom image files are tgz and qcow2.
 1. Log on to the BMS console.
@@ -516,7 +598,7 @@ mode.
 redirected to the new page.
 5. After completing the preceding operations, you can continue to upload the image file.
 
-#### Public image
+#### 3.3.2 Public image
 
 This topic describes how to use public images. The environment in which you are logged on already has the relevant image resources. Currently, the platform provides two public images in the tgz and qcow2 formats. By default, some adapted public images are provided on the platform. If the image information on the Public Images page is empty or the public image is not in the Available state, contact developers. If the public image is in the Disable state, you cannot view the image information on the bare metal creation page. You need to change the image status to Enabled on the Image Management page. Some public images are only used to migrate products that are compatible with earlier versions. You cannot export images.
 
@@ -529,7 +611,7 @@ Public images do not provide the delete operation.
 4. On the Public Images page, all available public images are listed, and the Image Status
 Management and Image Export features are provided.
 
-#### Query Images
+#### 3.3.3 Query Images
 
 This topic describes how to query images and view image details. A shared image is created or a custom image is created. For more information, see Upload a custom image. You can query and view information about existing images based on your business requirements.
 1. Log on to the BMS console.
@@ -539,7 +621,7 @@ click the **Search icon** to search for images that meet the filter condition. T
 4. After finding an image, you can view the details of the image in the list, such as the image
 name, ID, size, architecture, platform, format, creation time, available status, and enabled status.
 
-#### Delete an image
+#### 3.3.4 Delete an image
 
 This section describes how to delete an image. A custom image is created. For more information, see Upload a custom image. You can delete a custom image with a specified name. When you delete a custom image, the source file of the image is also deleted. Exercise caution when you delete the custom image.
 1. Log on to the BMS console.
@@ -547,7 +629,7 @@ This section describes how to delete an image. A custom image is created. For mo
 3. On the **Images** page, find the image that you want to delete and click **Delete Image**.
 4. In the message that appears, click **OK**.
 
-#### Image status management
+#### 3.3.5 Image status management
 
 This section describes how to change the image status. A shared image is created or a custom image is created. For more information, see Upload a custom image. The error message returned because the image to be changed is not referenced. You can change the status of a specified image. After you change the status of an image to disabled, the image cannot be referenced when it is installed. If the image has been referenced, you cannot change the status to disabled.
 
@@ -571,7 +653,7 @@ state changes to **disabled**.
 5. In the status list, the image status changes to **Available****and** the image status changes to
 **Enabled**.
 
-#### Image export
+#### 3.3.6 Image export
 
 This topic describes how to export an image. A shared image is created or a custom image is created. For more information, see Upload a custom image. You can export public images and uploaded custom images to your on-premises machine.
 1. Log on to the BMS console.
@@ -579,7 +661,7 @@ This topic describes how to export an image. A shared image is created or a cust
 3. On the **Images** page, find the image that you want to export and click **Export Image**.
 4. Click **Download** and wait until the image is downloaded.
 
-### Bare Metal Instance
+### 3.4 Bare Metal Instance Monitoring
 
 **Monitoring**
 
@@ -594,7 +676,7 @@ RDMA network overview table, RDMA network sending throughput, RDMA network recei
 **GPU metrics**:
 GPU overview, cluster GPU usage, cluster GPU memory usage, cluster GPU decoder usage, cluster GPU encoder usage, cluster GPU temperature, and cluster GPU power.
 
-#### View the monitoring information of a
+#### 3.4.1 View the monitoring information of a bare metal instance
 
 **bare metal instance**
 
@@ -605,11 +687,11 @@ This topic describes how to view the running status of resources related to bare
 3. On the **Bare-Metal Instance Monitoring** page, you can view the basic data metrics (total
 CPU cores, total memory capacity, total disk capacity, and disk usage), CPU usage, memory usage, disk read /write rate, system load, network bandwidth, and TCP connection status of the bare-metal instance.
 
-### Bare-metal instance alerts
+### 3.5 Bare-metal instance alerts
 
 Bare Metal Instance Alert provides fault alerts generated by user-created bare metal instances and how to handle the alerts.
 
-#### Query alerts for bare metal instances
+#### 3.5.1 Query alerts for bare metal instances
 
 This topic describes how to query the alert information of an applied bare metal instance. A bare metal instance is created. For more information, see Create a bare metal instance**.** You can query and view the alert information of the applied instance based on your actual needs. Currently, the alert types generated by the platform are MemoryMonitor, OobMonitor, CPUMonitor, BoardMonitor, and PowerMonitor. The alert levels of MemoryMonitor, CPUMonitor, BoardMonitor, and PowerMonitor are P2- Important.
 1. Log on to the BMS console.
@@ -620,7 +702,7 @@ following filter conditions are supported: SN, Alert Type, Alert Level, Number o
 4. After you find the bare metal instance, you can view the alert information about the
 instance.
 
-#### View unhandled alerts
+#### 3.5.2 View unhandled alerts
 
 This topic describes how to view the information about unhandled alerts of an applied instance. A bare metal instance is created. For more information, see Create a bare metal instance**.** You can view the unhandled alerts of the applied instances based on your business requirements.
 1. Log on to the BMS console.
@@ -630,7 +712,7 @@ This topic describes how to view the information about unhandled alerts of an ap
 4. On the **Unhandled Alerts** page, you can view the alerts that are not handled for all
 instances.
 
-#### View handled alerts
+#### 3.5.3 View handled alerts
 
 This topic describes how to view the processed alerts of an applied instance. A bare metal instance is created. For more information, see Create a bare metal instance**.** You can view the processed alert information of the applied instance based on your actual needs.
 1. Log on to the BMS console.
@@ -639,7 +721,7 @@ This topic describes how to view the processed alerts of an applied instance. A 
 3. On the **Bare-Metal Instance Alerts** page, click the **Handle** tab.
 4. On the **Handle Alerts** page, you can view the alerts that are handled by the instance.
 
-#### Handle alerts
+#### 3.5.4 Handle alerts
 
 This section describes how to handle alerts for applied instances. A bare metal instance is created. For more information, see Create a bare metal instance**.** You can handle alerts generated by applied instances based on your actual needs. Alert handling methods are classified into Ignore and Fixed. You can select a specific handling method based on the actual handling of bare metal. The alarm detection cycle is generally 30 minutes per time.
 1. Log on to the BMS console.
@@ -654,7 +736,7 @@ status. For example, if the alert is a false positive or does not need to be han
 provide feedback to the relevant O&M personnel, the processing method can be set to
 **Fixed**, enter the **Handle By**, explain the **reason** for disabling the alert, and click **OK**.
 
-### Key pairs
+### 3.6 Key pairs
 
 Key pairs are a secure and convenient login authentication method provided by Apsara Stack. A key pair consists of a public key and a private key. Key pairs can be used to log in to only Linux instances.
 
@@ -666,7 +748,7 @@ Key pair-based authentication has the following advantages over username and pas
 
 Key pairs can be used to log in to only Linux instances. Bare Metal Management Service (BMS) supports only RSA 4096-bit key pairs. Only one key pair can be bound to each Linux instance in the console. If an instance is already bound to a key pair, unbind the current key pair before you bind a new key pair to the instance. If you want to use multiple key pairs to log in to a Linux instance, you can manually modify the ~/.ssh/authorized_keys file from within the instance and add the key pairs.
 
-#### Create a key pair
+#### 3.6.1 Create a key pair
 
 This topic describes how to create a key pair in the Bare Metal Management Service (BMS) console.
 1. Log in to the BMS console.
@@ -717,7 +799,7 @@ specify the tags that you want to remove, and click **OK**.
 
 Multiple tags are removed at a time based on tag keys. After you select a tag key, all tags with the same tag key are selected.
 
-#### Bind a key pair to an ECS bare metal
+#### 3.6.2 Bind a key pair to an ECS bare metal instance
 
 **instance**
 
@@ -734,7 +816,7 @@ You can specify multiple filter conditions to narrow down the search results.
 5. In the dialog box that appears, select ECS bare metal instances in the **Select Bare Metal**
 **Instance** list and click **OK**.
 
-#### Unbind a key pair from an ECS bare
+#### 3.6.3 Unbind a key pair from an ECS bare metal instance
 
 **metal instance**
 
@@ -751,7 +833,7 @@ You can specify multiple filter conditions to narrow down the search results.
 5. In the dialog box that appears, select ECS bare metal instances in the **Select Bare Metal**
 **Instance** list and click **OK**.
 
-#### Delete a key pair
+#### 3.6.4 Delete a key pair
 
 If you no longer need a key pair, you can delete the key pair. This topic describes how to delete a key pair.
 1. Log in to the BMS console.
@@ -762,11 +844,11 @@ To delete a single key pair, find the key pair and choose
 column. To delete multiple key pairs at a time, select the key pairs that you want to delete and click **Delete** below the list.
 4. In the message that appears, click **Delete**.
 
-### Bare metal network
+### 3.7 Bare metal network
 
 The Bare Metal Network page allows you to manage the associations between vSwitches and Express Connect routers (ECRs) in host switch (HSW) and computing host switch (CHSW) destacking scenarios.
 
-#### Bind an ECR
+#### 3.7.1 Bind an ECR
 
 **Usage notes**
 
@@ -791,7 +873,7 @@ After you click **Submit**, you can view the information about the ECR on the Ba
 Retry binding an ECR: Find the ECR that failed to be bound and click **Retry Binding** in the
 **Actions** column.
 
-#### Unbind an ECR
+#### 3.7.2 Unbind an ECR
 
 1. Log in to the Bare Metal Service (BMS) console.
 2. In the left-side navigation pane, choose **Bare Metal Instance Management > Bare**
@@ -805,11 +887,11 @@ Supported filter conditions: **Bare Metal Instance Network ID**, **Switch ID**, 
 
 After the ECR is unbound, it is no longer listed on the Bare Metal Network page. tances
 
-## Manage managed instances
+## 4 Manage managed instances
 
 You can manage managed instances by adding, querying, modifying, and releasing managed instances. You can also manage alerts for managed instances and handle alerts.
 
-### Overview
+### 4.1 Overview
 
 The Managed Instances module provides a panoramic view of the metrics of managed instances. This helps you manage the status of managed services in a timely manner. During the O&M of managed instances, the **Service Check** and **Unhandled Alerts** features are the core tools used to ensure system stability and business continuity. With real-time monitoring and AI analysis, you can quickly identify potential risks, locate root cause, and create optimization policies to reduce the complexity of O&M and improve resource utilization.
 
@@ -823,13 +905,13 @@ as the CPU load, memory usage, and power status, and compares the data with the 
 This section displays the pending alerts of out-of-band managed instances of the current day. The alerts are displayed based on alert levels from P1 to P4. P1: urgent P2: critical P3: warning P4: prompt You can click **View Details** to go to the alert page and view the alert details.
 **Core Metrics**: The global information of out-of-band managed instances is displayed.
 
-### Out-of-band managed
+### 4.2 Out-of-band managed instance
 
 **instance**
 
 Out-of-band managed instances provide operations and management functions such as adding, querying, and releasing out-of-band managed instances. In addition, you can perform remote operations and maintenance operations on existing out-of-band managed instances, such as starting, starting, restarting, and monitoring, querying operation logs, and logging on to the out-of-band console. tances
 
-#### Add an out-of-band managed instance
+#### 4.2.1 Add an out-of-band managed instance
 
 This section describes how to add an out-of-band managed instance. You can add out-of-band instances to manage out-of-band instances.
 1. Log on to the BMS console.
@@ -846,7 +928,7 @@ and **Out-of-band password**.
 required.
 8. After you configure the preceding parameters, click **Submit**.
 
-#### Add managed instances in batches
+#### 4.2.2 Add managed instances in batches
 
 This topic describes how to add out-of-band managed instances at a time. You have uploaded a local file in the. csv/xls/xlsx format with the relevant parameters set. In the bare metal management service, users can upload file instances in formats such as. xls for batch hosting.
 1. Log on to the BMS console.
@@ -865,7 +947,7 @@ For more information about the template format, see the following table or downl
 | SN666 66666 | test | 1 | A01 | 1-1-1 | xxx.xxx. xxx | The userna me. | xxxx | test-vpc- 01 |   |
 | SN888 88888 | test | 2 | A01 | 2-1-1 | xxx.xxx. xxx | The userna me. | xxxx | test-vpc- 01 |   |
 
-#### Re-hosting
+#### 4.2.3 Re-hosting
 
 This topic describes how to re-host an instance that fails to be hosted. In the bare metal management service, you can re-host and deploy instances based on actual operation requirements. You have logged on to the Bare Metal Management BMS console. An out-of-band managed instance is added. For more information, see Add an out-of-band managed instance. The instances in the managed instance list must be in a stable state, such as Running, Stopped, and Hosting Failed.
 1. Log on to the BMS console.
@@ -877,7 +959,7 @@ This topic describes how to re-host an instance that fails to be hosted. In the 
 see Add an out-of-band managed instance.
 5. After you configure the preceding parameters, click **Submit**.
 
-#### View the details of an out-of-band
+#### 4.2.4 View the details of an out-of-band managed instance
 
 **managed instance**
 
@@ -898,7 +980,7 @@ information and configuration information of the instance. The basic information
 4. The configuration information includes **BMC IP Address**, **Data Center**, **Room**, **Rack**, and
 **Rack Slot**.
 
-#### Query out-of-band managed instances
+#### 4.2.5 Query out-of-band managed instances
 
 This topic describes how to query out-of-band managed instances and view the details of outof-band managed instances. An out-of-band managed instance is added. For more information, see Add an out-of-band managed instance.
 1. Log on to the BMS console.
@@ -915,7 +997,7 @@ You can select **Automatic Identification** to automatically identify the keywor
 **Manage** in the Actions column to go to the **Instance Details** page. On the page that
 appears, you can view information such as the instance name, SN, region, online status, power status, agent status, creation time, data center and room, and network.
 
-#### Delete a managed instance
+#### 4.2.6 Delete a managed instance
 
 This topic describes how to delete a managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance.
 
@@ -941,7 +1023,7 @@ want to release and click **Manage** in the Actions column.
 5. In the dialog box that appears, click **Delete**.
 6. In the dialog box that appears, click **Delete** to release the managed instance.
 
-#### Restart a managed instance
+#### 4.2.7 Restart a managed instance
 
 Supports users to restart a specified managed instance. After the restart, the instance status changes to Restarting. This section describes how to restart a managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance. The instance to be restarted is in the Running state.
 
@@ -968,7 +1050,7 @@ and click **Manage** in the Actions column.
 6. In the **Warning** message, click **OK****to** restart the instance.
 tances
 
-#### Stop a managed instance
+#### 4.2.8 Stop a managed instance
 
 Supports users to shut down a specified managed instance. After the instance is shut down, the status of the instance changes to Shutting Down. This section describes how to stop a managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance. The instance to be shut down is in the Running state.
 
@@ -994,7 +1076,7 @@ to shut down and click **Manage** in the Actions column.
 5. In the message that appears, click **OK**.
 6. In the **Secondary Warning** message, click **OK.**
 
-#### Launch a managed instance
+#### 4.2.9 Launch a managed instance
 
 Supports users to start a specified out-of-band managed instance. After the instance is started, the status of the instance changes to Normal. This section describes how to enable an out-of-band managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance. has an instance that has been shut down.
 
@@ -1019,7 +1101,7 @@ Actions column.
 4. On the instance details page, click **Start** in the upper-right corner**.**
 5. In the dialog box that appears, click **OK**.
 
-#### Queries logs of a specific type of
+#### 4.2.10 Queries logs of a specific type of operation
 
 **operation**
 
@@ -1036,7 +1118,7 @@ information in the search box, and then click **Search**. The following filter c
 5. In the **Operation Log** dialog box that appears, view the operation information about the
 bare metal instance, such as the operation status, status sub-item, start time, check result, and description.
 
-#### Modify Disk Property
+#### 4.2.11 Modify Disk Property
 
 You can modify the instance name and instance description of the target bare metal instance. This section describes how to edit the properties of an out-of-band managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance. tances
 1. Log on to the BMS console.
@@ -1048,7 +1130,7 @@ want to release and click **Manage** in the Actions column.
 5. In the dialog box that appears, click **Edit Properties**.
 6. In the dialog box that appears, set Instance Name and Instance Description, and click **OK**.
 
-#### Log on to the out-of-band console
+#### 4.2.12 Log on to the out-of-band console
 
 In actual operations, when users need to execute some advanced operation commands on managed instances in the out-of-band console, the platform provides the out-of-band console login function for the managed instances. This section describes how to log on to the out-ofband console of an out-of-band managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance.
 1. Log on to the BMS console.
@@ -1061,11 +1143,11 @@ In actual operations, when users need to execute some advanced operation command
 6. On the out-of-band console logon page that appears, enter the account information and
 click **Log On.**
 
-### Managed instance alerts
+### 4.3 Managed instance alerts
 
 Managed Instance Alert allows you to handle the faults generated by the managed instances that you have added.
 
-#### Query managed instance alerts
+#### 4.3.1 Query managed instance alerts
 
 This topic describes how to query the alert information of managed instances. A managed instance is added. For more information, see Add an out-of-band managed instance. You can query and view the alert information of managed instances based on your actual needs. tances Currently, the alert types generated by the platform are MemoryMonitor, OobMonitor, CPUMonitor, BoardMonitor, and PowerMonitor. The alert levels of MemoryMonitor, CPUMonitor, BoardMonitor, and PowerMonitor are P2- Important.
 1. Log on to the BMS console.
@@ -1076,7 +1158,7 @@ the managed instances that meet the condition. The following filter conditions a
 4. After you find the bare metal instance, you can view the alert information about the
 instance.
 
-#### View unhandled alerts
+#### 4.3.2 View unhandled alerts
 
 You can view the unhandled alert information of a managed instance based on your actual needs. This section describes how to view the unhandled alert information of a managed instance. A managed instance is added. For more information, see Add an out-of-band managed instance.
 1. Log on to the BMS console.
@@ -1086,7 +1168,7 @@ You can view the unhandled alert information of a managed instance based on your
 4. On the **Unhandled Alerts** page, you can view the unhandled alerts of all managed
 instances.
 
-#### View Handle Alerts
+#### 4.3.3 View Handle Alerts
 
 You can view the handled alerts of managed instances based on your actual needs. This section describes how to view the handled alerts of managed instances. A managed instance is added. For more information, see Add an out-of-band managed instance.
 1. Log on to the BMS console.
@@ -1096,7 +1178,7 @@ You can view the handled alerts of managed instances based on your actual needs.
 tances
 4. On the **Handle Alerts** page, you can view the handled alerts of all managed instances.
 
-#### Handle alerts
+#### 4.3.4 Handle alerts
 
 This section describes how to handle alerts for managed instances. A managed instance is added. For more information, see Add an out-of-band managed instance. You can handle alerts for managed instances based on your actual needs. Alert handling methods are classified into Ignore and Fixed. You can select a specific handling method based on the actual handling of bare metal. The alarm detection cycle is generally 30 minutes per time.
 1. Log on to the BMS console.
@@ -1112,11 +1194,11 @@ and provide feedback to the related O&M personnel, the processing method can be 
 **Fixed**. In the **Handle By** field, specify the **reason why the alert is disabled**, and then
 click **OK**.
 
-## O&M and Monitoring
+## 5 O&M and Monitoring
 
-### Bare Metal Cloud Assistant
+### 5.1 Bare Metal Cloud Assistant
 
-#### Overview
+#### 5.1.1 Overview
 
 Bare Metal Cloud Assistant is developed based on Elastic Compute Service (ECS) Cloud Assistant. It is an automated O&M tool developed for Bare Metal Management Service (BMS)related businesses to allow you to batch maintain ECS bare metal instances and batch execute shell, PowerShell, and batch scripts on instances without passwords, logins, or jumpers. In most cases, you can use Cloud Assistant to install and uninstall software, start and stop services, and run common commands (or scripts).
 
@@ -1221,9 +1303,9 @@ state execution state execution The following table describes the states of recu
 |---|---|
 | Execution-level state | For more information, see the Execution states section of this topic. |
 
-#### Use Cloud Assistant
+#### 5.1.2 Use Cloud Assistant
 
-##### Create a command
+##### 5.1.2.1 Create a command
 
 You can use Cloud Assistant commands to quickly perform routine tasks on bare metal instances, such as running automated O&M scripts, polling processes, resetting user passwords, installing or uninstalling software, updating applications, and installing patches. Command types include Windows PowerShell scripts, batch commands, and Linux shell scripts. These commands support custom parameters so that you can easily set variable values. The instance must be in the **Running** state. The Cloud Assistant client is installed. When you run a Cloud Assistant command immediately, note the following items. Only operations administrators, organization administrators, and resource set administrators can create commands. After you create a script and Base64-encode it, the usage scenarios and file size limits are as follows: Create a command: The size cannot exceed 18 KB. Run a command immediately and save it: The size cannot exceed 18 KB. Run a command immediately without saving it: The size cannot exceed 24 KB. A single Cloud Assistant command can contain up to 20 custom parameters. When you call an API operation to run a command, you can select up to 50 instances. When you create a command, you must test the syntax, logic, and algorithms of the command. For example, if you have created a /backup directory on the instance ( `mkdir /backup` ), the following shell command archives a file in that directory.
 
@@ -1268,7 +1350,7 @@ based on the execution parameters and selected nodes. At the bottom of the page,
 command.
 7. Click **Save**, **Execute and Save**, or **Execute**.
 
-##### Run the commands.
+##### 5.1.2.2 Run the commands.
 
 After you create a Cloud Assistant command, you can run the command on one or more bare metal instances. The execution status and results of the command on multiple instances do not affect each other. Before you run the Cloud Assistant command, the target instance must meet the following conditions: The instances are in the **Running** ( `Running` ) state. The Cloud Assistant client is installed on the instances.
 
@@ -1301,7 +1383,7 @@ i. In the **Command Information** section, check the command content and configu
 ii. In the **Select Servers** section, select one or more servers on which you want to run the command at the same time.
 6. Click **Run**.
 
-##### Clone a command
+##### 5.1.2.3 Clone a command
 
 You can clone an existing Cloud Assistant command to create another command. You can retain all information of the original command (cloned command), or modify the name, description, type, content, execution path, or timeout period for the new command (command clone).
 
@@ -1335,7 +1417,7 @@ column.
 
 6. Click **Save**.
 
-##### View the command list
+##### 5.1.2.4 View the command list
 
 This section describes how to view the list of Cloud Assistant commands.
 1. Log on to the BMS console.
@@ -1345,7 +1427,7 @@ This section describes how to view the list of Cloud Assistant commands.
 4. On the **Bare Metal Cloud Assistant** page**,** click the **Commands** tab to view the
 commands.
 
-##### View a command execution result
+##### 5.1.2.5 View a command execution result
 
 This topic describes the execution results of Cloud Assistant commands.
 
@@ -1358,7 +1440,7 @@ This topic describes the execution results of Cloud Assistant commands.
 4. On the **Bare Metal Cloud Assistant** page**,** click the **Command Execution Result** tab to
 view the command execution results.
 
-##### Delete a command
+##### 5.1.2.6 Delete a command
 
 The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed.
 

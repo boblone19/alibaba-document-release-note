@@ -3,24 +3,139 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Rock
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 178
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 User Guide 20260831.pdf"
+source_pdf: "55f38d68ac5e7d76_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 User Guide 2026083"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20RocketMQ%20v5.0%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 User Guide 20260831
 
+## Table of Contents
+
+- 1 ApsaraMQ for RocketMQ v5.0
+- 2 Getting started
+  - 2.1 Log in to the ApsaraMQ for RocketMQ v5.0 console
+  - 2.2 Overview
+  - 2.3 Create resources
+  - 2.4 Send messages
+    - 2.4.1 Send messages in the console
+    - 2.4.2 Use the TCP client SDK for Java to send and subscribe to normal messages
+    - 2.4.3 Check whether messages are sent
+  - 2.5 Subscribe to messages
+  - 2.6 Use Apsara Copilot
+- 3 Message types
+  - 3.1 Normal messages
+  - 3.2 Scheduled and delayed messages
+  - 3.3 Transactional messages
+  - 3.4 Ordered messages
+- 4 Console guide
+  - 4.1 Resource management
+    - 4.1.1 Overview
+    - 4.1.2 Manage instances
+    - 4.1.3 Manage topics
+    - 4.1.4 Manage groups
+  - 4.2 Network management
+  - 4.3 ACL account management
+  - 4.4 ACL rule management
+  - 4.5 Message query
+    - 4.5.1 Overview
+    - 4.5.2 Query messages
+    - 4.5.3 Message query results
+  - 4.6 Message traces
+    - 4.6.1 Overview
+    - 4.6.2 Query message traces
+    - 4.6.3 States in message traces
+  - 4.7 View consumer status
+  - 4.8 Reset consumer offsets
+  - 4.9 Manage dead-letter queues
+  - 4.10 Message routing
+    - 4.10.1 Replicator
+    - 4.10.2 Connect instance
+- 5 SDK user guide
+  - 5.1 SDK overview
+  - 5.2 TCP client SDK reference
+    - 5.2.1 Demo projects
+      - 5.2.1.1 Overview
+      - 5.2.1.2 Prepare the environment
+      - 5.2.1.3 Configure a demo project
+      - 5.2.1.4 Run a demo project
+    - 5.2.2 Client parameters
+    - 5.2.3 Client error codes
+    - 5.2.4 Java SDK
+      - 5.2.4.1 Instructions for use
+      - 5.2.4.2 Environment preparations
+      - 5.2.4.3 Logging configurations
+      - 5.2.4.4 Spring integration
+        - 5.2.4.4.1 Overview
+        - 5.2.4.4.2 Integrate a producer with Spring
+        - 5.2.4.4.3 Integrate a transactional message producer with Spring
+        - 5.2.4.4.4 Integrate a consumer with Spring
+      - 5.2.4.5 Three modes for sending messages
+        - 5.2.4.5.1 Overview
+        - 5.2.4.5.2 Reliable synchronous transmission
+        - 5.2.4.5.3 Reliable asynchronous transmission
+        - 5.2.4.5.4 One-way transmission
+      - 5.2.4.6 Send messages by using multiple threads
+      - 5.2.4.7 Send and subscribe to ordered messages
+      - 5.2.4.8 Send and subscribe to transactional messages
+      - 5.2.4.9 Send and subscribe to delayed messages
+      - 5.2.4.10 Send and subscribe to scheduled messages
+      - 5.2.4.11 Subscribe to messages
+    - 5.2.5 C/C++ SDK
+      - 5.2.5.1 Prepare the SDK for C or C++ environment
+        - 5.2.5.1.1 Overview
+        - 5.2.5.1.2 Download SDK for C or C++
+        - 5.2.5.1.3 Use SDK for C++ in Linux
+      - 5.2.5.2 Send and subscribe to normal messages
+      - 5.2.5.3 Send and subscribe to ordered messages
+      - 5.2.5.4 Send and subscribe to scheduled messages
+      - 5.2.5.5 Send and subscribe to transactional messages
+      - 5.2.5.6 Subscribe to messages
+    - 5.2.6. .NET SDK
+      - 5.2.6.1 Prepare the .NET SDK environment
+        - 5.2.6.1.1 Overview
+        - 5.2.6.1.2 Download SDK for .NET
+        - 5.2.6.1.3 Configure SDK for .NET
+      - 5.2.6.2 Send and subscribe to normal messages
+      - 5.2.6.3 Send and subscribe to ordered messages
+      - 5.2.6.4 Send and subscribe to scheduled messages
+      - 5.2.6.5 Send and subscribe to transactional messages
+      - 5.2.6.6 Subscribe to messages
+- 6 Best practices
+  - 6.1 Clustering consumption and broadcasting consumption
+  - 6.2 Message filtering
+  - 6.3 Subscription consistency
+  - 6.4 Consumption idempotence
+  - 6.5 Message routing
+- 7 Product usage issues
+  - 7.1 FAQ
+    - 7.1.1 Quick start
+    - 7.1.2 Configuration
+    - 7.1.3 Message trace
+    - 7.1.4 Alarm handling
+    - 7.1.5 Ordered messages
+  - 7.2 Exception types
+    - 7.2.1 Usage exceptions
+    - 7.2.2 Resource not found
+    - 7.2.3 Inconsistent state
+  - 7.3 Troubleshooting
+    - 7.3.1 Unexpected client connections
+    - 7.3.2 Inconsistent subscriptions
+    - 7.3.3 Message accumulation in a Java process
+    - 7.3.4 OOM error from client-side message caching
+    - 7.3.5 Message delivery fails with AuthenticationException
+
 aMQ for RocketMQ v5.0
 
-## ApsaraMQ for RocketMQ
+## 1 ApsaraMQ for RocketMQ v5.0
 
 **v5.0**
 
 ApsaraMQ for RocketMQ v5.0 is a distributed messaging middleware that is developed by Alibaba Cloud based on Apache RocketMQ v5.0. It features low latency, high concurrency, high availability, and high reliability. ApsaraMQ for RocketMQ v5.0 is a core service in the enterprise-level Internet architecture. Using the highly available distributed cluster technology, it offers a series of messaging services in the cloud, including message subscription and publishing, message trace query, scheduled and delayed messages, and resource statistics. ApsaraMQ for RocketMQ v5.0 provides asynchronous decoupling and peak-load shifting capabilities for distributed application systems. It also supports various features for Internet applications, including accumulation of large numbers of messages, high throughput, and reliable message consumption retries. ApsaraMQ for RocketMQ v5.0 is one of the core cloud services that are used to support Double 11. ApsaraMQ for RocketMQ v5.0 supports connections over TCP and supports multiple programming languages such as Java, C++, and .NET. This allows you to connect applications that are developed in different programming languages to ApsaraMQ for RocketMQ v5.0. ApsaraMQ for RocketMQ v5.0 uses a storage-compute decoupled architecture to support independent scaling of computing and storage resources. This enables a lighter-weight deployment mode and a more flexible and miniaturized cluster configuration, reducing resource overheads and O&M complexity. g started
 
-## Getting started
+## 2 Getting started
 
-### Log in to the ApsaraMQ for
+### 2.1 Log in to the ApsaraMQ for RocketMQ v5.0 console
 
 **RocketMQ v5.0 console**
 
@@ -75,7 +190,7 @@ Enter the six-digit MFA code and click **Authenticate**. g started
 7. In the left-side navigation pane, click **Switch** to the right of **v4.0**, and then click **OK** in the
 message that appears to switch the environment to **v5.0**.
 
-### Overview
+### 2.2 Overview
 
 ApsaraMQ for RocketMQ v5.0 provides TCP client SDKs for multiple programming languages. You can use the SDKs to send and subscribe to different types of messages. This topic describes how to use TCP client SDKs for multiple programming languages to send and subscribe to normal messages and the relevant usage notes.
 
@@ -113,7 +228,7 @@ To send and subscribe to messages by using TCP client SDKs for other programming
 
 SDK for C and C++: Send and subscribe to normal messages SDK for .NET: Send and subscribe to normal messages
 
-### Create resources
+### 2.3 Create resources
 
 Before you use a client SDK to send and receive messages, you must create the required resources and obtain the resource information in the ApsaraMQ for RocketMQ v5.0 console. When you use the SDK, you must specify the resource parameters based on the resource information.
 
@@ -147,9 +262,9 @@ For more information, see Manage groups.
 
 For more information, see View endpoints.
 
-### Send messages
+### 2.4 Send messages
 
-#### Send messages in the console
+#### 2.4.1 Send messages in the console
 
 After you create a topic in the ApsaraMQ for RocketMQ v5.0 console, you can send messages in the console to verify the availability of the topic.
 
@@ -177,7 +292,7 @@ g started
 
 After the message is sent, a success prompt and the corresponding message ID are returned.
 
-#### Use the TCP client SDK for Java to send
+#### 2.4.2 Use the TCP client SDK for Java to send and subscribe to normal messages
 
 **and subscribe to normal messages**
 
@@ -280,9 +395,7 @@ subscription, and click **Subscription relationship** in the **Operation** colum
 
 **What to do next**
 
-Query messages Query message traces
-
-#### Check whether messages are sent
+#### 2.4.3 Check whether messages are sent
 
 After you send a message, you can check the status of the message in the ApsaraMQ for RocketMQ v5.0 console.
 
@@ -307,7 +420,7 @@ This step demonstrates the situation where ApsaraMQ for RocketMQ v5.0 is used fo
 
 You can start the consumer and subscribe to messages. For more information, see Subscribe to messages. For more information about message states, see Message query and States in message traces.
 
-### Subscribe to messages
+### 2.5 Subscribe to messages
 
 g started After a message is sent, the consumer can subscribe to the message. You must use the SDK corresponding to the protocol and programming language to subscribe to the message. This topic describes how to use ApsaraMQ for RocketMQ v5.0 TCP client SDK for Java to subscribe to messages.
 
@@ -354,7 +467,7 @@ or **details** in the **actions** column to open the **instance details** page.
 6. In the group list, find the group ID for the consumer of which you want to view the
 subscription, and click **Subscription relationship** in the **Operation** column. g started If the value of the **Online or not** parameter is **Yes**, the consumer has been started and the subscription is successful. Otherwise, the subscription fails.
 
-### Use Apsara Copilot
+### 2.6 Use Apsara Copilot
 
 Apsara Copilot is an intelligent tool provided by Alibaba Cloud to help you manage and maintain ApsaraMQ for RocketMQ v5.0 instances more efficiently. You can use Apsara Copilot to query resource information, trigger operations, diagnose instances, and request technical support. Apsara Copilot helps you improve the O&M efficiency and user experience. This topic describes how to use Apsara Copilot and provides some sample conversations. We recommend that you refer to the sample conversations based on your actual business scenario.
 
@@ -394,17 +507,17 @@ Apsara Copilot supports multiple models. You can switch between different models
 **User Guide**.
 age types
 
-## Message types
+## 3 Message types
 
-### Normal messages
+### 3.1 Normal messages
 
 This topic describes the definition of normal messages and provides the sample code for sending and subscribing to normal messages. Normal messages are featureless messages provided by ApsaraMQ for RocketMQ v5.0. Normal messages are different from featured messages, including Scheduled messages and delayed messages, Transactional messages, and Ordered messages. The following sample code shows how to send and subscribe to normal messages.
 
 **Sample code for using TCP client SDKs**
 
-For information about the sample code for using TCP client SDKs to send and subscribe to normal messages, see the following topics: SDK for Java: Three modes for sending messages Send messages by using multiple threads Subscribe to messages SDK for C or C++: Send and subscribe to normal messages SDK for .NET: Send and subscribe to normal messages
+For information about the sample code for using TCP client SDKs to send and subscribe to normal messages, see the following topics: SDK for Java: SDK for C or C++: Send and subscribe to normal messages SDK for .NET: Send and subscribe to normal messages
 
-### Scheduled and delayed
+### 3.2 Scheduled and delayed messages
 
 **messages**
 
@@ -428,9 +541,9 @@ The **msg.setStartDeliverTime** parameter for a scheduled message or delayed mes
 
 **Sample code for using TCP client SDKs**
 
-For information about the sample code for using TCP client SDKs to send and subscribe to scheduled messages or delayed messages, see the following topics: SDK for Java: Send and subscribe to scheduled messages Send and subscribe to delayed messages SDK for C++: Send and subscribe to scheduled messages SDK for .NET: Send and subscribe to scheduled messages
+For information about the sample code for using TCP client SDKs to send and subscribe to scheduled messages or delayed messages, see the following topics: SDK for Java: SDK for C++: Send and subscribe to scheduled messages SDK for .NET: Send and subscribe to scheduled messages
 
-### Transactional messages
+### 3.3 Transactional messages
 
 This topic introduces the terms that are related to transactional messages in ApsaraMQ for RocketMQ v5.0. This topic also describes the scenarios, methods, and usage notes of using transactional messages. age types
 
@@ -473,7 +586,7 @@ RocketMQ v5.0 broker is expected to send a request to the producer to check the 
 
 For information about sample code, see the following references: SDK for Java: Send and subscribe to transactional messages SDK for C and C++: Send and subscribe to transactional messages SDK for .NET: Send and subscribe to transactional messages
 
-### Ordered messages
+### 3.4 Ordered messages
 
 age types Ordered messages are consumed in the same order in which they are sent. The earliest message that is sent is consumed as the first message, and the message that is sent next is consumed later. In most cases, ordered messages are used in scenarios that require messages to be consumed in the order in which they are produced. For example, ordered messages are frequently used in financial security and e-commerce industries. This topic describes the terms, scenarios, working mechanism, and usage notes of ordered messages in ApsaraMQ for RocketMQ v5.0.
 
@@ -526,11 +639,11 @@ Each group corresponds to a topic type. A group cannot be used to send or receiv
 
 For information about the sample code for using TCP client SDKs to send and subscribe to ordered messages, see the following topics: SDK for Java: Send and subscribe to ordered messages SDK for C and C++: Send and subscribe to ordered messages SDK for .NET: Send and subscribe to ordered messages le guide
 
-## Console guide
+## 4 Console guide
 
-### Resource management
+### 4.1 Resource management
 
-#### Overview
+#### 4.1.1 Overview
 
 This topic describes how to manage resources in ApsaraMQ for RocketMQ v5.0. If a new application needs to access ApsaraMQ for RocketMQ v5.0, you must create the following ApsaraMQ for RocketMQ v5.0 resources for the application:
 **Instance**: An instance is a VM resource of ApsaraMQ for RocketMQ v5.0 used to store
@@ -540,7 +653,7 @@ a consumer subscribes to the topic to obtain and consume the messages.
 **Group ID**: A group ID is used to identify a group of producers or consumers.
 You can add, delete, modify, and query the preceding resources in the ApsaraMQ for RocketMQ v5.0 console or by calling API operations. You can also configure approval workflows for operations performed on the resources. This helps standardize the management process of the resources. When you use an SDK to send and subscribe to messages, you must specify the information about the topic and group that you created in the ApsaraMQ for RocketMQ v5.0 console. You must also enter the AccessKey ID and AccessKey secret that you created in the Apsara Unimanager Management Console for identity authentication. If you have not obtained the AccessKey ID and AccessKey secret, you can obtain them in the Apsara Uni-manager Management Console. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User *************. On the page that appears, view the AccessKey ID and AccessKey secret in the ****************** section.
 
-#### Manage instances
+#### 4.1.2 Manage instances
 
 In ApsaraMQ for RocketMQ v5.0, an instance is used to store information about topics and group IDs. This topic describes how to create, update, view, and delete instances in the ApsaraMQ for RocketMQ v5.0 console.
 
@@ -661,7 +774,7 @@ The following sample code shows how to configure instance information:
 // The instance ID. Replace <InstancedId> with the ID of the instance that you created in the ApsaraMQ for RocketMQ console. properties.put(PropertyKeyConst.INSTANCE_ID, "<InstancedId>"); // The instance endpoint. Replace <Endpoint> with the endpoint of the instance that you created in the ApsaraMQ for RocketMQ console. properties.put(PropertyKeyConst.NAMESRV_ADDR, "<Endpoint>");
 ```
 
-#### Manage topics
+#### 4.1.3 Manage topics
 
 A topic is a first-level identifier that classifies messages in ApsaraMQ for RocketMQ v5.0. ApsaraMQ for RocketMQ v5.0 allows you to publish and subscribe to messages by using topics. Producers send messages to topics, and consumers subscribe to topics to consume messages. This topic describes how to create, view, update, and delete, import, and export topics in the ApsaraMQ for RocketMQ v5.0 console.
 
@@ -746,7 +859,7 @@ On the **Topic Management** tab, you can send messages. For more information, se
 
 On the **Topic Management** tab, you can view message subscriptions. For more information, see Subscribe to messages.
 
-#### Manage groups
+#### 4.1.4 Manage groups
 
 After you create an instance and a topic, you need to create a group ID for message consumers or producers. This topic describes how to create, view, and delete group IDs in the ApsaraMQ for RocketMQ 5.0 console.
 
@@ -833,7 +946,7 @@ le guide
 
 3. Click **OK**.
 
-### Network management
+### 4.2 Network management
 
 This topic describes how to use the network management feature to view the endpoint of an instance.
 
@@ -855,7 +968,7 @@ section.
 
 Sensitive information is included in the endpoint. Make sure that your network is protected.
 
-### ACL account management
+### 4.3 ACL account management
 
 This topic describes how to create, view, modify, enable, disable, and delete an access control list (ACL) account.
 
@@ -922,7 +1035,7 @@ The delete operation is irreversible. Active clients using this account will be 
 **Operation** column.
 2. In the message that appears, click **OK**.
 
-### ACL rule management
+### 4.4 ACL rule management
 
 This topic describes how to create, view, modify, and delete an access control list (ACL) rule.
 
@@ -978,9 +1091,9 @@ After you delete an **Allow** rule, the account immediately loses access to the 
 **Operation** column.
 2. In the message that appears, click **OK**.
 
-### Message query
+### 4.5 Message query
 
-#### Overview
+#### 4.5.1 Overview
 
 le guide If you encounter a message consumption issue, you can query the content of a specific message for troubleshooting. ApsaraMQ for RocketMQ 5.0 allows you to query messages by message ID, by message key, and by topic. Table 1. Comparison of query methods
 
@@ -992,7 +1105,7 @@ le guide If you encounter a message consumption issue, you can query the content
 
 We recommend that you choose a query method based on the following process. Figure 1. Message query process
 
-#### Query messages
+#### 4.5.2 Query messages
 
 This topic describes how to query messages in the ApsaraMQ for RocketMQ 5.0 console by using three different methods. le guide
 
@@ -1048,7 +1161,7 @@ If you cannot query messages by message ID or message key, query messages by top
 
 If you query messages by topic, take note of the following items: This query method allows you to obtain all messages that are sent in a topic during a specific time range. We recommend that you narrow down the time range to locate the message that you want to query in an efficient manner. If you query messages by topic, a large number of messages are returned on multiple pages.
 
-#### Message query results
+#### 4.5.3 Message query results
 
 This topic describes the results of message queries. You can view the message query results on the **Message Query** tab in the ApsaraMQ for RocketMQ 5.0 console. The query result includes the **message ID**, **tag**, **key**, and **storage time**. In addition, you can download the message content, query message traces, and view message details by clicking buttons in the **Operation** column.
 
@@ -1084,9 +1197,9 @@ check whether the consumer can consume the message based on the correct logic as
 
 The consumption verification feature can be used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
 
-### Message traces
+### 4.6 Message traces
 
-#### Overview
+#### 4.6.1 Overview
 
 le guide A message trace is the complete trace of a message that is sent from a producer to the ApsaraMQ for RocketMQ 5.0 broker and then consumed by a consumer. The message trace includes the time, status, and other information on each node in the preceding process. The message trace can be used to help troubleshoot issues in production environments. This topic describes the scenarios in which the message trace feature can be used. This topic also describes how to query a message trace and the parameters that are returned in query results.
 
@@ -1119,7 +1232,7 @@ message trace based on the collected information.
 3. Check the query results and analyze the cause.
 If **Not Consumed** is displayed in the trace, you can go to the **Group Management** tab to view consumer status and determine whether the issue is caused by message accumulation. If the message is consumed, check the consumption information to find the corresponding consumer client and the time when the message was consumed. Then, log in to the consumer client to view the relevant logs.
 
-#### Query message traces
+#### 4.6.2 Query message traces
 
 You are not charged when you use the message trace feature of ApsaraMQ for RocketMQ v5.0. Before you use the message trace feature, make sure that it is supported by the version of the SDK that you use. After you send and receive messages, you can query the messages in the ApsaraMQ for RocketMQ v5.0 console.
 
@@ -1164,7 +1277,7 @@ tab. After the value in the Task Status column changes to **Query completed**, y
 8. Click **View Track** to view details of the message trace.
 A message trace consists of three parts: Information about the message producer Information about the topic to which the message belongs Information about the message consumer If you perform a query based on a message key or a topic, multiple traces may be displayed. You can scroll the page to view and compare information about traces of different messages. For information about message traces, see States in message traces.
 
-#### States in message traces
+#### 4.6.3 States in message traces
 
 This topic describes the terms and status information displayed on the Message Trace tab. Table 1. Terms
 
@@ -1208,7 +1321,7 @@ le guide
 |---|---|---|
 |   | Consumption failure | A failure result is returned for the message consumption method, or the method throws an exception. |
 
-### View consumer status
+### 4.7 View consumer status
 
 You can check the consumer status in the ApsaraMQ for RocketMQ v5.0 console to troubleshoot issues that occur during message consumption. This feature allows you to view the information about a group or a consumer identified by the group ID. The information includes the connection status, subscription, number of transactions per second (TPS) for message consumption, number of accumulated messages, and thread stacks. This topic describes how to view such information.
 
@@ -1218,9 +1331,9 @@ The cause of an exception that occurs during message consumption is complicated.
 
 **Use scenarios**
 
-You can query the consumer status for troubleshooting in the following scenarios: Inconsistent subscriptions Symptom: In the **Consumer status** panel, the value of the **Whether the subscription**
+You can query the consumer status for troubleshooting in the following scenarios: Symptom: In the **Consumer status** panel, the value of the **Whether the subscription**
 **relationship is consistent** parameter is **No**.
-Solution: For more information about how to handle subscription inconsistency, see Subscription inconsistency. Message accumulation alert Symptom: In the **Consumer status** panel, the value in the **Accumulation** column is large. Solution: For more information about how to handle message accumulation alerts, see Message accumulation in a Java process
+Solution: For more information about how to handle subscription inconsistency, see Subscription inconsistency. Message accumulation alert Symptom: In the **Consumer status** panel, the value in the **Accumulation** column is large. Solution: For more information about how to handle message accumulation alerts, see
 
 **View the information about a group**
 
@@ -1253,7 +1366,7 @@ threads, consumption start time, subscription, and message consumption statistic
 3. If you want to view the stack information about the current process for a specific consumer
 instance, find the consumer instance and click **Stack information** in the **Operation** column. le guide
 
-### Reset consumer offsets
+### 4.8 Reset consumer offsets
 
 You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them. You can also consume messages that are sent after a point in time regardless of whether the messages sent after this point in time are consumed.
 
@@ -1279,7 +1392,7 @@ select this option, consumers identified by the group ID skip all accumulated (u
 Select a point in time. Only the messages that are sent after the selected point in time are consumed. The time period during which you can select a point in time ranges from the production time of the earliest message stored in the topic to the production time of the latest message stored in the topic. You can select a point in time only within the allowed time range.
 7. Click **OK** to reset the consumer offset.
 
-### Manage dead-letter queues
+### 4.9 Manage dead-letter queues
 
 Dead-letter queues are used to process messages that cannot be consumed as expected. This topic describes how to query, export, and resend dead-letter messages in dead-letter queues. This helps you manage dead-letter messages based on your business requirements and prevent missing message processing.
 
@@ -1365,9 +1478,9 @@ If a message enters a dead-letter queue, the message cannot be consumed as expec
 
 After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days. le guide Resend a single dead-letter message In the ApsaraMQ for RocketMQ v5.0 console, find the dead-letter message that you want to resend and click **Resend** in the **Operation** column to resend the dead-letter message. Resend multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ v5.0 console, search for the dead-letter messages that you want to resend by group ID, select the dead-letter messages, and then click **Batch resend** below the message list to resend the dead-letter messages.
 
-### Message routing
+### 4.10 Message routing
 
-#### Replicator
+#### 4.10.1 Replicator
 
 The replicator message routing feature provided by ApsaraMQ for RocketMQ 5.0 allows you to synchronize messages between clusters. This topic describes how to create a replicator message routing task.
 
@@ -1540,7 +1653,7 @@ icon in the **Service Registration** i. Find the `mq-console` service and click 
 **Registration Variables** dialog box, view the value of the **console.domain** parameter.
 The value of the **MQ API** parameter is in the following format: http://{console.domain}/json. le guide
 
-#### Connect instance
+#### 4.10.2 Connect instance
 
 This topic describes how to manage Connect instances throughout the lifecycle in the ApsaraMQ for RocketMQ 5.0 console, with the focus on creating an instance and deleting an instance. The standardized operation processes ensure that data synchronization tasks can be executed stably and efficiently.
 
@@ -1581,9 +1694,9 @@ Note: Data interruption: If you delete a Connect instance, all synchronization t
 in the **Operation** column.
 2. In the dialog box that appears, click **OK**.
 
-## SDK user guide
+## 5 SDK user guide
 
-### SDK overview
+### 5.1 SDK overview
 
 This topic lists the protocols supported by ApsaraMQ for RocketMQ 5.0 and the related SDKs in multiple programming languages.
 
@@ -1599,15 +1712,15 @@ The following table lists the protocols supported by ApsaraMQ for RocketMQ 5.0 a
 |   | C/C++ | mq-tcp-csharp-sdk | mq-tcp-samples- csharp |
 |   | .NET | mq-tcp-.net-sdk | mq-tcp-samples-.net |
 
-### TCP client SDK reference
+### 5.2 TCP client SDK reference
 
-#### Demo projects
+#### 5.2.1 Demo projects
 
-##### Overview
+##### 5.2.1.1 Overview
 
 This topic helps engineers who are new to ApsaraMQ for RocketMQ 5.0 to build an ApsaraMQ for RocketMQ 5.0 test project. The demo project is a Java project. It contains test code for normal messages, transactional messages, and scheduled messages. The demo project also contains Spring configurations.
 
-##### Prepare the environment
+##### 5.2.1.2 Prepare the environment
 
 This topic describes how to prepare an environment for an ApsaraMQ for RocketMQ 5.0 demo project.
 
@@ -1615,7 +1728,7 @@ This topic describes how to prepare an environment for an ApsaraMQ for RocketMQ 
 
 Install an integrated development environment (IDE). You can use IntelliJ IDEA or Eclipse as the IDE. In this topic, IntelliJ IDEA is used. Download IntelliJ IDEA Ultimate Edition from IntelliJ IDEA. Then, follow the installation instructions to install IntelliJ IDEA Ultimate Edition. Download a demo project. Download a demo project from GitHub to your on-premises machine. Figure 1. Download a demo project After the downloaded package is decompressed, a folder named mq-demomaster appears on your on-premises machine.
 
-##### Configure a demo project
+##### 5.2.1.3 Configure a demo project
 
 This topic describes how to configure a demo project.
 
@@ -1655,7 +1768,7 @@ You must use the AccessKey ID and AccessKey secret of the account that you use t
 </props>
 ```
 
-##### Run a demo project
+##### 5.2.1.4 Run a demo project
 
 After you configure the demo project, you can start the corresponding classes to send and receive messages of different types.
 
@@ -1699,7 +1812,7 @@ Run the MQTimerProducer class to send a message. The message is delivered after 
 
 You can specify an exact delay, which is up to 3 days. For more information, see Send and subscribe to scheduled messages.
 
-#### Client parameters
+#### 5.2.2 Client parameters
 
 This topic describes the parameters that are configured for ApsaraMQ for RocketMQ 5.0 clients. Table 1. Client parameters
 
@@ -1730,7 +1843,7 @@ This topic describes the parameters that are configured for ApsaraMQ for RocketM
 |---|---|---|---|---|---|
 | MaxCached MessageSiz eInMiB | Consumer | 512 | Adjusted based on the memory of consumer clients | The maximum size of messages that a consumer client can cache. A large value can cause an OOM issue on the client. The value ranges from 16 to 2048. The default value is 512. Unit: MB. | >=1.7.0.Fin al |
 
-#### Client error codes
+#### 5.2.3 Client error codes
 
 This topic describes error codes related to sending and subscribing to messages and their references.
 
@@ -1756,9 +1869,9 @@ This topic describes error codes related to sending and subscribing to messages 
 | 1 | SYSTEM ERROR _ (permission verification) | The permission verification failed. | Check whether the user is granted the permissions to publish messages to and subscribe to messages from the topic. | >=4.0.1 |
 | 2 | SYSTEM BUSY _ | The system is busy, and the request is rejected. | This is a temporary timeout that results from the restart of the ApsaraMQ for RocketMQ 5.0 broker or heavy load on the broker. For more information, see the Messages failed to be sent section in ApsaraMQ for RocketMQ exceptions and solutions. | >=4.0.1 |
 
-#### Java SDK
+#### 5.2.4 Java SDK
 
-##### Instructions for use
+##### 5.2.4.1 Instructions for use
 
 ApsaraMQ for RocketMQ 5.0 provides SDK for Java for you to send and subscribe to messages. This topic describes the parameters of methods in SDK for Java and how to call these methods. Table 1. Common parameters
 
@@ -1794,9 +1907,7 @@ Figure 2. Methods and parameters for using SDK for Java to subscribe to messages
 
 **Sample code for sending and subscribing to messages**
 
-Send and subscribe to normal messages Send and subscribe to ordered messages Send and subscribe to scheduled messages Send and subscribe to delayed messages Send and subscribe to transactional messages
-
-##### Environment preparations
+##### 5.2.4.2 Environment preparations
 
 Before you run the Java code provided in this topic, perform the following steps to prepare the environment.
 
@@ -1819,7 +1930,7 @@ Java in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message ta
 3. For applications that use the TCP client SDK to access ApsaraMQ for RocketMQ 5.0, make
 sure that the applications are deployed on Elastic Compute Service (ECS) instances in the same region.
 
-##### Logging configurations
+##### 5.2.4.3 Logging configurations
 
 Client logs record exceptions that occur when clients are running. These logs can help you quickly locate and handle exceptions. This topic describes how to print the logs of an ApsaraMQ for RocketMQ 5.0 client and provides the default and custom configurations.
 
@@ -1910,13 +2021,13 @@ Add the following system parameters to the startup script or VM options of the i
 
 /home/admin/ and D:\ are for reference only. Replace them as needed.
 
-##### Spring integration
+##### 5.2.4.4 Spring integration
 
-###### Overview
+###### 5.2.4.4.1 Overview
 
 This topic describes how to send and receive messages by using ApsaraMQ for RocketMQ 5.0 in the Spring framework. This topic includes three parts: the integration of a normal message producer and Spring, the integration of a transactional message producer and Spring, and the integration of a message consumer and Spring. The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency. The configuration parameters supported in the Spring framework are the same as those used in TCP client SDK for Java. For more information, see Usage notes.
 
-###### Integrate a producer with Spring
+###### 5.2.4.4.2 Integrate a producer with Spring
 
 This topic describes how to integrate a producer with Spring.
 
@@ -2002,7 +2113,7 @@ message key.
 
 `}` `}` `}` `}`
 
-###### Integrate a transactional message
+###### 5.2.4.4.3 Integrate a transactional message producer with Spring
 
 **producer with Spring**
 
@@ -2102,7 +2213,7 @@ s for TransactionStatus based on the execution result of the local transaction.
 
 `}` `}`
 
-###### Integrate a consumer with Spring
+###### 5.2.4.4.4 Integrate a consumer with Spring
 
 This topic describes how to integrate a consumer with Spring.
 
@@ -2209,9 +2320,9 @@ ClassPathXmlApplicationContext("consumer.xml");
 
 `}` `}`
 
-##### Three modes for sending messages
+##### 5.2.4.5 Three modes for sending messages
 
-###### Overview
+###### 5.2.4.5.1 Overview
 
 In ApsaraMQ for RocketMQ 5.0, messages can be sent in reliable synchronous mode,reliable asynchronous mode, and one-way mode. This topic describes the principles, scenarios, and differences of these modes, and provides sample code for your reference.
 
@@ -2219,7 +2330,7 @@ In ApsaraMQ for RocketMQ 5.0, messages can be sent in reliable synchronous mode,
 
 Ordered messages can be sent only in reliable synchronous mode.
 
-###### Reliable synchronous transmission
+###### 5.2.4.5.2 Reliable synchronous transmission
 
 This topic describes the principle and scenarios of the reliable synchronous transmission mode.
 
@@ -2308,7 +2419,7 @@ sg.getTopic());
 
 `}` `}`
 
-###### Reliable asynchronous transmission
+###### 5.2.4.5.3 Reliable asynchronous transmission
 
 This topic describes the principle and scenarios of the reliable asynchronous transmission mode.
 
@@ -2402,7 +2513,7 @@ s optional.
 
 `}`
 
-###### One-way transmission
+###### 5.2.4.5.4 One-way transmission
 
 This topic describes the principle and scenarios of the one-way transmission mode, and provides sample code.
 
@@ -2481,7 +2592,7 @@ response from the ApsaraMQ for RocketMQ broker. Therefore, data loss occurs if m
 
 `}`
 
-##### Send messages by using multiple threads
+##### 5.2.4.6 Send messages by using multiple threads
 
 This topic describes how to send messages by using multiple threads and provides sample code. The consumer and producer objects of ApsaraMQ for RocketMQ 5.0 are thread-secure and can be shared among threads. You can deploy multiple producer and consumer instances on one or more brokers. You can also run multiple threads to send or receive messages in a producer or consumer instance. This improves the transactions per second (TPS) for sending or receiving messages. Do not create a producer instance or consumer instance for each thread. The following sample code provides an example on how to share a producer among threads:
 
@@ -2596,7 +2707,7 @@ resources.
 
 `}` `}`
 
-##### Send and subscribe to ordered messages
+##### 5.2.4.7 Send and subscribe to ordered messages
 
 This topic describes how to send and subscribe to ordered messages and provides sample code. Ordered messages, also known as first-in, first-out (FIFO) messages, are a type of messages provided by ApsaraMQ for RocketMQ 5.0. Ordered messages are published and consumed in a strict order. This topic provides sample code for using the TCP client SDK for Java to send and subscribe to ordered messages. For more information, see Ordered messages. Use SDK for Java 1.2.7 or later to send and subscribe to ordered messages.
 
@@ -2747,7 +2858,7 @@ ext) {
 
 `}` `}`
 
-##### Send and subscribe to transactional
+##### 5.2.4.8 Send and subscribe to transactional messages
 
 **messages**
 
@@ -2941,7 +3052,7 @@ Why must the mechanism of transaction status check be implemented when transacti
 
 The method for subscribing to transactional messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to delayed messages
+##### 5.2.4.9 Send and subscribe to delayed messages
 
 This topic describes how to send and subscribe to delayed messages and provides sample code. Delayed messages are delivered to a client after a delay. For example, if the delay period is 3 seconds, messages are forwarded from the ApsaraMQ for RocketMQ 5.0 broker to the client for consumption after a 3-second delay. Delayed messages can be used when a time window is required between the production and consumption of the messages, or when tasks need to be triggered after a delay. Delayed messages are similar to delayed queues. For information about the terms and usage notes for using delayed messages, see Scheduled and delayed messages.
 
@@ -3028,7 +3139,7 @@ msg.getTopic());
 
 The method for subscribing to delayed messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to scheduled
+##### 5.2.4.10 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -3112,7 +3223,7 @@ msg.getTopic());
 
 The method for subscribing to scheduled messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 5.2.4.11 Subscribe to messages
 
 This topic describes how to subscribe to messages and provides sample code.
 
@@ -3197,11 +3308,11 @@ Subscribe to messages with multiple tags.
 
 In broadcasting subscription mode, you cannot query message accumulation information in the ApsaraMQ for RocketMQ 5.0 console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
 
-#### C/C++ SDK
+#### 5.2.5 C/C++ SDK
 
-##### Prepare the SDK for C or C++ environment
+##### 5.2.5.1 Prepare the SDK for C or C++ environment
 
-###### Overview
+###### 5.2.5.1.1 Overview
 
 Before you use SDK for C or C++ to access ApsaraMQ for RocketMQ 5.0, make sure that the following preparations are made.
 
@@ -3209,7 +3320,7 @@ Before you use SDK for C or C++ to access ApsaraMQ for RocketMQ 5.0, make sure t
 
 Create the topics and group IDs that are referred to in the code of the TCP client SDK for C or C++ in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources. Deploy applications that use ApsaraMQ for RocketMQ 5.0 on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for C or C++
+###### 5.2.5.1.2 Download SDK for C or C++
 
 This topic describes the preparations, instructions, and usage notes for using SDK for C or C++ v2.0.0 to access ApsaraMQ for RocketMQ 5.0 so that you can use SDK for C or C++ to send and subscribe to messages.
 
@@ -3219,7 +3330,7 @@ This topic describes the preparations, instructions, and usage notes for using S
 2. Decompress the downloaded package.
 After the package is decompressed, the following directory structure appears: demos/ Contains examples on how to send normal messages, send messages in one-way mode, send ordered messages, consume normal messages, and consume ordered messages. This directory also contains the CMakeList.txt file that is used to compile and manage demos. include/ Contains header files that are required by your own programs. lib/ Contains dynamic libraries based on x86_64. The libraries include the interface library libonsclient4cpp.so and the kernel library librocketmq_client_core.so. changelog Contains bug fixes and new features in new releases.
 
-###### Use SDK for C++ in Linux
+###### 5.2.5.1.3 Use SDK for C++ in Linux
 
 This topic describes how to use SDK for C++ in Linux. Starting from June 28, 2019, the SDK of the new version provides only dynamic library solutions. The library file of ApsaraMQ for RocketMQ 5.0 is stored in the lib/ directory. You must link librocketmq_client_core.so with libonsclient4cpp.so when you generate executable files. demos has introduced the features of C++ 11 and uses CMake for management. Therefore, you must install CMake 3.0 or later and g++ 4.8 or later in advance.
 
@@ -3233,7 +3344,7 @@ The following sample code provides an example on how to use demos:
 cd aliyun-mq-linux-cpp-sdk // The path to which the downloaded SDK for C++ package is d ecompressed. cd demos // Go to the demos directory and modify the demos file by entering information such as the topic and key that you created in the ApsaraMQ for RocketMQ 5.0 console. cmake . // Detect dependencies and generate compilation scripts. make // Compile the code. cd bin // Run the program in the directory where the generated executable files are loc ated.
 ```
 
-##### Send and subscribe to normal messages
+##### 5.2.5.2 Send and subscribe to normal messages
 
 This topic provides the sample code for sending and subscribing to normal messages.
 
@@ -3285,7 +3396,7 @@ ibl ALIBABACLOUDACCESSKEYID dALIBABA
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to ordered messages
+##### 5.2.5.3 Send and subscribe to ordered messages
 
 This topic provides the sample code for sending and subscribing to ordered messages.
 
@@ -3417,7 +3528,7 @@ public:
 
 `}`
 
-##### Send and subscribe to scheduled
+##### 5.2.5.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -3537,7 +3648,7 @@ as memory leaks may occur.
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to transactional
+##### 5.2.5.5 Send and subscribe to transactional messages
 
 **messages**
 
@@ -3819,7 +3930,7 @@ RocketMQ 5.0 broker is expected to send a request again to the producer to query
 
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 5.2.5.6 Subscribe to messages
 
 This topic describes how to subscribe to messages by using the TCP client SDK for C or C++ provided by ApsaraMQ for RocketMQ 5.0.
 
@@ -3921,9 +4032,9 @@ sumer.
 
 #### 5.2.6. .NET SDK
 
-##### Prepare the .NET SDK environment
+##### 5.2.6.1 Prepare the .NET SDK environment
 
-###### Overview
+###### 5.2.6.1.1 Overview
 
 This topic describes how to prepare the environment for accessing ApsaraMQ for RocketMQ 5.0 by using SDK for .NET so that you can use SDK for .NET to send and subscribe to messages.
 
@@ -3931,7 +4042,7 @@ This topic describes how to prepare the environment for accessing ApsaraMQ for R
 
 Create the topics and group IDs that are referred to in the code of SDK for .NET in the ApsaraMQ for RocketMQ 5.0 console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources. Deploy applications that use ApsaraMQ for RocketMQ 5.0 on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for .NET
+###### 5.2.6.1.2 Download SDK for .NET
 
 SDK for .NET provided by ApsaraMQ for RocketMQ 5.0 is a managed wrapper of SDK for C++ of ApsaraMQ for RocketMQ 5.0. This ensures that SDK for .NET is completely independent of the Windows .NET public library. C++ multithread concurrent processing is used internally to ensure the efficiency and stability of SDK for .NET.
 
@@ -3960,7 +4071,7 @@ After the package is decompressed, the following directory structure appears: de
 
 interface/ Encapsulates P/Invoke code. The code must be included in the user project code. SDK_GUIDE.pdf Contains the documentation and frequently asked questions (FAQ) about how to prepare the SDK environment. changelog Contains bug fixes and new features in new releases.
 
-###### Configure SDK for .NET
+###### 5.2.6.1.3 Configure SDK for .NET
 
 This topic describes how to use SDK for .NET in Windows.
 
@@ -4081,7 +4192,7 @@ and run the program. Figure 7. .NET SDK-7
 **Use the 64 bit version of IIS Express for websites and projects** check box.
 Figure 8. .NET SDK-8 Figure 9. .NET SDK-9
 
-##### Send and subscribe to normal messages
+##### 5.2.6.2 Send and subscribe to normal messages
 
 This topic provides the sample code for sending and subscribing to normal messages.
 
@@ -4175,7 +4286,7 @@ age body");
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to ordered messages
+##### 5.2.6.3 Send and subscribe to ordered messages
 
 This topic describes how to send and subscribe to ordered messages and provides sample code.
 
@@ -4362,7 +4473,7 @@ instance.
 
 `}` `}` `}`
 
-##### Send and subscribe to scheduled
+##### 5.2.6.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -4474,7 +4585,7 @@ issues such as memory leaks may occur.
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to transactional
+##### 5.2.6.5 Send and subscribe to transactional messages
 
 **messages**
 
@@ -4746,7 +4857,7 @@ RocketMQ 5.0 broker is expected to send a request again to the producer to query
 
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 5.2.6.6 Subscribe to messages
 
 This topic describes how to subscribe to messages by using the TCP client SDK for .NET provided by ApsaraMQ for RocketMQ 5.0.
 
@@ -4871,9 +4982,9 @@ must set a proper value to make sure that the process does not unexpectedly exit
 
 `}` `}` practices
 
-## Best practices
+## 6 Best practices
 
-### Clustering consumption and
+### 6.1 Clustering consumption and broadcasting consumption
 
 **broadcasting consumption**
 
@@ -4909,7 +5020,7 @@ Figure 2. Broadcasting consumption mode Scenarios and usage notes: Ordered messa
 
 If the broadcasting consumption mode is required for your business, you can create multiple group IDs to subscribe to the same topic. practices Figure 3. Use the clustering consumption mode to simulate the broadcasting consumption mode Scenarios and usage notes: Each message needs to be processed by multiple consumers, and the logic of the consumers can be the same or different. The consumption progress is recorded on the ApsaraMQ for RocketMQ 5.0 broker. Therefore, the reliability is higher than that in broadcasting consumption mode. For each group ID, one or more consumer instances can be deployed. When multiple consumer instances are deployed, these instances compose a cluster and work together to consume messages. Assume that three consumer instances C1, C2, and C3 are deployed for Group ID 1. These instances share the messages sent from the ApsaraMQ for RocketMQ 5.0 broker to Group ID 1. In addition, these instances must subscribe to the same topics and same tags.
 
-### Message filtering
+### 6.2 Message filtering
 
 This topic describes how ApsaraMQ for RocketMQ v5.0 consumers filter messages on the ApsaraMQ for RocketMQ v5.0 broker based on tags. A tag is used to classify messages in a topic in ApsaraMQ for RocketMQ v5.0 into different types. ApsaraMQ for RocketMQ v5.0 allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages, including order messages, payment messages, and logistics messages, are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, logistics system, analysis system for transaction success rate, and realtime computing system. Among these systems, the logistics system receives only logistics messages, and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. practices Figure 1. Message filtering
 
@@ -4919,15 +5030,11 @@ To classify messages, you can create multiple topics, or create multiple tags in
 
 **Examples**
 
-**Send messages**
-
 Before you send messages, specify a tag for each message.
 
 ```
 Message msg = new Message("MQ_TOPIC","TagA","Hello MQ".getBytes());
 ```
-
-**Subscribe to messages**
 
 Consumption method 1 If a consumer needs to subscribe to messages of all types in a topic, use an asterisk (*) to represent all tags.
 
@@ -4998,13 +5105,13 @@ Consumption method 4 (error example) If a consumer subscribes to messages with s
 });
 ```
 
-### Subscription consistency
+### 6.3 Subscription consistency
 
 In ApsaraMQ for RocketMQ v5.0, a group ID represents a consumer instance group. For most distributed applications, multiple consumer instances are attached to the same group ID. Subscription consistency means that the processing logic of all consumer instances identified by the same group ID must be identical. If the subscriptions of the consumer instances are inconsistent, errors occur in the message consumption logic, and messages may be lost. Subscriptions in ApsaraMQ for RocketMQ v5.0 involve topics and tags. Therefore, all consumer instances identified by the same group ID must be consistent in the following two aspects to ensure subscription consistency: The topics to which the consumer instances subscribe must be the same. practices The tags of the topics to which the consumer instances subscribe must be the same.
 
 **Examples of subscriptions**
 
-Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions Inconsistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
+Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
 
 **Sample code of subscriptions**
 
@@ -5107,7 +5214,7 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
 });
 ```
 
-### Consumption idempotence
+### 6.4 Consumption idempotence
 
 After an ApsaraMQ for RocketMQ v5.0 consumer receives messages, the consumer needs to perform idempotent processing on these messages based on the unique business-specific keys of the messages.
 
@@ -5138,7 +5245,7 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
 });
 ```
 
-### Message routing
+### 6.5 Message routing
 
 ApsaraMQ for RocketMQ v5.0 provides the message routing feature that can be used to synchronize message data across clusters. This ensures message consistency and integrity between clusters. This topic describes the concept, benefits, and configuration method of message routing. This topic also describes the scenarios to which the message routing feature is applicable.
 
@@ -5189,11 +5296,11 @@ Before you create a message routing task, you must specify the information about
 
 Specify the message source and the message destination, and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization. ct usage issues
 
-## Product usage issues
+## 7 Product usage issues
 
-### FAQ
+### 7.1 FAQ
 
-#### Quick start
+#### 7.1.1 Quick start
 
 This topic answers common questions for new users of RocketMQ v5.0.
 
@@ -5238,7 +5345,7 @@ The broadcast consumption mode guarantees at-least-once delivery. However, unlik
 
 RocketMQ v5.0 provides several ways to perform a message query: Query all messages received by a specific topic within a specified time range. Query for a message by its topic and message ID. Query for a group of messages on a specific topic that share the same message key. These methods let you inspect message content and consumption status. To trace a message's entire journey from the producer to the consumer, including timestamps at each step, use the message trace feature in RocketMQ v5.0. For instructions, see Query a message trace. RocketMQ v5.0**: Are messages guaranteed not to be duplicated?** In most scenarios, messages are delivered without duplication. However, as a distributed messaging middleware, RocketMQ v5.0 cannot guarantee unique message delivery in exceptional circumstances such as network jitter or application timeouts. Although duplicate messages are possible, the system guarantees that no messages are lost.
 
-#### Configuration
+#### 7.1.2 Configuration
 
 This topic answers frequently asked questions about configuring RocketMQ v5.0.
 
@@ -5291,7 +5398,7 @@ Set the ConsumeThreadNums property when you start the consumer. See the followin
 
 For details, see the SDK_GUIDE.pdf file included with the .NET SDK. Ensure your project is configured as described in the guide.
 
-#### Message trace
+#### 7.1.3 Message trace
 
 This topic answers frequently asked questions about the RocketMQ v5.0 message trace feature.
 
@@ -5313,11 +5420,11 @@ This can occur if the message has a large number of downstream subscribers, as t
 
 To prevent display clutter, RocketMQ v5.0 periodically clears your historical query tasks. By default, only query tasks from the last 7 days are retained. If you cannot find a historical task, run the query again.
 
-#### Alarm handling
+#### 7.1.4 Alarm handling
 
 Alarm handling for RocketMQ v5.0 is currently unavailable. Because Apsara Stack operates in an isolated environment and cannot connect to public network interfaces, such as an SMS gateway, the monitoring and alarms module is unavailable in the console.
 
-#### Ordered messages
+#### 7.1.5 Ordered messages
 
 This topic answers common questions about ordered messages in RocketMQ v5.0.
 
@@ -5339,9 +5446,9 @@ Ordered messages maintain their sequence within a single topic.
 
 Ordered messages support only reliable synchronous sending.
 
-### Exception types
+### 7.2 Exception types
 
-#### Usage exceptions
+#### 7.2.1 Usage exceptions
 
 This article describes exceptions you might encounter when using RocketMQ v5.0.
 
@@ -5386,7 +5493,7 @@ og entry will not be printed.
 
 `}` `}` If the issue persists, contact technical support with your local SDK logs for assistance.
 
-#### Resource not found
+#### 7.2.2 Resource not found
 
 This topic describes how to troubleshoot "resource not found" errors.
 
@@ -5410,7 +5517,7 @@ If the command fails, check whether you have defined an alias for hostname in a 
 
 If you cannot ping the hostname, you must bind the local host IP address to the hostname in the /etc/hosts file. By default, ECS machines have this binding. Do not manually remove it. iii. Verify the system configuration. Verify that the hostname in /etc/sysconfig/network matches the hostname bound in /etc/hosts. If they do not match, update the configuration. If you modify the /etc/sysconfig/network file, you must restart the machine for the changes to take effect. We recommend that you do not arbitrarily modify system files, as doing so can cause unexpected issues. After completing these steps, the client should no longer report an `UnknownHostException` error at startup.
 
-#### Inconsistent state
+#### 7.2.3 Inconsistent state
 
 This topic describes exceptions related to an inconsistent state.
 
@@ -5543,9 +5650,9 @@ ct usage issues Example 2: Consumers in the same group ID (GID-MQ-FAQ) subscribe
 
 When you launch multiple consumers with the same group ID in different JVMs, ensure that their topic and tag configurations are identical.
 
-### Troubleshooting
+### 7.3 Troubleshooting
 
-#### Unexpected client connections
+#### 7.3.1 Unexpected client connections
 
 This topic describes the symptoms, analysis, recovery, and verification steps for unexpected client connection issues.
 
@@ -5576,7 +5683,7 @@ In the RocketMQ v5.0 console, on the **Group Management > Consumer Status >**
 **Connection Information** page, all connected clients are within the expected range and can
 consume messages normally. The **Subscription Consistency** column also shows **Yes**.
 
-#### Inconsistent subscriptions
+#### 7.3.2 Inconsistent subscriptions
 
 This topic describes the symptoms, analysis, solution, and verification of inconsistent subscriptions.
 
@@ -5706,7 +5813,7 @@ Follow these steps to resolve the issue:
 Your consumers receive all expected messages. Log on to the RocketMQ v5.0 console and navigate to **Group Management > Consumer**
 **Status**. The **Consistent Subscriptions** column now displays **Yes**.
 
-#### Message accumulation in a Java
+#### 7.3.3 Message accumulation in a Java process
 
 **process**
 
@@ -5752,7 +5859,7 @@ The output is similar to the following figure. See the official Java documentati
 |   | jmap -dump:format=b,file=heap.bin |   |   |
 |   |   | gzip |   |
 
-#### OOM error from client-side message
+#### 7.3.4 OOM error from client-side message caching
 
 **caching**
 
@@ -5806,7 +5913,7 @@ parameter for the corresponding ConsumerBean based on the memory usage of the ap
 Verification 1: In `/{user.home}/logs/ons.log` , the "OutOfMemory" keyword no longer appears. Verification 2: Go to **Group Management > Consumer Status** and verify that the value in the **Real-time Consumption Speed** column increases and the **Real-time Message**
 **Backlog** decreases.
 
-#### Message delivery fails with
+#### 7.3.5 Message delivery fails with AuthenticationException
 
 **AuthenticationException**
 

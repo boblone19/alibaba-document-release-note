@@ -3,20 +3,28 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 26
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Product Introduction 20260828.pdf"
+source_pdf: "dcec4a83029a9799_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Ma"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is SOC?
+- 2 Benefits
+- 3 Service architecture
+- 4 Features
+- 5 Common scenarios
+
 OC?
 
-## What is SOC?
+## 1 What is SOC?
 
 Apsara Stack Security Security Operations Center (SOC) is a native and integrated security management center that is developed by Alibaba Cloud to manage the overall security operations of Alibaba Cloud hybrid cloud and Apsara Stack. You can use SOC to build a closed-loop security operations system that supports risk prediction, risk identification, defense control, detection and analysis, and response management in the cloud. SOC provides security capabilities to support the security operations of Alibaba Cloud hybrid cloud and Apsara Stack, such as high-risk threat detection, in-depth tracing and evidence collection, comprehensive security assessment, visualized monitoring, automatic response and handling, cloud asset management, and scenario-based operations.
 
-## Benefits
+## 2 Benefits
 
 This topic describes the benefits of Security Operations Center (SOC).
 
@@ -40,7 +48,7 @@ SOC creates the profiles of risks on cloud servers and virtual instances, and as
 
 SOC is integrated with the capabilities of Security Orchestration Automation Response (SOAR). In SOC, human resources, processes, and technologies are combined to improve the efficiency of security operations. When you receive an alert, you can deliver related policies with a few clicks to handle security risks in an efficient manner. rchitecture
 
-## Service architecture
+## 3 Service architecture
 
 Security Operations Center (SOC) uses a hierarchical architecture that consists of the following layers: data collection, data processing, data analysis, data storage, and data consumption. This facilitates stream processing from the acquisition of raw data to data application. This topic describes the architecture of SOC.
 
@@ -124,7 +132,7 @@ The data storage layer is used for the distributed storage of standardized data 
 
 The data consumption layer is used for the application and consumption of analyzed and processed data. This layer directly delivers data services to cloud security operations administrators. The data services include scenario-based security operations, cloud security threat monitoring, network risk analysis, orchestration of risk responses, cloud asset management, log management, and data reports. These data services help security operations administrators perform comprehensive security operations in cloud environments.
 
-## Features
+## 4 Features
 
 This topic describes the features supported by the Cloud Security Management Center.
 
@@ -360,7 +368,7 @@ This topic describes the features supported by the Cloud Security Management Cen
 
 scenarios
 
-## Common scenarios
+## 5 Common scenarios
 
 Security Operations Center (SOC) is suitable for building security frameworks in cloud environments such as the industry cloud, Alibaba Gov Cloud, and co-built cloud. SOC supports scenario-based operations of cloud computing networks across sectors, including the public service sector, finance, energy, state-owned enterprises, and national ministries and commissions.
 

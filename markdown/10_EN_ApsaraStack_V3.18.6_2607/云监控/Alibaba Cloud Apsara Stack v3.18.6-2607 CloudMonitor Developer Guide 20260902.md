@@ -3,16 +3,229 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 202
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 616
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 20260902.pdf"
+source_pdf: "bebe5a3985330071_Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%91%E6%8E%A7/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20CloudMonitor%20Developer%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Developer Guide 20260902
 
-## Preparations
+## Table of Contents
 
-### Obtain the endpoint
+- 1 Preparations
+  - 1.1 Obtain the endpoint
+- 2 API Reference
+  - 2.1 Monitoring data on time series metrics of cloud services
+    - 2.1.1 DescribeMetricLast
+    - 2.1.2 DescribeMetricList
+    - 2.1.3 DescribeMetricMetaList
+    - 2.1.4 DescribeProjectMeta
+    - 2.1.5 DescribeMetricData
+    - 2.1.6 DescribeMetricTop
+    - 2.1.7 DescribeMetricTopList
+    - 2.1.8 DescribeCloudProductResourceTypes
+  - 2.2 Console view configuration
+    - 2.2.1 DescribeConsoleViews
+  - 2.3 Custom monitoring
+    - 2.3.1 PutCustomMetric
+    - 2.3.2 BatchDeleteCustomMetricMeta
+    - 2.3.3 CreateCustomMetricMeta
+    - 2.3.4 DescribeCustomMetricList
+    - 2.3.5 DeleteCustomMetric
+  - 2.4 Host monitoring
+    - 2.4.1 NodeInstall
+    - 2.4.2 DescribeArgusAgentInstallRecord
+    - 2.4.3 DescribeMonitoringAgentStatuses
+    - 2.4.4 DescribeMonitoringAgentHosts
+    - 2.4.5 InstallMonitoringAgent
+    - 2.4.6 DescribeMonitoringAgentProcesses
+    - 2.4.7 PutMonitoringConfig
+    - 2.4.8 DeleteMonitoringAgentProcess
+    - 2.4.9 CreateMonitoringAgentProcess
+    - 2.4.10 DescribeMonitoringConfig
+    - 2.4.11 DescribeMonitoringAgentAccessKey
+    - 2.4.12 UninstallMonitoringAgent
+  - 2.5 Alert service
+    - 2.5.1 DescribeAlertingMetricRuleResources
+    - 2.5.2 PutResourceMetricRule
+    - 2.5.3 DescribeAlertHistoryList
+    - 2.5.4 DeleteMetricRuleTargets
+    - 2.5.5 DescribeActiveMetricRuleList
+    - 2.5.6 DescribeProductsOfActiveMetricRule
+    - 2.5.7 DeleteMetricRuleResources
+    - 2.5.8 DescribeMetricRuleList
+    - 2.5.9 DescribeMetricRuleCount
+    - 2.5.10 DeleteMetricRules
+    - 2.5.11 DisableMetricRules
+    - 2.5.12 EnableMetricRules
+    - 2.5.13 DeleteContact
+    - 2.5.14 DescribeMetricRuleTargets
+    - 2.5.15 DescribeEventRuleList
+    - 2.5.16 DescribeMetricRuleTemplateList
+    - 2.5.17 DescribeContactList
+    - 2.5.18 ApplyMetricRuleTemplate
+    - 2.5.19 DescribeEventRuleTargetList
+    - 2.5.20 DescribeMetricRuleTemplateAttribute
+    - 2.5.21 DescribeEventRuleAttribute
+    - 2.5.22 DescribeContactListByContactGroup
+    - 2.5.23 PutContact
+    - 2.5.24 DescribeMetricPromQLRange
+    - 2.5.25 PutContactGroup
+    - 2.5.26 PutGroupMetricRule
+    - 2.5.27 CreateMetricRuleResources
+    - 2.5.28 DescribeContactGroupList
+    - 2.5.29 DeleteMetricRuleTemplate
+    - 2.5.30 PutEventRuleTargets
+    - 2.5.31 CreateMetricRuleTemplate
+    - 2.5.32 CreateGroupMetricRules
+    - 2.5.33 DeleteEventRules
+    - 2.5.34 ModifyMetricRuleTemplate
+    - 2.5.35 PutMetricRuleTargets
+    - 2.5.36 DescribeDynamicThresholdBound
+  - 2.6 Event monitoring
+    - 2.6.1 DescribeSystemEventHistogram
+    - 2.6.2 DescribeSystemEventAttribute
+    - 2.6.3 DescribeSystemEventCount
+    - 2.6.4 SendDryRunSystemEvent
+    - 2.6.5 PutCustomEvent
+    - 2.6.6 DescribeSystemEventMetaList
+    - 2.6.7 DescribeCustomEventCount
+    - 2.6.8 DescribeCustomEventAttribute
+  - 2.7 Custom dashboard
+    - 2.7.1 CreateDashboardFolder
+    - 2.7.2 ModifyDashboardToFolder
+    - 2.7.3 ModifyDashboardFolder
+    - 2.7.4 DescribeDashboard
+  - 2.8 Application group
+    - 2.8.1 DescribeMonitorGroups
+    - 2.8.2 DescribeMonitorGroupInstances
+    - 2.8.3 CreateMonitorGroupInstances
+    - 2.8.4 DescribeUnhealthyHostAvailability
+    - 2.8.5 DeleteMonitorGroupInstances
+    - 2.8.6 DescribeMonitorGroupInstanceAttribute
+    - 2.8.7 DescribeHostAvailabilityList
+    - 2.8.8 CreateMonitorGroup
+    - 2.8.9 DeleteMonitorGroup
+    - 2.8.10 CreateHostAvailability
+    - 2.8.11 CreateMonitorGroupNotifyPolicy
+    - 2.8.12 DeleteHostAvailability
+    - 2.8.13 DescribeMonitorGroupCategories
+    - 2.8.14 ModifyMonitorGroupInstances
+    - 2.8.15 ModifyHostAvailability
+    - 2.8.16 PutMonitorGroupDynamicRule
+    - 2.8.17 ModifyMonitorGroup
+    - 2.8.18 DeleteMonitorGroupDynamicRule
+    - 2.8.19 DeleteMonitorGroupNotifyPolicy
+    - 2.8.20 DescribeMonitorGroupNotifyPolicyList
+    - 2.8.21 DescribeMonitorGroupDynamicRules
+  - 2.9 Site monitoring
+    - 2.9.1 DescribeSiteMonitorData
+    - 2.9.2 DescribeSiteMonitorStatistics
+    - 2.9.3 DescribeSiteMonitorList
+    - 2.9.4 DescribeSiteMonitorISPCityList
+    - 2.9.5 CreateSiteMonitor
+    - 2.9.6 DescribeSiteMonitorAttribute
+    - 2.9.7 DisableSiteMonitors
+    - 2.9.8 EnableSiteMonitors
+    - 2.9.9 DeleteSiteMonitors
+    - 2.9.10 ModifySiteMonitor
+    - 2.9.11 DescribeSiteMonitorQuota
+  - 2.10 Alert center
+    - 2.10.1 DescribeBatchDetectTaskWithAlertResult
+    - 2.10.2 DescribeNotificationRules
+    - 2.10.3 DescribeAlertList
+    - 2.10.4 DeleteAlertFilterConfigBatch
+    - 2.10.5 ModifyAlertFilterConfig
+    - 2.10.6 DescribeAlertFilterConfig
+    - 2.10.7 DeleteNotificationRules
+    - 2.10.8 ModifyNotificationRule
+    - 2.10.9 CreateAlertFilterConfig
+    - 2.10.10 PutNotificationRule
+  - 2.11 Data subscription
+    - 2.11.1 CreateMetricPubSync
+    - 2.11.2 UpdateMetricPubSync
+    - 2.11.3 DeleteMetricPubSync
+    - 2.11.4 DescribeMetricPubSyncs
+  - 2.12 Log monitoring
+    - 2.12.1 PutLogMonitor
+    - 2.12.2 DeleteLogMonitor
+    - 2.12.3 DescribeLogMonitorList
+- 3 Metrics
+  - 3.1 Elastic computing
+    - 3.1.1 Kubernetes container monitoring
+    - 3.1.2 ECS
+    - 3.1.3 BMCP nodes
+    - 3.1.4 BMCP containers
+    - 3.1.5 Bare Metal Computing Platform (BMCP) (Container - Intelligent Computing Cluster)
+    - 3.1.6 Bare Metal Computing Platform (BMCP)
+    - 3.1.7 Bare Metal Management (BMS)
+  - 3.2 Database services
+    - 3.2.1 ApsaraDB RDS
+    - 3.2.2 ApsaraDB RDS (New)
+    - 3.2.3 PolarDB
+    - 3.2.4 PolarDB databases that use local SSDs
+    - 3.2.5 PolarDB-X 2.0
+      - 3.2.5.1 Compute nodes of PolarDB-X 2.0
+      - 3.2.5.2 Data nodes of PolarDB-X 2.0
+    - 3.2.6 ApsaraDB for MongoDB (Old)
+    - 3.2.7 ApsaraDB for MongoDB (New)
+    - 3.2.8 Tair (Redis OSS-compatible) (Old)
+    - 3.2.9 Tair (Redis OSS-compatible) (New)
+    - 3.2.10 AnalyticDB for PostgreSQL
+    - 3.2.11 AnalyticDB for PostgreSQL (new)
+    - 3.2.12 DTS
+      - 3.2.12.1 Data Transmission Service DTS(Tracking tasks)
+      - 3.2.12.2 Data Transmission Service DTS (migration tasks)
+      - 3.2.12.3 Data Transmission Service DTS (sync tasks)
+    - 3.2.13 Lindorm
+    - 3.2.14 Lindorm 2.0
+  - 3.3 Storage and CDN
+    - 3.3.1 NAS
+    - 3.3.2 OSS
+    - 3.3.3 CPFS
+    - 3.3.4 APFS
+    - 3.3.5 EFS-NAS file storage
+  - 3.4 Network
+    - 3.4.1 NAT Gateway
+    - 3.4.2 SLB
+    - 3.4.3 Application Load Balancer
+    - 3.4.4 EIP
+    - 3.4.5 VPN Gateway
+    - 3.4.6 DNS
+    - 3.4.7 Alibaba Cloud DNS - Tenant forwarded domain names
+    - 3.4.8 Cloud Enterprise Network
+  - 3.5 Middleware services
+    - 3.5.1 ApsaraMQ for RocketMQ
+    - 3.5.2 Message Queue (tiangong)
+    - 3.5.3 ApsaraMQ for Kafka
+    - 3.5.4 API Gateway
+  - 3.6 Big data
+    - 3.6.1 DataHub
+    - 3.6.2 Alibaba Cloud Elasticsearch
+    - 3.6.3 MaxCompute
+    - 3.6.4 MaxCompute quota groups
+  - 3.7 Security (Apsara Stack Security)
+    - 3.7.1 Tenant-side bastion hosts
+    - 3.7.2 Static data masking and watermarking
+    - 3.7.3 Vulnerability scanner engines
+    - 3.7.4 NFV Cloud Firewall
+    - 3.7.5 Web Application Firewall
+  - 3.8 AI and machine learning
+    - 3.8.1 AI Studio (online service)
+    - 3.8.2 AI Studio (model evaluation)
+    - 3.8.3 AI Studio (Notebook modeling)
+    - 3.8.4 AI Studio (task modeling)
+    - 3.8.5 AI Studio (visual modeling)
+    - 3.8.6 AI Studio for model tuning
+    - 3.8.7 AI Studio (batch inference)
+    - 3.8.8 AI Studio (online service group)
+    - 3.8.9 AI Studio (Resource Pool)
+    - 3.8.10 A-Speed (High-Performance Inference Service)
+    - 3.8.11 Elastic Fault Tolerance Service
+
+## 1 Preparations
+
+### 1.1 Obtain the endpoint
 
 This topic describes how to obtain the endpoint of CloudMonitor.
 
@@ -27,13 +240,13 @@ This topic describes how to obtain the endpoint of CloudMonitor.
 5. On the **information of Component** page, select **Registration Variables**, search for
 **metric.open.endpoint**, and view the value of the endpoint.
 
-## API Reference
+## 2 API Reference
 
-### Monitoring data on time series
+### 2.1 Monitoring data on time series metrics of cloud services
 
 **metrics of cloud services**
 
-#### DescribeMetricLast
+#### 2.1.1 DescribeMetricLast
 
 Queries the latest monitoring data of a monitored object.
 
@@ -315,7 +528,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeMetricList
+#### 2.1.2 DescribeMetricList
 
 Queries the monitoring data of a time series metric for a cloud service within a specified period of time. For more information about the values of parameters such as Namespace, Metric, Period, and Dimensions for each cloud service, see "Metrics for Apsara Stack services".
 
@@ -576,7 +789,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeMetricMetaList
+#### 2.1.3 DescribeMetricMetaList
 
 Queries monitoring item details, including metadata such as the metric name, statistical method, unit, description, dimension, and reporting period.
 
@@ -633,7 +846,7 @@ Call this operation to query the metadata of monitoring items that Cloud Monitor
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The system failed to process the request due to some unknown errors. |
 
-#### DescribeProjectMeta
+#### 2.1.4 DescribeProjectMeta
 
 Queries the information of monitored services in CloudMonitor. The information obtained by this operation includes the service description, namespace, and tags.
 
@@ -715,7 +928,7 @@ The response content varies with the services that are actually monitored. `JSON
 
 `},` `]` `}` `}`
 
-#### DescribeMetricData
+#### 2.1.5 DescribeMetricData
 
 Queries the monitoring data of a metric for a specified cloud service.
 
@@ -808,7 +1021,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMetricTop
+#### 2.1.6 DescribeMetricTop
 
 Queries the latest monitoring data of a metric for a cloud service. The data can be sorted by a specified order.
 
@@ -921,7 +1134,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMetricTopList
+#### 2.1.7 DescribeMetricTopList
 
 Queries the data of top metrics within a specified time period.
 
@@ -999,7 +1212,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 |   | InternalError | The system failed to process the request due to some unknown errors. |
 
-#### DescribeCloudProductResourceTypes
+#### 2.1.8 DescribeCloudProductResourceTypes
 
 Queries the list of resource types that cloud products support.
 
@@ -1029,9 +1242,9 @@ This operation uses common request headers only. For more information, see the d
 | 401 | 401 | AccessDeniedException | You do not have sufficient permissions to perform this operation. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-### Console view configuration
+### 2.2 Console view configuration
 
-#### DescribeConsoleViews
+#### 2.2.1 DescribeConsoleViews
 
 Queries the configuration information of Cloud Monitor (CMS) console views.
 
@@ -1239,9 +1452,9 @@ Sample success responses `JSON` format `XML` format
 **Important**: This API is intended only for querying CMS console view configurations. External
 users and third-party applications must not call it. Its behavior and parameters are subject to change at any time without backward compatibility guarantees.This API queries the view configuration information of the CMS console. External users and third-party applications must not call this API. The API behavior and parameters may change at any time, and backward compatibility is not guaranteed.
 
-### Custom monitoring
+### 2.3 Custom monitoring
 
-#### PutCustomMetric
+#### 2.3.1 PutCustomMetric
 
 Reports monitoring data.
 
@@ -1303,7 +1516,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### BatchDeleteCustomMetricMeta
+#### 2.3.2 BatchDeleteCustomMetricMeta
 
 Deletes custom monitoring metrics in batches.
 
@@ -1353,7 +1566,7 @@ Batch delete metadata of custom monitoring metrics.
 | 406 | 406 | ExceedingQuota | %s |
 | 500 | 500 | InternalError | The system failed to process the request due to some unknown errors. |
 
-#### CreateCustomMetricMeta
+#### 2.3.3 CreateCustomMetricMeta
 
 Creates metadata for custom monitoring metrics.
 
@@ -1408,7 +1621,7 @@ Create metadata for custom monitoring metrics.
 | 500 | 500 | InternalError | The system failed to process the request due to some unknown errors. |
 |---|---|---|---|
 
-#### DescribeCustomMetricList
+#### 2.3.4 DescribeCustomMetricList
 
 Queries the reported monitoring data.
 
@@ -1465,7 +1678,7 @@ tricName\\\\\\\":\\\\\\\"cpu_total\\\\\\\",\\\\\\\"groupId\\\\\\\":7378****,\\\\
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteCustomMetric
+#### 2.3.5 DeleteCustomMetric
 
 Deletes the reported monitoring data of a metric.
 
@@ -1520,9 +1733,9 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-### Host monitoring
+### 2.4 Host monitoring
 
-#### NodeInstall
+#### 2.4.1 NodeInstall
 
 **Request headers**
 
@@ -1578,9 +1791,9 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-Cms 2018-03-08 NodeInstall
+Cms 2018-03-08
 
-#### DescribeArgusAgentInstallRecord
+#### 2.4.2 DescribeArgusAgentInstallRecord
 
 Queries the installation records of the Argus agent, such as the installation time and status.
 
@@ -1615,7 +1828,7 @@ This operation does not have operation-specific request headers and uses only co
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### DescribeMonitoringAgentStatuses
+#### 2.4.3 DescribeMonitoringAgentStatuses
 
 Queries the status of the CloudMonitor agent.
 
@@ -1682,7 +1895,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitoringAgentHosts
+#### 2.4.4 DescribeMonitoringAgentHosts
 
 Queries all hosts within the current Alibaba Cloud account, including hosts on which the CloudMonitor agent is installed and uninstalled.
 
@@ -1791,7 +2004,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### InstallMonitoringAgent
+#### 2.4.5 InstallMonitoringAgent
 
 Installs the CloudMonitor agent on one or more Elastic Compute Service (ECS) instances.
 
@@ -1846,7 +2059,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitoringAgentProcesses
+#### 2.4.6 DescribeMonitoringAgentProcesses
 
 Queries the processes of a specified resource.
 
@@ -1914,7 +2127,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutMonitoringConfig
+#### 2.4.7 PutMonitoringConfig
 
 Configures global settings for the CloudMonitor agent.
 
@@ -1968,7 +2181,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | The Request is not authorization. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteMonitoringAgentProcess
+#### 2.4.8 DeleteMonitoringAgentProcess
 
 Disables the monitoring of a specified process on a specified instance.
 
@@ -2024,7 +2237,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateMonitoringAgentProcess
+#### 2.4.9 CreateMonitoringAgentProcess
 
 Creates a task to monitor a process.
 
@@ -2085,7 +2298,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitoringConfig
+#### 2.4.10 DescribeMonitoringConfig
 
 Queries the global configurations of the CloudMonitor agent.
 
@@ -2133,7 +2346,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | The Request is not authorization. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitoringAgentAccessKey
+#### 2.4.11 DescribeMonitoringAgentAccessKey
 
 Queries the AccessKey ID and AccessKey secret that are required to install the CloudMonitor agent on a third-party host.
 
@@ -2185,7 +2398,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### UninstallMonitoringAgent
+#### 2.4.12 UninstallMonitoringAgent
 
 Uninstalls the CloudMonitor agent from a third-party host.
 
@@ -2237,9 +2450,9 @@ Sample success responses `JSON` format `{`
 | 412 | 4122 | AgentStateError | Expected agent running state is stopped. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-### Alert service
+### 2.5 Alert service
 
-#### DescribeAlertingMetricRuleResources
+#### 2.5.1 DescribeAlertingMetricRuleResources
 
 Queries the resources that are associated with an alert rule.
 
@@ -2353,9 +2566,9 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DescribeAlertingMetricRuleResources
+Cms 2019-01-01
 
-#### PutResourceMetricRule
+#### 2.5.2 PutResourceMetricRule
 
 Creates or modifies an alert rule for resource monitoring.
 
@@ -2523,7 +2736,7 @@ content at the end of the document</div>
 
 Configure Critical and Warn alerts for critical resources. Set `SilenceTime` to an integer multiple of the monitoring period, such as 300 seconds. After you modify a rule, the new configuration takes effect in the next monitoring period.
 
-#### DescribeAlertHistoryList
+#### 2.5.3 DescribeAlertHistoryList
 
 Queries historical alerts.
 
@@ -2667,9 +2880,9 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DescribeAlertHistoryList
+Cms 2019-01-01
 
-#### DeleteMetricRuleTargets
+#### 2.5.4 DeleteMetricRuleTargets
 
 Deletes the resources that are associated with an alert rule. This operation supports only Message Service (MNS) resources.
 
@@ -2732,9 +2945,9 @@ Sample success responses `JSON` format `{`
 | 400 | 400 | ParameterInvalid | Illegal parameters. |
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DeleteMetricRuleTargets
+Cms 2019-01-01
 
-#### DescribeActiveMetricRuleList
+#### 2.5.5 DescribeActiveMetricRuleList
 
 Queries the alert rules associated with the proactive alerting feature.
 
@@ -2942,9 +3155,9 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | The Request is not authorization. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DescribeActiveMetricRuleList
+Cms 2019-01-01
 
-#### DescribeProductsOfActiveMetricRule
+#### 2.5.6 DescribeProductsOfActiveMetricRule
 
 Queries the cloud services for which the proactive alerting feature is enabled.
 
@@ -3057,9 +3270,9 @@ Sample success responses `JSON` format `{`
 | 406 | 406 | ExceedingQuota | Exceeding quota limits. |
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DescribeProductsOfActiveMetricRule
+Cms 2019-01-01
 
-#### DeleteMetricRuleResources
+#### 2.5.7 DeleteMetricRuleResources
 
 Disassociates resources from an alert rule.
 
@@ -3110,9 +3323,9 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DeleteMetricRuleResources
+Cms 2019-01-01
 
-#### DescribeMetricRuleList
+#### 2.5.8 DescribeMetricRuleList
 
 Queries a list of alert rules. This operation supports pagination.
 
@@ -3214,7 +3427,7 @@ This operation uses common request headers only. For more information, see the d
 | 403 | 403 | InvalidAuthorization | The request is not authorized. |
 | 500 | 500 | InternalError | The system failed to process the request due to some unknown errors. |
 
-#### DescribeMetricRuleCount
+#### 2.5.9 DescribeMetricRuleCount
 
 Queries the number of alert rules in each status.
 
@@ -3252,7 +3465,7 @@ This operation uses common request headers only. For more information, see the d
 |---|---|---|---|
 | 500 | 500 | InternalError | The system failed to process the request due to some unknown errors. |
 
-#### DeleteMetricRules
+#### 2.5.10 DeleteMetricRules
 
 Deletes specified alert rules.
 
@@ -3283,7 +3496,7 @@ This operation uses common request headers only. For more information, see the d
 | 429 | 429 | ThrottlingException | The request was denied due to request throttling. |
 | 500 | 500 | InternalError | The request processing failed due to some unknown errors. |
 
-#### DisableMetricRules
+#### 2.5.11 DisableMetricRules
 
 Disables an alert rule.
 
@@ -3345,9 +3558,9 @@ Sample success responses `JSON` format `{`
 | 429 | 429 | ThrottlingException | The request was denied due to request throttling. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DisableMetricRules
+Cms 2019-01-01
 
-#### EnableMetricRules
+#### 2.5.12 EnableMetricRules
 
 Enables alert rules.
 
@@ -3412,7 +3625,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 |   | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteContact
+#### 2.5.13 DeleteContact
 
 Deletes an alert contact.
 
@@ -3462,7 +3675,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | Permission denied |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMetricRuleTargets
+#### 2.5.14 DescribeMetricRuleTargets
 
 Queries the resources that are associated with a specified alert rule.
 
@@ -3532,7 +3745,7 @@ Sample success responses `JSON` format `{`
 | 400 | 400 | ParameterInvalid | Illegal parameters. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeEventRuleList
+#### 2.5.15 DescribeEventRuleList
 
 Queries event-triggered alert rules.
 
@@ -3631,7 +3844,7 @@ Sample success responses `JSON` format `{`
 | 400 | 400 | InvalidParameterValue | Illegal parameters. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMetricRuleTemplateList
+#### 2.5.16 DescribeMetricRuleTemplateList
 
 Queries alert templates.
 
@@ -3726,7 +3939,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeContactList
+#### 2.5.17 DescribeContactList
 
 Queries alert contacts.
 
@@ -3814,7 +4027,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ApplyMetricRuleTemplate
+#### 2.5.18 ApplyMetricRuleTemplate
 
 Applies an alert template to an application group to generate an alert rule.
 
@@ -3910,7 +4123,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeEventRuleTargetList
+#### 2.5.19 DescribeEventRuleTargetList
 
 Queries the details of an event-triggered alert rule.
 
@@ -4050,7 +4263,7 @@ Sample success responses `JSON` format `{`
 | 400 | 400 | InvalidParameterValue | Illegal parameters. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMetricRuleTemplateAttribute
+#### 2.5.20 DescribeMetricRuleTemplateAttribute
 
 Queries the details of an alert template.
 
@@ -4200,7 +4413,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeEventRuleAttribute
+#### 2.5.21 DescribeEventRuleAttribute
 
 Queries the details of an event-triggered alert rule.
 
@@ -4283,7 +4496,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeContactListByContactGroup
+#### 2.5.22 DescribeContactListByContactGroup
 
 Queries the alert contacts in an alert contact group.
 
@@ -4371,7 +4584,7 @@ access_token=9bf44f8189597d07dfdd7a123455ffc112****",
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutContact
+#### 2.5.23 PutContact
 
 Creates or modifies an alert contact.
 
@@ -4444,7 +4657,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | Permission denied |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMetricPromQLRange
+#### 2.5.24 DescribeMetricPromQLRange
 
 Queries monitoring metric data within a specified time range by using PromQL syntax.
 
@@ -4471,7 +4684,7 @@ This operation uses common request headers only. For more information, see the d
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The system failed to process the request due to some unknown errors. |
 
-#### PutContactGroup
+#### 2.5.25 PutContactGroup
 
 Creates or modifies an alert contact group.
 
@@ -4523,7 +4736,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | Permission denied |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutGroupMetricRule
+#### 2.5.26 PutGroupMetricRule
 
 Creates or modifies an alert rule for an application group.
 
@@ -4585,7 +4798,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4092 | ResourceExist | Resources already exist. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateMetricRuleResources
+#### 2.5.27 CreateMetricRuleResources
 
 Associates resources with an alert rule.
 
@@ -4641,7 +4854,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeContactGroupList
+#### 2.5.28 DescribeContactGroupList
 
 Queries alert contact groups.
 
@@ -4702,7 +4915,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteMetricRuleTemplate
+#### 2.5.29 DeleteMetricRuleTemplate
 
 Deletes an alert template.
 
@@ -4762,7 +4975,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutEventRuleTargets
+#### 2.5.30 PutEventRuleTargets
 
 Adds or modifies the recipients to which alert notifications are sent based on an eventtriggered alert rule.
 
@@ -4913,7 +5126,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateMetricRuleTemplate
+#### 2.5.31 CreateMetricRuleTemplate
 
 Creates an alert template.
 
@@ -5019,7 +5232,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateGroupMetricRules
+#### 2.5.32 CreateGroupMetricRules
 
 Creates one or more alert rules for a specified application group.
 
@@ -5162,7 +5375,7 @@ Sample success responses `JSON` format `{`
 | 412 | 4121 | ResourcesOverLimit | Resources over limit. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteEventRules
+#### 2.5.33 DeleteEventRules
 
 Deletes event-triggered alert rules.
 
@@ -5212,7 +5425,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | InvalidAuthorization | Permission denied |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ModifyMetricRuleTemplate
+#### 2.5.34 ModifyMetricRuleTemplate
 
 Modifies an alert template.
 
@@ -5343,7 +5556,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutMetricRuleTargets
+#### 2.5.35 PutMetricRuleTargets
 
 Associates resources with a specified alert rule or modifies the resources that are associated with the alert rule.
 
@@ -5436,7 +5649,7 @@ Sample success responses `JSON` format `{`
 | 400 | 400 | ParameterInvalid | Illegal parameters. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeDynamicThresholdBound
+#### 2.5.36 DescribeDynamicThresholdBound
 
 Queries the boundary values of the intelligent threshold (dynamic threshold) for a metric.
 
@@ -5464,9 +5677,9 @@ This operation uses common request headers only. For more information, see the d
 | 403 | 403 | InvalidAuthorization | The request is not authorized. |
 | 500 |   | InternalError | The system failed to process the request due to some unknown errors. |
 
-### Event monitoring
+### 2.6 Event monitoring
 
-#### DescribeSystemEventHistogram
+#### 2.6.1 DescribeSystemEventHistogram
 
 Queries the number of times a system event occurred during each interval within a period of time.
 
@@ -5547,7 +5760,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSystemEventAttribute
+#### 2.6.2 DescribeSystemEventAttribute
 
 Queries the details of a system event.
 
@@ -5658,7 +5871,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSystemEventCount
+#### 2.6.3 DescribeSystemEventCount
 
 Queries the number of times a system event of a cloud service has occurred.
 
@@ -5764,7 +5977,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### SendDryRunSystemEvent
+#### 2.6.4 SendDryRunSystemEvent
 
 Debugs system events for Alibaba Cloud resources.
 
@@ -5821,7 +6034,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutCustomEvent
+#### 2.6.5 PutCustomEvent
 
 Reports custom events.
 
@@ -5878,7 +6091,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSystemEventMetaList
+#### 2.6.6 DescribeSystemEventMetaList
 
 Queries the meta information about system events.
 
@@ -5944,7 +6157,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeCustomEventCount
+#### 2.6.7 DescribeCustomEventCount
 
 Queries the number of times that a custom event occurred within a period of time.
 
@@ -6021,7 +6234,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeCustomEventAttribute
+#### 2.6.8 DescribeCustomEventAttribute
 
 Queries the details of a custom event.
 
@@ -6108,9 +6321,9 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-### Custom dashboard
+### 2.7 Custom dashboard
 
-#### CreateDashboardFolder
+#### 2.7.1 CreateDashboardFolder
 
 Creates a dashboard folder.
 **Rate limit**: The default API rate limit is 10,000 requests per second, and the default user
@@ -6167,7 +6380,7 @@ Sample success responses `JSON` format `{`
 | 404 | ResourceNotFound | The specified resource is not found. | The specified resource is not found. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | An internal error occurred. |
 
-#### ModifyDashboardToFolder
+#### 2.7.2 ModifyDashboardToFolder
 
 Moves one or more dashboards to a specified folder.
 
@@ -6222,7 +6435,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | You do not have the permissions to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### ModifyDashboardFolder
+#### 2.7.3 ModifyDashboardFolder
 
 Modifies the name of a specific dashboard folder.
 
@@ -6277,7 +6490,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 404 | 404 | ResourceNotFound | The specified resource is not found. Check whether the folder ID (folderId) is correct. |
 
-#### DescribeDashboard
+#### 2.7.4 DescribeDashboard
 
 Queries Cloud Monitor (CMS) dashboard information and filters dashboards by keyword, folder, and pagination.
 
@@ -6362,9 +6575,9 @@ Successful response example `JSON` format `{`
 and SecurityToken. You do not need to pass these parameters explicitly.
 3. We recommend that you use the HTTPS protocol for API calls in production environments.
 
-### Application group
+### 2.8 Application group
 
-#### DescribeMonitorGroups
+#### 2.8.1 DescribeMonitorGroups
 
 Queries application groups.
 
@@ -6471,7 +6684,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitorGroupInstances
+#### 2.8.2 DescribeMonitorGroupInstances
 
 Queries the resources in an application group.
 
@@ -6567,7 +6780,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateMonitorGroupInstances
+#### 2.8.3 CreateMonitorGroupInstances
 
 Adds resources to an application group.
 
@@ -6637,7 +6850,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeUnhealthyHostAvailability
+#### 2.8.4 DescribeUnhealthyHostAvailability
 
 Queries unhealthy instances.
 
@@ -6698,7 +6911,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteMonitorGroupInstances
+#### 2.8.5 DeleteMonitorGroupInstances
 
 Removes instances from an application group.
 
@@ -6890,7 +7103,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeHostAvailabilityList
+#### 2.8.7 DescribeHostAvailabilityList
 
 Queries availability monitoring tasks.
 
@@ -7062,7 +7275,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateMonitorGroup
+#### 2.8.8 CreateMonitorGroup
 
 Creates an application group.
 
@@ -7130,7 +7343,7 @@ Sample success responses `JSON` format `{`
 | 412 | 4121 | ResourcesOverLimit | Resources over limit. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteMonitorGroup
+#### 2.8.9 DeleteMonitorGroup
 
 Deletes an application group.
 
@@ -7206,7 +7419,7 @@ Sample success responses `JSON` format `{`
 | 406 | 406 | ExceedingQuota | Exceeding quota limits. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateHostAvailability
+#### 2.8.10 CreateHostAvailability
 
 Creates an availability monitoring task.
 
@@ -7334,7 +7547,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4092 | ResourceExist | Resources already exist. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateMonitorGroupNotifyPolicy
+#### 2.8.11 CreateMonitorGroupNotifyPolicy
 
 Creates a policy to pause alert notifications for an application group.
 
@@ -7398,7 +7611,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteHostAvailability
+#### 2.8.12 DeleteHostAvailability
 
 Deletes availability monitoring tasks.
 
@@ -7449,7 +7662,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitorGroupCategories
+#### 2.8.13 DescribeMonitorGroupCategories
 
 Queries the cloud services to which the resources in an application group belong and the number of resources that belong to each cloud service in the application group.
 
@@ -7520,7 +7733,7 @@ Sample success responses `JSON` format `{`
 | 400 | 400 | ParameterInvalid | Illegal parameters. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ModifyMonitorGroupInstances
+#### 2.8.14 ModifyMonitorGroupInstances
 
 Modifies the resources that are added to an application group.
 
@@ -7592,7 +7805,7 @@ Sample success responses `JSON` format `{`
 | 412 | 4121 | ResourcesOverLimit | Resources over limit. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ModifyHostAvailability
+#### 2.8.15 ModifyHostAvailability
 
 Modifies an availability monitoring task.
 
@@ -7718,7 +7931,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4092 | ResourceExist | Resources already exist. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### PutMonitorGroupDynamicRule
+#### 2.8.16 PutMonitorGroupDynamicRule
 
 Creates or modifies an alert rule to dynamically add instances that meet the rule to an application group.
 
@@ -7790,7 +8003,7 @@ Sample success responses `JSON` format `{`
 | 412 | 4121 | OverLimit | Matched instances count was over limit |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ModifyMonitorGroup
+#### 2.8.17 ModifyMonitorGroup
 
 Modifies an application group.
 
@@ -7852,7 +8065,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4092 | ResourceExist | Resources already exist. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteMonitorGroupDynamicRule
+#### 2.8.18 DeleteMonitorGroupDynamicRule
 
 Deletes a rule that is used to dynamically add the instances of a service to an application group.
 
@@ -7918,7 +8131,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteMonitorGroupNotifyPolicy
+#### 2.8.19 DeleteMonitorGroupNotifyPolicy
 
 Deletes a policy that is used to pause alert notifications for an application group.
 
@@ -7977,7 +8190,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitorGroupNotifyPolicyList
+#### 2.8.20 DescribeMonitorGroupNotifyPolicyList
 
 Queries the policies that are used to pause alert notifications for an application group.
 
@@ -8055,7 +8268,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeMonitorGroupDynamicRules
+#### 2.8.21 DescribeMonitorGroupDynamicRules
 
 Queries the dynamic rules of an application group.
 
@@ -8153,11 +8366,11 @@ Sample success responses `JSON` format `{`
 | 406 | 406 | ExceedingQuota | Exceeding quota limits. |
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 
-Cms 2019-01-01 DescribeMonitorGroupDynamicRules
+Cms 2019-01-01
 
-### Site monitoring
+### 2.9 Site monitoring
 
-#### DescribeSiteMonitorData
+#### 2.9.1 DescribeSiteMonitorData
 
 Queries the fine-grained monitoring data of a site monitoring task.
 
@@ -8227,7 +8440,7 @@ Sample success responses `JSON` format `{`
 | 429 | 429 | ThrottlingException | The request was denied due to request throttling. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSiteMonitorStatistics
+#### 2.9.2 DescribeSiteMonitorStatistics
 
 Queries the statistics of a specified metric for a specified site monitoring task.
 
@@ -8289,7 +8502,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSiteMonitorList
+#### 2.9.3 DescribeSiteMonitorList
 
 Queries site monitoring tasks.
 
@@ -8380,7 +8593,7 @@ Sample success responses `JSON` format `{`
 | 429 | 429 | ThrottlingException | The request was denied due to request throttling. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSiteMonitorISPCityList
+#### 2.9.4 DescribeSiteMonitorISPCityList
 
 Queries the detection points that are provided by carriers.
 
@@ -8456,7 +8669,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### CreateSiteMonitor
+#### 2.9.5 CreateSiteMonitor
 
 Creates a site monitoring task.
 
@@ -8573,7 +8786,7 @@ Sample success responses `JSON` format `{`
 | 695 | 695 | NameNotExists | Task name not exists |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSiteMonitorAttribute
+#### 2.9.6 DescribeSiteMonitorAttribute
 
 Queries the details of a site monitoring task.
 
@@ -8719,7 +8932,7 @@ Sample success responses `JSON` format `{`
 | 615 | 615 | Forbidden | Task Id does not exist |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DisableSiteMonitors
+#### 2.9.7 DisableSiteMonitors
 
 Disables site monitoring tasks.
 
@@ -8785,7 +8998,7 @@ Sample success responses `JSON` format `{`
 | 429 | 429 | ThrottlingException | The request was denied due to request throttling. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### EnableSiteMonitors
+#### 2.9.8 EnableSiteMonitors
 
 Enables site monitoring tasks.
 
@@ -8848,7 +9061,7 @@ Sample success responses `JSON` format `{`
 | 429 | 429 | ThrottlingException | The request was denied due to request throttling. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteSiteMonitors
+#### 2.9.9 DeleteSiteMonitors
 
 Deletes site monitoring tasks.
 
@@ -8905,7 +9118,7 @@ Sample success responses `JSON` format `{`
 | 409 | 4091 | ResourceConflict | Concurrent modification of resources. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ModifySiteMonitor
+#### 2.9.10 ModifySiteMonitor
 
 Modifies a site monitoring task.
 
@@ -8990,7 +9203,7 @@ Sample success responses `JSON` format `{`
 | 695 | 695 | NameNotExists | Task name not exists |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeSiteMonitorQuota
+#### 2.9.11 DescribeSiteMonitorQuota
 
 Queries the quotas and version of site monitoring.
 
@@ -9060,9 +9273,9 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-Cms 2019-01-01 DescribeSiteMonitorQuota
+Cms 2019-01-01
 
-### Alert center
+### 2.10 Alert center
 
 **2.10.1.**
 
@@ -9165,7 +9378,7 @@ you use it.
 3. In a production environment, set appropriate pagination parameters to avoid performance
 issues caused by pulling excessive data volumes in a single request.
 
-#### DescribeNotificationRules
+#### 2.10.2 DescribeNotificationRules
 
 Queries the information about a notification policy.
 
@@ -9376,9 +9589,9 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-Cms 2019-01-01 DescribeNotificationRules
+Cms 2019-01-01
 
-#### DescribeAlertList
+#### 2.10.3 DescribeAlertList
 
 Retrieves the alert list.
 
@@ -9585,7 +9798,7 @@ Sample success responses `JSON` format `{`
 
 ```html ```
 
-#### DeleteAlertFilterConfigBatch
+#### 2.10.4 DeleteAlertFilterConfigBatch
 
 Deletes a masking policy.
 
@@ -9641,7 +9854,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### ModifyAlertFilterConfig
+#### 2.10.5 ModifyAlertFilterConfig
 
 Updates a masking policy.
 
@@ -9710,7 +9923,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeAlertFilterConfig
+#### 2.10.6 DescribeAlertFilterConfig
 
 Queries masking policies.
 
@@ -9807,7 +10020,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteNotificationRules
+#### 2.10.7 DeleteNotificationRules
 
 Deletes notification policies.
 
@@ -9860,7 +10073,7 @@ This operation does not have operation-specific request headers and uses only co
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### ModifyNotificationRule
+#### 2.10.8 ModifyNotificationRule
 
 Updates a notification policy.
 
@@ -9926,7 +10139,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### CreateAlertFilterConfig
+#### 2.10.9 CreateAlertFilterConfig
 
 Creates a masking policy.
 
@@ -9994,7 +10207,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### PutNotificationRule
+#### 2.10.10 PutNotificationRule
 
 Creates a notification policy.
 
@@ -10067,9 +10280,9 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-### Data subscription
+### 2.11 Data subscription
 
-#### CreateMetricPubSync
+#### 2.11.1 CreateMetricPubSync
 
 Creates a data subscription task.
 
@@ -10134,9 +10347,9 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-Cms 2019-01-01 CreateMetricPubSync
+Cms 2019-01-01
 
-#### UpdateMetricPubSync
+#### 2.11.2 UpdateMetricPubSync
 
 Updates a data subscription task.
 
@@ -10206,7 +10419,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### DeleteMetricPubSync
+#### 2.11.3 DeleteMetricPubSync
 
 Deletes a data subscription task.
 
@@ -10259,7 +10472,7 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-#### DescribeMetricPubSyncs
+#### 2.11.4 DescribeMetricPubSyncs
 
 Queries data subscription tasks.
 
@@ -10319,9 +10532,9 @@ Sample success responses `JSON` format `{`
 | 403 | 403 | AccessForbidden | User not authorized to operate on the specified resource. |
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 
-### Log monitoring
+### 2.12 Log monitoring
 
-#### PutLogMonitor
+#### 2.12.1 PutLogMonitor
 
 Creates or modifies a log monitoring metric.
 
@@ -10424,7 +10637,7 @@ Sample success responses `JSON` format `{`
 | 503 | 503 | %s | %s |
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-#### DeleteLogMonitor
+#### 2.12.2 DeleteLogMonitor
 
 Deletes a log monitoring metric.
 
@@ -10488,7 +10701,7 @@ Sample success responses `JSON` format `{`
 | 503 | 503 | %s | %s |
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-#### DescribeLogMonitorList
+#### 2.12.3 DescribeLogMonitorList
 
 Queries log monitoring metrics.
 
@@ -10602,7 +10815,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | DEFAULT | InternalError | The request processing has failed due to some unknown error. |
 
-## Metrics
+## 3 Metrics
 
 This topic describes the metrics available for each service. CloudMonitor checks the availability of a service based on the metrics for the service. You can configure alarm rules and notification policies for these metrics to stay up-to-date on the running status and performance of monitored service instances. CloudMonitor can monitor resources of ECS, SLB, ApsaraDB for RDS, OSS, and KVStore for Redis. The following table lists the metrics for each service.
 
@@ -10706,9 +10919,9 @@ Table 4. Metrics for KVStore for Redis
 | Outbound traffic | Measures the outbound traffic from a KVStore for Redis instance. | KVStore for Redis | Bytes |
 | Outbound bandwidth usage | Measures the outbound bandwidth usage of a KVStore for Redis instance. | KVStore for Redis | % |
 
-### Elastic computing
+### 3.1 Elastic computing
 
-#### Kubernetes container monitoring
+#### 3.1.1 Kubernetes container monitoring
 
 This topic describes the metrics for Kubernetes container monitoring.
 
@@ -10820,7 +11033,7 @@ Set **Namespace** to **acs_k8s**. Set **Period** to an integral multiple of **60
 | deployment.net work.rx errors r _ _ ate | B/s | deployment.netw ork.rx errors rate _ _ | userId, cluster, namespace, type, and app | The rate at which receive errors occur in the network of the Deployment. |
 | deployment.net work.tx errors r _ _ ate | B/s | deployment.netw ork.tx errors rate _ _ | userId, cluster, namespace, type, and app | The rate at which send errors occur in the network of the Deployment. |
 
-#### ECS
+#### 3.1.2 ECS
 
 This topic describes the metrics supported by Elastic Compute Service (ECS).
 
@@ -10941,7 +11154,7 @@ Set the **Namespace** parameter to **acs_ecs_dashboard**. Set the **Period** par
 | North-South Traffic ipv6 Statistics Packet Bits | Bit/s | ipv6 tx igw bytes a _ _ _ _ vg | userId and instanceId | The number of bits of IPv6 packets that are sent per second in the north- south traffic. |
 | North-South Traffic ipv6 Statistics Packet Receiving Bits | Bit/s | ipv6 rx igw bytes a _ _ _ _ vg | userId and instanceId | The number of bits of IPv6 packets that are received per second in the north-south traffic. |
 
-#### BMCP nodes
+#### 3.1.3 BMCP nodes
 
 This topic describes the metrics for nodes in the Bare Metal Computing Power (BMCP) platform. Set the **Namespace** parameter to **acs_bms**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -10985,7 +11198,7 @@ This topic describes the metrics for nodes in the Bare Metal Computing Power (BM
 | rdma cqe error _ _ | Count | rdma cqe error _ _ | instanceId | The number of local completion queue entries (CQEs) with errors in the RDMA network. |
 | rdma service m _ _ onitor rnr nak r _ _ _ etry err _ | Count | rdma service mo _ _ nitor rnr nak retr _ _ _ y err _ | instanceId | The number of Receiver Not Ready (RNR) Negative Acknowledgment (NAK) packets sent from the peer. |
 
-#### BMCP containers
+#### 3.1.4 BMCP containers
 
 This topic describes the metrics for containers in the Bare Metal Computing Power (BMCP) platform. Set the **Namespace** parameter to **acs_bmcp**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11027,7 +11240,7 @@ This topic describes the metrics for containers in the Bare Metal Computing Powe
 | rdma cqe error _ _ | Count | rdma cqe error _ _ | instanceId | The number of local completion queue entries (CQEs) with errors in the RDMA network. |
 | rdma service m _ _ onitor rnr nak r _ _ _ etry err _ | Count | rdma service mo _ _ nitor rnr nak retr _ _ _ y err _ | instanceId | The number of Receiver Not Ready (RNR) Negative Acknowledgment (NAK) packets sent from the peer. |
 
-#### Bare Metal Computing Platform (BMCP)
+#### 3.1.5 Bare Metal Computing Platform (BMCP) (Container - Intelligent Computing Cluster)
 
 **(Container - Intelligent Computing Cluster)**
 
@@ -11100,7 +11313,7 @@ This topic describes the metrics for the Bare Metal Computing Platform (BMCP) (C
 |---|---|---|---|---|
 | Total failed API workflows | count | aspeed apiserver _ workflow start f _ _ _ ailures total _ | instanceId,api | The total number of failed API workflows. |
 
-#### Bare Metal Computing Platform (BMCP)
+#### 3.1.6 Bare Metal Computing Platform (BMCP)
 
 This topic describes the metrics for Bare Metal Computing Platform (BMCP) (Bare Metal - Supercomputing Cluster). The **namespace** for these metrics is **acs_bmcp**. The default **period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -11118,7 +11331,7 @@ This topic describes the metrics for Bare Metal Computing Platform (BMCP) (Bare 
 |---|---|---|---|---|
 | Outbound network bandwidth | MB/s | NETWORK TX _ | instanceId,userId | The rate of outgoing network traffic from the instance. |
 
-#### Bare Metal Management (BMS)
+#### 3.1.7 Bare Metal Management (BMS)
 
 This topic describes the monitoring metrics for Bare Machine Service (BMS). The **Namespace** is **acs_cgw_bms**. The **Period** defaults to **60** seconds and can also be any multiple of 60.
 
@@ -11151,9 +11364,9 @@ This topic describes the monitoring metrics for Bare Machine Service (BMS). The 
 | GPU SM clock frequency | MHz | GPU SM CLOCK _ _ | instanceId,userId,gpu | The GPU Streaming Multiprocessor (SM) clock frequency. |
 | GPU memory clock frequency | MHz | GPU MEM CLOCK _ _ | instanceId,userId,gpu | The GPU memory clock frequency. |
 
-### Database services
+### 3.2 Database services
 
-#### ApsaraDB RDS
+#### 3.2.1 ApsaraDB RDS
 
 This topic describes the metrics supported by ApsaraDB RDS. By default, an old link is used for ApsaraDB RDS. The period of data collection is 60 to 300 seconds. Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60 in the range of 60 to 300). Default value: **60**. Unit: seconds. ApsaraDB RDS supports four types of engines: MySQL, SQL Server, PolarDB O, and PostgreSQL.
 
@@ -11223,7 +11436,7 @@ This topic describes the metrics supported by ApsaraDB RDS. By default, an old l
 | Pg disk space _ usage | % | local fs size usa _ _ _ ge | userId and instanceId | The disk usage. |
 | PG Memory _ Usage | % | mem usage _ | userId and instanceId | The memory usage. |
 
-#### ApsaraDB RDS (New)
+#### 3.2.2 ApsaraDB RDS (New)
 
 This topic describes the metrics supported by ApsaraDB RDS (New). ApsaraDB RDS supports a new link. Data is collected at 60-second intervals. Set the **Namespace** parameter to **acs_rds_dashboard**. The default value of the **Period** parameter is **60**. Unit: seconds. ApsaraDB RDS (New) supports three types of engines: MySQL, PolarDB O, and PostgreSQL.
 
@@ -11305,7 +11518,7 @@ This topic describes the metrics supported by ApsaraDB RDS (New). ApsaraDB RDS s
 | Number of Primary/Seconda ry Connections (Value 0 indicates disconnected. Value 1 indicates connected.) | Count | PG ESSD Replic _ _ ationNum | userId and instanceId | The number of connections between primary and secondary ApsaraDB RDS for PostgreSQL instances. |
 | PG cloud disk primary/sta _ ndby delay | Seconds | PG ESSD Replic _ _ ationLag | userId and instanceId | The latency between primary and secondary ApsaraDB RDS for PostgreSQL instances. |
 
-#### PolarDB
+#### 3.2.3 PolarDB
 
 This topic describes the metrics supported by PolarDB. Set the **Namespace** paramter to **acs_polardb_dashboard**. Set the **Period** paramter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11343,7 +11556,7 @@ This topic describes the metrics supported by PolarDB. Set the **Namespace** par
 | (PolarDB-O) Database Age | Count | Db Age _ | userId and instanceId | The age of the database. |
 | (PolarDB-O) Local Disk Usage | % | Local Disk Usa _ _ ge | userId and instanceId | The local disk usage. |
 
-#### PolarDB databases that use local SSDs
+#### 3.2.4 PolarDB databases that use local SSDs
 
 This topic describes the metrics supported by PolarDB databases that use local SSDs. Set the **Namespace** parameter to **acs_polardblocal**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11397,9 +11610,9 @@ This topic describes the metrics supported by PolarDB databases that use local S
 | PG InactiveSlots _ | Count | PG InactiveSlot _ s | userId and instanceId | The number of times that the replication slot is disconnected in the PolarDB for Oracle Enterprise Edition database that uses local SSDs. |
 | PG ReplayLatencyIn _ MB | MB | PG ReplayLate _ ncyInMB | userId and instanceId | The size of data written to the PolarDB for Oracle Enterprise Edition database that uses local SSDs with a delay. |
 
-#### PolarDB-X 2.0
+#### 3.2.5 PolarDB-X 2.0
 
-##### Compute nodes of PolarDB-X 2.0
+##### 3.2.5.1 Compute nodes of PolarDB-X 2.0
 
 This topic describes the metrics for the compute nodes of PolarDB-X 2.0. Set the **Namespace** parameter to **acs_drds**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11427,7 +11640,7 @@ This topic describes the metrics for the compute nodes of PolarDB-X 2.0. Set the
 |---|---|---|---|---|
 | Temporary directory size | Bytes | TmpSize | userId and instanceId | The size of the temporary directory. |
 
-##### Data nodes of PolarDB-X 2.0
+##### 3.2.5.2 Data nodes of PolarDB-X 2.0
 
 This topic describes the metrics for the data nodes of PolarDB-X 2.0. Set the **Namespace** parameter to **acs_rds_dashboard**. Set the **Period** parameter to an integer multiple of 60 in the range of 60 to 300. Default value: **60**. Unit: seconds.
 
@@ -11442,7 +11655,7 @@ This topic describes the metrics for the data nodes of PolarDB-X 2.0. Set the **
 | Outbound Bandwidth of an ApsaraDB RDS for MySQL Instance (New) | Bit/s | MySQL NetworkOut _ New new _ | userId and instanceId | The outbound traffic from the MySQL data node per second. |
 | QPS of an ApsaraDB RDS for MySQL Instance (New) | Count/ s | MySQL QPS new _ _ | userId and instanceId | The number of queries per second (QPS) on the MySQL data node. |
 
-#### ApsaraDB for MongoDB (Old)
+#### 3.2.6 ApsaraDB for MongoDB (Old)
 
 This topic describes the metrics supported by ApsaraDB for MongoDB (Old). Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11489,7 +11702,7 @@ This topic describes the metrics supported by ApsaraDB for MongoDB (Old). Set th
 |---|---|---|---|---|
 | OpCounters for Update | Count | OpUpdate | userId, instanceId, and role | The number of Update operations. |
 
-#### ApsaraDB for MongoDB (New)
+#### 3.2.7 ApsaraDB for MongoDB (New)
 
 This topic describes the metrics supported by ApsaraDB for MongoDB (New). Set the **Namespace** parameter to **acs_mongodb**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11579,7 +11792,7 @@ This topic describes the metrics supported by ApsaraDB for MongoDB (New). Set th
 | (Cluster Version) Query Operation Times | Count | OpQuery new _ cluster _ | userId, instanceId, and role | The number of Query operations. |
 | (Cluster Edition) Update Operation Times | Count | OpUpdate ne _ w cluster _ | userId, instanceId, and role | The number of Update operations. |
 
-#### Tair (Redis OSS-compatible) (Old)
+#### 3.2.8 Tair (Redis OSS-compatible) (Old)
 
 This topic describes the metrics supported by Tair (Redis OSS-compatible) (Old). Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11597,7 +11810,7 @@ This topic describes the metrics supported by Tair (Redis OSS-compatible) (Old).
 | MemoryUtilizatio n | % | MemoryUsage | userId and instanceId | The memory usage. |
 | Used QPS | Count/s | UsedQPS | userId and instanceId | The number of used QPS. |
 
-#### Tair (Redis OSS-compatible) (New)
+#### 3.2.9 Tair (Redis OSS-compatible) (New)
 
 This topic describes the metrics supported by Tair (Redis OSS-compatible) (New). Set the **Namespace** parameter to **acs_kvstore**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11663,15 +11876,15 @@ Tair (Redis OSS-compatible) Standard Edition instances and Tair (Redis OSS-compa
 | Total QPS (nodes) | Count/S | NodeTotalQps | userId, instanceId, and nodeId | The total QPS. |
 | Total Current Connections (Nodes) | Count | NodeTotalConne ctions | userId, instanceId, and nodeId | The total number of current connections. |
 
-#### AnalyticDB for PostgreSQL
+#### 3.2.10 AnalyticDB for PostgreSQL
 
 This topic describes the metrics supported by AnalyticDB for PostgreSQL.
 
-#### AnalyticDB for PostgreSQL (new)
+#### 3.2.11 AnalyticDB for PostgreSQL (new)
 
 This topic describes the metrics supported by AnalyticDB for PostgreSQL (new).
 
-#### DTS
+#### 3.2.12 DTS
 
 This topic describes the metrics supported by Data Transmission Service (DTS). Set the **Namespace** parameter to **acs_dts_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11681,7 +11894,7 @@ This topic describes the metrics supported by Data Transmission Service (DTS). S
 | Synchronizatio nLatency | Seconds | SynchronizationLatenc y | userId and instanceId | The latency of the data synchronization task. |
 | MigrationLaten cy | Seconds | MigrationLatency | userId and instanceId | The latency of the data migration task. |
 
-##### Data Transmission Service DTS(Tracking
+##### 3.2.12.1 Data Transmission Service DTS(Tracking tasks)
 
 **tasks)**
 
@@ -11694,7 +11907,7 @@ This topic describes the metrics for Data Transmission Service DTS( tracking tas
 | Total number of tracking task instances | Count | SubscribeInstanceTotal | userId | The total number of tracking task instances. |
 | Number of unavailable tracking task instances | Count | SubscribeInstanceUnavai lability | userId | The number of unavailable tracking task instances. |
 
-##### Data Transmission Service DTS
+##### 3.2.12.2 Data Transmission Service DTS (migration tasks)
 
 **(migration tasks)**
 
@@ -11707,7 +11920,7 @@ This topic describes the metrics for Data Transmission Service DTS (migration ta
 | Total migration task instances | Count | MigrationInstanceTotal | userId | The total number of migration task instances. |
 | Unavailable migration task instances | Count | MigrationInstanceUnavai lability | userId | The number of unavailable migration task instances. |
 
-##### Data Transmission Service DTS (sync
+##### 3.2.12.3 Data Transmission Service DTS (sync tasks)
 
 **tasks)**
 
@@ -11720,7 +11933,7 @@ This topic describes the metrics for Data Transmission Service DTS (sync tasks).
 | Total number of sync task instances | Count | SynchronizationInstance Total | userId | The total number of sync task instances. |
 | Number of unavailable sync task instances | Count | SynchronizationInstance Unavailability | userId | The number of unavailable sync task instances. |
 
-#### Lindorm
+#### 3.2.13 Lindorm
 
 This topic describes the metrics for Lindorm. The value for **Namespace** is **acs_lindorm**. The default value for **Period** is **60** seconds. The value can be any multiple of 60.
 
@@ -11813,7 +12026,7 @@ This topic describes the metrics for Lindorm. The value for **Namespace** is **a
 | DataNode read traffic | value | FEM dataNodeRe _ adTraffic | instanceId | The read traffic of the DataNode. |
 | DataNode write traffic | value | FEM dataNodeWr _ iteTraffic | instanceId | The write traffic of the DataNode. |
 
-#### Lindorm 2.0
+#### 3.2.14 Lindorm 2.0
 
 This topic describes the metrics for Lindorm 2.0. The value for **Namespace** is **acs_lindorm_multi_model**. The default value for **Period** is **60** seconds. This value can be any integer multiple of 60.
 
@@ -11904,9 +12117,9 @@ This topic describes the metrics for Lindorm 2.0. The value for **Namespace** is
 | Average KnnSearch latency | ms | lindorm vector n _ _ ode vs knnsearc _ _ h mean _ | instanceId | The average latency of KnnSearch operations. |
 |---|---|---|---|---|
 
-### Storage and CDN
+### 3.3 Storage and CDN
 
-#### NAS
+#### 3.3.1 NAS
 
 This topic describes the metrics supported by File Storage NAS (NAS). Set the **Namespace** parameter to **acs_nas**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -11933,7 +12146,7 @@ This topic describes the metrics supported by File Storage NAS (NAS). Set the **
 | ErrorRateWrite | % | ErrorRateWrite | userId and fileSystemId | The percentage of write operations in which errors occur. |
 | ErrorRateMeta | % | ErrorRateMeta | userId and fileSystemId | The percentage of metadata- related operations in which errors occur. |
 
-#### OSS
+#### 3.3.2 OSS
 
 This topic describes the metrics supported by Object Storage Service (OSS) Set the **Namespace** parameter to **acs_oss_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12017,7 +12230,7 @@ This topic describes the metrics supported by Object Storage Service (OSS) Set t
 | DeleteObjectCou nt | Count | DeleteObjectCou nt | userId and BucketName | The number of successful DeleteObject requests. |
 | DeleteObjectsCo unt | Count | DeleteObjectsCo unt | userId and BucketName | The number of successful DeleteObjects requests. |
 
-#### CPFS
+#### 3.3.3 CPFS
 
 This topic describes the metrics supported by Cloud Parallel File Storage (CPFS). Set **Namespace** to **acs_cpfs**. Set **Period** to an integral multiple of 60. Default value: 60. Unit: seconds.
 
@@ -12034,7 +12247,7 @@ This topic describes the metrics supported by Cloud Parallel File Storage (CPFS)
 | fs read iops _ _ | iops | fs read iops _ _ | instanceId | The read IOPS of the file system. |
 | fs write iops _ _ | iops | fs write iops _ _ | instanceId | The write IOPS of the file system. |
 
-#### APFS
+#### 3.3.4 APFS
 
 This topic describes the metrics of Apple File System (APFS) file systems. Set the **Namespace** parameter to **acs_apfs**. Set the **Period** parameter to the default value
 **60** or an integer multiple of 60. Unit: seconds.
@@ -12052,7 +12265,7 @@ This topic describes the metrics of Apple File System (APFS) file systems. Set t
 | iops Write IOPS of the File System | iops | efs filesystem write iops _ _ _ | instanceId | The write IOPS of the file system. |
 |---|---|---|---|---|
 
-#### EFS-NAS file storage
+#### 3.3.5 EFS-NAS file storage
 
 This topic describes the metrics for NAS file storage. The default value of **Period** is **60** seconds, or any multiple of 60.
 
@@ -12065,9 +12278,9 @@ This topic describes the metrics for NAS file storage. The default value of **Pe
 | Data write OPS | IOPS | WriteOPS | instanceId | Data write OPS. |
 | Data read OPS | IOPS | ReadOPS | instanceId | Data read OPS. |
 
-### Network
+### 3.4 Network
 
-#### NAT Gateway
+#### 3.4.1 NAT Gateway
 
 This topic describes the metrics supported by NAT gateways. Set the **Namespace** parameter to **acs_nat_gateway**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12091,7 +12304,7 @@ This topic describes the metrics supported by NAT gateways. Set the **Namespace*
 | snet rx.rate _ | Bit/s | snet rx.rate _ | userId, instanceId, and snatentryId | The inbound bandwidth. |
 | snet tx.rate _ | Bit/s | snet tx.rate _ | userId, instanceId, and snatentryId | The outbound bandwidth. |
 
-#### SLB
+#### 3.4.2 SLB
 
 This topic describes the metrics supported by Server Load Balancer (SLB). Set the **Namespace** parameter to **acs_slb_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12143,7 +12356,7 @@ This topic describes the metrics supported by Server Load Balancer (SLB). Set th
 | Seven layers Qps | Reques ts/s | SevenFloorQps | userId, instanceId, and port | The number of queries per second at Layer 7. |
 | Number of connection failures per second | Count | FailConnection | userId, instanceId, and port | The number of failed connections per second. |
 
-#### Application Load Balancer
+#### 3.4.3 Application Load Balancer
 
 This topic describes the metrics for Application Load Balancer. The **Namespace** is **acs_alb**. The default **Period** is **60** seconds. You can also set the period to an integer multiple of 60.
 
@@ -12179,7 +12392,7 @@ This topic describes the metrics for Application Load Balancer. The **Namespace*
 | Number of healthy backend servers | counts | statusup | instanceId | The number of healthy backend servers for the ALB instance. |
 | Number of unhealthy backend servers | counts | statusdown | instanceId | The number of unhealthy backend servers for the ALB instance. |
 
-#### EIP
+#### 3.4.4 EIP
 
 This topic describes the metrics supported by Elastic IP Address (EIP). Set the **Namespace** parameter to **acs_vpc_eip**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12194,7 +12407,7 @@ This topic describes the metrics supported by Elastic IP Address (EIP). Set the 
 | Out Ratelimit Drop Speed | Packets/s | out ratelimit dro _ _ p speed _ | userId and instanceId | The outbound packet loss rate. |
 | In Ratelimit Drop Speed | Packets/s | in ratelimit drop _ _ speed _ | userId and instanceId | The inbound packet loss rate. |
 
-#### VPN Gateway
+#### 3.4.5 VPN Gateway
 
 This topic describes the metrics supported by VPN Gateway. Set the **Namespace** parameter to **acs_vpn**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12208,7 +12421,7 @@ This topic describes the metrics supported by VPN Gateway. Set the **Namespace**
 | SSL Client Count | Count | ssl client.count _ | userId and instanceId | The number of connections. |
 |---|---|---|---|---|
 
-#### DNS
+#### 3.4.6 DNS
 
 This topic describes the metrics supported by DNS. Set the **Namespace** parameter to **acs_dns_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12218,7 +12431,7 @@ This topic describes the metrics supported by DNS. Set the **Namespace** paramet
 | ParsingSucceed ed | Count | ParsingSucceeded | userId and instanceId | The number of successfully parsed records. |
 | Total number of analyses | Count | ParsingTotal | userId and instanceId | The total number of parsed records. |
 
-#### Alibaba Cloud DNS - Tenant forwarded
+#### 3.4.7 Alibaba Cloud DNS - Tenant forwarded domain names
 
 **domain names**
 
@@ -12237,7 +12450,7 @@ This topic describes the metrics for tenant forwarded domain names in Alibaba Cl
 | Total number of resolutions | counts | ParsingTotal | instanceId | The total number of parses. |
 | Total number of resolutions (qname) | counts | ParsingTotalbyQnam e | instanceId,qname | Total number of parses. |
 
-#### Cloud Enterprise Network
+#### 3.4.8 Cloud Enterprise Network
 
 This topic lists the monitoring metrics for Cloud Enterprise Network. The **Namespace** is **acs_cbn**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
@@ -12251,9 +12464,9 @@ This topic lists the monitoring metrics for Cloud Enterprise Network. The **Name
 | Transit Router packet loss rate | pps | TransitRouterPacket LossRate | instanceId,trInstan ceId,vpcId | The average packet loss rate on the VPC connection. |
 |---|---|---|---|---|
 
-### Middleware services
+### 3.5 Middleware services
 
-#### ApsaraMQ for RocketMQ
+#### 3.5.1 ApsaraMQ for RocketMQ
 
 This topic describes the metrics supported by ApsaraMQ for RocketMQ. Set the **Namespace** parameter to **acs_rocketmq_dashboard**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12298,7 +12511,7 @@ This topic describes the metrics supported by ApsaraMQ for RocketMQ. Set the **N
 | SendDLQMessag eCountPerGidTop ic | Count/min | SendDLQMessag eCountPerGidTop ic | userId, instanceId, groupId, and topic | The number of dead-letter messages generated per minute. |
 | Producer(GroupId & Topic) Number of messages sent per minute | Count/min | SendMessageCou ntPerGidTopic | userId, instanceId, groupId, and topic | The number of messages that the producer sends per minute. |
 
-#### Message Queue (tiangong)
+#### 3.5.2 Message Queue (tiangong)
 
 This topic describes the metrics for Message Queue (tiangong). The **Namespace** is acs_mqtiangong_dashboard. The default **Period** is **60** seconds. The period can be any integer multiple of 60 seconds.
 
@@ -12331,11 +12544,11 @@ This topic describes the metrics for Message Queue (tiangong). The **Namespace**
 | Client message pull latency | counts | rocketmq client co _ _ nsumer pull rt _ _ | instanceId | The latency of message pulls by the client. |
 | Messages pulled per second by the client | counts | rocketmq client co _ _ nsumer pull tps _ _ | instanceId | The number of messages pulled per second by the client. |
 
-#### ApsaraMQ for Kafka
+#### 3.5.3 ApsaraMQ for Kafka
 
 This topic describes the metrics supported by ApsaraMQ for Kafka.
 
-#### API Gateway
+#### 3.5.4 API Gateway
 
 This topic describes the metrics for API Gateway. The value of **Namespace** is **acs_cop**. The default value of **Period** is **60** seconds. The value must be a multiple of 60.
 
@@ -12360,9 +12573,9 @@ This topic describes the metrics for API Gateway. The value of **Namespace** is 
 |---|---|---|---|---|
 | Upstream success rate | % | envoy cluster upstream r _ _ _ q success rate _ _ | instanceId | The success rate of upstream requests. |
 
-### Big data
+### 3.6 Big data
 
-#### DataHub
+#### 3.6.1 DataHub
 
 This topic describes the metrics supported by DataHub. Set the **Namespace** parameter to **acs_datahub**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12372,9 +12585,9 @@ This topic describes the metrics supported by DataHub. Set the **Namespace** par
 | Consumption latency | Seconds | consume delay _ | userId, regionId, project, topic, and subId | The latency between the time when a user subscribes to data and the time when the lasted data is generated. |
 | Number of accumulated messages | Count | record stacked _ | userId, regionId, project, topic, and subId | The amount of accumulated data to be consumed by the subscriber. |
 
-#### Alibaba Cloud Elasticsearch
+#### 3.6.2 Alibaba Cloud Elasticsearch
 
-#### MaxCompute
+#### 3.6.3 MaxCompute
 
 This topic describes the metrics for MaxCompute. Set **Namespace** to **acs_maxcompute**. Set **Period** to an integral multiple of **60**. Default value: 60. Unit: seconds.
 
@@ -12385,7 +12598,7 @@ This topic describes the metrics for MaxCompute. Set **Namespace** to **acs_maxc
 | project max size _ _ | bytes | project max size _ _ | userId,instanceId | The maximum space of the project. |
 | project used size _ _ | bytes | project used size _ _ | userId,instanceId | The space used by the project. |
 
-#### MaxCompute quota groups
+#### 3.6.4 MaxCompute quota groups
 
 This topic describes the metrics for MaxCompute quota groups. Set **Namespace** to **acs_maxcompute**. Set **Period** to an integral multiple of **60**. Default value: 60. Unit: seconds.
 
@@ -12402,11 +12615,11 @@ This topic describes the metrics for MaxCompute quota groups. Set **Namespace** 
 | quota used cpu rate _ _ _ | % | quota used cpu rat _ _ _ e | userId,instanceId | The CPU utilization of the quota group. |
 | quota used memory _ _ _ rate | % | quota used memor _ _ y rate _ | userId,instanceId | The memory utilization of the quota group. |
 
-### Security (Apsara Stack
+### 3.7 Security (Apsara Stack Security)
 
 **Security)**
 
-#### Tenant-side bastion hosts
+#### 3.7.1 Tenant-side bastion hosts
 
 This topic describes the metrics for tenant-side bastion hosts. Set the **Namespace** parameter to **acs_bastionhost**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12470,11 +12683,11 @@ This topic describes the metrics for tenant-side bastion hosts. Set the **Namesp
 | (Service) Service Health Check | Count/s | ServiceHealthCheck | userId and instanceId | The status of the health check service. Valid values: 0: The service does not work as expected. 1: The service works as expected. |
 |---|---|---|---|---|
 
-#### Static data masking and watermarking
+#### 3.7.2 Static data masking and watermarking
 
 This topic describes the monitoring metrics for static data masking and watermarking.
 
-#### Vulnerability scanner engines
+#### 3.7.3 Vulnerability scanner engines
 
 This topic describes the metrics for vulnerability scanner engines. Set the **Namespace** parameter to **acs_scanner**. Set the **Period** parameter to an integer multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12516,7 +12729,7 @@ This topic describes the metrics for vulnerability scanner engines. Set the **Na
 |---|---|---|---|---|
 | (Service) Service Health Check | Count/s | ServiceHealthCheck | userId and instanceId | The status of the health check service. Valid values: 0: The service does not work as expected. 1: The service works as expected. |
 
-#### NFV Cloud Firewall
+#### 3.7.4 NFV Cloud Firewall
 
 This topic describes the metrics for NFV Cloud Firewall. The value for **Namespace** is **acs_nfv**. The default value for **Period** is **60** seconds or any integer multiple of 60.
 
@@ -12553,7 +12766,7 @@ This topic describes the metrics for NFV Cloud Firewall. The value for **Namespa
 | (ECS) process count | count/s | pktDrp | instanceId | Process count. |
 | (Service) service health check | count/s | health | instanceId | Service health check. |
 
-#### Web Application Firewall
+#### 3.7.5 Web Application Firewall
 
 This topic describes the metrics for Web Application Firewall. The value of **Namespace** is acs_wafonecs. The default value of **Period** is **60** seconds. You can set the period to any integer multiple of 60.
 
@@ -12595,9 +12808,9 @@ This topic describes the metrics for Web Application Firewall. The value of **Na
 |---|---|---|---|---|
 | (Service) health check | count/s | ServiceHealthCheck | instanceId,ecsIn stanceId | Service health check. |
 
-### AI and machine learning
+### 3.8 AI and machine learning
 
-#### AI Studio (online service)
+#### 3.8.1 AI Studio (online service)
 
 This topic describes the metrics of AI Studio (online service). Set **Namespace** to **acs_online_service**. Set **Period** to an integral multiple of 60. Default value: **60**. Unit: seconds.
 
@@ -12640,7 +12853,7 @@ This topic describes the metrics of AI Studio (online service). Set **Namespace*
 | Pod GPU Memory Usage | MiB | DCGM CUSTOM PR _ _ OCESS MEM USED _ _ | taskId,pod name _ | The GPU memory usage of a pod. |
 | Pod GPU Memory Utilization | % | DCGM CUSTOM PR _ _ OCESS MEM USED _ _ _ RATIO | taskId,pod name _ | The GPU memory utilization of a pod. |
 
-#### AI Studio (model evaluation)
+#### 3.8.2 AI Studio (model evaluation)
 
 This topic describes the metrics of AI Studio (model evaluation). Set **Namespace** to **acs_model_evaluation**. Set **Period** to an integral multiple of **60**. Default value: 60. Unit: seconds.
 
@@ -12661,7 +12874,7 @@ This topic describes the metrics of AI Studio (model evaluation). Set **Namespac
 | Task GPU Memory Utilization | % | task.DCGM CUS _ TOM PROCESS _ _ MEM USED RATI _ _ O | taskId | The GPU memory utilization of a task. |
 |---|---|---|---|---|
 
-#### AI Studio (Notebook modeling)
+#### 3.8.3 AI Studio (Notebook modeling)
 
 This topic describes the metrics of AI Studio (Notebook modeling). Set **Namespace** to **acs_notebook_modeling**. Set **Period** to an integral multiple of **60**. Default value: 60. Unit: seconds.
 
@@ -12682,7 +12895,7 @@ This topic describes the metrics of AI Studio (Notebook modeling). Set **Namespa
 | Task GPU Memory Usage | MiB | task.DCGM CUS _ TOM PROCESS _ _ MEM USED _ | instanceId | The GPU memory usage of a task. |
 | Task GPU Memory Utilization | % | task.DCGM CUS _ TOM PROCESS _ _ MEM USED RATI _ _ O | instanceId | The GPU memory utilization of a task. |
 
-#### AI Studio (task modeling)
+#### 3.8.4 AI Studio (task modeling)
 
 This topic describes the metrics of AI Studio (task modeling). Set **Namespace** to **acs_task_modeling**. Set **Period** to an integral multiple of **60**. Default value: 60. Unit: seconds.
 
@@ -12727,7 +12940,7 @@ This topic describes the metrics of AI Studio (task modeling). Set **Namespace**
 | Pod GPU Memory Usage | MiB | DCGM CUSTOM PR _ _ OCESS MEM USED _ _ | taskId,pod name _ | The GPU memory usage of a pod. |
 | Pod GPU Memory Utilization | % | DCGM CUSTOM PR _ _ OCESS MEM USED _ _ _ RATIO | taskId,pod name _ | The GPU memory utilization of a pod. |
 
-#### AI Studio (visual modeling)
+#### 3.8.5 AI Studio (visual modeling)
 
 This topic describes the metrics of AI Studio (visual modeling). Set the **Namespace** parameter to **acs_pipeline_draft**. Set the **Period** parameter to the default value **60** or an integer multiple of 60. Unit: seconds.
 
@@ -12748,7 +12961,7 @@ This topic describes the metrics of AI Studio (visual modeling). Set the **Names
 | Task GPU memory usage | MiB | task.DCGM CUSTOM _ _ PROCESS MEM USED _ _ | instanceId | The GPU memory usage of a task. |
 | Task GPU memory utilization | % | task.DCGM CUSTOM _ _ PROCESS MEM USED _ _ RATIO _ | instanceId | The GPU memory utilization of a task. |
 
-#### AI Studio for model tuning
+#### 3.8.6 AI Studio for model tuning
 
 This topic describes the metrics of AI Studio for model tuning. Set the **Namespace** parameter to **acs_finetune**. Set the **Period** parameter to the default value **60** or an integer multiple of 60. Unit: seconds.
 
@@ -12769,7 +12982,7 @@ This topic describes the metrics of AI Studio for model tuning. Set the **Namesp
 | task.DCGM CUSTOM _ _ PROCESS MEM USED _ _ | MiB | task.DCGM CUSTOM _ PROCESS MEM US _ _ _ ED | instanceId | The GPU memory usage of a task. |
 | task.DCGM CUSTOM _ _ PROCESS MEM USED _ _ RATIO _ | % | task.DCGM CUSTOM _ PROCESS MEM US _ _ _ ED RATIO _ | instanceId | The GPU memory utilization of a task. |
 
-#### AI Studio (batch inference)
+#### 3.8.7 AI Studio (batch inference)
 
 This topic describes the metrics of AI Studio (batch inference). Set the **Namespace** parameter to **acs_batch_inference**. Set the **Period** to the default value
 **60** or an integer multiple of 60. Unit: seconds.
@@ -12791,7 +13004,7 @@ This topic describes the metrics of AI Studio (batch inference). Set the **Names
 | Task GPU memory usage | MiB | task.DCGM CUSTOM _ PROCESS MEM US _ _ _ ED | instanceId | The GPU memory usage of a task. |
 | Task GPU memory utilization | % | task.DCGM CUSTOM _ PROCESS MEM US _ _ _ ED RATIO _ | instanceId | The GPU memory utilization of a task. |
 
-#### AI Studio (online service group)
+#### 3.8.8 AI Studio (online service group)
 
 This topic describes the metrics of AI Studio (online service group). Set the **Namespace** parameter to **acs_online_service_group**. Set the **Period** parameter to the default value **60** or an integer multiple of 60. Unit: seconds.
 
@@ -12808,7 +13021,7 @@ This topic describes the metrics of AI Studio (online service group). Set the **
 | QPS | Count | envoy cluster upstr _ _ eam rq _ | serviceGroupId,t askId | The number of queries per second (QPS). |
 | request success rate | % | envoy cluster upstr _ _ eam rq succer rate _ _ _ | serviceGroupId,t askId | The request success rate. |
 
-#### AI Studio (Resource Pool)
+#### 3.8.9 AI Studio (Resource Pool)
 
 This topic describes the metrics for AI Studio (Resource Pool). The **Namespace** value is **acs_resource_pool**. The default **Period** value is **60** seconds or any integer multiple of 60.
 
@@ -12848,7 +13061,7 @@ This topic describes the metrics for AI Studio (Resource Pool). The **Namespace*
 |---|---|---|---|---|
 | GPU utilization at cluster level | % | cluster.DCGM CUST _ OM PROCESS SM U _ _ _ TIL | cluster,device | GPU utilization at cluster level. |
 
-#### A-Speed (High-Performance Inference
+#### 3.8.10 A-Speed (High-Performance Inference Service)
 
 **Service)**
 
@@ -12912,7 +13125,7 @@ This topic describes the monitoring metrics for A-Speed (High-Performance Infere
 | KV Cache hit rate | short | llm kv cache hit rat _ _ _ _ e percent _ | instanceId,model name,pod,role _ | The KV Cache hit rate during the prefill phase. |
 | KV Cache usage | short | llm gpu vram pool _ _ _ _ usage percent prefi _ _ ll | instanceId,model name,pod,role _ | The KV Cache usage during the prefill phase. |
 
-#### Elastic Fault Tolerance Service
+#### 3.8.11 Elastic Fault Tolerance Service
 
 This topic lists the metrics for Elastic Fault Tolerance Service. The **Namespace** is **acs_kea**. The default **Period** is **60** seconds and must be an integer multiple of 60.
 

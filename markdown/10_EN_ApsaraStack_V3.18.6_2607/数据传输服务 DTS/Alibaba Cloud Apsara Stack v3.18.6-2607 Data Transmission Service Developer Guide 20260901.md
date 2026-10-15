@@ -3,16 +3,178 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Develo
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 572
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901.pdf"
+source_pdf: "e86046d619ddf910_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Developer Guide 20260901
 
-## Preparations
+## Table of Contents
 
-### Log on to OpenAPI Explorer
+- 1 Preparations
+  - 1.1 Log on to OpenAPI Explorer
+  - 1.2 Obtain the information and the endpoint of an API operation
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain access credentials assigned by STS
+  - 1.5 Obtain common header parameters
+  - 1.6 Obtain the endpoint of DTS
+- 2 Use the SDK for Java
+  - 2.1 Quick start
+  - 2.2 Use the SDK
+    - 2.2.1 Install Apsara Stack SDK for Java
+    - 2.2.2 Configure authentication credentials
+    - 2.2.3 Configure connection requests
+    - 2.2.4 Initiate a request
+    - 2.2.5 Handle errors
+    - 2.2.6 Use CommonRequest to call API operations
+- 3 Use the SDK for Python
+  - 3.1 Getting started
+  - 3.2 Use the SDK
+    - 3.2.1 Install Apsara Stack SDK for Python
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure HTTPS requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Use the SDK for Go
+  - 4.1 Quick start
+  - 4.2 Use the SDK
+    - 4.2.1 Install the core package of Apsara Stack SDK for Go
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Initiate a request
+    - 4.2.4 Handle errors
+    - 4.2.5 Use CommonRequest to call API operations
+- 5 API Reference
+  - 5.1 Common parameters
+  - 5.2 Request structure
+  - 5.3 List of supported regions
+  - 5.4 DTS API (new)
+    - 5.4.1 CreateDtsInstance
+    - 5.4.2 Configure a DTS migration or sync task
+    - 5.4.3 ConfigureSubscription
+    - 5.4.4 StartDtsJob
+    - 5.4.5 StartDtsJobs
+    - 5.4.6 Manage consumer groups for change tracking tasks
+      - 5.4.6.1 CreateConsumerChannel
+      - 5.4.6.2 DescribeConsumerChannel
+      - 5.4.6.3 ModifyConsumerChannel
+      - 5.4.6.4 DeleteConsumerChannel
+    - 5.4.7 SkipPreCheck
+    - 5.4.8 Query DTS tasks
+      - 5.4.8.1 Query the details of a DTS task
+      - 5.4.8.2 DescribeDtsJobs
+      - 5.4.8.3 CountJobByCondition
+      - 5.4.8.4 DescribePreCheckStatus
+      - 5.4.8.5 WhiteIpList
+      - 5.4.8.6 DescribeSubscriptionMeta
+      - 5.4.8.7 Query the details of a full or incremental data check task
+      - 5.4.8.8 Query data inconsistency details
+      - 5.4.8.9 DescribeInstanceClassLimit
+      - 5.4.8.10 DescribeRecentAnalysisDetail
+      - 5.4.8.11 DescribeUpgradeTrials
+    - 5.4.9 Modify DTS tasks
+      - 5.4.9.1 ModifyDtsJob
+      - 5.4.9.2 ModifySubscription
+      - 5.4.9.3 ModifyDtsJobPassword
+      - 5.4.9.4 ModifyDtsJobName
+      - 5.4.9.5 UpgradeTwoWay
+      - 5.4.9.6 TransferPayType
+      - 5.4.9.7 TransferInstanceClass
+      - 5.4.9.8 RenewInstance
+    - 5.4.10 ResetDtsJob
+    - 5.4.11 SuspendDtsJob
+    - 5.4.12 SuspendDtsJobs
+    - 5.4.13 StopDtsJob
+    - 5.4.14 StopDtsJobs
+    - 5.4.15 DeleteDtsJob
+    - 5.4.16 DeleteDtsJobs
+    - 5.4.17 SummaryJobDetail
+    - 5.4.18 InitDtsRdsInstance
+    - 5.4.19 ReverseTwoWayDirection
+    - 5.4.20 SkipFullJobTable
+    - 5.4.21 Manage alert rules
+      - 5.4.21.1 CreateJobMonitorRule
+      - 5.4.21.2 DescribeJobMonitorRule
+    - 5.4.22 Query ETL tasks
+      - 5.4.22.1 DescribeDtsEtlJobVersionInfo
+      - 5.4.22.2 DescribeEtlJobLogs
+    - 5.4.23 Additional parameters
+      - 5.4.23.1 Objects of DTS tasks
+      - 5.4.23.2 Reserve parameter description
+      - 5.4.23.3 DataCheckConfigure parameters
+  - 5.5 DTS API (soon-to-be-obsolete)
+    - 5.5.1 Data migration
+      - 5.5.1.1 CreateMigrationJob
+      - 5.5.1.2 ConfigureMigrationJob
+      - 5.5.1.3 StartMigrationJob
+      - 5.5.1.4 ModifyMigrationObject
+      - 5.5.1.5 SuspendMigrationJob
+      - 5.5.1.6 DescribeMigrationJobs
+      - 5.5.1.7 DescribeMigrationJobDetail
+      - 5.5.1.8 DescribeMigrationJobStatus
+      - 5.5.1.9 StopMigrationJob
+      - 5.5.1.10 DeleteMigrationJob
+    - 5.5.2 Data synchronization
+      - 5.5.2.1 CreateSynchronizationJob
+      - 5.5.2.2 ConfigureSynchronizationJob
+      - 5.5.2.3 StartSynchronizationJob
+      - 5.5.2.4 SuspendSynchronizationJob
+      - 5.5.2.5 ResetSynchronizationJob
+      - 5.5.2.6 ModifySynchronizationObject
+      - 5.5.2.7 DescribeSynchronizationObjectModifyStatus
+      - 5.5.2.8 SwitchSynchronizationEndpoint
+      - 5.5.2.9 DescribeEndpointSwitchStatus
+      - 5.5.2.10 ConfigureSynchronizationJobReplicatorCompare
+      - 5.5.2.11 DescribeSynchronizationJobReplicatorCompare
+      - 5.5.2.12 DescribeSynchronizationJobs
+      - 5.5.2.13 DescribeInitializationStatus
+      - 5.5.2.14 DescribeSynchronizationJobStatusList
+      - 5.5.2.15 DescribeSynchronizationJobStatus
+      - 5.5.2.16 DeleteSynchronizationJob
+    - 5.5.3 Change tracking
+      - 5.5.3.1 CreateSubscriptionInstance
+      - 5.5.3.2 ConfigureSubscriptionInstance
+      - 5.5.3.3 StartSubscriptionInstance
+      - 5.5.3.4 ModifySubscriptionObject
+      - 5.5.3.5 Manage consumer groups
+        - 5.5.3.5.1 CreateConsumerGroup
+        - 5.5.3.5.2 DescribeConsumerGroup
+        - 5.5.3.5.3 ModifyConsumerGroupPassword
+        - 5.5.3.5.4 DeleteConsumerGroup
+        - 5.5.3.5.5 ModifyConsumptionTimestamp
+      - 5.5.3.6 DescribeSubscriptionInstances
+      - 5.5.3.7 DescribeSubscriptionInstanceStatus
+      - 5.5.3.8 DeleteSubscriptionInstance
+    - 5.5.4 Network settings
+      - 5.5.4.1 DescribeDTSIP
+      - 5.5.4.2 DescribeConnectionStatus
+    - 5.5.5 Monitoring and alerting
+      - 5.5.5.1 ConfigureMigrationJobAlert
+      - 5.5.5.2 DescribeMigrationJobAlert
+      - 5.5.5.3 ConfigureSubscriptionInstanceAlert
+      - 5.5.5.4 DescribeSubscriptionInstanceAlert
+      - 5.5.5.5 ConfigureSynchronizationJobAlert
+      - 5.5.5.6 DescribeSynchronizationJobAlert
+    - 5.5.6 Instance management
+      - 5.5.6.1 ShieldPrecheck
+    - 5.5.7 Tag management
+      - 5.5.7.1 TagResources
+      - 5.5.7.2 ListTagResources
+      - 5.5.7.3 UntagResources
+    - 5.5.8 Additional description of parameters
+      - 5.5.8.1 MigrationObject
+      - 5.5.8.2 SubscriptionObjects
+      - 5.5.8.3 SynchronizationObjects
+      - 5.5.8.4 MigrationReserved
+- 6 Appendixes
+  - 6.1 STS overview
+    - 6.1.1 What is STS?
+    - 6.1.2 AssumeRole
+
+## 1 Preparations
+
+### 1.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -32,7 +194,7 @@ on your logon scenario: Scenario 1: The first time you log on to the Apsara Uni-
 5. In the top navigation bar, choose **Products > Development Tools > API & SDK >**
 **OpenAPI Explorer**.
 
-### Obtain the information and
+### 1.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -53,7 +215,7 @@ In the API operation list, you can view all API operations of the current versio
 6. Click the API operation that you want to manage. On the **Parameter** tab, you can obtain
 the **endpoint**of the operation.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -91,7 +253,7 @@ want to obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -211,7 +373,7 @@ D and AccessKey secret assigned by STS.
 
 `}` `}`
 
-### Obtain common header
+### 1.5 Obtain common header parameters
 
 **parameters**
 
@@ -264,7 +426,7 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of DTS
+### 1.6 Obtain the endpoint of DTS
 
 This topic describes how to obtain the endpoints of DTS.
 
@@ -284,9 +446,9 @@ down list and enter `dts-dts` in the search box. icon to show
 5. In the **Service Registration** column of the `dts-dts` service, click the
 the hidden content and then click the content. In the **Registration Variables** dialog box, view the value of **dts.openapi.endpoint**, which is the `Endpoint` of DTS. Java
 
-## Use the SDK for Java
+## 2 Use the SDK for Java
 
-### Quick start
+### 2.1 Quick start
 
 This topic describes how to obtain and call the Data Transmission Service (DTS) SDK for Java. An authorized Apsara Stack tenant account and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained before you can use Apsara Stack SDK for Java. You can obtain your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of DTS is obtained. For more information, see Obtain the endpoint of DTS. Java Development Kit (JDK) 1.8 or later is installed.
 
@@ -329,9 +491,9 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
 
 `}` `}` `}`
 
-### Use the SDK
+### 2.2 Use the SDK
 
-#### Install Apsara Stack SDK for Java
+#### 2.2.1 Install Apsara Stack SDK for Java
 
 This topic describes how to install and use the Data Transmission Service (DTS) SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 and later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. To use the DTS development kit, install the core library of Apsara Stack SDK for Java and the DTS SDK for Java. We recommend that you use SDK core library version 4.5.17 or later and SDK version 5.1.25. To use the DTS SDK for Java, install the core library of Apsara Stack SDK for Java and DTS SDK for Java, and add the following dependencies to the pom.xml file: For more information about the SDK versions, visit Alibaba Cloud SDK Center. Java
 
@@ -347,7 +509,7 @@ This topic describes how to install and use the Data Transmission Service (DTS) 
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 2.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity verification by providing an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publicly-accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -360,7 +522,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the preceding variables with the actual values and remove the brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 2.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Java Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables: <readTimeout>: Specify a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify a maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace this variable with the IP address and port of the proxy that you use.
 
@@ -380,7 +542,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 2.2.4 Initiate a request
 
 This topic describes how to use Data Transmission Service (DTS) SDK for Java to initiate a request.
 
@@ -426,7 +588,7 @@ If an exception occurs or you need the original HTTP response, you can use the `
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 2.2.5 Handle errors
 
 If an error occurs on the server or SDK when you use the SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the SDK for Java. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -457,7 +619,7 @@ to request technical support.
 
 `}`
 
-#### Use CommonRequest to call API
+#### 2.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -563,9 +725,9 @@ operation, you must add the SecurityToken field in the request parameters.
 
 `}` `}` `}` Python
 
-## Use the SDK for Python
+## 3 Use the SDK for Python
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use Data Transmission Service (DTS) SDK for Python.
 
@@ -623,9 +785,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 print(str(response, encoding='utf-8'))
 ```
 
-### Use the SDK
+### 3.2 Use the SDK
 
-#### Install Apsara Stack SDK for Python
+#### 3.2.1 Install Apsara Stack SDK for Python
 
 This topic describes how to install and call the Data Transmission Service (DTS) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x and later. You can install Apsara Stack SDK for Python by using pip. To use the SDK for Python of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use the DTS SDK for Python, you must install the core library of Apsara Stack SDK for Python and the DTS SDK for Python. If you use Python 2.x, run the following command to install the core library:
 
@@ -651,7 +813,7 @@ If you use Python 3.x, run the following command to install the ECS SDK:
 pip3 install aliyun-python-sdk-dts
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara SDK for Python supports authentication based on AccessKey pairs. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -663,7 +825,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Configure HTTPS requests
+#### 3.2.3 Configure HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default protocol (HTTP or HTTPS) of a service takes precedence over the global default protocol.
 
@@ -695,7 +857,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use the Data Transmission Service (DTS) SDK for Python to initiate requests.
 
@@ -725,7 +887,7 @@ request = CreateMigrationJobRequest() request.set_accept_format('json')
 response = client.do_action_with_exception(request) print(str(response, encoding='utf-8'))
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Python, the SDK returns an error response. The error response contains an error code and an error message. Among the errors returned by the SDK for Python, you do not need to handle the SDK errors, but must solve the server errors. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the Python error message:
 
@@ -746,7 +908,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -801,9 +963,9 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 Go
 
-## Use the SDK for Go
+## 4 Use the SDK for Go
 
-### Quick start
+### 4.1 Quick start
 
 Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and call the Data Transmission Service SDK for Go.
 
@@ -862,9 +1024,9 @@ request.Region = "cn-hangzhou"
 request.Scheme = "HTTPS"
 ```
 
-### Use the SDK
+### 4.2 Use the SDK
 
-#### Install the core package of Apsara
+#### 4.2.1 Install the core package of Apsara Stack SDK for Go
 
 **Stack SDK for Go**
 
@@ -874,7 +1036,7 @@ This topic describes how to install the core package of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara SDK for Go supports authentication based on AccessKey pairs. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Go
 
@@ -897,7 +1059,7 @@ secret.
 
 Replace the preceding variables with the actual values and remove the brackets (<>) in the final code.
 
-#### Initiate a request
+#### 4.2.3 Initiate a request
 
 This topic describes how to use the Data Transmission Service (DTS) SDK for Go to initiate a request. The following example shows how to use the DTS SDK for Go to initiate a request.
 1. Import the DTS SDK.
@@ -937,7 +1099,7 @@ Go
 response, err := Client.CreateMigrationJob(request)
 ```
 
-#### Handle errors
+#### 4.2.4 Handle errors
 
 |   |   |   | ClientError |
 |---|---|---|---|
@@ -1020,7 +1182,7 @@ response, err := Client.CreateMigrationJob(request) if serverError, ok := err.(*
 
 `}`
 
-#### Use CommonRequest to call API
+#### 4.2.5 Use CommonRequest to call API operations
 
 **operations**
 
@@ -1101,9 +1263,9 @@ e instance ID. If you want to modify, delete, or query an instance, you must con
 
 `}`
 
-## API Reference
+## 5 API Reference
 
-### Common parameters
+### 5.1 Common parameters
 
 This topic describes common parameters, including common request parameters and common response parameters. Common parameters are required in all API requests.
 
@@ -1165,7 +1327,7 @@ JSON format `{`
 
 `}`
 
-### Request structure
+### 5.2 Request structure
 
 Data Transmission Service (DTS) allows you to send URL-based requests by using the HTTP or HTTPS GET method. You must add the request parameters that correspond to the called API operation. After you call the API, the system returns a response.
 
@@ -1201,7 +1363,7 @@ In each request, you must specify the operation to be performed. For example, to
 
 Requests and responses are encoded in UTF-8.
 
-### List of supported regions
+### 5.3 List of supported regions
 
 This topic lists the regions that are supported by Data Transmission Service (DTS).
 
@@ -1235,9 +1397,9 @@ This topic lists the regions that are supported by Data Transmission Service (DT
 | China South 1 Finance | Shenzhen | cn-shenzhen-finance |
 | China North 2 Ali Gov 1 | Beijing | cn-north-2-gov-1 |
 
-### DTS API (new)
+### 5.4 DTS API (new)
 
-#### CreateDtsInstance
+#### 5.4.1 CreateDtsInstance
 
 Purchases a Data Transmission Service (DTS) instance.
 
@@ -1313,7 +1475,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### Configure a DTS migration or sync task
+#### 5.4.2 Configure a DTS migration or sync task
 
 The ConfigureDtsJob operation configures a migration or sync task. Before you configure the task, you must call the CreateDtsInstance operation to purchase a DTS instance.
 
@@ -1450,7 +1612,7 @@ Response examples `XML` format
 
 `}`
 
-#### ConfigureSubscription
+#### 5.4.3 ConfigureSubscription
 
 Configures a change tracking task.
 
@@ -1547,7 +1709,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StartDtsJob
+#### 5.4.4 StartDtsJob
 
 Starts a data migration, data synchronization, or change tracking task.
 
@@ -1603,7 +1765,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StartDtsJobs
+#### 5.4.5 StartDtsJobs
 
 Starts multiple data migration or data synchronization tasks.
 
@@ -1657,11 +1819,11 @@ Sample success responses `XML` format
 
 `}`
 
-#### Manage consumer groups for change
+#### 5.4.6 Manage consumer groups for change tracking tasks
 
 **tracking tasks**
 
-##### CreateConsumerChannel
+##### 5.4.6.1 CreateConsumerChannel
 
 Creates a consumer group for a change tracking task. Downstream clients can use the consumer group to consume tracked data.
 
@@ -1720,7 +1882,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeConsumerChannel
+##### 5.4.6.2 DescribeConsumerChannel
 
 Queries the details of a consumer group, including the consumer group ID, consumer group name, username, and message latency.
 
@@ -1821,7 +1983,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ModifyConsumerChannel
+##### 5.4.6.3 ModifyConsumerChannel
 
 Modifies the information of a consumer group, including the consumer group name, username, and password.
 
@@ -1878,7 +2040,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DeleteConsumerChannel
+##### 5.4.6.4 DeleteConsumerChannel
 
 Deletes a consumer group from a change tracking task.
 
@@ -1932,7 +2094,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SkipPreCheck
+#### 5.4.7 SkipPreCheck
 
 Skips or stops skipping one or more precheck items.
 
@@ -2004,9 +2166,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Query DTS tasks
+#### 5.4.8 Query DTS tasks
 
-##### Query the details of a DTS task
+##### 5.4.8.1 Query the details of a DTS task
 
 Call DescribeDtsJobDetail to query the complete configuration and running status of a specified DTS task (migration, synchronization, or subscription). Ensure that the caller has read permissions for the corresponding DTS resources.
 
@@ -3166,7 +3328,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </SourceEndpoint> <Reserved> {&quot;srcHostPorts&quot;:&quot;&quot;,&quot;whitelist.dms.online.ddl.enable&quot;:false, uot;filterDDL&quot;:false,&quot;sqlparser.dms.original.ddl&quot;:true,&quot;srcOracleType uot;:&quot;sid&quot;,&quot;maxRetryTime&quot;:43200,&quot;destSSL&quot;:&quot;0&quot;,&qu ;destOracleType&quot;:&quot;sid&quot;,&quot;srcSSL&quot;:&quot;0&quot;,&quot;dbListCaseCh geMode&quot;:&quot;default&quot;,&quot;SourceEngineVersion&quot;:&quot;8.0.18&quot;,&quot rcNetType&quot;:&quot;VPC&quot;,&quot;destNetType&quot;:&quot;VPC&quot;,&quot;srcVpcNetMa ingInst&quot;:&quot;172.16.1**.**:1****&quot;,&quot;destVpcNetMappingInst&quot;:&quot;172 6.1**.**:1****&quot;,&quot;useJobTask&quot;:&quot;1&quot;}</Reserved>
 ```
 
-##### DescribeDtsJobs
+##### 5.4.8.2 DescribeDtsJobs
 
 Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
 
@@ -3870,7 +4032,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### CountJobByCondition
+##### 5.4.8.3 CountJobByCondition
 
 Counts the number of Data Transmission Service (DTS) tasks based on the specified conditions.
 
@@ -3939,7 +4101,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribePreCheckStatus
+##### 5.4.8.4 DescribePreCheckStatus
 
 Queries the state of a Data Transmission Service (DTS) subtask, including precheck, schema migration, initial schema synchronization, full data migration, initial full data synchronization, incremental data migration, or incremental data synchronization.
 
@@ -4619,7 +4781,7 @@ Sample success responses `XML` format
 
 `}` `]` `}`
 
-##### WhiteIpList
+##### 5.4.8.5 WhiteIpList
 
 Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **source or destination instance** is a **self-managed database** or a **third-party**
 **cloud database**, you must call this operation to query the CIDR blocks of DTS servers.
@@ -4684,7 +4846,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSubscriptionMeta
+##### 5.4.8.6 DescribeSubscriptionMeta
 
 Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance. When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task. You can call the DescribeDtsJobs operation to query the ID of the change tracking instance and the ID of the consumer group.
 
@@ -4773,7 +4935,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### Query the details of a full or incremental
+##### 5.4.8.7 Query the details of a full or incremental data check task
 
 **data check task**
 
@@ -4849,7 +5011,7 @@ This operation uses common request headers. For more information, see Common req
 | 500 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 403 | InvalidSecurityToke n.Expired | InvalidSecurityToken.Expired | Specified SecurityToken is expired. |
 
-##### Query data inconsistency details
+##### 5.4.8.8 Query data inconsistency details
 
 You can call the DescribeDataCheckTableDiffDetails operation to query the details of data inconsistencies in a verification task.
 
@@ -4910,7 +5072,7 @@ This operation uses common request headers. No special request headers are requi
 | 500 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 403 | InvalidSecurityToke n.Expired | InvalidSecurityToken.Expired | Specified SecurityToken is expired. |
 
-##### DescribeInstanceClassLimit
+##### 5.4.8.9 DescribeInstanceClassLimit
 
 Queries the limits on instance types.
 
@@ -5043,7 +5205,7 @@ Sample success responses `JSON` format `{`
 | 500 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 403 | InvalidSecurityToke n.Expired | InvalidSecurityToken.Expired | Specified SecurityToken is expired. |
 
-##### DescribeRecentAnalysisDetail
+##### 5.4.8.10 DescribeRecentAnalysisDetail
 
 Queries the diagnostic details.
 
@@ -5199,7 +5361,7 @@ Sample success responses `JSON` format `{`
 | 500 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 403 | InvalidSecurityToke n.Expired | InvalidSecurityToken.Expired | Specified SecurityToken is expired. |
 
-##### DescribeUpgradeTrials
+##### 5.4.8.11 DescribeUpgradeTrials
 
 Queries the details of a Data Transmission Service (DTS) upgrade test.
 
@@ -5343,9 +5505,9 @@ Sample success responses `JSON` format `{`
 | 500 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 403 | InvalidSecurityToke n.Expired | InvalidSecurityToken.Expired | Specified SecurityToken is expired. |
 
-#### Modify DTS tasks
+#### 5.4.9 Modify DTS tasks
 
-##### ModifyDtsJob
+##### 5.4.9.1 ModifyDtsJob
 
 Modifies the configurations of a data synchronization task.
 
@@ -5405,7 +5567,7 @@ Sample success responses `JSON` format `{`
 <Status>200</Status> <DtsJobId>bi6e22a****</DtsJobId> <RequestId>1D6ECADF-C5E9-4C96-8811-77602B31****</RequestId> <Success>true</Success>
 ```
 
-##### ModifySubscription
+##### 5.4.9.2 ModifySubscription
 
 Modifies the objects of a change tracking task and the types of data changes to be tracked.
 
@@ -5461,7 +5623,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ModifyDtsJobPassword
+##### 5.4.9.3 ModifyDtsJobPassword
 
 Changes the password of the source or destination database account.
 
@@ -5518,7 +5680,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ModifyDtsJobName
+##### 5.4.9.4 ModifyDtsJobName
 
 Changes the name of a Data Transmission Service (DTS) task.
 
@@ -5573,7 +5735,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UpgradeTwoWay
+##### 5.4.9.5 UpgradeTwoWay
 
 Upgrades the synchronization topology of a data synchronization instance from one-way synchronization to two-way synchronization. This operation is supported only for pay-as-yougo data synchronization instances. When you call this operation, take note of the following items: The source and destination databases of the data synchronization task are both **MySQL** databases. The synchronization topology of the data synchronization task is **one-way**
 **synchronization**.
@@ -5630,7 +5792,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### TransferPayType
+##### 5.4.9.6 TransferPayType
 
 Changes the billing method or instance class of a Data Transmission Service (DTS) task. The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources. Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances. After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
 
@@ -5701,7 +5863,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### TransferInstanceClass
+##### 5.4.9.7 TransferInstanceClass
 
 Upgrades or downgrades a Data Transmission Service (DTS) instance.
 
@@ -5769,7 +5931,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### RenewInstance
+##### 5.4.9.8 RenewInstance
 
 Renews a Data Transmission Service (DTS) instance. This API operation is available only for subscription instances.
 
@@ -5838,7 +6000,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ResetDtsJob
+#### 5.4.10 ResetDtsJob
 
 Reconfigures a data synchronization or change tracking task. If you clear the configurations of a data synchronization or change tracking task, Data Transmission Service (DTS) deletes the task. Then, DTS creates another task. You must call the ConfigureDtsJob operation to configure the new task.
 
@@ -5896,7 +6058,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SuspendDtsJob
+#### 5.4.11 SuspendDtsJob
 
 Pauses a data migration, data synchronization, or change tracking task.
 
@@ -5954,7 +6116,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SuspendDtsJobs
+#### 5.4.12 SuspendDtsJobs
 
 Suspends multiple Data Transmission Service (DTS) tasks.
 
@@ -6008,7 +6170,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StopDtsJob
+#### 5.4.13 StopDtsJob
 
 Stops a data migration, data synchronization, or change tracking task.
 
@@ -6066,7 +6228,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StopDtsJobs
+#### 5.4.14 StopDtsJobs
 
 Stops multiple data migration or data synchronization tasks.
 
@@ -6120,7 +6282,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteDtsJob
+#### 5.4.15 DeleteDtsJob
 
 Deletes a data migration, data synchronization, or change tracking task.
 
@@ -6178,7 +6340,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteDtsJobs
+#### 5.4.16 DeleteDtsJobs
 
 Deletes multiple data migration, data synchronization, or change tracking tasks.
 
@@ -6232,7 +6394,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SummaryJobDetail
+#### 5.4.17 SummaryJobDetail
 
 Queries the number of migrated or synchronized objects in a Data Transmission Service (DTS) task.
 
@@ -6351,7 +6513,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### InitDtsRdsInstance
+#### 5.4.18 InitDtsRdsInstance
 
 Initializes a built-in account on a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses the built-in account to connect to the node and perform data synchronization tasks. The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN). This operation is used to initialize the built-in account named `rdsdt_dtsacct` on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
 
@@ -6422,7 +6584,7 @@ Sample success responses `JSON` format `{`
 <RequestId>621BB4F8-3016-4FAA-8D5A-5D3163CC****</RequestId> <HttpStatusCode>200</HttpStatusCode> <AdminAccount>rdsdt_dtsacct</AdminAccount> <ErrMessage>The Value of Input Parameter %s is not valid.</ErrMessage> <Success>true</Success> <AdminPassword>1jecpqrtc****</AdminPassword> <ErrCode>InternalError </ErrCode>
 ```
 
-#### ReverseTwoWayDirection
+#### 5.4.19 ReverseTwoWayDirection
 
 Reverses the direction of a two-way synchronization task. A two-way synchronization task in the reverse direction in Data Transmission Service (DTS) automatically filters DDL statements. If you need to switch between primary and secondary databases or between two cloud platforms, you can switch the direction of two-way synchronization task. Before you call this operation, take note of the following items: Read the topics related to two-way synchronization. Do not reverse two-way synchronization task when you modify an object to be synchronized. You cannot change the direction of a distributed synchronization task.
 
@@ -6491,7 +6653,7 @@ Sample success responses `JSON` format `{`
 | 500 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 403 | InvalidSecurityToke n.Expired | InvalidSecurityToken.Expired | Specified SecurityToken is expired. |
 
-#### SkipFullJobTable
+#### 5.4.20 SkipFullJobTable
 
 Skips the tables that do not need to be synchronized in a full data synchronization task.
 
@@ -6553,9 +6715,9 @@ Sample success responses `JSON` format `{`
 <RequestId>621BB4F8-3016-4FAA-8D5A-5D3163CC****</RequestId> <HttpStatusCode>403</HttpStatusCode> <DynamicMessage>DtsJobId</DynamicMessage> <ErrMessage>The request processing has failed due to some unknown error.</ErrMessage> <Code>200</Code> <Success>true</Success> <ErrCode>InternalError</ErrCode>
 ```
 
-#### Manage alert rules
+#### 5.4.21 Manage alert rules
 
-##### CreateJobMonitorRule
+##### 5.4.21.1 CreateJobMonitorRule
 
 Creates or modifies an alert rule for a Data Transmission Service (DTS) task. DTS provides the following metrics for DTS tasks:
 **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the
@@ -6622,7 +6784,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeJobMonitorRule
+##### 5.4.21.2 DescribeJobMonitorRule
 
 Queries the alert rules of a Data Transmission Service (DTS) task.
 
@@ -6700,9 +6862,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Query ETL tasks
+#### 5.4.22 Query ETL tasks
 
-##### DescribeDtsEtlJobVersionInfo
+##### 5.4.22.1 DescribeDtsEtlJobVersionInfo
 
 Queries the details of extract, transform, and load (ETL) tasks.
 
@@ -6806,7 +6968,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeEtlJobLogs
+##### 5.4.22.2 DescribeEtlJobLogs
 
 Queries the logs of an extract, transform, and load (ETL) task.
 
@@ -6894,9 +7056,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Additional parameters
+#### 5.4.23 Additional parameters
 
-##### Objects of DTS tasks
+##### 5.4.23.1 Objects of DTS tasks
 
 You can call the API operations of Data Transmission Service (DTS) to configure or query the objects of a data migration, data synchronization, or change tracking task. This topic describes the related API operations and provides object definitions and configuration examples.
 
@@ -7254,13 +7416,13 @@ Example 3: Replicate data from a table named customer in the dtstestdata databas
 |---|---|
 | Character range [character1-character2] | Matches any characters within the range from character1 to character2. Examples: [0-9] and [a-z]. |
 
-##### Reserve parameter description
+##### 5.4.23.2 Reserve parameter description
 
 When you call an API operation to configure or query a Data Transmission Service (DTS) task, you must specify or query the Reserve parameter. The Reserve parameter allows you to view the configurations of the source or destination instance or add more configurations to the DTS task. For example, you can specify the data storage format of the destination Kafka instance or the ID of a Cloud Enterprise Network (CEN) instance. This topic describes the settings of the Reserve parameter in different scenarios.
 
 **Related API operations**
 
-ConfigureDtsJob ConfigureSubscription DescribeDtsJobDetail DescribeDtsJobs
+ConfigureDtsJob DescribeDtsJobDetail
 
 **Settings of the Reserve parameter**
 
@@ -7312,7 +7474,7 @@ If the source or destination instance is a self-managed database connected over 
 | srcInstanceI d | Yes | The ID of the CEN instance for the source instance. | { "srcInstanceId": "cen-9kqshqum*******" } |
 | destInstanc eId | Yes | The ID of the CEN instance for the destination instance. | { "destInstanceId": "cen-9kqshqum*******" } |
 
-##### DataCheckConfigure parameters
+##### 5.4.23.3 DataCheckConfigure parameters
 
 When you call the ConfigureDtsJob operation to configure a migration or synchronization task, you can configure the DataCheckConfigure parameter as needed.
 
@@ -7356,11 +7518,11 @@ When you call the ConfigureDtsJob operation to configure a migration or synchron
 | structureCheck | Boolean | Specifies whether to perform a structure check. Valid values are true and false. |
 |---|---|---|
 
-### DTS API (soon-to-be-obsolete)
+### 5.5 DTS API (soon-to-be-obsolete)
 
-#### Data migration
+#### 5.5.1 Data migration
 
-##### CreateMigrationJob
+##### 5.5.1.1 CreateMigrationJob
 
 Purchases a data migration instance. This operation is of the old version. We recommend that you call the new API operation. After you purchase a data migration instance, you must call the ConfigureMigrationJob operation to configure a data migration task.
 
@@ -7415,7 +7577,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ConfigureMigrationJob
+##### 5.5.1.2 ConfigureMigrationJob
 
 Configures a data migration task. After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the StartMigrationJob operation to start the task. A data migration task may fail to be started due to precheck failures. You can call the DescribeMigrationJobStatus operation to query the error messages about the precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the StartMigrationJob operation to restart the data migration task.
 
@@ -7510,7 +7672,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### StartMigrationJob
+##### 5.5.1.3 StartMigrationJob
 
 Starts a data migration task. To call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
 
@@ -7560,7 +7722,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ModifyMigrationObject
+##### 5.5.1.4 ModifyMigrationObject
 
 Modifies the objects to be migrated for a data migration instance that is not started.
 
@@ -7609,7 +7771,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### SuspendMigrationJob
+##### 5.5.1.5 SuspendMigrationJob
 
 Pauses a data migration task. If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you cannot call the StartMigrationJob operation to restart the task. If you select incremental data migration as the migration type for a pay-as-you-go instance, you are charged even when the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database and continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data migration consumes resources such as the bandwidth of the source database.
 
@@ -7660,7 +7822,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeMigrationJobs
+##### 5.5.1.6 DescribeMigrationJobs
 
 Queries the list of data migration instances and the details of each instance.
 
@@ -7938,7 +8100,7 @@ gatoJobs
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. |
 
-##### DescribeMigrationJobDetail
+##### 5.5.1.7 DescribeMigrationJobDetail
 
 Queries the details of a data migration task. When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
 
@@ -8123,7 +8285,7 @@ unsigned auto_increment COMMENT '' NOT NULL , \n`runoob_title` varchar(100) CH A
 
 `}` `]` `}` `}`
 
-##### DescribeMigrationJobStatus
+##### 5.5.1.8 DescribeMigrationJobStatus
 
 Queries the state of a data migration task.
 
@@ -8527,7 +8689,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-##### StopMigrationJob
+##### 5.5.1.9 StopMigrationJob
 
 Stops a data migration task that is in the Migrating state. After you call this operation to stop a data migration task, the state of the task changes to Finished and you cannot restart the task by calling the StartMigrationJob operation.
 
@@ -8578,7 +8740,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DeleteMigrationJob
+##### 5.5.1.10 DeleteMigrationJob
 
 Releases a data migration instance. After a data migration instance is released, it cannot be recovered.
 
@@ -8626,9 +8788,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Data synchronization
+#### 5.5.2 Data synchronization
 
-##### CreateSynchronizationJob
+##### 5.5.2.1 CreateSynchronizationJob
 
 Purchases a data synchronization instance. After you purchase a data synchronization instance, you must call the ConfigureSynchronizationJob operation to configure a data synchronization task. Then, the task is automatically started.
 
@@ -8698,7 +8860,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ConfigureSynchronizationJob
+##### 5.5.2.2 ConfigureSynchronizationJob
 
 Configures a data synchronization task. Before you call this operation, you must call the CreateSynchronizationJob operation to create a data synchronization instance. After you call this operation to configure a data synchronization task, the task automatically starts and the precheck is performed. You do not need to call the StartSynchronizationJob operation to start the task. A data synchronization task may fail to be started due to precheck failures. In this case, call the DescribeSynchronizationJobStatus operation to query the state of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the StartSynchronizationJob operation to restart the data synchronization task.
 
@@ -8788,7 +8950,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### StartSynchronizationJob
+##### 5.5.2.3 StartSynchronizationJob
 
 Starts a data synchronization task. When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the precheck is perform on the task.
 
@@ -8839,7 +9001,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### SuspendSynchronizationJob
+##### 5.5.2.4 SuspendSynchronizationJob
 
 Pauses a data synchronization task. When you call this operation, the data synchronization task must be in the Synchronizing state. We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again. If the billing method is pay-as-you-go, you are charged even if the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database but continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, the paused data synchronization task still consumes resources such as the bandwidth of the source database.
 
@@ -8890,7 +9052,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ResetSynchronizationJob
+##### 5.5.2.5 ResetSynchronizationJob
 
 Clears the configurations of a data synchronization task. If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the **ConfigureSynchronizationJob** operation to reconfigure the task.
 
@@ -8941,7 +9103,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ModifySynchronizationObject
+##### 5.5.2.6 ModifySynchronizationObject
 
 Modifies the objects to be synchronized. To call this operation, the data synchronization task must be in the NotStarted or Synchronizing state.
 
@@ -9293,7 +9455,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-##### SwitchSynchronizationEndpoint
+##### 5.5.2.8 SwitchSynchronizationEndpoint
 
 After a primary/secondary switchover is performed on the source or destination database, you can call the SwitchSynchronizationEndpoint operation to transfer the connection settings to Data Transmission Service (DTS). Then, DTS restarts the data synchronization task from the breakpoint. If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings. If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation. For two-way synchronization tasks, if a primary/secondary switchover is performed on the source or destination database, you must call this operation twice to update the connection settings. For example, if a primary/secondary switchover is performed on the destination database in the forward direction, you must call this operation twice. For the first call, set the **SynchronizationDirection** parameter to **Forward** and the
 **Endpoint.Type** parameter to **Destination** and configure the connection
@@ -9363,7 +9525,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-##### DescribeEndpointSwitchStatus
+##### 5.5.2.9 DescribeEndpointSwitchStatus
 
 Queries the state of the task that changes the database connection settings. This operation is always called after you call the SwitchSynchronizationEndpoint operation to change the database connection settings.
 
@@ -9529,7 +9691,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSynchronizationJobs
+##### 5.5.2.12 DescribeSynchronizationJobs
 
 Queries the list of data synchronization instances and details of each instance.
 
@@ -9978,7 +10140,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeInitializationStatus
+##### 5.5.2.13 DescribeInitializationStatus
 
 Queries the details of initial data synchronization, including the synchronization progress of schemas and historical data.
 
@@ -10123,7 +10285,7 @@ unsigned auto_increment COMMENT '' NOT NULL , \n`customer_title` varchar(100) CH
 
 `}`
 
-##### DescribeSynchronizationJobStatusList
+##### 5.5.2.14 DescribeSynchronizationJobStatusList
 
 Queries the state of one or more data synchronization instances.
 
@@ -10243,7 +10405,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSynchronizationJobStatus
+##### 5.5.2.15 DescribeSynchronizationJobStatus
 
 Queries the state of a data synchronization instance.
 
@@ -10679,7 +10841,7 @@ eta
 
 `}` `}`
 
-##### DeleteSynchronizationJob
+##### 5.5.2.16 DeleteSynchronizationJob
 
 Releases a data synchronization instance. After a data synchronization instance is released, it cannot be recovered.
 
@@ -10729,9 +10891,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Change tracking
+#### 5.5.3 Change tracking
 
-##### CreateSubscriptionInstance
+##### 5.5.3.1 CreateSubscriptionInstance
 
 Purchases a change tracking instance.
 
@@ -10791,7 +10953,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ConfigureSubscriptionInstance
+##### 5.5.3.2 ConfigureSubscriptionInstance
 
 Configures a change tracking instance. Before you call this operation, you must call the CreateSubscriptionInstance operation to create a change tracking instance.
 
@@ -10866,7 +11028,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### StartSubscriptionInstance
+##### 5.5.3.3 StartSubscriptionInstance
 
 Starts a change tracking instance. To call this operation, the change tracking task must be in the NotStarted or Failed state.
 
@@ -10919,7 +11081,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ModifySubscriptionObject
+##### 5.5.3.4 ModifySubscriptionObject
 
 Modifies the objects for a change tracking task. To call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state. If you call this operation to modify the objects of a change tracking task that is in the Normal state, Data Transmission Service (DTS) automatically calls StartSubscriptionInstance to restart the change tracking instance. If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically restart the change tracking instance. You must call the StartSubscriptionInstance operation.
 
@@ -10968,9 +11130,9 @@ Sample success responses `XML` format
 
 `}`
 
-##### Manage consumer groups
+##### 5.5.3.5 Manage consumer groups
 
-###### CreateConsumerGroup
+###### 5.5.3.5.1 CreateConsumerGroup
 
 Creates a consumer group for a change tracking instance.
 
@@ -11026,7 +11188,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### DescribeConsumerGroup
+###### 5.5.3.5.2 DescribeConsumerGroup
 
 Queries the details of consumer groups in a change tracking instance.
 
@@ -11131,7 +11293,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. |
 
-###### ModifyConsumerGroupPassword
+###### 5.5.3.5.3 ModifyConsumerGroupPassword
 
 Modifies the password of a consumer group. This operation is applicable only to the new version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the new version of the change tracking feature is used if you specify the
 **SubscriptionInstanceNetworkType** parameter. Otherwise, the old version of the
@@ -11188,7 +11350,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### DeleteConsumerGroup
+###### 5.5.3.5.4 DeleteConsumerGroup
 
 Deletes a consumer group.
 
@@ -11237,7 +11399,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ModifyConsumptionTimestamp
+###### 5.5.3.5.5 ModifyConsumptionTimestamp
 
 Modifies the consumption checkpoint of a change tracking instance. This operation is applicable only to the old version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the old version of the change tracking feature is used if you do not specify the
 **SubscriptionInstanceNetworkType** parameter. Otherwise, the new version of
@@ -11290,7 +11452,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSubscriptionInstances
+##### 5.5.3.6 DescribeSubscriptionInstances
 
 Queries the list of change tracking instances and details of each instance.
 
@@ -11487,7 +11649,7 @@ internal.aliyuncs.com:18002</PrivateHost>
 
 `}` `}` `]` `}` `}`
 
-##### DescribeSubscriptionInstanceStatus
+##### 5.5.3.7 DescribeSubscriptionInstanceStatus
 
 Queries the state of a change tracking instance.
 
@@ -11651,7 +11813,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DeleteSubscriptionInstance
+##### 5.5.3.8 DeleteSubscriptionInstance
 
 Releases a change tracking instance. After a change tracking instance is released, it cannot be recovered.
 
@@ -11701,9 +11863,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Network settings
+#### 5.5.4 Network settings
 
-##### DescribeDTSIP
+##### 5.5.4.1 DescribeDTSIP
 
 Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the **source or destination instance** is an **on-premises self-managed database**, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks to the firewall security settings of the source or destination instance. If the **source or destination database** is an **ApsaraDB instance** (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance) or a **self-managed**
 **database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set**
@@ -11765,7 +11927,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeConnectionStatus
+##### 5.5.4.2 DescribeConnectionStatus
 
 Queries the connectivity of Data Transmission Service (DTS) servers to the source and destination databases.
 
@@ -11949,9 +12111,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Monitoring and alerting
+#### 5.5.5 Monitoring and alerting
 
-##### ConfigureMigrationJobAlert
+##### 5.5.5.1 ConfigureMigrationJobAlert
 
 Configures alert settings to monitor a data migration instance.
 
@@ -12010,7 +12172,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeMigrationJobAlert
+##### 5.5.5.2 DescribeMigrationJobAlert
 
 Queries the alert settings of a data migration instance.
 
@@ -12080,7 +12242,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ConfigureSubscriptionInstanceAlert
+##### 5.5.5.3 ConfigureSubscriptionInstanceAlert
 
 Configures alert settings to monitor a change tracking instance.
 
@@ -12139,7 +12301,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSubscriptionInstanceAlert
+##### 5.5.5.4 DescribeSubscriptionInstanceAlert
 
 Queries the alert settings of a change tracking instance.
 
@@ -12205,7 +12367,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ConfigureSynchronizationJobAlert
+##### 5.5.5.5 ConfigureSynchronizationJobAlert
 
 Configures alert settings to monitor a data synchronization instance.
 
@@ -12267,7 +12429,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSynchronizationJobAlert
+##### 5.5.5.6 DescribeSynchronizationJobAlert
 
 Queries the alert settings of a data synchronization instance.
 
@@ -12341,9 +12503,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Instance management
+#### 5.5.6 Instance management
 
-##### ShieldPrecheck
+##### 5.5.6.1 ShieldPrecheck
 
 Ignores the precheck items that a data migration or synchronization instance may fail to pass. After you successfully call this operation, you need to call the StartMigrationJob and StartSynchronizationJob operations. Then, Data Transmission Service (DTS) performs a precheck on your data migration or synchronization instance. After the precheck is passed, the instance automatically runs.
 
@@ -12393,9 +12555,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Tag management
+#### 5.5.7 Tag management
 
-##### TagResources
+##### 5.5.7.1 TagResources
 
 Adds tags to one or more data migration, data synchronization, or change tracking instances. If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter these instances by tag. A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value. If the tag that you specify does not exist, this tag is automatically created and added to the specified instance. If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag. You can add up to 20 tags to an instance. You can add tags to up to 50 instances in each request.
 
@@ -12447,7 +12609,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ListTagResources
+##### 5.5.7.2 ListTagResources
 
 Queries the tags that are added to specific data migration, data synchronization, or change tracking instances, or queries the instances to which specific tags are added.
 
@@ -12530,7 +12692,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UntagResources
+##### 5.5.7.3 UntagResources
 
 Removes tags from one or more data migration, data synchronization, or change tracking instances. If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 
@@ -12584,15 +12746,13 @@ Sample success responses `XML` format
 
 `}`
 
-#### Additional description of parameters
+#### 5.5.8 Additional description of parameters
 
-##### MigrationObject
+##### 5.5.8.1 MigrationObject
 
 When you call the ConfigureMigrationJob operation, you must set the MigrationObject parameter. This topic provides the definition and examples of the MigrationObject parameter.
 
 **Related API operation**
-
-ConfigureMigrationJob
 
 **Definition of the MigrationObject parameter**
 
@@ -12749,13 +12909,11 @@ Example 1: Migrate all tables in the dtstestdata database. `[{`
 | Negative character set [^characters] | Matches any single character except the characters included in the brackets. For example, h[ae]llo matches hcllo or hdllo, but not hallo or hello. |
 | Character range [character1-character2] | Matches any characters within the range from character1 to character2. Examples: [0-9] and [a-z]. |
 
-##### SubscriptionObjects
+##### 5.5.8.2 SubscriptionObjects
 
 When you call the ConfigureSubscriptionInstance operation, you must set the SubscriptionObjects parameter. This topic provides the definition and examples of the SynchronizationObjects parameter.
 
 **Related API operation**
-
-ConfigureSubscriptionInstance
 
 **Definition of the SubscriptionObjects parameter**
 
@@ -12822,13 +12980,11 @@ Example 1: Track data changes from all tables in the dtstestdata database. `[{`
 | [character1-character2] Character range | Matches any character within the range from character1 to character2. For example, [0-9] and [a-z]. |
 |---|---|
 
-##### SynchronizationObjects
+##### 5.5.8.3 SynchronizationObjects
 
 When you call the ConfigureSynchronizationJob or ModifySynchronizationObject operation, you must specify the SynchronizationObjects parameter. This topic provides the definition and examples of the SynchronizationObjects parameter.
 
 **Related API operations**
-
-ConfigureSynchronizationJob ModifySynchronizationObject
 
 **Definition of the SynchronizationObjects parameter**
 
@@ -12924,7 +13080,7 @@ Example 1: Synchronize all tables in the dtstestdata database. `[{`
 | [^characters] Negative character set | Matches any single character not in the brackets. For example, h[^ae]llo matches hcllo or hdllo, but not hallo or hello. |
 | [character1-character2] Character range | Matches any character within the range from character1 to character2. For example, [0-9] and [a-z]. |
 
-##### MigrationReserved
+##### 5.5.8.4 MigrationReserved
 
 When you call the ConfigureMigrationJob or ConfigureSynchronizationJob operation, you can set the MigrationReserved parameter to meet special requirements. For example, you can specify whether to automatically start a precheck.
 
@@ -12933,8 +13089,6 @@ When you call the ConfigureMigrationJob or ConfigureSynchronizationJob operation
 To ensure that you can use this parameter, you must use the latest SDK version. For more information, see the following topics: Get started with SDK for Java Get started with SDK for Phython Get started with SDK for Go
 
 **Related API operations**
-
-ConfigureMigrationJob ConfigureSynchronizationJob
 
 **Definition of the MigrationReserved parameter**
 
@@ -12958,11 +13112,11 @@ The value of the MigrationReserved parameter is a JSON string. The following tab
 
 `}`
 
-## Appendixes
+## 6 Appendixes
 
-### STS overview
+### 6.1 STS overview
 
-#### What is STS?
+#### 6.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -12974,7 +13128,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 6.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 

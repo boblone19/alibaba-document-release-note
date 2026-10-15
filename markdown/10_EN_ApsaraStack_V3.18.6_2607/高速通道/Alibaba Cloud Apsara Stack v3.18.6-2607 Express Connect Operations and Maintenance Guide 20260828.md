@@ -3,16 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Operations and M
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 46
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "9e1dcf37427f815c_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Operations and Maintenance Guide 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Leased line management
+  - 2.1 Leased line dashboard
+  - 2.2 Leased line group
+  - 2.3 Access point management
+  - 2.4 Access device management
+  - 2.5 Manage physical connections
+  - 2.6 VBR management
+  - 2.7 Router interface management
+  - 2.8 Route table management
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -31,9 +44,9 @@ Press the ENTER key. You can click the current language in the upper-right corne
 ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-## Leased line management
+## 2 Leased line management
 
-### Leased line dashboard
+### 2.1 Leased line dashboard
 
 The Apsara Uni-manager Operations Console allows you to manage virtual private cloud (VPC), Data Center Interconnect (DCI), and interconnection leased lines. You can also view the monitoring data of the leased lines.
 
@@ -127,7 +140,7 @@ over the icon in the **Actions** column, and then select **Delete**. In the mess
 **Perform quick diagnostics**: Find the leased line that you want to manage, move the
 pointer over the icon in the **Actions** column, and then select **Quick Diagnostics**. The **Network Instance Diagnostics Results** page appears. For more information, see Network instance diagnosis. On the **Monitoring & Alerting** tab, view the monitoring and alerting information of leased lines. Click **Details** in the **Alert Details** column of an alert to view its details.
 
-### Leased line group
+### 2.2 Leased line group
 
 Leased line management allows you to manage groups of data center interconnection (DCI) leased lines and interconnection leased lines.
 
@@ -185,7 +198,7 @@ you want to disassociate and click **Disassociate** in the **Actions** column. I
 |---|---|
 | Delete a leased line group | 1. On the Leased Line Group Management page, find the leased line group that you want to delete and click Delete in the Actions column. 2. In the message that appears, click OK. Note This operation deletes the leased line group and disassociates the leased line group from leased lines. Proceed with caution. |
 
-### Access point management
+### 2.3 Access point management
 
 Access points are Apsara Stack data centers located in different regions. One or more access points are deployed in each region. This topic describes how to manage access points.
 
@@ -222,7 +235,7 @@ a. Find the access point that you want to manage and click **Edit** in the **Act
 | Data Center Operator | The Internet service provider (ISP) of the data center to which the access point belongs. |
 | Physical Region | The region ID of the access point. |
 
-### Access device management
+### 2.4 Access device management
 
 This topic describes how to manage access devices.
 
@@ -264,7 +277,7 @@ a. On the Access Device Management page, find the access device that you want to
 | Device Name | The name of the access device. |
 | Description | The description of the access device. |
 
-### Manage physical connections
+### 2.5 Manage physical connections
 
 You can establish a physical connection by using a leased line from a carrier to connect your on-premises data center to an Alibaba Cloud access point. This topic describes how to manage physical connections.
 
@@ -319,7 +332,7 @@ The **Status** filter supports the following options: **Pending**, **Approved**,
 | Reject physical connection | 1. On the Physical Connections page, find the desired physical connection and click Reject in the Actions column. 2. In the confirmation dialog box, click OK. Note This operation is supported for physical connections whose connection status is Pending. |
 | Confirm physical connection | 1. On the Physical Connections page, find the desired physical connection and click Confirm in the Actions column. 2. In the confirmation dialog box, click OK. Note Only physical connections with a connection status of Provisioned support this operation. |
 
-### VBR management
+### 2.6 VBR management
 
 A virtual border router (VBR) functions as a router between a customer-premises equipment (CPE) device and a virtual private cloud (VPC). VBRs route traffic between VPCs and data centers. This topic describes how to manage VBRs.
 
@@ -370,7 +383,7 @@ list does not display data. You can filter and view the desired VBRs based on yo
 |---|---|
 | Disable a VBR | 1. On the VBR Management page, find the VBR that you want to manage and click Disable in the Actions column. 2. In the message that appears, click OK. Note This operation is supported for VBRs whose Status is active. |
 
-### Router interface management
+### 2.7 Router interface management
 
 After you create a virtual border router (VBR), you must create a router interface or a pair of router interfaces to connect the VBR to a virtual private cloud (VPC). This topic describes how to manage router interfaces.
 
@@ -505,7 +518,7 @@ This operation is supported only for a router interface whose **Local Router Int
 manage and click **Delete** in the **Actions** column.
 2. In the message that appears, click **OK**.
 
-### Route table management
+### 2.8 Route table management
 
 A route table contains a set of rules that are called route entries. This topic describes how to manage route tables.
 

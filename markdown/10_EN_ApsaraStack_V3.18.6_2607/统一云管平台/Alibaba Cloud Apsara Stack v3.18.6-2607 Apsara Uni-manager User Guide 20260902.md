@@ -3,14 +3,782 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 1398
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20260902.pdf"
+source_pdf: "f319e7b9b7a9e74a_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager User Guide 20260902
 
-## Change inventory
+## Table of Contents
+
+- 1 Change inventory
+- 2 What is the Apsara Uni-manager Management Console?
+- 3 Getting started
+  - 3.1 Log in to the Apsara Uni-manager Management Console
+  - 3.2 Important notes
+  - 3.3 Familiarize yourself with the interface
+  - 3.4 Organization and permission models
+  - 3.5 Initial configuration
+    - 3.5.1 Preset roles and their permissions
+    - 3.5.2 Configuration description
+    - 3.5.3 Procedure
+- 4 Portal homepage
+- 5 Enterprise
+  - 5.1 Resource management
+    - 5.1.1 Use resource retrieval
+      - 5.1.1.1 View the resource list
+      - 5.1.1.2 Bind or unbind tags for resources
+      - 5.1.1.3 Create and manage resources
+      - 5.1.1.4 Manage the expiration time of resources
+      - 5.1.1.5 View and configure an expiration reminder rule
+      - 5.1.1.6 View resource instance insights
+    - 5.1.2 Organization management
+      - 5.1.2.1 Create organizations
+      - 5.1.2.2 Sort organizations
+      - 5.1.2.3 View the basic information about an organization
+      - 5.1.2.4 Modify organization information
+      - 5.1.2.5 Manage the AccessKey pairs of an organization
+      - 5.1.2.6 Configure third-party authentication
+      - 5.1.2.7 Specify and manage a proxy administrator for an organization
+      - 5.1.2.8 Manage the resource sets of an organization
+      - 5.1.2.9 Manage the users of an organization
+      - 5.1.2.10 Manage the user groups of an organization
+      - 5.1.2.11 Manage multi-cloud organizations
+      - 5.1.2.12 Delete an organization
+    - 5.1.3 Manage resource sets
+      - 5.1.3.1 Create a resource set
+      - 5.1.3.2 View resource sets and details
+      - 5.1.3.3 Modify a resource set
+      - 5.1.3.4 Manage tags of a resource set
+      - 5.1.3.5 Manage resource set members
+      - 5.1.3.6 Manage multi-cloud resource sets
+      - 5.1.3.7 Specify and manage a proxy administrator for a resource set
+      - 5.1.3.8 Delete a resource set
+    - 5.1.4 Manage regions
+    - 5.1.5 Change management
+      - 5.1.5.1 Change the ownership of an organization
+      - 5.1.5.2 Change the ownership of a user
+      - 5.1.5.3 Change the ownership of a resource set
+      - 5.1.5.4 View resource relationships
+      - 5.1.5.5 Change the ownership of resources
+      - 5.1.5.6 Change the sharing scope of resources
+  - 5.2 User management
+    - 5.2.1 User management
+      - 5.2.1.1 Create a user
+      - 5.2.1.2 View the system user list and details
+      - 5.2.1.3 Modify basic information of a user
+      - 5.2.1.4 Manage the roles of a user
+      - 5.2.1.5 Modify multi-cloud roles
+      - 5.2.1.6 Manage the resource sets to which users belong
+      - 5.2.1.7 Manage the user groups to which a user belongs
+      - 5.2.1.8 Configure a logon policy for users
+      - 5.2.1.9 Configure MFA settings
+      - 5.2.1.10 View the initial password of a user
+      - 5.2.1.11 Reset the password of a user
+      - 5.2.1.12 Manage the AccessKey pairs of a user
+      - 5.2.1.13 Configure validity periods for accounts
+      - 5.2.1.14 Disable a user
+      - 5.2.1.15 Enable a user
+      - 5.2.1.16 Delete a user
+      - 5.2.1.17 Restore a user
+      - 5.2.1.18 Permanently delete a user
+      - 5.2.1.19 Unlock a temporarily locked user
+    - 5.2.2 User group management
+      - 5.2.2.1 Create a user group
+      - 5.2.2.2 View user groups
+      - 5.2.2.3 Modify the name of a user group
+      - 5.2.2.4 Assign roles to a user group
+      - 5.2.2.5 Add users to a user group
+      - 5.2.2.6 Removes users from a user group
+      - 5.2.2.7 Delete a user group
+    - 5.2.3 Online user management
+      - 5.2.3.1 View online users
+      - 5.2.3.2 Force online users to log off
+  - 5.3 Permission management
+    - 5.3.1 Role permissions
+      - 5.3.1.1 Overview
+      - 5.3.1.2 RAM policies
+      - 5.3.1.3 Manage preset roles
+      - 5.3.1.4 Manage custom roles
+      - 5.3.1.5 Manage RAM role authorization
+      - 5.3.1.6 Manage RAM authorization
+      - 5.3.1.7 Manage multi-cloud roles
+      - 5.3.1.8 Limits on roles
+      - 5.3.1.9 Examples
+        - 5.3.1.9.1 Example: Create a role with read-only permissions for ECS (custom role)
+        - 5.3.1.9.2 Example: Modify the ECS Read-Only Administrator Role (Custom Role)
+        - 5.3.1.9.3 Example: Grant a user permission to restart ECS instances by using a RAM role (RAM Role Authorization)
+        - 5.3.1.9.4 Example: Use RAM authorization to grant users permissions to view and delete VPC-connected instances (RAM Authorization)
+    - 5.3.2 Data permissions
+    - 5.3.3 Access control
+      - 5.3.3.1 Create an access policy
+      - 5.3.3.2 Manage access policies
+    - 5.3.4 Permission boundary
+      - 5.3.4.1 Service boundary management
+        - 5.3.4.1.1 Create a service boundary
+        - 5.3.4.1.2 Manage service boundaries
+      - 5.3.4.2 Control policy management
+        - 5.3.4.2.1 Create an API control policy
+        - 5.3.4.2.2 Manage API control policies
+    - 5.3.5 AccessKey log
+  - 5.4 Operation audit
+    - 5.4.1 Overview
+    - 5.4.2 Operation logs
+    - 5.4.3 Advanced query
+    - 5.4.4 Export history
+    - 5.4.5 Audit notifications
+    - 5.4.6 Event fields
+    - 5.4.7 Examples
+      - 5.4.7.1 Use operation audit to monitor AccessKey pair deletion events
+  - 5.5 Alibaba Cloud platform management configurations
+    - 5.5.1 Configure resource synchronization for an Alibaba Cloud platform
+    - 5.5.2 Configure resource ownership
+  - 5.6 Asynchronous task
+- 6 Configurations
+  - 6.1 Resource pool configuration
+    - 6.1.1 Service resources
+      - 6.1.1.1 Configure quota items
+      - 6.1.1.2 Create or modify a logical inventory
+      - 6.1.1.3 Cancel quotas
+      - 6.1.1.4 Configure physical inventory change notifications
+    - 6.1.2 AI service tokens
+      - 6.1.2.1 Set quotas
+  - 6.2 Native hybrid cloud
+    - 6.2.1 Multi-Cloud Management
+    - 6.2.2 Cloud platform type management
+    - 6.2.3 Export local cloud data
+  - 6.3 Security policies
+    - 6.3.1 Set a password policy
+    - 6.3.2 Configure login control
+    - 6.3.3 Configure security level-based authorization
+  - 6.4 Authentication modes
+    - 6.4.1 Authentication modes
+    - 6.4.2 Configure an authentication mode
+  - 6.5 Specification management
+    - 6.5.1 Specifications
+    - 6.5.2 Create or synchronize specifications
+    - 6.5.3 Manage specifications
+    - 6.5.4 Examples
+      - 6.5.4.1 Create an ApsaraDB RDS instance specification
+      - 6.5.4.2 Disable an ApsaraDB RDS instance specification
+  - 6.6 Menu management
+    - 6.6.1 Configure menus
+    - 6.6.2 Creation page configuration
+    - 6.6.3 Redirection page configuration
+  - 6.7 Configure the billing feature on the Billing Switch page
+  - 6.8 Manage announcements
+  - 6.9 Privacy documents
+    - 6.9.1 Create a privacy document
+    - 6.9.2 View a privacy document
+    - 6.9.3 Modify a privacy document
+    - 6.9.4 Publish a privacy document
+    - 6.9.5 Unpublish a privacy document
+    - 6.9.6 View the versions of a privacy document
+  - 6.10 Custom settings
+    - 6.10.1 Platform settings
+  - 6.11 Third-party authentication
+    - 6.11.1 User-based SSO
+      - 6.11.1.1 Configure a global IdP
+      - 6.11.1.2 Configure a local IdP
+      - 6.11.1.3 Configure a multi-cloud IdP
+    - 6.11.2 Manage OIDC IdPs
+  - 6.12 Message Gateway
+  - 6.13 Manage service-linked roles
+  - 6.14 Configure risky operation settings
+  - 6.15 Configure log storage settings
+  - 6.16 Billing and Order Dump Configuration
+  - 6.17 Event notifications
+    - 6.17.1 View events
+    - 6.17.2 Configure event push
+    - 6.17.3 Supported change events
+- 7 Operations
+  - 7.1 Resource operations
+    - 7.1.1 Application forms
+      - 7.1.1.1 View application forms
+      - 7.1.1.2 Withdraw an application form
+      - 7.1.1.3 Modify the configuration of an application form
+      - 7.1.1.4 Approve an application form
+      - 7.1.1.5 Transfer an application form
+      - 7.1.1.6 Add approvers for an application form
+      - 7.1.1.7 Execute actions
+      - 7.1.1.8 Export application forms
+    - 7.1.2 Process management
+      - 7.1.2.1 Manage processes
+      - 7.1.2.2 Workflow binding
+    - 7.1.3 Quota management
+      - 7.1.3.1 Products that support resource quotas
+        - 7.1.3.1.1 Elastic computing
+          - 7.1.3.1.1.1 ECS
+          - 7.1.3.1.1.2 Auto Scaling
+          - 7.1.3.1.1.3 DDH
+          - 7.1.3.1.1.4 BMS
+          - 7.1.3.1.1.5 ACK
+          - 7.1.3.1.1.6 Container Registry Standard Edition
+          - 7.1.3.1.1.7 Container Registry Advanced Edition
+          - 7.1.3.1.1.8 BMCP
+          - 7.1.3.1.1.9 ACK One
+        - 7.1.3.1.2 Storage
+          - 7.1.3.1.2.1 File Storage NAS
+          - 7.1.3.1.2.2 CPFS File Storage
+          - 7.1.3.1.2.3 OSS
+          - 7.1.3.1.2.4 APFS
+          - 7.1.3.1.2.5 EFS-NAS
+        - 7.1.3.1.3 Networking
+          - 7.1.3.1.3.1 EIP
+          - 7.1.3.1.3.2 SLB
+          - 7.1.3.1.3.3 HAVIP
+          - 7.1.3.1.3.4 VPC
+          - 7.1.3.1.3.5 Express Connect
+          - 7.1.3.1.3.6 CEN
+          - 7.1.3.1.3.7 NAT Gateway
+          - 7.1.3.1.3.8 VPN Gateway
+          - 7.1.3.1.3.9 DNS
+          - 7.1.3.1.3.10 ALB
+        - 7.1.3.1.4 Database services
+          - 7.1.3.1.4.1 AnalyticDB for PostgreSQL
+          - 7.1.3.1.4.2 ApsaraDB for MongoDB
+          - 7.1.3.1.4.3 PolarDB-X 2.0
+          - 7.1.3.1.4.4 ApsaraDB RDS
+          - 7.1.3.1.4.5 Tair (Redis OSS-compatible)
+          - 7.1.3.1.4.6 PolarDB
+          - 7.1.3.1.4.7 DTS
+          - 7.1.3.1.4.8 Lindorm
+        - 7.1.3.1.5 Big data computing
+          - 7.1.3.1.5.1 MaxCompute
+          - 7.1.3.1.5.2 Elasticsearch on Kubernetes
+        - 7.1.3.1.6 AI and machine learning
+          - 7.1.3.1.6.1 AI Studio
+          - 7.1.3.1.6.2 PAI
+        - 7.1.3.1.7 Security
+          - 7.1.3.1.7.1 KMS
+        - 7.1.3.1.8 Middleware
+          - 7.1.3.1.8.1 ApsaraMQ for RocketMQ
+          - 7.1.3.1.8.2 EDAS
+          - 7.1.3.1.8.3 ApsaraMQ for Kafka
+          - 7.1.3.1.8.4 API Gateway
+        - 7.1.3.1.9 Development tools
+          - 7.1.3.1.9.1 ROS
+        - 7.1.3.1.10 Migration and O&M management
+          - 7.1.3.1.10.1 OOS
+        - 7.1.3.1.11 Identity and O&M security
+          - 7.1.3.1.11.1 Tenant-side Bastionhost
+          - 7.1.3.1.11.2 IDaaS
+        - 7.1.3.1.12 Data security
+          - 7.1.3.1.12.1 Static Data Masking and Watermarking
+          - 7.1.3.1.12.2 DataBase Audit
+        - 7.1.3.1.13 Application security
+          - 7.1.3.1.13.1 Web Application Firewall - Instance
+      - 7.1.3.2 Products that support AI service token quotas
+      - 7.1.3.3 Manage quotas
+        - 7.1.3.3.1 Service resources
+          - 7.1.3.3.1.1 Cloud services supported by multi-cloud quotas
+          - 7.1.3.3.1.2 Cloud services that support group quota configuration
+          - 7.1.3.3.1.3 Cloud services that support category quota configuration
+          - 7.1.3.3.1.4 Cloud services that support zone-level resource quotas
+          - 7.1.3.3.1.5 Set or modify quotas for a single cloud service
+          - 7.1.3.3.1.6 Set quotas in batches
+          - 7.1.3.3.1.7 View quotas
+          - 7.1.3.3.1.8 Clear quotas
+          - 7.1.3.3.1.9 Create a quota alert rule
+          - 7.1.3.3.1.10 Configure a quota template
+        - 7.1.3.3.2 AI service tokens
+          - 7.1.3.3.2.1 Set quotas
+      - 7.1.3.4 Quota alert management
+        - 7.1.3.4.1 Create a quota alert rule
+        - 7.1.3.4.2 Manage quota alert rules
+      - 7.1.3.5 View the quota alert history
+      - 7.1.3.6 Configure network specification quotas
+    - 7.1.4 Tag management
+      - 7.1.4.1 Manage tags
+      - 7.1.4.2 Policy library
+        - 7.1.4.2.1 Create a tag policy
+        - 7.1.4.2.2 View tag policies
+        - 7.1.4.2.3 Edit a tag policy
+        - 7.1.4.2.4 Enable a tag policy
+        - 7.1.4.2.5 Disable a tag policy
+        - 7.1.4.2.6 Delete a tag policy
+      - 7.1.4.3 Effective policies
+        - 7.1.4.3.1 View effective policies
+        - 7.1.4.3.2 Manage effective policies
+      - 7.1.4.4 Supported products and resources
+    - 7.1.5 Metering management
+      - 7.1.5.1 Metering configuration management
+        - 7.1.5.1.1 Create a metering table
+        - 7.1.5.1.2 Modify a metering table
+        - 7.1.5.1.3 View metering tables
+        - 7.1.5.1.4 Enable a metering table
+        - 7.1.5.1.5 Disable a metering table
+        - 7.1.5.1.6 Clone a metering table
+        - 7.1.5.1.7 Delete a metering table
+        - 7.1.5.1.8 Create a draft based on an existing metering table
+        - 7.1.5.1.9 View published version records of a metering table
+        - 7.1.5.1.10 View metering data push
+        - 7.1.5.1.11 View alert records of metering data
+      - 7.1.5.2 Metering details
+        - 7.1.5.2.1 Cloud services that support metering
+        - 7.1.5.2.2 View and export usage statistics details
+    - 7.1.6 Product management
+      - 7.1.6.1 Product management
+        - 7.1.6.1.1 Add product category
+        - 7.1.6.1.2 Edit product category
+        - 7.1.6.1.3 Delete a product category
+        - 7.1.6.1.4 Add a product
+        - 7.1.6.1.5 Edit service
+        - 7.1.6.1.6 Publish a service
+        - 7.1.6.1.7 Unpublish a service
+        - 7.1.6.1.8 Delete a product
+        - 7.1.6.1.9 Edit product tags
+        - 7.1.6.1.10 Add a resource type
+        - 7.1.6.1.11 Modify a resource type
+        - 7.1.6.1.12 Publish a resource type
+        - 7.1.6.1.13 Unpublish a resource type
+        - 7.1.6.1.14 Delete a resource type
+        - 7.1.6.1.15 Export a configuration file
+        - 7.1.6.1.16 Import a configuration file
+        - 7.1.6.1.17 Third-party product management integration
+          - 7.1.6.1.17.1 Integration solution
+          - 7.1.6.1.17.2 Demo code
+          - 7.1.6.1.17.3 Appendix
+      - 7.1.6.2 Service provider management
+        - 7.1.6.2.1 Add a service provider
+        - 7.1.6.2.2 Modify a service provider
+        - 7.1.6.2.3 Remove a service provider
+    - 7.1.7 Examples
+      - 7.1.7.1 Example: Manage the memory quota of ECS
+      - 7.1.7.2 Create an alert rule for the memory quota of ECS
+      - 7.1.7.3 Example: Create and publish a process
+      - 7.1.7.4 Example: Associate a process with management operations
+      - 7.1.7.5 Example: Associate a process with cloud service operations
+      - 7.1.7.6 Example: Associate a process with service catalogs
+  - 7.2 Service operations
+    - 7.2.1 Shopping cart
+      - 7.2.1.1 Create a list
+      - 7.2.1.2 Save a list
+      - 7.2.1.3 Export a list
+      - 7.2.1.4 Delete a list
+      - 7.2.1.5 Add a service to CPQ
+      - 7.2.1.6 Remove a service from CPQ
+      - 7.2.1.7 Change the configurations of a service in CPQ
+      - 7.2.1.8 Submit a service application
+    - 7.2.2 Service catalog
+      - 7.2.2.1 Service activation
+      - 7.2.2.2 Service management
+        - 7.2.2.2.1 Product services
+          - 7.2.2.2.1.1 Services and cloud resources that integrate with the Service Catalog
+          - 7.2.2.2.1.2 Create a service
+          - 7.2.2.2.1.3 View the service list and details
+          - 7.2.2.2.1.4 Edit a service
+          - 7.2.2.2.1.5 Publish a service
+          - 7.2.2.2.1.6 Unpublish a service
+          - 7.2.2.2.1.7 Copy a service
+          - 7.2.2.2.1.8 Change the authorization scope of a service
+          - 7.2.2.2.1.9 Delete a service
+        - 7.2.2.2.2 AI services
+          - 7.2.2.2.2.1 Manage service categories
+          - 7.2.2.2.2.2 Service synchronization configuration
+          - 7.2.2.2.2.3 Manage AI services
+      - 7.2.2.3 Operation examples
+        - 7.2.2.3.1 Example: Create an ECS instance service
+    - 7.2.3 Order management
+      - 7.2.3.1 Orders
+        - 7.2.3.1.1 View orders
+        - 7.2.3.1.2 Reorder
+        - 7.2.3.1.3 Cancel an order
+        - 7.2.3.1.4 Execute delivery
+        - 7.2.3.1.5 Export orders
+        - 7.2.3.1.6 Assign an order
+        - 7.2.3.1.7 Claim an order
+        - 7.2.3.1.8 AI analysis of abnormal orders
+      - 7.2.3.2 Renewal management
+        - 7.2.3.2.1 View organization renewal resources
+        - 7.2.3.2.2 Set the renewal method
+        - 7.2.3.2.3 Manual renewal
+        - 7.2.3.2.4 AI analysis of renewal resources
+      - 7.2.3.3 Billing method change
+        - 7.2.3.3.1 View instances eligible for billing method conversion
+        - 7.2.3.3.2 Switch from subscription to pay-as-you-go
+        - 7.2.3.3.3 Switch from Pay-As-You-Go to Subscription Billing
+    - 7.2.4 Bill management
+      - 7.2.4.1 Product bill overview
+        - 7.2.4.1.1 View the product bill overview
+        - 7.2.4.1.2 View the monthly bill overview
+        - 7.2.4.1.3 Export product monthly bill
+        - 7.2.4.1.4 Perform an AI-based analysis of cloud service bills
+      - 7.2.4.2 Overview of organization bills
+        - 7.2.4.2.1 View the overview of organization bills
+        - 7.2.4.2.2 View the monthly bill overview of an organization
+        - 7.2.4.2.3 View the monthly bill overview of a resource set
+        - 7.2.4.2.4 Settle monthly bills for organizations
+        - 7.2.4.2.5 Export organization monthly bills
+        - 7.2.4.2.6 Export resource set monthly bills
+        - 7.2.4.2.7 Perform an AI-based analysis of organization bills
+      - 7.2.4.3 Bill overview of cost centers
+        - 7.2.4.3.1 View the bill overview of cost centers
+        - 7.2.4.3.2 View monthly bills of cost centers
+        - 7.2.4.3.3 Settle monthly bills for cost centers
+        - 7.2.4.3.4 Export cost unit monthly bills
+      - 7.2.4.4 Overview of public cloud bills
+        - 7.2.4.4.1 View the overview of public cloud bills
+        - 7.2.4.4.2 View the monthly bills of public cloud services
+        - 7.2.4.4.3 Export monthly bills of public cloud services
+      - 7.2.4.5 Bill details
+        - 7.2.4.5.1 View monthly details
+        - 7.2.4.5.2 View daily details
+        - 7.2.4.5.3 View hourly details
+        - 7.2.4.5.4 Export monthly detailed billing statement
+        - 7.2.4.5.5 Export daily detailed billing statement
+        - 7.2.4.5.6 Export hourly bill details
+        - 7.2.4.5.7 Regenerate bills
+        - 7.2.4.5.8 AI analysis of bill details
+      - 7.2.4.6 Bill adjustment
+        - 7.2.4.6.1 Add a reconciliation record
+        - 7.2.4.6.2 View reconciliation records
+        - 7.2.4.6.3 Enable a reconciliation record
+        - 7.2.4.6.4 Disable a reconciliation record
+      - 7.2.4.7 Bill split management
+        - 7.2.4.7.1 Create a split rule
+        - 7.2.4.7.2 View the split rule list and the details of a split rule
+        - 7.2.4.7.3 Modify a split rule
+        - 7.2.4.7.4 Enable a split rule
+        - 7.2.4.7.5 Discard a split rule
+        - 7.2.4.7.6 Delete a split rule
+      - 7.2.4.8 Bill audit
+        - 7.2.4.8.1 View bill audit issues
+        - 7.2.4.8.2 Close a bill audit issue
+        - 7.2.4.8.3 AI analysis of bill audit
+      - 7.2.4.9 Cost center management
+        - 7.2.4.9.1 Create a cost center
+        - 7.2.4.9.2 View cost centers
+        - 7.2.4.9.3 Modify a cost center
+        - 7.2.4.9.4 Create an allocation rule
+        - 7.2.4.9.5 View allocation rules
+        - 7.2.4.9.6 Modify an allocation rule
+        - 7.2.4.9.7 Delete an allocation rule
+        - 7.2.4.9.8 Authorize users to access cost centers
+        - 7.2.4.9.9 View the authorized users of a cost center
+        - 7.2.4.9.10 Modify the time period during which an authorized user can access a cost center
+        - 7.2.4.9.11 Remove an authorized user from a cost center
+        - 7.2.4.9.12 Delete a cost center
+      - 7.2.4.10 Cost tags
+        - 7.2.4.10.1 Add cost tags
+        - 7.2.4.10.2 Delete cost tags
+      - 7.2.4.11 Import task management
+    - 7.2.5 Budget management
+      - 7.2.5.1 Configure budget settings
+      - 7.2.5.2 View independent accounts
+      - 7.2.5.3 View the income and expenditure details of all accounts
+      - 7.2.5.4 View account details of a node
+      - 7.2.5.5 View the transaction details of a node
+      - 7.2.5.6 Enable quota allocation
+      - 7.2.5.7 Disable quota allocation
+      - 7.2.5.8 Adjust quotas
+      - 7.2.5.9 Allocate quotas
+    - 7.2.6 Alibaba Cloud platform accounts
+      - 7.2.6.1 View quotas of Alibaba Cloud platform accounts
+      - 7.2.6.2 Configure an alert rule for quotas of Alibaba Cloud platform accounts
+    - 7.2.7 Contract management
+      - 7.2.7.1 Create a contract
+      - 7.2.7.2 View contracts
+      - 7.2.7.3 Modify a contract
+      - 7.2.7.4 Enable a contract
+      - 7.2.7.5 Disable a contract
+      - 7.2.7.6 Terminate a contract
+      - 7.2.7.7 Delete a contract
+    - 7.2.8 Pricing
+      - 7.2.8.1 Pricing
+        - 7.2.8.1.1 Price calculator
+        - 7.2.8.1.2 Configuration list
+        - 7.2.8.1.3 Service pricing
+      - 7.2.8.2 Billing configuration overview
+      - 7.2.8.3 Manage billing configurations
+        - 7.2.8.3.1 Cloud services that support billing
+        - 7.2.8.3.2 Cloud services that support price inquiries
+        - 7.2.8.3.3 Public cloud product pricing mode description
+        - 7.2.8.3.4 Create a billing configuration
+        - 7.2.8.3.5 View billing configuration
+        - 7.2.8.3.6 Modify the basic information about a billing configuration
+        - 7.2.8.3.7 Manage pricing configurations
+        - 7.2.8.3.8 Add a rule
+        - 7.2.8.3.9 Configure multiple pricing configurations at a time
+        - 7.2.8.3.10 Preview pricing configurations
+        - 7.2.8.3.11 Enable a billing configuration
+        - 7.2.8.3.12 Disable a billing configuration
+        - 7.2.8.3.13 Export a price list
+        - 7.2.8.3.14 Clone a billing configuration
+        - 7.2.8.3.15 Delete a billing configuration
+        - 7.2.8.3.16 AI analysis of billing rules
+      - 7.2.8.4 Manage discount rules
+        - 7.2.8.4.1 Create a discount rule
+        - 7.2.8.4.2 View discount rules
+        - 7.2.8.4.3 Modify a discount rule
+        - 7.2.8.4.4 Enable a discount rule
+        - 7.2.8.4.5 Disable a discount rule
+        - 7.2.8.4.6 View the approval details of a discount rule
+        - 7.2.8.4.7 Withdraw the approval request of a discount rule
+        - 7.2.8.4.8 Delete a discount rule
+      - 7.2.8.5 Deduction management
+        - 7.2.8.5.1 Create a deduction rule
+        - 7.2.8.5.2 View deduction rules
+        - 7.2.8.5.3 Modify a deduction rule
+        - 7.2.8.5.4 Disable a deduction rule
+        - 7.2.8.5.5 Enable a deduction rule
+        - 7.2.8.5.6 Clone a deduction rule
+        - 7.2.8.5.7 View the approval details of a deduction rule
+        - 7.2.8.5.8 Cancel the approval of a deduction rule
+        - 7.2.8.5.9 Delete a deduction rule
+      - 7.2.8.6 Rule template configuration
+        - 7.2.8.6.1 Billing rule templates
+          - 7.2.8.6.1.1 Create a billing rule template
+          - 7.2.8.6.1.2 View the details of a billing rule template
+          - 7.2.8.6.1.3 Modify a billing rule template
+          - 7.2.8.6.1.4 Enable a billing rule template
+          - 7.2.8.6.1.5 Disable a billing rule template
+          - 7.2.8.6.1.6 Configure price query settings
+          - 7.2.8.6.1.7 Edit the billing origin of a rule template
+        - 7.2.8.6.2 Alibaba Cloud mapping configurations
+          - 7.2.8.6.2.1 Configure mappings to Alibaba Cloud multiplier pricing
+          - 7.2.8.6.2.2 Modify mappings
+          - 7.2.8.6.2.3 View Alibaba Cloud mapping configurations
+    - 7.2.9 Coupon
+      - 7.2.9.1 Coupon management
+        - 7.2.9.1.1 Create a coupon
+        - 7.2.9.1.2 View the coupon list
+        - 7.2.9.1.3 Edit coupon
+        - 7.2.9.1.4 Enable coupons
+        - 7.2.9.1.5 Issue coupons
+        - 7.2.9.1.6 Invalidate a coupon
+        - 7.2.9.1.7 Copy a coupon
+        - 7.2.9.1.8 View coupon issuance records
+        - 7.2.9.1.9 Delete a coupon
+        - 7.2.9.1.10 Coupon redemption rules
+      - 7.2.9.2 Coupon details
+      - 7.2.9.3 Blacklist management
+    - 7.2.10 Token plan management
+      - 7.2.10.1 Token plans
+        - 7.2.10.1.1 Subscribe to a token plan
+        - 7.2.10.1.2 View usage statistics
+        - 7.2.10.1.3 Purchase a shared usage plan
+        - 7.2.10.1.4 Change a subscription plan
+        - 7.2.10.1.5 Renew a token plan
+        - 7.2.10.1.6 Configure alert settings for a token plan
+      - 7.2.10.2 Subscription management
+        - 7.2.10.2.1 View token plan subscriptions
+        - 7.2.10.2.2 View shared usage plans
+      - 7.2.10.3 Token plan configuration
+        - 7.2.10.3.1 Enable the unified metering standard by credit
+        - 7.2.10.3.2 Edit Token Plan configuration
+  - 7.3 Data analysis
+    - 7.3.1 Custom analysis
+      - 7.3.1.1 Data analysis
+        - 7.3.1.1.1 View data table
+        - 7.3.1.1.2 Save data as a custom table
+        - 7.3.1.1.3 Export the data of a single table
+        - 7.3.1.1.4 Export the data of multiple tables
+      - 7.3.1.2 My dashboards
+        - 7.3.1.2.1 Create a dashboard
+        - 7.3.1.2.2 Rename a dashboard
+        - 7.3.1.2.3 Export a dashboard
+        - 7.3.1.2.4 Import a dashboard
+        - 7.3.1.2.5 Delete a dashboard
+        - 7.3.1.2.6 Create a card
+        - 7.3.1.2.7 Modify a card
+        - 7.3.1.2.8 Copy a card
+        - 7.3.1.2.9 Move and resize a card on a dashboard
+        - 7.3.1.2.10 Export a card
+        - 7.3.1.2.11 Save a custom card
+        - 7.3.1.2.12 Delete a card
+      - 7.3.1.3 Intelligent analysis
+    - 7.3.2 Cloud resource optimization
+      - 7.3.2.1 View health analysis data
+      - 7.3.2.2 View analysis data of idle resources
+      - 7.3.2.3 View bottleneck analysis data
+      - 7.3.2.4 View security compliance analysis data
+      - 7.3.2.5 Resource optimization settings
+        - 7.3.2.5.1 Default rule
+        - 7.3.2.5.2 Create and manage custom rules
+    - 7.3.3 Download and delivery
+      - 7.3.3.1 Report download
+        - 7.3.3.1.1 Report results
+        - 7.3.3.1.2 Scheduled job
+      - 7.3.3.2 Manage the push rules of daily operations reports
+  - 7.4 Portal management
+    - 7.4.1 Site management
+      - 7.4.1.1 Create a site
+      - 7.4.1.2 View sites
+      - 7.4.1.3 Modify the information and homepage of a site
+      - 7.4.1.4 Configure a site navigation
+      - 7.4.1.5 Configure site pages
+      - 7.4.1.6 Customize the style of a site
+      - 7.4.1.7 Preview a site
+      - 7.4.1.8 Publish a site
+      - 7.4.1.9 Unpublish a site
+      - 7.4.1.10 Delete a site
+      - 7.4.1.11 How users access a site
+    - 7.4.2 Page management
+      - 7.4.2.1 Pages
+        - 7.4.2.1.1 Create a page
+        - 7.4.2.1.2 View a list of pages
+        - 7.4.2.1.3 Edit page
+        - 7.4.2.1.4 Page building
+        - 7.4.2.1.5 Publish page
+        - 7.4.2.1.6 Revoke the publishing of a page
+        - 7.4.2.1.7 View the review details of a page
+        - 7.4.2.1.8 View a published page
+        - 7.4.2.1.9 Manage the versions of a page
+        - 7.4.2.1.10 Copy a page
+        - 7.4.2.1.11 Delete a page
+    - 7.4.3 Material center
+    - 7.4.4 Component management
+      - 7.4.4.1 Add components
+      - 7.4.4.2 Configure a component
+      - 7.4.4.3 Preview components
+      - 7.4.4.4 Modify a component
+      - 7.4.4.5 Publish a component
+      - 7.4.4.6 Unpublish a component
+      - 7.4.4.7 Add to page
+      - 7.4.4.8 Customize a component
+      - 7.4.4.9 Understand the tool and configurations for building custom components
+    - 7.4.5 Template management
+      - 7.4.5.1 Site template
+      - 7.4.5.2 Page template
+        - 7.4.5.2.1 View page templates and page content
+        - 7.4.5.2.2 Create a page template
+        - 7.4.5.2.3 Edit page template
+        - 7.4.5.2.4 Delete a page template
+  - 7.5 Service support
+    - 7.5.1 Ticket management
+      - 7.5.1.1 Ticket list
+        - 7.5.1.1.1 View tickets
+        - 7.5.1.1.2 Withdraw tickets
+        - 7.5.1.1.3 Add comments to a ticket
+        - 7.5.1.1.4 Modify a ticket
+        - 7.5.1.1.5 Claim tickets
+        - 7.5.1.1.6 Expedite a long-pending ticket
+        - 7.5.1.1.7 Submit a withdrawn or pending feedback ticket
+        - 7.5.1.1.8 Return an in-progress ticket
+        - 7.5.1.1.9 Transfer tickets
+        - 7.5.1.1.10 Reassign tickets
+        - 7.5.1.1.11 Assign tickets
+        - 7.5.1.1.12 Suspend a ticket
+        - 7.5.1.1.13 Activate a ticket
+        - 7.5.1.1.14 Close a ticket
+        - 7.5.1.1.15 Verify the results of a pending confirmation ticket
+        - 7.5.1.1.16 Evaluate a completed ticket
+        - 7.5.1.1.17 Delete tickets
+        - 7.5.1.1.18 Export ticket details
+      - 7.5.1.2 Submit a ticket
+      - 7.5.1.3 Service group
+        - 7.5.1.3.1 Create a service group
+        - 7.5.1.3.2 View service groups
+        - 7.5.1.3.3 Edit a service group
+        - 7.5.1.3.4 Delete a service group
+      - 7.5.1.4 Issue categorization
+        - 7.5.1.4.1 Create an issue type
+        - 7.5.1.4.2 View issue types
+        - 7.5.1.4.3 Modify an issue type
+        - 7.5.1.4.4 Enable an issue type
+        - 7.5.1.4.5 Disable an issue type
+        - 7.5.1.4.6 Copy an issue type
+        - 7.5.1.4.7 Delete an issue type
+      - 7.5.1.5 Ticket dispatch rule
+        - 7.5.1.5.1 Create a ticket dispatch rule
+        - 7.5.1.5.2 View ticket dispatch rules
+        - 7.5.1.5.3 Modify a ticket dispatch rule
+        - 7.5.1.5.4 Enable a ticket dispatch rule
+        - 7.5.1.5.5 Disable a ticket dispatch rule
+        - 7.5.1.5.6 Delete a ticket dispatch rule
+      - 7.5.1.6 Data insights
+        - 7.5.1.6.1 View the ticket overview
+        - 7.5.1.6.2 View the ticket type analysis
+        - 7.5.1.6.3 View the processing efficiency analysis of tickets
+      - 7.5.1.7 Shift schedule management
+        - 7.5.1.7.1 Schedule
+          - 7.5.1.7.1.1 Batch shift schedule
+          - 7.5.1.7.1.2 View the schedule table
+          - 7.5.1.7.1.3 Shift schedule settings
+          - 7.5.1.7.1.4 Shift substitution settings
+          - 7.5.1.7.1.5 Copy shift schedule
+          - 7.5.1.7.1.6 Delete a shift schedule
+          - 7.5.1.7.1.7 Delete leave
+        - 7.5.1.7.2 Shift management
+          - 7.5.1.7.2.1 Create a shift
+          - 7.5.1.7.2.2 Edit a shift
+          - 7.5.1.7.2.3 Delete a shift
+          - 7.5.1.7.2.4 Copy a shift
+          - 7.5.1.7.2.5 Enable or disable a shift
+    - 7.5.2 Document management
+      - 7.5.2.1 Documents
+        - 7.5.2.1.1 Create a document category
+        - 7.5.2.1.2 Create a document group
+        - 7.5.2.1.3 Create a document collection
+        - 7.5.2.1.4 Rename a document category, document group, or document collection
+        - 7.5.2.1.5 Move a document category, document group, or document collection
+        - 7.5.2.1.6 Copy a document group
+        - 7.5.2.1.7 Delete a document category, document group, or document collection
+        - 7.5.2.1.8 Create a document or directory
+        - 7.5.2.1.9 Upload a document
+        - 7.5.2.1.10 Rename a document or directory
+        - 7.5.2.1.11 Move a document or directory
+        - 7.5.2.1.12 Modify the content of a document
+        - 7.5.2.1.13 Publish a document
+        - 7.5.2.1.14 Launch a document or directory
+        - 7.5.2.1.15 Withdraw a document or directory
+        - 7.5.2.1.16 Copy a document
+        - 7.5.2.1.17 View the approval details of a document
+        - 7.5.2.1.18 Revoke the publishing, launching, or withdrawal operation performed on a document or directory
+        - 7.5.2.1.19 Manage the versions of a document
+        - 7.5.2.1.20 Export a document
+        - 7.5.2.1.21 Delete a document or directory
+        - 7.5.2.1.22 Access documentation
+- 8 Security
+  - 8.1 Overview
+  - 8.2 AccessKey pairs of a personal account
+  - 8.3 MFA
+    - 8.3.1 Overview
+    - 8.3.2 Manage MFA
+- 9 To-do Center
+- 10 Message center
+  - 10.1 Manage all messages
+  - 10.2 Manage unread messages
+  - 10.3 Manage read messages
+  - 10.4 Query records
+- 11 User center
+  - 11.1 User information management
+  - 11.2 Enable the proxy mode as a proxy administrator for a proxy user
+- 12 OpenAPI Explorer
+  - 12.1 Overview
+  - 12.2 API integration
+    - 12.2.1 API documentation
+    - 12.2.2 API debugging
+    - 12.2.3 API change history
+    - 12.2.4 Sample center
+    - 12.2.5 Diagnostics center
+    - 12.2.6 MCP service management
+  - 12.3 Call Statistics
+  - 12.4 Automation Service Desk
+  - 12.5 Page integration
+- 13 Apsara Stack Skills portal
+- 14 Edge Cloud management
+  - 14.1 View edge entities
+  - 14.2 Manage resources
+  - 14.3 Configure edge entities
+- 15 AI stack management
+- 16 PanguStor management
+- 17 FAQ
+  - 17.1 Errors when you log on to the Apsara Uni-manager Management Console
+  - 17.2 What do I do if a timeout error occurs when I call the API operations of VPC, ECS, SLB, or ApsaraDB RDS in the Apsara Uni-manager Management Console?
+  - 17.3 What do I do if a timeout error occurs when I create an ACK cluster in the Apsara Uni-manager Management Console?
+  - 17.4 What do I do if a timeout error occurs when I obtain ACK clusters in the Apsara Uni-manager Management Console?
+  - 17.5 Errors when Blink API operations are called
+  - 17.6 What do I do if an error is reported to indicate that a custom role does not have the required permissions?
+  - 17.7 What do I do if an error is reported when I delete an organization in the Apsara Uni-manager Management Console?
+  - 17.8 How do I attach disks to an instance across resource sets of different organizations?
+  - 17.9 How do I view the AccessKey pairs of an organization and a user?
+  - 17.10 How do I grant RBAC permissions on resources in an ACK cluster in hybrid cloud scenarios?
+  - 17.11 How do I turn off the switch that enforces attribution of interaction between instance resources?
+
+## 1 Change inventory
 
 This inventory displays feature changes of the Apsara Uni-manager Management Console by default. For changes related to cloud services, refer to the corresponding documentation for each Cloud Service.
 
@@ -336,7 +1104,7 @@ This inventory displays feature changes of the Apsara Uni-manager Management Con
 
 ni-manager Management Consol e?
 
-## What is the Apsara Uni-
+## 2 What is the Apsara Uni-manager Management Console?
 
 **manager Management**
 
@@ -390,9 +1158,9 @@ ni-manager Management Consol e?
 | Products |   |   |
 |   | Instance creation | The feature becomes limited. Service catalogs cannot be used when you create instances. If instances of a specific cloud product have never been created in a level-1 organization, instances of that cloud product cannot be created within that organization and its sub- organizations. |
 
-## Getting started
+## 3 Getting started
 
-### Log in to the Apsara Uni-
+### 3.1 Log in to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -427,7 +1195,7 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, specify the verification code, and then click **Confirm**. You can use the username of your account and the email address that was used to create the account. The system sends a link for resetting the password to the email address that you specify.
 
-### Important notes
+### 3.2 Important notes
 
 When viewing and operating information related to Security Level and Multi-Cloud, pay attention to enabling the relevant features.
 
@@ -461,7 +1229,7 @@ After turning on the Multi-Cloud switch, platform administrators can connect to 
 
 If a user’s role management scope is not global, the Root Organization does not appear in the top navigation bar, resource search, organization management, region management, change management, data authorization, or any organizational filter fields. For example:
 
-### Familiarize yourself with the
+### 3.3 Familiarize yourself with the interface
 
 **interface**
 
@@ -489,7 +1257,7 @@ This topic describes the operations and functions of each section on the Apsara 
 | ⑤ | Floating menu | Expand the floating menu to access Apsara Copilot, pricing, account switching, CPQ, and platform navigation, based on your permissions. : Represents Apsara Copilot. Click this icon to expand the Apsara Copilot dialog box. : Represents pricing. Click this icon to enter the pricing page, which supports price calculators, configuration lists, and service pricing capabilities. : Represents account switching. Independent authorization redirection products require switching between sub-accounts and even primary accounts. : Represents CPQ. The number on CPQ indicates the current number of services added. CPQ visibility depends on your current permissions. : Represents platform navigation. Appears only after entering the console of a redirected product. Click the platform navigation icon to expand the Home and Products dialog box. Select a target to jump to its console. |
 |---|---|---|
 
-### Organization and permission
+### 3.4 Organization and permission models
 
 **models**
 
@@ -556,9 +1324,9 @@ You can grant data permissions to users, which is a critical permission manageme
 
 Clear hierarchical relationships Hierarchical relationships between enterprise organizations are clearly displayed. Easy management Administrators can clearly understand and easily manage various departments and teams. High flexibility Organization and permission models can be adjusted based on the business requirements of enterprises.
 
-### Initial configuration
+### 3.5 Initial configuration
 
-#### Preset roles and their permissions
+#### 3.5.1 Preset roles and their permissions
 
 To implement separation of privilege, the Apsara Uni-manager Management Console provides several preset roles based on common use cases on cloud platforms. Each role has a collection of permissions that fit its definition. Before you use the Apsara Uni-manager Management Console, make sure that you are familiar with the preset roles and their permissions. This way, you can use the preset roles to properly manage the cloud platform.
 
@@ -584,7 +1352,7 @@ To implement separation of privilege, the Apsara Uni-manager Management Console 
 
 The preset roles and their permissions cannot be modified or deleted. The management scope indicates the scope in which the role permissions take effect. All Organizations: The role has permissions on all organizations. Specified Organization and Subordinate Organizations: The role has permissions on an organization and its subordinate organizations. Resource Sets: The role has permissions on the resource sets of the associated user. The permission list describes the permissions of the roles to perform management operations in the Apsara Uni-manager Management Console and the permissions to call API operations. The basic permissions in the permission list are a set of encapsulated permissions to perform basic operations, such as viewing the homepage and managing user information. Application permissions include the cloud products and product permissions authorized for the role. Menu permissions include the menus authorized for the role.
 
-#### Configuration description
+#### 3.5.2 Configuration description
 
 Before you use the Apsara Uni-manager Management Console, you must complete a series of basic configuration operations as an administrator, such as creating organizations, resource sets, users, and roles and initializing resources. This is the initial system configuration. The Apsara Uni-manager Management Console manages the organizations, resource sets, users, and roles of cloud data centers in a centralized and service-oriented manner to grant different resource access permissions to different users. Organization After the Apsara Uni-manager Management Console is deployed, a root organization is automatically generated. You can create other organizations under the root organization. Organizations are displayed in a hierarchical structure. You can create subordinate organizations under each organization level. Resource Set A resource set is a container used to store resources. Each resource must belong to a resource set. User A user is a resource manager and user. Role A role is a set of access permissions. You can assign different roles to different users to implement system access control to meet a variety of different requirements. The following table describes the relationships among organizations, resource sets, users, roles, and cloud resources.
 
@@ -598,7 +1366,7 @@ Before you use the Apsara Uni-manager Management Console, you must complete a se
 | User and role | Many-to- many | A user can have multiple roles, and a role can be assigned to multiple users. |
 | Resource set and resource | One-to- many | A resource set can have multiple resources, but each cloud resource can belong to only a single resource set. |
 
-#### Procedure
+#### 3.5.3 Procedure
 
 Before you use the Apsara Uni-manager Management Console, you must complete the initial system configurations as an administrator based on the process shown in the following figure.
 1. Create an organization to store resource sets and their resources.
@@ -609,7 +1377,7 @@ they can use the resources in the resource set.
 4. Create instances as cloud resources in the consoles of cloud services. For more information
 about how to create cloud service instances, see the user guide of each cloud service.
 
-## Portal homepage
+## 4 Portal homepage
 
 The Home page displays the usage and monitoring status of system resources in different regions from different dimensions by using a card-based layout. This helps you understand the overall resource status and provides supporting data for refined operations and statistical analysis. The Home page displays data that you have permissions to access. By default, the card-based layout of the Home page varies based on roles. You can add or remove cards to change the layout based on your business requirements.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -799,11 +1567,11 @@ The Multi-chip Architecture in One Cloud tab is displayed only if the multi-chip
 | Instance Distribution | This card displays the number of instances created for each cloud service by chip. The data of all resources managed by the current user is displayed. The data is updated with a latency of more than 10 minutes. |
 | Alerts | This card displays resource pool-level alert information and adds instance chip architecture details. Alert levels include Critical, Warn, and Info. You can view more detailed alert information in Cloud Monitor. |
 
-## Enterprise
+## 5 Enterprise
 
-### Resource management
+### 5.1 Resource management
 
-#### Use resource retrieval
+#### 5.1.1 Use resource retrieval
 
 The resource retrieval feature provides a unified search capability for multi-region resources in multi-level organizations and multi-cloud services, and supports custom filter conditions.
 
@@ -937,7 +1705,7 @@ In multi-cloud environments, you can add tags to and remove tags from resources 
 | Resource Orchestration Service (ROS) | Stacks | You must have the AliyunTagManagerAccess and AliyunROSFullAccess permissions of the Alibaba Cloud account of the managed Alibaba Cloud platform. |
 | API Gateway | API gateways | You must have the AliyunTagManagerAccess and AliyunApiGatewayFullAccess permissions of the Alibaba Cloud account of the managed Alibaba Cloud platform. |
 
-##### View the resource list
+##### 5.1.1.1 View the resource list
 
 View resources centrally on the Resource Search page.
 
@@ -963,7 +1731,7 @@ Set filter conditions above the list on the right side of the page to view the r
 5. (Optional) Above the list, select
 , , or to adjust displayed items and their order according to your needs. : Refreshes the list. You can refresh resource information while preserving existing filter conditions. : Choose between default or compact display for list information. : Configure which columns to show or hide. Hover over any column, then drag the icon next to it to adjust display order. The **Resource IP** column is hidden by default; you can check it to display as needed.
 
-##### Bind or unbind tags for resources
+##### 5.1.1.2 Bind or unbind tags for resources
 
 The resource retrieval page allows you to bind or unbind tags for resources. In multi-cloud scenarios, you can bind and unbind tags for central cloud and subordinate cloud resources. The product scope for tag operations in the multi-enterprise edition covers all products that support tags. The operating user must have tag operation permissions assigned through a mapped role in the subordinate cloud. For the product scope and user permission details of public cloud tag operations, see Cloud services in the public cloud that support tag operations.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -1080,7 +1848,7 @@ The resource retrieval page allows you to bind or unbind tags for resources. In 
 | Resource Orchestration Service | Stack | The operating user must have the AliyunTagManagerAccess and AliyunROSFullAccess permissions within the Alibaba Cloud public cloud primary account scope. |
 | API Gateway | API Gateway instance | The operating user must have the AliyunTagManagerAccess and AliyunApiGatewayFullAccess permissions within the Alibaba Cloud public cloud primary account scope. |
 
-##### Create and manage resources
+##### 5.1.1.3 Create and manage resources
 
 On the Resource Retrieval page, you can create and manage resources in a centralized manner to improve resource management efficiency.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -1092,7 +1860,7 @@ You can search for resource types by resource pool and cloud service name. The R
 6. Perform operations on created resources based on your business requirements on the
 Resource Retrieval page. To view and manage a resource, you can find the resource and click **View** in the Operation column to go to the resource console and manage the resource. You can directly select an option in the Operation column to perform the quick operation.
 
-##### Manage the expiration time of resources
+##### 5.1.1.4 Manage the expiration time of resources
 
 You can manage the expiration time of resources on the Resource Retrieval page. You can manually renew subscription resources. For non-subscription resources, you can set or extend the validity period.
 
@@ -1114,7 +1882,7 @@ The expiration time of a subscription Alibaba Cloud resource instance is the sam
 |---|---|
 | Manually renew a resource | You can manually renew subscription resources. i. In the resource list, find the resource that you want to manage and click Renew in the Operation column. ii. In the Manual Renewal dialog box, set the Subscription Duration parameter. iii. Click OK. |
 
-##### View and configure an expiration reminder
+##### 5.1.1.5 View and configure an expiration reminder rule
 
 **rule**
 
@@ -1135,7 +1903,7 @@ rule.
 
 6. Click **OK**.
 
-##### View resource instance insights
+##### 5.1.1.6 View resource instance insights
 
 Use resource analysis to view insights for resource instances.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -1150,9 +1918,9 @@ detailed billing information for the instance.
 **Associated Resources**: If associated resources exist, click the resource ID in
 the list to go to the corresponding resource instance details page.
 
-#### Organization management
+#### 5.1.2 Organization management
 
-##### Create organizations
+##### 5.1.2.1 Create organizations
 
 Organizations reflect the organizational structure of an enterprise. An organization can be defined as a company or department, and is the core of personnel and resource management. Organizations meet requirements for hierarchical management and resource isolation. You can build a resource management system that meets the requirements of your enterprise by using organizations based on the business environment of your enterprise. This helps you establish hierarchical relationships among resources.
 
@@ -1206,7 +1974,7 @@ When the template file is uploaded, the system automatically checks the validity
 6. Confirm the organization information and click **OK**.
 7. Optional. Click **Task List** in the dialog box to view the organizations that you created.
 
-##### Sort organizations
+##### 5.1.2.2 Sort organizations
 
 This topic describes how to sort organizations by performing drag-and-drop operations.
 
@@ -1221,7 +1989,7 @@ organizations on which your current role has permissions. Organizations are disp
 5. Drag an organization to change its position in the navigation tree. To view a demonstration,
 click **View** in the upper part of the Organization Structure pane.
 
-##### View the basic information about an
+##### 5.1.2.3 View the basic information about an organization
 
 **organization**
 
@@ -1236,7 +2004,7 @@ including the following parameters: **Organization Name**, **Organization ID**, 
 **Level**, **Description**, **Third-party Authentication**, **Created By**, and **Created At**.
 The **Third-party Authentication** parameter is displayed only for level-1 organizations. If an identity provider (IdP) is associated with the organization, the IdP name is displayed.
 
-##### Modify organization information
+##### 5.1.2.4 Modify organization information
 
 This topic describes how to modify the display name and description of an organization.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -1248,7 +2016,7 @@ organization that you want to manage and click its name.
 6. In the **Edit Organization** dialog box, modify the **Name** and **Description** parameters.
 7. Click **OK**.
 
-##### Manage the AccessKey pairs of an
+##### 5.1.2.5 Manage the AccessKey pairs of an organization
 
 **organization**
 
@@ -1277,7 +2045,7 @@ organization.
 | Enable an AccessKey pair | Find a disabled AccessKey pair and click Activate in the Actions column. After you enable the AccessKey pair, the AccessKey pair changes to the Enabled state. |
 | Delete an AccessKey pair | i. Find the AccessKey pair that you want to delete and clickD elete in the Actions column. ii. In the dialog box that appears, view the information about the AccessKey pair and the impacts after you delete the AccessKey pair. After you evaluate the impacts, select I have known the risks and confirmed this delete operation. Important When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose Enterprise > Permissions > AccessKey Logs. After you delete an AccessKey pair, the applications that use the AccessKey pair become unavailable. Proceed with caution when you perform this operation. iii. Click Delete. |
 
-##### Configure third-party authentication
+##### 5.1.2.6 Configure third-party authentication
 
 This topic describes how to associate an identity provider (IdP) with an organization. After you associate an IdP with an organization, the identities of users of the organization and subordinate organizations are verified by the IdP when the users log on to the system.
 
@@ -1306,7 +2074,7 @@ If the **IdP Authentication Type** parameter is set to **Global IdP**, the name 
 **IdP** drop-down list. You can also disassociate the local IdP.
 7. Click **OK**.
 
-##### Specify and manage a proxy administrator
+##### 5.1.2.7 Specify and manage a proxy administrator for an organization
 
 **for an organization**
 
@@ -1410,7 +2178,7 @@ organization that you want to manage and click its name.
 column.
 5. In the message that appears, click **OK**.
 
-##### Manage the resource sets of an
+##### 5.1.2.8 Manage the resource sets of an organization
 
 **organization**
 
@@ -1444,7 +2212,7 @@ search for a resource set by resource set name or tag above the resource set lis
 2. Click the name of a resource set to go to the details page of the resource set. For more
 information, see View the resource set list and the details of a resource set.
 
-##### Manage the users of an organization
+##### 5.1.2.9 Manage the users of an organization
 
 On the Users tab of the Organizations page, you can manage the users of an organization and its subordinate organizations.
 
@@ -1524,7 +2292,7 @@ and the impacts after you delete the user. After you evaluate the impacts, selec
 When you move the pointer over the information in the AccessKey Pair Reference Information column, the last 20 reference records within the previous seven days are displayed. To view more records, choose **Enterprise** > Permissions > **AccessKey Logs**. After you delete a user, the user is forbidden from logging in to the Apsara Unimanager Management Console, the AccessKey pairs of the user are deleted, and the user login status becomes invalid. The deleted user data cannot be restored. After an AccessKey pair is deleted, the services or applications that reference the AccessKey pair may not run as expected. Before you delete a user, we recommend that you disable the user first and troubleshoot issues.
 3. Click **Delete**.
 
-##### Manage the user groups of an
+##### 5.1.2.10 Manage the user groups of an organization
 
 **organization**
 
@@ -1542,7 +2310,7 @@ Role authorized parameters.
 9. On the **User Groups** tab, view the user groups in the current organization. You can search
 for a user group by name in the search box above the user group list. If you select the root organization, the user groups of all organizations are displayed. The number in the **User** column of a user group indicates the number of users who are added to the user group. You can move the pointer over the number to view details. If a user group has no users, a hyphen (-) is displayed in the User column.
 
-##### Manage multi-cloud organizations
+##### 5.1.2.11 Manage multi-cloud organizations
 
 On the Multi-Cloud Organizations tab of the Tenant Management page, you can manage multi-cloud organizations.
 
@@ -1656,7 +2424,7 @@ Operations and documentation related to multi-cloud access:
 3. Modify multi-cloud roles.
 4. Manage the resource sets to which users belong.
 
-##### Delete an organization
+##### 5.1.2.12 Delete an organization
 
 This topic describes how to delete an organization.
 
@@ -1676,9 +2444,9 @@ organization that you want to manage and click its name.
 icon and select **Delete**.
 6. In the message that appears, click **OK**.
 
-#### Manage resource sets
+#### 5.1.3 Manage resource sets
 
-##### Create a resource set
+##### 5.1.3.1 Create a resource set
 
 A resource set is a group of resources and is similar to a project. After a user or user group is added to a resource set, the user or users in the user group can manage resources in the resource set. The resource set management feature enables you to resolve complex issues such as user authorization. If an organization has multiple projects, you can create multiple resource sets in the organization. This allows users to use and manage resources by resource set.
 
@@ -1703,7 +2471,7 @@ the following table.
 
 6. Click **OK**.
 
-##### View resource sets and details
+##### 5.1.3.2 View resource sets and details
 
 This topic describes how to view resource sets and the details of a resource set.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -1726,7 +2494,7 @@ Details page.
 | sara Uni-m | anager User Guide·Enterpris |
 |---|---|
 
-##### Modify a resource set
+##### 5.1.3.3 Modify a resource set
 
 This topic describes how to modify a resource set.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -1744,7 +2512,7 @@ The Secret Level Access and Security Level parameters are displayed only after t
 **Based Access**.
 7. Click **OK**.
 
-##### Manage tags of a resource set
+##### 5.1.3.4 Manage tags of a resource set
 
 Adding tags to a resource set helps you better organize, classify, and manage cloud resources in the resource set.
 
@@ -1766,7 +2534,7 @@ icon next to the tag.
 7. Click **OK**.
 8. After the tags are modified, click **Close**.
 
-##### Manage resource set members
+##### 5.1.3.5 Manage resource set members
 
 Authorize users or user groups to access a group of resources by granting them membership in a resource set. When users or user groups no longer need access to the resource set, administrators can quickly remove their authorization from the member list.
 
@@ -1951,7 +2719,7 @@ In multi-cloud scenarios, tabs for the central cloud and connected public clouds
 5. Click **OK**. After you remove the authorization, users in this resource set can no longer
 access the resource set or use its resources.
 
-##### Manage multi-cloud resource sets
+##### 5.1.3.6 Manage multi-cloud resource sets
 
 After you bind a multi-cloud organization to a level-1 organization, you can bind a multi-cloud resource set to the resource sets of the level-1 organization and its subordinate organizations. After a multi-cloud resource set is bound, you can manage and schedule resources across multiple clouds. This improves resource utilization and management efficiency.
 
@@ -2016,11 +2784,9 @@ column.
 
 For information about more multi-cloud operations, see the following topics:
 1. Manage cloud platforms
-2. Manage multi-cloud organizations
-3. Modify multi-cloud roles
 4. Manage the resource sets to which a user belongs
 
-##### Specify and manage a proxy administrator
+##### 5.1.3.7 Specify and manage a proxy administrator for a resource set
 
 **for a resource set**
 
@@ -2118,7 +2884,7 @@ A proxy administrator is specified for a resource set. For more information, see
 column.
 5. In the message that appears, click **OK**.
 
-##### Delete a resource set
+##### 5.1.3.8 Delete a resource set
 
 You can delete a resource set that you no longer need.
 
@@ -2139,7 +2905,7 @@ icon in the
 **Actions** column, and then select **Delete**.
 6. In the **Confirm** message, click **OK**.
 
-#### Manage regions
+#### 5.1.4 Manage regions
 
 You can manage the regions associated with organizations. Regions determine the geographical locations in which resources are created. Large-sized enterprises typically divide their business into different units. Each business unit may correspond to specific product lines or regions. In this case, they need to create different resources in specified regions. Enterprises can associate their organizations with regions to meet their requirements.
 
@@ -2161,9 +2927,9 @@ manage. If you select the name of a region, the organization is associated with 
 7. If a multi-cloud organization is bound to a level-1 organization, you can also view the region
 of the secondary cloud on the corresponding tab as an operations administrator. Tabs of secondary clouds are displayed only in multi-cloud scenarios. You can only view region information, but cannot modify it.
 
-#### Change management
+#### 5.1.5 Change management
 
-##### Change the ownership of an organization
+##### 5.1.5.1 Change the ownership of an organization
 
 After you change the ownership of an organization, the resource sets and users of the organization are also moved to the destination organization.
 
@@ -2185,7 +2951,7 @@ its name.
 from the **New Organization** drop-down list.
 8. Click **OK**.
 
-##### Change the ownership of a user
+##### 5.1.5.2 Change the ownership of a user
 
 Changing the ownership of a user does not affect the original organization or resources.
 
@@ -2210,7 +2976,7 @@ the **Actions** column.
 down list.
 9. Click **OK**.
 
-##### Change the ownership of a resource set
+##### 5.1.5.3 Change the ownership of a resource set
 
 If you change the ownership of a resource set, all the resources in this resource set are also moved to the destination organization.
 
@@ -2242,7 +3008,7 @@ its name or click **Details** in the Actions column.
 3. On the **Resource Set Details** page, view information about the resource set on the
 Resources, Users, and Multi-Cloud Resource Set tabs. For more information about resource sets, see Manage resource sets.
 
-##### View resource relationships
+##### 5.1.5.4 View resource relationships
 
 You can view resource relationships to identify dependencies between different resources.
 
@@ -2310,7 +3076,7 @@ the Actions column. You can search for a resource instance by ID or name in the 
 5. In the **View Resource Relations** message, view the resource relationships.
 You cannot view the resource associations of the current Alibaba Cloud platform. Only the information about the selected resource instance is displayed.
 
-##### Change the ownership of resources
+##### 5.1.5.5 Change the ownership of resources
 
 Changing the ownership of resources does not affect the original organization or users.
 
@@ -2393,7 +3159,7 @@ a. In the resource instance list, find the resource instance that you want to ma
 a. In the resource instance list, select the resource instances that you want to manage and click **Batch Change Ownership** below the list. b. In the **Change Resource Set** dialog box, select the destination resource set from the Change Resource Set To drop-down list.
 5. Click **OK**.
 
-##### Change the sharing scope of resources
+##### 5.1.5.6 Change the sharing scope of resources
 
 This topic describes how to change the sharing scope of resources.
 
@@ -2489,11 +3255,11 @@ You can search for a resource instance by ID or name in the search boxes above t
 **Current Organization**.
 6. Click **OK**.
 
-### User management
+### 5.2 User management
 
-#### User management
+#### 5.2.1 User management
 
-##### Create a user
+##### 5.2.1.1 Create a user
 
 Administrators can create users individually or in batches and assign different roles to meet the access control requirements of different users.
 
@@ -2572,7 +3338,7 @@ wizard. After the upload completes, click **Next**. After you upload the templat
 6. (Optional) After the system creates the task, you can click **Task List** in the dialog box to go
 to the asynchronous task page and view the creation results.
 
-##### View the system user list and details
+##### 5.2.1.2 View the system user list and details
 
 On the **System Users** tab of the **Users** page, you can view system user information.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -2593,7 +3359,7 @@ On the **System Users** tab of the **Users** page, you can view system user info
 | User Group | The User Group tab displays the user groups that the user has joined. For more information, see Manage the user groups to which a user belongs. You can enter a user group name in the text box to quickly find user groups. |
 | Role Permissions | The Role Permissions tab displays the Preset Roles & Custom Roles and RAM Authorization information of the user. In the Preset Roles & Custom Roles drop-down list, select a role to view the specific permissions of the role. The RAM Authorization section displays the RAM authorization roles of the user. |
 
-##### Modify basic information of a user
+##### 5.2.1.3 Modify basic information of a user
 
 You can modify and update user information as needed.
 
@@ -2610,7 +3376,7 @@ You cannot edit the information of proxy administrator users. You cannot modify 
 configuration items, see Create a user. When editing a user, you can configure the **Console Access** access mode only.
 8. Click **OK**.
 
-##### Manage the roles of a user
+##### 5.2.1.4 Manage the roles of a user
 
 This topic describes how to manage the roles of a user.
 
@@ -2700,7 +3466,7 @@ required role.
 |---|---|
 | Revoke the RAM role from the user | You can revoke the RAM role that is assigned to the user. When you perform this operation, the RAM role is deleted at the same time. i. Click Remove Role next to Public Cloud. ii. Click OK. |
 
-##### Modify multi-cloud roles
+##### 5.2.1.5 Modify multi-cloud roles
 
 This topic describes how to modify multi-cloud roles. You can assign a multi-cloud role to a user or change the multi-cloud role of a user.
 
@@ -2773,12 +3539,8 @@ platform.
 **Related operations**
 
 For information about more multi-cloud operations, see the following topics:
-1. Multi-Cloud Management
-2. Manage multi-cloud organizations
-3. Manage multi-cloud resource sets
-4. Manage the resource sets to which users belong
 
-##### Manage the resource sets to which users
+##### 5.2.1.6 Manage the resource sets to which users belong
 
 **belong**
 
@@ -2883,7 +3645,7 @@ Operations and documentation related to multi-cloud connectivity:
 3. Manage multi-cloud resource sets.
 4. Modify multi-cloud roles.
 
-##### Manage the user groups to which a user
+##### 5.2.1.7 Manage the user groups to which a user belongs
 
 **belongs**
 
@@ -2912,7 +3674,7 @@ user group by name in the search box above the list.
 1. Remove the user from a user group as needed.
 i. Find the user group that you want to manage and click Remove in the **Actions** column. ii. In the message that appears, click **OK**.
 
-##### Configure a logon policy for users
+##### 5.2.1.8 Configure a logon policy for users
 
 This topic describes how to configure a logon policy for users.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -2930,7 +3692,7 @@ user list.
 |---|---|
 | Configure a logon policy for multiple users at a time | i. Select multiple users in the user list. ii. Click Configure Logon Policy below the list. iii. In the Batch Assign Logon Policy dialog box, select a logon policy. iv. Click OK. |
 
-##### Configure MFA settings
+##### 5.2.1.9 Configure MFA settings
 
 Multi-factor authentication (MFA) is a security measure that significantly enhances account security. It requires users to bind a virtual MFA device such as Alibaba Cloud app to their accounts. This way, users must prove their identity by using multiple verification methods when they log on.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -2955,7 +3717,7 @@ icon in the **Actions** column, and then select **MFA Settings**.
 | Disabled/Unbo und | When the user logs on to the console by using the username and password, no dynamic MFA code is required for authentication. |
 |---|---|
 
-##### View the initial password of a user
+##### 5.2.1.10 View the initial password of a user
 
 After a user is created or the password is reset, you can view the initial password of the user.
 
@@ -2973,7 +3735,7 @@ icon in the **Actions** column, and then select **View Initial Password**.
 7. In the **View Initial Password** message, view the initial password.
 You can also click the icon next to Password on the User Details page to view the initial password.
 
-##### Reset the password of a user
+##### 5.2.1.11 Reset the password of a user
 
 If a user forgets the password, you can reset the password to a random initial password.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -2987,7 +3749,7 @@ user list.
 7. On the User Details page, click **Reset Password** next to Password.
 8. In the message that appears, click **OK**.
 
-##### Manage the AccessKey pairs of a user
+##### 5.2.1.12 Manage the AccessKey pairs of a user
 
 An administrator can manually rotate the AccessKey pairs of users.
 
@@ -3016,7 +3778,7 @@ user.
 | Delete an AccessKey pair | i. Find the AccessKey pair that you want to delete and clickD elete in the Actions column. ii. In the dialog box that appears, view the information about the AccessKey pair and the impacts after you delete the AccessKey pair. After you evaluate the impacts, select I have known the risks and confirmed this delete operation. Important When you move the pointer over the information in the AccessKey Audit Logs column, the last 20 reference records within the previous seven days are displayed. To view more records, choose Enterprise > Permissions > AccessKey Logs. After an AccessKey pair is deleted, the applications that use the AccessKey pair become unavailable. Proceed with caution when you perform this operation. iii. Click Delete. |
 |---|---|
 
-##### Configure validity periods for accounts
+##### 5.2.1.13 Configure validity periods for accounts
 
 You can configure validity periods for accounts, including the validity period of an account and the validity period of account activity.
 
@@ -3052,7 +3814,7 @@ Configure validity periods for multiple accounts: Select multiple users that you
 
 8. Click **OK**.
 
-##### Disable a user
+##### 5.2.1.14 Disable a user
 
 This topic describes how to disable a user.
 
@@ -3081,7 +3843,7 @@ When you move the pointer over the information in the AccessKey Pair Reference I
 **Logs**.
 8. Click **Disable**.
 
-##### Enable a user
+##### 5.2.1.15 Enable a user
 
 This topic describes how to enable a user.
 
@@ -3105,7 +3867,7 @@ When you move the pointer over the information in the AccessKey Pair Reference I
 **Permissions** > **AccessKey Logs**.
 After a user is enabled, the associated AccessKey pairs are also enabled.
 
-##### Delete a user
+##### 5.2.1.16 Delete a user
 
 This topic describes how to delete a user.
 
@@ -3131,7 +3893,7 @@ When you move the pointer over the information in the AccessKey Pair Reference I
 8. Click **Delete**.
 The deleted system user is displayed on the **Historical Users** tab. You can restore or permanently delete the user on the Historical Users tab.
 
-##### Restore a user
+##### 5.2.1.17 Restore a user
 
 On the Historical Users tab, you can restore deleted system users. After a user is restored, the user is displayed on the System Users tab.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -3143,7 +3905,7 @@ On the Historical Users tab, you can restore deleted system users. After a user 
 7. In the **Restore User** dialog box, select an organization and one or more roles.
 8. Click **OK**.
 
-##### Permanently delete a user
+##### 5.2.1.18 Permanently delete a user
 
 On the Historical Users tab, you can permanently delete deleted system users. After a user is permanently deleted, the user is no longer displayed on the Historical Users tab and cannot be restored.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -3154,7 +3916,7 @@ On the Historical Users tab, you can permanently delete deleted system users. Af
 6. Find the user that you want to manage and click **Delete** in the **Actions** column.
 7. In the message that appears, click **Delete**.
 
-##### Unlock a temporarily locked user
+##### 5.2.1.19 Unlock a temporarily locked user
 
 When a user account is locked due to multiple incorrect password entries, an administrator can unlock it. After unlocking, the user can log in normally.
 1. Log in to the Apsara Uni-Manager Management Console.
@@ -3165,9 +3927,9 @@ When a user account is locked due to multiple incorrect password entries, an adm
 6. Click **Unlock** in the **Actions** column for the user.
 7. In the dialog box, click **OK**.
 
-#### User group management
+#### 5.2.2 User group management
 
-##### Create a user group
+##### 5.2.2.1 Create a user group
 
 User groups help you classify users to simplify permission management. After you create a user group, you can grant permissions to multiple users at a time.
 
@@ -3200,7 +3962,7 @@ following table.
 
 6. Click **OK**.
 
-##### View user groups
+##### 5.2.2.2 View user groups
 
 After a user group is created, you can view the created user group in the user group list.
 
@@ -3215,7 +3977,7 @@ above the user group list.
 5. View the user groups in the list.
 The User column displays the number of users added to a user group. You can click the number to view the added users. If the number of added users is zero, a hyphen (-) is displayed. The Resource Set column displays the resource sets to which a user group is added. If a user group is not added to any resource sets, a hyphen (-) is displayed.
 
-##### Modify the name of a user group
+##### 5.2.2.3 Modify the name of a user group
 
 This topic describes how to modify the name of a user group.
 
@@ -3231,7 +3993,7 @@ above the user group list.
 6. In the **Modify User Group** dialog box, modify the name of the user group.
 7. Click **OK**.
 
-##### Assign roles to a user group
+##### 5.2.2.4 Assign roles to a user group
 
 You can change the roles that are assigned to a user group.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -3246,7 +4008,7 @@ icon in the
 down list.
 7. Click **OK**.
 
-##### Add users to a user group
+##### 5.2.2.5 Add users to a user group
 
 After you create a user group, you can add users to the user group. The users can inherit the permissions of the user group. This way, you can grant permissions to multiple users at a time. This allows you to manage permissions in a more efficient manner, without the need to grant permissions to users one by one.
 
@@ -3270,7 +4032,7 @@ users at a time.
 |---|---|
 | Batch Upload | iii. Fill the template file with the names of the users to be added in the template file and save the file. Note You can add up to 300 users by using a template file and upload only one template file at a time. iv. In the file upload section, upload the template file that you filled in. v. Click OK. |
 
-##### Removes users from a user group
+##### 5.2.2.6 Removes users from a user group
 
 You can remove specific users from a user group. After a user is removed from a user group, the user no longer has the same permissions or assumes the same roles as the user group.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -3285,7 +4047,7 @@ icon in the
 the left-side section and click the icon to add the selected users to the right-side section. You can also select one or more users added to the right-side section and click the icon to remove the users from the right-side section.
 7. Click **OK**.
 
-##### Delete a user group
+##### 5.2.2.7 Delete a user group
 
 You can delete a user group that you no longer need.
 
@@ -3302,9 +4064,9 @@ icon in the
 **Actions** column, and then select **Delete**.
 6. In the message that appears, click **OK**.
 
-#### Online user management
+#### 5.2.3 Online user management
 
-##### View online users
+##### 5.2.3.1 View online users
 
 You can view a list of current online user sessions.
 
@@ -3319,7 +4081,7 @@ You can search for online users by specifying filter conditions such as username
 5. Find the user that you want to manage and click the username to go to the User Details
 page. You can view the details of the user.
 
-##### Force online users to log off
+##### 5.2.3.2 Force online users to log off
 
 As an administrator, you can force current online users to log off.
 
@@ -3338,11 +4100,11 @@ You are an operations administrator.
 | Force multiple users to log off at a time | i. In the user list, select multiple users that you want to manage. ii. Click Batch Quit Online Users below the user list. iii. In the message that appears, click OK. |
 |---|---|
 
-### Permission management
+### 5.3 Permission management
 
-#### Role permissions
+#### 5.3.1 Role permissions
 
-##### Overview
+##### 5.3.1.1 Overview
 
 A role is a collection of access permissions. In the Apsara Uni-manager Management Console, role types include preset roles, custom roles, RAM role-based authorization, and RAM-based authorization.
 
@@ -3364,7 +4126,7 @@ RAM role-based authorization is the process of associating a RAM role with RAM u
 
 Each RAM user is a user entity with a unique identity. You can assign custom policies to RAM users by using user groups. This way, the RAM users always have these permissions regardless of whether they assume a role. RAM-based authorization is performed based on RAM user groups other than RAM roles. RAM-based authorization is used to enhance the fine-grained permission control of custom roles that are created on a GUI. After you create a custom role, you can use RAM-based authorization to attach a RAM policy to RAM users if some permissions cannot be granted by using the custom role. RAM-based authorization must be used together with user groups.
 
-##### RAM policies
+##### 5.3.1.2 RAM policies
 
 This topic describes the elements, structure, and syntax of RAM policies that are used to define the scope of permissions for custom roles, RAM authorization and RAM role-based authorization.
 
@@ -3564,7 +4326,7 @@ If an element value is a string, number, date, time, Boolean value, or an IP add
 
 RAM policies follow the JSON format. When you create or update a RAM policy, the system automatically checks the validity of the JSON format. We recommend that you use JSON validators or formatters to help you ensure the validity of the policy. For more information about JSON syntax standards, see RFC 7159.
 
-##### Manage preset roles
+##### 5.3.1.3 Manage preset roles
 
 Preset roles support viewing, authorization, disabling, activation, and replication. Only platform administrator users can operate the Operations Administrator role.
 
@@ -3640,7 +4402,7 @@ permissions included in the role.
 2. On the Create Custom Role page, follow the instructions to complete the configuration for
 Basic Configuration, Management Permission, Application Permission, and Menu Permission. Copying a role quickly creates a new role with identical permissions. You can adjust permissions as needed. If you make no changes, the copied role has the same sharing scope, management permission, application permission, and menu permission as the original role. You must define a new role name. It cannot be the same as the name of the role being copied.
 
-##### Manage custom roles
+##### 5.3.1.4 Manage custom roles
 
 Custom roles support the following operations: create, view, edit, update permissions, authorize, disable, activate, copy, and delete.
 
@@ -3818,7 +4580,7 @@ Before you delete a custom role, you must unbind it from users and user groups.
 in the **Actions** column of the custom role, and select **Delete**.
 2. Click **OK**.
 
-##### Manage RAM role authorization
+##### 5.3.1.5 Manage RAM role authorization
 
 Resource Access Management (RAM) role authorization supports creating, viewing, editing, managing permission policies, updating trust policies, managing RAM roles, and deleting.
 
@@ -3941,7 +4703,7 @@ Before you delete a RAM role authorization, you must remove all RAM roles under 
 and select **Delete**.
 2. Click **OK**.
 
-##### Manage RAM authorization
+##### 5.3.1.6 Manage RAM authorization
 
 Resource Access Management (RAM) authorization is similar to a RAM role. You can use RAM authorization when a product does not support RAM role authorization. You can create, view, edit, and delete RAM authorizations, and manage authorizations and permission policies.
 
@@ -4046,7 +4808,7 @@ Before you delete a RAM authorization, all authorized users and user groups on t
 in the **Actions** column of the RAM authorization, and then select **Delete**.
 2. Click **OK**.
 
-##### Manage multi-cloud roles
+##### 5.3.1.7 Manage multi-cloud roles
 
 In multi-cloud scenarios, the role authorization page displays multi-cloud roles from connected clouds. You can manage these multi-cloud roles according to your business requirements.
 
@@ -4165,7 +4927,7 @@ The authorization object of the RAM role is a user who does not have the operati
 1. On the managed public cloud role tab, click **Delete** in the **Actions** column of the RAM role.
 2. Click **OK**. After you delete the RAM role, the system unbinds all users from this role.
 
-##### Limits on roles
+##### 5.3.1.8 Limits on roles
 
 **Limits on the management scope of resource sets**
 
@@ -4187,9 +4949,9 @@ If you select Resource Sets for Management Permissions when you create a custom 
 | Multi-cloud management platform hosting | Configure multi-cloud management platform hosting. |
 | Announcement | Manage announcements. |
 
-##### Examples
+##### 5.3.1.9 Examples
 
-###### Example: Create a role with read-only
+###### 5.3.1.9.1 Example: Create a role with read-only permissions for ECS (custom role)
 
 **permissions for ECS (custom role)**
 
@@ -4220,7 +4982,7 @@ administrator. Otherwise, users cannot access the ECS service after logging in.
 9. After adding the Elastic Compute Service (ECS) entry, click **Create**. The ECS read-only
 administrator role is now created. After creation, assign this role to user Xiao Zhuan. Xiao Zhuan can then view all ECS resources of CompanyA.
 
-###### Example: Modify the ECS Read-Only
+###### 5.3.1.9.2 Example: Modify the ECS Read-Only Administrator Role (Custom Role)
 
 **Administrator Role (Custom Role)**
 
@@ -4246,7 +5008,7 @@ resources to grant this role access to VPC operations.
 8. Click **Update** to complete the modification of the ECS read-only administrator role. View
 the updated role in the role list.
 
-###### Example: Grant a user permission to
+###### 5.3.1.9.3 Example: Grant a user permission to restart ECS instances by using a RAM role (RAM Role Authorization)
 
 **restart ECS instances by using a RAM role (RAM**
 
@@ -4307,7 +5069,7 @@ After successful creation, the RAM role template is complete.
 2. On the **RAM Role** tab of the role details page, click **Create**. In the **Organization** drop-
 down list, select companyA. This creates the RAM role instance under the companyA cloud account. After creation, the authorized user Xiao Zhuan can assume the RAM role to restart ECS instances within the companyA organization.
 
-###### Example: Use RAM authorization to grant
+###### 5.3.1.9.4 Example: Use RAM authorization to grant users permissions to view and delete VPC-connected instances (RAM Authorization)
 
 **users permissions to view and delete VPC-**
 
@@ -4373,7 +5135,7 @@ the user group to the DescribeAndDeleteVpcsPolicy permission policy.
 2. On the **Role Authorization** page, click **OK**. After you create the RAM authorization, users
 in the user group have permissions to view and delete VPC-connected instances.
 
-#### Data permissions
+#### 5.3.2 Data permissions
 
 On the Data Permissions page, you can authorize specific users to access specific cloud service instances. You can also view and change all data permissions granted to specific users.
 
@@ -4398,8 +5160,6 @@ ApsaraMQ instances of resource sets. This way, users can only view all the Apsar
 instance or a specific topic or group in an ApsaraMQ instance on the Data Permissions page.
 
 **Service instances**
-
-**Data permissions**
 
 **Grant data permissions on specific instances on the Data**
 
@@ -4556,9 +5316,9 @@ a. Find the user and click **View Permissions** in the **Actions** column. b. In
 
 Find the user and click **Edit Permissions** in the **Actions** column. In the **Edit Permissions** dialog box, select a policy in the **Policies** section to modify the policy in the right-side code editor.
 
-#### Access control
+#### 5.3.3 Access control
 
-##### Create an access policy
+##### 5.3.3.1 Create an access policy
 
 To improve the security of the Apsara Uni-manager Management Console, you can create access policies as an administrator to control logon access based on the logon time and IP addresses of users.
 
@@ -4591,7 +5351,7 @@ The platform administrator (the username is super) can only create access polici
 
 6. Click **OK**.
 
-##### Manage access policies
+##### 5.3.3.2 Manage access policies
 
 After you create an access policy, you can view, modify, disable, enable, or delete the access policy.
 
@@ -4613,13 +5373,13 @@ The default policy of the system is globally shared and is in the Enabled state.
 | Enable an access policy | Find an access policy that is in the Disabled state and click Enable in the Actions column. |
 | Delete an access policy | Important Before you delete an access policy, make sure that it is not associated with any users. i. Find an access policy and click Delete in the Actions column. ii. In the message that appears, click OK. |
 
-#### Permission boundary
+#### 5.3.4 Permission boundary
 
-##### Service boundary management
+##### 5.3.4.1 Service boundary management
 
 The Apsara Uni-manager Management Console leverages the API control capabilities of the core gateway of Apsara Stack to provide the service boundary feature. You can create service boundaries to implement fine-grained control on API operations based on organizations, usage methods, and time periods.
 
-###### Create a service boundary
+###### 5.3.4.1.1 Create a service boundary
 
 You can associate API control policies with service boundaries to implement fine-grained control on API operations.
 
@@ -4654,7 +5414,7 @@ page that appears, configure the parameters.
 
 4. Click **Submit**.
 
-###### Manage service boundaries
+###### 5.3.4.1.2 Manage service boundaries
 
 You can view, modify, enable, disable, and delete service boundaries and manage their whitelists in the Apsara Uni-manager Management Console.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -4676,7 +5436,7 @@ parameters: **Service Boundary ID**, **Service Boundary Name**, **Management Sco
 |---|---|
 | Delete a service boundary | Find the service boundary that you want to delete, move the pointer over the More icon in the Actions column, and then select Delete. In the message that appears, click OK. |
 
-##### Control policy management
+##### 5.3.4.2 Control policy management
 
 API control policies are associated with service boundaries to implement fine-grained access control. In an API control policy, you can specify conditions based on parameter values of specific API operations. After it is associated with a service boundary, actions will be taken when the conditions in the API control policy are met. For example, you can define a control policy that enables service boundaries to take actions when users query details of instances whose names contain a specific string.
 
@@ -4759,7 +5519,7 @@ The following table lists the logical expressions that can be specified in API c
 |   | IsNull | The parameter is left empty. |
 |   | NotNull | The parameter is not empty. |
 
-###### Create an API control policy
+###### 5.3.4.2.1 Create an API control policy
 
 In the Apsara Uni-manager Management Console, you can create API control policies to control API operations on cloud resources based on values of the request parameters.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -4778,7 +5538,7 @@ click **Create** in the Control Content section. In the dialog box that appears,
 
 5. Click **Create**. Then, you can attach the API control policy to service boundaries.
 
-###### Manage API control policies
+###### 5.3.4.2.2 Manage API control policies
 
 You can view the details of existing API control policies, including their content and association with service boundaries. You can also modify and delete the policies.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -4793,7 +5553,7 @@ on them.
 | Modify an API control policy | Click Modify in the Actions column corresponding to a policy. In the dialog box that appears, you can modify its name and description. Click Modify Control Content in the Actions column corresponding to a policy. On the policy details page that appears, you can modify or delete the existing rules in the policy, or create new rules. Note When you modify a rule, you cannot change the cloud service, API version, or the API operation involved. After you delete a rule, service boundaries with which the policy is associated will be affected. Proceed with caution. If you are familiar with the format of control policies, you can click Custom Edit to modify the JSON file of the policy. This way, you can modify the cloud service, API version, and the API operation involved. You need to make sure that the modifications comply with the JSON format and that you are aware of the modifications' impact on relevant service boundaries. |
 | Delete an API control policy | Click Delete in the Actions column corresponding to a policy. Note Policies that are associated with service boundaries cannot be deleted. |
 
-#### AccessKey log
+#### 5.3.5 AccessKey log
 
 This topic describes how to view and export the logs of AccessKey pair calls to understand the usage of AccessKey pairs. This helps you enhance the security of AccessKey pairs.
 
@@ -4881,9 +5641,9 @@ a. Click **Report Export** above the list. b. In the **Report Export** dialog bo
 
 c. Click **Export Records** above the list to view the execution status of the task. In the **Export Records** panel, you can expand **Advanced Filter**, configure the **Task Name**, **Start/End Time**, and **Status**, and then click Search to quickly find the target record. When the state of the task changes to Successful, you can click **Download** in the Actions column to download the exported report to your computer.
 
-### Operation audit
+### 5.4 Operation audit
 
-#### Overview
+#### 5.4.1 Overview
 
 The Overview page consists of the Basic Data, Event Count Trend, Getting Started, and Unusual IP Address Events sections to help you quickly learn about the overall situation of operation audit.
 
@@ -4918,7 +5678,7 @@ right-side **Historical IP Addresses** panel displays the historical IP addresse
 **View event details**:
 You can click **Details** in the **Actions** column of the event list in the Unusual IP Address Events sector to view detailed information in the Event Details panel, including the basic information of the event and API call details.
 
-#### Operation logs
+#### 5.4.2 Operation logs
 
 This topic describes how to view operation logs.
 
@@ -4937,7 +5697,7 @@ conditions. Before you configure the **Resource Type** and **Event Type** parame
 6. Find the operation log that you want to view and click **View** in the **Details** column.
 7. In the **Operation Details** panel, view the details of the operation log.
 
-#### Advanced query
+#### 5.4.3 Advanced query
 
 Advanced query supports combinations of multiple conditions. You can flexibly set query conditions according to your specific requirements. The system also provides a template repository to meet diverse business needs.
 
@@ -5092,7 +5852,7 @@ The organization condition is required. The event type automatically updates bas
 | Create an event export task | Transfer operation logs of Apsara Stack products to an OSS bucket for long- term storage. Create an asynchronous dump task to export specific operation logs to OSS. i. Click Export Event. ii. In the Export Event dialog box, define the scope of operation logs to export. Basic report information Task name: Enter a name for the dump task. Export objects Organization: Select the organization to which the operation logs belong. Filter condition name: Set filter conditions for cloud service resources to narrow the log scope. You can select either product name or resource type. Multiple selections are not supported. Start and end time: Select the time range during which the operations occurred. Username: Enter the username of the operator. Only one username is allowed. Resource ID: Enter the resource instance ID associated with the operation. Only one resource ID is allowed. Source IP: Enter the IP address of the operator. Only one source IP is allowed. iii. Click Confirm. After successful creation, you can view the task on the Export Records page. |
 | Create a notification | Click Create Notification to go to the Audit Notification page where you can create a new notification.You can specify notification recipients based on rule names, check frequency, and trigger conditions. For more information, see Audit notifications. |
 
-#### Export history
+#### 5.4.4 Export history
 
 After an event export task is created, you can view the status of the task on the Export History page. After the task is complete, you can save the **.xlsx** log file to your computer for backup.
 
@@ -5117,7 +5877,7 @@ your computer.
 the task again.
 **Expired**: The task has expired. The default validity period is four days.
 
-#### Audit notifications
+#### 5.4.5 Audit notifications
 
 By configuring audit notifications, you can detect in real time and quickly respond to potential security threats and abnormal behaviors to ensure system stability and data integrity.
 
@@ -5194,7 +5954,7 @@ A CRON expression is a string of six or seven fields that are separated with fiv
 
 */5 * * * * ? : Run a task every 5 seconds. 0 */1 * * * ? : Run a task at an interval of 1 minute. 0 0 2 1 * ? : Run a task at 02:00 on the first day of every month. 0 15 10 ? * MON-FRI : Run a task at 10:15 every day from Monday to Friday. 0 0 1 ? * L : Run a task at 01:00 every Sunday. 0 15 10 ? * 6#3 : Run a task at 10:15 on the third Friday of every month.
 
-#### Event fields
+#### 5.4.6 Event fields
 
 This topic describes the key fields in operation events.
 
@@ -5241,9 +6001,9 @@ This topic describes the key fields in operation events.
 | sysUid | The UID of the account used to log on to the Apsara Uni- manager Management Console. |
 | resourceSetId | The resource set ID of the current user. |
 
-#### Examples
+#### 5.4.7 Examples
 
-##### Use operation audit to monitor AccessKey
+##### 5.4.7.1 Use operation audit to monitor AccessKey pair deletion events
 
 **pair deletion events**
 
@@ -5288,13 +6048,13 @@ icon in the upper-right corner. In the Message window, click More to view intern
 **Operation Audit** > **Advanced Query**. On the Advanced Query page, select
 DeleteUserAccessKey from the Operation Name drop-down list and click Run to view the corresponding logs.
 
-### Alibaba Cloud platform
+### 5.5 Alibaba Cloud platform management configurations
 
 **management configurations**
 
 This directory includes topics related to resource synchronization configurations and resource ownership configurations for Alibaba Cloud platforms.
 
-#### Configure resource synchronization for
+#### 5.5.1 Configure resource synchronization for an Alibaba Cloud platform
 
 **an Alibaba Cloud platform**
 
@@ -5324,7 +6084,7 @@ you want to manage and click **Resource Synchronization** in the **Actions** col
 
 6. Click **OK**.
 
-#### Configure resource ownership
+#### 5.5.2 Configure resource ownership
 
 You can move resources in the default resource set in an Alibaba Cloud platform to other resource sets. This allows you to manage resources in the Alibaba Cloud platform by resource set.
 
@@ -5355,7 +6115,7 @@ set to which you want to move the resource instance.
 
 8. Click **OK**.
 
-### Asynchronous task
+### 5.6 Asynchronous task
 
 You can view the progress and results of asynchronous tasks on the Asynchronous Task page.
 
@@ -5384,15 +6144,15 @@ column.
 
 After a task is deleted, the information about the task cannot be queried. Exercise caution when you delete a task. The information about task deletion is recorded in an operation log.
 
-## Configurations
+## 6 Configurations
 
-### Resource pool configuration
+### 6.1 Resource pool configuration
 
 You can manage the logical inventory of cloud resources to control the maximum usage of resources.
 
-#### Service resources
+#### 6.1.1 Service resources
 
-##### Configure quota items
+##### 6.1.1.1 Configure quota items
 
 This topic describes how to configure quota items on the Resource Pool Configuration page.
 
@@ -5424,7 +6184,7 @@ items that you want to add and click to add them to the **Added Quota Items** li
 quota items that you want to remove and click to remove them.
 0. Click **OK**.
 
-##### Create or modify a logical inventory
+##### 6.1.1.2 Create or modify a logical inventory
 
 After configuring quota items, you can set a logical inventory for them to limit the total resource usage.
 
@@ -5466,7 +6226,7 @@ bottom of the page.
 resources. If you do not specify a quota for a resource item, the system does not limit the resource consumption for the corresponding item.
 0. Click **Save**.
 
-##### Cancel quotas
+##### 6.1.1.3 Cancel quotas
 
 The resource pool configuration feature allows you to cancel configured quotas.
 
@@ -5492,7 +6252,7 @@ When you cancel the quota for a specific availability zone, you can use the
 quotas in other availability zones.
 0. Click **OK**.
 
-##### Configure physical inventory change
+##### 6.1.1.4 Configure physical inventory change notifications
 
 **notifications**
 
@@ -5516,9 +6276,9 @@ The system displays resource pools only in multi-cloud scenarios, and you can co
 **Time**.
 8. Click **Save**.
 
-#### AI service tokens
+#### 6.1.2 AI service tokens
 
-##### Set quotas
+##### 6.1.2.1 Set quotas
 
 You can set token quotas for AI services on a monthly basis. The used quota will automatically reset to the initial limit on the 1st of each calendar month.
 
@@ -5534,9 +6294,9 @@ The default operator is the platform administrator. The current quota control mo
 7. Set the **Total Monthly Quota** and the **Quota** for each product.
 8. Click **Save**.
 
-### Native hybrid cloud
+### 6.2 Native hybrid cloud
 
-#### Multi-Cloud Management
+#### 6.2.1 Multi-Cloud Management
 
 The Multi-Cloud Management page displays a list of integrated resource pools. The system manages cloud resources from multiple Apsara Stack Enterprise Editions and Alibaba Cloud Public Cloud in a unified manner.
 
@@ -5781,7 +6541,7 @@ Operations and documentation related to multi-cloud integration:
 3. Modify multi-cloud roles.
 4. Manage the resource sets to which users belong.
 
-#### Cloud platform type management
+#### 6.2.2 Cloud platform type management
 
 Configure and manage cloud platform types in Apsara Uni-Manager Management Console. The system presets two cloud platform types: Public Cloud and Apsara Stack. You can also define custom cloud platform types.
 
@@ -5827,7 +6587,7 @@ platform type. For more information, see Multi-Cloud Management.
 **Product management:** For more information, see Product management.
 When you create a product, you can select a cloud platform type. The classification tree on the product list displays the newly added cloud platform types. Each cloud platform type is a root node. You cannot edit root nodes in product management.
 
-#### Export local cloud data
+#### 6.2.3 Export local cloud data
 
 The configurations of the current cloud platform can be exported and used for multi-cloud configuration on another Apsara Stack platform. This way, the current cloud platform is managed by the Apsara Stack platform.
 
@@ -5842,11 +6602,11 @@ click the **Single-cloud Menu** tab. On this tab, click **Configurations** and s
 4. On the Local Cloud Data page, click **Export Local Cloud Data** to export the data of the
 current Apsara Stack platform as a JSON file.
 
-### Security policies
+### 6.3 Security policies
 
 You can configure login password policies, login control settings, and resource security levels.
 
-#### Set a password policy
+#### 6.3.1 Set a password policy
 
 This topic describes how to set a password policy.
 
@@ -5887,7 +6647,7 @@ Click **Reset** to restore default settings.
 | Notification Template | Select a template for password expiration notifications. For information about how to edit templates, see Message Gateway. Note You must configure this parameter only if you enable password expiration notifications. |
 | Notification Time | Specifies the number of days before password expiration to send a reminder. Valid values: 1 to 30 days. Note You must configure this parameter only if you enable password expiration notifications. |
 
-#### Configure login control
+#### 6.3.2 Configure login control
 
 This topic describes how to configure login control settings.
 
@@ -5918,7 +6678,7 @@ For Internet-accessible sites, the system sets session control to single-session
 
 5. Click **Save**.
 
-#### Configure security level-based
+#### 6.3.3 Configure security level-based authorization
 
 **authorization**
 
@@ -5949,9 +6709,9 @@ requirements.
 
 5. Click **Save**.
 
-### Authentication modes
+### 6.4 Authentication modes
 
-#### Authentication modes
+#### 6.4.1 Authentication modes
 
 This topic describes the authentication modes. Authentication modes are classified into the token mode and the hybrid mode. You can configure an authentication mode based on your business requirements.
 
@@ -5967,7 +6727,7 @@ Before you enable the token mode, we recommend that you contact Alibaba Cloud to
 
 In hybrid mode, cloud services that support RAM and STS can still authenticate users based on STS tokens. For cloud services that do not support STS, permissions are managed based on the authentication logic of Apsara Stack tenant accounts and RAM users. In hybrid mode, if you select one or more cloud services, the cloud services use STS tokens to authenticate users. Cloud services that are not selected still authenticate users in hybrid mode.
 
-#### Configure an authentication mode
+#### 6.4.2 Configure an authentication mode
 
 You can configure an authentication mode based on the scenario.
 
@@ -5985,9 +6745,9 @@ If you select **Hybrid**, you can control the authentication model of a cloud se
 After token-based authentication is enabled, the authentication mode of northbound API operations is affected. We recommend that you contact the Alibaba Cloud service team for evaluation before you enable token-based authentication. If an error occurs when an API operation is called, roll back and disable token-based authentication for the service.
 5. In the lower part of the page, click **Save**.
 
-### Specification management
+### 6.5 Specification management
 
-#### Specifications
+#### 6.5.1 Specifications
 
 As a platform administrator, you can enable and disable specifications for cloud services to control the specifications that are available when users create cloud resources. This topic describes the configurable specification parameters of each cloud service.
 
@@ -6176,7 +6936,7 @@ As a platform administrator, you can enable and disable specifications for cloud
 | Specifications | The specification of the ApsaraMQ for Kafka instance. |
 | Specification Source | The specification source. |
 
-#### Create or synchronize specifications
+#### 6.5.2 Create or synchronize specifications
 
 You can create or synchronize specifications of cloud resources.
 
@@ -6198,7 +6958,7 @@ You can create specifications for the following cloud services: NAT Gateway, Ser
 
 The specifications of cloud services are synchronized to the current system by calling API operations. You can manually synchronize the specifications of Elastic Compute Service (ECS). a. Click **Synchronize Specifications**. b. In the message that appears, click **OK**.
 
-#### Manage specifications
+#### 6.5.3 Manage specifications
 
 You can enable or disable specifications of different cloud resources. This way, only enabled specifications can be configured when resources are created.
 
@@ -6225,9 +6985,9 @@ updates. We recommend that you select this option to make sure that specificatio
 | Enable a specification | You can enable disabled specifications. a. Click the Resource Specifications tab. b. Find the resource type that you want to enable and clickE nable in the Actions column. c. In the message that appears, click OK. |
 | Export specification s | You can export the specification information to your computer for backup. a. Click the Resource Specifications tab. b. Click Export above the specification list. c. Configure the storage path, enter a file name, and then clickD ownload to export specifications of the cloud service as a .csv file to your computer. |
 
-#### Examples
+#### 6.5.4 Examples
 
-##### Create an ApsaraDB RDS instance
+##### 6.5.4.1 Create an ApsaraDB RDS instance specification
 
 **specification**
 
@@ -6260,7 +7020,7 @@ Database Engine: MySQL Minimum Storage: 500 Maximum Storage: 3000 Instance Type:
 
 The administrator named orgA of the level-1 organization of Company A can select the created specification when orgA creates an ApsaraDB RDS instance.
 
-##### Disable an ApsaraDB RDS instance
+##### 6.5.4.2 Disable an ApsaraDB RDS instance specification
 
 **specification**
 
@@ -6289,9 +7049,9 @@ in the **Actions** column.
 
 The specification rds.mysql.A is unavailable when the level-1 organization administrator orgA of Company A creates an ApsaraDB RDS instance.
 
-### Menu management
+### 6.6 Menu management
 
-#### Configure menus
+#### 6.6.1 Configure menus
 
 This topic describes how to configure menus to manage and control access to services and operations.
 
@@ -6358,7 +7118,7 @@ The default menu items cannot be deleted.
 1. On the **Single-cloud Menu** tab, find the required menu item and select or clear the check
 box in the **Display** column. : The menu item is displayed in the console. : The menu item is not displayed in the console.
 
-#### Creation page configuration
+#### 6.6.2 Creation page configuration
 
 To let users customize the product creation page experience according to their needs, the Apsara Uni-manager Management Console provides a creation page configuration feature. This feature allows administrators to globally adjust parameters and layout for multiple product creation pages.
 
@@ -6401,7 +7161,7 @@ Fields without checkboxes do not support configuration.
 : Indicates that option hiding is enabled. The option remains invisible to users on the creation page. : Indicates that option hiding is disabled. The option appears visible to users on the creation page. Click to the right of **Option**, then select **Move Up** or **Move Down** to adjust the option order.
 4. Click **OK**.
 
-#### Redirection page configuration
+#### 6.6.3 Redirection page configuration
 
 You can turn on or off the switch to remove the product redirection page based on your requirements.
 
@@ -6421,7 +7181,7 @@ indicates that the redirection page removal switch is turned on. When the switch
 
 When the redirection page removal switch is turned on, the system accesses the product based on the priority configured in the authorization sequence. If the configured priority does not exist, the system uses the second configured priority by default. If you set a default access mode in the account switching menu, the system ignores the priority configured in the authorization sequence. indicates that the redirection page removal switch is turned off. When the switch is turned off, the redirection page appears before you enter the product console. You must select an organization, region, and access mode on the redirection page to proceed. The floating menu in the product console displays account switching options. You can switch accounts in the floating menu.
 
-### Configure the billing feature
+### 6.7 Configure the billing feature on the Billing Switch page
 
 **on the Billing Switch page**
 
@@ -6453,7 +7213,7 @@ Monthly Billing Start Date: Billing starts at 00:00:00 on the selected day and e
 7. Optional. In the lower part of the Billing Switch page, click **History** to view the historical
 modification records.
 
-### Manage announcements
+### 6.8 Manage announcements
 
 You can create announcements on the platform to inform users about events such as O&M, updates, and daily operations.
 
@@ -6525,9 +7285,9 @@ You can delete an announcement if it is no longer needed.
 delete and click **Delete** in the Actions column.
 2. In the **Confirm** message, click **OK**.
 
-### Privacy documents
+### 6.9 Privacy documents
 
-#### Create a privacy document
+#### 6.9.1 Create a privacy document
 
 This topic describes how to create a privacy document that contains the platform privacy policy and legal terms.
 
@@ -6544,7 +7304,7 @@ document title and content. The document types include **User Agreement**, **Pri
 already exists, you cannot select this document type.
 6. Click **Create**.
 
-#### View a privacy document
+#### 6.9.2 View a privacy document
 
 After a privacy document is created, you can view the created privacy document on the Privacy Document page. This topic describes how to view a privacy document.
 
@@ -6559,7 +7319,7 @@ view its information, including the document ID, type, status, creation time, an
 5. Click the document ID in the **Document ID** column to view the details of the privacy
 document.
 
-#### Modify a privacy document
+#### 6.9.3 Modify a privacy document
 
 This topic describes how to modify a privacy document.
 
@@ -6579,7 +7339,7 @@ click **Modify** in the **Actions** column.
 You cannot modify the type of a privacy document.
 6. Click **Modify**.
 
-#### Publish a privacy document
+#### 6.9.4 Publish a privacy document
 
 After you publish a privacy document, users must select the privacy document and agree to its terms before they can log in to the platform. This topic describes how to publish a privacy document.
 
@@ -6597,7 +7357,7 @@ click **Publish** in the **Actions** column.
 
 After you publish the privacy document, users must select the privacy document and agree to its terms before they can log in to the platform. The document title is displayed in the hyperlink on the login page, as shown in the following figure.
 
-#### Unpublish a privacy document
+#### 6.9.5 Unpublish a privacy document
 
 After you unpublish a published privacy document, the privacy document no longer appears on the login page. If all privacy documents of the three types are unpublished, the check boxes for selecting the privacy documents no longer appear on the login page. This topic describes how to unpublish a privacy document.
 
@@ -6611,7 +7371,7 @@ You are a platform administrator.
 and click **Unpublish** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-#### View the versions of a privacy
+#### 6.9.6 View the versions of a privacy document
 
 **document**
 
@@ -6628,9 +7388,9 @@ click **View History** in the **Actions** column.
 5. On the **View Historical Version** page, select the version that you want to view and view
 the details of the version.
 
-### Custom settings
+### 6.10 Custom settings
 
-#### Platform settings
+#### 6.10.1 Platform settings
 
 You can customize the logon page, platform logo, and other platform configurations on the platform based on your requirements.
 
@@ -6661,7 +7421,7 @@ to the console.
 |---|---|
 | Version Change List | Specify whether to enable the version change list. : Disable the version change list. : Enable the version change list. |
 
-### Third-party authentication
+### 6.11 Third-party authentication
 
 You can configure third-party authentication to implement single sign-on (SSO) in which the Apsara Uni-manager Management Console serves as a service provider (SP) and the system that is developed by a customer serves as an identity provider (IdP). This way, users can access the resources provided by the SP without additional authentication after they pass the authentication of the IdP.
 
@@ -6669,9 +7429,9 @@ You can configure third-party authentication to implement single sign-on (SSO) i
 
 SSO: allows users to log in to multiple systems with a single action of login without the need to re-enter the username and password for authentication. Single logout (SLO): allows users to log off from multiple systems with a single action of logoff. IdP: provides identity management services. SP: provide users with specific services by using the identity management services provided by IdPs. Security Assertion Markup Language 2.0 (SAML 2.0): a protocol that is designed for enterprise-level user identity authentication. SAML 2.0 is used for communication between SPs and IdPs by exchanging authentication and authorization data within security domains. Open Authorization (OAuth) 2.0: an authorization protocol that specifies the following grant types for different scenarios: authorization code, client credentials, resource owner password credentials, and implicit. The Apsara Uni-manager Management Console uses the authorization code grant type.
 
-#### User-based SSO
+#### 6.11.1 User-based SSO
 
-##### Configure a global IdP
+##### 6.11.1.1 Configure a global IdP
 
 This topic describes how to configure a global identity provider (IdP).
 
@@ -6789,7 +7549,7 @@ The Obtain Verified User Information section is displayed only if you set the Pr
 | Exit URL | If you set the Enable Redirect parameter to Yes, you can configure this parameter. The URL to which users are navigated upon logoff. If you leave this parameter empty, users are navigated to the login page of the Apsara Uni-manager Management Console upon logoff. |
 | Authorized Login Custom Name | Regardless of whether you set the Enable Redirect parameter to Yes or No, you can configure this parameter. A custom name for the button that is used for authorized login on the login page of the platform. If you do not configure this parameter, the default value Authorized Login is used. |
 
-##### Configure a local IdP
+##### 6.11.1.2 Configure a local IdP
 
 This topic describes how to configure a local identity provider (IdP).
 
@@ -6900,7 +7660,7 @@ Verified User Information sections. The Obtain Verified User Information section
 |---|---|
 | ascm.user |   |
 
-##### Configure a multi-cloud IdP
+##### 6.11.1.3 Configure a multi-cloud IdP
 
 If a cloud platform is managed by another cloud platform, the other cloud platform acts as an identity provider (IdP) to provide unified identity authentication and this cloud platform acts as a service provider (SP) to accept identity assertion of the other cloud platform. This enables users to access resources without repeated logins. The Multi-cloud IdP Settings tab displays the configuration information about a multi-cloud IdP.
 
@@ -6923,7 +7683,7 @@ platform is not connected, the parameters on the tab are left empty.
 | SLO Endpoint | The URL for single logout (SLO). Format: http://URL or https://URL . Note The Apsara Uni-manager Management Console accesses this endpoint when it responds to an SLO request from the IdP. |
 | SLO Request Method | The SLO request method. |
 
-#### Manage OIDC IdPs
+#### 6.11.2 Manage OIDC IdPs
 
 This topic describes how to view and delete OpenID Connect (OIDC) identity providers (IdPs).
 
@@ -6961,7 +7721,7 @@ Actions column.
 **OIDC provider**.
 3. Click **OK**.
 
-### Message Gateway
+### 6.12 Message Gateway
 
 The system sends messages to users through email, SMS, and DingTalk. You must complete the relevant configuration for each method before you send messages.
 
@@ -7059,7 +7819,7 @@ Click **Reset** to clear the settings and reconfigure them. Click **Test Webhook
 
 5. Click **OK**.
 
-### Manage service-linked roles
+### 6.13 Manage service-linked roles
 
 You can create a Resource Access Management (RAM) role to authorize cloud services in a level-1 organization to view and manage other resources in the organization.
 
@@ -7086,7 +7846,7 @@ to go to the details page of the RAM role.
 3. On the **role details** page, view the details and policy of the RAM role.
 Click the **Role Details** tab to view the name, creation time, description, and trust policy of the RAM role. Click the **Role Policy** tab to view the policy information, including the policy name, policy type, default version, description, and time when the policy is attached to the RAM role. You can click **View Details** in the **Actions** column to view the policy details.
 
-### Configure risky operation
+### 6.14 Configure risky operation settings
 
 **settings**
 
@@ -7196,7 +7956,7 @@ authentication and notification methods.
 |---|---|
 | PolarDB | Release an instance |
 
-### Configure log storage
+### 6.15 Configure log storage settings
 
 **settings**
 
@@ -7227,7 +7987,7 @@ The following log storage modes are available: **Default**, **Log Storage for Al
 
 5. Click **Save**.
 
-### Billing and Order Dump
+### 6.16 Billing and Order Dump Configuration
 
 **Configuration**
 
@@ -7258,9 +8018,9 @@ Archive Historical Data as the dump mode.
 If you select the **Archive Historical Data** mode and click Save, the system displays the
 **Confirm Authorization** dialog box. You must confirm authorization.
 
-### Event notifications
+### 6.17 Event notifications
 
-#### View events
+#### 6.17.1 View events
 
 The Events page displays the change events that can be associated with resources.
 
@@ -7277,7 +8037,7 @@ event.
 Supported change events.
 6. Find the event that you want to view and click **Details** in the **Actions** column.
 
-#### Configure event push
+#### 6.17.2 Configure event push
 
 The event push feature allows you to push the events in the event list to event receivers. This way, data can be efficiently communicated and forwarded.
 
@@ -7320,7 +8080,7 @@ You can click **Cancel** to discard the event push configuration. You can also c
 | Disable an event push configuration | Note Only event push configurations in the Enabled state can be disabled. i. On the Event Push page, find the configuration that you want to disable and click Disable in the Actions column. ii. In the message that appears, click OK. |
 | Delete an event push configuration | i. On the Event Push page, find the configuration that you want to delete and click Delete in the Actions column. ii. In the message that appears, click Delete. |
 
-#### Supported change events
+#### 6.17.3 Supported change events
 
 This topic describes the specific change events that can be associated with resources in the event list.
 
@@ -7582,15 +8342,15 @@ This topic describes the specific change events that can be associated with reso
 | op:deletestack:2019- 09-10:ros | DeleteStack | Deletes a stack. |   |
 | op:deletetemplate:201 9-09-10:ros | DeleteTemplate | Deletes a template. |   |
 
-## Operations
+## 7 Operations
 
-### Resource operations
+### 7.1 Resource operations
 
-#### Application forms
+#### 7.1.1 Application forms
 
 The Application Forms page displays service-related application forms submitted on the platform, including the application forms submitted by using a service catalog.
 
-##### View application forms
+##### 7.1.1.1 View application forms
 
 The Application Forms page displays a list of application forms categorized as My Application Forms, To Be Approved, Participated, Handled, and All Application Forms.
 
@@ -7634,7 +8394,7 @@ system displays these options when you select **Query by Applicant**
 7. Click the application No. to go to the **Details** page.
 The application form requirement details vary based on the scenario. For the Service Catalog scenario, approvers can modify the configuration. Click **Modify Configuration** in the Actions column to update the applicationform configuration. For more information, see Modify the configuration of an application form. Click **Detailed Parameters** in the **Actions** column to view the call parameter information in the **Detailed Parameters** panel. To view the application progress, click **View All** next to Approval Progress of Application Form.
 
-##### Withdraw an application form
+##### 7.1.1.2 Withdraw an application form
 
 The application form page allows you to withdraw an application form pending approval.
 
@@ -7665,7 +8425,7 @@ for **Scenario**.
 form.
 7. In the dialog box, click **OK**.
 
-##### Modify the configuration of an application
+##### 7.1.1.3 Modify the configuration of an application form
 
 **form**
 
@@ -7702,7 +8462,7 @@ when you select **Query by Applicant Organization** for **Query Type**.
 9. In the **Reason for modifying the configuration** dialog box, enter the reason.
 0. Return to the application form details page and view the configuration modification history.
 
-##### Approve an application form
+##### 7.1.1.4 Approve an application form
 
 Approve an application form pending your approval.
 
@@ -7741,7 +8501,7 @@ a. In the application form list, click **Review** in the **Actions** column of t
 **Approve multiple application forms in batches**:
 a. In the application form list, select multiple application forms that require approval. b. Click **Batch Approve** below the list. c. In the **Batch Approve** dialog box, select comments, enter an approval description, and upload attachments. d. Click **OK**.
 
-##### Transfer an application form
+##### 7.1.1.5 Transfer an application form
 
 The current approver can transfer an application form to another approver for processing.
 
@@ -7775,7 +8535,7 @@ when you select **Query by Applicant Organization** for **Query Type**.
 8. In the **Transfer** dialog box, select a new owner and enter transfer comments.
 9. Click **OK**.
 
-##### Add approvers for an application form
+##### 7.1.1.6 Add approvers for an application form
 
 The current approver add approvers to insert a new approval node before the current approval node. This feature allows you to add specific personnel to the approval process to meet actual business requirements or additional review requirements in special situations.
 
@@ -7809,7 +8569,7 @@ when you select **Query by Applicant Organization** for **Query Type**.
 8. In the **Add Signature** dialog box, select the sigantory and enter the additional comments.
 9. Click **OK**.
 
-##### Execute actions
+##### 7.1.1.7 Execute actions
 
 You can manually handle application forms that require follow-up manual operations, or application forms that failed to execute after troubleshooting.
 
@@ -7835,7 +8595,7 @@ The application form is in the **Action Pending Execution** or **Action Failed**
 6. In the application form list, click **Perform Action** in the **Actions** column.
 7. In the dialog box, click **OK**.
 
-##### Export application forms
+##### 7.1.1.8 Export application forms
 
 Export the application form list data to your local device for storage.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -7851,9 +8611,9 @@ in the upper-right corner of the application form list to create an export task.
 **Report Download Page**.
 Click **Go to Report Download Page** to go to the **Report Download** page, where you can view and download the file.
 
-#### Process management
+#### 7.1.2 Process management
 
-##### Manage processes
+##### 7.1.2.1 Manage processes
 
 You can create process definitions to define approval processes for different organizations and services based on the approval requirements. You can configure custom approval processes for resource applications based on existing approval processes. You can dynamically add user nodes in an approval process and specify system users as approvers. You can configure sequential signature and parallel signature approval methods, add multiple approval nodes, and specify multiple approvers. The system provides preset Start and End nodes.
 
@@ -8030,7 +8790,7 @@ he notification operation of the Apsara Uni-manager Management Console and retur
 | Basic Information | Condition Name: the name of the condition. Priority: the priority of the condition. A smaller value indicates a higher priority. |
 | Conditional Rule | Condition Information: Configure the conditions that trigger the node. You can add multiple condition groups and conditions. The relationship between condition groups is OR, and the relationship between conditions in a condition group is AND. AND indicates that all conditions must be met.O R indicates that at least one condition must be met. To add a condition group or condition, click Add Group or Add Condition. To remove a condition, find the condition and click the icon next to the condition. A condition group is removed after all the conditions in the condition group are removed. To configure a rule that triggers a condition, select a condition from the drop- down list in a condition row. You can select Initiator or Cloud Platform as the condition. |
 
-##### Workflow binding
+##### 7.1.2.2 Workflow binding
 
 Configure the association between workflows and business operations to meet configuration requirements for multiple scenarios. The system supports dynamically binding resource application methods with approval processes. Multiple types of resources can share the same workflow.
 
@@ -8085,15 +8845,15 @@ Before submission, you can select **No permissions are required for the initiato
 
 After you bind a business scenario to a workflow, the workflow management system intercepts related operations. You must provide additional information to complete the submission and generate a workflow order. You can add CC recipients only if the workflow is configured to allow the initiator to add them. When adding CC recipients, you can select only users visible to the initiator.
 
-#### Quota management
+#### 7.1.3 Quota management
 
-##### Products that support resource quotas
+##### 7.1.3.1 Products that support resource quotas
 
 Organization administrators and users can create resources within the quota limits of each product in their organization. When the quota for a product is exhausted, they cannot create additional resources for that product. To continue creating resources, they must first increase the product quota in the organization. If no quota is configured, the system does not limit resource creation. For disk, memory, and capacity quotas, the minimum calculation unit is **GB**. The system rounds decimal values to the nearest integer. For example, when calculating the quota, the system rounds 0.8 GB up to 1 GB and 0.2 GB down to 0 GB.
 
-###### Elastic computing
+###### 7.1.3.1.1 Elastic computing
 
-###### ECS
+###### 7.1.3.1.1.1 ECS
 
 This topic describes the quotas that you can configure for Elastic Compute Service (ECS), calculation methods of quota usage, and inventory source.
 
@@ -8125,7 +8885,7 @@ The data is collected by the Capacity module of the Apsara Uni-manager Operation
 
 Some Elastic Block Storage (EBS) clusters can share disks of multiple types. When you configure logical inventories, make sure that the sum of the logical inventories of the disk quota items does not exceed the physical inventory. For example, if an IO15 cluster has a physical inventory of 1,000 GiB and can share premium performance disks and standard SSDs, the physical inventory of both premium performance disks and standard SSDs is increased by 1,000 GiB. When you configure logical inventories, you need to check whether disk sharing is enabled for the EBS cluster and make sure that logical inventories do not exceed 1,000 GiB.
 
-###### Auto Scaling
+###### 7.1.3.1.1.2 Auto Scaling
 
 This topic describes the quotas that you can configure for Auto Scaling, the calculation methods of quota usage, and the inventory source.
 
@@ -8146,7 +8906,7 @@ Scaling Group (Units): the number of scaling groups that are created. Maximum In
 
 Not applicable. By default, the inventory is unlimited.
 
-###### DDH
+###### 7.1.3.1.1.3 DDH
 
 This topic describes the quotas that you can configure for Dedicated Host (DDH), the calculation methods of quota usage, and the inventory source.
 
@@ -8164,7 +8924,7 @@ Quota usage of DDH = Number of dedicated hosts that are created The quota usage 
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### BMS
+###### 7.1.3.1.1.4 BMS
 
 This topic describes the quotas that you can configure for Bare-metal Management Service (BMS), the calculation methods of quota usage, and the inventory source.
 
@@ -8178,13 +8938,13 @@ This topic describes the quotas that you can configure for Bare-metal Management
 
 **Calculation methods of quota usage**
 
-Bare metal instance quota usage = Number of bare metal instances that are managed by BMS In-band instance quota usage = Number of in-band instances that are created for BMS Out-of-band instance quota usage = Number of out-of-band instances that are created for BMS The quota usage of BMS is calculated based on the number of resource instances.
+Bare metal instance quota usage = Number of bare metal instances that are managed by In-band instance quota usage = Number of in-band instances that are created for BMS Out-of-band instance quota usage = Number of out-of-band instances that are created for The quota usage of BMS is calculated based on the number of resource instances.
 
 **Inventory source**
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### ACK
+###### 7.1.3.1.1.5 ACK
 
 This topic describes the quotas that you can configure for Container Service for Kubernetes (ACK), the calculation methods of quota usage, and the inventory source.
 
@@ -8203,7 +8963,7 @@ Cluster (Units): the number of created clusters. Cluster Nodes (Units): the tota
 
 Not applicable. By default, the inventory is unlimited.
 
-###### Container Registry Standard Edition
+###### 7.1.3.1.1.6 Container Registry Standard Edition
 
 This topic describes the quotas that you can configure for Container Registry Standard Edition, calculation methods of quota usage, and inventory source.
 
@@ -8222,7 +8982,7 @@ Usage of Image Repository Quota (Units) = Number of image repositories that are 
 
 Not applicable. By default, the inventory is unlimited.
 
-###### Container Registry Advanced Edition
+###### 7.1.3.1.1.7 Container Registry Advanced Edition
 
 This topic describes the quotas that you can configure for Container Registry Advanced Edition, calculation methods of quota usage, and inventory source.
 
@@ -8243,7 +9003,7 @@ Usage of Apsara Stack Advanced Edition Namespace Quota (Units) = Number of names
 
 Not applicable. By default, the inventory is unlimited.
 
-###### BMCP
+###### 7.1.3.1.1.8 BMCP
 
 This topic describes the quotas that you can configure for Bare Metal Computing Platform (BMCP), calculation method of quota usage, and inventory source.
 
@@ -8281,7 +9041,7 @@ The data is collected by the Capacity module of the Apsara Uni-manager Operation
 
 Bare metal clusters and container clusters share the physical inventory. When you configure logical inventories, make sure that the sum of the logical inventories of a quota item of the two types of clusters cannot be exceed the physical inventory. For example, if the physical CPU inventory of both bare metal clusters and container clusters is five cores, the sum of the logical CPU inventories of bare metal clusters and container clusters must be equal to or smaller than five cores.
 
-###### ACK One
+###### 7.1.3.1.1.9 ACK One
 
 This topic describes the quota that you can configure for Distributed Cloud Container Platform for Kubernetes (ACK One), calculation method of quota usage, and inventory source.
 
@@ -8299,9 +9059,9 @@ Fleet usage = Number of created fleet instances The quota usage is calculated ba
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Storage
+###### 7.1.3.1.2 Storage
 
-###### File Storage NAS
+###### 7.1.3.1.2.1 File Storage NAS
 
 This topic describes the configurable quota items for File Storage NAS, how the system calculates quota usage, and the source of inventory.
 
@@ -8320,7 +9080,7 @@ Usage of a single NAS instance = The usage of the selected NAS instance. The sys
 
 Capacity management in the Apsara Uni-manager Operations Console.
 
-###### CPFS File Storage
+###### 7.1.3.1.2.2 CPFS File Storage
 
 This topic describes the configurable quota items for CPFS File Storage, how the system calculates quota usage, and the source of inventory.
 
@@ -8339,7 +9099,7 @@ The usage of a single CPFS instance equals the usage of the selected CPFS instan
 
 Capacity management in the Apsara Uni-manager Operations Console.
 
-###### OSS
+###### 7.1.3.1.2.3 OSS
 
 This topic describes the quotas that you can configure for Object Storage Service (OSS), calculation methods of quota usage, and inventory source.
 
@@ -8358,7 +9118,7 @@ Capacity quota of a single bucket = Capacity of the selected bucket The total ca
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### APFS
+###### 7.1.3.1.2.4 APFS
 
 This topic describes the quota that you can configure for ApsaraStack Parallel File System (APFS), calculation method of quota usage, and inventory source.
 
@@ -8376,7 +9136,7 @@ Quota usage of a Performance APFS file system = Storage capacity of the Performa
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### EFS-NAS
+###### 7.1.3.1.2.5 EFS-NAS
 
 This topic describes the quotas that you can configure for Elastic File System-File Storage NAS (EFS-NAS), calculation methods of quota usage, and inventory source.
 
@@ -8395,9 +9155,9 @@ Usage of a single Performance EFS-NAS file system = Specified capacity of the Pe
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Networking
+###### 7.1.3.1.3 Networking
 
-###### EIP
+###### 7.1.3.1.3.1 EIP
 
 This topic describes the quotas that you can configure for Elastic IP Address (EIP), calculation method of quota usage, and inventory source.
 
@@ -8416,7 +9176,7 @@ EIP bandwidth usage = Total bandwidth of EIPs EIP quota usage = Number of EIPs t
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### SLB
+###### 7.1.3.1.3.2 SLB
 
 This topic describes the quotas that you can configure for Server Load Balancer (SLB), calculation method of quota usage, and inventory source.
 
@@ -8440,7 +9200,7 @@ Usage of private IP addresses that are created in the classic network = Number o
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### HAVIP
+###### 7.1.3.1.3.3 HAVIP
 
 This topic describes the quotas that you can configure for high-availability virtual IP address (HAVIP), calculation method of quota usage, and inventory source.
 
@@ -8458,7 +9218,7 @@ HAVIP usage = Number of HAVIPs that are created The quota usage of HAVIP is calc
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### VPC
+###### 7.1.3.1.3.4 VPC
 
 This topic describes the quotas that you can configure for Virtual Private Cloud (VPC), the calculation methods of quota usage, and the inventory source.
 
@@ -8476,7 +9236,7 @@ Quota usage of VPC = Number of VPCs that are created The quota usage of VPC is c
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Express Connect
+###### 7.1.3.1.3.5 Express Connect
 
 This topic describes the quotas that you can configure for Express Connect, calculation methods of quota usage, and inventory source.
 
@@ -8496,7 +9256,7 @@ Connection usage = Number of connected instances VBR-to-VPC connection usage = N
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### CEN
+###### 7.1.3.1.3.6 CEN
 
 This topic describes the quotas that you can configure for Cloud Enterprise Network (CEN), calculation method of quota usage, and inventory source.
 
@@ -8516,7 +9276,7 @@ CEN instance usage = Number of CEN instances that are created The quota usage of
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### NAT Gateway
+###### 7.1.3.1.3.7 NAT Gateway
 
 This topic describes the quotas that you can configure for NAT Gateway, calculation method of quota usage, and inventory source.
 
@@ -8534,7 +9294,7 @@ Quota usage of NAT Gateway = Number of NAT gateways that are created for NAT Gat
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### VPN Gateway
+###### 7.1.3.1.3.8 VPN Gateway
 
 This topic describes the quotas that you can configure for VPN Gateway, calculation method of quota usage, and inventory source.
 
@@ -8556,7 +9316,7 @@ Instance usage = Number of VPN gateways that are created Bandwidth usage = Bandw
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### DNS
+###### 7.1.3.1.3.9 DNS
 
 This topic describes the quotas that you can configure for Apsara Stack DNS (DNS), calculation method of quota usage, and inventory source.
 
@@ -8575,7 +9335,7 @@ Private line usage = Number of private lines that are created for DNS Private do
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### ALB
+###### 7.1.3.1.3.10 ALB
 
 This topic describes the quotas that you can configure for Application Load Balancer (ALB), calculation methods of quota usage, and inventory source.
 
@@ -8597,9 +9357,9 @@ Public IP address usage = Number of public IP addresses that are created for ALB
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### Database services
+###### 7.1.3.1.4 Database services
 
-###### AnalyticDB for PostgreSQL
+###### 7.1.3.1.4.1 AnalyticDB for PostgreSQL
 
 This topic describes the quotas that you can configure for AnalyticDB for PostgreSQL, calculation method of quota usage, and inventory source.
 
@@ -8625,7 +9385,7 @@ CPU quota usage = cpuCore × (SegNum + MasterNum + Number of replicas) Memory qu
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. Shared AnalyticDB for PostgreSQL instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
 
-###### ApsaraDB for MongoDB
+###### 7.1.3.1.4.2 ApsaraDB for MongoDB
 
 This topic describes the quotas that you can configure for ApsaraDB for MongoDB, calculation methods of quota usage, and inventory source.
 
@@ -8651,7 +9411,7 @@ CPU quota usage = mongosSpec.cpu × mongosCount + shardSpec.cpu × shardCount ×
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. Shared ApsaraDB for MongoDB instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
 
-###### PolarDB-X 2.0
+###### 7.1.3.1.4.3 PolarDB-X 2.0
 
 This topic describes the quotas that you can configure for PolarDB-X 2.0, calculation methods of quota usage, and inventory source.
 
@@ -8686,7 +9446,7 @@ Standard Edition: Dedicated: License core usage = CPU usage General-purpose: Lic
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### ApsaraDB RDS
+###### 7.1.3.1.4.4 ApsaraDB RDS
 
 This topic describes the quotas that you can configure for ApsaraDB RDS, calculation methods of quota usage, and inventory source.
 
@@ -8716,7 +9476,7 @@ CPU quota usage = dbInstanceClass.cpu × Number of regular nodes + Fixed CPU ove
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters that use local disks share the inventory. Shared ApsaraDB RDS instances share physical resources with each other without being limited by the physical inventory. The shared physical resources include the memory capacity and CPU cores. Therefore, the physical inventory of the memory capacity and CPU cores may not indicate the saleable memory capacity and CPU cores. The saleable memory capacity and CPU cores may be greater than the physical inventory.
 
-###### Tair (Redis OSS-compatible)
+###### 7.1.3.1.4.5 Tair (Redis OSS-compatible)
 
 This topic describes the quota that you can configure for Tair (Redis OSS-compatible), calculation methods of quota usage, and inventory source.
 
@@ -8766,7 +9526,7 @@ Memory usage = instanceClass.mem × (2 + Number of read-only nodes) + Proxy node
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console. The memory of a shared Tair (Redis OSS-compatible) instance can be shared. The shared Tair (Redis OSS-compatible) instance shares physical resources with other shared Tair (Redis OSS-compatible) instances without being limited by the physical inventory. Therefore, the physical inventory data of the memory size may not indicate the saleable memory size. The saleable memory size may be greater than the physical inventory.
 
-###### PolarDB
+###### 7.1.3.1.4.6 PolarDB
 
 This topic describes the quotas that you can configure for PolarDB, calculation methods of quota usage, and inventory source.
 
@@ -8788,7 +9548,7 @@ nodes is 1. DBNodeClass.mem: the memory size defined in the selected node specif
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### DTS
+###### 7.1.3.1.4.7 DTS
 
 This topic describes the quotas that you can configure for Data Transmission Service (DTS), calculation method of quota usage, and inventory source.
 
@@ -8808,7 +9568,7 @@ Migration task usage = Number of migration tasks that are created for DTS Synchr
 
 No inventory is connected. By default, the inventory is unlimited.
 
-###### Lindorm
+###### 7.1.3.1.4.8 Lindorm
 
 This topic describes the quota that you can configure for Lindorm, the calculation method of quota usage, and the inventory source.
 
@@ -8826,9 +9586,9 @@ Disk usage = (Number of replicas × Disk capacity × Number of disks × Capacity
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Big data computing
+###### 7.1.3.1.5 Big data computing
 
-###### MaxCompute
+###### 7.1.3.1.5.1 MaxCompute
 
 This topic describes the quotas that you can configure for MaxCompute, the calculation methods of quota usage, and the inventory source.
 
@@ -8847,7 +9607,7 @@ CU quota usage = Number of CUs that are configured for the current instance Disk
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### Elasticsearch on Kubernetes
+###### 7.1.3.1.5.2 Elasticsearch on Kubernetes
 
 This topic describes the quotas that you can configure for Elasticsearch on Kubernetes, calculation methods of quota usage, and inventory source.
 
@@ -8867,9 +9627,9 @@ Elasticsearch on Kubernetes includes the following types of nodes: data node, Ki
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### AI and machine learning
+###### 7.1.3.1.6 AI and machine learning
 
-###### AI Studio
+###### 7.1.3.1.6.1 AI Studio
 
 This topic describes the quotas that you can configure for AI Studio, calculation methods of quota usage, and inventory source.
 
@@ -8889,7 +9649,7 @@ GPU usage = Number of GPUs that are configured for AI Studio Memory usage = Amou
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### PAI
+###### 7.1.3.1.6.2 PAI
 
 This topic describes the quotas that you can configure for Platform for AI (PAI), calculation method of quota usage, and inventory source.
 
@@ -8905,9 +9665,9 @@ Compute node usage = Number of compute nodes in an instance The quota usage of P
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### Security
+###### 7.1.3.1.7 Security
 
-###### KMS
+###### 7.1.3.1.7.1 KMS
 
 This topic describes the quotas that you can configure for Key Management Service (KMS), calculation method of quota usage, and inventory source.
 
@@ -8925,9 +9685,9 @@ KMS quota usage = Number of KMS instances that are created The quota usage of KM
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Middleware
+###### 7.1.3.1.8 Middleware
 
-###### ApsaraMQ for RocketMQ
+###### 7.1.3.1.8.1 ApsaraMQ for RocketMQ
 
 This topic describes the quotas that you can configure for ApsaraMQ for RocketMQ, calculation method of quota usage, and inventory source.
 
@@ -8954,7 +9714,7 @@ Message queue instance quota usage = Number of message queue instances that are 
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### EDAS
+###### 7.1.3.1.8.2 EDAS
 
 This topic describes the quotas that you can configure for Enterprise Distributed Application Service (EDAS), calculation methods of quota usage, and inventory source.
 
@@ -8973,7 +9733,7 @@ EDAS cluster quota usage = Number of EDAS clusters that are created EDAS applica
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### ApsaraMQ for Kafka
+###### 7.1.3.1.8.3 ApsaraMQ for Kafka
 
 This topic describes the quotas that you can configure for ApsaraMQ for Kafka, calculation methods of quota usage, and inventory source.
 
@@ -8994,7 +9754,7 @@ Instance quota usage = Number of ApsaraMQ for Kafka instances that are created M
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### API Gateway
+###### 7.1.3.1.8.4 API Gateway
 
 This topic describes the quota that you can configure for API Gateway, calculation method of quota usage, and inventory source.
 
@@ -9012,9 +9772,9 @@ Instance quota usage = Number of API gateways that are created The quota usage i
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Development tools
+###### 7.1.3.1.9 Development tools
 
-###### ROS
+###### 7.1.3.1.9.1 ROS
 
 This topic describes the quotas that you can configure for Resource Orchestration Service (ROS), the calculation methods of quota usage, and the inventory source.
 
@@ -9032,9 +9792,9 @@ Quota usage of ROS = Number of stacks that are created The quota usage of ROS is
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Migration and O&M management
+###### 7.1.3.1.10 Migration and O&M management
 
-###### OOS
+###### 7.1.3.1.10.1 OOS
 
 This topic describes the quotas that you can configure for CloudOps Orchestration Service (OOS), the calculation methods of quota usage, and the inventory source.
 
@@ -9052,9 +9812,9 @@ Quota usage of OOS = Number of custom templates that are created The quota usage
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Identity and O&M security
+###### 7.1.3.1.11 Identity and O&M security
 
-###### Tenant-side Bastionhost
+###### 7.1.3.1.11.1 Tenant-side Bastionhost
 
 This topic describes the quotas that you can configure for Tenant-side Bastionhost, calculation methods of quota usage, and inventory source.
 
@@ -9073,7 +9833,7 @@ Usage of authorized assets = Total number of authorized assets configured for Te
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### IDaaS
+###### 7.1.3.1.11.2 IDaaS
 
 This topic describes the quotas that you can configure for Identity as a Service (IDaaS), calculation methods of quota usage, and inventory source.
 
@@ -9093,9 +9853,9 @@ User quota usage = Total number of users in all specifications Application quota
 
 The data is collected by the Capacity module of the Apsara Uni-manager Operations Console.
 
-###### Data security
+###### 7.1.3.1.12 Data security
 
-###### Static Data Masking and
+###### 7.1.3.1.12.1 Static Data Masking and Watermarking
 
 **Watermarking**
 
@@ -9115,7 +9875,7 @@ Instance quota usage = Number of Static Data Masking and Watermarking instances 
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### DataBase Audit
+###### 7.1.3.1.12.2 DataBase Audit
 
 This topic describes the quotas that you can configure for DataBase Audit, calculation methods of quota usage, and inventory source.
 
@@ -9134,9 +9894,9 @@ Database instance quota usage = Number of connections that are created for DataB
 
 No inventory is involved. By default, the inventory is unlimited.
 
-###### Application security
+###### 7.1.3.1.13 Application security
 
-###### Web Application Firewall - Instance
+###### 7.1.3.1.13.1 Web Application Firewall - Instance
 
 This topic describes the quotas that you can configure for Web Application Firewall - Instance, calculation method of quota usage, and inventory source.
 
@@ -9154,7 +9914,7 @@ Instance usage = Number of instances that are created for Web Application Firewa
 
 No inventory is involved. By default, the inventory is unlimited.
 
-##### Products that support AI service token
+##### 7.1.3.2 Products that support AI service token quotas
 
 **quotas**
 
@@ -9165,11 +9925,11 @@ This topic describes the products that support AI service token quotas.
 | Middleware | AI Gateway |
 | AI and machine learning | AI Studio |
 
-##### Manage quotas
+##### 7.1.3.3 Manage quotas
 
-###### Service resources
+###### 7.1.3.3.1 Service resources
 
-###### Cloud services supported by multi-
+###### 7.1.3.3.1.1 Cloud services supported by multi-cloud quotas
 
 **cloud quotas**
 
@@ -9251,7 +10011,7 @@ When the subordinate cloud is Alibaba Public Cloud, the supported cloud services
 |---|---|
 | API Gateway (legacy) | Instance count |
 
-###### Cloud services that support group
+###### 7.1.3.3.1.2 Cloud services that support group quota configuration
 
 **quota configuration**
 
@@ -9272,7 +10032,7 @@ Only ECS supports group quotas, specifically for disks.
 |   | Premium performance disk (GiB) |
 |   | Standard performance disk (GiB) |
 
-###### Cloud services that support category
+###### 7.1.3.3.1.3 Cloud services that support category quota configuration
 
 **quota configuration**
 
@@ -9301,7 +10061,7 @@ Only Elastic Compute Service (ECS) and BMCP support category quota configuration
 | High- performance Computing Network Cluster | Specifications supported for a high-performance computing network cluster. |
 | Basic Cluster | Specifications supported for a basic cluster. |
 
-###### Cloud services that support zone-level
+###### 7.1.3.3.1.4 Cloud services that support zone-level resource quotas
 
 **resource quotas**
 
@@ -9318,7 +10078,7 @@ Currently, cloud services that support zone-level resource quotas include Elasti
 | NAS | NAS usage, performance disk capacity, capacity disk capacity, and NAS quota. |
 |---|---|
 
-###### Set or modify quotas for a single cloud
+###### 7.1.3.3.1.5 Set or modify quotas for a single cloud service
 
 **service**
 
@@ -9370,7 +10130,7 @@ page of the application to manually perform the service operation.
 **Operation Reason**: Enter the reason for the service operation.
 ii. Click **Submit for Approval**. iii. In the **Operation Succeeded** message, click **Close** or **Application Form Details**.
 
-###### Set quotas in batches
+###### 7.1.3.3.1.6 Set quotas in batches
 
 The quota management feature allows you to set quotas for multiple cloud services in batches.
 
@@ -9415,7 +10175,7 @@ and manually perform the service operation.
 **Operation Reason**: Enter the reason for the operation.
 ii. Click **Submit for Approval**. iii. In the **Operation Succeeded** dialog box, click **Close** or **Application Form Details**.
 
-###### View quotas
+###### 7.1.3.3.1.7 View quotas
 
 The quota management feature allows you to view quotas.
 
@@ -9438,7 +10198,7 @@ view cloud services that trigger alerts. When you select **All Zones**, the syst
 8. Click the target product, such as Elastic Compute Service, to open the quota details panel
 and view the quota details of the cloud service for the organization or resource set.
 
-###### Clear quotas
+###### 7.1.3.3.1.8 Clear quotas
 
 After clearing quotas, the system stops validating resource quotas for cloud services in the current organization or resource set. However, it still traverses up the hierarchy to find quotas of the parent organization that has an affiliation with the current organization or resource set for validation.
 
@@ -9465,7 +10225,7 @@ When clearing quotas for a specific availability zone, you can use the **Synchro
 **Clear Quotas in Other Zones** switch to control quotas in other availability zones.
 0. In the **Reset Quota** dialog box, click **OK**.
 
-###### Create a quota alert rule
+###### 7.1.3.3.1.9 Create a quota alert rule
 
 This topic describes how to create an alert rule for quotas of an organization or a resource set on the Quotas page.
 
@@ -9507,7 +10267,7 @@ rule.
 1. Click **OK**. After the alert rule is created, you can go to the Quota Alerts page to view the
 alert rule.
 
-###### Configure a quota template
+###### 7.1.3.3.1.10 Configure a quota template
 
 This topic describes how to configure a quota template for the root organization or level-1 organizations. After a quota template is configured, subordinate organizations and resource sets can use the quota template to apply various quota configurations.
 
@@ -9549,9 +10309,9 @@ Only View Cloud Services That Trigger Alerts. If you select All Zones, you can c
 | Edit a quota template | i. In the Quota Template Settings panel, click Edit in the Actions column of a quota template. ii. In the Edit Template dialog box, update the template name and configuration method. iii. Click OK. |
 | Delete a quota template | i. In the Quota Template Settings panel, click Delete in the Actions column of a quota template. ii. Click OK. |
 
-###### AI service tokens
+###### 7.1.3.3.2 AI service tokens
 
-###### Set quotas
+###### 7.1.3.3.2.1 Set quotas
 
 On the AI Service Token tab, set quotas for organizations, resource sets, and services.
 
@@ -9572,9 +10332,9 @@ i. In the organization structure on the left side, select an organization or a r
 7. Set service quotas and API key quotas.
 i. In the **Quota of Each Product** section, click a service card. ii. Click **Set Quota** or **Modify Quota**. iii. In the row that contains the quota below the product, set the product quota. iv. In the API Key Quota section, set quotas at the API key level. You can set API key quotas only when you select a resource set to configure quotas. v. Click **Save**.
 
-##### Quota alert management
+##### 7.1.3.4 Quota alert management
 
-###### Create a quota alert rule
+###### 7.1.3.4.1 Create a quota alert rule
 
 The system provides a default alert rule for each product service. The rule is named after the product code, applies to all organizations and resource sets, and belongs to the root organization. You can create a new alert rule when the preset alert rule does not meet your requirements. Quota alerts support notifications. When the quota of an organization or resource set reaches the preset threshold, the system notifies the organization administrator or resource set administrator. The system sends the notification once a day upon the first trigger of each day.
 
@@ -9608,7 +10368,7 @@ You cannot create a new alert rule for the current organization or resource set 
 
 6. Click **OK**.
 
-###### Manage quota alert rules
+###### 7.1.3.4.2 Manage quota alert rules
 
 If the quotas of cloud services are changed in an organization or a resource set, you can manage existing quota alert rules. Generated alerts are recorded. Operations staff can analyze the alert history to learn about the resource usage of organizations. This way, they can optimize the quota allocation and create quota alert rules.
 
@@ -9635,7 +10395,7 @@ rules.
 | Disable a quota alert rule | i. Find a quota alert rule whose value in the Status column is Enable, move the pointer over the icon in the Actions column, and then select Disable. ii. In the message that appears, click OK. |
 | Delete a quota alert rule | i. Find the quota alert rule that you want to delete and clickD elete in the Actions column. ii. In the message that appears, click OK. |
 
-##### View the quota alert history
+##### 7.1.3.5 View the quota alert history
 
 If a quota reaches the specified alert threshold, alerts are generated. You can view the alerts to understand the resource quota usage and identify exceptions at the earliest opportunity.
 
@@ -9657,7 +10417,7 @@ column.
 7. In the **Change Quota** dialog box, modify the allocated resource quota.
 8. Click **Save**.
 
-##### Configure network specification quotas
+##### 7.1.3.6 Configure network specification quotas
 
 You can configure the specification quotas for an instance to restrict the specifications that can be enabled or configured for the instance.
 
@@ -9678,9 +10438,9 @@ The Cloud Platform parameter is displayed only in multi-cloud scenarios and supp
 6. In the **Modify Specification Quota** dialog box, modify the specification quota.
 7. Click **OK**.
 
-#### Tag management
+#### 7.1.4 Tag management
 
-##### Manage tags
+##### 7.1.4.1 Manage tags
 
 Tags are used to classify and manage resources from different dimensions. You can add tags to cloud resources to manage the resources in a finer-grained and more intelligent manner.
 
@@ -9717,11 +10477,11 @@ bind other tags to the resource instances at a time.
 **Resources** in the **Actions** column. In the panel that appears, select the resources to which
 you want to add the tag and click **Submit**.
 
-##### Policy library
+##### 7.1.4.2 Policy library
 
 A tag policy defines standardized tag rules to ensure that all tags added to resources meet unified requirements. The tag policy can be applied to organizations, resource sets, cloud services, or instances. It can define the valid tag keys and tag values.
 
-###### Create a tag policy
+###### 7.1.4.2.1 Create a tag policy
 
 When creating a tag policy, you can restrict the effective scope of the policy by resource type, resource set, excluded resource ID, region, and tag scope.
 
@@ -9748,7 +10508,7 @@ By default, the operations administrator and organization administrator can perf
 
 6. Click **Create**.
 
-###### View tag policies
+###### 7.1.4.2.2 View tag policies
 
 On the Policy Library page, you can view tag policies and the details of each tag policy.
 
@@ -9765,7 +10525,7 @@ column to go to the policy details page. Then, view the details of the tag polic
 6. Optional. Click **View Effective Policy and Check Tasks** on the details page of the tag
 policy to go to the details page of the effective policy. You can perform this step if the tag policy is enabled. For more information, see Effective policies.
 
-###### Edit a tag policy
+###### 7.1.4.2.3 Edit a tag policy
 
 You can modify a tag policy when the policy changes.
 
@@ -9780,7 +10540,7 @@ The tag policy is in the **Disabled** status. By default, only the operations ad
 the configuration items, see Create a tag policy.
 6. Click **Modify**.
 
-###### Enable a tag policy
+###### 7.1.4.2.4 Enable a tag policy
 
 After a disabled tag policy is enabled, the system checks the compliance of resource tags and automatically executes related rules based on the tag policy. When you enable a tag policy, the effective policy with the same policy type and tag key as the tag policy is updated. If no such effective policy exists in the current organization, a new effective policy is created.
 
@@ -9795,7 +10555,7 @@ the **Actions** column.
 5. In the message that appears, click **OK**.
 After you enable a tag policy, the tag policy applies to resources within the specified scope. The tag configured in the tag policy is automatically added to new resources after they are created. The tag configured in the tag policy is automatically added to existing resources.
 
-###### Disable a tag policy
+###### 7.1.4.2.5 Disable a tag policy
 
 After an enabled tag policy is disabled, the system no longer checks the compliance of resource tags or automatically executes related rules based on the tag policy. When you disable a tag policy, the effective policy with the same policy type and tag key as the tag policy is updated. If the tag policy is the only one associated with the effective policy, the effective policy is deleted after the tag policy is disabled.
 
@@ -9809,7 +10569,7 @@ The tag policy is in the **Enabled** state. You are an operations administrator 
 the **Actions** column.
 5. In the message that appears, click **OK**.
 
-###### Delete a tag policy
+###### 7.1.4.2.6 Delete a tag policy
 
 You can delete tag policies that you no longer require.
 
@@ -9823,11 +10583,11 @@ The tag policy is in the **Paused** state. You are an operations administrator o
 the **Actions** column.
 5. In the message that appears, click **OK**.
 
-##### Effective policies
+##### 7.1.4.3 Effective policies
 
 An effective policy is obtained by aggregating multiple tag policies.
 
-###### View effective policies
+###### 7.1.4.3.1 View effective policies
 
 After tag policies are enabled, they are aggregated by tag key and policy type and displayed on the Effective Policy page. If multiple tag policies of the same policy type share a tag key, the effective scope of the effective policy depends on the order in which the tag policies are enabled. If the effective scopes of the tag policies conflict, the effective scope of the earliest enabled tag policy prevails.
 
@@ -9860,7 +10620,7 @@ of non-compliant resources can be manually fixed. For more information, see Mana
 which the resources belong. For example, the specified tags are removed from a resource set.
 **Fix Records**: On the **Fix Records** tab, view the details of the automatic fix records.
 
-###### Manage effective policies
+###### 7.1.4.3.2 Manage effective policies
 
 You can manually fix the tags of non-compliant resources.
 
@@ -9884,7 +10644,7 @@ down list to search for non-compliant resources.
 | Fix the tags of multipl e resour ces at a time | i. In the resource list, select multiple non-compliant resources. ii. Click Batch Fix below the resource list. iii. In the Fix Tags dialog box, enter a new tag value in the tag value field and clickO K. iv. After the resource tags are fixed, click OK. |
 |---|---|
 
-##### Supported products and resources
+##### 7.1.4.4 Supported products and resources
 
 This topic describes the products and resources that support tags.
 
@@ -10117,11 +10877,11 @@ This topic describes the products and resources that support tags.
 |   | Cloud migration gateway |
 | Server migration | Migration source |
 
-#### Metering management
+#### 7.1.5 Metering management
 
-##### Metering configuration management
+##### 7.1.5.1 Metering configuration management
 
-###### Create a metering table
+###### 7.1.5.1.1 Create a metering table
 
 This topic describes how to create a metering table for a cloud service. You can customize metering rules and metering fields in a metering table to generate new metering data in order to meet operations needs.
 
@@ -10170,7 +10930,7 @@ the **Resources** drop-down list.
 |---|---|---|
 |   | Rules | When the Source Parameter Type parameter is set toV alue: Rules: Select a rule from the drop-down list. You can select Maximum Value (max), Minimum Value (min), Average Value (avg), or Sum (sum). You can clickAdd Condition to add a condition, which functions as a counting rule. The condition consists of the parameter, calculation method, and value. Parameter: You can select only numeric parameters. Calculation method: You can select Add, Minus, Multiply, Divide, Floor Division, or Ceiling Division. Value: The value field is displayed only after you select a calculation method. You can enter only numbers. Decimals are supported. Expression: An expression is generated based on the counting rule. The expression consists of a function and the counting rule. Value Rule: You can select Maximum Value (max), Minimum Value (min), Average Value (avg), Sum (sum), Use First (first), or Use Last (last). When the Source Parameter Type parameter is set toT ext: Rules: The drop-down list displays the text fields of cloud resources. Value Rule: When the Type parameter is set to Value and the Source Parameter Type parameter is set to Text, valid values are Count and Count after Deduplication (distinct). When the Type parameter is set to Text and the Source Parameter Type parameter is set to Text, valid values are Use First (first) and Use Last (last). |
 
-###### Modify a metering table
+###### 7.1.5.1.2 Modify a metering table
 
 This topic describes how to modify the basic information and metering fields of a metering table.
 
@@ -10194,7 +10954,7 @@ of a custom metering table.
 the metering table.
 8. Click **OK**.
 
-###### View metering tables
+###### 7.1.5.1.3 View metering tables
 
 View preset or custom metering tables for product metering resources. Metering tables created by third-party products in product management also appear here.
 
@@ -10214,7 +10974,7 @@ The Published tab displays published metering tables. Preset metering tables are
 The Draft tab displays draft metering tables.
 7. In the **Meter Details** panel, view the detailed information of this metering table.
 
-###### Enable a metering table
+###### 7.1.5.1.4 Enable a metering table
 
 After you enable a metering table in the Draft state, the enabled metering table generates corresponding metering tasks based on the metering cycle.
 
@@ -10236,7 +10996,7 @@ the **Resources** drop-down list.
 want to manage and click **Enable** in the **Operations** column.
 7. In the dialog box that appears, click **OK**.
 
-###### Disable a metering table
+###### 7.1.5.1.5 Disable a metering table
 
 You can disable an enabled metering table. A disabled metering table does not trigger metering tasks for the next metering cycle but does not affect existing tasks.
 
@@ -10264,7 +11024,7 @@ the **Resources** drop-down list.
 manage and click **Disable** in the **Operations** column.
 7. In the dialog box that appears, click **OK**.
 
-###### Clone a metering table
+###### 7.1.5.1.6 Clone a metering table
 
 By cloning an existing metering table, you can quickly create a new metering table, which significantly improves efficiency and reduces repetitive work.
 
@@ -10288,7 +11048,7 @@ manage and click **Clone** in the **Operations** column.
 8. Click **OK**. After the metering table is cloned, it is in the Draft state by default and is
 displayed in the list on the Draft tab.
 
-###### Delete a metering table
+###### 7.1.5.1.7 Delete a metering table
 
 This topic describes how to delete a custom metering table.
 
@@ -10310,7 +11070,7 @@ the **Resources** drop-down list.
 delete and click **Delete** in the **Operations** column.
 7. Click **OK**.
 
-###### Create a draft based on an existing
+###### 7.1.5.1.8 Create a draft based on an existing metering table
 
 **metering table**
 
@@ -10336,7 +11096,7 @@ manage and click **Create Draft** in the **Operations** column.
 8. Click **OK**. After the draft is created, the new version of the metering table is displayed in
 the list on the Draft tab.
 
-###### View published version records of a
+###### 7.1.5.1.9 View published version records of a metering table
 
 **metering table**
 
@@ -10369,7 +11129,7 @@ table. The latest version is displayed at the top.
 |---|---|
 | Clone a specific version of a metering table | i. Click Clone in the Operations column of the version records list. ii. In the Clone dialog box, update the basic information and metering fields. iii. Click OK. |
 
-###### View metering data push
+###### 7.1.5.1.10 View metering data push
 
 This topic describes how to view the metering data push in each metering cycle of a cloud service.
 
@@ -10397,7 +11157,7 @@ push details.
 | Basic Informa tion | The Basic Information section displays the following metering data push information: Product, Resources, Status, Description, and Metering Cycle. |
 | Meterin g Data Push Progres s | The metering data push progress includes Obtain Metering Data and Audit Metering Data. Obtain Metering Data: If metering data is obtained, click the icon to show metering data push details. You can view metering details by Organization, Resource Set, Region, and Instance ID. Audit Metering Data: If the metering data audit fails, click the icon to view Affected Data Example. |
 
-###### View alert records of metering data
+###### 7.1.5.1.11 View alert records of metering data
 
 The Alert Records tab displays the alert rules and alert records of cloud service metering data.
 
@@ -10416,9 +11176,9 @@ the **Resources** drop-down list.
 alert record is displayed at the top.
 8. Optional. Click **Alert Rules** to view the details of the alert rules.
 
-##### Metering details
+##### 7.1.5.2 Metering details
 
-###### Cloud services that support metering
+###### 7.1.5.2.1 Cloud services that support metering
 
 This topic describes the cloud services that support metering in Enterprise Edition. In multi-cloud scenarios, Multi-Enterprise Edition supports metering for all cloud services that the corresponding edition supports. Multi-Enterprise Edition supports only hourly metering details.
 
@@ -10606,7 +11366,7 @@ This topic describes the cloud services that support metering in Enterprise Edit
 | Custom product | Custom service | Supported | Not supported |
 |---|---|---|---|
 
-###### View and export usage statistics details
+###### 7.1.5.2.2 View and export usage statistics details
 
 On the Metering Details page, you can view resource usage statistics. The information and metering changes of resource instances are recorded at a granularity of one hour or one second. This topic describes how to view and export the details of resource usage statistics.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -10631,13 +11391,13 @@ icon in the upper-right corner to export the resource usage statistics as an
 **.xlsx** file to your computer.
 You can view or export up to 1,000 entries of resource usage statistics in the console. If you want to view or export more resource usage statistics, you can call the MeteringQuery operation.
 
-#### Product management
+#### 7.1.6 Product management
 
-##### Product management
+##### 7.1.6.1 Product management
 
 The product management feature supports centralized access to custom services and provides service operations capabilities in internal operations control and resale scenarios.
 
-###### Add product category
+###### 7.1.6.1.1 Add product category
 
 The top-level product category represents the cloud platform type. It includes system-preset and custom types. System-preset top-level categories include "Apsara Stack" and "Public Cloud". Platform administrators can add custom top-level categories in Configuration > Native Hybrid Cloud > Cloud Platform Type Management. When you add a product category, you can create level 1 and level 2 categories under the top-level category. These correspond to the two-tier menu for products.
 
@@ -10659,7 +11419,7 @@ By default, the operating user is an operations administrator.
 
 6. Click **Confirm**.
 
-###### Edit product category
+###### 7.1.6.1.2 Edit product category
 
 Update the name when a custom product category changes.
 
@@ -10679,7 +11439,7 @@ and click . Enter a category name in the search box above the product category s
 When you update the name of a level 1 or level 2 category, the parent category information appears and you cannot edit it.
 6. Click **Confirm**.
 
-###### Delete a product category
+###### 7.1.6.1.3 Delete a product category
 
 You can delete a custom product category when it is no longer needed.
 
@@ -10697,7 +11457,7 @@ You cannot delete preset product categories. Top-level categories represent clou
 and click . Enter a category name in the search box above the category tree to quickly locate the category. Before you delete a product category, delete its child categories first, then delete the parent category.
 5. Click OK.
 
-###### Add a product
+###### 7.1.6.1.4 Add a product
 
 After you complete adding service categories, you can add services under secondary service categories.
 
@@ -10723,7 +11483,7 @@ The current user must be an operations administrator.
 
 6. Click **OK**.
 
-###### Edit service
+###### 7.1.6.1.5 Edit service
 
 Update the service information when it changes.
 
@@ -10744,7 +11504,7 @@ To quickly find a service, enter its name in the search box above the service li
 You cannot modify the service provider or service code when updating the configuration.
 7. Click **OK**.
 
-###### Publish a service
+###### 7.1.6.1.6 Publish a service
 
 This topic describes how to publish a service. You can use a service only after it is published.
 
@@ -10765,7 +11525,7 @@ The resource type for a service must be published before you publish the service
 | Publish a service in the service list. | i. On the Product Management page, click a service category in the left-side section. ii. On the right side of the page, find the service that you want to manage and click Shelf in the Operation column. Note You can enter the name of a service in the Cloud Product Name field above the service list to quickly find the service. iii. Click OK. |
 | Publish a service in the service page. | i. On the Product Management page, click a service in the left-side section. ii. On the right side of the page, click Shelf in the upper-right corner of the Basic Information section. iii. Click OK. |
 
-###### Unpublish a service
+###### 7.1.6.1.7 Unpublish a service
 
 When you unpublish a service, all its resource types that have been published are unpublished at the same time. After the service is unpublished, you can no longer use it.
 
@@ -10782,7 +11542,7 @@ The service is in the **Put on shelves** state. You are an operations administra
 | Unpubli sh a service in the service list. | i. On the Product Management page, click a service category in the left-side section. ii. On the right side of the page, find the service that you want to manage and click Lower Shelf in the Operation column. Note You can enter the name of a service in the Cloud Product Name field above the service list to quickly find the service. iii. Click OK. |
 | Unpubli sh a service in the service page. | i. On the Product Management page, click a service in the left-side section. ii. On the right side of the page, click Lower Shelf in the upper-right corner of the Basic Information section. iii. Click OK. |
 
-###### Delete a product
+###### 7.1.6.1.8 Delete a product
 
 This topic describes how to delete a service. You can delete a service if you no longer need it.
 
@@ -10799,7 +11559,7 @@ The service is in the **Removed** or **Not put on shelves** state and has no res
 | Delete a service in the service list | i. On the Product Management page, click a service category in the left-side section. ii. On the right side of the page, find the service that you want to delete and click Delete in the Operation column. iii. Click OK. |
 | Delete a service on the service page | i. On the Product Management page, click a service in the left-side section. ii. On the right side of the page, click Delete in the upper-right corner of the Basic Information section. iii. Click OK. |
 
-###### Edit product tags
+###### 7.1.6.1.9 Edit product tags
 
 Add or remove tags in the product list.
 
@@ -10821,7 +11581,7 @@ in the **Tag** column of a product on the right side of the page.
 
 7. Click **OK**.
 
-###### Add a resource type
+###### 7.1.6.1.10 Add a resource type
 
 Add a resource type under a product.
 
@@ -11011,7 +11771,7 @@ The quota management operations and horizontal capabilities for third-party prod
 After you configure the metering table: Click **View** in the Operation column to view the metering table details. Click **Configure** in the Operation column to update the metering fields. Click **Enable** in the Operation column to enable the metering table. To perform billing, go to the Rule Configuration Template page to create a billing rule template. You can then create billing rules.
 4. After you complete the metering configuration, click **Return to List**.
 
-###### Modify a resource type
+###### 7.1.6.1.11 Modify a resource type
 
 This topic describes how to modify a resource type when the resource type changes.
 
@@ -11028,7 +11788,7 @@ You are an operations administrator.
 | Modify the resourc e type in the resourc e type list | i. On the Product Management page, click a service in the left-side section. ii. On the Resource Type tab, find the resource type that you want to modify and click Edit in the Operation column. iii. On the EditResources page, modify the resource type configuration. For more information about the configuration items, see Add a resource type. iv. Click Return to List. |
 | Modify the resourc e type on the resourc e type page | i. On the Product Management page, click a resource type in the left-side section. ii. On the right side of the page, click Edit in the upper-right corner of the Basic Information section. iii. On the EditResources page, modify the resource type configuration. For more information about the configuration items, see Add a resource type. iv. Click Return to List. |
 
-###### Publish a resource type
+###### 7.1.6.1.12 Publish a resource type
 
 This topic describes how to publish a resource type.
 
@@ -11051,7 +11811,7 @@ If the service to which the resource type belongs is in the **Not put on shelves
 | Publish a resource type in the resource list | i. On the Product Management page, click a service in the left-side section. ii. On the Resource Type tab, find the resource type that you want to publish and click Shelf in the Operation column. iii. Click OK. |
 | Publish a resource type on the resource page | i. On the Product Management page, click a resource in the left-side section. ii. On the right side of the page, click Shelf in the upper-right corner of the Basic Information section. iii. Click OK. |
 
-###### Unpublish a resource type
+###### 7.1.6.1.13 Unpublish a resource type
 
 Unpublish the resource type.
 
@@ -11074,7 +11834,7 @@ A published product must have at least one published resource type. To unpublish
 
 5. Click **OK**.
 
-###### Delete a resource type
+###### 7.1.6.1.14 Delete a resource type
 
 This topic describes how to delete a resource type. You can delete a resource type if you no longer need it.
 
@@ -11093,7 +11853,7 @@ The resource type is in the **Removed** or **Not put on shelves** state. You are
 | Delete a resource type on the resource page | i. On the Product Management page, click a resource in the left-side section. ii. On the right side of the page, click Delete in the upper-right corner of the Basic Information section. iii. Click OK. |
 |---|---|
 
-###### Export a configuration file
+###### 7.1.6.1.15 Export a configuration file
 
 You can export configuration files in the YAML format by category or by service on the Product Management page and import the configuration files to other environments.
 
@@ -11117,7 +11877,7 @@ describes the parameters.
 
 6. Click **OK**.
 
-###### Import a configuration file
+###### 7.1.6.1.16 Import a configuration file
 
 You can import an exported service configuration file to quickly migrate and reuse the service configurations.
 
@@ -11131,13 +11891,13 @@ You are an operations administrator.
 5. In the **Import Configuration** dialog box, perform the following steps to import a
 configuration file. i. **Upload configuration file**: Click **Upload configuration file**, select the configuration file in the YAML format that you want to import, and then click **Next step**. ii. **Configuration Verification**: After the configuration passes the verification, click **OK**.
 
-###### Third-party product management
+###### 7.1.6.1.17 Third-party product management integration
 
 **integration**
 
 To enable management of external cloud products in the Apsara Uni-manager Management Console, make sure that the relevant systems and network environment meet the basic conditions. This solution is based on the Apsara Uni-manager Management Console and relies on its ability to call the management APIs of external cloud products. At the same time, the external clouds must provide standardized APIs to support cross-cloud resource management. Stable and secure two-way network connectivity must be established between the Apsara Uni-manager Management Console and external cloud API gateways to ensure the reliability of service calls and the security of data transmission. As the major caller, the Apsara Unimanager Management Console must maintain continuously available network connections with the external cloud API gateways to ensure the efficient execution of cross-cloud resource management processes. On this basis, the third-party products must provide complete functional support, including instance management features such as resource creation, deletion, modification and query, status change feedback, and execution result feedback. These capabilities ensure that the Apsara Uni-manager Management Console can efficiently call the APIs of external cloud services, test resource management processes in a multi-cloud environment, and reduce the integration complexity and testing costs of cross-cloud systems.
 
-###### Integration solution
+###### 7.1.6.1.17.1 Integration solution
 
 The integration solution includes Service Provider Interface (SPI) integration for instance management, instance status update triggering by third-party products, and metering data pushing by third-party products. Instance management SPI integration This topic describes the interface specifications and integration steps for instance management SPI integration.
 
@@ -11451,7 +12211,7 @@ If success=true, the update succeeded.
 {"code":"200","message":"success"}
 ```
 
-###### Demo code
+###### 7.1.6.1.17.2 Demo code
 
 A JSON Web Key (JWK) can be at most 4,096 characters in length. You can generate a JWK at https://mkjwk.org/. You can use the information displayed in the left card in the following figure to generate a JWK. The information displayed in the right card is used to generate a public key, which is used to verify JWT tokens. For more information, see the Verify a JWT token section of this topic.
 
@@ -11686,7 +12446,7 @@ fication change.
 
 `}`
 
-###### Appendix
+###### 7.1.6.1.17.3 Appendix
 
 This topic describes error codes and provides a POP call example.
 
@@ -11759,11 +12519,11 @@ ecify the role ID of the operations administrator in the request header. The rol
 
 `}` `}` `}`
 
-##### Service provider management
+##### 7.1.6.2 Service provider management
 
 The service provider management feature allows you to manage the service providers of custom services in a centralized manner.
 
-###### Add a service provider
+###### 7.1.6.2.1 Add a service provider
 
 Before you add a custom service, you must add the service provider to which the service belongs.
 
@@ -11789,7 +12549,7 @@ describes the parameters.
 
 6. Click **OK**.
 
-###### Modify a service provider
+###### 7.1.6.2.2 Modify a service provider
 
 This topic describes how to modify a service provider when the service provider information changes.
 
@@ -11818,7 +12578,7 @@ describes the parameters.
 
 6. Click **OK**.
 
-###### Remove a service provider
+###### 7.1.6.2.3 Remove a service provider
 
 You can remove a service provider if you no longer need it.
 
@@ -11837,9 +12597,9 @@ The built-in system service providers cannot be removed.
 remove and click **Delete** in the **Operation** column. You can specify the Service Provider Display Name and Source parameters above the service provider list to quickly find a service provider.
 5. In the message that appears, click **OK**.
 
-#### Examples
+#### 7.1.7 Examples
 
-##### Example: Manage the memory quota of
+##### 7.1.7.1 Example: Manage the memory quota of ECS
 
 ###### ECS
 
@@ -11868,7 +12628,7 @@ resources that are activated in the specified organization and its suborganizati
 set. Example: 500.
 0. Click **Save**.
 
-##### Create an alert rule for the memory quota
+##### 7.1.7.2 Create an alert rule for the memory quota of ECS
 
 **of ECS**
 
@@ -11885,7 +12645,7 @@ You are an operations administrator or organization administrator. The memory qu
 Information and Alert Information sections. In the Alert Object Information section, select an organization or a resource set and a region. Select **Elastic Compute Service** from the Cloud Service Category drop-down list. In the Alert Information section, configure the Alert Name, Alarm Standard, and Alert Threshold parameters. For example, you can set the name of the alert rule to ECS_memory, select Used for the Alarm Standard parameter, select Number from the drop-down list in the Threshold column of the Memory Quota(GB) field, and set the threshold to 180. This way, an alert is triggered when the used memory of ECS exceeds 180 GB in size.
 6. Click **OK**.
 
-##### Example: Create and publish a process
+##### 7.1.7.3 Example: Create and publish a process
 
 This topic provides an example on how to create and publish a process.
 
@@ -11925,7 +12685,7 @@ are notified of the end of the process. After the process ends, the approval res
 8. Click **Publish** in the **Operations** column of the process. After the process is published, the
 status of the process changes to **Published**. You can associate a process with a business scenario only when the process is in the **Published** state.
 
-##### Example: Associate a process with
+##### 7.1.7.4 Example: Associate a process with management operations
 
 **management operations**
 
@@ -11951,7 +12711,7 @@ process list.
 
 When a user in the baseservicetest organization attempts to create or delete an organization, the operation is reviewed by using the process management feature before the operation can be performed. Before you initiate a process, you must provide supplementary information. After the application is submitted for approval, a process application form is generated. You can create or delete an organization only after the approver approves the application.
 
-##### Example: Associate a process with cloud
+##### 7.1.7.5 Example: Associate a process with cloud service operations
 
 ### service operations
 
@@ -11978,7 +12738,7 @@ process list.
 
 When a user in the baseservicetest organization attempts to modify a VPC, the operation is reviewed by using the process management feature before the operation can be performed. Before you initiate a process, you must provide supplementary information. After the application is submitted for approval, a process application form is generated. You can modify a VPC only after the approver approves the application.
 
-##### Example: Associate a process with service
+##### 7.1.7.6 Example: Associate a process with service catalogs
 
 **catalogs**
 
@@ -12006,9 +12766,9 @@ process list.
 
 When a user in the baseservicetest organization attempts to create resources by using the provisioned basic services of ECS instances, the operation is reviewed by using the process management feature before the operation can be performed. Before you initiate a process, you must provide supplementary information. After the application is submitted for approval, a process application form is generated. You can create ECS instances only after the approver approves the application.
 
-### Service operations
+### 7.2 Service operations
 
-#### Shopping cart
+#### 7.2.1 Shopping cart
 
 You can add the cloud services for which you want to apply to the shopping cart and apply for multiple cloud services of different types at a time on the Shopping Cart page.
 
@@ -12060,7 +12820,7 @@ guide of the cloud service.
 2. In the lower part of the page, click **Apply Now**.
 3. On the **Confirm Order** page, click **Create Now**.
 
-##### Create a list
+##### 7.2.1.1 Create a list
 
 The Configure, Price, Quote (CPQ) page displays the configuration information about services in a list by group. You can create multiple lists to manage resources in CPQ by group. You can also select and submit resources across groups. This topic describes how to create a list in CPQ.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -12071,7 +12831,7 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 The list name must be unique under each Apsara Stack tenant account.
 5. Click **OK**.
 
-##### Save a list
+##### 7.2.1.2 Save a list
 
 If you use the Save List feature, you save the default list as a custom list. This topic describes how to save a list in Configure, Price, Quote (CPQ).
 
@@ -12086,7 +12846,7 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 If the default list contains a service, the service is also saved to the custom list. After you save the default list as a custom list, the contents of the default list are cleared. The list name must be unique under each Apsara Stack tenant account.
 5. Click **OK**.
 
-##### Export a list
+##### 7.2.1.3 Export a list
 
 If you use the Export List feature, you download the service information in the list to your computer for storage. This topic describes how to export a list from Configure, Price, Quote (CPQ).
 1. Log on to the Apsara Uni-manager Management Console.
@@ -12095,7 +12855,7 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 3. On the **CPQ** page, click **Export List** above the list to download the configuration list file in
 the **.csv** format to your computer.
 
-##### Delete a list
+##### 7.2.1.4 Delete a list
 
 You can delete lists that are no longer needed from Configure, Price, Quote (CPQ). If the list that you want to delete contains a service, the service is automatically moved to the default list after the list is deleted. This topic describes how to delete a list from CPQ.
 
@@ -12108,7 +12868,7 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 3. On the **CPQ** page, click **Delete List** above the list.
 4. Click **OK**.
 
-##### Add a service to CPQ
+##### 7.2.1.5 Add a service to CPQ
 
 You can add services to a list in Configure, Price, Quote (CPQ) by group. This topic describes how to add a service to CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12125,7 +12885,7 @@ click **Add configuration quotation**.
 7. On the **CPQ** page, view the service that you added.
 The custom fields that are added to the service are displayed in the **Description** column.
 
-##### Remove a service from CPQ
+##### 7.2.1.6 Remove a service from CPQ
 
 You can remove services from Configure, Price, Quote (CPQ). This topic describes how to remove a service from CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12135,7 +12895,7 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 4. Remove the service from the list.
 Remove a single service a. Click **Remove** in the **Actions** column of the service. b. Click **OK**. Remove multiple services at a time a. Select multiple services that you want to remove or select All in the lower part of the page, and then click **Batch Remove**. b. In the dialog box that appears, click **OK**.
 
-##### Change the configurations of a service in
+##### 7.2.1.7 Change the configurations of a service in CPQ
 
 **CPQ**
 
@@ -12149,7 +12909,7 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 the specific service.
 6. Click **Add configuration quotation** to add the service to CPQ again.
 
-##### Submit a service application
+##### 7.2.1.8 Submit a service application
 
 The services that are to be submitted to Configure, Price, Quote (CPQ) can be submitted in groups either within a list or across lists. This topic describes how to submit a service application in CPQ.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12159,9 +12919,9 @@ icon to show the floating menu, and then click the icon to go to the CPQ page. T
 4. In the lower part of the page, click **Apply Now**.
 5. On the **Confirm Order** page, preview the order information and click **Create Now**.
 
-#### Service catalog
+#### 7.2.2 Service catalog
 
-##### Service activation
+##### 7.2.2.1 Service activation
 
 The service activation page displays all available services and allows you to quickly create resources by activating services.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12171,13 +12931,9 @@ The service activation page displays all available services and allows you to qu
 
 **Product**
 
-a. On the **Product** tab, select the target category in the **Category** section. b. Find the target service on the right side. Enter a service name in the search box at the top of the page to quickly find the service. Select a resource pool from the drop-down list at the top of the page to filter services by resource pool. The resource pool drop-down list appears only in multi-cloud scenarios. c. Click **Activate Service** on the target service card to go to the resource creation page and create resources.
+a. On the **Product** tab, select the target category in the **Category** section. b. Find the target service on the right side. Enter a service name in the search box at the top of the page to quickly find the service. Select a resource pool from the drop-down list at the top of the page to filter services by resource pool. The resource pool drop-down list appears only in multi-cloud scenarios. c. Click **Activate Service** on the target service card to go to the resource creation page and create resources. a. On the **AI Services** tab, select the target category in the **Category** section. b. Find the target service on the right side. Enter a service name in the search box at the top of the page to quickly find the service. c. Click the target service card to go to the service details page. d. On the service details page, click **Connect** in the upper-right corner to go to the product console. Then, refer to the product documentation to activate the service.
 
-**AI Services**
-
-a. On the **AI Services** tab, select the target category in the **Category** section. b. Find the target service on the right side. Enter a service name in the search box at the top of the page to quickly find the service. c. Click the target service card to go to the service details page. d. On the service details page, click **Connect** in the upper-right corner to go to the product console. Then, refer to the product documentation to activate the service.
-
-##### Service management
+##### 7.2.2.2 Service management
 
 The Service Management page displays all services that you can manage. You can create custom services, publish services, and authorize specific users to access services.
 
@@ -12185,9 +12941,9 @@ The Service Management page displays all services that you can manage. You can c
 
 The service management feature is used to manage and control specific specifications of specific services that belong to an enterprise or organization. For example, enterprises or organizations require employees to go through an approval process before the employees purchase Elastic Compute Service (ECS) instances with high specifications, or authorize only a specific user or users in a specific organization to purchase high-specification ECS instances. In this case, enterprises or organizations can configure the specifications and specify users by using the service management feature. After a service is published, the authorized users or organizations can select only the specifications that they are authorized to access. If they create resources with high specifications, they must go through an approval process. This way, enterprises or organizations can impose limits on resource users and manage specifications in a fine-grained manner.
 
-###### Product services
+###### 7.2.2.2.1 Product services
 
-###### Services and cloud resources that
+###### 7.2.2.2.1.1 Services and cloud resources that integrate with the Service Catalog
 
 **integrate with the Service Catalog**
 
@@ -12277,7 +13033,7 @@ This topic describes the services and resources that integrate with the Service 
 |---|---|
 | API Gateway (legacy) | API application API group API plugin management |
 
-###### Create a service
+###### 7.2.2.2.1.2 Create a service
 
 Create a new service. Configure the associated product, authorization scope, form, pricing, and other information for the service. Create a service from a custom source.
 
@@ -12336,7 +13092,7 @@ If billing information exists, click **View details** to go to the billing confi
 5. Click **Submit** to create the service. The system displays the origin of all created services as
 Custom.
 
-###### View the service list and details
+###### 7.2.2.2.1.3 View the service list and details
 
 View preset and custom services in the system.
 
@@ -12366,7 +13122,7 @@ Click to the right of the **Status** field in the list to filter services by **P
 | Detailed steps | Displays the Basic information, Form Field Settings, Form Parameter Configuration, and Pricing configuration of the service. Note Click a step to switch to and view the detailed configuration content. If no form fields, form parameter configuration, or pricing configuration exists, the corresponding step appears dimmed and does not display content. When the type of the service is Specify URL, only the basic information step is available for viewing. |
 |---|---|
 
-###### Edit a service
+###### 7.2.2.2.1.4 Edit a service
 
 You can update a service when the service content changes.
 
@@ -12387,7 +13143,7 @@ You cannot edit preset services. You cannot edit **custom services** of the lega
 5. On the **Edit service** page, modify the service information. For more information on
 parameter configuration, see Create a service.
 
-###### Publish a service
+###### 7.2.2.2.1.5 Publish a service
 
 You must publish a service before users can use it. The system initializes all preset services in the **To be put on shelves** status by default.
 
@@ -12413,7 +13169,7 @@ a. In the service list, click **Shelf** in the **Action** column of the target s
 a. In the service list, select the services that you want to publish. b. Click **Publish** at the bottom of the list. c. Click **OK**. After publishing the services, the system changes their status to **Put on**
 **shelves**.
 
-###### Unpublish a service
+###### 7.2.2.2.1.6 Unpublish a service
 
 Unpublish a service that is already published.
 
@@ -12434,7 +13190,7 @@ a. In the service list, click **Lower shelf** in the **Actions** column of the t
 a. In the service list, select the services that you want to unpublish. b. Click **Unpublish** below the list. c. Click **OK**. After unpublishing the services, the system changes their status to
 **Unpublished**.
 
-###### Copy a service
+###### 7.2.2.2.1.7 Copy a service
 
 Quickly copy a service with the same configuration.
 
@@ -12452,7 +13208,7 @@ You cannot copy preset services. The system no longer supports management of **c
 5. In the dialog box, enter a name for the service.
 6. Click **OK**.
 
-###### Change the authorization scope of a
+###### 7.2.2.2.1.8 Change the authorization scope of a service
 
 **service**
 
@@ -12481,7 +13237,7 @@ in the
 
 6. Click **OK**.
 
-###### Delete a service
+###### 7.2.2.2.1.9 Delete a service
 
 You can delete a service that is no longer needed.
 
@@ -12501,9 +13257,9 @@ You cannot delete preset services.
 icon in the **Actions** column, and then select **Delete**.
 5. Click **OK**.
 
-###### AI services
+###### 7.2.2.2.2 AI services
 
-###### Manage service categories
+###### 7.2.2.2.2.1 Manage service categories
 
 The AI Service tab provides the following preset primary service categories: Model, Agent, MCP, and Skill. You can create and manage secondary service categories based on these primary categories.
 
@@ -12526,7 +13282,7 @@ table.
 | Move a service category | i. Move the pointer over the Level-2 service category, click , and then select Move. ii. In the dialog box, select a location and specify whether to place the category before or after the target. iii. Click OK. |
 | Delete a service category | i. Move the pointer over the Level-2 service category, click , and then select Delete. ii. In the dialog box, click OK. |
 
-###### Service synchronization configuration
+###### 7.2.2.2.2.2 Service synchronization configuration
 
 Configure the synchronization cycle for services that synchronize models, agents, Model Context Protocols (MCPs), and skills from products such as API Gateway, AI Studio, and OpenAPI Explorer.
 
@@ -12543,7 +13299,7 @@ You can set the synchronization cycle to **Every Hour**, **Every 2 Hours**, **Ev
 6. Click **Submit** to save the synchronization configuration.
 Click **Synchronize Now** to synchronize services immediately.
 
-###### Manage AI services
+###### 7.2.2.2.2.3 Manage AI services
 
 Manage the synchronized AI services.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12557,9 +13313,9 @@ Manage the synchronized AI services.
 | Publish a service | i. Click Publish in the Actions column of the target service, or select multiple services from the list and click Publish at the bottom. Note You can publish a service only when it is in the Removed or To be put on shelves status. ii. Click OK. |
 | Unpublish a service | i. Click Unpublish in the Actions column of the target service, or select multiple services from the list and click Unpublish at the bottom. Note You can unpublish a service only when it is in the Put on shelves status. ii. Click OK. |
 
-##### Operation examples
+##### 7.2.2.3 Operation examples
 
-###### Example: Create an ECS instance service
+###### 7.2.2.3.1 Example: Create an ECS instance service
 
 This topic describes how to create an Elastic Compute Service (ECS) instance service.
 
@@ -12619,13 +13375,13 @@ When users in the baseservicetest organization select the preceding service cata
 
 **Custom forms**
 
-#### Order management
+#### 7.2.3 Order management
 
-##### Orders
+##### 7.2.3.1 Orders
 
 On the Orders page, you can view the order history, including order status, date, and cost, and track the progress of orders.
 
-###### View orders
+###### 7.2.3.1.1 View orders
 
 The Orders page displays order information categorized as My Orders, Orders to Be Handled, To Be Claimed, All Orders, and Abnormal Orders.
 
@@ -12678,7 +13434,7 @@ details page.
 | Coupon Informatio n | Canceled: the number of canceled resources DisplayUs pthdea tceo Tuipmoen: dtehde utcimtioen o rfe tchoer dlass ot fu tphdea oterd, einrc.luding operations triggered by reruns or cancellations |
 | Instance details list: Displays detailed information about instances in the order. |   |
 
-###### Reorder
+###### 7.2.3.1.2 Reorder
 
 This topic describes how to generate an identical or a similar order based on an existing order. This way, the configurations of the existing order can be reused to avoid reconfiguration.
 
@@ -12710,7 +13466,7 @@ page and click **Re-order**.
 8. On the displayed resource creation page, adjust the configuration parameters as needed,
 and then submit the order.
 
-###### Cancel an order
+###### 7.2.3.1.3 Cancel an order
 
 The order submitter and users with the order delivery processing permission can cancel an order.
 
@@ -12745,7 +13501,7 @@ resource operation as needed.
 |---|---|
 | Cancel the execution of a resource operation | i. Click the order ID to go to the order details page. ii. In the instance details section, click Cancel execution. Note Only orders in the processing failed status support Cancel execution. Click Rerun to retry a failed order. iii. Click OK. |
 
-###### Execute delivery
+###### 7.2.3.1.4 Execute delivery
 
 On the **Orders to Be Handled** tab, set a delivery time for a custom service order in the pending status. The system automatically executes the delivery when the specified time arrives.
 
@@ -12777,7 +13533,7 @@ support only the pay-as-you-go method, so the system delivers only pay-as-yougo 
 You can select a past time as the delivery time. The earliest selectable time is 15 days before the current time.
 9. Click **OK**.
 
-###### Export orders
+###### 7.2.3.1.5 Export orders
 
 You can export orders for subsequent data processing and analysis.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12800,7 +13556,7 @@ supported.
 item.
 6. Click **Export Order** above the list. The order data is exported as an **.xlsx** file.
 
-###### Assign an order
+###### 7.2.3.1.6 Assign an order
 
 For manual delivery orders, the administrator can assign them to users with the delivery role for processing.
 
@@ -12828,7 +13584,7 @@ include order data from subordinate organizations.
 7. In the **Assign Task** dialog box, select a **Role** and a **User**.
 8. Click **OK**.
 
-###### Claim an order
+###### 7.2.3.1.7 Claim an order
 
 For manual delivery orders, users with the processing role of the corresponding service can claim the orders.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -12851,7 +13607,7 @@ include order data from subordinate organizations.
 the **Order Details** page, click **More**, and then select **Claim**.
 7. In the dialog box, click **OK**.
 
-###### AI analysis of abnormal orders
+###### 7.2.3.1.8 AI analysis of abnormal orders
 
 Perform AI analysis on abnormal orders.
 
@@ -12874,9 +13630,9 @@ a. In the upper-right corner of the page, click **AI Analysis**. b. View the ove
 
 a. Click the order ID of an abnormal order or click **Details** in the **Actions** column to go to the **Order Details** page. b. In the upper-right corner of the page, click **AI Analysis**. c. View the root cause and repair suggestions.
 
-##### Renewal management
+##### 7.2.3.2 Renewal management
 
-###### View organization renewal resources
+###### 7.2.3.2.1 View organization renewal resources
 
 The Renewal Management page displays resources that users activated with the subscription billing method.
 
@@ -12898,7 +13654,7 @@ multi-cloud scenarios. Select an organization before selecting a resource set.
 5. View resource instances activated within the organization.
 Click next to **Expiration Time** to sort resources in ascending or descending order. Click an instance ID to navigate to the corresponding resource console and view instance details. Resources configured for **Manual Renewal** change status to **Expired** upon expiration and are billed on a pay-as-you-go basis. If you renew an expired resource, the system charges on a pay-as-you-go basis for the renewal day and switches to subscription billing from the next day. Automatic renewal takes effect the day after configuration. The system deducts the renewal fee at 08:00, nine days before resource expiration. If deduction fails, the system retries daily until successful or until one day before expiration. If a resource expires tomorrow, automatic renewal does not apply. You must manually renew it.
 
-###### Set the renewal method
+###### 7.2.3.2.2 Set the renewal method
 
 Renewal management allows you to manage resource renewal methods.
 
@@ -12940,7 +13696,7 @@ resource configured with automatic renewal.
 Valid values: **1 Month**, **2 Months**, **3 Months**, **4 Months**, and **More Durations**. If you select **More Durations**, you can customize the subscription duration by specifying a value from 5 to 60 in the **Subscription Duration (Months)** field.
 3. Click OK.
 
-###### Manual renewal
+###### 7.2.3.2.3 Manual renewal
 
 The renewal management feature supports manual renewal of resources.
 
@@ -12965,7 +13721,7 @@ After successful manual renewal, the expiration date of the resource extends by 
 expired resource, the system charges on a Pay-As-You-Go basis for the day of renewal and switches to Subscription billing starting the next day.
 6. Click **OK**.
 
-###### AI analysis of renewal resources
+###### 7.2.3.2.4 AI analysis of renewal resources
 
 Perform AI analysis on renewal resources.
 
@@ -12980,9 +13736,9 @@ Make sure that you have enabled the **Intelligent Operations Expert** on the exp
 4. On the **Renewal** page, click **AI Analysis** in the upper-right corner.
 5. View the idle resource ratio analysis report.
 
-##### Billing method change
+##### 7.2.3.3 Billing method change
 
-###### View instances eligible for billing
+###### 7.2.3.3.1 View instances eligible for billing method conversion
 
 **method conversion**
 
@@ -13006,7 +13762,7 @@ scenarios. Select an organization before selecting a resource set.
 5. In the instance list, view information about instances eligible for billing method conversion.
 Click an instance ID to go to its details page and view detailed information.
 
-###### Switch from subscription to pay-as-you-
+###### 7.2.3.3.2 Switch from subscription to pay-as-you-go
 
 **go**
 
@@ -13028,7 +13784,7 @@ The payment method of an instance can be changed only once within a calendar day
 fees. Click the instance ID to go to the Instance Details page to view the instance details. Move the pointer over **View details** in the Change to Pay-as-you-go dialog box to view the billing details. Refundable fee = (Original order amount -Charged fee) × Refund percentage.
 6. In the message that appears, click **OK**.
 
-###### Switch from Pay-As-You-Go to
+###### 7.2.3.3.3 Switch from Pay-As-You-Go to Subscription Billing
 
 **Subscription Billing**
 
@@ -13049,13 +13805,13 @@ You can switch the billing method for the same instance only once per calendar d
 enable auto-renewal. Click the instance ID to go to the instance details page and view detailed information about the instance. Available subscription durations are **1 month**, **2 months**, **3 months**, **4 months**, and **More Durations**. If you select **More Durations**, you can specify a custom duration in the **Subscription Duration (Months)** field. Valid values range from 5 to 60 months. Hover over **View Details** to expand the cost breakdown.
 6. Click **OK**.
 
-#### Bill management
+#### 7.2.4 Bill management
 
-##### Product bill overview
+##### 7.2.4.1 Product bill overview
 
 The Product Billing Overview page displays the overview of monthly bills by service.
 
-###### View the product bill overview
+###### 7.2.4.1.1 View the product bill overview
 
 The Bill Overview tab of the Product Bill Overview page displays the bill overview of products.
 
@@ -13089,7 +13845,7 @@ You can click an amount in the **Fees** column to go to the **Overview of**
 **Monthly Bill** tab. On this tab, the accounting period, resource item, and
 organization are selected as the filter conditions by default.
 
-###### View the monthly bill overview
+###### 7.2.4.1.2 View the monthly bill overview
 
 The Overview of Monthly Bill tab displays the monthly bill overview of products.
 
@@ -13115,7 +13871,7 @@ Click **View Transaction Details** in the **Actions** column of a bill to go to 
 **Billing Cycle**: Both the start time and end time are 00:00:00 on the
 corresponding dates.
 
-###### Export product monthly bill
+###### 7.2.4.1.3 Export product monthly bill
 
 The Monthly Bill Overview tab supports exporting all bills and selected bills.
 
@@ -13159,7 +13915,7 @@ c. Click **Confirm**. d. In the pop-up dialog box, choose **Go to Report Downloa
 
 When you export selected bills, the system exports only one **.csv** file containing the monthly product overview bill for the selected data range. a. In the list, select the bill details you want to export. b. Click **Export Selected Bills** above the list to export the selected data.
 
-###### Perform an AI-based analysis of cloud
+###### 7.2.4.1.4 Perform an AI-based analysis of cloud service bills
 
 **service bills**
 
@@ -13182,11 +13938,11 @@ down list. If the selected accounting period has unprocessed issues, the bill da
 5. Click **AI Diagnostics** in the upper-right corner to perform intelligent analysis on the
 overview data and generate a bill analysis report. The Bill Fluctuation Analysis feature supports the analysis of bill changes from multiple dimensions, such as cloud service, organization, resource set, and tag. The Trend Analysis and Forecast feature provides bill trend prediction for cloud services, organizations, resource sets, tags, cost centers, and resource instances. You can ask questions based on analysis results by using Apsara Copilot.
 
-##### Overview of organization bills
+##### 7.2.4.2 Overview of organization bills
 
 The Organization Bill Overview page displays the overview of monthly bills by organization and resource set.
 
-###### View the overview of organization bills
+###### 7.2.4.2.1 View the overview of organization bills
 
 You can view the overview of monthly bills by organization on the Organization monthly bill overview tab of the Organization Bill Overview page.
 
@@ -13219,7 +13975,7 @@ the selected month. In the upper-right corner of the section, you can select **S
 **Descending Order** or **Sort by Fee in Ascending Order** .
 You can click the amount in the **Fees** column of the corresponding organization to go to the **Resource Collection monthly bill overview** tab. By default, the selected month and organization are specified as the filter conditions.
 
-###### View the monthly bill overview of an
+###### 7.2.4.2.2 View the monthly bill overview of an organization
 
 **organization**
 
@@ -13251,7 +14007,7 @@ If unhandled issues exist in the selected accounting period, the bill data may b
 **organizations)** to sort data by amount in ascending or descending order.
 To view the bill details of an organization by month, you can find the organization in the bill list and click **View Details by Month** in the **Operation** column to go to the **Monthly Details** tab of the **Bill Details** page. To view the transaction details of an organization, you can find the organization in the bill list and click **View Transaction Details** in the **Operation** column to go to the **Hourly Details** tab of the **Bill Details** page.
 
-###### View the monthly bill overview of a
+###### 7.2.4.2.3 View the monthly bill overview of a resource set
 
 **resource set**
 
@@ -13276,7 +14032,7 @@ down list, an organization from the **Organization** drop-down list, and a resou
 **Period**, **Organization Name**, **Resource Set Name**, **Amount**, and **Billing Cycle**.
 If unhandled issues exist in the selected accounting period, the bill data may be inaccurate. To handle the issues, you can click **Go Now** above the bill list as an operations administrator or a resource auditor to go to the **Bill Audit Issues** page. To view the bill details of a resource set by month, you can find the resource set in the bill list and click **View Details by Month** in the **Actions** column to go to the **Monthly Details** tab of the **Bill Details** page. To view the transaction details of a resource set, you can find the resource set in the bill list and click **View Transaction Details** in the **Actions** column to go to the **Hourly Details** tab of the **Bill Details** page.
 
-###### Settle monthly bills for organizations
+###### 7.2.4.2.4 Settle monthly bills for organizations
 
 After monthly bills are settled, the quotas of independent accounts and allocation accounts in budgets are deducted based on the actual bill amount of the current month, and the frozen quota is unfrozen.
 
@@ -13312,7 +14068,7 @@ view the status of check items.
 6. Select **You confirm that the billing data in the billing period is accurate.** and click
 **Confirm**.
 
-###### Export organization monthly bills
+###### 7.2.4.2.5 Export organization monthly bills
 
 You can export organization monthly bills on the Organization Monthly Bill Overview tab.
 
@@ -13352,7 +14108,7 @@ c. Click **Confirm**. d. In the dialog box that appears, select **Go to Report D
 
 When you export selected bills, the system exports only one **.csv** file containing the organization monthly overview bill for the selected data range. a. Select the bills you want to export in the list. b. Click **Export Selected Bills** above the list to export the selected data.
 
-###### Export resource set monthly bills
+###### 7.2.4.2.6 Export resource set monthly bills
 
 You can export resource set monthly bills on the Resource Set Monthly Bill Overview tab.
 
@@ -13399,7 +14155,7 @@ c. Click **Confirm**. d. In the pop-up dialog box, choose **Go to Report Downloa
 
 When exporting selected bills, the system exports only one **.csv**-formatted resource set monthly overview bill for the selected data range. a. Select the bills you want to export from the list. b. Click **Export Selected Bills** above the list to export the selected data.
 
-###### Perform an AI-based analysis of
+###### 7.2.4.2.7 Perform an AI-based analysis of organization bills
 
 **organization bills**
 
@@ -13422,11 +14178,11 @@ down list. If the selected accounting period has unprocessed issues, the bill da
 5. Click **AI Diagnostics** in the upper-right corner to perform intelligent analysis on the
 overview data and generate a bill analysis report. The Bill Fluctuation Analysis feature supports the analysis of bill changes from multiple dimensions, such as cloud service, organization, resource set, and tag. The Trend Analysis and Prediction feature provides bill trend prediction for cloud services, organizations, resource sets, tags, cost centers, and resource instances. You can ask questions based on analysis results by using Apsara Copilot.
 
-##### Bill overview of cost centers
+##### 7.2.4.3 Bill overview of cost centers
 
 You can view the monthly bill overview of cost centers on the Cost Center Bill Overview page.
 
-###### View the bill overview of cost centers
+###### 7.2.4.3.1 View the bill overview of cost centers
 
 You can view the bill overview of cost centers on the Bill overview tab of the Cost Center Bill Overview page.
 
@@ -13459,7 +14215,7 @@ In the Financial unit consumption details section, you can find a cost center an
 **January bill overview** tab. By default, the selected month and cost center are
 specified as the filter conditions.
 
-###### View monthly bills of cost centers
+###### 7.2.4.3.2 View monthly bills of cost centers
 
 You can view monthly bills of cost centers on the Cost Center Bill Overview page.
 
@@ -13482,7 +14238,7 @@ If the selected accounting period has unprocessed issues, the bill data displaye
 Click **View Details by Dawn** in the **Actions** column of a bill to go to the **Daily**
 **Details** tab of the **Bill Details** page.
 
-###### Settle monthly bills for cost centers
+###### 7.2.4.3.3 Settle monthly bills for cost centers
 
 After monthly bills are settled, the quotas of independent accounts and allocation accounts in budgets are deducted based on the actual bill amount of the current month, and the frozen quota is unfrozen.
 
@@ -13518,7 +14274,7 @@ view the status of check items.
 6. Select **You confirm that the billing data in the billing period is accurate.** and click
 **Confirm**.
 
-###### Export cost unit monthly bills
+###### 7.2.4.3.4 Export cost unit monthly bills
 
 On the cost unit monthly bill overview tab, you can export cost unit monthly bills and save them locally.
 
@@ -13558,11 +14314,11 @@ c. Click **Confirm**. d. In the pop-up dialog box, choose **Go to Report Downloa
 
 When exporting selected bills, the system exports only one **.csv**-formatted cost unit monthly overview bill for the selected data range. a. Select the bills you want to export in the list. b. Click **Export Selected Bills** above the list to export the selected data.
 
-##### Overview of public cloud bills
+##### 7.2.4.4 Overview of public cloud bills
 
 The Public Cloud Bill Overview page provides a comprehensive bill comparison across public cloud services.
 
-###### View the overview of public cloud bills
+###### 7.2.4.4.1 View the overview of public cloud bills
 
 The Public Cloud Bill Overview page provides an overview of public cloud bills.
 
@@ -13598,7 +14354,7 @@ the current month of the selected accounting period.
 **Profit** = **Resale Revenue** - **Public Cloud Cost**.
 You can click the icon next to the Public Cloud Cost, Resale Revenue, or Profit field to sort data by amount in ascending or descending order.
 
-###### View the monthly bills of public cloud
+###### 7.2.4.4.2 View the monthly bills of public cloud services
 
 **services**
 
@@ -13625,7 +14381,7 @@ the **Public Cloud Bill Overview** page.
 **Profit** = **Resale Revenue** - **Public Cloud Cost**.
 You can click the icon next to the Public Cloud Cost, Resale Revenue, or Profit field to sort data by amount in ascending or descending order.
 
-###### Export monthly bills of public cloud
+###### 7.2.4.4.3 Export monthly bills of public cloud services
 
 **services**
 
@@ -13663,11 +14419,11 @@ c. Click **OK**. d. In the message that appears, click **Go to Download Report P
 
 When you export selected bills, only a monthly cost center bill overview of the selected data scope is exported as a **.csv** file. a. Select the bills that you want to export from the list. b. Click **Export Selected Bills** below the list to export the selected bills.
 
-##### Bill details
+##### 7.2.4.5 Bill details
 
 The Bill Details page displays the bill details by month or hour. This helps you understand the bills within a specific period of time.
 
-###### View monthly details
+###### 7.2.4.5.1 View monthly details
 
 The Monthly details tab displays billing information by month.
 
@@ -13707,7 +14463,7 @@ Consumption amount = Total consumption amount - Refund amount Amount payable = C
         - Rounding amount - Coupon deduction amount
 Click above the list to customize list items. On the Global list items and Resource list items tabs, select items to display, and then drag them under Selected items to adjust their order.
 
-###### View daily details
+###### 7.2.4.5.2 View daily details
 
 The Daily Details tab shows billing information by day.
 
@@ -13753,7 +14509,7 @@ Consumption amount is the fee generated by an instance according to billing rule
 7. For bills with Manual Reconciliation as the source, click **View Details** in the **Actions**
 column to view billing details for that instance. Reversal: Reduces the amount of an existing bill and appears as a red negative number. Supplement: Increases the amount of an existing bill and appears as a blue positive number.
 
-###### View hourly details
+###### 7.2.4.5.3 View hourly details
 
 The Hourly Details tab displays billing information by hour.
 
@@ -13791,7 +14547,7 @@ The consumption amount is the fee generated by the instance according to the bil
 7. Click **View Details** in the **Actions** column of a bill to view the billing details for that
 instance.
 
-###### Export monthly detailed billing
+###### 7.2.4.5.4 Export monthly detailed billing statement
 
 **statement**
 
@@ -13855,7 +14611,7 @@ c. Click **OK**. d. In the message that appears, select **Go to Report Download 
 
 When you export selected details, the system exports only one .csv file that contains the monthly details within the selected data range. a. Select the bill details that you want to export in the list. b. Click **Export Selected Details** above the list to export the selected data as a .csv file.
 
-###### Export daily detailed billing statement
+###### 7.2.4.5.5 Export daily detailed billing statement
 
 On the Daily Details tab, you can export billing details by day. After exporting the billing statement, go to the report download page to download and save the report locally.
 
@@ -13898,7 +14654,7 @@ The consumption amount is the fee generated by the instance according to the bil
 8. In the pop-up dialog box, select **Go to Report Download Page** or **Stay on Current**
 **Page**.
 
-###### Export hourly bill details
+###### 7.2.4.5.6 Export hourly bill details
 
 On the Hourly Details tab of the Bill Details page, you can export hourly bill details. After the bill details are exported, you can go to the Report Download page to download the generated report to your local device.
 
@@ -13934,7 +14690,7 @@ If the selected accounting period has unprocessed issues, the bill data displaye
 8. In the message that appears, click **Go to Report Download Page** or **Stay on Current**
 **Page**.
 
-###### Regenerate bills
+###### 7.2.4.5.7 Regenerate bills
 
 If a bill is abnormal or needs to be updated, you can regenerate the bill based on the latest data and rules. This ensures the accuracy and timeliness of the bill.
 
@@ -13968,7 +14724,7 @@ If a record displayed as Failed to generate exists on the **Bill Adjustment**, *
 **Split**, or **Cost Center** tab, contact the O&M engineers for troubleshooting.
 A failed record on the **Basic Bill** tab indicates that an audit issue exists. In this case, go to the Bill Audit Issues page for troubleshooting. If a record is not generated within 1 hour, you can click **Stop** in the Actions column of the record to stop the regeneration. After you stop the regeneration, you can resume it.
 
-###### AI analysis of bill details
+###### 7.2.4.5.8 AI analysis of bill details
 
 This feature provides a detailed breakdown of instance bills, including usage, unit prices, and calculation rules.
 
@@ -13983,9 +14739,9 @@ By default, operations administrators, resource auditors, organization administr
 4. On the **Daily Details**/**Hourly Details** tab, click **AI Parsing** in the **Actions** column of a bill.
 5. View the AI analysis of the bill details.
 
-##### Bill adjustment
+##### 7.2.4.6 Bill adjustment
 
-###### Add a reconciliation record
+###### 7.2.4.6.1 Add a reconciliation record
 
 When bill amounts are incorrect, you can use the bill reconciliation feature to increase or decrease them for each instance. After you enable a reconciliation record, you must click Generate bills again on the Bill Details page to regenerate bills. Bill details and reconciliation amounts are then added.
 
@@ -14018,7 +14774,7 @@ following table.
 
 6. Click **OK**. By default, the new reconciliation record is in the To take effect state.
 
-###### View reconciliation records
+###### 7.2.4.6.2 View reconciliation records
 
 This topic describes how to view reconciliation records on the Bill Reconciliation page.
 
@@ -14035,7 +14791,7 @@ You are an operations administrator or a resource auditor.
 Description of the Adjustment Amount column: A negative amount is generated if a reconciliation record is added to decrease the amount of an existing bill. A positive amount is generated if a reconciliation record is added to increase the amount of an existing bill.
 6. Click a record ID. The **Bill Adjustment Record Details** panel appears.
 
-###### Enable a reconciliation record
+###### 7.2.4.6.3 Enable a reconciliation record
 
 After a reconciliation record changes from the To take effect state to the In effect state, the reconciliation record is enabled. After you enable a reconciliation record, you must click Generate bills again on the Bill Details page to regenerate bills. Bill details and reconciliation amounts are then added.
 
@@ -14053,7 +14809,7 @@ column.
 6. In the message that appears, click **OK**.
 After the reconciliation record is enabled, it changes to the In effect state.
 
-###### Disable a reconciliation record
+###### 7.2.4.6.4 Disable a reconciliation record
 
 You can disable a reconciliation record. After you disable a reconciliation record, you must click Generate bills again on the Bill Details page to regenerate bills. Bill details and reconciliation amounts are then added.
 
@@ -14071,9 +14827,9 @@ column.
 6. In the **Confirm void** message, click **OK**.
 After the reconciliation record is disabled, it changes to the Invalidated state.
 
-##### Bill split management
+##### 7.2.4.7 Bill split management
 
-###### Create a split rule
+###### 7.2.4.7.1 Create a split rule
 
 This topic describes how to create a split rule to allocate unowned resource sets or shared costs to the correct owner based on the rule.
 
@@ -14096,7 +14852,7 @@ You are an operations administrator.
 
 6. Click **OK**.
 
-###### View the split rule list and the details of
+###### 7.2.4.7.2 View the split rule list and the details of a split rule
 
 **a split rule**
 
@@ -14113,7 +14869,7 @@ You can configure the Rule Effective Date and Rule Name parameters to quickly fi
 5. Click the name of the rule that you want to view. In the **Rule Details** dialog box, view the
 details of the rule.
 
-###### Modify a split rule
+###### 7.2.4.7.3 Modify a split rule
 
 This topic describes how to modify a spit rule when the rule changes.
 
@@ -14129,7 +14885,7 @@ in the **Actions** column. You can configure the Rule Effective Date and Rule Na
 about the rule parameters, see Create a split rule.
 6. Click **OK**.
 
-###### Enable a split rule
+###### 7.2.4.7.4 Enable a split rule
 
 This topic describes how to enable a split rule. After split rules are enabled, they are executed in order of priority.
 
@@ -14144,7 +14900,7 @@ The split rule is not enabled. You are an operations administrator.
 You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
 5. Click **OK**.
 
-###### Discard a split rule
+###### 7.2.4.7.5 Discard a split rule
 
 This topic describes how to discard a split rule. After a split rule is discarded, it is no longer used for splitting bills.
 
@@ -14159,7 +14915,7 @@ A split rule is enabled. You are an operations administrator.
 You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
 5. Click **OK**.
 
-###### Delete a split rule
+###### 7.2.4.7.6 Delete a split rule
 
 This topic describes how to delete a discarded split rule. After the split rule is deleted, it is removed from the list.
 
@@ -14174,11 +14930,11 @@ A split rule is discarded. You are an operations administrator.
 You can configure the Rule Effective Date and Rule Name parameters to quickly find a specific rule.
 5. Click **Delete**.
 
-##### Bill audit
+##### 7.2.4.8 Bill audit
 
 You can check and handle metering, billing, and bill generation issues.
 
-###### View bill audit issues
+###### 7.2.4.8.1 View bill audit issues
 
 This topic describes how to view the overview of bill audit issues and details of each bill audit issue on the Bill Audit Issues page.
 
@@ -14211,7 +14967,7 @@ Before you select a resource item, select a cloud service first.
 7. Contact on-site O&M engineers to handle the issues based on the suggestions.
 Alternatively, click **View Details** in the **Actions** column of an issue. In the **Error Message** panel, view the details of the issue and the solution. In the Error Message panel of an issue, if "The price of the specifications is not specified." is displayed in the Issue column of the Details section, the specifications for which prices are not specified are displayed in the Content column. You can go to the Rule Settings page, find a billing configuration that is effective on the billing date, and then go to its details page. On the details page of the billing configuration, find the service that you want to manage and click Pricing Configuration in the Actions column. In the Price Settings step of the Pricing Configuration panel, set prices for the specifications.
 
-###### Close a bill audit issue
+###### 7.2.4.8.2 Close a bill audit issue
 
 This topic describes how to close a bill audit issue that does not need to be processed on the Bill Audit Issues page.
 
@@ -14237,7 +14993,7 @@ processed, and then click **Close** in the **Actions** column.
 7. In the **Confirm** message, click **Close**. After the issue is closed, the issue changes to the
 Closed state.
 
-###### AI analysis of bill audit
+###### 7.2.4.8.3 AI analysis of bill audit
 
 The system provides bill audit capabilities based on AI analysis.
 
@@ -14252,9 +15008,9 @@ Ensure that you have enabled **Intelligent Operations Expert** on the expert man
 4. Click **Start Audit** above the issue list.
 5. View the AI analysis and interpretation for bill audit.
 
-##### Cost center management
+##### 7.2.4.9 Cost center management
 
-###### Create a cost center
+###### 7.2.4.9.1 Create a cost center
 
 Cost centers are used for settlement. You can create cost centers based on your business requirements.
 
@@ -14272,7 +15028,7 @@ find the cost center. To create a level-1 cost center, select the root node. To 
 center.
 7. Click **OK**.
 
-###### View cost centers
+###### 7.2.4.9.2 View cost centers
 
 You can view cost centers on the Cost Centers page.
 
@@ -14287,7 +15043,7 @@ You can enter the name of a cost center in the search box to quickly find the co
 5. In the cost center tree, select the cost center that you want to manage and view the basic
 information about the cost center on the right side of the page. The basic information includes the cost center name, cost center ID, cost center level, description, creator, and creation time. For more information about the rules, see View allocation rules. For more information about the users, see View the authorized users of a cost center.
 
-###### Modify a cost center
+###### 7.2.4.9.3 Modify a cost center
 
 This topic describes how to modify a cost center when the cost center information is updated.
 
@@ -14304,7 +15060,7 @@ box to quickly find the cost center.
 6. In the **Modify Cost Center** dialog box, modify the name and description of the cost center.
 7. Click **OK**.
 
-###### Create an allocation rule
+###### 7.2.4.9.4 Create an allocation rule
 
 After you create a cost center, you can configure rules based on the actual financial cost structure to reaggregate resource bills. Resources are matched to different cost centers in ascending order in which global rules take effect. A resource belongs to only one cost center. After a bill is generated on the next day, you can view the resource ownership in the bill details.
 
@@ -14360,7 +15116,7 @@ A condition group is a set of conditions that need to be met.
 
 At least one condition must be retained in the rule conditions. Up to five levels of rule conditions are supported. To add a condition, click **Add condition** in the rule conditions. To add a condition group, click **Add condition Group** in the rule conditions. To delete a condition, find the condition and click the icon that corresponds to the condition in the rule conditions. To delete a condition group, find the condition group and click the icon that corresponds to the condition group in the rule conditions.
 
-###### View allocation rules
+###### 7.2.4.9.5 View allocation rules
 
 You can view the allocation rule overview and the allocation rules of a cost center on the Cost Centers page.
 
@@ -14376,7 +15132,7 @@ manage. You can enter the name of a cost center in the search box to quickly fin
 6. On the **Rule list** tab, view the allocation rules of the selected cost center. You can
 configure the **Rule effective date** and **Rule name** parameters to quickly find a specific rule. After you configure the **Rule effective date** parameter, the allocation rules whose effective period contains the specified date are displayed. You can click the icon next to the **Effective order** column to display the allocation rules in ascending or descending order based on the effective date. You can click the icon next to the **Update Time** column to view the allocation rules in ascending or descending order based on the update time.
 
-###### Modify an allocation rule
+###### 7.2.4.9.6 Modify an allocation rule
 
 You can modify an allocation rule as needed.
 
@@ -14394,7 +15150,7 @@ column. You can configure the **Rule effective date** and **Rule name** paramete
 rule configuration items, see Create an allocation rule.
 7. After the modification is complete, click **OK**.
 
-###### Delete an allocation rule
+###### 7.2.4.9.7 Delete an allocation rule
 
 You can delete an allocation rule that is no longer needed.
 
@@ -14411,7 +15167,7 @@ manage. You can enter the name of a cost center in the search box to quickly fin
 to quickly find a specific rule.
 6. In the message that appears, click **Delete**.
 
-###### Authorize users to access cost centers
+###### 7.2.4.9.8 Authorize users to access cost centers
 
 You can authorize users to access a cost center based on your business requirements. Then, the users can access and manage the cost center and its subordinate cost centers by using the roles that are granted the permissions to access the Bill Details, Cost Center Bill Overview, and Budgets modules.
 
@@ -14435,7 +15191,7 @@ following table.
 
 8. Click **OK**.
 
-###### View the authorized users of a cost
+###### 7.2.4.9.9 View the authorized users of a cost center
 
 **center**
 
@@ -14453,7 +15209,7 @@ manage. You can enter the name of a cost center in the search box to quickly fin
 6. On the **User list** tab, view the users that are authorized to access the cost center. You can
 configure the **User name** parameter to quickly find a specific user.
 
-###### Modify the time period during which an
+###### 7.2.4.9.10 Modify the time period during which an authorized user can access a cost center
 
 **authorized user can access a cost center**
 
@@ -14479,7 +15235,7 @@ column.
 8. In the **Edit user** dialog box, modify the Effective time parameter.
 9. Click **OK**.
 
-###### Remove an authorized user from a cost
+###### 7.2.4.9.11 Remove an authorized user from a cost center
 
 **center**
 
@@ -14500,7 +15256,7 @@ configure the **User name** parameter to quickly find a specific user.
 column.
 8. In the message that appears, click **Delete**.
 
-###### Delete a cost center
+###### 7.2.4.9.12 Delete a cost center
 
 You can delete a cost center that is no longer needed.
 
@@ -14519,9 +15275,9 @@ manage. You can enter the name of a cost center in the search box to quickly fin
 5. In the basic information section on the right side of the page, click **Delete**.
 6. In the message that appears, click **Delete**.
 
-##### Cost tags
+##### 7.2.4.10 Cost tags
 
-###### Add cost tags
+###### 7.2.4.10.1 Add cost tags
 
 Cost tags can be displayed in bills, cost centers, and cost data analysis. You can view and calculate costs based on the added cost tags to accurately understand the costs of applications or systems.
 
@@ -14536,7 +15292,7 @@ You are an operations administrator.
 list and click the icon to add the tags to the **Added Tags** list. The tags in the Available Tags list are from Tag Management. To remove a tag from the Added Tags list, select the tag in the Added Tags list and click the icon.
 6. Click **OK**.
 
-###### Delete cost tags
+###### 7.2.4.10.2 Delete cost tags
 
 After you delete a cost tag, the cost tag no longer takes effect in bills, cost centers, and cost data analysis. It is no longer displayed and available for filtering.
 
@@ -14557,7 +15313,7 @@ You are an operations administrator.
 You can specify a tag name in the Tag Key field above the list to filter tag keys.
 5. Click **OK**.
 
-##### Import task management
+##### 7.2.4.11 Import task management
 
 Displays billing import records. View the progress and results of tasks.
 
@@ -14574,9 +15330,9 @@ section, then click **Search**.
 **Delete task**: Click **Delete** in the **Actions** column. Alternatively, select multiple tasks
 and click **Delete** below the list.
 
-#### Budget management
+#### 7.2.5 Budget management
 
-##### Configure budget settings
+##### 7.2.5.1 Configure budget settings
 
 Budget management can be used to limit the available quotas for organizations or cost centers. You can configure budget accounts, budget control settings, and budget alert settings based on your business requirements.
 
@@ -14608,7 +15364,7 @@ You are an operations administrator. If you are assigned a custom role, the cust
 
 6. Click **Save**.
 
-##### View independent accounts
+##### 7.2.5.2 View independent accounts
 
 You can view the list of independent accounts on the Budgets page.
 
@@ -14624,7 +15380,7 @@ section.
 **Account name** and **Includes deleted accounts** parameters.
 An independent account is the master account of a level-1 organization or cost center. You can increase or reduce the budget for an independent account. An allocation account is used to control the quota of an organization or cost center. The quotas of allocation accounts are allocated from the independent account level by level. The account list displays only independent accounts. This helps you view the overall quota information about each level-1 organization or cost center.
 
-##### View the income and expenditure details
+##### 7.2.5.3 View the income and expenditure details of all accounts
 
 **of all accounts**
 
@@ -14658,7 +15414,7 @@ generates the monthly bill.
 **Deduction**: When the system generates a monthly bill, the system deducts the
 bill amount from the available quota and adds the bill amount to the used quota.
 
-##### View account details of a node
+##### 7.2.5.4 View account details of a node
 
 You can view the account details of a node on the Budgets page.
 
@@ -14701,7 +15457,7 @@ In single-cloud environments, the accounts of the level-2 and lower nodes on a s
 | Allocation accounts of the nodes on the cloud platform selected from the cloud platform drop-down list in multi-cloud environments | If quota allocation is disabled for the allocation account of a node on the cloud platform selected from the cloud platform drop-down list, the allocation account shares the budget quota of the parent node of the node. If quota allocation is enabled for the allocation account of a node on the cloud platform selected from the cloud platform drop-down list, the allocation account uses the budget quota of the node. |
 |---|---|
 
-##### View the transaction details of a node
+##### 7.2.5.5 View the transaction details of a node
 
 You can view the transaction details of a node on the Budgets page.
 
@@ -14739,7 +15495,7 @@ deducts the bill amount from the available quota and adds the bill amount to the
 **Refund**: Refunds may be involved when users enable reversing
 reconciliation records, change the specifications of subscription resources, and unsubscribe from resources.
 
-##### Enable quota allocation
+##### 7.2.5.6 Enable quota allocation
 
 You can enable quota allocation for allocation accounts. After quota allocation is enabled for the allocation account of a node, you can allocate the quota to the allocation account and use the quota as the separate budget of the node and its subordinate nodes. For more information about how to allocate quotas, see Allocate quotas.
 
@@ -14762,7 +15518,7 @@ In multi-cloud environments, if you select **All** from the cloud platform drop-
 section.
 8. In the **Operation confirmation** message, click **Enable**.
 
-##### Disable quota allocation
+##### 7.2.5.7 Disable quota allocation
 
 You can disable quota allocation for allocation accounts. If quota allocation is disabled for the allocation account of a node, the allocation account shares the budget quota of the parent node of the node.
 
@@ -14785,7 +15541,7 @@ In multi-cloud environments, if you select **All** from the cloud platform drop-
 section.
 8. In the **Operation confirmation** message, click **Disable**.
 
-##### Adjust quotas
+##### 7.2.5.8 Adjust quotas
 
 You can adjust quotas for the independent accounts of level-1 nodes based on your business requirements.
 
@@ -14814,7 +15570,7 @@ drop-down list. The cloud platform drop-down list is displayed only in multi-clo
 
 9. Click **OK**.
 
-##### Allocate quotas
+##### 7.2.5.9 Allocate quotas
 
 After the quota allocation feature is enabled for the allocation account of a node, you can allocate quotas to the node. This topic describes how to allocate quotas to a node.
 
@@ -14850,11 +15606,11 @@ following table describes the parameters.
 
 9. Click **OK**.
 
-#### Alibaba Cloud platform accounts
+#### 7.2.6 Alibaba Cloud platform accounts
 
 You can query the quotas of Alibaba Cloud platform accounts on the Public Cloud Account page.
 
-##### View quotas of Alibaba Cloud platform
+##### 7.2.6.1 View quotas of Alibaba Cloud platform accounts
 
 **accounts**
 
@@ -14871,7 +15627,7 @@ to the central cloud platform. You can perform fuzzy search on the Public Cloud 
 5. Click the card of the account that you want to view to go to the **Billing Account** page
 available to the account.
 
-##### Configure an alert rule for quotas of
+##### 7.2.6.2 Configure an alert rule for quotas of Alibaba Cloud platform accounts
 
 #### Alibaba Cloud platform accounts
 
@@ -14897,11 +15653,11 @@ parameters.
 
 6. Click **Save**.
 
-#### Contract management
+#### 7.2.7 Contract management
 
 You can manage the lifecycle of contracts to control the status of contracts on the Contract Management page.
 
-##### Create a contract
+##### 7.2.7.1 Create a contract
 
 You can create a custom contract and configure the basic information and billing information about the contract. This topic describes how to create a contract.
 
@@ -14933,7 +15689,7 @@ parameters.
 
 6. Click **OK**.
 
-##### View contracts
+##### 7.2.7.2 View contracts
 
 This topic describes how to view information about contracts.
 
@@ -14950,7 +15706,7 @@ click **Search** to search for contracts.
 6. Find the contract that you want to view and click its name or **Details** in the **Actions**
 column to go to the **Contract Details** page.
 
-##### Modify a contract
+##### 7.2.7.3 Modify a contract
 
 This topic describes how to modify a contract.
 
@@ -14969,7 +15725,7 @@ click **Search** to search for contracts.
 information about the parameters of a contract, see Create a contract.
 8. Click **OK**.
 
-##### Enable a contract
+##### 7.2.7.4 Enable a contract
 
 This topic describes how to enable a contract in the Disable state.
 
@@ -14986,7 +15742,7 @@ click **Search** to search for contracts.
 6. Find the contract that you want to enable and click **Enable** in the **Actions** column.
 7. In the message that appears, click **OK**.
 
-##### Disable a contract
+##### 7.2.7.5 Disable a contract
 
 This topic describes how to disable a contract that is in the Enable state but remains ineffective.
 
@@ -15003,7 +15759,7 @@ click **Search** to search for contracts.
 6. Find the contract that you want to disable and click **Disable** in the **Actions** column.
 7. In the message that appears, click **OK**.
 
-##### Terminate a contract
+##### 7.2.7.6 Terminate a contract
 
 This topic describes how to terminate an effective contract in the Enable state.
 
@@ -15027,7 +15783,7 @@ icon in the
 7. In the **Terminate Contract** dialog box, specify the date when the contract ends.
 8. Click **OK**.
 
-##### Delete a contract
+##### 7.2.7.7 Delete a contract
 
 This topic describes how to delete a contract that is no longer required.
 
@@ -15045,11 +15801,11 @@ click **Search** to search for contracts.
 icon in the **Actions** column, and then select **Delete**.
 7. In the message that appears, click **OK**.
 
-#### Pricing
+#### 7.2.8 Pricing
 
-##### Pricing
+##### 7.2.8.1 Pricing
 
-###### Price calculator
+###### 7.2.8.1.1 Price calculator
 
 The price calculator calculates the estimated costs based on cloud service configurations in the deployment cloud environment and region, and allows you to add items to a configuration list.
 
@@ -15067,7 +15823,7 @@ side section. Then, view the estimated fee and billing details. You can enter th
 drop-down list.
 7. Click **OK**.
 
-###### Configuration list
+###### 7.2.8.1.2 Configuration list
 
 The configuration list displays the list that you create and the service configurations that have been added to the list.
 
@@ -15093,7 +15849,7 @@ the list. Click the icon before a service name to show the billable items.
 | Change configurati ons | i. Select a list from the Current list drop-down list. ii. In the list, click Change configuration in the Operation column to go to the Price Calculator tab. iii. On the Price Calculator tab, update the service configurations and clickA dd to List. |
 | Export a list | i. Select a list from the Current list drop-down list. ii. Click Export List below the list. iii. After the list export is complete, click Download link to download the price calculation list file in the .xlsx format to your computer. |
 
-###### Service pricing
+###### 7.2.8.1.3 Service pricing
 
 The Service Pricing tab displays the pricing details of services and the pricing information that has been configured for each service in the billing rule.
 
@@ -15113,7 +15869,7 @@ icon to show the floating menu, and then click the icon to go to the Pricing pag
 4. On the left side of the Service Pricing tab, select a cloud service from the **Product List**.
 Then, view the service pricing details in the right-side section. You can enter the name of a cloud service in the search box to quickly find the cloud service. In multi-cloud environments, you can select different cloud platforms from the cloud platform drop-down list on the right side to view the pricing details of cloud services on different cloud platforms.
 
-##### Billing configuration overview
+##### 7.2.8.2 Billing configuration overview
 
 On the Rule Overview page, you can view the timeline of each billing configuration in the Apsara Uni-manager Management Console. The timeline displays the validity period of the billing configuration.
 
@@ -15138,9 +15894,9 @@ configuration that you want to view and click its name. The **Billing Configurat
 **Detail** page appears On the **Billing Configuration Detail** page, view the details of the
 billing configuration.
 
-##### Manage billing configurations
+##### 7.2.8.3 Manage billing configurations
 
-###### Cloud services that support billing
+###### 7.2.8.3.1 Cloud services that support billing
 
 Resources support the pay-as-you-go and subscription billing methods. This topic describes the Apsara Stack resources that support billing configurations and their corresponding billing methods.
 
@@ -15366,7 +16122,7 @@ Resources support the pay-as-you-go and subscription billing methods. This topic
 |---|---|---|---|
 | Custom products | Custom services | Supported | Not supported |
 
-###### Cloud services that support price
+###### 7.2.8.3.2 Cloud services that support price inquiries
 
 **inquiries**
 
@@ -15515,7 +16271,7 @@ At the bottom of the CPQ page, the system displays the total cost for all servic
 
 For detailed information about the cost display in the order list and order details, see Orders.
 
-###### Public cloud product pricing mode
+###### 7.2.8.3.3 Public cloud product pricing mode description
 
 **description**
 
@@ -15626,7 +16382,7 @@ The billing switch supports usage-based pricing and cost rate. The cost rate app
 |---|---|---|---|
 | Cloud Monitor | Cloud Monitor | Not supported | Supported |
 
-###### Create a billing configuration
+###### 7.2.8.3.4 Create a billing configuration
 
 This topic describes how to create a billing configuration on the Billing Rules page.
 
@@ -15667,7 +16423,7 @@ then click **Save**. The following table describes the parameters.
 | Instance Type Configuratio n Ratio | The proportion of cloud service specifications whose prices have been set to a number greater than 0. |
 | Price Verification | Indicates whether the configuration ratio is 100%. Note If the configuration ratio of a service is smaller than 100%, Rejected is displayed. The parameter value is for reference only. You can create the billing configuration even if the configuration ratios of specific services are smaller than 100%. |
 
-###### View billing configuration
+###### 7.2.8.3.5 View billing configuration
 
 View the system-preset and user-created billing configurations on the rule configuration page.
 
@@ -15692,7 +16448,7 @@ In the lower part of the page, view detailed billing configuration information, 
 **Billable Item Description**, **Pricing Configuration**, **Unit**, and more.
 Click in the product column to group and display items by product name, sorted according to the product order in the menu. The resource column displays new specifications: The rule may not have been saved. Prices may be pending configuration. The resource column displays inactive status: After the user site upgrades to a new version, the new version may add billing support for this product. This message appears after creating a third-party product rule template. To resolve issues with new specifications or inactive status: Update the price via **Pricing Configuration** or **Price Preview**, then save the rule.
 
-###### Modify the basic information about a
+###### 7.2.8.3.6 Modify the basic information about a billing configuration
 
 **billing configuration**
 
@@ -15720,7 +16476,7 @@ right corner.
 business requirements.
 7. Click **Save**.
 
-###### Manage pricing configurations
+###### 7.2.8.3.7 Manage pricing configurations
 
 You can manage pricing configurations when you create billing configurations or manage existing billing configurations.
 
@@ -15817,7 +16573,7 @@ metered data as the quantity for billing. For example, the value of the Storage 
 3. Modify or delete the billable item based on your business requirements.
 Modify a billable item. a. In the billable item list of the **Billing Item Management** section, find the billable item that you want to modify and click **Edit** in the **Actions** column. b. In the **Billing Item Details** dialog box, modify the billable item configurations. c. Click **OK**. Delete a billable item. a. In the billable item list of the **Billing Item Management** section, find the billable item that you want to delete and click **Delete** in the **Actions** column. b. In the message that appears, click **OK**.
 
-###### Add a rule
+###### 7.2.8.3.8 Add a rule
 
 This topic describes how to add a rule in the billing configuration details.
 
@@ -15834,7 +16590,7 @@ column.
 **Settings**. For more information about the parameters, see Manage pricing configurations.
 After the rule is added, you can enable the rule template in the rule template configuration. After the rule template is enabled, you can use the rule template in the billing rule configuration.
 
-###### Configure multiple pricing configurations
+###### 7.2.8.3.9 Configure multiple pricing configurations at a time
 
 **at a time**
 
@@ -15860,7 +16616,7 @@ The Primary pricing factor and Secondary pricing factor fields in the pricing te
 you configured. Alternatively, drag the template file to the dotted rectangle.
 9. Click **Upload**.
 
-###### Preview pricing configurations
+###### 7.2.8.3.10 Preview pricing configurations
 
 This topic describes how to preview the pricing configurations of cloud services on the Billing Configuration Detail page.
 
@@ -15879,7 +16635,7 @@ drop-down list.
 7. In the Pricing Preview panel, view the pricing configurations.
 If billable items are priced based on specifications, the specifications are displayed in the Pricing Configuration column.
 
-###### Enable a billing configuration
+###### 7.2.8.3.11 Enable a billing configuration
 
 This topic describes how to enable a billing configuration that has been disabled.
 
@@ -15900,7 +16656,7 @@ On the **Billing Rules** page, find the billing configuration that you want to e
 next to Enable Configuration.
 6. In the **Enable Configuration** message, click **OK**.
 
-###### Disable a billing configuration
+###### 7.2.8.3.12 Disable a billing configuration
 
 You can disable an enabled billing configuration.
 
@@ -15922,7 +16678,7 @@ next to
 To disable the last subscription billing configuration: If published subscription services exist, unpublish the services or change the billing method before you disable the configuration. If you disable the scubscription billing configuration while running subscription service instances exist, unexpired subscription resources automatically transitions to pay-as-you-go billing upon expiration.
 6. In the **Disable configuration** dialog box, click **OK**.
 
-###### Export a price list
+###### 7.2.8.3.13 Export a price list
 
 You can export the price list of a billing configuration if you want to save the pricing configurations of cloud services to your computer. This topic describes how to export a price list.
 
@@ -15937,7 +16693,7 @@ On the **Billing Rules** page, find the billing configuration for which you want
 5. On the **Billing Configuration Detail** page, click **Export Price List** above the service
 details list. The price list of a billing configuration is exported as an **XLS** file. The price list file contains the organization, export time, start and end time of the billing configuration, and pricing configurations of each service. The pricing configurations include the service type, service name, billing method, pricing method, billable item description, billing field, specifications, prices, counting method, counting field, unit, and conversion factor.
 
-###### Clone a billing configuration
+###### 7.2.8.3.14 Clone a billing configuration
 
 You can clone an existing billing configuration to create a similar billing configuration.
 
@@ -15957,7 +16713,7 @@ The billing method of the cloned billing configuration is the same as that of th
 configuration. For more information about the parameters, see Create a billing configuration.
 6. Click **Save**.
 
-###### Delete a billing configuration
+###### 7.2.8.3.15 Delete a billing configuration
 
 You can delete a billing configuration if you no longer need the billing configuration. This topic describes how to delete a billing configuration.
 
@@ -15977,7 +16733,7 @@ Alternatively, you can click **Delete** in the upper-right corner of the **Billi
 **Configuration Detail** page.
 5. In the message that appears, click **OK**.
 
-###### AI analysis of billing rules
+###### 7.2.8.3.16 AI analysis of billing rules
 
 This feature provides intelligent parsing of billing rules for resources and billing items, and generates detailed calculation logic and price breakdowns of billing rules, helping you accurately understand the billing structure and unit prices.
 
@@ -15995,7 +16751,7 @@ The default operator is the operations administrator.
 6. View the detailed interpretation of the product billing rule.
 For example, the following section shows a detailed interpretation of a billing rule for Server Load Balancer (SLB):
 
-##### Manage discount rules
+##### 7.2.8.4 Manage discount rules
 
 You can manage discount rules for specified organizations or products.
 
@@ -16096,7 +16852,7 @@ Only after approval is enabled, you can view the approval details of the discoun
 in the **Actions** column, and select **Approval Details**.
 2. On the Approval Details page, view the approval details of the discount rule.
 
-###### Create a discount rule
+###### 7.2.8.4.1 Create a discount rule
 
 This topic describes how to create a discount rule on the Discounts page.
 
@@ -16128,7 +16884,7 @@ ii. **Discount configuration**
 
 6. Click **Submit**.
 
-###### View discount rules
+###### 7.2.8.4.2 View discount rules
 
 This topic describes how to view discount rules.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -16142,7 +16898,7 @@ This topic describes how to view discount rules.
 6. Click the name of the discount rule that you want to view. On the **Discount details** page,
 you can view information in the **Basic information** and **Rule details** sections.
 
-###### Modify a discount rule
+###### 7.2.8.4.3 Modify a discount rule
 
 This topic describes how to modify a discount rule.
 
@@ -16159,7 +16915,7 @@ You are an operations administrator. The discount rule is in the **Disabled**, *
 5. In the **Edit discount rules** panel, modify the settings of the discount rule. For more
 information, see Create a discount rule.
 
-###### Enable a discount rule
+###### 7.2.8.4.4 Enable a discount rule
 
 This topic describes how to enable a discount rule.
 
@@ -16174,7 +16930,7 @@ You are an operations administrator. The deduction rule is in the **Disable**, *
 the **Actions** column.
 5. In the message that appears, click **OK**.
 
-###### Disable a discount rule
+###### 7.2.8.4.5 Disable a discount rule
 
 This topic describes how to disable discount rule. After a discount rule is disabled, it is no longer applied to billing.
 
@@ -16189,7 +16945,7 @@ You are an operations administrator. The deduction rule is in the **Enable**, **
 the **Actions** column.
 5. In the message that appears, click **OK**.
 
-###### View the approval details of a discount
+###### 7.2.8.4.6 View the approval details of a discount rule
 
 **rule**
 
@@ -16207,7 +16963,7 @@ state.
 icon in the **Actions** column, and then select **Approval details**.
 5. On the Approval details page, view the approval details of the discount rule.
 
-###### Withdraw the approval request of a
+###### 7.2.8.4.7 Withdraw the approval request of a discount rule
 
 **discount rule**
 
@@ -16226,7 +16982,7 @@ You are an operations administrator. The discount rule is in the **Enabled (disa
 icon in the **Actions** column, and then select **Revoke**.
 5. In the message that appears, click **OK**.
 
-###### Delete a discount rule
+###### 7.2.8.4.8 Delete a discount rule
 
 This topic describes how to delete a discount rule.
 
@@ -16241,11 +16997,11 @@ You are an operations administrator. The discount rule is in the **Disable**, **
 the **Actions** column.
 5. In the message that appears, click **OK**.
 
-##### Deduction management
+##### 7.2.8.5 Deduction management
 
 You can deduct billable usage and fees for resources based on your business requirements.
 
-###### Create a deduction rule
+###### 7.2.8.5.1 Create a deduction rule
 
 This topic describes how to create a deduction rule on the Deductions page.
 
@@ -16286,7 +17042,7 @@ following table.
 9. Click **OK**.
 0. Click **Submit**.
 
-###### View deduction rules
+###### 7.2.8.5.2 View deduction rules
 
 This topic described how to view the created deduction rules on the Deductions page.
 
@@ -16304,7 +17060,7 @@ Before you select a resource set, select an organization first.
 and **Updated At**. You can click the icon next to the **Status** column to quickly filter rules by status.
 6. Click the name of a deduction rule to go to the deduction rule details page.
 
-###### Modify a deduction rule
+###### 7.2.8.5.3 Modify a deduction rule
 
 This topic describes how to modify a deduction rule based on your business requirements.
 
@@ -16322,7 +17078,7 @@ the **Actions** column.
 For more information, see Create a deduction rule.
 6. Click **Submit**.
 
-###### Disable a deduction rule
+###### 7.2.8.5.4 Disable a deduction rule
 
 This topic describes how to disable a deduction rule.
 
@@ -16338,7 +17094,7 @@ You are an operations administrator.
 **Disable** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-###### Enable a deduction rule
+###### 7.2.8.5.5 Enable a deduction rule
 
 This topic describes how to enable a deduction rule.
 
@@ -16354,7 +17110,7 @@ You are assigned the operations administrator role.
 **Enabled** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-###### Clone a deduction rule
+###### 7.2.8.5.6 Clone a deduction rule
 
 You can clone an existing deduction rule to create a similar deduction rule by using the deduction management feature. This topic describes how to clone a deduction rule.
 
@@ -16370,7 +17126,7 @@ over the icon in the **Actions** column, and then select **Clone**.
 For more information, see Create a deduction rule. The name of each deduction rule must be unique. When you clone a deduction rule, you must specify a unique name for the new deduction rule.
 6. Click **Submit**.
 
-###### View the approval details of a deduction
+###### 7.2.8.5.7 View the approval details of a deduction rule
 
 **rule**
 
@@ -16389,7 +17145,7 @@ move the pointer over the icon in the **Actions** column, and then select **Appr
 **Details**.
 5. On the Details page, view the approval details of the deduction rule.
 
-###### Cancel the approval of a deduction rule
+###### 7.2.8.5.8 Cancel the approval of a deduction rule
 
 This topic describes how to cancel the approval of a deduction rule that is being approved.
 
@@ -16405,7 +17161,7 @@ You are assigned the operations administrator role.
 the pointer over the icon in the **Actions** column, and then select **Cancel**.
 5. In the message that appears, click **OK**.
 
-###### Delete a deduction rule
+###### 7.2.8.5.9 Delete a deduction rule
 
 This topic describes how to delete a deduction rule.
 
@@ -16421,11 +17177,11 @@ You are an operations administrator.
 icon in the **Actions** column, and then select **Delete**.
 5. In the message that appears, click **OK**.
 
-##### Rule template configuration
+##### 7.2.8.6 Rule template configuration
 
-###### Billing rule templates
+###### 7.2.8.6.1 Billing rule templates
 
-###### Create a billing rule template
+###### 7.2.8.6.1.1 Create a billing rule template
 
 You can create billing rule templates based on your business requirements. This topic describes how to create a billing rule template.
 
@@ -16612,7 +17368,7 @@ SystemDisk.Category,\n \"DiskSize\": SystemDisk.Size\n]\n\n\ndef DataDiskList = 
 
 `}` `]` `}` `}`
 
-###### View the details of a billing rule
+###### 7.2.8.6.1.2 View the details of a billing rule template
 
 **template**
 
@@ -16633,7 +17389,7 @@ rule templates. The following options are available in the **Status** drop-down 
 column.
 8. On the **Rule Template Details** page, view the detailed configurations.
 
-###### Modify a billing rule template
+###### 7.2.8.6.1.3 Modify a billing rule template
 
 You can modify the settings of a billing rule template based on your business requirements.
 
@@ -16656,7 +17412,7 @@ conditions and click **Search**. Valid values of the **Status** parameter: **Not
 7. On the **Modify Rule Template** page, modify the settings of the billing rule template. For
 more information about the parameters, see Create a billing rule template.
 
-###### Enable a billing rule template
+###### 7.2.8.6.1.4 Enable a billing rule template
 
 You can enable a disabled billing rule template. After a billing rule template is enabled, you can use it for billing rule configuration.
 
@@ -16678,7 +17434,7 @@ conditions and click **Search**. Valid values of the **Status** parameter: **Not
 **Enable** in the Actions column.
 7. In the message that appears, click **OK**.
 
-###### Disable a billing rule template
+###### 7.2.8.6.1.5 Disable a billing rule template
 
 You can disable an enabled billing rule template. After a billing rule template is disabled, you can no longer use it for billing rule configuration.
 
@@ -16700,7 +17456,7 @@ conditions and click **Search**. Valid values of the **Status** parameter: **Not
 **Disable** in the Actions column.
 7. In the message that appears, click **OK**.
 
-###### Configure price query settings
+###### 7.2.8.6.1.6 Configure price query settings
 
 This topic describes how to configure price query settings in billing rule templates.
 
@@ -17658,7 +18414,7 @@ For more information, see the description of the type field for new purchases.
 
 For more information, see the description of the priceQueryForInstance/priceQueryProducts field for configuration changes.
 
-###### Edit the billing origin of a rule
+###### 7.2.8.6.1.7 Edit the billing origin of a rule template
 
 **template**
 
@@ -17687,9 +18443,9 @@ The billing origin supports **System Generated** and **External Import**.
 external import, the bill audit does not perform verification. Resources with external import do not generate billing data according to billing rules.
 8. Click **OK**.
 
-###### Alibaba Cloud mapping configurations
+###### 7.2.8.6.2 Alibaba Cloud mapping configurations
 
-###### Configure mappings to Alibaba Cloud
+###### 7.2.8.6.2.1 Configure mappings to Alibaba Cloud multiplier pricing
 
 **multiplier pricing**
 
@@ -17713,7 +18469,7 @@ Service Code: AA. Product Code: BB. Billable Item Code: CC. This is exact mappin
 
 Log in to the Alibaba Cloud Management Console. Go to the **Expenses and Costs** console and choose **Billing** > **Bill Details**. In the bill list, check the Product Code, Commodity Code, and Billable Item Code fields, which can be used for configuring multiplier pricing mappings. If you want to map all billable items of a specific Alibaba Cloud service to a resource type of Apsara Stack, obtain the value of the Product Code field from the bill details on Alibaba Cloud and specify it as the value of the Service Code field in the billing rule template of the resource type on Apsara Stack. In addition, set both the Product Code and Billable Item Code fields to an asterisk (*) on Apsara Stack. If the bills of an Alibaba Cloud service fail to be synchronized, go to the Bill Details page in the Alibaba Cloud Management Console, click **Back to Old Version** in the upper-right corner, and then obtain the value of the Product Code field for configuring multiplier pricing mappings.
 
-###### Modify mappings
+###### 7.2.8.6.2.2 Modify mappings
 
 You can configure mappings between the billing resources of Alibaba Cloud and Apsara Stack resources. After you configure the mappings, you can apply the service multiplier pricing method of Alibaba Cloud to Apsara Stack resources.
 
@@ -17747,7 +18503,7 @@ Mapping configuration examples:
 
 Exact and fuzzy mapping rules are mutually exclusive. If the billable items of an Alibaba Cloud service are mapped to a resource type of Apsara Stack by using an exact mapping rule, no fuzzy mapping rules can be configured to map the billable items of this Alibaba Cloud service. If the billable items of an Alibaba Cloud service are mapped to a resource type of Apsara Stack by using a fuzzy mapping rule, no exact mapping rules can be configured to map the billable items of this Alibaba Cloud service. The combination of Service Code, Product Code, and Billable Item Code in each exact mapping rule must be unique. If a combination of Service Code, Product Code, and Billable Item Code is configured as an exact mapping rule for a resource type of Apsara Stack, this combination cannot be configured as an exact mapping rule for another resource type of Apsara Stack. When you configure exact mapping rules, make sure that all billable item codes that exist on the site are covered by the configured mappings. To map all billable items of Alibaba Cloud Elastic Compute Service (ECS) to a resource type of Apsara Stack, enter ecs in the **Service Code** field, * in the **Product Code** field, and * in the **Billable Item Code** field. This is fuzzy mapping. To map the Size billable item of snapshots of Alibaba Cloud ECS to a resource type of Apsara Stack, enter ecs in the **Service Code** field, snapshot in the **Product Code** field, and Size in the **Billable Item Code** field.
 
-###### View Alibaba Cloud mapping
+###### 7.2.8.6.2.3 View Alibaba Cloud mapping configurations
 
 ## configurations
 
@@ -17770,13 +18526,13 @@ conditions and click **Search**. Valid values of the **Status** parameter: **Not
 6. On the **Public Cloud Mapping Configuration** tab, view the preset and custom Alibaba
 Cloud mapping configurations.
 
-#### Coupon
+#### 7.2.9 Coupon
 
-##### Coupon management
+##### 7.2.9.1 Coupon management
 
 The system provides manageable coupon campaigns. You can create, manage, and distribute coupons.
 
-###### Create a coupon
+###### 7.2.9.1.1 Create a coupon
 
 Create a coupon, including its basic information and rule configuration.
 
@@ -17810,7 +18566,7 @@ coupon.
 
 6. Click OK.
 
-###### View the coupon list
+###### 7.2.9.1.2 View the coupon list
 
 View the coupon list.
 
@@ -17825,7 +18581,7 @@ By default, the operating user is the Operations Administrator or Resource Audit
 5. In the coupon list, view the coupon information.
 6. Click a Coupon Template ID to expand the **Basic Information** page for the coupon.
 
-###### Edit coupon
+###### 7.2.9.1.3 Edit coupon
 
 Modify the coupon name and description.
 
@@ -17839,7 +18595,7 @@ The user performing this operation is, by default, an Operations Administrator.
 5. In the **Edit Coupon** panel, update the coupon name and description.
 6. Click **OK**.
 
-###### Enable coupons
+###### 7.2.9.1.4 Enable coupons
 
 Enable a coupon that is in inactive status. After enabling, the coupon status changes to In Progress.
 
@@ -17852,7 +18608,7 @@ The default user role for this operation is Operations Administrator.
 4. Click **Enable** in the **Actions** column of the target coupon.
 5. Click OK.
 
-###### Issue coupons
+###### 7.2.9.1.5 Issue coupons
 
 Issue coupons to organizations.
 
@@ -17868,7 +18624,7 @@ The coupon status is **In progress**. The default user for this operation is the
 You can select only level-1 organizations. Multiple selections are supported.
 6. Click OK.
 
-###### Invalidate a coupon
+###### 7.2.9.1.6 Invalidate a coupon
 
 Set the coupon to invalid. Issued but unused coupons become unredeemable.
 
@@ -17881,7 +18637,7 @@ The coupon status is **In progress** or **Not Effective**. By default, the opera
 4. Click **Invalidate** in the **Actions** column of the coupon.
 5. Click OK.
 
-###### Copy a coupon
+###### 7.2.9.1.7 Copy a coupon
 
 Copy a coupon to quickly create a new coupon based on the information of an existing coupon.
 
@@ -17896,7 +18652,7 @@ The operator is, by default, an Operations Administrator.
 settings of the current coupon. For detailed parameter descriptions, see Create a coupon.
 6. Click **OK**.
 
-###### View coupon issuance records
+###### 7.2.9.1.8 View coupon issuance records
 
 **Prerequisites**
 
@@ -17908,7 +18664,7 @@ The user performing this operation is, by default, an Operations Administrator.
 5. In the **Issuance Records** panel, view the issuance records for the coupon.
 If a coupon fails to issue, click **Reissue** to attempt issuing it again.
 
-###### Delete a coupon
+###### 7.2.9.1.9 Delete a coupon
 
 Delete coupons that you no longer need.
 
@@ -17921,7 +18677,7 @@ The coupon status is **Invalid** or **Not Effective**. The default operator is t
 4. Click **Delete** in the **Actions** column of the target coupon.
 5. Click **OK**.
 
-###### Coupon redemption rules
+###### 7.2.9.1.10 Coupon redemption rules
 
 This topic describes coupon redemption rules. Public Cloud Subscription Billing (Multiplier Pricing): The system redeems coupons based on bills. A coupon supports multiple uses. You can apply one coupon per order or bill. In CPQ, one coupon can associate with only one service configuration.
 
@@ -17933,7 +18689,7 @@ When you purchase subscription resources (such as Subscription ECS instances), t
 
 For Pay-As-You-Go resources, the system automatically applies active coupons during Bill Generation. Automatic matching: The system prioritizes coupons nearing expiration. If expiration dates are identical, the system prioritizes coupons with larger remaining balances. Multi-coupon deduction: If the balance of a single coupon is insufficient to cover the entire bill, the system automatically applies the next available voucher to continue deduction until the bill amount is fully offset or all applicable coupons are exhausted. Budget deduction: If the bill amount remains after all coupons are applied, the system deducts the remaining amount from your budget.
 
-##### Coupon details
+##### 7.2.9.2 Coupon details
 
 The coupon details page displays all coupons and allows you to view detailed usage information for each coupon.
 
@@ -17946,7 +18702,7 @@ When issuing coupons, you can select only level-1 organizations. Therefore, the 
 4. View existing coupons in the list.
 Click a coupon ID to expand the **Basic Information** panel. Click **Usage Details** in the **Actions** column of a coupon to view its detailed usage information.
 
-##### Blacklist management
+##### 7.2.9.3 Blacklist management
 
 Manage tenant blacklists. The system supports blacklist control by level-1 organization dimension to restrict permissions for coupon claiming and redemption.
 
@@ -17973,11 +18729,11 @@ The operating user defaults to the operations administrator.
 | Edit blacklist | i. In the blacklist list, click Actions column’s Edit. ii. In the Edit Blacklist panel, update the reason for adding to the blacklist. iii. Click Confirm. |
 | Delete blacklist | i. In the blacklist list, click Actions column’s Delete. ii. Click Confirm. |
 
-#### Token plan management
+#### 7.2.10 Token plan management
 
-##### Token plans
+##### 7.2.10.1 Token plans
 
-###### Subscribe to a token plan
+###### 7.2.10.1.1 Subscribe to a token plan
 
 Select a plan that suits you for subscription.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -17988,7 +18744,7 @@ comparison section. When you click **Subscribe** in the **Not Subscribed** secti
 5. On the **Purchase Plan** page, configure the billing configuration and basic information.
 6. Click **Confirm Order**.
 
-###### View usage statistics
+###### 7.2.10.1.2 View usage statistics
 
 View the usage statistics of the current token plan.
 
@@ -18001,7 +18757,7 @@ You have subscribed to a token plan.
 4. In the **Usage Statistics** section of the **Token Plan** page, view the current usage, total
 quota, available quota, and usage details. The system consumes quotas in the following order: complimentary quota, token plan quota, and then resource packages. It consumes the quota of the resource package that expires first. Usage details support chart view and table view. The chart view displays the usage trend of the last 30 days by default. The table view displays usage records and model details, and supports time ranges of today, the last 7 days, and the last 30 days.
 
-###### Purchase a shared usage plan
+###### 7.2.10.1.3 Purchase a shared usage plan
 
 Purchase a shared usage plan.
 
@@ -18016,7 +18772,7 @@ plan.
 5. On the **Purchase Resource Plan** page, set the billing configuration and basic information.
 6. Click **Confirm Order**.
 
-###### Change a subscription plan
+###### 7.2.10.1.4 Change a subscription plan
 
 Change the current token plan.
 
@@ -18030,7 +18786,7 @@ You have subscribed to a token plan.
 5. On the **Select Subscription Plan** page, select a new plan.
 Upgrade: Takes effect immediately. Downgrade: Takes effect in the next billing cycle.
 
-###### Renew a token plan
+###### 7.2.10.1.5 Renew a token plan
 
 Set the renewal period for the current token plan.
 
@@ -18045,7 +18801,7 @@ You have subscribed to a token plan.
 enable **Auto-renewal** upon expiration.
 6. Click **Confirm Renewal**.
 
-###### Configure alert settings for a token
+###### 7.2.10.1.6 Configure alert settings for a token plan
 
 **plan**
 
@@ -18062,11 +18818,11 @@ You have subscribed to a token plan.
 enable the usage alert, the system sends alert notifications at 9:00 AM every day when the usage exceeds the specified threshold.
 6. Click **Save**.
 
-##### Subscription management
+##### 7.2.10.2 Subscription management
 
 Manage subscription plans of token plans and order records of shared usage plans.
 
-###### View token plan subscriptions
+###### 7.2.10.2.1 View token plan subscriptions
 
 View the subscription information of token plans.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -18074,7 +18830,7 @@ View the subscription information of token plans.
 3. In the left-side navigation pane, select **Token Plan Management** > **Order Management**.
 4. On the **Token Plan Subscription** tab, view the subscription information of token plans.
 
-###### View shared usage plans
+###### 7.2.10.2.2 View shared usage plans
 
 View the subscription records of shared usage plans.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -18082,11 +18838,11 @@ View the subscription records of shared usage plans.
 3. In the left-side navigation pane, select **Token Plan Management** > **Order Management**.
 4. On the **Shared Usage Plan** tab, view the subscription records of shared usage plans.
 
-##### Token plan configuration
+##### 7.2.10.3 Token plan configuration
 
 Configure the credit conversion rules, version specifications, and pricing rules for token plans.
 
-###### Enable the unified metering standard
+###### 7.2.10.3.1 Enable the unified metering standard by credit
 
 **by credit**
 
@@ -18104,7 +18860,7 @@ on the right side of the **Unified Metering Standard Credit** card.
 5. In the dialog box, click **Confirm**.
 You cannot disable this feature after enabling it. The system converts the corresponding quotas to the credit standard for management.
 
-###### Edit Token Plan configuration
+###### 7.2.10.3.2 Edit Token Plan configuration
 
 After you enable Unified Metering Standard by Credit, you can edit the Token Plan Configurations.
 
@@ -18133,15 +18889,15 @@ iii. **Pricing Management**: Manage the pricing rules for each version and speci
 panel, set the prices.
 6. Click **OK**.
 
-### Data analysis
+### 7.3 Data analysis
 
-#### Custom analysis
+#### 7.3.1 Custom analysis
 
-##### Data analysis
+##### 7.3.1.1 Data analysis
 
 The Data Analysis page provides platform and organization administrators with platformbased operations data analytics, self-service analytics, and scenario-specific operations report capabilities.
 
-###### View data table
+###### 7.3.1.1.1 View data table
 
 View detailed information of data tables by product data, organization statistics, and my data table types.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -18163,7 +18919,7 @@ to the corresponding type of data table.
 5. Click the corresponding data table on the **Product**/**Organization**/**My Data Table** tab to
 view detailed information about the data table. Refresh: Click above the list to instantly update the data and information in the list. Full screen: Click above the list to enter full-screen mode. Filter: Click **Filter** above the list, add entries, and set filter conditions to quickly find the required data. You can also click after a field in the data table column to set filter conditions. The organization and resource set fields support multiple selections. Sort: Click **Sort** above the list, add entries, and set sorting conditions to arrange data in ascending or descending order. Only one field can be sorted at a time. You can also click after a sortable field in the data table column to sort directly by that field. Show/hide fields: Click **Field** above the list, select or clear fields to show or hide them and their data. Drag before a field to adjust the display order of fields. Scenario analysis: In the data table column, click after a field that supports scenario analysis, select a scenario, and you will be redirected to the custom chart page. You can then configure and update chart data statistics based on your business needs. For detailed descriptions of configuration items, see Create a card. Resource analysis: Hover over the serial number column and click the resource analysis icon to go to the resource panoramic insight page and view panoramic insight information about resources.
 
-###### Save data as a custom table
+###### 7.3.1.1.2 Save data as a custom table
 
 You can save the current query results, filter conditions, or display fields as a custom table for quick access and review in the future.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -18178,7 +18934,7 @@ corresponding list of tables.
 9. Click **Yes**. After you save a table as your custom table, the table with the new name is
 displayed on the My tab. You can move the pointer over the name of a custom table and click the icon to delete the custom table. You can also update a custom table. To do this, perform the following operations: On the Data Analysis page, click the My tab. Click the name of a table, configure the Filter, Sort, and Field settings, and then click **Update Data Table** to update the selected table.
 
-###### Export the data of a single table
+###### 7.3.1.1.3 Export the data of a single table
 
 If you want to download the data in a data report to your local machine, you can export the data.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -18201,7 +18957,7 @@ If you select **Selected** for the Export Scope parameter, the exported data is 
 
 a. On the **Data Analysis** page, click **Export Data** above the data list. b. In the **Export Data** dialog box, configure the **Task Name** parameter, and click **Yes**. By default, **All** is selected for the **Export Scope** parameter. After the data is exported, you are navigated to the **Report Download** page to view the report export task.
 
-###### Export the data of multiple tables
+###### 7.3.1.1.4 Export the data of multiple tables
 
 You can select multiple tables at a time for data export.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -18218,11 +18974,11 @@ You can select multiple reports. When you download multiple reports, the followi
 9. Click **Yes**. After a report export task is created, a dialog box appears. In this dialog box, you
 can click **Go to Download Report Page** to view the report export task.
 
-##### My dashboards
+##### 7.3.1.2 My dashboards
 
 The My Dashboard page of the Custom Analysis module provides a comprehensive operational overview to help you optimize resource allocation and page layout. This page also offers an operation entry to improve efficiency and facilitate management.
 
-###### Create a dashboard
+###### 7.3.1.2.1 Create a dashboard
 
 On the My Dashboard page, you can create a dashboard to configure the layout of cards based on your business requirements, and build a visual interface for custom analysis.
 
@@ -18237,7 +18993,7 @@ icon in the upper-left corner.
 5. In the **New Dashboard** dialog box, enter a dashboard name.
 6. Click **OK**.
 
-###### Rename a dashboard
+###### 7.3.1.2.2 Rename a dashboard
 
 This topic describes how to rename a dashboard.
 
@@ -18254,7 +19010,7 @@ icon next to the dashboard name.
 6. In the field that appears, change the name of the dashboard, and then click the
 icon to save the new dashboard name.
 
-###### Export a dashboard
+###### 7.3.1.2.3 Export a dashboard
 
 This topic describes how to export a dashboard as a standard file in the JSON format for backup, migration, or sharing.
 
@@ -18270,7 +19026,7 @@ icon in the upper-left corner.
 6. Click the
 icon in the upper-left corner. The dashboard data is exported as a **.json** file to your local machine.
 
-###### Import a dashboard
+###### 7.3.1.2.4 Import a dashboard
 
 This topic describes how to generate an identical or a similar dashboard based on an existing dashboard. This way, the configurations of the existing dashboard can be reused to prevent duplicate configurations.
 
@@ -18284,7 +19040,7 @@ A dashboard is exported as a **.json** file. You are an operations administrator
 icon in the upper-left corner.
 5. Select the dashboard file that you want to import and upload it.
 
-###### Delete a dashboard
+###### 7.3.1.2.5 Delete a dashboard
 
 This topic describes how to delete a dashboard that you no longer need.
 
@@ -18300,7 +19056,7 @@ icon in the upper-left corner.
 icon next to the dashboard name.
 6. In the message that appears, click **OK**.
 
-###### Create a card
+###### 7.3.1.2.6 Create a card
 
 You can create a custom card to display data based on your business requirements. This topic describes how to create a card.
 
@@ -18381,7 +19137,7 @@ A nested pie chart displays hierarchical data by nesting one or more smaller pie
 
 A table is used to display detailed data.
 
-###### Modify a card
+###### 7.3.1.2.7 Modify a card
 
 This topic describes how to modify a card.
 
@@ -18410,7 +19166,7 @@ list and click the icon.
 3. On the Card Configuration page, modify the card configurations and click Save as My Card
 or Save to Dashboard. For more information about card configurations, see Create a card.
 
-###### Copy a card
+###### 7.3.1.2.8 Copy a card
 
 You can create an identical or a similar card based on an existing card to reduce duplicate configurations. This topic describes how to copy a card.
 
@@ -18428,7 +19184,7 @@ list.
 icon in the upper-right corner of the card, and then select
 **Copy**.
 
-###### Move and resize a card on a dashboard
+###### 7.3.1.2.9 Move and resize a card on a dashboard
 
 This topic describes how to move and resize a card on a dashboard based on your business requirements.
 
@@ -18447,7 +19203,7 @@ icon in the upper-left corner of the card and drag the card to move it.
 7. Click and hold the
 icon in the lower-right corner of the card to resize the card.
 
-###### Export a card
+###### 7.3.1.2.10 Export a card
 
 This topic describes how to export a card as an image in the **PNG** format.
 
@@ -18465,7 +19221,7 @@ down list.
 icon in the upper-right corner of the card, and then select
 **Export View**.
 
-###### Save a custom card
+###### 7.3.1.2.11 Save a custom card
 
 After you save a card on a dashboard as a custom card, you can add the card to the Home page of the console. This topic describes how to save a custom card and add the card to the Home page of the console.
 
@@ -18488,7 +19244,7 @@ parameters.
 9. On the **Home** page, click **Add Card** in the upper-right corner. In the Add Card panel, click
 the My Cards tab. On the **My Cards** tab, select the custom card and add it to the Home page of the console.
 
-###### Delete a card
+###### 7.3.1.2.12 Delete a card
 
 This topic describes how to delete a card that you no longer need.
 
@@ -18519,7 +19275,7 @@ icon in the upper-right corner of the card and select **Delete**.
 list and click the icon.
 3. In the message that appears, click **OK**.
 
-##### Intelligent analysis
+##### 7.3.1.3 Intelligent analysis
 
 This feature provides intelligent question answering and data insight capabilities under AIpowered intelligent analysis scenarios.
 
@@ -18547,13 +19303,13 @@ You can select **All**, **Cost Analysis Domain**, **Cloud Optimization Domain**,
 6. After intelligent analysis provides an answer, perform the following operations.
 : Thumbs up to indicate that you approve of the answer. : Thumbs down to indicate that you disapprove of the answer. : Copy the answer content. : Export the generated answer to a PDF file.
 
-#### Cloud resource optimization
+#### 7.3.2 Cloud resource optimization
 
 **Important**
 
 In the Cloud Resource Optimization module, you can configure settings, such as enabling the system to send you notifications about idle or bottleneck resources in the cloud regularly by using methods such as internal messages and emails.
 
-##### View health analysis data
+##### 7.3.2.1 View health analysis data
 
 The health analysis feature allows you to analyze the health status of cloud resources based on core metrics such as resource usage efficiency and security. This helps you understand the health status of resources, continuously improve overall resource governance, and optimize resource allocation policies.
 
@@ -18644,7 +19400,7 @@ In the Resource Health Details section, view the details of the health status of
 **Usage Rate Score**, and **Security Score**.
 Click the icon above the list to export and save the data to your local device. In the Resource Health Details section, find the resource whose scoring details are to be viewed and click **Scoring Details** in the **Actions** column. On the page that appears, view the scoring details of the resource.
 
-##### View analysis data of idle resources
+##### 7.3.2.2 View analysis data of idle resources
 
 You can use the idle resource analysis feature to analyze the resource usage efficiency based on the CPU and memory metrics. This helps you understand resource utilization, improve overall resource governance, and optimize resource allocation policies.
 
@@ -18732,7 +19488,7 @@ The Resource tab displays the details of idle resources. Specify the **Statistic
 **Actions** column. On the details page of the resource, select a specification from the
 Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
-##### View bottleneck analysis data
+##### 7.3.2.3 View bottleneck analysis data
 
 The bottleneck analysis feature allows you to analyze the usage of cloud resources based on the CPU and memory metrics and determine whether to scale resources based on the resource usage.
 
@@ -18817,7 +19573,7 @@ The Bottleneck Instance Change Trends section displays the bottleneck instance c
 
 The Resource tab displays the bottleneck analysis details of resources. Specify the **Statistical Date**, **Organization**, **Resource Set**, and **Instance ID** filter conditions to search for data. Click the icon above the list. In the **Export Data** dialog box, select a date and click **OK** to export the list data as an **XLSX** file to your local device. Find the resource whose bottleneck details are to be viewed and click **Bottleneck Details** in the **Actions** column. On the bottleneck details page of the resource, select a specification from the Available Specifications drop-down list in the Configuration Change Recommendation section based on the configuration change suggestions and view the configuration change comparison data. The specifications that are available in the **Configuration Change Recommendation** section are recommended based on the resource status and system configurations. You can select specifications based on the actual environment.
 
-##### View security compliance analysis data
+##### 7.3.2.4 View security compliance analysis data
 
 The security compliance analysis feature allows you to analyze the overall resource security based on resource security metrics, This helps you identify potential security risks and noncompliant configurations.
 
@@ -18914,11 +19670,11 @@ Click the icon above the list to export and save the data to your local device.
 1. In the Resource Security Score Details section, find the resource whose scoring details are
 to be viewed and click **Scoring Details** in the **Actions** column. On the page that appears, view the scoring details of the resource.
 
-##### Resource optimization settings
+##### 7.3.2.5 Resource optimization settings
 
 The Apsara Uni-manager Management Console provides the rule configuration feature for health analysis, idle resource and bottleneck analysis, and security compliance analysis of cloud resources, and allows you to flexibly modify rules and parameters based on your business requirements.
 
-###### Default rule
+###### 7.3.2.5.1 Default rule
 
 The default rule is built in the system and applies to all organizations by default. The default rule cannot be modified or deleted and has the lowest priority. You can create custom rules. For more information, see Create and manage custom rules.
 
@@ -19056,7 +19812,7 @@ By default, rule weights are evenly configured based on the number of displayed 
 | GPDB low utilization check | Utilization | Medium | The average CPU utilization is lower than 5% and the average memory usage is lower than 15% for seven consecutive days. |
 | GPDB high utilization check |   |   | The average CPU utilization and memory usage are both higher than 80%. |
 
-###### Create and manage custom rules
+###### 7.3.2.5.2 Create and manage custom rules
 
 If the default rule built in the system fails to meet your business requirements, you can create a custom rule based on your business requirements.
 
@@ -19105,13 +19861,13 @@ following table describes the supported operations.
 | Disable a rule | i. Click Disable on the card of the rule in the Effective state. ii. In the Disable Rule message, click OK. After the rule is disabled, the state of the rule changes to Paused. |
 | Enable a rule | i. Click Enabled on the card of the rule in the Paused state. ii. In the Enable Rule message, click OK. After the rule is enabled, the state of the rule changes to Effective. |
 
-#### Download and delivery
+#### 7.3.3 Download and delivery
 
-##### Report download
+##### 7.3.3.1 Report download
 
 You can create a download task to download multiple data records. After the task is created, data is asynchronously exported in the background. After the data is exported, you can download the report.
 
-###### Report results
+###### 7.3.3.1.1 Report results
 
 On the report results tab, create a download task. After you successfully create the task, export and download the report.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -19375,7 +20131,7 @@ For billing reports, the billing period and start/end times refer to the time zo
 | Delivery Method | Supported methods include Download Online and Email. |
 | Delivery Recipient | Configure this option when you select Email as the delivery method. Select one or more users as recipients. |
 
-###### Scheduled job
+###### 7.3.3.1.2 Scheduled job
 
 On the Scheduled Job tab, create a scheduled job. After you create the job successfully, the system pushes the report periodically according to the configured time period.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -19566,7 +20322,7 @@ The **Email** delivery method appears only when you enable the email sending fea
 | Delivery Path | This parameter is required if you select Object Storage OSS as the delivery method. Enter the delivery path. The path must end with a forward slash (/). |
 | Delivery Recipient | This parameter is required if you select Email as the delivery method. Select one or more users as recipients. |
 
-##### Manage the push rules of daily operations
+##### 7.3.3.2 Manage the push rules of daily operations reports
 
 **reports**
 
@@ -19603,9 +20359,9 @@ on the scheduled time that you specify.
 6. Optional. After you create a push rule of daily operations reports, you can manage the rule
 on the Daily Operations Report Delivery page. Click **Details** in the Actions column to view the details and push history of the rule. You can also modify the report content settings on the rule details page. On the rule details page, click **Edit** in the Rule Content section to modify the report content settings. On the rule details page, find the push task that you want to download in the Push History section and click **Download** in the Actions column to save the report pushed by the push task as an **.xlsx** file to your local machine. Click **Modify Attributes** in the Actions column to modify the configurations of the rule, such as the rule name, rule description, report name, push cycle, and scheduled time. You can modify the report content settings only on the rule details page. Click **Enabled** or **Disabled** in the Actions column to enable or disable the rule. If the rule is disabled, no push task is triggered. A disabled rule is still counted as one rule. If the number of rules created for a role reaches 10, you cannot create more rules for the role. Move the pointer over the More icon in the Actions column and select **Push History** to view the push tasks that were triggered by the rule. You can also download historical reports. Move the pointer over the More icon in the Actions column and select **Delete** to delete the push rule. If the number of existing push rules reaches the upper limit, you can delete the rules that you no longer need.
 
-### Portal management
+### 7.4 Portal management
 
-#### Site management
+#### 7.4.1 Site management
 
 You can manage all sites on the Sites page, including creating sites, configuring site navigations, publishing or unpublishing sites, and viewing all pages of sites.
 
@@ -19619,7 +20375,7 @@ components and uploaded materials and data to complete the page building, and th
 3. Publish the site: Check whether the site navigations are associated with pages on the Sites
 page, preview the display effects of the site, and then publish the site. After the site is published, check the display effects of the site to ensure that the site works as expected.
 
-##### Create a site
+##### 7.4.1.1 Create a site
 
 Create a new site and configure its basic information. This ensures you can directly associate the site when creating a page.
 
@@ -19698,7 +20454,7 @@ Brand configuration, Footer configuration, and Navigation configuration.
 | Menu Display Style | Select Left-right Structure or Overall Navigation. |
 | Right Module | When enabled, the configured module appears in the top-right corner of the portal site. : indicates that the module is enabled. : indicates that the module is disabled. Module configuration: Click Add sub-modules to add a submodule. You can add up to eight submodules. Click before a submodule to expand its options and configure its name, link, and opening method based on your needs. Click in the row of a submodule to drag and adjust its display order. Click in the row of a submodule to delete the submodule. |
 
-##### View sites
+##### 7.4.1.2 View sites
 
 On the Sites page, you can view the site list and the details of a site.
 
@@ -19720,7 +20476,7 @@ information about how to configure a site navigation, see Configure a site navig
 **Page List**: displays the pages associated with the site. For more information about how
 to configure a site page, see Configure a site page.
 
-##### Modify the information and homepage of a
+##### 7.4.1.3 Modify the information and homepage of a site
 
 **site**
 
@@ -19738,7 +20494,7 @@ column. Alternatively, go to the site details page and click **Edit** in the upp
 color configurations, and brand configurations based on your business requirements. For more information about the parameters, see Create a site. When you modify a site, you can configure the Home Page parameter in the Basic Information section to select a page as the site homepage based on your business requirements. Before you select a page as the homepage, make sure that the page is created.
 6. Click **OK**.
 
-##### Configure a site navigation
+##### 7.4.1.4 Configure a site navigation
 
 After a site is created, you can configure navigations for the site.
 
@@ -19772,7 +20528,7 @@ table describes the parameters.
 7. On the Navigation Configuration tab, manage the navigation based on your business
 requirements. To modify the site navigation, click **Edit** in the Operation column. To add a child navigation, click **Add Sub-navigation** in the Operation column. To delete the site navigation, click **Delete** in the Operation column.
 
-##### Configure site pages
+##### 7.4.1.5 Configure site pages
 
 After you create a site, configure its pages.
 
@@ -19804,7 +20560,7 @@ versions. You can view and restore historical versions. Click
 **Remove** in the Actions column to remove the page from the site. After removal,
 the site becomes empty.
 
-##### Customize the style of a site
+##### 7.4.1.6 Customize the style of a site
 
 If the preset site styles do not meet your business requirements, you can configure custom site styles. Page-level styles take precedence over global site styles. If no conflicts are involved, both the configured site styles and page styles take effect.
 
@@ -19826,7 +20582,7 @@ body { background-color: black;
 `}`
 7. Click **OK**. After the site style is saved, it takes effect immediately.
 
-##### Preview a site
+##### 7.4.1.7 Preview a site
 
 After you configure the homepage, navigations, and pages of a site, you can preview the site and check the display effects of the site to ensure that the site works as expected.
 
@@ -19840,7 +20596,7 @@ You are an operations administrator.
 Operation column. Alternatively, go to the site details page and click **Preview** in the upper-right corner.
 5. On the page that appears, view the display effects of the site.
 
-##### Publish a site
+##### 7.4.1.8 Publish a site
 
 Before you publish a site, make sure that all navigations are associated with pages and the associated pages are published. You can preview the display effects of the site to ensure that the site works as expected before it is published.
 
@@ -19854,7 +20610,7 @@ Sites are in the **Offline** state. You are an operations administrator.
 icon in the Operation column, and then select **Online**. Alternatively, go to the site details page and click **Online** in the upper-right corner.
 5. In the dialog box that appears, enter a description and click **OK**.
 
-##### Unpublish a site
+##### 7.4.1.9 Unpublish a site
 
 You can unpublish a site based on your business requirements. After a site is unpublished, users cannot view the site.
 
@@ -19868,7 +20624,7 @@ Sites are in the **Online** state. You are an operations administrator.
 icon in the Operation column, and then select **Offline**. Alternatively, go to the site details page and click **Offline** in the upper-right corner.
 5. In the dialog box that appears, enter a description and click **OK**.
 
-##### Delete a site
+##### 7.4.1.10 Delete a site
 
 You can delete a site that you no longer use.
 
@@ -19882,7 +20638,7 @@ Sites are in the **Offline** state. You are an operations administrator.
 icon in the Operation column, and then select **Delete**. Alternatively, go to the site details page and click **Delete** in the upper-right corner.
 5. In the message that appears, click **Delete**.
 
-##### How users access a site
+##### 7.4.1.11 How users access a site
 
 This topic describes how users access a site. After you publish a site, you can obtain its endpoint on the site details page. Users can visit the site by using this endpoint. The endpoint format is:
 
@@ -19892,9 +20648,9 @@ This topic describes how users access a site. After you publish a site, you can 
 
 ${sitekey}: The custom identifier that you set when creating the site. ${internet.domain}: The root domain of the tenant. /coms/portal/${token}: The path to the site homepage. You can view the specific path in the page list. When you disable the **URL Token** feature, the endpoint does not include ${token}.
 
-#### Page management
+#### 7.4.2 Page management
 
-##### Pages
+##### 7.4.2.1 Pages
 
 During the lifecycle of a site, you can perform operations such as maintaining, updating, and optimizing the content and structure of the site pages based on your business requirements. This ensures the efficiency and accuracy of site information and good user experience.
 
@@ -19922,7 +20678,7 @@ Pages may be in the states described in the following table. Different operation
 | Published (failed to publish modifications) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | × | × |
 |---|---|---|---|---|---|---|---|---|
 
-###### Create a page
+###### 7.4.2.1.1 Create a page
 
 Create a new page and configure its basic information.
 
@@ -19948,7 +20704,7 @@ The operating user is an operations administrator by default.
 
 6. Click **OK**.
 
-###### View a list of pages
+###### 7.4.2.1.2 View a list of pages
 
 The Page List page displays all created pages.
 
@@ -19964,7 +20720,7 @@ and **Update Time**.
 5. In the page list, view the information about pages.
 You can click the icon next to the **Page Status** field to filter pages by status. You can click the icon next to the **Release Time** field to sort pages in ascending or descending order.
 
-###### Edit page
+###### 7.4.2.1.3 Edit page
 
 Update the basic information of the page when necessary.
 
@@ -19983,7 +20739,7 @@ The operator must be an Operations Administrator by default.
 item descriptions, see Create a page.
 6. Click **OK**.
 
-###### Page building
+###### 7.4.2.1.4 Page building
 
 Use page building to configure page content and architecture.
 
@@ -19999,7 +20755,7 @@ Left side: displays the outline, components, and versions. Outline: displays com
 6. After you complete page building, click **Save** in the upper-right corner.
 Click **Undo** or **Recovery** to quickly adjust the page during page building. Click **Preview** to preview the display effect of the page during page building. Click **Publish** to publish the built page. Click **View Page** to view the content displayed on the published page. This operation is available only for pages in the Published state.
 
-###### Publish page
+###### 7.4.2.1.5 Publish page
 
 You can publish a page multiple times. Each publication generates a version that records the current content of the page.
 
@@ -20025,7 +20781,7 @@ or **Scheduled release**.
 content will update at the specified time. After scheduling a release, if you need to modify the time, you must first cancel the scheduled release and then republish.
 6. Click **OK**.
 
-###### Revoke the publishing of a page
+###### 7.4.2.1.6 Revoke the publishing of a page
 
 You can revoke the publishing of a page on the Page List page.
 
@@ -20042,7 +20798,7 @@ You are an operations administrator.
 icon in the Operation column, and then select **Revoke Publishing**.
 5. In the message that appears, click **OK**.
 
-###### View the review details of a page
+###### 7.4.2.1.7 View the review details of a page
 
 After publishing review is enabled, you can view the review details of pages that are in review or pages whose review is rejected.
 
@@ -20059,7 +20815,7 @@ You are an operations administrator.
 icon in the Operation column, and then select **View Approval Details**.
 5. On the page that appears, view the review details.
 
-###### View a published page
+###### 7.4.2.1.8 View a published page
 
 You can view a page only after the page is published.
 
@@ -20073,7 +20829,7 @@ Pages are in the **Published** state. You are an operations administrator.
 Operation column. Alternatively, go to the Page Construction page and click **View page** in the upper-right corner.
 5. On the page that appears, view the displayed content of the published page.
 
-###### Manage the versions of a page
+###### 7.4.2.1.9 Manage the versions of a page
 
 Each time a page is published, a version is generated to record the current content of the page. You can view and restore the historical versions of pages.
 
@@ -20088,7 +20844,7 @@ icon in the Operation column, and then select **Version Management**.
 5. In the **Page history** panel, view and restore the historical versions of the page as needed.
 Find the version that you want to view and click **View** in the Operation column. Find a version and click **Recovery** in the Operation column to restore the page to the selected version. After the page is restored, you must publish the page again to make the page take effect.
 
-###### Copy a page
+###### 7.4.2.1.10 Copy a page
 
 You can copy a page of a site to quickly add a page of the same content to the site.
 
@@ -20102,7 +20858,7 @@ You are an operations administrator.
 icon in the Operation column, and then select **Copy**.
 5. In the message that appears, click **OK**.
 
-###### Delete a page
+###### 7.4.2.1.11 Delete a page
 
 You can delete a page that you no longer need.
 
@@ -20119,7 +20875,7 @@ You are an operations administrator.
 icon in the Operation column, and then select **Delete**.
 5. In the message that appears, click **OK**.
 
-#### Material center
+#### 7.4.3 Material center
 
 You can upload, modify, and delete site materials such as images and videos as needed.
 
@@ -20175,9 +20931,9 @@ You cannot delete preset materials. Before you delete a material, make sure that
 1. Hover over the material card and click **Delete**.
 2. In the dialog box, click OK.
 
-#### Component management
+#### 7.4.4 Component management
 
-##### Add components
+##### 7.4.4.1 Add components
 
 When you build a service portal, if the preset components cannot meet your business requirements, you can use the component management feature to add custom components.
 
@@ -20207,7 +20963,7 @@ You can click **Download component development kit** to download the component d
 **development kit** to download the component development kit to your computer.
 You can also click **Upload later**. After a component is created, you can customize the component. For more information, see Customize a component and Understand tools and configurations for building custom components. After you customize a component, you can use the component when you build a page. For more information, see Configure a component and Publish a component.
 
-##### Configure a component
+##### 7.4.4.2 Configure a component
 
 After a component is added or if the component configurations need to be updated, you can configure the component.
 
@@ -20249,7 +21005,7 @@ i. **Upload component**: In the Upload component step, configure the parameters 
 
 ii. **Verify component**: In the Verify component step, wait until the component is verified and click **Complete**.
 
-##### Preview components
+##### 7.4.4.3 Preview components
 
 This topic describes how to preview preset and custom components on the Component Management page.
 
@@ -20276,7 +21032,7 @@ the component card.
 6. In the **Component preview** dialog box, preview the component.
 The component preview displays a static preview image of the component instead of a preview rendered in real time.
 
-##### Modify a component
+##### 7.4.4.4 Modify a component
 
 You can modify the basic information about a component when the component is updated. This topic describes how to modify a component.
 
@@ -20304,7 +21060,7 @@ component card.
 including the component name, type, and group.
 7. Click **Submit**.
 
-##### Publish a component
+##### 7.4.4.5 Publish a component
 
 You can publish a component based on your business requirements. After the component is published, you can use the component when you build a page. This topic describes how to publish a component.
 
@@ -20330,7 +21086,7 @@ specify filter conditions, such as **Grouping**, **Type**, **Status**, and **Cla
 component card.
 6. In the **Operation confirmation** message, click **OK**.
 
-##### Unpublish a component
+##### 7.4.4.6 Unpublish a component
 
 You can unpublish a component based on your business requirements. After the component is unpublished, the component becomes unavailable and is no longer displayed on the Component Management page.
 
@@ -20356,7 +21112,7 @@ specify filter conditions, such as **Grouping**, **Type**, **Status**, and **Cla
 of the component card.
 6. In the **Operation confirmation** message, click **OK**.
 
-##### Add to page
+##### 7.4.4.7 Add to page
 
 The system supports adding components to a page.
 
@@ -20382,7 +21138,7 @@ Only components in the **Published** state support being added to a page.
 You can select up to 50 pages in batch. Pages in the following four states cannot be selected: Published (modification pending scheduled release), Pending scheduled release, Draft (approval pending for publication), and Published (modification approval pending). After you add the component, it will be inserted at the end of the page. You must publish the page before the component becomes visible externally.
 7. Click **OK**.
 
-##### Customize a component
+##### 7.4.4.8 Customize a component
 
 This topic describes how to customize a component.
 
@@ -20482,7 +21238,7 @@ ameter.
 7. After the compilation is successful, the custom component can be configured and
 uploaded. After the component is published, you can use the component when you build a page. For more information, see Configure a component and Publish a component.
 
-##### Understand the tool and configurations for
+##### 7.4.4.9 Understand the tool and configurations for building custom components
 
 **building custom components**
 
@@ -21419,9 +22175,9 @@ include a field whose key matches the value of the labelKey parameter.
 
 `}` `}` `]` `}` `}` `}` `]` `}` `}` `}` `]` `}`
 
-#### Template management
+#### 7.4.5 Template management
 
-##### Site template
+##### 7.4.5.1 Site template
 
 The site template provides preset site templates. You can quickly create a site based on a site template.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -21430,11 +22186,11 @@ The site template provides preset site templates. You can quickly create a site 
 4. In the site template list, view the preset site templates.
 Click **Preview** to preview the preset site. Click **View Details** to expand the site template details.
 
-##### Page template
+##### 7.4.5.2 Page template
 
 The page template displays preset templates. You can quickly create pages and site templates based on these page templates.
 
-###### View page templates and page content
+###### 7.4.5.2.1 View page templates and page content
 
 View preset and custom page templates, and the page content of each template.
 1. Log in to the Apsara Uni-Manager Management Console.
@@ -21444,7 +22200,7 @@ View preset and custom page templates, and the page content of each template.
 filter at the top of the page to quickly locate a template.
 5. Click **View Page** in the **Actions** column to preview the page content.
 
-###### Create a page template
+###### 7.4.5.2.2 Create a page template
 
 Customize a page template based on your business requirements.
 1. Log in to the Apsara Uni-Manager Management Console.
@@ -21465,7 +22221,7 @@ Customize a page template based on your business requirements.
 
 6. Click OK.
 
-###### Edit page template
+###### 7.4.5.2.3 Edit page template
 
 You can modify the configuration when changes are needed for the page template.
 
@@ -21480,7 +22236,7 @@ You cannot edit preset page templates.
 detailed descriptions of configuration items, see Create a page template.
 6. Click **OK**.
 
-###### Delete a page template
+###### 7.4.5.2.4 Delete a page template
 
 You can delete a page template when you no longer need it.
 
@@ -21493,15 +22249,15 @@ The system does not allow you to delete preset page templates.
 4. In the page template list, click **Delete** in the **Actions** column.
 5. In the **Note** dialog box, click **OK**.
 
-### Service support
+### 7.5 Service support
 
-#### Ticket management
+#### 7.5.1 Ticket management
 
-##### Ticket list
+##### 7.5.1.1 Ticket list
 
 The ticket list displays the tickets that are available for viewing and processing.
 
-###### View tickets
+###### 7.5.1.1.1 View tickets
 
 You can view the ticket lists on which you have permissions.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -21530,7 +22286,7 @@ quickly filter tickets.
 6. Find the ticket that you want to view and click its number or **Details** in the **Actions**
 column. On the **Ticket details** page, view the ticket details.
 
-###### Withdraw tickets
+###### 7.5.1.1.2 Withdraw tickets
 
 This topic describes how to withdraw a ticket before it is claimed.
 
@@ -21552,7 +22308,7 @@ b. In the **Process Ticket** section on the **Ticket details** page, click **Wit
 
 a. On the Issues page, select the tickets that you want to withdraw. b. Click **Withdraw** in the lower part of the page. c. In the message that appears, click **OK**. After the tickets are withdrawn, the state of the tickets changes to **Withdrawn**.
 
-###### Add comments to a ticket
+###### 7.5.1.1.3 Add comments to a ticket
 
 You can add comments to a ticket at any time during ticket processing.
 
@@ -21568,7 +22324,7 @@ You are the ticket submitter or have the permissions to process tickets.
 comments and upload attachments. Supported file formats: PNG, JPG, TXT, RAR, DOC, XLS, ZIP, 7Z, and MP4. A single attachment cannot exceed 512 MB in size. A maximum of five attachments can be uploaded.
 6. Click **Comment**.
 
-###### Modify a ticket
+###### 7.5.1.1.4 Modify a ticket
 
 This topic describes how to modify a ticket.
 
@@ -21586,7 +22342,7 @@ corner.
 the parameters, see Submit a ticket.
 7. Click **Submit**.
 
-###### Claim tickets
+###### 7.5.1.1.5 Claim tickets
 
 Users who have the permissions to process tickets can view all tickets that are in the Unclaimed state and claim the tickets for processing.
 
@@ -21608,7 +22364,7 @@ b. In the **Process Ticket** section on the **Ticket details** page, click **Cla
 
 a. On the Issues page, select the tickets that you want to claim. b. Click **Claim** in the lower part of the page. c. In the message that appears, click **OK**. After a ticket is claimed, the state of the ticket changes to **Handling**.
 
-###### Expedite a long-pending ticket
+###### 7.5.1.1.6 Expedite a long-pending ticket
 
 If a ticket remains open for a time after it is submitted, the ticket submitter can request the ticket processer to expedite the progress of the ticket.
 
@@ -21624,7 +22380,7 @@ click its number or click **Details** in the Actions column.
 corner. You can expedite a ticket only once per day. If you expedite a ticket multiple times, the system prompts that the operation is repeated. After you send a request to expedite a ticket, the ticket processer receives a notification if notification is enabled on the message gateway. This way, the ticket can be processed with higher priority.
 6. In the message that appears, click **OK**.
 
-###### Submit a withdrawn or pending feedback
+###### 7.5.1.1.7 Submit a withdrawn or pending feedback ticket
 
 **ticket**
 
@@ -21642,7 +22398,7 @@ you want to manage and click its number or click **Details** in the Actions colu
 corner. For more information about how to submit a newly created ticket, see Submit a ticket. After you resubmit a withdrawn ticket, no ticket processer is assigned to the ticket. In this case, the ticket is assigned based on service groups, service engineers, and assignment rules. After you resubmit a pending feedback ticket, the ticket is assigned to the original ticket processer, and the state of the ticket changes to Handling. The ticket processer receives the ticket along with a notification if notification is enabled on the message gateway. This way, the ticket can be processed in a timely manner.
 6. In the message that appears, click **OK**.
 
-###### Return an in-progress ticket
+###### 7.5.1.1.8 Return an in-progress ticket
 
 If a ticket lacks valid descriptions, the ticket processer can return the ticket to the ticket submitter, who can add the required ticket information.
 
@@ -21660,7 +22416,7 @@ page, enter a comment for returning the ticket and upload attachments. After the
 7. In the message that appears, click **OK**. After the ticket is returned to the ticket submitter,
 the state of the ticket changes to **Pending Feedback**.
 
-###### Transfer tickets
+###### 7.5.1.1.9 Transfer tickets
 
 If the processer of a ticket cannot process the ticket, the ticket processer can transfer the ticket to another engineer for processing. Operations administrators can transfer all inprogress tickets to other engineers.
 
@@ -21689,7 +22445,7 @@ c. Click **Transfer** in the lower-right corner. d. In the message that appears,
 
 a. On the Issues page, select the tickets that you want to transfer. b. Click **Forward** in the lower part of the page. c. In the **Ticket transfer** dialog box, specify the transfer information and enter a comment. For more information about the parameters, see the Transfer a ticket section of this topic. d. Click **OK**.
 
-###### Reassign tickets
+###### 7.5.1.1.10 Reassign tickets
 
 Administrators can reassign tickets in the Handling state to other engineers for handling. After a ticket is reassigned, the service level agreement (SLA) duration of the corresponding node is recalculated.
 
@@ -21720,7 +22476,7 @@ c. Click **Reassign** in the lower-right corner.
 
 a. On the Issues page, select the tickets that you want to reassign. b. Click **Reassign** in the lower part of the page. c. In the **Reassign Ticket** dialog box, configure the parameters. For more information about the parameters, see the Reassign a ticket section in this topic. d. Click **OK**.
 
-###### Assign tickets
+###### 7.5.1.1.11 Assign tickets
 
 Administrators can assign unclaimed tickets to appropriate engineers for processing.
 
@@ -21751,7 +22507,7 @@ c. Click **Assign** in the lower-right corner.
 
 a. On the Issues page, select the tickets that you want to assign. b. Click **Assign** in the lower part of the page. c. In the **Assignment Information** dialog box, configure the parameters. For more information about the parameters, see Assign a ticket. d. Click **OK**.
 
-###### Suspend a ticket
+###### 7.5.1.1.12 Suspend a ticket
 
 If a ticket that is in progress cannot be processed at the moment, you can suspend the ticket.
 
@@ -21769,7 +22525,7 @@ reason for the suspension.
 7. In the message that appears, click **OK**. After the ticket is suspended, the state of the ticket
 changes to **Suspending**.
 
-###### Activate a ticket
+###### 7.5.1.1.13 Activate a ticket
 
 You can activate a ticket that is suspended.
 
@@ -21786,7 +22542,7 @@ comment for the activation.
 6. Click **Activate** in the lower-right corner.
 7. In the message that appears, click **OK**.
 
-###### Close a ticket
+###### 7.5.1.1.14 Close a ticket
 
 After a ticket is processed by an engineer, the engineer can close the ticket and transfer it to the ticket submitter for verification.
 
@@ -21804,7 +22560,7 @@ comment and upload attachments. After the ticket is closed, the ticket submitter
 7. In the message that appears, click **OK**. After the ticket is closed, the state of the ticket
 changes to **To Be Confirmed**.
 
-###### Verify the results of a pending
+###### 7.5.1.1.15 Verify the results of a pending confirmation ticket
 
 **confirmation ticket**
 
@@ -21829,7 +22585,7 @@ a. On the **Confirm** tab of the **Process Ticket** section, enter a comment and
 
 a. On the **Unhandled** tab of the **Process Ticket** section, enter a comment and upload attachments. After you confirm that the issue is not resolved, the ticket processer receives a notification if notification is enabled on the message gateway. This way, the ticket processer can process the ticket in a timely manner. b. Click **Unhandled** in the lower-right corner. c. In the message that appears, click **OK**. The state of the ticket changes to **Handling**, and the ticket is assigned to the original ticket processer for processing.
 
-###### Evaluate a completed ticket
+###### 7.5.1.1.16 Evaluate a completed ticket
 
 After the submitter of a ticket confirms that the issue is resolved, the submitter can evaluate the ticket.
 
@@ -21846,7 +22602,7 @@ ticket, enter your comment, and then upload attachments as needed. When you rate
 6. Click **Evaluate** in the lower-right corner.
 7. In the message that appears, click **OK**.
 
-###### Delete tickets
+###### 7.5.1.1.17 Delete tickets
 
 After a ticket is withdrawn by the submitter, the submitter can delete the ticket if it is no longer required.
 
@@ -21868,7 +22624,7 @@ b. In the **Process Ticket** section on the **Ticket details** page, click **Del
 
 a. On the Issues page, select the tickets that you want to delete. b. Click **Delete** in the lower part of the page. c. In the message that appears, click **OK**.
 
-###### Export ticket details
+###### 7.5.1.1.18 Export ticket details
 
 Operations administrators can export ticket details to local machines for storage.
 
@@ -21881,7 +22637,7 @@ You are an operations administrator.
 4. On the **All** tab, click **Export Ticket Details** above the ticket list to export ticket details as
 a **.csv** file to your local machine.
 
-##### Submit a ticket
+##### 7.5.1.2 Submit a ticket
 
 You can submit tickets to request technical support. A ticket includes the issue type, issue description, and attachments.
 
@@ -21904,9 +22660,9 @@ table.
 
 5. Click **Submit**.
 
-##### Service group
+##### 7.5.1.3 Service group
 
-###### Create a service group
+###### 7.5.1.3.1 Create a service group
 
 A service group defines the team of service personnel responsible for handling issues.
 
@@ -21934,7 +22690,7 @@ By default, the operating user is the operations administrator.
 
 6. Click OK.
 
-###### View service groups
+###### 7.5.1.3.2 View service groups
 
 View the created service groups and the personnel within them.
 
@@ -21949,7 +22705,7 @@ At the top of the list, enter the service group name or description to quickly l
 5. Click a service group name to expand the **Service Group Details** panel and view detailed
 information about the service group.
 
-###### Edit a service group
+###### 7.5.1.3.3 Edit a service group
 
 Update the basic information or service personnel information of a service group.
 
@@ -21964,7 +22720,7 @@ The operator is an operations administrator by default.
 information, and fallback rules of the service group. For more information about configuration, see Create a service group.
 6. Click OK.
 
-###### Delete a service group
+###### 7.5.1.3.4 Delete a service group
 
 This topic describes how to delete service groups.
 
@@ -21978,9 +22734,9 @@ You are an operations administrator.
 **Delete** in the Operation column.
 5. In the message that appears, click **OK**.
 
-##### Issue categorization
+##### 7.5.1.4 Issue categorization
 
-###### Create an issue type
+###### 7.5.1.4.1 Create an issue type
 
 If the preset issue types cannot meet your business requirements, you can create custom issue types. After you create issue types, ticket submitters can select an issue type that you create when they submit tickets.
 
@@ -22028,7 +22784,7 @@ a. Find the custom action that you want to delete and click **Delete** in the Op
 |   | Servi ce Remi nder | Configure the condition, time, and methods for service notifications. You can specify multiple conditions. A notification is sent if one of the conditions is met. Conditions: Supported conditions include Before Dwell Time Expires, After Dwell Time Expires, Before First Response Time Expires, After First Response Time Expires, Before Node Processing Duration Expires, and After Node Processing Duration Expires. Time: Specify a time, in minutes. Notification methods: Internal messages, text messages, emails, and DingTalk messages are supported. You can select multiple options at a time. Add an entry: Click Add. In the new line that appears, specify a condition, a time, and notification methods. Remove an entry: Click the icon next to the entry. |
 |   | Remi nder Obje ct | Select the recipients of service notifications. You can select multiple options at a time. If you select Specify User, you must select one or more users from the Specify User drop-down list. If you select Specify Role, you must select one or more roles from the Specify Role drop-down list. |
 
-###### View issue types
+###### 7.5.1.4.2 View issue types
 
 This topic describes how to view the preset and custom issue types.
 
@@ -22044,7 +22800,7 @@ You can enter the name and description of an issue type above the issue type lis
 5. Find the issue type that you want to view and click its name to go to the details page of the
 issue type.
 
-###### Modify an issue type
+###### 7.5.1.4.3 Modify an issue type
 
 This topic describes how to modify an issue type.
 
@@ -22059,7 +22815,7 @@ Operation column.
 5. On the **Modify Issue Type** page, modify the configurations of the issue type. For more
 information about the parameters, see Create an issue type.
 
-###### Enable an issue type
+###### 7.5.1.4.4 Enable an issue type
 
 After you enable an issue type, the issue type is displayed in the Issue Type drop-down list. Ticket submitters can select the issue type when they submit tickets.
 
@@ -22073,7 +22829,7 @@ You are an operations administrator. Issue types are in the **Deactivate** state
 the Operation column.
 5. In the message that appears, click **OK**.
 
-###### Disable an issue type
+###### 7.5.1.4.5 Disable an issue type
 
 After an issue type is disabled, the issue type is no longer displayed in the Issue Type dropdown list. Ticket submitters can no longer select the disabled issue type when they submit tickets.
 
@@ -22087,7 +22843,7 @@ You are an operations administrator. Issue types are in the **Enable** state.
 in the Operation column.
 5. In the message that appears, click **OK**.
 
-###### Copy an issue type
+###### 7.5.1.4.6 Copy an issue type
 
 You can copy the configurations of an existing issue type to create another issue type.
 
@@ -22102,7 +22858,7 @@ Operation column.
 5. In the message that appears, click **OK**. After the operation succeeds, a new issue type is
 created and named in the format of {Original issue type name}_copy.
 
-###### Delete an issue type
+###### 7.5.1.4.7 Delete an issue type
 
 This topic describes how to delete an issue type.
 
@@ -22116,9 +22872,9 @@ You are an operations administrator.
 the Operation column.
 5. In the message that appears, click **OK**.
 
-##### Ticket dispatch rule
+##### 7.5.1.5 Ticket dispatch rule
 
-###### Create a ticket dispatch rule
+###### 7.5.1.5.1 Create a ticket dispatch rule
 
 Tickets can be automatically assigned to engineers based on ticket dispatch rules. You can create different ticket dispatch rules for different scenarios.
 
@@ -22142,7 +22898,7 @@ described in the following table.
 
 6. Click **OK**.
 
-###### View ticket dispatch rules
+###### 7.5.1.5.2 View ticket dispatch rules
 
 This topic describes how to view the created ticket dispatch rules and the service group and rule conditions in a rule.
 
@@ -22158,7 +22914,7 @@ click **Search** to quickly search for ticket dispatch rules: **Rule name**, **D
 **to Service Group**, and **Status**.
 6. Click a rule name. In the **Rule Details** panel, view the rule details.
 
-###### Modify a ticket dispatch rule
+###### 7.5.1.5.3 Modify a ticket dispatch rule
 
 This topic describes how to modify the basic information, service group, and match conditions of a ticket dispatch rule.
 
@@ -22174,7 +22930,7 @@ click **Edit** in the Operation column.
 conditions of the rule. For more information about rule parameters, see Create a ticket dispatch rule.
 6. Click **OK**.
 
-###### Enable a ticket dispatch rule
+###### 7.5.1.5.4 Enable a ticket dispatch rule
 
 After you enable a ticket dispatch rule, the system automatically dispatches tickets to the service group based on the specified conditions and priorities.
 
@@ -22188,7 +22944,7 @@ You are an operations administrator. The ticket dispatch rule is in the **Deacti
 the Operation column.
 5. In the message that appears, click **OK**.
 
-###### Disable a ticket dispatch rule
+###### 7.5.1.5.5 Disable a ticket dispatch rule
 
 After you disable a ticket dispatch rule, the system no longer automatically dispatches tickets based on the specified rule conditions.
 
@@ -22202,7 +22958,7 @@ You are an operations administrator. The ticket dispatch rule is in the **Enable
 in the Operation column.
 5. In the message that appears, click **OK**.
 
-###### Delete a ticket dispatch rule
+###### 7.5.1.5.6 Delete a ticket dispatch rule
 
 This topic describes how to delete ticket dispatch rules that you no longer use.
 
@@ -22216,11 +22972,11 @@ You are an operations administrator.
 Operation column.
 5. In the message that appears, click **OK**.
 
-##### Data insights
+##### 7.5.1.6 Data insights
 
 The Data Insight page displays the real-time data and historical data of the ticket service.
 
-###### View the ticket overview
+###### 7.5.1.6.1 View the ticket overview
 
 This topic describes how to view an overview of tickets on the Data Insight page.
 
@@ -22242,7 +22998,7 @@ You are an operations administrator or a service group administrator.
 | SLA Trend | Displays the fulfillment trend of the ticket service level agreement (SLA). You can switch between the 1 Month and 1 Week views. |
 | Service Group Personnel | Displays the information about service groups, including Service Group Name, People During Business Hours, and Total People in Service Group. |
 
-###### View the ticket type analysis
+###### 7.5.1.6.2 View the ticket type analysis
 
 This topic describes how to view the ticket type analysis on the Data Insight page.
 
@@ -22261,7 +23017,7 @@ You are an operations administrator or a service group administrator.
 | New Ticket Trend Analysis | Displays the trend of new tickets. You can switch between the1 Month and 1 Week views. |
 | Correlation Analysis of Ticket Type and Average Processing Duration | Displays the average amount of time required to resolve tickets of each type in a column chart and a table. |
 
-###### View the processing efficiency analysis
+###### 7.5.1.6.3 View the processing efficiency analysis of tickets
 
 **of tickets**
 
@@ -22283,13 +23039,13 @@ You are an operations administrator or a service group administrator.
 | Response Duration and Resolution Duration of Service Group | Displays the amount of time required to respond to or resolve a ticket by each service group. |
 | Top 10 Tickets with the Longest Processing Duration | Displays the information about the top 10 tickets by processing duration. You can switch between the Resolved and Unresolved views. You can also check the detailed processing information of a ticket. To do so, find the ticket that you want to view and click its number or click Details in the Actions column to go to the ticket details page. |
 
-##### Shift schedule management
+##### 7.5.1.7 Shift schedule management
 
-###### Schedule
+###### 7.5.1.7.1 Schedule
 
 View and manage shift information. View detailed shift assignments.
 
-###### Batch shift schedule
+###### 7.5.1.7.1.1 Batch shift schedule
 
 Set up shift schedules in batch.
 
@@ -22316,7 +23072,7 @@ The default user for this operation is the Operations Administrator.
 
 6. Click **OK**.
 
-###### View the schedule table
+###### 7.5.1.7.1.2 View the schedule table
 
 View the schedule table by week, month, or custom dimension.
 
@@ -22335,7 +23091,7 @@ When you select the **Custom** dimension, specify a custom date range in **Custo
 5. From the **Service Group** drop-down list, select a specific service group.
 6. Review staff scheduling for the selected service group in the schedule table.
 
-###### Shift schedule settings
+###### 7.5.1.7.1.3 Shift schedule settings
 
 Configure shifts within date cells on the shift schedule.
 
@@ -22350,7 +23106,7 @@ the schedule to view shift assignments.
 5. Configure the shift schedule.
 When a shift is already assigned: a. Click the shift displayed in the date cell. b. In the **Shift Schedule Details** dialog box, click **Shift Schedule Settings**. c. In the shift schedule settings dialog box, configure the shift. When no shift is assigned: a. Click in the date cell. b. In the shift schedule settings dialog box, configure the shift.
 
-###### Shift substitution settings
+###### 7.5.1.7.1.4 Shift substitution settings
 
 Replace scheduled shifts assigned to employees.
 
@@ -22375,7 +23131,7 @@ the schedule table to view shift assignments.
 
 8. Click **Confirm**.
 
-###### Copy shift schedule
+###### 7.5.1.7.1.5 Copy shift schedule
 
 Quickly set up a new shift schedule based on an existing one.
 
@@ -22402,7 +23158,7 @@ designated employee, and target date.
 
 8. Click **Confirm**.
 
-###### Delete a shift schedule
+###### 7.5.1.7.1.6 Delete a shift schedule
 
 Delete an existing shift schedule assigned to employees.
 
@@ -22419,7 +23175,7 @@ the schedule table to view shift assignments.
 next to the shift.
 7. Click **Confirm**.
 
-###### Delete leave
+###### 7.5.1.7.1.7 Delete leave
 
 You cannot assign a shift to an employee who has a leave record within the selected date range. Delete the leave record first.
 
@@ -22437,11 +23193,11 @@ above the schedule table to view scheduling details.
 after the leave record.
 7. Click **Confirm**.
 
-###### Shift management
+###### 7.5.1.7.2 Shift management
 
 Define batches and maintain the schedule for each batch.
 
-###### Create a shift
+###### 7.5.1.7.2.1 Create a shift
 
 Create a shift and set its start time, end time, and display color.
 
@@ -22469,7 +23225,7 @@ The operating user is the operations administrator by default.
 
 6. Click **OK**.
 
-###### Edit a shift
+###### 7.5.1.7.2.2 Edit a shift
 
 You can update the shift configuration when changes occur.
 
@@ -22484,7 +23240,7 @@ By default, you must be an operations administrator to perform this operation.
 5. In the **Modify Shift** dialog box, modify the shift configuration.
 6. Click **OK**.
 
-###### Delete a shift
+###### 7.5.1.7.2.3 Delete a shift
 
 Delete shifts that you no longer need.
 
@@ -22498,7 +23254,7 @@ By default, the user performing this operation is an Operations Administrator. Y
 4. In the list, click **Delete** in the **Actions** column.
 5. In the dialog box, click **OK**.
 
-###### Copy a shift
+###### 7.5.1.7.2.4 Copy a shift
 
 Create a new shift quickly based on an existing shift configuration.
 
@@ -22515,7 +23271,7 @@ Copying a shift allows you to quickly create a new shift with the same configura
 The shift name and shift abbreviation must be unique.
 6. Click **OK**.
 
-###### Enable or disable a shift
+###### 7.5.1.7.2.5 Enable or disable a shift
 
 Enable or disable a shift.
 
@@ -22531,9 +23287,9 @@ click **Edit** in the **Actions** column of the target shift, then configure the
 **Modify Shift** dialog box.
 Shift enabling status in the list: Enabled shift : You can select an enabled shift during scheduling. Disabled shift : You cannot select a disabled shift during scheduling. Existing historical schedules remain unaffected and display normally.
 
-#### Document management
+#### 7.5.2 Document management
 
-##### Documents
+##### 7.5.2.1 Documents
 
 Operations administrators can maintain and update documents such as service manuals and usage specifications to control the query and display of documents.
 
@@ -22592,7 +23348,7 @@ Documents may be in the states described in the following table. Different opera
 | Disabled (review for enabling rejected) | ✓ | ✓ | ✓ | ✓ | × | ✓ | ✓ | × | ✓ | ✓ | ✓ |
 | Disabled (enabling failed) | ✓ | ✓ | ✓ | ✓ | × | × | ✓ | × | ✓ | ✓ | ✓ |
 
-###### Create a document category
+###### 7.5.2.1.1 Create a document category
 
 This topic describes how to create a document category.
 
@@ -22608,7 +23364,7 @@ icon.
 A document category consists of document groups and collections. When you create a document category, a document group and a document collection are created in the document category by default. By default, after a document category is created, it is displayed in the upper part of the Document Classification section. The default name of a document group is in the Default Group ({Document category name}) format. The default name of a document collection is in the Default Document Collection ({Document category name}) format.
 6. Click **OK**.
 
-###### Create a document group
+###### 7.5.2.1.2 Create a document group
 
 This topic describes how to create a document group.
 
@@ -22625,7 +23381,7 @@ manage, move the pointer over the icon to the right of its name, and then select
 You do not need to configure the Select Location parameter. This parameter is dimmed by default and indicates the document category to which the document group belongs.
 6. Click **OK**.
 
-###### Create a document collection
+###### 7.5.2.1.3 Create a document collection
 
 This topic describes how to create a document collection.
 
@@ -22641,7 +23397,7 @@ move the pointer over the icon to the right of its name, and then select **Creat
 You do not need to configure the Select Location parameter. This parameter is dimmed by default and indicates the document group to which the document collection belongs.
 6. Click **OK**.
 
-###### Rename a document category, document
+###### 7.5.2.1.4 Rename a document category, document group, or document collection
 
 **group, or document collection**
 
@@ -22658,7 +23414,7 @@ document collection that you want to rename, move the pointer over the icon to t
 5. In the dialog box that appears, enter another name in the **Name** field.
 6. Click **OK**.
 
-###### Move a document category, document
+###### 7.5.2.1.5 Move a document category, document group, or document collection
 
 **group, or document collection**
 
@@ -22684,7 +23440,7 @@ category, document group, or document collection to be displayed.
 You can only move an object to another location at the same level. After you move the object, its subordinate objects are moved accordingly. You can place an object before or after the specified object.
 6. Click **OK**.
 
-###### Copy a document group
+###### 7.5.2.1.6 Copy a document group
 
 This topic describes how to copy a document group.
 
@@ -22706,7 +23462,7 @@ move the pointer over the icon to the right of its name, and then select **Copy*
 place the new document group before or after the specified document group.
 6. Click **OK**.
 
-###### Delete a document category, document
+###### 7.5.2.1.7 Delete a document category, document group, or document collection
 
 **group, or document collection**
 
@@ -22728,7 +23484,7 @@ You are an operations administrator.
 document collection that you want to delete, move the pointer over the icon to the right of its name, and then select **Delete**.
 5. In the message that appears, click **Delete**.
 
-###### Create a document or directory
+###### 7.5.2.1.8 Create a document or directory
 
 Documents and directories belong to different document categories. Before you create a document or directory, make sure that a document category is created.
 
@@ -22753,7 +23509,7 @@ manage.
 
 7. Click **OK**.
 
-###### Upload a document
+###### 7.5.2.1.9 Upload a document
 
 This topic describes how to upload an existing file as a document.
 
@@ -22770,7 +23526,7 @@ manage.
 upload. Alternatively, drag the file that you want to upload to the upload section. You can upload only one file at a time. The file cannot exceed 50 MB in size and must be a DOC or DOCX file.
 7. Click **Import**.
 
-###### Rename a document or directory
+###### 7.5.2.1.10 Rename a document or directory
 
 This topic describes how to rename a document or directory.
 
@@ -22789,7 +23545,7 @@ Alternatively, move the pointer over its name and click the icon.
 6. In the dialog box that appears, enter another name in the Name field.
 7. Click **OK**.
 
-###### Move a document or directory
+###### 7.5.2.1.11 Move a document or directory
 
 This topic describes how to move a document or directory.
 
@@ -22811,7 +23567,7 @@ move, move the pointer over the icon in the **Operation** column, and then selec
 parameters. You can place the document or directory before or after the specified document or directory. You can also nest the document or directory as a child document or directory of the specified document or directory.
 7. Click **OK**.
 
-###### Modify the content of a document
+###### 7.5.2.1.12 Modify the content of a document
 
 This topic describes how to modify the content of a document.
 
@@ -22828,7 +23584,7 @@ the pointer over the icon in the **Operation** column, and then click **Edit**.
 6. On the Document Details page, modify the content of the document and click **Save and**
 **exit**.
 
-###### Publish a document
+###### 7.5.2.1.13 Publish a document
 
 This topic describes how to publish a document.
 
@@ -22847,7 +23603,7 @@ upper-right corner.
 7. In the dialog box that appears, enter a description and click **OK**. After the document is
 published, you can launch it in the document list.
 
-###### Launch a document or directory
+###### 7.5.2.1.14 Launch a document or directory
 
 This topic describes how to launch a document or directory.
 
@@ -22867,7 +23623,7 @@ or directory that you want to launch belongs and click its name.
 launch and click **Go online** in the Operation column.
 6. In the dialog box that appears, click **Publish**.
 
-###### Withdraw a document or directory
+###### 7.5.2.1.15 Withdraw a document or directory
 
 When you withdraw a document, all child nodes are withdrawn by default. This topic describes how to withdraw a document.
 
@@ -22883,7 +23639,7 @@ or directory that you want to withdraw belongs and click its name.
 withdraw and click **Unpublish** in the Operation column.
 6. In the dialog box that appears, click **Unpublish**.
 
-###### Copy a document
+###### 7.5.2.1.16 Copy a document
 
 The document describes how to copy a document.
 
@@ -22902,7 +23658,7 @@ pointer over the icon in the **Operation** column, and then select **Copy**.
 You can also nest the document as a child document of the specified document.
 7. Click **OK**.
 
-###### View the approval details of a
+###### 7.5.2.1.17 View the approval details of a document
 
 **document**
 
@@ -22920,7 +23676,7 @@ that you want to view belongs and click its name.
 pointer over the icon in the **Operation** column, and then select **Approval details**.
 6. On the approval details page, view the approval details.
 
-###### Revoke the publishing, launching, or
+###### 7.5.2.1.18 Revoke the publishing, launching, or withdrawal operation performed on a document or directory
 
 **withdrawal operation performed on a document or**
 
@@ -22941,7 +23697,7 @@ manage, move the pointer over the icon in the Operation column, and then click
 **Revoke**.
 6. In the dialog box that appears, click **Revoke**.
 
-###### Manage the versions of a document
+###### 7.5.2.1.19 Manage the versions of a document
 
 This topic describes how to manage the versions of a document.
 
@@ -22961,7 +23717,7 @@ document.
 7. Select a version and click **Restore to current version** in the upper part of the page to
 restore the document to the selected version. After the document is restored, you must publish the document again to make the document take effect.
 
-###### Export a document
+###### 7.5.2.1.20 Export a document
 
 You can export a document to your on-premises machine in .docx or .pdf format.
 
@@ -22978,7 +23734,7 @@ export.
 6. On the **Document Details** page, click **Export** in the upper-right corner.
 7. In the **Export File** dialog box, select an export format.
 
-###### Delete a document or directory
+###### 7.5.2.1.21 Delete a document or directory
 
 You can delete documents or directories that you no longer need.
 
@@ -22998,7 +23754,7 @@ or directory that you want to delete belongs and click its name.
 delete, move the pointer over the icon in the **Operation** column, and then click **Delete**.
 6. In the message that appears, click **Delete**.
 
-###### Access documentation
+###### 7.5.2.1.22 Access documentation
 
 You can access documents on the Documentation page. On the Documentation page, all created level-1 and level-2 document categories are displayed sequentially after the preset document categories.
 
@@ -23010,9 +23766,9 @@ To go to the Documentation page, perform the following operations: Log in to the
 
 If all documents in a document category are **unpublished**, the document category is not displayed.
 
-## Security
+## 8 Security
 
-### Overview
+### 8.1 Overview
 
 The Apsara Uni-manger Management Console uses AccessKey pairs and multi-factor authentication (MFA) to enhance security when you access systems and resources.
 
@@ -23021,7 +23777,7 @@ The Apsara Uni-manger Management Console uses AccessKey pairs and multi-factor a
 | AccessKey pairs | AccessKey pairs are used to access cloud resources. You can view the AccessKey pairs of your account. You can create AccessKey pairs within your account. Each account can have at most two AccessKey pairs. You can enable or disable an AccessKey pair of your account. However, at least one AccessKey pair must be enabled within your account. You can delete an AccessKey pair from your account. However, at least one AccessKey pair must be retained within your account. |
 | MFA | MFA is an identity authentication method that enhances security by requiring additional verification factors beyond the username and password of an account. You can check whether the MFA feature is enabled for a user. If the MFA feature is disabled for a user, you can enable the feature for the user. However, you cannot disable the MFA feature after it is enabled. You can bind or unbind virtual MFA devices. You can reset MFA keys. |
 
-### AccessKey pairs of a personal
+### 8.2 AccessKey pairs of a personal account
 
 **account**
 
@@ -23041,9 +23797,9 @@ An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey
 | Delete an AccessKey pair | Important If you delete an AccessKey pair, errors may occur in the services or applications that depend on the AccessKey pair. Proceed with caution. i. In the AccessKey Pair section, find the AccessKey pair that you want to delete and click Delete in the Actions column. ii. In the message that appears, click Delete. |
 | View the logs of an AccessKey pair | i. In the AccessKey Pair section, find the AccessKey pair whose logs you want to view and click View AccessKey Pair Logs in the Actions column. The AccessKey Logs page appears. For more information about AccessKey pair logs, see AccessKey logs. |
 
-### MFA
+### 8.3 MFA
 
-#### Overview
+#### 8.3.1 Overview
 
 Multi-factor authentication (MFA) is an authentication method. In addition to username and password authentication, MFA provides an extra layer of protection.
 
@@ -23055,7 +23811,7 @@ When MFA is enabled, you must enter your username and password (first security f
 
 The TOTP algorithm requires that the time of the system clock of the Apsara Uni-manager Management Console remain consistent with the standard time on the Internet. Otherwise, discrepancies in time can lead to inconsistent MFA verification codes and you may be unable to log on to the Apsara Uni-manager Management Console.
 
-#### Manage MFA
+#### 8.3.2 Manage MFA
 
 Multi-factor authentication (MFA) is an authentication method. In addition to username and password authentication, MFA provides an extra layer of protection. You can enable or disable the MFA feature in the console.
 
@@ -23091,7 +23847,7 @@ After the MFA feature is enabled, the MFA feature of the user is in the **Enable
 **and Unbound** state. After the MFA feature is forcibly enabled for a user, the
 user must go to the Bind Virtual MFA Device page to bind a virtual MFA device before the user can log on to the Apsara Uni-manager Management Console.
 
-## To-do Center
+## 9 To-do Center
 
 The Pending Tasks center displays all pending items. You can handle each item based on its category.
 1. Log in to the Apsara Uni-Manager Management Console.
@@ -23101,9 +23857,9 @@ The Pending Tasks center displays all pending items. You can handle each item ba
 4. On the **To-do Center** page, handle pending items according to their categories.
 The Contracts tab aggregates all contracts that expire within 30 days or less.
 
-## Message center
+## 10 Message center
 
-### Manage all messages
+### 10.1 Manage all messages
 
 The All Messages page in the Message Center module displays all read and unread messages related to services, operations, process approvals, application O&M, announcements, and alerts that you have received.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -23124,7 +23880,7 @@ right side of the page. If the message is unread, the message is marked as read.
 
 After you delete a message, the message cannot be restored. Proceed with caution.
 
-### Manage unread messages
+### 10.2 Manage unread messages
 
 The Unread Messages page in the Message Center module displays all unread messages related to services, operations, process approvals, application O&M, announcements, and alerts that you have received.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -23145,7 +23901,7 @@ right side of the page. The message is then marked as read. The icon indicates t
 
 After you delete a message, the message cannot be restored. Proceed with caution.
 
-### Manage read messages
+### 10.3 Manage read messages
 
 The Read Messages page in the Message Center module displays all read messages related to services, operations, process approvals, application O&M, announcements, and alerts that you have received.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -23166,7 +23922,7 @@ right side of the page.
 
 After you delete a message, the message cannot be restored. Proceed with caution.
 
-### Query records
+### 10.4 Query records
 
 This topic describes how to query the historical records of message senders and message content.
 
@@ -23185,9 +23941,9 @@ Click **Preview** in the **Content** column of a record to view the message cont
 **Preparing**, **Send failed**, or **Timeout** to filter records by status.
 If a record is in the **Send failed** or **Timeout** state, click **Retry** in the **Actions** column to send the message again.
 
-## User center
+## 11 User center
 
-### User information
+### 11.1 User information management
 
 **management**
 
@@ -23211,7 +23967,7 @@ On the User Information page, you can manage the information about your account,
 | Left-side section | Note If the user has been granted a multi-cloud role, multi-cloud identity information is also displayed. Click Switch Role. If the current user has multiple roles, you can switch to another role. In the Switch Role dialog box, you can also set a role as the default role. Click Change Password. In the Change Password dialog box, specify the current password and new password and confirm the password. Click OK to change the password. Click View Current Role Policy to view the Resource Access Management (RAM) role, policies, and trusted policies of the level-1 organization to which the current role belongs. |
 |---|---|
 
-### Enable the proxy mode as a
+### 11.2 Enable the proxy mode as a proxy administrator for a proxy user
 
 **proxy administrator for a proxy**
 
@@ -23230,9 +23986,9 @@ to enable the proxy mode. indicates that the proxy mode is enabled. If you have 
 4. Check whether **Proxy Status** appears in the top navigation bar. If Proxy Status appears in
 the top navigation bar, the proxy mode is enabled.
 
-## OpenAPI Explorer
+## 12 OpenAPI Explorer
 
-### Overview
+### 12.1 Overview
 
 This topic describes the permissions and overview of OpenAPI Explorer. OpenAPI Explorer is an integrated portal that allows external developers to use Apsara Stack capabilities. It provides documentation, debugging tools, SDKs, and sample code of APIs. OpenAPI Explorer provides a series of APIs and shares its core capabilities and services with external developers. This way, external developers can access and use these resources to develop innovative and growth services.
 
@@ -23272,9 +24028,9 @@ requirements. The following table describes the services and features.
 |---|---|
 | Page Integrati on | You can configure page integration for Apsara Stack pages to directly embed cloud management pages into third-party platforms. You can hide the top navigation bar and adjust the color of a page to ensure that the page adapts to third-party platforms. This minimizes the effort required to integrate pages into third-party platforms. |
 
-### API integration
+### 12.2 API integration
 
-#### API documentation
+#### 12.2.1 API documentation
 
 This topic describes how to view the API documentation of a cloud service.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -23287,7 +24043,7 @@ icon to select the cloud service whose API references you want to view.
 5. In the left-side navigation pane, click Change History or Developer Guide.
 On the Change History page, view the change history of API operations. Click the icon before an API operation to view the change details of the API operation in the JSON format. In the Developer Guide section, view the methods to call API operations and the API references.
 
-#### API debugging
+#### 12.2.2 API debugging
 
 This topic describes how to debug an API operation.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -23309,7 +24065,7 @@ OpenAPI Explorer obtains a temporary AccessKey pair of the current account by us
 **Copy** in the upper-right corner of the tab.
 On the **Call Result** tab, you can view the call result. On the **API Reference** tab, view the API reference.
 
-#### API change history
+#### 12.2.3 API change history
 
 This topic describes how to view the change history of API operations.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -23322,7 +24078,7 @@ top navigation bar.
 Fuzzy search is supported.
 5. View the change history of API operations in the **Change Result** section.
 
-#### Sample center
+#### 12.2.4 Sample center
 
 This topic describes how to view and download SDK examples of cloud services in the Sample Center.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -23338,7 +24094,7 @@ Code Browsing On the **Code Browsing** tab, select V2.0 from the **SDK Generatio
 **Download Project**.
 Click the path of a code file in the programming language to view the code file. API Operation in Example On the **API Operation in Example** tab, view the API operations in the SDK example. Find the API operation that you want to debug and click **Debug** in the **Actions** column to go to the API operation debugging page.
 
-#### Diagnostics center
+#### 12.2.5 Diagnostics center
 
 The Diagnostic Center module allows you to perform intelligent diagnostics on API error messages.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -23355,7 +24111,7 @@ The RequestId parameter is used to query the diagnostics solutions of the servic
 5. Click **Diagnose**.
 6. On the **Diagnostic Plan** tab, view the diagnostics information.
 
-#### MCP service management
+#### 12.2.6 MCP service management
 
 This topic describes how to create and manage Model Context Protocol (MCP) services.
 
@@ -23424,7 +24180,7 @@ On the Shared Services tab, view the shared MCP services.
 to the **MCP Service Details** page. Click **View Configuration Methods** in the **Configuration Information** section to view the details of the configuration method. In the **APIs** section, find the API operation that you want to view and click
 **Details** in the **Actions** column to view the details of the API operation.
 
-### Call Statistics
+### 12.3 Call Statistics
 
 This topic describes how to use the Call Statistics module in OpenAPI Explorer.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -23461,7 +24217,7 @@ b. The execution history of the statistical report task is displayed. Click **Vi
 **Basic Information**, **Matching Info**, and **Time Distribution**.
 Start a statistical report task: Find the statistical report task that you want to start and click **Start** in the **Actions** column If the task changes to the **Running** state, the task is started. You can start tasks only in the **Canceled** state. Stop a statistical report task: Find the statistical report task that you want to stop and click **Stop** in the **Actions** column. If the task changes to the **Canceled** state, the task is stopped. You can stop tasks only in the **Running** state. Delete a statistical report task: Find the statistical report task that you want to delete and click **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
-### Automation Service Desk
+### 12.4 Automation Service Desk
 
 This topic describes how to use the Automation Service Desk module.
 
@@ -23602,7 +24358,7 @@ debugging code.
 You can configure the **Product**, **Resource Type**, and **Task Name** filter conditions above the list to quickly find the task that you want to manage. You can find the task that you want to manage and click **Continue Debugging** in the **Actions** column to continue online debugging. To delete a debugging task, you can find the task and click **Delete Task** in the
 **Actions** column. In the Delete Task message, click **OK**.
 
-### Page integration
+### 12.5 Page integration
 
 This topic describes the procedure for page integration.
 
@@ -23666,7 +24422,7 @@ You can change the link URL to a third-party operation link address. The domain 
 4. Click **OK**.
 rtal
 
-## Apsara Stack Skills portal
+## 13 Apsara Stack Skills portal
 
 The Apsara Stack Skills portal is a centralized management portal for open skills in Apsara Stack Enterprise Edition. The portal enables Apsara Stack users to discover, browse, install, and manage skills. Skills are standardized capabilities that AI agents use to call Alibaba Cloud service CLI or MCP and intelligently manage cloud resources on the tenant side.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -23693,9 +24449,9 @@ Click on a skill to add the skill to your favorites. Click on a skill to downloa
 5. Click a skill name to go to the skill details page. View the information on the Skill
 Introduction tab and the Skill Files tab. ment
 
-## Edge Cloud management
+## 14 Edge Cloud management
 
-### View edge entities
+### 14.1 View edge entities
 
 The EDGE list page displays the connected edge entities. You can view the connection status of the edge entities and log on to the console of an edge entity.
 
@@ -23736,7 +24492,7 @@ On the **Resource Information** tab, view the detailed resource information of t
 **End Time**, **Resource Name**, and **Resource ID** parameters to filter resources.
 ment Click **Create Resource**. In the **Select Resource Type** dialog box, configure the **Organization**, **Resource Set Name**, **Edge Entity**, and **Cloud Services** parameters. Find a resource and click the resource ID. In the panel that appears, view the basic information of the resource, including the cloud platform, resource name, resource ID, region, organization, resource set, creation time, and state. Find a resource and click **Manage** in the **Actions** column to go to the cloud service resource management page of the edge site. You can manage the resource on the page. By default, cloud resource information is automatically updated every hour. Find a resource and click **Update** in the **Actions** column to manually update the information about the cloud resource in real time.
 
-### Manage resources
+### 14.2 Manage resources
 
 On the Resources page, you can view all edge entity resources that you can manage.
 
@@ -23769,7 +24525,7 @@ Find a resource and click **Manage** in the **Actions** column to go to the clou
 3. Find a resource and click the resource ID. In the panel that appears, view the basic
 information of the resource, including the cloud platform, resource name, resource ID, region, organization, resource set, creation time, and state.
 
-### Configure edge entities
+### 14.3 Configure edge entities
 
 On the Edge Entity Configuration page, you can view the connected edge entities and manage the edge entities that do not belong to an organization or a resource set.
 
@@ -23929,7 +24685,7 @@ click **Delete** in the **Actions** column. Make sure that the edge entity is no
 2. In the **Confirmation** message, click **OK**.
 t
 
-## AI stack management
+## 15 AI stack management
 
 AI stack management allows you to add and manage AI stacks all-in-one machines.
 
@@ -24009,7 +24765,7 @@ You are an operations administrator or an organization administrator.
 2. In the **Delete** message, click **OK**.
 ent
 
-## PanguStor management
+## 16 PanguStor management
 
 The system displays the list of connected PanguStor instances. You can quickly log in to the PanguStor management console.
 
@@ -24083,9 +24839,9 @@ By default, authorized users are Operations Administrators and Organization Admi
 ent
 2. In the **Delete** dialog box, click **OK**.
 
-## FAQ
+## 17 FAQ
 
-### Errors when you log on to
+### 17.1 Errors when you log on to the Apsara Uni-manager Management Console
 
 **the Apsara Uni-manager**
 
@@ -24142,7 +24898,7 @@ grep {eagleeye-traceid} /logs/ascm-logger/*.log -5
 
 ii. If a return value error is reported in the log, it can be determined that an error is reported when the AAS service is called. Contact AAS O&M engineers to further discover possible causes.
 
-### What do I do if a timeout
+### 17.2 What do I do if a timeout error occurs when I call the API operations of VPC, ECS, SLB, or ApsaraDB RDS in the Apsara Uni-manager Management Console?
 
 **error occurs when I call the API**
 
@@ -24178,7 +24934,7 @@ ResourceManage > OneConsole.
 4. After the containers are restarted, view the full GC processes that are run on POP.
 If the issue persists, contact on-site O&M engineers.
 
-### What do I do if a timeout
+### 17.3 What do I do if a timeout error occurs when I create an ACK cluster in the Apsara Uni-manager Management Console?
 
 **error occurs when I create an ACK**
 
@@ -24222,7 +24978,7 @@ grep <EagleEye ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/*
 2. Compare the duration on ASAPI with that on POP.
 If the duration on POP is slightly longer than that on ASAPI, such as a time difference within 1 second to 2 seconds, contact service engineers to further troubleshoot the timeout error. If the duration on ASAPI is much longer than that on POP, you can check whether full garbage collection (GC) processes are run on POP. For more information, see What do I do if a timeout error occurs when I call the API operations of VPC, ECS, SLB, or ApsaraDB RDS in the Apsara Uni-manager Management Console?
 
-### What do I do if a timeout
+### 17.4 What do I do if a timeout error occurs when I obtain ACK clusters in the Apsara Uni-manager Management Console?
 
 **error occurs when I obtain ACK**
 
@@ -24276,7 +25032,7 @@ grep <EagleEye ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/trace.lo
 The logs in the container will be refreshed soon. Up to 20 minutes are required to access the POP container and obtain the logs. Method 2 a. Log on to the Simple Log Service console. For more information about how to view logs in Simple Log Service, see View logs. b. Select **ali-pop-log** for Project and **pop_rpc_trace_log** for Logstore. c. If you cannot query desired logs by using the EagleEye ID, use `CS and` `DescribeClusters` as the filter condition, and select a small time range for calling the API operation.
 4. Based on the preceding logs, analyze which module consumes longer time.
 
-### Errors when Blink API
+### 17.5 Errors when Blink API operations are called
 
 **operations are called**
 
@@ -24330,7 +25086,7 @@ cat /logs/ascm-logger/call_trace.log|grep foas |grep ListProject| Region for gre
 4. Provide the collected logs to onsite O&M engineers for the Apsara Uni-manager
 Management Console.
 
-### What do I do if an error is
+### 17.6 What do I do if an error is reported to indicate that a custom role does not have the required permissions?
 
 **reported to indicate that a custom**
 
@@ -24357,7 +25113,7 @@ want to manage.
 **View** in the Data bus DataHub section.
 7. Click **Update**.
 
-### What do I do if an error is
+### 17.7 What do I do if an error is reported when I delete an organization in the Apsara Uni-manager Management Console?
 
 **reported when I delete an**
 
@@ -24438,7 +25194,7 @@ Delete the logon policies based on the error message.
 3. Click **Delete** in the Actions column.
 4. In the Confirm message, click **OK**.
 
-### How do I attach disks to an
+### 17.8 How do I attach disks to an instance across resource sets of different organizations?
 
 **instance across resource sets of**
 
@@ -24467,7 +25223,7 @@ the disks belong from the **Change Resource Set To** drop-down list. Change the 
 
 You can change the resource set of a resource only in the same level-1 organization.
 
-### How do I view the AccessKey
+### 17.9 How do I view the AccessKey pairs of an organization and a user?
 
 **pairs of an organization and a**
 
@@ -24497,7 +25253,7 @@ of the organization.
 4. On the page that appears, view the AccessKey IDs and AccessKey secrets in the AccessKey
 Pair section.
 
-### How do I grant RBAC
+### 17.10 How do I grant RBAC permissions on resources in an ACK cluster in hybrid cloud scenarios?
 
 **permissions on resources in an**
 
@@ -24564,7 +25320,7 @@ section, select the cluster and namespace that you want to authorize the RAM rol
 6. Click **Submit**. A message appears, which indicates that the permissions are granted to the
 RAM role.
 
-### How do I turn off the switch
+### 17.11 How do I turn off the switch that enforces attribution of interaction between instance resources?
 
 **that enforces attribution of**
 

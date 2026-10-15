@@ -3,14 +3,22 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStac
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 18
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Operations and Maintenance Guide 20260902.pdf"
+source_pdf: "7216c43c02cbbd32_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Opera"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20Operations%20and%20Maintenance%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Operations and Maintenance Guide 20260902
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Log on to the Apsara Uni-manager Operations Console
+- 3 View cluster O&M information
+- 4 View resource O&M information
+- 5 View alarm information
+
+## 1 Overview
 
 This topic describes the purpose of, requirements on, and usage notes for performing O&M operations on ApsaraStack Parallel File System (APFS). This topic also describes how to contact technical support.
 
@@ -34,7 +42,7 @@ To ensure a stable system and prevent unexpected events, O&M engineers must comp
 
 O&M engineers can contact APFS technical support for help during the maintenance. ager Operations Console
 
-## Log on to the Apsara Uni-
+## 2 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -55,7 +63,7 @@ Obtain the username and password that are used to log in to the Apsara Unimanage
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 
-## View cluster O&M
+## 3 View cluster O&M information
 
 **information**
 
@@ -131,7 +139,7 @@ On the **Monitoring** tab, select a time range to view performance metrics for t
 
 On the **Operation Logs** tab, select an operation type and a time range to view the node's operation logs. The logs include Operation type, Target object, Operation status, and Description. Click **Operation Details** in the **Operation Details** column for a log entry. In the Operation details panel, you can view information such as task type, subtasks, start time, and execution status. The details shown for an operation log depend on the operation type. on
 
-## View resource O&M
+## 4 View resource O&M information
 
 **information**
 
@@ -162,7 +170,7 @@ click the **Storage** tab. Click the **Server** tab to view the information abou
 2. Click the name of a cluster in the **Storage cluster ID** column to view the information of the
 storage cluster. For more information, see the View the information of a storage cluster section of the View cluster O&M information topic.
 
-## View alarm information
+## 5 View alarm information
 
 The APFS file system defines alarm events for exceptions related to clusters, nodes, file systems, and disks. When an exception occurs, the system triggers an alarm event. You can view these events in alarm management on the Apsara Uni-manager Operations Console.
 

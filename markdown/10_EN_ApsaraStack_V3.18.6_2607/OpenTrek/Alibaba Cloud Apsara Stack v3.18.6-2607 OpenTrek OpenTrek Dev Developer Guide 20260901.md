@@ -3,20 +3,135 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Developer 
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 279
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Developer Guide 20260901.pdf"
+source_pdf: "3dc24e1df5e4b93b_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20Dev%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Developer Guide 20260901
 
-## Platform Function Class
+## Table of Contents
+
+- 1 Platform Function Class
+  - 1.1 Use the SDK
+    - 1.1.1 Use POP gateway to call Apsara Stack API operations
+      - 1.1.1.1 Overview
+      - 1.1.1.2 Call Preposition
+      - 1.1.1.3 Java Edition
+    - 1.1.2 Before you begin
+      - 1.1.2.1 Obtain API information and the endpoint of an API operation
+      - 1.1.2.2 Obtain AccessKey credentials
+      - 1.1.2.3 Obtain the values of common request headers
+      - 1.1.2.4 Obtain an STS AccessKey pair
+  - 1.2 References
+    - 1.2.1 Agent
+      - 1.2.1.1 Agent
+        - 1.2.1.1.1 PostAgentOpenapiAgentVersionPagequery
+        - 1.2.1.1.2 PostAgentOpenapiMemoryLongtermPartitionAdd
+        - 1.2.1.1.3 PostAgentOpenapiAgentCreate
+        - 1.2.1.1.4 PostAgentOpenapiAgentVersionCreate
+        - 1.2.1.1.5 PostAgentOpenapiAgentDelete
+        - 1.2.1.1.6 PostAgentOpenapiAgentUpdate
+        - 1.2.1.1.7 PostAgentOpenapiAgentVersionUpdate
+        - 1.2.1.1.8 PostAgentOpenapiAgentVersionDelete
+        - 1.2.1.1.9 PostAgentOpenapiAgentPagequery
+      - 1.2.1.2 tools-for-agents
+        - 1.2.1.2.1 PostAgentOpenapiToolUpdate
+        - 1.2.1.2.2 PostAgentOpenapiToolPagequery
+        - 1.2.1.2.3 PostAgentOpenapiToolCreate
+        - 1.2.1.2.4 PostAgentOpenapiToolGetone
+        - 1.2.1.2.5 PostAgentOpenapiToolDelete
+      - 1.2.1.3 Intelligence body template
+        - 1.2.1.3.1 PostAgentOpenapiTemplateGetone
+        - 1.2.1.3.2 PostAgentOpenapiTemplatePagequery
+      - 1.2.1.4 Prompt Template
+        - 1.2.1.4.1 PostAgentOpenapiPromptSave
+        - 1.2.1.4.2 PostAgentOpenapiPromptDeploy
+        - 1.2.1.4.3 PostAgentOpenapiPromptQueryprompttypes
+        - 1.2.1.4.4 PostAgentOpenapiPromptDelete
+        - 1.2.1.4.5 PostAgentOpenapiPromptPagequery
+    - 1.2.2 Knowledge Base Management
+      - 1.2.2.1 PostKortexApiKbDocFileDelete
+      - 1.2.2.2 PostKortexApiKbUpdateMateData
+      - 1.2.2.3 PostKortexApiKbDataConsumebulk
+      - 1.2.2.4 GetKortexApiStatisticsTrend
+      - 1.2.2.5 PostKortexApiKbDelete
+      - 1.2.2.6 PostKortexApiKbMonoDetail
+      - 1.2.2.7 PostKortexApiKbCreate
+      - 1.2.2.8 PostKortexApiKbFileDataSync
+      - 1.2.2.9 PostKortexApiKbEnable
+      - 1.2.2.10 PostKortexApiKbList
+      - 1.2.2.11 GetKortexApiStatisticsDetails
+      - 1.2.2.12 GetKortexApiStatisticsKpi
+      - 1.2.2.13 PostKortexApiKbDocChunkList
+      - 1.2.2.14 PostKortexApiKbDocFileReprocess
+      - 1.2.2.15 PostKortexApiKbDocChunkEdit
+      - 1.2.2.16 PostKortexApiKbSubmodelDataList
+      - 1.2.2.17 PostKortexApiKbDocFileList
+      - 1.2.2.18 PostKortexApiKbDisable
+    - 1.2.3 Data Center
+      - 1.2.3.1 Data Management
+        - 1.2.3.1.1 GetDataEngineApiV2Datasets
+        - 1.2.3.1.2 PostDataEngineApiV2Datasets
+        - 1.2.3.1.3 PutDataEngineApiV2Datasets
+        - 1.2.3.1.4 DeleteDataEngineApiV2DatasetsCode
+        - 1.2.3.1.5 GetDataEngineApiV2DatasetsCode
+        - 1.2.3.1.6 PostDataEngineApiV2DatasetsCodeFiles
+        - 1.2.3.1.7 DeleteDataEngineApiV2DatasetsCodeFiles
+        - 1.2.3.1.8 GetDataEngineApiV2DatasetsCodeFiles
+        - 1.2.3.1.9 PostDataEngineApiV2DatasetsCodeSubsets
+        - 1.2.3.1.10 PutDataEngineApiV2DatasetsCodeSubsets
+        - 1.2.3.1.11 DeleteDataEngineApiV2DatasetsCodeSubsetsSubsetcode
+        - 1.2.3.1.12 GetDataEngineApiV2DatasetsCodeSubsets
+        - 1.2.3.1.13 GetDataEngineApiV2DatasetsCodeSubsetsSearch
+        - 1.2.3.1.14 GetDataEngineApiV2DatasetsCodeViewer
+        - 1.2.3.1.15 GetDataEngineApiV2FilesImagePresignedUrl
+        - 1.2.3.1.16 GetDataEngineApiV2FilesPresignedUrl
+        - 1.2.3.1.17 DeleteDataEngineApiV2Files
+        - 1.2.3.1.18 GetDataEngineApiV2FilesUploadCredential
+        - 1.2.3.1.19 GetDataEngineApiV2FilesDownloadCredential
+      - 1.2.3.2 Data Processing
+        - 1.2.3.2.1 GetDataEngineApiV2ProcessTasksTaskid
+        - 1.2.3.2.2 GetDataEngineApiV2ProcessTemplates
+        - 1.2.3.2.3 PostDataEngineApiV2ProcessTasks
+        - 1.2.3.2.4 DeleteDataEngineApiV2ProcessTasksTaskid
+        - 1.2.3.2.5 GetDataEngineApiV2ProcessTasks
+        - 1.2.3.2.6 GetDataEngineApiV2Operators
+        - 1.2.3.2.7 GetDataEngineApiV2ProcessTasksTaskidInstances
+        - 1.2.3.2.8 PostDataEngineApiV2ProcessTasksTaskidRun
+        - 1.2.3.2.9 PostDataEngineApiV2ProcessTasksTaskidPublish
+        - 1.2.3.2.10 PostDataEngineApiV2ProcessTasksTaskidUnpublish
+        - 1.2.3.2.11 GetDataEngineApiV2ProcessTemplatesCode
+        - 1.2.3.2.12 PutDataEngineApiV2ProcessTasks
+        - 1.2.3.2.13 GetDataEngineApiV2ProcessTasksInstancesInstancecodeLog
+- 2 Application integration APIs
+  - 2.1 User guide
+    - 2.1.1 Obtain an API key
+  - 2.2 API documentation
+    - 2.2.1 Agent
+      - 2.2.1.1 Create a session
+      - 2.2.1.2 Invoke an agent
+      - 2.2.1.3 Stop a session
+      - 2.2.1.4 Delete a session
+      - 2.2.1.5 Asynchronous tool callback
+      - 2.2.1.6 Call Result Feedback
+    - 2.2.2 Knowledge base retrieval
+      - 2.2.2.1 Knowledge base retrieval
+      - 2.2.2.2 Batch retrieval for knowledge bases
+      - 2.2.2.3 Document knowledge base retrieval
+      - 2.2.2.4 Batch retrieval for document knowledge bases
+      - 2.2.2.5 Data table knowledge base retrieval service
+      - 2.2.2.6 Query resources in a data table knowledge base - Tables
+      - 2.2.2.7 Query data table knowledge base resources - Fields
+      - 2.2.2.8 Query expert knowledge resources in a data table knowledge base
+
+## 1 Platform Function Class
 
 Interface services related to the platform control area
 
-### Use the SDK
+### 1.1 Use the SDK
 
-#### Use POP gateway to call Apsara Stack API
+#### 1.1.1 Use POP gateway to call Apsara Stack API operations
 
 **operations**
 
@@ -388,7 +503,7 @@ catch (Exception e) {
     e.printStackTrace();
 ```
 
-#### Before you begin
+#### 1.1.2 Before you begin
 
 **1.1.2.1. Obtain API information and the endpoint of an API**
 
@@ -572,9 +687,9 @@ import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Confi
         // Continue to call the API. For more information, see the API documentation.
 ```
 
-### References
+### 1.2 References
 
-#### Agent
+#### 1.2.1 Agent
 
 **1.2.1.1. Agent**
 
@@ -3169,7 +3284,7 @@ are you interested in? Examples include programming languages, data structures, 
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-#### Knowledge Base Management
+#### 1.2.2 Knowledge Base Management
 
 **1.2.2.1. PostKortexApiKbDocFileDelete**
 
@@ -5378,7 +5493,7 @@ Deactivate knowledge base
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-#### Data Center
+#### 1.2.3 Data Center
 
 Data center-related APIs
 
@@ -8248,15 +8363,13 @@ Obtain task instance logs
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-Application integration APIs
-
-## Application integration APIs
+## 2 Application integration APIs
 
 These APIs provide services for platform tenants.
 
-### User guide
+### 2.1 User guide
 
-#### Obtain an API key
+#### 2.1.1 Obtain an API key
 
 Open APIs use API keys for authentication. This mechanism controls access to the API. Before making an API call, you must provide a valid key to verify your identity and gain access to the API. This topic describes how to obtain an API key for the Application Center API.
 
@@ -8279,9 +8392,9 @@ to copy the key, and then click **OK** to close the window. The system displays 
 Store this key in a secure and accessible place. For security reasons, the system displays the key only once. After closing this window, you cannot view it again. Copy and save it timely. If you lose this key, you must repeat the preceding steps to generate a new key.
 7. On the **API-Keys** page, click **OK**.
 
-### API documentation
+### 2.2 API documentation
 
-#### Agent
+#### 2.2.1 Agent
 
 **2.2.1.1. Create a session**
 
@@ -8295,7 +8408,7 @@ Go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to the
 
 **API endpoint**
 
-Application integration APIs POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/createSession
+POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/createSession
 
 **Request parameters**
 
@@ -8347,7 +8460,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/createSession
 
 **Status codes**
 
-Gateway error status codes Application integration APIs
+Gateway error status codes
 
 | HTTP status code | Error description | Fault description |
 |---|---|---|
@@ -8371,7 +8484,7 @@ Gateway error status codes Application integration APIs
 
 **API overview**
 
-Application integration APIs This API lets you ask questions to an agent within an existing session. You can view the request example and click the test button next to the cURL command example to verify the API call.
+This API lets you ask questions to an agent within an existing session. You can view the request example and click the test button next to the cURL command example to verify the API call.
 
 **Prerequisites**
 
@@ -8400,8 +8513,6 @@ Body parameters
 | trace | Boolean | No | If true, returns trace records. | Default: false. Trace records are not returned. |
 | message | object | Yes | The request message body. | {"text":"Book a flight ticket for me from Shanghai to Zurich for tomorrow.","metadat a":{}, "attachments": [{"url":"","name":""} ]} |
 
-Application integration APIs
-
 | text | string | Yes | The conversation input. | Book a flight ticket for me from Shanghai to Zurich for tomorrow. |
 |---|---|---|---|---|
 | metadata | Map | No | Extended information. | {} |
@@ -8421,8 +8532,6 @@ Application integration APIs
 | sessionId | string | The current session ID. | - |
 | requestId | string | The ID of the current request. | - |
 
-Application integration APIs
-
 | id | object | The unique business ID for the streaming message. | The unique ID for the thought content or the final answer. Multiple thought content blocks can be output before the Q&A session ends. In multi-stream scenarios, you can use custom ID prefixes to differentiate the streams for rendering. |
 |---|---|---|---|
 | success | Boolean | Non-streaming: Indicates whether the business operation was successful. | true |
@@ -8440,8 +8549,6 @@ Application integration APIs
 | role | string | The role. | assistant |
 | content | object | The output content. |   |
 | data | String | The output text. |   |
-
-Application integration APIs
 
 | type | String | The type of the output content. Currently, this is the constant `text`. | text |
 |---|---|---|---|
@@ -8467,8 +8574,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/run \ -H 'Aut
 
 **Streaming output**
 
-Application integration APIs
-
 ```json
 data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de454297-c547-440f-ae55- 057a83a2d121","content": [{"type":"text","text": {"value": "Incremental agent response"}}],"metadata": {"key": "value"}} data: {"object": "thought.delta","role": "assistant","sessionId":"de454297-c547-440f-ae55- 057a83a2d121","content": {"type":"text","data":"Incremental thought process"}} data: {"object": "error","role": "assistant","sessionId":"de454297-c547-440f-ae55- 057a83a2d121","content": {"errorMsg": "Error message content"}} data:{"content": {"data":"Hello","type":"text"},"id":"323ef0f2f57e445fbec343f62441c608","object":"thought.delta"} data:{"content": {"data":"!","type":"text"},"id":"323ef0f2f57e445fbec343f62441c608","object":"thought.delta"} data:{"content":{"data":"May I ask ","type":"text"},"id":"323ef0f2f57e445fbec343f62441c608","object":"thought.delta"} data:{"content":{"data":"how I can help you?","type":"text"},"id":"323ef0f2f57e445fbec343f62441c608","object":"thought.delta"} data:{"content": {"data":"","type":"text"},"id":"323ef0f2f57e445fbec343f62441c608","object":"thought.delta"} data:{"content":[{"text":{"value":"Hello"},"type":"text"}],"end":false,"gmtCreate":"2024-09-19 11:52:5 6.012","id":"9b0a21677f4a4512935c0e96977f292b","metadata":{},"requestId":"6d511a54-d95f-419c-9d34-02e8 6ea050e4","role":"assistant","sessionId":"7af650e7-ed57-498d-8081-fe1dea5361fa","useage": {"uiTaskId":"23ce3bf3-5248-4293-8326-bdb7f452a092"},"object":"message.delta"} data:{"content":[{"text":{"value":"!"},"type":"text"}],"end":false,"gmtCreate":"2024-09-19 11:52:56.012","id":"9b0a21677f4a4512935c0e96977f292b","metadata":{},"requestId":"6d511a54-d95f-419c-9d 34-02e86ea050e4","role":"assistant","sessionId":"7af650e7-ed57-498d-8081-fe1dea5361fa","useage":{"uiTa skId":"23ce3bf3-5248-4293-8326-bdb7f452a092"},"object":"message.delta"} data:{"content":[{"text":{"value":"May I ask "},"type":"text"}],"end":false,"gmtCreate":"2024-09-19 11 :52:56.012","id":"9b0a21677f4a4512935c0e96977f292b","metadata":{},"requestId":"6d511a54-d95f-419c-9d34 -02e86ea050e4","role":"assistant","sessionId":"7af650e7-ed57-498d-8081-fe1dea5361fa","useage": {"uiTaskId":"23ce3bf3-5248-4293-8326-bdb7f452a092"},"object":"message.delta"} data:{"content":[{"text":{"value":"how I can help you?"},"type":"text"}],"end":false,"gmtCreate":"2024-09-19 11:52:56.012","id":"9b0a21677f4a4512935c0e96977f292b","metadata":{},"requestId":"6d511a54-d95f-419c-9d 34-02e86ea050e4","role":"assistant","sessionId":"7af650e7-ed57-498d-8081-fe1dea5361fa","useage":{"uiTa skId":"23ce3bf3-5248-4293-8326-bdb7f452a092"},"object":"message.delta"} data:{"content":[{"text":{"value":""},"type":"text"}],"end":true,"gmtCreate":"2024-09-19 11:52:56.012","id":"9b0a21677f4a4512935c0e96977f292b","metadata":{},"requestId":"6d511a54-d95f-419c-9d 34-02e86ea050e4","role":"assistant","sessionId":"7af650e7-ed57-498d-8081-fe1dea5361fa","useage":{"uiTa skId":"23ce3bf3-5248-4293-8326-bdb7f452a092"},"object":"message.delta"}
 ```
@@ -8476,8 +8581,6 @@ data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de
 **Sample response**
 
 **Non-streaming output**
-
-Application integration APIs
 
 ```json
  "success": true,
@@ -8533,8 +8636,6 @@ Gateway exception status codes
 | 429 | GATEWAY LIMIT ! | The service has triggered rate limiting. Try again later. |
 | 403 | GATEWAY HEADER PARAMETER MISSI NG! | A required business parameter is missing. |
 
-Application integration APIs
-
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The provided workspace code does not match the workspace code associated with the APP KEY owner. _ |
 |---|---|---|
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. The authentication method is not supported. |
@@ -8573,8 +8674,6 @@ Body parameters
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
 
-Application integration APIs
-
 | sessionId | string | Yes | Session ID | de454297-c547- 440f-ae55- 057a83a2d121 The `uniqueCode` that is returned when you call the 'Create a session' API. |
 |---|---|---|---|---|
 
@@ -8612,8 +8711,6 @@ Gateway error status codes
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The service invocation path is not registered. |
 | 429 | GATEWAY LIMIT ! | The service has triggered rate limiting. Try again later. |
 
-Application integration APIs
-
 | 403 | GATEWAY HEADER PARAMETER MISSI NG! | A required business parameter is missing. |
 |---|---|---|
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The provided workspace encoding does not match the workspace encoding associated with the APP KEY owner. _ |
@@ -8648,7 +8745,7 @@ Header parameters
 | Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
 | Content-Type | String | Yes | Content-Type | application/json |
 
-Body parameters Application integration APIs
+Body parameters
 
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
@@ -8687,8 +8784,6 @@ Gateway error status codes
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The service invocation path is not registered. |
 
-Application integration APIs
-
 | 429 | GATEWAY LIMIT ! | The service has triggered rate limiting. Try again later. |
 |---|---|---|
 | 403 | GATEWAY HEADER PARAMETER MISSI NG! | The request is missing a required service parameter. |
@@ -8702,8 +8797,6 @@ Application integration APIs
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
 **2.2.1.5. Asynchronous tool callback**
-
-**Overview**
 
 Call this API to register an asynchronous API tool in the Toolbox. When the agent invokes your registered tool, it sends a unique task ID in the idx-agent-task-id header. After your task is complete, use this asynchronous callback API to finalize the tool invocation.
 
@@ -8722,8 +8815,6 @@ Header parameters
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
 | Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-
-Application integration APIs
 
 | Content-Type | String | Yes | Content-Type | application/json |
 |---|---|---|---|---|
@@ -8763,7 +8854,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/taskFinishNot
 
 **Status codes**
 
-Gateway error status codes Application integration APIs
+Gateway error status codes
 
 | HTTP status code | Error description | Fault description |
 |---|---|---|
@@ -8785,9 +8876,7 @@ Gateway error status codes Application integration APIs
 
 **2.2.1.6. Call Result Feedback**
 
-**Overview**
-
-Application integration APIs You can provide feedback on the result of a one-time agent execution or on a specific task within the execution.
+You can provide feedback on the result of a one-time agent execution or on a specific task within the execution.
 
 **Prerequisites**
 
@@ -8819,8 +8908,6 @@ Body parameters
 | source | string | Yes | The source of the feedback provider. | USER: The user. AUTO EVALUATION: _ The evaluation center. |
 | extendInfo | object | No | Extended information about the feedback provider. |   |
 
-Application integration APIs
-
 | vote | string | Yes | The feedback result. | LIKE: Like. DISLIKE: Dislike. NEUTRAL: Neutral. |
 |---|---|---|---|---|
 | extCommentsInfo | object | No | Extended information about the feedback result. |   |
@@ -8843,8 +8930,6 @@ Application integration APIs
 | extCommentsInfo | object | Extended information about the feedback result. |   |
 | errorCode | string | The error code. |   |
 | errorMsg | string | Error code |   |
-
-Application integration APIs
 
 **Request example**
 
@@ -8911,8 +8996,6 @@ Gateway exception status codes
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 
-Application integration APIs
-
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
 |---|---|---|
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service invocation path is not registered. |
@@ -8927,7 +9010,7 @@ Application integration APIs
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The destination service rejected the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The destination service did not respond. |
 
-#### Knowledge base retrieval
+#### 2.2.2 Knowledge base retrieval
 
 **2.2.2.1. Knowledge base retrieval**
 
@@ -8942,8 +9025,6 @@ Users can implement general retrieval capabilities for specific fields by using 
 ```
  POST http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retrieve
 ```
-
-Application integration APIs
 
 **Request parameters**
 
@@ -8965,8 +9046,6 @@ Application integration APIs
 | filters | JSONObject | No | The query content. | Extended filters. For example, for a documentt knowledge base, you can retrieve specific documents, such as {"file code": "aaa"}. _ |
 | score | Double | Yes | The minimum score. | 0.01 |
 
-Application integration APIs
-
 | limit | Integer | Yes | The number of returned entries. | 10 |
 |---|---|---|---|---|
 | advancedRules | Object | No | The advanced rule configuratio n, which supports complex filtering conditions combined with AND/OR logic. | {"operator":"AND","conditions": [{"type":"simple","simpleRule": {"fileName":"plan code","ruleTypeEnum":"EQ","file _ Value":"YCJ2024100"}}, {"type":"nested","advancedRules": {"operator":"AND","conditions": [{"type":"simple","simpleRule": {"fileName":"plan name","ruleTypeEnum":"LIKE","fi _ leValue":"Jiangnan District"}}, {"type":"simple","simpleRule": {"fileName":"area name","ruleTypeEnum":"IN","file _ ValueList":["Jiangbei District","Jiangnan District"]}}]}}]} |
@@ -8975,8 +9054,6 @@ Application integration APIs
 | -- type | String | Yes | The condition type. Valid values: simple (simple condition), nested (nested condition). | simple |
 | -- simpleRule | Object | No | The definition of a simple rule. This parameter is required when type=simple . | {"fileName":"plan code","ruleTypeEnum":"EQ","file _ Value":"YWC34520000"} |
 | --- fileName | String | Yes | The name of the field to match. | plan code _ |
-
-Application integration APIs
 
 | --- ruleTypeEnum | String | Yes | The rule type. Valid values: EQ (equals), IN (includes), IS NOT NUL _ _ L (not null), LIKE (fuzzy match). | EQ |
 |---|---|---|---|---|
@@ -8987,8 +9064,6 @@ Application integration APIs
 | ---conditions | Array | Yes | The list of nested conditions. | [...] |
 
 **Request example**
-
-Application integration APIs
 
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
@@ -9015,8 +9090,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retr
 | metrics | Object | Performance metrics. | {} |
 | -kbCode | String | The code of the knowledge base. | xxx |
 | -totalTime | Long | The total retrieval time in milliseconds. | 150 |
-
-Application integration APIs
 
 | -chunksCount | Integer | The number of chunks returned. | 10 |
 |---|---|---|---|
@@ -9046,8 +9119,6 @@ Descriptions of gateway exception status codes.
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is invalid. _ |
 | 401 | GATEWAY APP KEY ALREADY EXPIRED! _ | Authentication failed. The APP KEY has expired. _ |
 
-Application integration APIs
-
 | 401 | GATEWAY ROLE NOT MATCH! | Authentication failed. The role associated with the current APP KEY user does not match. _ |
 |---|---|---|
 | 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role associated with the current APP KEY user has expired. _ |
@@ -9074,8 +9145,6 @@ Retrieve from multiple knowledge bases simultaneously. You can configure differe
 The batch retrieval API retrieves data from multiple knowledge bases simultaneously, and returns independent results and performance metrics for each knowledge base. This API applies to scenarios requiring data retrieval from multiple knowledge bases at the same time.
 
 **Endpoint**
-
-Application integration APIs
 
 ```
  POST http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-api-
@@ -9104,8 +9173,6 @@ Body parameters
 | -limit | Integer | Yes | The number of returned entries. | 10 |
 | -filters | Object | No | The query content. | Extended filter items. For example, for an image-text knowledge base, you can retrieve specific documents. Example: {"file code": _ ["8a58578fce264cd3 a648162ea94d2686" ]} |
 
-Application integration APIs
-
 | -mapBatchKey | String | No | The result mapping key for batch retrieval, used to distinguish results from different requests. | kb1 |
 |---|---|---|---|---|
 | -advancedRules | Object | No | The advanced rule configuration, which supports complex filtering conditions combined with AND/OR logic. | {"operator":"AND","c onditions": [{"type":"simple","si mpleRule": {"fileName":"plan co _ de","ruleTypeEnum": "EQ","fileValue":"YCJ 2024100"}}, {"type":"nested","ad vancedRules": {"operator":"AND","c onditions": [{"type":"simple","si mpleRule": {"fileName":"plan n _ ame","ruleTypeEnu m":"LIKE","fileValue" :"Jiangnan District"}}, {"type":"simple","si mpleRule": {"fileName":"area n _ ame","ruleTypeEnu m":"IN","fileValueList ":["Jiangbei District","Jiangnan District"]}}]}}]} |
@@ -9114,8 +9181,6 @@ Application integration APIs
 | ---type | String | Yes | The condition type. Valid values: simple (simple condition), nested (nested condition). | simple |
 | ---simpleRule | Object | No | The definition of a simple rule. This parameter is required when type=simple. | {"fileName":"plan co _ de","ruleTypeEnum": "EQ","fileValue":"YW C34520000"} |
 | ----fileName | String | Yes | The name of the field to match. | plan code _ |
-
-Application integration APIs
 
 | ----ruleTypeEnum | String | Yes | The rule type. Valid values: EQ (equals), IN (contains), IS NOT NULL (not _ _ null), LIKE (fuzzy match). | EQ |
 |---|---|---|---|---|
@@ -9127,7 +9192,7 @@ Application integration APIs
 
 **Request example**
 
-Example of batch retrieval from knowledge bases Application integration APIs
+Example of batch retrieval from knowledge bases
 
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/mono/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
@@ -9168,8 +9233,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | -result | List<Map<String,Object>> | The list of retrieval results. | [{"score":0.85,"file code":" _ xxx"}] |
 | metrics | Object | The performance metrics. | {} |
 
-Application integration APIs
-
 | -kbCode | String | The code of the knowledge base. | xxx |
 |---|---|---|---|
 | -totalTime | Long | The total retrieval time in milliseconds. | 150 |
@@ -9192,8 +9255,6 @@ Application integration APIs
 
 **Status codes**
 
-Application integration APIs
-
 | HTTP status code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
@@ -9214,8 +9275,6 @@ Application integration APIs
 | 401 | GATEWAY LIMIT ! | The service connection limit has been reached. Try again later. |
 | 500 | TARGET SERVICE ERROR CONNECTION REFU _ _ _ _ SE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EXC _ _ _ _ _ EPTION | The target service did not respond. |
-
-Application integration APIs
 
 **2.2.2.3. Document knowledge base retrieval**
 
@@ -9250,8 +9309,6 @@ You can verify the effect of calling the business API by viewing the request exa
 | score | Double | Yes | The minimum score. | 0.01 |
 | limit | Integer | Yes | The number of returned entries. | 10 |
 
-Application integration APIs
-
 | filters | Object | No | The filter conditions. | Extended filter items, {"fileCodes": ["d110d4f793e347b db8aaf840b3e3d27a ","8a58578fce264cd 3a648162ea94d268 6"]} |
 |---|---|---|---|---|
 | chunkConfig | Object | No | The chunk extension configuration. | {"chunkBefore": 2, "chunkAfter": 2, "withNeighborChunk s": true} |
@@ -9261,8 +9318,6 @@ Application integration APIs
 | fusionType | String | No | The fusion retrieval type. Valid values: lws (linear weighted scoring), rrf (reciprocal rank fusion). If this parameter is empty, fusion retrieval is not used. | lws |
 | fusionConfig | Object | No | The fusion retrieval configuration. You must set this parameter only if fusionType is not empty. | {"textScore": 0.5, "vectorScore": 0.5, "topKText": 20, "topKVec": 20, "topN": 10, "keywordWeight": 0.5, "rankDiscount": 60} |
 | -topKText | Integer | No | The number of entries returned by full-text retrieval. By default, the system uses the value of "limit". | 20 |
-
-Application integration APIs
 
 | -topKVec | Integer | No | The number of entries returned by vector retrieval. By default, the system uses the value of "limit". | 20 |
 |---|---|---|---|---|
@@ -9287,8 +9342,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 
 **Response parameters**
 
-Application integration APIs
-
 | Field | Type | Description | Example |
 |---|---|---|---|
 | success | Boolean | Indicates whether the operation succeeded. | true |
@@ -9302,8 +9355,6 @@ Application integration APIs
 | -file code _ | String | The file code, returned only when needFileInfo is true. | 123456 |
 | -chunk upload type _ _ | Integer | The upload type. | 1 |
 | -chunk content _ | String | The chunk content—the text sent to the LLM as a prompt after recall. |   |
-
-Application integration APIs
 
 | -show content _ | String | The chunk content—in text form with placeholders for bounding boxes and objects. |   |
 |---|---|---|---|
@@ -9321,8 +9372,6 @@ Application integration APIs
 | --fusionType | String | The type of fusion method. | lws |
 | --rrfTime | Long | The RRF fusion time in milliseconds (present only during RRF fusion). | 20 |
 | --lwsTime | Long | The LWS fusion time in milliseconds (present only during LWS fusion). | 15 |
-
-Application integration APIs
 
 | --fillTime | Long | The time taken to fill additional information, in milliseconds. | 30 |
 |---|---|---|---|
@@ -9347,8 +9396,6 @@ Application integration APIs
 | HTTP status code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
-
-Application integration APIs
 
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is invalid. _ |
 |---|---|---|
@@ -9375,7 +9422,7 @@ Retrieve from multiple document knowledge bases at the same time. You can config
 
 **Prerequisites**
 
-Application integration APIs The batch retrieval API supports simultaneous retrieval from multiple document knowledge bases, and returns independent results for each knowledge base. This API applies to scenarios requiring data retrieval from multiple document knowledge bases at the same time.
+The batch retrieval API supports simultaneous retrieval from multiple document knowledge bases, and returns independent results for each knowledge base. This API applies to scenarios requiring data retrieval from multiple document knowledge bases at the same time.
 
 **Endpoint**
 
@@ -9404,8 +9451,6 @@ Application integration APIs The batch retrieval API supports simultaneous retri
 | -mapBatchKey | String | No | The result mapping key for batch retrieval, used to distinguish results from different requests. | kb1 |
 | -kbIndexEngineType | String | No | The type of the index engine. Valid values: builtin vector (vector _ index engine), builtin es (full-text _ index engine). | builtin vector _ |
 
-Application integration APIs
-
 | -filters | Object | No | The filter conditions. | Extended filter items, {"fileCodes": ["d110d4f793e347b db8aaf840b3e3d27a ","8a58578fce264cd 3a648162ea94d268 6"]} |
 |---|---|---|---|---|
 | -chunkConfig | Object | No | The chunk extension configuration. | {"chunkBefore": 2, "chunkAfter": 2, "withNeighborChunk s": true} |
@@ -9415,8 +9460,6 @@ Application integration APIs
 | -fusionType | String | No | The fusion retrieval type. Valid values: lws (linear weighted scoring), rrf (reciprocal rank fusion). If this parameter is empty, fusion retrieval is not used. | lws |
 | -fusionConfig | Object | No | The fusion retrieval configuration. Set this parameter only when fusionType is not empty. | {"textScore": 0.5, "vectorScore": 0.5, "topKText": 20, "topKVec": 20, "topN": 10, "keywordWeight": 0.5, "rankDiscount": 60} |
 | --topKText | Integer | No | The number of entries returned by full-text retrieval. By default, the system uses the value of "limit". | 20 |
-
-Application integration APIs
 
 | --topKVec | Integer | No | The number of entries returned by vector retrieval. By default, the system uses the value of "limit". | 20 |
 |---|---|---|---|---|
@@ -9428,8 +9471,6 @@ Application integration APIs
 | -needFileInfo | Boolean | No | Specifies whether to return file information. | true |
 
 **Request example**
-
-Application integration APIs
 
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/doc/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
@@ -9467,8 +9508,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | -kbCode | String | The code of the knowledge base. | xxx |
 | -result | List<KbdocRetrieveItem> | The list of retrieval results. | [{"sys data id":"xxx","file _ _ _ code":"yyy","chunk conten _ t":"content","score":0.85}] |
 
-Application integration APIs
-
 | --score | String | For single-engine retrieval, the original engine semantics apply. For hybrid retrieval, scores are normalized for unified evaluation. 1) Single- engine retrieval: retains original engine semantics— vector retrieval uses cosine similarity (0–1), full-text retrieval uses BM25 relevance score. 2) LWS fusion: linear weighted fusion score, normalized. 3) RRF fusion: reciprocal rank fusion score based on ranking. | 0.5 |
 |---|---|---|---|
 | --sys data id _ _ | String | The unique ID of the data. | 59cc2523-8445-4f3a-91f7- 5e311f5530b2 |
@@ -9481,8 +9520,6 @@ Application integration APIs
 | --chunk content _ | String | The chunk content—the text sent to the LLM as a prompt after recall. |   |
 | --show content _ | String | The chunk content—in text form with placeholders for bounding boxes and objects. |   |
 | --chunk bboxs _ | List<Object> | The bounding box coordinate information. |   |
-
-Application integration APIs
 
 | ---text bbox _ | List<Double> | The coordinates. | [ 0.3115, 0.0683, 0.0285, 0.372 ] |
 |---|---|---|---|
@@ -9501,8 +9538,6 @@ Application integration APIs
 | --fusionType | String | The type of fusion method. | lws |
 | --rrfTime | Long | The RRF fusion time in milliseconds (present only during RRF fusion). | 20 |
 
-Application integration APIs
-
 | --lwsTime | Long | The LWS fusion time in milliseconds (present only during LWS fusion). | 15 |
 |---|---|---|---|
 | --fillTime | Long | The time taken to fill additional information, in milliseconds. | 30 |
@@ -9519,8 +9554,6 @@ Application integration APIs
 | errorMsg | String | The error description. | Error. |
 
 **Response example**
-
-Application integration APIs
 
 ```json
 {"success":true,"data":[{"mapBatchKey":"ozqn95a5936y","kbCode":"ozqn95a5936y","result": [{"sys_data_id":"59cc2523-8445-4f3a-91f7- 5e311f5530b2","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0.5} {"sys_data_id":"ab4a788d-889e-4916-bc53d09ae943c12d","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0.5} {"sys_data_id":"fe422a14-cecf-4fe8-a8ec- 1ae9c8760a21","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0}], trics": {"kbCode":"ozqn95a5936y","totalTime":220,"chunksCount":3,"fusionType":"LWS","rrfTime":null,"lwsTime":0," lTime":0,"retrievalDetails": [{"kbIndexCode":"ozqn95a5936ysvdl","engineType":"builtin_es","embeddingTime":null,"vectorRecallTime":nul textQueryTime":21,"retrievedChunksCount":1}, {"kbIndexCode":"ozqn95a5936ycwkl","engineType":"builtin_vector","embeddingTime":153,"vectorRecallTime":3 textQueryTime":null,"retrievedChunksCount":2}]},"success":true,"errorMessage":null}],"errorCode":null,"e rMsg":null,"traceId":null,"env":null,"ext":null}
@@ -9543,8 +9576,6 @@ Application integration APIs
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The workspace code passed does not match the workspace code associated with the APP KEY user. _ |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. The authentication method is not supported. |
 
-Application integration APIs
-
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 |---|---|---|
 | 401 | GATEWAY AUTH USER ROLE WRONG! _ _ | Authentication failed. The user role does not match. |
@@ -9554,8 +9585,6 @@ Application integration APIs
 | 500 | TARGET SERVICE ERROR NO RESPONSE _ _ _ _ EXCEPTION _ | The target service did not respond. |
 
 **2.2.2.5. Data table knowledge base retrieval service**
-
-**Overview**
 
 This service searches for vectors or text in an indexed data table within a knowledge base. You can view the request example and click the Test button next to the cURL command to test the service invocation.
 
@@ -9583,8 +9612,6 @@ Body parameters
 |---|---|---|---|---|
 | dataPortfolioCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
 
-Application integration APIs
-
 | domainName | String | Yes | The domain name in the knowledge base. Valid values: table (table and column information), value, knowledge, biSample (sample library/ICL), and dimension. | table |
 |---|---|---|---|---|
 | query | String | Yes | The text content of the query. | West Lake District |
@@ -9592,8 +9619,6 @@ Application integration APIs
 | score | Double | Yes | The score threshold for filtering results. |   |
 | storeEngine | String | Yes | The index type. Valid values: vector and text. | vector |
 |   |   |   |   | domain: knowledge, storeEngine: vector { "domainFilters":{ "scopeOfAllTables":f alse, "category":"Glossary Explanation", "tableCodes": ["e5e66de1d72a48b ab699a599dcf78040 "], "columnCodes": ["e5e66de1d72a48b ab699a599dcf78040 "] } } domainFilters parameter descriptions: scopeOfAllTables: false specifies that the search is not across the entire knowledge base. true specifies that the search is across the entire knowledge base. category: The knowledge group. tableCodes: The table codes. These are obtained from the knowledge base table API and represent the tables related to this piece of knowledge. columnCodes: The |
-
-Application integration APIs
 
 | domainFilters | JSONObject | No | The filter parameters supported for a specific domain. The supported search scope varies by domain. For more information about the supported scopes, see the examples. | field codes. These are obtained from the knowledge base field API and represent the fields related to this piece of knowledge. domain: value, storeEngine: text { "domainFilters":{ "tableCodes": ["66024e2bf01541d a93e3bd04cdf946a5 "], "columnCodes": ["758f112ee7a84f46 84dd5a893ddf1430" ] } } domainFilters parameter descriptions: tableCodes: The |
 |---|---|---|---|---|
@@ -9606,21 +9631,15 @@ Application integration APIs
 | success | boolean | Indicates whether the API call was successful. | true |
 | data | Object | The data node. |   |
 
-Application integration APIs
-
 | items | JSONArray | The list of data returned by the retrieval. | true |
 |---|---|---|---|
 | score | Double | A floating-point number that indicates the sorting score. A larger value indicates a higher similarity. | 0.334 |
 | content | String | The retrieved text content. | Workshop 2 of XX Factory |
 |   |   |   | table (table and column information) { "resources": { "schema": { "tables": [ { "table": { "columns": [ { "columnComment": "Team Name", "columnCode": "083b4109b21a4c58b555e 6885a320667", "columnName": "team name" _ } ], "tableCode": "2dda169434a342f6b6233 940e69c883a", "tableName": "llm dev inventory" _ _ } } ] } } } Parameter descriptions: tableCode: The table code. tableName: The original table name. columnCode: The field code. columnName: The original field name. columnComment: The field comment. The system prioritizes manually modified comments from the UI. Otherwise, it uses the corresponding comment from the source database. value { "resources": { "value": { "columnCode": "eb19cfa9308b467c8fda8b c3ef84380c", "value": { "value": "John Doe" }, "tableName": "llm dev input inventory", _ _ _ "columnName": "alias" } |
 
-Application integration APIs
-
 | resources | JSONObject | The structured data where the retrieved text content is located. The structure varies for different domains. See the examples. | } } Parameter descriptions: columnCode: The field code. value: The actual value in the source database. tableName: The original table name. columnName: The original field name. knowledge { "resources": { "knowledge": { "code": "ec231f17cfbc40e08afef23 c066c2d37", "name": "John Doe's Team", "refRes": { "schema": { "columnCodes": [], "tables": [], "allTables": true, "tableCodes": [] } }, "content": "R&D group, supervised by John Doe" } } } Parameter descriptions: code: The system code for this piece of knowledge. name: The name of the knowledge. content: The content of the knowledge. refRes: The resources attached to this piece of knowledge. For more |
 |---|---|---|---|
 |   |   |   | information, see the description of the `refRes` node in the Expert Knowledge section of the "Query knowledge base resources" topic. biSample (sample library/ICL) { "resources": { "biSample": { "code": "9fa48139fc6043889856a0 6332e64e01", "query": "What was the overall manpower status last week?", "sql": "select project name _ , sum(actual input) from _ llm dev inventory where _ _ week start >= _ DATE SUB(CURRENT DATE _ _ , INTERVAL 7 day) group by project name" _ } } } Parameter descriptions: code: The system code for this sample. query: The query in the sample library, such as 'Find the highest score'. sql: The SQL statement in |
-
-Application integration APIs
 
 |   |   |   | the sample library, such as 'select max(score) from exam;'. dimension { "resources": { "dimension": { "dimDsCode": "9fa48139fc6043889856a0 6332e64e01", "key": "1", "value": "Male" } } } Parameter descriptions: dimDsCode: The code corresponding to the dimension table in the knowledge base. key: The corresponding dimension key, such as '1'. value: The corresponding dimension value, such as 'Male'. |
 |---|---|---|---|
@@ -9647,8 +9666,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
 `}'`
 
 **Response example**
-
-Application integration APIs
 
 ```json
     "success": true,
@@ -9719,8 +9736,6 @@ Gateway exception status codes
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
 
-Application integration APIs
-
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 |---|---|---|
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
@@ -9746,7 +9761,7 @@ Use this API to query the details of tables attached to a specified knowledge ba
 
 **Prerequisites**
 
-Go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to Homepage > Profile Picture > Workspace Management to obtain the code of the target workspace. If the Workspace Management menu is not visible, contact the tenant administrator or the administrator of the target workspace. Application integration APIs
+Go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to Homepage > Profile Picture > Workspace Management to obtain the code of the target workspace. If the Workspace Management menu is not visible, contact the tenant administrator or the administrator of the target workspace.
 
 **API endpoint**
 
@@ -9780,8 +9795,6 @@ Body parameters
 | list | JSONArray | The list of data returned by the query. | true |
 | dpCode | String | The ID of the knowledge base. | 2688caccbe93fdd26b6619 5ebf7c1f2d |
 | tableCode | String | The code of the table. This code is globally unique in the database. | ca2cbfb7928d59547a3a28 a044467b15 |
-
-Application integration APIs
 
 | tableName | String | The original table name. | tbl student _ |
 |---|---|---|---|
@@ -9845,8 +9858,6 @@ Gateway error status codes
 | HTTP status code | Error description | Fault description |
 |---|---|---|
 
-Application integration APIs
-
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
 |---|---|---|
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
@@ -9868,7 +9879,7 @@ Application integration APIs
 
 **API overview**
 
-Use this API to query the details of fields in a specified table of a knowledge base. To test the API call, you can view the request example and click the Test button next to the cURL command example. Application integration APIs
+Use this API to query the details of fields in a specified table of a knowledge base. To test the API call, you can view the request example and click the Test button next to the cURL command example.
 
 **Prerequisites**
 
@@ -9908,8 +9919,6 @@ Body parameters
 | total | Integer | The total number of entries. | 100 |
 | list | JSONArray | The list of data returned by the retrieval. | true |
 
-Application integration APIs
-
 | dpCode | String | The ID of the knowledge base. | 2688caccbe93fdd26b6619 5ebf7c1f2d |
 |---|---|---|---|
 | tableCode | String | The code of the table. | ca2cbfb7928d59547a3a28 a044467b15 |
@@ -9933,8 +9942,6 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
 `}'`
 
 **Response example**
-
-Application integration APIs
 
 ```json
     "success": true,
@@ -10000,8 +10007,6 @@ Gateway error status codes
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
 
-Application integration APIs
-
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 |---|---|---|
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
@@ -10027,7 +10032,7 @@ You can use this API to query expert knowledge resources attached to a specified
 
 **Prerequisites (View APP_KEY)**
 
-First, go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to Homepage > Profile Picture > Workspace Management to obtain the target workspace code. If the Workspace Management menu is not visible, contact the tenant administrator or the target workspace administrator. Application integration APIs
+First, go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to Homepage > Profile Picture > Workspace Management to obtain the target workspace code. If the Workspace Management menu is not visible, contact the tenant administrator or the target workspace administrator.
 
 **API endpoint**
 
@@ -10057,8 +10062,6 @@ Body parameters
 
 **Response parameters**
 
-Application integration APIs
-
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | Indicates whether the API call was successful. | true |
@@ -10077,8 +10080,6 @@ Application integration APIs
 
 **Example request**
 
-Application integration APIs
-
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flexExt/list \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'x-sfm-workspacecode: test' \ -H 'Content-Type: application/json' \ -d '{
     "current":1,
@@ -10093,8 +10094,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
 `}'`
 
 **Example response**
-
-Application integration APIs
 
 ```json
     "success": true,
@@ -10157,8 +10156,6 @@ Status codes for gateway exceptions
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
-
-Application integration APIs
 
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY is _ expired. |
 |---|---|---|

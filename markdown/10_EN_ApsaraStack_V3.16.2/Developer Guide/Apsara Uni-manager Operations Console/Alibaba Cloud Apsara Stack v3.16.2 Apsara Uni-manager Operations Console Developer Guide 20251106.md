@@ -3,16 +3,56 @@ title: "Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console
 product_version: "V3.16.2"
 doc_version: "20251106"
 pdf_pages: 65
-source_pdf: "Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide 20251106.pdf"
+source_pdf: "e619bdcaf233e7a9_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide 20251106.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Operations%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Operations Console Developer Guide
 
+## Table of Contents
+
+- 1 Usage notes on development documentation
+- 2 Preparations
+  - 2.1 Log on to the Apsara Uni-manager Operations Console
+  - 2.2 Obtain a region ID
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain the service domain name
+  - 2.5 Obtain the ASO Console SDKs
+- 3 Call Examples for SDK for Java
+  - 3.1 Getting started
+  - 3.2 Use the SDK
+    - 3.2.1 Install SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Initiate a request
+    - 3.2.4 Handle errors
+- 4 API Reference
+  - 4.1 Monitoring and alerting
+    - 4.1.1 GetIncidentAlertList
+    - 4.1.2 GetAlertList
+  - 4.2 Inventory management
+    - 4.2.1 GetOverview
+    - 4.2.2 GetSlbInventoryInfo
+    - 4.2.3 GetEcsInventoryList
+    - 4.2.4 GetNasInventoryInfo
+    - 4.2.5 GetOssInventoryInfo
+    - 4.2.6 GetOtsInnerInventoryInfo
+    - 4.2.7 GetRdsInventoryInfo
+    - 4.2.8 GetSlsInnerInfo
+  - 4.3 Resource management
+    - 4.3.1 GetMachineList
+    - 4.3.2 GetClusterListByProduct
+    - 4.3.3 GetProductList
+    - 4.3.4 GetCpuMetrics
+    - 4.3.5 GetDiskMetrics
+    - 4.3.6 GetIoMetrics
+    - 4.3.7 GetLoadMetrics
+    - 4.3.8 GetTrafficMetrics
+    - 4.3.9 GetMemMetrics
+
 notes on development document ation
 
-## Usage notes on
+## 1 Usage notes on development documentation
 
 **development documentation**
 
@@ -38,9 +78,9 @@ use.
 **Download PDF**.
 ations
 
-## Preparations
+## 2 Preparations
 
-### Log on to the Apsara Uni-
+### 2.1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -63,7 +103,7 @@ When you log on to the Apsara Uni-manager Operations Console for the first time,
 3. In the top navigation bar, click the user profile and select Personal information from the
 drop-down list. Then, you can view the user information on the User Profile page.
 
-### Obtain a region ID
+### 2.2 Obtain a region ID
 
 This topic describes how to obtain a region ID.
 
@@ -76,7 +116,7 @@ You must obtain a region ID before you call API operations of the Apsara Uni-man
 1. Log on to the Apsara Uni-manager Operations Console.
 2. On the left side of the top navigation bar, view the region ID.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 This topic describes how to obtain an AccessKey ID and AccessKey Secret. ations
 
@@ -100,7 +140,7 @@ AccessKey pair.
 
 You can create a maximum of two AccessKey pairs for RAM users per account. The Create AccessKey Pair button is disabled after you create two AccessKey pairs.
 
-### Obtain the service domain
+### 2.4 Obtain the service domain name
 
 **name**
 
@@ -117,15 +157,15 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. On the right side of
 2. Obtain the intranet and Internet domain names in the upper part of the **User Profile** page.
 ations
 
-### Obtain the ASO Console SDKs
+### 2.5 Obtain the ASO Console SDKs
 
 When you call API operations of a cloud service in Apsara Stack by using the POP gateway, you must use an SDK. This topic describes how to obtain the ASO Console SDKs. The ASO Console SDKs contain sample code and examples. The SDK for Java is provided. For more information, see Alibaba Cloud SDKs. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. amples for SDK for Java
 
-## Call Examples for SDK for
+## 3 Call Examples for SDK for Java
 
 **Java**
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use Apsara Uni-manager Operations Console SDK for Java.
 
@@ -200,9 +240,9 @@ etOssInventoryInfoRequest);
 main());
 ```
 
-### Use the SDK
+### 3.2 Use the SDK
 
-#### Install SDK for Java
+#### 3.2.1 Install SDK for Java
 
 amples for SDK for Java This topic describes how to install and use Apsara Uni-manager Operations Console SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. To use Apsara Uni-manager Operations Console SDK for Java, you must install the SDK core library and the SDK. We recommend that you use the core library version 4.5.17 or later, and use the SDK version 3.16.2.0.
 
@@ -225,7 +265,7 @@ amples for SDK for Java This topic describes how to install and use Apsara Uni-m
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity verification based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -275,7 +315,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 | GetTrafficMetrics | ASO System Administrator, ASO Product Devops, ASO Daily Devops, and ASO Devops Readonly |
 | GetMemMetrics | ASO System Administrator, ASO Product Devops, ASO Daily Devops, and ASO Devops Readonly |
 
-#### Initiate a request
+#### 3.2.3 Initiate a request
 
 This topic describes how to use the ASO Console SDKs to initiate a request.
 
@@ -321,7 +361,7 @@ GetOverviewRequest getOverviewRequest = sdkManager.getModel(GetOverviewRequest.c
     e.printStackTrace();
 ```
 
-#### Handle errors
+#### 3.2.4 Handle errors
 
 If the server or SDK encounters an error when you use the Java SDK, the SDK returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Java SDK. You only need to handle server errors based on error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an error returned by the SDK. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -346,11 +386,11 @@ try {
     e.printStackTrace();
 ```
 
-## API Reference
+## 4 API Reference
 
-### Monitoring and alerting
+### 4.1 Monitoring and alerting
 
-#### GetIncidentAlertList
+#### 4.1.1 GetIncidentAlertList
 
 Queries alerts. Call this operation instead of the `GetAlertList` operation to query alerts.
 
@@ -480,7 +520,7 @@ XXXX\",\"service\":\"tianji\",\"serverRole\":\"\",\"hostname\":\"\",\"checkInter
     "errorStack": "\"\""
 ```
 
-#### GetAlertList
+#### 4.1.2 GetAlertList
 
 Queries the list of alerts.
 
@@ -664,9 +704,9 @@ rrole\\\":\\\"oss-service.OssClusterMonitor#\\\",\\\"host\\\":\\\"vm010017XXXX\\
     "key": "\"\""
 ```
 
-### Inventory management
+### 4.2 Inventory management
 
-#### GetOverview
+#### 4.2.1 GetOverview
 
 Queries the inventory overview.
 
@@ -843,7 +883,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetSlbInventoryInfo
+#### 4.2.2 GetSlbInventoryInfo
 
 Queries SLB inventory information.
 
@@ -898,7 +938,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetEcsInventoryList
+#### 4.2.3 GetEcsInventoryList
 
 Queries ECS inventory information.
 
@@ -969,7 +1009,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetNasInventoryInfo
+#### 4.2.4 GetNasInventoryInfo
 
 Queries NAS inventory information.
 
@@ -1029,7 +1069,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetOssInventoryInfo
+#### 4.2.5 GetOssInventoryInfo
 
 Queries OSS inventory information.
 
@@ -1103,7 +1143,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetOtsInnerInventoryInfo
+#### 4.2.6 GetOtsInnerInventoryInfo
 
 Queries Tablestore inventory information.
 
@@ -1174,7 +1214,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetRdsInventoryInfo
+#### 4.2.7 GetRdsInventoryInfo
 
 Queries ApsaraDB RDS inventory information.
 
@@ -1264,7 +1304,7 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-#### GetSlsInnerInfo
+#### 4.2.8 GetSlsInnerInfo
 
 Queries the Log Service inventory information.
 
@@ -1335,9 +1375,9 @@ Sample success responses `JSON` format
     "key": "\"\""
 ```
 
-### Resource management
+### 4.3 Resource management
 
-#### GetMachineList
+#### 4.3.1 GetMachineList
 
 Queries physical machines.
 
@@ -1405,7 +1445,7 @@ Sample success responses `JSON` format
     "responseCode": "200"
 ```
 
-#### GetClusterListByProduct
+#### 4.3.2 GetClusterListByProduct
 
 Queries cluster information of a product.
 
@@ -1469,7 +1509,7 @@ orkBaseServiceCluster-A-20220209-0014\",\"StandardCloudCluster-A-20220209-0015\"
     "responseCode": "200"
 ```
 
-#### GetProductList
+#### 4.3.3 GetProductList
 
 Queries all products.
 
@@ -1530,7 +1570,7 @@ Sample success responses `JSON` format
     "responseCode": "200"
 ```
 
-#### GetCpuMetrics
+#### 4.3.4 GetCpuMetrics
 
 Queries the CPU utilization.
 
@@ -1597,7 +1637,7 @@ Sample success responses `JSON` format
     "key": "null"
 ```
 
-#### GetDiskMetrics
+#### 4.3.5 GetDiskMetrics
 
 Queries disk usage metrics.
 
@@ -1664,7 +1704,7 @@ Sample success responses `JSON` format
     "key": "null"
 ```
 
-#### GetIoMetrics
+#### 4.3.6 GetIoMetrics
 
 Queries disk I/O.
 
@@ -1726,7 +1766,7 @@ Sample success responses `JSON` format
     "key": "null"
 ```
 
-#### GetLoadMetrics
+#### 4.3.7 GetLoadMetrics
 
 Queries system load metrics.
 
@@ -1793,7 +1833,7 @@ Sample success responses `JSON` format
     "key": "null"
 ```
 
-#### GetTrafficMetrics
+#### 4.3.8 GetTrafficMetrics
 
 Queries the traffic metrics of a host.
 
@@ -1857,7 +1897,7 @@ Sample success responses `JSON` format
     "key": "null"
 ```
 
-#### GetMemMetrics
+#### 4.3.9 GetMemMetrics
 
 Queries the memory usage.
 

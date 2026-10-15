@@ -3,14 +3,65 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Gu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 71
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service User Guide 20260828.pdf"
+source_pdf: "d46793b5f019da8b_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service User Guide 20260828
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 Container Protection
+  - 3.1 Asset center
+    - 3.1.1 Manage containers
+    - 3.1.2 Container network topology
+    - 3.1.3 Manage images
+  - 3.2 CI/CD security
+    - 3.2.1 Scan container images
+    - 3.2.2 Scanner integration
+  - 3.3 Runtime protection
+    - 3.3.1 Vulnerability management
+    - 3.3.2 Check baseline risks
+    - 3.3.3 Manage intrusion alerts
+    - 3.3.4 Container firewall
+      - 3.3.4.1 Create a network object
+      - 3.3.4.2 Create a defense rule
+      - 3.3.4.3 Manage the defense status and defense rules of a cluster
+      - 3.3.4.4 View protection status
+    - 3.3.5 Container file protection
+    - 3.3.6 Use proactive defense for containers
+    - 3.3.7 Create and enable a container signature security policy
+  - 3.4 Log retrieval
+  - 3.5 Configure protection settings
+- 4 Apsara Stack Security configurations
+  - 4.1 Log on to the Apsara Uni-manager Management Console
+  - 4.2 规则运营
+    - 4.2.1 Create and manage IPS rules
+    - 4.2.2 Manage Anti-DDoS Service rules
+    - 4.2.3 Manage Server Guard rules
+    - 4.2.4 Create and manage WAF rules
+  - 4.3 Configure alert settings
+  - 4.4 全局设置
+    - 4.4.1 Configure the attack blocking feature
+  - 4.5 账号管理
+    - 4.5.1 Manage Apsara Stack tenant accounts
+    - 4.5.2 Manage Alibaba Cloud accounts
+  - 4.6 Migration to Apsara Uni-manager Operations Console
+    - 4.6.1 Log on to Cloud Shield Operations Center
+    - 4.6.2 View system monitoring data
+    - 4.6.3 Global settings
+      - 4.6.3.1 Configure host security rules
+      - 4.6.3.2 Configure whitelist settings
+    - 4.6.4 Upgrade center
+      - 4.6.4.1 Upgrade center overview
+      - 4.6.4.2 Feature library or version updates
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, make sure that your computer meets the configuration requirements. For more information, see the Configuration requirements table of this topic. Table 1. Configuration requirements
 
@@ -19,9 +70,9 @@ Before you log on to Apsara Stack Security Center, make sure that your computer 
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later 国密浏览器：Chrome内核69及以上的主流国密浏览器 |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. All roles in Apsara Stack Security Center are provided by default. You cannot create custom roles. Before you log on to Apsara Stack Security Center, make sure that your account is assigned the required role. For more information, see Default roles in Apsara Stack Security. Table 1. Default roles in Apsara Stack Security
 
@@ -42,7 +93,7 @@ This topic describes the user roles involved in Apsara Stack Security. All roles
 If you do not have an account that assumes the required role, contact the administrator to create an account and assign the role to the account. For more information, see the **Create a**
 **user** topic in **Apsara Uni-manager Management Console User Guide** .
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -70,11 +121,11 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-## Container Protection
+## 3 Container Protection
 
-### Asset center
+### 3.1 Asset center
 
-#### Manage containers
+#### 3.1.1 Manage containers
 
 The container management feature allows you to synchronize assets and connect selfmanaged clusters. It also allows you to view and manage namespaces, nodes, applications, pods, and containers in your assets. This topic describes how to manage containers.
 
@@ -133,7 +184,7 @@ Asset fingerprints accurately identify the characteristics of IT resources. This
 |---|---|
 | Website | The information about the website on your server is collected, including the following items: Domain Name: the domain name of the website. Website Type: the type of the software that is used by the website. Port: the listener port of the website. Web Path: the path to the home directory of the website. Web Root Path: the path of the root directory in the web configuration. User: the user who started the website. Directory Permission: the permissions on the web directory. Monitoring Protocol: the listener protocol of the website. PID: the ID of the process. start time: the time when the website was started. Latest Collection Time: the last time when Security Center collected the website information from the server. |
 
-#### Container network topology
+#### 3.1.2 Container network topology
 
 You can use a network topology to view container assets from the Internet and cluster perspectives. This topic describes how to view the network topology of containers.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -148,7 +199,7 @@ tab.
 5. On the **Internet Perspective** or **Cluster Perspective** tab, perform the following
 operations: Use the date picker to specify a time range within the last seven days to view the running details of clusters. Click the or icon to enable or disable the network topology for all clusters. Click the icon to refresh the network topology of clusters. Click the icon to export the snapshot for the network topology of clusters. Click a cluster in the network topology to view the cluster information, cluster risks, image information, and protection policies.
 
-#### Manage images
+#### 3.1.3 Manage images
 
 You can use the image management feature to synchronize assets and connect image repositories. You can also view and manage all images and at-risk images. This topic describes how to manage images.
 
@@ -171,9 +222,9 @@ On the page that appears, you can view the information about the image on the fo
 **Malicious Sample**, and **Mirror Fingerprint Survey**. You can also find the vulnerability
 that you want to view and click its name or click **Details** in the **Operation** column to view the vulnerability details.
 
-### CI/CD security
+### 3.2 CI/CD security
 
-#### Scan container images
+#### 3.2.1 Scan container images
 
 Container Security Service (CSS) allows you to scan image repositories for image vulnerabilities, baseline risks, and malicious samples. This topic describes how to scan container images.
 
@@ -225,7 +276,7 @@ want to view and click its name or click **View** in the **Operation** column. Y
 4. On the **Mirror Malicious Sample** tab, find the malicious sample that you want to view and
 click its name or click **Details** in the **Operation** column. In the panel that appears, you can view the details of the malicious sample and the affected images.
 
-#### Scanner integration
+#### 3.2.2 Scanner integration
 
 The scanner integration feature can detect image risks in the project building stage and provide solutions to detected image risks. This topic describes how to configure the scan plug-in.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -242,9 +293,9 @@ In multi-level organization mode,all data permissions are managed by using resou
 5. Close the **Install CI/CD Plug-in** panel and click **Integration Configuration** to configure
 parameters.
 
-### Runtime protection
+### 3.3 Runtime protection
 
-#### Vulnerability management
+#### 3.3.1 Vulnerability management
 
 The vulnerability management feature of Container Security Service (CSS) is provided by Server Guard to help you handle vulnerabilities in containers in an efficient manner. This topic describes how to scan for and handle vulnerabilities in containers.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -268,7 +319,7 @@ i. Click a security bulletin or click **View** in the **Actions** column of a se
 **Whitelist** to add the vulnerabilities to the whitelist at a time.
 iii. In the upper-right corner of the vulnerability list, click the icon to download vulnerabilities as a file.
 
-#### Check baseline risks
+#### 3.3.2 Check baseline risks
 
 The baseline check feature can help you identify baseline risks in an efficient manner. This topic describes how to check and handle baseline risks.
 
@@ -315,7 +366,7 @@ the **Details** and **Process** sections. The Details section lists the Descript
 6. To add a risk item to the whitelist, find the risk item and click **Whitelist** in the **Operate**
 column. To add multiple risk items to the whitelist at a time, select the risk items that you want to manage and click **Whitelist** below the risk list.
 
-#### Manage intrusion alerts
+#### 3.3.3 Manage intrusion alerts
 
 Container Security Service (CSS) allows you to monitor nodes and containers in clusters. You can monitor and block risks such as trojans, intrusions, supply chain attacks, and container escapes that are caused by privilege escalation. This topic describes how to configure the intrusion alert feature.
 
@@ -343,7 +394,7 @@ column of the alert. You can view the details of the alert and its associated ex
 7. Click the
 icon to export and view all information about the alerts in a list.
 
-#### Container firewall
+#### 3.3.4 Container firewall
 
 The container firewall feature helps you protect container assets from attacks. This topic describes how to configure the container firewall feature.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -364,7 +415,7 @@ c. In the Defense rules panel, find a rule and click the icon in the **Enabled s
 6. On the **Network object** tab, click **Add Network Object**. In the **Add Object** panel,
 configure the **Object name**, **Object type**, **Namespaces**, and **Image** parameters, and click **OK**. Valid values of Object type are Container, IP, and Domain Name. Fuzzy match by suffix is supported for **Namespaces** and **Image**. Example: abc*. After you create a network object, you can add the network object to a protection rule.
 
-##### Create a network object
+##### 3.3.4.1 Create a network object
 
 To use the container firewall feature of Container Security Service (CSS), you must create a source network object and a destination network object and then create defense rules. This topic describes how to create a network object.
 
@@ -404,7 +455,7 @@ The created network object is displayed on the Network object tab. You can click
 
 After you create a source network object and a destination network object, you can create a defense rule to allow, block, or generate alerts for unusual traffic from the source network object to the destination network object.
 
-##### Create a defense rule
+##### 3.3.4.2 Create a defense rule
 
 You can create a defense rule to control traffic from a source network object to a destination network object. This topic describes how to create a defense rule.
 
@@ -450,7 +501,7 @@ The defense rules that you create are displayed in the defense rule list in desc
 
 If traffic from the source network object does not hit the first defense rule, the subsequent rules are used. When a rule is hit, the rule processes the traffic based on the action that you specify in the rule. If no defense rules are hit, the container firewall feature allows the traffic.
 
-##### Manage the defense status and defense
+##### 3.3.4.3 Manage the defense status and defense rules of a cluster
 
 **rules of a cluster**
 
@@ -499,7 +550,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 5. In the cluster list of the **Protection management** tab, find the cluster for which you want
 to manage defense rules. i. Click **Rule management** in the **Actions** column to go to the **Defense rules** panel. ii. In the defense rule list of the **Defense rules** panel, you can perform the following operations on the defense rules: Enable or disable one or more defense rules Click the or icon in the **Enabled status** column of a defense rule to enable or disable the defense rule. You can also select multiple defense rules and click **Batch open** or **Batch shutdown** below the rule list to enable or disable the defense rules at a time. View the details of a defense rule Find the rule that you want to view and click **Details** in the **Operation** column to go to the **Details** panel. In the Details panel, view the configurations of the source network object and destination network object, and other details of the defense rule. Modify a defense rule Find the rule that you want to modify and click **Edit** in the **Operation** column to go to the **Edit rules** panel. In the Edit rules panel, modify the defense rule. The modifications to the defense rule take effect within 1 minute. Delete one or more defense rules Find the rule that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click OK to delete the rule. You can also select multiple defense rules and click **Batch delete** below the rule list to delete the defense rules at a time. The delete operation takes effect within 1 minute.
 
-##### View protection status
+##### 3.3.4.4 View protection status
 
 After you create and enable a defense rule for a cluster, the defense rule allows, blocks, or generates alerts for the traffic destined for the cluster. You can view the alerts that are generated by the defense rule on the Protection status tab of the Container Firewall page. This topic describes how to view protection details on the Protection status tab.
 
@@ -523,7 +574,7 @@ The Protection status tab displays defense statistics and the alert list. Defens
 **180 days**, **Unprotected clusters/total clusters**, and **Total number of rules**.
 Alert list You can view the alerts that are sorted by generation time in reverse chronological order. All the alerts are generated by the defense rules whose action is set to Alert or Intercept. If alerts are generated for the same source pod, destination pod, port number, and cluster on the same calendar day, the number of alerts is calculated as 1, and the number of times of access attempts is displayed in the **Number of attempts** column. You can click **Edit Rule** in the Actions column of an alert to modify the defense rule that generated the alert. You can also click the icon next to **Edit Rule** to modify the action of the defense rule that generated the alert. The modifications to the defense rule take effect within 1 minute.
 
-#### Container file protection
+#### 3.3.5 Container file protection
 
 The container file protection feature can monitor directories and files in containers in real time, and generate alerts or intercept tampering operations when the directories or files are tampered with. This prevents your applications from being inserted with illegal information or malicious code and ensures the security of the container environment.
 
@@ -563,7 +614,7 @@ Copy the rule Click **Copy** in the **Actions** column to copy the rule. Enable 
 
 The deleted rule cannot be restored. Before you delete a rule, make sure that you no longer require the rule. Click **Delete** in the **Actions** column. In the message that appears, click **OK** to delete the rule.
 
-#### Use proactive defense for containers
+#### 3.3.6 Use proactive defense for containers
 
 The feature of proactive defense for containers proactively detects risks when your containers start or run from the following dimensions: image security, runtime security, and running environment security. You can configure rules to block the running of at-risk images, stop untrusted processes, and block container escapes. This helps improve the runtime security of your containers. This topic describes how to configure rules of the at-risk image blocking, drift prevention, and container escape prevention types.
 
@@ -722,7 +773,7 @@ After you create and enable a rule of the Container Escape Prevention type, you 
 **Interception** state is generated when the rule is triggered. This indicates that CSS has
 blocked container escapes. You do not need to handle the alerts.
 
-#### Create and enable a container
+#### 3.3.7 Create and enable a container signature security policy
 
 **signature security policy**
 
@@ -773,7 +824,7 @@ parameters and click **OK**.
 
 After you create and enable a container signature security policy for a container image, you can view the container image labeled as a **trusted image** in the Container Registry console.
 
-### Log retrieval
+### 3.4 Log retrieval
 
 The log retrieval feature allows you to query the logs of process snapshots, network connections, and process startups of containers. Prefix-based fuzzy match is supported. This topic describes how to search for logs.
 
@@ -795,7 +846,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 You can select **Within 24 Hours** or **Within 7 Days** for the Duration parameter. You can also select **Custom** to specify a time range based on your business requirements. The
 **custom time range** cannot exceed 30 calendar days.
 
-### Configure protection settings
+### 3.5 Configure protection settings
 
 This topic describes the core protection features of Container Security Service (CSS) and how to configure them. This helps you configure security policies in your business scenarios and improve the overall protection capabilities of the Container Service for Kubernetes (ACK) environment.
 
@@ -863,11 +914,11 @@ In multi-level organization mode,all data permissions are managed by using resou
 **Feature Settings** page, click **Manage** under the Authorization management feature to
 customize the protection scope of your cluster. After you bind the authorization to a cluster and container protection is enabled for the cluster, you cannot unbind the authorization from the cluster or bind the authorization to another cluster within 30 days. After the container cluster is released or scaled in, the system automatically revokes the authorization bound to the cluster. After you scale out a container cluster that is integrated with the container security protection capability, even if the number of CPU cores in the cluster exceeds the authorization quota, the container protection feature still protects all CPU cores in the cluster. However, the authorization cannot be bound to another cluster whose number of CPU cores exceeds the maximum authorization quota. image igurations
 
-## Apsara Stack Security
+## 4 Apsara Stack Security configurations
 
 **configurations**
 
-### Log on to the Apsara Uni-
+### 4.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -895,11 +946,11 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-### 规则运营
+### 4.2 规则运营
 
 igurations
 
-#### Create and manage IPS rules
+#### 4.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
 
@@ -934,7 +985,7 @@ igurations
 
 After you create custom IPS rules, you can perform the following operations on the rules: View the details of a rule You can filter rules by specifying filter conditions above the rule list. Find the rule whose details you want to view and click **Details** in the **Actions** column to view the rule details. Enable an IPS rule Find the rule that you want to enable and turn on the switch in the **Enable or not** column to change the state of the rule from **Disable** to **Enable**. Disable an IPS rule If a rule does not meet your business requirements, you can disable the rule. Find the rule that you want to disable and turn off the switch in the **Enable or not** column to change the state of the rule from **Enable** to **Disable**.
 
-#### Manage Anti-DDoS Service rules
+#### 4.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service Rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
 
@@ -957,7 +1008,7 @@ ii. In the **Modify Threshold** dialog box, specify custom thresholds and click 
 **Automatic Redirection** message, click **OK**.
 By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
-#### Manage Server Guard rules
+#### 4.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
 
@@ -982,7 +1033,7 @@ igurations
 | Baselines (marked with ② in the preceding figure) | On the Baselines tab, you can view the baseline types and the check items that are used. To search for a baseline, you can select a baseline type from the Baseline Type drop-down list, select a severity from the Risk Level drop-down list, and then enter a check item category or name in the search box. In the baseline list, you can view the information about a baseline in the following columns: Baseline Type, Check Item Category, Check Item Name, Risk Level, Updated At, and Status. |
 | Server Exceptions (marked with ② in the preceding figure) | On the Server Exceptions tab, you can view the following information: Rule Alert Types and Webshell & Malicious Processes. To search for an exception on a server, you can select a rule category from the Rule Category drop-down list, select a severity level from the Risk Level drop-down list, and then enter a rule subcategory name in the search box. In the server exception list, you can view the information about an exception in the following columns: Rule Subcategory, Rule Category, Risk Level, Updated At, Source, and Status. |
 
-#### Create and manage WAF rules
+#### 4.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
@@ -1013,7 +1064,7 @@ parameters and click **OK**. The following table describes the parameters. igura
 
 After you create rules, you can perform the following operations on the rules: Filter WAF rules by specifying filter conditions above the rule list. Find the rule that you want to manage and click **Modify** in the **Actions** column to modify the rule.
 
-### Configure alert settings
+### 4.3 Configure alert settings
 
 On the Alert Settings page, you can configure alert contacts and alert rules. When monitoring data triggers alert rules, the system automatically sends alerts to specified alert contacts by using DingTalk messages or emails. This topic describes how to configure alert contacts and alert rules.
 
@@ -1056,9 +1107,9 @@ igurations
 | Application whitelist event | Unauthorized process start | All levels |   |   |
 | Tamper- proofing event | Unusual file modification Unusual file addition Unusual file deletion | All levels |   |   |
 
-### 全局设置
+### 4.4 全局设置
 
-#### Configure the attack blocking feature
+#### 4.4.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks and brute-force attacks. This topic describes how to configure the attack blocking feature.
 
@@ -1073,9 +1124,9 @@ The attack blocking feature protects your servers from web attacks and brute-for
 4. On the **Global Settings** tab, turn on or off the switch in the Actions column to enable or
 disable the attack blocking feature. igurations After you disable the attack blocking feature, Apsara Stack Security generates alerts for web attacks and brute-force attacks but does not block them.
 
-### 账号管理
+### 4.5 账号管理
 
-#### Manage Apsara Stack tenant accounts
+#### 4.5.1 Manage Apsara Stack tenant accounts
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
@@ -1096,7 +1147,7 @@ tenant account. i. Find the Apsara Stack tenant account that you want to modify 
 **Actions** column.
 ii. In the **Change Account** dialog box, modify the Apsara Stack Account, Access Key, and Access Secret parameters, and click **OK**. After the modification, you can click Details in the **Actions** column to view the details of the Apsara Stack tenant account.
 
-#### Manage Alibaba Cloud accounts
+#### 4.5.2 Manage Alibaba Cloud accounts
 
 After you add an Alibaba Cloud account to Apsara Stack Security, you can manage the Anti- DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security.
 
@@ -1120,11 +1171,11 @@ igurations In the **Add Account** dialog box, configure the parameters and click
 
 After the Alibaba Cloud account is added, you can view the account in the account list. You can **modify** or **remove** the account.
 
-### Migration to Apsara Uni-
+### 4.6 Migration to Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
-#### Log on to Cloud Shield Operations
+#### 4.6.1 Log on to Cloud Shield Operations Center
 
 **Center**
 
@@ -1151,7 +1202,7 @@ The password is 10 to 20 characters in length.
 
 You can view information on the pages of **Cloud Shield Operations Center**.
 
-#### View system monitoring data
+#### 4.6.2 View system monitoring data
 
 You can use the system monitoring feature to monitor integrated cloud services and identify exceptions in the cloud services at the earliest opportunity. This facilitates service O&M. This topic describes how to view the system monitoring data.
 
@@ -1168,9 +1219,9 @@ services. On the **Monitoring Overview** tab, view the following information: Mo
 | Middlewar e | You can specify the monitoring time range and monitoring view to view the details of basic monitoring and middleware monitoring. Valid values for the time range: 3 Hours, 6 Hours, 12 Hours, 1 Day, 2 Days, and Custom. You can click the icon to manually update the monitoring data. You can also turn on Automatic Refresh to automatically update the monitoring data. The monitoring view supports Cluster View and Single-server View. You can view the following monitoring data: the QPS of MetaQ, the number of garbage collections (GCs) in the JVM, the amount of time consumed to monitor GCs in the JVM, the amount of JVM memory, the number of loaded classes in the JVM, the numbers of JVM threads in different states, the number of JVM threads, the QPS of HSF, the response time of HSF and database usage. |
 | Health Check | You can check the health status of all hosts in an application based on check methods such as TCP- and HTTP-based health checks. |
 
-#### Global settings
+#### 4.6.3 Global settings
 
-##### Configure host security rules
+##### 4.6.3.1 Configure host security rules
 
 1. Log in to the Cloud Shield Operations Center console.
 2. In the left-side navigation pane, choose **Cloud Services > Server Guard O&M > Global**
@@ -1190,7 +1241,7 @@ igurations If you modify the global brute-force attack detection rule, the detec
 | Suspicious Account Logon | If a remote login account is included in the list of suspicious accounts, an alert is generated for logins that use the account. Click Manage Suspicious Accounts. In the Suspicious Account Management panel, enter suspicious accounts or upload a list of suspicious accounts by using a template. Make sure that the file to be uploaded does not exceed 5 KB in size. To ensure compatibility with the Windows system mechanism, use lowercase letters when you enter Windows accounts. |
 | Audit of High- risk Commands | You can configure the silence threshold for high-risk command audit. After you configure the threshold, when the number of alerts generated by the rule reaches the threshold, the rule enters the silent mode and does not generate alerts until it resumes in the next cycle. Default threshold: 100 alerts within 5 minutes. For more information, see Configure host security rules in Apsara Stack Security User Guide for security administrators. |
 
-##### Configure whitelist settings
+##### 4.6.3.2 Configure whitelist settings
 
 1. Log in to the Cloud Shield Operations Center console.
 2. In the left-side navigation pane, choose **Cloud Services > Server Guard O&M > Global**
@@ -1210,9 +1261,9 @@ igurations
 
 You can **delete** a whitelist that is no longer required.
 
-#### Upgrade center
+#### 4.6.4 Upgrade center
 
-##### Upgrade center overview
+##### 4.6.4.1 Upgrade center overview
 
 The upgrade center allows you to manually or automatically update the feature library and the version of Apsara Stack Security to ensure up-to-date protection. You can perform the following steps for an update:
 1. Configure the import mode of your update package.
@@ -1220,7 +1271,7 @@ The upgrade center supports**automatic import** and **manual import**. If Apsara
 2. Update the feature library and the version of Apsara Stack Security. For more information,
 see Update the feature library or the version of Apsara Stack Security.
 
-##### Feature library or version updates
+##### 4.6.4.2 Feature library or version updates
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update the feature libraries or versions of Apsara Stack Security services. This topic describes how to update the feature libraries or versions of Apsara Stack Security services.
 

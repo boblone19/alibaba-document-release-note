@@ -3,16 +3,83 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 90
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL Developer Guide 20260828.pdf"
+source_pdf: "69e1b2e892e6acaf_Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL Developer Gui"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93AnalyticDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20AnalyticDB%20for%20MySQL%20AnalyticDB%20for%20PostgreSQL%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Process of API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 Obtain the information and the endpoint of an API operation
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain common header parameters
+- 3 API reference
+  - 3.1 Request structure
+  - 3.2 Common parameters
+  - 3.3 Responses
+  - 3.4 Signature mechanism
+  - 3.5 RAM authorization
+    - 3.5.1 Authorize resources by using RAM
+    - 3.5.2 Resources that can be authorized in RAM
+    - 3.5.3 Operations that can be authorized in RAM
+    - 3.5.4 Authentication rules of API operations
+  - 3.6 Instance management
+    - 3.6.1 CreateDBInstance
+    - 3.6.2 DescribeResourceUsage
+    - 3.6.3 ModifyDBInstanceMaintainTime
+    - 3.6.4 RestartDBInstance
+    - 3.6.5 AddBuDBInstanceRelation
+  - 3.7 Database management
+  - 3.8 Account management
+    - 3.8.1 CreateAccount
+    - 3.8.2 ResetAccountPassword
+    - 3.8.3 DescribeAccounts
+    - 3.8.4 ModifyAccountDescription
+  - 3.9 Security management
+    - 3.9.1 DescribeDBInstanceIPArrayList
+    - 3.9.2 ModifySecurityIps
+  - 3.10 Log management
+    - 3.10.1 DescribeSQLCollectorPolicy
+    - 3.10.2 DescribeSlowLogRecords
+    - 3.10.3 DescribeSQLLogFiles
+    - 3.10.4 ModifySQLCollectorPolicy
+    - 3.10.5 DescribeSQLLogRecords
+  - 3.11 Network management
+    - 3.11.1 AllocateInstancePublicConnection
+    - 3.11.2 DescribeDBInstanceNetInfo
+    - 3.11.3 ModifyDBInstanceConnectionString
+    - 3.11.4 ModifyDBInstanceNetworkType
+    - 3.11.5 ReleaseInstancePublicConnection
+    - 3.11.6 SwitchDBInstanceNetType
+  - 3.12 Tag management
+    - 3.12.1 TagResources
+    - 3.12.2 ListTagResources
+    - 3.12.3 UntagResources
+    - 3.12.4 DescribeTags
+  - 3.13 Appendix
+    - 3.13.1 Error codes
+      - 3.13.1.1 Client error codes
+      - 3.13.1.2 Server error codes
+    - 3.13.2 Instance types
+    - 3.13.3 Performance parameters table
+    - 3.13.4 Instance states
+    - 3.13.5 Terms
+- 4 Appendixes
+  - 4.1 STS overview
+    - 4.1.1 What is STS?
+    - 4.1.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -37,7 +104,7 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-### Process of API calls
+### 1.2 Process of API calls
 
 Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting from Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway.
 
@@ -66,9 +133,9 @@ the API call. View the developer guide of the cloud service that you want to use
 5. Obtain the endpoint of the cloud service.
 6. Obtain an SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -96,7 +163,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### Obtain the information and
+### 2.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -119,7 +186,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You need to provide only a single type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -161,7 +228,7 @@ want to obtain.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 **tuple**
 
@@ -275,7 +342,7 @@ e previous step.
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain common header
+### 2.5 Obtain common header parameters
 
 **parameters**
 
@@ -319,9 +386,9 @@ After you call an API operation that is used to query cloud service resource ins
 |---|---|
 | Department | The ID of the organization. |
 
-## API reference
+## 3 API reference
 
-### Request structure
+### 3.1 Request structure
 
 To call an API operation, you must send an HTTP GET request to the API endpoint. You must add the request parameters that correspond to the API operation. The processing results are returned in the response.
 
@@ -345,7 +412,7 @@ When you make an API request, you must set the Action parameter to the operation
 
 Requests and responses are both encoded in UTF-8.
 
-### Common parameters
+### 3.2 Common parameters
 
 This topic describes the AnalyticDB for PostgreSQL common parameters.
 
@@ -382,7 +449,7 @@ The system returns a unique RequestId for every API call, regardless of whether 
 </OperationName+Response>
 ```
 
-### Responses
+### 3.3 Responses
 
 API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. The response examples in this topic are formatted with line breaks or indents for a clear view. Actual response data is not formatted in the same manner as these examples.
 
@@ -427,7 +494,7 @@ JSON format `{`
     "Message": "The specified action is not supported."
 ```
 
-### Signature mechanism
+### 3.4 Signature mechanism
 
 AnalyticDB for PostgreSQLThe service authenticates every request. Therefore, whether you submit a request over HTTP or HTTPS, you must include a signature in the request. The system verifies the identity of the sender by using symmetric encryption with an AccessKey ID and an AccessKey Secret. Alibaba Cloud issues the AccessKey ID and AccessKey Secret to users (you can apply for and manage them on the Alibaba Cloud official website). The AccessKey ID identifies the user. The AccessKey Secret encrypts the signature string and serves as the key for the server to verify the signature string. You must keep the AccessKey Secret strictly confidential. Only you and Alibaba Cloud know it.AnalyticDB for PostgreSQL For more information about how to obtain an AccessKey, see Obtain an AccessKey pair. When you access the service, sign your request by performing the following steps:
 1. Use the request parameters to construct a canonicalized query string.
@@ -479,9 +546,9 @@ Assume that the AccessKey ID is testid and the AccessKey Secret is testsecret. T
 http://gpdb.example.com/?Timestamp=2012-12-26T10%3A33%3A56Z&Format=XML& AccessKeyId=testid&Action=DescribeDBInstances&SignatureMethod=HMAC-SHA1& RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2012-09-13&Sign atureVersion=1.0&Signature= Gfxxxxxxxxxxxxxxxxxxxx
 ```
 
-### RAM authorization
+### 3.5 RAM authorization
 
-#### Authorize resources by using RAM
+#### 3.5.1 Authorize resources by using RAM
 
 All instances you create by using your Alibaba Cloud Account are resources owned by that account. By default, the account has full operation permissions on its own resources. You can use Alibaba Cloud Resource Access Management (RAM) to grant RAM users access and management permissions to resources under your Alibaba Cloud Account.
 
@@ -489,7 +556,7 @@ All instances you create by using your Alibaba Cloud Account are resources owned
 
 Skip this section if you do not need to use RAM.
 
-#### Resources that can be authorized in
+#### 3.5.2 Resources that can be authorized in RAM
 
 **RAM**
 
@@ -503,13 +570,13 @@ Only one type of AnalyticDB for PostgreSQL resource can be authorized in RAM: DB
 
 $regionid: the ID of a region. Use an asterisk (*) to indicate the ID of any region. $dbinstanceid: the ID of a DBInstance. Use an asterisk (*) to indicate the ID of any instance. $accoutid: the userid of the resource owner. Use an asterisk (*) to indicate the ID of any account.
 
-#### Operations that can be authorized in
+#### 3.5.3 Operations that can be authorized in RAM
 
 **RAM**
 
 You can use Resource Access Management (RAM) to authorize access permissions on AnalyticDB for PostgreSQL resources. All operations except the DescribeRegions operation can be authorized.
 
-#### Authentication rules of API operations
+#### 3.5.4 Authentication rules of API operations
 
 When you call API operations to access AnalyticDB for PostgreSQL resources as a Resource Access Management (RAM) user, AnalyticDB for PostgreSQL checks with RAM whether the RAM user is granted the required permissions. The permissions to be checked are determined by the resources that are used by each API operation. For more information about authentication rules of each API operation, see Authentication rules of API operations. Table 1. Authentication rules of API operations
 
@@ -553,9 +620,9 @@ When you call API operations to access AnalyticDB for PostgreSQL resources as a 
 |---|---|
 | ReleaseInstancePublicConnection | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 
-### Instance management
+### 3.6 Instance management
 
-#### CreateDBInstance
+#### 3.6.1 CreateDBInstance
 
 Call CreateDBInstance to create an AnalyticDB for PostgreSQL instance. Request parameters
 
@@ -641,7 +708,7 @@ Sample success responses `XML` format
   "DBInstanceId":"gp-ty9wj0p3qy68*****"
 ```
 
-#### DescribeResourceUsage
+#### 3.6.2 DescribeResourceUsage
 
 You can call this operation to query the disk space that is used by an instance.
 
@@ -700,7 +767,7 @@ Sample success responses `XML` format
     "DiskUsed":285212672
 ```
 
-#### ModifyDBInstanceMaintainTime
+#### 3.6.3 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an instance. Typically, the maintenance window is set to the off-peak hours to minimize the impact on services. Alibaba Cloud performs instance maintenance at the maintenance window that you specify.
 
@@ -743,7 +810,7 @@ Sample success responses `XML` format
    "RequestId": "CA9A34C8-AC95-413B-AC6A-CEBF67429CCA"
 ```
 
-#### RestartDBInstance
+#### 3.6.4 RestartDBInstance
 
 You can call this operation to restart an instance.
 
@@ -784,7 +851,7 @@ Sample success responses `XML` format
   "RequestId":"A7356493-7141-4393-8951-CDA8AB5D67EC"
 ```
 
-#### AddBuDBInstanceRelation
+#### 3.6.5 AddBuDBInstanceRelation
 
 You call this operation to associate the BusinessUnit parameter to an instance.
 
@@ -832,11 +899,11 @@ Sample success responses `XML` format
   "DBInstanceName": "gp-xxxxxx"
 ```
 
-### Database management
+### 3.7 Database management
 
-### Account management
+### 3.8 Account management
 
-#### CreateAccount
+#### 3.8.1 CreateAccount
 
 You can call this operation to create an account for a database.
 
@@ -879,7 +946,7 @@ Sample success responses `XML` format
   "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
 ```
 
-#### ResetAccountPassword
+#### 3.8.2 ResetAccountPassword
 
 You can call this operation to reset the password for your account in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked.
 
@@ -921,7 +988,7 @@ Sample success responses `XML` format
     "RequestId":"187C80FC-75C4-477C-BBF2-A368A36D041C"
 ```
 
-#### DescribeAccounts
+#### 3.8.3 DescribeAccounts
 
 You can call this operation to query the information of a database account.
 
@@ -993,7 +1060,7 @@ Sample success responses `XML` format
     "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
 ```
 
-#### ModifyAccountDescription
+#### 3.8.4 ModifyAccountDescription
 
 You can call this operation to modify the description of a database account in an instance.
 
@@ -1033,9 +1100,9 @@ Sample success responses `XML` format
     "RequestId": "99BBBD5E-B5D8-4FC8-B8BF-FB1A0A38BBA2"
 ```
 
-### Security management
+### 3.9 Security management
 
-#### DescribeDBInstanceIPArrayList
+#### 3.9.1 DescribeDBInstanceIPArrayList
 
 You can call this operation to query the list of one or more IP addresses that are allowed to access an instance.
 
@@ -1102,7 +1169,7 @@ Sample success responses `XML` format
     "RequestId":"CB7AA0BF-BE41-480E-A3DC-C97BF85A391B"
 ```
 
-#### ModifySecurityIps
+#### 3.9.2 ModifySecurityIps
 
 You can call this operation to modify the IP addresses that are allowed to access an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not locked.
 
@@ -1146,9 +1213,9 @@ Sample success responses `XML` format
   "RequestId":"871C698F-B43D-4D1D-ACD6-DF56B0F89978"
 ```
 
-### Log management
+### 3.10 Log management
 
-#### DescribeSQLCollectorPolicy
+#### 3.10.1 DescribeSQLCollectorPolicy
 
 You can call this operation to query whether the SQL collection feature is enabled for an instance.
 
@@ -1190,7 +1257,7 @@ Sample success responses `XML` format
     "SQLCollectorStatus":"Enable"
 ```
 
-#### DescribeSlowLogRecords
+#### 3.10.2 DescribeSlowLogRecords
 
 Queries slow SQL query details of a database in an instance within a specific time range.
 
@@ -1294,7 +1361,7 @@ Sample success responses `XML` format
 
 `]`
 
-#### DescribeSQLLogFiles
+#### 3.10.3 DescribeSQLLogFiles
 
 You can call this operation to query the list of SQL audit log files.
 
@@ -1381,7 +1448,7 @@ Sample success responses `XML` format
     "PageRecordCount": 1
 ```
 
-#### ModifySQLCollectorPolicy
+#### 3.10.4 ModifySQLCollectorPolicy
 
 You can call this operation to enable or disable the SQL collection feature for an instance.
 
@@ -1423,7 +1490,7 @@ Sample success responses `XML` format
   "RequestId":"4FA1F1D1-50A6-4F60-9A78-5752F2076A53"
 ```
 
-#### DescribeSQLLogRecords
+#### 3.10.5 DescribeSQLLogRecords
 
 You can call this operation to query the SQL audit logs generated for an instance.
 
@@ -1523,9 +1590,9 @@ Sample success responses `XML` format
     "PageRecordCount": 1
 ```
 
-### Network management
+### 3.11 Network management
 
-#### AllocateInstancePublicConnection
+#### 3.11.1 AllocateInstancePublicConnection
 
 You can call this operation to specify a public endpoint of the instance.
 
@@ -1564,7 +1631,7 @@ Sample success responses `XML` format
     "RequestId": "ADD6EA90-EECB-4C12-9F26-0B6DB58710EF"
 ```
 
-#### DescribeDBInstanceNetInfo
+#### 3.11.2 DescribeDBInstanceNetInfo
 
 You can call this operation to query the connection information of an instance.
 
@@ -1643,7 +1710,7 @@ Sample success responses `XML` format
     "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
 ```
 
-#### ModifyDBInstanceConnectionString
+#### 3.11.3 ModifyDBInstanceConnectionString
 
 You can call this operation to modify the internal or public endpoint of an instance.
 
@@ -1685,7 +1752,7 @@ Sample success responses `XML` format
  "RequestId": "29B0BF34-D069-4495-92C7-FA6D94528A9E"
 ```
 
-#### ModifyDBInstanceNetworkType
+#### 3.11.4 ModifyDBInstanceNetworkType
 
 You can call this operation to switch the network type of an instance between VPC and classic network.
 
@@ -1729,7 +1796,7 @@ Sample success responses `XML` format
   "RequestId":"2d0c35a9-f5da-44ba-852d-741e27b7eb0b"
 ```
 
-#### ReleaseInstancePublicConnection
+#### 3.11.5 ReleaseInstancePublicConnection
 
 You can call this operation to release the public endpoint of an instance.
 
@@ -1770,7 +1837,7 @@ Sample success responses `XML` format
    "RequestId": "9CEF7037-4158-4A65-BEC7-2A1541F6FE74"
 ```
 
-#### SwitchDBInstanceNetType
+#### 3.11.6 SwitchDBInstanceNetType
 
 You can call this operation to switch between internal and public endpoints.
 
@@ -1811,9 +1878,9 @@ Sample success responses `XML` format
 {"RequestId":"FA67B751-2A2D-470C-850B-D6B93699D35C"}
 ```
 
-### Tag management
+### 3.12 Tag management
 
-#### TagResources
+#### 3.12.1 TagResources
 
 Add tags to specific instances.
 
@@ -1856,7 +1923,7 @@ Sample success responses `XML` format
 {"RequestId":"23DD5EDB-EAC7-44A5-A68E-798BB085D27F"}
 ```
 
-#### ListTagResources
+#### 3.12.2 ListTagResources
 
 You can call this operation to query tags that are bound to one or more instances.
 
@@ -1920,7 +1987,7 @@ Sample success responses `XML` format
             "TagValue": "TestValue"
 ```
 
-#### UntagResources
+#### 3.12.3 UntagResources
 
 Removes tags from specific instances.
 
@@ -1962,7 +2029,7 @@ Sample success responses `XML` format
 {"RequestId":"8EC13467-A84C-401F-A4A0-AF893066FBA1"}
 ```
 
-#### DescribeTags
+#### 3.12.4 DescribeTags
 
 You can call this operation to query the tags of an instance.
 
@@ -2015,11 +2082,11 @@ Sample success responses `XML` format
 
 `]`
 
-### Appendix
+### 3.13 Appendix
 
-#### Error codes
+#### 3.13.1 Error codes
 
-##### Client error codes
+##### 3.13.1.1 Client error codes
 
 **Common errors**
 
@@ -2180,7 +2247,7 @@ Sample success responses `XML` format
 | ProxyConnectionPersis tParametersInvalid | ProxyConnectionPersist parameter out of range. | 400 |
 | InvalidConfigValue | parameter config table not exits or data error. | 400 |
 
-##### Server error codes
+##### 3.13.1.2 Server error codes
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
@@ -2189,7 +2256,7 @@ Sample success responses `XML` format
 |---|---|---|
 | InternalError | The request processing has failed due to some unknown error, exception or failure. The request processing | 500 |
 
-#### Instance types
+#### 3.13.2 Instance types
 
 Table 1. Instance types
 
@@ -2199,7 +2266,7 @@ Table 1. Instance types
 | gpdb.group.segsdx 2 | 2 | 16,384 | 160 | 300 | SSD |
 | gpdb.group.segsdx 16 | 16 | 131,072 | 1,280 | 2,400 | SSD |
 
-#### Performance parameters table
+#### 3.13.3 Performance parameters table
 
 | Parameter name | Metric | Unit | Description |
 |---|---|---|---|
@@ -2228,7 +2295,7 @@ Table 1. Instance types
 
 Table 1. Performance parameters table
 
-#### Instance states
+#### 3.13.4 Instance states
 
 Table 1. Instance states
 
@@ -2251,7 +2318,7 @@ Table 1. Instance states
 | DBInstanceNetTypeChanging | The network type is being changed. |
 | GuardSwitching | The instance is undergoing a failover. |
 
-#### Terms
+#### 3.13.5 Terms
 
 Table 1. Terms
 
@@ -2268,11 +2335,11 @@ Table 1. Terms
 | AccountName | database account name | The name of a database account identifies the account. The name must be unique among all the database accounts that are in the same instance. |
 | Region | region | The region indicates the data center in the specified region. |
 
-## Appendixes
+## 4 Appendixes
 
-### STS overview
+### 4.1 STS overview
 
-#### What is STS?
+#### 4.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -2284,7 +2351,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 4.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 

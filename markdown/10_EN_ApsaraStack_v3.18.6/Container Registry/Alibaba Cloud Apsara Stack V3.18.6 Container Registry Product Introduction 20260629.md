@@ -2,18 +2,28 @@
 title: "Container Registry Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Container Registry Product Introduction 20260629.pdf"
+source_pdf: "bbdf132882a1cdf5_Alibaba Cloud Apsara Stack V3.18.6 Container Registry Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Registry%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Container Registry Product Introduction 20260629
 
-## Container Registry
+## Table of Contents
+
+- 1 Container Registry
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Features
+  - 1.4 Scenarios
+  - 1.5 Key concepts
+  - 1.6 Limitations
+
+## 1 Container Registry
 
 Container Registry is a platform that allows you to manage and distribute cloud-native artifacts in a secure and efficient manner. Cloud-native artifacts include container images and Helm charts that meet the standards of Open Container Initiative (OCI). Container Registry provides the following features: image permission management, synchronous image distribution, and content signing. The features allow you to manage the entire lifecycle of container images. Container Registry simplifies the setup and O&M of container registry. Container Registry is integrated with Alibaba Cloud services such as Container Service for Kubernetes (ACK) to easily create and deliver a one-stop solution for cloud-native applications.
 
-### Product details
+### 1.1 Product details
 
 Container Registry is a platform that lets you manage and distribute cloud-native artifacts in a secure and efficient manner. Cloud-native artifacts include container images and Helm charts that meet the standards of Open Container Initiative (OCI). Container Registry provides the following features: artifact management, image replication, artifact security, and deployment integration.
 
@@ -33,12 +43,7 @@ Encrypted image distribution: Distribute container images securely using the HTT
 
 Secret-free pulls: When deploying on a container service platform, you can configure secret-free pulls to avoid the need to set a Secret for each pull operation. Deployment selection: When deploying on a container service platform, you can visually select image repositories and versions from ACR.
 
-### Benefits
-
-| Primary Feature | Secondary Feature | Description | ACR Standard Edition | ACR Premium Edition | ACR Multi- instance Edition |
-|---|---|---|---|---|---|
-| Instance Management | Create Multiple Instances | Supports creating multiple instances. By default, up to 100 instances are supported. | Not supported | Not supported | Supported |
-|  | Cross- instance Image Sync | Supports synchronizing image repositories across instances. | Not supported | Not supported | Supported |
+### 1.2 Benefits
 
 Container Registry provides you with the following benefits: ease of use, security, and integrability.
 
@@ -58,34 +63,39 @@ Supports large-scale image distribution in a single region and concurrent image 
 
 Integrated with Alibaba Cloud services such as Container Service for Kubernetes (ACK) to implement continuous deployment after images are updated.
 
-### Features
+### 1.3 Features
 
 This topic describes the core features of Container Registry and the availability of each feature in different ACR editions. These features include instance management, artifact distribution and management, container image signing and management, and integration with container platforms for passwordless pull and visual deployment. These capabilities help enterprises efficiently manage the full lifecycle of container images.
 
-|  | Delete Instance | Supports deleting and releasing image instances. | Not supported | Not supported | Supported |
+| Primary Feature | Secondary Feature | Description | ACR Standard Edition | ACR Premium Edition | ACR Multi- instance Edition |
+|---|---|---|---|---|---|
+| Instance Management | Create Multiple Instances | Supports creating multiple instances. By default, up to 100 instances are supported. | Not supported | Not supported | Supported |
+|   | Cross- instance Image Sync | Supports synchronizing image repositories across instances. | Not supported | Not supported | Supported |
+
+|   | Delete Instance | Supports deleting and releasing image instances. | Not supported | Not supported | Supported |
 |---|---|---|---|---|---|
 | Artifact Distribution | Manual Sync | Supports manually triggering sync for a specific image version to enable disaster recovery and backup across regions. | Supported | Supported | Supported |
-|  | Automatic Sync | Supports automatic synchronizati on based on sync rules after an image is pushed. | Not supported | Supported | Supported |
-|  | Triggers | Supports automatically triggering events when a container image is updated. | Supported | Supported | Supported |
-|  | DADI Image Acceleration | Supports DADI image acceleration. | Not supported | Supported | Supported |
-|  | Encrypted Image Distribution | Supports distributing container images using the HTTPS encryption protocol. | Supported | Supported | Supported |
+|   | Automatic Sync | Supports automatic synchronizati on based on sync rules after an image is pushed. | Not supported | Supported | Supported |
+|   | Triggers | Supports automatically triggering events when a container image is updated. | Supported | Supported | Supported |
+|   | DADI Image Acceleration | Supports DADI image acceleration. | Not supported | Supported | Supported |
+|   | Encrypted Image Distribution | Supports distributing container images using the HTTPS encryption protocol. | Supported | Supported | Supported |
 
-|  | Image Signing | Supports signing container images to ensure end- to-end consistency from distribution to deployment and prevent man-in-the- middle attacks and unauthorized image updates or execution. | Supported | Supported | Not supported |
+|   | Image Signing | Supports signing container images to ensure end- to-end consistency from distribution to deployment and prevent man-in-the- middle attacks and unauthorized image updates or execution. | Supported | Supported | Not supported |
 |---|---|---|---|---|---|
-| Artifact Security |  |  |  |  |  |
-|  | Signing Management | Supports GUI- based operations to add signatures at the instance and namespace levels. Note This feature depends on KMS and Containe r Security products and requires them to be used together. | Supported | Supported | Supported |
+| Artifact Security |   |   |   |   |   |
+|   | Signing Management | Supports GUI- based operations to add signatures at the instance and namespace levels. Note This feature depends on KMS and Containe r Security products and requires them to be used together. | Supported | Supported | Supported |
 
 | Artifact Management | Container Images | Supports immutable image versions. | Not supported | Supported | Supported |
 |---|---|---|---|---|---|
-|  |  | Supports secure hosting of container images organized by namespace. | Not supported | Supported | Supported |
-|  |  | Supports querying image versions and deleting image repositories. | Not supported | Supported | Supported |
-|  |  | Supports permission management for ASCM departments and resource sets, along with RAM user permissions. | Supported | Supported | Supported |
+|   |   | Supports secure hosting of container images organized by namespace. | Not supported | Supported | Supported |
+|   |   | Supports querying image versions and deleting image repositories. | Not supported | Supported | Supported |
+|   |   | Supports permission management for ASCM departments and resource sets, along with RAM user permissions. | Supported | Supported | Supported |
 | Deployment Integration | Passwordless Pull | Supports passwordless pull configuration during deployment on container platforms, eliminating the need to reconfigure Secrets for every deployment. | Supported | Supported | Not supported |
 
-|  | Deployment Selection | Supports visually selecting image repositories and versions from ACR during deployment on container platforms. | Supported | Supported | Supported |
+|   | Deployment Selection | Supports visually selecting image repositories and versions from ACR during deployment on container platforms. | Supported | Supported | Supported |
 |---|---|---|---|---|---|
 
-### Scenarios
+### 1.4 Scenarios
 
 Container Registry is suitable for scenarios such as continuous delivery and automatic image synchronization.
 
@@ -95,15 +105,19 @@ Container Registry is integrated with Jenkins to automate DevOps pipelines from 
 
 **Automatic image synchronization**
 
-Your containerized applications may require deployment across multiple regions. In such scenarios, you can commit a container application once for deployment to multiple regions. The image synchronization feature of Container Registry improves automated distribution efficiency, reduces manual O&M costs, and enhances disaster recovery capabilities. Supports synchronization across regions. Supports both manual synchronization and automatic synchronization triggered by image updates. Scheduling optimization Optimizes the scheduling of image synchronization to increase the success rate. Security and compliance Supports data encryption to ensure the security of the synchronized images.
+Your containerized applications may require deployment across multiple regions. In such scenarios, you can commit a container application once for deployment to multiple regions. The image synchronization feature of Container Registry improves automated distribution efficiency, reduces manual O&M costs, and enhances disaster recovery capabilities. Multi-scenario synchronization Supports synchronization across regions. Supports both manual synchronization and automatic synchronization triggered by image updates. Scheduling optimization Optimizes the scheduling of image synchronization to increase the success rate. Security and compliance Supports data encryption to ensure the security of the synchronized images.
 
-### Key concepts
+### 1.5 Key concepts
 
 This topic introduces the key concepts of Alibaba Cloud Container Registry (ACR) to help you build a foundational understanding of the service.
 
 **Container image**
 
-A container image is a standardized delivery artifact that contains an application and all its dependencies. You can build an application into a container image with a Dockerfile, push the image to an image repository, and then pull it to start containers in your test or production environments. To manage private images, you first create a container registry instance and image repositories within it. After logging in to a repository, you can push new versions of a modified image or push an image built locally.
+A container image is a standardized delivery artifact that contains an application and all its dependencies. You can build an application into a container image with a Dockerfile, push the image to an image repository, and then pull it to start containers in your test or production environments.
+
+**Container registry instance**
+
+To manage private images, you first create a container registry instance and image repositories within it. After logging in to a repository, you can push new versions of a modified image or push an image built locally.
 
 **OCI artifact**
 
@@ -127,13 +141,15 @@ Object Storage Service (OSS) is an Alibaba Cloud storage service that offers hig
 
 **OSS bucket**
 
-An OSS bucket is a container that stores objects in OSS. All objects must reside in a bucket. A bucket has configurable properties, such as its region, access permissions, and storage class. You can create different types of buckets to meet your specific data storage needs. The Enterprise Edition of Alibaba Cloud Container Registry (ACR) uses a customizable OSS bucket to host container images. Before using Container Registry (ACR), understand its limitations.
+An OSS bucket is a container that stores objects in OSS. All objects must reside in a bucket. A bucket has configurable properties, such as its region, access permissions, and storage class. You can create different types of buckets to meet your specific data storage needs. The Enterprise Edition of Alibaba Cloud Container Registry (ACR) uses a customizable OSS bucket to host container images.
 
-### Limitations
+### 1.6 Limitations
 
-| Limit | Value |  |  |
+Before using Container Registry (ACR), understand its limitations.
+
+| Limit | Value |   |   |
 |---|---|---|---|
-|  | Standard edition | Advanced edition | Multi-instance edition |
+|   | Standard edition | Advanced edition | Multi-instance edition |
 | Number of namespaces | 15 | 1,000 | 1,000 |
 | Number of image repositories per namespace | 1,000 | 100,000 | 100,000 |
 | Number of instances | / | / | 100 |

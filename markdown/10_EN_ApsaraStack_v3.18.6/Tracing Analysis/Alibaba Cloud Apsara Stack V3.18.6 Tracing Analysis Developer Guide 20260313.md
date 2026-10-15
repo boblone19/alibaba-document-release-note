@@ -2,18 +2,30 @@
 title: "Tracing Analysis Developer Guide 20260313"
 product_version: "V3.18.6"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis Developer Guide 20260313.pdf"
+source_pdf: "9c214ec3437c0080_Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis Developer Guide 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tracing%20Analysis%20Developer%20Guide%2020260313.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Tracing Analysis Developer Guide 20260313
 
-Tracing Analysis
+## Table of Contents
 
-## API usage
+- 1 API usage
+  - 1.1 Request method
+  - 1.2 RAM authentication
+  - 1.3 Request signatures
+  - 1.4 Common parameters
+  - 1.5 Obtain the AccessKey pair of a personal account
+- 2 API Reference
+  - 2.1 List of operations by function
+  - 2.2 GetTrace
+  - 2.3 QueryMetric
+  - 2.4 SearchTraces
 
-### Request method
+## 1 API usage
+
+### 1.1 Request method
 
 To send a Tracing Analysis API request, you must send an HTTP GET request to the Tracing Analysis endpoint. You must add the request parameters that correspond to the API operation being called. After you call the API, the system returns a response. The request and response are encoded in UTF-8.
 
@@ -42,24 +54,24 @@ The sample request is formatted to improve readability.
 https://xtrace.cn-hangzhou.aliyuncs.com/?Action=GetTagKey &AccessKeyId=key-test &Format=JSON &RegionId=cn-hangzhou &SecureTransport=true &SignatureMethod=HMAC-SHA1 &SignatureVersion=1.0 &Timestamp=2020-03-18T06%3A06%3A30Z &Version=2019-08-08 ...
 ```
 
-### RAM authentication
+### 1.2 RAM authentication
 
 Before you call Alibaba Cloud API operations as a Resource Access Management (RAM) user, you must attach a policy to the RAM user by using the Alibaba Cloud account to which the RAM user belongs to grant permissions to the RAM user.
 
 **Policies**
+
+**oces**
+
+The following table describes the policies supported by Tracing Analysis.
 
 | Policy | Type | Description |
 |---|---|---|
 | AliyunTracingAnalysisFullAc cess | System policy | Grants the full permissions on Tracing Analysis. |
 | AliyunTracingAnalysisReadO nlyAccess | System policy | Grants the read-only permissions on Tracing Analysis. |
 
-Tracing Analysis
+After one of the preceding polices is attached to a RAM user, the RAM user can call Tracing Analysis API operations.
 
-**oces**
-
-The following table describes the policies supported by Tracing Analysis. After one of the preceding polices is attached to a RAM user, the RAM user can call Tracing Analysis API operations.
-
-### Request signatures
+### 1.3 Request signatures
 
 You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. Each API request must contain a signature, regardless of whether the request is sent over HTTP or HTTPS.
 
@@ -90,7 +102,7 @@ Signature = Base64( HMAC-SHA1( AccessSecret, UTF-8-Encoding-Of( StringToSign)) )
 
 To calculate a signature, perform the following steps:
 1. Compose and encode a string-to-sign.
-i. Use the request parameters to create a canonicalized query string.
+i. Use the request parameters to create a canonicalized query string. a. Create a canonicalized query string by arranging the request parameters, including all common and operation-specific parameters except **Signature**, in alphabetical order. If the request is sent by using the GET method, use the parameters in the uniform resource identifier (URI) of the request, which are the parameters that follow the question mark ( ? ) and separated with ampersands ( `&` ). b. Encode the name and value of each request parameter. The names and values must be URL encoded by using the UTF-8 character set. The following table describes the encoding rules.
 
 | Character | Encoding rule |
 |---|---|
@@ -99,7 +111,7 @@ i. Use the request parameters to create a canonicalized query string.
 | Extended UTF-8 characters | These characters are encoded in the %XY%ZA… format. |
 | Spaces | Spaces are encoded as %20. Do not encode spaces as plus signs (+). This encoding rule is different from the rule that is used to encode data by using the encryption algorithm for the application/x-www-form-urlencoded MIME type, such as the implementation of java.net.URLEncoder in the Java standard library. However, you can encode characters by using the standard library and then replace the plus signs (+) in the encoded string with %20, the asterisks (*) with %2A, and %7E with tildes (~). This algorithm can be implemented by using the percentEncode function: private static final String ENCODING = "UTF-8"; private static String percentEncode(String value) throws UnsupportedEncodingException { return value != null ? URLEncoder.encode(value, ENCODING).replace("+", "%20").replace("*", "%2A").replace("%7E", "~") : null; } |
 
-Tracing Analysis a. Create a canonicalized query string by arranging the request parameters, including all common and operation-specific parameters except **Signature**, in alphabetical order. If the request is sent by using the GET method, use the parameters in the uniform resource identifier (URI) of the request, which are the parameters that follow the question mark ( ? ) and separated with ampersands ( & ). b. Encode the name and value of each request parameter. The names and values must be URL encoded by using the UTF-8 character set. The following table describes the encoding rules. c. Connect the encoded parameter names and values by using equal signs (=). Tracing Analysis d. Sort the connected parameter name and value pairs in the order specified in Step i. Then, connect the pairs with ampersands ( & ) to construct the canonicalized query string. ii. Create a string-to-sign from the encoded canonicalized query string based on the following rules:
+c. Connect the encoded parameter names and values by using equal signs (=). d. Sort the connected parameter name and value pairs in the order specified in Step i. Then, connect the pairs with ampersands ( `&` ) to construct the canonicalized query string. ii. Create a string-to-sign from the encoded canonicalized query string based on the following rules:
 
 ```
 StringToSign=
@@ -110,7 +122,7 @@ StringToSign=
 
 where:
 **HTTPMethod**: the HTTP method used to make the request, such as GET.
-**percentEncode(“/”)**: encodes forward slashes ( / ) as %2F based on the URL
+**percentEncode(“/”)**: encodes forward slashes ( `/` ) as %2F based on the URL
 encoding rules described in Step ii.
 **percentEncode(CanonicalizedQueryString)**: encodes the canonicalized query
 string based on the URL encoding rules described in Step ii.
@@ -119,15 +131,11 @@ i. Calculate the HMAC value of the string-to-sign based on RFC 2104.
 
 **Note**
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand ( & ) (ASCII: 38) is appended is used as the key for HMAC value calculation. ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the signature string to the request as the ************* parameter.
+Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand ( `&` ) (ASCII: 38) is appended is used as the key for HMAC value calculation. ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the signature string to the request as the ************* parameter.
 
 **Note**
 
-The signature that you add to the request must also be URL encoded.
-
-**Example**
-
-The following example demonstrates how to sign an API request for calling the DescribeRegions operation. In this example, the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The following request URL needs to be signed:
+The signature that you add to the request must also be URL encoded. The following example demonstrates how to sign an API request for calling the DescribeRegions operation. In this example, the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The following request URL needs to be signed:
 
 ```
 http://ecs.aliyuncs.com/?Timestamp=2016-02- 23T12:46:24Z&Format=XML&AccessKeyId=testid&Action=DescribeRegions&SignatureMethod=HMAC- SHA1&SignatureNonce=3ee8c1b8-xxxx-xxxx-xxxx-4e0ad82fd6cf&Version=2014-05- 26&SignatureVersion=1.0
@@ -141,6 +149,18 @@ OLeaidS1JvxuMvnyHOwuJ+uX5qY=
 
 After the signature string is added to the request as the **Signature** parameter, the following URL is obtained:
 
+```
+http://ecs.aliyuncs.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML&SignatureNonce=3ee8c1b8-83d3-44a f-a94f-4e0ad82fd6cf&Version=2014-05- 26&AccessKeyId=testid&Signature=OLeaidS1JvxuMvnyHOwuJ+uX5qY=&SignatureMethod=HMAC-SHA1& Timestamp=2016-02-23T12%3A46%3A24Z
+```
+
+### 1.4 Common parameters
+
+This topic describes the common request and response parameters that must be included in all Tracing Analysis API requests.
+
+**Common request parameters**
+
+Table 1. Common request parameters
+
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
 | Format | Strin g | No | The format in which to return the response. Valid values: JSON and XML. Default value: JSON. |
@@ -152,24 +172,10 @@ After the signature string is added to the request as the **Signature** paramete
 | SignatureVer sion | Strin g | Yes | The version of the signature encryption algorithm. Set the value to 1.0. |
 | SignatureNo nce | Strin g | Yes | A unique, random number that is used to prevent replay attacks. You must use different numbers for different requests. |
 
-Tracing Analysis
-
-```
-http://ecs.aliyuncs.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML&SignatureNonce=3ee8c1b8-83d3-44a f-a94f-4e0ad82fd6cf&Version=2014-05- 26&AccessKeyId=testid&Signature=OLeaidS1JvxuMvnyHOwuJ+uX5qY=&SignatureMethod=HMAC-SHA1& Timestamp=2016-02-23T12%3A46%3A24Z
-```
-
-### Common parameters
-
-This topic describes the common request and response parameters that must be included in all Tracing Analysis API requests.
-
-**Common request parameters**
-
-Table 1. Common request parameters
-
 | ResourceOw nerAccount | Strin g | No | The Alibaba Cloud account to which the resource that you want to access belongs. |
 |---|---|---|---|
 
-Tracing Analysis Sample request:
+Sample request:
 
 ```
 https://xtrace.cn-hangzhou.aliyuncs.com/?Action=GetTagKey &AccessKeyId=key-test &Format=JSON &RegionId=cn-hangzhou &SecureTransport=true &SignatureMethod=HMAC-SHA1 &SignatureVersion=1.0 &Timestamp=2020-03-18T06%3A06%3A30Z &Version=2019-08-08 ...
@@ -192,23 +198,26 @@ API responses use the HTTP response format. Responses can be returned in the JSO
 JSON format
 
 ```json
-{
     "RequestId":"4C467B38-3910-447D-87BC-AC049166F216",
     /*Return Result Data*/
-    }
 ```
 
-### Obtain the AccessKey pair of a
+### 1.5 Obtain the AccessKey pair of a personal account
 
 **personal account**
 
 **Procedure**
 
 1. Log on to the Apsara Uni-manager Management Console.
-Tracing Analysis
 2. In the upper-right corner of the homepage, click the profile picture and then click **User**
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pairs of your account.
+
+## 2 API Reference
+
+### 2.1 List of operations by function
+
+The following table lists API operations available for use in Tracing Analysis.
 
 | Operation | Description |
 |---|---|
@@ -216,38 +225,30 @@ Tracing Analysis
 | QueryMetric | Queries the information about a metric. |
 | SearchTraces | Queries a list of traces. You can filter traces by time, service name, IP address, span name, and tag. |
 
+### 2.2 GetTrace
+
+Queries the information about a trace.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | GetTrace | The operation that you want to perform. Set the value to GetTrace. |
 | RegionId | String | Yes | cn-beijing | The region ID. |
 | TraceID | String | Yes | 1c6881aab8419 1a4 | The unique ID of the trace. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1E2B6A4C-6B83- 4062-8B6F- AEEC1FC47DED | The request ID. |
-| Spans | Array of Span |  | The spans that the trace contains. |
+| Spans | Array of Span |   | The spans that the trace contains. |
 | Duration | Long | 1000 | The duration of the trace. Unit: milliseconds. |
-
-Tracing Analysis
-
-## API Reference
-
-### List of operations by function
-
-The following table lists API operations available for use in Tracing Analysis.
-
-### GetTrace
-
-Queries the information about a trace.
-
-**Request parameters**
-
-**Response parameters**
 
 | HaveStack | Boolean | false | Indicates whether the span has child spans. Valid values: true : The span has child spans. false : The span does not have child spans. |
 |---|---|---|---|
-| LogEventList | Array of LogEvent |  | The log events. |
-| TagEntryList | Array of TagEntry |  | The tags. |
+| LogEventList | Array of LogEvent |   | The log events. |
+| TagEntryList | Array of TagEntry |   | The tags. |
 | Key | String | logLevel | The tag key of the log event. |
 | Value | String | Warning | The tag value of the log event. |
 | Timestamp | Long | 158368320204700 0 | The time when the log event was generated. |
@@ -260,23 +261,19 @@ Queries the information about a trace.
 | ServiceName | String | server1 | The service name. |
 | SpanId | String | fec891bb8f8XXX | The span ID. |
 
-Tracing Analysis
-
-| TagEntryList | Array of TagEntry |  | The tags. |
+| TagEntryList | Array of TagEntry |   | The tags. |
 |---|---|---|---|
 | Key | String | logLevel | The tag key of the span. |
 | Value | String | Warning | The tag value of the span. |
 | Timestamp | Long | 158368320204700 0 | The time when the span was generated. |
 | TraceID | String | 1c6881aab84191a 4 | The unique ID of the trace. |
 
-Tracing Analysis
-
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-beijing &TraceID=1c6881aab84191a4 &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetTrace &RegionId=cn-beijing &TraceID=1c6881aab84191a4 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -309,15 +306,9 @@ Sample success responses `XML` format
 </Spans>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | QueryMetric | The operation that you want to perform. Set the value to QueryMetric. |
-| EndTime | Long | Yes | 1575622455686 | The end of the time range to query. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
-
-Tracing Analysis `JSON` format
+`JSON` format
 
 ```json
-{
     "RequestId": "1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED",
     "Spans": {
         "HaveStack": false,
@@ -335,23 +326,28 @@ Tracing Analysis `JSON` format
         "TagEntryList": {
             "Value": "Warning",
             "Key": "logLevel"
-        },
+```
+
+`},`
+
+```json
         "LogEventList": {
             "Timestamp": 1583683202047000,
             "TagEntryList": {
                 "Value": "Warning",
                 "Key": "logLevel"
-            }
-        }
-    }
-}
 ```
 
-### QueryMetric
+### 2.3 QueryMetric
 
 Queries the information about a metric.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | QueryMetric | The operation that you want to perform. Set the value to QueryMetric. |
+| EndTime | Long | Yes | 1575622455686 | The end of the time range to query. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 
 | IntervalInSec | Integer | Yes | 60 | The interval at which you want to query metric data. Unit: seconds. |
 |---|---|---|---|---|
@@ -363,8 +359,6 @@ Queries the information about a metric.
 | Filters.N.Key | String | No | http.status code _ | The key of the field that you want to use to filter the returned entries. |
 | Filters.N.Value | String | No | 200 | The value of the field that you want to use to filter the returned entries. |
 
-Tracing Analysis
-
 | Dimensions.N | RepeatL ist | No | RT | The field that you want to use to group the returned entries. |
 |---|---|---|---|---|
 | Order | String | No | ASC | The order in which you want to sort the returned entries. Valid values: ASC DESC |
@@ -373,24 +367,40 @@ Tracing Analysis
 | ConsistencyData Key | String | No | N/A | This parameter is not supported in Apsara Stack. |
 | ConsistencyQuer yStrategy | String | No | N/A | This parameter is not supported in Apsara Stack. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | String | { "RequestId": "E2373982-D8CD- 413D-B991- 8EB678C01B4F", "Data": "{\"data\": [{\"date\":1583686 800000,\"count\":0 ,\"rt\":0,\"rpc\":\"chi ldSpan3\"}} | The response parameters. |
 | RequestId | String | 1E2B6A4C-6B83- 4062-8B6F- AEEC1FC47DED | The request ID. |
-
-Tracing Analysis
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&EndTime=1575622455686 &IntervalInSec=60 &Measures.1=count &Metric=appstat.incall &StartTime=1575561600000 &<Common request parameters>
+http(s)://[Endpoint]/?Action=QueryMetric &EndTime=1575622455686 &IntervalInSec=60 &Measures.1=count &Metric=appstat.incall &StartTime=1575561600000 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
+
+```xml
+<RequestId>1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED</RequestId> <Data>{ "RequestId": "E2373982-D8CD-413D-B991-8EB678C01B4F", "Data": "{\"data\":[{\"dat e\":1583686800000,\"count\":0,\"rt\":0,\"rpc\":\"childSpan3\"}}</Data>
+```
+
+`JSON` format
+
+```json
+    "RequestId": "1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED",
+    "Data": "{ \"RequestId\": \"E2373982-D8CD-413D-B991-8EB678C01B4F\", \"Data\": \"{\\
+\"data\\\": [{\\\"date\\\":1583686800000,\\\"count\\\":0,\\\"rt\\\":0,\\\"rpc\\\":\\\"childSpan3\\\"}
+```
+
+### 2.4 SearchTraces
+
+Queries a list of traces. You can filter traces by time, service name, IP address, span name, and tag.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -401,27 +411,6 @@ Sample success responses `XML` format
 | ServiceName | String | No | service 1 | The service name. |
 | OperationName | String | No | /api | The span name. |
 
-Tracing Analysis
-
-```xml
-<RequestId>1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED</RequestId> <Data>{ "RequestId": "E2373982-D8CD-413D-B991-8EB678C01B4F", "Data": "{\"data\":[{\"dat e\":1583686800000,\"count\":0,\"rt\":0,\"rpc\":\"childSpan3\"}}</Data>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "1E2B6A4C-6B83-4062-8B6F-AEEC1FC47DED",
-    "Data": "{ \"RequestId\": \"E2373982-D8CD-413D-B991-8EB678C01B4F\", \"Data\": \"{\\
-\"data\\\": [{\\\"date\\\":1583686800000,\\\"count\\\":0,\\\"rt\\\":0,\\\"rpc\\\":\\\"childSpan3\\\"} }
-```
-
-### SearchTraces
-
-Queries a list of traces. You can filter traces by time, service name, IP address, span name, and tag.
-
-**Request parameters**
-
 | MinDuration | Long | No | 1000 | The minimum duration of traces that you want to query. Unit: milliseconds. For example, a value of 100 specifies that the traces whose duration is greater than 100 milliseconds are queried. |
 |---|---|---|---|---|
 | Tag.N.Key | String | No | http.status cod _ | The tag key. |
@@ -431,31 +420,27 @@ Queries a list of traces. You can filter traces by time, service name, IP addres
 | ExclusionFilters. N.Key | String | No | N/A | This parameter is not supported in Apsara Stack. |
 | ExclusionFilters. N.Value | String | No | N/A | This parameter is not supported in Apsara Stack. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | cn-beijing | The region ID. |
-| TraceInfos | Array of TraceInfo |  | The traces. |
+| TraceInfos | Array of TraceInfo |   | The traces. |
 | Duration | Long | 100 | The duration of the trace. Unit: milliseconds. |
 | OperationNam e | String | /api | The span name. |
 | ServiceIp | String | 192.168.XXX.XXX | The IP address of the server on which the span resides. |
 | ServiceName | String | service1 | The service name. |
 
-Tracing Analysis
-
-**Response parameters**
-
 | Timestamp | Long | 157556160000000 0 | The time when the span was generated. This value is a UNIX timestamp representing the number of microseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 |---|---|---|---|
 | TraceID | String | 1c6881aab84191a 4 | The trace ID. |
-
-Tracing Analysis
 
 **Examples**
 
 Sample requests
 
 ```
-&EndTime=1575622455686 &RegionId=cn-beijing &StartTime=1575561600000 &<Common request parameters>
+http(s)://[Endpoint]/?Action=SearchTraces &EndTime=1575622455686 &RegionId=cn-beijing &StartTime=1575561600000 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -474,7 +459,6 @@ Sample success responses `XML` format
 `JSON` format
 
 ```json
-{
     "RequestId": "cn-beijing",
     "TraceInfos": {
         "ServiceIp": "192.163.XXX.XXX",
@@ -483,6 +467,4 @@ Sample success responses `XML` format
         "TraceID": "1c6881aab84191a4",
         "Duration": 100,
         "Timestamp": 1575561600000000
-    }
-}
 ```

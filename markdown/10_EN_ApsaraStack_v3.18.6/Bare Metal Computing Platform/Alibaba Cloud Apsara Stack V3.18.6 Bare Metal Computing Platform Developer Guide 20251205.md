@@ -2,18 +2,107 @@
 title: "Bare Metal Computing Platform Developer Guide 20251205"
 product_version: "V3.18.6"
 pdf_pages: 158
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Developer Guide 20251205.pdf"
+source_pdf: "c245a5536e4728eb_Alibaba Cloud Apsara Stack V3.18.6 Bare Metal Computing Platform Developer Guide 20251205.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%A3%B8%E9%87%91%E5%B1%9E%E7%AE%97%E5%8A%9B%E5%B9%B3%E5%8F%B0BMCP/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Bare%20Metal%20Computing%20Platform%20Developer%20Guide%2020251205.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Bare Metal Computing Platform Developer Guide 20251205
 
-Bare Metal Computing Platform D
+## Table of Contents
 
-## Getting started
+- 1 Getting started
+  - 1.1 Obtain an AccessKey
+  - 1.2 Obtain API information and endpoints
+  - 1.3 Call Apsara Stack APIs using POP Gateway
+- 2 API Reference
+  - 2.1 ListPaiSSOInfo
+  - 2.2 DescribePaiSSOInfo
+  - 2.3 CreatePaiSSOInfo
+  - 2.4 ModifyAckClusterDeletionProtection
+  - 2.5 DescribeAckClusterLogs
+  - 2.6 DescribeAckClusterAddon
+  - 2.7 ListAvailableBmsInstance
+  - 2.8 DeleteAiDomain
+  - 2.9 CreateAiDomain
+  - 2.10 InstallAIAddOn
+  - 2.11 DeleteBmsCluster
+  - 2.12 CreateSp
+  - 2.13 DeleteAckCluster
+  - 2.14 DeleteAIAddOn
+  - 2.15 ListHistoryEvent
+  - 2.16 DeleteBmsClusterInstances
+  - 2.17 ListReStartEvent
+  - 2.18 CreateBmsCluster
+  - 2.19 AddBmsClusterInstances
+  - 2.20 CreateAckCluster
+  - 2.21 ListAckClusterInstances
+  - 2.22 ListAckCluster
+  - 2.23 DescribeBmsCluster
+  - 2.24 DescribeAckCluster
+  - 2.25 DeleteAckClusterInstances
+  - 2.26 ListBmsCluster
+  - 2.27 AddAckClusterInstances
+  - 2.28 ListAckInstanceType
+  - 2.29 DescribeEasyAIStatus
+  - 2.30 ListInstanceTypeDiskCategory
+  - 2.31 ModifySecurityGroupRule
+  - 2.32 ModifySecurityGroup
+  - 2.33 ListSecurityGroupRule
+  - 2.34 GetAISuiteK8SToken
+  - 2.35 ProxyAISuiteDev
+  - 2.36 AIRListAcrImages
+  - 2.37 ListQuota
+  - 2.38 ListWorkspace
+  - 2.39 ListInstance
+  - 2.40 ListSecurityGroupInstance
+  - 2.41 ListSecurityGroup
+  - 2.42 ListKeyPair
+  - 2.43 DeleteSecurityGroupRule
+  - 2.44 DeleteSecurityGroup
+  - 2.45 DeleteKeyPair
+  - 2.46 CreateSecurityGroup
+  - 2.47 DeleteSecurityGroupInstance
+  - 2.48 AddSecurityGroupRule
+  - 2.49 AddSecurityGroupInstance
+  - 2.50 ListBmcpMachineType
+  - 2.51 TagResources
+  - 2.52 GetClusterInstanceInfo
+  - 2.53 ModifyEvpc
+  - 2.54 ListEvpcConnections
+  - 2.55 ListEvpc
+  - 2.56 DeleteEvpc
+  - 2.57 CreateEvpc
+  - 2.58 UpgradeAiApplication
+  - 2.59 UnInstallAiInstanceResource
+  - 2.60 UnInstallAiApplication
+  - 2.61 ListAckClusterNodePool
+  - 2.62 ListAckClusterApp
+  - 2.63 GetClusterInfo
+  - 2.64 InstallAiApplication
+  - 2.65 DeleteCpfsClientCluster
+  - 2.66 CreateCpfsClientCluster
+  - 2.67 ListAckClusterEcsWorkerInstances
+  - 2.68 UnbindKeyPair
+  - 2.69 CreateKeyPair
+  - 2.70 ConfigKeyPair
+  - 2.71 AIRListConvertJobs
+  - 2.72 AIRConvertImageToDADIImage
+  - 2.73 CreateEhpcCluster
+  - 2.74 DeleteEhpcClusterInstances
+  - 2.75 DeleteEhpcCluster
+  - 2.76 ListEhpcCluster
+  - 2.77 AddEhpcClusterInstances
+  - 2.78 DescribeEhpcCluster
+  - 2.79 DescribeSpecification
+  - 2.80 DescribeInstanceGpuVirt
+  - 2.81 CreatInstanceCgpu
+  - 2.82 StopInstanceGpuVirt
+  - 2.83 CreatInstanceVxpu
 
-### Obtain an AccessKey
+## 1 Getting started
+
+### 1.1 Obtain an AccessKey
 
 This topic describes how to obtain an AccessKey ID and an AccessKey secret.
 
@@ -45,14 +134,13 @@ Your AccessKey ID and AccessKey secret are your credentials for accessing your c
 The AccessKey pair for a personal account is managed by the permission system of the Apsara Uni-manager Management Console. An organization's AccessKey pair has more permissions than a personal account's AccessKey pair. If you want to obtain an organization's AccessKey pair, you must have approval from an administrator to ensure security. To obtain an organization's AccessKey pair, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, click **Enterprise**.
-Bare Metal Computing Platform D
 3. In the navigation pane on the left, choose **Resource Management > Organization**
 **Management**.
 4. In the organization chart, click the name of the target primary organization.
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization's AccessKey information.
 
-### Obtain API information and
+### 1.2 Obtain API information and endpoints
 
 **endpoints**
 
@@ -74,7 +162,7 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 7. Select the desired API operation. You can then view the API information, such as the BMCP
 POP Endpoint and RegionId.
 
-### Call Apsara Stack APIs using
+### 1.3 Call Apsara Stack APIs using POP Gateway
 
 **POP Gateway**
 
@@ -88,7 +176,7 @@ Console.
 
 **Important**
 
-Bare Metal Computing Platform D Do not download the SDK directly from the SDK Center for use in Apsara Stack. The public cloud SDK may not be compatible with Apsara Stack APIs, which can cause compatibility issues. Use it with caution.
+Do not download the SDK directly from the SDK Center for use in Apsara Stack. The public cloud SDK may not be compatible with Apsara Stack APIs, which can cause compatibility issues. Use it with caution.
 
 **CommonRequest call example**
 
@@ -124,18 +212,27 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
 **Important**
 
-Bare Metal Computing Platform D When you use the HTTPS protocol to access OpenAPI, the SDK enables SSL/TLS certificate validation by default. If your code environment does not have a valid certificate, a certificate validation failed error is reported. To ensure communication security in a production environment, you must keep this feature enabled. To ignore certificate validation in a test environment, you can set the following parameter: Java
+When you use the HTTPS protocol to access OpenAPI, the SDK enables SSL/TLS certificate validation by default. If your code environment does not have a valid certificate, a certificate validation failed error is reported. To ensure communication security in a production environment, you must keep this feature enabled. To ignore certificate validation in a test environment, you can set the following parameter: Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate validation. clientConfig.setIgnoreSSLCerts(true)
 ```
+
+## 2 API Reference
+
+This topic provides the API reference.
+
+### 2.1 ListPaiSSOInfo
+
+Lists the PAI SSO logon information.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common request parameters document.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -150,25 +247,7 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server
 | errorCode | String | Successful | The return code. |
 | errorTitle | String | Successful | The returned title. |
 
-Bare Metal Computing Platform D
-
-## API Reference
-
-This topic provides the API reference.
-
-### ListPaiSSOInfo
-
-Lists the PAI SSO logon information.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -180,30 +259,7 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribePaiSSOInfo
+### 2.2 DescribePaiSSOInfo
 
 Retrieves PAI Single Sign-On (SSO) information.
 
@@ -226,30 +282,13 @@ This operation uses common request headers and does not require any special requ
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+### 2.3 CreatePaiSSOInfo
 
-**Request parameters**
+This operation registers a service provider (SP) with the specified parameters and records the information.
 
-**Response data**
+**Request headers**
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -259,26 +298,12 @@ Bare Metal Computing Platform D
 | Admin | String | Query | No | ** | The redirect account for the Admin role in single sign-on (SSO) logon mode. |
 | Auditor | String | Query | No | ** | The redirect account for the Auditor role in SSO logon mode. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreatePaiSSOInfo
-
-This operation registers a service provider (SP) with the specified parameters and records the information.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Domain | String | Query | No | ** | The domain name of the PAI console. |
 | SlbIp | String | Query | No | ** | The Server Load Balancer (SLB) IP address associated with the PAI console domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -291,26 +316,15 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+**2.4.**
 
-**Response parameters**
+### ModifyAckClusterDeletionProtection
 
-**Examples**
+Modifies the deletion protection status of an ACK cluster.
 
-`JSON` format
+**Request header**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
+This operation uses only common request headers. For more information, see the Common request parameters document.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -326,27 +340,7 @@ Bare Metal Computing Platform D
 | status | Integer | 200 | The returned status. |
 | requestId | String | ** | The request ID. |
 
-Bare Metal Computing Platform D `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-**2.4.**
-
-### ModifyAckClusterDeletionProtection
-
-Modifies the deletion protection status of an ACK cluster.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D eveloper Guide·API Referenc |
+|   |   |   | Bare Metal Computing Platform D eveloper Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -354,34 +348,7 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribeAckClusterLogs
+### 2.5 DescribeAckClusterLogs
 
 Retrieves the logs of an ACK cluster.
 
@@ -389,9 +356,9 @@ Retrieves the logs of an ACK cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response data**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -404,34 +371,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+### 2.6 DescribeAckClusterAddon
 
 Retrieves the installation status of components in an ACK cluster.
 
-### DescribeAckClusterAddon
+**Request headers**
+
+This operation requires only common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -449,48 +395,7 @@ Retrieves the installation status of components in an ACK cluster.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
-
-**Request headers**
-
-This operation requires only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Departme nt | String | Query | No | ** | The name of the organization to which the instance belongs. |
-| ResourceG roup | String | Query | No | ** | The name of the resource set used to classify the instance. |
-| VpcId | String | Query | No | "" | The ID of the Virtual Private Cloud (VPC). This parameter filters bare machine instances in a specific VPC. |
-
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListAvailableBmsInstance
+### 2.7 ListAvailableBmsInstance
 
 Lists the instances that can be added to a cluster.
 
@@ -498,7 +403,11 @@ Lists the instances that can be added to a cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Departme nt | String | Query | No | ** | The name of the organization to which the instance belongs. |
+| ResourceG roup | String | Query | No | ** | The name of the resource set used to classify the instance. |
+| VpcId | String | Query | No | "" | The ID of the Virtual Private Cloud (VPC). This parameter filters bare machine instances in a specific VPC. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -511,36 +420,19 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+### 2.8 DeleteAiDomain
 
-**Response data**
+Deletes a domain name from the AI console.
 
-**Examples**
+**Request header**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
 | Paramet er Name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+
+**Returned data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
@@ -553,23 +445,13 @@ Bare Metal Computing Platform D
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+### 2.9 CreateAiDomain
 
-### DeleteAiDomain
+Creates a domain name for the AI console.
 
-Deletes a domain name from the AI console.
+**Request headers**
 
-**Request header**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Returned data**
-
-**Examples**
-
-`JSON` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -580,40 +462,7 @@ This operation uses common request headers and does not require special request 
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateAiDomain
-
-Creates a domain name for the AI console.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -626,34 +475,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-**Examples**
+Sample response in `JSON` format Sample response in `XML` format
 
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### InstallAIAddOn
+### 2.10 InstallAIAddOn
 
 Installs the AI suite on an ACK cluster.
 
 **Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -670,16 +500,14 @@ Installs the AI suite on an ACK cluster.
 | Runtime | String | Query | No | ** | The container runtime environment. |
 | NasEndpoi nt | String | Query | No | ** | The NAS endpoint. |
 
-Bare Metal Computing Platform D This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-| Bare Metal Co | mputing | Platform D |  |  |  |
+| Bare Metal Co | mputing | Platform D |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SlbIp | String | Query | No | ** | The IP address of the SLB instance that corresponds to the domain name of the AI console. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -692,26 +520,13 @@ Bare Metal Computing Platform D This operation uses common request headers. No s
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response parameters**
+### 2.11 DeleteBmsCluster
 
-**Examples**
+Deletes a basic bare machine cluster.
 
-`JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses only common request headers. For more information, see the document about common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -728,59 +543,14 @@ Bare Metal Computing Platform D This operation uses common request headers. No s
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteBmsCluster
-
-Deletes a basic bare machine cluster.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the document about common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |  |  |
+| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | responseVersio n | String | v1 | The returned version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateSp
+### 2.12 CreateSp
 
 Creates an SP for an ACK cluster.
 
@@ -788,9 +558,9 @@ Creates an SP for an ACK cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response data**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -803,32 +573,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+### 2.13 DeleteAckCluster
 
-**Examples**
+Deletes an ACK cluster.
 
-`JSON` format
+**Request header**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteAckCluster
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -846,19 +597,13 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D Deletes an ACK cluster.
+### 2.14 DeleteAIAddOn
 
-**Request header**
+Deletes the AI suite installed on an ACK cluster.
+
+**Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -870,40 +615,7 @@ This operation uses common request headers. No special request headers are requi
 | errorTitle | String | Successful | Back to the title. |
 | errorMessage | String | Successful | The message returned. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteAIAddOn
-
-Deletes the AI suite installed on an ACK cluster.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -914,38 +626,13 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListHistoryEvent
+### 2.15 ListHistoryEvent
 
 This operation retrieves the details of historical tasks.
 
 **Request header**
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -957,8 +644,6 @@ This operation uses only common request headers. For more information, see the C
 | LastAddon | Boole an | Query | No | true | This is the most recent one. |
 | EventType | String | Query | No | all | The task type. Valid values are 'all' for all tasks, 'cluster' for cluster tasks, and 'ai' for AI suite tasks. The default value is 'all'. |
 | EventNam e | String | Query | No | "" | The task name. This parameter filters tasks by name. This is a new filter condition. |
-
-Bare Metal Computing Platform D
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -975,28 +660,13 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+### 2.16 DeleteBmsClusterInstances
 
-**Response data**
+This operation scales in a bare machine cluster.
 
-**Examples**
+**Request header**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1012,58 +682,13 @@ Bare Metal Computing Platform D
 | data | Map | {} | The returned data. |
 | status | Integer | 200 | The returned status. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteBmsClusterInstances
-
-This operation scales in a bare machine cluster.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
-
-**Request parameters**
-
-**Response data**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| TaskId | String | Query | No | ** | The unique identifier of the task. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListReStartEvent
+### 2.17 ListReStartEvent
 
 Retries a specified task.
 
@@ -1071,9 +696,11 @@ Retries a specified task.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| TaskId | String | Query | No | ** | The unique identifier of the task. |
 
-|  |  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc | e |
+|   |   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -1093,11 +720,15 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response data**
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
+### 2.18 CreateBmsCluster
 
-Sample response in `JSON` format
+Creates a basic bare metal cluster.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1106,38 +737,7 @@ Sample response in `JSON` format
 | RegionId | String | Query | No | ** | The ID of the region for the cluster deployment. |
 | VpcId | String | Query | No | ** | The ID of the VPC where the cluster will be deployed. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateBmsCluster
-
-Creates a basic bare metal cluster.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-|  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
+|   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
@@ -1153,7 +753,7 @@ This operation uses only common request headers. For more information, see Commo
 | VswitchIdL ist | Json | Query | No | ** | The list of VSwitch IDs to which the bare metal instances will connect. |
 | StandardV switchId | String | Query | No | ** | The VSwitch ID. |
 
-| Bare Metal Co | mputing | Platform D |  |  |  |
+| Bare Metal Co | mputing | Platform D |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
@@ -1172,9 +772,7 @@ This operation uses only common request headers. For more information, see Commo
 | errorTitle | String | Successful | The title of the response. |
 | errorMessage | String | Successful | The message returned. |
 
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1185,38 +783,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### AddBmsClusterInstances
+### 2.19 AddBmsClusterInstances
 
 Adds instances to a basic bare machine cluster.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
-
-**Request parameters**
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1230,15 +803,13 @@ This operation uses common request headers. No special request headers are requi
 | Activation Code | String | Query | No | ** | The Cloud Assistant activation code required for scaling out the bare machine cluster. |
 | ZoneId | String | Query | No | ** | The ID of the zone where the cluster is located. This parameter is required if no zone is set for the cluster. |
 
+**Response parameters**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
 
-Bare Metal Computing Platform D
-
-**Response parameters**
-
-|  |  |  | Bare Metal Computing Platform D eveloper Guide·API Referenc |
+|   |   |   | Bare Metal Computing Platform D eveloper Guide·API Referenc |
 |---|---|---|---|
 | Parameter name | Type | Example | Description |
 | errorTitle | String | Successful | Return to the title. |
@@ -1249,34 +820,15 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Examples**
+Sample response in `JSON` format Sample response in `XML` format
 
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateAckCluster
+### 2.20 CreateAckCluster
 
 Creates an ACK cluster.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1290,10 +842,6 @@ Creates an ACK cluster.
 | VpcId | String | Query | No | ** | The ID of the VPC. The cluster is deployed in the specified VPC. |
 | VswitchIdL ist | Json | Query | No | ** | A list of vSwitch IDs to which the bare metal instances connect. |
 | Kubernete sVersion | String | Query | No | ** | The version of Kubernetes that the cluster runs. |
-
-Bare Metal Computing Platform D This operation uses only common request headers. For more information, see Common parameters.
-
-**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1310,9 +858,7 @@ Bare Metal Computing Platform D This operation uses only common request headers.
 | WorkerDat aDiskList | Json | Query | No | ** | The information about the data disks for the ECS worker nodes. You can specify up to 10 data disks. |
 | Os | String | Query | No | ** | The type of the operating system. |
 
-Bare Metal Computing Platform D
-
-| e | Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |  |  |  |  |
+| e | Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |   |   |   |   |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -1331,7 +877,7 @@ Bare Metal Computing Platform D
 | ZoneId | String | Query | No | ** | The ID of the zone. |
 | ClusterArc hType | String | Query | No | ** | The type of the cluster. Valid values: `standard` and `managed`. |
 
-|  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
+|   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -1346,7 +892,7 @@ Bare Metal Computing Platform D
 | IsCreateC pfsCluster | Boole an | Query | No | true | Specifies whether to create a CPFS cluster. This parameter is for general-purpose clusters. To create a CPFS cluster, you must specify an `EvpcId` and have three or more bare metal nodes. |
 | ClassicSlb Spec | String | Query | No | ** | Classic Load Balancer |
 
-| e | Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |  |  |  |  |
+| e | Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |   |   |   |   |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -1365,26 +911,13 @@ Bare Metal Computing Platform D
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response data**
+### 2.21 ListAckClusterInstances
 
-**Examples**
+Lists ACK cluster instances.
 
-`JSON` format
+**Request header**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1395,22 +928,6 @@ Bare Metal Computing Platform D
 | NodePoolI d | String | Query | No | "" | The ID of the node pool. The default value is empty. |
 | PageNumb er | Integ er | Query | No | 1 | The page number. The default value is 1. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. The default value is 10. |
-
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListAckClusterInstances
-
-Lists ACK cluster instances.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 **Response parameters**
 
@@ -1425,32 +942,13 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+### 2.22 ListAckCluster
 
-**Examples**
+Lists ACK clusters.
 
-`JSON` format
+**Request header**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListAckCluster
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1464,22 +962,14 @@ Bare Metal Computing Platform D
 | PageNumb er | Integ er | Query | No | 1 | The page number. Default value: 1. |
 | PageSize | Integ er | Query | No | 10 | The number of entries to return on each page. Default value: 10. |
 
+**Returned data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The error code. |
 | errorTitle | String | Successful | Go back to the title. |
 
-Bare Metal Computing Platform D Lists ACK clusters.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Returned data**
-
-| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |  |  |
+| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |   |   |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -1491,34 +981,13 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The response version. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribeBmsCluster
+### 2.23 DescribeBmsCluster
 
 Describes a bare machine cluster.
 
 **Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1535,34 +1004,21 @@ Describes a bare machine cluster.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D This operation uses common request headers. For more information, see Common request parameters.
+Sample response in `JSON` format Sample response in `XML` format
 
-**Request parameters**
+### 2.24 DescribeAckCluster
 
-**Response data**
+Retrieves the details of an ACK cluster.
 
-**Examples**
+**Request header**
 
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+
+**Returned data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1575,55 +1031,7 @@ Sample response in `XML` format
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribeAckCluster
-
-Retrieves the details of an ACK cluster.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Returned data**
-
-**Examples**
-
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
-| InstanceId List | Json | Query | No | ** | A list of instance IDs to remove from the cluster. |
-| InstanceLi st | Json | Query | No | ** | A list of bare metal instances to remove from the cluster. |
-| EcsInstanc eIdList | Json | Query | No | ** | A list of ECS node IDs to remove. |
-
-Bare Metal Computing Platform D `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteAckClusterInstances
+### 2.25 DeleteAckClusterInstances
 
 Removes instances from an ACK cluster.
 
@@ -1631,9 +1039,12 @@ Removes instances from an ACK cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response data**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+| InstanceId List | Json | Query | No | ** | A list of instance IDs to remove from the cluster. |
+| InstanceLi st | Json | Query | No | ** | A list of bare metal instances to remove from the cluster. |
+| EcsInstanc eIdList | Json | Query | No | ** | A list of ECS node IDs to remove. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1646,30 +1057,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+### 2.26 ListBmsCluster
 
-**Examples**
+This operation lists basic bare machine clusters.
 
-`JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1687,21 +1081,7 @@ Bare Metal Computing Platform D
 | errorTitle | String | Successful | Back to the title. |
 | errorMessage | String | Successful | The returned message. |
 
-Bare Metal Computing Platform D
-
-### ListBmsCluster
-
-This operation lists basic bare machine clusters.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1712,30 +1092,7 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### AddAckClusterInstances
+### 2.27 AddAckClusterInstances
 
 This operation scales out an ACK cluster.
 
@@ -1743,12 +1100,10 @@ This operation scales out an ACK cluster.
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common Request Parameters document.
 
-**Request parameters**
-
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
-| ApplyBmsI nstanceLis t | Json | Query | No |  | The list of requested instances. |
+| ApplyBmsI nstanceLis t | Json | Query | No |   | The list of requested instances. |
 | Password | String | Query | No | ** | The password for the bare machine. This parameter is required if a password has not been set for the cluster. |
 | MachineTy peList | Json | Query | No | ** | The list of bare machine instance types to add to the ACK cluster. This parameter is used for general-purpose clusters. |
 | BmsVswitc hIdList | Json | Query | No | ** | The list of vSwitch IDs. This parameter is required when you scale out a general-purpose cluster. |
@@ -1758,9 +1113,7 @@ This operation uses common request headers. No special request headers are requi
 | WorkerCo unt | Integ er | Query | No | 1 | The number of worker nodes to add. |
 | WorkerSys temDiskSi ze | String | Query | No | 1 | Resize the system disk of an ECS node. |
 
-Bare Metal Computing Platform D
-
-| Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |  |  |  |
+| Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
@@ -1781,11 +1134,13 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response data**
+### 2.28 ListAckInstanceType
 
-**Examples**
+Lists the supported instance types for Container Service for Kubernetes (ACK) clusters.
 
-`JSON` format
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1796,38 +1151,7 @@ Bare Metal Computing Platform D
 | ClusterId | String | Query | No | ** | The ID of the cluster. |
 | AckCluster Id | String | Query | No | ** | The ID of the ACK cluster. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListAckInstanceType
-
-Lists the supported instance types for Container Service for Kubernetes (ACK) clusters.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-| e | Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |  |  |  |  |
+| e | Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |   |   |   |   |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
@@ -1848,11 +1172,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response data**
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
+### 2.29 DescribeEasyAIStatus
 
-Sample response in `JSON` format
+Queries the status of the EasyAI service.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -1863,38 +1191,7 @@ Sample response in `JSON` format
 | status | Integer | 200 | The response status. |
 | requestId | String | ** | The request ID. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribeEasyAIStatus
-
-Queries the status of the EasyAI service.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -1902,35 +1199,7 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Departme nt | String | Query | No | ** | The organization. |
-| ResourceG roup | String | Query | No | ** | The resource set. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListInstanceTypeDiskCategory
+### 2.30 ListInstanceTypeDiskCategory
 
 Lists the disk types that an instance type supports.
 
@@ -1938,9 +1207,12 @@ Lists the disk types that an instance type supports.
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Departme nt | String | Query | No | ** | The organization. |
+| ResourceG roup | String | Query | No | ** | The resource set. |
 
-|  |  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc | e |
+|   |   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
@@ -1964,45 +1236,16 @@ This operation uses common request headers and does not require special request 
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-**Response data**
-
-| e | Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |  |  |  |
+| e | Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |   |   |   |
 |---|---|---|---|---|---|
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SgId | String | Query | No | ** | The ID of the security group. |
-| SgrId | String | Query | No | ** | The ID of the rule. |
-| Direction | String | Query | No | ** | The direction of the rule. |
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ModifySecurityGroupRule
+### 2.31 ModifySecurityGroupRule
 
 Modifies a security group rule.
 
@@ -2010,9 +1253,13 @@ Modifies a security group rule.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SgId | String | Query | No | ** | The ID of the security group. |
+| SgrId | String | Query | No | ** | The ID of the rule. |
+| Direction | String | Query | No | ** | The direction of the rule. |
 
-|  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
+|   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -2037,40 +1284,7 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response data**
-
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SgId | String | Query | No | ** | The ID of the security group. |
-| Name | String | Query | No | ** | The name of the security group. |
-| Descriptio n | String | Query | No | ** | The description of the security group. |
-
-Bare Metal Computing Platform D
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ModifySecurityGroup
+### 2.32 ModifySecurityGroup
 
 Modifies a security group.
 
@@ -2078,9 +1292,11 @@ Modifies a security group.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Data**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SgId | String | Query | No | ** | The ID of the security group. |
+| Name | String | Query | No | ** | The name of the security group. |
+| Descriptio n | String | Query | No | ** | The description of the security group. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -2093,32 +1309,15 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+Response in `JSON` format Response in `XML` format
 
-**Examples**
+### 2.33 ListSecurityGroupRule
 
-Response in `JSON` format
+Lists security group rules.
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
+**Request headers**
 
-Response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListSecurityGroupRule
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2138,19 +1337,15 @@ Response in `XML` format
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D Lists security group rules.
+Sample response in `JSON` format Sample response in `XML` format
+
+### 2.34 GetAISuiteK8SToken
+
+Retrieves the token for an AI suite.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-Sample response in `JSON` format
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2162,39 +1357,6 @@ Sample response in `JSON` format
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### GetAISuiteK8SToken
-
-Retrieves the token for an AI suite.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorTitle | String | Successful | The title of the response. |
@@ -2205,34 +1367,13 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ProxyAISuiteDev
+### 2.35 ProxyAISuiteDev
 
 Calls the AI suite.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see the Common request parameters document.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2255,11 +1396,13 @@ Calls the AI suite.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D This operation uses only common request headers. For more information, see the Common request parameters document.
+### 2.36 AIRListAcrImages
 
-**Request parameters**
+Retrieves a list of ACR images.
 
-**Data**
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2268,41 +1411,6 @@ Bare Metal Computing Platform D This operation uses only common request headers.
 | Departme nt | String | Query | No | ** | The organization ID. |
 | PageNumb er | Integ er | Query | No | 1 | The page number. |
 | PageSize | Integ er | Query | No | 1 | The number of entries per page. |
-
-Bare Metal Computing Platform D
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### AIRListAcrImages
-
-Retrieves a list of ACR images.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2315,32 +1423,13 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+### 2.37 ListQuota
 
-**Response data**
+Lists all quotas.
 
-**Examples**
+**Request header**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2360,57 +1449,16 @@ Bare Metal Computing Platform D
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-### ListQuota
-
-Lists all quotas.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PageNumb er | Integ er | Query | No | 1 | The page number. |
-| PageSize | Integ er | Query | No | 1 | The number of entries per page. |
-| ClusterId | String | Query | No | ** | The cluster ID. |
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListWorkspace
+### 2.38 ListWorkspace
 
 Retrieves a list of workspaces.
 
@@ -2418,9 +1466,13 @@ Retrieves a list of workspaces.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PageNumb er | Integ er | Query | No | 1 | The page number. |
+| PageSize | Integ er | Query | No | 1 | The number of entries per page. |
+| ClusterId | String | Query | No | ** | The cluster ID. |
 
-| Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |  |  |  |
+| Bare Metal Co veloper Guid | mputing e·API Ref | Platform D erence |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
@@ -2439,26 +1491,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-**Response data**
+### 2.39 ListInstance
 
-**Examples**
+Retrieves a list of instances.
 
-`JSON` format
+**Request header**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2475,25 +1514,7 @@ This operation uses only common request headers. For more information, see Commo
 | status | Integer | 200 | The returned status. |
 | requestId | String | ** | The request ID. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListInstance
-
-Retrieves a list of instances.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2501,35 +1522,7 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SgId | String | Query | No | ** | The ID of the security group. |
-| SN | String | Query | No | ** | The SN. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListSecurityGroupInstance
+### 2.40 ListSecurityGroupInstance
 
 Lists the instances that are attached to a security group.
 
@@ -2537,9 +1530,12 @@ Lists the instances that are attached to a security group.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SgId | String | Query | No | ** | The ID of the security group. |
+| SN | String | Query | No | ** | The SN. |
 
-|  |  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc | e |
+|   |   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
@@ -2559,24 +1555,15 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-**Response data**
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
+### 2.41 ListSecurityGroup
 
-Sample response in `JSON` format
+Lists security groups.
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er Name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2589,22 +1576,6 @@ Sample response in `JSON` format
 | Type | String | Query | No | ** | The type of the security group. |
 | DeployTyp e | String | Query | No | ** | The deployment type. |
 | PageNumb er | Integ er | Query | No | 1 | The page number. |
-
-Bare Metal Computing Platform D Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListSecurityGroup
-
-Lists security groups.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Paramet er Name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2621,28 +1592,13 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+### 2.42 ListKeyPair
 
-**Response data**
+Lists key pairs.
 
-**Examples**
+**Request header**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses common request headers. No special request headers are used. For more information, see Common Request Parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2658,25 +1614,7 @@ Bare Metal Computing Platform D
 | errorMessage | String | Successful | The message returned. |
 | data | Map | {} | The data returned. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListKeyPair
-
-Lists key pairs.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are used. For more information, see Common Request Parameters.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -2686,38 +1624,13 @@ This operation uses common request headers. No special request headers are used.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteSecurityGroupRule
+### 2.43 DeleteSecurityGroupRule
 
 Deletes a security group rule.
 
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2735,28 +1648,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Response data**
+### 2.44 DeleteSecurityGroup
 
-**Examples**
+Deletes a security group.
 
-Sample response in `JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2773,23 +1673,15 @@ Sample response in `XML` format
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+### 2.45 DeleteKeyPair
 
-### DeleteSecurityGroup
+Deletes a key pair.
 
-Deletes a security group.
+**Request header**
 
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
+This operation uses common request headers and does not require any special request headers. For more information, see the Common request parameters document.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2800,44 +1692,7 @@ This operation uses only common request headers. For more information, see Commo
 | errorCode | String | Successful | The return code. |
 | errorTitle | String | Successful | The returned title. |
 
-Bare Metal Computing Platform D
-
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteKeyPair
-
-Deletes a key pair.
-
-**Request header**
-
-This operation uses common request headers and does not require any special request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2849,30 +1704,7 @@ This operation uses common request headers and does not require any special requ
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateSecurityGroup
+### 2.46 CreateSecurityGroup
 
 Creates a security group.
 
@@ -2891,6 +1723,8 @@ This operation uses common request headers. Special request headers are not requ
 | DeployTyp e | String | Query | No | ** | The deployment type. |
 | Descriptio n | String | Query | No | ** | The description of the resource. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -2901,48 +1735,14 @@ This operation uses common request headers. Special request headers are not requ
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-**Request parameters**
-
-**Response parameters**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | responseVersio n | String | v1 | The version of the response. |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SgId | String | Query | No | ** | The ID of the security group. |
-| InstanceN ameList | Json | Query | No | ** | A list of instance names. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteSecurityGroupInstance
+### 2.47 DeleteSecurityGroupInstance
 
 You can configure a security group instance.
 
@@ -2950,7 +1750,10 @@ You can configure a security group instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SgId | String | Query | No | ** | The ID of the security group. |
+| InstanceN ameList | Json | Query | No | ** | A list of instance names. |
 
 **Response parameters**
 
@@ -2965,34 +1768,15 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+### 2.48 AddSecurityGroupRule
 
 Adds a security group rule.
 
-### AddSecurityGroupRule
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3013,17 +1797,7 @@ Adds a security group rule.
 | errorTitle | String | Successful | This operation returns the title. |
 | errorMessage | String | Successful | The message returned. |
 
-Bare Metal Computing Platform D
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |  |  |
+| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |   |   |
 |---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -3034,38 +1808,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### AddSecurityGroupInstance
+### 2.49 AddSecurityGroupInstance
 
 Adds an instance to a security group.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3083,43 +1832,9 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Response data**
-
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-| Paramet er name | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| MachineTy pe | String | Query | No | "" | The name of the machine type. Use this parameter to filter for specific machine types. |
-| CPUArch | String | Query | No | "" | The CPU architecture. Use this parameter to filter for machine types with a specific architecture. |
-| DiskType | String | Query | No | "" | The disk type. Use this parameter to filter for machine types with a specific disk type. |
-| Manufactu rer | String | Query | No | "" | The name of the manufacturer. Use this parameter to filter for machine types produced by a specific manufacturer. |
-
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListBmcpMachineType
+### 2.50 ListBmcpMachineType
 
 Retrieves a list of BMCP machine types.
 
@@ -3127,7 +1842,12 @@ Retrieves a list of BMCP machine types.
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common request parameters document.
 
-**Request parameters**
+| Paramet er name | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| MachineTy pe | String | Query | No | "" | The name of the machine type. Use this parameter to filter for specific machine types. |
+| CPUArch | String | Query | No | "" | The CPU architecture. Use this parameter to filter for machine types with a specific architecture. |
+| DiskType | String | Query | No | "" | The disk type. Use this parameter to filter for machine types with a specific disk type. |
+| Manufactu rer | String | Query | No | "" | The name of the manufacturer. Use this parameter to filter for machine types produced by a specific manufacturer. |
 
 | Paramet er name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3147,44 +1867,12 @@ This operation uses common request headers. No special request headers are requi
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-**Response data**
-
-| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |  |  |
+| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |   |   |
 |---|---|---|---|
 | Parameter name | Type | Example | Description |
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Query | Yes | ** | The ID of the region where the resource resides. |
-| ResourceT ype | String | Query | Yes | "CLUSTER" | The resource type. The value can only be `CLUSTER`. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### TagResources
+### 2.51 TagResources
 
 Adds tags to a cluster.
 
@@ -3192,15 +1880,20 @@ Adds tags to a cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Query | Yes | ** | The ID of the region where the resource resides. |
+| ResourceT ype | String | Query | Yes | "CLUSTER" | The resource type. The value can only be `CLUSTER`. |
 
-|  |  |  |  | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
+|   |   |   |   | Bare M ev | etal Computing Platform D eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Tags | Json | Query | No | ** | The key-value pairs of the tags. The array can contain 1 to 20 tags. Note: A tag key cannot start with `aliyun` or `acs:`, nor can it contain `http://` or `https://`. A tag value cannot be an empty string and can be up to 128 characters long. |
 | ResourceI ds | Json | Query | No | ** | A list of resource IDs. Note: Use the cluster IDs of Container Service for Kubernetes (ACK) clusters. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3213,11 +1906,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-**Response parameters**
+### 2.52 GetClusterInstanceInfo
 
-**Examples**
+Retrieves a list of cluster instances.
 
-`JSON` format
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3226,37 +1921,6 @@ This operation uses only common request headers. For more information, see Commo
 | ClusterId | String | Query | No | ** | The cluster ID. |
 | State | String | Query | No | ** | The running status of the cluster. |
 | PageNumb er | Integ er | Query | No | 1 | The page number. |
-
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### GetClusterInstanceInfo
-
-Retrieves a list of cluster instances.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3273,28 +1937,13 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+### 2.53 ModifyEvpc
 
-**Response data**
+Modifies an Evpc.
 
-**Examples**
+**Request headers**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3310,58 +1959,13 @@ Bare Metal Computing Platform D
 | data | Map | {} | The response data. |
 | status | Integer | 200 | The response status. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ModifyEvpc
-
-Modifies an Evpc.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| EvpcId | String | Query | No | "" | The unique ID of the Evpc. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListEvpcConnections
+### 2.54 ListEvpcConnections
 
 Lists the connections for a specified Evpc.
 
@@ -3369,7 +1973,9 @@ Lists the connections for a specified Evpc.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| EvpcId | String | Query | No | "" | The unique ID of the Evpc. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -3382,32 +1988,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+`JSON` example `XML` example
 
-**Response data**
+### 2.55 ListEvpc
 
-**Examples**
+Lists Evpcs.
 
-`JSON` example
+**Request header**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` example
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+This operation uses only common request headers. For more information, see the Common request parameters document.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3422,17 +2011,7 @@ Bare Metal Computing Platform D
 | TenantId | String | Query | No | "" | The ID of the tenant associated with the enterprise VPC. |
 | Descriptio n | Boole an | Query | No | ** | The description. |
 
-Bare Metal Computing Platform D
-
-### ListEvpc
-
-Lists Evpcs.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3445,32 +2024,13 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+### 2.56 DeleteEvpc
 
-**Response parameters**
+Deletes an Evpc.
 
-**Examples**
+**Request headers**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3488,53 +2048,7 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
-
-### DeleteEvpc
-
-Deletes an Evpc.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
-
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Departme nt | String | Query | No | "" | The organization or department to which the Evpc belongs. |
-| ResourceG roup | String | Query | No | "" | The resource group used to classify the Evpc. |
-| RegionId | String | Query | No | "" | The ID of the region where you want to create the Evpc. |
-| EvpcName | String | Query | No | "" | The name of the Evpc instance. |
-
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateEvpc
+### 2.57 CreateEvpc
 
 Creates an Evpc.
 
@@ -3542,7 +2056,12 @@ Creates an Evpc.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Departme nt | String | Query | No | "" | The organization or department to which the Evpc belongs. |
+| ResourceG roup | String | Query | No | "" | The resource group used to classify the Evpc. |
+| RegionId | String | Query | No | "" | The ID of the region where you want to create the Evpc. |
+| EvpcName | String | Query | No | "" | The name of the Evpc instance. |
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3559,28 +2078,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Data**
+### 2.58 UpgradeAiApplication
 
-**Examples**
+Upgrades an AI application in an ACK cluster.
 
-Sample response in `JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3597,60 +2103,16 @@ Sample response in `XML` format
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### UpgradeAiApplication
-
-Upgrades an AI application in an ACK cluster.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The cluster ID. |
-| AppNameL ist | Json | Query | No | ** | The list of apps to delete. |
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### UnInstallAiInstanceResource
+### 2.59 UnInstallAiInstanceResource
 
 Uninstalls an AI instance resource and all its AI applications from an ACK cluster.
 
@@ -3658,7 +2120,10 @@ Uninstalls an AI instance resource and all its AI applications from an ACK clust
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The cluster ID. |
+| AppNameL ist | Json | Query | No | ** | The list of apps to delete. |
 
 **Response parameters**
 
@@ -3673,34 +2138,13 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+### 2.60 UnInstallAiApplication
 
 Uninstalls an AI application from an ACK cluster.
 
-### UnInstallAiApplication
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3718,49 +2162,7 @@ Uninstalls an AI application from an ACK cluster.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
-
-| Paramet er | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Departme nt | String | Query | No | ** | The organization. |
-| ResourceG roup | String | Query | No | ** | The resource group. |
-| ClusterId | String | Query | Yes | ** | The unique identifier of the cluster. |
-| Type | String | Query | No | ** | The type of the node pool. Valid values: bmcp and ecs. |
-
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListAckClusterNodePool
+### 2.61 ListAckClusterNodePool
 
 Lists the node pools for a container cluster.
 
@@ -3768,9 +2170,12 @@ Lists the node pools for a container cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response data**
+| Paramet er | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Departme nt | String | Query | No | ** | The organization. |
+| ResourceG roup | String | Query | No | ** | The resource group. |
+| ClusterId | String | Query | Yes | ** | The unique identifier of the cluster. |
+| Type | String | Query | No | ** | The type of the node pool. Valid values: bmcp and ecs. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3783,34 +2188,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+### 2.62 ListAckClusterApp
 
 Retrieves a list of AI applications in an ACK cluster.
 
-### ListAckClusterApp
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3827,32 +2213,13 @@ Retrieves a list of AI applications in an ACK cluster.
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | Returns the current version. |
 
-Bare Metal Computing Platform D
+### 2.63 GetClusterInfo
 
-**Request header**
+Retrieves a list of ACK cluster information.
 
-This operation uses only common request headers. For more information, see Common request parameters.
+**Request headers**
 
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
+This operation uses common request headers. For more information, see Common parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3865,26 +2232,12 @@ This operation uses only common request headers. For more information, see Commo
 | ClusterId | String | Query | No | ** | Filters the cluster list by cluster ID. |
 | AckCluster Id | String | Query | No | ** | Filters the cluster list by ACK cluster ID. |
 
-Bare Metal Computing Platform D `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### GetClusterInfo
-
-Retrieves a list of ACK cluster information.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common parameters.
-
-**Request parameters**
-
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ClusterNa me | String | Query | No | ** | Filters the cluster list by cluster name. |
 | AckCluster Name | String | Query | No | ** | Filters the cluster list by ACK cluster name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3897,28 +2250,13 @@ This operation uses common request headers. For more information, see Common par
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+### 2.64 InstallAiApplication
 
-**Response parameters**
+Installs an AI application in an ACK cluster.
 
-**Examples**
+**Request header**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3928,22 +2266,6 @@ Bare Metal Computing Platform D
 | VswitchIdL ist | Json | Query | No | ** | A list of virtual switch IDs. This specifies the VSwitches to which the bare metal instances connect. |
 | AddonSyst emDiskCat egory | String | Query | No | ** | The type of the system disk, such as an ultra disk. |
 | AddonSyst emDiskSiz e | Integ er | Query | No | 1 | The size of the system disk for worker nodes, in GB. |
-
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### InstallAiApplication
-
-Installs an AI application in an ACK cluster.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3957,6 +2279,8 @@ This operation uses only common request headers. For more information, see Commo
 | NasEndpoi nt | String | Query | No | ** | The NAS endpoint. |
 | SlbIp | String | Query | No | ** | The SLB IP address. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | Successful | The return code. |
@@ -3966,11 +2290,7 @@ This operation uses only common request headers. For more information, see Commo
 | status | Integer | 200 | The returned status. |
 | requestId | String | ** | The ID of the request. |
 
-Bare Metal Computing Platform D
-
-**Response parameters**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3978,34 +2298,9 @@ Bare Metal Computing Platform D
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | Retrieves the version. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteCpfsClientCluster
+### 2.65 DeleteCpfsClientCluster
 
 Deletes a high-performance storage client cluster from a container cluster.
 
@@ -4013,9 +2308,9 @@ Deletes a high-performance storage client cluster from a container cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response data**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique ID of the cluster. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -4028,32 +2323,13 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+### 2.66 CreateCpfsClientCluster
 
-**Examples**
+Creates a client cluster for high-performance storage in a container cluster.
 
-`JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateCpfsClientCluster
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4070,32 +2346,15 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D Creates a client cluster for high-performance storage in a container cluster.
+**2.67.**
 
-**Request headers**
+### ListAckClusterEcsWorkerInstances
+
+Lists the Elastic Compute Service (ECS) worker instances in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
+
+**Request header**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4110,27 +2369,7 @@ This operation uses common request headers. No special request headers are requi
 | errorMessage | String | Successful | The returned message. |
 | data | Map | {} | The returned data. |
 
-Bare Metal Computing Platform D `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-**2.67.**
-
-### ListAckClusterEcsWorkerInstances
-
-Lists the Elastic Compute Service (ECS) worker instances in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D eveloper Guide·API Referenc |
+|   |   |   | Bare Metal Computing Platform D eveloper Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4140,38 +2379,13 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### UnbindKeyPair
+### 2.68 UnbindKeyPair
 
 Detaches a key pair.
 
 **Request header**
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4189,28 +2403,13 @@ This operation uses only common request headers. For more information, see the C
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+### 2.69 CreateKeyPair
 
-**Response data**
+Creates a key pair.
 
-**Examples**
+**Request header**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4225,25 +2424,7 @@ Bare Metal Computing Platform D
 | errorCode | String | Successful | The return code. |
 | errorTitle | String | Successful | The returned title. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateKeyPair
-
-Creates a key pair.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-| Bare Metal Compu | ting Platform D |  |  |
+| Bare Metal Compu | ting Platform D |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4255,38 +2436,15 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-**Examples**
+Sample response in `JSON` format Sample response in `XML` format
 
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ConfigKeyPair
+### 2.70 ConfigKeyPair
 
 Attaches a key pair.
 
 **Request header**
 
 This operation uses common request headers. For more information, see Common parameters.
-
-**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4304,28 +2462,13 @@ This operation uses common request headers. For more information, see Common par
 | success | Boolean | true | Indicates whether the request was successful. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+### 2.71 AIRListConvertJobs
 
-**Response data**
+Retrieves a list of accelerated image transformation jobs.
 
-**Examples**
+**Request headers**
 
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4335,22 +2478,6 @@ Bare Metal Computing Platform D
 | JobStatus | String | Query | No | ** | The search condition for the job status. Valid values: JOB RUNNING, _ JOB SUCCESS, and _ JOB FAILED. _ |
 | OrderBy | String | Query | No | ** | The field to sort by. Valid values: jobID, jobStatus, imageRef, created at _ (sorts by CreatedAt), and updated at (sorts by _ UpdatedAt). |
 | Desc | Boole an | Query | No | true | Specifies whether to sort the results in descending order. Default value: false. |
-
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### AIRListConvertJobs
-
-Retrieves a list of accelerated image transformation jobs.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 **Response parameters**
 
@@ -4365,30 +2492,17 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
+**2.72.**
 
-Sample response in `JSON` format
+### AIRConvertImageToDADIImage
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
+Converts a standard image to a DADI image.
 
-Sample response in `XML` format
+**Request header**
 
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramet er name | Type | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4405,25 +2519,13 @@ Sample response in `XML` format
 | success | Boolean | true | The status of the request. |
 | responseVersio n | String | v1 | The version of the response. |
 
-Bare Metal Computing Platform D
+### 2.73 CreateEhpcCluster
 
-**2.72.**
+Creates an Elastic High Performance Computing (EHPC) cluster.
 
-### AIRConvertImageToDADIImage
+**Request headers**
 
-Converts a standard image to a DADI image.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
-`JSON` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er Name | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4432,38 +2534,7 @@ This operation uses common request headers. No special request headers are requi
 | RegionId | String | Query | No | ** | The ID of the region where the cluster is deployed. |
 | ZoneId | String | Query | No | ** | The ID of the zone. |
 
-Bare Metal Computing Platform D
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### CreateEhpcCluster
-
-Creates an Elastic High Performance Computing (EHPC) cluster.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-| Bare Metal Co | mputing | Platform D |  |  |  |
+| Bare Metal Co | mputing | Platform D |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er Name | Type | Positi on | Require d | Example | Description |
@@ -4498,44 +2569,14 @@ This operation uses only common request headers. For more information, see Commo
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-**Response data**
-
-| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |  |  |
+| Bare Metal Compu veloper Guide·AP | ting Platform D I Reference |   |   |
 |---|---|---|---|
 | Parameter Name | Type | Example | Description |
 | responseVersio n | String | v1 | The version of the response. |
 
-| Paramet er | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
-| InstanceId List | Json | Query | No | ** | A list of instance IDs to remove from the cluster. |
+Sample response in `JSON` format Sample response in `XML` format
 
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteEhpcClusterInstances
+### 2.74 DeleteEhpcClusterInstances
 
 Scales in an Elastic High Performance Computing (E-HPC) cluster.
 
@@ -4543,9 +2584,12 @@ Scales in an Elastic High Performance Computing (E-HPC) cluster.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
+| InstanceId List | Json | Query | No | ** | A list of instance IDs to remove from the cluster. |
 
-|  |  |  |  | Bare M | etal Computing Platform D |
+|   |   |   |   | Bare M | etal Computing Platform D |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Locati on | Require d | Example | Description |
@@ -4563,26 +2607,13 @@ This operation uses common request headers. For more information, see Common req
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-**Response data**
+### 2.75 DeleteEhpcCluster
 
-**Examples**
+Deletes an Elastic High Performance Computing (EHPC) cluster.
 
-`JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4599,60 +2630,14 @@ This operation uses common request headers. For more information, see Common req
 | requestId | String | ** | The request ID. |
 | success | Boolean | true | The request status. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DeleteEhpcCluster
-
-Deletes an Elastic High Performance Computing (EHPC) cluster.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response data**
-
-|  |  |  |  | Bare Metal Computing Platform D eveloper Guide·API Referenc | e |
+|   |   |   |   | Bare Metal Computing Platform D eveloper Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | responseVersio n | String | v1 | The response version. |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Departme nt | String | Query | No | ** | Filters the list of clusters by organization. |
-| ResourceG roup | String | Query | No | ** | Filters the list of clusters by resource group. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### ListEhpcCluster
+### 2.76 ListEhpcCluster
 
 Retrieves a list of EHPC clusters.
 
@@ -4660,7 +2645,10 @@ Retrieves a list of EHPC clusters.
 
 This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Departme nt | String | Query | No | ** | Filters the list of clusters by organization. |
+| ResourceG roup | String | Query | No | ** | Filters the list of clusters by resource group. |
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4671,6 +2659,8 @@ This operation uses common request headers. No special request headers are requi
 | Status | String | Query | No | ** | Filters the list of clusters by cluster status. |
 | PageNumb er | Integ er | Query | No | 1 | The page number. The default value is 1. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. The default value is 10. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4683,41 +2673,9 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-Bare Metal Computing Platform D
+Sample response in `JSON` format Sample response in `XML` format
 
-**Response parameters**
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
-| Password | String | Query | No | ** | The password for the bare machine. This parameter is required if no password has been set for the cluster. |
-
-Bare Metal Computing Platform D
-
-**Examples**
-
-Sample response in `JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-Sample response in `XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### AddEhpcClusterInstances
+### 2.77 AddEhpcClusterInstances
 
 Scales out an ACK cluster.
 
@@ -4725,7 +2683,10 @@ Scales out an ACK cluster.
 
 This operation uses only common request headers. For more information, see the documentation about common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
+| Password | String | Query | No | ** | The password for the bare machine. This parameter is required if no password has been set for the cluster. |
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4744,11 +2705,7 @@ This operation uses only common request headers. For more information, see the d
 | status | Integer | 200 | The status of the response. |
 | requestId | String | ** | The request ID. |
 
-Bare Metal Computing Platform D
-
-**Response data**
-
-|  |  |  | Bare Metal Computing Platform D eveloper Guide·API Referenc |
+|   |   |   | Bare Metal Computing Platform D eveloper Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4756,34 +2713,7 @@ Bare Metal Computing Platform D
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The version of the response. |
 
-| Paramet er name | Type | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
-
-**Examples**
-
-`JSON` format
-
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribeEhpcCluster
+### 2.78 DescribeEhpcCluster
 
 Queries the details of a specified EHPC cluster.
 
@@ -4791,9 +2721,9 @@ Queries the details of a specified EHPC cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response data**
+| Paramet er name | Type | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ClusterId | String | Query | No | ** | The unique identifier of the cluster. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -4806,52 +2736,25 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-Bare Metal Computing Platform D
+### 2.79 DescribeSpecification
 
-**Examples**
+Queries the specifications of a GPU.
 
-`JSON` format
+**Request headers**
 
-```json
-{
- "responseVersion":"v1",
- "data":{},
- "errorTitle":"Successful",
- "requestId":"**",
- "success":true,
- "errorMessage":"Successful",
- "errorCode":"Successful",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
-```
-
-### DescribeSpecification
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Locat ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | Gpu | Strin g | Quer y | No | NVIDIA xxxxx | The GPU model. If you leave this parameter empty, all specifications are returned. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | errorCode | String | UnknownError | The error code. |
 | errorTitle | String | InternalError | The error title. |
 | errorMessage | String | failed | The error message that is returned when the call fails. |
-
-Bare Metal Computing Platform D Queries the specifications of a GPU.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | data | Map | { "Specification": [ { "Specification": "testxxxx1", "ClusterType": "bmcp managed", _ "Gpu": "Nvidiaxxxxx1", "GpuNumber": 5, "CpuNumber": 1, "CpuManufacturer": "xxxx", "CpuModel": "xxxx", "Memory": 32, "VideoMemory": 0, "TflopsFP32": 0 }, { "Specification": "testxxxx2", "ClusterType": "bmcp managed", _ "Gpu": "Nvidiaxxxxx2", "GpuNumber": 5, "CpuNumber": 1, "CpuManufacturer": "xxxx", "CpuModel": "xxxx", "Memory": 32, "VideoMemory": 0, "TflopsFP32": 0 } ] } | The returned data. |
 |---|---|---|---|
@@ -4860,18 +2763,9 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | Returned status. true: The request was successful. Failed: No. |
 | responseVersio n | String | v1 | The version number of the API response. It is used to handle different API versions. |
 
-Bare Metal Computing Platform D Bare Metal Computing Platform D
-
-**Examples**
-
-`JSON` format
-
 ```json
-{
- "responseVersion":"v1",
  "data":{
   "Specification":[
-   {
     "GpuNumber":5,
     "CpuModel":"xxxx",
     "CpuNumber":1,
@@ -4882,8 +2776,11 @@ Bare Metal Computing Platform D Bare Metal Computing Platform D
     "ClusterType":"bmcp_managed",
     "VideoMemory":0,
     "Gpu":"Nvidiaxxxxx1"
-   },
-   {
+```
+
+`},`
+
+```json
     "GpuNumber":5,
     "CpuModel":"xxxx",
     "CpuNumber":1,
@@ -4894,32 +2791,19 @@ Bare Metal Computing Platform D Bare Metal Computing Platform D
     "ClusterType":"bmcp_managed",
     "VideoMemory":0,
     "Gpu":"Nvidiaxxxxx2"
-   }
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
- "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
- "status":200
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Locat ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| InstanceNa me | Strin g | Quer y | No | i-xxxxxxxx | The name of the instance. |
-
-Bare Metal Computing Platform D
-
 ```xml
-<responseVersion>v1</responseVersion> <data>
+<data>
  <Specification>
   <GpuNumber>5</GpuNumber>
   <CpuModel>xxxx</CpuModel>
@@ -4944,10 +2828,10 @@ Bare Metal Computing Platform D
   <VideoMemory>0</VideoMemory>
   <Gpu>Nvidiaxxxxx2</Gpu>
  </Specification>
-</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
+</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
 ```
 
-### DescribeInstanceGpuVirt
+### 2.80 DescribeInstanceGpuVirt
 
 This operation queries the details of GPU hardware virtualization.
 
@@ -4955,7 +2839,9 @@ This operation queries the details of GPU hardware virtualization.
 
 This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Locat ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| InstanceNa me | Strin g | Quer y | No | i-xxxxxxxx | The name of the instance. |
 
 **Returned Data**
 
@@ -4967,16 +2853,10 @@ This operation uses common request headers. Special request headers are not requ
 | data | Map | { "MachineGpu": [ { "ID": "1", "Name": "11", "GPUID": "11", "SN": "1111", "InstanceId": "", "MachineId": "0", "MachineSN": "1111", "Manufacturer": "", "ModelName": "", "UUID": "", "BUSID": "", "DeployType": "", "MemoryUsed": "", "MemoryTotal": "22 Mib", "DriverName": "", "DriverVersion": "", "VbiosVersion": "", "VirtualEnable": true, "VirtualSpecificatio ns": " [{\"templateName\" : \"1g.10gb\",\"vdeic eNum\":2}, {\"templateName\": \"2g.10gb\",\"vdeic eNum\":1}]", "Deleted": false, "CreateTime": "2022-08- 11T07:50:45Z", "UpdateTime": "2022-08- 11T07:50:45Z" } ], "GpuVirtualTemplat e": [ { "ID": "1", "MachineSN": "1111", "Name": "1111", "AiCore": "", "Memory": "", "Deleted": false, "CreateTime": "2024-12- 11T03:23:15Z", "UpdateTime": "2024-12- 11T03:23:15Z" } ] } | The returned data. |
 | status | Integer | 200 | The returned status. |
 
-Bare Metal Computing Platform D
-
 | requestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 |---|---|---|---|
 | success | Boolean | true | The status returned. Success: true. Failed: false. |
 | responseVersio n | String | v1 | The version number of the API response, used to handle different API versions. |
-
-Bare Metal Computing Platform D
-
-**Examples**
 
 Request example
 
@@ -4984,14 +2864,11 @@ Request example
 http(s)://[Endpoint]/?Action=DescribeInstanceGpuVirt &Common request parameters
 ```
 
-Response example `JSON` format Bare Metal Computing Platform D
+Response example
 
 ```json
-{
- "responseVersion":"v1",
  "data":{
   "GpuVirtualTemplate":[
-   {
     "MachineSN":"1111",
     "AiCore":"",
     "Memory":"",
@@ -5000,14 +2877,12 @@ Response example `JSON` format Bare Metal Computing Platform D
     "ID":"1",
     "Deleted":false,
     "Name":"1111"
-   }
 ```
 
 `],`
 
 ```json
   "MachineGpu":[
-   {
     "DeployType":"",
     "MachineId":"0",
     "MachineSN":"1111",
@@ -5031,26 +2906,19 @@ Name\": \"2g.10gb\",\"vdeiceNum\":1}]",
     "UUID":"",
     "VirtualEnable":true,
     "MemoryTotal":"22 Mib"
-   }
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
- "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
- "status":200
-}
 ```
 
-`XML` format Bare Metal Computing Platform D
-
 ```xml
-<responseVersion>v1</responseVersion> <data>
+<data>
  <GpuVirtualTemplate>
   <MachineSN>1111</MachineSN>
   <AiCore  />
@@ -5086,10 +2954,10 @@ Name\": \"2g.10gb\",\"vdeiceNum\":1}]",
   <VirtualEnable>true</VirtualEnable>
   <MemoryTotal>22 Mib</MemoryTotal>
  </MachineGpu>
-</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
+</data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
 ```
 
-### CreatInstanceCgpu
+### 2.81 CreatInstanceCgpu
 
 Enables GPU kernel virtualization.
 
@@ -5112,53 +2980,23 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The status that is returned. true: The request was successful. Failed: false |
 | responseVersio n | String | v1 | The version number of the API response. This is used to handle different API versions. |
 
-Bare Metal Computing Platform D
-
-**Request parameters**
-
-**Response data**
-
-**Examples**
-
 Request example
 
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=CreatInstanceCgpu &Common request parameters
 ```
 
-Successful response examples `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceN ame | String | Query | No | i-xxxxxxx | The name of the instance. |
-| GpuCardID | String | Query | No | [1,2,3] | The IDs of the GPUs for which you want to clear hardware virtualization settings. The value is a JSON array of integers. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| errorCode | String | UnknownError | The error code. |
-
-Bare Metal Computing Platform D
+Successful response examples
 
 ```json
-{
- "responseVersion":"v1",
- "data":{},
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
- "success":true,
  "errorMessage":"xxxx failed",
  "errorCode":"UnknownError",
- "status":200
-}
+<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>xxxx failed</errorMessage> <errorCode>UnknownError</errorCode>
 ```
 
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>xxxx failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
-```
-
-### StopInstanceGpuVirt
+### 2.82 StopInstanceGpuVirt
 
 Stops GPU virtualization.
 
@@ -5166,11 +3004,18 @@ Stops GPU virtualization.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceN ame | String | Query | No | i-xxxxxxx | The name of the instance. |
+| GpuCardID | String | Query | No | [1,2,3] | The IDs of the GPUs for which you want to clear hardware virtualization settings. The value is a JSON array of integers. |
 
 **Returned data**
 
-|  |  |  | Bare Metal Computing Platform D |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| errorCode | String | UnknownError | The error code. |
+
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5183,30 +3028,32 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the response. Success: true Failed: false. |
 | responseVersio n | String | v1 | The version number of the API response. This is used to handle different API versions. |
 
-**Examples**
-
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=StopInstanceGpuVirt &<Common request parameters>
 ```
 
-Sample response `JSON` format
+Sample response
 
 ```json
-{
- "responseVersion":"v1",
- "data":{},
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
- "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
- "status":200
-}
 ```
 
-`XML` format
+```xml
+<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
+```
+
+### 2.83 CreatInstanceVxpu
+
+Enables GPU hardware virtualization.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5222,25 +3069,7 @@ Sample response `JSON` format
 | status | Integer | 200 | The return status. |
 | requestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Bare Metal Computing Platform D
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
-```
-
-### CreatInstanceVxpu
-
-Enables GPU hardware virtualization.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Data**
-
-|  |  |  | Bare Metal Computing Platform D |
+|   |   |   | Bare Metal Computing Platform D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5248,31 +3077,18 @@ This operation uses only common request headers. For more information, see Commo
 | success | Boolean | true | The status of the response. true: The request was successful. The operation did not fail. |
 | responseVersio n | String | v1 | The version number of the API response. This is used to handle different API versions. |
 
-**Examples**
-
 Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CreateInstanceVxpu &Common request parameters
 ```
 
-Sample response `JSON` format
+Sample response
 
 ```json
-{
- "responseVersion":"v1",
- "data":{},
  "errorTitle":"InternalError",
  "requestId":"F0A8A039-930D-5EC1-97C8-************",
- "success":true,
  "errorMessage":"failed",
  "errorCode":"UnknownError",
- "status":200
-}
-```
-
-`XML` format
-
-```xml
-<responseVersion>v1</responseVersion> <data /> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode> <status>200</status>
+<errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <errorMessage>failed</errorMessage> <errorCode>UnknownError</errorCode>
 ```

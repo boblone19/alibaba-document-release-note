@@ -3,16 +3,95 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Resource Orchestration Ser
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 189
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Resource Orchestration Service Developer Guide 20220915.pdf"
+source_pdf: "b31c4db27bc437fa_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Resource Orchestration Service Developer Guide 2022091"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Resource%20Orchestration%20Service%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Resource Orchestration Service Developer Guide
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Call an API operation
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about API operations
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain the endpoint of ROS
+  - 2.7 Obtain an ROS SDK
+- 3 Use ROS SDK for Java
+  - 3.1 Get started with ROS SDK for Java
+  - 3.2 Use SDK
+    - 3.2.1 Install ROS SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Use ROS SDK for Java
+    - 3.2.5 Handle errors
+- 4 Use ROS SDK for Python
+  - 4.1 Get started with ROS SDK for Python
+  - 4.2 Use SDK
+    - 4.2.1 Install ROS SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Use ROS SDK for Python
+    - 4.2.5 Handle errors
+- 5 Use ROS SDK for Go
+  - 5.1 Get started with ROS SDK for Go
+  - 5.2 Use SDK
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Handle errors
+    - 5.2.4 Use CommonRequest to call API operations
+- 6 API Reference
+  - 6.1 List of operations by function
+  - 6.2 Make API calls
+  - 6.3 Request signatures
+  - 6.4 Common parameters
+  - 6.5 Common error codes
+  - 6.6 Stack operations
+    - 6.6.1 CreateStack
+    - 6.6.2 ContinueCreateStack
+    - 6.6.3 UpdateStack
+    - 6.6.4 CancelUpdateStack
+    - 6.6.5 GetStack
+    - 6.6.6 DeleteStack
+    - 6.6.7 ListStacks
+    - 6.6.8 PreviewStack
+    - 6.6.9 ListStackEvents
+  - 6.7 Resource operations
+    - 6.7.1 GetResourceTypeTemplate
+    - 6.7.2 ListStackResources
+    - 6.7.3 GetStackResource
+    - 6.7.4 GetResourceType
+    - 6.7.5 ListResourceTypes
+  - 6.8 Template operations
+    - 6.8.1 ValidateTemplate
+    - 6.8.2 GetTemplate
+    - 6.8.3 DeleteTemplate
+    - 6.8.4 ListTemplates
+    - 6.8.5 CreateTemplate
+    - 6.8.6 UpdateTemplate
+    - 6.8.7 GetTemplateSummary
+  - 6.9 Other operations
+    - 6.9.1 DescribeRegions
+    - 6.9.2 SignalResource
+    - 6.9.3 ListStackOperationRisks
+- 7 Appendixes
+  - 7.1 Call the ASAPI gateway
+  - 7.2 Use the ASAPI gateway to make API calls
+    - 7.2.1 Obtain an endpoint of ASAPI
+    - 7.2.2 Obtain Apsara Stack SDKs
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Center page by using a browser.
@@ -22,7 +101,7 @@ documentation This topic describes how to view the desired product development d
 5. In the upper-right corner of the product documentation section, click View Det ails or Download
 PDF.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Apsara Stack allows you to call API operations by using the point of presence (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway. Not e You can still call API operations by using the ASAPI gateway if you are using an earlier version of Apsara Stack Enterprise. For more information, see Call API operations by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain Apsara Stack SDKs. Flowchart Procedure
 1. Obtain AccessKey credentials.
@@ -36,9 +115,9 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 5. Obtain the endpoint of the cloud service.
 6. Obtain an SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -48,7 +127,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the information about API
+### 2.2 View the information about API operations
 
 operations You must obtain a service name, API operation name, and API version. All the information is required when you use SDKs. Procedure
 1. Log on to the API Tool console.
@@ -57,7 +136,7 @@ operations You must obtain a service name, API operation name, and API version. 
 operation name in the search box, and then click the search icon.
 4. View and remember the service name, API operation name, and API version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 An AccessKey credential can be assigned by Resource Access Management (RAM) or STS. You can use one of the services to obtain an AccessKey credential for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context The AccessKey ID and AccessKey secret contained in an AccessKey credential are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt the signature. An AccessKey credential can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, set the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -83,13 +162,11 @@ to obtain.
 5. Click Management AccessKey on the right side of the page.
 6. In the Management AccessKey dialog box, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use STS to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. All the three elements are required when you use STS to call API operations in Apsara Stack. For more information, see What is STS? Procedure
 1. Obtain the Alibaba Cloud Resource Name (ARN) of the RAM role that is assumed by the
-organization that you want to use. i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click User Inf ormat ion. iii. Click View Current Role Policy. iv. In the View Policies of Current Role dialog box, select an organization and view the RAM Role.
-2. Obtain an STS AccessKey 3-tuple
-Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the obtained ARN of the RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
+organization that you want to use. i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click User Inf ormat ion. iii. Click View Current Role Policy. iv. In the View Policies of Current Role dialog box, select an organization and view the RAM Role. Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the obtained ARN of the RAM role. <sts.aliyuns.com>: Replace the parameter with the STS endpoint.
 
 ```
 public static void main(String[] args) {
@@ -191,7 +268,7 @@ skey>", "<yourStsAccessSecret>");
 
 `}` `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common header parameters
 
 header parameters You must set header parameters when you call API operations in Apsara Stack. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the return values of some parameters after you call API operations. Header parameters
 
@@ -222,7 +299,7 @@ Obtain an organization ID You must call an API operation to obtain an organizati
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of ROS
+### 2.6 Obtain the endpoint of ROS
 
 This topic describes how to obtain the endpoint of ROS. Background information To use the POP gateway to call API operations in Apsara Stack, you must specify the endpoint of the corresponding cloud service. You can contact an Alibaba Cloud on-site O&M engineer to obtain the endpoint. You can also perform the following steps to obtain the endpoint. Procedure
 1. Log on to Apsara Infrastructure Management.
@@ -236,7 +313,7 @@ More.
 6. In the Det ails dialog box, view the value of ros-openapi.endpoint. The value indicates the
 endpoint of ROS.
 
-### Obtain an ROS SDK
+### 2.7 Obtain an ROS SDK
 
 To call API operations of ROS in Apsara Stack by using the POP gateway, you must use an ROS SDK. The following table provides links for you to download Alibaba Cloud SDKs and ROS SDKs.
 
@@ -248,9 +325,9 @@ To call API operations of ROS in Apsara Stack by using the POP gateway, you must
 
 va
 
-## Use ROS SDK for Java
+## 3 Use ROS SDK for Java
 
-### Get started with ROS SDK for Java
+### 3.1 Get started with ROS SDK for Java
 
 This topic describes how to get started with ROS SDK for Java. Prerequisites An Apsara Stack tenant account and an AccessKey pair, which consists of an AccessKey ID and an AccessKey secret, are obtained. For more information, see Obtain an AccessKey pair. The endpoint of ROS is obtained. For more information, see Obtain the endpoint of ROS. Java Development Kit (JDK)1.8or later is installed. Install the SDK If you use Apache Maven to manage a Java project, you need to only import the JAR file to the pom.xml file of the project. To use ROS SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and ROS SDK for Java. We recommend that you use the SDK core library of V4.5.17 or later and ROS SDK for Java of V1.0.1 or later. Use ROS SDK for Java
 1. Create and initialize a com.aliyun.ros20190910.Client instance.
@@ -396,9 +473,9 @@ quest.CreateStackRequestParameters()
 
 `}` `}` va
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install ROS SDK for Java
+#### 3.2.1 Install ROS SDK for Java
 
 This topic describes the two steps that are required to install ROS SDK for Java: obtain ROS SDK for Java and add Maven dependencies. Step 1: Obtain ROS SDK for Java A JDK of 1.8 or later is required for Alibaba Cloud SDK for Java. To use ROS SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and ROS SDK for Java. The version of the SDK core library must be V4.5.17 or later. The version of ROS SDK for Java must be V1.0.1 or later. For more information, see ROS SDK for Java. Step 2: Add Maven dependencies When you install ROS SDK for Java, you must add the following dependencies to the pom.xml file:
 
@@ -417,7 +494,7 @@ This topic describes the two steps that are required to install ROS SDK for Java
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. Warning Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised. va
 
@@ -433,7 +510,7 @@ private static String REGIONID = "<yourRegionId>"; // Specify the region ID.
 
 Not e In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. va
 
@@ -453,7 +530,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Use ROS SDK for Java
+#### 3.2.4 Use ROS SDK for Java
 
 This topic describes how to use ROS SDK for Java. Procedure
 1. Create an AcsClient instance.
@@ -477,7 +554,7 @@ GetStackRequest getStackRequest = new GetStackRequest()
 GetStackResponse resp = client.getStack(getStackRequest); com.aliyun.teaconsole.Client.log(com.aliyun.teautil.Common.toJSONString(TeaModel.buildM ap(resp)));
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 va When you use ROS SDK for Java, errors may occur. If an error occurs on the ROS server, the SDK returns a `ServerException` error response. If an error occurs on a client instance, the SDK returns a `ClientException` error response. An error response is composed of an error code and an error message. In general, you do not need to handle client instance errors. You need to only handle server errors. If you want to handle client instance errors, you can use the following sample code:
 
@@ -501,9 +578,9 @@ try {
 
 `}` thon
 
-## Use ROS SDK for Python
+## 4 Use ROS SDK for Python
 
-### Get started with ROS SDK for
+### 4.1 Get started with ROS SDK for Python
 
 Python This topic describes how to get started with ROS SDK for Python. Prerequisites An Apsara Stack tenant account and an AccessKey pair, which consists of an AccessKey ID and an AccessKey secret, are obtained. For more information, see Obtain an AccessKey pair. The endpoint of ROS is obtained. For more information, see Obtain the endpoint of ROS. Step 1: Install ROS SDK for Python
 1. Install the core library of Alibaba Cloud SDK for Python.
@@ -553,9 +630,9 @@ request = ListResourceTypesRequest() request.set_accept_format('json') # Specify
 response = clt.do_action_with_exception(request) print response
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install ROS SDK for Python
+#### 4.2.1 Install ROS SDK for Python
 
 This topic describes how to install ROS SDK for Python. Alibaba Cloud SDK for Python supports Python 2.6.x, 2.7.x, 3.x, and later. You can install Alibaba Cloud SDK for Python by using pip.
 1. Install the core library of Alibaba Cloud SDK for Python.
@@ -584,7 +661,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-ros
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. thon If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. Warning Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -592,7 +669,7 @@ When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provid
 from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, region_id, endpoint=endpoint)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python.
 
@@ -622,7 +699,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 
 thon
 
-#### Use ROS SDK for Python
+#### 4.2.4 Use ROS SDK for Python
 
 This topic describes how to use ROS SDK for Python. Procedure
 1. Import ROS SDK for Python.
@@ -649,7 +726,7 @@ request = ListResourceTypesRequest() request.set_accept_format('json')
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 When you use ROS SDK for Python, errors may occur. If an error occurs on the ROS server, the SDK returns
 
@@ -673,9 +750,9 @@ except ServerException as e:
 
 o
 
-## Use ROS SDK for Go
+## 5 Use ROS SDK for Go
 
-### Get started with ROS SDK for Go
+### 5.1 Get started with ROS SDK for Go
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to use ROS SDK for Go. Prerequisites An Apsara Stack tenant account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain an AccessKey pair. An endpoint of ROS is obtained. For more information, see Obtain the endpoint of ROS. Step 1: Install the core package of Alibaba Cloud SDK for Go Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -737,15 +814,15 @@ yourAccessKeySecret>")
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. ROS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ROS, you must configure the AccessKey pair as the credentials when you initialize a client instance. o Warning Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -755,7 +832,7 @@ When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provid
 
 Not e In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Handle errors
+#### 5.2.3 Handle errors
 
 When you use ROS SDK for Go, errors may occur. If an error occurs on the ROS server, the SDK returns a `ServerError` error response. If an error occurs on a client instance, the SDK returns a `ClientError` error response. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a similar way as standard Go errors. Handle errors You can use the following code to handle errors:
 
@@ -813,7 +890,7 @@ package main import (
 
 `)`
 
-#### Use CommonRequest to call API operations
+#### 5.2.4 Use CommonRequest to call API operations
 
 o If you want to call the API operations of an Apsara Stack service that does not provide SDKs, or the requests and responses of the API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. The following sample code provides an example on how to query details of a stack by calling the GetStack operation of ROS. Not e In the following sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ros.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. o
 
@@ -889,9 +966,9 @@ he organization ID.
 
 `}`
 
-## API Reference
+## 6 API Reference
 
-### List of operations by function
+### 6.1 List of operations by function
 
 The following tables list API operations available for use in Resource Orchestration Service (ROS). Stack operations
 
@@ -952,7 +1029,7 @@ Other operations
 | SetDeletionProtection | Configures deletion protection on a stack. |
 | ListStackOperationRisks | Detects the resources that may face high risks caused by a stack deletion operation, and queries the reason for each risk. |
 
-### Make API calls
+### 6.2 Make API calls
 
 To call the ROS API, you must send HTTP GET requests to the endpoint of the ROS API. You must add the request parameters that correspond to the API operation being called. After you call the API operation, the system returns a response. The request and response are both encoded in UTF-8. Request syntax ROS API operations use the RPC protocol. You can call ROS API operations by sending HTTP GET requests. The following example describes the request syntax of a ROS API request:
 
@@ -976,7 +1053,7 @@ http(s)://ros.aliyuncs.com/? Action=ListStacks &RegionId=cn-hangzhou &Format=JSO
 
 …
 
-### Request signatures
+### 6.3 Request signatures
 
 You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. Each API request must contain the signature, regardless of whether the request is sent over HTTP or HTTPS. Overview You must add the signature to the ROS API request in the following format:
 
@@ -1058,7 +1135,7 @@ http://ros.aliyuncs.com/?SignatureVersion=1.0&Action=DescribeRegions&Format=XML&
 
 You can use browsers or tools such as cURL and Wget to initiate an HTTP request by using the new URL. The HTTP request calls the `DescribeRegions` operation to query the Alibaba Cloud region list.
 
-### Common parameters
+### 6.4 Common parameters
 
 This topic describes the common request and response parameters. Common request parameters
 
@@ -1103,7 +1180,7 @@ JSON format `{`
 
 `}`
 
-### Common error codes
+### 6.5 Common error codes
 
 This topic describes the common client and server error codes. Client error codes
 
@@ -1142,9 +1219,9 @@ Server error codes
 | InternalError | Server error. | 500 | The error message returned because an internal error has occurred. |
 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | 503 | The error message returned because a server error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### Stack operations
+### 6.6 Stack operations
 
-#### CreateStack
+#### 6.6.1 CreateStack
 
 You can call this operation to create a stack. Request parameters
 
@@ -1234,7 +1311,7 @@ Sample success responses `XML` format
 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | 409 | The error message returned because the specified stack has a change operation in progress. name indicates the name or ID of the stack, and action indicates the change operation. |
 | StackExists | The Stack ({name}) already exists. | 409 | The error message returned because a stack with the same name already exists. name indicates the stack name. |
 
-#### ContinueCreateStack
+#### 6.6.2 ContinueCreateStack
 
 You can call this operation to create a stack based on the template of the previous stack that fails to be created. Request parameters
 
@@ -1324,7 +1401,7 @@ Sample success responses `XML` format
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | The error message returned because the specified stack has a change operation in progress. name indicates the name or ID of the stack, and action indicates the change operation. |
 
-#### UpdateStack
+#### 6.6.3 UpdateStack
 
 You can call this operation to update a stack. The values of Parameters and UsePreviousParameters in the request are related. If parameters defined in the template are not specified by Parameters, take note of the following items: When UsePreviousParameters is set to false, if the parameter has a default value in the template, the default value is used. If the parameter does not have a default value in the template, you must specify the parameter in the Parameters section. When UsePreviousParameters is set to true, if the parameter is specified when the stack is created, the specified value is used. If the parameter is not specified and it has a default value in the template, the default value is used. Request parameters
 
@@ -1428,7 +1505,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | The error message returned because the specified stack has a change operation in progress. name indicates the name or ID of the stack, and action indicates the change operation. |
 
-#### CancelUpdateStack
+#### 6.6.4 CancelUpdateStack
 
 You can call this operation to cancel the update of a stack. Request parameters
 
@@ -1474,7 +1551,7 @@ Sample success responses `XML` format
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | The error message returned because the specified stack has a change operation in progress. name indicates the name or ID of the stack, and action indicates the change operation. |
 
-#### GetStack
+#### 6.6.5 GetStack
 
 You can call this operation to query information about a stack. Request parameters
 
@@ -1634,7 +1711,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 
-#### DeleteStack
+#### 6.6.6 DeleteStack
 
 You can call this operation to delete a stack and all of its resources. Request parameters
 
@@ -1687,7 +1764,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 409 | ActionInProgress | Stack {name} already has an action ({action}) in progress. | The error message returned because the specified stack has a change operation in progress. name indicates the name or ID of the stack, and action indicates the change operation. |
 
-#### ListStacks
+#### 6.6.7 ListStacks
 
 You can call this operation to query the list of stacks. Request parameters
 
@@ -1815,7 +1892,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### PreviewStack
+#### 6.6.8 PreviewStack
 
 You can call this operation to preview the stack to be created by using a specified template. Request parameters
 
@@ -2221,7 +2298,7 @@ ype>
 | 400 | UserParameterMissing | The Parameter {name} was not provided. | The error message returned because no value is passed into the specified parameter defined in the template. name indicates the parameter key. |
 | 409 | StackExists | The Stack ({name}) already exists. | The error message returned because a stack with the same name already exists. name indicates the stack name. |
 
-#### ListStackEvents
+#### 6.6.9 ListStackEvents
 
 You can call this operation to query stacks and their resource events. Request parameters
 
@@ -2582,9 +2659,9 @@ Id>
 |---|---|---|---|
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 
-### Resource operations
+### 6.7 Resource operations
 
-#### GetResourceTypeTemplate
+#### 6.7.1 GetResourceTypeTemplate
 
 You can call this operation to query the template of a resource by resource type. Request parameters
 
@@ -2725,7 +2802,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | ResourceTypeNotFound | The Resource Type ({name}) could not be found. | The error message returned because the specified resource type does not exist. name indicates the name of the resource type. |
 
-#### ListStackResources
+#### 6.7.2 ListStackResources
 
 You can call this operation to query the resource list of a specific stack. Request parameters
 
@@ -2918,7 +2995,7 @@ Type>
 |---|---|---|---|
 | StackNotFound | The Stack ({name}) could not be found. | 404 | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 
-#### GetStackResource
+#### 6.7.3 GetStackResource
 
 You can call this operation to query information about a resource in a specific stack. Request parameters
 
@@ -3066,7 +3143,7 @@ name=test-describe-resource&stackid=efdf5c10-96a5-4fd7-ab89-68e7baa2****&resourc
 | 404 | ResourceNotFound | The Resource ({name}) could not be found in Stack {stack}. | The error message returned because the specified resource does not exist in the stack. name indicates the resource name, and stack indicates the name or ID of the stack. |
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 
-#### GetResourceType
+#### 6.7.4 GetResourceType
 
 You can call this operation to query details about resource types. Request parameters
 
@@ -3239,7 +3316,7 @@ ate. In this mode, WaitCondition.Count should reference an incremental value ins
 |---|---|---|---|
 | 404 | ResourceTypeNotFound | The Resource Type ({name}) could not be found. | The error message returned because the specified resource type does not exist. name indicates the name of the resource type. |
 
-#### ListResourceTypes
+#### 6.7.5 ListResourceTypes
 
 You can call this operation to query the list of supported resource types. Request parameters
 
@@ -3561,9 +3638,9 @@ sourceType>
 
 `]` `}`
 
-### Template operations
+### 6.8 Template operations
 
-#### ValidateTemplate
+#### 6.8.1 ValidateTemplate
 
 You can call this operation to validate the template that is used to create stacks. Request parameters
 
@@ -3788,7 +3865,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | InvalidTemplate | {reason}. | 400 | The error message returned because the specified template is invalid. reason indicates the specific reason. |
 
-#### GetTemplate
+#### 6.8.2 GetTemplate
 
 You can call this operation to query details about a template. Request parameters
 
@@ -3844,7 +3921,7 @@ Type": "ALIYUN::DEBUG::Dummy", "Properties": {"Map": {"Ref": "param_has_default"
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 | 404 | TemplateNotFound | The Tempalte ({ ID }) could not be found. | The error message returned because the specified template does not exist. ID indicates the template ID. |
 
-#### DeleteTemplate
+#### 6.8.3 DeleteTemplate
 
 You can call this operation to delete a stack and all of its resources. Request parameters
 
@@ -3885,7 +3962,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | TemplateNotFound | The Tempalte ({ ID }) could not be found. | The error message returned because the specified stack does not exist. |
 
-#### ListTemplates
+#### 6.8.4 ListTemplates
 
 You can call this operation to query the list of one or more templates. Request parameters
 
@@ -4007,7 +4084,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateTemplate
+#### 6.8.5 CreateTemplate
 
 You can call this operation to create a template. Request parameters
 
@@ -4065,7 +4142,7 @@ Sample success responses `XML` format
 | 400 | InvalidTemplateSection | The template section is invalid: {section}. | The error message returned because the template contains an invalid property. section indicates the section name. |
 | 400 | InvalidTemplateVersion | The template version is invalid: {reason}. | The error message returned because the template version is incorrect. reason indicates the specific reason. |
 
-#### UpdateTemplate
+#### 6.8.6 UpdateTemplate
 
 You can call this operation to update a template. Request parameters
 
@@ -4125,7 +4202,7 @@ Sample success responses `XML` format
 | 400 | InvalidTemplateSection | The template section is invalid: {section}. | The error message returned because the template contains an invalid property. section indicates the section name. |
 | 400 | InvalidTemplateVersion | The template version is invalid: {reason}. | The error message returned because the template version is invalid. reason indicates the specific reason. |
 
-#### GetTemplateSummary
+#### 6.8.7 GetTemplateSummary
 
 You can call this operation to query information about a new or existing template. To specify the query object, you must specify one of the StackId, ChangeSetId, TemplateId, TemplateBody, and TemplateURL parameters. Request parameters
 
@@ -4442,9 +4519,9 @@ use the following IP address ranges and their subnets:\n10.0.0.0/8\n172.16.0.0/1
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. name indicates the name or ID of the stack. |
 | 404 | TemplateNotFound | The Tempalte ({ ID }) could not be found. | The error message returned because the specified template does not exist. ID indicates the template ID. |
 
-### Other operations
+### 6.9 Other operations
 
-#### DescribeRegions
+#### 6.9.1 DescribeRegions
 
 You can call this operation to query available regions. Request parameters
 
@@ -4776,7 +4853,7 @@ jik
 
 `}`
 
-#### SignalResource
+#### 6.9.2 SignalResource
 
 You can call this operation to send signals. Request parameters
 
@@ -4827,7 +4904,7 @@ Sample success responses `XML` format
 | 404 | ResourceNotFound | The Resource ({name}) could not be found in Stack {stack}. | The error message returned because the specified resource does not exist in the specified stack. name indicates the resource name, and stack indicates the stack name or ID. |
 | 404 | StackNotFound | The Stack ({name}) could not be found. | The error message returned because the specified stack does not exist. The name parameter indicates the name or ID of the stack. |
 
-#### ListStackOperationRisks
+#### 6.9.3 ListStackOperationRisks
 
 You can call this operation to detect the resources that may face high risks caused by a stack deletion operation, and query the reason for each risk. Request parameters
 
@@ -4905,9 +4982,9 @@ urity group.",
 
 `}` `]` `}`
 
-## Appendixes
+## 7 Appendixes
 
-### Call the ASAPI gateway
+### 7.1 Call the ASAPI gateway
 
 You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Flowchart Procedure
 1. Obtain ASAPI SDK.
@@ -4961,11 +5038,11 @@ erFeature.PrettyFormat));
 
 `}`
 
-### Use the ASAPI gateway to make
+### 7.2 Use the ASAPI gateway to make API calls
 
 API calls
 
-#### Obtain an endpoint of ASAPI
+#### 7.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -5037,7 +5114,7 @@ name.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
 file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Obtain Apsara Stack SDKs
+#### 7.2.2 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -5078,13 +5155,13 @@ Apsara Stack SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-#### What is STS?
+#### 7.3.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

@@ -3,18 +3,27 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 10
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 Product Introduction 20260828.pdf"
+source_pdf: "0c377bd3eba58721_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20SchedulerX%202.0%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 Product Introduction 20260828
 
-## SchedulerX 2.0
+## Table of Contents
+
+- 1 SchedulerX 2.0
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Features
+  - 1.4 Scenarios
+  - 1.5 Key concepts
+
+## 1 SchedulerX 2.0
 
 SchedulerX 2.0 is a next-generation distributed task scheduling platform from Alibaba. It is built on the Akka framework. The platform provides features such as timed scheduling, workflow task orchestration, and distributed batch scheduling. It is highly reliable, supports a massive number of tasks, and can schedule tasks within seconds. In the console, you can configure and manage timed scheduling tasks, query task execution records, and view run logs. You can also use workflows to orchestrate tasks and transfer data. SchedulerX 2.0 provides a simple distributed programming model. This model lets you distribute large volumes of data to multiple machines for execution with only a few lines of code.
 
-### Product details
+### 1.1 Product details
 
 SchedulerX 2.0 provides three main features: scheduling, execution, and Operations and Maintenance (O&M).
 
@@ -30,7 +39,7 @@ SchedulerX 2.0 supports multiple execution methods and mainstream distributed pr
 
 SchedulerX 2.0 supports O&M features such as data dashboards, alert monitoring, log collection, failed task retries, data timestamps, and data backfilling. Data dashboard The console provides an execution history dashboard and a list of executions. You can view the history of each task and perform related operations. View logs You can view the running log for each task execution in the details panel. If a task fails, the error log is displayed directly in the console for easy troubleshooting. Rerun in place If a task fails, you can rerun it immediately after you modify and publish the code. Mark as successful If a task fails but you have already manually corrected the data, you can directly mark the task as successful. This saves you from spending hours rerunning the task. Stop a scheduled task You can implement the `kill()` interface of JobProcessor to stop a running task or subtask from the console. Data timestamp SchedulerX 2.0 can process stateful tasks. When you create a task, you set a schedule time. The actual data that you process might have a different timestamp than the task's running time. You can configure a time offset to handle this. The data timestamp is the schedule time plus the offset. For example, a task runs at 00:30 every day to process the previous day's data. You can set the offset to -1 hour. The schedule time does not change. When the task runs, `context.getDataTime()` returns 23:30 of the previous day. Backfill data Because tasks have data timestamps, you may need to backfill data. For example, a workflow generates a report. If business requirements change, such as adding a new field, or if you find an error in last month's data, you must reprocess the data for the past month. The backfill feature lets you reprocess data for specific tasks or workflows. This feature only supports day-level backfills. Each new instance will have a different data timestamp. Automatic retry on failure Automatic instance retry: In the advanced configuration for a task, you can set the number of retries and the retry interval for a failed instance. For example, you can set it to retry 3 times at 30-second intervals. If the instance still fails after all retries, its status changes to Failed and an alert is sent. Automatic subtask retry: For distributed tasks, such as parallel, in-memory grid, and grid computing tasks, subtasks also support automatic retries. You can configure the number of retries and the retry interval in the advanced configuration for the task. Alert monitoring You can receive alert notifications by email, DingTalk, text message, or phone. Alerts are sent for failed tasks, timeouts, and when no active machines are available.
 
-### Benefits
+### 1.2 Benefits
 
 SchedulerX 2.0 is a high-performance and highly reliable service that is easy to use and supports various scenarios.
 
@@ -50,7 +59,7 @@ It supports timed scheduling, API scheduling, and task orchestration. It also su
 
 The service is easy to integrate and provides many user-friendly Operations and Maintenance (O&M) tools. The frontend displays execution records and run logs. It also supports operations such as in-place reruns and data reprocessing.
 
-### Features
+### 1.3 Features
 
 This topic describes the features of SchedulerX 2.0.
 
@@ -96,7 +105,7 @@ This topic describes the features of SchedulerX 2.0.
 |---|---|
 | Client-side high availability | If any client machine becomes unavailable, tasks do not stall. |
 
-### Scenarios
+### 1.4 Scenarios
 
 SchedulerX can trigger scheduled tasks at a specific time, periodically, or manually.
 
@@ -112,7 +121,7 @@ For example, a task that runs every second, hour, day, week, or month.
 
 For example, you can manually trigger scheduled tasks from the console. After a task is triggered, your implementation of the Job processor interface performs the business logic. This can include actions such as scanning tables, triggering Remote Procedure Call (RPC) invocations, writing to a database, or running local scripts.
 
-### Key concepts
+### 1.5 Key concepts
 
 This topic describes the key concepts of SchedulerX 2.0.
 

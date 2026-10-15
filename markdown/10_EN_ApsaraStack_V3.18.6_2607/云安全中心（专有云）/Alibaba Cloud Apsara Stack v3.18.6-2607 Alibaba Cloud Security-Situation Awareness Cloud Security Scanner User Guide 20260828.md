@@ -3,14 +3,62 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 47
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner User Guide 20260828.pdf"
+source_pdf: "117ca34277ea13ea_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Sc"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Scanner%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner User Guide 20260828
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+  - 2.3 Getting started
+- 3 Cloud Security Scanner
+  - 3.1 Today's overview
+  - 3.2 Assets
+    - 3.2.1 Asset analysis
+    - 3.2.2 Website assets
+    - 3.2.3 Host assets
+    - 3.2.4 Domain assets
+  - 3.3 Risks
+    - 3.3.1 Risk analysis
+    - 3.3.2 Security vulnerabilities
+    - 3.3.3 Compliance vulnerabilities
+    - 3.3.4 External exposure
+  - 3.4 Tasks
+    - 3.4.1 Task list
+      - 3.4.1.1 Asset import
+      - 3.4.1.2 Risk scan
+      - 3.4.1.3 Scan assets
+    - 3.4.2 Template list
+      - 3.4.2.1 Asset scan template
+      - 3.4.2.2 Risk scan template
+  - 3.5 Manage reports
+  - 3.6 配置管理
+    - 3.6.1 Scan rules
+    - 3.6.2 Task management
+    - 3.6.3 System information
+    - 3.6.4 O&M check
+    - 3.6.5 Log audit
+    - 3.6.6 Engine management
+- 4 Apsara Stack Security configurations
+  - 4.1 Log on to the Apsara Uni-manager Management Console
+  - 4.2 规则运营
+    - 4.2.1 Create and manage IPS rules
+    - 4.2.2 Manage Anti-DDoS Service rules
+    - 4.2.3 Manage Server Guard rules
+    - 4.2.4 Create and manage WAF rules
+  - 4.3 全局设置
+    - 4.3.1 Configure the attack blocking feature
+  - 4.4 账号管理
+    - 4.4.1 Manage Apsara Stack tenant accounts
+    - 4.4.2 Manage Alibaba Cloud accounts
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, you must verify that your computer meets the configuration requirements. For more information about the configuration requirements, see . Table 1. Configuration requirements
 
@@ -19,9 +67,9 @@ Before you log on to Apsara Stack Security Center, you must verify that your com
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. All roles in Apsara Stack Security Center are provided by default. You cannot create custom roles. Before you log on to Apsara Stack Security Center, make sure that your account is assigned the required role. For more information, see Default roles in Apsara Stack Security. Table 1. Default roles in Apsara Stack Security
 
@@ -33,7 +81,7 @@ This topic describes the user roles involved in Apsara Stack Security. All roles
 If you do not have an account that assumes the required role, contact the administrator to create an account and assign the role to the account. For more information, see the **Create a**
 **user** topic in **Apsara Uni-manager Management Console User Guide** .
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -58,7 +106,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-### Getting started
+### 2.3 Getting started
 
 This topic describes how to get started with Cloud Security Scanner. The following procedure shows how to use Cloud Security Scanner:
 1. Configure Cloud Security Scanner detection items and detection rules based on your actual
@@ -78,9 +126,9 @@ running task based on its blocking status. For more information, see View and ma
 8. View the operation logs of asset import, risk scans, asset scans, report creation, and scan
 rule management. For more information, see View log audit.
 
-## Cloud Security Scanner
+## 3 Cloud Security Scanner
 
-### Today's overview
+### 3.1 Today's overview
 
 Vulnerabilities identified by Cloud Security Scanner include security vulnerabilities, external exposure risks, and compliance vulnerabilities. This topic describes the overall results of Cloud Security Scanner so that security administrators can quickly understand the vulnerability situation.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -103,9 +151,9 @@ In multi-level organization mode,all data permissions are managed by using resou
 | Risk Asset Ranking | Click Latest Risk or High-risk risk to view the top 10 risky assets of the corresponding category. |
 | Risky Asset Ranking Exists | Select Security Vulnerabilities, External Exposure, or Compliance Vulnerabilities from the drop-down list, and the top five risky assets with Security Vulnerabilities, External Exposure, or Compliance Vulnerabilities are displayed. These assets are displayed by asset or group. |
 
-### Assets
+### 3.2 Assets
 
-#### Asset analysis
+#### 3.2.1 Asset analysis
 
 You can use the asset analysis feature to view the number of assets, assets at risk, and assets updated. You can also obtain information about host assets, such as host ports, host services, and operating systems. This topic describes how to view the analysis results of website assets, host assets, and domain assets.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -121,7 +169,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 **Types**, **Top 5 Operating Systems**, and **Website Status Code Distribution**.
 5. Click **Update Data** in the upper-right corner to manually update all statistical charts.
 
-#### Website assets
+#### 3.2.2 Website assets
 
 This topic describes how to view and manage website assets that are imported to Cloud Security Scanner.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -143,7 +191,7 @@ You can also search for assets based on **Update Time** and keywords. You can cl
 | Delete/Batch Delete | Delete one or more website assets. After a website asset is deleted, the website asset is no longer scanned by the Cloud Security Scanner. |
 | Add Asset Tag | Add tags to assets. |
 
-#### Host assets
+#### 3.2.3 Host assets
 
 This topic describes how to view and manage host assets that are imported to Cloud Security Scanner.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -166,7 +214,7 @@ on **Update Time** and keywords. Click **Edit** next to the filter condition to 
 | Add Asset Tag | Add tags to assets for management. |
 | Delete/Batch Delete | Delete one or more host assets. After a host asset is deleted, the host asset is no longer scanned by the Cloud Security Scanner. |
 
-#### Domain assets
+#### 3.2.4 Domain assets
 
 This topic describes how to view and manage domain assets that are imported to Cloud Security Scanner.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -189,9 +237,9 @@ Click **Edit** next to the filter condition to add an asset group, owner, or ass
 | Add Asset Tag | Add tags to assets for management. |
 | Batch Delete | Delete assets in batches. After the assets are deleted, they will not be scanned by Cloud Security Scanner. |
 
-### Risks
+### 3.3 Risks
 
-#### Risk analysis
+#### 3.3.1 Risk analysis
 
 This topic describes how to view the analysis results of security vulnerabilities, compliance vulnerabilities, and external exposure risks.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -206,7 +254,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 **Weak Password Risk**.
 5. Click **Update Time** in the upper-right corner to manually update all statistical charts.
 
-#### Security vulnerabilities
+#### 3.3.2 Security vulnerabilities
 
 This topic describes how to view and handle the security vulnerabilities detected by Cloud Security Scanner.
 
@@ -238,7 +286,7 @@ Security administrators can analyze and confirm whether a security vulnerability
 6. In the list of vulnerabilities, click **Details** in the **Operations** column to go to the
 vulnerability details page. You can view the CVSS score, threat level, risk overview, risk description, risk impact, risk details, fix suggestions, and request and response of the vulnerability. Notes: The risk overview includes the risk address and corresponding asset address, IP address, associated domain name, risk type, first detection time, and last update time of the risk. If a response packet in the request and response content is too large, the response packet will be truncated.
 
-#### Compliance vulnerabilities
+#### 3.3.3 Compliance vulnerabilities
 
 This article describes how to view and confirm host compliance vulnerabilities.
 
@@ -279,7 +327,7 @@ in this status in a unified manner later.
 **Batch Processing**: Select risk items for batch processing.
 **Batch Rescan**: Select risk items for batch rescan.
 
-#### External exposure
+#### 3.3.4 External exposure
 
 This topic describes how to view and confirm external exposure risks, such as code leaks.
 
@@ -316,11 +364,11 @@ in this status in a unified manner later.
 **Ignore**: You can ignore the risk item if it is a false positive or a non-risk item.
 **Batch Processing**: Select risk items for batch processing.
 
-### Tasks
+### 3.4 Tasks
 
-#### Task list
+#### 3.4.1 Task list
 
-##### Asset import
+##### 3.4.1.1 Asset import
 
 This topic describes how to create a task to import public and private assets.
 
@@ -392,7 +440,7 @@ can also search for and filter assets by **Task Status**, **Task Template**, or 
 | Batch Suspend |   |
 | Batch Stop |   |
 
-##### Risk scan
+##### 3.4.1.2 Risk scan
 
 This topic describes how to create a risk scan task for an asset.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -415,7 +463,7 @@ section and click **Confirm**. The following table describes the parameters.
 | VPC | Select one or more virtual private clouds (VPCs) based on your business requirements. Make sure that the scan engine is authorized for the selected VPC. After the authorization is complete, assets within the VPC can be scanned for vulnerabilities. For more information, see Engine management. |
 | Target | Specify the target of the risk scan task. Valid values: All, Website, Host, By Group, By Tag, and By Staff. |
 
-##### Scan assets
+##### 3.4.1.3 Scan assets
 
 This topic describes how to create an asset discovery task.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -436,9 +484,9 @@ section and click **Confirm**. The following table describes the parameters.
 | VPC | Select the virtual private cloud (VPC) in which the asset is deployed. Make sure that the scan engine is authorized for the selected VPC. After the authorization is complete, assets within the VPC can be scanned for vulnerabilities. For more information, see Engine management. |
 | Target | Specify the target of the asset scan task. Valid values: All, Website, Host, Domain Name, By Group, By Tag, and By Staff. |
 
-#### Template list
+#### 3.4.2 Template list
 
-##### Asset scan template
+##### 3.4.2.1 Asset scan template
 
 This topic describes how to create an asset scan template for asset discovery and asset security scans.
 
@@ -455,7 +503,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 5. Configure the basic information of the asset scan template.
 6. Click **Confirm**.
 
-##### Risk scan template
+##### 3.4.2.2 Risk scan template
 
 This topic describes how to create a risk scan template for the scans of asset vulnerabilities, security vulnerabilities, and compliance vulnerabilities.
 
@@ -472,7 +520,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 5. Configure the basic information of the risk scan template.
 6. Click **Confirm**.
 
-### Manage reports
+### 3.5 Manage reports
 
 A security administrator can create a report to view the security status of specific assets during a period of time and implement improved security measures as required. This topic describes how to create, download, delete, and forward a report.
 
@@ -546,9 +594,9 @@ Before you use the email forwarding feature, make sure that the ANS component is
 3. In the Scan report email forwarding dialog box, enter the email address to which the report
 is sent and click **OK**. You can click the plus sign (+) to the right of the input field to enter more email addresses.
 
-### 配置管理
+### 3.6 配置管理
 
-#### Scan rules
+#### 3.6.1 Scan rules
 
 This topic describes how to configure and manage security scan rules for Cloud Security Scanner, including security vulnerability configuration, compliance vulnerability configuration, external exposure configuration, directory brute management, and asset scan whitelist.
 
@@ -602,7 +650,7 @@ Before you add assets to a whitelist, make sure that the assets are secure.
 2. In the dialog box that appears, select a rule in the **Rules** field and configure **White List**.
 3. Click **OK**.
 
-#### Task management
+#### 3.6.2 Task management
 
 This topic describes how to view and manage asset import, risk scan, and asset scan tasks. The task management feature of Cloud Security Scanner allows you to view pending tasks, running tasks, and tasks in the task queue. You can also manually stop running tasks based on the situation of blocked tasks.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -617,7 +665,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 6. Manually stop running and pending tasks.
 i. Click **Stop Task** in the upper-right corner of the page. ii. In the dialog box that appears, enter the verification code. iii. Click **OK**.
 
-#### System information
+#### 3.6.3 System information
 
 This topic describes how to view the vulnerability database version and update records of Cloud Security Scanner, and how to configure the syslog parameter. System information includes the current vulnerability database information (version and update records) and system parameters (syslog settings).
 1. Log on to the Apsara Uni-manager Management Console.
@@ -631,7 +679,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 view the current vulnerability database version and update records.
 5. On the **System Parameters** tab of the **System Information** page, specify **User host**.
 
-#### O&M check
+#### 3.6.4 O&M check
 
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the Apsara Uni-manager Management Console, choose
@@ -642,7 +690,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 4. On the **Network Testing** page, select the VPC where the private engine for vulnerability
 scan is deployed and the ID of the scan engine, select ping, curl, or telnet for Test Method, enter the corresponding IP address or domain name, and click **Run** on the right side. The following execution result is displayed, based on which you can determine whether any vulnerability exists.
 
-#### Log audit
+#### 3.6.5 Log audit
 
 This topic describes how to view the operation logs of Cloud Security Scanner.
 
@@ -660,7 +708,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 6. Click **Clear Data**. You can choose to retain the log data of **Latest 3 months** or **Latest 6**
 **months**. Data beyond the selected range will be cleared.
 
-#### Engine management
+#### 3.6.6 Engine management
 
 This topic describes how to configure a scan engine.
 
@@ -679,11 +727,11 @@ on Enable Automatic Import of EIP/SLB.
 5. Click the **Private Network Engine** tab to configure the scan engine for private assets.
 i. Click the name of the VPC whose assets you want to scan. ii. Click **Add Scanning Engine**. iii. In the **Add Scanning Engine** dialog box, select a vSwitch for the VPC from the **vswitch** drop-down list. iv. Click **OK**. rations
 
-## Apsara Stack Security
+## 4 Apsara Stack Security configurations
 
 **configurations**
 
-### Log on to the Apsara Uni-
+### 4.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -708,11 +756,11 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-### 规则运营
+### 4.2 规则运营
 
 rations
 
-#### Create and manage IPS rules
+#### 4.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -744,7 +792,7 @@ rations
 
 After you create a custom IPS rule, you can perform the following operations on the rule: View the details of the rule You can filter rules. Find the rule whose details you want to view and click **Details** in the **Actions** column to view the rule details. Enable the rule Find the rule that you want to enable and turn on the switch in the **Enable or not** column to change the status of the rule from **Disable** to **Enable**. Disable the rule If a rule does not meet your business requirements, you can disable the rule. Find the rule that you want to disable and turn off the switch in the **Enable or not** column to change the status of the rule from **Enable** to **Disable**.
 
-#### Manage Anti-DDoS Service rules
+#### 4.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -764,7 +812,7 @@ ii. In the **Modify Threshold** dialog box, specify custom thresholds and click 
 **Automatic Redirection** message, click **OK**.
 By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on custom thresholds. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on custom thresholds. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
-#### Manage Server Guard rules
+#### 4.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -786,7 +834,7 @@ rations
 | Baselines (marked 2 in the preceding figure) | On the Baselines tab, you can view the baseline types and check the items that are used. To search for a baseline, you can select a baseline type from the Baseline Type drop-down list, select a severity from the Risk Level drop-down list, and enter a check item category or name in the search box. In the baseline list, you can view the following information about a baseline: Baseline Type, Check Item Category, Check Item Name, Risk Level, Updated At, and Status. |
 | Server Exceptions (marked 2 in the preceding figure) | On the Server Exceptions tab, you can view the following information: Rule Alert Types and Webshell & Malicious Processes. To search for an exception on a server, you can select a rule category from the Rule Category drop-down list, select a severity level from the Risk Level drop-down list, and then enter a rule subcategory name in the search box. In the server exception list, you can view the following information: Rule Subcategory, Rule Category, Risk Level, Updated At, Source, and Status. |
 
-#### Create and manage WAF rules
+#### 4.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
@@ -818,9 +866,9 @@ rations
 
 After you create a rule, you can perform the following operations on the rule: Filter the WAF rules. Find the rule whose details you want to view and click **Details** in the **Actions** column to view the rule details.
 
-### 全局设置
+### 4.3 全局设置
 
-#### Configure the attack blocking feature
+#### 4.3.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks. This topic describes how to configure the attack blocking feature.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -833,9 +881,9 @@ rations
 4. On the **Global Settings** tab, turn on or off the switch in the Actions column to enable or
 disable the attack blocking feature. After you disable the attack blocking feature, Server Guard generates alerts for web attacks but does not block them.
 
-### 账号管理
+### 4.4 账号管理
 
-#### Manage Apsara Stack tenant accounts
+#### 4.4.1 Manage Apsara Stack tenant accounts
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
@@ -851,7 +899,7 @@ All assets in Apsara Stack Security are bound to your Apsara Stack tenant accoun
 4. On the **Apsara Stack Account** tab, modify the information about your Apsara Stack
 tenant account. i. Find your Apsara Stack tenant account and click **Revised** in the **Operation** column. ii. In the **Change Account** dialog box, modify Apsara Stack Account, Access Key, and Access Secret, and click **OK**. After the modification, you can click Details in the **Operation** column to view the details of the Apsara Stack tenant account.
 
-#### Manage Alibaba Cloud accounts
+#### 4.4.2 Manage Alibaba Cloud accounts
 
 After you add an Alibaba Cloud account to Apsara Stack Security Center, you can manage the Anti-DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security Center. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security Center. To use features in a hybrid cloud, you can add an Alibaba Cloud account to Apsara Stack Security Center.
 1. Log on to the Apsara Uni-manager Management Console.

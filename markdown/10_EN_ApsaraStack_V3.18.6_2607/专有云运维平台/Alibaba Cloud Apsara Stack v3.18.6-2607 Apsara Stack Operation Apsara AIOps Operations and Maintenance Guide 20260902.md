@@ -3,16 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AI
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 29
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Operations and Maintenance Guide 20260902.pdf"
+source_pdf: "d26e6798bf4e3495_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Operations and Maintenan"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Operation%20Apsara%20AIOps%20Operations%20and%20Maintenance%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Operations and Maintenance Guide 20260902
 
+## Table of Contents
+
+- 1 Log in to AIBase Management Console
+- 2 Application management
+- 3 MCP management
+- 4 Knowledge base
+- 5 Corpus system
+  - 5.1 Corpus tasks
+- 6 System Settings
+  - 6.1 Model management
+- 7 Common faults and solutions
+- 8 High-risk operations
+
 Management Console
 
-## Log in to AIBase
+## 1 Log in to AIBase Management Console
 
 **Management Console**
 
@@ -35,7 +48,7 @@ If a privacy policy has been configured, click **Agree to Privacy Policy and Log
 **Service O&M > AIBase Management Console**.
 agement
 
-## Application management
+## 2 Application management
 
 You can centrally create, configure, and manage Q&A and process-orchestrated intelligent applications, enabling unified control over the entire lifecycle of AI applications.
 
@@ -124,7 +137,7 @@ The platform does not support deleting built-in applications. This operation is 
 2. In the pop-up dialog box, click **OK**.
 nt
 
-## MCP management
+## 3 MCP management
 
 View the built-in MCP servers on the platform for use in your applications.
 
@@ -139,7 +152,7 @@ You can filter MCP servers by name and **Platform** to find the target server.
 **List**.
 nt
 
-## Knowledge base
+## 4 Knowledge base
 
 You can create, view, and delete custom knowledge bases, and view documents in preset knowledge bases.
 
@@ -265,9 +278,9 @@ You cannot delete built-in knowledge bases on the platform. This operation is ir
 **> Delete** in the **Operation** column of the target knowledge base.
 2. In the pop-up dialog box, click **Delete**.
 
-## Corpus system
+## 5 Corpus system
 
-### Corpus tasks
+### 5.1 Corpus tasks
 
 The centralized management portal for corpus tasks provides end-to-end support for reception, annotation, and review. You can view task details from a personal or global perspective and perform related operations.
 
@@ -377,9 +390,9 @@ and **Corpus Content** for the corresponding workflow on the right side.
 3. In the pop-up dialog box, click **OK**.
 You cannot perform operations on the corpus after archiving it.
 
-## System Settings
+## 6 System Settings
 
-### Model management
+### 6.1 Model management
 
 Supports displaying built-in models and configuring external inference services to implement unified management and flexible expansion of model services.
 
@@ -413,7 +426,7 @@ API-KEY settings a. Click **API-KEY Settings**. b. In the dialog box that appear
 6. Configure the default models of built-in applications and user-created applications. You can
 configure the **Inference Model**, **Embedding Model**, and **Rerank Model** parameters. Then, click **OK**. and solutions
 
-## Common faults and
+## 7 Common faults and solutions
 
 **solutions**
 
@@ -441,7 +454,7 @@ The tool cannot be found: The current MCP is divided into two types: system buil
 
 A: Insufficient knowledge base data. There are always some questions and answers that are beyond the system's capabilities. The interaction with this part should be that Yunwei Xiaozhi informs the user of his own capabilities and guides the user to ask questions about knowledge within his own capabilities. At the same time, according to user demands, expand the knowledge base. On-site or users can also upload private domain knowledge expansion knowledge base. ons
 
-## High-risk operations
+## 8 High-risk operations
 
 This topic describes the high-risk operations of Apsara AIOps to help users better estimate and avoid related operational risks.
 

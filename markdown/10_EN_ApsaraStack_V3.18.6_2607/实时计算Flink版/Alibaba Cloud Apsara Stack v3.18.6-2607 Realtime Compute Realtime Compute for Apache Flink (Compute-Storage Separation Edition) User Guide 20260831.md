@@ -3,16 +3,68 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Comput
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 105
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide 20260831.pdf"
+source_pdf: "62a81085d3e58e56_Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97Flink%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Realtime%20Compute%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide 20260831
 
+## Table of Contents
+
+- 1 What is Realtime Compute for Apache Flink?
+- 2 Preparations
+  - 2.1 Log in to the Realtime Compute for Apache Flink development console
+  - 2.2 Go to the overview page
+  - 2.3 Create a workspace
+  - 2.4 Create a namespace
+- 3 Getting started
+  - 3.1 Quick start with Flink SQL jobs
+  - 3.2 Quick start for Flink JAR jobs
+- 4 Data development
+  - 4.1 Flink CDC data ingestion
+    - 4.1.1 Sync data from MySQL to Paimon
+  - 4.2 Develop a deployment
+    - 4.2.1 Sample center
+      - 4.2.1.1 Data synchronization template
+      - 4.2.1.2 Code templates
+    - 4.2.2 SQL job development
+    - 4.2.3 Develop a JAR draft
+    - 4.2.4 Python job development
+      - 4.2.4.1 Python dependencies
+    - 4.2.5 Debug a deployment
+- 5 O&M center
+  - 5.1 Deployment O&M
+    - 5.1.1 Job deployment
+    - 5.1.2 Start a deployment
+    - 5.1.3 Stop a deployment
+    - 5.1.4 Tune a deployment
+      - 5.1.4.1 Configure auto-tuning
+      - 5.1.4.2 Configure job resources
+    - 5.1.5 Dynamic parameter update
+  - 5.2 Configure session clusters
+  - 5.3 Default deployment configurations
+- 6 Manage data
+  - 6.1 Manage user-defined functions (UDFs)
+  - 6.2 Manage Paimon catalogs
+  - 6.3 Manage Hologres catalogs
+- 7 Manage custom connectors
+- 8 Manage artifacts
+- 9 Security services
+  - 9.1 Access security
+  - 9.2 Manage variables
+  - 9.3 Manage permissions
+    - 9.3.1 Authorization guidelines
+    - 9.3.2 Authorization policies in the management console
+    - 9.3.3 Authorization policies in the development console
+  - 9.4 Configure the IP address of external storage
+- 10 Job migration
+- 11 Flink MCP Server
+- 12 FAQ
+
 ime Compute for Apache Flink?
 
-## What is Realtime Compute for
+## 1 What is Realtime Compute for Apache Flink?
 
 **Apache Flink?**
 
@@ -22,9 +74,9 @@ Realtime Compute for Apache Flink is an end-to-end, high-performance platform to
 
 Powerful real-time computing Realtime Compute for Apache Flink helps simplify the development process by integrating with various features. Realtime Compute for Apache Flink uses a powerful engine that provides the following benefits: Provides Flink SQL that enables automatic data recovery from failures. This ensures accurate data processing when failures occur. Supports various built-in functions, such as string, date, and aggregate functions. Enables accurate control over computing resources. This ensures strict isolation of jobs of different tenants. Realtime Compute for Apache Flink outperforms Apache Flink by three to four times when measured by key performance indicators. For example, in Realtime Compute for Apache Flink, the data processing latency is reduced to seconds or even to sub-seconds. The throughput of a job can reach millions of data records per second. A cluster can consist of thousands of nodes. Realtime Compute for Apache Flink is deeply integrated with various cloud-based data storage systems. Managed real-time computing Unlike open source or self-managed stream processing services, Realtime Compute for Apache Flink is a fully managed stream computing engine. You can query streaming data without the need to deploy or manage any infrastructure. Realtime Compute for Apache Flink allows you to use streaming data processing services with a few clicks. Realtime Compute for Apache Flink is integrated with various services such as data storage, data development, data O&M, monitoring, and alerting. This allows you to use cost-effective streaming data services for trial and migrate your data for deployment. Realtime Compute for Apache Flink also enables complete isolation between tenants. The isolation and protection extend from the top application layer to the underlying infrastructure layer. This helps ensure the security and privacy of your data. Low costs on labors and compute clusters A large number of improvements are made to the SQL execution engine. This allows you to create jobs that are more cost-effective than Flink jobs in a more efficient manner. Realtime Compute for Apache Flink is more cost-effective than open source stream frameworks in both development and production costs.
 
-## Preparations
+## 2 Preparations
 
-### Log in to the Realtime Compute for
+### 2.1 Log in to the Realtime Compute for Apache Flink development console
 
 **Apache Flink development console**
 
@@ -66,7 +118,7 @@ icon to expand or collapse the floating menu as needed. i. : Pricing. Click this
 2. In the target workspace, find the target namespace, and click **Console** in the **Actions** column to open the
 Realtime Compute for Apache Flink development console.
 
-### Go to the overview page
+### 2.2 Go to the overview page
 
 The Overview page in the management console of Realtime Compute for Apache Flink displays the number of namespaces in a workspace.
 
@@ -76,7 +128,7 @@ The Overview page in the management console of Realtime Compute for Apache Flink
 2. In the left-side navigation pane, choose **Flink (Compute-Storage Separation Edition) > Overview**.
 3. In the **Instance Overview** section, view the number of namespaces in the current workspace.
 
-### Create a workspace
+### 2.3 Create a workspace
 
 This topic describes how to create a Flink workspace.
 
@@ -111,7 +163,7 @@ If you have already created a cloud resource for the **Realtime Compute for Apac
 After you submit the configuration, the new workspace appears on the **Workspace List** page. When the status changes from **Configuring** to **Available**, the workspace is created. To delete a workspace, click
 **Delete** in the Actions column.
 
-### Create a namespace
+### 2.4 Create a namespace
 
 This topic describes how to create and manage namespaces in the management console of Realtime Compute for Apache Flink, including permission configuration, procedures, and solutions to common issues.
 
@@ -163,7 +215,7 @@ Go to the development console of Realtime Compute for Apache Flink Find the name
 
 **Important**
 
-Reducing the CU quantity may prevent Flink from recovering after a restart. Check the CU usage of the namespace and proceed with caution. Configure the IP address of external storage Find the namespace that you want to manage, and click **Configure the external storage IP address.** in the **Operation** column to add an IP address or CIDR block. The IP address indicates the virtual IP address (VIP) of the storage domain name. For more information, see Configure the IP address of external storage. Delete a namespace To delete a namespace, click **Delete** in the **Operation** column. View the information about a namespace In the search box on the **Workspaces** page, you can search for a workspace by keyword and view the information about the target namespaces.
+Reducing the CU quantity may prevent Flink from recovering after a restart. Check the CU usage of the namespace and proceed with caution. Find the namespace that you want to manage, and click **Configure the external storage IP address.** in the **Operation** column to add an IP address or CIDR block. The IP address indicates the virtual IP address (VIP) of the storage domain name. For more information, see Configure the IP address of external storage. Delete a namespace To delete a namespace, click **Delete** in the **Operation** column. View the information about a namespace In the search box on the **Workspaces** page, you can search for a workspace by keyword and view the information about the target namespaces.
 
 **Appendix: Create a service catalog**
 
@@ -177,14 +229,11 @@ For more information about parameters, see the **Apsara Uni-manager Management C
 Cloud Apsara Stack official website.
 6. Click **Submit** to create the service catalog. You can create namespaces for the catalog and manage the
 **Modify CU quantity** parameter.
-
-**FAQ**
-
 Problem: Why isn't the target Namespace listed, even though my account has the necessary permissions? Cause: This can happen for one of two reasons: The resource set that contains the Namespace does not include your account. Your account is not in the same organization as the UID used to create the Namespace. Problem: When I go to the Workspace List page, why are some action buttons missing or grayed out? Cause: Your resource management role lacks the permissions to create or delete workspaces or projects. Contact your administrator to configure the required access permissions. For more information, see Console authorization. You cannot access the development console because you do not have an assigned business role in the project where the **Console** button is grayed out. Contact the resource owner to assign a business role. Problem: Why do I receive a "permission denied" error when I try to create, modify, or delete a project? Cause: As shown in the figure, your current role is not authorized to perform these operations. Contact your administrator to configure project access permissions. For more information, see Console authorization. ed
 
-## Getting started
+## 3 Getting started
 
-### Quick start with Flink SQL jobs
+### 3.1 Quick start with Flink SQL jobs
 
 Flink allows you to edit and run jobs by using SQL code. This topic guides you through the process of creating and publishing a Flink SQL job.
 
@@ -237,7 +286,7 @@ If the job status changes from the current state to **Running**, the job runs no
 4. View the Flink compute results.
 i. On the **Job O&M** page, click the target job name. The **Deployment Details** page expands by default. ed ii. On the **Job Log > Operational Log > Running Task Managers** tab, click **Path, ID**. On the **Operational Log** tab, click the drop-down list on the right side of **Job** to select a running job. By default, the system selects the currently running job. iii. Select the **Log** tab to view the Flink compute results. You can also view the compute results on the **Flink UI** page. For more information, see View startup and operational logs.
 
-### Quick start for Flink JAR jobs
+### 3.2 Quick start for Flink JAR jobs
 
 Flink allows you to create, deploy, and start JAR streaming and batch jobs. This topic guides you through the workflow for Flink JAR jobs.
 
@@ -313,13 +362,13 @@ and click **Start** in the **Actions** column.
 3. After the job status changes to **Running**, view the Flink compute results.
 i. In the left-side navigation pane, click **Object management**. ii. Click **Download** in the **Actions** column of the batch-quickstart-test-output.txt file to view the file on your local machine. ment
 
-## Data development
+## 4 Data development
 
 Data development provides ETL and data ingestion features. You can develop SQL, JAR, and Python deployments in ETL, and use YAML to configure Flink CDC tasks in data ingestion.
 
-### Flink CDC data ingestion
+### 4.1 Flink CDC data ingestion
 
-#### Sync data from MySQL to Paimon
+#### 4.1.1 Sync data from MySQL to Paimon
 
 Real-time Compute for Apache Flink lets you configure Flink Change Data Capture (CDC) tasks using YAML jobs to ingest data from a source to a sink. This topic describes how to build a Flink CDC data ingestion job to synchronize data from a MySQL database to Paimon.
 
@@ -440,13 +489,13 @@ USE CATALOG paimon_catalog; SELECT * FROM flink.flink_user;
 
 4. In the upper-right corner of the page, click **Run**. The output is shown in the following figure.
 
-### Develop a deployment
+### 4.2 Develop a deployment
 
 ETL allows you to develop and debug SQL, JAR, and Python deployments, and quickly create a deployment from the template center.
 
-#### Sample center
+#### 4.2.1 Sample center
 
-##### Data synchronization template
+##### 4.2.1.1 Data synchronization template
 
 Flink CDC supports real-time data synchronization and automatically synchronizes table schema changes. You can use a data synchronization template to quickly generate Flink SQL job code for data synchronization. This topic describes how to use the multi-database and multi-table synchronization template or the sharded database and table merge template to synchronize data.
 
@@ -532,7 +581,7 @@ ii. Create a plan. ment Multi-database and multi-table synchronization a. On the
 5. Click **Create**.
 ment After the job is created, the system navigates to the SQL job development page. The subsequent operations are identical to those of standard job development. For parameter configuration details and subsequent operations, see SQL job development and Start a deployment.
 
-##### Code templates
+##### 4.2.1.2 Code templates
 
 Realtime Compute for Apache Flink provides various code templates. Each code template provides use scenarios, code samples, and instructions. Code templates can help you quickly understand the features and syntax of Realtime Compute for Apache Flink and implement your own business logic. This topic describes the use scenarios for code templates and how to use a code template.
 
@@ -589,7 +638,7 @@ of the page, click **Next**.
 7. Click **Ok**.
 After you click **Ok**, the SQL Editor page appears. The subsequent operations are the same as the operations that are used to develop a common draft. For more information about the parameter configurations and subsequent operations, see Data development and Start a deployment.
 
-#### SQL job development
+#### 4.2.2 SQL job development
 
 This topic describes the procedure for developing Flink SQL streaming jobs, including creating a job, editing code, checking semantics, debugging, and deploying the job.
 
@@ -641,7 +690,7 @@ After you complete job development and deep check, you can deploy the job to pub
 7. In the **Deploy New Version** dialog box, enter the remarks, select whether to **Submit to Session**
 **Cluster** as needed, and then click **OK**.
 
-#### Develop a JAR draft
+#### 4.2.3 Develop a JAR draft
 
 Flink JAR provides more flexible programming models and APIs, allowing you to customize data transformations, operations, and operators to meet complex business logic and data processing requirements. This topic describes how to develop and debug a JAR draft in the Realtime Compute for Apache Flink console.
 
@@ -1031,7 +1080,7 @@ implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransfor
 </project>
 ```
 
-#### Python job development
+#### 4.2.4 Python job development
 
 This topic describes the background, usage limits, development methods, debugging methods, and connector usage for Flink Python API job development.
 
@@ -1112,7 +1161,7 @@ ment After the logs are generated, you can view them in the TaskManager log file
 
 You can use custom Python virtual environments, third-party Python packages, JAR packages, and data files in Flink Python jobs. For more information, see Python dependencies.
 
-##### Python dependencies
+##### 4.2.4.1 Python dependencies
 
 You can use custom Python virtual environments, third-party Python packages, JAR packages, and data files in your Flink Python jobs. This topic describes how to use these dependencies.
 
@@ -1257,7 +1306,7 @@ def map():
     ...
 ```
 
-#### Debug a deployment
+#### 4.2.5 Debug a deployment
 
 You can enable the debugging feature to simulate deployment running, check outputs, and verify the business logic of SELECT and INSERT statements. This feature improves development efficiency and reduces the risks of poor data quality. This topic describes how to debug a deployment.
 
@@ -1286,15 +1335,15 @@ If you use online data, click **Confirm**. If you use mock data, click **Downloa
 6. After you confirm the debugging data, click **Confirm**.
 ment After you click **Confirm**, the debugging result appears in the lower part of the SQL script editor.
 
-## O&M center
+## 5 O&M center
 
 The O&M center provides job O&M, session management, and configuration management features. This allows you to deploy, start, stop, and tune jobs, manage session clusters, and configure default job parameters.
 
-### Deployment O&M
+### 5.1 Deployment O&M
 
 On the Deployments page in the console, you can deploy, start, stop, and delete a deployment, and view the details, runtime events, checkpoints, logs, and autopilot tuning information of a deployment for lifecycle management.
 
-#### Job deployment
+#### 5.1.1 Job deployment
 
 After you develop a job, you must deploy it before you can start and run it. This topic describes how to deploy SQL jobs, JAR jobs, and Python jobs.
 
@@ -1373,7 +1422,7 @@ Before you deploy a Python job, you must complete Python job development.
 
 After deployment, you must start the job on the **Operations Center > Job O&M** page. For more information about the startup steps, see Start a deployment.
 
-#### Start a deployment
+#### 5.1.2 Start a deployment
 
 After you develop a draft and deploy the draft as a deployment, you must start the deployment on the Deployments page to run the deployment. If you want to resume a deployment that is canceled or make the parameter configuration take effect after you modify the parameter configuration, you must also start the deployment.
 
@@ -1419,7 +1468,7 @@ based on your business requirements.
 5. Click **Start**.
 In the left-side navigation pane, choose **O&M > Deployments**, and check the status of the depolyments.
 
-#### Stop a deployment
+#### 5.1.3 Stop a deployment
 
 After you change the SQL logic, deployment version, WITH parameters, or deployment parameters, you must stop and restart the deployment for the changes to take effect. This topic describes how to stop a running deployment.
 
@@ -1441,11 +1490,11 @@ a savepoint before stopping the deployment. If **Stop With Savepoint** is not se
 **Stop With Drain**: This option permanently terminates a deployment.
 Do not select this option if you want to restart the deployment later. This is because restoring deployments may cause errors.
 
-#### Tune a deployment
+#### 5.1.4 Tune a deployment
 
 Deployment tuning provides the automatic tuning capability in two modes: autopilot tuning and scheduled tuning, to help you automatically adjust resource configuration based on deployment execution status.
 
-##### Configure auto-tuning
+##### 5.1.4.1 Configure auto-tuning
 
 Flink jobs support two auto-tuning modes: intelligent tuning and scheduled tuning. This topic describes how to configure intelligent and scheduled tuning, and provides considerations for the configuration process.
 
@@ -1570,7 +1619,7 @@ After you apply this scheduled plan in intelligent tuning, the tuning mode autom
 
 A traffic spike occurs from 09:00 to 19:00 every day, and the job uses 30 CUs during this peak period. The off-peak period lasts from 19:00 to 09:00 the next day, during which the job uses 10 CUs. The following figure shows the tuning policy configuration for this scenario.
 
-##### Configure job resources
+##### 5.1.4.2 Configure job resources
 
 You can configure job resources before starting a job or modify them after deploying the job. The system supports two resource modes: basic mode (coarse-grained) and expert mode (fine-grained). This topic describes how to configure job resources and provides parameter information for both resource modes.
 
@@ -1663,7 +1712,7 @@ After you configure job resources, you must restart the job to apply the changes
 
 If you do not want to scale resources manually, you can use automatic tuning to let the system scale resources automatically. For more information about the basic configuration, runtime parameter configuration, and log configuration of a job, see Default deployment configurations.
 
-#### Dynamic parameter update
+#### 5.1.5 Dynamic parameter update
 
 Dynamic update of the parameter configuration of a Flink deployment can make the parameter configuration take effect more quickly. This helps reduce the service interruption time caused by deployment startup and cancellation and facilitates dynamic scaling of TaskManagers and checkpoint-based troubleshooting. This topic describes the method for dynamically updating parameters.
 
@@ -1701,7 +1750,7 @@ After you click **OK**, an icon that indicates dynamic parameter update appears.
 
 If you want to make the change to the configuration of a parameter that cannot be dynamically updated take effect for a deployment, you can modify the parameter configuration on the **Configuration** tab of the Deployments page for the deployment and then restart the deployment. For more information, see Default deployment configurations and Start a deployment. The automatic tuning feature helps you adjust the deployment parallelism and resource configurations to resolve performance tuning issues.
 
-### Configure session clusters
+### 5.2 Configure session clusters
 
 You can use the session cluster mode to deploy or debug jobs, improving Job Manager (JM) resource utilization and accelerating job startup. This topic describes usage recommendations and the creation procedure for session clusters in Realtime Compute for Apache Flink.
 
@@ -1756,7 +1805,7 @@ The following table describes the parameters.
 4. Click **Create Session Cluster**.
 After you create the session cluster, click **Start**. You can then select this cluster as the deployment target when you create a job.
 
-### Default deployment configurations
+### 5.3 Default deployment configurations
 
 This topic describes how to manage the default configurations for streaming and batch deployments, including runtime parameters, Flink restart policies, and logging settings. You can modify these settings as needed.
 
@@ -1806,11 +1855,11 @@ If you can click **Discard Changes** before you save the changes, the changes ar
 5. Click **Save Changes**.
 If you click **Discard Changes** before you save the changes, the changes are discarded.
 
-## Manage data
+## 6 Manage data
 
 You can manage data by using the Catalogs function. This allows you to create, view, and delete Hologres, MySQL, or Apache Paimon catalogs, which enables you to directly reference metadata in job development.
 
-### Manage user-defined functions
+### 6.1 Manage user-defined functions (UDFs)
 
 **(UDFs)**
 
@@ -1870,7 +1919,7 @@ icon. Before you delete a JAR file, make sure that no jobs or SQL files referenc
 Deleting the UDF JAR file also deletes all UDFs registered from it. This action is required to prevent orphaned data and references.
 4. Click **OK**.
 
-### Manage Paimon catalogs
+### 6.2 Manage Paimon catalogs
 
 After you configure a Paimon catalog, you can use Realtime Compute for Apache Flink to directly access Paimon tables in Alibaba Cloud Object Storage Service. This topic describes how to create, view, and delete Paimon catalogs, and manage Paimon databases and tables in the Realtime Compute development console.
 
@@ -1919,7 +1968,7 @@ You cannot delete the default database in DLF, MaxCompute, or Sync catalogs. You
 
 On the **Data Management** page, view or delete a Paimon catalog. View: On the **Catalog List** page, view the **Catalog Name** and **Type**. To view the databases and tables in a catalog, click **View**. Delete: On the **Catalog List** page, click **Delete** in the **Actions** column of the target catalog. You can also enter DROP CATALOG <catalog name>; in the SQL development text editor, select the code, and then click **Run**. Deleting a Paimon catalog removes only the record from Data Management in the Realtime Compute for Apache Flink project. This operation does not affect the data files of Paimon tables. After you delete a catalog, you can recreate the Paimon catalog to reuse the Paimon tables in the catalog.
 
-### Manage Hologres catalogs
+### 6.3 Manage Hologres catalogs
 
 After you configure a Hologres catalog, you can read Hologres metadata directly from the fully managed Flink console. This eliminates the need to manually register Hologres tables, improves job development efficiency, and ensures data accuracy. This topic describes how to configure, view, and delete a Hologres catalog in fully managed Flink.
 
@@ -2068,7 +2117,7 @@ Replace ${catalog_name} with the name of the Hologres catalog that you want to d
 5. Click the
 icon to refresh and verify whether the Hologres catalog is deleted. om connectors
 
-## Manage custom connectors
+## 7 Manage custom connectors
 
 This topic describes how to manage custom connectors. For example, you can create, update, and delete a custom connector.
 
@@ -2110,7 +2159,7 @@ side.
 2. In the Delete connector dialog box that appears, click **Confirm**.
 acts
 
-## Manage artifacts
+## 8 Manage artifacts
 
 Realtime Compute for Apache Flink supports uploading deployment artifacts (such as system checkpoints, deployment snapshots, logs, and JAR files) for storage. This topic describes artifact management operations such as uploading, downloading, deleting, and copying paths.
 
@@ -2131,11 +2180,11 @@ Realtime Compute for Apache Flink supports uploading deployment artifacts (such 
 
 ices
 
-## Security services
+## 9 Security services
 
 Security services include access security, variable management, and permission management. You can configure Hive Kerberos in access security, use variable management for key hosting, and configure role and member permissions to ensure data and operational security.
 
-### Access security
+### 9.1 Access security
 
 To enable your Flink job to access external services with Kerberos authentication, such as HBase or Kafka, first register the Kerberos cluster in the Flink console. Then, configure the job with this cluster information to ensure secure access.
 
@@ -2181,7 +2230,7 @@ parameters to enable Kerberos authentication.
 
 After the job is configured, perform thorough testing, debugging, and deployment. For more information, see job development.
 
-### Manage variables
+### 9.2 Manage variables
 
 Using variables helps mitigate security risks associated with plaintext AccessKeys and passwords. It also facilitates configuration management by allowing you to reuse values, thereby eliminating redundant code. Flink (Compute-Storage Separation Edition) supports key hosting for JAR and Python deployments. This topic describes how to create and use variables.
 
@@ -2225,11 +2274,11 @@ ${secret_values.Variable name in Variable Management} format. Example:
 5. Click **Deploy**.
 ices
 
-### Manage permissions
+### 9.3 Manage permissions
 
 You can manage members and roles by managing permissions. You can add, edit, and delete namespace members, or view and maintain role permissions.
 
-#### Authorization guidelines
+#### 9.3.1 Authorization guidelines
 
 This topic describes the permission categories and their relationship with the management console of Realtime Compute for Apache Flink and the development console of Realtime Compute for Apache Flink. Please read carefully before granting permissions. With product evolution and the need for on-site metering, the management of Flink namespaces has been migrated from Apsara Big Data Manager (ABM) to the Apsara Uni-manager Management Console. This migration provides a more familiar resource creation experience for users. Flink permissions fall into two categories: resource management and business roles.
 
@@ -2238,7 +2287,7 @@ This topic describes the permission categories and their relationship with the m
 | Resource management | Applicable to the management console of Realtime Compute for Apache Flink. Grants the permissions to manage (create, modify, delete, and query) workspaces and namespaces. Accounts with this permission category can manage workspaces and namespaces in the management console of Realtime Compute for Apache Flink. |
 | Business role | Applicable to the development console of Realtime Compute for Apache Flink. To manage namespace operation permissions, the system provides three built-in roles: owner, editor, and viewer (read-only). In actual business scenarios, users assigned to these business roles can log in to the development console of Realtime Compute for Apache Flink through the management console of Realtime Compute for Apache Flink to perform tasks such as deployment development, O&M, and member management. |
 
-#### Authorization policies in the management
+#### 9.3.2 Authorization policies in the management console
 
 **console**
 
@@ -2266,7 +2315,7 @@ For more information, see **Enterprise > User management > Users > User Role aut
 
 If you need to assign an operational role (such as the R&D role or O&M role) to the user, log in to the management console of Realtime Compute for Apache Flink as a user with the owner role and navigate to the development console of Realtime Compute for Apache Flink.
 
-#### Authorization policies in the development
+#### 9.3.3 Authorization policies in the development console
 
 **console**
 
@@ -2382,7 +2431,7 @@ ices
 | Configurations | View job templates | √ | √ | √ |
 |   | Modify job templates | √ | √ |   |
 
-### Configure the IP address of external
+### 9.4 Configure the IP address of external storage
 
 **storage**
 
@@ -2409,7 +2458,7 @@ namespace, and click **Configure IP Address for External Data Stor** in the **Ac
 The IP address refers to the VIP that corresponds to the storage domain name. You can add a single IP address or a CIDR block, for example, `192.168.0.1` or `192.168.0.1/24` . If the format is incorrect, an error is reported:
 4. Click **OK**.
 
-## Job migration
+## 10 Job migration
 
 This topic describes how to migrate jobs from a Flink Enterprise Edition project to a Flink Compute-Storage Separation Edition project.
 
@@ -2439,7 +2488,7 @@ i. On the **Job Resources** tab, click **Streaming Job Management** or **Batch J
 6. Click **Start Migration**.
 After the migration completes, check the resource migration status and error messages to determine whether you need to adjust the migrated resources and run the migration again. After the migration completes, you can view the migrated jobs in the destination project of Flink Compute-Storage Separation Edition. rver
 
-## Flink MCP Server
+## 11 Flink MCP Server
 
 Based on the MCP Protocol, Flink supports API calls through the Apsara Copilot hosting mode to retrieve information such as namespaces and jobs. You can also deploy an MCP Server to perform queries. These capabilities help you build a natural language-driven data query agent and implement an intelligent data processing workflow from questioning to visualization. This topic describes how to use the Apsara Copilot hosting mode and how to deploy an MCP Server.
 
@@ -2476,7 +2525,7 @@ i. Click the icon in the toolbar at the top of the page to go to the **Apsara Co
 agents, or RPA workflows.
 4. Call MCP features through RESTful APIs.
 
-## FAQ
+## 12 FAQ
 
 This topic describes common issues and solutions when using Flink (Compute-Storage Separation Edition), including FAQs on creating namespaces and viewing Flink audit events.
 

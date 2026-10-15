@@ -3,20 +3,48 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 22
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container Platform ACK One User Guide 20260828.pdf"
+source_pdf: "7345ad42751084d7_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Distributed%20Cloud%20Container%20Platform%20ACK%20One%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container Platform ACK One User Guide 20260828
 
+## Table of Contents
+
+- 1 What is ACK One?
+- 2 Log in to the ACK One console
+- 3 Authorization management
+  - 3.1 Authorization overview
+  - 3.2 Attach system policies to a RAM role
+  - 3.3 Grant RBAC permissions to a RAM role
+- 4 Fleets
+  - 4.1 Manage Fleet instances
+    - 4.1.1 Fleet management overview
+    - 4.1.2 Network design for Fleet management
+    - 4.1.3 Create a Fleet instance
+    - 4.1.4 View the details of a Fleet instance
+    - 4.1.5 Delete a Fleet instance
+  - 4.2 Manage associated clusters
+    - 4.2.1 Associate clusters with a Fleet instance
+    - 4.2.2 Disassociate clusters from a Fleet instance
+  - 4.3 Manage namespaces
+    - 4.3.1 Create a namespace
+    - 4.3.2 Modify the tags of a namespace
+    - 4.3.3 Delete a namespace
+  - 4.4 Manage multi-cluster applications
+    - 4.4.1 Create a multi-cluster application
+    - 4.4.2 View the information about multi-cluster applications
+    - 4.4.3 Modify the configuration of a multi-cluster application
+    - 4.4.4 Delete a multi-cluster application
+
 ACK One?
 
-## What is ACK One?
+## 1 What is ACK One?
 
 Distributed Cloud Container Platform for Kubernetes (ACK One) is an enterprise-class cloudnative platform provided by Alibaba Cloud. This platform can be used in hybrid cloud, multicluster, distributed computing, and disaster recovery scenarios. You can use ACK One to connect and manage Kubernetes clusters deployed on top of any infrastructure or in any regions. ACK One also provides APIs that are compatible with open source versions to help you manage and maintain computing, networks, storage, security, monitoring, logs, jobs, applications, and traffic. o the ACK One console
 
-## Log in to the ACK One
+## 2 Log in to the ACK One console
 
 **console**
 
@@ -47,9 +75,9 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 **Distributed Cloud Container Platform ACK One** to go to the **ACK One** console.
 zation management
 
-## Authorization management
+## 3 Authorization management
 
-### Authorization overview
+### 3.1 Authorization overview
 
 To use the features provided by Distributed Cloud Container Platform for Kubernetes (ACK One), you need to grant Role-Based Access Control (RBAC) permissions to the service account. This topic describes RBAC permissions and how to grant required permissions to the service account.
 
@@ -70,7 +98,7 @@ System policies can be attached to RAM users to grant only the operation permiss
 
 For more information about the resources controlled by RBAC permissions and how to grant permissions, see Grant RBAC permissions to a RAM role.
 
-### Attach system policies to a
+### 3.2 Attach system policies to a RAM role
 
 **RAM role**
 
@@ -97,7 +125,7 @@ to access and click **Next** or **Create**. For more information, see **Manage c
 9. Return to the **Role Permissions** page. Find the created role and click **Authorize** in the
 **Actions** column. Select the users or user groups that you want to authorize and click **OK**.
 
-### Grant RBAC permissions to a
+### 3.3 Grant RBAC permissions to a RAM role
 
 **RAM role**
 
@@ -166,11 +194,11 @@ You can select **Operations Administrator** or **Developer** for **RAM Role**
 **Authorization**.
 You can click **Revoke Authorization** in the **Action** column to revoke the authorization.
 
-## Fleets
+## 4 Fleets
 
-### Manage Fleet instances
+### 4.1 Manage Fleet instances
 
-#### Fleet management overview
+#### 4.1.1 Fleet management overview
 
 Due to the wide adoption of Kubernetes, enterprises may want to run and manage multiple Kubernetes clusters. This brings challenges such as how to manage multiple clusters, how to use a unified external ingress to access the clusters, and how to schedule resources for the clusters. The Fleet instances of Distributed Cloud Container Platform for Kubernetes (ACK One) are managed by Container Service for Kubernetes (ACK). You can use the Fleet instances to manage Kubernetes clusters that are deployed in different environments in a centralized manner. Fleet instances create a consistent experience for enterprises that want to manage cloud-native applications.
 
@@ -195,7 +223,7 @@ Unified Control Plane
 
 Multi-cluster Application Multi-cluster Resource Distribution Distribution Open Cluster Management Apsara Data Stack Center Deployment/Svc Deployment/Svc Multi-cluster Svc Multi-cluster Svc Job Job ACK Cluster K8s Cluster The Fleet management feature of ACK One is ideal for the following scenarios: The control plane is built based on Kubernetes control planes and provides Kubernetes APIs. You can connect external Kubernetes clusters to a multi-cluster Fleet instance based on a registered cluster. Multi-cluster application distribution: The managed open source Argo CD is used for multicluster application distribution.
 
-#### Network design for Fleet management
+#### 4.1.2 Network design for Fleet management
 
 You can use the Fleet management feature to manage multiple clusters that are associated with a Fleet instance across regions. To enable the Fleet management feature, you must specify the region, virtual private cloud (VPC), and vSwitch information for the Fleet instance. This topic describes the architecture that is used to connect the network of a Fleet instance to the network of the associated clusters. This topic also describes how to specify a proper region, VPC, and vSwitch for a Fleet instance.
 
@@ -240,7 +268,7 @@ Make sure that the security groups of the Fleet instance and the associated clus
 
 Fleet instances do not have specific requirements on vSwitches. You can select a vSwitch based on your network design.
 
-#### Create a Fleet instance
+#### 4.1.3 Create a Fleet instance
 
 This topic describes how to create a Fleet instance.
 
@@ -270,7 +298,7 @@ policy to a RAM role.
 5. Click **Submit**.
 Wait a few minutes. After the status of the Fleet instance changes to **Running**, the Fleet instance is created.
 
-#### View the details of a Fleet instance
+#### 4.1.4 View the details of a Fleet instance
 
 This topic describes how to view the details of a Fleet instance. After a Fleet instance is created, you can view the basic information, connection information, logs, and associated clusters of the Fleet instance.
 1. Log in to the ACK One console.
@@ -281,7 +309,7 @@ instance ID or click **Details** in the **Action** column. On the **Fleet Inform
 **Logs** tab.
 On the **Associate Cluster** tab, associate clusters with the Fleet instance. For more information, see Manage associated clusters.
 
-#### Delete a Fleet instance
+#### 4.1.5 Delete a Fleet instance
 
 This topic describes how to delete a Fleet instance.
 
@@ -294,9 +322,9 @@ Before you delete a Fleet instance, you must remove the clusters associated with
 the **Action** column.
 4. In the message that appears, click **OK**.
 
-### Manage associated clusters
+### 4.2 Manage associated clusters
 
-#### Associate clusters with a Fleet instance
+#### 4.2.1 Associate clusters with a Fleet instance
 
 After you create a Fleet instance, you can associate clusters with the Fleet instance, and then deploy applications and workloads to the associated clusters from the Fleet instance. You can associate a Fleet instance with clusters that reside outside the region of the Fleet instance. This topic describes how to associate clusters with a Fleet instance.
 
@@ -327,7 +355,7 @@ cluster is being associated with the Fleet instance.
 **Failed to associate**: The system failed to associate the cluster with the Fleet
 instance.
 
-#### Disassociate clusters from a Fleet
+#### 4.2.2 Disassociate clusters from a Fleet instance
 
 **instance**
 
@@ -342,9 +370,9 @@ Disassociate a single cluster: On the **Associate Cluster** tab, find the cluste
 6. In the message that appears, click **OK**.
 Wait a period of time and refresh the **Associate Cluster** tab. If the clusters are removed from the list of associated clusters, the clusters are disassociated.
 
-### Manage namespaces
+### 4.3 Manage namespaces
 
-#### Create a namespace
+#### 4.3.1 Create a namespace
 
 This topic describes how to create a namespace.
 
@@ -367,7 +395,7 @@ In a Kubernetes cluster, you can use namespaces to create multiple virtual space
 | Name | Specify a name for the namespace. The name must be 1 to 63 characters in length and can contain digits, letters, and hyphens (-). It must start and end with a letter or digit. |
 | Tag | You can add multiple tags to a namespace. Tags are used to identify namespaces. For example, you can tag a namespace as one that is used in the test environment. To add a tag, enter a key and a value. You can clickA dd to add more tags. |
 
-#### Modify the tags of a namespace
+#### 4.3.2 Modify the tags of a namespace
 
 This topic describes how to modify the tags of a namespace.
 1. Log in to the ACK One console.
@@ -378,7 +406,7 @@ This topic describes how to modify the tags of a namespace.
 the **Action** column.
 6. In the dialog box that appears, modify, add, or delete tags, and then click **OK**.
 
-#### Delete a namespace
+#### 4.3.3 Delete a namespace
 
 This topic describes how to delete a namespace.
 
@@ -393,11 +421,11 @@ When you delete a namespace, all resource objects under the namespace are delete
 in the **Action** column.
 6. In the message that appears, click **OK**.
 
-### Manage multi-cluster
+### 4.4 Manage multi-cluster applications
 
 **applications**
 
-#### Create a multi-cluster application
+#### 4.4.1 Create a multi-cluster application
 
 This topic describes how to create a multi-cluster application.
 
@@ -425,7 +453,7 @@ click **OK**.
 | Destination Cluster | The destination cluster where the application will be deployed. |
 | Namespace | The namespace where the application will be deployed in the cluster. |
 
-#### View the information about multi-
+#### 4.4.2 View the information about multi-cluster applications
 
 **cluster applications**
 
@@ -440,7 +468,7 @@ to filter applications.
 **Application**, **Namespace**, and **Creation Time** of multi-cluster applications.
 Click a number in the **Application** column to view the application summary information about the multi-cluster application. Click **View YAML** in the **Action** column to view the YAML information of the multi-cluster application (ArgoCD ApplicationSet resource).
 
-#### Modify the configuration of a multi-
+#### 4.4.3 Modify the configuration of a multi-cluster application
 
 **cluster application**
 
@@ -454,7 +482,7 @@ click **Edit** in the **Action** column.
 6. On the **Edit Multi-Cluster Application** page, modify the configuration and click **OK**.
 You cannot modify the name of a multi-cluster application.
 
-#### Delete a multi-cluster application
+#### 4.4.4 Delete a multi-cluster application
 
 This topic describes how to delete a multi-cluster application.
 

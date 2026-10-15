@@ -3,18 +3,31 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Product In
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 46
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Product Introduction 20260831.pdf"
+source_pdf: "1a04dccc28e8bc22_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Product Introduction 20260831
 
-## Cloud Defined Storage
+## Table of Contents
+
+- 1 Cloud Defined Storage
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+    - 1.4.1 Object Storage Service
+    - 1.4.2 Elastic Block Storage
+    - 1.4.3 Simple Log Service
+    - 1.4.4 Tablestore
+    - 1.4.5 Hybrid Disaster Recovery
+
+## 1 Cloud Defined Storage
 
 Cloud Defined Storage (CDS) is a distributed file storage system provided by Alibaba Cloud. CDS features high security, high reliability, low cost, centralized management, and elastic resource scaling, which allows efficient data storage and retrieval. Based on Object Storage Service (OSS), Log Service, Apsara File Storage NAS, and Elastic Block Storage (EBS), CDS provides storage for unstructured data such as files, images, and videos, and supports log storage, query, and analysis features. This allows users in different industries to access unstructured data and process massive amounts of logs. CDS is ideal to provide unstructured data storage and log services in big data scenarios such as mobile application and large websites. CDS offers a one-stop storage solution for users in different industries that is cost-effective, secure, and reliable.
 
-### Features
+### 1.1 Features
 
 **Overview**
 
@@ -42,9 +55,9 @@ Simple Log Service is an end-to-end data logging service that is developed by Al
 
 **Hybrid Disaster Recovery**
 
-The following section introduces the Hybrid Disaster Recovery service: Positioning Disaster recovery at the application level for business continuity: In the case of data center failure or long-time system maintenance, Hybrid Disaster Recovery allows you to quickly run applications on the cloud. This shortens the service interruption period and reduces losses. You can use the server replication feature of Hybrid Disaster Recovery to implement cross-zone disaster recovery protection for ECS instances so that you do not need to create servers again on the cloud. Scenarios Hybrid Disaster Recovery provides a high-standard disaster recovery solution for key enterprise applications. It features disaster recovery with a recovery point objective (RPO) of a few minutes and a recovery time objective (RTO) of a few minutes.
+The following section introduces the Hybrid Disaster Recovery service: Positioning Disaster recovery at the application level for business continuity: In the case of data center failure or long-time system maintenance, Hybrid Disaster Recovery allows you to quickly run applications on the cloud. This shortens the service interruption period and reduces losses. You can use the server replication feature of Hybrid Disaster Recovery to implement cross-zone disaster recovery protection for ECS instances so that you do not need to create servers again on the cloud. Hybrid Disaster Recovery provides a high-standard disaster recovery solution for key enterprise applications. It features disaster recovery with a recovery point objective (RPO) of a few minutes and a recovery time objective (RTO) of a few minutes.
 
-### Benefits
+### 1.2 Benefits
 
 Cloud Defined Storage (CDS) provides flexible deployment, high performance, and high reliability. When different cloud services are deployed in CDS, CDS inherits the benefits of the cloud services.
 
@@ -198,7 +211,7 @@ HDR supports efficient data replication and disaster recovery for application se
 
 Cross-cloud disaster recovery indicates the scenario where the production and disaster recovery clouds are two cloud instances deployed in different regions. If a fault occurs on the production cloud, your business system is switched to the disaster recovery cloud. This effectively prevents system failures caused by exceptions on the cloud instances, ensures business availability, and meets the RPO and RTO goals of your business.
 
-### Scenarios
+### 1.3 Scenarios
 
 Cloud Defined Storage (CDS) can provide one-stop storage solutions for enterprises in different industries in a cost-efficient, secure, and reliable manner. Enterprises can deploy different services in CDS to meet requirements in different scenarios.
 
@@ -248,9 +261,9 @@ Hybrid Disaster Recovery (HDR) supports cross-zone disaster recovery to meet var
 
 HDR supports cross-cloud disaster recovery. Cross-cloud disaster recovery indicates the scenario in which the primary and secondary clouds are two cloud instances deployed in different regions. If a fault occurs on the primary cloud, the business system is switched to the secondary cloud. This effectively prevents system failures caused by errors in cloud instances, ensures business availability, and meets the RPO and RTO goals of your business.
 
-### Features
+### 1.4 Features
 
-#### Object Storage Service
+#### 1.4.1 Object Storage Service
 
 This topic describes the functions and features of Object Storage Service (OSS).
 
@@ -370,7 +383,7 @@ For EC N+M, N data chunks and M parity chunks from devices form an EC group. The
 
 In non-disaster recovery scenarios, an OSS cluster requires at least six nodes for deployment. In zone-disaster recovery scenarios, the number of nodes required for OSS cluster deployment depends on the disaster recovery solution in use. Two-AZ zone-disaster recovery: Deploy the OSS cluster across two availability zones. Deploying a cluster in a single availability zone requires at least six nodes, and both availability zones must have the same number of cluster nodes. Three-AZ zone-disaster recovery: An OSS 3AZ cluster cannot be the initial cluster. You can build an additional 3AZ disaster recovery cluster only when a zone-disaster recovery cluster already exists in the cloud environment. Deploying an OSS 3AZ cluster requires at least 21 nodes. Each single availability zone requires at least seven nodes, and all three availability zones must have the same number of cluster nodes.
 
-#### Elastic Block Storage
+#### 1.4.2 Elastic Block Storage
 
 This topic describes the features of Elastic Block Storage (EBS).
 
@@ -439,7 +452,7 @@ An EBS standard cluster requires at least six nodes and supports up to 96 nodes.
 
 When you deploy a cluster with four or five nodes, only one fault domain exists. In this configuration, the failure of an additional node may result in data loss.
 
-#### Simple Log Service
+#### 1.4.3 Simple Log Service
 
 This topic describes the features of Simple Log Service.
 
@@ -503,7 +516,7 @@ At least four nodes must be deployed in a Simple Log Service cluster, and six no
 
 If four nodes are deployed, only one node can fail. If one more node fails, data may be lost.
 
-#### Tablestore
+#### 1.4.4 Tablestore
 
 This topic describes the features of Tablestore.
 
@@ -651,7 +664,7 @@ Tunnel Service is an integrated service built on Tablestore that provides contin
 
 A Tablestore cluster deployment requires a minimum of six nodes.
 
-#### Hybrid Disaster Recovery
+#### 1.4.5 Hybrid Disaster Recovery
 
 This topic describes the features of Hybrid Disaster Recovery.
 

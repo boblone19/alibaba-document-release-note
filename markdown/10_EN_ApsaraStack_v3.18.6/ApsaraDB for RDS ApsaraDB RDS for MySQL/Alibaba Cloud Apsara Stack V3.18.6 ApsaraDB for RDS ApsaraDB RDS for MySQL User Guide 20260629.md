@@ -2,18 +2,110 @@
 title: "ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 181
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260629.pdf"
+source_pdf: "2908166cb8bc81e5_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20MySQL%20User%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260629
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+## Table of Contents
 
-## What is ApsaraDB RDS?
+- 1 What is ApsaraDB RDS?
+- 2 Instance types
+- 3 Log in to the ApsaraDB RDS console
+- 4 Quick start
+  - 4.1 Limits
+  - 4.2 Procedure
+  - 4.3 Create an instance
+  - 4.4 Initialization settings
+    - 4.4.1 Configure an IP address whitelist for an ApsaraDB RDS instance
+    - 4.4.2 Create an account
+    - 4.4.3 Create a database
+  - 4.5 Connect to an ApsaraDB RDS for MySQL instance
+- 5 Instances
+  - 5.1 Create an instance
+  - 5.2 View the details of an ApsaraDB RDS instance
+  - 5.3 Restart an instance
+  - 5.4 Change instance specifications
+  - 5.5 Set a maintenance window
+  - 5.6 Change the data replication mode
+  - 5.7 Release an instance
+  - 5.8 Update the minor engine version of an instance
+  - 5.9 Configure instance parameters
+  - 5.10 Read-only instances
+    - 5.10.1 Overview of read-only instances
+    - 5.10.2 Create a read-only instance
+    - 5.10.3 View details of read-only instances
+  - 5.11 Manage instances in the recycle bin
+  - 5.12 Manage tags
+- 6 Accounts
+  - 6.1 Language Detection
+  - 6.2 Package Audit
+  - 6.3 Product Material Optimization Pro
+  - 6.4 Modify the permissions of an account
+  - 6.5 Product Material Optimization Lite
+- 7 Category Match
+  - 7.1 Category Attribute Match
+  - 7.2 Delete a database
+- 8 Size Chart Extraction
+  - 8.1 Change the endpoint and port number of an instance
+  - 8.2 Apply for and release an internal endpoint or a public endpoint for an instance
+  - 8.3 Use DMS to log in to an ApsaraDB RDS instance
+  - 8.4 Configure the hybrid access solution
+  - 8.5 Change the network type of an instance
+  - 8.6 Change the VPC and vSwitch for an instance
+- 9 Database proxy
+  - 9.1 Configure dedicated proxy
+  - 9.2 Configure short-lived connection optimization
+  - 9.3 Configure transaction splitting
+  - 9.4 Read/write splitting
+    - 9.4.1 Enable read/write splitting
+    - 9.4.2 Configure read/write splitting
+    - 9.4.3 Disable read/write splitting
+- 10 Monitoring and alerts
+  - 10.1 View resources and engine monitoring data
+  - 10.2 Configure an alert rule
+- 11 Cloud Monitor
+  - 11.1 View performance metrics
+  - 11.2 Alert history
+  - 11.3 Alert rules
+    - 11.3.1 Create an alert rule
+    - 11.3.2 Manage alert rules
+- 12 Data security
+  - 12.1 Configure an IP address whitelist
+  - 12.2 Configure SSL encryption
+  - 12.3 Configure TDE
+  - 12.4 SQL Audit
+- 13 Service availability
+  - 13.1 Switch workloads between primary and secondary ApsaraDB RDS instances
+  - 13.2 Change the data replication mode
+- 14 Database backup and restoration
+  - 14.1 Configure automatic backup
+  - 14.2 Manually back up an instance
+  - 14.3 Download data backup files and log backup files
+  - 14.4 Use the Upload Binlogs feature to upload binary log files
+  - 14.5 Restore data to a new instance (formerly known as cloning an instance)
+- 15 Autonomy services
+  - 15.1 Introduction to DAS
+  - 15.2 Perform quick diagnostics
+  - 15.3 Manage sessions
+  - 15.4 View real-time performance
+  - 15.5 Storage analysis
+  - 15.6 Lock analysis
+  - 15.7 Performance trends
+  - 15.8 View slow query logs
+  - 15.9 Diagnostic reports
+- 16 Log management
+- 17 Use mysqldump to migrate MySQL data
 
-ApsaraDB RDS is a stable, reliable, and scalable online database service. Based on the distributed file system and high-performance storage, ApsaraDB RDS provides a set of solutions for disaster recovery, backup, restoration, monitoring, and migration. ApsaraDB RDS supports four database engines, which are MySQL, SQL Server, PolarDB, and PostgreSQL. You can create RDS instances that run these engines to meet your business requirements. ApsaraDB RDS for MySQL is developed based on AliSQL and provides excellent performance. ApsaraDB RDS for MySQL is a tried and tested solution that handled the high-volume concurrent traffic during Double 11. ApsaraDB RDS for MySQL supports deployment with mixed x86 and ARM clusters. It integrates basic features such as whitelist configuration, backup and restoration, Transparent Data Encryption (TDE), data migration, and management of instances, accounts, and databases. ApsaraDB RDS for MySQL also provides the following advanced features:
+## 1 What is ApsaraDB RDS?
+
+ApsaraDB RDS is a stable, reliable, and scalable online database service. Based on the distributed file system and high-performance storage, ApsaraDB RDS provides a set of solutions for disaster recovery, backup, restoration, monitoring, and migration. ApsaraDB RDS supports four database engines, which are MySQL, SQL Server, PolarDB, and PostgreSQL. You can create RDS instances that run these engines to meet your business requirements.
+
+**ApsaraDB RDS for MySQL**
+
+ApsaraDB RDS for MySQL is developed based on AliSQL and provides excellent performance. ApsaraDB RDS for MySQL is a tried and tested solution that handled the high-volume concurrent traffic during Double 11. ApsaraDB RDS for MySQL supports deployment with mixed x86 and ARM clusters. It integrates basic features such as whitelist configuration, backup and restoration, Transparent Data Encryption (TDE), data migration, and management of instances, accounts, and databases. ApsaraDB RDS for MySQL also provides the following advanced features:
 **Read-only instance:** In scenarios in which ApsaraDB RDS for MySQL handles a small
 number of write requests but a large number of read requests, you can create read-only instances to scale up reading capabilities and increase the application throughput.
 **Read/write splitting:** The read/write splitting feature provides a read/write splitting
@@ -21,19 +113,17 @@ endpoint. This endpoint enables automatic read/write splitting for a primary RDS
 **High availability based on zone-disaster recovery**: RDS for MySQL instances that run
 RDS High-availability Edition adopt an HA architecture that consists of a primary node and a secondary node deployed in two different zones within the same region, such as China (Shanghai) Zone A and China (Shanghai) Zone B. The primary node handles read and write requests. The secondary node synchronizes data from the primary node in real time and does not handle requests. When the zone in which the primary node is deployed becomes unavailable due to power outage or network issues, the secondary node is automatically promoted to the primary node within a period ranging from 30 seconds to 5 minutes. The time required for the failover depends on the fault detection and recovery mechanism.
 
+## 2 Instance types
+
+This topic describes the instance types of ApsaraDB RDS for MySQL. Different instance types deliver different performance.
+
+**Instance type comparison**
+
 | Instance type | Characteristics | Applicable scenarios |
 |---|---|---|
 | Dedicated | A dedicated cluster occupies all allocated compute resources such as CPUs. The cluster does not share compute resources with other instances that run on the same server. This improves the reliability and stability of the instance. | Scenarios in which databases are the key component of business systems that require high reliability, such as finance, e-commerce, public service, and medium- or large-scale Internet services. |
 | General- purpose | Idle compute resources such as CPUs are shared among instances that run on the same server. Resource sharing allows you to deploy a large number of instances at low costs. | Scenarios in which cost-effectiveness is prioritized. |
 | Dedicated host | The instances have exclusive access to all resources on a physical host, making it the highest-tier dedicated specification. | Scenarios in which maximum performance stability and isolation are required. Databases are used as core systems in sectors such as finance, e- commerce, public services, and large- and medium-sized Internet services. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-## Instance types
-
-This topic describes the instance types of ApsaraDB RDS for MySQL. Different instance types deliver different performance.
-
-**Instance type comparison**
 
 **IOPS**
 
@@ -47,95 +137,91 @@ min{1800 + 30 × Storage capacity, 25000}
 
 If the throughput of an ApsaraDB RDS for MySQL instance reaches the upper limit, the IOPS of the instance also decreases.
 
+**Primary ApsaraDB RDS for MySQL instances**
+
 **High-availability Edition**
 
 | Instanc e family | Suppor ted version | Instance type | Number of CPU cores and memory capacity | Maxim um IOPS | Maxim um numb er of conne ctions | Storage capacity |
 |---|---|---|---|---|---|---|
 | General- purpose instance family | MySQL 5.7 and MySQL 8.0 | rds.mysql.t1.small | 1 core, 1 GB | 1,200 | 300 | 5 GB to 2,000 GB |
-|  |  | rds.mysql.s1.small | 1 core, 2 GB | 2,000 | 600 |  |
-|  |  | rds.mysql.s2.large | 2 cores, 4 GB | 4,000 | 1,200 |  |
-|  |  | rds.mysql.s2.xlarge | 2 cores, 8 GB | 6,000 | 2,000 |  |
-|  |  | rds.mysql.s3.large | 4 cores, 8 GB | 8,000 | 2,000 |  |
-|  |  | rds.mysql.m1.medi um | 4 cores, 16 GB | 14,000 | 4,000 |  |
-|  |  | rds.mysql.c1.large | 8 cores, 16 GB | 20,000 | 4,000 |  |
-|  |  | rds.mysql.c1.xlarge | 8 cores, 32 GB | 28,000 | 8,000 |  |
-|  |  | rds.mysql.g2.2xlarg e | 16 cores, 32 GB | 40,000 | 8,000 | 50 GB to 3,000 GB |
-|  |  | rds.mysql.c2.xlarge | 16 cores, 64 GB | 40,000 | 16,000 | 5 GB to 3,000 GB |
-|  |  | rds.mysql.c2.xlp2 | 16 cores, 96 GB | 40,000 | 24,000 |  |
-|  | 5.7 | rds.mysql.c2.2xlarg e | 16 cores, 128 GB | 16,000 | 32,000 |  |
+|   |   | rds.mysql.s1.small | 1 core, 2 GB | 2,000 | 600 |   |
+|   |   | rds.mysql.s2.large | 2 cores, 4 GB | 4,000 | 1,200 |   |
+|   |   | rds.mysql.s2.xlarge | 2 cores, 8 GB | 6,000 | 2,000 |   |
+|   |   | rds.mysql.s3.large | 4 cores, 8 GB | 8,000 | 2,000 |   |
+|   |   | rds.mysql.m1.medi um | 4 cores, 16 GB | 14,000 | 4,000 |   |
+|   |   | rds.mysql.c1.large | 8 cores, 16 GB | 20,000 | 4,000 |   |
+|   |   | rds.mysql.c1.xlarge | 8 cores, 32 GB | 28,000 | 8,000 |   |
+|   |   | rds.mysql.g2.2xlarg e | 16 cores, 32 GB | 40,000 | 8,000 | 50 GB to 3,000 GB |
+|   |   | rds.mysql.c2.xlarge | 16 cores, 64 GB | 40,000 | 16,000 | 5 GB to 3,000 GB |
+|   |   | rds.mysql.c2.xlp2 | 16 cores, 96 GB | 40,000 | 24,000 |   |
+|   | 5.7 | rds.mysql.c2.2xlarg e | 16 cores, 128 GB | 16,000 | 32,000 |   |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-|  | MySQL 5.7 and MySQL 8.0 | rds.mysql.g2.3xlarg e | 24 cores, 48 GB | 40,000 | 12,000 | 50 GB to 3,000 GB |
+|   | MySQL 5.7 and MySQL 8.0 | rds.mysql.g2.3xlarg e | 24 cores, 48 GB | 40,000 | 12,000 | 50 GB to 3,000 GB |
 |---|---|---|---|---|---|---|
-|  |  | rds.mysql.x2.3xlarg e | 24 cores, 48 GB | 50,000 | 12,000 | 50 GB to 2,000 GB |
-|  |  | rds.mysql.g4.3xlarg e | 24 cores, 96 GB | 50,000 | 24,000 | 50 GB to 3,000 GB |
-|  |  | rds.mysql.g2.4xlarg e | 32 cores, 64 GB | 60,000 | 16,000 |  |
-|  |  | rds.mysql.g4.4xlarg e | 32 cores, 128 GB | 60,000 | 32,000 |  |
-|  |  | rds.mysql.g2.8xlarg e | 64 cores, 128 GB | 60,000 | 32,000 |  |
-|  | MySQL 5.7 and MySQL 8.0 | mysql.x8.medium.2 | 2 cores, 16 GB | 15,000 | 2,500 | 50 GB to 1,000 GB |
-|  |  | mysql.x4.large.2 | 4 cores, 16 GB | 30,000 | 2,500 |  |
-|  |  | mysql.x8.large.2 | 4 cores, 32 GB | 40,000 | 5,000 |  |
-|  |  | mysql.x4.xlarge.2 | 8 cores, 32 GB | 45,000 | 5,000 | 500 GB to 3,000 GB |
-| Dedicat ed instance family |  |  |  |  |  |  |
-|  |  | mysql.x8.xlarge.2 | 8 cores, 64 GB | 50,000 | 10,000 |  |
-|  |  | rds.mysql.x2.2xlarg e | 16 cores, 32 GB | 40,000 | 8,000 | 50 GB to 2,000 GB |
-|  |  | mysql.x4.2xlarge.2 | 16 cores, 64 GB | 60,000 | 10,000 | 500 GB to 3,000 GB |
-|  |  | mysql.x8.2xlarge.2 | 16 cores, 128 GB | 60,000 | 20,000 |  |
-|  |  | rds.mysql.x4.3xlarg e | 24 cores, 96 GB | 50,000 | 24,000 | 50 GB to 2,000 GB |
+|   |   | rds.mysql.x2.3xlarg e | 24 cores, 48 GB | 50,000 | 12,000 | 50 GB to 2,000 GB |
+|   |   | rds.mysql.g4.3xlarg e | 24 cores, 96 GB | 50,000 | 24,000 | 50 GB to 3,000 GB |
+|   |   | rds.mysql.g2.4xlarg e | 32 cores, 64 GB | 60,000 | 16,000 |   |
+|   |   | rds.mysql.g4.4xlarg e | 32 cores, 128 GB | 60,000 | 32,000 |   |
+|   |   | rds.mysql.g2.8xlarg e | 64 cores, 128 GB | 60,000 | 32,000 |   |
+|   | MySQL 5.7 and MySQL 8.0 | mysql.x8.medium.2 | 2 cores, 16 GB | 15,000 | 2,500 | 50 GB to 1,000 GB |
+|   |   | mysql.x4.large.2 | 4 cores, 16 GB | 30,000 | 2,500 |   |
+|   |   | mysql.x8.large.2 | 4 cores, 32 GB | 40,000 | 5,000 |   |
+|   |   | mysql.x4.xlarge.2 | 8 cores, 32 GB | 45,000 | 5,000 | 500 GB to 3,000 GB |
+| Dedicat ed instance family |   |   |   |   |   |   |
+|   |   | mysql.x8.xlarge.2 | 8 cores, 64 GB | 50,000 | 10,000 |   |
+|   |   | rds.mysql.x2.2xlarg e | 16 cores, 32 GB | 40,000 | 8,000 | 50 GB to 2,000 GB |
+|   |   | mysql.x4.2xlarge.2 | 16 cores, 64 GB | 60,000 | 10,000 | 500 GB to 3,000 GB |
+|   |   | mysql.x8.2xlarge.2 | 16 cores, 128 GB | 60,000 | 20,000 |   |
+|   |   | rds.mysql.x4.3xlarg e | 24 cores, 96 GB | 50,000 | 24,000 | 50 GB to 2,000 GB |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-|  |  | rds.mysql.x2.4xlarg e | 32 cores, 64 GB | 60,000 | 16,000 | 50 GB to 3,000 GB |
+|   |   | rds.mysql.x2.4xlarg e | 32 cores, 64 GB | 60,000 | 16,000 | 50 GB to 3,000 GB |
 |---|---|---|---|---|---|---|
-|  |  | mysql.x4.4xlarge.2 | 32 cores, 128 GB | 80,000 | 20,000 | 1,000 GB to 6,000 GB |
-|  |  | rds.mysql.x4.4xlarg e | 32 cores, 128 GB | 60,000 | 32,000 | 50 GB to 3,000 GB |
-|  |  | mysql.x8.4xlarge.2 | 32 cores, 256 GB | 100,000 | 40,000 | 1,000 GB to 6,000 GB |
-|  |  | rds.mysql.x2.8xlarg e | 64 cores, 128 GB | 60,000 | 32,000 | 50 GB to 3,000 GB |
-|  |  | mysql.x8.8xlarge.2 | 64 cores, 512 GB | 150,000 | 80,000 | 1,000 GB to 6,000 GB |
+|   |   | mysql.x4.4xlarge.2 | 32 cores, 128 GB | 80,000 | 20,000 | 1,000 GB to 6,000 GB |
+|   |   | rds.mysql.x4.4xlarg e | 32 cores, 128 GB | 60,000 | 32,000 | 50 GB to 3,000 GB |
+|   |   | mysql.x8.4xlarge.2 | 32 cores, 256 GB | 100,000 | 40,000 | 1,000 GB to 6,000 GB |
+|   |   | rds.mysql.x2.8xlarg e | 64 cores, 128 GB | 60,000 | 32,000 | 50 GB to 3,000 GB |
+|   |   | mysql.x8.8xlarge.2 | 64 cores, 512 GB | 150,000 | 80,000 | 1,000 GB to 6,000 GB |
 | Dedicat ed host instance family | 5.7 | rds.mysql.st.h43 | 60 cores, 470 GB | 150,000 | 100,00 0 | 1,000 GB to 6,000 GB |
-|  | MySQL 5.7 and MySQL 8.0 | rds.mysql.st.v52 | 90 cores, 720 GB | 150,000 | 150,00 0 |  |
+|   | MySQL 5.7 and MySQL 8.0 | rds.mysql.st.v52 | 90 cores, 720 GB | 150,000 | 150,00 0 |   |
+
+**Read-only instance**
 
 | Instance family | Supporte d version | Instance type | Number of CPU cores and memory capacity | Maxim um numbe r of connec tions | Storage capacity |
 |---|---|---|---|---|---|
-|  |  | rds.mysql.t1.small | 1 core, 1 GB | 300 |  |
-|  |  | rds.mysql.s1.small | 1 core, 2 GB | 600 |  |
-|  |  | rds.mysql.s2.large | 2 cores, 4 GB | 1,200 |  |
-|  |  | rds.mysql.s2.xlarge | 2 cores, 8 GB | 2,000 |  |
+|   |   | rds.mysql.t1.small | 1 core, 1 GB | 300 |   |
+|   |   | rds.mysql.s1.small | 1 core, 2 GB | 600 |   |
+|   |   | rds.mysql.s2.large | 2 cores, 4 GB | 1,200 |   |
+|   |   | rds.mysql.s2.xlarge | 2 cores, 8 GB | 2,000 |   |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-| General- purpose instance family | MySQL 5.7 and MySQL 8.0 |  |  |  | 5 GB to 2,000 GB |
+| General- purpose instance family | MySQL 5.7 and MySQL 8.0 |   |   |   | 5 GB to 2,000 GB |
 |---|---|---|---|---|---|
-|  |  | rds.mysql.s3.large | 4 cores, 8 GB | 2,000 |  |
-|  |  | rds.mysql.m1.medium | 4 cores, 16 GB | 4,000 |  |
-|  |  | rds.mysql.c1.large | 8 cores, 16 GB | 4,000 |  |
-|  |  | rds.mysql.c1.xlarge | 8 cores, 32 GB | 8,000 |  |
-|  |  | rds.mysql.c2.xlarge | 16 cores, 64 GB | 16,000 | 5 GB to 3,000 GB |
-|  |  | rds.mysql.c2.xlp2 | 16 cores, 96 GB | 24,000 |  |
+|   |   | rds.mysql.s3.large | 4 cores, 8 GB | 2,000 |   |
+|   |   | rds.mysql.m1.medium | 4 cores, 16 GB | 4,000 |   |
+|   |   | rds.mysql.c1.large | 8 cores, 16 GB | 4,000 |   |
+|   |   | rds.mysql.c1.xlarge | 8 cores, 32 GB | 8,000 |   |
+|   |   | rds.mysql.c2.xlarge | 16 cores, 64 GB | 16,000 | 5 GB to 3,000 GB |
+|   |   | rds.mysql.c2.xlp2 | 16 cores, 96 GB | 24,000 |   |
 | Dedicated instance family | MySQL 5.7 and MySQL 8.0 | mysqlro.x8.medium.1 | 2 cores, 16 GB | 2,500 | 50 GB to 1,000 GB |
-|  |  | mysqlro.x4.large.1 | 4 cores, 16 GB | 2,500 |  |
-|  |  | mysqlro.x8.large.1 | 4 cores, 32 GB | 5,000 |  |
-|  |  | mysqlro.x4.xlarge.1 | 8 cores, 32 GB | 5,000 |  |
-|  |  | mysqlro.x8.xlarge.1 | 8 cores, 64 GB | 10,000 | 500 GB to 3,000 GB |
-|  |  | mysqlro.x4.2xlarge.1 | 16 cores, 64 GB | 10,000 |  |
-|  |  | mysqlro.x8.2xlarge.1 | 16 cores, 128 GB | 20,000 |  |
-|  |  | mysqlro.x4.4xlarge.1 | 32 cores, 128 GB | 20,000 |  |
-|  |  | mysqlro.x8.4xlarge.1 | 32 cores, 256 GB | 40,000 |  |
-| 3 |  | > Document |  |  | Version: 2026062 |
+|   |   | mysqlro.x4.large.1 | 4 cores, 16 GB | 2,500 |   |
+|   |   | mysqlro.x8.large.1 | 4 cores, 32 GB | 5,000 |   |
+|   |   | mysqlro.x4.xlarge.1 | 8 cores, 32 GB | 5,000 |   |
+|   |   | mysqlro.x8.xlarge.1 | 8 cores, 64 GB | 10,000 | 500 GB to 3,000 GB |
+|   |   | mysqlro.x4.2xlarge.1 | 16 cores, 64 GB | 10,000 |   |
+|   |   | mysqlro.x8.2xlarge.1 | 16 cores, 128 GB | 20,000 |   |
+|   |   | mysqlro.x4.4xlarge.1 | 32 cores, 128 GB | 20,000 |   |
+|   |   | mysqlro.x8.4xlarge.1 | 32 cores, 256 GB | 40,000 |   |
+| 3 |   | > Document |   |   | Version: 2026062 |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-|  |  |  |  |  | S for MySQL User G ide·Instance type |
+|   |   |   |   |   | S for MySQL User G ide·Instance type |
 |---|---|---|---|---|---|
-|  |  |  |  |  | 1,000 GB to 6,000 GB |
-|  |  | mysqlro.x8.8xlarge.1 | 64 cores, 512 GB | 80,000 |  |
+|   |   |   |   |   | 1,000 GB to 6,000 GB |
+|   |   | mysqlro.x8.8xlarge.1 | 64 cores, 512 GB | 80,000 |   |
 | Dedicated host instance family | 5.7 | rds.mysql.st.h43 | 60 cores, 470 GB | 100,000 | 1,000 GB to 6,000 GB |
-|  | MySQL 5.7 and MySQL 8.0 | rds.mysql.st.v52 | 90 cores, 720 GB | 150,000 |  |
+|   | MySQL 5.7 and MySQL 8.0 | rds.mysql.st.v52 | 90 cores, 720 GB | 150,000 |   |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+console
 
-## Log in to the ApsaraDB RDS
+## 3 Log in to the ApsaraDB RDS console
 
 **console**
 
@@ -143,7 +229,12 @@ This topic describes how to log in to the ApsaraDB RDS console.
 
 **Prerequisites**
 
-The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineer. A web browser is available. We recommend that you use Google Chrome. ApsaraDB for RDS ApsaraDB RDS for MySQL User G i. In the address bar of your browser, enter the service domain name for the Apsara Unimanager Management Console and press Enter.
+The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineer. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
+1. **Procedure**
+console i. In the address bar of your browser, enter the service domain name for the Apsara Unimanager Management Console and press Enter.
 
 **Note**
 
@@ -151,7 +242,7 @@ You can click the current language in the upper-right corner to switch to anothe
 
 **Note**
 
-You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %. ApsaraDB for RDS ApsaraDB RDS for MySQL User G iii. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
+You can obtain the username and logon password from an operations administrator. If this is your first time logging on to the Apsara Uni-manager Management Console, you must change your password. For security, the password must be 10 to 32 characters long and contain uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: !, @, #, $, and %. console iii. Select **I Have Read And Agree To The Product Service Agreement, Privacy**
 **Agreement, And User Agreement**.
 
 **Note**
@@ -177,6 +268,12 @@ a. After you log on with your username and password, the Bind Virtual MFA Device
 Enter the six-digit MFA code and click **Authenticate**.
 2. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
+## 4 Quick start
+
+### 4.1 Limits
+
+To ensure instance stability and security, ApsaraDB RDS for MySQL has specific service limits, as listed in the following table.
+
 | Item | Limits |
 |---|---|
 | Instance parameters | Instance parameters can be modified by using the ApsaraDB RDS console or API operations. Due to security and stability considerations, only specific parameters can be modified. |
@@ -189,72 +286,62 @@ Enter the six-digit MFA code and click **Authenticate**.
 | Account and database management | ApsaraDB RDS for MySQL allows you to manage accounts and databases by using the ApsaraDB RDS console. ApsaraDB RDS for MySQL also allows you to create a privileged account to manage users, passwords, and databases. |
 | Standard account | Authorization is not allowed. The ApsaraDB RDS console allows you to manage accounts and databases. Instances that support standard accounts also support privileged accounts. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Quick start
-
-### Limits
-
-To ensure instance stability and security, ApsaraDB RDS for MySQL has specific service limits, as listed in the following table.
-
 | Privileged account | Authorization is allowed on standard accounts. The privileged account cannot be reverted to a standard account. |
 |---|---|
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+### 4.2 Procedure
 
-### Procedure
+ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS instance, configuring an IP address whitelist, creating a database, creating an account, and connecting to the instance. This topic describes how to use ApsaraDB RDS and provides all the necessary information to create an ApsaraDB RDS instance. ApsaraDB RDS for MySQL is used in the example. Typically, after an instance is created, you must perform several operations to make the instance ready for use, as shown in Quick start flowchart. Figure 1. Quick start flowchart An instance is a virtual database server on which you can create and manage multiple databases. After you create an RDS instance, you must configure IP address whitelists for the RDS instance to allow access from external devices. Whitelists make your ApsaraDB RDS instance more secure. We recommend that you maintain whitelists on a regular basis. When you configure IP address whitelists for your RDS instance, the workloads on the instance are not affected. Category Attribute Match and Language Detection Before you use a database, you must create the database and an account on the ApsaraDB RDS instance. After you create an ApsaraDB RDS instance, configure an IP address whitelist, and create a database and an account, you can connect to the instance by using a database client.
 
-ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS instance, configuring an IP address whitelist, creating a database, creating an account, and connecting to the instance. This topic describes how to use ApsaraDB RDS and provides all the necessary information to create an ApsaraDB RDS instance. ApsaraDB RDS for MySQL is used in the example. Typically, after an instance is created, you must perform several operations to make the instance ready for use, as shown in Quick start flowchart. An instance is a virtual database server on which you can create and manage multiple databases.
-
-| Section | Paramete r | Configuration |
-|---|---|---|
-| Basic Configura tions | Organizat ion | The organization to which the instance belongs. |
-|  | Resource Set | The resource set to which the instance belongs. |
-| Area | Region | The region in which you want to create the instance. Services in different regions cannot communicate over an internal network. After the instance is created, the region cannot be changed. |
-|  | Primary Node Zone | The zone in which the primary instance is deployed. Note To deploy a multi-zone instance or an Enterprise Edition instance, select a zone whose name contains MAZ . |
-|  | Deployme nt Method | Specifies whether to deploy the primary and secondary instances in separate zones. ApsaraDB RDS supports Multi-zone Deployment and Single-zone Deployment. A deployment method is automatically selected based on the value of Primary Node Zone. |
-|  | Database Engine | The database engine of the instance. Select MySQL. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G After you create an RDS instance, you must configure IP address whitelists for the RDS instance to allow access from external devices. Whitelists make your ApsaraDB RDS instance more secure. We recommend that you maintain whitelists on a regular basis. When you configure IP address whitelists for your RDS instance, the workloads on the instance are not affected. Category Attribute Match and Language Detection Before you use a database, you must create the database and an account on the ApsaraDB RDS instance. After you create an ApsaraDB RDS instance, configure an IP address whitelist, and create a database and an account, you can connect to the instance by using a database client.
-
-### Create an instance
+### 4.3 Create an instance
 
 This topic describes how to create one or more instances in the ApsaraDB RDS console.
 
 **Prerequisites**
 
 An Apsara Stack tenant account is created.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instances** page, click **Create Instance** in the upper-right corner.
 3. Select an option from the **Service Catalog** drop-down list and click **OK**.
 4. Configure the parameters described in the following table.
 
-| saraDB RDS fo e·Quick start | r MySQL User G ApsaraDB for RD |  |
+| Section | Paramete r | Configuration |
 |---|---|---|
-| Specificat ions |  |  |
-|  | Chip Architect ure | The chip architecture of the host on which the instance is deployed. Note If you do not have permissions to select an option, contact the operations administrator to grant the permissions to your account. |
-|  | Engine Version | The version of the database engine. Valid values: 8.0 5.7 5.6 Note To deploy an Enterprise Edition instance, select 5.7. |
-|  | Edition | The edition of the instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. Note To deploy an Enterprise Edition instance, select Enterprise Edition. |
-|  | Storage Type | The storage type of the instance. Select Local SSD. |
-|  | Instance Specificat ions | The specifications of the instance. The maximum number of connections and the maximum IOPS vary based on the memory size. The actual specifications are displayed in the console. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
-|  | Storage Capacity | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the new RDS instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
+| Basic Configura tions | Organizat ion | The organization to which the instance belongs. |
+|   | Resource Set | The resource set to which the instance belongs. |
+| Area | Region | The region in which you want to create the instance. Services in different regions cannot communicate over an internal network. After the instance is created, the region cannot be changed. |
+|   | Primary Node Zone | The zone in which the primary instance is deployed. Note To deploy a multi-zone instance or an Enterprise Edition instance, select a zone whose name contains MAZ . |
+|   | Deployme nt Method | Specifies whether to deploy the primary and secondary instances in separate zones. ApsaraDB RDS supports Multi-zone Deployment and Single-zone Deployment. A deployment method is automatically selected based on the value of Primary Node Zone. |
+|   | Database Engine | The database engine of the instance. Select MySQL. |
+
+| saraDB RDS fo e·Quick start | r MySQL User G ApsaraDB for RD |   |
+|---|---|---|
+| Specificat ions |   |   |
+|   | Chip Architect ure | The chip architecture of the host on which the instance is deployed. Note If you do not have permissions to select an option, contact the operations administrator to grant the permissions to your account. |
+|   | Engine Version | The version of the database engine. Valid values: 8.0 5.7 5.6 Note To deploy an Enterprise Edition instance, select 5.7. |
+|   | Edition | The edition of the instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. Note To deploy an Enterprise Edition instance, select Enterprise Edition. |
+|   | Storage Type | The storage type of the instance. Select Local SSD. |
+|   | Instance Specificat ions | The specifications of the instance. The maximum number of connections and the maximum IOPS vary based on the memory size. The actual specifications are displayed in the console. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
+|   | Storage Capacity | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the new RDS instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
 | Network | Connectio n Type | The connection type of the instance. Valid values: Internet: Instances of this connection type can be connected over the Internet. Internal Network: Instances of this connection type can be connected over an internal network. Note After the instance is created, the value of this parameter cannot be changed. Proceed with caution. |
-|  | Network Type | The network type of the instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service can be blocked only by the security group or whitelist of the service. Note Instances that use standard SSDs cannot be deployed in the classic network. VPC: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. We recommend that you select VPC for improved security. |
+|   | Network Type | The network type of the instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service can be blocked only by the security group or whitelist of the service. Note Instances that use standard SSDs cannot be deployed in the classic network. VPC: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. We recommend that you select VPC for improved security. |
 
-|  | VPC | The VPC in which you want to create the instance. Note When Network Type is set to VPC, you must specify this parameter. |
+|   | VPC | The VPC in which you want to create the instance. Note When Network Type is set to VPC, you must specify this parameter. |
 |---|---|---|
-|  | vSwitch Zone | The zone in which the vSwitch is located. If you setP rimary Node Zone to a zone whose name contains MAZ, you must specify the zone in which the vSwitch that you want to use is located. Note This parameter is available only when Network Type is set to VPC. |
-|  | vSwitch | The vSwitch to which the instance is connected. Note When Network Type is set to VPC, you must specify this parameter. |
-|  | IP Whitelist | The IP address or CIDR block that is allowed to connect to the instance. |
+|   | vSwitch Zone | The zone in which the vSwitch is located. If you setP rimary Node Zone to a zone whose name contains MAZ, you must specify the zone in which the vSwitch that you want to use is located. Note This parameter is available only when Network Type is set to VPC. |
+|   | vSwitch | The vSwitch to which the instance is connected. Note When Network Type is set to VPC, you must specify this parameter. |
+|   | IP Whitelist | The IP address or CIDR block that is allowed to connect to the instance. |
 | Instance Settings | Quantity | The number of instances that you want to create. Default value: 1. |
-|  | Instance Name | The name of the instance. It must be 2 to 64 characters in length. It must start with a letter. It can contain letters, digits, hyphens (-), underscores ( ), and _ colons (:). The name cannot start with http:// or https://. |
+|   | Instance Name | The name of the instance. It must be 2 to 64 characters in length. It must start with a letter. It can contain letters, digits, hyphens (-), underscores ( ), and _ colons (:). The name cannot start with http:// or https://. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 5. Click **Submit**.
 
-### Initialization settings
+### 4.4 Initialization settings
 
-#### Configure an IP address whitelist for an
+#### 4.4.1 Configure an IP address whitelist for an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -262,7 +349,7 @@ After you create an ApsaraDB RDS instance, you must add the IP addresses or CIDR
 
 **Background information**
 
-Whitelists make your ApsaraDB RDS instance more secure. We recommend that you maintain whitelists on a regular basis. When you configure IP address whitelists for your RDS instance, the workloads on the instance are not affected. To configure a whitelist, you can perform the following operations: Configure an IP address whitelist: Add IP addresses to allow them to connect to the ApsaraDB RDS instance. Configure an Elastic Compute Service (ECS) security group: Add an ECS security group for the ApsaraDB RDS instance to allow ECS instances in the group to connect to the ApsaraDB RDS instance. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+Whitelists make your ApsaraDB RDS instance more secure. We recommend that you maintain whitelists on a regular basis. When you configure IP address whitelists for your RDS instance, the workloads on the instance are not affected. To configure a whitelist, you can perform the following operations: Configure an IP address whitelist: Add IP addresses to allow them to connect to the ApsaraDB RDS instance. Configure an Elastic Compute Service (ECS) security group: Add an ECS security group for the ApsaraDB RDS instance to allow ECS instances in the group to connect to the ApsaraDB RDS instance.
 
 **Usage notes**
 
@@ -292,17 +379,33 @@ If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of
 
 If you add a new IP address or CIDR block to the **default** whitelist, the default address 127.0.0.1 is deleted.
 
-#### Create an account
+#### 4.4.2 Create an account
 
 Detect the language of the input text. Supports automatic recognition of 23 languages. Best suited to short text such as search queries, product titles, and chat messages. Synchronous.
 
+**Endpoint**
+
+```
+POST /ai/text/marco/language-detection
+```
+
 **Use cases**
 
-Cross-border search -- detect the buyer's search-query language and route to the matching index.
+Cross-border search -- detect the buyer's search-query language and route to the matching index. Title preprocessing -- detect source language automatically before calling the Text Translation API, so callers do not need to pass `SourceLanguage` . Chat routing -- forward users to native-language agents based on detected language.
+
+**Quick start**
+
+```java
+import json data = json.dumps({ "SourceText": "Hello world" }) result = make_signed_request("/ai/text/marco/language-detection", data) print(result["Data"]["DetectedLanguage"]) # en
+```
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | SourceText | String | Yes | Text to identify. Up to ~1024 characters recommended; very short inputs (single tokens) have lower accuracy. |
+
+**Response fields**
 
 | Field | Type | Description |
 |---|---|---|
@@ -313,44 +416,14 @@ Cross-border search -- detect the buyer's search-query language and route to the
 | Data.DetectedLanguage | String | Detected language code; see "Supported languages" below. |
 | Data.UsageMap.RequestCount | Number | Request count for billing reconciliation. |
 
-|  | Data.UsageMap.RequestCount |  |
+|   | Data.UsageMap.RequestCount |   |
 |---|---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G Title preprocessing -- detect source language automatically before calling the Text Translation API, so callers do not need to pass `SourceLanguage` . Chat routing -- forward users to native-language agents based on detected language.
-
-```java
-import json data = json.dumps({ "SourceText": "Hello world" }) result = make_signed_request("/ai/text/marco/language-detection", data) print(result["Data"]["DetectedLanguage"]) # en
-```
-
-**Request parameters**
-
-**Response fields**
 
 **Response example**
 
-| ngali ( bn ), German ( de he ), Indonesian ( id ), It tch ( nl ), Polish ( pl ), Po krainian ( uk ), Urdu ( ur Traditional ( zh-tw ). |  | de |  |
-|---|---|---|---|
-|  | id |  |  |
-|  |  |  | ), It ), Po |
-|  | pl |  |  |
-
-|  | es |
-|---|---|
-| ja |  |
-
-| ms |  | ), |
-|---|---|---|
-| ( |  |  |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| ProductTitle | String | Yes | Product title. |
-| SourceCategory | String | Yes | Source-platform category path. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+`{`
 
 ```json
-{
   "Code": "Success",
   "Message": "ok",
   "RequestId": "21570000-0000-0000-0000-000000000001",
@@ -358,11 +431,29 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
   "Data": {
     "DetectedLanguage": "en",
     "UsageMap": { "RequestCount": 1 }
-  }
-}
 ```
 
+`}` `}`
+
 **Supported languages (23)**
+
+| ngali ( bn ), German ( de he ), Indonesian ( id ), It tch ( nl ), Polish ( pl ), Po krainian ( uk ), Urdu ( ur Traditional ( zh-tw ). |   | de |   |
+|---|---|---|---|
+|   | id |   |   |
+|   |   |   | ), It ), Po |
+|   | pl |   |   |
+
+|   | es |
+|---|---|
+| ja |   |
+
+( `fr` ), Hebrew ( `he` ), Indonesian ( `id` ), Italian ( `it` ), Japanese ( `ja` ), Korean ( `ko` ),
+
+| ms |   | ), |
+|---|---|---|
+| ( |   |   |
+
+Malay ( `ms` ), Dutch ( `nl` ), Polish ( `pl` ), Portuguese ( `pt` ), Russian ( `ru` ), Thai ( `th` ),
 
 **Error codes**
 
@@ -372,9 +463,11 @@ Common error codes: `InvalidParameter` (missing or empty `SourceText` ), `Intern
 
 Text Translation API -- translate plain text. Text Correction API -- spelling correction.
 
-#### Create a database
+#### 4.4.3 Create a database
 
 Multimodal-LLM-based cross-platform category-attribute filling. Given source-platform product info (title, source category, description, SKU, attributes, up to 10 images), match the precise target-platform category and fill every required attribute, with a per-attribute confidence and rationale. Synchronous.
+
+**Endpoint**
 
 ```
 POST /ai/material/category/attribute
@@ -386,7 +479,12 @@ POST /ai/material/category/attribute
 
 **Request parameters**
 
-| A | psaraDB for RDS |  | Apsara | DB RDS for MySQL User G uide·Quick star | t |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| ProductTitle | String | Yes | Product title. |
+| SourceCategory | String | Yes | Source-platform category path. |
+
+| A | psaraDB for RDS |   | Apsara | DB RDS for MySQL User G uide·Quick star | t |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Required | Description |
@@ -397,23 +495,24 @@ POST /ai/material/category/attribute
 | ImageUrls | String[] | No | Up to 10 image URLs. The multimodal model infers attributes from images. |
 | TargetPlatform | String | Yes | Listing platform. Only TEMU today. |
 
-|  | ProductDescription |
+|   | ProductDescription |
 |---|---|
 
-|  | ProductAttributes |
+|   | ProductAttributes |
 |---|---|
+
+**Response fields**
 
 | Field | Type | Description |
 |---|---|---|
 | Data.CategoryPath | String | Matched precise category path on the target platform. |
 | Data.Attributes | Object[] | Filled attributes. Each item has Name , Value , Confidence (0-100), Reason , and SourceMatched (whether the value reused a source- platform attribute). |
 
-**Response fields**
-
 **Response example**
 
+`{`
+
 ```json
-{
   "Code": "Success",
   "Data": {
     "CategoryPath": "Home Appliances > Fans > USB Fans",
@@ -424,12 +523,7 @@ tle and image both indicate rechargeable", "SourceMatched": false },
 ort visible in image", "SourceMatched": true }
 ```
 
-]
-
-```
-  }
-}
-```
+`]` `}` `}`
 
 **Error codes**
 
@@ -437,16 +531,9 @@ See Error codes.
 
 **What's next**
 
-| Paramet er | Description |
-|---|---|
-| Networ k type | Select the network type of the ApsaraDB RDS instance to which you want to connect. For example, select MariaDB or MySQL (TCP/IP). |
-| Hostna me / IP | Enter the internal or public endpoint of the ApsaraDB RDS instance. If your client is deployed on an ECS instance that is in the same region and has the same network type as the ApsaraDB RDS instance, use the internal endpoint. For example, if the ECS and ApsaraDB RDS instances are both in a VPC located in the China (Hangzhou) region, you can use the internal endpoint of the ApsaraDB RDS instance to create a secure connection. In other scenarios, use the public endpoint. To view the internal and public endpoints and port numbers of the ApsaraDB RDS instance, perform the following operations: i. Log in to the ApsaraDB RDS console. ii. Find the ApsaraDB RDS instance to which you want to connect and click its ID. iii. In the Basic Information section, view the internal and public endpoints and port numbers of the instance. |
-| User | Enter the name of the account used to connect to the ApsaraDB RDS instance. |
-| Passwor d | Enter the password of the account used to connect to the ApsaraDB RDS instance. |
+Category Match API -- category match alone.
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS Category Match API -- category match alone.
-
-### Connect to an ApsaraDB RDS
+### 4.5 Connect to an ApsaraDB RDS for MySQL instance
 
 **for MySQL instance**
 
@@ -464,68 +551,75 @@ ApsaraDB RDS for MySQL is fully compatible with open source MySQL. You can conne
 3. Enter information about the ApsaraDB RDS instance to which you want to connect. The
 following table describes the required parameters.
 
+| Paramet er | Description |
+|---|---|
+| Networ k type | Select the network type of the ApsaraDB RDS instance to which you want to connect. For example, select MariaDB or MySQL (TCP/IP). |
+| Hostna me / IP | Enter the internal or public endpoint of the ApsaraDB RDS instance. If your client is deployed on an ECS instance that is in the same region and has the same network type as the ApsaraDB RDS instance, use the internal endpoint. For example, if the ECS and ApsaraDB RDS instances are both in a VPC located in the China (Hangzhou) region, you can use the internal endpoint of the ApsaraDB RDS instance to create a secure connection. In other scenarios, use the public endpoint. To view the internal and public endpoints and port numbers of the ApsaraDB RDS instance, perform the following operations: i. Log in to the ApsaraDB RDS console. ii. Find the ApsaraDB RDS instance to which you want to connect and click its ID. iii. In the Basic Information section, view the internal and public endpoints and port numbers of the instance. |
+| User | Enter the name of the account used to connect to the ApsaraDB RDS instance. |
+| Passwor d | Enter the password of the account used to connect to the ApsaraDB RDS instance. |
+
 | Port | If you connect to the instance over an internal network, enter the internal port number of the instance. If you connect to the instance over the Internet, enter the public port number of the instance. |
 |---|---|
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 4. Click **Open**. If the connection information is correct, you can connect to the instance.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
-| Category | Configura tion | Description |
-|---|---|---|
-| Basic Configura tions | Organizat ion | The organization to which the instance belongs. |
-|  | Resource Set | The resource group to which the instance belongs. |
-| Area | Region | The region where the instance is located. Products in different regions cannot communicate with each other over the internal network. You cannot change the region after the instance is created. |
-|  | Deploym ent Method | ApsaraDB RDS supports Multi-zone Deployment and Single-zone Deployment. You can select the zones for the primary and secondary nodes as needed. |
-|  | Primary Node Zone | The zone where the primary node of the instance is located. |
-|  | Secondar y Node Zone | The zone where the secondary node of the instance is located. This parameter is available only when you select Multi-zone Deployment. |
-|  | Database Engine | The type of the database. Select MySQL. |
+## 5 Instances
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Instances
-
-### Create an instance
+### 5.1 Create an instance
 
 This topic describes how to create one or more instances in the ApsaraDB RDS console.
 
 **Prerequisites**
 
 You must have an account that can be used to log on to the Alibaba Cloud Management Console.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the navigation pane on the left, click **Instance List**, and then click **Create Instance**.
 3. Configure the parameters described in the following table.
 
-| saraDB RDS fo e·Instances |  |  |
+| Category | Configura tion | Description |
 |---|---|---|
-| Specificat ions |  |  |
-|  | Chip Architect ure | Select the chip architecture of the host for the RDS instance. Note If an authorization error message appears when you select this configuration, contact the administrator to grant permissions to the account. |
-|  | Database Version | The version of the database. The following versions are supported: 8.0 5.7 |
-|  | Edition | The edition of the database. For more information, see theI nstance Types section in ApsaraDB RDS Product Introduction. |
-|  | Storage Type | The storage type of the database. Select local SSDs. |
-|  | Instance Specificat ions | The type of the instance. Different memory sizes correspond to different maximum connections and input/output operations per second (IOPS). The actual values in the console prevail. For more information, see the Instance Types section in ApsaraDB RDS Product Introduction. Click AI-powered Instance Type Recommender and enter your scenario in Apsara AI Assistant to receive recommendations for the optimal instance type that balances cost and performance. |
-|  | Storage Capacity | The storage space includes space for data, system files, binary logging (binlog) files, and transaction files. For more information, see the Instance Types section in ApsaraDB RDS Product Introduction. |
-|  | Connecti on Type | ApsaraDB RDS provides the following two types of endpoints: Public Endpoint: You can use this endpoint to access the database from the internet. Internal Endpoint: You can use this endpoint to access the database from the internal network. Note You cannot change this setting after the instance is created. Select the type with caution. |
+| Basic Configura tions | Organizat ion | The organization to which the instance belongs. |
+|   | Resource Set | The resource group to which the instance belongs. |
+| Area | Region | The region where the instance is located. Products in different regions cannot communicate with each other over the internal network. You cannot change the region after the instance is created. |
+|   | Deploym ent Method | ApsaraDB RDS supports Multi-zone Deployment and Single-zone Deployment. You can select the zones for the primary and secondary nodes as needed. |
+|   | Primary Node Zone | The zone where the primary node of the instance is located. |
+|   | Secondar y Node Zone | The zone where the secondary node of the instance is located. This parameter is available only when you select Multi-zone Deployment. |
+|   | Database Engine | The type of the database. Select MySQL. |
 
-|  | Network Type | The network types supported by the RDS instance: Classic Network: Alibaba Cloud services in a classic network are not isolated from each other. You can only use security groups or whitelists of the services to block unauthorized access. Note Cloud disk instances do not support this network type. Virtual Private Cloud: A virtual private cloud (VPC) is an isolated network environment on Alibaba Cloud. In a VPC, you can define a custom route table, IP address range, and gateway. For better security, select a VPC. |
+| saraDB RDS fo e·Instances |   |   |
 |---|---|---|
-| Network |  |  |
-|  | VPC | Select your VPC. Note This parameter is required when you set Network Type to VPC. |
-|  | vSwitch Zone | The zone where the vSwitch is located. Note This parameter is visible only when you set Network Type to VPC. You do not need to set this parameter in other scenarios. |
-|  | VSwitch | Select a vSwitch in the VPC. Note This parameter is required when you set Network Type to VPC. |
-|  | IP Whitelist | Add IP addresses to the whitelist to allow access to the RDS instance. |
+| Specificat ions |   |   |
+|   | Chip Architect ure | Select the chip architecture of the host for the RDS instance. Note If an authorization error message appears when you select this configuration, contact the administrator to grant permissions to the account. |
+|   | Database Version | The version of the database. The following versions are supported: 8.0 5.7 |
+|   | Edition | The edition of the database. For more information, see theI nstance Types section in ApsaraDB RDS Product Introduction. |
+|   | Storage Type | The storage type of the database. Select local SSDs. |
+|   | Instance Specificat ions | The type of the instance. Different memory sizes correspond to different maximum connections and input/output operations per second (IOPS). The actual values in the console prevail. For more information, see the Instance Types section in ApsaraDB RDS Product Introduction. Click AI-powered Instance Type Recommender and enter your scenario in Apsara AI Assistant to receive recommendations for the optimal instance type that balances cost and performance. |
+|   | Storage Capacity | The storage space includes space for data, system files, binary logging (binlog) files, and transaction files. For more information, see the Instance Types section in ApsaraDB RDS Product Introduction. |
+|   | Connecti on Type | ApsaraDB RDS provides the following two types of endpoints: Public Endpoint: You can use this endpoint to access the database from the internet. Internal Endpoint: You can use this endpoint to access the database from the internal network. Note You cannot change this setting after the instance is created. Select the type with caution. |
+
+|   | Network Type | The network types supported by the RDS instance: Classic Network: Alibaba Cloud services in a classic network are not isolated from each other. You can only use security groups or whitelists of the services to block unauthorized access. Note Cloud disk instances do not support this network type. Virtual Private Cloud: A virtual private cloud (VPC) is an isolated network environment on Alibaba Cloud. In a VPC, you can define a custom route table, IP address range, and gateway. For better security, select a VPC. |
+|---|---|---|
+| Network |   |   |
+|   | VPC | Select your VPC. Note This parameter is required when you set Network Type to VPC. |
+|   | vSwitch Zone | The zone where the vSwitch is located. Note This parameter is visible only when you set Network Type to VPC. You do not need to set this parameter in other scenarios. |
+|   | VSwitch | Select a vSwitch in the VPC. Note This parameter is required when you set Network Type to VPC. |
+|   | IP Whitelist | Add IP addresses to the whitelist to allow access to the RDS instance. |
 | Instance Settings | Quantity | ApsaraDB RDS supports creating instances in batches. You can specify the number of RDS instances to create. The default value is 1. |
-|  | Instance Name | The name of the RDS instance. The name must be 2 to 64 characters in length. It must start with a letter or a Chinese character. It can contain digits, hyphens (-), underscores ( ), and colons (:). _ It cannot start with http:// or https://. |
+|   | Instance Name | The name of the RDS instance. The name must be 2 to 64 characters in length. It must start with a letter or a Chinese character. It can contain digits, hyphens (-), underscores ( ), and colons (:). _ It cannot start with http:// or https://. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 4. Click **Submit**.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
-### View the details of an
+### 5.2 View the details of an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
 This topic describes how to view the details of an ApsaraDB RDS instance, such as its basic information, internal network connection information, status, and configurations.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. Use one of the following methods to go to the **Basic Information** page of an RDS instance:
 On the **Instances** page, click the ID of the instance to go to the **Basic Information** page. On the **Instances** page, click **Manage** in the **Actions** column of the instance to go to the
@@ -535,13 +629,16 @@ On the **Instances** page, click the ID of the instance to go to the **Basic Inf
 
 For more information about the mappings between MySQL versions of ApsaraDB RDS for MySQL and the MySQL community, see Release notes for AliSQL.
 
-### Restart an instance
+### 5.3 Restart an instance
 
 This topic describes how to manually restart an ApsaraDB RDS instance. This applies if the number of connections exceeds the specified threshold or if the instance has performance issues.
 
 **Prerequisites**
 
 The instance is in the **Running** state.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -552,11 +649,14 @@ instance that you want to manage and click the ID of the instance or click **Man
 When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 4. In the message that appears, click **OK**.
 
-### Change instance
+### 5.4 Change instance specifications
 
 **specifications**
 
-If the specifications of an ApsaraDB RDS for MySQL instance cannot meet your business requirements, you can change the instance specifications. This topic describes how to change the specifications, such as the instance type and storage capacity. ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+If the specifications of an ApsaraDB RDS for MySQL instance cannot meet your business requirements, you can change the instance specifications. This topic describes how to change the specifications, such as the instance type and storage capacity.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane of the **ApsaraDB RDS** console, click **Instances**. On the
 page that appears, click the ID of the instance that you want to manage or click **Manage** in the **Actions** column of the instance to go to the **Basic Information** page.
@@ -571,7 +671,7 @@ If you set the **Switching Time** parameter to **Specified Time**, you must spec
 5. Click **Submit**.
 6. Confirm the changes and click **OK**.
 
-### Set a maintenance window
+### 5.5 Set a maintenance window
 
 This topic describes how to set a maintenance window for an ApsaraDB RDS instance.
 
@@ -582,19 +682,21 @@ To ensure the stability of ApsaraDB RDS instances, the backend system performs m
 **Usage notes**
 
 To ensure stability of the maintenance process, the instance changes to the **Maintaining** state before the maintenance window. When the instance is in this state, access to data in the database and query operations such as performance monitoring are not affected. However, except for account and database management and IP address whitelist configuration, modification operations such as upgrade, downgrade, and restart are temporarily unavailable. During the maintenance window, connections to the instance may be temporarily interrupted once or twice. Make sure that your application is configured to automatically reconnect to the instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the **Configuration Information** section, click **Settings** to the right of the
 **Maintenance Window** parameter.
 4. Select a maintenance window and click **Yes**.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 **Note**
 
 The maintenance window is displayed in UTC+8.
 
-### Change the data replication
+### 5.6 Change the data replication mode
 
 **mode**
 
@@ -603,6 +705,9 @@ You can set the data replication mode between primary and secondary ApsaraDB RDS
 **Background information**
 
 ApsaraDB RDS supports the following data replication modes: Semi-synchronous mode After an application-initiated update is complete on the primary instance, logs are synchronized to all the secondary instances. The transaction is considered committed when at least one secondary instance has received the logs, regardless of whether the secondary instance has completed executing the updates recorded in the logs. If the secondary instances are unavailable or a network interruption occurs between the primary and secondary instances, the semi-synchronous mode is demoted to the asynchronous mode. Asynchronous mode When your application initiates a request to add, delete, or modify data, the primary instance responds to your application immediately after it completes the requested operation. At the same time, the primary instance asynchronously replicates data to the secondary instances. During asynchronous data replication, the unavailability of secondary instances does not affect the operations on the primary instance. Data remains consistent even if the primary instance is unavailable.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -611,19 +716,22 @@ instance that you want to manage and click the ID of the instance or click **Man
 **Replication Mode**.
 5. In the dialog box that appears, select a data replication mode and click **OK**.
 
-### Release an instance
+### 5.7 Release an instance
 
 This topic describes how to manually release an instance.
 
 **Usage notes**
 
-Only instances in the Running state can be manually released. After an instance is released, the instance data is immediately deleted. We recommend that you back up your data before you release an instance. ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+Only instances in the Running state can be manually released. After an instance is released, the instance data is immediately deleted. We recommend that you back up your data before you release an instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click **Release an instance** in the **Operation** column.
 3. In the dialog box that appears, click **Release**.
 
-### Update the minor engine
+### 5.8 Update the minor engine version of an instance
 
 **version of an instance**
 
@@ -644,12 +752,13 @@ When you update the minor engine version of your ApsaraDB RDS instance, a transi
 
 **Change the settings for Automated Update of Minor Engine**
 
+**Version**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the **Configuration Information** section of the Basic Information page, click **Settings** to
 the right of **Automated Update of Minor Engine Version**.
 4. In the dialog box that appears, select **Manual Upgrade** and click **OK**.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 **Manually update the minor version**
 
@@ -671,7 +780,7 @@ The **Upgrade Minor Engine Version** button is displayed only when a new minor e
 
 The minor engine version that you updated is the minor engine version of ApsaraDB RDS, but not the MySQL version. To view the minor engine version, you must run the `show variables` like '%rds_release_date%' command.
 
-### Configure instance
+### 5.9 Configure instance parameters
 
 **parameters**
 
@@ -692,7 +801,6 @@ before you submit them. Valid values: Take Effect Immediately, Take Effect Withi
 
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 3. In the left-side navigation pane, click **Parameters**.
 4. Perform the following operations:
 
@@ -717,7 +825,7 @@ If the modified parameter requires an instance restart to take effect, the syste
 
 **Modify a single parameter.**
 
-i. On the **Modifiable Parameters** tab, find the parameter that you want to modify and click the icon in the **Running Value** column. ii. Enter a value based on the value range and click **OK**. iii. In the upper-right corner of the page, click **Apply Changes**. ApsaraDB RDS for MySQL User G ApsaraDB for RDS iv. In the dialog box that appears, specify an effective period for the parameters to take effect and click **OK**. You can select one of the following methods for the parameters to take effect:
+i. On the **Modifiable Parameters** tab, find the parameter that you want to modify and click the icon in the **Running Value** column. ii. Enter a value based on the value range and click **OK**. iii. In the upper-right corner of the page, click **Apply Changes**. iv. In the dialog box that appears, specify an effective period for the parameters to take effect and click **OK**. You can select one of the following methods for the parameters to take effect:
 **Take Effect Immediately**: The parameters are applied and take effect immediately
 after they are modified.
 **Take Effect Within the Maintenance Window 02:00-06:00** : The parameters
@@ -741,6 +849,8 @@ specified time range.
 
 **Appendix 1: Parameters whose values will be synchronized to**
 
+**read-only instances when they are modified**
+
 When you modify the following parameters of a primary ApsaraDB RDS for MySQL instance, the changes are automatically synchronized to all of its read-only instances if they have the same parameters: lower_case_table_names
 
 **Note**
@@ -751,17 +861,15 @@ This parameter cannot be modified for ApsaraDB RDS for MySQL 8.0 instances. inno
 
 Modifications to other parameters on the primary instance are not automatically synchronized to read-only instances. You must manually modify these parameters on each read-only instance.
 
-| Parameter | Maj or engi ne vers ion | Def ault valu e | Value range |  | Res tart req uire d | Parameter description |  |  |  |  |
-|---|---|---|---|---|---|---|---|---|---|---|
-| auto increment i _ _ ncrement | MyS QL 8.0 and MyS QL 5.7 | 1 | [1-65535] |  | No | The increment value of an auto- increment column. |  |  |  |  |
-| auto increment o _ _ ffset | MyS QL 8.0 and MyS QL 5.7 | 1 | [1-65535] |  | No | The offset that is applied on an auto- increment column when auto-increment- increment is set to a value other than 1. |  |  |  |  |
-| autocommit | 5.7 | ON | [ON\|OFF] |  | No | The autocommit mode. If you set this parameter to ON, all changes to a table immediately take effect. If you set this parameter to OFF, you must use COMMIT to accept a transaction or use ROLLBACK to cancel a transaction. If you set this parameter to OFF and then change the value to ON, MySQL automatically commits all open transactions. Note If you use the autocommit mode, you cannot manually commit transactions. If you want to manually commit transactions, you must use the SET autocommit = OFF; setting to disable the autocommit mode. |  |  |  |  |
-|  |  |  |  |  |  |  |  | SET autocommit = |  |  |
-|  |  |  |  |  |  |  | OFF; |  |  |  |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 **Appendix 2: List of available parameters**
+
+| Parameter | Maj or engi ne vers ion | Def ault valu e | Value range |   | Res tart req uire d | Parameter description |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|---|
+| auto increment i _ _ ncrement | MyS QL 8.0 and MyS QL 5.7 | 1 | [1-65535] |   | No | The increment value of an auto- increment column. |   |   |   |   |
+| auto increment o _ _ ffset | MyS QL 8.0 and MyS QL 5.7 | 1 | [1-65535] |   | No | The offset that is applied on an auto- increment column when auto-increment- increment is set to a value other than 1. |   |   |   |   |
+| autocommit | 5.7 | ON | [ON\|OFF] |   | No | The autocommit mode. If you set this parameter to ON, all changes to a table immediately take effect. If you set this parameter to OFF, you must use COMMIT to accept a transaction or use ROLLBACK to cancel a transaction. If you set this parameter to OFF and then change the value to ON, MySQL automatically commits all open transactions. Note If you use the autocommit mode, you cannot manually commit transactions. If you want to manually commit transactions, you must use the SET autocommit = OFF; setting to disable the autocommit mode. |   |   |   |   |
+|   |   |   |   |   |   |   |   | SET autocommit = |   |   |
+|   |   |   |   |   |   |   | OFF; |   |   |   |
 
 | automatic sp pri _ _ vileges | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | If the default value ON is used for this parameter, the server automatically grants the EXECUTE and ALTER ROUTINE permissions to the user who creates a stored procedure when the user cannot execute, alter, or delete the stored procedure. The ALTER ROUTINE permission is required to delete a stored procedure. When the stored procedure is deleted, the server automatically revokes the permissions from the user. If you set this parameter to OFF, the server does not automatically grant or revoke the permissions. |
 |---|---|---|---|---|---|
@@ -770,21 +878,15 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | binlog cache size _ _ | MyS QL 8.0 and MyS QL 5.7 | 209 715 2 | [4096- 16777216] | No | The size of the cache for transactions that are used to update binary logs. |
 | binlog checksum _ | MyS QL 8.0 and MyS QL 5.7 | CRC 32 | [CRC32\|NO NE] | Yes | The type of BINLOG CHECKSUM ALG. _ _ Binary logs include the checksum for log events. Valid values: NONE and CRC32. Default value: CRC32. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | binlog order com _ _ mits | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | If you enable this parameter for the replication source server, transactions are committed in the same order as they are written to the binary log. By default, this parameter is enabled for the replication source server. If this parameter is disabled, transactions can be committed in parallel. In some cases, disabling this parameter may improve performance. |
 |---|---|---|---|---|---|
 | binlog row imag _ _ e | MyS QL 8.0 and MyS QL 5.7 | full | [full\|minim al\|noblob] | No | Specifies the data recording granularity of row-formatted binary logs to balance storage overheads with data integrity. You need to consider the parsing capabilities of downstream subscription tools and the requirements for historical data backtracking when you select this parameter. Valid values: full: The system records the pre-image and post-image of all columns to ensure data integrity and high compatibility. This is the default value. minimal: The system records only the primary key (pre-image) and changed column (post-image), which significantly reduces the log volume and I/O load. This value is suitable for high-concurrency wide table scenarios where a primary key is available. noblob: The system automatically omits unchanged large non-primary key fields, such as BLOB and TEXT fields, based on the full settings. This value is suitable for scenarios that contain large objects but have infrequent updates. |
 | binlog rows quer _ _ y log events _ _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | This parameter affects only row-based logging. If you enable this parameter, the MySQL server writes informational log events, such as row query log events, into its binary log. The informational log events can be used for debugging and related purposes. For example, if you cannot reconstruct a primary query from row updates, you can use the informational log events to obtain the original query issued on the primary query. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | binlog stmt cach _ _ e size _ | MyS QL 8.0 and MyS QL 5.7 | 327 68 | [4096- 16777216] | No | The size of the cache for non- transactional statements that are used to update the binary log. |
 |---|---|---|---|---|---|
 | block encryption _ mode _ | MyS QL 8.0 and MyS QL 5.7 | "aes - 128- ecb" | ["aes-128- ecb"\|"aes- 192- ecb"\|"aes- 256- ecb"\|"aes- 128- cbc"\|"aes- 192- cbc"\|"aes- 256-cbc"] | No | The block encryption mode for block- based algorithms such as AES. It affects the behaviors of AES ENCRYPT() and _ AES DECRYPT(). _ |
 | bulk insert buffe _ _ r size _ | MyS QL 8.0 and MyS QL 5.7 | 419 430 4 | [0- 42949672 95] | No | MyISAM uses a special tree-like cache to accelerate the execution of statements that are used to insert a large number of data records to non-empty tables at a time, such as INSERT ... SELECT, INSERT ... VALUES (...), (...), ..., and LOAD DATA INFILE. This parameter limits the size of the cache tree per thread. Unit: bytes. If you set this parameter to 0, the special tree-like cache is not used to accelerate the insert operations. Default value: 8 MB. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | character set file _ _ system | MyS QL 8.0 and MyS QL 5.7 | bina ry | [utf8\|latin1 \|gbk\|binary ] | No | The character set of the file system. This parameter is used to interpret string literals that reference file names, such as the LOAD DATA INFILE and SELECT ... INTO OUTFILE statements and the LOAD FILE() function. The file names are _ converted from character set client to _ _ character set filesystem before the file _ _ opening attempt occurs. Default value: binary, which specifies that no conversion occurs. For systems on which multi-byte file names are allowed, we recommend that you set this parameter to a value other than binary. For example, if the system uses UTF-8 to represent file names, you need to set character set filesystem to 'utf8'. _ _ |
 |---|---|---|---|---|---|
@@ -792,22 +894,16 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | collation server _ | 8.0 | utf8 gen _ eral ci _ | [utf8 gene _ ral ci\|utf8 _ mb4 0900 _ ai ci\|utf8 _ _ mb4 gener _ al ci] _ | Yes | Specifies the collation of the character set. Exercise caution when you modify this parameter. If this parameter is incompatible with the character set server parameter, the _ _ instance cannot be started. |
 | concurrent insert _ | MyS QL 8.0 and MyS QL 5.7 | 1 | [0\|1\|2] | No | 0: disables concurrent inserts. 1: enables concurrent inserts for MyISAM tables that have no holes. This is the default value. 2: enables concurrent inserts for all MyISAM tables even if the tables have holes. If a table that has a hole is being used by another thread, new rows are inserted at the end of the table. Otherwise, MySQL acquires a normal write lock and inserts rows into the hole. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | connect timeout _ | MyS QL 8.0 and MyS QL 5.7 | 10 | [1-3600] | No | The period of time that the MySQL server waits for a CONNECT packet before it responds to a bad handshake. Unit: seconds. For MySQL 5.1.23 or earlier, the default value is 5 seconds. For versions later than MySQL 5.1.23, the default value is 10 seconds. If your client frequently encounters errors such as "Lost connection to MySQL server at 'XXX', system error: errno", you can increase the value of connect timeout. _ |
 |---|---|---|---|---|---|
 | default storage e _ _ ngine | MyS QL 8.0 and MyS QL 5.7 | Inno DB | [InnoDB\|in nodb] | Yes | The default storage engine of the new table. |
 | default time zon _ _ e | MyS QL 8.0 and MyS QL 5.7 | SYS TEM | [SYSTEM\|- 12:00\|- 11:00\|- 10:00\|- 9:00\|- 8:00\|- 7:00\|- 6:00\|- 5:00\|- 4:00\|- 3:00\|- 2:00\|- 1:00\|\+0:0 0\|\+1:00\|\ +2:00\|\+3: 00\|\+4:00\| \+5:00\|\+5 :30\|\+5:45 \|\+6:00\|\+ 6:30\|\+7:0 0\|\+8:00\|\ +9:00\|\+1 0:00\|\+11: 00\|\+12:00 \|\+13:00] | Yes | The default time zone of the database. |
 | default week for _ _ mat | MyS QL 8.0 and MyS QL 5.7 | 0 | [0-7] | No | The default mode value to use the WEEK() function. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | delay key write _ _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF\|A LL] | No | This parameter applies only to MyISAM tables. This parameter affects the handling of the DELAY KEY WRITE table _ _ option that can be used in CREATE TABLE statements. Valid values: OFF: The DELAY KEY WRITE table option _ _ is ignored. ON: You can specify any DELAY KEY WRITE option for the _ _ CREATE TABLE statement in MySQL. This is the default value. ALL: The system processes all newly opened tables as tables that are created with the DELAY KEY WRITE option _ _ enabled. Important If you set this parameter to ALL, you cannot use in-use MyISAM tables from other programs, such as other MySQL servers or myisamchk. This helps prevent index damages. |
 |---|---|---|---|---|---|
 | delayed insert li _ _ mit | MyS QL 8.0 and MyS QL 5.7 | 100 | [1- 42949672 95] | No | After a specific number of delayed insert operations are performed, the INSERT DELAYED handler thread checks whether pending SELECT statements exist. The number of delayed insert operations is specified by delayed insert limit. If _ _ pending SELECT statements exist, the statements can be executed before the remaining delayed insert operations are performed. |
 | delayed insert ti _ _ meout | MyS QL 8.0 and MyS QL 5.7 | 300 | [1-3600] | No | The period of time that an INSERT DELAYED handler thread can wait for INSERT statements before the thread is terminated. Unit: seconds. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | delayed queue si _ _ ze | MyS QL 8.0 and MyS QL 5.7 | 100 0 | [1- 42949672 95] | No | The maximum number of rows that can be queued on each table when INSERT DELAYED statements are executed. If the queue is full, all clients from which INSERT DELAYED requests are sent must wait until the queue has space available. |
 |---|---|---|---|---|---|
@@ -817,8 +913,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | eq range index _ _ _ dive limit _ | MyS QL 8.0 and MyS QL 5.7 | 100 | [0- 42949672 95] | No | The number of equality ranges for an index. If the number of equality ranges for an index is greater than or equal to the value of this parameter, the optimizer uses existing index statistics instead of doing index dives for equality ranges. If you set this parameter to 0, index dives are used. |
 | event scheduler _ | 8.0 | OFF | [ON\|OFF] | No | Specifies whether to enable the event scheduler. Valid values: ON, OFF, and DISABLED. The value DISABLED indicates that the event scheduler is completely disabled and cannot be enabled at runtime. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | explicit defaults _ _ for timestamp _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether the default value of the TIMESTAMP column is the current timestamp. |
 |---|---|---|---|---|---|
 | flush time _ | MyS QL 8.0 and MyS QL 5.7 | 0 | [0- 31536000] | No | If you set this parameter to a value other than 0, all tables are closed at an interval that is specified by flush time to _ release resources and synchronize unflushed data to the disk. We recommend that you use this parameter only on systems with minimal resources. |
@@ -827,8 +921,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | ft query expansi _ _ on limit _ | MyS QL 8.0 and MyS QL 5.7 | 20 | [0-1000] | Yes | The number of top N matches that you want to use for full-text searches with WITH QUERY EXPANSION modifiers. |
 | general log _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | Yes | Specifies whether to enable general query logging. The destination for log output is specified by log output. _ |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | group concat ma _ _ x len _ | MyS QL 8.0 and MyS QL 5.7 | 102 4 | [4- 18446744 07370954 752] | No | The maximum length of the result for the GROUP CONCAT() function. Unit: bytes. _ Default value: 1024. |
 |---|---|---|---|---|---|
 | host cache size _ _ | MyS QL 8.0 and MyS QL 5.7 | 644 | [0-65535] | No | The size of the host cache. If you set this parameter to 0, host caching is disabled. Changing the cache size at runtime causes an implicit FLUSH HOSTS operation that clears the host cache and truncates the host cache table. _ |
@@ -836,15 +928,11 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb adaptive _ _ flushing lwm _ | MyS QL 8.0 and MyS QL 5.7 | 10 | [0-70] | No | The threshold for the percentage of redo log capacity. If the threshold is reached, adaptive flushing is enabled. |
 | innodb adaptive _ _ hash index _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to enable adaptive hash indexing. This parameter is available for the InnoDB storage engine. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | innodb adaptive _ _ max sleep delay _ _ | MyS QL 8.0 and MyS QL 5.7 | 150 000 | [1- 1000000] | No | Enables InnoDB to automatically adjust the value of innodb thread sleep delay _ _ _ based on workloads. innodb thread sleep delay specifies the _ _ _ sleep duration of an InnoDB thread when the InnoDB thread has no pending events. If you set innodb adaptive max sleep delay to a _ _ _ _ value other than 0, the value of innodb thread sleep delay is _ _ _ automatically adjusted. The maximum value of innodb thread sleep delay is _ _ _ specified by innodb adaptive max sleep delay. Unit: _ _ _ _ microseconds. This parameter is suitable for scenarios in which systems slow down, especially when more than 16 InnoDB threads exist. This parameter is most suitable for MySQL systems that have hundreds or thousands of concurrent connections. |
 |---|---|---|---|---|---|
 | innodb autoexte _ nd increment _ | MyS QL 8.0 and MyS QL 5.7 | 64 | [1-1000] | No | The increment size that is used to extend the size of an auto-extending InnoDB system tablespace file when the size of the file reaches the upper limit. Unit: megabytes. Default value: 64. |
 | innodb autoinc l _ _ ock mode _ | MyS QL 8.0 and MyS QL 5.7 | 2 | [0\|1\|2] | Yes | The lock mode that is used to generate auto-increment values. Valid values: 0: traditional mode. 1: consecutive mode. 2: interleaved mode. |
 | innodb buffer po _ _ ol dump at shut _ _ _ down | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies whether to record the pages that are cached in the InnoDB buffer pool when the MySQL server is shut down. Recording the pages shortens the warmup process at the next restart. In most cases, this parameter is used in combination with innodb buffer pool load at startup. _ _ _ _ _ innodb buffer pool dump pct defines _ _ _ _ the percentage of most recently used pages that need to be dumped in the buffer pool. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | innodb buffer po _ _ ol dump pct _ _ | MyS QL 8.0 and MyS QL 5.7 | 25 | [1-100] | No | The percentage of the most recently used pages that need to be read and dumped in each buffer pool. Valid values: 1 to 100. Default value: 25. For example, if four buffer pools are available, 100 pages are cached in each buffer pool, and innodb buffer pool dump pct is set to _ _ _ _ 25, a total of 25 most recently used pages from each buffer pool are dumped. |
 |---|---|---|---|---|---|
@@ -852,16 +940,12 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb buffer po _ _ ol load at startu _ _ _ p | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | Yes | Specifies whether to load the same pages stored in the InnoDB buffer pool to automatically warm up the buffer pool during the MySQL server startup. In most cases, this parameter is used in combination with innodb buffer pool dump at shutdown. _ _ _ _ _ |
 | innodb change b _ _ uffering | MyS QL 8.0 and MyS QL 5.7 | all | [none\|inser ts\|deletes\| changes\|p urges\|all] | No | Specifies whether InnoDB performs change buffering to delay write operations to secondary indexes so that the I/O operations can be sequentially performed. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | innodb change b _ _ uffer max size _ _ | MyS QL 8.0 and MyS QL 5.7 | 25 | [0-50] | No | The maximum size of the InnoDB change buffer, as a percentage of the total size of the buffer pool. You can increase the value for a MySQL server on which a large number of insert, update, and delete operations are performed. You can also decrease the value for a MySQL server with unchanging data that is used for reporting. |
 |---|---|---|---|---|---|
 | innodb checksu _ m algorithm _ | MyS QL 8.0 and MyS QL 5.7 | crc3 2 | [innodb\|crc 32\|none\|st rict innodb _ \|strict crc3 _ 2\|strict no _ ne] | No | Specifies how to generate and verify the checksum stored in the disk blocks of InnoDB tablespaces. |
 | innodb cmp per _ _ _ index enabled _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to enable compression-related statistics on each index for the INFORMATION SCHEMA.INNODB CMP PE _ _ _ R INDEX table. Statistics collection is _ costly. We recommend that you enable this parameter in development and testing environments or for secondary instances to improve performance related to InnoDB compressed tables. |
 | innodb commit c _ _ oncurrency | MyS QL 8.0 and MyS QL 5.7 | 0 | [0-1000] | Yes | The number of threads that can be committed at a time. The default value 0 indicates that the number is unlimited. |
 | innodb compress _ ion failure thresh _ _ old pct _ | MyS QL 8.0 and MyS QL 5.7 | 5 | [0-100] | No | The threshold of the compression failure rate for a table, in percentage. If this threshold is reached, MySQL adds padding to compressed pages. This helps prevent costly compression failures. If this threshold is exceeded, MySQL reserves additional idle storage for each new compressed page and dynamically adjusts the amount of the idle storage up to the percentage of the idle storage that is specified by innodb compression pad pct max. If _ _ _ _ you set this parameter to 0, the mechanism that is used to monitor compression efficiency and dynamically adjust the padding amount is disabled. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | innodb compress _ ion level _ | MyS QL 8.0 and MyS QL 5.7 | 6 | [0-9] | No | The level of the zlib compression for InnoDB compressed tables and indexes. A large value allows you to store a large amount of data in a storage device but causes a high CPU overhead during compression. A small value allows you to reduce the CPU overhead when the storage is not a critical metric or the data that you want to use cannot be efficiently compressed. |
 |---|---|---|---|---|---|
@@ -871,8 +955,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb data file _ _ _ purge interval _ | 8.0 | 100 | [0-10000] | No | The interval to delete the file. Unit: milliseconds. |
 | innodb data file _ _ _ purge max size _ _ | 8.0 | 128 | [16- 10737418 24] | No | The maximum size of the file that you can delete. Unit: MB. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | innodb deadlock _ _ detect | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies whether to disable deadlock detection. If a large number of threads wait for the same lock in a high- concurrency system, deadlock detection may slow down the system. In some cases, we recommend that you disable deadlock detection and configure innodb lock wait timeout for transaction _ _ _ rollback, which is more efficient. |
 |---|---|---|---|---|---|
 | innodb disable s _ _ ort file cache _ _ | 5.7 | ON | [ON\|OFF] | No | If this parameter is enabled, page caching is disabled when InnoDB uses sorted files. |
@@ -881,8 +963,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | innodb flush syn _ _ c | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | This parameter is enabled by default. This setting causes the innodb io capacity setting to be ignored _ _ when burstable I/O operations occur at checkpoints. To make sure that the number of I/O operations does not exceed the number specified by innodb io capacity, we recommend that _ _ you set innodb flush sync to OFF. _ _ |
 | innodb ft cache _ _ _ size | MyS QL 8.0 and MyS QL 5.7 | 800 000 0 | [1600000- 80000000] | Yes | The memory that is allocated to the InnoDB FULLTEXT index cache. The memory is used to store parsed documents when an InnoDB FULLTEXT index is created. Unit: bytes. Index insert and update operations can be committed to the disk only when the cache size limit that is specified by innodb ft cache size is reached. _ _ _ innodb ft cache size defines the cache _ _ _ size on a per-table basis. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | innodb ft enable _ _ diag print _ _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to enable additional full-text search (FTS) diagnostic output. This parameter is intended for advanced FTS debugging and is not of interest to most users. Output is recorded in error logs, including information. |
 |---|---|---|---|---|---|
 | innodb ft enable _ _ stopword _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies a set of stopwords to associate with an InnoDB FULLTEXT index when the index is created. If innodb ft user stopword table is _ _ _ _ configured, the stopwords are obtained from the table specified by innodb ft user stopword table. If _ _ _ _ innodb ft server stopword table is _ _ _ _ configured, the stopwords are obtained from the table specified by innodb ft server stopword table. If none _ _ _ _ of these parameters is configured, the default stopword set is used. |
@@ -890,15 +970,11 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb ft min to _ _ _ ken size _ | MyS QL 8.0 and MyS QL 5.7 | 3 | [0-16] | Yes | The minimum length of a word that is stored in an InnoDB FULLTEXT index. |
 | innodb ft num w _ _ _ ord optimize _ | MyS QL 8.0 and MyS QL 5.7 | 200 0 | [0-10000] | No | The number of words that need to be processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. If you perform a large number of insert or update operations on a table that contains an InnoDB FULLTEXT index, a large number of index maintenance operations are required to incorporate all changes. As a result, a large number of OPTIMIZE TABLE statements may be executed, and each statement is executed at the point at which the last statement is stopped. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | innodb ft result _ _ _ cache limit _ | MyS QL 8.0 and MyS QL 5.7 | 200 000 000 0 | [1000000- 42949672 95] | No | The result cache limit on each InnoDB full-text search or thread. Unit: bytes. Intermediate and final InnoDB full-text search query results are processed in memory. This parameter helps prevent excessive memory consumption when an InnoDB full-text search generates a query result that contains a large number of data records, such as millions or hundreds of millions of data rows. Memory is allocated for a full-text search based on your business requirements. If the result cache limit is reached, an error indicating that the full-text search exceeds the maximum allowed memory is reported. |
 |---|---|---|---|---|---|
 | innodb ft sort pll _ _ _ degree _ | MyS QL 8.0 and MyS QL 5.7 | 2 | [1-16] | Yes | The number of threads that are used for parallel indexing and to tokenize text in an InnoDB FULLTEXT index when a search index is created. |
 | innodb ft total c _ _ _ ache size _ | MyS QL 8.0 and MyS QL 5.7 | 640 000 000 | [32000000 - 16000000 00] | Yes | The total memory that is allocated for the index caches of InnoDB full-text searches on all tables. Unit: bytes. If you create a large number of tables that contain FULLTEXT search indexes, a large amount of memory is occupied. innodb ft total cache size defines a _ _ _ _ global memory limit on all FULLTEXT search indexes to prevent excessive memory consumption. If the amount of memory consumed by index-related operations reaches the global memory limit, forceful synchronization is triggered. |
 | innodb io capacit _ _ y | MyS QL 8.0 and MyS QL 5.7 | 200 00 | [0- 18446744 07370955 1615] | No | The maximum number of I/O operations for InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | innodb io capacit _ _ y max _ | MyS QL 8.0 and MyS QL 5.7 | 400 00 | [0- 18446744 07370955 1615] | No | If a flushing operation falls behind, InnoDB can forcefully perform the operation at a higher rate than that specified by innodb io capacity. In this _ _ case, innodb io capacity max defines _ _ _ the maximum number of I/O operations for InnoDB background tasks. |
 |---|---|---|---|---|---|
@@ -908,16 +984,12 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb log comp _ _ ressed pages _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to write images of re- compressed pages to the redo log. Recompression may occur when the compressed data is changed. |
 | innodb log file si _ _ _ ze | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/6, 157 286 400 0)} | [4194304- 10737418 2400] | Yes | The size of each log file in a log group. Unit: bytes. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | innodb lru scan _ _ _ depth | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 485 76/8 , 819 2)} | [100- 18446744 07370955 1615] | No | A parameter that affects the flush algorithms and heuristic algorithms of the InnoDB buffer pool. This parameter is used to tune I/O-intensive workloads. It specifies how deep the page cleaner thread scans the LRU lists in the buffer pool to identify dirty pages to be flushed for a buffer pool instance. The operation is performed in the background once per second. |
 |---|---|---|---|---|---|
 | innodb max dirty _ _ pages pct _ _ | MyS QL 8.0 and MyS QL 5.7 | 75 | [0-99] | No | The value of this parameter is an integer that ranges from 0 to 100. The default value for the built-in InnoDB storage engine is 90. The default value for the InnoDB extension is 75. The main thread in InnoDB tries to write data from the buffer pool to pages so that the percentage of dirty pages does not exceed this value. |
 | innodb max dirty _ _ pages pct lwm _ _ _ | MyS QL 8.0 and MyS QL 5.7 | 10 | [0-99] | No | The threshold for the percentage of dirty pages. If the threshold is exceeded, preflushing is enabled to control the ratio of dirty pages. The default value 0 indicates that preflushing is disabled. |
 | innodb max purg _ _ e lag _ | MyS QL 8.0 and MyS QL 5.7 | 0 | [0- 42949672 95] | No | The maximum length of the purge lag. The default value 0 indicates that no limits are imposed and no latency occurs. |
 | innodb max purg _ _ e lag delay _ _ | MyS QL 8.0 and MyS QL 5.7 | 0 | [0- 10000000] | No | The maximum latency when the threshold specified by innodb max purge lag is exceeded. _ _ _ Unit: microseconds. A non-zero value indicates the maximum latency that is imposed based on the value of innodb max purge lag. The default _ _ _ value 0 indicates that no upper limit is imposed on the latency. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | innodb max und _ _ o log size _ _ | MyS QL 8.0 and MyS QL 5.7 | 107 374 182 4 | [10485760 - 18446744 07370955 1615] | No | The threshold of the undo tablespace. If an undo tablespace exceeds the threshold, it can be marked for truncation when innodb undo log truncate is enabled. _ _ _ Default value: 1073741824 bytes, which is 1,024 MiB. |
 |---|---|---|---|---|---|
@@ -926,15 +998,11 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb old block _ _ s pct _ | MyS QL 8.0 and MyS QL 5.7 | 37 | [5-95] | No | The approximate percentage of the InnoDB buffer pools that are used for the old block sublist. This parameter is suitable only for the InnoDB extension. Valid values: 5 to 95. Default value: 37, which is 3/8 of the buffer pools. |
 | innodb old block _ _ s time _ | MyS QL 8.0 and MyS QL 5.7 | 100 0 | [0-1024] | No | The period of time that a block inserted into the old sublist must stay after its first access before the block can be moved to the new sublist. Unit: milliseconds. This parameter is suitable only for the InnoDB extension. If the default value 0 is used for this parameter, a block inserted into the old sublist is immediately moved to a new sublist after its first access, regardless of when the block is accessed. If you set this parameter to a value greater than 0, a block inserted into the old sublist must stay for the specified period of time and then is moved to a new sublist after its first access. Unit: milliseconds. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | innodb online alt _ _ er log max size _ _ _ | MyS QL 8.0 and MyS QL 5.7 | 134 217 728 | [13421772 8- 21474836 47] | No | The maximum size of alter logs for online index creation. |
 |---|---|---|---|---|---|
 | innodb open files _ _ | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl assC PU* 500, 800 0)} | [1-8192] | Yes | The maximum number of InnoDB files that can remain open at a time in MySQL. This parameter is suitable only when multiple InnoDB tablespaces are used. |
 | innodb optimize _ _ fulltext only _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | The changes on how the OPTIMIZE TABLE statement is executed on InnoDB tables. This parameter is temporarily enabled when InnoDB tables with FULLTEXT indexes are maintained. |
 | innodb page cle _ _ aners | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 737 418 24, 8)} | [1-64] | Yes | The number of page cleaner threads that are used to flush dirty pages from buffer pool instances. Page cleaner threads are used to flush LRU lists and flush lists. In MySQL 5.6, one page cleaner thread is introduced to offload the buffer pool refresh from the InnoDB main thread. In MySQL 5.7, multiple page cleaner threads are supported by InnoDB. The value 1 indicates that the configuration for the versions earlier than MySQL 5.7 is used, which indicates one page cleaner thread exists. If multiple page cleaner threads exist, the flushing tasks for each buffer pool instance are distributed to idle page cleaner threads. In MySQL 5.7, the default value of this parameter is changed from 1 to 4. If the number of page cleaner threads exceeds the number of buffer pool instances, the additional threads remain idle and do not consume CPU resources. This parameter is dynamic and can be changed online. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | innodb print all _ _ _ deadlocks | MyS QL 8.0 and MyS QL 5.7 | OFF | [OFF\|ON] | No | If this parameter is enabled, information about all deadlocks is recorded in the MySQL error log. By default, this parameter is disabled. |
 |---|---|---|---|---|---|
@@ -942,8 +1010,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | innodb purge rse _ _ g truncate frequ _ _ ency | MyS QL 8.0 and MyS QL 5.7 | 128 | [1-128] | No | The frequency at which the purge system releases rollback segments in terms of the number of times that the PURGE method is invoked. Before rollback segments are released, an undo tablespace cannot be truncated. In most cases, the purge system releases rollback segments every 128 times that the PURGE method is invoked. Default value: 128. A small value indicates a high frequency at which the purge thread releases rollback segments. |
 | innodb purge thr _ _ eads | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 737 418 24, 8)} | [1-32] | Yes | The number of background threads dedicated to the InnoDB purge operation. |
 | innodb random r _ _ ead ahead _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to enable random read-ahead to optimize InnoDB I/O operations. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | innodb read ahe _ _ ad threshold _ | MyS QL 8.0 and MyS QL 5.7 | 56 | [0-1024] | No | The sensitivity of linear read-ahead that InnoDB uses to prefetch pages into the buffer pool. This parameter is suitable only for the InnoDB extension. If the number of pages that InnoDB sequentially reads from an extent (64 pages) is greater than or equal to the value of innodb read ahead threshold, _ _ _ an asynchronous read for the following extents is enabled. |
 |---|---|---|---|---|---|
@@ -953,15 +1019,11 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | innodb sort buffe _ _ r size _ | MyS QL 8.0 and MyS QL 5.7 | 104 857 6 | [65536- 67108864] | Yes | The size of the sort buffer that is used to sort data during InnoDB index creation. The amount of data that is read into memory for internal sorting and written to the disk. This process is called "running". During the merge phase, a pair of buffers with the specified size are read and merged. A large value indicates a few running processes and merging operations. |
 | innodb spin wait _ _ delay _ | MyS QL 8.0 and MyS QL 5.7 | 6 | [0- 42949672 95] | No | The maximum latency between polls for a spin lock. The underlying implementation of this mechanism varies based on the combination of hardware and operating systems. As a result, the latency is not fixed. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | innodb stats aut _ _ o recalc _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies whether to enable InnoDB to automatically recalculate persistence statistics after the data in a table is significantly changed. The threshold equals 10% of the rows in the table. This parameter is suitable for tables that are created when innodb stats persistent is _ _ enabled. You can also configure the STATS PERSISTENT = 1 setting for the _ CREATE TABLE or ALTER TABLE statement to automatically recalculate persistence statistics. The amount of sample data that is used to generate statistical data is specified by innodb stats persistent sample pages. _ _ _ _ |
 |---|---|---|---|---|---|
 | innodb stats met _ _ hod | MyS QL 8.0 and MyS QL 5.7 | nulls equ _ al | [nulls equ _ al\|nulls un _ equal\|nulls ignored] _ | No | The method that the server uses to process NULL values during the collection of statistics about the distribution of index values for InnoDB tables. Valid values: nulls equal, _ nulls unequal, and nulls ignored. The _ _ value nulls equal indicates that all NULL _ values are considered equivalent and a single value group that has the same size as the number of NULL values is generated. The value nulls unequal _ indicates that NULL values are considered unequivalent, and each NULL value forms a distinct value group with the size of 1. The value nulls ignored _ indicates that NULL values are ignored. |
 | innodb stats on _ _ _ metadata | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | This parameter is suitable only when optimizer statistics are non-persistent. If a table is created or changed when innodb stats persistent is disabled or _ _ STATS PERSISTENT is set to 0, optimizer _ statistics are not stored to disks. |
 | innodb stats per _ _ sistent | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies whether InnoDB index statistics are stored to disks. If InnoDB index statistics are not stored to disks, statistical data may be frequently recalculated, which may cause changes to query execution plans. This setting is stored with each table when the table is created. You can set innodb stats persistent at the global _ _ level before you create a table, or use the STATS PERSISTENT clause in the _ CREATE TABLE and ALTER TABLE statements to override the system-level setting and configure persistent statistics for individual tables. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | innodb stats per _ _ sistent sample p _ _ ages | MyS QL 8.0 and MyS QL 5.7 | 20 | [0- 42949672 95] | No | The number of index pages to sample when cardinality and other statistics, such as statistics calculated by the ANALYZE TABLE statement, are estimated for an indexed column. A large value indicates a high accuracy of index statistics. This improves the query execution plan but increases the I/O workloads during the execution of the ANALYZE TABLE statement on an InnoDB table. |
 |---|---|---|---|---|---|
@@ -969,15 +1031,11 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | innodb stats tran _ _ sient sample pag _ _ es | MyS QL 8.0 and MyS QL 5.7 | 8 | [1- 42949672 95] | No | The number of index pages to sample when cardinality and other statistics, such as statistics calculated by the ANALYZE TABLE statement, are estimated for an indexed column. Default value: 8. A large value indicates a high accuracy of index statistics. This improves the query execution plan but increases the I/O workloads when an InnoDB table is opened or the statistics are recalculated. |
 | innodb status ou _ _ tput | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to enable periodic output for the standard InnoDB Monitor. This parameter is used in combination with innodb status output locks to _ _ _ enable or disable periodic output for the InnoDB Lock Monitor. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | innodb status ou _ _ tput locks _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to enable the InnoDB Lock Monitor. If this parameter is enabled, the InnoDB Lock Monitor records additional information about locks in the SHOW ENGINE INNODB STATUS output and records the information in the periodic output of the MySQL error log. The periodic output for the InnoDB Lock Monitor is recorded as part of the output of the standard InnoDB Monitor. As a result, the standard InnoDB Monitor must be enabled for the InnoDB Lock Monitor to periodically record data to the MySQL error log. |
 |---|---|---|---|---|---|
 | innodb strict mo _ _ de | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether InnoDB returns an error rather than a warning for similar operations in strict SQL mode under certain conditions. This parameter is suitable only for the InnoDB extension. Default value: OFF. For more information about the affected conditions, see the description of innodb strict mode. _ _ |
 | innodb sync arra _ _ y size _ | MyS QL 8.0 and MyS QL 5.7 | 128 | [1-1024] | Yes | The size of the mutex or lock wait array. Increasing the value splits the internal data structure that is used to coordinate threads. This improves the concurrency in workloads with a large number of waiting threads. You must configure this parameter when you start the MySQL instance. The setting of the parameter cannot be changed. We recommend that you set this parameter to a large value for workloads that frequently generate a large number of waiting threads, typically greater than 768. |
 | innodb sync spin _ _ loops _ | MyS QL 8.0 and MyS QL 5.7 | M y S Q L 8. 0: 1 0 0 M y S Q L 5. 7: 3 0 | [0- 42949672 95] | No | The number of times a thread waits for an InnoDB mutex to be released before the thread is suspended. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | innodb table loc _ _ ks | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | If autocommit is set to 0, InnoDB accepts LOCK TABLES. MySQL does not return results before the LOCK TABLES ... WRITE statement is executed until all threads release their locks on a table. Default value: 1, which indicates that LOCK TABLES causes InnoDB to internally lock a table when autocommit is set to 0. |
 |---|---|---|---|---|---|
@@ -987,15 +1045,11 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | innodb write io t _ _ _ hreads | MyS QL 8.0 and MyS QL 5.7 | 4 | [1-64] | Yes | The number of I/O threads that are used for write operations in InnoDB. This parameter is suitable only for the InnoDB extension. Default value: 4. |
 | interactive timeo _ ut | MyS QL 8.0 and MyS QL 5.7 | 720 0 | [10-86400] | No | The period of time that the server waits for the activity on an interactive connection before the interactive connection is terminated. An interactive client is defined as a client that uses the CLIENT INTERACTIVE option to connect _ to mysql real connect(). _ _ Unit: seconds. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | join buffer size _ _ | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 485 76* 128, 262 144) } | [128- 42949672 95] | No | The minimum size of the buffer used for plain index scans, range index scans, and joins that do not use indexes and thus perform full table scans. |
 |---|---|---|---|---|---|
 | key cache age t _ _ _ hreshold | MyS QL 8.0 and MyS QL 5.7 | 300 | [100- 42949672 95] | No | The demotion of buffers from the hot sublist of a key cache to the warm sublist. A small value indicates a quick demotion. Minimum value: 100. Default value: 300. Unit: seconds. |
 | key cache block _ _ _ size | MyS QL 8.0 and MyS QL 5.7 | 102 4 | [512- 16384] | No | The size of blocks in the key cache. Default value: 1024. Unit: bytes. |
 | key cache divisio _ _ n limit _ | MyS QL 8.0 and MyS QL 5.7 | 100 | [1-100] | No | The division point between the hot sublist and warm sublist of the key cache buffer list. The value is the percentage of the buffer list that can be used for the warm sublist. Valid values: 1 to 100. Default value: 100. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | lc time names _ _ | MyS QL 8.0 and MyS QL 5.7 | en _ US | [ja JP\|pt B _ _ R\|en US] _ | No | The locale that controls the language used to display the day name, month name, and abbreviations. This parameter affects the output of the DATE FORMAT(), DAYNAME() and _ MONTHNAME() functions. Locale names are POSIX-style values such as 'ja JP' or _ 'pt BR'. Default value: 'en US', _ _ regardless of the system locale settings. |
 |---|---|---|---|---|---|
@@ -1005,8 +1059,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | log queries not _ _ _ using indexes _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to write queries that do not use indexes to slow query logs. |
 | log slow admin s _ _ _ tatements | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to write slow administration statements to slow query logs. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | log throttle queri _ _ es not using ind _ _ _ exes | MyS QL 8.0 and MyS QL 5.7 | 0 | [0- 42949672 95] | No | If log queries not using indexes is _ _ _ _ enabled, log throttle queries not using indexes _ _ _ _ _ limits the number of queries that can be written to the slow query logs per minute. This parameter is suitable when the queries do not use indexes. |
 |---|---|---|---|---|---|
 | long query time _ _ | MyS QL 8.0 and MyS QL 5.7 | 1 | [0.1- 31536000] | No | If a query takes a period of time that is longer than the threshold specified by this parameter, the Slow queries counter _ increments. If slow query logging is enabled, the query is written to the slow query log file. Unit: seconds. |
@@ -1015,8 +1067,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | loose ccl queue _ _ _ hot delete _ | 8.0 | OFF | [ON\|OFF] | No | Specifies whether to enter the CCL queue in a delete operation under certain conditions. |
 | loose ccl queue _ _ _ hot update _ | 8.0 | OFF | [ON\|OFF] | No | Specifies whether to enter the CCL queue in an update operation under certain conditions. |
 | loose collation s _ _ erver | 5.7 | utf8 gen _ eral ci _ | [utf8 bin\|u _ tf8 general _ ci\|latin1 b _ _ in\|latin1 g _ eneral ci\|g _ bk chinese _ ci\|gbk bin _ _ \|utf8mb4 _ general ci\| _ utf8mb4 bi _ n] | Yes | The default collation of the server. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | loose connection _ control failed co _ _ _ nnections thresh _ old | 8.0 | 3 | [0- 21474836 47] | No | - |
 |---|---|---|---|---|---|
@@ -1029,8 +1079,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | loose innodb dat _ _ a file purge max _ _ _ size _ | 5.7 | 512 | [16- 10737418 24] | No | The maximum size of data files that can be deleted at a time. Unit: MB. |
 | loose innodb log _ _ optimize ddl _ _ | MyS QL 8.0 and MyS QL 5.7 | M y S Q L 8. 2: O N M y S Q L 5. 7: O FF | [ON\|OFF] | No | Specifies whether to reduce redo logs when indexes are created or when tables are recreated locally. The value OFF prevents latencies caused by page refresh operations and allows concurrent backups. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | loose innodb log _ _ write ahead siz _ _ _ e | 8.0 | 409 6 | [512- 16384] | No | The size of write-ahead logs in bytes. To prevent read-on-write operations, this parameter must match the I/O size of the OS block size. |
 |---|---|---|---|---|---|
 | loose innodb nu _ _ ma interleave _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | Yes | Specifies whether to enable the NUMA interleave memory policy for allocation of the InnoDB buffer pool. When this parameter is enabled, the NUMA memory policy of mysqld is set to MPOL INTERLEAVE. After the InnoDB _ buffer pool is allocated, the NUMA memory policy is set back to MPOL DEFAULT. This parameter is _ suitable only when MySQL is compiled on a NUMA-enabled Linux system. |
@@ -1039,8 +1087,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | loose innodb rds _ _ flashback task _ _ _ enabled | 8.0 | OFF | [ON\|OFF] | No | Specifies whether to roll forward new read views by default. |
 | loose internal tm _ _ p disk storage e _ _ _ ngine | 5.7 | INN ODB | [INNODB\|M YISAM] | No | The internal temporary table engine on the disk. |
 | loose innodb und _ _ o retention _ | 8.0 | 900 | [0- 42949672 95] | No | This parameter specifies the retention period of undo records. Undo records that are generated after the retention period elapses cannot be queried. Unit: seconds. If you set the loose innodb rds flashback task enable _ _ _ _ _ d parameter to OFF, you must also set this parameter to 0. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | loose innodb und _ _ o space reserved _ _ size _ | 8.0 | 0 | [0- 42949672 95] | No | This parameter specifies the amount of disk space that is reserved for the undo tablespace. Unit: MB. If the value of the loose innodb undo retention parameter _ _ _ is not 0, a larger value of this parameter indicates that more undo records can be reserved in the undo tablespace. |
 |---|---|---|---|---|---|
@@ -1051,19 +1097,13 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | loose opt rds en _ _ _ able show slave _ _ _ lag | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | If you set this parameter to ON, the show slave lag command is allowed. |
 | loose opt rds las _ _ _ t error gtid _ _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | If you set this parameter to ON, Last SQL Error Gtid is displayed in _ _ _ the show slave status command. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-| ide·Instances |  |  |  |  |  |
+| ide·Instances |   |   |   |   |   |
 |---|---|---|---|---|---|
 | loose optimizer s _ _ witch | 5.7 | inde x m _ erge =on ,ind ex _ mer ge u _ nion =on ,ind ex _ mer ge s _ o rt u _ nion =on ,ind ex _ mer ge i _ nter secti on= on,e ngin e co _ n ditio n p _ ush dow n=o n,in dex _ con ditio n p _ ush dow n=o n,mr r =on ,mrr cos _ t ba _ sed =on ,bloc k ne _ sted loo _ p=o n,ba tche d | .* | No | This parameter controls optimizer behaviors. |
 
-ApsaraDB RDS for MySQL User G
-
-|  |  | key _ acc _ ess =off ,mat erial izati on= on,s emij oin= on,l oo sesc an= on,fi rstm atch =on ,sub quer y m _ ateri aliza tion c _ ost _ base d=o n,us e in _ dex _ exte nsio ns= on |  |  |  |
+|   |   | key _ acc _ ess =off ,mat erial izati on= on,s emij oin= on,l oo sesc an= on,fi rstm atch =on ,sub quer y m _ ateri aliza tion c _ ost _ base d=o n,us e in _ dex _ exte nsio ns= on |   |   |   |
 |---|---|---|---|---|---|
 | loose optimizer t _ _ race | MyS QL 8.0 and MyS QL 5.7 | ena bled =off ,one line _ =off | .* | No | This parameter has the following options: enabled and one line. _ |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | loose optimizer t _ _ race features _ | MyS QL 8.0 and MyS QL 5.7 | gree dy s _ earc h=o n,ra nge _ opti mize r=o n,dy nam ic ra _ nge =on ,rep eate d su _ bsel ect =on | .* | No | This parameter specifies the features that are not traced. |
 |---|---|---|---|---|---|
@@ -1074,8 +1114,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | loose performanc _ e schema accou _ _ nts size _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The number of rows in the accounts table. If you set this parameter to 0, Performance Schema neither maintains connection statistics in the accounts table nor maintains status parameter information in the status by account _ _ table. |
 | loose performanc _ e schema digest _ _ s size _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The maximum number of rows in the events statements summary by digest _ _ _ _ table. If this threshold is exceeded, a digest cannot be instrumented. As a result, Performance Schema increases the value of performance schema digest lost. _ _ _ |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | loose performanc _ e schema error _ _ _ size | 8.0 | 0 | [0- 1048576] | Yes | The number of codes of server errors that are detected. The default value is the actual number of codes of server errors. You can set this parameter to a value within the value range. The expected purpose of this parameter is to detect all errors (the default value) or to indicate no errors (the value 0). |
 |---|---|---|---|---|---|
 | loose performanc _ e schema hosts _ _ _ size | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The number of rows in the hosts table. If you set this parameter to 0, Performance Schema neither maintains connection statistics in the hosts table nor maintains status parameter information in the status by host table. _ _ |
@@ -1083,8 +1121,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | loose performanc _ e schema max fi _ _ _ le instances _ | MyS QL 8.0 and MyS QL 5.7 | 100 0 | [-1- 1048576] | Yes | The maximum number of instrumented file objects. |
 | loose performanc _ e schema max i _ _ _ ndex stat _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The maximum number of indexes for Performance Schema to maintain statistics. If this threshold is exceeded, index statistics are lost. As a result, Performance Schema increases the value of performance schema index stat lost. _ _ _ _ The default value is automatically adjusted based on the value of performance schema max table instanc _ _ _ _ es. |
 | loose performanc _ e schema max _ _ _ metadata locks _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The maximum number of metadata lock instruments. This parameter specifies the size of the metadata locks table. If _ this threshold is exceeded, a metadata lock cannot be instrumented. As a result, Performance Schema increases the value of performance schema metadata lock los _ _ _ _ t. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | loose performanc _ e schema max _ _ _ mutex instances _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 10485760 0] | Yes | The maximum number of instrumented mutex objects. |
 |---|---|---|---|---|---|
@@ -1094,8 +1130,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | loose performanc _ e schema max s _ _ _ ocket instances _ | MyS QL 8.0 and MyS QL 5.7 | 100 0 | [-1- 1048576] | Yes | The maximum number of instrumented socket objects. |
 | loose performanc _ e schema max t _ _ _ able handles _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The maximum number of open table objects. This parameter controls the size of the table handles table. If this _ threshold is exceeded, a table handle cannot be instrumented. As a result, Performance Schema increases the value of performance schema table handles lost _ _ _ _ . |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | loose performanc _ e schema max t _ _ _ able instances _ | MyS QL 8.0 and MyS QL 5.7 | 100 0 | [-1- 1048576] | Yes | The maximum number of instrumented table objects. |
 |---|---|---|---|---|---|
 | loose performanc _ e schema max t _ _ _ able lock stat _ _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The maximum number of tables for which Performance Schema maintains lock statistics. If this threshold is exceeded, table lock statistics are lost. As a result, Performance Schema increases the value of performance schema table lock stat los _ _ _ _ _ t. |
@@ -1103,8 +1137,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | loose performanc _ e schema setup _ _ _ actors size _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The number of rows in the setup actors _ table. |
 | loose performanc _ e schema setup _ _ _ objects size _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The number of rows in the setup objects _ table. |
 | loose performanc _ e schema users _ _ _ size | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [-1- 1048576] | Yes | The number of rows in the users table. If you set this parameter to 0, Performance Schema neither maintains connection statistics in the users table nor maintains status parameter information in the status by user table. _ _ |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | loose rds audit _ _ _ max sql size _ _ | 5.7 | 819 2 | [0-32768] | No | The maximum size of SQL statements in the ApsaraDB RDS audit log. |
 |---|---|---|---|---|---|
@@ -1119,8 +1151,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | loose polarscale _ _ parallel computin _ g trace _ | 8.0 | 0 | [0\|1] | No | Specifies whether to enable the trace feature. If you set this parameter to 0, the trace feature is disabled. If you set this parameter to 1, the trace feature is enabled. |
 | loose rds audit l _ _ _ og event buffer _ _ _ size | 8.0 | 204 8 | [0-32768] | No | The maximum size of SQL statements in the ApsaraDB RDS audit log. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | loose rds kill con _ _ _ nections | MyS QL 8.0 and MyS QL 5.7 | 20 | [0- 18446744 07370955 1615] | No | The number of additional connections for users that are specified by rds user with kill option. _ _ _ _ |
 |---|---|---|---|---|---|
 | loose rds set co _ _ _ nnection id enab _ _ led | 5.7 | ON | [ON\|OFF] | No | Specifies whether to enable the patches about proxy connection IDs. |
@@ -1128,8 +1158,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | loose recycle bin _ _ retention _ | MyS QL 8.0 and MyS QL 5.7 | 604 800 | [86400- 1209600] | No | The retention period in the recycle bin. Unit: seconds. |
 | loose recycle sch _ _ eduler | MyS QL 8.0 and MyS QL 5.7 | OFF | [OFF\|ON] | No | Specifies whether to clean up threads. |
 | loose sql safe up _ _ _ dates | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | If this parameter is enabled, an error occurs when keys are not used in the WHERE or LIMIT clause of the UPDATE or DELETE statement. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | loose thread poo _ _ l enabled _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies whether to enable thread pooling. |
 |---|---|---|---|---|---|
@@ -1140,15 +1168,11 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | loose validate pa _ _ ssword mixed ca _ _ se count _ | MyS QL 8.0 and MyS QL 5.7 | 1 | MySQL 8.0: 0 to 32 MySQL 5.7: 0 to 256 | No | If the password policy is MEDIUM or STRONG, this parameter specifies the minimum number of lowercase and uppercase letters in the password specified by validate password. The total _ number of lowercase and uppercase letters in a password must be greater than or equal to the value of this parameter. |
 | loose validate pa _ _ ssword number c _ _ ount | MyS QL 8.0 and MyS QL 5.7 | 1 | MySQL 8.0: 0 to 32 MySQL 5.7: 0 to 256 | No | The number of digits in the password. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | loose validate pa _ _ ssword policy _ | 5.7 | 1 | [0\|1\|2] | No | The password policy in MySQL. Valid values consist of two types: 0, 1, and 2; LOW, MEDIUM, and STRONG. 0 or LOW: a loose policy. The password must contain at least one character, and the length of the password must be greater than or equal to the value of loose validate password length. _ _ _ 1 or MEDIUM: a medium policy. The password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character. In addition, the length of the password must be greater than or equal to the value of loose validate password length. _ _ _ 2 or STRONG: a strict policy. The password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character. The length of the password must be greater than or equal to the value of loose validate password length. In _ _ _ addition, the system checks whether the password exists in the dictionary file. |
 |---|---|---|---|---|---|
 | loose validate pa _ _ ssword special c _ _ har count _ | MyS QL 8.0 and MyS QL 5.7 | 1 | MySQL 8.0: 0 to 32 MySQL 5.7: 0 to 256 | No | The number of special characters in the password. |
 | low priority upda _ _ tes | MyS QL 8.0 and MyS QL 5.7 | 0 | [0\|1] | No | If you set this parameter to 1, all INSERT, UPDATE, DELETE, and LOCK TABLE WRITE statements wait until no pending SELECT or LOCK TABLE READ statements exist on the required table. This parameter is suitable for storage engines that use only table-level locking, such as MyISAM, MEMORY, and MERGE. This parameter is formerly known as sql low priority updates. _ _ _ |
 | lower case table _ _ names _ | 5.7 | 1 | [0\|1] | Yes | If you set this parameter to 1, table names are stored in lowercase on the disk and table names are not case- sensitive. If you use a file system that is not case-sensitive, we recommend that you set this parameter to 2. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | master verify ch _ _ ecksum | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | If you enable this parameter, the primary server verifies checksums when it reads data from the binary log. By default, this parameter is disabled. In this case, the primary server uses the event length from the binary log to verify events. This ensures that only complete events can be read from the binary log. |
 |---|---|---|---|---|---|
@@ -1158,18 +1182,12 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | max connect err _ _ ors | MyS QL 8.0 and MyS QL 5.7 | 100 | [0- 42949672 95] | No | If the number of failed connection requests caused by interrupted consecutive connection requests from a host is greater than the value of this parameter, the server blocks the requests from the host. To resolve this issue, you can flush the host cache. |
 | max error count _ _ | MyS QL 8.0 and MyS QL 5.7 | 64 | [0-65535] | No | The maximum number of error, warning, and information messages to be stored for display by the SHOW ERRORS and SHOW WARNINGS statements. The value is the same as the number of condition areas in the diagnostics area. You can execute the GET DIAGNOSTICS statement to diagnose the same number of conditions. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | max execution ti _ _ me | 8.0 | 0 | [0- 42949672 95] | No | The execution timeout of the statement. If this threshold is exceeded, the statement is interrupted. |
 |---|---|---|---|---|---|
 | max heap table _ _ _ size | MyS QL 8.0 and MyS QL 5.7 | 671 088 64 | [16384- 18446744 07370954 752] | No | The maximum size to which a user- created MEMORY table can be increased. This parameter is used to calculate the MAX ROWS value in the MEMORY table. _ This parameter is suitable only if you execute the CREATE TABLE statement to recreate the table or execute the ALTER TABLE or TRUNCATE TABLE statement to modify the table. Otherwise, this parameter has no effect on any existing MEMORY table. If your server is restarted, the maximum size of an existing MEMORY table is set to the value of max heap table size. _ _ _ |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | max join size _ _ | MyS QL 8.0 and MyS QL 5.7 | M y S Q L 8. 0: 1 8 4 4 6 7 4 4 0 7 3 7 0 9 5 5 1 6 1 5 M y S Q L 5. 7: 1 8 4 4 6 7 4 4 0 7 3 7 0 9 5 0 0 0 0 0 | [1- 18446744 07370955 1615] | No | If the number of rows or row groups or the number of disk queries is greater than the value of this parameter, the statements cannot be executed. If you execute single-table statements, this parameter specifies the maximum number of rows. If you execute multi- table statements, this parameter specifies the maximum number of row groups. This parameter helps identify the statements that do not properly use keys and thus require a long period of time. If you want to perform join operations that lack a WHERE clause, require a long period of time, or return millions of rows, we recommend that you configure this parameter. |
 |---|---|---|---|---|---|
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | max length for s _ _ _ ort data _ | MyS QL 8.0 and MyS QL 5.7 | 102 4 | [0-838860] | No | The cutoff on the size of an index value, which determines the file sorting algorithm. |
 |---|---|---|---|---|---|
@@ -1177,16 +1195,12 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | max prepared st _ _ mt count _ | MyS QL 8.0 and MyS QL 5.7 | 163 82 | [0- 1048576] | No | The total number of prepared statements in the server. |
 | max seeks for k _ _ _ ey | MyS QL 8.0 and MyS QL 5.7 | 184 467 440 737 095 000 00 | [1- 18446744 07370955 1615] | No | The assumed maximum number of times that rows are identified based on keys. When the MySQL optimizer scans an index, the MySQL optimizer assumes that the number of times that keys are checked to identify required rows is less than or equal to the value of this parameter, regardless of the cardinality of the index. You can set this parameter to a small value, such as 100, to force the MySQL optimizer to prefer index scans over table scans. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | max sort length _ _ | MyS QL 8.0 and MyS QL 5.7 | 102 4 | [4- 8388608] | No | The number of bytes that are used to sort data values. The server uses only the first max sort length bytes of each _ _ value. As a result, the bytes except the first max sort length bytes are _ _ considered the same for GROUP BY, ORDER BY, and DISTINCT operations. |
 |---|---|---|---|---|---|
 | max sp recursio _ _ n depth _ | MyS QL 8.0 and MyS QL 5.7 | 0 | [0-255] | No | The number of times that a given stored procedure may be recursively called. Default value: 0, which indicates that recursion of stored procedures is disabled. Maximum value: 255. |
 | max write lock c _ _ _ ount | MyS QL 8.0 and MyS QL 5.7 | 102 400 | [1-102400] | No | If the number of write locks reaches the value of this parameter, read locks are allowed to run. |
 | metadata locks c _ _ ache size _ | 5.7 | 102 4 | [1- 1048576] | No | The size of the metadata lock cache. The server uses this cache to prevent the creation and destruction of synchronization objects. This parameter is helpful on costly systems such as Windows XP. |
 | min examined ro _ _ w limit _ | MyS QL 8.0 and MyS QL 5.7 | 0 | [0- 42949672 95] | No | If the number of rows checked by a query is less than the value of this parameter, the query is not recorded to the slow query log. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | myisam sort buff _ _ er size _ | MyS QL 8.0 and MyS QL 5.7 | 262 144 | [262144- 16777216] | No | The size of the buffer that is allocated when the REPAIR TABLE statement is executed to sort MyISAM indexes or when the CREATE INDEX or ALTER TABLE statement is executed to create indexes. |
 |---|---|---|---|---|---|
@@ -1196,16 +1210,12 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | net retry count _ _ | MyS QL 8.0 and MyS QL 5.7 | 10 | [1- 42949672 95] | No | The number of retries before a read or write operation on a communication port is aborted if the operation is interrupted. |
 | net write timeou _ _ t | MyS QL 8.0 and MyS QL 5.7 | 60 | [1- 18446744 07370955 1615] | No | The number of seconds to wait for a block to be written to a connection before the write operation is aborted. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | ngram token siz _ _ e | MyS QL 8.0 and MyS QL 5.7 | 2 | [0-20] | Yes | The n-gram token size for the n-gram full-text parser. This parameter is read- only and can only be modified at startup. Default value: 2 (2-tuples). Maximum value: 10. |
 |---|---|---|---|---|---|
 | old passwords _ | 5.7 | 0 | [0\|2] | No | The password hashing method of the PASSWORD() function. This parameter also specifies the password hashing method for the CREATE USER and GRANT statements for which a password is specified in the IDENTIFIED BY clause. |
 | open files limit _ _ | MyS QL 8.0 and MyS QL 5.7 | 655 35 | [1- 18446744 07370955 1615] | Yes | If you set this parameter to a value other than 0, mysqld uses the value to reserve file descriptors for the use with setrlimit(). |
 | optimizer prune l _ _ evel | MyS QL 8.0 and MyS QL 5.7 | 1 | [0\|1] | No | The heuristics method applied during query optimization to prune some less- promising plans from the optimizer search space. If you set this parameter to 0, the heuristics method is disabled, and the optimizer performs an exhaustive search. If you set this parameter to 1, the optimizer prunes the plans based on the number of rows retrieved by intermediate plans. |
 | optimizer search _ depth _ | MyS QL 8.0 and MyS QL 5.7 | 62 | [0-62] | No | The maximum depth of a search performed by the query optimizer. If you set this parameter to a value that is greater than the number of relations in the result of a query, a better query plan is used, but it requires a long period of time to generate an execution plan for a query. If you set this parameter to a value that is smaller than the number of relations in the result of a query, an execution plan is generated in a quick manner, but the query plan is not optimal. If you set this parameter to 0, the system automatically uses an appropriate value. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 | optimizer trace li _ _ mit | MyS QL 8.0 and MyS QL 5.7 | 1 | [0- 42949672 95] | No | The maximum number of optimizer traces to display. |
 |---|---|---|---|---|---|
@@ -1217,8 +1227,6 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | performance poi _ nt iostat volume _ _ size _ | 8.0 | 100 00 | [0-100000] | Yes | The maximum capacity of I/O statistics that can be collected. Unit: number of slots. |
 | performance poi _ nt lock rwlock e _ _ _ nabled | 8.0 | ON | [ON\|OFF] | No | Specifies whether to enable the performance optimization feature for read or write locks. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | performance sch _ ema | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/85 899 345 92, 1)} | [0-1] | Yes | Specifies whether to enable Performance Schema. When the server starts, you can configure this parameter based on your business requirements. You can set this parameter to 1 to enable Performance Schema. You can also set this parameter to 0 to disable Performance Schema. |
 |---|---|---|---|---|---|
 | preload buffer si _ _ ze | MyS QL 8.0 and MyS QL 5.7 | 327 68 | [1024- 10737418 24] | No | The size of the buffer that is allocated to preload indexes. |
@@ -1226,16 +1234,12 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | query cache limi _ _ t | 5.7 | 104 857 6 | [1- 1048576] | No | The maximum number of bytes that can be cached in a result. |
 | query cache min _ _ res unit _ _ | 5.7 | 102 4 | [512- 18446744 07370955 1608] | No | The minimum size of a block allocated by the query cache. Unit: bytes. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | query cache size _ _ | 5.7 | 0 | [0- 10485760 000] | No | The amount of memory that is allocated to cache query results. The default value 0 indicates that query caching is disabled. Valid values: multiples of 1024. If the value is not a multiple of 1024, the value is rounded to the nearest multiple. Unit: bytes. |
 |---|---|---|---|---|---|
 | query cache typ _ _ e | 5.7 | 0 | [0\|1\|2] | Yes | 0: does not cache or retrieve the query results. 1: caches all results except for the results of SELECT SQL NO CACHE. _ _ 2: caches only the results of SELECT SQL CACHE. _ |
 | query cache wlo _ _ ck invalidate _ | 5.7 | OFF | [ON\|OFF] | No | In most cases, if a client acquires a write lock on a MyISAM table, other clients are not prohibited from issuing statements that read data from the table if the query results exist in the query cache. If you set this parameter to ON, the acquisition of a write lock on a table causes the queries that reference the table in the query cache to be invalid. In this case, other clients that attempt to access the table must wait when the lock is in effect. |
 | query prealloc si _ _ ze | MyS QL 8.0 and MyS QL 5.7 | 819 2 | [8192- 1048576] | No | The size of the persistent buffer that is used for statement parsing and execution. This buffer is not released between statements. If complex queries are being run, a large value of query prealloc size helps improve query _ _ performance because the large value reduces the need for the server to allocate memory during queries. Unit: bytes. |
 | range alloc block _ _ size _ | MyS QL 8.0 and MyS QL 5.7 | 409 6 | [4096- 18446744 07370955 1615] | No | The size of blocks that are allocated when range optimization is performed. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | range optimizer _ _ max mem size _ _ | MyS QL 8.0 and MyS QL 5.7 | 838 860 8 | [0- 18446744 07370955 1615] | No | The limit on memory consumption for the range optimizer. The value 0 indicates that no limits are imposed. If an execution plan selected by the optimizer uses the range access method but the optimizer estimates that the amount of memory required for this method may exceed the limit, the optimizer abandons the execution plan and selects other plans. |
 |---|---|---|---|---|---|
@@ -1245,8 +1249,6 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | session track gti _ _ ds | MyS QL 8.0 and MyS QL 5.7 | OFF | [OFF\|OWN _ GTID\|ALL _ GTIDS] | No | Specifies whether to capture global transaction identifiers (GTIDs) and return the tracers of the GTIDs in the OK packet. If this parameter is enabled, the specified GTID is captured by the tracer and appended to the OK packet at the end of a transaction. |
 | sha256 password _ proxy users _ _ | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether the sha256 password _ built-in authentication extension supports proxy users. This parameter takes effect only when check proxy users is enabled. _ _ |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | show compatibili _ ty 56 _ | 5.7 | OFF | [ON\|OFF] | No | The INFORMATION SCHEMA table _ contains information about system variables and status variables. The Performance Schema table is used to replace the INFORMATION SCHEMA table _ that is deprecated as of MySQL 5.7.6 and is removed from later MySQL versions. |
 |---|---|---|---|---|---|
 | show old tempor _ _ als | MyS QL 8.0 and MyS QL 5.7 | OFF | [ON\|OFF] | No | Specifies whether to include comments in the output of SHOW CREATE TABLE to mark the temporal columns of the types that are supported in versions earlier than MySQL 5.6.4. The temporal columns indicate TIMESTAMP columns that do not support fractional seconds, TIME columns, and DATETIME columns. This parameter is disabled by default. If this parameter is enabled, the output of SHOW CREATE TABLE includes the comments to mark the temporal columns. |
@@ -1255,36 +1257,26 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | slave type conve _ _ rsions | MyS QL 8.0 and MyS QL 5.7 | - | [SPACE\|AL L LOSSY\|A _ LL NON L _ _ OSSY\|ALL _ SIGNED\|AL L UNSIGNE _ D] | Yes | The type conversion mode on the secondary server when row-based replication is used. |
 | slow launch time _ _ | MyS QL 8.0 and MyS QL 5.7 | 2 | [1-1024] | No | If the time that is required to create a thread exceeds the value of this parameter, the server increases the value of slow launch threads. _ _ |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | slow query log _ _ | MyS QL 8.0 and MyS QL 5.7 | ON | [ON\|OFF] | No | Specifies whether slow query logging is enabled. If this parameter is not used or set to ON, slow query logging is enabled. If this parameter is not specified or set to OFF, slow query logging is disabled. |
 |---|---|---|---|---|---|
 | sort buffer size _ _ | MyS QL 8.0 and MyS QL 5.7 | 262 144 | [32768- 42949672 95] | No | The size of the buffer allocated to each session that must perform a sort operation. |
 | sql mode _ | MyS QL 8.0 and MyS QL 5.7 | ONL Y F _ ULL _ GRO UP _ BY,S TRIC T T _ RAN S T _ ABL ES,N O Z _ ERO IN _ _ | (SPACE\|RE AL AS FLO _ _ AT\|PIPES A _ S CONCAT _ \|ANSI QUO _ TES\|IGNOR E SPACE\|O _ NLY FULL _ _ GROUP BY _ \|NO UNSIG _ NED SUBT _ RACTION\|N O DIR IN _ _ _ CREATE\|A NSI\|NO AU _ TO VALUE _ ON ZERO\| _ _ NO BACKS _ LASH ESC _ APES\|STRI CT TRANS _ _ TABLES\|ST RICT ALL _ _ TABLES\|NO ZERO IN _ _ _ DATE\|NO _ ZERO DAT _ E\|ALLOW I _ NVALID D _ ATES\|ERR OR FOR DI _ _ VISION BY _ ZERO\|TRA _ DITIONAL\| HIGH NOT _ PRECEDE _ NCE\|NO E _ NGINE SU _ BSTITUTIO N\|PAD CH _ AR TO FUL _ _ L LENGTH) _ (,REAL AS _ _ FLOAT\|,PIP ES AS CO _ _ NCAT\|,ANS | No | The SQL mode that defines the SQL syntax supported for MySQL and the type of data validation. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-|  |  | DAT E,N O Z _ ERO DA _ TE,E RRO R F _ OR _ DIVI SIO N B _ Y Z _ ERO ,NO _ EN GIN E S _ UBS TITU TIO N | I QUOTES\|, _ IGNORE SP _ ACE\|,ONLY FULL GRO _ _ UP BY\|,NO _ UNSIGNE _ D SUBTRA _ CTION\|,NO DIR IN C _ _ _ REATE\|,AN SI\|,NO AUT _ O VALUE _ _ ON ZERO\|, _ NO BACKS _ LASH ESC _ APES\|,STRI CT TRANS _ _ TABLES\|,S TRICT ALL _ TABLES\|, _ NO ZERO I _ _ N DATE\|,N _ O ZERO D _ _ ATE\|,ALLO W INVALID _ DATES\|,E _ RROR FOR _ DIVISION _ _ BY ZERO\|, _ TRADITION AL\|,HIGH _ NOT PREC _ |  |  |
+|   |   | DAT E,N O Z _ ERO DA _ TE,E RRO R F _ OR _ DIVI SIO N B _ Y Z _ ERO ,NO _ EN GIN E S _ UBS TITU TIO N | I QUOTES\|, _ IGNORE SP _ ACE\|,ONLY FULL GRO _ _ UP BY\|,NO _ UNSIGNE _ D SUBTRA _ CTION\|,NO DIR IN C _ _ _ REATE\|,AN SI\|,NO AUT _ O VALUE _ _ ON ZERO\|, _ NO BACKS _ LASH ESC _ APES\|,STRI CT TRANS _ _ TABLES\|,S TRICT ALL _ TABLES\|, _ NO ZERO I _ _ N DATE\|,N _ O ZERO D _ _ ATE\|,ALLO W INVALID _ DATES\|,E _ RROR FOR _ DIVISION _ _ BY ZERO\|, _ TRADITION AL\|,HIGH _ NOT PREC _ |   |   |
 |---|---|---|---|---|---|
-|  |  |  | EDENCE\|,N O ENGINE _ _ SUBSTITUT ION\|,PAD _ CHAR TO _ _ FULL LENG _ TH)* |  |  |
+|   |   |   | EDENCE\|,N O ENGINE _ _ SUBSTITUT ION\|,PAD _ CHAR TO _ _ FULL LENG _ TH)* |   |   |
 | stored program _ _ cache | MyS QL 8.0 and MyS QL 5.7 | 256 | [16- 524288] | No | The soft upper limit on the number of cached stored procedures for each connection. This parameter is specified based on the number of stored procedures in the caches that the MySQL server uses for stored procedures and stored functions. |
 | sync master info _ _ | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [0- 18446744 07370955 1615] | No | The effects of this parameter on a secondary server for replication vary based on the value (FILE or TABLE) of master info repository that is specified _ _ for the secondary server. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | sync relay log in _ _ _ fo | MyS QL 8.0 and MyS QL 5.7 | 100 00 | [0- 18446744 07370955 1615] | No | This parameter setting immediately takes effect for all replication channels, including running channels. |
 |---|---|---|---|---|---|
 | table definition c _ _ ache | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 737 418 24* 512, 204 8) } | [400- 524288] | No | The number of table definitions that can be stored in the definition cache. The table definitions are from a .frm file. If you use a large number of tables, you can create a large table definition cache to speed up the opening of tables. The table definition cache does not use file descriptors and occupies less storage than a standard table cache. Minimum value: 400. Default value: 400. |
 | table open cach _ _ e | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 737 418 24* 256, 204 8) } | [1-524288] | No | The number of open tables for all threads. A large value increases the number of file descriptors that mysqld requires. You can check Opened tables _ to determine whether to increase the table cache. For more information, see Server status variables. If the value of Opened tables is large and you do not _ frequently use FLUSH TABLES, we recommend that you set this parameter to a large value. FLUSH TABLES forcefully closes all tables and opens the tables again. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | table open cach _ _ e instances _ | MyS QL 8.0 and MyS QL 5.7 | {LE AST( DBIn stan ceCl ass Me mor y/10 737 418 24, 16)} | [1-64] | Yes | The number of open table cache instances. To improve scalability by reducing contention among sessions, the system can partition the open table cache into smaller cache instances. The number of the smaller cache instances is calculated by using the following formula: Value of table open cache/Value of _ _ table open cache instances. A session _ _ _ needs to lock only one instance and access the instance to execute DML statements. This segments cache access among instances, improving execution performance of the statements that use the cache when a large number of sessions access tables. DDL statements still need to lock the entire cache, but the frequency to use DDL statements is much less than the frequency to use DML statements. |
 |---|---|---|---|---|---|
 | temptable max r _ _ am | 8.0 | 107 374 182 4 | [2097152- 10737418 2400] | No | The maximum amount of memory that the TempTable storage engine can allocate from random-access memory (RAM) before data is stored to the disk. Unit: bytes. |
 | thread cache siz _ _ e | MyS QL 8.0 and MyS QL 5.7 | M y S Q L 8. 0: 1 0 0 M y S Q L 5. 7: 2 5 6 | [0-16384] | No | The number of threads that are cached by the server for reuse. If a client disconnects and the number of client threads in the cache is less than the value of thread cache size, the threads _ _ are stored in the cache. Requests for threads are satisfied by reusing threads in the cache if possible. A thread is created only when the cache is empty. If a large number of new connections are established, you can increase the value of this parameter to improve performance. In most cases, if a thread is implemented in a better manner, this parameter does not significantly improve performance. However, if your server processes hundreds of connections per second, we recommend that you set thread cache size to a large value. This _ _ way, most new connections can use cached threads. You can check the differences between Connections and Threads created to view the caching _ efficiency. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 | thread stack _ | MyS QL 8.0 and MyS QL 5.7 | 262 144 | [131072- 18446744 07370955 1615] | Yes | The stack size of each thread. The default value is 192 KB. If you use a 64- bit operating system, the default value is 256 KB. The default value is enough for standard operations. If the stack size of a thread is set to a small value, the following items are affected: the capability of the server to process complex SQL statements, the recursion depth of stored procedures, and memory-consuming operations. |
 |---|---|---|---|---|---|
@@ -1293,24 +1285,20 @@ ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 | transaction alloc _ block size _ _ | MyS QL 8.0 and MyS QL 5.7 | 819 2 | [1024- 131072] | No | The amount of memory that is allocated to a memory pool to process each additional transaction. Unit: bytes. For more information, see the description of transaction prealloc size. _ _ |
 | transaction isolat _ ion | MyS QL 8.0 and MyS QL 5.7 | REA D- COM MITT ED | [READ- UNCOMMIT TED\|READ- COMMITTE D\|REPEATA BLE- READ\|SERI ALIZABLE] | No | The transaction isolation level. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | transaction preal _ loc size _ | MyS QL 8.0 and MyS QL 5.7 | 409 6 | [1024- 131072] | No | The initial size of the memory pool for a transaction. Unit: bytes. The memory pool is used to allocate transaction- related memory. If each allocation cannot be satisfied from the pool because the pool does not have sufficient memory, the size of the pool is increased by the value of transaction alloc block size. When the _ _ _ transaction ends, the pool is truncated to transaction prealloc size bytes. _ _ |
 |---|---|---|---|---|---|
 | updatable views _ _ with limit _ | MyS QL 8.0 and MyS QL 5.7 | YES | [YES\|NO] | No | Specifies whether a view can be updated when the LIMIT clause is used in updates and when the view does not contain all columns of the primary key defined in the underlying table. In most cases, these updates are generated by GUI tools. An update can be an UPDATE or DELETE statement. The primary key indicates a primary key, or a UNIQUE index in which no column can contain NULL. |
 | wait timeout _ | MyS QL 8.0 and MyS QL 5.7 | 864 00 | [1- 31536000] | No | The period of time that the server waits for activity on a non-interactive connection before the server closes the non-interactive connection. Unit: seconds. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+### 5.10 Read-only instances
 
-### Read-only instances
+#### 5.10.1 Overview of read-only instances
 
-#### Overview of read-only instances
-
-ApsaraDB RDS for MySQL allows you to create read-only instances. In scenarios where an instance has a small number of write requests but a large number of read requests, you can create read-only instances to distribute database access loads away from the primary instance. This topic describes the features and limits of read-only instances. To scale up the reading capability and distribute database access loads, you can create one or more read-only instances in a region. Read-only instances can increase the application throughput when a large amount of data is being read. A read-only instance with a single physical node and no backup node uses the native replication capability of MySQL to synchronize changes from the primary instance to all its read-only instances. Read-only instances must be in the same region as the primary instance but do not have to be in the same zone as the primary instance. The following figure shows the topology of read-only instances. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+ApsaraDB RDS for MySQL allows you to create read-only instances. In scenarios where an instance has a small number of write requests but a large number of read requests, you can create read-only instances to distribute database access loads away from the primary instance. This topic describes the features and limits of read-only instances. To scale up the reading capability and distribute database access loads, you can create one or more read-only instances in a region. Read-only instances can increase the application throughput when a large amount of data is being read. A read-only instance with a single physical node and no backup node uses the native replication capability of MySQL to synchronize changes from the primary instance to all its read-only instances. Read-only instances must be in the same region as the primary instance but do not have to be in the same zone as the primary instance. The following figure shows the topology of read-only instances.
 **Read-only instances have the following features**:
 Specifications of a read-only instance can be different from those of the primary instance and can be changed at any time. This facilitates elastic scaling. Read-only instances do not require account or database maintenance. Account and database information is synchronized from the primary instance. The whitelists of read-only instances can be independently configured. System performance monitoring is provided. ApsaraDB RDS provides up to 20 system performance monitoring views, including those for disk capacity, IOPS, connections, CPU utilization, and network traffic. You can view the load of instances. ApsaraDB RDS provides a variety of optimization recommendations, such as storage engine check, primary key check, large table check, and check for excessive indexes and missing indexes. You can optimize your databases based on the optimization recommendations and specific applications.
 
-#### Create a read-only instance
+#### 5.10.2 Create a read-only instance
 
 You can create read-only instances of different specifications based on your business requirements.
 
@@ -1318,19 +1306,8 @@ You can create read-only instances of different specifications based on your bus
 
 A maximum of five read-only instances can be created for a primary instance. Read-only instances do not support backup settings or temporary backup. Read-only instances do not support instance restoration. Data migration to read-only instances is not supported. Read-only instances do not support database creation or deletion. Read-only instances do not support account creation, deletion, authorization, or password changes. After a read-only instance is created, you cannot restore data by directly overwriting the data of its primary instance with a backup set.
 
-| Section | Parameter | Description |
-|---|---|---|
-| Area | Region | The region in which you want to create the read- only ApsaraDB RDS instance. |
-| Specification Configuration | Database Type | The database type of the read-only instance, which is the same as that of the primary instance and cannot be changed. |
-|  | Database Version | The version of the database engine for the read- only instance, which is the same as that of the primary instance and cannot be changed. |
-|  | Series | Read-only Instance is always selected. |
-|  | Specifications | The instance type of the read-only instance. The instance type of the read-only instance can be different from that of the primary instance, and can be changed at any time to facilitate flexible upgrade and downgrade. |
-|  | Storage Capacity | The storage capacity of the read-only instance. To ensure sufficient I/O throughput for data synchronization, we recommend that you select at least the same instance type and storage capacity as the primary instance for the read- only instance. Valid values: 20 to 6000. Unit: GB. The value is in 1 GB increments. |
-| Network Type | Network Type | The network type of the read-only instance. It must be the same as that of the primary instance and cannot be changed. |
-|  | Private network vpc | The virtual private cloud (VPC) in which you want to create the read-only instance. This parameter is required when Network Type is set to Proprietary Network. |
-| Document Version: 2026 | 0629 10 |  |
+**Procedure**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -1339,13 +1316,24 @@ click **Add**.
 4. On the **Create Read-only ApsaraDB RDS Instance** page, configure the parameters for
 the read-only instance.
 
-|  | Switch vswitch | The vSwitch in the VPC. This parameter is required when Network Type is set to Proprietary Network. |
+| Section | Parameter | Description |
+|---|---|---|
+| Area | Region | The region in which you want to create the read- only ApsaraDB RDS instance. |
+| Specification Configuration | Database Type | The database type of the read-only instance, which is the same as that of the primary instance and cannot be changed. |
+|   | Database Version | The version of the database engine for the read- only instance, which is the same as that of the primary instance and cannot be changed. |
+|   | Series | Read-only Instance is always selected. |
+|   | Specifications | The instance type of the read-only instance. The instance type of the read-only instance can be different from that of the primary instance, and can be changed at any time to facilitate flexible upgrade and downgrade. |
+|   | Storage Capacity | The storage capacity of the read-only instance. To ensure sufficient I/O throughput for data synchronization, we recommend that you select at least the same instance type and storage capacity as the primary instance for the read- only instance. Valid values: 20 to 6000. Unit: GB. The value is in 1 GB increments. |
+| Network Type | Network Type | The network type of the read-only instance. It must be the same as that of the primary instance and cannot be changed. |
+|   | Private network vpc | The virtual private cloud (VPC) in which you want to create the read-only instance. This parameter is required when Network Type is set to Proprietary Network. |
+| Document Version: 2026 | 0629 10 |   |
+
+|   | Switch vswitch | The vSwitch in the VPC. This parameter is required when Network Type is set to Proprietary Network. |
 |---|---|---|
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 5. After you complete the configuration, click **Submit**.
 
-#### View details of read-only instances
+#### 5.10.3 View details of read-only instances
 
 This topic describes how to view details of read-only instances. You can go to the Basic Information page of a read-only instance from the Instance List page or from the read-only instance list of the primary instance. Read-only instances are managed in the same manner as primary instances. The Basic Information page shows the management operations that can be performed.
 
@@ -1375,7 +1363,7 @@ displayed.
 4. Click the ID of the read-only instance to go to the Basic Information page of the read-only
 instance.
 
-### Manage instances in the
+### 5.11 Manage instances in the recycle bin
 
 **recycle bin**
 
@@ -1383,7 +1371,11 @@ This topic describes how to recreate or destroy an ApsaraDB RDS instance in the 
 
 **Usage notes**
 
-All ApsaraDB RDS for MySQL instances, except for the following instances, are moved to the recycle bin after they are manually released: Instances that are manually released within seven days after they are created. Instances that are **read-only**. ApsaraDB for RDS ApsaraDB RDS for MySQL User G If you manually release an ApsaraDB RDS instance that runs for more than seven days, backup files of the instance are retained for another eight days. Within the eight-day retention period, you can create another instance and restore data from the backup files to the new instance. Instance backups are no longer retained on the 9th day after the instance is released.
+All ApsaraDB RDS for MySQL instances, except for the following instances, are moved to the recycle bin after they are manually released: Instances that are manually released within seven days after they are created. Instances that are **read-only**.
+
+**Recreate an instance**
+
+If you manually release an ApsaraDB RDS instance that runs for more than seven days, backup files of the instance are retained for another eight days. Within the eight-day retention period, you can create another instance and restore data from the backup files to the new instance. Instance backups are no longer retained on the 9th day after the instance is released.
 1. Log in to the ApsaraDB RDS console.
 2. In the upper-left corner of the page, select an organization. In the left-side navigation pane,
 click **Recycle Bin**.
@@ -1408,7 +1400,7 @@ click **Recycle Bin**.
 3. Find the released instance and click **Destroy immediately** in the Operation column. In the
 message that appears, click **OK**.
 
-### Manage tags
+### 5.12 Manage tags
 
 If you have a large number of instances, you can create multiple tags and add the tags to the instances. Then, you can query instances by tag. This topic describes how to manage tags.
 
@@ -1419,7 +1411,6 @@ A tag consists of a key-value pair. Each key must be unique for an Alibaba Cloud
 **Add tags**
 
 1. Log on to the ApsaraDB RDS console.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 2. On the **Instances** page, find the required instance and click the
 icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, enter the tag key and tag value and click **OK**.
@@ -1446,9 +1437,35 @@ icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, click the
 icon to the right of the tag and click **OK**.
 
+## 6 Accounts
+
+### 6.1 Language Detection
+
+Detect the language of the input text. Supports automatic recognition of 23 languages. Best suited to short text such as search queries, product titles, and chat messages. Synchronous.
+
+**Endpoint**
+
+```
+POST /ai/text/marco/language-detection
+```
+
+**Use cases**
+
+Cross-border search -- detect the buyer's search-query language and route to the matching index. Title preprocessing -- detect source language automatically before calling the Text Translation API, so callers do not need to pass `SourceLanguage` . Chat routing -- forward users to native-language agents based on detected language.
+
+**Quick start**
+
+```java
+import json data = json.dumps({ "SourceText": "Hello world" }) result = make_signed_request("/ai/text/marco/language-detection", data) print(result["Data"]["DetectedLanguage"]) # en
+```
+
+**Request parameters**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | SourceText | String | Yes | Text to identify. Up to ~1024 characters recommended; very short inputs (single tokens) have lower accuracy. |
+
+**Response fields**
 
 | Field | Type | Description |
 |---|---|---|
@@ -1457,27 +1474,7 @@ icon to the right of the tag and click **OK**.
 | RequestId | String | Unique request identifier. |
 | Success | Boolean | Whether the call succeeded. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Accounts
-
-### Language Detection
-
-Detect the language of the input text. Supports automatic recognition of 23 languages. Best suited to short text such as search queries, product titles, and chat messages. Synchronous.
-
-**Use cases**
-
-Cross-border search -- detect the buyer's search-query language and route to the matching index. Title preprocessing -- detect source language automatically before calling the Text Translation API, so callers do not need to pass `SourceLanguage` . Chat routing -- forward users to native-language agents based on detected language.
-
-```java
-import json data = json.dumps({ "SourceText": "Hello world" }) result = make_signed_request("/ai/text/marco/language-detection", data) print(result["Data"]["DetectedLanguage"]) # en
-```
-
-**Request parameters**
-
-**Response fields**
-
-| psaraDB RDS for MySQL User G |  | ApsaraDB for RD |
+| psaraDB RDS for MySQL User G |   | ApsaraDB for RD |
 |---|---|---|
 
 | Field | Type | Description |
@@ -1485,31 +1482,14 @@ import json data = json.dumps({ "SourceText": "Hello world" }) result = make_sig
 | Data.DetectedLanguage | String | Detected language code; see "Supported languages" below. |
 | Data.UsageMap.RequestCount | Number | Request count for billing reconciliation. |
 
-|  | Data.UsageMap.RequestCount |  |
+|   | Data.UsageMap.RequestCount |   |
 |---|---|---|
-
-| ngali ( bn ), German ( de he ), Indonesian ( id ), It tch ( nl ), Polish ( pl ), Po krainian ( uk ), Urdu ( ur Traditional ( zh-tw ). |  | de |  |
-|---|---|---|---|
-|  | id |  |  |
-|  |  |  | ), It ), Po |
-|  | pl |  |  |
-
-| lish ( | en |
-|---|---|
-| it |  |
-
-|  | es |
-|---|---|
-| ja |  |
-
-| ms |  | ), |
-|---|---|---|
-| ( |  |  |
 
 **Response example**
 
+`{`
+
 ```json
-{
   "Code": "Success",
   "Message": "ok",
   "RequestId": "21570000-0000-0000-0000-000000000001",
@@ -1517,11 +1497,33 @@ import json data = json.dumps({ "SourceText": "Hello world" }) result = make_sig
   "Data": {
     "DetectedLanguage": "en",
     "UsageMap": { "RequestCount": 1 }
-  }
-}
 ```
 
+`}` `}`
+
 **Supported languages (23)**
+
+| ngali ( bn ), German ( de he ), Indonesian ( id ), It tch ( nl ), Polish ( pl ), Po krainian ( uk ), Urdu ( ur Traditional ( zh-tw ). |   | de |   |
+|---|---|---|---|
+|   | id |   |   |
+|   |   |   | ), It ), Po |
+|   | pl |   |   |
+
+| lish ( | en |
+|---|---|
+| it |   |
+
+|   | es |
+|---|---|
+| ja |   |
+
+( `fr` ), Hebrew ( `he` ), Indonesian ( `id` ), Italian ( `it` ), Japanese ( `ja` ), Korean ( `ko` ),
+
+| ms |   | ), |
+|---|---|---|
+| ( |   |   |
+
+Malay ( `ms` ), Dutch ( `nl` ), Polish ( `pl` ), Portuguese ( `pt` ), Russian ( `ru` ), Thai ( `th` ),
 
 **Error codes**
 
@@ -1531,17 +1533,19 @@ Common error codes: `InvalidParameter` (missing or empty `SourceText` ), `Intern
 
 Text Translation API -- translate plain text. Text Correction API -- spelling correction.
 
-### Package Audit
+### 6.2 Package Audit
 
-Logistics package audit endpoint powered by a multimodal LLM (MLLM) plus a dedicated CV model. Submit a raw capture image and an annotated image (with manual bounding boxes) to receive a boolean decision plus a Chinese explanation. **Asynchronous**: submit the task to obtain a TaskId, then poll the unified async result endpoint. Built-in scene routing automatically detects background type (white / green) and bounding-box type (none / single / double) -- no scene flag required from the caller. Asynchronous: submit the task to obtain a `TaskId` , then poll the unified async result endpoint ( `QueryAsyncTaskResult` ). See the official released API documentation for the submit endpoint path.
+Logistics package audit endpoint powered by a multimodal LLM (MLLM) plus a dedicated CV model. Submit a raw capture image and an annotated image (with manual bounding boxes) to receive a boolean decision plus a Chinese explanation. **Asynchronous**: submit the task to obtain a TaskId, then poll the unified async result endpoint. Built-in scene routing automatically detects background type (white / green) and bounding-box type (none / single / double) -- no scene flag required from the caller.
+
+**Endpoint**
+
+Asynchronous: submit the task to obtain a `TaskId` , then poll the unified async result endpoint ( `QueryAsyncTaskResult` ). See the official released API documentation for the submit endpoint path.
 
 **Use cases**
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| RawImageUrl | String | Yes | Publicly accessible URL of the unannotated package capture image. Requirements: PNG / JPEG / JPG / BMP / WEBP; resolution <= 4000 x 4000; file size <= 10 MB. |
+Package bounding-box audit -- detect over-sized or under-sized bounding boxes in warehouse quality checks. Foreign-object detection -- flag fingers, keyboards, or auxiliary tools that interfere with package measurement. Multi-capture-environment support -- handles white-background with blue box, greenbackground with blue + red box, and other hardware setups. Receiving-line quality control -- replaces or augments manual outsourced review.
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G Package bounding-box audit -- detect over-sized or under-sized bounding boxes in warehouse quality checks. Foreign-object detection -- flag fingers, keyboards, or auxiliary tools that interfere with package measurement. Multi-capture-environment support -- handles white-background with blue box, greenbackground with blue + red box, and other hardware setups. Receiving-line quality control -- replaces or augments manual outsourced review.
+**Quick start**
 
 ```java
 import json import time
@@ -1549,7 +1553,12 @@ import json import time
 submit_data = json.dumps({
     "RawImageUrl": "https://example.com/raw.jpg",
     "AnnotatedImageUrl": "https://example.com/annotated.jpg"
-}) submit_resp = make_signed_request("<package_audit_submit_endpoint>", submit_data) task_id = submit_resp["Data"]["TaskId"]
+```
+
+`})`
+
+```python
+submit_resp = make_signed_request("<package_audit_submit_endpoint>", submit_data) task_id = submit_resp["Data"]["TaskId"]
 # 2. Poll the unified async query endpoint
 while True:
     query_data = json.dumps({"TaskId": task_id})
@@ -1569,40 +1578,42 @@ while True:
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| RawImageUrl | String | Yes | Publicly accessible URL of the unannotated package capture image. Requirements: PNG / JPEG / JPG / BMP / WEBP; resolution <= 4000 x 4000; file size <= 10 MB. |
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | AnnotatedImageUrl | String | Yes | Publicly accessible URL of the annotated image (raw image with manual blue / red rectangle annotations overlaid). Same requirements as RawImageUrl . |
 
-|  | AnnotatedImageUrl |
+|   | AnnotatedImageUrl |
 |---|---|
-
-|  | Data.Result |
-|---|---|
-| result |  |
-
-| Data.Result.result | Data.Result.info (CN) | Meaning |
-|---|---|---|
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 **Response fields**
 
 **Submit response**
 
+`{`
+
 ```json
-{
   "Data": {
     "TaskId": "a8323ada-a196-9061-976f-90e38b27323a"
-  },
+```
+
+`},`
+
+```json
   "RequestId": "F93D82E4-D0B6-1043-AC58-282597BC3C10",
   "Message": "Success",
   "Code": "success",
   "Success": true
-}
 ```
+
+`}`
 
 **Query response (COMPLETED)**
 
+`{`
+
 ```json
-{
   "Data": {
     "Status": "COMPLETED",
     "UsageMap": { "ProcessingCount": "1" },
@@ -1615,18 +1626,32 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 ```json
       "result": true,
       "usageMap": { "ProcessingCount": 1 }
-    }
-  },
+```
+
+`}` `},`
+
+```json
   "RequestId": "BB79D551-60FA-16FB-A78C-88B0A881BEC4",
   "Message": "Success",
   "Code": "success",
   "Success": true
-}
 ```
+
+`}`
+
+|   | Data.Result |
+|---|---|
+| result |   |
+
+**Note**: `Data.Result` in the query response is a **nested object** (not a boolean). It contains
+`result` (boolean), `info` (string), and `usageMap` .
 
 **Decision values**
 
 `Data.Result.info` returns one of the following Chinese strings:
+
+| Data.Result.result | Data.Result.info (CN) | Meaning |
+|---|---|---|
 
 | Data.Result.result | Data.Result.info (CN) | Meaning |
 |---|---|---|
@@ -1635,14 +1660,14 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | false | 审核不通过:框选过小 | Bounding box is clearly smaller than the actual package; recapture required. |
 | false | 审核不通过:存在异物 | A foreign object (finger, keyboard, etc.) is interfering with the capture. |
 
+**Error codes**
+
 | Common error codes: | InvalidParameter |
 |---|---|
-| DownstreamUnavailable |  |
-| InputContentBlocked |  |
+| DownstreamUnavailable |   |
+| InputContentBlocked |   |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-**Error codes**
+`DownstreamUnavailable` (image download failed or downstream model unavailable), `InputContentBlocked` (image triggered content safety review), `InternalError` (system busy). See Error codes for the full reference.
 
 **Architecture**
 
@@ -1657,7 +1682,7 @@ box-type recognition (none / single / double) route the request to the appropria
 
 Error codes -- full error code reference. Rate limits -- QPS limits.
 
-### Product Material Optimization
+### 6.3 Product Material Optimization Pro
 
 **Pro**
 
@@ -1672,22 +1697,6 @@ POST /ai/material/optimization/pro
 ```
 
 **Query optimization result**
-
-| Field | Type | Description |
-|---|---|---|
-| Data.Result.BulletPoints | String[] | Five-point bullets for detail- page selling points. |
-| Data.Result.SizeChart | Object | Apparel size chart (when applicable); fields include size / bust / waist / length. |
-| Data.Result.PackageInfo | Object | Package weight / dimension info (when applicable). |
-| Data.Result.TranslatedImag es | Object[] | Marketing images localized through Image Translation Pro. |
-
-|  | Data.Result.BulletPoints |
-|---|---|
-
-|  | Data.Result.TranslatedImag | O |
-|---|---|---|
-| es |  |  |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 ```
 POST /ai/material/optimization/pro/result
@@ -1715,7 +1724,23 @@ Pro and Lite share the same 31-field schema; the difference is the server-side w
 
 **Response fields (query)**
 
-Pro adds the following fields on top of Lite: Shared fields ( `Status` , `Images` , `Title` , `Attributes` , `CategoryPath` , `UsageMap` ) are the same as Lite.
+Pro adds the following fields on top of Lite:
+
+| Field | Type | Description |
+|---|---|---|
+| Data.Result.BulletPoints | String[] | Five-point bullets for detail- page selling points. |
+| Data.Result.SizeChart | Object | Apparel size chart (when applicable); fields include size / bust / waist / length. |
+| Data.Result.PackageInfo | Object | Package weight / dimension info (when applicable). |
+| Data.Result.TranslatedImag es | Object[] | Marketing images localized through Image Translation Pro. |
+
+|   | Data.Result.BulletPoints |
+|---|---|
+
+|   | Data.Result.TranslatedImag | O |
+|---|---|---|
+| es |   |   |
+
+Shared fields ( `Status` , `Images` , `Title` , `Attributes` , `CategoryPath` , `UsageMap` ) are the same as Lite.
 
 **Error codes**
 
@@ -1723,20 +1748,16 @@ See Error codes.
 
 **What's next**
 
-Product Material Optimization Lite -- lowest-cost tier.
+Product Material Optimization Lite -- lowest-cost tier. Smart Image Generation API -- detailed field schema for the 7 atomic capabilities.
 
-| Parameter | Description |
-|---|---|
-| Authorize Database | On the Edit Account Permissions tab, select a database in the left Unauthorized Databases section, and click Add to authorize the database. In the right Authorized Databases section, select a database and click Remove to remove the permissions from the database. |
-| Set Account Permissions | You can set permissions on each database in the Authorized Databases section. You can also click the button such as Set All to Read/Write in the upper-right corner to set the permissions of the account on all authorized databases. Read-Only: grants the account read-only permissions on databases. Read/Write: grants the account read and write permissions on databases. DDL Only: grants the account DDL permissions on databases. DML Only: grants the account DML permissions on databases. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G Smart Image Generation API -- detailed field schema for the 7 atomic capabilities.
-
-### Modify the permissions of an
+### 6.4 Modify the permissions of an account
 
 **account**
 
 You can edit the account permissions of your ApsaraDB RDS instance at any time.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -1748,17 +1769,19 @@ column.
 
 You can only edit the permissions of standard accounts. The permissions of privileged accounts can only be reset to the default settings and cannot be changed to a specific set of permissions.
 5. Configure the parameters described in the following table.
+
+| Parameter | Description |
+|---|---|
+| Authorize Database | On the Edit Account Permissions tab, select a database in the left Unauthorized Databases section, and click Add to authorize the database. In the right Authorized Databases section, select a database and click Remove to remove the permissions from the database. |
+| Set Account Permissions | You can set permissions on each database in the Authorized Databases section. You can also click the button such as Set All to Read/Write in the upper-right corner to set the permissions of the account on all authorized databases. Read-Only: grants the account read-only permissions on databases. Read/Write: grants the account read and write permissions on databases. DDL Only: grants the account DDL permissions on databases. DML Only: grants the account DML permissions on databases. |
+
 6. After you complete the configuration, click **OK**.
 
-### Product Material Optimization
+### 6.5 Product Material Optimization Lite
 
 **Lite**
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| ImageUrl | String | Yes | Image URL (or 1688 product URL parsed by the server). Resolution > 512×512; long side ≤ 1920; short side ≤ 1080; size ≤ 5 MB; png / jpeg / jpg / bmp / webp. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS The **lowest-cost** tier of the one-click cross-platform material optimization service. Given a 1688 product URL, produce TEMU-ready titles, attributes, hero images, SKU images, detail images, and copy. Uses the official Lowest Cost workflow: filtering and light processing, no high-cost image translation. Asynchronous.
+The **lowest-cost** tier of the one-click cross-platform material optimization service. Given a 1688 product URL, produce TEMU-ready titles, attributes, hero images, SKU images, detail images, and copy. Uses the official Lowest Cost workflow: filtering and light processing, no high-cost image translation. Asynchronous.
 
 **Endpoints**
 
@@ -1795,14 +1818,22 @@ Lite and Pro share the same 31-field schema; the difference is the server-side w
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| ImageUrl | String | Yes | Image URL (or 1688 product URL parsed by the server). Resolution > 512×512; long side ≤ 1920; short side ≤ 1080; size ≤ 5 MB; png / jpeg / jpg / bmp / webp. |
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | Ability | Number[] | Yes | AI capabilities to invoke: 1=element detection, 2=smart matting, 3=smart removal, 4=image translation Pro, 5=image expansion, 6=smart crop, 7=upscale. Lite typically omits 4. |
 | TargetPlatform | String | Yes | Target listing platform. Only TEMU is supported today. |
 | TargetLanguage | String | No | Target language for text localization. |
 
-| s ( |  |  |  |  |  |  |
+| s ( |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|
-| TargetWidth |  |  | TargetHeight |  |  |  |
-|  |  | , |  | , | UpscaleFactor | , etc.) |
+| TargetWidth |   |   | TargetHeight |   |   |   |
+|   |   | , |   | , | UpscaleFactor | , etc.) |
+
+semantics as in the Smart Image Generation API.
+
+**Response fields (query)**
 
 | Field | Type | Description |
 |---|---|---|
@@ -1813,16 +1844,18 @@ Lite and Pro share the same 31-field schema; the difference is the server-side w
 | Data.Result.CategoryPath | String | Matched category path on the target platform. |
 | Data.Result.UsageMap.Proce ssedImageCount | Number | Images processed (for billing reconciliation). |
 
-|  | RUNNING |  |
+|   | RUNNING |   |
 |---|---|---|
-| COMPLETED |  |  |
+| COMPLETED |   |   |
 
-|  | Data.Result.CategoryPath |
+|   | Data.Result.CategoryPath |
 |---|---|
 
-|  | Data.Result.UsageMap.Proce | Number |
+|   | Data.Result.UsageMap.Proce | Number |
 |---|---|---|
-| ssedImageCount |  |  |
+| ssedImageCount |   |   |
+
+**Lite vs Pro**
 
 | Dimension | Lite (this API) | Pro |
 |---|---|---|
@@ -1831,13 +1864,7 @@ Lite and Pro share the same 31-field schema; the difference is the server-side w
 | Image Translation Pro | Not invoked | Invoked |
 | Category-specific assets | None | Yes (size charts, etc.) |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-**Response fields (query)**
-
-**Lite vs Pro**
-
-| A u | psaraDB RDS for MySQL User G ide·Accounts |  | ApsaraDB for RD | S |
+| A u | psaraDB RDS for MySQL User G ide·Accounts |   | ApsaraDB for RD | S |
 |---|---|---|---|---|
 
 | Dimension | Lite (this API) | Pro |
@@ -1852,10 +1879,28 @@ See Error codes.
 
 Product Material Optimization Pro -- best-quality tier. Smart Image Generation API -- detailed field schema for the 7 atomic capabilities.
 
+## 7 Category Match
+
+LLM-based cross-platform category matching. Given source-platform product info, automatically pick the best category on the target listing platform and return the full path, a confidence score, and the rationale. Synchronous. Only `TEMU` is supported today.
+
+**Endpoint**
+
+```
+POST /ai/material/category/match
+```
+
+**Use cases**
+
+Merchants relisting sourced goods need to map to the correct node in the target platform's category tree. Top sellers' internal bulk pipelines, ERP / SaaS-driven publishing, fast SMB single-item listing.
+
+**Effect showcase**
+
 | Case | Example image |
 |---|---|
 | 1688 USB fan → TEMU "Home Appliances > Heating, Cooling & Air Quality Appliances > Fans > USB Fans" | USB fan case |
 | 1688 bracelet → TEMU "Clothing, Shoes & Jewelry > Women's Fashion > Women's Accessories > Women's Fashion Bracelets..." | Bracelet case |
+
+**Request parameters**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1866,25 +1911,11 @@ Product Material Optimization Pro -- best-quality tier. Smart Image Generation A
 | ProductAttributes | Object | No | Product attribute key- value pairs. |
 | TargetPlatform | String | Yes | Listing platform. Only TEMU today. |
 
-|  | ProductDescription |
+|   | ProductDescription |
 |---|---|
 
-|  | ProductAttributes |
+|   | ProductAttributes |
 |---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Category Match
-
-LLM-based cross-platform category matching. Given source-platform product info, automatically pick the best category on the target listing platform and return the full path, a confidence score, and the rationale. Synchronous. Only `TEMU` is supported today.
-
-**Use cases**
-
-Merchants relisting sourced goods need to map to the correct node in the target platform's category tree. Top sellers' internal bulk pipelines, ERP / SaaS-driven publishing, fast SMB single-item listing.
-
-**Effect showcase**
-
-**Request parameters**
 
 **Response fields**
 
@@ -1895,12 +1926,11 @@ Merchants relisting sourced goods need to map to the correct node in the target 
 | Data.Confidence | Number | Confidence score (0-100). Recommend human review below 70. |
 | Data.Reason | String | Match rationale. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 **Response example**
 
+`{`
+
 ```json
-{
   "Code": "Success",
   "Data": {
     "CategoryPath": "Home Appliances > Heating, Cooling & Air Quality > Fans > USB Fans
@@ -1912,9 +1942,9 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
     "CategoryName": "USB Fans",
     "Confidence": 95,
     "Reason": "Title contains USB / fan keywords; source category is synonymous."
-  }
-}
 ```
+
+`}` `}`
 
 **Error codes**
 
@@ -1924,9 +1954,11 @@ See Error codes.
 
 Category Attribute Match API -- fill required attributes within the matched category.
 
-### Category Attribute Match
+### 7.1 Category Attribute Match
 
 Multimodal-LLM-based cross-platform category-attribute filling. Given source-platform product info (title, source category, description, SKU, attributes, up to 10 images), match the precise target-platform category and fill every required attribute, with a per-attribute confidence and rationale. Synchronous.
+
+**Endpoint**
 
 ```
 POST /ai/material/category/attribute
@@ -1948,25 +1980,24 @@ POST /ai/material/category/attribute
 | ImageUrls | String[] | No | Up to 10 image URLs. The multimodal model infers attributes from images. |
 | TargetPlatform | String | Yes | Listing platform. Only TEMU today. |
 
-|  | ProductDescription |
+|   | ProductDescription |
 |---|---|
 
-|  | ProductAttributes |
+|   | ProductAttributes |
 |---|---|
+
+**Response fields**
 
 | Field | Type | Description |
 |---|---|---|
 | Data.CategoryPath | String | Matched precise category path on the target platform. |
 | Data.Attributes | Object[] | Filled attributes. Each item has Name , Value , Confidence (0-100), Reason , and SourceMatched (whether the value reused a source- platform attribute). |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-**Response fields**
-
 **Response example**
 
+`{`
+
 ```json
-{
   "Code": "Success",
   "Data": {
     "CategoryPath": "Home Appliances > Fans > USB Fans",
@@ -1977,14 +2008,7 @@ tle and image both indicate rechargeable", "SourceMatched": false },
 ort visible in image", "SourceMatched": true }
 ```
 
-]
-
-```
-  }
-}
-```
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+`]` `}` `}`
 
 **Error codes**
 
@@ -1994,9 +2018,12 @@ See Error codes.
 
 Category Match API -- category match alone.
 
-### Delete a database
+### 7.2 Delete a database
 
 You can delete databases that are no longer used in the ApsaraDB RDS console.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2004,31 +2031,29 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. Find the database that you want to delete and click **Delete** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-| ColumnNameList |  | t |
+## 8 Size Chart Extraction
+
+Use a multimodal LLM to extract structured size-chart and package-dimension data from
+
+| ColumnNameList |   | t |
 |---|---|---|
-| n; |  |  |
+| n; |   |   |
 
-| Parameter | Type | Required |  | Description |  |  |
-|---|---|---|---|---|---|---|
-| ImageUrl | String | Yes |  | URL of the image containing the size chart. |  |  |
-| ColumnNameList | String[] | No |  | Target columns to extract (e.g., ["Size", "Bust", "Length"] ). Omit to extract all columns. |  |  |
-|  |  |  |  |  | ["Size", "Bust", |  |
-|  |  |  |  | "Length"] |  |  |
-| LanguageModel | String | No |  | Output language: cn or en . Omit to keep the original language. |  |  |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| TaskId | String | Yes | Task ID returned by the submit endpoint. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Size Chart Extraction
+images. `ColumnNameList` targets specific columns (e.g., Size, Bust, Length) for precise extraction; `LanguageModel` controls output language (Chinese, English, or original). Asynchronous: submit, then poll.
 
 **Endpoints**
 
 **Submit extraction task**
 
+```
+POST /ai/image/size-chart/extraction
+```
+
 **Query extraction result**
+
+```
+POST /ai/image/size-chart/extraction/result
+```
 
 **Input example**
 
@@ -2040,43 +2065,60 @@ Apparel category size-chart text-ification. Bulk structuring of package weight /
 
 **Request parameters (submit)**
 
+| Parameter | Type | Required |   | Description |   |   |
+|---|---|---|---|---|---|---|
+| ImageUrl | String | Yes |   | URL of the image containing the size chart. |   |   |
+| ColumnNameList | String[] | No |   | Target columns to extract (e.g., ["Size", "Bust", "Length"] ). Omit to extract all columns. |   |   |
+|   |   |   |   |   | ["Size", "Bust", |   |
+|   |   |   |   | "Length"] |   |   |
+| LanguageModel | String | No |   | Output language: cn or en . Omit to keep the original language. |   |   |
+
 **Request parameters (query)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| TaskId | String | Yes | Task ID returned by the submit endpoint. |
 
 **Response fields (query)**
 
-| : message.<ImageUrl>.size chart (extracted rows), intersection attributes _ _ tersecting ColumnNameList ), size chart attributes (columns actually _ _ usageMap.ProcessedImageCount (usage). | message.<ImageUrl>.size chart _ |  |  |  | (extracted rows), | intersection attributes _ |
-|---|---|---|---|---|---|---|
-|  |  | ColumnNameList | ), |  |  |  |
-| usageMap.ProcessedImageCount |  |  |  |  |  |  |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS The response carries the raw multimodal-model structure (snake_case), which differs from the PascalCase convention used elsewhere:
+The response carries the raw multimodal-model structure (snake_case), which differs from the PascalCase convention used elsewhere: `{`
 
 ```json
-{
   "Code": "Success",
   "Data": {
     "message": {
       "<ImageUrl>": {
         "size_chart": [
-          {
+```
+
+`{`
+
+```json
             "Weight":  { "unit": "kg", "upper_value": 47.5, "lower_value": 40 },
             "Length":  { "unit": "CM", "value": 81 },
             "Size":    { "value": "S" },
             "Waist (stretched)": { "unit": "CM", "value": 58 }
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "intersection_attributes": ["Size", "Length", "Waist (stretched)", "Weight"],
         "size_chart_attributes":   ["Size", "Length", "Waist (stretched)", "Weight"]
-      }
-    },
-    "usageMap": { "ProcessedImageCount": 1 }
-  }
-}
 ```
+
+`}` `},`
+
+```json
+    "usageMap": { "ProcessedImageCount": 1 }
+```
+
+`}` `}`
+
+| : message.<ImageUrl>.size chart (extracted rows), intersection attributes _ _ tersecting ColumnNameList ), size chart attributes (columns actually _ _ usageMap.ProcessedImageCount (usage). | message.<ImageUrl>.size chart _ |   |   |   | (extracted rows), | intersection attributes _ |
+|---|---|---|---|---|---|---|
+|   |   | ColumnNameList | ), |   |   |   |
+| usageMap.ProcessedImageCount |   |   |   |   |   |   |
 
 **Error codes**
 
@@ -2086,7 +2128,7 @@ See Error codes.
 
 Size Chart Detection API -- screen images first to save cost before extraction.
 
-### Change the endpoint and port
+### 8.1 Change the endpoint and port number of an instance
 
 **number of an instance**
 
@@ -2100,10 +2142,9 @@ instance that you want to manage and click the ID of the instance or click **Man
 3. In the **Basic Information** section, view the internal and public endpoints and port
 numbers.
 
-### Change the endpoint and port number of an instance
+**Change the endpoint and port number of an instance**
 
 1. Log in to the ApsaraDB RDS console.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, click **Database Connection**.
@@ -2115,7 +2156,7 @@ click **OK**.
 
 The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be a value within the range of 1000 to 65534.
 
-### Apply for and release an
+### 8.2 Apply for and release an internal endpoint or a public endpoint for an instance
 
 **internal endpoint or a public**
 
@@ -2141,7 +2182,6 @@ If an endpoint is no longer needed, you can release the endpoint to ensure insta
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, click **Database Connection**.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 4. Release an internal endpoint or a public endpoint:
 To release a public endpoint, click **Release Public Endpoint**. To release an internal endpoint, click **Release Internal Endpoint**.
 5. In the message that appears, click **OK**.
@@ -2150,7 +2190,7 @@ To release a public endpoint, click **Release Public Endpoint**. To release an i
 
 Q: Can I change the endpoints and port numbers of my ApsaraDB RDS instance? A: You can change only the prefixes and port numbers of the endpoints. For more information, see Change the endpoint and port number of an instance. Q: Can I configure the endpoints of my ApsaraDB RDS instance to static IP addresses? A: No, you cannot configure the endpoints of your ApsaraDB RDS instance to static IP addresses. Both primary/secondary switchovers and specification changes may cause changes to the IP addresses. We recommend that you connect to your ApsaraDB RDS instance by using an endpoint. This allows you to minimize the impact on your workloads and eliminates the need to modify the configuration data on your application. Q: How do I connect to my ApsaraDB RDS instance by using a public endpoint? A: For more information, see Connect to an ApsaraDB RDS for MySQL instance.
 
-### Use DMS to log in to an
+### 8.3 Use DMS to log in to an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -2159,6 +2199,9 @@ This topic describes how to log in to an ApsaraDB RDS instance by using Data Man
 **Prerequisites**
 
 An IP address whitelist is configured. For more information about how to configure an IP address whitelist, see Configure an IP address whitelist.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2174,14 +2217,13 @@ the **Database Type**, **Instance Region**, and **Connection String Address** pa
 | Database Account | The account of the database to be connected. |
 | Database Password | The password of the account used to connect to the database. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 5. Click **Login**.
 
 **Note**
 
-If you want the browser to save the password, select **Remember password** and then click **Login**. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+If you want the browser to save the password, select **Remember password** and then click **Login**.
 
-### Configure the hybrid access
+### 8.4 Configure the hybrid access solution
 
 **solution**
 
@@ -2191,10 +2233,9 @@ This topic describes how to configure the hybrid access solution for an ApsaraDB
 
 When you migrate your ApsaraDB RDS instance from the classic network to a VPC, the internal classic network endpoint of the instance changes to the internal VPC endpoint. In this case, the endpoint remains unchanged, but the IP address that is bound to the endpoint changes. This change causes a network interruption of 30 seconds or less, and Elastic Compute Service (ECS) instances located in the classic network can no longer connect to your ApsaraDB RDS instance over an internal network. To facilitate a smooth migration, ApsaraDB RDS provides the hybrid access solution. Hybrid access indicates that your ApsaraDB RDS instance can be connected by both ECS instances located in the classic network and ECS instances located in a VPC. During the validity period of the hybrid access solution, ApsaraDB RDS retains the internal classic network endpoint and generates an internal VPC endpoint. This prevents network interruptions when you migrate your ApsaraDB RDS instance from the classic network to a VPC. For security and performance purposes, we recommend that you use only the internal VPC endpoint. You must specify a validity period for the hybrid access solution. When the validity period expires, ApsaraDB RDS releases the internal classic network endpoint and applications are unable to use the endpoint to connect to your ApsaraDB RDS instance. Therefore, you must add the internal VPC endpoint to your applications before the validity period expires. This ensures a smooth migration and prevents interruptions to your workloads. For example, assume that a company uses the hybrid access solution to migrate its ApsaraDB RDS instance from the classic network to a VPC. During the validity period of the hybrid access solution, some applications use the internal VPC endpoint to connect to the ApsaraDB RDS instance, whereas the others continue to use the internal classic network endpoint to connect to the instance. When all applications of the company can use the internal VPC endpoint to connect to the instance, the internal classic network endpoint can be released. The following figure demonstrates this scenario.
 
-| Action | Description |
-|---|---|
+**Limits**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G During the validity period of the hybrid access solution, your ApsaraDB RDS instance has the following limits: The network type of the instance cannot be changed to classic network. The instance cannot be migrated to another zone.
+During the validity period of the hybrid access solution, your ApsaraDB RDS instance has the following limits: The network type of the instance cannot be changed to classic network. The instance cannot be migrated to another zone.
 
 **Prerequisites**
 
@@ -2210,15 +2251,19 @@ instance that you want to manage and click the ID of the instance or click **Man
 5. In the Switch to VPC dialog box, select a VPC and a vSwitch and specify whether to retain
 the classic network endpoint. Clear or select the **Retain Original Classic Network Endpoint** check box based on the details described in the following table.
 
+| Action | Description |
+|---|---|
+
 | Clear the Retain Original Classic Network Endpoint check box | The classic network endpoint is not retained and changes to a VPC endpoint. When you change the network type from classic network to VPC, a network interruption of approximately 30 seconds occurs and ECS instances located in the classic network are disconnected from your ApsaraDB RDS instance. |
 |---|---|
 | Select the Retain Original Classic Network Endpoint check box | The classic network endpoint is retained, and a new VPC endpoint is generated. In this case, your ApsaraDB RDS instance runs in hybrid access mode. Both ECS instances located in the classic network and ECS instances located in the selected VPC can access your ApsaraDB RDS instance over an internal network. When you change the network type from classic network to VPC, no network interruptions occur. ECS instances located in the classic network are still connected with your ApsaraDB RDS instance until the classic network endpoint expires. Specify the validity period of the classic network endpoint. Before the classic network endpoint expires, you must add the new VPC endpoint to your applications that run on the ECS instances located in the selected VPC. This allows ApsaraDB RDS to migrate your workloads to the selected VPC without network interruptions. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 6. Add the internal IP addresses of ECS instances located in the selected VPC to an IP address
 whitelist of the VPC network type. This allows the ECS instances to connect to your ApsaraDB RDS instance over an internal network. If no IP address whitelists of the VPC network type are available, create one. For more information about how to configure a whitelist, see Configure an IP address whitelist.
 
 **Change the expiration date of the internal classic network**
+
+**endpoint**
 
 During the validity period of the hybrid access solution, you can change the expiration date of the classic network endpoint based on your business requirements. The expiration date is immediately recalculated starting from the day when you make the change. For example, assume that the classic network endpoint is configured to expire on August 18, 2017. On August 15, 2017, you extend the validity period of the classic network endpoint by 14 days. In this case, ApsaraDB RDS releases the classic network endpoint on August 29, 2017. To change the expiration date, perform the following operations:
 1. Log in to the ApsaraDB RDS console.
@@ -2228,7 +2273,7 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. On the page that appears, click **Change Expiration Time**.
 5. In the **Change Expiration Time** dialog box, select an expiration date and click **OK**.
 
-### Change the network type of
+### 8.5 Change the network type of an instance
 
 **an instance**
 
@@ -2236,7 +2281,7 @@ This topic describes how to change the network type of an ApsaraDB RDS instance 
 
 **Background information**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G Classic network: RDS instances in the classic network are not isolated. To block unauthorized access to these instances, you must configure whitelists or security groups. VPC: Each VPC is an isolated virtual network. We recommend that you select the VPC type because it is more secure than the classic network. You can configure route tables, CIDR blocks, and gateways in a VPC. You can also connect your data center to a VPC by using Express Connect circuits or VPNs. The data center and the VPC comprise a virtual data center. You can use the virtual data center to migrate your applications to the cloud with no downtime.
+Classic network: RDS instances in the classic network are not isolated. To block unauthorized access to these instances, you must configure whitelists or security groups. VPC: Each VPC is an isolated virtual network. We recommend that you select the VPC type because it is more secure than the classic network. You can configure route tables, CIDR blocks, and gateways in a VPC. You can also connect your data center to a VPC by using Express Connect circuits or VPNs. The data center and the VPC comprise a virtual data center. You can use the virtual data center to migrate your applications to the cloud with no downtime.
 
 **Change the network type from VPC to classic network**
 
@@ -2261,7 +2306,7 @@ instance that you want to manage and click the ID of the instance or click **Man
 **Retain Original Classic Network Endpoint** option, see Hybrid access from both the classic
 network and VPCs.
 
-### Change the VPC and vSwitch
+### 8.6 Change the VPC and vSwitch for an instance
 
 **for an instance**
 
@@ -2269,11 +2314,12 @@ This topic describes how to change the virtual private cloud (VPC) and vSwitch f
 
 **Prerequisites**
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 **q**
 
 The instance is deployed in a VPC.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2284,29 +2330,25 @@ instance that you want to manage and click the ID of the instance or click **Man
 
 **Note**
 
-During the switchover, your application is temporarily disconnected from the instance for 30 seconds. Make sure that your application is configured to automatically reconnect to the instance. If data is cached on your client, you can read data but cannot write data. After the switchover, we recommend that you immediately clear the cache on the client. ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+During the switchover, your application is temporarily disconnected from the instance for 30 seconds. Make sure that your application is configured to automatically reconnect to the instance. If data is cached on your client, you can read data but cannot write data. After the switchover, we recommend that you immediately clear the cache on the client.
 
-## Database proxy
+## 9 Database proxy
 
-### Configure dedicated proxy
+### 9.1 Configure dedicated proxy
 
 This topic describes the dedicated proxy feature provided by ApsaraDB RDS. The dedicated proxy feature provides advanced features such as read/write splitting, connection pooling, and transaction splitting.
 
 **Background information**
 
-The dedicated proxy feature uses dedicated proxy computing resources. This feature has the following benefits: A unified proxy endpoint is provided to connect to all the dedicated proxies that are enabled on your ApsaraDB RDS instance. This reduces maintenance costs by eliminating the need to update the endpoints on your application. The proxy endpoint remains valid until you release the dedicated proxies. For example, you can enable read/write splitting during peak hours and then disable read/write splitting and release read-only instances during off-peak hours. In these cases, you do not need to update the endpoints on your application because the proxy endpoint remains connected. Dedicated proxies serve your ApsaraDB RDS instance and its read-only instances exclusively. You do not need to compete with other users for resources. This ensures service stability. Dedicated proxies are scalable. You can add dedicated proxies based on your business requirements to handle more workloads. Dedicated proxies do not support SSL encryption. Dedicated proxies do not support compression protocols.
+The dedicated proxy feature uses dedicated proxy computing resources. This feature has the following benefits: A unified proxy endpoint is provided to connect to all the dedicated proxies that are enabled on your ApsaraDB RDS instance. This reduces maintenance costs by eliminating the need to update the endpoints on your application. The proxy endpoint remains valid until you release the dedicated proxies. For example, you can enable read/write splitting during peak hours and then disable read/write splitting and release read-only instances during off-peak hours. In these cases, you do not need to update the endpoints on your application because the proxy endpoint remains connected. Dedicated proxies serve your ApsaraDB RDS instance and its read-only instances exclusively. You do not need to compete with other users for resources. This ensures service stability. Dedicated proxies are scalable. You can add dedicated proxies based on your business requirements to handle more workloads.
+
+**Limits**
+
+Dedicated proxies do not support SSL encryption. Dedicated proxies do not support compression protocols.
 
 **Usage notes**
 
-When you change the specifications of the primary instance or its read-only instances, a service interruption may occur. If you connect your application to the proxy endpoint, all requests that are encapsulated in transactions are routed to the primary instance. This applies when the transaction splitting feature is not enabled. If a proxy endpoint is used to implement read/write splitting, read consistency cannot be ensured for the requests that are not encapsulated in transactions. If you require read consistency for these requests, you can encapsulate these requests in transactions. If a proxy endpoint is used for connection, the `SHOW PROCESSLIST` statement returns a result set for each query. The result set consists of the query results from the primary and read-only instances. If you execute multi-statements or stored procedures, the read/write splitting feature is disabled and all subsequent requests over the current connection are routed to the primary instance. To enable the read/write splitting feature again, you must close the current connection and establish a new connection. The dedicated proxy feature supports the `/*FORCE_MASTER*/` and `/*FORCE_SLAVE*/` hints. However, requests that contain hints have the highest route priorities and are not constrained by consistency or transaction limits. Before you use these hints, you must check whether these hints are suitable for your workloads. A hint cannot contain statements that change environment variables. An example is `/*FORCE_SLAVE*/ set names` utf8; . Otherwise, an error may occur in the subsequent procedure.
-
-| Section | Parameter | Description |
-|---|---|---|
-|  | Instance ID | The ID of the primary ApsaraDB RDS instance. |
-|  | Enabled Proxies | The number of enabled dedicated proxies. You can enable more dedicated proxies to increase the maximum number of requests that can be processed. |
-|  | Read/Write Splitting | Specifies whether to enable the read/write splitting feature for the proxy endpoint. For more information, see Configure read/write splitting. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS After you enable the dedicated proxy feature, each connection is replicated to the primary instance and all of its read-only instances in compliance with the 1:N connection model. We recommend that you specify the same connection specifications for these instances. If these instances have different connection specifications, the number of connections allowed depends on the lowest connection specifications among these instances. If you create or restart a read-only instance after you enable the dedicated proxy feature, only the requests sent over new connections are routed to the new or restarted read-only instance. The **max_prepared_stmt_count** parameter must be set to the same value for the primary instance and all of its read-only instances.
+When you change the specifications of the primary instance or its read-only instances, a service interruption may occur. If you connect your application to the proxy endpoint, all requests that are encapsulated in transactions are routed to the primary instance. This applies when the transaction splitting feature is not enabled. If a proxy endpoint is used to implement read/write splitting, read consistency cannot be ensured for the requests that are not encapsulated in transactions. If you require read consistency for these requests, you can encapsulate these requests in transactions. If a proxy endpoint is used for connection, the `SHOW PROCESSLIST` statement returns a result set for each query. The result set consists of the query results from the primary and read-only instances. If you execute multi-statements or stored procedures, the read/write splitting feature is disabled and all subsequent requests over the current connection are routed to the primary instance. To enable the read/write splitting feature again, you must close the current connection and establish a new connection. The dedicated proxy feature supports the `/*FORCE_MASTER*/` and `/*FORCE_SLAVE*/` hints. However, requests that contain hints have the highest route priorities and are not constrained by consistency or transaction limits. Before you use these hints, you must check whether these hints are suitable for your workloads. A hint cannot contain statements that change environment variables. An example is `/*FORCE_SLAVE*/ set names` utf8; . Otherwise, an error may occur in the subsequent procedure. After you enable the dedicated proxy feature, each connection is replicated to the primary instance and all of its read-only instances in compliance with the 1:N connection model. We recommend that you specify the same connection specifications for these instances. If these instances have different connection specifications, the number of connections allowed depends on the lowest connection specifications among these instances. If you create or restart a read-only instance after you enable the dedicated proxy feature, only the requests sent over new connections are routed to the new or restarted read-only instance. The **max_prepared_stmt_count** parameter must be set to the same value for the primary instance and all of its read-only instances.
 
 **Enable the dedicated proxy feature**
 
@@ -2325,23 +2367,25 @@ If the network type of the instance is **Classic Network**, the dedicated proxy 
 
 When the dedicated proxy feature is enabled, you can use the generated proxy endpoint to implement features such as read/write splitting, short-lived connection optimization, and transaction splitting.
 
-|  | Short-Lived Connection Optimization | The type of connection pool for the proxy endpoint. This feature is suitable for scenarios where PHP short-lived connections are established. For more information, see Configure short-lived connection optimization. Note You can click Enable or Disable to the right of Short- Lived Connection Optimization to enable or disable this feature. |
+| Section | Parameter | Description |
 |---|---|---|
-| Proxy Endpoint |  |  |
-|  | Transaction Splitting | Specifies whether to enable the transaction splitting feature for the proxy endpoint. For more information, see Configure transaction splitting. Note You can click Enable or Disable to the right of Transaction Splitting to enable or disable this feature. |
-|  | Endpoint | The proxy endpoint that is generated when the dedicated proxy feature is enabled. This endpoint connects to all the dedicated proxies that are enabled on the ApsaraDB RDS instance. The read/write splitting feature is also bound to this endpoint. Note You can click Copy Endpoint to the right of Endpoint to copy the endpoint. |
-|  | Port | The port number that is used to connect to the proxy endpoint. |
-|  | Endpoint Type | The network type of the proxy endpoint. |
-|  | Proxy Type | The type of proxy that is enabled. Only Dedicated Proxy is supported. |
-|  | Proxy Specifications | The CPU and memory specifications of the dedicated proxies. Only 2-core CPU and 4 GB memory is supported. |
+|   | Instance ID | The ID of the primary ApsaraDB RDS instance. |
+|   | Enabled Proxies | The number of enabled dedicated proxies. You can enable more dedicated proxies to increase the maximum number of requests that can be processed. |
+|   | Read/Write Splitting | Specifies whether to enable the read/write splitting feature for the proxy endpoint. For more information, see Configure read/write splitting. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-| Proxy |  |  |
+|   | Short-Lived Connection Optimization | The type of connection pool for the proxy endpoint. This feature is suitable for scenarios where PHP short-lived connections are established. For more information, see Configure short-lived connection optimization. Note You can click Enable or Disable to the right of Short- Lived Connection Optimization to enable or disable this feature. |
 |---|---|---|
-|  | Enabled Proxies | The number of dedicated proxies that are enabled on the primary ApsaraDB RDS instance. Up to 60 dedicated proxies are supported. Note We recommend that you use the following formula to determine the number of dedicated proxies to specify: (Total number of CPU cores of your primary ApsaraDB RDS instance and its read-only instances)/8, rounded up to the nearest integer. For example, if your primary ApsaraDB RDS instance has 8 CPU cores and its read-only instances have 4 CPU cores, the recommended number of dedicated proxies is 2, as calculated in the following formula: ⌈(8 + 4)/8⌉ = 2. |
+| Proxy Endpoint |   |   |
+|   | Transaction Splitting | Specifies whether to enable the transaction splitting feature for the proxy endpoint. For more information, see Configure transaction splitting. Note You can click Enable or Disable to the right of Transaction Splitting to enable or disable this feature. |
+|   | Endpoint | The proxy endpoint that is generated when the dedicated proxy feature is enabled. This endpoint connects to all the dedicated proxies that are enabled on the ApsaraDB RDS instance. The read/write splitting feature is also bound to this endpoint. Note You can click Copy Endpoint to the right of Endpoint to copy the endpoint. |
+|   | Port | The port number that is used to connect to the proxy endpoint. |
+|   | Endpoint Type | The network type of the proxy endpoint. |
+|   | Proxy Type | The type of proxy that is enabled. Only Dedicated Proxy is supported. |
+|   | Proxy Specifications | The CPU and memory specifications of the dedicated proxies. Only 2-core CPU and 4 GB memory is supported. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+| Proxy |   |   |
+|---|---|---|
+|   | Enabled Proxies | The number of dedicated proxies that are enabled on the primary ApsaraDB RDS instance. Up to 60 dedicated proxies are supported. Note We recommend that you use the following formula to determine the number of dedicated proxies to specify: (Total number of CPU cores of your primary ApsaraDB RDS instance and its read-only instances)/8, rounded up to the nearest integer. For example, if your primary ApsaraDB RDS instance has 8 CPU cores and its read-only instances have 4 CPU cores, the recommended number of dedicated proxies is 2, as calculated in the following formula: ⌈(8 + 4)/8⌉ = 2. |
 
 **Adjust the number of dedicated proxies**
 
@@ -2366,11 +2410,11 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. In the upper-right corner of the page that appears, click **Disable Database Proxy**.
 5. In the message that appears, click **OK**.
 
-### Configure short-lived
+### 9.2 Configure short-lived connection optimization
 
 **connection optimization**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G This topic describes the short-lived connection optimization feature provided by ApsaraDB RDS in its dedicated proxy feature. The short-lived connection optimization feature effectively resolves the issue of heavy instance loads caused by frequent short-lived connections such as short-lived connections over PHP.
+This topic describes the short-lived connection optimization feature provided by ApsaraDB RDS in its dedicated proxy feature. The short-lived connection optimization feature effectively resolves the issue of heavy instance loads caused by frequent short-lived connections such as short-lived connections over PHP.
 
 **Prerequisites**
 
@@ -2397,9 +2441,9 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. On the **Proxy Service** tab, click **Enable** to the right of **Short-Lived Connection**
 **Optimization**.
 
-### Configure transaction splitting
+### 9.3 Configure transaction splitting
 
-This topic describes the transaction splitting feature provided by the dedicated proxy of ApsaraDB RDS. This feature identifies and distributes read requests initiated before write requests within a transaction to read-only instances. This reduces workloads on the primary instance. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+This topic describes the transaction splitting feature provided by the dedicated proxy of ApsaraDB RDS. This feature identifies and distributes read requests initiated before write requests within a transaction to read-only instances. This reduces workloads on the primary instance.
 
 **Prerequisites**
 
@@ -2412,20 +2456,22 @@ By default, the dedicated proxy sends all requests in transactions to the primar
 **Note**
 
 Explicit transactions cannot be split. These explicit transactions include the transactions that are started by using BEGIN or START statements. If the transaction splitting feature is enabled, global consistency cannot be ensured. Before you use this feature, we recommend that you evaluate whether this feature is suitable for your workloads.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, click **Database Proxy**.
 4. On the **Proxy Service** tab, click **Enable** to the right of **Transaction Splitting**.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 **Note**
 
 When you no longer need transaction splitting, you can click **Disable** to the right of **Transaction Splitting**. The operation to enable or disable transaction splitting takes effect only on new connections.
 
-### Read/write splitting
+### 9.4 Read/write splitting
 
-#### Enable read/write splitting
+#### 9.4.1 Enable read/write splitting
 
 This topic describes the read/write splitting feature. This feature allows ApsaraDB RDS to route read and write requests to primary and read-only instances based on the dedicated proxy endpoint (also called read/write splitting endpoint).
 
@@ -2435,7 +2481,7 @@ The database proxy or dedicated proxy feature is enabled. For more information, 
 
 **Background information**
 
-If your database system receives a large number of read requests and a small number of write requests, a single primary ApsaraDB RDS instance may fail to process read requests and your workloads may be interrupted. In this case, you can create one or more read-only ApsaraDB RDS instances to offload read requests from the primary instance and increase the read capability of your database system. For more information, see Create a read-only instance. ApsaraDB RDS for MySQL User G ApsaraDB for RDS After you create read-only instances, you can enable read/write splitting. In this case, a read/write splitting endpoint is provided. After you add the endpoint to your application, write requests are routed to the primary instance, and read requests are routed to the read-only instances.
+If your database system receives a large number of read requests and a small number of write requests, a single primary ApsaraDB RDS instance may fail to process read requests and your workloads may be interrupted. In this case, you can create one or more read-only ApsaraDB RDS instances to offload read requests from the primary instance and increase the read capability of your database system. For more information, see Create a read-only instance. After you create read-only instances, you can enable read/write splitting. In this case, a read/write splitting endpoint is provided. After you add the endpoint to your application, write requests are routed to the primary instance, and read requests are routed to the read-only instances.
 
 **Differences between the read/write splitting endpoint and the**
 
@@ -2445,11 +2491,11 @@ After you enable read/write splitting and add the read/write splitting endpoint 
 
 **Logic for routing requests**
 
-The following requests are routed only to the primary instance: All requests that are used to execute DML statements such as INSERT, UPDATE, DELETE, and SELECT FOR UPDATE. All requests that are used to execute DDL statements, such as the DDL statements that are used to create databases or tables, delete databases or tables, and change schemas or permissions. All requests that are encapsulated in transactions. Requests that are used to call user-defined functions. Requests that are used to run stored procedures. Requests that are used to execute EXECUTE statements Requests that are used to run multi-statement queries. For more information, see Multistatement. Requests that involve temporary tables. ApsaraDB for RDS ApsaraDB RDS for MySQL User G Requests that are used to execute SELECT last_insert_id() statements. All requests that are used to query or reconfigure user variables. Requests that are used to execute SHOW PROCESSLIST statements. Requests that are used to execute KILL statements in SQL. These statements are different from the KILL commands in Linux. The following requests are routed to the primary instance or its read-only instances: Read requests that are not encapsulated in transactions. Requests that are used to execute COM_STMT_EXECUTE statements. The following requests are routed to all the instances: All requests that are used to modify system variables. Requests that are used to execute USE statements. Requests that are used to execute COM_STMT_PREPARE statements. Requests that are used to execute COM_CHANGE_USER, COM_QUIT, and COM_SET_OPTION statements.
+The following requests are routed only to the primary instance: All requests that are used to execute DML statements such as INSERT, UPDATE, DELETE, and SELECT FOR UPDATE. All requests that are used to execute DDL statements, such as the DDL statements that are used to create databases or tables, delete databases or tables, and change schemas or permissions. All requests that are encapsulated in transactions. Requests that are used to call user-defined functions. Requests that are used to run stored procedures. Requests that are used to execute EXECUTE statements Requests that are used to run multi-statement queries. For more information, see Multistatement. Requests that involve temporary tables. Requests that are used to execute SELECT last_insert_id() statements. All requests that are used to query or reconfigure user variables. Requests that are used to execute SHOW PROCESSLIST statements. Requests that are used to execute KILL statements in SQL. These statements are different from the KILL commands in Linux. The following requests are routed to the primary instance or its read-only instances: Read requests that are not encapsulated in transactions. Requests that are used to execute COM_STMT_EXECUTE statements. The following requests are routed to all the instances: All requests that are used to modify system variables. Requests that are used to execute USE statements. Requests that are used to execute COM_STMT_PREPARE statements. Requests that are used to execute COM_CHANGE_USER, COM_QUIT, and COM_SET_OPTION statements.
 
 **Benefits**
 
-Easier maintenance by using a unified read/write splitting endpoint If you do not enable the read/write splitting feature, you must add the endpoints of the primary and read-only instances to your application. This way, your database system routes write requests to the primary instance and read requests to the read-only instances. If you enable the read/write splitting feature, you can use a dedicated proxy endpoint to implement read/write splitting. After your application is connected to this endpoint, your database system routes read and write requests to the primary and read-only instances based on the read weights of these instances. This reduces maintenance costs. You can also create read-only instances to improve the read capability of your database system. You do not need to modify the configuration data on your application. Higher performance and lower maintenance costs by using a native link If you build your own proxy layer in the cloud to implement read/write splitting, data must be parsed and forwarded by multiple components before the data reaches your database system. As a result, response latencies increase. The read/write splitting feature is embedded in the ApsaraDB RDS ecosystem to reduce response latencies, increase processing speeds, and reduce maintenance costs. Ideal in a variety of use scenarios based on configurable read weights and thresholds You can specify the read weights of the primary and read-only instances. You can also specify the latency threshold for data replication to the read-only instances. High availability based on instance-level health checks The read/write splitting feature enables ApsaraDB RDS to actively check the health status of the primary and read-only instances. If a read-only instance unexpectedly breaks down or its data replication latency exceeds the specified threshold, ApsaraDB RDS stops routing read requests to the instance. ApsaraDB RDS redirects read requests that are destined for the faulty read-only instance to healthy instances in your database system. This ensures service availability in the event of faults on individual read-only instances. After the faulty read-only instance is recovered, ApsaraDB RDS resumes routing read requests to the instance. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+Easier maintenance by using a unified read/write splitting endpoint If you do not enable the read/write splitting feature, you must add the endpoints of the primary and read-only instances to your application. This way, your database system routes write requests to the primary instance and read requests to the read-only instances. If you enable the read/write splitting feature, you can use a dedicated proxy endpoint to implement read/write splitting. After your application is connected to this endpoint, your database system routes read and write requests to the primary and read-only instances based on the read weights of these instances. This reduces maintenance costs. You can also create read-only instances to improve the read capability of your database system. You do not need to modify the configuration data on your application. Higher performance and lower maintenance costs by using a native link If you build your own proxy layer in the cloud to implement read/write splitting, data must be parsed and forwarded by multiple components before the data reaches your database system. As a result, response latencies increase. The read/write splitting feature is embedded in the ApsaraDB RDS ecosystem to reduce response latencies, increase processing speeds, and reduce maintenance costs. Ideal in a variety of use scenarios based on configurable read weights and thresholds You can specify the read weights of the primary and read-only instances. You can also specify the latency threshold for data replication to the read-only instances. High availability based on instance-level health checks The read/write splitting feature enables ApsaraDB RDS to actively check the health status of the primary and read-only instances. If a read-only instance unexpectedly breaks down or its data replication latency exceeds the specified threshold, ApsaraDB RDS stops routing read requests to the instance. ApsaraDB RDS redirects read requests that are destined for the faulty read-only instance to healthy instances in your database system. This ensures service availability in the event of faults on individual read-only instances. After the faulty read-only instance is recovered, ApsaraDB RDS resumes routing read requests to the instance.
 
 **Note**
 
@@ -2462,6 +2508,9 @@ When you change the specifications of the primary instance or its read-only inst
 **Prerequisites**
 
 A read-only instance is created for the primary instance. For more information, see Create a read-only instance.
+
+**Enable read/write splitting**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2474,19 +2523,18 @@ instance that you want to manage and click the ID of the instance or click **Man
 | Latency Threshold | The maximum latency that is allowed for data replication from the primary instance to the read-only instances. If the latency at which a read-only instance replicates data from the primary instance exceeds the value of this parameter, the system no longer routes read requests to the read-only instance regardless of the read weight of the read-only instance. Valid values: 0 to 7200. Unit: seconds. The read-only instances may replicate data from the primary instance at a specific latency. The latency varies based on the statuses of the SQL statements that are executed. We recommend that you set this parameter to a value that is greater than or equal to 30. |
 | Read Weight Distributi on | The method that is used to assign read weights. A higher read weight indicates that more read requests need to be processed. For example, three read-only instances are attached to the primary instance, the read weight of the primary instance is 0, and the read weights of the three read-only instances are 100, 200, and 200. In this case, the primary instance processes only write requests, and the three read-only instances process all read requests based on the 1:2:2 ratio. Automatic Distribution: The system automatically assigns a read weight to each instance in your database system based on the specifications of each instance. After you create a read-only instance, the system automatically assigns a read weight to the read-only instance and adds the read-only instance to the read/write splitting link. Customized Distribution: You must specify a read weight for each instance in your database system. Valid values: 0 to 10000. After you create a read-only instance, ApsaraDB RDS sets the read weight of the read-only instance to 0 by default. You must manually modify the read weight of the created read-only instance. |
 
-| Paramete r | Description |
-|---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 6. Click **OK**.
 
-#### Configure read/write splitting
+#### 9.4.2 Configure read/write splitting
 
 This topic describes how to configure the latency threshold and specify read weights for an ApsaraDB RDS instance in the ApsaraDB RDS console.
 
 **Prerequisites**
 
 Read/write splitting is enabled. For more information, see Enable read/write splitting.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2494,20 +2542,25 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. On the **Read/Write Splitting** tab, click **Configure Read/Write Splitting**.
 5. Configure the parameters described in the following table.
 
+| Paramete r | Description |
+|---|---|
+
 | Latency Threshold | The maximum latency that is allowed for data replication from the primary instance to the read-only instances. If the latency at which a read-only instance replicates data from the primary instance exceeds the value of this parameter, the system no longer routes read requests to the read-only instance regardless of the read weight of the read-only instance. Valid values: 0 to 7200. Unit: seconds. The read-only instances may replicate data from the primary instance at a specific latency. The latency varies based on the statuses of the SQL statements that are executed. We recommend that you set this parameter to a value that is greater than or equal to 30. |
 |---|---|
 | Read Weight Distributi on | The method that is used to assign read weights. A higher read weight indicates that more read requests need to be processed. For example, three read-only instances are attached to the primary instance, the read weight of the primary instance is 0, and the read weights of the three read-only instances are 100, 200, and 200. In this case, the primary instance processes only write requests, and the three read-only instances process all read requests based on the 1:2:2 ratio. Automatic Distribution: The system automatically assigns a read weight to each instance in your database system based on the specifications of each instance. After you create a read-only instance, the system automatically assigns a read weight to the read-only instance and adds the read-only instance to the read/write splitting link. Customized Distribution: You must specify a read weight for each instance in your database system. Valid values: 0 to 10000. After you create a read-only instance, ApsaraDB RDS sets the read weight of the read-only instance to 0 by default. You must manually modify the read weight of the created read-only instance. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 6. Click **OK**.
 
-#### Disable read/write splitting
+#### 9.4.3 Disable read/write splitting
 
 This topic describes how to disable the read/write splitting feature of an ApsaraDB RDS instance in the ApsaraDB RDS console.
 
 **Prerequisites**
 
 Read/write splitting is enabled. For more information, see Enable read/write splitting.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2515,23 +2568,16 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. On the **Read/Write Splitting** tab, click **Disable Read/Write Splitting**.
 5. Click **Confirm**.
 
-| Monitor ing type | Metric | Description |
-|---|---|---|
-| Resourc e Monitor ing | Disk Space (MB) | The disk space usage of the instance. It consists of the following items: Instance size Data usage Log size Temporary file size Other system file size Unit: MB. |
-|  | IOPS | The number of input/output operations per second (IOPS) of the instance. |
-|  | Total Connections | The number of active connections to the instance and the total number of connections to the instance. |
-|  | CPU Utilization and Memory Usage (%) | The CPU utilization and memory usage of the instance. These metrics do not include the CPU utilization and memory usage for the operating system. |
-|  | Network Traffic (KB) | The inbound and outbound traffic of the instance per second. Unit: KB. |
+## 10 Monitoring and alerts
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Monitoring and alerts
-
-### View resources and engine
+### 10.1 View resources and engine monitoring data
 
 **monitoring data**
 
 The ApsaraDB RDS console provides a variety of performance metrics to monitor the status of your instances.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instances**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2540,32 +2586,36 @@ instance that you want to manage and click the ID of the instance or click **Man
 **Monitoring**, or **Deploy Monitoring** tab and specify a time range to view the
 corresponding monitoring data. The following table describes the metrics.
 
+| Monitor ing type | Metric | Description |
+|---|---|---|
+| Resourc e Monitor ing | Disk Space (MB) | The disk space usage of the instance. It consists of the following items: Instance size Data usage Log size Temporary file size Other system file size Unit: MB. |
+|   | IOPS | The number of input/output operations per second (IOPS) of the instance. |
+|   | Total Connections | The number of active connections to the instance and the total number of connections to the instance. |
+|   | CPU Utilization and Memory Usage (%) | The CPU utilization and memory usage of the instance. These metrics do not include the CPU utilization and memory usage for the operating system. |
+|   | Network Traffic (KB) | The inbound and outbound traffic of the instance per second. Unit: KB. |
+
 | Engine Monitor ing | Transactions per Second (TPS)/Queries per Second (QPS) | The average number of transactions per second (TPS) and the average number of SQL statements executed per second. |
 |---|---|---|
-|  | InnoDB Buffer Pool Read Hit Ratio, Usage Ratio, and Dirty Block Ratio (%) | The read hit ratio, usage ratio, and dirty block ratio of the InnoDB buffer pool. |
-|  | InnoDB Read/Write Volume (KB) | The amount of data that InnoDB reads and writes per second. Unit: KB. |
-|  | InnoDB Buffer Pool Requests | The number of read and write operations that InnoDB performs per second. |
-|  | InnoDB Log Reads/Writes/fsync( ) Operations | The number of physical writes to log files by InnoDB per second, the number of log write requests by InnoDB per second, and the number of fsync writes to log files by InnoDB per second. |
-|  | Temporary Tables Automatically Created on Hard Disk when MySQL Statements Are Executed | The number of temporary tables that are automatically created on the hard disk when the database executes SQL statements. |
-|  | MySQL COMDML _ | The number of SQL statements that the database executes per second. The following SQL statements are included: Insert Delete Insert Select _ Replace Replace Select _ Select Update |
-|  | MySQL RowDML _ | The number of operations that InnoDB performs per second. The following items are included: The number of physical writes to log files per second The number of rows on which InnoDB performs operations per second. This includes the number of rows that are read from InnoDB tables per second, the number of rows that are updated in InnoDB tables per second, the number of rows that are deleted from InnoDB tables per second, and the number of rows that are inserted into InnoDB tables per second. |
+|   | InnoDB Buffer Pool Read Hit Ratio, Usage Ratio, and Dirty Block Ratio (%) | The read hit ratio, usage ratio, and dirty block ratio of the InnoDB buffer pool. |
+|   | InnoDB Read/Write Volume (KB) | The amount of data that InnoDB reads and writes per second. Unit: KB. |
+|   | InnoDB Buffer Pool Requests | The number of read and write operations that InnoDB performs per second. |
+|   | InnoDB Log Reads/Writes/fsync( ) Operations | The number of physical writes to log files by InnoDB per second, the number of log write requests by InnoDB per second, and the number of fsync writes to log files by InnoDB per second. |
+|   | Temporary Tables Automatically Created on Hard Disk when MySQL Statements Are Executed | The number of temporary tables that are automatically created on the hard disk when the database executes SQL statements. |
+|   | MySQL COMDML _ | The number of SQL statements that the database executes per second. The following SQL statements are included: Insert Delete Insert Select _ Replace Replace Select _ Select Update |
+|   | MySQL RowDML _ | The number of operations that InnoDB performs per second. The following items are included: The number of physical writes to log files per second The number of rows on which InnoDB performs operations per second. This includes the number of rows that are read from InnoDB tables per second, the number of rows that are updated in InnoDB tables per second, the number of rows that are deleted from InnoDB tables per second, and the number of rows that are inserted into InnoDB tables per second. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-|  | MyISAM Reads and Writes | The numbers of operations that MyISAM performs per second. The following items are included: The number of MyISAM reads and writes from the buffer pool per second The number of MyISAM reads and writes from the hard disk per second |
+|   | MyISAM Reads and Writes | The numbers of operations that MyISAM performs per second. The following items are included: The number of MyISAM reads and writes from the buffer pool per second The number of MyISAM reads and writes from the hard disk per second |
 |---|---|---|
-|  | MyISAM Key Buffer Read/Write/Usage Ratio (%) | The read hit ratio, write hit ratio, and usage of the MyISAM key buffer per second. |
+|   | MyISAM Key Buffer Read/Write/Usage Ratio (%) | The read hit ratio, write hit ratio, and usage of the MyISAM key buffer per second. |
 | Deploy Monitor ing | Replication Thread Status of Secondary Instances | The status of the threads that are used to replicate data to the secondary RDS instance. I/O Thread Status of Secondary Instances: The value 1 indicates that the thread is normal, and the value 0 indicates that the thread is lost. SQL Thread Status of Secondary Instances: The value 1 indicates that the thread is normal, and the value 0 indicates that the thread is lost. |
-|  | Replication Latency of Secondary Instances (s) | The latency of data replication to the secondary RDS instance. Unit: seconds. |
+|   | Replication Latency of Secondary Instances (s) | The latency of data replication to the secondary RDS instance. Unit: seconds. |
 
-| Parameter | Description |
-|---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-### Configure an alert rule
+### 10.2 Configure an alert rule
 
 This topic describes how to create alert rules in the ApsaraDB RDS console. This allows you to identify and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -2575,6 +2625,9 @@ instance that you want to manage and click the ID of the instance or click **Man
 6. In the **Create an alert rule** panel, configure the parameters described in the following
 table and click **OK**.
 
+| Parameter | Description |
+|---|---|
+
 | Cloud product selection | Select ApsaraDB RDS or ApsaraDB RDS (New). Note For old links, the MySQL, SQL Server, PolarDB O, and PostgreSQL engines are supported, the namespace of monitoring data is acs rds dashboard, and the data collection period varies from 60 to _ _ 300 seconds. For new links, only the MySQL, PolarDB O, and PostgreSQL engines are supported. acs rds dashboard is also used as _ _ the namespace of monitoring data, but a more stable data collection period of 60 seconds is provided. |
 |---|---|
 | Resource scope | The resources to which the alert rule applies. Valid values: Instance dimension: Select one or more instances in the resource set of the current organization. Resource set dimension: Select a resource set in the current organization and region. Apply grouping dimensions: Select an application group in the current organization and region. All resources: The alert rule applies to all resources of the specified cloud service. |
@@ -2582,25 +2635,15 @@ table and click **OK**.
 | Alarm rule description | The trigger conditions of the alert rule. If the monitoring data meets the specified conditions, the alert rule is triggered. To configure the trigger conditions, perform the following steps: i. Click Rule description. ii. In the Rule description panel, configure the Rule name, Monitoring Metrics, Metric dimension, and Threshold and alarm level parameters. Note The Metric dimension parameter is displayed only if you set the Resource scope parameter to Instance dimension. iii. Click Confirm. |
 | Silence channel period | The mute period after which Cloud Monitor resends an alert notification before the alert is cleared. Valid values: 5 minutes, 15 minutes, 30 minutes, 1 hour, 3 hours, 6 hours, 12 hours, and 24 hours. An alert is triggered if the conditions of an alert rule are met. Cloud Monitor does not resend an alert notification when the alert is triggered within the mute period. If the alert is not cleared after the mute period ends, Cloud Monitor resends alert notifications. For example, if you set the Silence channel period parameter to 12 hours, Cloud Monitor resends alert notifications only if the alert still persists after 12 hours. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
 | Effective time | The period during which the alert rule takes effect. Cloud Monitor checks whether the monitoring data triggers the alert rule only during the effective period. |
 |---|---|
 | Alarm callback | The callback URL to which Cloud Monitor sends alert notifications by using the POST request method. Note The callback URL must be accessible for Cloud Monitor. You can enter only an HTTP URL. IP addresses are not supported. |
 | No data processing method | Specify how Cloud Monitor acts when no alert is triggered. Valid values: No processing: Cloud Monitor does not perform any operations when no alert is triggered. Send no data alarm: Cloud Monitor sends the corresponding notifications to contacts when no alert is triggered. |
 | Alarm contact | The alert contacts or alert contact groups to which Cloud Monitor sends alert notifications. By default, the value of this parameter is a dummy user used to test whether the alert rule is effective. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+## 11 Cloud Monitor
 
-| Task | Procedure |
-|---|---|
-| View alert history | In the Alert History list, view the Product Name, Affected Instance, Time, Rule Name, Status, Level, and Notification Recipient. Click the rule name to view the details of the alert rule. Note By default, you can query alert history data from the last 2 days. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-## Cloud Monitor
-
-### View performance metrics
+### 11.1 View performance metrics
 
 PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
 
@@ -2620,9 +2663,12 @@ and **read-only instances**. View performance metrics
 3. In the **time granularity** drop-down list, select **1 Minute** or **1 Hour** (default value) as the
 data collection interval.
 
-### Alert history
+### 11.2 Alert history
 
 After an alert is triggered, you can view its history. You can also export and download the alert history for local data analytics.
+
+**Procedure**
+
 1. Log on to the ApsaraDB for Tair (Redis-compatible) console.
 2. On the **Instance List** page, click the ID of the instance.
 3. In the navigation pane on the left, click **Cloud Monitor** and choose **Alert Service** > **Alert**
@@ -2631,19 +2677,16 @@ After an alert is triggered, you can view its history. You can also export and d
 **Level**, and time.
 5. On the Alert History page, you can perform the following tasks.
 
+| Task | Procedure |
+|---|---|
+| View alert history | In the Alert History list, view the Product Name, Affected Instance, Time, Rule Name, Status, Level, and Notification Recipient. Click the rule name to view the details of the alert rule. Note By default, you can query alert history data from the last 2 days. |
+
 | Export alert history | i. On the Alert History page, click in the upper-right corner. ii. In the Export Task dialog box, set Time Range and Task Name. Then, click OK. |
 |---|---|
 
-| Parameter | Description |
-|---|---|
-| Cloud Service Selection | This is set by default and does not need to be selected. |
-| Resource Scope | The scope of resources associated with the alert rule. The following types are supported. The available scope types may vary by cloud service. Instance: Select one or more target instances from the resource set of the current organization. Resource Set: Select a target resource set in the current organization and region. Application Group: Select an application group in the current organization and region. All Resources: This option is not supported by default. |
+### 11.3 Alert rules
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-### Alert rules
-
-#### Create an alert rule
+#### 11.3.1 Create an alert rule
 
 Create an alert rule that triggers alerts for a cloud service based on specified metric thresholds and promptly notifies relevant users.
 
@@ -2654,12 +2697,20 @@ During its effective period, an alert rule checks at a default detection frequen
 **Note**
 
 The minimum alert detection frequency is once per minute.
+
+**Procedure**
+
 1. Log on to the ApsaraDB for Tair (Redis-compatible) console.
 2. On the **Instance List** page, click the ID of the instance.
 3. In the navigation pane on the left, click **CloudMonitor**, and then choose **Alert Service** >
 **Alert Rules**.
 4. Above the list, click **Create Alert Rule**.
 5. In the **Create Alert Rule** panel, set the parameters as needed.
+
+| Parameter | Description |
+|---|---|
+| Cloud Service Selection | This is set by default and does not need to be selected. |
+| Resource Scope | The scope of resources associated with the alert rule. The following types are supported. The available scope types may vary by cloud service. Instance: Select one or more target instances from the resource set of the current organization. Resource Set: Select a target resource set in the current organization and region. Application Group: Select an application group in the current organization and region. All Resources: This option is not supported by default. |
 
 | Resource Selection | Based on the selected Resource Scope, select a specific resource instance, resource set, or application group. |
 |---|---|
@@ -2670,8 +2721,9 @@ The minimum alert detection frequency is once per minute.
 | No Data Handling Method | The method for handling alerts when there is no monitoring data. Do Nothing Send No-data Alert |
 | Alert Contact | Select the user group or user to whom alert messages are sent. The default alert contact group for an Alibaba Cloud account is an empty group. You can use it to test the validity of an alert rule. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 6. Click **OK**.
+
+**Rule description parameters**
 
 | Parameter | Description |
 |---|---|
@@ -2680,28 +2732,25 @@ ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 | Metric Dimension | Refers to dimensions other than the instance ID. This parameter is displayed only when Resource Scope is set to Instance. |
 | Threshold And Alert Level (unit: %) | The alert levels are Critical, Warning, and Info. The aggregation method for monitoring data can be Average, Minimum, or Maximum. You can set the monitoring data epoch to 1 Consecutive Epoch, 5 Consecutive Epochs, 10 Consecutive Epochs, 15 Consecutive Epochs, 30 Consecutive Epochs, or 60 Consecutive Epochs. The comparison operator between the actual monitoring data and the alert threshold. Supported operators include “>”, “ >=”, “<”, “<= ”, “=”, “!=”, “Day-on-day Increase”, “Day-on-day Decrease”, “Period-on-period Increase”, “period-on-period Decrease”, “increase From Last Period”, and “decrease From Last Period”. You can also set a threshold and the number of times it must be met to trigger an alert. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-**Rule description parameters**
-
 **Example configuration**
 
 This example creates an alert rule named "example" for an Elastic Compute Service (ECS) instance to monitor its CPU utilization. The rule triggers a Critical alert if the maximum CPU utilization is greater than or equal to 70% for three occurrences within five detection periods. The following figure shows the rule description configuration for this scenario.
 
-| Task | Procedure |
-|---|---|
-| View alert rule details | In the Operation column of the target alert rule, click Details to view the rule details on the Alert Rule/Alert History/Faulty Resources panel. |
-
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
-
-#### Manage alert rules
+#### 11.3.2 Manage alert rules
 
 From the list of alert rules, you can modify, enable, disable, and delete rules.
+
+**Procedure**
+
 1. Log on to the ApsaraDB for Tair (Redis-compatible) console.
 2. On the **Instance List** page, click the ID of the instance.
 3. In the navigation pane on the left, click **Cloud Monitor** and then choose **Alert Service**>
 **Alert Rules**.
 4. Find the desired alert rule and perform the required operation.
+
+| Task | Procedure |
+|---|---|
+| View alert rule details | In the Operation column of the target alert rule, click Details to view the rule details on the Alert Rule/Alert History/Faulty Resources panel. |
 
 | Check rule validity | In the Validity column of the target alert rule, click Click To Inspect. The inspection result is displayed in the Validity column. Note If the inspection result is abnormal, click Detection Result. In the panel that appears, view the results for Alert Rule Execution Anomaly Detection, Alert Rule Load Detection, Invalid Alert Rule Detection, and Alert Rule Callback Detection. Click Re-detect to check the rule validity again. |
 |---|---|
@@ -2709,17 +2758,13 @@ From the list of alert rules, you can modify, enable, disable, and delete rules.
 | Modify an alert rule | i. In the Operation column of the target alert rule, click Edit. ii. On the Modify Alert Rule panel, modify the alert rule. For more information about the configuration parameters, see Create an alert rule. iii. After you finish the modification, click OK. |
 | Disable an alert rule | Disable alert rules when you manually stop a cloud product for maintenance or an upgrade. This prevents unnecessary alert notifications. Note Before disabling an alert rule, make sure that its Status is Normal. Disable a single rule a. In the Operation column of the target alert rule, click the icon, and then click Disable. b. In the Disable Alert Rule dialog box, click OK. Disable rules in a batch a. Select the check boxes next to the target alert rules, and then click Disable in the lower-left corner of the list. b. In the Disable Alert Rule dialog box, click OK. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
 | Enable an alert rule | After you finish the maintenance or upgrade of a cloud product, re-enable the disabled alert rules. Note Before enabling an alert rule, make sure that its Status is Disabled. Enable a single rule a. In the Operation column of the target alert rule, click Enable. b. In the Enable Alert Rule dialog box, click OK. Enable rules in a batch a. Select the check boxes next to the target alert rules, and then click Enable in the lower-left corner of the list. b. In the Enable Alert Rule dialog box, click OK. |
 |---|---|
 | Delete an alert rule | Delete a single rule a. In the Operation column of the target alert rule, click the icon, and then click Delete. b. In the Delete Alert Rule dialog box, click OK. Delete rules in a batch a. Select the check boxes next to the target alert rules, and then click Delete in the lower-left corner of the list. b. In the Delete Alert Rule dialog box, click OK. |
 
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+## 12 Data security
 
-## Data security
-
-### Configure an IP address
+### 12.1 Configure an IP address whitelist
 
 **whitelist**
 
@@ -2745,7 +2790,7 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 
 If you want to connect an ECS instance to an ApsaraDB RDS instance by using an internal endpoint, make sure that the two instances are in the same region and have the same network type. Otherwise, the connection fails. You can also click **Create Whitelist** to create an IP address whitelist.
 5. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that you want to
-allow to access your RDS instance and click **OK**. If you enter a CIDR block such as 10.10.10.0/24, all IP addresses in the 10.10.10.xx format can access your RDS instance. ApsaraDB RDS for MySQL User G ApsaraDB for RDS If you enter more than one IP address or CIDR block, separate them with commas (,). Do not add spaces preceding or following the commas. Example:
+allow to access your RDS instance and click **OK**. If you enter a CIDR block such as 10.10.10.0/24, all IP addresses in the 10.10.10.xx format can access your RDS instance. If you enter more than one IP address or CIDR block, separate them with commas (,). Do not add spaces preceding or following the commas. Example:
 
 ```
  192.168.0.1,172.16.213.9 .
@@ -2757,7 +2802,7 @@ If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of
 
 If you add a new IP address or CIDR block to the **default** whitelist, the default address 127.0.0.1 is deleted.
 
-### Configure SSL encryption
+### 12.2 Configure SSL encryption
 
 This topic describes how to make data transmission more secure by configuring Secure Sockets Layer (SSL) encryption. You must enable SSL encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required applications. SSL is used to encrypt connections at the transport layer and enhance the security and integrity of the transmitted data. However, SSL encryption increases the round-trip time.
 
@@ -2778,7 +2823,7 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 4. Click the **SSL** tab.
 5. In the **SSL Settings** section, turn on **SSL Encryption**.
 6. In the **Configure SSL Encryption** dialog box, select the endpoint for which you want to
-enable SSL encryption and click **OK**. ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+enable SSL encryption and click **OK**.
 7. Click Download CA Certificate to download the SSL CA certificate files in a compressed
 package. The file that you downloaded is a package that contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: a CA certificate file that is used for an operating system or application that is not Windows-based. JKS file: an SSL certificate file that is stored in the Java-supported truststore. You can use this file to import the SSL certificate files from an SSL certificate chain into Java-based applications. The default password is apsaradb.
 
@@ -2802,7 +2847,7 @@ After SSL encryption is enabled, you must configure an SSL certificate on your a
 1. Start MySQL Workbench.
 2. Choose **Database > Manage Connections**.
 3. In the **Connection** section, click the **SSL** tab and configure the following parameters.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS ①: Enable **Use SSL**. ②: Import the SSL CA certificate file. Configure a certificate on Navicat
+①: Enable **Use SSL**. ②: Import the SSL CA certificate file. Configure a certificate on Navicat
 1. Start Navicat.
 2. Right-click the database and select **Edit Connection**.
 3. Click the **SSL** tab. Select the path of the PEM-formatted CA certificate and complete the
@@ -2821,7 +2866,7 @@ If the `connection is being used` error message is displayed, the previous sessi
 The **Update Validity** operation causes your RDS instance to restart. Proceed with caution.
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instances**. On the Instances page, find the instance
-that you want to manage and click the ID of the instance or click **Manage** in the **Actions** column to go to the **Basic Information** page. ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+that you want to manage and click the ID of the instance or click **Manage** in the **Actions** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, click **Data Security**.
 4. Click the **SSL** tab.
 5. Click **Update Validity**.
@@ -2839,7 +2884,7 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 5. In the **SSL Settings** section, turn off **SSL Encryption**. In the message that appears, click
 **OK**.
 
-### Configure TDE
+### 12.3 Configure TDE
 
 Transparent Data Encryption (TDE) allows you to perform real-time I/O encryption and decryption on data files. Data is encrypted before it is written to the disk and is decrypted when it is read from the disk to the memory. After you enable TDE for your RDS instance, the size of data files in your RDS instance does not increase. You can use TDE without the need to modify the configurations of your application.
 
@@ -2853,7 +2898,7 @@ The key that is used for TDE is created and managed by KMS. ApsaraDB RDS does no
 
 **Usage notes**
 
-When TDE is being enabled, your ApsaraDB RDS instance is restarted and all services are disconnected. Make appropriate service arrangements before you enable TDE. Proceed with caution. After you enable TDE, you cannot disable TDE. After you enable TDE, you cannot change the key that is used for TDE. ApsaraDB RDS for MySQL User G ApsaraDB for RDS After you enable TDE, you must decrypt the data on your RDS instance if you want to restore the data to an on-premises database. For more information, see Decrypt a table. After you enable TDE, the CPU utilization of your RDS instance significantly increases. If you use an existing custom key for TDE, take note of the following information: If you disable the key, configure a plan to delete the key, or delete the key material, the key becomes unavailable. If your RDS instance restarts after you revoke the key, your RDS instance becomes unavailable. You must use an Alibaba Cloud account or an account to which the AliyunSTSAssumeRoleAccess policy is attached.
+When TDE is being enabled, your ApsaraDB RDS instance is restarted and all services are disconnected. Make appropriate service arrangements before you enable TDE. Proceed with caution. After you enable TDE, you cannot disable TDE. After you enable TDE, you cannot change the key that is used for TDE. After you enable TDE, you must decrypt the data on your RDS instance if you want to restore the data to an on-premises database. For more information, see Decrypt a table. After you enable TDE, the CPU utilization of your RDS instance significantly increases. If you use an existing custom key for TDE, take note of the following information: If you disable the key, configure a plan to delete the key, or delete the key material, the key becomes unavailable. If your RDS instance restarts after you revoke the key, your RDS instance becomes unavailable. You must use an Alibaba Cloud account or an account to which the AliyunSTSAssumeRoleAccess policy is attached.
 
 **Note**
 
@@ -2883,7 +2928,6 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 4. Click the **TDE** tab.
 5. In the **TDE Settings** section, turn on **TDE Status**.
 6. In the dialog box that appears, select **Use an existing custom key** and click **OK**.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 **Note**
 
@@ -2909,7 +2953,7 @@ alter table <tablename> encryption='N';
 
 After I enable TDE, can I use common database tools such as Navicat? Yes, after you enable TDE, you can use common database tools such as Navicat. After I enable TDE, why is my data still in plaintext? After you enable TDE, your data is stored in ciphertext. However, when the data is queried, it is decrypted and loaded in plaintext to the memory. A: TDE encrypts backup files to prevent data leaks. Before you restore the data of your ApsaraDB RDS instance from an encrypted backup file to your computer, you must decrypt the file. For more information, see the "Decrypt a table" section of this topic.
 
-### SQL Audit
+### 12.4 SQL Audit
 
 This topic describes how to use the SQL audit feature on an ApsaraDB RDS instance. You can use the SQL audit feature to view the details about the SQL statements that are executed on your RDS instance and audit the SQL statements on a regular basis. The SQL audit feature does not affect instance performance.
 
@@ -2917,13 +2961,15 @@ This topic describes how to use the SQL audit feature on an ApsaraDB RDS instanc
 
 **Note**
 
-You cannot view the SQL statements that are executed before the SQL audit feature is enabled. You can view the incremental data of your ApsaraDB RDS for MySQL instance in SQL audit logs or binary logs. The two methods differ in the following ways: SQL audit logs are similar to audit logs in MySQL. They record all DML and DDL operations using network protocol analysis. SQL audit does not parse the actual parameter values. If many SQL statements are executed to query data, a small amount of data may be lost. The incremental data obtained using this method may be inaccurate. ApsaraDB RDS for MySQL User G ApsaraDB for RDS Binary logs record all add, delete, and modify operations that are performed in the database and the incremental data that is used to restore data. Binary logs are temporarily stored in your instance after they are generated. The system transfers full binary log files to an Object Storage Service (OSS) bucket on a regular basis. The binary log files are stored in the OSS bucket for seven days. If data is being written to a binary log file, the file cannot be transferred. Therefore, after you click **Upload Binlogs** on the **Backup and**
+You cannot view the SQL statements that are executed before the SQL audit feature is enabled. You can view the incremental data of your ApsaraDB RDS for MySQL instance in SQL audit logs or binary logs. The two methods differ in the following ways: SQL audit logs are similar to audit logs in MySQL. They record all DML and DDL operations using network protocol analysis. SQL audit does not parse the actual parameter values. If many SQL statements are executed to query data, a small amount of data may be lost. The incremental data obtained using this method may be inaccurate. Binary logs record all add, delete, and modify operations that are performed in the database and the incremental data that is used to restore data. Binary logs are temporarily stored in your instance after they are generated. The system transfers full binary log files to an Object Storage Service (OSS) bucket on a regular basis. The binary log files are stored in the OSS bucket for seven days. If data is being written to a binary log file, the file cannot be transferred. Therefore, after you click **Upload Binlogs** on the **Backup and**
 **Restoration** page, some binary log files are not uploaded to the OSS bucket. You can use
 this method to obtain accurate incremental data. However, you cannot use this method to obtain real-time logs.
 
 **Usage notes**
 
 By default, SQL audit is enabled. SQL audit logs are retained for seven days. The retention period of SQL audit log files is one hour. The system automatically deletes the SQL audit log files that are stored for longer than one hour. In the SQL audit feature, the maximum length of a single SQL statement is 4 KB.
+
+**Disable the SQL audit feature**
 
 **Note**
 
@@ -2937,6 +2983,9 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 5. Click **Export File** to export the SQL audit logs to your on-premises machine.
 6. After the logs are exported, click **Disable SQL Auditing**.
 7. In the message that appears, click **OK**.
+
+**Enable the SQL audit feature**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the navigation pane on the left, click **Instances**. On the Instances page, find the instance
 that you want to manage and click the ID of the instance or click **Manage** in the
@@ -2949,7 +2998,7 @@ After you enable the SQL Audit feature, you can query SQL statements based on fi
 
 **Switch the storage location of audit logs**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G By default, audit logs are stored in SLS-inner. If needed, you can switch the storage location to the publicly accessible SLS-PUB.
+By default, audit logs are stored in SLS-inner. If needed, you can switch the storage location to the publicly accessible SLS-PUB.
 1. Log in to the ApsaraDB RDS console.
 2. In the navigation pane on the left, click **Instances**. Find the target instance and click its ID,
 or click **Manage** in the **Operations** column to go to the **Basic Information** page.
@@ -2959,11 +3008,11 @@ or click **Manage** in the **Operations** column to go to the **Basic Informatio
 
 **Important**
 
-This action cannot be reverted. Proceed with caution. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+This action cannot be reverted. Proceed with caution.
 
-## Service availability
+## 13 Service availability
 
-### Switch workloads between
+### 13.1 Switch workloads between primary and secondary ApsaraDB RDS instances
 
 **primary and secondary ApsaraDB**
 
@@ -2986,7 +3035,6 @@ Data is synchronized between the primary and secondary ApsaraDB RDS instances in
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, click **Service Availability**.
 4. On the right side of the page that appears, click **Switch Primary/Secondary Instance**.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 **Note**
 
@@ -3003,7 +3051,7 @@ maintenance window. For more information about how to set the maintenance window
 
 Q: Can I connect to secondary instances? A: No, you cannot connect to secondary instances in the same manner as you connect to the primary instance. Secondary instances serve only as a read-only instance or standby. We recommend that you do not modify the data of secondary instances. If you modify the data of secondary instances, the data of the primary instance may be accidentally deleted or overwritten, which may irreparably impact your workloads.
 
-### Change the data replication
+### 13.2 Change the data replication mode
 
 **mode**
 
@@ -3015,7 +3063,10 @@ Your ApsaraDB RDS for MySQL instance runs the High-availability Edition.
 
 **Data replication modes**
 
-Semi-synchronous mode After an update that is initialized by your application is complete on the primary instance, logs are synchronized to all the secondary instances. After the secondary instances receive the logs, the update transaction is considered committed. Your database system does not need to wait for the logs to be replayed. If the secondary instances are unavailable or a network interruption occurs between the primary and secondary instances, the semi-synchronous mode is demoted to the asynchronous mode. Asynchronous mode When your application initiates a request to add, delete, or modify data, the primary instance responds to your application immediately after it completes the requested operation. At the same time, the primary instance asynchronously replicates data to the secondary instances. During asynchronous data replication, the unavailability of secondary instances does not affect the operations on the primary instance. Data remains consistent even if the primary instance is unavailable. ApsaraDB RDS for MySQL User G ApsaraDB for RDS
+Semi-synchronous mode After an update that is initialized by your application is complete on the primary instance, logs are synchronized to all the secondary instances. After the secondary instances receive the logs, the update transaction is considered committed. Your database system does not need to wait for the logs to be replayed. If the secondary instances are unavailable or a network interruption occurs between the primary and secondary instances, the semi-synchronous mode is demoted to the asynchronous mode. Asynchronous mode When your application initiates a request to add, delete, or modify data, the primary instance responds to your application immediately after it completes the requested operation. At the same time, the primary instance asynchronously replicates data to the secondary instances. During asynchronous data replication, the unavailability of secondary instances does not affect the operations on the primary instance. Data remains consistent even if the primary instance is unavailable.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3025,23 +3076,18 @@ instance that you want to manage and click the ID of the instance or click **Man
 
 **FAQ**
 
-Q: Which data replication mode is recommended? A: You can select a data replication mode based on your business requirements. If you require quick responses, we recommend that you select the asynchronous mode. In other scenarios, you can select the semi-synchronous mode.
+Q: Which data replication mode is recommended? A: You can select a data replication mode based on your business requirements. If you require quick responses, we recommend that you select the asynchronous mode. In other scenarios, you can select the semi-synchronous mode. ation
 
-| Parameter | Description |
-|---|---|
-| Backup Cycle | The backup cycle. You can select one or more days within a week. |
-| Backup Time | A period of time within a day. Unit: hours. We recommend that you back up data during off-peak hours. |
-| Retention Period | The retention period of regular backup (hot backup) and whether to retain the data for a long time before the instance is released. Note Data backup sets that are retained for more than 730 days will be automatically converted to archived backups (cold backup). The retention period of archived backups is at least 30 days. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Database backup and
+## 14 Database backup and restoration
 
 **restoration**
 
-### Configure automatic backup
+### 14.1 Configure automatic backup
 
 Automatic backup of ApsaraDB RDS supports full physical backups. ApsaraDB RDS automatically backs up data based on pre-configured policies. This topic describes how to configure a policy for automatic backup.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instances**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3053,19 +3099,26 @@ instance that you want to manage and click the ID of the instance or click **Man
 
 To ensure data security, the system compares the new backup cycle and time with the original settings and selects the most recent point in time to back up the data. Therefore, the next backup may still be performed based on the original backup cycle and time. For example, assume that the scheduled backup cycle and time are set to 19:00-20:00 every Wednesday. If you modify the backup cycle and time to 19:00-20:00 every Thursday before the scheduled backup occurs, the system still backs up data at the original scheduled time of 19:00-20:00 on Wednesday.
 
+| Parameter | Description |
+|---|---|
+| Backup Cycle | The backup cycle. You can select one or more days within a week. |
+| Backup Time | A period of time within a day. Unit: hours. We recommend that you back up data during off-peak hours. |
+| Retention Period | The retention period of regular backup (hot backup) and whether to retain the data for a long time before the instance is released. Note Data backup sets that are retained for more than 730 days will be automatically converted to archived backups (cold backup). The retention period of archived backups is at least 30 days. |
+
+ation
+
 | Log Backup | Specifies whether to enable log backup. Important If you disable log backup, all the log backup files are deleted and you cannot restore data to a specific point in time. |
 |---|---|
 | Log Backup Retention Period | The number of days for which log backup files are retained. Valid values: 7 to 730. Default value: 7. |
 
-| Database engine | Download of data backup files | Download of log backup files |
-|---|---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 6. After you complete the configuration, click **Save**.
 
-### Manually back up an instance
+### 14.2 Manually back up an instance
 
 Manual backup of ApsaraDB RDS supports both full physical and logical backups. This topic describes how to manually back up an ApsaraDB RDS instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3077,20 +3130,25 @@ click **OK**.
 
 The following backup modes are available: Physical Backup: directly backs up all files in all databases. Logical Backup: extracts data from the databases by using SQL statements and backs up the data in the text format. If you select Logical Backup, you must select one of the following backup policies: Instance Backup: backs up the entire instance. Single-Database Backup: backs up one of the databases on the instance.
 
-### Download data backup files
+### 14.3 Download data backup files and log backup files
 
 **and log backup files**
 
 This topic describes how to download unencrypted data backup files and log backup files in the ApsaraDB RDS console to archive the files and restore data to an on-premises database.
 
+**Limits**
+
+| Database engine | Download of data backup files | Download of log backup files |
+|---|---|---|
+
+ation
+
 | MySQL 5.7 on RDS High- availability Edition | Supported | Supported |
 |---|---|---|
 | MySQL 8.0 on RDS High- availability Edition | Supported | Supported |
 
-| Download method | Description |
-|---|---|
+**Procedure**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instances**. On the Instances page, click the ID of the
 instance that you want to manage, or click **Manage** in the **Actions** column to go to the
@@ -3107,11 +3165,14 @@ To download data backup files, click the **Data Backup** tab. To download log ba
 If the Download button is unavailable, check whether the requirements in the Limits section are met. If you want to download data backup file and use the backup file to restore data, we recommend that you select the data backup file created closest to the point in time when the required data exists. If the log backup file is used to restore the data of your RDS instance to an onpremises database, take note of the following items: The instance ID of the log backup file must be the same as the instance ID of the backup set that you select. The start time of the log backup file must be later than the end time of the backup set that you select and earlier than the point in time to which you want to restore the data of your RDS instance.
 7. In the dialog box that appears, click **Download**.
 
+| Download method | Description |
+|---|---|
+
+ation
+
 | Download button | Use a browser to download the backup file. |
 |---|---|
 | Download URL | Copy the download URL. If you want to use other tools to download the file, use this method. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
 **Note**
 
@@ -3123,13 +3184,16 @@ wget -c '<Download URL of the backup file>' -O <File name>
 
 The -c option enables resumable download. The -O option saves the downloaded file by using a specified name. We recommend that you use the file name contained in the download URL. If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
 
-### Use the Upload Binlogs
+### 14.4 Use the Upload Binlogs feature to upload binary log files
 
 **feature to upload binary log files**
 
 **Background information**
 
 ApsaraDB RDS for MySQL allows you to upload binary log files to Object Storage Service (OSS) for storage. This topic describes how to upload binary log files to OSS.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3138,17 +3202,13 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. On the page that appears, click **Upload Binlogs**.
 5. In the message that appears, click **OK**.
 
-### Restore data to a new
+### 14.5 Restore data to a new instance (formerly known as cloning an instance)
 
 **instance (formerly known as**
 
 **cloning an instance)**
 
-| Section | Parameter | Description |
-|---|---|---|
-| Area | Geography | The region in which the cloned instance resides. |
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G You can clone an instance that has the same content as the primary instance, including data and settings. This feature allows you to restore data of the primary instance or create multiple instances that are the same as the primary instance.
+ation You can clone an instance that has the same content as the primary instance, including data and settings. This feature allows you to restore data of the primary instance or create multiple instances that are the same as the primary instance.
 
 **Prerequisites**
 
@@ -3161,6 +3221,9 @@ You can specify a backup set or a point in time within the backup retention peri
 **Note**
 
 A cloned instance copies only the content of the primary instance, but not the content of read-only instances. The copied data includes database information, account information, and instance settings, such as whitelist settings, backup settings, parameter settings, and alert threshold settings. The database engine of a cloned instance must be the same as that of the primary instance. Other settings can be different, such as the instance edition, zone, network type, instance type, and storage capacity. If you want to restore the data of a primary instance, we recommend that you select a higher instance type and larger storage capacity than those of the primary instance. This can accelerate the data restoration process. The account type of a cloned instance must be the same as that of the primary instance. The account password of the cloned instance can be changed.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the left-side navigation pane, click **Backup and Restoration**.
@@ -3169,40 +3232,45 @@ A cloned instance copies only the content of the primary instance, but not the c
 5. In the message that appears, click **OK**.
 6. On the **RDS restoration** page, configure the following parameters.
 
+| Section | Parameter | Description |
+|---|---|---|
+| Area | Geography | The region in which the cloned instance resides. |
+
+ation
+
 | Database Recovery | Restore mode | The data restore mode of the primary instance. Valid values: By point in time By Backup Set |
 |---|---|---|
-|  | Restore time | The point in time to which you want to restore the primary instance. Note When Restore mode is set to By point in time, you must specify this parameter. |
-|  | Backup Set | The backup set for restoration. Note When Restore mode is set to By Backup Set, you must specify this parameter. |
+|   | Restore time | The point in time to which you want to restore the primary instance. Note When Restore mode is set to By point in time, you must specify this parameter. |
+|   | Backup Set | The backup set for restoration. Note When Restore mode is set to By Backup Set, you must specify this parameter. |
 | Specification Configuration | Instance name | The name of the cloned instance. |
-|  | Database Type | The database engine of the cloned instance, which cannot be modified. |
-|  | Database Version | The engine version of the cloned instance, which cannot be modified. |
-|  | Series | The RDS edition of the cloned instance. The actual values are displayed in the console. |
-|  | Storage Type | The storage type of the cloned instance. The actual values are displayed in the console. |
+|   | Database Type | The database engine of the cloned instance, which cannot be modified. |
+|   | Database Version | The engine version of the cloned instance, which cannot be modified. |
+|   | Series | The RDS edition of the cloned instance. The actual values are displayed in the console. |
+|   | Storage Type | The storage type of the cloned instance. The actual values are displayed in the console. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+ation
 
-|  | Instance specifications | The instance type of the cloned instance. Note We recommend that you select a higher instance type and larger storage capacity than those of the primary instance. This can accelerate the data restoration process. |
+|   | Instance specifications | The instance type of the cloned instance. Note We recommend that you select a higher instance type and larger storage capacity than those of the primary instance. This can accelerate the data restoration process. |
 |---|---|---|
-|  | Storage space | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the instance. The available storage capacity displayed in the console prevails. Note A dedicated AsparaDB RDS instance that uses local SSDs exclusively occupies the allocated resources, and its storage capacity varies based on the instance type. |
+|   | Storage space | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the instance. The available storage capacity displayed in the console prevails. Note A dedicated AsparaDB RDS instance that uses local SSDs exclusively occupies the allocated resources, and its storage capacity varies based on the instance type. |
 | Network Type | Network Type | The network type of the cloned instance. ApsaraDB RDS instances support the following network types: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service is blocked only by using security groups or whitelists. Proprietary Network: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. For security purposes, we recommend that you select the VPC network type. |
-|  | VPC | The VPC in which the cloned instance resides. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
-|  | vSwitch | The vSwitch in the VPC. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | VPC | The VPC in which the cloned instance resides. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | vSwitch | The vSwitch in the VPC. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+ation
 7. After you complete the configuration, click **Submit**.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
 
-## Autonomy services
+## 15 Autonomy services
 
-### Introduction to DAS
+### 15.1 Introduction to DAS
 
 Database Autonomy Service (DAS) is a cloud service that uses machine learning and expert experience to automate perception, healing, optimization, O&M, and security for databases. DAS simplifies database management and prevents service failures that are caused by manual operations. This way, DAS helps ensure that the database service of users runs in a stable, secure, and efficient manner.
 
 **Features**
 
-In ApsaraDB RDS for MySQL, DAS provides the following features: You can diagnose your instance and view the visualized diagnostic results. You can view sessions, check session statistics, analyze SQL statements, and optimize the execution of SQL statements. Real-time monitoring You can view the real-time information about your instance, such as the queries per second (QPS), transactions per second (TPS), number of connections, and network traffic. You can view the storage overview, trends, exceptions, tablespaces, and data spaces. You can view and analyze the last deadlock in a database. Dashboard You can view and compare performance trends, customize monitoring dashboards, check exceptions, and view instance topologies. You can view the trends and statistics of slow queries. You can generate diagnostic reports or view automatically generated reports about instance health, alerts, and slow queries.
+In ApsaraDB RDS for MySQL, DAS provides the following features: Diagnostics You can diagnose your instance and view the visualized diagnostic results. Instance sessions You can view sessions, check session statistics, analyze SQL statements, and optimize the execution of SQL statements. Real-time monitoring You can view the real-time information about your instance, such as the queries per second (QPS), transactions per second (TPS), number of connections, and network traffic. You can view the storage overview, trends, exceptions, tablespaces, and data spaces. Deadlock analysis You can view and analyze the last deadlock in a database. Dashboard You can view and compare performance trends, customize monitoring dashboards, check exceptions, and view instance topologies. Slow query logs You can view the trends and statistics of slow queries. You can generate diagnostic reports or view automatically generated reports about instance health, alerts, and slow queries.
 
-### Perform quick diagnostics
+### 15.2 Perform quick diagnostics
 
 **Go to the Diagnostics tab**
 
@@ -3211,7 +3279,6 @@ In ApsaraDB RDS for MySQL, DAS provides the following features: You can diagnose
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, choose **Autonomy Services > Diagnostics**.
 4. On the page that appears, click the **Diagnostics** tab.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 **Note**
 
@@ -3219,7 +3286,7 @@ For more information, see the **Diagnostics** topic in **Database Autonomy Servi
 
 **User Guide.**
 
-### Manage sessions
+### 15.3 Manage sessions
 
 In ApsaraDB RDS for MySQL, autonomy services provide the session management feature. This feature allows you to view and manage sessions of an instance.
 
@@ -3237,7 +3304,7 @@ For more information, see the **Instance sessions** topic in **Database Autonomy
 
 **Service (DAS) > User Guide.**
 
-### View real-time performance
+### 15.4 View real-time performance
 
 In ApsaraDB RDS for MySQL, autonomy services provide the real-time performance view. This feature allows you to view the real-time performance of MySQL.
 
@@ -3255,13 +3322,16 @@ For more information, see the **Real-time monitoring** topic in **Database Auton
 
 **Service (DAS) > User Guide.**
 
-### Storage analysis
+### 15.5 Storage analysis
 
 Database Autonomy Service (DAS) provides the storage analysis feature for ApsaraDB RDS for MySQL. You can use this feature to identify and fix storage exceptions in databases at the earliest opportunity to ensure database security.
 
 **Background information**
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G The storage analysis feature allows you to view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database.
+The storage analysis feature allows you to view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database.
+
+**Go to the Storage Analysis tab**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3271,11 +3341,14 @@ instance that you want to manage and click the ID of the instance or click **Man
 **Note**
 
 For more information, see the **Storage analysis** topic in **Database Autonomy**
-**Service User Guide**. >
+**Service User Guide**. **>**
 
-### Lock analysis
+### 15.6 Lock analysis
 
 Database Autonomy Service (DAS) provides the lock analysis feature for ApsaraDB RDS for MySQL. You can use this feature to view and analyze the last deadlock of a database.
+
+**Go to the Lock Analysis tab**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3287,7 +3360,7 @@ instance that you want to manage and click the ID of the instance or click **Man
 For more information, see the **Lock analysis** topic in **Database Autonomy Service**
 **User Guide**.
 
-### Performance trends
+### 15.7 Performance trends
 
 Database Autonomy Service (DAS) provides the dashboard feature for ApsaraDB RDS for MySQL. This feature allows you to view performance trends in specific ranges, compare performance trends, and customize charts to view performance trends.
 
@@ -3297,14 +3370,13 @@ Database Autonomy Service (DAS) provides the dashboard feature for ApsaraDB RDS 
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
 3. In the left-side navigation pane, choose **Autonomy Services > Dashboard**.
-ApsaraDB RDS for MySQL User G ApsaraDB for RDS
 
 **Note**
 
 For more information, see the **Performance trends** topic in **Database Autonomy**
 **Service User Guide**.
 
-### View slow query logs
+### 15.8 View slow query logs
 
 In ApsaraDB RDS for MySQL, autonomy services provide the slow query logs feature. This feature allows you to view the trends of slow queries, execution details of slow queries, and optimization suggestions.
 
@@ -3321,9 +3393,12 @@ For more information, see the **Slow query logs** topic in **Database Autonomy**
 
 **Service (DAS) > User Guide.**
 
-### Diagnostic reports
+### 15.9 Diagnostic reports
 
 Database Autonomy Service (DAS) provides the diagnostic reports feature for ApsaraDB RDS for MySQL. This feature allows you to create and view diagnostic reports.
+
+**Go to the Diagnostic Reports page**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -3332,7 +3407,20 @@ instance that you want to manage and click the ID of the instance or click **Man
 **Note**
 
 For more information, see the **Diagnostic reports** topic in **Database Autonomy**
-**Service User Guide**. >
+**Service User Guide**. **>**
+
+## 16 Log management
+
+ApsaraDB RDS instances support log management. You can query the details of error and slow query logs of an ApsaraDB RDS instance by using the ApsaraDB RDS console. The logs help you perform troubleshooting.
+
+**Procedure**
+
+1. Log in to the ApsaraDB RDS console.
+2. In the left-side navigation pane, click **Instances**. On the Instance List page, find the
+instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to open the **Basic Information** page.
+3. In the left-side navigation pane, click **Logs**.
+4. On the **Logs** page, click the **Error Logs**, **Slow Query Logs**, or **Primary/Secondary**
+**Switching Logs** tab. Specify a time range and click **OK**.
 
 | Log | Content |
 |---|---|
@@ -3341,20 +3429,9 @@ For more information, see the **Diagnostic reports** topic in **Database Autonom
 | Slow Log Statistics | Summarizes SQL statements within the last 15 days that took longer than one second to execute. Note You can view slow log statistics for any seven days within the last 15 days. |
 | Primary/Secondary Switching Logs | Records events of primary/secondary instance switchovers. This feature is available for ApsaraDB RDS for MySQL instances that run RDS High- availability Edition. |
 
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+MySQL data
 
-## Log management
-
-ApsaraDB RDS instances support log management. You can query the details of error and slow query logs of an ApsaraDB RDS instance by using the ApsaraDB RDS console. The logs help you perform troubleshooting.
-1. Log in to the ApsaraDB RDS console.
-2. In the left-side navigation pane, click **Instances**. On the Instance List page, find the
-instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to open the **Basic Information** page.
-3. In the left-side navigation pane, click **Logs**.
-4. On the **Logs** page, click the **Error Logs**, **Slow Query Logs**, or **Primary/Secondary**
-**Switching Logs** tab. Specify a time range and click **OK**.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
-
-## Use mysqldump to
+## 17 Use mysqldump to migrate MySQL data
 
 **migrate MySQL data**
 
@@ -3367,13 +3444,16 @@ An ECS instance is created.
 **Background information**
 
 mysqldump is easy to use but requires extensive downtime. This tool is suitable for scenarios where the amount of data is small or extensive downtime is allowed. ApsaraDB RDS for MySQL is fully compatible with the native database service. The procedure of migrating data from the original database to an ApsaraDB RDS for MySQL instance is similar to that of migrating data from one MySQL server to another. Before you migrate data, you must create an account that is used to migrate data from the on-premises MySQL database. You must grant the read and write permissions on the onpremises MySQL databases to the account.
+
+**Procedure**
+
 1. Run the following command to create a migration account for the on-premises database:
 
 ```
  CREATE USER 'username'@'host' IDENTIFIED BY 'password';
 ```
 
-Parameter description: username: the name of the account to be created. host: the host from which the account is authorized to log on to the on-premises MySQL database. If you want to allow access from a local host, set this parameter to **localhost**. If you want to allow access from all hosts, set this parameter to a percent sign (%). password: the password of the account. For example, you can run the following command to create an account with the username
+Parameter description: username: the name of the account to be created. host: the host from which the account is authorized to log on to the on-premises MySQL database. If you want to allow access from a local host, set this parameter to **localhost**. If you want to allow access from all hosts, set this parameter to a percent sign (**%**). password: the password of the account. For example, you can run the following command to create an account with the username
 **William** and the password **Changme123**. The account is authorized to log on to the on-
 premises MySQL database from all hosts.
 
@@ -3391,12 +3471,7 @@ REPLICATION SLAVE ON databasename.tablename TO 'username'@'host' WITH GRANT OPTI
 
 Parameter description: privileges: the operation permissions granted to the account, such as SELECT, INSERT, and UPDATE. To authorize the account to perform all operations, set this parameter to
 **ALL**.
-databasename: the name of the on-premises MySQL database. If you want to grant all database permissions to the account, set this parameter to an asterisk (*). tablename: the name of the table whose data you want to migrate. If you want to grant all table permissions to the account, set this parameter to an asterisk (*). username: the name of the account. host: the host from which the account is authorized to log on to the on-premises MySQL
-
-| mysql -h intranet4example.mysql.rds.aliyuncs.com –u userName -p dbName < |  |
-|---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G database. If you want to allow access from a local host, set this parameter to **localhost**. If you want to allow access from all hosts, set this parameter to a percent sign (%). WITH GRANT OPTION: authorizes the account to use the GRANT statement. This parameter is optional. For example, you can execute the following statement to grant all permissions on tables and databases to the **William** account. The account is authorized to log on to the database from all hosts.
+databasename: the name of the on-premises MySQL database. If you want to grant all database permissions to the account, set this parameter to an asterisk (*). tablename: the name of the table whose data you want to migrate. If you want to grant all table permissions to the account, set this parameter to an asterisk (*). username: the name of the account. host: the host from which the account is authorized to log on to the on-premises MySQL MySQL data database. If you want to allow access from a local host, set this parameter to **localhost**. If you want to allow access from all hosts, set this parameter to a percent sign (**%**). WITH GRANT OPTION: authorizes the account to use the GRANT statement. This parameter is optional. For example, you can execute the following statement to grant all permissions on tables and databases to the **William** account. The account is authorized to log on to the database from all hosts.
 
 ```
  GRANT ALL ON *. * TO 'William'@'%';
@@ -3431,6 +3506,7 @@ In this example, the files are uploaded to the following paths:
 
 ```
  /tmp/dbName.sql
+ /tmp/triggerProcedure.sql
 ```
 
 6. Log on to the ECS console and import both the data file and the stored procedure file to the
@@ -3440,10 +3516,15 @@ destination ApsaraDB RDS for MySQL instance.
 
 For information about how to log on to the ECS instance, see topics in the
 **Connect to an instance** section of ECS User Guide.
-ApsaraDB for RDS ApsaraDB RDS for MySQL User G
+
+| mysql -h intranet4example.mysql.rds.aliyuncs.com –u userName -p dbName < |   |
+|---|---|
+
+MySQL data
 
 ```
  mysql -h intranet4example.mysql.rds.aliyuncs.com -u userName -p dbName <
+/tmp/triggerProcedure.sql
 ```
 
 Parameter description: intranet4example.mysql.rds.aliyuncs.com: the endpoint of the ApsaraDB RDS for MySQL instance. An internal endpoint is used in this example. userName: the migration account of the ApsaraDB RDS for MySQL database. dbName: the name of the on-premises MySQL database from which you want to import data. /tmp/dbName.sql: the name of the data file that you want to import. /tmp/triggerProcedure.sql: the name of the stored procedure file that you want to import.

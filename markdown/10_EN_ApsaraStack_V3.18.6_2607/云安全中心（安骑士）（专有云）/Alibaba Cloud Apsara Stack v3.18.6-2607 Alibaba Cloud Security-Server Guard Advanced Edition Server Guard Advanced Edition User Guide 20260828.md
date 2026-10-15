@@ -3,14 +3,87 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Gu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 318
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20260828.pdf"
+source_pdf: "e19f2acab89ac1c5_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition User Guide 20260828
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 Agent installation
+  - 3.1 Operating systems supported by the Server Guard agent
+  - 3.2 FAQ
+- 4 Server Guard
+  - 4.1 Security overview
+  - 4.2 Assets
+    - 4.2.1 Manage assets
+    - 4.2.2 Use the server fingerprints feature
+  - 4.3 安全预防
+    - 4.3.1 漏洞管理
+      - 4.3.1.1 Scan assets for vulnerabilities and view vulnerability statistics
+      - 4.3.1.2 Manage Linux software vulnerabilities
+      - 4.3.1.3 Manage Windows system vulnerabilities
+      - 4.3.1.4 Manage Web-CMS vulnerabilities
+      - 4.3.1.5 Application vulnerability (urgent vulnerability included)
+      - 4.3.1.6 Configure vulnerability management policies
+    - 4.3.2 基线检查
+      - 4.3.2.1 Baseline check overview
+      - 4.3.2.2 Manage baseline check policies
+      - 4.3.2.3 View baseline check results and handle baseline risks
+    - 4.3.3 Risk exposure detection
+    - 4.3.4 Use the application protection feature
+  - 4.4 Intrusion prevention
+    - 4.4.1 Use the antivirus feature
+    - 4.4.2 Web tamper proofing
+    - 4.4.3 Application whitelist
+    - 4.4.4 Attack analysis
+    - 4.4.5 Security alert
+      - 4.4.5.1 Overview
+      - 4.4.5.2 View and handle alerts
+      - 4.4.5.3 View exceptions related to an alert
+      - 4.4.5.4 Quarantine
+      - 4.4.5.5 Configure alerts
+    - 4.4.6 Use SDK for malicious file detection
+    - 4.4.7 Use the core file monitoring feature
+  - 4.5 日志检索
+    - 4.5.1 Log retrieval overview
+    - 4.5.2 Query logs
+    - 4.5.3 Supported log sources and fields
+    - 4.5.4 语法逻辑说明
+  - 4.6 Server settings
+    - 4.6.1 Install the Server Guard agent
+    - 4.6.2 Manage protection capabilities and protection modes
+    - 4.6.3 Configure defense rules
+- 5 Apsara Stack Security configurations
+  - 5.1 Log on to the Apsara Uni-manager Management Console
+  - 5.2 规则运营
+    - 5.2.1 Create and manage IPS rules
+    - 5.2.2 Manage Anti-DDoS Service rules
+    - 5.2.3 Manage Server Guard rules
+    - 5.2.4 Create and manage WAF rules
+  - 5.3 Configure alert settings
+  - 5.4 全局设置
+    - 5.4.1 Configure the attack blocking feature
+  - 5.5 账号管理
+    - 5.5.1 Manage Apsara Stack tenant accounts
+    - 5.5.2 Manage Alibaba Cloud accounts
+  - 5.6 Migration to Apsara Uni-manager Operations Console
+    - 5.6.1 Log on to Cloud Shield Operations Center
+    - 5.6.2 View system monitoring data
+    - 5.6.3 Global settings
+      - 5.6.3.1 Configure host security rules
+      - 5.6.3.2 Configure whitelist settings
+    - 5.6.4 Upgrade center
+      - 5.6.4.1 Upgrade center overview
+      - 5.6.4.2 Feature library or version updates
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, make sure that your computer meets the configuration requirements. For more information about the configuration requirements, see . Table 1. Configuration requirements
 
@@ -19,9 +92,9 @@ Before you log on to Apsara Stack Security Center, make sure that your computer 
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later GmSSL browser that runs the Chrome kernel: V69.0.0 or later |
 | Operating system | Windows XP Windows 7 or later macOS Anolis OS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. The roles available in Apsara Stack Security are all default roles. You cannot create custom roles. Before you log on to Apsara Stack Security, make sure that your account is assigned the required role. For more information, see the Default roles in Apsara Stack Security section of this topic. Table 1: Default roles in Apsara Stack Security
 
@@ -35,7 +108,7 @@ This topic describes the user roles involved in Apsara Stack Security. The roles
 If you do not have an account or a role, contact the administrator to create an account and assign a role to the account. For more information, see the **Create a user** topic in **Apsara**
 **Uni-manager Management Console User Guide**.
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -65,9 +138,9 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-## Agent installation
+## 3 Agent installation
 
-### Operating systems supported
+### 3.1 Operating systems supported by the Server Guard agent
 
 **by the Server Guard agent**
 
@@ -686,7 +759,7 @@ compatibility requirements for the**versions of operating systems and kernels** 
 | uos | 4.x series (x86 64 architecture) _ 4.19.0-91.82.152.uelc20.x86 64, _ 4.19.0-91.82.179.uelc20.x86 64, _ 4.19.0-91.82.112.uelc20.x86 64, _ 4.19.0-91.77.97.uelc20.x86 64 _ |
 |---|---|
 
-### FAQ
+### 3.2 FAQ
 
 **Problem description**
 
@@ -794,9 +867,9 @@ The agent installation commands vary with instance types.
 
 After you run the command, log in to the ECS instance and check the agent version. You can view that the agent of an earlier version is being reinstalled, and then the agent version is updated to a version required in Apsara Stack V3.18.6.
 
-## Server Guard
+## 4 Server Guard
 
-### Security overview
+### 4.1 Security overview
 
 Security administrators can view the details of server security on the Security Overview page in the Server Guard console. This helps security administrators gain insights into the security status of servers in the cloud. This topic describes how to view the security status of servers.
 
@@ -912,9 +985,9 @@ between colors and risk levels. Red: indicates a high level of risk. Orange: ind
 
 The **High-risk Assets** section displays the top 5 high-risk assets within the last 24 hours.
 
-### Assets
+### 4.2 Assets
 
-#### Manage assets
+#### 4.2.1 Manage assets
 
 After you add servers to Server Guard, you can manually synchronize the information about the most recent servers, view server information, and manage servers by group. This topic describes how to manage servers.
 
@@ -991,7 +1064,7 @@ Alternatively, you can skip the step of specifying assets. After you click **OK*
 On the Manage Downloaded Tasks page, you can view and download the task information under the **Asset Center and Fingerprint**, **Client Logs**, **Vulnerability Management**,
 **Baseline Check**, **Internet Exposures**, and **Alerts** tabs.
 
-#### Use the server fingerprints feature
+#### 4.2.2 Use the server fingerprints feature
 
 This topic describes how to view the fingerprints of multiple assets on a server. This topic also describes how to configure the fingerprint collection frequency andthe number of days for fingerprint history retention of a server.
 
@@ -1046,11 +1119,11 @@ fingerprint collection frequency.
 3. On the **Record Retention Settings** tab of the **Settings** dialog box, select a value from
 the **Fingerprint History Retention** drop-down list.
 
-### 安全预防
+### 4.3 安全预防
 
-#### 漏洞管理
+#### 4.3.1 漏洞管理
 
-##### Scan assets for vulnerabilities and view
+##### 4.3.1.1 Scan assets for vulnerabilities and view vulnerability statistics
 
 **vulnerability statistics**
 
@@ -1101,7 +1174,7 @@ In the upper part of the **Vulnerabilities** page, you can view vulnerability st
 | Defended Application Vulnerabilities | The number of application vulnerabilities that have been defended. Click the number below Defended Application Vulnerabilities to go to the Application(Urgent Vulnerability Included) panel. In this panel, you can view the list of and information about the assets affected by vulnerabilities. |
 | Detection Time of Latest Vul | The latest point in time when a vulnerability was detected by a scan. |
 
-##### Manage Linux software vulnerabilities
+##### 4.3.1.2 Manage Linux software vulnerabilities
 
 This topic describes how to manage Linux software vulnerabilities.
 
@@ -1145,7 +1218,7 @@ Table 1 Actions to fix vulnerabilities
 
 You can manage a vulnerability for one or more affected assets at a time. To manage a vulnerability for one affected asset, find the asset and select an action from the **Actions** column of the asset. To manage a vulnerability for multiple affected assets, select the assets and select an action below the list of the affected assets.
 
-##### Manage Windows system vulnerabilities
+##### 4.3.1.3 Manage Windows system vulnerabilities
 
 This topic describes how to manage Window system vulnerabilities.
 
@@ -1190,7 +1263,7 @@ are used to fix vulnerabilities. Table 1 Actions to fix vulnerabilities
 
 You can manage a vulnerability for one or more affected assets at a time. To manage a vulnerability for one affected asset, find the asset and select an action from the **Actions** column of the asset. To manage a vulnerability for multiple affected assets, select the assets and select an action below the list of the affected assets.
 
-##### Manage Web-CMS vulnerabilities
+##### 4.3.1.4 Manage Web-CMS vulnerabilities
 
 This topic describes how to manage Web-CMS vulnerabilities.
 
@@ -1230,7 +1303,7 @@ are used to fix vulnerabilities. Table 1 Actions to fix vulnerabilities
 
 You can manage a vulnerability for one or more affected assets at a time. To manage a vulnerability for one affected asset, find the asset and select an action from the **Actions** column of the asset. To manage a vulnerability for multiple affected assets, select the assets and select an action below the list of the affected assets.
 
-##### Application vulnerability (urgent
+##### 4.3.1.5 Application vulnerability (urgent vulnerability included)
 
 **vulnerability included)**
 
@@ -1265,7 +1338,7 @@ are used to fix vulnerabilities. Follow the instructions to manually fix the vul
 
 You can manage a vulnerability for one or multiple affected assets at a time. To manage a vulnerability for one affected asset, select an action from the **Actions** column of the asset. To manage a vulnerability for multiple affected assets, select the assets and select an action below the list of the affected assets.
 
-##### Configure vulnerability management
+##### 4.3.1.6 Configure vulnerability management policies
 
 **policies**
 
@@ -1312,9 +1385,9 @@ Configure policies in multi-level organization mode In multi-level organization 
 | 5 | Click Create Rule to configure a vulnerability whitelist for the specified servers. Server Guard does not detect the vulnerabilities that you add to the whitelist. |
 |---|---|
 
-#### 基线检查
+#### 4.3.2 基线检查
 
-##### Baseline check overview
+##### 4.3.2.1 Baseline check overview
 
 The baseline check feature automatically checks the security configurations on servers and provides detailed check results and suggestions for baseline reinforcement.
 
@@ -1356,7 +1429,7 @@ If these baselines are enabled, the system attempts to log on to servers with we
 | Weak password | MongoDB Weak Password baseline(support version 2. X) Ftp login weak password baseline Jboss6/7 login weak password baseline Jenkins login weak password baseline Linux system login weak password baseline MongoDB Weak Password baseline SQL Server DB login weak password baseline Mysql database login weak password check (version 8.x is not supported) Mysql DB login weak password baseline(Windows version) Openldap login weak password baseline OpenVPN weak password detection in Linux system Oracle login weak password detection PostgreSQL DB login weak password baseline pptpd login weak password baseline Proftpd login weak password baseline RabbitMQ login weak password baseline Redis DB login weak password baseline rsync login weak password baseline svn login weak password baseline Apache Tomcat Console weak password baseline VncServer weak password check Weblogic 12c login weak password detection Windows system login weak password baseline Activemq login weak password baseline |
 |---|---|
 
-##### Manage baseline check policies
+##### 4.3.2.2 Manage baseline check policies
 
 This topic describes how to create, modify, and delete baseline check policies and how to specify baseline check levels.
 
@@ -1416,7 +1489,7 @@ If the resource sets have different configurations after you modify the policies
 
 You cannot restore a policy after you delete the policy. You cannot delete the default policy. Specify the baseline check levels: In the **Baseline Check Level** section, specify the baseline check levels. Valid values: High, Medium, and Low. In multi-level organization mode, the icon for a level indicates that the level is specified in specific resource sets. You can clear the selected items to configure baseline check levels in a centralized manner. Create custom weak password rules: Server Guard provides default weak password rules based on the Alibaba Cloud threat intelligence. You can also use a template to upload custom weak password rules. Make sure that the size of the file that you upload does not exceed 5 KB. In the **Custom Weak Password Rules** section, click **Import File** to upload an onpremises file of weak password rules. To export the uploaded file, right-click the name of the file to save the file or click the name of the file to save the file on the preview page.
 
-##### View baseline check results and handle
+##### 4.3.2.3 View baseline check results and handle baseline risks
 
 **baseline risks**
 
@@ -1506,7 +1579,7 @@ If you want to enable alerts for a check item in the whitelist, click **Remove**
 
 After you fix a check item, you can click Verify to check whether the check item is fixed. After you click Verify, the status of the check item changes to **Checking**. If you do not manually perform the verification, Apsara Stack Security automatically verifies the fix based on the detection interval specified in the policy. If the verification is passed, the **Status** of the check item changes to **Passed**.
 
-#### Risk exposure detection
+#### 4.3.3 Risk exposure detection
 
 The risk exposure detection feature automatically analyzes the exposure of your servers on the Internet. This helps you quickly detect abnormal exposure of your assets and applications on the Internet. The feature also provides suggestions on how to fix the detected vulnerabilities. This topic describes how to use the risk exposure detection feature.
 
@@ -1552,7 +1625,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 4. On the **Application exposure** tab of the **Risk Exposure Detection** page, view the
 information about exposed applications. Filter applications: Filter applications by specifying whether vulnerabilities exist or entering the service version or middleware version, or the service name or middleware name. View the exposure details of an application: Find the application whose details you want to view and click **Exposure Details** in the **Actions** column. In the panel that appears, you can view the exposure details of the application. Export data of an exposed application: Click the icon in the upper-right corner of the list of exposed applications to export and save the details of the exposed applications to your computer. The exported file is an Excel file.
 
-#### Use the application protection feature
+#### 4.3.4 Use the application protection feature
 
 The application protection feature is developed based on the runtime application selfprotection (RASP) technology. This feature can detect attacks and provide protection during application runtime. To use the application protection feature, you do not need to change the application code. You need to only install the application protection agent on the servers that you want to protect. The feature can protect your applications against attacks that are launched by exploiting most unknown vulnerabilities.
 
@@ -1795,9 +1868,9 @@ The following table describes the types of attacks that the application protecti
 | Malicious class loading | Zero-day vulnerabilities and webshells depend on the loading of malicious classes. After malicious classes are loaded, attackers can initialize malicious classes, obtain the permissions to execute code, and perform malicious operations. | If malicious classes are loaded by using webshells, delete the webshells at the earliest opportunity. If malicious classes are loaded due to framework vulnerabilities, upgrade the frameworks at the earliest opportunity. |
 | JSTL arbitrary file inclusion | The JavaServer Pages Standard Tag Library (JSTL) is a set of JavaServer Pages (JSP) tags, which encapsulates the common core features of JSP applications. If a user-controllable parameter is directly concatenated in JSTL without any restrictions on the parameter, attackers can construct a special script that causes arbitrary file reads and SSRF attacks. | We recommend that you do not directly concatenate user- controllable parameters in JSTL. If you need to do this, you must exercise strict whitelist control on the content of the parameters. |
 
-### Intrusion prevention
+### 4.4 Intrusion prevention
 
-#### Use the antivirus feature
+#### 4.4.1 Use the antivirus feature
 
 Server Guard provides the antivirus feature. This feature allows you to customize settings for virus and webshell detection.
 
@@ -1851,7 +1924,7 @@ Guard still generates this alert in subsequent detection.
 **Handled manually**: This alert reports a suspicious exception. We recommend that you
 troubleshoot the exception based on the handling suggestions. After you troubleshoot the exception, click Process Now. The alert status changes to Handled.
 
-#### Web tamper proofing
+#### 4.4.2 Web tamper proofing
 
 The web tamper proofing feature can monitor website directories and files on your server in real time. The feature can also restore tampered files or directories by using backups if a website is tampered with. This prevents the website from being inserted with illegal information and ensures that the website runs as expected. This topic describes how to use the web tamper proofing feature.
 
@@ -2089,7 +2162,7 @@ Process Management panel, you can view the information about all suspicious proc
 2. In the Process Management panel, find the suspicious process that you want to remove and
 click **Remove from Whitelist** in the **Actions** column. You can also select multiple suspicious processes and click **Remove from Whitelist** below the list to remove the processes from the whitelist at a time.
 
-#### Application whitelist
+#### 4.4.3 Application whitelist
 
 The application whitelist feature prevents unauthorized programs from running on your servers and provides a trusted running environment for your servers. This topic describes how to use the application whitelist feature.
 
@@ -2169,7 +2242,7 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 **Create**.
 After you create the custom process group, you can change the name of the process group, delete the process group, or add an MD5 hash value to the process group.
 
-#### Attack analysis
+#### 4.4.4 Attack analysis
 
 This topic describes the statistics that are provided by the attack analysis feature. The statistics include the total number of attacks, distribution of attack types, top 5 attack sources, top 5 attacked assets, and the attack list.
 
@@ -2197,9 +2270,9 @@ In the **Top 5 Attacked Assets** section, you can view the public IP addresses o
 
 In the attack list, you can view the details of each attack, including the attack time, source IP address, attacked asset, attack type, attack method, and attack status. You can perform the following operations on attacks in the attack list: Search for an attack To search for an attack and view the details of the attack, specify search conditions above the attack list. Search conditions include the attack type, attacked asset, and source IP address. View the details of an attacked asset To view the details of an attacked asset, move the pointer over the name of the attacked asset in the **Attacked Asset** column. Export the attack list To export and save the attack list to your computer, click the icon in the upper-left corner of the attack list. The exported file is in the Excel format.
 
-#### Security alert
+#### 4.4.5 Security alert
 
-##### Overview
+##### 4.4.5.1 Overview
 
 If Server Guard detects sensitive file tampering operations, suspicious processes, webshells, unusual logins, and malicious processes, Server Guard generates alerts. You can monitor the security status of your assets based on the alerts and handle potential threats at the earliest opportunity. Server Guard provides statistics about alerts. This helps you understand the overall protection situation. You can view the statistics about alerts on the **Security Alerts** page of Server Guard.
 
@@ -2247,7 +2320,7 @@ The following table describes the alert types.
 | Resource Development | The attacker prepares infrastructure or resources before launching an attack. |
 | Reconnaissance | The attacker gathers information about the target system before launching an attack. |
 
-##### View and handle alerts
+##### 4.4.5.2 View and handle alerts
 
 This topic describes how to view and handle alerts that are generated by Server Guard.
 
@@ -2325,7 +2398,7 @@ In multi-level organization mode, only an account that has level-1 organization 
 3. In the dialog box that appears, find the data that you want to download and click
 **Download**.
 
-##### View exceptions related to an alert
+##### 4.4.5.3 View exceptions related to an alert
 
 Server Guard supports automatic analysis of exceptions related to an alert. You can click the name of an alert in the alert list to view and manage all exceptions that are related to the alert. You can also view the results of automatic attack tracing to analyze and handle the exceptions.
 
@@ -2349,7 +2422,7 @@ alert details panel appears.
 5. In the alert details panel, view the alert details and related exceptions of the alert. Then,
 handle the exceptions. View the details about an alert View the assets that are affected by an alert, the first time and last time when the alert was triggered, and the details about the related exceptions. View affected assets Move the pointer over the name of an **affected asset** to view the details about the asset. View and manage **related exceptions** In the **Related Exceptions** section, view the details about all the exceptions that are related to the alert. You can also view suggestions on how to handle the exceptions. Click **Note** to the right of an exception to add a note for the exception. Click the icon to the right of a note to delete the note.
 
-##### Quarantine
+##### 4.4.5.4 Quarantine
 
 Sever Guard can quarantine malicious files. Quarantined files are listed in the Quarantine panel of the Security Alerts page. The system automatically deletes a quarantined file 30 days after the file is quarantined. You can restore a quarantined file with a few clicks before the file is deleted. This topic describes how to view and restore quarantined files.
 
@@ -2367,7 +2440,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 4. On the **Security Alerts** page, click **Quarantine** in the upper-right corner.
 In the **Quarantine** panel, you can perform the following operations: View information about quarantined files. The information includes server IP addresses, paths that store the files, file status, and modification time. Click **Restore** in the **Actions** column to remove a file. The file is displayed in the alert list again.
 
-##### Configure alerts
+##### 4.4.5.5 Configure alerts
 
 This topic describes how to configure alerts. You can specify approved logon locations and web directories to scan. You can also configure advanced logon settings.
 
@@ -2417,7 +2490,7 @@ your assets. Find an asset and click **Edit** in the **Actions** column to modif
 **Global Whitelist Rule**: The whitelist rules are configured by Apsara Stack Security
 and cannot be modified.
 
-#### Use SDK for malicious file detection
+#### 4.4.6 Use SDK for malicious file detection
 
 You can use SDK for malicious file detection to detect common viruses such as ransomware and mining programs in Object Storage Service (OSS) objects to prevent the spread and execution of malicious files. This topic describes how to use SDK for malicious file detection.
 
@@ -2481,7 +2554,7 @@ View the overall information about at-risk OSS objects On the **At-risk File Ove
 
 If risks are detected in an object, the object may be embedded with viruses such as malicious scripts and DDoS trojans. We recommend that you handle the object at the earliest opportunity based on the suggestions provided on the Event Description tab. View the statistics on OSS object detection On the **OSS Object Check** tab, you can view the following information: the number of buckets in which malicious objects are detected, the number of objects at each risk level, and the total number of buckets. The risk levels include high, medium, and low. View the detection results of a bucket In the bucket list of the **OSS Object Check** tab, find the bucket whose detection results you want to view and click **Details** in the **Actions** column. On the Object Check Details page, you can view the information about the bucket on the Basic Information and At-risk Object Details tabs.
 
-#### Use the core file monitoring feature
+#### 4.4.7 Use the core file monitoring feature
 
 The core file monitoring feature monitors access to core files on servers in real time. The feature can monitor file operations such as access, modify, delete, and rename operations in real time and generate alerts when suspicious operations are detected. You can use the feature to check whether your core files are stolen or tampered with. This topic describes how to use the core file monitoring feature to monitor access to core files on servers.
 
@@ -2577,9 +2650,9 @@ For more information about web tamper proofing, see Use the feature of web tampe
 
 If web tamper proofing and core file monitoring are both enabled for a server, web tamper proofing preferentially takes effect. If Server Guard cannot match a request against the rules of web tamper proofing, Server Guard matches the request against the rules of core file monitoring. The process whitelist rules of web tamper proofing take effect only when the web tamper proofing feature works. The allow rules of core file monitoring take effect only when the core file monitoring feature works.
 
-### 日志检索
+### 4.5 日志检索
 
-#### Log retrieval overview
+#### 4.5.1 Log retrieval overview
 
 Server Guard provides the log retrieval feature. You can use the feature to manage logs that are scattered in various systems of Apsara Stack in a centralized manner. This way, you can easily identify the causes of issues that occur on your servers. The log retrieval feature allows you to store logs for 180 days and query logs that are generated within 30 days.
 
@@ -2612,7 +2685,7 @@ Table 1 Log sources
 | Process startups | Logs of process startups on a server |
 | Network connections | Logs of outbound connections that are initiated from hosts |
 
-#### Query logs
+#### 4.5.2 Query logs
 
 This topic describes how to search for and view physical server logs.
 
@@ -2665,7 +2738,7 @@ In multi-level organization mode,all data permissions are managed by using resou
 3. In the left-side navigation pane, click **Log Retrieval**.
 4. On the **Advanced Search** tab, follow the on-screen instructions to search for logs.
 
-#### Supported log sources and fields
+#### 4.5.3 Supported log sources and fields
 
 This topic describes the log sources and fields that are supported by the log retrieval feature. The log retrieval feature allows you to query the following types of log sources. You can click a log source link to view the fields that are supported.
 
@@ -2789,7 +2862,7 @@ The following table describes the fields that are supported in network connectio
 | dst ip _ | string | The destination IP address. |
 | status | string | The status. |
 
-#### 语法逻辑说明
+#### 4.5.4 语法逻辑说明
 
 日志检索支持多条件逻辑检索，您可以在一个搜索条件（一个日志源）下增加多个判断逻辑，也可以对多个搜索条件（不同的日志源）进行逻辑组合。本文介绍了日志检索支持的语法逻辑，也列举了部分用例，帮助您理解和使用。 日志检索支持下表中列举的语法逻辑。表 1. 语法逻辑说明
 
@@ -2803,9 +2876,9 @@ The following table describes the fields that are supported in network connectio
 |---|---|---|
 | query 2 |   |   |
 
-### Server settings
+### 4.6 Server settings
 
-#### Install the Server Guard agent
+#### 4.6.1 Install the Server Guard agent
 
 If you want to monitor the security of assets in Server Guard, you must install the Security Center agent on your server. This topic describes how to install the Security Center agent by using Server Guard settings.
 
@@ -2857,7 +2930,7 @@ Before you install the Server Guard agent, make sure that your you have a suffic
 **View Domain Name Resolution** or **View Quota** to view the required information.
 a. On the **Image Installation** tab, install the agent as prompted. b. Click the **Installation Verification** tab and copy the required command on this tab based on the operating system of the server to verify the installation result.
 
-#### Manage protection capabilities and
+#### 4.6.2 Manage protection capabilities and protection modes
 
 **protection modes**
 
@@ -2896,7 +2969,7 @@ In multi-level organization mode, servers can be filtered by resource set.
 |   | Safeguard Mode For Major Activities: This mode is suitable for major event protection. In this mode, all protection rules and security engines are enabled to generate alerts for all suspicious intrusions and potential threats. | Manage protected servers: In the Safeguard Mode For Major Activities section, click Manage. In the Safeguard Mode For Major Activities panel, select the servers that you want to protect and click OK. Specify the maximum CPU utilization: In the Safeguard Mode For Major Activities section, select an option from the CPU Threshold drop-down list. Valid values: 5%, 10%, 20, 30%, 40%, 50%, and 60%. |
 | Self- protection Manageme nt | After you enable the self-protection mode, the system automatically blocks activities that attempt to uninstall the Server Guard agent. This ensures the stability of the Server Guard agent. Note We recommend that you run important services in an operating system that supports the self- protection mode. This helps prevent the Server Guard agent from being uninstalled. If the Server Guard agent is uninstalled, the server is not protected, which can cause security risks. It requires 30 minutes to disable the self-protection mode. | Manage protected servers: In the Self-protection Management section, click Manage. In the dialog box that appears, select the servers that you want to protect and click OK. Enable the self-protection mode: Click the icon to enable the self-protection mode. |
 
-#### Configure defense rules
+#### 4.6.3 Configure defense rules
 
 The host-specific rule configuration feature allows you to manage defense and detection rules that are configured for your servers. You can create defense rules based on your business requirements to improve the security of your system.
 
@@ -3077,11 +3150,11 @@ By default, a new IP address blocking policy is in the **Disabled** state. You m
 **Effective Server** panel, find a server that is in the Enable Rule state and click **Retry** in
 the **Operate** column to enable the policy. Delete a custom IP address blocking policy You can delete an IP address blocking policy that is in the **Disabled** state. To delete a policy, click **Delete** in the Operate column. In the message that appears, click **OK**. configurations
 
-## Apsara Stack Security
+## 5 Apsara Stack Security configurations
 
 **configurations**
 
-### Log on to the Apsara Uni-
+### 5.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -3111,11 +3184,11 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-### 规则运营
+### 5.2 规则运营
 
 configurations
 
-#### Create and manage IPS rules
+#### 5.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
 
@@ -3150,7 +3223,7 @@ configurations
 
 After you create custom IPS rules, you can perform the following operations on the rules: View the details of a rule You can filter rules by specifying filter conditions above the rule list. Find the rule whose details you want to view and click **Details** in the **Actions** column to view the rule details. Enable an IPS rule Find the rule that you want to enable and turn on the switch in the **Enable or not** column to change the state of the rule from **Disable** to **Enable**. Disable an IPS rule If a rule does not meet your business requirements, you can disable the rule. Find the rule that you want to disable and turn off the switch in the **Enable or not** column to change the state of the rule from **Enable** to **Disable**.
 
-#### Manage Anti-DDoS Service rules
+#### 5.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service Rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
 
@@ -3176,7 +3249,7 @@ ii. In the **Modify Threshold** dialog box, specify custom thresholds and click 
 
 By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
-#### Manage Server Guard rules
+#### 5.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
 
@@ -3201,7 +3274,7 @@ configurations
 | Baselines (marked with ② in the preceding figure) | On the Baselines tab, you can view the baseline types and the check items that are used. To search for a baseline, you can select a baseline type from the Baseline Type drop-down list, select a severity from the Risk Level drop-down list, and then enter a check item category or name in the search box. In the baseline list, you can view the information about a baseline in the following columns: Baseline Type, Check Item Category, Check Item Name, Risk Level, Updated At, and Status. |
 | Server Exceptions (marked with ② in the preceding figure) | On the Server Exceptions tab, you can view the following information: Rule Alert Types and Webshell & Malicious Processes. To search for an exception on a server, you can select a rule category from the Rule Category drop-down list, select a severity level from the Risk Level drop-down list, and then enter a rule subcategory name in the search box. In the server exception list, you can view the information about an exception in the following columns: Rule Subcategory, Rule Category, Risk Level, Updated At, Source, and Status. |
 
-#### Create and manage WAF rules
+#### 5.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
@@ -3232,7 +3305,7 @@ parameters and click **OK**. The following table describes the parameters. confi
 
 After you create rules, you can perform the following operations on the rules: Filter WAF rules by specifying filter conditions above the rule list. Find the rule that you want to manage and click **Modify** in the **Actions** column to modify the rule.
 
-### Configure alert settings
+### 5.3 Configure alert settings
 
 On the Alert Settings page, you can configure alert contacts and alert rules. When monitoring data triggers alert rules, the system automatically sends alerts to specified alert contacts by using DingTalk messages or emails. This topic describes how to configure alert contacts and alert rules.
 
@@ -3275,9 +3348,9 @@ configurations
 | Application whitelist event | Unauthorized process start | All levels |   |   |
 | Tamper- proofing event | Unusual file modification Unusual file addition Unusual file deletion | All levels |   |   |
 
-### 全局设置
+### 5.4 全局设置
 
-#### Configure the attack blocking feature
+#### 5.4.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks and brute-force attacks. This topic describes how to configure the attack blocking feature.
 
@@ -3292,9 +3365,9 @@ The attack blocking feature protects your servers from web attacks and brute-for
 4. On the **Global Settings** tab, turn on or off the switch in the Actions column to enable or
 disable the attack blocking feature. configurations After you disable the attack blocking feature, Apsara Stack Security generates alerts for web attacks and brute-force attacks but does not block them.
 
-### 账号管理
+### 5.5 账号管理
 
-#### Manage Apsara Stack tenant accounts
+#### 5.5.1 Manage Apsara Stack tenant accounts
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
@@ -3315,7 +3388,7 @@ tenant account. i. Find the Apsara Stack tenant account that you want to modify 
 **Actions** column.
 ii. In the **Change Account** dialog box, modify the Apsara Stack Account, Access Key, and Access Secret parameters, and click **OK**. After the modification, you can click Details in the **Actions** column to view the details of the Apsara Stack tenant account.
 
-#### Manage Alibaba Cloud accounts
+#### 5.5.2 Manage Alibaba Cloud accounts
 
 After you add an Alibaba Cloud account to Apsara Stack Security, you can manage the Anti- DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security.
 
@@ -3339,11 +3412,11 @@ configurations In the **Add Account** dialog box, configure the parameters and c
 
 After the Alibaba Cloud account is added, you can view the account in the account list. You can **modify** or **remove** the account.
 
-### Migration to Apsara Uni-
+### 5.6 Migration to Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
-#### Log on to Cloud Shield Operations
+#### 5.6.1 Log on to Cloud Shield Operations Center
 
 **Center**
 
@@ -3378,7 +3451,7 @@ The password is 10 to 20 characters in length.
 
 You can view information on the pages of **Cloud Shield Operations Center**.
 
-#### View system monitoring data
+#### 5.6.2 View system monitoring data
 
 You can use the system monitoring feature to monitor integrated cloud services and identify exceptions in the cloud services at the earliest opportunity. This facilitates service O&M. This topic describes how to view the system monitoring data.
 
@@ -3395,9 +3468,9 @@ services. On the **Monitoring Overview** tab, view the following information: Mo
 | Middlewar e | You can specify the monitoring time range and monitoring view to view the details of basic monitoring and middleware monitoring. Valid values for the time range: 3 Hours, 6 Hours, 12 Hours, 1 Day, 2 Days, and Custom. You can click the icon to manually update the monitoring data. You can also turn on Automatic Refresh to automatically update the monitoring data. The monitoring view supports Cluster View and Single-server View. You can view the following monitoring data: the QPS of MetaQ, the number of garbage collections (GCs) in the JVM, the amount of time consumed to monitor GCs in the JVM, the amount of JVM memory, the number of loaded classes in the JVM, the numbers of JVM threads in different states, the number of JVM threads, the QPS of HSF, the response time of HSF and database usage. |
 | Health Check | You can check the health status of all hosts in an application based on check methods such as TCP- and HTTP-based health checks. |
 
-#### Global settings
+#### 5.6.3 Global settings
 
-##### Configure host security rules
+##### 5.6.3.1 Configure host security rules
 
 1. Log in to the Cloud Shield Operations Center console.
 2. In the left-side navigation pane, choose **Cloud Services > Server Guard O&M > Global**
@@ -3417,7 +3490,7 @@ configurations If you modify the global brute-force attack detection rule, the d
 | Suspicious Account Logon | If a remote login account is included in the list of suspicious accounts, an alert is generated for logins that use the account. Click Manage Suspicious Accounts. In the Suspicious Account Management panel, enter suspicious accounts or upload a list of suspicious accounts by using a template. Make sure that the file to be uploaded does not exceed 5 KB in size. To ensure compatibility with the Windows system mechanism, use lowercase letters when you enter Windows accounts. |
 | Audit of High- risk Commands | You can configure the silence threshold for high-risk command audit. After you configure the threshold, when the number of alerts generated by the rule reaches the threshold, the rule enters the silent mode and does not generate alerts until it resumes in the next cycle. Default threshold: 100 alerts within 5 minutes. For more information, see Configure host security rules in Apsara Stack Security User Guide for security administrators. |
 
-##### Configure whitelist settings
+##### 5.6.3.2 Configure whitelist settings
 
 1. Log in to the Cloud Shield Operations Center console.
 2. In the left-side navigation pane, choose **Cloud Services > Server Guard O&M > Global**
@@ -3437,9 +3510,9 @@ configurations
 
 You can **delete** a whitelist that is no longer required.
 
-#### Upgrade center
+#### 5.6.4 Upgrade center
 
-##### Upgrade center overview
+##### 5.6.4.1 Upgrade center overview
 
 The upgrade center allows you to manually or automatically update the feature library and the version of Apsara Stack Security to ensure up-to-date protection. You can perform the following steps for an update:
 1. Configure the import mode of your update package.
@@ -3447,7 +3520,7 @@ The upgrade center supports**automatic import** and **manual import**. If Apsara
 2. Update the feature library and the version of Apsara Stack Security. For more information,
 see Update the feature library or the version of Apsara Stack Security.
 
-##### Feature library or version updates
+##### 5.6.4.2 Feature library or version updates
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update the feature libraries or versions of Apsara Stack Security services. This topic describes how to update the feature libraries or versions of Apsara Stack Security services.
 

@@ -3,20 +3,28 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway Product Introduction
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 7
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway Product Introduction 20260828.pdf"
+source_pdf: "6961fc965043e695_Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/VPN%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20VPN%20Gateway%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway Product Introduction 20260828
 
-VPN Gateway y
+## Table of Contents
 
-## VPN Gateway
+- 1 VPN Gateway
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+y
+
+## 1 VPN Gateway
 
 VPN Gateway is an Internet-based service that securely and reliably connects enterprise data centers, office networks, and Internet clients to virtual private clouds (VPCs) through encrypted tunnels.
 
-### Features
+### 1.1 Features
 
 VPN Gateway allows you to establish secure and reliable network connections between data centers, office networks, Internet clients, and virtual private clouds (VPCs) by using IPsec-VPN and SSL-VPN.
 
@@ -28,7 +36,7 @@ IPsec-VPN is a route-based network connection technology that provides flexible 
 
 SSL-VPN is a network connection technology based on OpenVPN. After you deploy the required resources, you need to only load an SSL client certificate to an Internet client and initiate a connection to a VPC.
 
-### Benefits
+### 1.2 Benefits
 
 VPN gateways are easy to configure and allow you to establish secure and stable connections in an efficient manner. Compared with Express Connect, VPN Gateway allows you to establish connections in a faster and more cost-effective manner.
 
@@ -48,13 +56,13 @@ A VPN gateway is ready-to-use and its configurations immediately take effect. Yo
 
 The encrypted and Internet-based connections provided by VPN Gateway are more costeffective than Express Connect circuits.
 
-### Scenarios
+### 1.3 Scenarios
 
 You can use VPN Gateway to build hybrid cloud networks, connect cloud resources, and enable telecommuting.
 
 **Build a hybrid cloud network**
 
-VPN Gateway y You can use IPsec-VPN to establish encrypted connections between data centers and virtual private clouds (VPCs) to build a hybrid cloud network.
+y You can use IPsec-VPN to establish encrypted connections between data centers and virtual private clouds (VPCs) to build a hybrid cloud network.
 
 **Connect cloud resources**
 
@@ -64,7 +72,7 @@ You can use IPsec-VPN to establish encrypted connections between VPCs are that d
 
 You can use SSL-VPN to connect Internet clients to VPCs through encrypted channels. This way, the clients can connect to VPCs in a secure manner anytime. This is an ideal feature for telecommuting scenarios.
 
-### Features
+### 1.4 Features
 
 | Feature |   | Description |
 |---|---|---|
@@ -81,7 +89,7 @@ You can use SSL-VPN to connect Internet clients to VPCs through encrypted channe
 |   |   | Create VPN gateways. |
 |   |   | View VPN gateways. |
 
-VPN Gateway y
+y
 
 | Instance management |   |   |
 |---|---|---|

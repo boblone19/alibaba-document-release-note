@@ -3,16 +3,296 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Developer Gui
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 1134
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Developer Guide 20260901.pdf"
+source_pdf: "b740cb8c2abcce1e_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Developer Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Developer%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Developer Guide 20260901
 
-## Preparations
+## Table of Contents
 
-### Obtain the information and
+- 1 Preparations
+  - 1.1 Obtain the information and endpoint of an API operation
+  - 1.2 Obtain AccessKey credentials
+  - 1.3 Obtain the values of common request headers
+- 2 Use POP to make API calls
+  - 2.1 Obtain the endpoint of the Apsara Uni-manager Management Console
+  - 2.2 Obtain an SDK package for Apsara Uni-manager
+  - 2.3 SDK for Java
+  - 2.4 SDK for Python
+  - 2.5 SDK for Go
+- 3 API reference
+  - 3.1 List of operations by function
+    - 3.1.1 Enterprise
+      - 3.1.1.1 Organizations
+        - 3.1.1.1.1 CreateOrganization
+        - 3.1.1.1.2 GetOrganization
+        - 3.1.1.1.3 GetOrganizationList
+        - 3.1.1.1.4 GetPrivateCloudAccountByOrganizationId
+        - 3.1.1.1.5 RemoveOrganization
+        - 3.1.1.1.6 UpdateOrganization
+        - 3.1.1.1.7 UpdateSupportRegionsForOrg
+        - 3.1.1.1.8 CreateAndBindResourceGroup
+        - 3.1.1.1.9 GetOrganizationByPrimaryKey
+      - 3.1.1.2 Resource sets
+        - 3.1.1.2.1 CreateResourceGroup
+        - 3.1.1.2.2 GetResourceGroups
+        - 3.1.1.2.3 BindAscmUserAndResourceGroup
+        - 3.1.1.2.4 ListAscmUsersInsideResourceGroup
+        - 3.1.1.2.5 ListMembersInsideResourceSet
+        - 3.1.1.2.6 ListResourceGroup
+        - 3.1.1.2.7 ListResourceGroupByAscmUserId
+        - 3.1.1.2.8 ListResourceGroupByOrgId
+        - 3.1.1.2.9 RemoveResourceGroup
+        - 3.1.1.2.10 UnbindAscmUserAndResourceGroup
+        - 3.1.1.2.11 UpdateResourceGroup
+      - 3.1.1.3 Roles
+        - 3.1.1.3.1 AddRoleToUser
+        - 3.1.1.3.2 ListActiveRoles
+        - 3.1.1.3.3 ListRoles
+        - 3.1.1.3.4 LockRole
+        - 3.1.1.3.5 RelateSystemWithRole
+        - 3.1.1.3.6 SetDefaultRole
+        - 3.1.1.3.7 UnLockRole
+        - 3.1.1.3.8 UpdateRoleInfo
+        - 3.1.1.3.9 UpdateRAMPolicy
+        - 3.1.1.3.10 RemoveRole
+        - 3.1.1.3.11 RemoveRAMPolicyFromRole
+        - 3.1.1.3.12 RemoveRAMPolicy
+        - 3.1.1.3.13 GetRAMPolicy
+        - 3.1.1.3.14 CreateRole
+        - 3.1.1.3.15 CreateRAMPolicy
+        - 3.1.1.3.16 AddRAMPolicyToRole
+        - 3.1.1.3.17 ListRolesByUserAndResourceSetId
+        - 3.1.1.3.18 AuthorizeRAMRoleToOrganization
+        - 3.1.1.3.19 GetRole
+      - 3.1.1.4 Users
+        - 3.1.1.4.1 UpdateProxyAdmin
+        - 3.1.1.4.2 UpdateProxyAdminStatus
+        - 3.1.1.4.3 ListProxyAdmins
+        - 3.1.1.4.4 DeleteProxyAdmin
+        - 3.1.1.4.5 AssignProxyAdmin
+        - 3.1.1.4.6 GetUserInfo
+        - 3.1.1.4.7 ActivateUser
+        - 3.1.1.4.8 AddUser
+        - 3.1.1.4.9 DeactivateUser
+        - 3.1.1.4.10 ListAccessKeysForManagedUsers
+        - 3.1.1.4.11 DeleteUserAccessKey
+        - 3.1.1.4.12 UpdateUserAccessKeyStatus
+        - 3.1.1.4.13 CreateUserAccessKey
+        - 3.1.1.4.14 GetRecentAkTrailForUser
+        - 3.1.1.4.15 ListUserAccessKey
+        - 3.1.1.4.16 ListAvailableUsersByRoleId
+        - 3.1.1.4.17 ListDeletedUsers
+        - 3.1.1.4.18 ListUsers
+        - 3.1.1.4.19 ListUsersInsideRole
+        - 3.1.1.4.20 LockUser
+        - 3.1.1.4.21 TransferUser
+        - 3.1.1.4.22 ModifyUserInformation
+        - 3.1.1.4.23 RecoverUserByLoginName
+        - 3.1.1.4.24 RelateSystemWithUser
+        - 3.1.1.4.25 RemoveRoleFromUser
+        - 3.1.1.4.26 RemoveUserByLoginName
+        - 3.1.1.4.27 RemoveCompletelyUserByLoginName
+        - 3.1.1.4.28 ResetPasswordByLoginName
+        - 3.1.1.4.29 ResetUserPasswordByLoginName
+        - 3.1.1.4.30 UnLockUser
+        - 3.1.1.4.31 UpdatePassword
+      - 3.1.1.5 User groups
+        - 3.1.1.5.1 AddResourceSetToUserGroup
+        - 3.1.1.5.2 AddRoleToUserGroup
+        - 3.1.1.5.3 AddUsersToUserGroup
+        - 3.1.1.5.4 CreateUserGroup
+        - 3.1.1.5.5 DeleteUserGroup
+        - 3.1.1.5.6 ListUserGroups
+        - 3.1.1.5.7 UpdateUserGroup
+        - 3.1.1.5.8 ListUsersInUserGroup
+        - 3.1.1.5.9 GetUserGroup
+        - 3.1.1.5.10 RemoveResourceSetFromUserGroup
+        - 3.1.1.5.11 RemoveRoleFromUserGroup
+        - 3.1.1.5.12 RemoveUsersFromUserGroup
+      - 3.1.1.6 Logon policies
+        - 3.1.1.6.1 AddLoginPolicy
+        - 3.1.1.6.2 CheckLoginPolicy
+        - 3.1.1.6.3 GetLoginPolicyById
+        - 3.1.1.6.4 GetLoginPolicyByLoginName
+        - 3.1.1.6.5 ListLoginPolicies
+        - 3.1.1.6.6 ModifyLoginPolicy
+      - 3.1.1.7 Changes
+        - 3.1.1.7.1 UpdateInstanceBelong
+        - 3.1.1.7.2 UpdateInstancesBelong
+        - 3.1.1.7.3 UpdateOrganizationBelong
+        - 3.1.1.7.4 UpdateResourceSetBelong
+    - 3.1.2 Operations
+      - 3.1.2.1 QueryOrderOpenApi
+      - 3.1.2.2 AddCommonSpec
+      - 3.1.2.3 CreateQuota
+      - 3.1.2.4 DeleteQuota
+      - 3.1.2.5 DescribeGpdbModifiableInstanceType
+      - 3.1.2.6 ListEnterpriseCenterQuotas
+      - 3.1.2.7 GetEnterpriseCenterQuotaDetail
+      - 3.1.2.8 GetQuota
+      - 3.1.2.9 MeteringQuery
+      - 3.1.2.10 SelectCommonSpec
+      - 3.1.2.11 UpdateCommonSpecStatus
+      - 3.1.2.12 UpdateQuota
+      - 3.1.2.13 AscmExternalFlowCallBack
+      - 3.1.2.14 BillQuery
+      - 3.1.2.15 TagResources
+      - 3.1.2.16 UnTagResources
+      - 3.1.2.17 QueryServiceCategoryTreeOpenApi
+      - 3.1.2.18 QueryServiceCatalogPageOpenApi
+      - 3.1.2.19 QueryBudgetAccountDetail
+      - 3.1.2.20 BillSummaryQuery
+      - 3.1.2.21 UpdateIndependentAmountByBizId
+      - 3.1.2.22 PageCashFlow
+      - 3.1.2.23 QueryIssueOpenApi
+      - 3.1.2.24 CreateDiscount
+      - 3.1.2.25 UpdateDiscount
+      - 3.1.2.26 EnableDiscount
+      - 3.1.2.27 DisableDiscount
+      - 3.1.2.28 QueryDiscount
+      - 3.1.2.29 DeleteDiscount
+      - 3.1.2.30 DescribeDiscount
+      - 3.1.2.31 ListDiscountPriority
+      - 3.1.2.32 BillingProductList
+      - 3.1.2.33 CountProductInstancesByResourceSet
+      - 3.1.2.34 ListCouponTemplate
+      - 3.1.2.35 CreateCouponTemplate
+      - 3.1.2.36 UpdateCouponTemplate
+      - 3.1.2.37 DeleteCouponTemplate
+      - 3.1.2.38 QueryCouponTemplateDetail
+      - 3.1.2.39 PublishCouponTemplate
+      - 3.1.2.40 PutMeteringData
+      - 3.1.2.41 QueryBillingCycleSettleStatus
+      - 3.1.2.42 CreateBillingPushTask
+      - 3.1.2.43 BatchPushBilling
+      - 3.1.2.44 UpdateStatusPushFinished
+      - 3.1.2.45 QueryBillingPushTaskStatus
+      - 3.1.2.46 DataCenterSearch
+      - 3.1.2.47 DataCenterStatistics
+    - 3.1.3 Cloud services
+      - 3.1.3.1 DescribeInstanceTypeFamilies
+      - 3.1.3.2 DescribeModifiableInstanceType
+      - 3.1.3.3 DescribeSeriesIdFamilies
+      - 3.1.3.4 GetRegionsByProduct
+      - 3.1.3.5 GroupCommonSpec
+      - 3.1.3.6 InitFromOnline
+      - 3.1.3.7 GetAllRegionsInfo
+      - 3.1.3.8 CloudSearchResources
+      - 3.1.3.9 CloudUpdateResource
+    - 3.1.4 Configurations
+      - 3.1.4.1 EditResourceAccountPlatform
+      - 3.1.4.2 BatchCreateRAMServiceRole
+      - 3.1.4.3 GetPasswordPolicy
+      - 3.1.4.4 ListRAMPolicies
+      - 3.1.4.5 ListRAMPoliciesForUser
+      - 3.1.4.6 ListRAMServiceRoles
+      - 3.1.4.7 RemoveLoginPolicyById
+      - 3.1.4.8 RemoveLoginPolicyByName
+      - 3.1.4.9 ResetPasswordPolicy
+      - 3.1.4.10 SetPasswordPolicy
+      - 3.1.4.11 GetSAMLSpMetadata
+      - 3.1.4.12 ResetIdPConfig
+      - 3.1.4.13 SetIdPConfig
+      - 3.1.4.14 GetIdPConfig
+      - 3.1.4.15 ListAvailablePlatforms
+      - 3.1.4.16 ListResourceAccounts
+      - 3.1.4.17 ListSubPlatforms
+      - 3.1.4.18 ListCloudServices
+    - 3.1.5 Parameters related to the MeteringQuery operation
+      - 3.1.5.1 Computing
+        - 3.1.5.1.1 Container Registry
+        - 3.1.5.1.2 ACK
+        - 3.1.5.1.3 Dedicated Host
+        - 3.1.5.1.4 Auto Scaling
+        - 3.1.5.1.5 EBS
+        - 3.1.5.1.6 Snapshots
+        - 3.1.5.1.7 ECS
+        - 3.1.5.1.8 Bare Metal Computing Platform (BMCP)
+        - 3.1.5.1.9 ACK - Intelligent Computing Cluster
+        - 3.1.5.1.10 Bare Metal - Intelligent Computing Cluster
+        - 3.1.5.1.11 Bare Metal - Supercomputing Power Cluster
+        - 3.1.5.1.12 EVPC
+      - 3.1.5.2 Storage
+        - 3.1.5.2.1 File Storage NAS
+        - 3.1.5.2.2 OSS
+        - 3.1.5.2.3 Log Service
+      - 3.1.5.3 Networking
+        - 3.1.5.3.1 HAVIP
+        - 3.1.5.3.2 Express Connect
+        - 3.1.5.3.3 NAT Gateway
+        - 3.1.5.3.4 IPv6 Gateway
+        - 3.1.5.3.5 VPN Gateway
+        - 3.1.5.3.6 VPC
+        - 3.1.5.3.7 EIP
+        - 3.1.5.3.8 Server Load Balancer (SLB)
+        - 3.1.5.3.9 Authoritative zones
+      - 3.1.5.4 Analytics computing
+        - 3.1.5.4.1 DLC of Machine Learning Platform for AI
+        - 3.1.5.4.2 EAS of Machine Learning Platform for AI
+        - 3.1.5.4.3 DSW of Machine Learning Platform for AI
+        - 3.1.5.4.4 MaxCompute
+        - 3.1.5.4.5 DataHub
+      - 3.1.5.5 Middleware
+        - 3.1.5.5.1 Message Queue for Apache RocketMQ
+      - 3.1.5.6 Database
+        - 3.1.5.6.1 DTS
+        - 3.1.5.6.2 DMS
+        - 3.1.5.6.3 ApsaraDB RDS for SQL Server
+        - 3.1.5.6.4 ApsaraDB RDS for PostgreSQL
+        - 3.1.5.6.5 ApsaraDB for MongoDB
+        - 3.1.5.6.6 AnalyticDB for PostgreSQL
+        - 3.1.5.6.7 What is KVStore for Redis?
+        - 3.1.5.6.8 ApsaraDB RDS for MySQL
+      - 3.1.5.7 AI and PAI
+        - 3.1.5.7.1 Online service
+        - 3.1.5.7.2 AI resource quota (shared)
+        - 3.1.5.7.3 AI resource quota (dedicated)
+        - 3.1.5.7.4 AI resource pool
+        - 3.1.5.7.5 Visual modeling
+      - 3.1.5.8 Security
+        - 3.1.5.8.1 SOC
+        - 3.1.5.8.2 Traffic Detection and Response
+        - 3.1.5.8.3 Crypto Service
+        - 3.1.5.8.4 Network Detection and Response
+        - 3.1.5.8.5 Server Guard
+        - 3.1.5.8.6 CSW-side Cloud Firewall
+        - 3.1.5.8.7 WAF
+        - 3.1.5.8.8 Threat Detection Service
+        - 3.1.5.8.9 ISW-side Cloud Firewall
+        - 3.1.5.8.10 Cloud-native Bastionhost
+        - 3.1.5.8.11 Bastionhost
+        - 3.1.5.8.12 KMS
+    - 3.1.6 Operation audit
+      - 3.1.6.1 LookupInnerEvents
+      - 3.1.6.2 RetryAuditTask
+      - 3.1.6.3 ListAuditFile
+      - 3.1.6.4 ListTrailStorage
+      - 3.1.6.5 ListAccessKeyEvents
+      - 3.1.6.6 CreateTrailStorage
+      - 3.1.6.7 DownloadAuditFile
+      - 3.1.6.8 GetDownloadUrl
+- 4 STS API reference
+  - 4.1 Obtaining the endpoint of STS.
+  - 4.2 AssumeRole
+  - 4.3 GetCallerIdentity
+- 5 Developer Portal API Reference
+  - 5.1 GetApiInfo
+  - 5.2 GetProductList
+  - 5.3 GetApiDocs
+  - 5.4 GetApiOverview
+- 6 Unified Cloud Management Platform Integration
+  - 6.1 Operation flow
+    - 6.1.1 Identity verification integration
+    - 6.1.2 Page Integration Configuration
+    - 6.1.3 Page URL Embedding
+  - 6.2 API integration
+
+## 1 Preparations
+
+### 1.1 Obtain the information and endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -36,7 +316,7 @@ service whose API operation you want to call.
 7. Click the API operation that you want to call. Obtain the endpoint from the Endpoint
 parameter on the Parameter tab.
 
-### Obtain AccessKey credentials
+### 1.2 Obtain AccessKey credentials
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one of the preceding types of AccessKey credentials for authentication when you call API operations.
 
@@ -238,7 +518,7 @@ be accessed belongs.
 
 `}` `}`
 
-### Obtain the values of common
+### 1.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -365,9 +645,9 @@ The following table describes the common response parameters that are returned b
 
 e API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### Obtain the endpoint of the
+### 2.1 Obtain the endpoint of the Apsara Uni-manager Management Console
 
 **Apsara Uni-manager Management**
 
@@ -446,7 +726,7 @@ value is the ASCM endpoint.
 7. Select an API operation. The POP Endpoint information is displayed under the parameter
 name.
 
-### Obtain an SDK package for
+### 2.2 Obtain an SDK package for Apsara Uni-manager
 
 **Apsara Uni-manager**
 
@@ -472,7 +752,7 @@ The Common edition supports generalized calls and debugging. Click **View**
 for download from the public central repository. The Premium Edition includes a release report with details such as the SDK version, a list of SDK APIs, and availability notes. The Premium Edition does not support debugging and is not available in the public repository. You must download the complete project. If the SDK type is grayed out and cannot be selected, it indicates that the product does not support the Premium Edition or that no data is available. For each language, you can also click **Download Complete Project**, **View**
 **Dependency File**, and **Copy**.
 
-### SDK for Java
+### 2.3 SDK for Java
 
 After you install the Alibaba Cloud Software Development Kit (SDK) for Java, you can use the SDK to access the Alibaba Cloud Portable OpenAPI (POP) gateway and call the API operations of the Unified Cloud Management Platform.
 
@@ -719,7 +999,7 @@ ultiple common Header parameters, including x-acs-regionid, x-acs-organizationid
 
 `<yourCallerSdkSource>` are variables. Replace them with your actual values. Do not include the angle brackets (<>) in your code.
 
-### SDK for Python
+### 2.4 SDK for Python
 
 After you install Alibaba Cloud SDK for Python, you can write code to use Alibaba Cloud SDK for Python to access the Alibaba Cloud Portable OpenAPI Proxy (POP) gateway and call API operations of the Apsara Uni-manager Management Console.
 
@@ -937,7 +1217,7 @@ print(str(response, encoding='utf-8'))
 
 are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
-### SDK for Go
+### 2.5 SDK for Go
 
 e API calls After you install Alibaba Cloud SDK for Go, you can write code to use Alibaba Cloud SDK for Go to access the Alibaba Cloud Portable OpenAPI Proxy (POP) gateway and call API operations of the Apsara Uni-manager Management Console.
 
@@ -1265,15 +1545,15 @@ e API calls
 
 `<yourCallerSdkSource>` parameters are all variable parameters and need to be replaced with actual values. The angle brackets <> are not retained in the final code.
 
-## API reference
+## 3 API reference
 
-### List of operations by function
+### 3.1 List of operations by function
 
-#### Enterprise
+#### 3.1.1 Enterprise
 
-##### Organizations
+##### 3.1.1.1 Organizations
 
-###### CreateOrganization
+###### 3.1.1.1.1 CreateOrganization
 
 Creates an organization.
 
@@ -1404,7 +1684,7 @@ POST /ascm/auth/organization/add HTTP/1.1 Common request parameters
 
 `}`
 
-###### GetOrganization
+###### 3.1.1.1.2 GetOrganization
 
 Queries the information about an organization.
 
@@ -1529,7 +1809,7 @@ POST /ascm/auth/organization/query HTTP/1.1 Common request parameters
 
 `}`
 
-###### GetOrganizationList
+###### 3.1.1.1.3 GetOrganizationList
 
 Queries a list of sub-organizations of an organization.
 
@@ -1731,7 +2011,7 @@ POST /ascm/auth/user/getPrivateCloudAccountByOrganizationId HTTP/1.1 Common requ
 {"redirect":"false","cost":"1000","code":"200","data": {"aliyunid":"1","primaryKey":"212530506704030466"},"success":"true","pureListData":"true" message":"success"}
 ```
 
-###### RemoveOrganization
+###### 3.1.1.1.5 RemoveOrganization
 
 Deletes an organization.
 
@@ -1804,7 +2084,7 @@ POST /ascm/auth/organization/delete HTTP/1.1 Common request parameters
 
 `}`
 
-###### UpdateOrganization
+###### 3.1.1.1.6 UpdateOrganization
 
 Updates the information about an organization.
 
@@ -1935,7 +2215,7 @@ POST /ascm/auth/organization/update HTTP/1.1 Common request parameters
 
 `}`
 
-###### UpdateSupportRegionsForOrg
+###### 3.1.1.1.7 UpdateSupportRegionsForOrg
 
 Updates the regions in which an organization is available.
 
@@ -2003,7 +2283,7 @@ POST null HTTP/1.1 Common request parameters
 
 `}`
 
-###### CreateAndBindResourceGroup
+###### 3.1.1.1.8 CreateAndBindResourceGroup
 
 Create and bind a multi-cloud resource set.
 
@@ -2085,7 +2365,7 @@ POST /resource/group/create/bind HTTP/1.1
 </data>
 ```
 
-###### GetOrganizationByPrimaryKey
+###### 3.1.1.1.9 GetOrganizationByPrimaryKey
 
 Retrieve organization information based on the UID of the organization's Alibaba Cloud account.
 
@@ -2184,9 +2464,9 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success> <message>success</message>
 ```
 
-##### Resource sets
+##### 3.1.1.2 Resource sets
 
-###### CreateResourceGroup
+###### 3.1.1.2.1 CreateResourceGroup
 
 Creates a resource set.
 
@@ -2283,7 +2563,7 @@ POST /ascm/auth/resource_group/create_resource_group HTTP/1.1 Common request par
 
 `}`
 
-###### GetResourceGroups
+###### 3.1.1.2.2 GetResourceGroups
 
 Retrieves the details of multiple resource groups.
 
@@ -2404,7 +2684,7 @@ POST /resourceGroups/action/batchGet HTTP/1.1
 </data> <success>true</success>
 ```
 
-###### BindAscmUserAndResourceGroup
+###### 3.1.1.2.3 BindAscmUserAndResourceGroup
 
 Binds users to a resource set.
 
@@ -2476,7 +2756,7 @@ POST /ascm/auth/resource_group/add_ascm_users HTTP/1.1 Common request parameters
 
 `}`
 
-###### ListAscmUsersInsideResourceGroup
+###### 3.1.1.2.4 ListAscmUsersInsideResourceGroup
 
 Queries a list of users in a resource set.
 
@@ -3616,7 +3896,7 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1 Common request parameter
 
 `}`
 
-###### ListMembersInsideResourceSet
+###### 3.1.1.2.5 ListMembersInsideResourceSet
 
 Queries users or user groups in a resource set.
 
@@ -3716,7 +3996,7 @@ POST /ascm/auth/user/listMembersInsideResourceGroup HTTP/1.1 Common request para
 {"serverRole":"unimanagerbase.IdentityService#","successResponse":"true","errorKey":"ascm.auth.InvalidParamete","c t":"22","code":"200","data":[{"authorizedId":"5039","authorizedName":"lsq- 3","authorizedTime":"1657763863217","authorizedRoleName":"defaultRole.resourceUser.name", uthorizedAlias":"multi-role-user- 3","authorizedRoleId":"2","authorizedType":"User"}],"requestId":"5FE0023D-73C3-481E-926 D-17A2******","domain":"ascm.aliyun.com","extraMessage":"success","pageInfo":{"total":" 10","totalPage":"1","pageSize":"10","currentPage":"1"},"action":"ListMembersInsideResourc et","message":"success"}
 ```
 
-###### ListResourceGroup
+###### 3.1.1.2.6 ListResourceGroup
 
 Queries a list of resource sets that are visible to your account.
 
@@ -3840,7 +4120,7 @@ POST /ascm/auth/resource_group/list_resource_group HTTP/1.1 Common request param
 
 `}`
 
-###### ListResourceGroupByAscmUserId
+###### 3.1.1.2.7 ListResourceGroupByAscmUserId
 
 Queries the resource sets that are bound to a user.
 
@@ -3945,7 +4225,7 @@ POST /ascm/auth/resource_group/list_resource_group_by_ascmuser_id HTTP/1.1 Commo
 
 `}`
 
-###### ListResourceGroupByOrgId
+###### 3.1.1.2.8 ListResourceGroupByOrgId
 
 Queries a list of resource sets in an organization.
 
@@ -4074,7 +4354,7 @@ POST /ascm/auth/organization/resourceGroupList HTTP/1.1 Common request parameter
 
 `}`
 
-###### RemoveResourceGroup
+###### 3.1.1.2.9 RemoveResourceGroup
 
 Deletes a resource set.
 
@@ -4143,7 +4423,7 @@ POST /ascm/auth/resource_group/delete_resource_group HTTP/1.1 Common request par
 
 `}`
 
-###### UnbindAscmUserAndResourceGroup
+###### 3.1.1.2.10 UnbindAscmUserAndResourceGroup
 
 Unbinds one or more users from a resource set.
 
@@ -4210,7 +4490,7 @@ POST /ascm/auth/resource_group/remove_ascm_users HTTP/1.1 Common request paramet
 
 `}`
 
-###### UpdateResourceGroup
+###### 3.1.1.2.11 UpdateResourceGroup
 
 Updates the information about a resource set.
 
@@ -4303,9 +4583,9 @@ POST /ascm/auth/resource_group/update_resource_group HTTP/1.1 Common request par
 
 `}`
 
-##### Roles
+##### 3.1.1.3 Roles
 
-###### AddRoleToUser
+###### 3.1.1.3.1 AddRoleToUser
 
 Assigns a role to one or more users.
 
@@ -4378,7 +4658,7 @@ POST /ascm/auth/role/addRoleToUser HTTP/1.1 Common request parameters
 
 `}`
 
-###### ListActiveRoles
+###### 3.1.1.3.2 ListActiveRoles
 
 Queries a list of roles that can be assigned to users.
 
@@ -4524,7 +4804,7 @@ POST /ascm/auth/role/listActiveRoles HTTP/1.1 Common request headers
 
 `}`
 
-###### ListRoles
+###### 3.1.1.3.3 ListRoles
 
 Queries a list of roles that are visible to users.
 
@@ -4680,9 +4960,9 @@ POST /ascm/auth/role/listRoles HTTP/1.1 Common request parameters
 </pageInfo> <message>success</message>
 ```
 
-ascm 2019-05-10 ListRoles
+ascm 2019-05-10
 
-###### LockRole
+###### 3.1.1.3.4 LockRole
 
 Locks the specified role. After a role is locked, the attributes of the role cannot be modified.
 
@@ -4743,7 +5023,7 @@ POST /ascm/auth/role/lockRole HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### RelateSystemWithRole
+###### 3.1.1.3.5 RelateSystemWithRole
 
 Associates a role with an external system.
 
@@ -4803,7 +5083,7 @@ POST /ascm/auth/role/relateSystemWithRole HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### SetDefaultRole
+###### 3.1.1.3.6 SetDefaultRole
 
 Specifies a default role for a user. A user can be assigned multiple roles. If a default role is specified for a user, the default role is automatically used when the user logs on to the Apsara Uni-manager Management Console next time. After logon, the user can switch to a different role on the User Information page or the Home page.
 
@@ -4872,7 +5152,7 @@ POST /ascm/auth/role/setDefaultRole HTTP/1.1
 
 `}`
 
-###### UnLockRole
+###### 3.1.1.3.7 UnLockRole
 
 Unlocks the specified locked role.
 
@@ -4930,7 +5210,7 @@ POST /ascm/auth/role/unLockRole HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### UpdateRoleInfo
+###### 3.1.1.3.8 UpdateRoleInfo
 
 This topic describes the modification of the basic information of a role. This interface is used to modify the basic information of a role in the ASCM system. Role types include custom roles, RAM role authorization, and RAM authorization. For more information about permission policies, see the RAM permission policy section in the Apsara Uni-manager Management Console User Guide.
 
@@ -5004,9 +5284,9 @@ POST /ascm/auth/role/updateRoleInfo HTTP/1.1
 <code>200</code> <cost>31</cost> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 UpdateRoleInfo
+ascm 2019-05-10
 
-###### UpdateRAMPolicy
+###### 3.1.1.3.9 UpdateRAMPolicy
 
 Updates a Resource Access Management (RAM) policy. For more information about RAM policies, see topics related to RAM policies in Apsara Unimanager Management Console User Guide.
 
@@ -5102,9 +5382,9 @@ t;Effect\&quot;:\&quot;Allow\&quot;,\&quot;Action\&quot;:\&quot;ecs:*\&quot;,\&q
 </data> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 UpdateRAMPolicy
+ascm 2019-05-10
 
-###### RemoveRole
+###### 3.1.1.3.10 RemoveRole
 
 The topic describes the deletion of a role. When deleting a role, the operator's current role must be superior to the role being deleted. Role scopes from largest to smallest are: all organizations, the current organization and cascading subordinate organizations, and resource sets. Before deleting RAM role authorizations, you must delete all RAM roles under those authorizations. Before deleting a role, you must detach it from all users and user groups.
 
@@ -5156,9 +5436,9 @@ Sample for successful responses `JSON` format `{`
 <code>200</code> <cost>45</cost> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 RemoveRole
+ascm 2019-05-10
 
-###### RemoveRAMPolicyFromRole
+###### 3.1.1.3.11 RemoveRAMPolicyFromRole
 
 This topic describes the removal of a specified RAM permission policy from the policy list of a RAM authorization or RAM role authorization type role.
 
@@ -5211,9 +5491,9 @@ Sample for successful responses `JSON` format `{`
 <code>200</code> <cost>75</cost> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 RemoveRAMPolicyFromRole
+ascm 2019-05-10
 
-###### RemoveRAMPolicy
+###### 3.1.1.3.12 RemoveRAMPolicy
 
 This topic describes the deletion of a RAM permission policy. The policy to be deleted must be visible to the current user and must be detached from all roles before deletion.
 
@@ -5267,9 +5547,9 @@ Sample for successful responses `JSON` format `{`
 <code>200</code> <cost>30</cost> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 RemoveRAMPolicy
+ascm 2019-05-10
 
-###### GetRAMPolicy
+###### 3.1.1.3.13 GetRAMPolicy
 
 This topic describes queries of the information about the RAM permission policy. You can query information about the RAM permission policy based on the policy ID. For more information, see the RAM permission policy-related content in the Apsara Uni-manager Management Console User Guide.
 
@@ -5339,9 +5619,9 @@ Sample for successful responses `JSON` format `{`
     "message": "success"
 ```
 
-`}` ascm 2019-05-10 GetRAMPolicy
+`}` ascm 2019-05-10
 
-###### CreateRole
+###### 3.1.1.3.14 CreateRole
 
 Creates a role in the Apsara Uni-manager Management Console. You can call the CreateRole operation to create a custom role, a Resource Access Management (RAM) role-based batch authorization role, or a RAM-based batch authorization role. We no longer recommend that you call this operation to create a RAM-based batch authorization role. For more information about RAM policies, see topics related to RAM policies in Apsara Uni-manager Management Console User Guide.
 
@@ -5480,9 +5760,9 @@ POST /ascm/auth/role/createRole HTTP/1.1
 </data> <success>true</success> <dynamicMessages /> <message>success</message>
 ```
 
-ascm 2019-05-10 CreateRole
+ascm 2019-05-10
 
-###### CreateRAMPolicy
+###### 3.1.1.3.15 CreateRAMPolicy
 
 Creates a Resource Access Management (RAM) policy. A RAM policy defines a set of permissions that are described based on the policy structure and syntax. You can use RAM policies to describe the authorized resource sets, authorized operation sets, and authorization conditions. For more information about RAM policies, see topics related to RAM policies in Apsara Uni-manager Management Console User Guide.
 
@@ -5553,9 +5833,9 @@ Sample success responses `JSON` format `{`
     "message": "success"
 ```
 
-`}` ascm 2019-05-10 CreateRAMPolicy
+`}` ascm 2019-05-10
 
-###### AddRAMPolicyToRole
+###### 3.1.1.3.16 AddRAMPolicyToRole
 
 This topic describes the addition of an permission policy to a RAM authorization or RAM role authorization. Add an permission policy to a RAM authorization or RAM role authorization. For more information about permission policies, see the RAM permission policy section in the Apsara Uni-manager Management Console User Guide.
 
@@ -5604,9 +5884,9 @@ Sample for successful responses `JSON` format `{`
     "message": "success"
 ```
 
-`}` ascm 2019-05-10 AddRAMPolicyToRole
+`}` ascm 2019-05-10
 
-###### ListRolesByUserAndResourceSetId
+###### 3.1.1.3.17 ListRolesByUserAndResourceSetId
 
 Based on the current users and resource set IDs, a list of roles that have permissions for a resource set can be retrieved. The list includes global roles. Specifying a user is not supported.
 
@@ -5749,7 +6029,7 @@ Sample for successful responses `JSON` format `{`
 |---|---|---|---|
 | 500 | -1001 | MissingParameter1001Version | Parameter 1001Version is mandatory for this action. |
 
-###### AuthorizeRAMRoleToOrganization
+###### 3.1.1.3.18 AuthorizeRAMRoleToOrganization
 
 Authorize a RAM role to an organization. This operation is used to authorize a specified RAM role to an organization. It applies to scenarios that require permission management.
 
@@ -5809,7 +6089,7 @@ POST /ascm/auth/role/authorizeRAMRoleToOrganization HTTP/1.1
 <code>200</code> <cost>12</cost> <success>true</success> <message>success</message>
 ```
 
-###### GetRole
+###### 3.1.1.3.19 GetRole
 
 Queries the details of a role.
 
@@ -5962,9 +6242,9 @@ s:AssumeRole\", \"Effect\": \"Allow\", \"Principal\": { \"RAM\": [ \"acs:ram::19
  <message>success</message>
 ```
 
-##### Users
+##### 3.1.1.4 Users
 
-###### UpdateProxyAdmin
+###### 3.1.1.4.1 UpdateProxyAdmin
 
 An API for changing proxy maintenance across tenants.
 
@@ -6243,7 +6523,7 @@ abc186f0004
 </data> <success>true</success> <message>success</message>
 ```
 
-###### UpdateProxyAdminStatus
+###### 3.1.1.4.2 UpdateProxyAdminStatus
 
 Enable or disable the proxy administrator.
 
@@ -6521,7 +6801,7 @@ This operation uses common request headers only. For more information, see the d
 </data> <success>true</success> <message>success</message>
 ```
 
-###### ListProxyAdmins
+###### 3.1.1.4.3 ListProxyAdmins
 
 View the list of proxy administrators.
 
@@ -6872,7 +7152,7 @@ abc186f0004
  <message>success</message>
 ```
 
-###### DeleteProxyAdmin
+###### 3.1.1.4.4 DeleteProxyAdmin
 
 Delete a proxy administrator.
 
@@ -6930,7 +7210,7 @@ POST /ascm/auth/proxyAdmin/delete HTTP/1.1
 <errorKey>ascm.auth.EntityNotExist</errorKey> <eagleEyeTraceId>0ad40c441762******2308977e0024</eagleEyeTraceId> <code>200</code> <cost>150</cost> <success>true</success> <message>success</message>
 ```
 
-###### AssignProxyAdmin
+###### 3.1.1.4.5 AssignProxyAdmin
 
 Global administrators, such as operations administrators, assign users as proxy administrators. API description
 
@@ -7232,7 +7512,7 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success> <message>success</message>
 ```
 
-###### GetUserInfo
+###### 3.1.1.4.6 GetUserInfo
 
 Queries the information about a user.
 
@@ -8054,9 +8334,9 @@ POST /ascm/auth/user/getUserInfo HTTP/1.1
 </data> <success>true</success> <pureListData /> <message>success</message>
 ```
 
-ascm 2019-05-10 GetUserInfo
+ascm 2019-05-10
 
-###### ActivateUser
+###### 3.1.1.4.7 ActivateUser
 
 Enables a user. When you call this operation to enable a user, all AccessKey pairs of the user are automatically enabled. Apsara Stack V3.12.0 SP016 and later support this operation. Apsara Stack V3.14.0 SP013 and later support this operation.
 
@@ -8869,7 +9149,7 @@ oeage: oeage.esouceSet,
 
 `}`
 
-###### AddUser
+###### 3.1.1.4.8 AddUser
 
 Call the AddUser API to create a user.
 
@@ -9532,7 +9812,7 @@ POST /ascm/auth/user/addUser HTTP/1.1
 </data> <success>true</success> <message>success</message>
 ```
 
-###### DeactivateUser
+###### 3.1.1.4.9 DeactivateUser
 
 Disables a user. If you disable a user, all AccessKey pairs of the user are automatically disabled. Apsara Stack V3.12.0 SP016 and later support this operation. Apsara Stack V3.14.0 SP013 and later support this operation.
 
@@ -10350,7 +10630,7 @@ Id>dii</ Id>
 
 `}`
 
-###### ListAccessKeysForManagedUsers
+###### 3.1.1.4.10 ListAccessKeysForManagedUsers
 
 Queries AccessKey pairs of users that are managed by the user who calls this operation. You can use the ascmUserId, organizationId, and loginName parameters to specify the organization and users that you want to query. If you do not specify the parameters, the AccessKey pairs of all users that are managed by the user who calls this operation is returned. A platform administrator, such as a super administrator, and a resource inspector can query the AccessKey pairs of all users. Other global roles, such as the admin role, can query the AccessKey pairs of users who do not belong to internal organizations. Organization administrators or other roles who have the management permissions on the organization and its sub-organizations can query the AccessKey pairs of users in the current organization and its sub-organizations.
 
@@ -10472,9 +10752,9 @@ POST /user/accesskey/listAccessKeysForManagedUsers HTTP/1.1
 </pageInfo> <message>success</message>
 ```
 
-ascm 2019-05-10 ListAccessKeysForManagedUsers
+ascm 2019-05-10
 
-###### DeleteUserAccessKey
+###### 3.1.1.4.11 DeleteUserAccessKey
 
 Deletes the AccessKey pairs of a user. Make sure that a user has at least one AccessKey in the ACTIVE state after you delete the AccessKey pairs of the user. You can manage the AccessKey pairs of your account. The super administrator can manage the AccessKey pairs of all users. Other global roles such as the admin role can manage the AccessKey pairs of users who do not belong to internal organizations. Organization administrators or other roles who have the management permissions on the organization and its sub-organizations can manage the AccessKey pairs of users in the current organization and its sub-organizations.
 
@@ -10526,9 +10806,9 @@ Sample success responses `JSON` format `{`
 <code>200</code> <cost>107</cost> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 DeleteUserAccessKey
+ascm 2019-05-10
 
-###### UpdateUserAccessKeyStatus
+###### 3.1.1.4.12 UpdateUserAccessKeyStatus
 
 Enables or disables a single AccessKey pair. Make sure that at least one AccessKey pair is enabled after you enable or disable a single AccessKey pair. Otherwise, an error is reported for this operation. You can manage the AccessKey pairs of your account. The super administrator can manage the AccessKey pairs of all users. Other global roles such as the admin role can manage the AccessKey pairs of users who do not belong to internal organizations. Organization administrators or other roles who have the management permissions on the organization and its sub-organizations can manage the AccessKey pairs of users in the current organization and its sub-organizations.
 
@@ -10581,9 +10861,9 @@ PUT /user/accessKey/status HTTP/1.1
 <code>200</code> <cost>103</cost> <success>true</success> <message>200</message>
 ```
 
-ascm 2019-05-10 UpdateUserAccessKeyStatus
+ascm 2019-05-10
 
-###### CreateUserAccessKey
+###### 3.1.1.4.13 CreateUserAccessKey
 
 Creates an AccessKey pair for a user. Each user can have up to two AccessKey pairs. You can call the CreateUserAccessKey operation to create an AccessKey pair for your account. An AccessKey ID and an AccessKey secret are returned. The super administrator can create AccessKey pairs for all users and only AccessKey IDs are returned. Other global roles such as the admin role can create AccessKey pairs for users who do not belong to internal organizations. Only AccessKey IDs are returned. Organization administrators or other roles who have the management permissions on the organization and its sub-organizations can create AccessKey pairs for users in the current organization and its sub-organizations. Only AccessKey IDs are returned.
 
@@ -10657,9 +10937,9 @@ POST /user/accessKey HTTP/1.1
 </data> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 CreateUserAccessKey
+ascm 2019-05-10
 
-###### GetRecentAkTrailForUser
+###### 3.1.1.4.14 GetRecentAkTrailForUser
 
 Queries the audit logs of AccessKey pairs of a user. You can query the logs of disabled AccessKey pairs. You cannot query the logs of deleted AccessKey pairs. The AccessKey pair logs have a latency of about 1 hour in most cases. By default, logs are stored for only seven days. Exercise caution when you change your AccessKey pair. If you want to save logs for a longer period of time, you must configure log storage settings to store logs in Simple Log Service.
 
@@ -10753,9 +11033,9 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 GetRecentAkTrailForUser
+ascm 2019-05-10
 
-###### ListUserAccessKey
+###### 3.1.1.4.15 ListUserAccessKey
 
 Queries a list of AccessKey pairs of a user.
 
@@ -10845,9 +11125,9 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 ListUserAccessKey
+ascm 2019-05-10
 
-###### ListAvailableUsersByRoleId
+###### 3.1.1.4.16 ListAvailableUsersByRoleId
 
 Queries users to whom a role is assigned.
 
@@ -10977,7 +11257,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1 Common request paramete
 
 `}`
 
-###### ListDeletedUsers
+###### 3.1.1.4.17 ListDeletedUsers
 
 Queries the list of deleted users.
 
@@ -11103,7 +11383,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListUsers
+###### 3.1.1.4.18 ListUsers
 
 Queries users that are visible to the operation caller.
 
@@ -11969,7 +12249,7 @@ POST /ascm/auth/user/listUsers HTTP/1.1 Common request parameters
 
 `}`
 
-###### ListUsersInsideRole
+###### 3.1.1.4.19 ListUsersInsideRole
 
 Queries all users that are bound to a role.
 
@@ -12101,7 +12381,7 @@ POST /ascm/auth/user/listUsersInsideRole HTTP/1.1 Common request parameters
 
 `}`
 
-###### LockUser
+###### 3.1.1.4.20 LockUser
 
 Locks a specific user. After you lock a user, you cannot modify the attributes of the user.
 
@@ -12163,7 +12443,7 @@ POST /ascm/auth/user/lockUser HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### TransferUser
+###### 3.1.1.4.21 TransferUser
 
 The TransferUser API allows administrators to transfer users and reassign roles in the Apsara Uni-manager Management Console.
 
@@ -12221,7 +12501,7 @@ PUT /user/action/transfer HTTP/1.1
 <errorKey>exampleErrKey</errorKey> <code>ROLE_RESOURCE_USER</code> <cost>121</cost> <success>true</success> <message>success</message>
 ```
 
-###### ModifyUserInformation
+###### 3.1.1.4.22 ModifyUserInformation
 
 Modifies the information about a system or historical user.
 
@@ -13071,7 +13351,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 Common request parameters
 
 `}`
 
-###### RecoverUserByLoginName
+###### 3.1.1.4.23 RecoverUserByLoginName
 
 Recover a deleted user.
 
@@ -13760,7 +14040,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### RelateSystemWithUser
+###### 3.1.1.4.24 RelateSystemWithUser
 
 Associates the specified user with an external system.
 
@@ -13824,7 +14104,7 @@ POST /ascm/auth/user/relateSystemWithUser HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### RemoveRoleFromUser
+###### 3.1.1.4.25 RemoveRoleFromUser
 
 Removes a role from the specified user.
 
@@ -13893,7 +14173,7 @@ POST /ascm/auth/role/removeRoleFromUser HTTP/1.1
 <redirect>false</redirect> <code>200</code> <cost>1022</cost> <success>true</success> <message>success</message>
 ```
 
-###### RemoveUserByLoginName
+###### 3.1.1.4.26 RemoveUserByLoginName
 
 Deletes a user. A deleted user becomes a historical user. You can call the RecoverUserByLoginName operation to restore a deleted user.
 
@@ -13960,7 +14240,7 @@ POST /ascm/auth/user/removeUserByLoginName HTTP/1.1 Common request parameters
 
 `}`
 
-###### RemoveCompletelyUserByLoginName
+###### 3.1.1.4.27 RemoveCompletelyUserByLoginName
 
 Completely deletes a user by the logon name. After a user is completely deleted, the user cannot be restored.
 
@@ -14019,7 +14299,7 @@ POST /ascm/auth/user/removeCompletelyUserByLoginName HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### ResetPasswordByLoginName
+###### 3.1.1.4.28 ResetPasswordByLoginName
 
 Resets the password of a user. Only administrators of an organization can reset the password of a user in the organization. You can call the ResetPasswordByLoginName operation to reset the password of a user to a random password. You can perform the following steps to view the random password in the Apsara Uni-manager Management Console: In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Users > Users. On the Users page, find the user whose password you reset and click the username to go to the User Details page. On the User Details, view the password of the user. When the user uses the random password to log on for the first time, the user is required to change the random password. If you use Apsara Stack V3.17.0 or later, we recommend that you use the ResetUserPasswordByLoginName operation instead of the ResetPasswordByLoginName operation.
 
@@ -14084,7 +14364,7 @@ POST /ascm/auth/user/resetPasswordByLoginName HTTP/1.1 Common request parameters
 
 `}`
 
-###### ResetUserPasswordByLoginName
+###### 3.1.1.4.29 ResetUserPasswordByLoginName
 
 Resets a user's password.
 
@@ -14147,7 +14427,7 @@ POST /ascm/auth/user/resetUserPasswordByLoginName HTTP/1.1
 <code>200</code> <cost>165</cost> <message>success</message> <success>true</success>
 ```
 
-###### UnLockUser
+###### 3.1.1.4.30 UnLockUser
 
 Unlocks a specific user.
 
@@ -14209,7 +14489,7 @@ POST /ascm/auth/user/unLockUser HTTP/1.1
 <code>200</code> <cost>1000</cost> <success>true</success> <message>success</message>
 ```
 
-###### UpdatePassword
+###### 3.1.1.4.31 UpdatePassword
 
 Changes the password of a user.
 
@@ -14276,9 +14556,9 @@ POST /ascm/auth/user/updatePassword HTTP/1.1 Common request parameters
 
 `}`
 
-##### User groups
+##### 3.1.1.5 User groups
 
-###### AddResourceSetToUserGroup
+###### 3.1.1.5.1 AddResourceSetToUserGroup
 
 Binds a resource set to a user group.
 
@@ -14347,7 +14627,7 @@ POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1 Common request parameter
 
 `}`
 
-###### AddRoleToUserGroup
+###### 3.1.1.5.2 AddRoleToUserGroup
 
 Binds a role to a user group.
 
@@ -14419,7 +14699,7 @@ POST /ascm/auth/user/addRoleToUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-###### AddUsersToUserGroup
+###### 3.1.1.5.3 AddUsersToUserGroup
 
 Adds users to a user group.
 
@@ -14487,7 +14767,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-###### CreateUserGroup
+###### 3.1.1.5.4 CreateUserGroup
 
 Creates a user group.
 
@@ -14584,7 +14864,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-###### DeleteUserGroup
+###### 3.1.1.5.5 DeleteUserGroup
 
 Deletes a user group.
 
@@ -14654,7 +14934,7 @@ POST /ascm/auth/user/deleteUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-###### ListUserGroups
+###### 3.1.1.5.6 ListUserGroups
 
 Queries user groups.
 
@@ -15023,7 +15303,7 @@ POST /ascm/auth/user/listUserGroups HTTP/1.1 Common request parameters
 
 `}`
 
-###### UpdateUserGroup
+###### 3.1.1.5.7 UpdateUserGroup
 
 Update the name and description of a specified user group.
 
@@ -15107,7 +15387,7 @@ PUT /userGroups/[userGroupId] HTTP/1.1
 </data> <success>true</success> <message>success</message>
 ```
 
-###### ListUsersInUserGroup
+###### 3.1.1.5.8 ListUsersInUserGroup
 
 Queries users in a user group.
 
@@ -15917,7 +16197,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-###### GetUserGroup
+###### 3.1.1.5.9 GetUserGroup
 
 Queries the information about a user.
 
@@ -16007,7 +16287,7 @@ GET /userGroup/get HTTP/1.1 &<Common request parameters>
 </data> <success>true</success> <message>success</message>
 ```
 
-###### RemoveResourceSetFromUserGroup
+###### 3.1.1.5.10 RemoveResourceSetFromUserGroup
 
 Deletes a resource set from a user group.
 
@@ -16074,7 +16354,7 @@ POST /ascm/auth/user/removeResourceSetFromUserGroup HTTP/1.1 Common request para
 
 `}`
 
-###### RemoveRoleFromUserGroup
+###### 3.1.1.5.11 RemoveRoleFromUserGroup
 
 Removes a role from a user group.
 
@@ -16143,7 +16423,7 @@ POST /ascm/auth/user/removeRoleFromUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-###### RemoveUsersFromUserGroup
+###### 3.1.1.5.12 RemoveUsersFromUserGroup
 
 Removes users from a user group.
 
@@ -16211,9 +16491,9 @@ POST /ascm/auth/user/removeUsersFromUserGroup HTTP/1.1 Common request parameters
 
 `}`
 
-##### Logon policies
+##### 3.1.1.6 Logon policies
 
-###### AddLoginPolicy
+###### 3.1.1.6.1 AddLoginPolicy
 
 Creates a logon policy.
 
@@ -16390,7 +16670,7 @@ POST /ascm/auth/loginPolicy/addLoginPolicy HTTP/1.1 Common request parameters
 
 `}`
 
-###### CheckLoginPolicy
+###### 3.1.1.6.2 CheckLoginPolicy
 
 Checks whether the logon policy associated with a user is enabled during a simulated logon to the Apsara Uni-manager Management Console. You can call the CheckLoginPolicy operation to check whether the logon policy associated with a user is enabled during a simulated logon to the Apsara Uni-manager Management Console.
 
@@ -16461,7 +16741,7 @@ POST /ascm/auth/loginPolicy/checkLoginPolicy HTTP/1.1 Common request parameters
 
 `}`
 
-###### GetLoginPolicyById
+###### 3.1.1.6.3 GetLoginPolicyById
 
 Queries the information about a logon policy.
 
@@ -16604,7 +16884,7 @@ POST /ascm/auth/loginPolicy/getLoginPolicyById HTTP/1.1 Common request parameter
 
 `}`
 
-###### GetLoginPolicyByLoginName
+###### 3.1.1.6.4 GetLoginPolicyByLoginName
 
 Queries the logon policy that is bound to a user.
 
@@ -16757,7 +17037,7 @@ POST /ascm/auth/loginPolicy/getLoginPolicyByLoginName HTTP/1.1 Common request pa
 
 `}`
 
-###### ListLoginPolicies
+###### 3.1.1.6.5 ListLoginPolicies
 
 Queries a list of logon policies.
 
@@ -16929,7 +17209,7 @@ POST /ascm/auth/loginPolicy/listLoginPolicies HTTP/1.1 Common request parameters
 
 `}`
 
-###### ModifyLoginPolicy
+###### 3.1.1.6.6 ModifyLoginPolicy
 
 Modifies a logon policy.
 
@@ -17112,9 +17392,9 @@ POST /ascm/auth/loginPolicy/modifyLoginPolicy HTTP/1.1 Common request parameters
 
 `}`
 
-##### Changes
+##### 3.1.1.7 Changes
 
-###### UpdateInstanceBelong
+###### 3.1.1.7.1 UpdateInstanceBelong
 
 Changes the resource set of an instance. You cannot change the resource set of an instance across level-1 organizations. When you call this operation, the system checks whether the quota limits of resource sets and instances are reached. If so, the error code 510 is returned. The security groups of Elastic Compute Service (ECS) instances and the vSwitches in the virtual private clouds (VPCs) can be changed only within the sharing scope of the VPC to which they belong. If you change the resource set of an ECS instance, the disks, snapshots, and elastic network interfaces (ENIs) of the ECS instance are also changed. If you change the resource set of a VPC, the route tables in the VPC are also changed.
 
@@ -17189,9 +17469,9 @@ POST /ascm/manage/belong/updateInstance HTTP/1.1
 <Path>examplepath</Path> <PureListDataString>false</PureListDataString> <Message>exampleerrmessage</Message> <RequestId>530dxxx-dxx******-x6b61axxxxx</RequestId> <IsPureListData>false</IsPureListData> <ErrorKey>exampleErrKey</ErrorKey> <Redirect>false</Redirect> <Code>200</Code> <Cost>934</Cost> <Success>true</Success>
 ```
 
-ascm 2019-05-10 UpdateInstanceBelong
+ascm 2019-05-10
 
-###### UpdateInstancesBelong
+###### 3.1.1.7.2 UpdateInstancesBelong
 
 Call the UpdateInstanceBelong API to change the ownership of multiple instances of the same resource type. You cannot change instance ownership across level-1 organizations. The system checks whether the operation exceeds the product quota in the target organization. If the operation exceeds the quota, the system returns an error message with the error code 510. You can change the ownership of ECS security groups and VPC switches only within the sharing scope of their associated VPCs. Changing the ownership of an ECS instance also changes the ownership of the disks, snapshots, and elastic network interfaces under the ECS instance. Changing the ownership of a VPC-connected instance also changes the ownership of the route tables under the VPC.
 
@@ -17266,7 +17546,7 @@ POST /belong/updateInstances HTTP/1.1
 |---|---|---|---|
 | 500 | MissingParameter1 001Version | Parameter 1001Version is mandatory for this action. | You must specify the 1001Version parameter for this operation. |
 
-###### UpdateOrganizationBelong
+###### 3.1.1.7.3 UpdateOrganizationBelong
 
 Update the organization ownership relationship. Do not change organization ownership across level-1 organization boundaries. The system checks whether the change exceeds quotas for all products under the target organization during call. If it exceeds quotas, the system returns an error message with Error Code 510.
 
@@ -17345,7 +17625,7 @@ POST /belong/updateOrganization HTTP/1.1
 |---|---|---|---|
 | 500 | -1001 | MissingParameter1001Version | Parameter 1001Version is mandatory for this action. |
 
-###### UpdateResourceSetBelong
+###### 3.1.1.7.4 UpdateResourceSetBelong
 
 Update the ownership of a resource set. You can change ownership only within the same level-1 organization. Do not change ownership across different level-1 organizations. Do not change the ownership of a resource set across different level-1 organizations. The system checks whether the change exceeds the quota for all products in the target organization. If the quota is exceeded, the system returns an error message with error code 510. When you change the ownership of a resource set, the system also changes the ownership of all instances under that resource set.
 
@@ -17426,9 +17706,9 @@ POST /belong/updateResourceSet HTTP/1.1
 |---|---|---|---|
 | 500 | -1001 | MissingParameter1001Version | Parameter 1001Version is mandatory for this action. |
 
-#### Operations
+#### 3.1.2 Operations
 
-##### QueryOrderOpenApi
+##### 3.1.2.1 QueryOrderOpenApi
 
 The Open API for querying orders enables external systems to retrieve order-related information. Call QueryOrderOpenApi to query orders. You can filter results by cloud platform, service, order ID, and other criteria.
 
@@ -17637,7 +17917,7 @@ Go\\\",\\\"label\\\":\\\"Billing Method\\\"},\\\"SupportHotUpgrade\\\": {\\\"pre
 
 `}`
 
-##### AddCommonSpec
+##### 3.1.2.2 AddCommonSpec
 
 You can call this operation to add custom specifications of a service.
 
@@ -17703,7 +17983,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### CreateQuota
+##### 3.1.2.3 CreateQuota
 
 Creates a quota.
 
@@ -18036,9 +18316,9 @@ Sample success responses `JSON` format `{`
 </data> <requestId>111</requestId> <success>true</success> <pureListData>false</pureListData> <message>200</message>
 ```
 
-ascm 2019-05-10 CreateQuota
+ascm 2019-05-10
 
-##### DeleteQuota
+##### 3.1.2.4 DeleteQuota
 
 You can call this operation to delete a quota.
 
@@ -18090,7 +18370,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeGpdbModifiableInstanceType
+##### 3.1.2.5 DescribeGpdbModifiableInstanceType
 
 You can call this operation to query the AnalyticDB for PostgreSQL instance types that can be upgraded or downgraded.
 
@@ -18203,7 +18483,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ListEnterpriseCenterQuotas
+##### 3.1.2.6 ListEnterpriseCenterQuotas
 
 Queries the quota limits in the enterprise center. The enterprise center allows you to query 12 quota limits. After the call is successful, information about the quota limits and the maximum values of metrics on the cloud platform is returned. MaxResourceSetBindAscmUserLimit: the maximum number of users that can be bound to a resource set. MaxResourceSetBindAscmUserGroupLimit: the maximum number of user groups that can be bound to a resource set. MaxUserGroupCanJoinUserLimit: the maximum number of users that can be added to a user group. MaxUserAddUserGroupLimit: the maximum number of user groups that a user can join. MaxUserAddResourceSetLimit: the maximum number of resource sets to which a userspecified role can be bound. MaxUserGroupAddResourceLimit: the maximum number of resource sets to which a user group can be bound. MaxRoleBindAscmUserLimit: the maximum number of roles that can be bound to a user. MaxRoleAuthorizationBindAscmUserLimit: the maximum number of Resource Access Management (RAM)-based batch authorization roles that can be bound to a user. MaxRoleBindAscmUserGroupLimit: the maximum number of roles that can be bound to a user group. MaxPolicyLimit: the maximum number of custom policies that can be created in an Apsara Stack tenant account. MaxRamGroupLimit: the maximum number of RAM groups that can be created in an Apsara Stack tenant account. MaxRamRoleLimit: the maximum number of RAM roles that can be created per Apsara Stack tenant account.
 
@@ -18529,9 +18809,9 @@ nt account</displayName>
 </data> <success>true</success> <message>success</message>
 ```
 
-ascm 2019-05-10 ListEnterpriseCenterQuotas
+ascm 2019-05-10
 
-##### GetEnterpriseCenterQuotaDetail
+##### 3.1.2.7 GetEnterpriseCenterQuotaDetail
 
 This topic describes the call of the GetEnterpriseCenterQuotaDetail interface to obtain detailed information about users, user groups, resource sets, or Alibaba Cloud accounts that have exceeded the specified Enterprise Center usage limit quotas or specified quantities in the current cloud platform. You can call this interface to query detailed information about users, user groups, resource sets, or Alibaba Cloud accounts that have exceeded the specified Enterprise Center usage limit quotas in the current cloud platform. You can specify a specific quantity in the request to query detailed information about users, user groups, resource sets, or Alibaba Cloud accounts that currently exceed this quantity in the cloud platform to enable early warnings.
 
@@ -18669,9 +18949,9 @@ Sample for successful responses `JSON` format `{`
 
 **Supplementary description for the data parameter**
 
-When the value of the type parameter is MaxUserAddUserGroupLimit, MaxUserAddResourceSetLimit, MaxRoleBindAscmUserLimit, or MaxRoleAuthorizationBindAscmUserLimit, the detailed information about the user (UserEntry) will be returned. The information includes the following fields: id (user ID), username (display name of the user), loginName (login name of the user), isActive (whether the user is enabled), roleId (default role ID), roleName (default role name), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). When the value of the type parameter is MaxUserGroupCanJoinUserLimit, MaxUserGroupAddResourceLimit, or MaxRoleBindAscmUserGroupLimit, the detailed information about the user group (UserGroupEntry) will be returned. The information includes the following fields: id (user group ID), augId (unique code of the user group), groupName (name of the user group), organizationName (name of the organization to which the user group belongs), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). When the value of the type parameter is MaxResourceSetBindAscmUserLimit or MaxResourceSetBindAscmUserGroupLimit, the detailed information about the resource set (ResourceSetEntry) will be returned. The information includes the following fields: id (resource set ID), rsId (unique code of the resource set), resourceGroupName (name of the resource set), organizationName (name of the organization to which the resource set belongs), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). When the value of the type parameter is MaxPolicyLimit, MaxRamGroupLimit, or MaxRamRoleLimit, the detailed information about the Alibaba Cloud account (RamEntry) will be returned. The information includes the following fields: aliyunId (ID of the Alibaba Cloud account), accountKp (primary key of the Alibaba Cloud account), organizationName (name of the organization to which the Alibaba Cloud account belongs), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). ascm 2019-05-10 GetEnterpriseCenterQuotaDetail
+When the value of the type parameter is MaxUserAddUserGroupLimit, MaxUserAddResourceSetLimit, MaxRoleBindAscmUserLimit, or MaxRoleAuthorizationBindAscmUserLimit, the detailed information about the user (UserEntry) will be returned. The information includes the following fields: id (user ID), username (display name of the user), loginName (login name of the user), isActive (whether the user is enabled), roleId (default role ID), roleName (default role name), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). When the value of the type parameter is MaxUserGroupCanJoinUserLimit, MaxUserGroupAddResourceLimit, or MaxRoleBindAscmUserGroupLimit, the detailed information about the user group (UserGroupEntry) will be returned. The information includes the following fields: id (user group ID), augId (unique code of the user group), groupName (name of the user group), organizationName (name of the organization to which the user group belongs), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). When the value of the type parameter is MaxResourceSetBindAscmUserLimit or MaxResourceSetBindAscmUserGroupLimit, the detailed information about the resource set (ResourceSetEntry) will be returned. The information includes the following fields: id (resource set ID), rsId (unique code of the resource set), resourceGroupName (name of the resource set), organizationName (name of the organization to which the resource set belongs), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). When the value of the type parameter is MaxPolicyLimit, MaxRamGroupLimit, or MaxRamRoleLimit, the detailed information about the Alibaba Cloud account (RamEntry) will be returned. The information includes the following fields: aliyunId (ID of the Alibaba Cloud account), accountKp (primary key of the Alibaba Cloud account), organizationName (name of the organization to which the Alibaba Cloud account belongs), count (the current actual quantity or the Enterprise Center usage limit quota item corresponding to the value of the type parameter), and updateTime (timestamp of the last update). ascm 2019-05-10
 
-##### GetQuota
+##### 3.1.2.8 GetQuota
 
 You can call this operation to query a quota.
 
@@ -18770,7 +19050,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### MeteringQuery
+##### 3.1.2.9 MeteringQuery
 
 Queries the metering data for a service within a given period of time.
 
@@ -18846,7 +19126,7 @@ Sample success responses `JSON` format
 {"total":"15","cost":"29","code":"200","success":"true","requestId":"","message":"success "DataArray":[{"InsId":"i-nn901gtz4gd1mfrpfvvt","EndTime":"2022-11- 01T01:00:00Z","Pos":"ECS_0000000003_2022-11-01T00:00:00Z","CreateTime":"2022-09-21T05:3 8:00Z","StartTime":"2022-11- 01T00:00:00Z","ResourceGId":"2","OrgName":"astbbigdata","RegionId":"cn-wulan-env180-d01 ","ResourceGName":"ResourceSet(astbbigdata)"}],"token":"{\"InsId\":\"inn901lg2uex9kk3gt9o3\",\"Pos\":\"ECS_0000000003_2022-11- 01T01:00:00Z\",\"ResourceGId\":\"2415\",\"RegionId\":\"cn-wulan-env180-d01\"}"}
 ```
 
-##### SelectCommonSpec
+##### 3.1.2.10 SelectCommonSpec
 
 You can call this operation to query the specifications of a service by condition.
 
@@ -18949,7 +19229,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UpdateCommonSpecStatus
+##### 3.1.2.11 UpdateCommonSpecStatus
 
 You can call this operation to enable or disable specifications.
 
@@ -18995,7 +19275,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UpdateQuota
+##### 3.1.2.12 UpdateQuota
 
 You can call this operation to update a quota.
 
@@ -19098,7 +19378,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### AscmExternalFlowCallBack
+##### 3.1.2.13 AscmExternalFlowCallBack
 
 After a third-party approval is completed, you can call the AscmExternalFlowCallBack interface to notify the ASCM process of the approval result and comments.
 
@@ -19156,9 +19436,9 @@ POST /ascm/process/instance/externalFlow/trigger HTTP/1.1
 <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e002a</requestId> <success>true</success> <message>&quot;success&quot;</message>
 ```
 
-ascm 2019-05-10 AscmExternalFlowCallBack
+ascm 2019-05-10
 
-##### BillQuery
+##### 3.1.2.14 BillQuery
 
 Call the BillQuery operation to query billing statements for cloud resources.
 
@@ -19489,7 +19769,7 @@ instance_ECS_0000000003_2023-07-21T09:00:00Z\",\"ResourceGId\":\"2\",\"RegionId\
 21T09:00:00Z&quot;,&quot;ResourceGId&quot;:&quot;2&quot;,&quot;RegionId&quot;:&quot;cnqingdao-***-d01&quot;}</token>
 ```
 
-##### TagResources
+##### 3.1.2.15 TagResources
 
 Attaches tags to resources.
 
@@ -19558,7 +19838,7 @@ POST /ascm/manage/tag_manage/tagResources HTTP/1.1
 <errorKey>ascm.auth.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <pureListData>false</pureListData> <message>TagResources success.</message>
 ```
 
-##### UnTagResources
+##### 3.1.2.16 UnTagResources
 
 You can call the UnTagResources operation to detach tags from resources.
 
@@ -19616,7 +19896,7 @@ POST /ascm/manage/tag_manage/unTagResources HTTP/1.1
 <errorKey>ascm.auth.InternalError</errorKey> <code>200</code> <success>true</success> <requestId>530dxxx-dxx******-x6b61axxxxx</requestId> <pureListData>false</pureListData> <message>UnTagResources success.</message>
 ```
 
-##### QueryServiceCategoryTreeOpenApi
+##### 3.1.2.17 QueryServiceCategoryTreeOpenApi
 
 Queries the service category tree based on user permissions.
 
@@ -19710,7 +19990,7 @@ Response example `JSON` format `{`
 </data> <success>true</success> <errorMessage /> <errorCode />
 ```
 
-##### QueryServiceCatalogPageOpenApi
+##### 3.1.2.18 QueryServiceCatalogPageOpenApi
 
 Queries the list of services in the Service Catalog.
 
@@ -19821,7 +20101,7 @@ public&amp;fromServiceCatalog=true&amp;catalogId=CS000711&amp;AscmPlatformCode=p
 </data> <success>true</success> <errorMessage /> <errorCode />
 ```
 
-##### QueryBudgetAccountDetail
+##### 3.1.2.19 QueryBudgetAccountDetail
 
 Queries information about a budget account.
 
@@ -19925,7 +20205,7 @@ POST /ascm/budget/budgetAccount/queryBudgetAccountDetail HTTP/1.1
 </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>affe0c6042f09722fec95a21b8b******</token>
 ```
 
-##### BillSummaryQuery
+##### 3.1.2.20 BillSummaryQuery
 
 Queries bill summaries.
 
@@ -20091,7 +20371,7 @@ POST /ascm/billing/billing/web/query/range HTTP/1.1
 </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>InternalServerError</errorMessage> <errorCode>InternalServerError</errorCode> <pageSize>10</pageSize> <token>affe0c6042f09722fec95a21b8b******</token>
 ```
 
-##### UpdateIndependentAmountByBizId
+##### 3.1.2.21 UpdateIndependentAmountByBizId
 
 Adjusts the credit limit of an account.
 
@@ -20163,7 +20443,7 @@ POST /ascm/budget/budgetAccountOpen/UpdateIndependentAmountByBizId HTTP/1.1
 <code>200</code> <cost>121</cost> <data>true</data> <requestId>64C8D24A-2266-44AA-8CF7-1783F4C7****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>affe0c6042f09722fec95a21b8b******</token>
 ```
 
-##### PageCashFlow
+##### 3.1.2.22 PageCashFlow
 
 Queries the income and expense details of your organization.
 
@@ -20287,7 +20567,7 @@ POST /ascm/budget/budgetAccountOpen/PageCashFlow HTTP/1.1
 </data> <requestId>F6D1E15E-5AC9-4D74-A111-B47FC1FA****</requestId> <success>true</success> <errorMessage>Specified access key is not found.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <pageSize>10</pageSize> <token>affe0c6042f09722fec95a21b8b******</token>
 ```
 
-##### QueryIssueOpenApi
+##### 3.1.2.23 QueryIssueOpenApi
 
 Queries a list of tickets.
 
@@ -20433,7 +20713,7 @@ POST /issue/queryIssue HTTP/1.1
 </data> <success>true</success> <pageSize>10</pageSize>
 ```
 
-##### CreateDiscount
+##### 3.1.2.24 CreateDiscount
 
 Create a discount.
 
@@ -20507,7 +20787,7 @@ POST /ascm/trade/discount/create HTTP/1.1
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### UpdateDiscount
+##### 3.1.2.25 UpdateDiscount
 
 Update a discount.
 
@@ -20574,7 +20854,7 @@ POST /ascm/trade/discount/update HTTP/1.1
 <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### EnableDiscount
+##### 3.1.2.26 EnableDiscount
 
 Enable a discount.
 
@@ -20647,7 +20927,7 @@ POST /ascm/trade/discount/enable HTTP/1.1
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### DisableDiscount
+##### 3.1.2.27 DisableDiscount
 
 Disable a discount.
 
@@ -20720,7 +21000,7 @@ POST /ascm/trade/discount/disable HTTP/1.1
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### QueryDiscount
+##### 3.1.2.28 QueryDiscount
 
 Query discount details.
 
@@ -20972,7 +21252,7 @@ POST /ascm/trade/discount/query HTTP/1.1
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <pageSize>20</pageSize>
 ```
 
-##### DeleteDiscount
+##### 3.1.2.29 DeleteDiscount
 
 Delete a discount.
 
@@ -21030,7 +21310,7 @@ POST /ascm/trade/discount/delete HTTP/1.1
 <code>200</code> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### DescribeDiscount
+##### 3.1.2.30 DescribeDiscount
 
 Query discount details.
 
@@ -21261,7 +21541,7 @@ POST /ascm/trade/discount/detail HTTP/1.1
 </data> <requestId>0a1128a916917198245846573e0***</requestId> <success>true</success>
 ```
 
-##### ListDiscountPriority
+##### 3.1.2.31 ListDiscountPriority
 
 List of discount priorities.
 
@@ -21327,7 +21607,7 @@ Sample success responses `JSON` format `{`
 </data> <requestId>0a1128a916917198245846573e0***</requestId> <success>true</success>
 ```
 
-##### BillingProductList
+##### 3.1.2.32 BillingProductList
 
 Retrieve the three-level list of billing products.
 
@@ -21419,7 +21699,7 @@ Sample success responses `JSON` format `{`
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success>
 ```
 
-##### CountProductInstancesByResourceSet
+##### 3.1.2.33 CountProductInstancesByResourceSet
 
 Count the number of product instances by resource set.
 
@@ -21546,7 +21826,7 @@ d01&resourceGroupId=2",
 </data> <success>true</success> <message>success</message>
 ```
 
-##### ListCouponTemplate
+##### 3.1.2.34 ListCouponTemplate
 
 Query the list of coupon template information.
 
@@ -21691,7 +21971,7 @@ POST /ascm/trade/coupon/admin/listCouponTemplate HTTP/1.1
 </data> <requestId>748326947932***</requestId> <success>true</success> <pageSize>10</pageSize> <message>success</message>
 ```
 
-##### CreateCouponTemplate
+##### 3.1.2.35 CreateCouponTemplate
 
 Create a coupon template.
 
@@ -21790,7 +22070,7 @@ POST /ascm/trade/coupon/admin/createCouponTemplate HTTP/1.1
 <code>200</code> <data>true</data> <requestId>3794632643781366273723</requestId> <success>true</success> <message>success</message>
 ```
 
-##### UpdateCouponTemplate
+##### 3.1.2.36 UpdateCouponTemplate
 
 Update the information of a coupon template.
 
@@ -21859,7 +22139,7 @@ POST /ascm/trade/coupon/admin/updateCouponTemplate HTTP/1.1
 <code>200</code> <data>true</data> <requestId>74387643027937479326***</requestId> <success>true</success> <message>success</message>
 ```
 
-##### DeleteCouponTemplate
+##### 3.1.2.37 DeleteCouponTemplate
 
 Delete a coupon template.
 
@@ -21919,7 +22199,7 @@ POST /ascm/trade/coupon/admin/deleteCouponTemplate HTTP/1.1
 <code>200</code> <data>true</data> <requestId>43797493629473924***</requestId> <success>true</success> <message>success</message>
 ```
 
-##### QueryCouponTemplateDetail
+##### 3.1.2.38 QueryCouponTemplateDetail
 
 Query the details of a coupon template.
 
@@ -22055,7 +22335,7 @@ POST /ascm/trade/coupon/admin/queryCouponTemplateDetail HTTP/1.1
 </data> <requestId>6438647392648732***</requestId> <success>true</success> <message>success</message>
 ```
 
-##### PublishCouponTemplate
+##### 3.1.2.39 PublishCouponTemplate
 
 Distribute coupons.
 
@@ -22121,7 +22401,7 @@ POST /ascm/trade/coupon/admin/publishCouponTemplate HTTP/1.1
 <code>200</code> <data>true</data> <requestId>3829369916873943***</requestId> <success>true</success> <message>success</message>
 ```
 
-##### PutMeteringData
+##### 3.1.2.40 PutMeteringData
 
 An API for third-party products to actively push metering data to ASCM in product and commodity management.
 
@@ -22178,7 +22458,7 @@ POST /ascm/metering/custom/product/put/metering/data HTTP/1.1
 <code>200</code> <cost>121</cost> <requestId>0a1128a91691****</requestId> <success>true</success> <message>success</message>
 ```
 
-##### QueryBillingCycleSettleStatus
+##### 3.1.2.41 QueryBillingCycleSettleStatus
 
 Query the settlement status of a billing cycle.
 
@@ -22232,7 +22512,7 @@ POST /ascm/budget/billSettle/queryBillingCycleSettleStatus HTTP/1.1
 <data>0</data> <success>true</success>
 ```
 
-##### CreateBillingPushTask
+##### 3.1.2.42 CreateBillingPushTask
 
 Create a billing import task.
 
@@ -22296,7 +22576,7 @@ POST /ascm/billing/import/billingPush/tasks/create HTTP/1.1
 <code>200</code> <cost>121</cost> <data>2</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>An error occurred while calling the API.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>e59f61b2482b4d0562ab542d***</token>
 ```
 
-##### BatchPushBilling
+##### 3.1.2.43 BatchPushBilling
 
 Import and push in batch.
 
@@ -22681,7 +22961,7 @@ POST /ascm/billing/import/billingPush/tasks/batchPush HTTP/1.1
 </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9****</requestId> <success>true</success> <errorMessage>InternalServerError.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token>
 ```
 
-##### UpdateStatusPushFinished
+##### 3.1.2.44 UpdateStatusPushFinished
 
 Update the status to push finished.
 
@@ -22739,7 +23019,7 @@ Sample success responses `JSON` format `{`
 <code>200</code> <cost>121</cost> <data>true</data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>An error occurred while calling the API.</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token>
 ```
 
-##### QueryBillingPushTaskStatus
+##### 3.1.2.45 QueryBillingPushTaskStatus
 
 Query the task status.
 
@@ -22818,7 +23098,7 @@ POST /ascm/billing/import/billingPush/tasks/queryStatus HTTP/1.1
 </data> <requestId>0a1128a916917198245846573e****</requestId> <success>true</success> <errorMessage>InternalServerError</errorMessage> <errorCode>InvalidAccessKeyId.NotFound</errorCode> <token>eyJhY2NvdW*****VnZpgXQC5A==</token>
 ```
 
-##### DataCenterSearch
+##### 3.1.2.46 DataCenterSearch
 
 Search for resources in a data middle platform environment.
 
@@ -22944,7 +23224,7 @@ POST /datacenter/action/search HTTP/1.1
 </data> <message>success</message> <success>true</success>
 ```
 
-##### DataCenterStatistics
+##### 3.1.2.47 DataCenterStatistics
 
 Data center statistics.
 
@@ -23078,9 +23358,9 @@ POST /datacenter/action/statistics HTTP/1.1
 </data> <message>success</message> <success>true</success>
 ```
 
-#### Cloud services
+#### 3.1.3 Cloud services
 
-##### DescribeInstanceTypeFamilies
+##### 3.1.3.1 DescribeInstanceTypeFamilies
 
 Queries instance families provided by Elastic Compute Service (ECS).
 
@@ -23167,7 +23447,7 @@ POST /ascm/manage/saleconf/ecsSpec/describeInstanceTypeFamilies HTTP/1.1 Common 
 
 `}`
 
-##### DescribeModifiableInstanceType
+##### 3.1.3.2 DescribeModifiableInstanceType
 
 You can call this operation to query the Elastic Compute Service (ECS) instance types that can be upgraded or downgraded.
 
@@ -23295,7 +23575,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSeriesIdFamilies
+##### 3.1.3.3 DescribeSeriesIdFamilies
 
 Queries instance families of PolarDB-X 1.0.
 
@@ -23481,7 +23761,7 @@ POST /ascm/manage/saleconf/drdsSpec/describeSeriesIdFamilies HTTP/1.1 Common req
 
 `}`
 
-##### GetRegionsByProduct
+##### 3.1.3.4 GetRegionsByProduct
 
 Queries regions that are supported by the product.
 
@@ -23560,7 +23840,7 @@ POST /ascm/basic/cmdb/region/product HTTP/1.1 Common request header
 
 `}` `]` `}` `}`
 
-##### GroupCommonSpec
+##### 3.1.3.5 GroupCommonSpec
 
 You can call this operation to query the valid values of the specifications-specific fields.
 
@@ -23624,7 +23904,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### InitFromOnline
+##### 3.1.3.6 InitFromOnline
 
 Initializes resource specifications based on the specified value of resourceType. You can call this operation to initialize the specifications of a resource based on the specified value of resourceType.
 
@@ -23682,7 +23962,7 @@ POST /ascm/manage/belong/updateInstance HTTP/1.1
 <code>200</code> <data>exampledata</data> <success>true</success> <message>init ECS success</message>
 ```
 
-##### GetAllRegionsInfo
+##### 3.1.3.7 GetAllRegionsInfo
 
 Queries the information about all regions in a cloud.
 
@@ -23764,9 +24044,9 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success>
 ```
 
-ascm 2019-05-10 GetAllRegionsInfo
+ascm 2019-05-10
 
-##### CloudSearchResources
+##### 3.1.3.8 CloudSearchResources
 
 This general API searches for hybrid cloud resources. The API performs unified searches for resources across multiple organizations, multi-cloud products, and multiple regions. Only tenant accounts can call this API. Service accounts and primary accounts cannot call this API.
 
@@ -23949,7 +24229,7 @@ POST /search/resources HTTP/1.1
 |---|---|---|---|
 | 500 | -1001 | MissingParameter1001Versio n | This operation requires the 1001Version parameter. |
 
-##### CloudUpdateResource
+##### 3.1.3.9 CloudUpdateResource
 
 This general API updates hybrid cloud resources. It is only available to tenant accounts can call this API, excluding service accounts and primary accounts.
 
@@ -24023,9 +24303,9 @@ POST /update/resource HTTP/1.1
 |---|---|---|---|
 | 500 | -1001 | MissingParameter1001Version | Parameter 1001Version is mandatory for this action. |
 
-#### Configurations
+#### 3.1.4 Configurations
 
-##### EditResourceAccountPlatform
+##### 3.1.4.1 EditResourceAccountPlatform
 
 Connect a resource account. Only platform administrators and operations administrators bound to a public cloud can call this API.
 
@@ -24275,7 +24555,7 @@ POST /platforms/edit/resource/account HTTP/1.1
 </data>
 ```
 
-##### BatchCreateRAMServiceRole
+##### 3.1.4.2 BatchCreateRAMServiceRole
 
 Creates multiple service-linked roles at a time. You can call the ListRAMServiceRoles operation to query the created service-linked roles. A service-linked role is used by a trusted Alibaba Cloud service to access other Alibaba Cloud services or manage resources in other Alibaba Cloud services. If you create an instance of an Alibaba Cloud service that needs access to another Alibaba Cloud service, a service-linked role is automatically created for the service in the level-1 organization of the organization in which you create the instance. For example, an Elastic Compute Service (ECS) instance needs the permissions to create an Object Storage Service (OSS) bucket for image storage. The ECS instance needs to assume the corresponding service-linked role that is provided by OSS. This way, the ECS instance is granted permissions to manage OSS resources.
 
@@ -24343,7 +24623,7 @@ POST /ascm/auth/ramServiceRole/batchCreateRAMServiceRole HTTP/1.1 Common request
 
 `}`
 
-##### GetPasswordPolicy
+##### 3.1.4.3 GetPasswordPolicy
 
 Queries the password policy that is enabled in the Apsara Uni-manager Management Console.
 
@@ -24447,7 +24727,7 @@ POST /ascm/auth/user/getPasswordPolicy HTTP/1.1 Common request parameters
 
 `}`
 
-##### ListRAMPolicies
+##### 3.1.4.4 ListRAMPolicies
 
 Queries Resource Access Management (RAM) policies.
 
@@ -24571,7 +24851,7 @@ POST /ascm/auth/role/listRAMPolicies HTTP/1.1 Common request parameters
 
 `}`
 
-##### ListRAMPoliciesForUser
+##### 3.1.4.5 ListRAMPoliciesForUser
 
 Queries the Resource Access Management (RAM) policies that are attached to users.
 
@@ -24670,7 +24950,7 @@ llow\", \"Resource\": [\"acs:oss:*:*:*\"]}], \"Version\": \"1\"}",
 
 `}`
 
-##### ListRAMServiceRoles
+##### 3.1.4.6 ListRAMServiceRoles
 
 Queries Resource Access Management (RAM) roles.
 
@@ -24830,7 +25110,7 @@ low", "Principal": {"Service": ["***.aliyuncs.com"]}}], "Version": "1"} </assume
 
 `}`
 
-##### RemoveLoginPolicyById
+##### 3.1.4.7 RemoveLoginPolicyById
 
 Deletes a logon policy. Before you delete a logon policy, you must first disassociate all users from the logon policy. To disassociate users from the logon policy, you can call the ModifyUserInformation operation to change the logon policy associated with the users.
 
@@ -24896,7 +25176,7 @@ POST /ascm/auth/loginPolicy/removeLoginPolicyById HTTP/1.1 Common request parame
 
 `}`
 
-##### RemoveLoginPolicyByName
+##### 3.1.4.8 RemoveLoginPolicyByName
 
 Deletes the logon policy with a specific name. Before you delete a logon policy, you must disassociate the logon policy from users. To disassociate users from the logon policy, you can call the ModifyUserInformation operation to change the logon policy associated with the users.
 
@@ -24963,7 +25243,7 @@ POST /ascm/auth/loginPolicy/removeLoginPolicyByName HTTP/1.1 Common request para
 
 `}`
 
-##### ResetPasswordPolicy
+##### 3.1.4.9 ResetPasswordPolicy
 
 Resets the current password policy of the Apsara Uni-manager Management Console. After you call this operation, the password policy is reset to the default password policy of the Apsara Uni-manager Management Console. To modify the password policy of the Apsara Unimanager Management Console, call the SetPasswordPolicy operation. For more information about the default password policy of the Apsara Uni-manager Management Console, see the returned data of this operation.
 
@@ -25067,7 +25347,7 @@ POST /ascm/auth/user/resetPasswordPolicy HTTP/1.1 Common request parameters
 
 `}`
 
-##### SetPasswordPolicy
+##### 3.1.4.10 SetPasswordPolicy
 
 Modifies the current password policy of the Apsara Uni-manager Management Console.
 
@@ -25190,7 +25470,7 @@ POST /ascm/auth/user/setPasswordPolicy HTTP/1.1 Common request parameters
 
 `}`
 
-##### GetSAMLSpMetadata
+##### 3.1.4.11 GetSAMLSpMetadata
 
 This operation retrieves the metadata that ASCM provides to an Identity Provider (IdP). This metadata is used to enable single sign-on (SSO) with the SAML 2.0 protocol when ASCM acts as the Service Provider (SP).
 
@@ -25265,7 +25545,7 @@ POST /ascm/auth/saml2/spMetadata/get HTTP/1.1
 </data> <requestId>FEB7A954-F07F-45EA-B6A3-980DD0F9EF60</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>example.com</Domain>
 ```
 
-##### ResetIdPConfig
+##### 3.1.4.12 ResetIdPConfig
 
 Resets the global identity provider configuration for ASCM.
 
@@ -25332,7 +25612,7 @@ Successful response example `JSON` format `{`
 <successResponse>true</successResponse> <errorKey>ascm.manage.InternalError</errorKey> <eagleEyeTraceId>0a880c8717059272470618228d002d</eagleEyeTraceId> <ServerRole>ascm.auth</ServerRole> <code>200</code> <cost>121</cost> <requestId>2AAF774D-53A7-442E-ADE9-A1E795377748</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>example.com</Domain>
 ```
 
-##### SetIdPConfig
+##### 3.1.4.13 SetIdPConfig
 
 Configures the global identity provider (IdP) for ASCM.
 
@@ -25475,7 +25755,7 @@ POST /ascm/auth/signon/setIdPConfig HTTP/1.1
 <successResponse>true</successResponse> <errorKey>ascm.auth.InternalError</errorKey> <eagleEyeTraceId>0a880c8717059272470618228d002d</eagleEyeTraceId> <ServerRole>unimanager-base.IdentityService</ServerRole> <code>200</code> <cost>121</cost> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <extraMessage>success</extraMessage> <message>success</message> <Domain>ascm-auth.inter.env66.shuguang.com</Domain>
 ```
 
-##### GetIdPConfig
+##### 3.1.4.14 GetIdPConfig
 
 Retrieves the global identity provider (IdP) configuration from ASCM.
 
@@ -25606,7 +25886,7 @@ Redirect</SingleLogoutServiceBinding>
 </data> <requestId /> <extraMessage /> <message /> <Domain>ascm.aliyun.com</Domain>
 ```
 
-##### ListAvailablePlatforms
+##### 3.1.4.15 ListAvailablePlatforms
 
 Retrieve the list of resource pools that the current user has permission to view.
 
@@ -25841,7 +26121,7 @@ POST /platforms/list/available HTTP/1.1
 </data>
 ```
 
-##### ListResourceAccounts
+##### 3.1.4.16 ListResourceAccounts
 
 In multi-cloud management scenarios, the system retrieves the list of resource accounts under the management account.
 
@@ -25947,7 +26227,7 @@ POST /platforms/list/resource/accounts HTTP/1.1
 
 Only platform administrators and operations administrators bound to a public cloud can call this API.
 
-##### ListSubPlatforms
+##### 3.1.4.17 ListSubPlatforms
 
 List all resource pools from connected resource accounts under a management account.
 
@@ -26237,7 +26517,7 @@ d""ALIYUN"
 </data>
 ```
 
-##### ListCloudServices
+##### 3.1.4.18 ListCloudServices
 
 Retrieve the list of cloud services that Apsara Stack RAM supports.
 
@@ -26978,13 +27258,13 @@ Ali
 </data> <message>success</message> <success>true</success> <successResponse>true</successResponse>
 ```
 
-#### Parameters related to the
+#### 3.1.5 Parameters related to the MeteringQuery operation
 
 **MeteringQuery operation**
 
-##### Computing
+##### 3.1.5.1 Computing
 
-###### Container Registry
+###### 3.1.5.1.1 Container Registry
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Container Registry.
 
@@ -27008,7 +27288,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | repoAuthorizeType | Repository permission | The type of the permission that is granted to the repository. |
 | repoBuildType | Build type | Indicates how the repository was built. Valid values: AUTO: The repository was automatically built. MANUAL: The repository was manually built. |
 
-###### ACK
+###### 3.1.5.1.2 ACK
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Container Service for Kubernetes (ACK).
 
@@ -27042,7 +27322,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | private zone _ | Alibaba Cloud DNS PrivateZone | Indicates whether Alibaba Cloud DNS PrivateZone is enabled. Valid values: true: Alibaba Cloud DNS PrivateZone is enabled. false: Alibaba Cloud DNS PrivateZone is disabled. |
 | deletion protection _ | Deletion protection | Indicates whether the deletion protection feature is enabled. Valid values: true: The deletion protection feature is enabled for the cluster. This way, the cluster cannot be deleted in the ACK console or by calling API operations. false: The deletion protection feature is disabled for the cluster. This way, the cluster can be deleted in the ACK console or by calling API operations. |
 
-###### Dedicated Host
+###### 3.1.5.1.3 Dedicated Host
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to dedicated hosts.
 
@@ -27086,7 +27366,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | TotalVgpus | Total number of vGPUs | The total number of vGPUs. |
 | ZoneId | Zone ID | The zone ID. |
 
-###### Auto Scaling
+###### 3.1.5.1.4 Auto Scaling
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Auto Scaling.
 
@@ -27130,7 +27410,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MinSize | Minimum number of instances | The minimum number of ECS instances in the scaling group. |
 | DefaultCooldown | Default cooldown time | The default cooldown time of the scaling group. Unit: seconds. During the cooldown time, Auto Scaling executes only scaling activities that are triggered by CloudMonitor event-triggered tasks. |
 
-###### EBS
+###### 3.1.5.1.5 EBS
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Elastic Block Storage (EBS).
 
@@ -27165,7 +27445,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | KMSKeyId | ID of the KMS key | The ID of the Key Management Service (KMS) key used by the disk. |
 | DiskSize | Disk size | The size of the cloud disk or local disk. Unit: GiB. |
 
-###### Snapshots
+###### 3.1.5.1.6 Snapshots
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to the snapshot feature.
 
@@ -27207,7 +27487,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | RetentionDays | Retention period of the automatic snapshot | The retention period of the automatic snapshot. |
 
-###### ECS
+###### 3.1.5.1.7 ECS
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Elastic Compute Service (ECS).
 
@@ -27257,7 +27537,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | SysDiskSize | System disk | The size of the system disk. Unit: GB. |
 | DataDiskSize | Data disk size | The size of the data disk. Unit: GB. |
 
-###### Bare Metal Computing Platform (BMCP)
+###### 3.1.5.1.8 Bare Metal Computing Platform (BMCP)
 
 After you call MeteringQuery to retrieve metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameters returned for Bare Metal Computing Platform (BMCP).
 
@@ -27278,7 +27558,7 @@ After you call MeteringQuery to retrieve metering data, the system returns produ
 | Memory | Memory (GB) | The memory capacity in GB. |
 | VideoMemory | GPU memory (GB) | The GPU memory capacity in GB. |
 
-###### ACK - Intelligent Computing Cluster
+###### 3.1.5.1.9 ACK - Intelligent Computing Cluster
 
 After you call MeteringQuery to obtain metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameters returned for ACK - Intelligent Computing Cluster.
 
@@ -27300,7 +27580,7 @@ After you call MeteringQuery to obtain metering data, the system returns product
 | VideoMemory | GPU memory (GB) | The GPU memory capacity. Unit: GB. |
 | FlopsCount | Computing power (TFLOPS) | The computing power. Unit: TFLOPS. |
 
-###### Bare Metal - Intelligent Computing
+###### 3.1.5.1.10 Bare Metal - Intelligent Computing Cluster
 
 **Cluster**
 
@@ -27324,7 +27604,7 @@ After you call MeteringQuery to retrieve metering data, the system returns produ
 | VideoMemory | GPU memory (GB) | The GPU memory capacity. Unit: GB. |
 | FlopsCount | Computing power (TFLOPS) | The computing power. Unit: TFLOPS. |
 
-###### Bare Metal - Supercomputing Power
+###### 3.1.5.1.11 Bare Metal - Supercomputing Power Cluster
 
 **Cluster**
 
@@ -27348,7 +27628,7 @@ After you call MeteringQuery to retrieve metering data, the system returns produ
 | VideoMemory | GPU memory (GB) | The GPU memory capacity. Unit: GB. |
 | FlopsCount | Computing power (TFLOPS) | The computing power. Unit: TFLOPS. |
 
-###### EVPC
+###### 3.1.5.1.12 EVPC
 
 After you call MeteringQuery to obtain metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameters returned for EVPC.
 
@@ -27365,9 +27645,9 @@ After you call MeteringQuery to obtain metering data, the system returns product
 | StartTime | Start time | The start time of the time slice to which the data belongs in UTC. |
 | EndTime | End time | The end time of the time slice to which the data belongs in UTC. |
 
-##### Storage
+##### 3.1.5.2 Storage
 
-###### File Storage NAS
+###### 3.1.5.2.1 File Storage NAS
 
 When you call the MeteringQuery operation, both common response parameters and servicespecific response parameters are returned. This topic describes the parameters returned from NAS.
 
@@ -27397,7 +27677,7 @@ When you call the MeteringQuery operation, both common response parameters and s
 | MountTargets | Number of mount targets | The number of mount targets. |
 | MeteredSize | File system usage | The file system usage. This is not a real-time value but the maximum usage within the previous hour. Unit: bytes. |
 
-###### OSS
+###### 3.1.5.2.2 OSS
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Object Storage Service (OSS).
 
@@ -27440,7 +27720,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MeteringStorageUtiliza tion Maximum _ | Maximum capacity value | The maximum capacity value obtained from CloudMonitor at the end time. Unit: byte. |
 | MeteringStorageUtiliza tion Minimum _ | Minimum capacity value | The minimum capacity value obtained from CloudMonitor at the end time. Unit: byte. |
 
-###### Log Service
+###### 3.1.5.2.3 Log Service
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Log Service.
 
@@ -27469,9 +27749,9 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | RawSum | Total data size | The total size of data occupied by Log Service. Unit: byte. |
 | IndexSize | Volume of index data | The volume of index data between the specified start time and the specified end time, and also at the specified start time. Unit byte. |
 
-##### Networking
+##### 3.1.5.3 Networking
 
-###### HAVIP
+###### 3.1.5.3.1 HAVIP
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to high-availability virtual IP addresses (HAVIPs).
 
@@ -27497,7 +27777,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | VpcId | VPC ID | The ID of the VPC to which the HAVIP belongs. |
 | VSwitchId | vSwitch ID | The ID of the vSwitch to which the HAVIP belongs. |
 
-###### Express Connect
+###### 3.1.5.3.2 Express Connect
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Express Connect.
 
@@ -27538,7 +27818,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | VbrType | VBR type | The VBR type. Note This parameter takes effect only when ResourceType is set to VBR. |
 |---|---|---|
 
-###### NAT Gateway
+###### 3.1.5.3.3 NAT Gateway
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to NAT gateways.
 
@@ -27567,7 +27847,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 |---|---|---|
 | IpListSize | Number of EIPs | The number of elastic IP addresses (EIPs) that are associated with the NAT gateway. |
 
-###### IPv6 Gateway
+###### 3.1.5.3.4 IPv6 Gateway
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to IPv6 gateways.
 
@@ -27592,7 +27872,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | Description | IPv6 gateway description | The description of the IPv6 gateway. |
 | InstanceChargeType | Billing method | The billing method. |
 
-###### VPN Gateway
+###### 3.1.5.3.5 VPN Gateway
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to VPN gateways.
 
@@ -27623,7 +27903,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | ChargeType | Billing method | The billing method. PostpayByFlow is returned. |
 | Spec | Peak bandwidth | The maximum bandwidth of the VPN gateway. Unit: Mbit/s. |
 
-###### VPC
+###### 3.1.5.3.6 VPC
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Virtual Private Cloud (VPC).
 
@@ -27649,7 +27929,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | Description | Description | The description of the VPC. |
 | IsDefault | Default VPC | Indicates whether the VPC is the default VPC in the region. Valid values: true: The VPC is the default VPC in the region. false: The VPC is not the default VPC in the region. |
 
-###### EIP
+###### 3.1.5.3.7 EIP
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Elastic IP Address (EIP).
 
@@ -27685,7 +27965,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | BindInstanceName | Name of the associated instance | The name of the associated instance. |
 | Bandwidth | Maximum bandwidth value | The maximum bandwidth value of the EIP. Unit: Mbit/s. |
 
-###### Server Load Balancer (SLB)
+###### 3.1.5.3.8 Server Load Balancer (SLB)
 
 After you call the MeteringQuery operation to query metering data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters that are returned for Server Load Balancer (SLB).
 
@@ -27726,7 +28006,7 @@ After you call the MeteringQuery operation to query metering data, common respon
 | MeteringStorageUtiliza tion Maximum _ | Maximum capacity | The maximum capacity value that is obtained from CloudMonitor at the specified end time. Unit: bytes. |
 | MeteringStorageUtiliza tion Minimum _ | Minimum capacity | The minimum capacity value that is obtained from CloudMonitor at the specified end time. Unit: bytes. |
 
-###### Authoritative zones
+###### 3.1.5.3.9 Authoritative zones
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to authoritative zones.
 
@@ -27746,9 +28026,9 @@ After you call the MeteringQuery operation to query statistical data, common res
 | QueryPerDay | Number of queries | The number of queries. Note The parameter displays the number of AUTH ZONE _ requests that are sent from the local DNS server of the Internet service provider (ISP) to the authoritative zone. This number does not refer to the number of website page views. |
 |---|---|---|
 
-##### Analytics computing
+##### 3.1.5.4 Analytics computing
 
-###### DLC of Machine Learning Platform for AI
+###### 3.1.5.4.1 DLC of Machine Learning Platform for AI
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Deep Learning Containers (DLC) of Machine Learning Platform for AI (PAI).
 
@@ -27774,7 +28054,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | RequestGpu | Number of GPUs | The number of GPUs of the instance. |
 | RunTime | Duration | The running duration of the task or instance. Unit: seconds. |
 
-###### EAS of Machine Learning Platform for AI
+###### 3.1.5.4.2 EAS of Machine Learning Platform for AI
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Elastic Algorithm Service (EAS) of Machine Learning Platform for AI (PAI).
 
@@ -27799,7 +28079,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | Memory | Memory size | The memory size of the instance. Unit: MB. |
 |---|---|---|
 
-###### DSW of Machine Learning Platform for AI
+###### 3.1.5.4.3 DSW of Machine Learning Platform for AI
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Data Science Workshop (DSW) of Machine Learning Platform for AI (PAI).
 
@@ -27825,7 +28105,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | RequestGpu | Number of GPUs | The number of GPUs of the instance. |
 | RunTime | Duration | The running duration of the task or instance. Unit: seconds. |
 
-###### MaxCompute
+###### 3.1.5.4.4 MaxCompute
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to MaxCompute.
 
@@ -27871,7 +28151,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | odps.sql.type.system.odps2.0 | Data type edition of MaxCompute V2.0 | The configuration item for the data type edition of MaxCompute V2.0. Valid values: 0: The configuration item is disabled or does not exist. 1: The configuration item is enabled. |
 | isODPSSecurity | Security enhancement package | The configuration item for the security enhancement package. Valid values: 0: The configuration item is disabled or does not exist. 1: The configuration item is enabled. |
 
-###### DataHub
+###### 3.1.5.4.5 DataHub
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to DataHub.
 
@@ -27898,9 +28178,9 @@ After you call the MeteringQuery operation to query statistical data, common res
 | ReadDataSize | Read traffic | The sum of read traffic of each topic in the DataHub project. Unit: bytes. |
 | ConnectorDataSize | Data synchronization traffic | The sum of data volume synchronized among the connectors of each topic in the DataHub project. Unit: bytes. |
 
-##### Middleware
+##### 3.1.5.5 Middleware
 
-###### Message Queue for Apache RocketMQ
+###### 3.1.5.5.1 Message Queue for Apache RocketMQ
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Message Queue for Apache RocketMQ.
 
@@ -27927,9 +28207,9 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | instanceStatus | Instance status | The status of the instance. |
 | topicCapacity | Topic capacity | The number of topics. |
 
-##### Database
+##### 3.1.5.6 Database
 
-###### DTS
+###### 3.1.5.6.1 DTS
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Data Transmission Service (DTS).
 
@@ -27963,7 +28243,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 |---|---|---|
 | DestinationEngineName | Destination database type | PostgreSQL database. odps: MaxCompute project. oracle: self-managed Oracle database. mongodb: ApsaraDB for MongoDB instance or self- managed MongoDB database. tidb: TiDB database. ADS: AnalyticDB for MySQL V2.0 cluster. ADB30: AnalyticDB for MySQL V3.0 cluster. Greenplum: AnalyticDB for PostgreSQL instance. MSSQL: ApsaraDB RDS for SQL Server instance or self- managed SQL Server database. kafka: ApsaraMQ for Kafka instance or self-managed Kafka cluster. DataHub: DataHub project. clickhouse: ApsaraDB for ClickHouse cluster. DB2: self-managed Db2 for LUW database. as400: AS/400. Tablestore: Tablestore instance. Note This parameter takes effect only for data synchronization tasks. |
 
-###### DMS
+###### 3.1.5.6.2 DMS
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Data Management (DMS).
 
@@ -27983,7 +28263,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | FreeNum | Number of instances managed in Flexible Management mode | The number of instances that are managed in the Flexible Management mode. |
 | SafeNum | Number of instances managed in Security Collaboration mode | The number of instances that are managed in Security Collaboration mode. |
 
-###### ApsaraDB RDS for SQL Server
+###### 3.1.5.6.3 ApsaraDB RDS for SQL Server
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB RDS for SQL Server.
 
@@ -28049,7 +28329,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | DBInstanceStorage | Storage | The storage capacity of the instance. Unit: GB. |
 
-###### ApsaraDB RDS for PostgreSQL
+###### 3.1.5.6.4 ApsaraDB RDS for PostgreSQL
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB RDS for PostgreSQL.
 
@@ -28100,7 +28380,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | DBMaxQuantity | Maximum number of databases that can be created | The maximum number of databases that can be created on the instance. |
 | DBInstanceStorage | Storage | The storage capacity of the instance. Unit: GB. |
 
-###### ApsaraDB for MongoDB
+###### 3.1.5.6.5 ApsaraDB for MongoDB
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB for MongoDB.
 
@@ -28133,7 +28413,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | MemoryNum | Memory size | The memory size of the instance. Unit: GB. |
 | NetworkType | Network type | The network type of the instance. Valid values: classic: classic network. vpc: virtual private cloud (VPC). Default value: classic. Note If you set this parameter to vpc, you must also specify the VpcId and VSwitchId parameters. |
 
-###### AnalyticDB for PostgreSQL
+###### 3.1.5.6.6 AnalyticDB for PostgreSQL
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parametersGPDBspecific to AnalyticDB for PostgreSQL.
 
@@ -28181,7 +28461,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | DBInstanceStorage | Storage | The storage capacity of the instance. Unit: GB. |
 | DBInstanceCpuCores | CPU | The number of CPU cores. |
 
-###### What is KVStore for Redis?
+###### 3.1.5.6.7 What is KVStore for Redis?
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to KVStore for Redis.
 
@@ -28259,7 +28539,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MemoryUsage Maxim _ um | Maximum memory usage | The maximum memory usage obtained from CloudMonitor at the specified end time. |
 | MemoryUsage Minimu _ m | Minimum memory usage | The minimum memory usage obtained from CloudMonitor at the specified end time. |
 
-###### ApsaraDB RDS for MySQL
+###### 3.1.5.6.8 ApsaraDB RDS for MySQL
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB RDS for MySQL.
 
@@ -28330,9 +28610,9 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MemoryUsage Maxim _ um | Maximum memory usage | The maximum memory usage obtained from CloudMonitor at the specified end time. |
 | MemoryUsage Minimu _ m | Minimum memory usage | The minimum memory usage obtained from CloudMonitor at the specified end time. |
 
-##### AI and PAI
+##### 3.1.5.7 AI and PAI
 
-###### Online service
+###### 3.1.5.7.1 Online service
 
 After you call MeteringQuery to obtain metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameters returned for online services.
 
@@ -28368,7 +28648,7 @@ After you call MeteringQuery to obtain metering data, the system returns product
 | FailedRequestRatio | Failure rate | The failure rate of requests. |
 | TotalFailedRequestCount | Total failed requests | The total number of failed requests. |
 
-###### AI resource quota (shared)
+###### 3.1.5.7.2 AI resource quota (shared)
 
 After you call MeteringQuery to retrieve metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameter fields returned for AI resource quota (shared).
 
@@ -28400,7 +28680,7 @@ After you call MeteringQuery to retrieve metering data, the system returns produ
 | ResourceType | Computing power type | The type of computing power. |
 | ResourceQuotaStatus | Instance status | The status of the instance. |
 
-###### AI resource quota (dedicated)
+###### 3.1.5.7.3 AI resource quota (dedicated)
 
 After you call MeteringQuery to retrieve metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameters returned for AI resource quota (dedicated).
 
@@ -28431,7 +28711,7 @@ After you call MeteringQuery to retrieve metering data, the system returns produ
 | ResourceType | Computing power type | The type of computing power. |
 | ResourceQuotaStatus | Instance status | The status of the instance. |
 
-###### AI resource pool
+###### 3.1.5.7.4 AI resource pool
 
 After you call MeteringQuery to obtain metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameters returned for the AI resource pool.
 
@@ -28455,7 +28735,7 @@ After you call MeteringQuery to obtain metering data, the system returns product
 | TotalNodeCount | Total node count | The total number of nodes. |
 | ResourcePoolStatus | Instance status | The status of the instance. |
 
-###### Visual modeling
+###### 3.1.5.7.5 Visual modeling
 
 After you call MeteringQuery to obtain metering data, the system returns product-specific parameters, in addition to common response parameters. This topic describes the parameter fields returned for visual modeling.
 
@@ -28476,9 +28756,9 @@ After you call MeteringQuery to obtain metering data, the system returns product
 | Gpu | GPU (card-hour) | The GPU usage. Unit: card-hour. |
 | GpuMemory | GPU memory (GB- hour) | The GPU memory usage. Unit: GB-hour. |
 
-##### Security
+##### 3.1.5.8 Security
 
-###### SOC
+###### 3.1.5.8.1 SOC
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters returned by Security Operations Center (SOC).
 
@@ -28494,7 +28774,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | EndTime | The end of the query time range. The time is displayed in UTC. |
 | DataStorageSize | The storage for log analysis in SOC. Unit: bytes. |
 
-###### Traffic Detection and Response
+###### 3.1.5.8.2 Traffic Detection and Response
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters returned by Traffic Detection and Response.
 
@@ -28512,7 +28792,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | OutBytes | The outbound traffic. Unit: bytes. |
 | Qps | The queries per second (QPS). |
 
-###### Crypto Service
+###### 3.1.5.8.3 Crypto Service
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Crypto Service.
 
@@ -28532,7 +28812,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | InstanceCount | Number of instances | The number of instances that were created in Crypto Service. |
 |---|---|---|
 
-###### Network Detection and Response
+###### 3.1.5.8.4 Network Detection and Response
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Network Detection and Response.
 
@@ -28553,7 +28833,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | UserId | UID | The user ID. |
 
-###### Server Guard
+###### 3.1.5.8.5 Server Guard
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Server Guard.
 
@@ -28574,7 +28854,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 |---|---|---|
 | UserId | UID | The user ID. |
 
-###### CSW-side Cloud Firewall
+###### 3.1.5.8.6 CSW-side Cloud Firewall
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to CSW-side Cloud Firewall (CCFW).
 
@@ -28596,7 +28876,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | LastModify | Last modification time | The time when the firewall configuration was last modified. |
 | UserId | UID | The user ID. |
 
-###### WAF
+###### 3.1.5.8.7 WAF
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Web Application Firewall (WAF).
 
@@ -28617,7 +28897,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 |---|---|---|
 | UserId | UID | The user ID. |
 
-###### Threat Detection Service
+###### 3.1.5.8.8 Threat Detection Service
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Threat Detection Service.
 
@@ -28638,7 +28918,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 |---|---|---|
 | UserId | UID | The user ID. |
 
-###### ISW-side Cloud Firewall
+###### 3.1.5.8.9 ISW-side Cloud Firewall
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ISW-side Cloud Firewall (ICFW).
 
@@ -28660,7 +28940,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | LastModify | Last modification time | The time when the firewall configuration was last modified. |
 | UserId | UID | The user ID. |
 
-###### Cloud-native Bastionhost
+###### 3.1.5.8.10 Cloud-native Bastionhost
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to cloud-native bastion hosts.
 
@@ -28682,7 +28962,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | LastModify | Last modification time | The time when the bastion host configuration was last modified. |
 | UserId | UID | The user ID. |
 
-###### Bastionhost
+###### 3.1.5.8.11 Bastionhost
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Bastionhost.
 
@@ -28704,7 +28984,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | LastModify | Last modification time | The time when the bastion host configuration was last modified. |
 | UserId | UID | The user ID. |
 
-###### KMS
+###### 3.1.5.8.12 KMS
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Key Management Service (KMS).
 
@@ -28739,9 +29019,9 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | AutomaticRotation | Automatic rotation status | Indicates whether automatic key rotation is enabled. Valid values: Enabled: Automatic key rotation is enabled. Disabled: Automatic key rotation is disabled. Suspended: Automatic key rotation is suspended. This parameter is suitable only for symmetric customer master keys (CMKs). |
 | LastRotationDate | Last rotation time | The time when the last rotation was performed. The time is displayed in UTC. For a new CMK, this parameter value is the time when the initial version of the CMK was generated. |
 
-#### Operation audit
+#### 3.1.6 Operation audit
 
-##### LookupInnerEvents
+##### 3.1.6.1 LookupInnerEvents
 
 Queries operation logs.
 
@@ -29011,9 +29291,9 @@ Sample success responses `JSON` format `{`
 </pageInfo>
 ```
 
-ascm 2019-05-10 LookupInnerEvents
+ascm 2019-05-10
 
-##### RetryAuditTask
+##### 3.1.6.2 RetryAuditTask
 
 Retries a task to store the recorded operations.
 
@@ -29067,9 +29347,9 @@ Sample success responses `JSON` format `{`
 <code>200</code> <data>true</data> <success>true</success>
 ```
 
-ascm 2019-05-10 RetryAuditTask
+ascm 2019-05-10
 
-##### ListAuditFile
+##### 3.1.6.3 ListAuditFile
 
 Queries a list of tasks to download recorded operations.
 
@@ -29441,9 +29721,9 @@ stat
 </pageInfo>
 ```
 
-ascm 2019-05-10 ListAuditFile
+ascm 2019-05-10
 
-##### ListTrailStorage
+##### 3.1.6.4 ListTrailStorage
 
 Queries the operation events stored in Simple Log Service.
 
@@ -29528,9 +29808,9 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success>
 ```
 
-ascm 2019-05-10 ListTrailStorage
+ascm 2019-05-10
 
-##### ListAccessKeyEvents
+##### 3.1.6.5 ListAccessKeyEvents
 
 Queries a list of events related to AccessKey pairs.
 
@@ -29825,9 +30105,9 @@ Sample success responses `JSON` format `{`
 </pageInfo>
 ```
 
-ascm 2019-05-10 ListAccessKeyEvents
+ascm 2019-05-10
 
-##### CreateTrailStorage
+##### 3.1.6.6 CreateTrailStorage
 
 Stores log data.
 
@@ -29935,9 +30215,9 @@ Sample success responses `JSON` format `{`
 </data> <success>false</success> <message>true</message>
 ```
 
-ascm 2019-05-10 CreateTrailStorage
+ascm 2019-05-10
 
-##### DownloadAuditFile
+##### 3.1.6.7 DownloadAuditFile
 
 Downloads log data from Object Storage Service (OSS) buckets.
 
@@ -29994,9 +30274,9 @@ Sample success responses `JSON` format `{`
 <code>200</code> <data>19</data> <success>true</success>
 ```
 
-ascm 2019-05-10 DownloadAuditFile
+ascm 2019-05-10
 
-##### GetDownloadUrl
+##### 3.1.6.8 GetDownloadUrl
 
 Queries the URL of a download task.
 
@@ -30042,11 +30322,11 @@ nv***.shuguang.com/audit_export/test_3_22.xlsx?Expires=*******",
 <code>200</code> <data>https://ascm-default-backend-oss-2021-01.oss-cn-*****-******-d01a.intra.env***.shuguang.com/audit_export/test_3_22.xlsx?Expires=*******</data> <success>true</success>
 ```
 
-ascm 2019-05-10 GetDownloadUrl ce
+ascm 2019-05-10 ce
 
-## STS API reference
+## 4 STS API reference
 
-### Obtaining the endpoint of
+### 4.1 Obtaining the endpoint of STS.
 
 **STS.**
 
@@ -30061,7 +30341,7 @@ To use the POP gateway to call API operations, you must use the service endpoint
 4. On the **Service Endpoint**page, select**Apsara Uni-manager**from the**Service**drop-down
 list to obtain the STS endpoint.
 
-### AssumeRole
+### 4.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role.
 
@@ -30164,7 +30444,7 @@ ce
 | 403 | NoPermission.NoPe rmissionBySubuser | NoPermission | No permission perform sts:AssumeRole on this Role. Maybe you are not authorized to perform sts:AssumeRole or the specified role does not trust you |
 | 403 | NoPermission.NoPe rmissionByRoot | NoPermission | Roles may not be assumed by root accounts. |
 
-### GetCallerIdentity
+### 4.3 GetCallerIdentity
 
 Queries the identity of the current requester.
 
@@ -30226,11 +30506,11 @@ Sample success responses `JSON` format `{`
 
 l API Reference
 
-## Developer Portal API
+## 5 Developer Portal API Reference
 
 **Reference**
 
-### GetApiInfo
+### 5.1 GetApiInfo
 
 Retrieves the specified OpenAPI information from the developer portal.
 
@@ -30272,7 +30552,7 @@ Sample response `JSON` format `{`
 }<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>< br/>
 ```
 
-### GetProductList
+### 5.2 GetProductList
 
 Retrieves the list of products from the developer portal.
 
@@ -30305,7 +30585,7 @@ ged Services\",<br/> \"categoryEn\": \"Alarm\",<br/> \"productName\": \"Cl oud M
 
 `/>`
 
-### GetApiDocs
+### 5.3 GetApiDocs
 
 Retrieve OpenAPI details for a specific product and version in the developer portal.
 
@@ -30344,7 +30624,7 @@ This API uses common request headers. It does not require any special request he
 }<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>< br/><br/><br/><br/><br/>
 ```
 
-### GetApiOverview
+### 5.4 GetApiOverview
 
 Get an overview of the OpenAPI for the specified product and version in the developer portal.
 
@@ -30391,7 +30671,7 @@ l API Reference Normal response example `JSON` format `{`
 
 anagement Platform Integration
 
-## Unified Cloud Management
+## 6 Unified Cloud Management Platform Integration
 
 **Platform Integration**
 
@@ -30405,7 +30685,7 @@ Many users of Apsara Stack require self-service operations and maintenance (O&M)
 
 This solution enables rapid integration with the features of the unified cloud management platform console, which simplifies third-party console development.
 
-### Operation flow
+### 6.1 Operation flow
 
 This topic describes the overall process for integrating the Unified Cloud Management Platform.
 
@@ -30422,7 +30702,7 @@ Management Platform to modify the skin, theme color, and language. This aligns t
 3. Embed page URLs. After finishing the page configuration, obtain the URL for each page
 from the open pages list. Embed the URLs in the target management platform using an iframe to complete the page embedding. For more information, see Embed page URLs.
 
-#### Identity verification integration
+#### 6.1.1 Identity verification integration
 
 This topic describes how to integrate identity verification.
 
@@ -30477,7 +30757,7 @@ bedded page</textarea></div><div><input type="submit" value="Continue" /></div>
 
 RelayState is the URL of the unified cloud management platform page to which the user is redirected after a successful passwordless logon. This URL is the address of the page you embedded.
 
-#### Page Integration Configuration
+#### 6.1.2 Page Integration Configuration
 
 This topic describes how to configure page integration.
 
@@ -30517,7 +30797,7 @@ For example, you can set the URL of the Elastic Compute Service (ECS) Create Ins
 
 anagement Platform Integration
 
-#### Page URL Embedding
+#### 6.1.3 Page URL Embedding
 
 This topic describes page URL embedding.
 
@@ -30819,7 +31099,7 @@ The `params` parameter is as follows:
 
 anagement Platform Integration
 
-### API integration
+### 6.2 API integration
 
 API integration is currently implemented through the POP SDK, which calls OpenAPI interfaces. When you call OpenAPI interfaces, you must use an AccessKey and a SecretKey to represent your identity.
 

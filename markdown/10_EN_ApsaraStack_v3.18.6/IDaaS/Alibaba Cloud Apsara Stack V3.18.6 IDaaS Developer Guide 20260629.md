@@ -2,16 +2,252 @@
 title: "IDaaS Developer Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 555
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 IDaaS Developer Guide 20260629.pdf"
+source_pdf: "9b5d932a8bc571d5_Alibaba Cloud Apsara Stack V3.18.6 IDaaS Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20IDaaS%20Developer%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # IDaaS Developer Guide 20260629
 
-## API Reference
+## Table of Contents
 
-### API overview
+- 1 API Reference
+  - 1.1 API overview
+  - 1.2 Endpoints
+  - 1.3 Authorization information
+  - 1.4 API catalog
+    - 1.4.1 Instances
+      - 1.4.1.1 UpdateApsaraEiamInstanceDescription
+      - 1.4.1.2 DeleteApsaraEiamInstance
+      - 1.4.1.3 CreateApsaraEiamInstance
+      - 1.4.1.4 UpdateApsaraEiamInstanceQuota
+      - 1.4.1.5 ListApsaraEiamInstances
+      - 1.4.1.6 GetInstanceLicense
+    - 1.4.2 Applications
+      - 1.4.2.1 Basics
+        - 1.4.2.1.1 CreateApplication
+        - 1.4.2.1.2 DeleteApplication
+        - 1.4.2.1.3 UpdateApplicationDescription
+        - 1.4.2.1.4 EnableApplication
+        - 1.4.2.1.5 DisableApplication
+        - 1.4.2.1.6 GetApplication
+        - 1.4.2.1.7 ListApplications
+        - 1.4.2.1.8 ListApplicationsForNetworkZone
+        - 1.4.2.1.9 ListApplicationsForGroup
+        - 1.4.2.1.10 GetApplicationTemplate
+        - 1.4.2.1.11 UpdateApplicationInfo
+        - 1.4.2.1.12 ListApplicationsForNetworkAccessEndpoint
+      - 1.4.2.2 SSO
+        - 1.4.2.2.1 EnableApplicationSso
+        - 1.4.2.2.2 DisableApplicationSso
+        - 1.4.2.2.3 SetApplicationSsoConfig
+        - 1.4.2.2.4 GetApplicationSsoConfig
+      - 1.4.2.3 Application authorization
+        - 1.4.2.3.1 AuthorizeApplicationToUsers
+        - 1.4.2.3.2 AuthorizeApplicationToOrganizationalUnits
+        - 1.4.2.3.3 AuthorizeApplicationToGroups
+        - 1.4.2.3.4 RevokeApplicationFromUsers
+        - 1.4.2.3.5 RevokeApplicationFromOrganizationalUnits
+        - 1.4.2.3.6 RevokeApplicationFromGroups
+        - 1.4.2.3.7 UpdateApplicationAuthorizationType
+        - 1.4.2.3.8 ListUsersForApplication
+        - 1.4.2.3.9 ListOrganizationalUnitsForApplication
+        - 1.4.2.3.10 ListGroupsForApplication
+        - 1.4.2.3.11 ListApplicationsForOrganizationalUnit
+        - 1.4.2.3.12 ListApplicationsForUser
+      - 1.4.2.4 Client keys
+        - 1.4.2.4.1 CreateApplicationClientSecret
+        - 1.4.2.4.2 DeleteApplicationClientSecret
+        - 1.4.2.4.3 DisableApplicationClientSecret
+        - 1.4.2.4.4 EnableApplicationClientSecret
+        - 1.4.2.4.5 ListApplicationClientSecrets
+        - 1.4.2.4.6 ObtainApplicationClientSecret
+        - 1.4.2.4.7 UpdateApplicationClientSecretExpirationTime
+      - 1.4.2.5 Application tokens
+        - 1.4.2.5.1 CreateApplicationToken
+        - 1.4.2.5.2 EnableApplicationToken
+        - 1.4.2.5.3 DisableApplicationToken
+        - 1.4.2.5.4 UpdateApplicationTokenExpirationTime
+        - 1.4.2.5.5 ListApplicationTokens
+        - 1.4.2.5.6 ObtainApplicationToken
+        - 1.4.2.5.7 DeleteApplicationToken
+      - 1.4.2.6 Application accounts
+        - 1.4.2.6.1 AddApplicationAccountToUser
+        - 1.4.2.6.2 ListApplicationAccounts
+        - 1.4.2.6.3 ListApplicationAccountsForUser
+        - 1.4.2.6.4 RemoveApplicationAccountFromUser
+      - 1.4.2.7 Open API operations
+        - 1.4.2.7.1 EnableApplicationApiInvoke
+        - 1.4.2.7.2 DisableApplicationApiInvoke
+        - 1.4.2.7.3 SetApplicationGrantScope
+        - 1.4.2.7.4 GetApplicationGrantScope
+      - 1.4.2.8 Application account synchronization
+        - 1.4.2.8.1 DisableApplicationProvisioning
+        - 1.4.2.8.2 EnableApplicationProvisioning
+        - 1.4.2.8.3 SetApplicationProvisioningConfig
+        - 1.4.2.8.4 SetApplicationProvisioningScope
+        - 1.4.2.8.5 GetApplicationProvisioningScope
+        - 1.4.2.8.6 GetApplicationProvisioningConfig
+    - 1.4.3 Account management
+      - 1.4.3.1 CreateUser
+      - 1.4.3.2 UpdateUser
+      - 1.4.3.3 DeleteUser
+      - 1.4.3.4 AddUserToOrganizationalUnits
+      - 1.4.3.5 RemoveUserFromOrganizationalUnits
+      - 1.4.3.6 UpdateUserPassword
+      - 1.4.3.7 UpdateUserDescription
+      - 1.4.3.8 DisableUser
+      - 1.4.3.9 EnableUser
+      - 1.4.3.10 UnlockUser
+      - 1.4.3.11 SetUserPrimaryOrganizationalUnit
+      - 1.4.3.12 GetUser
+      - 1.4.3.13 ListUsers
+    - 1.4.4 Organization management
+      - 1.4.4.1 CreateOrganizationalUnit
+      - 1.4.4.2 Deletes an EIAM organization
+      - 1.4.4.3 UpdateOrganizationalUnit
+      - 1.4.4.4 DeleteOrganizationalUnitChildren
+      - 1.4.4.5 UpdateOrganizationalUnitParentId
+      - 1.4.4.6 UpdateOrganizationalUnitDescription
+      - 1.4.4.7 Query the information about the root EIAM organization in IDaaS
+      - 1.4.4.8 Queries the information about an EIAM organization.
+      - 1.4.4.9 Query information about EIAM organizations in a list
+      - 1.4.4.10 ListOrganizationalUnitParents
+    - 1.4.5 account group management
+      - 1.4.5.1 Create an EIAM account group in IDaaS
+      - 1.4.5.2 AddUsersToGroup
+      - 1.4.5.3 DeleteGroup
+      - 1.4.5.4 RemoveUsersFromGroup
+      - 1.4.5.5 UpdateGroup
+      - 1.4.5.6 UpdateGroupDescription
+      - 1.4.5.7 GetGroup
+      - 1.4.5.8 ListGroups
+      - 1.4.5.9 ListUsersForGroup
+      - 1.4.5.10 ListGroupsForUser
+    - 1.4.6 IdP management
+      - 1.4.6.1 Create an identity provider
+      - 1.4.6.2 Delete an IdP
+      - 1.4.6.3 UpdateIdentityProvider
+      - 1.4.6.4 Obtain an IdP
+      - 1.4.6.5 ListIdentityProviders
+      - 1.4.6.6 Disable data push from an IdP
+      - 1.4.6.7 Enable synchronization from an IdP
+      - 1.4.6.8 SetIdentityProviderUdPullConfiguration
+      - 1.4.6.9 Query the pulling configurations of an IdP
+    - 1.4.7 Password policies
+      - 1.4.7.1 SetForgetPasswordConfiguration
+      - 1.4.7.2 SetPasswordInitializationConfiguration
+      - 1.4.7.3 SetPasswordExpirationConfiguration
+      - 1.4.7.4 SetPasswordHistoryConfiguration
+      - 1.4.7.5 SetPasswordComplexityConfiguration
+      - 1.4.7.6 Queries the forgot password policy of an EIAM instance
+      - 1.4.7.7 Queries the password initialization configurations of an EIAM) instance
+      - 1.4.7.8 GetPasswordHistoryConfiguration
+      - 1.4.7.9 Queries the password expiration policy of an EIAM instance.
+      - 1.4.7.10 Query the password complexity policy of an EIAM instance of IDaaS
+    - 1.4.8 Synchronization
+      - 1.4.8.1 ListSynchronizationJobs
+      - 1.4.8.2 Runs a synchronization task
+      - 1.4.8.3 GetSynchronizationJob
+    - 1.4.9 Endpoints
+      - 1.4.9.1 CreateNetworkAccessEndpoint
+      - 1.4.9.2 DeleteNetworkAccessEndpoint
+      - 1.4.9.3 UpdateNetworkAccessEndpointName
+      - 1.4.9.4 Query the regions that support network endpoints of IDaaS
+      - 1.4.9.5 ListNetworkAccessEndpointAvailableZones
+      - 1.4.9.6 GetNetworkAccessEndpoint
+      - 1.4.9.7 ListNetworkAccessEndpoints
+      - 1.4.9.8 ListNetworkAccessPaths
+      - 1.4.9.9 Query the VPCs within a user account when creating a network endpoint
+      - 1.4.9.10 ListVSwitches
+      - 1.4.9.11 ListNetworkInterfaces
+      - 1.4.9.12 ListNatGateways
+      - 1.4.9.13 CheckServiceLinkedRoleExistence
+      - 1.4.9.14 CreateServiceLinkedRole
+    - 1.4.10 Brand
+      - 1.4.10.1 CreateBrand
+      - 1.4.10.2 UpdateBrand
+    - 1.4.11 Network zones
+      - 1.4.11.1 Create a network zone
+      - 1.4.11.2 DeleteNetworkZone
+      - 1.4.11.3 UpdateNetworkZone
+      - 1.4.11.4 Update the description of a network zone object
+      - 1.4.11.5 ListNetworkZones
+      - 1.4.11.6 GetNetworkZone
+    - 1.4.12 Others
+      - 1.4.12.1 DisableIdentityProviderAuthn
+      - 1.4.12.2 EnableIdentityProviderAuthn
+      - 1.4.12.3 ListApplicationSupportedProvisionProtocolTypes
+      - 1.4.12.4 Delete a brand
+      - 1.4.12.5 Disables a brand
+      - 1.4.12.6 EnableBrand
+      - 1.4.12.7 GetBrand
+      - 1.4.12.8 GetLoginRedirectApplicationForBrand
+      - 1.4.12.9 Query a list of brands
+      - 1.4.12.10 SetLoginRedirectApplicationForBrand
+      - 1.4.12.11 Changes the brand associated with a domain name
+  - 1.5 Release notes
+- 2 API Reference
+  - 2.1 List of operations by function
+  - 2.2 Endpoints
+  - 2.3 API operations
+    - 2.3.1 OIDC API
+      - 2.3.1.1 GenerateToken
+      - 2.3.1.2 GetUserInfo
+      - 2.3.1.3 RevokeToken
+    - 2.3.2 API operations related to authorization scope
+      - 2.3.2.1 GetApplicationProvisioningScope
+    - 2.3.3 Organization management
+      - 2.3.3.1 CreateOrganizationalUnit
+      - 2.3.3.2 PatchOrganizationalUnit
+      - 2.3.3.3 GetOrganizationalUnit
+      - 2.3.3.4 DeleteOrganizationalUnit
+      - 2.3.3.5 ListOrganizationalUnits
+      - 2.3.3.6 ListOrganizationalUnitParentIds
+      - 2.3.3.7 GetOrganizationalUnitIdByExternalId
+    - 2.3.4 Account management
+      - 2.3.4.1 CreateUser
+      - 2.3.4.2 PatchUser
+      - 2.3.4.3 GetUser
+      - 2.3.4.4 UpdateUserPassword - Update the password of an EIAM account
+      - 2.3.4.5 DeleteUser
+      - 2.3.4.6 ListUsers
+      - 2.3.4.7 EnableUser
+      - 2.3.4.8 DisableUser
+      - 2.3.4.9 GetUserIdByEmail
+      - 2.3.4.10 GetUserIdByPhoneNumber
+      - 2.3.4.11 GetUserIdByUserExternalId
+      - 2.3.4.12 GetUserIdByUsername
+      - 2.3.4.13 SetUserPrimaryOrganizationalUnit - Set the primary organization for an EIAM account
+      - 2.3.4.14 AddUserToOrganizationalUnits - Add an EIAM account to multiple EIAM organizations
+      - 2.3.4.15 RemoveUserFromOrganizationalUnits - Remove an EIAM account from multiple organizations
+      - 2.3.4.16 ListGroupsForUser - List the groups for an EIAM account
+    - 2.3.5 API operations related to account group management
+      - 2.3.5.1 GetGroup
+      - 2.3.5.2 CreateGroup
+      - 2.3.5.3 PatchGroup
+      - 2.3.5.4 DeleteGroup
+      - 2.3.5.5 ListGroups
+      - 2.3.5.6 AddUsersToGroup
+      - 2.3.5.7 RemoveUsersFromGroup
+      - 2.3.5.8 ListUsersForGroup
+- 3 API change records
+- 4 Integrate with self-managed applications
+  - 4.1 Connect to IDaaS for SSO
+    - 4.1.1 Implement SSO for custom applications
+    - 4.1.2 Connect self-developed Java applications that use the Spring Boot framework to IDaaS for SSO
+  - 4.2 Connect to IDaaS for account synchronization
+    - 4.2.1 Overview
+    - 4.2.2 Address book events
+    - 4.2.3 Connect Java applications to IDaaS for account synchronization
+    - 4.2.4 SCIM 2.0 operations supported by EIAM
+  - 4.3 Application development API reference
+    - 4.3.1 API operations for application development
+  - 4.4 Open source code
+
+## 1 API Reference
+
+### 1.1 API overview
 
 You can use Apsara Stack SDKs to call the API operations of IDentity as a Service (IDaaS), as shown in the following example:
 
@@ -53,7 +289,6 @@ biz.${global:region}.${global:internet-domain}.
         queryParam.put("Action",action);
         doRpcRequest(profile, domain, proxy, version, action, method, headerParam, path
 Param, queryParam, bodyParam);
-    }
     public static void doRpcRequest(IClientProfile profile, String domain, String proxy
 , String version, String action, String method,
                                     Map<String, String> headerParam,
@@ -77,16 +312,12 @@ Param, queryParam, bodyParam);
         request.setSysProtocol(ProtocolType.HTTPS);
         for (Map.Entry<String, String> entry : headerParam.entrySet()) {
             request.putHeadParameter(entry.getKey(), entry.getValue());
-        }
         for (Map.Entry<String, String> entry : pathParam.entrySet()) {
             request.putPathParameter(entry.getKey(), entry.getValue());
-        }
         for (Map.Entry<String, String> entry : queryParam.entrySet()) {
             request.putQueryParameter(entry.getKey(), entry.getValue());
-        }
         for (Map.Entry<String, String> entry : bodyParam.entrySet()) {
             request.putBodyParameter(entry.getKey(), entry.getValue());
-        }
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
@@ -104,9 +335,6 @@ Param, queryParam, bodyParam);
             System.out.println("ErrorCode=" + e.getErrCode());
             System.out.println("ErrorMessage=" + e.getErrMsg());
             System.out.println("ResponseId=" + e.getRequestId());
-        }
-    }
-}
 ```
 
 **1.1 Instance management**
@@ -120,15 +348,15 @@ Param, queryParam, bodyParam);
 | 5 | UpdateApsaraEiamInstance Quota | UpdateApsaraEiamInstance Quota | Queries the details of an IDaaS EIAM instance. |
 | 6 | GetInstanceLicense | GetInstanceLicense | Queries the valid license of an IDaaS EIAM instance. |
 
+**1.2 Application management**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
-| - | Basic information management | Basic information management |  |
+| - | Basic information management | Basic information management |   |
 | 1 | CreateApplication | CreateApplication | Creates an application on an IDaaS EIAM instance. |
 | 2 | DeleteApplication | DeleteApplication | Deletes an application in IDaaS EIAM. |
 | 3 | UpdateApplicationDescripti on | UpdateApplicationDescriptio n | Modifies the description of an application in IDaaS EIAM. |
 | 4 | EnableApplication | EnableApplication | Enables a disabled application in IDaaS EIAM. |
-
-**1.2 Application management**
 
 | 5 | DisableApplication | DisableApplication | Disables an enabled application in IDaaS EIAM. If an IDaaS EIAM application is disabled, all its features cannot be used. |
 |---|---|---|---|
@@ -139,14 +367,14 @@ Param, queryParam, bodyParam);
 | 10 | ListApplicationsForNetwork AccessEndpoint | ListApplicationsForNetworkA ccessEndpoint | Queries a list of applications for a network access endpoint. |
 | 8 | ListApplicationsForNetwork Zone | ListApplicationsForNetworkZ one | Queries a list of applications associated with a network zone. |
 | 9 | ListApplicationsForGroup | ListApplicationsForGroup | Queries a list of applications that an account group in IDaaS EIAM can access. |
-| - | SSO configuration management | SSO configuration management |  |
+| - | SSO configuration management | SSO configuration management |   |
 | 1 | EnableApplicationSso | EnableApplicationSso | Enables the single sign-on (SSO) feature for an application in IDaaS EIAM. |
 | 2 | DisableApplicationSso | DisableApplicationSso | Disables the SSO feature for an application in IDaaS EIAM. This way, employees cannot log in to the application by using SSO. |
 | 3 | SetApplicationSsoConfig | SetApplicationSsoConfig | Configures the SSO configuration attributes for an application in IDaaS EIAM. |
 
 | 4 | GetApplicationSsoConfig | GetApplicationSsoConfig | Queries the SSO configuration attributes of an application in IDaaS EIAM. |
 |---|---|---|---|
-| - | Authorization management | Authorization management |  |
+| - | Authorization management | Authorization management |   |
 | 1 | AuthorizeApplicationToUser s | AuthorizeApplicationToUsers | Grants the permissions to access an application to multiple accounts in IDaaS EIAM at a time. |
 | 2 | AuthorizeApplicationToOrg anizationalUnits | AuthorizeApplicationToOrga nizationalUnits | Grants the permissions to access an application to multiple organizations in IDaaS EIAM at a time. |
 | 3 | AuthorizeApplicationToGro ups | AuthorizeApplicationToGrou ps | Grants the permissions to access an application to multiple account groups in IDaaS EIAM at a time. |
@@ -161,7 +389,7 @@ Param, queryParam, bodyParam);
 | 10 | ListGroupsForApplication | ListGroupsForApplication | Queries a list of account groups that are granted permissions to access an application in IDaaS EIAM by page. This operation returns the IDs of the account groups. To query the details of the account groups, call the GetGroup operation. |
 | 11 | ListApplicationsForUser | ListApplicationsForUser | Queries a list of applications that an account in IDaaS EIAM can access by page. This operation returns the IDs of the applications. To obtain the details of the applications, call the GetApplication operation. |
 | 12 | ListApplicationsForOrganiz ationalUnit | ListApplicationsForOrganizat ionalUnit | Queries a list of applications that an organization in IDaaS EIAM can access by page. This operation returns the IDs of the applications. To obtain the details of the applications, call the GetApplication operation. |
-| - | Client key management | Client key management |  |
+| - | Client key management | Client key management |   |
 | 1 | CreateApplicationClientSec ret | CreateApplicationClientSecr et | Creates a client key for an application in IDaaS EIAM. An application in IDaaS EIAM can have up to two client keys. |
 | 2 | DeleteApplicationClientSec ret | DeleteApplicationClientSecr et | Deletes a client key from an application in IDaaS EIAM. |
 | 3 | DisableApplicationClientSe cret | DisableApplicationClientSecr et | Disables a client key for an application in IDaaS EIAM. |
@@ -171,7 +399,7 @@ Param, queryParam, bodyParam);
 | 5 | ListApplicationClientSecret s | ListApplicationClientSecrets | Queries all client keys of an application in IDaaS EIAM. This operation returns masked key secrets. To obtain unmasked key secrets, call the ObtainApplicationClientSecret operation. |
 | 6 | ObtainApplicationClientSec ret | ObtainApplicationClientSecr et | Queries a client key of an application in IDaaS EIAM. This operation returns a masked key secret. To obtain an unmasked key secret, call the ListApplicationClientSecrets operation. |
 | 7 | UpdateApplicationClientSec retExpirationTime | UpdateApplicationClientSecr etExpirationTime | Modifies the expiration time of a client key for an application in IDaaS EIAM. |
-| - | Application token management | Application token management |  |
+| - | Application token management | Application token management |   |
 | 1 | CreateApplicationToken | CreateApplicationToken | Creates an application token. |
 | 2 | EnableApplicationToken | EnableApplicationToken | Enables an application token. |
 | 3 | DisableApplicationToken | DisableApplicationToken | Disables an application token. |
@@ -179,19 +407,19 @@ Param, queryParam, bodyParam);
 | 5 | ListApplicationTokens | ListApplicationTokens | Queries a list of application tokens. |
 | 6 | ObtainApplicationToken | ObtainApplicationToken | Queries an application token. |
 | 7 | DeleteApplicationToken | DeleteApplicationToken | Deletes an application token. |
-| - | Application RAM user management | Application RAM user management |  |
+| - | Application RAM user management | Application RAM user management |   |
 
 | 1 | AddApplicationAccountToU ser | AddApplicationAccountToUs er | Adds an application account for an employee under the current application in IDaaS EIAM. |
 |---|---|---|---|
 | 2 | ListApplicationAccounts | ListApplicationAccounts | Queries a list of application accounts under an application in IDaaS EIAM by page. |
 | 3 | ListApplicationAccountsFor User | ListApplicationAccountsForU ser | Queries all application accounts of a user under the current application in IDaaS EIAM. |
 | 4 | RemoveApplicationAccount FromUser | RemoveApplicationAccountF romUser | Deletes the application account of an employee under the current application in IDaaS EIAM. |
-| - | Application Developer API | Application Developer API |  |
+| - | Application Developer API | Application Developer API |   |
 | 1 | EnableApplicationApiInvok e | EnableApplicationApiInvoke | Enables the Developer API feature for an application in IDaaS EIAM. |
 | 2 | DisableApplicationApiInvok e | DisableApplicationApiInvoke | Disables the Developer API feature for an application in IDaaS EIAM. |
 | 3 | SetApplicationGrantScope | SetApplicationGrantScope | Configures the permissions of the Developer API feature of an application in IDaaS EIAM. |
 | 4 | GetApplicationGrantScope | GetApplicationGrantScope | Queries the permissions of the Developer API feature for an application in IDaaS EIAM. |
-| - | Application account synchronization | Application account synchronization |  |
+| - | Application account synchronization | Application account synchronization |   |
 | 1 | DisableApplicationProvision ing | DisableApplicationProvisioni ng | Disables the account synchronization feature for an application in IDaaS EIAM. |
 | 2 | EnableApplicationProvisioni ng | EnableApplicationProvisionin g | Enables the account synchronization feature for an application in IDaaS EIAM. |
 
@@ -200,6 +428,8 @@ Param, queryParam, bodyParam);
 | 4 | SetApplicationProvisioning Scope | SetApplicationProvisioningSc ope | Configures the account synchronization scope of an application in IDaaS EIAM. This scope is the same as the scope within which developers can call the Developer API operations to query and manage accounts. |
 | 5 | GetApplicationProvisioning Config | GetApplicationProvisioningC onfig | Queries the configuration of the account synchronization feature for an application in IDaaS EIAM. |
 | 6 | GetApplicationProvisioning Scope | GetApplicationProvisioningS cope | Queries the account synchronization scope of an application in IDaaS EIAM. This scope is the same as the scope within which developers can call the Developer API operations to query and manage accounts. |
+
+**1.3 Account management**
 
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
@@ -219,6 +449,8 @@ Param, queryParam, bodyParam);
 | 12 | GetUser | GetUser | Queries the details of an IDaaS EIAM account. |
 | 13 | ListUsers | ListUsers | Queries a list of IDaaS EIAM accounts by page. |
 
+**1.4 Organization management**
+
 | No . | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | CreateOrganizationalUnit | CreateOrganizationalUnit | Creates an IDaaS EIAM organization within a specific organization. |
@@ -234,6 +466,8 @@ Param, queryParam, bodyParam);
 | 10 | ListOrganizationalUnitParent s | ListOrganizationalUnitParent s | Queries a list of all parent organizations of an IDaaS EIAM organization. The results are sorted in descending order based on the level of the parent organizations of the IDaaS EIAM organization. |
 |---|---|---|---|
 
+**1.5 Account group management**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | CreateGroup | CreateGroup | Creates an IDaaS EIAM account group. |
@@ -247,6 +481,8 @@ Param, queryParam, bodyParam);
 | 9 | ListUsersForGroup | ListUsersForGroup | Queries a list of accounts that belong to an IDaaS EIAM account group. |
 | 10 | ListGroupsForUser | ListGroupsForUser | Queries a list of account groups to which an IDaaS EIAM account belongs. |
 
+**1.6 Identity provider (IdP) management**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | CreateIdentityProvider | CreateIdentityProvider | Creates an IdP. |
@@ -259,12 +495,12 @@ Param, queryParam, bodyParam);
 | 8 | SetIdentityProviderUdPullCon figuration | SetIdentityProviderUdPullCo nfiguration | Modifies the inbound synchronization configurations for IdPs. |
 | 9 | GetIdentityProviderUdPullCo nfiguration | GetIdentityProviderUdPullCo nfiguration | Queries the inbound synchronization configurations for IdPs. |
 
+**1.7 Password policy management**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | SetForgetPasswordConfigur ation | SetForgetPasswordConfigu ration | Configures a forgot password policy for an IDaaS EIAM instance. |
 | 2 | SetPasswordInitializationCo nfiguration | SetPasswordInitializationC onfiguration | Configures a password initialization policy for an IDaaS EIAM instance. |
-
-**1.7 Password policy management**
 
 | 3 | SetPasswordHistoryConfigur ation | SetPasswordHistoryConfig uration | Configures a password history policy for an IDaaS EIAM instance. |
 |---|---|---|---|
@@ -276,16 +512,22 @@ Param, queryParam, bodyParam);
 | 9 | GetPasswordExpirationConfi guration | GetPasswordExpirationCon figuration | Queries the password expiration policy of an IDaaS EIAM instance. |
 | 10 | GetPasswordComplexityCon figuration | GetPasswordComplexityCo nfiguration | Queries the password complexity policy of an IDaaS EIAM instance. |
 
+**1.8 Synchronization**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | ListSynchronizationJobs | ListSynchronizationJobs | Queries a list of synchronization jobs. |
 | 2 | RunSynchronizationJob | RunSynchronizationJob | Creates a synchronization job and immediately runs the job. |
 | 3 | GetSynchronizationJob | GetSynchronizationJob | Queries the information about a synchronization job. |
 
+**1.9 Brand**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | CreateBrand | CreateBrand | Creates a brand. |
 | 2 | UpdateBrand | UpdateBrand | Modifies a brand. |
+
+**1.10 Network endpoints**
 
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
@@ -306,6 +548,8 @@ Param, queryParam, bodyParam);
 | 13 | CheckServiceLinkedRoleExis tence | CheckServiceLinkedRoleExist ence | Checks whether a service- linked role exists. |
 | 14 | CreateServiceLinkedRole | CreateServiceLinkedRole | Creates a service-linked role. |
 
+**1.11 Network zone management**
+
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | CreateNetworkZone | CreateNetworkZone | Creates a network zone. |
@@ -319,8 +563,6 @@ Param, queryParam, bodyParam);
 |---|---|---|---|
 | 1 | DisableIdentityProviderAuth n | DisableIdentityProviderAut hn | Disables the IdP authentication feature. |
 
-**1.11 Network zone management**
-
 | 2 | EnableIdentityProviderAuthn | EnableIdentityProviderAuth n | Enables the IdP authentication feature. |
 |---|---|---|---|
 | 3 | ListApplicationSupportedPro visionProtocolTypes | ListApplicationSupportedPr ovisionProtocolTypes | Queries a list of synchronization protocol types that are supported by an application. |
@@ -333,13 +575,13 @@ Param, queryParam, bodyParam);
 | 10 | SetLoginRedirectApplication ForBrand | SetLoginRedirectApplicatio nForBrand | Configures the application to which users are redirected after login for a brand. |
 | 11 | UpdateDomainBrand | UpdateDomainBrand | Modifies the brand associated with a domain name. |
 
-### Endpoints
+### 1.2 Endpoints
 
 IDentity as a Service (IDaaS) provides OpenAPI operations. Business applications can manage IDaaS resources by calling the API operations. IDaaS endpoints are in the following format: api-idaas-biz.${global_region}.${internet_domain} To obtain the value of global_region and internet_domain, log in to the Apsara Uni-manager Management Console. In the top navigation bar, choose **Security > Identity and O&M**
 **Security > IDaaS**. On the IDaaS page, find the required instance and click Console in the
 Actions column. On the Quick Start page, view the **URL** in the upper-right corner. In the following example: The value of global_region is cn-ece-entity121-d01. The value of internet_domain is cloud.ece-group-121.com.
 
-### Authorization information
+### 1.3 Authorization information
 
 Resource Access Management (RAM) is a service provided by Apsara Stack to manage user identities and resource access permissions. RAM allows you to grant minimum permissions to RAM users without the need to share the AccessKey pair of your Apsara Stack tenant account. RAM uses policies to define permissions. This topic describes the elements such as Action, Resource, and Condition that are defined by IDentity as a Service (IDaaS). You can use the elements to create policies in RAM. The code (RamCode) that is used in RAM to indicate IDaaS is eiam. You can grant permissions on IDaaS at the resource level.
 
@@ -348,10 +590,8 @@ Resource Access Management (RAM) is a service provided by Apsara Stack to manage
 Policies can be stored as JSON files. The following code provides an example on the general structure of a policy:
 
 ```json
-{
   "Version": "1",
   "Statement": [
-    {
       "Effect": "<Effect>",
       "Action": "<Action>",
       "Resource": "<Resource>",
@@ -361,1947 +601,1924 @@ Policies can be stored as JSON files. The following code provides an example on 
             "<Condition_value>"
 ```
 
-]
-
-```
-        }
-      }
-    }
-```
-
-]
-
-```
-}
-```
-
-The following list describes the fields in the policy: Effect: specifies the authorization result. Valid values: Allow and Deny. Action: specifies one or more operations that are allowed or denied. For more information, see the "Action" section of this topic. Resource: specifies one or more resources to which the policy applies. You can use an Alibaba Cloud Resource Name (ARN) to specify a resource. For more information, see the "Resource" section of this topic. Condition: specifies one or more conditions that are required for the policy to take effect. This field is optional. For more information, see the "Condition" section of this topic. Condition_operator: specifies the conditional operators. Different types of conditions support different conditional operators. For more information, see Policy elements. Condition_key: specifies the condition keys. Condition_value: specifies the condition values.
+`]` `]` The following list describes the fields in the policy: Effect: specifies the authorization result. Valid values: Allow and Deny. Action: specifies one or more operations that are allowed or denied. For more information, see the "Action" section of this topic. Resource: specifies one or more resources to which the policy applies. You can use an Alibaba Cloud Resource Name (ARN) to specify a resource. For more information, see the "Resource" section of this topic. Condition: specifies one or more conditions that are required for the policy to take effect. This field is optional. For more information, see the "Condition" section of this topic. Condition_operator: specifies the conditional operators. Different types of conditions support different conditional operators. For more information, see Policy elements. Condition_key: specifies the condition keys. Condition_value: specifies the condition values.
 
 **Action**
 
-The following table lists the actions defined by placeholder-${productName}. The table's columns are detailed below: Action: The actions can be used in the `Action` element of RAM permission policy statements to grant permissions to perform the operation. API: The API that you can call to perform the action. Access level: The predefined level of access granted for each API. Valid values: create, list, get, update, and delete. Resource type: The type of the resource that support authorization to perform the action. It indicates if the action supports resource-level permission. The specified resource must be compatible with the action. Otherwise, the policy will be ineffective. For APIs with resource-level permissions, required resource types are marked with an asterisk (*). Specify the corresponding ARN in the `Resource` element of the policy. For APIs without resource-level permissions, it is shown as All Resources. Use an asterisk (*) in the `Resource` element of the policy.
+The following table lists the actions defined by placeholder-${productName}. The table's columns are detailed below: Action: The actions can be used in the `Action` element of RAM permission policy statements to grant permissions to perform the operation. API: The API that you can call to perform the action. Access level: The predefined level of access granted for each API. Valid values: create, list, get, update, and delete. Resource type: The type of the resource that support authorization to perform the action. It indicates if the action supports resource-level permission. The specified resource must be compatible with the action. Otherwise, the policy will be ineffective. For APIs with resource-level permissions, required resource types are marked with an asterisk (*). Specify the corresponding ARN in the `Resource` element of the policy. For APIs without resource-level permissions, it is shown as All Resources. Use an asterisk (*) in the `Resource` element of the policy. Condition key: The condition keys defined by the service. The key allows for granular control, applying to either actions alone or actions associated with specific resources. In addition to service-specific condition keys, Alibaba Cloud provides a set of common condition keys that are applicable across all RAM-integrated services. For more information, see Common condition keys. Dependent action: The dependent actions required to run the action. To complete the action, the RAM user or the RAM role must have the permissions to perform all dependent actions.
 
-|  | Operation |  | API |  | Operati on type |  | Resource type |  | Condition key | Associated operation |  |
+|   | Operation |   | API |   | Operati on type |   | Resource type |   | Condition key | Associated operation |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  | eiam:GetFeder atedCredential |  | GetFederatedCr |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | ederatedCr |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | edential | edentialProvide |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | get |  | stance/{#Instan |  | N/A | N/A |  |
-|  | Provider |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | r |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/{#Federate |  |  |  |  |
-|  |  |  |  |  |  |  | dCredentialProv |  |  |  |  |
-|  |  |  |  |  |  |  | iderId} |  |  |  |  |
-|  | eiam:DisableBr and |  | DisableBrand |  |  |  | *Brand acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leBrand | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  | BrandId} |  |  |  |  |
+|   | eiam:GetFeder atedCredential |   | GetFederatedCr |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | ederatedCr |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | edential | edentialProvide |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | get |   | stance/{#Instan |   | N/A | N/A |   |
+|   | Provider |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | r |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/{#Federate |   |   |   |   |
+|   |   |   |   |   |   |   | dCredentialProv |   |   |   |   |
+|   |   |   |   |   |   |   | iderId} |   |   |   |   |
+|   | eiam:DisableBr and |   | DisableBrand |   |   |   | *Brand acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leBrand | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   | BrandId} |   |   |   |   |
 
-Condition key: The condition keys defined by the service. The key allows for granular control, applying to either actions alone or actions associated with specific resources. In addition to service-specific condition keys, Alibaba Cloud provides a set of common condition keys that are applicable across all RAM-integrated services. For more information, see Common condition keys. Dependent action: The dependent actions required to run the action. To complete the action, the RAM user or the RAM role must have the permissions to perform all dependent actions.
-
-|  |  |  |  |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/federated |  |  |  |  |
-|  | eiam:UpdateFe |  | UpdateFederate |  |  |  | credentialprovi |  |  |  |  |
-|  | deratedCreden |  | dCredentialProv |  | update |  | der/{#Federate |  | N/A | N/A |  |
-|  | tialProvider |  | ider |  |  |  | dCredentialProv |  |  |  |  |
-|  |  |  |  |  |  |  | iderId} |  |  |  |  |
-|  | eiam:UpdateAp plicationDescri ption |  | UpdateApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onDescription |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:RemoveU serFromOrgani zationalUnits |  | RemoveUserFro mOrganizationa |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | anizationa | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | lUnits |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:ListDomai ns |  | ListDomains |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | omains | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/federated |   |   |   |   |
+|   | eiam:UpdateFe |   | UpdateFederate |   |   |   | credentialprovi |   |   |   |   |
+|   | deratedCreden |   | dCredentialProv |   | update |   | der/{#Federate |   | N/A | N/A |   |
+|   | tialProvider |   | ider |   |   |   | dCredentialProv |   |   |   |   |
+|   |   |   |   |   |   |   | iderId} |   |   |   |   |
+|   | eiam:UpdateAp plicationDescri ption |   | UpdateApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onDescription |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:RemoveU serFromOrgani zationalUnits |   | RemoveUserFro mOrganizationa |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | anizationa | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | lUnits |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:ListDomai ns |   | ListDomains |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | omains | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/* |   |   |   |   |
 
-|  | eiam:EnableIde ntityProviderAu thn |  | EnableIdentityP |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
+|   | eiam:EnableIde ntityProviderAu thn |   | EnableIdentityP |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leIdentityP | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | roviderAuthn |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
-|  | eiam:RevokeAp plicationFromO rganizationalUn |  | RevokeApplicati onFromOrganiz |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | keApplicati mOrganiz | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | ationalUn | ationalUnits |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | its |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:GetIdentit yProviderUdPul lConfiguration |  | GetIdentityProvi derUdPullConfig |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | entityProvi dPullConfig | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | uration | uration |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
-|  | eiam:ListApplic ationAccounts |  | ListApplicationA |  |  |  | *ApplicationAccou nt acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationA |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ccounts | ccounts |  | list |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationa |  |  |  |  |
-|  |  |  |  |  |  |  | ccount/* |  |  |  |  |
-|  | eiam:UpdateDo mainIcpNumbe r |  | UpdateDomainI cpNumber |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teDomainI mber | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leIdentityP | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | roviderAuthn |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
+|   | eiam:RevokeAp plicationFromO rganizationalUn |   | RevokeApplicati onFromOrganiz |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | keApplicati mOrganiz | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | ationalUn | ationalUnits |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | its |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:GetIdentit yProviderUdPul lConfiguration |   | GetIdentityProvi derUdPullConfig |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | entityProvi dPullConfig | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | uration | uration |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
+|   | eiam:ListApplic ationAccounts |   | ListApplicationA |   |   |   | *ApplicationAccou nt acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationA |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ccounts | ccounts |   | list |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationa |   |   |   |   |
+|   |   |   |   |   |   |   | ccount/* |   |   |   |   |
+|   | eiam:UpdateDo mainIcpNumbe r |   | UpdateDomainI cpNumber |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teDomainI mber | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId} |   |   |   |   |
 
-|  | eiam:UpdateUs er |  | UpdateUser |  |  |  | *User acs:eiam: |  |  |  |  |
+|   | eiam:UpdateUs er |   | UpdateUser |   |   |   | *User acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teUser | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:Authorize ApplicationToO rganizationalUn |  | AuthorizeApplic ationToOrganiz |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | orizeApplic ToOrganiz | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | ationalUn | ationalUnits |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | its |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:DisableAp plicationApiInv oke |  | DisableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onApiInvoke |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:CreateIde ntityProvider |  | CreateIdentityP rovider |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eIdentityP er | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teUser | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:Authorize ApplicationToO rganizationalUn |   | AuthorizeApplic ationToOrganiz |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | orizeApplic ToOrganiz | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | ationalUn | ationalUnits |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | its |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:DisableAp plicationApiInv oke |   | DisableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onApiInvoke |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:CreateIde ntityProvider |   | CreateIdentityP rovider |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eIdentityP er | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/* |   |   |   |   |
 
-|  |  |  |  |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | eiam:DisableId entityProviderU | isableId |  |  |  |  |  |  |  |  |  |
-|  |  |  | DisableIdentityP |  | update |  | ceId}/identitypr |  | N/A | N/A |  |
-|  | dPull |  | roviderUdPull |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
-|  | eiam:ListRegio ns |  | ListRegions |  | get |  | *All resources * |  | N/A | N/A |  |
-|  | eiam:GetForget PasswordConfi guration |  | GetForgetPassw ordConfiguratio n |  | get |  | *AuthenticationSo urce acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:GetPassw ordInitialization Configuration |  | GetPasswordInit ializationConfig uration |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | n |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:CreateNe tworkAccessEn dpoint |  | CreateNetwork AccessEndpoint |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eNetwork ssEndpoint | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | eiam:DisableId entityProviderU | isableId |   |   |   |   |   |   |   |   |   |
+|   |   |   | DisableIdentityP |   | update |   | ceId}/identitypr |   | N/A | N/A |   |
+|   | dPull |   | roviderUdPull |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
+|   | eiam:ListRegio ns |   | ListRegions |   | get |   | *All resources * |   | N/A | N/A |   |
+|   | eiam:GetForget PasswordConfi guration |   | GetForgetPassw ordConfiguratio n |   | get |   | *AuthenticationSo urce acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:GetPassw ordInitialization Configuration |   | GetPasswordInit ializationConfig uration |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | n |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:CreateNe tworkAccessEn dpoint |   | CreateNetwork AccessEndpoint |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eNetwork ssEndpoint | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/* |   |   |   |   |
 
-|  | eiam:UpdateOr ganizationalUni tParentId |  | UpdateOrganiza tionalUnitParent |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
+|   | eiam:UpdateOr ganizationalUni tParentId |   | UpdateOrganiza tionalUnitParent |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | lUnitParent |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | tionalUni tId | Id |  | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  |  |  |  |  |  |  | anizationalUnitI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:Authorize ApplicationToU sers |  | AuthorizeApplic |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | orizeApplic | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | ationToUsers |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:EnableCo nditionalAccess Policy |  | EnableCondition |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leCondition |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | alAccess | alAccessPolicy |  | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #ConditionalAcc |  |  |  |  |
-|  |  |  |  |  |  |  | essPolicyId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | lUnitParent |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | tionalUni tId | Id |   | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   |   |   |   |   |   |   | anizationalUnitI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:Authorize ApplicationToU sers |   | AuthorizeApplic |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | orizeApplic | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | ationToUsers |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:EnableCo nditionalAccess Policy |   | EnableCondition |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leCondition |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | alAccess | alAccessPolicy |   | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #ConditionalAcc |   |   |   |   |
+|   |   |   |   |   |   |   | essPolicyId} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *Secret acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *Secret acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  | eiam:EnableAp |  | EnableApplicati |  |  |  | Id}/secret/{#Se |  | N/A |  |  |
-|  | plicationClientS |  |  |  | update |  |  |  |  |  |  |
-|  | ecret |  | onClientSecret |  |  |  | cretId} |  |  |  |  |
-|  | eiam:DeleteIde ntityProvider |  | DeleteIdentityPr |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eIdentityPr | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | ovider | ovider |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
-|  | eiam:DeleteCo nditionalAccess Policy |  | DeleteCondition |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eCondition |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | alAccess | alAccessPolicy |  | delete |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #ConditionalAcc |  |  |  |  |
-|  |  |  |  |  |  |  | essPolicyId} |  |  |  |  |
-|  | eiam:UpdateGr oup |  | UpdateGroup |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teGroup | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   | eiam:EnableAp |   | EnableApplicati |   |   |   | Id}/secret/{#Se |   | N/A |   |   |
+|   | plicationClientS |   |   |   | update |   |   |   |   |   |   |
+|   | ecret |   | onClientSecret |   |   |   | cretId} |   |   |   |   |
+|   | eiam:DeleteIde ntityProvider |   | DeleteIdentityPr |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eIdentityPr | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | ovider | ovider |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
+|   | eiam:DeleteCo nditionalAccess Policy |   | DeleteCondition |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eCondition |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | alAccess | alAccessPolicy |   | delete |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #ConditionalAcc |   |   |   |   |
+|   |   |   |   |   |   |   | essPolicyId} |   |   |   |   |
+|   | eiam:UpdateGr oup |   | UpdateGroup |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teGroup | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
 
-|  | eiam:SetForget PasswordConfi guration |  | SetForgetPassw ordConfiguratio n |  | update |  | *Instance acs:eiam: |  |  |  |  |
+|   | eiam:SetForget PasswordConfi guration |   | SetForgetPassw ordConfiguratio n |   | update |   | *Instance acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | update | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:UpdateNe tworkZoneDesc ription |  | UpdateNetwork ZoneDescriptio |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teNetwork Descriptio | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | n |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/{#Network |  |  |  |  |
-|  |  |  |  |  |  |  | ZoneId} |  |  |  |  |
-|  | eiam:EnableDo mainProxyToke |  |  |  |  |  | *DomainProxyTok en acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | roxyToke | EnableDomainP roxyToken | leDomainP |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | n |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId}/do |  |  |  |  |
-|  |  |  |  |  |  |  | mainproxytoken |  |  |  |  |
-|  |  |  |  |  |  |  | /{#DomainProx |  |  |  |  |
-|  |  |  |  |  |  |  | yTokenId} |  |  |  |  |
-|  | eiam:DeleteFe deratedCreden |  | DeleteFederate |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eFederate |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | dCreden | dCredentialProv |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | delete |  | stance/{#Instan |  | N/A | N/A |  |
-|  | tialProvider |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | ider |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/{#Federate |  |  |  |  |
-|  |  |  |  |  |  |  | dCredentialProv |  |  |  |  |
-|  |  |  |  |  |  |  | iderId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | update | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:UpdateNe tworkZoneDesc ription |   | UpdateNetwork ZoneDescriptio |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teNetwork Descriptio | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | n |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/{#Network |   |   |   |   |
+|   |   |   |   |   |   |   | ZoneId} |   |   |   |   |
+|   | eiam:EnableDo mainProxyToke |   |   |   |   |   | *DomainProxyTok en acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | roxyToke | EnableDomainP roxyToken | leDomainP |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | n |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId}/do |   |   |   |   |
+|   |   |   |   |   |   |   | mainproxytoken |   |   |   |   |
+|   |   |   |   |   |   |   | /{#DomainProx |   |   |   |   |
+|   |   |   |   |   |   |   | yTokenId} |   |   |   |   |
+|   | eiam:DeleteFe deratedCreden |   | DeleteFederate |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eFederate |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | dCreden | dCredentialProv |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | delete |   | stance/{#Instan |   | N/A | N/A |   |
+|   | tialProvider |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | ider |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/{#Federate |   |   |   |   |
+|   |   |   |   |   |   |   | dCredentialProv |   |   |   |   |
+|   |   |   |   |   |   |   | iderId} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  | eiam:UpdateOr |  | UpdateOrganiza |  |  |  | onalunit/{#Org |  |  |  |  |
-|  | ganizationalUni |  | tionalUnit |  | update |  | anizationalUnitI |  |  |  |  |
-|  | t |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:UpdateNe tworkZone |  | UpdateNetwork |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teNetwork |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | one | Zone |  | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/{#Network |  |  |  |  |
-|  |  |  |  |  |  |  | ZoneId} |  |  |  |  |
-|  |  |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:AddApplic ationAccountTo User |  | AddApplication AccountToUser |  | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationa |  |  |  |  |
-|  |  |  |  |  |  |  | ccount/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   | eiam:UpdateOr |   | UpdateOrganiza |   |   |   | onalunit/{#Org |   |   |   |   |
+|   | ganizationalUni |   | tionalUnit |   | update |   | anizationalUnitI |   |   |   |   |
+|   | t |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:UpdateNe tworkZone |   | UpdateNetwork |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teNetwork |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | one | Zone |   | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/{#Network |   |   |   |   |
+|   |   |   |   |   |   |   | ZoneId} |   |   |   |   |
+|   |   |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:AddApplic ationAccountTo User |   | AddApplication AccountToUser |   | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationa |   |   |   |   |
+|   |   |   |   |   |   |   | ccount/* |   |   |   |   |
 
-|  |  |  |  |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | eiam:EnableAp |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | EnableApplicati |  |  |  | ceId}/applicatio |  |  |  |  |
-|  | plicationFedera |  | onFederatedCre |  | update |  | n/{#Application |  | N/A | N/A |  |
-|  | tedCredential |  | dential |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  | onFederatedCre |  |  |  |  |
-|  |  |  |  |  |  |  | dentialId} |  |  |  |  |
-|  | eiam:GetPassw ordComplexity Configuration |  | GetPasswordCo mplexityConfig uration |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | n |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:UpdateUs erPassword |  | UpdateUserPass word |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teUserPass | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:ObtainDo mainProxyToke |  |  |  |  |  | *DomainProxyTok en acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | roxyToke | ObtainDomainP roxyToken | nDomainP |  |  |  |  |  |  |  |
-|  |  |  |  |  | get |  | stance/{#Instan |  | N/A | N/A |  |
-|  | n |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId}/do |  |  |  |  |
-|  |  |  |  |  |  |  | mainproxytoken |  |  |  |  |
-|  |  |  |  |  |  |  | /{#DomainProx |  |  |  |  |
-|  |  |  |  |  |  |  | yTokenId} |  |  |  |  |
-|  | eiam:ListNetwo rkAccessEndpoi ntAvailableRegi ons |  | ListNetworkAcc essEndpointAva ilableRegions |  | get |  | *All resources * |  | N/A | N/A |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | eiam:EnableAp |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | EnableApplicati |   |   |   | ceId}/applicatio |   |   |   |   |
+|   | plicationFedera |   | onFederatedCre |   | update |   | n/{#Application |   | N/A | N/A |   |
+|   | tedCredential |   | dential |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   | onFederatedCre |   |   |   |   |
+|   |   |   |   |   |   |   | dentialId} |   |   |   |   |
+|   | eiam:GetPassw ordComplexity Configuration |   | GetPasswordCo mplexityConfig uration |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | n |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:UpdateUs erPassword |   | UpdateUserPass word |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teUserPass | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:ObtainDo mainProxyToke |   |   |   |   |   | *DomainProxyTok en acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | roxyToke | ObtainDomainP roxyToken | nDomainP |   |   |   |   |   |   |   |
+|   |   |   |   |   | get |   | stance/{#Instan |   | N/A | N/A |   |
+|   | n |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId}/do |   |   |   |   |
+|   |   |   |   |   |   |   | mainproxytoken |   |   |   |   |
+|   |   |   |   |   |   |   | /{#DomainProx |   |   |   |   |
+|   |   |   |   |   |   |   | yTokenId} |   |   |   |   |
+|   | eiam:ListNetwo rkAccessEndpoi ntAvailableRegi ons |   | ListNetworkAcc essEndpointAva ilableRegions |   | get |   | *All resources * |   | N/A | N/A |   |
 
-|  | eiam:DeleteGr oup |  | DeleteGroup |  |  |  | *Group acs:eiam: |  |  |  |  |
+|   | eiam:DeleteGr oup |   | DeleteGroup |   |   |   | *Group acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eGroup | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
-|  | eiam:CreateDo mainProxyToke n |  | CreateDomainP |  |  |  | *DomainProxyTok en acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eDomainP |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | roxyToke | roxyToken | oken | create |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId}/do |  |  |  |  |
-|  |  |  |  |  |  |  | mainproxytoken |  |  |  |  |
-|  |  |  |  |  |  |  | /* |  |  |  |  |
-|  | eiam:ListApplic ationsForOrgan izationalUnit |  | ListApplications |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplications |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ForOrgan alUnit | ForOrganization alUnit | ganization | list |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  |  |  |  |  |  |  | anizationalUnitI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:GetPassw ordHistoryConfi guration |  | GetPasswordHis toryConfiguratio n |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:GetGroup |  | GetGroup |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | roup | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eGroup | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
+|   | eiam:CreateDo mainProxyToke n |   | CreateDomainP |   |   |   | *DomainProxyTok en acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eDomainP |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | roxyToke | roxyToken | oken | create |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId}/do |   |   |   |   |
+|   |   |   |   |   |   |   | mainproxytoken |   |   |   |   |
+|   |   |   |   |   |   |   | /* |   |   |   |   |
+|   | eiam:ListApplic ationsForOrgan izationalUnit |   | ListApplications |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplications |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ForOrgan alUnit | ForOrganization alUnit | ganization | list |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   |   |   |   |   |   |   | anizationalUnitI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:GetPassw ordHistoryConfi guration |   | GetPasswordHis toryConfiguratio n |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:GetGroup |   | GetGroup |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | roup | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
 
-|  | eiam:UpdateUs erDescription |  | UpdateUserDes cription |  |  |  | *User acs:eiam: |  |  |  |  |
+|   | eiam:UpdateUs erDescription |   | UpdateUserDes cription |   |   |   | *User acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | on | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:UpdateGr oupDescription |  |  |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | pdateGr scription | UpdateGroupDe scription | teGroupDe |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
-|  | eiam:GetNetwo rkAccessEndpoi nt |  | GetNetworkAcc |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | etworkAcc |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ssEndpoi | essEndpoint |  | get |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #NetworkAcces |  |  |  |  |
-|  |  |  |  |  |  |  | sEndpointId} |  |  |  |  |
-|  | eiam:DeleteAp saraEiamInstan ce |  | DeleteApsaraEi amInstance |  |  |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eApsaraEi stance | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:CreateAp saraEiamInstan ce |  | CreateApsaraEi amInstance |  | create |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | create | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | on | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:UpdateGr oupDescription |   |   |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | pdateGr scription | UpdateGroupDe scription | teGroupDe |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
+|   | eiam:GetNetwo rkAccessEndpoi nt |   | GetNetworkAcc |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | etworkAcc |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ssEndpoi | essEndpoint |   | get |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #NetworkAcces |   |   |   |   |
+|   |   |   |   |   |   |   | sEndpointId} |   |   |   |   |
+|   | eiam:DeleteAp saraEiamInstan ce |   | DeleteApsaraEi amInstance |   |   |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eApsaraEi stance | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:CreateAp saraEiamInstan ce |   | CreateApsaraEi amInstance |   | create |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | create | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/* |   |   |   |   |
 
-|  | eiam:EnableAp plicationApiInv oke |  | EnableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   | eiam:EnableAp plicationApiInv oke |   | EnableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onApiInvoke |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:DisableFe deratedCreden |  | DisableFederate |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leFederate |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | dCreden | dCredentialProv |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | tialProvider |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | ider |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/{#Federate |  |  |  |  |
-|  |  |  |  |  |  |  | dCredentialProv |  |  |  |  |
-|  |  |  |  |  |  |  | iderId} |  |  |  |  |
-|  | eiam:ListApplic |  |  |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | istApplic | ListApplicationT okens | pplicationT |  |  |  |  |  |  |  |
-|  |  |  |  |  | list |  | stance/{#Instan |  | N/A | N/A |  |
-|  | ationTokens | okens |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationt |  |  |  |  |
-|  |  |  |  |  |  |  | oken/* |  |  |  |  |
-|  | eiam:ListSynch ronizationJobs |  | ListSynchroniza tionJobs |  |  |  | *SynchronizationJ ob acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | bs | list | list |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/synchroni |  |  |  |  |
-|  |  |  |  |  |  |  | zationjob/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onApiInvoke |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:DisableFe deratedCreden |   | DisableFederate |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leFederate |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | dCreden | dCredentialProv |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | tialProvider |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | ider |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/{#Federate |   |   |   |   |
+|   |   |   |   |   |   |   | dCredentialProv |   |   |   |   |
+|   |   |   |   |   |   |   | iderId} |   |   |   |   |
+|   | eiam:ListApplic |   |   |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | istApplic | ListApplicationT okens | pplicationT |   |   |   |   |   |   |   |
+|   |   |   |   |   | list |   | stance/{#Instan |   | N/A | N/A |   |
+|   | ationTokens | okens |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationt |   |   |   |   |
+|   |   |   |   |   |   |   | oken/* |   |   |   |   |
+|   | eiam:ListSynch ronizationJobs |   | ListSynchroniza tionJobs |   |   |   | *SynchronizationJ ob acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | bs | list | list |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/synchroni |   |   |   |   |
+|   |   |   |   |   |   |   | zationjob/* |   |   |   |   |
 
-|  | eiam:DisableCo nditionalAccess Policy |  | DisableConditio |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
+|   | eiam:DisableCo nditionalAccess Policy |   | DisableConditio |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leConditio |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | alAccess | nalAccessPolicy |  | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #ConditionalAcc |  |  |  |  |
-|  |  |  |  |  |  |  | essPolicyId} |  |  |  |  |
-|  | eiam:DeleteOr ganizationalUni t |  | DeleteOrganizat |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eOrganizat |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | tionalUni | ionalUnit |  | delete |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  |  |  |  |  |  |  | anizationalUnitI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:ListApsar aEiamInstances |  | ListApsaraEiamI nstances |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/* |  |  |  |  |
-|  | eiam:DeleteAp plicationClientS |  |  |  |  |  | *Secret acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onClientS | DeleteApplicati onClientSecret | eApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  | delete |  | stance/{#Instan |  | N/A | N/A |  |
-|  | ecret |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/secret/{#Se |  |  |  |  |
-|  |  |  |  |  |  |  | cretId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leConditio |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | alAccess | nalAccessPolicy |   | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #ConditionalAcc |   |   |   |   |
+|   |   |   |   |   |   |   | essPolicyId} |   |   |   |   |
+|   | eiam:DeleteOr ganizationalUni t |   | DeleteOrganizat |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eOrganizat |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | tionalUni | ionalUnit |   | delete |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   |   |   |   |   |   |   | anizationalUnitI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:ListApsar aEiamInstances |   | ListApsaraEiamI nstances |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/* |   |   |   |   |
+|   | eiam:DeleteAp plicationClientS |   |   |   |   |   | *Secret acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onClientS | DeleteApplicati onClientSecret | eApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   | delete |   | stance/{#Instan |   | N/A | N/A |   |
+|   | ecret |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/secret/{#Se |   |   |   |   |
+|   |   |   |   |   |   |   | cretId} |   |   |   |   |
 
-|  | eiam:ListOrgan izationalUnits |  | ListOrganization alUnits |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
+|   | eiam:ListOrgan izationalUnits |   | ListOrganization alUnits |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | ts | list | list |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/* |  |  |  |  |
-|  | eiam:GetCondit ionalAccessPoli cy |  | GetConditionalA |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | onditionalA |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ccessPoli | ccessPolicy |  | get |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #ConditionalAcc |  |  |  |  |
-|  |  |  |  |  |  |  | essPolicyId} |  |  |  |  |
-|  | eiam:CreateAp plicationFedera |  | CreateApplicati |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onFedera | onFederatedCre |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | create |  | stance/{#Instan |  | N/A | N/A |  |
-|  | tedCredential |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | dential |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/* |  |  |  |  |
-|  | eiam:EnableIde ntityProviderUd Pull |  | EnableIdentityP |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leIdentityP | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | roviderUdPull |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | ts | list | list |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/* |   |   |   |   |
+|   | eiam:GetCondit ionalAccessPoli cy |   | GetConditionalA |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | onditionalA |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ccessPoli | ccessPolicy |   | get |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #ConditionalAcc |   |   |   |   |
+|   |   |   |   |   |   |   | essPolicyId} |   |   |   |   |
+|   | eiam:CreateAp plicationFedera |   | CreateApplicati |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onFedera | onFederatedCre |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | create |   | stance/{#Instan |   | N/A | N/A |   |
+|   | tedCredential |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | dential |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/* |   |   |   |   |
+|   | eiam:EnableIde ntityProviderUd Pull |   | EnableIdentityP |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leIdentityP | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | roviderUdPull |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
 
-|  | eiam:ListApplic ationFederated |  | ListApplicationF |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
+|   | eiam:ListApplic ationFederated |   | ListApplicationF |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationF |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ederated | ederatedCreden |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | list |  | stance/{#Instan |  | N/A | N/A |  |
-|  | Credentials |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | tials |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/* |  |  |  |  |
-|  | eiam:UpdateCo nditionalAccess Policy |  | UpdateConditio |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teConditio |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | alAccess | nalAccessPolicy |  | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #ConditionalAcc |  |  |  |  |
-|  |  |  |  |  |  |  | essPolicyId} |  |  |  |  |
-|  | eiam:DisableAp plicationSso |  | DisableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | onSso | onSso |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:CreateCo nditionalAccess Policy |  | CreateCondition |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eCondition | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | alAccessPolicy | essPolicy |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationF |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ederated | ederatedCreden |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | list |   | stance/{#Instan |   | N/A | N/A |   |
+|   | Credentials |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | tials |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/* |   |   |   |   |
+|   | eiam:UpdateCo nditionalAccess Policy |   | UpdateConditio |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teConditio |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | alAccess | nalAccessPolicy |   | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #ConditionalAcc |   |   |   |   |
+|   |   |   |   |   |   |   | essPolicyId} |   |   |   |   |
+|   | eiam:DisableAp plicationSso |   | DisableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | onSso | onSso |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:CreateCo nditionalAccess Policy |   | CreateCondition |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eCondition | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | alAccessPolicy | essPolicy |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/* |   |   |   |   |
 
-|  | eiam:DeleteOr ganizationalUni |  | DeleteOrganizat |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
+|   | eiam:DeleteOr ganizationalUni |   | DeleteOrganizat |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eOrganizat |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | tionalUni | ionalUnitChildre |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | delete |  | stance/{#Instan |  | N/A | N/A |  |
-|  | tChildren |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | n |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  |  |  |  |  |  |  | anizationalUnitI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:GetApplic ationGrantScop e |  | GetApplicationG |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationG | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | rantScope |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:ListOrgan izationalUnitsF orApplication |  | ListOrganization alUnitsForApplic |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | rganization tsForApplic | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | ication | ation |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:GetNetwo rkZone |  | GetNetworkZon |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | etworkZon | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | e | e |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/{#Network |  |  |  |  |
-|  |  |  |  |  |  |  | ZoneId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eOrganizat |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | tionalUni | ionalUnitChildre |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | delete |   | stance/{#Instan |   | N/A | N/A |   |
+|   | tChildren |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | n |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   |   |   |   |   |   |   | anizationalUnitI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:GetApplic ationGrantScop e |   | GetApplicationG |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationG | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | rantScope |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:ListOrgan izationalUnitsF orApplication |   | ListOrganization alUnitsForApplic |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | rganization tsForApplic | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | ication | ation |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:GetNetwo rkZone |   | GetNetworkZon |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | etworkZon | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | e | e |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/{#Network |   |   |   |   |
+|   |   |   |   |   |   |   | ZoneId} |   |   |   |   |
 
-|  |  | eiam:UpdateBr and |  |  | UpdateBrand |  |  |  | *Brand acs:eiam: |  |  |  |  |
+|   |   | eiam:UpdateBr and |   |   | UpdateBrand |   |   |   | *Brand acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  | teBrand | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | BrandId} |  |  |  |  |
-|  |  | eiam:GetApplic ationTemplate |  |  | GetApplicationT emplate |  |  |  | *ApplicationTempl ate acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  | pplicationT ate | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | {#accountId}:a |  | N/A | N/A |  |
-|  |  |  |  |  |  |  |  |  | pplicationtempl |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ate/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | onTemplateId} |  |  |  |  |
-|  |  | eiam:ListBrand s |  |  | ListBrands |  | list |  | *Brand acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  |  | list | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ceId}/brand/* |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   | teBrand | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | BrandId} |   |   |   |   |
+|   |   | eiam:GetApplic ationTemplate |   |   | GetApplicationT emplate |   |   |   | *ApplicationTempl ate acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   | pplicationT ate | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | {#accountId}:a |   | N/A | N/A |   |
+|   |   |   |   |   |   |   |   |   | pplicationtempl |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ate/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | onTemplateId} |   |   |   |   |
+|   |   | eiam:ListBrand s |   |   | ListBrands |   | list |   | *Brand acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   |   | list | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ceId}/brand/* |   |   |   |   |
 
-|  |  |  |  |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:ListCondit ionalAccessPoli ciesForApplicat ion |  | ListConditionalA ccessPoliciesFor Application |  | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | list | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | cation |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/* |  |  |  |  |
-|  | eiam:UpdateFe deratedCreden tialProviderDes |  | UpdateFederate |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teFederate |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | dCreden viderDes | dCredentialProv |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | cription |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | iderDescription |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/{#Federate |  |  |  |  |
-|  |  |  |  |  |  |  | dCredentialProv |  |  |  |  |
-|  |  |  |  |  |  |  | iderId} |  |  |  |  |
-|  | eiam:DeleteDo mainProxyToke |  |  |  |  |  | *DomainProxyTok en acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | roxyToke | DeleteDomainPr oxyToken | eDomainPr |  |  |  |  |  |  |  |
-|  |  |  |  |  | delete |  | stance/{#Instan |  | N/A | N/A |  |
-|  | n |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId}/do |  |  |  |  |
-|  |  |  |  |  |  |  | mainproxytoken |  |  |  |  |
-|  |  |  |  |  |  |  | /{#DomainProx |  |  |  |  |
-|  |  |  |  |  |  |  | yTokenId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:ListCondit ionalAccessPoli ciesForApplicat ion |   | ListConditionalA ccessPoliciesFor Application |   | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | list | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | cation |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/* |   |   |   |   |
+|   | eiam:UpdateFe deratedCreden tialProviderDes |   | UpdateFederate |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teFederate |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | dCreden viderDes | dCredentialProv |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | cription |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | iderDescription |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/{#Federate |   |   |   |   |
+|   |   |   |   |   |   |   | dCredentialProv |   |   |   |   |
+|   |   |   |   |   |   |   | iderId} |   |   |   |   |
+|   | eiam:DeleteDo mainProxyToke |   |   |   |   |   | *DomainProxyTok en acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | roxyToke | DeleteDomainPr oxyToken | eDomainPr |   |   |   |   |   |   |   |
+|   |   |   |   |   | delete |   | stance/{#Instan |   | N/A | N/A |   |
+|   | n |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId}/do |   |   |   |   |
+|   |   |   |   |   |   |   | mainproxytoken |   |   |   |   |
+|   |   |   |   |   |   |   | /{#DomainProx |   |   |   |   |
+|   |   |   |   |   |   |   | yTokenId} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/{#Network |  |  |  |  |
-|  | eiam:ListApplic |  | ListApplications |  |  |  |  |  |  |  |  |
-|  | ationsForNetwo |  | ForNetworkZon |  | list |  | ZoneId} |  |  |  |  |
-|  | rkZone |  | e |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/* |  |  |  |  |
-|  | eiam:RemoveU sersFromGroup |  | RemoveUsersFr omGroup |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | veUsersFr oup | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
-|  | eiam:ListNetwo |  |  |  |  |  | *NetworkAccessP ath acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | istNetwo | ListNetworkAcc |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | rkAccessPaths |  |  |  | list |  |  |  | N/A | N/A |  |
-|  |  |  | essPaths |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #NetworkAcces |  |  |  |  |
-|  |  |  |  |  |  |  | sEndpointId}/ne |  |  |  |  |
-|  |  |  |  |  |  |  | tworkaccesspat |  |  |  |  |
-|  |  |  |  |  |  |  | h/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/{#Network |   |   |   |   |
+|   | eiam:ListApplic |   | ListApplications |   |   |   |   |   |   |   |   |
+|   | ationsForNetwo |   | ForNetworkZon |   | list |   | ZoneId} |   |   |   |   |
+|   | rkZone |   | e |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/* |   |   |   |   |
+|   | eiam:RemoveU sersFromGroup |   | RemoveUsersFr omGroup |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | veUsersFr oup | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
+|   | eiam:ListNetwo |   |   |   |   |   | *NetworkAccessP ath acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | istNetwo | ListNetworkAcc |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | rkAccessPaths |   |   |   | list |   |   |   | N/A | N/A |   |
+|   |   |   | essPaths |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #NetworkAcces |   |   |   |   |
+|   |   |   |   |   |   |   | sEndpointId}/ne |   |   |   |   |
+|   |   |   |   |   |   |   | tworkaccesspat |   |   |   |   |
+|   |   |   |   |   |   |   | h/* |   |   |   |   |
 
-|  | eiam:ListOrgan |  |  |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
+|   | eiam:ListOrgan |   |   |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | istOrgan |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | izationalUnitPar |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | ListOrganization |  | get |  | ceId}/organizati |  | N/A | N/A |  |
-|  |  |  | alUnitParents |  |  |  |  |  |  |  |  |
-|  | ents |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  |  |  |  |  |  |  | anizationalUnitI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:GetApplic |  |  |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | etApplic | GetApplicationF |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | ationFederated |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | ederatedCreden |  | get |  | ceId}/applicatio |  | N/A | N/A |  |
-|  | Credential |  | tial |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  | onFederatedCre |  |  |  |  |
-|  |  |  |  |  |  |  | dentialId} |  |  |  |  |
-|  | eiam:SetApplic ationGrantScop e |  | SetApplicationG |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | plicationG | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | rantScope |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | istOrgan |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | izationalUnitPar |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | ListOrganization |   | get |   | ceId}/organizati |   | N/A | N/A |   |
+|   |   |   | alUnitParents |   |   |   |   |   |   |   |   |
+|   | ents |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   |   |   |   |   |   |   | anizationalUnitI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:GetApplic |   |   |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | etApplic | GetApplicationF |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | ationFederated |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | ederatedCreden |   | get |   | ceId}/applicatio |   | N/A | N/A |   |
+|   | Credential |   | tial |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   | onFederatedCre |   |   |   |   |
+|   |   |   |   |   |   |   | dentialId} |   |   |   |   |
+|   | eiam:SetApplic ationGrantScop e |   | SetApplicationG |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | plicationG | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | rantScope |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  | eiam:ListApplic ationsForNetwo rkAccessEndpoi |  | ListApplications |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
+|   | eiam:ListApplic ationsForNetwo rkAccessEndpoi |   | ListApplications |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplications |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ssEndpoi | ForNetworkAcce ssEndpoint | etworkAcce | get |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | nt |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #NetworkAcces |  |  |  |  |
-|  |  |  |  |  |  |  | sEndpointId} |  |  |  |  |
-|  | eiam:DeleteAp |  |  |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | eleteAp | DeleteApplicati |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | delete |  | stance/{#Instan |  | N/A | N/A |  |
-|  | plicationToken | onToken | onToken |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationt |  |  |  |  |
-|  |  |  |  |  |  |  | oken/{#Applica |  |  |  |  |
-|  |  |  |  |  |  |  | tionTokenId} |  |  |  |  |
-|  | eiam:ListNetwo rkAccessEndpoi ntAvailableZon es |  | ListNetworkAcc essEndpointAva ilableZones |  | get |  | *All resources * |  | N/A | N/A |  |
-|  | eiam:EnableInit DomainAutoRe direct |  | EnableInitDoma inAutoRedirect |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leInitDoma oRedirect | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplications |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ssEndpoi | ForNetworkAcce ssEndpoint | etworkAcce | get |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | nt |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #NetworkAcces |   |   |   |   |
+|   |   |   |   |   |   |   | sEndpointId} |   |   |   |   |
+|   | eiam:DeleteAp |   |   |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | eleteAp | DeleteApplicati |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | delete |   | stance/{#Instan |   | N/A | N/A |   |
+|   | plicationToken | onToken | onToken |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationt |   |   |   |   |
+|   |   |   |   |   |   |   | oken/{#Applica |   |   |   |   |
+|   |   |   |   |   |   |   | tionTokenId} |   |   |   |   |
+|   | eiam:ListNetwo rkAccessEndpoi ntAvailableZon es |   | ListNetworkAcc essEndpointAva ilableZones |   | get |   | *All resources * |   | N/A | N/A |   |
+|   | eiam:EnableInit DomainAutoRe direct |   | EnableInitDoma inAutoRedirect |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leInitDoma oRedirect | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/* |   |   |   |   |
 
-|  |  |  |  |  |  |  | *Brand acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *Brand acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  | BrandId} |  |  |  |  |
-|  | eiam:SetLoginR edirectApplicati onForBrand |  | SetLoginRedirec tApplicationFor Brand |  | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | update | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | d |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:AddUsers ToGroup |  | AddUsersToGro up |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
-|  | eiam:SetApplic |  |  |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | etApplic | SetApplicationP |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | ationProvisioni |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | rovisioningConfi |  | update |  | ceId}/applicatio |  | N/A | N/ |  |
-|  | ngConfig |  | g |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   | BrandId} |   |   |   |   |
+|   | eiam:SetLoginR edirectApplicati onForBrand |   | SetLoginRedirec tApplicationFor Brand |   | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | update | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | d |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:AddUsers ToGroup |   | AddUsersToGro up |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
+|   | eiam:SetApplic |   |   |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | etApplic | SetApplicationP |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | ationProvisioni |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | rovisioningConfi |   | update |   | ceId}/applicatio |   | N/A | N/ |   |
+|   | ngConfig |   | g |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  | eiam:GetOrgan |  | GetOrganizatio |  | get |  | anizationalUnitI |  |  |  |  |
-|  | izationalUnit |  | nalUnit |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:DisableAp plicationClientS |  |  |  |  |  | *Secret acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onClientS | DisableApplicati onClientSecret | leApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | ecret |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/secret/{#Se |  |  |  |  |
-|  |  |  |  |  |  |  | cretId} |  |  |  |  |
-|  | eiam:DeleteNet workAccessEnd point |  | DeleteNetworkA |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eNetworkA |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ccessEnd | ccessEndpoint |  | delete |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #NetworkAcces |  |  |  |  |
-|  |  |  |  |  |  |  | sEndpointId} |  |  |  |  |
-|  | eiam:CreateGr oup |  | CreateGroup |  | create |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | create | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   | eiam:GetOrgan |   | GetOrganizatio |   | get |   | anizationalUnitI |   |   |   |   |
+|   | izationalUnit |   | nalUnit |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:DisableAp plicationClientS |   |   |   |   |   | *Secret acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onClientS | DisableApplicati onClientSecret | leApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | ecret |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/secret/{#Se |   |   |   |   |
+|   |   |   |   |   |   |   | cretId} |   |   |   |   |
+|   | eiam:DeleteNet workAccessEnd point |   | DeleteNetworkA |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eNetworkA |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ccessEnd | ccessEndpoint |   | delete |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #NetworkAcces |   |   |   |   |
+|   |   |   |   |   |   |   | sEndpointId} |   |   |   |   |
+|   | eiam:CreateGr oup |   | CreateGroup |   | create |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | create | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/* |   |   |   |   |
 
-|  | eiam:UpdateAp plicationToken |  |  |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
+|   | eiam:UpdateAp plicationToken |   |   |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | pdateAp onToken | UpdateApplicati onTokenExpirati | teApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | ExpirationTime |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | onTime |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationt |  |  |  |  |
-|  |  |  |  |  |  |  | oken/{#Applica |  |  |  |  |
-|  |  |  |  |  |  |  | tionTokenId} |  |  |  |  |
-|  |  |  |  |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  | eiam:DisableAp |  | DisableApplicati |  |  |  |  |  |  |  |  |
-|  | plicationToken |  | onToken |  | update |  | Id}/applicationt |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | oken/{#Applica |  |  |  |  |
-|  |  |  |  |  |  |  | tionTokenId} |  |  |  |  |
-|  |  |  |  |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  | N/A |  |
-|  | eiam:ListCondit |  |  |  |  |  | alaccesspolicy/* |  | N/A |  |  |
-|  |  |  | ListConditionalA |  |  |  |  |  |  |  |  |
-|  | ionalAccessPoli |  | ccessPoliciesFor |  | list |  |  |  |  |  |  |
-|  | ciesForNetwork Zone |  | NetworkZone |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/{#Network |  |  |  |  |
-|  |  |  |  |  |  |  | ZoneId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | pdateAp onToken | UpdateApplicati onTokenExpirati | teApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | ExpirationTime |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | onTime |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationt |   |   |   |   |
+|   |   |   |   |   |   |   | oken/{#Applica |   |   |   |   |
+|   |   |   |   |   |   |   | tionTokenId} |   |   |   |   |
+|   |   |   |   |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   | eiam:DisableAp |   | DisableApplicati |   |   |   |   |   |   |   |   |
+|   | plicationToken |   | onToken |   | update |   | Id}/applicationt |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | oken/{#Applica |   |   |   |   |
+|   |   |   |   |   |   |   | tionTokenId} |   |   |   |   |
+|   |   |   |   |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   | N/A |   |
+|   | eiam:ListCondit |   |   |   |   |   | alaccesspolicy/* |   | N/A |   |   |
+|   |   |   | ListConditionalA |   |   |   |   |   |   |   |   |
+|   | ionalAccessPoli |   | ccessPoliciesFor |   | list |   |   |   |   |   |   |
+|   | ciesForNetwork Zone |   | NetworkZone |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/{#Network |   |   |   |   |
+|   |   |   |   |   |   |   | ZoneId} |   |   |   |   |
 
-|  | eiam:CreateBra nd |  | CreateBrand |  | create |  | *Brand acs:eiam: |  |  |  |  |
+|   | eiam:CreateBra nd |   | CreateBrand |   | create |   | *Brand acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | create | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/* |  |  |  |  |
-|  | eiam:UpdateDo |  |  |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | pdateDo | UpdateDomain |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | mainBrand | rand | Brand |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId} |  |  |  |  |
-|  | eiam:DisableAp plication |  | DisableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | on | on |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:EnableAp |  |  |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | nableAp | EnableApplicati |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | plicationToken |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | onToken |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationt |  |  |  |  |
-|  |  |  |  |  |  |  | oken/{#Applica |  |  |  |  |
-|  |  |  |  |  |  |  | tionTokenId} |  |  |  |  |
-|  | eiam:GetDomai n |  | GetDomain |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | omain | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | create | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/* |   |   |   |   |
+|   | eiam:UpdateDo |   |   |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | pdateDo | UpdateDomain |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | mainBrand | rand | Brand |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId} |   |   |   |   |
+|   | eiam:DisableAp plication |   | DisableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | on | on |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:EnableAp |   |   |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | nableAp | EnableApplicati |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | plicationToken |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | onToken |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationt |   |   |   |   |
+|   |   |   |   |   |   |   | oken/{#Applica |   |   |   |   |
+|   |   |   |   |   |   |   | tionTokenId} |   |   |   |   |
+|   | eiam:GetDomai n |   | GetDomain |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | omain | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId} |   |   |   |   |
 
-|  | eiam:GetLogin RedirectApplica tionForBrand |  | GetLoginRedire ctApplicationFor |  |  |  | *Brand acs:eiam: |  |  |  |  |
+|   | eiam:GetLogin RedirectApplica tionForBrand |   | GetLoginRedire ctApplicationFor |   |   |   | *Brand acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | licationFor | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | rBrand | Brand |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  | BrandId} |  |  |  |  |
-|  | eiam:DisableD omainProxyTok |  |  |  |  |  | *DomainProxyTok en acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ProxyTok | DisableDomain ProxyToken | leDomain |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | en |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId}/do |  |  |  |  |
-|  |  |  |  |  |  |  | mainproxytoken |  |  |  |  |
-|  |  |  |  |  |  |  | /{#DomainProx |  |  |  |  |
-|  |  |  |  |  |  |  | yTokenId} |  |  |  |  |
-|  | eiam:ListGroup sForApplication |  |  |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | istGroup plication | ListGroupsForA pplication | roupsForA |  |  |  |  |  |  |  |
-|  |  |  |  |  | list |  | stance/{#Instan |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | licationFor | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | rBrand | Brand |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   | BrandId} |   |   |   |   |
+|   | eiam:DisableD omainProxyTok |   |   |   |   |   | *DomainProxyTok en acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ProxyTok | DisableDomain ProxyToken | leDomain |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | en |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId}/do |   |   |   |   |
+|   |   |   |   |   |   |   | mainproxytoken |   |   |   |   |
+|   |   |   |   |   |   |   | /{#DomainProx |   |   |   |   |
+|   |   |   |   |   |   |   | yTokenId} |   |   |   |   |
+|   | eiam:ListGroup sForApplication |   |   |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | istGroup plication | ListGroupsForA pplication | roupsForA |   |   |   |   |   |   |   |
+|   |   |   |   |   | list |   | stance/{#Instan |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  | eiam:UpdateAp |  | UpdateApplicati |  |  |  | Id}/applicationf |  |  |  |  |
-|  | plicationFedera |  | onFederatedCre |  | update |  |  |  | N/A | N/A |  |
-|  | tedCredential |  | dential |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  | onFederatedCre |  |  |  |  |
-|  |  |  |  |  |  |  | dentialId} |  |  |  |  |
-|  | eiam:GetApplic ationProvisioni ngScope |  | GetApplicationP rovisioningScop |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationP oningScop | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | rovisioni pe | e |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:DisableIni tDomainAutoR edirect |  | DisableInitDom ainAutoRedirect |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leInitDom toRedirect | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | t |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/* |  |  |  |  |
-|  | eiam:DeleteBra nd |  | DeleteBrand |  |  |  | *Brand acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eBrand | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  | BrandId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   | eiam:UpdateAp |   | UpdateApplicati |   |   |   | Id}/applicationf |   |   |   |   |
+|   | plicationFedera |   | onFederatedCre |   | update |   |   |   | N/A | N/A |   |
+|   | tedCredential |   | dential |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   | onFederatedCre |   |   |   |   |
+|   |   |   |   |   |   |   | dentialId} |   |   |   |   |
+|   | eiam:GetApplic ationProvisioni ngScope |   | GetApplicationP rovisioningScop |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationP oningScop | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | rovisioni pe | e |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:DisableIni tDomainAutoR edirect |   | DisableInitDom ainAutoRedirect |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leInitDom toRedirect | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | t |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/* |   |   |   |   |
+|   | eiam:DeleteBra nd |   | DeleteBrand |   |   |   | *Brand acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eBrand | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   | BrandId} |   |   |   |   |
 
-|  | eiam:UpdateNe tworkAccessEn dpointName |  | UpdateNetwork |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
+|   | eiam:UpdateNe tworkAccessEn dpointName |   | UpdateNetwork |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teNetwork |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | ccessEn Name | AccessEndpoint Name | ssEndpoint | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #NetworkAcces |  |  |  |  |
-|  |  |  |  |  |  |  | sEndpointId} |  |  |  |  |
-|  | eiam:ObtainAp plicationClientS |  |  |  |  |  | *Secret acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onClientS | ObtainApplicati onClientSecret | nApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  | get |  | stance/{#Instan |  | N/A | N/A |  |
-|  | ecret |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/secret/{#Se |  |  |  |  |
-|  |  |  |  |  |  |  | cretId} |  |  |  |  |
-|  |  |  |  |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | eiam:UpdateId |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | UpdateIdentityP |  | update |  | ceId}/identitypr |  | N/A | N/A |  |
-|  | entityProvider |  | rovider |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
-|  | eiam:SetUserPr imaryOrganizat ionalUnit |  | SetUserPrimary OrganizationalU |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | nizationalU | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | nit | nit |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teNetwork |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | ccessEn Name | AccessEndpoint Name | ssEndpoint | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #NetworkAcces |   |   |   |   |
+|   |   |   |   |   |   |   | sEndpointId} |   |   |   |   |
+|   | eiam:ObtainAp plicationClientS |   |   |   |   |   | *Secret acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onClientS | ObtainApplicati onClientSecret | nApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   | get |   | stance/{#Instan |   | N/A | N/A |   |
+|   | ecret |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/secret/{#Se |   |   |   |   |
+|   |   |   |   |   |   |   | cretId} |   |   |   |   |
+|   |   |   |   |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | eiam:UpdateId |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | UpdateIdentityP |   | update |   | ceId}/identitypr |   | N/A | N/A |   |
+|   | entityProvider |   | rovider |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
+|   | eiam:SetUserPr imaryOrganizat ionalUnit |   | SetUserPrimary OrganizationalU |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | nizationalU | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | nit | nit |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
 
-|  | eiam:EnableAp plication |  | EnableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   | eiam:EnableAp plication |   | EnableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | on | on |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:GetApplic ationSsoConfig |  | GetApplicationS |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationS | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | soConfig | soConfig |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:EnableBr and |  | EnableBrand |  |  |  | *Brand acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leBrand | update |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  | BrandId} |  |  |  |  |
-|  | eiam:GetInstan ceLicense |  | GetInstanceLice nse |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:ListNetwo rkAccessEndpoi nts |  | ListNetworkAcc essEndpoints |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | etworkAcc dpoints | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | on | on |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:GetApplic ationSsoConfig |   | GetApplicationS |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationS | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | soConfig | soConfig |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:EnableBr and |   | EnableBrand |   |   |   | *Brand acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leBrand | update |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   | BrandId} |   |   |   |   |
+|   | eiam:GetInstan ceLicense |   | GetInstanceLice nse |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:ListNetwo rkAccessEndpoi nts |   | ListNetworkAcc essEndpoints |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | etworkAcc dpoints | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/* |   |   |   |   |
 
-|  | eiam:ListFeder atedCredential Providers |  | ListFederatedCr edentialProvide |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
+|   | eiam:ListFeder atedCredential Providers |   | ListFederatedCr edentialProvide |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | tialProvide | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | ers | rs |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/* |  |  |  |  |
-|  | eiam:EnableUs er |  | EnableUser |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leUser | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:DisableUs er |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  | N/A |  |
-|  |  |  | DisableUser | leUser | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:CreateNe tworkZone |  | CreateNetwork Zone |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eNetwork | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/* |  |  |  |  |
-|  | eiam:DeleteAp plication |  | DeleteApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eApplicati | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | on | on |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | tialProvide | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | ers | rs |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/* |   |   |   |   |
+|   | eiam:EnableUs er |   | EnableUser |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leUser | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:DisableUs er |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   | N/A |   |
+|   |   |   | DisableUser | leUser | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:CreateNe tworkZone |   | CreateNetwork Zone |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eNetwork | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/* |   |   |   |   |
+|   | eiam:DeleteAp plication |   | DeleteApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eApplicati | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | on | on |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  | eiam:GetBrand |  | GetBrand |  |  |  | *Brand acs:eiam: |  |  |  |  |
+|   | eiam:GetBrand |   | GetBrand |   |   |   | *Brand acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | rand | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/brand/{# |  |  |  |  |
-|  |  |  |  |  |  |  | BrandId} |  |  |  |  |
-|  | eiam:DisableAp |  |  |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | isableAp | DisableApplicati |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | plicationFedera |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | onFederatedCre |  | update |  | ceId}/applicatio |  | N/A | N/A |  |
-|  | tedCredential |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | dential |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  | onFederatedCre |  |  |  |  |
-|  |  |  |  |  |  |  | dentialId} |  |  |  |  |
-|  | eiam:ListIdentit yProviders |  | ListIdentityProvi ders |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  | list |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/* |  |  |  |  |
-|  |  |  |  |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  | eiam:ListUsers |  | ListUsersForApp |  |  |  | n/{#Application |  |  |  |  |
-|  | ForApplication |  | lication |  | list |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | rand | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/brand/{# |   |   |   |   |
+|   |   |   |   |   |   |   | BrandId} |   |   |   |   |
+|   | eiam:DisableAp |   |   |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | isableAp | DisableApplicati |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | plicationFedera |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | onFederatedCre |   | update |   | ceId}/applicatio |   | N/A | N/A |   |
+|   | tedCredential |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | dential |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   | onFederatedCre |   |   |   |   |
+|   |   |   |   |   |   |   | dentialId} |   |   |   |   |
+|   | eiam:ListIdentit yProviders |   | ListIdentityProvi ders |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   | list |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/* |   |   |   |   |
+|   |   |   |   |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   | eiam:ListUsers |   | ListUsersForApp |   |   |   | n/{#Application |   |   |   |   |
+|   | ForApplication |   | lication |   | list |   | Id} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:RemoveA pplicationAcco untFromUser |  | RemoveApplicat ionAccountFrom User |  | delete |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | delete | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationa |  |  |  |  |
-|  |  |  |  |  |  |  | ccount/{#Applic |  |  |  |  |
-|  |  |  |  |  |  |  | ationAccountId} |  |  |  |  |
-|  | eiam:ListUsers ForGroup |  | ListUsersForGro up |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | sersForGro | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/{# |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
-|  | eiam:SetIdentit yProviderUdPul lConfiguration |  | SetIdentityProvi derUdPullConfig |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | entityProvi dPullConfig | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | uration | uration |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:RemoveA pplicationAcco untFromUser |   | RemoveApplicat ionAccountFrom User |   | delete |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | delete | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationa |   |   |   |   |
+|   |   |   |   |   |   |   | ccount/{#Applic |   |   |   |   |
+|   |   |   |   |   |   |   | ationAccountId} |   |   |   |   |
+|   | eiam:ListUsers ForGroup |   | ListUsersForGro up |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | sersForGro | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/{# |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
+|   | eiam:SetIdentit yProviderUdPul lConfiguration |   | SetIdentityProvi derUdPullConfig |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | entityProvi dPullConfig | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | uration | uration |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
 
-|  | eiam:AddUserT oOrganizationa lUnits |  | AddUserToOrga nizationalUnits |  |  |  | *User acs:eiam: |  |  |  |  |
+|   | eiam:AddUserT oOrganizationa lUnits |   | AddUserToOrga nizationalUnits |   |   |   | *User acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | onalUnits | create |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:CreateAp plication |  | CreateApplicati on |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eApplicati | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/* |  |  |  |  |
-|  | eiam:RunSynch ronizationJob |  | RunSynchroniza tionJob |  |  |  | *SynchronizationJ ob acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | b | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/synchroni |  |  |  |  |
-|  |  |  |  |  |  |  | zationjob/* |  |  |  |  |
-|  |  |  |  |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  | eiam:UpdateAp |  | UpdateApplicati |  |  |  | n/{#Application |  |  |  |  |
-|  | plicationInfo |  | onInfo |  | update |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | onalUnits | create |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:CreateAp plication |   | CreateApplicati on |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eApplicati | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/* |   |   |   |   |
+|   | eiam:RunSynch ronizationJob |   | RunSynchroniza tionJob |   |   |   | *SynchronizationJ ob acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | b | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/synchroni |   |   |   |   |
+|   |   |   |   |   |   |   | zationjob/* |   |   |   |   |
+|   |   |   |   |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   | eiam:UpdateAp |   | UpdateApplicati |   |   |   | n/{#Application |   |   |   |   |
+|   | plicationInfo |   | onInfo |   | update |   | Id} |   |   |   |   |
 
-|  | eiam:UpdateCo nditionalAccess PolicyDescripti |  | UpdateConditio |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
+|   | eiam:UpdateCo nditionalAccess PolicyDescripti |   | UpdateConditio |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teConditio |  |  | {#accountId}:in |  |  |  |  |
-|  |  | Descripti | nalAccessPolicy Description | cessPolicy | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | on |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #ConditionalAcc |  |  |  |  |
-|  |  |  |  |  |  |  | essPolicyId} |  |  |  |  |
-|  | eiam:SetApplic ationSsoConfig |  | SetApplicationS |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | plicationS | create |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | soConfig | soConfig |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:ListGroup sForUser |  | ListGroupsForUs er |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | roupsForUs | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:GetIdentit yProvider |  | GetIdentityProvi |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | entityProvi | get |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | der | der |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teConditio |   |   | {#accountId}:in |   |   |   |   |
+|   |   | Descripti | nalAccessPolicy Description | cessPolicy | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | on |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #ConditionalAcc |   |   |   |   |
+|   |   |   |   |   |   |   | essPolicyId} |   |   |   |   |
+|   | eiam:SetApplic ationSsoConfig |   | SetApplicationS |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | plicationS | create |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | soConfig | soConfig |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:ListGroup sForUser |   | ListGroupsForUs er |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | roupsForUs | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:GetIdentit yProvider |   | GetIdentityProvi |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | entityProvi | get |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | der | der |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
 
-|  | eiam:ListUsers |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
+|   | eiam:ListUsers |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | istUsers | ListUsers |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | list |  | stance/{#Instan |  | N/A |  |  |
-|  |  |  |  |  |  |  | ceId}/user/* |  |  |  |  |
-|  | eiam:ObtainAp |  |  |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | btainAp | ObtainApplicati |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | get |  | stance/{#Instan |  | N/A | N/A |  |
-|  | plicationToken |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | onToken |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationt |  |  |  |  |
-|  |  |  |  |  |  |  | oken/{#Applica |  |  |  |  |
-|  |  |  |  |  |  |  | tionTokenId} |  |  |  |  |
-|  | eiam:GetSynch ronizationJob |  | GetSynchroniza tionJob |  |  |  | *SynchronizationJ ob acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | ynchroniza b |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | tionJob |  |  | get |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/synchroni |  |  |  |  |
-|  |  |  |  |  |  |  | zationjob/{#Syn |  |  |  |  |
-|  |  |  |  |  |  |  | chronizationJobI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
-|  | eiam:SetApplic ationProvisioni ngScope |  | SetApplicationP rovisioningScop |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | oningScop | update |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | pe | e |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | istUsers | ListUsers |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | list |   | stance/{#Instan |   | N/A |   |   |
+|   |   |   |   |   |   |   | ceId}/user/* |   |   |   |   |
+|   | eiam:ObtainAp |   |   |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | btainAp | ObtainApplicati |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | get |   | stance/{#Instan |   | N/A | N/A |   |
+|   | plicationToken |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | onToken |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationt |   |   |   |   |
+|   |   |   |   |   |   |   | oken/{#Applica |   |   |   |   |
+|   |   |   |   |   |   |   | tionTokenId} |   |   |   |   |
+|   | eiam:GetSynch ronizationJob |   | GetSynchroniza tionJob |   |   |   | *SynchronizationJ ob acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | ynchroniza b |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | tionJob |   |   | get |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/synchroni |   |   |   |   |
+|   |   |   |   |   |   |   | zationjob/{#Syn |   |   |   |   |
+|   |   |   |   |   |   |   | chronizationJobI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
+|   | eiam:SetApplic ationProvisioni ngScope |   | SetApplicationP rovisioningScop |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | oningScop | update |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | pe | e |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  | eiam:DeleteAp |  |  |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
+|   | eiam:DeleteAp |   |   |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | eleteAp | DeleteApplicati |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | plicationFedera |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | onFederatedCre |  | delete |  | ceId}/applicatio |  | N/A | N/A |  |
-|  | tedCredential |  | dential |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  | onFederatedCre |  |  |  |  |
-|  |  |  |  |  |  |  | dentialId} |  |  |  |  |
-|  | eiam:DisableAp plicationProvisi oning |  | DisableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onProvisioning |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:CreateUs er |  | CreateUser |  | create |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | create | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/* |  |  |  |  |
-|  | eiam:SetPassw ordInitialization Configuration |  | SetPasswordInit ializationConfig |  |  |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | tionConfig | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | uration | uration |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:ListApplic ationsForUser |  | ListApplications ForUser |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplications er | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | eleteAp | DeleteApplicati |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | plicationFedera |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | onFederatedCre |   | delete |   | ceId}/applicatio |   | N/A | N/A |   |
+|   | tedCredential |   | dential |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   | onFederatedCre |   |   |   |   |
+|   |   |   |   |   |   |   | dentialId} |   |   |   |   |
+|   | eiam:DisableAp plicationProvisi oning |   | DisableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onProvisioning |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:CreateUs er |   | CreateUser |   | create |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | create | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/* |   |   |   |   |
+|   | eiam:SetPassw ordInitialization Configuration |   | SetPasswordInit ializationConfig |   |   |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | tionConfig | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | uration | uration |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:ListApplic ationsForUser |   | ListApplications ForUser |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplications er | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
 
-|  | eiam:GetInstan ce |  | GetInstance |  | get |  | *Instance acs:eiam: |  |  |  |  |
+|   | eiam:GetInstan ce |   | GetInstance |   | get |   | *Instance acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:ListApplic ationFederated CredentialsForP rovider |  | ListApplicationF ederatedCreden |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationF tedCreden | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | tialsForProvider |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/*/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/* |  |  |  |  |
-|  | eiam:DisableId entityProviderA uthn |  | DisableIdentityP |  |  |  | *IdentityProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leIdentityP | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | roviderAuthn |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/identitypr |  |  |  |  |
-|  |  |  |  |  |  |  | ovider/{#Identi |  |  |  |  |
-|  |  |  |  |  |  |  | tyProviderId} |  |  |  |  |
-|  | eiam:ListGroup s |  | ListGroups |  | list |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | list | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/group/* |  |  |  |  |
-|  | eiam:DeleteNet workZone |  | DeleteNetworkZ |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eNetworkZ | delete |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | one | one |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/{#Network |  |  |  |  |
-|  |  |  |  |  |  |  | ZoneId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:ListApplic ationFederated CredentialsForP rovider |   | ListApplicationF ederatedCreden |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationF tedCreden | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | tialsForProvider |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/*/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/* |   |   |   |   |
+|   | eiam:DisableId entityProviderA uthn |   | DisableIdentityP |   |   |   | *IdentityProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leIdentityP | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | roviderAuthn |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/identitypr |   |   |   |   |
+|   |   |   |   |   |   |   | ovider/{#Identi |   |   |   |   |
+|   |   |   |   |   |   |   | tyProviderId} |   |   |   |   |
+|   | eiam:ListGroup s |   | ListGroups |   | list |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | list | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/group/* |   |   |   |   |
+|   | eiam:DeleteNet workZone |   | DeleteNetworkZ |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eNetworkZ | delete |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | one | one |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/{#Network |   |   |   |   |
+|   |   |   |   |   |   |   | ZoneId} |   |   |   |   |
 
-|  | eiam:GetRootO rganizationalUn it |  | GetRootOrganiz ationalUnit |  | get |  | *Instance acs:eiam: |  |  |  |  |
+|   | eiam:GetRootO rganizationalUn it |   | GetRootOrganiz ationalUnit |   | get |   | *Instance acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | alUnit |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:GetApplic ation |  | GetApplication |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplication | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:GetPassw ordExpirationC onfiguration |  | GetPasswordEx pirationConfigur ation |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:SetPassw ordHistoryConfi guration |  | SetPasswordHis toryConfiguratio n |  | get |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | get | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | onfiguratio |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  |  |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | eiam:GetUser |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | GetUser |  | get |  | ceId}/user/{#Us |  | N/A |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | alUnit |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:GetApplic ation |   | GetApplication |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplication | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:GetPassw ordExpirationC onfiguration |   | GetPasswordEx pirationConfigur ation |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:SetPassw ordHistoryConfi guration |   | SetPasswordHis toryConfiguratio n |   | get |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | get | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | onfiguratio |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   |   |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | eiam:GetUser |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | GetUser |   | get |   | ceId}/user/{#Us |   | N/A |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
 
-|  | eiam:ListNetwo rkZones |  | ListNetworkZon es |  |  |  | *NetworkZone acs:eiam: |  |  |  |  |
+|   | eiam:ListNetwo rkZones |   | ListNetworkZon es |   |   |   | *NetworkZone acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | etworkZon | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkz |  |  |  |  |
-|  |  |  |  |  |  |  | one/* |  |  |  |  |
-|  | eiam:CreateDo main |  | CreateDomain |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eDomain | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/* |  |  |  |  |
-|  | eiam:SetPassw ordExpirationC onfiguration |  | SetPasswordEx pirationConfigur ation |  | update |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | update | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:SetPassw ordComplexity Configuration |  | SetPasswordCo mplexityConfig uration |  | update |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | update | {#regionId}: |  | N/A | N/A |  |
-|  |  |  |  | n |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:UnlockUs er |  | UnlockUser |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | kUser | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | etworkZon | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkz |   |   |   |   |
+|   |   |   |   |   |   |   | one/* |   |   |   |   |
+|   | eiam:CreateDo main |   | CreateDomain |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eDomain | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/* |   |   |   |   |
+|   | eiam:SetPassw ordExpirationC onfiguration |   | SetPasswordEx pirationConfigur ation |   | update |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | update | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:SetPassw ordComplexity Configuration |   | SetPasswordCo mplexityConfig uration |   | update |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | update | {#regionId}: |   | N/A | N/A |   |
+|   |   |   |   | n |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:UnlockUs er |   | UnlockUser |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | kUser | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
 
-|  | eiam:EnableAp plicationSso |  | EnableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   | eiam:EnableAp plicationSso |   | EnableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | onSso | onSso |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:CreateFe deratedCreden tialProvider |  | CreateFederate dCredentialProv |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | dentialProv | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | vider | ider |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/* |  |  |  |  |
-|  | eiam:Authorize ApplicationToG roups |  | AuthorizeApplic |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | orizeApplic | create |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | ationToGroups |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:UpdateOr ganizationalUni tDescription |  | UpdateOrganiza |  |  |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teOrganiza |  |  | {#accountId}:in |  |  |  |  |
-|  |  | tionalUni iption | tionalUnitDescri ption | lUnitDescri | update |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/{#Org |  |  |  |  |
-|  |  |  |  |  |  |  | anizationalUnitI |  |  |  |  |
-|  |  |  |  |  |  |  | d} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | onSso | onSso |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:CreateFe deratedCreden tialProvider |   | CreateFederate dCredentialProv |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | dentialProv | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | vider | ider |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/* |   |   |   |   |
+|   | eiam:Authorize ApplicationToG roups |   | AuthorizeApplic |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | orizeApplic | create |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | ationToGroups |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:UpdateOr ganizationalUni tDescription |   | UpdateOrganiza |   |   |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teOrganiza |   |   | {#accountId}:in |   |   |   |   |
+|   |   | tionalUni iption | tionalUnitDescri ption | lUnitDescri | update |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/{#Org |   |   |   |   |
+|   |   |   |   |   |   |   | anizationalUnitI |   |   |   |   |
+|   |   |   |   |   |   |   | d} |   |   |   |   |
 
-|  |  |  |  |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
+|   |   |   |   |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | eiam:ListCondit ionalAccessPoli | istCondit |  |  |  |  |  |  |  |  |  |
-|  |  |  | ListConditionalA |  | list |  | ceId}/condition |  | N/A | N/A |  |
-|  | cies |  | ccessPolicies |  |  |  | alaccesspolicy/* |  |  |  |  |
-|  |  |  |  |  |  |  | *Group acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | eiam:ListApplic |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | ListApplications |  | get |  | ceId}/group/{# |  | N/A |  |  |
-|  | ationsForGroup |  | ForGroup |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | GroupId} |  |  |  |  |
-|  | eiam:CreateAp plicationToken |  | CreateApplicati |  |  |  | *ApplicationToken acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onToken | onToken |  | create |  | stance/{#Instan |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationt |  |  |  |  |
-|  |  |  |  |  |  |  | oken/* |  |  |  |  |
-|  | eiam:CreateOr ganizationalUni t |  | CreateOrganiza tionalUnit |  | create |  | *OrganizationalUn it acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | create | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | lUnit |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/organizati |  |  |  |  |
-|  |  |  |  |  |  |  | onalunit/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | eiam:ListCondit ionalAccessPoli | istCondit |   |   |   |   |   |   |   |   |   |
+|   |   |   | ListConditionalA |   | list |   | ceId}/condition |   | N/A | N/A |   |
+|   | cies |   | ccessPolicies |   |   |   | alaccesspolicy/* |   |   |   |   |
+|   |   |   |   |   |   |   | *Group acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | eiam:ListApplic |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | ListApplications |   | get |   | ceId}/group/{# |   | N/A |   |   |
+|   | ationsForGroup |   | ForGroup |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | GroupId} |   |   |   |   |
+|   | eiam:CreateAp plicationToken |   | CreateApplicati |   |   |   | *ApplicationToken acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onToken | onToken |   | create |   | stance/{#Instan |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationt |   |   |   |   |
+|   |   |   |   |   |   |   | oken/* |   |   |   |   |
+|   | eiam:CreateOr ganizationalUni t |   | CreateOrganiza tionalUnit |   | create |   | *OrganizationalUn it acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | create | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | lUnit |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/organizati |   |   |   |   |
+|   |   |   |   |   |   |   | onalunit/* |   |   |   |   |
 
-|  | eiam:ListDomai nProxyTokens |  | ListDomainProx |  |  |  | *DomainProxyTok en acs:eiam: |  |  |  |  |
+|   | eiam:ListDomai nProxyTokens |   | ListDomainProx |   |   |   | *DomainProxyTok en acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | omainProx |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | Tokens | yTokens |  | list |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId}/do |  |  |  |  |
-|  |  |  |  |  |  |  | mainproxytoken |  |  |  |  |
-|  |  |  |  |  |  |  | /* |  |  |  |  |
-|  |  |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
-|  | eiam:ListApplic ationAccountsF orUser |  | ListApplicationA ccountsForUser |  | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationa |  |  |  |  |
-|  |  |  |  |  |  |  | ccount/* |  |  |  |  |
-|  | eiam:EnableAp plicationProvisi oning |  | EnableApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leApplicati | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onProvisioning |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | omainProx |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | Tokens | yTokens |   | list |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId}/do |   |   |   |   |
+|   |   |   |   |   |   |   | mainproxytoken |   |   |   |   |
+|   |   |   |   |   |   |   | /* |   |   |   |   |
+|   |   |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
+|   | eiam:ListApplic ationAccountsF orUser |   | ListApplicationA ccountsForUser |   | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationa |   |   |   |   |
+|   |   |   |   |   |   |   | ccount/* |   |   |   |   |
+|   | eiam:EnableAp plicationProvisi oning |   | EnableApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leApplicati | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onProvisioning |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  | eiam:RevokeAp plicationFromG roups |  | RevokeApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   | eiam:RevokeAp plicationFromG roups |   | RevokeApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | keApplicati | delete |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onFromGroups |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:ListIdentit yProvidersForN etworkAccessE |  | ListIdentityProvi |  |  |  | *NetworkAccessE ndpoint acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | entityProvi |  |  | {#accountId}:in |  |  |  |  |
-|  |  | AccessE | dersForNetwork AccessEndpoint | orNetwork | get |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | ndpoint |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/networkac |  |  |  |  |
-|  |  |  |  |  |  |  | cessendpoint/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #NetworkAcces |  |  |  |  |
-|  |  |  |  |  |  |  | sEndpointId} |  |  |  |  |
-|  | eiam:RevokeAp plicationFromU sers |  | RevokeApplicati |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | keApplicati |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onFromU | onFromUsers |  | delete |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:ListApplic |  |  |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | istApplic | ListApplicationS |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | ationSupported |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | upportedProvisi |  | list |  | ceId}/applicatio |  | N/A | N/ |  |
-|  | ProvisionProtoc |  | onProtocolType |  |  |  | n/{#Application |  |  |  |  |
-|  | olTypes |  | s |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | keApplicati | delete |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onFromGroups |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:ListIdentit yProvidersForN etworkAccessE |   | ListIdentityProvi |   |   |   | *NetworkAccessE ndpoint acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | entityProvi |   |   | {#accountId}:in |   |   |   |   |
+|   |   | AccessE | dersForNetwork AccessEndpoint | orNetwork | get |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | ndpoint |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/networkac |   |   |   |   |
+|   |   |   |   |   |   |   | cessendpoint/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #NetworkAcces |   |   |   |   |
+|   |   |   |   |   |   |   | sEndpointId} |   |   |   |   |
+|   | eiam:RevokeAp plicationFromU sers |   | RevokeApplicati |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | keApplicati |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onFromU | onFromUsers |   | delete |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:ListApplic |   |   |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | istApplic | ListApplicationS |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | ationSupported |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | upportedProvisi |   | list |   | ceId}/applicatio |   | N/A | N/ |   |
+|   | ProvisionProtoc |   | onProtocolType |   |   |   | n/{#Application |   |   |   |   |
+|   | olTypes |   | s |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
 
-|  | eiam:UpdateAp plicationAuthor izationType |  | UpdateApplicati onAuthorization |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   | eiam:UpdateAp plicationAuthor izationType |   | UpdateApplicati onAuthorization |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teApplicati thorization | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | Type | Type |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:EnableFe deratedCreden |  | EnableFederate |  |  |  | *FederatedCreden tialProvider acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | leFederate |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | dCreden | dCredentialProv |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | tialProvider |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | ider |  |  |  | ceId}/federated |  |  |  |  |
-|  |  |  |  |  |  |  | credentialprovi |  |  |  |  |
-|  |  |  |  |  |  |  | der/{#Federate |  |  |  |  |
-|  |  |  |  |  |  |  | dCredentialProv |  |  |  |  |
-|  |  |  |  |  |  |  | iderId} |  |  |  |  |
-|  | eiam:UpdateAp |  |  |  |  |  | *ApplicationFeder atedCredential acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  | pdateAp | UpdateApplicati |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  | plicationFedera tedCredentialD | onFedera | onFederatedCre |  |  |  |  |  |  |  |  |
-|  |  |  | dentialDescripti |  | update |  | ceId}/applicatio |  | N/A | N/A |  |
-|  | escription |  | on |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/applicationf |  |  |  |  |
-|  |  |  |  |  |  |  | ederatedcreden |  |  |  |  |
-|  |  |  |  |  |  |  | tial/{#Applicati |  |  |  |  |
-|  |  |  |  |  |  |  | onFederatedCre |  |  |  |  |
-|  |  |  |  |  |  |  | dentialId} |  |  |  |  |
-|  | eiam:DeleteUs er |  |  |  |  |  | *User acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  | DeleteUser |  | delete |  | stance/{#Instan |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | ceId}/user/{#Us |  |  |  |  |
-|  |  |  |  |  |  |  | erId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teApplicati thorization | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | Type | Type |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:EnableFe deratedCreden |   | EnableFederate |   |   |   | *FederatedCreden tialProvider acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | leFederate |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | dCreden | dCredentialProv |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | tialProvider |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | ider |   |   |   | ceId}/federated |   |   |   |   |
+|   |   |   |   |   |   |   | credentialprovi |   |   |   |   |
+|   |   |   |   |   |   |   | der/{#Federate |   |   |   |   |
+|   |   |   |   |   |   |   | dCredentialProv |   |   |   |   |
+|   |   |   |   |   |   |   | iderId} |   |   |   |   |
+|   | eiam:UpdateAp |   |   |   |   |   | *ApplicationFeder atedCredential acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   | pdateAp | UpdateApplicati |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   | plicationFedera tedCredentialD | onFedera | onFederatedCre |   |   |   |   |   |   |   |   |
+|   |   |   | dentialDescripti |   | update |   | ceId}/applicatio |   | N/A | N/A |   |
+|   | escription |   | on |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/applicationf |   |   |   |   |
+|   |   |   |   |   |   |   | ederatedcreden |   |   |   |   |
+|   |   |   |   |   |   |   | tial/{#Applicati |   |   |   |   |
+|   |   |   |   |   |   |   | onFederatedCre |   |   |   |   |
+|   |   |   |   |   |   |   | dentialId} |   |   |   |   |
+|   | eiam:DeleteUs er |   |   |   |   |   | *User acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   | DeleteUser |   | delete |   | stance/{#Instan |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | ceId}/user/{#Us |   |   |   |   |
+|   |   |   |   |   |   |   | erId} |   |   |   |   |
 
-|  | eiam:GetApplic ationProvisioni ngConfig |  | GetApplicationP rovisioningConfi |  |  |  | *Application acs:eiam: |  |  |  |  |
+|   | eiam:GetApplic ationProvisioni ngConfig |   | GetApplicationP rovisioningConfi |   |   |   | *Application acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationP oningConfi | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | fig | g |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id} |  |  |  |  |
-|  | eiam:UpdateAp plicationClientS ecretExpiration |  | UpdateApplicati |  |  |  | *Secret acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | teApplicati |  |  | {#accountId}:in |  |  |  |  |
-|  |  | onClientS xpiration | onClientSecretE |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | update |  | stance/{#Instan |  | N/A | N/A |  |
-|  | Time |  | xpirationTime |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/secret/{#Se |  |  |  |  |
-|  |  |  |  |  |  |  | cretId} |  |  |  |  |
-|  | eiam:ListApplic ationClientSecr ets |  | ListApplicationC |  |  |  | *Secret acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplicationC | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | lientSecrets |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/secret/* |  |  |  |  |
-|  | eiam:DeleteDo main |  | DeleteDomain |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eDomain | delete |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId} |  |  |  |  |
-|  | eiam:SetDefaul tDomain |  | SetDefaultDom ain |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | efaultDom | update |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/{ |  |  |  |  |
-|  |  |  |  |  |  |  | #DomainId} |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationP oningConfi | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | fig | g |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id} |   |   |   |   |
+|   | eiam:UpdateAp plicationClientS ecretExpiration |   | UpdateApplicati |   |   |   | *Secret acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | teApplicati |   |   | {#accountId}:in |   |   |   |   |
+|   |   | onClientS xpiration | onClientSecretE |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | update |   | stance/{#Instan |   | N/A | N/A |   |
+|   | Time |   | xpirationTime |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/secret/{#Se |   |   |   |   |
+|   |   |   |   |   |   |   | cretId} |   |   |   |   |
+|   | eiam:ListApplic ationClientSecr ets |   | ListApplicationC |   |   |   | *Secret acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplicationC | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | lientSecrets |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/secret/* |   |   |   |   |
+|   | eiam:DeleteDo main |   | DeleteDomain |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eDomain | delete |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId} |   |   |   |   |
+|   | eiam:SetDefaul tDomain |   | SetDefaultDom ain |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | efaultDom | update |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/{ |   |   |   |   |
+|   |   |   |   |   |   |   | #DomainId} |   |   |   |   |
 
-|  | eiam:UpdateAp saraEiamInstan ceDescription |  | UpdateApsaraEi amInstanceDes cription |  | update |  | *Instance acs:eiam: |  |  |  |  |
+|   | eiam:UpdateAp saraEiamInstan ceDescription |   | UpdateApsaraEi amInstanceDes cription |   | update |   | *Instance acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | update | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  | on |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:UpdateAp saraEiamInstan ceQuota |  | UpdateApsaraEi amInstanceQuo ta |  | update |  | *Instance acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  | update | {#regionId}: |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId} |  |  |  |  |
-|  | eiam:CreateAp plicationClientS ecret |  | CreateApplicati |  |  |  | *Secret acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | eApplicati | create |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  | onClientSecret |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/{#Application |  |  |  |  |
-|  |  |  |  |  |  |  | Id}/secret/* |  |  |  |  |
-|  | eiam:ListApplic ations |  | ListApplications |  |  |  | *Application acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | pplications | list |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/applicatio |  |  |  |  |
-|  |  |  |  |  |  |  | n/* |  |  |  |  |
-|  | eiam:GetDomai nDnsChallenge |  | GetDomainDns Challenge |  |  |  | *Domain acs:eiam: |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | omainDns enge | get |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/domain/* |  |  |  |  |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | update | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   | on |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:UpdateAp saraEiamInstan ceQuota |   | UpdateApsaraEi amInstanceQuo ta |   | update |   | *Instance acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   | update | {#regionId}: |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId} |   |   |   |   |
+|   | eiam:CreateAp plicationClientS ecret |   | CreateApplicati |   |   |   | *Secret acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | eApplicati | create |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   | onClientSecret |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/{#Application |   |   |   |   |
+|   |   |   |   |   |   |   | Id}/secret/* |   |   |   |   |
+|   | eiam:ListApplic ations |   | ListApplications |   |   |   | *Application acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | pplications | list |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/applicatio |   |   |   |   |
+|   |   |   |   |   |   |   | n/* |   |   |   |   |
+|   | eiam:GetDomai nDnsChallenge |   | GetDomainDns Challenge |   |   |   | *Domain acs:eiam: |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | omainDns enge | get |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/domain/* |   |   |   |   |
 
-|  | eiam:ListCondit ionalAccessPoli ciesForUser |  | ListConditionalA ccessPoliciesFor |  |  |  | *ConditionalAcces sPolicy acs:eiam: |  |  |  |  |
+|   | eiam:ListCondit ionalAccessPoli ciesForUser |   | ListConditionalA ccessPoliciesFor |   |   |   | *ConditionalAcces sPolicy acs:eiam: |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | acs:eiam: |  |  |  |
-|  |  |  |  |  |  |  | {#regionId}: |  |  |  |  |
-|  |  |  |  | PoliciesFor | list |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | {#accountId}:in |  | N/A | N/A |  |
-|  |  | rUser | User |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | stance/{#Instan |  |  |  |  |
-|  |  |  |  |  |  |  | ceId}/condition |  |  |  |  |
-|  |  |  |  |  |  |  | alaccesspolicy/* |  |  |  |  |
-
-| Resource type | ARN |
-|---|---|
-| FederatedCrede ntialProvider | acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/federatedcredentialprovider/{#Federated CredentialProviderId} acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/federatedcredentialprovider/* |
-| Brand | acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/brand/{#BrandId} acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/brand/* |
-| Application | acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/application/{#ApplicationId} acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/application/* |
-| User | acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/user/{#UserId} acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/user/* |
+|   |   |   |   |   |   |   |   | acs:eiam: |   |   |   |
+|   |   |   |   |   |   |   | {#regionId}: |   |   |   |   |
+|   |   |   |   | PoliciesFor | list |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | {#accountId}:in |   | N/A | N/A |   |
+|   |   | rUser | User |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | stance/{#Instan |   |   |   |   |
+|   |   |   |   |   |   |   | ceId}/condition |   |   |   |   |
+|   |   |   |   |   |   |   | alaccesspolicy/* |   |   |   |   |
 
 **Resource**
 
@@ -2312,6 +2529,13 @@ The following table lists the resources defined by placeholder-${productName}. S
 ```
 
 `acs` : The initialism of Alibaba Cloud service, which indicates the public cloud of Alibaba Cloud. `{#ramcode}` : The code used in RAM to indicate an Alibaba Cloud service. `{#regionId}` : The . If the resource covers all regions, set it to an asterisk (*). `{#accountId}` : The ID of the Alibaba Cloud account. If the resource covers all Alibaba Cloud accounts, set it to an asterisk (*). `{#resourceType}` : The service-defined resource identifier. It supports a hierarchical structure, which is similar to a file path. If the statement covers global resources, set it to an asterisk (*).
+
+| Resource type | ARN |
+|---|---|
+| FederatedCrede ntialProvider | acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/federatedcredentialprovider/{#Federated CredentialProviderId} acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/federatedcredentialprovider/* |
+| Brand | acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/brand/{#BrandId} acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/brand/* |
+| Application | acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/application/{#ApplicationId} acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/application/* |
+| User | acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/user/{#UserId} acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/user/* |
 
 | Domain | acs:eiam:{#regionId}:{#accountId}:instance/{#InstanceId}/domain/* acs:eiam:{#regionId}: {#accountId}:instance/{#InstanceId}/domain/{#DomainId} |
 |---|---|
@@ -2338,25 +2562,15 @@ The following table lists the resources defined by placeholder-${productName}. S
 
 IDaaS does not define service-specific condition keys. For information about common condition keys that are defined by Apsara Stack, see Policy elements.
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Descriptio n | Strin g | Query | No | This instance is used in the production environment. | The description of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 **Related operations**
 
 You can create a custom policy and attach the policy to a RAM user, RAM user group, or RAM role. For more information, see the following topics: Create a custom policy Grant permissions to a RAM user Grant permissions to a RAM user group Grant permissions to a RAM role
 
-### API catalog
+### 1.4 API catalog
 
-#### Instances
+#### 1.4.1 Instances
 
-##### UpdateApsaraEiamInstanceDescription
+##### 1.4.1.1 UpdateApsaraEiamInstanceDescription
 
 Modifies the description of an instance.
 
@@ -2366,7 +2580,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Descriptio n | Strin g | Query | No | This instance is used in the production environment. | The description of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -2376,24 +2600,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateApsaraEiamInstanceDescription &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### DeleteApsaraEiamInstance
+##### 1.4.1.2 DeleteApsaraEiamInstance
 
 Deletes an instance
 
@@ -2403,7 +2616,16 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -2416,25 +2638,10 @@ http(s)://[Endpoint]/?Action=DeleteApsaraEiamInstance &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### CreateApsaraEiamInstance
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| Descriptio n | Strin g | Query | No | Demo instance for test | The description of the instance. The description can be up to 256 characters in length. |
-| UserQuota | Long | Query | No | 1000 | The user quota. |
-| Applicatio nQuota | Long | Query | No | 100 | The application quota. |
-| IdentityPr oviderQuo ta | Long | Query | No | 100 | The identity provider (IdP) quota. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-| InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
+##### 1.4.1.3 CreateApsaraEiamInstance
 
 Creates an instance.
 
@@ -2444,7 +2651,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| Descriptio n | Strin g | Query | No | Demo instance for test | The description of the instance. The description can be up to 256 characters in length. |
+| UserQuota | Long | Query | No | 1000 | The user quota. |
+| Applicatio nQuota | Long | Query | No | 100 | The application quota. |
+| IdentityPr oviderQuo ta | Long | Query | No | 100 | The identity provider (IdP) quota. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+| InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
 
 **Examples**
 
@@ -2456,26 +2676,12 @@ http(s)://[Endpoint]/?Action=CreateApsaraEiamInstance &<Common request parameter
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| UserQuota | Long | Query | No | 1000 | The user quota. |
-| Applicatio nQuota | Long | Query | No | 100 | The application quota that can be used. |
-| IdentityPr oviderQuo ta | Long | Query | No | 1000 | The identity provider (IdP) quota that can be used. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx"
-}
 ```
 
-##### UpdateApsaraEiamInstanceQuota
+##### 1.4.1.4 UpdateApsaraEiamInstanceQuota
 
 Changes the instance specifications.
 
@@ -2485,7 +2691,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| UserQuota | Long | Query | No | 1000 | The user quota. |
+| Applicatio nQuota | Long | Query | No | 100 | The application quota that can be used. |
+| IdentityPr oviderQuo ta | Long | Query | No | 1000 | The identity provider (IdP) quota that can be used. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -2495,30 +2713,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=UpdateApsaraEiamInstanceQuota &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 10 | The number of entries per page. |
-| Status | Strin g | Query | No | running | The status of the instance. Valid values: creating running |
-| InstanceId s | Array | Query | No | ["idaas ue2jvisn35eaaat _ hk267xxxxx", "idaas ue2jvisbb5ea5lm _ thk267xxxxx"] | The instance IDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Instances | Array | Instance list | The instances. |
-| -InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
-
-`JSON` format
+Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### ListApsaraEiamInstances
+##### 1.4.1.5 ListApsaraEiamInstances
 
 Queries a list of Employee Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
 
@@ -2528,7 +2729,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 10 | The number of entries per page. |
+| Status | Strin g | Query | No | running | The status of the instance. Valid values: creating running |
+| InstanceId s | Array | Query | No | ["idaas ue2jvisn35eaaat _ hk267xxxxx", "idaas ue2jvisbb5ea5lm _ thk267xxxxx"] | The instance IDs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Instances | Array | Instance list | The instances. |
+| -InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2567,36 +2781,30 @@ http(s)://[Endpoint]/?Action=ListApsaraEiamInstances &<Common request parameters
 Sample responses `JSON` format
 
 ```json
-{
-  {
+ "Instances":[
    "Status":"running",
    "UserStock":[
-    {
      "StockUsed":200,
      "StockTotal":1000,
      "StockRemaining":800
-    }
 ```
 
 `],`
 
 ```json
-    {
+   "ApplicationStock":[
      "StockUsed":20,
      "StockTotal":100,
      "StockRemaining":80
-    }
 ```
 
 `],`
 
 ```json
    "IdentityProviderStock":[
-    {
      "StockUsed":20,
      "StockTotal":100,
      "StockRemaining":80
-    }
 ```
 
 `],`
@@ -2606,27 +2814,18 @@ Sample responses `JSON` format
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
    "CreateTime":1652085686179,
    "DefaultEndpoint":[
-    {
      "Status":"resolved",
      "Endpoint":"example-xxx.aliyunidaas.com"
-    }
 ```
 
-]
-
-```
-  }
-```
-
-`],`
+`]` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### GetInstanceLicense
+##### 1.4.1.6 GetInstanceLicense
 
 Queries the valid license of an Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) instance.
 
@@ -2641,6 +2840,8 @@ This operation does not have operation-specific request headers and uses only co
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
@@ -2653,8 +2854,6 @@ This operation does not have operation-specific request headers and uses only co
 | - PurchaseChan nel | String | alibaba cloud _ | The purchase channel of the license. |
 | - PurchaseInsta nceId | String | eiam-cn-xxxxx | The unique identifier of the external product corresponding to the license. |
 | -Edition | String | free | The license edition. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2673,7 +2872,6 @@ http(s)://[Endpoint]/?Action=GetInstanceLicense &InstanceId=idaas_ue2jvisn35ea5l
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "License":{
   "EndTime":1723996800000,
@@ -2694,24 +2892,13 @@ Sample success responses `JSON` format
   "PurchaseChannel":"alibaba_cloud",
   "LicenseId":"license_1234xxxx",
   "Edition":"free"
- }
-}
 ```
 
-#### Applications
+#### 1.4.2 Applications
 
-##### Basics
+##### 1.4.2.1 Basics
 
-###### CreateApplication
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
-| Applicatio nName | Strin g | Query | Yes | Ram Account SSO | The application name. |
-| Descriptio n | Strin g | Query | No | RAM user SSO application | The description of the application. |
-| LogoUrl | Strin g | Query | No | https://oss.cn- hangzhou.aliyuncs.com/l ogo.png | The URL of the application logo. |
-| Applicatio nSourceTy pe | Strin g | Query | Yes | urn:alibaba:idaas:app:so urce:standard | The type of the application source. Valid values: urn:alibaba:idaas:app: source:template: application template. urn:alibaba:idaas:app: source:standard: standard protocol. |
-| SsoType | Strin g | Query | Yes | saml2 | The Single Sign-On (SSO) protocol. Valid values: saml2: the Security Assertion Markup Language (SAML) 2.0 protocol. oidc: the OpenID Connect (OIDC) protocol. |
+###### 1.4.2.1.1 CreateApplication
 
 Creates an application on an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -2723,44 +2910,41 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
+| Applicatio nName | Strin g | Query | Yes | Ram Account SSO | The application name. |
+| Descriptio n | Strin g | Query | No | RAM user SSO application | The description of the application. |
+| LogoUrl | Strin g | Query | No | https://oss.cn- hangzhou.aliyuncs.com/l ogo.png | The URL of the application logo. |
+| Applicatio nSourceTy pe | Strin g | Query | Yes | urn:alibaba:idaas:app:so urce:standard | The type of the application source. Valid values: urn:alibaba:idaas:app: source:template: application template. urn:alibaba:idaas:app: source:standard: standard protocol. |
+| SsoType | Strin g | Query | Yes | saml2 | The Single Sign-On (SSO) protocol. Valid values: saml2: the Security Assertion Markup Language (SAML) 2.0 protocol. oidc: the OpenID Connect (OIDC) protocol. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Applicatio nTemplat eId | Strin g | Query | No | template cloud ram _ _ | The ID of the application template. You must specify this parameter if you set ApplicationSourceType to urn:alibaba:idaas:app:so urce:template. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | ApplicationId | String | app mkv7rgt4d7i4 _ u7zqtzev2xxxx | The application ID. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationName=Ram Account SSO &ApplicationSourceType=urn:alibaba:idaas:app:source:standard &SsoType=saml2 &<Common request parameters>
+http(s)://[Endpoint]/?Action=CreateApplication &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationName=Ram Account SSO &ApplicationSourceType=urn:alibaba:idaas:app:source:standard &SsoType=saml2 &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2xxxx"
-}
 ```
 
-###### DeleteApplication
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+###### 1.4.2.1.2 DeleteApplication
 
 Deletes an Employee Identity and Access Management (EIAM) application of Identity as a Service (IDaaS).
 
@@ -2770,29 +2954,41 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=DeleteApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### UpdateApplicationDescription
+###### 1.4.2.1.3 UpdateApplicationDescription
 
 Modifies the description of an Employee Identity and Access Management (EIAM) application of Identity as a Service (IDaaS).
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2801,15 +2997,11 @@ Modifies the description of an Employee Identity and Access Management (EIAM) ap
 | Descriptio n | Strin g | Query | No | A demo application that is used for test | The description of the application. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -2822,12 +3014,10 @@ http(s)://[Endpoint]/?Action=UpdateApplicationDescription &InstanceId=idaas_ue2j
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### EnableApplication
+###### 1.4.2.1.4 EnableApplication
 
 Enables an Employee Identity and Access Management (EIAM) application.
 
@@ -2835,37 +3025,35 @@ Enables an Employee Identity and Access Management (EIAM) application.
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=EnableApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### DisableApplication
+###### 1.4.2.1.5 DisableApplication
 
 Disables an enabled application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). All features of an IDaaS EIAM application cannot be used if you disable the application.
 
@@ -2881,15 +3069,11 @@ This operation does not have operation-specific request headers and uses only co
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -2902,12 +3086,10 @@ http(s)://[Endpoint]/?Action=DisableApplication &InstanceId=idaas_ue2jvisn35ea5l
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### GetApplication
+###### 1.4.2.1.6 GetApplication
 
 Queries the detailed information about an Employee Identity and Access Management (EIAM) application.
 
@@ -2917,11 +3099,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2933,8 +3121,6 @@ This operation does not have operation-specific request headers and uses only co
 | - ApplicationSou rceType | String | urn:alibaba:idaas:a pp:source:template | The source of the application. Valid values: urn:alibaba:idaas:app:source:template: application template urn:alibaba:idaas:app:source:standard: standard protocol |
 | - ApplicationTe mplateId | String | apt rpa tdsxxx _ _ | The ID of the template based on which the application is created. This parameter is returned only if the application is created based on a template. |
 | - AuthorizationT ype | String | authorize required _ | The authorization type of the application. Valid values: authorize required: Only the user with _ explicit authorization can access the application. default all: By default, all users can _ access the application. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2959,13 +3145,12 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetApplication &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Application":{
   "Status":"enabled",
@@ -2986,11 +3171,17 @@ Sample success responses `JSON` format
   "Features":"[\"sso\", \"provision\"]",
   "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
   "AuthorizationType":"authorize_required"
- }
-}
 ```
 
-###### ListApplications
+###### 1.4.2.1.7 ListApplications
+
+Queries the information about one or more Employee Identity and Access Management (EIAM) applications by page.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3002,14 +3193,6 @@ Sample success responses `JSON` format
 | Authorizat ionType | Strin g | Query | No | authorize required _ | The authorization type of the application. Valid values: authorize required: _ Only the user with explicit authorization can access the application. default all: By default, _ all users can access the application. |
 | Status | Strin g | Query | No | enabled | The status of the application. Valid values: enabled disabled |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-Queries the information about one or more Employee Identity and Access Management (EIAM) applications by page.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
 
 **Response parameters**
 
@@ -3042,21 +3225,15 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListApplications &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The ID of the Identity-as- a-Service Enterprise Identity Access Management (IDaaS EIAM) instance. |
-
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-  {
+ "Applications":[
    "Status":"enabled",
    "ApplicationName":"SAML application",
    "Description":"A single application whose code is pkces",
@@ -3072,16 +3249,11 @@ Sample success responses `JSON` format
    "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "Features":"[\"sso\", \"provision\"]",
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### ListApplicationsForNetworkZone
+###### 1.4.2.1.8 ListApplicationsForNetworkZone
 
 Queries a list of applications associated with a network zone.
 
@@ -3093,10 +3265,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The ID of the Identity-as- a-Service Enterprise Identity Access Management (IDaaS EIAM) instance. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | NextToke n | Strin g | Query | No | NTxxxxxexample | The token used for the next query. You must specify the token that is obtained from the previous query as the value of NextToken. |
 | PreviousT oken | Strin g | Query | No | test | The token used to query the previous page. You must specify the token that is obtained from the previous query as the value of PreviousToken. |
 | MaxResult s | Integ er | Query | No | 10 | The maximum number of entries returned per page. Default value: 20. Maximum value: 100. |
 | NetworkZ oneId | Strin g | Query | Yes | zone123456 | The ID of the network zone associated with the application. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3106,8 +3285,6 @@ This operation does not have operation-specific request headers and uses only co
 | - ApplicationNa me | String | SAML application | The name of the application. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | TotalCount | Long | 100 | The total number of entries returned. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3126,14 +3303,12 @@ http(s)://[Endpoint]/?Action=ListApplicationsForNetworkZone &InstanceId=idaas_ue
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "PreviousToken":"test",
-  {
+ "Applications":[
    "ApplicationName":"SAML application",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
-  }
 ```
 
 `],`
@@ -3142,16 +3317,17 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
  "MaxResults":10
-}
 ```
 
-###### ListApplicationsForGroup
+###### 1.4.2.1.9 ListApplicationsForGroup
 
 Queries a list of applications that an Enterprise Identity Access Management (EIAM) group can access.
 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3162,6 +3338,8 @@ This operation does not have operation-specific request headers and uses only co
 | GroupId | Strin g | Query | Yes | group miu8e4t4d7i4u7u _ wezgr54xxxx | The group ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 100 | The total number of entries returned. |
@@ -3170,17 +3348,9 @@ This operation does not have operation-specific request headers and uses only co
 | -ApplicationId | String | app mkv7rgt4d7i4 _ u7zqtzev2mxxxx | The application ID. |
 | - HasDirectAuth orization | Boolean | true | Indicates whether the EIAM group has direct permissions on the application. Valid values: true: The EIAM group has direct permissions on the application. false: The EIAM group does not have direct permissions on the application. |
 
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - HasInheritAuth orization | Boolean | false | Indicates whether the EIAM group has inherited permissions on the application. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Applicatio nTemplat eId | Strin g | Query | Yes | apt ramuser xxxx _ _ | The application template ID. This parameter does not have a default value. |
 
 **Examples**
 
@@ -3193,23 +3363,17 @@ http(s)://[Endpoint]/?Action=ListApplicationsForGroup &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-  {
+ "Applications":[
    "HasDirectAuthorization":true,
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "HasInheritAuthorization":false
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### GetApplicationTemplate
+###### 1.4.2.1.10 GetApplicationTemplate
 
 Queries the information about an application template in Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM).
 
@@ -3221,7 +3385,13 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Applicatio nTemplat eId | Strin g | Query | Yes | apt ramuser xxxx _ _ | The application template ID. This parameter does not have a default value. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. This parameter is left empty by default. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3235,8 +3405,6 @@ This operation does not have operation-specific request headers and uses only co
 | - HelpDocument Url | String | https://example.co m/document detail _ /409xxx.html | The URL of the help document corresponding to the application template. |
 | -CreateTime | Long | 1730341123000 | The time when the application template was created. |
 | -UpdateTime | Long | 1730341124000 | The time when the application template was last updated. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3257,13 +3425,16 @@ https://[Endpoint]/?Action=GetApplicationTemplate &ApplicationTemplateId=apt_ram
 Sample success responses `JSON` format
 
 ```json
-{
  "ApplicationTemplate":{
   "HelpDocumentUrl":"https://example.com/document_detail/409xxx.html",
   "ManagedServiceCode":"bastionhost",
   "SaleInfo":{
    "AlwaysFree":""
-  },
+```
+
+`},`
+
+```json
   "ApplicationTemplateId":"apt_ramintlrole_ixxxxx",
   "Description":"OIDC application template",
   "ServiceManaged":true,
@@ -3274,10 +3445,23 @@ tps-xxx-xxx.png",
   "UpdateTime":1730341124000,
   "ApplicationTemplateName":"Application template 1",
   "SsoTypes":"saml2"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
+
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+###### 1.4.2.1.11 UpdateApplicationInfo
+
+Modifies the basic information of an Employee Identity and Access Management (EIAM) application.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3289,36 +3473,15 @@ tps-xxx-xxx.png",
 | ClientToke n | Strin g | Query | No | client-token-example | The client token that is used to ensure the idempotence of the request. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-###### UpdateApplicationInfo
-
-Modifies the basic information of an Employee Identity and Access Management (EIAM) application.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| NextToke n | Strin g | Query | No | NTxxxxxexample | The query token. |
-| MaxResult s | Long | Query | No | 20 | The number of entries to return on each page. |
-| NetworkA ccessEndp ointId | Strin g | Query | Yes | nae mxzj4c44ctyectkggt _ g4mxxxxx | The ID of the network endpoint. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
 
 ```
 https://[Endpoint]/?Action=UpdateApplicationInfo &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationName=Ram Account SSO &<Common request parameters>
@@ -3327,9 +3490,7 @@ https://[Endpoint]/?Action=UpdateApplicationInfo &InstanceId=idaas_ue2jvisn35ea5
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
 **1.4.2.1.12.**
@@ -3344,7 +3505,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| NextToke n | Strin g | Query | No | NTxxxxxexample | The query token. |
+| MaxResult s | Long | Query | No | 20 | The number of entries to return on each page. |
+| NetworkA ccessEndp ointId | Strin g | Query | Yes | nae mxzj4c44ctyectkggt _ g4mxxxxx | The ID of the network endpoint. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3367,36 +3539,20 @@ https://[Endpoint]/?Action=ListApplicationsForNetworkAccessEndpoint &InstanceId=
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
-  {
+ "ApplicationsForNetworkAccessEndpoint":[
    "ApplicationName":"cloudSSO",
    "InstanceId":"idaas_6ed5syotlwdrgmbzn7qn5xxxxx",
    "ApplicationId":"app_m5nzr3kk4njkco2nnc4wjxxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+##### 1.4.2.2 SSO
 
-##### SSO
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-###### EnableApplicationSso
+###### 1.4.2.2.1 EnableApplicationSso
 
 Enables the single sign-on (SSO) feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -3406,7 +3562,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -3419,22 +3585,10 @@ http(s)://[Endpoint]/?Action=EnableApplicationSso &InstanceId=idaas_ue2jvisn35ea
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### DisableApplicationSso
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+###### 1.4.2.2.2 DisableApplicationSso
 
 Disables the single sign-on (SSO) feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). This way, employees cannot log in to the application by using SSO.
 
@@ -3444,7 +3598,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -3457,25 +3621,14 @@ http(s)://[Endpoint]/?Action=DisableApplicationSso &InstanceId=idaas_ue2jvisn35e
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### SetApplicationSsoConfig
+###### 1.4.2.2.3 SetApplicationSsoConfig
 
 Configures the single sign-on (SSO) attributes of an Enterprise Identity Access Management (EIAM) application.
 
 **Request headers**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| SamlSsoC onfig | Struc t | Query | No | Object | The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. |
-| - SpSsoAcs Url | Strin g |  | No | https://signin.aliyun.com /saml-role/sso | The Assertion Consumer Service (ACS) URL of the application in SAML. |
-| - SpEntityId | Strin g |  | No | urn:alibaba:cloudcomput ing | The entity ID of the application in SAML. |
-| - NameIdFo rmat | Strin g |  | No | urn:oasis:names:tc:SAM L:1.1:nameid- format:unspecified | The format of the NameID element in the SAML assertion. Valid values: urn:oasis:names:tc:SAM L:1.1:nameid- format:unspecified: No format is specified. How to resolve the NameID element depends on the application. urn:oasis:names:tc:SAM L:1.1:nameid- format:emailAddress: The NameID element must be an email address. urn:oasis:names:tc:SAM L:2.0:nameid- format:persistent: The NameID element must be persistent. urn:oasis:names:tc:SAM L:2.0:nameid- format:transient: The NameID element must be transient. |
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
@@ -3483,51 +3636,60 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - NameIdVa lueExpres sion | Strin g |  | No | user.email | The expression that is used to generate the value of NameID in the SAML assertion. |
-| - DefaultRel ayState | Strin g |  | No | https://home.console.ali yun.com | The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value. |
-| - Signature Algorithm | Strin g |  | No | RSA-SHA256 | The algorithm that is used to calculate the signature for the SAML assertion. |
-| - Response Signed | Boole an |  | No | true | Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time. Valid values: true: signs the response. false: does not sign the assertion. |
-| - AssertionS igned | Boole an |  | No | true | Specifies whether to calculate the signature for the assertion. You cannot set ResponseSigned and AssertionSigned to false at the same time. Valid values: true: signs the assertion. false: does not sign the assertion. |
-| - AttributeS tatements | Array |  | No | Array | The additional user attributes in the SAML assertion. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| SamlSsoC onfig | Struc t | Query | No | Object | The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. |
+| - SpSsoAcs Url | Strin g |   | No | https://signin.aliyun.com /saml-role/sso | The Assertion Consumer Service (ACS) URL of the application in SAML. |
+| - SpEntityId | Strin g |   | No | urn:alibaba:cloudcomput ing | The entity ID of the application in SAML. |
+| - NameIdFo rmat | Strin g |   | No | urn:oasis:names:tc:SAM L:1.1:nameid- format:unspecified | The format of the NameID element in the SAML assertion. Valid values: urn:oasis:names:tc:SAM L:1.1:nameid- format:unspecified: No format is specified. How to resolve the NameID element depends on the application. urn:oasis:names:tc:SAM L:1.1:nameid- format:emailAddress: The NameID element must be an email address. urn:oasis:names:tc:SAM L:2.0:nameid- format:persistent: The NameID element must be persistent. urn:oasis:names:tc:SAM L:2.0:nameid- format:transient: The NameID element must be transient. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| -- AttributeS tatements Item | Struc t |  | No | Object | An additional user attribute. |
-| --- AttributeN ame | Strin g |  | No | https://www.aliyun.com/ SAML- Role/Attributes/RoleSess ionName | The attribute name in the SAML assertion. |
-| --- AttributeV alueExpre ssion | Strin g |  | No | user.username | The expression that is used to generate the value of the attribute in the SAML assertion. |
-| - IdPEntityId | Strin g |  | No | https://example.com/ | The entity ID of the identity provider (IdP) in the SAML protocol. The value can be in the URL or URN format. |
-| - OptionalR elayStates | Array |  | No | Array | The optional RelayState configurations. |
-| -- OptionalR elayStates Item | Struc t |  | No | Object | The optional RelayState configuration. |
-| --- RelayStat e | Strin g |  | No | https://ram.console.aliyu n.com/ | The value of RelayState. |
-| --- DisplayNa me | Strin g |  | No | Ram | The display name of RelayState. |
+| - NameIdVa lueExpres sion | Strin g |   | No | user.email | The expression that is used to generate the value of NameID in the SAML assertion. |
+| - DefaultRel ayState | Strin g |   | No | https://home.console.ali yun.com | The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value. |
+| - Signature Algorithm | Strin g |   | No | RSA-SHA256 | The algorithm that is used to calculate the signature for the SAML assertion. |
+| - Response Signed | Boole an |   | No | true | Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time. Valid values: true: signs the response. false: does not sign the assertion. |
+| - AssertionS igned | Boole an |   | No | true | Specifies whether to calculate the signature for the assertion. You cannot set ResponseSigned and AssertionSigned to false at the same time. Valid values: true: signs the assertion. false: does not sign the assertion. |
+| - AttributeS tatements | Array |   | No | Array | The additional user attributes in the SAML assertion. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| -- AttributeS tatements Item | Struc t |   | No | Object | An additional user attribute. |
+| --- AttributeN ame | Strin g |   | No | https://www.aliyun.com/ SAML- Role/Attributes/RoleSess ionName | The attribute name in the SAML assertion. |
+| --- AttributeV alueExpre ssion | Strin g |   | No | user.username | The expression that is used to generate the value of the attribute in the SAML assertion. |
+| - IdPEntityId | Strin g |   | No | https://example.com/ | The entity ID of the identity provider (IdP) in the SAML protocol. The value can be in the URL or URN format. |
+| - OptionalR elayStates | Array |   | No | Array | The optional RelayState configurations. |
+| -- OptionalR elayStates Item | Struc t |   | No | Object | The optional RelayState configuration. |
+| --- RelayStat e | Strin g |   | No | https://ram.console.aliyu n.com/ | The value of RelayState. |
+| --- DisplayNa me | Strin g |   | No | Ram | The display name of RelayState. |
 | OidcSsoC onfig | Struc t | Query | No | struct | The OIDC-based SSO configuration attributes of the application. |
-| - RedirectU ris | Array |  | No | ["https://example.com/oi dc/login/callback","https: //example.com/oidc/logi n/callback1 "] | The list of redirect URIs that are supported by the application. |
-| - PostLogou tRedirectU ris | Array |  | No | ["https://example.com/oi dc/login/callback","https: //example.com/oidc/logi n/callback1 "] | The list of post-logout redirect URIs that are supported by the application. |
+| - RedirectU ris | Array |   | No | ["https://example.com/oi dc/login/callback","https: //example.com/oidc/logi n/callback1 "] | The list of redirect URIs that are supported by the application. |
+| - PostLogou tRedirectU ris | Array |   | No | ["https://example.com/oi dc/login/callback","https: //example.com/oidc/logi n/callback1 "] | The list of post-logout redirect URIs that are supported by the application. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - GrantType s | Array |  | No | ["authorization code"] _ | The OIDC grant type that is supported. Valid values: authorization code: The _ authorization code grant type. implicit: The implicit grant type. refresh token: The _ refresh token grant type. urn:ietf:params:oauth:gr ant-type: The device authorization grant type. password: The resource owner password credentials grant type. |
-| - Response Types | Array |  | No | ["token id token"] _ | The ResponseType parameter in the OIDC protocol. This parameter is valid only when GrantTypes is set to implicit. Valid values: token: returns only an access token. id token: _ returns only an ID token. token id token: returns _ both an access token and an ID token. |
-| - GrantScop es | Array |  | No | ["openid"] | The scope parameter in the OIDC protocol. This parameter specifies the scope of user information that can be returned by the userinfo endpoint or included in the ID token. Valid values: openid: An OIDC standard parameter that indicates the unique ID of the user. profile: The detailed information about the user. email: The email address of the user. phone: The phone number of the user. |
+| - GrantType s | Array |   | No | ["authorization code"] _ | The OIDC grant type that is supported. Valid values: authorization code: The _ authorization code grant type. implicit: The implicit grant type. refresh token: The _ refresh token grant type. urn:ietf:params:oauth:gr ant-type: The device authorization grant type. password: The resource owner password credentials grant type. |
+| - Response Types | Array |   | No | ["token id token"] _ | The ResponseType parameter in the OIDC protocol. This parameter is valid only when GrantTypes is set to implicit. Valid values: token: returns only an access token. id token: _ returns only an ID token. token id token: returns _ both an access token and an ID token. |
+| - GrantScop es | Array |   | No | ["openid"] | The scope parameter in the OIDC protocol. This parameter specifies the scope of user information that can be returned by the userinfo endpoint or included in the ID token. Valid values: openid: An OIDC standard parameter that indicates the unique ID of the user. profile: The detailed information about the user. email: The email address of the user. phone: The phone number of the user. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - Password TotpMfaR equired | Boole an |  | No | true | Specifies whether time- based one-time password (TOTP) authentication is required in password mode. This parameter is valid only when GrantTypes for the OIDC application is set to password. |
-| - Password Authentic ationSour ceId | Strin g |  | No | ia password _ | The ID of the identity source for the resource owner password credentials grant type. This parameter is valid only when GrantTypes for the OIDC application is set to password. |
-| - PkceRequi red | Boole an |  | No | true | Specifies whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636). |
-| - PkceChall engeMeth ods | Array |  | No | S256 | The algorithm used to compute the code challenge in PKCE. Valid values: plain: The code challenge is the same as the code verifier. S256: The SHA-256 algorithm. |
-| - AccessTok enEffectiv eTime | Long |  | No | 1200 | The validity period of the issued access token. Unit: seconds. Default value: 1200. |
-| - CodeEffec tiveTime | Long |  | No | 60 | The validity period of the issued code. Unit: seconds. Default value: 60. |
-| - IdTokenEff ectiveTim e | Long |  | No | 300 | The validity period of the issued ID token. Unit: seconds. Default value: 300. |
+| - Password TotpMfaR equired | Boole an |   | No | true | Specifies whether time- based one-time password (TOTP) authentication is required in password mode. This parameter is valid only when GrantTypes for the OIDC application is set to password. |
+| - Password Authentic ationSour ceId | Strin g |   | No | ia password _ | The ID of the identity source for the resource owner password credentials grant type. This parameter is valid only when GrantTypes for the OIDC application is set to password. |
+| - PkceRequi red | Boole an |   | No | true | Specifies whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636). |
+| - PkceChall engeMeth ods | Array |   | No | S256 | The algorithm used to compute the code challenge in PKCE. Valid values: plain: The code challenge is the same as the code verifier. S256: The SHA-256 algorithm. |
+| - AccessTok enEffectiv eTime | Long |   | No | 1200 | The validity period of the issued access token. Unit: seconds. Default value: 1200. |
+| - CodeEffec tiveTime | Long |   | No | 60 | The validity period of the issued code. Unit: seconds. Default value: 60. |
+| - IdTokenEff ectiveTim e | Long |   | No | 300 | The validity period of the issued ID token. Unit: seconds. Default value: 300. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - RefreshTo kenEffecti ve | Long |  | No | 86400 | The validity period of the issued refresh token. Unit: seconds. Default value: 86400. |
-| - CustomCl aims | Array |  | No | Array | The custom claims that are returned for the ID token. |
-| -- CustomCl aimsItem | Struc t |  | No | object | The custom claim that is returned for the ID token. |
-| --- ClaimNam e | Strin g |  | No | "Role" | The name of the claim. |
-| --- ClaimValu eExpressi on | Strin g |  | No | user.dict.applicationRole | The expression that is used to generate the value of the claim. |
-| - SubjectIdE xpression | Strin g |  | No | user.userid | The custom expression that is used to generate the subject ID returned for the ID token. |
+| - RefreshTo kenEffecti ve | Long |   | No | 86400 | The validity period of the issued refresh token. Unit: seconds. Default value: 86400. |
+| - CustomCl aims | Array |   | No | Array | The custom claims that are returned for the ID token. |
+| -- CustomCl aimsItem | Struc t |   | No | object | The custom claim that is returned for the ID token. |
+| --- ClaimNam e | Strin g |   | No | "Role" | The name of the claim. |
+| --- ClaimValu eExpressi on | Strin g |   | No | user.dict.applicationRole | The expression that is used to generate the value of the claim. |
+| - SubjectIdE xpression | Strin g |   | No | user.userid | The custom expression that is used to generate the subject ID returned for the ID token. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3539,11 +3701,11 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToke n | Strin g | Query | No | client-examplexxx | A client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -3556,16 +3718,18 @@ http(s)://[Endpoint]/?Action=SetApplicationSsoConfig &InstanceId=idaas_ue2jvisn3
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### GetApplicationSsoConfig
+###### 1.4.2.2.4 GetApplicationSsoConfig
 
 Queries the single sign-on (SSO) configuration attributes of an application in Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM)).
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3573,18 +3737,14 @@ Queries the single sign-on (SSO) configuration attributes of an application in I
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | ApplicationSso Config | Struct | Struct | The SSO configuration information of the application. |
 | -SsoStatus | String | enabled | The SSO feature status of the application. Valid values: enabled: The feature is enabled. disabled: The feature is disabled. |
 | -InitLoginType | String | only app init sso _ _ _ | The initial SSO method. Valid values: only app init sso: Only application- _ _ _ initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OpenID Connect (OIDC) protocol. If this method is selected when the SSO protocol of the application is Security Assertion Markup Language (SAML), the InitLoginUrl parameter is required. idaas or app init sso: IDaaS-initiated _ _ _ _ SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3613,7 +3773,7 @@ This operation does not have operation-specific request headers and uses only co
 | -- PasswordAuth enticationSour ceId | String | ia password _ | The ID of the identity authentication source in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode. |
 | -- PkceRequired | Boolean | true | Specifies whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636). |
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3661,8 +3821,8 @@ http(s)://[Endpoint]/?Action=GetApplicationSsoConfig &InstanceId=idaas_ue2jvisn3
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
+ "ApplicationSsoConfig":{
   "ProtocolEndpointDomain":{
    "SamlMetaEndpoint":"",
    "OidcIssuer":"",
@@ -3677,13 +3837,15 @@ Sample success responses `JSON` format
    "OidcLogoutEndpoint":"",
    "Oauth2AuthorizationEndpoint":"",
    "SamlSsoEndpoint":""
-  },
+```
+
+`},`
+
+```json
   "SamlSsoConfig":{
    "AttributeStatements":[
-    {
      "AttributeValueExpression":"",
      "AttributeName":""
-    }
 ```
 
 `],`
@@ -3692,10 +3854,8 @@ Sample success responses `JSON` format
    "NameIdValueExpression":"",
    "ResponseSigned":"",
    "OptionalRelayStates":[
-    {
      "RelayState":"",
      "DisplayName":""
-    }
 ```
 
 `],`
@@ -3708,7 +3868,11 @@ Sample success responses `JSON` format
    "AssertionSigned":"",
    "NameIdFormat":"",
    "IdPEntityId":""
-  },
+```
+
+`},`
+
+```json
   "SsoStatus":"enabled",
   "InitLoginType":"only_app_init_sso",
   "InitLoginUrl":"http://127.0.0.1:8000/start_login?enterprise_code=ABCDEF",
@@ -3720,10 +3884,8 @@ Sample success responses `JSON` format
    "PkceChallengeMethods":"",
    "RefreshTokenEffective":"",
    "CustomClaims":[
-    {
      "ClaimName":"",
      "ClaimValueExpression":""
-    }
 ```
 
 `],`
@@ -3737,28 +3899,11 @@ Sample success responses `JSON` format
    "RedirectUris":"",
    "CodeEffectiveTime":"",
    "GrantTypes":""
-  }
- }
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| UserIds | Array | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The IDs of the accounts to which you want to grant permissions. You can grant permissions to a maximum of 100 accounts at a time. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+##### 1.4.2.3 Application authorization
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-```
-}
-```
-
-##### Application authorization
-
-###### AuthorizeApplicationToUsers
+###### 1.4.2.3.1 AuthorizeApplicationToUsers
 
 Grants the permissions to access an application to multiple accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) at a time.
 
@@ -3768,7 +3913,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| UserIds | Array | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The IDs of the accounts to which you want to grant permissions. You can grant permissions to a maximum of 100 accounts at a time. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -3778,25 +3934,10 @@ Sample requests
 http(s)://[Endpoint]/?Action=AuthorizeApplicationToUsers &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &UserIds=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| Organizati onalUnitId s | Array | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The IDs of the organizations. You can grant the access permissions to a maximum of 100 organizations at a time. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-`JSON` format
+Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
 **1.4.2.3.2.**
@@ -3811,22 +3952,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| GroupIds | Array | Query | Yes | group miu8e4t4d7i4u7u _ wezgr54xxxx | The IDs of the account groups to which you want to grant permissions. You can grant permissions to a maximum of 100 account groups at a time. |
+| Organizati onalUnitId s | Array | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The IDs of the organizations. You can grant the access permissions to a maximum of 100 organizations at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=AuthorizeApplicationToOrganizationalUnits &InstanceId=idaas_ue2jvisn35ea5lmthk2676xxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &OrganizationalUnitIds=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
@@ -3835,12 +3976,10 @@ http(s)://[Endpoint]/?Action=AuthorizeApplicationToOrganizationalUnits &Instance
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### AuthorizeApplicationToGroups
+###### 1.4.2.3.3 AuthorizeApplicationToGroups
 
 Grants the permissions to access an application to multiple account groups in Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM) at a time.
 
@@ -3850,17 +3989,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk2676xxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| UserIds | Array | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The IDs of the accounts. You can revoke the access permissions from a maximum of 100 accounts at a time. |
+| GroupIds | Array | Query | Yes | group miu8e4t4d7i4u7u _ wezgr54xxxx | The IDs of the account groups to which you want to grant permissions. You can grant permissions to a maximum of 100 account groups at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -3873,12 +4013,10 @@ http(s)://[Endpoint]/?Action=AuthorizeApplicationToGroups &InstanceId=idaas_ue2j
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### RevokeApplicationFromUsers
+###### 1.4.2.3.4 RevokeApplicationFromUsers
 
 Revokes the access permissions on an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
 
@@ -3888,16 +4026,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| UserIds | Array | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The IDs of the accounts. You can revoke the access permissions from a maximum of 100 accounts at a time. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -3910,9 +4053,7 @@ http(s)://[Endpoint]/?Action=RevokeApplicationFromUsers &InstanceId=idaas_ue2jvi
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
 **1.4.2.3.5.**
@@ -3929,14 +4070,19 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Organizati onalUnitId s | Array | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The IDs of the organizations to from you want to revoke permissions. You can revoke permissions from a maximum of 100 organizations at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -3949,12 +4095,10 @@ http(s)://[Endpoint]/?Action=RevokeApplicationFromOrganizationalUnits &InstanceI
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### RevokeApplicationFromGroups
+###### 1.4.2.3.6 RevokeApplicationFromGroups
 
 Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM).
 
@@ -3971,11 +4115,11 @@ This operation does not have operation-specific request headers and uses only co
 | GroupIds | Array | Query | Yes | group miu8e4t4d7i4u7u _ wezgr54xxxx | The IDs of the account groups from which you want to revoke permissions. You can revoke permissions from a maximum of 100 account groups at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -3988,16 +4132,18 @@ http(s)://[Endpoint]/?Action=RevokeApplicationFromGroups &InstanceId=idaas_ue2jv
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### UpdateApplicationAuthorizationType
+###### 1.4.2.3.7 UpdateApplicationAuthorizationType
 
 Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4006,15 +4152,11 @@ Modifies the authorization type of an Employee Identity and Access Management (E
 | Authorizat ionType | Strin g | Query | Yes | authorize required _ | The authorization type of the EIAM application. Valid values: authorize required: _ Only the user with explicit authorization can access the application. default all: By default, _ all users can access the application. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -4027,10 +4169,18 @@ http(s)://[Endpoint]/?Action=UpdateApplicationAuthorizationType &InstanceId=idaa
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
+
+###### 1.4.2.3.8 ListUsersForApplication
+
+Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4041,31 +4191,14 @@ Sample responses `JSON` format
 | UserIds | Array | Query | No | user d6sbsuumeta4h66 _ ec3il7yxxxx | The IDs of the accounts. You can revoke the access permissions from a maximum of 100 accounts at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 100 | The total number of entries returned. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | Users | Array | Struct | The account IDs. |
 | -UserId | String | user d6sbsuumeta _ 4h66ec3il7yxxxx | The account ID. |
-
-###### ListUsersForApplication
-
-Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 20 | The number of entries per page. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 
 **Examples**
 
@@ -4078,22 +4211,15 @@ http(s)://[Endpoint]/?Action=ListUsersForApplication &InstanceId=idaas_ue2jvisn3
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Users":[
-  {
    "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### ListOrganizationalUnitsForApplication
+###### 1.4.2.3.9 ListOrganizationalUnitsForApplication
 
 Queries the organizations that are allowed to access an Enterprise Identity Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
 
@@ -4105,8 +4231,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 20 | The number of entries per page. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Organizati onalUnitId s | Array | Query | No | ou wovwffm62xifdziem7 _ an7xxxxx | The IDs of the organizations that are allowed to access the application. You can query a maximum of 100 organization IDs at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4114,8 +4249,6 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | Organizational Units | Array | Array | The IDs of the organizations that are allowed to access the application. |
 | - Organizational UnitId | String | ou wovwffm62xifd _ ziem7an7xxxxx | The organization ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4128,20 +4261,23 @@ http(s)://[Endpoint]/?Action=ListOrganizationalUnitsForApplication &InstanceId=i
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "OrganizationalUnits":[
-  {
    "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+###### 1.4.2.3.10 ListGroupsForApplication
+
+Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4152,30 +4288,14 @@ Sample success responses `JSON` format
 | GroupIds | Array | Query | No | group miu8e4t4d7i4u7u _ wezgr54xxxx | The IDs of the account groups that are allowed to access the application. You can query a maximum of 100 account groups at a time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 100 | The total number of entries returned. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | Groups | Array | Array | The group IDs. |
 | -GroupId | String | group miu8e4t4d7i _ 4u7uwezgr54xxxx | The group ID. |
-
-###### ListGroupsForApplication
-
-Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 20 | The number of entries per page. |
 
 **Examples**
 
@@ -4188,22 +4308,15 @@ http(s)://[Endpoint]/?Action=ListGroupsForApplication &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Groups":[
-  {
    "GroupId":"group_miu8e4t4d7i4u7uwezgr54xxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### ListApplicationsForOrganizationalUnit
+###### 1.4.2.3.11 ListApplicationsForOrganizationalUnit
 
 Queries the applications that an Enterprise Identity Access Management (EIAM) organization can access. The return result includes the IDs of the applications. To query the detailed information about the applications, call the GetApplication operation.
 
@@ -4215,9 +4328,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 20 | The number of entries per page. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Applicatio nIds | Array | Query | No | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time. |
 | Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The EIAM organization ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4228,8 +4349,6 @@ This operation does not have operation-specific request headers and uses only co
 | - HasDirectAuth orization | Boolean | true | Indicates whether the EIAM organization has direct permissions on the application. |
 | - HasInheritAuth orization | Boolean | false | Indicates whether the EIAM organization has inherited permissions on the application. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
@@ -4238,36 +4357,20 @@ Sample requests
 http(s)://[Endpoint]/?Action=ListApplicationsForOrganizationalUnit &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &OrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 20 | The number of entries per page. |
-| Applicatio nIds | Array | Query | No | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time. |
-| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-
-`JSON` format
+Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-  {
+ "Applications":[
    "HasDirectAuthorization":"",
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "HasInheritAuthorization":""
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### ListApplicationsForUser
+###### 1.4.2.3.12 ListApplicationsForUser
 
 Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
 
@@ -4279,8 +4382,18 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 20 | The number of entries per page. |
+| Applicatio nIds | Array | Query | No | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time. |
+| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | QueryMod e | Strin g | Query | No | OnlyDirect | The query mode. Default value: OnlyDirect . Valid values: OnlyDirect: Only the direct permissions are queried. Direct permissions are the permissions that are directly granted to the account. IncludeInherit: Both the permissions that are directly granted to the account and the inherited permissions are queried. Inherited permissions are the permissions that an account inherits from the parent organization or the group to which the account belongs. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4289,8 +4402,6 @@ This operation does not have operation-specific request headers and uses only co
 | Applications | Array | Array | The applications that the EIAM organization can access. |
 | -ApplicationId | String | app mkv7rgt4d7i4 _ u7zqtzev2mxxxx | The ID of the application. |
 | - HasDirectAuth orization | Boolean | true | Indicates whether the EIAM account has direct permissions on the application. Valid values: true: The EIAM account has direct permissions on the application. false: The EIAM account does not have direct permissions on the application. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4307,25 +4418,19 @@ http(s)://[Endpoint]/?Action=ListApplicationsForUser &InstanceId=idaas_ue2jvisn3
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-  {
+ "Applications":[
    "HasDirectAuthorization":true,
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "HasInheritAuthorization":false
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+##### 1.4.2.4 Client keys
 
-##### Client keys
-
-###### CreateApplicationClientSecret
+###### 1.4.2.4.1 CreateApplicationClientSecret
 
 Creates a client key for an Enterprise Identity Access Management (EIAM) application. An EIAM application can have at most two client keys.
 
@@ -4341,6 +4446,8 @@ This operation does not have operation-specific request headers and uses only co
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
@@ -4348,8 +4455,6 @@ This operation does not have operation-specific request headers and uses only co
 | -ClientId | String | app mkv7rgt4d7i4 _ u7zqtzev2mxxxx | The client ID of the application. |
 | -SecretId | String | sci k52x2ru63rlkfli _ na5utgkxxxx | The client key ID of the application. |
 | -ClientSecret | String | CSEHDcHcrUKHw1 CuxkJEHPveWRXBG qVqRsxxxx | The client key secret of the application. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4362,28 +4467,14 @@ http(s)://[Endpoint]/?Action=CreateApplicationClientSecret &InstanceId=idaas_ue2
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationClientSecret":{
   "ClientSecret":"CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx",
   "SecretId":" sci_k52x2ru63rlkflina5utgkxxxx",
   "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
- }
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The ID of the client key that you want to delete for the application. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-###### DeleteApplicationClientSecret
+###### 1.4.2.4.2 DeleteApplicationClientSecret
 
 Deletes a client key for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM)).
 
@@ -4393,7 +4484,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The ID of the client key that you want to delete for the application. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -4406,23 +4508,10 @@ http(s)://[Endpoint]/?Action=DeleteApplicationClientSecret &InstanceId=idaas_ue2
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The client key ID of the application. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-###### DisableApplicationClientSecret
+###### 1.4.2.4.3 DisableApplicationClientSecret
 
 Disables a client key of an Enterprise Identity Access Management (EIAM) application.
 
@@ -4432,7 +4521,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The client key ID of the application. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -4445,23 +4545,10 @@ http(s)://[Endpoint]/?Action=DisableApplicationClientSecret &InstanceId=idaas_ue
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The ID of the client key that you want to enable for the application. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-###### EnableApplicationClientSecret
+###### 1.4.2.4.4 EnableApplicationClientSecret
 
 Enables a client key for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -4471,7 +4558,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The ID of the client key that you want to enable for the application. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -4484,16 +4582,26 @@ http(s)://[Endpoint]/?Action=EnableApplicationClientSecret &InstanceId=idaas_ue2
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
+
+###### 1.4.2.4.5 ListApplicationClientSecrets
+
+Queries all client keys of an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). The returned key secrets are masked. To obtain unmasked key secrets, call the ObtainApplicationClientSecret operation.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4506,19 +4614,7 @@ Sample success responses `JSON` format
 | -SecretId | String | sci k52x2ru63rlkfli _ na5utgkxxxx | The client key ID of the application. |
 | -ClientSecret | String | eyJh*************** ******************* ******************* ******************* ******************* **********OQ | The client key secret of the application. The returned value is masked. |
 
-###### ListApplicationClientSecrets
-
-Queries all client keys of an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). The returned key secrets are masked. To obtain unmasked key secrets, call the ObtainApplicationClientSecret operation.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -Status | String | enabled | The status of the client key. Valid values: enabled: The client key is enabled. disabled: The client key is disabled. |
@@ -4535,11 +4631,9 @@ http(s)://[Endpoint]/?Action=ListApplicationClientSecrets &InstanceId=idaas_ue2j
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationClientSecrets":[
-  {
    "Status":"enabled",
    "InstanceId":"idaas_wdziy4vnjt33ehhf7z2o2nxxxx",
 "ClientSecret":"eyJh*********************************************************************
@@ -4548,16 +4642,11 @@ Sample success responses `JSON` format
    "LastUsedTime":1649830226000,
    "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
    "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### ObtainApplicationClientSecret
+###### 1.4.2.4.6 ObtainApplicationClientSecret
 
 Queries a client key of an Enterprise Identity Access Management (EIAM) application. The returned key is masked. To query the unmasked key, call the ListApplicationClientSecrets operation.
 
@@ -4565,12 +4654,16 @@ Queries a client key of an Enterprise Identity Access Management (EIAM) applicat
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The client key ID of the application. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4584,18 +4677,7 @@ This operation does not have operation-specific request headers and uses only co
 | -Status | String | enabled | The status of the client key. Valid values: enabled: The client key is enabled. disabled: The client key is disabled. |
 | -LastUsedTime | Long | 1649830226000 | The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds. |
 
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The ID of the application in IDaaS. |
-| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The client key. |
 
 Sample requests
 
@@ -4606,7 +4688,6 @@ http(s)://[Endpoint]/?Action=ObtainApplicationClientSecret &InstanceId=idaas_ue2
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationClientSecret":{
   "Status":"enabled",
@@ -4616,8 +4697,6 @@ Sample success responses `JSON` format
   "LastUsedTime":1649830226000,
   "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
   "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
- }
-}
 ```
 
 **1.4.2.4.7.**
@@ -4632,16 +4711,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The ID of the application in IDaaS. |
+| SecretId | Strin g | Query | Yes | sci k52x2ru63rlkflina5ut _ gkxxxx | The client key. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | Expiration Time | Long | Query | Yes | 86400 | The validity period of the client key. This value is a UNIX timestamp. Unit: milliseconds. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4654,14 +4740,12 @@ http(s)://[Endpoint]/?Action=UpdateApplicationClientSecretExpirationTime &Instan
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Application tokens
+##### 1.4.2.5 Application tokens
 
-###### CreateApplicationToken
+###### 1.4.2.5.1 CreateApplicationToken
 
 Creates an application token.
 
@@ -4679,6 +4763,8 @@ This operation does not have operation-specific request headers and uses only co
 | Expiration Time | Long | Query | No | 1735530123762 | The expiration time. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ApplicationTok ens | Struct | object | The detailed information about the application token. |
@@ -4686,8 +4772,6 @@ This operation does not have operation-specific request headers and uses only co
 | - ApplicationTok en | String | SATFwqX8zxGf83pJ cJw78KFGjmrft4er WeZYBGS8oE7NN6 qoE217yaJpUdMb1 UuuGqhDiF43sCA4 CF91CTL5iGntqwyL uaAcS9FJ9HfGadE5 a7TjiwVafwrBYkt3X XX | The application token. |
 | - ApplicationTok enType | String | bearer token _ | The type of the application token. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4697,30 +4781,22 @@ Sample requests
 https://[Endpoint]/?Action=CreateApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenType=bearer_token &<Common request parameters>
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 Sample responses `JSON` format
 
 ```json
-{
+ "ApplicationTokens":{
   "ApplicationTokenId":"token_ndfxxigahelfne2y2hodehrxxxx",
   "ApplicationTokenType":"bearer_token",
 "ApplicationToken":"SATFwqX8zxGf83pJcJw78KFGjmrft4erWeZYBGS8oE7NN6qoE217yaJpUdMb1UuuGqhDi 3sCA4CF91CTL5iGntqwyLuaAcS9FJ9HfGadE5a7TjiwVafwrBYkt3XXX"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### EnableApplicationToken
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+###### 1.4.2.5.2 EnableApplicationToken
 
 Enables an application token.
 
@@ -4730,12 +4806,6 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
@@ -4743,9 +4813,15 @@ Sample requests
 | Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=EnableApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &<Common request parameters>
@@ -4754,12 +4830,10 @@ https://[Endpoint]/?Action=EnableApplicationToken &InstanceId=idaas_ue2jvisn35ea
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### DisableApplicationToken
+###### 1.4.2.5.3 DisableApplicationToken
 
 Disables an application token.
 
@@ -4769,23 +4843,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
-| Expiration Time | Long | Query | Yes | 1735530123762 | The expiration time of the application token. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DisableApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &<Common request parameters>
@@ -4794,12 +4867,10 @@ https://[Endpoint]/?Action=DisableApplicationToken &InstanceId=idaas_ue2jvisn35e
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### UpdateApplicationTokenExpirationTime
+###### 1.4.2.5.4 UpdateApplicationTokenExpirationTime
 
 Updates the expiration time of an application token.
 
@@ -4809,21 +4880,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Examples**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| Applicatio nTokenTy pe | Strin g | Query | Yes | bearer token _ | The type of the application token. |
+| Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
+| Expiration Time | Long | Query | Yes | 1735530123762 | The expiration time of the application token. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ApplicationTok ens | Array | array | The application token. |
-| -AliUid | Long | 1973166921975 | The Alibaba Cloud account ID. |
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -4834,12 +4905,10 @@ https://[Endpoint]/?Action=UpdateApplicationTokenExpirationTime &InstanceId=idaa
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### ListApplicationTokens
+###### 1.4.2.5.5 ListApplicationTokens
 
 Queries a list of application tokens.
 
@@ -4849,9 +4918,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| Applicatio nTokenTy pe | Strin g | Query | Yes | bearer token _ | The type of the application token. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ApplicationTok ens | Array | array | The application token. |
+| -AliUid | Long | 1973166921975 | The Alibaba Cloud account ID. |
+
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4876,18 +4957,10 @@ Sample requests
 https://[Endpoint]/?Action=ListApplicationTokens &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenType=bearer_token &<Common request parameters>
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
 Sample success responses `JSON` format
 
 ```json
-{
-  {
+ "ApplicationTokens":[
    "Status":"enabled",
    "ApplicationTokenId":"token_ndfxxigahelfne2y2hodehrxxxx",
    "Description":"jwqtts-0430",
@@ -4899,17 +4972,15 @@ Sample success responses `JSON` format
    "ApplicationId":"app_m7ar5tms4dwtggavalk3j3mxxxx",
    "ExpirationTime":1747796654000,
    "AliUid":1973166921975
-  }
 ```
 
 `],`
 
 ```json
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### ObtainApplicationToken
+###### 1.4.2.5.6 ObtainApplicationToken
 
 Queries an application token.
 
@@ -4918,6 +4989,13 @@ Queries an application token.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Response parameters**
 
@@ -4943,23 +5021,9 @@ Sample requests
 https://[Endpoint]/?Action=ObtainApplicationToken &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ApplicationTokenId=token_sfrwerxxxxxxxxxxxxxx &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-`JSON` format
+Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationToken":{
   "Status":"enabled",
@@ -4971,11 +5035,9 @@ Sample success responses
 "ApplicationToken":"SATFwqX8zxGf83pJcJw78KFGjmrft4erWeZYBGS8oE7NN6qoE217yaJpUdMb1UuuGqhDi 3sCA4CF91CTL5iGntqwyLuaAcS9FJ9HfGadE5a7TjiwVafwrBxxxxx",
   "ApplicationId":"app_na2r73a65s7o4zbs7nj5gxxxx",
   "ExpirationTime":1735610950000
- }
-}
 ```
 
-###### DeleteApplicationToken
+###### 1.4.2.5.7 DeleteApplicationToken
 
 Deletes an application token.
 
@@ -4985,15 +5047,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app 11111 _ | The application ID. |
-| UserId | Strin g | Query | Yes | user example _ | The user ID |
-| Applicatio nUsernam e | Strin g | Query | Yes | zhangsan | The username of the application account. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| Applicatio nTokenId | Strin g | Query | Yes | token sfrwerxxxxxxxxxx _ xxxx | The application token ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -5006,14 +5071,12 @@ https://[Endpoint]/?Action=DeleteApplicationToken &InstanceId=idaas_ue2jvisn35ea
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Application accounts
+##### 1.4.2.6 Application accounts
 
-###### AddApplicationAccountToUser
+###### 1.4.2.6.1 AddApplicationAccountToUser
 
 Adds an application account for an EIAM application.
 
@@ -5023,18 +5086,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app 11111 _ | The application ID. |
+| UserId | Strin g | Query | Yes | user example _ | The user ID |
+| Applicatio nUsernam e | Strin g | Query | Yes | zhangsan | The username of the application account. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | ApplicationAcc ountId | String | aac m6z7awz5kres _ i2ezgajsbkxxxx | The application account ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 20 | The number of entries per page. |
 
 **Examples**
 
@@ -5047,13 +5112,11 @@ https://[Endpoint]/?Action=AddApplicationAccountToUser &InstanceId=eiam-111ccc11
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationAccountId":"aac_m6z7awz5kresi2ezgajsbkxxxx"
-}
 ```
 
-###### ListApplicationAccounts
+###### 1.4.2.6.2 ListApplicationAccounts
 
 Queries a list of application accounts that belong to an Employee Identity and Access Management (EIAM) application by page.
 
@@ -5063,13 +5126,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 20 | The number of entries per page. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Applicatio nId | Strin g | Query | Yes | app 11111 _ | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5087,14 +5158,7 @@ This operation does not have operation-specific request headers and uses only co
 | -- AttributeType | String | Female | The attribute type. |
 | -- AttributeValue Expression | String | user.username | The attribute. |
 
-**Response parameters**
-
 **Examples**
-
-| Parame ter | Typ e | Positi on | Require d | Examples | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app 11111 _ | The application ID. |
 
 Sample requests
 
@@ -5105,19 +5169,16 @@ https://[Endpoint]/?Action=ListApplicationAccounts &InstanceId=eiam-111ccc1111 &
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-  {
+ "ApplicationAccounts":[
    "InstanceId":"idaas_eznwtkkaucljizh6qqu7ptxxxx",
    "UserId":"user_tkmboufpnvpbitdpzrlngxzxxxx",
    "CreateTime":1737510353000,
    "ApplicationUserAttributes":[
-    {
      "AttributeValueExpression":"",
      "AttributeType":"",
      "AttributeName":""
-    }
 ```
 
 `],`
@@ -5126,16 +5187,11 @@ Sample responses `JSON` format
    "ApplicationId":"app_m43o4h5adeo5klvbbxgxxxxx",
    "ApplicationAccountId":"aac_m66smhbq5krept7nza54hxxxx",
    "ApplicationUsername":"test"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### ListApplicationAccountsForUser
+###### 1.4.2.6.3 ListApplicationAccountsForUser
 
 Queries all application accounts of a user for an Enterprise Identity Access Management (EIAM) application.
 
@@ -5145,13 +5201,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-|  | Developer Gui | de·API R | eference |  |  | IDaa | S |
+| Parame ter | Typ e | Positi on | Require d | Examples | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app 11111 _ | The application ID. |
+
+|   | Developer Gui | de·API R | eference |   |   | IDaa | S |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Examples | Description |
 |---|---|---|---|---|---|
 | UserId | Strin g | Query | Yes | user example _ | The user ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5169,12 +5232,6 @@ This operation does not have operation-specific request headers and uses only co
 | -- AttributeType | String | The ID card number. | The attribute type. |
 | -- AttributeValue Expression | String | user.username | The expression that is used to generate the value of the attribute in the SAML assertion. |
 
-**Response parameters**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
-
 **Examples**
 
 Sample requests
@@ -5186,19 +5243,16 @@ https://[Endpoint]/?Action=ListApplicationAccountsForUser &InstanceId=eiam-111cc
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-  {
+ "ApplicationAccounts":[
    "InstanceId":"idaas_ki6hd7ihir4ybawogqk6xxxxx",
    "UserId":"user_tkmboufpnvpbitdpzrlng6mxxxxx",
    "CreateTime":1754359439000,
    "ApplicationUserAttributes":[
-    {
      "AttributeValueExpression":"",
      "AttributeType":"",
      "AttributeName":""
-    }
 ```
 
 `],`
@@ -5207,16 +5261,11 @@ Sample success responses `JSON` format
    "ApplicationId":"app_na2r76irswrwfgpkz7xvcj7xxxxx",
    "ApplicationAccountId":"aac_m6e3ukegwvbcb2fne7j32xxxxxx",
    "ApplicationUsername":"test"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-###### RemoveApplicationAccountFromUser
+###### 1.4.2.6.4 RemoveApplicationAccountFromUser
 
 Deletes the application account of an employee under the current application.
 
@@ -5226,7 +5275,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -5236,11 +5289,11 @@ This operation does not have operation-specific request headers and uses only co
 | Applicatio nAccountI d | Strin g | Query | Yes | act example _ | The application account ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -5253,14 +5306,12 @@ https://[Endpoint]/?Action=RemoveApplicationAccountFromUser &InstanceId=eiam-111
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Open API operations
+##### 1.4.2.7 Open API operations
 
-###### EnableApplicationApiInvoke
+###### 1.4.2.7.1 EnableApplicationApiInvoke
 
 Enables the Developer API feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5268,19 +5319,19 @@ Enables the Developer API feature for an application in Identity-as-a-Service En
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -5293,12 +5344,10 @@ http(s)://[Endpoint]/?Action=EnableApplicationApiInvoke &InstanceId= idaas_ue2jv
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### DisableApplicationApiInvoke
+###### 1.4.2.7.2 DisableApplicationApiInvoke
 
 Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
 
@@ -5314,15 +5363,11 @@ This operation does not have operation-specific request headers and uses only co
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -5335,12 +5380,10 @@ http(s)://[Endpoint]/?Action=DisableApplicationApiInvoke &InstanceId=idaas_ue2jv
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### SetApplicationGrantScope
+###### 1.4.2.7.3 SetApplicationGrantScope
 
 Configures the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
 
@@ -5350,18 +5393,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | GrantScop es | Array | Query | No | urn:alibaba:idaas:scope: user:read all _ | The permissions of the Developer API feature. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -5374,12 +5421,10 @@ http(s)://[Endpoint]/?Action=SetApplicationGrantScope &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### GetApplicationGrantScope
+###### 1.4.2.7.4 GetApplicationGrantScope
 
 Queries the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
 
@@ -5395,13 +5440,13 @@ This operation does not have operation-specific request headers and uses only co
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | ApplicationGra ntScope | Struct | None | The permissions of the Developer API feature. |
 | -GrantScopes | String | ["urn:alibaba:idaas :scope:user:read al _ l","urn:alibaba:idaa s:scope:user:mana geall"] | The permissions of the Developer API feature. Valid values: urn:alibaba:idaas:scope:user:read all: the _ permissions to query all users. urn:alibaba:idaas:scope:user:manage all: _ the permissions to manage all users. urn:alibaba:idaas:scope:organizational uni _ t:read all: the permissions to query all _ organizations. urn:alibaba:idaas:scope:organizational uni _ t:manage all: the permissions to manage _ all organizations. |
-
-**Response parameters**
 
 **Examples**
 
@@ -5413,29 +5458,16 @@ http(s)://[Endpoint]/?Action=GetApplicationGrantScope &InstanceId=idaas_ue2jvisn
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationGrantScope":{
   "GrantScopes":"
 [\"urn:alibaba:idaas:scope:user:read_all\",\"urn:alibaba:idaas:scope:user:manageall\"]"
- }
-}
 ```
 
-##### Application account synchronization
+##### 1.4.2.8 Application account synchronization
 
-###### DisableApplicationProvisioning
+###### 1.4.2.8.1 DisableApplicationProvisioning
 
 Disables the account synchronization feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5445,7 +5477,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -5455,27 +5497,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=DisableApplicationProvisioning &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-`JSON` format
+Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### EnableApplicationProvisioning
+###### 1.4.2.8.2 EnableApplicationProvisioning
 
 Enables the account synchronization feature for an Employee Identity and Access Management (EIAM) application.
 
@@ -5485,7 +5513,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -5498,21 +5536,10 @@ http(s)://[Endpoint]/?Action=EnableApplicationProvisioning &InstanceId=idaas_ue2
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| ProvisionP rotocolTyp e | Strin g | Query | Yes | idaas callback _ | The type of account synchronization protocol . Valid values: idaas callback: _ custom event callback protocol of IDaaS. scim2: System for Cross-domain Identity Management (SCIM) protocol. |
-| CallbackPr ovisioning Config | Struc t | Query | No | Struct | The configuration of event callback synchronization. This parameter is required when ProvisionProtocolType is set to idaas callback. _ |
-| - CallbackU rl | Strin g |  | No | https://example.com/eve nt/callback | The URL that the application uses to receive IDaaS event callbacks. |
-| - EncryptKe y | Strin g |  | No | ad3b248**************** **********b3561a73d7 | The symmetric encryption and decryption key for IDaaS event callbacks. |
-
-###### SetApplicationProvisioningConfig
+###### 1.4.2.8.3 SetApplicationProvisioningConfig
 
 Configures the account synchronization feature for an Enterprise Identity Access Management (EIAM) application.
 
@@ -5524,50 +5551,48 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - EncryptRe quired | Boole an |  | No | true | Specifies whether to encrypt IDaaS event callback messages. Valid values: true: encrypts the messages. false: transmits the messages in plaintext. |
-| - ListenEve ntScopes | Array |  | No | system error _ | The types of IDaaS event callback messages that are supported by the listener. |
-| ScimProvi sioningCo nfig | Struc t | Query | No | Struct | The configuration of SCIM-based IDaaS synchronization. This parameter is required when ProvisionProtocolType is set to scim2. |
-| - ScimBase Url | Strin g |  | No | https://example.com/sci m | The base URL that the application uses to receive the SCIM protocol for IDaaS synchronization. |
-| - AuthnConf iguration | Struc t |  | No | Struct | The configuration of SCIM-based synchronization. |
-| -- AuthnMod e | Strin g |  | No | oauth2 | The authorization mode for the SCIM-based API operation. |
-| -- GrantType | Strin g |  | No | bearer token _ | The grant type for the SCIM-based API operation. |
-| -- AuthnPara m | Struc t |  | No | Struct | The configuration parameters related to authorization. |
-| --- AccessTok en | Strin g |  | No | k52x2ru63rlkflina5utgkx xxx | The access token. |
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| ProvisionP rotocolTyp e | Strin g | Query | Yes | idaas callback _ | The type of account synchronization protocol . Valid values: idaas callback: _ custom event callback protocol of IDaaS. scim2: System for Cross-domain Identity Management (SCIM) protocol. |
+| CallbackPr ovisioning Config | Struc t | Query | No | Struct | The configuration of event callback synchronization. This parameter is required when ProvisionProtocolType is set to idaas callback. _ |
+| - CallbackU rl | Strin g |   | No | https://example.com/eve nt/callback | The URL that the application uses to receive IDaaS event callbacks. |
+| - EncryptKe y | Strin g |   | No | ad3b248**************** **********b3561a73d7 | The symmetric encryption and decryption key for IDaaS event callbacks. |
 
-| I | DaaS |  |  |  | Dev | eloper Guide·API Referenc | e |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| - EncryptRe quired | Boole an |   | No | true | Specifies whether to encrypt IDaaS event callback messages. Valid values: true: encrypts the messages. false: transmits the messages in plaintext. |
+| - ListenEve ntScopes | Array |   | No | system error _ | The types of IDaaS event callback messages that are supported by the listener. |
+| ScimProvi sioningCo nfig | Struc t | Query | No | Struct | The configuration of SCIM-based IDaaS synchronization. This parameter is required when ProvisionProtocolType is set to scim2. |
+| - ScimBase Url | Strin g |   | No | https://example.com/sci m | The base URL that the application uses to receive the SCIM protocol for IDaaS synchronization. |
+| - AuthnConf iguration | Struc t |   | No | Struct | The configuration of SCIM-based synchronization. |
+| -- AuthnMod e | Strin g |   | No | oauth2 | The authorization mode for the SCIM-based API operation. |
+| -- GrantType | Strin g |   | No | bearer token _ | The grant type for the SCIM-based API operation. |
+| -- AuthnPara m | Struc t |   | No | Struct | The configuration parameters related to authorization. |
+| --- AccessTok en | Strin g |   | No | k52x2ru63rlkflina5utgkx xxx | The access token. |
+
+| I | DaaS |   |   |   | Dev | eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| --- TokenEnd point | Strin g |  | No | https://www.example.co m/oauth/token | The token endpoint. |
-| ---ClientId | Strin g |  | No | mkv7rgt4d7i4u7zqtzev2 mxxxx | The client ID of the application. |
-| --- ClientSecr et | Strin g |  | No | CSEHDcHcrUKHw1CuxkJ EHPveWRXBGqVqRsxxx x | The client key secret of the application. |
-| --- AuthnMet hod | Strin g |  | No | client secret basic _ _ | The authentication mode for the SCIM- based API operation. |
-| - Provisioni ngActions | Array |  | No | rollback | The resource operations based on the SCIM protocol. |
-| - FullPushS copes | Array |  | No | User:Read | The full synchronization scope of the SCIM protocol. |
+| --- TokenEnd point | Strin g |   | No | https://www.example.co m/oauth/token | The token endpoint. |
+| ---ClientId | Strin g |   | No | mkv7rgt4d7i4u7zqtzev2 mxxxx | The client ID of the application. |
+| --- ClientSecr et | Strin g |   | No | CSEHDcHcrUKHw1CuxkJ EHPveWRXBGqVqRsxxx x | The client key secret of the application. |
+| --- AuthnMet hod | Strin g |   | No | client secret basic _ _ | The authentication mode for the SCIM- based API operation. |
+| - Provisioni ngActions | Array |   | No | rollback | The resource operations based on the SCIM protocol. |
+| - FullPushS copes | Array |   | No | User:Read | The full synchronization scope of the SCIM protocol. |
 | ProvisionP assword | Boole an | Query | No | true | Specifies whether to synchronize the password in IDaaS user event callbacks. Valid values: true: synchronizes the password. false: does not synchronize the password. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
-| Organizati onalUnitId s | Array | Query | No | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organizations that are authorized for account synchronization. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| GroupIds | Array | Query | No | group miu8e4t4d7i4u7u _ wezgr54xxxx | The account group IDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
 
 ```
 http(s)://[Endpoint]/?Action=SetApplicationProvisioningConfig &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_mkv7rgt4d7i4u7zqtzev2mxxxx &ProvisionProtocolType=idaas_callback &<Common request parameters>
@@ -5576,12 +5601,10 @@ http(s)://[Endpoint]/?Action=SetApplicationProvisioningConfig &InstanceId=idaas_
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### SetApplicationProvisioningScope
+###### 1.4.2.8.4 SetApplicationProvisioningScope
 
 Configures the account synchronization scope of an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). This scope is the same as the scope within which developers can call the Developer API operations to query and manage accounts.
 
@@ -5591,20 +5614,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| Organizati onalUnitId s | Array | Query | No | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organizations that are authorized for account synchronization. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| GroupIds | Array | Query | No | group miu8e4t4d7i4u7u _ wezgr54xxxx | The account group IDs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -5617,12 +5642,10 @@ http(s)://[Endpoint]/?Action=SetApplicationProvisioningScope &InstanceId=idaas_u
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-###### GetApplicationProvisioningScope
+###### 1.4.2.8.5 GetApplicationProvisioningScope
 
 Queries the account synchronization scope of an Employee Identity and Access Management (EIAM) application. This scope also specifies the accounts that Developer API can query and manage.
 
@@ -5632,7 +5655,16 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5654,28 +5686,31 @@ http(s)://[Endpoint]/?Action=GetApplicationProvisioningScope &InstanceId=idaas_u
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "ApplicationProvisioningScope":{
   "GroupIds":"",
   "MaxQuota":"",
   "UsedQuota":"",
   "OrganizationalUnitIds":""
- }
-}
 ```
 
-###### GetApplicationProvisioningConfig
+###### 1.4.2.8.6 GetApplicationProvisioningConfig
 
 Queries the configuration of the account synchronization feature for an application in Identityas-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5685,12 +5720,6 @@ Queries the configuration of the account synchronization feature for an applicat
 | - ProvisionProto colType | String | idaas callback _ | The synchronization protocol type of the application. Valid values: idaas callback: custom event callback _ protocol of IDaaS. scim2: System for Cross-domain Identity Management (SCIM) protocol. |
 | - ProvisionJwksE ndpoint | String | https://eiam-api- cn- hangzhou.aliyuncs. com/v2/idaas ue2j _ visn35ea5lmthk26 7xxxxx/app mkv7r _ gt4d7i4u7zqtzev2 mxxxx/provisioning /jwks | The public key endpoint for signature verification of the synchronization callback information. |
 | - ProvisionPass word | Boolean | true | Specifies whether to synchronize the password in IDaaS user event callbacks. Valid values: true: synchronize the password. false: do not synchronize the password. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5730,7 +5759,6 @@ http(s)://[Endpoint]/?Action=GetApplicationProvisioningConfig &InstanceId=idaas_
 Sample success responses `JSON` format
 
 ```json
-{
  "ApplicationProvisioningConfig":{
   "ProvisionJwksEndpoint":"https://eiam-api-cn-
 hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtzev2mxxxx/ ovisioning/jwks",
@@ -5741,7 +5769,11 @@ hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtz
    "EncryptKey":"",
    "ListenEventScopes":"",
    "EncryptRequired":""
-  },
+```
+
+`},`
+
+```json
   "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
   "ScimProvisioningConfig":{
    "ScimBaseUrl":"",
@@ -5753,23 +5785,38 @@ hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtz
      "AccessToken":"",
      "ClientSecret":"",
      "ClientId":""
-    },
+```
+
+`},`
+
+```json
     "GrantType":"",
     "AuthnMode":""
-   },
+```
+
+`},`
+
+```json
    "FullPushScopes":""
-  },
+```
+
+`},`
+
+```json
   "ConfigOperateMode":"standard",
   "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx",
   "ProvisionProtocolType":"idaas_callback"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-#### Account management
+`},`
 
-##### CreateUser
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+#### 1.4.3 Account management
+
+##### 1.4.3.1 CreateUser
 
 Creates an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) for an IDaaS EIAM instance.
 
@@ -5802,45 +5849,35 @@ This operation does not have operation-specific request headers and uses only co
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PasswordI nitializatio nConfig | Struc t | Query | No | Struct | The password initialization configurations. |
-| - PasswordI nitializatio nPolicyPri ority | Strin g |  | No | true | The priority of the password initialization policy. |
-| - PasswordF orcedUpd ateStatus | Strin g |  | No | false | Specifies whether to enable forcible password change upon first login. |
-| - UserNotifi cationCha nnels | Array |  | No | sms | The methods for receiving password notifications. |
-| - PasswordI nitializatio nType | Strin g |  | No | random | The password initialization method. |
+| - PasswordI nitializatio nPolicyPri ority | Strin g |   | No | true | The priority of the password initialization policy. |
+| - PasswordF orcedUpd ateStatus | Strin g |   | No | false | Specifies whether to enable forcible password change upon first login. |
+| - UserNotifi cationCha nnels | Array |   | No | sms | The methods for receiving password notifications. |
+| - PasswordI nitializatio nType | Strin g |   | No | random | The password initialization method. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | UserId | String | user d6sbsuumeta _ 4h66ec3il7yxxxx | The account ID. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &Username=user_001 &PrimaryOrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=CreateUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &Username=user_001 &PrimaryOrganizationalUnitId=ou_wovwffm62xifdziem7an7xxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-| Username | Strin g | Query | No | username test _ | The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores ( ), periods _ (.), at signs (@), and hyphens (-). |
-| DisplayNa me | Strin g | Query | No | test name _ | The display name of the account. The display name can be up to 64 characters in length. |
-| PhoneRegi on | Strin g | Query | No | 86 | The area code of the mobile number. For example, the area code of a mobile number in the Chinese mainland is 86, without 00 or the plus sign (+). This parameter is required if the PhoneNumber parameter is specified. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx"
-}
 ```
 
-##### UpdateUser
+##### 1.4.3.2 UpdateUser
 
 Updates the basic information about an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5852,6 +5889,14 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
+| Username | Strin g | Query | No | username test _ | The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores ( ), periods _ (.), at signs (@), and hyphens (-). |
+| DisplayNa me | Strin g | Query | No | test name _ | The display name of the account. The display name can be up to 64 characters in length. |
+| PhoneRegi on | Strin g | Query | No | 86 | The area code of the mobile number. For example, the area code of a mobile number in the Chinese mainland is 86, without 00 or the plus sign (+). This parameter is required if the PhoneNumber parameter is specified. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | PhoneNu mber | Strin g | Query | No | 156xxxxxxxxx | The mobile number. The mobile number must be 6 to 15 digits in length. |
 | PhoneNu mberVerifi ed | Boole an | Query | No | true | Indicates whether the mobile number is a trusted mobile number. This parameter is required if the PhoneNumber parameter is specified. If you have no special business requirements, set this parameter to true. |
 | Email | Strin g | Query | No | example@example.com | The email address. The prefix of the email address can contain letters, digits, periods (.), underscores ( ), and _ hyphens (-). |
@@ -5859,39 +5904,27 @@ This operation does not have operation-specific request headers and uses only co
 | CustomFie lds | Array | Query | No | {'StartTime':true, 'RuleName':true} | The custom extended fields. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=UpdateUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### DeleteUser
+##### 1.4.3.3 DeleteUser
 
 Deletes an Enterprise Identity Access Management (EIAM) account. If you delete an EIAM account, the information related to the account is cleared.
 
@@ -5901,36 +5934,33 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=DeleteUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-| Organizati onalUnitId s | Array | Query | Yes | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organization IDs. You can add an account to a maximum of 100 organizations. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### AddUserToOrganizationalUnits
+##### 1.4.3.4 AddUserToOrganizationalUnits
 
 Adds an Enterprise Identity Access Management (EIAM) account to multiple Identity as a Service (IDaaS) EIAM organizations. If the account already exists in an organization, a success response is returned.
 
@@ -5940,22 +5970,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-| Organizati onalUnitId s | Array | Query | Yes | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organization IDs. You can remove an account from a maximum of 100 organizations. |
+| Organizati onalUnitId s | Array | Query | Yes | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organization IDs. You can add an account to a maximum of 100 organizations. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=AddUserToOrganizationalUnits &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &OrganizationalUnitIds= &<Common request parameters>
@@ -5964,12 +5994,10 @@ http(s)://[Endpoint]/?Action=AddUserToOrganizationalUnits &InstanceId=idaas_ue2j
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### RemoveUserFromOrganizationalUnits
+##### 1.4.3.5 RemoveUserFromOrganizationalUnits
 
 Removes an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) from multiple IDaaS EIAM organizations. You cannot remove an account from a primary organization.
 
@@ -5979,14 +6007,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-| Password | Strin g | Query | Yes | 123456 | The new password of the account. For more information, refer to the complexity rules in the IDaaS console. |
-| PasswordF orcedUpd ateStatus | Strin g | Query | No | enabled | Specifies whether to enable the forced password change feature. Default value: disabled. Valid values: enabled disabled |
+| Organizati onalUnitId s | Array | Query | Yes | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organization IDs. You can remove an account from a maximum of 100 organizations. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -5999,12 +6031,10 @@ http(s)://[Endpoint]/?Action=RemoveUserFromOrganizationalUnits &InstanceId=idaas
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateUserPassword
+##### 1.4.3.6 UpdateUserPassword
 
 Changes the password of an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The password must meet the complexity rules in the IDaaS console.
 
@@ -6016,17 +6046,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
+| Password | Strin g | Query | Yes | 123456 | The new password of the account. For more information, refer to the complexity rules in the IDaaS console. |
+| PasswordF orcedUpd ateStatus | Strin g | Query | No | enabled | Specifies whether to enable the forced password change feature. Default value: disabled. Valid values: enabled disabled |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | UserNotifi cationCha nnels | Array | Query | No | sms | The password notification method. Valid values: email sms |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
 
 **Examples**
 
@@ -6039,12 +6073,10 @@ http(s)://[Endpoint]/?Action=UpdateUserPassword &InstanceId=idaas_ue2jvisn35ea5l
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateUserDescription
+##### 1.4.3.7 UpdateUserDescription
 
 Modifies the description of an Enterprise Identity Access Management (EIAM) account.
 
@@ -6056,16 +6088,19 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
 | Descriptio n | Strin g | Query | No | this is a test. | The description of the account. The description can be up to 256 characters in length. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -6078,12 +6113,10 @@ http(s)://[Endpoint]/?Action=UpdateUserDescription &InstanceId=idaas_ue2jvisn35e
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### DisableUser
+##### 1.4.3.8 DisableUser
 
 Disables an Enterprise Identity Access Management (EIAM) account. If the account is already disabled, a success response is returned.
 
@@ -6099,33 +6132,27 @@ This operation does not have operation-specific request headers and uses only co
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The ID of the account. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=DisableUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### EnableUser
+##### 1.4.3.9 EnableUser
 
 Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
 
@@ -6135,40 +6162,37 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=EnableUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UnlockUser
+##### 1.4.3.10 UnlockUser
 
 Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
 
@@ -6178,39 +6202,37 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
-|---|---|---|---|---|---|
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
 
+| Developer Gui | de·API R | eference |   |   | IDaa |
+|---|---|---|---|---|---|
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=UnlockUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### SetUserPrimaryOrganizationalUnit
+##### 1.4.3.11 SetUserPrimaryOrganizationalUnit
 
 Configures the primary organization to which an Employee Identity and Access Management (EIAM) account belongs. The account is removed from its original primary organization and added to the new primary organization.
 
@@ -6220,7 +6242,12 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The account ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -6228,14 +6255,11 @@ This operation does not have operation-specific request headers and uses only co
 | Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The ID of the primary organization to which you want to add the account. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
 
 **Examples**
 
@@ -6248,12 +6272,10 @@ http(s)://[Endpoint]/?Action=SetUserPrimaryOrganizationalUnit &InstanceId=idaas_
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### GetUser
+##### 1.4.3.12 GetUser
 
 Queries the detailed information about an Enterprise Identity Access Management (EIAM) account.
 
@@ -6265,9 +6287,14 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The ID of the account. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6280,8 +6307,6 @@ This operation does not have operation-specific request headers and uses only co
 | -PhoneNumber | String | 156xxxxxxx | The mobile number of the user who owns the account. |
 | - PhoneNumber Verified | Boolean | true | Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified. |
 | -Email | String | user@example.co m | The email address of the user who owns the account. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6326,13 +6351,12 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "User":{
   "UserSourceType":"build_in",
   "Email":"user@example.com",
@@ -6356,21 +6380,17 @@ Sample success responses `JSON` format
   "LockExpireTime":1652085686179,
   "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx",
   "OrganizationalUnits":[
-   {
     "OrganizationalUnitId":"",
     "Primary":"",
     "OrganizationalUnitName":""
-   }
 ```
 
 `],`
 
 ```json
   "CustomFields":[
-   {
     "FieldValue":"",
     "FieldName":""
-   }
 ```
 
 `],`
@@ -6379,11 +6399,9 @@ Sample success responses `JSON` format
   "UpdateTime":1652085686179,
   "PhoneNumber":"156xxxxxxx",
   "Groups":[
-   {
     "GroupName":"",
     "Description":"",
     "GroupId":""
-   }
 ```
 
 `],`
@@ -6391,10 +6409,23 @@ Sample success responses `JSON` format
 ```json
   "UserSourceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
   "UserExternalId":"user_d6sbsuumeta4h66ec3il7yxxxx"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
+
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.3.13 ListUsers
+
+Queries the details of accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) by page.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6405,16 +6436,6 @@ Sample success responses `JSON` format
 | Username StartsWith | Strin g | Query | No | name 001 _ | The prefix of the account name. The left match query is used. If you specify this parameter, the query follows the leftmost matching principle. |
 | DisplayNa meStarts With | Strin g | Query | No | name | The prefix of the display name of the account. If you specify this parameter, the query follows the leftmost matching principle. |
 | PhoneRegi on | Strin g | Query | No | 86 | The area code of the mobile number. For example, the area code of a mobile number in the Chinese mainland is 86, without 00 or the plus sign (+). |
-
-##### ListUsers
-
-Queries the details of accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) by page.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6430,6 +6451,8 @@ This operation does not have operation-specific request headers and uses only co
 | Organizati onalUnitId | Strin g | Query | No | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 100 | The total number of entries returned. |
@@ -6438,9 +6461,7 @@ This operation does not have operation-specific request headers and uses only co
 | -UserId | String | user d6sbsuumeta _ 4h66ec3il7yxxxx | The account ID. |
 | -Username | String | name001 | The name of the account. |
 
-**Response parameters**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6466,7 +6487,7 @@ This operation does not have operation-specific request headers and uses only co
 | -CreateTime | Long | 1652085686179 | The time when the account was created. This value is a UNIX timestamp. Unit: milliseconds. |
 | -UpdateTime | Long | 1652085686179 | The time when the account was last modified. This value is a UNIX timestamp. Unit: milliseconds. |
 
-| I | DaaS |  |  | Developer Guide·API Referenc | e |
+| I | DaaS |   |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6480,17 +6501,15 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListUsers &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Users":[
-  {
    "UserSourceType":"build_in",
    "Status":"enabled",
    "Email":"user@example.com",
@@ -6513,14 +6532,21 @@ Sample success responses `JSON` format
    "UserSourceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
    "UserExternalId":"user_d6sbsuumeta4h66ec3il7yxxxx",
    "PhoneRegion":"86"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 1.4.4 Organization management
+
+##### 1.4.4.1 CreateOrganizationalUnit
+
+Creates an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) within a specific organization.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6531,30 +6557,12 @@ Sample success responses `JSON` format
 | Descriptio n | Strin g | Query | No | description | The description of the organization. The description can be up to 256 characters in length. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
-#### Organization management
-
-##### CreateOrganizationalUnit
-
-Creates an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) within a specific organization.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Organizational UnitId | String | ou wovwffm62xifd _ ziem7an7xxxxx | The organization ID. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Examples**
 
@@ -6567,13 +6575,11 @@ http(s)://[Endpoint]/?Action=CreateOrganizationalUnit &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Deletes an EIAM organization
+##### 1.4.4.2 Deletes an EIAM organization
 
 Deletes an Employee Identity and Access Management (EIAM) organization in Identity as a Service (IDaaS). If the organization contains EIAM accounts or child organizations, the delete operation fails.
 
@@ -6583,17 +6589,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
-| Organizati onalUnitN ame | Strin g | Query | No | ou name _ | The name of the organization. The name can be up to 64 characters in length and must be unique in the same parent organization. |
 
 **Examples**
 
@@ -6606,12 +6612,10 @@ http(s)://[Endpoint]/?Action=DeleteOrganizationalUnit &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateOrganizationalUnit
+##### 1.4.4.3 UpdateOrganizationalUnit
 
 Updates the basic information about an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). By default, if you do not specify the request parameters, the organization is not modified.
 
@@ -6623,19 +6627,19 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
+| Organizati onalUnitN ame | Strin g | Query | No | ou name _ | The name of the organization. The name can be up to 64 characters in length and must be unique in the same parent organization. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -6648,12 +6652,10 @@ http(s)://[Endpoint]/?Action=UpdateOrganizationalUnit &InstanceId=idaas_ue2jvisn
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### DeleteOrganizationalUnitChildren
+##### 1.4.4.4 DeleteOrganizationalUnitChildren
 
 Deletes information about an Employee Identity and Access Management (EIAM) organization and forcefully deletes all accounts and sub-organizations in the organization.
 
@@ -6663,18 +6665,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
-| ParentId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The parent organization ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -6687,12 +6688,10 @@ http(s)://[Endpoint]/?Action=DeleteOrganizationalUnitChildren &InstanceId=idaas_
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateOrganizationalUnitParentId
+##### 1.4.4.5 UpdateOrganizationalUnitParentId
 
 Updates the parent organization ID of an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). In this case, the organization is moved from a parent node to a new node.
 
@@ -6702,18 +6701,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
+| ParentId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The parent organization ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
-| Descriptio n | Strin g | Query | No | organizationalUnit test _ | The description of the organization. The value can be up to 256 characters in length. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Examples**
 
@@ -6726,12 +6725,10 @@ http(s)://[Endpoint]/?Action=UpdateOrganizationalUnitParentId &InstanceId=idaas_
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateOrganizationalUnitDescription
+##### 1.4.4.6 UpdateOrganizationalUnitDescription
 
 Modifies the description of an Employee Identity and Access Management (EIAM) organization.
 
@@ -6741,20 +6738,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
+| Descriptio n | Strin g | Query | No | organizationalUnit test _ | The description of the organization. The value can be up to 256 characters in length. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Organizational Unit | Struct | Struct | The data objects of the organization. |
 
 **Examples**
 
@@ -6767,12 +6762,10 @@ http(s)://[Endpoint]/?Action=UpdateOrganizationalUnitDescription &InstanceId=ida
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Query the information about the root EIAM
+##### 1.4.4.7 Query the information about the root EIAM organization in IDaaS
 
 **organization in IDaaS**
 
@@ -6784,9 +6777,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Organizational Unit | Struct | Struct | The data objects of the organization. |
+
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6813,20 +6815,7 @@ Sample success responses
  JSON format
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Organizational Unit | Struct | Struct | The information about the array object. |
-| - Organizational UnitId | String | ou wovwffm62xifd _ ziem7an7xxxxx | The organization ID. |
-| - Organizational UnitName | String | test organizational _ Unit name _ | The organization name. |
-
 ```json
-{
  "OrganizationalUnit":{
   "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx",
   "Description":"Test organization",
@@ -6834,12 +6823,15 @@ Sample success responses
   "CreateTime":1652085686179,
   "UpdateTime":1652085686179,
   "OrganizationalUnitName":"name001"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Queries the information about an EIAM
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.4.8 Queries the information about an EIAM organization.
 
 **organization.**
 
@@ -6851,9 +6843,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Organizational Unit | Struct | Struct | The information about the array object. |
+| - Organizational UnitId | String | ou wovwffm62xifd _ ziem7an7xxxxx | The organization ID. |
+| - Organizational UnitName | String | test organizational _ Unit name _ | The organization name. |
+
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6867,7 +6871,7 @@ This operation does not have operation-specific request headers and uses only co
 | -Description | String | Test organization | The organization description. |
 | -InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
 
-|  | Developer Guide·A | PI Reference |  | IDaa | S |
+|   | Developer Guide·A | PI Reference |   | IDaa | S |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6886,7 +6890,6 @@ http(s)://[Endpoint]/?Action=GetOrganizationalUnit &InstanceId=idaas_ue2jvisn35e
 Sample success responses `JSON` format
 
 ```json
-{
  "OrganizationalUnit":{
   "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx",
   "ParentId":"ou_wovwffm62xifdziem7an7xxxxx",
@@ -6899,12 +6902,15 @@ Sample success responses `JSON` format
   "OrganizationalUnitName":"test_organizationalUnit_name",
   "OrganizationalUnitExternalId":"ou_wovwffm62xifdziem7an7xxxxx",
   "OrganizationalUnitSourceType":"build_in"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Query information about EIAM
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.4.9 Query information about EIAM organizations in a list
 
 **organizations in a list**
 
@@ -6927,12 +6933,12 @@ This operation does not have operation-specific request headers and uses only co
 | ParentId | Strin g | Query | No | ou wovwffm62xifdziem7 _ an7xxxxx | The parent organization ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 1000 | The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6964,11 +6970,9 @@ Sample success responses
 
 ```json
  JSON format
-{
  "TotalCount":1000,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "OrganizationalUnits":[
-  {
    "OrganizationalUnitId":"ou_wovwffm62xifdziem7an7xxxxx",
    "ParentId":"ou_wovwffm62xifdziem7an7xxxxx",
    "Description":"Test organization",
@@ -6980,20 +6984,19 @@ Sample success responses
    "OrganizationalUnitName":"test_organizationalUnit_name",
    "OrganizationalUnitExternalId":"ou_wovwffm62xifdziem7an7xxxxx",
    "OrganizationalUnitSourceType":"build_in"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### ListOrganizationalUnitParents
+##### 1.4.4.10 ListOrganizationalUnitParents
 
 Queries a list of all parent organizations of an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). The results are sorted in descending order based on the level of the parent organizations of the IDaaS EIAM organization.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7001,18 +7004,14 @@ Queries a list of all parent organizations of an organization in Identity-as-a-S
 | Organizati onalUnitId | Strin g | Query | Yes | ou wovwffm62xifdziem7 _ an7xxxxx | The organization ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | Parents | Array | Array | The parent organizations. |
 | - Organizational UnitId | String | ou 4lag76zc2km5s _ sg5vsmm2lznvu | The organization ID. |
 | -ParentId | String | ou x3beoyepv2ls5i _ wuge3xhjkwbm | The parent organization ID. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -7024,32 +7023,18 @@ http(s)://[Endpoint]/?Action=ListOrganizationalUnitParents &InstanceId=idaas_ue2
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| GroupNa me | Strin g | Query | Yes | name test _ | The group name. The name can be up to 64 characters in length. |
-| GroupExte rnalId | Strin g | Query | No | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID. The value can be up to 64 characters in length. |
-| Descriptio n | Strin g | Query | No | this is a test. | The group description. The description can be up to 256 characters in length. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Parents":[
-  {
    "OrganizationalUnitId":"ou_4lag76zc2km5ssg5vsmm2lznvu",
    "ParentId":"ou_x3beoyepv2ls5iwuge3xhjkwbm"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 1.4.5 account group management
 
-#### account group management
-
-##### Create an EIAM account group in IDaaS
+##### 1.4.5.1 Create an EIAM account group in IDaaS
 
 Creates an Employee Identity and Access Management (EIAM) account group in Identity as a Service (IDaaS).
 
@@ -7061,38 +7046,39 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| GroupNa me | Strin g | Query | Yes | name test _ | The group name. The name can be up to 64 characters in length. |
+| GroupExte rnalId | Strin g | Query | No | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID. The value can be up to 64 characters in length. |
+| Descriptio n | Strin g | Query | No | this is a test. | The group description. The description can be up to 256 characters in length. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | GroupId | String | group d6sbsuumet _ a4h66ec3il7yxxxx | The group ID. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupName=name_test &<Common request parameters>
+http(s)://[Endpoint]/?Action=CreateGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupName=name_test &<Common request parameters>
 ```
 
 Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
-}
 ```
 
-##### AddUsersToGroup
+##### 1.4.5.2 AddUsersToGroup
 
 Adds Employee Identity and Access Management (EIAM) accounts of Identity as a Service (IDaaS) to an EIAM account group.
 
@@ -7102,7 +7088,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -7111,29 +7101,27 @@ This operation does not have operation-specific request headers and uses only co
 | UserIds | Array | Query | Yes | [ou 001] _ | The account IDs. A maximum of 100 accounts can be specified. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &UserIds=[ou_001] &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddUsersToGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &UserIds=[ou_001] &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### DeleteGroup
+##### 1.4.5.3 DeleteGroup
 
 Deletes the information of an account group in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -7149,33 +7137,27 @@ This operation does not have operation-specific request headers and uses only co
 | GroupId | Strin g | Query | Yes | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The account group ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=DeleteGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### RemoveUsersFromGroup
+##### 1.4.5.4 RemoveUsersFromGroup
 
 Removes multiple accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) from an IDaaS EIAM account group.
 
@@ -7185,18 +7167,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | GroupId | Strin g | Query | Yes | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The account group ID. |
 | UserIds | Array | Query | Yes | [ou 001] _ | The account IDs. A maximum of 100 accounts can be removed from an account group. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -7209,12 +7195,10 @@ http(s)://[Endpoint]/?Action=RemoveUsersFromGroup &InstanceId=idaas_ue2jvisn35ea
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateGroup
+##### 1.4.5.5 UpdateGroup
 
 Updates the information about an account group in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). If the information is empty, the account group is not updated by default.
 
@@ -7232,29 +7216,25 @@ This operation does not have operation-specific request headers and uses only co
 | GroupExte rnalId | Strin g | Query | No | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The group external ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-**Response parameters**
-
-**Example**
-
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=UpdateGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateGroupDescription
+##### 1.4.5.6 UpdateGroupDescription
 
 Updates the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account group.
 
@@ -7271,11 +7251,11 @@ This operation does not have operation-specific request headers and uses only co
 | Descriptio n | Strin g | Query | No | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The description of the account group. The value can be up to 256 characters in length. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -7288,12 +7268,10 @@ http(s)://[Endpoint]/?Action=UpdateGroupDescription &InstanceId=idaas_ue2jvisn35
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### GetGroup
+##### 1.4.5.7 GetGroup
 
 Queries the details of an account group in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -7309,6 +7287,8 @@ This operation does not have operation-specific request headers and uses only co
 | GroupId | Strin g | Query | Yes | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The account group ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Group | Struct | Struct | The information about the account group. |
@@ -7321,28 +7301,22 @@ This operation does not have operation-specific request headers and uses only co
 | -CreateTime | Long | 1652085686179 | The time when the account group was created. This value is a UNIX timestamp. Unit: milliseconds. |
 | -UpdateTime | Long | 1652085686179 | The time when the account group was last updated. This value is a UNIX timestamp. Unit: milliseconds. |
 
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=GetGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "Group":{
   "GroupName":"group_name",
   "Description":"test_group",
@@ -7353,12 +7327,15 @@ Sample success responses `JSON` format
   "GroupSourceType":"build_in",
   "GroupSourceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
   "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### ListGroups
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.5.8 ListGroups
 
 Queries a list of account groups in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM)).
 
@@ -7367,6 +7344,9 @@ Queries a list of account groups in Identity-as-a-Service Enterprise Identity Ac
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7379,14 +7359,14 @@ This operation does not have operation-specific request headers and uses only co
 | GroupExte rnalId | Strin g | Query | No | group external id _ _ | The external ID of the account group. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 100 | The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | Groups | Array | Array | The queried account groups. |
 | -GroupId | String | group d6sbsuumet _ a4h66ec3il7yxxxx | The account group ID. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7404,24 +7384,15 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListGroups &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The number of the page to return. Default value: 1. |
-| PageSize | Long | Query | No | 20 | The number of entries to return on each page. Default value: 20. Maximum value: 100. |
-| GroupId | Strin g | Query | Yes | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The group ID. |
-
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Groups":[
-  {
    "GroupName":"group_name",
    "Description":"test group",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
@@ -7431,16 +7402,11 @@ Sample success responses `JSON` format
    "GroupSourceType":"build_in",
    "GroupSourceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
    "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### ListUsersForGroup
+##### 1.4.5.9 ListUsersForGroup
 
 Queries a list of accounts that belong to an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 
@@ -7452,8 +7418,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The number of the page to return. Default value: 1. |
+| PageSize | Long | Query | No | 20 | The number of entries to return on each page. Default value: 20. Maximum value: 100. |
+| GroupId | Strin g | Query | Yes | group d6sbsuumeta4h6 _ 6ec3il7yxxxx | The group ID. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | UserIds | Array | Query | No | [ou 001] _ | The account IDs. A maximum of 100 accounts can be queried. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7464,48 +7439,28 @@ This operation does not have operation-specific request headers and uses only co
 | - GroupMember RelationSourc eId | String | 1001 | The identifier of the source of the group member relationship generated by the system. |
 | - GroupMember RelationSourc eType | String | USER ADDED _ | The group member relationship generated by the system, such as the default group. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListUsersForGroup &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &GroupId=group_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The number of the page to return. Default value: 1. |
-| PageSize | Long | Query | No | 20 | The number of entries to return on each page. Default value: 20. Maximum value: 100. |
-| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The ID of the Apsara Stack tenant account. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
 ```json
-{
  "TotalCount":1000,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Users":[
-  {
    "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx",
    "GroupMemberRelationSourceId":"",
    "GroupMemberRelationSourceType":""
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### ListGroupsForUser
+##### 1.4.5.10 ListGroupsForUser
 
 Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
 
@@ -7515,7 +7470,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The number of the page to return. Default value: 1. |
+| PageSize | Long | Query | No | 20 | The number of entries to return on each page. Default value: 20. Maximum value: 100. |
+| UserId | Strin g | Query | Yes | user d6sbsuumeta4h66 _ ec3il7yxxxx | The ID of the Apsara Stack tenant account. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7526,42 +7492,28 @@ This operation does not have operation-specific request headers and uses only co
 | - GroupMember RelationSourc eId | String | idaas igc5glpu2ye _ 7x5iyagkppizxxx | The ID of the source of the group member relationship. |
 | - GroupMember RelationSourc eType | String | build in _ | The type of the source of the group members. |
 
-**Example**
-
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListGroupsForUser &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &UserId=user_d6sbsuumeta4h66ec3il7yxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":1000,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Groups":[
-  {
    "GroupMemberRelationSourceId":"",
    "GroupMemberRelationSourceType":"",
    "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 1.4.6 IdP management
 
-#### IdP management
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| IdentityPr oviderNa me | Strin g | Query | Yes | test | The name of the IdP. |
-
-##### Create an identity provider
+##### 1.4.6.1 Create an identity provider
 
 Creates an identity provider (IdP).
 
@@ -7573,117 +7525,120 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| IdentityPr oviderNa me | Strin g | Query | Yes | test | The name of the IdP. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | IdentityPr oviderTyp e | Strin g | Query | Yes | urn:alibaba:idaas:idp:ali baba:dingtalk:push | The synchronization type of the IdP. Valid values: Pull data from DingTalk: urn:alibaba:idaas:idp: alibaba:dingtalk:pull Push data to DingTalk: urn:alibaba:idaas:idp: alibaba:dingtalk:push Pull data from WeCom: urn:alibaba:idaas:idp: tencent:wecom:pull Pull data from Lark: urn:alibaba:idaas:idp: bytedance:lark:pull Pull data from Microsoft Active Directory (AD): urn:alibaba:idaas:idp: microsoft:ad:pull Pull from a Lightweight Directory Access Protocol (LDAP) service: urn:alibaba:idaas:idp: unknown:ldap:pull Standard OpenID Connect (OIDC): urn:alibaba:idaas:idp: standard:oidc OIDC customized for Secure Access Service Edge (SASE): urn:alibaba:idaas:idp: alibaba:sase |
 | UdPushCo nfig | Struc t | Query | No | Struct | The configuration push settings. |
-| - Increment alCallback Status | Strin g |  | No | enabled | The status of incremental callback. |
-| - PeriodicSy ncStatus | Strin g |  | No | disabled | The status of scheduled synchronization. |
+| - Increment alCallback Status | Strin g |   | No | enabled | The status of incremental callback. |
+| - PeriodicSy ncStatus | Strin g |   | No | disabled | The status of scheduled synchronization. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - UdSyncSc opeConfig s | Array |  | No | Array | The UD synchronization scope. |
-| -- UdSyncSc opeConfig sItem | Struc t |  | No | Struct | The UD synchronization configurations. |
-| --- SourceSco pes | Array |  | No | OU=test,DC=idaas,DC= com | The source scope. |
-| --- TargetSco pe | Strin g |  | No | ou 6zczfw67fqqpxwcoqa _ 27nuhxxx | The target scope. |
+| - UdSyncSc opeConfig s | Array |   | No | Array | The UD synchronization scope. |
+| -- UdSyncSc opeConfig sItem | Struc t |   | No | Struct | The UD synchronization configurations. |
+| --- SourceSco pes | Array |   | No | OU=test,DC=idaas,DC= com | The source scope. |
+| --- TargetSco pe | Strin g |   | No | ou 6zczfw67fqqpxwcoqa _ 27nuhxxx | The target scope. |
 | UdPullCon fig | Struc t | Query | No | Struct | The pulling configurations. |
-| - GroupSyn cStatus | Strin g |  | No | disabled | The group synchronization status. |
-| - Increment alCallback Status | Strin g |  | No | disabled | The status of incremental synchronization. |
-| - PeriodicSy ncStatus | Strin g |  | No | disabled | The status of scheduled synchronization. |
-| - UdSyncSc opeConfig | Struc t |  | Yes | Struct | The UD synchronization scope. |
-| -- SourceSco pes | Array |  | No | OU=test,DC=idaas,DC= com | The source scope. |
-| -- TargetSco pe | Strin g |  | No | ou 6zczfw67fqqpxwcoqa _ 27nuhxxx | The target scope. |
+| - GroupSyn cStatus | Strin g |   | No | disabled | The group synchronization status. |
+| - Increment alCallback Status | Strin g |   | No | disabled | The status of incremental synchronization. |
+| - PeriodicSy ncStatus | Strin g |   | No | disabled | The status of scheduled synchronization. |
+| - UdSyncSc opeConfig | Struc t |   | Yes | Struct | The UD synchronization scope. |
+| -- SourceSco pes | Array |   | No | OU=test,DC=idaas,DC= com | The source scope. |
+| -- TargetSco pe | Strin g |   | No | ou 6zczfw67fqqpxwcoqa _ 27nuhxxx | The target scope. |
 | AuthnConf ig | Struc t | Query | No | Struct | The authentication configurations. |
-| - AuthnStat us | Strin g |  | Yes | enabled | The authentication status. |
+| - AuthnStat us | Strin g |   | Yes | enabled | The authentication status. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - AutoUpda tePasswor dStatus | Strin g |  | No | enabled | The status of automatic password update. |
+| - AutoUpda tePasswor dStatus | Strin g |   | No | enabled | The status of automatic password update. |
 | BindingCo nfig | Struc t | Query | No | Struct | The OIDC IdP account association rule. |
-| - AutoMatc hUserProfi leExpressi ons | Array |  | No | Struct | The expression that is used to automatically match user profiles. |
-| -- AutoMatc hUserProfi leExpressi onsItem | Struc t |  | No | Struct | The expression that is used to match user profiles. |
-| --- Expressio nMapping Type | Strin g |  | Yes | expression | The type of the expression. |
-| --- SourceVal ueExpress ion | Strin g |  | Yes | appUser.username | The value expression of the source field. |
-| --- TargetFiel d | Strin g |  | Yes | username | The name of the mapped field. |
-| --- TargetFiel dDescripti on | Strin g |  | No | Update time | The description of the mapped field. |
-| - AutoMatc hUserStat us | Strin g |  | No | enabled | Specifies whether to enable automatic account matching. |
-| - MappingBi ndingStat us | Strin g |  | No | enabled | Specifies whether to enable manual account association. |
+| - AutoMatc hUserProfi leExpressi ons | Array |   | No | Struct | The expression that is used to automatically match user profiles. |
+| -- AutoMatc hUserProfi leExpressi onsItem | Struc t |   | No | Struct | The expression that is used to match user profiles. |
+| --- Expressio nMapping Type | Strin g |   | Yes | expression | The type of the expression. |
+| --- SourceVal ueExpress ion | Strin g |   | Yes | appUser.username | The value expression of the source field. |
+| --- TargetFiel d | Strin g |   | Yes | username | The name of the mapped field. |
+| --- TargetFiel dDescripti on | Strin g |   | No | Update time | The description of the mapped field. |
+| - AutoMatc hUserStat us | Strin g |   | No | enabled | Specifies whether to enable automatic account matching. |
+| - MappingBi ndingStat us | Strin g |   | No | enabled | Specifies whether to enable manual account association. |
 | DingtalkA ppConfig | Struc t | Query | No | Struct | The DingTalk configurations. |
-| -AppKey | Strin g |  | No | rX7zNFbJbGnneg1H2DdI oS73y****** | The AppKey. |
+| -AppKey | Strin g |   | No | rX7zNFbJbGnneg1H2DdI oS73y****** | The AppKey. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - AppSecret | Strin g |  | No | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
-| -CorpId | Strin g |  | No | 10001 | The tenant ID. |
-| - DingtalkV ersion | Strin g |  | No | 6.0.0 | The current version number of DingTalk. |
+| - AppSecret | Strin g |   | No | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
+| -CorpId | Strin g |   | No | 10001 | The tenant ID. |
+| - DingtalkV ersion | Strin g |   | No | 6.0.0 | The current version number of DingTalk. |
 | LdapConfi g | Struc t | Query | No | Struct | The AD or LDAP configurations. |
-| - Administr atorPassw ord | Strin g |  | No | Admin@123xxx | The password of the administrator account. |
-| - Administr atorUsern ame | Strin g |  | No | admin | The name of the system administrator account. |
-| - Certificate Fingerprin tStatus | Strin g |  | No | disabled | Specifies whether to verify the certificate fingerprint. |
-| - Certificate Fingerprin ts | Array |  | No | A1:B2:C3:D4:E5:F6:G7:H 8:I9:J0 | The certificate fingerprint. |
-| - GroupMe mberAttri buteName | Strin g |  | No | memberId | The group member identifier. |
-| - GroupObj ectClass | Strin g |  | No | top,group | The group ObjectClass. |
-| - GroupObj ectClassC ustomFilte r | Strin g |  | No | test=123 | The group custom filter. |
-| - LdapProto col | Strin g |  | No | ldap://internal.example.c om:3890 | The standard protocol that is used to access the LDAP service, which is typically used for authentication and directory queries. |
+| - Administr atorPassw ord | Strin g |   | No | Admin@123xxx | The password of the administrator account. |
+| - Administr atorUsern ame | Strin g |   | No | admin | The name of the system administrator account. |
+| - Certificate Fingerprin tStatus | Strin g |   | No | disabled | Specifies whether to verify the certificate fingerprint. |
+| - Certificate Fingerprin ts | Array |   | No | A1:B2:C3:D4:E5:F6:G7:H 8:I9:J0 | The certificate fingerprint. |
+| - GroupMe mberAttri buteName | Strin g |   | No | memberId | The group member identifier. |
+| - GroupObj ectClass | Strin g |   | No | top,group | The group ObjectClass. |
+| - GroupObj ectClassC ustomFilte r | Strin g |   | No | test=123 | The group custom filter. |
+| - LdapProto col | Strin g |   | No | ldap://internal.example.c om:3890 | The standard protocol that is used to access the LDAP service, which is typically used for authentication and directory queries. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - LdapServe rHost | Strin g |  | No | ldap.example.com | The hostname or IP address of the LDAP server that is used to establish connections to the LDAP service. |
-| - LdapServe rPort | Integ er |  | No | 389 | The default port used by LDAP. |
-| - Organizati onUnitObj ectClass | Strin g |  | No | top | The organization ObjectClass. |
-| - StartTlsSt atus | Strin g |  | No | disabled | Specifies whether to enable StartTLS. |
-| - UserLoginI dentifier | Strin g |  | No | test | The user login identifier. |
-| - UserObjec tClass | Strin g |  | No | User001 | The user ObjectClass. |
-| - UserObjec tClassCust omFilter | Strin g |  | No | test=123 | The user-defined filter. |
+| - LdapServe rHost | Strin g |   | No | ldap.example.com | The hostname or IP address of the LDAP server that is used to establish connections to the LDAP service. |
+| - LdapServe rPort | Integ er |   | No | 389 | The default port used by LDAP. |
+| - Organizati onUnitObj ectClass | Strin g |   | No | top | The organization ObjectClass. |
+| - StartTlsSt atus | Strin g |   | No | disabled | Specifies whether to enable StartTLS. |
+| - UserLoginI dentifier | Strin g |   | No | test | The user login identifier. |
+| - UserObjec tClass | Strin g |   | No | User001 | The user ObjectClass. |
+| - UserObjec tClassCust omFilter | Strin g |   | No | test=123 | The user-defined filter. |
 | WeComCo nfig | Struc t | Query | No | Struct | The WeCom configurations. |
-| -AgentId | Strin g |  | No | agent@ccc-test | The client ID. |
-| - Authorize CallbackD omain | Strin g |  | No | https://callback.example .com/callback | The authorized callback domain. |
-| -CorpId | Strin g |  | No | 10001 | The tenant ID. |
-| - CorpSecre t | Strin g |  | No | 8h3nF9kLmQxPxxx | The credential key of WeCom. |
-| - Trustable Domain | Strin g |  | No | example.com | A sample domain name. |
+| -AgentId | Strin g |   | No | agent@ccc-test | The client ID. |
+| - Authorize CallbackD omain | Strin g |   | No | https://callback.example .com/callback | The authorized callback domain. |
+| -CorpId | Strin g |   | No | 10001 | The tenant ID. |
+| - CorpSecre t | Strin g |   | No | 8h3nF9kLmQxPxxx | The credential key of WeCom. |
+| - Trustable Domain | Strin g |   | No | example.com | A sample domain name. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | OidcConfi g | Struc t | Query | No | Struct | The configurations of the OIDC IdP. |
-| - AuthnPara m | Struc t |  | No | Struct | The authentication parameters. |
-| -- AuthnMet hod | Strin g |  | No | client secret basic _ _ | The supported client secret _ authentication methods. Valid values: client secret basic and _ _ client secret post. _ _ |
-| --ClientId | Strin g |  | No | mkv7rgt4d7i4u7zqtzev2 mxxxx | The client ID of the application. |
-| -- ClientSecr et | Strin g |  | No | CSEHDcHcrUKHw1CuxkJ EHPveWRXBGqVqRsxxx x | The client secret of the application. |
-| - EndpointC onfig | Struc t |  | No | Struct | The endpoint configurations. |
-| -- Authorizat ionEndpoi nt | Strin g |  | No | http://example.com/auth | The authorization endpoint. |
-| --Issuer | Strin g |  | No | test | The issuer of the certificate. |
-| --JwksUri | Strin g |  | No | http://example.com/jwks | The JSON Web Key Set (JWKS) URL of the OIDC issuer. |
-| -- TokenEnd point | Strin g |  | No | https://www.example.co m/oauth/token | The token endpoint. |
-| -- UserinfoE ndpoint | Strin g |  | No | https://api.example.com/ userinfo | The user information endpoint. |
-| - GrantScop es | Array |  | No | profile,email | The valid authorization scope. The value is subject to the OIDC standards and separated by commas (,). |
+| - AuthnPara m | Struc t |   | No | Struct | The authentication parameters. |
+| -- AuthnMet hod | Strin g |   | No | client secret basic _ _ | The supported client secret _ authentication methods. Valid values: client secret basic and _ _ client secret post. _ _ |
+| --ClientId | Strin g |   | No | mkv7rgt4d7i4u7zqtzev2 mxxxx | The client ID of the application. |
+| -- ClientSecr et | Strin g |   | No | CSEHDcHcrUKHw1CuxkJ EHPveWRXBGqVqRsxxx x | The client secret of the application. |
+| - EndpointC onfig | Struc t |   | No | Struct | The endpoint configurations. |
+| -- Authorizat ionEndpoi nt | Strin g |   | No | http://example.com/auth | The authorization endpoint. |
+| --Issuer | Strin g |   | No | test | The issuer of the certificate. |
+| --JwksUri | Strin g |   | No | http://example.com/jwks | The JSON Web Key Set (JWKS) URL of the OIDC issuer. |
+| -- TokenEnd point | Strin g |   | No | https://www.example.co m/oauth/token | The token endpoint. |
+| -- UserinfoE ndpoint | Strin g |   | No | https://api.example.com/ userinfo | The user information endpoint. |
+| - GrantScop es | Array |   | No | profile,email | The valid authorization scope. The value is subject to the OIDC standards and separated by commas (,). |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - GrantType | Strin g |  | No | token | The return types supported by implicit grant flows. Use OIDC parameters, such as token and id token. _ |
-| - PkceChall engeMeth od | Strin g |  | No | S256 | The supported Proof Key for Code Exchange (PKCE) algorithms. |
-| - PkceRequi red | Boole an |  | No | true | Specifies whether to enforce PKCE. |
+| - GrantType | Strin g |   | No | token | The return types supported by implicit grant flows. Use OIDC parameters, such as token and id token. _ |
+| - PkceChall engeMeth od | Strin g |   | No | S256 | The supported Proof Key for Code Exchange (PKCE) algorithms. |
+| - PkceRequi red | Boole an |   | No | true | Specifies whether to enforce PKCE. |
 | NetworkA ccessEndp ointId | Strin g | Query | No | nae examplexxxx _ | The ID of the network endpoint. |
 | AutoCreat eUserConf ig | Struc t | Query | No | Struct | The configurations of automatic account creation. |
-| - AutoCreat eUserStat us | Strin g |  | No | disabled | Specifies whether to automatically create users. |
-| - TargetOrg anizationa lUnitIds | Array |  | No | OU123456 | The node at which accounts are automatically created. |
+| - AutoCreat eUserStat us | Strin g |   | No | disabled | Specifies whether to automatically create users. |
+| - TargetOrg anizationa lUnitIds | Array |   | No | OU123456 | The node at which accounts are automatically created. |
 | AutoUpda teUserCon fig | Struc t | Query | No | Struct | The rules of automatic account update. |
-| - AutoUpda teUserStat us | Strin g |  | No | disabled | Specifies whether to enable automatic account update. |
+| - AutoUpda teUserStat us | Strin g |   | No | disabled | Specifies whether to enable automatic account update. |
 | LarkConfi g | Struc t | Query | No | Struct | The Lark configuration. |
-| -AppId | Strin g |  | No | 2dfea044-479f-464a- b374-f14d32****** | The application ID. |
-| - AppSecret | Strin g |  | No | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
+| -AppId | Strin g |   | No | 2dfea044-479f-464a- b374-f14d32****** | The application ID. |
+| - AppSecret | Strin g |   | No | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - Enterprise Number | Strin g |  | No | test | The enterprise code of your custom Lark application. |
+| - Enterprise Number | Strin g |   | No | test | The enterprise code of your custom Lark application. |
 | LogoUrl | Strin g | Query | No | xxxx- image://xxxx 23aqr2ye5 _ 54csg33dqpch5eu3q/tm p/d17d9adc-a943-45e7- ba0c-2838dddea678 | The URL of the application logo. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | IdentityProvid erId | String | idp mwpcwnhrimlr _ 2horxXXXX | The IdP ID. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -7695,13 +7650,11 @@ Sample success responses
 
 ```json
  JSON format
-{
  "IdentityProviderId":"idp_mwpcwnhrimlr2horxXXXX",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Delete an IdP
+##### 1.4.6.2 Delete an IdP
 
 Deletes an identity provider (IdP).
 
@@ -7709,21 +7662,19 @@ Deletes an identity provider (IdP).
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The IdP ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Request parameters**
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -7735,12 +7686,10 @@ Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateIdentityProvider
+##### 1.4.6.3 UpdateIdentityProvider
 
 Updates the basic configuration of an IdP.
 
@@ -7756,64 +7705,55 @@ This operation does not have operation-specific request headers and uses only co
 | IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The ID of the Identity Provider (IdP). |
 | IdentityPr oviderNa me | Strin g | Query | No | test | The name of the IdP. |
 | LdapConfi g | Struc t | Query | No | Struct | The basic Active Directory (AD) and Lightweight Directory Access Protocol (LDAP) information. |
-| - Administr atorPassw ord | Strin g |  | No | Admin@123xxx | The password of the administrator account. |
-| - Administr atorUsern ame | Strin g |  | No | admin | The default username of the administrator account. |
-| - Certificate Fingerprin tStatus | Strin g |  | No | test | The fingerprinting status of the certificate. |
-| - Certificate Fingerprin ts | Array |  | No | A1:B2:C3:D4:E5:F6:G7:H 8:I9:J0 | The fingerprint of the certificate. |
-| - LdapProto col | Strin g |  | No | ldap://example.com:389 | Specifies LDAP to access data within a directory. |
-| - LdapServe rHost | Strin g |  | No | ldap.example.com | The hostname or IP address of the LDAP server. |
-| - LdapServe rPort | Integ er |  | No | 389 | The default port used by LDAP. |
-| - StartTlsSt atus | Strin g |  | No | false | Specifies whether to enable TLS. |
+| - Administr atorPassw ord | Strin g |   | No | Admin@123xxx | The password of the administrator account. |
+| - Administr atorUsern ame | Strin g |   | No | admin | The default username of the administrator account. |
+| - Certificate Fingerprin tStatus | Strin g |   | No | test | The fingerprinting status of the certificate. |
+| - Certificate Fingerprin ts | Array |   | No | A1:B2:C3:D4:E5:F6:G7:H 8:I9:J0 | The fingerprint of the certificate. |
+| - LdapProto col | Strin g |   | No | ldap://example.com:389 | Specifies LDAP to access data within a directory. |
+| - LdapServe rHost | Strin g |   | No | ldap.example.com | The hostname or IP address of the LDAP server. |
+| - LdapServe rPort | Integ er |   | No | 389 | The default port used by LDAP. |
+| - StartTlsSt atus | Strin g |   | No | false | Specifies whether to enable TLS. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | DingtalkA ppConfig | Struc t | Query | No | Struct | The basic DingTalk configuration. |
-| -AppKey | Strin g |  | Yes | rX7zNFbJbGnneg1H2DdI oS73y****** | The AppKey. |
-| - AppSecret | Strin g |  | Yes | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
+| -AppKey | Strin g |   | Yes | rX7zNFbJbGnneg1H2DdI oS73y****** | The AppKey. |
+| - AppSecret | Strin g |   | Yes | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
 | WeComCo nfig | Struc t | Query | No | Struct | The Enterprise WeChat information. |
-| -AgentId | Strin g |  | No | 202526561358712105 | The client ID. |
-| - Authorize CallbackD omain | Strin g |  | No | example.com | The domain name that is used to receive authorization callbacks. |
-| - CorpSecre t | Strin g |  | No | 8h3nF9kLmxxx | The internal key used for encryption. |
-| - Trustable Domain | Strin g |  | No | example.com | Specifies whether the domain name is a trusted domain name. |
+| -AgentId | Strin g |   | No | 202526561358712105 | The client ID. |
+| - Authorize CallbackD omain | Strin g |   | No | example.com | The domain name that is used to receive authorization callbacks. |
+| - CorpSecre t | Strin g |   | No | 8h3nF9kLmxxx | The internal key used for encryption. |
+| - Trustable Domain | Strin g |   | No | example.com | Specifies whether the domain name is a trusted domain name. |
 | OidcConfi g | Struc t | Query | No | Struct | The OpenID Connect (OIDC)-related configuration. |
-| - AuthnPara m | Struc t |  | No | Struct | The authentication parameters. |
-| -- AuthnMet hod | Strin g |  | No | client secret basic _ _ | The authentication method. |
-| -- ClientSecr et | Strin g |  | No | CSEHDcHcrUKHw1CuxkJ EHPveWRXBGqVqRsxxx x | The client secret of the application. |
-| - EndpointC onfig | Struc t |  | No | Struct | The endpoint configuration. |
-| -- Authorizat ionEndpoi nt | Strin g |  | No | http://localhost:8080/oa uth/token | The authentication endpoint. |
+| - AuthnPara m | Struc t |   | No | Struct | The authentication parameters. |
+| -- AuthnMet hod | Strin g |   | No | client secret basic _ _ | The authentication method. |
+| -- ClientSecr et | Strin g |   | No | CSEHDcHcrUKHw1CuxkJ EHPveWRXBGqVqRsxxx x | The client secret of the application. |
+| - EndpointC onfig | Struc t |   | No | Struct | The endpoint configuration. |
+| -- Authorizat ionEndpoi nt | Strin g |   | No | http://localhost:8080/oa uth/token | The authentication endpoint. |
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
-| --Issuer | Strin g |  | No | test | The issuer. |
-| --JwksUri | Strin g |  | No | test | The JSON Web Key (JWK) endpoint. |
-| -- TokenEnd point | Strin g |  | No | https://www.example.co m/oauth/token | The token endpoint. |
-| -- UserinfoE ndpoint | Strin g |  | No | https://api.example.com/ userinfo | The user information endpoint. |
-| - GrantScop es | Array |  | No | ["urn:alibaba:idaas:scop e:user:read all","urn:alib _ aba:idaas:scope:user:m anageall"] | The permissions on API operations. |
-| - GrantType | Strin g |  | No | bearer token _ | The authorization type. |
-| - PkceChall engeMeth od | Strin g |  | No | test | The Proof Key for Code Exchange (PKCE) challenge method. |
-| - PkceRequi red | Boole an |  | No | true | Specifies whether application Single Sign- On (SSO) forcefully requires PKCE. |
+| --Issuer | Strin g |   | No | test | The issuer. |
+| --JwksUri | Strin g |   | No | test | The JSON Web Key (JWK) endpoint. |
+| -- TokenEnd point | Strin g |   | No | https://www.example.co m/oauth/token | The token endpoint. |
+| -- UserinfoE ndpoint | Strin g |   | No | https://api.example.com/ userinfo | The user information endpoint. |
+| - GrantScop es | Array |   | No | ["urn:alibaba:idaas:scop e:user:read all","urn:alib _ aba:idaas:scope:user:m anageall"] | The permissions on API operations. |
+| - GrantType | Strin g |   | No | bearer token _ | The authorization type. |
+| - PkceChall engeMeth od | Strin g |   | No | test | The Proof Key for Code Exchange (PKCE) challenge method. |
+| - PkceRequi red | Boole an |   | No | true | Specifies whether application Single Sign- On (SSO) forcefully requires PKCE. |
 | NetworkA ccessEndp ointId | Strin g | Query | No | nae examplexxxx _ | The ID of the network endpoint. |
 | LarkConfi g | Struc t | Query | No | Struct | The Lark configuration. |
-| -AppId | Strin g |  | No | 2dfea044-479f-464a- b374-f14d32****** | The application ID. |
-| - AppSecret | Strin g |  | No | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
+| -AppId | Strin g |   | No | 2dfea044-479f-464a- b374-f14d32****** | The application ID. |
+| - AppSecret | Strin g |   | No | 1r0ElNPFqLI6qgY08***** ************************* *9TIK3RN 5fk9SEMO _ | The AppSecret. |
 | LogoUrl | Strin g | Query | No | idaas- image://idaas 23aqr2ye _ 554csg33dqpch5exxxx/t mp/d17d9adc-a943- 45e7-ba0c- 2838dddea678xxxx | The URL of the application logo. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The IdP ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-**Response parameters**
 
 **Examples**
 
@@ -7826,12 +7766,10 @@ http(s)://[Endpoint]/?Action=UpdateIdentityProvider &InstanceId=idaas_ue2jvisn35
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Obtain an IdP
+##### 1.4.6.4 Obtain an IdP
 
 Obtains an identity provider (IdP).
 
@@ -7841,7 +7779,16 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The IdP ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7853,7 +7800,7 @@ This operation does not have operation-specific request headers and uses only co
 | -AuthnStatus | String | disabled | Specifies whether the corresponding IdP supports authentication. Valid values: disabled enabled |
 | -CreateTime | Long | 1726021079000 | The time when the IdP is created. The value is a UNIX timestamp. Unit: milliseconds. |
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7935,7 +7882,7 @@ This operation does not have operation-specific request headers and uses only co
 | -- IncrementalCa llbackStatus | String | disabled | This field is not in use. Ignore it. |
 | -- UdSyncScopeC onfigs | Array | A list of synchronization scopes. | A list of synchronization scopes. |
 
-|  | Developer Guide·A | PI Reference |  | IDaa | S |
+|   | Developer Guide·A | PI Reference |   | IDaa | S |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7961,7 +7908,6 @@ Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "IdentityProviderDetail":{
   "AuthnSourceSupplier":"urn:alibaba:idaas:idp:bytedance:lark",
@@ -7975,12 +7921,16 @@ Sample success responses
 "EnterpriseNmber""FX1231
 ```
 
-"
+`"`
 
 ```json
    "EnterpriseNumber":"FX1231xxxx",
    "AppSecret":"***"
-  },
+```
+
+`},`
+
+```json
   "AuthnSourceType":"urn:alibaba:idaas:authntype:oidc",
   "AdvancedStatus":"disabled",
   "UdPushStatus":"disabled",
@@ -7990,7 +7940,11 @@ Sample success responses
     "AuthnMethod":"client_secret_post",
     "ClientSecret":"CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx",
     "ClientId":"mkv7rgt4d7i4u7zqtzev2mxxxx"
-   },
+```
+
+`},`
+
+```json
    "GrantScopes":"[\"ou_asdaq1addsxzdq1xxxx\",\"ou_abcdefghdsxzdq1xxxx\"]",
    "EndpointConfig":{
     "JwksUri":"https://example.com/oauth/jwks",
@@ -7998,25 +7952,35 @@ Sample success responses
     "Issuer":"https://example.com/oauth",
     "UserinfoEndpoint":"https://example.com/oauth/userinfo",
     "AuthorizationEndpoint":"https://example.com/oauth/authorize"
-   },
+```
+
+`},`
+
+```json
    "GrantType":"authorization_code",
    "PkceChallengeMethod":"S256"
-  },
+```
+
+`},`
+
+```json
   "IdentityProviderType":"urn:alibaba:idaas:idp:alibaba:dingtalk:push",
   "LockReason":"financial",
   "UdPushConfig":{
    "UdSyncScopeConfigs":[
-    {
      "SourceScopes":"[\"\"ou_xxx,\"ou_xxxx\"]",
      "TargetScope":"ou_123xxxx"
-    }
 ```
 
 `],`
 
 ```json
    "IncrementalCallbackStatus":"disabled"
-  },
+```
+
+`},`
+
+```json
   "InstanceId":"idaas_x2df3bak3uwnapqm6xxxx",
   "CreateTime":1726021079000,
   "NetworkAccessEndpointId":"nae_mx4vsadfe6govkqkwckxxxx",
@@ -8026,27 +7990,29 @@ Sample success responses
    "AgentId":"1242350",
    "CorpSecret":"weaseiszjskejskaj12sjeszojxxxx",
    "AuthorizeCallbackDomain":"https://example.com/xxxx"
-  },
+```
+
+`},`
+
+```json
   "LastStatusCheckJobResult":"success",
   "DingtalkAppConfig":{
    "CorpId":"3756043633237690761",
    "AppKey":"41reopmwoy9s",
    "DingtalkVersion":"public_dingtalk",
    "AppSecret":"REOQ6Cl55kriOd8NOBeqWYLKpHR4p6fdZxxxx"
-  },
-  "DingtalkProvisioningConfig":{
-   "AuthedDepartmentIds":[
-{
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
+`},`
 
 ```json
-    {
+  "DingtalkProvisioningConfig":{
+   "AuthedDepartmentIds":[
+```
+
+```json
      "DeptName":"Test department",
      "DeptId":"123xxx444"
-    }
 ```
 
 `],`
@@ -8055,16 +8021,13 @@ Sample success responses
    "CorpId":"ding_xxxxx",
    "CorpName":"Test enterprise",
    "AuthedUsers":[
-    {
      "UserId":"130308333929200479",
      "Name":"Victor XX"
-    }
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "UdPullStatus":"disabled",
   "UpdateTime":1726021079000,
   "LdapConfig":{
@@ -8076,21 +8039,31 @@ Sample success responses
    "AdministratorPassword":"Admin@123",
    "LdapServerHost":"127.xx.xx.100",
    "AdministratorUsername":"admin"
-  },
+```
+
+`},`
+
+```json
   "UdPullConfig":{
    "UdSyncScopeConfig":{
     "SourceScopes":"[\"ou_123xxxx\",\"ou_123xxxx\"]",
     "TargetScope":"ou_123xxxx"
-   },
-   "GroupSyncStatus":"enabled",
-   "IncrementalCallbackStatus":"enabled"
-  },
-  "IdentityProviderExternalId":"idp_xxxx"
- }
-}
 ```
 
-##### ListIdentityProviders
+`},`
+
+```json
+   "GroupSyncStatus":"enabled",
+   "IncrementalCallbackStatus":"enabled"
+```
+
+`},`
+
+```json
+  "IdentityProviderExternalId":"idp_xxxx"
+```
+
+##### 1.4.6.5 ListIdentityProviders
 
 Queries the list of identity providers (IdPs).
 
@@ -8102,10 +8075,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | PageNum ber | Long | Query | No | 1 | The page number. |
 | PageSize | Long | Query | No | 20 | The number of entries per page. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8118,8 +8096,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Description | String | Test organization | The description of the IdP. |
 | - IdentityProvid erName | String | JWT | The name of the IdP. |
 | -UdPullStatus | String | disabled | Indicates whether pulling is supported. Valid values: disabled enabled |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8140,7 +8116,7 @@ This operation does not have operation-specific request headers and uses only co
 | -UpdateTime | Long | 1712561597000 | The time when the IdP was updated. The value is a UNIX timestamp. Unit: milliseconds. |
 | -LogoUrl | String | https://cdn-cn- hangzhou.aliyunida as.com/xx/logos/xx | The URL of the custom logo of the IdP. |
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
@@ -8155,11 +8131,9 @@ http(s)://[Endpoint]/?Action=ListIdentityProviders &InstanceId=idaas_ue2jvisn35e
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "IdentityProviders":[
-  {
    "IdentityProviderId":"idp_m5b5wd5s2hpq4t6iaehhXXX",
    "Description":null,
    "AuthnSourceSupplier":"urn:alibaba:idaas:idp:bytedance:lark",
@@ -8179,20 +8153,19 @@ Sample responses `JSON` format
    "IdentityProviderType":"urn:alibaba:idaas:idp:bytedance:lark:pull",
    "LockReason":"financial",
    "IncrementalCallbackStatus":"enabled"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### Disable data push from an IdP
+##### 1.4.6.6 Disable data push from an IdP
 
 Disable data push from an identity provider (IdP).
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8200,17 +8173,11 @@ Disable data push from an identity provider (IdP).
 | IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The IdP ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -8222,12 +8189,10 @@ Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Enable synchronization from an IdP
+##### 1.4.6.7 Enable synchronization from an IdP
 
 This topic describes how to enable synchronization from an identity provider (IdP).
 
@@ -8243,15 +8208,11 @@ This operation does not have operation-specific request headers and uses only co
 | IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The IdP ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -8264,12 +8225,10 @@ http(s)://[Endpoint]/?Action=EnableIdentityProviderUdPull &InstanceId=idaas_ue2j
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### SetIdentityProviderUdPullConfiguration
+##### 1.4.6.8 SetIdentityProviderUdPullConfiguration
 
 Modifies the inbound synchronization configuration for an identity provider (IdP).
 
@@ -8279,7 +8238,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| I | DaaS |  |  |  | Dev | eloper Guide·API Referenc | e |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| I | DaaS |   |   |   | Dev | eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -8288,33 +8251,33 @@ This operation does not have operation-specific request headers and uses only co
 | Increment alCallback Status | Strin g | Query | Yes | disabled | The status of incremental callback. This parameter specifies whether to process incremental callback data from the IdP. Valid values: disabled enabled |
 | GroupSyn cStatus | Strin g | Query | No | disabled | The status of group synchronization. Valid values: disabled enabled |
 | UdSyncSc opeConfig | Struc t | Query | No | object | The inbound synchronization configuration. |
-| - SourceSco pes | Array |  | No | ["ou asdaq1addsxzdq1X _ XX","ou asdaq1addsxzd _ q1XXX"] | The list of source nodes for synchronization. |
-| - TargetSco pe | Strin g |  | No | ou asdaq1addsxzdq1XX _ X | The destination node for synchronization. |
+| - SourceSco pes | Array |   | No | ["ou asdaq1addsxzdq1X _ XX","ou asdaq1addsxzd _ q1XXX"] | The list of source nodes for synchronization. |
+| - TargetSco pe | Strin g |   | No | ou asdaq1addsxzdq1XX _ X | The destination node for synchronization. |
 | PullProtec tedRule | Struc t | Query | No | object | The inbound synchronization protection rule. |
-| - UserDelet edThresho ld | Integ er |  | No | 30 | The threshold for the number of users to be deleted. If the number of users to be deleted exceeds this value, the synchronization task is stopped. |
+| - UserDelet edThresho ld | Integ er |   | No | 30 | The threshold for the number of users to be deleted. If the number of users to be deleted exceeds this value, the synchronization task is stopped. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| - Organizati onalUnitD eletedThr eshold | Integ er |  | No | 10 | The threshold for the number of organizations to be deleted. If the number of organizations to be deleted exceeds this value, the synchronization task is stopped. |
-| - GroupDel etedThres hold | Integ er |  | No | 10 | The threshold for the number of groups to be deleted. If the number of groups to be deleted exceeds this value, the synchronization task is stopped. |
+| - Organizati onalUnitD eletedThr eshold | Integ er |   | No | 10 | The threshold for the number of organizations to be deleted. If the number of organizations to be deleted exceeds this value, the synchronization task is stopped. |
+| - GroupDel etedThres hold | Integ er |   | No | 10 | The threshold for the number of groups to be deleted. If the number of groups to be deleted exceeds this value, the synchronization task is stopped. |
 | LdapUdPul lConfig | Struc t | Query | No | object | The configurations of LDAP synchronization. |
-| - UserObjec tClass | Strin g |  | No | userPrincipalName, mail | The user ObjectClass. |
-| - Organizati onUnitObj ectClass | Strin g |  | No | organizationUnit,top | The organization ObjectClass. |
-| - UserObjec tClassCust omFilter | Strin g |  | No | (\|(cn=test) (mail=t***@test.com)) | The user-defined filter. |
-| - GroupObj ectClass | Strin g |  | No | group | The group objectClass. |
-| - GroupMe mberAttri buteName | Strin g |  | No | member | The group member identifier. |
-| - GroupObj ectClassC ustomFilte r | Strin g |  | No | (\|(cn=test) (group=t***@test.com)) | The custom group filter. |
+| - UserObjec tClass | Strin g |   | No | userPrincipalName, mail | The user ObjectClass. |
+| - Organizati onUnitObj ectClass | Strin g |   | No | organizationUnit,top | The organization ObjectClass. |
+| - UserObjec tClassCust omFilter | Strin g |   | No | (\|(cn=test) (mail=t***@test.com)) | The user-defined filter. |
+| - GroupObj ectClass | Strin g |   | No | group | The group objectClass. |
+| - GroupMe mberAttri buteName | Strin g |   | No | member | The group member identifier. |
+| - GroupObj ectClassC ustomFilte r | Strin g |   | No | (\|(cn=test) (group=t***@test.com)) | The custom group filter. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PeriodicSy ncStatus | Strin g | Query | No | disabled | The status of scheduled verification. This parameter specifies whether to check data differences between Identity as a Service (IDaaS) and the IdP at regular intervals. Valid values: disabled enabled |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -8327,12 +8290,10 @@ http(s)://[Endpoint]/?Action=SetIdentityProviderUdPullConfiguration &InstanceId=
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Query the pulling configurations of an IdP
+##### 1.4.6.9 Query the pulling configurations of an IdP
 
 Queries the pulling configurations of an identity provider (IdP).
 
@@ -8342,11 +8303,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+**q**
+
+**p**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | IdentityPr oviderId | Strin g | Query | Yes | idp my664lwkhpicbyziro _ g3xxxxx | The IdP ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8359,13 +8326,7 @@ This operation does not have operation-specific request headers and uses only co
 | - UdSyncScopeC onfig | Struct | Struct | The synchronization scope. |
 | --TargetScope | String | ou 6zczfw67fqqpx _ wcoqa27nuhxxx | The target scope. |
 
-**q**
-
-**p**
-
-**Response parameters**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8384,8 +8345,6 @@ This operation does not have operation-specific request headers and uses only co
 | -- GroupObjectCl assCustomFilt er | String | test=123 | The filter conditions that are used to filter groups. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-**Example**
-
 Sample requests
 
 ```
@@ -8396,7 +8355,6 @@ Sample success responses
 
 ```json
  JSON format
-{
  "UdPullConfiguration":{
   "LdapUdPullConfig":{
    "GroupObjectClass":"",
@@ -8405,7 +8363,11 @@ Sample success responses
    "OrganizationUnitObjectClass":"",
    "UserObjectClass":"",
    "GroupMemberAttributeName":""
-  },
+```
+
+`},`
+
+```json
   "PeriodicSyncStatus":"enabled",
   "IdentityProviderId":"idp_my664lwkhpicbyzirog3xxxxx",
   "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
@@ -8413,21 +8375,32 @@ Sample success responses
    "UserDeletedThreshold":"",
    "OrganizationalUnitDeletedThreshold":"",
    "GroupDeletedThreshold":""
-  },
+```
+
+`},`
+
+```json
   "UdSyncScopeConfig":{
    "SourceScopes":"",
    "TargetScope":""
-  },
-  "GroupSyncStatus":"enabled",
-  "IncrementalCallbackStatus":"enabled"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-#### Password policies
+`},`
 
-##### SetForgetPasswordConfiguration
+```json
+  "GroupSyncStatus":"enabled",
+  "IncrementalCallbackStatus":"enabled"
+```
+
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+#### 1.4.7 Password policies
+
+##### 1.4.7.1 SetForgetPasswordConfiguration
 
 Configures a forgot password policy for an Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) instance.
 
@@ -8444,11 +8417,11 @@ This operation does not have operation-specific request headers and uses only co
 | Authentic ationChan nels | Array | Query | No | email | The identity authentication channels. Valid values: email and sms. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -8461,18 +8434,18 @@ http(s)://[Endpoint]/?Action=SetForgetPasswordConfiguration &InstanceId=eiam-111
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### SetPasswordInitializationConfiguration
+##### 1.4.7.2 SetPasswordInitializationConfiguration
 
 Configures a password initialization policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8483,23 +8456,15 @@ This operation does not have operation-specific request headers and uses only co
 | PasswordI nitializatio nNotificati onChanne ls | Array | Query | No | email | The methods for receiving password initialization notifications. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Password Expiration Status | Strin g | Query | Yes | enabled | Specifies whether to enable the password expiration feature. Valid values: enabled disabled |
-| Password ValidMaxD ay | Integ er | Query | No | 180 | The validity period of the password. Unit: day. This parameter must be specified when PasswordExpirationStatu s is set to enabled. |
 
 ```
 http(s)://[Endpoint]/?Action=SetPasswordInitializationConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &PasswordInitializationStatus=enabled &<Common request parameters>
@@ -8508,12 +8473,10 @@ http(s)://[Endpoint]/?Action=SetPasswordInitializationConfiguration &InstanceId=
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### SetPasswordExpirationConfiguration
+##### 1.4.7.3 SetPasswordExpirationConfiguration
 
 Configures a password expiration policy for an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8522,6 +8485,12 @@ Configures a password expiration policy for an Enterprise Identity Access Manage
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Password Expiration Status | Strin g | Query | Yes | enabled | Specifies whether to enable the password expiration feature. Valid values: enabled disabled |
+| Password ValidMaxD ay | Integ er | Query | No | 180 | The validity period of the password. Unit: day. This parameter must be specified when PasswordExpirationStatu s is set to enabled. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8536,11 +8505,11 @@ This operation does not have operation-specific request headers and uses only co
 | EffectiveA uthenticat ionSourceI ds | Array | Query | No | test | The IDs of authentication sources that are effective. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -8552,24 +8521,11 @@ http(s)://[Endpoint]/?Action=SetPasswordExpirationConfiguration &InstanceId=idaa
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Password HistorySta tus | Strin g | Query | Yes | enabled | Specifies whether to enable the password history feature. Valid values: enabled disabled |
-| Password HistoryMa xRetentio n | Integ er | Query | No | 3 | The maximum number of recent passwords that can be retained. This parameter is required when PasswordHistoryStatus is set to enabled. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### SetPasswordHistoryConfiguration
+##### 1.4.7.4 SetPasswordHistoryConfiguration
 
 Configures a password history policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8579,22 +8535,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Example**
-
-Sample requests
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Password MinLength | Integ er | Query | Yes | 10 | The minimum length of the password. |
-| Password Complexit yRules | Array | Query | No | test | The password complexity rules. |
+| Password HistorySta tus | Strin g | Query | Yes | enabled | Specifies whether to enable the password history feature. Valid values: enabled disabled |
+| Password HistoryMa xRetentio n | Integ er | Query | No | 3 | The maximum number of recent passwords that can be retained. This parameter is required when PasswordHistoryStatus is set to enabled. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=SetPasswordHistoryConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &PasswordHistoryStatus=enabled &<Common request parameters>
@@ -8603,12 +8557,10 @@ http(s)://[Endpoint]/?Action=SetPasswordHistoryConfiguration &InstanceId=idaas_u
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### SetPasswordComplexityConfiguration
+##### 1.4.7.5 SetPasswordComplexityConfiguration
 
 Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8618,22 +8570,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Example**
-
-Sample requests
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Password MinLength | Integ er | Query | Yes | 10 | The minimum length of the password. |
+| Password Complexit yRules | Array | Query | No | test | The password complexity rules. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-| OpenForgetPa sswordConfigu ration | Struct | Struct | The forgot password configurations. |
-| -Enable | Boolean | true | Indicates whether Forgot Password is enabled. This parameter is deprecated. Use the forgetPasswordStatus parameter. |
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=SetPasswordComplexityConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &PasswordMinLength=10 &<Common request parameters>
@@ -8642,12 +8592,10 @@ http(s)://[Endpoint]/?Action=SetPasswordComplexityConfiguration &InstanceId=idaa
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Queries the forgot password policy of an
+##### 1.4.7.6 Queries the forgot password policy of an EIAM instance
 
 **EIAM instance**
 
@@ -8659,7 +8607,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+| OpenForgetPa sswordConfigu ration | Struct | Struct | The forgot password configurations. |
+| -Enable | Boolean | true | Indicates whether Forgot Password is enabled. This parameter is deprecated. Use the forgetPasswordStatus parameter. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8679,7 +8638,6 @@ http(s)://[Endpoint]/?Action=GetForgetPasswordConfiguration &InstanceId=idaas_ue
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "OpenForgetPasswordConfiguration":{
   "EnableEmail":false,
@@ -8687,11 +8645,9 @@ Sample success responses `JSON` format
   "Enable":true,
   "AuthenticationChannels":"",
   "EnableSms":true
- }
-}
 ```
 
-##### Queries the password initialization
+##### 1.4.7.7 Queries the password initialization configurations of an EIAM) instance
 
 **configurations of an EIAM) instance**
 
@@ -8699,10 +8655,16 @@ Queries the password initialization configurations of an Employee Identity and A
 
 **Request headers**
 
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8713,25 +8675,9 @@ Queries the password initialization configurations of an Employee Identity and A
 | - PasswordForce dUpdateStatus | String | enabled | Indicates whether a forcible password change upon first login is enabled. Valid values: enabled disabled |
 | - PasswordInitial izationNotifica tionChannels | String | email | The methods for receiving password initialization notifications. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-| PasswordHisto ryConfiguratio n | Struct | Struct | The password history detection configuration. |
 
 ```
 http(s)://[Endpoint]/?Action=GetPasswordInitializationConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
@@ -8740,18 +8686,15 @@ http(s)://[Endpoint]/?Action=GetPasswordInitializationConfiguration &InstanceId=
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "PasswordInitializationConfiguration":{
   "PasswordInitializationType":"random",
   "PasswordForcedUpdateStatus":"enabled",
   "PasswordInitializationNotificationChannels":"",
   "PasswordInitializationStatus":"enabled"
- }
-}
 ```
 
-##### GetPasswordHistoryConfiguration
+##### 1.4.7.8 GetPasswordHistoryConfiguration
 
 Queries the password history configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8761,18 +8704,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+| PasswordHisto ryConfiguratio n | Struct | Struct | The password history detection configuration. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - PasswordHisto ryStatus | String | enabled | Indicates the status of the password history feature. Valid values: enabled disabled |
 | - PasswordHisto ryMaxRetentio n | Integer | 3 | The number of recent passwords that are retained. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Example**
 
 Sample requests
 
@@ -8783,16 +8730,13 @@ http(s)://[Endpoint]/?Action=GetPasswordHistoryConfiguration &InstanceId=idaas_u
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "PasswordHistoryConfiguration":{
   "PasswordHistoryStatus":"enabled",
   "PasswordHistoryMaxRetention":3
- }
-}
 ```
 
-##### Queries the password expiration policy of
+##### 1.4.7.9 Queries the password expiration policy of an EIAM instance.
 
 **an EIAM instance.**
 
@@ -8804,12 +8748,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8822,9 +8772,7 @@ This operation does not have operation-specific request headers and uses only co
 | - PasswordForce dUpdateDurati on | Integer | 3 | The number of days before which users must change the password to prevent password expiration. Unit: days. |
 | - PasswordExpir ationNotificati onChannels | String | login | The methods for receiving password expiration notifications. |
 
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8843,7 +8791,6 @@ http(s)://[Endpoint]/?Action=GetPasswordExpirationConfiguration &InstanceId=idaa
 Sample success responses `JSON` format
 
 ```json
-{
  "PasswordExpirationConfiguration":{
   "PasswordExpirationStatus":"enabled",
   "EffectiveAuthenticationSourceIds":"",
@@ -8853,12 +8800,15 @@ Sample success responses `JSON` format
   "PasswordExpirationNotificationDuration":7,
   "PasswordExpirationAction":"forbid_login",
   "PasswordExpirationNotificationStatus":"enabled"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Query the password complexity policy of
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.7.10 Query the password complexity policy of an EIAM instance of IDaaS
 
 **an EIAM instance of IDaaS**
 
@@ -8875,6 +8825,8 @@ This operation does not have operation-specific request headers and uses only co
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
@@ -8882,8 +8834,6 @@ This operation does not have operation-specific request headers and uses only co
 | - PasswordMinL ength | Integer | 3 | The minimum length of the password. |
 | - PasswordCom plexityRules | Array | Array | The password complexity rules. |
 | -- PasswordChec kType | String | inclusion upper ca _ _ se | The password check item. Valid values: inclusion upper case: The password _ _ must contain uppercase letters. inclusion lower case: The password _ _ must contain lowercase letters. inclusion special case: The password _ _ must contain one or more of the following special characters: @ % + \ / ' ! # $ ^ ? : , ( ) { } [ ] ~ - . _ inclusion number: The password must _ contain digits. exclusion username: The password _ cannot contain the username. exclusion email: The password cannot _ contain the email address prefix. exclusion phone number: The password _ _ cannot contain the mobile number. exclusion display name: The password _ _ cannot contain the display name. |
-
-**Response parameters**
 
 **Examples**
 
@@ -8893,37 +8843,25 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetPasswordComplexityConfiguration &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. Pages start from page 1. |
-| PageSize | Long | Query | No | 10 | The number of pages. Maximum value: 100. |
-| NextToke n | Strin g | Query | No | NTxxxxxexample | The pagination token that is used in the next request to retrieve a new page of results. If no next page is available, this parameter is not returned. |
-
 Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "PasswordComplexityConfiguration":{
   "PasswordComplexityRules":[
-   {
     "PasswordCheckType":""
-   }
 ```
 
 `],`
 
 ```json
   "PasswordMinLength":3
- }
-}
 ```
 
-#### Synchronization
+#### 1.4.8 Synchronization
 
-##### ListSynchronizationJobs
+##### 1.4.8.1 ListSynchronizationJobs
 
 Queries a list of synchronization tasks.
 
@@ -8932,6 +8870,13 @@ Queries a list of synchronization tasks.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. Pages start from page 1. |
+| PageSize | Long | Query | No | 10 | The number of pages. Maximum value: 100. |
+| NextToke n | Strin g | Query | No | NTxxxxxexample | The pagination token that is used in the next request to retrieve a new page of results. If no next page is available, this parameter is not returned. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8948,6 +8893,8 @@ This operation does not have operation-specific request headers and uses only co
 | Filters | Array | Query | No | test=123 | The filter parameters. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Long | 100 | The total number of entries returned. |
@@ -8958,9 +8905,7 @@ This operation does not have operation-specific request headers and uses only co
 | -TargetType | String | identity provider _ | The type of the synchronization destination. Valid values: identity provider: Identity provider. _ application: Application. |
 | -TargetId | String | idp my664lwkhpic _ byzirog3xxxxx | The ID of the synchronization destination. |
 
-**Response parameters**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8976,7 +8921,7 @@ This operation does not have operation-specific request headers and uses only co
 | --ErrorCode | String | ErrorCodeNotFoun d | The error code corresponding to the error message. |
 | -- UserStatistics | Struct | object | The user synchronization result statistics. |
 
-|  | Developer Guide·A | PI Reference |  | IDaa | S |
+|   | Developer Guide·A | PI Reference |   | IDaa | S |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9021,7 +8966,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Skipped | Long | 1 | The number of skipped items. |
 | -- Organizational UnitStatistics | Struct | object | The organization synchronization result statistics. |
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9066,7 +9011,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Failed | Long | 1 | The number of failed items. |
 | ----Skipped | Long | 1 | The number of skipped items. |
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9111,7 +9056,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Failed | Long | 1 | The number of failed items. |
 | ----Skipped | Long | 1 | The number of skipped items. |
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9136,7 +9081,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Success | Long | 1 | The number of successful items. |
 | ----Failed | Long | 1 | The number of failed items. |
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9154,139 +9099,109 @@ http(s)://[Endpoint]/?Action=ListSynchronizationJobs &InstanceId=idaas_ue2jvisn3
 Sample success responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
-  {
+ "SynchronizationJobs":[
    "Status":"success",
    "TriggerType":"auto",
    "Result":[
-    {
      "GroupMemberStatistics":[
-      {
        "Same":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Deleted":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Binded":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Created":[
-{
 ```
 
 ```json
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Pushed":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Updated":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`]` `],`
 
 ```json
      "GroupStatistics":[
-      {
        "Same":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Deleted":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Binded":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Created":[
-        {
          "Failed":1,
 "Total":3,
 ```
@@ -9295,228 +9210,168 @@ Sample success responses `JSON` format
          Total:3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Pushed":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Updated":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`]` `],`
 
 ```json
      "ErrorCode":"ErrorCodeNotFound",
      "ErrorMessage":"Request parameter error",
      "OrganizationalUnitStatistics":[
-      {
        "Same":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Deleted":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Binded":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Created":[
-        {
          "Failed":1,
          "Total":3,
 ```
 
-,
+`,`
 
 ```json
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Pushed":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Updated":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`]` `],`
 
 ```json
      "UserStatistics":[
-      {
        "Same":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Exported":[
-        {
          "Failed":3,
          "Total":5,
          "Skipped":1,
          "Success":2
-        }
 ```
 
 `],`
 
 ```json
        "Deleted":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Binded":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-```
-
-```
-        }
 ```
 
 `],`
 
 ```json
        "Created":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Pushed":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
 `],`
 
 ```json
        "Updated":[
-        {
          "Failed":1,
          "Total":3,
          "Skipped":1,
          "Success":1
-        }
 ```
 
-]
-
-```
-      }
-```
-
-]
-
-```
-    }
-```
-
-`],`
+`]` `]` `],`
 
 ```json
    "SynchronizationJobId":"sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx",
@@ -9526,16 +9381,11 @@ Sample success responses `JSON` format
    "StartTime":1649830226000,
    "Direction":"ingress",
    "TargetId":"idp_my664lwkhpicbyzirog3xxxxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### Runs a synchronization task
+##### 1.4.8.2 Runs a synchronization task
 
 Runs a synchronization task. A new synchronization task will be created and immediately executed.
 
@@ -9553,30 +9403,24 @@ This operation does not have operation-specific request headers and uses only co
 | Descriptio n | Strin g | Query | No | Description | The description of the synchronization task. |
 | UserIdenti tyTypes | Array | Query | No | 5 | The unique identifiers of users. |
 | Synchroni zationSco peConfig | Struc t | Query | No | Struct | The synchronization scope. |
-| - Organizati onalUnitId s | Array |  | No | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organization IDs. |
-| -GroupIds | Array |  | No | [group miu8e4t4d7i4u7 _ uwezgr54xxxx] | The group IDs. |
-| -UserIds | Array |  | No | [user d6sbsuumeta4h66 _ ec3il7yxxxx] | The account IDs. |
+| - Organizati onalUnitId s | Array |   | No | [ou wovwffm62xifdziem _ 7an7xxxxx] | The organization IDs. |
+| -GroupIds | Array |   | No | [group miu8e4t4d7i4u7 _ uwezgr54xxxx] | The group IDs. |
+| -UserIds | Array |   | No | [user d6sbsuumeta4h66 _ ec3il7yxxxx] | The account IDs. |
 | PasswordI nitializatio n | Boole an | Query | No | true | Specifies whether to initialize the password. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Synchronizatio nJobId | String | sync 0000347vjovt _ cf41li0fgsd98gn24 q9nj9xxxxx | The ID of the synchronization task. |
 
-**Response parameters**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| Synchroni zationJobI d | Strin g | Query | Yes | sync 0000347vjovtcf41li _ 0fgsd98gn24q9njxxxxx | The synchronization job ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Examples**
 
@@ -9589,13 +9433,11 @@ http(s)://[Endpoint]/?Action=RunSynchronizationJob &InstanceId=idaas_ue2jvisn35e
 Sample success responses `JSON` format
 
 ```json
-{
  "SynchronizationJobId":"sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### GetSynchronizationJob
+##### 1.4.8.3 GetSynchronizationJob
 
 Obtains the information about a single synchronization job.
 
@@ -9604,6 +9446,12 @@ Obtains the information about a single synchronization job.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| Synchroni zationJobI d | Strin g | Query | Yes | sync 0000347vjovtcf41li _ 0fgsd98gn24q9njxxxxx | The synchronization job ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Response parameters**
 
@@ -9641,7 +9489,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Success | Long | 10 | The number of successful items. |
 | ----Failed | Long | 10 | The number of failed items. |
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | ----Skipped | Long | 10 | The number of skipped items. |
@@ -9663,7 +9511,7 @@ This operation does not have operation-specific request headers and uses only co
 | -- Organizational UnitStatistics | Struct | object | The organization synchronization result statistics. |
 | ---Created | Struct | object | The creation result statistics. |
 
-| I | DaaS |  |  | Developer Guide·API Referenc | e |
+| I | DaaS |   |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9708,7 +9556,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Skipped | Long | 10 | The number of skipped items. |
 | ---Updated | Struct | object | The update result statistics. |
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9732,7 +9580,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Success | Long | 10 | The number of successful items. |
 | ----Failed | Long | 10 | The number of failed items. |
 
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9756,7 +9604,7 @@ This operation does not have operation-specific request headers and uses only co
 | ----Skipped | Long | 10 | The number of skipped items. |
 | ---Binded | Struct | object | The binding result statistics. |
 
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9795,8 +9643,8 @@ http(s)://[Endpoint]/?Action=GetSynchronizationJob &InstanceId=idaas_ue2jvisn35e
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
+ "SynchronizationJob":{
   "Status":"running",
   "TriggerType":"auto",
   "Result":{
@@ -9806,25 +9654,41 @@ Sample success responses `JSON` format
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Deleted":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Binded":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Created":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Pushed":{
      "Failed":10,
      "Total":30,
@@ -9834,52 +9698,82 @@ Sample success responses `JSON` format
 
 ```json
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Updated":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    }
-   },
+```
+
+`},`
+
+```json
    "GroupStatistics":{
     "Same":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Deleted":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Binded":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Created":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Pushed":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Updated":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    }
-   },
+```
+
+`},`
+
+```json
    "ErrorCode":"ErrorCodeNotFound",
    "ErrorMessage":"internal error",
    "OrganizationalUnitStatistics":{
@@ -9890,59 +9784,94 @@ Sample success responses `JSON` format
 "Success":10
 ```
 
-```json
+```
      Success:10
-    },
+```
+
+`},`
+
+```json
     "Deleted":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Binded":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Created":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Pushed":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Updated":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    }
-   },
+```
+
+`},`
+
+```json
    "UserStatistics":{
     "Same":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Deleted":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Binded":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Created":{
      "Failed":10,
      "Total":30,
@@ -9951,35 +9880,43 @@ Sample success responses `JSON` format
 ```json
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Pushed":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    },
+```
+
+`},`
+
+```json
     "Updated":{
      "Failed":10,
      "Total":30,
      "Skipped":10,
      "Success":10
-    }
-   }
-  },
+```
+
+`},`
+
+```json
   "SynchronizationJobId":"sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx",
   "EndTime":1649830226000,
   "TargetType":"identity_provider",
   "StartTime":1649830226000,
   "Direction":"ingress",
   "TargetId":"idp_my664lwkhpicbyzirog3nxxxxx"
- }
-}
 ```
 
 `XML` format
 
 ```xml
-<RequestId>0441BD79-92F3-53AA-8657-F8CE4A2B912A</RequestId>
+<RequestId>0441BD79-92F3-53AA-8657-F8CE4A2B912A</RequestId> <SynchronizationJob>
  <Status>running</Status>
  <TriggerType>auto</TriggerType>
  <Result>
@@ -10066,7 +10003,7 @@ Sample success responses `JSON` format
    </Updated>
 ```
 
-/p
+`/``p`
 
 ```xml
   </GroupStatistics>
@@ -10153,17 +10090,19 @@ Sample success responses `JSON` format
   </UserStatistics>
  </Result>
  <SynchronizationJobId>sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx
+ </SynchronizationJobId>
  <EndTime>1649830226000</EndTime>
  <TargetType>identity_provider</TargetType>
  <StartTime>1649830226000</StartTime>
  <Direction>ingress</Direction>
  <TargetId>idp_my664lwkhpicbyzirog3nxxxxx
  </TargetId>
+</SynchronizationJob>
 ```
 
-#### Endpoints
+#### 1.4.9 Endpoints
 
-##### CreateNetworkAccessEndpoint
+##### 1.4.9.1 CreateNetworkAccessEndpoint
 
 Creates a dedicated endpoint.
 
@@ -10183,22 +10122,12 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToke n | Strin g | Query | No | client-token-example | The client token to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | NetworkAcces sEndpointId | String | nae examplexxxx _ | The ID of the dedicated endpoint. |
-
-**Response parameters**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| NetworkA ccessEndp ointId | Strin g | Query | Yes | nae examplexxxx _ | The ID of the dedicated endpoint. You can delete only network endpoints whose NetworkEndpointType is private. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -10211,13 +10140,11 @@ http(s)://[Endpoint]/?Action=CreateNetworkAccessEndpoint &InstanceId=idaas_ue2jv
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkAccessEndpointId":"nae_examplexxxx"
-}
 ```
 
-##### DeleteNetworkAccessEndpoint
+##### 1.4.9.2 DeleteNetworkAccessEndpoint
 
 Deletes a dedicated endpoint.
 
@@ -10227,14 +10154,17 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| NetworkA ccessEndp ointId | Strin g | Query | Yes | nae examplexxxx _ | The ID of the dedicated network endpoint. |
-| NetworkA ccessEndp ointName | Strin g | Query | Yes | VPCEndpointForXX | The name of the dedicated network endpoint. You can change the names of only network endpoints whose NetworkEndpointType is private. VPCEndpointForXX |
+| NetworkA ccessEndp ointId | Strin g | Query | Yes | nae examplexxxx _ | The ID of the dedicated endpoint. You can delete only network endpoints whose NetworkEndpointType is private. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -10247,12 +10177,10 @@ http(s)://[Endpoint]/?Action=DeleteNetworkAccessEndpoint &InstanceId=idaas_ue2jv
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateNetworkAccessEndpointName
+##### 1.4.9.3 UpdateNetworkAccessEndpointName
 
 Changes the name of a dedicate network endpoint.
 
@@ -10262,22 +10190,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| NetworkA ccessEndp ointId | Strin g | Query | Yes | nae examplexxxx _ | The ID of the dedicated network endpoint. |
+| NetworkA ccessEndp ointName | Strin g | Query | Yes | VPCEndpointForXX | The name of the dedicated network endpoint. You can change the names of only network endpoints whose NetworkEndpointType is private. VPCEndpointForXX |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-| Regions | Array | Array | The list of regions that are available. |
-
-**Example**
 
 Sample requests
 
@@ -10288,12 +10212,10 @@ http(s)://[Endpoint]/?Action=UpdateNetworkAccessEndpointName &InstanceId=idaas_u
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Query the regions that support network
+##### 1.4.9.4 Query the regions that support network endpoints of IDaaS
 
 **endpoints of IDaaS**
 
@@ -10305,22 +10227,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
-| I | DaaS |  |  | Developer Guide·API Referenc | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+| Regions | Array | Array | The list of regions that are available. |
+
+| I | DaaS |   |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -RegionId | String | cn-hangzhou | The region ID. |
 | -LocalName | String | China (Hangzhou) | The region name. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| NaeRegio nId | Strin g | Query | Yes | cn-hangzhou | The ID of the region that supports dedicated endpoints. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-**Example**
 
 Sample requests
 
@@ -10332,22 +10256,15 @@ Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Regions":[
-  {
    "RegionId":"cn-hangzhou",
    "LocalName":"China (Hangzhou)"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### ListNetworkAccessEndpointAvailableZones
+##### 1.4.9.5 ListNetworkAccessEndpointAvailableZones
 
 Queries the zones that support dedicated endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 
@@ -10357,14 +10274,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| NaeRegio nId | Strin g | Query | Yes | cn-hangzhou | The ID of the region that supports dedicated endpoints. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 | Zones | Array | Array | The zones that support dedicated endpoints in the specified region. |
 | -ZoneId | String | cn-hangzhou-j | The zone ID. |
 | -LocalName | String | Hangzhou Zone J | The zone name. |
-
-**Response parameters**
 
 **Examples**
 
@@ -10377,22 +10299,15 @@ http(s)://[Endpoint]/?Action=ListNetworkAccessEndpointAvailableZones &NaeRegionI
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Zones":[
-  {
    "ZoneId":"cn-hangzhou-j",
    "LocalName":"Hangzhou Zone J"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### GetNetworkAccessEndpoint
+##### 1.4.9.6 GetNetworkAccessEndpoint
 
 Queries the information about a network endpoint.
 
@@ -10408,6 +10323,8 @@ This operation does not have operation-specific request headers and uses only co
 | NetworkA ccessEndp ointId | Strin g | Query | Yes | nae-examplexxxx | The ID of the network endpoint. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
@@ -10418,8 +10335,6 @@ This operation does not have operation-specific request headers and uses only co
 | -VpcId | String | vpc-examplexxx | The ID of the virtual private cloud (VPC) to which the network endpoint is connected. |
 | -VpcRegionId | String | cn-hangzhou | The region ID of the VPC to which the network endpoint is connected. |
 | - SecurityGroupI d | String | sg-examplexxx | The ID of the security group used by the network endpoint. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10439,18 +10354,9 @@ Sample requests
 http(s)://[Endpoint]/?Action=GetNetworkAccessEndpoint &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkAccessEndpointId=nae-examplexxxx &<Common request parameters>
 ```
 
-Sample responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| NextToke n | Strin g | Query | No | NTxxxxxexample | The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken. No token is returned for the first query. |
-| MaxResult s | Long | Query | No | 20 | The maximum number of entries per page. Maximum value: 100. |
-
-`JSON` format
+Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkAccessEndpoint":{
   "Status":"running",
@@ -10466,11 +10372,9 @@ Sample responses
   "VpcRegionId":"cn-hangzhou",
   "NetworkAccessEndpointType":"private",
   "EgressPublicIpAddresses":""
- }
-}
 ```
 
-##### ListNetworkAccessEndpoints
+##### 1.4.9.7 ListNetworkAccessEndpoints
 
 Queries the network endpoints of an IDaaS EIAM instance.
 
@@ -10480,7 +10384,13 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| NextToke n | Strin g | Query | No | NTxxxxxexample | The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken. No token is returned for the first query. |
+| MaxResult s | Long | Query | No | 20 | The maximum number of entries per page. Maximum value: 100. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -10490,6 +10400,8 @@ This operation does not have operation-specific request headers and uses only co
 | VpcRegio nId | Strin g | Query | No | cn-hangzhou | The region of the VPC to which the network endpoint is connected. The ID of the region must be returned by the ListNetworkAccessEndp ointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpoint Type is set to shared. |
 | NetworkA ccessEndp ointStatus | Strin g | Query | No | running | The status of the network endpoint. Valid values: Pending: The network endpoint is pending for initialization. creating: The network endpoint is being created. running: The network endpoint is running. deleting: The access path is being deleted. This parameter does not take effect when NetworkAccessEndpoint Type is set to shared. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10504,8 +10416,6 @@ This operation does not have operation-specific request headers and uses only co
 | -VpcRegionId | String | cn-hangzhou | The region ID of the VPC to which the network endpoint is connected. |
 | - SecurityGroupI d | String | sg-examplexxx | The ID of the security group used by the network endpoint. |
 | -Status | String | running | The status of the network endpoint. Valid values: Pending: The network endpoint is pending for initialization. creating: The network endpoint is being created. running: The network endpoint is running. deleting: The network endpoint is being deleted. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10525,11 +10435,10 @@ http(s)://[Endpoint]/?Action=ListNetworkAccessEndpoints &InstanceId=idaas_ue2jvi
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
-  {
+ "NetworkAccessEndpoints":[
    "Status":"running",
    "VpcId":"vpc-examplexxx",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
@@ -10541,20 +10450,27 @@ Sample responses `JSON` format
    "VpcRegionId":"cn-hangzhou",
    "NetworkAccessEndpointName":"VPCEndpointForXX",
    "NetworkAccessEndpointType":"private"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+##### 1.4.9.8 ListNetworkAccessPaths
+
+Queries the access paths of a dedicated endpoint.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | NetworkA ccessEndp ointId | Strin g | Query | Yes | nae examplexxxx _ | The ID of the dedicated endpoint. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10567,19 +10483,7 @@ Sample responses `JSON` format
 | -VSwitchId | String | vsw-examplexxx | The ID of the vSwitch to which the ENI used by the access path belongs. |
 | - PrivateIpAddre ss | String | cn-hangzhou | The private IP address of the ENI used by the access path. |
 
-##### ListNetworkAccessPaths
-
-Queries the access paths of a dedicated endpoint.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | IDaa |
+| Developer Guide·A | PI Reference |   | IDaa |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10599,10 +10503,8 @@ http(s)://[Endpoint]/?Action=ListNetworkAccessPaths &InstanceId=idaas_ue2jvisn35
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkAccessPaths":[
-  {
    "Status":"running",
    "NetworkAccessPathId":"nap_examplexxx",
    "PrivateIpAddress":"cn-hangzhou",
@@ -10612,33 +10514,11 @@ Sample responses `JSON` format
    "UpdateTime":1649830226000,
    "NetworkAccessEndpointId":"nae_examplexxx",
    "NetworkInterfaceId":"eni-examplexxx"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| ResourceS etId | Strin g | Query | Yes | 12 | The ID of the resource set. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 10 | The number of entries per page. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Vpcs | Array | VPC list | The list of VPCs. |
-| -Description | String | Test | The description. |
-| -VpcId | String | vpc-examplexxx | The VPC ID. |
-| -CidrBlock | String | 10.0.0.0/24 | The CIDR block of the vSwitch. |
-| -VpcName | String | Name | The VPC name. |
-| TotalCount | Integer | 100 | The total number of entries returned. |
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-##### Query the VPCs within a user account
+##### 1.4.9.9 Query the VPCs within a user account when creating a network endpoint
 
 **when creating a network endpoint**
 
@@ -10650,14 +10530,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| ResourceS etId | Strin g | Query | Yes | 12 | The ID of the resource set. |
 | PageNum ber | Long | Query | No | 1 | The page number. |
 | PageSize | Long | Query | No | 10 | The number of entries per page. |
-| VpcId | Strin g | Query | Yes | vpc-examplexxx | The VPC ID. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Vpcs | Array | VPC list | The list of VPCs. |
+| -Description | String | Test | The description. |
+| -VpcId | String | vpc-examplexxx | The VPC ID. |
+| -CidrBlock | String | 10.0.0.0/24 | The CIDR block of the vSwitch. |
+| -VpcName | String | Name | The VPC name. |
+| TotalCount | Integer | 100 | The total number of entries returned. |
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -10671,14 +10561,11 @@ Sample success responses
 
 ```json
  JSON format
-{
  "Vpcs":[
-  {
    "Description":"Test",
    "VpcId":"vpc-examplexxx",
    "CidrBlock":"10.0.0.0/24",
    "VpcName":"Name"
-  }
 ```
 
 `],`
@@ -10686,10 +10573,9 @@ Sample success responses
 ```json
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### ListVSwitches
+##### 1.4.9.10 ListVSwitches
 
 Queries a list of vSwitches in a virtual private cloud (VPC) when a network access endpoint is created.
 
@@ -10698,6 +10584,13 @@ Queries a list of vSwitches in a virtual private cloud (VPC) when a network acce
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 10 | The number of entries per page. |
+| VpcId | Strin g | Query | Yes | vpc-examplexxx | The VPC ID. |
 
 **Response parameters**
 
@@ -10719,29 +10612,15 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&VpcId=vpc-examplexxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListVSwitches &VpcId=vpc-examplexxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-| PageSize | Long | Query | No | 10 | The number of entries per page. |
-| NetworkIn terfaceId | Array | Query | No | eni-bp67acfmxazb4p**** | The ID of the ENI. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| NetworkInterfa ceSets | Array | ENI list | The list of ENIs. |
-| - SecurityGroupI ds | String | Security group ID list | The list of security group IDs. |
-
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "VSwitches":[
-  {
    "Description":"test",
    "VpcId":"vpc-examplexxx",
    "ZoneId":"cn-hangzhou-h",
@@ -10749,16 +10628,11 @@ Sample success responses `JSON` format
    "AvailableIpAddressCount":253,
    "CidrBlock":"10.0.0.0/24",
    "VSwitchName":"test"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### ListNetworkInterfaces
+##### 1.4.9.11 ListNetworkInterfaces
 
 Queries a list of elastic network interfaces (ENIs) associated with network endpoints.
 
@@ -10768,9 +10642,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+| PageSize | Long | Query | No | 10 | The number of entries per page. |
+| NetworkIn terfaceId | Array | Query | No | eni-bp67acfmxazb4p**** | The ID of the ENI. |
+
 **Response parameters**
 
-| I | DaaS |  |  | Developer Guide·API Referenc | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| NetworkInterfa ceSets | Array | ENI list | The list of ENIs. |
+| - SecurityGroupI ds | String | Security group ID list | The list of security group IDs. |
+
+| I | DaaS |   |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10792,11 +10678,6 @@ This operation does not have operation-specific request headers and uses only co
 
 Sample requests
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-| PageNum ber | Long | Query | No | 1 | The page number. |
-
 ```
 http(s)://[Endpoint]/?Action=ListNetworkInterfaces &<Common request parameters>
 ```
@@ -10804,16 +10685,12 @@ http(s)://[Endpoint]/?Action=ListNetworkInterfaces &<Common request parameters>
 Sample responses `JSON` format
 
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkInterfaceSets":[
-  {
    "Status":"Available",
    "AssociatedPublicIp":[
-    {
      "PublicIpAddress":"116.62.**.**"
-    }
 ```
 
 `],`
@@ -10827,16 +10704,11 @@ Sample responses `JSON` format
    "VSwitchId":"vsw-examplexxx",
    "NetworkInterfaceId":"eni-examplexxx",
    "SecurityGroupIds":"Security group ID list"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### ListNatGateways
+##### 1.4.9.12 ListNatGateways
 
 Queries the outbound public IP addresses of a dedicated endpoint.
 
@@ -10848,8 +10720,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+| PageNum ber | Long | Query | No | 1 | The page number. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | PageSize | Long | Query | No | 10 | The number of entries per page. |
 | VpcId | Strin g | Query | Yes | vpc-examplexxx | The ID of the virtual private cloud (VPC) to which the dedicated endpoint is connected. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10862,8 +10741,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Description | String | NAT gateway description | The description of the NAT gateway. |
 | -VpcId | String | vpc-examplexxx | The ID of the VPC to which the NAT gateway belongs. |
 | -NetworkType | String | internet | internet: Internet NAT gateway intranet: VPC NAT gateway |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10880,37 +10757,24 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&VpcId=vpc-examplexxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListNatGateways &VpcId=vpc-examplexxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-| Exists | Boolean | true | Indicates whether the service-linked role exists. |
-
 ```json
-{
  "TotalCount":100,
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NatGateways":[
-  {
    "Description":"NAT gateway description",
    "VpcId":"vpc-examplexxx",
    "NetworkType":"internet",
    "EipBindMode":"MULTI_BINDED",
    "IpLists":[
-    {
      "UsingStatus":"UsedByForwardTable",
      "PrivateIpAddress":"172.17.**.**",
      "AllocationId":"eip-25877c70gddh****",
      "IpAddress":"192.168.XX.XX"
-    }
 ```
 
 `],`
@@ -10920,16 +10784,11 @@ Sample responses `JSON` format
    "NatType":"Enhanced",
    "NatGatewayId":"nat-5t7nh1cfm6kxiszlttr38****",
    "Name":"test"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### CheckServiceLinkedRoleExistence
+##### 1.4.9.13 CheckServiceLinkedRoleExistence
 
 Checks whether a service-linked role exists.
 
@@ -10939,15 +10798,16 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+| Exists | Boolean | true | Indicates whether the service-linked role exists. |
 
 **Examples**
 
@@ -10960,13 +10820,11 @@ http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleExistence &<Common request pa
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "Exists":true
-}
 ```
 
-##### CreateServiceLinkedRole
+##### 1.4.9.14 CreateServiceLinkedRole
 
 Creates a service-linked role.
 
@@ -10976,7 +10834,15 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -10988,26 +10854,13 @@ http(s)://[Endpoint]/?Action=CreateServiceLinkedRole &<Common request parameters
 
 Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| BrandNam e | Strin g | Query | Yes | Custom Brand | The brand name. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-| BrandId | String | brand xxxx _ | The brand ID. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-#### Brand
+#### 1.4.10 Brand
 
-##### CreateBrand
+##### 1.4.10.1 CreateBrand
 
 Creates a brand.
 
@@ -11017,36 +10870,35 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| BrandNam e | Strin g | Query | Yes | Custom Brand | The brand name. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+| BrandId | String | brand xxxx _ | The brand ID. |
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=CreateBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandName=Custom Brand &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
-| BrandNam e | Strin g | Query | Yes | Custom Brand | The brand name. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
-}
+ "BrandId":"brand_xxxx"
 ```
 
-##### UpdateBrand
+##### 1.4.10.2 UpdateBrand
 
 Modifies a brand.
 
@@ -11056,17 +10908,44 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
+| BrandNam e | Strin g | Query | Yes | Custom Brand | The brand name. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=UpdateBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &BrandName=Custom Brand &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+#### 1.4.11 Network zones
+
+##### 1.4.11.1 Create a network zone
+
+Creates a network zone.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11080,38 +10959,12 @@ Sample success responses `JSON` format
 | ClientToke n | Strin g | Query | No | client-token-example | The client token that is used to ensure the idempotence of the request. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
-```json
-{
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
-```
-
-#### Network zones
-
-##### Create a network zone
-
-Creates a network zone.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NetworkZoneI d | String | network m6a57vre _ 4g3h7m725yrq6px xxx | The ID of the network zone. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| NetworkZ oneId | Strin g | Query | Yes | network 11111 _ | The network zone ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -11123,13 +10976,11 @@ Sample success responses
 
 ```json
  JSON format
-{
  "NetworkZoneId":"network_m6a57vre4g3h7m725yrq6pxxxx",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### DeleteNetworkZone
+##### 1.4.11.2 DeleteNetworkZone
 
 Deletes a network zone.
 
@@ -11139,37 +10990,33 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| NetworkZ oneId | Strin g | Query | Yes | network 11111 _ | The network zone ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| NetworkZ oneId | Strin g | Query | Yes | network 11111 _ | The ID of the network zone. |
-| NetworkZ oneName | Strin g | Query | Yes | IPV4Test | The name of the network zone. |
-| Ipv4Cidrs | Array | Query | No | 192.168.1.0/24 | The IPv4 CIDR block of the network zone. |
-| Ipv6Cidrs | Array | Query | No | 2001:db8::/32 | The IPv6 CIDR block of the network zone. |
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &<Common request parameters>
+http(s)://[Endpoint]/?Action=DeleteNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### UpdateNetworkZone
+##### 1.4.11.3 UpdateNetworkZone
 
 Modifies a network zone.
 
@@ -11179,7 +11026,15 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| NetworkZ oneId | Strin g | Query | Yes | network 11111 _ | The ID of the network zone. |
+| NetworkZ oneName | Strin g | Query | Yes | IPV4Test | The name of the network zone. |
+| Ipv4Cidrs | Array | Query | No | 192.168.1.0/24 | The IPv4 CIDR block of the network zone. |
+| Ipv6Cidrs | Array | Query | No | 2001:db8::/32 | The IPv6 CIDR block of the network zone. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -11188,29 +11043,27 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToke n | Strin g | Query | No | client-token- examplexxxx | The client token that is used to ensure the idempotence of the request. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &NetworkZoneName=IPV4Test &<Common request parameters>
+https://[Endpoint]/?Action=UpdateNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &NetworkZoneName=IPV4Test &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Update the description of a network zone
+##### 1.4.11.4 Update the description of a network zone object
 
 **object**
 
@@ -11230,11 +11083,11 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToke n | Strin g | Query | No | client-token- examplexxxx | The client token that is used to ensure the idempotence of the request. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -11248,16 +11101,18 @@ Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### ListNetworkZones
+##### 1.4.11.5 ListNetworkZones
 
 Queries a list of network zones.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11268,6 +11123,8 @@ Queries a list of network zones.
 | NetworkZ oneIds | Array | Query | No | ["zone1", "zone2"] | The list of network zone IDs. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NetworkZones | Array | Struct | The list of network zones. |
@@ -11277,13 +11134,7 @@ Queries a list of network zones.
 | -Description | String | test | The description of the network zone. |
 | - NetworkZoneT ype | String | arn:alibaba:idaas:n etwork:zone:classic | The type of the network zone. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11301,14 +11152,13 @@ This operation does not have operation-specific request headers and uses only co
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListNetworkZones &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
 ```json
-{
-  {
+ "NetworkZones":[
    "NetworkZoneId":"network_m223wbvc3sn3uakfnxvhbxxxxx",
    "Description":"test",
    "VpcId":"vpc-bp1usdmfqcgoy5ebxxxxx",
@@ -11317,7 +11167,6 @@ Sample responses `JSON` format
    "NetworkZoneName":"test_name",
    "NetworkZoneType":"arn:alibaba:idaas:network:zone:classic",
    "Ipv4Cidrs":""
-  }
 ```
 
 `],`
@@ -11327,14 +11176,25 @@ Sample responses `JSON` format
  "PreviousToken":"PTxxxxxexample",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample"
-}
 ```
+
+##### 1.4.11.6 GetNetworkZone
+
+Queries a network zone.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
 | NetworkZ oneId | Strin g | Query | Yes | network 11111 _ | The Network zone ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11347,38 +11207,22 @@ Sample responses `JSON` format
 | - NetworkZoneT ype | String | arn:alibaba:idaas:n etwork:zone:classic | The type of the network zone. |
 | -VpcId | String | vpc-25w8wxxxx | The virtual private cloud (VPC) ID. |
 
-##### GetNetworkZone
-
-Queries a network zone.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -Ipv4Cidrs | String | 192.168.1.0/24 | The IPv4 CIDR block of the network zone. |
 | -Ipv6Cidrs | String | 2001:db8::/32 | The IPv6 CIDR block of the network zone. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &<Common request parameters>
+https://[Endpoint]/?Action=GetNetworkZone &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &NetworkZoneId=network_11111 &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NetworkZone":{
   "NetworkZoneId":"network_m6fbr2bcbcadu3bcdpgzcxxxxx",
@@ -11389,13 +11233,11 @@ Sample success responses `JSON` format
   "NetworkZoneName":"test4_name",
   "NetworkZoneType":"arn:alibaba:idaas:network:zone:classic",
   "Ipv4Cidrs":""
- }
-}
 ```
 
-#### Others
+#### 1.4.12 Others
 
-##### DisableIdentityProviderAuthn
+##### 1.4.12.1 DisableIdentityProviderAuthn
 
 Disables the identity provider authentication feature.
 
@@ -11407,19 +11249,18 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
-| IdentityPr oviderId | Strin g | Query | Yes | idp 11111 _ | The ID of the Identity Provider (IdP). |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
+| IdentityPr oviderId | Strin g | Query | Yes | idp 11111 _ | The ID of the Identity Provider (IdP). |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
@@ -11432,12 +11273,10 @@ https://[Endpoint]/?Action=DisableIdentityProviderAuthn &InstanceId=eiam-111ccc1
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### EnableIdentityProviderAuthn
+##### 1.4.12.2 EnableIdentityProviderAuthn
 
 Enables authentication.
 
@@ -11447,21 +11286,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | eiam-111ccc1111 | The instance ID. |
+
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | IdentityPr oviderId | Strin g | Query | Yes | idp 11111 _ | The identity provider (IdP) ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -11474,9 +11313,7 @@ https://[Endpoint]/?Action=EnableIdentityProviderAuthn &InstanceId=eiam-111ccc11
 Sample responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
 **1.4.12.3.**
@@ -11491,7 +11328,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | IDaa |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+| Developer Gui | de·API R | eference |   |   | IDaa |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -11499,13 +11340,13 @@ This operation does not have operation-specific request headers and uses only co
 | Applicatio nId | Strin g | Query | Yes | app mkv7rgt4d7i4u7zqt _ zev2mxxxx | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ApplicationSup portedProvisio nProtocolType | Struct | object | The synchronization protocol types that are supported by the application. |
 | - ProvisionProto colType | String | The synchronization protocol type of the application account. Valid values: idaas callback: _ event callback protocol of Identity as a Service (IDaaS). scim2: System for Cross- domain Identity Management (SCIM) protocol. | Type |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -11518,25 +11359,17 @@ https://[Endpoint]/?Action=ListApplicationSupportedProvisionProtocolTypes &Insta
 Sample success responses `JSON` format
 
 ```json
-{
  "ApplicationSupportedProvisionProtocolType":{
   "ProvisionProtocolType":""
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+`},`
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
 
-##### Delete a brand
+##### 1.4.12.4 Delete a brand
 
 Deletes a brand.
 
@@ -11546,30 +11379,42 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=DeleteBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
 Sample success responses
 
 ```json
  JSON format
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Disables a brand
+##### 1.4.12.5 Disables a brand
 
 Disables a brand.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11577,33 +11422,27 @@ Disables a brand.
 | BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=DisableBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### EnableBrand
+##### 1.4.12.6 EnableBrand
 
 Enables a brand.
 
@@ -11619,33 +11458,27 @@ This operation does not have operation-specific request headers and uses only co
 | BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=EnableBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### GetBrand
+##### 1.4.12.7 GetBrand
 
 Queries the detailed information about a brand.
 
@@ -11655,13 +11488,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-|  | Developer Gui | de·API R | eference |  |  | IDaa | S |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+
+|   | Developer Gui | de·API R | eference |   |   | IDaa | S |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11673,44 +11512,32 @@ This operation does not have operation-specific request headers and uses only co
 | -Status | String | enabled | The brand status. |
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=GetBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
 ```
 
 Sample responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| BrandLoginRe directApplicati on | Struct | object | The information about the application to which users are redirected. |
-| -InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
-| -BrandId | String | brand xxxx _ | The brand ID. |
-| -ApplicationId | String | app xxxx _ | The application ID. |
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```json
-{
+ "Brand":{
   "BrandName":"Custom Brand",
   "Status":"enabled",
   "BrandType":"user_custom",
   "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
+  "BrandId":"brand_xxxx"
 ```
 
-##### GetLoginRedirectApplicationForBrand
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.12.8 GetLoginRedirectApplicationForBrand
 
 Configures redirection to an application after Single Sign-On (SSO) for a brand.
 
@@ -11720,7 +11547,54 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| BrandLoginRe directApplicati on | Struct | object | The information about the application to which users are redirected. |
+| -InstanceId | String | idaas ue2jvisn35e _ a5lmthk267xxxxx | The instance ID. |
+| -BrandId | String | brand xxxx _ | The brand ID. |
+| -ApplicationId | String | app xxxx _ | The application ID. |
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=GetLoginRedirectApplicationForBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &<Common request parameters>
+```
+
+Sample responses `JSON` format
+
+```json
+ "BrandLoginRedirectApplication":{
+  "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
+  "BrandId":"brand_xxxx",
+  "ApplicationId":"app_xxxx"
+```
+
+`},`
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+##### 1.4.12.9 Query a list of brands
+
+Queries a list of brands
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11729,40 +11603,14 @@ This operation does not have operation-specific request headers and uses only co
 | PreviousT oken | Strin g | Query | No | PTxxxxxexample | The token that was returned in the last call made to the API operation. |
 | MaxResult s | Long | Query | No | 20 | The maximum number of entries per page. |
 
-**Examples**
-
-Sample requests
-
-```
-https://[Endpoint]/?Action=GetLoginRedirectApplicationForBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
-```
-
-Sample responses `JSON` format
-
-```json
-{
-  "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
-  "BrandId":"brand_xxxx",
-  "ApplicationId":"app_xxxx"
- },
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
-```
-
-##### Query a list of brands
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-| DaaS |  |  |  | Dev | eloper Guide·API Referenc |
+| DaaS |   |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11778,52 +11626,34 @@ This operation does not have operation-specific request headers and uses only co
 | -BrandType | String | user custom _ | The brand type. |
 | -Status | String | enabled | The brand status. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
+https://[Endpoint]/?Action=ListBrands &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &<Common request parameters>
 ```
 
 Sample success responses
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
-| Applicatio nId | Strin g | Query | Yes | app xxxx _ | The application ID. |
-| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
-
 ```json
  JSON format
-{
  "TotalCount":100,
  "PreviousToken":"PTxxxexample",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A",
  "NextToken":"NTxxxexample",
  "MaxResults":20,
-  {
+ "Brands":[
    "BrandName":"Custom Brand",
    "Status":"enabled",
    "BrandType":"user_custom",
    "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx",
-  }
+   "BrandId":"brand_xxxx"
 ```
 
-]
+`]`
 
-```
-}
-```
-
-##### SetLoginRedirectApplicationForBrand
+##### 1.4.12.10 SetLoginRedirectApplicationForBrand
 
 Configures the application to which users are redirected after login for a brand.
 
@@ -11833,36 +11663,34 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-**Examples**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
-| DomainId | Strin g | Query | Yes | dm examplexxxxx _ | The domain ID. |
 | BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
+| Applicatio nId | Strin g | Query | Yes | app xxxx _ | The application ID. |
 | RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
 
+**Examples**
+
 Sample requests
 
 ```
-https://[Endpoint]/?Action=SetLoginRedirectApplicationForBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &ApplicationId=app_xxxx &<Common request parameters>
+https://[Endpoint]/?Action=SetLoginRedirectApplicationForBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &BrandId=brand_xxxx &ApplicationId=app_xxxx &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
 ```
 
-##### Changes the brand associated with a
+##### 1.4.12.11 Changes the brand associated with a domain name
 
 **domain name**
 
@@ -11874,9 +11702,40 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Query | Yes | idaas ue2jvisn35ea5lmt _ hk267xxxxx | The instance ID. |
+| DomainId | Strin g | Query | Yes | dm examplexxxxx _ | The domain ID. |
+| BrandId | Strin g | Query | Yes | brand xxxx _ | The brand ID. |
+| RegionId | Strin g | Host | No | cn-hangzhou | The region ID. |
+
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0441BD79-92F3- 53AA-8657- F8CE4A2B912A | The request ID. |
+
 **Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=UpdateDomainBrand &InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &DomainId=dm_examplexxxxx &BrandId=brand_xxxx &<Common request parameters>
+```
+
+Sample success responses `JSON` format
+
+```json
+ "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
+```
+
+### 1.5 Release notes
+
+**Update date: October 23, 2025**
+
+Release description: The first time Identity as a Service (IDaaS) released on Apsara Stack. All API operations of IDaaS are available.
+
+**1.1. Instances**
 
 | No. | API | Title | Description |
 |---|---|---|---|
@@ -11886,32 +11745,14 @@ This operation does not have operation-specific request headers and uses only co
 | 4 | ListApsaraEiamInstances | ListApsaraEiamInstances | Queries the information about one or more IDaaS EIAM instances. |
 | 5 | UpdateApsaraEiamInstance Quota | UpdateApsaraEiamInstance Quota | Queries the detailed information about an IDaaS EIAM instance. |
 
-Sample requests
-
-```
-&InstanceId=idaas_ue2jvisn35ea5lmthk267xxxxx &DomainId=dm_examplexxxxx &<Common request parameters>
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
-}
-```
-
-### Release notes
-
-**Update date: October 23, 2025**
-
-Release description: The first time Identity as a Service (IDaaS) released on Apsara Stack. All API operations of IDaaS are available.
-
 | 6 | GetInstanceLicense | GetInstanceLicense | Queries the valid license of an IDaaS EIAM instance. |
 |---|---|---|---|
 
+**1.2. Applications**
+
 | No. | API | Title | Description |
 |---|---|---|---|
-| ç | Application basics | Application basics |  |
+| ç | Application basics | Application basics |   |
 | 1 | CreateApplication | CreateApplication | Creates an application on an EIAM instance of IDaaS. |
 | 2 | DeleteApplication | DeleteApplication | Deletes an EIAM application. |
 | 3 | UpdateApplicationDescriptio n | UpdateApplicationDescription | Modifies the description of an EIAM application. |
@@ -11926,12 +11767,12 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 11 | ListApplicationsForNetworkZ one | ListApplicationsForNetworkZo ne | Queries a list of applications associated with a network zone. |
 |---|---|---|---|
 | 12 | ListApplicationsForGroup | ListApplicationsForGroup | Queries a list of applications that an account group in IDaaS EIAM can access. |
-| - | Application Single Sign-On (SSO) | Application SSO |  |
+| - | Application Single Sign-On (SSO) | Application SSO |   |
 | 1 | EnableApplicationSso | EnableApplicationSso | Enables the SSO feature for an EIAM application. |
 | 2 | DisableApplicationSso | DisableApplicationSso | Disables the SSO feature for an EIAM application. This way, users cannot log in to the application through SSO. |
 | 3 | SetApplicationSsoConfig | SetApplicationSsoConfig | Configures the SSO attributes of an EIAM application. |
 | 4 | GetApplicationSsoConfig | GetApplicationSsoConfig | Queries the SSO attributes of an EIAM application. |
-| - | Application authorization | Application authorization |  |
+| - | Application authorization | Application authorization |   |
 | 1 | AuthorizeApplicationToUsers | AuthorizeApplicationToUsers | Grants the access permissions on an application to multiple EIAM accounts at a time. |
 | 2 | AuthorizeApplicationToOrga nizationalUnits | AuthorizeApplicationToOrgani zationalUnits | Grants the access permissions on an application to multiple EIAM organizations at a time. |
 | 3 | AuthorizeApplicationToGrou ps | AuthorizeApplicationToGroup s | Grants the access permissions on an application to multiple EIAM account groups at a time. |
@@ -11948,7 +11789,7 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 11 | ListApplicationsForUser | ListApplicationsForUser | Queries a list of applications that an EIAM account can access by page. The IDs of the applications are returned. To query the detailed information about the applications, call the GetApplication operation. |
 |---|---|---|---|
 | 12 | ListApplicationsForOrganizat ionalUnit | ListApplicationsForOrganizati onalUnit | Queries the applications that an EIAM organization can access. The return result includes the IDs of the applications. To query the detailed information about the applications, call the GetApplication operation. |
-| - | Application federated credential management | Application federated credential management |  |
+| - | Application federated credential management | Application federated credential management |   |
 | 1 | UpdateApplicationFederated CredentialDescription | UpdateApplicationFederatedC redentialDescription | Modifies the description of an application federated credential. |
 | 2 | UpdateApplicationFederated Credential | UpdateApplicationFederatedC redential | Renews an application federated credential. |
 | 3 | ListApplicationFederatedCre dentials | ListApplicationFederatedCred entials | Queries a list of application federated credentials. |
@@ -11957,7 +11798,7 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 6 | DisableApplicationFederated Credential | DisableApplicationFederated Credential | Disables an application federated credential. |
 | 7 | DeleteApplicationFederated Credential | DeleteApplicationFederatedC redential | Deletes an application federated credential. |
 | 8 | CreateApplicationFederated Credential | CreateApplicationFederatedC redential | Creates an application federated credential. |
-| - | Application client keys | Application client keys |  |
+| - | Application client keys | Application client keys |   |
 
 | 1 | CreateApplicationClientSecr et | CreateApplicationClientSecret | Creates a client key for an EIAM application. An EIAM application can have at most two client keys. |
 |---|---|---|---|
@@ -11967,7 +11808,7 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 5 | ListApplicationClientSecrets | ListApplicationClientSecrets | Queries the client keys of an EIAM application. The returned keys are masked. To query unmasked keys, call the ObtainApplicationClientSecre t operation. |
 | 6 | ObtainApplicationClientSecr et | ObtainApplicationClientSecret | Queries a client key of an EIAM application. The returned key is masked. To query the unmasked key, call the ListApplicationClientSecrets operation. |
 | 7 | UpdateApplicationClientSecr etExpirationTime | UpdateApplicationClientSecre tExpirationTime | Updates the expiration time of a client key for an EIAM application. |
-| - | Application tokens | Application tokens |  |
+| - | Application tokens | Application tokens |   |
 | 1 | CreateApplicationToken | CreateApplicationToken | Creates an application token. |
 | 2 | EnableApplicationToken | EnableApplicationToken | Enables an application token. |
 | 3 | DisableApplicationToken | DisableApplicationToken | Disables an application token. |
@@ -11977,17 +11818,17 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 |---|---|---|---|
 | 6 | ObtainApplicationToken | ObtainApplicationToken | Queries an application token. |
 | 7 | DeleteApplicationToken | DeleteApplicationToken | Deletes an application token. |
-| - | Application accounts | Application accounts |  |
+| - | Application accounts | Application accounts |   |
 | 1 | AddApplicationAccountToUs er | AddApplicationAccountToUse r | Adds an application account for an EIAM application. |
 | 2 | ListApplicationAccounts | ListApplicationAccounts | Queries a list of application accounts that belong to an EIAM application by page. |
 | 3 | ListApplicationAccountsForU ser | ListApplicationAccountsForUs er | Queries all application accounts of a user for an EIAM application. |
 | 4 | RemoveApplicationAccountF romUser | RemoveApplicationAccountFr omUser | Deletes the application account of an employee from an EIAM application. |
-| - | Open API operations | Open API operations |  |
+| - | Open API operations | Open API operations |   |
 | 1 | EnableApplicationApiInvoke | EnableApplicationApiInvoke | Enables the Developer API feature for an EIAM application. |
 | 2 | DisableApplicationApiInvoke | DisableApplicationApiInvoke | Disables the Developer API feature for an EIAM application. |
 | 3 | SetApplicationGrantScope | SetApplicationGrantScope | Configures the permissions of Developer API for an EIAM application. |
 | 4 | GetApplicationGrantScope | GetApplicationGrantScope | Queries the permissions of Developer API for an EIAM application. |
-| - | Application account synchronization | Application account synchronization |  |
+| - | Application account synchronization | Application account synchronization |   |
 
 | 1 | DisableApplicationProvisioni ng | DisableApplicationProvisionin g | Disables the account synchronization feature for an EIAM application. |
 |---|---|---|---|
@@ -11997,13 +11838,13 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 5 | GetApplicationProvisioningC onfig | GetApplicationProvisioningCo nfig | Queries the configuration of the account synchronization feature for an EIAM application. |
 | 6 | GetApplicationProvisioningS cope | GetApplicationProvisioningSc ope | Queries the account synchronization scope of an EIAM application. This scope also specifies the accounts that the Developer API can query and manage. |
 
+**1.3. Accounts**
+
 | No. | API | Title | Description |
 |---|---|---|---|
 | 1 | CreateUser | CreateUser | Creates an EIAM account for an IDaaS EIAM instance. |
 | 2 | AddUserToOrganizationalUnit s | AddUserToOrganizationalUnit s | Adds an EIAM account to multiple IDaaS EIAM organizations. If the account already exists in an organization, a success response is returned. |
 | 3 | DeleteUser | DeleteUser | Deletes an EIAM account. If you delete an EIAM account, the information related to the account is cleared. |
-
-**1.3. Accounts**
 
 | 4 | RemoveUserFromOrganizatio nalUnts | RemoveUserFromOrganizatio nalUnits | Removes an EIAM account from multiple IDaaS EIAM organizations. You cannot remove an account from a primary organization. |
 |---|---|---|---|
@@ -12017,12 +11858,12 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 12 | GetUser | GetUser | Queries the detailed information about an EIAM account. |
 | 13 | ListUsers | ListUsers | Queries the detailed information about EIAM accounts by page. |
 
+**1.4. Organizations**
+
 | No . | API | Title | Description |
 |---|---|---|---|
 
-**1.4. Organizations**
-
-| DaaS |  |  | Developer Guide·API Referenc |
+| DaaS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | 1 | CreateOrganizationalUnit | CreateOrganizationalUnit | Creates an organization in IDaaS EIAM within a specific organization. |
@@ -12039,6 +11880,8 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 10 | ListOrganizationalUnitParents | ListOrganizationalUnitParents | Queries a list of parent organizations of an organization in IDaaS EIAM. The results are sorted in descending order of the levels of the parent organizations. |
 |---|---|---|---|
 
+**1.5. Account groups**
+
 | No. | API | Title | Description |
 |---|---|---|---|
 | 1 | CreateGroup | CreateGroup | Creates an EIAM account group. |
@@ -12051,8 +11894,6 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 8 | ListGroups | ListGroups | Queries a list of EIAM account groups. |
 | 9 | ListUsersForGroup | ListUsersForGroup | Queries a list of accounts that belong to an EIAM account group. |
 | 10 | ListGroupsForUser | ListGroupsForUser | Queries a list of EIAM account groups to which an account belongs. |
-
-**1.5. Account groups**
 
 **1.6 Identity providers (IdPs)**
 
@@ -12067,6 +11908,8 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 7 | DisableIdentityProviderUdPull | DisableIdentityProviderUdPull | Disables the IdP pulling feature. |
 | 8 | SetIdentityProviderUdPullCon figuration | SetIdentityProviderUdPullCon figuration | Modifies the IdP pulling configuration. |
 | 9 | GetIdentityProviderUdPullCon figuration | GetIdentityProviderUdPullCon figuration | Queries the IdP pulling configuration. |
+
+**1.7. Password policies**
 
 | No. | API | Title | Description |
 |---|---|---|---|
@@ -12083,16 +11926,22 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 9 | GetPasswordExpirationConfigu ration | GetPasswordExpiration Configuration | Queries the password expiration policy of an IDaaS EIAM instance. |
 | 10 | GetPasswordComplexityConfig uration | GetPasswordComplexit yConfiguration | Queries the password complexity rule of an IDaaS EIAM instance. |
 
+**1.8. Synchronization**
+
 | No. | API | Title | Description |
 |---|---|---|---|
 | 1 | ListSynchronizationJobs | ListSynchronizationJobs | Queries a list of synchronization jobs. |
 | 2 | RunSynchronizationJob | RunSynchronizationJob | Creates a synchronization job and immediately runs the job. |
 | 3 | GetSynchronizationJob | GetSynchronizationJob | Queries the detailed information about a synchronization job. |
 
+**1.9. Brands**
+
 | No. | API | Title | Description |
 |---|---|---|---|
 | 1 | CreateBrand | CreateBrand | Creates a brand. |
 | 2 | UpdateBrand | UpdateBrand | Modifies a brand. |
+
+**1.10 Network endpoints**
 
 | No. | API | Title | Description |
 |---|---|---|---|
@@ -12113,6 +11962,8 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 14 | ListVpcs | ListVpcs | Queries a list of VPCs available for an account when a network endpoint is created. |
 |---|---|---|---|
 
+**1.11 Network zones**
+
 | No. | API | Title | Description |
 |---|---|---|---|
 | 1 | CreateNetworkZone | CreateNetworkZone | Creates a network zone. |
@@ -12121,6 +11972,8 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 4 | UpdateNetworkZoneDescri ption | UpdateNetworkZoneDescription | Modifies the description of a network zone. |
 | 5 | ListNetworkZones | ListNetworkZones | Queries a list of network zones. |
 | 6 | GetNetworkZone | GetNetworkZone | Queries a network zone. |
+
+**1.12. Others**
 
 | No. | API | Title | Description |
 |---|---|---|---|
@@ -12138,6 +11991,14 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 10 | SetLoginRedirectApplication ForBrand | SetLoginRedirectApplicatio nForBrand | Configures the application to which users are redirected after login for a brand. |
 | 11 | UpdateDomainBrand | UpdateDomainBrand | Modifies the brand associated with a domain name. |
 
+## 2 API Reference
+
+### 2.1 List of operations by function
+
+The API operations of this product ( `EIAM DeveloperAPI/2022-02-25` ) use the resourceoriented architecture (ROA) style signature. For more information about signature details, see Request syntax and signature method. We offer SDKs in various popular programming languages, so that developers can call API operations in a plug-and-play manner, without delving into the technical details. If the SDKs provided cannot fully meet your requirements, you have the option to build your own SDK that is adapted to the signature mechanism. The process of creating custom signatures is complicated and may take approximately five days to complete. We recommend that you join the DingTalk group (ID: 78410016550) for assistance. Before you call an API operation, you must make sure that an Alibaba Cloud account is created and an AccessKey pair is created for the account. This way, you can call the API operation by using client tools such as SDKs and the CLI. For more information, see Obtain an AccessKey pair.
+
+**OpenID Connect (OIDC) API operations**
+
 | API operation | Title | Description |
 |---|---|---|
 | GenerateToken | GenerateToken | Generates an access token for an application in a specified Identity- as-a-Service Enterprise Identity Access Management (IDaaS EIAM) instance. |
@@ -12145,9 +12006,13 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | GetUserInfo | GetUserInfo | Queries the information of a user by using the user token. |
 | RevokeToken | RevokeToken | Revokes an access token or refresh token. |
 
+**API operations related to authorization scope**
+
 | API operation | Title | Description |
 |---|---|---|
 | GetApplicationProvisioningSc ope | GetApplicationProvisioningSco pe | Queries the provisioning scope of an application in an instance. |
+
+**API operations related to organization management**
 
 | API operation | Title | Description |
 |---|---|---|
@@ -12156,19 +12021,13 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | GetOrganizationalUnit | GetOrganizationalUnit | Queries the information of an organizational unit. |
 | DeleteOrganizationalUnit | GetOrganizationalUnit | Deletes an organizational unit. |
 
-## API Reference
-
-### List of operations by function
-
-The API operations of this product ( `EIAM DeveloperAPI/2022-02-25` ) use the resourceoriented architecture (ROA) style signature. For more information about signature details, see Request syntax and signature method. We offer SDKs in various popular programming languages, so that developers can call API operations in a plug-and-play manner, without delving into the technical details. If the SDKs provided cannot fully meet your requirements, you have the option to build your own SDK that is adapted to the signature mechanism. The process of creating custom signatures is complicated and may take approximately five days to complete. We recommend that you join the DingTalk group (ID: 78410016550) for assistance. Before you call an API operation, you must make sure that an Alibaba Cloud account is created and an AccessKey pair is created for the account. This way, you can call the API operation by using client tools such as SDKs and the CLI. For more information, see Obtain an AccessKey pair.
-
-**API operations related to organization management**
-
 | API operation | Title | Description |
 |---|---|---|
 | ListOrganizationalUnits | ListOrganizationalUnits | Queries a list of EIAM organizations by page. |
 | ListOrganizationalUnitParentI ds | ListOrganizationalUnitParentId s | Queries the information of all the parent organizational units of an organizational unit. |
 | GetOrganizationalUnitIdByExt ernalId | GetOrganizationalUnitIdByExt ernalId | Obtains the ID of an organizational unit based on the external ID. |
+
+**API operations related to account management**
 
 | API operation | Title | Description |
 |---|---|---|
@@ -12192,6 +12051,8 @@ The API operations of this product ( `EIAM DeveloperAPI/2022-02-25` ) use the re
 | RemoveUserFromOrganizatio nalUnits | RemoveUserFromOrganization alUnits | Removes an EIAM account from multiple EIAM organizations. If the account no longer belongs to these organizations, the removal succeeds by default. |
 | ListGroupsForUser | ListGroupsForUser | Queries a list of groups to which an EIAM account belongs. |
 
+**API operations related to account group management**
+
 | API operation | Title | Description |
 |---|---|---|
 | GetGroup | GetGroup | Queries the details of a group. |
@@ -12203,19 +12064,17 @@ The API operations of this product ( `EIAM DeveloperAPI/2022-02-25` ) use the re
 | RemoveUsersFromGroup | RemoveUsersFromGroup | Removes multiple EIAM accounts from an EIAM group. If the accounts no longer belong to the group, the removal succeeds by default. |
 | ListUsersForGroup | ListUsersForGroup | Queries a list of accounts in an EIAM group. |
 
-#### API operations related to account group management
-
-### Endpoints
+### 2.2 Endpoints
 
 IDentity as a Service (IDaaS) provides developer API operations and allows network connectivity between a user virtual private cloud (VPC) and IDaaS. IDaaS endpoints are in the following format: developerapi-idaas-${global_region}.${internet_domain} To obtain the value of global_region and internet_domain, log in to the Apsara Uni-manager Management Console. In the top navigation bar, choose **Security > Identity and O&M**
 **Security > IDaaS**. On the IDaaS page, find the required instance and click Console in the
 Actions column. On the Quick Start page, view the **URL** in the upper-right corner. In the following example: The value of global_region is cn-ece-entity121-d01. The value of internet_domain is cloud.ece-group-121.com.
 
-### API operations
+### 2.3 API operations
 
-#### OIDC API
+#### 2.3.1 OIDC API
 
-##### GenerateToken
+##### 2.3.1.1 GenerateToken
 
 Generates an access token for an application in a specific IDentity as a Service Enterprise Identity Access Management (IDaaS EIAM) instance.
 
@@ -12224,6 +12083,8 @@ Generates an access token for an application in a specific IDentity as a Service
 ```
 POST /v2/{instanceId}/{applicationId}/oauth2/token HTTP/1.1
 ```
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Description | Example |
 |---|---|---|---|---|
@@ -12236,8 +12097,6 @@ POST /v2/{instanceId}/{applicationId}/oauth2/token HTTP/1.1
 | username | string | No | The username. In password mode, this parameter must be specified. | uesrname 001 _ |
 | password | string | No | The password. In password mode, this parameter must be specified. | xxxxxx |
 
-**Request parameters**
-
 | device code _ | string | No | The device code. This parameter must be specified when grant type is _ set to urn:ietf:params:oauth:grant- type:device code. _ | xxxx |
 |---|---|---|---|---|
 | redirect uri _ | string | No | The redirect URI. This parameter must be specified when grant type is _ set to authorization code. _ The value of this parameter must be the same as the redirect URI in the request to obtain the authorization code. | xxx |
@@ -12246,11 +12105,11 @@ POST /v2/{instanceId}/{applicationId}/oauth2/token HTTP/1.1
 | exclusive tag _ | string | No | The excluded tags. | ATxxx |
 | scope | string | No | The scope of related parameters. You can specify multiple values. Separate the values with spaces. Valid values: openid email phone profile | xxxx |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | Schema of Response |  |
-
-**Response parameters**
+|   | object | Schema of Response |   |
 
 | token type _ | string | The type of the token. Valid values: Basic Bearer Valid values of the two token types: Basic : Basic Bearer : Bearer | Bearer |
 |---|---|---|---|
@@ -12265,32 +12124,19 @@ POST /v2/{instanceId}/{applicationId}/oauth2/token HTTP/1.1
 Sample success responses `JSON` format
 
 ```json
-{
   "token_type": "Bearer",
   "access_token": "ATxxx",
   "refresh_token": "RTxxx",
   "expires_in": 1200,
   "expires_at": 1653288641,
   "id_token": "xxxxx"
-}
 ```
 
-##### GetUserInfo
+##### 2.3.1.2 GetUserInfo
 
 Queries the information of a user based on the user token. Debug
 
 **Debugging**
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-|  | object | The response data. |  |
-|  | any | The user information. | None |
 
 You can run this interface directly in OpenAPI Explorer, saving you the trouble of calculating signatures. After running successfully, OpenAPI Explorer dynamically generates SDK code samples for different programming languages.
 
@@ -12300,16 +12146,25 @@ GET /v2/{instanceId}/{applicationId}/oauth2/userinfo HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
+
 **Response parameters**
+
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+|   | object | The response data. |   |
+|   | any | The user information. | None |
 
 **Examples**
 
 Sample responses `JSON` format
 
 ```json
-{
   "key": "None"
-}
 ```
 
 **Error codes**
@@ -12322,6 +12177,8 @@ For a list of error codes, see Service error codes.
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
+**Error codes**
+
 | HttpCode | Error Code | Error message | Description |
 |---|---|---|---|
 | 400 | invalid request _ | Application is not OIDC application | The application is not an OIDC application. |
@@ -12329,15 +12186,7 @@ For a list of error codes, see Service error codes.
 | 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx | The application is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| client id _ | string | No | The client ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-
-**Error codes**
-
-##### RevokeToken
+##### 2.3.1.3 RevokeToken
 
 Revokes an access token or refresh token. Debug
 
@@ -12353,29 +12202,29 @@ POST /v2/{instanceId}/{applicationId}/oauth2/revoke HTTP/1.1
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| client id _ | string | No | The client ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | client secret _ | string | No | The client secret. | CSEHDcHcrUKHw1Cu xkJEHPveWRXBGqVq Rsxxxx |
 | token | string | Yes | The token to be revoked. | ATxxxx |
 | token type hint _ _ | string | No | The type of the token. access token refresh token _ _ Valid values: access token: access _ token refresh token: refresh _ token | access token _ |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response data. |  |
-
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-**Response parameters**
+|   | object | The response data. |   |
 
 **Examples**
 
 Sample responses `JSON` format
 
 ```json
-{
   "test": "test",
   "test2": 1
-}
 ```
 
 **Error codes**
@@ -12384,17 +12233,15 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
-#### API operations related to authorization
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+#### 2.3.2 API operations related to authorization scope
 
 **scope**
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-
-##### GetApplicationProvisioningScope
+##### 2.3.2.1 GetApplicationProvisioningScope
 
 Queries the synchronization scope of an application in an instance.
 
@@ -12414,31 +12261,27 @@ GET /v2/{instanceId}/{applicationId}/provisioningScope HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+
 **Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response data. |  |
-| organizationalUnitIds | array | The organization IDs. |  |
+|   | object | The response data. |   |
+| organizationalUnitIds | array | The organization IDs. |   |
 | organizationalUnitId | string | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
-| groupIds | array | The group IDs. |  |
+| groupIds | array | The group IDs. |   |
 | groupIds | string | The group ID. | group wovwffm62xifd _ ziem7an7xxxxx |
-
-| Change time | Summary of changes | Action |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HttpCode | Error Code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid | The token is invalid. |
-| 404 | application not found _ _ | Application id not found: app 001 _ | The application is not found. |
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "organizationalUnitIds": [
     "ou_wovwffm62xifdziem7an7xxxxx"
 ```
@@ -12450,11 +12293,7 @@ Sample success responses `JSON` format
     "group_wovwffm62xifdziem7an7xxxxx"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Error codes**
 
@@ -12462,7 +12301,16 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Change time | Summary of changes | Action |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
+
+| HttpCode | Error Code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid | The token is invalid. |
+| 404 | application not found _ _ | Application id not found: app 001 _ | The application is not found. |
 
 | HttpCode | Error Code | Error message | Description |
 |---|---|---|---|
@@ -12471,16 +12319,9 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:read all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| body | object | No | The request body. |  |
+#### 2.3.3 Organization management
 
-#### Organization management
-
-##### CreateOrganizationalUnit
+##### 2.3.3.1 CreateOrganizationalUnit
 
 Creates an organization. Debug
 
@@ -12496,26 +12337,31 @@ POST /v2/{instanceId}/{applicationId}/organizationalUnits HTTP/1.1
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| body | object | No | The request body. |   |
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | organizational UnitName | string | Yes | The organization name. The name can be up to 64 characters in length. | name001 |
 | parentId | string | Yes | The ID of the parent organization. | ou wovwffm62xifdzie _ m7an7xxxxx |
 | organizational UnitExternalI d | string | No | The external ID of the organization. The external ID can be used to map external data to the data of the organization in Identity as a Service (IDaaS). By default, the external ID is the organization ID. The ID can be up to 64 characters in length. | ou wovwffm62xifdzie _ m7an7xxxxx |
 | description | string | No | The organization description. The description can be up to 128 characters in length. | Test organization |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response parameters. |  |
+|   | object | The response parameters. |   |
 | organizationalUnitId | string | The organization ID. | ou wovwffm62xifdziem _ 7an7xxxxx |
-
-**Response parameters**
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx"
-}
 ```
 
 **Error codes**
@@ -12527,6 +12373,8 @@ For a list of error codes, see Service error codes.
 | Time | Description | Operation |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -12539,9 +12387,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ manage all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-**Error codes**
-
-##### PatchOrganizationalUnit
+##### 2.3.3.2 PatchOrganizationalUnit
 
 Updates the information about an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -12553,26 +12399,26 @@ The operation conforms to the HTTP PATCH request method. The value of a paramete
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
-| body | object | No | The request body. |  |
-| organizational UnitName | string | No | The organization name. The name can be up to 64 characters in length. | name001 |
-| description | string | No | The description of the organization. The description can be up to 128 characters in length. | Test organization |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-
 **Request syntax**
 
 PATCH /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitId} HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
+| body | object | No | The request body. |   |
+| organizational UnitName | string | No | The organization name. The name can be up to 64 characters in length. | name001 |
+| description | string | No | The description of the organization. The description can be up to 128 characters in length. | Test organization |
+
 **Response parameters**
+
+| Parameter | Type | Description | Example |
+|---|---|---|---|
 
 This operation does not return any operation-specific parameters.
 
@@ -12582,11 +12428,19 @@ If the request was successful, the HTTP status code 200 is returned by default.
 
 **Examples**
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{}`
+
+**Error codes**
+
+For a list of error codes, see Service error codes.
+
+**Change history**
 
 | Change time | Summary of changes | Action |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HttpCode | Error Code | Error message | Description |
 |---|---|---|---|
@@ -12599,40 +12453,11 @@ Sample success responses `JSON` format
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ manage all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-```
-{}
-```
-
-**Error codes**
-
-For a list of error codes, see Service error codes.
-
-**Change history**
-
-**Error codes**
-
-##### GetOrganizationalUnit
+##### 2.3.3.3 GetOrganizationalUnit
 
 Queries the information about an organization. Debug
 
 **Debugging**
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-|  | object | The response parameters. |  |
-| instanceId | string | The instance ID. | idaas ue2jvisn35ea _ 5lmthk267xxxxx |
-| organizationalUnitId | string | The organization ID. | ou wovwffm62xifdz _ iem7an7xxxxx |
-| organizationalUnitName | string | The organization name. | name001 |
-| parentId | string | The ID of the parent organization. | ou wovwffm62xifdz _ iem7an7xxxxx |
-| organizationalUnitExternalId | string | The external ID. | id wovwffm62xifdzi _ em7an7xxxxx |
-|  |  | The source type of the organization. Valid values: build in: The _ organization was |  |
 
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
@@ -12642,9 +12467,26 @@ GET /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitId} 
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
+
 **Response parameters**
 
-| Developer Guide·API Reference |  |  | IDaa |
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+|   | object | The response parameters. |   |
+| instanceId | string | The instance ID. | idaas ue2jvisn35ea _ 5lmthk267xxxxx |
+| organizationalUnitId | string | The organization ID. | ou wovwffm62xifdz _ iem7an7xxxxx |
+| organizationalUnitName | string | The organization name. | name001 |
+| parentId | string | The ID of the parent organization. | ou wovwffm62xifdz _ iem7an7xxxxx |
+| organizationalUnitExternalId | string | The external ID. | id wovwffm62xifdzi _ em7an7xxxxx |
+|   |   | The source type of the organization. Valid values: build in: The _ organization was |   |
+
+| Developer Guide·API Reference |   |   | IDaa |
 |---|---|---|---|
 | Parameter | Type | created in Identity as a DeSsecrvriicpet (iIoDnaaS). | Example |
 | organizationalUnitSourceType | string | ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ldap: The organization was imported from a Lightweight Directory Access Protocol (LDAP) service. | build in _ |
@@ -12657,9 +12499,30 @@ GET /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitId} 
 
 Sample success responses `JSON` format
 
+```json
+  "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
+  "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
+  "organizationalUnitName": "name001",
+  "parentId": "ou_wovwffm62xifdziem7an7xxxxx",
+  "organizationalUnitExternalId": "id_wovwffm62xifdziem7an7xxxxx",
+  "organizationalUnitSourceType": "build_in",
+  "organizationalUnitSourceId": "id_wovwffm62xifdziem7an7xxxxx",
+  "createTime": 1652083425923,
+  "updateTime": 1652083425923,
+  "description": "xxxxx"
+```
+
+**Error codes**
+
+For a list of error codes, see Service error codes.
+
+**Change history**
+
 | Time | Description | Operation |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -12671,40 +12534,7 @@ Sample success responses `JSON` format
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ read all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-```json
-{
-  "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
-  "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
-  "organizationalUnitName": "name001",
-  "parentId": "ou_wovwffm62xifdziem7an7xxxxx",
-  "organizationalUnitExternalId": "id_wovwffm62xifdziem7an7xxxxx",
-  "organizationalUnitSourceType": "build_in",
-  "organizationalUnitSourceId": "id_wovwffm62xifdziem7an7xxxxx",
-  "createTime": 1652083425923,
-  "updateTime": 1652083425923,
-  "description": "xxxxx"
-}
-```
-
-**Error codes**
-
-For a list of error codes, see Service error codes.
-
-**Change history**
-
-**Error codes**
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-
-##### DeleteOrganizationalUnit
+##### 2.3.3.4 DeleteOrganizationalUnit
 
 Deletes an organization. Debug
 
@@ -12718,25 +12548,35 @@ DELETE /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitI
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
+
 **Response parameters**
+
+| Parameter | Type | Description | Example |
+|---|---|---|---|
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample success responses `JSON` format
-
-```
-{}
-```
+Sample success responses `JSON` format `{}`
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
+**Change history**
+
 | Time | Description | Operation |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HttpCode | Error Code | Error message | Description |
 |---|---|---|---|
@@ -12748,21 +12588,25 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ manage all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Debug Debugging | Debug |
-|---|---|
-| > Document Version: 20260629 41 |  |
-
-**Change history**
-
-**Error codes**
-
-##### ListOrganizationalUnits
+##### 2.3.3.5 ListOrganizationalUnits
 
 Queries a list of organizations in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) by page.
 
 **Usage notes**
 
-If you need to query child organizations in a root organization, set the following request parameter: { "parentOrganizationalUnitId": "ou_root" }
+If you need to query child organizations in a root organization, set the following request parameter: "parentOrganizationalUnitId": "ou_root"
+
+| Debug Debugging | Debug |
+|---|---|
+| > Document Version: 20260629 41 |   |
+
+OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
+
+**Request syntax**
+
+GET /v2/{instanceId}/{applicationId}/organizationalUnits HTTP/1.1
+
+**Request parameters**
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
@@ -12773,24 +12617,16 @@ If you need to query child organizations in a root organization, set the followi
 | pageNumber | integer | No | The page number. Default value: 1. | 1 |
 | pageSize | integer | No | The number of entries per page. Default value: 20. Valid values: 1 to 100. | 20 |
 
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-|  | object | The response parameters. |  |
-| totalCount | long | The total number of entries returned. | 1000 |
-| data | array<object> | The data objects returned. |  |
-| data | object | The data object returned. |  |
-
-OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
-
-**Request syntax**
-
-GET /v2/{instanceId}/{applicationId}/organizationalUnits HTTP/1.1
-
-**Request parameters**
-
 **Response parameters**
 
-| DaaS |  | Developer G | uide·API Referenc |
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+|   | object | The response parameters. |   |
+| totalCount | long | The total number of entries returned. | 1000 |
+| data | array<object> | The data objects returned. |   |
+| data | object | The data object returned. |   |
+
+| DaaS |   | Developer G | uide·API Referenc |
 |---|---|---|---|
 | Parameter | Type | Description | Example idaas ue2jvisn _ |
 | instanceId | string | The instance ID. | 35ea5lmthk26 7xxxxx |
@@ -12800,35 +12636,20 @@ GET /v2/{instanceId}/{applicationId}/organizationalUnits HTTP/1.1
 | organizationalUnitExternalId | string | The external ID of the organization. The external ID can be used to map external data to the data of the organization in Identity as a Service (IDaaS). By default, the external ID is the organization ID. Note: For organizations with the same source type and source ID, each organization has a unique external ID. | ou wovwffm62 _ xifdziem7an7x xxxx |
 | organizationalUnitSourceType | string | The source type of the organization. Valid values: build in: The _ organization was created in IDaaS. ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ldap: The organization was imported from a Lightweight Directory Access Protocol (LDAP) service. | build in _ |
 
-|  | Parameter | Type | The source ID of the Description organization. | Example |  |
+|   | Parameter | Type | The source ID of the Description organization. | Example |   |
 |---|---|---|---|---|---|
-|  | organizationalUnitSourceId | string | If the organization was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organization was imported, its source ID is the enterprise ID in the source. For example, if the organization was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn _ 35ea5lmthk26 7xxxxx |  |
-|  | createTime | long | The time when the organization was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 165208342592 3 |  |
-|  | updateTime | long | The last time when the organization was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 165208342592 3 |  |
-|  | description | string | The organization description. | Test organization |  |
+|   | organizationalUnitSourceId | string | If the organization was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organization was imported, its source ID is the enterprise ID in the source. For example, if the organization was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn _ 35ea5lmthk26 7xxxxx |   |
+|   | createTime | long | The time when the organization was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 165208342592 3 |   |
+|   | updateTime | long | The last time when the organization was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 165208342592 3 |   |
+|   | description | string | The organization description. | Test organization |   |
 
 **Examples**
 
 Sample success responses `JSON` format
 
-| Time | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid | The token is invalid. |
-| 400 | OrganizationUnitIdNotI nScopes | organizationUnitId : ou wovwffm62xifdzie _ m7an7xxxxx not in provisioning scope! | The organization is not synchronized. |
-| 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx | The application is not found. |
-| 403 | application disabled _ | Application is disabled | The application is disabled. |
-| 403 | application api disable _ _ d | Application api invoke disabled | The application API is not available. |
-| 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ read all] _ | The API authorization information is not specified. |
-
 ```json
-{
   "totalCount": 1000,
   "data": [
-    {
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
       "organizationalUnitName": "name001",
@@ -12839,14 +12660,9 @@ Sample success responses `JSON` format
       "createTime": 1652083425923,
       "updateTime": 1652083425923,
       "description": "Test organization"
-    }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Error codes**
 
@@ -12854,23 +12670,29 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Time | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
 
-| Developer Guide·API Refe | rence |  | IDaa |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid | The token is invalid. |
+| 400 | OrganizationUnitIdNotI nScopes | organizationUnitId : ou wovwffm62xifdzie _ m7an7xxxxx not in provisioning scope! | The organization is not synchronized. |
+| 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx | The application is not found. |
+| 403 | application disabled _ | Application is disabled | The application is disabled. |
+| 403 | application api disable _ _ d | Application api invoke disabled | The application API is not available. |
+| 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ read all] _ | The API authorization information is not specified. |
+
+| Developer Guide·API Refe | rence |   | IDaa |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 |---|---|---|---|
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
-
-##### ListOrganizationalUnitParentIds
+##### 2.3.3.6 ListOrganizationalUnitParentIds
 
 Queries the information of all the parent organizational units of an organizational unit. Debug
 
@@ -12884,38 +12706,31 @@ GET /v2/{instanceId}/{applicationId}/organizationalUnits/{organizationalUnitId}/
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| organizationalUni tId | string | Yes | The organization ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
+
 **Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response parameters. |  |
-| parentIds | array | The IDs of the parent organizational units. The IDs of the organizational units are ordered based on their levels from high to low. Only the IDs of the organizational units within the authorization scope are displayed. |  |
+|   | object | The response parameters. |   |
+| parentIds | array | The IDs of the parent organizational units. The IDs of the organizational units are ordered based on their levels from high to low. Only the IDs of the organizational units within the authorization scope are displayed. |   |
 | parentId | string | The organization ID. | ou wovwffm62xifdziem7 _ an7xxxxx |
-
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid | The token is invalid. |
-| 400 | OrganizationUnitIdNotI nScopes | organizationUnitId : ou wovwffm62xifdzie _ m7an7xxxxx not in provisioning scope! | The organizational unit is not in the provisioning scope. |
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "parentIds": [
     "ou_wovwffm62xifdziem7an7xxxxx"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Error codes**
 
@@ -12923,7 +12738,16 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid | The token is invalid. |
+| 400 | OrganizationUnitIdNotI nScopes | organizationUnitId : ou wovwffm62xifdzie _ m7an7xxxxx not in provisioning scope! | The organizational unit is not in the provisioning scope. |
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -12933,13 +12757,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ read all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-
-##### GetOrganizationalUnitIdByExternalId
+##### 2.3.3.7 GetOrganizationalUnitIdByExternalId
 
 Obtains the ID of an organization based on the external ID. Debug
 
@@ -12953,12 +12771,18 @@ POST /v2/{instanceId}/{applicationId}/organizationalUnits/_/actions/getOrganizat
 
 **Request parameters**
 
-| DaaS |  |  | Develo | per Guide·API Referenc |
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+
+| DaaS |   |   | Develo | per Guide·API Referenc |
 |---|---|---|---|---|
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | organizational UnitExternalI d | string | Yes | The external ID of the organization. The external ID can be used to map external data to the data of the organization in Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM). By default, the external ID is the organization ID. Note: For organizations with the same source type and source ID, each organization has a unique external ID. | ou wovwffm62xifdzie _ m7an7xxxxx |
 | organizational UnitSourceTyp e | string | Yes | The source type of the organization. Valid values: build in: The organization _ was created in IDaaS EIAM. ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ldap: The organization was imported from a Lightweight Directory Access Protocol (LDAP) service. | build in _ |
 | organizational UnitSourceId | string | Yes | The source ID of the organization. If the organization was created in IDaaS EIAM, its source ID is the ID of the IDaaS EIAM instance. If the organization was imported, its source ID is the enterprise ID in the source. For example, if the organization was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
@@ -12967,21 +12791,15 @@ POST /v2/{instanceId}/{applicationId}/organizationalUnits/_/actions/getOrganizat
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | OrganizationalUnitIdObject |  |
+|   | object | OrganizationalUnitIdObject |   |
 | organizationalUnitId | string | The organization ID. | ou wovwffm62xifdziem _ 7an7xxxxx |
-
-| Change time | Summary of changes | Action |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx"
-}
 ```
 
 **Error codes**
@@ -12990,9 +12808,13 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
-#### Account management
+| Change time | Summary of changes | Action |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
-##### CreateUser
+#### 2.3.4 Account management
+
+##### 2.3.4.1 CreateUser
 
 Creates an Employee Identity and Access Management (EIAM) account in an organization. Debug
 
@@ -13011,14 +12833,14 @@ POST /v2/{instanceId}/{applicationId}/users HTTP/1.1
 | Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | username | string | Yes | The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores ( ), periods (.), _ at signs (@), and hyphens (- ). | name001 |
 | displayName | string | No | The display name of the account. The display name can be up to 64 characters in length. | display name001 _ |
 | password | string | No | The password of the account. For information about the password rules, go to the Create User panel in the Identity as a Service (IDaaS) console. | xxxxx |
 | phoneRegion | string | No | The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified. | 86 |
 | phoneNumbe r | string | No | The mobile phone number of the account. The value must be 6 to 15 digits. | 156xxxxxxx |
 
-| Developer Guide·API Re | ference |  |  | IDaa |
+| Developer Guide·API Re | ference |   |   | IDaa |
 |---|---|---|---|---|
 
 | Parameter | Type | Requi red | Description | Example |
@@ -13029,42 +12851,36 @@ POST /v2/{instanceId}/{applicationId}/users HTTP/1.1
 | userExternalI d | string | No | The external ID of the account, which can be used to associate with an external system. The external ID can be up to 64 characters in length. If you do not specify this parameter, the external ID is the account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
 | primaryOrgani zationalUnitId | string | Yes | The ID of the primary organization. | ou wovwffm62xifdzie _ m7an7xxxxx |
 | description | string | No | The description of the account. The description can be up to 256 characters in length. | Test account |
-| passwordInitial izationConfig | object | No | The configuration for password initialization. |  |
+| passwordInitial izationConfig | object | No | The configuration for password initialization. |   |
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
 | passwordIni tializationPo licyPriority | string | No | The priority of the password initialization policy. By default, the password initialization feature is disabled and no password initialization policy is used. Valid values: global: The instance-level password initialization policy is used, which means that the password initialization policy that you configured does not take effect. custom: The password initialization policy that you configured is used, including whether to force users to change the password, the password initialization method, and the notification method. | global |
 | passwordFo rcedUpdate Status | string | No | Specifies whether to force users to change the password. Default value: disabled. Valid values: enabled: force users to change the password. disabled: do not force users to change the password. | enabled |
-| userNotifica tionChannel s | array | No | The password notification methods. Valid values: email sms |  |
+| userNotifica tionChannel s | array | No | The password notification methods. Valid values: email sms |   |
 | userNotif icationCh annel | string | No | The password notification method. | email |
 | passwordIni tializationTy pe | string | No | The password initialization method. Set the value to random. | random |
-| customFields | array<ob ject> | No | The extended fields of the account. |  |
+| customFields | array<ob ject> | No | The extended fields of the account. |   |
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
-| customFiel d | object | No | The key and value of the extended field. |  |
+| customFiel d | object | No | The key and value of the extended field. |   |
 | fieldNam e | string | No | The key of the extended field. For more information about the type and valid values of the extended field, see the description of the extended field in the IDaaS console. | age |
 | fieldValu e | string | No | The value of the extended field. | fieldValue 001 _ |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response data. |  |
+|   | object | The response data. |   |
 | userId | string | The account ID. | user d6sbsuumeta4h66 _ ec3il7yxxxx |
-
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-**Response parameters**
 
 **Examples**
 
 Sample responses `JSON` format
 
 ```json
-{
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
-}
 ```
 
 **Error codes**
@@ -13072,6 +12888,10 @@ Sample responses `JSON` format
 For a list of error codes, see Service error codes.
 
 **Change history**
+
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
 **Error codes**
 
@@ -13093,7 +12913,7 @@ For a list of error codes, see Service error codes.
 | 400 | MissingParameter.Prim aryOrganizationalUnitI d | The specified parameter:PrimaryOrg anizationalUnitId is required! | The primary organization is required. |
 | 400 | InvalidParameter.Phon eNumber | The specified parameter:PhoneNum ber is invalid. | Invalid mobile number. |
 
-| Developer Guide·API Refe | rence |  | IDaa |
+| Developer Guide·API Refe | rence |   | IDaa |
 |---|---|---|---|
 | HttpCode | Error Code | Error message | Description |
 | 400 | InvalidParameter.Phon eRegion | The specified parameter:PhoneRegio n is invalid. | Invalid country code of the mobile number. |
@@ -13103,10 +12923,7 @@ For a list of error codes, see Service error codes.
 | 400 | InvalidParameter.Desc ription | The specified parameter:Description is invalid. | The description of the account has exceeded the maximum length. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-
-##### PatchUser
+##### 2.3.4.2 PatchUser
 
 Modifies an Employee Identity and Access Management (EIAM) account.
 
@@ -13126,11 +12943,14 @@ PATCH /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 | userId | string | Yes | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | username | string | No | The account name. | name001 |
 | displayName | string | No | The display name of the account. | display name001 _ |
 | phoneRegion | string | No | The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified. | 86 |
@@ -13141,32 +12961,42 @@ PATCH /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
 | emailVerified | boolean | No | Specifies whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true. | true |
-| customFields | array<ob ject> | No | The extended fields of the account. |  |
-| customFiel d | object | No | The extended field. |  |
+| customFields | array<ob ject> | No | The extended fields of the account. |   |
+| customFiel d | object | No | The extended field. |   |
 | operato r depre cated | string | No | The type of the operation. This parameter is deprecated. Replace it with operation. | replace |
 | fieldNam e | string | No | The name of the extended field. For more information about the type and valid values of the extended field, see the detailed description of the extended field in the IDaaS console. | age |
 | fieldValu e | string | No | The value of the extended field. | test value _ |
 | operatio n | string | No | The operation to be performed on the field. Valid values: add replace If you leave the value of the extended field empty, the replace operation is converted to an add operation. remove | replace |
 
-| depre |  | strin |
+| depre |   | strin |
 |---|---|---|
 
-|  | cated |
+|   | cated |
 |---|---|
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-
-**Response parameters**
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
+Sample success responses `JSON` format `{}`
+
+**Error codes**
+
+For a list of error codes, see Service error codes.
+
+**Change history**
+
 | Time | Description | Operation |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 | 2023-04-16 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HttpCode | Error Code | Error message | Description |
 |---|---|---|---|
@@ -13180,36 +13010,7 @@ This operation does not return any operation-specific parameters.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-Sample success responses `JSON` format
-
-```
-{}
-```
-
-**Error codes**
-
-For a list of error codes, see Service error codes.
-
-**Change history**
-
-**Error codes**
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| userId | string | Yes | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-|  | object | The response parameters. |  |
-| instanceId | string | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
-| organizationalUnits | array<object> | The organizations to which the account belongs. |  |
-| organizationalUnit | object | The organization. |  |
-|  |  |  | ou wovwffm62xif |
-
-##### GetUser
+##### 2.3.4.3 GetUser
 
 Queries the details of an Employee Identity and Access Management (EIAM) account. Debug
 
@@ -13223,26 +13024,41 @@ GET /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| userId | string | Yes | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
+
 **Response parameters**
 
-|  | organizationalUnitId Parameter | string Type | The organization ID. Description | ou wovwffm62xif _ dEzxieamm7panle7xxxxx |  |
-|---|---|---|---|---|---|
-|  | organizationalUnitName | string | The organization name. | name001 |  |
-|  | primary | boolean | Indicates whether the organization is the primary organization. | true |  |
-|  | primaryOrganizationalUnitId | string | The ID of the primary organization of the account. | ou wovwffm62xif _ dziem7an7xxxxx |  |
-|  | customFields | array<object> | The extended fields of the account. |  |  |
-|  | customField | object | The extended field. |  |  |
-|  | fieldName | string | The name of the extended field. | xxxx |  |
-|  | fieldValue | string | The value of the extended field. Field values are returned as strings regardless of the data types of the fields. For example, true or false is returned for a Boolean field. | Field value |  |
-|  | userId | string | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |  |
-|  | username | string | The account name. | name001 |  |
-|  | displayName | string | The display name of the account. | display name001 _ |  |
-|  | passwordSet | boolean | Indicates whether a password is set. | true |  |
-|  | phoneRegion | string | The country code of the mobile number. For example, the country code of China is 86 without 00 or +. | 86 |  |
-|  |  |  | The mobile number of |  |  |
-|  | > Document Version: 20260629 |  |  | 43 | 3 |
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+|   | object | The response parameters. |   |
+| instanceId | string | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
+| organizationalUnits | array<object> | The organizations to which the account belongs. |   |
+| organizationalUnit | object | The organization. |   |
+|   |   |   | ou wovwffm62xif |
 
-|  |  | The mobile number of |  |
+|   | organizationalUnitId Parameter | string Type | The organization ID. Description | ou wovwffm62xif _ dEzxieamm7panle7xxxxx |   |
+|---|---|---|---|---|---|
+|   | organizationalUnitName | string | The organization name. | name001 |   |
+|   | primary | boolean | Indicates whether the organization is the primary organization. | true |   |
+|   | primaryOrganizationalUnitId | string | The ID of the primary organization of the account. | ou wovwffm62xif _ dziem7an7xxxxx |   |
+|   | customFields | array<object> | The extended fields of the account. |   |   |
+|   | customField | object | The extended field. |   |   |
+|   | fieldName | string | The name of the extended field. | xxxx |   |
+|   | fieldValue | string | The value of the extended field. Field values are returned as strings regardless of the data types of the fields. For example, true or false is returned for a Boolean field. | Field value |   |
+|   | userId | string | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |   |
+|   | username | string | The account name. | name001 |   |
+|   | displayName | string | The display name of the account. | display name001 _ |   |
+|   | passwordSet | boolean | Indicates whether a password is set. | true |   |
+|   | phoneRegion | string | The country code of the mobile number. For example, the country code of China is 86 without 00 or +. | 86 |   |
+|   |   |   | The mobile number of |   |   |
+|   | > Document Version: 20260629 |   |   | 43 | 3 |
+
+|   |   | The mobile number of |   |
 |---|---|---|---|
 | phoneNumber Parameter | string Type | tDhee saccrcioputnito onwner. | 156xxxxxxx Example |
 | phoneNumberVerified | boolean | Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified. | true |
@@ -13250,12 +13066,12 @@ GET /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 | emailVerified | boolean | Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified. | true |
 | userExternalId | string | The external ID of the account, which can be used to associate the EIAM account of IDaaS with an external system. By default, the external ID is the account ID. Note: For organizations with the same source type and source ID, each organization has a unique external ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
 | userSourceType | string | The source type of the account. Valid values: build in: The _ organization was created in IDaaS. ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ld Th t | build in _ |
-| 34 |  | > Documen | t Version: 2026062 |
+| 34 |   | > Documen | t Version: 2026062 |
 
-|  |  | ldap: The account |  |
+|   |   | ldap: The account |   |
 |---|---|---|---|
 | Parameter | Type | Dewsacsr iimpptoiortned from a Lightweight | Example |
-|  |  | Directory Access Protocol (LDAP) service. |  |
+|   |   | Directory Access Protocol (LDAP) service. |   |
 | userSourceId | string | The source ID of the account. If the organization was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organization was imported, its source ID is the enterprise ID in the source. For example, if the organization was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
 | status | string | The status of the account. Valid values: enabled disabled | enabled |
 | accountExpireTime | long | The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |
@@ -13267,8 +13083,8 @@ GET /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 | createTime | long | This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |
 | updateTime | long | The last time when the account was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |
 | description | string | The account description. | Test account |
-| groups | array<object> | The groups to which the account belongs. |  |
-| group | object | The information about the group to which the account belongs. |  |
+| groups | array<object> | The groups to which the account belongs. |   |
+| group | object | The information about the group to which the account belongs. |   |
 | groupId | string | The group ID. | group ufdsasn35 _ ea5lmthk267xxx xx |
 | groupName | string | The group name. | name test _ |
 | description | string | The group description. | description demo _ |
@@ -13277,18 +13093,12 @@ GET /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Time | Description | Operation |
-|---|---|---|
-
 ```json
-{
   "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
   "organizationalUnits": [
-    {
       "organizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
       "organizationalUnitName": "name001",
       "primary": true
-    }
 ```
 
 `],`
@@ -13296,10 +13106,8 @@ Sample success responses `JSON` format
 ```json
   "primaryOrganizationalUnitId": "ou_wovwffm62xifdziem7an7xxxxx",
   "customFields": [
-    {
       "fieldName": "xxxx",
       "fieldValue": "Field value"
-    }
 ```
 
 `],`
@@ -13325,18 +13133,12 @@ Sample success responses `JSON` format
   "updateTime": 1652085686179,
   "description": "Test account",
   "groups": [
-    {
       "groupId": "group_ufdsasn35ea5lmthk267xxxxx",
       "groupName": "name_test",
       "description": "description_demo"
-    }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Error codes**
 
@@ -13346,8 +13148,13 @@ For a list of error codes, see Service error codes.
 
 | Time | Description | Operation |
 |---|---|---|
+
+| Time | Description | Operation |
+|---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 | 2023-04-16 | The response structure of the operation is modified. | View change details |
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -13361,9 +13168,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:read all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-**Error codes**
-
-##### UpdateUserPassword - Update the
+##### 2.3.4.4 UpdateUserPassword - Update the password of an EIAM account
 
 **password of an EIAM account**
 
@@ -13371,47 +13176,33 @@ Updates the password of a specified Enterprise Identity and Access Management (E
 
 **Request syntax**
 
-| Name | Type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
-| userId | string | Yes | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
-| body | object | No | The request body. |  |
-| password | string | No | The new password. For password rules, see the password policy in the console. | xxxx |
-
-| Name | Type | Description | Example |
-|---|---|---|---|
-
 ```
 POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/updateUserPassword HTTP/1.
 ```
 
 **Request parameters**
 
+| Name | Type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
+| userId | string | Yes | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
+| body | object | No | The request body. |   |
+| password | string | No | The new password. For password rules, see the password policy in the console. | xxxx |
+
 **Response parameters**
+
+| Name | Type | Description | Example |
+|---|---|---|---|
 
 This API operation does not return any parameters.
 
 **Examples**
 
-Successful response example `JSON` format
+Successful response example `JSON` format `{}`
 
-```
-{}
-```
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| userId | string | Yes | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-
-##### DeleteUser
+##### 2.3.4.5 DeleteUser
 
 Deletes an Employee Identity and Access Management (EIAM) account. Debug
 
@@ -13425,25 +13216,35 @@ DELETE /v2/{instanceId}/{applicationId}/users/{userId} HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| userId | string | Yes | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
+
 **Response parameters**
+
+| Parameter | Type | Description | Example |
+|---|---|---|---|
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample success responses `JSON` format
-
-```
-{}
-```
+Sample success responses `JSON` format `{}`
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
+**Change history**
+
 | Time | Description | Operation |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HttpCode | Error Code | Error message | Description |
 |---|---|---|---|
@@ -13455,11 +13256,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-**Change history**
-
-**Error codes**
-
-##### ListUsers
+##### 2.3.4.6 ListUsers
 
 Queries the information about Employee Identity and Access Management (EIAM) accounts by page. Debug
 
@@ -13482,20 +13279,20 @@ GET /v2/{instanceId}/{applicationId}/users HTTP/1.1
 | pageNumber | integer | No | The page number. Default value: 1. | 1 |
 | pageSize | integer | No | The number of entries per page. Default value: 20. Valid values: 1 to 100. | 20 |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response data. |  |
+|   | object | The response data. |   |
 | totalCount | long | The total number of entries returned. | 1000 |
-| data | array<object> | The data objects returned. |  |
-| data | object | The data object returned. |  |
+| data | array<object> | The data objects returned. |   |
+| data | object | The data object returned. |   |
 | instanceId | string | The instance ID. | idaas ue2jvisn35e _ a5lmthk267xxxxx |
 | userId | string | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxxx |
 | username | string | The username of the account. | name001 |
 | displayName | string | The display name of the | display name001 |
 
-**Response parameters**
-
-|  |  | p y |  |
+|   |   | p y |   |
 |---|---|---|---|
 | displayName Parameter | string Type | account. Description | display name001 _ Example |
 | passwordSet | boolean | Indicates whether a password is set. | true |
@@ -13506,21 +13303,21 @@ GET /v2/{instanceId}/{applicationId}/users HTTP/1.1
 | emailVerified | boolean | Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified. | true |
 | userExternalId | string | The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of IDaaS. By default, the external ID is the account ID. Note: For organizations with the same source type and source ID, each organization has a unique external ID. | user d6sbsuumet _ a4h66ec3il7yxxxx |
 
-|  | Parameter | Type | The source type of the Description account. Valid values: | Example |  |
+|   | Parameter | Type | The source type of the Description account. Valid values: | Example |   |
 |---|---|---|---|---|---|
-|  | userSourceType | string | build in: The account _ was created in IDaaS. ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ldap: The organization was imported from a Lightweight Directory Access Protocol (LDAP) service. | build in _ |  |
-|  | userSourceId | string | The source ID of the account. If the organization was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organization was imported, its source ID is the enterprise ID in the source. For example, if the organization was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn35e _ a5lmthk267xxxxx |  |
-|  | status | string | The status of the account. Valid values: enabled disabled | enabled |  |
-|  | accountExpireTime | long | The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |  |
-|  | registerTime | long | The time when the account was registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |  |
-|  |  |  | The time when the account lock expires. |  |  |
-| 4 | 44 |  | > Docume | nt Version: 2026062 | 9 |
+|   | userSourceType | string | build in: The account _ was created in IDaaS. ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ldap: The organization was imported from a Lightweight Directory Access Protocol (LDAP) service. | build in _ |   |
+|   | userSourceId | string | The source ID of the account. If the organization was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organization was imported, its source ID is the enterprise ID in the source. For example, if the organization was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn35e _ a5lmthk267xxxxx |   |
+|   | status | string | The status of the account. Valid values: enabled disabled | enabled |   |
+|   | accountExpireTime | long | The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |   |
+|   | registerTime | long | The time when the account was registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |   |
+|   |   |   | The time when the account lock expires. |   |   |
+| 4 | 44 |   | > Docume | nt Version: 2026062 | 9 |
 
-| DaaS |  | Develope | r Guide·API Referenc |
+| DaaS |   | Develope | r Guide·API Referenc |
 |---|---|---|---|
-|  |  | p |  |
+|   |   | p |   |
 | Parameter lockExpireTime | Type long | This value is a UNIX Description timestamp representing | Example 1652085686179 |
-|  |  | the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |  |
+|   |   | the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |   |
 | createTime | long | The time when the account was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |
 | updateTime | long | The time when the account was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. | 1652085686179 |
 | description | string | The description of the account. | Test account |
@@ -13529,22 +13326,9 @@ GET /v2/{instanceId}/{applicationId}/users HTTP/1.1
 
 Sample responses `JSON` format
 
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HttpCode | Error Code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid | The token is invalid. |
-| 404 | application not found _ _ | Application id not found: app 001 _ | The application is not found. |
-| 403 | application disabled _ | Application is disabled | The application is disabled. |
-| 403 | application api disable _ _ d | Application api invoke disabled | The application API is not available. |
-
 ```json
-{
   "totalCount": 1000,
   "data": [
-    {
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "userId": "user_d6sbsuumeta4h66ec3il7yxxxx",
       "username": "name001",
@@ -13565,14 +13349,9 @@ Sample responses `JSON` format
       "createTime": 1652085686179,
       "updateTime": 1652085686179,
       "description": "Test account"
-    }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Error codes**
 
@@ -13580,25 +13359,26 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
 
-| DaaS |  | Devel | oper Guide·API Referenc |
+| HttpCode | Error Code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid | The token is invalid. |
+| 404 | application not found _ _ | Application id not found: app 001 _ | The application is not found. |
+| 403 | application disabled _ | Application is disabled | The application is disabled. |
+| 403 | application api disable _ _ d | Application api invoke disabled | The application API is not available. |
+
+| DaaS |   | Devel | oper Guide·API Referenc |
 |---|---|---|---|
 | HttpCode | Error Code | Error message | Description |
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:read all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| userId | string | Yes | The account ID. | user 001 _ |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-
-##### EnableUser
+##### 2.3.4.7 EnableUser
 
 Enables an Employee Identity and Access Management (EIAM) account. Debug
 
@@ -13612,35 +13392,23 @@ POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/enable HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| userId | string | Yes | The account ID. | user 001 _ |
+
 **Response parameters**
+
+| Parameter | Type | Description | Example |
+|---|---|---|---|
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HttpCode | Error Code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid |  |
-| 404 | ResourceNotFound.Us er | The specified User resource: user xxxx _ not found. |  |
-| 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx |  |
-| 403 | application disabled _ | Application is disabled |  |
-| 403 | application api disable _ _ d | Application api invoke disabled |  |
-| 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ |  |
-| 500 | Internal Server Error | Internal Server Error |  |
-
-| Debug Debugging | Debug |
-|---|---|
-| OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs. |  |
-
-Sample responses `JSON` format
-
-```
-{}
-```
+Sample responses `JSON` format `{}`
 
 **Error codes**
 
@@ -13648,13 +13416,35 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
 
-##### DisableUser
+| HttpCode | Error Code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid |   |
+| 404 | ResourceNotFound.Us er | The specified User resource: user xxxx _ not found. |   |
+| 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx |   |
+| 403 | application disabled _ | Application is disabled |   |
+| 403 | application api disable _ _ d | Application api invoke disabled |   |
+| 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ |   |
+| 500 | Internal Server Error | Internal Server Error |   |
+
+##### 2.3.4.8 DisableUser
 
 Disables an Enterprise Identity Access Management (EIAM) account.
 
+| Debug Debugging | Debug |
+|---|---|
+| OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs. |   |
+
 **Request syntax**
+
+POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/disable HTTP/1.1
+
+**Request parameters**
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
@@ -13663,28 +13453,16 @@ Disables an Enterprise Identity Access Management (EIAM) account.
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 | userId | string | Yes | The account ID. | user 001 _ |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/disable HTTP/1.1
-
-**Request parameters**
-
-**Response parameters**
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample success responses `JSON` format
-
-```
-{}
-```
+Sample success responses `JSON` format `{}`
 
 **Error codes**
 
@@ -13692,24 +13470,23 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-| 400 | invalid token _ | Access token is not valid |  |
-| 404 | ResourceNotFound.Us er | The specified User resource: user xxxx _ not found. |  |
-| 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx |  |
-| 403 | application disabled _ | Application is disabled |  |
-| 403 | application api disable _ _ d | Application api invoke disabled |  |
-| 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ |  |
-| 500 | Internal Server Error | Internal Server Error |  |
+| 400 | invalid token _ | Access token is not valid |   |
+| 404 | ResourceNotFound.Us er | The specified User resource: user xxxx _ not found. |   |
+| 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx |   |
+| 403 | application disabled _ | Application is disabled |   |
+| 403 | application api disable _ _ d | Application api invoke disabled |   |
+| 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ |   |
+| 500 | Internal Server Error | Internal Server Error |   |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-
-##### GetUserIdByEmail
+##### 2.3.4.9 GetUserIdByEmail
 
 Queries the ID of an Employee Identity and Access Management (EIAM) account by email address. Debug
 
@@ -13723,38 +13500,33 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByEmail HTTP/1.1
 
 **Request parameters**
 
-| DaaS |  |  | Develo | per Guide·API Referenc |
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+
+| DaaS |   |   | Develo | per Guide·API Referenc |
 |---|---|---|---|---|
 | Parameter | Type | Requi red | Description | Example |
 
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 |---|---|---|---|---|
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | email | string | Yes | The email address. | example@example.c om |
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response parameters. |  |
+|   | object | The response parameters. |   |
 | userId | string | The account ID. | user d6sbsuumeta4h66 _ ec3il7yxxxx |
-
-| Time | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid | The token is invalid. |
-
-**Response parameters**
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
-}
 ```
 
 **Error codes**
@@ -13763,9 +13535,17 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Time | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
 
-| Developer Guide·API Refe | rence |  | IDaa |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid | The token is invalid. |
+
+| Developer Guide·API Refe | rence |   | IDaa |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -13778,11 +13558,7 @@ For a list of error codes, see Service error codes.
 | 400 | ResourceNotFound.Us erId | The specified UserId resource: %s not found. | The account ID is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-
-##### GetUserIdByPhoneNumber
+##### 2.3.4.10 GetUserIdByPhoneNumber
 
 Queries the ID of an Enterprise Identity Access Management (EIAM) account based on the mobile number. Debug
 
@@ -13798,34 +13574,28 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByPhoneNumber HTT
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | phoneNumbe r | string | Yes | The mobile number. | 156xxxxxxx |
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response parameters. |  |
+|   | object | The response parameters. |   |
 | userId | string | The account ID. | user d6sbsuumeta4h66 _ ec3il7yxxxx |
-
-| Updated at | Description | Operation |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid token _ | Access token is not valid | The token is invalid. |
-
-**Response parameters**
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
-}
 ```
 
 **Error codes**
@@ -13834,9 +13604,17 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
+| Updated at | Description | Operation |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
 **Error codes**
 
-| Developer Guide·API Refe | rence |  | IDaa |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid token _ | Access token is not valid | The token is invalid. |
+
+| Developer Guide·API Refe | rence |   | IDaa |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -13849,11 +13627,7 @@ For a list of error codes, see Service error codes.
 | 400 | ResourceNotFound.Us erId | The specified UserId resource: %s not found. | The account ID is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
-
-##### GetUserIdByUserExternalId
+##### 2.3.4.11 GetUserIdByUserExternalId
 
 Queries the ID of an Employee Identity and Access Management (EIAM) account by external ID. Debug
 
@@ -13869,23 +13643,43 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByExternalId HTTP
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer AT8csE2seYxxxxxij |
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | userExternalI d | string | Yes | The external ID of the account. | xxx001 |
 | userSourceTyp e | string | Yes | The source type of the account. Valid values: build in: The organization _ was created in IDaaS. ding talk: The _ organization was imported from DingTalk. ad: The organization was imported from Microsoft Active Directory (AD). ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service. | build in _ |
 | userSourceId | string | Yes | The source ID of the account. If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response parameters. |  |
+|   | object | The response parameters. |   |
 | userId | string | The account ID. | user d6sbsuumeta4h66 _ ec3il7yxxxx |
 
-**Response parameters**
+**Examples**
+
+Sample success responses `JSON` format
+
+```json
+  "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
+```
+
+**Error codes**
+
+For a list of error codes, see Service error codes.
+
+**Change history**
 
 | Time | Description | Operation |
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -13898,25 +13692,7 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByExternalId HTTP
 | 400 | MissingParameter.User SourceType | The specified parameter: UserSourceType is required! | The userSourceType parameter is not specified. |
 | 400 | MissingParameter.User SourceId | The specified parameter: UserSourceId is required! | The userSourceId parameter is not specified. |
 
-**Examples**
-
-Sample success responses `JSON` format
-
-```json
-{
-  "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
-}
-```
-
-**Error codes**
-
-For a list of error codes, see Service error codes.
-
-**Change history**
-
-**Error codes**
-
-| DaaS |  | Devel | oper Guide·API Referenc |
+| DaaS |   | Devel | oper Guide·API Referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -13924,15 +13700,7 @@ For a list of error codes, see Service error codes.
 | 400 | ResourceNotFound.Us erId | The specified UserId resource: %s not found. | The account ID is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| body | object | No | The request body. |  |
-| username | string | Yes | The account name. | username 001 _ |
-
-##### GetUserIdByUsername
+##### 2.3.4.12 GetUserIdByUsername
 
 Queries the ID of an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) based on the username. Debug
 
@@ -13946,28 +13714,27 @@ POST /v2/{instanceId}/{applicationId}/users/_/actions/getUserIdByUsername HTTP/1
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| body | object | No | The request body. |   |
+| username | string | Yes | The account name. | username 001 _ |
+
 **Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | The response data. |  |
+|   | object | The response data. |   |
 | userId | string | The account ID. | user d6sbsuumeta4h66 _ ec3il7yxxxx |
-
-| Change time | Summary of changes | Action |
-|---|---|---|
-| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
-
-| Name | Type | Required | Description | Example |
-|---|---|---|---|---|
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "userId": "user_d6sbsuumeta4h66ec3il7yxxxx"
-}
 ```
 
 **Error codes**
@@ -13976,7 +13743,11 @@ For a list of error codes, see Service error codes.
 
 **Change history**
 
-##### SetUserPrimaryOrganizationalUnit - Set
+| Change time | Summary of changes | Action |
+|---|---|---|
+| 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
+
+##### 2.3.4.13 SetUserPrimaryOrganizationalUnit - Set the primary organization for an EIAM account
 
 **the primary organization for an EIAM account**
 
@@ -13990,30 +13761,29 @@ POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/setUserPrimaryOrgan
 
 **Request parameters**
 
+| Name | Type | Required | Description | Example |
+|---|---|---|---|---|
+
 | Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
 |---|---|---|---|---|
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
 | userId | string | Yes | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | organizationalUni tId | string | Yes | The primary organization ID. | ou wovwffm62xif _ dziem7an7xxxxx |
+
+**Response parameters**
 
 | Name | Type | Description | Example |
 |---|---|---|---|
-
-**Response parameters**
 
 This operation has no response parameters.
 
 **Examples**
 
-Sample success response `JSON` format
+Sample success response `JSON` format `{}`
 
-```
-{}
-```
-
-##### AddUserToOrganizationalUnits - Add an
+##### 2.3.4.14 AddUserToOrganizationalUnits - Add an EIAM account to multiple EIAM organizations
 
 **EIAM account to multiple EIAM organizations**
 
@@ -14021,47 +13791,34 @@ Adds an EIAM account to one or more organizations. If the account is already a m
 
 **Request syntax**
 
-| Name | Type | Required | Description | Example value |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
-| userId | string | Yes | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
-| body | object | No | The request body. |  |
-| organizationalUni tIds | array | Yes | A list of organization IDs. |  |
-| organizationalUni tId | string | No | The organization ID. | ou wovwffm62xif _ dziem7an7xxxxx |
-
-| Name | Type | Description | Example value |
-|---|---|---|---|
-
 ```
 POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/addUserToOrganizationalUnits HT TP/1.1
 ```
 
 **Request parameters**
 
-**Response parameters**
-
-This operation does not return any response parameters.
-
-**Examples**
-
-Sample success response `JSON` format
-
 | Name | Type | Required | Description | Example value |
 |---|---|---|---|---|
 | Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
 | userId | string | Yes | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
-| body | object | No | The request body. |  |
-| organizationalUni tIds | array | Yes | A list of organization IDs. |  |
+| body | object | No | The request body. |   |
+| organizationalUni tIds | array | Yes | A list of organization IDs. |   |
+| organizationalUni tId | string | No | The organization ID. | ou wovwffm62xif _ dziem7an7xxxxx |
 
-```
-{}
-```
+**Response parameters**
 
-##### RemoveUserFromOrganizationalUnits -
+| Name | Type | Description | Example value |
+|---|---|---|---|
+
+This operation does not return any response parameters.
+
+**Examples**
+
+Sample success response `JSON` format `{}`
+
+##### 2.3.4.15 RemoveUserFromOrganizationalUnits - Remove an EIAM account from multiple organizations
 
 **Remove an EIAM account from multiple**
 
@@ -14077,31 +13834,30 @@ POST /v2/{instanceId}/{applicationId}/users/{userId}/actions/removeUserFromOrgan
 
 **Request parameters**
 
-| organizationalUni tId | string | No | The organization ID. | ou wovwffm62xif _ dziem7an7xxxxx |
-|---|---|---|---|---|
-
-| Name | Type | Description | Example value |
-|---|---|---|---|
-
-| Name | Type | Required | Description | Example |
+| Name | Type | Required | Description | Example value |
 |---|---|---|---|---|
 | Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
+| userId | string | Yes | The account ID. | user d6sbsuumet _ a4h66ec3il7yxxx x |
+| body | object | No | The request body. |   |
+| organizationalUni tIds | array | Yes | A list of organization IDs. |   |
+
+| organizationalUni tId | string | No | The organization ID. | ou wovwffm62xif _ dziem7an7xxxxx |
+|---|---|---|---|---|
 
 **Response parameters**
+
+| Name | Type | Description | Example value |
+|---|---|---|---|
 
 This operation does not return any parameters.
 
 **Examples**
 
-Sample response `JSON` format
+Sample response `JSON` format `{}`
 
-```
-{}
-```
-
-##### ListGroupsForUser - List the groups for
+##### 2.3.4.16 ListGroupsForUser - List the groups for an EIAM account
 
 **an EIAM account**
 
@@ -14115,45 +13871,45 @@ GET /v2/{instanceId}/{applicationId}/users/{userId}/actions/listGroupsForUser HT
 
 **Request parameters**
 
+| Name | Type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. Format: Bearer ${access token} _ . Example: Bearer ATxxxx. | Bearer xxxx |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35 _ ea5lmthk267xxx xx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i _ 4u7zqtzev2mxxx x |
+
 | userId | string | Yes | The ID of the group. | user d6sbsuumet _ a4h66ec3il7yxxx x |
 |---|---|---|---|---|
 | nextToken | string | No | nextToken | NTxxx |
 | maxResults | integer | No | The number of entries per page. Default value: 20. | 20 |
 
+**Response parameters**
+
 | Name | Type | Description | Example |
 |---|---|---|---|
-|  | object | DeveloperNextTokenR esponse |  |
+|   | object | DeveloperNextTokenR esponse |   |
 | totalCount | long | The total number of records. | 1000 |
-| data | array<object> | The response is a data object. |  |
-| data | object | Returns a data object. |  |
+| data | array<object> | The response is a data object. |   |
+| data | object | Returns a data object. |   |
 | instanceId | string | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | groupId | string | Account ID | user d6sbsuumeta4h6 _ 6ec3il7yxxxx |
 | groupMemberRelation SourceType | string | The source type of the group membership. | build in _ |
 | groupMemberRelation SourceId | string | The source ID of the group membership. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | nextToken | string | The token for the next page of results. If this parameter is empty, all results have been returned. | NTxxx |
 
-**Response parameters**
-
 | maxResults | long | The maximum number of entries returned per page. | 20 |
 |---|---|---|---|
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
 
 **Examples**
 
 Successful response `JSON` format
 
 ```json
-{
   "totalCount": 1000,
   "data": [
-    {
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "groupId": "user_d6sbsuumeta4h66ec3il7yxxxx",
       "groupMemberRelationSourceType": "build_in",
       "groupMemberRelationSourceId": "idaas_ue2jvisn35ea5lmthk267xxxxx"
-    }
 ```
 
 `],`
@@ -14161,14 +13917,13 @@ Successful response `JSON` format
 ```json
   "nextToken": "NTxxx",
   "maxResults": 20
-}
 ```
 
-#### API operations related to account
+#### 2.3.5 API operations related to account group management
 
 **group management**
 
-##### GetGroup
+##### 2.3.5.1 GetGroup
 
 Queries the details of a group. Debug
 
@@ -14184,6 +13939,9 @@ GET /v2/{instanceId}/{applicationId}/groups/{groupId} HTTP/1.1
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
@@ -14193,7 +13951,7 @@ GET /v2/{instanceId}/{applicationId}/groups/{groupId} HTTP/1.1
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | DeveloperGroupDTO |  |
+|   | object | DeveloperGroupDTO |   |
 | instanceId | string | The instance ID. | idaas ue2jvisn35ea5lmt _ hk267xxxxx |
 | groupId | string | The group ID. | group ufdsasn35ea5lmt _ hk267xxxxx |
 | groupName | string | The group name. | name test _ |
@@ -14208,16 +13966,7 @@ GET /v2/{instanceId}/{applicationId}/groups/{groupId} HTTP/1.1
 
 Sample responses `JSON` format
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| body | object | No | The request body. |  |
-| groupName | string | Yes | The organization name. | name001 |
-
 ```json
-{
   "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
   "groupId": "group_ufdsasn35ea5lmthk267xxxxx",
   "groupName": "name_test",
@@ -14227,14 +13976,13 @@ Sample responses `JSON` format
   "groupSourceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
   "createTime": 1652085686179,
   "updateTime": 1652085686179
-}
 ```
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### CreateGroup
+##### 2.3.5.2 CreateGroup
 
 Creates a group in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). Debug
 
@@ -14248,36 +13996,39 @@ POST /v2/{instanceId}/{applicationId}/groups HTTP/1.1
 
 **Request parameters**
 
-| Developer Guide·API Re | ference |  |  | IDaa |
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| body | object | No | The request body. |   |
+| groupName | string | Yes | The organization name. | name001 |
+
+| Developer Guide·API Re | ference |   |   | IDaa |
 |---|---|---|---|---|
 | Parameter | Type | Requi red | Description | Example |
 | groupExternalI d | string | No | The external ID. | group 2bo6lefcewda _ usyyxxxx |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | GroupIdObject |  |
+|   | object | GroupIdObject |   |
 | groupId | string | The group ID. | group wovwffm62xifdzi _ em7an7xxxxx |
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-
-**Response parameters**
 
 **Examples**
 
 Sample success responses `JSON` format
 
 ```json
-{
   "groupId": "group_wovwffm62xifdziem7an7xxxxx"
-}
 ```
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### PatchGroup
+##### 2.3.5.3 PatchGroup
 
 Modifies an Employee Identity and Access Management (EIAM) group. Debug
 
@@ -14293,33 +14044,32 @@ PATCH /v2/{instanceId}/{applicationId}/groups/{groupId} HTTP/1.1
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 | groupId | string | Yes | The group ID. | group xxx001 _ |
-| body | object | No | The request body. |  |
+| body | object | No | The request body. |   |
 | groupName | string | No | The group name. | name001 |
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-
-**Response parameters**
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample responses `JSON` format
-
-```
-{}
-```
+Sample responses `JSON` format `{}`
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### DeleteGroup
+##### 2.3.5.4 DeleteGroup
 
 Deletes a group. Debug
 
@@ -14329,6 +14079,10 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Request syntax**
 
+DELETE /v2/{instanceId}/{applicationId}/groups/{groupId} HTTP/1.1
+
+**Request parameters**
+
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
 | Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
@@ -14336,30 +14090,22 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 | groupId | string | Yes | The group ID. | group wovwffm62xif _ dziem7an7xxxxx |
 
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-
-DELETE /v2/{instanceId}/{applicationId}/groups/{groupId} HTTP/1.1
-
-**Request parameters**
-
-**Response parameters**
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample success responses `JSON` format
-
-```
-{}
-```
+Sample success responses `JSON` format `{}`
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### ListGroups
+##### 2.3.5.5 ListGroups
 
 Queries the information of Enterprise Identity Access Management (EIAM) groups by page. Debug
 
@@ -14368,6 +14114,10 @@ Queries the information of Enterprise Identity Access Management (EIAM) groups b
 OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.
 
 **Request syntax**
+
+GET /v2/{instanceId}/{applicationId}/groups HTTP/1.1
+
+**Request parameters**
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
@@ -14378,24 +14128,20 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 | nextToken | string | No | nextToken | NTxxx |
 | maxResults | integer | No | The number of entries per page. Default value: 20. | 20 |
 
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-|  | object | DeveloperNextTokenResponse |  |
-| totalCount | long | The total number of entries returned. | 1000 |
-| data | array<object> | The returned data. |  |
-| data | object | The returned data. |  |
-| groupName | string | The group name. | name test _ |
-| instanceId | string | The instance ID. | idaas ue2jvisn3 _ 5ea5lmthk267xx xxx |
-|  |  | The time when the group was |  |
-| > Document Version: 20260629 |  |  | 47 |
-
-GET /v2/{instanceId}/{applicationId}/groups HTTP/1.1
-
-**Request parameters**
-
 **Response parameters**
 
-|  |  | The time when the group was |  |
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+|   | object | DeveloperNextTokenResponse |   |
+| totalCount | long | The total number of entries returned. | 1000 |
+| data | array<object> | The returned data. |   |
+| data | object | The returned data. |   |
+| groupName | string | The group name. | name test _ |
+| instanceId | string | The instance ID. | idaas ue2jvisn3 _ 5ea5lmthk267xx xxx |
+|   |   | The time when the group was |   |
+| > Document Version: 20260629 |   |   | 47 |
+
+|   |   | The time when the group was |   |
 |---|---|---|---|
 | ParametecrreateTime | lToyngpe | cDreeastcerdi.p Tthieo nvalue is a UNIX timestamp. Unit: milliseconds. | 1E6x5a2m08p5l6e86179 |
 | groupId | string | The group ID. | group ufdsasn3 _ 5ea5lmthk267xx xxx |
@@ -14411,15 +14157,9 @@ GET /v2/{instanceId}/{applicationId}/groups HTTP/1.1
 
 Sample success responses `JSON` format
 
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
-
 ```json
-{
   "totalCount": 1000,
   "data": [
-    {
       "groupName": "name_test",
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "createTime": 1652085686179,
@@ -14429,7 +14169,6 @@ Sample success responses `JSON` format
       "groupSourceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "updateTime": 1652085686179,
       "groupExternalId": "group_ufdsasn35ea5lmthk267xxxxx"
-    }
 ```
 
 `],`
@@ -14437,14 +14176,13 @@ Sample success responses `JSON` format
 ```json
   "nextToken": "NTxxx",
   "maxResults": 20
-}
 ```
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### AddUsersToGroup
+##### 2.3.5.6 AddUsersToGroup
 
 Adds multiple Enterprise Identity Access Management (EIAM) accounts to an EIAM group. If the accounts already belong to the specified group, no update is performed. Debug
 
@@ -14460,33 +14198,33 @@ POST /v2/{instanceId}/{applicationId}/groups/{groupId}/actions/addUsersToGroup H
 
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
+| Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
+
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 | groupId | string | Yes | The group ID. | group wovwffm62xif _ dziem7an7xxxxx |
-| body | object | No | The request body. |  |
-| userIds | array | Yes | The account IDs. |  |
+| body | object | No | The request body. |   |
+| userIds | array | Yes | The account IDs. |   |
 | userId | string | No | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-
-**Response parameters**
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample success responses `JSON` format
-
-```
-{}
-```
+Sample success responses `JSON` format `{}`
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### RemoveUsersFromGroup
+##### 2.3.5.7 RemoveUsersFromGroup
 
 Removes multiple Enterprise Identity Access Management (EIAM) accounts from an EIAM group. If the accounts no longer belong to the group, the removal succeeds by default. Debug
 
@@ -14496,53 +14234,38 @@ OpenAPI Explorer automatically calculates the signature value. For your convenie
 
 **Request syntax**
 
+POST /v2/{instanceId}/{applicationId}/groups/{groupId}/actions/removeUsersFromGroup HTTP/1.1
+
+**Request parameters**
+
 | Parameter | Type | Requi red | Description | Example |
 |---|---|---|---|---|
 | Authorization | string | Yes | The authentication information. The value is in the Bearer ${access token} _ format. Example: Bearer ATxxxx. | Bearer xxxx |
 | instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
 | groupId | string | Yes | The group ID. | group wovwffm62xif _ dziem7an7xxxxx |
-| body | object | No | The request body. |  |
-| userIds | array | Yes | The account IDs. |  |
+| body | object | No | The request body. |   |
+| userIds | array | Yes | The account IDs. |   |
 | userId | string | No | The account ID. | user d6sbsuumeta4h _ 66ec3il7yxxxx |
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-
-POST /v2/{instanceId}/{applicationId}/groups/{groupId}/actions/removeUsersFromGroup HTTP/1.1
-
-**Request parameters**
-
-**Response parameters**
 
 This operation does not return any operation-specific parameters.
 
 **Examples**
 
-Sample success responses `JSON` format
-
-```
-{}
-```
+Sample success responses `JSON` format `{}`
 
 **Error codes**
 
 For a list of error codes, see Service error codes.
 
-##### ListUsersForGroup
+##### 2.3.5.8 ListUsersForGroup
 
-Queries accounts in an Employee Identity and Access Management (EIAM) group.
-
-| Parameter | Type | Requi red | Description | Example |
-|---|---|---|---|---|
-| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer xxxx |
-| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
-| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
-| groupId | string | Yes | The group ID. | group wovwffm62xif _ dziem7an7xxxxx |
-| nextToken | string | No | nextToken | NTxxx |
-| maxResults | integer | No | The number of entries per page. Default value: 20. | 20 |
-
-Debug
+Queries accounts in an Employee Identity and Access Management (EIAM) group. Debug
 
 **Debugging**
 
@@ -14554,16 +14277,25 @@ GET /v2/{instanceId}/{applicationId}/groups/{groupId}/actions/listUsersForGroup 
 
 **Request parameters**
 
+| Parameter | Type | Requi red | Description | Example |
+|---|---|---|---|---|
+| Authorization | string | Yes | The credential. The value is in the Bearer ${access token} format. _ Example: Bearer ATxxxx. | Bearer xxxx |
+| instanceId | string | Yes | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
+| applicationId | string | Yes | The application ID. | app mkv7rgt4d7i4u7 _ zqtzev2mxxxx |
+| groupId | string | Yes | The group ID. | group wovwffm62xif _ dziem7an7xxxxx |
+| nextToken | string | No | nextToken | NTxxx |
+| maxResults | integer | No | The number of entries per page. Default value: 20. | 20 |
+
 If you set groupId to iggroup_all, the system queries accounts in all groups.
 
 **Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
-|  | object | DeveloperNextTokenResponse |  |
+|   | object | DeveloperNextTokenResponse |   |
 | totalCount | long | The total number of entries returned. | 1000 |
-| data | array<object> | The data object returned. |  |
-| data | object | The data object returned. |  |
+| data | array<object> | The data object returned. |   |
+| data | object | The data object returned. |   |
 | instanceId | string | The instance ID. | idaas ue2jvisn35ea5l _ mthk267xxxxx |
 | userId | string | The account ID. | user 001 _ |
 | nextToken | string | A pagination token. If NextToken is empty, no next page exists. | NTxxx |
@@ -14574,13 +14306,10 @@ If you set groupId to iggroup_all, the system queries accounts in all groups.
 Sample success responses `JSON` format
 
 ```json
-{
   "totalCount": 1000,
   "data": [
-    {
       "instanceId": "idaas_ue2jvisn35ea5lmthk267xxxxx",
       "userId": "user_001"
-    }
 ```
 
 `],`
@@ -14588,12 +14317,17 @@ Sample success responses `JSON` format
 ```json
   "nextToken": "NTxxx",
   "maxResults": 20
-}
 ```
 
 **Error codes**
 
-For a list of error codes, see Service error codes.
+For a list of error codes, see Service error codes. records
+
+## 3 API change records
+
+**Change time: 2023-10-24**
+
+Change set release notes:
 
 | Operation | Summary of changes | Action |
 |---|---|---|
@@ -14611,11 +14345,7 @@ For a list of error codes, see Service error codes.
 | RevokeToken | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
 | ListUsers | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
 
-## API change records
-
-**Change time: 2023-10-24**
-
-Change set release notes:
+records
 
 | Operation | Summary of changes | Action |
 |---|---|---|
@@ -14627,25 +14357,22 @@ Change set release notes:
 | DisableUser | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
 | EnableUser | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
 
+**Change time: 2023-10-24**
+
+Change set release notes:
+
 | Operation | Summary of changes | Action |
 |---|---|---|
 | GenerateToken | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
+
+**Change time: 2023-04-16**
+
+Change set release notes:
 
 | Operation | Summary of changes | Action |
 |---|---|---|
 | PatchUser | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
 | GetUser | The response structure of the operation is changed. | View change details View API document |
-
-| Operation | Summary of changes | Action |
-|---|---|---|
-
-**Change time: 2023-10-24**
-
-Change set release notes:
-
-**Change time: 2023-04-16**
-
-Change set release notes:
 
 **Change time: 2023-04-04**
 
@@ -14653,15 +14380,22 @@ Change set release notes:
 
 | Operation | Summary of changes | Action |
 |---|---|---|
+
+records
+
+| Operation | Summary of changes | Action |
+|---|---|---|
 | GenerateToken | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details View API document |
 
-## Integrate with self-
+elf-managed applications
+
+## 4 Integrate with self-managed applications
 
 **managed applications**
 
-### Connect to IDaaS for SSO
+### 4.1 Connect to IDaaS for SSO
 
-#### Implement SSO for custom applications
+#### 4.1.1 Implement SSO for custom applications
 
 This topic describes how to use the Open ID Connect (OIDC) authorization code mode to connect a custom application to the single sign-on (SSO) service of Identity as a Service (IDaaS). This helps developers easily implement SSO for applications, and improves user experience and management efficiency.
 
@@ -14686,16 +14420,7 @@ You need to create a custom application or an OIDC-based application in IDaaS an
 You can obtain **client_id** and **client_secret** by performing the following steps: Click Application in the left-side navigation pane, click the application you want to manage on the Application page, and then click the **General** tab to view the information. This key pair is used in the subsequent API requests. For more information about how to manage or replace the key pair, see **User Guide**
 **(Tenant-side) > Applications > Basic settings**.
 2. **Send a request to the authorization endpoint**
-The following steps need to be performed by the application developer.
-
-| Field | Require d | Example | Description |
-|---|---|---|---|
-| client id _ | Yes | app michs7r****6pye _ | The client id obtained in the previous step. _ |
-| scope | Yes | openid email profile | By default, the value is set to openid email profile for a custom application. This indicates that the application can obtain the ID, username, and email address of the logged-in account. If you use an OIDC-based application, the administrator can also select Phone on the configuration page. For more information about the parameter values that the application is authorized to obtain when a scope is specified, see the "Mappings between the field values accessible to applications and specified scopes" in this topic. |
-| response type _ | Yes | code | Set the value to code, which indicates that the authorization code mode is used. |
-| redirect _ uri | Yes | http://localhost:3000/ user/oauth2/aliyunida as/callback | The redirect URL of the login result that is returned by IDaaS to the application after the user logs in to the application. This URL is a relay address for the application to receive IDaaS parameters and can receive the authorization code . |
-
-When a user attempts to access your application, the application must determine whether a logged-in identity of the user is available. If the user needs to log in to your application, you must send a request to IDaaS for the authorization of the user to access their information. You can click **Application** in the leftside navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the authorization endpoint of the application in the
+The following steps need to be performed by the application developer. elf-managed applications When a user attempts to access your application, the application must determine whether a logged-in identity of the user is available. If the user needs to log in to your application, you must send a request to IDaaS for the authorization of the user to access their information. You can click **Application** in the leftside navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the authorization endpoint of the application in the
 **Application Settings** section.
 As shown in the following example, generate a complete authorization request URL based on the authorization endpoint URL and initiate a 302 redirect in the browser.
 
@@ -14708,13 +14433,17 @@ As shown in the following example, generate a complete authorization request URL
   state=525f49cc-***
 ```
 
+| Field | Require d | Example | Description |
+|---|---|---|---|
+| client id _ | Yes | app michs7r****6pye _ | The client id obtained in the previous step. _ |
+| scope | Yes | openid email profile | By default, the value is set to openid email profile for a custom application. This indicates that the application can obtain the ID, username, and email address of the logged-in account. If you use an OIDC-based application, the administrator can also select Phone on the configuration page. For more information about the parameter values that the application is authorized to obtain when a scope is specified, see the "Mappings between the field values accessible to applications and specified scopes" in this topic. |
+| response type _ | Yes | code | Set the value to code, which indicates that the authorization code mode is used. |
+| redirect _ uri | Yes | http://localhost:3000/ user/oauth2/aliyunida as/callback | The redirect URL of the login result that is returned by IDaaS to the application after the user logs in to the application. This URL is a relay address for the application to receive IDaaS parameters and can receive the authorization code . |
+
+elf-managed applications
+
 | state | No | 525f49cc-87c4-4655- b79c-4c4f971b1ad1 | A random string generated by the application. We recommend that you set a string with more than 32 characters in length. The state value is returned to the application in a subsequent step. The application verifies whether the state value is the same as the initial value that the application sends to the authorization endpoint. This ensures the request comes from the same session to prevent the Cross-Site Request Forgery (XSRF) security vulnerability. This field is optional, but we recommended that you set the field. |
 |---|---|---|---|
-
-| Field | Example | Description |
-|---|---|---|
-| code | COE59pkCTm4A9nmowJUsfsfarGEaiSh j3TuDc7NCzLCYu9 | The authorization code. The application uses the authorization code in the access token request sent to IDaaS. |
-| state | 525f49cc-87c4-4655-b79c- 4c4f971b1ad1 | Ensure that the state value received by the application is the same as the initial value the application sends to the authorization endpoint. |
 
 3. **Log in to the application as a user**
 If the request sent to the authorization endpoint is successful, the user is redirected to the IDaaS login page. The user can complete authentication by using a configured login method. IDaaS supports various login methods with different security levels, including login by scanning QR codes with DingTalk and login with a text message verification code. For more information, see
@@ -14727,8 +14456,13 @@ When the login is successful, a 302 redirect is initiated to redirect the browse
   state=525f49cc-***
 ```
 
+| Field | Example | Description |
+|---|---|---|
+| code | COE59pkCTm4A9nmowJUsfsfarGEaiSh j3TuDc7NCzLCYu9 | The authorization code. The application uses the authorization code in the access token request sent to IDaaS. |
+| state | 525f49cc-87c4-4655-b79c- 4c4f971b1ad1 | Ensure that the state value received by the application is the same as the initial value the application sends to the authorization endpoint. |
+
 4. **Send a request to the token endpoint**
-After the application receives the authorization code in the previous step, the application uses the authorization code to send a POST request to the token endpoint. The steps to view the token endpoint are the same as those to view the authorization endpoint. Click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the token endpoint in the **Application Settings** section. Sample request:
+After the application receives the authorization code in the previous step, the application uses the authorization code to send a POST request to the token endpoint. The steps to view the token endpoint are the same as those to view the authorization endpoint. Click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the token endpoint in the **Application Settings** section. Sample request: elf-managed applications
 
 ```
 POST /v2/<instance_id>/<app_id>/oauth2/token HTTP/1.0 Host: eiam-api-cn-hangzhou.aliyuncs.com Content-Type: application/x-www-form-urlencoded grant_type=authorization_code
@@ -14741,13 +14475,11 @@ POST /v2/<instance_id>/<app_id>/oauth2/token HTTP/1.0 Host: eiam-api-cn-hangzhou
 Sample response:
 
 ```json
-{
   "token_type": "Bearer",
   "access_token": "ATM4SoVDqWgUq***********wk3ZS5mtn6fcSp8NH8",
   "expires_in": 1200,
   "expires_at": 1644843164,
   "id_token": "eyJraWQiOiJLRVkyV************gRIadj-frOIRFChA"
-}
 ```
 
 The user is logged in to the application. You can use one of the following methods to obtain more identity information about the logged-in user and create the application-side login state: i. Use the id_token in the response to obtain the user ID after verification. ii. Use the access_token in the response to send a request to the IDaaS user endpoint to obtain the information of the logged-in user. For more information, see the following section.
@@ -14756,10 +14488,9 @@ The user is logged in to the application. You can use one of the following metho
 
 The scope of user data you can obtain is specified by the scope parameter in the request sent to the authorization endpoint in Step 1.
 5. **Parse id_token by using a program**
-An `id_token` is a signature token in JSON Web Token (JWT) format that contains the user identity information. The id_token issued by IDaaS contains user data that is visible in plaintext after decryption and the signature. You can copy the complete content of `id_token` to the website JWT decryption website to better understand the content. Sample content:
+An `id_token` is a signature token in JSON Web Token (JWT) format that contains the user identity information. The id_token issued by IDaaS contains user data that is visible in plaintext after decryption and the signature. You can copy the complete content of `id_token` to the website JWT decryption website to better understand the content. Sample content: elf-managed applications
 
 ```json
-{
   "kid": "KEY2Ty1qL6u21NGKmccv3jwfd2ndmgtQPnag",
   "alg": "RS256"
 }.{
@@ -14779,31 +14510,22 @@ An `id_token` is a signature token in JSON Web Token (JWT) format that contains 
 Before you use the content to log in to the application, you must verify the signature to ensure that the token is issued by IDaaS, rather than another third-party service. This ensures the security of the login. Login security is mandatory. i. **Obtain the public key for signature verification** Before you verify the signature, you must obtain the endpoint for the public key for signature verification that is openly distributed by IDaaS. You can click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the endpoint for the public key for signature verification in the **Application Settings** section. The application can access this endpoint to obtain the public key information. You can also open this URL in a browser to view the public key information. Sample code:
 
 ```json
-{
   "keys": [
-    {
       "kty": "RSA",
       "e": "AQAB",
       "use": "sig",
       "kid": "KEYkYnc55G********CTvT7So44RGDYdbfs",
       "n": "pXmYkIpy1vaNjTMclU86BQjfmDhjlqMAX8ySVvh9gO-nae4ayvG_*********-
 v4gP27T7u6bUy0GXTlh3eKE0v1LYB81nfqjF2uazlPwPR5yYOhhWcK-gMNByLfE3CnkDc1YGwA3dZmIz-Zj OCKy8xLaBuqjrvwn5tpMpAoYEEaH4jIm7unTdhbKEKspNR- UXKD8q9RppMh5Tn2sB6oPHlQANudJDgqSwEOevIrdmHU0Zqxrb9cscGH9hH0QjmYEu72yI8BVeliPo3jK6JIo Icj5K_t8BJlFQ9QLJ8_o9tmd3BFv5_LVsh4BKGw"
-    }
 ```
 
-]
-
-```
-}
-```
-
-Then, you can use the code to verify the signature and obtain the content of `id_token` . ii. **Verify the signature and log in** You can find the tool in the corresponding language by visiting Libraries for Token Signing/Verification and use the tool in the code to verify signatures and parse
+`]` Then, you can use the code to verify the signature and obtain the content of `id_token` . ii. **Verify the signature and log in** You can find the tool in the corresponding language by visiting Libraries for Token Signing/Verification and use the tool in the code to verify signatures and parse
 
 ```
  id_token .
 ```
 
-The following example uses the Java library: org.bitbucket.b_c:jose4j. Add Maven dependencies:
+The following example uses the Java library: org.bitbucket.b_c:jose4j. elf-managed applications Add Maven dependencies:
 
 ```xml
 <dependency>
@@ -14845,11 +14567,10 @@ RSA\",\n" + " \"e\": \"AQAB\",\n" + " \"use\": \"sig\",\n" + " \"kid\": \"KEY2H8
 token is output.
 ```
 
-_
+elf-managed applications `_`
 
 ```java
         System.out.println(jwtClaims);
-    }
     // The method used by the signature verification tool.
     public static JwtConsumer createJwtConsumer(JsonWebKeySet jsonWebKeySet, String
 issuer, String appId) {
@@ -14869,15 +14590,11 @@ issuer, String appId) {
             for (JsonWebKey jsonWebKey: jsonWebKeySet.getJsonWebKeys()) {
                 if (signKeyId.equals(jsonWebKey.getKeyId())) {
                     return jsonWebKey.getKey();
-                }
-            }
             throw new RuntimeException("Cannot find verification key: " +
 signKeyId);
         });
         // Build a validator instance.
         return jwtConsumerBuilder.build();
-    }
-}
 ```
 
 **Important**
@@ -14896,27 +14613,18 @@ hangzhou.aliyuncs.com/v2/idaas_padyrlux3mphrlsex4uonyqhxu/app_**********/oidc,
                 name=test,
                 preferred_username=test,
                 updated_at=1653628590
-               }
 ```
 
-This way, the application obtains the identity information about the logged-in user in IDaaS and uses the information for login.
-
-| Field | Description | Example |
-|---|---|---|
-| idaas-api-domain | The user portal URL. | https://******.aliyunidaas.com |
-| instance id _ | The instance ID. | idaas m********r2ed22e6m _ |
-| application id _ | The application ID. | app m********jy6rbau _ |
-
+This way, the application obtains the identity information about the logged-in user in IDaaS and uses the information for login. elf-managed applications
 6. **Obtain the user information from the UserInfo endpoint**
 You can also obtain user information from the UserInfo endpoint. You can click **Application** in the left-side navigation pane, click the application you want to manage on the Application page, click the **Sign-In** tab, and then view the endpoint for the public key for signature verification in the **Application Settings** section. The request for user information complies with the standard RFC6750. Sample request:
 
 ```json
-GET /v2/<instance_id>/<app_id>/oauth2/userinfo HTTP/1.0 Host: eiam-api-cn-hangzhou.aliyuncs.com Authorization: Bearer <AccessToken> Sample response: {
+GET /v2/<instance_id>/<app_id>/oauth2/userinfo HTTP/1.0 Host: eiam-api-cn-hangzhou.aliyuncs.com Authorization: Bearer <AccessToken> Sample response:
     "sub": "user_dt6kj6yf64cf4wjaknpbxjcwuu",
     "name": "test",
     "preferred_username": "test",
     "updated_at": 1653899948
-}
 ```
 
 **Note**
@@ -14933,11 +14641,21 @@ The `issuer` of an OIDC-based application is the unique identifier of the token 
  https://<idaas-api-domain>/v2/<instance_id>/<application_id>/oidc
 ```
 
-The following table describes the fields in the angle brackets: IDaaS supports the OpenID Connect Discovery 1.0 standard. The OIDC discovery endpoint URL of the application is generated by suffixing `/.well-known/openid-configuration` to the
+The following table describes the fields in the angle brackets:
+
+| Field | Description | Example |
+|---|---|---|
+| idaas-api-domain | The user portal URL. | https://******.aliyunidaas.com |
+| instance id _ | The instance ID. | idaas m********r2ed22e6m _ |
+| application id _ | The application ID. | app m********jy6rbau _ |
+
+IDaaS supports the OpenID Connect Discovery 1.0 standard. The OIDC discovery endpoint URL of the application is generated by suffixing `/.well-known/openid-configuration` to the
 
 ```
  issuer .
 ```
+
+elf-managed applications You can discover the following endpoint information by sending a request to the discovery endpoint. You can access all request endpoints in the **Application Settings** section.
 
 | Endpoint | Description |
 |---|---|
@@ -14948,6 +14666,12 @@ The following table describes the fields in the angle brackets: IDaaS supports t
 | userinfo endpoint _ | The user information endpoint. |
 | jwks uri _ | The JWK public key endpoint. |
 
+2. **Mappings between the field values accessible to applications and specified**
+
+**scopes**
+
+The following table lists the user information in id_token for OIDC-based applications when a scope is specified.
+
 | Field | scope | Description |
 |---|---|---|
 | sub | openid | The userId of the user. |
@@ -14957,27 +14681,25 @@ The following table describes the fields in the angle brackets: IDaaS supports t
 | nbf | openid | The start time of the validity period of the JWT token. This is an auxiliary parameter. |
 | exp | openid | The expiration time of the JWT token. This is an auxiliary parameter. |
 
-You can discover the following endpoint information by sending a request to the discovery endpoint. You can access all request endpoints in the **Application Settings** section.
-2. **Mappings between the field values accessible to applications and specified**
+elf-managed applications
 
-**scopes**
-
-The following table lists the user information in id_token for OIDC-based applications when a scope is specified.
-
-| aud | openid | The ClientID of the application. This is an auxiliary parameter. |  |  |
+| aud | openid | The ClientID of the application. This is an auxiliary parameter. |   |   |
 |---|---|---|---|---|
-| at hash _ | openid | The hash value of AccessToken. This is an auxiliary parameter. |  |  |
-| phone number _ | phone | The mobile number of the user, such as +86 130****5678 . |  |  |
-|  |  |  | +86 |  |
-| phone number verifie _ _ d | phone | Whether the mobile number is verified. By default, the mobile number is verified. |  |  |
-| email | email | The email address of the user, such as al***@example.com . |  |  |
-| email verified _ | email | Whether the email address is verified. By default, the email address is verified. |  |  |
-| name | profile | The display name of the user. |  |  |
-| preferred username _ | profile | The username of the user. |  |  |
-| updated at _ | profile | The time when the profile of the user was last updated. |  |  |
+| at hash _ | openid | The hash value of AccessToken. This is an auxiliary parameter. |   |   |
+| phone number _ | phone | The mobile number of the user, such as +86 130****5678 . |   |   |
+|   |   |   | +86 |   |
+| phone number verifie _ _ d | phone | Whether the mobile number is verified. By default, the mobile number is verified. |   |   |
+| email | email | The email address of the user, such as al***@example.com . |   |   |
+| email verified _ | email | Whether the email address is verified. By default, the email address is verified. |   |   |
+| name | profile | The display name of the user. |   |   |
+| preferred username _ | profile | The username of the user. |   |   |
+| updated at _ | profile | The time when the profile of the user was last updated. |   |   |
 
-|  | 130****5678 |
+|   | 130****5678 |
 |---|---|
+
+3. **Authentication methods supported by the token endpoint**
+According to the OIDC protocol, IDaaS provides flexibility and supports the following four authentication methods. The field `token_endpoint_auth_methods_supported` returned in the discovery endpoint specifies the supported authentication methods.
 
 | Value | Description |
 |---|---|
@@ -14985,12 +14707,11 @@ The following table lists the user information in id_token for OIDC-based applic
 | client secret basic _ _ | This authentication method is implemented based on RFC 6749 - The OAuth 2.0 Authorization Framework. |
 | client secret post _ _ | This authentication method is implemented based on RFC 6749 - The OAuth 2.0 Authorization Framework. |
 
-|  | none |
+|   | none |
 |---|---|
-| client credentials _ |  |
+| client credentials _ |   |
 
-3. **Authentication methods supported by the token endpoint**
-According to the OIDC protocol, IDaaS provides flexibility and supports the following four authentication methods. The field `token_endpoint_auth_methods_supported` returned in the discovery endpoint specifies the supported authentication methods.
+elf-managed applications
 
 | client secret jwt _ _ | This authentication method is implemented based on OpenID Connect Core 1.0. |
 |---|---|
@@ -15001,20 +14722,26 @@ After the application receives the authorization code in the previous step and v
 POST /token HTTP/1.0 Host: api.aliyunidaas.com Authorization: Basic YXBwX21pY2hzN3I0*******cHllOkNTKioqKioq grant_type=authorization_code& code=COE59pkCTm4J*******arGEaiShj7NCzLCYu9
 ```
 
-For more information, see the OIDC Core 1.0 specifications. For more information, see the "Client secret rotation" section in **User Guide (Tenant-**
+For more information, see the OIDC Core 1.0 specifications.
+4. **Client secret rotation for applications**
+For more information, see the "Client secret rotation" section in **User Guide (Tenant-**
 **side) > Applications > Application management > Basic settings**.
 
 **Relevant standards**
 
 RFC6749 - The OAuth 2.0 Authorization Framework RFC6750 - The OAuth 2.0 Authorization Framework: Bearer Token Usage RFC7009 - OAuth 2.0 Token Revocation RFC7515 - JSON Web Signature (JWS) RFC7517 - JSON Web Key (JWK) RFC7518 - JSON Web Algorithms (JWA) RFC7519 - JSON Web Token (JWT) RFC7636 - Proof Key for Code Exchange by OAuth Public Clients RFC8252 - OAuth 2.0 for Native Apps RFC8628 - OAuth 2.0 Device Authorization Grant OpenID Connect Core 1.0 OpenID Connect Discovery 1.0
 
-#### Connect self-developed Java
+#### 4.1.2 Connect self-developed Java applications that use the Spring Boot framework to IDaaS for SSO
 
 **applications that use the Spring Boot**
 
 **framework to IDaaS for SSO**
 
 This topic describes how to connect Java applications that use the Spring Boot framework to Identity as a Service (IDaaS).
+
+**Overview**
+
+elf-managed applications
 
 **Note**
 
@@ -15057,6 +14784,8 @@ The preceding information can be obtained after an application is created. For m
 
 **Configure Spring Security to require OAuth authentication**
 
+elf-managed applications
+
 ```java
 import org.springframework.security.config.annotation.web.builders.HttpSecurity; import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity; import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAda er; @EnableWebSecurity public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
@@ -15065,8 +14794,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
             .anyRequest().authenticated()
             .and()
             .oauth2Login();
-    }
-}
 ```
 
 **Obtain user information**
@@ -15078,15 +14805,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal; imp
     @GetMapping("/user")
     public OAuth2User user(@AuthenticationPrincipal OAuth2User user) {
         return user;
-    }
-}
 ```
 
 You can output user information on the /user endpoint. Use the user information to log the user on to complete the SSO process.
 
 **Configurations when a proxy service is used**
 
-If you deploy an application such as Server Load Balancer (SLB) or NGINX behind a proxy, the following issue may arise: The user visits https://www.example.com. The `redirect_uri` generated when the user logs on to the application based on OIDC is changed to http://127.0.0.1:8080/oauth2/authorization/aliyunidaas. The login request will fail. To resolve this issue, you must modify the method through which Spring Boot generates the
+elf-managed applications If you deploy an application such as Server Load Balancer (SLB) or NGINX behind a proxy, the following issue may arise: The user visits https://www.example.com. The `redirect_uri` generated when the user logs on to the application based on OIDC is changed to http://127.0.0.1:8080/oauth2/authorization/aliyunidaas. The login request will fail. To resolve this issue, you must modify the method through which Spring Boot generates the
 
 ```
  redirect_uri :
@@ -15108,7 +14833,7 @@ proxy_set_header Host $host; proxy_set_header X-Forwarded-Proto $proxy_x_forward
 ```
 
 4. If you directly use an NGINX proxy to provide services over HTTPS, you must configure the
-following parameters:
+following parameters: elf-managed applications
 
 ```
 proxy_set_header Host $host; proxy_set_header X-Forwarded-Proto https;
@@ -15122,11 +14847,11 @@ If you use other proxy services or software, you need to check the configuration
 
 https://datatracker.ietf.org/doc/html/rfc7239 https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/ https://docs.spring.io/springboot/docs/current/reference/html/howto.html#howto.webserver.use-behind-a-proxy-server
 
-### Connect to IDaaS for account
+### 4.2 Connect to IDaaS for account synchronization
 
 #### synchronization
 
-#### Overview
+#### 4.2.1 Overview
 
 This topic provides an overview of the development reference for Alibaba Cloud Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM), covering the core features, scenarios, and access guide, to help developers quickly integrate unified identity management and single sign-on (SSO) capabilities.
 
@@ -15145,7 +14870,7 @@ example, after a user logs in to the system and changes their mobile number, the
 
 **Event callback mechanism**
 
-The preceding examples are two simple scenarios. Based on different requirements, developers can subscribe to various events to process data accordingly. IDaaS provides a convenient and secure method to synchronize IDaaS changes to applications. You can quickly integrate applications with IDaaS to allow the applications to receive synchronization requests. This method is implemented by using an event callback mechanism. In IDaaS, you can configure an event that you want to follow (such as the Create account event). When the event occurs, a synchronization request is automatically sent to the event subscriber by using `HTTP POST` . The event mechanism consists of the following two parts:
+The preceding examples are two simple scenarios. Based on different requirements, developers can subscribe to various events to process data accordingly. IDaaS provides a convenient and secure method to synchronize IDaaS changes to applications. You can quickly integrate applications with IDaaS to allow the applications to receive synchronization requests. elf-managed applications This method is implemented by using an event callback mechanism. In IDaaS, you can configure an event that you want to follow (such as the Create account event). When the event occurs, a synchronization request is automatically sent to the event subscriber by using `HTTP POST` . The event mechanism consists of the following two parts:
 **Subscribe to events:** Log in to the IDaaS console and configure the IDaaS events that you
 want to follow.
 **Receive the event callback:** The developer must integrate the application with IDaaS to
@@ -15164,31 +14889,24 @@ When a selected event occurs, IDaaS sends a `POST` request to the configured **U
 The following code provides an example on how to configure request parameters:
 
 ```json
-Content-Type: application/json;charset=utf-8 // An example of the body of a POST request from IDaaS. After the application obtains t he parameters, it verifies the signature. { "event":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4 G9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" }
+Content-Type: application/json;charset=utf-8 // An example of the body of a POST request from IDaaS. After the application obtains t he parameters, it verifies the signature. "event":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4 G9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 ```
 
 All the parameters are passed in the `event` field in the JSON Web Token (JWT) format, which contains the signature. For more information, see RFC 7515: JSON Web Signature (JWS).
 
 **Event format**
 
-You must use the universal open source tools for various languages to parse the JWT information. For testing purposes, you can also paste the value in the JWT format in the field at https://jwt.io/ to view the content. The `event` value consists of two parts: `header` and `payload` . Sample `header` :
-
-|  | Paramete r | Position | Type | Description |
-|---|---|---|---|---|
-| header | alg | header | String | Fixed value: RS256. The SHA-256 RSA signature that is used. |
+You must use the universal open source tools for various languages to parse the JWT information. For testing purposes, you can also paste the value in the JWT format in the field at https://jwt.io/ to view the content. The `event` value consists of two parts: `header` and `payload` . Sample `header` : elf-managed applications
 
 ```json
-{
     "kid": "KEYH1zR7XLCGcHw1hzhkCqVjnuyaAJUf6yMR",
     "typ": "JWT",
     "alg": "RS256"
-}
 ```
 
 Sample `payload` :
 
 ```json
-{
   "iss":"urn:alibaba:idaas:app:event",
   "sub":"idaas-121313",
   "aud":"app_12131313",
@@ -15202,7 +14920,6 @@ Sample `payload` :
     "instanceId":"instance ID",  // The ID of the instance.
     "eventVersion":"V1.0",  // The version number of the event.
     "eventData":[
-      {
         "eventId":"",     // The ID of the event.
         "eventType":"",   // The type of the event.
         "eventTime":121313,  // The time when the event occurred.
@@ -15210,53 +14927,40 @@ Sample `payload` :
 organization, the value is the ID of the organization.
         "bizData":{}       // The specific data details. This field value varies with
 event types. For more information, see Address book events.
-      }
 ```
 
-]
+`]` The following table describes the fields contained.
 
-```
-  }
-}
-```
+|   | Paramete r | Position | Type | Description |
+|---|---|---|---|---|
+| header | alg | header | String | Fixed value: RS256. The SHA-256 RSA signature that is used. |
 
-The following table describes the fields contained.
+elf-managed applications
 
-|  | kid | header | String | The ID of the public and private key pair issued by IDaaS. The public key of the kid is used for signature verification. In IDaaS, public and private key pairs can be rotated for synchronization. The synchronized public and private key pairs remain unchanged. |
+|   | kid | header | String | The ID of the public and private key pair issued by IDaaS. The public key of the kid is used for signature verification. In IDaaS, public and private key pairs can be rotated for synchronization. The synchronized public and private key pairs remain unchanged. |
 |---|---|---|---|---|
 | payload | iss | payload | String | Fixed value: urn:alibaba:idaas:app:event . Indicates that the event notification is initiated by IDaaS. |
-|  | sub | payload | String | The ID of the IDaaS instance. |
-|  | aud | payload | String | The ID of the IDaaS application. |
-|  | exp | payload | Long | The expiration time of the event . Unit: milliseconds. The default value is 30 minutes after the creation time. If the current time is later than the expiration time, an error occurs when the request is parsed, and the application determines that the event is expired. |
-|  | iat | payload | Long | The creation time of the event . Unit: milliseconds. If the current time is earlier than the creation time, an error occurs when the request is parsed, and the application determines that the event is invalid. |
-|  | data encry _ pted | payload | Boolean | Indicates whether the event data is encrypted for transmission. |
-|  | cipher dat _ a | payload | String | If encryption is enabled, this field is not empty. This field is the encrypted ciphertext of the event data. You must decrypt it to view the content. |
-|  | plain data _ | payload | Object | If encryption is disabled, this field is not empty. This field contains all the event data. |
+|   | sub | payload | String | The ID of the IDaaS instance. |
+|   | aud | payload | String | The ID of the IDaaS application. |
+|   | exp | payload | Long | The expiration time of the event . Unit: milliseconds. The default value is 30 minutes after the creation time. If the current time is later than the expiration time, an error occurs when the request is parsed, and the application determines that the event is expired. |
+|   | iat | payload | Long | The creation time of the event . Unit: milliseconds. If the current time is earlier than the creation time, an error occurs when the request is parsed, and the application determines that the event is invalid. |
+|   | data encry _ pted | payload | Boolean | Indicates whether the event data is encrypted for transmission. |
+|   | cipher dat _ a | payload | String | If encryption is enabled, this field is not empty. This field is the encrypted ciphertext of the event data. You must decrypt it to view the content. |
+|   | plain data _ | payload | Object | If encryption is disabled, this field is not empty. This field contains all the event data. |
 
 **Signature verification**
 
-The JWT signature must be verified to confirm that the `event` information is issued by IDaaS. Signature verification prevents request forgery.
-
-| Return field | Data type | Description |
-|---|---|---|
-| successEvents | Array | The synchronization is successful. |
-| skippedEvents | Array | The synchronization is skipped. (Example: The application receives a Delete account event, but the user does not exist in the application system.) |
-| failedEvents | Array | The synchronization fails. |
-| retriedEvents | Array | The synchronization is retried up to five times. |
-
-On the synchronization page, you can obtain the **public key endpoint** to verify the JWT signature and the source of the event sent to the application. We recommend that you use the open source JWT toolkit of the programming language.
+The JWT signature must be verified to confirm that the `event` information is issued by IDaaS. Signature verification prevents request forgery. elf-managed applications On the synchronization page, you can obtain the **public key endpoint** to verify the JWT signature and the source of the event sent to the application. We recommend that you use the open source JWT toolkit of the programming language.
 
 **Data decryption (optional)**
 
 The encrypted transmission of event synchronization data is supported. The encrypted fields are passed in the `cipher_data` field in `payload` .
 
 ```json
-{
     ...
     "cipher_data":
 "ZePq7ckODWnL54vqZc3kTw0vF7tjvIRZjqqy/gZm9oTEt71WMufD9swlmHzZkniSqyDGQpkmMRLCXz9gzRJ4BY2R LUPQW8ZDPSfmJKEf2m2w6wY1twoRlnHLoFCVhravsvN0afBqmxd3eK5tHd05Ze6MLOXS3fqxqH61dGAm2mwecvAFP KVeg6JXBYUvA2Uu6dmCOP3y938kFdhodD13O05MBIqWghq569wYvVjKMFMcnsZqmGGKXN0vRFhg+SR16sr24b1X/g bNqyMDICB9k3QMe09dOodwNEwvgxbf1v4PbyCRX1P9UO74nDQaWROWZFplE7qP/JMy3pBr0pxW+hJS9u/Zpvj/hvL BTAZkmhAKDKxlrYztqrgJbr4VOUv8mlqxWjDK4I7VZugODJMSwi1HdjXL+wlMzPMOeH8rkDFU+b5VH3dsxg3hZ64U 7exB62QyyeIJpfk0d57xw8UACiSsXadexQYpJPDycVdmJ7FAmIhxbJ8I6w9Kcv9U5sKybUz1YA8tONAw=="
     ...
-}
 ```
 
 After you enable the feature, you can enter an encryption key or generate an encryption key. Before IDaaS sends an event callback request, IDaaS uses this key to encrypt all the request data before transmission. IDaaS uses the AES-256 algorithm for symmetric encryption and encrypts events in the JSON Web Encryption (JWE) format. The application must use the same key for decryption to obtain the synchronization data. For more information, see Connect Java applications to IDaaS for account synchronization.
@@ -15269,6 +14973,15 @@ The application must return the processing result of the event according to IDaa
 
 If the request is processed, the application must return `eventId` and the result in the following formats.
 
+| Return field | Data type | Description |
+|---|---|---|
+| successEvents | Array | The synchronization is successful. |
+| skippedEvents | Array | The synchronization is skipped. (Example: The application receives a Delete account event, but the user does not exist in the application system.) |
+| failedEvents | Array | The synchronization fails. |
+| retriedEvents | Array | The synchronization is retried up to five times. |
+
+elf-managed applications
+
 | -eventId | String | The ID of the event in IDaaS. If this field is not sent or an invalid eventId is transmitted, a retry is triggered. |
 |---|---|---|
 | -eventCode | String | The error code returned. IDaaS records the result for troubleshooting. You can customize eventCode . |
@@ -15277,63 +14990,56 @@ If the request is processed, the application must return `eventId` and the resul
 Sample success responses:
 
 ```json
-{
     "successEvents": [
-        {
             "eventId": "The ID of the event",
             "eventCode": "SUCCESS",
             "eventMessage": "SUCCESS"
-        }
 ```
 
 `],`
 
 ```json
     "skippedEvents": [
-        {
             "eventId": "The ID of the event",
             "eventCode": "The error code returned",
             "eventMessage": "The error message returned"
-        }
 ```
 
 `],`
 
 ```json
     "failedEvents": [
-        {
             "eventId": "The ID of the event",
             "eventCode": "The error code returned",
             "eventMessage": "The error message returned"
-        }
 ```
 
 `],`
 
 ```json
     "retriedEvents": [
-        {
             "eventId": "The ID of the event",
             "eventCode": "The error code returned",
             "eventMessage": "The error message returned"
-        }
 ```
 
-]
+`]` elf-managed applications
 
-```
-}
-```
-
-|  | Important After the application receives the request, it must respond to the request with the HTTP 200 status code within 10 seconds. Otherwise, IDaaS determines that the synchronization fails and tries to push the event again up to five times at the respective intervals of 1s, 5s, 10s, 10s, and 10s. |  |  |
+|   | Important After the application receives the request, it must respond to the request with the HTTP 200 status code within 10 seconds. Otherwise, IDaaS determines that the synchronization fails and tries to push the event again up to five times at the respective intervals of 1s, 5s, 10s, 10s, and 10s. |   |   |
 |---|---|---|---|
-|  |  | HTTP |  |
-|  | 200 |  |  |
+|   |   | HTTP |   |
+|   | 200 |   |   |
+
+**Failed execution**
+
+If the processing fails, the application must return the `HTTP` 403, 429, or 500 status code. The following parameters are returned if the processing fails.
 
 | Parameter | Data type | Description |
 |---|---|---|
 | error | String | The error code. |
 | error description _ | String | The error message. |
+
+Generally, the following error codes are returned.
 
 | Error code | HTTP status code | Description |
 |---|---|---|
@@ -15341,32 +15047,16 @@ Sample success responses:
 | too many request _ _ | 429 | If the business is busy and returns this error code, IDaaS will use throttling policies. |
 | internal error _ | 500 | Indicates an internal error. IDaaS automatically retries the synchronization. |
 
-**Failed execution**
-
-If the processing fails, the application must return the `HTTP` 403, 429, or 500 status code. The following parameters are returned if the processing fails. Generally, the following error codes are returned. Sample error responses
+Sample error responses
 
 ```json
-{
      "error": "invalid_token",
      "error_description": "The JWS token is invalid."
-}
 ```
 
-#### Address book events
+#### 4.2.2 Address book events
 
-This topic describes the event callback mechanism of Alibaba Cloud Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM), and provides developers with a complete solution for synchronizing address book events of IDaaS to applications. By understanding the classification and processing procedure of event parameters, developers can achieve efficient system integration.
-
-| Category | Event | Code |
-|---|---|---|
-| Test events | Test the connectivity | urn:alibaba:idaas:app:event:common:test |
-|  | Create an account | urn:alibaba:idaas:app:event:ud:user:create |
-|  | Delete an account | urn:alibaba:idaas:app:event:ud:user:delete |
-|  | Update the basic information of an account | urn:alibaba:idaas:app:event:ud:user:update info _ |
-|  | Change the password of an account | urn:alibaba:idaas:app:event:ud:user:update pass _ word |
-|  | Disable an account | urn:alibaba:idaas:app:event:ud:user:disable |
-|  | Enable an account | urn:alibaba:idaas:app:event:ud:user:enable |
-|  | Lock an account | urn:alibaba:idaas:app:event:ud:user:lock |
-|  | Unlock an account | urn:alibaba:idaas:app:event:ud:user:unlock |
+This topic describes the event callback mechanism of Alibaba Cloud Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM), and provides developers with a complete solution for synchronizing address book events of IDaaS to applications. By understanding the classification and processing procedure of event parameters, developers can achieve efficient system integration. elf-managed applications
 
 **Usage notes**
 
@@ -15378,21 +15068,37 @@ Incremental events refer to operations that are automatically triggered by addre
 3. **Full events**
 Full events refer to synchronization operations that are manually triggered by an administrator in IDaaS. These events are used to import data from IDaaS to an application at one time. This type of synchronization is typically used for initial integration or in scenarios where all data needs to be updated.
 
-| Incremental events for address book |  |  |
+**Events**
+
+| Category | Event | Code |
 |---|---|---|
-|  | Move an account | urn:alibaba:idaas:app:event:ud:user:update prim _ ary ou _ |
-|  | Create an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:create |
-|  | Delete an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:delete |
-|  | Update an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:update |
-|  | Move an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:update parent organizational unit _ _ _ |
-|  | Create a group | urn:alibaba:idaas:app:event:ud:group:create |
-|  | Update the basic information of a group | urn:alibaba:idaas:app:event:ud:group:update |
-|  | Delete a group | urn:alibaba:idaas:app:event:ud:group:delete |
-|  | Add members to a group | urn:alibaba:idaas:app:event:ud:group:add user _ |
-|  | Remove members from a group | urn:alibaba:idaas:app:event:ud:group:remove us _ er |
+| Test events | Test the connectivity | urn:alibaba:idaas:app:event:common:test |
+|   | Create an account | urn:alibaba:idaas:app:event:ud:user:create |
+|   | Delete an account | urn:alibaba:idaas:app:event:ud:user:delete |
+|   | Update the basic information of an account | urn:alibaba:idaas:app:event:ud:user:update info _ |
+|   | Change the password of an account | urn:alibaba:idaas:app:event:ud:user:update pass _ word |
+|   | Disable an account | urn:alibaba:idaas:app:event:ud:user:disable |
+|   | Enable an account | urn:alibaba:idaas:app:event:ud:user:enable |
+|   | Lock an account | urn:alibaba:idaas:app:event:ud:user:lock |
+|   | Unlock an account | urn:alibaba:idaas:app:event:ud:user:unlock |
+
+elf-managed applications
+
+| Incremental events for address book |   |   |
+|---|---|---|
+|   | Move an account | urn:alibaba:idaas:app:event:ud:user:update prim _ ary ou _ |
+|   | Create an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:create |
+|   | Delete an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:delete |
+|   | Update an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:update |
+|   | Move an organization | urn:alibaba:idaas:app:event:ud:organizational un _ it:update parent organizational unit _ _ _ |
+|   | Create a group | urn:alibaba:idaas:app:event:ud:group:create |
+|   | Update the basic information of a group | urn:alibaba:idaas:app:event:ud:group:update |
+|   | Delete a group | urn:alibaba:idaas:app:event:ud:group:delete |
+|   | Add members to a group | urn:alibaba:idaas:app:event:ud:group:add user _ |
+|   | Remove members from a group | urn:alibaba:idaas:app:event:ud:group:remove us _ er |
 | Full events for address book | Synchronize all organizations | urn:alibaba:idaas:app:event:ud:organizational un _ it:push |
-|  | Synchronize all accounts | urn:alibaba:idaas:app:event:ud:user:push |
-|  | Synchronize all groups | urn:alibaba:idaas:app:event:ud:group:push |
+|   | Synchronize all accounts | urn:alibaba:idaas:app:event:ud:user:push |
+|   | Synchronize all groups | urn:alibaba:idaas:app:event:ud:group:push |
 
 IDaaS passes the complete account or organization information for all account and organization events as parameters to the event listener. If the data contains sensitive information, we recommend that you use an HTTPS secure tunnel or enable **service data**
 **encryption** during data transmission.
@@ -15401,14 +15107,13 @@ IDaaS passes the complete account or organization information for all account an
 
 **Test the connectivity**
 
-This event tests the connectivity based on the configuration information and validates the signature verification and encryption capabilities. This event is a separate event type. Event code: urn:alibaba:idaas:app:event:common:test.
+This event tests the connectivity based on the configuration information and validates the signature verification and encryption capabilities. elf-managed applications This event is a separate event type. Event code: urn:alibaba:idaas:app:event:common:test.
 
 **Note**
 
 This event can be triggered only by performing a test with one click in the IDaaS console. You cannot trigger the event by calling an API operation. The following code shows the `payload` part of a sample request after signature verification:
 
 ```json
-{
   "iss": "urn:alibaba:idaas:app:event",
   "sub": "idaas_rhhoqmlnyu3cv7ow657gyvurky",
   "aud": "app_mjavzivahje6zxkbc4i2bierdu",
@@ -15422,89 +15127,59 @@ This event can be triggered only by performing a test with one click in the IDaa
     "aliUid": 151971404963****,
     "eventVersion": "V1.0",
     "eventData": [
-         {
           "eventId":"evnt_aaaac766x2somw2ptotoyk6ag6bmfkt5xpqprpq",
           "eventType":"urn:alibaba:idaas:app:event:common:test",
           "eventTime":"1648709509849",
           "bizId":"evnt_aaaac766x2somw2ptotoyk6ag6bmfkt5xpqprpq",
           "bizData":"{\"bizData\":\"req_xxxxxxxxxxsdfsdfsfd\"}"
-         }
 ```
 
-]
-
-```
-  }
-}
-```
-
-After the application receives the request, the application must respond to the request and make sure that the value of the `eventId` parameter in `successEvents` is the same as that in the request. Otherwise, the test request fails.
+`]` After the application receives the request, the application must respond to the request and make sure that the value of the `eventId` parameter in `successEvents` is the same as that in the request. Otherwise, the test request fails. elf-managed applications
 
 ```json
-{
   "successEvents": [
-    {
       "eventId": "evnt_aaaac766x2somw2ptotoyk6ag6bmfkt5xpqprpq",
       "eventCode": "SUCCESS",
       "eventMessage": "SUCCESS"
-    }
 ```
 
 `],`
 
 ```json
   "skippedEvents": [
-    {
       "eventId": "",
       "eventCode": "",
       "eventMessage": ""
-    }
 ```
 
 `],`
 
 ```json
   "failedEvents": [
-    {
       "eventId": "",
       "eventCode": "",
       "eventMessage": ""
-    }
 ```
 
 `],`
 
 ```json
   "retriedEvents": [
-    {
       "eventId": "",
       "eventCode": "",
       "eventMessage": ""
-    }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Incremental events for address book**
 
 **User events**
 
 1. **Create an account**
-You can subscribe to this event to create an account for an onboarded employee. Event code: urn:alibaba:idaas:app:event:ud:user:create. Example of parsed `bizData` :
-
-| Parameter | Field data type | Description |
-|---|---|---|
-| userId | String | The unique identifier of the user. |
-| username | String | The username. |
-| displayName | String | The display name of the user, which is typically the username. |
-| passwordSet | boolean | Indicates whether a password is set. |
+You can subscribe to this event to create an account for an onboarded employee. Event code: urn:alibaba:idaas:app:event:ud:user:create. Example of parsed `bizData` : elf-managed applications
 
 ```json
-{
     "password": "ssGp96",
     "userId": "user_4alcbywzc7jyl23lu2srljsw7i",
     "username": "zhangsan",
@@ -15526,10 +15201,8 @@ You can subscribe to this event to create an account for an onboarded employee. 
     "updateTime": "1648531553621",
     "description": "",
     "customFields": [
-        {
             "fieldName": "test_custom_field",
             "fieldValue": "test_value"
-        }
 ```
 
 `],`
@@ -15537,20 +15210,23 @@ You can subscribe to this event to create an account for an onboarded employee. 
 ```json
     "primaryOrganizationalUnitId": "ou_bvluxnp2ef36uupdwob6km34a4",
     "organizationalUnits": [
-        {
             "organizationalUnitId": "ou_bvluxnp2ef36uupdwob6km34a4",
             "organizationalUnitName": "R&D department",
             "primary": true
-        }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Parameters**
+
+| Parameter | Field data type | Description |
+|---|---|---|
+| userId | String | The unique identifier of the user. |
+| username | String | The username. |
+| displayName | String | The display name of the user, which is typically the username. |
+| passwordSet | boolean | Indicates whether a password is set. |
+
+elf-managed applications
 
 | phoneRegion | String | The area code of the mobile number of the user. |
 |---|---|---|
@@ -15567,6 +15243,8 @@ You can subscribe to this event to create an account for an onboarded employee. 
 | registerTime | Long | The time when the account was registered. |
 | lockExpireTime | Long | The time when the lock on the account expires. The account is unlocked upon the lock expiration time. |
 | createTime | Long | The time when the account was created. |
+
+elf-managed applications
 
 | updateTime | Long | The time when the information about the account was modified. |
 |---|---|---|
@@ -15585,7 +15263,7 @@ You can subscribe to this event to delete an account from the address book when 
 3. **Update the basic information of an account**
 You can subscribe to this event to update the basic information of an account, such as a change in the mobile number, email address, or username. This event can synchronize changes to applications at the earliest opportunity. Event code: urn:alibaba:idaas:app:event:ud:user:update_info. For an example of parsed `bizData` , see the "Create an account" section of this topic.
 4. **Change the password of an account**
-You can subscribe to this event in scenarios where an administrator needs to reset the password of a user or users need to change their own passwords. This event can synchronize the new password to applications.
+You can subscribe to this event in scenarios where an administrator needs to reset the password of a user or users need to change their own passwords. This event can synchronize the new password to applications. elf-managed applications
 
 **Important**
 
@@ -15609,7 +15287,21 @@ You can subscribe to this event to change the primary organization to which an a
 **Organizational unit (OU) events**
 
 1. **Create an organization**
-You can subscribe to this event to create an organization. Event code: urn:alibaba:idaas:app:event:ud:organizational_unit:create. Example of parsed `bizData` :
+You can subscribe to this event to create an organization. Event code: urn:alibaba:idaas:app:event:ud:organizational_unit:create. Example of parsed `bizData` : elf-managed applications
+
+```json
+    "organizationalUnitId": "ou_dqdvxesykpfhig2kvgrzpeoeyu",
+    "organizationalUnitName": "Organization department",
+    "parentId": "ou_dqdvxesykpdfasdfaseoeyu",
+    "organizationalUnitExternalId": "ou_dqdvxesykpfhig2kvgrzpeoeyu",
+    "organizationalUnitSourceType": "build_in",
+    "organizationalUnitSourceId": "idaas_rhhoqmlnyu3cv7ow657gyvurky",
+    "createTime": "1648451475209",
+    "updateTime": "1648451475209",
+    "description":"Created in IDaaS"
+```
+
+**Parameters**
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15623,31 +15315,7 @@ You can subscribe to this event to create an organization. Event code: urn:aliba
 | updateTime | Long | The time when the organization was last updated. The value of this parameter is the same as the lastUpdatedTime value. |
 | description | String | The description of the organization. |
 
-```json
-{
-    "organizationalUnitId": "ou_dqdvxesykpfhig2kvgrzpeoeyu",
-    "organizationalUnitName": "Organization department",
-    "parentId": "ou_dqdvxesykpdfasdfaseoeyu",
-    "organizationalUnitExternalId": "ou_dqdvxesykpfhig2kvgrzpeoeyu",
-    "organizationalUnitSourceType": "build_in",
-    "organizationalUnitSourceId": "idaas_rhhoqmlnyu3cv7ow657gyvurky",
-    "createTime": "1648451475209",
-    "updateTime": "1648451475209",
-    "description":"Created in IDaaS"
-}
-```
-
-**Parameters**
-
-| Parameter | Field data type | Description |
-|---|---|---|
-| groupId | String | The unique identifier of the group. |
-| groupName | String | The display name of the group. |
-| groupExternalId | String | The external ID of the group. |
-| allMembers | List | All members of the group. |
-| memberId | String | The unique identifier of the user. |
-| memberName | String | The display name of the user. |
-
+elf-managed applications
 2. **Delete an organization**
 You can subscribe to this event to delete an organization. Event code: urn:alibaba:idaas:app:event:ud:organizational_unit:delete. For an example of parsed `bizData` , see the "Create an organization" section of this topic.
 3. **Update an organization**
@@ -15661,11 +15329,42 @@ You can subscribe to this event to update the parent organization of an organiza
 You can subscribe to this event to create a group. Event code: urn:alibaba:idaas:app:event:ud:group:create. Example of parsed `bizData` :
 
 ```json
-{
     "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
     "groupName": "test_2024",
     "groupExternalId": "test_2024"
-}
+```
+
+Parameters
+
+| Parameter | Field data type | Description |
+|---|---|---|
+| groupId | String | The unique identifier of the group. |
+| groupName | String | The display name of the group. |
+| groupExternalId | String | The external ID of the group. |
+| allMembers | List | All members of the group. |
+| memberId | String | The unique identifier of the user. |
+| memberName | String | The display name of the user. |
+
+elf-managed applications
+2. **Update the basic information of a group**
+You can subscribe to this event to update the basic information of a group. Event code: urn:alibaba:idaas:app:event:ud:group:update. For an example of parsed `bizData` , see the "Create a group" section of this topic.
+3. **Delete a group**
+You can subscribe to this event to delete a group. Event code: urn:alibaba:idaas:app:event:ud:group:delete. For an example of parsed `bizData` , see the "Create a group" section of this topic.
+4. **Add members to a group**
+You can subscribe to this event to add members to a group. Event code: urn:alibaba:idaas:app:event:ud:group:add_user. Example of parsed `bizData` :
+
+```json
+    "addedMembers": [
+            "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
+            "memberName": "Jim"
+```
+
+`],`
+
+```json
+    "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
+    "groupName": "test_2024_test",
+    "groupExternalId": "test_2024"
 ```
 
 Parameters
@@ -15679,20 +15378,13 @@ Parameters
 | -memberId | String | The unique identifier of the user. |
 | -memberName | String | The display name of the user. |
 
-2. **Update the basic information of a group**
-You can subscribe to this event to update the basic information of a group. Event code: urn:alibaba:idaas:app:event:ud:group:update. For an example of parsed `bizData` , see the "Create a group" section of this topic.
-3. **Delete a group**
-You can subscribe to this event to delete a group. Event code: urn:alibaba:idaas:app:event:ud:group:delete. For an example of parsed `bizData` , see the "Create a group" section of this topic.
-4. **Add members to a group**
-You can subscribe to this event to add members to a group. Event code: urn:alibaba:idaas:app:event:ud:group:add_user. Example of parsed `bizData` :
+5. **Remove members from a group**
+You can subscribe to this event to remove members from a group. elf-managed applications Event code: urn:alibaba:idaas:app:event:ud:group:remove_user. Example of parsed `bizData` :
 
 ```json
-{
-    "addedMembers": [
-        {
+    "removedMembers": [
             "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
             "memberName": "Jim"
-        }
 ```
 
 `],`
@@ -15701,12 +15393,9 @@ You can subscribe to this event to add members to a group. Event code: urn:aliba
     "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
     "groupName": "test_2024_test",
     "groupExternalId": "test_2024"
-}
 ```
 
 Parameters
-5. **Remove members from a group**
-You can subscribe to this event to remove members from a group.
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15717,36 +15406,39 @@ You can subscribe to this event to remove members from a group.
 | -memberId | String | The unique identifier of the user. |
 | -memberName | String | The display name of the user. |
 
-Event code: urn:alibaba:idaas:app:event:ud:group:remove_user. Example of parsed `bizData` :
-
-```json
-{
-    "removedMembers": [
-        {
-            "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
-            "memberName": "Jim"
-        }
-```
-
-`],`
-
-```json
-    "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
-    "groupName": "test_2024_test",
-    "groupExternalId": "test_2024"
-}
-```
-
-Parameters
-
 **Full events for address book**
+
+**Full synchronization events**
 
 1. **Synchronize all organizations**
 Event code: urn:alibaba:idaas:app:event:ud:organizational_unit:push. For an example of parsed `bizData` , see the "Create an organization" section of this topic.
 2. **Synchronize all accounts**
 Event code: urn:alibaba:idaas:app:event:ud:user:push. For an example of parsed `bizData` , see the "Create an account" section of this topic.
 3. **Synchronize all groups**
-You can subscribe to this event to synchronize all groups. Event code: urn:alibaba:idaas:app:event:ud:group:push.
+You can subscribe to this event to synchronize all groups. Event code: urn:alibaba:idaas:app:event:ud:group:push. elf-managed applications Example of parsed `bizData` :
+
+```json
+    "allMembers": [
+            "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
+            "memberName": "Jim"
+```
+
+`},`
+
+```json
+            "memberId": "user_zakg7oeea1234ff2bzcexample",
+            "memberName": "Bob"
+```
+
+`],`
+
+```json
+    "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
+    "groupName": "test_2024",
+    "groupExternalId": "test_2024"
+```
+
+Parameters
 
 | Parameter | Field data type | Description |
 |---|---|---|
@@ -15757,33 +15449,7 @@ You can subscribe to this event to synchronize all groups. Event code: urn:aliba
 | -memberId | String | The unique identifier of the user. |
 | -memberName | String | The display name of the user. |
 
-Example of parsed `bizData` :
-
-```json
-{
-    "allMembers": [
-        {
-            "memberId": "user_zakg7oeeaftqqff2bzcv7wpqs4",
-            "memberName": "Jim"
-        },
-        {
-            "memberId": "user_zakg7oeea1234ff2bzcexample",
-            "memberName": "Bob"
-        }
-```
-
-`],`
-
-```json
-    "groupId": "group_yvx3ugdi3yzaehnsd3uqzb4xha",
-    "groupName": "test_2024",
-    "groupExternalId": "test_2024"
-}
-```
-
-Parameters
-
-#### Connect Java applications to IDaaS for
+#### 4.2.3 Connect Java applications to IDaaS for account synchronization
 
 **account synchronization**
 
@@ -15792,16 +15458,14 @@ This topic describes how to connect Java applications to Identity as a Service (
 **Signature verification**
 
 **Decryption** (optional)
-After the preceding procedure is completed, the application receives the request of this event and handles the request.
+After the preceding procedure is completed, the application receives the request of this event and handles the request. elf-managed applications
 1. . Signature verification**
 Obtain the public key endpoint from the synchronization configuration of the application. For more information, see **User Guide (Tenant) > Applications > Application Management**
 **> Synchronize IDaaS accounts to an application by using SCIM**.
 In this topic, a Java utility class that directly obtains the public key from the public key endpoint is provided. If the programming language that you use requires public key information, you may need to click the public key endpoint URL to obtain the public key, and store the public key in a .pem file locally. The following code provides an example of a public key:
 
 ```json
-{
   "keys": [
-    {
       "kty": "RSA",
       "e": "AQAB",
       "use": "sig",
@@ -15809,16 +15473,9 @@ In this topic, a Java utility class that directly obtains the public key from th
       "n": "rLUnH5PNeGUZE-
 ********GGIxyM5O7TDdaG4********D9mV1CjE8hVHBxXM96IcCCH_1xmUZEZRp_MBP6m2XeNWUXanCpeyuIAD2k
 aQAqituZdIlT4l3-q9gtccdY-khaE- OfH9qYZhlxFcYj0gVtOvKZFIkuGhME4IQJd_RAWS3OPXxtbGhO2fZYCiuuc8NWub5mcVQnqsy5aJPLwHbVwVUwYNO q97_m2TtPcIVWtw7AOzX8O78UrYnYt_QPrv7uVdJMbHleSOx2A1IXqrAkJWecwFfvTsBTCUOPPDeVRQEHzzwmf3zp KMgHZU1I5pyqi0KJ6BuMHWw"
-    }
 ```
 
-]
-
-```
-}
-```
-
-The following example shows how to add dependencies to your Maven project:
+`]` The following example shows how to add dependencies to your Maven project:
 
 ```xml
 <dependency>
@@ -15834,6 +15491,8 @@ The following code is for the utility class that is used to obtain the public ke
 import org.apache.commons.codec.binary.StringUtils; import org.jose4j.jwk.JsonWebKey; import org.jose4j.jwk.JsonWebKeySet; import org.jose4j.jwt.consumer.JwtConsumer; import org.jose4j.jwt.consumer.JwtConsumerBuilder; import org.jose4j.lang.JoseException; import java.io.ByteArrayOutputStream; import java.io.IOException; import java.io.InputStream; import java.net.URL;
 ```
 
+elf-managed applications
+
 ```java
 import java.net.URLConnection; import java.nio.charset.StandardCharsets; import java.util.concurrent.ConcurrentHashMap; import java.util.concurrent.ConcurrentMap; public class JwtUtil {
     private final static ConcurrentMap<String, JsonWebKeySet> IDAAS_SIGN_JWK_SET_MAP =
@@ -15845,8 +15504,6 @@ new ConcurrentHashMap<>();
         } catch (Exception e) {
             throw new RuntimeException("Fetch JWKs from url failed: " + e.getMessage()
 + ", " + jwkUrl, e);
-        }
-    }
     public static JwtConsumer createJwtConsumer(JsonWebKeySet jsonWebKeySet, String app
 Id) {
         final JwtConsumerBuilder jwtConsumerBuilder = new JwtConsumerBuilder();
@@ -15863,21 +15520,16 @@ Id) {
             for (JsonWebKey jsonWebKey : jsonWebKeySet.getJsonWebKeys()) {
                 if (StringUtils.equals(jsonWebKey.getKeyId(), signKeyId)) {
                     return jsonWebKey.getKey();
-                }
-            }
             throw new RuntimeException("Cannot find verification key: " + signKeyId);
         });
         return jwtConsumerBuilder.build();
-    }
     synchronized private static JsonWebKeySet getJsonWebKeySetByUrl(String
 jwkUrlString) throws IOException, JoseException {
         JsonWebKeySet jsonWebKeySet = IDAAS_SIGN_JWK_SET_MAP.get(jwkUrlString);
         if (jsonWebKeySet == null) {
             jsonWebKeySet = innerGetJsonWebKeySetByUrl(jwkUrlString);
             IDAAS_SIGN_JWK_SET_MAP.put(jwkUrlString, jsonWebKeySet);
-        }
         return jsonWebKeySet;
-    }
     private static JsonWebKeySet innerGetJsonWebKeySetByUrl(String jwkUrlString) throws
 IOException, JoseException { finalURLjkUrl
 ```
@@ -15888,6 +15540,8 @@ IOException, JoseException { finalURLjkUrl
 URL(jkUrlString)
 ```
 
+elf-managed applications
+
 ```
         final URL jwkUrl = new URL(jwkUrlString);
         final URLConnection urlConnection = jwkUrl.openConnection();
@@ -15896,16 +15550,12 @@ URL(jkUrlString)
         final String jwkSetJson = new String(readAll(urlConnection.getInputStream()), S
 tandardCharsets.UTF_8);
         return new JsonWebKeySet(jwkSetJson);
-    }
     public static byte[] readAll(InputStream inputStream) throws IOException {
         final byte[] buffer = new byte[1024 * 8];
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         for (int len; ((len = inputStream.read(buffer)) != -1); ) {
             baos.write(buffer, 0, len);
-        }
         return baos.toByteArray();
-    }
-}
 ```
 
 The following code provides an example for the call:
@@ -15935,6 +15585,7 @@ b73qXShxP7eHs5xTT1kiYEu2NE3rBZdtrRwUiC_h1DvZMtyWFOPwm3dpLiwCcdlgcKvVuSEXyCBj6Gje
 JwtClaims jwtClaims=jwtConsumer.processToClaims ("The value of the event parameter"); // Obtain the specific payload. Map<String, Object> map = jwtClaims.getClaimsMap(); // Process the business based on the specific data.
 ```
 
+elf-managed applications
 2. . Decryption (optional)**
 
 **Data decryption**
@@ -15953,7 +15604,7 @@ If Service Data Encryption is enabled for the application, the event data is enc
 </dependency>
 ```
 
-The following code provides an example for the decryption:
+The following code provides an example for the decryption: elf-managed applications
 
 ```
 public String decrypte(String cipherData,String key) throws JoseException {
@@ -15975,10 +15626,9 @@ AlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT, new String[]{"d
     receiverJwe.setCompactSerialization(cipherData);
     // Return the decrypted content.
     return new String(receiverJwe.getPlaintextBytes(), StandardCharsets.UTF_8);
-}
 ```
 
-#### SCIM 2.0 operations supported by EIAM
+#### 4.2.4 SCIM 2.0 operations supported by EIAM
 
 This topic describes System for Cross-domain Identity Management (SCIM) 2.0 operations that are supported by Employee Identity and Access Management (EIAM). This topic also describes the scope and limits of SCIM 2.0 operations. The operations described in this topic are required only if you want to synchronize data from your self-managed application to EIAM by using SCIM.
 
@@ -15996,31 +15646,31 @@ management page in the Identity as a Service (IDaaS) console. ii. **Access token
 
 **Important**
 
-| Category | SCIM 2.0 operation | Supported | Description |
-|---|---|---|---|
-| Discovery Endpoint | /ServiceProviderConfig | Yes | Obtains the features that are supported by EIAM. |
-|  | /ResourceTypes | Yes | Obtains the resource types that are supported by EIAM. The details of users and user groups are returned. |
-|  | /Schemas | Yes | Obtains the schemas that are supported by EIAM. The schemas of users, enterprise users, and user groups are returned. |
-| /Users | POST /Users | Yes | Synchronizes users. |
-|  | GET /Users/{id} | Yes | Queries a user by ID. |
-|  | GET /Users | Yes | Queries the information about specific users or queries all users. If you do not specify the filter parameter, all users are queried. A maximum of 100 entries can be returned. Pagination is supported. |
-|  | PUT /Users/{id} | Yes | Replaces the information about a user. |
-|  | PATCH /Users/{id} | Yes | Updates the information about a user. |
-|  | DELETE /Users/{id} | Yes | Deletes a user. |
-|  | POST /Groups | Yes | Synchronizes a user group. |
-|  | GET /Groups/{id} | Yes | Queries a user group and the user information about the user group. |
-
-When you call an SCIM 2.0 operation, replace `{BaseUrl}` with the value of **SCIM Base**
+elf-managed applications When you call an SCIM 2.0 operation, replace `{BaseUrl}` with the value of **SCIM Base**
 **URL** in the application of an EIAM instance and replace `<BearerToken>` with a valid SCIM
 bearer token.
 
-| DaaS |  |  |  |
+| Category | SCIM 2.0 operation | Supported | Description |
 |---|---|---|---|
-| /Groups |  |  |  |
-|  | GET /Groups | Yes | Queries the information about specific user groups or queries all user groups. If you do not specify the filter parameter, all user groups are queried. The user information about the user groups is not returned. A maximum of 100 entries can be returned. Pagination is supported. |
-|  | PUT /Groups/{id} | Yes | Replaces the information about a user group. |
-|  | PATCH /Groups/{id} | Yes | Updates the information about a user group. |
-|  | DELETE /Groups/{id} | Yes | Deletes a user group. |
+| Discovery Endpoint | /ServiceProviderConfig | Yes | Obtains the features that are supported by EIAM. |
+|   | /ResourceTypes | Yes | Obtains the resource types that are supported by EIAM. The details of users and user groups are returned. |
+|   | /Schemas | Yes | Obtains the schemas that are supported by EIAM. The schemas of users, enterprise users, and user groups are returned. |
+| /Users | POST /Users | Yes | Synchronizes users. |
+|   | GET /Users/{id} | Yes | Queries a user by ID. |
+|   | GET /Users | Yes | Queries the information about specific users or queries all users. If you do not specify the filter parameter, all users are queried. A maximum of 100 entries can be returned. Pagination is supported. |
+|   | PUT /Users/{id} | Yes | Replaces the information about a user. |
+|   | PATCH /Users/{id} | Yes | Updates the information about a user. |
+|   | DELETE /Users/{id} | Yes | Deletes a user. |
+|   | POST /Groups | Yes | Synchronizes a user group. |
+|   | GET /Groups/{id} | Yes | Queries a user group and the user information about the user group. |
+
+| DaaS |   |   |   |
+|---|---|---|---|
+| /Groups |   |   |   |
+|   | GET /Groups | Yes | Queries the information about specific user groups or queries all user groups. If you do not specify the filter parameter, all user groups are queried. The user information about the user groups is not returned. A maximum of 100 entries can be returned. Pagination is supported. |
+|   | PUT /Groups/{id} | Yes | Replaces the information about a user group. |
+|   | PATCH /Groups/{id} | Yes | Updates the information about a user group. |
+|   | DELETE /Groups/{id} | Yes | Deletes a user group. |
 | /Me | N/A | No | N/A |
 | /Bulk | N/A | No | N/A |
 | /.Search | N/A | No | N/A |
@@ -16045,39 +15695,62 @@ curl {baseUrl}/ServiceProviderConfig --header "Content-type:application/scim+jso
 
 **Sample response**
 
+elf-managed applications
+
 ```json
-{
     "documentationUri": "",
     "patch": {
         "supported": true
-    },
+```
+
+`},`
+
+```json
     "bulk": {
         "supported": false,
         "maxOperations": 0,
         "maxPayloadSize": 0
-    },
+```
+
+`},`
+
+```json
     "filter": {
         "supported": true,
         "maxResults": 100
-    },
+```
+
+`},`
+
+```json
     "changePassword": {
         "supported": true
-    },
+```
+
+`},`
+
+```json
     "sort": {
         "supported": false
-    },
+```
+
+`},`
+
+```json
     "etag": {
         "supported": false
-    },
+```
+
+`},`
+
+```json
     "authenticationSchemes": [
-        {
             "name": "OAuth Bearer Token",
             "description": "Authentication scheme using the OAuth Bearer Token
 Standard",
             "specUri": "https://www.rfc-editor.org/info/rfc6750",
             "type": "oauthbearertoken",
             "primary": true
-        }
 ```
 
 `],`
@@ -16087,11 +15760,7 @@ Standard",
         "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **/ResourceTypes**
 
@@ -16109,13 +15778,13 @@ curl {baseUrl}/ResourceTypes --header "content-type:application/scim+json"
 
 **Sample response**
 
+elf-managed applications
+
 ```json
-{
     "startIndex": 1,
     "totalResults": 2,
     "itemsPerPage": 2,
     "Resources": [
-        {
             "name": "Group",
             "description": "Group",
             "endpoint": "/Groups",
@@ -16124,26 +15793,26 @@ curl {baseUrl}/ResourceTypes --header "content-type:application/scim+json"
             "meta": {
                 "resourceType": "Group",
                 "location": "{BaseUrl}/ResourceTypes/Group"
-            },
+```
+
+`},`
+
+```json
             "schemas": [
                 "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
-        {
             "name": "User",
             "description": "User Account",
             "endpoint": "/Users",
             "schema": "urn:ietf:params:scim:schemas:core:2.0:User",
             "schemaExtensions": [
-                {
                     "schema":
 "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
                     "required": false
-                }
 ```
 
 `],`
@@ -16153,33 +15822,27 @@ curl {baseUrl}/ResourceTypes --header "content-type:application/scim+json"
             "meta": {
                 "resourceType": "User",
                 "location": "{BaseUrl}/ResourceTypes/User"
-            },
+```
+
+`},`
+
+```json
             "schemas": [
                 "urn:ietf:params:scim:schemas:core:2.0:ResourceType"
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`]` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **/Schemas**
 
-Obtains the schemas that are supported by EIAM. The schemas of users and user groups are returned.
+Obtains the schemas that are supported by EIAM. The schemas of users and user groups are returned. elf-managed applications
 
 **Limits**
 
@@ -16191,11 +15854,11 @@ Query by resource type is supported. Only the fields described in the following 
 # The schema to request users.
 curl {baseUrl}/Schemas --header "content-type:application/scim+json"
 # The schema to request users.
-curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:User --header "content-ty
+curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:User --header "content-ty pe:application/scim+json"
 # The schema to request users.
-curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group --header "content-t
+curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group --header "content-t ype:application/scim+json"
 # The schema to request users.
-curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User --he
+curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User --he ader "content-type:application/scim+json"
 ```
 
 **Sample response**
@@ -16203,16 +15866,13 @@ curl {baseUrl}/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:Use
 **Schema to request users**
 
 ```json
-{
     "startIndex": 1,
     "totalResults": 3,
     "itemsPerPage": 3,
     "Resources": [
-        {
             "name": "User",
             "description": "User Account",
             "attributes": [
-                {
                     "name": "userName",
                     "type": "string",
                     "multiValued": false,
@@ -16223,8 +15883,11 @@ user to directly authenticate to the service provider.",
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "server"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "displayName",
                     "type": "string",
                     "multiValued": false,
@@ -16235,11 +15898,16 @@ ers. The name SHOULD be the full name of the User being described if known.",
                     "mutability": "readWrite",
 ```
 
+elf-managed applications
+
 ```json
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "password",
                     "type": "string",
                     "multiValued": false,
@@ -16250,12 +15918,14 @@ tended to be used as a means to specify an initial password when creating a new 
                     "mutability": "writeOnly",
                     "returned": "never",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "emails",
                     "type": "complex",
                     "subAttributes": [
-                        {
                             "name": "value",
                             "type": "string",
                             "multiValued": false,
@@ -16266,8 +15936,11 @@ OULD be canonicalized by the Service Provider, e.g.\nbjensen@example.com instead
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "display",
                             "type": "string",
                             "multiValued": false,
@@ -16278,8 +15951,11 @@ splay purposes.",
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "type",
                             "type": "string",
                             "multiValued": false,
@@ -16290,7 +15966,7 @@ e.g., 'work' or 'home'.",
                                 "work",
 ```
 
-`"h` "
+`"h` `"` elf-managed applications
 
 ```
                                 "home",
@@ -16304,8 +15980,11 @@ e.g., 'work' or 'home'.",
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "primary",
                             "type": "boolean",
                             "multiValued": false,
@@ -16321,7 +16000,6 @@ preferred attribute value for this attribute, e.g., the preferred mailing addres
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        }
 ```
 
 `],`
@@ -16335,12 +16013,14 @@ anonicalized by the Service Provider, e.g., bjensen@example.com instead of bjens
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "server"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "phoneNumbers",
                     "type": "complex",
                     "subAttributes": [
-                        {
                             "name": "value",
                             "type": "string",
                             "multiValued": false,
@@ -16350,8 +16030,11 @@ anonicalized by the Service Provider, e.g., bjensen@example.com instead of bjens
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "display",
                             "type": "string",
                             "multiValued": false,
@@ -16359,14 +16042,19 @@ anonicalized by the Service Provider, e.g., bjensen@example.com instead of bjens
 splay purposes.", "required":false
 ```
 
+elf-managed applications
+
 ```json
                             required: false,
                             "caseExact": false,
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "type",
                             "type": "string",
                             "multiValued": false,
@@ -16389,8 +16077,11 @@ e.g., 'work' or 'home' or 'mobile' etc.",
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "primary",
                             "type": "boolean",
                             "multiValued": false,
@@ -16401,7 +16092,6 @@ preferred attribute value for this attribute, e.g., the preferred phone number o
                             "mutability": "readWrite",
                             "returned": "default",
                             "uniqueness": "none"
-                        }
 ```
 
 `],`
@@ -16412,7 +16102,7 @@ preferred attribute value for this attribute, e.g., the preferred phone number o
 onicalized by the Service Provider according to format in RFC3966 e.g., 'tel:555xxxx5555'. Canonical Type values of work, home, mobile, fax, pager and other."
 ```
 
-,
+`,`
 
 ```json
                     "required": false,
@@ -16420,14 +16110,17 @@ onicalized by the Service Provider according to format in RFC3966 e.g., 'tel:555
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "server"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "phoneRegion",
                     "type": "string",
                     "multiValued": false,
 ```
 
-ut
+elf-managed applications `u``t`
 
 ```json
 aued: ase,
@@ -16438,8 +16131,11 @@ efault value is 86",
                     "mutability": "writeOnly",
                     "returned": "never",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "id",
                     "type": "string",
                     "multiValued": false,
@@ -16450,8 +16146,11 @@ y the service provider.",
                     "mutability": "readOnly",
                     "returned": "always",
                     "uniqueness": "server"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "externalId",
                     "type": "string",
                     "multiValued": false,
@@ -16462,12 +16161,14 @@ efined by the provisioning client.",
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "meta",
                     "type": "complex",
                     "subAttributes": [
-                        {
                             "name": "resourceType",
                             "type": "string",
                             "multiValued": false,
@@ -16477,8 +16178,11 @@ efined by the provisioning client.",
                             "mutability": "readOnly",
                             "returned": "always",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "location",
                             "type": "reference",
                             "multiValued": false,
@@ -16487,11 +16191,12 @@ efined by the provisioning client.",
                             "caseExact": true,
 ```
 
+elf-managed applications
+
 ```json
                             "mutability": "readOnly",
                             "returned": "always",
                             "uniqueness": "none"
-                        }
 ```
 
 `],`
@@ -16504,8 +16209,11 @@ efined by the provisioning client.",
                     "mutability": "readOnly",
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "schemas",
                     "type": "string",
                     "multiValued": true,
@@ -16515,7 +16223,6 @@ efined by the provisioning client.",
                     "mutability": "readOnly",
                     "returned": "always",
                     "uniqueness": "none"
-                }
 ```
 
 `],`
@@ -16526,13 +16233,14 @@ efined by the provisioning client.",
                 "resourceType": "Schema",
                 "location": "
 {BaseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
-            }
-        },
-        {
+```
+
+`},`
+
+```json
             "name": "Group",
             "description": "Group",
             "attributes": [
-                {
                     "name": "displayName",
                     "type": "string",
                     "multiValued": false,
@@ -16542,15 +16250,19 @@ efined by the provisioning client.",
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "members",
                     "type": "complex",
                     "subAttributes": [
-                        {
                             "name": "value",
                             "type": "string",
 ```
+
+elf-managed applications
 
 ```json
                             "multiValued": false,
@@ -16560,8 +16272,11 @@ efined by the provisioning client.",
                             "mutability": "immutable",
                             "returned": "default",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "ref",
                             "type": "reference",
                             "multiValued": false,
@@ -16575,11 +16290,9 @@ efined by the provisioning client.",
                                 "User"
 ```
 
-]
+`]` `},`
 
 ```json
-                        },
-                        {
                             "name": "display",
                             "type": "string",
                             "multiValued": false,
@@ -16590,7 +16303,6 @@ splay purposes.",
                             "mutability": "immutable",
                             "returned": "default",
                             "uniqueness": "none"
-                        }
 ```
 
 `],`
@@ -16603,8 +16315,11 @@ splay purposes.",
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "id",
                     "type": "string",
                     "multiValued": false,
@@ -16617,9 +16332,9 @@ y the service provider.",
                     "uniqueness": "server"
 ```
 
+elf-managed applications `},`
+
 ```json
-                },
-                {
                     "name": "externalId",
                     "type": "string",
                     "multiValued": false,
@@ -16630,12 +16345,14 @@ efined by the provisioning client.",
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "meta",
                     "type": "complex",
                     "subAttributes": [
-                        {
                             "name": "resourceType",
                             "type": "string",
                             "multiValued": false,
@@ -16645,8 +16362,11 @@ efined by the provisioning client.",
                             "mutability": "readOnly",
                             "returned": "always",
                             "uniqueness": "none"
-                        },
-                        {
+```
+
+`},`
+
+```json
                             "name": "location",
                             "type": "reference",
                             "multiValued": false,
@@ -16656,7 +16376,6 @@ efined by the provisioning client.",
                             "mutability": "readOnly",
                             "returned": "always",
                             "uniqueness": "none"
-                        }
 ```
 
 `],`
@@ -16669,8 +16388,11 @@ efined by the provisioning client.",
                     "mutability": "readOnly",
                     "returned": "default",
                     "uniqueness": "none"
-                },
-                {
+```
+
+`},`
+
+```json
                     "name": "schemas",
                     "type": "string",
                     "multiValued": true,
@@ -16679,12 +16401,13 @@ efined by the provisioning client.",
 "caseExact":true
 ```
 
+elf-managed applications
+
 ```json
                     "caseExact": true,
                     "mutability": "readOnly",
                     "returned": "always",
                     "uniqueness": "none"
-                }
 ```
 
 `],`
@@ -16695,13 +16418,14 @@ efined by the provisioning client.",
                 "resourceType": "Schema",
                 "location": "
 {BaseUrl}/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
-            }
-        },
-        {
+```
+
+`},`
+
+```json
             "name": "EnterpriseUser",
             "description": "Enterprise User",
             "attributes": [
-                {
                     "name": "organization",
                     "type": "string",
                     "multiValued": false,
@@ -16711,7 +16435,6 @@ efined by the provisioning client.",
                     "mutability": "readWrite",
                     "returned": "default",
                     "uniqueness": "none"
-                }
 ```
 
 `],`
@@ -16722,8 +16445,6 @@ efined by the provisioning client.",
                 "resourceType": "Schema",
                 "location": "
 {BaseUrl}/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-            }
-        }
 ```
 
 `],`
@@ -16733,11 +16454,9 @@ efined by the provisioning client.",
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-]
+`]`
 
-```
-}
-```
+**Users**
 
 **POST /Users**
 
@@ -16745,12 +16464,12 @@ Synchronizes users.
 
 **Limits**
 
-You can use only the fields that are defined in the "/Schemas" section of this topic. If you specify the organization to which the account belongs, the account is automatically assigned to the organization that you specify. If you do not specify the organization to which the account belongs, the account is assigned to the organization that you use as the synchronization target. For more information, see Sample request.
+You can use only the fields that are defined in the "/Schemas" section of this topic. elf-managed applications If you specify the organization to which the account belongs, the account is automatically assigned to the organization that you specify. If you do not specify the organization to which the account belongs, the account is assigned to the organization that you use as the synchronization target. For more information, see Sample request.
 
 **Sample request**
 
 ```bash
-curl {baseUrl}/Users --header 'Authorization: Bearer <BearerToken>' --header "content-t
+curl {baseUrl}/Users --header 'Authorization: Bearer <BearerToken>' --header "content-t ype:application/scim+json" -X POST -d '<data>'
 ```
 
 The following sample code provides an example of the data field:
@@ -16758,17 +16477,14 @@ The following sample code provides an example of the data field:
 **Example 1: Do not specify the organizational unit to which the account belongs**
 
 ```json
-{
     "userName": "<user username>",
     "externalId": "<external Id>",
     "displayName": "<user display name>",
     "active": true,
     "emails": [
-        {
             "primary": true,
             "type": "work",
             "value": "<user email>"
-        }
 ```
 
 `],`
@@ -16776,11 +16492,9 @@ The following sample code provides an example of the data field:
 ```json
    "phoneRegion":"86"
    "phoneNumbers": [
-        {
             "primary": true,
             "type": "work",
             "value": "<user phoneNumber>"
-        }
 ```
 
 `],`
@@ -16791,25 +16505,20 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:schemas:core:2.0:User"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Example 2: Specify the organizational unit to which the account belongs**
 
+elf-managed applications
+
 ```json
-{
     "userName": "<user username>",
     "externalId": "<external Id>",
     "displayName": "<user display name>",
     "emails": [
-       {
             "primary": true,
             "type": "work",
             "value": "<user email>"
-        }
 ```
 
 `],`
@@ -16817,11 +16526,9 @@ The following sample code provides an example of the data field:
 ```json
    "phoneRegion":"86"
    "phoneNumbers": [
-        {
             "primary": true,
             "type": "work",
             "value": "<user phoneNumber>"
-        }
 ```
 
 `],`
@@ -16838,35 +16545,31 @@ The following sample code provides an example of the data field:
 ```json
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
     "organization": "<user organizationalUnitId>"
-  }
-}
 ```
 
 **Sample response**
 
+elf-managed applications
+
 ```json
-HTTP/1.1 201 {
+HTTP/1.1 201
     "id": "<userId>",
     "userName": "<user username>",
     "displayName": "<user display name>",
     "active": true,
     "emails": [
-        {
             "value": "<user email>",
             "type": "work",
             "primary": true
-        }
 ```
 
 `],`
 
 ```json
     "phoneNumbers": [
-        {
             "value": "<user phoneNumber>",
             "type": "work",
             "primary": true
-        }
 ```
 
 `],`
@@ -16879,7 +16582,11 @@ HTTP/1.1 201 {
         "created": "2025-02-25T09:56:48.622Z",
         "lastModified": "2025-02-25T09:56:48.622Z",
         "location": "{BaseUrl}/Users/<userId>"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:User",
         "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
@@ -16890,9 +16597,9 @@ HTTP/1.1 201 {
 ```json
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
     "organization": "<user organizationalUnitId>"
-  }
-}
 ```
+
+**GET /Users/{id}**
 
 Queries a user by ID.
 
@@ -16903,34 +16610,32 @@ If you specify the id parameter in the request, the user with the specified ID i
 **Sample request**
 
 ```bash
-curl {BaseUrl}/Users/<userId> --header 'Authorization: Bearer <BearerToken>' --header "
+curl {BaseUrl}/Users/<userId> --header 'Authorization: Bearer <BearerToken>' --header " content-type:application/scim+json" -X GET
 ```
+
+elf-managed applications
 
 **Sample response**
 
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "id": "<userId>",
     "userName": "<user username>",
     "displayName": "<user display name>",
     "active": true,
     "emails": [
-        {
             "value": "<user email>",
             "type": "work",
             "primary": true
-        }
 ```
 
 `],`
 
 ```json
     "phoneNumbers": [
-        {
             "value": "<user phoneNumber>",
             "type": "work",
             "primary": true
-        }
 ```
 
 `],`
@@ -16943,7 +16648,11 @@ HTTP/1.1 200 {
         "created": "2025-02-25T09:56:48.622Z",
         "lastModified": "2025-02-25T09:56:48.622Z",
         "location": "{BaseUrl}/Users/<userId>"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:User",
         "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
@@ -16954,15 +16663,23 @@ HTTP/1.1 200 {
 ```json
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
     "organization": "<user organizationalUnitId>"
-  }
-}
 ```
+
+**GET /Users**
 
 Queries the information about specific users or queries all users.
 
 **Limits**
 
-If you specify the filter parameter, the user that meets the conditions in the filter parameter is returned. The filter parameter supports only the EQ and AND operators. The filter parameter must be URL-encoded. If you do not specify the filter parameter, you can query only users who are synchronized to EIAM by using SCIM. If you specify the filter parameter, you can query all users within the synchronization scope.
+If you specify the filter parameter, the user that meets the conditions in the filter parameter is returned. The filter parameter supports only the EQ and AND operators. The filter parameter must be URL-encoded. If you do not specify the filter parameter, you can query only users who are synchronized to EIAM by using SCIM. If you specify the filter parameter, you can query all users within the synchronization scope. elf-managed applications
+
+**Sample request**
+
+```bash
+curl {BaseUrl}/Users<?parameters> --header 'Authorization: Bearer <BearerToken>' --head er "content-type:application/scim+json" -X GET
+```
+
+The following table describes the supported parameters.
 
 | Param eter | Description | Example |
 |---|---|---|
@@ -16970,46 +16687,35 @@ If you specify the filter parameter, the user that meets the conditions in the f
 | startIn dex | The page number. This parameter is optional. Default value: 1. | startIndex=1 |
 | count | The number of users per page. This parameter is optional. Default value: 20. A maximum of 100 entries can be returned per page. If the number of entries exceeds 100, only 100 entries are returned. | count=20 |
 
-**Sample request**
-
-```bash
-curl {BaseUrl}/Users<?parameters> --header 'Authorization: Bearer <BearerToken>' --head
-```
-
-The following table describes the supported parameters.
-
 **Sample response**
 
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "startIndex": 1,
     "totalResults": 2,
     "itemsPerPage": 20,
     "Resources": [
-        {
             "userName": "username1",
             "displayName": "displayName1",
             "active": true,
             "emails": [
-                {
 ```
+
+elf-managed applications
 
 ```json
                     "value": "test1@example.com",
                     "type": "work",
                     "primary": true
-                }
 ```
 
 `],`
 
 ```json
             "phoneNumbers": [
-                {
                     "value": "333*****333",
                     "type": "work",
                     "primary": true
-                }
 ```
 
 `],`
@@ -17022,36 +16728,34 @@ HTTP/1.1 200 {
                 "created": "2025-03-06T03:16:40.201Z",
                 "lastModified": "2025-03-06T03:16:40.201Z",
                 "location": "{BaseUrl}/Users/user_addxxxxxxxxxxxxxxx1"
-            },
+```
+
+`},`
+
+```json
             "schemas": [
                 "urn:ietf:params:scim:schemas:core:2.0:User"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
-        {
             "userName": "username2",
             "displayName": "displayName2",
             "active": true,
             "emails": [
-                {
                     "value": "test2@example.com",
                     "type": "work",
                     "primary": true
-                }
 ```
 
 `],`
 
 ```json
             "phoneNumbers": [
-                {
                     "value": "333*****334",
                     "type": "work",
                     "primary": true
-                }
 ```
 
 `],`
@@ -17064,29 +16768,23 @@ HTTP/1.1 200 {
                 "created": "2025-03-06T06:58:35.997Z",
                 "lastModified": "2025-03-06T06:58:35.997Z",
                 "location": "{BaseUrl}/Users/user_g3od4xxxxxxxxxxxxxxx2"
-            },
+```
+
+`},`
+
+```json
             "schemas": [
                 "urn:ietf:params:scim:schemas:core:2.0:User"
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`]` elf-managed applications `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **PUT /Users/{id}**
 
@@ -17102,20 +16800,17 @@ The id parameter is required. You can modify only the fields that are defined in
 curl {BaseUrl}/Users/<userId> --header 'Authorization: Bearer <BearerToken>' --header " content-type:application/scim+json" -X PUT -d '<data>'
 ```
 
-The following sample code provides an example of the data field:
+The following sample code provides an example of the data field: elf-managed applications
 
 ```json
-{
     "id":"<userId>"
     "userName": "<user username>",
     "externalId": "<external Id>",
     "displayName": "<user display name>",
     "emails": [
-       {
             "primary": true,
             "type": "work",
             "value": "<user email>"
-        }
 ```
 
 `],`
@@ -17123,11 +16818,9 @@ The following sample code provides an example of the data field:
 ```json
    "phoneRegion":"86"
    "phoneNumbers": [
-        {
             "primary": true,
             "type": "work",
             "value": "<user phoneNumber>"
-        }
 ```
 
 `],`
@@ -17144,35 +16837,31 @@ The following sample code provides an example of the data field:
 ```json
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
     "organization": "<user organizationalUnitId>"
-  }
-}
 ```
 
 **Sample response**
 
+elf-managed applications
+
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "id": "<userId>",
     "userName": "<user username>",
     "displayName": "<user display name>",
     "active": true,
     "emails": [
-        {
             "value": "<user email>",
             "type": "work",
             "primary": true
-        }
 ```
 
 `],`
 
 ```json
     "phoneNumbers": [
-        {
             "value": "<user phoneNumber>",
             "type": "work",
             "primary": true
-        }
 ```
 
 `],`
@@ -17185,7 +16874,11 @@ HTTP/1.1 200 {
         "created": "2025-02-25T09:56:48.622Z",
         "lastModified": "2025-02-25T09:56:48.622Z",
         "location": "{BaseUrl}/Users/<userId>"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:User",
         "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
@@ -17196,15 +16889,15 @@ HTTP/1.1 200 {
 ```json
   "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
     "organization": "<user organizationalUnitId>"
-  }
-}
 ```
+
+**PATCH /Users/{id}**
 
 Updates the information about a user.
 
 **Limits**
 
-The id parameter is required. You can modify only the fields that are defined in the "/Schemas" section of this topic. You can use a PATCH request for the Add and Replace operations, but not for the Remove operation. If you specify the Remove operation, it is ignored. The path parameter is optional. For more information, see the data field in Sample request. You can modify only users who are synchronized to EIAM by using SCIM and self-managed users. After you modify information about a self-managed user, the system automatically changes the user to one who is synchronized to EIAM by using SCIM.
+The id parameter is required. You can modify only the fields that are defined in the "/Schemas" section of this topic. You can use a PATCH request for the Add and Replace operations, but not for the Remove operation. If you specify the Remove operation, it is ignored. The path parameter is optional. For more information, see the data field in Sample request. elf-managed applications You can modify only users who are synchronized to EIAM by using SCIM and self-managed users. After you modify information about a self-managed user, the system automatically changes the user to one who is synchronized to EIAM by using SCIM.
 
 **Sample request**
 
@@ -17217,14 +16910,10 @@ The following sample code provides an example of the data field:
 **Example 1: Add the displayName field and do not specify the path parameter**
 
 ```json
-{
     "Operations": [
-        {
             "op": "add",
             "value": {
                 "diplayName": "updateDisplayName"
-            }
-        }
 ```
 
 `],`
@@ -17234,22 +16923,15 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Example 2: Modify the displayName field and specify the path parameter**
 
 ```json
-{
     "Operations": [
-        {
             "op": "Replace",
             "path": "diplayName",
             "value": "updateDisplayName"
-        }
 ```
 
 `],`
@@ -17259,16 +16941,13 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Example 3: Modify the emails field and do not specify the path parameter**
 
+elf-managed applications
+
 ```json
-{
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
@@ -17283,22 +16962,17 @@ The following sample code provides an example of the data field:
                     "value": "test@example.com",
                     "type": "work",
                     "primary": true
-            }]
-        }
-    }]
-}
 ```
+
+`}]` `}]`
 
 **Example 4: Modify the emails field and specify the path parameter**
 
 ```json
-{
     "Operations": [
-        {
             "op": "Replace",
             "path": "emails[type eq \"work\"].value",
             "value": "test@example.com"
-        }
 ```
 
 `],`
@@ -17308,22 +16982,15 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Example 5: Disable the account field and specify the path parameter**
 
 ```json
-{
     "Operations": [
-        {
             "op": "Replace",
             "path": "active",
             "value": "false"
-        }
 ```
 
 `],`
@@ -17333,23 +17000,17 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Example 6: Disable the account field and do not specify the path parameter**
 
+elf-managed applications
+
 ```json
-{
     "Operations": [
-        {
             "op": "Replace",
             "value": {
                 "active": false
-            }
-        }
 ```
 
 `],`
@@ -17359,17 +17020,15 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Sample response**
 
 ```
 HTTP/1.1 204
 ```
+
+**DELETE /Users/{id}**
 
 Deletes a user.
 
@@ -17380,7 +17039,7 @@ The id parameter is required. You can delete only synchronized users.
 **Sample request**
 
 ```bash
-curl {BaseUrl}/Users/<userId> --header 'Authorization: Bearer <BearerToken' --header "c
+curl {BaseUrl}/Users/<userId> --header 'Authorization: Bearer <BearerToken' --header "c ontent-type:application/scim+json" -X DELETE
 ```
 
 **Sample response**
@@ -17389,31 +17048,33 @@ curl {BaseUrl}/Users/<userId> --header 'Authorization: Bearer <BearerToken' --he
 HTTP/1.1 204
 ```
 
+**Group**
+
 **POST /Groups**
 
 Synchronizes a user group.
 
 **Limits**
 
-For more information about the limits on fields, see the "/Schemas" section of this topic. You can specify up to 1,000 users. If the number of users exceeds 1,000, an error occurs. If a specified user does not exist or is not synchronized, ignore the user. If you create a user group, the information about the user group is returned.
+For more information about the limits on fields, see the "/Schemas" section of this topic. You can specify up to 1,000 users. If the number of users exceeds 1,000, an error occurs. If a specified user does not exist or is not synchronized, ignore the user. If you create a user group, the information about the user group is returned. elf-managed applications
 
 **Sample request**
 
 ```json
-{
   "externalId": "<external Id>",
   "displayName": "<group name>",
   "members": [
-    {
       "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
       "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
       "type": "User"
-    },
-    {
+```
+
+`},`
+
+```json
       "value": "user_d3rmo3xxxxxxxxxbo6vhcfq",
       "$ref": "{BaseUrl}/Users/user_d3rmo3xxxxxxxxxbo6vhcfq",
       "type": "User"
-    }
 ```
 
 `],`
@@ -17423,24 +17084,18 @@ For more information about the limits on fields, see the "/Schemas" section of t
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Sample response**
 
 ```json
-HTTP/1.1 201 {
+HTTP/1.1 201
     "id": "group_bz7xxxxxxxxxx3hhxdha",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
-        {
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
-        }
 ```
 
 `],`
@@ -17451,22 +17106,20 @@ HTTP/1.1 201 {
         "created": "2025-03-06T06:35:46.009Z",
         "lastModified": "2025-03-06T06:35:46.009Z",
         "location": "{BaseUrl}/Groups/group_bz7xxxxxxxxxx3hhxdha"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
+`]`
 
-```
-}
-```
+**GET /Groups/{id}**
 
-Queries a user group.
-
-| Parameter | Description | Example |
-|---|---|---|
-| excludedAttributes | Specifies which field is not returned. Set the value to members, which means that the members field is not returned. | members |
+Queries a user group. elf-managed applications
 
 **Limits**
 
@@ -17480,18 +17133,20 @@ curl {BaseUrl}/Groups/<groupId><?parameters> --header 'Authorization: Bearer <Be
 
 The following table describes the supported parameters.
 
+| Parameter | Description | Example |
+|---|---|---|
+| excludedAttributes | Specifies which field is not returned. Set the value to members, which means that the members field is not returned. | members |
+
 **Sample response**
 
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
-        {
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
-        }
 ```
 
 `],`
@@ -17502,24 +17157,20 @@ HTTP/1.1 200 {
         "created": "2025-03-06T06:35:46.009Z",
         "lastModified": "2025-03-06T06:35:46.009Z",
         "location": "{BaseUrl}/Groups/group_bz7xxxxxxxxxx3hhxdha"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
+`]`
 
-```
-}
-```
+**GET /Groups**
 
-| Parameter | Description | Example |
-|---|---|---|
-| filter | Only the eq expressions of displayName, externalId, and id are supported. The filter parameter must be URL-encoded. | filter=displayName eq "demoDisplayName" filter=externalId eq "demoExternalId" filter=id eq "demoGroupId" |
-| startIndex | The page number. This parameter is optional. Default value: 1. | startIndex=1 |
-| count | The number of users per page. This parameter is optional. Default value: 20. A maximum of 100 entries can be returned per page. If the number of entries exceeds 100, only 100 entries are returned. | count=20 |
-
-Queries the information about specific user groups or queries all user groups.
+elf-managed applications Queries the information about specific user groups or queries all user groups.
 
 **Limits**
 
@@ -17528,20 +17179,27 @@ If you specify the filter parameter, the user group that meets the conditions in
 **Sample request**
 
 ```bash
-curl {BaseUrl}/Groups<?parameters> --header 'Authorization: Bearer <BearerToken>' --hea
+curl {BaseUrl}/Groups<?parameters> --header 'Authorization: Bearer <BearerToken>' --hea der "content-type:application/scim+json" -X GET
 ```
 
 The following table describes the supported parameters.
 
+| Parameter | Description | Example |
+|---|---|---|
+| filter | Only the eq expressions of displayName, externalId, and id are supported. The filter parameter must be URL-encoded. | filter=displayName eq "demoDisplayName" filter=externalId eq "demoExternalId" filter=id eq "demoGroupId" |
+| startIndex | The page number. This parameter is optional. Default value: 1. | startIndex=1 |
+| count | The number of users per page. This parameter is optional. Default value: 20. A maximum of 100 entries can be returned per page. If the number of entries exceeds 100, only 100 entries are returned. | count=20 |
+
 **Sample response**
 
+elf-managed applications
+
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "startIndex": 1,
     "totalResults": 2,
     "itemsPerPage": 20,
     "Resources": [
-        {
             "displayName": "GroupName1",
             "id": "group_7xh7xxxxxxxxxxgvajbbowpe",
             "externalId": "externalId1",
@@ -17550,16 +17208,18 @@ HTTP/1.1 200 {
                 "created": "2025-03-07T10:03:21.784Z",
                 "lastModified": "2025-03-07T10:03:21.784Z",
                 "location": "{BaseUrl}/Groups/group_7xh7xxxxxxxxxxgvajbbowpe"
-            },
+```
+
+`},`
+
+```json
             "schemas": [
                 "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
+`]` `},`
 
 ```json
-        },
-        {
             "displayName": "GroupName2",
             "id": "group_bz7qhxxxxxxxxxle3hhxdha",
             "externalId": "externalId2",
@@ -17568,29 +17228,23 @@ HTTP/1.1 200 {
                 "created": "2025-03-06T06:35:46.009Z",
                 "lastModified": "2025-03-06T10:46:36.549Z",
                 "location": "{BaseUrl}/Groups/group_bz7qhxxxxxxxxxle3hhxdha"
-            },
+```
+
+`},`
+
+```json
             "schemas": [
                 "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`]` `],`
 
 ```json
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:ListResponse"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **PUT /Groups/{id}**
 
@@ -17598,7 +17252,7 @@ Replaces the information about a user group.
 
 **Limits**
 
-The id parameter is required. You can modify only the fields that are defined in the "/Schemas" section of this topic. A PUT request is used to overwrite the original attributes. You can replace the users in the user groups. You can specify up to 1,000 users. If the number of users exceeds 1,000, an error is reported. You can modify only the user groups that are synchronized to EIAM by using SCIM. You can replace only users that are synchronized to EIAM by using SCIM in the user groups. The information about the user group and all users are returned.
+The id parameter is required. You can modify only the fields that are defined in the "/Schemas" section of this topic. A PUT request is used to overwrite the original attributes. You can replace the users in the user groups. You can specify up to 1,000 users. If the number of users exceeds 1,000, an error is reported. elf-managed applications You can modify only the user groups that are synchronized to EIAM by using SCIM. You can replace only users that are synchronized to EIAM by using SCIM in the user groups. The information about the user group and all users are returned.
 
 **Sample request**
 
@@ -17609,15 +17263,12 @@ curl {BaseUrl}/Groups/<groupId> --header 'Authorization: Bearer <BearerToken>' -
 The following sample code provides an example of the data field:
 
 ```json
-{
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
-        {
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
-        }
 ```
 
 `],`
@@ -17627,24 +17278,18 @@ The following sample code provides an example of the data field:
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Sample response**
 
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
-        {
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
-        }
 ```
 
 `],`
@@ -17655,18 +17300,20 @@ HTTP/1.1 200 {
         "created": "2025-03-06T06:35:46.009Z",
         "lastModified": "2025-03-06T06:35:46.009Z",
         "location": "{BaseUrl}/Groups/group_bz7xxxxxxxxxx3hhxdha"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
+`]`
 
-```
-}
-```
+**PATCH /Groups/{id}**
 
-Updates the information about a user group.
+elf-managed applications Updates the information about a user group.
 
 **Limits**
 
@@ -17685,7 +17332,6 @@ The following sample code provides an example of the data field:
 **user group**
 
 ```json
-{
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 ```
@@ -17694,78 +17340,61 @@ The following sample code provides an example of the data field:
 
 ```json
     "Operations": [
-        {
             "op": "remove",
             "path": "members"
-        }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Example 2: Add users to or remove users from the user group**
 
+elf-managed applications
+
 ```json
-{
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
     "Operations": [
-        {
         "op": "remove",
         "path": "members",
         "value": [{
             "value": "user_dm57xxxxxxxxxxx5wzecz"
-        }]
-        {
+```
+
+`}]`
+
+```json
         "op": "add",
         "path": "members",
         "value": [{
             "value": "user_sdfqxxxxxxxxxxkzhw5wz"
-        }]
-    }
 ```
 
-]
-
-```
-}
-```
+`}]` `]`
 
 **Example 3: Replace users**
 
 ```json
-{
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
     "Operations": [
-        {
         "op": "replace",
         "path": "members",
         "value": [{
             "value": "user_dm57xxxxxxxxxxx5wzecz"
-        }]
-    }
 ```
 
-]
-
-```
-}
-```
+`}]` `]`
 
 **Sample response**
 
+elf-managed applications
+
 ```json
-HTTP/1.1 200 {
+HTTP/1.1 200
     "id": "<groupId>",
     "displayName": "<group name>",
     "externalId": "<external Id>",
     "members": [
-        {
             "value": "user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue",
             "$ref": "{BaseUrl}/Users/user_4pnblmv5oxxxxxxxxxxxxo7pcuxwue"
-        }
 ```
 
 `],`
@@ -17776,16 +17405,18 @@ HTTP/1.1 200 {
         "created": "2025-03-06T06:35:46.009Z",
         "lastModified": "2025-03-06T06:35:46.009Z",
         "location": "{BaseUrl}/Groups/group_bz7xxxxxxxxxx3hhxdha"
-    },
+```
+
+`},`
+
+```json
     "schemas": [
         "urn:ietf:params:scim:schemas:core:2.0:Group"
 ```
 
-]
+`]`
 
-```
-}
-```
+**DELETE /Groups/{id}**
 
 Deletes a user group.
 
@@ -17796,7 +17427,7 @@ The id parameter is required. If a user is added to the user group, the user is 
 **Sample request**
 
 ```bash
-curl {BaseUrl}/Groups/<groupId> --header 'Authorization: Bearer <BearerToken>' --header
+curl {BaseUrl}/Groups/<groupId> --header 'Authorization: Bearer <BearerToken>' --header "content-type:application/scim+json" -X DELETE
 ```
 
 **Sample response**
@@ -17805,18 +17436,17 @@ curl {BaseUrl}/Groups/<groupId> --header 'Authorization: Bearer <BearerToken>' -
 HTTP/1.1 204
 ```
 
-### Application development API
+### 4.3 Application development API reference
 
 **reference**
 
-| Category | Scenario | API operation | Permission (set on the IDaaS API tab) |
-|---|---|---|---|
-| Token | Obtain a token | Obtains a token: GenerateToken | - |
+elf-managed applications
 
-#### API operations for application
+#### 4.3.1 API operations for application development
 
 **development**
 
+1. . Overview**
 This topic describes the API operations related to organizations and accounts that are provided by Identity as a Service (IDaaS). You can manage IDaaS account and organization data by referring to this topic. IDaaS provides four categories of API operations:
 1. **API operation used to obtain a token** . All the other API operations are called based on
 the returned token.
@@ -17836,22 +17466,36 @@ Note: Unlike Alibaba Cloud API operations, the Developer API operations provided
 
 **Sample code and debugging**
 
-Use the Apache HttpClient toolkit to call API operations. For a list of API operations, see List of API operations by function. The following table describes some API operations. For more information, see List of API operations by function.
+Use the Apache HttpClient toolkit to call API operations. For a list of API operations, see List of API operations by function.
+
+**API operations**
+
+The following table describes some API operations. For more information, see List of API operations by function.
+
+| Category | Scenario | API operation | Permission (set on the IDaaS API tab) |
+|---|---|---|---|
+| Token | Obtain a token | Obtains a token: GenerateToken | - |
+
+elf-managed applications
 
 | Account | Manage accounts | Creates an account: CreateUser Updates an account: PatchUser Deletes an account: DeleteUser Enables an account: EnableUser Disables an account: DisableUser | urn:alibaba:idaas :scope:user:man ager all _ |
 |---|---|---|---|
-|  | Query accounts | Queries account information: GetUser Queries accounts: ListUsers Queries a password policy: GetUserPasswordPolicy | urn:alibaba:idaas :scope:user:read _ all |
+|   | Query accounts | Queries account information: GetUser Queries accounts: ListUsers Queries a password policy: GetUserPasswordPolicy | urn:alibaba:idaas :scope:user:read _ all |
 | Organization | Manage organizations | Creates an organization: CreateOrganizationalUnit Modifies organization information: PatchOrganizationalUnit Deletes an organization: DeleteOrganizationalUnit | urn:alibaba:idaas :scope:organizati onal unit:manag _ er all _ |
-|  | Query organizations | Queries organization information: GetOrganizationalUnit Queries organizations: ListOrganizationalUnits Queries parent IDs of an organization: ListOrganizationalUnitParentIds | urn:alibaba:idaas :scope:organizati onal unit:read all _ _ |
+|   | Query organizations | Queries organization information: GetOrganizationalUnit Queries organizations: ListOrganizationalUnits Queries parent IDs of an organization: ListOrganizationalUnitParentIds | urn:alibaba:idaas :scope:organizati onal unit:read all _ _ |
 | Synchronizatio n scope | Query the synchronization scope | Queries the synchronization scope: GetApplicationProvisioningScope | - |
 
-### Open source code
+### 4.4 Open source code
 
 This topic describes the open source components, frameworks, and tools required or referenced during development on Identity as a Service (IDaaS) to help developers learn about the technologies behind IDaaS, the compliance requirements, and the potential limits of open source protocols.
 
 **Applicable scenarios**
 
-Enterprise applications must be integrated with IDaaS to implement identity authentication, Single Sign-On (SSO), or identity management. IDaaS provides integration examples open sourced for enterprise application developers. The following table describes some open source code repositories. Each repository has comprehensive instructions on configuration, use, and development.
+Enterprise applications must be integrated with IDaaS to implement identity authentication, Single Sign-On (SSO), or identity management.
+
+**Open source code repositories**
+
+IDaaS provides integration examples open sourced for enterprise application developers. The following table describes some open source code repositories. Each repository has comprehensive instructions on configuration, use, and development. elf-managed applications
 
 | Repository | Description | Link |
 |---|---|---|

@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Product Introduc
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 10
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Product Introduction 20260828.pdf"
+source_pdf: "e32cd51c4010d822_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Product Introduction 20260828
 
-## Express Connect
+## Table of Contents
+
+- 1 Express Connect
+  - 1.1 What is Express Connect?
+  - 1.2 Benefits
+  - 1.3 Use cases
+  - 1.4 Features
+
+## 1 Express Connect
 
 Express Connect allows you to establish private connections to enable fast, stable, and secure communication between different network environments. You can use Express Connect to ensure network stability and prevent data breaches.
 
-### What is Express Connect?
+### 1.1 What is Express Connect?
 
 Apsara Stack Express Connect allows you to establish private, flexible, stable, and secure connections between virtual private clouds (VPCs). Network traffic does not traverse the Internet, which prevents data breaches and ensures network stability. Express Connect allows you to connect VPCs within the same region and account. You can also connect VPCs across different regions and accounts.
 
@@ -34,7 +42,7 @@ A VPC is a logically isolated network. Network traffic between VPCs or between V
 |---|---|---|
 | Security | Network traffic is transferred over the Internet. Therefore, data breaches may occur. | Networks are virtualized on Apsara Stack and isolated from each other to ensure high security. |
 
-### Benefits
+### 1.2 Benefits
 
 A virtual private cloud (VPC) is a logically isolated network. Network traffic between VPCs is transferred through separate connections. Compared with Internet connections, Express Connect offers higher performance and security for communication between VPCs. The following table describes the differences.
 
@@ -44,7 +52,7 @@ A virtual private cloud (VPC) is a logically isolated network. Network traffic b
 | Costs | You are charged a high Internet bandwidth fee or data transfer fee. | The cost for cross-region communication is minimized. You are not charged for connecting VPCs that belong to the same region. |
 | Security | Network traffic is transferred over the Internet. Therefore, data breaches may occur. | Networks are virtualized on Apsara Stack and isolated from each other to ensure high security. |
 
-### Use cases
+### 1.3 Use cases
 
 Express Connect is ideal for establishing reliable, secure, and high-speed private communication between an on-premises data center and cloud VPCs. Express Connect provides various cloud connectivity services, allowing you to choose the best option for your business scenario and easily build a hybrid network across different architectures.
 
@@ -67,7 +75,7 @@ When rapid business growth exceeds the capacity of your on-premises data center,
 
 For non-critical workloads that do not require high elasticity or high availability, such as cloud-based development and testing environments, use Express Connect to establish a direct private connection between your on-premises data center and cloud networks. This topology ensures secure and reliable hybrid cloud communication. Express Connect Redis VPC 192.168.0.0/16 OSS ECS Physical Border Router Connection On-premises TR Gateway On-premises IDC 172.16.0.0/12 Border Router Redis Access Point VPC 192.168.1.0/16
 
-### Features
+### 1.4 Features
 
 Alibaba Cloud Express Connect lets you establish high-speed, stable, and secure private connections between different network environments. Use a physical connection to connect your on-premises IDC to a Virtual Private Cloud (VPC).
 

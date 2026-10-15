@@ -3,20 +3,253 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 406
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide 20220915.pdf"
+source_pdf: "03d0d6ca55dd25dd_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Realtime%20Compute%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Realtime Compute Developer Guide
 
+## Table of Contents
+
+- 1 ASAPI Developer Guide
+  - 1.1 Preparations
+    - 1.1.1 Log on to the API Tool console
+    - 1.1.2 View information about API operations
+    - 1.1.3 Obtain an AccessKey pair
+    - 1.1.4 Obtain common header parameters
+    - 1.1.5 Obtain an STS AccessKey pair
+  - 1.2 Use POP to make API calls
+    - 1.2.1 Preparations
+    - 1.2.2 SDK for Java
+    - 1.2.3 SDK for Go
+    - 1.2.4 SDK for Python
+  - 1.3 Use ASAPI to make API calls
+    - 1.3.1 ASAPI overview
+    - 1.3.2 Generate an endpoint for ASAPI
+    - 1.3.3 Obtain Apsara Stack SDKs
+    - 1.3.4 Common request parameters
+    - 1.3.5 SDK description
+      - 1.3.5.1 SDK for Java
+      - 1.3.5.2 SDK for Python
+      - 1.3.5.3 SDK for Node.js
+    - 1.3.6 HTTP requests
+      - 1.3.6.1 Overview
+      - 1.3.6.2 Request structure
+      - 1.3.6.3 Request signatures
+      - 1.3.6.4 Responses
+- 2 Flink SQL
+  - 2.1 Overview
+  - 2.2 Keywords
+  - 2.3 Basic concepts
+    - 2.3.1 Time attributes
+    - 2.3.2 Watermark
+    - 2.3.3 Computed column
+  - 2.4 Data types
+    - 2.4.1 Data types
+    - 2.4.2 Data types and operators
+  - 2.5 DDL statements
+    - 2.5.1 Overview
+    - 2.5.2 Create a data source table
+      - 2.5.2.1 Overview
+      - 2.5.2.2 Create a DataHub source table
+      - 2.5.2.3 Create a Message Queue for Apache Kafka source table
+      - 2.5.2.4 Create an Oracle database source table
+      - 2.5.2.5 Create a Log Service source table
+      - 2.5.2.6 Create a full MaxCompute source table
+      - 2.5.2.7 Create a Message Queue for Apache RocketMQ source table
+      - 2.5.2.8 Create a Tablestore source table
+      - 2.5.2.9 Create a Hologres source table
+      - 2.5.2.10 Create an incremental MaxCompute source table
+    - 2.5.3 Create a data result table
+      - 2.5.3.1 Overview
+      - 2.5.3.2 Create a DataHub result table
+      - 2.5.3.3 Create a Message Queue for Apache RocketMQ result table
+      - 2.5.3.4 Create an ApsaraDB RDS result table
+      - 2.5.3.5 Create a TSDB result table
+      - 2.5.3.6 Create an KVStore for Redis result table
+      - 2.5.3.7 Create an AnalyticDB for MySQL V2.0 result table
+      - 2.5.3.8 Create an AnalyticDB for MySQL V3.0 result table
+      - 2.5.3.9 Create a Log Service result table
+      - 2.5.3.10 Create a Tablestore result table
+      - 2.5.3.11 Create a MaxCompute result table
+      - 2.5.3.12 Create an Elasticsearch result table
+      - 2.5.3.13 Create a Message Queue for Apache Kafka result table
+      - 2.5.3.14 Create an ApsaraDB RDS for SQL Server result table
+      - 2.5.3.15 Create an ApsaraDB for MongoDB result table
+      - 2.5.3.16 Create an Oracle database result table
+      - 2.5.3.17 Create an InfluxDB result table
+      - 2.5.3.18 Create a Phoenix5 result table
+      - 2.5.3.19 Create a Hologres result table
+      - 2.5.3.20 Create an AnalyticDB for PostgreSQL result table
+      - 2.5.3.21 Create an ApsaraDB for HBase result table
+    - 2.5.4 Create a data dimension table
+      - 2.5.4.1 Overview
+      - 2.5.4.2 Create a Tablestore dimension table
+      - 2.5.4.3 Create an ApsaraDB for HBase dimension table
+      - 2.5.4.4 Create a KVStore for Redis dimension table
+      - 2.5.4.5 Create an ApsaraDB RDS for MySQL dimension table
+      - 2.5.4.6 Create a MaxCompute dimension table
+      - 2.5.4.7 Create an AnalyticDB for MySQL V3.0 dimension table
+      - 2.5.4.8 Create a Hologres dimension table
+      - 2.5.4.9 Create a Phoenix5 dimension table
+      - 2.5.4.10 Create an Elasticsearch dimension table
+  - 2.6 DML statements
+    - 2.6.1 INSERT INTO statement
+  - 2.7 Query statements
+    - 2.7.1 SELECT statements
+    - 2.7.2 WHERE
+    - 2.7.3 HAVING
+    - 2.7.4 GROUP BY
+    - 2.7.5 JOIN statements
+    - 2.7.6 JOIN statements for dimension tables
+    - 2.7.7 UNION ALL
+    - 2.7.8 TopN
+    - 2.7.9 CEP statements
+  - 2.8 Create a view
+  - 2.9 Window functions
+    - 2.9.1 Overview
+    - 2.9.2 Tumbling window
+    - 2.9.3 Sliding windows
+    - 2.9.4 Session window
+    - 2.9.5 OVER window
+  - 2.10 Logical operations
+    - 2.10.7 AND
+    - 2.10.8 BETWEEN AND
+    - 2.10.9 IS NOT FALSE
+    - 2.10.10 IS NOT NULL
+    - 2.10.11 IS NOT TRUE
+    - 2.10.12 IS NOT UNKNOWN
+    - 2.10.13 IS NULL
+    - 2.10.14 IS TRUE
+    - 2.10.15 IS UNKNOWN
+    - 2.10.16 LIKE
+    - 2.10.17 NOT
+    - 2.10.18 NOT BETWEEN AND
+    - 2.10.21 NOT IN
+    - 2.10.22 IS DISTINCT FROM
+    - 2.10.23 IS NOT DISTINCT FROM
+  - 2.11 Built-in functions
+    - 2.11.1 String functions
+      - 2.11.1.1 Overview
+      - 2.11.1.2 CHAR_LENGTH
+      - 2.11.1.3 CHR
+      - 2.11.1.4 CONCAT
+      - 2.11.1.5 CONCAT_WS
+      - 2.11.1.6 FROM_BASE64
+      - 2.11.1.7 HASH_CODE
+      - 2.11.1.8 INITCAP
+      - 2.11.1.9 JSON_VALUE
+      - 2.11.1.10 KEYVALUE
+      - 2.11.1.11 LOWER
+      - 2.11.1.12 LPAD
+      - 2.11.1.14 OVERLAY
+      - 2.11.1.15 PARSE_URL
+      - 2.11.1.16 POSITION
+      - 2.11.1.17 REGEXP
+      - 2.11.1.18 REGEXP_EXTRACT
+      - 2.11.1.19 REGEXP_REPLACE
+      - 2.11.1.20 REPEAT
+      - 2.11.1.21 REVERSE
+      - 2.11.1.22 RPAD
+      - 2.11.1.23 SPLIT_INDEX
+      - 2.11.1.24 STR_TO_MAP
+      - 2.11.1.25 SUBSTRING
+      - 2.11.1.26 TO_BASE64
+      - 2.11.1.27 TRIM
+      - 2.11.1.28 UPPER
+    - 2.11.2 Mathematical unctions
+      - 2.11.2.1 Addition
+      - 2.11.2.2 Subtraction
+      - 2.11.2.3 Multiplication
+      - 2.11.2.4 Division
+      - 2.11.2.5 ABS
+      - 2.11.2.6 ACOS
+      - 2.11.2.7 BIN
+      - 2.11.2.8 ASIN
+      - 2.11.2.9 ATAN
+      - 2.11.2.10 BITAND
+      - 2.11.2.11 BITNOT
+      - 2.11.2.12 BITOR
+      - 2.11.2.13 BITXOR
+      - 2.11.2.14 CARDINALITY
+      - 2.11.2.15 COS
+      - 2.11.2.16 COT
+      - 2.11.2.18 EXP
+      - 2.11.2.19 FLOOR
+      - 2.11.2.21 LOG
+      - 2.11.2.22 LOG10
+      - 2.11.2.23 LOG2
+      - 2.11.2.25 POWER
+      - 2.11.2.26 RAND
+      - 2.11.2.27 SIN
+      - 2.11.2.28 SQRT
+      - 2.11.2.29 TAN
+      - 2.11.2.30 CEIL
+      - 2.11.2.31 CHARACTER_LENGTH
+      - 2.11.2.32 DEGREES
+      - 2.11.2.33 MOD
+      - 2.11.2.34 ROUND
+    - 2.11.3 Date functions
+      - 2.11.3.1 CURRENT_TIMESTAMP
+      - 2.11.3.2 DATEDIFF
+      - 2.11.3.3 DATE_ADD
+      - 2.11.3.4 DATE_FORMAT
+      - 2.11.3.5 DATE_SUB
+      - 2.11.3.6 DAYOFMONTH
+      - 2.11.3.7 FROM_UNIXTIME
+      - 2.11.3.8 HOUR
+      - 2.11.3.9 LOCALTIME
+      - 2.11.3.10 MINUTE
+      - 2.11.3.11 MONTH
+      - 2.11.3.12 NOW
+      - 2.11.3.13 SECOND
+      - 2.11.3.14 TIMESTAMPADD
+      - 2.11.3.15 TO_DATE
+      - 2.11.3.16 TO_TIMESTAMP
+      - 2.11.3.17 UNIX_TIMESTAMP
+      - 2.11.3.18 WEEK
+      - 2.11.3.19 YEAR
+    - 2.11.4 Conditional functions
+      - 2.11.4.1 CASE WHEN
+      - 2.11.4.2 COALESCE
+      - 2.11.4.4 IS_ALPHA
+      - 2.11.4.5 IS_DECIMAL
+      - 2.11.4.6 IS_DIGIT
+      - 2.11.4.7 NULLIF
+    - 2.11.5 Table-valued functions
+      - 2.11.5.1 GENERATE_SERIES
+      - 2.11.5.2 JSON_TUPLE
+      - 2.11.5.3 STRING_SPLIT
+    - 2.11.6 Type conversion functions
+      - 2.11.6.1 CAST
+    - 2.11.7 Aggregate functions
+      - 2.11.7.1 AVG
+      - 2.11.7.2 CONCAT_AGG
+      - 2.11.7.3 COUNT
+      - 2.11.7.4 FIRST_VALUE
+      - 2.11.7.5 LAST_VALUE
+      - 2.11.7.6 MAX
+      - 2.11.7.7 MIN
+      - 2.11.7.8 STDDEV_POP
+      - 2.11.7.9 SUM
+      - 2.11.7.10 VAR_POP
+    - 2.11.8 Other functions
+      - 2.11.8.1 UUID
+  - 2.12 UDXs
+    - 2.12.1 Overview
+    - 2.12.2 UDF
+    - 2.12.3 UDAF
+    - 2.12.4 UDTF
+    - 2.12.5 Develop a UDX by using IntelliJ IDEA
+
 uide
 
-## ASAPI Developer Guide
+## 1 ASAPI Developer Guide
 
-### Preparations
+### 1.1 Preparations
 
-#### Log on to the API Tool console
+#### 1.1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -28,7 +261,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide. uide
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-#### View information about API operations
+#### 1.1.2 View information about API operations
 
 This topic describes how to view information about API operations. Before you use SDKs, obtain service names, API operation names, and API operation versions. Context The API operations on the API Directory page are only for reference. For information about how to call API operations, see developer guides of the corresponding cloud services. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
 1. Go to the API Tool console. For more information, see Log on to the API Tool console.
@@ -37,7 +270,7 @@ This topic describes how to view information about API operations. Before you us
 an API operation name in the search box, and then click the search icon.
 4. Then, you can view the service name, API operation name, and API operation version.
 
-#### Obtain an AccessKey pair
+#### 1.1.3 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair. Prerequisites An account that assumes the operations administrator or level-1 organization administrator role is obtained. Only an operations administrator or a level-1 organization administrator can obtain an AccessKey pair of the organization. Context AccessKey supports the following authorization methods: Use RAM to authorize the AccessKey ID and AccessKey secret to third-party requesters. uide Use STS to authorize the AccessKey ID, AccessKey secret, and security token to third-party requesters. This topic describes how to obtain an AccessKey pair authorized by RAM. For more information about how to obtain an AccessKey pair authorized by STS, see Obtain an STS AccessKey pair. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur.
 
@@ -62,7 +295,7 @@ to obtain AccessKey pairs.
 5. Click Management AccessKey on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-#### Obtain common header parameters
+#### 1.1.4 Obtain common header parameters
 
 You must provide multiple header parameters when you call API operations. This topic describes how to obtain common header parameters. Some response parameters are also explained. Query a region ID
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
@@ -85,7 +318,7 @@ Response parameters The following response parameter are returned by default whe
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-#### Obtain an STS AccessKey pair
+#### 1.1.5 Obtain an STS AccessKey pair
 
 This topic describes how to use STS to make API calls. Background information Alibaba Cloud Security Token Service (STS) allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. Procedure
 1. Obtain the `RAM role` .
@@ -158,9 +391,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
 
 `}`
 
-### Use POP to make API calls
+### 1.2 Use POP to make API calls
 
-#### Preparations
+#### 1.2.1 Preparations
 
 Like in the public cloud, you can use the POP gateway to call API operations in Apsara Stack. This topic describes the preparations before you use the POP gateway to call API operations. Background information In Apsara Stack, you can use both ASAPI and POP gateways to call API operations. To use the same method and produce the same user experience as in the public cloud, we recommend that you use the POP gateway to call API operations in Apsara Stack. Obtain service endpoints To use the POP gateway to call API operations, you must use the service endpoints. You can obtain the service endpoints from Alibaba Cloud onsite O&M engineers. You can also obtain the service endpoints by yourself. The following example describes how to obtain the ECS endpoints. uide
 1. Log on to Apsara Infrastructure Management Framework.
@@ -172,7 +405,7 @@ icon next to Service and search for `ECS` .
 5. Find the `ecs-yaochi` service, right-click the Service Regist rat ion column, and then select Show
 More from the shortcut menu. On the Det ails page, view the int ernal.openapi.endpoint value, which is the `endpoint` . Obtain common parameters You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain common header parameters.
 
-#### SDK for Java
+#### 1.2.2 SDK for Java
 
 Before you use POP SDK for Java to make API calls, you must first understand the RPC and ROA styles. Prerequisites An Alibaba Cloud SDK package is downloaded for the service that you want to access. The required dependencies are installed. SSL certificate validation is ignored for requests over HTTPS. Call examples uide The following sample code provides an example on how to use the RPC style to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
@@ -304,7 +537,7 @@ service resides.
 
 `}` `}` `}` uide Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
-#### SDK for Go
+#### 1.2.3 SDK for Go
 
 This topic describes how to use POP SDK for Go. Prerequisites An Alibaba Cloud SDK package is downloaded for the service that you want to access. The required dependencies are installed. Background information Both RPC and ROA styles are supported for API calls. Call examples The following sample code provides an example on how to use the RPC style to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code: uide
 
@@ -421,7 +654,7 @@ t variable.
 // The proxies that are configured on the client take precedence over those that are conf igured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
-#### SDK for Python
+#### 1.2.4 SDK for Python
 
 This topic describes how to use POP SDK for Python. Prerequisites An Alibaba Cloud SDK package is downloaded for the service that you want to access. The required dependencies are installed. Background information Only the remote procedure call (RPC) style is supported for API calls. Call examples The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05- 26. Sample code:
 
@@ -498,13 +731,13 @@ os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 ```
 
-### Use ASAPI to make API calls
+### 1.3 Use ASAPI to make API calls
 
-#### ASAPI overview
+#### 1.3.1 ASAPI overview
 
 This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage uide organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
 
-#### Generate an endpoint for ASAPI
+#### 1.3.2 Generate an endpoint for ASAPI
 
 This topic describes three methods used to generate an endpoint for Apsara Stack API (ASAPI). Method 1: Use Registration Vars of Services to generate an endpoint
 1. Log on to Apsara Infrastructure Management Framework.
@@ -551,11 +784,11 @@ root domain, contact Apsara Stack O&M personnel. Take note of this point: Use th
 https://public.asapi.cn-****-****-d01.inter.****.****.com/asapi/v3
 ```
 
-#### Obtain Apsara Stack SDKs
+#### 1.3.3 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use the ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. You can go to Apsara Stack documentation and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page.
 
-#### Common request parameters
+#### 1.3.4 Common request parameters
 
 Common request parameters must be included in all API requests. Sample common parameters uide The following table describes the common parameters that are used when you call API operations supported by Apsara Stack API (ASAPI).
 
@@ -586,9 +819,9 @@ The Signature , SignatureMethod , SignatureVersion , SignatureNonce , Timestamp 
 
 and `Format` parameters are encapsulated into Apsara Stack SDK. You do not need to configure these parameters.
 
-#### SDK description
+#### 1.3.5 SDK description
 
-##### SDK for Java
+##### 1.3.5.1 SDK for Java
 
 This topic describes how to obtain and use Apsara Stack SDK for Java to call API operations. Prerequisites An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of the ASAPI is obtained. For more information, see Generate an endpoint for ASAPI. uide Apsara Stack SDK for Java 1.8 or later is installed. Background information The help center of Apsara Stack provides Maven dependencies and JAR files for Apsara Stack SDK for Java. You can write code to use Apsara Stack SDK for Java to call API operations. In this example, the Windows 10 64-bit OS and IntelliJ IDEA are used. Procedure
 1. Use one of the following methods to configure Maven in IntelliJ IDEA. Maven is a tool used for
@@ -654,7 +887,7 @@ Header parameters
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. |
 | x-acs-inst anceid | The ID of the instance to which you make API calls. |
 
-##### SDK for Python
+##### 1.3.5.2 SDK for Python
 
 This topic describes how to obtain and use Apsara Stack SDK for Python to call API operations. Preparations An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. The endpoint of ASAPI is obtained. For more information, see Generate an endpoint for ASAPI. Install Apsara Stack SDK for Python
 1. Download the required version of Apsara Stack SDK for Python. For more information, see Obtain
@@ -729,7 +962,7 @@ import os
 os.environ['http_proxy'] = "http://x.x.x.x:xxxx" os.environ['https_proxy'] = "https://x.x.x.x:xxxx"
 ```
 
-##### SDK for Node.js
+##### 1.3.5.3 SDK for Node.js
 
 This topic describes how to obtain and use Apsara Stack SDK for Node.js to call API operations. Preparations An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. The endpoint of Apsara Stack API (ASAPI) is obtained. For more information, see Generate an endpoint for the ASAPI. For more information about how to obtain the region ID, see Obtain the endpoint of ASAPI. Add dependencies Run the following command to install Apsara Stack SDK for Node.js:
 
@@ -803,13 +1036,13 @@ Request headers
 | x-acs-roleid | The ID of the role. |
 | x-acs-userid | The ID of the user. |
 
-#### HTTP requests
+#### 1.3.6 HTTP requests
 
-##### Overview
+##### 1.3.6.1 Overview
 
 This topic describes how to make API requests and is intended for users who use API URLs to initiate HTTP GET requests. If you are using an SDK to initiate requests, you can skip this topic. The request URL consists of different parameters and has a fixed syntax. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded to make them easy to read. Before you make a request, you must encode the request URL. After the authentication process is complete based on your signature, the results are returned to you. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message.
 
-##### Request structure
+##### 1.3.6.2 Request structure
 
 You can use API URLs to initiate HTTP GET requests. Each URL must include request parameters. This topic describes the syntax of HTTP GET requests and provides the endpoint of ASAPI. uide Sample request GetOrganizationList is used in the following unencoded URL request:
 
@@ -819,7 +1052,7 @@ https://public.asapi.aliyuns.com/asapi/v3?Action=GetOrganizationList&Product=asc
 
 `https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation. `Id` : the ID of the organization. `<Common request parameters>` : common parameters specified in the system. Protocols ASAPI supports only the HTTP request protocol. Endpoints For more information about how to obtain the endpoint of ASAPI, see Generate an endpoint for ASAPI. You must use the `Action, Product, and Version` parameters to specify an API operation. For example, you can set `Action to GetOrganizationList, Product to ascm, and Version to 2019-05-10` . You must also specify other operation-specific request parameters and common request parameters. For more information, see Common request parameters.
 
-##### Request signatures
+##### 1.3.6.3 Request signatures
 
 This topic describes how to sign HTTP API requests. ASAPI uses the request signature to verify the identity of the request sender. ASAPI implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret, which are issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must keep your AccessKey secret confidential. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain the core package for ASAPI. Step 1: Create a canonicalized query string uide
 1. Arrange the request parameters in alphabetical order, including all common and operation-specific
@@ -944,7 +1177,7 @@ https://public.asapi.aliyuns.com/asapi/v3/?AccessKeyId=testid&Action=GetOrganiza
 uide
 5. Use browsers or tools such as cURL and Wget to initiate an HTTP request.
 
-##### Responses
+##### 1.3.6.4 Responses
 
 Responses are returned only in the JSON format. If a return code is greater than or equal to 200 and less than 300, a success response is returned. Otherwise, an error response is returned. Sample success responses If a request is successful, the request ID and operation-specific parameter values are returned. For more information, see the developer guide of the corresponding Apsara Stack service.
 
@@ -1006,13 +1239,13 @@ Responses are returned only in the JSON format. If a return code is greater than
 
 `}`
 
-## Flink SQL
+## 2 Flink SQL
 
-### Overview
+### 2.1 Overview
 
 As a programming language that conforms to standard SQL semantics, Flink SQL is designed to simplify the computational model, making it easy for users to use Realtime Compute. Flink SQL has the following advantages: Low development cost. Flink SQL enables you to implement complex and varied business logic by using simple SQL statements instead of thousands of lines of Apache Storm code. Low maintenance cost. Flink SQL eliminates the need for you to maintain thousands of lines of Storm code. When you use Apache Storm code, system exceptions, errors, or even breakdown may occur and cause data inaccuracies. Flink SQL features specified semantics to resolve the preceding issues. Realtime Compute has the following advantages: Data accuracy. Realtime Compute provides unique exactly-once semantics to ensure data accuracy in various failover scenarios. Performance optimization. Realtime Compute integrates SQL optimization logic to translate SQL code into underlying Apache Storm code that can be used by universal developers. This helps to improve SQL code compilation efficiency. Programming extensibility. Realtime Compute supports user-defined functions (UDFs). You can customize functions to implement a custom business logic or a logic that cannot be achieved by SQL statements. System scalability. Realtime Compute supports auto scaling upon data surges (for example, during the Double 11) while ensuring job and system stability.
 
-### Keywords
+### 2.2 Keywords
 
 This topic describes the keywords in Realtime Compute. Realtime Compute keywords Common keywords
 
@@ -1039,9 +1272,9 @@ ANY, ARE, ARRAY, AS, ASC, ASENSITIVE, ASSERTION, ASSIGNMENT, ASYMMETRIC, AT, ATO
 SCHEMA_NAME, SCOPE, SCOPE_CATALOGS, SCOPE_NAME, SCOPE_SCHEMA, SCROLL, SEARCH, SECOND, SECTION, SECURITY, SELECT, SELF, SENSITIVE, SEQUENCE, SERIALIZABLE, SERVER, SERVER_NAME, SESSION, SESSION_USER, SET, SETS, SIMILAR, SIMPLE, SIZE, SMALLINT, SOME, SOURCE, SPACE, SPECIFIC, SPECIFICTYPE, SPECIFIC_NAME, SQL, SQLEXCEPTION, SQLSTATE, SQLWARNING, SQL_TSI_DAY, SQL_TSI_FRAC_SECOND, SQL_TSI_HOUR, SQL_TSI_MICROSECOND, SQL_TSI_MINUTE, SQL_TSI_MONTH, SQL_TSI_QUARTER, SQL_TSI_SECOND, SQL_TSI_WEEK, SQL_TSI_YEAR, SQRT, START, STATE, STATEMENT, STATIC, STDDEV_POP, STDDEV_SAMP, STREAM, STRUCTURE, STYLE, SUBCLASS_ORIGIN, SUBMULTISET, SUBSTITUTE, SUBSTRING, SUM, SYMMETRIC, SYSTEM, SYSTEM_USER, TABLE, TABLESAMPLE, TABLE_NAME, TEMPORARY, THEN, TIES, TIME, TIMESTAMP, TIMESTAMPADD, TIMESTAMPDIFF, TIMEZONE_HOUR, TIMEZONE_MINUTE, TINYINT, TO, TOP_LEVEL_COUNT, TRAILING, TRANSACTION, TRANSACTIONS_ACTIVE, TRANSACTIONS_COMMITTED, TRANSACTIONS_ROLLED_BACK, TRANSFORM, TRANSFORMS, TRANSLATE, TRANSLATION, TREAT, TRIGGER, TRIGGER_CATALOG, TRIGGER_NAME, TRIGGER_SCHEMA, TRIM, TRUE, TYPE, UESCAPE, UNBOUNDED, UNCOMMITTED, UNDER, UNION, UNIQUE, UNKNOWN, UNNAMED, UNNEST, UPDATE, UPPER, UPSERT, USAGE, USER, USER_DEFINED_TYPE_CATALOG, USER_DEFINED_TYPE_CODE, USER_DEFINED_TYPE_NAME, USER_DEFINED_TYPE_SCHEMA, USING, VALUE, VALUES, VARBINARY, VARCHAR, VARYING, VAR_POP, VAR_SAMP, VERSION, VIEW, WEEK, WHEN, WHENEVER, WHERE, WIDTH_BUCKET, WINDOW, WITH, WITHIN, WITHOUT, WORK, WRAPPER, WRITE, XML, YEAR, ZONE
 ```
 
-### Basic concepts
+### 2.3 Basic concepts
 
-#### Time attributes
+#### 2.3.1 Time attributes
 
 This topic describes the following time attributes that are supported by Blink SQL: event time and processing time. Apache Flink supports three time attributes for the processing of streaming data: processing time, event time, and ingestion time. Blink SQL supports only two of the three time attributes: Event time: the event time that you provide in the data store. In most cases, the event time is the original time when the data is created. Processing time: the local system time when the system processes an event. The unit is milliseconds. Event Time The event time is also known as rowtime. The event time attribute must be declared in the data definition language (DDL) statement that you execute to create a source table. You can declare a field in the source table as the rowtime field. Note that you can declare a field of only the TIMESTAMP type as the rowtime field. In the future, you can declare a field of the LONG type as the rowtime field. If the source table does not contain a TIMESTAMP column, you can use a computed column to create a TIMESTAMP column based on an existing column. For more information, see Computed column. In some scenarios, the order in which data records are received may be different from the order in which they are processed. The possible causes include out-of-order input data and network jitters. The network jitters may be caused by network congestions and transmission latencies. Before you define a rowtime field, define a computing method for watermarks in an explicit way. For more information, see Watermark. In the following example, data is aggregated by using event time-based window functions:
 
@@ -1150,7 +1383,7 @@ GROUP
 over a time attribute column.
 ```
 
-#### Watermark
+#### 2.3.2 Watermark
 
 Realtime Compute for Apache Flink aggregates data by using window functions based on the time attribute. To use window functions based on the event time of a job, you must define a watermark when you declare a source table. A watermark is used to measure the progress of Event Time. It is a hidden data attribute. A watermark is defined in the DDL statement of the source table. Flink provides the following statement to define a watermark:
 
@@ -1183,7 +1416,7 @@ WATERMARK FOR rowtime AS withOffset(rowtime, 4000)
 
 In this example, the watermark time of the data record is `1501750584000 - 4000 = 1501750580000` `(2017-08-03 08:56:20.000)` . This means that all data whose timestamp is earlier than `1501750580000` `(2017-08-03 08:56:20.000)` has arrived. Not e If you use an event time-based watermark, the `rowtime` field must be of the TIMESTAMP type. Realtime Compute for Apache Flink supports 13-digit UNIX timestamps in milliseconds. If the rowtime field is of another type or the UNIX timestamp is not 13 digits in length, we recommend that you use a computed column to convert the time. For more information, see Computed column. The event time and processing time can only be declared in the source table. For more information, see Event Time and Processing Time. Summary A watermark indicates that all the events whose timestamp t' is earlier than the watermark time t ( `t` `'< t` ) have occurred. After the watermark time `t` takes effect, all subsequently received data records whose event time is earlier than `t` are discarded. Realtime Compute for Apache Flink will allow you to change the configuration and update the subsequent data. Watermarks are important for data streams that arrive out of order because the watermarks help ensure that the computing in a window is correct even if some events arrive late. If an operator has multiple input data streams for parallel processing, the event time of the data stream with the shortest time is used as the event time of the operator.
 
-#### Computed column
+#### 2.3.3 Computed column
 
 You can calculate a value for a computed column by using data from other columns. If your source table does not have a column of the TIMESTAMP type, you can use a computed column to convert a field of another type to the TIMESTAMP type. Concept A computed column is a virtual column that is not stored in a physical table. You can create computed columns by using expressions, built-in functions, or user-defined extensions (UDXs). In Flink SQL, a computed column can be used the same as columns that are stored in a physical table. Usage Currently, the event time (also known as rowtime) column in a Watermark must be of the TIMESTAMP type. The LONG data type will be supported in the future. You can only define a watermark in the DDL statement of a source table. If a source table does not have a column of the TIMESTAMP type, you can use a computed column to convert a field of another type to the TIMESTAMP type. Syntax
 
@@ -1208,9 +1441,9 @@ CREATE TABLE test_stream(
 
 ); The `TIME` field in the source table contains the date and time information. The value of this field is of the BIGINT type. A computed column is created to convert the `TIME` column of the BIGINT type to the `ts` column of the TIMESTAMP type. The `ts` column is used as the rowtime of a watermark.
 
-### Data types
+### 2.4 Data types
 
-#### Data types
+#### 2.4.1 Data types
 
 This topic describes data types supported by Realtime Compute. Supported data types
 
@@ -1254,7 +1487,7 @@ Output example
 |---|---|
 | 1000 | 323 |
 
-#### Data types and operators
+#### 2.4.2 Data types and operators
 
 This topic describes data types and operators in Realtime Compute. You can perform mathematical and logical operations for different data types. Examples are provided in the following table.
 
@@ -1305,9 +1538,9 @@ This topic describes data types and operators in Realtime Compute. You can perfo
 |   |   |   |   |   |   | 'iphone' |   |
 |   |   |   |   |   | <> 5 |   |   |
 
-### DDL statements
+### 2.5 DDL statements
 
-#### Overview
+#### 2.5.1 Overview
 
 Syntax
 
@@ -1410,9 +1643,9 @@ INSERT INTO Table_A
     Table_B;
 ```
 
-#### Create a data source table
+#### 2.5.2 Create a data source table
 
-##### Overview
+##### 2.5.2.1 Overview
 
 Source tables for Realtime Compute store streaming data. Streaming data triggers stream processing jobs in Realtime Compute. To process streaming data, you must create at least one source table that provides streaming data for Realtime Compute jobs. Syntax
 
@@ -1524,7 +1757,7 @@ Test results
 
 Source tables for window function-based computing Realtime Compute can aggregate data by using window functions based on the event time or processing time. If window functions are used for a stream processing job, you must define the watermark and computed column in the DDL statement of a source table. For more information about the watermark and computed column, see Watermark and Computed column. For more information about data aggregation based on time attributes, see Time attributes.
 
-##### Create a DataHub source table
+##### 2.5.2.2 Create a DataHub source table
 
 This topic describes how to create a DataHub source table in Realtime Compute for Apache Flink. It also describes the attribute fields, parameters in the WITH clause, and data type mapping involved when you create a DataHub source table. Not ice This topic applies only to Blink 1.4.5 and later. Introduction to DataHub DataHub is a data distribution platform designed to process streaming data. You can publish and subscribe to applications for streaming data in DataHub and distribute the data to other platforms. DataHub allows you to analyze streaming data and build applications based on the streaming data. Realtime Compute for Apache Flink uses DataHub to store input and output data for the processing of streaming data. Syntax In Realtime Compute for Apache Flink, you can use DataHub to store input data. The following code shows an example:
 
@@ -1639,7 +1872,7 @@ CREATE TABLE datahub_test (
 
 ); Q: After a DataHub topic was split or scaled in, a Realtime Compute for Apache Flink job failed to run. How do I restore the job? A: Blink versions earlier than 2.2.0 do not support the DataHub shard scaling feature. If a topic that Realtime Compute for Apache Flink is reading is split or scaled in, the job fails and cannot be automatically restored. To restore the job, you must stop and restart it. Q: Can I delete a DataHub topic in use? A: No, you cannot delete or recreate DataHub topics that are being referenced in Realtime Compute for Apache Flink.
 
-##### Create a Message Queue for Apache Kafka
+##### 2.5.2.3 Create a Message Queue for Apache Kafka source table
 
 source table This topic describes how to create a Message Queue for Apache Kafka source table in Realtime Compute for Apache Flink. It also describes the mappings between the values of the type parameter and Kafka versions, and provides examples on how to parse messages of Message Queue for Apache Kafka. Not ice This topic applies only to Blink 2.0 and later. This topic applies only to Realtime Compute for Apache Flink that is deployed in exclusive mode. You can use Realtime Compute for Apache Flink to read data from a source table of a selfmanaged Kafka cluster. Before data is read, you must take note of the mappings between the values of the type parameter and Kafka versions, and the network configurations of the self-managed Kafka cluster and your Realtime Compute for Apache Flink cluster. You cannot perform local debugging on binary data. If the binary data passes the syntax check, you can perform online debugging on the binary data. For more information, see Online debugging. Introduction to Message Queue for Apache Kafka source tables Message Queue for Apache Kafka is a distributed, high-throughput, and scalable message queue service provided by Alibaba Cloud. Message Queue for Apache Kafka is widely used in big data scenarios, such as log collection, monitoring data aggregation, streaming data processing, and online and offline analysis. Realtime Compute for Apache Flink can use Message Queue for Apache Kafka tables as source tables or result tables to process streaming data. The output data of Message Queue for Apache Kafka is of the serialized VARBINARY type. For each data record obtained from a Message Queue for Apache Kafka source table, you must write a userdefined table-valued function (UDTF) to parse the data into a data structure before serialization. Realtime Compute for Apache Flink first extracts data from a Message Queue for Apache Kafka source table, writes a UDTF to parse the data, and then exports the result data to a sink. Flink SQL also allows you to use the CAST function to parse data of the VARBINARY type into data of the VARCHAR type. For more information about UDTFs, see UDTF. DDL syntax The DDL definition of a Message Queue for Apache Kafka source table must be the same as the DDL definition in the following SQL statement. You can modify the settings of the parameters in the WITH clause.
 
@@ -1843,7 +2076,7 @@ FROM
 FROM input_view;
 ```
 
-UDTF For more information about how to create a UDTF, see UDTF. The following example shows Maven dependencies of Blink 2.2.4.
+For more information about how to create a UDTF, see UDTF. The following example shows Maven dependencies of Blink 2.2.4.
 
 ```java
     <dependencies>
@@ -2075,8 +2308,6 @@ UDF&UDTF For more information about how to create UDFs and UDTFs, see UDF and UD
     </dependencies>
 ```
 
-UDTF
-
 ```java
 package com.alibaba; import com.alibaba.fastjson.JSONObject; import org.apache.flink.table.functions.TableFunction; import org.apache.flink.table.types.DataType; import org.apache.flink.table.types.DataTypes; import org.apache.flink.types.Row; import java.io.UnsupportedEncodingException; /**
   The following example shows how to parse the JSON strings in a Message Queue for
@@ -2126,7 +2357,7 @@ d specify the types of fields to be returned.
 pes.Integer, DataTypes.STRING,DataTypes.STRING);
 ```
 
-`}` `}` UDF
+`}` `}`
 
 ```java
 package com.alibaba; package com.hjc.test.blink.sql.udx; import org.apache.flink.table.functions.FunctionContext; import org.apache.flink.table.functions.ScalarFunction; public class KafkaUDF extends ScalarFunction {
@@ -2194,7 +2425,7 @@ blink.job.timeZone=Asia/Shanghai
 
 Q: What do I do if a self-managed Kafka cluster cannot consume data? A: Causes Each broker of the Kafka cluster sends its metadata to ZooKeeper. Then, the Kafka consumer accesses a broker to extract data by using the endpoint in listener_security_protocol_map in the metadata of the broker. The endpoint is either the IP address or the combination of the local server domain name and port number. If the machine where your Realtime Compute for Apache Flink job resides cannot access the endpoint, the consumer of the connector cannot extract data. As a result, the data consumption process stops. Troubleshooting a. View the endpoint in listener_security_protocol_map of the broker of ZooKeeper. b. Use the net work det ect ion feature to check whether you can access the IP address or domain name in the endpoint. c. Log on to your machine to confirm the cause. Solution If the endpoint is an IP address, check whether an IP address whitelist is configured for the Kafka server. If no whitelist is configured, configure a whitelist and try again. Exclusive clusters of Realtime Compute for Apache Flink cannot resolve domain names. If the endpoint is a domain name and a whitelist has been configured, use one of the following methods: If you cannot restart the Kafka service, perform the following operations: Purchase PrivateZone and configure domain name resolution for all Kafka brokers. After network detection based on the domain name succeeds, restart your Realtime Compute for Apache Flink job. If you can restart the Kafka service, perform the following operations: Configure the IP address and port number (in boostrap.servers in typical cases) for advertised.listeners for the related broker. Make sure that the network connection is normal. Then, restart your Realtime Compute for Apache Flink job. Q: Why does a job terminate immediately after it is started during the consumption of Kafka data? A: For versions earlier than Blink 3.3.0, if the startupMode parameter is set to TIMESTAMP and all the partitions of Kafka contain no data, the Kafka connector determines that no partition data can be consumed and terminates the job. You can view log information similar to `Consumer subtask {} ini` `tially has no partitions from which to read.` in the `TaskManager.log` log filethat corresponds to the job. We recommend that you upgrade the Blink version to 3.3.0 or later. Q: What are the features of the commit offset mechanism in Realtime Compute for Apache Flink? A: By default, Realtime Compute for Apache Flink uses commitOffsetOnCheckpointing. The commit offset policy configured by users does not take effect. If you enable checkpointing, Realtime Compute for Apache Flink commits the offset that is consumed at the current time to Kafka each time a checkpoint is generated. This way, data is consumed from the offset that is committed from the last checkpoint during job restoration. This ensures exactly-once processing of streaming data. If the checkpoint interval exceeds the specified upper limit, Kafka may fail to query the consumed offset.
 
-##### Create an Oracle database source table
+##### 2.5.2.4 Create an Oracle database source table
 
 This topic describes how to create an Oracle database source table. It also describes the parameters in the WITH clause, data type mapping, sample code, and FAQ involved when you create an Oracle database source table. Not ice This topic applies only to Blink 3.4.X and later. You can create Oracle database source tables only when you use Oracle 11g. You cannot change the number of concurrent jobs for an Oracle database source table. By default, only one job is allowed for a source table. Syntax In Realtime Compute for Apache Flink, you can use an Oracle database to store input data. The following code shows an example:
 
@@ -2302,7 +2533,7 @@ from oracle_source;
 
 FAQ Q: What do I do if no data is found? A: The data cannot be found because Blink is faulty. To check whether Blink is faulty, view the `Round` `start:[{}], end:[{}]` and `Round read records` logs on the TaskManager tab. If the logs do not contain data, Blink is faulty. Not e `Round start:[{}], end:[{}]` : displays the start time of the queried data. `Round read records` : displays the queried data records.
 
-##### Create a Log Service source table
+##### 2.5.2.5 Create a Log Service source table
 
 This topic describes how to create a Log Service source table in Realtime Compute for Apache Flink. This topic also describes the attribute fields, parameters in the WITH clause, and data type mappings used when you create a Log Service source table. Not ice This topic applies only to Blink 1.4.5 and later. What is Log Service? Log Service is an end-to-end data logging service that is developed by Alibaba Cloud. The data format of Log Service is similar to JSON. The following code shows an example: `{`
 
@@ -2417,7 +2648,7 @@ from sls_input;
 
 FAQ Q: Why does the overall latency of a job increase, or why is no output generated for the job that has window aggregation? A: This issue occurs if no new data is written to a partition. To solve this issue, change the parallelism to be the same as the number of read and write partitions. Q: How do I set the parallelism? A: We recommend that you set the parallelism to the number of partitions. Otherwise, if the speeds at which data is read from two partitions vary significantly, data may be filtered out or data latency may occur when you set the start offset for a job to a time prior to the present time. Q: How do I troubleshoot the issue that the latency of a Flink job increases? A: The Log Service source table may be sharded. Shard indexes may not be continuous after sharding, which increases the latency of a Flink job. If you find that the latency of a Flink job increases, check whether the Log Service source table is sharded.
 
-##### Create a full MaxCompute source table
+##### 2.5.2.6 Create a full MaxCompute source table
 
 This topic describes how to create a full MaxCompute source table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause and data type mapping involved when you create a full MaxCompute source table. Not ice This topic applies only to Blink 2.2.7 and later. Full MaxCompute source tables are typically used as bounded stream tables. This makes MaxCompute different from other data sources such as DataHub and Kafka. In Blink 3.4.4, you can specify a full MaxCompute source table as an unbounded stream table. This way, the source table can continuously listen to the generation of new partitions. If a new partition is generated, Realtime Compute for Apache Flink reads data from the new partition. This feature is deprecated in Blink 3.5.0. To use a MaxCompute source table as an unbounded stream table, see Create an incremental MaxCompute source table. DDL syntax In Realtime Compute for Apache Flink, you can use MaxCompute to store input data. The following code shows an example:
 
@@ -2523,7 +2754,7 @@ INSERT INTO test SELECT
 FROM odps_source GROUP BY cid;
 ```
 
-##### Create a Message Queue for Apache RocketMQ
+##### 2.5.2.7 Create a Message Queue for Apache RocketMQ source table
 
 source table This topic describes how to create a Message Queue for Apache RocketMQ source table in Realtime Compute for Apache Flink. This topic also describes the comma-separated values (CSV) file format, parameters in the WITH clause, and data type mappings used when you create a Message Queue for Apache RocketMQ source table. Not e If you need to use Message Queue for Apache RocketMQ that has separate namespaces, use Blink 3.X. Introduction to Message Queue for Apache RocketMQ Message Queue for Apache RocketMQ is a professional messaging middleware that is developed by Alibaba Cloud. It is a core service of the enterprise-level Internet architecture. You can specify Message Queue for Apache RocketMQ tables as source tables for Realtime Compute for Apache Flink to process streaming data. Example
 
@@ -2631,7 +2862,7 @@ Data type mapping
 |---|---|
 | STRING | VARCHAR |
 
-##### Create a Tablestore source table
+##### 2.5.2.8 Create a Tablestore source table
 
 This topic describes how to create a Tablestore source table in Realtime Compute for Apache Flink. Not ice This topic applies only to Realtime Compute for Apache Flink V3.2.2 and later. What is Tablestore? Tablestore is a distributed NoSQL database service that is built on the Apsara distributed operating system of Alibaba Cloud. Tablestore adopts sharding and load balancing technologies to scale out services and handle concurrent transactions. You can use Tablestore to store and query large amounts of structured data in real time. Tunnel Service of Tablestore Tunnel Service is a centralized service that uses the Tablestore API to allow you to consume full and incremental data. You can use the Tunnel Service API and SDKs to create tunnels from which you can consume distributed data in real time. The distributed data is divided into the following types: incremental data, full data, and full and incremental data. You can use the tunnels of the Tunnel Service to consume existing data or added data in tables in streaming processing mode. In Realtime Compute for Apache Flink, the tunnels of the Tunnel Service can serve as the source of streaming data. Each data record uses a JSON-like format. You can run the following code if you need to use Tunnel Service tunnels: `{`
 
@@ -2724,7 +2955,7 @@ Parameters in the WITH clause
 | accessKey | The AccessKey secret that is used to access Tablestore. | N/A. |
 | ignoreDelete | Specifies whether to ignore the delete operation. | Optional. Default value: false . |
 
-##### Create a Hologres source table
+##### 2.5.2.9 Create a Hologres source table
 
 This topic describes how to create a Hologres source table. It also describes the data definition language (DDL) syntax, parameters in the WITH clause, data type mapping, and sample code used when you create a Hologres source table. Not ice We recommend that you use Hologres 0.7 or later. You can use only the Hologres tables that use the row store structure as source tables for Realtime Compute for Apache Flink. Hologres source tables support projection pushdown. This allows you to read data from only the required columns in the Hologres source tables. Concurrent Blink jobs can read data from one or more Hologres shards. We recommend that the number of concurrent Blink jobs be no more than the number of Hologres shards. You can use Hologres source tables to process streaming data and batch data. Blink jobs execute snapshot statements to read existing data from Hologres source tables at a high rate. After the read operation is complete, the jobs end. If the jobs fail to read data, they read the data again. Introduction to Hologres Hologres is compatible with the PostgreSQL protocol and closely connected to the big data ecosystem. Hologres allows you to analyze and process petabytes of data in high concurrency and low latency scenarios. Hologres provides an easy method for you to use the existing business intelligence (BI) tools to perform multidimensional analysis and explore your business. DDL syntax
 
@@ -2817,7 +3048,7 @@ INSERT INTO print_output SELECT
 from mysource;
 ```
 
-##### Create an incremental MaxCompute source
+##### 2.5.2.10 Create an incremental MaxCompute source table
 
 table This topic describes how to create an incremental MaxCompute source table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause, data type mapping, and FAQ involved when you create an incremental MaxCompute source table. Not ice This topic applies only to Blink 3.5.0-hotfix. Incremental MaxCompute source tables cannot be used as dimension tables. Incremental MaxCompute source tables support only partitioned tables. Syntax
 
@@ -2912,9 +3143,9 @@ INSERT INTO test SELECT
     cid, rt FROM odps_source;
 ```
 
-#### Create a data result table
+#### 2.5.3 Create a data result table
 
-##### Overview
+##### 2.5.3.1 Overview
 
 Realtime Compute uses the `CREATE TABLE` statement to define the schema of a result table for output data and how data is written into a target data store. Data can be written by using either of the following methods: append and update. Append: If the result table is stored in a relational database with no primary key defined, Log Service, or Message Queue, output data is appended to the result table. Update: If the result table is stored in a relational database or a Hadoop database with a primary key defined, output data is written into the result table as follows: If the value for the primary key is not found in the result table, the data record is inserted into the database. If the value for the primary key is found, the existing data record in the database is overwritten. Result table syntax
 
@@ -2932,7 +3163,7 @@ CREATE TABLE rds_output( id INT, len INT, content VARCHAR, PRIMARY KEY(id) ) WIT
 
 );
 
-##### Create a DataHub result table
+##### 2.5.3.2 Create a DataHub result table
 
 This topic describes how to create a DataHub result table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause and data type mapping involved when you create a DataHub result table. Not ice This topic applies only to Blink 1.4.5 and later. Introduction to DataHub DataHub is a real-time data distribution platform designed to process streaming data. You can publish and subscribe to applications for streaming data in DataHub and distribute the data to other platforms. DataHub allows you to analyze streaming data and build applications based on the streaming data. Realtime Compute for Apache Flink uses DataHub to store source and result tables for streaming data processing. DDL syntax In Realtime Compute for Apache Flink, you can use DataHub to store output data. In the following sample code, the data definition language (DDL) statement creates a DataHub result table:
 
@@ -3032,7 +3263,7 @@ INSERT INTO datahub_output SELECT
 from datahub_input;
 ```
 
-##### Create a Message Queue for Apache RocketMQ
+##### 2.5.3.3 Create a Message Queue for Apache RocketMQ result table
 
 result table This topic describes how to create a Message Queue for Apache RocketMQ result table in Realtime Compute for Apache Flink. This topic also describes the parameters in the WITH clause used when you create a Message Queue for Apache RocketMQ result table. Not ice This topic applies only to Blink 1.4.5 and later. If you need to use Message Queue for Apache RocketMQ that has separate namespaces, use Blink 3.X. Introduction to Message Queue for Apache RocketMQ Message Queue for Apache RocketMQ is a professional message middleware that is developed by Alibaba Cloud for commercial use. It is a core product for the enterprise-level Internet architecture. Based on the high-availability distributed cluster technology, Message Queue for Apache RocketMQ provides comprehensive cloud messaging services, including message publishing and subscription, message tracing, resource statistics, message scheduling or delaying, monitoring, and alerts. CSV format You can specify Message Queue for Apache RocketMQ tables as result tables for Realtime Compute for Apache Flink to process streaming data. In the following sample code, the DDL statement creates a Message Queue for Apache RocketMQ result table to store streaming data in the CSV format:
 
@@ -3089,7 +3320,7 @@ Not e The `cast(varchar as varbinary)` method is supported only in Blink 2.0 or 
 | sleepTi meMs | The retry interval. | Optional. Default value: 1000. Unit: milliseconds. |
 | instance ID | The ID of a Message Queue for Apache RocketMQ instance. | If the Message Queue for Apache RocketMQ instance does not have a separate namespace, the instanceID parameter cannot be used. If the Message Queue for Apache RocketMQ instance has a separate namespace, the instanceID parameter is required. |
 
-##### Create an ApsaraDB RDS result table
+##### 2.5.3.4 Create an ApsaraDB RDS result table
 
 This topic describes how to create an ApsaraDB for RDS or Distributed Relational Database Service (DRDS) result table in Realtime Compute. This topic also describes the mappings between data types of Realtime Compute and ApsaraDB for RDS or DRDS data types. What is ApsaraDB for RDS? ApsaraDB RDS is a stable, reliable, and scalable online database service. Based on Apsara Distributed File System and high-performance storage, ApsaraDB for RDS supports a variety of engines such as MySQL, SQL Server, PostgreSQL, and Postgres Plus Advanced Server (PPAS). PPAS is compatible with Oracle databases. ApsaraDB for RDS provides comprehensive solutions for database operations and management, such as data backup, data recovery, monitoring, and data migration. Not e ApsaraDB for RDS and DRDS use the same parameters in the WITH clause. When you use ApsaraDB for RDS or DRDS to store result tables, make sure that there are real tables. DDL syntax The following sample code shows how to create an ApsaraDB for RDS or DRDS result table. Sample statements:
 
@@ -3173,7 +3404,7 @@ ld1,field2, field3, ...) VALUES(value1, value2, value3, ...) ON DUPLICATE KEY UP
 
 value1,field2=value2, field3=value3, ...; statement to update data. If the primary key does not exist, the value is directly inserted into the table. If the primary key already exists, the existing value is replaced. If no primary key is defined in the DDL statement, you can execute the `INSERT INT` `O` statement to insert data. Q: What do I need to pay attention to when I perform GROUP BY operations based on the unique index of an ApsaraDB RDS for SQL Server table? A: If an ApsaraDB for RDS result table has an auto-increment field, this field cannot be declared as the primary key in the DDL statement of Realtime Compute. If you want to perform GROUP BY operations based on the unique index of an ApsaraDB for RDS table, declare the unique index in primary key() in the DDL statement.
 
-##### Create a TSDB result table
+##### 2.5.3.5 Create a TSDB result table
 
 This topic describes how to create a Time Series Database (TSDB) result table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause that is used when you create a TSDB result table. Not ice This topic applies only to Blink 2.0 and later. Introduction to TSDB Alibaba Cloud TSDB is a database service that supports efficient reads and writes, compressed storage, and real-time computing for time series data. TSDB is widely used in Internet of Things (IoT) and Internet fields to implement real-time monitoring, forecasting, and alerting on devices and services. DDL syntax In Realtime Compute for Apache Flink, you can use TSDB to store output data. The following code shows an example:
 
@@ -3274,7 +3505,7 @@ The content of tags is a JSON string shown in the following example. Therefore, 
 
 FAQ Q: Why does the following error occur during a failover "The values of the LONG data type cannot be converted into the values of the INT data type"? A: Blink versions earlier than 2.2.5 support only the INT data type. Blink 2.2.5 and later support the BIGINT data type.
 
-##### Create an KVStore for Redis result table
+##### 2.5.3.6 Create an KVStore for Redis result table
 
 This topic describes how to create an KVStore for Redis result table in Realtime Compute for Apache Flink. This topic also describes the parameters in the WITH clause, the mappings between the field data types of KVStore for Redis and Realtime Compute for Apache Flink, and the attribute fields used when you create an KVStore for Redis result table. Not ice This topic applies only to Blink V3.2.0 and later. Realtime Compute for Apache Flink allows you to use self-managed Redis databases to store output data in result tables. Introduction to KVStore for Redis KVStore for Redis is a database service that is compatible with the protocols of the open source Redis system. It supports a hybrid of memory and hard disks for storage. KVStore for Redis provides a hot standby architecture to ensure high availability. Based on the scalable cluster architecture, KVStore for Redis can meet the business requirements for high throughputs, low-latency operations, and flexible configuration changes. Realtime Compute for Apache Flink allows you to store the output streaming data in KVStore for Redis. Syntax You can use five data types when you write data to KVStore for Redis result tables. To create an KVStore for Redis result table, execute the following data definition language (DDL) statements: STRING type A DDL statement has two columns. The first column lists keys and the second column lists values. To insert data into an KVStore for Redis result table, run the `set key value` command.
 
@@ -3421,7 +3652,7 @@ create table resik_output (
 INSERT INTO resik_output SELECT v, p FROM random_stream;
 ```
 
-##### Create an AnalyticDB for MySQL V2.0 result table
+##### 2.5.3.7 Create an AnalyticDB for MySQL V2.0 result table
 
 This topic describes how to create an AnalyticDB for MySQL V2.0 result table. This topic also describes the mappings between the field data types of AnalyticDB for MySQL and Realtime Compute for Apache Flink. Not ice This topic applies only to Blink 1.4.5 and later. You are allowed to define an auto-increment primary key for an AnalyticDB for MySQL V2.0 database. If you want to use the auto-increment primary key, do not declare the autoincrement field in a data definition language (DDL) statement. For example, if you use ID as an auto-increment field, do not declare the ID field in the DDL statement. When a row of output data is written to the AnalyticDB for MySQL V3.0 database, the value for the autoincrement field is automatically filled. What is AnalyticDB for MySQL? AnalyticDB for MySQL is a real-time online analytical processing (OLAP) service that is developed by Alibaba Cloud. AnalyticDB for MySQL is a high concurrency service that has excellent performance in processing large amounts of data. AnalyticDB for MySQL allows you to query and analyze hundreds of billions of data records within milliseconds. DDL syntax Not e For more information about how to create an AnalyticDB for MySQL V3.0 result table, see Create an AnalyticDB for MySQL V3.0 result table. In Realtime Compute for Apache Flink, you can use AnalyticDB for MySQL V2.0 to store output data. The following code shows an example:
 
@@ -3463,7 +3694,7 @@ Data type mappings We recommend that you declare the mapping between the field d
 | TIME | TIME |
 | TIMESTAMP | TIMESTAMP |
 
-##### Create an AnalyticDB for MySQL V3.0 result table
+##### 2.5.3.8 Create an AnalyticDB for MySQL V3.0 result table
 
 This topic describes how to create an AnalyticDB for MySQL V3.0 result table in Realtime Compute for Apache Flink. This topic also describes the parameters in the WITH clause used when you create an AnalyticDB for MySQL V3.0 result table. Not ice You cannot register AnalyticDB for MySQL V3.0 storage resources in the Realtime Compute for Apache Flink console to store result tables. This topic applies only to `Blink 3.3.0` and later. For more information about how to create an AnalyticDB for MySQL V2.0 result table, see Create an AnalyticDB for MySQL V2.0 result table. You are allowed to define an auto-increment primary key for an AnalyticDB for MySQL V3.0 database. If you want to use the auto-increment primary key, do not declare the autoincrement field in a data definition language (DDL) statement. For example, if you use ID as an auto-increment field, do not declare the ID field in the DDL statement. When a row of output data is written to the AnalyticDB for MySQL V3.0 database, the value for the autoincrement field is automatically filled. DDL syntax In Realtime Compute for Apache Flink, you can use AnalyticDB for MySQL V3.0 to store output data. The following sample code shows how to create an AnalyticDB for MySQL V3.0 result table.
 
@@ -3498,7 +3729,7 @@ Parameters in the WITH clause
 | excludeUpdateCo lumns | Specifies the columns that are not updated when data with the same primary key is updated. | No | If you specify multiple columns that are not updated, separate them with commas (,). Example: excludeUpdateColumns=column1,column2 . |
 | reserveMilliSecon d | Specifies whether to reserve the millisecond component in a value of the TIMESTAMP data type. | No | Default value: false. This indicates that the millisecond component is not reserved. |
 
-##### Create a Log Service result table
+##### 2.5.3.9 Create a Log Service result table
 
 This topic describes how to create a Log Service result table in Realtime Compute for Apache Flink. Not ice This topic applies only to Blink 1.4.5 and later. Log Service result tables support only fields of the VARCHAR type. Introduction to Log Service Log Service is an end-to-end service for log data. It helps you quickly collect, consume, ship, query, and analyze data to improve O&M and operations efficiency and build up the capabilities to process a large number of logs. Log Service stores streaming data. Therefore, Realtime Compute for Apache Flink can use Log Service tables as result tables for the processing of streaming data. DDL syntax In Realtime Compute for Apache Flink, you can use Log Service to store output data. The following code shows an example:
 
@@ -3577,7 +3808,7 @@ INSERT INTO sls_output SELECT a, b FROM random_input;
 
 FAQ Q: How do I specify the topic field in a Log Service result table? A: You can specify the topic field as a field in the result table. For example, specify `topic='age'` in the sample code. After the configuration is completed, the value of the `age` field is written into Log Service but Log Service does not write the `age` field into the downstream storage systems.
 
-##### Create a Tablestore result table
+##### 2.5.3.10 Create a Tablestore result table
 
 This topic describes how to create a Tablestore result table in Realtime Compute for Apache Flink. This topic also describes the mappings between the field data types of Tablestore and Realtime Compute for Apache Flink. Not ice This topic applies only to Blink 1.4.5 and later. What is Tablestore? Tablestore is a distributed NoSQL database service that is built on the Apsara distributed operating system of Alibaba Cloud. Tablestore adopts sharding and load balancing technologies to scale out services and handle concurrent transactions. You can use Tablestore to store and query large amounts of structured data in real time. DDL syntax In Realtime Compute for Apache Flink, you can use Tablestore to store output data. The following code shows an example:
 
@@ -3629,7 +3860,7 @@ Data type mappings
 
 Not e You must define a `primary key` in a Tablestore result table. Output data is appended to the Tablestore result table to update the result.
 
-##### Create a MaxCompute result table
+##### 2.5.3.11 Create a MaxCompute result table
 
 This topic describes how to create a MaxCompute result table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause, data type mapping, and FAQ involved when you create a MaxCompute result table. Not ice Only Blink 1.5.1 and later versions support MaxCompute result tables. A clustered table of MaxCompute cannot be used as a result table. Implementation The MaxCompute sink works in two phases:
 1. Writes data. The MaxCompute sink calls an API operation in the MaxCompute SDK to write data into
@@ -3794,7 +4025,7 @@ FROM source;
 
 FAQ What do the endPoint and tunnelEndpoint parameters specify in the Alibaba Cloud public cloud? What happens if the parameter configurations are invalid? For more information about the endPoint and tunnelEndpoint parameters, see Configure endpoints. If the configuration of the two parameters is invalid in a VPC, a task exception may occur. If the configuration of the endPoint parameter is invalid, the task stops at the progress of 91%. If the configuration of the tunnelEndpoint parameter is invalid, the task fails. Q: Does Realtime Compute for Apache Flink clear a MaxCompute result table before it writes data into the result table in stream mode when isOverwrite is set to true? A: Blink versions earlier than 3.2 support this feature. Blink 3.2 and later versions do not support this feature. If the isOverwrite parameter is set to true, Realtime Compute for Apache Flink clears a MaxCompute result table before it writes data into the result table. Realtime Compute for Apache Flink clears data from the existing result table or the result partition each time a job is started or resumed, or before Realtime Compute for Apache Flink writes data into the result table. For Blink versions earlier than 3.2, the default value of isOverwrite is true and cannot be changed. Data may be lost after a streaming job is suspended or resumed. For Blink 3.2 and later, the default value of isOverwrite is false. If you declare a MaxCompute result table for a streaming job, you must set the isOverwrite parameter to false. Otherwise, an error is returned during compilation. MaxCompute result tables in stream mode support the at-least-once data security mechanism. If a job fails, duplicate data may be generated.
 
-##### Create an Elasticsearch result table
+##### 2.5.3.12 Create an Elasticsearch result table
 
 This topic describes how to create an Elasticsearch result table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause used when you create an Elasticsearch result table. Not ice This topic applies only to Blink 3.2.2 and later. DDL syntax In Realtime Compute for Apache Flink, you can use Elasticsearch to store output data. The following code shows an example:
 
@@ -3853,7 +4084,7 @@ Parameters in the WITH clause (dynamic indexing)
 
 Not e Only Blink 2.2.7 and later versions support the dynamic indexing feature. After dynamic indexing is enabled, the `index` name in the basic configuration is used as the unified alias for indexes created subsequently. An alias can correspond to multiple indexes. Actual index names that correspond to different values of `indexInterval` : d -> Alias "yyyyMMdd" m -> Alias "yyyyMM" w -> Alias "yyyyMMW" You can use Index API to change a single actual index, but the alias supports only the `GET` method. If you want to change the alias, see Index Aliases.
 
-##### Create a Message Queue for Apache Kafka
+##### 2.5.3.13 Create a Message Queue for Apache Kafka result table
 
 result table This topic describes how to create a Message Queue for Apache Kafka result table in Realtime Compute for Apache Flink. It also describes the mapping between the values of the type parameter and Kafka versions. Not ice This topic applies only to Realtime Compute for Apache Flink V2.0 and later. This topic applies only to Realtime Compute for Apache Flink in exclusive mode. Data of a Message Queue for Apache Kafka result table can be written into a self-managed Kafka cluster. Before data is written, you must pay attention to the mapping between the values of the type parameter and Kafka versions, and the network configurations of the self-managed Kafka cluster and the Realtime Compute for Apache Flink cluster. Introduction to the Message Queue for Apache Kafka result table Message Queue for Apache Kafka is a distributed, high-throughput, and scalable message queue service provided by Alibaba Cloud. This service is widely used in big data fields, such as log collection, monitoring data aggregation, streaming data processing, and online and offline data analysis. Realtime Compute for Apache Flink allows you to create source tables and result tables of Message Queue for Apache Kafka for the processing of streaming data. DDL syntax The following example demonstrates how to create a Message Queue for Apache Kafka result table in a data definition language (DDL) statement.
 
@@ -3973,7 +4204,7 @@ FROM
   datahub_input;
 ```
 
-##### Create an ApsaraDB RDS for SQL Server result
+##### 2.5.3.14 Create an ApsaraDB RDS for SQL Server result table
 
 table This topic describes how to create an ApsaraDB RDS for SQL Server result table in Realtime Compute for Apache Flink. This topic also describes the parameters in the WITH clause, data type mappings, and Java Database Connectivity (JDBC) parameters that are used when you create such a result table. Not ice This topic applies only to Blink V3.2.0 and later. Realtime Compute for Apache Flink cannot use ApsaraDB RDS for SQL Server as a data store. DDL syntax In Realtime Compute for Apache Flink, you can use ApsaraDB RDS for SQL Server to store output data. The following code shows an example:
 
@@ -4084,7 +4315,7 @@ INSERT INTO rds_output SELECT id, len, content FROM source;
 
 FAQ Q: When the output data of Realtime Compute for Apache Flink is written to an ApsaraDB RDS for SQL Server table, is the result table updated based on the primary key or is a new data record generated in the table? A: The processing method depends on whether the primary key is defined in the DDL statement. If a primary key is defined in the DDL statement, the result table is updated by using `insert into` `on duplicate key update` . For a data record, if the primary key does not exist, the record is inserted into the table as a new row. If the value of the primary key field exists, the original row in the table is updated. If no primary key is defined in the DDL statement, new data records are appended to the table by using `insert into` . Q: What do I need to pay attention to when I perform GROUP BY operations based on the unique index of an ApsaraDB RDS for SQL Server table? A: Pay attention to the following points: Declare the unique index in the primary key of your job. An ApsaraDB RDS for SQL Server table has only one auto-increment primary key. Therefore, this auto-increment primary key cannot be declared as the primary key in a Realtime Compute for Apache Flink job.
 
-##### Create an ApsaraDB for MongoDB result table
+##### 2.5.3.15 Create an ApsaraDB for MongoDB result table
 
 This topic describes how to create an ApsaraDB for MongoDB result table in Realtime Compute for Apache Flink. This parameter also describes the parameters in the WITH clause that is used when you create an ApsaraDB for MongoDB result table. Not ice This topic applies to only Blink V3.2.2 and later. You cannot update the primary key in an ApsaraDB for MongoDB result table. As a result, data that has the same primary key is inserted repeatedly into the table. Syntax In Realtime Compute for Apache Flink, you can use ApsaraDB for MongoDB to store output data. To create an ApsaraDB for MongoDB result table, you can use the following sample code:
 
@@ -4117,7 +4348,7 @@ CREATE TABLE mongodb_sink (
 | maxConnectionIdl eTime | The time-out duration of the connection. | No | The integer value. Unit: milliseconds. This parameter cannot be set to a negative value. Default value: 60000. If this parameter is set to 0, the connection does not time out. |
 | batchSize | The number of data records that can be written at a time. | No | The integer value. Default value: 1024. The system sets the maximum number of data records that can be stored in the buffer. When the number of data records reaches the specified value of batchSize, the system triggers the data output. Not e When the checkpoint time arrives, the data output is triggered even if the number of data records in the buffer does not reach the specified value of batchSize. |
 
-##### Create an Oracle database result table
+##### 2.5.3.16 Create an Oracle database result table
 
 This topic describes how to create an Oracle database result table. It also describes the parameters in the WITH clause, data type mapping, and precautions. Not ice This topic applies only to Blink 3.6.0 and later. You can create Oracle database result tables only when you use Oracle 19c. Precautions In Realtime Compute for Apache Flink, an SQL statement is executed to write each row of result data to the result table in the destination database. Realtime Compute for Apache Flink performs the following operations based on whether the required table exists in the Oracle database: If the required table does not exist, Realtime Compute for Apache Flink creates a table in the Oracle database to store the result data. If the required table exists, Realtime Compute for Apache Flink writes or updates data to the result table. The primary keys of logical and physical tables can be different. The primary keys of logical tables must contain the primary keys of physical tables. Realtime Compute for Apache Flink uses the APPEND function or the UPSERT function to insert data into an Oracle database result table. If no primary key is specified in the table, the APPEND function is used. If a primary key is specified in the table, the UPSERT function is used. If the primary key does not exist, the primary key is inserted. If the primary key exists, the primary key is updated. Syntax In Realtime Compute for Apache Flink, you can use an Oracle database to store output data. The following code shows an example:
 
@@ -4201,7 +4432,7 @@ CREATE TABLE oracle_sink(
 INSERT INTO oracle_sink SELECT * FROM oracle_source;
 ```
 
-##### Create an InfluxDB result table
+##### 2.5.3.17 Create an InfluxDB result table
 
 This topic describes how to create an InfluxDB result table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH clause and data type mapping involved when you create an InfluxDB result table. Not ice InfluxDB does not support the storage registration feature. This topic applies only to Blink 3.5.0-hotfix and later. DDL syntax In Realtime Compute for Apache Flink, you can use InfluxDB to store output data. The following code shows an example:
 
@@ -4265,7 +4496,7 @@ Field type mapping
 |---|---|
 | VARCHAR | VARCHAR |
 
-##### Create a Phoenix5 result table
+##### 2.5.3.18 Create a Phoenix5 result table
 
 This topic describes how to create a Phoenix5 result table in Realtime Compute for Apache Flink. Not ice This topic applies only to Realtime Compute for Apahce Flink in exclusive node. This topic applies only to Blink 3.4.0 and later. Only Phoenix 5.X is supported. Phoenix is an HBase SQL service deployed on an ApsaraDB for HBase instance. You can use Phoenix only after you activate this service in ApsaraDB for HBase instances. DDL syntax In Realtime Compute for Apache Flink, you can use Phoenix5 to store output data. The following code shows an example:
 
@@ -4327,7 +4558,7 @@ INSERT INTO sink
 FROM `source`;
 ```
 
-##### Create a Hologres result table
+##### 2.5.3.19 Create a Hologres result table
 
 This topic describes how to create a Hologres result table. It also describes the parameters in the WITH clause, streaming semantics, and data type mapping involved when you create a Hologres result table. Not ice This topic applies only to Blink 3.6.0 and later. We recommend that you use Hologres 0.7 or later. Hologres writes data asynchronously. Therefore, you must add blink.checkpoint.fail_on_checkpoint_error=true to the code so that a failover is triggered only when a job exception occurs. Introduction to Hologres Hologres is compatible with the PostgreSQL protocol and integrates seamlessly with the big data ecosystem. Hologres supports real-time analysis and the processing of petabytes of data with high concurrency and low latency. This allows you to use existing Business Intelligence (BI) tools to easily perform multidimensional analysis and business exploration. Syntax In Realtime Compute for Apache Flink, you can use Hologres to store output data. The following code shows an example:
 
@@ -4394,7 +4625,7 @@ Not e Limits: The wide table must have a primary key. The data of each stream mu
 | DATE | DATE |
 | TIMESTAMP WITH TIMEZONE | TIMESTAMP |
 
-##### Create an AnalyticDB for PostgreSQL result
+##### 2.5.3.20 Create an AnalyticDB for PostgreSQL result table
 
 table This topic describes how to create an AnalyticDB for PostgreSQL result table. This topic also describes the parameters in the WITH clause and data type mappings used when you create an AnalyticDB for PostgreSQL result table. Not ice This topic applies to only Blink 3.6.0 and later. Principles Realtime Compute for Apache Flink writes data to an AnalyticDB for PostgreSQL result table in two steps:
 1. Converts each row of output data to a line of SQL statement.
@@ -4459,7 +4690,7 @@ Data type mapping The following table lists the mappings between the field data 
 | TIME | TIME |
 | TIMESTAMP | TIMESTAMP |
 
-##### Create an ApsaraDB for HBase result table
+##### 2.5.3.21 Create an ApsaraDB for HBase result table
 
 This topic describes how to create an ApsaraDB for HBase result table in Realtime Compute for Apache Flink. Not ice This topic applies only to Realtime Compute for Apache Flink in exclusive mode. Blink versions earlier than 3.3.0 support only HBase Standard Edition. Blink 3.3.0 and later versions support both HBase Standard Edition and HBase Enhanced Edition. Blink 3.5.0 and later versions support switchover between primary and secondary ApsaraDB for HBase databases for data writing. ApsaraDB for HBase result tables in Realtime Compute for Apache Flink do not support selfmanaged open source HBase. DDL syntax In Realtime Compute for Apache Flink, you can use ApsaraDB for HBase to store output data. The following sample code demonstrates how to create an ApsaraDB for HBase result table of HBase Standard Edition:
 
@@ -4602,13 +4833,13 @@ CREATE TABLE stream_test_hotline_agent (
 |   | (wang,18,2016-12-12) |   |   |   |
 | cf:18 |   | column. |   |   |
 
-In the preceding declaration, `birthday` is inserted into the `cf:age` column with ROW_KEY of `na`
+In the preceding declaration, `birthday` is inserted into the `cf:age` column with ROW_KEY of `na` `me` . For example, `(wang,18,2016-12-12)` is inserted into the row for which the ROW_KEY value is
 
 | me |   | . F |
 |---|---|---|
 |   | wang |   |
 
-`me` . For example, `(wang,18,2016-12-12)` is inserted into the row for which the ROW_KEY value is In the DDL statement, you must declare ROW_KEY as the primary key and declare the following fields in the descending order: ROW_KEY, COLUMN, and VALUE. In this example, ROW_KEY is `name` , COLUMN is `age` , and VALUE is `birthday` . Sample code The following sample code demonstrates how to create an ApsaraDB for HBase result table in a Realtime Compute for Apache Flink job:
+In the DDL statement, you must declare ROW_KEY as the primary key and declare the following fields in the descending order: ROW_KEY, COLUMN, and VALUE. In this example, ROW_KEY is `name` , COLUMN is `age` , and VALUE is `birthday` . Sample code The following sample code demonstrates how to create an ApsaraDB for HBase result table in a Realtime Compute for Apache Flink job:
 
 ```
 create table source (
@@ -4640,9 +4871,9 @@ INSERT INTO sink SELECT id, name FROM source;
 
 FAQ Why is the error `cloudHbase update error, No columns to insert for #10 item` reported when a job for an ApsaraDB for HBase result table is running? The column data for a single record that is written into the ApsaraDB for HBase result table cannot all be null. The column data excludes ROW_KEY. Before you use Realtime Compute for Apache Flink to write data into the ApsaraDB for HBase result table, filter out all null data.
 
-#### Create a data dimension table
+#### 2.5.4 Create a data dimension table
 
-##### Overview
+##### 2.5.4.1 Overview
 
 | PERIOD FOR SYSTEM TIME _ |   | in |
 |---|---|---|
@@ -4664,7 +4895,7 @@ CREATE TABLE white_list (
 
 `)` Not e When you declare a dimension table, you must specify the primary key. When you join a dimension table with another table, the ON condition must contain an equivalence condition that includes the primary key of either table.
 
-##### Create a Tablestore dimension table
+##### 2.5.4.2 Create a Tablestore dimension table
 
 This topic describes how to create a Tablestore dimension table in Realtime Compute for Apache Flink. Not ice This topic applies only to Blink 1.4.5 and later. Introduction to Tablestore Tablestore is a distributed NoSQL database service that is built on the Apsara distributed operating system of Alibaba Cloud. Tablestore adopts sharding and load balancing technologies to scale out services and handle concurrent transactions. You can use Tablestore to store and query large amounts of structured data in real time. Example In Realtime Compute for Apache Flink, you can use a Tablestore table as a dimension table. The following code shows an example:
 
@@ -4732,7 +4963,7 @@ INSERT INTO result_infor SELECT t.id, w.phoneNumber, t.name FROM datahub_input1 
 
 For more information about the syntax for dimension tables, see JOIN statements for dimension tables.
 
-##### Create an ApsaraDB for HBase dimension table
+##### 2.5.4.3 Create an ApsaraDB for HBase dimension table
 
 This topic describes how to create an ApsaraDB for HBase dimension table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH and CACHE clauses used when you create such a dimension table. Not ice Blink versions earlier than Blink 3.3.0 support only HBase Standard Edition. Blink 3.3.0 and later versions support HBase Standard Edition and HBase Enhanced Edition. Blink 3.5.0 and later versions support switchover between primary and secondary ApsaraDB for HBase databases for data writing. For more information about the JOIN syntax of an ApsaraDB for HBase dimension table, see JOIN statements for dimension tables. ApsaraDB for HBase dimension tables in Realtime Compute for Apache Flink do not support user-created open source HBase. Only one primary key is allowed in an ApsaraDB for HBase dimension table. DDL syntax HBase Standard Edition
 
@@ -4911,7 +5142,7 @@ INSERT INTO result_infor SELECT
 FROM source as t JOIN dim FOR SYSTEM_TIME AS OF PROCTIME() as w ON t.id = w.id;
 ```
 
-##### Create a KVStore for Redis dimension table
+##### 2.5.4.4 Create a KVStore for Redis dimension table
 
 This topic describes how to create a KVStore for Redis dimension table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH and CACHE clauses, data type mapping, and sample code used when you create such a dimension table. Not ice This topic applies only to Blink 3.2.2 and later. KVStore for Redis dimension tables in Realtime Compute for Apache Flink can only reference data of the STRING type in KVStore for Redis databases. KVStore for Redis dimension tables in Realtime Compute for Apache Flink support usercreated Redis databases. Syntax In Realtime Compute for Apache Flink, you can create a KVStore for Redis dimension table. The following code shows an example:
 
@@ -4990,7 +5221,7 @@ CREATE TABLE white_list (
 SELECT e.*, w. * FROM event AS e JOIN white_list FOR SYSTEM_TIME AS OF PROCTIME() AS w ON e.id = w.id;
 ```
 
-##### Create an ApsaraDB RDS for MySQL dimension
+##### 2.5.4.5 Create an ApsaraDB RDS for MySQL dimension table
 
 table This topic describes how to create an ApsaraDB RDS for MySQL dimension table in Realtime Compute for Apache Flink. This topic also describes the parameters in the WITH clause, cache parameters, and data type mapping used when you create an ApsaraDB RDS for MySQL dimension table. ApsaraDB RDS for MySQL ApsaraDB RDS for MySQL is developed based on a branch of the MySQL source code. Its excellent performance has been proven over years of Double 11, during which it needs to handle large volumes of concurrent traffic. ApsaraDB RDS for MySQL provides basic features, such as instance management, account management, database management, backup and restoration, control access, Transparent Data Encryption (TDE), and data migration. ApsaraDB RDS for MySQL also provides the following advanced features and functions: ApsaraDB MyBase dedicated clusters: An ApsaraDB MyBase dedicated cluster consists of multiple hosts, such as ECS instances of the ecs.i2.xlarge instance type and ECS Bare Metal instances. You can run instances on these hosts. For more information, see What is ApsaraDB for MyBase? Read-only RDS instances: If the primary RDS instance is overwhelmed by a large number of read requests, your workloads may be interrupted. In this case, you can create one or more read-only RDS instances to offload read requests from the primary RDS instance. For more information, see Overview of ApsaraDB RDS for MySQL read-only instances. This scales up the read capability of your database system and increases the throughput of your application. Read/write splitting: The read/write splitting function provides a read/write splitting endpoint. This endpoint connects to the primary RDS instance and all of the read-only RDS instances to establish an automatic read/write splitting link. For more information, see Read/write splitting. Your application can read and write data into your database system after it connects to this endpoint. ApsaraDB for RDS distributes write requests to the primary RDS instance and read requests to the read-only RDS instances based on the specified read weights. You can create more read-only RDS instances to scale up the read capability of your database system. In addition, you do not need to modify your application. Dedicated proxy: A dedicated proxy uses dedicated computing resources. It provides more advanced functions, such as read/write splitting, short-lived connection optimization, and transaction splitting. For more information, see What are database proxies?. Database Autonomy Service (DAS): DAS supports intelligent diagnostics and optimization at the instance level based on various metrics. These metrics include SQL execution performance, CPU utilization, input/output operations per second (IOPS) utilization, memory usage, disk usage, number of connections, locks, and hotspot tables. For more information, see DAS overview. DAS allows you to identify existing and potential issues that may compromise the health of your database system. In addition, DAS provides details and solutions for the identified issues. This facilitates database maintenance. ApsaraDB RDS for MySQL supports only two storage engines: InnoDB and X-Engine. For more information, see Features of ApsaraDB RDS for MySQL instances. Limits Realtime Compute for Apache Flink does not allow you to use ApsaraDB RDS for MySQL V8.0 by using the storage registration method. To use ApsaraDB RDS for MySQL V8.0, we recommend that you configure a plaintext AccessKey pair. For more information about the storage registration method, see Overview. DDL syntax The following sample code shows how to create an ApsaraDB RDS for MySQL dimension table:
 
@@ -5095,7 +5326,7 @@ For more information about the detailed syntax of the JOIN statements for a dime
 | VARCHAR | VARCHAR |
 | VARBINARY | VARBINARY |
 
-##### Create a MaxCompute dimension table
+##### 2.5.4.6 Create a MaxCompute dimension table
 
 This topic describes how to create a MaxCompute dimension table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH and CACHE clauses and data type mapping used when you create a MaxCompute dimension table. Not ice Blink 2.1.1 and later versions support MaxCompute dimension tables. For more information about the query syntax of a dimension table, see JOIN statements for dimension tables. To use a MaxCompute dimension table, you must grant the read permissions to the account used to access MaxCompute. DDL syntax
 
@@ -5261,7 +5492,7 @@ Field type mapping The following table lists the mapping between the data types 
 
 Not e Realtime Compute for Apache Flink supports only the preceding data types in MaxCompute dimension tables.
 
-##### Create an AnalyticDB for MySQL V3.0 dimension
+##### 2.5.4.7 Create an AnalyticDB for MySQL V3.0 dimension table
 
 table This topic describes how to create an AnalyticDB for MySQL V3.0 dimension table. This topic also describes the parameters in the WITH and CACHE clauses used when you create an AnalyticDB for MySQL V3.0 dimension table. Not ice This topic applies only to Blink-3.5.0-hotfix and later. Syntax
 
@@ -5355,7 +5586,7 @@ INSERT INTO result_infor SELECT
 FROM datahub_input1 as t JOIN phoneNumber FOR SYSTEM_TIME AS OF PROCTIME() as w -- You must include this clause in t he INSERT INTO statement if you are performing a JOIN operation on the dimension table. ON t.name = w.name;
 ```
 
-##### Create a Hologres dimension table
+##### 2.5.4.8 Create a Hologres dimension table
 
 This topic describes how to create a Hologres dimension table. It also describes the parameters in the WITH clause, parameters in the CACHE clause, and data type mapping used when you create such a dimension table. Not ice This topic applies only to Blink 3.6.0 and later. We recommend that you use Hologres 0.7 or later. Introduction to Hologres Hologres is compatible with the PostgreSQL protocol and closely connected to the big data ecosystem. Hologres supports real-time analysis and processing of petabytes of data with high concurrency and low latency. This allows you to use existing Business Intelligence (BI) tools to easily perform multidimensional analysis and business exploration. Syntax In Realtime Compute for Apache Flink, you can use a Hologres table as a dimension table. The following code shows an example:
 
@@ -5456,7 +5687,7 @@ create table print_sink (
 insert into print_sink select randomSource.a, test.b from randomSource LEFT JOIN test FOR SYSTEM_TIME AS OF PROCTIME() on randomSource.a = test.a and randomSource.b = test.b;
 ```
 
-##### Create a Phoenix5 dimension table
+##### 2.5.4.9 Create a Phoenix5 dimension table
 
 This topic describes how to create a Phoenix5 dimension table in Realtime Compute for Apache Flink. It also describes the parameters in the WITH and CACHE clauses used when you create a Phoenix5 dimension table. Not ice Only Blink versions later than Blink 3.4.0 support Phoenix5 dimension tables. Syntax
 
@@ -5546,7 +5777,7 @@ INSERT INTO result_infor SELECT
 FROM datahub_input1 as t JOIN phoneNumber FOR SYSTEM_TIME AS OF PROCTIME() as w -- You must include this clause in t he INSERT INTO statement if you are performing a JOIN operation on the dimension table. ON t.name = w.name;
 ```
 
-##### Create an Elasticsearch dimension table
+##### 2.5.4.10 Create an Elasticsearch dimension table
 
 This topic describes how to create an Elasticsearch dimension table in Realtime Compute for Apache Flink. This topic also describes the parameters in the WITH clause and CACHE clauses used when you create an Elasticsearch dimension table. Not ice This topic applies only to Blink 3.2.2 and later. DDL syntax In Realtime Compute for Apache Flink, you can use an Elasticsearch table as a dimension table. The following code shows an example:
 
@@ -5599,9 +5830,9 @@ Parameters in the CACHE clause
 |---|---|---|
 | cacheTTLMs | The interval at which the cache is refreshed. | The cache does not time out by default. The purpose of setting this parameter varies based on the cache policy. If the cache parameter is set to LRU, the cacheTTLMs parameter specifies the timeout period of the cache. If the cache parameter is set to ALL, the cacheTTLMs parameter specifies the interval at which the cache is refreshed. The cache is not refreshed by default. |
 
-### DML statements
+### 2.6 DML statements
 
-#### INSERT INTO statement
+#### 2.6.1 INSERT INTO statement
 
 This topic describes how to use the INSERT INTO statement in Realtime Compute. Syntax
 
@@ -5629,9 +5860,9 @@ A Realtime Compute job created from an SQL file can include multiple DML operati
 | Result table | You can only use the INSERT INTO statement. |
 | View | You can only use the FROM clause. |
 
-### Query statements
+### 2.7 Query statements
 
-#### SELECT statements
+#### 2.7.1 SELECT statements
 
 You can execute SELECT statements to retrieve data from tables. Syntax
 
@@ -5712,7 +5943,7 @@ Test result
 
 Not e The preceding test result is a debugging result. In the result, you can view the computing process. If your job is published and the result table is stored in DataHub, Alibaba Cloud Message Queue for Apache Kafka, or Alibaba Cloud Message Queue, the computing process is displayed. If your job is published and the result table is stored in a relational database such as ApsaraDB RDS, the records that have the same primary key values are combined into one record.
 
-#### WHERE
+#### 2.7.2 WHERE
 
 A WHERE clause filters data returned by a SELECT statement. Syntax
 
@@ -5758,7 +5989,7 @@ Test results
 | Oxford Street | Beijing |
 | Fifth Avenue | Beijing |
 
-#### HAVING
+#### 2.7.3 HAVING
 
 When you use an aggregate function, you must add a HAVING clause to achieve the same filter effect as a WHERE clause. Syntax
 
@@ -5797,7 +6028,7 @@ Test results
 |---|---|
 | Carter | 1700 |
 
-#### GROUP BY
+#### 2.7.4 GROUP BY
 
 A GROUP BY clause groups a result set by one or more columns. Syntax
 
@@ -5830,7 +6061,7 @@ Test results
 | Carter | 1700 |
 | Adams | 2000 |
 
-#### JOIN statements
+#### 2.7.5 JOIN statements
 
 JOIN statements in Realtime Compute for Apache Flink have the same semantic meanings as those for batch processing. The two types of JOIN statements allow you to join two tables. The difference is that each JOIN statement in Realtime Compute for Apache Flink joins two dynamic tables. The join results are dynamically updated to ensure that the final results are the same as the corresponding results of batch processing. Syntax
 
@@ -5927,7 +6158,7 @@ Test result
 | test11 | test11 |
 | test11 | test31 |
 
-#### JOIN statements for dimension tables
+#### 2.7.6 JOIN statements for dimension tables
 
 In Realtime Compute for Apache Flink, each data stream can be associated with a dimension table that is stored in an external data source. This allows you to perform associated queries in Realtime Compute for Apache Flink. Not e A dimension table constantly changes. Therefore, when you associate a data stream with a dimension table, you must specify the time of the dimension table snapshot with which the data stream is associated. A data stream can be associated only with the dimension table snapshot that is taken at the current time. In the future, Realtime Compute for Apache Flink will allow you to associate data streams with dimension table snapshots that are taken at different points in time. The points in time are specified by the rowtime field in the left table. Syntax
 
@@ -5995,12 +6226,12 @@ Test results
 | 1 | 13900004444 | lilei |
 | 3 | 13900003333 | libai |
 
-#### UNION ALL
+#### 2.7.7 UNION ALL
 
 A UNION ALL clause is used to combine two data streams. The field types and sequences of the two data streams must be the same. Syntax
 
 ```
-select_statement UNION ALL select_statement;
+select_statement select_statement;
 ```
 
 Not e Realtime Compute for Apache Flink also supports the `UNION` function. `UNION ALL` allows duplicate values and `UNION` does not allow duplicate values. In Realtime Compute for Apache Flink, `UNION` is equivalent to the combination of `UNION ALL and DISTINCT` . We recommend that you do not use `UNION` because its operating efficiency is low. Example Test data test_source_union1
@@ -6037,9 +6268,7 @@ SELECT
     sum(c) as e
 FROM
     (SELECT * from test_source_union1
-    UNION ALL
     SELECT * from test_source_union2
-    UNION ALL
     SELECT * from test_source_union3
 ```
 
@@ -6062,7 +6291,7 @@ Test results
 
 Not e The preceding test results are debugging results. In these results, you can view the computing process. If your job is published and the result table is stored in DataHub, Alibaba Cloud Message Queue for Apache Kafka, or Alibaba Cloud Message Queue, the result data contains data about the computing process. If your job is published and the result table is stored in a relational database such as ApsaraDB RDS, the records that have the same primary key values are combined into one record.
 
-#### TopN
+#### 2.7.8 TopN
 
 A TopN clause is used to compute the largest or smallest N data records of a metric in real-time data. Flink SQL uses an OVER window function to flexibly implement TopN computing. Syntax
 
@@ -6075,7 +6304,7 @@ SELECT * FROM (
 WHERE rownum <= N [AND conditions]
 ```
 
-Not e `ROW_NUMBER()` : specifies an `OVER` window function to compute the row number. The value starts from 1. `PARTITION BY col1[, col2..]` : specifies one or more partitioning columns. This parameter is optional. ORDER BY col1 [asc|desc][, col2 [asc|desc]...] : specifies the columns based on which you want to sort data and the sorting order of each column. As shown in the preceding syntax, a TopN clause requires two levels of queries. In the subquery, the `ROW_NUMBER()` window function is used to sort data based on the specified columns and mark the data with rankings. In the outer query, only the first N data records in the ranking list are obtained. For example, if N is set to 10, the first 10 data records are obtained. During the execution, Flink SQL sorts an input data stream based on the sort key. If the first N data records in a partition are changed, the updated data is sent downstream as an update stream. Not e Therefore, if you want to export the TopN data to external storage, the target result table must contain a primary key. WHERE
+Not e `ROW_NUMBER()` : specifies an `OVER` window function to compute the row number. The value starts from 1. `PARTITION BY col1[, col2..]` : specifies one or more partitioning columns. This parameter is optional. ORDER BY col1 [asc|desc][, col2 [asc|desc]...] : specifies the columns based on which you want to sort data and the sorting order of each column. As shown in the preceding syntax, a TopN clause requires two levels of queries. In the subquery, the `ROW_NUMBER()` window function is used to sort data based on the specified columns and mark the data with rankings. In the outer query, only the first N data records in the ranking list are obtained. For example, if N is set to 10, the first 10 data records are obtained. During the execution, Flink SQL sorts an input data stream based on the sort key. If the first N data records in a partition are changed, the updated data is sent downstream as an update stream. Not e Therefore, if you want to export the TopN data to external storage, the target result table must contain a primary key.
 
 | rownum <= N |   |
 |---|---|
@@ -6258,7 +6487,7 @@ Test results
 | 2017-12-18 15:00:00 | 10005 | 5000 |
 | 2017-12-18 15:00:00 | 10002 | 4000 |
 
-#### CEP statements
+#### 2.7.9 CEP statements
 
 MATCH_RECOGNIZE is a complex event processing (CEP) statement that identifies events from input data streams based on the specified rules and generates output events based on the specified method. Syntax
 
@@ -6444,7 +6673,7 @@ of the e2 event as Consumption. The locations of e1 and e2 are different.
 | 0.0 |   |   |   |   |   |   |   |   |
 |   |   |   |   | 0.0 |   |   |   |   |
 
-### Create a view
+### 2.8 Create a view
 
 In Realtime Compute, you can define a view to query data in one or more tables in a database. You can simplify the development process by using views. A view displays a logical table that helps to describe the computational logic. It does not physically store any data. To simplify queries, you can use the SQL statement to define a manageable view. A view can be created based on fields of one or more tables in a database. Views do not require any disk space. Syntax
 
@@ -6529,9 +6758,9 @@ Output example
 |---|---|---|
 | test2 | 2017-11-06 16:54:10 | 4 |
 
-### Window functions
+### 2.9 Window functions
 
-#### Overview
+#### 2.9.1 Overview
 
 This topic describes the window functions, time attributes, and window types that Flink SQL supports. Window functions Flink SQL supports aggregation over infinite windows. You do not need to explicitly define windows in your SQL statements. Flink SQL also supports aggregation over a specific window. For example, to count the number of users who clicked a URL in the last minute, you can define a window to collect the data about user clicks that occur in the last minute. Then, you can compute the data in the window to obtain the result. Flink SQL supports window aggregates and over aggregates. This topic describes window aggregates. Window aggregates support the windows that are defined based on the following two time attributes: event time and processing time. For each time attribute, Flink SQL supports three window types: tumbling window, sliding window, and session window. Time attributes Flink SQL supports two time attributes: event time and processing time. Realtime Compute for Apache Flink aggregates data in windows based on the following time attributes: Event time: the event time that you provide in the table schema. In most cases, the event time is the original time when data is created. Processing time: the local system time at which the system processes an event. Not e For more information about the time attributes, see Time attributes. Cascading windows The event time attribute of the Rowtime column no longer takes effect after a window operation is complete. You can use a helper function such as `TUMBLE_ROWTIME` , `HOP_ROWTIME` , or `SESSION_ROWTIME` to obtain `max(rowtime)` of the rowtime column in a window. You can use the obtained value as the rowtime of the time window. The value is `window_end - 1` and is of the TIMESTAMP data type. The TIMESTAMP value has the rowtime attribute. For example, if the time span for a window is `[00:00, 00:15]` , `00:14:59.999` is returned. In the following example, 1-hour tumbling windows are used to aggregate data based on the aggregation results of 1-minute tumbling windows. This helps you meet various window requirements.
 
@@ -6574,7 +6803,7 @@ FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE), username; INSERT INTO
 FROM one_minute_window_output GROUP BY TUMBLE(rowtime, INTERVAL '1' HOUR), username;
 ```
 
-#### Tumbling window
+#### 2.9.2 Tumbling window
 
 This topic describes how to use the tumbling window function in Realtime Compute for Apache Flink. Introduction to a tumbling window A tumbling window assigns segments of a data stream to a window with a specified size. Generally, tumbling windows are fixed in size and do not overlap each other. For example, if a 5-minute tumbling window is defined, an infinite data stream is divided based on the time period into windows such as `[0:00 - 0:05)` , `[0:05, 0:10)` , and `[0:10, 0:15)` . The following figure shows a 30-second tumbling window. Syntax The TUMBLE function is used to define a tumbling window in a GROUP BY clause.
 
@@ -6731,7 +6960,7 @@ Test results
 
 Not e Local debugging is instantaneous and the processing time may be less than 1s. Therefore, if the processing time attribute is used to aggregate data in windows, local debugging may fail.
 
-#### Sliding windows
+#### 2.9.3 Sliding windows
 
 This topic describes how to use sliding window functions in Realtime Compute for Apache Flink. Not e In Realtime Compute for Apache Flink, sliding windows cannot be used in conjunction with LAST_VALUE, FIRST_VALUE, or TopN functions. Introduction A sliding window is also known as a hop window. Unlike tumbling windows, sliding windows can overlap with each other. A sliding window is defined by the following parameters: slide and size. The slide parameter specifies the length of a sliding step. The size parameter specifies the size of the window. If the value of slide is smaller than that of size, the windows overlap with each other and each element is assigned to multiple windows. If the value of slide is equal to that of size, the windows are tumbling windows. If the value of slide is greater than that of size, the windows do not overlap with each other but are separated with gaps. In most cases, most elements are assigned to multiple windows and the windows overlap with each other. Sliding windows are used to calculate moving averages. For example, to calculate the data average in the last 5 minutes every 10 seconds, set slide to 10 seconds and set size to 5 minutes. The following figure shows sliding windows for which the slide value is 30 seconds and the size value is 1 minute. Syntax of sliding window functions You can use the HOP function to define a sliding window in a GROUP BY clause.
 
@@ -6807,7 +7036,6 @@ SELECT
     COUNT (click_url)
 FROM
     user_clicks
-GROUP BY
     HOP (ts, INTERVAL '30' SECOND, INTERVAL '1' MINUTE),
     username
 ```
@@ -6858,7 +7086,7 @@ If a sliding window cannot read the time at which data enters the window, the st
 |   |   |   | 0:00 |   |   |   |   |   |   |   |   |   |   |   |
 |   |   |   |   |   | .0 |   | 9:10 |   | .0 |   | 0:10.0 |   |   |   |
 
-#### Session window
+#### 2.9.4 Session window
 
 This topic describes how to use the session window function in Realtime Compute for Apache Flink. A session window groups elements by session activity. Unlike tumbling and sliding windows, session windows do not overlap and are not fixed in size. If a session window does not receive elements within a period of time, the session is disconnected and the window is closed. A session window is configured by using a gap, which defines the length of the inactive period. For example, a data stream that represents mouse click activities may include highly clustered mouse click events, separated by inactive periods. The data that arrives after a specified gap is assigned to a new window. The following figure shows a session window. Different keys form different windows due to differences in data distribution. Syntax The SESSION function is used to define a session window in a GROUP BY clause.
 
@@ -6942,7 +7170,7 @@ Test results
 | 0.0 |   |   |   |   |   |   |   |   |
 |   |   |   |   | 0.0 |   |   |   |   |
 
-#### OVER window
+#### 2.9.5 OVER window
 
 An OVER window is a standard window used in traditional databases. Over aggregate is different from window aggregate. In streaming data that uses OVER windows, each element corresponds to an OVER window. An OVER window can be determined based on an actual row or an actual value (timestamp value) of an element. Elements of a stream are distributed across multiple windows. In a stream that applies the OVER window, each element corresponds to an OVER window and triggers data computing once. The row determined by each element that triggers computing is the last row of the window where the element is located. In the underlying implementation of Realtime Compute, the OVER window data is centrally managed. Only one copy of the data is stored. Logically, an OVER window is created for each element. Realtime Compute for Apache Flink calculates the data for each OVER window and then deletes the data that is no longer used after the calculation is complete. Syntax
 
@@ -7217,7 +7445,7 @@ Test results
 |---|---|---|---|
 | hes | :08:00 |   |   |
 
-### Logical operations
+### 2.10 Logical operations
 
 2.10.1. = Syntax
 
@@ -7379,7 +7607,7 @@ SELECT int1 as aa FROM T1 WHERE int3 <> int2;
 
 Output example aa (INT)
 
-#### AND
+#### 2.10.7 AND
 
 Syntax
 
@@ -7401,7 +7629,7 @@ SELECT int2 as aa FROM T1 WHERE int1 = 255 AND int3 = 65;
 
 Output example aa (int)
 
-#### BETWEEN AND
+#### 2.10.8 BETWEEN AND
 
 Syntax
 
@@ -7448,7 +7676,7 @@ SELECT TIMESTAMP1 as aa FROM T1 WHERE TIMESTAMP1 BETWEEN TIMESTAMP2 AND TIMESTAM
 
 Output example aa (TIMESTAMP) 1969-07-20 20:17:30
 
-#### IS NOT FALSE
+#### 2.10.9 IS NOT FALSE
 
 Syntax
 
@@ -7470,7 +7698,7 @@ SELECT int2 as aa FROM T1 WHERE int1=255 IS NOT FALSE;
 
 Output example aa(int)
 
-#### IS NOT NULL
+#### 2.10.10 IS NOT NULL
 
 Syntax
 
@@ -7493,7 +7721,7 @@ SELECT int1 as aa FROM T1 WHERE int2 IS NOT NULL;
 
 Output example aa(int)
 
-#### IS NOT TRUE
+#### 2.10.11 IS NOT TRUE
 
 Syntax
 
@@ -7515,7 +7743,7 @@ SELECT int2 as aa FROM T1 WHERE int1 = 25 IS NOT TRUE;
 
 Output example aa (int)
 
-#### IS NOT UNKNOWN
+#### 2.10.12 IS NOT UNKNOWN
 
 Syntax
 
@@ -7543,7 +7771,7 @@ SELECT int2 as aa FROM T1 WHERE int1 < null IS NOT UNKNOWN;
 
 Output example 2 aa (int) Null
 
-#### IS NULL
+#### 2.10.13 IS NULL
 
 Syntax
 
@@ -7566,7 +7794,7 @@ SELECT int1 as aa FROM T1 WHERE int2 IS NULL;
 
 Output example aa (int)
 
-#### IS TRUE
+#### 2.10.14 IS TRUE
 
 Syntax
 
@@ -7588,7 +7816,7 @@ SELECT int2 as aa FROM T1 WHERE int1=255 IS TRUE;
 
 Output example aa(int)
 
-#### IS UNKNOWN
+#### 2.10.15 IS UNKNOWN
 
 Syntax
 
@@ -7616,7 +7844,7 @@ SELECT int2 as aa FROM T1 WHERE int1 > null IS UNKNOWN;
 
 Output example 2 aa(int)
 
-#### LIKE
+#### 2.10.16 LIKE
 
 Syntax
 
@@ -7651,7 +7879,7 @@ SELECT int1 as aa FROM T1 WHERE VARCHAR3 LIKE '%ho%';
 
 Output example 3 aa(int)
 
-#### NOT
+#### 2.10.17 NOT
 
 Syntax
 
@@ -7673,7 +7901,7 @@ SELECT int2 as aa FROM T1 WHERE NOT int3=62;
 
 Output example aa(int)
 
-#### NOT BETWEEN AND
+#### 2.10.18 NOT BETWEEN AND
 
 Syntax
 
@@ -7720,7 +7948,7 @@ SELECT TIMESTAMP1 as aa FROM T1 WHERE TIMESTAMP1 NOT BETWEEN TIMESTAMP2 AND TIME
 
 Output example aa (TIMESTAMP) 1969-07-20 20:17:30
 
-#### OR
+#### 2.10.19 OR
 
 Syntax
 
@@ -7742,7 +7970,7 @@ SELECT int2 as aa FROM T1 WHERE int1 = 255 OR int3 = 65;
 
 Output example aa (int)
 
-#### IN
+#### 2.10.20 IN
 
 Syntax
 
@@ -7780,7 +8008,7 @@ Output example
 | 1 | Adams |
 | 3 | Carter |
 
-#### NOT IN
+#### 2.10.21 NOT IN
 
 Syntax
 
@@ -7811,7 +8039,7 @@ Output example
 |---|---|
 | 2 | Bush |
 
-#### IS DISTINCT FROM
+#### 2.10.22 IS DISTINCT FROM
 
 Syntax
 
@@ -7837,7 +8065,7 @@ FROM T1
 
 Output example result(BOOLEAN) true true false
 
-#### IS NOT DISTINCT FROM
+#### 2.10.23 IS NOT DISTINCT FROM
 
 Syntax
 
@@ -7863,11 +8091,11 @@ FROM T1
 
 Output example result(BOOLEAN) false false true
 
-### Built-in functions
+### 2.11 Built-in functions
 
-#### String functions
+#### 2.11.1 String functions
 
-##### Overview
+##### 2.11.1.1 Overview
 
 CHAR_LENGTH Syntax: `CHAR_LENGTH(A)` Input parameter: The A parameter is of the VARCHAR data type. Description: Returns the number of characters in a string. Example Input example var1 (VARCHAR) ss 231ee Sample code
 
@@ -8009,7 +8237,7 @@ keyvalue('k1=v1;k2=v2', ';', '=', 'k2') = 'v2' keyvalue('k1:v1,k2:v2', ',', ':',
 
 HASH Syntax: `int hash(string str)` Description: Returns the absolute value of the integer returned by the hashCode() function that takes the specified string as an input. If any argument is NULL, the return value is NULL. MD5 Syntax: `string md5(string str)` Description: Returns the MD5 value of a string. If any argument is NULL or an empty string, the return value is an empty string.
 
-##### CHAR_LENGTH
+##### 2.11.1.2 CHAR_LENGTH
 
 Syntax
 
@@ -8025,7 +8253,7 @@ SELECT CHAR_LENGTH(var1) as aa FROM T1;
 
 Output example aa (INT)
 
-##### CHR
+##### 2.11.1.3 CHR
 
 Syntax
 
@@ -8051,7 +8279,7 @@ Output example
 |---|---|---|
 | ÿ | a | A |
 
-##### CONCAT
+##### 2.11.1.4 CONCAT
 
 Syntax
 
@@ -8076,7 +8304,7 @@ SELECT CONCAT(var1, var2, var3) as var FROM T1
 
 Output example var (VARCHAR) HelloMyWorld HelloWorld World ""
 
-##### CONCAT_WS
+##### 2.11.1.5 CONCAT_WS
 
 Syntax
 
@@ -8107,7 +8335,7 @@ SELECT CONCAT_WS(sep, str1, str2, str3) as var FROM T1
 
 Output example var (VARCHAR) Jack|Harry|John JackHarryJohn Harry|John Jack
 
-##### FROM_BASE64
+##### 2.11.1.6 FROM_BASE64
 
 Syntax
 
@@ -8133,7 +8361,7 @@ Output example
 |---|---|
 | null | Byte Array: [72('H'), 101('e'), 108('l'), 108('l'), 111('o'), 32(' '), 119('w'), 111('o'), 114('r'), 108('l'), 100('d')] |
 
-##### HASH_CODE
+##### 2.11.1.7 HASH_CODE
 
 Syntax
 
@@ -8159,7 +8387,7 @@ Output example
 |---|---|---|
 | 1099348823 | 401392878 | null |
 
-##### INITCAP
+##### 2.11.1.8 INITCAP
 
 Syntax
 
@@ -8175,7 +8403,7 @@ SELECT INITCAP(var1) as aa FROM T1;
 
 Output example aa (VARCHAR) Aadvbn
 
-##### JSON_VALUE
+##### 2.11.1.9 JSON_VALUE
 
 Syntax
 
@@ -8227,7 +8455,7 @@ FROM
 | 5 | NULL |
 | 6 | NULL |
 
-##### KEYVALUE
+##### 2.11.1.10 KEYVALUE
 
 Syntax
 
@@ -8254,7 +8482,7 @@ SELECT KEYVALUE(str, split1, split2, key1) as result FROM T1
 
 Output example result (VARCHAR) v2 null null null null null
 
-##### LOWER
+##### 2.11.1.11 LOWER
 
 Syntax
 
@@ -8270,7 +8498,7 @@ SELECT LOWER(var1) as aa FROM T1;
 
 Output example aa (VARCHAR) ss yyt
 
-##### LPAD
+##### 2.11.1.12 LPAD
 
 Syntax
 
@@ -8301,7 +8529,7 @@ SELECT LPAD(str, len, pad) AS result FROM T1
 
 Output example result (VARCHAR) null JohnJHelloWorld Jo HelC null result (VARCHAR) null as ss null ""
 
-##### MD5
+##### 2.11.1.13 MD5
 
 Syntax
 
@@ -8330,7 +8558,7 @@ Output example
 |---|---|
 | 19c17f42b4d6a90f7f9ffc2ea9bdd775 | NA |
 
-##### OVERLAY
+##### 2.11.1.14 OVERLAY
 
 Syntax
 
@@ -8346,7 +8574,7 @@ OVERLAY('abcdefg' PLACING 'hij' FROM 2 FOR 2) as result FROM T1
 
 Output example result(VARCHAR) ahijdefg
 
-##### PARSE_URL
+##### 2.11.1.15 PARSE_URL
 
 Syntax
 
@@ -8383,7 +8611,7 @@ Output example
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | query =1 | faceb ook.c om | /path /p1.p hp | null | http | /path /p1.p hp? query =1 | faceb ook.c om | null | null | null |
 
-##### POSITION
+##### 2.11.1.16 POSITION
 
 Syntax
 
@@ -8399,7 +8627,7 @@ POSITION('in' IN 'china') as result FROM T1
 
 Output example result (INT)
 
-##### REGEXP
+##### 2.11.1.17 REGEXP
 
 Syntax
 
@@ -8425,7 +8653,7 @@ SELECT REGEXP(str1, pattern1) as result FROM T1
 
 Output example result(BOOLEAN) true false null null false
 
-##### REGEXP_EXTRACT
+##### 2.11.1.18 REGEXP_EXTRACT
 
 Syntax
 
@@ -8458,7 +8686,7 @@ SELECT REGEXP_EXTRACT(str1, pattern1, index1) as result FROM T1
 
 Output example result (VARCHAR) bar null null null null
 
-##### REGEXP_REPLACE
+##### 2.11.1.19 REGEXP_REPLACE
 
 Syntax
 
@@ -8485,7 +8713,7 @@ SELECT REGEXP_REPLACE(str1, pattern1, replace1) as result FROM T1
 
 Output example result (VARCHAR) 20140313 null null 2014-03-13 null num-num
 
-##### REPEAT
+##### 2.11.1.20 REPEAT
 
 Syntax
 
@@ -8510,7 +8738,7 @@ SELECT REPEAT(str,n) as var1 FROM T1
 
 Output example result(VARCHAR) JJJJJJJJJ HelloHello “” null
 
-##### REVERSE
+##### 2.11.1.21 REVERSE
 
 Syntax
 
@@ -8538,7 +8766,7 @@ Output example
 |---|---|---|---|
 | XenohPi | ababilA | dlroW | null |
 
-##### RPAD
+##### 2.11.1.22 RPAD
 
 Syntax
 
@@ -8569,7 +8797,7 @@ SELECT RPAD(str, len, pad) as result FROM T1
 
 Output example result (VARCHAR) null HelloWorldJohnJ Jo CHel null null as ss null ""
 
-##### SPLIT_INDEX
+##### 2.11.1.23 SPLIT_INDEX
 
 Syntax
 
@@ -8594,7 +8822,7 @@ SELECT SPLIT_INDEX(str, sep, index) as var1 FROM T1
 
 Output example var1 (VARCHAR) Mary null null null
 
-##### STR_TO_MAP
+##### 2.11.1.24 STR_TO_MAP
 
 Syntax
 
@@ -8612,7 +8840,7 @@ FROM T1
 
 Output example a (VARCHAR) v1
 
-##### SUBSTRING
+##### 2.11.1.25 SUBSTRING
 
 Syntax
 
@@ -8650,7 +8878,7 @@ Output example
 |---|---|---|---|---|---|---|---|---|---|
 | "" | 1 = v1; k2 = v2 | v2 | v | 1 | "" | "" | k1 = v1; k2 = v2 | k1 = v1; k2 = v2 | null |
 
-##### TO_BASE64
+##### 2.11.1.26 TO_BASE64
 
 Syntax
 
@@ -8666,7 +8894,7 @@ SELECT TO_BASE64(FROM_BASE64(c)) as var1 FROM T1
 
 Output example var1 (VARCHAR) SGVsbG8gd29ybGQ = SGk = SGVsbG8 =
 
-##### TRIM
+##### 2.11.1.27 TRIM
 
 Syntax
 
@@ -8682,7 +8910,7 @@ SELECT TRIM(' Sample '); as result FROM T1
 
 Output example result(VARCHAR) Sample
 
-##### UPPER
+##### 2.11.1.28 UPPER
 
 Syntax
 
@@ -8698,9 +8926,9 @@ SELECT UPPER(var1) as aa FROM T1;
 
 Output example aa(VARCHAR) SS TTEE
 
-#### Mathematical unctions
+#### 2.11.2 Mathematical unctions
 
-##### Addition
+##### 2.11.2.1 Addition
 
 Syntax
 
@@ -8722,7 +8950,7 @@ SELECT int1+int2+int3 as aa FROM T1;
 
 Output example aa(INT)
 
-##### Subtraction
+##### 2.11.2.2 Subtraction
 
 Syntax
 
@@ -8744,7 +8972,7 @@ SELECT int3 - int2 - int1 as aa FROM T1;
 
 Output example aa (INT)
 
-##### Multiplication
+##### 2.11.2.3 Multiplication
 
 Syntax
 
@@ -8766,7 +8994,7 @@ SELECT int1*int2*int3 as aa FROM T1;
 
 Output example aa (INT)
 
-##### Division
+##### 2.11.2.4 Division
 
 Syntax
 
@@ -8788,7 +9016,7 @@ SELECT int1 / int2 as aa FROM T1;
 
 Output example aa(INT)
 
-##### ABS
+##### 2.11.2.5 ABS
 
 Syntax
 
@@ -8804,7 +9032,7 @@ SELECT ABS(in1) as aa FROM T1;
 
 Output example aa(DOUBLE) 4.3
 
-##### ACOS
+##### 2.11.2.6 ACOS
 
 Syntax
 
@@ -8825,7 +9053,7 @@ Output example aa (DOUBLE) 0.7707963267948966
 
 aa (DOUBLE) 1.1592794807274085
 
-##### BIN
+##### 2.11.2.7 BIN
 
 Syntax
 
@@ -8857,7 +9085,7 @@ Output example
 | 3 | 0 |
 | 4 | 1001010100000010111110010000000000 |
 
-##### ASIN
+##### 2.11.2.8 ASIN
 
 Syntax
 
@@ -8873,7 +9101,7 @@ SELECT ASIN(in1) as aa FROM T1;
 
 Output example aa (DOUBLE) 0.8 0.41151684606748806
 
-##### ATAN
+##### 2.11.2.9 ATAN
 
 Syntax
 
@@ -8889,7 +9117,7 @@ SSELECT ATAN(in1) as aa FROM T1;
 
 Output example aa (DOUBLE) 0.6222796222326533 0.3805063771123649
 
-##### BITAND
+##### 2.11.2.10 BITAND
 
 Syntax
 
@@ -8911,7 +9139,7 @@ SELECT BITAND(a, b) as intt FROM T1
 
 Output example intt(INT)
 
-##### BITNOT
+##### 2.11.2.11 BITNOT
 
 Syntax
 
@@ -8927,7 +9155,7 @@ SELECT BITNOT(a) as var1, FROM T1
 
 Output example var1(INT) 0xfff8
 
-##### BITOR
+##### 2.11.2.12 BITOR
 
 Syntax
 
@@ -8949,7 +9177,7 @@ SELECT BITOR(a, b) as var1, FROM T1
 
 Output example var1(INT)
 
-##### BITXOR
+##### 2.11.2.13 BITXOR
 
 Syntax
 
@@ -8971,7 +9199,7 @@ SELECT BITXOR(a, b) as var1, FROM T1
 
 Output example var1 (INT)
 
-##### CARDINALITY
+##### 2.11.2.14 CARDINALITY
 
 Syntax
 
@@ -8993,7 +9221,7 @@ SELECT cardinality(b) AS result FROM T1
 
 Output example result(INT)
 
-##### COS
+##### 2.11.2.15 COS
 
 Syntax
 
@@ -9009,7 +9237,7 @@ SELECT COS(in1) as aa FROM T1;
 
 Output example aa(DOUBLE) 0.6967067093471654 0.9210609940028851
 
-##### COT
+##### 2.11.2.16 COT
 
 Syntax
 
@@ -9025,7 +9253,7 @@ SELECT COT(in1) as aa FROM T1;
 
 Output example aa (DOUBLE) 1.0296385570503641 0.4227932187381618
 
-##### E
+##### 2.11.2.17 E
 
 Syntax
 
@@ -9051,7 +9279,7 @@ Output example
 |---|---|---|
 | 1 | 2.718281828459045 | 2.718281828459045 |
 
-##### EXP
+##### 2.11.2.18 EXP
 
 Syntax
 
@@ -9067,7 +9295,7 @@ SELECT EXP(in1) as aa FROM T1;
 
 Output example aa (DOUBLE) 2980.9579870417283 22026.465794806718
 
-##### FLOOR
+##### 2.11.2.19 FLOOR
 
 Syntax
 
@@ -9083,7 +9311,7 @@ SELECT FLOOR(in1) as aa FROM T1;
 
 Output example aa(INT)
 
-##### LN
+##### 2.11.2.20 LN
 
 Syntax
 
@@ -9111,7 +9339,7 @@ Output example
 | 1 | 4.605170185988092 | 1.0 |
 | 2 | 2.0794415416798357 | 1.0 |
 
-##### LOG
+##### 2.11.2.21 LOG
 
 Syntax
 
@@ -9139,7 +9367,7 @@ Output example
 | 1 | 2.0 | 0.6931471805599453 |
 | 2 | 3.0 | 0.6931471805599453 |
 
-##### LOG10
+##### 2.11.2.22 LOG10
 
 Syntax
 
@@ -9167,7 +9395,7 @@ Output example
 | 1 | 2.0 |
 | 2 | 1.0 |
 
-##### LOG2
+##### 2.11.2.23 LOG2
 
 Syntax
 
@@ -9195,7 +9423,7 @@ Output example
 | 1 | 3.0 |
 | 2 | 1.0 |
 
-##### PI
+##### 2.11.2.24 PI
 
 Syntax
 
@@ -9221,7 +9449,7 @@ Output example
 |---|---|
 | 1 | 3.141592653589793 |
 
-##### POWER
+##### 2.11.2.25 POWER
 
 Syntax
 
@@ -9243,7 +9471,7 @@ SELECT POWER(in1, in2) as aa FROM T1;
 
 Output example aa (DOUBLE) 16.0
 
-##### RAND
+##### 2.11.2.26 RAND
 
 Syntax
 
@@ -9269,7 +9497,7 @@ Output example
 |---|---|---|
 | 1 | 0.7308781907032909 | 0.731057369148862 |
 
-##### SIN
+##### 2.11.2.27 SIN
 
 Syntax
 
@@ -9285,7 +9513,7 @@ SELECT SIN(in1) as aa FROM T1;
 
 Output example aa (DOUBLE) 0.9893582466233818 0.3894183423086505
 
-##### SQRT
+##### 2.11.2.28 SQRT
 
 Syntax
 
@@ -9301,7 +9529,7 @@ SELECT SQRT(in1) as aa FROM T1;
 
 Output example aa (DOUBLE) 2.8284271247461903
 
-##### TAN
+##### 2.11.2.29 TAN
 
 Syntax
 
@@ -9317,7 +9545,7 @@ SELECT TAN(in1) as aa FROM T1;
 
 Output example aa(DOUBLE) 1.0296385570503641 0.4227932187381618
 
-##### CEIL
+##### 2.11.2.30 CEIL
 
 Syntax
 
@@ -9343,7 +9571,7 @@ Output example
 |---|---|---|
 | 1 | 3 | 4.0 |
 
-##### CHARACTER_LENGTH
+##### 2.11.2.31 CHARACTER_LENGTH
 
 Syntax
 
@@ -9369,7 +9597,7 @@ Output example
 |---|---|
 | 1 | 13 |
 
-##### DEGREES
+##### 2.11.2.32 DEGREES
 
 Syntax
 
@@ -9385,7 +9613,7 @@ SELECT DEGREES( PI() ) as result FROM T1
 
 Output example result(DOUBLE) 180.0
 
-##### MOD
+##### 2.11.2.33 MOD
 
 Syntax
 
@@ -9415,7 +9643,7 @@ Output example
 | 2 | -2 |
 | 3 | -2 |
 
-##### ROUND
+##### 2.11.2.34 ROUND
 
 Syntax
 
@@ -9431,17 +9659,11 @@ SELECT ROUND(in1,2) as `result` FROM T1;
 
 Output example result (DECIMAL) 0.72 0.40
 
-#### Date functions
+#### 2.11.3 Date functions
 
-##### CURRENT_TIMESTAMP
+##### 2.11.3.1 CURRENT_TIMESTAMP
 
-Syntax
-
-```
-CURRENT_TIMESTAMP
-```
-
-Arguments None Return the current UTC (GMT+0) timestamp, which is eight hours earlier than Beijing time. Examples Sample code
+Syntax Arguments None Return the current UTC (GMT+0) timestamp, which is eight hours earlier than Beijing time. Examples Sample code
 
 ```
 SELECT CURRENT_TIMESTAMP as var1 FROM T1
@@ -9449,7 +9671,7 @@ SELECT CURRENT_TIMESTAMP as var1 FROM T1
 
 Output example var1 (TIMESTAMP) 2007-04-30 13:10:02.047
 
-##### DATEDIFF
+##### 2.11.3.2 DATEDIFF
 
 Syntax Syntax
 
@@ -9482,7 +9704,7 @@ Output example
 |---|---|---|---|---|---|---|
 | 30 | 31 | -31 | null | null | null | 31 |
 
-##### DATE_ADD
+##### 2.11.3.3 DATE_ADD
 
 Syntax
 
@@ -9511,7 +9733,7 @@ Output example
 |---|---|---|
 | 2017-10-15 | 2017-10-15 | null |
 
-##### DATE_FORMAT
+##### 2.11.3.4 DATE_FORMAT
 
 Syntax
 
@@ -9543,7 +9765,7 @@ Output example
 |---|---|---|---|---|---|
 | 170915 | null | null | null | 20170915 | 170915 |
 
-##### DATE_SUB
+##### 2.11.3.5 DATE_SUB
 
 Syntax
 
@@ -9572,7 +9794,7 @@ Output example
 |---|---|---|
 | 2017-09-15 | 2017-09-15 | null |
 
-##### DAYOFMONTH
+##### 2.11.3.6 DAYOFMONTH
 
 Syntax
 
@@ -9605,7 +9827,7 @@ Output example
 |---|---|---|---|---|---|
 | 15 | 22 | 10 | 15 | 15 | 15 |
 
-##### FROM_UNIXTIME
+##### 2.11.3.7 FROM_UNIXTIME
 
 Syntax
 
@@ -9634,7 +9856,7 @@ Output example
 |---|---|---|
 | 2017-09-15 00:00:00 | 0915-2017 | null |
 
-##### HOUR
+##### 2.11.3.8 HOUR
 
 Syntax
 
@@ -9667,7 +9889,7 @@ Output example
 |---|---|---|---|---|---|
 | 23 | 23 | 22 | 11 | 22 | 11 |
 
-##### LOCALTIME
+##### 2.11.3.9 LOCALTIME
 
 Syntax y
 
@@ -9683,7 +9905,7 @@ SELECT LOCALTIME as `result` FROM T1
 
 Output example result(TIME) 19:00:47
 
-##### MINUTE
+##### 2.11.3.10 MINUTE
 
 Syntax
 
@@ -9716,7 +9938,7 @@ Output example
 |---|---|---|---|---|---|
 | 33 | 30 | 23 | 12 | 23 | 12 |
 
-##### MONTH
+##### 2.11.3.11 MONTH
 
 Syntax
 
@@ -9749,7 +9971,7 @@ Output example
 |---|---|---|---|---|---|
 | 9 | 9 | 11 | 10 | 9 | 10 |
 
-##### NOW
+##### 2.11.3.12 NOW
 
 Syntax
 
@@ -9769,7 +9991,7 @@ Output example
 |---|---|
 | 1403006911 | null |
 
-##### SECOND
+##### 2.11.3.13 SECOND
 
 Syntax
 
@@ -9802,7 +10024,7 @@ Output example
 |---|---|---|---|---|---|
 | 33 | 33 | 24 | 13 | 24 | 13 |
 
-##### TIMESTAMPADD
+##### 2.11.3.14 TIMESTAMPADD
 
 Syntax
 
@@ -9843,7 +10065,7 @@ Output example
 |---|---|
 | 2018-07-09 13:23:56 | 1990-02-23 |
 
-##### TO_DATE
+##### 2.11.3.15 TO_DATE
 
 Syntax
 
@@ -9872,7 +10094,7 @@ Output example
 |---|---|---|
 | 1970-04-11 | 2017-09-15 | 2017-09-15 |
 
-##### TO_TIMESTAMP
+##### 2.11.3.16 TO_TIMESTAMP
 
 Syntax
 
@@ -9901,7 +10123,7 @@ Output example
 |---|---|---|
 | 2017-12-13 03:27:57.0 | 2017-09-15 00:00:00.0 | 2017-09-15 00:00:00.0 |
 
-##### UNIX_TIMESTAMP
+##### 2.11.3.17 UNIX_TIMESTAMP
 
 Syntax
 
@@ -9923,7 +10145,7 @@ Output example
 |---|---|
 | 1403006911 | null |
 
-##### WEEK
+##### 2.11.3.18 WEEK
 
 Syntax
 
@@ -9951,7 +10173,7 @@ Output example
 |---|---|---|---|
 | 37 | 45 | 41 | 37 |
 
-##### YEAR
+##### 2.11.3.19 YEAR
 
 Syntax
 
@@ -9983,9 +10205,9 @@ Output example
 |---|---|---|---|---|---|
 | 2016 | 2017 | 2017 | 2017 | 2015 | 2017 |
 
-#### Conditional functions
+#### 2.11.4 Conditional functions
 
-##### CASE WHEN
+##### 2.11.4.1 CASE WHEN
 
 Syntax
 
@@ -10043,7 +10265,7 @@ end as os FROM T1
 | ios | 3 |
 | ios | 3 |
 
-##### COALESCE
+##### 2.11.4.2 COALESCE
 
 Syntax
 
@@ -10065,7 +10287,7 @@ SELECT COALESCE(var1,var2) as aa FROM T1;
 
 Output example aa(VARCHAR)
 
-##### IF
+##### 2.11.4.3 IF
 
 Syntax
 
@@ -10089,7 +10311,7 @@ SELECT IF(int1 < int2,str1, str2) as int1 FROM T1
 
 Output example int1(VARCHAR) Jack Jack null
 
-##### IS_ALPHA
+##### 2.11.4.4 IS_ALPHA
 
 Syntax
 
@@ -10115,7 +10337,7 @@ Output example
 |---|---|---|
 | false | Yes | false |
 
-##### IS_DECIMAL
+##### 2.11.4.5 IS_DECIMAL
 
 Syntax
 
@@ -10143,7 +10365,7 @@ Output example
 |---|---|---|---|---|---|---|
 | true | true | true | true | true | false | false |
 
-##### IS_DIGIT
+##### 2.11.4.6 IS_DIGIT
 
 Syntax
 
@@ -10169,7 +10391,7 @@ Output example
 |---|---|---|
 | true | false | false |
 
-##### NULLIF
+##### 2.11.4.7 NULLIF
 
 Syntax
 
@@ -10191,9 +10413,9 @@ SELECT NULLIF(var1,var2) as aa FROM T1;
 
 Output example aa(VARCHAR) null
 
-#### Table-valued functions
+#### 2.11.5 Table-valued functions
 
-##### GENERATE_SERIES
+##### 2.11.5.1 GENERATE_SERIES
 
 Syntax
 
@@ -10230,7 +10452,7 @@ Output example
 | -2 | 1 | -1 |
 | -2 | 1 | -0 |
 
-##### JSON_TUPLE
+##### 2.11.5.2 JSON_TUPLE
 
 Syntax
 
@@ -10266,7 +10488,7 @@ Output example
 | {“qwe”:”asd4”,”qwe2”:”asd5”,”qwe3”:” asd3”} | asd4 |
 | {“qwe”:”asd4”,”qwe2”:”asd5”,”qwe3”:” asd3”} | asd5 |
 
-##### STRING_SPLIT
+##### 2.11.5.3 STRING_SPLIT
 
 Syntax
 
@@ -10295,9 +10517,9 @@ Output example
 | abc-bcd | bcd |
 | hhh | hhh |
 
-#### Type conversion functions
+#### 2.11.6 Type conversion functions
 
-##### CAST
+##### 2.11.6.1 CAST
 
 Syntax
 
@@ -10319,9 +10541,9 @@ SELECT CAST(var1 AS INT) as aa FROM T1;
 
 Output example aa (INT)
 
-#### Aggregate functions
+#### 2.11.7 Aggregate functions
 
-##### AVG
+##### 2.11.7.1 AVG
 
 Syntax
 
@@ -10344,7 +10566,7 @@ SELECT AVG(var1) as aa FROM T1;
 
 Output example aa (INT)
 
-##### CONCAT_AGG
+##### 2.11.7.2 CONCAT_AGG
 
 Syntax
 
@@ -10366,7 +10588,7 @@ Output example
 |---|---|
 | Hi\nHi\nHi\nHi\nHi\nHi\nHi\nHi\nHi\nHi | Hi-Hi-Hi-Hi-Hi-Hi-Hi-Hi-Hi-Hi |
 
-##### COUNT
+##### 2.11.7.3 COUNT
 
 Syntax
 
@@ -10382,7 +10604,7 @@ SELECT COUNT(var1) as aa FROM T1;
 
 Output example aa (BIGINT)
 
-##### FIRST_VALUE
+##### 2.11.7.4 FIRST_VALUE
 
 Syntax
 
@@ -10442,7 +10664,7 @@ Output example
 | Hello World | 7 |
 | Hello World | 7 |
 
-##### LAST_VALUE
+##### 2.11.7.5 LAST_VALUE
 
 Syntax
 
@@ -10502,7 +10724,7 @@ Output example
 | Hello World | 8 |
 | Hello World | 20 |
 
-##### MAX
+##### 2.11.7.6 MAX
 
 Syntax
 
@@ -10518,7 +10740,7 @@ SELECT MAX(a) as aa FROM T1;
 
 Output example aa(INT)
 
-##### MIN
+##### 2.11.7.7 MIN
 
 Syntax
 
@@ -10534,7 +10756,7 @@ SELECT MIN(a) as aa FROM T1;
 
 Output example aa(INT)
 
-##### STDDEV_POP
+##### 2.11.7.8 STDDEV_POP
 
 Syntax
 
@@ -10569,7 +10791,7 @@ Output example
 |---|---|
 | Hi | 2.8722813232690143 |
 
-##### SUM
+##### 2.11.7.9 SUM
 
 Syntax
 
@@ -10585,7 +10807,7 @@ SELECT sum(a) as aa FROM T1;
 
 Output example aa (INT)
 
-##### VAR_POP
+##### 2.11.7.10 VAR_POP
 
 Syntax
 
@@ -10629,9 +10851,9 @@ Output example
 | 28889 | Hi |
 | 15602500 | Hello |
 
-#### Other functions
+#### 2.11.8 Other functions
 
-##### UUID
+##### 2.11.8.1 UUID
 
 Syntax
 
@@ -10647,9 +10869,9 @@ SELECT uuid() as `result` FROM T1
 
 Output example result(VARCHAR) a364e414-e68b-4e5c-9166-65b3a153e257
 
-### UDXs
+### 2.12 UDXs
 
-#### Overview
+#### 2.12.1 Overview
 
 This topic describes how to build a development environment and use user-defined extensions (UDXs) in Realtime Compute for Apache Flink. Not ice Only Realtime Compute for Apache Flink in exclusive mode supports UDXs. Blink is developed based on Apache Flink SQL by Alibaba Cloud Realtime Compute for Apache Flink to improve computing performance. UDXs can be used only in Blink. UDX type Realtime Compute for Apache Flink supports three types of UDXs, as described in the following table.
 
@@ -10721,7 +10943,7 @@ public void open(FunctionContext context) throws Exception {
 
 `}`
 
-#### UDF
+#### 2.12.2 UDF
 
 This topic describes how to build a development environment, write business logic code, and publish a user-defined scalar function (UDF) in Realtime Compute for Apache Flink. Not ice Only Realtime Compute for Apache Flink in exclusive mode supports user-defined extensions (UDXs). Definition A UDF maps zero, one, or more scalar values to a new scalar value. Build a development environment For more information about how to build a development environment, see Build a development environment. Write business logic code To define a UDF, you must extend the ScalarFunction class by implementing the `eval` method. The `open` and `close` methods are optional. Not ice UDFs return the same output for the same input by default. However, a UDF where an external service is called may return different output results even if the input values are the same. If a UDF cannot generate the same output for the same input, we recommend that you use the `override isDeterministic()` method to make it return `false` . Otherwise, the output may not meet your expectations in some cases. For example, a UDF operator moves forward. The following sample code is written in Java:
 
@@ -10832,7 +11054,7 @@ CREATE FUNCTION stringLengthUdf AS 'com.hjc.test.blink.sql.udx.StringLengthUdf';
 
 Publish and use a UDF Click Publish on the Development page for the job where you want to publish a UDF. Then, find the job on the Administ rat ion page and click St art in the Actions column to publish the UDF. FAQ Q: Why does the random number generator always generate the same value at runtime? A: If no input parameters are passed to a UDX and you do not declare it as nondeterministic, the UDX may be optimized during compilation to return a constant value. To avoid this issue, you can use the `override isDeterministic()` method to make it return `false` .
 
-#### UDAF
+#### 2.12.3 UDAF
 
 This topic describes how to build a development environment, write business logic code, and publish a user-defined aggregation function (UDAF) in Realtime Compute for Apache Flink. Not ice Only Realtime Compute for Apache Flink in exclusive mode supports user-defined extensions (UDXs). Definition A UDAF aggregates multiple values into a single value. Methods of the UDAF abstract class Not e A UDAF can be implemented in Java or Scala. However, we recommend that you use Java because Scala data types may cause unnecessary performance overhead. The following code shows the core methods of the AggregateFunction class. createAccumulator and getValue methods `/*`
 
@@ -11009,7 +11231,7 @@ insert into rds_output select
 from sls_stream;
 ```
 
-#### UDTF
+#### 2.12.4 UDTF
 
 This topic describes how to build a development environment, write code, and publish a user-defined table-valued function (UDTF) in Realtime Compute for Apache Flink. Not e Only Realtime Compute for Apache Flink in exclusive mode supports user-defined extensions (UDXs). Definition Similar to a user-defined scalar function (UDF), a UDTF uses zero, one, or multiple scalar values as input parameters (including variable-length parameters). Different from a UDF, a UDTF returns any number of rows, rather than a single value. The returned rows can consist of one or more columns. Build a development environment For more information, see Build a development environment. Write code that implements business logic A UDTF needs to implement the eval method in the TableFunction class. The open and close methods are optional. The following Java code is an example:
 
@@ -11121,7 +11343,7 @@ Publish and use a UDTF For more information about how to publish and use a UDTF,
 insert into rds_output select a,b,s from v1;
 ```
 
-#### Develop a UDX by using IntelliJ IDEA
+#### 2.12.5 Develop a UDX by using IntelliJ IDEA
 
 This topic describes how to develop a user-defined extension (UDX) in Realtime Compute for Apache Flink by using IntelliJ IDEA. The development process includes building a development environment and referencing a UDX in a Realtime Compute for Apache Flink job. Context Not ice Only Realtime Compute for Apache Flink in exclusive mode supports UDXs. We recommend that you use IntelliJ IDEA to develop a UDX. Configure Maven
 1. Download a Maven installation package.

@@ -3,16 +3,41 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops User Guide
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 68
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops User Guide 20260902.pdf"
+source_pdf: "c76bd8003dea53f0_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops  User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek-Ops%20%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops User Guide 20260902
 
+## Table of Contents
+
+- 1 Overview
+- 2 Log in to the OpenTrek-Ops platform
+- 3 Operations overview
+- 4 AI assistant
+- 5 O&M Center
+  - 5.1 Agent list
+  - 5.2 Project management
+  - 5.3 Capabilities and plugins
+- 6 Change history
+- 7 Infrastructure
+- 8 Security center
+  - 8.1 Security settings
+  - 8.2 Audit logs
+- 9 Session analysis
+- 10 UModel exploration
+- 11 Operational analysis
+  - 11.1 Cost analysis
+- 12 System settings
+  - 12.1 Tenant management
+  - 12.2 Configuration management
+- 13 Configure an Ops administrator
+- 14 FAQ
+
 ew
 
-## Overview
+## 1 Overview
 
 This topic describes the features and usage of the OpenTrek-Ops platform. OpenTrek-Ops is a multi-agent operations and governance platform based on the xClaw paradigm, providing full lifecycle management for enterprise-grade AI agents. The platform delivers an all-in-one solutions for Ops teams, covering the creation, deployment, monitoring, collaboration, and governance of agents.
 
@@ -66,7 +91,7 @@ The platform navigation in V1.1.1 adopts a five-group classification layout to h
 
 to the OpenTrek-Ops platform
 
-## Log in to the OpenTrek-Ops
+## 2 Log in to the OpenTrek-Ops platform
 
 **platform**
 
@@ -101,7 +126,7 @@ on the right side of the current logon user.
 2. In the dialog box, click **Sign Out**.
 tions overview
 
-## Operations overview
+## 3 Operations overview
 
 This topic describes the features and metrics on the **Operations Overview** page of the OpenTrek-Ops platform.
 
@@ -138,7 +163,7 @@ tions overview
 
 After obtaining the operations overview information as needed, you can view and manage detailed agent information through the agent management feature. stant
 
-## AI assistant
+## 4 AI assistant
 
 The AI Ops Assistant enables automated O&M management. This topic describes how to use the AI Assistant.
 
@@ -159,9 +184,9 @@ visibility scope, and then click **Create Knowledge Base**. b. Upload a document
 **Management** tab, click **Upload Document** to upload a local document.
 c. Index status On the **knowledge base** details page, select **Index Status** to view the index details of the knowledge base. d. Retrieval test On the **knowledge base** details page, select **Retrieval Test**, enter a keyword from the document, and click **Search**. The interface displays the retrieval results. e. Settings On the **knowledge base** details page, select **Settings** to view the basic information, personal space quota, and retrieval model of the knowledge base. iii. View the details of a knowledge base. Click **Details** in the **Actions** column of the created knowledge base to view specific documents, index status, settings, and other detailed information. iv. Rebuild the index. Click **Rebuild index** in the **Actions** column of the created knowledge base, and the system rebuilds the indexes of all documents in the knowledge base. The previous version continues to serve requests until the new version is ready. v. Delete a knowledge base. Click **Delete** in the **Actions** column of the created knowledge base. After confirmation, the system also deletes the documents and indexes.
 
-## O&M Center
+## 5 O&M Center
 
-### Agent list
+### 5.1 Agent list
 
 This topic describes how to manage agents in the OpenTrek-Ops platform. You can host, view, edit, start, stop, scale, and delete agents.
 
@@ -317,7 +342,7 @@ For pro-code agents, you can view the details of instances and scaling, backup a
 
 After creating an agent, you can add the agent to a project for collaboration.
 
-### Project management
+### 5.2 Project management
 
 This topic describes how to manage projects in the OpenTrek-Ops platform, including creating projects and managing project members.
 
@@ -414,7 +439,7 @@ Skill Ops a. **Select Operation & Scope** a. Select **Skill Ops** for the operat
 
 After creating a project, you can assign skills to the project to enable team collaboration.
 
-### Capabilities and plugins
+### 5.3 Capabilities and plugins
 
 This topic describes how to manage skills, MCPs, and plugins in the Apsara Uni-Manager Operations Console, including creating, enabling or disabling, managing versions, and installing and configuring them.
 
@@ -530,7 +555,7 @@ In the plugin list, click a target plugin card to go to the plugin details page,
 ```html ```
 e history
 
-## Change history
+## 6 Change history
 
 This topic describes how to view the Ops change history of resources such as agents, skills, security rules, and MCPs, including batch changes, single changes, and change management operations.
 
@@ -572,7 +597,7 @@ e history The operation record list contains the following fields:
 
 ructure
 
-## Infrastructure
+## 7 Infrastructure
 
 This topic describes the features and configurationss of the infrastructure module in the OpenTrek-Ops platform.
 
@@ -669,9 +694,9 @@ ructure
 
 This operation is irreversible. Proceed with caution. ty center
 
-## Security center
+## 8 Security center
 
-### Security settings
+### 8.1 Security settings
 
 This topic describes how to configure security settings in the OpenTrek-Ops platformApsara Uni-Manager Operations Console, including the security overview, tool guardprotection rules, and file guardprotection policies.
 
@@ -804,7 +829,7 @@ Click the delete icon in the **Actions** column of the target protection path to
 2. In the pop-up dialog box that appears, click **ConfirmOK**.
 ```html ```
 
-### Audit logs
+### 8.2 Audit logs
 
 The system tracks key operations in real time, focusing on high-risk events and compliance remediation progress.
 
@@ -840,7 +865,7 @@ ty center
 5. Click **Export** in the upper-right corner of the audit log list to download the audit logs to
 your local computer. n analysis
 
-## Session analysis
+## 9 Session analysis
 
 **Prerequisites**
 
@@ -855,7 +880,7 @@ Search for sessions by session ID. Filter sessions by agent. Query sessions by f
 4. Click a session name or session ID to view details such as the session name, session ID,
 start time, entry agent, project, session duration, turns, total tokens, input tokens, output tokens, trace list, and session messages. In the trace list, click a trace ID to view the trace details. el exploration
 
-## UModel exploration
+## 10 UModel exploration
 
 UModel exploration is a visual exploration tool designed for model governance and data asset management scenarios. It provides a unified view of model entities and their associations in the system, transforms scattered and abstract metadata into interactive visual graphs, and helps users quickly understand the system architecture, data asset distribution, and entity dependencies.
 
@@ -872,9 +897,9 @@ The total number of nodes and connections. The statistics grouped by type or reg
 4. Click any node in the topology, and a dialog box displays the detailed information of the
 node in a form or JSON format. tional analysis
 
-## Operational analysis
+## 11 Operational analysis
 
-### Cost analysis
+### 11.1 Cost analysis
 
 This topic describes how to view multi-dimensional statistics of token consumption in the OpenTrek-Ops platform. This feature enables transparent management of computing power costs.
 
@@ -909,7 +934,7 @@ tional analysis
 
 m settings
 
-## System settings
+## 12 System settings
 
 This section describes the features and configuration methods of the system settings modules in the OpenTrek-Ops platform, including tenant management and platform management.
 
@@ -917,7 +942,7 @@ This section describes the features and configuration methods of the system sett
 
 Log in as the system administrator to configure system settings.
 
-### Tenant management
+### 12.1 Tenant management
 
 This topic describes how to manage tenants in the OpenTrek-Ops platform.
 
@@ -971,7 +996,7 @@ Log in as the administrator of the newly created tenant to perform initial tenan
 
 When you log in for the first time, the system prompts you to initialize the password. Follow the prompts to set a new password and keep it secure. m settings
 
-### Configuration management
+### 12.2 Configuration management
 
 This topic describes how to manage channels, system configurations, and data subscriptions in the OpenTrek-Ops platform.
 
@@ -1032,7 +1057,7 @@ m settings
 4. Click **Create**.
 ure an Ops administrator
 
-## Configure an Ops
+## 13 Configure an Ops administrator
 
 **administrator**
 
@@ -1054,7 +1079,7 @@ In the tenant switching dialog box, click the settings button for the target ten
 
 Ensure that the tenant administrator has added the organization of the selected user to the platform. Click **Confirm Authorization**, and then click **Back** in the upper-right corner of the page.
 
-## FAQ
+## 14 FAQ
 
 **Login issues**
 

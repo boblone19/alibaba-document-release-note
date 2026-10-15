@@ -2,18 +2,83 @@
 title: "AnalyticDB for PostgreSQL Developer Guide 20260630"
 product_version: "V3.18.6"
 pdf_pages: 90
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL Developer Guide 20260630.pdf"
+source_pdf: "6d798e0979e2f8f0_Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL Developer Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%20AnalyticDB%20PostgreSQL%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20AnalyticDB%20for%20PostgreSQL%20Developer%20Guide%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # AnalyticDB for PostgreSQL Developer Guide 20260630
 
-AnalyticDB for PostgreSQL Devel
+## Table of Contents
 
-## Getting started
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Process of API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 Obtain the information and the endpoint of an API operation
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain common header parameters
+- 3 API reference
+  - 3.1 Request structure
+  - 3.2 Common parameters
+  - 3.3 Responses
+  - 3.4 Signature mechanism
+  - 3.5 RAM authorization
+    - 3.5.1 Authorize resources by using RAM
+    - 3.5.2 Resources that can be authorized in RAM
+    - 3.5.3 Operations that can be authorized in RAM
+    - 3.5.4 Authentication rules of API operations
+  - 3.6 Instance management
+    - 3.6.1 CreateDBInstance
+    - 3.6.2 DescribeResourceUsage
+    - 3.6.3 ModifyDBInstanceMaintainTime
+    - 3.6.4 RestartDBInstance
+    - 3.6.5 AddBuDBInstanceRelation
+  - 3.7 Database management
+  - 3.8 Account management
+    - 3.8.1 CreateAccount
+    - 3.8.2 ResetAccountPassword
+    - 3.8.3 DescribeAccounts
+    - 3.8.4 ModifyAccountDescription
+  - 3.9 Security management
+    - 3.9.1 DescribeDBInstanceIPArrayList
+    - 3.9.2 ModifySecurityIps
+  - 3.10 Log management
+    - 3.10.1 DescribeSQLCollectorPolicy
+    - 3.10.2 DescribeSlowLogRecords
+    - 3.10.3 DescribeSQLLogFiles
+    - 3.10.4 ModifySQLCollectorPolicy
+    - 3.10.5 DescribeSQLLogRecords
+  - 3.11 Network management
+    - 3.11.1 AllocateInstancePublicConnection
+    - 3.11.2 DescribeDBInstanceNetInfo
+    - 3.11.3 ModifyDBInstanceConnectionString
+    - 3.11.4 ModifyDBInstanceNetworkType
+    - 3.11.5 ReleaseInstancePublicConnection
+    - 3.11.6 SwitchDBInstanceNetType
+  - 3.12 Tag management
+    - 3.12.1 TagResources
+    - 3.12.2 ListTagResources
+    - 3.12.3 UntagResources
+    - 3.12.4 DescribeTags
+  - 3.13 Appendix
+    - 3.13.1 Error codes
+      - 3.13.1.1 Client error codes
+      - 3.13.1.2 Server error codes
+    - 3.13.2 Instance types
+    - 3.13.3 Performance parameters table
+    - 3.13.4 Instance states
+    - 3.13.5 Terms
+- 4 Appendixes
+  - 4.1 STS overview
+    - 4.1.1 What is STS?
+    - 4.1.2 AssumeRole
 
-### Usage notes on development
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -38,9 +103,9 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-### Process of API calls
+### 1.2 Process of API calls
 
-AnalyticDB for PostgreSQL Devel Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting from Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway.
+Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting from Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway.
 
 **Note**
 
@@ -65,13 +130,11 @@ When you call an API operation, set the `<x-acs-organizationid>` parameter to th
 4. View the developer guide of the cloud service that you want to use to learn how to make
 the API call. View the developer guide of the cloud service that you want to use. This way, you can learn the features of API operations and how to call the API operations. For more information, see Usage notes on development documentation.
 5. Obtain the endpoint of the cloud service.
-AnalyticDB for PostgreSQL Devel
 6. Obtain an SDK of the cloud service and call an API operation.
-AnalyticDB for PostgreSQL Devel
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -98,9 +161,8 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 For more information, see the **Bind a virtual MFA device to enable MFA** topic in
 **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
-AnalyticDB for PostgreSQL Devel
 
-### Obtain the information and
+### 2.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -123,16 +185,9 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see GetOrganizationList in Apsara Uni- manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see ListResourceGroup in Apsara Uni- manager Management Console Developer Guide. |
-| x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
-
-AnalyticDB for PostgreSQL Devel AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You need to provide only a single type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
+AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You need to provide only a single type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
 **Background information**
 
@@ -142,11 +197,17 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 
 The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see GetOrganizationList in Apsara Uni- manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see ListResourceGroup in Apsara Uni- manager Management Console Developer Guide. |
+| x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
+
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
-AnalyticDB for PostgreSQL Devel
 2. In the upper-right corner of the homepage, click the profile picture and then select **User**
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
@@ -166,7 +227,7 @@ want to obtain.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 **tuple**
 
@@ -183,11 +244,10 @@ i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile pi
 **Information**.
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the STS AccessKey 3-tuple.
-AnalyticDB for PostgreSQL Devel
 
 **Note**
 
-In the following sample code, replace the parameters with the actual values. Delete the angle brackets (<>) in the final code. Parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace the parameter with the endpoint of STS. AnalyticDB for PostgreSQL Devel
+In the following sample code, replace the parameters with the actual values. Delete the angle brackets (<>) in the final code. Parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourRoleSessionName>: Replace the parameter with the name of the current session. <yourRoleArn>: Replace the parameter with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace the parameter with the endpoint of STS.
 
 ```java
 public static void main(String[] args) {
@@ -208,7 +268,7 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. Format: sts-
 vpc.${global:region}.${global:internet-domain}.
@@ -232,13 +292,11 @@ tep for the RAM role.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
     return null;
-}
 ```
 
 3. Use the AccessKey 3-tuple assigned by STS to call an operation of a service. The following
-sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS): AnalyticDB for PostgreSQL Devel
+sample code provides an example on how to use the AccessKey 3-tuple assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
@@ -281,18 +339,9 @@ e previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-
-AnalyticDB for PostgreSQL Devel
-
-### Obtain common header
+### 2.5 Obtain common header parameters
 
 **parameters**
 
@@ -327,22 +376,18 @@ Each cloud service must modify the service name and the procedure for obtaining 
 
 After you call an API operation that is used to query cloud service resource instances, the system returns the following parameters by default.
 
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+
 | DepartmentName | The name of the organization. |
 |---|---|
 | Department | The ID of the organization. |
 
-AnalyticDB for PostgreSQL Devel
+## 3 API reference
 
-| Parameter | Type | Requir ed | Description |
-|---|---|---|---|
-| Format | String | No | The response format. Valid values: JSON and XML. Default value: XML |
-| Version | String | Yes | The version of the API. Specify the version in the YYYY-MM-DD format. Set the value to 2016-05-03. |
-
-AnalyticDB for PostgreSQL Devel
-
-## API reference
-
-### Request structure
+### 3.1 Request structure
 
 To call an API operation, you must send an HTTP GET request to the API endpoint. You must add the request parameters that correspond to the API operation. The processing results are returned in the response.
 
@@ -366,13 +411,18 @@ When you make an API request, you must set the Action parameter to the operation
 
 Requests and responses are both encoded in UTF-8.
 
-### Common parameters
+### 3.2 Common parameters
 
 This topic describes the AnalyticDB for PostgreSQL common parameters.
 
 **Common request parameters**
 
 Common request parameters are parameters that every operation requires. Table 1. Common request parameters
+
+| Parameter | Type | Requir ed | Description |
+|---|---|---|---|
+| Format | String | No | The response format. Valid values: JSON and XML. Default value: XML |
+| Version | String | Yes | The version of the API. Specify the version in the YYYY-MM-DD format. Set the value to 2016-05-03. |
 
 | AccessKeyId | String | Yes | The AccessKey ID provided by Alibaba Cloud for you to access services. |
 |---|---|---|---|
@@ -382,15 +432,13 @@ Common request parameters are parameters that every operation requires. Table 1.
 | SignatureVersion | String | Yes | The version of the signature algorithm. Set the value to 1.0. |
 | SignatureNonce | String | Yes | A unique, random number used to prevent replay attacks. You must use different numbers for different requests. |
 
-AnalyticDB for PostgreSQL Devel Example
-
 ```
 https://gpdb.aliyuncs.com/ ?Format=xml &Version=2016-05-03 &Signature=Pcxxxxxxxxxxxxxxxxxxxxxx &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2019-06-01T12:00:00Z
 ```
 
 **Common response parameters**
 
-The system returns a unique RequestId for every API call, regardless of whether the call succeeds or fails. Example: AnalyticDB for PostgreSQL Devel
+The system returns a unique RequestId for every API call, regardless of whether the call succeeds or fails. Example:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?> <!—Root node of the response--> <OperationName+Response>
@@ -400,9 +448,13 @@ The system returns a unique RequestId for every API call, regardless of whether 
 </OperationName+Response>
 ```
 
-### Responses
+### 3.3 Responses
 
-API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. The response examples in this topic are formatted with line breaks or indents for a clear view. Actual response data is not formatted in the same manner as these examples. XML format The XML response includes a message that indicates whether the request is successful and the specific service data. Example:
+API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. The response examples in this topic are formatted with line breaks or indents for a clear view. Actual response data is not formatted in the same manner as these examples.
+
+**Sample success responses**
+
+XML format The XML response includes a message that indicates whether the request is successful and the specific service data. Example:
 
 ```xml
 <? xml version="1.0" encoding="utf-8"? > <!-The root node of the result--> <API name+Response>
@@ -412,16 +464,16 @@ API responses use the HTTP response format where a 2xx status code indicates a s
 </API name+Response>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
     /* The response data */
-}
 ```
 
-No result is returned after the API call fails. You can locate the cause of the error by referring to the error codes in Appendix. When a request fails, an HTTP response containing an HTTP status code (4xx or 5xx) is returned. The returned message body contains the specific error code and error message. The message body also contains a globally unique RequestId and the HostId of the site you request to access. If you are unable to find the error cause, you can contact Alibaba Cloud customer service and provide the HostId and RequestId to help solve the problem as quickly as possible. XML format AnalyticDB for PostgreSQL Devel
+**Sample error responses**
+
+No result is returned after the API call fails. You can locate the cause of the error by referring to the error codes in Appendix. When a request fails, an HTTP response containing an HTTP status code (4xx or 5xx) is returned. The returned message body contains the specific error code and error message. The message body also contains a globally unique RequestId and the HostId of the site you request to access. If you are unable to find the error cause, you can contact Alibaba Cloud customer service and provide the HostId and RequestId to help solve the problem as quickly as possible. XML format
 
 ```xml
 <? xml version="1.0" encoding="UTF-8"? > <Error>
@@ -432,18 +484,16 @@ No result is returned after the API call fails. You can locate the cause of the 
 </Error>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
-{
     "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF",
     "HostId": "gpdb.example.com",
     "Code": "UnsupportedOperation",
     "Message": "The specified action is not supported."
-}
 ```
 
-### Signature mechanism
+### 3.4 Signature mechanism
 
 AnalyticDB for PostgreSQLThe service authenticates every request. Therefore, whether you submit a request over HTTP or HTTPS, you must include a signature in the request. The system verifies the identity of the sender by using symmetric encryption with an AccessKey ID and an AccessKey Secret. Alibaba Cloud issues the AccessKey ID and AccessKey Secret to users (you can apply for and manage them on the Alibaba Cloud official website). The AccessKey ID identifies the user. The AccessKey Secret encrypts the signature string and serves as the key for the server to verify the signature string. You must keep the AccessKey Secret strictly confidential. Only you and Alibaba Cloud know it.AnalyticDB for PostgreSQL For more information about how to obtain an AccessKey, see Obtain an AccessKey pair. When you access the service, sign your request by performing the following steps:
 1. Use the request parameters to construct a canonicalized query string.
@@ -451,7 +501,7 @@ i. Sort all request parameters (including common request parameters described in
 
 **Note**
 
-If you use the GET method to submit the request, these parameters constitute the parameter part of the request URI (the part after ? connected by &). AnalyticDB for PostgreSQL Devel ii. Encode the name and value of each request parameter. Use the UTF-8 character set for URL encoding. The URL encoding rules are as follows: Do not encode uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), periods (.), or tildes (~). Encode other characters in the %XY format, where XY is the hexadecimal representation of the ASCII code of the character. For example, encode the double quotation mark (") as %22. Encode extended UTF-8 characters in the %XY%ZA… format. Note that you must encode the space character as %20, not as a plus sign (+).
+If you use the GET method to submit the request, these parameters constitute the parameter part of the request URI (the part after ? connected by &). ii. Encode the name and value of each request parameter. Use the UTF-8 character set for URL encoding. The URL encoding rules are as follows: Do not encode uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), periods (.), or tildes (~). Encode other characters in the %XY format, where XY is the hexadecimal representation of the ASCII code of the character. For example, encode the double quotation mark (") as %22. Encode extended UTF-8 characters in the %XY%ZA… format. Note that you must encode the space character as %20, not as a plus sign (+).
 
 **Note**
 
@@ -473,7 +523,7 @@ When you calculate the signature, use the AccessKey Secret held by the user appe
 4. Encode the HMAC value into a string by using Base64 encoding. This produces the
 signature value.
 5. Add the obtained signature value as the Signature parameter to the request parameters.
-This completes the request signing process. AnalyticDB for PostgreSQL Devel
+This completes the request signing process.
 
 **Note**
 
@@ -495,9 +545,9 @@ Assume that the AccessKey ID is testid and the AccessKey Secret is testsecret. T
 http://gpdb.example.com/?Timestamp=2012-12-26T10%3A33%3A56Z&Format=XML& AccessKeyId=testid&Action=DescribeDBInstances&SignatureMethod=HMAC-SHA1& RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&Version=2012-09-13&Sign atureVersion=1.0&Signature= Gfxxxxxxxxxxxxxxxxxxxx
 ```
 
-### RAM authorization
+### 3.5 RAM authorization
 
-#### Authorize resources by using RAM
+#### 3.5.1 Authorize resources by using RAM
 
 All instances you create by using your Alibaba Cloud Account are resources owned by that account. By default, the account has full operation permissions on its own resources. You can use Alibaba Cloud Resource Access Management (RAM) to grant RAM users access and management permissions to resources under your Alibaba Cloud Account.
 
@@ -505,7 +555,7 @@ All instances you create by using your Alibaba Cloud Account are resources owned
 
 Skip this section if you do not need to use RAM.
 
-#### Resources that can be authorized in
+#### 3.5.2 Resources that can be authorized in RAM
 
 **RAM**
 
@@ -514,6 +564,20 @@ Only one type of AnalyticDB for PostgreSQL resource can be authorized in RAM: DB
 | Resource | Resource description in the authorization policy |
 |---|---|
 | DBInstance | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid acs:gpdb:$regionid:$accountid:dbinstance/* acs:gpdb:* : *:dbinstance/* |
+
+**Note**
+
+$regionid: the ID of a region. Use an asterisk (*) to indicate the ID of any region. $dbinstanceid: the ID of a DBInstance. Use an asterisk (*) to indicate the ID of any instance. $accoutid: the userid of the resource owner. Use an asterisk (*) to indicate the ID of any account.
+
+#### 3.5.3 Operations that can be authorized in RAM
+
+**RAM**
+
+You can use Resource Access Management (RAM) to authorize access permissions on AnalyticDB for PostgreSQL resources. All operations except the DescribeRegions operation can be authorized.
+
+#### 3.5.4 Authentication rules of API operations
+
+When you call API operations to access AnalyticDB for PostgreSQL resources as a Resource Access Management (RAM) user, AnalyticDB for PostgreSQL checks with RAM whether the RAM user is granted the required permissions. The permissions to be checked are determined by the resources that are used by each API operation. For more information about authentication rules of each API operation, see Authentication rules of API operations. Table 1. Authentication rules of API operations
 
 | Operation | Authorization rule |
 |---|---|
@@ -524,22 +588,6 @@ Only one type of AnalyticDB for PostgreSQL resource can be authorized in RAM: DB
 | DescribeRegions | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 | DescribeResourceUsage | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 | ModifyDBInstanceConnectionMode | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
-
-AnalyticDB for PostgreSQL Devel
-
-**Note**
-
-$regionid: the ID of a region. Use an asterisk (*) to indicate the ID of any region. $dbinstanceid: the ID of a DBInstance. Use an asterisk (*) to indicate the ID of any instance. $accoutid: the userid of the resource owner. Use an asterisk (*) to indicate the ID of any account.
-
-#### Operations that can be authorized in
-
-**RAM**
-
-You can use Resource Access Management (RAM) to authorize access permissions on AnalyticDB for PostgreSQL resources. All operations except the DescribeRegions operation can be authorized.
-
-#### Authentication rules of API operations
-
-When you call API operations to access AnalyticDB for PostgreSQL resources as a Resource Access Management (RAM) user, AnalyticDB for PostgreSQL checks with RAM whether the RAM user is granted the required permissions. The permissions to be checked are determined by the resources that are used by each API operation. For more information about authentication rules of each API operation, see Authentication rules of API operations.
 
 | ModifyDBInstanceDescription | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 |---|---|
@@ -564,14 +612,18 @@ When you call API operations to access AnalyticDB for PostgreSQL resources as a 
 | ReleaseClusterPublicConnection | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 | ModifyDBInstanceConnectionString | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 
-AnalyticDB for PostgreSQL Devel
-
-|  | AnalyticDB for PostgreSQL Deve oper Guide·API referenc |
+|   | AnalyticDB for PostgreSQL Deve oper Guide·API referenc |
 |---|---|
 
 | ModifyDBInstanceNetworkType | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
 |---|---|
 | ReleaseInstancePublicConnection | acs:gpdb:$regionid: $accountid:dbinstance/$dbinstanceid |
+
+### 3.6 Instance management
+
+#### 3.6.1 CreateDBInstance
+
+Call CreateDBInstance to create an AnalyticDB for PostgreSQL instance. Request parameters
 
 | Parameter | Type | Require d | Example | Description |
 |---|---|---|---|---|
@@ -581,12 +633,6 @@ AnalyticDB for PostgreSQL Devel
 | EngineVersion | String | Yes | 6.0 | The version of the engine. Valid values: 6.0: the standard edition instance of version 6.0 6.0x: the vector edition instance of version 6.0 |
 | Engine | String | Yes | gpdb | The engine. Set the value to gpdb. |
 
-### Instance management
-
-#### CreateDBInstance
-
-Call CreateDBInstance to create an AnalyticDB for PostgreSQL instance. Request parameters
-
 | DBInstanceClass | String | No | gpdb.group.segs dx1 | The instance type. For more information, see Instance types. Important You must specify this parameter if DBInstanceMode is set to Classic. |
 |---|---|---|---|---|
 | SegStorageType | String | No | local ssd _ | The disk storage type. The value local ssd is supported. _ |
@@ -594,8 +640,6 @@ Call CreateDBInstance to create an AnalyticDB for PostgreSQL instance. Request p
 | InstanceSpec | String | No | 8C64G | The specification of compute nodes. Important You must specify this parameter if DBInstanceMode is set to StorageReserver. To create a vector edition instance, you must select a compute node specification higher than 8C64G. |
 | SegNodeNum | String | No | 2 | The number of compute nodes. Valid values: 2 to 512. The step size is 2. Important You must specify this parameter if DBInstanceMode is set to StorageReserver. |
 | MasterNodeNum | String | No | 1 | The number of master nodes. The value is fixed to 1. |
-
-AnalyticDB for PostgreSQL Devel
 
 | DBInstanceMode | String | No | StorageReserver | The resource type of the instance. Valid values: Classic: storage-compute integrated mode StorageReserver: reserved storage mode |
 |---|---|---|---|---|
@@ -605,8 +649,6 @@ AnalyticDB for PostgreSQL Devel
 | PayType | String | No | Postpaid | The billing method. Valid values: Postpaid: pay-as-you-go Prepaid: subscription Set this parameter to Postpaid. |
 | Period | String | No | Month | The unit of the subscription duration. Valid values: Month: month Year: year Note You must specify this parameter if PayType is set to Prepaid. |
 
-AnalyticDB for PostgreSQL Devel
-
 | UsedTime | String | No | 1 | The subscription duration. Valid values: If Period is set to Month, valid values are 1 to 9. If Period is set to Year, valid values are 1 to 3. Note You must specify this parameter if PayType is set to Prepaid. |
 |---|---|---|---|---|
 | ClientToken | String | Yes | 0c593ea1-3bea- 11e9-b96b- 88e9fe637760 | The idempotent check. |
@@ -615,29 +657,25 @@ AnalyticDB for PostgreSQL Devel
 | VSwitchId | String | No | vsw- bp1cpq8mr64pa ltkb**** | If InstanceNetworkType is set to VPC, you must specify VSwitchId. The zone of VSwitchId must be the same as that specified by ZoneId. |
 | CpuType | String | No | Intel | The chip architecture. Note Call the DescribeCpuTypes operation to query the chip architecture. |
 
-AnalyticDB for PostgreSQL Devel
-
 | SrcDbInstanceN ame | String | No | gp- bp12g4sd89h86 **** | The ID of the source instance for cloning. You must configure this parameter together with BackupSetId to restore a backup set from the source instance to a new instance. Note Call the DescribeDBInstances operation to view the instance IDs of AnalyticDB for PostgreSQL. |
 |---|---|---|---|---|
 | BackupSetId | String | No | 1111111111 | The ID of the backup set. You must configure this parameter together with SrcDbInstanceName. Note Call DescribeDataBackups to view the IDs of all backup sets under the destination instance. |
 | BackupVSwitchI d | String | No | vsw- bp4si98m0skpal tkb**** | The vSwitch ID of the standby zone. Use this parameter to create a multi- zone disaster recovery instance. |
 | BackupZoneId | String | No | cn-hangzhou-h | The ID of the standby zone. Use this parameter to create a multi-zone instance. Note Call the DescribeRegions operation to view available zones. |
 
+You do not need to configure other parameters, including PrivateIpAddress, ServerlessResource, IdleTime, ServerlessMode, MasterInstanceSpec, and CreateSampleData. These parameters do not take effect in Apsara Stack.
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | eagleEyeTrace Id | String | 0a3214031709881 2558046******* | The EagleEye ID. |
 | DBInstanceId | String | gp- ty9wj0p3qy68***** | The ID of the instance. |
 
-AnalyticDB for PostgreSQL Devel You do not need to configure other parameters, including PrivateIpAddress, ServerlessResource, IdleTime, ServerlessMode, MasterInstanceSpec, and CreateSampleData. These parameters do not take effect in Apsara Stack.
-
-**Response parameters**
-
 | asapiSuccess | Boolean | true | Indicates whether the ASAPI request succeeded. |
 |---|---|---|---|
 | asapiRequestI d | String | 3995B9A6-B3A9- 4BB7-AC2D- 3C54EA5FA854 | The ID of the ASAPI request. |
 | RequestId | String | 3995B9A6-B3A9- 4BB7-AC2D- 3C54EA5FA854 | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
 
 **Examples**
 
@@ -647,22 +685,40 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=CreateDBInstance &ClientToken=0c593ea1-3bea-11e9-b96b-88e9fe637760 &Engine=gpdb &EngineVersion=6.0 &RegionId=cn-hangzhou &SecurityIPList=127.0.0.1 &ZoneId=cn-hangzhou-i &DBInstanceMode=StorageReserver &SegNodeNum=2 &InstanceSpec=8C64G &SegStorageType=local_ssd &StorageType=local_ssd &PayType=Postpaid &VPCId=vpc-ty9c32muyvatf4b9***** &VSwitchId=vsw-ty94i9cgkocyhjpo***** &InstanceNetworkType=VPC &CpuType=Kunpeng &<Common Request Parameter>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<CreateDBInstanceResponse>
           <eagleEyeTraceId>0a32140317098812558046*******</eagleEyeTraceId>
           <asapiSuccess>true</asapiSuccess>
           <asapiRequestId>3995B9A6-B3A9-4BB7-AC2D-3C54EA5FA854</asapiRequestId>
           <RequestId>3995B9A6-B3A9-4BB7-AC2D-3C54EA5FA854</RequestId>
           <DBInstanceId>gp-ty9wj0p3qy68*****</DBInstanceId>
+</CreateDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+  "eagleEyeTraceId":"0a32140317098812558046*******"
+  "asapiSuccess":true
+  "asapiRequestId":"3995B9A6-B3A9-4BB7-AC2D-3C54EA5FA854"
+  "RequestId":"3995B9A6-B3A9-4BB7-AC2D-3C54EA5FA854"
+  "DBInstanceId":"gp-ty9wj0p3qy68*****"
+```
+
+#### 3.6.2 DescribeResourceUsage
+
+You can call this operation to query the disk space that is used by an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeResourc eUsage | The operation that you want to perform. Set the value to DescribeResourceUsage. |
 | DBInstanceId | String | Yes | gp-xxxxxxxxxxx | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -673,33 +729,8 @@ https://gpdb.aliyuncs.com/?Action=CreateDBInstance &ClientToken=0c593ea1-3bea-11
 | Engine | String | gpdb | The engine of the database. |
 | LogSize | Long | 201326592 | The disk space that is used to store log files. Unit: bytes. -1 indicates that no space is used. |
 
-AnalyticDB for PostgreSQL Devel
-
-```json
-{
-  "eagleEyeTraceId":"0a32140317098812558046*******"
-  "asapiSuccess":true
-  "asapiRequestId":"3995B9A6-B3A9-4BB7-AC2D-3C54EA5FA854"
-  "RequestId":"3995B9A6-B3A9-4BB7-AC2D-3C54EA5FA854"
-  "DBInstanceId":"gp-ty9wj0p3qy68*****"
-}
-```
-
-#### DescribeResourceUsage
-
-You can call this operation to query the disk space that is used by an instance.
-
-**Request parameters**
-
-**Response parameters**
-
 | RequestId | String | 860FBA9E-BFFD- 493E-91A1- 2349B9D74AE7 | The ID of the request. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL Devel
 
 **Examples**
 
@@ -709,9 +740,10 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=DescribeResourceUsage &DBInstanceId=gp-xxxxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeResourceUsageResponse>
           <DBInstanceId>gp-xxxxxxx</DBInstanceId>
           <RequestId>860FBA9E-BFFD-493E-91A1-2349B9D74AE7</RequestId>
           <LogSize>201326592</LogSize>
@@ -719,12 +751,12 @@ https://gpdb.aliyuncs.com/?Action=DescribeResourceUsage &DBInstanceId=gp-xxxxxxx
           <BackupSize>26624</BackupSize>
           <Engine>gpdb</Engine>
           <DiskUsed>285212672</DiskUsed>
+</DescribeResourceUsageResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "DBInstanceId":"gp-xxxxxxx",
     "RequestId":"860FBA9E-BFFD-493E-91A1-2349B9D74AE7",
     "LogSize":201326592,
@@ -732,14 +764,16 @@ https://gpdb.aliyuncs.com/?Action=DescribeResourceUsage &DBInstanceId=gp-xxxxxxx
     "BackupSize":26624,
     "Engine":"gpdb",
     "DiskUsed":285212672
-}
 ```
 
-#### ModifyDBInstanceMaintainTime
+#### 3.6.3 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an instance. Typically, the maintenance window is set to the off-peak hours to minimize the impact on services. Alibaba Cloud performs instance maintenance at the maintenance window that you specify.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | ModifyDBInstanc eMaintainTime | The operation that you want to perform. Set the value to ModifyDBInstanceMaintainTime. |
 |---|---|---|---|---|
@@ -747,13 +781,11 @@ You can call this operation to modify the maintenance window of an instance. Typ
 | EndTime | String | Yes | 03:00Z | The end time of the maintenance window. Example: 03:00Z. The end time must be later than the start time. |
 | StartTime | String | Yes | 02:00Z | The start time of the maintenance window. Example: 02:00Z. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CA9A34C8-AC95- 413B-AC6A- CEBF67429CCA | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -763,43 +795,38 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=gp-xxxxxxxx &EndTime=03:00Z &StartTime=02:00Z &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceMaintainTimeResponse>
            <RequestId>CA9A34C8-AC95-413B-AC6A-CEBF67429CCA</RequestId>
+</ModifyDBInstanceMaintainTimeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
    "RequestId": "CA9A34C8-AC95-413B-AC6A-CEBF67429CCA"
-}
 ```
 
-#### RestartDBInstance
+#### 3.6.4 RestartDBInstance
 
 You can call this operation to restart an instance.
 
 **Requestparameters**
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | gp-xxxxxxxxx | The ID of the instance. |
 | ClientToken | String | No | 0c593ea1-3bea- 11e9-b96b- 88e9fe637760 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | A7356493-7141- 4393-8951- CDA8AB5D67EC | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL Devel
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -809,40 +836,41 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=RestartDBInstance &DBInstanceId=gp-xxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<RestartDBInstance>
            <RequestId>A7356493-7141-4393-8951-CDA8AB5D67EC</RequestId>
+</RestartDBInstance>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId":"A7356493-7141-4393-8951-CDA8AB5D67EC"
-}
 ```
 
-#### AddBuDBInstanceRelation
+#### 3.6.5 AddBuDBInstanceRelation
 
 You call this operation to associate the BusinessUnit parameter to an instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | AddBuDBInstanc eRelation | The operation that you want to perform. Set the value to AddBuDBInstanceRelation. |
 |---|---|---|---|---|
 | BusinessUnit | String | Yes | BusinessUnit | The description of the business unit. |
 | DBInstanceId | String | Yes | gp-xxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BusinessUnit | String | BusinessUnit | The description of the business unit. |
 | DBInstanceNa me | String | gp-xxxxxx | The ID of the instance. |
 | RequestId | String | B4CAF581-2AC7- 41AD-8940- D56DF7AADF5B | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -852,25 +880,33 @@ Sample requests
 http(s)://gpdb.aliyuncs.com/? Action=AddBuDBInstanceRelation &DBInstanceId=gp-xxxxxx &BusinessUnit=BusinessUnit
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<AddBuDBInstanceRelationResponse>
       <RequestId>D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD</RequestId>
       <BusinessUnit>BusinessUnit</BusinessUnit>
       <DBInstanceName>gp-xxxxxx</DBInstanceName>
+</AddBuDBInstanceRelationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD",
   "BusinessUnit": "BusinessUnit",
   "DBInstanceName": "gp-xxxxxx"
-}
 ```
 
-### Database management
+### 3.7 Database management
+
+### 3.8 Account management
+
+#### 3.8.1 CreateAccount
+
+You can call this operation to create an account for a database.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -881,21 +917,11 @@ http(s)://gpdb.aliyuncs.com/? Action=AddBuDBInstanceRelation &DBInstanceId=gp-xx
 | DatabaseName | String | No | test01 | The name of the database. |
 | AccountDescripti on | String | No | testacc02 | The description of the account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D4D4BE8A-DD46- 440A-BFCD- EE31DA81C9DD | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
-
-### Account management
-
-#### CreateAccount
-
-You can call this operation to create an account for a database.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -905,43 +931,67 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pw1234 &DBInstanceId=gp-xxxxxxx &<Common request parameters>
 ```
 
-`XML` format
-
-| Parameter | Type | Requir ed |  | Example | Description |  |  |
-|---|---|---|---|---|---|---|---|
-| AccountName | String | Yes |  | testaccount 1 _ | The name of the account. |  |  |
-| AccountPasswor d | String | Yes |  | Testaccount 1 _ | The new password for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) + _ - = |  |  |
-|  |  |  |  |  |  | ! @ # $ % ^ & * ( ) + _ |  |
-|  |  |  |  |  | - = |  |  |
-| DBInstanceId | String | Yes |  | gp-xxxxxxxxx | The ID of the instance. |  |  |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 187C80FC-75C4- 477C-BBF2- A368A36D041C | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
+Sample success responses `XML` format
 
 ```xml
+<CreateAccountResponse>
            <RequestId>D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD</RequestId>
+</CreateAccountResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
 ```
 
-#### ResetAccountPassword
+#### 3.8.2 ResetAccountPassword
 
 You can call this operation to reset the password for your account in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed |   | Example | Description |   |   |
+|---|---|---|---|---|---|---|---|
+| AccountName | String | Yes |   | testaccount 1 _ | The name of the account. |   |   |
+| AccountPasswor d | String | Yes |   | Testaccount 1 _ | The new password for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) + _ - = |   |   |
+|   |   |   |   |   |   | ! @ # $ % ^ & * ( ) + _ |   |
+|   |   |   |   |   | - = |   |   |
+| DBInstanceId | String | Yes |   | gp-xxxxxxxxx | The ID of the instance. |   |   |
+
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 187C80FC-75C4- 477C-BBF2- A368A36D041C | The ID of the request. |
+
 **Examples**
+
+Sample requests
+
+```
+https://gpdb.aliyuncs.com/?Action=ResetAccountPassword &AccountName=testaccount_1 &AccountPassword=Testaccount_1 &DBInstanceId=gp-xxxxxxxxx &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<ResetAccountPasswordResponse>
+           <RequestId>187C80FC-75C4-477C-BBF2-A368A36D041C</RequestId>
+</ResetAccountPasswordResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId":"187C80FC-75C4-477C-BBF2-A368A36D041C"
+```
+
+#### 3.8.3 DescribeAccounts
+
+You can call this operation to query the information of a database account.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -949,38 +999,12 @@ You can call this operation to reset the password for your account in an instanc
 | DBInstanceId | String | Yes | gp-xxxxxxxxx | The ID of the instance. |
 | AccountName | String | No | onlyreadacc | The name of the account. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Accounts | Array of DBInstanceAcc ount | None | The information of the account, which is an array of DBInstanceAccount data. |
 | DBInstanceAcc ount | None | None | None |
-
-AnalyticDB for PostgreSQL Devel Sample requests
-
-```
-https://gpdb.aliyuncs.com/?Action=ResetAccountPassword &AccountName=testaccount_1 &AccountPassword=Testaccount_1 &DBInstanceId=gp-xxxxxxxxx &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-           <RequestId>187C80FC-75C4-477C-BBF2-A368A36D041C</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId":"187C80FC-75C4-477C-BBF2-A368A36D041C"
-}
-```
-
-#### DescribeAccounts
-
-You can call this operation to query the information of a database account.
-
-**Request parameters**
-
-**Response parameters**
 
 | AccountDescri ption | String | testacc01 | The description of the account. |
 |---|---|---|---|
@@ -988,8 +1012,6 @@ You can call this operation to query the information of a database account.
 | AccountStatus | String | 1 | The status of the account. Valid values: 0: The account is being created. 1: The account is in use. 3: The account is being deleted. |
 | DBInstanceId | String | gp-xxxxxxxx | The ID of the instance. |
 | RequestId | String | 7565770E-7C45- 462D-BA4A- 8A5396F2CAD1 | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
 
 **Examples**
 
@@ -999,9 +1021,10 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=DescribeAccounts &DBInstanceId=gp-xxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeAccountsResponse>
            <RequestId>7565770E-7C45-462D-BA4A-8A5396F2CAD1</RequestId>
              <Accounts>
                    <DBInstanceAccount>
@@ -1011,9 +1034,36 @@ https://gpdb.aliyuncs.com/?Action=DescribeAccounts &DBInstanceId=gp-xxxxxxxxx &<
                         <AccountDescription></AccountDescription>
                    </DBInstanceAccount>
              </Accounts>
+</DescribeAccountsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "Accounts": {
+      "DBInstanceAccount": [
+```
+
+`{`
+
+```json
+          "AccountDescription": "",
+          "DBInstanceId": "gp-xxxxxxx",
+          "AccountStatus": "1",
+          "AccountName": "testaccount_1"
+```
+
+`]` `},`
+
+```json
+    "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
+```
+
+#### 3.8.4 ModifyAccountDescription
+
+You can call this operation to modify the description of a database account in an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1021,48 +1071,11 @@ https://gpdb.aliyuncs.com/?Action=DescribeAccounts &DBInstanceId=gp-xxxxxxxxx &<
 | AccountName | String | Yes | testAccout | The name of the account. The account name must be unique and meet the following requirements: The name must start with a letter. The name can contain lowercase letters, digits, and underscores ( ). _ The name can be up to 16 characters in length. The name cannot contain reserved keywords. |
 | DBInstanceId | String | Yes | gp-xxxxxxxxx | The ID of the instance. |
 
-AnalyticDB for PostgreSQL Devel
-
-```json
-{
-    "Accounts": {
-      "DBInstanceAccount": [
-        {
-          "AccountDescription": "",
-          "DBInstanceId": "gp-xxxxxxx",
-          "AccountStatus": "1",
-          "AccountName": "testaccount_1"
-        }
-```
-
-]
-
-```json
-    },
-    "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
-  }
-```
-
-#### ModifyAccountDescription
-
-You can call this operation to modify the description of a database account in an instance.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 99BBBD5E-B5D8- 4FC8-B8BF- FB1A0A38BBA2 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| DBInstanceId | String | Yes | gp-xxxxxxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-AnalyticDB for PostgreSQL Devel
 
 **Examples**
 
@@ -1072,29 +1085,36 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=ModifyAccountDescription &AccountDescription=testAccoutdescribe &AccountName=testAccout &DBInstanceId=gp-xxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyAccountDescriptionResponse>
            <RequestId>99BBBD5E-B5D8-4FC8-B8BF-FB1A0A38BBA2</RequestId>
+</ModifyAccountDescriptionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "99BBBD5E-B5D8-4FC8-B8BF-FB1A0A38BBA2"
-}
 ```
 
-### Security management
+### 3.9 Security management
 
-#### DescribeDBInstanceIPArrayList
+#### 3.9.1 DescribeDBInstanceIPArrayList
 
 You can call this operation to query the list of one or more IP addresses that are allowed to access an instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| DBInstanceId | String | Yes | gp-xxxxxxxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Items | Array of DBInstanceIPA rray | None | The information of IP addresses that are allowed to access the instance, which is an array of DBInstanceIPArray data. |
 |---|---|---|---|
@@ -1104,8 +1124,6 @@ You can call this operation to query the list of one or more IP addresses that a
 | SecurityIPList | String | 127.0.0.1 | The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats: 0.0.0.0/0 10.23.12.24. This is an IP address. Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.24/24, where /24 indicates the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value in the range of 1 to 32 . |
 | RequestId | String | CB7AA0BF-BE41- 480E-A3DC- C97BF85A391B | The ID of the request. |
 
-AnalyticDB for PostgreSQL Devel
-
 **Examples**
 
 Sample requests
@@ -1114,16 +1132,10 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=gp-xxxxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifySecurityIp s | The operation that you want to perform. Set the value to ModifySecurityIps. |
-| DBInstanceId | String | Yes | gp-xxxxxxxxx | The ID of the instance. |
-
-AnalyticDB for PostgreSQL Devel
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceIPArrayListResponse>
   <Items>
         <DBInstanceIPArray>
               <DBInstanceIPArrayName>default</DBInstanceIPArrayName>
@@ -1132,47 +1144,51 @@ AnalyticDB for PostgreSQL Devel
         </DBInstanceIPArray>
   </Items>
   <RequestId>CB7AA0BF-BE41-480E-A3DC-C97BF85A391B</RequestId>
+</DescribeDBInstanceIPArrayListResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items":{
         "DBInstanceIPArray":[
-            {
+```
+
+`{`
+
+```json
               "DBInstanceIPArrayName":"default",
               "DBInstanceIPArrayAttribute":"hidden",
               "securityIPList":"127.0.0.1"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "RequestId":"CB7AA0BF-BE41-480E-A3DC-C97BF85A391B"
-}
 ```
 
-#### ModifySecurityIps
+#### 3.9.2 ModifySecurityIps
 
 You can call this operation to modify the IP addresses that are allowed to access an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not locked.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifySecurityIp s | The operation that you want to perform. Set the value to ModifySecurityIps. |
+| DBInstanceId | String | Yes | gp-xxxxxxxxx | The ID of the instance. |
 
 | SecurityIPList | String | Yes | 127.0.0.1 | The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats: 0.0.0.0/0 10.23.12.24. This is an IP address. Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.24/24, where /24 indicates the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value in the range of 1 to 32 . |
 |---|---|---|---|---|
 | DBInstanceIPArr ayName | String | No | Default | The name of the whitelist. If you do not enter a name, IP addresses are added to the default whitelist. Note You can create up to 50 whitelists for an instance. |
 | DBInstanceIPArr ayAttribute | String | No | hidden | The attribute of the IP address whitelist. By default, this parameter is empty. You can use this parameter to distinguish whitelists that have different attributes. The console does not display whitelists that have the hidden attribute. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 871C698F-B43D- 4D1D-ACD6- DF56B0F89978 | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -1182,104 +1198,100 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=ModifySecurityIps &DBInstanceId=gp-xxxxxxxxx &SecurityIPList=127.0.0.1 &<Common request parameters>
 ```
 
+Sample success responses `XML` format
+
+```xml
+<ModifySecurityIpsResponse>
+           <RequestId>871C698F-B43D-4D1D-ACD6-DF56B0F89978</RequestId>
+</ModifySecurityIpsResponse>
+```
+
+`JSON` format `{`
+
+```json
+  "RequestId":"871C698F-B43D-4D1D-ACD6-DF56B0F89978"
+```
+
+### 3.10 Log management
+
+#### 3.10.1 DescribeSQLCollectorPolicy
+
+You can call this operation to query whether the SQL collection feature is enabled for an instance.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSQLColl ectorPolicy | The operation that you want to perform. Set the value to DescribeSQLCollectorPolicy. |
 | DBInstanceId | String | Yes | gp-xxxxxxxxx | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | ABB39CC3-4488- 4857-905D- 2E4A051D0521 | The ID of the request. |
 | SQLCollectorSt atus | String | Enable | The status of SQL collection. Enable: SQL collection is enabled. Disabled: SQL collection is disabled. |
 
-AnalyticDB for PostgreSQL Devel `XML` format
-
-```xml
-           <RequestId>871C698F-B43D-4D1D-ACD6-DF56B0F89978</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-  "RequestId":"871C698F-B43D-4D1D-ACD6-DF56B0F89978"
-}
-```
-
-### Log management
-
-#### DescribeSQLCollectorPolicy
-
-You can call this operation to query whether the SQL collection feature is enabled for an instance.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |  |  |
-|---|---|---|---|---|---|---|
-| Action | String | Yes | DescribeSlowLo gRecords | The operation that you want to perform. Set the value to DescribeSlowLogRecords. |  |  |
-| DBInstanceId | String | Yes | gp-xxxxxxx | The ID of the instance. |  |  |
-| EndTime | String | Yes | 2018-07- 19T09:00:08Z | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. Example: 2011-06- 11T15:00Z. |  |  |
-|  |  |  |  |  | yyyy-MM- |  |
-| StartTime | String | Yes | 2018-07- 09T09:00:08Z | The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2011-06-11T15:00Z. |  |  |
-| SQLId | Long | No | 143242632 | The ID of the slow SQL query. |  |  |
-
-| :08Z | ddTHH:mm:ssZ |
-|---|---|
-
-AnalyticDB for PostgreSQL Devel
 
 ```
 https://gpdb.aliyuncs.com/?Action=DescribeSQLCollectorPolicy &DBInstanceId=gp-xxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeSQLCollectorPolicyResponse>
    <RequestId>ABB39CC3-4488-4857-905D-2E4A051D0521</RequestId>
    <SQLCollectorStatus>Enable</SQLCollectorStatus>
+</DescribeSQLCollectorPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"ABB39CC3-4488-4857-905D-2E4A051D0521",
     "SQLCollectorStatus":"Enable"
-}
 ```
 
-#### DescribeSlowLogRecords
+#### 3.10.2 DescribeSlowLogRecords
 
 Queries slow SQL query details of a database in an instance within a specific time range.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |   |   |
+|---|---|---|---|---|---|---|
+| Action | String | Yes | DescribeSlowLo gRecords | The operation that you want to perform. Set the value to DescribeSlowLogRecords. |   |   |
+| DBInstanceId | String | Yes | gp-xxxxxxx | The ID of the instance. |   |   |
+| EndTime | String | Yes | 2018-07- 19T09:00:08Z | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. Example: 2011-06- 11T15:00Z. |   |   |
+|   |   |   |   |   | yyyy-MM- |   |
+| StartTime | String | Yes | 2018-07- 09T09:00:08Z | The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2011-06-11T15:00Z. |   |   |
+| SQLId | Long | No | 143242632 | The ID of the slow SQL query. |   |   |
+
+| :08Z | ddTHH:mm:ssZ |
+|---|---|
 
 | DBName | String | No | test | The name of the database. |
 |---|---|---|---|---|
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Engine | String | gpdb | The database engine of the instance. |
-| Items | Array of SQLSlowRecor d |  | Details of the slow queries. |
-| SQLSlowRecor d |  |  |  |
+| Items | Array of SQLSlowRecor d |   | Details of the slow queries. |
+| SQLSlowRecor d |   |   |   |
 | DBName | String | test | The name of the database. |
 | ExecutionStart Time | String | 2018-07- 09T09:00:08Z | The beginning of the time range within which the query is executed. The time follows the ISO 8601 standard in the YYYY- MM-DDTHH:mm:ssZ format. The time is displayed in UTC. Example: 2011-06- 11T15:00:08Z. |
 | HostAddress | String | 127.0.0.1 | The IP address of the host that is used to connect to the database. |
 | LockTimes | Long | 12 | The lock duration of the query. Unit: seconds. |
 | ParseRowCoun ts | Long | 125 | The number of parsed rows. |
 | QueryTimes | Long | 123 | The execution duration of the query. Unit: seconds. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 | ReturnRowCou nts | Long | 1 | The number of entries returned. |
 |---|---|---|---|
@@ -1289,8 +1301,6 @@ AnalyticDB for PostgreSQL Devel
 | RequestId | String | 542BB8D6-4268- 45CC-A557- B03EFD7AB30A | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries returned. |
 
-AnalyticDB for PostgreSQL Devel
-
 **Examples**
 
 Sample requests
@@ -1299,9 +1309,10 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=DescribeSlowLogRecords &DBInstanceId=gp-xxxxxxx &EndTime=2018-07-19T09:00:08Z &StartTime=2018-07-09T09:00:08Z &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeSlowLogRecordsResponse>
       <RequestId>542BB8D6-4268-45CC-A557-B03EFD7AB30A</RequestId>
       <Engine>gpdb</Engine>
       <PageNumber>1</PageNumber>
@@ -1319,22 +1330,12 @@ https://gpdb.aliyuncs.com/?Action=DescribeSlowLogRecords &DBInstanceId=gp-xxxxxx
                   <ExecutionStartTime>2018-07-09T09:00:08Z</ExecutionStartTime>
             </SQLSlowRecord>
       </Items>
+</DescribeSlowLogRecordsResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeSQLLog Files | The operation that you want to perform. Set the value to DescribeSQLLogFiles. |
-| DBInstanceId | String | Yes | gp-xxxxxxxxxx | The ID of the instance. |
-| FileName | String | No | log20200202 | The name of the file. |
-| PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30 |
-| PageNumber | Integer | No | 1 | The number of the page to return. Valid values: any non-zero positive integer. Default value: 1. |
-
-AnalyticDB for PostgreSQL Devel
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"542BB8D6-4268-45CC-A557-B03EFD7AB30A",
     "Engine":"gpdb",
     "PageNumber":1,
@@ -1342,7 +1343,11 @@ AnalyticDB for PostgreSQL Devel
     "TotalRecordCount":1,
     "Items":{
         "SQLSlowRecord":[
-            {
+```
+
+`{`
+
+```json
                 "HostAddress":"127.0.0.1",
                 "DBName":"test",
                 "SQLText":" update test.zxb set id=0 limit 1",
@@ -1351,21 +1356,23 @@ AnalyticDB for PostgreSQL Devel
                 "ParseRowCounts":"125",
                 "ReturnRowCounts":"1",
                 "ExecutionStartTime":"2018-07-09T09:00:08Z"
-            }
 ```
 
-]
+`]`
 
-```
-    }
-}
-```
-
-#### DescribeSQLLogFiles
+#### 3.10.3 DescribeSQLLogFiles
 
 You can call this operation to query the list of SQL audit log files.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeSQLLog Files | The operation that you want to perform. Set the value to DescribeSQLLogFiles. |
+| DBInstanceId | String | Yes | gp-xxxxxxxxxx | The ID of the instance. |
+| FileName | String | No | log20200202 | The name of the file. |
+| PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30 |
+| PageNumber | Integer | No | 1 | The number of the page to return. Valid values: any non-zero positive integer. Default value: 1. |
 
 **Response parameters**
 
@@ -1384,8 +1391,6 @@ You can call this operation to query the list of SQL audit log files.
 | RequestId | String | 66E164C1-D7F2- 4D85-849D- E2883FCFFBA5 | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries. |
 
-AnalyticDB for PostgreSQL Devel
-
 **Examples**
 
 Sample requests
@@ -1394,12 +1399,10 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=DescribeSQLLogFiles &DBInstanceId=gp-xxxxxxxxxx &<Common request parameters>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL Devel `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeSQLLogFilesResponse>
   <Items>
         <LogFile>
               <FileID>1023423423</FileID>
@@ -1414,56 +1417,55 @@ AnalyticDB for PostgreSQL Devel `XML` format
   <TotalRecordCount>1</TotalRecordCount>
   <RequestId>66E164C1-D7F2-4D85-849D-E2883FCFFBA5</RequestId>
   <PageRecordCount>1</PageRecordCount>
+</DescribeSQLLogFilesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "LogFile": [
-            {
+```
+
+`{`
+
+```json
                 "FileID": "1023423423",
                 "LogDownloadURL": "xxxxxxx",
                 "LogEndTime": "2019-02-24T14:10Z",
                 "LogSize":"100210",
                 "LogStartTime": "2019-02-24T12:10Z",
                 "LogStatus": "Success"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "PageNumber": 1,
     "TotalRecordCount": 1,
     "RequestId": "66E164C1-D7F2-4D85-849D-E2883FCFFBA5",
     "PageRecordCount": 1
-}
 ```
 
-#### ModifySQLCollectorPolicy
+#### 3.10.4 ModifySQLCollectorPolicy
 
 You can call this operation to enable or disable the SQL collection feature for an instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | ModifySQLCollec torPolicy | The operation that you want to perform. Set the value to ModifySQLCollectorPolicy. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | gp-xxxxxxxx | The ID of the instance. |
 | SQLCollectorStat us | String | Yes | Enable | Specifies whether to enable or disable SQL collection. Enable: enables SQL collection. Disabled: disables SQL collection. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4FA1F1D1-50A6- 4F60-9A78- 5752F2076A53 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -1473,25 +1475,28 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=gp-xxxxxxxx &SQLCollectorStatus=Enable &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifySQLCollectorPolicyResponse>
            <RequestId>4FA1F1D1-50A6-4F60-9A78-5752F2076A53</RequestId>
+</ModifySQLCollectorPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId":"4FA1F1D1-50A6-4F60-9A78-5752F2076A53"
-}
 ```
 
-#### DescribeSQLLogRecords
+#### 3.10.5 DescribeSQLLogRecords
 
 You can call this operation to query the SQL audit logs generated for an instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | DescribeSQLLog Records | The operation that you want to perform. Set the value to DescribeSQLLogRecords. |
 |---|---|---|---|---|
@@ -1505,7 +1510,7 @@ You can call this operation to query the SQL audit logs generated for an instanc
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Valid values: any non-zero positive integer. Default value: 1. |
 
-AnalyticDB for PostgreSQL Devel
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1524,21 +1529,18 @@ AnalyticDB for PostgreSQL Devel
 | RequestId | String | 9B24F29F-BA7F- 47A3-838E- C6A993888388 | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries. |
 
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
-
 **Examples**
 
-Sample requests AnalyticDB for PostgreSQL Devel
+Sample requests
 
 ```
 https://gpdb.aliyuncs.com/?Action=DescribeSQLLogRecords &DBInstanceId=gp-xxxxxxx &StartTime=2018-07-09T04:50:20Z &EndTime=2018-07-09T08:50:20Z &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeSQLLogRecords>
   <Items>
         <SQLRecord>
               <AccountName>testacc</AccountName>
@@ -1555,15 +1557,19 @@ https://gpdb.aliyuncs.com/?Action=DescribeSQLLogRecords &DBInstanceId=gp-xxxxxxx
   <PageNumber>1</PageNumber>
   <RequestId>9B24F29F-BA7F-47A3-838E-C6A993888388</RequestId>
   <PageRecordCount>1</PageRecordCount>
+</DescribeSQLLogRecords>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "SQLRecord": [
-            {
+```
+
+`{`
+
+```json
                 "AccountName": "testacc",
                 "DBName": "testdb",
                 "ExecuteTime": "2018-07-09T08:50:20Z",
@@ -1572,19 +1578,24 @@ https://gpdb.aliyuncs.com/?Action=DescribeSQLLogRecords &DBInstanceId=gp-xxxxxxx
                 "SQLText": "update test.zxb set id=0 limit 1",
                 "ThreadID": "723",
                 "TotalExecutionTimes": "130"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "TotalRecordCount": 1,
     "PageNumber": 1,
     "RequestId": "9B24F29F-BA7F-47A3-838E-C6A993888388",
     "PageRecordCount": 1
-}
 ```
+
+### 3.11 Network management
+
+#### 3.11.1 AllocateInstancePublicConnection
+
+You can call this operation to specify a public endpoint of the instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1593,21 +1604,11 @@ https://gpdb.aliyuncs.com/?Action=DescribeSQLLogRecords &DBInstanceId=gp-xxxxxxx
 | DBInstanceId | String | Yes | gp-xxxxxxxx | The ID of the instance. |
 | Port | String | Yes | 3432 | The port associated with the endpoint. Valid values: 3200 to 3999. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | ADD6EA90-EECB- 4C12-9F26- 0B6DB58710EF | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
-
-### Network management
-
-#### AllocateInstancePublicConnection
-
-You can call this operation to specify a public endpoint of the instance.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -1617,17 +1618,29 @@ Sample requests
 http(s)://gpdb.aliyuncs.com/? Action=AllocateInstancePublicConnection &ConnectionStringPrefix=gp-xxxxxxxx &DBInstanceId=gp-xxxxxxxx &Port=3432 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>ADD6EA90-EECB-4C12-9F26-0B6DB58710EF</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "ADD6EA90-EECB-4C12-9F26-0B6DB58710EF"
+```
+
+#### 3.11.2 DescribeDBInstanceNetInfo
+
+You can call this operation to query the connection information of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | gp-xxxxxxxxxx | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1640,27 +1653,9 @@ http(s)://gpdb.aliyuncs.com/? Action=AllocateInstancePublicConnection &Connectio
 | VPCId | String | vpc-xxxxxxx | The ID of the VPC. |
 | VSwitchId | String | vsw-xxxxxxxx | The ID of the vSwitch. Multiple IDs are separated by commas (,). |
 
-AnalyticDB for PostgreSQL Devel
-
-```json
-{
-    "RequestId": "ADD6EA90-EECB-4C12-9F26-0B6DB58710EF"
-}
-```
-
-#### DescribeDBInstanceNetInfo
-
-You can call this operation to query the connection information of an instance.
-
-**Request parameters**
-
-**Response parameters**
-
 | InstanceNetwo rkType | String | Classic | The network type of the instance. Valid values: Classic VPC |
 |---|---|---|---|
 | RequestId | String | 7565770E-7C45- 462D-BA4A- 8A5396F2CAD1 | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
 
 **Examples**
 
@@ -1670,9 +1665,10 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=gp-xxxxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceNetInfoResponse>
   <instanceNetworkType>Classic</instanceNetworkType>
   <DBInstanceNetInfos>
         <DBInstanceNetInfo>
@@ -1685,9 +1681,39 @@ https://gpdb.aliyuncs.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=gp-xxx
         </DBInstanceNetInfo>
   </DBInstanceNetInfos>
   <RequestId>7565770E-7C45-462D-BA4A-8A5396F2CAD1</RequestId>
+</DescribeDBInstanceNetInfoResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "instanceNetworkType": "Classic",
+    "DBInstanceNetInfos": {
+        "DBInstanceNetInfo": [
+```
+
+`{`
+
+```json
+                "DBInstanceNetType": "1",
+                "connectionString": "gp-xxxxxxx.gpdb.rds.aliyuncs.com",
+                "ipAddress": "127.0.0.1",
+                "port": "3432",
+                "VPCId": "vpc-xxxxxxxxx",
+                "VSwitchId": "vsw-xxxxxxx"
+```
+
+`]` `},`
+
+```json
+    "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
+```
+
+#### 3.11.3 ModifyDBInstanceConnectionString
+
+You can call this operation to modify the internal or public endpoint of an instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1697,44 +1723,39 @@ https://gpdb.aliyuncs.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=gp-xxx
 | DBInstanceId | String | Yes | gp-xxxxxxx | The ID of the instance. |
 | Port | String | Yes | 3432 | The port to be used by the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 29B0BF34-D069- 4495-92C7- FA6D94528A9E | The ID of the request. |
 
-AnalyticDB for PostgreSQL Devel
+**Examples**
 
-```json
-{
-    "instanceNetworkType": "Classic",
-    "DBInstanceNetInfos": {
-        "DBInstanceNetInfo": [
-            {
-                "DBInstanceNetType": "1",
-                "connectionString": "gp-xxxxxxx.gpdb.rds.aliyuncs.com",
-                "ipAddress": "127.0.0.1",
-                "port": "3432",
-                "VPCId": "vpc-xxxxxxxxx",
-                "VSwitchId": "vsw-xxxxxxx"
-            }
+Sample requests
+
+```
+https://gpdb.aliyuncs.com/?Action=ModifyDBInstanceConnectionString &ConnectionStringPrefix=gp-xxxxxxxx &CurrentConnectionString=gp-xxxxxxx.gpdb.rds.aliyuncs.com &DBInstanceId=gp-xxxxxxx &Port=3432 &<Common request parameters>
 ```
 
-]
+Sample success responses `XML` format
 
-```json
-    },
-    "RequestId": "7565770E-7C45-462D-BA4A-8A5396F2CAD1"
-}
+```xml
+<ModifyDBInstanceConnectionStringResponse>
+           <RequestId>29B0BF34-D069-4495-92C7-FA6D94528A9E</RequestId>
+</ModifyDBInstanceConnectionStringResponse>
 ```
 
-#### ModifyDBInstanceConnectionString
+`JSON` format `{`
 
-You can call this operation to modify the internal or public endpoint of an instance.
+```json
+ "RequestId": "29B0BF34-D069-4495-92C7-FA6D94528A9E"
+```
+
+#### 3.11.4 ModifyDBInstanceNetworkType
+
+You can call this operation to switch the network type of an instance between VPC and classic network.
 
 **Request parameters**
-
-**Response parameters**
-
-**Examples**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1743,48 +1764,14 @@ You can call this operation to modify the internal or public endpoint of an inst
 | VPCId | String | No | vpc-xxxxxxxx | The ID of the VPC. |
 | VSwitchId | String | No | vsw-xxxxxxxx | The ID of the vSwitch. This parameter is required when the VPCId parameter is specified. |
 
-AnalyticDB for PostgreSQL Devel Sample requests
-
-```
-https://gpdb.aliyuncs.com/?Action=ModifyDBInstanceConnectionString &ConnectionStringPrefix=gp-xxxxxxxx &CurrentConnectionString=gp-xxxxxxx.gpdb.rds.aliyuncs.com &DBInstanceId=gp-xxxxxxx &Port=3432 &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-<ModifyDBInstanceConnectionStringResponse>
-           <RequestId>29B0BF34-D069-4495-92C7-FA6D94528A9E</RequestId>
-</ModifyDBInstanceConnectionStringResponse>
-```
-
-`JSON` format
-
-```json
-{
- "RequestId": "29B0BF34-D069-4495-92C7-FA6D94528A9E"
-}
-```
-
-#### ModifyDBInstanceNetworkType
-
-You can call this operation to switch the network type of an instance between VPC and classic network.
-
-**Request parameters**
-
 | PrivateIpAddress | String | No | 192.168.0.10 | The private IP address of the instance. You can specify an IP address of the VPC to which the vSwitch belongs. If no IP address is specified, the system assigns an IP address based on the VPC ID and vSwitch ID. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2d0c35a9-f5da- 44ba-852d- 741e27b7eb0b | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| CurrentConnecti onString | String | Yes | gp- xxxxxxx.gpdb.rd s.aliyuncs.com | The public endpoint of the instance. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -1794,40 +1781,38 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=gp-xxxxxxxx &InstanceNetworkType=VPC &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceNetworkTypeResponse>
            <RequestId>2d0c35a9-f5da-44ba-852d-741e27b7eb0b</RequestId>
+</ModifyDBInstanceNetworkTypeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId":"2d0c35a9-f5da-44ba-852d-741e27b7eb0b"
-}
 ```
 
-#### ReleaseInstancePublicConnection
+#### 3.11.5 ReleaseInstancePublicConnection
 
 You can call this operation to release the public endpoint of an instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| CurrentConnecti onString | String | Yes | gp- xxxxxxx.gpdb.rd s.aliyuncs.com | The public endpoint of the instance. |
+
 | DBInstanceId | String | Yes | gp-xxxxxxxx | The ID of the instance. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9CEF7037-4158- 4A65-BEC7- 2A1541F6FE74 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SwitchDBInstanc eNetType | The operation that you want to perform. Set the value to SwitchDBInstanceNetType. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -1837,7 +1822,7 @@ Sample requests
 https://gpdb.aliyuncs.com/?Action=ReleaseInstancePublicConnection &CurrentConnectionString=gp-xxxxxxx.gpdb.rds.aliyuncs.com &DBInstanceId=gp-xxxxxxxx &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <ReleaseInstancePublicConnectionResponse>
@@ -1845,35 +1830,32 @@ https://gpdb.aliyuncs.com/?Action=ReleaseInstancePublicConnection &CurrentConnec
 </ReleaseInstancePublicConnectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
    "RequestId": "9CEF7037-4158-4A65-BEC7-2A1541F6FE74"
-}
 ```
 
-#### SwitchDBInstanceNetType
+#### 3.11.6 SwitchDBInstanceNetType
 
 You can call this operation to switch between internal and public endpoints.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SwitchDBInstanc eNetType | The operation that you want to perform. Set the value to SwitchDBInstanceNetType. |
 
 | ConnectionStrin gPrefix | String | Yes | test1234 | The prefix of the custom endpoint. The prefix can be up to 30 characters in length and can contain letters, digits, and hyphens (-). It must start with a letter. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | Port | String | Yes | 3306 | The port associated with the endpoint. Valid values: 3001 to 3999. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FA67B751-2A2D- 470C-850B- D6B93699D35C | The ID of the request. |
-
-| > Document Versio | n: 20260630 |  |  | 6 |
-|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
@@ -1883,7 +1865,7 @@ Sample requests
 http(s)://[Endpoint]/? Action=SwitchDBInstanceNetType &ConnectionStringPrefix=test1234 &DBInstanceId=rm-uf6wjk5xxxxxxx &Port=3306 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>FA67B751-2A2D-470C-850B-D6B93699D35C</RequestId>
@@ -1895,13 +1877,16 @@ http(s)://[Endpoint]/? Action=SwitchDBInstanceNetType &ConnectionStringPrefix=te
 {"RequestId":"FA67B751-2A2D-470C-850B-D6B93699D35C"}
 ```
 
-### Tag management
+### 3.12 Tag management
 
-#### TagResources
+#### 3.12.1 TagResources
 
 Add tags to specific instances.
 
 **Request parameters**
+
+| > Document Versio | n: 20260630 |   |   | 6 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1911,32 +1896,21 @@ Add tags to specific instances.
 | Tag.N.Key | String | No | test | The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length. Tag keys cannot contain http:// or https:// and cannot start with acs: or aliyun. |
 | Tag.N.Value | String | No | testapi | The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length. Tag values cannot contain http:// or https:// and cannot start with acs: or aliyun. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 23DD5EDB-EAC7- 44A5-A68E- 798BB085D27F | The ID of the request. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ResourceId.1=dbaudit-cn-78v1gcxxxxx &ResourceType=INSTANCE &<Common request parameters>
+http(s)://[Endpoint]/?Action=TagResources &RegionId=cn-hangzhou &ResourceId.1=dbaudit-cn-78v1gcxxxxx &ResourceType=INSTANCE &<Common request parameters>
 ```
 
-`XML` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
-| ResourceType | String | Yes | instance | The type of the resource. Valid values: instance : reserved storage mode ALIYUN::GPDB::INSTANCE : elastic storage mode |
-| ResourceId.N | RepeatL ist | No | gp-xxxxxxxxxx | The ID of the instance. |
-| Tag.N.Key | String | No | TestKey | The key of tag N. The tag key can contain 1 to 128 characters in length. Valid values of N: 1 to 20. You can use Tag.N to query instances that have specific tags bound. Tag.N consists of Tag.N.Key and Tag.N.Value. If you specify only Tag.N.Key , the instances that contain all the specified tag keys are returned. If you specify only Tag.N.Value , InvalidParameter.TagValue is returned. If you specify multiple tag key- value pairs at a time, the instances that contain all the specified tag keys are returned. |
-
-AnalyticDB for PostgreSQL Devel
+Sample success responses `XML` format
 
 ```xml
 <RequestId>23DD5EDB-EAC7-44A5-A68E-798BB085D27F</RequestId>
@@ -1948,15 +1922,24 @@ AnalyticDB for PostgreSQL Devel
 {"RequestId":"23DD5EDB-EAC7-44A5-A68E-798BB085D27F"}
 ```
 
-#### ListTagResources
+#### 3.12.2 ListTagResources
 
 You can call this operation to query tags that are bound to one or more instances.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
+| ResourceType | String | Yes | instance | The type of the resource. Valid values: instance : reserved storage mode ALIYUN::GPDB::INSTANCE : elastic storage mode |
+| ResourceId.N | RepeatL ist | No | gp-xxxxxxxxxx | The ID of the instance. |
+| Tag.N.Key | String | No | TestKey | The key of tag N. The tag key can contain 1 to 128 characters in length. Valid values of N: 1 to 20. You can use Tag.N to query instances that have specific tags bound. Tag.N consists of Tag.N.Key and Tag.N.Value. If you specify only Tag.N.Key , the instances that contain all the specified tag keys are returned. If you specify only Tag.N.Value , InvalidParameter.TagValue is returned. If you specify multiple tag key- value pairs at a time, the instances that contain all the specified tag keys are returned. |
+
 | Tag.N.Value | String | No | TestValue | The value of tag N. The tag value can contain 1 to 128 characters in length. Valid values of N: 1 to 20. |
 |---|---|---|---|---|
 | NextToken | String | No | caeba0bbb2be0 3f84eb48b699f0 a4883 | The token used to perform the next query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1969,19 +1952,45 @@ You can call this operation to query tags that are bound to one or more instance
 | TagKey | String | TestKey | The tag key of the instance. |
 | TagValue | String | TestValue | The tag value of the instance. |
 
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ResourceType=instance &<Common request parameters>
+http(s)://[Endpoint]/? Action=ListTagResources &RegionId=cn-hangzhou &ResourceType=instance &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
+
+```xml
+<RequestId>5414A4E5-4C36-4461-95FC-23757A20B5F8</RequestId> <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken> <TagResources>
+    <TagResource>
+        <ResourceId>gp-xxxxxxxxxx</ResourceId>
+        <TagKey>TestKey</TagKey>
+        <ResourceType>instance</ResourceType>
+        <TagValue>TestValue</TagValue>
+    </TagResource>
+</TagResources>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "5414A4E5-4C36-4461-95FC-23757A20B5F8",
+    "NextToken": "caeba0bbb2be03f84eb48b699f0a4883",
+    "TagResources": {
+        "TagResource": {
+            "ResourceId": "gp-xxxxxxxxxx",
+            "TagKey": "TestKey",
+            "ResourceType": "instance",
+            "TagValue": "TestValue"
+```
+
+#### 3.12.3 UntagResources
+
+Removes tags from specific instances.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1990,65 +1999,24 @@ Sample requests
 | ResourceType | String | Yes | INSTANCE | The type of the resource. Set the value to INSTANCE. INSTANCE indicates reserved storage mode instance. |
 | TagKey.N | RepeatL ist | No | 456 | The key of tag N. Valid values of N: 1 to 20. |
 
-AnalyticDB for PostgreSQL Devel
-
-```xml
-<RequestId>5414A4E5-4C36-4461-95FC-23757A20B5F8</RequestId> <NextToken>caeba0bbb2be03f84eb48b699f0a4883</NextToken>
-    <TagResource>
-        <ResourceId>gp-xxxxxxxxxx</ResourceId>
-        <TagKey>TestKey</TagKey>
-        <ResourceType>instance</ResourceType>
-        <TagValue>TestValue</TagValue>
-    </TagResource>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "5414A4E5-4C36-4461-95FC-23757A20B5F8",
-    "NextToken": "caeba0bbb2be03f84eb48b699f0a4883",
-        "TagResource": {
-            "ResourceId": "gp-xxxxxxxxxx",
-            "TagKey": "TestKey",
-            "ResourceType": "instance",
-            "TagValue": "TestValue"
-        }
-    }
-}
-```
-
-#### UntagResources
-
-Removes tags from specific instances.
-
-**Request parameters**
-
 | All | Boolean | No | false | Specifies whether to remove all tags from the instances. When the TagKey.N parameter is specified, set the All parameter to false to remove the specified tags from the instances. When the TagKey.N parameter is not specified, set the All parameter to true to remove all tags from the instances. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 8EC13467-A84C- 401F-A4A0- AF893066FBA1 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
-| ResourceType | String | Yes | instance | The type of the resource. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ResourceId.1=dbaudit-cn-test &ResourceType=INSTANCE &<Common request parameters>
+http(s)://[Endpoint]/?Action=UntagResources &RegionId=cn-hangzhou &ResourceId.1=dbaudit-cn-test &ResourceType=INSTANCE &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>8EC13467-A84C-401F-A4A0-AF893066FBA1</RequestId>
@@ -2060,32 +2028,35 @@ Sample requests
 {"RequestId":"8EC13467-A84C-401F-A4A0-AF893066FBA1"}
 ```
 
-#### DescribeTags
+#### 3.12.4 DescribeTags
 
 You can call this operation to query the tags of an instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. |
+| ResourceType | String | Yes | instance | The type of the resource. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-| Tags | Array of Tag |  | The information of the tag, which is an array of tag key and tag value. |
+| Tags | Array of Tag |   | The information of the tag, which is an array of tag key and tag value. |
 | TagKey | String | user | The tag key of the instance. |
 | TagValue | String | admin | The tag value of the instance. |
-
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ResourceType=instance
+http(s)://gpdb.aliyuncs.com/? Action=DescribeTags &RegionId=cn-hangzhou &ResourceType=instance
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId> <Tags>
@@ -2094,27 +2065,29 @@ Sample requests
 </Tags>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64",
     "Tags": [
-        {
+```
+
+`{`
+
+```json
             "TagKey": "test",
             "TagValue": "admin"
-        }
 ```
 
-]
+`]`
 
-```
-}
-```
+### 3.13 Appendix
 
-### Appendix
+#### 3.13.1 Error codes
 
-#### Error codes
+##### 3.13.1.1 Client error codes
+
+**Common errors**
 
 | Error code | Description | HTTP status code |
 |---|---|---|
@@ -2138,16 +2111,12 @@ Sample requests
 | InsufficientBalance | Your account does not have enough balance. | 400 |
 | Forbidden.Authenticati on | This operation is forbidden by Aliyun Realname Authentication system. | 403 |
 
-AnalyticDB for PostgreSQL Devel
-
-##### Client error codes
-
-**Common errors**
-
 | Invalid<parameter name>.ValueNotSupp orted | The specified parameter "parameter name" is not valid. | 400 |
 |---|---|---|
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter "parameter name n" is not valid. | 400 |
+
+**Specific errors**
 
 | Error code | Description | HTTP status code |
 |---|---|---|
@@ -2167,10 +2136,6 @@ AnalyticDB for PostgreSQL Devel
 | OperationDenied.DBIn stanceStatus | The operation is not permitted due to instance status. | 403 |
 | DependencyViolation | The operation is not permitted due to instance mount read only or guard instance. | 403 |
 | InvalidConnectionStrin gPrefix.Duplicate | The connection string is not in the available range or occupied. | 400 |
-
-AnalyticDB for PostgreSQL Devel
-
-**Specific errors**
 
 | QuotaExceeded.Switch Time | The quota of switch time exceed. | 400 |
 |---|---|---|
@@ -2194,8 +2159,6 @@ AnalyticDB for PostgreSQL Devel
 | InvalidDBInfo.Malform ed | The specified parameter "DBInfo" is not valid or db not exist. | 400 |
 | OperationDenied.Regi on | The operation is not permitted due to different region. | 403 |
 
-AnalyticDB for PostgreSQL Devel
-
 | OperationDenied.Engi ne | The operation is not permitted due to different engine. | 403 |
 |---|---|---|
 | OperationDenied.DBIn stanceId | The operation is not permitted due to DBInstanceId and SourceDBInstanceId is same. | 403 |
@@ -2218,8 +2181,6 @@ AnalyticDB for PostgreSQL Devel
 | OperationDenied.Tem pDBInstanceExists | You cannot perform this operation; a temp instance exists. | 403 |
 | Forbidden.Authenticati on | The operation is forbidden by Aliyun Realname Authentication System. | 403 |
 
-AnalyticDB for PostgreSQL Devel
-
 | IncorrectDBInstanceCo nnType | Current DB instance conn type does not support this operation. | 404 |
 |---|---|---|
 | IncorrecttVpcId.Mismat ch | The specified parameter "VpcId" is not valid. | 400 |
@@ -2241,8 +2202,6 @@ AnalyticDB for PostgreSQL Devel
 | InvalidPort.Malformed | Specified port is not valid. | 400 |
 | InvalidPrivateIpAddres s.Duplicated | Specified private IP address is duplicated. | 400 |
 | InvalidPrivateIpAddres s.Mismatch | Specified private IP address is not in the CIDR block of virtual switch. | 400 |
-
-AnalyticDB for PostgreSQL Devel
 
 | InvalidVPCId.NotFound | The specified connection string or port does not match the current network type. | 400 |
 |---|---|---|
@@ -2267,8 +2226,6 @@ AnalyticDB for PostgreSQL Devel
 | IncorrectDBInstanceSt ate | CurrentDB instance state does not support this operation. | 403 |
 | IncorrectDBInstanceTy pe | CurrentDB instance type does not support this operation. | 400 |
 
-AnalyticDB for PostgreSQL Devel
-
 | IncorrectDBInstanceLo ckMode | CurrentDB instance lock mode does not support this operation. | 400 |
 |---|---|---|
 | ParamNotSupportedFo rCurrentVersion | Parameteris not supported for current version. | 400 |
@@ -2289,22 +2246,26 @@ AnalyticDB for PostgreSQL Devel
 | ProxyConnectionPersis tParametersInvalid | ProxyConnectionPersist parameter out of range. | 400 |
 | InvalidConfigValue | parameter config table not exits or data error. | 400 |
 
+##### 3.13.1.2 Server error codes
+
 | Error code | Error message | HTTP status code |
 |---|---|---|
-
-AnalyticDB for PostgreSQL Devel
-
-##### Server error codes
 
 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | 503 |
 |---|---|---|
 | InternalError | The request processing has failed due to some unknown error, exception or failure. The request processing | 500 |
+
+#### 3.13.2 Instance types
+
+Table 1. Instance types
 
 | Instance type | vCPU | Memory (MB) | Storage space (GB) | Storage space (Mbit/s) | Disk type |
 |---|---|---|---|---|---|
 | gpdb.group.segsdx 1 | 1 | 8,192 | 80 | 150 | SSD |
 | gpdb.group.segsdx 2 | 2 | 16,384 | 160 | 300 | SSD |
 | gpdb.group.segsdx 16 | 16 | 131,072 | 1,280 | 2,400 | SSD |
+
+#### 3.13.3 Performance parameters table
 
 | Parameter name | Metric | Unit | Description |
 |---|---|---|---|
@@ -2314,12 +2275,6 @@ AnalyticDB for PostgreSQL Devel
 | node master conne _ _ ction count _ | Coordinator node connection count | None | The number of connections to the Master node. |
 | node segment con _ _ nection count _ | Compute node connection count | None | The number of connections to the Segment node. |
 | node segment wor _ _ kfile used mb _ _ | Size of temporary disk-spilled files | MB | The size of files temporarily written to disk when computations on the Segment node exceed available memory. |
-
-AnalyticDB for PostgreSQL Devel
-
-#### Instance types
-
-#### Performance parameters table
 
 | node cpu used per _ _ _ cent | CPU utilization | % | The CPU utilization of the Master node or Segment node. |
 |---|---|---|---|
@@ -2332,12 +2287,16 @@ AnalyticDB for PostgreSQL Devel
 | adbpg rsq memory _ _ | Memory usage for resource queue queries | Byte | Represents the total memory used by all queries allowed to run under the current queue. rsqMemoryLimit is the total memory limit. A value of -1 means no limit. rsqMemoryValue represents the memory used by running queries. |
 | adbpg rsq waiters _ _ | Number of waiting queries in resource queue | None | rsqwaiters represents the number of queries belonging to the current queue that are waiting due to insufficient resources and cannot acquire a slot in the resource queue. When the number of running queries reaches the concurrency limit, new queries entering the queue may be unable to obtain a resource group operation and must wait until resources become available to support new queries. These queries appear in the waiting state in the pg stat activity view. _ _ |
 
-AnalyticDB for PostgreSQL Devel
-
 | adbpg rsq holders _ _ | Number of running queries in resource queue | None | rsqholders represents the number of statements belonging to the current queue that have acquired a resource queue slot and can begin execution. This metric shows the number of queries that have obtained a slot in the queue, but it does not necessarily mean these queries are in an active state. During execution, these queries may continue to wait for other system resources (such as row locks), and during this time, the resource queue slots they occupy will not be released. Note In most cases, the value of rsqcountvalue equals rsqholders. In rare cases, rsqholders may be greater than rsqcountvalue, which can occur if a system anomaly causes a query to finish execution without releasing its resource queue lock. If a significant discrepancy between rsqholders and rsqcountvalue persists for a long time, contact an engineer for troubleshooting. |
 |---|---|---|---|
 | adbpg db qps _ _ | Instance QPS | None | The QPS metric indicates the total number of read queries processed per second by the database instance. Query statements include SELECT, SELECT INTO, SELECT FOR UPDATE, and FETCH statements. |
 | adbpg db tps _ _ | Instance TPS | None | The TPS metric indicates the total number of write operations processed per second by the database instance. Write operations include INSERT, UPDATE, DELETE, and INSERT INTO SELECT statements. |
+
+Table 1. Performance parameters table
+
+#### 3.13.4 Instance states
+
+Table 1. Instance states
 
 | State | Description |
 |---|---|
@@ -2346,10 +2305,6 @@ AnalyticDB for PostgreSQL Devel
 | Deleting | The instance is being deleted. |
 | Rebooting | The instance is being restarted. |
 | DBInstanceClassChanging | The instance specifications are being changed. |
-
-AnalyticDB for PostgreSQL Devel
-
-#### Instance states
 
 | Transfering | The instance is being migrated. |
 |---|---|
@@ -2362,6 +2317,10 @@ AnalyticDB for PostgreSQL Devel
 | DBInstanceNetTypeChanging | The network type is being changed. |
 | GuardSwitching | The instance is undergoing a failover. |
 
+#### 3.13.5 Terms
+
+Table 1. Terms
+
 | Term | Full name | Description |
 |---|---|---|
 | DBInstance | database instance | A database service process that takes up physical memory independently. You can configure different memory size and disk space. The memory size determines the performance of the instance, such as the IOPS and connections. |
@@ -2369,30 +2328,17 @@ AnalyticDB for PostgreSQL Devel
 | Group | compute node | A compute node is the minimum computing and resource storage unit of an AnalyticDB for PostgreSQL database that you can purchase. |
 | DBInstanceClas s | compute node type | The types are as follows: gpdb.group.segsdx1: 1 vCPU, 8 GB of memory, and 80 GB of SSD storage space. gpdb.group.segsdx2: 2 vCPUs, 16 GB of memory, and 160 GB of SSD storage space. gpdb.group.segsdx16: 16 vCPUs, 128 GB of memory, and 1.28 TB of SSD storage space. Each compute node consists of a primary node and a secondary node that have identical specifications. |
 
-AnalyticDB for PostgreSQL Devel
-
-#### Terms
-
 | DBInstanceGrou pCount | node count | The number of compute nodes in the AnalyticDB for PostgreSQL instance that you have purchased. For example: If the value of DBInstanceClass is gpdb.group.segsdx2, the instance has two compute nodes. Total available resources: 4 vCPUs, 32 GB of memory, and 320 GB of SSD storage space. For resource and performance reasons, the valid value of DBInstanceGroupCount strictly corresponds to DBInstanceClass: gpdb.group.segsdx1: 2 gpdb.group.segsdx2: 2, 4, and 8 gpdb.group.segsdx16: 2 and 4 |
 |---|---|---|
 | DB Account | database account | An account identifies the access permissions on a database. A database can be created with multiple accounts, and an account can be associated with multiple databases. |
 | AccountName | database account name | The name of a database account identifies the account. The name must be unique among all the database accounts that are in the same instance. |
 | Region | region | The region indicates the data center in the specified region. |
 
-AnalyticDB for PostgreSQL Devel
+## 4 Appendixes
 
-| Parameter | Type | Requ ired | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
-| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Alibaba Cloud Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Alibaba Cloud account. |
+### 4.1 STS overview
 
-AnalyticDB for PostgreSQL Devel
-
-## Appendixes
-
-### STS overview
-
-#### What is STS?
+#### 4.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -2404,7 +2350,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 4.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 
@@ -2412,8 +2358,15 @@ Obtains a Security Token Service (STS) token to assume a RAM role. In this opera
 
 | Parameter | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
+| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
+| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Alibaba Cloud Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Alibaba Cloud account. |
+
+| Parameter | Type | Requ ired | Example | Description |
+|---|---|---|---|---|
 | RoleSessionNa me | String | Yes | alice | The custom name of the role session. You can specify the value of this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, such as the username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing. The value must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores ( ). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. The value of the parameter must be 1 to 1,024 characters in length. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2423,11 +2376,7 @@ Obtains a Security Token Service (STS) token to assume a RAM role. In this opera
 | AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The STS token. |
 
-AnalyticDB for PostgreSQL Devel
-
-**Response parameters**
-
-| nalyticDB for Postgre | SQL Devel |  |  |
+| nalyticDB for Postgre | SQL Devel |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2460,8 +2409,6 @@ package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.ali
     public static void main(String[] args) {
 //CreateandinitialieaDefaltAcsClientinstance
 ```
-
-AnalyticDB for PostgreSQL Devel
 
 ```java
         // Create and initialize a DefaultAcsClient instance.
@@ -2505,9 +2452,6 @@ step for the RAM role.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
 **Call examples**
@@ -2517,8 +2461,6 @@ In the following sample code, the `DescribeZones` operation in Elastic Compute S
 ```java
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; importcomaliyuncsCommonResponse;
 ```
-
-AnalyticDB for PostgreSQL Devel
 
 ```java
 import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
@@ -2558,10 +2500,9 @@ in in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -2572,12 +2513,8 @@ in in the preceding step.
 | 400 | InvalidParameter.Polic yGrammar | The parameter Policy has not passed grammar check. | The error message returned because the syntax of the specified policy is invalid. |
 | 400 | InvalidParameter.Polic ySize | The size of Policy must be smaller than 1024 bytes. | The error message returned because the length of the specified policy string exceeds the upper limit. The policy string can be up to 1,024 characters in length. |
 
-AnalyticDB for PostgreSQL Devel
-
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | NoPermission | You are not authorized to do this action. You should be authorized by RAM. | The error message returned because the STS token does not have the required permissions. |
 | 404 | EntityNotExist.Role | The specified Role not exists. | The error message returned because the specified RAM role does not exist. |
 | 500 | InternalError | STS Server Internal Error happened. | The error message returned because an internal server error has occurred. |
-
-AnalyticDB for PostgreSQL Devel

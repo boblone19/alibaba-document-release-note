@@ -3,14 +3,69 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Appli
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 60
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) User Guide 20260902.pdf"
+source_pdf: "ff89d5f97889223a_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) User G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) User Guide 20260902
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+  - 2.3 Quick start
+- 3 Detection overview
+  - 3.1 View protection overview
+  - 3.2 View access information
+  - 3.3 Export protection report
+  - 3.4 View attack detection statistics
+  - 3.5 View traffic trends
+- 4 Protection logs
+  - 4.1 View attack detection logs
+  - 4.2 View HTTP flood protection logs
+  - 4.3 View system operation logs
+  - 4.4 View access logs
+  - 4.5 IP query
+  - 4.6 Log download management
+- 5 Protection configuration
+  - 5.1 Protection site management
+    - 5.1.1 Internet websites
+    - 5.1.2 VPC websites
+    - 5.1.3 Manage virtual IP addresses
+  - 5.2 Configure protection policies
+  - 5.3 Global custom rules
+  - 5.4 Create a custom rule
+  - 5.5 Anti-tampering rules
+  - 5.6 HTTP flood protection
+    - 5.6.1 Configure an HTTP flood protection rule
+    - 5.6.2 Configure the HTTP flood whitelist
+  - 5.7 Threat intelligence
+  - 5.8 Upload a certificate
+  - 5.9 Data masking
+  - 5.10 Use your computer to verify the access configurations
+  - 5.11 Modify DNS settings
+- 6 System management
+  - 6.1 Configure alert settings
+    - 6.1.1 Configure alerts
+    - 6.1.2 Configure alert thresholds
+  - 6.2 Online backup
+  - 6.3 Other system settings
+  - 6.4 Global system settings
+- 7 System information
+  - 7.1 Node status
+    - 7.1.1 View the loads on nodes
+    - 7.1.2 View the network information of nodes
+    - 7.1.3 View the node detection status
+    - 7.1.4 View the node forwarding status
+    - 7.1.5 View the disk information of nodes
+    - 7.1.6 Historical node data query
+  - 7.2 Back-to-origin IP addresses
+  - 7.3 System firmware information
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, you must verify that your computer meets the configuration requirements. For more information about the configuration requirements, see . Table 1. Configuration requirements
 
@@ -19,9 +74,9 @@ Before you log on to Apsara Stack Security Center, you must verify that your com
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 Web Application Firewall (WAF) provides tenant-side user roles and platform-side user roles. Tenant-side user roles have the permissions to use independent WAF. Platform-side user roles have the permissions to use WAF that protects the Apsara Stack platform. This topic describes the user roles. All roles are default user roles. You cannot create custom roles. Before you log on to tenantside WAF or platform-side WAF, make sure that your account is assigned the required roles. Table 1. Tenant-side user roles
 
@@ -43,7 +98,7 @@ Table 2. Platform-side user roles
 If you do not have an account that is assigned the required role, contact the administrator to create an account and assign the role to the account. For more information, see the **Create a**
 **user** topic in **Apsara Uni-manager Management Console User Guide** .
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -79,7 +134,7 @@ Enter the 6-digit MFA code and click **Authenticate**. For more information abou
 2. On the Forgot Password page, enter your **Account Name**, **Email Address**, and verification
 code, and then click **Confirm**. You can use the username of your account and the email address that was used to create the account. A password reset link will be sent to your email. You can enter a new password after accessing the link.
 
-### Quick start
+### 2.3 Quick start
 
 This topic helps you get started with the features of Web Application Firewall (WAF). WAF uses intelligent semantic analysis algorithms to identify web attacks. WAF also uses a learning model to enhance its analysis capabilities and meet your daily security protection requirements without relying on traditional rule libraries. The following content describes the procedure for using WAF:
 1. Customize WAF protection rules.
@@ -91,9 +146,9 @@ For more information about how to change the DNS-resolved source IP address for 
 4. View WAF protection results.
 For more information about how to view the protection overview, see View protection overview. For more information about how to view the service access information, see View Web service access information. For more information about how to view the detection logs for web attacks, see View attack detection logs. For more information about how to view the detection logs for HTTP flood attacks, see View HTTP flood protection logs.
 
-## Detection overview
+## 3 Detection overview
 
-### View protection overview
+### 3.1 View protection overview
 
 The Detection Overview page displays information including attack statistics, the geographical distribution of attackers, the total number of requests, and the number of blocked requests. You can also view information about the attacks. Then, you can configure protection rules to protect your web services. This topic describes how to view the Web Application Firewall (WAF) protection overview.
 
@@ -107,7 +162,7 @@ The Detection Overview page displays information including attack statistics, th
 4. On the **Detection Overview** page, view data on the **Statistics within Last 24 Hours**
 and **Statistics within Last 30 Days** tabs. Total Requests: displays the total number of requests. Attack Times: displays the total number of attacks. Blocked Requests: displays the total number of blocked requests. Attacker Geographical Distribution: displays the distribution of attackers on the map of China or the map of the world. Initiate Attack IP appears most frequently: displays the top 5 IP addresses from which the highest number of attacks are initiated in a bar chart. The x-axis shows the number of requests. The y-axis shows the IP addresses. Distribution of Attack Types: displays the distribution of the top 5 attack types and the number of attacks of each type in a bar chart. Most Attacked Websites: displays the top 5 websites that are most attacked and the number of attacks on each website.
 
-### View access information
+### 3.2 View access information
 
 Web Application Firewall (WAF) monitors access to web services. Security administrators can analyze the service access information to detect vulnerabilities and improve the security of the web services. This topic describes how to view access information about web services.
 
@@ -124,7 +179,7 @@ You can specify the following filter conditions to view specific access informat
 **Requests within 30 Seconds** or **Average Response Time**
 Only real-time access monitoring information about the top 100 web services that are most accessed is displayed.
 
-### Export protection report
+### 3.3 Export protection report
 
 Web Application Firewall (WAF) supports manual and automatic export of protection reports. This topic describes how to export protection reports.
 
@@ -166,7 +221,7 @@ Download protection reports Select the protection reports that you want to downl
 Delete protection reports Select the protection reports that you want to delete and choose **More > Delete Selected**
 **Reports**.
 
-### View attack detection
+### 3.4 View attack detection statistics
 
 **statistics**
 
@@ -180,7 +235,7 @@ Attack detection statistics allow you to obtain information about attacks on you
 5. In the **Statistical Configuration** panel, click the
 icon and click **OK**. After you complete the preceding configurations, the attack detection statistics feature is enabled. If your website is attacked, you can view the top 100 source IP addresses from which the highest number of attacks are initiated and information about the targets of attacks on the **Attack Detection Traceability** and **Attack Target Analysis** tabs. You can also find the attack whose details you want to view and click the icon in the **Actions** column. Then, you can perform operations on the attack on the **Attack Detection Logs** page. For more information, see View attack detection logs.
 
-### View traffic trends
+### 3.5 View traffic trends
 
 The Traffic Trend Graph page displays the traffic trends of your website. You can specify the time range from which the statistics are generated. This topic describes how to view the traffic trends of a website.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -193,9 +248,9 @@ icon to the right of **Query Information**.
 5. In the **Edit query information** panel, select the website whose traffic trends you want to
 view from the **Website** drop-down list, specify the **time range**, and then click **Query**. After you complete the preceding configurations, you can view the trends of your website traffic that is generated within the specified time range.
 
-## Protection logs
+## 4 Protection logs
 
-### View attack detection logs
+### 4.1 View attack detection logs
 
 Attack detection logs allow you to analyze the attacks on your web services. You can update your protection policies and custom rules and fix web service vulnerabilities based on the analysis results to improve the security of your web services. This topic describes how to view attack detection logs.
 
@@ -214,7 +269,7 @@ icon in the
 Switch between display modes In the upper-right corner of the Attack Detection Logs page, click the icon and select
 **List** or **Detailed View** to specify the display mode for the logs.
 
-### View HTTP flood protection
+### 4.2 View HTTP flood protection logs
 
 **logs**
 
@@ -230,7 +285,7 @@ On the HTTP Flood Detection Logs page, you can view HTTP flood protection logs a
 **Actions** column to create a blacklist rule. In the **Add to Blacklist** panel, enter a name
 for the blacklist rule and click **OK**.
 
-### View system operation logs
+### 4.3 View system operation logs
 
 This topic describes how to view system operation logs.
 
@@ -249,7 +304,7 @@ icon in the
 Switch between display modes In the upper-right corner of the Attack Detection Logs page, click the icon and select
 **List** or **Detailed View** to specify the display mode for the logs.
 
-### View access logs
+### 4.4 View access logs
 
 This topic describes how to view access logs.
 
@@ -268,7 +323,7 @@ icon in the
 Switch between display modes In the upper-right corner of the Attack Detection Logs page, click the icon and select
 **List** or **Detailed View** to specify the display mode for the logs.
 
-### IP query
+### 4.5 IP query
 
 The ip query feature lets you quickly search for a specific IP address. It automatically analyzes the rule type triggered by the IP, such as a cc attack or an attack detection log, and provides attack details. This helps you troubleshoot issues efficiently without time-consuming manual searches across multiple sources.
 1. Log on to the Apsara Uni-manager console.
@@ -281,7 +336,7 @@ box.
 5. Click the
 icon in the **Actions** column for the target IP address to view details.
 
-### Log download management
+### 4.6 Log download management
 
 **Procedure**
 
@@ -292,11 +347,11 @@ icon in the **Actions** column for the target IP address to view details.
 3. In the left-side navigation pane, choose **Detection Logs > Log Download Management**.
 You can perform the following operations in the log download management list: Download logs Select one or more complete logs and click the icon. Delete logs Select one or more complete logs and choose **More > Delete Selected Tasks**.
 
-## Protection configuration
+## 5 Protection configuration
 
-### Protection site management
+### 5.1 Protection site management
 
-#### Internet websites
+#### 5.1.1 Internet websites
 
 Tenant-side Web Application Firewall (WAF) can protect Internet websites and virtual private cloud (VPC) websites. This topic describes how to add an Internet website to WAF.
 
@@ -375,7 +430,7 @@ After you add Internet websites to WAF, you can perform the following operations
 **Selected Sites**.
 Modify the basic information about a protected website Find the protected website whose basic information you want to modify and click the icon in the **Actions** column. On the **Basic Information** tab, click the icon to the right of each parameter to modify the corresponding information. You can modify the following parameters: Site Name, Listening Port, Domain Name, Description, and Virtual IP Address. Modify the request processing mode of a protected website Find the protected website whose request processing mode you want to modify and click the icon in the **Actions** column. On the **Request Processing Method** tab, click the icon to the right of each parameter to modify the corresponding information. You can modify the following information about the website on the Request Processing Method tab: Configure Response Method, Scheduling Algorithm, X-Forwarded-For, Backend Server Health Check, Access Log Record, Backend Server Address, HTTP Header, Back-toorigin IP Address, and SSE Configuration. View and modify protection settings Protection Policy: View the details of the protection policies that you configured, such as Decoding Method, Attack Detection Module, Blocking Method, HTTP Response Processing, HTTP Request Body Detection, and Detection Timeout Period. Click the icon to the right of **Default Policy Set** and modify the protection policy settings. For more information about protection policies, see Protection policies. Custom Rules: You can create custom rules. For more information, see Custom rules. Anti Tamper Rule: You can add website tamper-proofing rules. For more information, see Configure a website tamper-proofing rule. Method Used to Obtain Source IP Addresses: You can specify the method used to obtain the IP addresses of origin servers. The IP addresses of origin servers can be obtained from sockets, the X-Forwarded-For header, and the HTTP header. User Identification: Click the icon. In the panel that appears, modify the User Identification parameter and click Ok. Valid values of the User Identification parameter: **Disable**, **Identify by WAF**, and **Obtain User ID from Requests**.
 
-#### VPC websites
+#### 5.1.2 VPC websites
 
 Web Application Firewall (WAF) can protect Internet websites and virtual private cloud (VPC) websites. This topic describes how to add a VPC website to WAF for protection.
 
@@ -460,10 +515,9 @@ After you add websites to WAF, you can perform the following operations in the p
 **Selected Sites**.
 Modify the basic information about protected websites Find the protected website whose basic information you want to modify and click the icon in the **Actions** column. On the **Basic Information** tab, click the icon to the right of each parameter to modify the corresponding information. You can modify the following information about the website on the Basic Information tab: website name, website status, listening port, domain name, website description, and virtual IP address. Modify the request processing mode of protected websites Find the protected website whose request processing mode you want to modify and click the icon in the **Actions** column. On the **Request Processing Method** tab, click the icon to the right of each parameter to modify the corresponding information. You can modify the following information about the website on the Request Processing Method tab: Configure Response Method, Scheduling Algorithm, X-Forwarded-For, Backend Server Health Check, Access Log Record, Backend Server Address, HTTP Header, Back-toorigin IP Address, and SSE Configuration. View and modify protection methods Protection Policies: View the details of the protection policies that you configured, such as Decoding Method, Attack Detection Module, Blocking Method, HTTP Response Processing, HTTP Request Body Detection, and Detection Timeout Period. Click the icon to the right of **Default Policy Set** and modify the protection policy settings. For more information about protection policies, see Protection policies. Custom Rules: You can create custom rules. For more information, see Custom rules. Anti Tamper Rule: You can add website tamper-proofing rules. For more information, see Configure a website tamper-proofing rule. Method Used to Obtain Source IP Addresses: You can specify the method used to obtain the IP addresses of origin servers. The IP addresses of origin servers can be obtained from sockets, the X-Forwarded-For header, or the HTTP header. User Identification: Click the icon. In the panel that appears, modify the User Identification parameter and click Ok. Valid values of the User Identification parameter: **Disable**, **Identify by WAF**, and **Obtain User ID from Requests**.
 
-#### Manage virtual IP addresses
+#### 5.1.3 Manage virtual IP addresses
 
 You can add a virtual IP address, a virtual IP address in a virtual private cloud (VPC), or an elastic IP address (EIP) to Web Application Firewall (WAF). The object that you add to WAF can be used as the downstream node of a VPC website that you add to WAF. This topic describes how to add a virtual IP address, a virtual IP address in a VPC, or an EIP to WAF and how to manage the objects.
-1. Log on to the Apsara Uni-manager Management Console
 2. In the upper-right corner of the console, click **Security**. In the **Application Security**
 section, click **Web Application Firewall**. On the **Web Application Firewall** page, select a **region** and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Configure Protection > Protection Site**
@@ -482,7 +536,7 @@ In the left-side navigation tree, click **EIP Management**. On the page that app
 **IP**, and **Back to Source SLB instance** parameters and click **OK**.
 After you add a virtual IP address, a virtual IP address in a VPC, or an EIP to WAF, you can perform the following operations: On the **Virtual IP Address**, **Virtual IP Address of VPC**, or **EIP Management** tab, view the added objects. You can also click the icon in the **Actions** column to view the object details. On the **EIP Details** page, modify the value of the **Back to Source SLB Instance** parameter to change the back-to-origin SLB instance. In the upper-right corner of the EIP Details page, click **Enable bypass** and enter an EIP to enable the bypass feature.
 
-### Configure protection policies
+### 5.2 Configure protection policies
 
 This topic describes how to configure Web Application Firewall (WAF) protection policies.
 
@@ -530,7 +584,7 @@ To delete a protection policy, select the protection policy. Then, in the upper-
 **OK**.
 You cannot delete the default protection policy.
 
-### Global custom rules
+### 5.3 Global custom rules
 
 **Create a global custom rule**
 
@@ -548,7 +602,7 @@ The list displays the **Status**, **Rule ID**, **Description**, **Expire At**, *
 **Modified At** parameters of global custom rules.
 View the details of a global custom rule Find the rule that you want to view and click the icon in the **Actions** column to view the details of the global custom rule. View logs Find the rule whose logs you want to view and click the icon in the **Actions** column. The Attack Detection Logs page is displayed. On this page, you can view the logs. Filter global custom rules In the upper-right corner of the Global Custom Rules page, click **Filter**. In the panel that appears, filter global custom rules by rule ID, description, last modification time, creation time, or expiration time. To add a filter condition, click **Add Filter Item**.
 
-### Create a custom rule
+### 5.4 Create a custom rule
 
 You can create custom rules to meet different requirements for intrusion protection and filter out specific requests. This topic describes how to create a custom rule for Web Application Firewall (WAF).
 
@@ -602,7 +656,7 @@ You can view and manage custom rules in the custom rule list. View custom rules 
 **Selected Rules**, **Export Selected Rules**, or **Delete Selected Rules** from the **More**
 drop-down list to enable, disable, export, or delete the rules.
 
-### Anti-tampering rules
+### 5.5 Anti-tampering rules
 
 You can configure anti-tampering rules to protect content on your origin server from malicious tampering.
 
@@ -639,9 +693,9 @@ click **OK**.
 You can view and manage your anti-tampering rules in the rule list. View a rule The list of anti-tampering rules displays details for each rule, including the protected path, creation time, and last modified time. Edit a rule To modify a rule, click the icon in the **Actions** column. Filter rules Click **Filter** in the upper-right corner of the page to filter rules by ID, description, last modified time, or creation time. More operations Select multiple anti-tampering rules, click **More Operations**, and then select **Enable**
 **Selected Rules**, **Disable Selected Rules**, or **Delete Selected Rules**.
 
-### HTTP flood protection
+### 5.6 HTTP flood protection
 
-#### Configure an HTTP flood protection rule
+#### 5.6.1 Configure an HTTP flood protection rule
 
 An HTTP flood attack is a type of DDoS attack that targets the application layer. Attackers use proxy servers or zombies to overwhelm targeted web servers by sending a large number of HTTP requests. You can configure HTTP flood protection rules to prevent HTTP flood attacks. This topic describes how to configure an HTTP flood protection rule.
 
@@ -682,7 +736,7 @@ Filter HTTP flood protection rules In the upper-right corner of the page, click 
 **Selected Rules**, **Disable Selected Rules**, or **Delete Selected Rules** from the **More**
 drop-down list.
 
-#### Configure the HTTP flood whitelist
+#### 5.6.2 Configure the HTTP flood whitelist
 
 If a request source is trusted, you can add this request source to the HTTP flood whitelist to allow all requests from this source. This topic describes how to configure the HTTP flood whitelist.
 
@@ -708,7 +762,7 @@ unrestricted user panel, configure the parameters and click **OK**. The followin
 Search for a request source in the whitelist In the upper-right corner of the page, click **Filter**. In the Filter Item panel, specify a filter condition to search for specific request sources. You can click **Add Filter Item** to specify multiple filter conditions. Remove a request source Select the request source that you want to delete and choose **More** > **Delete Selected**
 **Items**.
 
-### Threat intelligence
+### 5.7 Threat intelligence
 
 **View threat intelligence**
 
@@ -720,13 +774,12 @@ Search for a request source in the whitelist In the upper-right corner of the pa
 4. On the **Threat Intelligence** page, you can view threat intelligence details within different
 time periods based on **Intelligence Synchronization Status**.
 
-### Upload a certificate
+### 5.8 Upload a certificate
 
 After you upload a certificate on the Certificate Management page, you can select the certificate when you add a website to Web Application Firewall (WAF) on the Protection Site Management page. This topic describes how to upload a certificate. When you add an HTTPS website for protection on the **Protection Site Management** page, you must select the certificate to which the domain name of the HTTPS website is bound.
 
 **Upload a certificate**
 
-1. Log on to the Apsara Uni-manager Management Console
 2. In the upper-right corner of the console, click **Security**.In the **Application Security**
 section, click **Web Application Firewall**. On the **Web Application Firewall** page, select a **region** and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Protection Configuration** > **Certificate**
@@ -744,7 +797,7 @@ i. Click the **SSL Certificate** tab. In the upper-right corner of the page, cli
 You can manage certificates on the **SSL Certificate** tab. View a certificate In the certificate list, you can view the certificate name, usage, domain name, or validity period. View information about a certificate Find the certificate whose information you want to view and click the icon in the **Actions** column. On the **Certificate Details** page, you can view the certificate name, upload time, issuer, serial number, validity period, domain name, and site information. Replace a certificate Find the certificate that you want to replace and click the icon in the **Actions** column. In the **Edit File** panel, replace the certificate with another certificate. Delete a certificate For example, if you want to delete an SSL certificate, select the SSL certificate and choose
 **More** > **Delete selected certificate**. In the message that appears, click **OK**.
 
-### Data masking
+### 5.9 Data masking
 
 You can configure data masking policies to mask sensitive data in logs, such as national ID numbers, birth dates, bank card numbers, passwords, and other user-defined sensitive data.
 
@@ -763,7 +816,7 @@ to the right of **Disabled**. In the **Edit**
 .
 5. Configure the **Built-in Parameters** and **Custom Parameters** as needed.
 
-### Use your computer to verify
+### 5.10 Use your computer to verify the access configurations
 
 **the access configurations**
 
@@ -790,7 +843,7 @@ If the access configurations are correct, you can visit the website.
 4. Verify the protection capability of WAF.
 Simulate a web attack and check whether WAF blocks the attack. For example, add /?alert(xss) to the URL. If you try to visit www.example.com/? `alert(xss)` , WAF is expected to block the attack.
 
-### Modify DNS settings
+### 5.11 Modify DNS settings
 
 Before you can modify your Domain Name System (DNS) settings, you must make sure that the access configurations of your website are correct. After you modify the DNS settings, the traffic that is destined for your website can be redirected to Web Application Firewall (WAF). This topic describes how to modify the DNS settings to add your website to WAF. The domain name of a protected website may not be resolved by a DNS provider. For example, a website may use a Server Load Balancer (SLB) instance to connect to the Internet. In this case, you can change the back-to-origin IP address of the SLB instance to the virtual IP address that WAF assigns to your website.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -806,11 +859,11 @@ website.
 6. Log on to the console of the DNS provider and find the DNS settings for the domain name of
 the website. Then, change the IP address in the A record to the virtual IP address that is assigned to the website. We recommend that you set the time-to-live (TTL) to 600 seconds in DNS settings. If you specify a higher value for the TTL, the period of time that is required to synchronize and update DNS records is longer.
 
-## System management
+## 6 System management
 
-### Configure alert settings
+### 6.1 Configure alert settings
 
-#### Configure alerts
+#### 6.1.1 Configure alerts
 
 After you add a syslog server to Web Application Firewall (WAF), WAF alert logs can be pushed to the syslog server over the syslog protocol. This topic describes how to add a syslog server to WAF.
 
@@ -836,7 +889,7 @@ following table describes the parameters.
 6. Find the new syslog server and click the
 icon in the **Actions** column to test whether alerts are sent. If a message appears, indicating that the alert test is successful, the syslog server is added to WAF. If an error message appears, WAF cannot connect to the syslog server. You can troubleshoot the error based on the error message and click the icon to retest whether alerts are sent.
 
-#### Configure alert thresholds
+#### 6.1.2 Configure alert thresholds
 
 This topic describes how to configure alert thresholds.
 
@@ -863,7 +916,7 @@ icon to the right of the threshold that you want to modify.
 
 6. Click **Ok**.
 
-### Online backup
+### 6.2 Online backup
 
 This topic describes how to create an online backup.
 
@@ -881,7 +934,7 @@ the Description parameter and click **OK**. You can back up information such as 
 
 You can view and manage online backups in the online backup list. Select the online backups that you want to manage, move the pointer over **More**, and then select **Download Selected Backups** or **Delete Selected Backups** to download or delete the backups.
 
-### Other system settings
+### 6.3 Other system settings
 
 **Procedure**
 
@@ -894,7 +947,7 @@ You can view and manage online backups in the online backup list. Select the onl
 4. On the **Other System Configurations** page, click the
 icon next to the configuration item. In the **Edit Expiration Reminder for SSL Certificate** panel, specify the warning days before the certificate expiration, and then click **OK**. You can only set the value to a number from 1 to 180.
 
-### Global system settings
+### 6.4 Global system settings
 
 You can configure global system settings to enable or disable the Web Application Firewall (WAF) global protection engine, specify an internal-facing Server Load Balancer (SLB) instance as the downstream service, and configure shared virtual IP addresses. This topic describes how to configure global system settings.
 
@@ -907,11 +960,11 @@ The **Global System Settings** feature has been migrated to **Cloud Shield Opera
 
 **system settings** topic in the WAF **O&M Guide (Tenant-side)-Physical servers**.
 
-## System information
+## 7 System information
 
-### Node status
+### 7.1 Node status
 
-#### View the loads on nodes
+#### 7.1.1 View the loads on nodes
 
 This topic describes how to view the loads on Web Application Firewall (WAF) nodes. The loads include CPU utilization and memory usage. You can identify faults based on the loads and check whether a scale-out or a scale-up activity is required.
 
@@ -925,7 +978,7 @@ This topic describes how to view the loads on Web Application Firewall (WAF) nod
 4. On the **Payload Status** tab, you can view the loads on WAF nodes.
 In the Payload Status section, you can view the CPU utilization and memory usage of WAF nodes. In the **CPU usage** and **Memory usage** sections, you can view the changes in CPU utilization and memory usage over a specific period of time.
 
-#### View the network information of nodes
+#### 7.1.2 View the network information of nodes
 
 This topic describes how to view the network information of Web Application Firewall (WAF) nodes. The information includes the network I/O, traffic detection statistics, and traffic forwarding statistics.
 
@@ -957,7 +1010,7 @@ section, click **Web Application Firewall**. On the **Web Application Firewall**
 4. On the **Node Status** page, click the **Forward Status** tab.
 5. View the traffic forwarding statistics of WAF nodes.
 
-#### View the node detection status
+#### 7.1.3 View the node detection status
 
 This topic describes how to view the queries per second (QPS) and the average detection time consumed by WAF nodes.
 
@@ -972,7 +1025,7 @@ This topic describes how to view the queries per second (QPS) and the average de
 4. On the **Detection Status** tab, you can view the detection status of each WAF node.
 This page displays the QPS and the average detection time consumed by each node. Charts are displayed in the lower part of the page to show the changes over a period of time.
 
-#### View the node forwarding status
+#### 7.1.4 View the node forwarding status
 
 **Procedure**
 
@@ -985,7 +1038,7 @@ This page displays the QPS and the average detection time consumed by each node.
 4. On the **Forwarding Status** tab, you can view the forwarding status of each WAF node.
 On this page, you can view the number of new connections per second, the number of concurrent connections, and the average processing latency for each node. The changes over a period of time are also displayed in the charts in the lower part of the page.
 
-#### View the disk information of nodes
+#### 7.1.5 View the disk information of nodes
 
 This topic describes how to view the disk information of Web Application Firewall (WAF) nodes. You can identify faults based on the information and check whether a scale-out or a scale-up activity is required.
 
@@ -1001,7 +1054,7 @@ In the Disk Status section, you can view the disk I/O and disk usage of WAF node
 **Read** and **Write** sections, you can view the changes in disk reads and writes over a
 specific period of time.
 
-#### Historical node data query
+#### 7.1.6 Historical node data query
 
 **Procedure**
 
@@ -1016,7 +1069,7 @@ Click the icon next to the **Information Overview**. In the **Edit** panel, spec
 5. In the **Historical System Performance Data** section, you can view the CPU usage,
 memory usage, and disk usage. In the **Historical Traffic Monitoring Data** section, you can view the network read I/O, network write I/O, number of new connections per second, and number of detection requests per second.
 
-### Back-to-origin IP addresses
+### 7.2 Back-to-origin IP addresses
 
 **Procedure**
 
@@ -1029,7 +1082,7 @@ memory usage, and disk usage. In the **Historical Traffic Monitoring Data** sect
 **of Physical Servers in Classic Network** and **Back-to-origin IP Addresses of SLB**
 **Instances in VPC**.
 
-### System firmware information
+### 7.3 System firmware information
 
 **Procedure**
 

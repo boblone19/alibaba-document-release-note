@@ -2,20 +2,25 @@
 title: "Cloud Parallel File Storage Product Introduction 20260701"
 product_version: "V3.18.6"
 pdf_pages: 10
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Product Introduction 20260701.pdf"
+source_pdf: "2c667d4b33dfe3c9_Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Product Introduction 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8CPFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Parallel%20File%20Storage%20Product%20Introduction%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Parallel File Storage Product Introduction 20260701
 
-Cloud Parallel File Storage Produc
+## Table of Contents
 
-## Product details
+- 1 Product details
+- 2 Product value
+- 3 Scenarios
+- 4 Features
 
-Cloud Parallel File Storage (CPFS) is a high-performance parallel file system for Apsara Stack that supports the POSIX protocol. It provides sub-millisecond data access and read/write throughput of tens of GB/s. CPFS is ideal for scenarios such as AIGC, autonomous driving, EDA simulation, and CG rendering. Cloud Parallel File Storage Produc
+## 1 Product details
 
-## Product value
+Cloud Parallel File Storage (CPFS) is a high-performance parallel file system for Apsara Stack that supports the POSIX protocol. It provides sub-millisecond data access and read/write throughput of tens of GB/s. CPFS is ideal for scenarios such as AIGC, autonomous driving, EDA simulation, and CG rendering.
+
+## 2 Product value
 
 **Ultra-high Performance**
 
@@ -27,9 +32,9 @@ CPFS supports online storage capacity scale-out, and performance scales elastica
 
 **Cost-effectiveness**
 
-Data is stored using erasure coding (EC) and supports a 4D+2P configuration. Cloud Parallel File Storage Produc
+Data is stored using erasure coding (EC) and supports a 4D+2P configuration.
 
-## Scenarios
+## 3 Scenarios
 
 CPFS is a high-performance file storage service from Alibaba Cloud. It supports end-to-end Remote Direct Memory Access (RDMA) networks for intelligent computing scenarios, such as AI-Generated Content (AIGC) and autonomous driving.
 
@@ -45,6 +50,12 @@ For autonomous driving, high-performance CPFS storage improves the utilization o
 
 CPFS integrates with Container Service for Kubernetes (ACK), Serverless Kubernetes (ASK), and Genomics Service (AGS) to build a fast, low-cost, and high-precision container environment for genomics. This setup satisfies the requirements for gene sequencing computation and data sharing. CPFS serves as shared storage for genomic data analytics. It stores raw sequencing data, assembled data, and intermediate data. This meets the lowlatency and high input/output operations per second (IOPS) storage requirements of the genomics industry and reduces data copying and transfers. Additionally, computational results from CPFS can be synchronized to Object Storage Service (OSS), which provides massive storage capacity and helps reduce storage costs.
 
+## 4 Features
+
+This topic describes the features of CPFS.
+
+**Basic features**
+
 | Feature | Description |
 |---|---|
 | File system management | Create, view, and delete file systems in the console. Standard Open APIs are also provided. |
@@ -55,22 +66,18 @@ CPFS integrates with Container Service for Kubernetes (ACK), Serverless Kubernet
 | Hardware compatibility | Compatible with mainstream server hosts, hard drive types, and RAID cards. |
 | Client mounting | Supports batch and automatic mounting of clients. |
 
+**Reliability and availability**
+
 | Feature | Description |
 |---|---|
 | Erasure coding (EC) | Erasure Coding (EC) divides raw data into multiple data blocks and generates a specific number of parity blocks through calculation. These data and parity blocks form an EC group distributed across different data nodes. If some data or parity blocks are lost, the lost data can be recovered from the remaining blocks. EC involves two concepts: data blocks (n) and parity blocks (m): Data blocks (n): The data is divided into n segments. Parity blocks (m): These are m blocks calculated from the n data blocks. The data blocks (n) and parity blocks (m) form an EC group, with each block stored on a different server. If m or fewer blocks are lost, the EC algorithm can recover them. CPFS file systems support a 4+2 configuration. |
-
-Cloud Parallel File Storage Produc
-
-## Features
-
-This topic describes the features of CPFS.
-
-**Reliability and availability**
 
 | System redundancy design | All key system components have a fully redundant design. No part of the system configuration has a single point of failure. The failure of a single data node does not cause data loss. Single-node failures are transparent to applications and do not affect normal read operations. |
 |---|---|
 | Fault stability | Supports automatic data reconstruction and balancing after a hard drive or node failure. The impact of data reconstruction and recovery on system performance is less than 10%. |
 | Online upgrades | The storage system can be upgraded online without service interruption. You can also dynamically add and remove disks. |
+
+**Performance and scalability**
 
 | Feature | Description |
 |---|---|
@@ -81,23 +88,17 @@ This topic describes the features of CPFS.
 | High-performance client | Supports parallel I/O read and write operations for high-performance computing (HPC) Linux clients. |
 | Scale-out | Supports online scale-out for CPFS file systems and clusters. |
 
+**Data management**
+
 | Feature | Description |
 |---|---|
 | Lifecycle management | Supports data replication between CPFS file systems and Object Storage Service (OSS). |
 
+**Monitoring and O&M**
+
 | Feature | Description |
 |---|---|
-
-Cloud Parallel File Storage Produc
-
-**Performance and scalability**
-
-**Data management**
-
-**Monitoring and O&M**
 
 | Metric monitoring | Monitor the performance of storage clusters across multiple dimensions. In the console's graphical interface, view metrics such as total capacity, remaining capacity, used capacity, usage percentage, read/write bandwidth, and read/write input/output operations per second (IOPS). |
 |---|---|
 | Alerting | Configure alert rules and view alert information for your file system in the console. Alerts can be sent as notifications through email and DingTalk. |
-
-Cloud Parallel File Storage Produc

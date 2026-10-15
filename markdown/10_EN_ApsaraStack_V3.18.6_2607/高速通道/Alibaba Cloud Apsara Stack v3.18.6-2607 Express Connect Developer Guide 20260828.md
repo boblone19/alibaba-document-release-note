@@ -3,16 +3,114 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Developer Guide 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 151
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Developer Guide 20260828.pdf"
+source_pdf: "c24fd30c328bcb80_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Apsara Stack documentation
+- 1 Getting started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Obtain the information and the endpoint of an API operation
+  - 2.2 Obtain an AccessKey pair
+  - 2.3 Obtain the values of common request parameters
+  - 2.4 Obtain STS credentials
+  - 2.5 Obtain Express Connect SDK
+- 3 Call examples for SDK for Java
+  - 3.1 Quick start
+  - 3.2 Use SDK
+    - 3.2.1 Install SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Send a request
+    - 3.2.5 Troubleshooting
+    - 3.2.6 Use CommonRequest to call APIs
+- 4 Call examples for SDK for Python
+  - 4.1 Quick start
+  - 4.2 Use SDK
+    - 4.2.1 Install the SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Send a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call APIs
+- 5 Call examples for SDK for Go
+  - 5.1 Quick start
+  - 5.2 Use SDK
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Send a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call APIs
+- 6 API Reference
+  - 6.1 List of operations by function
+  - 6.2 Invoke APIs
+    - 6.2.1 Request syntax
+    - 6.2.2 Authorization
+    - 6.2.3 Signature
+  - 6.3 RAM authentication
+  - 6.4 Common parameters
+  - 6.5 Physical connections
+    - 6.5.1 CreatePhysicalConnection
+    - 6.5.2 DescribeAccessPoints
+    - 6.5.3 CancelPhysicalConnection
+    - 6.5.4 DescribePhysicalConnections
+    - 6.5.5 ModifyPhysicalConnectionAttribute
+    - 6.5.6 TerminatePhysicalConnection
+    - 6.5.7 EnablePhysicalConnection
+    - 6.5.8 DeletePhysicalConnection
+    - 6.5.9 CreatePhysicalConnectionOccupancyOrder
+    - 6.5.10 ApplyPhysicalConnectionLOA
+    - 6.5.11 CreatePhysicalConnectionSetupOrder
+    - 6.5.12 CompletePhysicalConnectionLOA
+    - 6.5.13 DescribePhysicalConnectionLOA
+  - 6.6 VBR
+    - 6.6.1 CreateVbrHa
+    - 6.6.2 DeleteVbrHa
+    - 6.6.3 DeleteNqa
+    - 6.6.4 CreateVirtualBorderRouter
+    - 6.6.5 DeleteVirtualBorderRouter
+    - 6.6.6 DescribeVirtualBorderRouters
+    - 6.6.7 DescribeVirtualBorderRoutersForPhysicalConnection
+    - 6.6.8 TerminateVirtualBorderRouter
+    - 6.6.9 RecoverVirtualBorderRouter
+    - 6.6.10 ModifyVirtualBorderRouterAttribute
+    - 6.6.11 AssociatePhysicalConnectionToVirtualBorderRouter
+    - 6.6.12 UnassociatePhysicalConnectionFromVirtualBorderRouter
+  - 6.7 BGP
+    - 6.7.1 CreateBgpGroup
+    - 6.7.2 DescribeBgpGroups
+    - 6.7.3 ModifyBgpGroupAttribute
+    - 6.7.4 DeleteBgpGroup
+    - 6.7.5 CreateBgpPeer
+    - 6.7.6 DescribeBgpPeers
+    - 6.7.7 ModifyBgpPeerAttribute
+    - 6.7.8 DeleteBgpPeer
+    - 6.7.9 AddBgpNetwork
+    - 6.7.10 DescribeBgpNetworks
+    - 6.7.11 DeleteBgpNetwork
+  - 6.8 Router interface
+    - 6.8.1 CreateRouterInterface
+    - 6.8.2 ConnectRouterInterface
+    - 6.8.3 DeactivateRouterInterface
+    - 6.8.4 ModifyRouterInterfaceSpec
+    - 6.8.5 DeleteRouterInterface
+    - 6.8.6 DescribeRouterInterfaces
+    - 6.8.7 ActivateRouterInterface
+    - 6.8.8 ModifyRouterInterfaceAttribute
+- 7 Appendixes
+  - 7.1 STS overview
+    - 7.1.1 What is STS?
+    - 7.1.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to find the required documentation when you call an API operation of an Apsara Stack service.
 
@@ -33,7 +131,7 @@ You can go to the Apsara Stack documentation center to view the desired document
 4. In the left-side navigation pane, select the Apsara Stack service whose documentation you want to view.
 5. In the product documentation section, click **View Details** or **Download PDF**.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
 To provide consistent user experience, the API calls of Apsara Stack V3.16.0 and later are made by using the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -52,9 +150,9 @@ For more information, see Apsara Stack documentation.
 5. Obtain the endpoint of the service.
 6. Obtain the SDK of the cloud service and make the API call.
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and the
+### 2.1 Obtain the information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -75,7 +173,7 @@ The API information on the debugging page of the Apsara Uni-manager Management C
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter on the Parameter
 tab.
 
-### Obtain an AccessKey pair
+### 2.2 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -112,7 +210,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain the values of common request
+### 2.3 Obtain the values of common request parameters
 
 **parameters**
 
@@ -163,7 +261,7 @@ The following response parameters are returned by default when you call an API o
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain STS credentials
+### 2.4 Obtain STS credentials
 
 This topic describes how to use Security Token Service (STS) credentials to call Apsara Stack APIs.
 
@@ -264,7 +362,7 @@ ccessSecret>");
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain Express Connect SDK
+### 2.5 Obtain Express Connect SDK
 
 When you use the Portable OpenAPI Proxy (POP) gateway to call an Apsara Stack API, you must obtain the SDK of the cloud service. This topic describes how to obtain Alibaba Cloud SDKs.
 
@@ -282,9 +380,9 @@ VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies call
 
 Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. We recommend that you use an SDK for Java, Python, or Go. If you use an SDK for another programming language, the SDK may be incompatible with your system. or SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Quick start
+### 3.1 Quick start
 
 This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java. To use the features of Express Connect, you must install the VPC SDK.
 
@@ -377,9 +475,9 @@ Default value: HTTP.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install SDK for Java
+#### 3.2.1 Install SDK for Java
 
 or SDK for Java This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. To use the features of Express Connect, you must install VPC SDK. Alibaba Cloud SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Alibaba Cloud SDK for Java by adding Maven dependencies or downloading Alibaba Cloud SDK. To use VPC SDK, you must install the core library of Alibaba Cloud SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use VPC SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDK.
 
@@ -398,7 +496,7 @@ or SDK for Java This topic describes how to install and use Virtual Private Clou
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity verification by providing an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Do not disclose the code that contains your AccessKey pair. For example, do not commit the code to publiclyaccessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -411,7 +509,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the preceding variables with the actual values and remove the brackets (<>).
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. or SDK for Java You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
@@ -431,7 +529,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Send a request
+#### 3.2.4 Send a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to send a request. To use the features of Express Connect, you must install VPC SDK.
 
@@ -474,7 +572,7 @@ However, if an exception occurs or you want to obtain the original HTTP response
 HttpResponse response = client.doAction(request);
 ```
 
-#### Troubleshooting
+#### 3.2.5 Troubleshooting
 
 If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem:
 
@@ -505,7 +603,7 @@ try {
 
 or SDK for Java
 
-#### Use CommonRequest to call APIs
+#### 3.2.6 Use CommonRequest to call APIs
 
 If you want to call the API of a cloud service that does not provide an SDK, or the requests and responses do not meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations.
 
@@ -587,18 +685,15 @@ instance ID. This parameter is required when you want to delete, modify, or quer
 
 or SDK for Python
 
-## Call examples for SDK for Python
+## 4 Call examples for SDK for Python
 
-### Quick start
+### 4.1 Quick start
 
 This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python. To use the features of Express Connect, you must install VPC SDK.
 
 **Environment requirements**
 
 An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. For more information, see Obtain an AccessKey pair. You must obtain the endpoint of Express Connect. For more information, see Obtain the endpoint of Express Connect.
-
-**Install the SDK for Python**
-
 1. Install the SDK core library.
 If you use Python 2.x, run the following command:
 
@@ -650,9 +745,9 @@ request = DescribeNatGatewaysRequest.DescribeNatGatewaysRequest() request.set_ac
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, specify print (response).
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install the SDK for Python
+#### 4.2.1 Install the SDK for Python
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. To use the features of Express Connect, you must install VPC SDK. Alibaba Cloud SDK for Python supports Python 2.6.x, Python 2.7.x, Python 3.x, and later versions. You can install Apsara Stack SDK for Python by using pip. To use the SDK of a cloud service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use VPC SDK for Python, you must install the SDK core library for Python and VPC SDK for Python. If you use Python 2.x, run the following command:
 
@@ -678,7 +773,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-vpc
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Python supports identity verification by providing an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -690,7 +785,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
 
@@ -728,7 +823,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Send a request
+#### 4.2.4 Send a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Python to send a request. To use the features of Express Connect, you must install VPC SDK.
 
@@ -759,7 +854,7 @@ request = DescribePhysicalConnectionsRequest.DescribePhysicalConnectionsRequest(
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, the default value is print (response).
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -780,7 +875,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call APIs
+#### 4.2.6 Use CommonRequest to call APIs
 
 If you want to call the API of a cloud service that does not provide an SDK, or the requests and responses do not meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations.
 
@@ -835,9 +930,9 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 or SDK for Go
 
-## Call examples for SDK for Go
+## 5 Call examples for SDK for Go
 
-### Quick start
+### 5.1 Quick start
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Go. To use the features of Express Connect, you must install VPC SDK.
 
@@ -900,9 +995,9 @@ func main() {
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install the core package of SDK for Go
+#### 5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -910,7 +1005,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Go supports identify verification by providing an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -927,7 +1022,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 
 Replace the preceding variables with your actual information. Remove the brackets (<>) when you specify the parameters.
 
-#### Send a request
+#### 5.2.3 Send a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to send a request. To use the features of Express Connect, you must install the VPC SDK. The following example shows how to use VPC SDK for Go to send a request.
 1. Import VPC SDK for Go.
@@ -962,17 +1057,13 @@ request := vpc.CreateDescribePhysicalConnectionsRequest() request.InstanceId = "
 response, err := vpcClient.DescribePhysicalConnections(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 | ClientError |   | or a | ServerError |   |
 |---|---|---|---|---|
 | e included in | sdk.errors |   |   | . The er |
 
-interface and can be handled in a similar way as standard Go errors.
-
-**Handle errors**
-
-You can run the following code to handle errors:
+interface and can be handled in a similar way as standard Go errors. You can run the following code to handle errors:
 
 ```
 response,err := vpcClient.DescribePhysicalConnections(request) if err != nil {
@@ -1038,7 +1129,7 @@ response, err := vpcClient.DescribePhysicalConnections(request) if serverError, 
     response.GetOriginHttpResponse()
 ```
 
-#### Use CommonRequest to call APIs
+#### 5.2.5 Use CommonRequest to call APIs
 
 If you want to call the API of a cloud service that does not provide an SDK, or the requests and responses do not meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations.
 
@@ -1102,9 +1193,9 @@ parameter is required if you want to modify, delete, or query the detailed infor
     fmt.Print(response.GetHttpContentString())
 ```
 
-## API Reference
+## 6 API Reference
 
-### List of operations by function
+### 6.1 List of operations by function
 
 The following tables list API operations available for use in Express Connect.
 
@@ -1158,9 +1249,9 @@ The following tables list API operations available for use in Express Connect.
 | ActivateRouterInterface | Enables a router interface that is in the Inactive state. |
 | ModifyRouterInterfaceAttribute | Modifies the configurations of a router interface. |
 
-### Invoke APIs
+### 6.2 Invoke APIs
 
-#### Request syntax
+#### 6.2.1 Request syntax
 
 To call an Express Connect API operation, you must send an HTTP GET request to the endpoint of the Express Connect API. You must specify the request parameters for the operation. A response is returned for each request. Both requests and responses are encoded in UTF-8. Express Connect API operations use the RPC protocol. You can call Express Connect API operations by sending HTTP GET requests. The request syntax is as follows:
 
@@ -1181,11 +1272,11 @@ Request parameters include common parameters and operation-specific parameters. 
 https://vpc.example.com/?Action=CreateRouterInterface &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### Authorization
+#### 6.2.2 Authorization
 
 To ensure the security of your account, we recommend that you call Express Connect API operations as a RAM user. To do so, you must create and add an authorization policy that grants permissions to call specific API operations. For more information about the Express Connect resources and API operations that allow the authorization, see RAM authentication.
 
-#### Signature
+#### 6.2.3 Signature
 
 You must sign all API requests to ensure security. Request signatures are used to verify the identities of API callers. Express Connect implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Alibaba Cloud accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. You must add the signature to the API request in the following format:
 
@@ -1220,7 +1311,7 @@ CT9X0VtwR86fNWSnsc6v8YGOjuE=
 http://vpc.example.com/?Action=CreateRouterInterface &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.3 RAM authentication
 
 Before you call an Express Connect operation as a RAM user, you must use an Apsara Stack tenant account to create an authorization policy to grant permissions to the RAM user. In the authorization policy, an Alibaba Cloud Resource Name (ARN) is used to specify a resource.
 
@@ -1338,7 +1429,7 @@ The following table lists the Express Connect API operations that allow authoriz
 | vpc:DescribeSnatTableEntries | acs:vpc:$regionid:$accountid:snattable/$snattableid |
 | vpc:DeleteSnatEntry | acs:vpc:$regionid:$accountid:snattable/$snattableid |
 
-### Common parameters
+### 6.4 Common parameters
 
 This topic describes the common parameters that are required for calling Express Connect API operations.
 
@@ -1384,9 +1475,9 @@ JSON format `{`
       /*Return Result Data*/
 ```
 
-### Physical connections
+### 6.5 Physical connections
 
-#### CreatePhysicalConnection
+#### 6.5.1 CreatePhysicalConnection
 
 Applies for an Express Connect circuit.
 
@@ -1467,7 +1558,7 @@ Sample success responses `XML` format
 | 400 | InvalidCircuitCode.Malfo rmed | circuitCode is illegal. | The error message returned because CircuitCode is set to an invalid value. |
 | 400 | QuotaExceeded.freePco nnPerAP | free physical connections count excceeded. | The error message returned because the quota on Express Connect circuits is reached. |
 
-#### DescribeAccessPoints
+#### 6.5.2 DescribeAccessPoints
 
 Queries the access points of Express Connect circuits in a specified region.
 
@@ -1563,7 +1654,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.NotSupp ort | The RegionId provided does not support in our records. | The error message returned because the specified region ID is invalid. |
 
-#### CancelPhysicalConnection
+#### 6.5.3 CancelPhysicalConnection
 
 Cancels an Express Connect circuit before it is enabled. After you cancel an Express Connect circuit, it changes to the **Canceled** state.
 
@@ -1617,7 +1708,7 @@ Sample success responses `XML` format
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the specified Express Connect circuit does not exist. |
 | 400 | Forbidden.NotAllowedIn State | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### DescribePhysicalConnections
+#### 6.5.4 DescribePhysicalConnections
 
 Queries Express Connect circuits in a region.
 
@@ -1772,7 +1863,7 @@ Guangdong",
 |---|---|---|---|
 | 404 | InvalidFilterKey.ValueNo tSupported | Specified filter key is not supported: Filter.X.key | The error message returned because Filter.X.key is not supported. |
 
-#### ModifyPhysicalConnectionAttribute
+#### 6.5.5 ModifyPhysicalConnectionAttribute
 
 Modifies the configurations of an Express Connect circuit.
 
@@ -1849,7 +1940,7 @@ Sample success responses `XML` format
 | 400 | InvalidRedundantPhysic alConnectionStatus | invalid redundant physical connection status. | The error message returned because the standby Express Connect circuit is in an invalid state. |
 | 400 | InvalidCircuitCode.Malfo rmed | circuitCode is illegal. | The error message returned because CircuitCode is set to an invalid value. |
 
-#### TerminatePhysicalConnection
+#### 6.5.6 TerminatePhysicalConnection
 
 Disables an Express Connect circuit after it is enabled.
 
@@ -1902,7 +1993,7 @@ Sample success responses `XML` format
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the specified Express Connect circuit does not exist. |
 | 400 | Forbidden.NotAllowedIn State | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### EnablePhysicalConnection
+#### 6.5.7 EnablePhysicalConnection
 
 Enables an Express Connect circuit that is in the **Confirmed** state. After you enable an Express Connect circuit, it changes to the **Enabled** state.
 
@@ -1956,7 +2047,7 @@ Sample success responses `XML` format
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the Express Connect circuit does not exist. |
 | 400 | Forbidden.NotAllowedIn State | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### DeletePhysicalConnection
+#### 6.5.8 DeletePhysicalConnection
 
 Deletes a physical connection. You can delete only physical connections that are in the following states:**Rejected**,**Canceled**,**AllocationFailed**, and**Terminated**.
 
@@ -2010,7 +2101,7 @@ Sample success responses `XML` format
 | 400 | Forbidden.VBRExists | vbr owner's vbr still exists. | The error message returned because the VBR still exists. |
 | 400 | Forbidden.AssociateToV BR | The physical connection still associate to VBR. | The error message returned because the physical connection is already associated with a VBR. |
 
-#### CreatePhysicalConnectionOccupancyOrder
+#### 6.5.9 CreatePhysicalConnectionOccupancyOrder
 
 Creates an order for resource usage.
 
@@ -2070,7 +2161,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | Forbidden.NotAllowedIn State | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### ApplyPhysicalConnectionLOA
+#### 6.5.10 ApplyPhysicalConnectionLOA
 
 Applies for a Letter of Authorization (LOA) for an Express Connect circuit.
 
@@ -2124,7 +2215,7 @@ Sample success responses `XML` format
     "RequestId":"A47BD386-7FDE-42C4-8D22-C6223D18AA1C"
 ```
 
-#### CreatePhysicalConnectionSetupOrder
+#### 6.5.11 CreatePhysicalConnectionSetupOrder
 
 Creates an order for initial installation of an Express Connect circuit.
 
@@ -2177,7 +2268,7 @@ Sample success responses `XML` format
     "OrderId": 202844382740728
 ```
 
-#### CompletePhysicalConnectionLOA
+#### 6.5.12 CompletePhysicalConnectionLOA
 
 Generates a report for an installed Express Connect circuit.
 
@@ -2222,7 +2313,7 @@ Sample success responses `XML` format
     "RequestId": "F8983C74-E068-4509-B442-89BD82C8F43B"
 ```
 
-#### DescribePhysicalConnectionLOA
+#### 6.5.13 DescribePhysicalConnectionLOA
 
 Queries letter of authorization (LOA) information about an Express Connect circuit.
 
@@ -2338,9 +2429,9 @@ Sample success responses `XML` format
     "success": true
 ```
 
-### VBR
+### 6.6 VBR
 
-#### CreateVbrHa
+#### 6.6.1 CreateVbrHa
 
 Creates a virtual border router (VBR) failover group.
 
@@ -2412,7 +2503,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationFailed.VbrCen NotRelation | OperationFailed.VbrCenNotRelation | The VBR is not attached to a Cloud Enterprise Network (CEN) instance. |
 | 404 | ResourceNotFound.Vbr | ResourceNotFound.Vbr | The specified VBR does not exist. |
 
-#### DeleteVbrHa
+#### 6.6.2 DeleteVbrHa
 
 Deletes a Virtual Border Router (VBR) failover group.
 
@@ -2464,7 +2555,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 404 | ResourceNotFound.VbrH a | ResourceNotFound.VbrHa | The specified VBR failover group is not found. |
 
-#### DeleteNqa
+#### 6.6.3 DeleteNqa
 
 Deletes a specified Network Quality Analyzer (NQA) instance.
 
@@ -2546,7 +2637,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | BGP PEER IP ADDRESS _ _ _ _ ALREADY USED CANNO _ _ T CREATE BGP PEER _ _ _ | InvalidParams.PeerIpAddressInUse | A BGP peer cannot be created because the specified peer IP address is already in use. |
 | 404 | REGION NOT FOUND _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. |
 
-#### CreateVirtualBorderRouter
+#### 6.6.4 CreateVirtualBorderRouter
 
 Creates a virtual border router (VBR).
 
@@ -2639,7 +2730,7 @@ Sample success responses `XML` format
 | 400 | InvalidIp.NotSameSubne t | Local gateway ip and peer gateway ip are not in the same subnet. | The error message returned because the IP addresses of the local gateway and the peer gateway do not fall within the same subnet. |
 | 404 | CROSS BID.FORBIDDEN _ | Create VBR across bid is illegal | The error message returned because you are not allowed to create a VBR for another Apsara Stack tenant account. |
 
-#### DeleteVirtualBorderRouter
+#### 6.6.5 DeleteVirtualBorderRouter
 
 Deletes a virtual border router (VBR).
 
@@ -2698,7 +2789,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.NoRiFound | No vlan router interfaces are found. | The error message returned because no VLAN router interface is available. |
 | 400 | InvalidStatus.NotAllowe d | The virtual border has been associated by physicalConnection. | The error message returned because the VBR is associated with an Express Connect circuit. |
 
-#### DescribeVirtualBorderRouters
+#### 6.6.6 DescribeVirtualBorderRouters
 
 Queries virtual border routers (VBRs).
 
@@ -3069,7 +3160,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidPhysicalConnectio nId.NotFound | The specified PhysicalConnectionId does not belong to user. | The error message returned because the specified Express Connect circuit does not belong to your Apsara Stack tenant account. |
 
-#### TerminateVirtualBorderRouter
+#### 6.6.8 TerminateVirtualBorderRouter
 
 Terminates a virtual border router (VBR). After the operation is called, the VBR changes from the **Enabled** state to the **Terminating** state. After the VBR is terminated, it enters the **Terminated** state. Only the owner of an Express Connect circuit can call this operation.
 
@@ -3122,7 +3213,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.OperationTer minateNotAllowedByUse r | The caller is not allowed to terminate the specified VirtualBorderRouter. | The error message returned because you do not have the permissions to terminate the VBR. |
 |---|---|---|---|
 
-#### RecoverVirtualBorderRouter
+#### 6.6.9 RecoverVirtualBorderRouter
 
 Recovers a terminated virtual border router (VBR).
 
@@ -3176,7 +3267,7 @@ Sample success responses `XML` format
 | 400 | OperationFailed.VlanIdAl readyInUse | The specifed vlanId has been used. | The error message returned because the VLAN ID is being used. |
 | 403 | Forbidden.OperationRec overNotAllowedByUser | The caller is not allowed to recover the specified VirtualBorderRouter. | The error message returned because you do not have the permissions to recover the VBR. |
 
-#### ModifyVirtualBorderRouterAttribute
+#### 6.6.10 ModifyVirtualBorderRouterAttribute
 
 Modifies the configuration of a virtual border router (VBR).
 
@@ -3415,9 +3506,9 @@ Sample success responses `XML` format
 | 400 | InvalidStatus.NotAllowe d | Invalid virtual border router status. | The error message returned because the status of the VBR does not support this operation. |
 | 400 | PHYSICAL NOT ALLOW _ _ _ ASSOCIATE VBR _ | The specified operation not allow. | The error message returned because the Express Connect circuit is associated with a VBR and the operation cannot be performed. |
 
-### BGP
+### 6.7 BGP
 
-#### CreateBgpGroup
+#### 6.7.1 CreateBgpGroup
 
 Creates a Border Gateway Protocol (BGP) group for a specified virtual border router (VBR). BGP groups allow VBRs to communicate with data centers. Each BGP group is associated with a VBR. You can add a BGP peer that needs to communicate with a VBR to the corresponding BGP group and advertise the BGP network in the VBR. BGP groups are used to simplify BGP configurations. You can save time and effort by adding BGP peers that use the same configurations to one BGP group. You must use an autonomous system (AS) number to create a BGP group. When you call this operation, take note of the following limits: Only BGP4 is supported by the BGP groups. BGP groups support IPv4 BGP. IPv6 BGP is not supported.
 
@@ -3494,7 +3585,7 @@ Sample success responses `XML` format
 | 400 | InvalidStatus.CannotOpe rate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 | 400 | QuotaExceeded.Bgp | bgp group count per vbr quota exceed. | The error message returned because the number of BGP groups in the VBR has reached the upper limit. |
 
-#### DescribeBgpGroups
+#### 6.7.2 DescribeBgpGroups
 
 Queries Border Gateway Protocol (BGP) groups in a region.
 
@@ -3605,7 +3696,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyBgpGroupAttribute
+#### 6.7.3 ModifyBgpGroupAttribute
 
 Modifies the configuration of a Border Gateway Protocol (BGP) group.
 
@@ -3677,7 +3768,7 @@ Sample success responses `XML` format
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOpe rate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 
-#### DeleteBgpGroup
+#### 6.7.4 DeleteBgpGroup
 
 Deletes a Border Gateway Protocol (BGP) group.
 
@@ -3744,7 +3835,7 @@ Sample success responses `XML` format
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOpe rate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 
-#### CreateBgpPeer
+#### 6.7.5 CreateBgpPeer
 
 Adds a Border Gateway Protocol (BGP) peer to a BGP group.
 
@@ -3822,7 +3913,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidStatus.CannotOpe rate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 
-#### DescribeBgpPeers
+#### 6.7.6 DescribeBgpPeers
 
 Queries Border Gateway Protocol (BGP) peers in a specific region.
 
@@ -3954,7 +4045,7 @@ Sample success responses `XML` format
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyBgpPeerAttribute
+#### 6.7.7 ModifyBgpPeerAttribute
 
 Modifies the configuration of a Border Gateway Protocol (BGP) peer.
 
@@ -4007,7 +4098,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DeleteBgpPeer
+#### 6.7.8 DeleteBgpPeer
 
 Deletes a Border Gateway Protocol (BGP) peer.
 
@@ -4072,7 +4163,7 @@ Sample success responses `XML` format
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOpe rate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 
-#### AddBgpNetwork
+#### 6.7.9 AddBgpNetwork
 
 Advertises a Border Gateway Protocol (BGP) network.
 
@@ -4138,7 +4229,7 @@ Sample success responses `XML` format
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. Check whether the region ID is valid. |
 | 400 | QuotaExceeded.Bgp | bgp group count per vbr quota exceed. | The error message returned because the number of BGP groups in the VBR has reached the quota. |
 
-#### DescribeBgpNetworks
+#### 6.7.10 DescribeBgpNetworks
 
 Queries advertised Border Gateway Protocol (BGP) networks.
 
@@ -4214,7 +4305,7 @@ Sample success responses `XML` format
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DeleteBgpNetwork
+#### 6.7.11 DeleteBgpNetwork
 
 Deletes an advertised Border Gateway Protocol (BGP) network.
 
@@ -4283,9 +4374,9 @@ Sample success responses `XML` format
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOpe rate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 
-### Router interface
+### 6.8 Router interface
 
-#### CreateRouterInterface
+#### 6.8.1 CreateRouterInterface
 
 Creates a router interface.
 
@@ -4383,7 +4474,7 @@ Sample success responses `XML` format
 | 400 | InvalidAccessPoint.NotE xist | The accessPoint not exit | The error message returned because the access point does not exist. |
 | 400 | InvalidRouterType.Value NotSupported | The specified RouterType is not valid | The error message returned because the type of the router is invalid. |
 
-#### ConnectRouterInterface
+#### 6.8.2 ConnectRouterInterface
 
 Initiates a connection from the initiator router interface to the acceptor. After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments.
 
@@ -4427,7 +4518,7 @@ JSON format `{`
    "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
 
-#### DeactivateRouterInterface
+#### 6.8.3 DeactivateRouterInterface
 
 Disables a router interface.
 
@@ -4478,7 +4569,7 @@ Sample success responses `XML` format
 | 404 | InvalidRouterInterfaceId. NotFound | The specified RouterInterfaceId does not exist in our record. | The error message returned because the specified router interface does not exist. Check whether the specified router interface is valid. |
 | 400 | IncorrectStatus | RouterInterface can be operated by this action only when it's status is Active. | The error message returned because the operation cannot be performed. The operation can be performed only when the the router interface is in the Active state. |
 
-#### ModifyRouterInterfaceSpec
+#### 6.8.4 ModifyRouterInterfaceSpec
 
 Modifies the specification of a router interface.
 
@@ -4539,7 +4630,7 @@ Sample success responses `XML` format
 | 400 | InvalidInstance.StatusEr ror | The router instance owener error. | The error message returned because the state of the instance is invalid. |
 | 400 | InvalidOpposite.NotFoun d | The opposite not exit. | The error message returned because the peer does not exist. |
 
-#### DeleteRouterInterface
+#### 6.8.5 DeleteRouterInterface
 
 Deletes a router interface.
 
@@ -4597,7 +4688,7 @@ Sample success responses `XML` format
 | 400 | InvalidRouterInterfaceC hargeType.Malformed | The prepaid routerinterface can not delete. | The error message returned because you cannot delete a subscription router interface. |
 |---|---|---|---|
 
-#### DescribeRouterInterfaces
+#### 6.8.6 DescribeRouterInterfaces
 
 Queries router interfaces in a region.
 
@@ -4785,7 +4876,7 @@ Sample success responses `XML` format
 | 404 | InvalidFilterKey.ValueNo tSupported | Specified filter key is not supported: Filter.X.key | The error message returned because Filter.X.key is not supported. |
 | 400 | InvalidParam.NotNull | The parameter must not be null. | The error message returned because a required parameter is not set. |
 
-#### ActivateRouterInterface
+#### 6.8.7 ActivateRouterInterface
 
 Activates a router interface that is in the Inactive state.
 
@@ -4840,7 +4931,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | The Router instance owener error | The error message returned because the specified router does not belong to your Apsara Stack tenant account. |
 |---|---|---|---|
 
-#### ModifyRouterInterfaceAttribute
+#### 6.8.8 ModifyRouterInterfaceAttribute
 
 Modifies the configuration of a router interface.
 
@@ -4909,11 +5000,11 @@ Sample success responses `XML` format
 | 400 | LinkRole.NotSupport | This linkrole is not supported | The error message returned because this link is not supported. |
 | 400 | InvalidParam.ModifyRou terInterface | Modify routerinterface param invalide | The error message returned because the value of the parameter that you set to modify the router interface is invalid. |
 
-## Appendixes
+## 7 Appendixes
 
-### STS overview
+### 7.1 STS overview
 
-#### What is STS?
+#### 7.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -4925,7 +5016,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 

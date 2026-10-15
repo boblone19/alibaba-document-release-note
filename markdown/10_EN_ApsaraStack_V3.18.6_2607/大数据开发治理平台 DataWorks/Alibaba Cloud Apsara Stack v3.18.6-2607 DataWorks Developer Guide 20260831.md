@@ -3,14 +3,290 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Developer Guide 202608
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 1018
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Developer Guide 20260831.pdf"
+source_pdf: "7af995ad10f04a02_Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0%20DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataWorks%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Developer Guide 20260831
 
-## API introduction
+## Table of Contents
+
+- 1 API introduction
+- 2 Prerequisites
+  - 2.1 Obtain an AccessKey pair
+- 3 Use the POP gateway to call Apsara Stack API operations
+- 4 OpenAPI
+  - 4.1 Tenants
+    - 4.1.1 CreateProject
+    - 4.1.2 DeleteProject
+    - 4.1.3 BindProjectCalcEngines
+    - 4.1.4 AddProjectMemberToRole
+    - 4.1.5 CreateConnection
+    - 4.1.6 CreateProjectMember
+    - 4.1.7 CreateDataSource
+    - 4.1.8 DeleteConnection
+    - 4.1.9 DeleteProjectMember
+    - 4.1.10 DeleteDataSource
+    - 4.1.11 GetProject
+    - 4.1.12 GetProjectDetail
+    - 4.1.13 ListDataSources
+    - 4.1.14 ListCalcEngines
+    - 4.1.15 ListConnections
+    - 4.1.16 ListProjectMembers
+    - 4.1.17 ListProjectRoles
+    - 4.1.18 ListProjects
+    - 4.1.19 ListProjectIds
+    - 4.1.20 ListResourceGroups
+    - 4.1.21 RemoveProjectMemberFromRole
+    - 4.1.22 UpdateConnection
+    - 4.1.23 UpdateDataSource
+  - 4.2 Metadata
+    - 4.2.1 AddToMetaCategory
+    - 4.2.2 CheckMetaPartition
+    - 4.2.3 CheckMetaTable
+    - 4.2.4 CreateMetaCategory
+    - 4.2.5 CreateTable
+    - 4.2.6 CreateTableTheme
+    - 4.2.7 CreateTableLevel
+    - 4.2.8 DeleteFromMetaCategory
+    - 4.2.9 DeleteMetaCategory
+    - 4.2.10 DeleteTable
+    - 4.2.11 DeleteTableLevel
+    - 4.2.12 DeleteTableTheme
+    - 4.2.13 GetDDLJobStatus
+    - 4.2.14 GetMetaDBInfo
+    - 4.2.15 GetMetaDBTableList
+    - 4.2.16 GetMetaCategory
+    - 4.2.17 GetMetaColumnLineage
+    - 4.2.18 GetMetaMetrics
+    - 4.2.19 GetMetaStorageTrend
+    - 4.2.20 GetMetaTableBasicInfo
+    - 4.2.21 GetMetaTableColumn
+    - 4.2.22 GetMetaTableChangeLog
+    - 4.2.23 GetMetaTableFullInfo
+    - 4.2.24 GetMetaTableIntroWiki
+    - 4.2.25 GetMetaTableLineage
+    - 4.2.26 GetMetaTableListByCategory
+    - 4.2.27 GetMetaTableOutput
+    - 4.2.28 GetMetaTablePartition
+    - 4.2.29 ListMetaDB
+    - 4.2.30 ListTableLevel
+    - 4.2.31 ListTableTheme
+    - 4.2.32 SearchMetaTables
+    - 4.2.33 SearchMetaTableByKey
+    - 4.2.34 UpdateMetaCategory
+    - 4.2.35 UpdateMetaTable
+    - 4.2.36 UpdateMetaTableIntroWiki
+    - 4.2.37 UpdateTable
+    - 4.2.38 UpdateTableLevel
+    - 4.2.39 UpdateTableModelInfo
+    - 4.2.40 UpdateTableTheme
+    - 4.2.41 UpdateTableAddColumn
+    - 4.2.42 GetMetaTableThemeLevel
+  - 4.3 DataStudio
+    - 4.3.1 CreateFile
+    - 4.3.2 CreateFolder
+    - 4.3.3 CreateUdfFile
+    - 4.3.4 CreateBusiness
+    - 4.3.5 CreateResourceFile
+    - 4.3.6 DeleteBusiness
+    - 4.3.7 DeleteFile
+    - 4.3.8 DeleteFolder
+    - 4.3.9 DeployFile
+    - 4.3.10 EstablishRelationTableToBusiness
+    - 4.3.11 GetBusiness
+    - 4.3.12 GetDeployment
+    - 4.3.13 GetFileVersion
+    - 4.3.14 GetFile
+    - 4.3.15 GetFolder
+    - 4.3.16 GetNodeTypeListInfo
+    - 4.3.17 ListBusiness
+    - 4.3.18 ListFiles
+    - 4.3.19 ListFileVersions
+    - 4.3.20 ListFolders
+    - 4.3.21 SubmitFile
+    - 4.3.22 UpdateFile
+    - 4.3.23 UpdateBusiness
+    - 4.3.24 UpdateFolder
+    - 4.3.25 UpdateUdfFile
+    - 4.3.26 UpdateResourceFile
+    - 4.3.27 UpdateIDEEventResult
+    - 4.3.28 CheckFileDeployment
+    - 4.3.29 GetIDEEventDetail
+    - 4.3.30 ListDeployments
+    - 4.3.31 OfflineNode
+    - 4.3.32 addNode
+    - 4.3.33 DeleteNode
+    - 4.3.34 SelectNodeList
+    - 4.3.35 UpdateNode
+  - 4.4 Data Integration
+    - 4.4.1 CreateDISyncTask
+    - 4.4.2 GetDataSourceMeta
+    - 4.4.3 ListDIProjectConfig
+    - 4.4.4 TestNetworkConnection
+    - 4.4.5 UpdateDIProjectConfig
+    - 4.4.6 UpdateDISyncTask
+    - 4.4.7 GetDISyncTask
+    - 4.4.8 GetDISyncInstanceInfo
+    - 4.4.9 ListRefDISyncTasks
+  - 4.5 Data modeling
+    - 4.5.1 QueryPublicModelEngine
+    - 4.5.2 SearchElement
+    - 4.5.3 UpdateModel
+    - 4.5.4 UpdatePublicDomain
+    - 4.5.5 UpdateDomainCode
+    - 4.5.6 GetModelApplyDomainStatus
+    - 4.5.7 DeleteDomainCodes
+    - 4.5.8 CreatePublicDomain
+    - 4.5.9 AddDomainCode
+    - 4.5.10 DeletePublicDomains
+  - 4.6 Operation Center
+    - 4.6.1 CreateDagComplement
+    - 4.6.2 CreateDagTest
+    - 4.6.3 CreateRemind
+    - 4.6.4 DeleteRemind
+    - 4.6.5 GetBaselineConfig
+    - 4.6.6 GetBaselineKeyPath
+    - 4.6.7 GetBaselineStatus
+    - 4.6.8 GetDag
+    - 4.6.9 GetInstance
+    - 4.6.10 GetInstanceConsumeTimeRank
+    - 4.6.11 GetInstanceCountTrend
+    - 4.6.12 GetInstanceErrorRank
+    - 4.6.13 GetInstanceLog
+    - 4.6.14 GetInstanceStatusStatistic
+    - 4.6.15 GetNode
+    - 4.6.16 GetNodeCode
+    - 4.6.17 GetNodeOnBaseline
+    - 4.6.18 GetNodeChildren
+    - 4.6.19 GetNodeParents
+    - 4.6.20 GetRemind
+    - 4.6.21 GetSuccessInstanceTrend
+    - 4.6.22 GetTopic
+    - 4.6.23 GetTopicInfluence
+    - 4.6.24 GetFileTypeStatistic
+    - 4.6.25 ListFileType
+    - 4.6.26 ListAlertMessages
+    - 4.6.27 ListBaselineConfigs
+    - 4.6.28 ListBaselineStatuses
+    - 4.6.29 ListDataServicePublishedApis
+    - 4.6.30 ListDags
+    - 4.6.31 ListInstances
+    - 4.6.32 ListInstanceAmount
+    - 4.6.33 ListInstanceHistory
+    - 4.6.34 ListSuccessInstanceAmount
+    - 4.6.35 ListManualDagInstances
+    - 4.6.36 ListNodes
+    - 4.6.37 ListInnerNodes
+    - 4.6.38 ListNodeIO
+    - 4.6.39 ListNodeInputOrOutput
+    - 4.6.40 ListNodesByOutput
+    - 4.6.41 ListNodesByBaseline
+    - 4.6.42 ListReminds
+    - 4.6.43 ListTopics
+    - 4.6.44 RestartInstance
+    - 4.6.45 ResumeInstance
+    - 4.6.46 RunTriggerNode
+    - 4.6.47 RunCycleDagNodes
+    - 4.6.48 RunManualDagNodes
+    - 4.6.49 RunSmokeTest
+    - 4.6.50 SetSuccessInstance
+    - 4.6.51 StopInstance
+    - 4.6.52 SuspendInstance
+    - 4.6.53 TopTenElapsedTimeInstance
+    - 4.6.54 TopTenErrorTimesInstance
+    - 4.6.55 UpdateRemind
+    - 4.6.56 UpdateNodeOwner
+    - 4.6.57 UpdateNodeRunMode
+  - 4.7 Data Quality
+    - 4.7.1 CreateQualityEntity
+    - 4.7.2 CreateQualityFollower
+    - 4.7.3 CreateQualityRelativeNode
+    - 4.7.4 CreateQualityRule
+    - 4.7.5 DeleteQualityEntity
+    - 4.7.6 DeleteQualityFollower
+    - 4.7.7 DeleteQualityRelativeNode
+    - 4.7.8 DeleteQualityRule
+    - 4.7.9 GetQualityEntity
+    - 4.7.10 GetQualityFollower
+    - 4.7.11 GetQualityRule
+    - 4.7.12 ListQualityResultsByEntity
+    - 4.7.13 ListQualityResultsByRule
+    - 4.7.14 ListQualityRules
+    - 4.7.15 UpdateQualityFollower
+    - 4.7.16 UpdateQualityRule
+  - 4.8 DataService Studio
+    - 4.8.1 AbolishDataServiceApi
+    - 4.8.2 CreateDataServiceApi
+    - 4.8.3 CreateDataServiceApiAuthority
+    - 4.8.4 CreateDataServiceFolder
+    - 4.8.5 CreateDataServiceGroup
+    - 4.8.6 DeleteDataServiceApi
+    - 4.8.7 DeleteDataServiceApiAuthority
+    - 4.8.8 GetDataServiceApi
+    - 4.8.9 GetDataServiceApplication
+    - 4.8.10 GetDataServiceFolder
+    - 4.8.11 GetDataServiceGroup
+    - 4.8.12 GetDataServicePublishedApi
+    - 4.8.13 ListDataServiceApis
+    - 4.8.14 ListDataServiceApiAuthorities
+    - 4.8.15 ListDataServiceApplications
+    - 4.8.16 ListDataServiceAuthorizedApis
+    - 4.8.17 ListDataServiceFolders
+    - 4.8.18 ListDataServiceGroups
+    - 4.8.19 PublishDataServiceApi
+    - 4.8.20 UpdateDataServiceApi
+  - 4.9 Node scheduling
+    - 4.9.1 CreateManualDag
+    - 4.9.2 GetInstanceStatusCount
+    - 4.9.3 GetManualDagInstances
+    - 4.9.4 ListProgramTypeCount
+    - 4.9.5 SearchNodesByOutput
+  - 4.10 Data Security Guard
+    - 4.10.1 AddRuleConfig
+    - 4.10.2 AddRuleConfigMessage
+    - 4.10.3 UpdateRuleConfig
+    - 4.10.4 UpdateRuleConfigMessage
+    - 4.10.5 DeleteRuleConfig
+    - 4.10.6 DeleteRuleConfigMessage
+    - 4.10.7 DesensitizeData
+    - 4.10.8 GetRuleConfig
+    - 4.10.9 GetRuleConfigMessage
+    - 4.10.10 GetRuleDataMessage
+    - 4.10.11 GetRuleMessage
+    - 4.10.12 GetSensLevel
+    - 4.10.13 GetSensLevelMessage
+    - 4.10.14 GetSensTableLevel
+    - 4.10.15 GetSensTableLevelMessage
+    - 4.10.16 GetOpSensitiveData
+    - 4.10.17 GetSensitiveData
+    - 4.10.18 ScanSensitiveData
+    - 4.10.19 AddSenRule
+    - 4.10.20 AddSensLevel
+    - 4.10.21 DeleteSenRule
+    - 4.10.22 GetSenRule
+    - 4.10.23 GetSensitiveCountData
+    - 4.10.24 UpdateRiskInfoData
+    - 4.10.25 UpdateSenRule
+    - 4.10.26 UpdateSensitive
+  - 4.11 security center
+    - 4.11.1 CreatePermissionApplyOrder
+    - 4.11.2 ApprovePermissionApplyOrder
+    - 4.11.3 ListPermissionApplyOrders
+    - 4.11.4 GetPermissionApplyOrderDetail
+    - 4.11.5 RevokeColumnPermission
+    - 4.11.6 RevokeTablePermission
+  - 4.12 Migration Assistant
+    - 4.12.1 GetMigrationProcess
+    - 4.12.2 StartMigration
+    - 4.12.3 GetMigrationSummary
+    - 4.12.4 ListMigrations
+  - 4.13 Open platform
+    - 4.13.1 GetExtension
+    - 4.13.2 GetOptionValueForProject
+
+## 1 API introduction
 
 This topic lists the DataWorks OpenAPI operations.
 
@@ -368,9 +644,9 @@ DataWorks OpenAPI covers tenant, metadata, DataStudio, Data Integration, Operati
 | GetExtension | Gets details of an extension. |
 | GetOptionValueForProj ect | Gets the configuration of an extension option in a project. |
 
-## Prerequisites
+## 2 Prerequisites
 
-### Obtain an AccessKey pair
+### 2.1 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -413,7 +689,7 @@ want to obtain.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 eway to call Apsara Stack API op erations
 
-## Use the POP gateway to
+## 3 Use the POP gateway to call Apsara Stack API operations
 
 **call Apsara Stack API**
 
@@ -486,11 +762,11 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
 
 `}` `}` `}`
 
-## OpenAPI
+## 4 OpenAPI
 
-### Tenants
+### 4.1 Tenants
 
-#### CreateProject
+#### 4.1.1 CreateProject
 
 Calls the CreateProject operation to create a project.
 
@@ -562,7 +838,7 @@ Sample success responses `JSON` format `{`
 | 403 | 100002002 | Invalid.Tenant.UserIsNotProjec tOwnerOrAdmin | The user is not a project administrator or owner. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### DeleteProject
+#### 4.1.2 DeleteProject
 
 You can call the DeleteProject operation to delete a project.
 
@@ -617,7 +893,7 @@ Sample success responses `JSON` format `{`
 | 403 | 1120010001 | Forbidden.DI.NoPrivilege | No access. |
 | 500 | 1120010002 | InternalError.DI.Parameter | A DI internal error occurred. |
 
-#### BindProjectCalcEngines
+#### 4.1.3 BindProjectCalcEngines
 
 Call BindProjectCalcEngines to attach engines to a project.
 
@@ -679,7 +955,7 @@ Sample success responses `JSON` format `{`
 | 403 | 100002002 | Invalid.Tenant.UserIsNotProjec tOwnerOrAdmin | The user is not a project administrator or owner. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### AddProjectMemberToRole
+#### 4.1.4 AddProjectMemberToRole
 
 Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account as a member of a DataWorks workspace.
 
@@ -736,7 +1012,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### CreateConnection
+#### 4.1.5 CreateConnection
 
 Creates a data source.
 
@@ -811,7 +1087,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### CreateProjectMember
+#### 4.1.6 CreateProjectMember
 
 Adds a user to a DataWorks workspace.
 
@@ -866,7 +1142,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User AlreadyInProject | The user already exists in the project. | The user that you want to add is in the workspace. |
 | 400 | Invalid.Tenant.User NotInTenant | The user is not in the tenant. | The member that you want to add does not belong to the tenant. |
 
-#### CreateDataSource
+#### 4.1.7 CreateDataSource
 
 Adds a data source to DataWorks.
 
@@ -953,7 +1229,7 @@ Sample success responses `XML` format
 | 400 | MissingParam.Conn ectionStr.Property | You must specify property %s required by the data source connection string. | The required properties of the connection string of the data source are not specified. |
 | 400 | Invalid.DataSource. DataSourceTypeNo tExist | The data source type %s does not exist. | The specified data source type is not found. |
 
-#### DeleteConnection
+#### 4.1.8 DeleteConnection
 
 Removes a data source.
 
@@ -1004,7 +1280,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### DeleteProjectMember
+#### 4.1.9 DeleteProjectMember
 
 Removes a user from a DataWorks workspace.
 
@@ -1057,7 +1333,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User AlreadyInProject | The user already exists in the project. | The user that you want to add is in the workspace. |
 | 400 | Invalid.Tenant.User NotInTenant | The user is not in the tenant. | The member that you want to add does not belong to the tenant. |
 
-#### DeleteDataSource
+#### 4.1.10 DeleteDataSource
 
 Removes a data source.
 
@@ -1116,7 +1392,7 @@ Sample success responses `XML` format
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 | 400 | Invalid.Operation | You cannot delete the bindingCalcEngine that is bound to the data source. | The compute engine that is associated with the data source cannot be deleted. |
 
-#### GetProject
+#### 4.1.11 GetProject
 
 Queries the information about a DataWorks workspace.
 
@@ -1271,7 +1547,7 @@ Sample success responses `XML` format
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 |---|---|---|---|
 
-#### GetProjectDetail
+#### 4.1.12 GetProjectDetail
 
 Queries the information about a DataWorks workspace.
 
@@ -1392,7 +1668,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListDataSources
+#### 4.1.13 ListDataSources
 
 Queries a list of data sources of DataWorks.
 
@@ -1547,7 +1823,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListCalcEngines
+#### 4.1.14 ListCalcEngines
 
 Queries a list of compute engine instances.
 
@@ -1886,7 +2162,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListConnections
+#### 4.1.15 ListConnections
 
 Queries a list of data sources.
 
@@ -2028,7 +2304,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListProjectMembers
+#### 4.1.16 ListProjectMembers
 
 Queries members in a DataWorks workspace.
 
@@ -2149,7 +2425,7 @@ Sample success responses `JSON` format `{`
 | 400 | 100002001 | Invalid.Tenant.UserNotInProjec t | The user is not in the project. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### ListProjectRoles
+#### 4.1.17 ListProjectRoles
 
 Queries a list of roles in a DataWorks workspace.
 
@@ -2231,7 +2507,7 @@ Sample success responses `JSON` format `{`
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListProjects
+#### 4.1.18 ListProjects
 
 Queries a list of DataWorks workspaces of the tenant to which the current user belongs by page.
 
@@ -2322,7 +2598,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListProjectIds
+#### 4.1.19 ListProjectIds
 
 Queries the IDs of the DataWorks workspaces on which a specific Apsara Stack tenant account or RAM user has permissions.
 
@@ -2376,7 +2652,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### ListResourceGroups
+#### 4.1.20 ListResourceGroups
 
 Call the ListResourceGroups operation to list resource groups of a specified type.
 
@@ -2524,7 +2800,7 @@ Sample success responses `JSON` format `{`
 | 403 | 100002002 | Invalid.Tenant.UserIsNotProjec tOwnerOrAdmin | The user is not a project administrator or owner. |
 | 403 | 100001001 | Invalid.Tenant.UserNotInTenan t | The user is not in tenant. |
 
-#### RemoveProjectMemberFromRole
+#### 4.1.21 RemoveProjectMemberFromRole
 
 Removes a role from a user in a DataWorks workspace.
 
@@ -2576,7 +2852,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### UpdateConnection
+#### 4.1.22 UpdateConnection
 
 Updates a data source.
 
@@ -2646,7 +2922,7 @@ Sample success responses `XML` format
 | 400 | Invalid.Tenant.User NotInProject | The user is not in the project. | The user is not added to the workspace. |
 | 403 | Invalid.Tenant.User NotInTenant | The user is not in tenant. | The user does not belong to the tenant. |
 
-#### UpdateDataSource
+#### 4.1.23 UpdateDataSource
 
 Updates a data source.
 
@@ -2733,9 +3009,9 @@ Sample success responses `XML` format
 | 400 | Invalid.Operation | You cannot delete the bindingCalcEngine that is bound to the data source. | The compute engine that is associated with the data source cannot be deleted. |
 | 400 | Required.Paramete r.Empty | You must specify the parameter %s. | A required parameter is not specified. |
 
-### Metadata
+### 4.2 Metadata
 
-#### AddToMetaCategory
+#### 4.2.1 AddToMetaCategory
 
 Adds a metatable to a specified category.
 
@@ -2798,7 +3074,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CheckMetaPartition
+#### 4.2.2 CheckMetaPartition
 
 Checks whether a partition exists.
 
@@ -2877,7 +3153,7 @@ Sample success responses `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### CheckMetaTable
+#### 4.2.3 CheckMetaTable
 
 Checks whether a table exists.
 
@@ -2946,7 +3222,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### CreateMetaCategory
+#### 4.2.4 CreateMetaCategory
 
 Creates a category.
 
@@ -3036,7 +3312,7 @@ Sample success responses `XML` format
 | 500 | Invalid.Meta.Categ oryRelationDuplicat e" | The table is already bound to the category. | The category is already associated with the table. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateTable
+#### 4.2.5 CreateTable
 
 Creates a MaxCompute table or view.
 
@@ -3131,7 +3407,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateTableTheme
+#### 4.2.6 CreateTableTheme
 
 Creates a folder. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -3193,7 +3469,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateTableLevel
+#### 4.2.7 CreateTableLevel
 
 Creates a level. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -3253,7 +3529,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteFromMetaCategory
+#### 4.2.8 DeleteFromMetaCategory
 
 Removes a metatable from a specified category.
 
@@ -3320,7 +3596,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteMetaCategory
+#### 4.2.9 DeleteMetaCategory
 
 Deletes a category.
 
@@ -3403,7 +3679,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteTable
+#### 4.2.10 DeleteTable
 
 Deletes a MaxCompute table.
 
@@ -3473,7 +3749,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteTableLevel
+#### 4.2.11 DeleteTableLevel
 
 Deletes a table level. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -3527,7 +3803,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteTableTheme
+#### 4.2.12 DeleteTableTheme
 
 Deletes a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -3583,7 +3859,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetDDLJobStatus
+#### 4.2.13 GetDDLJobStatus
 
 Queries the status of a table creation, update, or deletion task.
 
@@ -3643,7 +3919,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaDBInfo
+#### 4.2.14 GetMetaDBInfo
 
 Queries the basic metadata information about a compute engine instance.
 
@@ -3765,7 +4041,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### GetMetaDBTableList
+#### 4.2.15 GetMetaDBTableList
 
 Queries metatables in a compute engine instance.
 
@@ -3860,7 +4136,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### GetMetaCategory
+#### 4.2.16 GetMetaCategory
 
 Queries a category tree.
 
@@ -3991,7 +4267,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaColumnLineage
+#### 4.2.17 GetMetaColumnLineage
 
 Queries the lineage of a field in a metatable.
 
@@ -4109,7 +4385,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query is not found. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaMetrics
+#### 4.2.18 GetMetaMetrics
 
 Obtains overview data, including the number of instances and storage data.
 
@@ -4196,7 +4472,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | The current user is not a tenant owner. |
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | The values specified for one or more request parameters are invalid. |
 
-#### GetMetaStorageTrend
+#### 4.2.19 GetMetaStorageTrend
 
 Obtains the storage trend.
 
@@ -4269,7 +4545,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | The current user is not a tenant owner. |
 | 400 | InvalidParameter.M eta.CommonError | The specified parameter is invalid. | The values specified for one or more request parameters are invalid. |
 
-#### GetMetaTableBasicInfo
+#### 4.2.20 GetMetaTableBasicInfo
 
 Queries the basic information about a metatable.
 
@@ -4441,7 +4717,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 | 400 | InternalError.Meta. NoCalcEngine | An error occurred while retrieving the compute engine based on the MaxCompute project. | The system has failed to obtain information about a compute engine instance based on the specified MaxCompute project. |
 
-#### GetMetaTableColumn
+#### 4.2.21 GetMetaTableColumn
 
 Queries the field information about a metatable.
 
@@ -4574,7 +4850,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### GetMetaTableChangeLog
+#### 4.2.22 GetMetaTableChangeLog
 
 Queries the change logs of a metatable.
 
@@ -4698,7 +4974,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaTableFullInfo
+#### 4.2.23 GetMetaTableFullInfo
 
 Queries the complete information about a metatable, including information about fields in the metatable.
 
@@ -4840,7 +5116,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaTableIntroWiki
+#### 4.2.24 GetMetaTableIntroWiki
 
 Queries the instructions on how to use a metatable.
 
@@ -4923,7 +5199,7 @@ nt>
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaTableLineage
+#### 4.2.25 GetMetaTableLineage
 
 Queries the lineage of a metatable.
 
@@ -5034,7 +5310,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### GetMetaTableListByCategory
+#### 4.2.26 GetMetaTableListByCategory
 
 Queries metatables in a specified category.
 
@@ -5133,7 +5409,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaTableOutput
+#### 4.2.27 GetMetaTableOutput
 
 Queries the output information in a metatable.
 
@@ -5252,7 +5528,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaTablePartition
+#### 4.2.28 GetMetaTablePartition
 
 Queries the partitions of a metatable.
 
@@ -5385,7 +5661,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListMetaDB
+#### 4.2.29 ListMetaDB
 
 Queries metadatabases.
 
@@ -5473,7 +5749,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query does not exist. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListTableLevel
+#### 4.2.30 ListTableLevel
 
 Queries table levels. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -5551,7 +5827,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListTableTheme
+#### 4.2.31 ListTableTheme
 
 Queries table themes. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -5633,7 +5909,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### SearchMetaTables
+#### 4.2.32 SearchMetaTables
 
 Queries metatables based on specific conditions.
 
@@ -5767,7 +6043,7 @@ Sample success response `XML` format
 | 500 | InternalError.Meta. TenantTimeOut | Failed to connect to the interface network. | The network cannot be connected. |
 | 500 | InternalError.Meta. Unknown | An unknown error occurred while processing your request. | An unknown error has occurred. |
 
-#### SearchMetaTableByKey
+#### 4.2.33 SearchMetaTableByKey
 
 Call the SearchMetaTableByKey operation to search for metadata tables by keyword.
 
@@ -5900,7 +6176,7 @@ Sample success responses `JSON` format `{`
 | 400 | 1010010018 | InvalidParameter.Meta.NotExis t | The object does not exist. |
 | 403 | 9990010001 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. |
 
-#### UpdateMetaCategory
+#### 4.2.34 UpdateMetaCategory
 
 Updates a category.
 
@@ -5985,7 +6261,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.M eta.NotExist | The object does not exist. | The object you query is not found. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateMetaTable
+#### 4.2.35 UpdateMetaTable
 
 Updates the metadata information about a table.
 
@@ -6047,7 +6323,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateMetaTableIntroWiki
+#### 4.2.36 UpdateMetaTableIntroWiki
 
 Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
 
@@ -6103,7 +6379,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateTable
+#### 4.2.37 UpdateTable
 
 Updates a MaxCompute table.
 
@@ -6200,7 +6476,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateTableLevel
+#### 4.2.38 UpdateTableLevel
 
 Updates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -6263,7 +6539,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateTableModelInfo
+#### 4.2.39 UpdateTableModelInfo
 
 Updates the information about a table, such as the theme, level, and physical category. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -6322,7 +6598,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateTableTheme
+#### 4.2.40 UpdateTableTheme
 
 Updates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
 
@@ -6383,7 +6659,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateTableAddColumn
+#### 4.2.41 UpdateTableAddColumn
 
 Updates the fields in a MaxCompute table.
 
@@ -6463,7 +6739,7 @@ Sample success response `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetMetaTableThemeLevel
+#### 4.2.42 GetMetaTableThemeLevel
 
 Queries the information about the themes and levels of a metatable.
 
@@ -6598,9 +6874,9 @@ Sample success responses `JSON` format `{`
 | 500 | 1010010015 | InternalError.Meta.TenantTime Out | Failed to connect to the interface network. |
 | 500 | 1010019999 | InternalError.Meta.Unknown | An unknown error occurred while processing your request. |
 
-### DataStudio
+### 4.3 DataStudio
 
-#### CreateFile
+#### 4.3.1 CreateFile
 
 Creates a file in Data Development. This operation does not support creating data integration tasks.
 
@@ -6738,7 +7014,7 @@ Sample success response `JSON` format `{`
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An unexpected error occurred on the server. If the error persists after you retry, contact technical support. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred because the user ID was missing from the request context. This typically indicates a system issue. Please try the request again. |
 
-#### CreateFolder
+#### 4.3.2 CreateFolder
 
 Creates a folder.
 
@@ -6805,7 +7081,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 |---|---|---|---|
 
-#### CreateUdfFile
+#### 4.3.3 CreateUdfFile
 
 Creates a file for a function in DataStudio.
 
@@ -6881,7 +7157,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateBusiness
+#### 4.3.4 CreateBusiness
 
 Creates a workflow in DataStudio.
 
@@ -6949,7 +7225,7 @@ Sample success response `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateResourceFile
+#### 4.3.5 CreateResourceFile
 
 You can call this operation to CreateResourceFile upload resources.
 
@@ -7012,7 +7288,7 @@ Sample success response `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteBusiness
+#### 4.3.6 DeleteBusiness
 
 Deletes a workflow.
 
@@ -7075,7 +7351,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteFile
+#### 4.3.7 DeleteFile
 
 Deletes a file from DataStudio.
 
@@ -7138,7 +7414,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteFolder
+#### 4.3.8 DeleteFolder
 
 Deletes a folder from DataStudio.
 
@@ -7201,7 +7477,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeployFile
+#### 4.3.9 DeployFile
 
 Deploys a file to the production environment.
 
@@ -7268,7 +7544,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### EstablishRelationTableToBusiness
+#### 4.3.10 EstablishRelationTableToBusiness
 
 Imports a table to a workflow. The call to this API operation is equivalent to performing the following operations: Go to the DataStudio page, find the desired workflow, and then click the workflow name. Right-click Table under the desired folder and select Import Table.
 
@@ -7337,7 +7613,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetBusiness
+#### 4.3.11 GetBusiness
 
 Queries the details of a business flow.
 
@@ -7444,7 +7720,7 @@ Sample response `JSON` format `{`
 | 429 | Throttling.User | You are making requests too frequently. Try again later. | You have made too many requests in a short period. Slow down the request rate. |
 | 403 | Forbidden.Access | Access denied. You must activate DataWorks Enterprise Edition or Flagship Edition. | To use this feature, you must activate DataWorks Enterprise Edition or Flagship Edition. The feature is unavailable with your current edition. |
 
-#### GetDeployment
+#### 4.3.12 GetDeployment
 
 Queries the information about a deployment task.
 
@@ -7550,7 +7826,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetFileVersion
+#### 4.3.13 GetFileVersion
 
 Queries the information about a file version.
 
@@ -7664,7 +7940,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetFile
+#### 4.3.14 GetFile
 
 This API retrieves the details of an object.
 
@@ -7995,7 +8271,7 @@ lMilli"1200
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### GetFolder
+#### 4.3.15 GetFolder
 
 Queries the information about a folder.
 
@@ -8073,7 +8349,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetNodeTypeListInfo
+#### 4.3.16 GetNodeTypeListInfo
 
 Queries the information about node types, including the code and name of a node type.
 
@@ -8144,7 +8420,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListBusiness
+#### 4.3.17 ListBusiness
 
 Use the ListBusiness operation to query a list of businesses.
 
@@ -8266,7 +8542,7 @@ Sample success response `JSON` format `{`
 | 429 | Throttling.User | Your requests are too frequent. Try again later. | Your requests are too frequent. Please try again at a slower rate. |
 | 403 | Forbidden.Access | Access is forbidden. Please activate DataWorks Enterprise Edition or Flagship Edition first. | You are not authorized to perform this operation. You must first activate DataWorks Enterprise Edition or Flagship Edition. |
 
-#### ListFiles
+#### 4.3.18 ListFiles
 
 Queries a list of files.
 
@@ -8442,7 +8718,7 @@ Response example `JSON` format `{`
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal system error occurred. Try again later. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal system error occurred. Try again later. |
 
-#### ListFileVersions
+#### 4.3.19 ListFileVersions
 
 Queries a list of file versions.
 
@@ -8571,7 +8847,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListFolders
+#### 4.3.20 ListFolders
 
 Queries a list of folders.
 
@@ -8665,7 +8941,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### SubmitFile
+#### 4.3.21 SubmitFile
 
 Commits a file to the development environment of the scheduling system to generate a node. This API operation processes your request in asynchronous mode. You can call the GetDeployment operation to check whether the file is committed.
 
@@ -8729,7 +9005,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateFile
+#### 4.3.22 UpdateFile
 
 Updates an existing file node. You must change at least one parameter from its original value. For example, if a parameter is originally set to `A` , you must change it to a new value, such as `B` . Submitting a request with all original values returns an `invalid` error.
 
@@ -8875,7 +9151,7 @@ Response examples `JSON` format `{`
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### UpdateBusiness
+#### 4.3.23 UpdateBusiness
 
 Updates a business process.
 
@@ -8948,7 +9224,7 @@ Sample success response `JSON` format `{`
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Your request is too frequent. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please activate DataWorks Enterprise Edition or Flagship Edition. | Access is forbidden. Please activate DataWorks Enterprise Edition or Flagship Edition. |
 
-#### UpdateFolder
+#### 4.3.24 UpdateFolder
 
 Updates a folder.
 
@@ -9012,7 +9288,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateUdfFile
+#### 4.3.25 UpdateUdfFile
 
 Updates the file information about a function.
 
@@ -9086,7 +9362,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateResourceFile
+#### 4.3.26 UpdateResourceFile
 
 Call the UpdateResourceFile to update the resource file.
 
@@ -9143,7 +9419,7 @@ Sample success response `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateIDEEventResult
+#### 4.3.27 UpdateIDEEventResult
 
 Returns the check result of an extension point event to DataStudio after the extension point event is triggered during data development and checked by an extension.
 
@@ -9201,7 +9477,7 @@ Sample success responses `JSON` format `{`
 | 429 | 9990020002 | Throttling.User | Excessive requests are submitted within a short period of time. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### CheckFileDeployment
+#### 4.3.28 CheckFileDeployment
 
 Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. Returns the check events for a file.
 
@@ -9256,7 +9532,7 @@ Sample success response `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetIDEEventDetail
+#### 4.3.29 GetIDEEventDetail
 
 Queries the data snapshot of an extension point when the related extension point event is triggered.
 
@@ -9594,7 +9870,7 @@ Sample success responses `JSON` format `{`
 | 429 | 9990020002 | Throttling.User | Excessive requests are submitted within a short period of time. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### ListDeployments
+#### 4.3.30 ListDeployments
 
 Queries a list of deployment packages.
 
@@ -9719,7 +9995,7 @@ Sample success responses `JSON` format `{`
 | 429 | 9990020002 | Throttling.User | Excessive requests are submitted within a short period of time. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### OfflineNode
+#### 4.3.31 OfflineNode
 
 Call this API to take a node offline.
 
@@ -9777,7 +10053,7 @@ Sample response `JSON` format `{`
 | 403 | 1120010001 | Forbidden.DI.NoPrivilege | Access is denied. |
 | 500 | 1120010002 | InternalError.DI.Parameter | A DI internal error occurred. |
 
-#### addNode
+#### 4.3.32 addNode
 
 Creates a new node in DataWorks.
 
@@ -9852,7 +10128,7 @@ Sample success response `JSON` format `{`
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### DeleteNode
+#### 4.3.33 DeleteNode
 
 Deletes a Data Development node.
 
@@ -9927,7 +10203,7 @@ Sample response `JSON` format `{`
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### SelectNodeList
+#### 4.3.34 SelectNodeList
 
 Queries the list of nodes for a specified tenant.
 
@@ -10041,7 +10317,7 @@ eParent\": \"Level 1\", \"childrenList\": [ { \"nodeName\": \"Accou nt Informati
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### UpdateNode
+#### 4.3.35 UpdateNode
 
 Updates a DataStudio node.
 
@@ -10111,9 +10387,9 @@ Example success response `JSON` format `{`
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request has invalid parameters. |
 
-### Data Integration
+### 4.4 Data Integration
 
-#### CreateDISyncTask
+#### 4.4.1 CreateDISyncTask
 
 Creates a data synchronization node of Data Integration. DataWorks only allows you to call the CreateDISyncTask operation to create Data Integration offline synchronization tasks. To Data Integration a real-time synchronization task or a solution synchronization task, you must call the GenerateDISyncTaskConfigForCreating and QueryDISyncTaskConfigProcessResult operations to obtain the parameters that are required to asynchronously generate a Data Integration synchronization task. Then, you can use the parameters as input parameters of the CreateDISyncTask operation to create a real-time synchronization task or a solution synchronization task by using the CreateDISyncTask operation.
 
@@ -10198,7 +10474,7 @@ Sample success response `XML` format
 | 403 | Forbidden.DI.NoPri vilege | No access. | The error message returned because you do not have the required permissions. |
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | The error message returned because an internal error has occurred in Data Integration. |
 
-#### GetDataSourceMeta
+#### 4.4.2 GetDataSourceMeta
 
 Queries the metadata of a data source.
 
@@ -10291,7 +10567,7 @@ dbName\":\"testdb\",\"enable\":true,\"table\":\"table1\",\"tableName\":\"table1\
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | The error message returned because an internal error has occurred in Data Integration. |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | The specified parameter is invalid. |
 
-#### ListDIProjectConfig
+#### 4.4.3 ListDIProjectConfig
 
 Queries the default global configurations of synchronization solutions in a DataWorks workspace.
 
@@ -10359,7 +10635,7 @@ Sample success response `XML` format
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | The error message returned because an internal error has occurred in Data Integration. |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | The specified parameter is invalid. |
 
-#### TestNetworkConnection
+#### 4.4.4 TestNetworkConnection
 
 Tests the network connectivity between a data source and a resource group.
 
@@ -10430,7 +10706,7 @@ Sample success response `XML` format
 |---|---|---|---|
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | The specified parameter is invalid. |
 
-#### UpdateDIProjectConfig
+#### 4.4.5 UpdateDIProjectConfig
 
 Modifies the default global configuration of synchronization solutions in a specified DataWorks workspace.
 
@@ -10498,7 +10774,7 @@ Sample success response `XML` format
 | 500 | InternalError.DI.Par ameter | A DI internal error occurred. | The error message returned because an internal error has occurred in Data Integration. |
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | The specified parameter is invalid. |
 
-#### UpdateDISyncTask
+#### 4.4.6 UpdateDISyncTask
 
 Updates a synchronization node or solution in Data Integration.
 
@@ -10578,7 +10854,7 @@ Sample success response `XML` format
 |---|---|---|---|
 | 400 | Invalid.DI.Paramete r | The parameter is invalid. | The specified parameter is invalid. |
 
-#### GetDISyncTask
+#### 4.4.7 GetDISyncTask
 
 Queries the information about a real-time synchronization node or a data synchronization solution.
 
@@ -10917,7 +11193,7 @@ Sample success responses `JSON` format `{`
 | 403 | 1120010001 | Forbidden.Access | Access is forbidden. |
 | 500 | 1120010002 | InternalError.System | An internal error occurred. |
 
-#### GetDISyncInstanceInfo
+#### 4.4.8 GetDISyncInstanceInfo
 
 Queries the status of a real-time synchronization node or a data synchronization solution.
 
@@ -11037,7 +11313,7 @@ Sample success responses `JSON` format `{`
 | 403 | 1120010001 | Forbidden.Access | Access is forbidden. |
 | 500 | 1120010002 | InternalError.System | An internal error occurred. |
 
-#### ListRefDISyncTasks
+#### 4.4.9 ListRefDISyncTasks
 
 Queries a list of synchronization nodes in Data Integration.
 
@@ -11136,9 +11412,9 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | 1120010002 | InternalError.DI.Parameter | A DI internal error occurred. |
 
-### Data modeling
+### 4.5 Data modeling
 
-#### QueryPublicModelEngine
+#### 4.5.1 QueryPublicModelEngine
 
 Queries the information about objects created in Data Modeling.
 
@@ -12165,7 +12441,7 @@ Sample success responses `JSON` format `{`
 // The following sample code is returned when the demo of SDK for Java is used: { "re questId" : "x-request-id", "returnValue" : [ { "uuid" : "obj-123456", "gmtCreate" : 1638857552348, "gmtModified" : 1638857552351, "creatorId" : "0123456", "creatorName" : "ABCD", "modifierId" : "0123456", "modifierNam e" : "ABCD", "code" : "dws", "englishName" : "dws", "name" : "DWS layer", "ownerId" : "0123456", "ownerName" : "ABCD", "description" : "Des cription of the DWS layer" } ] }
 ```
 
-#### SearchElement
+#### 4.5.2 SearchElement
 
 Queries an element by name or display name. By default, you can call this operation to query the information about a table or field. You can query only the master branch of a model.
 
@@ -12306,7 +12582,7 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-#### UpdateModel
+#### 4.5.3 UpdateModel
 
 Modifies a model.
 
@@ -12430,7 +12706,7 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-#### UpdatePublicDomain
+#### 4.5.4 UpdatePublicDomain
 
 Modifies a public data standard.
 
@@ -12495,7 +12771,7 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-#### UpdateDomainCode
+#### 4.5.5 UpdateDomainCode
 
 Modifies a lookup table.
 
@@ -12566,7 +12842,7 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-#### GetModelApplyDomainStatus
+#### 4.5.6 GetModelApplyDomainStatus
 
 Queries the information about the data standard used by a model.
 
@@ -12674,7 +12950,7 @@ Sample success responses `JSON` format `{`
  </ErrorData>
 ```
 
-#### DeleteDomainCodes
+#### 4.5.7 DeleteDomainCodes
 
 Deletes a lookup table.
 
@@ -12738,7 +13014,7 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-#### CreatePublicDomain
+#### 4.5.8 CreatePublicDomain
 
 Creates a public data standard.
 
@@ -12873,7 +13149,7 @@ Sample success responses `JSON` format `{`
  </ErrorData>
 ```
 
-#### AddDomainCode
+#### 4.5.9 AddDomainCode
 
 Creates a lookup table.
 
@@ -13016,7 +13292,7 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-#### DeletePublicDomains
+#### 4.5.10 DeletePublicDomains
 
 Deletes one or more public data standards.
 
@@ -13080,9 +13356,9 @@ Sample success responses `JSON` format `{`
 </ErrorData>
 ```
 
-### Operation Center
+### 4.6 Operation Center
 
-#### CreateDagComplement
+#### 4.6.1 CreateDagComplement
 
 Creates a data backfill workflow.
 
@@ -13157,7 +13433,7 @@ Successful response example
 <RequestId>E6F0DBDD-5AD****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>111</Data> <ErrorCode>0</ErrorCode> <ErrorMessage>test</ErrorMessage> <Success>true</Success>
 ```
 
-#### CreateDagTest
+#### 4.6.2 CreateDagTest
 
 Creates a workflow to perform smoke testing.
 
@@ -13213,7 +13489,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateRemind
+#### 4.6.3 CreateRemind
 
 Use the CreateRemind operation to create a custom alert rule.
 
@@ -13316,7 +13592,7 @@ Sample success response `JSON` format `{`
 |---|---|---|---|
 | 500 | Forbidden.Wkbenc h.RemindOverlimit | The maximum number of reminders is exceeded. | The number of custom alert rules has reached the limit. |
 
-#### DeleteRemind
+#### 4.6.4 DeleteRemind
 
 Deletes a custom alert rule.
 
@@ -13380,7 +13656,7 @@ Sample success response `XML` format
 | 500 | Invalid.Wkbench.Re mindNotExist | The reminder does not exist. | The custom alert rule is not found. |
 |---|---|---|---|
 
-#### GetBaselineConfig
+#### 4.6.5 GetBaselineConfig
 
 Queries the configurations of a baseline.
 
@@ -13505,7 +13781,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetBaselineKeyPath
+#### 4.6.6 GetBaselineKeyPath
 
 Queries the key path of a baseline instance.
 
@@ -13685,7 +13961,7 @@ Sample success response `XML` format
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | Invalid.Wkbench.Ba selineStatusNotExis t | The BaselineStatus does not exist. | The baseline instance is not found. |
 
-#### GetBaselineStatus
+#### 4.6.7 GetBaselineStatus
 
 Queries the information about a baseline instance.
 
@@ -13870,7 +14146,7 @@ Sample success response `XML` format
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetDag
+#### 4.6.8 GetDag
 
 Queries the information about a directed acyclic graph (DAG) based on the ID of the DAG. You can call the GetDag operation to query the information about the DAG for a manually triggered workflow, a manually triggered node, or a data backfill instance. However, you cannot query the information about the DAG for an auto triggered node or an auto triggered workflow.
 
@@ -13943,7 +14219,7 @@ Sample success responses `XML` format
 {"RequestId":"7782a299-b291-4fee-8424-cf8058ef****","HttpStatusCode":"200","Data":{"Gmt date":"1605052800000","Status":"FAILURE","ModifyTime":"1605052800000","Type":"MANUAL","Fi shTime":"1605052800000","CreateTime":"1605052800000","StartTime":"1605052800000","Project ":"10001","CreateUser":"1736629400048545","DagId":"12345678","Bizdate":"1605052800000","N e":"dag_test"},"ErrorCode":"200","ErrorMessage":"Invalid.Tenant.ConnectionNotExists","Suc ss":"false"}
 ```
 
-#### GetInstance
+#### 4.6.9 GetInstance
 
 Queries the information about an instance.
 
@@ -14082,7 +14358,7 @@ tbpidx=$tbpidx tbptcif=$tbptcif",
 
 `}`
 
-#### GetInstanceConsumeTimeRank
+#### 4.6.10 GetInstanceConsumeTimeRank
 
 Queries the ranking of the running durations of instances.
 
@@ -14163,7 +14439,7 @@ Sample success responses `XML` format
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | One or more parameters are invalid. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetInstanceCountTrend
+#### 4.6.11 GetInstanceCountTrend
 
 Queries the quantity trend of auto triggered node instances.
 
@@ -14230,7 +14506,7 @@ Sample success responses `XML` format
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | One or more parameters are invalid. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetInstanceErrorRank
+#### 4.6.12 GetInstanceErrorRank
 
 Queries the ranking of nodes on which errors occur within the last month.
 
@@ -14308,7 +14584,7 @@ Sample success responses `XML` format
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | One or more parameters are invalid. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetInstanceLog
+#### 4.6.13 GetInstanceLog
 
 Queries the logs of an instance.
 
@@ -14354,7 +14630,7 @@ Sample success responses `XML` format
 {"RequestId":"0000-ABCD- EFG*****","HttpStatusCode":"200","Data":"log_content","ErrorCode":"Invalid.Tenant.Connect nNotExists","ErrorMessage":"The connection does not exist.","Success":"false"}
 ```
 
-#### GetInstanceStatusStatistic
+#### 4.6.14 GetInstanceStatusStatistic
 
 Queries the number of instances that are in each state.
 
@@ -14427,7 +14703,7 @@ Sample success response `XML` format
 
 `}`
 
-#### GetNode
+#### 4.6.15 GetNode
 
 Queries the information about a node.
 
@@ -14544,7 +14820,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetNodeCode
+#### 4.6.16 GetNodeCode
 
 Queries the code of a node.
 
@@ -14590,7 +14866,7 @@ Sample success responses `XML` format
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data":"select a;","ErrorCode":"Invalid.Tenant.ConnectionNotExists","ErrorMessage":"The connection doe s not exist.","Success":"false"}
 ```
 
-#### GetNodeOnBaseline
+#### 4.6.17 GetNodeOnBaseline
 
 Queries the nodes associated with a baseline.
 
@@ -14681,7 +14957,7 @@ Sample success responses `XML` format
 | 500 | Invalid.Wkbench.Ba selineNotExist | The baseline does not exist. | The baseline is not found. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetNodeChildren
+#### 4.6.18 GetNodeChildren
 
 Queries the descendant nodes of a node.
 
@@ -14777,7 +15053,7 @@ the problem based on the ID. ",
 
 `}`
 
-#### GetNodeParents
+#### 4.6.19 GetNodeParents
 
 Queries the ancestor nodes of a node.
 
@@ -14872,7 +15148,7 @@ sks at a time. "
 
 `}`
 
-#### GetRemind
+#### 4.6.20 GetRemind
 
 Queries the information about a custom alert rule.
 
@@ -15074,7 +15350,7 @@ access_token=******************************"
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetSuccessInstanceTrend
+#### 4.6.21 GetSuccessInstanceTrend
 
 Queries the statistics of instances in different periods of a day.
 
@@ -15153,7 +15429,7 @@ Sample success responses `XML` format
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | You are not authorized to access the workspace. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetTopic
+#### 4.6.22 GetTopic
 
 Queries the information about an event.
 
@@ -15299,7 +15575,7 @@ Sample success responses `XML` format
 | 500 | Invalid.Wkbench.To picNotExist | The topic does not exist. | The event is not found. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetTopicInfluence
+#### 4.6.23 GetTopicInfluence
 
 Queries a list of baseline instances affected by an event.
 
@@ -15412,7 +15688,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetFileTypeStatistic
+#### 4.6.24 GetFileTypeStatistic
 
 Queries the distribution of node types.
 
@@ -15464,7 +15740,7 @@ Sample success response `XML` format
 
 `}` `}`
 
-#### ListFileType
+#### 4.6.25 ListFileType
 
 Queries the information about one or more node types, such as the code and name of a node type.
 
@@ -15557,7 +15833,7 @@ Sample success responses `JSON` format `{`
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 
-#### ListAlertMessages
+#### 4.6.26 ListAlertMessages
 
 Queries a list of alerts.
 
@@ -15716,7 +15992,7 @@ Sample success response `XML` format
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### ListBaselineConfigs
+#### 4.6.27 ListBaselineConfigs
 
 Queries baselines.
 
@@ -15859,7 +16135,7 @@ Sample success response `XML` format
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### ListBaselineStatuses
+#### 4.6.28 ListBaselineStatuses
 
 Queries baseline instances.
 
@@ -16000,7 +16276,7 @@ Sample success response `XML` format
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### ListDataServicePublishedApis
+#### 4.6.29 ListDataServicePublishedApis
 
 Queries a list of APIs in the published state.
 
@@ -16452,7 +16728,7 @@ FildR ltS
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListDags
+#### 4.6.30 ListDags
 
 Queries a list of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq. Supported DAG types: MANUAL: the DAG for a manually triggered workflow. SMOKE_TEST: the DAG for a smoke testing workflow. SUPPLY_DATA: the DAG for a data backfill instance. BUSINESS_PROCESS_DAG: the DAG for a one-time workflow. Supported DAG states: CREATED: The DAG is created. RUNNING: The DAG is running. FAILURE: The DAG fails to run. SUCCESS: The DAG is successfully run.
 
@@ -16562,7 +16838,7 @@ Sample success responses `JSON` format `{`
 </Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-#### ListInstances
+#### 4.6.31 ListInstances
 
 Queries a list of instances.
 
@@ -16722,7 +16998,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListInstanceAmount
+#### 4.6.32 ListInstanceAmount
 
 Queries the trend of the number of auto triggered node instances within a specified period of time.
 
@@ -16793,7 +17069,7 @@ Sample success response `XML` format
 | 500 | Forbidden.Wkbenc h.NoProject | You have not joined any project. | You have not joined a workspace. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListInstanceHistory
+#### 4.6.33 ListInstanceHistory
 
 Queries the information about the historical records of all instances. One historical record is generated if an instance is rerun once.
 
@@ -16905,7 +17181,7 @@ Sample success responses `JSON` format `{`
 </Instances> <RequestId>E6F0DBDD-5AD****</RequestId> <Success>true</Success>
 ```
 
-#### ListSuccessInstanceAmount
+#### 4.6.34 ListSuccessInstanceAmount
 
 Queries the trend of the number of auto triggered node instances that are successfully run each hour within the current day.
 
@@ -17008,7 +17284,7 @@ Sample success response `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListManualDagInstances
+#### 4.6.35 ListManualDagInstances
 
 Queries the information about instances in a manually triggered workflow.
 
@@ -17110,7 +17386,7 @@ Sample success response `XML` format
 
 `}`
 
-#### ListNodes
+#### 4.6.36 ListNodes
 
 Queries a list of nodes.
 
@@ -17248,7 +17524,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListInnerNodes
+#### 4.6.37 ListInnerNodes
 
 Queries a list of inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a Platform for AI (PAI) node.
 
@@ -17386,7 +17662,7 @@ Sample success responses `JSON` format `{`
 </Paging> <Success>true</Success>
 ```
 
-#### ListNodeIO
+#### 4.6.38 ListNodeIO
 
 Queries the information about one level of ancestor or descendant nodes of a node.
 
@@ -17455,7 +17731,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListNodeInputOrOutput
+#### 4.6.39 ListNodeInputOrOutput
 
 Queries the input and output information of a node.
 
@@ -17524,7 +17800,7 @@ Sample success response `XML` format
 
 `}`
 
-#### ListNodesByOutput
+#### 4.6.40 ListNodesByOutput
 
 Queries nodes based on the output of the nodes.
 
@@ -17653,7 +17929,7 @@ Sample success response `XML` format
 
 `}`
 
-#### ListNodesByBaseline
+#### 4.6.41 ListNodesByBaseline
 
 Queries nodes in a baseline.
 
@@ -17744,7 +18020,7 @@ Sample success response `XML` format
 | 500 | Invalid.Wkbench.Ba selineNotExist | The baseline does not exist. | The baseline is not found. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListReminds
+#### 4.6.42 ListReminds
 
 Queries custom alert rules.
 
@@ -17888,7 +18164,7 @@ Sample success response `XML` format
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### ListTopics
+#### 4.6.43 ListTopics
 
 Queries events.
 
@@ -18023,7 +18299,7 @@ Sample success response `XML` format
 | 500 | InternalError.Syste m | An internal system error occurred. Try again later. | An internal error occurred. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### RestartInstance
+#### 4.6.44 RestartInstance
 
 Restarts an instance.
 
@@ -18076,7 +18352,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ResumeInstance
+#### 4.6.45 ResumeInstance
 
 Resumes a suspended instance.
 
@@ -18129,7 +18405,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### RunTriggerNode
+#### 4.6.46 RunTriggerNode
 
 Runs a manually triggered node.
 
@@ -18190,7 +18466,7 @@ Sample success responses `XML` format
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### RunCycleDagNodes
+#### 4.6.47 RunCycleDagNodes
 
 Call RunCycleDagNodes to create a data backfill workflow.
 
@@ -18262,7 +18538,7 @@ Sample success response `JSON` format `{`
 <RequestId>default</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>111</Data> <ErrorCode>Invalid.Tenant.ConnectionNotExists</ErrorCode> <ErrorMessage>The connection does not exist.</ErrorMessage> <Success>true</Success>
 ```
 
-#### RunManualDagNodes
+#### 4.6.48 RunManualDagNodes
 
 Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
 
@@ -18316,7 +18592,7 @@ Sample success response `XML` format
 
 `}`
 
-#### RunSmokeTest
+#### 4.6.49 RunSmokeTest
 
 Creates a workflow to perform smoke testing.
 
@@ -18372,7 +18648,7 @@ Sample success response `XML` format
 
 `}`
 
-#### SetSuccessInstance
+#### 4.6.50 SetSuccessInstance
 
 Sets the state of a failed instance to successful.
 
@@ -18425,7 +18701,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StopInstance
+#### 4.6.51 StopInstance
 
 Terminates an instance.
 
@@ -18478,7 +18754,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SuspendInstance
+#### 4.6.52 SuspendInstance
 
 Suspends an instance.
 
@@ -18531,7 +18807,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### TopTenElapsedTimeInstance
+#### 4.6.53 TopTenElapsedTimeInstance
 
 Queries the ranking of the running durations of instances in the Successful or Failed state.
 
@@ -18622,7 +18898,7 @@ Sample success response `XML` format
 | 500 | Forbidden.Wkbenc h.ProjectNoPermiss ion | You are not authorized to access the workspace. | You are not authorized to access the workspace. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### TopTenErrorTimesInstance
+#### 4.6.54 TopTenErrorTimesInstance
 
 Queries the ranking of nodes on which errors occur within the last month.
 
@@ -18700,7 +18976,7 @@ Sample success response `XML` format
 | 500 | Invalid.Wkbench.Pa rameter | The specified parameters are invalid. | The error message returned because the values of one or more parameters are invalid. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### UpdateRemind
+#### 4.6.55 UpdateRemind
 
 Updates a custom alert rule.
 
@@ -18795,7 +19071,7 @@ Sample success response `XML` format
 | 500 | Forbidden.Wkbenc h.RemindNoPermis sion | You are not authorized to modify the reminder. | You are not authorized to modify the custom alert rule. |
 | 500 | Invalid.Wkbench.Re mindNotExist | The reminder does not exist. | The custom alert rule is not found. |
 
-#### UpdateNodeOwner
+#### 4.6.56 UpdateNodeOwner
 
 Changes the owner of a node.
 
@@ -18841,7 +19117,7 @@ Sample success response `XML` format
 
 `}`
 
-#### UpdateNodeRunMode
+#### 4.6.57 UpdateNodeRunMode
 
 Freezes or unfreezes a node.
 
@@ -18885,9 +19161,9 @@ Sample success response `XML` format
 
 `}`
 
-### Data Quality
+### 4.7 Data Quality
 
-#### CreateQualityEntity
+#### 4.7.1 CreateQualityEntity
 
 Creates a partition filter expression.
 
@@ -18943,7 +19219,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateQualityFollower
+#### 4.7.2 CreateQualityFollower
 
 Creates a subscriber for a partition filter expression.
 
@@ -18998,7 +19274,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateQualityRelativeNode
+#### 4.7.3 CreateQualityRelativeNode
 
 Associates a node with a partition filter expression.
 
@@ -19057,7 +19333,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateQualityRule
+#### 4.7.4 CreateQualityRule
 
 Creates a monitoring rule.
 
@@ -19131,7 +19407,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteQualityEntity
+#### 4.7.5 DeleteQualityEntity
 
 Deletes a partition filter expression.
 
@@ -19183,7 +19459,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteQualityFollower
+#### 4.7.6 DeleteQualityFollower
 
 Deletes a subscriber of a partition filter expression.
 
@@ -19234,7 +19510,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteQualityRelativeNode
+#### 4.7.7 DeleteQualityRelativeNode
 
 Disassociates a node from a partition filter expression.
 
@@ -19293,7 +19569,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteQualityRule
+#### 4.7.8 DeleteQualityRule
 
 Deletes a monitoring rule.
 
@@ -19344,7 +19620,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetQualityEntity
+#### 4.7.9 GetQualityEntity
 
 Queries a partition filter expression.
 
@@ -19452,7 +19728,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetQualityFollower
+#### 4.7.10 GetQualityFollower
 
 Queries the subscribers of a partition filter expression.
 
@@ -19529,7 +19805,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GetQualityRule
+#### 4.7.11 GetQualityRule
 
 Queries the information about a monitoring rule.
 
@@ -19658,7 +19934,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListQualityResultsByEntity
+#### 4.7.12 ListQualityResultsByEntity
 
 Queries the historical monitoring results based on a partition filter expression.
 
@@ -19840,7 +20116,7 @@ Expectation</TemplateName>
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data": {"TotalCount":"50","PageSize":"10","PageNumber":"1","RuleChecks": [{"Op":">","TaskId":"16008552981681a0d6****","CheckerName":"fulx","DiscreteCheck":"true", ndTime":"1600704000000","ProjectName":"autotest","ExpectValue":"200","WarningThreshold":" 1","RuleId":"123123232","BeginTime":"1600704000000","WhereCondition":"id>0","CheckResultS tus":"0","MatchExpression":"ds=$[yyyymmdd]","UpperValue":"25555","IsPrediction":"false"," eckResult":"0","TemplateName":"Compare the Number of Unique Field Values Against Expect ation","FixedCheck":"false","TimeCost":"202","MethodName":"count_distinct","ResultString" test","DateType":"YMD","Property":"type","RuleName":"Test","TemplateId":"5","BizDate":"16 704000000","Comment":"Description","CriticalThreshold":"0.5","ExternalId":"1112323123","C ckerType":"1","Trend":"abs","ExternalType":"CWF","CheckerId":"7","EntityId":"15432322","T leName":"dual","BlockType":"0","ActualExpression":"ds=20200912","Id":"121212121","LowerVa e":"2344","ReferenceValue": [{"SingleCheckResult":"0","Value":"19","DiscreteProperty":"0","BizDate":"2020-12-03","T hreshold":"0.5"}],"SampleValue":[{"Value":"19","DiscreteProperty":"0","BizDate":"2020-1 2-03"}]}]},"ErrorCode":"401","ErrorMessage":"You have no permission.","Success":"false"}
 ```
 
-#### ListQualityResultsByRule
+#### 4.7.13 ListQualityResultsByRule
 
 Queries monitoring results after the data quality of a data source or a compute engine instance is monitored based on monitoring rules.
 
@@ -20014,7 +20290,7 @@ Expectation</TemplateName>
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data": {"TotalCount":"200","PageSize":"10","PageNumber":"1","RuleChecks": [{"Op":">","TaskId":"16008552981681a0d6****","CheckerName":"fulx","DiscreteCheck":"false" EndTime":"1600704000000","ProjectName":"autotest","ExpectValue":"90","WarningThreshold":" 1","RuleId":"123421","BeginTime":"1600704000000","WhereCondition":"type!='type2'","CheckR ultStatus":"2","MatchExpression":"ds=$[yyyymmdd]","UpperValue":"22200","IsPrediction":"fa e","CheckResult":"2","TemplateName":"Compare the Number of Unique Field Values Against Expectation","FixedCheck":"false","TimeCost":"10","MethodName":"max","ResultString":"Resu String","DateType":"YMD","Property":"type","RuleName":"Test","TemplateId":"5","BizDate":" 00704000000","Comment":"Description","CriticalThreshold":"0.6","ExternalId":"123112232"," eckerType":"0","Trend":"up","ExternalType":"CWF","CheckerId":"7","EntityId":"14534343","T leName":"dual","BlockType":"1","ActualExpression":"ds=20200925","Id":"2231123","LowerValu :"2344","ReferenceValue": [{"SingleCheckResult":"2","Value":"20","DiscreteProperty":"type1","BizDate":"160070400000 ,"Threshold":"0.2"}],"SampleValue": [{"Value":"23","DiscreteProperty":"type2","BizDate":"1600704000000"}]}]},"ErrorCode":"401 "ErrorMessage":"You have no permission.","Success":"false"}
 ```
 
-#### ListQualityRules
+#### 4.7.14 ListQualityRules
 
 Queries monitoring rules based on a partition filter expression.
 
@@ -20166,7 +20442,7 @@ the first, seventh, and thirtieth days",
 
 `}`
 
-#### UpdateQualityFollower
+#### 4.7.15 UpdateQualityFollower
 
 Updates a subscription relationship.
 
@@ -20221,7 +20497,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpdateQualityRule
+#### 4.7.16 UpdateQualityRule
 
 Updates a quality rule.
 
@@ -20328,9 +20604,9 @@ Sample response `JSON` format `{`
 <RequestId>576b9457-2cf5-4****</RequestId> <HttpStatusCode>200</HttpStatusCode> <Data>true</Data> <ErrorCode>0</ErrorCode> <ErrorMessage>You have no permission.</ErrorMessage> <Success>true</Success>
 ```
 
-### DataService Studio
+### 4.8 DataService Studio
 
-#### AbolishDataServiceApi
+#### 4.8.1 AbolishDataServiceApi
 
 Unpublishes a DataService Studio API.
 
@@ -20384,7 +20660,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateDataServiceApi
+#### 4.8.2 CreateDataServiceApi
 
 Call the CreateDataServiceApi operation to create a DataService Studio API.
 
@@ -20475,7 +20751,7 @@ Sample success responses `JSON` format `{`
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### CreateDataServiceApiAuthority
+#### 4.8.3 CreateDataServiceApiAuthority
 
 Grants the access permissions on an API in DataService Studio.
 
@@ -20533,7 +20809,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateDataServiceFolder
+#### 4.8.4 CreateDataServiceFolder
 
 Creates a folder in DataService Studio.
 
@@ -20589,7 +20865,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### CreateDataServiceGroup
+#### 4.8.5 CreateDataServiceGroup
 
 Creates a business process in DataService Studio. In multi-region scenarios, this API does not support passing the API gateway group ID of a unit region in the **ApiGatewayGroupId** parameter. Only the central region is supported.
 
@@ -20653,7 +20929,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 403 | 9990010001 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. |
 
-#### DeleteDataServiceApi
+#### 4.8.6 DeleteDataServiceApi
 
 Deletes an API.
 
@@ -20720,7 +20996,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### DeleteDataServiceApiAuthority
+#### 4.8.7 DeleteDataServiceApiAuthority
 
 Revokes the access permissions on an API.
 
@@ -20773,7 +21049,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetDataServiceApi
+#### 4.8.8 GetDataServiceApi
 
 Call the GetDataServiceApi operation to retrieve details of a DataService Studio API in development mode.
 
@@ -21211,7 +21487,7 @@ aaete ataype0/aaete ataype
 | 500 | 9990010002 | InternalError.System | An internal system error occurred. Try again later. |
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 
-#### GetDataServiceApplication
+#### 4.8.9 GetDataServiceApplication
 
 Queries the information about an application.
 
@@ -21300,7 +21576,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetDataServiceFolder
+#### 4.8.10 GetDataServiceFolder
 
 Queries a folder.
 
@@ -21373,7 +21649,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 |---|---|---|---|
 
-#### GetDataServiceGroup
+#### 4.8.11 GetDataServiceGroup
 
 Queries a business process.
 
@@ -21452,7 +21728,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### GetDataServicePublishedApi
+#### 4.8.12 GetDataServicePublishedApi
 
 Queries the information about a DataService Studio API in the published state.
 
@@ -21731,7 +22007,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListDataServiceApis
+#### 4.8.13 ListDataServiceApis
 
 Queries a list of APIs in the development state.
 
@@ -21892,7 +22168,7 @@ Sample success responses `JSON` format
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 |---|---|---|---|
 
-#### ListDataServiceApiAuthorities
+#### 4.8.14 ListDataServiceApiAuthorities
 
 Queries a list of APIs whose access permissions are granted to other users.
 
@@ -22028,7 +22304,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 |---|---|---|---|
 
-#### ListDataServiceApplications
+#### 4.8.15 ListDataServiceApplications
 
 Queries a list of applications.
 
@@ -22124,7 +22400,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListDataServiceAuthorizedApis
+#### 4.8.16 ListDataServiceAuthorizedApis
 
 Queries a list of APIs that you are authorized to access.
 
@@ -22251,7 +22527,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListDataServiceFolders
+#### 4.8.17 ListDataServiceFolders
 
 Queries a list of folders in DataService Studio.
 
@@ -22334,7 +22610,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### ListDataServiceGroups
+#### 4.8.18 ListDataServiceGroups
 
 Queries a list of business processes in DataService Studio.
 
@@ -22418,7 +22694,7 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-#### PublishDataServiceApi
+#### 4.8.19 PublishDataServiceApi
 
 Publishes an API.
 
@@ -22470,7 +22746,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpdateDataServiceApi
+#### 4.8.20 UpdateDataServiceApi
 
 Updates the information about an API in the development state in DataService Studio.
 
@@ -22553,9 +22829,9 @@ Sample success responses `XML` format
 | 429 | Throttling.User | Your request is too frequent. Try again later. | Excessive requests have been submitted within a short period of time. Try again later. |
 | 403 | Forbidden.Access | Access is forbidden. Please first activate DataWorks Enterprise Edition or Flagship Edition. | You are not allowed to perform this operation. Activate DataWorks Enterprise Edition or DataWorks Ultimate Edition. |
 
-### Node scheduling
+### 4.9 Node scheduling
 
-#### CreateManualDag
+#### 4.9.1 CreateManualDag
 
 Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed and is displayed in Operation Center.
 
@@ -22619,7 +22895,7 @@ Sample success responses `XML` format
 {"RequestId":"AASFDFSDFG-DFSDF-DFSDFD-SDFSDF","DagId":"700000123121111"}
 ```
 
-#### GetInstanceStatusCount
+#### 4.9.2 GetInstanceStatusCount
 
 Queries the statistics of instances in different states.
 
@@ -22677,7 +22953,7 @@ Sample success responses `XML` format
 {"StatusCount": {"TotalCount":"6","FailureCount":"1","RunningCount":"1","WaitResCount":"1","SuccessCount" 1","NotRunCount":"1","WaitTimeCount":"1"},"RequestId":"0000-ABCD-EFG*****"}
 ```
 
-#### GetManualDagInstances
+#### 4.9.3 GetManualDagInstances
 
 Queries the information about instances in a manually triggered workflow.
 
@@ -22753,7 +23029,7 @@ Sample success responses `XML` format
 {"Instances": [{"Status":"WAIT_TIME","ModifyTime":"1605178414676","NodeName":"nodename","DagType":"3"," stanceId":"11726873619","ParamValues":"xxx","CreateTime":"1605178414676","BeginWaitTimeTi ":"1605178414676","CycTime":"1605178414676","DagId":"350123123","BeginRunningTime":"16051 414676","FinishTime":"1605178414676","NodeId":"37851","BeginWaitResTime":"1605178414676", izDate":"1605178414676"}],"RequestId":"0000-ABCD-EFG*****"}
 ```
 
-#### ListProgramTypeCount
+#### 4.9.4 ListProgramTypeCount
 
 Queries the distribution of different types of nodes.
 
@@ -22800,7 +23076,7 @@ Sample success responses `XML` format
 {"RequestId":"0000-ABCD-EFG*****","ProgramTypeAndCounts": [{"Count":"2","ProgramType":"ODPS SQL"}]}
 ```
 
-#### SearchNodesByOutput
+#### 4.9.5 SearchNodesByOutput
 
 Queries a node based on the output.
 
@@ -22851,9 +23127,9 @@ Sample success responses `XML` format
 {"RequestId":"0000-ABCD-EFG*****","HttpStatusCode":"200","Data":"{ \"test_0709_1.630003558_out\": { \"nodeId\": 21673, \"nodeName\": \"hour_sql\", \"owner Id\": 123123123124, \"cronExpress\": \"00 00 00-23/2 * * ?\", \"repeatability\": true, \"programType\": \"ODPS_SQL\", \"projectId\": 11111, \"schedulerType\": \"NORMAL\", \"p riority\": 1, \"baselineId\": 20001721, \"connection\": \"odps_first\" }, \"test_0709_1.630003556_out\": { \"nodeId\": 21671, \"nodeName\": \"start\", \"ownerId\ ": 123141231231, \"cronExpress\": \"00 */10 00-23 * * ?\", \"repeatability\": true, \"p rogramType\": \"VIRTUAL\", \"projectId\": 1111, \"schedulerType\": \"NORMAL\", \"priori ty\": 1, \"baselineId\": 20001721 } }","ErrorCode":"Invalid.Tenant.ConnectionNotExists","ErrorMessage":"The connection does not exist.","Success":"false"}
 ```
 
-### Data Security Guard
+### 4.10 Data Security Guard
 
-#### AddRuleConfig
+#### 4.10.1 AddRuleConfig
 
 Adds a data identification rule.
 
@@ -22953,7 +23229,7 @@ param parameter contains an asterisk (*), set compareType to **regexp**. Otherwi
 optional. The rule contains the **rule name** and **rule content**. The **rule name** and **rule**
 **content** are the same as these specified by **metaRules**.
 
-#### AddRuleConfigMessage
+#### 4.10.2 AddRuleConfigMessage
 
 You can call the AddRuleConfigMessage operation to add a data recognition rule.
 
@@ -23028,7 +23304,7 @@ Sample success response `XML` format
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### UpdateRuleConfig
+#### 4.10.3 UpdateRuleConfig
 
 You can call this operation to modify a data recognition rule UpdateRuleConfig.
 
@@ -23103,7 +23379,7 @@ mit.",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### UpdateRuleConfigMessage
+#### 4.10.4 UpdateRuleConfigMessage
 
 You can call this operation to modify a data recognition rule UpdateRuleConfigMessage.
 
@@ -23179,7 +23455,7 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### DeleteRuleConfig
+#### 4.10.5 DeleteRuleConfig
 
 You can call the DeleteRuleConfig operation to delete a data identification rule.
 
@@ -23240,7 +23516,7 @@ mit.",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### DeleteRuleConfigMessage
+#### 4.10.6 DeleteRuleConfigMessage
 
 You can call the DeleteRuleConfigMessage operation to delete a sensitive rule.
 
@@ -23304,7 +23580,7 @@ mit.",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### DesensitizeData
+#### 4.10.7 DesensitizeData
 
 Call the DesensitizeData operation. Enter the data to be de-sensitized and return the desensitized result.
 
@@ -23356,7 +23632,7 @@ Sample success response `XML` format
 | 403 | Forbidden.NoTenan t | The tenant information cannot be obtained using user ID. | The tenant information cannot be obtained. |
 | 500 | InternalError.DQC. BizError | An internal error occurred. | An internal error occurred. |
 
-#### GetRuleConfig
+#### 4.10.8 GetRuleConfig
 
 You can call the GetRuleConfig operation to query data identification rules.
 
@@ -23433,7 +23709,7 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetRuleConfigMessage
+#### 4.10.9 GetRuleConfigMessage
 
 Queries data recognition rules GetRuleConfigMessage.
 
@@ -23552,7 +23828,7 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetRuleDataMessage
+#### 4.10.10 GetRuleDataMessage
 
 You can call the GetRuleDataMessage to query rules by level or by level.
 
@@ -23639,7 +23915,7 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetRuleMessage
+#### 4.10.11 GetRuleMessage
 
 You can call the GetRuleMessage operation to query rules by level or level.
 
@@ -23727,7 +24003,7 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetSensLevel
+#### 4.10.12 GetSensLevel
 
 You can call this operation to obtain a list of sensitive rule levels.
 
@@ -23814,7 +24090,7 @@ mi",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetSensLevelMessage
+#### 4.10.13 GetSensLevelMessage
 
 You can call the GetSensLevelMessage interface to obtain a hierarchical list.
 
@@ -23904,7 +24180,7 @@ mit",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetSensTableLevel
+#### 4.10.14 GetSensTableLevel
 
 The third party calls the GetSensTableLevel interface to obtain the security level.
 
@@ -23984,7 +24260,7 @@ mit.",
 | 500 | Forbidden.Not.Serv er | The dataworksAPI service is not available in this area. Please try it in another area. | DataWorks API is unavailable in this region. Try another region. |
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 
-#### GetSensTableLevelMessage
+#### 4.10.15 GetSensTableLevelMessage
 
 You can call this operation to obtain the security level of an Umbrella interface GetSensTableLevelMessage.
 
@@ -24067,7 +24343,7 @@ mit",
 | 500 | InternalError.UserId .Missing | An internal system error occurred. Try again later. | An internal error occurred. |
 |---|---|---|---|
 
-#### GetOpSensitiveData
+#### 4.10.16 GetOpSensitiveData
 
 Queries the records that are generated on a specific date for access to the sensitive data in all the DataWorks workspaces of a tenant.
 
@@ -24133,7 +24409,7 @@ opTime\": \"2021-02-07 00:14:51\", \"opAccount\": \"ALIYUN$dsg_test\", \ "sensTy
 
 For a list of error codes, see Service error codes.
 
-#### GetSensitiveData
+#### 4.10.17 GetSensitiveData
 
 Retrieves the latest sensitive data identification results for all DataWorks workspaces for a tenant.
 
@@ -24216,7 +24492,7 @@ Response example `JSON` format `{`
 | 500 | 100000500 | InternalError.DQC.BizError | An internal error occurred. |
 | 400 | 1010010016 | Invalid.Param | The request parameter is invalid. |
 
-#### ScanSensitiveData
+#### 4.10.18 ScanSensitiveData
 
 Checks whether input data contains sensitive data.
 
@@ -24267,7 +24543,7 @@ Sample success response `XML` format
 | 403 | Forbidden.Meta.No Tenant | The user is not the owner of any tenants. | The current user is not a tenant owner. |
 | 500 | InternalError.DQC. BizError | An internal error occurred. | An internal error occurred. |
 
-#### AddSenRule
+#### 4.10.19 AddSenRule
 
 Creates and configures a new data identification rule in DataWorks. This operation does not support creating self-generated model or sample library rules.
 
@@ -24451,7 +24727,7 @@ http(s)://[Endpoint]/?Action=AddSenRule &HitThreshold=50 &Type=Phone number &Sta
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### AddSensLevel
+#### 4.10.20 AddSensLevel
 
 Use this operation to add a new sensitive level configuration in DataWorks.
 
@@ -24515,7 +24791,7 @@ http(s)://[Endpoint]/?Action=AddSensLevel &OpAccount=uat &SensLevelAlias=L1 &Ten
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### DeleteSenRule
+#### 4.10.21 DeleteSenRule
 
 Deletes a sensitive rule in DataWorks.
 
@@ -24590,7 +24866,7 @@ Sample response `JSON` format `{`
 |---|---|---|---|
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### GetSenRule
+#### 4.10.22 GetSenRule
 
 Queries sensitive data rules.
 
@@ -24758,7 +25034,7 @@ esc>
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### GetSensitiveCountData
+#### 4.10.23 GetSensitiveCountData
 
 Retrieves sensitive data statistics for a specified tenant.
 
@@ -24843,7 +25119,7 @@ Sample success response `JSON` format `{`
 | 500 | 100000500 | InternalError.DQC.BizError | An internal error occurred. |
 | 400 | 1010010016 | Invalid.Param | The request parameter is invalid. |
 
-#### UpdateRiskInfoData
+#### 4.10.24 UpdateRiskInfoData
 
 Updates the risk information for a specified instance.
 
@@ -24914,7 +25190,7 @@ http(s)://[Endpoint]/?Action=UpdateRiskInfoData &InstIds=ACC001 &Status=INIT &Te
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### UpdateSenRule
+#### 4.10.25 UpdateSenRule
 
 Updates a sensitive rule.
 
@@ -25008,7 +25284,7 @@ Sample responses `JSON` format `{`
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | The request contains invalid parameters. |
 
-#### UpdateSensitive
+#### 4.10.26 UpdateSensitive
 
 Updates a sensitive data rule.
 
@@ -25077,9 +25353,9 @@ Response example `JSON` format `{`
 | 500 | 9990030002 | InternalError.UserId.Missing | An internal system error occurred. Try again later. |
 | 400 | 9990030003 | InternalError.Bad.Parameters | Your request contains invalid parameters. |
 
-### security center
+### 4.11 security center
 
-#### CreatePermissionApplyOrder
+#### 4.11.1 CreatePermissionApplyOrder
 
 Creates a permission request order.
 
@@ -25136,7 +25412,7 @@ Sample success response `XML` format
 
 `}`
 
-#### ApprovePermissionApplyOrder
+#### 4.11.2 ApprovePermissionApplyOrder
 
 Processes a permission request order.
 
@@ -25182,7 +25458,7 @@ Sample success response `XML` format
 
 `}`
 
-#### ListPermissionApplyOrders
+#### 4.11.3 ListPermissionApplyOrders
 
 Queries permission request orders.
 
@@ -25293,7 +25569,7 @@ Sample success response `XML` format
 
 `}` `}` `}` `}` `}` `}`
 
-#### GetPermissionApplyOrderDetail
+#### 4.11.4 GetPermissionApplyOrderDetail
 
 Queries the information about a permission request order.
 
@@ -25446,7 +25722,7 @@ Sample success responses `JSON` format `{`
 </ApplyOrderDetail>
 ```
 
-#### RevokeColumnPermission
+#### 4.11.5 RevokeColumnPermission
 
 Revokes permissions on table fields from a user.
 
@@ -25497,7 +25773,7 @@ Sample success response `XML` format
 
 `}`
 
-#### RevokeTablePermission
+#### 4.11.6 RevokeTablePermission
 
 Revokes permissions on a table from a user.
 
@@ -25546,9 +25822,9 @@ Sample success response `XML` format
 
 `}`
 
-### Migration Assistant
+### 4.12 Migration Assistant
 
-#### GetMigrationProcess
+#### 4.12.1 GetMigrationProcess
 
 Queries the progress of a migration task.
 
@@ -25613,7 +25889,7 @@ Sample success response `XML` format
 
 `}`
 
-#### StartMigration
+#### 4.12.2 StartMigration
 
 Starts a migration task.
 
@@ -25666,7 +25942,7 @@ Sample success response `XML` format
 
 `}`
 
-#### GetMigrationSummary
+#### 4.12.3 GetMigrationSummary
 
 Queries the information about a migration task.
 
@@ -25752,7 +26028,7 @@ shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip? Expires=1639540903&OS
 shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip? Expires=1639540903&amp;OSSAccessKeyId=******eF4Lv5j&amp;Signature=q*****</DownloadUrl> </Data> <Success>true</Success>
 ```
 
-#### ListMigrations
+#### 4.12.4 ListMigrations
 
 Queries a list of migration tasks.
 
@@ -25881,9 +26157,9 @@ zhangjiakou.aliyuncs.com/product/v1/ipv4/trace/v1.20220424123842.dex? Expires=16
 </Data> <Success>true</Success>
 ```
 
-### Open platform
+### 4.13 Open platform
 
-#### GetExtension
+#### 4.13.1 GetExtension
 
 Queries the information about an extension.
 
@@ -25992,7 +26268,7 @@ Sample success responses `JSON` format `{`
 </Extension> <RequestId>0000-ABCD-EFG</RequestId>
 ```
 
-#### GetOptionValueForProject
+#### 4.13.2 GetOptionValueForProject
 
 Queries the option settings of an extension in a workspace.
 

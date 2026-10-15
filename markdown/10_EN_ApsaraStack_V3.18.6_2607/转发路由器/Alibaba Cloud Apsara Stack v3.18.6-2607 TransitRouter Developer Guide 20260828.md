@@ -3,20 +3,115 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Developer Guide 20
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 258
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Developer Guide 20260828.pdf"
+source_pdf: "09ecb258977a1324_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Developer Guide 20260828
 
-## API References
+## Table of Contents
 
-### List of operations by function
+- 1 API References
+  - 1.1 List of operations by function
+  - 1.2 CEN instances
+    - 1.2.1 ModifyCenAttribute
+    - 1.2.2 DescribeCenAttachedChildInstances
+    - 1.2.3 DescribeCenAttachedChildInstanceAttribute
+    - 1.2.4 DeleteCen
+    - 1.2.5 DescribeCens
+    - 1.2.6 CreateCen
+    - 1.2.7 DescribeChildInstanceRegions
+  - 1.3 Transit routers
+    - 1.3.1 CreateTransitRouter
+    - 1.3.2 DeleteTransitRouter
+    - 1.3.3 UpdateTransitRouter
+    - 1.3.4 ListTransitRouters
+    - 1.3.5 ListTransitRouterAvailableResource
+  - 1.4 Transit router CIDR blocks
+    - 1.4.1 CreateTransitRouterCidr
+    - 1.4.2 ModifyTransitRouterCidr
+    - 1.4.3 ListTransitRouterCidr
+    - 1.4.4 ListTransitRouterCidrAllocation
+    - 1.4.5 DeleteTransitRouterCidr
+  - 1.5 VPC connections
+    - 1.5.1 CreateTransitRouterVpcAttachment
+    - 1.5.2 UpdateTransitRouterVpcAttachmentAttribute
+    - 1.5.3 ListTransitRouterVpcAttachments
+    - 1.5.4 DeleteTransitRouterVpcAttachment
+    - 1.5.5 UpdateTransitRouterVpcAttachmentZones
+    - 1.5.6 ListGrantVSwitchesToCen
+  - 1.6 VBR connections
+    - 1.6.1 CreateTransitRouterVbrAttachment
+    - 1.6.2 ListTransitRouterVbrAttachments
+    - 1.6.3 UpdateTransitRouterVbrAttachmentAttribute
+    - 1.6.4 DeleteTransitRouterVbrAttachment
+  - 1.7 Connect attachments
+    - 1.7.1 CreateTransitRouterConnectAttachment
+    - 1.7.2 UpdateTransitRouterConnectAttachmentAttribute
+    - 1.7.3 ListTransitRouterConnectAttachments
+    - 1.7.4 CreateTransitRouterConnectPeer
+    - 1.7.5 ListTransitRouterConnectPeers
+    - 1.7.6 DeleteTransitRouterConnectPeer
+    - 1.7.7 DeleteTransitRouterConnectAttachment
+  - 1.8 Cross-account authorization
+    - 1.8.1 GrantInstanceToTransitRouter
+    - 1.8.2 RevokeInstanceFromTransitRouter
+    - 1.8.3 DescribeGrantRulesToCen
+    - 1.8.4 DescribeGrantRulesToResource
+  - 1.9 Custom routes
+    - 1.9.1 CreateTransitRouterRouteEntry
+    - 1.9.2 UpdateTransitRouterRouteEntry
+    - 1.9.3 ListTransitRouterRouteEntries
+    - 1.9.4 DeleteTransitRouterRouteEntry
+  - 1.10 Routing
+    - 1.10.1 ListCenChildInstanceRouteEntriesToAttachment
+    - 1.10.2 DescribeRouteConflict
+    - 1.10.3 DescribeCenRegionDomainRouteEntries
+    - 1.10.4 DescribeCenChildInstanceRouteEntries
+  - 1.11 Custom route tables
+    - 1.11.1 UpdateTransitRouterRouteTable
+    - 1.11.2 DeleteTransitRouterRouteTable
+    - 1.11.3 ListTransitRouterRouteTables
+    - 1.11.4 CreateTransitRouterRouteTable
+  - 1.12 Route learning
+    - 1.12.1 DisableTransitRouterRouteTablePropagation
+    - 1.12.2 ListTransitRouterRouteTablePropagations
+    - 1.12.3 EnableTransitRouterRouteTablePropagation
+  - 1.13 Associated forwarding
+    - 1.13.1 DissociateTransitRouterAttachmentFromRouteTable
+    - 1.13.2 ListTransitRouterRouteTableAssociations
+    - 1.13.3 AssociateTransitRouterAttachmentWithRouteTable
+  - 1.14 Multicast
+    - 1.14.1 CreateTransitRouterMulticastDomain
+    - 1.14.2 ModifyTransitRouterMulticastDomain
+    - 1.14.3 ListTransitRouterMulticastDomains
+    - 1.14.4 DeleteTransitRouterMulticastDomain
+    - 1.14.5 AssociateTransitRouterMulticastDomain
+    - 1.14.6 DisassociateTransitRouterMulticastDomain
+    - 1.14.7 ListTransitRouterMulticastDomainAssociations
+    - 1.14.8 RegisterTransitRouterMulticastGroupSources
+    - 1.14.9 DeregisterTransitRouterMulticastGroupSources
+    - 1.14.10 RegisterTransitRouterMulticastGroupMembers
+    - 1.14.11 DeregisterTransitRouterMulticastGroupMembers
+    - 1.14.12 ListTransitRouterMulticastGroups
+    - 1.14.13 ListGrantVSwitchEnis
+    - 1.14.14 ListTransitRouterMulticastDomainVSwitches
+  - 1.15 Routing policies
+    - 1.15.1 CreateCenRouteMap
+    - 1.15.2 ModifyCenRouteMap
+    - 1.15.3 DescribeCenRouteMaps
+    - 1.15.4 DeleteCenRouteMap
+  - 1.16 Health checks
+    - 1.16.1 EnableCenVbrHealthCheck
+    - 1.16.2 DisableCenVbrHealthCheck
+    - 1.16.3 DescribeCenVbrHealthCheck
+
+## 1 API References
+
+### 1.1 List of operations by function
 
 This topic provides a list of the APIs for transit routers.
-
-**CEN Instances**
 
 | API operation | Description |
 |---|---|
@@ -28,8 +123,6 @@ This topic provides a list of the APIs for transit routers.
 | DescribeCenAttachedChildInstances | Queries the network instances that are attached to a CEN instance. |
 | DeleteCen | Deletes a CEN instance. |
 
-**Transit routers**
-
 | API operation | Description |
 |---|---|
 | CreateTransitRouter | Creates a transit router. |
@@ -37,8 +130,6 @@ This topic provides a list of the APIs for transit routers.
 | ListTransitRouters | Queries the information about transit routers that are connected to a CEN instance. |
 | ListTransitRouterAvailableResource | Queries the zones that support transit routers in a specified region. |
 | DeleteTransitRouter | Deletes a transit router. |
-
-**Transit router CIDR blocks**
 
 | API operation | Description |
 |---|---|
@@ -50,8 +141,6 @@ This topic provides a list of the APIs for transit routers.
 | ListTransitRouterCidrAllocation | Queries how IP addresses within the CIDR block of a transit router are allocated. |
 | DeleteTransitRouterCidr | Deletes a CIDR block from a transit router. |
 
-**VPC connections**
-
 | API operation | Description |
 |---|---|
 | CreateTransitRouterVpcAttachment | Creates a VPC connection on a transit router. |
@@ -61,16 +150,12 @@ This topic provides a list of the APIs for transit routers.
 | UpdateTransitRouterVpcAttachmentZo nes | Modifies the zones and vSwitches of a VPC connection. |
 | ListGrantVSwitchesToCen | Queries the vSwitches in a VPC that belongs to another Alibaba Cloud account and is attached to a CEN instance. |
 
-**VBR connections**
-
 | API operation | Description |
 |---|---|
 | CreateTransitRouterVbrAttachment | Create a VBR connection on a transit router. |
 | UpdateTransitRouterVbrAttachmentAtt ribute | Modifies the name and description of a VBR connection that is created on a transit router. |
 | ListTransitRouterVbrAttachments | Queries the information about VBR connection on a transit router. |
 | DeleteTransitRouterVbrAttachment | Deletes a VBR connection from a transit router. |
-
-**Connect attachments**
 
 | API operation | Description |
 |---|---|
@@ -84,16 +169,12 @@ This topic provides a list of the APIs for transit routers.
 | DeleteTransitRouterConnectPeer | Deletes a Connect peer. |
 | DeleteTransitRouterConnectAttachme nt | Deletes a Connect attachment. |
 
-**Cross-account authorization**
-
 | API operation | Description |
 |---|---|
 | DescribeGrantRulesToCen | Queries the network instances within a different Alibaba Cloud account that CEN has the permissions to access. |
 | DescribeGrantRulesToResource | Queries permissions granted to Cloud Enterprise Network (CEN) instances that belong to another Alibaba Cloud account. |
 | RevokeInstanceFromTransitRouter | Revokes the permissions that a transit router uses to connect to network instances that belong to another Alibaba Cloud account. |
 | GrantInstanceToTransitRouter | Grants a transit router the permissions to connect to a network instance that belongs to another Alibaba Cloud account. |
-
-**Custom routes**
 
 | API operation | Description |
 |---|---|
@@ -111,8 +192,6 @@ This topic provides a list of the APIs for transit routers.
 | DescribeCenRegionDomainRouteEntrie s | Queries the routes of a CEN instance. |
 | DescribeCenChildInstanceRouteEntries | Queries the routes of a network instance that is attached to a CEN instance. |
 
-**Custom route tables**
-
 | API operation | Description |
 |---|---|
 | CreateTransitRouterRouteTable | Creates a custom route table for a transit router. |
@@ -120,15 +199,11 @@ This topic provides a list of the APIs for transit routers.
 | ListTransitRouterRouteTables | Queries the route tables of a transit router. |
 | DeleteTransitRouterRouteTable | Deletes a custom route table from a transit router. |
 
-**Route learning**
-
 | API operation | Description |
 |---|---|
 | EnableTransitRouterRouteTablePropag ation | Creates a route learning correlation. |
 | DisableTransitRouterRouteTablePropa gation | Deletes a route learning correlation. |
 | ListTransitRouterRouteTablePropagatio ns | Queries the route learning correlations of a route table that belongs to a transit router. |
-
-**Associated forwarding**
 
 | API operation | Description |
 |---|---|
@@ -137,8 +212,6 @@ This topic provides a list of the APIs for transit routers.
 | DissociateTransitRouterAttachmentFro mRouteTable | Deletes an associated forwarding correlation. |
 |---|---|
 | ListTransitRouterRouteTableAssociatio ns | Queries the associated forwarding correlations that are created for a route table of a transit router or a network instance connection. |
-
-**Multicast**
 
 | API operation | Description |
 |---|---|
@@ -157,8 +230,6 @@ This topic provides a list of the APIs for transit routers.
 | ListGrantVSwitchEnis | Queries the elastic network interfaces (ENIs) that can be used as multicast sources or members in a VPC. |
 | ListTransitRouterMulticastDomainVSwi tches | Queries VPC vSwitches that are associated with multicast domains. |
 
-**Routing policies**
-
 | API operation | Description |
 |---|---|
 | CreateCenRouteMap | Creates a routing policy. |
@@ -166,17 +237,15 @@ This topic provides a list of the APIs for transit routers.
 | DescribeCenRouteMaps | Queries information about routing policies. |
 | DeleteCenRouteMap | Deletes a routing policy. |
 
-**Health checks**
-
 | API operation | Description |
 |---|---|
 | EnableCenVbrHealthCheck | Enables the health check feature for a VBR to detect anomalies on Express Connect circuits. You can modify the health check configuration of a VBR based on business requirements. |
 | DescribeCenVbrHealthCheck | Queries the health check configuration of a VBR in a region. |
 | DisableCenVbrHealthCheck | Disables the health check feature for a VBR. |
 
-### CEN instances
+### 1.2 CEN instances
 
-#### ModifyCenAttribute
+#### 1.2.1 ModifyCenAttribute
 
 Modifies the name and description of a Cloud Enterprise Network (CEN) instance.
 
@@ -233,7 +302,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | INVALID OPERATION _ _ ENHANCE PROTECTIO _ N LEVEL _ | InvalidOperation.EnhanceProtectio nLevel | Your request to enhance CBN protection level cannot be processed. Please contact customer support to continue this operation. |
 
-#### DescribeCenAttachedChildInstances
+#### 1.2.2 DescribeCenAttachedChildInstances
 
 Queries the network instances that are attached to a Cloud Enterprise Network (CEN) instance.
 
@@ -323,7 +392,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </ChildInstances>
 ```
 
-#### DescribeCenAttachedChildInstanceAttribute
+#### 1.2.3 DescribeCenAttachedChildInstanceAttribute
 
 Queries the information about a network instance, such as a virtual private cloud (VPC) or a virtual border router (VBR), that is attached to a Cloud Enterprise Network (CEN) instance.
 
@@ -398,7 +467,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 404 | INSTANCE NOT EXIST _ _ | ParameterError | The parameter is error. |
 | 400 |   | SystemBusy | The system is busy. Please try again later. |
 
-#### DeleteCen
+#### 1.2.4 DeleteCen
 
 Deletes a Cloud Enterprise Network (CEN) instance.
 
@@ -456,7 +525,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationFailed.Delet eCenWithRouteEntry | OperationFailed.DeleteCenWithRou teEntry | Operation failed because you are not allowed to delete the CEN with the transit router route entry. |
 |---|---|---|---|
 
-#### DescribeCens
+#### 1.2.5 DescribeCens
 
 Queries the information about a Cloud Enterprise Network (CEN) instance.
 
@@ -567,7 +636,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | INVALID TAG KEY _ _ | InvalidTagKey | The tag keys are not valid. |
 | 400 | INVALID TAG VALUE _ _ | InvalidTagValue | The tag values are not valid. |
 
-#### CreateCen
+#### 1.2.6 CreateCen
 
 Creates a Cloud Enterprise Network (CEN) instance.
 
@@ -622,7 +691,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50</RequestId> <CenId>cen-dc4vwznpwbobrl****</CenId>
 ```
 
-#### DescribeChildInstanceRegions
+#### 1.2.7 DescribeChildInstanceRegions
 
 Queries the regions of network instances connected to a transit routers.
 
@@ -684,9 +753,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | Abs.MissingOwnerIdOr OwnerAccount | MissingParameter.OwnerIdOrOwne rAccount | The input parameter OwnerAccount or OwnerId that is mandatory for processing this request is not supplied |
 
-### Transit routers
+### 1.3 Transit routers
 
-#### CreateTransitRouter
+#### 1.3.1 CreateTransitRouter
 
 Creates a transit router.
 
@@ -771,7 +840,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | CIDR CONFLICT _ | OperationFailed.CidrConflict | Operation is invalid because the cidr conflict. |
 | 400 | IllegalParam.RegionId | IllegalParam.Region | The specified region is invalid. |
 
-#### DeleteTransitRouter
+#### 1.3.2 DeleteTransitRouter
 
 Deletes a transit router.
 
@@ -837,7 +906,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | INVALID OPERATION _ _ CCN ATTACHED _ | OperationFailed.CCNAttached | Can not delete transit router because CCN still attached. |
 | 400 | INVALID OPERATION _ _ BANDWIDTH LIMIT EX _ _ IST | OperationFailed.BandwidthLimitExi st | Operation is invalid because a bandwidth limit exist. |
 
-#### UpdateTransitRouter
+#### 1.3.3 UpdateTransitRouter
 
 Modifies the name and description of a transit router.
 
@@ -897,7 +966,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationUnsupporte d.RegionId | OperationUnsupported.RegionId | The specified region ID is not supported. |
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
 
-#### ListTransitRouters
+#### 1.3.4 ListTransitRouters
 
 Queries the information about transit routers that are connected to a Cloud Enterprise Network (CEN) instance.
 
@@ -1038,7 +1107,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | FILTER VALUE NOT S _ _ _ UPPORT | InvalidOperation.UnsupportFilterVa lue | The specified FeatureFilter Value is not supported by this operation. |
 | 400 | InvalidParameter.Feat ureFilter | InvalidOperation.UnsupportFilter | The specified FeatureFilter is not supported by this operation. |
 
-#### ListTransitRouterAvailableResource
+#### 1.3.5 ListTransitRouterAvailableResource
 
 Queries the zones that support transit routers in a region.
 
@@ -1094,9 +1163,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 <SlaveZones>cn-qingdao-env17e-amtest17001-a</SlaveZones> <RequestId>B4F480E0-4E76-5E43-9966-8322C28A158A</RequestId> <MasterZones>cn-qingdao-env17e-amtest17001-a</MasterZones> <AvailableZones>cn-qingdao-env17e-amtest17001-a</AvailableZones>
 ```
 
-### Transit router CIDR blocks
+### 1.4 Transit router CIDR blocks
 
-#### CreateTransitRouterCidr
+#### 1.4.1 CreateTransitRouterCidr
 
 Creates a transit router CIDR block.
 
@@ -1166,7 +1235,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationUnsupporte d.TransitRouterCidr | OperationUnsupported.TransitRout erCidr | Transit region does not support the operation. |
 | 400 | IllegalParam.Cidr | IllegalParam.Cidr | The specified cidr is invalid. |
 
-#### ModifyTransitRouterCidr
+#### 1.4.2 ModifyTransitRouterCidr
 
 Modifies the CIDR block of a transit router.
 
@@ -1234,7 +1303,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId>
 ```
 
-#### ListTransitRouterCidr
+#### 1.4.3 ListTransitRouterCidr
 
 Queries the CIDR blocks of a transit router.
 
@@ -1318,7 +1387,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </CidrLists>
 ```
 
-#### ListTransitRouterCidrAllocation
+#### 1.4.4 ListTransitRouterCidrAllocation
 
 Queries how IP addresses within the CIDR block of a transit router are allocated.
 
@@ -1409,7 +1478,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </TransitRouterCidrAllocations>
 ```
 
-#### DeleteTransitRouterCidr
+#### 1.4.5 DeleteTransitRouterCidr
 
 Deletes a transit router CIDR block.
 
@@ -1473,9 +1542,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | CIDR BLOCK ALLOCA _ _ TED | OperationFailed.CidrBlockAllocated | Cidr blocks are allocated from the cidr, which should be released first. |
 
-### VPC connections
+### 1.5 VPC connections
 
-#### CreateTransitRouterVpcAttachment
+#### 1.5.1 CreateTransitRouterVpcAttachment
 
 Creates a virtual private cloud (VPC) connection on a transit router.
 
@@ -1648,7 +1717,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | QUOTA FULL PER TR _ _ _ _ VPC AUTO ROUTE _ _ | QuotaExceeded.VpcAutoRoutesPub lishPerTransitRouter | The count of VPC instance which set autoRoutesPublish in transitRouter is over limit. |
 | 400 | VPN ASSOCIATED _ | InvalidOperation.VpnAssociated | The operation is not supported because the VPC is associated with VPN. |
 
-#### ListTransitRouterVpcAttachments
+#### 1.5.3 ListTransitRouterVpcAttachments
 
 Queries the virtual private cloud (VPC) connections on a transit router.
 
@@ -1799,7 +1868,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.TransitRo uterId | IllegalParam.TransitRouterId | The specified TransitRouterId is invalid. |
 | 400 | IllegalParam.CenId Or RegionId | IllegalParam.CenIdOrRegionId | The specified CenId or RegionId is invalid. |
 
-#### DeleteTransitRouterVpcAttachment
+#### 1.5.4 DeleteTransitRouterVpcAttachment
 
 Deletes a virtual private cloud (VPC) connection from a transit router.
 
@@ -1870,7 +1939,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | UNESPECTED VPC RE _ _ SULT | IncorrectStatus.Vpc | The resource is not in a valid state for the operation. |
 | 400 | OperationFailed.Route EntryExist | OperationFailed.RouteEntryExist | Operation failed because the TransitRouterAttachment exists in RouteTable. |
 
-#### UpdateTransitRouterVpcAttachmentZones
+#### 1.5.5 UpdateTransitRouterVpcAttachmentZones
 
 Modifies the zones and vSwitches that are associated with a virtual private cloud (VPC) connection.
 
@@ -1948,7 +2017,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | VPC SWITCH STATUS _ _ ERROR _ | IncorrectStatus.VpcSwitch | The resource is not in a valid state for the attachment operation. |
 | 404 | InvalidZoneId.NotFoun d | IllegalParam.ZoneId | The specified ZoneId is illegal. |
 
-#### ListGrantVSwitchesToCen
+#### 1.5.6 ListGrantVSwitchesToCen
 
 Queries the information about vSwitches in virtual private clouds (VPCs) that belong to a different Alibaba Cloud account than the Cloud Enterprise Network (CEN) instance.
 
@@ -2020,9 +2089,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 </VSwitches>
 ```
 
-### VBR connections
+### 1.6 VBR connections
 
-#### CreateTransitRouterVbrAttachment
+#### 1.6.1 CreateTransitRouterVbrAttachment
 
 Connects a virtual border router (VBR) to a transit router.
 
@@ -2109,7 +2178,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | DEVICE MODEL FORB _ _ IDDEN | Forbidden.VbrDeviceModel | Attach VBR on some access device models are forbidden. |
 | 403 | INVALID OPERATION _ _ DEVICE MODEL FORB _ _ IDDEN | Forbidden.VbrDeviceModel | The attached VBR on some access device models are not supported. Please submit a ticket to continue using this VBR on CEN. |
 
-#### ListTransitRouterVbrAttachments
+#### 1.6.2 ListTransitRouterVbrAttachments
 
 Queries virtual border router (VBR) connections on a transit router.
 
@@ -2242,7 +2311,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.TransitRo uterId | IllegalParam.TransitRouterId | The specified TransitRouterId is invalid. |
 | 400 | IllegalParam.CenId Or RegionId | IllegalParam.CenIdOrRegionId | The specified CenId or RegionId is invalid. |
 
-#### UpdateTransitRouterVbrAttachmentAttribute
+#### 1.6.3 UpdateTransitRouterVbrAttachmentAttribute
 
 Modifies the name and description of a virtual border router (VBR) connection that is created on a transit router.
 
@@ -2307,7 +2376,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidTransitRouterAt tachmentId.NotFound | InvalidTransitRouterAttachmentId. NotFound | TransitRouterAttachmentId is not found. |
 | 400 | IncorrectStatus.Transi tRouterAttachmentId | IncorrectStatus.TransitRouterAttac hment | The status of TransitRouterAttachment is incorrect. |
 
-#### DeleteTransitRouterVbrAttachment
+#### 1.6.4 DeleteTransitRouterVbrAttachment
 
 Deletes a virtual border router (VBR) connection from an Enterprise Edition transit router.
 
@@ -2370,9 +2439,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationUnsupporte d.TransitRouterType | OperationUnsupported.TransitRout erType | The specified TransitRouterType does not support the operation. |
 | 400 | ATTACHMENT REFERE _ NCED BY VPC ROUTE _ _ _ ENTRY _ | InstanceReferenced.VpcRouteEntry | The specified attachment is referenced by vpc route entry. |
 
-### Connect attachments
+### 1.7 Connect attachments
 
-#### CreateTransitRouterConnectAttachment
+#### 1.7.1 CreateTransitRouterConnectAttachment
 
 Creates a Connect attachment.
 
@@ -2498,7 +2567,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId>
 ```
 
-#### ListTransitRouterConnectAttachments
+#### 1.7.3 ListTransitRouterConnectAttachments
 
 Queries the information about Connect attachments.
 
@@ -2613,7 +2682,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </TransitRouterAttachments>
 ```
 
-#### CreateTransitRouterConnectPeer
+#### 1.7.4 CreateTransitRouterConnectPeer
 
 Adds a Connect peer.
 
@@ -2672,7 +2741,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <TransitRouterConnectPeerId>tr-connect-peer-ax66ixf6ubbajw****</TransitRouterConnectPeerId> <RequestId>BCF96FD3-17C1-58DA-B9D6-2CC347A71D79</RequestId>
 ```
 
-#### ListTransitRouterConnectPeers
+#### 1.7.5 ListTransitRouterConnectPeers
 
 Queries the information about a Connect peer.
 
@@ -2784,7 +2853,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | MissingParam.TrConn ectPeerId Or TrAttachmentId | MissingParam.TrConnectPeerIdOrTr AttachmentId | The parameter TrConnectPeerId Or TrAttachmentId is mandatory. |
 
-#### DeleteTransitRouterConnectPeer
+#### 1.7.6 DeleteTransitRouterConnectPeer
 
 Deletes a Connect peer.
 
@@ -2839,7 +2908,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | INVALID OPERATION _ _ MULTICAST GROUP E _ _ XIST | OperationFailed.MulticastGroupExi st | Operation is failed because connect peer exists in multicast groups. |
 
-#### DeleteTransitRouterConnectAttachment
+#### 1.7.7 DeleteTransitRouterConnectAttachment
 
 Deletes a Connect attachment.
 
@@ -2893,9 +2962,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>9878790A-5C16-5A59-A6CB-79B28C04637D</RequestId>
 ```
 
-### Cross-account authorization
+### 1.8 Cross-account authorization
 
-#### GrantInstanceToTransitRouter
+#### 1.8.1 GrantInstanceToTransitRouter
 
 Grants a transit router the permissions to connect to a network instance that belongs to another Alibaba Cloud account.
 
@@ -2957,7 +3026,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidVbr.NotFound | InvalidVbr.NotFound | vbr is not found. |
 | 404 | INSTANCE NOT EXIST _ _ | InvalidInstanceId.NotFound | InstanceId is not found. |
 
-#### RevokeInstanceFromTransitRouter
+#### 1.8.2 RevokeInstanceFromTransitRouter
 
 Revokes the permissions that a transit router requires to connect to network instances that belong to another Alibaba Cloud account.
 
@@ -3008,7 +3077,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>AA4BFFD1-5090-5896-935F-4B353557F1A8</RequestId>
 ```
 
-#### DescribeGrantRulesToCen
+#### 1.8.3 DescribeGrantRulesToCen
 
 Queries the network instances within a different Alibaba Cloud account that Cloud Enterprise Network (CEN) has the permissions to access.
 
@@ -3100,7 +3169,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | MissingParameter | MissingParameter | Missing parameter. |
 | 400 | SDK.InvalidRegionId : Can not find endpoint to access. | InvalidParameter.RegionId | The specified Region Id is invalid. |
 
-#### DescribeGrantRulesToResource
+#### 1.8.4 DescribeGrantRulesToResource
 
 Queries permissions granted to Cloud Enterprise Network (CEN) instances that belong to another Alibaba Cloud account.
 
@@ -3177,9 +3246,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | MissingParameter | MissingParameter | Missing parameter. |
 | 400 | SDK.InvalidRegionId : Can not find endpoint to access. | InvalidParameter.RegionId | The specified Region Id is invalid. |
 
-### Custom routes
+### 1.9 Custom routes
 
-#### CreateTransitRouterRouteEntry
+#### 1.9.1 CreateTransitRouterRouteEntry
 
 Adds a route to a route table of a transit router.
 
@@ -3262,7 +3331,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | ROUTE CONFLICT _ | OperationFailed.CreateRouteEntry WithSameDestinationCidrBlock | Operation failed because Create RouteEntry with same destination cidrblock does not support. |
 | 400 | InvalidDestinationCidr Block.NotFound | InvalidDestinationCidrBlock.NotFou nd | DestinationCidrBlock is not found. |
 
-#### UpdateTransitRouterRouteEntry
+#### 1.9.2 UpdateTransitRouterRouteEntry
 
 Modifies the name and description of a route that belongs to a route table of a transit router.
 
@@ -3324,7 +3393,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidName | InvalidName | Name is invalid. |
 | 400 | InvalidDescription | InvalidDescription | Description is invalid. |
 
-#### ListTransitRouterRouteEntries
+#### 1.9.3 ListTransitRouterRouteEntries
 
 Queries the information about routes that belong to a route table of a transit router.
 
@@ -3442,7 +3511,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
 | 404 | ROUTE TABLE NOT F _ _ _ OUND | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 
-#### DeleteTransitRouterRouteEntry
+#### 1.9.4 DeleteTransitRouterRouteEntry
 
 Deletes a static route from a route table of a transit router.
 
@@ -3520,7 +3589,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | InvalidTransitRouterR outeEntry.NotFound | IllegalParam.TransitRouterRouteEn tryId | TransitRouterRouteEntryId is not found. |
 
-### Routing
+### 1.10 Routing
 
 **1.10.1.**
 
@@ -3635,7 +3704,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | INVALID OPERATION _ _ CBN INSTANCE STAT _ _ US | OperationFailed.CenInstanceStatus | The CEN instance is not in a valid state for the operation. |
 | 400 | ATTACHMENT NOT F _ _ OUND | ResourceNotFound.TransitRouterAt tachment | The specified TransitRouterAttachment does not exist. |
 
-#### DescribeRouteConflict
+#### 1.10.2 DescribeRouteConflict
 
 Queries overlapping routes of a network instance.
 
@@ -3716,7 +3785,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </RouteConflicts>
 ```
 
-#### DescribeCenRegionDomainRouteEntries
+#### 1.10.3 DescribeCenRegionDomainRouteEntries
 
 Queries the routes of a Cloud Enterprise Network (CEN) instance in a region.
 
@@ -3835,7 +3904,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </CenRouteEntries>
 ```
 
-#### DescribeCenChildInstanceRouteEntries
+#### 1.10.4 DescribeCenChildInstanceRouteEntries
 
 Queries the routes of a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
 
@@ -3977,9 +4046,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 </CenRouteEntries>
 ```
 
-### Custom route tables
+### 1.11 Custom route tables
 
-#### UpdateTransitRouterRouteTable
+#### 1.11.1 UpdateTransitRouterRouteTable
 
 Modifies the name and description of a route table that belongs to a transit router.
 
@@ -4040,7 +4109,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidName | InvalidName | Name is invalid. |
 | 400 | InvalidDescription | InvalidDescription | Description is invalid. |
 
-#### DeleteTransitRouterRouteTable
+#### 1.11.2 DeleteTransitRouterRouteTable
 
 Deletes a custom route table of a transit router.
 
@@ -4108,7 +4177,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationFailed.Delet eRouteTableWithProp agation | OperationFailed.DeleteRouteTable WithPropagation | Operation failed because you are not allowed to delete transit router route table with propagation |
 | 400 | OperationFailed.Delet eRouteTableWithRout eEntry | OperationFailed.DeleteRouteTable WithRouteEntry | Operation failed because you are not allowed to delete transit touter route table with route entry |
 
-#### ListTransitRouterRouteTables
+#### 1.11.3 ListTransitRouterRouteTables
 
 Queries the route tables of a transit router.
 
@@ -4224,7 +4293,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.NextToke n | IllegalParam.NextToken | NextToken is illegal |
 | 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | TransitRouterId is not found. |
 
-#### CreateTransitRouterRouteTable
+#### 1.11.4 CreateTransitRouterRouteTable
 
 Creates a custom route table for a transit router.
 
@@ -4300,7 +4369,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | QuotaExceeded.Transi tRouterRoutTable | QuotaExceeded.TransitRouterRout Table | TransitRouterRoutTable quota exceeded. |
 
-### Route learning
+### 1.12 Route learning
 
 **1.12.1.**
 
@@ -4365,7 +4434,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 
-#### ListTransitRouterRouteTablePropagations
+#### 1.12.2 ListTransitRouterRouteTablePropagations
 
 Queries the route learning correlations of a route table that belongs to a transit router.
 
@@ -4447,7 +4516,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The parameter NextToken is invalid. |
 
-#### EnableTransitRouterRouteTablePropagation
+#### 1.12.3 EnableTransitRouterRouteTablePropagation
 
 Creates a route learning correlation.
 
@@ -4508,7 +4577,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 | 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
 
-### Associated forwarding
+### 1.13 Associated forwarding
 
 **1.13.1.**
 
@@ -4572,7 +4641,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
 | 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 
-#### ListTransitRouterRouteTableAssociations
+#### 1.13.2 ListTransitRouterRouteTableAssociations
 
 Queries the associated forwarding correlations that are created for a route table of a transit router or a network instance connection.
 
@@ -4726,9 +4795,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 | 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
 
-### Multicast
+### 1.14 Multicast
 
-#### CreateTransitRouterMulticastDomain
+#### 1.14.1 CreateTransitRouterMulticastDomain
 
 A multicast domain is created.
 
@@ -4810,7 +4879,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouter | The status of TransitRouter is incorrect. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-#### ModifyTransitRouterMulticastDomain
+#### 1.14.2 ModifyTransitRouterMulticastDomain
 
 Modifies the name and description of a multicast domain.
 
@@ -4874,7 +4943,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidTransitRouterM ulticastDomainId.NotF ound | InvalidMulticastDomainId.NotFound | The specified MulticastDomainId is not found. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-#### ListTransitRouterMulticastDomains
+#### 1.14.3 ListTransitRouterMulticastDomains
 
 Queries the information about multicast domains.
 
@@ -4989,7 +5058,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TrInstance is illegal. |
 | 400 | IllegalParam.CenId | IllegalParam.CenId | The specified CenId is illegal. |
 
-#### DeleteTransitRouterMulticastDomain
+#### 1.14.4 DeleteTransitRouterMulticastDomain
 
 Deletes a multicast domain.
 
@@ -5055,7 +5124,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | INVALID OPERATION _ _ MULTICAST DOMAIN I _ _ N GROUP _ | InvalidOperation.MulticastDomainI nGroup | Operation is invalid because multicast domain has registered as multicast group member. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-#### AssociateTransitRouterMulticastDomain
+#### 1.14.5 AssociateTransitRouterMulticastDomain
 
 Associates the vSwitch of a virtual private cloud (VPC) with a multicast domain.
 
@@ -5127,7 +5196,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 | 400 | OperationFailed.- 100118 | OperationUnsupported.VpcRegion | The specified Region is not support for this operation. |
 
-#### DisassociateTransitRouterMulticastDomain
+#### 1.14.6 DisassociateTransitRouterMulticastDomain
 
 Disassociates vSwitches from a multicast domain.
 
@@ -5618,7 +5687,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IncorrectStatus.Multic astGroup | IncorrectStatus.MulticastGroup | The status of MulticastGroup is incorrect. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-#### ListTransitRouterMulticastGroups
+#### 1.14.12 ListTransitRouterMulticastGroups
 
 Queries the multicast sources and members in a multicast domain.
 
@@ -5747,7 +5816,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is illegal. |
 | 400 | IllegalParam.TransitRo uterMulticastDomainI d | IllegalParam.TransitRouterMulticas tDomainId | The specified TransitRouterMulticastDomainId is illegal. |
 
-#### ListGrantVSwitchEnis
+#### 1.14.13 ListGrantVSwitchEnis
 
 Queries the information about elastic network interfaces (ENIs) that can serve as multicast sources or multicast members in a virtual private cloud (VPC).
 
@@ -5903,9 +5972,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | IllegalParam.Region | IllegalParam.Region | The specified Region is invalid. |
 
-### Routing policies
+### 1.15 Routing policies
 
-#### CreateCenRouteMap
+#### 1.15.1 CreateCenRouteMap
 
 Creates a routing policy.
 
@@ -6018,7 +6087,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
 
-#### ModifyCenRouteMap
+#### 1.15.2 ModifyCenRouteMap
 
 Modifies a routing policy of a Cloud Enterprise Network (CEN) instance.
 
@@ -6125,7 +6194,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | PARAMETER ILLEGAL _ _ RMAP GW REGION ID _ _ _ | Invid.Parameter | GatewayRegionId is invalid |
 |---|---|---|---|
 
-#### DescribeCenRouteMaps
+#### 1.15.3 DescribeCenRouteMaps
 
 Queries information about routing policies.
 
@@ -6290,7 +6359,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </RouteMaps>
 ```
 
-#### DeleteCenRouteMap
+#### 1.15.4 DeleteCenRouteMap
 
 Deletes a routing policy.
 
@@ -6348,9 +6417,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | INVALID OPERATION _ _ TRANSITROUTER NOT _ EXIST _ | InvalidOperation.TransitRouterNotE xist | Operation is invalid because the transit router not exist. |
 |---|---|---|---|
 
-### Health checks
+### 1.16 Health checks
 
-#### EnableCenVbrHealthCheck
+#### 1.16.1 EnableCenVbrHealthCheck
 
 Enables the health check feature for a virtual border router (VBR) to detect anomalies on Express Connect circuits. You can modify the health check configuration of a VBR based on business requirements.
 
@@ -6424,7 +6493,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | PARAMETER ILLEGAL _ _ SOURCEIP OR TARGE _ _ TIP | Illegal.SourceIpOrTargetIp | The specified source IP address or destination IP address is invalid. |
 | 400 | INVALID OPERATION _ _ VBR OR VPC CBN AT _ _ _ _ TACHMENT STATUS _ | OperationFailed.StatusNotSupport | The VBR or VPC instance to CBN attachment is not in a valid state for the operation. |
 
-#### DisableCenVbrHealthCheck
+#### 1.16.2 DisableCenVbrHealthCheck
 
 Disables the health check feature for a virtual border router (VBR).
 
@@ -6474,7 +6543,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>A278B8A6-A5B8-4FDE-9F70-95F0F6A1D68A</RequestId>
 ```
 
-#### DescribeCenVbrHealthCheck
+#### 1.16.3 DescribeCenVbrHealthCheck
 
 Queries the health check configuration of a virtual border router (VBR) in a region.
 

@@ -3,16 +3,228 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Developer 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 517
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Developer Guide 20260828.pdf"
+source_pdf: "113e5c6fdf6d0a51_Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C%20VPC/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Virtual%20Private%20Cloud%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Log in to OpenAPI Explorer
+  - 2.2 View the information about API operations
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common headers
+  - 2.6 Obtain the endpoint of VPC
+  - 2.7 Obtain VPC SDK
+- 3 Call examples for SDK for Java
+  - 3.1 Quick start
+  - 3.2 Use SDK
+    - 3.2.1 Install VPC SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call Python SDK
+  - 4.1 Quick start
+  - 4.2 Use SDK
+    - 4.2.1 Install VPC SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call Go SDK
+  - 5.1 Quick start
+  - 5.2 Use SDK
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Troubleshooting
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API reference
+  - 6.1 List of operations by function
+  - 6.2 Call VPC APIs
+    - 6.2.1 Request syntax
+    - 6.2.2 API authorization
+    - 6.2.3 Sign an API request
+  - 6.3 RAM authentication
+  - 6.4 Common parameters
+  - 6.5 VPC
+    - 6.5.1 CreateVpc
+    - 6.5.2 DeleteVpc
+    - 6.5.3 ModifyVpcAttribute
+    - 6.5.4 DescribeVpcAttribute
+    - 6.5.5 AssociateVpcCidrBlock
+    - 6.5.6 UnassociateVpcCidrBlock
+    - 6.5.7 MoveResourceGroup
+    - 6.5.8 ListVpcIpv6Isps
+    - 6.5.9 DescribeVSwitchGatewayIpService
+    - 6.5.10 CreateVpcPrefixList
+    - 6.5.11 ModifyVpcPrefixList
+    - 6.5.12 DeleteVpcPrefixList
+    - 6.5.13 GetVpcPrefixListEntries
+    - 6.5.14 ListPrefixLists
+    - 6.5.15 DetailVpc
+    - 6.5.16 DeleteNqa
+    - 6.5.17 DeleteExpressCloudConnection
+  - 6.6 Route table
+    - 6.6.1 ModifyRouteTableAttributes
+    - 6.6.2 CreateRouteTable
+    - 6.6.3 CreateRouteEntry
+    - 6.6.4 DeleteRouteEntry
+    - 6.6.5 DescribeRouteEntryList
+    - 6.6.6 ModifyRouteEntry
+    - 6.6.7 AssociateRouteTable
+    - 6.6.8 DeleteRouteTable
+    - 6.6.9 DescribeRouteTableList
+    - 6.6.10 UnassociateRouteTable
+  - 6.7 vSwitch
+    - 6.7.1 CreateVSwitch
+    - 6.7.2 DeleteVSwitch
+    - 6.7.3 ModifyVSwitchAttribute
+    - 6.7.4 DescribeVSwitchAttributes
+  - 6.8 ACLs
+    - 6.8.1 CreateNetworkAcl
+    - 6.8.2 AssociateNetworkAcl
+    - 6.8.3 ModifyNetworkAclAttributes
+    - 6.8.4 UpdateNetworkAclEntries
+    - 6.8.5 UnassociateNetworkAcl
+    - 6.8.6 CopyNetworkAclEntries
+    - 6.8.7 DeleteNetworkAcl
+    - 6.8.8 DescribeNetworkAcls
+    - 6.8.9 DescribeNetworkAclAttributes
+    - 6.8.10 UpdateNetworkAclEntriesEnable
+  - 6.9 Elastic IP addresses
+    - 6.9.1 ListEipIsps
+    - 6.9.2 AllocateEipAddress
+    - 6.9.3 AllocateEipAddressPro
+    - 6.9.4 AssociateEipAddress
+    - 6.9.5 ModifyEipAddressAttribute
+    - 6.9.6 DescribeEipAddresses
+    - 6.9.7 UnassociateEipAddress
+    - 6.9.8 ReleaseEipAddress
+    - 6.9.9 DescribeEipGatewayInfo
+    - 6.9.10 DescribeHighDefinitionMonitorLogAttribute
+  - 6.10 NAT gateways
+    - 6.10.1 CreateNatGateway
+    - 6.10.2 ModifyNatGatewayAttribute
+    - 6.10.3 ModifyNatGatewaySpec
+    - 6.10.4 DeleteNatGateway
+    - 6.10.5 DescribeNatGateways
+    - 6.10.6 CreateForwardEntry
+    - 6.10.7 DescribeForwardTableEntries
+    - 6.10.8 ModifyForwardEntry
+    - 6.10.9 DeleteForwardEntry
+    - 6.10.10 CreateSnatEntry
+    - 6.10.11 DescribeSnatTableEntries
+    - 6.10.12 ModifySnatEntry
+    - 6.10.13 DeleteSnatEntry
+    - 6.10.14 ModifyBandwidthPackageSpec
+    - 6.10.15 DeleteBandwidthPackage
+    - 6.10.16 CreateBandwidthPackage
+    - 6.10.17 DescribeBandwidthPackages
+    - 6.10.18 ModifyBandwidthPackageAttribute
+    - 6.10.19 AddBandwidthPackageIps
+  - 6.11 IPv6 gateways
+    - 6.11.1 CreateIpv6Gateway
+    - 6.11.2 DeleteIpv6Gateway
+    - 6.11.3 DescribeIpv6Gateways
+    - 6.11.4 ModifyIpv6GatewaySpec
+    - 6.11.5 DescribeIpv6EgressOnlyRules
+    - 6.11.6 CreateIpv6EgressOnlyRule
+    - 6.11.7 DeleteIpv6EgressOnlyRule
+    - 6.11.8 DeleteIpv6InternetBandwidth
+    - 6.11.9 DescribeIpv6GatewayAttribute
+    - 6.11.10 DescribeIpv6Addresses
+    - 6.11.11 ModifyIpv6InternetBandwidth
+    - 6.11.12 AllocateIpv6InternetBandwidth
+    - 6.11.13 ModifyIpv6AddressAttribute
+    - 6.11.14 ModifyIpv6GatewayAttribute
+  - 6.12 HAVIPs
+    - 6.12.1 CreateHaVip
+    - 6.12.2 DescribeHaVips
+    - 6.12.3 ModifyHaVipAttribute
+    - 6.12.4 AssociateHaVip
+    - 6.12.5 UnassociateHaVip
+    - 6.12.6 DeleteHaVip
+  - 6.13 DHCP options sets
+    - 6.13.1 CreateDhcpOptionsSet
+    - 6.13.2 AttachDhcpOptionsSetToVpc
+    - 6.13.3 DetachDhcpOptionsSetFromVpc
+    - 6.13.4 ReplaceVpcDhcpOptionsSet
+    - 6.13.5 GetDhcpOptionsSet
+    - 6.13.6 ListDhcpOptionsSets
+    - 6.13.7 UpdateDhcpOptionsSetAttribute
+    - 6.13.8 DeleteDhcpOptionsSet
+  - 6.14 vRouter
+    - 6.14.1 ModifyVRouterAttribute
+    - 6.14.2 DescribeVRouters
+  - 6.15 Region
+    - 6.15.1 ListGWAzone
+    - 6.15.2 DescribeRegions
+    - 6.15.3 DescribeZones
+  - 6.16 Tag
+    - 6.16.1 TagResources
+    - 6.16.2 ListTagResources
+    - 6.16.3 UnTagResources
+  - 6.17 VPN gateways
+    - 6.17.1 VPN gateway
+      - 6.17.1.1 CreateVpnGateway
+      - 6.17.1.2 DescribeVpnGateways
+      - 6.17.1.3 DescribeVpnGateway
+      - 6.17.1.4 DeleteVpnGateway
+      - 6.17.1.5 ModifyVpnGatewayAttribute
+      - 6.17.1.6 CreateVbrHa
+    - 6.17.2 Customer gateway
+      - 6.17.2.1 CreateCustomerGateway
+      - 6.17.2.2 DescribeCustomerGateways
+      - 6.17.2.3 DescribeCustomerGateway
+      - 6.17.2.4 DeleteCustomerGateway
+      - 6.17.2.5 ModifyCustomerGatewayAttribute
+    - 6.17.3 Routes for VPN gateways
+      - 6.17.3.1 DeleteVpnPbrRouteEntry
+      - 6.17.3.2 DeleteVpnRouteEntry
+      - 6.17.3.3 DescribeVpnRouteEntries
+      - 6.17.3.4 ModifyVpnRouteEntryWeight
+      - 6.17.3.5 CreateVpnRouteEntry
+      - 6.17.3.6 ModifyVpnPbrRouteEntryWeight
+      - 6.17.3.7 DescribeVpnPbrRouteEntries
+      - 6.17.3.8 PublishVpnRouteEntry
+      - 6.17.3.9 CreateVpnPbrRouteEntry
+    - 6.17.4 IPsec-VPN
+      - 6.17.4.1 DescribeVpnConnection
+      - 6.17.4.2 DeleteVpnConnection
+      - 6.17.4.3 DownloadVpnConnectionConfig
+      - 6.17.4.4 CreateVpnConnection
+      - 6.17.4.5 DescribeVpnConnections
+      - 6.17.4.6 ModifyVpnConnectionAttribute
+    - 6.17.5 SSL-VPN
+      - 6.17.5.1 CreateSslVpnServer
+      - 6.17.5.2 DeleteSslVpnServer
+      - 6.17.5.3 ModifySslVpnServer
+      - 6.17.5.4 DeleteSslVpnClientCert
+      - 6.17.5.5 ModifySslVpnClientCert
+      - 6.17.5.6 CreateSslVpnClientCert
+      - 6.17.5.7 DescribeSslVpnClientCerts
+      - 6.17.5.8 DescribeSslVpnClientCert
+      - 6.17.5.9 DescribeSslVpnServers
+      - 6.17.5.10 DescribeVpnSslServerLogs
+- 7 Appendixes
+  - 7.1 STS overview
+    - 7.1.1 What is STS?
+    - 7.1.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -37,7 +249,7 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
 Apsara Stack allows you to call API operations by using the point of presence (POP) gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud public cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called by using the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -73,9 +285,9 @@ For more information about how to view, use, and obtain the developer guide of a
 5. Obtain the endpoint of a cloud service.
 6. Obtain the service SDK and use the SDK to call the API operations of the service.
 
-## Preparations
+## 2 Preparations
 
-### Log in to OpenAPI Explorer
+### 2.1 Log in to OpenAPI Explorer
 
 You can log in to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -125,7 +337,7 @@ a. After you log on with your username and password, the Bind Virtual MFA Device
 Enter the six-digit MFA code and click **Authenticate**.
 6. In the top navigation bar, select **Products** > **Developer Tools** > **OpenAPI Explorer**.
 
-### View the information about
+### 2.2 View the information about API operations
 
 **API operations**
 
@@ -144,7 +356,7 @@ list, enter a keyword of an API operation name in the search box, and then click
 4. View and record the service name, API operation name, and API version of the API operation
 that you want to call.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are provided by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is provided by RAM.
 
@@ -186,7 +398,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 **tuple**
 
@@ -313,7 +525,7 @@ e previous step.
 
 `}` `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common headers
 
 **headers**
 
@@ -363,7 +575,7 @@ The following additional response parameters are returned by default when you ca
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of VPC
+### 2.6 Obtain the endpoint of VPC
 
 This topic describes how to obtain the endpoint of Virtual Private Cloud (VPC).
 
@@ -385,7 +597,7 @@ icon next to **Service** and search for `VPC` .
 **Show More**.
 On the **Details** page, view the value of **vpc-internal.openapi.endpoint**. The value indicates the `endpoint` of VPC.
 
-### Obtain VPC SDK
+### 2.7 Obtain VPC SDK
 
 When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain Virtual Private Cloud (VPC) SDK.
 
@@ -407,11 +619,11 @@ Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alib
 
 We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. or SDK for Java
 
-## Call examples for SDK for
+## 3 Call examples for SDK for Java
 
 **Java**
 
-### Quick start
+### 3.1 Quick start
 
 This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java.
 
@@ -519,9 +731,9 @@ resources.
 
 `}` `}` `}`
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install VPC SDK for Java
+#### 3.2.1 Install VPC SDK for Java
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. Alibaba Cloud SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Alibaba Cloud SDK for Java by adding Maven dependencies or downloading Alibaba Cloud SDK. To use VPC SDK, you must install the core library of Alibaba Cloud SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use VPC SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDK. or SDK for Java
 
@@ -540,7 +752,7 @@ This topic describes how to install and use Virtual Private Cloud (VPC) SDK for 
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client.
 
@@ -559,7 +771,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 In the preceding sample code,replace the parameterswith the actual information. Remove the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. or SDK for Java
 
@@ -589,7 +801,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to initiate a request.
 
@@ -633,7 +845,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -664,7 +876,7 @@ try {
 
 `}`
 
-#### Use CommonRequest to call API
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -762,7 +974,7 @@ he SecurityToken field in the request parameters.
 
 `}` `}` `}`
 
-## Call Python SDK
+## 4 Call Python SDK
 
 After installing the Alibaba Cloud Python SDK, you can write code to use the Alibaba Cloud Python SDK to access the POP gateway of Apsara Stack and call API operations of the Apsara Uni-manager Management Console.
 
@@ -971,7 +1183,7 @@ print(str(response, encoding='utf-8'))
 
 parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
 
-### Quick start
+### 4.1 Quick start
 
 This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python.
 
@@ -1037,9 +1249,9 @@ request = DescribeVpcsRequest.DescribeVpcsRequest() request.set_accept_format('j
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, the default value is print (response).
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install VPC SDK for Python
+#### 4.2.1 Install VPC SDK for Python
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -1069,7 +1281,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-vpc
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client.
 
@@ -1081,7 +1293,7 @@ Do not disclose any code that may contain your AccessKey pair. For example, do n
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use.
 
@@ -1115,7 +1327,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Python to initiate a request.
 
@@ -1145,7 +1357,7 @@ request = DescribeVpcsRequest.DescribeVpcsRequest() request.set_accept_format('j
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, the default value is print (response).
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -1166,7 +1378,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -1220,7 +1432,7 @@ delete, or query an instance.
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-## Call Go SDK
+## 5 Call Go SDK
 
 After installing the Alibaba Cloud Go SDK, you can write code to access the POP Gateway of Alibaba Cloud and call API operations of the Apsara Uni-manager Management Console.
 
@@ -1535,7 +1747,7 @@ fmtPrintln(serverErrorErrorCode())
 
 `<yourCallerSdkSource>` are variable parameters. You must replace them with their actual values. Do not retain the angle brackets (<>) in the final code.
 
-### Quick start
+### 5.1 Quick start
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Go.
 
@@ -1613,15 +1825,15 @@ secret.
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -1646,7 +1858,7 @@ secret.
 
 In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. The following example shows how to use VPC SDK for Go to initiate a request.
 1. Import VPC SDK for Go.
@@ -1684,7 +1896,7 @@ request := vpc.CreateDescribeVpcsRequest() request.InstanceId = ""
 response, err := vpcClient.DescribeVpcs(request)
 ```
 
-#### Troubleshooting
+#### 5.2.4 Troubleshooting
 
 When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors.
 
@@ -1764,7 +1976,7 @@ response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*err
 
 `}`
 
-#### Use CommonRequest to call API
+#### 5.2.5 Use CommonRequest to call API operations
 
 **operations**
 
@@ -1855,9 +2067,9 @@ e instance ID. This parameter is required if you want to modify, delete, or quer
 
 `}`
 
-## API reference
+## 6 API reference
 
-### List of operations by function
+### 6.1 List of operations by function
 
 The following tables list the API operations available for use in Virtual Private Cloud (VPC).
 
@@ -2068,9 +2280,9 @@ The following tables list the API operations available for use in Virtual Privat
 | ModifyIpv6AddressAttribute | Modifies the name and description of an IPv6 address. |
 | ModifyIpv6GatewayAttribute | Modifies the information about an IPv6 gateway. |
 
-### Call VPC APIs
+### 6.2 Call VPC APIs
 
-#### Request syntax
+#### 6.2.1 Request syntax
 
 To call a Virtual Private Cloud (VPC) API operation, you must send an HTTP GET request to the endpoint of the VPC API. Before you send a request, you must specify the request parameters for the operation. A response is returned for each request. Requests and responses are encoded in UTF-8. VPC API operations use the RPC protocol. You can call VPC API operations by sending HTTP GET requests. The following request syntax is used:
 
@@ -2099,11 +2311,11 @@ The example in this topic is formatted to improve readability.
 https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2021-06-01T12:00:00Z
 ```
 
-#### API authorization
+#### 6.2.2 API authorization
 
 To ensure the security of your account, we recommend that you call VPC APIs as a RAM user. Before you can use a RAM account to call a VPC API, you must create a RAM account and assign corresponding permissions to it. For more information about VPC resources and APIs you can assign permissions on, see RAM authentication.
 
-#### Sign an API request
+#### 6.2.3 Sign an API request
 
 You must sign all API requests to ensure security. Virtual Private Cloud (VPC) uses the request signature to verify the identity of the API caller. VPC implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Alibaba Cloud accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. You must add the signature to an RPC API request in the following format:
 
@@ -2138,7 +2350,7 @@ CT9X0VtwR86fNWSnsc6v8YGOjuE=
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.3 RAM authentication
 
 Before calling a VPC API using a RAM user, you must use an Apsara Stack tenant account to create an authorization policy to assign permissions to the RAM user. In the authorization policy, an Alibaba Cloud Resource Name (ARN) is used as the unique identifier of the resource to authorize.
 
@@ -2293,7 +2505,7 @@ The following table lists the API operations that can be authorized and their co
 |   |   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |
 | vpc:DeleteSnatEntry |   |   |   |
 
-### Common parameters
+### 6.4 Common parameters
 
 **Common request parameters**
 
@@ -2343,9 +2555,9 @@ JSON format `{`
 
 `}`
 
-### VPC
+### 6.5 VPC
 
-#### CreateVpc
+#### 6.5.1 CreateVpc
 
 Deletes a virtual private cloud (VPC).
 
@@ -2440,7 +2652,7 @@ Sample success responses `XML` format
 | 400 | InvalidResourceGro upId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID is invalid. |
 | 400 | OperationUnsuppor ted.ResourceGroup Id | ResourceGroup is not supported in this region. | The error message returned because the resource group feature is not enabled. |
 
-#### DeleteVpc
+#### 6.5.2 DeleteVpc
 
 Deletes a virtual private cloud (VPC).
 
@@ -2510,7 +2722,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | Active custom route in vpc. | The error message returned because you must add a custom route entry to the VPC. |
 | 400 | DependencyViolati on.DhcpOptionsSet | The VPC cannot be deleted when it is associated with dhcpOptionsSet. | The error message returned because DHCP options sets exist in the VPC and the VPC cannot be deleted. Delete the DHCP options sets and try again. |
 
-#### ModifyVpcAttribute
+#### 6.5.3 ModifyVpcAttribute
 
 Modifies the name and description of a virtual private cloud (VPC).
 
@@ -2622,7 +2834,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | -1013281 | OperationFailed.ClassicLinkEna bled | Operation failed because classicLink is enabled. |
 | 400 | OperationFailed.IpV 6VSwitchInuse | OperationFailed.IpV6VSwitchIn use | %s |
 
-#### DescribeVpcAttribute
+#### 6.5.4 DescribeVpcAttribute
 
 Queries the detailed information about a specified virtual private cloud (VPC).
 
@@ -2798,7 +3010,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidVpcId.NotFo und | Specified VPC does not exist. | The error message returned because the specified VPC does not exist. |
 
-#### AssociateVpcCidrBlock
+#### 6.5.5 AssociateVpcCidrBlock
 
 Adds a secondary IPv4 CIDR block to a virtual private cloud (VPC). Before you call this operation, make sure that the following requirements are met: The region ID of the VPC is obtained. You can call the DescribeRegions operation to query the most recent region list. The VPC ID is valid and the status of the VPC is normal. The secondary CIDR block belongs to 192.168.0.0/16, 172.16.0.0/12, 10.0.0.0/8, or their subsets. The mask length of the secondary CIDR block is from 8 to 24. It must not overlap with the primary CIDR block or other existing secondary CIDR blocks of the VPC. At least one of the following parameters is specified: SecondaryCidrBlock and Ipv6CidrBlock. The account that you use has permissions to manage the VPC.
 
@@ -2898,7 +3110,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 This operation is a system-level API operation provided by VPC. You can call this operation to extend the address space of a VPC. After you successfully call this operation, the newly added IPv4 CIDR block can be used to create vSwitches or assign private IP addresses to Elastic Compute Service (ECS) instances. When you call this operation, strictly comply with the CIDR planning rules in case of network conflicts.
 
-#### UnassociateVpcCidrBlock
+#### 6.5.6 UnassociateVpcCidrBlock
 
 Deletes a secondary IPv4 CIDR block from a virtual private cloud (VPC).
 
@@ -2945,7 +3157,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### MoveResourceGroup
+#### 6.5.7 MoveResourceGroup
 
 Moves a resource to a different resource group.
 
@@ -2995,7 +3207,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidResourceGro upId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID is invalid. |
 
-#### ListVpcIpv6Isps
+#### 6.5.8 ListVpcIpv6Isps
 
 Queries the IPv6 Internet service providers (ISPs) for a Virtual Private Cloud (VPC).
 
@@ -3051,7 +3263,7 @@ This operation uses common request headers. For more information about the commo
 | 404 | -1000003 | InvalidType.NotCorrect | Specified value of Type is not correct. |
 | 404 | RAM FORBIDDEN _ | RAM FORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### DescribeVSwitchGatewayIpService
+#### 6.5.9 DescribeVSwitchGatewayIpService
 
 Queries the gateway IP service information of a vSwitch.
 
@@ -3160,7 +3372,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | CONTROLLER VSWI _ TCH NOT EXIST _ _ | CONTROLLER VSWITCH NOT _ _ _ EXIST | controller vSwitch not exists. |
 | 404 | RAM FORBIDDEN _ | RAM FORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### CreateVpcPrefixList
+#### 6.5.10 CreateVpcPrefixList
 
 Creates a prefix list.
 
@@ -3242,7 +3454,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | DuplicatedParam.C idrBlock | DuplicatedParam.CidrBlock | The value of the CidrBlock parameter is a duplicate. |
 | 400 | QuotaExceeded.Pre fixListCount | QuotaExceeded.PrefixListCoun t | The quota for prefix lists is exceeded. |
 
-#### ModifyVpcPrefixList
+#### 6.5.11 ModifyVpcPrefixList
 
 You can call the ModifyVpcPrefixList operation to modify the configuration of a prefix list.
 
@@ -3331,7 +3543,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | QuotaExceeded.Pre fixListCidrCount | QuotaExceeded.PrefixListCidrC ount | The number of entries in the prefix list exceeds the quota. |
 | 400 | VPC RULE QUOTA _ _ _ CHECK ERROR _ | QuotaExceeded | The number of route entries in the associated route table exceeds the quota. |
 
-#### DeleteVpcPrefixList
+#### 6.5.12 DeleteVpcPrefixList
 
 Deletes a prefix list.
 
@@ -3399,7 +3611,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | DependencyViolati on.PrefixListRelatio n | DependencyViolation.PrefixList Relation | The operation cannot be completed because the specified prefix list is associated with other resources. |
 | 400 | DependencyViolati on.ShareResource | DependencyViolation.ShareRe source | The operation cannot be completed because the specified prefix list is a shared resource. |
 
-#### GetVpcPrefixListEntries
+#### 6.5.13 GetVpcPrefixListEntries
 
 You can call the GetVpcPrefixListEntries operation to query the entries in a specified prefix list.
 
@@ -3476,7 +3688,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.NextT oken | IllegalParam.NextToken | The specified NextToken is invalid. |
 | 400 | ResourceNotFound. PrefixList | ResourceNotFound.PrefixList | The specified resource of prefixList is not found. |
 
-#### ListPrefixLists
+#### 6.5.14 ListPrefixLists
 
 You can call the ListPrefixLists operation to query prefix lists.
 
@@ -3598,7 +3810,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | IllegalParam.NextT oken | IllegalParam.NextToken | The specified NextToken is invalid. |
 
-#### DetailVpc
+#### 6.5.15 DetailVpc
 
 Queries the details of a specified VPC.
 
@@ -3643,7 +3855,7 @@ This operation uses common request headers and does not have any special request
 | 400 | ResourceNotFound. Vpc | ResourceNotFound.Vpc | The specified resource of vpc instance is not found. |
 | 400 | VPC ID IS NULL _ _ _ | VPC ID IS NULL _ _ _ | Vpc id can not be null. |
 
-#### DeleteNqa
+#### 6.5.16 DeleteNqa
 
 Deletes a specified Network Quality Analyzer (NQA) instance.
 
@@ -3725,7 +3937,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | BGP PEER IP ADD _ _ _ RESS ALREADY US _ _ ED CANNOT CREA _ _ TE BGP PEER _ _ | InvalidParams.PeerIpAddressIn Use | A BGP peer cannot be created because the specified peer IP address is already in use. |
 | 404 | REGION NOT FOUN _ _ D | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. |
 
-#### DeleteExpressCloudConnection
+#### 6.5.17 DeleteExpressCloudConnection
 
 Deletes a specified Express Connect connection instance in Apsara Stack.
 
@@ -3787,9 +3999,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IncorrectStatus.Ecc Application | IncorrectStatus.EccApplication | %s |
 | 400 | OperationFailed.Rel easeVirtualBorderR outer | OperationFailed.ReleaseVirtual BorderRouter | %s |
 
-### Route table
+### 6.6 Route table
 
-#### ModifyRouteTableAttributes
+#### 6.6.1 ModifyRouteTableAttributes
 
 Modifies the properties of a route table.
 
@@ -3842,7 +4054,7 @@ This operation uses common request headers. No special request headers are requi
 | 400 | VPC ROUTER TABL _ _ E NOT EXIST _ _ | Abs.InvalidRouteTableId.NotExi st | The specified route table ID does not exist. |
 | 400 | Abs.Vpc.InvalidDes cription.Malformed | InvalidDescription.Malformed | The format of the description is invalid. |
 
-#### CreateRouteTable
+#### 6.6.2 CreateRouteTable
 
 Creates a custom route table.
 
@@ -3899,7 +4111,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.D escription.Malform ed | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 | 404 | InvalidVpcId.NotFo und | Specified VPC does not exist. | The error message returned because the specified VPC does not exist. |
 
-#### CreateRouteEntry
+#### 6.6.3 CreateRouteEntry
 
 Adds a custom route entry to the route table of a vRouter or a virtual border router (VBR).
 
@@ -4022,7 +4234,7 @@ Sample success responses `XML` format
 | 400 | InvalidRouteEntrySi ze | The Specified routerEntry size not legal. | The error message returned because you must specify two to four router interfaces as next hops if you want to configure ECMP routing. |
 | 400 | InvalidRouteEntry | Specified routeEntry not exist. | The error message returned because the specified route entry does not exist. |
 
-#### DeleteRouteEntry
+#### 6.6.4 DeleteRouteEntry
 
 Deletes a custom route from a route table. When you call this operation, take note of the following rules: You can delete only a custom route entry that is in the **Available** state. You cannot delete a custom route entry from a virtual private cloud (VPC) where a vSwitch is being created or deleted. When you delete an IPv6 route entry, if the route entry has multiple next hops of the ECMP type, including NextHopList, you must specify **NextHopId** to delete the next hops one by one.
 
@@ -4120,7 +4332,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | -1013611 | OperationFailed.DeleteMultiSc opeEntry | Multi or ecmp scope must delete with force. |
 | 400 | -1000006 | OperationFailed.DistibuteLock | Distibute lock fail. |
 
-#### DescribeRouteEntryList
+#### 6.6.5 DescribeRouteEntryList
 
 Queries information about route entries in a route table.
 
@@ -4248,7 +4460,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | OperationFailed.Qu eryCenEntry | Operation is denied because getting CEN route entry has failed. | The error message returned because the system cannot obtain the Cloud Enterprise Network (CEN) routes. |
 
-#### ModifyRouteEntry
+#### 6.6.6 ModifyRouteEntry
 
 Modifies the name and description of a custom route entry.
 
@@ -4305,7 +4517,7 @@ Sample success response `XML` format
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the permissions and try again. |
 | 400 | InvalidRouteEntryId .NotFound | The specified routeEntry does not exist. | The error message returned because the specified route entry does not exist. |
 
-#### AssociateRouteTable
+#### 6.6.7 AssociateRouteTable
 
 Associates a custom route table with a vSwitch in the same virtual private cloud (VPC).
 
@@ -4353,7 +4565,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRouteTableI d.NotFound | Specified route table does not exist. | The error message returned because the specified route table does not exist. |
 
-#### DeleteRouteTable
+#### 6.6.8 DeleteRouteTable
 
 Deletes a custom route table.
 
@@ -4409,7 +4621,7 @@ Sample success responses `XML` format
 | 400 | IncorrectVSwitchSt atus | The current virtual switch status does not support this operation. | The error message returned because the vSwitch is in the Configuring state and cannot be deleted. |
 |---|---|---|---|
 
-#### DescribeRouteTableList
+#### 6.6.9 DescribeRouteTableList
 
 Queries route tables.
 
@@ -4552,7 +4764,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Apply for the permissions and try again. |
 
-#### UnassociateRouteTable
+#### 6.6.10 UnassociateRouteTable
 
 Disassociates a route table from a vSwitch.
 
@@ -4604,9 +4816,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRouteTableI d.NotFound | Specified route table does not exist. | The error message returned because the specified route table does not exist. |
 
-### vSwitch
+### 6.7 vSwitch
 
-#### CreateVSwitch
+#### 6.7.1 CreateVSwitch
 
 Creates a vSwitch. You can call this operation to create a vSwitch in the specified virtual private cloud (VPC). Make sure that the specified VPC and zone exist and the CIDR block meets the requirement.
 
@@ -4739,7 +4951,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 404 | VPC ROUTE ENTRY _ _ STATUS ERROR _ _ | InvalidStatus.RouteEntry | The error message returned because the status of route entries is abnormal. Check whether the corresponding configuration is correct. |
 | 404 | REGION NOT FOUN _ _ D | InvalidRegionId.NotFound | The error message returned because the specified region ID is not supported. Specify a valid region ID. |
 
-#### DeleteVSwitch
+#### 6.7.2 DeleteVSwitch
 
 Deletes a vSwitch.
 
@@ -4802,7 +5014,7 @@ Sample success responses `XML` format
 | 404 | InvalidVSwitchId.N otFound | VSwitch not exist. | The error message returned because the specified vSwitch does not exist. Check whether you specify a valid vSwitch. |
 | 404 | IncorrectStatus | Vswtich status not stable. | The error message returned because the vSwitch is in the Pending or Modifying state. Try again later. |
 
-#### ModifyVSwitchAttribute
+#### 6.7.3 ModifyVSwitchAttribute
 
 Modifies the name and description of a vSwitch.
 
@@ -4858,7 +5070,7 @@ Sample success responses `XML` format
 | 400 | InvalidVSwitchDiscr iption.Malformed | Specified virtual switch description is not valid. | The error message returned because the format of the specified vSwitch description is invalid. Check whether the specified description is valid. |
 | 400 | InvalidVSwitchDiscr iption.Malformed | Specified virtual switch description is not valid. | The error message returned because the specified description of the vSwitch is invalid. |
 
-#### DescribeVSwitchAttributes
+#### 6.7.4 DescribeVSwitchAttributes
 
 Queries detailed information about a vSwitch.
 
@@ -4978,9 +5190,9 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### ACLs
+### 6.8 ACLs
 
-#### CreateNetworkAcl
+#### 6.8.1 CreateNetworkAcl
 
 Creates a network access control list (ACL).
 
@@ -5147,7 +5359,7 @@ Sample success responses `XML` format
 
 `}` `}` `}`
 
-#### AssociateNetworkAcl
+#### 6.8.2 AssociateNetworkAcl
 
 Associates a network access control list (ACL) with a vSwitch.
 
@@ -5194,7 +5406,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyNetworkAclAttributes
+#### 6.8.3 ModifyNetworkAclAttributes
 
 Modifies the attributes of a network access control list (ACL).
 
@@ -5243,7 +5455,7 @@ Sample success response `XML` format
 
 `}`
 
-#### UpdateNetworkAclEntries
+#### 6.8.4 UpdateNetworkAclEntries
 
 Updates the rules of a network access control list (ACL).
 
@@ -5308,7 +5520,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UnassociateNetworkAcl
+#### 6.8.5 UnassociateNetworkAcl
 
 Disassociates a network access control list (ACL) from a vSwitch.
 
@@ -5355,7 +5567,7 @@ Sample success response `XML` format
 
 `}`
 
-#### CopyNetworkAclEntries
+#### 6.8.6 CopyNetworkAclEntries
 
 Copies rules of a network access control list (ACL).
 
@@ -5400,7 +5612,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteNetworkAcl
+#### 6.8.7 DeleteNetworkAcl
 
 Deletes a network access control list (ACL).
 
@@ -5443,7 +5655,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeNetworkAcls
+#### 6.8.8 DescribeNetworkAcls
 
 Queries network ACLs.
 
@@ -5625,7 +5837,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeNetworkAclAttributes
+#### 6.8.9 DescribeNetworkAclAttributes
 
 Queries details about a network access control list (ACL).
 
@@ -5792,7 +6004,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 
-#### UpdateNetworkAclEntriesEnable
+#### 6.8.10 UpdateNetworkAclEntriesEnable
 
 Enables or disables ACL rules.
 
@@ -5849,9 +6061,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | NETWORK ACL UN _ _ DER TEST _ | NotSupport.NetworkAcl | The operation is not supported for this network ACL. |
 | 500 |   | InternalError | The request failed due to an internal error. |
 
-### Elastic IP addresses
+### 6.9 Elastic IP addresses
 
-#### ListEipIsps
+#### 6.9.1 ListEipIsps
 
 The ListEipIsps operation queries the address pools of Elastic IP addresses (EIPs).
 
@@ -5897,7 +6109,7 @@ This operation uses only common request headers. For more information, see Commo
 | 404 | -1000003 | InvalidIpType.NotCorrect | The specified value of IpType is not correct. |
 | 404 | RAM FORBIDDEN _ | RAM FORBIDDEN _ | The user is not authorized to perform the operation on the specified resource. |
 
-#### AllocateEipAddress
+#### 6.9.2 AllocateEipAddress
 
 Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
 
@@ -5985,7 +6197,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 409 | OperationConflict | Request was denied due to conflict with a previos request. | The error message returned because a request conflict occurs. Try again later or submit a ticket to report the problem. |
 
-#### AllocateEipAddressPro
+#### 6.9.3 AllocateEipAddressPro
 
 Applies for a specified EIP.
 
@@ -6074,7 +6286,7 @@ Sample success responses `XML` format
 | 400 | InvalidRegion.NotS upport | The specified region does not support. | The error message returned because the specified region does not support this operation. |
 | 400 | InvalidResourceGro upId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 
-#### AssociateEipAddress
+#### 6.9.4 AssociateEipAddress
 
 Associates an elastic IP address (EIP) with an instance in the same region. When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account.
 
@@ -6152,7 +6364,7 @@ Sample success responses `XML` format
 | 400 | InvalidParams.NotF ound | instance not found | The error message returned because the specified instance does not exist. |
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | The error message returned because the request failed due to a temporary malfunction of the server. |
 
-#### ModifyEipAddressAttribute
+#### 6.9.5 ModifyEipAddressAttribute
 
 Modifies the name, description, and bandwidth limit of a specified elastic IP address (EIP).
 
@@ -6215,7 +6427,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter | The parameter is invalid. | The error message returned because the parameter is set to an invalid value. |
 | 404 | Forbidden.RegionN otFound | Specified region is not found during access authentication. | The error message returned because the specified region does not exist. Check whether the specified region ID is valid. |
 
-#### DescribeEipAddresses
+#### 6.9.6 DescribeEipAddresses
 
 Queries elastic IP addresses (EIPs) created in a specific region.
 
@@ -6459,7 +6671,7 @@ Sample success responses `XML` format
 | 400 | InvalidResourceGro upId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 | 400 | OperationUnsuppor ted.ResourceGroup Id | ResourceGroup is not supported in this region. | The error message returned because the resource group feature is disabled. |
 
-#### UnassociateEipAddress
+#### 6.9.7 UnassociateEipAddress
 
 Disassociates an elastic IP address (EIP) from an instance.
 
@@ -6528,7 +6740,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | The eip instance owener error | The error message returned because you are unauthorized to perform the operation on the EIP. |
 | 400 | InvalidBindingStatu s | The eip binding status invalid. | The error message returned because the binding mode of the EIP is invalid. |
 
-#### ReleaseEipAddress
+#### 6.9.8 ReleaseEipAddress
 
 Releases a specified elastic IP address (EIP). Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the **Available** state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs.
 
@@ -6586,7 +6798,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | The eip instance owener error | The error message returned because you are unauthorized to perform the operation on the EIP. |
 | 400 | TaskConflict.Associ ateGlobalAccelerati onInstance | Operate too frequent. | The error message returned because the number of requests that you send exceeds the upper limit. |
 
-#### DescribeEipGatewayInfo
+#### 6.9.9 DescribeEipGatewayInfo
 
 Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode.
 
@@ -6719,9 +6931,9 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### NAT gateways
+### 6.10 NAT gateways
 
-#### CreateNatGateway
+#### 6.10.1 CreateNatGateway
 
 Creates a NAT gateway.
 
@@ -6850,7 +7062,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.S pec.ValueNotSuppo rted | The specified Spec is not valid. | The error message returned because the specified gateway size is invalid. |
 | 400 | Forbidden.CheckEn tryRuleQuota | Route entry quota rule check error. | The error message returned because an error occurs when the system checks the quota of route entries. |
 
-#### ModifyNatGatewayAttribute
+#### 6.10.2 ModifyNatGatewayAttribute
 
 Modifies the name and description of a NAT gateway.
 
@@ -6903,7 +7115,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.N ame.Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 | 400 | InvalidParameter.D escription.Malform ed | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 
-#### ModifyNatGatewaySpec
+#### 6.10.3 ModifyNatGatewaySpec
 
 Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
@@ -6967,7 +7179,7 @@ Sample success responses `XML` format
 | 400 | NATGW MODIFY S _ _ PEC SAME _ | The specified Spec is same with now. | The error message returned because the specified gateway size is the same as the current one. |
 | 400 | InvalidParameter.S pec.ValueNotSuppo rted | The specified Spec is not valid. | The error message returned because the specified gateway size is invalid. |
 
-#### DeleteNatGateway
+#### 6.10.4 DeleteNatGateway
 
 Deletes a specified NAT gateway.
 
@@ -7024,7 +7236,7 @@ Sample success responses `XML` format
 | 404 | InvalidNatGatewayI d.NotFound | The specified NatGatewayId does not exist in our records. | The error message returned because the specified NAT gateway ID does not exist. Check whether the NAT gateway ID is valid. |
 | 400 | DependencyViolati on.BandwidthPacka ges | There are BandwidthPackages on specified NatGateway not deleted. | The error message returned because one or more NAT service plans are associated with the NAT gateway. Disassociate all NAT service plans from the NAT gateway and try again. |
 
-#### DescribeNatGateways
+#### 6.10.5 DescribeNatGateways
 
 Queries NAT gateways.
 
@@ -7207,7 +7419,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### CreateForwardEntry
+#### 6.10.6 CreateForwardEntry
 
 Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table.
 
@@ -7290,7 +7502,7 @@ Sample success responses `XML` format
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 400 | InvalidParameter.N ame.Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 
-#### DescribeForwardTableEntries
+#### 6.10.7 DescribeForwardTableEntries
 
 Queries DNAT entries.
 
@@ -7396,7 +7608,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidForwardTabl eId.NotFound | Specified forwardTableId does not exist | The error message returned because the specified DNAT table does not exist. Check the parameter value and try again. |
 
-#### ModifyForwardEntry
+#### 6.10.8 ModifyForwardEntry
 
 Modifies a DNAT entry.
 
@@ -7472,7 +7684,7 @@ Sample success responses `XML` format
 | 400 | Forbidden.Already. Bounded | The specified instance already bounded | The error message returned because the specified instance is already associated with another DNAT entry. |
 | 400 | InvalidParameter.N ame.Malformed | The specified Name is not valid. | The error message returned because the format of the specified name is invalid. |
 
-#### DeleteForwardEntry
+#### 6.10.9 DeleteForwardEntry
 
 Deletes a DNAT entry.
 
@@ -7533,7 +7745,7 @@ Sample success responses `XML` format
 | 400 | IncorretForwardEnt ryStatus | The Specified forwardEntry is not exist | The error message returned because the specified DNAT entry does not exist. |
 | 400 | MissingParameter | Missing mandatory parameter | The error message returned because one or more required parameters are not set. Check whether you have set all required parameters. |
 
-#### CreateSnatEntry
+#### 6.10.10 CreateSnatEntry
 
 Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry.
 
@@ -7613,7 +7825,7 @@ Sample success responses `XML` format
 | 400 | OperationUnsuppor ted.CidrConflict | The specified CIDR block conflicts with an existing SNAT entry. | The error message returned because the specified CIDR block conflicts with those in existing SNAT entries. |
 | 400 | InvalidParameter.N ame.Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 
-#### DescribeSnatTableEntries
+#### 6.10.11 DescribeSnatTableEntries
 
 Queries SNAT entries.
 
@@ -7708,7 +7920,7 @@ Sample success responses `XML` format
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 404 | InvalidSnatTableId. NotFound | Specified SNAT table does not exist. | The error message returned because the specified SNAT table does not exist. Check whether the ID of the SNAT table is valid. |
 
-#### ModifySnatEntry
+#### 6.10.12 ModifySnatEntry
 
 Modifies a specified SNAT entry.
 
@@ -7775,7 +7987,7 @@ Successful response examples `XML` format
 | 400 | Forbidden.IpUsedIn ForwardTable | The specified SnatIp already used in forward table | The error message returned because the specified public IP address is already used by a DNAT entry. Select another IP address or delete the DNAT rule that uses the public IP address. |
 | 400 | InvalidParameter.N ame.Malformed | The specified Name is not valid. | The error message returned because the specified name format is invalid. |
 
-#### DeleteSnatEntry
+#### 6.10.13 DeleteSnatEntry
 
 Deletes a specified SNAT entry.
 
@@ -7833,7 +8045,7 @@ Sample success responses `XML` format
 | 404 | InvalidSnatTableId. NotFound | Specified SNAT table does not exist. | The error message returned because the specified SNAT table does not exist. Check whether the ID of the SNAT table is valid. |
 | 404 | InvalidSnatEntryId. NotFound | Specified SNAT entry does not exist. | The error message returned because the specified SNAT entry does not exist. Check whether the SNAT entry is valid. |
 
-#### ModifyBandwidthPackageSpec
+#### 6.10.14 ModifyBandwidthPackageSpec
 
 Modifies the bandwidth value of a specified NAT service plan. This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before January 26, 2018. If you have not purchased a NAT service plan before January 26, 2018, associate elastic IP addresses (EIPs) with your NAT gateways.
 
@@ -7891,7 +8103,7 @@ Sample success responses `XML` format
 | 404 | BandwidthPackage. FinancialLocked | The specified BandwidthPackage has been Financail Lock. | The error message returned because the specified NAT service plan is locked due to overdue payments. |
 |---|---|---|---|
 
-#### DeleteBandwidthPackage
+#### 6.10.15 DeleteBandwidthPackage
 
 Deletes a specified NAT service plan.
 
@@ -7942,7 +8154,7 @@ Sample success responses `XML` format
 | 400 | DependencyViolati on.ForwardEntry | The specified BandwidthPackageId has dependent resource. | The error message returned because the NAT service plan contains SNAT or DNAT entries. Delete them and try again. |
 | 400 | DependencyViolati on.SnatEntry | The specified BandwidthPackageId has dependent resource. | The error message returned because the NAT service plan contains SNAT or DNAT entries. Delete them and try again. |
 
-#### CreateBandwidthPackage
+#### 6.10.16 CreateBandwidthPackage
 
 Creates a NAT service plan. A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses
 
@@ -8019,7 +8231,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.B andwidthPackage.n .ISP.ValueNotSuppo rt | The specified ISP of BandwidthPackage is not valid. | The error message returned because the specified Internet service provider (ISP) of the EIP bandwidth plan is invalid. |
 | 400 | ZONE NO AVAILAB _ _ LE IP _ | The Zone have no available ip. | The error message returned because no IP address is available in the zone. |
 
-#### DescribeBandwidthPackages
+#### 6.10.17 DescribeBandwidthPackages
 
 Queries NAT service plans in a specified region. This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before January 26, 2018. If you have not purchased a NAT service plan before January 26, 2018, associate elastic IP addresses (EIPs) with your NAT gateways.
 
@@ -8149,7 +8361,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyBandwidthPackageAttribute
+#### 6.10.18 ModifyBandwidthPackageAttribute
 
 Modifies the name and description of a specified NAT service plan. This operation is only valid for NAT service plans that were purchased before January 26, 2018. If you did not purchase a NAT service plan before January 26, 2018, you can only associate elastic IP addresses (EIPs) with your NAT gateway.
 
@@ -8208,7 +8420,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.N ame.Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 | 400 | InvalidParameter.D escription.Malform ed | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 
-#### AddBandwidthPackageIps
+#### 6.10.19 AddBandwidthPackageIps
 
 Adds one or more public IP addresses to a NAT service plan. This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. Before November 03, 2017, no NAT bandwidth plan exists under the account. Bind an EIP. This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before January 26, 2018. If you have not purchased a NAT service plan before January 26, 2018, associate elastic IP addresses (EIPs) with your NAT gateways. This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before January 26, 2018. If you have not purchased a NAT service plan before January 26, 2018, associate EIPs with your NAT gateways.
 
@@ -8263,9 +8475,9 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.Ba ndwidthPackageIps | The specified ipCount exceeded quota. | The error message returned because the number of IP addresses has reached the upper limit. Submit a ticket to increase the quota. |
 | 404 | BandwidthPackage. FinancialLocked | The specified BandwidthPackage has been Financail Lock. | The error message returned because the specified NAT service plan is locked due to overdue payments. |
 
-### IPv6 gateways
+### 6.11 IPv6 gateways
 
-#### CreateIpv6Gateway
+#### 6.11.1 CreateIpv6Gateway
 
 Creates an IPv6 gateway.
 
@@ -8323,7 +8535,7 @@ Sample success responses `XML` format
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 404 | InvalidVpcId.NotFo und | Specified VPC does not exist. | The error message returned because the specified VPC does not exist. |
 
-#### DeleteIpv6Gateway
+#### 6.11.2 DeleteIpv6Gateway
 
 Deletes an IPv6 gateway. Before you delete an Enterprise Edition or Enhanced Enterprise Edition IPv6 gateway, you must delete the egress-only rules configured on the IPv6 gateway.
 
@@ -8373,7 +8585,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6Gateways
+#### 6.11.3 DescribeIpv6Gateways
 
 Queries IPv6 gateways in a specified region.
 
@@ -8510,7 +8722,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyIpv6GatewaySpec
+#### 6.11.4 ModifyIpv6GatewaySpec
 
 Changes the specification of an IPv6 gateway. The forwarding capacity and bandwidth of an IPv6 gateway vary based on the specification.
 
@@ -8562,7 +8774,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6EgressOnlyRules
+#### 6.11.5 DescribeIpv6EgressOnlyRules
 
 Queries egress-only rules.
 
@@ -8644,7 +8856,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### CreateIpv6EgressOnlyRule
+#### 6.11.6 CreateIpv6EgressOnlyRule
 
 Creates an egress-only rule for an IPv6 address.
 
@@ -8704,7 +8916,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DeleteIpv6EgressOnlyRule
+#### 6.11.7 DeleteIpv6EgressOnlyRule
 
 Deletes an egress-only rule.
 
@@ -8749,7 +8961,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteIpv6InternetBandwidth
+#### 6.11.8 DeleteIpv6InternetBandwidth
 
 Sets the Internet bandwidth value of an IPv6 address to zero.
 
@@ -8798,7 +9010,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6GatewayAttribute
+#### 6.11.9 DescribeIpv6GatewayAttribute
 
 Queries detailed information about a specified IPv6 gateway.
 
@@ -8881,7 +9093,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6Addresses
+#### 6.11.10 DescribeIpv6Addresses
 
 Queries the IPv6 addresses in a specified region.
 
@@ -9017,7 +9229,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyIpv6InternetBandwidth
+#### 6.11.11 ModifyIpv6InternetBandwidth
 
 Modifies the Internet bandwidth value of an IPv6 address.
 
@@ -9070,7 +9282,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### AllocateIpv6InternetBandwidth
+#### 6.11.12 AllocateIpv6InternetBandwidth
 
 Purchases Internet bandwidth resources for an IPv6 address.
 
@@ -9130,7 +9342,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyIpv6AddressAttribute
+#### 6.11.13 ModifyIpv6AddressAttribute
 
 Modifies the name and description of an IPv6 address.
 
@@ -9180,7 +9392,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyIpv6GatewayAttribute
+#### 6.11.14 ModifyIpv6GatewayAttribute
 
 Modifies the name and description of an IPv6 gateway.
 
@@ -9230,9 +9442,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-### HAVIPs
+### 6.12 HAVIPs
 
-#### CreateHaVip
+#### 6.12.1 CreateHaVip
 
 Creates a high-availability virtual IP address (HAVIP).
 
@@ -9305,7 +9517,7 @@ Sample success responses `XML` format
 | 400 | InvalidIPAddress.N otAvailable | The specified IPAddress is not available because it is a system reserved IPAddress. | The error message returned because the specified IP address is reserved by the system and cannot be used. |
 | 400 | InvalidIPAddress.Al readyUsed | The specified IPAddress is already used by other resource. | The error message returned because the specified IP address is already used by another resource. |
 
-#### DescribeHaVips
+#### 6.12.2 DescribeHaVips
 
 Queries high-availability virtual IP addresses (HAVIPs) in a region. Before you call this operation, make sure that the ID of the desired region is obtained. You can call the DescribeRegions operation to query the most recent region list. You can configure the Filter parameter to specify a combination of filter keys. The logical relationship among multiple filter keys is AND, and the logical relationship among multiple values of a filter key is OR.
 
@@ -9380,7 +9592,7 @@ In the response, the HaVips parameter is an array. Each element in the array ind
 
 This operation is a system-level API operation provided by VPC. You can call this operation to query HAVIPs. HAVIPs are private IP addresses that are highly available within VPCs. HAVIPs are commonly used in scenarios where Elastic Compute Service (ECS) instances are deployed in active-active mode.
 
-#### ModifyHaVipAttribute
+#### 6.12.3 ModifyHaVipAttribute
 
 Modifies the description of a high-availability virtual IP address (HAVIP).
 
@@ -9435,7 +9647,7 @@ Sample success responses `XML` format
 | 400 | IncorrectStatus | HaVip can be deleted only when it's status is Available or InUse. | The error message returned because the HAVIP is unavailable and failed to be deleted. |
 | 400 | InvalidDescription. Malformed | The specified Description is wrongly formed. | The error message returned because the format of the specified description is invalid. The description must be 2 to 256 characters in length. It cannot start with http:// or https://. |
 
-#### AssociateHaVip
+#### 6.12.4 AssociateHaVip
 
 Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance.
 
@@ -9497,7 +9709,7 @@ Sample success responses `XML` format
 | 400 | CountLimitExceede d.HaVipOnECSInsta nce | The amount of Instance associated with the specified HaVip reach its limits. | The error message returned because the number of ECS instances associated with the specified HAVIP has reached the upper limit. |
 | 400 | InvalidNetworkInter faceId.NotFound | The network interface is not found. | The error message returned because the specified ENI does not exist. |
 
-#### UnassociateHaVip
+#### 6.12.5 UnassociateHaVip
 
 Disassociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
 
@@ -9562,7 +9774,7 @@ Sample success responses `XML` format
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 400 | InvalidNetworkInter faceId.NotFound | The network interface is not found. | The error message returned because the specified elastic network interface (ENI) does not exist. |
 
-#### DeleteHaVip
+#### 6.12.6 DeleteHaVip
 
 Deletes a high-availability virtual IP address (HAVIP). When you call this operation, take note of the following rules: You can delete only HAVIPs that are in the **Available** state. Make sure that no routes are destined for the HAVIP that you want to delete. Make sure that no elastic IP addresses (EIPs) are associated with the HAVIP that you want to delete.
 
@@ -9614,9 +9826,9 @@ Sample success responses `XML` format
 | 400 | DependencyViolati on.HaVipReferedBy RouteEntry | HaVip cannot be deleted when it is refered by a route table entry as next hop. | The error message returned because the HAVIP functions as the next hop of a route entry and cannot be deleted. You must delete the route entry before you can delete the HAVIP. |
 | 400 | DependencyViolati on.HaVipAssociate dWithEIP | HaVip cannot be deleted when it is associated with EIP. | The error message returned because the HAVIP is associated with an elastic IP address (EIP) and cannot be deleted. |
 
-### DHCP options sets
+### 6.13 DHCP options sets
 
-#### CreateDhcpOptionsSet
+#### 6.13.1 CreateDhcpOptionsSet
 
 Creates a DHCP options set.
 
@@ -9687,7 +9899,7 @@ Sample success responses `XML` format
 | 400 | IllegalParam.DhcpO ptionsSetDescriptio n | The specified DhcpOptionsSetDescription is invalid. | DhcpOptionsSetDescription is set to an invalid value. Check whether the parameter is set to a valid value. |
 | 400 | QuotaExceeded.Re gionDhcpOptionsSe t | The quota of dhcpOptionsSet in the region is exceeded. | The number of DHCP options sets reaches the upper limit. |
 
-#### AttachDhcpOptionsSetToVpc
+#### 6.13.2 AttachDhcpOptionsSetToVpc
 
 Associates a DHCP options set with a virtual private cloud (VPC).
 
@@ -9752,7 +9964,7 @@ Sample success responses `XML` format
 | 400 | TaskConflict | The operation is too frequent. Please wait a moment and try again. | The system is unavailable. Try again later. |
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist. | The specified region ID does not exist. Check the parameter value and try again. |
 
-#### DetachDhcpOptionsSetFromVpc
+#### 6.13.3 DetachDhcpOptionsSetFromVpc
 
 Disassociates a DHCP options set from a virtual private cloud (VPC).
 
@@ -9815,7 +10027,7 @@ Sample success responses `XML` format
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist. | The region ID does not exist. Check the parameter value and try again. |
 | 400 | IncorrectStatus.Dh cpOptionsSet | The DhcpOptionsSet status does not support this operation. | The DHCP options set is in an unstable state. Try again after the DHCP options set enters a stable state. |
 
-#### ReplaceVpcDhcpOptionsSet
+#### 6.13.4 ReplaceVpcDhcpOptionsSet
 
 Modifies the association of a DHCP options set with a virtual private cloud (VPC).
 
@@ -9878,7 +10090,7 @@ Sample success responses `XML` format
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist. | The specified region ID does not exist. Check the parameter value and try again. |
 | 400 | InvalidDhcpOptions SetId.NotFound | The specified dhcpOptionsSetId does not exist. | The DHCP options set does not exist. Check whether the parameter is set to a valid value. |
 
-#### GetDhcpOptionsSet
+#### 6.13.5 GetDhcpOptionsSet
 
 Queries a DHCP options set.
 
@@ -9976,7 +10188,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist. | The region ID does not exist. Check whether the region ID is valid. |
 
-#### ListDhcpOptionsSets
+#### 6.13.6 ListDhcpOptionsSets
 
 Queries Dynamic Host Configuration Protocol (DHCP) options sets.
 
@@ -10073,7 +10285,7 @@ Sample success responses `XML` format
 | 404 | InvalidRegionId.Not Found | The specified RegionId does not exist. | The region ID does not exist. Check the parameter value and try again. |
 | 400 | IllegalParam.NextT oken | The specified NextToken is invalid. | NextToken is set to an invalid value. |
 
-#### UpdateDhcpOptionsSetAttribute
+#### 6.13.7 UpdateDhcpOptionsSetAttribute
 
 Modifies the configuration of a DHCP options set.
 
@@ -10146,7 +10358,7 @@ Sample success responses `XML` format
 | 400 | IllegalParam.DhcpO ptionsSetName | The specified DhcpOptionsSetName is invalid. | DhcpOptionsSetName is set to an invalid value. Check whether the parameter is set to a valid value. |
 | 400 | IllegalParam.DhcpO ptionsSetDescriptio n | The specified DhcpOptionsSetDescription is invalid. | DhcpOptionsSetDescription is set to an invalid value. Check whether the parameter is set to a valid value. |
 
-#### DeleteDhcpOptionsSet
+#### 6.13.8 DeleteDhcpOptionsSet
 
 Deletes a Dynamic Host Configuration Protocol (DHCP) options set.
 
@@ -10206,9 +10418,9 @@ Sample success responses `XML` format
 | 400 | DependencyViolati on.VpcAttachment | DhcpOptionsSet cannot be deleted when it is attached to VPC. | The DHCP options set is associated with a virtual private cloud (VPC) and the DHCP options set cannot be deleted. |
 | 400 | InvalidDhcpOptions SetId.NotFound | The specified dhcpOptionsSetId does not exist. | The DHCP options set does not exist. Check whether the parameter is set to a valid value. |
 
-### vRouter
+### 6.14 vRouter
 
-#### ModifyVRouterAttribute
+#### 6.14.1 ModifyVRouterAttribute
 
 Modifies the name and description of a vRouter.
 
@@ -10264,7 +10476,7 @@ Sample success responses `XML` format
 | 400 | InvalidVRouterDiscr iption.Malformed | Specified virtual router description is not valid. | The error message returned because the description format of the specified vRouter is invalid. |
 | 400 | MissingParameter | Miss mandatory parameter. | The error message returned because required parameters are not set. Check whether you have set all the required parameters before you call this operation. |
 
-#### DescribeVRouters
+#### 6.14.2 DescribeVRouters
 
 Queries vRouters in a specified region.
 
@@ -10378,9 +10590,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Region
+### 6.15 Region
 
-#### ListGWAzone
+#### 6.15.1 ListGWAzone
 
 Queries zones.
 
@@ -10427,7 +10639,7 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | 404 | RAM FORBIDDEN _ | RAM FORBIDDEN _ | User not authorized to operate on the specified resource. |
 
-#### DescribeRegions
+#### 6.15.2 DescribeRegions
 
 Queries the most recent region list.
 
@@ -10485,7 +10697,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeZones
+#### 6.15.3 DescribeZones
 
 Queries zones in a specified region.
 
@@ -10539,9 +10751,9 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### Tag
+### 6.16 Tag
 
-#### TagResources
+#### 6.16.1 TagResources
 
 Creates tags and adds the tags to resources at a time.
 
@@ -10598,7 +10810,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Submit a ticket to obtain the required permissions. |
 
-#### ListTagResources
+#### 6.16.2 ListTagResources
 
 Queries tags that are added to one or more instances.
 
@@ -10686,7 +10898,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Submit a ticket to obtain the required permissions. |
 
-#### UnTagResources
+#### 6.16.3 UnTagResources
 
 Removes tags from specified resources.
 
@@ -10739,11 +10951,11 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. To obtain the required permissions, submit a ticket. |
 
-### VPN gateways
+### 6.17 VPN gateways
 
-#### VPN gateway
+#### 6.17.1 VPN gateway
 
-##### CreateVpnGateway
+##### 6.17.1.1 CreateVpnGateway
 
 Creates a VPN gateway.
 
@@ -10795,7 +11007,7 @@ Sample success responses `XML` format
 { &quot;CreateVpnGatewayResponse&quot;:{ &quot;Name&quot;:&quot;myVpn&quot;, &quot;VpnGatewayId&quot;:&quot;vpn-bp1q8bgx4xnkm2ogj****&quot;, &quot;RequestId&quot;:&quot;54B48E3D-DF70-471B-AA93-08E683A1B457&quot; } }
 ```
 
-##### DescribeVpnGateways
+##### 6.17.1.2 DescribeVpnGateways
 
 Queries VPN gateways.
 
@@ -10914,7 +11126,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. Apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeVpnGateway
+##### 6.17.1.3 DescribeVpnGateway
 
 Queries the details of a specified VPN gateway.
 
@@ -11002,7 +11214,7 @@ Sample success responses `XML` format
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnGateway InstanceId.NotFoun d | The specified vpn gateway instance id does not exist. | The error message returned because the specified VPN gateway does not exist. Check whether the configuration of the VPN gateway is valid. |
 
-##### DeleteVpnGateway
+##### 6.17.1.4 DeleteVpnGateway
 
 Deletes a specified VPN gateway.
 
@@ -11062,7 +11274,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified VPN gateway is being configured. | The error message returned because the VPN gateway is being configured. |
 |---|---|---|---|
 
-##### ModifyVpnGatewayAttribute
+##### 6.17.1.5 ModifyVpnGatewayAttribute
 
 Modifies the name and description of a VPN gateway.
 
@@ -11138,7 +11350,7 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
 
 `}`
 
-##### CreateVbrHa
+##### 6.17.1.6 CreateVbrHa
 
 Creates a virtual border router (VBR) failover group.
 
@@ -11215,9 +11427,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | OperationFailed.Vb rCenNotRelation | OperationFailed.VbrCenNotRel ation | The VBR is not attached to a Cloud Enterprise Network (CEN) instance. |
 | 404 | ResourceNotFound. Vbr | ResourceNotFound.Vbr | The specified VBR does not exist. |
 
-#### Customer gateway
+#### 6.17.2 Customer gateway
 
-##### CreateCustomerGateway
+##### 6.17.2.1 CreateCustomerGateway
 
 Creates a customer gateway.
 
@@ -11291,7 +11503,7 @@ Sample success responses `XML` format
 | 400 | InvalidDescription | The description is not valid | The error message returned because the description format of the specified parameter is invalid. |
 | 400 | Resource.QuotaFull | The quota of resource is full | The error message returned because the resource quota is reached. |
 
-##### DescribeCustomerGateways
+##### 6.17.2.2 DescribeCustomerGateways
 
 Queries customer gateways in a specified region.
 
@@ -11382,7 +11594,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are not authorized to perform this operation on the specified resource. Apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Submit a ticket to obtain the required permissions. |
 
-##### DescribeCustomerGateway
+##### 6.17.2.3 DescribeCustomerGateway
 
 Queries details of a specified customer gateway.
 
@@ -11447,7 +11659,7 @@ Sample success responses `XML` format
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidCustomerGa tewayInstanceId.No tFound | The specified customer gateway instance id does not exist. | The error message returned because the specified instance ID does not exist. |
 
-##### DeleteCustomerGateway
+##### 6.17.2.4 DeleteCustomerGateway
 
 Deletes a specified customer gateway.
 
@@ -11502,7 +11714,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidCustomerGa tewayInstanceId.No tFound | The specified customer gateway instance id does not exist. | The error message returned because the specified instance ID does not exist. |
 
-##### ModifyCustomerGatewayAttribute
+##### 6.17.2.5 ModifyCustomerGatewayAttribute
 
 Modifies the name and description of a customer gateway.
 
@@ -11572,9 +11784,9 @@ Sample success responses `XML` format
 | 400 | InvalidName | The name is not valid | The error message returned because the format of the name is invalid. |
 | 400 | InvalidDescription | The description is not valid | The error message returned because the format of the description is invalid. |
 
-#### Routes for VPN gateways
+#### 6.17.3 Routes for VPN gateways
 
-##### DeleteVpnPbrRouteEntry
+##### 6.17.3.1 DeleteVpnPbrRouteEntry
 
 Deletes a policy-based route from a VPN gateway.
 
@@ -11637,7 +11849,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DeleteVpnRouteEntry
+##### 6.17.3.2 DeleteVpnRouteEntry
 
 Deletes a destination-based route from a VPN gateway.
 
@@ -11697,7 +11909,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DescribeVpnRouteEntries
+##### 6.17.3.3 DescribeVpnRouteEntries
 
 Queries destination-based routes of a VPN gateway.
 
@@ -11795,7 +12007,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### ModifyVpnRouteEntryWeight
+##### 6.17.3.4 ModifyVpnRouteEntryWeight
 
 Modifies the weight of a destination-based route for a VPN gateway.
 
@@ -11860,7 +12072,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### CreateVpnRouteEntry
+##### 6.17.3.5 CreateVpnRouteEntry
 
 Creates a destination-based route on a VPN gateway.
 
@@ -11946,7 +12158,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### ModifyVpnPbrRouteEntryWeight
+##### 6.17.3.6 ModifyVpnPbrRouteEntryWeight
 
 Modifies the weight of a policy-based route of a VPN gateway.
 
@@ -12008,7 +12220,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DescribeVpnPbrRouteEntries
+##### 6.17.3.7 DescribeVpnPbrRouteEntries
 
 Queries policy-based routes of a VPN gateway.
 
@@ -12106,7 +12318,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### PublishVpnRouteEntry
+##### 6.17.3.8 PublishVpnRouteEntry
 
 Advertises a route of a VPN gateway to the route table of the associated virtual private cloud (VPC).
 
@@ -12168,7 +12380,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 |---|---|---|---|
 
-##### CreateVpnPbrRouteEntry
+##### 6.17.3.9 CreateVpnPbrRouteEntry
 
 Creates a policy-based route for a VPN gateway.
 
@@ -12256,9 +12468,9 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-#### IPsec-VPN
+#### 6.17.4 IPsec-VPN
 
-##### DescribeVpnConnection
+##### 6.17.4.1 DescribeVpnConnection
 
 Queries the details of an IPsec-VPN connection.
 
@@ -12422,7 +12634,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidVpnConnecti onInstanceId.NotFo und | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec- VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 
-##### DeleteVpnConnection
+##### 6.17.4.2 DeleteVpnConnection
 
 Deletes a specified IPsec-VPN connection.
 
@@ -12480,7 +12692,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 |---|---|---|---|
 
-##### DownloadVpnConnectionConfig
+##### 6.17.4.3 DownloadVpnConnectionConfig
 
 Queries the configuration of an IPsec-VPN connection.
 
@@ -12600,7 +12812,7 @@ Sample success responses `XML` format
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnConnecti onInstanceId.NotFo und | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec- VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 
-##### CreateVpnConnection
+##### 6.17.4.4 CreateVpnConnection
 
 Creates an IPsec-VPN connection.
 
@@ -12678,7 +12890,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DescribeVpnConnections
+##### 6.17.4.5 DescribeVpnConnections
 
 Queries one or more IPsec-VPN connections.
 
@@ -12854,7 +13066,7 @@ Sample success responses `XML` format
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 |---|---|---|---|
 
-##### ModifyVpnConnectionAttribute
+##### 6.17.4.6 ModifyVpnConnectionAttribute
 
 Modifies the configuration of an IPsec-VPN connection.
 
@@ -13069,9 +13281,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | VpnRouteEntry.Inv alidWeight | VpnRouteEntry.InvalidWeight | Invalid route entry weight value. |
 | 400 | QuotaExceeded.Pol icyBasedRoute | QuotaExceeded.PolicyBasedRo ute | The maximum number of policy-based routes is exceeded. Existing routes: %s. Routes to be created: %s. Maximum routes: %s. |
 
-#### SSL-VPN
+#### 6.17.5 SSL-VPN
 
-##### CreateSslVpnServer
+##### 6.17.5.1 CreateSslVpnServer
 
 Creates an SSL-VPN server.
 
@@ -13148,7 +13360,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DeleteSslVpnServer
+##### 6.17.5.2 DeleteSslVpnServer
 
 Deletes an SSL-VPN server.
 
@@ -13204,7 +13416,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### ModifySslVpnServer
+##### 6.17.5.3 ModifySslVpnServer
 
 Modifies the configuration of an SSL-VPN server.
 
@@ -13331,7 +13543,7 @@ Sample success responses `XML` format
 | 400 | VpnGateway.Finan cialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 |---|---|---|---|
 
-##### DeleteSslVpnClientCert
+##### 6.17.5.4 DeleteSslVpnClientCert
 
 Deletes an SSL-VPN client certificate.
 
@@ -13382,7 +13594,7 @@ Sample success responses `XML` format
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 400 | VpnGateway.Config uring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 
-##### ModifySslVpnClientCert
+##### 6.17.5.5 ModifySslVpnClientCert
 
 Modifies the name of an SSL-VPN client certificate.
 
@@ -13446,7 +13658,7 @@ Sample success responses `XML` format
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-##### CreateSslVpnClientCert
+##### 6.17.5.6 CreateSslVpnClientCert
 
 Creates an SSL-VPN client certificate.
 
@@ -13509,7 +13721,7 @@ Sample success responses `XML` format
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 |---|---|---|---|
 
-##### DescribeSslVpnClientCerts
+##### 6.17.5.7 DescribeSslVpnClientCerts
 
 Queries one or more SSL-VPN client certificates.
 
@@ -13622,7 +13834,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeSslVpnClientCert
+##### 6.17.5.8 DescribeSslVpnClientCert
 
 Queries a specified SSL-VPN client certificate.
 
@@ -13708,7 +13920,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeSslVpnServers
+##### 6.17.5.9 DescribeSslVpnServers
 
 Queries one or more SSL-VPN servers.
 
@@ -13829,7 +14041,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeVpnSslServerLogs
+##### 6.17.5.10 DescribeVpnSslServerLogs
 
 Queries the logs of an SSL-VPN server.
 
@@ -13906,11 +14118,11 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-## Appendixes
+## 7 Appendixes
 
-### STS overview
+### 7.1 STS overview
 
-#### What is STS?
+#### 7.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -13922,7 +14134,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

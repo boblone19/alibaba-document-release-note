@@ -2,20 +2,33 @@
 title: "Container Service for Kubernetes Product Introduction 20251202"
 product_version: "V3.18.6"
 pdf_pages: 23
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Product Introduction 20251202.pdf"
+source_pdf: "39fd1960e423baba_Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Product Introduction 20251202.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1Kubernetes%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Product%20Introduction%2020251202.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Container Service for Kubernetes Product Introduction 20251202
 
-Container Service for Kubernetes tainer Service?
+## Table of Contents
 
-## What is Container Service?
+- 1 What is Container Service?
+- 2 Features
+- 3 Benefits
+- 4 Architecture
+- 5 Features
+- 6 Scenarios
+- 7 Limits
+- 8 Terms
 
-Container Service provides high-performance, scalable, and enterprise-class management services for Kubernetes containerized applications throughout the application lifecycle. Container Service simplifies the deployment and scale-out operations of Kubernetes clusters and is empowered by the capabilities of virtualization, storage, networking, and security provided by Alibaba Cloud. Based on these capabilities, Container Service provides an ideal runtime environment for containerized applications. Alibaba Cloud is a Kubernetes Certified Service Provider (KCSP). As one of the first services to participate in the Certified Kubernetes Conformance Program, Container Service provides enterprises with professional support and services. Container Service for Kubernetes
+tainer Service?
 
-## Features
+## 1 What is Container Service?
+
+Container Service provides high-performance, scalable, and enterprise-class management services for Kubernetes containerized applications throughout the application lifecycle. Container Service simplifies the deployment and scale-out operations of Kubernetes clusters and is empowered by the capabilities of virtualization, storage, networking, and security provided by Alibaba Cloud. Based on these capabilities, Container Service provides an ideal runtime environment for containerized applications. Alibaba Cloud is a Kubernetes Certified Service Provider (KCSP). As one of the first services to participate in the Certified Kubernetes Conformance Program, Container Service provides enterprises with professional support and services.
+
+## 2 Features
+
+**Features of Container Service**
 
 **Cluster management**
 
@@ -53,16 +66,7 @@ Supports canary release and blue-green releases. Supports application monitoring
 
 Supports service-level affinity policies and scale-out. Provides cross-zone high availability and disaster recovery. Provides API operations for cluster and application management to easily implement continuous integration and integrate with private deployment systems.
 
-| Feature | Description |
-|---|---|
-| Network | Supports continuous network integration to optimize network performance. |
-| Load balancing | Allows you to create public and internal SLB instances. If you use an Ingress to control access to your Kubernetes cluster, frequent service releases may negatively affect the performance of the Ingress and increase the error rate. Container Service allows you to create SLB instances, which provide high availability load balancing and can automatically modify network configurations to suit your business needs. This solution is adopted by a large number of users and has been proven to be a more stable and reliable alternative to Ingresses. |
-| Storage | Supports Apsara Stack cloud disks, Network Attached Storage (NAS), and Block Storage, and provides FlexVolume drivers. Supports seamless integration with cloud storage services for custom Kubernetes clusters that cannot use cloud storage resources. |
-| O&M | Supports integration with Apsara Stack Log Service. Supports automatic scaling. |
-
-Container Service for Kubernetes
-
-## Benefits
+## 3 Benefits
 
 **Overview**
 
@@ -70,12 +74,21 @@ Container Service for Kubernetes
 
 You can easily create Kubernetes clusters in the Container Service console. You can easily upgrade Kubernetes clusters in the Container Service console. When you use custom Kubernetes clusters, you may need to handle clusters of different versions. Currently, each time you upgrade the clusters, you need to make major adjustments and high operation and maintenance costs are incurred. Container Service allows you to perform rolling upgrades based on images and supports full metadata backups. You can easily roll back clusters to previous versions. Allows you to easily scale Kubernetes clusters in the Container Service console. Kubernetes clusters enable you to quickly scale up or down applications to handle traffic fluctuations in a timely manner.
 
+| Feature | Description |
+|---|---|
+| Network | Supports continuous network integration to optimize network performance. |
+| Load balancing | Allows you to create public and internal SLB instances. If you use an Ingress to control access to your Kubernetes cluster, frequent service releases may negatively affect the performance of the Ingress and increase the error rate. Container Service allows you to create SLB instances, which provide high availability load balancing and can automatically modify network configurations to suit your business needs. This solution is adopted by a large number of users and has been proven to be a more stable and reliable alternative to Ingresses. |
+| Storage | Supports Apsara Stack cloud disks, Network Attached Storage (NAS), and Block Storage, and provides FlexVolume drivers. Supports seamless integration with cloud storage services for custom Kubernetes clusters that cannot use cloud storage resources. |
+| O&M | Supports integration with Apsara Stack Log Service. Supports automatic scaling. |
+
 | Image repository | Provides high availability and high concurrency. Supports accelerated image retrieval. Supports peer-to-peer image distribution. Custom image repositories may stop responding when millions of clients attempt to pull images at the same time. Container Service provides an image repository system that offers enhanced reliability and reduces O&M and upgrade costs. |
 |---|---|
 | Stability | Dedicated support teams guarantee the stability of containers. All Linux and Kubernetes versions must pass rigorous testing before they are available to the public. Container Service supports Docker CE and provides a Docker community to help you communicate with other Docker enthusiasts and solve problems. Best practices are provided to help you address issues, such as network interruptions, kernel incompatibilities, or Docker crashes. |
 | Technical support | Allows you to quickly upgrade Kubernetes clusters to the latest version. Provides professional technical support services to help you solve the issues that may occur when you use containers. |
 
-Container Service for Kubernetes
+## 4 Architecture
+
+Container Service is adapted and enhanced on the basis of native Kubernetes. This service simplifies cluster creation and scaling and integrates Apsara Stack virtualization, storage, network, and security capabilities, providing the optimal environment to run Kubernetesbased containerized applications in the cloud.
 
 | Feature | Description |
 |---|---|
@@ -84,11 +97,11 @@ Container Service for Kubernetes
 | Alibaba Cloud Kubernetes management service | The service supports secure images and is highly integrated with Apsara Stack Resource Access Management (RAM), and logging and monitoring services to provide a secure and compliant Kubernetes solution. |
 | Convenient and efficient use | Container Service for Kubernetes provides services through the Web console, APIs, and SDKs. |
 
-Container Service for Kubernetes
+## 5 Features
 
-## Architecture
+Container Service for Kubernetes is a high-performance, scalable container management service with powerful Kubernetes cluster management capabilities. It provides a comprehensive container cluster management solution that includes cluster management, operations and maintenance, high availability, and container image management. It offers professional support to efficiently manage the entire lifecycle of Kubernetes containerized applications in the cloud. The specific features and detailed descriptions are as follows:
 
-Container Service is adapted and enhanced on the basis of native Kubernetes. This service simplifies cluster creation and scaling and integrates Apsara Stack virtualization, storage, network, and security capabilities, providing the optimal environment to run Kubernetesbased containerized applications in the cloud.
+**Cluster management**
 
 | Feature | Description |
 |---|---|
@@ -99,18 +112,10 @@ Container Service is adapted and enhanced on the basis of native Kubernetes. Thi
 | License management | Supports metering and control of licenses. |
 | Cluster registration | Supports creating registered clusters and managing offline K8s clusters, allowing you to manage multiple clusters uniformly and improving the flexibility of operations management. |
 
+**Node pool management**
+
 | Feature | Description |
 |---|---|
-
-Container Service for Kubernetes
-
-## Features
-
-Container Service for Kubernetes is a high-performance, scalable container management service with powerful Kubernetes cluster management capabilities. It provides a comprehensive container cluster management solution that includes cluster management, operations and maintenance, high availability, and container image management. It offers professional support to efficiently manage the entire lifecycle of Kubernetes containerized applications in the cloud. The specific features and detailed descriptions are as follows:
-
-**Cluster management**
-
-**Node pool management**
 
 | Operating system | Supports multiple operating systems, including Alibaba Cloud Linux 3, Alibaba Cloud Server OS V3, Anolis, UnionTech UOS, and Kylin V10, and more. |
 |---|---|
@@ -119,16 +124,14 @@ Container Service for Kubernetes is a high-performance, scalable container manag
 | Monitoring and plugin support | Supports deploying CloudMonitor plugins on node pools for real-time monitoring of resource usage and performance. |
 | Node pool lifecycle management | Supports scaling out existing nodes or adding new nodes automatically or manually. Supports automatic scaling management of nodes, node removal, node label and taint management, and provides node maintenance capabilities. |
 
+**Container network**
+
 | Feature | Description |
 |---|---|
 | Terway container network | Supports Terway container network 2.0 and provides ipvlan+ebpf mode network configuration, supporting IPv6 dual-stack capabilities and Trunking ENI functionality. |
 | Network policy and management | Supports defining Network Policy and configuring CIDR for Services and Pods, enabling more flexible network management. |
 | SLB and DNS support | Supports enabling deletion protection when creating SLB. Features DNS local caching to improve domain name resolution efficiency. |
 | Flannel mode | Provides VPC Flannel mode to meet the requirements of various network scenarios. |
-
-Container Service for Kubernetes
-
-**Container network**
 
 **Network management**
 
@@ -138,19 +141,19 @@ Container Service for Kubernetes
 | Ingress management | Supports accessing services through domain names and provides weight-based multi-service access control. Supports viewing and updating routing configurations via scripts, along with configuring service phased release strategies to meet different release scenarios. Supports full lifecycle management of routes, including creation, viewing, updating, and deletion. |
 | Configuration management | Supports configuration management for Config Maps and Secrets, allowing you to manage configuration information and sensitive data in workloads, enhancing application security and flexibility. |
 
+**Workload management**
+
 | Feature | Description |
 |---|---|
 | Container instance management | Supports setting limits on the number of container instances per node. Supports viewing container instance events. Supports terminal access to container instances for real-time management and debugging. |
 | Workload scaling | Provides HPA (Horizontal Pod Autoscaler) auto-scaling policy that can automatically adjust the number of container instances based on load. Also supports manual scaling operations to flexibly respond to resource demand changes. |
 | Workload creation | Supports creating various types of workloads, including Job applications, DaemonSets, CronJobs, stateless applications (Deployments), and stateful applications (StatefulSets). Supports creating workloads from ACR Enterprise Edition images, templates, or images. Supports configuring health checks, environment variables, data disk mounting, and log collection paths to ensure workload stability and monitoring capabilities. |
 
-Container Service for Kubernetes
-
-**Workload management**
-
 | Workload lifecycle management | Allows comprehensive management of application event viewing, application version rollback, replacement upgrades, viewing, updating, and deletion operations. Also supports rolling upgrades and trigger redeployment operations for applications, providing flexibility for operations and maintenance. Supports viewing and updating applications via scripts, simplifying O&M processes. |
 |---|---|
 | Workload scheduling | Supports node affinity, inter-application affinity, and anti-affinity scheduling policies to optimize resource configuration and improve cluster resource utilization and application running efficiency. |
+
+**Container storage**
 
 | Feature | Description |
 |---|---|
@@ -160,15 +163,11 @@ Container Service for Kubernetes
 | Volume claim attachment | Supports creating persistent volume claims to attach persistent volumes, ensuring applications can dynamically bind storage resources as needed, improving resource utilization. |
 | Storage plugin support | Supports the Container Storage Interface (CSI) storage plugin, allowing integration of various storage solutions in Kubernetes environments, thereby extending storage functionality and enhancing flexibility. |
 
+**Cloud-native AI capabilities**
+
 | Feature | Description |
 |---|---|
 | AI component set | Supports deploying AI component sets in edge clusters, fully utilizing edge computing resources to improve the efficiency of big data processing and AI inference. |
-
-Container Service for Kubernetes
-
-**Container storage**
-
-**Cloud-native AI capabilities**
 
 | Hardware compatibility | Supports high-performance GPU models such as NVIDIA A100 and V100 to meet the requirements of AI and big data applications with high computational demands. |
 |---|---|
@@ -176,6 +175,8 @@ Container Service for Kubernetes
 | Component support | Supports components such as Queue and Arena, providing efficient task scheduling and resource management, enhancing the operational efficiency of AI tasks. |
 | Operating system compatibility | The AI component set is compatible with Alibaba Cloud Linux 3.2.10 and Anolis 8.6 ANCK versions, ensuring consistency and compatibility across different environments. |
 | Cluster scheduling policy | The cluster scheduler supports various scheduling policies, including Gang scheduling and Capacity scheduling, to optimize resource allocation and task execution order. |
+
+**Operations and monitoring**
 
 | Feature | Description |
 |---|---|
@@ -185,13 +186,7 @@ Container Service for Kubernetes
 | Log center | Provides Ingress dashboard and log center dashboard, displaying Nginx Ingress logs through dashboards to help you intuitively understand and analyze cluster log data. |
 | Monitoring capabilities | Integrates Alibaba Cloud Prometheus service capabilities, supports arms-Prometheus monitoring, and implements comprehensive monitoring at the cluster, node, application, and container instance levels, helping you monitor system status in real time. |
 
-Container Service for Kubernetes
-
-**Operations and monitoring**
-
-Container Service for Kubernetes
-
-## Scenarios
+## 6 Scenarios
 
 **DevOps continuous delivery**
 
@@ -207,11 +202,13 @@ ECS + Container Service
 
 **Enables rapid application developments with a focus on machine learning**
 
-Container Service for Kubernetes Container Service allows data engineers to easily develop and deploy machine learning applications in heterogeneous computing clusters. Integrated with multiple distributed storage systems, the service supports faster read and write speeds to facilitate the testing, training, and release of data models. You can focus on your core business operations instead of worrying about the deployment and maintenance process. Ecosystem support Supports mainstream deep learning frameworks, such as TensorFlow, Caffe, MXNet, and Pytorch, and offers optimized features of these frameworks. Quick start and elastic scaling Provides machine learning services for development, training, and inference. Supports the startup of training and inference tasks within seconds, and elastic scaling of GPU resources. Easy to use Allows you to easily create and manage large-scale GPU clusters and monitor core metrics, such as GPU utilization. Deep integration Seamless integration with Apsara Stack storage, logging and monitoring, and security infrastructure capabilities.
+Container Service allows data engineers to easily develop and deploy machine learning applications in heterogeneous computing clusters. Integrated with multiple distributed storage systems, the service supports faster read and write speeds to facilitate the testing, training, and release of data models. You can focus on your core business operations instead of worrying about the deployment and maintenance process. Ecosystem support Supports mainstream deep learning frameworks, such as TensorFlow, Caffe, MXNet, and Pytorch, and offers optimized features of these frameworks. Quick start and elastic scaling Provides machine learning services for development, training, and inference. Supports the startup of training and inference tasks within seconds, and elastic scaling of GPU resources. Easy to use Allows you to easily create and manage large-scale GPU clusters and monitor core metrics, such as GPU utilization. Deep integration Seamless integration with Apsara Stack storage, logging and monitoring, and security infrastructure capabilities.
 
 **Related products and services**
 
 ECS/EGS/HPC + Container Service + OSS/NAS/CPFS
+
+**Microservices architecture**
 
 **Agile development and deployment to speed up the evolution of business models**
 
@@ -219,7 +216,9 @@ In the production environment, you can split your system into microservices and 
 
 **Related products and services**
 
-ECS + ApsaraDB RDS + OSS + Container Service Container Service for Kubernetes
+ECS + ApsaraDB RDS + OSS + Container Service
+
+**Hybrid cloud architecture**
 
 **Unified O&M of cloud resources**
 
@@ -227,7 +226,9 @@ You can centrally manage cloud and on-premises resources in the Container Servic
 
 **Related products and services**
 
-ECS + VPC + Express Connect Container Service for Kubernetes
+ECS + VPC + Express Connect
+
+**Automatic scaling architecture**
 
 **Traffic-based scalability**
 
@@ -235,20 +236,18 @@ Container Service enables businesses to auto-scale their resources based on traf
 
 **Related products and services**
 
-ECS + CloudMonitor Container Service for Kubernetes
+ECS + CloudMonitor
+
+## 7 Limits
 
 | Limit | Description |
 |---|---|
 | Cluster | By default, you can create a maximum of 50 clusters across all regions. Each cluster can contain a maximum of 100 nodes. To increase these quotas, submit a ticket. After you create a cluster, you cannot perform the following actions: You cannot change a cluster's VPC. You cannot change the container network plugin. The storage plug-in cannot be changed. You cannot migrate applications between different namespaces. Ensure that you have purchased enough ACK licenses. If you have an insufficient number of licenses, cluster creation fails. |
 | ECS instance | Cluster creation, scale-out, and auto-scaling operations are subject to the quota and inventory of underlying products, such as Elastic Compute Service (ECS). If the quota or inventory is insufficient, some nodes may fail to be created. When you create a cluster, the ECS instances must have at least 2 vCPUs and 4 GiB of memory. |
 
-Container Service for Kubernetes
+## 8 Terms
 
-## Limits
-
-Container Service for Kubernetes
-
-## Terms
+**Terms**
 
 **Cluster**
 
@@ -285,11 +284,15 @@ Knative is a serverless framework based on Kubernetes. Its goal is to establish 
 
 **Kubernetes**
 
-Kubernetes is an open source platform that is portable and extensible. It is used to manage containerized workloads and services, and it simplifies declarative configuration and automation. A technology for packaging an application and its runtime dependencies. Multiple containers can run on a single node.
+Kubernetes is an open source platform that is portable and extensible. It is used to manage containerized workloads and services, and it simplifies declarative configuration and automation.
+
+**Container**
+
+A technology for packaging an application and its runtime dependencies. Multiple containers can run on a single node.
 
 **Image**
 
-A container image is the standard format for packaging a containerized application. It encapsulates the application and all its software dependencies. When you deploy a containerized application, you can specify an image. The image can be from Docker Hub, Alibaba Cloud Container Registry, or your private image repository. Container Service for Kubernetes
+A container image is the standard format for packaging a containerized application. It encapsulates the application and all its software dependencies. When you deploy a containerized application, you can specify an image. The image can be from Docker Hub, Alibaba Cloud Container Registry, or your private image repository.
 
 **Image repository**
 
@@ -325,7 +328,11 @@ A workload is an application running on Kubernetes.
 
 **Label**
 
-Labels are key-value pairs that are attached to resource objects. They are used to specify object attributes that are meaningful to users but have no direct meaning to the core system. Labels can be attached to an object at creation time and can be added or modified at any time. Each object can have multiple labels, but each key must be unique for that object. A Service is a basic operational unit in Kubernetes that acts as an abstraction for an application service. Each Service is backed by a set of pods and uses a selector to determine how to route requests to them. The Service provides a single, stable access interface.
+Labels are key-value pairs that are attached to resource objects. They are used to specify object attributes that are meaningful to users but have no direct meaning to the core system. Labels can be attached to an object at creation time and can be added or modified at any time. Each object can have multiple labels, but each key must be unique for that object.
+
+**Service**
+
+A Service is a basic operational unit in Kubernetes that acts as an abstraction for an application service. Each Service is backed by a set of pods and uses a selector to determine how to route requests to them. The Service provides a single, stable access interface.
 
 **Ingress**
 
@@ -333,7 +340,7 @@ An Ingress is a set of rules that allow inbound connections to reach cluster ser
 
 **ConfigMap**
 
-Container Service for Kubernetes A ConfigMap stores configuration data as key-value pairs. This data can be fine-grained, such as individual properties, or coarse-grained, such as entire configuration files or JSON objects. You can use ConfigMaps to save configuration information and files that do not require encryption.
+A ConfigMap stores configuration data as key-value pairs. This data can be fine-grained, such as individual properties, or coarse-grained, such as entire configuration files or JSON objects. You can use ConfigMaps to save configuration information and files that do not require encryption.
 
 **Secret**
 

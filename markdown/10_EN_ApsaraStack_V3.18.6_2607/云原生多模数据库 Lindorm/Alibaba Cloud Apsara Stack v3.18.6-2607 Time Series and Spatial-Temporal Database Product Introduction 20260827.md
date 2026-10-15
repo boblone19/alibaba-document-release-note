@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database Product Introduction 20260827.pdf"
+source_pdf: "a25a423acc855922_Alibaba Cloud Apsara Stack v3.18.6-2607 Time  Series and Spatial-Temporal  Database Product Introduc"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%9A%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%20Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Time%20%20Series%20and%20Spatial-Temporal%20%20Database%20Product%20Introduction%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database Product Introduction 20260827
 
-## Lindorm
+## Table of Contents
+
+- 1 Lindorm
+  - 1.1 Product details
+  - 1.2 Product value
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 Lindorm
 
 Lindorm is a cloud-native, multi-model, and hyper-converged database built for scenarios such as the Internet of Things (IoT), the Internet, and the Internet of Vehicles (IoV). It provides unified access to and converged processing of various data types, such as wide table, time series, text, object, stream, and spatial data. Lindorm is compatible with multiple openstandard interfaces and integrates with third-party ecosystem tools.
 
-### Product details
+### 1.1 Product details
 
 Lindorm is a cloud-native database service that supports multiple data models. You can use the Alibaba Cloud console to create Lindorm instances, upgrade engine versions, scale nodes, or release instances as needed.
 
@@ -54,7 +62,7 @@ Lindorm uses Lindorm Tunnel Service (LTS) to import and migrate data. LTS is a d
 
 The Lindorm wide table engine provides a cluster management system for intelligent operations and maintenance (O&M) of instances. This includes the following capabilities: View information about an instance, such as capacity in each zone, server lists, table properties, and table sizes. Manage database tables and namespaces. Manage database accounts and permissions. Run simple SQL statements to query data in the database. View real-time monitoring metrics at multiple levels, including instances, groups, nodes, namespaces, and tables. Perform health checks on instances and view inspection reports to quickly analyze and locate issues. The Lindorm search engine provides a cluster management system to manage index tables. This includes operations such as creating, deleting, and updating configurations.
 
-### Product value
+### 1.2 Product value
 
 Lindorm is built on a cloud-native architecture. It provides elastic scaling, low cost, high performance, ease of use, high availability, high reliability, and an open ecosystem.
 
@@ -86,7 +94,7 @@ Multi-replica storage at the underlying layer ensures high data reliability. Pro
 
 Supports smooth online data migration from systems such as MySQL, HBase, and Cassandra. Seamlessly integrates with compute engines such as Spark, Flink, Data Lake Analytics (DLA), and MaxCompute. Seamlessly subscribes to data from log channels, such as Kafka and Simple Log Service (SLS), and provides fast data processing. You can use Lindorm Stream to subscribe to incremental data changes in Lindorm in real time for custom consumption.
 
-### Scenarios
+### 1.3 Scenarios
 
 Lindorm is a cloud-native multi-model database developed by Alibaba Cloud. It is designed for low-cost storage and analysis of massive multi-model data and serves as a data foundation for the Internet of Everything. Lindorm provides single-millisecond response times and supports horizontal scaling to petabytes of storage and tens of millions of queries per second (QPS). It is a key component of Alibaba's core services and is used in scenarios such as big data, finance, the Internet of Vehicles, and Internet services.
 
@@ -110,7 +118,7 @@ Lindorm stores important data for the Internet of Vehicles, such as driving traj
 
 Lindorm stores important data for social media applications, such as chats, comments, posts, and likes. By offering ease of development, high availability, and low latency, Lindorm significantly reduces user access wait times and provides a stable and reliable social feed system.
 
-### Features
+### 1.4 Features
 
 | Feature category | Feature | Description |
 |---|---|---|

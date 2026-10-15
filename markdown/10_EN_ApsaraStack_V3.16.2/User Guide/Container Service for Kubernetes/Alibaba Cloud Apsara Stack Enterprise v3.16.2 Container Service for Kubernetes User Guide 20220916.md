@@ -3,16 +3,153 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kube
 product_version: "V3.16.2"
 doc_version: "20220916"
 pdf_pages: 320
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes User Guide 20220916.pdf"
+source_pdf: "4f209732a737624c_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes User Guide 20220916.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Container%20Service%20for%20Kubernetes%20User%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes User Guide
 
-## Announcements
+## Table of Contents
 
-### Container Service support for
+- 1 Announcements
+  - 1.1 Container Service support for Kubernetes 1.20
+  - 1.2 Container Service support for Kubernetes 1.18
+  - 1.3 Vulnerability fixed: CVE-2021-1056 in NVIDIA GPU drivers
+- 2 What is Container Service?
+- 3 ACK@Edge overview
+- 4 Planning and preparation
+- 5 Quick start
+  - 5.1 Procedure
+  - 5.2 Log on to the Container Service console
+  - 5.3 Create a Kubernetes cluster
+  - 5.4 Create a stateless application by using a Deployment
+- 6 Kubernetes clusters
+  - 6.1 Authorizations
+    - 6.1.1 Assign RBAC roles to a RAM user
+  - 6.2 Clusters
+    - 6.2.1 Create a Kubernetes cluster
+    - 6.2.2 Create a Kubernetes cluster by using a custom image
+    - 6.2.3 View log files of a cluster
+    - 6.2.4 Connect to a cluster through kubectl
+    - 6.2.5 Connect to a master node by using SSH
+    - 6.2.6 Revoke the kubeconfig file of a cluster
+    - 6.2.7 Update the Kubernetes version of a cluster
+    - 6.2.8 Expand a cluster
+    - 6.2.9 Renew a certificate
+    - 6.2.10 Delete a Kubernetes cluster
+    - 6.2.11 View cluster overview
+  - 6.3 Nodes
+    - 6.3.1 Add existing ECS instances to a Container Service cluster
+    - 6.3.2 View nodes
+    - 6.3.3 Manage node labels
+    - 6.3.4 Set node schedulability
+    - 6.3.5 Remove a node
+    - 6.3.6 View node resource usage
+    - 6.3.7 Node pools
+      - 6.3.7.1 Create a node pool
+      - 6.3.7.2 Scale out a node pool
+      - 6.3.7.3 Schedule an application pod to a specific node pool
+  - 6.4 Storage
+    - 6.4.1 Overview
+    - 6.4.2 Mount disk volumes
+    - 6.4.3 Mount NAS volumes
+    - 6.4.4 Mount OSS volumes
+    - 6.4.5 Create a PVC
+    - 6.4.6 Use PVCs
+  - 6.5 Network management
+    - 6.5.1 Plan the network of a Container Service cluster
+    - 6.5.2 Set access control for pods
+    - 6.5.3 Set bandwidth limits for pods
+    - 6.5.4 Work with Terway
+  - 6.6 Namespaces
+    - 6.6.1 Create a namespace
+    - 6.6.2 Set resource quotas and limits
+    - 6.6.3 Modify a namespace
+    - 6.6.4 Delete a namespace
+  - 6.7 Applications
+    - 6.7.1 Create a stateless application by using a Deployment
+    - 6.7.2 Use a StatefulSet to create a stateful application
+    - 6.7.3 Create a DaemonSet
+    - 6.7.4 Create a Job
+    - 6.7.5 Create a CronJob
+    - 6.7.6 Create a Service
+    - 6.7.7 View a Service
+    - 6.7.8 Update a Service
+    - 6.7.9 Delete a Service
+    - 6.7.10 Use a trigger to redeploy an application
+    - 6.7.11 Use kritis-validation-hook to automatically verify the signatures of container images
+    - 6.7.12 View pods
+    - 6.7.13 Manage pods
+    - 6.7.14 Schedule pods to specific nodes
+    - 6.7.15 Simplify application deployment by using Helm
+  - 6.8 SLB and Ingress
+    - 6.8.1 Overview
+    - 6.8.2 Use SLB to access Services
+    - 6.8.3 Configure Ingress monitoring
+    - 6.8.4 Ingresses
+    - 6.8.5 Ingress configurations
+    - 6.8.6 Create an Ingress in the console
+    - 6.8.7 Update an Ingress
+    - 6.8.8 Delete an Ingress
+  - 6.9 Config maps and secrets
+    - 6.9.1 Create a ConfigMap
+    - 6.9.2 Use a ConfigMap in a pod
+    - 6.9.3 Update a ConfigMap
+    - 6.9.4 Delete a ConfigMap
+    - 6.9.5 Create a Secret
+    - 6.9.6 Modify a Secret
+    - 6.9.7 Delete a Secret
+  - 6.10 Templates
+    - 6.10.1 Create an orchestration template
+    - 6.10.2 Update an orchestration template
+    - 6.10.3 Save an orchestration template as a new one
+    - 6.10.4 Download an orchestration template
+    - 6.10.5 Delete an orchestration template
+  - 6.11 Log management
+    - 6.11.1 Use Log Service to collect log data from containers
+    - 6.11.2 Configure Log4jAppender for Kubernetes and Log Service
+  - 6.12 Monitoring management
+    - 6.12.1 Enable ARMS Prometheus
+    - 6.12.2 Monitor application performance
+  - 6.13 GPU
+    - 6.13.1 Create a dedicated Kubernetes cluster with GPU-accelerated nodes
+    - 6.13.2 Upgrade the NVIDIA driver on a GPU node
+    - 6.13.3 Use cGPU to enable GPU sharing and scheduling
+    - 6.13.4 GPU scheduling for Kubernetes clusters with GPU-accelerated nodes
+    - 6.13.5 Use labels to schedule pods to GPU-accelerated nodes
+    - 6.13.6 Manually upgrade the kernel of a GPU node in a cluster
+  - 6.14 Auto scaling
+    - 6.14.1 Auto scaling of nodes
+    - 6.14.2 Horizontal pod autoscaling
+  - 6.15 Sandboxed-containers
+    - 6.15.1 Overview
+    - 6.15.2 Create a Kubernetes cluster that runs sandboxed containers
+    - 6.15.3 Expand a Container Service cluster that runs sandboxed containers
+    - 6.15.4 Create an application that runs in sandboxed containers
+    - 6.15.5 Configure a Kubernetes cluster that runs both sandboxed and Docker containers
+    - 6.15.6 How do I select between Docker and Sandboxed-Container?
+    - 6.15.7 Benefits of Sandboxed-Container
+    - 6.15.8 Differences between runC and runV
+    - 6.15.9 Compatibility notes
+  - 6.16 Edge container service
+    - 6.16.1 Create an edge Kubernetes cluster
+    - 6.16.2 Edge node pools
+      - 6.16.2.1 Edge node pool overview
+      - 6.16.2.2 Create an edge node pool
+      - 6.16.2.3 Add nodes to an edge node pool
+    - 6.16.3 Edge nodes
+      - 6.16.3.1 Add nodes to an edge Kubernetes cluster
+      - 6.16.3.2 Configure node autonomy
+    - 6.16.4 Cell-based management at the edge
+      - 6.16.4.1 Use the UnitedDeployment controller to deploy applications
+      - 6.16.4.2 Configure a Service topology
+    - 6.16.5 Cloud-edge tunneling
+  - 6.17 Use the Kubernetes event center
+
+## 1 Announcements
+
+### 1.1 Container Service support for Kubernetes 1.20
 
 Kubernetes 1.20 Container Service strictly conforms to the terms of the Certified Kubernetes Conformance Program. This topic lists the changes that Container Service has made to support Kubernetes 1.20. Version updates All Container Service components have been upgraded and optimized to support Kubernetes 1.20.
 
@@ -30,7 +167,7 @@ Kubernetes 1.20 Container Service strictly conforms to the terms of the Certifie
 
 Version details Resource changes and deprecat ion By default, the `node-role.kubernetes.io/control-plane` label is added by Container Service to the master nodes of a dedicated Kubernetes cluster. The `node-role.kubernetes.io/master` label is deprecated in Kubernetes versions later than 1.20. The selfLink field is deprecated. For more information, see Stop setting SelfLink in kube-apiserver. The `extensions/v1beta1` and `networking.k8s.io/v1beta1` API versions are no longer used to manage Ingresses and IngressClasses, and will be deprecated in Kubernetes versions later than 1.22. Use `networking.k8s.io/v1` instead. By default, the NGINX Ingress controller is installed in Container Service clusters. This component enables you to use the networking.k8s.io/v1beta1 API version to manage Ingresses and IngressClasses. The required SANs must be included in the self-signed server certificates of the admission webhooks in Container Service clusters. Before you upgrade a Container Service cluster to Kubernetes 1.20 or later, make sure that the required SANs are included in the self-signed server certificates of the admission webhooks in the cluster. For more information, see the sample Helm chart. Feat ure upgrades The issue that exec probes do not time out based on the timeout settings is fixed for kubelet. The default timeout period for exec probes is now 1 second, which may be short for some exec probes. If the timeout period is not specified for exec probes, we recommend that you specify the default timeout period. The API Priority and Fairness feature (APF) is a feature of Kubernetes in public preview and is enabled by default. You can use this feature to limit and prioritize requests. For more information, see API Priority and Fairness. By default, the EndpointSlice feature is enabled. In Kubernetes 1.19 and later, the EndpointSlice feature is automatically enabled by kube-proxy to support large-scale clusters. For more information, see EndpointSlices. Immutable ConfigMaps and Secrets are supported. The immutable ConfigMaps and Secrets feature is in public preview. If a ConfigMap or Secret is set to immutable, it cannot be modified. This reduces the load on kube-apiserver. For more information, see Immutable ConfigMaps. Enhancements to Kubernetes 1.20 Cont rol plane improvement s Observability. Metrics are collected to monitor request operations and watch operations. This improves the observability of control plane components. Stability. Protection is provided to defend etcd against excessive requests when a cluster is started. This improves system stability. Performance optimizations. Indexes are added to accelerate the processing of list requests. This reduces the CPU usage of kube-apiserver. References CHANGELOG-1.20.md CHANGELOG-1.19.md
 
-### Container Service support for
+### 1.2 Container Service support for Kubernetes 1.18
 
 Kubernetes 1.18 Container Service strictly conforms to the terms of the Certified Kubernetes Conformance Program. This topic describes the changes that Container Service has made to support Kubernetes 1.18. Version upgrades Container Servcie has upgraded and optimized all of its components to support Kubernetes 1.18.8.
 
@@ -43,9 +180,9 @@ Kubernetes 1.18 Container Service strictly conforms to the terms of the Certifie
 
 Version details Resource changes and deprecat ion The following APIs are deprecated in Kubernetes 1.18: The APIs apps/v1beta1 and apps/v1beta2 of all the resources are replaced by apps/v1. The API extensions/v1beta1 of DaemonSets, Deployments, and ReplicaSets is replaced by apps/v1. The API extensions/v1beta1 of Networkpolicies resources is replaced by net working.k8s.io/v1. The API extensions/v1beta1 of pod security policies is replaced by policy/v1bet a1. The label that specifies the regions of a node is changed to topology.kubernetes.io/region. The label that specifies the zone of a node is changed to topology.kubernetes.io/zone. We recommend that you update the related configurations for your workloads. Feat ure upgrades Server-side Apply Beta 2 is introduced. You can view the relationships between the configuration items of a resource in the metadata.managedFields field of the resource. The Node Local DNS Cache feature is released to improve the DNS availability and performance of your cluster. The Volume Snapshot feature is in public preview and supports operations such as data volume backup, recovery, and scheduled backup. Container Service upgrades for Kubernetes 1.18.8 In Kubernetes 1.18.8, Container Service enables the following feature in the kubelet configuration file: Users who use raw data volumes can upgrade clusters without the need to drain the nodes.
 
-### Vulnerability fixed: CVE-2021-
+### 1.3 Vulnerability fixed: CVE-2021-1056 in NVIDIA GPU drivers
 
-## in NVIDIA GPU drivers
+## 1056 in NVIDIA GPU drivers
 
 NVIDIA has reported the CVE-2021-1056 vulnerability, which is related to device isolation and NVIDIA GPU drivers. Elastic GPU Service nodes that are deployed in a Container Service cluster may also be exposed to this vulnerability. This topic describes the background information, affected versions, and fixes of this vulnerability. Context The CVE-2021-1056 vulnerability is related to device isolation and NVIDIA GPU drivers. This vulnerability allows an attacker to gain access to all GPU devices on a node by creating character device files in nonprivileged containers that run on this node. For more information about this vulnerability, see CVE-2021-1056. Affected versions The affected versions of NVIDIA GPU drivers are listed in the following figure based on the information published on the NVIDIA official website. For more information, see NVIDIA official website. If you selected a custom NVIDIA driver or updated an NVIDIA driver, check whether the NVIDIA driver that you installed is affected by this vulnerability based on the preceding figure. If you use the NVIDIA driver that is automatically installed by Container Service, you must check whether the Kubernetes version of your cluster is affected by this vulnerability. The following Kubernetes versions are affected by this vulnerability: ACK 1.16.9-aliyun.1. By default, the NVIDIA driver of version 418.87.01 is installed in clusters of this Kubernetes version. ACK 1.18.8-aliyun.1. By default, the NVIDIA driver of version 418.87.01 is installed in clusters of this Kubernetes version. The NVIDIA GPU drivers that are installed by default in clusters of other Kubernetes versions are not affected. The Container Service team of Alibaba Cloud will keep you informed of further CVE content updates and help you fix the vulnerability. Check t he version of t he NVIDIA driver on a GPU-accelerat ed node Log on to the GPU-accelerated node and run the following command to query the version of the NVIDIA driver. For more information about how to log on to a GPU-accelerated node, see the Use VNC to connect to and log on to an instance chapter of the Elastic Compute Service (ECS) User Guide.
 
@@ -74,25 +211,25 @@ Fri Apr 16 10:58:19 2021 +------------------------------------------------------
 
 The output indicates that the version of the NVIDIA driver is 418.87.01. Fixes Not ice When you upgrade the NVIDIA driver for a node, the node must be restarted. This interrupts services that are deployed on the node. Upgrade the NVIDIA driver based on the preceding figure. For more information about how to upgrade the NVIDIA driver, see Upgrade the NVIDIA driver on a GPU node. If your NVIDIA driver belongs to the R390 branch, upgrade it to version 390.141. If your NVIDIA driver belongs to the R418 branch, upgrade it to version 418.181.07. If your NVIDIA driver belongs to the R450 branch, upgrade it to version 450.102.04. If your NVIDIA driver belongs to the R460 branch, upgrade it to version 460.32.03. e?
 
-## What is Container Service?
+## 2 What is Container Service?
 
 Container Service provides high-performance, scalable, and enterprise-class management service for Kubernetes containerized applications throughout the application lifecycle. Container Service simplifies the deployment and scaling operations on Kubernetes clusters. Integrated with services such as virtualization, storage, network, and security, Container Service aims to provide the optimal cloud environment for Kubernetes containerized applications. Alibaba Cloud is a Kubernetes Certified Service Provider (KCSP). As one of the first services to participate in the Certified Kubernetes Conformance Program, Container Service provides you with professional support and services.
 
-## ACK@Edge overview
+## 3 ACK@Edge overview
 
 ACK@Edge is released for commercial use. ACK@Edge is a cloud-managed solution that is provided by Container Service to coordinate cloud and edge computing. This topic describes the background and features of edge Kubernetes clusters. Overview With the rapid growth of smart devices connected to the Internet and the advent of 5G and IoT, computing and storage services provided by traditional cloud computing platforms can no longer satisfy the needs of edge devices for time-efficient computing, larger storage capacity, and enhanced computing capacity. Edge Kubernetes clusters are intended for bringing cloud computing to edges (clients). Edge Kubernetes clusters can be created, managed, and maintained in the Container Service console. This is the trend of cloud computing. An edge Kubernetes cluster is a standard, secure, and highly-available Kubernetes cluster deployed in the cloud. This type of cluster is integrated with features of Alibaba Cloud, such as virtualization, storage, networking, and security. This simplifies the management and maintenance of clusters and allows you to focus on your business development. ACK@Edge provides the following features: Allows you to build a cloud-native infrastructure for edge computing with a few clicks. Allows you to quickly connect edge computing resources to the cloud. These resources include IoT gateway devices, terminals, Content Delivery Network (CDN) resources, and data centers. Applies to diverse scenarios, such as edge intelligence, intelligent buildings, intelligent factories, audio and video live streaming, online education, and CDN. Edge Kubernetes clusters support features such as node autonomy, cell-based management, and native APIs for the management and maintenance of resources at the edge side. To use these features, you do not need to rewrite the logic of your services. This provides a native and centralized method for application lifecycle management and resource scheduling in edge computing scenarios. Features Edge Kubernetes clusters provide the following features to support lifecycle management for containerized applications and resources in edge computing scenarios: Allows you to create highly available edge Kubernetes clusters with a few clicks and provides lifecycle management on edge Kubernetes clusters, such as scaling cloud nodes, adding edge nodes to clusters, upgrading, logging, and monitoring. You can perform the preceding operations in the Container Service console. Supports access to various heterogeneous resources, such as data centers and IoT devices. Hybrid scheduling of heterogeneous resources is also supported. Supports node autonomy and network autonomy to ensure the reliability of edge nodes and services in edge computing scenarios where the network connection is weak. Supports reverse tunneling for management and maintenance of edge nodes. n
 
-## Planning and preparation
+## 4 Planning and preparation
 
 Before you start using Container Service, you need to create cloud resources such as VPC networks, VSwitches, disks, and OSS buckets based on your application requirements. Before you create a Kubernetes cluster, make the following preparations: Creat e a VPC net work (optional) To create a cluster in an existing VPC network, you must create the VPC network and VSwitches in advance. Creat e a volume (optional) To create a stateful application with network storage, you must create disks or OSS buckets in advance.
 
-## Quick start
+## 5 Quick start
 
-### Procedure
+### 5.1 Procedure
 
 You can perform the following steps to use the Container Service service. The following diagram shows the procedure to use the Container Service service. St ep 1: Aut horize t he def ault role Authorize the default role of Container Service to perform operations on the resources that belong to the specified organization. St ep 2: Log on t o t he Cont ainer Service console Log on to the Container Service console. For more information, see Log on to the Container Service console. St ep 3: Creat e an Cont ainer Service clust er Set the network environment and the number of nodes, and configure node details. St ep 4: Deploy an applicat ion by using an image or orchest rat ion t emplat e You can use an existing image or orchestration template, or create a new image or orchestration template. To create an application that consists of services based on different images, use an orchestration template. St ep 5: Manage t he applicat ion lif ecycle
 
-### Log on to the Container Service
+### 5.2 Log on to the Container Service console
 
 console You can perform the following steps to log on to the Container Service console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -107,7 +244,7 @@ Kubernet es.
 6. On the Container Service page, select Access wit h Aut horized Role or Access as
 Administ rat or. Access wit h Aut horized Role: The system accesses the Container Service console by using an authorized account. Access as Administ rat or: The system accesses the Container Service console as the organization administrator.
 
-### Create a Kubernetes cluster
+### 5.3 Create a Kubernetes cluster
 
 This topic describes how to create a Kubernetes cluster in the Container Service console. Procedure
 1. Log on to the Container Service console.
@@ -176,10 +313,9 @@ Clust er in the upper-right corner.
 6. On the Conf irm page, after all check items are verified, select the terms of service and disclaimer
 and click OK to start the deployment. After the cluster is created, you can find the cluster on the Clust ers page in the console.
 
-### Create a stateless application by
+### 5.4 Create a stateless application by using a Deployment
 
 using a Deployment You can deploy a stateless application by using a Deployment. A Deployment can be created by using an image, an orchestration template, or kubectl commands. This topic describes how to create a stateless NGINX application by using an image, an orchestration template, and kubectl commands. Prerequisites A Container Service cluster is created. For more information, see Create a Kubernetes cluster. A kubectl client is connected to the cluster. For more information, see Connect to a cluster through kubectl. A private image repository is created and your image is uploaded to the repository. Create a Deployment from an image St ep 1: Conf igure basic set t ings
-1. Log on to the Container Service console
 2. In the left-side navigation pane, click Clust ers.
 3. On the Clust ers page, find the cluster that you want to manage and click its name or click Det ails
 in the Act ions column.
@@ -518,11 +654,11 @@ For more information, see Step 3: Configure advanced settings.
 9. In the left-side navigation pane of the cluster details page, choose Workloads > Deployment s.
 On the Deployment s page, check the status of the application. If the application is running as normal, it indicates that the image is successfully pulled by using the Secret that you configured.
 
-## Kubernetes clusters
+## 6 Kubernetes clusters
 
-### Authorizations
+### 6.1 Authorizations
 
-#### Assign RBAC roles to a RAM user
+#### 6.1.1 Assign RBAC roles to a RAM user
 
 This topic describes how to assign role-based access control (RBAC) roles to Resource Access Management (RAM) users. By default, RBAC is enabled for Kubernetes 1.6 and later. RBAC is important for you to manage clusters. You can use RBAC to specify the types of operations that are allowed for specific users based on their roles in an organization. Procedure
 1. Log on to the Container Service console.
@@ -587,9 +723,9 @@ rules:
   - '*'
 ```
 
-### Clusters
+### 6.2 Clusters
 
-#### Create a Kubernetes cluster
+#### 6.2.1 Create a Kubernetes cluster
 
 This topic describes how to create a Kubernetes cluster in the Container Service console. Procedure
 1. Log on to the Container Service console.
@@ -661,7 +797,7 @@ Clust er in the upper-right corner.
 6. On the Conf irm page, after all check items are verified, select the terms of service and disclaimer
 and click OK to start the deployment. After the cluster is created, you can find the cluster on the Clust ers page in the console.
 
-#### Create a Kubernetes cluster by using a
+#### 6.2.2 Create a Kubernetes cluster by using a custom image
 
 custom image In the cloud-native era, an increasing number of users choose to migrate applications and businesses to the cloud. The requirement on the container platform varies based on different business scenarios. To meet business requirements, many users want to create Kubernetes clusters by using custom images. This topic describes how to create a Kubernetes cluster by using a custom image. Prerequisites Before you create a Kubernetes cluster by using a custom image, take note of the following limits on the custom images that are supported by Container Service: We recommend that you use the latest base images provided by Container Service. The base images of Container Service can be used to create Kubernetes clusters and have passed the strict tests of the Container Service technical team. Custom images that are used to create Kubernetes clusters must meet the following requirements: Alibaba Cloud cloud-init can be installed. For more information, see the Import custom images chapter of ECS User Guide. If you want to create a dedicated Kubernetes cluster by using a custom image, you must enable the sshd server and use the default port 22. This allows you to transfer files to cluster nodes after the nodes are enabled. For more information, see Connect to a master node by using SSH. Time synchronization is performed by using a Network Time Protocol (NTP) server provided by Alibaba Cloud. Procedure
 1. Log on to the Container Service console.
@@ -673,7 +809,7 @@ Cust om Image. In the Choose Cust om Image dialog box, click Use to the right si
 5. On the Conf irm page, after all check items are verified, select the terms of service and disclaimer
 and click OK to start the deployment. After the cluster is created, you can find the cluster on the Clust ers page in the console.
 
-#### View log files of a cluster
+#### 6.2.3 View log files of a cluster
 
 You can view the operation log of a cluster in the Container Service console. Procedure
 1. Log on to the Container Service console.
@@ -681,7 +817,7 @@ You can view the operation log of a cluster in the Container Service console. Pr
 3. Find the cluster that you want to manage and click View Logs in the Actions column.
 You can view operations performed on the cluster.
 
-#### Connect to a cluster through kubectl
+#### 6.2.4 Connect to a cluster through kubectl
 
 You can use the Kubernetes command line tool, kubectl, to connect to a Kubernetes cluster from a local computer. Procedure
 1. Download the latest kubectl client from the Kubernetes change log page.
@@ -701,7 +837,7 @@ mkdir $HOME/.kube scp root@<master-public-ip>:/etc/kubernetes/kube.conf $HOME/.k
 
 You can find `master-public-ip` on the cluster details page. i. Log on to the Container Service console. ii. In the left-side navigation pane, click Clust ers. The Clusters page appears. iii. Find the target cluster and click Manage in the Actions column. In the Clust er Inf ormat ion section, you can find the master node IP address.
 
-#### Connect to a master node by using SSH
+#### 6.2.5 Connect to a master node by using SSH
 
 You can access a master node in a cluster by using a Secure Shell (SSH) client. Prerequisites A Kubernetes cluster is created and Use SSH t o Access t he Clust er f rom t he Int ernet is selected for the cluster. For more information, see Create a Kubernetes cluster. The SSH client can connect to the network where the cluster is deployed. Procedure
 1. Log on to the Container Service console.
@@ -716,7 +852,7 @@ If you have a leased line that connects to the cluster network over the Internet
 ssh root@ssh_ip #ssh_ip specifies the IP address of the maste r node for SSH connection.
 ```
 
-#### Revoke the kubeconfig file of a cluster
+#### 6.2.6 Revoke the kubeconfig file of a cluster
 
 In multi-tenant scenarios, Container Service issues kubeconfig files to users that are assigned different roles. The kubeconfig files are used to connect to clusters. If an employee leaves the company or a kubeconfig file is suspected to be leaked, you can revoke the kubeconfig file to ensure cluster security. This topic describes how to revoke a kubeconfig file in the Container Service console. Procedure Not ice After a kubeconfig file is revoked, you cannot use the kubeconfig file to connect to the cluster. Proceed with caution.
 1. Log on to the Container Service console.
@@ -728,7 +864,7 @@ KubeConf ig.
 5. In the message that appears, click OK.
 The kubeconfig file that is used by the current account to connect to the cluster is revoked. The system then automatically assigns the account a new kubeconfig file.
 
-#### Update the Kubernetes version of a cluster
+#### 6.2.7 Update the Kubernetes version of a cluster
 
 You can go to the Clusters page to check the Kubernetes version of your cluster and check whether the current version can be updatable. This topic describes how to update the Kubernetes version of a cluster. Considerations The update may fail. To ensure data security, we recommend that you create snapshots before you start the update. For more information about how to create snapshots to back up data on Elastic Compute Service (ECS) instances, see the Create a snapshot topic ofECS User Guide. Applications that run in the cluster are not interrupted during the update. Applications that are highly reliant on the API server may be temporarily interrupted. Object Storage Service (OSS) volumes that are mounted to the Kubernetes cluster by using FlexVolume 1.11.2.5 or earlier will be remounted during the update. You must recreate the pods that use OSS volumes after the update is completed. You can modify the configurations of the cluster during the update process. For example, you can create SWAP partitions. In this case, the update may fail. Do not modify the resources in the kube-upgrade namespace during the update process unless an error occurs. If an error occurs during the update process, the update is paused. You must troubleshoot the error and delete the failed pods in the kube-upgrade namespace. You can restart the update after the error is fixed. After the update is completed, we recommend that you update kubectl on your on-premises machine. Otherwise, the kubectl version may be incompatible with the API server version. As a result, the error message invalid object doesn't have addit ional propert ies may appear. You can update the Kubernetes version of a Container Service cluster only to the later version. For example, the Kubernetes version of a Container Service cluster is 1.12. If you want to update the Kubernetes version to 1.18, you must manually update the version to 1.14, 1.16, and then 1.18 in sequence. Container Service clusters that run Kubernetes 1.20 do not support the selfLink field. If FlexVolume is used and alicloud-nas-controller is installed in your cluster, you must update the image version of alicloud-nas-controller to v1.14.8.17-7b898e5-aliyun or later before you can update an earlier Kubernetes version to 1.20. For more information, see Container Service support for Kubernetes 1.20. Specific API versions are deprecated in Kubernetes 1.18. If the deprecated API versions are used in a cluster whose Kubernetes version is earlier than 1.18, you must replace these API versions with new API versions before you update the Kubernetes version to 1.18. For more information, see Container Service support for Kubernetes 1.18. Procedure
 1. Log on to the Container Service console.
@@ -739,7 +875,7 @@ Clust er.
 On the Upgrade Clust er page, you can view the current Kubernet es version and the update considerations. If the Upgrade button is not displayed on the Upgrade Clust er page, the current Kubernetes version is updated to the latest.
 5. In the message that appears, click OK.
 
-#### Expand a cluster
+#### 6.2.8 Expand a cluster
 
 This topic describes how to scale out the worker nodes of a Kubernetes cluster in the Container Service console. Context You cannot scale out the master nodes of a Kubernetes cluster. Procedure
 1. Log on to the Container Service console.
@@ -777,7 +913,7 @@ In this example, the number of worker nodes in the cluster is increased from thr
 6. Click Submit .
 What's next After the cluster is expanded, choose Nodes > Nodes in the left-side navigation pane. On the Nodes page, you can find that the number of worker nodes is increased from 3 to 5.
 
-#### Renew a certificate
+#### 6.2.9 Renew a certificate
 
 This topic describes how to renew a Kubernetes cluster certificate in the console. Prerequisites A Kubernetes cluster is created and the cluster certificate is about to expire. Procedure
 1. Log on to the Container Service console.
@@ -788,7 +924,7 @@ Updat e Cert if icat e message appears. The Updat e Cert if icat e button will b
 5. Click OK.
 Result On the Updat e Cert if icat e page, the following message appears: T he cert if icat e has been updat ed. On the Clust ers page, the Updat e Cert if icat e button disappears.
 
-#### Delete a Kubernetes cluster
+#### 6.2.10 Delete a Kubernetes cluster
 
 This topic describes how to delete a Kubernetes cluster in the Container Service console. Procedure
 1. Log on to the Container Service console.
@@ -798,7 +934,7 @@ Act ions column.
 4. In the Delet e Clust er dialog box that appears, select the resources that you want to retain, select
 I underst and t he above inf ormat ion and want t o delet e t he specif ied clust er, and then click OK. What's next Resource Orchestration Service (ROS) does not have permissions to delete resources that are manually added to resource created by ROS. For example, if you manually add a vSwitch to a virtual private cloud (VPC) created by ROS, ROS cannot delete the VPC and therefore the cluster cannot be deleted. Container Service allows you to forcibly delete clusters. If your first attempt to delete a cluster fails, you can forcibly delete the cluster and ROS resource stack. However, you still need to manually release the resources that are manually added. An error message appears when an attempt to delete a cluster fails. Select the cluster that you failed to delete and choose More > Delet e in the Actions column. In the dialog box that appears, you can view the resources that are manually added. Select the Force Delet e check box and click OK to delete the cluster and ROS resource stack.
 
-#### View cluster overview
+#### 6.2.11 View cluster overview
 
 The Container Service console provides a cluster overview page. This page displays the information such as application status, component status, and resource monitoring status. This allows you to check the health status of your cluster at your convenience. Procedure
 1. Log on to the Container Service console.
@@ -806,9 +942,9 @@ The Container Service console provides a cluster overview page. This page displa
 3. Select the target cluster and namespace. You can view the application status, component status,
 and resource monitoring charts. Applicat ion St at us: displays the statuses of the deployments, pods, and replica sets that are running in the cluster. Green sections indicate a normal state and yellow sections indicate an exception state. Node St at us: displays the statuses of the nodes in the cluster. Component St at us: Components are deployed in the kube-system namespace. Core components are used, such as the scheduler, controller-manager, and etcd. Event s: displays events such as warnings and errors. If no events are displayed, the cluster is running in the normal state. Monit oring: displays CPU and memory monitoring charts. CPU usage is measured in cores or millicores and accurate to three decimal places. A millicore is one thousandth of a core. Memory usage is measured in GiB and accurate to three decimal places. For more information, see Meaning of CPU and Meaning of memory.
 
-### Nodes
+### 6.3 Nodes
 
-#### Add existing ECS instances to a Container
+#### 6.3.1 Add existing ECS instances to a Container Service cluster
 
 Service cluster You can add existing Elastic Compute Service (ECS) instances to a Container Service cluster in the Container Service console. ECS instances can be added only as worker nodes to a Container Service cluster. This topic describes how to manually add ECS instances to a Container Service cluster. This topic also describes how to configure Container Service to automatically add ECS instances to a Container Service cluster. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. The ECS instances that you want to add are added to the security group of the nodes in your cluster. The security group is automatically created when the cluster is initialized. For more information, see the Add an ECS instance to a security group topic in the Security groups chapter of ECS User Guide. Limits Make sure that you have a sufficient node quota in the cluster. The ECS instances that you want to add to the Container Service cluster must be deployed in the same region and virtual private cloud (VPC) as the cluster. The ECS instances that you want to add must belong to the account that owns the cluster. Nodes that run the following operating systems can be added to a Container Service cluster: Alibaba Cloud Linux 2 CentOS 7.x CentOS 8.x or later are not supported. Limits on ECS instances Number of securit y groups When an existing instance is added to a node pool, the instance is also added to the security group of the node pool. The system skips this step if the instance is already in the security group. Make sure that the number of security groups to which the instance belongs does not exceed the upper limit after the instance is added to the node pool. For more information about the limits of ECS instances, see the Limits topic of ECS User Guide. Limit s on securit y group rules A security group acts as a virtual firewall to control the inbound and outbound traffic of ECS instances to improve security. Security groups are classified into basic security groups, advanced security groups, and managed security groups. Managed security groups are created by cloud services. The rules of a managed security group can be modified only by the cloud service that created the managed security group. When you create a node pool, do not select a managed security group. Otherwise, you fail to create the node pool. The following table compares basic security groups and advanced security groups.
 
@@ -883,7 +1019,7 @@ Act ions column.
 3. On the node pool details page, click the Nodes tab.
 You can view the newly added nodes.
 
-#### View nodes
+#### 6.3.2 View nodes
 
 You can view nodes of a Kubernetes cluster by using the Container Service console, kubectl, or Kubernetes Dashboard. View nodes by using kubectl To view the nodes in a cluster by using kubectl, you must Connect to a Kubernetes cluster through kubectl. Connect to a cluster by using kubectl and run the following command to view the nodes in the cluster:
 
@@ -911,7 +1047,7 @@ column.
 4. In the left-side navigation pane of the details page, choose Nodes > Nodes to view the nodes in
 the cluster.
 
-#### Manage node labels
+#### 6.3.3 Manage node labels
 
 You can manage node labels in the Container Service console. You can add a label to multiple nodes at a time, filter nodes by label, and delete labels. You can use labels to schedule nodes. For more information, see Set node scheduling. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. Add a label to multiple nodes at a time
 1. Log on to the Container Service console.
@@ -932,7 +1068,7 @@ column.
 6. Select a node, find the label that you want to delete, and then click the
 icon. In the message that appears, click Conf irm. After the label is deleted, it is removed from the Labels column.
 
-#### Set node schedulability
+#### 6.3.4 Set node schedulability
 
 You can mark a node as schedulable or unschedulable in the Container Service console. This allows you to optimize the distribution of the loads on each node. This topic describes how to set node schedulability. Procedure
 1. Log on to the Container Service console.
@@ -945,7 +1081,7 @@ Unschedulable in the Actions column.
 6. In the dialog box that appears, you can change the status of the node.
 If you select Set t o Unschedulable, pods will not be scheduled to this node when you deploy new applications. If you select Set t o Unschedulable and Drain, pods will not be scheduled to this node when you deploy new applications. Pods on this node will be evicted, except for the pods that are managed by DaemonSets. In this example, Set t o Unschedulable is selected. Click OK. The status of the node is changed to Unschedulable. What's next Pods will not be scheduled to the node when you deploy new applications.
 
-#### Remove a node
+#### 6.3.5 Remove a node
 
 To restart or release an Elastic Compute Service (ECS) node in a cluster, you must first remove the node from the cluster. This topic describes how to remove a node. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. You can connect to the Kubernetes cluster by using kubectl. For more information, see Connect to a Kubernetes cluster through kubectl. Context When you remove a node, pods that run on the node are migrated to other nodes. This may cause service interruption. We recommend that you remove nodes during off-peak hours. Unknown errors may occur when you remove nodes. Before you remove nodes, we recommend that you back up data on these nodes. Nodes remain in the unschedulable state when they are being removed. You can remove only worker nodes. You cannot remove master nodes. Procedure
 1. Run the following command to migrate the pods on the node that you want to remove to other
@@ -967,7 +1103,7 @@ To remove multiple nodes at a time, select the nodes that you want to remove on 
 Select Drain t he Node to migrate the pods on the node to other nodes. If you select this option, make sure that the other nodes have sufficient resources for these pods. Select Release ECS Inst ance to release the ECS instance where the node is deployed. Select this option to release only pay-as-you-go ECS instances. Subscription ECS instances are automatically released after the subscription expires. If you do not select Release ECS Inst ance, you are still billed for the ECS instance where the node is deployed.
 8. In the Remove Node message, click OK.
 
-#### View node resource usage
+#### 6.3.6 View node resource usage
 
 You can view the resource usage of the nodes in a cluster in the Container Service console. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. Procedure
 1. Log on to the Container Service console.
@@ -978,9 +1114,9 @@ column.
 5. On the Nodes page, find the node that you want to manage and choose More > Det ails in the
 Act ions column. You can view the request rate and usage rate of CPU and memory resources on each node. CPU request rate = sum (The amount of CPU resources requested by all pods on the node) / Total CPU resources of the node CPU usage rate = sum (The amount of CPU resources used by all pods on the node) / Total CPU resources of the node Memory request rate = (The amount of memory resources requested by all pods on the node) / Total memory resources of the node Memory usage rate = sum (The amount of memory resources used by all pods on the node) / Total memory resources of the node You can adjust the workload of a node based on the resource usage. For more information, see Set node scheduling. When the request or usage rate of a node reaches 100%, pods are not scheduled to the node.
 
-#### Node pools
+#### 6.3.7 Node pools
 
-##### Create a node pool
+##### 6.3.7.1 Create a node pool
 
 Container Service allows you to create node pools and manage nodes in a cluster by node pool. For example, you can centrally manage the labels and taints of the nodes in a node pool. This topic describes how to create a node pool in the Container Service console. Prerequisites A Container Service cluster is created. For more information, see Create a Kubernetes cluster. The Kubernetes version of the cluster must be later than 1.9. By default, you can deploy at most 100 nodes in a Container Service cluster. Procedure
 1. Log on to the Container Service console.
@@ -994,7 +1130,7 @@ settings. For more information about the parameters, see Create a Kubernetes clu
 7. Click Conf irm Order.
 On the Node Pools page, check the st at us of the node pool. If the node pool is in the Init ializing state, the node pool is being created. After the node pool is created, the node pool is in the Act ive st at e. What's next After the node pool is created, go to the Node Pools page, find the cluster, and then click Det ails in the Act ions column to view the details of the node pool.
 
-##### Scale out a node pool
+##### 6.3.7.2 Scale out a node pool
 
 You can use a node pool to manage multiple nodes in a Kubernetes cluster as a group. For example, you can centrally manage the labels and taints of the nodes in a node pool. This topic describes how to scale out a node pool in the Container Service console. Prerequisites A node pool is created. For more information, see Create a node pool. Procedure
 1. Log on to the Container Service console.
@@ -1010,7 +1146,7 @@ configurations of the node pool. For more information, see Create a Kubernetes c
 8. Click Submit .
 On the Node Pools page, the st at e of the node pool is Scaling. This indicates that the scale-out event is in progress. After the scale-out event is completed, the st at e of the node pool changes to Act ive. What's next Click Det ails in the Actions column for the node pool. On the Nodes tab, you can check the nodes that are added to the node pool.
 
-##### Schedule an application pod to a specific node
+##### 6.3.7.3 Schedule an application pod to a specific node pool
 
 pool Label is an important concept of Kubernetes. Services, Deployments, and pods are associated with each other by labels. You can configure pod scheduling policies based on node labels. This allows you to schedule pods to nodes that have specific labels. This topic describes how to schedule an application pod to a specific node pool. Procedure
 1. Add a label to the nodes in a node pool.
@@ -1103,9 +1239,9 @@ run only on a node that has the pod: nginx label.
 
 Result In the preceding example, all application pods are scheduled to the xxx.xxx.0.74 node. This node has the pod: nignx label.
 
-### Storage
+### 6.4 Storage
 
-#### Overview
+#### 6.4.1 Overview
 
 You can create disk volumes and Object Storage Service (OSS) volumes in the Container Service console to enable data persistence for stateful applications. Both statically provisioned volumes and dynamically provisioned volumes are supported. The following table describes the types of volumes that different storage services support.
 
@@ -1115,7 +1251,7 @@ You can create disk volumes and Object Storage Service (OSS) volumes in the Cont
 | Apsara File Storage NAS (NAS) | You can use statically provisioned NAS volumes in the following ways: Use the FlexVolume plug-in Directly mount as volumes By creating a PV and a PVC Use the Network File System (NFS) driver of Kubernetes Not e You must install an NFS client on the node. | Supported Not e You must install an NFS client on the node. |
 | OSS | You can use statically provisioned OSS volumes in the following ways: Directly mount as volumes By creating a PV and a PVC | Not supported |
 
-#### Mount disk volumes
+#### 6.4.2 Mount disk volumes
 
 You can mount disks as volumes. Container Service allows you to mount disks as persistent volumes (PVs) in Kubernetes clusters. Disks can be mounted to Kubernetes clusters as the following volume types: Statically provisioned disk volumes You can use statically provisioned disk volumes in the following ways: Mount disks as volumes Mount disk volumes by creating a PV and a persistent volume claim (PVC) Dynamically provisioned disk volumes Usage not es You can mount a disk only to one pod. Before you mount a disk to a pod, you must create the disk and obtain its disk ID. The disk must meet the following capacity requirements: If the disk is a basic disk, it must be at least 5 GiB in size. If the disk is an ultra disk, it must be at least 20 GiB in size. If the disk is a standard SSD, it must be at least 20 GiB in size. volumeId: the ID of the disk that you want to mount. The value must be the same as those of volumeName and PV Name. A disk can be mounted only to a node that is deployed in the same zone as the disk. Only pay-as-you-go disks can be mounted. If you change the billing method of an Elastic Compute Service (ECS) instance in the cluster from pay-as-you-go to subscription, you cannot change the billing method of its disks to subscription. Otherwise, the disks cannot be mounted to the cluster. Statically provisioned disk volumes You can mount disks as volumes or by creating PVs and PVCs. Prerequisit es A disk is created in the ECS console. Mount a disk as a volume Use the following disk-deploy.yaml file to create a pod:
 
@@ -1298,7 +1434,7 @@ spec:
           storage: 10Gi
 ```
 
-#### Mount NAS volumes
+#### 6.4.3 Mount NAS volumes
 
 Container Service allows you to mount Apsara File Storage NAS (NAS) file systems as persistent volumes (PVs) in Container Service clusters. NAS file systems can be mounted to Kubernetes clusters as the following volume types: Statically provisioned NAS volumes You can statically provision NAS volumes in the following ways: Use the FlexVolume plug-in Directly mount NAS file systems as volumes Mount NAS file systems by creating a PV and a persistent volume claim (PVC) Use the Network File System (NFS) driver Dynamically provisioned NAS volumes Prerequisites A NAS file system is created in the NAS console and a mount target is added. The mount target is used to mount the NAS file system to the Kubernetes cluster. The NAS file system and your cluster are deployed in the same virtual private cloud (VPC). Statically provisioned NAS volumes You can use the FlexVolume plug-in provided by Alibaba Cloud or the NFS driver provided by Kubernetes to mount NAS file systems. Use t he FlexVolume plug-in You can use the FlexVolume plug-in to directly mount a NAS file system as a volume. You can also mount a NAS file system by creating a PV and a PVC. NAS is a shared storage service. You can mount a NAS file system to multiple pods. server: the mount target of the NAS volume. path: the directory to which the NAS volume is mount. You can specify a subdirectory. If the specified subdirectory does not exist, the system automatically creates the subdirectory. vers: the version of the NFS protocol. Version 4.0 is supported. mode: the access permissions on the directory of the NAS file system. If the root directory of the NAS file system is specified, you cannot modify the access permissions. If the NAS file system stores a large amount of data, the mounting operation may be time-consuming or even fail. Therefore, we recommend that you do not set the mode parameter. Mount a NAS f ile syst em as a volume Use the following `nas-deploy.yaml` file to create a pod:
 
@@ -1538,7 +1674,7 @@ spec:
           name: html
 ```
 
-#### Mount OSS volumes
+#### 6.4.4 Mount OSS volumes
 
 You can mount Object Storage Service (OSS) buckets as volumes in Kubernetes clusters. You can mount OSS buckets in the following ways: Mount an OSS bucket as a volume. Mount an OSS bucket by creating a PV and a PVC. Prerequisites To mount an OSS bucket as a statically provisioned volume, you must create an OSS bucket in the OSS console. Background OSS buckets can be mounted only as statically provisioned volumes. An OSS bucket can be shared by multiple pods. bucket: Only buckets can be mounted to a Kubernetes cluster. The subdirectories or files in a bucket cannot be mounted to a Kubernetes cluster. url: specifies the endpoint of the OSS bucket. The endpoint is the domain name that is used to mount the OSS bucket to the Kubernetes cluster. akId: specifies your AccessKey ID. akSecret: specifies your AccessKey secret. otherOpts: the custom parameters that are used to mount the OSS bucket. The parameters must be in the following format: `-o *** -o ***` . To mount an OSS bucket as a volume, you must create a Secret with your AccessKey pair when you deploy the flexvolume Service. Mount an OSS bucket as a statically provisioned volume Mount an OSS bucket as a volume Use the following oss-deploy.yaml file to create a pod:
 
@@ -1640,7 +1776,7 @@ spec:
 
 Can I mount an OSS bucket as a dynamically provisioned volume? No. Dynamically provisioned OSS volumes are not supported.
 
-#### Create a PVC
+#### 6.4.5 Create a PVC
 
 This topic describes how to create a persistent volume claim (PVC). Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. A persistent volume (PV) is created. In this example, a PV created from a disk is used. For more information, see Use Apsara Stack disks. By default, PVCs are associated with PVs that have the alicloud-pvname label. This label is added to all PVs that are created in the Container Service console. If a PV does not have this label, manually add the label to the PV before you can associate the PV with a PVC. Procedure
 1. Log on to the Container Service console.
@@ -1654,7 +1790,7 @@ Claims.
 PVC T ype: The PVC and PV must be of the same type. You can select Cloud Disk, NAS, and OSS. Name: Enter the name of the PVC. Allocat ion Mode: Use St orageClass, Exist ing Volumes, and Creat e Volume are supported. In this example, Use St orageClass or Exist ing Volumes is selected. Exist ing St orage Class: Click Select . In the Select Storage Class dialog box, find the Storage Class that you want to use and click Select in the Actions column. This parameter is required only when you set Allocation Mode to Use St orageClass. Exist ing Volumes: Click Select PV. In the Select PV dialog box, find the PV that you want to use and click Select in the Actions column. This parameter is required only when you set Allocation Mode to Exist ing Volumes. Capacit y: Specifies the capacity used by the PVC. The value cannot be larger than the total capacity of the associated PV. Access Mode: The default value is ReadWriteOnce. This parameter is required only when you set Allocation Mode to Use St orageClass. If your cluster has a PV that is not used, but you cannot find it in the Select PV dialog box, the reason may be that the PV does not have the alicloud-pvname label. If you cannot find available PVs, click Persist ent Volumes in the left-side navigation pane. On the Persistent Volumes page, find the PV that you want to use, click Manage Labels in the Actions column, and then add a label to the PV. On the Manage Labels dialog box, set the key of the label to alicloud-pvname and the value to the name of the PV. If the PV is created from a disk, the disk ID is used as the name of the PV.
 7. Go to the Persistent Volume Claims page. You can find the newly created PVC in the list.
 
-#### Use PVCs
+#### 6.4.6 Use PVCs
 
 You can use persistent volume claims (PVCs) to mount volumes for applications. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. A PVC is created. In this example, a PVC named pvc-disk is created to mount a disk volume. For more information, see Create PVCs. Procedure
 1. Log on to the Container Service console.
@@ -1675,9 +1811,9 @@ View Det ails to view detailed information about the pod.
 11. On the details page of the pod, click the Volumes tab. You can find that the pod is associated
 with the pvc-disk PVC.
 
-### Network management
+### 6.5 Network management
 
-#### Plan the network of a Container Service
+#### 6.5.1 Plan the network of a Container Service cluster
 
 cluster When you create a Container Service cluster, you must specify a virtual private cloud (VPC), vSwitches, the pod CIDR block, and the Service CIDR block. Therefore, we recommend that you plan the IP address of each Elastic Compute Service (ECS) instance, the pod CIDR block, and the Service CIDR block before you create the cluster. This topic describes how to plan CIDR blocks for a Container Service cluster that is deployed in a VPC and how each CIDR block is used. VPC-related CIDR blocks and cluster-related CIDR blocks Before you create a VPC, you must plan the CIDR block of the VPC and the CIDR blocks of vSwitches in the VPC. Before you create a Container Service cluster, you must plan the pod CIDR block and the Service CIDR block. Container Service supports the Terway and Flannel network plug-ins. Use t he T erway net work plug-in If your cluster uses the Terway network plug-in, you must configure the following parameters: VPC When you create a VPC, you must select a CIDR block for the VPC. The valid VPC CIDR blocks are 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. vSwitch The IP addresses of Elastic Compute Service (ECS) instances are assigned from vSwitches. This allows nodes to communicate with each other. The CIDR blocks of vSwitches in the VPC must be subsets of the VPC CIDR block. This means that the vSwitch CIDR blocks must be the same as or fall within the VPC CIDR block. Take note of the following items: You must select vSwitches that belong to the VPC where the cluster resides. The system allocates IP addresses from the CIDR block of a vSwitch to the ECS instances that are attached to the vSwitch. You can create multiple vSwitches in a VPC. However, the CIDR blocks of these vSwitches cannot overlap with each other. You must specify a pod vSwitch for each vSwitch in the same zone. Pod vSwitch The IP addresses of pods are assigned from the CIDR blocks of pod vSwitches. This allows pods to communicate with each other. A pod is a group of containers in a Kubernetes cluster. Each pod has an IP address. The CIDR blocks that you specify when you create pod vSwitches in the VPC must be subsets of the VPC CIDR block. Take note of the following items: You must select vSwitches that belong to the VPC where the cluster resides. In a Container Service cluster that has Terway installed, the IP addresses of pods are assigned by pod vSwitches. The CIDR blocks of pod vSwitches cannot overlap with the CIDR blocks of vSwitches. The CIDR blocks of pod vSwitches cannot overlap with the Service CIDR block. You must specify a pod vSwitch for each vSwitch in the same zone. Service CIDR block The Service CIDR block provides IP addresses for ClusterIP type Services. Service is a Kubernetes concept. Each Service has an IP address. Take note of the following items: The IP address of a Service is effective only within the cluster. The Service CIDR block cannot overlap with the CIDR blocks of vSwitches. The Service CIDR block cannot overlap with the CIDR blocks of Pod vSwitches. Use t he Flannel net work plug-in If your cluster uses the Flannel network plug-in, you must configure the following parameters: VPC When you create a VPC, you must select a CIDR block for the VPC. The valid VPC CIDR blocks are 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. vSwitch The IP addresses of ECS instances are assigned from vSwitches. This allows nodes to communicate with each other. The CIDR blocks of vSwitches in the VPC must be subsets of the VPC CIDR block. This means that the vSwitch CIDR blocks must be the same as or fall within the VPC CIDR block. Take note of the following items: You must select vSwitches that belong to the VPC where the cluster resides. The system allocates IP addresses from the CIDR block of a vSwitch to the ECS instances that are attached to the vSwitch. You can create multiple vSwitches in a VPC. However, the CIDR blocks of these vSwitches cannot overlap with each other. Pod CIDR block The IP addresses of pods are allocated from the pod CIDR block. This allows pods to communicate with each other. A pod is a group of containers in a Kubernetes cluster. Each pod has an IP address. Take note of the following items: The pod CIDR block cannot overlap with the CIDR blocks of vSwitches. The pod CIDR block cannot overlap with the Service CIDR block. For example, if the VPC CIDR block is 172.16.0.0/12, the pod CIDR block cannot be 172.16.0.0/16 or 172.17.0.0/16, because these CIDR blocks are subsets of 172.16.0.0/12. Service CIDR block The Service CIDR block provides IP addresses for ClusterIP type Services. Service is a Kubernetes concept. Each Service has an IP address. Take note of the following items: The IP address of a Service is effective only within the cluster. The Service CIDR block cannot overlap with the CIDR blocks of vSwitches. The Service CIDR block cannot overlap with the CIDR blocks of Pod vSwitches. Plan the cluster network To use Container Service clusters that are deployed on Alibaba Cloud, you must first set up networks for the clusters based on the cluster sizes and business scenarios. You can refer to the following tables to set up networks for Kubernetes clusters. Change specifications as needed in unspecified scenarios. Plane the VPC
 
@@ -1721,7 +1857,7 @@ How to plan CIDR blocks Scenario 1: One VPC and one Kubernet es clust er This is
 
 In this scenario, make sure that the following conditions are met when you create a cluster in VPC 1 or VPC 2: The CIDR blocks of the cluster do not overlap with the CIDR block of VPC 1. The CIDR blocks of the cluster do not overlap with the CIDR block of VPC 2. The CIDR blocks of the cluster do not overlap with those of other clusters in VPC 1 and VPC 2. The CIDR blocks of the cluster do not overlap with those of pods in VPC 1 and VPC 2. The CIDR blocks of the cluster do not overlap with those of Services in VPC 1 and VPC 2. In this example, you can set the pod CIDR block of the cluster to a subset of 10.0.0.0/8. All IP addresses in the destination CIDR block of VPC 2 can be considered in use. Therefore, the CIDR blocks of the cluster cannot overlap with the destination CIDR block. To access pods in VPC 1 from VPC 2, you must configure a route in VPC 2. The route must point to the pod CIDR block of a cluster in VPC 1. Scenario 4: One VPC and one dat a cent er If a VPC is connected to a data center, packets of specific CIDR blocks are routed to the data center. In this case, the pod CIDR block of a cluster in the VPC cannot overlap with these CIDR blocks. To access pods in the VPC from the data center, you must configure a route in the data center to enable VBR-to-VPC peering connection.
 
-#### Set access control for pods
+#### 6.5.2 Set access control for pods
 
 This topic describes how to use network policies to control access between pods. Prerequisites You have created a Kubernetes cluster and selected the T erwaynet work plug-in. For more information, see Create a Kubernetes cluster. Context You can declare network policies to control access between pods and thus prevent applications from interfering each other. Procedure For more information about standard Kubernetes network policies, see Network policies.
 1. Create a pod that runs as a server and attach `label run=nginx` to the pod. For more
@@ -1787,7 +1923,7 @@ kubectl apply -f client.yaml kubectl apply -f client-label.yaml
 
 You can see that only the pod with the required label can access the server.
 
-#### Set bandwidth limits for pods
+#### 6.5.3 Set bandwidth limits for pods
 
 This topic describes how to limit the bandwidth of inbound and outbound traffic that flows through a pod. Prerequisites You have created a Kubernetes cluster and selected the T erwaynet work plug-in. For more information, see Create a Kubernetes cluster. Context Throttling pods helps prevent performance degradation of the host or other workloads when certain pods occupy excessive resources. Method You can use the `k8s.aliyun.com/ingress-bandwidth` and `k8s.aliyun.com/egress-bandwidth` annotations for pod throttling.
 
@@ -1852,7 +1988,7 @@ kubectl apply -f client-deploy.yaml
 kubectl exec -it client sh
 ```
 
-#### Work with Terway
+#### 6.5.4 Work with Terway
 
 Terway is an open source Container Network Interface (CNI) plug-in developed by Alibaba Cloud. Terway works with Virtual Private Cloud (VPC) and allows you to use standard Kubernetes network policies to regulate how containers communicate with each other. You can use Terway to enable internal communication within a Kubernetes cluster. This topic describes how to use Terway. Context Terway is a network plug-in developed by Alibaba Cloud for Container Service. Terway allows you to set up networks for pods by associating Alibaba Cloud elastic network interfaces (ENIs) with the pods. Terway also allows you to use standard Kubernetes network policies to regulate how containers communicate with each other. In addition, Terway is compatible with Calico network polices. In a cluster that has Terway installed, each pod has a separate network stack and is assigned a separate IP address. Pods on the same Elastic Compute Service (ECS) instance communicate with each other by forwarding packets inside the ECS instance. Pods on different ECS instances communicate with each other through ENIs in the VPC where the ECS instances are deployed. This improves communication efficiency because no tunneling technologies such as Virtual Extensible Local Area Network (VXLAN) are required to encapsulate packets. How Terway works Comparison between Flannel and Terway When you create a Kubernetes cluster, you can choose one of the following network plug-ins: Terway: a network plug-in developed by Alibaba Cloud for Container Service. Terway allows you to assign ENIs to containers and use standard Kubernetes network policies to regulate how containers communicate with each other. Terway also supports bandwidth throttling on individual containers. Terway uses flexible IP Address Management (IPAM) policies to allocate IP addresses to containers. This avoids IP address waste. If you do not want to use network policies, you can select Flannel as the network plug-in. Otherwise, we recommend that you select Terway. Flannel: an open source CNI plug-in, which is simple and stable. You can use Flannel with VPC of Alibaba Cloud. This allows your clusters and containers to run in high-performance and stable networks. However, Flannel provides only basic features. It does not support standard Kubernetes network policies. For more information, see Flannel.
 
@@ -1909,9 +2045,9 @@ i. In the left-side navigation pane, click VSwit ches. ii. Select the region of 
 4. Repeat Step to create a pod vSwitch. Set the name of the pod vSwitch to
 pod_swit ch_192_168_32_0_19 and IPv4 CIDR Block to 192.168.32.0/19. Step 2: Set up networks for a cluster that uses Terway To install Terway in a cluster and set up networks for the cluster, set the following parameters. A Kubernetes cluster is used as an example to show how to set up networks for a cluster that uses Terway as the network plug-in. For more information about how to create a Kubernetes cluster, see Create a Kubernetes cluster. VPC: Select the VPC created in Step 1: Plan CIDR blocks. VSwit ch: Select the vSwitch created in Step 1: Plan CIDR blocks. Net work Plug-in: Select T erway. Pod VSwit ch: Select the pod vSwitch created in Step 1: Plan CIDR blocks. Service CIDR: Use the default settings.
 
-### Namespaces
+### 6.6 Namespaces
 
-#### Create a namespace
+#### 6.6.1 Create a namespace
 
 You can create a namespace in the Container Service console. Prerequisites A Kubernetes cluster is created. Context In a Kubernetes cluster, you can use namespaces to create multiple virtual spaces. When a large number of users share a cluster, you can use namespaces to divide different workspaces and allocate cluster resources to different tasks. You can also use resource quotas to allocate resources to each namespace. Procedure
 1. Log on to the Container Service console.
@@ -1931,7 +2067,7 @@ Create a namespace
 7. Click OK.
 You can find the namespace that you created on the Namespace page.
 
-#### Set resource quotas and limits
+#### 6.6.2 Set resource quotas and limits
 
 You can set resource quotas and limits for a namespace in the Container Service console. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. A sample namespace named t est is created. For more information, see Create a namespace. You are connected to a master node of the cluster. For more information, see Connect to a Kubernetes cluster through kubectl. Context By default, a running pod uses the CPU and memory resources of a node without limit. This means that pods can compete for computing resources of a cluster. As a result, the pods in a namespace may exhaust all of the computing resources. Namespaces can be used as virtual clusters to serve multiple purposes. We recommend that you set resource quotas for namespaces. For a namespace, you can set quotas on resources such as CPU, memory, and pod quantity. For more information, see Resource Quotas. Procedure
 1. Log on to the Container Service console.
@@ -1953,7 +2089,7 @@ NAME AGE limitrange/limits 8m NAME AGE resourcequota/quota 8m
 Name: limits Namespace: test Type Resource Min Max Default Request Default Limit Max Limit/Request Ratio ---- -------- --- --- --------------- ------------- ----------------------- Container cpu - - 100m 500m - Container memory - - 256Mi 512Mi - Name: quota Namespace: test Resource Used Hard -------- ---- ---configmaps 0 100 limits.cpu 0 2 limits.memory 0 4Gi persistentvolumeclaims 0 50 pods 0 50 requests.storage 0 1Ti secrets 1 10 services 0 20 services.loadbalancers 0 5
 ```
 
-#### Modify a namespace
+#### 6.6.3 Modify a namespace
 
 You can modify an existing namespace. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. A sample namespace named t est is created. For more information, see Create a namespace. Context When you modify a namespace, you can add, delete, or modify the labels that are added to the namespace based on your requirements. Procedure
 1. Log on to the Container Service console.
@@ -1967,7 +2103,7 @@ modify the label. For example, you can change the key-value pair of the label to
 7. Click OK.
 You can find that the labels of the namespace on the Namespace page are updated.
 
-#### Delete a namespace
+#### 6.6.4 Delete a namespace
 
 You can delete namespaces that are no longer in use. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. A sample namespace named t est is created. For more information, see Create a namespace. Context When you delete a namespace, all resource objects under the namespace are deleted. Proceed with caution. Procedure
 1. Log on to the Container Service console.
@@ -1979,12 +2115,11 @@ column.
 6. In the message that appears, click Conf irm.
 Return to the Namespace page. You can find that the namespace is deleted. Resource objects in the namespace are also deleted.
 
-### Applications
+### 6.7 Applications
 
-#### Create a stateless application by using a
+#### 6.7.1 Create a stateless application by using a Deployment
 
 Deployment You can deploy a stateless application by using a Deployment. A Deployment can be created by using an image, an orchestration template, or kubectl commands. This topic describes how to create a stateless NGINX application by using an image, an orchestration template, and kubectl commands. Prerequisites A Container Service cluster is created. For more information, see Create a Kubernetes cluster. A kubectl client is connected to the cluster. For more information, see Connect to a cluster through kubectl. A private image repository is created and your image is uploaded to the repository. Create a Deployment from an image St ep 1: Conf igure basic set t ings
-1. Log on to the Container Service console
 2. In the left-side navigation pane, click Clust ers.
 3. On the Clust ers page, find the cluster that you want to manage and click its name or click Det ails
 in the Act ions column.
@@ -2317,7 +2452,7 @@ For more information, see Step 3: Configure advanced settings.
 9. In the left-side navigation pane of the cluster details page, choose Workloads > Deployment s.
 On the Deployment s page, check the status of the application. If the application is running as normal, it indicates that the image is successfully pulled by using the Secret that you configured.
 
-#### Use a StatefulSet to create a stateful
+#### 6.7.2 Use a StatefulSet to create a stateful application
 
 application Container Service allows you to deploy stateful applications by using StatefulSets in the Container Service console. This topic describes how to create a stateful NGINX application and the features of StatefulSets. Prerequisites A Container Service cluster is created. For more information, see Create a Kubernetes cluster. A kubectl client is connected to the cluster. For more information, see Connect to a cluster through kubectl. A persistent volume claim (PVC) is created. For more information, see Create a PVC. Background information StatefulSets provide the following features.
 
@@ -2466,7 +2601,7 @@ Expected output:
 statefulset
 ```
 
-#### Create a DaemonSet
+#### 6.7.3 Create a DaemonSet
 
 A DaemonSet ensures that each node runs a copy of a pod. You can use a DaemonSet to run a log collection daemon, a monitoring daemon, or a system management application on each node. This topic describes how to create a DaemonSet for a Container Service cluster. Create a DaemonSet in the Container Service console Creat e a DaemonSet f rom an image
 1. Log on to the Container Service console.
@@ -2546,7 +2681,7 @@ kubectl create -f daemonset.yaml
 
 If `daemonset.apps/fluentd-elasticsearch created` is returned, the DaemonSet is created. More operations After you create a DaemonSet, you can perform the following operations: On the DaemonSets page, find the DaemonSet that you want to manage and click Det ails in the Act ions column. On the details page, you can view basic information about the DaemonSet. The information includes pods, access method, events, and logs. On the DaemonSets page, find the DaemonSet that you want to manage and choose More > View in YAML in the Act ions column to view the YAML file of the DaemonSet. On the DaemonSets page, find the DaemonSet that you want to manage and choose More > Delet e in the Act ions column to delete the DaemonSet.
 
-#### Create a Job
+#### 6.7.4 Create a Job
 
 You can use a Job to create an application in the Container Service console. This topic describes how to use a Job to create a busybox application and the operations that you can perform on the application. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. Context A Job processes multiple short-lived, one-off tasks at a time to ensure that one or more pods in the tasks terminate with success. Kubernetes supports the following types of Jobs: Non-parallel Jobs: In most cases, a Job of this type starts only one pod unless the pod fails. The Job is considered complete when the pod terminates with success. Jobs with a fixed completion count: A non-zero positive value is specified for `.spec.completions` . A Job of this type starts pods one after one. The Job is considered complete when the number of
 
@@ -2598,7 +2733,7 @@ In the Labels and Annot at ions section, click Add to configure labels and annot
 9. Click Creat e.
 In the left-side navigation pane, choose Workloads > Jobs. On the Jobs page, you can view the created Job. Check the status of the pods that are provisioned for the Job in the St at us column. In this example, two pods are created to run in parallel based on the Job configuration. If the Job is complete, you can view the end time on the Jobs page. If the Job is not complete, the end time is not displayed. More operations In the left-side navigation pane, click Clust ers. Find the cluster that you want to manage and click the cluster name or click Det ails in the Act ions column. On the details page of the cluster, choose Workloads > Jobs. Find the Job that you want to manage and click the Job name or click Det ails in the Act ions column. On the Job details page, you can scale and ref resh the application. You can also view t he YAML f ile of the application. Scale: In the upper-right corner of the Job details page, click Scale to scale the application to a required number of pods. View the YAML file: In the upper-right corner of the Job details page, click View in YAML. Then, you can updat e and download the YAML file. You can also save the YAML file as a template. Refresh: In the upper-right corner of the Job details page, click Ref resh to refresh the Job.
 
-#### Create a CronJob
+#### 6.7.5 Create a CronJob
 
 CronJobs are used to create periodic and recurring tasks. For example, you can create CronJobs to run backups or send emails. Jobs are used to process short-lived, one-off tasks. A CronJob creates one or more Jobs based on a specific schedule. This topic describes how to create a CronJob. Create a CronJob in the Container Service console Creat e a CronJob f rom an image
 1. Log on to the Container Service console.
@@ -2678,7 +2813,7 @@ kubectl create -f cronjob.yaml
 
 If `cronjob.batch/hello created` is returned, the CronJob is created. More operations After you create a CronJob, you can perform the following operations: On the CronJobs page, find the created CronJob. Click Det ails in the Act ions column to view basic information about the CronJob. The information includes the Job list, events, and logs. On the CronJobs page, find the created CronJob. You can choose More > View in YAML in the Act ions column to view the YAML file of the CronJob. You can also choose More > St op to stop the CronJob or choose More > Delet e to delete the CronJob.
 
-#### Create a Service
+#### 6.7.6 Create a Service
 
 You can create a Service for your application in the Container Service console to provide access to the application. In Kubernetes, a Service is an abstraction that defines a logical set of pods and a policy by which to access the pods. This pattern is also known as a microservice. A label selector determines whether the set of pods can be accessed by the Service. Each pod in Kubernetes clusters has its own IP address. However, pods are frequently created and deleted. Therefore, if you directly expose pods to external access, high availability is not ensured. Services decouple the frontend from the backend. The frontend clients do not need to be aware of which backend pods are used. This provides a loosely-coupled microservice architecture. For more information, see Kubernetes Services. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. Step 1: Create a Deployment
 1. Log on to the Container Service console.
@@ -2707,7 +2842,7 @@ Name: Enter a name for the Service. In this example, nginx-svc is used. T ype: S
 7. Click Creat e. After the nginx-svc Service is created, it appears on the Services page.
 On the Services page, you can view basic information about the Service. You can also access its external endpoint by using a browser.
 
-#### View a Service
+#### 6.7.7 View a Service
 
 You can view details about a Service in the Container Service console. Context Each pod in Kubernetes clusters has its own IP address. However, pods are frequently created and deleted. Therefore, it is not practical to directly expose pods to external access. Services decouple the frontend from the backend, which provides a loosely-coupled microservice architecture. Procedure
 1. Log on to the Container Service console.
@@ -2718,7 +2853,7 @@ column.
 5. On the Services page, select the namespace, find the Service that you want to view, and then click
 Det ails in the Actions column. On the details page, you can view detailed information about the Service.
 
-#### Update a Service
+#### 6.7.8 Update a Service
 
 You can update a Service in the Container Service console. This topic describes how to update a Service. Procedure
 1. Log on to the Container Service console.
@@ -2731,7 +2866,7 @@ click Updat e in the Actions column.
 6. In the Updat e Service dialog box, modify the configurations and click Updat e.
 In the Service list, find the Service that you updated and click Det ails in the Actions column to view configuration changes. In this example, the labels of the Service are modified.
 
-#### Delete a Service
+#### 6.7.9 Delete a Service
 
 This topic describes how to delete a Service. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. A Service is created. For more information, see Create Servcies. Procedure
 1. Log on to the Container Service console.
@@ -2743,7 +2878,7 @@ column.
 click Delet e in the Actions column.
 6. In the message that appears, click Conf irm.
 
-#### Use a trigger to redeploy an application
+#### 6.7.10 Use a trigger to redeploy an application
 
 You can create a trigger and use it to redeploy an application. This topic describes how to use a trigger. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. An application is created. Then, a trigger is created for the application and the application is used to test the trigger. In this example, an NGINX application is created. Procedure
 1. Log on to the Container Service console.
@@ -2764,7 +2899,7 @@ After the new pod is deployed, the original pod is automatically deleted. What's
  curl https://cs.console.aliyun.com/hook/trigger?token=xxxxxxx
 ```
 
-#### Use kritis-validation-hook to
+#### 6.7.11 Use kritis-validation-hook to automatically verify the signatures of container images
 
 automatically verify the signatures of container images This topic describes how to use kritis-validation-hook to automatically verify the signatures of container images. This ensures that only images signed by trusted authorities are deployed and reduces the risk of malicious code execution. Prerequisites The container image is signed. For more information, see the Sign container images chapter in Container Registry Standard Edition of Container Registry User Guide. Procedure
 1. Install the image signature verification component.
@@ -2810,7 +2945,7 @@ kubectl -n default run test-not-signed --image=registry.acs.example/kritis-test/
 
 Not ice When you create a resource after signature verification is enabled, you must specify the image by using the digest of the image, such as @sha256:<hash>.
 
-#### View pods
+#### 6.7.12 View pods
 
 You can view pods in the Container Service console. Procedure
 1. Log on to the Container Service console.
@@ -2822,7 +2957,7 @@ column.
 6. On the Pods page, select the namespace, find the pod that you want to view, and then click View
 Det ails in the Actions column. You can update or delete pods on the Pods page. We recommend that you use Deployments to manage pods if the pods are created by Deployments. On the details page of the pod, you can view detailed information about the pod.
 
-#### Manage pods
+#### 6.7.13 Manage pods
 
 Pods are the smallest deployable units in Kubernetes. A pod runs an instance of an independent application in Kubernetes. Each pod contains one or more containers that are tightly coupled. You can modify pods, view pods, and manually scale the number of pods for an application in the Container Service console. View pods View pod det ails
 1. Log on to the Container Service console.
@@ -2858,7 +2993,7 @@ in the Act ions column.
 5. In the upper part of the Pods page, select a namespace. Find the pod that you want to manage
 and click T erminal in the Act ions column. Then, you can run commands to manage the pod by using the terminal.
 
-#### Schedule pods to specific nodes
+#### 6.7.14 Schedule pods to specific nodes
 
 You can add labels to nodes and schedule pods to the nodes with specified labels. This topic describes how to schedule a pod to a node with specified labels. You can add labels to nodes and then configure `nodeSelector` to schedule pods to nodes with specified labels. For more information about how nodeSelector works, see nodeselector. To meet business requirements, you may want to deploy a controller service on a master node, or deploy services on nodes that use standard SSDs. You can use the following method to schedule pods to nodes with specified labels. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. Step 1: Add a label to a node
 1. Log on to the Container Service console.
@@ -2914,7 +3049,7 @@ label that is added in Step 1.
  status: {}
 ```
 
-#### Simplify application deployment by using
+#### 6.7.15 Simplify application deployment by using Helm
 
 Helm This topic introduces the basic terms and components of Helm and describes how to use Helm to deploy an Apache Spark-based WordPress application in a Kubernetes cluster. Prerequisites A Kubernetes cluster is created in the Container Service console. For more information, see Create a Kubernetes cluster. Tiller is automatically deployed to the cluster when the Kubernetes cluster is created. The Helm CLI is automatically installed on each master node. An Alibaba Cloud chart repository is added to Helm. A Kubernetes version that supports Helm is used. Only Kubernetes 1.8.4 and later support Helm. If the Kubernetes version of your cluster is 1.8.1, you can upgrade the cluster on the Clusters page of the Container Service console. Context Application management is the most challenging task in Kubernetes. The Helm project provides a unified method to package software and manage software versions. You can use Helm to simplify application distribution and deployment. App Catalog is integrated with Helm in the Container Service console and provides extended features based on Helm. App Catalog also supports Alibaba Cloud chart repositories to help you accelerate application deployments. You can deploy applications in the Container Service console or by using the Helm CLI. This topic introduces the basic terms and components of Helm and describes how to use Helm to deploy an Apache Spark-based WordPress application in a Kubernetes cluster. Basic terms Helm is an open source project initiated by Deis. Helm can be used to simplify the deployment and management of Kubernetes applications. Helm serves as a package manager for Kubernetes and allows you to find, share, and use applications built by Kubernetes. Before you use Helm, you must familiarize yourself with the following basic terms: Chart: a packaging format used by Helm. Each chart contains the images, dependencies, and resource definitions that are required to run an application. A chart may contain service definitions in a Kubernetes cluster. A Helm chart is similar to a Homebrew formula, an Advanced Package Tool (APT) dpkg, or a Yum rpm. Release: an instance of a chart that runs in a Kubernetes cluster. A chart can be installed multiple times in a Kubernetes cluster. After a chart is installed, a new release is created. For example, you can install a MySQL chart. If you want to run two databases in your cluster, you can install the MySQL chart twice. Each time a chart is installed, a release is created with a different name. Repository: the storage of charts. Charts are published and stored in repositories. Helm components Helm uses a client-server architecture and consists of the following components: The Helm CLI is the Helm client that runs on your on-premises machine or on the master nodes of a Kubernetes cluster. Tiller is the server-side component and runs in a Kubernetes cluster. Tiller manages the lifecycles of Kubernetes applications. A repository is used to store charts. The Helm client can access the index file and packaged charts in a chart repository over HTTP. Deploy an application in the Container Service console
 1. Log on to the Container Service console.
@@ -2989,13 +3124,13 @@ For more information about Helm commands, see Helm documentation. References Hel
  https://kubeapps.com/ .
 ```
 
-### SLB and Ingress
+### 6.8 SLB and Ingress
 
-#### Overview
+#### 6.8.1 Overview
 
 Container Service allows you to flexibly manage load balancing and customize load balancing policies for Kubernetes clusters. Kubernetes clusters provide you with a variety of methods to access containerized applications. They also allow you to use SLB or Ingress to access internal services and implement load balancing.
 
-#### Use SLB to access Services
+#### 6.8.2 Use SLB to access Services
 
 You can access a Service by using Server Load Balancer (SLB). Procedure
 1. Create an NGINX application by using a CLI.
@@ -3092,7 +3227,7 @@ Annotations are case-sensitive. SLB annotations
 | service.beta.kubernetes.io/aliclou d-loadbalancer-health-check- connect-timeout | For more information, see the CreateLoadBalancerTCPListener chapter of SLB Developers Guide. | N/A |
 | service.beta.kubernetes.io/aliclou d-loadbalancer-health-check- timeout | For more information, see the CreateLoadBalancerTCPListener chapter of SLB Developers Guide. | N/A |
 
-#### Configure Ingress monitoring
+#### 6.8.3 Configure Ingress monitoring
 
 You can enable the virtual host traffic status (VTS) dashboard to view Ingress monitoring data. Enable the VTS dashboard by using the CLI
 1. Add the following configuration item to the Ingress ConfigMap: `enable-vts-status: "true"` .
@@ -3138,7 +3273,7 @@ root@master # kubectl port-forward nginx-ingress-controller-79877595c8-78gq8 -n 
 
 4. Visit `http://localhost:18080/nginx_status` to access the VTS dashboard.
 
-#### Ingresses
+#### 6.8.4 Ingresses
 
 Kubernetes clusters support Ingress rules. You can define Ingress rules to meet your needs for load balancing. In Kubernetes clusters, an Ingress is a set of routing rules that authorize external access to Services in clusters. You can use an Ingress to enable Layer 7 load balancing. You can configure an Ingress with URLs, Server Load Balancing (SLB) instances, SSL connections, and name-based virtual hosts to expose Services to external access. Prerequisites To test a complex routing scenario, an NGINX application is used in this example. A Deployment and multiple Services are created for the NGINX application. Replace Service names with the actual names.
 
@@ -3308,7 +3443,7 @@ spec:
 
 An Ingress that routes Layer 7 traffic to the `http-svc` Service is created.
 
-#### Ingress configurations
+#### 6.8.5 Ingress configurations
 
 Container Service provides Ingress controller components. Integrated with Apsara Server Load Balancer, these components provide Kubernetes clusters with flexible and reliable Ingress service. An Ingress orchestration template is provided below. When you configure an Ingress through the console, you need to configure annotations and may need to create dependencies. For more information, see Create an ingress through the console, Ingress support, and Kubernetes Ingress. You can also create ConfigMaps to configure Ingresses. For more information, see https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/.
 
@@ -3351,7 +3486,7 @@ Annotations For each Ingress, you can configure its annotations, Ingress control
 3. Traffic splitting based on query parameter
 After canary release is configured, only requests that match certain rules are routed to the corresponding service. If the weight of the corresponding service is lower than 100%, requests that match certain rules are routed to one of the services in the service group based on the weight. TLS You can use a Secret that contains a TLS private key and certificate to encrypt the Ingress. This ensures secure routing. The TLS Secret must contain a certificate named tls.crt and a private key named tls.key. For more information about how TLS works, see TLS. For how to create a Secret, see Configure a secure Ingress. Labels You can add labels to the Ingress.
 
-#### Create an Ingress in the console
+#### 6.8.6 Create an Ingress in the console
 
 The Container Service console is integrated with the Ingress service. You can create an Ingress in the console and manage inbound traffic that is forwarded to different Services to meet your business requirements. Prerequisites A Kubernetes cluster is created and an Ingress controller runs as normal in the cluster. For more information, see Create a Kubernetes cluster. You are connected to a master node by using kubectl. For more information, see Connect to a Kubernetes cluster through kubectl. Internet access is required when you pull the image from the address specified in this example. You can replace the address with an image address within your cluster. You can also build and push the image to an image repository and then pull the image from the repository when you use the image. Step 1: Create a Deployment and a Service
 1. Log on to the Container Service console.
@@ -3501,7 +3636,7 @@ old
 new
 ```
 
-#### Update an Ingress
+#### 6.8.7 Update an Ingress
 
 You can update Ingresses in the Container Service console. Prerequisites A Kubernetes cluster is created and an Ingress controller is running as normal in the cluster. For more information, see Create a Kubernetes cluster. An Ingress is created. For more information, see Create an ingress through the console. Procedure
 1. Log on to the Container Service console.
@@ -3514,7 +3649,7 @@ click Updat e in the Actions column.
 6. In the dialog box that appears, modify the parameters and click Updat e. In this example, `foo.bar`
 `.com` is changed to `test.bar.com` . On the Ingresses page, you can verify that the Ingress rule has changed.
 
-#### Delete an Ingress
+#### 6.8.8 Delete an Ingress
 
 This topic describes how to delete an Ingress. Prerequisites A Kubernetes cluster is created and an Ingress controller is running as normal in the cluster. For more information about how to create a cluster, see Create a Kubernetes cluster. An Ingress is created. For more information, see Create an ingress through the console. Procedure
 1. Log on to the Container Service console.
@@ -3526,9 +3661,9 @@ column.
 click Delet e in the Actions column.
 6. In the message that appears, click Conf irm.
 
-### Config maps and secrets
+### 6.9 Config maps and secrets
 
-#### Create a ConfigMap
+#### 6.9.1 Create a ConfigMap
 
 In the Container Service console, you can create a ConfigMap on the ConfigMap page or by using a template. This topic describes how to create a ConfigMap. Create a ConfigMap on the ConfigMap page
 1. Log on to the Container Service console.
@@ -3571,7 +3706,7 @@ Create a ConfigMap from a template
 
 After the deployment is completed, you can find the ConfigMap named aliyun-config on the ConfigMap page.
 
-#### Use a ConfigMap in a pod
+#### 6.9.2 Use a ConfigMap in a pod
 
 This topic describes how to use a ConfigMap in a pod. You can use a ConfigMap in a pod in the following scenarios: Use a ConfigMap to define environment variables for a pod. Use a ConfigMap to set command line parameters. Use a ConfigMap in a volume. For more information, see Configure a pod to use a ConfigMap. Limits To use a ConfigMap in a pod, make sure that the ConfigMap and the pod are in the same cluster and namespace. Create a ConfigMap In this example, a ConfigMap named special_config is created. This ConfigMap consists of two key-value pairs: `SPECIAL_LEVEL: very` and `SPECIAL_TYPE: charm` . You can use the following YAML template to create the ConfigMap:
 
@@ -3687,7 +3822,7 @@ After you run the pod, the following output is returned:
 SPECIAL_TYPE SPECIAL_LEVEL
 ```
 
-#### Update a ConfigMap
+#### 6.9.3 Update a ConfigMap
 
 You can use multiple methods to update a ConfigMap. Considerations If you update a ConfigMap, the applications that use the ConfigMap are affected. Procedure
 1. Log on to the Container Service console.
@@ -3699,7 +3834,7 @@ column.
 then click Edit in the Actions column.
 6. In the dialog box that appears, modify the configurations and click OK.
 
-#### Delete a ConfigMap
+#### 6.9.4 Delete a ConfigMap
 
 You can use multiple methods to delete a ConfigMap. Considerations If you delete a ConfigMap, the applications that use this ConfigMap are affected. Procedure
 1. Log on to the Container Service console.
@@ -3711,7 +3846,7 @@ column.
 then click Delet e in the Act ions column.
 6. In the message that appears, click OK.
 
-#### Create a Secret
+#### 6.9.5 Create a Secret
 
 You can create Secrets for applications in the Container Service console. Prerequisites A Kubernetes cluster is created. Context We recommend that you use Secrets to store sensitive information in Kubernetes clusters, such as passwords and certificates. Secrets are classified into the following types: Service account: A service account is automatically created by Kubernetes and automatically mounted to the /run/secrets/kubernetes.io/serviceaccount directory of a pod. The service account provides an identity for the pod to interact with the API server. Opaque: This type of secret is encoded in Base64 and used to store sensitive information, such as passwords and certificates. By default, you can create only Opaque Secrets in the Container Service console. Opaque Secrets store map type data. Therefore, values must be encoded in Base64. You can create Secrets in the Container Service console with a few clicks. Plaintext is automatically encoded in Base64. You can also create Secrets by using the CLI. For more information, see Kubernetes Secrets. Procedure
 1. Log on to the Container Service console.
@@ -3737,7 +3872,7 @@ To enter Secret data in plaintext, select Encode Dat a Values Using Base64.
 
 You can view the newly created Secret on the Secrets page.
 
-#### Modify a Secret
+#### 6.9.6 Modify a Secret
 
 This topic describes how to modify a Secret in the Container Service console. Prerequisites A Kubernetes cluster is created. A Secret is created. For more information, see Create a secret. Procedure
 1. Log on to the Container Service console.
@@ -3749,7 +3884,7 @@ column.
 click Edit in the Actions column.
 6. In the dialog box that appears, modify the Secret and click OK.
 
-#### Delete a Secret
+#### 6.9.7 Delete a Secret
 
 This topic describes how to delete a Secret in the Container Service console. Prerequisites A Kubernetes cluster is created. A Secret is created. For more information, see Create a secret. Context Do not delete Secrets that are generated when the cluster is created. Procedure
 1. Log on to the Container Service console.
@@ -3761,9 +3896,9 @@ column.
 click Delet e in the Act ions column.
 6. In the message that appears, click OK.
 
-### Templates
+### 6.10 Templates
 
-#### Create an orchestration template
+#### 6.10.1 Create an orchestration template
 
 This topic describes how to use multiple methods to create orchestration templates through the Container Service console. Procedure
 1. Log on to the Container Service console.
@@ -3776,7 +3911,7 @@ the template on the My T emplat es tab.
 5. (Optional)You can also choose Applicat ions > Deployment s in the left-side navigation pane,
 and click Creat e f rom T emplat e to go to the Creat e f rom T emplat e page. You can modify a built-in template provided by Container Service and save it as a custom template. i. Select a built-in template and click Save T emplat e. ii. In the dialog box that appears, specify the name, description, and content. Click Save to save the template. You can modify the built-in template based on your needs. iii. In the left-side navigation pane, choose Market place > Orchest rat ion T emplat es. You can find the newly created template on the My T emplat es tab. What's next You can use the orchestration templates on the My T emplat es tab to quickly create applications.
 
-#### Update an orchestration template
+#### 6.10.2 Update an orchestration template
 
 This topic describes how to edit and update an orchestration template. Prerequisites You have created an orchestration template. For more information, see Create orchestration templates. Procedure
 1. Log on to the Container Service console.
@@ -3788,7 +3923,7 @@ T emplat es page appears. You can view existing templates on the My T emplat es 
 6. Go to the T emplat es page. You can view the template that you have updated on the My
 T emplat es tab.
 
-#### Save an orchestration template as a new
+#### 6.10.3 Save an orchestration template as a new one
 
 one This topic describes how to save an orchestration template as a new one. Prerequisites You have created an orchestration template. For more information, see Create orchestration templates. Procedure
 1. Log on to the Container Service console.
@@ -3799,7 +3934,7 @@ T emplat es page appears. You can view existing templates on the My T emplat es 
 5. In the dialog box that appears, enter the template name and click OK.
 6. Go to the T emplat es page. The newly saved template is displayed on the My T emplat es tab.
 
-#### Download an orchestration template
+#### 6.10.4 Download an orchestration template
 
 This topic describes how to download an orchestration template. Prerequisites You have created an orchestration template. For more information, see Create orchestration templates. Procedure
 1. Log on to the Container Service console.
@@ -3809,7 +3944,7 @@ T emplat es page appears. You can view existing templates on the My T emplat es 
 4. On the template details page, click Download in the upper-right corner to download the template
 as a YAML file.
 
-#### Delete an orchestration template
+#### 6.10.5 Delete an orchestration template
 
 Prerequisites You have created an orchestration template. For more information, see Create orchestration templates. Procedure
 1. Log on to the Container Service console.
@@ -3819,9 +3954,9 @@ T emplat es page appears. You can view existing templates on the My T emplat es 
 4. On the template details page, click Delet e in the upper-right corner.
 5. In the dialog box that appears, click OK.
 
-### Log management
+### 6.11 Log management
 
-#### Use Log Service to collect log data from
+#### 6.11.1 Use Log Service to collect log data from containers
 
 containers Container Service is integrated with Log Service. When you create a cluster, you can enable Log Service to collect log data from containers, including standard output (stdout) and text files. Activate Log Service To activate Log Service, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console. In the top navigation bar, choose
@@ -4278,7 +4413,7 @@ in the Act ions column.
 5. On the Log Cent er page, click the Applicat ion Logs tab and specify the filter conditions. Then,
 click Select Logst ore to view the logs of containers.
 
-#### Configure Log4jAppender for Kubernetes
+#### 6.11.2 Configure Log4jAppender for Kubernetes and Log Service
 
 and Log Service This topic describes how to configure a YAML file to export the log of a Container Service cluster to Log Service, without the need to modify the application. An application that can be managed by calling API operations is deployed in the cluster to generate the log for testing purposes. Prerequisites A Container Service cluster is created. For more information, see Create a Kubernetes cluster. An AccessKey pair is created or Resource Access Management (RAM) is activated. Make sure that the required permissions are granted. In this example, an AccessKey pair is created. Context Log4j is an open source project of Apache. Log4j consists of three components: log level, log output destination, and log output format. You can configure Log4jAppender to export log data to the console, a log file, a GUI component, a socket server, an NT event viewer, or a UNIX syslog daemon. Procedure
 1. Configure Log4jAppender in Log Service.
@@ -4356,9 +4491,9 @@ curl http://${K8S_SERVICE_IP}:8080/login?name=bruce
 4. View the log in Log Service
 i. In the Project s list, click your Log Service project. ii. Click the icon to the right side of the k8s-logstore Logstore and select Search & Analysis to view the log of the Kubernetes cluster.
 
-### Monitoring management
+### 6.12 Monitoring management
 
-#### Enable ARMS Prometheus
+#### 6.12.1 Enable ARMS Prometheus
 
 You can view metrics for Container Service clusters on predefined dashboards that are provided by Application Real-Time Monitoring Service (ARMS) Prometheus. This topic describes how to enable ARMS Prometheus in Container Service, how to configure alert rules in ARMS Prometheus, and how to customize monitoring metrics and use Grafana to display monitoring metrics. Context ARMS Prometheus is a managed monitoring service that is fully interfaced with the open source Prometheus ecosystem. ARMS Prometheus monitors a wide array of components and provides multiple ready-to-use dashboards. ARMS Prometheus saves you the efforts to manage underlying services, such as data storage, data presentation, and system maintenance. Enable ARMS Prometheus Enable ARMS Promet heus when you creat e a clust er.
 1. Log on to the Container Service console.
@@ -4383,7 +4518,7 @@ Monit oring.
 5. On the Promet heus Monit oring page, click the name of a Grafana dashboard to view the
 monitoring data. Not ice If this is the first time you log on to the ARMS console, you must authorize the cluster to access ARMS before you can view the monitoring data. If the authorization page does not appear after you log on to the ARMS Prometheus console, the cluster is authorized to access ARMS.
 
-#### Monitor application performance
+#### 6.12.2 Monitor application performance
 
 Container Service allows you to use Application Real-Time Monitoring Service (ARMS) to monitor Java and PHP applications that are deployed in clusters. ARMS can automatically discover application topologies, generate 3D topologies, discover and monitor API endpoints, and detect abnormal and slow transactions. ARMS provides an efficient method to diagnose and troubleshoot application issues. Prerequisites A Container Service cluster is created. For more information, see Create a Kubernetes cluster. ARMS APM application monitoring has been deployed. For more information, see Enable ARMS Prometheus. Context Application Real-Time Monitoring Service (ARMS) is an application performance management (APM) service. After you install the ARMS application monitoring agent in a Container Service cluster, you can use ARMS to monitor Java applications in the cluster without code modifications. ARMS allows you to quickly locate abnormal and slow transactions, reproduce the parameters of API calls, detect memory leaks, and discover system bottlenecks. This significantly improves the efficiency of diagnosing and troubleshooting application issues. Step 1: Create a user and grant permissions to the user Create a user and grant the user the permissions to access ARMS. This way, arms-pilot can monitor applications by using the user and the permissions of the user.
 1. Create a user.
@@ -4460,9 +4595,9 @@ column.
 4. On the Deployment s page, find the application that you created and click ARMS Console in the
 Act ions column. On the Application Overview page, if the value of Real T ime Inst ance Count is larger than 0, acsarms-pilot is deployed and used to monitor the application. In the Prometheus Service console, click Applicat ion Det ails. Then, click the JVM monit oring tab to view the monitoring data.
 
-### GPU
+### 6.13 GPU
 
-#### Create a dedicated Kubernetes cluster
+#### 6.13.1 Create a dedicated Kubernetes cluster with GPU-accelerated nodes
 
 with GPU-accelerated nodes This topic describes how to create a dedicated Kubernetes cluster with GPU-accelerated nodes. Procedure
 1. Log on to the Container Service console.
@@ -4531,7 +4666,7 @@ Clust er in the upper-right corner.
 6. On the Conf irm page, after all check items are verified, select the terms of service and disclaimer
 and click OK to start the deployment.
 
-#### Upgrade the NVIDIA driver on a GPU node
+#### 6.13.2 Upgrade the NVIDIA driver on a GPU node
 
 This topic describes how to upgrade the NVIDIA driver on a GPU node when workloads are deployed on the node and when no workload is deployed on the node. Upgrade the NVIDIA driver on a GPU node where workloads are deployed
 1. Connect to a Kubernetes cluster through kubectl.
@@ -4662,7 +4797,7 @@ Result Run the following command on a master node to check the NVIDIA driver ver
 kubectl exec -n kube-system -t nvidia-device-plugin-node-name nvidia-smi
 ```
 
-#### Use cGPU to enable GPU sharing and
+#### 6.13.3 Use cGPU to enable GPU sharing and scheduling
 
 scheduling You can use the cGPU solution to schedule multiple applications to one GPU and isolate the GPU memory and computing power that are allocated to each application. This topic describes how to use cGPU to enable GPU sharing and scheduling. Prerequisites A dedicated Kubernetes cluster with GPU-accelerated nodes is created. For more information, see Create a dedicated Kubernetes cluster with GPU-accelerated nodes. The Docker version used by the nodes is 19.03.5 or later. Docker versions earlier than 19.03.5 support GPU sharing but do not support GPU isolation. Context A key requirement of GPU sharing among multiple pods is to isolate the GPU memory and computing power that are allocated to each pod. When you run multiple containers on one GPU, the GPU resources are allocated to each container as requested. However, if one container occupies excessive GPU resources, the performance of the other containers may be affected. To address this issue, many solutions have been developed in the computing industry. Technologies, such as NVIDIA virtual GPU (vGPU), NVIDIA Multi-Process Service (MPS), rCUDA, and vCUDA, all contribute to fine-grained GPU resource allocation. The cGPU solution uses the server kernel driver that is developed by Alibaba Cloud to provide more efficient use of the underlying drivers of NVIDIA GPUs. cGPU provides the following features: High compatibility: cGPU is compatible with standard open source solutions, such as Kubernetes and NVIDIA Docker. Ease of use: cGPU provides excellent user experience. To replace a Compute Unified Device Architecture (CUDA) library of an AI application, you do not need to recompile the application or create a new container image. Stability: cGPU provides stable underlying operations on NVIDIA GPUs. API operations on CUDA libraries and some private API operations on CUDA Deep Neural Network (cuDNN) are difficult to call. Resource isolation: cGPU ensures that the allocated GPU memory and computing power do not affect each other. cGPU provides a cost-effective, reliable, and user-friendly solution that allows you to enable GPU scheduling and memory isolation. Step 1: Create a node pool Create a node pool and add the `cgpu=true` label to the node pool.
 1. Log on to the Container Service console.
@@ -4738,7 +4873,7 @@ NAME IPADDRESS GPU0(Allocated/Total) GPU Memory(GiB) a52120c 192.168.52.120 6/7 
 
 The output shows that the cluster has 7 GiB of GPU memory in total and 6 GiB has been used. The preceding results indicate that the pods use the same GPU and each pod is allocated with 2,174 MiB of GPU memory. This means that the allocated GPU resources are isolated among pods. The total GPU memory of one GPU is 7,611 MiB. You can run the `nvidia-smi` command on a node to obtain the total GPU memory of a GPU. If the allocated GPU resources are not isolated among pods, the amount of GPU memory allocated to a pod is 7,611 MiB. In this example, the actual amount of GPU memory allocated to a pod is 2,174 MiB, which is equal to 2 GiB as requested by the pod. This means the isolation takes effect.
 
-#### GPU scheduling for Kubernetes clusters
+#### 6.13.4 GPU scheduling for Kubernetes clusters with GPU-accelerated nodes
 
 with GPU-accelerated nodes This topic describes GPU scheduling for Kubernetes clusters with GPU-accelerated nodes. Prerequisites Container Service, Resource Orchestration Service (ROS), and Resource Access Management (RAM) are activated. Container Service uses ROS to deploy applications in Kubernetes clusters. To create a Kubernetes cluster, you must first activate ROS. Context Starting from version 1.8, Kubernetes adds support for the following hardware acceleration devices by using device plug-ins: NVIDIA GPUs, InfiniBand devices, and field-programmable gate arrays (FPGAs). GPU solutions developed by the community will be phased out in version 1.10, and removed from the master code in version 1.11. Container Service enables you to use a Kubernetes cluster with GPU-accelerated nodes to run compute-intensive tasks such as machine learning and image processing. You can deploy applications and achieve auto scaling without the need to install NVIDIA drivers or Compute Unified Device Architecture (CUDA) in advance. The system performs the following operations when a Kubernetes cluster is created: Creates Elastic Compute Service (ECS) instances, configures a public key to enable Secure Shell (SSH) logon from master nodes to other nodes, and then configures the Kubernetes cluster through CloudInit. Creates a security group that allows access to the virtual private cloud (VPC) over Internet Control Message Protocol (ICMP). If you do not specify an existing VPC, the system creates a VPC and a vSwitch and creates SNAT entries for the vSwitch. Adds route entries to the VPC. Creates a NAT gateway and an elastic IP address (EIP). Creates a RAM user and grants it permissions to query, create, and delete ECS instances, and permissions to add and delete disks. The RAM user is also granted full permissions on Server Load Balancer (SLB) instances, CloudMonitor, VPC, Log Service, and Apsara File Storage NAS (NAS). The system also creates an AccessKey pair for the RAM user. The system automatically creates SLB instances, disks, and VPC route entries based on your configuration. Creates an internal-facing SLB instance and opens port 6443. Creates an Internet-facing SLB instance and open ports 6443, 8443, and 22. If you enable SSH logon when you create the cluster, port 22 is open. Otherwise, port 22 is not open. Limits Kubernetes clusters support only VPCs. By default, you can create only a limited amount of cloud resources with each account. You cannot create clusters if the quota on clusters is reached. Make sure that you have sufficient quota before you create a cluster. To request a quota increase, submit a ticket. By default, you can create at most five clusters across all regions with each account. Each cluster can contain at most 40 nodes. To increase the quota of clusters or nodes, submit a ticket. In a Kubernetes cluster, you can create at most 48 route entries for each VPC. This means that a cluster can contain at most 48 nodes. To increase the quota of nodes, submit a ticket to increase the quota of route entries first. By default, you can create at most 100 security groups with each account. By default, you can create at most 60 pay-as-you-go SLB instances with each account. By default, you can create at most 20 EIPs with each account. Limits on ECS instances: Only CentOS is supported. Create a GN5 Kubernetes cluster GN5 Kubernetes clusters support only Kubernetes 1.12.6-aliyun.1. Kubernetes 1.11.5 is not supported.
 1. Log on to the Container Service console.
@@ -4814,7 +4949,7 @@ from tensorflow.python.client import device_lib def get_available_devices():
 print(get_available_devices())
 ```
 
-#### Use labels to schedule pods to GPU-
+#### 6.13.5 Use labels to schedule pods to GPU-accelerated nodes
 
 accelerated nodes To use Kubernetes clusters for GPU computing, you must schedule pods to GPU-accelerated nodes. Container Service allows you to schedule pods to specific GPU-accelerated nodes by adding labels to the GPU-accelerated nodes. Context When Kubernetes deploys nodes with NVIDIA GPUs, the attributes of these GPUs are discovered and exposed as node labels. These labels have the following benefits: You can use the labels to filter GPU-accelerated nodes. The labels can be used as conditions to schedule pods. Procedure
 1. Log on to the Container Service console.
@@ -4890,7 +5025,7 @@ spec:
 
 Result In the left-side navigation pane of the details page, choose Workloads > Pods. On the Pods page, select the namespace to view pods created in the namespace. On the Pods page, you can find that the pods in the preceding examples are scheduled to the desired nodes. This means that labels can be used to schedule pods to GPU-accelerated nodes.
 
-#### Manually upgrade the kernel of a GPU
+#### 6.13.6 Manually upgrade the kernel of a GPU node in a cluster
 
 node in a cluster This topic describes how to manually upgrade the kernel of a GPU node in a cluster. Context The current kernel version is earlier than `3.10.0-957.21.3` . Procedure
 1. Connect to a Kubernetes cluster through kubectl.
@@ -4994,9 +5129,9 @@ kubectl exec -n kube-system -t nvidia-device-plugin-cn-beijing.i-2ze19qyi8votgjz
 +-----------------------------------------------------------------------------+
 ```
 
-### Auto scaling
+### 6.14 Auto scaling
 
-#### Auto scaling of nodes
+#### 6.14.1 Auto scaling of nodes
 
 Container Service provides the auto scaling component to automatically scale the number of nodes. Regular instances and GPU-accelerated instances can be automatically added to or removed from a Container Service cluster to meet your business requirements. This component supports multiple scaling modes, various instance types, and instances that are deployed across zones. This component is applicable to diverse scenarios. How it works The auto scaling model of Kubernetes is different from the traditional scaling model that is based on the resource usage threshold. Developers must understand the differences between the two scaling models before they migrate workloads from traditional data centers or other orchestration systems such as Swarm to Kubernetes. The traditional scaling model is based on resource usage. For example, if a cluster contains three nodes and the CPU utilization or memory usage of the nodes exceeds the scaling threshold, new nodes are added to the cluster. However, you must consider the following issues when you use the traditional scaling model: How do you set a proper scaling threshold and how does the system check whether the threshold is exceeded? In a Kubernetes cluster, the resource usage of hot nodes is higher than that of other nodes. If you specify the average resource usage as the scaling threshold, scaling activities may not be promptly triggered. If you specify the lowest node resource usage as the scaling threshold, the newly added nodes may not be used. This causes a waste of resources. How are the loads balanced after new nodes are added? In Kubernetes, pods are the smallest deployable units for applications. Pods are deployed on different nodes in a Kubernetes cluster. When auto scaling is triggered for a cluster or a node in the cluster, pods with high resource usage are not replicated and the resource limits of these pods are not changed. As a result, the loads cannot be balanced to newly added nodes. How do you determine whether scaling activities must be triggered and how are scaling activities performed? If scale-in activities are triggered based on resource usage, pods that request large amounts of resources but have low resource usage may be evicted. If the number of these pods is large within a Kubernetes cluster, resources may be exhausted and some pods may fail to be scheduled. How does the auto scaling model of Kubernetes fix these issues? Kubernetes provides a two-layer scaling model that decouples pod scheduling from resource scaling. In simple terms, pods are scaled based on resource usage. When pods enter the Pending state due to insufficient resources, a scale-out activity is triggered. After new nodes are added to the cluster, the pending pods are automatically scheduled to the newly added nodes. This way, the loads of the application are balanced. The following section describes the auto scaling model of Kubernetes in detail: How is a scale-out activity triggered? The cluster-autoscaler component scans for pending pods and then triggers scaling activities. When pods enter the Pending state due to insufficient resources, cluster-autoscaler simulates pod scheduling to decide the scaling group that can provide new nodes to accept the pending pods. If a scaling group meets the requirement, nodes from this scaling group are added to the cluster. In simple terms, a scaling group is treated as a node during the simulation. The instance type of the scaling group specifies the CPU, memory, and GPU resources of the node. The labels and taints of the scaling group are also applied to the node. The node is used to simulate the scheduling of the pending pods. If the pending pods can be scheduled to the node, cluster-autoscaler calculates the number of nodes that need to be added from the scaling group. How is a scale-in activity triggered? Only nodes that are added by scaling activities can be removed by cluster-autoscaler. This component cannot manage static nodes. Each node is separately evaluated to determine whether the node needs to be removed. If the resource usage of a node drops below the scale-in threshold, a scale-in activity is triggered for the node. In this case, cluster-autoscaler simulates the eviction of all workloads on the node to determine whether the node can be completely drained. clusterautoscaler does not drain the nodes that contain specific pods, such as non-DaemonSet pods in the kube-system namespace and pods that are controlled by PodDisruptionBudgets (PDBs). A node is drained before it is removed. After pods on the node are evicted to other nodes, the node can be removed. How is a scaling group selected from multiple scaling groups that meet the requirements? Different scaling groups are treated as nodes in different specifications. cluster-autoscaler selects a scaling group based on a scoring policy that is similar to a scheduling policy. Nodes are first filtered by the scheduling policy. Among the filtered nodes, the nodes that conform to policies, such as affinity settings, are selected. If no scheduling policy or affinity settings are configured, clusterautoscaler selects a scaling group based on the least-waste policy. The least-waste policy selects the scaling group that has the fewest idle resources after simulation. If a scaling group of CPUaccelerated nodes and a scaling group of GPU-accelerated nodes both meet the requirements, the scaling group of CPU-accelerated nodes is selected by default. How can the success rate of auto scaling be increased? The success rate of auto scaling depends on the following factors: Whether the scheduling policy is met After you configure a scaling group, you must be aware of the pod scheduling policies that the scaling group supports. If you are unaware of the pod scheduling policies, you can simulate a scaling activity by using the node selectors of pending pods and the labels of the scaling group. Whether resources are sufficient After the scaling simulation is complete, a scaling group is selected. However, the scaling activity fails if the specified types of Elastic Compute Service (ECS) instances in the scaling group are out of stock. To increase the success rate of auto scaling, you can select different types of instances in more than one zone. How can auto scaling be accelerated? Method 1: Perform auto scaling in swift mode. After a scaling group experiences a scale-in activity and a scale-out activity, the swift mode is enabled for the scaling group. Method 2: Use custom images that are created from the base image of Alibaba Cloud Linux 2 (formerly known as Aliyun Linux 2). This ensures that the resources of Infrastructure as a Service (IaaS) are delivered 50% faster. Considerations For each account, the default CPU quota for pay-as-you-go instances in each region is 50 vCPUs. You can add at most 48 custom route entries to each route table of a virtual private cloud (VPC). To request a quota increase, submit a ticket. The stock of ECS instances may be insufficient for auto scaling if you specify only one ECS instance type for a scaling group. We recommend that you specify multiple ECS instance types with the same specification for a scaling group. This increases the success rate of auto scaling. In swift mode, when a node is shut down and reclaimed, the node stops running and enters the NotR eady state. When a scale-out activity is triggered, the state of the node changes to Ready. If a node is shut down and reclaimed in swift mode, you are charged only for the disks. This rule does not apply to nodes that use local disks, such as the instance type of ecs.d1ne.2xlarge, for which you are also charged a computing fee. If the stock of nodes is sufficient, nodes can be launched within a short period of time. If elastic IP addresses (EIPs) are associated with pods, we recommend that you do not delete the scaling group or remove ECS instances from the scaling group in the ECS console. Otherwise, these EIPs cannot be automatically released. Procedure
 1. Log on to the Container Service console.
@@ -5057,7 +5192,7 @@ business requirements. Regular instances and GPU-accelerated instances are suppo
 9. Click OK.
 Check the results In the left-side navigation pane, choose Applicat ions > Deployment s, select the kube-system namespace. You can find the cluster-autoscaler component. This indicates that the scaling group is created. FAQ Why does the auto scaling component fail to add nodes after a scale-out activity is triggered? Check whether the following situations exist: The instance types in the scaling group cannot fulfill the resource request from pods. By default, system components are installed for each node. Therefore, the requested pod resources must be less than the resource capacity of the instance type. The Resource Access Management (RAM) role does not have the permissions to manage the Kubernetes cluster. You must complete the authorization for each Kubernetes cluster that is involved in the scale-out activity. The Kubernetes cluster cannot connect to the Internet. The auto scaling component must call Alibaba Cloud API operations. Therefore, the nodes must have access to the Internet. Why does the auto scaling component fail to remove nodes after a scale-in activity is triggered? Check whether the following situations exist: The requested resource threshold of each pod is higher than the configured scale-in threshold. Pods that belong to the kube-system namespace are running on the node. A scheduling policy forces the pods to run on the current node. Therefore, the pods cannot be scheduled to other nodes. PodDisruptionBudget is set for the pods on the node and the minimum value of PodDisruptionBudget is reached. For more information about FAQ, see open source component. How does the system choose a scaling group for a scaling activity? When pods cannot be scheduled to nodes, the auto scaling component simulates the scheduling of the pods based on the configuration of scaling groups. The configuration includes labels, taints, and instance specifications. If a scaling group can simulate the scheduling of the pods, this scaling group is selected for the scale-out activity. If more than one scaling groups meet the requirements, the system selects the scaling group that has the fewest idle resources after simulation.
 
-#### Horizontal pod autoscaling
+#### 6.14.2 Horizontal pod autoscaling
 
 You can create an application that has Horizontal Pod Autoscaling (HPA) enabled in the Container Service console. HPA can automatically scale container resources for your application. You can also use a YAML file to describe HPA settings. Create an application that has HPA enabled in the Container Service console Container Service provided by Alibaba Cloud is integrated with HPA. You can create an application that has HPA enabled in the Container Service console. You can enable HPA when you create an application or after the application is created. Enable HPA when you creat e an applicat ion
 1. Log on to the Container Service console.
@@ -5175,13 +5310,13 @@ Normal SuccessfulRescale 39s horizontal-pod-autoscaler New size: 1; reason: All 
 
 If the CPU utilization of the NGINX application pod exceeds 50% as specified in the HPA settings, the Horizontal Pod Autoscaler automatically adds pods. If the CPU utilization of the NGINX application pod drops below 50%, the Horizontal Pod Autoscaler automatically removes pods.
 
-### Sandboxed-containers
+### 6.15 Sandboxed-containers
 
-#### Overview
+#### 6.15.1 Overview
 
 Sandboxed-Container is an alternative to the Docker runtime. Sandboxed-Container allows you to run applications in a sandboxed and lightweight virtual machine that has a dedicated kernel. This enhances resource isolation and improves security. Sandboxed-Container is applicable to scenarios such as untrusted application isolation, fault isolation, performance isolation, and workload isolation among multiple users. Sandboxed-Container provides higher security. Sandboxed-Container has minor impacts on application performance and offers the same user experience as Docker in terms of logging, monitoring, and elastic scaling. Architecture Features Sandboxed-Container is a container-securing runtime that is developed by Alibaba Cloud based on sandboxed and lightweight virtual machines. Compared with Sandboxed-Container V1, Sandboxed- Container V2 maintains the same isolation performance and reduces the pod overhead by 90%. It also allows you to start sandboxed containers 3 times faster and increases the maximum number of pods that can be deployed on a host by 10 times. Sandboxed-Container V2 provides the following key features: Strong isolation based on sandboxed and lightweight virtual machines. Good compatibility with runC in terms of application management. Network Attached Storage (NAS) file systems, disks, and Object Storage Service (OSS) buckets can be mounted both directly and through virtio-fs. The same user experience as runC in terms of logging, monitoring, and storage. Supports RuntimeClass (runC and runV). For more information, see RuntimeClass. Easy to use with minimum requirements on technical skills. Higher stability than Kata Containers. For more information about Kata Containers, see Kata Containers.
 
-#### Create a Kubernetes cluster that runs
+#### 6.15.2 Create a Kubernetes cluster that runs sandboxed containers
 
 sandboxed containers This topic describes how to create a Kubernetes cluster that runs sandboxed containers in the Container Service console.
 1. Log on to the Container Service console.
@@ -5243,7 +5378,7 @@ page that appears, click Creat e Kubernet es Clust er in the upper-right corner.
 6. On the Conf irm page, click OK to start the deployment.
 Result After the cluster is created, you can find the cluster on the Clust ers page in the console.
 
-#### Expand a Container Service cluster that
+#### 6.15.3 Expand a Container Service cluster that runs sandboxed containers
 
 runs sandboxed containers This topic describes how to scale out the worker nodes in a Container Service cluster that runs sandboxed containers in the Container Service console. Prerequisites You cannot scale out the master nodes in a Container Service cluster that runs sandboxed containers. To expand a Container Service cluster that runs sandboxed containers, you must set the parameters as required in the following table. Otherwise, the added nodes cannot run sandboxed containers.
 1. Log on to the Container Service console.
@@ -5282,7 +5417,7 @@ In this example, the number of worker nodes in the Container Service cluster is 
 5. Click Submit .
 What's next After the Container Service cluster is expanded, go to the details page of the Container Service cluster. In the left-side navigation pane, choose Clust ers > Node Pools. You can find that the number of worker nodes is increased from 3 to 5.
 
-#### Create an application that runs in
+#### 6.15.4 Create an application that runs in sandboxed containers
 
 sandboxed containers This topic describes how to use an image to create an NGINX application that runs in sandboxed containers. The NGINX application is accessible over the Internet. Prerequisites A cluster that contains sandboxed containers is created. For more information, see Create a Kubernetes cluster that supports sandboxed containers. Procedure
 1. Log on to the Container Service console.
@@ -5373,7 +5508,7 @@ After the application is deployed, you are redirected to the Complete wizard pag
 11. In the left-side navigation pane, choose Ingresses and Load Balancing > Ingresses.
 The created Ingress rule is displayed on the page. Result Enter the test domain in the address bar of your browser and press Enter. The NGINX welcome page appears.
 
-#### Configure a Kubernetes cluster that runs
+#### 6.15.5 Configure a Kubernetes cluster that runs both sandboxed and Docker containers
 
 both sandboxed and Docker containers Node pools support multiple types of container runtime. However, nodes in the same node pool must use the same type of container runtime. Container Service allows you to create node pools of different container runtime types for a cluster. This topic describes how to create a node pool that runs sandboxed containers and a node pool that runs Docker containers for a Kubernetes cluster. Prerequisites A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. Not ice The Kubernetes cluster must meet the following requirements: The cluster version must be 1.14.6-aliyun.1 or later. The network plug-in must be Flannel or Terway. Terway must run in One ENI for Multi-Pod mode. The volume plug-in must be CSI-Plugin 1.14.8.39-0d749258-aliyun or later. Flexvolume is not supported. The logtail-ds version must be 0.16.34.2-f6647154-aliyun or later. Considerations By default, a cluster can contain at most 100 nodes. Before you add an existing Elastic Compute Service (ECS) instance that is deployed in a virtual private cloud (VPC), make sure that an elastic IP address (EIP) is associated with the ECS instance, or a NAT gateway is created in the VPC. In addition, the nodes that you want to add to the node pool must have access to the Internet. Otherwise, the ECS instance cannot be added. Create a node pool that runs Docker containers
 1. Log on to the Container Service console.
@@ -5436,7 +5571,7 @@ iv. Run the following command to query detailed information about a specified no
 kubectl get node -o wide | grep -E "${node name} {node name}"
 ```
 
-#### How do I select between Docker and
+#### 6.15.6 How do I select between Docker and Sandboxed-Container?
 
 Sandboxed-Container? Containers and images have become the industry standards for software packaging and delivery. Kubernetes has become a standard platform for building, developing, and managing containerized cloud-native applications. An increasing number of enterprises and customers choose to deploy their applications in Container Service. Container Service supports two types of runtime: Docker and Sandboxed-Container. This topic describes the differences between these runtimes in the following aspects: implementations and limits, commonly used commands provided by Docker Engine and Containerd, and deployment architectures. This provides references for you to select between Docker and Sandboxed-Container based on your requirements. Differences between Docker and Sandboxed-Container in terms of implementations and limits
 
@@ -5507,7 +5642,7 @@ Differences between Docker and Sandboxed-Container in terms of deployment archit
 | Sandboxed- Container V1 | kubelet -> (CRI)containerd \-> containerd-shim -> runC containers \-> containerd-shim-kata-v2 -> runV sandboxed containers |
 | Sandboxed- Container V2 | kubelet -> (CRI)containerd \-> containerd-shim -> runC containers \-> containerd-shim-rund-v2 -> runV sandboxed containers |
 
-#### Benefits of Sandboxed-Container
+#### 6.15.7 Benefits of Sandboxed-Container
 
 This topic describes the advantages and application scenarios of Sandboxed-Container and provides a comparison between Sandboxed-Container and open source Kata Containers. This allows you to learn more about the benefits of Sandboxed-Container. Context Sandboxed-Container provides an alternative to the Docker runtime environment. It supports the following features: Sandboxed-Container allows your applications to run in a sandboxed and lightweight virtual machine. This virtual machine is equipped with a dedicated kernel and provides better isolation and enhanced security. Compared with open source Kata Containers, Sandboxed-Container is optimized for storage, networking, and stability. You can use Sandboxed-Container to isolate untrusted applications and applications of different tenants for higher security. You can also use Sandboxed-Container to isolate applications with faults and applications with degraded performance. This minimizes the negative impact on your service. In addition, Sandboxed-Container offers the same user experience as Docker in terms of logging, monitoring, and elastic scaling. Benefits Compared with Docker, Sandboxed-Container has the following benefits: Strong isolation based on sandboxed and lightweight virtual machines. Compatibility with runC in terms of application management. High performance that corresponds to 90% performance of applications based on runC. The same user experience as runC in terms of logging, monitoring, and storage. Support for RuntimeClass. Easy to use with limited expertise that is required to use virtual machines. Higher stability than that provided by Kata Containers. Comparison between Sandboxed-Container and Kata Containers Sandboxed-Container outperforms Kata Containers in the following aspects.
 
@@ -5530,7 +5665,7 @@ This topic describes the advantages and application scenarios of Sandboxed-Conta
 
 Applicable scenarios of Sandboxed-Container This section describes the applicable scenarios of Sandboxed-Container. Scenario 1: Sandboxed-Container can run untrusted code and applications in isolated containers. This is not supported by containers in runC. Security risks of runC runC isolates containers by using namespaces and control groups (cgroups). This exposes containers to security threats. All containers on a node share the host kernel. If a kernel vulnerability is exposed, malicious code may escape to the host and then infiltrate the backend network. Malicious code execution may cause privilege escalation, compromise sensitive data, and destroy system services and other applications. Attackers may also exploit application vulnerabilities to infiltrate the internal network. You can implement the following measures to reduce security risks of containers in runC. Seccomp: filters system calls. SElinux: restricts the permissions of container processes, files, and users. Capability: limits the capability of container processes. dockerd rootless mode: forbids users to use root permissions to run the Docker daemon and containers. The preceding measures can enhance the security of containers in runC and reduce attacks on the host kernel by malicious containers. However, container escapes and host kernel vulnerabilities remain unresolved. Sandboxed-Container prevents potential risks based on container isolation In a Sandboxed-Container runtime environment, applications that have potential security risks are deployed on sandboxed and lightweight virtual machines. Each of the virtual machines has a dedicated guest OS kernel. If a security vulnerability is detected on a guest OS kernel, the attack is limited to one sandbox and does not affect the host kernel or other containers. The Terway network plug-in allows you to define networking policies for pods. This enables system isolation, data isolation, and network isolation for Sandboxed-Containers. Scenario 2: Sandboxed-Container resolves common issues of runC containers, such as fault spreading, resource contention, and performance interference. Kubernetes provides easy deployment of different containers on a single node. However, cgroups are not optimized to address resource contention. Resource-intensive applications (such as CPUintensive, I/O-intensive applications) may compete for the same resources. This causes significant fluctuations in response time and increases the overall response time. Exceptions or faults on an application may spread to the hosting node and disrupt the running of the total cluster. For example, memory leaks and frequent core dumps of an application may overload the node, and exceptions on a container may trigger a host kernel bug that results in complete system failure. Sandboxed- Container addresses the issues that are common with runC containers by using dedicated guest OS kernels and hypervisors. The issues include failure spreading, resource contention, and performance interference. Scenario 3: Sandboxed-Container supports multi-tenant services. You may need to isolate the applications of an enterprise that consists of multiple business lines or departments. For example, a financial department requires high security applications. However, other non-security-sensitive applications do not have high security requirements. Containers in runC fail to eliminate the potential risks that arise in untrusted applications. In this scenario, you can implement the following counter measures: Deploy multiple independent single-tenant clusters. For example, deploy financial business and other non-security-sensitive business in different clusters. Deploy a multi-tenant cluster and separate applications of different business lines by namespaces. The resource of a node is exclusive to a single business line. This solution provides data isolation for coordination with the resource quotas and network policies to implement multi-tenant isolation. Compared with multiple single-tenant clusters, this solution focuses on fewer management planes and thus reduces management costs. However, this solution cannot avoid resource waste on nodes. This issue is caused by low resource utilization of some tenants. Sandboxed-Container allows you to isolate untrusted applications by using sandboxed virtual machines. This prevents the risks of container escapes. This also allows you to deploy different containerized applications on each node. This way, the following benefits are provided: Resource scheduling is simplified. A node is no longer exclusive to a service. This improves node resource usage and reduces resource fragments and cluster resource costs. Sandboxed containers use lightweight virtual machines to provide almost the same performance as containers in runC.
 
-#### Differences between runC and runV
+#### 6.15.8 Differences between runC and runV
 
 This topic describes the differences between runC and Sandboxed-Container (runV) in terms of their performance and pod creation methods. This allows you to better understand and utilize the benefits of sandboxed containers. Differences between runC and runV
 
@@ -5630,13 +5765,13 @@ kubectl exec -ti pod busybox-runv /bin/sh / # cat /proc/meminfo | head -n1 MemTo
 
 The output shows that the number of CPUs is not the same as that of the host. The total memory is the sum of pod memory and pod overhead. Be aware that the total memory is slightly smaller because the system also consumes some memory.
 
-#### Compatibility notes
+#### 6.15.9 Compatibility notes
 
 This topic describes the pod fields that are supported by Sandboxed-Container. This allows you to fully use the Sandboxed-Container runtime. Context Sandboxed-Container is a new runV container runtime that provides compatibility with runC in terms of pod networking, service networking (ClusterIP and NodePort), and image management. However, Sandboxed-Container does not support all pod fields. To use Sandboxed-Container, you do not need to change your development mode or image packaging method. Supported pod fields Sandboxed-Container supports the following pod fields that are marked by ticks:
 
-### Edge container service
+### 6.16 Edge container service
 
-#### Create an edge Kubernetes cluster
+#### 6.16.1 Create an edge Kubernetes cluster
 
 Edge Kubernetes clusters are intended for bringing cloud computing to edges (clients). Edge Kubernetes clusters can be created, managed, and maintained in the Container Service console. Container Service is a platform built on top of the edge computing infrastructure. It is also integrated with cloud computing and edge computing. This topic describes how to create an edge Kubernetes cluster. Procedure
 1. Log on to the Container Service console.
@@ -5704,13 +5839,13 @@ parameters.
 6. On the Conf irm page, after all check items are verified, select the terms of service and disclaimer
 and click OK to start the deployment. Result After the cluster is created, you can find the cluster on the Clust ers page in the console.
 
-#### Edge node pools
+#### 6.16.2 Edge node pools
 
-##### Edge node pool overview
+##### 6.16.2.1 Edge node pool overview
 
 In edge computing scenarios, edge container service allows you to abstract nodes as edge node pools based on node attributes. This allows you to control and manage nodes in different regions in a unified manner. This topic describes edge node pools and how edge nodes are managed by edge node pools. Traditional node management In edge computing scenarios, edge nodes can be classified by different attributes such as CPU architecture, Internet service provider (ISP), and cloud service provider. Traditionally, labels are used to classify and manage nodes. However, as the numbers of nodes and labels increase, it becomes more complex to manage and maintain nodes. The following figure shows the traditional way of node management. Edge node pools Edge node pools allow you to classify nodes from a different dimension. You can centrally manage and maintain edge nodes that are deployed in different regions by using edge node pools, as shown in the following figure.
 
-##### Create an edge node pool
+##### 6.16.2.2 Create an edge node pool
 
 An edge node pool manages a group of nodes in a cluster. For example, you can centrally manage labels and taints for the nodes in a node pool. This topic describes how to create an edge node pool in the Container Service console. Prerequisites A managed edge Kubernetes cluster is created. For more information, see Create an edge Kubernetes cluster. The Kubernetes version of your cluster is 1.18 or later. Procedure
 1. Log on to the Container Service console.
@@ -5738,7 +5873,7 @@ page.
 
 After the edge node pool is created, you can view information about the node pool in the node pool list.
 
-##### Add nodes to an edge node pool
+##### 6.16.2.3 Add nodes to an edge node pool
 
 You can add worker nodes to an edge node pool that you created. Make sure that these worker nodes can communicate with the API server. This topic describes how to add nodes to an edge node pool. Prerequisites An edge node pool is created. For more information, see Create an edge node pool. The Kubernetes version of your cluster is 1.18 or later. Not ice You can add only nodes that run CentOS 7.4, CentOS 7.6, or Ubuntu 18.04. Procedure
 1. Log on to the Container Service console.
@@ -5749,11 +5884,11 @@ cluster or click Det ails in the Act ions column.
 5. On the Node Pools page, find the edge node pool to which you want to add nodes and click Add
 Exist ing Node in the Act ions column. Perform the same steps as you do when you add nodes to an edge Kubernetes cluster. For more information, see Add nodes to an edge Kubernetes cluster. After you add nodes to the edge node pool, you can click Det ails in the Act ions column to view the nodes that you added.
 
-#### Edge nodes
+#### 6.16.3 Edge nodes
 
-##### Add nodes to an edge Kubernetes cluster
+##### 6.16.3.1 Add nodes to an edge Kubernetes cluster
 
-You can add worker nodes to an edge Kubernetes cluster in the Container Service console. However, you must make sure that the added nodes can communicate with the Kubernetes API server of the cluster. This topic describes how to add nodes to an edge Kubernetes cluster. Prerequisites Create an edge Kubernetes cluster Context By default, a cluster can contain at most 50 nodes. Procedure
+You can add worker nodes to an edge Kubernetes cluster in the Container Service console. However, you must make sure that the added nodes can communicate with the Kubernetes API server of the cluster. This topic describes how to add nodes to an edge Kubernetes cluster. Prerequisites Context By default, a cluster can contain at most 50 nodes. Procedure
 1. Log on to the Container Service console.
 2. In the left-side navigation pane, click Clust ers.
 3. On the Clust ers page, click the name of the cluster that you want to manage.
@@ -5788,9 +5923,9 @@ Kubernetes cluster and click Done.
 8. Log on to the edge node and execute the script. This way, the node is added to the edge
 Kubernetes cluster.
 
-##### Configure node autonomy
+##### 6.16.3.2 Configure node autonomy
 
-If an edge node is autonomous, applications run as expected on the edge node even if the edge node is disconnected from the cloud. This ensures that applications are not removed or migrated to other edge nodes in the case of network errors. This topic describes how to set the autonomy attribute for edge nodes. Prerequisites Create an edge Kubernetes cluster Add nodes to an edge Kubernetes cluster Context You can enable or disable node autonomy in the Container Service console. If an autonomous edge node is disconnected from the cloud, Container Service does not migrate applications on this node to other nodes, and the applications are automatically restored. Node autonomy is applicable to edge computing scenarios where the network connection is weak. If a non-autonomous edge node is disconnected from the cloud, the node fails to send heartbeats to the nodes in the cloud. As a result, the state of the node is changed to Not Ready and the applications on the node are removed or migrated to other nodes after a specific time period. Procedure
+If an edge node is autonomous, applications run as expected on the edge node even if the edge node is disconnected from the cloud. This ensures that applications are not removed or migrated to other edge nodes in the case of network errors. This topic describes how to set the autonomy attribute for edge nodes. Prerequisites Context You can enable or disable node autonomy in the Container Service console. If an autonomous edge node is disconnected from the cloud, Container Service does not migrate applications on this node to other nodes, and the applications are automatically restored. Node autonomy is applicable to edge computing scenarios where the network connection is weak. If a non-autonomous edge node is disconnected from the cloud, the node fails to send heartbeats to the nodes in the cloud. As a result, the state of the node is changed to Not Ready and the applications on the node are removed or migrated to other nodes after a specific time period. Procedure
 1. Log on to the Container Service console.
 2. In the left-side navigation pane, click Clust ers.
 3. On the Clust ers page, find the cluster that you want to manage and click Det ails in the Act ions
@@ -5801,9 +5936,9 @@ Aut onomy Set t ing in the Act ions column. The Node Aut onomy Set t ing option 
 6. In the Node Aut onomy Set t ing dialog box, click OK.
 By default, edge nodes are not autonomous when they are added to the cluster. You can follow the preceding steps to enable or disable node autonomy.
 
-#### Cell-based management at the edge
+#### 6.16.4 Cell-based management at the edge
 
-##### Use the UnitedDeployment controller to deploy
+##### 6.16.4.1 Use the UnitedDeployment controller to deploy applications
 
 ### applications
 
@@ -5890,7 +6025,7 @@ The following table describes the fields in the YAML template.
 
 Use the UnitedDeployment controller to manage pods Upgrade pods: You can modify the `spec.template.workloadTemplate.deploymentTemplate` field to trigger pod upgrades. The UnitedDeployment controller updates the workload template for all node pools. Then, the node pool controller upgrades the pods in the node pools. Scale the number of replicated pods for multiple node pools: You can modify the `spec.topology.po` `ols` field to change the number of replicated pods for multiple node pools. Then, the replicated pods in the node pools are scaled based on the configuration.
 
-##### Configure a Service topology
+##### 6.16.4.2 Configure a Service topology
 
 The backend endpoints of Kubernetes-native Services are randomly distributed across nodes. Consequently, when Service requests are distributed to nodes across node groups, these requests may fail to reach the nodes or may not be answered promptly. You can configure a Service topology to expose an application on an edge node only to the current node or nodes in the same edge node pool. This topic describes how a Service topology works and how to configure a Service topology. Context In edge computing, edge nodes are classified into groups by zone, region, and other logical attributes, such as CPU architecture, Internet service provider (ISP), or cloud service provider. Nodes in different groups are isolated from each other in one way or another. For example, these nodes may not be able to connect to each other, may not share the same resources, may have heterogeneous resources, and may run applications that are independent of each other. How a Service topology works To solve the preceding issues, dedicated edge Kubernetes clusters provide a feature to manage the topology of endpoints of Kubernetes-native Services. You can configure a Service topology to specify how endpoints of a Service are accessed. For example, you can configure a Service topology to expose an application on an edge node only to the current node or nodes in the same edge node pool. The following figure shows how a Service topology works. Service 1 is associated with Pod 2 and Pod 3. `annotation:"openyurt.io/topologyKeys: kubernetes.` `io/zone"` specifies the node pool that is allowed to access Service 1. Pod 2 is deployed on Node 2 and Pod 3 is deployed on Node 3. Node 2 belongs to Node Pool A and Node 3 belongs to Node Pool B. Pod 3 and Pod 1 do not belong to the same node pool. As a result, when Pod 1 accesses Service 1, the traffic is forwarded only to Pod 2. The traffic is not forwarded to Pod 3. Method 1: Configure a Service topology in the console To create a Service that can be accessed only by the node pool where the Service is deployed, you only need to add an annotation to the Service. For example, you can set Name to `openyurt.io/topologyKeys` and Value to `kubernetes.io/zone` . For more information about how to create a Service, see Create a Service. Method 2: Configure a Service topology by using a CLI You can use a CLI to configure a Service topology in the following ways: Create a Service that uses the topological domain of a specific node pool. The following code block is an example of the YAML template:
 
@@ -5925,11 +6060,11 @@ Annotations You can add annotations to a Kubernetes-native Service to configure 
 | openyurt.io/topologyKeys | kubernetes.io/zone | Specifies that the Service can be accessed only by the nodes in the node pool where the Service is deployed. |
 | None | None | Specifies that access to the Service is unlimited. |
 
-#### Cloud-edge tunneling
+#### 6.16.5 Cloud-edge tunneling
 
 By default, Container Service deploys the edge-t unnel-server or edge-t unnel-agent component after you create a cluster. This improves user experience. These components are used to establish tunnels from the cloud to the edge. After the tunnels are established, you can access edge nodes from the cloud. This topic describes the tunneling components provided by managed edge Kubernetes clusters and the features of these components. Background information In a Kubernetes cluster, the controller components in the cloud must run commands in kubelet to manage and maintain edge nodes. The monitoring components must retrieve monitoring data of edge nodes from the cloud. If the edge nodes of a managed edge Kubernetes cluster are deployed in an internal network, you cannot directly access the edge nodes from the cloud. The edge-t unnel-server component is deployed as a Deployment on nodes in the cloud. The edge-t unnel-agent component is deployed as a DaemonSet on each edge node. Introduction edge-tunnel-server is automatically installed on master nodes when you create an edge Kubernetes cluster. To establish secure and encrypted tunnels over the Internet, the system creates a Server Load Balancer (SLB) instance for the Service that is created by edge-t unnel-server. The edge-t unnelagent component on each edge node establishes a tunnel to the cloud through the SLB instance. The following figure shows how cloud-edge tunneling works. When edge nodes are disconnected from the cloud or the network connection is weak, the tunnels may fail to work as normal. If you delete or stop the SLB instance through which the tunnels are established, the tunnels cannot work as normal.
 
-### Use the Kubernetes event center
+### 6.17 Use the Kubernetes event center
 
 The event center feature allows you to log Kubernetes events, query events, and configure alerting. This topic describes how to enable and view the Kubernetes event center. Enable the Kubernetes event center Enable t he Kubernet es event cent er when a Kubernet es clust er is creat ed
 1. Log on to the Container Service console.

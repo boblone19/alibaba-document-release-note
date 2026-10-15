@@ -3,22 +3,48 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic Fi
 product_version: "V3.18.6_2607"
 doc_version: "20260903"
 pdf_pages: 35
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Operations and Maintenance Guide 20260903.pdf"
+source_pdf: "991afd7a06d6e09d_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Operations and"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20Operations%20and%20Maintenance%20Guide%2020260903.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Operations and Maintenance Guide 20260903
 
+## Table of Contents
+
+- 1 Log in to the Apsara Uni-manager Operations Console
+- 2 O&M overview
+- 3 Configure permissions
+- 4 Cluster O&M
+  - 4.1 Cluster O&M overview
+  - 4.2 Cluster details
+    - 4.2.1 View capacity information about a cluster
+    - 4.2.2 View monitoring data of a cluster
+  - 4.3 Configure QoS
+  - 4.4 Configure the data compression feature
+- 5 Node O&M
+  - 5.1 Node O&M overview
+  - 5.2 Node monitoring data
+  - 5.3 Repair nodes
+- 6 Manage file systems
+  - 6.1 Manage QoS
+  - 6.2 Manage QoS policies
+- 7 Events and alerts
+  - 7.1 Manage system alarms
+  - 7.2 Manage system events
+- 8 Cloud platform monitoring
+- 9 Log center
+- 10 Manage storage capacity
+
 to the Apsara Uni-manager Oper ations Console
 
-## Log in to the Apsara Uni-
+## 1 Log in to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
 This topic describes how to log in to the Apsara Uni-manager Operations Console as a user such as an O&M engineer. overview
 
-## O&M overview
+## 2 O&M overview
 
 Apsara Stack Elastic File Storage-File Storage NAS (EFS-NAS) is a file storage service for compute nodes, such as Elastic Compute Service (ECS) instances, Elastic High Performance Computing (E-HPC) clusters, and Container Service for Kubernetes (ACK) clusters. EFS-NAS is a distributed file system that provides the following benefits: shared access, scalability, high reliability, and high performance. You can efficiently manage EFS-NAS resources such as clusters, nodes, and file systems by using standardized processes and visualized O&M tools to ensure business continuity and high availability.
 
@@ -65,7 +91,7 @@ information security policies, audit requirements, and data confidentiality agre
 
 To obtain help during system maintenance, you can contact Apsara Stack technical support. gure permissions
 
-## Configure permissions
+## 3 Configure permissions
 
 By default, the system administrator has full permissions on Elastic File Storage-File Storage NAS (EFS-NAS). To meet the requirements for fine-grained permission control in multi-user scenarios, EFS-NAS provides two predefined O&M roles. The predefined roles allow you to control permissions of regular users in a fine-grained manner. You can assign the predefined roles to regular users to authorize the regular users to access only specific features or perform specific operations. This improves system security and O&M compliance.
 
@@ -108,9 +134,9 @@ gure permissions
 
 Log in to the Apsara Uni-manager Operations Console with the user and perform O&M operations in the EFS-NAS operations console. r O&M
 
-## Cluster O&M
+## 4 Cluster O&M
 
-### Cluster O&M overview
+### 4.1 Cluster O&M overview
 
 You can use the cluster O&M feature to manage Elastic File Storage-File Storage NAS (EFS- NAS) clusters in a visualized manner. You can view the basic information, capacity usage, and monitoring data of the clusters in real time. You can also configure quality of service (QoS) policies for disks at the cache layer and data layer to ensure sufficient bandwidth for core services. In addition, you can enable the data compression feature for clusters to optimize storage efficiency and improve cluster observability and O&M efficiency.
 1. Log in to the EFS-NAS operations console.
@@ -132,7 +158,7 @@ r O&M
 | Configure the data compression feature | By default, the data compression feature is enabled for clusters. You can modify the data compression configurations based on your business requirements. After the data compression feature is enabled for a cluster, the system uses the LZ4 algorithm to compress the data written to the cluster. This effectively reduces the used physical storage space and storage costs. |
 |---|---|
 
-### Cluster details
+### 4.2 Cluster details
 
 View the details of an EFS-NAS cluster to find basic information, including the cluster name, storage type, cluster status, and erasure coding mode.
 1. Navigate to the File Storage O&M platform.
@@ -151,7 +177,7 @@ For more information, see View Cluster Capacity Information.
 **Monitoring**: Displays monitoring data for the cluster. For more information, see View
 Cluster Monitoring Data.
 
-#### View capacity information about a
+#### 4.2.1 View capacity information about a cluster
 
 **cluster**
 
@@ -173,7 +199,7 @@ name to go to the Cluster Details page.
 | Physical Capacity Trend | You can specify a time range to view the total physical capacity and physical capacity usage trend. |
 | Logical Capacity Trend | You can specify a time range to view the total logical capacity and logical capacity usage trend. |
 
-#### View monitoring data of a cluster
+#### 4.2.2 View monitoring data of a cluster
 
 You can view the IOPS, bandwidth, and latency metrics of an Elastic File Storage-File Storage NAS (EFS-NAS) cluster. This helps you understand the cluster status, identify performance issues, and optimize cluster performance.
 1. Log in to the EFS-NAS operations console.
@@ -196,7 +222,7 @@ r O&M
 | Bandwidth | The total bandwidth used when data is read from and written to the cluster. Unit: KiB/s. Read Bandwidth: the total bandwidth used when data is read from the cluster. Write Bandwidth: the total bandwidth used when data is written to the cluster. If the bandwidth usage is close to the upper limit, the data transmission speed may be affected. In this case, we recommend that you increase the bandwidth. |
 | Delay | The average read/write latency of the cluster. This metric is used to evaluate the response speed of the cluster. Unit: microseconds. Read Latency: the average response time of read operations. Write Latency: the average response time of write operations. If the latency suddenly increases, a storage or network exception may occur. Pay special attention to such a case. |
 
-### Configure QoS
+### 4.3 Configure QoS
 
 Configure quality of service (QoS) to limit data reconstruction bandwidth during disk or storage node failures and prevent the recovery process from affecting application performance.
 
@@ -249,7 +275,7 @@ The QoS policy takes effect immediately and applies to all disks in the cluster'
 |---|---|---|
 | speed based on the real-time load. |   |   |
 
-### Configure the data
+### 4.4 Configure the data compression feature
 
 **compression feature**
 
@@ -270,9 +296,9 @@ business requirements. Set the Compression Algorithm parameter to lz4. The data 
 5. Click **OK**.
 O&M
 
-## Node O&M
+## 5 Node O&M
 
-### Node O&M overview
+### 5.1 Node O&M overview
 
 The node O&M feature allows you to view information about nodes in an Elastic File Storage- File Storage NAS (EFS-NAS) cluster, search for nodes, and view node details.
 1. Log in to the EFS-NAS operations console.
@@ -291,7 +317,7 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 
 Repair nodes by using the shutdown and repair feature of Apsara Infrastructure Management.
 
-### Node monitoring data
+### 5.2 Node monitoring data
 
 Viewing node metrics such as CPU usage, memory usage, network bandwidth, data packets, packet loss rate, error packet rate, and OSD information helps you understand a node's operational status, identify performance issues, and optimize its performance.
 1. Log in to the File Storage O&M Platform.
@@ -319,7 +345,7 @@ O&M
 | OSD Information | The operational status, configuration, and resource usage of Object Storage Daemon (OSD) instances on the storage node. Each OSD typically corresponds to a physical disk. This includes the following key metrics: Name: The unique identifier of the OSD instance. Status: The operational state of the OSD. 'Healthy' indicates a normal status. Type: The type of storage medium (SSD/HDD). Capacity: The total and used storage capacity. Proportion of Healthy Data: The percentage of data with complete and accessible replicas. Proportion of Degraded Data: The percentage of data that has an insufficient number of replicas but remains accessible. Proportion of Data Recovered: The percentage of data that is being repaired or rebuilt. PProportion of Unavailable Data: The percentage of data that is temporarily inaccessible. If a large number of OSDs on a node become unhealthy, it may indicate disk failures, network interruptions, or host downtime. Address these issues immediately to prevent data loss. |
 |---|---|
 
-### Repair nodes
+### 5.3 Repair nodes
 
 The shutdown and repair feature allows you to shut down a running node and perform repair operations on the node, excluding hard disk repair.
 
@@ -371,7 +397,7 @@ O&M
 
 After the node is repaired, check the status of the node on the **Node Operations** page in the EFS-NAS console. When the node status changes from Offline to Health, the node is running as expected. ge file systems
 
-## Manage file systems
+## 6 Manage file systems
 
 The file system management feature allows you to view and manage Elastic File Storage-File Storage NAS (EFS-NAS) file systems in a centralized manner. For example, you can view the details of a file system, search for file systems, view the shared addresses of a file system, and manage quality of service (QoS).
 
@@ -393,7 +419,7 @@ requirements.
 | View the shared addresses of a file system | Find the shared file system that you want to manage and clickV iew Shared Addresses in the Operation column. |
 | Manage QoS | To prevent file systems from consuming excessive system resources, you can configure QoS policies to limit the maximum read/write bandwidth and maximum operations per second (OPS) of file systems. |
 
-### Manage QoS
+### 6.1 Manage QoS
 
 To prevent file systems from consuming excessive system resources, you can configure quality of service (QoS) policies to limit the maximum read/write bandwidth and maximum operations per second (OPS) of file systems. After QoS is configured for a file system, you can modify or delete the QoS configuration based on your business requirements.
 
@@ -428,7 +454,7 @@ Deleted QoS configuration cannot be recovered. Proceed with caution. If you dele
 click **Delete QoS configuration** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-### Manage QoS policies
+### 6.2 Manage QoS policies
 
 In Elastic File Storage-File Storage NAS (EFS-NAS), the system comprehensively evaluates the maximum available bandwidth and maximum operations per second (OPS) of clusters in different scenarios based on the business workload, storage medium, I/O mode, and network bandwidth. You can limit the maximum available bandwidth and maximum OPS of clusters by configuring quality of service (QoS) policies for file systems. After a QoS policy is created, you can use the QoS policy as the QoS configuration of a file system, and modify or delete the QoS policy based on your business requirements.
 
@@ -489,9 +515,9 @@ If you delete a QoS policy, the QoS configurations of all associated file system
 
 Configure QoS policies for file systems. For more information, see Configure QoS policies. s and alerts
 
-## Events and alerts
+## 7 Events and alerts
 
-### Manage system alarms
+### 7.1 Manage system alarms
 
 EFS-NAS reports alarms to the Apsara Uni-manager console. When a system alarm is triggered, you can view the alarm list and its details. After receiving an alarm, resolve the underlying issue and then close the alarm.
 1. Log on to the Apsara Uni-manager console.
@@ -521,7 +547,7 @@ The closed alarm then appears on the **Disabled** tab. To close multiple alarms,
 5. Export reports as needed. At the top of the page, click **Export Report** to download the
 alarm report as a spreadsheet. s and alerts
 
-### Manage system events
+### 7.2 Manage system events
 
 To enhance risk monitoring and accelerate emergency response, Elastic File Storage-File Storage NAS (EFS-NAS) allows you to manage events in the Event Center of the Apsara Unimanager Operations Console. You can search for and handle EFS-NAS-related events at different levels in a centralized manner.
 
@@ -546,7 +572,7 @@ perform operations, such as marking the event and responding to the event, based
 
 After you respond to an event, you can click **Transfer** or **Close** on the event details page to transfer or close the event. To close the event, click Response and select **Direct statement**. In the Event statement dialog box, configure the parameters such as Valid and Cause of the Event and click **Confirm**. Then, the state of the event changes to **Closed**. After the event is closed, all event-related alerts will be closed. platform monitoring
 
-## Cloud platform monitoring
+## 8 Cloud platform monitoring
 
 The cloud platform monitoring feature enables you to understand the running status of Elastic File Storage-File Storage NAS (EFS-NAS) clusters, services, and components. This way, you can identify and troubleshoot issues at the earliest opportunity.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -598,7 +624,7 @@ platform monitoring
 
 enter
 
-## Log center
+## 9 Log center
 
 The operational logs of Elastic File Storage-File Storage NAS (EFS-NAS) are reported to the Log Center of the Apsara Uni-manager Operations Console. When the system runs abnormally, you can quickly identify the issue by viewing the operational logs.
 
@@ -655,7 +681,7 @@ enter You can view the log details that meet the query conditions in the log sea
 
 ge storage capacity
 
-## Manage storage capacity
+## 10 Manage storage capacity
 
 The storage capacity information of all EFS-NAS clusters is integrated into the Storage Capacity module of the Apsara Uni-manager Operations Console. You can view the capacity usage of all EFS-NAS clusters in a unified data view. This way, you can identify resource bottlenecks in a timely manner and make proper scaling plans to improve resource utilization and O&M efficiency. In addition, you can configure alert rules for EFS-NAS clusters based on their capacity usage. When the capacity usage of a cluster exceeds the specified threshold, the system automatically triggers an alert to help you quickly locate the cluster with abnormal capacity usage.
 1. Log in to the Apsara Uni-manager Operations Console.

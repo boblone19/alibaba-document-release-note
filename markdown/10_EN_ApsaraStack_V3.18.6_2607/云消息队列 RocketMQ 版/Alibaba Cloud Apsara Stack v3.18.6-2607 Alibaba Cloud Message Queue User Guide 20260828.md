@@ -3,18 +3,199 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue User
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 379
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue User Guide 20260828.pdf"
+source_pdf: "b22e6e73e90c8fc7_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue User Guide 20260828
+
+## Table of Contents
+
+- 2 Product updates
+- 3 Quick start
+  - 3.1 Overview
+  - 3.2 Log on to the console
+  - 3.3 Create resources
+  - 3.4 Send messages
+    - 3.4.1 Use the TCP client SDK for Java to send and subscribe to normal messages
+    - 3.4.2 Use the HTTP client SDK for Java to send and subscribe to normal messages
+    - 3.4.3 Check whether messages are sent
+  - 3.5 Subscribe to messages
+- 4 Message types
+  - 4.1 Normal messages
+  - 4.2 Scheduled messages and delayed messages
+  - 4.3 Transactional messages
+  - 4.4 Ordered messages
+- 5 Console guide
+  - 5.1 Resource management
+    - 5.1.1 Overview
+    - 5.1.2 Manage instances
+    - 5.1.3 Manage topics
+    - 5.1.4 Group management
+  - 5.2 Network management
+    - 5.2.1 View endpoint information
+    - 5.2.2 Associate an ApsaraMQ for RocketMQ instance with a VPC
+    - 5.2.3 Manage VPCs
+    - 5.2.4 Attach an IPv6 CIDR block to a VPC
+  - 5.3 View consumer status
+  - 5.4 Reset consumer offsets
+  - 5.5 Message query
+    - 5.5.1 Overview
+    - 5.5.2 Query messages
+    - 5.5.3 Message query results
+  - 5.6 Message tracing
+    - 5.6.1 Overview
+    - 5.6.2 Query a message trace
+    - 5.6.3 States in message traces
+  - 5.7 Manage dead-letter queues
+  - 5.8 Resource statistics
+    - 5.8.1 Overview
+    - 5.8.2 Query the statistics of produced messages
+    - 5.8.3 Query the statistics of consumed messages
+  - 5.9 View the monitoring information of an instance
+  - 5.10 View the operation logs of an instance
+  - 5.11 Account authorization management
+  - 5.12 Data integration
+    - 5.12.1 Overview
+    - 5.12.2 Configure a MaxCompute sink connector
+- 6 Message routing
+  - 6.1 Replicator
+  - 6.2 Connector
+    - 6.2.1 Elasticsearch
+    - 6.2.2 Redis
+    - 6.2.3 OSS
+    - 6.2.4 MySQL
+- 7 SDK user guide
+  - 7.1 Overview
+  - 7.2 SDK user guide
+    - 7.2.1 Demo projects
+      - 7.2.1.1 Overview
+      - 7.2.1.2 Prepare the environment
+      - 7.2.1.3 Configure a demo project
+      - 7.2.1.4 Run the demo project
+    - 7.2.2 Client parameters
+    - 7.2.3 Client error codes
+    - 7.2.4 SDK for Java
+      - 7.2.4.1 Usage notes
+      - 7.2.4.2 Prepare the environment
+      - 7.2.4.3 Configure logging
+      - 7.2.4.4 Spring integration
+        - 7.2.4.4.1 Overview
+        - 7.2.4.4.2 Integrate a producer with Spring
+        - 7.2.4.4.3 Integrate a transactional message producer with Spring
+        - 7.2.4.4.4 Integrate a consumer with Spring
+      - 7.2.4.5 Three modes for sending messages
+        - 7.2.4.5.1 Overview
+        - 7.2.4.5.2 Reliable synchronous transmission
+        - 7.2.4.5.3 Reliable asynchronous transmission
+        - 7.2.4.5.4 One-way transmission
+      - 7.2.4.6 Send messages by using multiple threads
+      - 7.2.4.7 Send and receive ordered messages
+      - 7.2.4.8 Send and receive transactional messages
+      - 7.2.4.9 Send and subscribe to delayed messages
+      - 7.2.4.10 Send and subscribe to scheduled messages
+      - 7.2.4.11 Subscribe to messages
+    - 7.2.5 SDK for C or C++
+      - 7.2.5.1 Prepare the SDK for C or C++ environment
+        - 7.2.5.1.1 Prepare the environment
+        - 7.2.5.1.2 Download SDK for C++
+        - 7.2.5.1.3 Use SDK for C++ in Linux
+      - 7.2.5.2 Send and subscribe to normal messages
+      - 7.2.5.3 Send and receive ordered messages
+      - 7.2.5.4 Send and subscribe to scheduled messages
+      - 7.2.5.5 Send and receive transactional messages
+      - 7.2.5.6 Subscribe to messages
+    - 7.2.6 SDK for .NET
+      - 7.2.6.1. .Prepare the SDK for .NET environment
+        - 7.2.6.1.1 Overview
+        - 7.2.6.1.2 Download SDK for .NET
+        - 7.2.6.1.3. .Configure SDK for .NET
+      - 7.2.6.2 Send and subscribe to normal messages
+      - 7.2.6.3 Send and subscribe to ordered messages
+      - 7.2.6.4 Send and subscribe to scheduled messages
+      - 7.2.6.5 Send and receive transactional messages
+      - 7.2.6.6 Subscribe to messages
+  - 7.3 HTTP client SDK reference
+    - 7.3.1 Protocol description
+      - 7.3.1.1 Common parameters
+      - 7.3.1.2 Request signatures
+      - 7.3.1.3 Operation for sending messages
+      - 7.3.1.4 Operation for consuming messages
+      - 7.3.1.5 Operation for acknowledging messages
+    - 7.3.2 Java SDK
+      - 7.3.2.1 Prepare the environment
+      - 7.3.2.2 Send and consume normal messages
+      - 7.3.2.3 Send and consume ordered messages
+      - 7.3.2.4 Send and consume scheduled messages and delayed messages
+      - 7.3.2.5 Send and consume transactional messages
+    - 7.3.3 Go SDK
+      - 7.3.3.1 Prepare the environment
+      - 7.3.3.2 Send and consume normal messages
+      - 7.3.3.3 Send and consume ordered messages
+      - 7.3.3.4 Send and consume scheduled messages and delayed messages
+      - 7.3.3.5 Send and consume transactional messages
+    - 7.3.4 Python SDK
+      - 7.3.4.1 Prepare the environment
+      - 7.3.4.2 Send and consume normal messages
+      - 7.3.4.3 Send and consume ordered messages
+      - 7.3.4.4 Send and consume scheduled messages and delayed messages
+      - 7.3.4.5 Send and consume transactional messages
+    - 7.3.5 Node.js SDK
+      - 7.3.5.1 Prepare the environment
+      - 7.3.5.2 Send and consume normal messages
+      - 7.3.5.3 Send and consume ordered messages
+      - 7.3.5.4 Send and consume scheduled messages and delayed messages
+      - 7.3.5.5 Send and consume transactional messages
+    - 7.3.6 PHP SDK
+      - 7.3.6.1 Prepare the environment
+      - 7.3.6.2 Send and consume normal messages
+      - 7.3.6.3 Send and consume ordered messages
+      - 7.3.6.4 Send and consume scheduled messages and delayed messages
+      - 7.3.6.5 Send and consume transactional messages
+    - 7.3.7 C# SDK
+      - 7.3.7.1 Prepare the environment
+      - 7.3.7.2 Send and consume normal messages
+      - 7.3.7.3 Send and consume ordered messages
+      - 7.3.7.4 Send and consume scheduled messages and delayed messages
+      - 7.3.7.5 Send and consume transactional messages
+    - 7.3.8 C++ SDK
+      - 7.3.8.1 Prepare the environment
+      - 7.3.8.2 Send and consume normal messages
+      - 7.3.8.3 Send and consume ordered messages
+      - 7.3.8.4 Send and consume scheduled messages and delayed messages
+      - 7.3.8.5 Send and consume transactional messages
+- 8 Best practices
+  - 8.1 Clustering consumption and broadcasting consumption
+  - 8.2 Message filtering
+  - 8.3 Subscription consistency
+  - 8.4 Consumption idempotence
+  - 8.5 Active geo-redundancy
+  - 8.6 Zone-disaster recovery
+  - 8.7 Message routing
+- 9 Service usage FAQ
+  - 9.1 FAQ
+    - 9.1.1 Quick start
+    - 9.1.2 Configurations
+    - 9.1.3 Message tracing
+    - 9.1.4 Alert handling
+    - 9.1.5 Ordered messages
+  - 9.2 Exceptions
+    - 9.2.1 exceptions and solutions
+    - 9.2.2 Nonexistent resources
+    - 9.2.3 Inconsistent status
+  - 9.3 Troubleshooting
+    - 9.3.1 Unexpected consumer connections
+    - 9.3.2 Inconsistent subscriptions
+    - 9.3.3 Message accumulation
+    - 9.3.4 Message accumulation in Java processes
+    - 9.3.5 Application OOM due to message caching on the client
 
 **1.?**
 
 ApsaraMQ for RocketMQ is a distributed messaging middleware that is developed based on Apache RocketMQ. ApsaraMQ for RocketMQ features low latency, high concurrency, high availability, and high reliability. ApsaraMQ for RocketMQ provides a complete set of cloud messaging services based on the technologies that are used for building highly available and distributed clusters. The messaging services include message subscription and publishing, message tracing, scheduled and delayed messages, and resource statistics. ApsaraMQ for RocketMQ is used as a core service in an enterprise-grade Internet architecture. ApsaraMQ for RocketMQ provides asynchronous decoupling and peak-load shifting capabilities for distributed application systems. It also supports various features for Internet applications, including accumulation of large numbers of messages, high throughput, and reliable message consumption retries. ApsaraMQ for RocketMQ is one of the core cloud services that are used to support the Double 11 Shopping Festival. ApsaraMQ for RocketMQ supports connections over TCP and HTTP and supports multiple programming languages such as Java, C++, and .NET. This allows you to connect applications that are developed in different programming languages to ApsaraMQ for RocketMQ.
 
-## Product updates
+## 2 Product updates
 
 This topic describes the updates of ApsaraMQ for RocketMQ from V3.8.0 to V3.18.3 to help you get started with the latest version.
 
@@ -54,9 +235,9 @@ Compatible configuration: Use a producer ID to identify a producer and a consume
 // When you create a producer, you must configure the PropertyKeyConst.ProducerId p arameter. properties.put(PropertyKeyConst.ProducerId, "The original PID-XXX or GID-XXX"); // When you create a consumer, you must configure the PropertyKeyConst.ConsumerId p arameter. properties.put(PropertyKeyConst.ConsumerId, "The original CID-XXX or GID-XXX");
 ```
 
-## Quick start
+## 3 Quick start
 
-### Overview
+### 3.1 Overview
 
 ApsaraMQ for RocketMQ provides TCP client SDKs and HTTP client SDKs for multiple programming languages. You can use the SDKs to send and subscribe to different types of messages. This topic describes how to use TCP client SDKs and HTTP client SDKs for multiple programming languages to send and subscribe to normal messages and the relevant usage notes.
 
@@ -88,7 +269,7 @@ C and C++: Send and subscribe to normal messages .NET: Send and subscribe to nor
 
 Go: Send and consume normal messages Python: Send and consume normal messages Node.js: Send and consume normal messages PHP: Send and consume normal messages C#: Send and consume normal messages C++: Send and consume normal messages
 
-### Log on to the console
+### 3.2 Log on to the console
 
 This topic describes how to log on to the ApsaraMQ for RocketMQ console.
 
@@ -116,7 +297,7 @@ For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 5. In the top navigation bar, choose **Products > Middleware > ApsaraMQ for RocketMQ**.
 
-### Create resources
+### 3.3 Create resources
 
 Before you use a client SDK to send and receive messages, you must create the required resources and obtain the resource information in the ApsaraMQ for RocketMQ console. When you use the SDK, you must configure the resource parameters based on the resource information.
 
@@ -233,9 +414,9 @@ click **OK**.
 
 A group ID can be used for producers to identify the same type of producer instance. In this case, the group ID is a producer group ID. A group ID can also be used for consumers to identify the same type of consumer instance. In this case, the group ID is a consumer group ID. TCP-based SDKs and HTTP-based SDKs cannot share the same group ID. Create separate group IDs for TCP-based SDKs and HTTP-based SDKs.
 
-### Send messages
+### 3.4 Send messages
 
-#### Use the TCP client SDK for Java to send
+#### 3.4.1 Use the TCP client SDK for Java to send and subscribe to normal messages
 
 **and subscribe to normal messages**
 
@@ -378,17 +559,13 @@ subscription, and click **Subscription relationship** in the **Operation** colum
 
 **What to do next**
 
-Query messages Query a message trace
-
-#### Use the HTTP client SDK for Java to
+#### 3.4.2 Use the HTTP client SDK for Java to send and subscribe to normal messages
 
 ##### send and subscribe to normal messages
 
 After you create the required resources in the ApsaraMQ for RocketMQ console, you can use ApsaraMQ for RocketMQ HTTP client SDK for Java to send and subscribe to normal messages.
 
 **Before you begin**
-
-Create resources
 
 **Install ApsaraMQ for RocketMQ SDK for Java**
 
@@ -610,9 +787,7 @@ subscription, and click **Subscription relationship** in the **Operation** colum
 
 **What to do next**
 
-Query messages Query a message trace
-
-#### Check whether messages are sent
+#### 3.4.3 Check whether messages are sent
 
 After you send a message, you can check the status of the message in the ApsaraMQ for RocketMQ console.
 
@@ -641,7 +816,7 @@ This step demonstrates the situation where ApsaraMQ for RocketMQ is used for the
 
 You can start the consumer and subscribe to messages. For more information, see Subscribe to messages. For more information about message states, see Message query and Status in message traces.
 
-### Subscribe to messages
+### 3.5 Subscribe to messages
 
 After a message is sent, the consumer can subscribe to the message. You must use the SDK corresponding to the protocol and programming language to subscribe to the message. This topic describes how to use ApsaraMQ for RocketMQ TCP client SDK for Java to subscribe to messages.
 
@@ -686,21 +861,21 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 6. In the group list, find the group ID for the consumer of which you want to view the
 subscription, and click **Subscription relationship** in the **Operation** column. If the value of the **Online or not** parameter is **Yes**, the consumer has been started and the subscription is successful. Otherwise, the subscription fails.
 
-## Message types
+## 4 Message types
 
-### Normal messages
+### 4.1 Normal messages
 
 This topic describes the definition of normal messages and provides the sample code for sending and subscribing to normal messages. In ApsaraMQ for RocketMQ, normal messages do not have special features. They are different from the following featured messages: scheduled messages, delayed messages, ordered messages, and transactional messages. For more information about these featured messages, see Scheduled messages and delayed messages, Ordered messages, and Transactional messages. The following sample code provide examples on how to use TCP client SDKs and HTTP client SDKs for different programming languages to send and subscribe to normal messages:
 
 **Sample code for using TCP client SDKs**
 
-For information about the sample code for using TCP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: Overview Send messages by using multiple threads Subscribe to messages The SDK for C and the SDK for C++: Send and subscribe to normal messages The SDK for .NET: Send and subscribe to normal messages
+For information about the sample code for using TCP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: The SDK for C and the SDK for C++: Send and subscribe to normal messages The SDK for .NET: Send and subscribe to normal messages
 
 **Sample code for using HTTP client SDKs**
 
 For information about the sample code for using HTTP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: Send and subscribe to normal messages The SDK for Go: Send and subscribe to normal messages The SDK for Python: Send and subscribe to normal messages The SDK for Node.js: Send and subscribe to normal messages The SDK for PHP: Send and subscribe to normal messages The SDK for C#: Send and subscribe to normal messages The SDK for C++: Send and subscribe to normal messages
 
-### Scheduled messages and
+### 4.2 Scheduled messages and delayed messages
 
 **delayed messages**
 
@@ -724,13 +899,13 @@ The **msg.setStartDeliverTime** parameter for a scheduled message or a delayed m
 
 **Sample code for using TCP client SDKs**
 
-For information about the sample code for using TCP client SDKs to send and subscribe to scheduled messages or delayed messages, see the following topics: Java SDK Send and subscribe to scheduled messages Send and subscribe to delayed messages The SDK for C++: Send and subscribe to scheduled messages The SDK for .NET: Send and subscribe to scheduled messages
+For information about the sample code for using TCP client SDKs to send and subscribe to scheduled messages or delayed messages, see the following topics: The SDK for C++: Send and subscribe to scheduled messages The SDK for .NET: Send and subscribe to scheduled messages
 
 **Sample code for using HTTP client SDKs**
 
 For information about the sample code for using HTTP client SDKs to send and subscribe to scheduled messages and delayed messages, see the following topics: The SDK for Java: Send and subscribe to scheduled messages and delayed messages The SDK for Go: Send and consume scheduled messages and delayed messages The SDK for Python: Send and consume scheduled messages and delayed messages The SDK for Node.js: Send and consume scheduled messages and delayed messages The SDK for PHP: Send and consume scheduled messages and delayed messages The SDK for C#: Send and consume scheduled messages and delayed messages The SDK for C++: Send and consume scheduled messages and delayed messages
 
-### Transactional messages
+### 4.3 Transactional messages
 
 This topic introduces the terms that are related to transactional messages in ApsaraMQ for RocketMQ. This topic also describes the scenarios, methods, and usage notes of using transactional messages.
 
@@ -775,7 +950,7 @@ For information about sample code, see the following references: SDK for Java: S
 
 For information about sample code, see the following references: SDK for Java: Send and consume transactional messages SDK for Go: Send and consume transactional messages SDK for Python: Send and consume transactional messages SDK for Node.js: Send and consume transactional messages SDK for PHP: Send and consume transactional messages SDK for C#: Send and consume transactional messages SDK for C++: Send and consume transactional messages
 
-### Ordered messages
+### 4.4 Ordered messages
 
 Ordered messages are consumed in the same order in which they are sent. The earliest message that is sent is consumed as the first message, and the message that is sent next is consumed later. In most cases, ordered messages are used in scenarios that require messages to be consumed in the order in which the messages are produced. For example, ordered messages are frequently used in the financial security and e-commerce industries. This topic describes the terms, scenarios, working mechanism, and usage notes of ordered messages in ApsaraMQ for RocketMQ.
 
@@ -828,15 +1003,15 @@ For information about sample code for using TCP client SDKs to send and receive 
 
 For information about sample code for using HTTP client SDKs to send and receive ordered messages, see the following topics: SDK for Java: Send and consume ordered messages SDK for Go: Send and consume ordered messages SDK for Python: Send and consume ordered messages SDK for Node.js: Send and consume ordered messages SDK for PHP: Send and consume ordered messages SDK for C#: Send and consume ordered messages SDK for C++: Send and consume ordered messages
 
-## Console guide
+## 5 Console guide
 
-### Resource management
+### 5.1 Resource management
 
-#### Overview
+#### 5.1.1 Overview
 
 This topic describes how to manage resources in ApsaraMQ for RocketMQ. If a new application needs to access ApsaraMQ for RocketMQ, you must create the following ApsaraMQ for RocketMQ resources for the application: Instance: As a virtual machine (VM) resource of ApsaraMQ for RocketMQ, an instance stores information about topics and group IDs. Topic: In ApsaraMQ for RocketMQ, a producer sends a message to a specific topic, and a consumer subscribes to the topic to obtain and consume the message. Group ID: A group ID is used to identify a group of producers or consumers. You can add, delete, modify, and query the preceding resources in the ApsaraMQ for RocketMQ console or by calling API operations. You can also configure approval workflows for operations performed on the resources. This helps standardize the management process of the resources. When you use an SDK to send and receive messages, you must specify the information about the topic and group that you created in the ApsaraMQ for RocketMQ console. You must also enter the AccessKey ID and AccessKey secret that you created in the Apsara Uni-manager Management Console for identity authentication. If you have not obtained the AccessKey ID and AccessKey secret, you can obtain them in the Apsara Uni-manager Management Console. For more information, see Obtain the AccessKey ID and AccessKey secret.
 
-#### Manage instances
+#### 5.1.2 Manage instances
 
 In ApsaraMQ for RocketMQ, an instance is used to store information about topics and group IDs. This topic describes how to create, update, view, and delete instances in the ApsaraMQ for RocketMQ console.
 
@@ -952,7 +1127,7 @@ When you use an ApsaraMQ for RocketMQ SDK to connect a client to an ApsaraMQ for
 
 For more information about how to call API operations to perform operations on instances, see ApsaraMQ for RocketMQ Developer Guide.
 
-#### Manage topics
+#### 5.1.3 Manage topics
 
 A topic is a primary category for messages in RocketMQ. RocketMQ uses a publish-subscribe model where a message producer publishes messages to a topic, and a message consumer subscribes to the topic to consume the messages. This topic describes how to create, view, update, and delete topics in the RocketMQ console.
 
@@ -1037,7 +1212,7 @@ If you do not select any topics and click the download icon, all topics are expo
 To perform these operations using an API, see the relevant topics in the **Developer Guide**
 **for Message Queue for Apache RocketMQ**.
 
-#### Group management
+#### 5.1.4 Group management
 
 After you create an instance and a topic, you must create a Group ID. This ID serves as a client ID for your message producers and consumers. This topic describes how to create, view, and delete Group IDs in the ApsaraMQ for RocketMQ console.
 
@@ -1112,9 +1287,9 @@ in the upper-right corner.
 
 To perform these operations by using an API, see the relevant topics in the ApsaraMQ for RocketMQ Developer Guide.
 
-### Network management
+### 5.2 Network management
 
-#### View endpoint information
+#### 5.2.1 View endpoint information
 
 This topic describes how to view the endpoint information of an instance.
 
@@ -1138,7 +1313,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 
 Sensitive information is included in the endpoint. Make sure that your network is protected.
 
-#### Associate an ApsaraMQ for RocketMQ
+#### 5.2.2 Associate an ApsaraMQ for RocketMQ instance with a VPC
 
 **instance with a VPC**
 
@@ -1208,7 +1383,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 **Unbind** in the **Operation** column.
 6. In the **Unbind** message, confirm the VPC information and click **OK**.
 
-#### Manage VPCs
+#### 5.2.3 Manage VPCs
 
 This topic describes how to manage virtual private clouds (VPCs) that are associated with an ApsaraMQ for RocketMQ instance.
 
@@ -1237,7 +1412,7 @@ in the **Operation** column of the VPC. In the **Unbind** message, confirm the i
 **instance list** in the **Operation** column of the VPC. In the message that appears, you can
 view **Instance**, **VPC name**, **VPC ID**, and **Switch**.
 
-#### Attach an IPv6 CIDR block to a VPC
+#### 5.2.4 Attach an IPv6 CIDR block to a VPC
 
 This topic describes how to attach an IPv6 CIDR block to a VPC.
 
@@ -1288,7 +1463,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 **Endpoint** (the instance endpoint assigned after the VPC is attached), **VPC Name**, **VPC ID**,
 **Network Type** (**ipv4** or **ipv6**), and **VSwitch ID** (the vSwitch to which the VPC is attached).
 
-### View consumer status
+### 5.3 View consumer status
 
 You can check the consumer status in the ApsaraMQ for RocketMQ console to troubleshoot issues that occur during message consumption. This feature allows you to view the information about a group or a consumer identified by the group ID. The information includes the connection status, subscription, number of transactions per second (TPS) for message consumption, number of accumulated messages, and thread stacks. This topic describes how to view such information.
 
@@ -1298,7 +1473,7 @@ The cause of an exception that occurs during message consumption is complicated.
 
 **Scenarios**
 
-You can query the consumer status for troubleshooting in the following scenarios: Inconsistent subscriptions Problem: In the **Consumer status** panel, the value of the **Whether the subscription**
+You can query the consumer status for troubleshooting in the following scenarios: Problem: In the **Consumer status** panel, the value of the **Whether the subscription**
 **relationship is consistent** parameter is **No**.
 Solution: For more information about how to handle subscription inconsistency, see Inconsistent subscriptions. Message accumulation alert Problem: In the **Consumer status** panel, the value in the **Accumulation** column is large. Solution: For more information about how to handle message accumulation alerts, see Message accumulation.
 
@@ -1340,7 +1515,7 @@ threads, consumption start time, subscription, and message consumption statistic
 3. If you want to view the stack information about the current process for a specific consumer
 instance, find the consumer instance and click **Stack information** in the **Operation** column.
 
-### Reset consumer offsets
+### 5.4 Reset consumer offsets
 
 You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them. You can also consume messages that are sent after a point in time regardless of whether the messages sent before this point in time are consumed.
 
@@ -1369,9 +1544,9 @@ select this option, consumers identified by the group ID skip all accumulated (u
 Select a point in time. Only the messages that are sent after the selected point in time are consumed. The time period during which you can select a point in time ranges from the production time of the earliest message stored in the topic to the production time of the latest message stored in the topic. You can select a point in time only within the allowed time range.
 7. Click **OK** to reset the consumer offset.
 
-### Message query
+### 5.5 Message query
 
-#### Overview
+#### 5.5.1 Overview
 
 If a message is not consumed as expected, you can query the message content to troubleshoot problems. ApsaraMQ for RocketMQ allows you to query messages by message ID, by message key, and by topic. Table 1. Comparison of query methods
 
@@ -1383,7 +1558,7 @@ If a message is not consumed as expected, you can query the message content to t
 
 We recommend that you query messages by using the following process. Figure 1. Message query process
 
-#### Query messages
+#### 5.5.2 Query messages
 
 This topic describes how to query messages in the ApsaraMQ for RocketMQ console by using three different methods.
 
@@ -1441,7 +1616,7 @@ If you cannot query messages by message ID or message key, query messages by top
 
 If you query messages by topic, take note of the following items: This query method allows you to obtain all messages that are sent in a topic during a specific time range. We recommend that you narrow down the time range to locate the message that you want to query in an efficient manner. If you query messages by topic, a large number of messages are returned on multiple pages.
 
-#### Message query results
+#### 5.5.3 Message query results
 
 This topic describes the results of message queries. You can view the message query results on the **Message query** tab in the ApsaraMQ for RocketMQ console. The query result includes the **message ID**, **tag**, **key**, and **storage time**. In addition, you can download the message content, query message traces, and view message details in the
 **Operation** column.
@@ -1472,9 +1647,9 @@ In the **Message details** panel, you can check whether **message consumption** 
 
 The consumption verification feature can be used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
 
-### Message tracing
+### 5.6 Message tracing
 
-#### Overview
+#### 5.6.1 Overview
 
 A message trace is the complete trace of a message that is sent from a producer to the ApsaraMQ for RocketMQ broker and then consumed by a consumer. The message trace includes the time, status, and other information of each node in the preceding process. The message trace provides robust data support for troubleshooting in production environments. This topic describes the scenarios, query procedure, and parameters of query results for message tracing.
 
@@ -1509,7 +1684,7 @@ message trace based on the available information.
 3. Check the query results and analyze the cause.
 If **Not Consumed** appears in the trace, go to the **Groups** page to View consumer status. Then, you can determine whether message accumulation is the reason why the message is not consumed. If the message is consumed, find the corresponding consumer and the time when the message is consumed in the consumption information. Then, log on to the consumer to view the relevant log.
 
-#### Query a message trace
+#### 5.6.2 Query a message trace
 
 You are not charged when you use the message tracing feature of ApsaraMQ for RocketMQ. Before you use the message tracing feature, make sure that it is supported by the version of the SDK that you use. After you send and receive messages, you can query the messages in the ApsaraMQ for RocketMQ console.
 
@@ -1557,7 +1732,7 @@ tab. After the value in the Task Status column changes to **Query completed**, y
 8. Click **View Track** to view details of the message trace.
 A message trace consists of three parts: Information about the message producer Information about the topic to which the message belongs Information about the message consumer If you perform a query based on a message key or a topic, multiple traces may be displayed. You can scroll the page to view and compare information about traces of different messages. For information about message traces, see States in message traces.
 
-#### States in message traces
+#### 5.6.3 States in message traces
 
 This topic describes the terms and status information displayed on the Message trace tab. Table 1. Terms
 
@@ -1598,7 +1773,7 @@ Table 2. States in message traces
 |   | Consumption success | The message has been consumed. |
 |   | Consumption failure | A failure result is returned for the message consumption method, or the method throws an exception. |
 
-### Manage dead-letter queues
+### 5.7 Manage dead-letter queues
 
 Dead-letter queues are used to process messages that cannot be consumed as expected. This topic describes how to query, export, and resend dead-letter messages in dead-letter queues. This helps you manage dead-letter messages based on your business requirements and prevent missing message processing.
 
@@ -1694,9 +1869,9 @@ If a message enters a dead-letter queue, the message cannot be consumed as expec
 
 After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days. Resend a single dead-letter message In the ApsaraMQ for RocketMQ console, find the dead-letter message that you want to resend and click **Resend** in the **Operation** column to resend the dead-letter message. Resend multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ console, search for the dead-letter messages that you want to resend by group ID, select the dead-letter messages, and then click **Batch resend** below the message list to resend the dead-letter messages.
 
-### Resource statistics
+### 5.8 Resource statistics
 
-#### Overview
+#### 5.8.1 Overview
 
 This topic describes how to use the resource statistics feature to query the statistics of produced messages and consumed messages. The resource statistics feature provides the statistics of produced messages and consumed messages. This feature allows you to query the following data:
 
@@ -1708,7 +1883,7 @@ Queries by topic: You can query the total number of messages that are received b
 
 Queries by group ID: You can query the total number of messages that are sent from a topic to consumers identified by a group ID or the average number of messages that are sent from a topic to consumers identified by a group ID per second in a specified period of time. Queries by instance: You can query the total number of messages that are sent to all groups in a specified instance or the average number of messages that are sent to all groups in a specified instance per second in a specified period of time.
 
-#### Query the statistics of produced
+#### 5.8.2 Query the statistics of produced messages
 
 **messages**
 
@@ -1742,7 +1917,7 @@ query the statistics of produced messages, configure the related parameters, and
 
 The query results are displayed in charts.
 
-#### Query the statistics of consumed
+#### 5.8.3 Query the statistics of consumed messages
 
 **messages**
 
@@ -1773,7 +1948,7 @@ query the statistics of consumed messages. Configure the related fields. Then, c
 
 Results are displayed in charts.
 
-### View the monitoring
+### 5.9 View the monitoring information of an instance
 
 **information of an instance**
 
@@ -1804,7 +1979,7 @@ You can also click **More** to go to the CloudMonitor console and view the detai
 | Monitoring period | The time range during which monitoring data is collected. Valid values: Hourly monitoring: Last Hour, Last 3 hours, Last 6 hours, and Last 12 hours. Daily monitoring: Last 1 day, Last 3 days, Last 7 days. Custom: allows you to specify the start time and end time to define a monitoring period based on your business requirements. |
 | Monitoring metric | For more information about monitoring metrics, see the Metrics topic in the "Cloud service monitoring" topic of the "Cloud Monitor Service" chapter in Apsara Uni-manager Management Console User Guide in Apsara Stack Documentation Center. Note By default, the average values of each monitoring metric are displayed. You can also choose to display the maximum or minimum values of each monitoring metric based on your business requirements. |
 
-### View the operation logs of an
+### 5.10 View the operation logs of an instance
 
 **instance**
 
@@ -1835,7 +2010,7 @@ ApsaraMQ for RocketMQ instance and its related resources in the previous seven d
 
 You can also find an operation record and click **Operation Details** in the **Operation** column to view more detailed log information in the **Operation Details** panel.
 
-### Account authorization
+### 5.11 Account authorization management
 
 **management**
 
@@ -1883,9 +2058,9 @@ in the **Actions** column, and then select **View Authorization** from the drop-
 
 You do not need to authorize your account to manage the topics that you create. After you log on to the Message Queue for Apache RocketMQ console by using an authorized account, you can view the topic that the account is authorized to manage. Then, you must create a group ID. You cannot use the group ID of the Apsara Stack tenant account that is used to grant permissions to your account. A topic that an account is authorized to manage belongs to the Apsara Stack tenant account that is used to grant permissions. Therefore, you cannot use the authorized account to delete the topic. If you grant permissions to a RAM user, you cannot use the authorized RAM user to create topics. If you grant permissions to another Apsara Stack tenant account, you can use the authorized Apsara Stack tenant account to create topics. However, the created topics are not associated to the Apsara Stack tenant account that is used to grant permissions.
 
-### Data integration
+### 5.12 Data integration
 
-#### Overview
+#### 5.12.1 Overview
 
 ApsaraMQ for RocketMQ provides fully managed and O&M-free connectors for data synchronization between ApsaraMQ for RocketMQ and other Alibaba Cloud services. This topic describes the connector feature of ApsaraMQ for RocketMQ. This topic also describes the types, usage notes, and benefits of connectors.
 
@@ -1927,7 +2102,7 @@ When you use a connector to synchronize data between ApsaraMQ for RocketMQ and o
 
 ApsaraMQ for RocketMQ allows you to implement the connector feature in a visualized manner in the ApsaraMQ for RocketMQ console. You do not need to configure other complex services.
 
-#### Configure a MaxCompute sink
+#### 5.12.2 Configure a MaxCompute sink connector
 
 ### connector
 
@@ -2057,9 +2232,9 @@ After you delete a connector task, data synchronization between the specified so
 **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-## Message routing
+## 6 Message routing
 
-### Replicator
+### 6.1 Replicator
 
 The replicator message routing feature provided by ApsaraMQ for RocketMQ allows you to synchronize messages between clusters. This topic describes how to create a replicator message routing task.
 
@@ -2221,9 +2396,9 @@ icon in the **Service Registration** i. Find the `mq-console` service and click 
 **Registration Variables** message, view the value of the **console.domain** parameter.
 The value of the **MQ API** parameter is in the following format: http://{console.domain}/json.
 
-### Connector
+### 6.2 Connector
 
-#### Elasticsearch
+#### 6.2.1 Elasticsearch
 
 The Elasticsearch message routing feature provided by ApsaraMQ for RocketMQ can be used to route message data between Elasticsearch clusters. This topic describes how to create an Elasticsearch message routing task.
 
@@ -2317,7 +2492,7 @@ After a message routing task is deleted, the task stops running.
 the **Operation** column.
 3. In the message that appears, read the information and click **OK**.
 
-#### Redis
+#### 6.2.2 Redis
 
 The Tair (Redis OSS-compatible) message routing feature provided by ApsaraMQ for RocketMQ can be used to route message data between Tair (Redis OSS-compatible) clusters. This topic describes how to create a Tair (Redis OSS-compatible) message routing task.
 
@@ -2399,7 +2574,7 @@ After a message routing task is deleted, the task stops running.
 the **Operation**.
 3. In the message that appears, read the information and click **OK**.
 
-#### OSS
+#### 6.2.3 OSS
 
 RocketMQ can sync messages to an Object Storage Service (OSS) bucket using the message routing feature. This topic describes how to configure a message routing task for OSS.
 
@@ -2480,7 +2655,7 @@ Deleting a routing task stops it from running. You cannot delete a task that is 
 **Actions** column.
 3. In the dialog box, read the message and click **OK**.
 
-#### MySQL
+#### 6.2.4 MySQL
 
 Use the MySQL message routing feature in ApsaraMQ for RocketMQ to synchronize data between different MySQL instances. This topic explains how to configure a MySQL routing task.
 
@@ -2625,9 +2800,9 @@ Deleting a routing task also stops the task. You cannot delete a task that is in
 column.
 3. Read the message in the dialog box carefully and then click **OK**.
 
-## SDK user guide
+## 7 SDK user guide
 
-### Overview
+### 7.1 Overview
 
 This topic lists the protocols supported by ApsaraMQ for RocketMQ and the related SDKs for multiple programming languages.
 
@@ -2652,15 +2827,15 @@ The following table lists the protocols and SDKs for multiple programming langua
 
 ApsaraMQ for RocketMQ provides TCP client SDKs and HTTP client SDKs for you to send and consume messages. You cannot specify the same group ID in the code of a TCP client SDK and the code of an HTTP client SDK at the same time. If you want to use a TCP client SDK to send and consume messages, you must create a group for the TCP protocol. You cannot specify a group that is created for the HTTP protocol in the code of the TCP client SDK. A ApsaraMQ for RocketMQ instance provides a TCP endpoint and an HTTP endpoint. An endpoint for a specific protocol must be used together with an SDK for the same protocol. For example, if you want to use a TCP client SDK to send and consume messages, you must obtain the TCP endpoint of your ApsaraMQ for RocketMQ instance. You cannot use the HTTP endpoint to connect to the instance.
 
-### SDK user guide
+### 7.2 SDK user guide
 
-#### Demo projects
+#### 7.2.1 Demo projects
 
-##### Overview
+##### 7.2.1.1 Overview
 
 This topic helps engineers who are new to ApsaraMQ for RocketMQ to build a ApsaraMQ for RocketMQ test project. The demo project is a Java project. It contains test code for normal messages, transactional messages, and scheduled messages. The demo project also contains Spring configurations.
 
-##### Prepare the environment
+##### 7.2.1.2 Prepare the environment
 
 This topic describes how to prepare an environment for a ApsaraMQ for RocketMQ demo project.
 
@@ -2668,7 +2843,7 @@ This topic describes how to prepare an environment for a ApsaraMQ for RocketMQ d
 
 Install an integrated development environment (IDE). You can use IntelliJ IDEA or Eclipse as the IDE. IntelliJ IDEA is used in this example. Download IntelliJ IDEA Ultimate Edition from IntelliJ IDEA. Then, follow the installation instructions to install IntelliJ IDEA Ultimate Edition. Download a demo project. Download a demo project from GitHub to your on-premises machine. Figure 1. Download a demo project After the downloaded package is decompressed, a folder named mq-demomaster appears on your on-premises machine.
 
-##### Configure a demo project
+##### 7.2.1.3 Configure a demo project
 
 This topic describes how to configure a demo project.
 
@@ -2708,7 +2883,7 @@ You must use the AccessKey ID and AccessKey secret of the account that you use t
 </props>
 ```
 
-##### Run the demo project
+##### 7.2.1.4 Run the demo project
 
 After you configure the demo project, you can start the corresponding classes to send and receive messages of different types.
 
@@ -2752,7 +2927,7 @@ Run the MQTimerProducer class to send a message. The message is delivered after 
 
 You can specify an exact delay, which can be up to 40 days. For more information, see Send and subscribe to scheduled messages.
 
-#### Client parameters
+#### 7.2.2 Client parameters
 
 This topic describes the parameters that are configured for ApsaraMQ for RocketMQ clients. Table 1. Client parameters
 
@@ -2789,7 +2964,7 @@ This topic describes the parameters that are configured for ApsaraMQ for RocketM
 | MaxCachedM essageSizeIn MiB | Consumer | 512 | Adjusted based on the memory of consumer clients | The maximum size of messages that a consumer client can cache. A large value can cause an out of memory (OOM) issue on the client. The value ranges from 16 to 2048. The default value is 512. Unit: MB. | >=1.7.0.Final |
 |---|---|---|---|---|---|
 
-#### Client error codes
+#### 7.2.3 Client error codes
 
 This topic describes error codes related to sending and subscribing to messages and their references.
 
@@ -2818,9 +2993,9 @@ This topic describes error codes related to sending and subscribing to messages 
 | 2 | SYSTEM BUSY _ | This error is returned when the system is busy and the request is denied. | This is a temporary timeout that results from the restart of the ApsaraMQ for RocketMQ broker or heavy load on the broker. For more information, see the "The message failed to be sent." section in the Usage- related exceptions topic. | >=4.0.1 |
 |---|---|---|---|---|
 
-#### SDK for Java
+#### 7.2.4 SDK for Java
 
-##### Usage notes
+##### 7.2.4.1 Usage notes
 
 ApsaraMQ for RocketMQ provides SDK for Java for you to send and subscribe to messages. This topic describes the parameters of Java methods and how to call these methods. Table 1. Common parameters
 
@@ -2860,9 +3035,7 @@ Figure 3. Methods and parameters for using SDK for Java to subscribe to messages
 
 **Sample code for sending and subscribing to messages**
 
-Send and subscribe to normal messages Send and receive ordered messages Send and subscribe to scheduled messages Send and subscribe to delayed messages Send and receive transactional messages
-
-##### Prepare the environment
+##### 7.2.4.2 Prepare the environment
 
 Before you run the Java code provided in this topic, prepare the environment based on the following instructions:
 
@@ -2885,7 +3058,7 @@ You can customize message tags in your application. For more information about h
 3. For applications that use the TCP client SDK to access ApsaraMQ for RocketMQ, make sure
 that the applications are deployed on Elastic Compute Service (ECS) instances in the same region.
 
-##### Configure logging
+##### 7.2.4.3 Configure logging
 
 Client logs record exceptions that occur when the ApsaraMQ for RocketMQ clients are running. Client logs help you locate and handle these exceptions in a quick manner. This topic describes how to print the logs of a ApsaraMQ for RocketMQ client and provides the default and custom configurations.
 
@@ -2972,13 +3145,13 @@ Add the following system parameters to the startup script or integrated developm
 
 /home/admin/ and D:\ are only examples. Replace them with your system directories.
 
-##### Spring integration
+##### 7.2.4.4 Spring integration
 
-###### Overview
+###### 7.2.4.4.1 Overview
 
 This topic describes how to send and subscribe to messages by using ApsaraMQ for RocketMQ in the Spring framework. This topic includes three parts: the integration of a normal message producer and Spring, the integration of a transactional message producer and Spring, and the integration of a message consumer and Spring. The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency. The configuration parameters supported in the Spring framework are the same as those used in TCP client SDK for Java. For more information, see Usage notes.
 
-###### Integrate a producer with Spring
+###### 7.2.4.4.2 Integrate a producer with Spring
 
 This topic describes how to integrate a producer with Spring.
 
@@ -3062,7 +3235,7 @@ arameter.
                  System.out.println("failed to send the message");
 ```
 
-###### Integrate a transactional message
+###### 7.2.4.4.3 Integrate a transactional message producer with Spring
 
 **producer with Spring**
 
@@ -3153,7 +3326,7 @@ es for TransactionStatus based on the execution result of the local transaction.
          }, null);
 ```
 
-###### Integrate a consumer with Spring
+###### 7.2.4.4.4 Integrate a consumer with Spring
 
 This topic describes how to integrate a consumer with Spring.
 
@@ -3259,9 +3432,9 @@ ClassPathXmlApplicationContext("consumer.xml");
         System.out.println("Consumer Started");
 ```
 
-##### Three modes for sending messages
+##### 7.2.4.5 Three modes for sending messages
 
-###### Overview
+###### 7.2.4.5.1 Overview
 
 In ApsaraMQ for RocketMQ, messages can be sent in reliable synchronous mode, reliable asynchronous mode, and one-way mode. This topic describes the principles, scenarios, and differences of these modes, and provides sample code for your reference.
 
@@ -3269,7 +3442,7 @@ In ApsaraMQ for RocketMQ, messages can be sent in reliable synchronous mode, rel
 
 Ordered messages can be sent only in reliable synchronous mode.
 
-###### Reliable synchronous transmission
+###### 7.2.4.5.2 Reliable synchronous transmission
 
 This topic describes the principle and scenarios of the reliable synchronous transmission mode.
 
@@ -3345,7 +3518,7 @@ sg.getTopic());
         producer.shutdown();
 ```
 
-###### Reliable asynchronous transmission
+###### 7.2.4.5.3 Reliable asynchronous transmission
 
 This topic describes the principle and scenarios of the reliable asynchronous transmission mode.
 
@@ -3436,7 +3609,7 @@ an choose not to shut down the producer object.
         producer.shutdown();
 ```
 
-###### One-way transmission
+###### 7.2.4.5.4 One-way transmission
 
 This topic describes the principle and scenarios of the one-way transmission mode, and provides sample code.
 
@@ -3515,7 +3688,7 @@ response from the ApsaraMQ for RocketMQ broker. Therefore, data loss occurs if m
         producer.shutdown();
 ```
 
-##### Send messages by using multiple threads
+##### 7.2.4.6 Send messages by using multiple threads
 
 This topic describes how to send messages by using multiple threads and provides sample code. The consumer and producer objects of ApsaraMQ for RocketMQ are thread-secure and can be shared among threads. You can deploy multiple producer and consumer instances on one or more cloud servers. A producer or consumer instance can also run multiple threads to send or receive messages. This improves the transactions per second (TPS) for sending or receiving messages. Do not create a producer instance or consumer instance for every thread. The following sample code provides an example on how to share a producer among threads:
 
@@ -3611,7 +3784,7 @@ resources.
         // producer.shutdown();
 ```
 
-##### Send and receive ordered messages
+##### 7.2.4.7 Send and receive ordered messages
 
 This topic describes how to use the SDK for Java to send and receive ordered messages. This topic also provides sample code. Ordered messages, also known as first-in, first-out (FIFO) messages, are a type of message provided by ApsaraMQ for RocketMQ. Ordered messages are published and consumed in a strict order. This topic provides sample code for using the TCP client SDK for Java to send and receive ordered messages. For more information, see Ordered messages. Use SDK for Java 1.2.7 or later to send and receive ordered messages.
 
@@ -3743,7 +3916,7 @@ ext) {
         consumer.start();
 ```
 
-##### Send and receive transactional messages
+##### 7.2.4.8 Send and receive transactional messages
 
 This topic describes the interaction process and the status check mechanism of transactional messages. This topic also shows you how to send and subscribe to transactional messages, and provides sample code.
 
@@ -3900,7 +4073,7 @@ Why must the mechanism of transaction status check be implemented when transacti
 
 The method for subscribing to transactional messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to delayed messages
+##### 7.2.4.9 Send and subscribe to delayed messages
 
 This topic describes how to send and subscribe to delayed messages and provides sample code. Delayed messages are delivered to a consumer after a specified period of time from when they are sent to the ApsaraMQ for RocketMQ broker. For example, the specified period of time can be 3 seconds. Delayed messages are used in scenarios where a time window between message production and consumption is required or tasks need to be triggered after a delay. Delayed messages are used in a similar way to delay queues. For more information about the concepts and usage notes of delayed messages, see Scheduled messages and delayed messages.
 
@@ -3993,7 +4166,7 @@ msg.getTopic());
 
 The method for subscribing to delayed messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to scheduled
+##### 7.2.4.10 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -4064,7 +4237,7 @@ msg.getTopic());
 
 The method for subscribing to scheduled messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 7.2.4.11 Subscribe to messages
 
 This topic describes message subscription modes and provides sample code.
 
@@ -4137,11 +4310,11 @@ Subscribe to all tags.
 
 In broadcasting consumption mode, you cannot query message accumulation information in the ApsaraMQ for RocketMQ console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
 
-#### SDK for C or C++
+#### 7.2.5 SDK for C or C++
 
-##### Prepare the SDK for C or C++ environment
+##### 7.2.5.1 Prepare the SDK for C or C++ environment
 
-###### Prepare the environment
+###### 7.2.5.1.1 Prepare the environment
 
 Before you use the SDK for C or C++ to access ApsaraMQ for RocketMQ, make sure that the following preparations are made.
 
@@ -4149,7 +4322,7 @@ Before you use the SDK for C or C++ to access ApsaraMQ for RocketMQ, make sure t
 
 Topics and groups involved in the code are created in the ApsaraMQ for RocketMQ console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources. Applications that use ApsaraMQ for RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for C++
+###### 7.2.5.1.2 Download SDK for C++
 
 This topic describes the preparations, instructions, and usage notes for using SDK for C++ to access ApsaraMQ for RocketMQ so that you can use SDK for C++ to send and subscribe to messages.
 
@@ -4159,7 +4332,7 @@ This topic describes the preparations, instructions, and usage notes for using S
 2. Decompress the downloaded package.
 After the package is decompressed, the following directory structure appears: demos/ Contains examples on how to send and consume normal messages and ordered messages and how to send messages in one-way transmission mode. This directory also contains the CMakeList.txt file that is used to compile and manage demos. include/ Contains header files that are required by your own programs. lib/ Contains dynamic libraries based on x86_64. The libraries include the libonsclient4cpp.so interface library and the librocketmq_client_core.so core library. changelog Contains bug fixes and new features in the new releases.
 
-###### Use SDK for C++ in Linux
+###### 7.2.5.1.3 Use SDK for C++ in Linux
 
 This topic describes how to use SDK for C++ in Linux. Starting June 28, 2019, the new SDK version provides only dynamic library solutions. The library file of ApsaraMQ for RocketMQ is stored in the lib/ directory. You must link librocketmq_client_core.so with libonsclient4cpp.so when you generate executable files. demos has introduced the features of C++ 11 and uses CMake for management. Therefore, you must install CMake 3.0 or later and g++ 4.8 or later in advance.
 
@@ -4173,7 +4346,7 @@ The following sample code provides an example on how to use demos:
 cd aliyun-mq-linux-cpp-sdk // The path to which the downloaded SDK package is decompres sed. cd demos // Go to the demos directory and modify the demos file by entering information such as the topic and key that you created in the ApsaraMQ for RocketMQ console. cmake . // Check the dependencies and generate a compilation script. make // Compile the code. cd bin // Run the program in the directory where the generated executable files are loc ated.
 ```
 
-##### Send and subscribe to normal messages
+##### 7.2.5.2 Send and subscribe to normal messages
 
 This topic provides the sample code for sending and subscribing to normal messages.
 
@@ -4256,7 +4429,7 @@ emory leaks.
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and receive ordered messages
+##### 7.2.5.3 Send and receive ordered messages
 
 This topic describes how to use the SDK for C or C++ to send and receive ordered messages. This topic also provides sample code.
 
@@ -4431,7 +4604,7 @@ erwise, issues such as memory leaks may occur.
    return 0;
 ```
 
-##### Send and subscribe to scheduled
+##### 7.2.5.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -4527,7 +4700,7 @@ the serialization and deserialization methods.
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and receive transactional messages
+##### 7.2.5.5 Send and receive transactional messages
 
 This topic describes the interaction process and the status check mechanism of transactional messages. This topic also shows you how to send and subscribe to transactional messages, and provides sample code.
 
@@ -4756,7 +4929,7 @@ for RocketMQ broker is expected to send a request again to the producer to query
 
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 7.2.5.6 Subscribe to messages
 
 This topic describes how to subscribe to messages by using SDK for C or C++ provided by ApsaraMQ for RocketMQ.
 
@@ -4854,11 +5027,11 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
     return 0;
 ```
 
-#### SDK for .NET
+#### 7.2.6 SDK for .NET
 
 ##### 7.2.6.1. .Prepare the SDK for .NET environment
 
-###### Overview
+###### 7.2.6.1.1 Overview
 
 Before you use SDK for . NET to access ApsaraMQ for RocketMQ and send and subscribe to messages, make sure that the following prerequisites are met:
 
@@ -4866,7 +5039,7 @@ Before you use SDK for . NET to access ApsaraMQ for RocketMQ and send and subscr
 
 You have created the topics and group IDs involved in the code in the ApsaraMQ for RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources. Applications that use ApsaraMQ for RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for .NET
+###### 7.2.6.1.2 Download SDK for .NET
 
 ApsaraMQ for RocketMQ SDK for .NET is a managed wrapper based on Apache RocketMQ Client CPP.ApsaraMQ for RocketMQ SDK for .NET is independent of Windows .NET public library.Multithreading and parallel processing in C++ are used to ensure the efficiency and stability of ApsaraMQ for RocketMQ SDK for .NET.
 
@@ -4998,7 +5171,7 @@ and run the program. Figure 7. .NET SDK-7
 **Use the 64 bit version of IIS Express for websites and projects** check box.
 Figure 8. .NET SDK-8 Figure 9. .NET SDK-9
 
-##### Send and subscribe to normal messages
+##### 7.2.6.2 Send and subscribe to normal messages
 
 This topic provides the sample code for sending and subscribing to normal messages.
 
@@ -5082,7 +5255,7 @@ age body");
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to ordered messages
+##### 7.2.6.3 Send and subscribe to ordered messages
 
 This topic describes how to send and subscribe to ordered messages and provides sample code.
 
@@ -5253,7 +5426,7 @@ MyMsgOrderListener());
             consumer.shutdown();
 ```
 
-##### Send and subscribe to scheduled
+##### 7.2.6.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -5354,7 +5527,7 @@ Otherwise, memory leaks may occur.
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and receive transactional messages
+##### 7.2.6.5 Send and receive transactional messages
 
 This topic describes the interaction process and the status check mechanism of transactional messages. This topic also shows you how to send and subscribe to transactional messages, and provides sample code.
 
@@ -5587,7 +5760,7 @@ for RocketMQ broker is expected to send a request again to the producer to query
 
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 7.2.6.6 Subscribe to messages
 
 This topic describes how to use ApsaraMQ for RocketMQ SDK for .NET to subscribe to messages.
 
@@ -5710,11 +5883,11 @@ must set a proper value to make sure that the process does not unexpectedly exit
         consumer.shutdown();
 ```
 
-### HTTP client SDK reference
+### 7.3 HTTP client SDK reference
 
-#### Protocol description
+#### 7.3.1 Protocol description
 
-##### Common parameters
+##### 7.3.1.1 Common parameters
 
 This topic describes the common request parameters in an HTTP request header and the common response parameters in an HTTP response header for ApsaraMQ for RocketMQ.
 
@@ -5749,7 +5922,7 @@ This topic describes the common request parameters in an HTTP request header and
 |---|---|
 | x-mq-version | The version of the ApsaraMQ for RocketMQ API. The value is 2015-06-06. |
 
-##### Request signatures
+##### 7.3.1.2 Request signatures
 
 ApsaraMQ for RocketMQ verifies each HTTP request for access. Each HTTP request that is submitted to ApsaraMQ for RocketMQ contains an Authorization header that contains a signature. This topic describes how to generate a signature.
 
@@ -5790,7 +5963,7 @@ requested by the HTTP request. For example, set the URI of a consumption request
 
 The string-to-sign must be in the UTF-8 format. The HMAC-SHA1 method defined in RFC 2104 is used to calculate the signature. In this method, the AccessKey secret is used as an encryption key.
 
-##### Operation for sending messages
+##### 7.3.1.3 Operation for sending messages
 
 You can call this operation to send messages from a producer to an ApsaraMQ for RocketMQ broker.
 
@@ -5856,7 +6029,7 @@ Sample response
 <Message xmlns="http://mq.aliyuncs.com/doc/v1/"> <MessageId>1E057D566EAD42A579935B5CD874****</MessageId> <MessageBodyMD5>0CC175B9C0F1B6A831C399E26977****</MessageBodyMD5> </Message>
 ```
 
-##### Operation for consuming messages
+##### 7.3.1.4 Operation for consuming messages
 
 You can call this operation to consume messages from an ApsaraMQ for RocketMQ broker.
 
@@ -5975,7 +6148,7 @@ No message is available for consumption.
 </Error>
 ```
 
-##### Operation for acknowledging messages
+##### 7.3.1.5 Operation for acknowledging messages
 
 You can call this operation to acknowledge the consumption status of messages.
 
@@ -6064,9 +6237,9 @@ The handle of the request has expired. This indicates that the handle is not use
     </Errors>
 ```
 
-#### Java SDK
+#### 7.3.2 Java SDK
 
-##### Prepare the environment
+##### 7.3.2.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Java to send and consume messages.
 
@@ -6092,7 +6265,7 @@ Use Maven to import dependencies and add the following dependency to the pom.xml
 
 For more information about the versions of the SDK for Java, see Overview.
 
-##### Send and consume normal messages
+##### 7.3.2.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume normal messages.
 
@@ -6310,7 +6483,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-##### Send and consume ordered messages
+##### 7.3.2.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume ordered messages.
 
@@ -6526,7 +6699,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.2.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -6743,7 +6916,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-##### Send and consume transactional messages
+##### 7.3.2.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume transactional messages.
 
@@ -7032,9 +7205,9 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-#### Go SDK
+#### 7.3.3 Go SDK
 
-##### Prepare the environment
+##### 7.3.3.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Go to send and consume messages.
 
@@ -7069,7 +7242,7 @@ go mod init
 go get github.com/aliyunmq/mq-http-go-sdk
 ```
 
-##### Send and consume normal messages
+##### 7.3.3.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume normal messages.
 
@@ -7274,7 +7447,7 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-##### Send and consume ordered messages
+##### 7.3.3.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume ordered messages.
 
@@ -7518,7 +7691,7 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.3.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -7751,7 +7924,7 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-##### Send and consume transactional messages
+##### 7.3.3.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume transactional messages.
 
@@ -8079,9 +8252,9 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-#### Python SDK
+#### 7.3.4 Python SDK
 
-##### Prepare the environment
+##### 7.3.4.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Python to send and consume messages.
 
@@ -8101,7 +8274,7 @@ Run the following command to install the SDK for Python:
 pip install mq_http_sdk
 ```
 
-##### Send and consume normal messages
+##### 7.3.4.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume normal messages.
 
@@ -8264,7 +8437,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume ordered messages
+##### 7.3.4.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume ordered messages.
 
@@ -8418,7 +8591,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.4.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -8585,7 +8758,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume transactional messages
+##### 7.3.4.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume transactional messages.
 
@@ -8856,9 +9029,9 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-#### Node.js SDK
+#### 7.3.5 Node.js SDK
 
-##### Prepare the environment
+##### 7.3.5.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Node.js to send and consume messages.
 
@@ -8874,7 +9047,7 @@ Run the following command to install the SDK for Node.js:
 npm i @aliyunmq/mq-http-sdk
 ```
 
-##### Send and consume normal messages
+##### 7.3.5.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume normal messages.
 
@@ -8982,7 +9155,7 @@ e.RequestId, e.Code);
 })();
 ```
 
-##### Send and consume ordered messages
+##### 7.3.5.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume ordered messages.
 
@@ -9102,7 +9275,7 @@ e.RequestId, e.Code);
 })();
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.5.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -9226,7 +9399,7 @@ e.RequestId, e.Code);
 })();
 ```
 
-##### Send and consume transactional messages
+##### 7.3.5.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume transactional messages.
 
@@ -9435,9 +9608,9 @@ e.RequestId, e.Code);
 })();
 ```
 
-#### PHP SDK
+#### 7.3.6 PHP SDK
 
-##### Prepare the environment
+##### 7.3.6.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for PHP to send and consume messages.
 
@@ -9462,7 +9635,7 @@ To install the SDK for PHP, perform the following steps:
 composer install
 ```
 
-##### Send and consume normal messages
+##### 7.3.6.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume normal messages.
 
@@ -9685,7 +9858,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume ordered messages
+##### 7.3.6.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume ordered messages.
 
@@ -9908,7 +10081,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume scheduled messages
+##### 7.3.6.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -10133,7 +10306,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume transactional messages
+##### 7.3.6.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume transactional messages.
 
@@ -10422,9 +10595,9 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-#### C# SDK
+#### 7.3.7 C# SDK
 
-##### Prepare the environment
+##### 7.3.7.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for C# to send and consume messages.
 
@@ -10442,7 +10615,7 @@ Aliyun_MQ_SDK project.
 3. Run the Samples.cs file. In the Aliyun_MQ_SDK project, the Samples.cs file appears. This file
 provides the sample code on how to send and consume messages by using the SDK for C#. Replace the values in the sample code with the actual values that are used in your application. Then, save and run the file.
 
-##### Send and consume normal messages
+##### 7.3.7.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume normal messages.
 
@@ -10706,7 +10879,7 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-##### Send and consume ordered messages
+##### 7.3.7.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume ordered messages.
 
@@ -10980,7 +11153,7 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.7.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -11252,7 +11425,7 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-##### Send and consume transactional messages
+##### 7.3.7.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume transactional messages.
 
@@ -11657,9 +11830,9 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-#### C++ SDK
+#### 7.3.8 C++ SDK
 
-##### Prepare the environment
+##### 7.3.8.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for C++ to send and consume messages.
 
@@ -11744,7 +11917,7 @@ parameter values based on the comments in the code, and then save the changes. F
 premises machine. g++ producer.cpp -o producer lib/libmqcpp.a -I include/ -lcurl -lcrypto
 ```
 
-##### Send and consume normal messages
+##### 7.3.8.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume normal messages.
 
@@ -11972,7 +12145,7 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-##### Send and consume ordered messages
+##### 7.3.8.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume ordered messages.
 
@@ -12203,7 +12376,7 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.8.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -12433,7 +12606,7 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-##### Send and consume transactional messages
+##### 7.3.8.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume transactional messages.
 
@@ -12801,9 +12974,9 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-## Best practices
+## 8 Best practices
 
-### Clustering consumption and
+### 8.1 Clustering consumption and broadcasting consumption
 
 **broadcasting consumption**
 
@@ -12839,7 +13012,7 @@ Figure 2. Broadcasting consumption mode Scenarios and usage notes: Ordered messa
 
 If the broadcasting consumption mode is required for your business, you can create multiple group IDs to subscribe to the same topic. Figure 3. Use the clustering consumption mode to simulate the broadcasting consumption mode Scenarios and usage notes: Each message needs to be processed by multiple consumers, and the logic of the consumers can be the same or different. The consumption progress is recorded on the ApsaraMQ for RocketMQ broker. Therefore, the reliability is higher than that in broadcasting consumption mode. For each group ID, one or more consumer instances can be deployed. When multiple consumer instances are deployed, these instances compose a cluster and work together to consume messages. Assume that three consumer instances C1, C2, and C3 are deployed for Group ID 1. These instances share the messages sent from the ApsaraMQ for RocketMQ broker to Group ID 1. In addition, these instances must subscribe to the same topics and same tags.
 
-### Message filtering
+### 8.2 Message filtering
 
 This topic describes how ApsaraMQ for RocketMQ consumers filter messages on the ApsaraMQ for RocketMQ broker based on tags. A tag is used to classify messages in a topic into different types. ApsaraMQ for RocketMQ allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages including order messages, payment messages, and logistics messages are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, analysis system for transaction success rate, and real-time computing system. Among these systems, the logistics system receives only logistics messages and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. Figure 1. Filter messages
 
@@ -12849,13 +13022,13 @@ To classify messages, you can create multiple topics, or create multiple tags in
 
 **Examples**
 
-Send messages Specify a tag for each message before the message is sent.
+Specify a tag for each message before the message is sent.
 
 ```
 Message msg = new Message("MQ_TOPIC","TagA","Hello MQ".getBytes());
 ```
 
-Subscribe to messages Consumption method 1 If a consumer needs to subscribe to messages of all types in a topic, use an asterisk (*) to represent all tags.
+Consumption method 1 If a consumer needs to subscribe to messages of all types in a topic, use an asterisk (*) to represent all tags.
 
 ```java
 consumer.subscribe("MQ_TOPIC", "*", new MessageListener() {
@@ -12899,13 +13072,13 @@ Consumption method 4 (error example) If a consumer subscribes to messages with s
 });
 ```
 
-### Subscription consistency
+### 8.3 Subscription consistency
 
 In ApsaraMQ for RocketMQ, a group ID represents a consumer instance group. For most distributed applications, multiple consumer instances are attached to the same group ID. Subscription consistency means that the processing logic of all consumer instances identified by the same group ID must be identical. If the subscriptions of the consumer instances are inconsistent, errors occur in the message consumption logic and messages may be lost. Subscriptions in ApsaraMQ for RocketMQ involve topics and tags. Therefore, all consumer instances identified by the same group ID must be consistent in the following two aspects to ensure subscription consistency: The topics to which the consumer instances subscribe must be the same. The tags of the topics to which the consumer instances subscribe must be the same.
 
 **Examples of subscriptions**
 
-Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions Inconsistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
+Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
 
 **Sample code of subscriptions**
 
@@ -12973,7 +13146,7 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
 });
 ```
 
-### Consumption idempotence
+### 8.4 Consumption idempotence
 
 After a ApsaraMQ for RocketMQ consumer receives messages, the consumer needs to perform idempotent processing on these messages based on the unique business-specific keys of the messages.
 
@@ -12999,7 +13172,7 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
 });
 ```
 
-### Active geo-redundancy
+### 8.5 Active geo-redundancy
 
 ApsaraMQ for RocketMQ leverages Alibaba Cloud Express Connect and Multi-Site High Availability (MSHA) to support active geo-redundancy. MSHA allows you to implement twoway data synchronization and business traffic switchover across instances. This way, business recovery is decoupled from fault recovery. If a fault occurs, business continuity can be ensured. This topic introduces the concept of MSHA and describes the common scenarios in which MSHA is suitable. This topic also describes the benefits of MSHA.
 
@@ -13025,7 +13198,7 @@ MSHA effectively ensures business continuity. MSHA decouples business recovery f
 
 The limited resources in a single data center or region may not meet the requirements as the business rapidly develops. In addition, the business may face bottlenecks such as limited storage and computing performance. The horizontal scaling capability of ApsaraMQ for RocketMQ allows the business to be expanded in other data centers or regions to improve cost efficiency.
 
-### Zone-disaster recovery
+### 8.6 Zone-disaster recovery
 
 ApsaraMQ for RocketMQ supports the multi-chip cross-zone disaster recovery and asymmetric disaster recovery features in zone-disaster recovery scenarios. This topic describes the requirements, scenarios, and benefits of these two features.
 
@@ -13067,7 +13240,7 @@ With the rise of multi-chip hybrid deployments, the multi-cluster architecture s
 
 The multi-cluster architecture offers significant advantages in ensuring system stability by implementing a multi-level resource isolation mechanism. A failure in one cluster does not impact other clusters, effectively isolating fault domains.
 
-### Message routing
+### 8.7 Message routing
 
 ApsaraMQ for RocketMQ provides the message routing feature that can be used to synchronize message data across clusters. This ensures message consistency and integrity between clusters. This topic describes the concept, benefits, and configuration method of message routing. This topic also describes the scenarios to which the message routing feature is applicable.
 
@@ -13117,11 +13290,11 @@ Before you create a message routing task, you must specify the information about
 
 Specify the message source and message destination and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization.
 
-## Service usage FAQ
+## 9 Service usage FAQ
 
-### FAQ
+### 9.1 FAQ
 
-#### Quick start
+#### 9.1.1 Quick start
 
 This topic provides answers to questions frequently asked by new users when they use ApsaraMQ for RocketMQ.
 1. Where do consumers identified by a new group ID start to consume?
@@ -13164,7 +13337,7 @@ ApsaraMQ for RocketMQ provides the following methods for Message query: Specify 
 4. Can ApsaraMQ for RocketMQ ensure that no duplicate messages are delivered to
 consumers? In most cases, ApsaraMQ for RocketMQ can ensure that no duplicate messages are delivered to consumers. As a distributed messaging middleware, ApsaraMQ for RocketMQ cannot ensure that no duplicate messages are delivered to consumers when exceptions such as network jitter and application processing timeout occur. However, ApsaraMQ for RocketMQ can ensure that no messages are lost.
 
-#### Configurations
+#### 9.1.2 Configurations
 
 This topic provides answers to frequently asked questions about ApsaraMQ for RocketMQ configurations.
 1. How long can messages be retained on the ApsaraMQ for RocketMQ broker?
@@ -13201,7 +13374,7 @@ To set the number of consumer threads on a ApsaraMQ for RocketMQ consumer, set t
 4. What do I do if an error in loading DLL or another running error occurs due to invalid .NET
 client configuration? For more information, see SDK_GUIDE.pdf in the compressed package of SDK for .NET to verify that the project configuration is the same as that described in the document.
 
-#### Message tracing
+#### 9.1.3 Message tracing
 
 This topic provides answers to frequently asked questions about the message tracing feature of ApsaraMQ for RocketMQ.
 1. Why is trace data not found?
@@ -13213,11 +13386,11 @@ The possible cause is that a large number of downstream consumers have subscribe
 4. Why are previous query tasks not displayed?
 A large number of historical query tasks affect the display result. Therefore, ApsaraMQ for RocketMQ regularly cleans up historical query tasks and retains only query tasks created within the recent seven days. If you cannot find a historical task, query it again.
 
-#### Alert handling
+#### 9.1.4 Alert handling
 
 Alert handling is unavailable for ApsaraMQ for RocketMQ. Apsara Stack provides an isolated cloud-based environment and cannot be connected to the APIs of Internet services, such as the short message service (SMS) gateway. Therefore, the monitoring and alerting module in the console is unavailable.
 
-#### Ordered messages
+#### 9.1.5 Ordered messages
 
 This topic provides answers to frequently asked questions about ordered messages in ApsaraMQ for RocketMQ.
 1. Do ordered messages support clustering consumption and broadcasting consumption?
@@ -13231,9 +13404,9 @@ Globally ordered messages are processed in first-in-first-out (FIFO) order. If t
 5. What transmission modes do ordered messages support?
 Ordered messages support only the reliable synchronous transmission mode.
 
-### Exceptions
+### 9.2 Exceptions
 
-#### exceptions and solutions
+#### 9.2.1 exceptions and solutions
 
 This topic describes the exceptions that may occur when you use ApsaraMQ for RocketMQ, and the corresponding solutions.
 1. The producer or consumer failed to be started, or duplicate group IDs exist.
@@ -13269,7 +13442,7 @@ method, this line of log is not printed.
 
 If the problem persists, contact technical support and provide the local SDK logs.
 
-#### Nonexistent resources
+#### 9.2.2 Nonexistent resources
 
 This topic describes exceptions related to nonexistent resources and provides solutions.
 1. Nonexistent group ID
@@ -13291,7 +13464,7 @@ If an error is returned, check whether an alias is defined for the hostname. For
 
 If the hostname cannot be pinged, add the local IP address to the /etc/hosts file. By default, each Elastic Compute Service (ECS) instance establishes a binding relationship between the local IP address and the hostname. Do not manually remove the relationship. iii. Check the system configurations. Check whether the hostname recorded in /etc/sysconfig/network is the same as that added to /etc/hosts. If the hostname is not the same as that added to /etc/hosts, modify the hostname. If you modify the content in /etc/sysconfig/network, you must restart the host after you modify the content. This way, the modification can take effect. Exercise caution when you modify configurations in a system file, because this operation may cause other exceptions. After the preceding three steps are performed, UnknownHostException will no longer be returned when your client starts.
 
-#### Inconsistent status
+#### 9.2.3 Inconsistent status
 
 This topic describes the exceptions related to inconsistent status and provides solutions.
 1. Invalid messages
@@ -13403,9 +13576,9 @@ Example 2: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
 
 If you start multiple consumer instances identified by the same group ID in different JVM processes, make sure that the topics and tags to which the consumer instances subscribe are the same.
 
-### Troubleshooting
+### 9.3 Troubleshooting
 
-#### Unexpected consumer connections
+#### 9.3.1 Unexpected consumer connections
 
 This topic describes the symptoms of an unexpected consumer connection, analyzes causes, provides a solution, and verifies the solution.
 
@@ -13429,7 +13602,7 @@ accumulated messages will be immediately rebalanced and delivered to proper cons
 
 Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click **Groups**. On the Groups page, find the group ID that you want to view and click **Consumer Status** in the Actions column. In the Consumer Status panel, view the connection information of consumers identified by the group ID in the **Connection Information** section. The displayed information shows that IP addresses of all consumers are within the expected range and the value of **Consistent Subscription** is **Yes**.
 
-#### Inconsistent subscriptions
+#### 9.3.2 Inconsistent subscriptions
 
 This topic describes the symptoms of inconsistent subscriptions, analyzes causes, provides a solution, and verifies the solution.
 
@@ -13521,7 +13694,7 @@ Consumers can receive messages as expected. Log on to the ApsaraMQ for RocketMQ 
 **Status** in the Actions column. In the Consumer Status panel, the value of **Consistent**
 **Subscription** is **Yes**.
 
-#### Message accumulation
+#### 9.3.3 Message accumulation
 
 This topic describes the symptoms of message accumulation, analyzes causes, provides a solution, and verifies the solution.
 
@@ -13551,7 +13724,7 @@ Print the Jstack information **jstack -l {PID} | grep ConsumeMessageThread** in 
 **Real-time Consumption Speed** increases and the value of **Accumulated Messages**
 decreases.
 
-#### Message accumulation in Java
+#### 9.3.4 Message accumulation in Java processes
 
 **processes**
 
@@ -13592,7 +13765,7 @@ The following figure shows an example of command output. For more information ab
 
 ApsaraMQ for RocketMQ can support 1 billion accumulated messages without compromising the performance. If the problem of compromised performance is not solved after you perform the preceding steps, contact O&M engineers and provide the following information: The heap.bin file. Run the jmap -dump:format=b,file=heap.bin [$PID] command to obtain this file. Then, run the `gzip heap.bin` command to generate a compressed package.[$PID] represents the PID of the Java process recorded in Step 2. The local ons.log file of the consumer client where messages are accumulated. The version of the consumer client.
 
-#### Application OOM due to message
+#### 9.3.5 Application OOM due to message caching on the client
 
 **caching on the client**
 

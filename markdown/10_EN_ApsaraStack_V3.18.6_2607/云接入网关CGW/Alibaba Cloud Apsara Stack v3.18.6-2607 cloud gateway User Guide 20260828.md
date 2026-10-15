@@ -3,14 +3,35 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 2026082
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 26
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828.pdf"
+source_pdf: "8d0327434eeac477_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway User Guide 20260828
 
-## CGW overview
+## Table of Contents
+
+- 1 CGW overview
+- 2 Log on to the Apsara Uni-manager Management Console
+- 3 ONSP
+  - 3.1 Overview
+  - 3.2 Service cluster deployment
+    - 3.2.1 Preparations
+    - 3.2.2 Create a custom ECS image
+    - 3.2.3 Deploy and activate a service cluster
+    - 3.2.4 Application overview
+  - 3.3 Open network service
+    - 3.3.1 Perform authorization
+    - 3.3.2 Business traffic acquisition
+    - 3.3.3 Create a network service instance
+    - 3.3.4 View service monitoring data
+    - 3.3.5 Configure sharing settings
+  - 3.4 Manage CIDR blocks
+  - 3.5 Manage dedicated host groups
+  - 3.6 Manage the system
+
+## 1 CGW overview
 
 Cloud Gateway (CGW) provides scenario-specific networking services to help enterprises efficiently build hybrid clouds and migrate workloads to clouds.
 
@@ -18,7 +39,7 @@ Cloud Gateway (CGW) provides scenario-specific networking services to help enter
 
 ONSP is a lifecycle management platform compliant with European Telecommunications Standards Institute (ETSI) standards. ONSP helps you deploy and manage virtual network services that are built based on network functions virtualization (NFV), such as load balancers, firewalls, and network performance management services. ONSP ensures high availability, high scalability, high security, and high O&M efficiency for your networks. ONSP supports the following features: Initialize virtual network service sets Manage virtual network service sets Manage routing policies Check the health status of virtual network elements and isolate faults Uni-manager Management Conso le
 
-## Log on to the Apsara Uni-
+## 2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management**
 
@@ -45,11 +66,11 @@ If you forgot your password, click Forgot Password and enter your username, emai
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: This is your first time logging on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, follow the instructions to add an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter the six-digit MFA verification code and click **Authenticate**. MFA is enabled and an MFA device exists: Enter the six-digit MFA verification code and click **Authenticate**.
 
-## ONSP
+## 3 ONSP
 
 This document introduces Open Network Service Platform (ONSP) and describes how to deploy a service cluster on ONSP.
 
-### Overview
+### 3.1 Overview
 
 **Background information**
 
@@ -70,11 +91,11 @@ performance or reliability of services provided by non-standard service provider
 
 The operations of the open network service platform are divided into the following two parts: Deploy service clusters: You can make preparations, create custom Elastic Compute Service (ECS) images, and deploy and activate service clusters. After the deployment is complete, you can check whether the clusters encounter errors and quickly troubleshoot errors on the cluster overview pages. Manage ONSP resources: The steps include the following operations: grant permissions to accounts, route service traffic, create a network service instance, configure service monitoring, and manage resource sharing settings.
 
-### Service cluster deployment
+### 3.2 Service cluster deployment
 
 This document describes how to deploy a service cluster.
 
-#### Preparations
+#### 3.2.1 Preparations
 
 Before you deploy a service cluster, you need to plan a network architecture, confirm the status of dependency services, and obtain service metadata. Network architecture: Plan an overall network architecture based on the type of network service to deploy and the method to use the network service. Status of dependency services: Check the status of other services on which Open Network Service Platform (ONSP) relies. Before you start the deployment, check the service version and cluster status in Apsara Infrastructure Management. You can proceed only when the service version is correct and the clusters are at desired state.
 
@@ -86,7 +107,7 @@ Before you deploy a service cluster, you need to plan a network architecture, co
 
 Service metadata: Service metadata includes the original image file, configuration file, user guide, and O&M guide. To obtain the original image file, contact Apsara Stack technical support. Then, Apsara Stack technical support logs on to Image Center to search for the image based on the image information that you provide, and applies for the image. After the application is approved, a download URL is generated. You can use the Wget utility to download the image from the URL.
 
-#### Create a custom ECS image
+#### 3.2.2 Create a custom ECS image
 
 After you obtain the original image file of the open network service from Apsara Stack technical support, you can call the CreateImage API operation to create a custom image. The image can be used to create service clusters.
 1. Obtain the image from Apsara Stack Image Center.
@@ -96,7 +117,7 @@ the onp-openapi service is deployed.
 3. Call the CreateImage API operation to create an image. For more information, see
 CreateImage in ECS Developer Guide.
 
-#### Deploy and activate a service cluster
+#### 3.2.3 Deploy and activate a service cluster
 
 This topic describes how to import the configuration file of a network service to Hybrid Cloud Application Center based on your business requirements and network architecture. It also explains how to deploy and activate a service cluster to enable the network services provided by the cluster.
 
@@ -174,11 +195,7 @@ In the **Cluster Basic Information** section of the **Routing Policy** tab, you 
 
 **Warning**
 
-After routes are configured for the VPC, if an error occurs in a network element, you can click Bypass to withdraw all routes to the destination cluster, and then directly forward traffic to the destination cluster by using Express Connect circuits. After the network element is recovered, you can click **Restore** to restore all routes that are withdrawn. The bypass and restore operations involve high risks. We recommend that you contact Alibaba Cloud technical support before you perform these operations. In the **Route Details** section of the **Routing Policy** tab, you can add, modify, or delete routes. For more information, see Configure routes for business VPCs.
-
-**View service monitoring data**
-
-On the **Service Monitoring** tab, you can view the instance status and network traffic that flows through the elastic network interfaces (ENIs) associated with the service port. For more information, see View service monitoring data.
+After routes are configured for the VPC, if an error occurs in a network element, you can click Bypass to withdraw all routes to the destination cluster, and then directly forward traffic to the destination cluster by using Express Connect circuits. After the network element is recovered, you can click **Restore** to restore all routes that are withdrawn. The bypass and restore operations involve high risks. We recommend that you contact Alibaba Cloud technical support before you perform these operations. In the **Route Details** section of the **Routing Policy** tab, you can add, modify, or delete routes. For more information, see Configure routes for business VPCs. On the **Service Monitoring** tab, you can view the instance status and network traffic that flows through the elastic network interfaces (ENIs) associated with the service port. For more information, see View service monitoring data.
 
 **View sharing settings**
 
@@ -188,7 +205,7 @@ On the **Sharing Settings** tab, you can enable the sharing feature to allow spe
 
 After a service cluster is deployed, you must activate the cluster before you can use it. Contact technical support of the service provider and provide information about the deployed network service and the ECS instance that is used. Then, a license file will be issued to you. Go to the network service page to activate the service cluster using the license file.
 
-#### Application overview
+#### 3.2.4 Application overview
 
 After you deploy and activate a service cluster, you can view the resource status and cluster monitoring data on the Overview page. If an Elastic Compute Service (ECS) instance encounters an error, and the health check result is not Running, the status of the cluster changes to error. Unhealthy clusters are displayed on the monitoring overview list to notify you of anomalies and help you locate errors.
 1. Open the Open Network Service Platform console.
@@ -208,11 +225,11 @@ abnormal clusters and perform troubleshooting. i. Click **Jump** in the **Operat
 **Details** section, copy the **Virtual Network Computing (VNC) password** of the
 instance and log on to the instance by using **VNC**. iv. After you log on to the instance, you can check the status of the instance, view the error details, and then perform troubleshooting.
 
-### Open network service
+### 3.3 Open network service
 
 This document describes how to work with an open network service.
 
-#### Perform authorization
+#### 3.3.1 Perform authorization
 
 If you use Open Network Service Platform (ONSP) within a cloud account for the first time, you need to grant the required permissions to the cloud account to allow Cloud Gateway (CGW) to manage elastic network interfaces (ENIs) for virtual private clouds (VPCs).
 
@@ -222,7 +239,7 @@ The cloud account is imported as a resource account, and you use ONSP within the
 1. Open the ONSP console.
 2. In the **Letter of Application** message, click **Authorize**.
 
-#### Business traffic acquisition
+#### 3.3.2 Business traffic acquisition
 
 This topic describes how to route network traffic to an open network service cluster for the service to run as expected.
 
@@ -324,7 +341,7 @@ If you have any questions during the configuration, contact technical support of
 4. Go to the portal of the open network service and probe the gateway IP address to test the
 network connectivity.
 
-#### Create a network service instance
+#### 3.3.3 Create a network service instance
 
 This topic describes how to create a network service instance, such as a Server Load Balancer (SLB) instance or a firewall security policy. For more information, see LB-F5-BIGIPVE Configuration Guide and FW-Hillstone-CloudEdge Configuration Guide. If you encounter any problems, you can select the specific network service, view the contact information, and contact the partner for technical support. To do this:
 1. Open the Open Network Service Platform console.
@@ -332,7 +349,7 @@ This topic describes how to create a network service instance, such as a Server 
 3. On the **App Store** page, select the specific network service, view the contact information,
 and contact the partner for technical support.
 
-#### View service monitoring data
+#### 3.3.4 View service monitoring data
 
 Through service monitoring, you can monitor the status of network element instances and the traffic of business ports.
 1. Open the Open Network Service Platform (ONSP) console.
@@ -342,7 +359,7 @@ Through service monitoring, you can monitor the status of network element instan
 5. Click **Details** in the Monitoring details column to view the network traffic that flows through
 the elastic network interfaces (ENIs) associated with the service port.
 
-#### Configure sharing settings
+#### 3.3.5 Configure sharing settings
 
 Open Network Service Platform (ONSP) allows you to share your application with other users. The authorized users can view information about and perform specific operations on your application.
 
@@ -366,7 +383,7 @@ go to the application details page.
 6. Click **Add**. After you add a recipient account, the recipient account is displayed in the
 account list. To remove a recipient account from the account list, click **Delete** in the Actions column.
 
-### Manage CIDR blocks
+### 3.4 Manage CIDR blocks
 
 CIDR (Classless Inter-Domain Routing) is a method to allocate IP addresses and route data, which enables more efficient IP address allocation and utilization through flexible IP address space division.
 
@@ -387,7 +404,7 @@ You cannot delete a CIDR block that is in use.
 |---|---|
 | Delete a CIDR block | i. In the CIDR Block List, click Delete in the Actions column. ii. Click OK. |
 
-### Manage dedicated host
+### 3.5 Manage dedicated host groups
 
 **groups**
 
@@ -443,7 +460,7 @@ You can delete a host group that is no longer needed.
 group.
 2. Click **OK**.
 
-### Manage the system
+### 3.6 Manage the system
 
 You can migrate resources and update the instance types of Elastic Compute Service (ECS) instances to meet the dynamic requirements of your business and system performance.
 

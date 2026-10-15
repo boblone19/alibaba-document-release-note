@@ -3,20 +3,196 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Comput
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 452
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260828.pdf"
+source_pdf: "2f8dc42d491d41ce_Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97Flink%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Realtime%20Compute%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260828
 
+## Table of Contents
+
+- 1 Preparations
+  - 1.1 Obtain API information and its endpoint
+  - 1.2 Obtain common header parameters
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain access credentials assigned by STS
+- 2 Use POP to make API calls
+  - 2.1 SDK for Java
+  - 2.2 SDK for Go
+  - 2.3 SDK for Python
+- 3 AppManager API
+  - 3.1 Definition
+    - 3.1.1 API version differences and usage guidelines for Flink (Compute-Storage Separation Edition)
+    - 3.1.2 Compute-storage separation v1
+      - 3.1.2.1 ValidateSqlScript
+      - 3.1.2.2 UploadArtifactByOSSUrl
+      - 3.1.2.3 UpdateUdfArtifact
+      - 3.1.2.4 UpdateMember
+      - 3.1.2.5 UpdateFormat
+      - 3.1.2.6 UpdateDeploymentDesiredState
+      - 3.1.2.7 UpdateDeployment
+      - 3.1.2.8 UpdateConnector
+      - 3.1.2.9 TableExists
+      - 3.1.2.10 SetDeploymentResourceMode
+      - 3.1.2.11 ParseFormat
+      - 3.1.2.12 ParseConnector
+      - 3.1.2.13 ListTables
+      - 3.1.2.14 ListSessionClusters
+      - 3.1.2.15 ListSecretValues
+      - 3.1.2.16 ListSavepoints
+      - 3.1.2.17 ListNamespaces
+      - 3.1.2.18 ListFunctions
+      - 3.1.2.19 ListFormats
+      - 3.1.2.20 ListFlinkVersions
+      - 3.1.2.21 ListDeploymentTargets
+      - 3.1.2.22 ListDeployments
+      - 3.1.2.23 ListDatabases
+      - 3.1.2.24 ListConnectors
+      - 3.1.2.25 ListCatalogs
+      - 3.1.2.26 ListArtifacts
+      - 3.1.2.27 GetUdfArtifact
+      - 3.1.2.28 GetTable
+      - 3.1.2.29 GetResourcePlan
+      - 3.1.2.30 GetGlobalDeploymentDefaults
+      - 3.1.2.31 GetFunction
+      - 3.1.2.32 GetDeploymentDefaults
+      - 3.1.2.33 GetDeployment
+      - 3.1.2.34 GetDefaultDatabase
+      - 3.1.2.35 GetDatabase
+      - 3.1.2.36 GetCatalog
+      - 3.1.2.37 GetArtifactMetadata
+      - 3.1.2.38 GenerateResourcePlan
+      - 3.1.2.39 FunctionExists
+      - 3.1.2.40 ForcefullyCreateLock
+      - 3.1.2.41 ExecuteSqlscriptsStatements
+      - 3.1.2.42 ExecuteSqlScript
+      - 3.1.2.43 DeployDeploymentDraft
+      - 3.1.2.44 DeleteUdfArtifact
+      - 3.1.2.45 DeleteSecretValue
+      - 3.1.2.46 DeleteMember
+      - 3.1.2.47 DeleteFormat
+      - 3.1.2.48 DeleteFolder
+      - 3.1.2.49 DeleteDeployment
+      - 3.1.2.50 DeleteConnector
+      - 3.1.2.51 DeleteArtifact
+      - 3.1.2.52 DatabaseExists
+      - 3.1.2.53 CreateUdfArtifact
+      - 3.1.2.54 CreateSecretValue
+      - 3.1.2.55 CreateSavepoint
+      - 3.1.2.56 CreateMember
+      - 3.1.2.57 CreateFormat
+      - 3.1.2.58 CreateDeployment
+      - 3.1.2.59 CreateConnector
+      - 3.1.2.60 CreateFolder
+      - 3.1.2.61 ListJobs
+      - 3.1.2.62 ReplaceDeployment
+    - 3.1.3 Compute-storage separation v2
+      - 3.1.3.1 ValidateSqlStatement
+      - 3.1.3.2 UpdateMember
+      - 3.1.3.3 UpdateDeployment
+      - 3.1.3.4 StopJob
+      - 3.1.3.5 StartJobWithParams
+      - 3.1.3.6 StartJob
+      - 3.1.3.7 ListSavepoints
+      - 3.1.3.8 ListJobs
+      - 3.1.3.9 ListEngineVersionMetadata
+      - 3.1.3.10 ListDeploymentTargets
+      - 3.1.3.11 GetSavepoint
+      - 3.1.3.12 GetMember
+      - 3.1.3.13 GetLatestJobStartLog
+      - 3.1.3.14 GetJob
+      - 3.1.3.15 GetGenerateResourcePlanResult
+      - 3.1.3.16 GetDeployment
+      - 3.1.3.17 GenerateResourcePlanWithFlinkConfAsync
+      - 3.1.3.18 DeleteVariable
+      - 3.1.3.19 DeleteSavepoint
+      - 3.1.3.20 DeleteMember
+      - 3.1.3.21 DeleteJob
+      - 3.1.3.22 DeleteDeployment
+      - 3.1.3.23 CreateVariable
+      - 3.1.3.24 CreateSavepoint
+      - 3.1.3.25 CreateMember
+      - 3.1.3.26 CreateDeployment
+      - 3.1.3.27 FlinkApiProxy
+      - 3.1.3.28 ListDeployments
+      - 3.1.3.29 ListMembers
+      - 3.1.3.30 ListVariables
+  - 3.2 API examples
+    - 3.2.1 Examples
+    - 3.2.2 pom.xml
+- 4 Flink SQL reference
+  - 4.1 Overview
+  - 4.2 Keywords
+  - 4.3 Create a data view
+  - 4.4 Basic concepts
+    - 4.4.1 Watermark
+    - 4.4.2 Computed column
+    - 4.4.3 Time attribute
+  - 4.5 Subscription
+    - 4.5.1 INSERT INTO statement
+  - 4.6 Query statements
+  - 4.7 Window functions
+    - 4.7.1 Overview
+    - 4.7.2 Tumbling window
+    - 4.7.3 Sliding window
+    - 4.7.4 Session window
+    - 4.7.5 OVER windows
+  - 4.8 Built-in functions
+    - 4.8.1 Overview
+    - 4.8.2 Scalar functions
+      - 4.8.2.1 BITAND
+      - 4.8.2.2 BITNOT
+      - 4.8.2.3 BITOR
+      - 4.8.2.4 BITXOR
+      - 4.8.2.5 CONV
+      - 4.8.2.6 DATEDIFF
+      - 4.8.2.7 DATE_ADD
+      - 4.8.2.8 DATE_FORMAT
+      - 4.8.2.9 DATE_FORMAT_TZ
+      - 4.8.2.10 DATE_SUB
+      - 4.8.2.11 FROM_UNIXTIME
+      - 4.8.2.12 ISNAN
+      - 4.8.2.13 JSON_VALUE
+      - 4.8.2.14 KEYVALUE
+      - 4.8.2.15 MURMUR_HASH
+      - 4.8.2.16 MURMUR_HASH_64
+      - 4.8.2.17 PARSE_URL
+      - 4.8.2.18 REGEXP
+      - 4.8.2.19 REGEXP_REPLACE
+      - 4.8.2.20 SPLIT_INDEX
+      - 4.8.2.21 TO_DATE
+      - 4.8.2.22 TO_TIMESTAMP_TZ
+      - 4.8.2.23 UNIX_TIMESTAMP
+    - 4.8.3 Table-valued functions
+      - 4.8.3.1 GENERATE_SERIES
+      - 4.8.3.2 JSON_TUPLE
+      - 4.8.3.3 MULTI_KEYVALUE
+      - 4.8.3.4 STRING_SPLIT
+    - 4.8.4 Aggregate functions
+      - 4.8.4.1 APPROX_COUNT_DISTINCT
+      - 4.8.4.2 FIRST_VALUE
+      - 4.8.4.3 LAST_VALUE
+  - 4.9 User-defined functions (JAR)
+    - 4.9.1 Overview
+    - 4.9.2 User-defined scalar function (UDF)
+    - 4.9.3 User-defined aggregate function (UDAF)
+    - 4.9.4 User-defined table-valued function (UDTF)
+  - 4.10 User-defined functions (Python)
+    - 4.10.1 Overview
+    - 4.10.2 User-defined scalar function (UDF)
+    - 4.10.3 User-defined aggregate function (UDAF)
+    - 4.10.4 User-defined table-valued function (UDTF)
+  - 4.11 Machine learning functions
+    - 4.11.1 CLUSTER_SERVING
+
 tions
 
-## Preparations
+## 1 Preparations
 
 Like Alibaba Cloud Public Cloud, Alibaba Cloud Apsara Stack supports API calls through the POP Gateway. This topic describes the preparations you must complete before making an API call.
 
-### Obtain API information and its
+### 1.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -61,7 +237,7 @@ icon.
 **Registration Variables** dialog box that appears, view the value of
 apigateway.openapi.endpoint, which is the `endpoint` .
 
-### Obtain common header
+### 1.2 Obtain common header parameters
 
 **parameters**
 
@@ -117,7 +293,7 @@ After you call a List API operation related to cloud service resource instances,
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -163,7 +339,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -252,9 +428,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
 
 `}` P to make API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### SDK for Java
+### 2.1 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -408,7 +584,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 2.2 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -577,7 +753,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-### SDK for Python
+### 2.3 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -718,11 +894,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-## AppManager API
+## 3 AppManager API
 
-### Definition
+### 3.1 Definition
 
-#### API version differences and usage
+#### 3.1.1 API version differences and usage guidelines for Flink (Compute-Storage Separation Edition)
 
 **guidelines for Flink (Compute-Storage**
 
@@ -748,9 +924,9 @@ Available APIs: v1 and v2. If your current business is already built on v1 and r
 
 The v1 version will be gradually phased out and will no longer receive feature updates or optimizations. The v2 version will continue to be iterated and serves as the primary API standard for Flink (Compute-Storage Separation Edition).
 
-#### Compute-storage separation v1
+#### 3.1.2 Compute-storage separation v1
 
-##### ValidateSqlScript
+##### 3.1.2.1 ValidateSqlScript
 
 Call ValidateSqlScript to verify the correctness of an SQL script and return the verification result.
 
@@ -813,7 +989,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:v
 <data>{&quot;validationResult&quot;:&quot;VALIDATION_RESULT_VALID_DDL_STATEMENT&quot;}< /data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### UploadArtifactByOSSUrl
+##### 3.1.2.2 UploadArtifactByOSSUrl
 
 Updates folders on the data development page.
 
@@ -880,7 +1056,7 @@ POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:u
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.artifacts.v1.CreateArtifactResponse&quot &quot;artifact&quot;: {&quot;filename&quot;:&quot;TopSpeedWindowing.jar&quot;,&quot;content&quot;:&quot;******& ot;,&quot;namespace&quot;:&quot;namespaces/flinkteam&quot;,&quot;uploader&quot;:&quot;206 9961887523346&quot;,&quot;createTime&quot;:&quot;2026-04- 30T03:06:24Z&quot;,&quot;uri&quot;:&quot;oss://flink-fullymanagedapmd99ri0du673/artifacts/namespaces/flinkteam/TopSpeedWindowing.jar&quot;,&quot;size&quot &quot;11957&quot;}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### UpdateUdfArtifact
+##### 3.1.2.3 UpdateUdfArtifact
 
 Modifies a UDF JAR package.
 
@@ -946,7 +1122,7 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### UpdateMember
+##### 3.1.2.4 UpdateMember
 
 Call UpdateMember to change the business permissions of a specified user.
 
@@ -1009,7 +1185,7 @@ PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.members.v1.UpdateMemberResponse&quot;,&q t;member&quot;: {&quot;role&quot;:&quot;owner&quot;,&quot;member&quot;:&quot;user:242425410145292209&quot }</data> <success>true</success> <requestId>29F07013-6BE2-4F99-90B6-9E27BF2A26C4</requestId>
 ```
 
-##### UpdateFormat
+##### 3.1.2.5 UpdateFormat
 
 Call UpdateFormat to modify a format. The modification includes whether the format can act as a source or a sink, format parameters, and dependent JAR packages.
 
@@ -1076,7 +1252,7 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 <data>{&quot;affectedTables&quot;: [],&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.UpdateFormatResponse&quot; quot;format&quot;: {&quot;sink&quot;:false,&quot;name&quot;:&quot;namespaces/flinkteam/formats/customizedcsv&quot;,&quot;source&quot;:true,&quot;type&quot;:&quot;customizedcsv&quot;,&quot;properties&quot;: [{&quot;defaultValue&quot;:&quot;,&quot;,&quot;description&quot;:&quot;&quot;,&quot;defin Format&quot;:false,&quot;key&quot;:&quot;format.columndelimiter&quot;,&quot;required&quot;:false}],&quot;packaged&quot;:false,&quot;dependencie quot;:[&quot;hdfs:///tmp/myformats/customized-csv-demo-1.0-SNAPSHOT.jar&quot;]}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-##### UpdateDeploymentDesiredState
+##### 3.1.2.6 UpdateDeploymentDesiredState
 
 Call UpdateDeploymentDesiredState to update the desired state of a deployment in Realtime Compute.
 
@@ -1183,7 +1359,7 @@ t202604
 ;kind&quot;:&quot;FROM_SAVEPOINT&quot;,&quot;allowNonRestoredState&quot;:false,&quot;save intId&quot;:&quot;5cea0d88-303d-44e5-a96e- 47f7217723d7&quot;},&quot;state&quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJ CreationAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e 9c53f8ee019&quot;},&quot;status&quot;: {&quot;startTime&quot;:1777002980004,&quot;state&quot;:&quot;RUNNING&quot;,&quot;endTime& ot;:0}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### UpdateDeployment
+##### 3.1.2.7 UpdateDeployment
 
 Call UpdateDeployment to update a deployed job.
 
@@ -1276,7 +1452,7 @@ t;default&quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;
 
 ```html ```
 
-##### UpdateConnector
+##### 3.1.2.8 UpdateConnector
 
 Call UpdateConnector to modify the information of a custom connector.
 
@@ -1354,7 +1530,7 @@ json\",\"csv\"],\"environments\": [],\"sink\":true,\"name\":\"namespaces/flinkte
 
 ```html ```
 
-##### TableExists
+##### 3.1.2.9 TableExists
 
 Checks whether a table exists.
 
@@ -1412,7 +1588,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.TableExistsResponse& ot;,&quot;exists&quot;:true}</data> <requestId>39253EC3-B674-4B11-AD97-C221D6DB1003</requestId> <success>true</success>
 ```
 
-##### SetDeploymentResourceMode
+##### 3.1.2.10 SetDeploymentResourceMode
 
 Call SetDeploymentResourceMode to set the resourceMode of a job.
 
@@ -1504,7 +1680,7 @@ ur name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your descr
 {&quot;execution.checkpointing.interval&quot;:&quot;180s&quot;,&quot;execution.checkpoint g.min-pause&quot;:&quot;180s&quot;}}},&quot;restoreStrategy&quot;: {&quot;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot tate&quot;:&quot;RUNNING&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJ CreationAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;f2ed6708-a7e1-4e86-a99e-3 27fac9265c2&quot;},&quot;status&quot;: {&quot;startTime&quot;:0,&quot;state&quot;:&quot;RUNNING&quot;,&quot;endTime&quot;:0}}< /data> <success>true</success> <requestId>BCC13432-238D-41D7-B0A6-582241A6B572</requestId>
 ```
 
-##### ParseFormat
+##### 3.1.2.11 ParseFormat
 
 Call ParseFormat to parse a format.
 
@@ -1567,7 +1743,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:anal
 <data>{&quot;duplicatedSinkFactoriesFormats&quot;:[],&quot;formats&quot;: [],&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.AnalyzeFormatJarsResponse& ot;,&quot;duplicatedFilesystemFormatFactoriesFormats&quot;: [],&quot;duplicatedSourceFactoriesFormats&quot;:[]}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-##### ParseConnector
+##### 3.1.2.12 ParseConnector
 
 Call ParseConnector to customize connector parsing.
 
@@ -1802,7 +1978,7 @@ quot;defaultValue&quot;:&quot;1024&quot;,&quot;description&quot;:&quot;&quot;,&q
 {&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;defines rmat&quot;:false,&quot;key&quot;:&quot;nullvalues&quot;,&quot;required&quot;:false},{&q uot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;definesFor t&quot;:false,&quot;key&quot;:&quot;endpoint&quot;,&quot;required&quot;:true},{&quot;de faultValue&quot;:&quot;10000&quot;,&quot;description&quot;:&quot;&quot;,&quot;definesForm &quot;:false,&quot;key&quot;:&quot;refreshinterval&quot;,&quot;required&quot;:false},{& quot;defaultValue&quot;:&quot;\\u0002&quot;,&quot;description&quot;:&quot;&quot;,&quot;de nesFormat&quot;:false,&quot;key&quot;:&quot;field_delimiter&quot;,&quot;required&quot;:fa e}, {&quot;defaultValue&quot;:&quot;false&quot;,&quot;description&quot;:&quot;&quot;,&quot;de nesFormat&quot;:false,&quot;key&quot;:&quot;enable_filter_push_down&quot;,&quot;required& ot;:false}, {&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;defines rmat&quot;:false,&quot;key&quot;:&quot;tablename&quot;,&quot;required&quot;:true},{&quo t;defaultValue&quot;:&quot;true&quot;,&quot;description&quot;:&quot;&quot;,&quot;definesF mat&quot;:false,&quot;key&quot;:&quot;cacheEmpty&quot;,&quot;required&quot;:false},{&qu ot;defaultValue&quot;:&quot;public&quot;,&quot;description&quot;:&quot;&quot;,&quot;defin Format&quot;:false,&quot;key&quot;:&quot;schemaname&quot;,&quot;required&quot;:false},{ &quot;defaultValue&quot;:&quot;600&quot;,&quot;description&quot;:&quot;&quot;,&quot;defin Format&quot;:false,&quot;key&quot;:&quot;jdbcscantransactionsessiontimeoutseconds&quot;,& ot;required&quot;:false}],&quot;packaged&quot;:false,&quot;dependencies&quot;:[&quot;hd fs:///vvp/data/sql-artifacts/namespaces/flinkteam/custom-connectors/2024-03-12T01-50-56 .079896Z/ververica-connector-hologres-1.15-vvr-6.0fix.jar&quot;]}],&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.AnalyzeConne orJarsResponse&quot;,&quot;duplicatedSourceFactoriesConnectors&quot;: [],&quot;duplicatedSinkFactoriesConnectors&quot;:[]}</data> <success>true</success> <requestId>05AEEA60-8B59-4CCD-9F35-B27EE47F4D4E</requestId>
 ```
 
-##### ListTables
+##### 3.1.2.13 ListTables
 
 Views catalog tables.
 
@@ -1857,7 +2033,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;tables&quot;:[{&quot;name&quot;:&quot;blackhole&quot;,&quot;schema&quot;:{ &quot;column&quot;: [{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;VARCHAR(2147483647)&quot;,&quot; pression&quot;:&quot;&quot;}],&quot;watermarkSpec&quot;:[]},&quot;properties&quot;:{&qu ot;connector&quot;:&quot;blackhole&quot;},&quot;comment&quot;:&quot;&quot;},{&quot;name &quot;:&quot;blackhole_sink&quot;,&quot;schema&quot;:{&quot;column&quot;: [{&quot;name&quot;:&quot;name&quot;,&quot;type&quot;:&quot;VARCHAR(2147483647)&quot;,&quo expression&quot;:&quot;&quot;}, {&quot;name&quot;:&quot;score&quot;,&quot;type&quot;:&quot;BIGINT&quot;,&quot;expression& ot;:&quot;&quot;}],&quot;watermarkSpec&quot;:[]},&quot;properties&quot;: {&quot;connector&quot;:&quot;blackhole&quot;},&quot;comment&quot;:&quot;blackhole sink table&quot;}]}</data> <requestId>202107221428-KKE3K857WS</requestId>
 ```
 
-##### ListSessionClusters
+##### 3.1.2.14 ListSessionClusters
 
 Call ListSessionClusters to list all session clusters in a specified workspace and namespace.
 
@@ -1910,7 +2086,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;metadata&quot;: {},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;SessionClusterList&quot;, uot;items&quot;:[]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### ListSecretValues
+##### 3.1.2.15 ListSecretValues
 
 Obtains a list of variables (as listed on the Variables page in the console).
 
@@ -1965,7 +2141,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;metadata&quot;: {&quot;totalSize&quot;:1,&quot;totalPage&quot;:1},&quot;apiVersion&quot;:&quot;v1&quot;,& ot;kind&quot;:&quot;SecretValueList&quot;,&quot;items&quot;:[{&quot;metadata&quot;:{&qu ot;createdAt&quot;:&quot;2024-03-11T03:07:09Z&quot;,&quot;modifiedAt&quot;:&quot;2024-0 11T03:07:09Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;secretkey&quot;,& ot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;229852610122763813&quot;,&quot;modifier&quot;:&quot;2298526101 763813&quot;,&quot;creatorName&quot;:&quot;flinkadmin&quot;,&quot;modifierName&quot;:&quo flinkadmin&quot;},&quot;id&quot;:&quot;6dd63491-f0bf-4af3-a38e- 7001d479addc&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;SecretValue&quot;,&quot; ec&quot;:{&quot;kind&quot;:&quot;Plain&quot;,&quot;value&quot;:&quot;******&quot;}}]}</ data> <success>true</success> <requestId>5CC1B23C-CCA3-4283-B275-0F969CDFD34F</requestId>
 ```
 
-##### ListSavepoints
+##### 3.1.2.16 ListSavepoints
 
 Call ListSavepoints to get a list of job snapshots.
 
@@ -2042,7 +2218,7 @@ d531fcc1200d\"},\"apiVersion\":\"v1\",\"kind\":\"Savepoint\",\"spec\": {\"flinkS
 <data>{&quot;metadata&quot;: {},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;SavepointList&quot;,&quot tems&quot;:[{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:55:16Z&quot;,&quot;jobId&quot;:&quot;f736bbd6-c9cf-48ab-973a- 9653bb0f8c0a&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&qu ;:false,&quot;modifiedAt&quot;:&quot;2026-04- 24T03:55:19Z&quot;,&quot;deploymentId&quot;:&quot;a3d88b2a-e076-4491-86f2- 5a81ea4c7300&quot;,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot 2,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;9&quot; quot;taker&quot;:&quot; | vvp- 0&quot;},&quot;comment&quot;:&quot;&quot;,&quot;id&quot;:&quot;5cea0d88-303d-44e5-a96e- 47f7217723d7&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoin quot;,&quot;spec&quot;:{&quot;flinkSavepointId&quot;:&quot;fc2e33c1-8132-516f-2923-7371 060fb449&quot;,&quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1h l19/flink-savepoints/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7 300/5cea0d88-303d-44e5-a96e-47f7217723d7/savepoint-f736bbf467305080c0&quot;},&quot;status&quot;:{&quot;state&quot;:&quot;COMPLETED&quot;}},{&quo t;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:52:08Z&quot;,&quot;jobId&quot;:&quot;e5c412be-c160-460a-9d7b- 0b7111c77e15&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&qu ;:false,&quot;modifiedAt&quot;:&quot;2026-04- 24T03:52:13Z&quot;,&quot;deploymentId&quot;:&quot;a3d88b2a-e076-4491-86f2- 5a81ea4c7300&quot;,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot 2,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;6&quot; quot;taker&quot;:&quot; | vvp- 0&quot;},&quot;comment&quot;:&quot;&quot;,&quot;id&quot;:&quot;58778df9-5082-4da3-9890d531fcc1200d&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoin quot;,&quot;spec&quot;:{&quot;flinkSavepointId&quot;:&quot;3ac331a3-6ef9-d8f7-e3e8-e3d5 b2649180&quot;,&quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuwr9g7y1h l19/flink-savepoints/namespaces/flinkteam/deployments/a3d88b2a-e076-4491-86f2-5a81ea4c7 300/58778df9-5082-4da3-9890-d531fcc1200d/savepoint-e5c412- 8a27e8210de8&quot;},&quot;status&quot;:{&quot;state&quot;:&quot;COMPLETED&quot;}}]}</da ta> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### ListNamespaces
+##### 3.1.2.17 ListNamespaces
 
 Lists all namespaces in a region.
 
@@ -2099,7 +2275,7 @@ Sample success responses `JSON` format `{`
 24T03:33:43.680626Z&quot;,&quot;lifecyclePhase&quot;:&quot;LIFECYCLE_PHASE_ACTIVE&quot;,& ot;name&quot;:&quot;namespaces/flinkteam&quot;,&quot;labels&quot;:{}}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### ListFunctions
+##### 3.1.2.18 ListFunctions
 
 Call ListFunctions to obtain a list of user-defined functions (UDFs).
 
@@ -2157,7 +2333,7 @@ Successful response example `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.ListFunctionsRespons quot;,&quot;functions&quot;: [{&quot;name&quot;:&quot;TimestampProbe&quot;,&quot;className&quot;:&quot;com.alibaba.bli .udtf.TimestampProbe&quot;,&quot;functionLanguage&quot;:&quot;FUNCTION_LANGUAGE_JAVA&quot &quot;functionType&quot;:&quot;FUNCTION_TYPE_FLINK&quot;,&quot;description&quot;:&quot;Th is a user-defined function&quot;}, {&quot;name&quot;:&quot;TransformUdtf&quot;,&quot;className&quot;:&quot;com.alibaba.blink dtf.TransformUdtf&quot;,&quot;functionLanguage&quot;:&quot;FUNCTION_LANGUAGE_JAVA&quot;,& ot;functionType&quot;:&quot;FUNCTION_TYPE_FLINK&quot;,&quot;description&quot;:&quot;This is a user-defined function&quot;}]}</data> <requestId>0ADBBDD0-E2E9-4611-98C6-6767A3AB87D2</requestId> <success>true</success>
 ```
 
-##### ListFormats
+##### 3.1.2.19 ListFormats
 
 Views the formats list.
 
@@ -2214,7 +2390,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;formats&quot;: [{&quot;sink&quot;:true,&quot;name&quot;:&quot;namespaces/flinkteam/formats/avro&quot;,&q t;source&quot;:true,&quot;type&quot;:&quot;avro&quot;,&quot;properties&quot;:[{&quot;de faultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;Must be set to \u0027avro\u0027 to configure this format.&quot;,&quot;definesFormat&quot;:false,&quot;key&quot;:&quot;format&quot;,&quot;re ired&quot;:true}],&quot;packaged&quot;:true,&quot;dependencies&quot;: [&quot;hdfs:///vvp/data/sql-artifacts/namespaces/ververica/connectors/vvr-6.0.7-flink-1 .15/opt/formats/avro/flink-sql-avro-1.15-vvr-6.0.7- SNAPSHOT.jar&quot;]}],&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.ListFor tsResponse&quot;}</data> <success>true</success> <requestId>6BFF2035-B5FB-4E1A-8F32-4CA636417A3D</requestId>
 ```
 
-##### ListFlinkVersions
+##### 3.1.2.20 ListFlinkVersions
 
 Call ListFlinkVersions to obtain the list of Flink engine versions.
 
@@ -2280,7 +2456,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;defaultFlinkVersionName&quot;:&quot;vvr-6.0.0-flink- 1.15&quot;,&quot;flinkVersionMetadatas&quot;: [{&quot;supportFindUsedCatalogs&quot;:false,&quot;useForJarFineGrained&quot;:false,&quot; rsionName&quot;:&quot;vvr-3.0.9-flink- 1.12&quot;,&quot;flinkVersion&quot;:&quot;1.12&quot;,&quot;useForSqlDeployments&quot;:tru &quot;labels&quot;:{},&quot;features&quot;: {&quot;supportFindUsedCatalogs&quot;:false,&quot;supportDynamicLogLevel&quot;:false,&quot upportDagExpansion&quot;:false,&quot;useForJarFineGrained&quot;:false,&quot;supportNative vepoint&quot;:false,&quot;supportStateCompatibility&quot;:false,&quot;supportNativeK8s&qu ;:false,&quot;supportJvmDebug&quot;:false,&quot;supportLogArchive&quot;:false,&quot;useFo qlDeployments&quot;:true,&quot;supportLogPaging&quot;:false},&quot;tarUrl&quot;:&quot;hdf ///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-3.0.9-flink-1.12/vvr -3.0.9-flink-1.12dist.tar.gz&quot;,&quot;supportStateCompatibility&quot;:false,&quot;defaultFor&quot;:[] ,&quot;imageTag&quot;:&quot;1.12.0-vvr-3.0.9- 1109&quot;,&quot;vvrVersion&quot;:&quot;3.0.9&quot;,&quot;status&quot;:&quot;DEPRECATED&q t;}, {&quot;supportFindUsedCatalogs&quot;:true,&quot;useForJarFineGrained&quot;:false,&quot;ve ionName&quot;:&quot;vvr-4.0.18-flink- 1.13&quot;,&quot;flinkVersion&quot;:&quot;1.13&quot;,&quot;useForSqlDeployments&quot;:tru &quot;labels&quot;:{},&quot;features&quot;: {&quot;supportFindUsedCatalogs&quot;:true,&quot;supportDynamicLogLevel&quot;:true,&quot;s portDagExpansion&quot;:false,&quot;useForJarFineGrained&quot;:false,&quot;supportNativeSa point&quot;:false,&quot;supportStateCompatibility&quot;:true,&quot;supportNativeK8s&quot; alse,&quot;supportJvmDebug&quot;:true,&quot;supportLogArchive&quot;:true,&quot;useForSqlD loyments&quot;:true,&quot;supportLogPaging&quot;:true},&quot;tarUrl&quot;:&quot;hdfs:///v /data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-4.0.18-flink-1.13/vvr-4.0. 18-flink-1.13dist.tar.gz&quot;,&quot;supportStateCompatibility&quot;:true,&quot;defaultFor&quot;:[], &quot;imageTag&quot;:&quot;1.13.0-vvr-4.0.18- 22&quot;,&quot;vvrVersion&quot;:&quot;4.0.18&quot;,&quot;status&quot;:&quot;DEPRECATED&qu ;}, {&quot;supportFindUsedCatalogs&quot;:true,&quot;useForJarFineGrained&quot;:false,&quot;ve ionName&quot;:&quot;vvr-6.0.0-flink- 1.15&quot;,&quot;flinkVersion&quot;:&quot;1.15&quot;,&quot;useForSqlDeployments&quot;:tru &quot;labels&quot;:{},&quot;features&quot;: {&quot;supportFindUsedCatalogs&quot;:true,&quot;supportDynamicLogLevel&quot;:true,&quot;s portDagExpansion&quot;:false,&quot;useForJarFineGrained&quot;:false,&quot;supportNativeSa point&quot;:false,&quot;supportStateCompatibility&quot;:true,&quot;supportNativeK8s&quot; alse,&quot;supportJvmDebug&quot;:true,&quot;supportLogArchive&quot;:true,&quot;useForSqlD loyments&quot;:true,&quot;supportLogPaging&quot;:true},&quot;tarUrl&quot;:&quot;hdfs:///v /data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-6.0.7-flink-1.15/vvr-6.0.7 -flink-1.15dist.tar.gz&quot;,&quot;supportStateCompatibility&quot;:true,&quot;defaultFor&quot;:[], &quot;imageTag&quot;:&quot;1.15.0-vvr-6.0.7- 29&quot;,&quot;vvrVersion&quot;:&quot;6.0.7&quot;,&quot;status&quot;:&quot;STABLE&quot;}] </data> <requestId>63269B06-8027-4CD0-9AB5-D9791B185B82</requestId> <success>true</success>
 ```
 
-##### ListDeploymentTargets
+##### 3.1.2.21 ListDeploymentTargets
 
 Call ListDeploymentTargets to obtain the list of deployment targets.
 
@@ -2344,7 +2520,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;metadata&quot;: {},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentTargetList&quot &quot;items&quot;:[{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04-24T03:33: 44Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot;:&quot;2 6-04-24T03:33:44Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;dt-flinkte am&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;:{&quot;cre ator&quot;:&quot;1494974510125846&quot;,&quot;modifier&quot;:&quot;1494974510125846&quot; quot;creatorName&quot;:&quot;null&quot;,&quot;modifierName&quot;:&quot;null&quot;},&quot; &quot;:&quot;a89ff052-38c6-4fd3-9b91-e9c53f8ee019&quot;,&quot;labels&quot;:{}},&quot;ap iVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentTarget&quot;,&quot;ha&quot false,&quot;spec&quot;:{&quot;kubernetes&quot;: {&quot;namespace&quot;:&quot;flinkteam&quot;},&quot;kind&quot;:&quot;kubernetes&quot;,&qu ;state&quot;:&quot;ONLINE&quot;}}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### ListDeployments
+##### 3.1.2.22 ListDeployments
 
 Call ListDeployments to get the list of deployed jobs.
 
@@ -2437,7 +2613,7 @@ Sample success response `JSON` format `{`
 {&quot;startTime&quot;:0,&quot;state&quot;:&quot;CANCELLED&quot;,&quot;endTime&quot;:0}}] </data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-##### ListDatabases
+##### 3.1.2.23 ListDatabases
 
 Call ListDatabases to view the databases under a catalog.
 
@@ -2494,7 +2670,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.ListDatabasesRespons quot;,&quot;databases&quot;: [{&quot;name&quot;:&quot;default&quot;,&quot;properties&quot;: {},&quot;comment&quot;:&quot;The default database&quot;}]}</data> <requestId>76F325D7-3EC4-4E34-81A8-18B92D7EE606</requestId> <success>true</success>
 ```
 
-##### ListConnectors
+##### 3.1.2.24 ListConnectors
 
 Call ListConnectors to get the list of connectors.
 
@@ -2550,7 +2726,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;connectors&quot;:[{&quot;lookup&quot;:false,&quot;supportedFormats&quot;:[ ],&quot;environments&quot;: [&quot;PUBLIC_CLOUD&quot;,&quot;PRIVATE_CLOUD&quot;,&quot;ALIBABA_GROUP&quot;,&quot;VVC_C UD&quot;],&quot;sink&quot;:false,&quot;name&quot;:&quot;namespaces/flinkteam/connectors/d agen&quot;,&quot;source&quot;:true,&quot;type&quot;:&quot;datagen&quot;,&quot;properties& ot;:[{&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;Must be set t o \u0027datagen\u0027 to configure this connector.&quot;,&quot;definesFormat&quot;:false,&quot;key&quot;:&quot;connector&quot;,&q t;required&quot;:true}, {&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;Rows per second to control the emit rate, default 10000L.&quot;,&quot;definesFormat&quot;:false,&quot;key&quot;:&quot;rows-per-second&quo t;,&quot;required&quot;:false}, {&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;Total number of ro ws to emit. By default, the source is unbounded.&quot;,&quot;definesFormat&quot;:false,&quot;key&quot;:&quot;number-of-rows&q uot;,&quot;required&quot;:false}],&quot;packaged&quot;:true,&quot;dependencies&quot;:[] }],&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.ListConnectorsResponse&quo }</data> <success>true</success> <requestId>A62F262E-3055-490B-B17B-0C6BF83C4BE6</requestId>
 ```
 
-##### ListCatalogs
+##### 3.1.2.25 ListCatalogs
 
 Call ListCatalogs to retrieve the list of catalogs in a specified namespace of a specified workspace.
 
@@ -2606,7 +2782,7 @@ Successful response example `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.ListCatalogsResponse uot;,&quot;catalogs&quot;: [{&quot;name&quot;:&quot;namespaces/flinkteam/catalogs/vvp&quot;,&quot;properties&quot;: {&quot;defaultDatabase&quot;:&quot;default&quot;,&quot;type&quot;:&quot;vvp&quot;}}]}</ data> <requestId>31F99ADC-B72E-4BA1-AD32-B938D5A57532</requestId> <success>true</success>
 ```
 
-##### ListArtifacts
+##### 3.1.2.26 ListArtifacts
 
 Lists all artifacts in a workspace and the namespaces.
 
@@ -2661,7 +2837,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.artifacts.v1.ListArtifactsResponse&quot; quot;artifacts&quot;: [{&quot;filename&quot;:&quot;TopSpeedWindowing.jar&quot;,&quot;size&quot;:&quot;0&quot;,& ot;createTime&quot;:&quot;2026-04- 29T09:20:14Z&quot;,&quot;uploader&quot;:&quot;235406976657057054&quot;,&quot;namespace&qu ;:&quot;namespaces/flinkteam&quot;,&quot;uri&quot;:&quot;oss://flink-fullymanaged-9cuwr 9g7y1hl19/artifacts/namespaces/flinkteam/TopSpeedWindowing.jar&quot;,&quot;content&quot;: uot;&quot;}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### GetUdfArtifact
+##### 3.1.2.27 GetUdfArtifact
 
 Call GetUdfArtifact to retrieve detailed information about a UDF.
 
@@ -2726,7 +2902,7 @@ Successful response example `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.GetUdfArtifactResponse&quot; quot;udfArtifact&quot;:{&quot;dependencyJarUris&quot;:[],&quot;udfClasses&quot;:[{&quot ;functionNames&quot;: [&quot;TimestampProbe&quot;],&quot;udfArtifactName&quot;:&quot;namespaces/flinkteam/udfar facts/metric-transform-227shaded&quot;,&quot;className&quot;:&quot;com.alibaba.blink.udtf.TimestampProbe&quot;,&quo classType&quot;:&quot;UDF_TYPE_SCALAR&quot;},{&quot;functionNames&quot;: [&quot;TransformUdtf&quot;],&quot;udfArtifactName&quot;:&quot;namespaces/flinkteam/udfart acts/metric-transform-227shaded&quot;,&quot;className&quot;:&quot;com.alibaba.blink.udtf.TransformUdtf&quot;,&quot lassType&quot;:&quot;UDF_TYPE_TABLE&quot;}],&quot;artifactType&quot;:&quot;ARTIFACT_TYPE_ VA&quot;,&quot;createTime&quot;:&quot;2024-03- 08T08:13:54Z&quot;,&quot;uploader&quot;:&quot;223474909869445380&quot;,&quot;jarUpdateTim quot;:&quot;2024-03- 08T08:13:57Z&quot;,&quot;name&quot;:&quot;namespaces/flinkteam/udfartifacts/metric-tran sform-227shaded&quot;,&quot;namespace&quot;:&quot;namespaces/flinkteam&quot;,&quot;jarUrl&quot;:&q t;hdfs:///vvp/data/sql-artifacts/namespaces/flinkteam/udfs/metric-transform-227-shaded/ 2024-03-08T08-13-54.732313Z/metric-transform-2.2.7shaded.jar&quot;,&quot;updateTime&quot;:&quot;2024-03-08T08:13:57Z&quot;}}</data> <requestId>C44A1880-5138-4204-9165-DC65C4B059C2</requestId> <success>true</success>
 ```
 
-##### GetTable
+##### 3.1.2.28 GetTable
 
 Call GetTable to retrieve table information.
 
@@ -2785,7 +2961,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.GetTableResponse&quo ,&quot;table&quot;:{&quot;name&quot;:&quot;mydatahub&quot;,&quot;schema&quot;:{&quot;co lumn&quot;: [{&quot;name&quot;:&quot;strname&quot;,&quot;type&quot;:&quot;VARCHAR(2147483647)&quot;,& ot;expression&quot;:&quot;&quot;}],&quot;watermarkSpec&quot;: []},&quot;properties&quot;: {&quot;accessId&quot;:&quot;SVw******PtL&quot;,&quot;endpoint&quot;:&quot;https://datahub n-wulan-env188d01.dh.inter.env188.shuguang.com&quot;,&quot;connector&quot;:&quot;datahub&quot;,&quot;ac ssKey&quot;:&quot;RfE******VMB&quot;,&quot;project&quot;:&quot;datahub&quot;,&quot;topic& ot;:&quot;mysource&quot;},&quot;comment&quot;:&quot;&quot;},&quot;success&quot;:true,&quo message&quot;:&quot;&quot;}</data> <requestId>FCB6D11E-8FAA-48F7-8E25-28218A6878F5</requestId> <success>true</success>
 ```
 
-##### GetResourcePlan
+##### 3.1.2.29 GetResourcePlan
 
 Obtains the resource configuration plan for a deployment.
 
@@ -2838,7 +3014,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;success&quot;:true,&quot;message&quot;:&quot;&quot;,&quot;plan&quot;:&quot;&quot;} </data> <success>true</success> <requestId>87589423-CE39-470D-81EA-5AB477CF4CD4</requestId>
 ```
 
-##### GetGlobalDeploymentDefaults
+##### 3.1.2.30 GetGlobalDeploymentDefaults
 
 Call the GetGlobalDeploymentDefaults operation to obtain the global deployment default configurations in the Realtime Compute service.
 
@@ -2903,7 +3079,7 @@ ate\":{\"metadata\":{\"annotations\": {\"native.kubernetes.mode\":\"true\",\"fli
 <data> {&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;GlobalDeploymentDefaults&qu ;,&quot;spec&quot;:{&quot;template&quot;:{&quot;metadata&quot;: {&quot;annotations&quot;: {&quot;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.queryablestate.enabled&quot;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false& ot;}},&quot;spec&quot;:{&quot;artifact&quot;: {&quot;kind&quot;:&quot;JAR&quot;,&quot;imageUserDefined&quot;:false},&quot;parallelism&q t;:1,&quot;resources&quot;:{&quot;jobmanager&quot;: {&quot;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0},&quot;taskmanager&quot;:{&quot ;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;: {&quot;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&q t;default&quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;:{&quot ;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot;state uot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;STATELESS&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot axJobCreationAttempts&quot;:1}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### GetFunction
+##### 3.1.2.31 GetFunction
 
 Call GetFunction to view the details of a function.
 
@@ -2965,7 +3141,7 @@ Successful response example `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.GetFunctionResponse& ot;,&quot;function&quot;: {&quot;name&quot;:&quot;TransformUdtf&quot;,&quot;className&quot;:&quot;com.alibaba.blink dtf.TransformUdtf&quot;,&quot;functionLanguage&quot;:&quot;FUNCTION_LANGUAGE_JAVA&quot;,& ot;functionType&quot;:&quot;FUNCTION_TYPE_FLINK&quot;,&quot;description&quot;:&quot;This is a user-defined function&quot;},&quot;success&quot;:true,&quot;message&quot;:&quot;&quot;}</data> <requestId>DD2A9970-CED3-4AD6-B0F6-8DFDD84AC6AC</requestId> <success>true</success>
 ```
 
-##### GetDeploymentDefaults
+##### 3.1.2.32 GetDeploymentDefaults
 
 Queries the default deployment configurations of a workspace and its namespaces in Realtime Compute for Apache Flink.
 
@@ -3022,7 +3198,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:46:53Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot &quot;2026-04- 24T03:46:53Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;stream&quot;,&quo namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;deployment.defaults.type&quot;:&quot;stream&quot;,&quot;creator&quot;:&quot;system uot;,&quot;modifier&quot;:&quot;system&quot;},&quot;id&quot;:&quot;690e3396-700a-4b77-9 fcf-d14a592f****&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentDefaults&quot; quot;spec&quot;:{&quot;template&quot;:{&quot;spec&quot;:{&quot;resources&quot;:{},&quot ;flinkConfiguration&quot;: {&quot;execution.checkpointing.interval&quot;:&quot;180s&quot;,&quot;table.exec.state.ttl uot;:&quot;36 h&quot;,&quot;restart-strategy.fixed-delay.delay&quot;:&quot;10 s&quot;,& quot;restart-strategy.fixeddelay.attempts&quot;:&quot;2147483647&quot;,&quot;execution.checkpointing.min-pause&quo t;:&quot;180s&quot;,&quot;restart-strategy&quot;:&quot;fixed-delay&quot;}}}}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### GetDeployment
+##### 3.1.2.33 GetDeployment
 
 Call GetDeployment to retrieve deployed jobs.
 
@@ -3119,7 +3295,7 @@ t202604
 ;kind&quot;:&quot;FROM_SAVEPOINT&quot;,&quot;allowNonRestoredState&quot;:false,&quot;save intId&quot;:&quot;5cea0d88-303d-44e5-a96e- 47f7217723d7&quot;},&quot;state&quot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;NONE&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot;maxJ CreationAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9b91-e 9c53f8ee019&quot;},&quot;status&quot;: {&quot;startTime&quot;:1777002980004,&quot;state&quot;:&quot;CANCELLED&quot;,&quot;endTim quot;:0}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### GetDefaultDatabase
+##### 3.1.2.34 GetDefaultDatabase
 
 Obtains the default database under a catalog.
 
@@ -3173,7 +3349,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.GetDefaultDatabaseRe onse&quot;,&quot;database&quot;:&quot;default&quot;}</data> <requestId>59F6950E-FC05-495E-A286-08C111EC7A4B</requestId> <success>true</success>
 ```
 
-##### GetDatabase
+##### 3.1.2.35 GetDatabase
 
 Queries the detailed information of a database under a catalog.
 
@@ -3230,7 +3406,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.GetDatabaseResponse& ot;,&quot;database&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;properties&quot;:{ },&quot;comment&quot;:&quot;The default database&quot;},&quot;success&quot;:true,&quot;message&quot;:&quot;&quot;}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### GetCatalog
+##### 3.1.2.36 GetCatalog
 
 Views the catalog information.
 
@@ -3286,7 +3462,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.GetCatalogResponse&q t;,&quot;catalog&quot;: {&quot;name&quot;:&quot;namespaces/flinkteam/catalogs/vvp&quot;,&quot;properties&quot;: {&quot;type&quot;:&quot;vvp&quot;,&quot;defaultDatabase&quot;:&quot;default&quot;}}}</d ata> <requestId>0AFF0B61-35A5-46D9-930F-3826DCA3D3F9</requestId> <success>true</success>
 ```
 
-##### GetArtifactMetadata
+##### 3.1.2.37 GetArtifactMetadata
 
 Call GetArtifactMetadata to obtain the metadata of a specified file in Realtime Compute.
 
@@ -3340,7 +3516,7 @@ Successful response example `JSON` format `{`
 <data>{&quot;artifact&quot;: {&quot;filename&quot;:&quot;TopSpeedWindowing.jar&quot;,&quot;size&quot;:&quot;0&quot;,&q t;createTime&quot;:&quot;2026-04- 29T09:20:14Z&quot;,&quot;uploader&quot;:&quot;235406976657057054&quot;,&quot;namespace&qu ;:&quot;namespaces/flinkteam&quot;,&quot;uri&quot;:&quot;oss://flink-fullymanaged-9cuwr 9g7y1hl19/artifacts/namespaces/flinkteam/TopSpeedWindowing.jar&quot;,&quot;content&quot;: uot;&quot;},&quot;@type&quot;:&quot;type.googleapis.com/vvp.artifacts.v1.GetArtifactMetad aResponse&quot;}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### GenerateResourcePlan
+##### 3.1.2.38 GenerateResourcePlan
 
 Generates a resource configuration plan for a deployment.
 
@@ -3404,7 +3580,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[depl
 <data>{&quot;success&quot;:true,&quot;plan&quot;:&quot;{\&quot;ssgProfiles\&quot;:[{\&q uot;name\&quot;:\&quot;default\&quot;,\&quot;cpu\&quot;:0.2,\&quot;heap\&quot;:\&quot;768 mb\&quot;,\&quot;offHeap\&quot;:\&quot;32 mb\&quot;,\&quot;managed\&quot;: {},\&quot;extended\&quot;:{}}],\&quot;nodes\&quot;: [{\&quot;id\&quot;:1,\&quot;type\&quot;:\&quot;StreamExecTableSourceScan\&quot;,\&quot;de \&quot;:\&quot;Source: datahub_table[4]\&quot;,\&quot;profile\&quot;: {\&quot;group\&quot;:\&quot;default\&quot;,\&quot;parallelism\&quot;:1,\&quot;maxParallel m\&quot;:32768,\&quot;minParallelism\&quot;:1}}, {\&quot;id\&quot;:2,\&quot;type\&quot;:\&quot;StreamExecCalc\&quot;,\&quot;desc\&quot;:\& ot;Calc[5]\&quot;,\&quot;profile\&quot;: {\&quot;group\&quot;:\&quot;default\&quot;,\&quot;parallelism\&quot;:1,\&quot;maxParallel m\&quot;:32768,\&quot;minParallelism\&quot;:1}}, {\&quot;id\&quot;:3,\&quot;type\&quot;:\&quot;StreamExecSink\&quot;,\&quot;desc\&quot;:\& ot;Sink: kafka_table[6]\&quot;,\&quot;profile\&quot;: {\&quot;group\&quot;:\&quot;default\&quot;,\&quot;parallelism\&quot;:1,\&quot;maxParallel m\&quot;:32768,\&quot;minParallelism\&quot;:1}}],\&quot;edges\&quot;: [{\&quot;source\&quot;:1,\&quot;target\&quot;:2,\&quot;mode\&quot;:\&quot;PIPELINED\&quot \&quot;strategy\&quot;:\&quot;FORWARD\&quot;}, {\&quot;source\&quot;:2,\&quot;target\&quot;:3,\&quot;mode\&quot;:\&quot;PIPELINED\&quot; &quot;strategy\&quot;:\&quot;FORWARD\&quot;}],\&quot;vertices\&quot;: {\&quot;717c7b8afebbfb7137f6f0f99beb2a94\&quot;:[1,2,3]}}&quot;}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****&quot;</requestId>
 ```
 
-##### FunctionExists
+##### 3.1.2.39 FunctionExists
 
 Checks whether a function is registered.
 
@@ -3462,7 +3638,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.FunctionExistsRespon &quot;,&quot;exists&quot;:true}</data> <requestId>D96DD415-AD97-4EBA-832E-99FADB6A4F87</requestId> <success>true</success>
 ```
 
-##### ForcefullyCreateLock
+##### 3.1.2.40 ForcefullyCreateLock
 
 Locks a resource (typically a draft).
 
@@ -3527,7 +3703,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2024-03- 12T10:16:35.164034Z&quot;,&quot;modifiedAt&quot;:&quot;2024-03- 12T10:16:35.164034Z&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;id&quot;:&quo ec62ce3c-fe33-383e-8b31- 2fe9d89af2af&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Lock&quo ,&quot;spec&quot;: {&quot;holderName&quot;:&quot;flinkadmin&quot;,&quot;holderId&quot;:&quot;229852610122763 3&quot;}}</data> <success>true</success> <requestId>69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD</requestId>
 ```
 
-##### ExecuteSqlscriptsStatements
+##### 3.1.2.41 ExecuteSqlscriptsStatements
 
 Manages a function.
 
@@ -3587,7 +3763,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.ListUdfArtifactsResponse&quo ,&quot;udfArtifacts&quot;: [{&quot;name&quot;:&quot;namespaces/flinkteam/udfartifacts/metric-transform-227&quot;,& quot;jarUrl&quot;:&quot;hdfs:///tmp/udf/metric-transform-2.2.7shaded.jar&quot;,&quot;udfClasses&quot;: [{&quot;className&quot;:&quot;com.alibaba.blink.udtf.TimestampProbe&quot;,&quot;classType uot;:&quot;UDF_TYPE_SCALAR&quot;,&quot;udfArtifactName&quot;:&quot;namespaces/flinkteam/u artifacts/metric-transform-227&quot;,&quot;functionNames&quot;: [&quot;TimestampProbe&quot;]}],&quot;artifactType&quot;:&quot;ARTIFACT_TYPE_JAVA&quot;,&q t;dependencyJarUris&quot;: [],&quot;uploader&quot;:&quot;229852610122763813&quot;,&quot;namespace&quot;:&quot;namesp es/flinkteam&quot;,&quot;createTime&quot;:&quot;2024-03- 11T02:54:25Z&quot;,&quot;updateTime&quot;:&quot;2024-03- 11T02:54:25Z&quot;,&quot;jarUpdateTime&quot;:&quot;2024-03-11T02:54:25Z&quot;}]}</data> <requestId>151E1A19-091A-4317-ADF9-FDD81C735414</requestId> <success>true</success>
 ```
 
-##### ExecuteSqlScript
+##### 3.1.2.42 ExecuteSqlScript
 
 Executes SQL scripts to manage realtime compute tasks.
 
@@ -3649,7 +3825,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.ExecuteStatementsResponse&qu ;,&quot;responses&quot;: [{&quot;result&quot;:&quot;RESULT_SUCCESS&quot;,&quot;errorMessages&quot;:[]}]}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### DeployDeploymentDraft
+##### 3.1.2.43 DeployDeploymentDraft
 
 Call the DeployDeploymentDraft API to deploy a Realtime Compute job to the specified workspace and namespace.
 
@@ -3704,7 +3880,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts
 
 `}` Sample success response `JSON` format `XML` format
 
-##### DeleteUdfArtifact
+##### 3.1.2.44 DeleteUdfArtifact
 
 Deletes a UDF.
 
@@ -3760,7 +3936,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;referencedClasses&quot;: [],&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.DeleteUdfArtifactResponse& ot;}</data> <requestId>07E49735-A389-4853-AFBA-28F9EB0EFDC4</requestId> <success>true</success>
 ```
 
-##### DeleteSecretValue
+##### 3.1.2.45 DeleteSecretValue
 
 Deletes a variable.
 
@@ -3811,7 +3987,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>1CCA8A71-98C6-491B-9A2D-ADDFC0939294</requestId>
 ```
 
-##### DeleteMember
+##### 3.1.2.46 DeleteMember
 
 Call DeleteMember to revoke the business authorization of a specified user.
 
@@ -3865,7 +4041,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>8AA170D4-F4D1-4E90-A02D-0CC211BE8171</requestId>
 ```
 
-##### DeleteFormat
+##### 3.1.2.47 DeleteFormat
 
 Call DeleteFormat to delete a format.
 
@@ -3914,7 +4090,7 @@ Successful response example `JSON` format `{`
 <requestId>EC30D915-1E89-4B66-B1AA-C5D161DAB50D</requestId>
 ```
 
-##### DeleteFolder
+##### 3.1.2.48 DeleteFolder
 
 Deletes a folder on the data development page.
 
@@ -3967,7 +4143,7 @@ Sample success responses `JSON` format `{`
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### DeleteDeployment
+##### 3.1.2.49 DeleteDeployment
 
 Deletes a deployment resource and releases related workloads and associated components.
 
@@ -4018,7 +4194,7 @@ Sample success responses `JSON` format `{`
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### DeleteConnector
+##### 3.1.2.50 DeleteConnector
 
 Deletes a custom connector.
 
@@ -4071,7 +4247,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>7113AD53-5192-46E5-B592-81175BAF7F54</requestId>
 ```
 
-##### DeleteArtifact
+##### 3.1.2.51 DeleteArtifact
 
 Deletes an artifact file in Realtime Compute for Apache Flink.
 
@@ -4122,7 +4298,7 @@ Sample success responses `JSON` format `{`
 <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### DatabaseExists
+##### 3.1.2.52 DatabaseExists
 
 Checks whether a database exists under a catalog.
 
@@ -4179,7 +4355,7 @@ Sample success responses `JSON` format `{`
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.catalog.v1beta2.DatabaseExistsRespon &quot;,&quot;exists&quot;:true}</data> <requestId>41CAB2BF-B428-4240-A746-1F6CE6DE****</requestId> <success>true</success>
 ```
 
-##### CreateUdfArtifact
+##### 3.1.2.53 CreateUdfArtifact
 
 Call CreateUdfArtifact to create a UDF.
 
@@ -4257,7 +4433,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
 227&quot;,&quot;className&quot;:&quot;com.alibaba.blink.udtf.TransformUdtf&quot;,&quot;cl sType&quot;:&quot;UDF_TYPE_TABLE&quot;}],&quot;artifactType&quot;:&quot;ARTIFACT_TYPE_JAV quot;,&quot;createTime&quot;:&quot;2024-03- 11T02:54:24.822766Z&quot;,&quot;uploader&quot;:&quot;229852610122763813&quot;,&quot;jarUp teTime&quot;:&quot;2024-03- 11T02:54:24.822766Z&quot;,&quot;name&quot;:&quot;namespaces/flinkteam/udfartifacts/metric transform- 227&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;jarUrl&quot;:&quot;hdfs:///tm udf/metric-transform-2.2.7-shaded.jar&quot;,&quot;updateTime&quot;:&quot;2024-03-11T02: 54:24.822766Z&quot;}}</data> <requestId>8F0CFB56-7CE8-45AA-A788-41B7D2504E5F</requestId> <success>true</success>
 ```
 
-##### CreateSecretValue
+##### 3.1.2.54 CreateSecretValue
 
 Adds a variable.
 
@@ -4323,7 +4499,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTT
 <data> {&quot;eagleEyeTraceId&quot;:&quot;0a2318ab17773416617444310d****&quot;,&quot;asapiSucces quot;:true,&quot;asapiRequestId&quot;:&quot;5EBEB7CA-1133-4746-8132- A35DC078****&quot;,&quot;data&quot;:{&quot;metadata&quot;: {&quot;createdAt&quot;:&quot;2026-04- 28T02:01:01.791172Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modified &quot;:&quot;2026-04- 28T02:01:01.791172Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;flink_acce _id&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;:{&quot;cr eator&quot;:&quot;23540697665705****&quot;,&quot;modifier&quot;:&quot;23540697665705****& ot;,&quot;creatorName&quot;:&quot;flinkadmin&quot;,&quot;modifierName&quot;:&quot;flinkad n&quot;},&quot;id&quot;:&quot;c73a06e7-c2d2-4d78-9dbe- 87413280****&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;SecretValue&quot;,&quot; ec&quot;: {&quot;kind&quot;:&quot;Plain&quot;,&quot;value&quot;:&quot;flink_access_key&quot;}}</d ata> <success>true</success> <requestId>19E71203-97A1-4355-8C25-D566CA82****</requestId>
 ```
 
-##### CreateSavepoint
+##### 3.1.2.55 CreateSavepoint
 
 Creates a savepoint, which marks a rollback point within a transaction.
 
@@ -4390,7 +4566,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints HTTP/1
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 28T02:13:28.277278Z&quot;,&quot;jobId&quot;:&quot;bf735437-b3ea-4d1a-847ebbacd144****&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;nativeFormat&qu ;:false,&quot;modifiedAt&quot;:&quot;2026-04- 28T02:13:28.277278Z&quot;,&quot;deploymentId&quot;:&quot;7325ac07-e466-4c1b-b598-311c6f 2c103b&quot;,&quot;origin&quot;:&quot;USER_REQUEST&quot;,&quot;resourceVersion&quot;:1,&q t;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;com.dataartisans.appmanager.controller.deployment.spec.version&quot;:&quot;10&quot &quot;taker&quot;:&quot; | vvp-0&quot;},&quot;id&quot;:&quot;425dfb74-2bbb-4879-8273-0b 087a97****&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Savepoint& ot;,&quot;spec&quot;:{&quot;savepointLocation&quot;:&quot;oss://flink-fullymanaged-9cuw r9g7y1hl19/flink-savepoints/namespaces/flinkteam/deployments/7325ac07-e466-4c1b-b598-31 1c6f2c103b/425dfb74-2bbb-4879-8273-0b087a97b502&quot;},&quot;status&quot;: {&quot;state&quot;:&quot;STARTED&quot;}}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### CreateMember
+##### 3.1.2.56 CreateMember
 
 Call CreateMember to assign business permissions to a user in a specified namespace.
 
@@ -4453,7 +4629,7 @@ POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.members.v1.CreateMemberResponse&quot;,&q t;member&quot;: {&quot;role&quot;:&quot;viewer&quot;,&quot;member&quot;:&quot;user:242425410145292209&quo }}</data> <success>true</success> <requestId>E3D311D5-77CB-452F-B9EA-C215C8201363</requestId>
 ```
 
-##### CreateFormat
+##### 3.1.2.57 CreateFormat
 
 Creates a format.
 
@@ -4517,7 +4693,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
 <data> {&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.CreateFormatResponse&quot;,& ot;format&quot;: {&quot;sink&quot;:false,&quot;name&quot;:&quot;namespaces/flinkteam/formats/customizedcsv&quot;,&quot;source&quot;:true,&quot;type&quot;:&quot;customizedcsv&quot;,&quot;properties&quot;: [{&quot;defaultValue&quot;:&quot;,&quot;,&quot;description&quot;:&quot;&quot;,&quot;defin Format&quot;:false,&quot;key&quot;:&quot;format.columndelimiter&quot;,&quot;required&quot;:false}],&quot;packaged&quot;:false,&quot;dependencie quot;:[&quot;hdfs:///tmp/myformats/customized-csv-demo-1.0-SNAPSHOT.jar&quot;]}}</data> <success>true</success> <requestId>0ED81455-6971-4EBA-BBD4-3F686175080D</requestId>
 ```
 
-##### CreateDeployment
+##### 3.1.2.58 CreateDeployment
 
 Call CreateDeployment to create a deployed job.
 
@@ -4594,7 +4770,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments HTTP/
 <data>{&quot;metadata&quot;:{&quot;createdAt&quot;:&quot;2026-04- 24T03:46:53.342484Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modified &quot;:&quot;2026-04- 24T03:46:53.342484Z&quot;,&quot;resourceVersion&quot;:1,&quot;name&quot;:&quot;sqlJob&quo ,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;migration.display.enabled&quot;:&quot;false&quot;,&quot;creator&quot;:&quot;235406 6657057054&quot;,&quot;modifier&quot;:&quot;235406976657057054&quot;,&quot;creatorName&qu ;:&quot;flinkadmin&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;priority&q t;:&quot;5&quot;},&quot;description&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;,&quot;lock&quot;:{&quot;metadata&quot;: {&quot;createdAt&quot;:&quot;2026-04- 24T03:46:53Z&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modifiedAt&quot &quot;2026-04- 24T03:46:53Z&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;235406976657057054&quot;,&quot;modifier&quot;:&quot;2354069766 057054&quot;},&quot;id&quot;:&quot;313fde08-4b44-38b5-99c4- 7f3038449796&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Lock&quo ,&quot;spec&quot;: {&quot;holderName&quot;:&quot;flinkadmin&quot;,&quot;holderId&quot;:&quot;235406976657057 4&quot;}},&quot;id&quot;:&quot;cee26b6e-d03b-4a03-a628a6fe665c525e&quot;,&quot;parentId&quot;:&quot;cd1562be-02ed-32cf-945b- 9769afe4c55e&quot;,&quot;labels&quot;: {}},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;DeploymentDraft&quot;,&q t;spec&quot;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;:{&quo t;native.kubernetes.mode&quot;:&quot;true&quot;,&quot;flink.queryablestate.enabled&quot;:&quot;false&quot;,&quot;flink.security.ssl.enabled&quot;:&quot;false& ot;}},&quot;spec&quot;:{&quot;artifact&quot;: {&quot;kind&quot;:&quot;SQLSCRIPT&quot;,&quot;sqlScript&quot;:&quot;INSERT INTO mySink SELECT SUBSTRING(a,0,10) AS a, CAST(CHAR_LENGTH(a) AS BIGINT) as cnt FROM mySource;&quot;,&quot;imageUserDefined&quot;:false,&quot;versionName&quot;:&quot;vvr-8. 0.7-flink- 1.17&quot;},&quot;parallelism&quot;:1,&quot;batchMode&quot;:false,&quot;resources&quot;: {&quot;jobmanager&quot;: {&quot;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0},&quot;taskmanager&quot;:{&quot ;memory&quot;:&quot;4Gi&quot;,&quot;cpu&quot;:1.0}},&quot;logging&quot;: {&quot;log4jLoggers&quot;:{&quot;&quot;:&quot;INFO&quot;},&quot;logReservePolicy&quot;: {&quot;expirationDays&quot;:7,&quot;openHistory&quot;:true},&quot;loggingProfile&quot;:&q t;default&quot;},&quot;flinkConfiguration&quot;:{}}},&quot;restoreStrategy&quot;:{&quot ;kind&quot;:&quot;LATEST_STATE&quot;,&quot;allowNonRestoredState&quot;:false},&quot;state uot;:&quot;CANCELLED&quot;,&quot;upgradeStrategy&quot;: {&quot;kind&quot;:&quot;STATELESS&quot;},&quot;maxSavepointCreationAttempts&quot;:4,&quot axJobCreationAttempts&quot;:1,&quot;deploymentTargetId&quot;:&quot;a89ff052-38c6-4fd3-9 b91-e9c53f8ee019&quot;}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-##### CreateConnector
+##### 3.1.2.59 CreateConnector
 
 Creates a connector.
 
@@ -4668,7 +4844,7 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
 <data>{&quot;connector&quot;:{&quot;lookup&quot;:true,&quot;supportedFormats&quot;:[&qu ot;json&quot;,&quot;csv&quot;],&quot;environments&quot;: [],&quot;sink&quot;:true,&quot;name&quot;:&quot;namespaces/flinkteam/connectors/hologresfix&quot;,&quot;source&quot;:true,&quot;type&quot;:&quot;hologresfix&quot;,&quot;properties&quot;:[{&quot;defaultValue&quot;:&quot;hologresfix&quot;,&quot;description&quot;:&quot;&quot;,&quot;definesFormat&quot;:false,&quot;key& ot;:&quot;connector&quot;,&quot;required&quot;:true}, {&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;defines rmat&quot;:false,&quot;key&quot;:&quot;dbname&quot;,&quot;required&quot;:true},{&quot;d efaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;definesFormat&q t;:false,&quot;key&quot;:&quot;endpoint&quot;,&quot;required&quot;:true}, {&quot;defaultValue&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;defines rmat&quot;:false,&quot;key&quot;:&quot;tablename&quot;,&quot;required&quot;:true}],&quot; ckaged&quot;:false,&quot;dependencies&quot;:[&quot;hdfs:///tmp/myconnectors/ververica-c onnector-hologres-1.15-vvr-6.0fix.jar&quot;]},&quot;@type&quot;:&quot;type.googleapis.com/vvp.sql.v1beta1.CreateConnect Response&quot;}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-##### CreateFolder
+##### 3.1.2.60 CreateFolder
 
 Call CreateFolder to create a folder on the data development page.
 
@@ -4735,7 +4911,7 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1
 <data> {&quot;eagleEyeTraceId&quot;:&quot;0a2318ab17773416555583153d****&quot;,&quot;asapiSucces quot;:true,&quot;asapiRequestId&quot;:&quot;A11B1055-5AB7-4AB4-AEB0- 32947AEB****&quot;,&quot;data&quot;:{&quot;metadata&quot;: {&quot;createdAt&quot;:&quot;2026-04- 28T02:00:55.598****&quot;,&quot;workspace&quot;:&quot;9cuwr9g7y1hl19&quot;,&quot;modified &quot;:&quot;2026-04- 28T02:00:55.598****&quot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;name&quot;:&q t;changsha&quot;,&quot;annotations&quot;: {&quot;creator&quot;:&quot;23540697665705****&quot;,&quot;modifier&quot;:&quot;2354069766 05****&quot;,&quot;creatorName&quot;:&quot;flinkadmin&quot;,&quot;modifierName&quot;:&quo flinkadmin&quot;},&quot;id&quot;:&quot;6b252d46-8653-4d69-9183- 1a16b5a8****&quot;,&quot;type&quot;:&quot;development&quot;,&quot;parentId&quot;:&quot;cd 62be-02ed-32cf-945b- 9769afe4****&quot;},&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Folder&q t;,&quot;spec&quot;:{&quot;children&quot;:[]}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-##### ListJobs
+##### 3.1.2.61 ListJobs
 
 Obtains a list of job instances.
 
@@ -4788,7 +4964,7 @@ Sample success responses `JSON` format `{`
 <data>{&quot;success&quot;: true,&quot;message&quot;: &quot;&quot;,&quot;plan&quot;: &q uot;&quot;}</data> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
 ```
 
-##### ReplaceDeployment
+##### 3.1.2.62 ReplaceDeployment
 
 Call ReplaceDeployment to replace an existing deployment in Realtime Compute.
 
@@ -4866,9 +5042,9 @@ a50d388514ac\",\"name\":\"jarjob\",\"executionMode\":\"STREAMING\",\"streamingRe
 <data>{&quot;deploymentId&quot;:&quot;7f4143a2-2eee-4c5c-8803a50d388514ac&quot;,&quot;name&quot;:&quot;jarjob&quot;,&quot;executionMode&quot;:&quot;ST AMING&quot;,&quot;streamingResourceSetting&quot;: {&quot;resourceSettingMode&quot;:&quot;BASIC&quot;,&quot;basicResourceSetting&quot;:{&q uot;parallelism&quot;:1,&quot;jobmanagerResourceSettingSpec&quot;: {&quot;cpu&quot;:1.0,&quot;memory&quot;:&quot;4Gi&quot;},&quot;taskmanagerResourceSetting ec&quot;: {&quot;cpu&quot;:1.0,&quot;memory&quot;:&quot;4Gi&quot;}}},&quot;kerberosConfig&quot;:{ &quot;kerberosEnabled&quot;:false},&quot;labels&quot;: {},&quot;engineVersion&quot;:&quot;vvr-11.5.0-flink- 1.20&quot;,&quot;referencedDeploymentDraftId&quot;:&quot;&quot;,&quot;deploymentHasChange quot;:true,&quot;taker&quot;:&quot; | vvp- 0&quot;,&quot;priority&quot;:5,&quot;resourceTuning&quot;: {&quot;mode&quot;:&quot;none&quot;,&quot;resourceTuningId&quot;:&quot;&quot;,&quot;resour TuningName&quot;:&quot;&quot;,&quot;scheduledPlanIsCancelling&quot;:false},&quot;autopilo quot;: {&quot;mode&quot;:&quot;&quot;,&quot;recommendation&quot;:&quot;&quot;,&quot;ignoreRecomm dation&quot;:&quot;&quot;},&quot;deploymentTarget&quot;: {&quot;mode&quot;:&quot;PER_JOB&quot;,&quot;name&quot;:&quot;dtflinkteam&quot;},&quot;artifact&quot;: {&quot;kind&quot;:&quot;JAR&quot;,&quot;jarArtifact&quot;: {&quot;jarUri&quot;:&quot;oss://flink-fullymanagedapmd99ri0du673/artifacts/namespaces/flinkteam/TopSpeedWindowing.jar&quot;}},&quot;flinkCo &quot;:{&quot;execution.checkpointing.interval&quot;:&quot;180s&quot;,&quot;restart-str ategy.fixeddelay.attempts&quot;:&quot;2147483647&quot;,&quot;table.exec.state.ttl&quot;:&quot;36 h &quot;,&quot;restart-strategy&quot;:&quot;fixeddelay&quot;,&quot;execution.checkpointing.minpause&quot;:&quot;180s&quot;,&quot;restart-strategy.fixed-delay.delay&quot;:&quot;10 s& quot;},&quot;logging&quot;: {&quot;loggingProfile&quot;:&quot;default&quot;,&quot;log4jLoggers&quot;: [{&quot;loggerName&quot;:&quot;&quot;,&quot;loggerLevel&quot;:&quot;INFO&quot;}],&quot;lo eservePolicy&quot;: {&quot;openHistory&quot;:true,&quot;expirationDays&quot;:7}},&quot;jobSummary&quot;:{&q uot;starting&quot;:0,&quot;running&quot;:0,&quot;cancelling&quot;:0,&quot;cancelled&quot; ,&quot;finished&quot;:0,&quot;failed&quot;:0},&quot;workspace&quot;:&quot;apmd99ri0du673& ot;,&quot;namespace&quot;:&quot;flinkteam&quot;,&quot;creator&quot;:&quot;206789961887523 6&quot;,&quot;creatorName&quot;:&quot;flinkadmin&quot;,&quot;modifier&quot;:&quot;2067899 887523346&quot;,&quot;modifierName&quot;:&quot;flinkadmin&quot;,&quot;createdAt&quot;:177 26754,&quot;modifiedAt&quot;:1777526754}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId>
 ```
 
-#### Compute-storage separation v2
+#### 3.1.3 Compute-storage separation v2
 
-##### ValidateSqlStatement
+##### 3.1.3.1 ValidateSqlStatement
 
 Validates the SQL statements in the Realtime Compute for Apache Flink engine.
 
@@ -4975,7 +5151,7 @@ POST /api/v2/namespaces/[namespace]/sql-statement/validate HTTP/1.1
  <message  />
 ```
 
-##### UpdateMember
+##### 3.1.3.2 UpdateMember
 
 Updates the member information in a namespace.
 
@@ -5056,7 +5232,7 @@ PUT /gateway/v2/namespaces/[namespace]/members HTTP/1.1
  <httpCode>200</httpCode>
 ```
 
-##### UpdateDeployment
+##### 3.1.3.3 UpdateDeployment
 
 Update the deployment configuration or application version for smooth service upgrades and change management.
 
@@ -5411,7 +5587,7 @@ RCHAR)with ( &#x27;connector&#x27; = &#x27;datagen&#x27; );CREATE TEMPORARY TABL
 
 ```html ```
 
-##### StopJob
+##### 3.1.3.4 StopJob
 
 Stops a job instance.
 
@@ -5629,7 +5805,7 @@ encoding=\&quot;UTF-8\&quot; ****&quot;,
  <httpCode>200</httpCode>
 ```
 
-##### StartJobWithParams
+##### 3.1.3.5 StartJobWithParams
 
 Start a job instance.
 
@@ -5837,7 +6013,7 @@ encoding=\&quot;UTF-8\&quot; ****&quot;,
  <httpCode>200</httpCode>
 ```
 
-##### StartJob
+##### 3.1.3.6 StartJob
 
 Start a job instance.
 
@@ -6077,7 +6253,7 @@ encoding=\&quot;UTF-8\&quot; ****&quot;,
  <httpCode>200</httpCode>
 ```
 
-##### ListSavepoints
+##### 3.1.3.7 ListSavepoints
 
 Get a list of job snapshots and recent system checkpoints.
 
@@ -6187,7 +6363,7 @@ ttor1krb1mjo85/flink-savepoints/namespaces/flinkteam/deployments/f9d616ef-****&q
  <httpCode>200</httpCode>
 ```
 
-##### ListJobs
+##### 3.1.3.8 ListJobs
 
 Queries information about all job instances of a deployed job.
 
@@ -6366,7 +6542,7 @@ tRUNNING&
 
 ```html ```
 
-##### ListEngineVersionMetadata
+##### 3.1.3.9 ListEngineVersionMetadata
 
 Obtains the list of engine versions that the system supports.
 
@@ -6502,7 +6678,7 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-##### ListDeploymentTargets
+##### 3.1.3.10 ListDeploymentTargets
 
 Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
 
@@ -6583,7 +6759,7 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-##### GetSavepoint
+##### 3.1.3.11 GetSavepoint
 
 Obtains the details of snapshots and system checkpoints.
 
@@ -6667,7 +6843,7 @@ savepoints/namespaces/flinkteam/deployments/f9d616ef-44****&quot;,
  <httpCode>200</httpCode>
 ```
 
-##### GetMember
+##### 3.1.3.12 GetMember
 
 Views the user authorization details.
 
@@ -6732,7 +6908,7 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-##### GetLatestJobStartLog
+##### 3.1.3.13 GetLatestJobStartLog
 
 Obtains the latest startup log of a job instance.
 
@@ -6805,7 +6981,7 @@ Sample success responses `JSON` format `{`
 <reason /> <eagleEyeTraceId>0ad40c441762830708230897****</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>CF3A87DE-268D-4E4B-865F-CCC911E70B1F</asapiRequestId> <data>seconds: [1800]end new OSSLogClient endTimeInMs:[1783059502] ****</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode> <message />
 ```
 
-##### GetJob
+##### 3.1.3.14 GetJob
 
 Get the details of a job instance.
 
@@ -6999,7 +7175,7 @@ log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=2 -XX:GCLogFileSize=50M&quo
  <httpCode>200</httpCode>
 ```
 
-##### GetGenerateResourcePlanResult
+##### 3.1.3.15 GetGenerateResourcePlanResult
 
 Obtain the results of asynchronous fine-grained resource generation based on the asynchronous ticket ID.
 
@@ -7077,7 +7253,7 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-##### GetDeployment
+##### 3.1.3.16 GetDeployment
 
 Obtains the details of a deployed job.
 
@@ -7278,7 +7454,7 @@ POST /api/v2/namespaces/[namespace]/deployments/[deploymentId]/resourceplan:asyn
  <httpCode>200</httpCode>
 ```
 
-##### DeleteVariable
+##### 3.1.3.18 DeleteVariable
 
 Deletes a variable.
 
@@ -7337,7 +7513,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode>
 ```
 
-##### DeleteSavepoint
+##### 3.1.3.19 DeleteSavepoint
 
 Deletes a snapshot.
 
@@ -7396,7 +7572,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode>
 ```
 
-##### DeleteMember
+##### 3.1.3.20 DeleteMember
 
 Deletes the user permission information.
 
@@ -7449,7 +7625,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode>
 ```
 
-##### DeleteJob
+##### 3.1.3.21 DeleteJob
 
 Deletes information of non-running job instances from a job.
 
@@ -7508,7 +7684,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode>
 ```
 
-##### DeleteDeployment
+##### 3.1.3.22 DeleteDeployment
 
 Deletes a deployed job by its ID.
 
@@ -7567,7 +7743,7 @@ Sample success responses `JSON` format `{`
 <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode>
 ```
 
-##### CreateVariable
+##### 3.1.3.23 CreateVariable
 
 Creates a variable.
 
@@ -7662,7 +7838,7 @@ POST /api/v2/namespaces/[namespace]/variables HTTP/1.1
  <httpCode>200</httpCode>
 ```
 
-##### CreateSavepoint
+##### 3.1.3.24 CreateSavepoint
 
 Creates a savepoint.
 
@@ -7743,7 +7919,7 @@ POST /api/v2/namespaces/[namespace]/savepoints HTTP/1.1
  <httpCode>200</httpCode>
 ```
 
-##### CreateMember
+##### 3.1.3.25 CreateMember
 
 Add a user to a project and grant the corresponding permissions.
 
@@ -7829,7 +8005,7 @@ POST /gateway/v2/namespaces/[namespace]/members HTTP/1.1
  <httpCode>200</httpCode>
 ```
 
-##### CreateDeployment
+##### 3.1.3.26 CreateDeployment
 
 Create a deployed job.
 
@@ -8085,7 +8261,7 @@ RCHAR)with ( &#x27;connector&#x27; = &#x27;datagen&#x27; );CREATE TEMPORARY TABL
  <httpCode>200</httpCode>
 ```
 
-##### FlinkApiProxy
+##### 3.1.3.27 FlinkApiProxy
 
 You can call this API through the Flink REST API to obtain information about session clusters or running jobs. Note that this API only retrieves information and does not allow you to manage or perform operations on session clusters and jobs.
 
@@ -8157,7 +8333,7 @@ Sample success response `JSON` format `{`
 ENDED\&quot;:0,\&quot;FAILED\&quot;:0},\&quot;vertices\&quot;: [{\&quot;id\&quot;:\&quot;717c7b8afebbfb713****\&quot;,\&quot;name\&quot;:\&quot;Source: datahub_table[23] -&gt; Calc[24] -&gt; Sink: kafka_table[25]\&quot;,\&quot;maxParallelism\&quot;:32768,\&quot;parallelism\&quot;:1,\&q t;status\&quot;:\&quot;CREATED\&quot;,\&quot;start-time\&quot;:-1,\&quot;end-time\&quot ;:-1,\&quot;duration\&quot;:-1,\&quot;tasks\&quot;: {\&quot;CREATED\&quot;:0,\&quot;CANCELING\&quot;:0,\&quot;SCHEDULED\&quot;:1,\&quot;CANCE D\&quot;:0,\&quot;FAILED\&quot;:0,\&quot;RECONCILING\&quot;:0,\&quot;INITIALIZING\&quot;: \&quot;FINISHED\&quot;:0,\&quot;DEPLOYING\&quot;:0,\&quot;RUNNING\&quot;:0},\&quot;metric &quot;:{\&quot;read-bytes\&quot;:0,\&quot;read-bytescomplete\&quot;:false,\&quot;write-bytes\&quot;:0,\&quot;write-bytescomplete\&quot;:false,\&quot;read-records\&quot;:0,\&quot;read-recordscomplete\&quot;:false,\&quot;write-records\&quot;:0,\&quot;write-recordscomplete\&quot;:false,\&quot;accumulated-backpressuredtime\&quot;:0,\&quot;accumulated-idle-time\&quot;:0,\&quot;accumulated-busy-time\&quot; :0.0}}],\&quot;status-counts\&quot;: {\&quot;CREATED\&quot;:1,\&quot;CANCELING\&quot;:0,\&quot;SCHEDULED\&quot;:0,\&quot;CANCE D\&quot;:0,\&quot;FAILED\&quot;:0,\&quot;RECONCILING\&quot;:0,\&quot;INITIALIZING\&quot;: \&quot;FINISHED\&quot;:0,\&quot;DEPLOYING\&quot;:0,\&quot;RUNNING\&quot;:0},\&quot;plan\& ot;: {\&quot;jid\&quot;:\&quot;65eb3696db7d4a589851cda26f252924\&quot;,\&quot;name\&quot;:\&qu ;1dbd6e8c-d493-41d0-aa0f- 4597224738b1\&quot;,\&quot;type\&quot;:\&quot;STREAMING\&quot;,\&quot;nodes\&quot;:[{\& quot;id\&quot;:\&quot;717c7b8afebbfb713****eb2a94\&quot;,\&quot;parallelism\&quot;:1,\&qu ;operator\&quot;:\&quot;\&quot;,\&quot;operator_strategy\&quot;:\&quot;\&quot;,\&quot;des iption\&quot;:\&quot;[23]:TableSourceScan(table=[[vvp, default, datahub_table]], fields =[strname])&lt;br/&gt;+- [24]:Calc(select=[SUBSTRING(strname, 0, 10) AS strname, CAST(C HAR_LENGTH(strname) AS BIGINT) AS lens])&lt;br/&gt; +- [25]:Sink(table= [vvp.default.kafka_table], fields=[strname, lens])&lt;br/&gt;\&quot;,\&quot;optimizer_properties\&quot;:{}}]}}</data> <success>true</success> <requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <errorMessage /> <errorCode /> <httpCode>200</httpCode>
 ```
 
-##### ListDeployments
+##### 3.1.3.28 ListDeployments
 
 List resource information for all deployments.
 
@@ -8307,7 +8483,7 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-##### ListMembers
+##### 3.1.3.29 ListMembers
 
 Views the mapping between user UIDs and authorization in a namespace.
 
@@ -8395,7 +8571,7 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-##### ListVariables
+##### 3.1.3.30 ListVariables
 
 Get the variable list.
 
@@ -8487,9 +8663,9 @@ Sample success responses `JSON` format `{`
  <httpCode>200</httpCode>
 ```
 
-### API examples
+### 3.2 API examples
 
-#### Examples
+#### 3.2.1 Examples
 
 This topic describes API examples.
 
@@ -8830,7 +9006,7 @@ client.getAcsResponse(deleteDeploymentRequest);
 
 For detailed sample code, contact Alibaba Cloud technical support.
 
-#### pom.xml
+#### 3.2.2 pom.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -8890,13 +9066,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 QL reference
 
-## Flink SQL reference
+## 4 Flink SQL reference
 
-### Overview
+### 4.1 Overview
 
 Flink SQL is a real-time computing SQL system designed to simplify the computing model of Realtime Compute for Apache Flink and to decrease the requirements for user skills. Flink SQL complies with standard SQL semantics. Flink SQL has the following benefits: Low development cost. Flink SQL enables you to implement complex and ever-changing business logic by using simple SQL statements instead of thousands of lines of Apache Storm code. Low maintenance cost. Flink SQL eliminates the need for you to maintain thousands of lines of Storm code. When you use Apache Storm code, system exceptions, errors, or even breakdown may occur and cause data inaccuracies. Flink SQL features specified semantics to resolve the preceding issues. Realtime Compute for Apache Flink has the following advantages: Data accuracy. Realtime Compute for Apache Flink provides unique exactly-once semantics to ensure data accuracy in various failover scenarios. Performance optimization. Realtime Compute for Apache Flink integrates SQL optimization logic to translate SQL code into highly efficient underlying Apache Storm code that can be used by universal developers. This helps to improve SQL coding efficiency. Programming extensibility. Realtime Compute for Apache Flink supports user-defined functions (UDFs). You can customize functions to implement a custom business logic or a logic that cannot be achieved by SQL statements. System scalability. Realtime Compute for Apache Flink supports auto scaling upon data surges (for example, during Double 11) while ensuring task and system stability.
 
-### Keywords
+### 4.2 Keywords
 
 This topic describes Flink SQL keywords. For more information about SQL reserved keywords for Apache Flink 1.11, visit Reserved Keywords.
 
@@ -8904,7 +9080,7 @@ This topic describes Flink SQL keywords. For more information about SQL reserved
 
 To define a Flink SQL keyword in a DDL statement, surround the keyword with backticks ('), such as `value` .
 
-### Create a data view
+### 4.3 Create a data view
 
 This topic describes how to create a data view in Realtime Compute for Apache Flink to simplify the development process.
 
@@ -8945,9 +9121,9 @@ FROM
     tmp_view;
 ```
 
-### Basic concepts
+### 4.4 Basic concepts
 
-#### Watermark
+#### 4.4.1 Watermark
 
 Realtime Compute performs window aggregation on data based on time attributes. In jobs that use window functions with Event Time, you must declare the Watermark method in the data source table. WATERMARK defines the event time attribute of a table. Its syntax is WATERMARK FOR rowtime_column_name AS watermark_strategy_expression. The rowtime_column_name parameter designates an existing column as the event time marker for the table. This column must be of the TIMESTAMP(3) type, reside at the top level of the schema, and may also be a computed column. QL reference The watermark_strategy_expression parameter defines the strategy for generating watermarks. It allows any non-query expression—including computed columns—to calculate the watermark. The return type of the expression must be TIMESTAMP(3), representing elapsed time since the Epoch. The system emits a watermark only if it is non-null and greater than the previously emitted local watermark (to ensure monotonic increase). The framework computes the watermark generation expression for every record. Periodically, the framework emits the largest watermark generated, provided it differs from the last emitted watermark, is not null, and exceeds the last emitted watermark. Watermarks emit at intervals configured by pipeline.auto-watermark-interval. If the interval is 0 ms, the system generates a watermark for every record and emits it when it is not null and greater than the last emitted watermark. When you use event time semantics, the table must include an event time attribute and a watermark strategy. Flink provides several common watermark strategies: Strictly ascending timestamps: WATERMARK FOR rowtime_column AS rowtime_column. The system emits a watermark equal to the maximum timestamp observed so far. Rows with timestamps greater than this maximum are not considered late. Ascending timestamps: WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '0.001' SECOND. The system emits a watermark equal to the maximum timestamp observed so far minus one millisecond. Rows with timestamps greater than or equal to this maximum are not considered late. Bounded-out-of-order timestamps: WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL 'string' timeUnit. The system emits a watermark equal to the maximum timestamp observed so far minus a specified delay. For example, WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '5' SECOND implements a 5-second delay watermark strategy.
 
@@ -8971,7 +9147,7 @@ A watermark means all events with timestamps `t'< t` have already occurred. If a
 
 watermark `t` takes effect, the system discards all subsequent records with Event Time less than `t` (currently, Realtime Compute discards these late-arriving data; future versions will support user configuration to allow updates from later data). For out-of-order streams, watermarks are critical. Even if some events arrive late, they do not excessively compromise the accuracy of window computations. QL reference In parallel data streams, when an operator has multiple input streams, the operator uses the minimum Event Time among all input streams as its Event Time.
 
-#### Computed column
+#### 4.4.2 Computed column
 
 A computed column uses data from other columns to calculate the value for its own column. If your source table does not contain a column of the TIMESTAMP type, you can use a computed column to convert data from fields of other types.
 
@@ -9008,7 +9184,7 @@ mp into a 13-digit timestamp.
 
 ); In the preceding example, the `TIME` field in the source table contains time information and is of the BIGINT type. The system uses the computed column feature to convert the `TIME` field into the `ts` field of the TIMESTAMP type, and then uses the `ts` field as the rowtime field for the watermark.
 
-#### Time attribute
+#### 4.4.3 Time attribute
 
 This topic introduces the Event Time and Processing Time data types that Flink SQL supports. Flink SQL supports two time types: Event Time and Processing Time. Event Time: The event time you provide (usually the original creation time of the data). Event Time must be data you provide in the schema. Processing Time: The local system time when the system processes the event. The following figure shows the positions of different time attributes in the real-time computing process. Based on the definitions in the preceding figure, Ingestion Time and Processing Time are time attributes that the system adds to streaming records. You cannot control them. Event Time is a time attribute carried by the streaming record itself. Due to data disorder, network jitter, or other reasons, a record with Event Time of t1 (corresponding to partition1) may be processed by Flink later than a record with Event Time of t2 (corresponding to partition2), where t2 > t1.
 
@@ -9112,7 +9288,7 @@ Currently, a time attribute field loses its time attribute after either of the f
 Window can only be defined over a time attribute column. occurs.
 ```
 
-### Subscription
+### 4.5 Subscription
 
 The subscription billing method allows you to use resources only after you pay for the resources. You must make a payment based on the subscription duration when you purchase resources. This billing method is suitable for long-term stable business for which the resource usage cycle can be estimated. This topic describes the billing rules, billing cycles, and unit prices in different regions of the subscription billing method. QL reference
 
@@ -9195,7 +9371,7 @@ QL reference A subscription workspace has a validity period based on the subscri
 
 QL reference For more information about how to change the billing method of a workspace from subscription to pay-as-you-go, see Switch from subscription to pay-as-you-go. For more information about how to create a workspace, see Activate Realtime Compute for Apache Flink.
 
-#### INSERT INTO statement
+#### 4.5.1 INSERT INTO statement
 
 This topic describes how to write data to one or more sinks in a job.
 
@@ -9278,11 +9454,11 @@ END; -- This is required when you write data to multiple sinks.
 The statement that writes data to multiple sinks must start with **BEGIN**
 **STATEMENT SET;** and end with **END;**.
 
-### Query statements
+### 4.6 Query statements
 
 This topic describes the query statements provided by Flink. For more information about the query statements provided by Apache Flink 1.11, visit Queries.
 
-### Window functions
+### 4.7 Window functions
 
 This topic describes the window functions, time attributes, and window types supported by Flink SQL.
 
@@ -9376,7 +9552,7 @@ QL reference
 
 For more information about state storage backends, see GeminiStateBackend and HashMapStateBackend. Timers are mainly used to trigger expired windows. If the memory is sufficient, you can store the timers in the memory for better performance. If a large number of timers exist or memory resources are insufficient, you can use RocksDBStateBackend to store the timers in a RocksDB file.
 
-#### Overview
+#### 4.7.1 Overview
 
 This topic describes the window functions, time attributes, and window types that Flink SQL supports.
 
@@ -9444,7 +9620,7 @@ FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username; BEGIN statem
 FROM one_minute_window_output GROUP BY TUMBLE(rowtime, INTERVAL '1' HOUR), username; END;
 ```
 
-#### Tumbling window
+#### 4.7.2 Tumbling window
 
 This topic describes how to use the Flink rolling window function.
 
@@ -9639,7 +9815,7 @@ Test results
 |   | 14:43:00.0 |   |   |   |   |   |   |   |   |   |   |
 |   |   |   | 00 |   |   | 14:44:00.000 |   |   |   |   |   |
 
-#### Sliding window
+#### 4.7.3 Sliding window
 
 This topic describes how to use the Flink sliding window function.
 
@@ -9812,7 +9988,7 @@ The HOP window cannot read the time when data enters. The start time of the firs
 |   |   |   | 10:00:0 |   |   |   |   |   |   |   |   |   |   |   |   |
 |   |   |   |   |   | 0.0 |   | 09:59:1 |   |   | 0.0 |   | 10:00:10.0 |   |   |   |
 
-#### Session window
+#### 4.7.4 Session window
 
 This topic describes how to use the Flink session window function.
 
@@ -9944,7 +10120,7 @@ QL reference
 |   | 10:02:10.0 |   |   |   |   |   |   |   |   |
 |   |   |   |   |   | 10:02:40.0 |   |   |   |   |
 
-#### OVER windows
+#### 4.7.5 OVER windows
 
 An OVER window is a standard window used in traditional databases. Over aggregates are different from window aggregates that are based on GROUP BY clauses. If streaming data uses OVER windows, each element corresponds to an OVER window. An OVER window can be determined based on an actual row or an actual value (timestamp value) of an element. Elements of a stream may be distributed across multiple windows. In a stream that uses OVER windows, each element corresponds to an OVER window and triggers data computing once. The row determined by each element that triggers computing is the last row of the window where the element is located. In the underlying implementation of Realtime Compute for Apache Flink, data for OVER windows is centrally managed. Only one copy of the data is stored. Logically, an OVER window is created for each element. Realtime Compute for Apache Flink calculates the data for each OVER window and then deletes the data that is no longer used after the calculation is complete.
 
@@ -10245,9 +10421,9 @@ Test results
 
 QL reference
 
-### Built-in functions
+### 4.8 Built-in functions
 
-#### Overview
+#### 4.8.1 Overview
 
 This topic introduces the built-in functions that Realtime Compute for Apache Flink provides for data transformation. Flink V1.11: See Built-in functions in Flink V1.11. Flink V1.12: See Built-in functions in Flink V1.12.
 
@@ -10255,9 +10431,9 @@ This topic introduces the built-in functions that Realtime Compute for Apache Fl
 
 Fully managed Flink VVR 3.0.0 adds some built-in functions based on Flink V1.12. For more information, see Scalar functions. If no built-in function meets your requirements, implement a user-defined function. For more information about user-defined functions, see Overview.
 
-#### Scalar functions
+#### 4.8.2 Scalar functions
 
-##### BITAND
+##### 4.8.2.1 BITAND
 
 This topic describes how to use the BITAND function to perform a bitwise AND operation.
 
@@ -10298,7 +10474,7 @@ Test result
 
 **intt(INT)**
 
-##### BITNOT
+##### 4.8.2.2 BITNOT
 
 This topic describes how to use the BITNOT function to perform a bitwise NOT operation.
 
@@ -10336,7 +10512,7 @@ Test result
 
 **var1(INT)**
 
-##### BITOR
+##### 4.8.2.3 BITOR
 
 This topic describes how to use the BITOR function to perform a bitwise OR operation. QL reference
 
@@ -10375,7 +10551,7 @@ Test result
 
 **var1(INT)**
 
-##### BITXOR
+##### 4.8.2.4 BITXOR
 
 This topic describes how to use the BITXOR function to perform a bitwise XOR operation.
 
@@ -10418,7 +10594,7 @@ Test result
 
 **var1(INT)**
 
-##### CONV
+##### 4.8.2.5 CONV
 
 This topic describes how to use the CONV function. This function performs base conversation on numeric values or characters.
 
@@ -10474,7 +10650,7 @@ Test result
 | 3 | 0 | NULL |
 | 4 | NULL | NULL |
 
-##### DATEDIFF
+##### 4.8.2.6 DATEDIFF
 
 The topic describes how to use the DATEDIFF function. This function calculates the difference between two date values.
 
@@ -10531,7 +10707,7 @@ Test result
 |---|---|---|---|---|---|---|
 | 30 | 30 | -30 | NULL | NULL | NULL | 30 |
 
-##### DATE_ADD
+##### 4.8.2.7 DATE_ADD
 
 This topic describes how to use the DATE_ADD function. This function returns the date after the specified number of days is added to a date.
 
@@ -10580,7 +10756,7 @@ Test result
 |---|---|---|
 | 2017-10-15 | 2017-10-15 | null |
 
-##### DATE_FORMAT
+##### 4.8.2.8 DATE_FORMAT
 
 This topic describes how to use the DATE_FORMAT function. This function converts a date value of the STRING type from a format into a specific format.
 
@@ -10633,7 +10809,7 @@ Test result
 |---|---|---|---|---|---|
 | 170915 | null | null | null | 20170915 | 170915 |
 
-##### DATE_FORMAT_TZ
+##### 4.8.2.9 DATE_FORMAT_TZ
 
 This topic describes how to use the DATE_FORMAT_TZ function. This function converts data of the timestamp type into a string of the specified type based on the specified time zone.
 
@@ -10680,7 +10856,7 @@ Test result
 |---|---|
 | 1970-01-01 08:00:00 | 1970-01-01 08:00:00 |
 
-##### DATE_SUB
+##### 4.8.2.10 DATE_SUB
 
 The topic describes how to use the DATE_SUB function. This function subtracts specific days from a date and then returns the obtained date.
 
@@ -10727,7 +10903,7 @@ Test result
 |---|---|---|
 | 2017-09-15 | 2017-09-15 | NULL |
 
-##### FROM_UNIXTIME
+##### 4.8.2.11 FROM_UNIXTIME
 
 This topic describes how to use the FROM_UNIXTIME function. This function returns a date of the VARCHAR type.
 
@@ -10775,7 +10951,7 @@ Test result
 |---|---|---|
 | 2017-09-15 00:00:00 | 0915-2017 | NULL |
 
-##### ISNAN
+##### 4.8.2.12 ISNAN
 
 This topic describes how to use the ISNAN function. This function checks whether the specified floating-point number is NAN (Not a number). This function is similar to the Double.isNan() or Float.isNan() function in Java.
 
@@ -10816,7 +10992,7 @@ Test result QL reference
 | false | false |
 | false | false |
 
-##### JSON_VALUE
+##### 4.8.2.13 JSON_VALUE
 
 This topic describes how to use the JSON_VALUE function. This function extracts the expression of the specified path from a JSON string.
 
@@ -10875,7 +11051,7 @@ Test result
 | 5 | NULL |
 | 6 | NULL |
 
-##### KEYVALUE
+##### 4.8.2.14 KEYVALUE
 
 This topic describes how to use the KEYVALUE function. This function splits a string into keyvalue pairs based on the split1 delimiter, and splits the key-value pairs based on the split2 delimiter. The value that corresponds to the key is returned.
 
@@ -10926,7 +11102,7 @@ Test result
 
 v2 NULL NULL NULL NULL
 
-##### MURMUR_HASH
+##### 4.8.2.15 MURMUR_HASH
 
 The topic describes how to use the MURMUR_HASH function. This function specifies the 32-bit hash value for a parameter by using the hash32x86 method.
 
@@ -10982,7 +11158,7 @@ Test result QL reference
 
 -2130121231 NULL 1863595885
 
-##### MURMUR_HASH_64
+##### 4.8.2.16 MURMUR_HASH_64
 
 The topic describes how to use the MURMUR_HASH_64 function. This function specifies the 64-bit hash value for a parameter by using the hash128x64 method.
 
@@ -11038,7 +11214,7 @@ Test result
 
 8033179276572534397 NULL -6697622088025985219
 
-##### PARSE_URL
+##### 4.8.2.17 PARSE_URL
 
 The topic describes how to use the PARSE_URL function. This function parses a specific part of a URL and returns the obtained value.
 
@@ -11093,7 +11269,7 @@ Test result
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | query =1 | faceb ook.c om | /path /p1.p hp | NULL | http | /path /p1.p hp? query =1 | faceb ook.c om | NULL | NULL | NULL |
 
-##### REGEXP
+##### 4.8.2.18 REGEXP
 
 This topic describes how to use the REGEXP function. This function searches a specified string by using a regular expression and returns a Boolean value based on the matching result. QL reference
 
@@ -11138,7 +11314,7 @@ Test result
 
 true false false false false
 
-##### REGEXP_REPLACE
+##### 4.8.2.19 REGEXP_REPLACE
 
 QL reference This topic describes how to use the REGEXP_REPLACE function. This function replaces the specified string with the desired string and returns a new string.
 
@@ -11184,7 +11360,7 @@ Test result
 
 20140313 QL reference Empty string s2s0s1s4s-s0s3s-s1s3s null num-num
 
-##### SPLIT_INDEX
+##### 4.8.2.20 SPLIT_INDEX
 
 This topic describes how to use the SPLIT_INDEX function. This function splits a string into several segments based on the specified delimiter and returns the field at the specified position.
 
@@ -11229,7 +11405,7 @@ Test result
 
 Mary NULL NULL NULL
 
-##### TO_DATE
+##### 4.8.2.21 TO_DATE
 
 The topic describes how to use the TO_DATE function. This function converts a date value from the INT or VARCHAR type to the DATE type.
 
@@ -11272,7 +11448,7 @@ QL reference Test result
 |---|---|---|
 | 1970-04-11 | 2017-09-15 | 2017-09-15 |
 
-##### TO_TIMESTAMP_TZ
+##### 4.8.2.22 TO_TIMESTAMP_TZ
 
 This topic describes how to use the TO_TIMESTAMP_TZ function. This function converts a date value of the VARCHAR type into the TIMESTAMP type based on the specified time zone.
 
@@ -11315,7 +11491,7 @@ Test result
 |---|---|
 | -28800 | -28800 |
 
-##### UNIX_TIMESTAMP
+##### 4.8.2.23 UNIX_TIMESTAMP
 
 This topic describes how to use the UNIX_TIMESTAMP function. This function converts a date value into a UNIX timestamp. QL reference
 
@@ -11365,9 +11541,9 @@ Test result
 |---|---|
 | 1616601600 | -28800 |
 
-#### Table-valued functions
+#### 4.8.3 Table-valued functions
 
-##### GENERATE_SERIES
+##### 4.8.3.1 GENERATE_SERIES
 
 This topic describes how to use the GENERATE_SERIES function. This function generates a series of padding data based on the rule of from, from+1, from+2 ... to-1.
 
@@ -11413,7 +11589,7 @@ Test result
 | -2 | 1 | -1 |
 | -2 | 1 | 0 |
 
-##### JSON_TUPLE
+##### 4.8.3.2 JSON_TUPLE
 
 This topic describes how to use the JSON_TUPLE function. This function retrieves the values that are represented by each path string from a JSON string.
 
@@ -11458,7 +11634,7 @@ Test result
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | asd4 |
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | asd5 |
 
-##### MULTI_KEYVALUE
+##### 4.8.3.3 MULTI_KEYVALUE
 
 This topic describes how to use the MULTI_KEYVALUE function. This function splits a string into key-value pairs based on the key-value pair delimiter specified by split1, splits a keyvalue pair based on the delimiter specified by split2, and returns the values of key_name1 and key_name2.
 
@@ -11525,7 +11701,7 @@ QL reference
 | v1 | v2 |
 | v1 | v2 |
 
-##### STRING_SPLIT
+##### 4.8.3.4 STRING_SPLIT
 
 This topic describes how to use the STRING_SPLIT function. This function splits a string into substrings based on the specified delimiter and returns a list of substrings.
 
@@ -11569,9 +11745,9 @@ Test result
 | abc-bcd | bcd |
 | hhh | hhh |
 
-#### Aggregate functions
+#### 4.8.4 Aggregate functions
 
-##### APPROX_COUNT_DISTINCT
+##### 4.8.4.1 APPROX_COUNT_DISTINCT
 
 This topic describes how to use the APPROX_COUNT_DISTINCT function to improve the performance of your jobs.
 
@@ -11633,7 +11809,7 @@ Test result
 |---|---|---|
 | Hi | 6 | 6 |
 
-##### FIRST_VALUE
+##### 4.8.4.2 FIRST_VALUE
 
 This topic describes how to use the FIRST_VALUE function. This function returns the first nonnull record of a data stream.
 
@@ -11698,7 +11874,7 @@ QL reference
 | Hello World | 7 |
 | Hello World | 7 |
 
-##### LAST_VALUE
+##### 4.8.4.3 LAST_VALUE
 
 This topic describes how to use the LAST_VALUE function. This function returns the last nonnull record of a data stream.
 
@@ -11761,9 +11937,9 @@ Test results
 | Hello World | 8 |
 | Hello World | 20 |
 
-### User-defined functions (JAR)
+### 4.9 User-defined functions (JAR)
 
-#### Overview
+#### 4.9.1 Overview
 
 This topic describes notes, classification, definition, and parameter-passing methods for developing Flink user-defined functions.
 
@@ -11835,7 +12011,7 @@ Your user-defined function JAR file is uploaded to the sql-artifacts directory i
 CREATE TEMPORARY FUNCTION MyScalarFunc AS 'com.test.MyScalarFunc';
 ```
 
-#### User-defined scalar function (UDF)
+#### 4.9.2 User-defined scalar function (UDF)
 
 This topic describes how to develop, register, and use user-defined scalar functions (UDFs) in Flink.
 
@@ -11941,7 +12117,7 @@ INSERT INTO ASI_UDF_Sink SELECT ASI_UDF('a',2,4) FROM ASI_UDF_Source;
 2. On the **Dewployments** page, click **Start** in the **Actions** column corresponding to the
 target deployment. After starting the deployment, each row in the ASI_UDF_Sink table receives characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table.
 
-#### User-defined aggregate function
+#### 4.9.3 User-defined aggregate function (UDAF)
 
 **(UDAF)**
 
@@ -12074,7 +12250,7 @@ INSERT INTO ASI_UDAF_Sink SELECT `ASI_UDAF$WeightedSum`(a) FROM ASI_UDAF_Source;
 2. On the **Deployments** page, click **Start** in the **Actions** column for the target deployment.
 After starting the deployment, each row in the ASI_UDAF_Sink table receives the sum of the current and historical data in field "a" of the ASI_UDAF_Source table.
 
-#### User-defined table-valued function
+#### 4.9.4 User-defined table-valued function (UDTF)
 
 **(UDTF)**
 
@@ -12185,11 +12361,11 @@ INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(A
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, the ASI_UDTF_Sink table receives data from the message field of the ASI_UDTF_Source table, which is split into multiple columns by using a pipe character (|).
 
-### User-defined functions
+### 4.10 User-defined functions (Python)
 
 **(Python)**
 
-#### Overview
+#### 4.10.1 Overview
 
 Flink supports using Python user-defined functions in SQL deployments. This topic describes the classification, definition, and dependencies of Flink user-defined functions (UDX), and explains how to debug and tune them.
 
@@ -12243,7 +12419,7 @@ QL reference
 
 Larger values for these three parameters are not always better. If you set these parameters too high, checkpoint operations may need to process excessive amount of data, leading to prolonged checkpoint durations or even checkpoint failures. For more details about these parameters, see Configuration.
 
-#### User-defined scalar function (UDF)
+#### 4.10.2 User-defined scalar function (UDF)
 
 This topic describes the limits, development, registration, and usage of Python user-defined scalar functions (UDFs).
 
@@ -12316,7 +12492,7 @@ INSERT INTO ASI_UDF_Sink SELECT ASI_UDF(a,2,4) FROM ASI_UDF_Source;
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the
 deployment that you want to manage. After starting the deployment, each row in the ASI_UDF_Sink table receives characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table.
 
-#### User-defined aggregate function
+#### 4.10.3 User-defined aggregate function (UDAF)
 
 **(UDAF)**
 
@@ -12410,7 +12586,7 @@ INSERT INTO ASI_UDAF_Sink SELECT weighted_avg(a, b) FROM ASI_UDAF_Source;
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, each row in the ASI_UDAF_Sink table receives the weighted average of the current and historical data in field a of the ASI_UDAF_Source table, using field b as the weight.
 
-#### User-defined table-valued function
+#### 4.10.4 User-defined table-valued function (UDTF)
 
 **(UDTF)**
 
@@ -12486,9 +12662,9 @@ INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(s
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, the ASI_UDTF_Sink table receives two columns of data. These two columns are generated by splitting the concatenation of the message field in the ASI_UDTF_Source table and the "aa" field using a pipe character (|).
 
-### Machine learning functions
+### 4.11 Machine learning functions
 
-#### CLUSTER_SERVING
+#### 4.11.1 CLUSTER_SERVING
 
 This topic describes how to use the machine learning function CLUSTER_SERVING to implement online inference. The Tensorflow SavedMode model with the format of input_shape=(?,128) is used in this topic.
 

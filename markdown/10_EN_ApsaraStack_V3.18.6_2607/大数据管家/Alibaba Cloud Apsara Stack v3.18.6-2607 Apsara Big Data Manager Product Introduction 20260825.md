@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Big Data Manager Product 
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Big Data Manager Product Introduction 20260825.pdf"
+source_pdf: "f84d03c5103ea232_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Big Data Manager Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AE%A1%E5%AE%B6/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Big%20Data%20Manager%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Big Data Manager Product Introduction 20260825
 
-## Apsara Big Data Manager
+## Table of Contents
+
+- 1 Apsara Big Data Manager
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 Apsara Big Data Manager
 
 Apsara Big Data Manager (ABM) is an operations and maintenance (O&M) platform tailored for big data products. ABM supports monitoring, management, and O&M in multiple dimensions, such as business, services, clusters, and hosts. Customer O&M teams or on-site personnel can use ABM to perform O&M operations on big data products and manage the products in an efficient and centralized manner.
 
-### Features
+### 1.1 Features
 
 Apsara Big Data Manager (ABM) provides the following functional modules for big data products: Monitor, O&M, and Management. The Monitor module helps you monitor the status of big data products in real time. The O&M and Management modules allow you to perform O&M and management operations by using a graphical user interface (GUI) based on multiple dimensions, such as business, services, clusters, and hosts.
 
@@ -47,7 +55,7 @@ instances.
 **Operation Logs**: provides the records of all O&M operations that are performed in the
 ABM console and the details of each operation. You can identify the causes of service faults based on the operation records.
 
-### Benefits
+### 1.2 Benefits
 
 Apsara Big Data Manager (ABM) allows you to perform O&M operations on big data products and manage the products in a centralized manner. ABM helps enhance the stability of big data products, reduce O&M costs, and improve the efficiency of O&M. ABM provides benefits in various aspects, such as cluster health monitoring, resource usage analysis, and a graphical user interface (GUI) for O&M and management operations.
 
@@ -63,7 +71,7 @@ Displays the status of devices, resources, and services of clusters in real time
 
 Provides a GUI on which you can view performance metrics and perform common O&M operations.
 
-### Scenarios
+### 1.3 Scenarios
 
 If you are using Apsara Stack and have deployed one or more big data services, you need to use Apsara Big Data Manager (ABM) to perform operations and maintenance (O&M) on these big data services.
 
@@ -79,7 +87,7 @@ If you are using Apsara Stack Agility SE and have deployed one or more big data 
 
 If you are using Apsara Stack Agility PaaS and have deployed one or more big data services, such as Alibaba Cloud Realtime Compute for Apache Flink, you need to use ABM to perform O&M operations on these big data services.
 
-### Features
+### 1.4 Features
 
 This topic describes the features that are provided in the Apsara Big Data Manager (ABM) console.
 

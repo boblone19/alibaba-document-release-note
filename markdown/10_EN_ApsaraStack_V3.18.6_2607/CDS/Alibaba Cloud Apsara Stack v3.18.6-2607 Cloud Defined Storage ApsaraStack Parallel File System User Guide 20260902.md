@@ -3,22 +3,40 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStac
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System User Guide 20260902.pdf"
+source_pdf: "a3584514e01046cd_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System User "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System User Guide 20260902
 
-## What is APFS?
+## Table of Contents
+
+- 1 What is APFS?
+- 2 Getting Started
+  - 2.1 Log on to the File Storage APFS console
+  - 2.2 Create an APFS file system
+  - 2.3 Limitations
+- 3 APFS list
+  - 3.1 Manage APFS file systems
+  - 3.2 Scale up an APFS file system
+  - 3.3 Resource monitoring
+  - 3.4 Data flow
+    - 3.4.1 Backup plans
+    - 3.4.2 Replica management
+    - 3.4.3 Import jobs
+- 4 FAQ
+  - 4.1 No inventory for sales
+
+## 1 What is APFS?
 
 **Overview**
 
 ApsaraStack Parallel File System (APFS) is a cloud-defined, distributed parallel file system service. APFS delivers high performance that is required for large-scale parallel training in intelligent computing scenarios and offers features such as intelligent data management, reliable data security, flexible deployment, and elastic scaling of resources. AFPS applies to scenarios where Hygon DCUs, Ascend GPUs, and Hygon storage cluster are used.
 
-## Getting Started
+## 2 Getting Started
 
-### Log on to the File Storage
+### 2.1 Log on to the File Storage APFS console
 
 **APFS console**
 
@@ -47,7 +65,7 @@ Enter the six-digit MFA code and click **Authenticate**.
 6. From the product drop-down menu, select **Products > Storage > File Storage APFS** to
 open the File Storage APFS console.
 
-### Create an APFS file system
+### 2.2 Create an APFS file system
 
 This topic shows you how to create a file system in the APFS console.
 1. Log on to the File Storage APFS console.
@@ -77,13 +95,13 @@ information, see the **Quota management** topic in User Guide - Apsara Uni-manag
 6. After the file system is created, you can view its status, specifications, and capacity on the
 APFS File Systems page. To mount the file system, go to the BMCP console. For detailed instructions, see the **Clusters and nodes** section in the **BMCP User Guide**.
 
-### Limitations
+### 2.3 Limitations
 
 This topic describes the limitations of the APFS file system. Only performance file systems are supported, with a maximum total capacity of 25 PiB. You can mount the file system to BMCP compute clusters from the BMCP console and to BCI containers from the BCI console. The system automatically creates a default mount target. You cannot create additional mount targets. You can expand the file system only when there is no active data I/O. Cluster scale-in is not supported.
 
-## APFS list
+## 3 APFS list
 
-### Manage APFS file systems
+### 3.1 Manage APFS file systems
 
 **View an APFS file system**
 
@@ -116,7 +134,7 @@ the pointer over the **File System ID/Name** column, and click the icon.
 3. Then, click **OK**.
 The description of the file system must be 2 to 128 characters in length and can contain letters, digits, underscores (_), hyphens (-), and colons (:). It must start with a letter. It cannot start with `http://` or `https://` .
 
-### Scale up an APFS file system
+### 3.2 Scale up an APFS file system
 
 1. An ApsaraStack Parallel File System (APFS) file system is created. For more information, see
 Create an APFS file system.
@@ -128,7 +146,7 @@ Actions column.
 parameter. The new total capacity cannot be less than the current total capacity and cannot exceed the maximum total capacity of the cluster.
 4. Click **Confirm Order** to complete the scale-up.
 
-### Resource monitoring
+### 3.3 Resource monitoring
 
 This topic describes how to view monitoring metrics and create alert rules for ApsaraStack Parallel File System (APFS) resources. An APFS file system is created. For more information, see Create an APFS file system.
 1. Log on to the APFS console.
@@ -142,11 +160,11 @@ icon in the upper-right corner of the chart to create an alert rule. For more in
 **Management > CloudMonitor** in the top navigation bar and click **Alert Service** in the
 left-side navigation pane to view and manage the alert rule.
 
-### Data flow
+### 3.4 Data flow
 
 You can efficiently migrate data between ApsaraStack Parallel File System (APFS) and Object Storage Service (OSS). APFS also provides the data backup and import features to help you manage the lifecycle of data assets, optimize costs, and quickly import data in highperformance computing scenarios. Data backup: You can create backup plans to automatically back up data from APFS file systems to OSS at the scheduled time. This feature is applicable to the following scenarios: Data backup and disaster recovery: You can synchronize data replicas from APFS to OSS by creating a cross-storage medium backup policy, which improves data security. Storage cost optimization: APFS can identify and migrate infrequently accessed data to OSS in order to reduce the storage costs and conduct tiered data management. Data import: You can create import jobs to quickly import data from OSS to APFS. This feature is applicable to the following scenarios: Data migration from on-premises environments to the cloud: OSS supports multiple data importing methods. You can use OSS to quickly import data from on-premises environments or other systems to APFS. Acceleration of training based on AI and big data: The historical data stored in OSS may consistently grow over time. You can batch import the volumetric data from OSS to highperformance APFS file systems. This way, the data can be accessed with a low latency and a high throughput in scenarios demanding an extremely high I/O throughput, such as AI model training and high-performance computing.
 
-#### Backup plans
+#### 3.4.1 Backup plans
 
 You can create backup plans in the ApsaraStack Parallel File System (APFS) console to replicate data from APFS to Object Storage Service (OSS).
 
@@ -208,7 +226,7 @@ disabled), cron expression, and migration speed.
 3. On the **Backup Plan** tab, click **Delete** in the Actions column of the desired backup plan.
 4. In the message that appears, confirm the information and click **OK**.
 
-#### Replica management
+#### 3.4.2 Replica management
 
 The replica management feature of ApsaraStack Parallel File System (APFS) allows you to manually create replica tasks, cancel replica tasks, and delete replicas.
 
@@ -246,7 +264,7 @@ parameters.
 5. After you submit the replica task, you can view the task status (Synchronizing, Healthy,
 Failed, Canceled, Canceling, or Waiting), synchronization progress, and creation time in the task list.
 
-#### Import jobs
+#### 3.4.3 Import jobs
 
 You can create import jobs to import data from Object Storage Service (OSS) to ApsaraStack Parallel File System (APFS).
 
@@ -288,11 +306,11 @@ An APFS file system is created and is in the Available state. For more informati
 | Cancel import jobs | You can cancel import jobs that are in the Synchronizing state. Click Cancel Task in the Actions column of the desired job. In the message that appears, confirm the information and click OK. |
 | Delete import jobs | You can delete import jobs that are no longer needed. Note Files that have already been imported into APFS are not deleted. Click Delete Job in the Actions column of the desired job. In the message that appears, confirm the information and click OK. |
 
-## FAQ
+## 4 FAQ
 
 This topic provides answers to frequently asked questions (FAQ) about ApsaraStack Parallel File System (APFS).
 
-### No inventory for sales
+### 4.1 No inventory for sales
 
 This topic describes solutions for the failure to create an ApsaraStack Parallel File System (APFS) file system due to insufficient inventory.
 

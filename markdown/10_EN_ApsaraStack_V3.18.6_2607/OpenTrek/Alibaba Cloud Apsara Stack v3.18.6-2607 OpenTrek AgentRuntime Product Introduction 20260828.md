@@ -3,16 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime Product In
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime Product Introduction 20260828.pdf"
+source_pdf: "7470d1a8e6f69f87_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20AgentRuntime%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is AgentRuntime agent runtime service
+- 2 Product details
+- 3 Benefits
+- 4 Functions and features
+- 5 Common scenarios
+- 6 Terms
+- 7 Limits
+
 untime service
 
-## What is AgentRuntime
+## 1 What is AgentRuntime agent runtime service
 
 **agent runtime service**
 
@@ -26,7 +36,7 @@ agent applications and deployed within the customer's private cloud environment.
 **isolation**.
 AgentRuntime supports runtimes for mainstream languages such as Python, Node.js, and Java. It provides standardized deployment, version management, canary release, and elastic instance scheduling for agent applications. The platform includes two built-in sandbox services: Code Interpreter and Browser Use, supporting secure, isolated code execution (including file I/O and session management) and browser automation tasks (such as web browsing, data scraping, and form filling), respectively. The platform provides unified governance for tool invocation. Compatible with the MCP protocol, it supports one-click tool onboarding, custom publishing, and centralized credential management. The platform centrally manages access credentials for agents, sandboxes, large models, and tools through security mechanisms. It can integrate with the enterprise credential center or AI Gateway. Observability covers tracing analysis and runtime metrics. You can visually monitor the duration and status of each step in agent execution.
 
-## Product details
+## 2 Product details
 
 AgentRuntime agent runtime service is an all-in-one infrastructure platform for enterprisegrade agent applications, providing full lifecycle management capabilities, from debugging and deployment to monitoring and upgrades. The platoform includes a unified execution environment that supports Python, Node.js, Java, and other language runtimes. It integrates secure sandboxing (Code Interpreter, Browser Use), model access and governance, tool invocation, credential management, and observability features. This topic describes the working principles and core features of AgentRuntime.
 
@@ -83,7 +93,7 @@ monitoring, displaying execution duration, status, and error information.
 **Multi-mode development**: Supports two development methods: no-code (for business
 users) and high-code (coding in Python/Node.js/Java). AgentRuntime provides a unified execution environment, full lifecycle management, multilanguage runtime, secure sandbox, model management, tool management, credential management, and observability capabilities, empowering enterprises to operate Agent applications based on their own technology stacks.
 
-## Benefits
+## 3 Benefits
 
 AgentRuntime agent runtime service is an all-in-one infrastructure platform for enterprisegrade Agentic applications. It provides a unified execution environment, full lifecycle management, multi-language runtime support, security sandbox services, model management, tool ecosystem integration, centralized credential management, and observability capabilities. The platform supports both no-code and pro-code development modes, adapts to languages such as Python, Node.js, and Java, remains compatible with mainstream Agent frameworks, and integrates model and tool services through the AI Gateway. This topic introduces the core product benefits of AgentRuntime.
 
@@ -107,7 +117,7 @@ Through the enterprise AI Gateway, the platform integrates mainstream models suc
 
 The platform supports trace-based visualization of Agent decision paths, displaying the full chain from frontend requests, gateways, Agents, models, to tool invocation. It provides metric-based monitoring of latency and status, allowing real-time tracking of execution status and response time for each step. The platform also offers version management, canary release, endpoint configuration, and auto-scaling policy settings, meeting enterprise requirements for continuous evolution and stable operation.
 
-## Functions and features
+## 4 Functions and features
 
 AgentRuntime is an enterprise-grade AI agent runtime platform. It provides a unified execution environment, full lifecycle management, multi-language runtime support, security sandboxes, elastic resource scheduling, multi-level isolation, observability, tool and model integration, and credential management.
 
@@ -182,7 +192,7 @@ AgentRuntime is an enterprise-grade AI agent runtime platform. It provides a uni
 | Inject credentials dynamically | The system works with the AgentRuntime to inject credentials securely at runtime. |
 | Enable or disable control | The system allows you to enable or disable credentials with one click. |
 
-## Common scenarios
+## 5 Common scenarios
 
 AgentRuntime agent runtime service provides a unified execution environment, full lifecycle management, security sandbox, and multi-language runtime support to meet the foundational deployment and operations requirements of enterprise-grade Agent applications. This topic describes the scenarios for using AgentRuntime.
 
@@ -212,7 +222,7 @@ The AgentRuntime platform supports code execution and data processing capabiliti
 
 The AgentRuntime platform supports cross-departmental and cross-project sharing of models and tools. The credential management module centrally stores LLM access keys and tool API credentials, assigning usage permissions by project or role. The Tool Hub supports custom tool publishing and internal sharing, facilitating the accumulation of enterprise-grade capability assets. Multiple sandbox environments can be independently configured with dependencies and images to accommodate varying technology stacks across teams. The development mode supports a smooth transition from low-code rapid validation to pro-code engineering implementation. This scenario applies to large enterprise groups where headquarters centrally build Agent infrastructure, and subsidiaries or business units develop dedicated Agent applications on the same platform to achieve capability reuse and standardization.
 
-## Terms
+## 6 Terms
 
 This topic describes the basic terms of AgentRuntime agent runtime service. AgentRuntime **platform** The PaaS platform deployed in an Apsara Stack environment provides unified runtime management for agents, full lifecycle management for tools, heterogeneous resource scheduling, and multi-level security isolation.
 
@@ -256,7 +266,7 @@ The system supports mounting OSS and local disks to meet data persistence requir
 
 The system provides HTTP APIs compatible with the OpenAI Chat Completions protocol and SDKs for multiple programming languages.
 
-## Limits
+## 7 Limits
 
 Do not exceed the specified limits when you use AgentRuntime agent runtime service. Exceeding these limits may cause exceptions in your program.
 

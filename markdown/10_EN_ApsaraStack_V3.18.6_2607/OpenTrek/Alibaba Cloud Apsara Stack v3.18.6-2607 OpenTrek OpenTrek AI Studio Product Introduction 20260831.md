@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Prod
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 15
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Product Introduction 20260831.pdf"
+source_pdf: "eeacbdd56b18b059_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Product Introduction 20260831.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20AI%20Studio%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Product Introduction 20260831
 
-## AI Studio
+## Table of Contents
+
+- 1 AI Studio
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Common scenarios
+  - 1.4 Functions and features
+
+## 1 AI Studio
 
 AI Studio is a full-stack AI PaaS service platform for Apsara Stack. The platform provides AI developers with an AI engineering platform that includes dataset management, model development, model training, and model management.
 
-### Features
+### 1.1 Features
 
 In terms of the functional architecture, AI Studio is divided into four layers: resources, model development and training, model service, and operation.
 1. **AI resource layer:** You can use computing resources in the form of bare metal and EGS.
@@ -26,7 +34,7 @@ monitoring of model service performance, and resource scaling configurations to 
 4. **AI operation:** You can Resource Management resources and training tasks at different
 levels and control metering and quotas to meet your requirements in intelligent computing operation scenarios.
 
-### Benefits
+### 1.2 Benefits
 
 This topic describes the benefits of AI Studio.
 
@@ -46,7 +54,7 @@ Control services and model inference are designed with high availability. When a
 
 Models trained on the AI Studio platform or provided by users can be imported into the model marketplace through AI Studio, enabling users to efficiently manage and share models.
 
-### Common scenarios
+### 1.3 Common scenarios
 
 AI Studio products can be applied to scenarios such as model development, model training, and model online services.
 
@@ -66,7 +74,7 @@ AI Studio supports issue evaluation tasks. After you associate an evaluation dat
 
 Deploy the model and provide the model API calling service.
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the functions and features of AI Studio.
 

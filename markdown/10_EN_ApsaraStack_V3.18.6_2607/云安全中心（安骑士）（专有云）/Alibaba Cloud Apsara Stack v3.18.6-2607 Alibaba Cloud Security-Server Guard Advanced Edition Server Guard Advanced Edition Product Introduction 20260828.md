@@ -3,16 +3,30 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Gu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 41
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Product Introduction 20260828.pdf"
+source_pdf: "ae9e3d85d82e3dbb_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Product Introduction 20260828
 
+## Table of Contents
+
+- 1 Product Overview
+- 2 Product Design
+- 3 Features
+- 4 Features
+  - 4.1 Security overview
+  - 4.2 Assets
+  - 4.3 Risk prevention
+  - 4.4 Intrusion prevention
+  - 4.5 Log search
+  - 4.6 Host settings
+- 5 Key features
+
 view
 
-## Product Overview
+## 1 Product Overview
 
 **A pioneer in cloud security**
 
@@ -48,7 +62,7 @@ Server Guard integrates leading antivirus engines, such as Bitdefender and Avira
 
 Physical machines form the foundation of a cloud platform. Any application risks on these machines can pose security risks to the platform and its tenants. Therefore, platform users must monitor and control physical machine assets and business risks. Server Guard provides security monitoring for platform physical machines. This ensures the security of the cloud platform and the business stability of other cloud tenants. gn
 
-## Product Design
+## 2 Product Design
 
 **Service architecture**
 
@@ -162,7 +176,7 @@ The high availability (HA) of the Server Guard server depends on the HA of Appli
 |   | SL | BGP B-2 |
 |---|---|---|
 
-## Features
+## 3 Features
 
 This topic describes the features supported by Server Guard and their descriptions.
 
@@ -256,13 +270,13 @@ This topic describes the features supported by Server Guard and their descriptio
 |---|---|---|
 |   | Grayscale Upgrade Management | Manage grayscale upgrade policies for asset clients through a visual interface. Grayscale management dimensions include tenant ID, asset ID, kernel version, CPU architecture, and time interval. |
 
-## Features
+## 4 Features
 
-### Security overview
+### 4.1 Security overview
 
 The Security Overview page is the security operations hub for Server Guard. It displays realtime statistics and security trends for all assets in your account to facilitate centralized management. The page displays the following information: The distribution of operating systems on your assets and the status of the Server Guard client. Threat trends for vulnerabilities, baselines, viruses, trojans, and intrusion events. Alerts for threat events.
 
-### Assets
+### 4.2 Assets
 
 **Server list**
 
@@ -300,7 +314,7 @@ Server Guard displays the statistics about operating systems of servers in the c
 |---|---|
 | Startup item | Startup item name, command line, task path/MD5, and latest collection time. |
 
-### Risk prevention
+### 4.3 Risk prevention
 
 **Vulnerability management**
 
@@ -377,7 +391,7 @@ Server Guard automatically analyzes the exposure of ECS instances. Server Guard 
 
 The risk exposure check requires extensive data management of assets, applications, and risks. It relies on the Dipper engine. You cannot use this feature if your environment does not have this engine.
 
-### Intrusion prevention
+### 4.4 Intrusion prevention
 
 **Antivirus**
 
@@ -512,7 +526,7 @@ The Intrusion Events page has a quarantine feature. This feature stores virus fi
 
 You can configure custom alert rules for intrusion events as needed. Alert rule settings include approved logon locations, approved logon IP addresses, approved logon time ranges, approved logon accounts, web directories, and whitelist rules.
 
-### Log search
+### 4.5 Log search
 
 **Quick search**
 
@@ -530,7 +544,7 @@ You can use the search bar on the Log Analysis page of the Server Guard console 
 
 To use the advanced search feature, follow the instructions on the Server Guard page.
 
-### Host settings
+### 4.6 Host settings
 
 **Client installation**
 
@@ -643,7 +657,7 @@ You can set brute-force attack blocking policies and the scope of affected asset
 
 The kernel version must support the required plug-ins. Arm architectures are not currently supported.
 
-## Key features
+## 5 Key features
 
 **Binary virus detection**
 

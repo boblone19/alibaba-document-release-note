@@ -3,16 +3,30 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828.pdf"
+source_pdf: "cdb27cca9c3e6859_Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E9%93%BE%E8%B7%AF%20OpenTelemetry%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Tracing%20Analysis%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Developer Guide 20260828
 
-## API usage
+## Table of Contents
 
-### Request method
+- 1 API usage
+  - 1.1 Request method
+  - 1.2 RAM authentication
+  - 1.3 Request signatures
+  - 1.4 Common parameters
+  - 1.5 Obtain the AccessKey pair of a personal account
+- 2 API reference
+  - 2.1 List of operations by function
+  - 2.2 GetTrace
+  - 2.3 QueryMetric
+  - 2.4 SearchTraces
+
+## 1 API usage
+
+### 1.1 Request method
 
 To send a Tracing Analysis API request, you must send an HTTP GET request to the Tracing Analysis endpoint. You must add the request parameters that correspond to the API operation being called. After you call the API, the system returns a response. The request and response are encoded in UTF-8.
 
@@ -41,7 +55,7 @@ The sample request is formatted to improve readability.
 https://xtrace.cn-hangzhou.aliyuncs.com/?Action=GetTagKey &AccessKeyId=key-test &Format=JSON &RegionId=cn-hangzhou &SecureTransport=true &SignatureMethod=HMAC-SHA1 &SignatureVersion=1.0 &Timestamp=2020-03-18T06%3A06%3A30Z &Version=2019-08-08 ...
 ```
 
-### RAM authentication
+### 1.2 RAM authentication
 
 Before you call Alibaba Cloud API operations as a Resource Access Management (RAM) user, you must attach a policy to the RAM user by using the Alibaba Cloud account to which the RAM user belongs to grant permissions to the RAM user.
 
@@ -58,7 +72,7 @@ The following table describes the policies supported by Tracing Analysis.
 
 After one of the preceding polices is attached to a RAM user, the RAM user can call Tracing Analysis API operations.
 
-### Request signatures
+### 1.3 Request signatures
 
 You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. Each API request must contain a signature, regardless of whether the request is sent over HTTP or HTTPS.
 
@@ -140,7 +154,7 @@ After the signature string is added to the request as the **Signature** paramete
 http://ecs.aliyuncs.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML&SignatureNonce=3ee8c1b8-83d3-44a f-a94f-4e0ad82fd6cf&Version=2014-05- 26&AccessKeyId=testid&Signature=OLeaidS1JvxuMvnyHOwuJ+uX5qY=&SignatureMethod=HMAC-SHA1& Timestamp=2016-02-23T12%3A46%3A24Z
 ```
 
-### Common parameters
+### 1.4 Common parameters
 
 This topic describes the common request and response parameters that must be included in all Tracing Analysis API requests.
 
@@ -189,7 +203,7 @@ JSON format
     /*Return Result Data*/
 ```
 
-### Obtain the AccessKey pair of a
+### 1.5 Obtain the AccessKey pair of a personal account
 
 **personal account**
 
@@ -200,9 +214,9 @@ JSON format
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pairs of your account.
 
-## API reference
+## 2 API reference
 
-### List of operations by function
+### 2.1 List of operations by function
 
 The following table lists API operations available for use in Tracing Analysis.
 
@@ -212,7 +226,7 @@ The following table lists API operations available for use in Tracing Analysis.
 | QueryMetric | Queries the information about a metric. |
 | SearchTraces | Queries a list of traces. You can filter traces by time, service name, IP address, span name, and tag. |
 
-### GetTrace
+### 2.2 GetTrace
 
 Queries the information about a trace.
 
@@ -325,7 +339,7 @@ Sample success responses `XML` format
                 "Key": "logLevel"
 ```
 
-### QueryMetric
+### 2.3 QueryMetric
 
 Queries the information about a metric.
 
@@ -383,7 +397,7 @@ Sample success responses `XML` format
 \"data\\\": [{\\\"date\\\":1583686800000,\\\"count\\\":0,\\\"rt\\\":0,\\\"rpc\\\":\\\"childSpan3\\\"}
 ```
 
-### SearchTraces
+### 2.4 SearchTraces
 
 Queries a list of traces. You can filter traces by time, service name, IP address, span name, and tag.
 

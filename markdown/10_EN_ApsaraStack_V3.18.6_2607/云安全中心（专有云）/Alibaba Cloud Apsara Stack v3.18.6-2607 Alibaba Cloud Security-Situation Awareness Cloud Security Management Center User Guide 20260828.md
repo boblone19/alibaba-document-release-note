@@ -3,14 +3,53 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 69
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center User Guide 20260828.pdf"
+source_pdf: "cf584d602acc5f9e_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Ma"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center User Guide 20260828
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 云安全管理中心（SOC）
+  - 3.1 Threat monitoring
+  - 3.2 View data in the operations center
+  - 3.3 Use the Risk Analysis module
+    - 3.3.1 View threat events
+    - 3.3.2 Use the threat investigation feature
+    - 3.3.3 View attack surface assessment results
+    - 3.3.4 View cloud service check data
+    - 3.3.5 View vulnerability analysis results
+    - 3.3.6 View traffic analysis results
+  - 3.4 威胁情报
+    - 3.4.1 Threat intelligence overview
+    - 3.4.2 Query threat intelligence
+  - 3.5 资产管理
+    - 3.5.1 View tenant assets
+  - 3.6 Use the Logs module
+    - 3.6.1 View the information on the Overview page
+    - 3.6.2 Log query
+      - 3.6.2.1 Query log details
+      - 3.6.2.2 Query raw logs
+    - 3.6.3 View tenant logs
+    - 3.6.4 Logging configurations
+  - 3.7 Create and manage a task
+  - 3.8 Report management
+    - 3.8.1 Reports
+    - 3.8.2 Report tasks
+    - 3.8.3 Report templates
+  - 3.9 Use the Rules module
+    - 3.9.1 Create and manage an analysis rule
+    - 3.9.2 Create a response policy
+  - 3.10 Use the Operations module
+    - 3.10.1 Manage organization authorization
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, you must verify that your computer meets the configuration requirements. For more information about the configuration requirements, see . Table 1. Configuration requirements
 
@@ -19,9 +58,9 @@ Before you log on to Apsara Stack Security Center, you must verify that your com
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. All roles available in Apsara Stack Security are default roles. You cannot create custom roles. Before you log in to Apsara Stack Security, make sure that your account is assigned the required role. For more information, see the Default roles in Apsara Stack Security section of this topic. Table 1: Default roles in Apsara Stack Security
 
@@ -35,7 +74,7 @@ This topic describes the user roles involved in Apsara Stack Security. All roles
 If you do not have an account that assumes the required role, contact the administrator to create an account and assign the role to the account. For more information, see the **Create a**
 **user** topic in **Apsara Uni-manager Management Console User Guide** .
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -61,9 +100,9 @@ operations in the following scenarios: It is the first time that you log on to t
 For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
-## 云安全管理中心（SOC）
+## 3 云安全管理中心（SOC）
 
-### Threat monitoring
+### 3.1 Threat monitoring
 
 Security administrators can use the threat monitoring feature to understand the overall security of a network. This topic describes how to use the threat monitoring feature.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -87,7 +126,7 @@ You can select **All Organizations** or **Organization** from the **Organization
 | Handling and Response Posture Note If you want to view data in the Handling and Response Posture section, you must have permissions on Security Orchestration and Automation Response (SOAR). | This section displays the statistics on the handling and response posture from the perspective of handling and response management. This section includes the following modules: Total SOAR Handled Entities: displays the total number of entities handled by SOAR. Automatic Response Quantity: displays the number of automatic responses. Total Handling Tasks: displays the total number of tasks. Playbook Executions: displays the number of playbook executions. Enabled Playbooks/Total Playbooks: displays the number of enabled playbooks and the total number of playbooks. Trend of SOAR Handled Entities: displays the trend in the number of entities handled by SOAR. The trends within the current day and last day are calculated by hour. The trends within the last 7 days and last 30 days are calculated by day. Latest SOAR Handled Entities: displays the top 5 entities handled by SOAR. Top 5 Organizations with Highest Handling Task Completion Rate: displays the top 5 organizations that have the highest task completion rate and displays the task completion rate and on-time task completion rate for each organization. Automatic Response Distribution by Type: displays the trends in the number of automatic responses by type. The trends within the current day and last day are calculated by hour. The trends within thel ast 7 days and last 30 days are calculated by day. Playbook Running Trend: displays the playbook execution trend. The trends within the current day and last day are calculated by hour. The trends within the last 7 days and last 30 days are calculated by day. Top 5 Executed Playbook: displays the top 5 executed playbooks. |
 |---|---|
 
-### View data in the operations
+### 3.2 View data in the operations center
 
 **center**
 
@@ -187,9 +226,9 @@ In the upper-right corner of the Operations Center page, click **Handling Time C
 
 After you complete the configuration, the system automatically checks whether an alert is handled within the specified handling time. You can view the ratio of alerts that are handled promptly in the alert data view. Timely Alert Handling Rate: The system determines whether an alert is handled within the specified time based on the time when the alert was triggered, the specified alert handling time, and the time when the alert was handled. Alerts matching the corresponding condition are considered alerts that have been handled promptly. Ratio of alerts that are handled promptly = (Number of alerts that are handled promptly/Total number of alerts) × 100%. Two decimal places are reserved.
 
-### Use the Risk Analysis module
+### 3.3 Use the Risk Analysis module
 
-#### View threat events
+#### 3.3.1 View threat events
 
 Threat events refer to indicator of compromise (IOC) threat events generated by Security Operations Center (SOC) after comprehensive association analysis of raw logs and alerts based on predefined or custom security analysis models. This topic describes how to view threat events. Security administrators can obtain threat details based on these events to ensure network security.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -217,7 +256,7 @@ Click the rule ID next to **Analytic Rule** to view more information about the r
 **Events** page of the Security Orchestration and Automation Response (SOAR) console.
 This helps monitor and handle the threat event. On the **Evidence Details** tab, view the raw logs of the threat event. Click **Details** next to a raw log to view the details of the raw log, including alert information. The content that matches an association analysis rule is highlighted.
 
-#### Use the threat investigation feature
+#### 3.3.2 Use the threat investigation feature
 
 The threat investigation feature allows you to perform comprehensive threat investigations based on IP addresses, asset names, and asset IDs. This topic describes how to use the threat investigation feature.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -234,7 +273,7 @@ investigation results of the asset. After a shortcut is created, you can click t
 5. On the page that appears, view the risk items.
 The modules displayed vary based on assets. The modules displayed on the console shall prevail. Regular modules: Asset Details: displays the network topology and fingerprints of the asset. The asset fingerprints include ports, software, processes, accounts, middleware, and startup items. Suspicious Process: displays statistics on the abnormal behavior in the asset in the form of charts and tables. The statistics include the total amount of abnormal behavior, abnormal behavior distribution by level, abnormal behavior distribution by type, and top 5 abnormal behavior. Network Attack: displays statistics on the cyberattacks on the asset in the form of charts and tables. The statistics include the total number of cyberattacks, distribution of cyberattack data sources, distribution of cyberattack types, and top 5 cyberattacks. Vulnerabilities: displays statistics on the vulnerabilities in the asset and the failed baseline check items for the asset in the form of lists. Attack Surface: displays the path of the attacks that are launched against the asset.
 
-#### View attack surface assessment results
+#### 3.3.3 View attack surface assessment results
 
 This topic describes how to view attack surface assessment results.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -283,7 +322,7 @@ from outside the cloud platform. You can click the name of an asset to view its 
 want to view and click its name. On the details page of the asset, view **Basic**
 **Information**, **Business Information**, and **Asset Fingerprints**.
 
-#### View cloud service check data
+#### 3.3.4 View cloud service check data
 
 You can use built-in security baselines to check and manage the security compliance of Apsara Stack services. This topic describes how to perform a cloud service check and view check data.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -328,7 +367,7 @@ After you configure the check policy, Security Operations Center (SOC) automatic
 8. View check data.
 In the baseline list, view the following information about baselines: Cloud Product Baseline, Baseline Category, Baseline Type, Risk Level, Affected assets, Last Checked At, and Status. Find a baseline and click its name or click **Details** in the **Actions** column. In the panel that appears, view data on the Baseline Check Details and Cloud Service Instances tabs. If an organization or instance is riskless, you can select and add the organization or instance to the whitelist. Find a baseline and click **Verify** in the **Actions** column, or select one or more baselines and click **Verify** below the baseline list to verify that the detected baseline risks are fixed. During the verification, you can click **View** in the Actions column of the baseline to view the verification progress. You can click **Cancel Verification** in the Actions column of the baseline to cancel the verification.
 
-#### View vulnerability analysis results
+#### 3.3.5 View vulnerability analysis results
 
 This topic describes how to view vulnerability analysis results on the tenant side. Security administrators can use the results to troubleshoot issues.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -395,7 +434,7 @@ All search results are displayed in the baseline list. You can perform the follo
 
 We recommend that you handle the risks based on the risk description provided by SOC.
 
-#### View traffic analysis results
+#### 3.3.6 View traffic analysis results
 
 This topic describes how to view the analysis information about traffic, including organization traffic, application traffic, source IP traffic, and destination IP traffic.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -412,9 +451,9 @@ conditions to view the global traffic information.
 | Search condition (marked 2 in the preceding figure) | In this section, you can specify search conditions to search for traffic analysis data. You can specify search conditions based on your business requirements. You can specify the time range, query scope, application, source IP address, destination IP address, source port, and destination port. |
 | Search result (marked 3 in the preceding figure) | In this section, Security Operations Center (SOC) displays the search results that meet the specified search conditions. |
 
-### 威胁情报
+### 3.4 威胁情报
 
-#### Threat intelligence overview
+#### 3.4.1 Threat intelligence overview
 
 You can view the overall situation and statistics of threats to your assets on the Threat Intelligence Overview page. This topic describes how to view the threat intelligence of assets.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -438,7 +477,7 @@ are detected on your assets by the threat intelligence feature.
 5. In the upper-right corner of the Threat Intelligence Overview page, enter an IP address,
 domain name, or MD5 hash value in the search box and click the icon. Then, you are redirected to the details page. On this page, you can view the following information: **Threat Level**, **Basic Information**, **Threat Details**, and **Threat Overview**. For more information, see Query threat intelligence.
 
-#### Query threat intelligence
+#### 3.4.2 Query threat intelligence
 
 You can use the threat intelligence feature to query the threat intelligence of an IP address. This feature helps you identify suspicious or malicious IP addresses at the earliest opportunity. This topic describes how to query threat intelligence.
 
@@ -466,9 +505,9 @@ View the threat intelligence in assets.
 
 On the search page, enter an IP address, domain name, or file MD5 hash value in the search box. On the details page, you can view the details of malicious IP addresses, malicious domain names, and malicious files.
 
-### 资产管理
+### 3.5 资产管理
 
-#### View tenant assets
+#### 3.5.1 View tenant assets
 
 You can view the assets of tenants on the Tenant Assets page. The assets include Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, Object Storage Service (OSS) buckets, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs). This topic describes how to view the assets of tenants. You can also specify a search condition in a search box to search for an asset.
 
@@ -571,9 +610,9 @@ If you do not specify search conditions, all servers, assets, or instances are a
 
 Click the icon to refresh the asset list. Click the icon to export the asset information. Click the icon to configure the items that you want to view in the asset list.
 
-### Use the Logs module
+### 3.6 Use the Logs module
 
-#### View the information on the Overview
+#### 3.6.1 View the information on the Overview page
 
 **page**
 
@@ -611,9 +650,9 @@ icon. Export snapshots on the page In the upper-right corner of the **Overview**
 6. In the lower part of the **Overview** page, view the application logs of Server Guard.
 Click **Details** in the **data** column of a log to view the log details.
 
-#### Log query
+#### 3.6.2 Log query
 
-##### Query log details
+##### 3.6.2.1 Query log details
 
 This topic describes how to query log details.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -631,7 +670,7 @@ Configure the current log query results as followed logs: Click **Follow Logs**.
 **Overview** page.
 Save the current view: Click the icon in the upper-right corner of the Log Search page. In the Create Filter Condition dialog box, enter the query condition name of the current view and click OK. After the current view is saved, you can select the query condition name of the current view from the **Default Data** drop-down list in the upper-right corner of the Log Search page to perform a quick query. Delete the current view: Click the icon in the upper-right corner of the Log Search page to delete the saved view query conditions. The **Default Data** view cannot be deleted. Enable auto update: Turn on . Then, the system automatically updates the log query information every 5 minutes. View log dictionaries: Click **Log Dictionary** to view the information about different types of logs, including the field name, type, and description. On the **Log Search** page, click **Save as Analysis Rule** after you specify log query conditions. Then, you are redirected to the **Create Rule** page. On the **Create Rule** page, the system automatically sets **Log Scope** and **Search Condition** to the log source and query conditions that you have specified.
 
-##### Query raw logs
+##### 3.6.2.2 Query raw logs
 
 Security Operations Center (SOC) allows you to query raw logs. Raw logs contain the information that is required for debugging. Security administrators can use these raw logs to troubleshoot system failures. This topic describes how to query raw logs.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -688,7 +727,7 @@ When you perform field-based queries, specify the logical operators AND, OR, and
 5. In the log list, select the fields that you want to query and view the logs about the fields.
 You can also expand a display field to view the top 5 values of the field.
 
-#### View tenant logs
+#### 3.6.3 View tenant logs
 
 Tenant logs record information about tenants. Security administrators can use these logs to troubleshoot issues that occur on the tenant side. This topic describes how to view tenant logs.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -733,7 +772,7 @@ to go to the **Create Rule** page. On the **Create Rule** page, the system autom
 **Log Scope** and **Search Condition** to the log source and query conditions that you have
 specified.
 
-#### Logging configurations
+#### 3.6.4 Logging configurations
 
 Security Operations Center (SOC) provides the log forwarding feature. Security administrators can forward logs based on their business requirements and view logs at the earliest opportunity. You can specify multiple log sources for a log forwarding task. You can also forward logs that belong to specified organizations. This topic describes how to configure a log forwarding task.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -778,7 +817,7 @@ You can set the Data Protocol parameter to Syslog or Kafka.
 
 To create multiple log forwarding tasks, repeat the preceding steps. After you create a log forwarding task, you can view and manage the log forwarding task in the log forwarding task list. You can filter log forwarding tasks by data scope or **task name**. You can **turn on** or **turn off** the switches in the Status column to enable or disable log forwarding. You can **modify** or **delete** a log forwarding task. For a single log forwarding task, you can view the forwarding information about the task, including the log source, log type, total number of log entries that are sent, and the amount of data sent in the last 24 hours.
 
-### Create and manage a task
+### 3.7 Create and manage a task
 
 On the Tasks page, you can analyze and handle global security risks in a streamlined process. This facilitates security operations and management and helps accumulate experience in handling risks. This topic describes how to create and manage a task.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -834,9 +873,9 @@ handling solution as the handling suggestion. A handling record that is synchron
 **Solution Status** filter condition to **Pending Approval**, find the solution, and
 choose **More > Approve** or **More > Disable** in the **Actions** column. After a task is handled, the status of the task changes from **Handling** to **Completed**. In this case, you can no longer modify the task.
 
-### Report management
+### 3.8 Report management
 
-#### Reports
+#### 3.8.1 Reports
 
 The reports in the Security Operations Center (SOC) console displays the overall report statistics collected by SOC in a visualized manner. On the Reports page.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -849,7 +888,7 @@ number of daily reports, number of weekly reports, number of monthly reports, an
 5. You can manage generated reports in a list. You can set the organization, data range, time
 range, and task type to search for and filter the details by task name or report name. You can **download**, **preview**, and **delete** reports.
 
-#### Report tasks
+#### 3.8.2 Report tasks
 
 This topic describes how to create a report task in Security Operations Center (SOC). Report tasks in SOC are displayed in a list.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -874,7 +913,7 @@ and then click **OK**.
 
 Click **Edit** in the Actions column of a report task to modify the report task. For example, you can modify the report name, data scope, report template, report format, storage period, and task status. Choose **More** > **View All** in the Actions column of a report task to view all reports in the task. You can also **download**, **preview**, **delete**, or **send** reports. Click **Download Latest** in the Actions column of a report task to download the report task information in the **HTML** format.
 
-#### Report templates
+#### 3.8.3 Report templates
 
 This topic describes how to create a Security Operations Center (SOC) report template and configure a custom report template.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -896,9 +935,9 @@ parameters, and click **OK**.
 
 Click **Copy** in the Actions column of a report template to synchronize its content. Click **Delete** in the Actions column of a report template to delete it. Click **Edit** in the Actions column of a report template to modify its content.
 
-### Use the Rules module
+### 3.9 Use the Rules module
 
-#### Create and manage an analysis rule
+#### 3.9.1 Create and manage an analysis rule
 
 You can perform comprehensive association analysis on a large number of logs based on the analysis logic of an analysis rule to detect threats and risks and trace attack paths of multiphase attacks. This way, security administrators can obtain helpful risk information in an efficient and quick manner, thus improving the efficiency of security operations. This topic describes how to create and manage an analysis rule.
 
@@ -975,7 +1014,7 @@ If one or more predefined rules are disabled, **the system prompts you to**
 
 The copied custom rules can be modified and deleted. The copied predefined rules can only be deleted.
 
-#### Create a response policy
+#### 3.9.2 Create a response policy
 
 You can create a response policy to handle threat events and security alerts (security alerts on the Operations Center page) in a timely manner, and monitor risk information related to threat events, security alerts (security alerts on the Operations Center page), security baselines, and security vulnerabilities. Real-time alert notifications are sent to specified contacts via DingTalk or email. This topic describes how to create a response policy.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -1068,9 +1107,9 @@ The **Interactive Handling** option is available only on the SOC side and in Ent
 2. On the Response Policies page, you can perform the following operations on the desired
 policy: Click **Edit** or **Delete** in the **Actions** column of the policy to modify or delete the policy. Turn on or off the switch in the **Status** column of the policy to enable or disable the policy.
 
-### Use the Operations module
+### 3.10 Use the Operations module
 
-#### Manage organization authorization
+#### 3.10.1 Manage organization authorization
 
 This topic describes how to enable global organization service-linked role authorization.
 1. Log on to the Apsara Uni-manager Management Console.

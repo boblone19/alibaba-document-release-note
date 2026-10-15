@@ -3,18 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience Product 
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 29
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience Product Introduction 20260901.pdf"
+source_pdf: "e9eb61adca647111_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience Product Introduction 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20Product%20Introduction%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience Product Introduction 20260901
 
-## Apsara Stack Resilience
+## Table of Contents
+
+- 1 Apsara Stack Resilience
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+    - 1.4.1 ASR for Zone-Disaster Recovery
+    - 1.4.2 ASR for Geo-Disaster Recovery
+    - 1.4.3 ASR for backup and recovery
+
+## 1 Apsara Stack Resilience
 
 As industries become increasingly digitized, the stability and security of IT infrastructure are more crucial for enterprises. With the evolution of Classified Protection of Cybersecurity 2.0 and the rapid growth of new infrastructure, cloud disaster recovery has emerged as a future trend**.** To ensure business continuity and data security, Apsara Stack provides multiple disaster recovery solutions such as Apsara Stack Resilience for Geo-disaster Recovery, Apsara Stack Resilience for Zone-disaster Recovery, and Apsara Stack Resilience for Backup and Recovery (ASR-BR). Combinations of these solutions are also supported. These disaster recovery solutions are designed and developed based on Alibaba Cloud computing capabilities and international disaster recovery standards. Apsara Stack Resilience ASR (Apsara Stack Resilience) is a graphical switchover tool provided by Alibaba Cloud that enables rapid disaster recovery switchover during disasters, minimizing the Recovery Time Objective (RTO). Apsara Stack Resilience offers one-click disaster recovery management from an application system perspective for all scenarios, making it an ideal choice for ensuring business continuity and data security for enterprises.
 
-### Product details
+### 1.1 Product details
 
 Apsara Stack Resilience(ASR) is dedicated to full-stack cloud backup and recovery and is used to ensure data security and business continuity for enterprises. Apsara Stack Resilience provides the following disaster recovery solutions: ASR for Zone-disaster Recovery, ASR for Geo-disaster Recovery, and ASR for Backup and Recovery. You can combine these solutions to fit your business scenarios. For example, the three data centers across two regions architecture combines ASR for Zone-disaster Recovery and ASR for Geo-disaster Recovery. It aims to quickly implement switchover and recovery in multiple scenarios.
 
@@ -38,7 +49,7 @@ Three data centers across two regions disaster recovery combines zone-disaster r
 
 Hybrid disaster recovery refers to disaster recovery between Apsara Stack and public cloud. In this document, it specifically refers to hybrid disaster recovery between Apsara Stack and Alibaba Cloud public cloud. Hybrid Disaster Recovery for Apsara Stack is an efficient, secure, and cost-effective disaster recovery service specifically designed for hybrid cloud scenarios. On the disaster recovery management platform, you can create protection groups for your cloud product instances to achieve data synchronization between Apsara Stack instances and public cloud instances. It also provides orchestration-enabled drill and fault emergency response capabilities to ensure the consistency of business data. Architecture of hybrid disaster recovery: Hybrid disaster recovery offers the following advantages: It takes Apsara Stack as the primary data center and public cloud as the backup resource pool to reduce the high cost of building and maintaining a second data center. It also enables on-demand scaling when demand increases. If Apsara Stack fails and becomes unavailable, disaster recovery can be implemented through the public cloud disaster recovery management platform.
 
-### Benefits
+### 1.2 Benefits
 
 Unlike the disaster recovery that covers only ECS instances, Apsara Stack Resilience (ASR) provides multiple disaster recovery solutions such as ASR for Zone-disaster Recovery, ASR for Geo-disaster Recovery, and ASR for Backup and Recovery. A combination of these solutions is also supported. These make ASR an ideal choice for enterprises to ensure business continuity and data security.
 
@@ -100,7 +111,7 @@ The Tunnel mechanism is used to implement automatic one-way connections between 
 
 The integration of the management page of ASR for Backup and Recovery with the cloud platform ensures that the account permission system is consistent. Security is enhanced because the cloud security mechanism is also integrated.
 
-### Scenarios
+### 1.3 Scenarios
 
 Selection of disaster recovery solutions is determined by a variety of factors, such as investment, acceptable RTO and RPO, and disaster types. The following table describes the scenarios of different disaster recovery solutions.
 
@@ -115,11 +126,11 @@ Selection of disaster recovery solutions is determined by a variety of factors, 
 | Three data centers across two regions mode | A solution is needed to combat regional natural disasters. A solution is needed to prevent regional faults. Near 0 synchronization latency for business- critical data is required. The budget is adequate. | Finance |
 | Hybird cloud disaster recovery | For customers with disaster recovery requirements, it provides a cost-effective hybrid cloud disaster recovery solution. In scenarios where business modules are deployed in both public cloud and Apsara Stack, it prevents service disruptions caused by failures in either public cloud or Apsara Stack. | All industries, especially those concurrently utilizing both Apsara Stack and public cloud. |
 
-### Features
+### 1.4 Features
 
 This topic describes the features of ASR for Zone-disaster Recovery, ASR for Geo-disaster Recovery, and ASR for Backup and Recovery.
 
-#### ASR for Zone-Disaster Recovery
+#### 1.4.1 ASR for Zone-Disaster Recovery
 
 This topic describes the features of ASR for Zone-Disaster Recovery in the Apsara Uni- Manager Operations Console and the Apsara Uni-Manager Management Console.
 
@@ -170,7 +181,7 @@ This topic describes the features of ASR for Zone-Disaster Recovery in the Apsar
 |---|---|
 | Protection group | The protection group feature allows you to create a protection group for a set of related resources that an application uses. You can add ECS, RDS, OSS, and AnalyticDB instances of an application to a protection group and fail over these instances by protection group during a DR failover. You can view protection group information, including the protection group name, service list, description, creator, and creation time. The system supports application-level disaster recovery topologies. |
 
-#### ASR for Geo-Disaster Recovery
+#### 1.4.2 ASR for Geo-Disaster Recovery
 
 This topic describes the features of ASR for Geo-Disaster Recovery on the Apsara Uni- Manager Operations Console and the Apsara Uni-Manager Management Console.
 
@@ -227,7 +238,7 @@ This topic describes the features of ASR for Geo-Disaster Recovery on the Apsara
 |   | Synchronization entity scoring item management | Manages tenant override configurations for synchronization entity scoring items. You can adjust the level, score, deduction reason template, rectification suggestion template, and enabled status. |
 | ASR Dashboard |   | Displays a clear overview of the disaster recovery system through a combination of graphics and numbers. The disaster recovery dashboard has two modes based on the disaster recovery plan task type: daily mode and switchover mode. |
 
-#### ASR for backup and recovery
+#### 1.4.3 ASR for backup and recovery
 
 This topic describes the features of ASR for Backup and Recovery on the Apsara Uni-manager Management Console.
 

@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Comput
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Product Introduction 20260825.pdf"
+source_pdf: "463368058a782da2_Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97Flink%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Realtime%20Compute%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Realtime Compute Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Product Introduction 20260825
 
+## Table of Contents
+
+- 1 Product details
+- 2 Benefits
+- 3 Scenarios
+- 4 Features
+
 duct details
 
-## Product details
+## 1 Product details
 
 Alibaba Cloud Realtime Compute for Apache Flink supports features including data ingestion and storage, data development, data O&M, and automatic tuning.
 
@@ -36,7 +43,7 @@ This feature helps users optimize job parallelism and resource allocation more e
 
 duct details Built on a compute-storage separation architecture, the system support same-city high availability disaster recovery and highly secure multi-tenant isolation. efits
 
-## Benefits
+## 2 Benefits
 
 Compared with other realtime compute products, Alibaba Cloud Realtime Compute for Apache Flink offers strong competitiveness. You can leverage the following advantages to solve your business challenges in realtime big data analysis.
 
@@ -52,7 +59,7 @@ Supports standard Flink SQL. Realtime Compute uses built-in functions for string
 
 efits The highly optimized SQL execution engine generates compute tasks that are more efficient and cost-effective than manually written native Storm tasks. Whether in development cost or runtime cost, Alibaba Cloud Realtime Compute is significantly lower than open-source streaming frameworks. By using it, you can focus entirely on your business and rapidly achieve market goals without needing to write complex Java code for Storm tasks. Alibaba Cloud assumes all costs related to debugging, testing, tuning, deployment, and subsequent O&M of open-source software such as Storm and Zookeeper. Without affecting runtime performance, the system supports inconsistent CPU, hard disk, memory, and NIC specifications within a single component cluster, maximizing compatibility with existing equipment. narios
 
-## Scenarios
+## 3 Scenarios
 
 Alibaba Cloud Realtime Compute for Flink is suitable for scenarios such as real-time extract, transform, and load (ETL) and index building, real-time statistics and analytics, real-time machine learning platforms, and real-time event processing.
 
@@ -72,7 +79,7 @@ This platform helps data analysts and application developers complete the end-to
 
 You can detect and analyze system, user, and business behavior in real time to identify malicious activities. For example: Display user behavior dashboards, such as transaction and user dashboards. A site-wide transaction curve graph helps operations and technical staff understand the current transaction status. If transactions fluctuate abnormally, such as with a sudden drop, an alert is triggered immediately. This allows staff to investigate the issue and reduce the business impact. Monitor major sales promotions, such as Double 11 and 618, in real time. Operations staff can use real-time metrics to quickly decide whether to change the promotion strategy. Set up rule-based alerts to detect specific patterns of financial theft in online payments.
 
-## Features
+## 4 Features
 
 This topic describes the features of Real-time Compute for Apache Flink.
 

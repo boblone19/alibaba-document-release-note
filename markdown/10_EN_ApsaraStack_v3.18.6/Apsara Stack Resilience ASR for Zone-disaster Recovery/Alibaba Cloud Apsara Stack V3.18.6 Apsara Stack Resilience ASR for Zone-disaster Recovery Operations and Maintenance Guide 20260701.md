@@ -3,16 +3,95 @@ title: "Apsara Stack Resilience ASR for Zone-disaster Recovery Operations and Ma
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 100
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "b19d7081feafb952_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Operations"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%90%8C%E5%9F%8E%E5%AE%B9%E7%81%BEASR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%C2%A0for%C2%A0Zone-disaster%C2%A0Recovery%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Stack Resilience ASR for Zone-disaster Recovery Operations and Maintenance Guide
 
-## Overview
+## Table of Contents
 
-### Introduction
+- 1 Overview
+  - 1.1 Introduction
+  - 1.2 O&M architecture
+  - 1.3 Roles
+- 2 ASR O&M operations
+  - 2.1 Getting started
+    - 2.1.1 Log on to the ASR console
+    - 2.1.2 View platform monitoring metrics
+      - 2.1.2.1 Service monitoring
+      - 2.1.2.2 Synchronization monitoring
+    - 2.1.3 View platform check items
+      - 2.1.3.1 Environment check
+      - 2.1.3.2 Service check
+  - 2.2 Core alert handling
+    - 2.2.1 Alert items
+    - 2.2.2 inspect_db_resource
+    - 2.2.3 drei_product
+    - 2.2.4 rpo_check
+      - 2.2.4.1 Overview
+      - 2.2.4.2 rpo_check (ApsaraDB RDS)
+      - 2.2.4.3 rpo_check (OSS)
+    - 2.2.5 sync_check
+      - 2.2.5.1 Overview
+      - 2.2.5.2 sync_check (MiddleWareAll)
+      - 2.2.5.3 sync_check (minirds-mt/rds)
+      - 2.2.5.4 sync_check (SLB)
+      - 2.2.5.5 sync_check (Kafka)
+      - 2.2.5.6 sync_check (Elasticsearch)
+    - 2.2.6 inspect_product_cluster_aplus
+    - 2.2.7 inspect_product_cluster_version
+    - 2.2.8 inspect_product_variable
+    - 2.2.9 inspect_product_cluster_deploy
+    - 2.2.10 Appendixes
+      - 2.2.10.1 Log on to the Apsara Uni-manager Management Console
+      - 2.2.10.2 Log on to the Apsara Uni-manager Operations Console
+      - 2.2.10.3 Log on to a container
+      - 2.2.10.4 Log on to the xuanyuan database
+      - 2.2.10.5 Log on to the Apsara Infrastructure Management console
+      - 2.2.10.6 Secondary database rebuild
+      - 2.2.10.7 Log on to an abnormal instance
+- 3 Cloud service O&M operations
+  - 3.1 TianJi
+    - 3.1.1 Check the desired state
+  - 3.2 DNS
+    - 3.2.1 Check data consistency
+    - 3.2.2 Check the domain name resolution service
+    - 3.2.3 Check the route information of dnsslave
+    - 3.2.4 Perform a post-deployment check for three data center-based zone-disaster recovery
+  - 3.3 MiniRDS
+    - 3.3.1 Check tasks
+    - 3.3.2 Check the DR status of instances
+    - 3.3.3 Check the status of instances
+  - 3.4 ApsaraDB RDS
+    - 3.4.1 Check tasks
+    - 3.4.2 Check the DR status of instances
+    - 3.4.3 Check the status of instances
+  - 3.5 SLB
+    - 3.5.1 Check the status of LVSs
+    - 3.5.2 Check the status of proxies
+    - 3.5.3 Check the status of keyservers
+  - 3.6 OSS
+    - 3.6.1 Check bucket locations
+  - 3.7 ECS
+    - 3.7.1 Check the status of NCs
+  - 3.8 ASO
+    - 3.8.1 Check the traffic
+    - 3.8.2 Check alerts
+- 4 FAQ
+  - 4.1 What do I do if VIPs in the secondary data center are abnormal?
+- 5 Appendixes
+  - 5.1 View ASR logs
+  - 5.2 Log on to a container
+  - 5.3 Log on to the tianji-sshtunnel database
+  - 5.4 Log on to the oss_meta database
+  - 5.5 Log on to the houyi-reg database
+  - 5.6 Resolve configuration inconsistency between the primary and secondary tables
+
+## 1 Overview
+
+### 1.1 Introduction
 
 ASR for Zone-disaster Recovery is a cloud platform designed to provide hybrid backup and recovery solutions. This service ensures data security and business continuity for enterprises. ASR stands for Apsara Stack Resilience. This topic describes the objectives, requirements, precautions, and technical support contacts for ASR for Zone-disaster Recovery O&M.
 
@@ -36,11 +115,11 @@ To ensure stable system operation and prevent unexpected events, the O&M personn
 
 To obtain help during system maintenance, the O&M personnel can contact Apsara Stack system technical support.
 
-### O&M architecture
+### 1.2 O&M architecture
 
 This topic describes the O&M operations supported by Apsara Stack Resilience (ASR) for Zone-disaster Recovery. ASR for Zone-disaster Recovery allows you to perform the following O&M operations: Platform monitoring: including service monitoring and synchronization monitoring. Service monitoring: allows you to monitor the status of services or components in the primary and secondary data centers, and check the alert information and the services or components that are deployed in active-active mode. Synchronization monitoring: allows you to view the data synchronization latency compliance rate, number of instances with successful synchronization, number of instances with synchronization exceptions, and synchronization latency for instances of ApsaraDB RDS, Object Storage Service (OSS), and Tablestore. Platform check: including environment check and service check. Environment check: allows you to check whether the following check items meet disaster recovery (DR) conditions: Product Configuration Upgrade, Cluster Deployment, Product Version, Product Baseline, DNS Resources, VIP Resources, Database Resources, Conditions of the Network Between Data Centers, and BGP Route. Service check: allows you to check the status of services such as Server Load Balancer (SLB), DNS, and MiniRDS.
 
-### Roles
+### 1.3 Roles
 
 This topic describes the O&M operations that can be performed by different roles of Apsara Stack Resilience (ASR) for Zone-disaster Recovery.
 
@@ -58,11 +137,11 @@ This topic describes the O&M operations that can be performed by different roles
 |   | Environme nt check | Supported | Supported | Supported | Supported | Supported |
 |   | Service check | Supported | Supported | Supported | Supported | Supported |
 
-## ASR O&M operations
+## 2 ASR O&M operations
 
-### Getting started
+### 2.1 Getting started
 
-#### Log on to the ASR console
+#### 2.1.1 Log on to the ASR console
 
 Apsara Stack Resilience (ASR) for Zone-disaster Recovery provides three logon methods for routine O&M, escape logon, and tenant operation scenarios. In subsequent documents, the ASR for Zone-disaster Recovery console is referred to as the ASR console.
 
@@ -122,9 +201,9 @@ operations based on your login scenario: You log on to the Apsara Uni-manager Ma
 7. In the **Disaster Recovery and Backup** section, choose **Disaster Recovery > ASR for**
 **Zone-disaster Recovery**.
 
-#### View platform monitoring metrics
+#### 2.1.2 View platform monitoring metrics
 
-##### Service monitoring
+##### 2.1.2.1 Service monitoring
 
 This topic describes how to view service monitoring information and the expected results.
 
@@ -140,7 +219,7 @@ primary service location, and inspection results of all services. You can also v
 
 No item is marked in red. If an anomaly exists, troubleshoot the issue based on the error message, or contact Alibaba Cloud technical support to fix the issue.
 
-##### Synchronization monitoring
+##### 2.1.2.2 Synchronization monitoring
 
 This topic describes how to check synchronization monitoring and view the expected results.
 
@@ -157,9 +236,9 @@ Cloud Redis, ApsaraDB RDS, cloud-native distributed database PolarDB-X 2.0, clou
 
 The data synchronization latency satisfaction should be 100%. If this requirement is not met, you need to troubleshoot and resolve the synchronization latency issues for the instances marked in red, or submit a ticket to contact Alibaba Cloud technical support for repairs.
 
-#### View platform check items
+#### 2.1.3 View platform check items
 
-##### Environment check
+##### 2.1.3.1 Environment check
 
 This topic describes how to perform environment checks and the expected results of each check item.
 
@@ -194,7 +273,7 @@ advertise routes of SLB and CIDR blocks of virtual private cloud (VPCs). If anom
 **BGP Route**: ASR checks whether switches can advertise routes of OPS-DNS, Apsara Stack
 DNS, SLB, and VPC and whether the routes are propagated to Border Gateway Protocol (BGP) peers. If anomalies exist, contact O&M engineers or submit a ticket. Expected results: The number of services with anomalies is 0. By default, only services with anomalies are displayed. You can select the data to be displayed based on your requirements.
 
-##### Service check
+##### 2.1.3.2 Service check
 
 This topic describes how to check services and the expected results.
 
@@ -209,9 +288,9 @@ This topic describes how to check services and the expected results.
 
 The status of all check items is Healthy. If an anomaly exists, check the error message in the **Error Message** column. You can troubleshoot the issue based on the error message or contact Alibaba Cloud technical support.
 
-### Core alert handling
+### 2.2 Core alert handling
 
-#### Alert items
+#### 2.2.1 Alert items
 
 This topic describes the alert items of Apsara Stack Resilience (ASR) for Zone-disaster Recovery.
 
@@ -228,7 +307,7 @@ This topic describes the alert items of Apsara Stack Resilience (ASR) for Zone-d
 | inspect product va _ _ riable | Fail to pass the service baseline variable check. | P2 | inspect product variable _ _ |
 | inspect product cl _ _ uster deploy _ | Specific services are deployed in asymmetric mode. | P2 | inspect product cluster deploy _ _ _ |
 
-#### inspect_db_resource
+#### 2.2.2 inspect_db_resource
 
 This alert is used to check the connectivity and the read and write status of the metadatabase. This alert is triggered if connections to the metadatabase fail or the metadatabase is read-only. This may cause data write failures, and the services that depend on the metadatabase may not run as expected.
 
@@ -311,7 +390,7 @@ ps aux|grep ${Port number}
 
 The following figure shows a sample output. Proceed based on the actual output. If the instance fails to be started, contact the ApsaraDB RDS production and R&D team. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-#### drei_product
+#### 2.2.3 drei_product
 
 This alert is used to check whether MiniRDS instances can be switched over, whether the synchronization between the primary and secondary MiniRDS instances experiences latency, whether single-zone instances exist, and whether the serviceTest# component in a MiniRDS cluster is at desired state. This alert is triggered if one or more of the preceding conditions are true.
 
@@ -412,13 +491,13 @@ minirds-maotai cluster is at desired state.
 3. If the serviceTest# component is not at desired state, restart the component.
 If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-#### rpo_check
+#### 2.2.4 rpo_check
 
-##### Overview
+##### 2.2.4.1 Overview
 
 The rpo_check alert is used to check the synchronization latency of ApsaraDB RDS or Object Storage Service (OSS). This alert is triggered if the synchronization latency exceeds the specified threshold or the synchronization is interrupted. The handling method varies based on the service. ApsaraDB RDS: rpo_check (ApsaraDB RDS) OSS: rpo_check (OSS)
 
-##### rpo_check (ApsaraDB RDS)
+##### 2.2.4.2 rpo_check (ApsaraDB RDS)
 
 This alert is used to check the synchronization latency of ApsaraDB RDS disaster recovery (DR) instances. If this alert is triggered, the synchronization latency exceeds the specified threshold or the synchronization is interrupted. This may cause data loss or failover failure. This topic describes the rpo_check alert of ApsaraDB RDS.
 
@@ -487,7 +566,7 @@ ps aux | grep ${Port number}
 
 The following figure shows a sample output. Proceed based on your actual output. If the instance fails to be started or other exceptions occur, contact ApsaraDB RDS O&M engineers. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-##### rpo_check (OSS)
+##### 2.2.4.3 rpo_check (OSS)
 
 This alert is used to check the synchronization latency of Object Storage Service (OSS) disaster recovery (DR) buckets. This alert is triggered if the synchronization latency exceeds the specified threshold or the synchronization is interrupted. This may cause data loss or failover failures. This topic describes the rpo_check alert of OSS.
 
@@ -701,13 +780,13 @@ i. Log on to the Apsara Infrastructure Management console. ii. In the left-side 
 
 Replace Source location, Destination location, Source bucket, and Destination bucket with the values of the <SrcLocation>, <DestLocation>, <SrcBucket>, and <DestBucket> tags obtained in Step 1. In the command output, `new file last sync time` indicates the last time when files were synchronized. Obtain the RPO of OSS by subtracting the last synchronization time from the current time. If the synchronization processes are normal and the RPO of OSS is excessively large, the issue is caused because the QPS is excessively high and messages are accumulated. Contact OSS O&M engineers to resolve the issue. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-#### sync_check
+#### 2.2.5 sync_check
 
-##### Overview
+##### 2.2.5.1 Overview
 
 The sync_check alert is used to check the disaster recovery (DR) status of DR instances. This alert is triggered if an anomaly is found during the DR inspection of cloud services. The handling method varies based on the service. MiddleWareAll: sync_check (MiddleWareAll) minirds-mt/rds: sync_check (minirds-mt/rds) TableStore/TableStoreInner: sync_check (TableStore/TableStoreInner) Server Load Balancer (SLB): sync_check (SLB) ApsaraMQ for Kafka: sync_check (ApsaraMQ for Kafka) Elasticsearch: sync_check (Elasticsearch)
 
-##### sync_check (MiddleWareAll)
+##### 2.2.5.2 sync_check (MiddleWareAll)
 
 This alert is used to check the disaster recovery (DR) status of MiddleWareAll DR instances. This alert is triggered if an anomaly is found during the DR inspection of MiddleWareAll. This may cause failover failures or undermine the DR capabilities of cloud services that depend on MiddleWareAll. This topic describes the sync_check alert of MiddleWareAll.
 
@@ -772,7 +851,7 @@ results, find the cluster that you want to manage and click **Cluster Details** 
 5. In the Components pane, click the abnormal component. On the Instances tab, find the
 abnormal instance and choose **Actions** > **Restart** in the **Actions** column. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-##### sync_check (minirds-mt/rds)
+##### 2.2.5.3 sync_check (minirds-mt/rds)
 
 This alert is used to check the disaster recovery (DR) status of minirds-mt/rds DR instances. This alert is triggered if an anomaly is found during the DR inspection of minirds-mt/rds. This may cause data loss, failover failures, or instance access exceptions. This topic describes the sync_check alert of minirds-mt/rds.
 
@@ -848,7 +927,7 @@ i. Log on to the bcmc.Bcmc# container.
 
 shown in the following figure. iii. Run the `ssh <IP address>` command to check whether the IP addresses obtained in the previous step can be reached. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-##### sync_check (SLB)
+##### 2.2.5.4 sync_check (SLB)
 
 This alert is used to check the disaster recovery (DR) status of Server Load Balancer (SLB) DR instances. This alert is triggered if an anomaly is found during the DR inspection of SLB. This may cause failover failures and affect traffic forwarding. This topic describes the sync_check alert item of SLB.
 
@@ -988,7 +1067,7 @@ If northbound data exists but network_conf and binding data does not exist, VIPs
 4. Contact SLB O&M engineers to resolve the issue.
 If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-##### sync_check (Kafka)
+##### 2.2.5.5 sync_check (Kafka)
 
 This alert monitors the disaster recovery status of Kafka disaster recovery instances. It indicates that the Kafka disaster recovery inspection is abnormal, which may cause data loss, prevent instance switchover, or result in instance access exceptions. This document describes the sync_check alert information when the alert product is Kafka.
 
@@ -1035,7 +1114,7 @@ the prerequisites in the **Instance List** in the left menu bar.
 4. In the **Disaster Recovery Cluster List** in the left menu bar, create a disaster recovery
 instance. i. Click **Create Disaster Recovery Cluster**. ii. Enter the **Disaster Recovery Cluster Name** and click **Next**. iii. Select the primary Kafka cluster instance in **Source Kafka Instance**, select the primary Replicator instance in **Source KafkaReplicator Instance**, and click **Next**. iv. Select the secondary Kafka cluster instance in **Target Kafka Instance**, select the secondary Replicator instance in **Target KafkaReplicator Instance**, and click **Create**. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-##### sync_check (Elasticsearch)
+##### 2.2.5.6 sync_check (Elasticsearch)
 
 This alert monitors the disaster recovery status of Elasticsearch disaster recovery instances. It indicates an abnormality in the Elasticsearch disaster recovery inspection, which may result in data loss, inability to perform disaster recovery switchover, or instance access exceptions. This document describes the sync_check alert information when the alert product is Elasticsearch.
 
@@ -1109,7 +1188,7 @@ of the query result are consistent, it indicates that data synchronization is co
 
 During network outage failback, in addition to manually configuring and enabling the synchronization link in the primary data center (before the network outage), you may also need to delete the index in the primary data center to trigger a full synchronization (depending on whether partial data inconsistency between primary and secondary clusters is acceptable on site). If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-#### inspect_product_cluster_aplus
+#### 2.2.6 inspect_product_cluster_aplus
 
 This alert is used to check whether rolling is performed on the clusters in the primary data center for zone-disaster recovery. This alert is triggered if rolling is not performed on specific clusters. This may cause failover failures.
 
@@ -1217,7 +1296,7 @@ id indicates the service ID. Service IDs are obtained in the previous step.
 2. Check whether rolling is performed as required. The list of services on which rolling is not
 performed is expected to be empty. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-#### inspect_product_cluster_version
+#### 2.2.7 inspect_product_cluster_version
 
 This alert is used to check whether service versions are consistent between the primary and secondary data centers. This alert is triggered if service versions are inconsistent between the primary and secondary data centers. This may cause failover failures or feature changes in the cloud services after failover.
 
@@ -1247,7 +1326,7 @@ If service versions are inconsistent, the following issues may occur: Failover o
 
 If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution. For cloud services with different versions deployed in the primary and secondary data centers, contact the technical account manager (TAM) to upgrade the services.
 
-#### inspect_product_variable
+#### 2.2.8 inspect_product_variable
 
 This alert is used to check whether the bcmc-dependent baseline variables that are obtained by using the tianji API are inconsistent with the baseline variables rendered by bcmc. This alert is triggered if the obtained and rendered baseline variables are inconsistent. This may cause failover failures.
 
@@ -1283,7 +1362,7 @@ If a solution requires that you modify product configurations, you must initiate
 **and Submit**.
 vi. In the dialog box that appears, click **Submit**. If bcmc should have obtained the variables of a service cluster in the secondary data center but obtained the variables of the corresponding cluster in the primary data center instead, the service may have been incrementally deployed recently. You need to check the serviceid.conf configuration file of the bcmc cluster and delete the corresponding configurations. i. Log on to the Apsara Infrastructure Management console. ii. In the left-side navigation pane of the **Apsara Infrastructure Management console** , choose **Resources** > **Product & Cluster O&M**. iii. On the Product & Cluster O&M page, enter bcmc in the search box. In the search results, find the cluster that you want to manage and click **Cluster Details** in the **Actions** column. iv. On the **Cluster Details** page, click the **Desired State Configuration** tab. v. Delete the configurations of the corresponding service in the serviceid.conf file. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-#### inspect_product_cluster_deploy
+#### 2.2.9 inspect_product_cluster_deploy
 
 This alert is used to check whether the clusters of cloud services are deployed in symmetric mode in the primary and secondary data centers. This alert is triggered if a cloud service is not deployed in symmetric mode. This may cause failover failures, exceptions in accessing the service, or excessive load on the service.
 
@@ -1311,9 +1390,9 @@ If clusters are not deployed in symmetric mode as required, the following issues
 
 If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any steps of the solution. Contact the field technical account manager (TAM) to check whether the service is correctly deployed. If the service is incorrectly deployed, deploy new clusters and check the inspect_product_cluster_deploy item again. If the service is correctly deployed, ignore the exception.
 
-#### Appendixes
+#### 2.2.10 Appendixes
 
-##### Log on to the Apsara Uni-manager
+##### 2.2.10.1 Log on to the Apsara Uni-manager Management Console
 
 **Management Console**
 
@@ -1351,7 +1430,7 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, specify the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-##### Log on to the Apsara Uni-manager
+##### 2.2.10.2 Log on to the Apsara Uni-manager Operations Console
 
 **Operations Console**
 
@@ -1370,7 +1449,7 @@ Press the Enter key. You can click the current language in the upper-right corne
 Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
-##### Log on to a container
+##### 2.2.10.3 Log on to a container
 
 This topic describes how to log on to a container. The Bcmc# container of bcmc is used in this example.
 
@@ -1393,7 +1472,7 @@ docker ps
 docker exec -it <Container ID> /bin/bash.
 ```
 
-##### Log on to the xuanyuan database
+##### 2.2.10.4 Log on to the xuanyuan database
 
 This topic describes how to log on to the xuanyuan database of Server Load Balancer (SLB).
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -1415,7 +1494,7 @@ about the values of the db_host, user, db_password, db_port, and db_name paramet
 mysql -h${db_host} -u${user} -p${db_password} -P${db_port} -D${db_name}
 ```
 
-##### Log on to the Apsara Infrastructure
+##### 2.2.10.5 Log on to the Apsara Infrastructure Management console
 
 **Management console**
 
@@ -1436,7 +1515,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 5. In the top navigation bar, choose **Platform Operation** > **Apsara Infrastructure**
 **Management** > **Resources**.
 
-##### Secondary database rebuild
+##### 2.2.10.6 Secondary database rebuild
 
 This topic describes how to rebuild a secondary database to help you better understand the process.
 
@@ -1511,7 +1590,7 @@ show slave status\G
 
 The system displays a result similar to the following, indicating that the rebuild is successful.
 
-##### Log on to an abnormal instance
+##### 2.2.10.7 Log on to an abnormal instance
 
 This topic describes how to log on to an abnormal instance.
 
@@ -1534,13 +1613,13 @@ sudo my ${port}
 If you are the root user, you do not need to add `sudo` to the command. The following figure shows a sample output.
 7. If `mysql>` is displayed, you have logged on to the abnormal instance.
 
-## Cloud service O&M
+## 3 Cloud service O&M operations
 
 **operations**
 
-### TianJi
+### 3.1 TianJi
 
-#### Check the desired state
+#### 3.1.1 Check the desired state
 
 This topic describes how to check whether services are at desired state in the Apsara Infrastructure Management console and the expected results.
 
@@ -1558,9 +1637,9 @@ secondary data centers are at desired state.
 
 The number of services that are not at desired state is zero. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-### DNS
+### 3.2 DNS
 
-#### Check data consistency
+#### 3.2.1 Check data consistency
 
 This topic describes how to check the consistency of Apsara Stack DNS data and the expected results.
 
@@ -1605,7 +1684,7 @@ zone queried from the etcd clusters is the same. If the number of RRs queried fr
 4. The following figure shows a sample command output. The number of RRs in the current
 zone queried from the etcd cluster, that queried from Terminal Server 1, and that queried from Terminal Server 2 are the same. If the number of RRs queried from the etcd cluster is inconsistent with that queried from Terminal Server 1, the difference is highlighted in the format of rr:{'ops1':[],'etcd': []}. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the domain name resolution
+#### 3.2.2 Check the domain name resolution service
 
 **service**
 
@@ -1619,7 +1698,7 @@ Run the `dig +short dnsapi1.tbsite.net` command on Terminal Server 1 and Termina
 
 The IP address is correctly resolved. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the route information of
+#### 3.2.3 Check the route information of dnsslave
 
 **dnsslave**
 
@@ -1638,7 +1717,7 @@ i. Log on to all dnsslave containers in the primary and secondary data centers. 
 
 The command output contains the anycastVip.
 
-#### Perform a post-deployment check for
+#### 3.2.4 Perform a post-deployment check for three data center-based zone-disaster recovery
 
 **three data center-based zone-disaster**
 
@@ -1669,9 +1748,9 @@ i. Log on to all dnsslave containers in the primary and secondary data centers. 
 2. The command output contains all etcd nodes in the three data centers.
 3. The command output contains the dnsapiVip.
 
-### MiniRDS
+### 3.3 MiniRDS
 
-#### Check tasks
+#### 3.3.1 Check tasks
 
 This topic describes how to check the status of MiniRDS tasks and the expected results.
 
@@ -1694,7 +1773,7 @@ No task is displayed when you select **Interrupted tasks**, **Waiting tasks**, *
 **Closed tasks**, **Suspended tasks**, and **Running tasks**.
 If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the DR status of instances
+#### 3.3.2 Check the DR status of instances
 
 This topic describes how to check the disaster recovery (DR) status of MiniRDS instances and the expected results.
 
@@ -1717,7 +1796,7 @@ For every instance except dbaas_db, **OK** is displayed in the **Instance availa
 **Switchable** columns, and the value in the **Maximum Latency from library** column is
 greater than or equal to 0 and less than 60. For every instance, **Read and write** is displayed in the **Master database information** column and **Read only** is displayed in the **From Library Information** column. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the status of instances
+#### 3.3.3 Check the status of instances
 
 This topic describes how to check the status of MiniRDS instances and the expected results.
 
@@ -1736,9 +1815,9 @@ instance list, sort instances by the **CPU**, **QPS**, **Connections**, and **Di
 
 The values in the **CPU**, **QPS**, **Connections**, and **Disk Usage** columns of all instances are less than or equal to 50%. If the results are not as expected, we recommend that you perform scale-outs based on your business requirements. You can also submit a ticket to contact Alibaba Cloud technical support.
 
-### ApsaraDB RDS
+### 3.4 ApsaraDB RDS
 
-#### Check tasks
+#### 3.4.1 Check tasks
 
 This topic describes how to check the status of ApsaraDB RDS tasks and the expected results.
 
@@ -1758,7 +1837,7 @@ No task is displayed when you select **Interrupted tasks**, **Waiting tasks**, *
 **Closed tasks**, **Suspended tasks**, and **Running tasks**.
 If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the DR status of instances
+#### 3.4.2 Check the DR status of instances
 
 This topic describes how to check the disaster recovery (DR) status of ApsaraDB RDS instances and the expected results.
 
@@ -1776,7 +1855,7 @@ status.
 
 For every instance, **OK** is displayed in the **Instance available** and **Switchable** columns, and the value in the **Maximum Latency from library** column is greater than or equal to 0 and less than 60. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the status of instances
+#### 3.4.3 Check the status of instances
 
 This topic describes how to check the status of ApsaraDB RDS instances and the expected results.
 
@@ -1792,9 +1871,9 @@ instance list, sort instances by the **CPU**, **QPS**, **Connections**, and **Di
 
 The values in the **CPU**, **QPS**, **Connections**, and **Disk Usage** columns of all instances are less than or equal to 50%. If the results are not as expected, we recommend that you perform scale-outs based on your business requirements. You can also submit a ticket to contact Alibaba Cloud technical support.
 
-### SLB
+### 3.5 SLB
 
-#### Check the status of LVSs
+#### 3.5.1 Check the status of LVSs
 
 This topic describes how to check the status of Linux virtual servers (LVSs) and the expected results.
 
@@ -1811,7 +1890,7 @@ list admin lb_node
 
 All values in the **configuration** column are **Enabled**, and all values in the **online_status** column are **online**. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the status of proxies
+#### 3.5.2 Check the status of proxies
 
 This topic describes how to check the status of proxies and the expected results.
 
@@ -1828,7 +1907,7 @@ list admin proxy
 
 All values in the **configuration** column are **Enabled**, and all values in the **online_status** column are **online**. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check the status of keyservers
+#### 3.5.3 Check the status of keyservers
 
 This topic describes how to check the status of keyservers and the expected results.
 
@@ -1845,9 +1924,9 @@ list admin keyserver
 
 All values in the **status** column are **online**. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-### OSS
+### 3.6 OSS
 
-#### Check bucket locations
+#### 3.6.1 Check bucket locations
 
 This topic describes how to check whether all buckets are in the location of the primary data center and the expected results.
 
@@ -1863,9 +1942,9 @@ center location}"; statement to query the buckets that are not in the location o
 
 No result is found. If no result is found, all buckets are in the location of the primary data center. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-### ECS
+### 3.7 ECS
 
-#### Check the status of NCs
+#### 3.7.1 Check the status of NCs
 
 This topic describes how to check the status of node controllers (NCs) and the expected results.
 
@@ -1879,9 +1958,9 @@ status of all NCs.
 
 All values in the biz_status column are free. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-### ASO
+### 3.8 ASO
 
-#### Check the traffic
+#### 3.8.1 Check the traffic
 
 This topic describes how to check the status and traffic of network device ports, and the expected results.
 
@@ -1901,7 +1980,7 @@ that you want to manage.
 
 The management and operation status of all ports are **Up** and traffic is normal. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-#### Check alerts
+#### 3.8.2 Check alerts
 
 This topic describes how to view alerts in the Apsara Uni-manager Operations Console and the expected results.
 
@@ -1916,9 +1995,9 @@ This topic describes how to view alerts in the Apsara Uni-manager Operations Con
 
 No alert is displayed. If the results are not as expected, troubleshoot the issue or submit a ticket to contact Alibaba Cloud technical support to fix the issue.
 
-## FAQ
+## 4 FAQ
 
-### What do I do if VIPs in the
+### 4.1 What do I do if VIPs in the secondary data center are abnormal?
 
 **secondary data center are**
 
@@ -1962,9 +2041,9 @@ is Normal. If the comparison result is normal, the issue is resolved.
 |---|---|
 | exception occurs to troubleshoot the issue. |   |
 
-## Appendixes
+## 5 Appendixes
 
-### View ASR logs
+### 5.1 View ASR logs
 
 This topic describes the directories in which the logs of Apsara Stack Resilience (ASR) for Zone-disaster Recovery are stored and how to view the logs.
 
@@ -1985,7 +2064,7 @@ A log file whose name does not contain a date stores the logs generated for the 
 3. View logs. In this example, bcmc error logs are viewed.
 i. Run the `cd /home/admin/bcmc/logs/` command to go to the directory in which the logs are stored. ii. Run the `ll` command to query all files in the directory. iii. Run the `vim error.log` command to query the error log details. iv. Run the `/2022-12-15 00:04:03` command to query the log details at the specified time. Replace the time based on your business requirements. v. Run the `:q` command to exit the log details page.
 
-### Log on to a container
+### 5.2 Log on to a container
 
 This topic describes how to log on to a container. The Bcmc# container of bcmc is used in this example.
 
@@ -2008,7 +2087,7 @@ docker ps
 docker exec -it <Container ID> /bin/bash.
 ```
 
-### Log on to the tianji-sshtunnel
+### 5.3 Log on to the tianji-sshtunnel database
 
 **database**
 
@@ -2032,7 +2111,7 @@ about the values of the db_host, user, db_password, db_port, and db_name paramet
 mysql -h${db_host} -u${user} -p${db_password} -P${db_port} -D${db_name}
 ```
 
-### Log on to the oss_meta
+### 5.4 Log on to the oss_meta database
 
 **database**
 
@@ -2056,7 +2135,7 @@ about the values of the db_host, user, db_password, db_port, and db_name paramet
 mysql -h${db_host} -u${user} -p${db_password} -P${db_port} -D${db_name}
 ```
 
-### Log on to the houyi-reg
+### 5.5 Log on to the houyi-reg database
 
 **database**
 
@@ -2080,7 +2159,7 @@ about the values of the db_host, user, db_password, db_port, and db_name paramet
 mysql -h${db_host} -u${user} -p${db_password} -P${db_port} -D${db_name}
 ```
 
-### Resolve configuration
+### 5.6 Resolve configuration inconsistency between the primary and secondary tables
 
 **inconsistency between the primary**
 

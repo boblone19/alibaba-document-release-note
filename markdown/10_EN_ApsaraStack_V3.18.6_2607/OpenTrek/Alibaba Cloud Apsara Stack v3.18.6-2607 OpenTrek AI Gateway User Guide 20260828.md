@@ -3,18 +3,130 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway User Guide 2
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 370
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway User Guide 20260828.pdf"
+source_pdf: "f770f1704c411d5d_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20AI%20Gateway%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway User Guide 20260828
 
+## Table of Contents
+
+- 1 Product overview
+  - 1.1 What is AI Gateway
+- 2 Quick Start
+  - 2.1 Log in to the AI Gateway console
+  - 2.2 Use Model API to proxy AI traffic
+  - 2.3 MCP management
+- 3 User Guide
+  - 3.1 Kubernetes cluster management
+  - 3.2 Gateway management
+    - 3.2.1 Create a gateway instance
+    - 3.2.2 View gateway instance details
+    - 3.2.3 Modify a gateway instance
+    - 3.2.4 Release an AI gateway instance
+    - 3.2.5 Stop a gateway instance
+    - 3.2.6 Restart a gateway instance
+    - 3.2.7 Scale Gateway Instances
+    - 3.2.8 Upgrade an instance engine
+    - 3.2.9 Configure security group rules
+  - 3.3 Model APIs
+    - 3.3.1 Create a model API
+    - 3.3.2 Manage APIs
+    - 3.3.3 Configure model API policies
+  - 3.4 AI services
+    - 3.4.1 Create an AI service
+    - 3.4.2 Manage AI services
+  - 3.5 Route management
+  - 3.6 Policy configuration
+    - 3.6.1 Configure a rewrite policy
+    - 3.6.2 Configure a header modification policy
+    - 3.6.3 Configure a timeout policy
+    - 3.6.4 Configure a degradation policy
+  - 3.7 Service management
+    - 3.7.1 Create a service
+    - 3.7.2 Manage services
+    - 3.7.3 Create an origin
+    - 3.7.4 Manage origins
+  - 3.8 Consumer management
+    - 3.8.1 Create a consumer
+    - 3.8.2 Manage consumers
+  - 3.9 Manage MCP services
+  - 3.10 Plugin management
+    - 3.10.1 Create a plugin
+    - 3.10.2 Custom Plug-In
+    - 3.10.3 Manage plug-ins
+      - 3.10.4.1 AI proxy
+      - 3.10.4.2 AI quota
+      - 3.10.4.3 AI Content Moderation
+      - 3.10.4.4 AI statistics
+      - 3.10.4.5 AI token rate limiting
+      - 3.10.4.6 AI load balancing
+      - 3.10.4.7 AI data masking
+      - 3.10.4.8 AI agent
+      - 3.10.4.9 AI RAG
+      - 3.10.4.10 AI search enhancement
+      - 3.10.4.11 AI cache
+      - 3.10.4.12 AI intent recognition
+      - 3.10.4.13 AI conversation history
+      - 3.10.4.14 AI JSON formatting
+      - 3.10.4.15 AI request/response transform
+      - 3.10.4.16 AI prompt
+      - 3.10.4.17 AI prompt templates
+      - 3.10.4.18 Model mapping
+      - 3.10.4.19 Model routing
+    - 3.10.5 Authentication
+      - 3.10.5.1 Key authentication
+      - 3.10.5.2 JWT authentication
+      - 3.10.5.3 Basic authentication
+      - 3.10.5.4 OIDC authentication
+      - 3.10.5.5 HMAC authentication
+      - 3.10.5.6 External authentication
+      - 3.10.5.7 OAuth2 authentication
+      - 3.10.5.8 OPA policies
+    - 3.10.6 Security
+      - 3.10.6.1 Cross-origin resource sharing
+      - 3.10.6.2 IP restriction
+      - 3.10.6.3 WAF protection
+      - 3.10.6.4 Request blocking
+      - 3.10.6.5 Bot detection
+    - 3.10.7 Traffic
+      - 3.10.7.1 Key-based cluster rate limiting
+      - 3.10.7.2 Key-based rate limiting
+      - 3.10.7.3 Traffic tagging
+      - 3.10.7.4 Request validation
+    - 3.10.8 Transform
+      - 3.10.8.1 Request/response transform
+      - 3.10.8.2 Frontend grayscale release
+      - 3.10.8.3 Custom responses
+      - 3.10.8.4 DeGraphQL
+      - 3.10.8.5 Browser cache control
+    - 3.10.9 Observability
+      - 3.10.9.1 IP geolocation
+  - 3.11 Certificate management
+    - 3.11.1 Create a certificate
+    - 3.11.2 Manage certificates
+  - 3.12 Domain name management
+    - 3.12.1 Create a domain name
+    - 3.12.2 Manage domain names
+  - 3.13 Observation and analysis
+    - 3.13.1 Model monitoring
+    - 3.13.2 MCP monitoring
+  - 3.14 Token quota
+    - 3.14.1 Create a quota rule
+    - 3.14.2 Manage quota rules
+  - 3.15 Proxy servers
+  - 3.16 Monitoring and analysis
+    - 3.16.1 View gateway log information
+    - 3.16.2 View gateway monitoring metrics
+- 4 Practice tutorial
+  - 4.1 Access the AI Gateway over HTTPS
+
 verview
 
-## Product overview
+## 1 Product overview
 
-### What is AI Gateway
+### 1.1 What is AI Gateway
 
 This topic describes the scenarios and core features of AI Gateway. By configuring AI Gateway, you can integrate administration capabilities to use large model services efficiently and securely.
 
@@ -64,9 +176,9 @@ AI Gateway has three core security features: Unified API key management and rota
 
 AI Gateway provides a unified administration center for enterprise AI applications. It uses features such as rate limiting, caching, and fallback to effectively improve the success rate of model calls. These features include the following: Rate limiting by token: AI Gateway has a built-in token-based rate limiting policy. You can limit the number of tokens consumed per unit of time based on request features, such as headers. Automatic rotation of multiple API keys: AI Gateway supports configuring multiple API keys for a model service. When processing AI requests, the keys rotate automatically. This prevents an issue with a single key from affecting all requests. AI caching: AI Gateway integrates an AI cache policy. It can cache responses to repeated requests to improve response efficiency and reduce the cost of large model services. Model service fallback: AI Gateway supports falling back to a backup model when a model service is unavailable. It also supports multi-level fallback, which can effectively increase the success rate of AI requests. In summary, AI Gateway is a key tool for improving the efficiency of enterprise AI applications. It simplifies integration, unifies administration, enhances security, and accelerates response times. This makes the process of innovating with AI technology more efficient, secure, and controllable for enterprises. rt
 
-## Quick Start
+## 2 Quick Start
 
-### Log in to the AI Gateway
+### 2.1 Log in to the AI Gateway console
 
 **console**
 
@@ -114,7 +226,7 @@ For more information about how to enable MFA and bind an MFA device, see the
 
 AI Gateway and API Gateway share the same console. rt
 
-### Use Model API to proxy AI
+### 2.2 Use Model API to proxy AI traffic
 
 #### traffic
 
@@ -200,7 +312,7 @@ click **Send Request**.
 
 For more information about parameter configurations, see Debug a model API.
 
-### MCP management
+### 2.3 MCP management
 
 Model Context Protocol (MCP) is an open-source protocol that standardizes how applications provide context to large language models (LLMs). It acts like a "USB-C port" for AI applications, allowing models to flexibly and securely connect to various data sources and tools. This topic describes how to create and use MCP services.
 
@@ -322,9 +434,9 @@ column.
 column.
 6. In the **Notice** dialog box that appears, click **OK**.
 
-## User Guide
+## 3 User Guide
 
-### Kubernetes cluster
+### 3.1 Kubernetes cluster management
 
 **management**
 
@@ -366,9 +478,9 @@ The system currently supports only Kubernetes clusters.
 cluster.
 4. In the **Note** dialog box that appears, click **OK**.
 
-### Gateway management
+### 3.2 Gateway management
 
-#### Create a gateway instance
+#### 3.2.1 Create a gateway instance
 
 This topic describes how to create an AI Gateway instance.
 
@@ -412,7 +524,7 @@ It may take 1 to 5 minutes to create the gateway instance. Please wait patiently
 6. Return to the **Gateway** page. If the created gateway information is correct and the
 **instance status** is **Running**, the gateway is created successfully.
 
-#### View gateway instance details
+#### 3.2.2 View gateway instance details
 
 This topic describes how to view the details of an AI Gateway instance in the AI Gateway console.
 
@@ -436,7 +548,7 @@ instance.
 instance. The Access Point tab displays the endpoint information for the instance, including **Type**,
 **Network Type**, **ServiceName**, **External IPs**, **Ports**, and **ClusterIP**.
 
-#### Modify a gateway instance
+#### 3.2.3 Modify a gateway instance
 
 This topic describes how to modify the name of a gateway instance.
 
@@ -451,7 +563,7 @@ You can only modify the instance name.
 in the **Actions** column for the target instance, and then click **Edit**.
 4. On the **Edit Instance** page, change the **Instance Name** and click **Submit**.
 
-#### Release an AI gateway instance
+#### 3.2.4 Release an AI gateway instance
 
 If you no longer need an AI gateway, you can release the instance to shut down the cloudnative AI gateway.
 
@@ -467,7 +579,7 @@ Releasing an instance permanently deletes it and all of its data. Exercise cauti
 , and then click Write-off or **Force Logoff** .
 4. In the **Notice** dialog box, click **OK**.
 
-#### Stop a gateway instance
+#### 3.2.5 Stop a gateway instance
 
 This topic describes how to stop an AI gateway instance.
 
@@ -481,7 +593,7 @@ and then click **Stop**.
 4. In the **Prompt** dialog box, click **OK**. The **Instance Status** of the instance changes to
 **Stopped**.
 
-#### Restart a gateway instance
+#### 3.2.6 Restart a gateway instance
 
 This topic explains how to restart an AI gateway instance.
 
@@ -495,7 +607,7 @@ in the **Actions** column of the target instance, and then click **Restart**.
 4. In the **Message** dialog box that appears, click **OK**. The **Instance Status** changes to
 **Running**.
 
-#### Scale Gateway Instances
+#### 3.2.7 Scale Gateway Instances
 
 After you create an AI Gateway, you can scale its specification, CPU, and memory.
 
@@ -508,7 +620,7 @@ in the **Actions** column for your target instance. Then, click **Configuration 
 4. In the **API Gateway Instance Configuration Change** panel, select a **specification**, then
 click **Submit**.
 
-#### Upgrade an instance engine
+#### 3.2.8 Upgrade an instance engine
 
 This topic describes how to upgrade the engine of a gateway instance.
 
@@ -523,7 +635,7 @@ The instance is not running the latest engine version.
 3. On the **Gateway Instances** page, in the **Engine Version** column for the target instance,
 click **Manual Upgrade**.
 
-#### Configure security group rules
+#### 3.2.9 Configure security group rules
 
 The AI Gateway and backend service nodes are in different security groups. You must configure security group rules to grant the AI Gateway access permissions to the backend services.
 
@@ -618,9 +730,9 @@ Run the `curl` command from another node in the same security group to check the
 2. Confirm whether the port exposed by the published service has changed.
 For example, the port was previously 8080, and you only authorized port 8080 for the AI Gateway. If you change the port to 8081, you must adjust the security group rule to authorize the new port. To avoid this issue, you can expand the port range when you configure the security group authorization. Set the range to 1/65535.
 
-### Model APIs
+### 3.3 Model APIs
 
-#### Create a model API
+#### 3.3.1 Create a model API
 
 This topic describes how to create a model API.
 
@@ -662,7 +774,7 @@ Currently, only **text generation** is supported.
 | Fallback | After you enable Fallback, when the primary service is unavailable or times out, the system automatically fails over to the secondary service. After the fallback is enabled, you need to add one or more secondary AI services for failovers. The selected services are sorted in descending order of priority. The system attempts to call the services in the order they are sorted one after one. |
 |---|---|
 
-#### Manage APIs
+#### 3.3.2 Manage APIs
 
 This topic describes how to view, edit, and delete model APIs.
 
@@ -773,7 +885,7 @@ Click **Fill in historical parameters** to quickly reproduce the previous config
 
 By default, the system retains context across multiple calls. Click **Empty memory** to clear it.
 
-#### Configure model API policies
+#### 3.3.3 Configure model API policies
 
 This topic describes how to configure policies for model APIs, including header modification, timeout settings, AI rate limiting, and AI content safety.
 
@@ -962,9 +1074,9 @@ then click **Save configuration**.
 | Protection level | Sets the risk-level interception threshold for content moderation. max: Detect content but do not intercept (record only). high: Intercept high-risk content only. medium: Intercept content with medium risk or higher. low: Intercept content with low risk or higher. |
 |---|---|
 
-### AI services
+### 3.4 AI services
 
-#### Create an AI service
+#### 3.4.1 Create an AI service
 
 This topic describes how to create an AI service.
 
@@ -1004,7 +1116,7 @@ or click **Details** in the **Operation** column.
 | Health threshold | If the number of times that a backend server consecutively passes health checks reaches the healthy threshold, the backend server is considered healthy. |
 | Unhealthy threshold | If the number of times that a backend server consecutively fails to pass health checks reaches the unhealthy threshold, the backend server is considered unhealthy. |
 
-#### Manage AI services
+#### 3.4.2 Manage AI services
 
 This topic describes how to view, modify, and delete AI services.
 
@@ -1052,7 +1164,7 @@ or click **Details** in the **Operation** column.
 Delete an AI service: In the AI service list, click **Delete** in the **Operation** column of the target AI service. Delete multiple AI services at a time: In the AI service list, select the target AI services and click **Batch delete** below the list.
 6. In the message that appears, click **Confirm**.
 
-### Route management
+### 3.5 Route management
 
 A route is the primary method by which a gateway exposes its access capabilities. This topic describes how to manage routes.
 
@@ -1159,9 +1271,9 @@ Click **Fill in historical parameters** to quickly reproduce the previous config
 By default, the system retains context across multiple calls. You can click **Clear**
 **memory** to clear the context.
 
-### Policy configuration
+### 3.6 Policy configuration
 
-#### Configure a rewrite policy
+#### 3.6.1 Configure a rewrite policy
 
 A rewrite policy modifies the path and host domain of a request before it is forwarded to a backend service. You can use rewrite policies to meet specific business and architectural requirements. These policies give you precise control over the request path and host domain to ensure that requests are correctly routed to the appropriate service or endpoint.
 
@@ -1228,7 +1340,7 @@ A prefix rewrite requires the routing match pattern to be a prefix match. Exact 
 
 For host domain (Host) rewriting, AI Gateway supports exact rewrite. For example, if the host of the original request is `test.com` but the host forwarded to the backend service is `dev.com` , you can set the rewrite host to `dev.com` in the rewrite policy.
 
-#### Configure a header modification policy
+#### 3.6.2 Configure a header modification policy
 
 A header modification policy modifies the headers of a request before it is forwarded to a backend service. The policy can also modify the headers of a response before it is returned to a client. This topic describes how to set request and response headers in AI Gateway.
 
@@ -1271,7 +1383,7 @@ The response contains the header `test:demo` :
 HTTP/1.1 200 OK x-content-type-options: nosniff x-xss-protection: 1; mode=block cache-control: no-cache, no-store, max-age=0, must-revalidate pragma: no-cache expires: 0 x-frame-options: DENY content-type: application/json content-length: 86 date: Tue, 30 Nov 2021 03:03:04 GMT x-envoy-upstream-service-time: 4 test: demo server: istio-envoy
 ```
 
-#### Configure a timeout policy
+#### 3.6.3 Configure a timeout policy
 
 AI Gateway provides route-level timeout settings. You can set the maximum time that the gateway waits for a response for a specific route. If the gateway does not receive a response from the backend service within this time, the gateway returns a response with an HTTP status code of 504 Gateway Timeout to the client. This topic describes how to configure a route timeout policy for AI Gateway.
 
@@ -1299,7 +1411,7 @@ After you configure and enable the timeout policy, verify that the timeout rule 
 | Timeout | The timeout period for the current route, in seconds. Note If this parameter is set to 0 or the timeout policy is disabled, the gateway waits indefinitely for a response. |
 |---|---|
 
-#### Configure a degradation policy
+#### 3.6.4 Configure a degradation policy
 
 Degradation is a fault tolerance mechanism. When a backend service experiences issues, such as timeouts or error responses, the system automatically switches over to a preconfigured degradation service. This process ensures system availability and prevents a complete interruption.
 
@@ -1328,9 +1440,9 @@ A degradation service should be simple, stable, and respond quickly. Verify the 
 | Degradation Service | Select a backup service to use as the degradation target. |
 |---|---|
 
-### Service management
+### 3.7 Service management
 
-#### Create a service
+#### 3.7.1 Create a service
 
 You must add an existing service to the gateway and register it as a candidate routing service so that the gateway can obtain the service endpoint. The AI Gateway supports adding services in three forms: fixed endpoint, DNS domain name, and Kubernetes cluster.
 
@@ -1379,7 +1491,7 @@ The AI Gateway does not modify your request. When the request is forwarded to th
 | Health threshold | The number of consecutive successful health checks required for an ECS instance to transition from unhealthy to healthy. |
 | Unhealthy threshold | The number of consecutive failed health checks required for an ECS instance to transition from healthy to unhealthy. |
 
-#### Manage services
+#### 3.7.2 Manage services
 
 The backend node endpoints of services with fixed origin addresses in the AI Gateway may change. The gateway cannot dynamically obtain these endpoints. You must manually update the service’s backend node endpoints so the gateway can retrieve them. This topic describes how to view, edit, and delete services.
 
@@ -1419,7 +1531,7 @@ You can edit static IP services and DNS services that you created yourself. You 
 Delete individually: On the **Services** tab, click **Delete** in the **Actions** column for the target service. Delete in batch: On the **Services** tab, select the target services and click **Batch Delete**.
 2. In the pop-up **Note** dialog box, click **OK**.
 
-#### Create an origin
+#### 3.7.3 Create an origin
 
 The AI Gateway currently supports only the origin type **Nacos**. Before you introduce a service, you must first import the service origin—that is, create an origin—and provide relevant origin information. This allows the gateway to obtain instances and service information from the specified origin. You can then manage service instances under that origin.
 
@@ -1448,7 +1560,7 @@ or click **Details** in the **Operation** column.
 | Registration center address | The addresses of nodes. Separate multiple nodes with commas. Example: 127.0.0.1:8848. |
 | Authentication method | Supports No authentication, Alibaba Cloud authentication, and Simple authentication. No authentication: Select No authentication if the Nacos service does not enable authentication. Alibaba Cloud authentication: Select Alibaba Cloud authentication if you purchased a public cloud Nacos service. You must also configure the AccessKey/SecretKey. Simple authentication: Select Simple authentication if the Nacos service does not enable authentication. You must also configure the Username/Password. Example: nacos/nacos. |
 
-#### Manage origins
+#### 3.7.4 Manage origins
 
 This topic describes how to view, modify, and delete an origin.
 
@@ -1481,9 +1593,9 @@ The configuration of an origin may change over time. The platform provides the f
 
 To ensure the stability of downstream services, the system rejects delete requests if the origin has associated downstream services.
 
-### Consumer management
+### 3.8 Consumer management
 
-#### Create a consumer
+#### 3.8.1 Create a consumer
 
 AI Gateway uses consumers to enable authentication for routes and APIs. This topic describes how to create a consumer in the AI Gateway console.
 
@@ -1528,7 +1640,7 @@ iii. **Consumer Certification**
 | Generation method | You can select one of the following options: System-generated Customize |
 | Token/Credential Carrying Method | Configure a custom API key credential. If you select System-generated, the system automatically generates an API key credential. If you select Customize, you can specify a custom API key credential and its carrying method. |
 
-#### Manage consumers
+#### 3.8.2 Manage consumers
 
 This topic describes how to manage consumers.
 
@@ -1611,7 +1723,7 @@ services, and model APIs. Revoke route authorization: On the **Route** subtab, c
 **Operation** column and then click **Confirm**.
 Revoke model API authorization: On the **Model API** subtab, click **Delete** in the Operation column and then click **Confirm**.
 
-### Manage MCP services
+### 3.9 Manage MCP services
 
 Model Context Protocol (MCP) is an open-source protocol that standardizes how applications provide context to large language models (LLMs). It acts like a "USB-C port" for AI applications, allowing models to flexibly and securely connect to various data sources and tools. This topic describes how to create and use MCP services.
 
@@ -1734,9 +1846,9 @@ column.
 column.
 6. In the **Notice** dialog box that appears, click **OK**.
 
-### Plugin management
+### 3.10 Plugin management
 
-#### Create a plugin
+#### 3.10.1 Create a plugin
 
 Plugin configuration allows you to apply various plugins in the AI Gateway to different domain objects and their combinations. For example, you can configure a throttling plugin on a route or a service. This provides greater flexibility for plugin configuration in the AI Gateway. The AI Gateway provides an Extension Marketplace with built-in plugins for authentication, traffic control, security protection, and other functions. It also supports adding custom plug-ins to enable flexible and personalized capability extensions for the gateway.
 
@@ -1746,7 +1858,7 @@ The AI Gateway contains a variety of plugins. It also includes the following fou
 
 **Supported plugin types**
 
-AI ai-proxy ai-quota ai-security-guard ai-statistics ai-token-ratelimit ai-load-balancer ai-data-masking ai-agent ai-rag ai-search ai-cache ai-intent ai-history ai-json-resp ai-transformer ai-prompt-decorator ai-prompt-template model-mapper model-router Authentication key-auth jwt-auth basic-auth oidc hmac-auth ext-auth oauth opa Security cors ip-restriction waf request-block bot-detect Traffic cluster-key-rate-limit key-rate-limit traffic-tag request-validation Transform transformer frontend-gray custom-response de-graphql cache-control Observability geo-ip Custom plug-in Plug-ins that users add to the Extension Marketplace are for personal use only. For more information about how to add custom plug-ins, see Custom Plug-In.
+AI ai-proxy ai-quota ai-security-guard ai-statistics ai-token-ratelimit ai-load-balancer ai-data-masking ai-agent ai-rag ai-search ai-cache ai-intent ai-history ai-json-resp ai-transformer ai-prompt-decorator ai-prompt-template model-mapper model-router key-auth jwt-auth basic-auth oidc hmac-auth ext-auth oauth opa cors ip-restriction waf request-block bot-detect cluster-key-rate-limit key-rate-limit traffic-tag request-validation transformer frontend-gray custom-response de-graphql cache-control geo-ip Plug-ins that users add to the Extension Marketplace are for personal use only. For more information about how to add custom plug-ins, see Custom Plug-In.
 
 **Procedure**
 
@@ -1789,7 +1901,7 @@ The following procedure takes creating a CORS plugin as an example. The procedur
 | Bind MCP Server | This parameter appears only when you set Binding Type to MCP SERVER. _ Select the MCP service to which you want to bind the plugin. If no MCP services are available, create an MCP service. For more information, see Manage MCP services. |
 | cors | Configure the CORS plugin. Click View Documentation or see Cross-origin resource sharing for configuration instructions. |
 
-#### Custom Plug-In
+#### 3.10.2 Custom Plug-In
 
 The AI Gateway allows you to add custom plug-ins for flexible and personalized capability expansion. This topic describes how to add a custom plug-in.
 
@@ -1835,7 +1947,7 @@ Delete a plug-in i. Click on the plug-in card and select **Delete**. ii. In the 
 
 After you delete a plug-in, objects configured with this plug-in are automatically unbound.
 
-#### Manage plug-ins
+#### 3.10.3 Manage plug-ins
 
 This topic describes how to manage plug-ins.
 
@@ -1889,9 +2001,9 @@ or click **Details** in the **Operation** column.
 column.
 6. In the **Prompt** dialog box, click **OK**.
 
-#### AI
+#### 3.10.4 AI
 
-##### AI proxy
+##### 3.10.4.1 AI proxy
 
 **Features**
 
@@ -4189,7 +4301,7 @@ curl "http://localhost:10000/v1/chat/completions" -H "Content-Type: application/
 
 `}` `]` `}'`
 
-##### AI quota
+##### 3.10.4.2 AI quota
 
 **Features**
 
@@ -4282,7 +4394,7 @@ ons. curl https://example.com/v1/chat/completions/quota/refresh -H 'x-higress-ll
 
 This ensures the request hits the route that matches the `deepseek-r1` model parameter. Make sure the route's method and path matching rules also match the quota API.
 
-##### AI Content Moderation
+##### 3.10.4.3 AI Content Moderation
 
 This topic describes how to ensure AI application content complies with legal and regulatory requirements by integrating with the input and output of the Alibaba Cloud Content Moderation LLM.
 
@@ -4522,7 +4634,7 @@ curl http://localhost/v1/chat/completions \ -H "Content-Type: application/json" 
 
 `}` `]` `}`
 
-##### AI statistics
+##### 3.10.4.4 AI statistics
 
 **Introduction**
 
@@ -4726,7 +4838,7 @@ After extraction, SLS adds the `question` and `answer` fields. The following exa
 ai_log:{"question":"Use python to calculate 2 to the power of 3","answer":"You can use Python's power operator `**` to calculate the power of a number. To calculate 2 to the power of 3, which is 2 multiplied by itself 2 times, you can use the following code:\n\ n```python\nresult = 2 ** 3\nprint(result)\n```\n\nRunning this code will give you the output 8, because 2 multiplied by itself twice equals 8.","model":"qwenmax","input_token":"16","output_token":"76","llm_service_duration":"5913"} question:Use python to calculate 2 to the power of 3 answer:You can use Python's power operator `**` to calculate the power of a number. To calculate 2 to the power of 3, which is 2 multiplied by itself 2 times, you can use the following code: result = 2 ** 3 print(result) Running this code will give you the output 8, because 2 multiplied by itself twice equa ls 8.
 ```
 
-##### AI token rate limiting
+##### 3.10.4.5 AI token rate limiting
 
 **Feature description**
 
@@ -5194,7 +5306,7 @@ curl "http://localhost:18000/v1/chat/completions?apikey=123456" \ -H "Host: qwen
 Too many requests # Rate limiting successful
 ```
 
-##### AI load balancing
+##### 3.10.4.6 AI load balancing
 
 The hot-swappable load balancing policy for Large Language Model (LLM) services reverts to the service's native policy when the plugin is shut down. The native policies include roundrobin, local least requests, random, and consistent hashing.
 
@@ -5342,7 +5454,7 @@ lb_policy: least_busy lb_config:
   - sql-lora
 ```
 
-##### AI data masking
+##### 3.10.4.7 AI data masking
 
 The ai-data-masking plugin blocks and replaces sensitive words in requests and responses. This topic describes how to configure the ai-data-masking plugin.
 
@@ -5494,7 +5606,7 @@ The following modifications were made: `-X POST` sets the request method to POST
 
 In streaming mode, if a masked word is split across multiple chunks, the original word may not be restored. In streaming mode, if a sensitive word is split across multiple chunks, a portion of the word may be returned to the user before it is detected. For a list of built-in Grok rules, see Grok Pattern Reference.
 
-##### AI agent
+##### 3.10.4.8 AI agent
 
 The ai-agent plug-in supports flexible configurations, including custom settings for large model services, external APIs, and prompt templates. This topic describes how to configure the ai-agent plug-in.
 
@@ -5909,7 +6021,7 @@ curl 'http://<replace_with_gateway_public_IP>/api/openai/v1/chat/completions'
 {"id":"65dcf12c-61ff-9e68-bffa-44fc9e6070d5","choices":[{"index":0,"message": {"role":"assistant","content":"The German translation of “Hail Hydra!” is “Hoch lebe Hydra!”."
 ```
 
-##### AI RAG
+##### 3.10.4.9 AI RAG
 
 This topic describes AI retrieval-augmented generation (RAG). You can implement RAG for large language models (LLMs) by connecting to Alibaba Cloud Vector Retrieval Service (DashVector). The process is shown in the following figure:
 
@@ -5978,7 +6090,7 @@ there?
 
 Without processing by the RAG plug-in, the LLM returns the following result: I'm sorry. As an AI model, I cannot retrieve real-time information or updates on specific news events, including details such as the location, cause, and casualties. For specific events such as this, check the latest news reports or official announcements for accurate information. Visit major media websites, use news applications, or follow announcements from relevant government departments to obtain this information. After being processed by the RAG plug-in, the LLM returns the following result: The Hainan rear-end collision occurred at the 37 km mark of the Haiwen Expressway, in the direction from Wenchang to Haikou. The traffic police department was still investigating the cause of the accident. Therefore, the exact cause cannot be determined from the provided information. There was one fatality (the driver died at the scene) and eight injuries (including two children and six adults). All injured people were rescued and sent to the hospital for treatment.
 
-##### AI search enhancement
+##### 3.10.4.10 AI search enhancement
 
 The ai-search plug-in improves AI model responses by adding real-time results from search engines such as Google, Bing, Arxiv, and Elasticsearch. The plug-in automatically adds search results to the prompt template. You can also configure the plug-in to add references to the final response. This topic describes how to configure the ai-search plug-in.
 
@@ -6265,7 +6377,7 @@ You can dynamically adjust the number of search queries by adding the `search_co
 
 `January 2, 2006` format. The default template includes guidelines for processing search results and formatting responses. We recommend that you use the default template. You can modify the template if you have specific requirements. Multiple search engines are queried in parallel. The total timeout period is the highest `timeoutMillisecond` value among all search engine configurations, plus the processing time. Arxiv searches do not require an API key. However, you can specify a paper category (`arxivCategory`) to narrow the search scope.
 
-##### AI cache
+##### 3.10.4.11 AI cache
 
 This plugin caches Large Language Model (LLM) results. You can use the default configurations to cache results for the OpenAI protocol. The plugin supports both streaming and non-streaming responses.
 
@@ -6344,7 +6456,7 @@ To combine the `content` from all items where `role` is `user` into an array for
 
 For more information, see the official documentation. You can test the syntax using the GJSON Playground.
 
-##### AI intent recognition
+##### 3.10.4.12 AI intent recognition
 
 The ai-intent plugin intelligently determines how well a user request aligns with the functions of a specific realm or agent. This improves the performance and user experience of various models. This topic describes how to configure the ai-intent plugin.
 
@@ -6410,7 +6522,7 @@ ne which preset category a user's question belongs to, based on the question and
   proxyTimeout: "10000"
 ```
 
-##### AI conversation history
+##### 3.10.4.13 AI conversation history
 
 The ai-history plugin identifies users based on request headers. It automatically caches the conversation history for each user and fills this history into the context of subsequent conversations. You can also query your conversation history. This topic describes how to configure the ai-history plugin.
 
@@ -6636,7 +6748,7 @@ hies and application scenarios differ. Nginx is widely known as a high-performan
 
 `}` `]` The response contains three historical conversations. If the cnt parameter is not specified, all cached historical conversations are returned by default.
 
-##### AI JSON formatting
+##### 3.10.4.14 AI JSON formatting
 
 The ai-json-resp plugin structures AI responses based on a default or user-configured JSON Schema to prepare them for processing by subsequent plugins. This plugin supports only non-streaming responses. This topic describes how to configure the ai-json-resp plugin.
 
@@ -6797,7 +6909,7 @@ serviceName: localservice serviceDomain: 127.0.0.1 servicePort: 80
 3. The plugin automatically extracts information such as the request path and headers. This
 avoids duplicate configuration for the AI service.
 
-##### AI request/response transform
+##### 3.10.4.15 AI request/response transform
 
 The AI request/response transform plug-in uses a large language model (LLM) to modify the headers and bodies of requests and responses.
 
@@ -6893,7 +7005,7 @@ With the preceding configuration, accessing the `/xml` endpoint of httpbin throu
 
 `]` `}` `]` `}` `}`
 
-##### AI prompt
+##### 3.10.4.16 AI prompt
 
 The AI prompt plugin lets you insert prompts before and after Large Language Model (LLM) requests.
 
@@ -7038,7 +7150,7 @@ y: Beijing"
 
 `}` `]` `}'`
 
-##### AI prompt templates
+##### 3.10.4.17 AI prompt templates
 
 You can use AI prompt templates to quickly create similar AI requests.
 
@@ -7098,7 +7210,7 @@ The following code shows a sample request body that uses the preceding configura
 
 `}` `}`
 
-##### Model mapping
+##### 3.10.4.18 Model mapping
 
 The model-mapper plugin maps model parameters. This topic describes how to configure the model-mapper plugin.
 
@@ -7170,7 +7282,7 @@ After the plugin is enabled, models that start with `gpt-4-` are rewritten to `q
 
 `}`
 
-##### Model routing
+##### 3.10.4.19 Model routing
 
 The model-router plugin routes requests based on the model parameter in the Large Language Model (LLM) protocol. This topic describes how to configure the model-router plugin.
 
@@ -7278,9 +7390,9 @@ The original LLM request body is changed to: `{`
 
 `}`
 
-#### Authentication
+#### 3.10.5 Authentication
 
-##### Key authentication
+##### 3.10.5.1 Key authentication
 
 **Feature description**
 
@@ -7404,7 +7516,7 @@ keys:
 - x-api-key
 ```
 
-##### JWT authentication
+##### 3.10.5.2 JWT authentication
 
 The jwt-auth plugin provides authentication and authorization based on JSON Web Tokens (JWT). It parses JWTs from the URL parameters, request headers, or cookies of an HTTP request. It also verifies that the token has the required access permissions. Unlike standard JWT authentication and authorization, the jwt-auth plugin also identifies the caller. This lets you configure different JWT credentials for different callers. This topic describes how to configure the jwt-auth plugin.
 
@@ -7734,7 +7846,7 @@ In this example, `route-b` is the name that you specified for the gateway route.
 | 401 | Jwt verification fails | JWT payload verification failed. For example, the `iss` field does not match. |
 | 403 | Access Denied | No permission to access the current route. |
 
-##### Basic authentication
+##### 3.10.5.3 Basic authentication
 
 The basic-auth plugin provides authentication and authorization based on the HTTP Basic Auth standard. This topic describes how to configure the basic-auth plugin.
 
@@ -7857,7 +7969,7 @@ global_auth: true consumers:
 |---|---|---|
 | 403 | Request denied by Basic Auth check. Unauthorized consumer. | The requesting caller does not have access permissions. |
 
-##### OIDC authentication
+##### 3.10.5.4 OIDC authentication
 
 The oidc plugin supports identity authentication using OpenID Connect (OIDC). The plugin also enhances protection against cross-site request forgery (CSRF) attacks. It supports the Logout Endpoint and Refresh Token mechanisms that are defined in the OIDC protocol. After the Wasm plugin authenticates a request using OIDC, the request carries an `Authorization` header that contains the corresponding Access Token.
 
@@ -8269,7 +8381,7 @@ the new access_token.
 5. The backend service retrieves the user authorization information based on the
 access_token and returns the corresponding HTTP response.
 
-##### HMAC authentication
+##### 3.10.5.5 HMAC authentication
 
 The hmac-auth plugin generates unforgeable signatures for HTTP requests based on the Hash-based Message Authentication Code (HMAC) algorithm. The plugin uses these signatures to perform identity authentication and authorization. This topic describes how to configure the hmac-auth plugin.
 
@@ -8478,7 +8590,7 @@ X-Ca-Error-Message: Server StringToSign:`GET#application/json##application/json#
 
 Increase the `DownstreamConnectionBufferLimits` value with caution. A higher value for this parameter significantly increases the memory usage of the gateway.
 
-##### External authentication
+##### 3.10.5.6 External authentication
 
 The ext-auth plugin sends authentication requests to an external authorization service to verify client request authorization. This topic describes how to configure the ext-auth plugin.
 
@@ -8910,7 +9022,7 @@ POST /auth HTTP/1.1 Host: my-domain.local Authorization: xxx X-Forwarded-Proto: 
 
 If the response from the `ext-auth` service includes the `x-user-id` and `x-auth-version` headers, the gateway adds these headers to the upstream request.
 
-##### OAuth2 authentication
+##### 3.10.5.7 OAuth2 authentication
 
 The OAuth2 plugin issues OAuth2 access tokens based on JSON Web Tokens (JWT) that conform to the RFC9068 specification. This topic describes how to configure the OAuth2 plugin.
 
@@ -9068,7 +9180,7 @@ curl 'http://test.com' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImF
 | 401 | Invalid Jwt token. | The JWT is not provided in the request header, the JWT format is incorrect, or the JWT has expired. |
 | 403 | Access Denied. | Permission to access the current route is denied. |
 
-##### OPA policies
+##### 3.10.5.8 OPA policies
 
 The OPA plugin enforces `OPA` policies. This topic describes how to configure the OPA plugin.
 
@@ -9123,9 +9235,9 @@ curl -X POST '127.0.0.1:8181/v1/data/example1/allow' \
  -d '{"input":{"request":{"method":"GET"}}}'
 ```
 
-#### Security
+#### 3.10.6 Security
 
-##### Cross-origin resource sharing
+##### 3.10.6.1 Cross-origin resource sharing
 
 The `cors` plugin enables Cross-Origin Resource Sharing (CORS) by adding the required HTTP response headers.
 
@@ -9336,7 +9448,7 @@ httpbin.example.com" -H "Access-Control-Request-Method: GET" -H "Access-Control-
 Invalid CORS request
 ```
 
-##### IP restriction
+##### 3.10.6.2 IP restriction
 
 The ip-restriction plugin restricts access to services or routes by adding IP addresses to a whitelist or a blacklist. It supports restrictions for single IP addresses, multiple IP addresses, and Classless Inter-Domain Routing (CIDR) ranges, such as 10.10.10.0/24. This topic describes how to configure the ip-restriction plugin.
 
@@ -9373,7 +9485,7 @@ ip_source_type: header ip_header_name: x-real-iP deny:
  - 192.169.X.X/16
 ```
 
-##### WAF protection
+##### 3.10.6.3 WAF protection
 
 The Web Application Firewall (WAF) plugin implements a protection rule engine based on ModSecurity. It blocks suspicious requests based on configured rules and supports the Open Web Application Security Project (OWASP) Core Rule Set (CRS) to provide basic protection for your site. This topic describes how to configure the WAF plugin.
 
@@ -9424,7 +9536,7 @@ Based on this configuration, the following requests are denied:
 curl http://example.com/admin curl http://example.com -d "maliciouspayload"
 ```
 
-##### Request blocking
+##### 3.10.6.4 Request blocking
 
 The request-block plugin blocks HTTP requests based on features such as URLs and request headers. Use this plugin to prevent specific site resources from being exposed. This topic describes how to configure the request-block plugin.
 
@@ -9567,7 +9679,7 @@ When `block_bodies` is configured, matching applies only to request bodies small
 
 `block_headers` entries, the request is not blocked. However, if a request body exceeds the global `DownstreamConnectionBufferLimits` configuration, a `413 Payload Too Large` error is returned.
 
-##### Bot detection
+##### 3.10.6.5 Bot detection
 
 The bot-detect plugin detects and blocks Internet crawlers from accessing your site resources. This topic describes how to configure the bot-detect plugin.
 
@@ -9636,9 +9748,9 @@ With this configuration, the following requests are blocked:
 curl http://example.com -H 'User-Agent: spd-tools/1.1' curl http://exmaple.com -H 'User-Agent: spd-tools'
 ```
 
-#### Traffic
+#### 3.10.7 Traffic
 
-##### Key-based cluster rate limiting
+##### 3.10.7.1 Key-based cluster rate limiting
 
 The cluster-key-rate-limit plugin uses Redis to implement cluster rate limiting and is suitable for scenarios that require globally consistent rate limiting across multiple AI Gateway instances. This topic describes how to configure the cluster-key-rate-limit plugin.
 
@@ -9994,7 +10106,7 @@ rejected_code: 200 rejected_msg: '{"code":-1,"msg":"Too many requests"}' redis:
 show_limit_quota_header: true
 ```
 
-##### Key-based rate limiting
+##### 3.10.7.2 Key-based rate limiting
 
 The key-rate-limit plugin implements rate limiting based on a specific key value, which can be obtained from a URL parameter or an HTTP request header. This topic describes how to configure the key-rate-limit plugin.
 
@@ -10099,7 +10211,7 @@ limit_by_header: x-ca-key limit_keys:
   query_per_hour: 10
 ```
 
-##### Traffic tagging
+##### 3.10.7.3 Traffic tagging
 
 The traffic-tag plugin tags request traffic by adding a specific request header. Tagging can be based on the weight or content of the request. The plugin also supports complex logic to determine how traffic is tagged based on user-defined criteria. This topic describes how to configure the traffic-tag plugin.
 
@@ -10232,7 +10344,7 @@ t have a header added. weightGroups:
    weight: 30
 ```
 
-##### Request validation
+##### 3.10.7.4 Request validation
 
 The request-validation plugin validates requests before they are forwarded to upstream services. This plugin uses the `JSON Schema` mechanism to validate request data, such as the body and header. This topic describes how to configure the request-validation plugin.
 
@@ -10391,9 +10503,9 @@ body_schema:
 rejected_code: 403 rejected_msg: "Request rejected"
 ```
 
-#### Transform
+#### 3.10.8 Transform
 
-##### Request/response transform
+##### 3.10.8.1 Request/response transform
 
 The transformer plugin can transform request and response headers, query parameters, and body parameters. You can perform various operations, such as delete, rename, update, add, append, map, and deduplicate. This topic describes how to configure the transformer plugin.
 
@@ -11121,7 +11233,7 @@ $ curl -v -X POST console.higress.io/post \ -H 'Content-Type: application/json' 
 
 `}`
 
-##### Frontend grayscale release
+##### 3.10.8.2 Frontend grayscale release
 
 The frontend-gray plugin implements grayscale releases for frontend users. This plugin supports A/B tests. It also ensures the stability of system releases and O&M through grayscale, monitoring, and rollback policies. This topic describes how to configure the frontend-gray plugin.
 
@@ -11334,7 +11446,7 @@ The following file mappings are valid:
  /app1/js/template/a.js  =>  /mfe/app1/v1.0.0/js/template/a.js
 ```
 
-##### Custom responses
+##### 3.10.8.3 Custom responses
 
 The custom-response plugin lets you configure custom responses, including custom HTTP response status codes, HTTP response headers, and HTTP response bodies. You can use this plugin to mock responses or to provide a custom response for a specific status code, such as when a gateway throttling policy is triggered. This topic describes how to configure the custom-response plugin.
 
@@ -11383,7 +11495,7 @@ HTTP/1.1 302 Found Location: https://example.com
 
 This uses the browser's 302 redirection mechanism to redirect throttled users to another page, such as a static page on a CDN. To return a different standard response when throttling is triggered, configure the fields as shown in the mock response scenario.
 
-##### DeGraphQL
+##### 3.10.8.4 DeGraphQL
 
 The de-graphql plugin enables you to access a GraphQL upstream service as a traditional service by mapping URIs to GraphQL queries. This topic describes how to configure the degraphql plugin.
 
@@ -11559,7 +11671,7 @@ curl 'https://api.github.com/graphql' -X POST \ -H 'Authorization: bearer <PAT>'
 
 https://github.com/graphql/graphql-spec https://docs.github.com/zh/graphql/guides/forming-calls-with-graphql https://github.com/altair-graphql/altair
 
-##### Browser cache control
+##### 3.10.8.5 Browser cache control
 
 The cache-control plug-in adds `Expires` and `Cache-Control` headers to a response based on the file extension in the request URL. This allows browsers to cache specific files, such as `jpg` and `png` image files. This topic describes how to configure the cache-control plug-in.
 
@@ -11596,9 +11708,9 @@ curl http://example.com/test.png curl http://exmaple.com/test.jpg
 expires: max
 ```
 
-#### Observability
+#### 3.10.9 Observability
 
-##### IP geolocation
+##### 3.10.9.1 IP geolocation
 
 The geo-ip plugin retrieves geolocation information based on a user's IP address. It then passes this information to subsequent plugins using request properties and a new request header. This topic describes how to configure the geo-ip plugin.
 
@@ -11694,9 +11806,9 @@ curl http://localhost/test \ -H "content-type: application/json" \ -H "x-forward
 
 `}` `]` `}'`
 
-### Certificate management
+### 3.11 Certificate management
 
-#### Create a certificate
+#### 3.11.1 Create a certificate
 
 You can use the certificate management feature to upload certificates to an AI gateway. When a user accesses the gateway over HTTPS, the gateway finds the certificate that matches the requested domain name and sends it to the user to complete the TLS handshake.
 
@@ -11717,7 +11829,7 @@ parameters, and then click **OK**.
 | Certificate File | Enter the content of the certificate file in the text box, or click Upload Certificate to read the content from a file. |
 | Certificate Key | Enter the content of the certificate key in the text box, or click Upload Key to read the content from a file. |
 
-#### Manage certificates
+#### 3.11.2 Manage certificates
 
 Certificate management includes features to update, delete, and view certificate details. These features help you manage the entire certificate lifecycle.
 
@@ -11761,9 +11873,9 @@ or click **Details** in the **Operation** column.
 
 After you upload the certificate, you can access the gateway using the correct domain name and an incorrect one. The results are as follows: A successful handshake occurs only when you access the gateway with the correct domain name because the gateway can provide the corresponding certificate.
 
-### Domain name management
+### 3.12 Domain name management
 
-#### Create a domain name
+#### 3.12.1 Create a domain name
 
 AI Gateway lets you manage protocols, certificates, and routing configurations for multiple domain names.
 
@@ -11807,7 +11919,7 @@ Verify HTTPS
 curl -v -k https://hello.com --resolve "hello.com:443:{Public IP}" --cacert my-cert .pem
 ```
 
-#### Manage domain names
+#### 3.12.2 Manage domain names
 
 After you create a domain name, you can edit it, delete it, or view its details.
 
@@ -11853,9 +11965,9 @@ or click **Details** in the **Operation** column.
 click **Delete** in the **Actions** column.
 6. In the **Prompt** dialog box, click **OK**.
 
-### Observation and analysis
+### 3.13 Observation and analysis
 
-#### Model monitoring
+#### 3.13.1 Model monitoring
 
 This topic describes how to use the **model monitoring** feature in the AI Gateway console to query and analyze data.
 
@@ -11909,7 +12021,7 @@ sensitive content generation and unauthorized access.
 **Risky Consumer Statistics**: consumers with abnormal behavior, such as those that
 frequently trigger the security policy and those that initiate malicious service calls.
 
-#### MCP monitoring
+#### 3.13.2 MCP monitoring
 
 This topic describes how to use the Model Context Protocol (**MCP**) feature to query and analyze data in the AI Gateway console.
 
@@ -11951,9 +12063,9 @@ describes the time when a request is sent to the time when the result is receive
 **Request Distribution**: the distribution of requests by time, such as changes in the
 number of requests received per hour or per day.
 
-### Token quota
+### 3.14 Token quota
 
-#### Create a quota rule
+#### 3.14.1 Create a quota rule
 
 A token quota is a core mechanism for throttling and resource management in AI Gateway. It sets usage limits for different users, teams, or applications to prevent a single consumer from excessively consuming resources, which could cause system failures or service disruptions. This topic describes how to create a quota rule.
 
@@ -11998,7 +12110,7 @@ ii. In the **Consumer selection** wizard, select consumers and click **Create ru
 
 You can add up to 1,000 consumers in a single creation or editing operation. To add more consumers, edit the rule again. Each consumer can be bound to only one quota rule. You cannot select consumers already bound to other rules.
 
-#### Manage quota rules
+#### 3.14.2 Manage quota rules
 
 This topic describes how to manage quota rules.
 
@@ -12094,7 +12206,7 @@ and then click **Reset**.
 
 On the **Token Quotas** page, click **Republish** in theOperation column of the target rule.
 
-### Proxy servers
+### 3.15 Proxy servers
 
 This topic describes how to create and manage proxy servers.
 
@@ -12148,9 +12260,9 @@ Before you delete a proxy server, make sure that the proxy server is not referen
 server.
 2. In the message that appears, click **OK**.
 
-### Monitoring and analysis
+### 3.16 Monitoring and analysis
 
-#### View gateway log information
+#### 3.16.1 View gateway log information
 
 AI Gateway log data integrates seamlessly with Simple Log Service (SLS). This enables centralized collection, storage, and analysis of traffic logs for AI scenarios. This topic describes how to view AI Gateway log information in **SLS**.
 
@@ -12167,7 +12279,7 @@ An AI Gateway instance is created and **Simple Log Service** is enabled. For mor
 4. In the Logstore list on the left, click **higress-gateway**. The collected log information
 appears on the right.
 
-#### View gateway monitoring metrics
+#### 3.16.2 View gateway monitoring metrics
 
 AI Gateway integrates with the monitoring service to provide complete observability for core gateway metrics. This topic describes how to view gateway monitoring metrics after you enable the monitoring service.
 
@@ -12188,9 +12300,9 @@ in the list on the right.
 5. Expand **higress-gateway-metrics** and click the Endpoint to open the details page.
 The details page that appears displays all metrics. utorial
 
-## Practice tutorial
+## 4 Practice tutorial
 
-### Access the AI Gateway over
+### 4.1 Access the AI Gateway over HTTPS
 
 **HTTPS**
 

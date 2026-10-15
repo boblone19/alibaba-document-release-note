@@ -3,16 +3,24 @@ title: "Apsara Big Data Manager Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Big Data Manager Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "390c9da6c5bb553d_Alibaba Cloud Apsara Stack V3.18.6 Apsara Big Data Manager Operations and Maintenance Guide 20260629"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AE%A1%E5%AE%B6/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Big%20Data%20Manager%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Big Data Manager Operations and Maintenance Guide
 
-## Routine maintenance
+## Table of Contents
 
-### Perform routine maintenance
+- 1 Routine maintenance
+  - 1.1 Perform routine maintenance
+  - 1.2 View the health of a cluster in the ABM console
+  - 1.3 Troubleshooting
+- 2 Backup and restore
+
+## 1 Routine maintenance
+
+### 1.1 Perform routine maintenance
 
 You can perform routine maintenance on Apsara Big Data Manager (ABM) in the Apsara Infrastructure Management console.
 
@@ -30,7 +38,7 @@ sure that all containers have reached the desired state.
 
 Monitor hardware components The system retains logs for 30 days and automatically deletes historical logs. If a disk alert is triggered when a large volume of logs exhausts disk space, contact technical support. System exception If a system exception occurs during the inspection, handle the exception in the ABM console. If the exception message is unclear, contact technical support.
 
-### View the health of a cluster in
+### 1.2 View the health of a cluster in the ABM console
 
 **the ABM console**
 
@@ -64,7 +72,7 @@ icon next to a hostname. The **TerminalService** page appears.
 3. On the **TerminalService** page, click the hostname in the left-side navigation pane to log in
 to the host.
 
-### Troubleshooting
+### 1.3 Troubleshooting
 
 **Common failures**
 
@@ -76,7 +84,7 @@ If you failed to log on to ABM, clear the cache and cookies in your web browser,
 
 Contact technical support.
 
-## Backup and restore
+## 2 Backup and restore
 
 **Back up data**
 

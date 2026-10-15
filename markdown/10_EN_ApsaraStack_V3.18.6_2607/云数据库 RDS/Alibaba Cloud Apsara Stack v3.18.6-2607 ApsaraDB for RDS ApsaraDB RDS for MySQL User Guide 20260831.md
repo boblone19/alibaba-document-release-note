@@ -3,16 +3,108 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS fo
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 168
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831.pdf"
+source_pdf: "070a32e25bf25147_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20MySQL%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for MySQL User Guide 20260831
 
+## Table of Contents
+
+- 1 Console feature release notes
+- 2 What is ApsaraDB RDS?
+- 3 Instance types
+- 4 Log on to the ApsaraDB RDS console
+- 5 Quick start
+  - 5.1 Limits
+  - 5.2 Procedure
+  - 5.3 Create an instance
+  - 5.4 Initialization settings
+    - 5.4.1 Configure an IP address whitelist for an ApsaraDB RDS instance
+    - 5.4.2 Create an account
+    - 5.4.3 Create a database
+  - 5.5 Connect to an ApsaraDB RDS for MySQL instance
+- 6 Instances
+  - 6.1 Create an instance
+  - 6.2 View the details of an ApsaraDB RDS instance
+  - 6.3 Restart an instance
+  - 6.4 Change instance specifications
+  - 6.5 Set a maintenance window
+  - 6.6 Change the data replication mode
+  - 6.7 Release an instance
+  - 6.8 Update the minor engine version of an instance
+  - 6.9 Configure instance parameters
+  - 6.10 Read-only instances
+    - 6.10.1 Overview of read-only instances
+    - 6.10.2 Create a read-only instance
+    - 6.10.3 View details of read-only instances
+  - 6.11 Manage instances in the recycle bin
+  - 6.12 Manage tags
+- 7 Accounts
+  - 7.1 Language Detection
+  - 7.2 Reset the password of a database account
+  - 7.3 Product Material Optimization Pro
+  - 7.4 Modify the permissions of an account
+  - 7.5 Product Material Optimization Lite
+- 8 Category Match
+  - 8.1 Category Attribute Match
+  - 8.2 Smart Matting
+- 9 Size Chart Extraction
+  - 9.1 Change the endpoint and port number of an instance
+  - 9.2 Apply for and release an internal endpoint or a public endpoint for an instance
+  - 9.3 Use DMS to log on to an ApsaraDB RDS instance
+  - 9.4 Configure the hybrid access solution for an instance
+  - 9.5 Change the network type of an instance
+  - 9.6 Change the VPC and vSwitch for an instance
+- 10 Database proxy
+  - 10.1 Configure a dedicated proxy
+  - 10.2 Configure a connection pool
+  - 10.3 Set the consistency level
+  - 10.4 Read/write splitting
+    - 10.4.1 Enable read/write splitting
+    - 10.4.2 Configure read/write splitting
+    - 10.4.3 Disable read/write splitting
+- 11 Monitoring and alerts
+  - 11.1 View monitoring data
+  - 11.2 Configure an alert rule
+- 12 Cloud Monitor
+  - 12.1 View performance metrics
+  - 12.2 Alert history
+  - 12.3 Alert rules
+    - 12.3.1 Create an alert rule
+    - 12.3.2 Manage alert rules
+- 13 Data security
+  - 13.1 Configure an IP address whitelist
+  - 13.2 Configure SSL encryption
+  - 13.3 Configure TDE
+  - 13.4 Use the SQL audit feature
+- 14 Service availability
+  - 14.1 Switch workloads between primary and secondary ApsaraDB RDS instances
+  - 14.2 Change the data replication mode
+- 15 Database backup and restoration
+  - 15.1 Configure automatic backup
+  - 15.2 Manually back up an instance
+  - 15.3 Download data backup files and log backup files
+  - 15.4 Upload binlogs
+  - 15.5 Database recovery
+- 16 CloudDBA
+  - 16.1 Introduction to DAS
+  - 16.2 Diagnostics and analysis
+    - 16.2.1 Perform quick diagnostics
+    - 16.2.2 Session Management
+    - 16.2.3 Real-time monitoring
+    - 16.2.4 Lock analysis
+    - 16.2.5 Storage Analysis
+  - 16.3 Dashboard
+  - 16.4 View slow query logs
+  - 16.5 Diagnostic reports
+- 17 Log management
+- 18 Use mysqldump to migrate MySQL data
+
 es
 
-## Console feature release
+## 1 Console feature release notes
 
 **notes**
 
@@ -24,7 +116,7 @@ This topic describes new features and key updates for RDS for MySQL.
 |---|---|---|
 | Configuration overview for instance creation | When creating an instance, a Configuration Overview panel appears on the right after you set all parameters. Use this panel to review the instance's full configuration. | Create an instance |
 
-## What is ApsaraDB RDS?
+## 2 What is ApsaraDB RDS?
 
 ApsaraDB RDS is a stable, reliable, and scalable online database service. Based on the distributed file system and high-performance storage, ApsaraDB RDS provides a set of solutions for disaster recovery, backup, restoration, monitoring, and migration. ApsaraDB RDS supports four database engines, which are MySQL, SQL Server, PolarDB, and PostgreSQL. You can create RDS instances that run these engines to meet your business requirements.
 
@@ -38,7 +130,7 @@ endpoint. This endpoint enables automatic read/write splitting for a primary RDS
 **High availability based on zone-disaster recovery**: RDS for MySQL instances that run
 RDS High-availability Edition adopt an HA architecture that consists of a primary node and a secondary node deployed in two different zones within the same region, such as China (Shanghai) Zone A and China (Shanghai) Zone B. The primary node handles read and write requests. The secondary node synchronizes data from the primary node in real time and does not handle requests. When the zone in which the primary node is deployed becomes unavailable due to power outage or network issues, the secondary node is automatically promoted to the primary node within a period ranging from 30 seconds to 5 minutes. The time required for the failover depends on the fault detection and recovery mechanism.
 
-## Instance types
+## 3 Instance types
 
 This topic describes the instance types of ApsaraDB RDS for MySQL. Different instance types deliver different performance.
 
@@ -136,7 +228,7 @@ If the throughput of an ApsaraDB RDS for MySQL instance reaches the upper limit,
 
 console
 
-## Log on to the ApsaraDB
+## 4 Log on to the ApsaraDB RDS console
 
 **RDS console**
 
@@ -164,9 +256,9 @@ For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
-## Quick start
+## 5 Quick start
 
-### Limits
+### 5.1 Limits
 
 To ensure instance stability and security, ApsaraDB RDS for MySQL has specific service limits, as listed in the following table.
 
@@ -185,11 +277,11 @@ To ensure instance stability and security, ApsaraDB RDS for MySQL has specific s
 | Privileged account | Authorization is allowed on standard accounts. The privileged account cannot be reverted to a standard account. |
 |---|---|
 
-### Procedure
+### 5.2 Procedure
 
-ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS instance, configuring an IP address whitelist, creating a database, creating an account, and connecting to the instance. This topic describes how to use ApsaraDB RDS and provides all the necessary information to create an ApsaraDB RDS instance. ApsaraDB RDS for MySQL is used in the example. Typically, after an instance is created, you must perform several operations to make the instance ready for use, as shown in Quick start flowchart. Figure 1. Quick start flowchart Create an instance An instance is a virtual database server on which you can create and manage multiple databases. Configure an IP address whitelist After you create an RDS instance, you must configure IP address whitelists for the RDS instance to allow access from external devices. Whitelists make your ApsaraDB RDS instance more secure. We recommend that you maintain whitelists on a regular basis. When you configure IP address whitelists for your RDS instance, the workloads on the instance are not affected. Category Attribute Match and Create an account Before you use a database, you must create the database and an account on the ApsaraDB RDS instance. Connect to an ApsaraDB RDS for MySQL instance After you create an ApsaraDB RDS instance, configure an IP address whitelist, and create a database and an account, you can connect to the instance by using a database client.
+ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS instance, configuring an IP address whitelist, creating a database, creating an account, and connecting to the instance. This topic describes how to use ApsaraDB RDS and provides all the necessary information to create an ApsaraDB RDS instance. ApsaraDB RDS for MySQL is used in the example. Typically, after an instance is created, you must perform several operations to make the instance ready for use, as shown in Quick start flowchart. Figure 1. Quick start flowchart An instance is a virtual database server on which you can create and manage multiple databases. After you create an RDS instance, you must configure IP address whitelists for the RDS instance to allow access from external devices. Whitelists make your ApsaraDB RDS instance more secure. We recommend that you maintain whitelists on a regular basis. When you configure IP address whitelists for your RDS instance, the workloads on the instance are not affected. Category Attribute Match and Create an account Before you use a database, you must create the database and an account on the ApsaraDB RDS instance. After you create an ApsaraDB RDS instance, configure an IP address whitelist, and create a database and an account, you can connect to the instance by using a database client.
 
-### Create an instance
+### 5.3 Create an instance
 
 This topic describes how to create an instance in the ApsaraDB RDS Console.
 
@@ -236,9 +328,9 @@ An Apsara Stack tenant account is created.
 
 4. Click **Submit**.
 
-### Initialization settings
+### 5.4 Initialization settings
 
-#### Configure an IP address whitelist for an
+#### 5.4.1 Configure an IP address whitelist for an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -279,7 +371,7 @@ Click **Create Whitelist** to create a custom group.
 5. In the **Modify Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed
 to connect to your ApsaraDB RDS instance, and then click **OK**. Then, click OK to save the configuration. If you enter a CIDR block such as 10.10.10.0/24, all IP addresses in the 10.10.10.XX range can access your ApsaraDB RDS instance. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances that are created within the current Alibaba Cloud account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
-#### Create an account
+#### 5.4.2 Create an account
 
 Detect the language of the input text. Supports automatic recognition of 23 languages. Best suited to short text such as search queries, product titles, and chat messages. Synchronous.
 
@@ -369,7 +461,7 @@ Common error codes: `InvalidParameter` (missing or empty `SourceText` ), `Intern
 
 Text Translation API -- translate plain text. Text Correction API -- spelling correction.
 
-#### Create a database
+#### 5.4.3 Create a database
 
 Multimodal-LLM-based cross-platform category-attribute filling. Given source-platform product info (title, source category, description, SKU, attributes, up to 10 images), match the precise target-platform category and fill every required attribute, with a per-attribute confidence and rationale. Synchronous.
 
@@ -433,7 +525,7 @@ See Error codes.
 
 Category Match API -- category match alone.
 
-### Connect to an ApsaraDB RDS
+### 5.5 Connect to an ApsaraDB RDS for MySQL instance
 
 **for MySQL instance**
 
@@ -463,9 +555,9 @@ following table describes the required parameters.
 
 4. Click **Open**. If the connection information is correct, you can connect to the instance.
 
-## Instances
+## 6 Instances
 
-### Create an instance
+### 6.1 Create an instance
 
 This topic describes how to create an ApsaraDB for RDS instance by using the Alibaba Cloud console.
 
@@ -514,7 +606,7 @@ If your current quota is insufficient, click **Quota Management** to request an 
 **Management Platform User Guide**.
 5. After you configure the parameters, click **Submit**.
 
-### View the details of an
+### 6.2 View the details of an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -531,7 +623,7 @@ On the **Instances** page, click the ID of the instance to go to the **Basic Inf
 
 For more information about the mappings between MySQL versions of ApsaraDB RDS for MySQL and the MySQL community, see Release notes for AliSQL.
 
-### Restart an instance
+### 6.3 Restart an instance
 
 This topic describes how to manually restart an ApsaraDB RDS instance. This applies if the number of connections exceeds the specified threshold or if an instance has performance issues.
 
@@ -550,7 +642,7 @@ The instance is in the **Running** state.
 When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 4. In the Restart Instance message, click **Confirm**.
 
-### Change instance
+### 6.4 Change instance specifications
 
 **specifications**
 
@@ -572,7 +664,7 @@ If you set the **Switching Time** parameter to **Specified Time**, you must spec
 5. Click **Submit**.
 6. Confirm the changes and click **OK**.
 
-### Set a maintenance window
+### 6.5 Set a maintenance window
 
 This topic describes how to set a maintenance window for an ApsaraDB RDS instance.
 
@@ -598,7 +690,7 @@ to data in the database and query operations such as performance monitoring are 
 
 The maintenance window is displayed in UTC+8.
 
-### Change the data replication
+### 6.6 Change the data replication mode
 
 **mode**
 
@@ -617,7 +709,7 @@ ApsaraDB RDS supports the following data replication modes: Semi-sync After an a
 **Replication Mode**.
 5. In the dialog box that appears, select a data replication mode and click **OK**.
 
-### Release an instance
+### 6.7 Release an instance
 
 When an ApsaraDB RDS for MySQL instance is no longer needed due to business decommissioning, completion of testing, or architecture adjustments, you can manually release the instance through the console.
 
@@ -633,7 +725,7 @@ manage and click **Release an instance** in the **Operation** column.
 3. In the dialog box that appears, read the risk warnings carefully, confirm that you backed up
 the data, and then click **Release**.
 
-### Update the minor engine
+### 6.8 Update the minor engine version of an instance
 
 **version of an instance**
 
@@ -682,7 +774,7 @@ The **Upgrade Minor Engine Version** button is displayed only when a new minor e
 
 The minor engine version that you updated is the minor engine version of ApsaraDB RDS, but not the MySQL version. To view the minor engine version, you must run the `show variables` like '%rds_release_date%' command.
 
-### Configure instance
+### 6.9 Configure instance parameters
 
 **parameters**
 
@@ -1142,15 +1234,15 @@ If you modify other parameters on a primary instance, you must manually apply th
 | updatable views _ _ with limit _ | 8.0, 5.7 | YES | YES \| NO | No | This variable controls whether a view can be updated with a `LIMIT` clause if the view does not contain all columns of the primary key from the underlying table. (Such updates are typically generated by GUI tools). An update can be an `UPDATE` or `DELETE` statement. Here, the primary key refers to a primary key or a unique index in which no column can contain `NULL`. |
 | wait timeout _ | 8.0, 5.7 | 864 00 | [1- 31536000] | No | The number of seconds the server waits for activity before closing a non- interactive connection. |
 
-### Read-only instances
+### 6.10 Read-only instances
 
-#### Overview of read-only instances
+#### 6.10.1 Overview of read-only instances
 
 ApsaraDB RDS for MySQL allows you to create read-only instances. In scenarios where an instance has a small number of write requests but a large number of read requests, you can create read-only instances to distribute database access loads away from the primary instance. This topic describes the features and limits of read-only instances. To scale up the reading capability and distribute database access loads, you can create one or more read-only instances in a region. Read-only instances can increase the application throughput when a large amount of data is being read. A read-only instance with a single physical node and no backup node uses the native replication capability of MySQL to synchronize changes from the primary instance to all its read-only instances. Read-only instances must be in the same region as the primary instance but do not have to be in the same zone as the primary instance. The following figure shows the topology of read-only instances.
 **Read-only instances have the following features**:
 Specifications of a read-only instance can be different from those of the primary instance and can be changed at any time. This facilitates elastic scaling. Read-only instances do not require account or database maintenance. Account and database information is synchronized from the primary instance. The whitelists of read-only instances can be independently configured. System performance monitoring is provided. ApsaraDB RDS provides up to 20 system performance monitoring views, including those for disk capacity, IOPS, connections, CPU utilization, and network traffic. You can view the load of instances. ApsaraDB RDS provides a variety of optimization recommendations, such as storage engine check, primary key check, large table check, and check for excessive indexes and missing indexes. You can optimize your databases based on the optimization recommendations and specific applications.
 
-#### Create a read-only instance
+#### 6.10.2 Create a read-only instance
 
 You can create read-only instances of different specifications based on your business requirements.
 
@@ -1181,7 +1273,7 @@ parameters.
 
 5. Click **Submit**.
 
-#### View details of read-only instances
+#### 6.10.3 View details of read-only instances
 
 This topic describes how to view details of read-only instances. You can go to the Basic Information page of a read-only instance from the Instances page or from the read-only instance list of the primary instance. Read-only instances are managed in the same manner as primary instances. The Basic Information page shows the management operations that can be performed.
 
@@ -1208,7 +1300,7 @@ is displayed.
 4. Click the ID of the read-only instance to go to the Basic Information page of the read-only
 instance.
 
-### Manage instances in the
+### 6.11 Manage instances in the recycle bin
 
 **recycle bin**
 
@@ -1248,7 +1340,7 @@ click **Locked Instances**.
 3. Find the released instance and click **Destroy** in the Actions column. In the message that
 appears, click **Confirm**.
 
-### Manage tags
+### 6.12 Manage tags
 
 If you have a large number of instances, you can create multiple tags and add the tags to the instances. Then, you can query instances by tag. This topic describes how to manage tags.
 
@@ -1285,9 +1377,9 @@ icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, click the
 icon to the right of the tag and click **OK**.
 
-## Accounts
+## 7 Accounts
 
-### Language Detection
+### 7.1 Language Detection
 
 Detect the language of the input text. Supports automatic recognition of 23 languages. Best suited to short text such as search queries, product titles, and chat messages. Synchronous.
 
@@ -1381,7 +1473,7 @@ Common error codes: `InvalidParameter` (missing or empty `SourceText` ), `Intern
 
 Text Translation API -- translate plain text. Text Correction API -- spelling correction.
 
-### Reset the password of a
+### 7.2 Reset the password of a database account
 
 **database account**
 
@@ -1404,7 +1496,7 @@ column.
 
 The password must meet the following requirements: It can be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: !@#$%^&*()_+-= .
 
-### Product Material Optimization
+### 7.3 Product Material Optimization Pro
 
 **Pro**
 
@@ -1472,7 +1564,7 @@ See Error codes.
 
 Product Material Optimization Lite -- lowest-cost tier. Smart Image Generation API -- detailed field schema for the 7 atomic capabilities.
 
-### Modify the permissions of an
+### 7.4 Modify the permissions of an account
 
 **account**
 
@@ -1519,7 +1611,7 @@ Add or remove authorized databases: Select databases and click **>** or **<**. S
 |   |   | LOCK TABLES | EXECUTE | SHOW VIEW | EVENT | TRIGGER |
 |   |   | PROCESS | REPLICATION SLAVE | REPLICATION CLIENT | None | None |
 
-### Product Material Optimization
+### 7.5 Product Material Optimization Lite
 
 **Lite**
 
@@ -1619,7 +1711,7 @@ See Error codes.
 
 Product Material Optimization Pro -- best-quality tier. Smart Image Generation API -- detailed field schema for the 7 atomic capabilities.
 
-## Category Match
+## 8 Category Match
 
 LLM-based cross-platform category matching. Given source-platform product info, automatically pick the best category on the target listing platform and return the full path, a confidence score, and the rationale. Synchronous. Only `TEMU` is supported today.
 
@@ -1694,7 +1786,7 @@ See Error codes.
 
 Category Attribute Match API -- fill required attributes within the matched category.
 
-### Category Attribute Match
+### 8.1 Category Attribute Match
 
 Multimodal-LLM-based cross-platform category-attribute filling. Given source-platform product info (title, source category, description, SKU, attributes, up to 10 images), match the precise target-platform category and fill every required attribute, with a per-attribute confidence and rationale. Synchronous.
 
@@ -1758,7 +1850,7 @@ See Error codes.
 
 Category Match API -- category match alone.
 
-### Smart Matting
+### 8.2 Smart Matting
 
 Automatically detect the salient subject and separate it from the background. Supports transparent / white / custom-color output. Accuracy > 95% for hard cases (hair, translucent objects, fur). Synchronous.
 
@@ -1824,7 +1916,7 @@ Common: `InvalidParameter` (image exceeds limits), `DownstreamUnavailable` (imag
 
 Smart Image Generation API -- orchestrate matting with the other 6 capabilities asynchronously.
 
-## Size Chart Extraction
+## 9 Size Chart Extraction
 
 Use a multimodal LLM to extract structured size-chart and package-dimension data from
 
@@ -1921,7 +2013,7 @@ See Error codes.
 
 Size Chart Detection API -- screen images first to save cost before extraction.
 
-### Change the endpoint and port
+### 9.1 Change the endpoint and port number of an instance
 
 **number of an instance**
 
@@ -1946,7 +2038,7 @@ numbers.
 
 The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be a value within the range of 1000 to 5999.
 
-### Apply for and release an
+### 9.2 Apply for and release an internal endpoint or a public endpoint for an instance
 
 **internal endpoint or a public**
 
@@ -1974,7 +2066,7 @@ To release a public endpoint, click **Release Public Endpoint**. To release an i
 
 Can I change the endpoints and port numbers of my ApsaraDB RDS instance? You can change only the prefixes and port numbers of the endpoints. For more information, see Change the endpoint and port number of an instance. Can I set the endpoints of my ApsaraDB RDS instance to static IP addresses? No, you cannot set the endpoints of your ApsaraDB RDS instance to static IP addresses. Both primary/secondary switchovers and specification changes may cause changes to the IP addresses. We recommend that you connect to your ApsaraDB RDS instance by using an endpoint. This allows you to minimize the impact on your workloads and eliminates the need to modify the configuration data on your application. How do I connect to my ApsaraDB RDS instance by using a public endpoint? For more information, see Connect to an ApsaraDB RDS for MySQL instance.
 
-### Use DMS to log on to an
+### 9.3 Use DMS to log on to an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -2008,7 +2100,7 @@ An IP address whitelist is configured. For more information about how to configu
 If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-### Configure the hybrid access
+### 9.4 Configure the hybrid access solution for an instance
 
 **solution for an instance**
 
@@ -2054,7 +2146,7 @@ During the validity period of the hybrid access solution, you can change the exp
 4. Click **Change Expiration Time**.
 5. In the **Change Expiration Time** dialog box, select an expiration date and click **OK**.
 
-### Change the network type of
+### 9.5 Change the network type of an instance
 
 **an instance**
 
@@ -2086,7 +2178,7 @@ After you change the network type from VPC to classic network, the internal endp
 **Original Classic Network Endpoint**, and then click **OK**.
 For more information about **Retain Original Classic Network Endpoint**, see Configure the hybrid access solution for an instance.
 
-### Change the VPC and vSwitch
+### 9.6 Change the VPC and vSwitch for an instance
 
 **for an instance**
 
@@ -2115,9 +2207,9 @@ click **Switch vSwitch**.
 4. Select a VPC and a vSwitch, and then click **OK**.
 5. In the message that appears, click **OK**.
 
-## Database proxy
+## 10 Database proxy
 
-### Configure a dedicated proxy
+### 10.1 Configure a dedicated proxy
 
 The dedicated proxy for ApsaraDB RDS for MySQL is a database middleware service built on isolated computing resources. It supports features such as read/write splitting, a connection pool, and consistency level control. The proxy endpoint remains stable for the lifetime of the proxy service, reducing the impact of backend topology changes on your application's connection configuration. By using dedicated proxy resources, you can reduce the risk of multi-tenant interference, scale specifications on demand, and improve both operational efficiency and concurrency.
 
@@ -2179,7 +2271,7 @@ After you disable the dedicated proxy service, the proxy endpoint becomes unavai
 **but the primary instance endpoint is not affected** . If you re-enable the service,
 the system assigns a new proxy endpoint. Before disabling the service, switch your application to the primary instance endpoint or another available connection method.
 
-### Configure a connection pool
+### 10.2 Configure a connection pool
 
 If connections such as short-lived connections are frequently established between your application and ApsaraDB RDS for MySQL instance or the maximum number of connections that is allowed to the ApsaraDB RDS for MySQL instance is reached, you can use connection pooling of the database proxy feature. Connection pooling can reduce the frequency at which your application connects to the ApsaraDB RDS for MySQL instance, the main thread overhead of the ApsaraDB RDS for MySQL instance, and the total number of connections to the ApsaraDB RDS for MySQL instance. This topic describes the connection pooling feature of the ApsaraDB RDS for MySQL database proxy. This feature does not affect the connection pooling feature on the client side. If your client already supports connection pooling, you can choose not to use the connection pooling feature of the database proxy.
 
@@ -2217,7 +2309,7 @@ After the connection pooling type is changed, the modification takes effect only
 4. On the **Proxy Service** tab, configure the Connection Pool parameter. The following options
 are available: Disable (default value) Enable Transaction Connection Pool Enable Session Connection Pool
 
-### Set the consistency level
+### 10.3 Set the consistency level
 
 ApsaraDB RDS for MySQL uses Binlog replication to synchronize data between the primary node and read-only nodes. When a transaction is committed on the primary node, the generated Binlog event is sent to the read-only nodes. The read-only nodes then apply this event to synchronize with the primary node. Although Binlog-based replication ensures eventual consistency, data on read-only nodes may lag under high concurrency or heavy loads, which can lead to inconsistent reads. To address data inconsistency, the ApsaraDB RDS for MySQL database proxy offers three consistency levels: eventual consistency, session consistency, and global consistency.
 
@@ -2246,9 +2338,9 @@ When using session consistency or global consistency, the proxy waits for data p
 4. On the **Proxy Service** tab, set the **Consistency Level**.
 Eventual Consistency (default) Enable Session Consistency Enable Global Consistency
 
-### Read/write splitting
+### 10.4 Read/write splitting
 
-#### Enable read/write splitting
+#### 10.4.1 Enable read/write splitting
 
 This topic describes the read/write splitting feature. This feature allows ApsaraDB RDS to route read and write requests to the primary and read-only instances based on the dedicated proxy endpoint (also called read/write splitting endpoint).
 
@@ -2303,7 +2395,7 @@ A read-only instance is created for the primary instance. For more information, 
 
 6. Click **OK**.
 
-#### Configure read/write splitting
+#### 10.4.2 Configure read/write splitting
 
 This topic describes how to configure the latency threshold and specify read weights for an ApsaraDB RDS instance in the ApsaraDB RDS console.
 
@@ -2328,7 +2420,7 @@ Read/write splitting is enabled. For more information, see Enable read/write spl
 
 6. Click **OK**.
 
-#### Disable read/write splitting
+#### 10.4.3 Disable read/write splitting
 
 This topic describes how to disable the read/write splitting feature of an ApsaraDB RDS instance in the ApsaraDB RDS console.
 
@@ -2345,9 +2437,9 @@ instance that you want to manage and click the ID of the instance or click **Man
 4. On the **Read/Write Splitting** tab, click **Disable Read/Write Splitting**.
 5. In the message that appears, click **Confirm**.
 
-## Monitoring and alerts
+## 11 Monitoring and alerts
 
-### View monitoring data
+### 11.1 View monitoring data
 
 ApsaraDB RDS for MySQL allows you to view performance monitoring data for system resources, engines, and deployments to track the running status of instances.
 
@@ -2399,7 +2491,7 @@ or **Deploy Monitoring**, and then specify a time range to view the correspondin
 | Replication Thread Status of Secondary Instances | The replication thread status of the secondary node, including: I/O thread: 1 indicates a normal status, and 0 indicates a lost thread. SQL thread: 1 indicates a normal status, and 0 indicates a lost thread. |
 | Replication Latency of Secondary Instances | The replication latency of the secondary node. Unit: seconds. |
 
-### Configure an alert rule
+### 11.2 Configure an alert rule
 
 This topic describes how to create alert rules in the ApsaraDB RDS console. This allows you to identify and handle exceptions at the earliest opportunity.
 
@@ -2430,9 +2522,9 @@ table and click **OK**.
 | No data processing method | Specify how Cloud Monitor acts when no alert is triggered. Valid values: No processing: Cloud Monitor does not perform any operations when no alert is triggered. Send no data alarm: Cloud Monitor sends the corresponding notifications to contacts when no alert is triggered. |
 | Alarm contact | The alert contacts or alert contact groups to which Cloud Monitor sends alert notifications. By default, the value of this parameter is a dummy user used to test whether the alert rule is effective. |
 
-## Cloud Monitor
+## 12 Cloud Monitor
 
-### View performance metrics
+### 12.1 View performance metrics
 
 PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
 
@@ -2452,7 +2544,7 @@ and **read-only instances**. View performance metrics
 3. In the **time granularity** drop-down list, select **1 Minute** or **1 Hour** (default value) as the
 data collection interval.
 
-### Alert history
+### 12.2 Alert history
 
 After an alert is triggered, you can view its history. You can also export and download the alert history for local data analytics.
 
@@ -2473,9 +2565,9 @@ After an alert is triggered, you can view its history. You can also export and d
 | Export alert history | i. On the Alert History page, click in the upper-right corner. ii. In the Export Task dialog box, set Time Range and Task Name. Then, click OK. |
 |---|---|
 
-### Alert rules
+### 12.3 Alert rules
 
-#### Create an alert rule
+#### 12.3.1 Create an alert rule
 
 Create an alert rule that triggers alerts for a cloud service based on specified metric thresholds and promptly notifies relevant users.
 
@@ -2525,7 +2617,7 @@ The minimum alert detection frequency is once per minute.
 
 This example creates an alert rule named "example" for an Elastic Compute Service (ECS) instance to monitor its CPU utilization. The rule triggers a Critical alert if the maximum CPU utilization is greater than or equal to 70% for three occurrences within five detection periods. The following figure shows the rule description configuration for this scenario.
 
-#### Manage alert rules
+#### 12.3.2 Manage alert rules
 
 From the list of alert rules, you can modify, enable, disable, and delete rules.
 
@@ -2551,9 +2643,9 @@ From the list of alert rules, you can modify, enable, disable, and delete rules.
 |---|---|
 | Delete an alert rule | Delete a single rule a. In the Operation column of the target alert rule, click the icon, and then click Delete. b. In the Delete Alert Rule dialog box, click OK. Delete rules in a batch a. Select the check boxes next to the target alert rules, and then click Delete in the lower-left corner of the list. b. In the Delete Alert Rule dialog box, click OK. |
 
-## Data security
+## 13 Data security
 
-### Configure an IP address
+### 13.1 Configure an IP address whitelist
 
 **whitelist**
 
@@ -2594,7 +2686,7 @@ Click **Create Whitelist** to create a custom group.
 5. In the **Modify Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed
 to connect to your ApsaraDB RDS instance, and then click **OK**. Then, click OK to save the configuration. If you enter a CIDR block such as 10.10.10.0/24, all IP addresses in the 10.10.10.XX range can access your ApsaraDB RDS instance. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances that are created within the current Alibaba Cloud account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
-### Configure SSL encryption
+### 13.2 Configure SSL encryption
 
 This topic describes how to make data transmission more secure by configuring Secure Sockets Layer (SSL) encryption. You must enable SSL encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required applications. SSL is used to encrypt connections at the transport layer and enhance the security and integrity of the transmitted data. However, SSL encryption increases the round-trip time.
 
@@ -2676,7 +2768,7 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 5. In the **SSL Settings** section, turn off **SSL Encryption**. In the message that appears, click
 **OK**.
 
-### Configure TDE
+### 13.3 Configure TDE
 
 Transparent Data Encryption (TDE) allows you to perform real-time I/O encryption and decryption on data files. Data is encrypted before it is written to the disk and is decrypted when it is read from the disk to the memory. After you enable TDE for your RDS instance, the size of data files in your RDS instance does not increase. You can use TDE without the need to modify the configurations of your application.
 
@@ -2745,7 +2837,7 @@ alter table <tablename> encryption='N';
 
 After I enable TDE, can I use common database tools such as Navicat? Yes, after you enable TDE, you can use common database tools such as Navicat. After I enable TDE, why is my data still in plaintext? After you enable TDE, your data is stored in ciphertext. However, when the data is queried, it is decrypted and loaded in plaintext to the memory. A: TDE encrypts backup files to prevent data leaks. Before you restore the data of your ApsaraDB RDS instance from an encrypted backup file to your computer, you must decrypt the file. For more information, see the "Decrypt a table" section of this topic.
 
-### Use the SQL audit feature
+### 13.4 Use the SQL audit feature
 
 This topic describes how to use the SQL audit feature on an ApsaraDB RDS for MySQL instance. You can use the SQL audit feature to view the details about the SQL statements that are executed on your ApsaraDB RDS instance and audit the SQL statements on a regular basis. The SQL audit feature does not affect instance performance.
 
@@ -2803,9 +2895,9 @@ By default, audit logs are stored in SLS-inner. You can switch them to an access
 
 The change cannot be reversed. Proceed with caution.
 
-## Service availability
+## 14 Service availability
 
-### Switch workloads between
+### 14.1 Switch workloads between primary and secondary ApsaraDB RDS instances
 
 **primary and secondary ApsaraDB**
 
@@ -2838,7 +2930,7 @@ You may encounter one or two service interruptions during a switchover. Make sur
 5. In the dialog box that appears, configure the switchover time (**Switch Immediately** or
 **Within Specified Time RangeCurrent Settings**), and then click **OK**.
 
-### Change the data replication
+### 14.2 Change the data replication mode
 
 **mode**
 
@@ -2869,11 +2961,11 @@ When an application initiates an update request, the primary instance responds i
 5. In the pop-up dialog box, select a data replication mode and click **OK** twice in succession.
 ation
 
-## Database backup and
+## 15 Database backup and restoration
 
 **restoration**
 
-### Configure automatic backup
+### 15.1 Configure automatic backup
 
 Automatic backup of ApsaraDB RDS supports full physical backups. ApsaraDB RDS automatically backs up data based on pre-configured policies. This topic describes how to configure a policy for automatic backup.
 
@@ -2905,7 +2997,7 @@ ation
 
 6. Click **Save**.
 
-### Manually back up an instance
+### 15.2 Manually back up an instance
 
 Manual backup of ApsaraDB RDS supports both full physical and logical backups. This topic describes how to manually back up an ApsaraDB RDS instance.
 
@@ -2920,7 +3012,7 @@ Manual backup of ApsaraDB RDS supports both full physical and logical backups. T
 
 The following backup modes are available: Physical backup: directly backs up all files in all databases. Logical backup: extracts data from the databases by using SQL statements and backs up the data in the text format. If you select logical backup, you must select one of the following backup policies: Instance Backup: backs up the entire instance. Single-Database Backup: backs up one of the databases on the instance.
 
-### Download data backup files
+### 15.3 Download data backup files and log backup files
 
 **and log backup files**
 
@@ -2974,7 +3066,7 @@ wget -c '<Download URL of the backup file>' -O <File name>
 
 The -c option enables resumable download. The -O option saves the downloaded file by using a specified name. We recommend that you use the file name contained in the download URL. If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
 
-### Upload binlogs
+### 15.4 Upload binlogs
 
 **Background information**
 
@@ -2989,7 +3081,7 @@ This topic describes how to upload binlog files to Object Storage Service (OSS).
 4. In the upper-right corner of the page, click **Upload Binlogs**.
 5. In the message that appears, click **Confirm**.
 
-### Database recovery
+### 15.5 Database recovery
 
 Database recovery is the process of creating a new clone instance by copying the data and settings from a primary instance. A clone instance is primarily used to recover the primary instance's data or to create multiple identical instances.
 
@@ -3037,19 +3129,19 @@ then click **OK** in the confirmation dialog box.
 ation
 6. Configure the parameters and click **Submit**.
 
-## CloudDBA
+## 16 CloudDBA
 
-### Introduction to DAS
+### 16.1 Introduction to DAS
 
 Database Autonomy Service (DAS) is a cloud service that uses machine learning and expert experience to automate perception, healing, optimization, O&M, and security for databases. DAS simplifies database management and prevents service failures that are caused by manual operations. This way, DAS helps ensure that the database service of users runs in a stable, secure, and efficient manner.
 
 **Features**
 
-ApsaraDB RDS for MySQL leverages the core capabilities of DAS to deeply integrate intelligent diagnostics and autonomy services into the ApsaraDB RDS console. It offers the following features to provide a one-stop database management experience: Perform quick diagnostics Allows you to view resource usage, basic instance information, and a comprehensive performance overview. You can also initiate diagnostics to quickly identify database anomalies. Session Management Supports real-time monitoring, analysis, and intervention of active sessions on database instances. It allows you to view abnormal sessions (such as long-running uncommitted transactions), export or terminate sessions, and integrate with autonomous capabilities like 10-second SQL analysis, SQL throttling, and SQL optimization. These features help you quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation. Real-time monitoring Allows you to view visualized charts and tables generated from key operational metrics collected at high frequencies. This feature is designed to help database administrators (DBAs) and developers gain insights into the real-time loads of database instances, quickly locate the root cause of performance jitters, and assess the resource usage of database instances. Lock analysis When database issues such as deadlocks, transaction blocking, or metadata lock (MDL) waits occur, you can use the lock analysis feature to visually diagnose lock-wait relationships. This helps quickly identify the root cause of blocking and the dependency chain, which significantly improves troubleshooting efficiency and ensures the stability and high availability of database services. Storage Analysis Allows you to view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database. Dashboard Allows you to view performance metrics, such as TPS, QPS, and throughput, of an instance. You can view performance metrics in different ways. For example, you can view the performance metrics within a specific time period, compare performance metrics collected during different time periods, or customize the performance metrics you want to view. View slow query logs Allows you to view slow query log trends, statistical information, and execution details. It also provides optimization recommendations and allows you to export historical data, helping you quickly locate and resolve performance bottlenecks. Diagnostic reports Allows you to generate instance health assessment reports manually or on a schedule. By analyzing health scores, slow SQL queries, and resource bottlenecks, this feature identifies potential risks and assists with manual troubleshooting and performance optimization. Currently, this feature can only assess the status of database instances and display the identified issues. It does not provide any optimization suggestions. You need to troubleshoot the issues based on the generated report.
+ApsaraDB RDS for MySQL leverages the core capabilities of DAS to deeply integrate intelligent diagnostics and autonomy services into the ApsaraDB RDS console. It offers the following features to provide a one-stop database management experience: Allows you to view resource usage, basic instance information, and a comprehensive performance overview. You can also initiate diagnostics to quickly identify database anomalies. Supports real-time monitoring, analysis, and intervention of active sessions on database instances. It allows you to view abnormal sessions (such as long-running uncommitted transactions), export or terminate sessions, and integrate with autonomous capabilities like 10-second SQL analysis, SQL throttling, and SQL optimization. These features help you quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation. Allows you to view visualized charts and tables generated from key operational metrics collected at high frequencies. This feature is designed to help database administrators (DBAs) and developers gain insights into the real-time loads of database instances, quickly locate the root cause of performance jitters, and assess the resource usage of database instances. When database issues such as deadlocks, transaction blocking, or metadata lock (MDL) waits occur, you can use the lock analysis feature to visually diagnose lock-wait relationships. This helps quickly identify the root cause of blocking and the dependency chain, which significantly improves troubleshooting efficiency and ensures the stability and high availability of database services. Allows you to view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database. Allows you to view performance metrics, such as TPS, QPS, and throughput, of an instance. You can view performance metrics in different ways. For example, you can view the performance metrics within a specific time period, compare performance metrics collected during different time periods, or customize the performance metrics you want to view. Allows you to view slow query log trends, statistical information, and execution details. It also provides optimization recommendations and allows you to export historical data, helping you quickly locate and resolve performance bottlenecks. Allows you to generate instance health assessment reports manually or on a schedule. By analyzing health scores, slow SQL queries, and resource bottlenecks, this feature identifies potential risks and assists with manual troubleshooting and performance optimization. Currently, this feature can only assess the status of database instances and display the identified issues. It does not provide any optimization suggestions. You need to troubleshoot the issues based on the generated report.
 
-### Diagnostics and analysis
+### 16.2 Diagnostics and analysis
 
-#### Perform quick diagnostics
+#### 16.2.1 Perform quick diagnostics
 
 After you log in to the ApsaraDB RDS console and go to the Diagnostics page of Database Autonomy Service (DAS), you can view resource usage, basic instance information, and a comprehensive performance overview. You can also initiate diagnostics to quickly identify database anomalies.
 
@@ -3064,7 +3156,7 @@ Current resource usage: You can view the CPU, memory, IOPS, storage, and connect
 
 You can click **Create Reports** in the upper-right corner of the database view to diagnose the database. After the diagnostic is complete, you can click **View History** to view the historical diagnostics.
 
-#### Session Management
+#### 16.2.2 Session Management
 
 After you log in to the ApsaraDB RDS console and navigate to the Session Management page of Database Autonomy Service (DAS), you can perform real-time monitoring, analysis, and intervention of active sessions on database instances. It allows you to view abnormal sessions (such as long-running uncommitted transactions), export or terminate sessions, and integrate with autonomous capabilities like 10-second SQL analysis, SQL throttling, and SQL optimization. These features help you quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation.
 
@@ -3113,7 +3205,7 @@ You can view summarized session information by user, access source, or database,
 
 You can export session statistics by summary, user, access source, or database.
 
-#### Real-time monitoring
+#### 16.2.3 Real-time monitoring
 
 After you log in to the ApsaraDB RDS console and navigate to the instance performance page of Database Autonomy Service (DAS), you can view visualized charts and tables generated from key operational metrics collected at high frequencies. This feature is designed to help database administrators (DBAs) and developers gain insights into the real-time loads of database instances, quickly locate the root cause of performance jitters, and assess the resource usage of database instances.
 
@@ -3186,7 +3278,7 @@ The upper-right corner displays the remaining refresh count. You can manually co
 
 Establish a baseline: During stable business periods, observe and record normal QPS, TPS, and CPU usage as a benchmark for subsequent fault comparison. Perform correlation analysis: Avoid viewing a single metric in isolation. For example, when QPS drops, immediately check whether InnoDB row lock waits increase or slow queries increase, and observe forwhether physical reads show abnormal fluctuations in physical reads. Watch for spikes: Sudden spikes in charts typically correspond to specific business events (such as scheduled jobs starts or flash sales). Cross-referencing the timestampCorrelating the point in time with business logs helps you quickly locate the issue.
 
-#### Lock analysis
+#### 16.2.4 Lock analysis
 
 When database issues such as deadlocks, transaction blocking, or metadata lock waits occur, you can use the lock analysis feature provided by Database Autonomy Service (DAS) to visually diagnose lock-wait relationships. This helps quickly identify the root cause of blocking and the dependency chain, which significantly improves troubleshooting efficiency and ensures the stability and high availability of database services.
 
@@ -3230,7 +3322,7 @@ results of deadlock diagnostic tasks that were triggered during the time range. 
 
 i. **Initiate other lock analysis and diagnostics** On the **Recent Deadlock Analysis** tab, click **Create Analysis Task**. ii. **View details** a. Click the icon before an analysis result to expand the metadata lock wait and transaction blocking analysis information. b. Click **View Details**. The details of the transaction lock are displayed.
 
-#### Storage Analysis
+#### 16.2.5 Storage Analysis
 
 After you log in to the ApsaraDB RDS console and navigate to the Storage Analysis page of Database Autonomy Service (DAS), you can view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database.
 
@@ -3241,7 +3333,7 @@ After you log in to the ApsaraDB RDS console and navigate to the Storage Analysi
 **Storage Analysis** tab, you can perform the following operations:
 On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
 
-### Dashboard
+### 16.3 Dashboard
 
 After you log in to the ApsaraDB RDS console and navigate to the Dashboard page of Database Autonomy Service (DAS), you can view performance metrics, such as TPS, QPS, and throughput, of the instance. You can view performance metrics in different ways. For example, you can view the performance metrics within a specific time period, compare performance metrics collected during different time periods, or customize the performance metrics you want to view.
 
@@ -3259,7 +3351,7 @@ Click the icon next to the name of a metric to view its description. On the **Pe
 
 You must create a dashboard if this is the first time you use **custom charts**.
 
-### View slow query logs
+### 16.4 View slow query logs
 
 After you log in to the ApsaraDB RDS console and navigate to the Slow Query Logs page of Database Autonomy Service (DAS), you can view slow query log trends, statistical information, and execution details. It also provides optimization recommendations and allows you to export historical data, helping you quickly locate and resolve performance bottlenecks.
 
@@ -3269,7 +3361,7 @@ After you log in to the ApsaraDB RDS console and navigate to the Slow Query Logs
 3. In the left-side navigation pane, choose **Autonomy Services > Slow Query Logs**.
 In the **Slow Log Trend** section, view the slow query log trend of the instance. Click the **Slow Log Statistics** tab to view slow log details for a specified time range and optimize the slow SQL statements. The instances of some database types do not support the SQL optimization feature. Refer to the actual features available in the console. For the instances of ApsaraDB RDS for MySQL and PolarDB for MySQL Primary/Secondary Edition, click the **Optimize** button in the Actions column of the slow SQL record that you want to mange. The record is highlighted in blue to help you quickly locate the SQL statement being analyzed in a large number of slow SQL statements. This highlight persists after you close the optimization window and automatically shifts to the new record when you optimize another slow SQL statement. Click the **Slow Log Details** tab to view the execution details of slow query logs.
 
-### Diagnostic reports
+### 16.5 Diagnostic reports
 
 After you log in to the ApsaraDB RDS console and navigate to the Diagnostic Reports page of Database Autonomy Service (DAS), you can generate operational status assessment reports of the instance manually or at a scheduled time. By analyzing health scores, slow SQL queries, and resource bottlenecks, this feature identifies potential risks and assists with manual troubleshooting and performance optimization. Currently, this feature can only assess the status of database instances and display the identified issues. It does not provide any optimization suggestions. You need to troubleshoot the issues based on the generated reports.
 
@@ -3305,7 +3397,7 @@ The list on the page shows all available diagnostic reports. Click **View Report
 
 Click **View Report** to go to the diagnostic report details page. Then, click **Download** to download the report to your on-premises machine for archiving or sharing.
 
-## Log management
+## 17 Log management
 
 ApsaraDB RDS lets you query error logs, slow query log details, slow query log summaries, and primary/secondary switchover logs in the console for troubleshooting and performance analysis.
 
@@ -3326,7 +3418,7 @@ range, and then click **OK**. The following table describes the supported log ty
 
 MySQL data
 
-## Use mysqldump to
+## 18 Use mysqldump to migrate MySQL data
 
 **migrate MySQL data**
 

@@ -3,18 +3,89 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis Develop
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 114
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis Developer Guide 20220915.pdf"
+source_pdf: "5a8f9d72773abd42_Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis Developer Guide
 
-## ASAPI Developer Guide
+## Table of Contents
 
-### Preparations
+- 1 ASAPI Developer Guide
+  - 1.1 Preparations
+    - 1.1.1 Log on to the API Tool console
+    - 1.1.2 View information about API operations
+    - 1.1.3 Obtain an AccessKey pair
+    - 1.1.4 Obtain common header parameters
+    - 1.1.5 Obtain an STS AccessKey pair
+  - 1.2 Use POP to make API calls
+    - 1.2.1 Preparations
+    - 1.2.2 SDK for Java
+    - 1.2.3 SDK for Go
+    - 1.2.4 SDK for Python
+  - 1.3 Use ASAPI to make API calls
+    - 1.3.1 ASAPI overview
+    - 1.3.2 Generate an endpoint for ASAPI
+    - 1.3.3 Obtain Apsara Stack SDKs
+    - 1.3.4 Common request parameters
+    - 1.3.5 SDK description
+      - 1.3.5.1 SDK for Java
+      - 1.3.5.2 SDK for Python
+      - 1.3.5.3 SDK for Node.js
+    - 1.3.6 HTTP requests
+      - 1.3.6.1 Overview
+      - 1.3.6.2 Request structure
+      - 1.3.6.3 Request signatures
+      - 1.3.6.4 Responses
+- 2 API reference
+  - 2.1 API overview
+  - 2.2 Request structures
+  - 2.3 Common parameters
+  - 2.4 Responses
+  - 2.5 Request signatures
+  - 2.6 RAM-based authorization
+    - 2.6.1 Grant resource permissions to a RAM user
+    - 2.6.2 Authorized resource types in RAM
+    - 2.6.3 Operation permissions granted to a RAM user
+    - 2.6.4 API authentication rules
+  - 2.7 Manage the lifecycle
+    - 2.7.1 CreateInstance
+    - 2.7.2 DeleteInstance
+    - 2.7.3 ModifyInstanceSpec
+  - 2.8 Manage instances
+    - 2.8.1 DescribeInstanceAttribute
+    - 2.8.2 DescribeInstances
+    - 2.8.3 DescribeRegions
+    - 2.8.4 DescribeSecurityIps
+    - 2.8.5 FlushInstance
+    - 2.8.6 ModifyInstanceAttribute
+    - 2.8.7 ModifyInstanceMaintainTime
+    - 2.8.8 ModifyInstanceNetExpireTime
+    - 2.8.9 ModifySecurityIps
+    - 2.8.10 SwitchNetwork
+  - 2.9 Backup and recovery
+    - 2.9.1 CreateBackup
+    - 2.9.2 ModifyBackupPolicy
+    - 2.9.3 DescribeBackupPolicy
+    - 2.9.4 DescribeBackups
+    - 2.9.5 RestoreInstance
+  - 2.10 Manage monitoring
+    - 2.10.1 DescribeMonitorItems
+    - 2.10.2 DescribeHistoryMonitorValues
+  - 2.11 Manage parameters
+    - 2.11.1 DescribeInstanceConfig
+    - 2.11.2 ModifyInstanceConfig
+  - 2.12 Appendixes
+    - 2.12.1 Instance types
+    - 2.12.2 Error codes
+    - 2.12.3 Instance configurations
 
-#### Log on to the API Tool console
+## 1 ASAPI Developer Guide
+
+### 1.1 Preparations
+
+#### 1.1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press Enter.
@@ -25,7 +96,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-#### View information about API operations
+#### 1.1.2 View information about API operations
 
 This topic describes how to view information about API operations. Before you use SDKs, obtain service names, API operation names, and API operation versions. Context The API operations on the API Directory page are only for reference. For information about how to call API operations, see developer guides of the corresponding cloud services. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
 1. Go to the API Tool console. For more information, see Log on to the API Tool console.
@@ -34,7 +105,7 @@ This topic describes how to view information about API operations. Before you us
 an API operation name in the search box, and then click the search icon.
 4. Then, you can view the service name, API operation name, and API operation version.
 
-#### Obtain an AccessKey pair
+#### 1.1.3 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair. Prerequisites An account that assumes the operations administrator or level-1 organization administrator role is obtained. Only an operations administrator or a level-1 organization administrator can obtain an AccessKey pair of the organization. Context AccessKey supports the following authorization methods: Use RAM to authorize the AccessKey ID and AccessKey secret to third-party requesters. Use STS to authorize the AccessKey ID, AccessKey secret, and security token to third-party requesters. This topic describes how to obtain an AccessKey pair authorized by RAM. For more information about how to obtain an AccessKey pair authorized by STS, see Obtain an STS AccessKey pair. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur.
 
@@ -59,7 +130,7 @@ to obtain AccessKey pairs.
 5. Click Management AccessKey on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-#### Obtain common header parameters
+#### 1.1.4 Obtain common header parameters
 
 You must provide multiple header parameters when you call API operations. This topic describes how to obtain common header parameters. Some response parameters are also explained. Query a region ID
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
@@ -81,7 +152,7 @@ Response parameters The following response parameter are returned by default whe
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-#### Obtain an STS AccessKey pair
+#### 1.1.5 Obtain an STS AccessKey pair
 
 This topic describes how to use STS to make API calls. Background information Alibaba Cloud Security Token Service (STS) allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. Procedure
 1. Obtain the `RAM role` .
@@ -140,9 +211,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
 
-### Use POP to make API calls
+### 1.2 Use POP to make API calls
 
-#### Preparations
+#### 1.2.1 Preparations
 
 Like in the public cloud, you can use the POP gateway to call API operations in Apsara Stack. This topic describes the preparations before you use the POP gateway to call API operations. Background information In Apsara Stack, you can use both ASAPI and POP gateways to call API operations. To use the same method and produce the same user experience as in the public cloud, we recommend that you use the POP gateway to call API operations in Apsara Stack. Obtain service endpoints To use the POP gateway to call API operations, you must use the service endpoints. You can obtain the service endpoints from Alibaba Cloud onsite O&M engineers. You can also obtain the service endpoints by yourself. The following example describes how to obtain the ECS endpoints.
 1. Log on to Apsara Infrastructure Management Framework.
@@ -154,7 +225,7 @@ icon next to Service and search for `ECS` .
 5. Find the `ecs-yaochi` service, right-click the Service Regist rat ion column, and then select Show
 More from the shortcut menu. On the Det ails page, view the int ernal.openapi.endpoint value, which is the `endpoint` . Obtain common parameters You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain common header parameters.
 
-#### SDK for Java
+#### 1.2.2 SDK for Java
 
 Before you use POP SDK for Java to make API calls, you must first understand the RPC and ROA styles. Prerequisites An Alibaba Cloud SDK package is downloaded for the service that you want to access. The required dependencies are installed. SSL certificate validation is ignored for requests over HTTPS. Call examples The following sample code provides an example on how to use the RPC style to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
@@ -286,7 +357,7 @@ service resides.
 
 Not ice If you send a request over HTTPS, you must enable the request to ignore SSL certificate validation.
 
-#### SDK for Go
+#### 1.2.3 SDK for Go
 
 This topic describes how to use POP SDK for Go. Prerequisites An Alibaba Cloud SDK package is downloaded for the service that you want to access. The required dependencies are installed. Background information Both RPC and ROA styles are supported for API calls. Call examples The following sample code provides an example on how to use the RPC style to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
@@ -393,7 +464,7 @@ Configure proxies on the client. Sample code:
 // The proxies that are configured on the client take precedence over those that are conf igured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
-#### SDK for Python
+#### 1.2.4 SDK for Python
 
 This topic describes how to use POP SDK for Python. Prerequisites An Alibaba Cloud SDK package is downloaded for the service that you want to access. The required dependencies are installed. Background information Only the remote procedure call (RPC) style is supported for API calls. Call examples The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05- 26. Sample code:
 
@@ -463,13 +534,13 @@ os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 ```
 
-### Use ASAPI to make API calls
+### 1.3 Use ASAPI to make API calls
 
-#### ASAPI overview
+#### 1.3.1 ASAPI overview
 
 This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
 
-#### Generate an endpoint for ASAPI
+#### 1.3.2 Generate an endpoint for ASAPI
 
 This topic describes three methods used to generate an endpoint for Apsara Stack API (ASAPI). Method 1: Use Registration Vars of Services to generate an endpoint
 1. Log on to Apsara Infrastructure Management Framework.
@@ -515,11 +586,11 @@ root domain, contact Apsara Stack O&M personnel. Take note of this point: Use th
 https://public.asapi.cn-****-****-d01.inter.****.****.com/asapi/v3
 ```
 
-#### Obtain Apsara Stack SDKs
+#### 1.3.3 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use the ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. You can go to Apsara Stack documentation and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page.
 
-#### Common request parameters
+#### 1.3.4 Common request parameters
 
 Common request parameters must be included in all API requests. Sample common parameters The following table describes the common parameters that are used when you call API operations supported by Apsara Stack API (ASAPI).
 
@@ -548,9 +619,9 @@ The Signature , SignatureMethod , SignatureVersion , SignatureNonce , Timestamp 
 
 and `Format` parameters are encapsulated into Apsara Stack SDK. You do not need to configure these parameters.
 
-#### SDK description
+#### 1.3.5 SDK description
 
-##### SDK for Java
+##### 1.3.5.1 SDK for Java
 
 This topic describes how to obtain and use Apsara Stack SDK for Java to call API operations. Prerequisites An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of the ASAPI is obtained. For more information, see Generate an endpoint for ASAPI. Apsara Stack SDK for Java 1.8 or later is installed. Background information The help center of Apsara Stack provides Maven dependencies and JAR files for Apsara Stack SDK for Java. You can write code to use Apsara Stack SDK for Java to call API operations. In this example, the Windows 10 64-bit OS and IntelliJ IDEA are used. Procedure
 1. Use one of the following methods to configure Maven in IntelliJ IDEA. Maven is a tool used for
@@ -615,7 +686,7 @@ Header parameters
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. |
 | x-acs-inst anceid | The ID of the instance to which you make API calls. |
 
-##### SDK for Python
+##### 1.3.5.2 SDK for Python
 
 This topic describes how to obtain and use Apsara Stack SDK for Python to call API operations. Preparations An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. The endpoint of ASAPI is obtained. For more information, see Generate an endpoint for ASAPI. Install Apsara Stack SDK for Python
 1. Download the required version of Apsara Stack SDK for Python. For more information, see Obtain
@@ -690,7 +761,7 @@ import os
 os.environ['http_proxy'] = "http://x.x.x.x:xxxx" os.environ['https_proxy'] = "https://x.x.x.x:xxxx"
 ```
 
-##### SDK for Node.js
+##### 1.3.5.3 SDK for Node.js
 
 This topic describes how to obtain and use Apsara Stack SDK for Node.js to call API operations. Preparations An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. The endpoint of Apsara Stack API (ASAPI) is obtained. For more information, see Generate an endpoint for the ASAPI. For more information about how to obtain the region ID, see Obtain the endpoint of ASAPI. Add dependencies Run the following command to install Apsara Stack SDK for Node.js:
 
@@ -758,13 +829,13 @@ Request headers
 | x-acs-roleid | The ID of the role. |
 | x-acs-userid | The ID of the user. |
 
-#### HTTP requests
+#### 1.3.6 HTTP requests
 
-##### Overview
+##### 1.3.6.1 Overview
 
 This topic describes how to make API requests and is intended for users who use API URLs to initiate HTTP GET requests. If you are using an SDK to initiate requests, you can skip this topic. The request URL consists of different parameters and has a fixed syntax. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded to make them easy to read. Before you make a request, you must encode the request URL. After the authentication process is complete based on your signature, the results are returned to you. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message.
 
-##### Request structure
+##### 1.3.6.2 Request structure
 
 You can use API URLs to initiate HTTP GET requests. Each URL must include request parameters. This topic describes the syntax of HTTP GET requests and provides the endpoint of ASAPI. Sample request GetOrganizationList is used in the following unencoded URL request:
 
@@ -774,7 +845,7 @@ https://public.asapi.aliyuns.com/asapi/v3?Action=GetOrganizationList&Product=asc
 
 `https` : the protocol used to transmit the request. `public.asapi.aliyuns.com/asapi/v3` : the endpoint of ASAPI. `Action=GetOrganizationList Product=ascm Version=2019-05-10` : the API operation. `Id` : the ID of the organization. `<Common request parameters>` : common parameters specified in the system. Protocols ASAPI supports only the HTTP request protocol. Endpoints For more information about how to obtain the endpoint of ASAPI, see Generate an endpoint for ASAPI. You must use the `Action, Product, and Version` parameters to specify an API operation. For example, you can set `Action to GetOrganizationList, Product to ascm, and Version to 2019-05-10` . You must also specify other operation-specific request parameters and common request parameters. For more information, see Common request parameters.
 
-##### Request signatures
+##### 1.3.6.3 Request signatures
 
 This topic describes how to sign HTTP API requests. ASAPI uses the request signature to verify the identity of the request sender. ASAPI implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret, which are issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must keep your AccessKey secret confidential. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain the core package for ASAPI. Step 1: Create a canonicalized query string
 1. Arrange the request parameters in alphabetical order, including all common and operation-specific
@@ -889,7 +960,7 @@ https://public.asapi.aliyuns.com/asapi/v3/?AccessKeyId=testid&Action=GetOrganiza
 
 5. Use browsers or tools such as cURL and Wget to initiate an HTTP request.
 
-##### Responses
+##### 1.3.6.4 Responses
 
 Responses are returned only in the JSON format. If a return code is greater than or equal to 200 and less than 300, a success response is returned. Otherwise, an error response is returned. Sample success responses If a request is successful, the request ID and operation-specific parameter values are returned. For more information, see the developer guide of the corresponding Apsara Stack service.
 
@@ -949,9 +1020,9 @@ Sample error responses If a request fails, the following information is returned
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by ASAPI.
 ```
 
-## API reference
+## 2 API reference
 
-### API overview
+### 2.1 API overview
 
 Instance lifecycle management API operations
 
@@ -1006,11 +1077,11 @@ Parameter management API operations
 | DescribeInstanceConfig | Queries parameters of a specified instance. |
 | ModifyInstanceConfig | Changes parameters of a specified instance. |
 
-### Request structures
+### 2.2 Request structures
 
 Endpoint The endpoint of the KVStore for Redis API is `r-kvstore.`example.com. For more information about how to obtain an endpoint, see Generate the endpoint of ASAPI. Not e example.com is a domain name that is customized for a project. You can obtain the domain name from the administrator. Protocols You can send requests over HTTP or HTTPS. To enhance data security, we recommend that you send API requests by using HTTPS. Methods You can send requests by using the HTTP GET method. This method requires that you specify request parameters in the request URL. Request parameters You must specify the Action parameter for each request. For example, you can specify CreateInstance. You must also specify common request parameters and specific request parameters that are required by each operation. Encoding Requests and responses are both encoded in UTF-8.
 
-### Common parameters
+### 2.3 Common parameters
 
 Common request parameters must be included in all API requests. Common request parameters Common request parameters
 
@@ -1035,7 +1106,7 @@ Common response parameters Each time you call an API operation, the system retur
 <? xml version="1.0" encoding="utf-8"? > <!-The root of the response--> <Operation name+Response> <!—The returned request tag--> <RequestId>4C4fdsf38-3910-447D-87AD-AC078932216</RequestId> <!—The returned result--> </Operation name+Response>
 ```
 
-### Responses
+### 2.4 Responses
 
 After you call an API operation, KVStore for Redis returns data in the same format. In the response, an HTTP status code in the `2xx` format indicates that the call is successful. An HTTP status code in the `4xx` or `5xx` format indicates that the call failed. The system returns responses for successful calls in XML or JSON format. You can specify the response format in request parameters. The system uses the XML format by default. Not e The response examples in this topic have been formatted with line breaks or indents to provide a clear view. The responses in your actual running environments are not properly formatted as these examples. Sample success response The response in XML format includes a message that indicates whether the call is successful and the specific service data. An example is as follows:
 
@@ -1061,7 +1132,7 @@ JSON format `{`
 "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
 
-### Request signatures
+### 2.5 Request signatures
 
 KVStore for Redis authenticates each access request. You need to include a signature when you submit an HTTP or HTTPS request. KVStore for Redis authenticates the request sender identity by using symmetric encryption based on an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. An AccessKey ID and an AccessKey secret are issued to you by Alibaba Cloud. You can apply for and manage them on the Alibaba Cloud website. The AccessKey ID is used to verify the identity of the user. The AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to obtain the AccessKey pair, see Obtain an AccessKey pair. Sign a request Perform the following steps to sign an API request:
 1. Create a canonicalized query string by using request parameters.
@@ -1113,13 +1184,13 @@ In this example, if the AccessKey ID is `testid` and the AccessKey secret is `te
 http://r-kvstore.example.com/?Timestamp=2013-06-01T10%3A33%3A56Z&Format=XML&AccessKeyId=tes tid&Action=DescribeInstances&SignatureMethod=HMAC-SHA1&RegionId=region1&SignatureNonce=NwDA xvLU6tFE0DVb&SignatureVersion=1.0&Version=2015-01-01&Signature=BIPOMlxxxxxxxxxxxxxxxxxxu8LX BeZtLQkJTw6iFvw1E%3D
 ```
 
-### RAM-based authorization
+### 2.6 RAM-based authorization
 
-#### Grant resource permissions to a RAM user
+#### 2.6.1 Grant resource permissions to a RAM user
 
 The instances that you create by using your Alibaba Cloud account are the resources owned by the account. An account has the full operation permissions on the resources under this account by default. Alibaba Cloud Resource Access Management (RAM) allows you to grant the access and management permissions on resources under a cloud account to RAM users. Not e Ignore this topic if you do not use Resource Access Management (RAM).
 
-#### Authorized resource types in RAM
+#### 2.6.2 Authorized resource types in RAM
 
 KVStore for Redis only supports RAM authorization for Redis instances. The following table lists the description of resources when you use RAM to authorize access permissions to these resources.
 
@@ -1129,11 +1200,11 @@ KVStore for Redis only supports RAM authorization for Redis instances. The follo
 
 All $regionids must be the ID of a region or an asterisk ( `*` ). All $instanceids must be the ID of an instance or an asterisk ( `*` ). Similarly, $account-id is the numerical ID of your Apsara Stack tenant account, which can be replaced by an asterisk ( `*` ).
 
-#### Operation permissions granted to a RAM
+#### 2.6.3 Operation permissions granted to a RAM user
 
-user You are authorized to call the following API operations to manage the specified resource as a Resource Access Management (RAM) user: CreateInstance DeleteInstance ModifyInstanceSpec RenewInstance RenewMultiInstance TransformToPrePaid ModifyInstanceAttribute FlushInstance DescribeInstances DescribeInstanceAttribute ModifyInstanceMaintainTime ModifySecurityIps SwitchNetwork ModifyInstanceNetExpireTime CreateBackup ModifyBackupPolicy DescribeBackupPolicy DescribeBackups RestoreInstance DescribeHistoryMonitorValues DescribeInstanceConfig ModifyInstanceConfig
+user You are authorized to call the following API operations to manage the specified resource as a Resource Access Management (RAM) user: RenewInstance RenewMultiInstance TransformToPrePaid
 
-#### API authentication rules
+#### 2.6.4 API authentication rules
 
 When you use API operations to access resources as a Resource Access Management (RAM) user, the system queries the RAM service and checks whether the RAM user is granted the required permissions. Each API operation determines the resources for permission check according to the involved resources and the semantics of the API operation. The following table lists the authentication rules corresponding to different API operations. Authentication rules
 
@@ -1166,9 +1237,9 @@ When you use API operations to access resources as a Resource Access Management 
 | DescribeInstanceConfig | acs:kvstore:$regionid:$accountid:instance/$instanc eid |
 | ModifyInstanceConfig | acs:kvstore:$regionid:$accountid:instance/$instanc eid |
 
-### Manage the lifecycle
+### 2.7 Manage the lifecycle
 
-#### CreateInstance
+#### 2.7.1 CreateInstance
 
 Creates a KVStore for Redis instance. Request parameters
 
@@ -1231,7 +1302,7 @@ JSON format `{`
 "InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb"
 ```
 
-#### DeleteInstance
+#### 2.7.2 DeleteInstance
 
 Deletes a specified instance. The instance must be in the running state. Request parameters
 
@@ -1267,7 +1338,7 @@ JSON format `{`
     "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D190D2"
 ```
 
-#### ModifyInstanceSpec
+#### 2.7.3 ModifyInstanceSpec
 
 Changes the specifications of a KVStore for Redis instance. Request parameters
 
@@ -1310,9 +1381,9 @@ JSON format `{`
     "OrderId": "20722623431****"
 ```
 
-### Manage instances
+### 2.8 Manage instances
 
-#### DescribeInstanceAttribute
+#### 2.8.1 DescribeInstanceAttribute
 
 Queries detailed information about a KVStore for Redis instance. Request parameters
 
@@ -1517,7 +1588,7 @@ JSON format `{`
  "RequestId": "D67A69DF-C1FC-4B01-B239-B17888CCFD2A"
 ```
 
-#### DescribeInstances
+#### 2.8.2 DescribeInstances
 
 Queries information about one or more KVStore for Redis instances. Request parameters
 
@@ -1640,7 +1711,7 @@ e.com",
     "RequestId" : "969D0A1D-C91A-4837-9F70-49785DF9BDCE"
 ```
 
-#### DescribeRegions
+#### 2.8.3 DescribeRegions
 
 Queries the regions where KVStore for Redis instances can be created. Request parameters
 
@@ -1729,7 +1800,7 @@ angzhou-b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-han
     "RequestId": "AD425AD3-CC7B-4EE2-A5CB-2F61BA73****"
 ```
 
-#### DescribeSecurityIps
+#### 2.8.4 DescribeSecurityIps
 
 Queries IP whitelists of a KVStore for Redis instance. Request parameters
 
@@ -1810,7 +1881,7 @@ JSON format `{`
     "RequestId": "EFC9161F-15E3-4A6E-8A99-C09916D1****"
 ```
 
-#### FlushInstance
+#### 2.8.5 FlushInstance
 
 Deletes the data of a KVStore for Redis instance. Deleted data cannot be recovered. Request parameters
 
@@ -1849,7 +1920,7 @@ JSON format `{`
   "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E7"
 ```
 
-#### ModifyInstanceAttribute
+#### 2.8.6 ModifyInstanceAttribute
 
 Modifies the attributes of a KVStore for Redis instance such as the name or password. Request parameters
 
@@ -1887,7 +1958,7 @@ JSON format `{`
 "RequestId" : "E3B35BEA-9EB0-402C-88CF-C46CCCC1EE59"
 ```
 
-#### ModifyInstanceMaintainTime
+#### 2.8.7 ModifyInstanceMaintainTime
 
 Modifies the maintenance window of a KVStore for Redis instance. Alibaba Cloud maintains the KVStore for Redis instance in the specified maintenance window. Request parameters
 
@@ -1925,7 +1996,7 @@ JSON format `{`
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76"
 ```
 
-#### ModifyInstanceNetExpireTime
+#### 2.8.8 ModifyInstanceNetExpireTime
 
 Extends the retention period of the classic network endpoint of a KVStore for Redis instance. You can call this operation after you change the network type of the KVStore for Redis instance from classic network to VPC with the classic network endpoint retained. Request parameters
 
@@ -1966,7 +2037,7 @@ JSON format `{`
     "RequestId": "9C4AF387-1EA3-4C84-8013-3F6B973EDDF5",
 ```
 
-#### ModifySecurityIps
+#### 2.8.9 ModifySecurityIps
 
 Modifies the IP addresses in a whitelist of a KVStore for Redis instance. Request parameters
 
@@ -2004,7 +2075,7 @@ JSON format `{`
     "RequestId" : "AAAF99B1-69ED-4E80-8CD5-272C09E4****"
 ```
 
-#### SwitchNetwork
+#### 2.8.10 SwitchNetwork
 
 Changes the network type of a KVStore for Redis instance from classic network to VPC. Request parameters
 
@@ -2050,9 +2121,9 @@ JSON format `{`
     "requestId": "F0997EE8-F4C2-4503-9168-85177ED78C70"
 ```
 
-### Backup and recovery
+### 2.9 Backup and recovery
 
-#### CreateBackup
+#### 2.9.1 CreateBackup
 
 Backs up a KVStore for Redis instance. Request parameters
 
@@ -2090,7 +2161,7 @@ JSON format `{`
     "BackupJobID": "1162****"
 ```
 
-#### ModifyBackupPolicy
+#### 2.9.2 ModifyBackupPolicy
 
 Modifies the backup policy of a KVStore for Redis instance. Request parameters
 
@@ -2134,7 +2205,7 @@ JSON format `{`
     "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
 
-#### DescribeBackupPolicy
+#### 2.9.3 DescribeBackupPolicy
 
 Queries the backup policy of a KVStore for Redis instance. The backup policy includes information such as the backup cycle and the backup time. Request parameters
 
@@ -2186,7 +2257,7 @@ JSON format `{`
  "BackupRetentionPeriod": "7"
 ```
 
-#### DescribeBackups
+#### 2.9.4 DescribeBackups
 
 Queries the backup files of a KVStore for Redis instance. Request parameters
 
@@ -2304,7 +2375,7 @@ aliyuncs.com/********",
 
 `]`
 
-#### RestoreInstance
+#### 2.9.5 RestoreInstance
 
 Restores the data of a KVStore for Redis instance from a backup file to the instance. If you use the operation together with the data flashback feature, you can restore data of a specified key to a specified point in time that is accurate to the second. Request parameters
 
@@ -2347,9 +2418,9 @@ JSON format `{`
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
 
-### Manage monitoring
+### 2.10 Manage monitoring
 
-#### DescribeMonitorItems
+#### 2.10.1 DescribeMonitorItems
 
 Queries the metrics of a KVStore for Redis instance. Request parameters
 
@@ -2424,7 +2495,7 @@ JSON format `{`
     "RequestId" : "B906A893-58A3-4644-AC2D-A2C9B08706C1"
 ```
 
-#### DescribeHistoryMonitorValues
+#### 2.10.2 DescribeHistoryMonitorValues
 
 Queries the monitoring history of a KVStore for Redis instance. Request parameters
 
@@ -2476,9 +2547,9 @@ JSON format `{`
     "RequestId": "689E8093-3094-4DC2-A2A2-30D40097****"
 ```
 
-### Manage parameters
+### 2.11 Manage parameters
 
-#### DescribeInstanceConfig
+#### 2.11.1 DescribeInstanceConfig
 
 Queries the configuration parameters of a KVStore for Redis instance. Request parameters
 
@@ -2521,7 +2592,7 @@ JSON format `{`
 \",\"hash-max-ziplist-entries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,\"list-max -ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-intset-entries\":512,\"hash-max -ziplist-value\":64,\"#no_loose_disabled-commands\":\"flushall\"}"
 ```
 
-#### ModifyInstanceConfig
+#### 2.11.2 ModifyInstanceConfig
 
 Modifies configuration parameters of a KVStore for Redis instance. Request parameters
 
@@ -2558,9 +2629,9 @@ JSON format `{`
   "requestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
 
-### Appendixes
+### 2.12 Appendixes
 
-#### Instance types
+#### 2.12.1 Instance types
 
 KVStore for Redis provides instances of Community Edition and performance-enhanced instances of Enhanced Edition. Performance-enhanced instances of Enhanced Edition support the standard, cluster, and read/write splitting architectures. Instances of Community Edition support the standard and cluster architectures. This topic describes the specifications of different instance types, such as memory capacity, maximum number of connections, and maximum bandwidth value. Calculation rules for bandwidth If network resources are sufficient, bandwidth is unlimited. However, if network resources are insufficient, the bandwidth is limited. The upper limit of the total bandwidth for a cluster instance is 2,048 MB/s. After the upper limit is reached, the bandwidth cannot be increased even if the number of shards is increased. The bandwidth value applies to the upstream and downstream bandwidths. For example, if the bandwidth of an instance is 10 MB/s, the upstream and downstream bandwidths of the instance are both 10 MB/s. The bandwidth in the tables is the internal bandwidth of the KVStore for Redis instance. The Internet bandwidth is determined by the internal bandwidth and is limited by the bandwidth of the connection between the KVStore for Redis instance and the client. We recommend that you connect to the instance over an internal network to maximize performance. Performance-enhanced instances of KVStore for Redis Enhanced Edition Standard master-replica instances
 
@@ -2654,7 +2725,7 @@ Read/write splitting instances
 | 64 GB read/write splitting instance (1 shard, 1 read replica) | redis.logic.splitrw.8xl arge.1db.1rodb.4prox y.default | 1 | 20000 | 20000 | 192 | 200000 |
 | 64 GB read/write splitting instance (1 shard, 3 read replicas) | redis.logic.splitrw.8xl arge.1db.3rodb.4prox y.default | 3 | 40000 | 40000 | 384 | 400000 |
 
-#### Error codes
+#### 2.12.2 Error codes
 
 | Description | Error code | Error message | HTTP status code |
 |---|---|---|---|
@@ -2735,7 +2806,7 @@ Read/write splitting instances
 | The error message returned because the operation is not supported while the backup set is in the current state. | IncorrectBackupSetStat e | Current backup set state does not support operations. | 400 |
 | The error message returned when the specified whitelist is not correct in format. | InvalidSecurityIPList.For mat | Specified security IP list format is not valid. | 400 |
 
-#### Instance configurations
+#### 2.12.3 Instance configurations
 
 KVStore for Redis instance configurations
 

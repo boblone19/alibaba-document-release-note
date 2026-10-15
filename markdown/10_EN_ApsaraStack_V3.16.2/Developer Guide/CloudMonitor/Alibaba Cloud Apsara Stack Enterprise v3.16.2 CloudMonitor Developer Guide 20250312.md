@@ -3,18 +3,40 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Gui
 product_version: "V3.16.2"
 doc_version: "20250312"
 pdf_pages: 174
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide 20250312.pdf"
+source_pdf: "288b8545e01fe1c4_Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide 20250312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20CloudMonitor%20Developer%20Guide%2020250312.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor Developer Guide
 
-## CloudMonitor API
+## Table of Contents
+
+- 1 CloudMonitor API Reference
+  - 1.1 Common parameters
+  - 1.2 Metrics for Apsara Stack services
+  - 1.3 API Reference
+    - 1.3.1 Cloud Products
+      - 1.3.1.1 DescribeProjectMeta
+      - 1.3.1.2 DescribeMetricLast
+      - 1.3.1.3 DescribeMetricList
+      - 1.3.1.4 DescribeMetricMetaList
+    - 1.3.2 Threshold-triggered alert rules
+      - 1.3.2.1 DescribeMetricRuleList
+      - 1.3.2.2 PutResourceMetricRule
+      - 1.3.2.3 DescribeMetricRuleCount
+      - 1.3.2.4 DeleteMetricRules
+      - 1.3.2.5 EnableMetricRules
+      - 1.3.2.6 DisableMetricRules
+      - 1.3.2.7 DescribeAlertingMetricRuleResources
+      - 1.3.2.8 DeleteMetricRuleResources
+      - 1.3.2.9 DescribeAlertHistoryList
+
+## 1 CloudMonitor API Reference
 
 **Reference**
 
-### Common parameters
+### 1.1 Common parameters
 
 **Common request parameters**
 
@@ -58,7 +80,7 @@ identify the instance on which you want to perform the operation, and the organi
 
 Responses are returned in the unified format for API requests. The following HTTP status code indicates the request status: 2xx: indicates that the request is successful. 4xx or 5xx: indicates that the request failed. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the request is successful.
 
-### Metrics for Apsara Stack
+### 1.2 Metrics for Apsara Stack services
 
 **services**
 
@@ -1657,11 +1679,11 @@ Set the **Namespace** parameter to **acs_k8s**. Set the **Period** parameter to 
 | deployment.network.r x errors rate _ _ | Bytes/s | deployment.network.rx err _ ors rate _ | userId, cluster, namespace, type, and app | The rate at which receive errors occur in the network of the Deployment. |
 | deployment.network.t x errors rate _ _ | Bytes/s | deployment.network.tx err _ ors rate _ | userId, cluster, namespace, type, and app | The rate at which send errors occur in the network of the Deployment. |
 
-### API Reference
+### 1.3 API Reference
 
-#### Cloud Products
+#### 1.3.1 Cloud Products
 
-##### DescribeProjectMeta
+##### 1.3.1.1 DescribeProjectMeta
 
 You can call this operation to query information of monitored services in Cloud Monitor. The information obtained by this operation includes the service description, namespace, and tags.
 
@@ -1739,7 +1761,7 @@ Sample success responses The response content varies with the services that are 
 
 `},` `]` `}` `}`
 
-##### DescribeMetricLast
+##### 1.3.1.2 DescribeMetricLast
 
 Queries the latest monitoring data of a monitored object.
 
@@ -2024,7 +2046,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeMetricList
+##### 1.3.1.3 DescribeMetricList
 
 Queries the monitoring data of a metric for a cloud service in a specific period. For more information about how to specify values for the Namespace, Project, Metric, Period, and Dimensions parameters for Apsara Stack services, see Major metrics of Apsara Stack services.
 
@@ -2288,7 +2310,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeMetricMetaList
+##### 1.3.1.4 DescribeMetricMetaList
 
 Queries the descriptions of time series metrics that are supported in CloudMonitor. This operation is used with DescribeMetricList and DescribeMetricLast.
 
@@ -2957,9 +2979,9 @@ he specified time range",
 
 `}` `]` `}` `}`
 
-#### Threshold-triggered alert rules
+#### 1.3.2 Threshold-triggered alert rules
 
-##### DescribeMetricRuleList
+##### 1.3.2.1 DescribeMetricRuleList
 
 Queries alert rules.
 
@@ -3145,7 +3167,7 @@ ${levelDescription}Notification{dimensions})</Subject>
 { &quot;RequestId&quot;:&quot;0F05309F-8863-4B2A-8F52-C6AA00E701B4&quot;, &quot;Alarms&quot;:{ &quot;Alarm&quot;:[ { &quot;Period&quot;:60, &quot;Statistics&quot;:&quot;Average&quot;, &quot;GroupName&quot;:&quot;Group name&quot ;, &quot;Webhook&quot;:&quot;&quot;, &quot;Subject&quot;:&quot;aaabbb&quot;, &quot;Effe ctiveInterval&quot;:&quot;00:00-23:59&quot;, &quot;RuleName&quot;:&quot;My alert rule&q uot;, &quot;NoEffectiveInterval&quot;:&quot;&quot;, &quot;GroupId&quot;:&quot;3596360&quot;, &quot;EvaluationCount&quot;:3, &quot;MetricName&quot;:&quot;cpu_total&quot;, &quot;State&quot;:&quot;OK&quot;, &quot;T hreshold&quot;:&quot;92&quot;, &quot;Enable&quot;:true, &quot;SilenceTime&quot;:86400, &quot;Dimensions&quot;:&quot;[{}]&quot;, &quot;RuleId&quot;:&quot;a151cd6023eacee2f0978e03863cc1697c89508e2b61****&quot;, &quot; Namespace&quot;:&quot;acs_ecs_dashboard&quot;, &quot;ContactGroups&quot;:&quot;Test&quot;, &quot;ComparisonOperator&quot;:&quot;>=&quot;, &quot;Escalations&quot;:{ &quot;Critical&quot;:{ &quot;Statistics&quot;:&quot;Average&quot;, &quot;Threshold&quot;:&quot;92&quot;, &quot;Times&quot;:3, &quot;ComparisonOperator&quot;:&quot;GreaterThanOrEqualToThreshold&quot; }, &quot;Info&quot;:{}, &quot;Warn&quot;:{} }, &quot;Resources&quot;:&quot; [{\&quot;instanceId\&quot;:\&quot;i-a2d5q7pm3f12****\&quot;}]&quot; }, { &quot;Period&quot;:60, &quot;Statistics&quot;:&quot;Average&quot;, &quot;GroupName&quot;:&quot;demo&quot;, &quot;Webhook&quot;:&quot;&quot;, &quot;Subject&quot;:&quot;${serviceType}-${metricName}- ${levelDescription}Notification(${dimensions})&quot;, &quot;EffectiveInterval&quot;:&quot;00:00-23:59&quot;, &quot;RuleName&quot;:&quot;xxxxxxxxxxxxxxx&quot;, &quot;NoEffectiveInterval&quot;:&quot;&quot;, &quot;GroupId&quot;:&quot;12345&quot;, &q uot;EvaluationCount&quot;:3, &quot;MetricName&quot;:&quot;cpu_total&quot;, &quot;State&quot;:&quot;OK&quot;, &quot;Threshold&quot;:&quot;90&quot;, &quot;Enable&quot;:true, &quot;SilenceTime&quot;:86400, &quot;Dimensions&quot;:&quot;[{ }]&quot;, &quot;RuleId&quot;:&quot;alarmRule_uuid_adbe286748952b82c6a4ebe3a07521697bb706****&quot;, &quot;Namespace&quot;:&quot;acs_ecs_dashboard&quot;, &quot;ContactGroups&quot;:&quot;rongfei&quot;, &quot;ComparisonOperator&quot;:&quot;>=&quot;, &quot;Escalations&quot;:{ &quot;Critical&quot;:{ &quot;Statistics&quot;:&quot;Average&quot;, &quot;Threshold&quot;:&quot;6666&quot;, &quot;Times&quot;:3, &quot;ComparisonOperator&quot;:&quot;GreaterThanOrEqualToThreshold&quot; }, &quot;Info&quot;:{}, &quot;Warn&quot;:{} }, &quot;Resources&quot;:&quot; [{\&quot;instanceId\&quot;:\&quot;host-fTcUci7****\&quot;}&quot; } ] }, &quot;Success&quot;:true, &quot;Code&quot;:&quot;200&quot;, &quot;Total&quot;:102 }
 ```
 
-##### PutResourceMetricRule
+##### 1.3.2.2 PutResourceMetricRule
 
 Creates an alert rule for a performance metric of a resource. For more information about the sample values of request parameters such as `Namespace` , `MetricName` and `Dimensions` for cloud services, see Metrics for Apsara Stack services.
 
@@ -3229,7 +3251,7 @@ p;<公共请求参数`>` Sample success responses `XML` format
 
 `}`
 
-##### DescribeMetricRuleCount
+##### 1.3.2.3 DescribeMetricRuleCount
 
 Queries the number of alert rules in each state.
 
@@ -3299,7 +3321,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-##### DeleteMetricRules
+##### 1.3.2.4 DeleteMetricRules
 
 You can call this operation to delete one or more alert rules.
 
@@ -3351,7 +3373,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### EnableMetricRules
+##### 1.3.2.5 EnableMetricRules
 
 Enables one or more alert rules.
 
@@ -3409,7 +3431,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the API Error Center. For a list of error codes, visit the API Error Center.
 
-##### DisableMetricRules
+##### 1.3.2.6 DisableMetricRules
 
 You can call this operation to disable one or more alert rules.
 
@@ -3459,7 +3481,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeAlertingMetricRuleResources
+##### 1.3.2.7 DescribeAlertingMetricRuleResources
 
 You can call this operation to query the resources that have active alerts triggered based on an alert rule.
 
@@ -3555,7 +3577,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-##### DeleteMetricRuleResources
+##### 1.3.2.8 DeleteMetricRuleResources
 
 Disassociates resources from an alert rule.
 
@@ -3603,7 +3625,7 @@ mp;<公共请求参数`>` Sample success responses `XML` format
 
 `}`
 
-##### DescribeAlertHistoryList
+##### 1.3.2.9 DescribeAlertHistoryList
 
 Queries historical alerts.
 

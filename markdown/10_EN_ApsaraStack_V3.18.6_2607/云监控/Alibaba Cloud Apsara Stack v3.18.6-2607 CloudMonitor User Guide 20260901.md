@@ -3,14 +3,165 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 435
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901.pdf"
+source_pdf: "d6165cf78a4d6b3e_Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%91%E6%8E%A7/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20CloudMonitor%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor User Guide 20260901
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Overview
+- 3 Monitoring assistant
+- 4 Intelligent exploratory analysis
+  - 4.1 UModel exploration
+  - 4.2 Entity topology exploration
+- 5 Alert center
+  - 5.1 Alert overview
+  - 5.2 Alert list
+  - 5.3 Alert rules
+  - 5.4 Notification policy
+  - 5.5 Blocking policies
+- 6 Cloud resource monitoring
+  - 6.1 Host monitoring
+    - 6.1.1 Install the CloudMonitor agent
+    - 6.1.2 Process monitoring
+    - 6.1.3 View host monitoring details
+  - 6.2 Cloud product monitoring
+    - 6.2.1 Cloud Monitor metrics
+      - 6.2.1.1 Elastic computing
+        - 6.2.1.1.1 Kubernetes container monitoring
+        - 6.2.1.1.2 ECS
+        - 6.2.1.1.3 BMCP (Node)
+        - 6.2.1.1.4 BMCP (Bare metal-intelligent computing cluster) metrics
+        - 6.2.1.1.5 Bare metal computing platform (BMCP) (Container-based intelligent computing cluster)
+        - 6.2.1.1.6 Bare Metal Computing Platform (BMCP)
+        - 6.2.1.1.7 Bare Metal Management Service (BMS)
+      - 6.2.1.2 Database services
+        - 6.2.1.2.1 ApsaraDB RDS
+        - 6.2.1.2.2 ApsaraDB RDS: New connectivity
+        - 6.2.1.2.3 PolarDB cluster edition
+        - 6.2.1.2.4 ApsaraDB for PolarDB (primary/standby edition)
+        - 6.2.1.2.5 PolarDB for AI
+          - 6.2.1.2.5.1 PolarDB HTAP Edition (compute node)
+          - 6.2.1.2.5.2 PolarDB for HTAP (Data Node)
+        - 6.2.1.2.6 ApsaraDB for MongoDB
+        - 6.2.1.2.7 ApsaraDB for MongoDB (new connection)
+        - 6.2.1.2.8 ApsaraDB for Redis
+        - 6.2.1.2.9 ApsaraDB for Redis (New Connection)
+        - 6.2.1.2.10 AnalyticDB for PostgreSQL
+        - 6.2.1.2.11 AnalyticDB for PostgreSQL (New Link)
+        - 6.2.1.2.12 Data Transmission Service (DTS)
+          - 6.2.1.2.12.1 DTS: Subscription tasks
+          - 6.2.1.2.12.2 DTS migration tasks
+          - 6.2.1.2.12.3 Data Transmission Service (DTS): Synchronization tasks
+        - 6.2.1.2.13 Lindorm
+        - 6.2.1.2.14 Cloud-native Multimode Database Lindorm 2.0
+        - 6.2.1.2.15 Multimodal AI Data Lake
+      - 6.2.1.3 Storage and CDN
+        - 6.2.1.3.1 Apsara File Storage NAS
+        - 6.2.1.3.2 Object Storage Service (OSS)
+        - 6.2.1.3.3 CPFS
+        - 6.2.1.3.4 File system APFS
+        - 6.2.1.3.5 Apsara File Storage NAS
+      - 6.2.1.4 Network
+        - 6.2.1.4.1 NAT Gateway
+        - 6.2.1.4.2 Server Load Balancer (SLB)
+        - 6.2.1.4.3 Application Load Balancer
+        - 6.2.1.4.4 Elastic IP Address
+        - 6.2.1.4.5 VPN Gateway
+        - 6.2.1.4.6 Alibaba Cloud DNS - Private zones
+        - 6.2.1.4.7 Alibaba Cloud DNS: Tenant forwarded domain name
+        - 6.2.1.4.8 Cloud Enterprise Network
+      - 6.2.1.5 Middleware services
+        - 6.2.1.5.1 ApsaraMQ for RocketMQ
+        - 6.2.1.5.2 Message Queue (MQ)
+        - 6.2.1.5.3 ApsaraMQ for Kafka
+        - 6.2.1.5.4 API Gateway
+        - 6.2.1.5.5 Enterprise Distributed Application Service (EDAS) (dedicated registry)
+      - 6.2.1.6 Big data
+        - 6.2.1.6.1 DataHub
+        - 6.2.1.6.2 Alibaba Cloud Elasticsearch
+        - 6.2.1.6.3 MaxCompute
+        - 6.2.1.6.4 MaxCompute (quota groups)
+      - 6.2.1.7 Security (Apsara Stack Security)
+        - 6.2.1.7.1 Bastion Host
+        - 6.2.1.7.2 Static data masking and watermarking
+        - 6.2.1.7.3 Vulnerability scan engine
+        - 6.2.1.7.4 NFV Cloud Firewall
+        - 6.2.1.7.5 Web Application Firewall
+      - 6.2.1.8 AI and machine learning
+        - 6.2.1.8.1 AI Studio (Online Service)
+        - 6.2.1.8.2 AI Studio (Model Evaluation)
+        - 6.2.1.8.3 AI Studio (Notebook modeling)
+        - 6.2.1.8.4 AI Studio (Task Modeling)
+        - 6.2.1.8.5 AI Studio (Visualized Modeling)
+        - 6.2.1.8.6 AI Studio (fine-tuning)
+        - 6.2.1.8.7 AI Studio (Batch Inference)
+        - 6.2.1.8.8 AI studio (Online service group)
+        - 6.2.1.8.9 AI Studio (Resource Pool)
+        - 6.2.1.8.10 A-Speed (High-Performance Inference Service)
+        - 6.2.1.8.11 Elastic Fault Tolerance Service
+    - 6.2.2 Manage cloud service monitoring
+  - 6.3 Kubernetes container monitoring
+  - 6.4 Application group
+    - 6.4.1 Create an application group
+    - 6.4.2 Manage application groups
+    - 6.4.3 Availability monitoring
+      - 6.4.3.1 Create an availability monitoring task
+      - 6.4.3.2 Manage availability monitoring tasks
+      - 6.4.3.3 Status codes
+  - 6.5 Namespaces
+    - 6.5.1 Time-series metrics
+    - 6.5.2 System events
+      - 6.5.2.1 Cloud product event monitoring metrics
+      - 6.5.2.2 View system event metrics
+- 7 AI observability
+  - 7.1 Holographic View
+  - 7.2 Agent
+  - 7.3 Data center
+  - 7.4 Model inference
+  - 7.5 Model training
+  - 7.6 AI computing power
+- 8 ARMS Application Monitoring
+  - 8.1 Application list
+  - 8.2 Application topology
+  - 8.3 Trace analysis
+- 9 Visualization
+  - 9.1 Custom dashboards
+- 10 Alert service
+  - 10.1 Alert history
+  - 10.2 Alert rules
+    - 10.2.1 Create an alert rule
+    - 10.2.2 Manage alert rules
+    - 10.2.3 Notification methods supported by Cloud Monitor
+  - 10.3 Alert templates
+    - 10.3.1 General alert templates
+    - 10.3.2 Create an alert template
+    - 10.3.3 Manage alert templates
+  - 10.4 One-click alarm
+  - 10.5 Download a report
+- 11 Availability monitoring
+  - 11.1 Availability probe implementation path
+  - 11.2 Service availability monitoring
+  - 11.3 Cloud service availability monitoring
+- 12 Event Center
+  - 12.1 System events
+    - 12.1.1 Cloud service system events
+    - 12.1.2 View system events
+    - 12.1.3 Create a system event-triggered alert rule
+    - 12.1.4 Manage system event-triggered alert rules
+- 13 Statistical analysis
+  - 13.1 Monitoring ranking
+  - 13.2 Data subscription
+- 14 Access Center
+  - 14.1 Log monitoring
+  - 14.2 Custom monitoring
+  - 14.3 Report custom events
+
+## 1 Overview
 
 CloudMonitor provides an out-of-the-box all-in-one enterprise-grade monitoring solution for you to monitor resources on Apsara Stack.
 
@@ -28,7 +179,7 @@ You can view the business data of CloudMonitor based on different dimensions. To
 
 When you view information in a list, take note of the following points: The , , , and buttons are displayed above the list. You can adjust the list based on your business requirements. : refreshes the list. : displays information in the default or compact mode. : shows or hides specific items in the list. Move the pointer over a display item and click the icon to the right of the display item to adjust the order of the items. : displays information in full screen mode. You can resize the width of columns based on your business requirements. The column width configuration is stored in the local storage of the browser. If you clear the local storage, the configuration becomes invalid.
 
-## Overview
+## 2 Overview
 
 **Background**
 
@@ -67,7 +218,7 @@ and inspection information.
 | Inspection Details | If an inspection finds an issue, click View Details and Governance Guidance to the right of the inspection item. In the Inspection Details panel, you can view information about the inspection mechanism, its scope, and the affected objects. Metric Validity Inspection ECS Plugin Status Inspection: Checks whether the plugin status for all ECS instances is Running . No-Data Alert Rule Inspection: Verifies that for each cloud service metric, at least one instance in the resource group has an alert rule configured for Insufficient Data . No-Data Metric Inspection: Checks whether all metrics for a cloud service are receiving data. Alert Effectiveness Inspection Persistent Alert Rule Inspection: Checks whether any alert rule has remained in the In Alarm state for the last 24 hours. Alert Rule Callback Inspection: Checks for failed callbacks from any alert rule within the last 24 hours. Invalid Alert Rule Inspection: Checks for invalid alert rules on your cloud service resources. Cloud Service Alert Coverage Inspection: Checks if any cloud service resources have no alert rules configured. Note If one-click alerting is enabled for all instances of a cloud service under the top-level organization, all instances of that service are considered covered by alert rules by default. If an alert rule for a cloud service applies to a specific resource group, all instances of that service within that resource group are considered covered. An instance is considered covered if at least one of its metrics has an alert rule. |
 |---|---|
 
-## Monitoring assistant
+## 3 Monitoring assistant
 
 The monitoring assistant is an intelligent O&M assistant integrated into the Cloud Monitor platform. It enables conversation-based management through natural language dialogues and helps you efficiently complete complex O&M tasks such as resource monitoring, alert handling, data queries, and intelligent diagnostics.
 
@@ -93,11 +244,11 @@ The system automatically learns user operation habits and stores them as reusabl
 7. Scheduled tasks.
 The system supports automatic execution or manual triggering of periodic O&M tasks as scheduled. You can also create custom scheduled tasks. i. Create a task. a. On the **CronJob** tab, click **Create Scheduled Task**, and set the task name, schedule time, and execution content. b. Click **Save** or **Execute Now**. ii. Enable or disable a scheduled task. Click on the scheduled task card to enable or disable the scheduled task. iii. Execute a scheduled task immediately. Move the pointer over the task card and click **Execute Now** to skip the preset schedule, run the task immediately, and obtain the latest results. iv. Edit a task. Move the pointer over the task card, click **Edit Task**, update the task name, schedule time, and execution content, and then click **Save** or **Execute Now**. v. Delete a task. Move the pointer over the task card, click **Delete**, and then click **Delete** in the confirmation dialog box. y analysis
 
-## Intelligent exploratory
+## 4 Intelligent exploratory analysis
 
 **analysis**
 
-### UModel exploration
+### 4.1 UModel exploration
 
 UModel exploration is a visual resource relationship graph tool in the CMS platform. It graphically displays various entities and their relationships in the cloud environment to help you intuitively understand complex infrastructure topology.
 
@@ -121,7 +272,7 @@ i. Click the settings icon in the upper-left corner to go to the Settings tab. i
 **Dots**, **Lines**, and **Crosses**.
 iii. Relationships This setting defines the semantic level of relationships in the graph and determines which relationships to visualize. It supports the **real view** and the **logical view**. iv. Display This option remains clear by default. When it is clear, the system renders only elements in the current visible area and dynamically loads elements when you scroll or zoom.
 
-### Entity topology exploration
+### 4.2 Entity topology exploration
 
 Entity topology exploration is an instance-level resource relationship visualization tool in Cloud Monitor. It focuses on specific cloud resource instances, such as ECS, RDS, and VPC instances, and their physical or logical connections to display the dynamic network of individual running resource objects.
 
@@ -144,7 +295,7 @@ Global statistics panel This panel displays the resource scale in the current vi
 5. Settings
 i. Click the settings icon in the upper-left corner to go to the Settings tab. y analysis ii. View You can control the layout algorithm and organization of the topology to adapt to different analysis scenarios: Force-directed: An elastic topology suitable for local exploration. Grouping: Groups entities by type to facilitate an overview. iii. Display Configure whether to display entity tags, group tags, and thumbnails, and whether to allow dragging entities.
 
-## Alert center
+## 5 Alert center
 
 **Benefits**
 
@@ -163,7 +314,7 @@ Provides a centralized interface to display the alert data of cloud services. Pr
 
 Alert data is obtained from the following alert sources: Application Real-Time Monitoring Service (ARMS) Simple Log Service (SLS) DataWorks Managed Service for Prometheus
 
-### Alert overview
+### 5.1 Alert overview
 
 CloudMonitor provides a visualized interface to quickly identify abnormal cloud services. You can click a cloud service name to go to the corresponding monitoring list and details page for troubleshooting.
 
@@ -192,7 +343,7 @@ sources in the resource set of the current organization. Click the name of a clo
 
 After you obtain the alert overview information based on your requirements, you can view alert details in the alert list.
 
-### Alert list
+### 5.2 Alert list
 
 The alert list displays active alerts, historical alerts, and alert trends. Alerts are grouped into
 
@@ -238,7 +389,7 @@ To set the status to **closed**: Single alert: On the **alert list** page, click
 Multiple alerts: Select the alerts and click **Batch Close**. This changes their
 **processing status** to **closed** and moves them to the **historical alerts** tab.
 
-### Alert rules
+### 5.3 Alert rules
 
 The alert center of Cloud Monitor integrates alert rule capabilities of Application Real-Time Monitoring Service (ARMS), Simple Log Service (SLS), and Managed Service for Prometheus. If the service is not deployed, you cannot use the alert rule capability of the service.
 
@@ -261,7 +412,7 @@ Cloud Monitor allows you to subscribe to the metric store of SLS. For more infor
 For more information about alert rules in Managed Service for Prometheus and the operations that you can perform on historical alerts, see **Simple Log Service** > **User Guide** > **Alerts** >
 **Configure an alarm**.
 
-### Notification policy
+### 5.4 Notification policy
 
 A notification policy lets you filter, consolidate, and reduce noise from triggered alerts. It minimizes interruptions from low-priority or unnecessary notifications, addresses alert fatigue and information overload, and helps you focus on high-priority alerts.
 
@@ -357,7 +508,7 @@ Before you enable a notification policy, ensure its **Policy status** is **Disab
 
 You can delete a policy that you no longer need. Delete a single policy i. In the list on the **Notification Policy** page, find the target policy and click **Delete** in the Actions column. ii. Click **OK**. Delete policies in batches i. In the list on the **Notification Policy** page, select the checkboxes of the target policies. ii. Click **Batch delete** below the list. iii. Click **OK**.
 
-### Blocking policies
+### 5.5 Blocking policies
 
 You can configure a temporary or permanent blocking policy for alerts. The blocked alerts are no longer connected to the system.
 
@@ -443,9 +594,9 @@ You can delete the blocking policies that you no longer need. Delete a single bl
 **Delete** in the **Operation** column.
 ii. In the message that appears, click **OK**. Delete multiple blocking policies at a time i. On the **Masking policy** page, select the blocking policies that you want to delete. ii. Click **Batch delete** in the lower-left corner of the policy list. iii. In the message that appears, click **OK**.
 
-## Cloud resource monitoring
+## 6 Cloud resource monitoring
 
-### Host monitoring
+### 6.1 Host monitoring
 
 After the CloudMonitor agent is installed on your Elastic Compute Service (ECS) instances, CloudMonitor can collect various monitoring data of metrics about the operating system that the ECS instances run. You can configure alert rules for the metrics to reduce monitoring costs.
 **Easy-to-use agent**: After the CloudMonitor agent is installed on your ECS instances,
@@ -457,7 +608,7 @@ memory usage, and number of opened files for active processes. This helps you mo
 **Flexible alerting**: Host monitoring allows you to manage ECS instances across regions and
 configure alert rules by application group. This reduces the costs of monitoring management.
 
-#### Install the CloudMonitor agent
+#### 6.1.1 Install the CloudMonitor agent
 
 You can install the CloudMonitor agent on Elastic Compute Service (ECS) instances to collect the monitoring data of operating systems.
 
@@ -512,7 +663,7 @@ If the CloudMonitor agent fails to be installed, click the icon in the **Agent S
 **Cause**, **Installation History Details**, **Installation Status**, and **Installed Agent**
 **Output**.
 
-#### Process monitoring
+#### 6.1.2 Process monitoring
 
 By default, process monitoring collects the CPU usage, memory usage, and number of open files for active processes on an Elastic Computing Service (ECS) instance. If you add a process keyword, process monitoring also collects the number of processes that contain the keyword.
 
@@ -578,7 +729,7 @@ After you add a process to monitor, you can set an alert rule for it. This ensur
 parameters for the alert rule as needed. If multiple processes are configured on the ECS instance, you can click **Create Alert Rule** to set alert rules for multiple processes. For more information about how to set the parameters for an alert rule, see Create an alert rule.
 4. Click **OK**.
 
-#### View host monitoring details
+#### 6.1.3 View host monitoring details
 
 **Procedure**
 
@@ -602,7 +753,7 @@ You can use the advanced search to filter target instances by **Instance Name**,
 **ID**, **Classic Network Private IP**, **VPC Private IP**, **Public IP**, **Elastic IP Address**, or **ECS**
 **Plug-in Status**.
 
-### Cloud product monitoring
+### 6.2 Cloud product monitoring
 
 CloudMonitor automatically discovers the cloud products in your account, allowing you to view monitoring charts to check resource status. You can also create alert rules. When a rule is triggered, CloudMonitor sends an alert notification to keep you promptly informed of your resource status. CloudMonitor supports monitoring for the following cloud products:
 
@@ -625,7 +776,7 @@ For details about the monitoring metrics for each cloud product, see CloudMonito
 | Security (Security Center) | Bastionhost Vulnerability Scanning Engine Cloud Firewall WAF |
 | Artificial Intelligence and Machine Learning | PAI-Studio (online services) PAI-Studio (model evaluation) PAI-Studio (Notebook modeling) PAI-Studio (task modeling) PAI-Studio (visual modeling) PAI-Studio (model tuning) PAI-Studio (batch inference) PAI-Studio (online service groups) PAI-Studio (resource pools) |
 
-#### Cloud Monitor metrics
+#### 6.2.1 Cloud Monitor metrics
 
 Cloud Monitor uses metrics from your cloud resources to monitor service availability. You can configure alert rules and notification policies for these metrics to stay informed about the health and performance of your service instances.
 
@@ -633,9 +784,9 @@ Cloud Monitor uses metrics from your cloud resources to monitor service availabi
 
 Cloud Monitor's ASCM custom role feature lets you assign different access permissions to O&M accounts. When users with these roles log in to the Cloud Monitor (CMS) platform, they see only the metrics for their authorized product lines. This fine-grained permission control ensures data security by isolating monitoring data and preventing sensitive information leakage. It also simplifies the user interface for O&M personnel, helping them focus on their assigned product lines and improving both operational efficiency and data security.
 
-##### Elastic computing
+##### 6.2.1.1 Elastic computing
 
-###### Kubernetes container monitoring
+###### 6.2.1.1.1 Kubernetes container monitoring
 
 This document lists the monitoring metrics for Kubernetes container monitoring.
 
@@ -748,7 +899,7 @@ The value for **namespace** is **acs_k8s**. The default value for **period** is 
 |---|---|---|---|---|
 | Deployment network TX error rate | Bps | deployment.netw ork.tx errors rate _ _ | userId, cluster, namespace, type, app | The rate of errors that occurred while the deployment was transmitting network traffic. |
 
-###### ECS
+###### 6.2.1.1.2 ECS
 
 This topic describes the monitoring metrics for ECS.
 
@@ -984,7 +1135,7 @@ These metrics are available only for the `ecs.t5` instance type. They are not av
 |---|---|---|---|---|
 | Accumulated CPU credit | short | TotalCredit | instanceId,gpuId | The number of accumulated CPU credits. |
 
-###### BMCP (Node)
+###### 6.2.1.1.3 BMCP (Node)
 
 This document lists the monitoring metrics for BMCP nodes. The **Namespace** is **acs_bms**. The default **Period** is **60** seconds and can be set to an integer multiple of 60.
 
@@ -1030,7 +1181,7 @@ This document lists the monitoring metrics for BMCP nodes. The **Namespace** is 
 | RDMA local CQE errors | Count | rdma cqe error _ _ | instanceId,userId, minor | The number of local Completion Queue Entry (CQE) errors. |
 | RDMA peer RNR NAK packets | Count | rdma service mo _ _ nitor rnr nak retr _ _ _ y err _ | instanceId,userId, minor | The number of peer Receiver Not Ready (RNR) Negative Acknowledgment (NAK) packets. |
 
-###### BMCP (Bare metal-intelligent computing
+###### 6.2.1.1.4 BMCP (Bare metal-intelligent computing cluster) metrics
 
 **cluster) metrics**
 
@@ -1076,7 +1227,7 @@ multiple of 60.
 | Number of local RDMA CQE errors | Count | rdma cqe error _ _ | instanceId,minor,u serId | The total number of errors recorded in the local RDMA Completion Queue Entry (CQE). |
 | Number of peer RNR NAK packets | Count | rdma service mo _ _ nitor rnr nak retr _ _ _ y err _ | instanceId,minor,u serId | The total number of Receiver Not Ready (RNR) Negative Acknowledgement (NAK) packets received from a peer. |
 
-###### Bare metal computing platform (BMCP)
+###### 6.2.1.1.5 Bare metal computing platform (BMCP) (Container-based intelligent computing cluster)
 
 **(Container-based intelligent computing cluster)**
 
@@ -1125,7 +1276,7 @@ This topic lists the metrics for Bare Metal Computing Platform (BMCP) (Container
 | RDMA local CQE error count | short | rdma cqe error _ _ | instanceId,minor,u serId | The number of local Completion Queue Entry (CQE) errors. |
 | peer RNR NAK packet count | short | rdma service mo _ _ nitor rnr nak retr _ _ _ y err _ | instanceId,minor,u serId | The number of peer Receiver Not Ready (RNR) Negative Acknowledgment (NAK) packets. |
 
-###### Bare Metal Computing Platform (BMCP)
+###### 6.2.1.1.6 Bare Metal Computing Platform (BMCP)
 
 This topic describes the metrics for Bare Metal Computing Platform (BMCP) (Bare Metal - Supercomputing Cluster). The **namespace** for these metrics is **acs_bmcp**. The default **period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -1143,7 +1294,7 @@ This topic describes the metrics for Bare Metal Computing Platform (BMCP) (Bare 
 | Inbound network bandwidth | MB/s | NETWORK RX _ | instanceId,userId | The rate of incoming network traffic to the instance. |
 | Outbound network bandwidth | MB/s | NETWORK TX _ | instanceId,userId | The rate of outgoing network traffic from the instance. |
 
-###### Bare Metal Management Service (BMS)
+###### 6.2.1.1.7 Bare Metal Management Service (BMS)
 
 This topic describes the monitoring metrics for Bare Metal Management Service (BMS). The **Namespace** is **acs_cgw_bms**. The default **Period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -1180,9 +1331,9 @@ This topic describes the monitoring metrics for Bare Metal Management Service (B
 | GPU SM clock frequency | MHz | GPU SM CLOCK _ _ | instanceId,userId,gpu | The clock speed of the GPU's Streaming Multiprocessors (SMs). |
 | GPU memory clock frequency | MHz | GPU MEM CLOCK _ _ | instanceId,userId,gpu | The clock speed of the GPU's memory. |
 
-##### Database services
+##### 6.2.1.2 Database services
 
-###### ApsaraDB RDS
+###### 6.2.1.2.1 ApsaraDB RDS
 
 This topic describes the metrics for ApsaraDB RDS. By default, ApsaraDB RDS collects data every 60 to 300 seconds using a legacy data pipeline. The **Namespace** is **acs_rds_dashboard**, and the default **Period** is **60-300** seconds. ApsaraDB RDS supports four database engines: ApsaraDB RDS for MySQL, ApsaraDB RDS for SQL Server, ApsaraDB RDS for PolarDB-O, and ApsaraDB RDS for PostgreSQL.
 
@@ -1254,7 +1405,7 @@ This topic describes the metrics for ApsaraDB RDS. By default, ApsaraDB RDS coll
 | Disk usage | percent | local fs size usa _ _ _ ge | userId, instanceId | Percentage of disk space used. |
 | Memory usage | percent | mem usage _ | userId, instanceId | Percentage of memory used. |
 
-###### ApsaraDB RDS: New connectivity
+###### 6.2.1.2.2 ApsaraDB RDS: New connectivity
 
 This topic describes the monitoring metrics for ApsaraDB for RDS (new link). ApsaraDB for RDS now supports links with a 60-second collection period. The **namespace** is **acs_rds_dashboard**, and the default **period** is **60** seconds. ApsaraDB for RDS supports three engines: MySQL, PolarDB for Oracle, and PostgreSQL.
 
@@ -1417,7 +1568,7 @@ This topic describes the monitoring metrics for ApsaraDB for RDS (new link). Aps
 |---|---|---|---|---|
 | Primary-standby replication lag | seconds | PG ESSD Replic _ _ ationLag | userId, instanceId | The replication lag between the primary and standby instances. |
 
-###### PolarDB cluster edition
+###### 6.2.1.2.3 PolarDB cluster edition
 
 This topic describes the monitoring metrics for the PolarDB cluster edition. The **namespace** is **acs_polardb_dashboard**; the **Period** defaults to **60** seconds and must be an integer multiple of 60.
 
@@ -1537,7 +1688,7 @@ This topic describes the monitoring metrics for the PolarDB cluster edition. The
 | Replication lag (replica) | MB | data replay late _ _ ncy in mb _ _ | instance ID, node ID | The replication lag on the replica node. |
 | Maximum database age | Count | data db age _ _ | instance ID, node ID | The maximum age of the database on the node, measured in transactions. A high value indicates that a VACUUM operation is required to prevent transaction ID wraparound. |
 
-###### ApsaraDB for PolarDB (primary/standby
+###### 6.2.1.2.4 ApsaraDB for PolarDB (primary/standby edition)
 
 **edition)**
 
@@ -1693,9 +1844,9 @@ This topic describes the monitoring metrics for PolarDB (Primary/Replica Edition
 | PolarDB-O enterprise edition (local disk): Replay latency | MB | PG ReplayLate _ ncyInMB | instanceId | The amount of Write- Ahead Logging (WAL) data (in MB) that has not been replayed on the standby instance. |
 | Superuser connections | count | SuperuserConn ections | userId,instanceId | The number of superuser connections. |
 
-###### PolarDB for AI
+###### 6.2.1.2.5 PolarDB for AI
 
-###### PolarDB HTAP Edition (compute node)
+###### 6.2.1.2.5.1 PolarDB HTAP Edition (compute node)
 
 This topic describes the metrics for PolarDB HTAP Edition (compute node). The value for **namespace** is **acs_drds**. The **Period** defaults to **60** seconds or to an integer multiple of 60.
 
@@ -1803,7 +1954,7 @@ This topic describes the metrics for PolarDB HTAP Edition (compute node). The va
 | Processed events | ops | DumperEPS | instanceId,nodeId | The number of events processed per second. |
 | Processed transactions | ops | DumperTPS | instanceId,nodeId | The number of transactions processed per second. |
 
-###### PolarDB for HTAP (Data Node)
+###### 6.2.1.2.5.2 PolarDB for HTAP (Data Node)
 
 This topic describes the monitoring metrics for PolarDB for HTAP (Data Node). The value for **Namespace** is **acs_polarxsn_dashboard**. The default value for **Period** is **60-**
 **300** seconds and must be an integer multiple of 60.
@@ -1848,7 +1999,7 @@ This topic describes the monitoring metrics for PolarDB for HTAP (Data Node). Th
 | Active sessions | short | ActiveSession | userId,instanceId | The number of active sessions. |
 | Total sessions | short | TotalSession | userId,instanceId | The total number of sessions. |
 
-###### ApsaraDB for MongoDB
+###### 6.2.1.2.6 ApsaraDB for MongoDB
 
 This topic describes the monitoring metrics for ApsaraDB for MongoDB. The **Namespace** is **acs_mongodb**; the **Period** defaults to **60** seconds and can be set to any multiple of 60.
 
@@ -1895,7 +2046,7 @@ This topic describes the monitoring metrics for ApsaraDB for MongoDB. The **Name
 | Number of update operations | short | OpUpdate | userId, instanceId, role | The number of update operations executed. |
 |---|---|---|---|---|
 
-###### ApsaraDB for MongoDB (new connection)
+###### 6.2.1.2.7 ApsaraDB for MongoDB (new connection)
 
 This topic describes the metrics for ApsaraDB for MongoDB. The **namespace** is **acs_mongodb**. The **period** defaults to **60** seconds and must be an integer multiple of 60.
 
@@ -2017,7 +2168,7 @@ This topic describes the metrics for ApsaraDB for MongoDB. The **namespace** is 
 | Query operations | count | OpQuery new _ cluster _ | userId, instanceId, role | The number of query operations. |
 | Update operations | count | OpUpdate ne _ w cluster _ | userId, instanceId, role | The number of update operations. |
 
-###### ApsaraDB for Redis
+###### 6.2.1.2.8 ApsaraDB for Redis
 
 This topic lists the monitoring metrics for ApsaraDB for Redis. The **Namespace** is **acs_kvstore**. The default **Period** is **60** seconds and must be an integer multiple of 60.
 
@@ -2035,7 +2186,7 @@ This topic lists the monitoring metrics for ApsaraDB for Redis. The **Namespace*
 | Memory usage | percent | MemoryUsage | userId, instanceId | The percentage of memory in use. |
 | Used QPS | ops | UsedQPS | userId, instanceId | The number of commands the instance processes per second. |
 
-###### ApsaraDB for Redis (New Connection)
+###### 6.2.1.2.9 ApsaraDB for Redis (New Connection)
 
 This topic describes the monitoring metrics for ApsaraDB for Redis (new architecture).
 **Namespace** is **acs_kvstore**; the **period** defaults to **60** seconds and must be an integer
@@ -2261,7 +2412,7 @@ multiple of 60.
 | Max response time | μs | SplitrwProxyMaxRt | instanceId,nod eId | The maximum response time for requests to the proxy node. |
 | Used connections | count | SplitrwProxyConnectio nUsage | instanceId,nod eId | The number of connections in use on the proxy node. |
 
-###### AnalyticDB for PostgreSQL
+###### 6.2.1.2.10 AnalyticDB for PostgreSQL
 
 This topic lists the monitoring metrics for AnalyticDB for PostgreSQL. The default **Period** is **60** seconds and can be set to any multiple of 60.
 
@@ -2301,7 +2452,7 @@ This topic lists the monitoring metrics for AnalyticDB for PostgreSQL. The defau
 | Active queries | Count | adbpg query activ _ _ e | instance id _ | Number of active queries in the instance. |
 | Idle connections | Count | adbpg conn idle _ _ | instance id _ | Number of idle connections to the instance. |
 
-###### AnalyticDB for PostgreSQL (New Link)
+###### 6.2.1.2.11 AnalyticDB for PostgreSQL (New Link)
 
 This topic describes the metrics for AnalyticDB for PostgreSQL (New Link). The **Namespace** is **acs_hybriddb**. The default **Period** is **60** seconds and can be set to any multiple of 60.
 
@@ -2359,9 +2510,9 @@ This topic describes the metrics for AnalyticDB for PostgreSQL (New Link). The *
 | [Reserved storage] local data write IOPS (New) | ops | node disk iops write _ _ _ segment _ | instanceId | The write IOPS for local data. |
 | [Reserved storage] size of local data files (New) | mbyte s | adbpg local data dir _ _ _ size segment _ _ | instanceId | The size of local data files. |
 
-###### Data Transmission Service (DTS)
+###### 6.2.1.2.12 Data Transmission Service (DTS)
 
-###### DTS: Subscription tasks
+###### 6.2.1.2.12.1 DTS: Subscription tasks
 
 This topic describes the metrics for Data Transmission Service (DTS) subscription tasks. The namespace is **acs_dts_dashboard**. The period defaults to **60** seconds and can be any integer multiple of 60.
 
@@ -2372,7 +2523,7 @@ This topic describes the metrics for Data Transmission Service (DTS) subscriptio
 | Total subscription task instances | Count | SubscribeInstanceTotal | userId | Total number of subscription task instances. |
 | Unavailable subscription task instances | Count | SubscribeInstanceUnavai lability | userId | Number of unavailable subscription task instances. |
 
-###### DTS migration tasks
+###### 6.2.1.2.12.2 DTS migration tasks
 
 This topic lists the metrics for Data Transmission Service (DTS) migration tasks. The **namespace** is **acs_dts_dashboard**. The default **period** is **60** seconds, or any integer multiple of 60.
 
@@ -2383,7 +2534,7 @@ This topic lists the metrics for Data Transmission Service (DTS) migration tasks
 | Total migration task instances | Count | MigrationInstanceTotal | userId | The total number of migration task instances. |
 | Unavailable migration task instances | Count | MigrationInstanceUnavai lability | userId | The number of unavailable migration task instances. |
 
-###### Data Transmission Service (DTS):
+###### 6.2.1.2.12.3 Data Transmission Service (DTS): Synchronization tasks
 
 **Synchronization tasks**
 
@@ -2396,7 +2547,7 @@ This topic describes the monitoring metrics for Data Transmission Service (DTS) 
 | Total Synchronization Instances | Count | SynchronizationInstance Total | userId | The total number of synchronization task instances. |
 | Unavailable Synchronization Instances | Count | SynchronizationInstance Unavailability | userId | The number of unavailable synchronization task instances. |
 
-###### Lindorm
+###### 6.2.1.2.13 Lindorm
 
 This document describes the monitoring metrics for Lindorm. The **Namespace** is **acs_lindorm**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
@@ -2489,7 +2640,7 @@ This document describes the monitoring metrics for Lindorm. The **Namespace** is
 | DataNode read traffic | short | FEM dataNodeRe _ adTraffic | instanceId | The read traffic of the DataNode in the file engine. |
 | DataNode write traffic | short | FEM dataNodeWr _ iteTraffic | instanceId | The write traffic of the DataNode in the file engine. |
 
-###### Cloud-native Multimode Database
+###### 6.2.1.2.14 Cloud-native Multimode Database Lindorm 2.0
 
 **Lindorm 2.0**
 
@@ -2598,7 +2749,7 @@ This topic describes the metrics for Cloud-native Multimode Database Lindorm 2.0
 | Number of SQL protocol connections | Count | lindorm ldserver _ _ sql mysql server _ _ connection gau _ _ ge | instanceId,compon ent | The number of SQL protocol connections. |
 | Query prepare phase duration | nanose conds | lindorm cloumn l _ _ dserver sql prep _ _ are timer mean _ _ | instanceId,compon ent | The time taken for the query prepare phase. |
 
-###### Multimodal AI Data Lake
+###### 6.2.1.2.15 Multimodal AI Data Lake
 
 This document describes the monitoring metrics for Multimodal AI Data Lake. The **Namespace** is `acs_adle` . The default **Period** is **60** seconds and can be set to any multiple of 60.
 
@@ -2631,9 +2782,9 @@ This document describes the monitoring metrics for Multimodal AI Data Lake. The 
 | Number of running Ray jobs | short | ray running jobs _ _ | instanceId,exported inst _ ance,SessionName | The number of Ray jobs that are currently running. |
 | Cumulative number of completed Ray jobs | short | ray finished jobs _ _ total _ | instanceId,exported inst _ ance,SessionName | The cumulative number of Ray jobs that have been completed. |
 
-##### Storage and CDN
+##### 6.2.1.3 Storage and CDN
 
-###### Apsara File Storage NAS
+###### 6.2.1.3.1 Apsara File Storage NAS
 
 This topic lists the monitoring metrics for Apsara File Storage NAS. The namespace is acs_nas. The default **Period** is 60 seconds and can be any multiple of 60.
 
@@ -2663,7 +2814,7 @@ This topic lists the monitoring metrics for Apsara File Storage NAS. The namespa
 | metadata operation error rate | percent | ErrorRateMeta | userId, fileSystemId | The average error rate of metadata operations over one minute. |
 | storage utilization | percent | StorageUtilization Rate | userId, fileSystemId | The percentage of used storage capacity. |
 
-###### Object Storage Service (OSS)
+###### 6.2.1.3.2 Object Storage Service (OSS)
 
 This topic describes the metrics for Object Storage Service (OSS). The value for **Namespace** is **acs_oss_dashboard**. The default **Period** is **60** seconds and can be set to any multiple of 60.
 
@@ -2753,7 +2904,7 @@ This topic describes the metrics for Object Storage Service (OSS). The value for
 | Successful DeleteObject requests | Count | DeleteObjectCou nt | userId, bucket | Total successful DeleteObject requests. |
 | Successful DeleteObjects requests | Count | DeleteObjectsCo unt | userId, bucket | Total successful DeleteObjects requests. |
 
-###### CPFS
+###### 6.2.1.3.3 CPFS
 
 This topic describes the monitoring metrics for CPFS.
 **namespace** is **acs_cpfs**. The default **Period** is 60 seconds and can be any multiple of 60.
@@ -2771,7 +2922,7 @@ This topic describes the monitoring metrics for CPFS.
 | Read IOPS | IOPS | fs read iops _ _ | instanceId | The number of read operations per second. |
 | Write IOPS | IOPS | fs write iops _ _ | instanceId | The number of write operations per second. |
 
-###### File system APFS
+###### 6.2.1.3.4 File system APFS
 
 This topic lists the metrics for File System APFS. The **namespace** is **acs_apfs**; the **period** defaults to **60** seconds and can be set to any integer multiple of 60.
 
@@ -2788,7 +2939,7 @@ This topic lists the metrics for File System APFS. The **namespace** is **acs_ap
 |---|---|---|---|---|
 | write IOPS | IOPS | efs filesystem write iops _ _ _ | instanceId | The write IOPS of the file system. |
 
-###### Apsara File Storage NAS
+###### 6.2.1.3.5 Apsara File Storage NAS
 
 This topic describes the monitoring metrics for Apsara File Storage NAS. The default for **Period** is **60** seconds. You can also set it to an integer multiple of 60.
 
@@ -2819,9 +2970,9 @@ This topic describes the monitoring metrics for Apsara File Storage NAS. The def
 |   |   | instanceId |
 |---|---|---|
 
-##### Network
+##### 6.2.1.4 Network
 
-###### NAT Gateway
+###### 6.2.1.4.1 NAT Gateway
 
 This topic lists the monitoring metrics for NAT Gateway. The namespace is **acs_nat_gateway**. The default period is **60** seconds, but you can set it to any integer multiple of 60.
 
@@ -2849,7 +3000,7 @@ If you are connected to a public cloud, you can switch platforms to view its NAT
 | Outbound bandwidth | Bytes/s | snet tx.rate _ | userId, instanceId, snatentryId | The rate of outgoing traffic. |
 |---|---|---|---|---|
 
-###### Server Load Balancer (SLB)
+###### 6.2.1.4.2 Server Load Balancer (SLB)
 
 This topic lists the metrics for Server Load Balancer (SLB). The **Namespace** is **acs_slb_dashboard**. The default **Period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -2917,7 +3068,7 @@ If you are connected to a public cloud, you can switch between platforms to view
 | Failed connections | Count/s | FailConnection | userId, instanceId, port | The number of failed connections per second. |
 | Layer 7 backend health check failure rate | % | SeventhFloorUnhe althyServerRate | instanceId, rip | The failure rate of Layer 7 health checks on a backend server for the listener. |
 
-###### Application Load Balancer
+###### 6.2.1.4.3 Application Load Balancer
 
 This topic describes the metrics for Application Load Balancer. The value for **Namespace** is **acs_alb**. The default value for **Period** is **60** seconds, and the value must be a multiple of 60.
 
@@ -2958,7 +3109,7 @@ This topic describes the metrics for Application Load Balancer. The value for **
 | Healthy server count | short | statusup | instanceId | The number of healthy servers registered with a load balancer instance. |
 | Unhealthy server count | short | statusdown | instanceId | The number of unhealthy servers registered with a load balancer instance. |
 
-###### Elastic IP Address
+###### 6.2.1.4.4 Elastic IP Address
 
 This topic lists the metrics for Elastic IP Address. The **namespace** is **acs_vpc_eip**. The default **period** is **60** seconds and can be any integer multiple of 60.
 
@@ -2977,7 +3128,7 @@ If you use a public cloud, switch to the correct cloud platform to view its Elas
 | inbound bandwidth usage | percent | net rx.rate usage _ _ | instanceId | The percentage of available inbound bandwidth in use. |
 | outbound bandwidth usage | percent | net tx.rate usage _ _ | instanceId | The percentage of available outbound bandwidth in use. |
 
-###### VPN Gateway
+###### 6.2.1.4.5 VPN Gateway
 
 This article describes the monitoring metrics for VPN Gateway. The **namespace** is **acs_vpn**. The default **Period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -2989,7 +3140,7 @@ This article describes the monitoring metrics for VPN Gateway. The **namespace**
 | outbound bandwidth | bps | ipsec tx.rate _ | userId, instanceId, ipsecId | Outbound traffic in bits per second. |
 | number of connections | short | ssl client.count _ | userId, instanceId | The number of active SSL-VPN connections. |
 
-###### Alibaba Cloud DNS - Private zones
+###### 6.2.1.4.6 Alibaba Cloud DNS - Private zones
 
 This article describes the monitoring metrics for private zones in Alibaba Cloud DNS. The **namespace** is **acs_dns_dashboard**. The **period** is **60** seconds by default and can be any integer multiple of 60.
 
@@ -3006,7 +3157,7 @@ This article describes the monitoring metrics for private zones in Alibaba Cloud
 | Successful parsing count (qname) | count | ParsingSucceededby Qname | instanceId,qname | The number of successful parsing requests for a specific domain name (qname). |
 | Total parsing count (qname) | count | ParsingTotalbyQnam e | instanceId,qname | The total number of parsing requests for a specific domain name (qname). |
 
-###### Alibaba Cloud DNS: Tenant forwarded
+###### 6.2.1.4.7 Alibaba Cloud DNS: Tenant forwarded domain name
 
 **domain name**
 
@@ -3025,7 +3176,7 @@ This topic describes the metrics for tenant forwarded domain names in Alibaba Cl
 | total resolution count | Count | ParsingTotal | instanceId | The total number of resolutions. |
 | total resolution count (qname) | Count | ParsingTotalbyQnam e | instanceId,qname | The total number of resolutions, aggregated by domain name (qname). |
 
-###### Cloud Enterprise Network
+###### 6.2.1.4.8 Cloud Enterprise Network
 
 This topic lists the monitoring metrics for Cloud Enterprise Network. The **Namespace** is **acs_cbn**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
@@ -3039,9 +3190,9 @@ This topic lists the monitoring metrics for Cloud Enterprise Network. The **Name
 |---|---|---|---|---|
 | Transit Router packet loss rate | pps | TransitRouterPacket LossRate | instanceId,trInstan ceId,vpcId | The average packet loss rate on the VPC connection. |
 
-##### Middleware services
+##### 6.2.1.5 Middleware services
 
-###### ApsaraMQ for RocketMQ
+###### 6.2.1.5.1 ApsaraMQ for RocketMQ
 
 This article describes the metrics for ApsaraMQ for RocketMQ. The value of **Namespace** is **acs_rocketmq_dashboard**. The default value of **Period** is **60** seconds and can also be an integer multiple of 60.
 
@@ -3092,7 +3243,7 @@ This article describes the metrics for ApsaraMQ for RocketMQ. The value of **Nam
 | Dead-letter messages per minute (by consumer IP) | ops | SendDLQMessag eCountPerGidTop icByConsumerIp | instanceId,groupI d,topic,consumer Ip | The number of dead-letter messages generated per minute from the topic, attributed to a specific consumer IP address in the group. |
 | Messages sent per minute (group & topic) | ops | SendMessageCou ntPerGidTopic | userId,instanceId ,groupId,topic | The number of messages producers send to the topic per minute. |
 
-###### Message Queue (MQ)
+###### 6.2.1.5.2 Message Queue (MQ)
 
 This topic describes the monitoring metrics for Message Queue (MQ). The **Namespace** is `acs_mqtiangong_dashboard` . The default **Period** is **60** seconds and must be a multiple of 60.
 
@@ -3105,7 +3256,7 @@ This topic describes the monitoring metrics for Message Queue (MQ). The **Namesp
 | Consumer TPS | message s/s | rocketmq consume _ r tps _ | instanceId | The number of messages consumed per second. |
 | Consumer group TPS | message s/s | rocketmq group co _ _ nsume tps _ | instanceId | The number of messages consumed by a consumer group per second. |
 
-###### ApsaraMQ for Kafka
+###### 6.2.1.5.3 ApsaraMQ for Kafka
 
 This topic describes the metrics for ApsaraMQ for Kafka. The value of **namespace** is **acs_kafka**. The default **period** is **60** seconds, and the value must be a multiple of 60.
 
@@ -3141,7 +3292,7 @@ This topic describes the metrics for ApsaraMQ for Kafka. The value of **namespac
 |---|---|---|---|---|
 | Consumer lag | Count | group kafka hk consume _ _ _ r group lag _ _ | userId, instanceId | The number of unconsumed messages in the consumer group. |
 
-###### API Gateway
+###### 6.2.1.5.4 API Gateway
 
 This topic describes the monitoring metrics for API Gateway. The **Namespace** is **acs_cop**. The default **Period** is **60** seconds, and the value must be a multiple of 60.
 
@@ -3168,7 +3319,7 @@ This topic describes the monitoring metrics for API Gateway. The **Namespace** i
 | 50th percentile of downstream request response time | millisecon ds | envoy http downstream r _ _ _ q time median _ _ | instanceId,le | 50th percentile (median) of response time for downstream requests. |
 | upstream success rate | percent | envoy cluster upstream r _ _ _ q success rate _ _ | instanceId | Success rate of upstream requests. |
 
-###### Enterprise Distributed Application
+###### 6.2.1.5.5 Enterprise Distributed Application Service (EDAS) (dedicated registry)
 
 **Service (EDAS) (dedicated registry)**
 
@@ -3241,9 +3392,9 @@ This article describes the monitoring metrics for Enterprise Distributed Applica
 | QPS of key config API calls (gRPC) | QPS | nacos monitor op seconds _ _ _ count qps config grpc pq _ _ _ _ _ l | userId,instance Id | The QPS of key config API calls over gRPC. |
 | QPS of key config API calls (HTTP) | QPS | nacos monitor op seconds _ _ _ count qps config http pq _ _ _ _ _ l | userId,instance Id | The QPS of key config API calls over HTTP. |
 
-##### Big data
+##### 6.2.1.6 Big data
 
-###### DataHub
+###### 6.2.1.6.1 DataHub
 
 This topic lists the monitoring metrics for DataHub. The **namespace** is **acs_datahub**. The **period** defaults to **60** seconds and can be set to any integer multiple of 60.
 
@@ -3255,9 +3406,9 @@ This topic lists the monitoring metrics for DataHub. The **namespace** is **acs_
 |---|---|---|---|---|
 | Message backlog | seconds | record stacked _ | userId, regionId, project, topic, subId | The age (in seconds) of the oldest unconsumed record in a subscription. |
 
-###### Alibaba Cloud Elasticsearch
+###### 6.2.1.6.2 Alibaba Cloud Elasticsearch
 
-###### MaxCompute
+###### 6.2.1.6.3 MaxCompute
 
 This topic describes the monitoring metrics for MaxCompute. The **Namespace** is **acs_maxcompute**. The default **Period** is **60** seconds and can be any multiple of 60.
 
@@ -3268,7 +3419,7 @@ This topic describes the monitoring metrics for MaxCompute. The **Namespace** is
 | Maximum project space | bytes | project max size _ _ | userId,instanceId | The maximum space allocated to the project. |
 | Used project space | bytes | project used size _ _ | userId,instanceId | The space used by the project. |
 
-###### MaxCompute (quota groups)
+###### 6.2.1.6.4 MaxCompute (quota groups)
 
 This topic lists the metrics for MaxCompute quota groups. The **Namespace** is **acs_maxcompute**. The **Period** is **60** seconds by default but can be any integer multiple of 60.
 
@@ -3285,9 +3436,9 @@ This topic lists the metrics for MaxCompute quota groups. The **Namespace** is *
 | CPU utilization of a quota group | percent | quota used cpu rat _ _ _ e | userId,instanceId | The percentage of CPU resources used by the quota group. |
 | Memory utilization of a quota group | percent | quota used memor _ _ y rate _ | userId,instanceId | The percentage of memory used by the quota group. |
 
-##### Security (Apsara Stack Security)
+##### 6.2.1.7 Security (Apsara Stack Security)
 
-###### Bastion Host
+###### 6.2.1.7.1 Bastion Host
 
 This document describes the monitoring metrics for Bastion Host. The default value of **Namespace** is **acs_bastionhost**. The default value for **Period** is **60** seconds; any integer multiple of 60 is also supported.
 
@@ -3352,11 +3503,11 @@ This document describes the monitoring metrics for Bastion Host. The default val
 |---|---|---|---|---|
 | Service health check | State | ServiceHealthCheck | userId, instanceId | The value can be 0 or 1. 0: The service is unhealthy. 1: The service is healthy. |
 
-###### Static data masking and watermarking
+###### 6.2.1.7.2 Static data masking and watermarking
 
 This topic describes the monitoring metrics for static data masking and watermarking.
 
-###### Vulnerability scan engine
+###### 6.2.1.7.3 Vulnerability scan engine
 
 This topic describes the monitoring metrics for the vulnerability scan engine. The **Namespace** is **acs_scanner**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
@@ -3398,7 +3549,7 @@ This topic describes the monitoring metrics for the vulnerability scan engine. T
 |---|---|---|---|---|
 | (Service) Health check | ops | ServiceHealthCheck | userId, instanceId | Indicates the health of the service. Valid values: 0 and 1. 0: The service is unhealthy. 1: The service is healthy. |
 
-###### NFV Cloud Firewall
+###### 6.2.1.7.4 NFV Cloud Firewall
 
 This topic lists the monitoring metrics for NFV Cloud Firewall. The **Namespace** is **acs_nfv**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
@@ -3435,7 +3586,7 @@ This topic lists the monitoring metrics for NFV Cloud Firewall. The **Namespace*
 | ECS process count | count | ProcessCount | instanceId | The total number of running processes. |
 | Service health check |   | health | instanceId | The health of the service: 1 = healthy, 0 = unhealthy. |
 
-###### Web Application Firewall
+###### 6.2.1.7.5 Web Application Firewall
 
 This topic lists the monitoring metrics for Web Application Firewall. The value of **Namespace** is acs_wafonecs. The default value of **Period** is **60** seconds, and can be any integer multiple of 60.
 
@@ -3492,9 +3643,9 @@ This topic lists the monitoring metrics for Web Application Firewall. The value 
 |---|---|---|---|---|
 | average detection time | millisec onds | avg req detect tim _ _ _ e | instanceId,ecsIn stanceId | The average time to detect threats in a request. |
 
-##### AI and machine learning
+##### 6.2.1.8 AI and machine learning
 
-###### AI Studio (Online Service)
+###### 6.2.1.8.1 AI Studio (Online Service)
 
 This topic describes the metrics for AI Studio (Online Service). The **namespace** is **acs_online_service**. The default value of **Period** is **60** seconds, but it can also be an integer multiple of 60.
 
@@ -3563,7 +3714,7 @@ DCU and NPU metrics are displayed only for the corresponding accelerator types.
 
 On the **Topology association** tab, you can view the relationships between instances, clusters, and nodes. Click **Details** in the upper-right corner of a node or cluster card to view metric details.
 
-###### AI Studio (Model Evaluation)
+###### 6.2.1.8.2 AI Studio (Model Evaluation)
 
 This topic describes the metrics for AI Studio (Model Evaluation). The **namespace** is **acs_model_evaluation**. The default **period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -3591,7 +3742,7 @@ Metrics for DCUs and NPUs are shown only for their respective accelerator types.
 | Task NPU accelerator memory usage | mbytes | task.container n _ pu used memor _ _ y | taskId,pod name _ | The amount of memory used by the task on the NPU accelerator. |
 | Task NPU accelerator memory utilization | percen t | task.container n _ pu used memor _ _ y ratio _ | taskId,pod name _ | The percentage of memory used by the task on the NPU accelerator. |
 
-###### AI Studio (Notebook modeling)
+###### 6.2.1.8.3 AI Studio (Notebook modeling)
 
 This topic describes the monitoring metrics for AI Studio (Notebook Modeling). The **namespace** is **acs_notebook_modeling**. The default **period** is **60** seconds, but you can set it to any integer multiple of 60.
 
@@ -3625,7 +3776,7 @@ Metrics for DCUs and NPUs apply only to instance types that include these accele
 
 On the **Topology** tab, you can view the associations between instances, clusters, and nodes.
 
-###### AI Studio (Task Modeling)
+###### 6.2.1.8.4 AI Studio (Task Modeling)
 
 This topic describes the metrics for AI Studio (Task Modeling). The **namespace** is **acs_task_modeling**. The **period** defaults to **60** seconds and can be any integer multiple of 60.
 
@@ -3681,7 +3832,7 @@ Metrics related to DCUs, GPUs, and NPUs are displayed only when you use the corr
 
 On the Topology tab, you can view associated instances, clusters, and nodes.
 
-###### AI Studio (Visualized Modeling)
+###### 6.2.1.8.5 AI Studio (Visualized Modeling)
 
 This topic describes the metrics for AI Studio (Visualized Modeling). The **Namespace** is **acs_pipeline_draft**. The default **Period** is **60** seconds and can be set to any integer multiple of 60.
 
@@ -3709,7 +3860,7 @@ Metrics for DCUs and NPUs are available only for tasks that use these accelerato
 | Task NPU accelerator graphics memory usage | mbytes | task.container npu u _ _ sed memory _ | taskId,pod n _ ame,id | The amount of NPU accelerator graphics memory used by the task, in megabytes. |
 | Task NPU accelerator graphics memory utilization | percent | task.container npu u _ _ sed memory ratio _ _ | taskId,pod n _ ame,id | The NPU accelerator graphics memory utilization by the task, expressed as a percentage. |
 
-###### AI Studio (fine-tuning)
+###### 6.2.1.8.6 AI Studio (fine-tuning)
 
 This document lists the metrics for AI Studio (fine-tuning). The **namespace** is `acs_finetune` . The **period** defaults to **60** seconds and can be any integer multiple of 60.
 
@@ -3763,7 +3914,7 @@ Metrics for DCUs, GPUs, and NPUs appear only for tasks that use the correspondin
 |---|---|---|---|---|
 | Pod NPU accelerator memory utilization | percent | container npu used _ _ memory ratio _ _ | taskId,pod name _ ,id | The memory utilization of the NPU accelerator used by the pod. |
 
-###### AI Studio (Batch Inference)
+###### 6.2.1.8.7 AI Studio (Batch Inference)
 
 This topic lists the metrics for AI Studio (Batch Inference). The **Namespace** is **acs_batch_inference**. The default **Period** is **60** seconds and can be any integer multiple of 60.
 
@@ -3795,7 +3946,7 @@ Metrics for DCUs and NPUs appear only for their corresponding accelerator types.
 
 The **Topology** tab displays correlation details for instances, clusters, and nodes.
 
-###### AI studio (Online service group)
+###### 6.2.1.8.8 AI studio (Online service group)
 
 This topic lists the monitoring metrics for AI Studio (Online Service Group). The value for **namespace** is **acs_online_service_group**. The default **period** is **60** seconds, or any integer multiple of 60.
 
@@ -3808,7 +3959,7 @@ This topic lists the monitoring metrics for AI Studio (Online Service Group). Th
 | Request success rate | percent | envoy cluster upstr _ _ eam rq succer rate _ _ _ | serviceGroupId,t askId | The percentage of successful requests. |
 | First token latency | millisec onds | route upstream mo _ _ del consumer metri _ _ c llm first token del _ _ _ _ ay | serviceGroupId,t askId,ai consum _ er,ai route _ | The time elapsed between receiving a request and generating the first response token. |
 
-###### AI Studio (Resource Pool)
+###### 6.2.1.8.9 AI Studio (Resource Pool)
 
 This topic lists the monitoring metrics for AI Studio (Resource Pool). The **Namespace** for these metrics is **acs_resource_pool**. The default **Period** is **60** seconds, but you can set it to any integer multiple of 60.
 
@@ -3890,7 +4041,7 @@ This topic lists the monitoring metrics for AI Studio (Resource Pool). The **Nam
 | RDMA local CQE errors | count | rdma cqe error _ _ | instanceId,userId ,minor | The number of errors recorded in the local RDMA Completion Queue Entry (CQE). |
 | RDMA peer RNR NAK packets | count | rdma service monit _ _ or rnr nak retry err _ _ _ _ | instanceId,userId ,minor | The number of Receiver Not Ready (RNR) Negative Acknowledgment (NAK) packets received from the peer. |
 
-###### A-Speed (High-Performance Inference
+###### 6.2.1.8.10 A-Speed (High-Performance Inference Service)
 
 **Service)**
 
@@ -3959,7 +4110,7 @@ This topic describes the monitoring metrics for A-Speed (High-Performance Infere
 | KV Cache usage | short | llm gpu vram pool _ _ _ _ usage percent prefi _ _ ll | instanceId,model name,pod,role _ | The KV Cache usage during the prefill phase. |
 |---|---|---|---|---|
 
-###### Elastic Fault Tolerance Service
+###### 6.2.1.8.11 Elastic Fault Tolerance Service
 
 This topic lists the metrics for Elastic Fault Tolerance Service. The **Namespace** is **acs_kea**. The default **Period** is **60** seconds and must be an integer multiple of 60.
 
@@ -4014,7 +4165,7 @@ This topic lists the metrics for Elastic Fault Tolerance Service. The **Namespac
 |---|---|---|---|---|
 | RDMA network transmit throughput | MB/s | TASK RDMA TX BYT _ _ _ ES | instanceId,userId ,minor | Measures the data transmit rate over the RDMA network. |
 
-#### Manage cloud service monitoring
+#### 6.2.2 Manage cloud service monitoring
 
 On the cloud service monitoring page, you can view monitoring charts for cloud product resources to understand their operational status. You can also set alert rules to monitor the status of your resources. When an alert rule is triggered, Cloud Monitor automatically sends an alert notification. This lets you be promptly informed about the status of your resources.
 
@@ -4055,7 +4206,7 @@ On the monitoring page of the target cloud product, you can click **Create Alert
 **Rule** at the top of the page to create a custom alert rule for the cloud product.
 For more information, see Create an alert rule. For other alert rule operations, see Manage alert rules.
 
-### Kubernetes container
+### 6.3 Kubernetes container monitoring
 
 **monitoring**
 
@@ -4154,11 +4305,11 @@ In the left-side navigation pane, click **Metric Warehouse**. For the cloud prod
 7. For more information about Prometheus Monitoring 2.0, see the Prometheus Monitoring Us
 er Guide.
 
-### Application group
+### 6.4 Application group
 
 Application groups allow you to manage Elastic Compute Service (ECS) instances by group based on your business requirements. You can use an application group to manage businessspecific ECS instances in a centralized manner. You can manage the alert rules and view monitoring data of different application groups. This greatly simplifies management complexity and improves efficiency.
 
-#### Create an application group
+#### 6.4.1 Create an application group
 
 Application groups allow you to manage resources across different cloud products and regions. You can group resources based on your business needs, manage alarm rules for the group, and view its monitoring data to improve your operational efficiency.
 
@@ -4186,7 +4337,7 @@ Application groups allow you to manage resources across different cloud products
 
 6. Click **OK**.
 
-#### Manage application groups
+#### 6.4.2 Manage application groups
 
 You can modify or delete application groups on the Application Group page in the Cloud Monitor console.
 
@@ -4206,9 +4357,9 @@ You can modify or delete application groups on the Application Group page in the
 | Delete an application group | Note If you delete an application group, all alert rules and event- triggered alerts of the application group are deleted. The instances in the application group are automatically migrated back to the pool that contains all instances. i. Optional. In the top navigation bar, select an organization. On the Application Group page, enter an application group name or ID to search for the application group. ii. On the Application Group page, delete one or more application groups. Delete a single application group a. Move the pointer over the icon in the application group card and click Delete a group. b. In the Confirm to delete a group message, click OK. Delete multiple application groups at a time a. Select the application groups that you want to delete and click Batch deletion in the lower-left corner of the application group list. b. In the Confirm batch deletion Group message, click OK. |
 |---|---|
 
-#### Availability monitoring
+#### 6.4.3 Availability monitoring
 
-##### Create an availability monitoring task
+##### 6.4.3.1 Create an availability monitoring task
 
 CloudMonitor provides the availability monitoring feature to help you check whether a local service or cloud server responds as expected. You can specify the path and port for the local service or cloud server. If the local service or cloud server times out or returns an error code, CloudMonitor sends an alert notification. This way, you can troubleshoot the issue at the earliest opportunity.
 
@@ -4254,7 +4405,7 @@ configure the parameters and then click **OK**. The following table describes th
 |---|---|---|
 |   | Effective time | The period during which the alert rule is effective. CloudMonitor sends alert notifications within the effective period and only records alerts beyond the effective period. Note You can click Advanced Configuration to configure this parameter for the alert rule. |
 
-##### Manage availability monitoring tasks
+##### 6.4.3.2 Manage availability monitoring tasks
 
 You can modify, disable, enable, and delete availability monitoring tasks on the **Availability**
 **Monitoring** tab of an application group in CloudMonitor.
@@ -4280,7 +4431,7 @@ left-side pane. On the **Availability Monitoring** tab, perform operations to ma
 | Disable or enable availability monitoring tasks | Note You can disable one or more availability monitoring tasks in the Enable state, or enable one or more availability monitoring tasks in the Disable state. Disable or enable a single availability monitoring task a. Click Disable or Enable in the Operation column of the task. b. In the Disable or Enable message, click OK. Disable or enable multiple availability monitoring tasks at a time a. Select the availability monitoring tasks that you want to disable or enable and click Batch Disable or Batch Enable in the lower-left corner of the task list. b. In the Disable or Enable message, click OK. |
 | Delete one or more availability monitoring tasks | Delete a single availability monitoring task a. Find the availability monitoring task that you want to delete and click Delete in the Operation column. b. In the Delete message, click OK. Delete multiple availability monitoring tasks at a time a. Select the availability monitoring tasks that you want to delete and click Batch Delete in the lower-left corner of the task list. b. In the Delete message, click OK. |
 
-##### Status codes
+##### 6.4.3.3 Status codes
 
 If an error occurs when you use the availability monitoring feature of Cloud Monitor to check the availability of a specified path or port, the corresponding status code is returned. The following table describes status codes.
 
@@ -4293,9 +4444,9 @@ If an error occurs when you use the availability monitoring feature of Cloud Mon
 |   | 630 | The status code returned because the connection times out. If Cloud Monitor does not receive a response within 5 seconds after Cloud Monitor sends a Telnet request, Cloud Monitor determines that the connection times out. |
 |   | 631 | The status code returned because the monitoring fails. |
 
-### Namespaces
+### 6.5 Namespaces
 
-#### Time-series metrics
+#### 6.5.1 Time-series metrics
 
 The time-series metrics feature in Metric Store provides a unified portal where you can query metrics for your cloud services and view their definitions, calculation methods, and other details.
 
@@ -4383,9 +4534,9 @@ You can delete an existing data retention period configuration. After deletion, 
 down list.
 3. Click **OK**.
 
-#### System events
+#### 6.5.2 System events
 
-##### Cloud product event monitoring metrics
+##### 6.5.2.1 Cloud product event monitoring metrics
 
 This topic describes the names, descriptions, levels, statuses, and types of system events for Alibaba Cloud products.
 
@@ -4834,7 +4985,7 @@ This topic describes the names, descriptions, levels, statuses, and types of sys
 |---|---|---|---|---|---|
 | Instance:HASwitch | Redis | Instance HA switchover alert | WARN | Normal | Maintenan ce |
 
-##### View system event metrics
+##### 6.5.2.2 View system event metrics
 
 The **System Event** tab on the **Namespace** page provides a centralized platform for you to query the system event metrics of cloud services. This allows you to query the information about each system event metric, including the level, status, and type of the metric.
 
@@ -4852,9 +5003,9 @@ The **System Event** tab displays only information such as events and products t
 5. In the left-side **Alibaba Cloud Services** section, click a cloud service. Then, the system
 event metrics of the cloud service are displayed in the right-side section.
 
-## AI observability
+## 7 AI observability
 
-### Holographic View
+### 7.1 Holographic View
 
 Holographic View provides a unified, entity-centric portal for exploring and analyzing all cloud service instances monitored by AI observability in Cloud Monitor. You can query entities to quickly locate and analyze them, seamlessly transitioning from a global perspective to a detailed view.
 
@@ -4868,7 +5019,7 @@ In AI observability, an entity is any object that can be independently identifie
 2. In the top menu bar, click **Products** and choose **Migration & O&M Management** > **O&M**
 **and Monitoring** > **CloudMonitor**.
 3. In the left-side navigation pane, choose **AI observability** **>** **Holographic View**. By
-default, the system displays the **Global View** for **All Spaces** over the **Last 6 Hours**. Data Center Displays details for **Data Processing Tasks**, **Abnormal Data Processing Tasks**, **CPU**
+default, the system displays the **Global View** for **All Spaces** over the **Last 6 Hours**. Displays details for **Data Processing Tasks**, **Abnormal Data Processing Tasks**, **CPU**
 **utilization**, and **memory utilization**.
 Workflow Displays details for **node success rate**, **workflow duration**, **Workflow Requests**, and
 **Total Workflows**.
@@ -4879,11 +5030,11 @@ Select a specific model to view its **Number of Calls**, **time to first token**
 Tool Calls Displays the number of **API Tools**, **MCP Tools**, and **Knowledge Base Tools**, as well as
 **Average Requests**, **Average Response Duration**, **Average Success Rate**, and the
 **Average Response Time Trend**.
-Model Training Displays the total and abnormal counts for **notebook modeling**, **task modeling**, and
+Displays the total and abnormal counts for **notebook modeling**, **task modeling**, and
 **visual modeling** instances.
 Click a number on the card to open the **Model Training** page and view instance details. Displays the **Allocated**, **Used**, and **Total** values, as well as the **allocation rate** and
 **usage rate** for **CPU quota (cores)**.
-Agent Displays the number of **namespaces** and **agents**. Click Metric, Trace, Log, or POD to view agent details. Model Inference Displays the total and abnormal counts for **Online Services**, **inference acceleration**, and **Online Service Groups** instances. Click a number on the card to go to the **Model Inference** page and view instance details. Displays details for **TTFT**, **Success Rate**, **Requests**, and **Input/Output Tokens**. Basic cloud services Displays the number of instances for **Network**, **Compute**, **Storage**, **Middleware**, and
+Displays the number of **namespaces** and **agents**. Click Metric, Trace, Log, or POD to view agent details. Displays the total and abnormal counts for **Online Services**, **inference acceleration**, and **Online Service Groups** instances. Click a number on the card to go to the **Model Inference** page and view instance details. Displays details for **TTFT**, **Success Rate**, **Requests**, and **Input/Output Tokens**. Basic cloud services Displays the number of instances for **Network**, **Compute**, **Storage**, **Middleware**, and
 **Database**.
 Click an instance count on a card to open the corresponding cloud product monitoring page and view instance monitoring details.
 4. In the upper-right corner of the page, click **Global Topology** to switch to the **Global**
@@ -4895,7 +5046,7 @@ Hover over a service in the topology diagram to view its **Number of Instances**
 **Available Instance Ratio**, **Instances with Abnormal Alerts**, **Specifications**, and
 **Capability Layer**.
 
-### Agent
+### 7.2 Agent
 
 The agent module displays information to help you analyze exceptions, performance, and traffic.
 
@@ -4910,7 +5061,7 @@ On the **Workspace** tab, click **Details** in the **Operation** column of the t
 5. View the detailed monitoring information of basic resources.
 On the **Basic Resources** tab, click **Details** in the **Operation** column of the target instance to view its metrics. For more information, see Kubernetes container monitoring.
 
-### Data center
+### 7.3 Data center
 
 The Data Center page lets you monitor data processing tasks and underlying operations.
 
@@ -4925,7 +5076,7 @@ The Data Center page lets you monitor data processing tasks and underlying opera
 5. The **Workspace** details page shows the **I****nstance name****, R****esource set**, **Organization**,
 **Created at**, and monitoring metrics for **CPU**, **Memory**, and **Network**.
 
-### Model inference
+### 7.4 Model inference
 
 The model inference module displays information related to online services, online service groups, and batch inference. You can view the following metrics: CPU usage, memory usage, disk usage, and network I/O.
 
@@ -4942,7 +5093,7 @@ On the **Online Service Group** tab, click **Details** in the **Operation** colu
 6. View the monitoring data of batch inference.
 On the **Batch Inference** tab, click **Details** in the **Operation** column of the target instance to view its metrics. For more information, see AI Studio (Batch Inference).
 
-### Model training
+### 7.5 Model training
 
 The model training module displays information about notebook modeling, model tuning, visual modeling, model evaluation, and task modeling. You can view the following information: CPU, memory, disk, and network I/O usage of tasks and CPU, memory, and disk usage of task-related pods.
 
@@ -4963,7 +5114,7 @@ On the **Visual Modeling** tab, click **Details** in the **Operation** column of
 8. View the detailed monitoring information of model evaluation.
 On the **Model Evaluation** tab, click **Details** in the **Operation** column of the target instance to view the model evaluation metrics. For more information, see AI Studio (Model Evaluation).
 
-### AI computing power
+### 7.6 AI computing power
 
 AI computing power consists of AI computing, AI storage, and AI gateways. Metrics for AI computing include basic resource usage such as CPU, memory, and disk resources, GPU utilization, temperature, and RDMA networks. Metrics for AI storage include storage usage, IOPS, and bandwidth. Metrics for AI gateways include uplink and downlink requests, success rate, and duration.
 
@@ -4986,13 +5137,13 @@ View the detailed monitoring information of ApsaraStack Parallel File System (AP
 6. View the detailed monitoring information of AI gateways.
 On the **AI Gateway** tab, click **Details** in the **Operation** column of the target instance to view the metrics of AI gateways. For more information, see API Gateway. nitoring
 
-## ARMS Application
+## 8 ARMS Application Monitoring
 
 **Monitoring**
 
 ARMS Application Monitoring is an Application Performance Management (APM) product that helps you quickly locate faulty and slow interfaces, reproduce call parameters, and identify system bottlenecks to significantly improve the efficiency of online problem diagnosis.
 
-### Application list
+### 8.1 Application list
 
 On the **Application List** page, you can view applications connected to Application Monitoring.
 
@@ -5017,7 +5168,7 @@ nitoring
 |---|---|
 | Actions | Settings: Go to the application settings page. You can perform the following operations on the application settings page: Customize monitoring parameters. Manage tags. Customize monitoring methods. Delete applications. For more information, see the User Guide of Application Real-Time Monitoring Service (ARMS). |
 
-### Application topology
+### 8.2 Application topology
 
 The application topology in Application Real-Time Monitoring Service (ARMS) displays the upstream and downstream dependencies of a specified application.
 
@@ -5056,7 +5207,7 @@ and then click **Edit**.
 
 For more operations, see the Application Real-Time Monitoring Service (ARMS) User Guide.
 
-### Trace analysis
+### 8.3 Trace analysis
 
 Tracing Analysis provides developers of distributed applications with tools for complete trace restoration, request volume statistics, trace topology, and application dependency analysis. This feature helps developers quickly analyze and diagnose performance bottlenecks in distributed application architectures and improves development and diagnosis efficiency in the microservice era.
 1. Log on to the Apsara Uni-Manager Management Console.
@@ -5075,15 +5226,15 @@ message that prompts you to bind a Prometheus address for data shipping. Enter t
 
 For more operations, see the Application Real-Time Monitoring Service (ARMS) User Guide.
 
-## Visualization
+## 9 Visualization
 
-### Custom dashboards
+### 9.1 Custom dashboards
 
 You can create custom dashboards to monitor, analyze, and display key metrics. This offers an intuitive and efficient way to understand and manage your data.
 
 **Preset dashboards**
 
-The following preset dashboards are available: API Gateway Alibaba Cloud DNS Message Queue Elasticsearch on K8s OSS SLB ECS ApsaraDB for Redis (Cluster Edition) ApsaraDB for Redis (Standard Edition/Read/Write Splitting Edition) ApsaraDB RDS for PostgreSQL (Cloud Disk) ApsaraDB RDS for PostgreSQL (Local SSD) ApsaraDB for PolarDB ApsaraDB RDS for MySQL
+The following preset dashboards are available: Alibaba Cloud DNS Message Queue Elasticsearch on K8s OSS SLB ApsaraDB for Redis (Cluster Edition) ApsaraDB for Redis (Standard Edition/Read/Write Splitting Edition) ApsaraDB RDS for PostgreSQL (Cloud Disk) ApsaraDB RDS for PostgreSQL (Local SSD) ApsaraDB for PolarDB ApsaraDB RDS for MySQL
 
 **Create a directory**
 
@@ -5262,11 +5413,11 @@ the dashboard details page.
 2. On the dashboard details page, click **Intelligent Analysis** for a specific metric. Apsara
 Assistant then summarizes the metric data for the dashboard's current time range. You can also ask questions in the Apsara Assistant dialog box. It analyzes data trends, anomalies, metric correlations, and historical data from the dashboard to provide in-depth insights and summary reports.
 
-## Alert service
+## 10 Alert service
 
 You can manage alert rules, alert history, and alert templates in the Alert Service module of CloudMonitor. You can configure alert rules to specify how CloudMonitor checks monitoring data. If monitoring data triggers the alert rules, CloudMonitor sends alert notifications. When an alert is generated, CloudMonitor records the alert information in the alert history. You can review and analyze the alert history to troubleshoot issues and make predictions. Alert templates simplify the process of creating and maintaining alert rules when you need to manage a large number of cloud resources. This helps you monitor cloud services more efficiently.
 
-### Alert history
+### 10.1 Alert history
 
 You can filter alert history by cloud service, instance, and alert level. You can also export and download the alert history to your on-premises machine for data analysis.
 
@@ -5293,7 +5444,7 @@ the operations that you can perform.
 | Export and download alert history | i. On the Alert History page, click the icon in the upper- right corner. ii. In the Export task dialog box, configure the Time Selection and Task name parameters and click OK. iii. In the left-side navigation pane, click Report Export. On the Report Export page, click the Alarm History tab. iv. On the Alarm History tab, find the export task that you created and click Download Report Task in the Operation column. v. In the Download Report Task message, click OK. Note The report is in the .xlsx format. You can find the downloaded report in the default download directory of your browser. |
 |---|---|
 
-### Alert rules
+### 10.2 Alert rules
 
 You can configure alert rules for host monitoring metrics and instances in cloud service monitoring. You can apply an alert rule to all resources, an application group, or an instance. Alert Service sends alert notifications to contacts by using emails, DingTalk messages, and webhook URLs.
 
@@ -5301,7 +5452,7 @@ You can configure alert rules for host monitoring metrics and instances in cloud
 
 You cannot manage alert rules in the root organization.
 
-#### Create an alert rule
+#### 10.2.1 Create an alert rule
 
 Cloud Monitor lets you create alert rules for integrated cloud products like ECS. These rules trigger alerts when metrics cross specified thresholds and promptly notify designated users.
 
@@ -5368,7 +5519,7 @@ Except for ApsaraDB for RDS (legacy link), which has a detection frequency of 60
 
 This example shows how to create an alert rule named `example` for an ECS instance. The rule monitors the CPU utilization of the target ECS instance and triggers a critical alert when the maximum CPU utilization is greater than or equal to 70% in three out of five detection periods. The rule description configuration for this scenario is shown in the following figure.
 
-#### Manage alert rules
+#### 10.2.2 Manage alert rules
 
 Use the alert rules page to modify, disable, enable, and delete alert rules.
 
@@ -5396,7 +5547,7 @@ Use the alert rules page to modify, disable, enable, and delete alert rules.
 | Export and download alert rules | i. On the Alert Rules page, click Export Report. ii. In the Export Task dialog box, enter a Task Name. iii. Click OK. iv. In the left-side navigation pane, click Report Export. v. On the Alert Rules tab, find the target report and click Download Report Task in the Actions column. vi. In the Download Report Task dialog box, click OK. |
 | Migrate legacy rules | i. On the Alert Rules page, click . ii. In the panel that appears, select the legacy cloud products that you want to view. A list of their corresponding legacy rules is then displayed. iii. The following operations are available for legacy rules: Create a new rule that corresponds to a legacy rule. Create a new rule and delete the corresponding legacy rule. Delete a legacy rule. iv. Click OK. |
 
-#### Notification methods supported by
+#### 10.2.3 Notification methods supported by Cloud Monitor
 
 **Cloud Monitor**
 
@@ -5486,9 +5637,9 @@ command in the alert center container to check network connectivity. If other ex
 
 By default, Cloud Monitor receives alert notifications in the Apsara Uni-manager Operations Console. Cloud Monitor can use the Apsara Uni-manager Operations Console to send alert notifications. For more information, contact the technical support.
 
-### Alert templates
+### 10.3 Alert templates
 
-#### General alert templates
+#### 10.3.1 General alert templates
 
 CloudMonitor provides pre-configured, general-purpose alert templates for cloud products such as ECS, RDS, OSS, SLB, EIP, Private DNS, and ApsaraDB for Redis. You can apply these templates directly to resource sets and application groups to quickly enable monitoring and alerting for common metrics. You can also clone a general-purpose alert template and customize its alert rules to create a custom template that meets your business needs. General alert templates provide pre-configured alert rules based on common cloud product use cases and best practices, so you can quickly monitor the running status of your resources.
 
@@ -6170,7 +6321,7 @@ Applies only to ApsaraDB RDS for PostgreSQL instances.
 |   | > 40000 | 3 | WARN | Triggers an alert when total queries exceed 40,000 for 3 consecutive times. |
 | Latency | > 300 | 3 | WARN | Triggers an alert when latency exceeds 300 for 3 consecutive times. |
 
-#### Create an alert template
+#### 10.3.2 Create an alert template
 
 When you manage a large number of cloud resources, you can use alert templates to save alert rules for metrics from various cloud services. This lets you apply a template directly when you create or modify alert rules, avoiding repetitive configuration.
 
@@ -6207,7 +6358,7 @@ The following table describes the parameters for a threshold-based alert rule.
 
 6. After adding all required alert rules, click **OK**.
 
-#### Manage alert templates
+#### 10.3.3 Manage alert templates
 
 You can modify, clone, export, and delete alert templates on the **Alert Templates** page in CloudMonitor.
 
@@ -6233,7 +6384,7 @@ operations. The following table describes the operations that you can perform on
 | Create a report export task and download a report on alert templates | i. On the Alert Templates page, click the icon. ii. In the Export task dialog box, set the Task name parameter. iii. Click OK. iv. In the left-side navigation pane, click Export Report. On the Export Report page, click the Alarm Template tab. v. On the Alarm Template tab, find the report that you want to download and click Download Report Task in the Operation column. vi. In the Download Report Task message, click OK. Note The report is in the .xlsx format. You can find the downloaded report in the default download directory of your browser. |
 |---|---|
 
-### One-click alarm
+### 10.4 One-click alarm
 
 Enable one-click alarm to apply default alarm rules to all instances of a cloud product in your organization.
 
@@ -6267,7 +6418,7 @@ You can enable or disable the one-click alarm feature for each cloud product. Wh
 | Check rule validity | i. Click the icon next to a cloud product for which one-click alarm is enabled. ii. In the Validity column of the alarm rule, click Click to Check. The result appears in the Validity column. Note If the check result is abnormal, you can click Check Result. In the panel that appears, view the results for Alarm rule execution exception detection, Alarm rule loading detection, Invalid alarm rule detection, and Alarm rule callback detection. Click Check Again to re-run the validity check. |
 | View rule execution history | i. Click the icon next to a cloud product for which one-click alarm is enabled. ii. In the Rule execution history column of the alarm rule, click View rule execution history. The Alarm rule execution history panel opens, where you can filter the history by time range. |
 
-### Download a report
+### 10.5 Download a report
 
 You can export reports of the alert history, alert rules, and alert templates, and then download the reports to your local device.
 
@@ -6290,9 +6441,9 @@ Before you download the reports of the alert history, alert rules, and alert tem
 
 g
 
-## Availability monitoring
+## 11 Availability monitoring
 
-### Availability probe
+### 11.1 Availability probe implementation path
 
 **implementation path**
 
@@ -6376,7 +6527,7 @@ g
 
 CMS provides external query APIs with the organization as the core input, and supports pagination and resource sets. The APIs return automatic probe tasks and their alert results, and the server merges the underlying tasks, target instances, and alert statuses into productoriented results. The organization-level availability summary uses active probe tasks and product metric alert results as the primary inputs, and aggregates them by product, target instance, and rule type.
 
-### Service availability
+### 11.2 Service availability monitoring
 
 **monitoring**
 
@@ -6479,7 +6630,7 @@ You can delete a task when it is no longer needed. Delete a single task i. On th
 **Actions** column.
 ii. Click **OK**. Delete tasks in batch i. On the **Service Availability Monitoring** page, select the checkboxes next to the tasks you want to delete. ii. Click **Batch Delete** at the bottom of the list. iii. Click **OK**.
 
-### Cloud service availability
+### 11.3 Cloud service availability monitoring
 
 **monitoring**
 
@@ -6560,13 +6711,13 @@ ii. In the **Actions** column for the target task, click **Details** to view mon
 4. Rule Management
 On the **Rule Management** tab, you can view rule details for the current cloud service.
 
-## Event Center
+## 12 Event Center
 
 The Event Center module provides a unified portal for you to query and manage system events of CloudMonitor, Elastic Compute Service (ECS), Hybrid Disaster Recovery (HDR), ASR for Backup and Recovery, and Resource Orchestration Service (ROS). You can view the status of the cloud services and receive alert notifications. This helps you troubleshoot business exceptions at the earliest opportunity.
 
-### System events
+### 12.1 System events
 
-#### Cloud service system events
+#### 12.1.1 Cloud service system events
 
 These tables list the Alibaba Cloud services supported by CloudMonitor and their system events. For more information on event metrics, see Cloud Product Event Monitoring Metrics Description in the metrics repository.
 
@@ -6689,7 +6840,7 @@ These tables list the Alibaba Cloud services supported by CloudMonitor and their
 |---|---|
 | ApsaraDB for Redis | Instance HA Switch Alarm |
 
-#### View system events
+#### 12.1.2 View system events
 
 Cloud Monitor provides the event monitoring feature to help you query and analyze system events that are generated for various cloud services. The feature allows you to track the use of cloud services.
 
@@ -6716,7 +6867,7 @@ view and click **Details** in the Operation column. In the System events detail 
 System events are reported to the alert center. You can view the alert details on the
 **Alert Center** > **Alert List** page.
 
-#### Create a system event-triggered alert
+#### 12.1.3 Create a system event-triggered alert rule
 
 **rule**
 
@@ -6746,7 +6897,7 @@ describes the parameters.
 
 6. Click **OK**.
 
-#### Manage system event-triggered alert
+#### 12.1.4 Manage system event-triggered alert rules
 
 **rules**
 
@@ -6775,11 +6926,11 @@ required operations. The following table describes supported operations.
 | View the records of system event- triggered alerts | After an event-triggered alert rule is created or enabled, CloudMonitor records the information about alerts that are generated based on the alert rule. i. Click the Event Alarm history tab. ii. Optional. Enter a rule ID or rule name and specify a time range and product. The information about the alert rule is displayed:P roduct, Rule name, Instance name, Event Name, Event Level, and Alarm time. |
 |---|---|
 
-## Statistical analysis
+## 13 Statistical analysis
 
 You can use CloudMonitor to analyze the monitoring data of all supported cloud services in a specified organization.
 
-### Monitoring ranking
+### 13.1 Monitoring ranking
 
 The monitoring ranking feature lets you analyze monitoring data for all cloud services managed by CloudMonitor within a specified organization.
 
@@ -6808,7 +6959,7 @@ You can click **Add Item** to set multiple filter conditions. ii. Click **sort**
 6. (Optional) Click **export data** at the top of the page, set the export scope, customize the
 task name, and then click **OK**.
 
-### Data subscription
+### 13.2 Data subscription
 
 You can create a data subscription to view the data within the current primary organization.
 
@@ -6922,9 +7073,9 @@ you noted earlier.
 5. Using the **slsLogstore** value from step 1, find and click the corresponding Logstore name
 on the **Project** page. You can then view the subscribed data, including details such as instance name, IP address, and resource ownership.
 
-## Access Center
+## 14 Access Center
 
-### Log monitoring
+### 14.1 Log monitoring
 
 You can monitor keywords in Simple Log Service (SLS) logs and detect potential issues at the earliest opportunity. This improves system stability and O&M efficiency.
 
@@ -7021,7 +7172,7 @@ You can delete a metric that is no longer needed.
 the **Operation** column.
 2. In the **Delete monitoring items** message, click **OK**.
 
-### Custom monitoring
+### 14.2 Custom monitoring
 
 Metric monitoring provides an API for reporting custom metrics. You can collect metrics from your business, report them to CloudMonitor, and configure alert rules to receive notifications.
 
@@ -7136,7 +7287,7 @@ Deleted metrics cannot be recovered. Proceed with caution.
 |---|---|
 | Delete an alert rule | Delete a single rule a. Click the icon in the Actions column of the target alert rule, and then click Delete. b. In the Delete Alert Rule dialog box, click OK. Delete rules in a batch a. Select the check boxes of the target alert rules, and then click Delete in the lower-left corner of the list. b. In the Delete Alert Rule dialog box, click OK. |
 
-### Report custom events
+### 14.3 Report custom events
 
 CloudMonitor provides the event monitoring feature that allows you to report custom events. You can collect and report the exception events that occur in your business to CloudMonitor. You can also configure alert rules to receive alert notifications for custom events.
 

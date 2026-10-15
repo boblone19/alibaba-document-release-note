@@ -2,25 +2,59 @@
 title: "Cloud Parallel File Storage Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 38
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Developer Guide 20260701.pdf"
+source_pdf: "aad42bd7b73d3cfe_Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8CPFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Parallel%20File%20Storage%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Parallel File Storage Developer Guide 20260701
 
-| Parameter Name | Description |
-|---|---|
-| x-acs-regionid | The region. For example: cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the corresponding organization in Apsara Uni-manager Management Console. To obtain the ID, see the "GetOrganizationList" topic in the Apsara Uni-manager Management Console Development Guide. |
-| x-acs-resourcegroupid | The ID of the corresponding resource group in Apsara Uni-manager Management Console. To obtain the ID, see the "ListResourceGroup" topic in the Apsara Uni-manager Management Console Development Guide. |
-| x-acs-instanceid | The ID of the instance for the operation. For example, the instance ID of a CPFS instance is available in the CPFS file system list. |
+## Table of Contents
 
-Cloud Parallel File Storage Devel
+- 1 Preparations
+  - 1.1 Obtain an AccessKey
+  - 1.2 Obtain Endpoint information
+  - 1.3 Get common header parameters
+  - 1.4 Call Apsara Stack APIs Through the POP Gateway
+- 2 Java SDK call examples
+  - 2.1 Getting Started
+  - 2.2 User guide
+    - 2.2.1 Install the Java SDK
+    - 2.2.2 Setting Identity Verification Credentials
+    - 2.2.3 Request connection configuration
+    - 2.2.4 Call APIs Using CommonRequest
+    - 2.2.5 Error handling
+- 3 Python SDK call examples
+  - 3.1 Getting Started
+  - 3.2 User guide
+    - 3.2.1 Install the Python SDK
+    - 3.2.2 Set identity verification credentials
+    - 3.2.3 Call APIs Using CommonRequest
+    - 3.2.4 Error handling
+- 4 Go SDK call examples
+  - 4.1 Getting Started
+  - 4.2 User guide
+    - 4.2.1 Install the Go SDK core package
+    - 4.2.2 Set up identity verification credentials
+    - 4.2.3 Call an API using CommonRequest
+    - 4.2.4 Error Handling
+- 5 API reference
+  - 5.1 Call APIs
+    - 5.1.1 Overview
+    - 5.1.2 Request structure
+    - 5.1.3 API Authorization
+    - 5.1.4 Response
+  - 5.2 RAM authorization
+  - 5.3 Common Parameters
+  - 5.4 File system
+    - 5.4.1 CreateFileSystem
+    - 5.4.2 DeleteFileSystem
+    - 5.4.3 DescribeFileSystems
+    - 5.4.4 ModifyFileSystem
 
-## Preparations
+## 1 Preparations
 
-### Obtain an AccessKey
+### 1.1 Obtain an AccessKey
 
 AccessKey supports the RAM authorization pattern. This topic describes how to obtain an AccessKey using RAM authorization.
 
@@ -30,7 +64,14 @@ An AccessKey uses symmetric encryption with an AccessKey ID and an AccessKey sec
 
 **Warning**
 
-A personal account AccessKey is a restricted AccessKey that is managed by the permission system of the Apsara Uni-manager Management Console. An organization AccessKey has greater permissions. An administrator must confirm the security of the operation. Cloud Parallel File Storage Devel
+A personal account AccessKey is a restricted AccessKey that is managed by the permission system of the Apsara Uni-manager Management Console. An organization AccessKey has greater permissions. An administrator must confirm the security of the operation.
+
+| Parameter Name | Description |
+|---|---|
+| x-acs-regionid | The region. For example: cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the corresponding organization in Apsara Uni-manager Management Console. To obtain the ID, see the "GetOrganizationList" topic in the Apsara Uni-manager Management Console Development Guide. |
+| x-acs-resourcegroupid | The ID of the corresponding resource group in Apsara Uni-manager Management Console. To obtain the ID, see the "ListResourceGroup" topic in the Apsara Uni-manager Management Console Development Guide. |
+| x-acs-instanceid | The ID of the instance for the operation. For example, the instance ID of a CPFS instance is available in the CPFS file system list. |
 
 **Obtain a personal account AccessKey**
 
@@ -54,7 +95,7 @@ You can obtain an organization AccessKey as follows:
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization AccessKey information.
 
-### Obtain Endpoint information
+### 1.2 Obtain Endpoint information
 
 This topic describes how to obtain the Endpoint for a CPFS file system.
 
@@ -70,12 +111,20 @@ icon, and then click the information that appears.
 5. In the **Register Variables** box, the value of **nas.openapi.endpoint** is the Endpoint for
 the CPFS file system.
 
-### Get common header
+### 1.3 Get common header parameters
 
 **parameters**
 
+When you call Apsara Stack APIs, you must include several common request header parameters. The response also includes common response parameters.
+
+**Common request parameters**
+
+You must specify values for these common request parameters in your Apsara Stack API call code. For example, in a Java SDK call: `request.putHeadParameter("x-acs-resourcegroupid", "`
+
 | ce | <yourResourceGroupID> |
 |---|---|
+
+ID.
 
 | Name | Description |
 |---|---|
@@ -84,19 +133,13 @@ the CPFS file system.
 | x-acs-resourcegroupid | The resource group ID of the instance resource you are operating on. For how to obtain it, see Get the resource group ID. |
 | x-acs-instanceid | The ID of the file system resource you are operating on. For how to obtain it, see Get the instance ID. |
 
-| Note When you call APIs of the Apsara Uni-manager Management Console, you do not need to use the header parameters x-acs-organizationid , x-acs- resourcegroupid , or x-acs-instanceid . When you call APIs of other cloud products, you must include the organization ID <x-acs-organizationid> in the header parameters. Otherwise, the API call fails with a permission error. When you call APIs of other cloud products, you must include the resource group ID <x-acs-resourcegroupid> in the header parameters. This specifies the organization and resource group of the resource and enables isolated queries. If you omit <x-acs-resourcegroupid> , the system uses the default resource group of your organization. |  |  |
+| Note When you call APIs of the Apsara Uni-manager Management Console, you do not need to use the header parameters x-acs-organizationid , x-acs- resourcegroupid , or x-acs-instanceid . When you call APIs of other cloud products, you must include the organization ID <x-acs-organizationid> in the header parameters. Otherwise, the API call fails with a permission error. When you call APIs of other cloud products, you must include the resource group ID <x-acs-resourcegroupid> in the header parameters. This specifies the organization and resource group of the resource and enables isolated queries. If you omit <x-acs-resourcegroupid> , the system uses the default resource group of your organization. |   |   |
 |---|---|---|
-|  | x-acs- |  |
+|   | x-acs- |   |
 
-|  | x-acs-organizationid |
+|   | x-acs-organizationid |
 |---|---|
-| x-acs-instanceid |  |
-
-Cloud Parallel File Storage Devel When you call Apsara Stack APIs, you must include several common request header parameters. The response also includes common response parameters.
-
-**Common request parameters**
-
-You must specify values for these common request parameters in your Apsara Stack API call code. For example, in a Java SDK call: `request.putHeadParameter("x-acs-resourcegroupid", "` ID.
+| x-acs-instanceid |   |
 
 **Get the region ID**
 
@@ -107,13 +150,6 @@ You can view the region ID of a resource in the Apsara Uni-manager Management Co
 **Management**.
 4. Click the target organization name.
 5. In the **Region list** on the right, the value in the **Region name** column is the region ID.
-
-| Name | Description |
-|---|---|
-| ResourceGroupName | Resource group name. |
-| ResourceGroup | Resource group ID. |
-
-Cloud Parallel File Storage Devel
 
 **Get the organization ID**
 
@@ -138,20 +174,30 @@ You can obtain the resource group ID by making an API call. You can use the onli
 4. Click the
 button, choose **Cloud Platform** > **Unified Cloud Management Platform**, and set **Version** to **2019-05-10**.
 5. In the text box, enter `ListResourceGroup` . After the API call is successful, find the **id** value
-in the **Call Result** section. This value is the resource group ID. You can obtain the file system ID from the resource list for the cloud product in the Apsara Uni-manager Management Console. You can view the ID in the file system list of the Cloud Paralleled File System (CPFS) console.
+in the **Call Result** section. This value is the resource group ID.
+
+**Get the file system ID**
+
+You can obtain the file system ID from the resource list for the cloud product in the Apsara Uni-manager Management Console. You can view the ID in the file system list of the Cloud Paralleled File System (CPFS) console.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, choose **Products > Storage > File Storage CPFS**.
 3. In the navigation pane on the left, click **CPFS File System**.
 4. View and copy the instance ID from the list.
+
+**Common response parameters**
+
 When you call list-type APIs for cloud product resources, the response includes the following common response parameters by default.
+
+| Name | Description |
+|---|---|
+| ResourceGroupName | Resource group name. |
+| ResourceGroup | Resource group ID. |
 
 | DepartmentName | Organization name. |
 |---|---|
 | Department | Organization ID. |
 
-Cloud Parallel File Storage Devel
-
-### Call Apsara Stack APIs
+### 1.4 Call Apsara Stack APIs Through the POP Gateway
 
 **Through the POP Gateway**
 
@@ -198,8 +244,6 @@ port.
         // Create an API request and set parameters.
 ```
 
-Cloud Parallel File Storage Devel
-
 ```
 //Ceatea equestadsetpaaetes.
         CommonRequest request = new CommonRequest();
@@ -240,26 +284,25 @@ parameter.
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
-When you use HTTPS to access OpenAPI, the SDK validates SSL/TLS certificates by default. If your runtime environment does not support certificate validation, the SDK throws a certificate validation error. To keep production traffic secure, leave certificate validation enabled. If you must disable it in a staging environment, use the following setting: Java Cloud Parallel File Storage Devel
+When you use HTTPS to access OpenAPI, the SDK validates SSL/TLS certificates by default. If your runtime environment does not support certificate validation, the SDK throws a certificate validation error. To keep production traffic secure, leave certificate validation enabled. If you must disable it in a staging environment, use the following setting: Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate validation clientConfig.setIgnoreSSLCerts(true)
 ```
 
-Cloud Parallel File Storage Devel es
+es
 
-## Java SDK call examples
+## 2 Java SDK call examples
 
 This topic describes how to obtain the Java SDK and start making calls.
 
-### Getting Started
+### 2.1 Getting Started
 
 This topic describes how to obtain the Java SDK and start making calls.
 
@@ -278,9 +321,9 @@ The main steps to make calls using the Apsara Stack Java SDK are as follows:
 2. Create an API request and set its parameters.
 3. Send the request and handle the response or exceptions.
 
-### User guide
+### 2.2 User guide
 
-#### Install the Java SDK
+#### 2.2.1 Install the Java SDK
 
 This topic describes how to install and call the Java SDK. The Apsara Stack Java SDK is compatible with JDK 1.8 or later. You can install the SDK by adding a Maven dependency or by downloading the Alibaba Cloud SDK. If you want to use the CPFS feature, you must also install the Alibaba Cloud Java SDK core library, version 4.5.17 or later.
 
@@ -292,9 +335,9 @@ This topic describes how to install and call the Java SDK. The Apsara Stack Java
 </dependency>
 ```
 
-Cloud Parallel File Storage Devel es
+es
 
-#### Setting Identity Verification
+#### 2.2.2 Setting Identity Verification Credentials
 
 **Credentials**
 
@@ -315,23 +358,13 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 In the preceding code example, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in the final code.
 
-#### Request connection configuration
+#### 2.2.3 Request connection configuration
 
 This topic describes how to configure request connections (HttpClientConfig). Use the following code to configure HttpClientConfig. You can select and set the configuration items according to your requirements.
 
 **Note**
 
-In the following code sample, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in your code. The variable parameters are described as follows: <readTimeout>: Set the read timeout period in milliseconds (ms). <connectionTimeout>: Set the connection timeout period in milliseconds (ms). <maxRequestsPerHost>: Set the maximum number of concurrent requests for each server. The data type is integer. <maxRequests>: Set the maximum number of concurrent requests across all servers. The data type is integer. <http://192.168.XX.XX:33XX>: Replace this with your actual proxy IP address and port.
-
-| Action |  |
-|---|---|
-|  | . |
-
-| For example, to call the | CreateFileSystem |  |
-|---|---|---|
-| request.setSysAction("CreateFileSystem") |  |  |
-
-Cloud Parallel File Storage Devel es
+In the following code sample, replace the variable parameters with your actual values. Do not include the angle brackets (<>) in your code. The variable parameters are described as follows: <readTimeout>: Set the read timeout period in milliseconds (ms). <connectionTimeout>: Set the connection timeout period in milliseconds (ms). <maxRequestsPerHost>: Set the maximum number of concurrent requests for each server. The data type is integer. <maxRequests>: Set the maximum number of concurrent requests across all servers. The data type is integer. <http://192.168.XX.XX:33XX>: Replace this with your actual proxy IP address and port. es
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore SSL certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Set the read timeout period in milliseconds (ms). clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Set the connection timeout period in milliseconds (ms). clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Set the maximum number of requests for each host. The data type is INT. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Set the maximum number of requests. The data type is INT. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Set the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Set a proxy as needed. The methods are as follows: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -349,7 +382,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace this with yo
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Call APIs Using CommonRequest
+#### 2.2.4 Call APIs Using CommonRequest
 
 Use CommonRequest when no SDK is available for an API. You can also use it when the request parameters or response values in the provided SDK do not meet your needs. CommonRequest lets you call any OpenAPI interface.
 
@@ -361,9 +394,25 @@ CommonRequest has these features: Lightweight: You only need the Core package. Y
 
 To make a CommonRequest call, obtain the following parameter values. Domain name: The service endpoint for the product. API version: The version number of the API, in YYYY-MM-DD format. You can find the API version in the Common Parameters section of the product's API documentation. Operation name: The name of the API you want to call.
 
+| Action |   |
+|---|---|
+|   | . |
+
+Obtain the `Action` parameter. Then, set the API name using `request.setSysAction("`
+
+```xml
+<Action>") .
+```
+
+| For example, to call the | CreateFileSystem |   |
+|---|---|---|
+| request.setSysAction("CreateFileSystem") |   |   |
+
+For example, to call the `CreateFileSystem` API, use `CommonRequest` and set the action as
+
 **Example: Call an RPC-style API**
 
-Cloud Parallel File Storage Devel es The following sample code shows how to call the CPFS DescribeFileSystems API to retrieve file system information.
+es The following sample code shows how to call the CPFS DescribeFileSystems API to retrieve file system information.
 
 **Note**
 
@@ -403,7 +452,7 @@ port.
         // Replace with your actual domain name.
 ```
 
-Cloud Parallel File Storage Devel es
+es
 
 ```java
         request.setDomain("<Endpoint>");
@@ -432,12 +481,11 @@ Optional. Required only when modifying, deleting, or querying details of a singl
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### Error handling
+`}` `}` `}`
+
+#### 2.2.5 Error handling
 
 When you use the Java software development kit (SDK), an exception is returned if a serverside or client-side error occurs. The exception contains a specific error code and an error message. In most cases, you do not need to handle client-side errors that are returned by the Java SDK. You can simply handle server-side errors based on the error messages from the server. `ServerException` indicates a server-side error. `ClientException` indicates a client-side error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message.
 
@@ -445,36 +493,42 @@ When you use the Java software development kit (SDK), an exception is returned i
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-To handle SDK errors, you can write your code as shown in the following example: Cloud Parallel File Storage Devel es
+To handle SDK errors, you can write your code as shown in the following example: es
 
 ```java
 try {
     FooResponse response = client.getAcsResponse(request);
+    // Process the response
     // ...
 }catch (ServerException e){
+    // Add your custom error handling logic here
     // For example, print the specific error message
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
     // If you encounter a complex issue, submit a ticket and provide the RequestId.
     System.out.println("ResponseId=" + e.getRequestId());
 }catch (ClientException e){
+    // Add your custom error handling logic here
     // For example, print the specific error message
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-Cloud Parallel File Storage Devel
+`}` mples
 
-## Python SDK call examples
+## 3 Python SDK call examples
 
-### Getting Started
+### 3.1 Getting Started
 
 This topic describes how to obtain the software development kit (SDK) and start making calls.
 
 **Prerequisites**
 
-To use the Apsara Stack Python SDK, you need an authorized account, an AccessKey ID, and an AccessKey secret. For more information, see Get an AccessKey. Obtain the Endpoint for the product that provides the feature you want to use. For more information, see Get an Endpoint. You must install the Alibaba Cloud Python SDK core library to use the CPFS feature. The installation steps are as follows: If you use Python 2.x, run the following command to install the Alibaba Cloud SDK core library:
+To use the Apsara Stack Python SDK, you need an authorized account, an AccessKey ID, and an AccessKey secret. For more information, see Get an AccessKey. Obtain the Endpoint for the product that provides the feature you want to use. For more information, see Get an Endpoint.
+
+**Install the Python SDK core library**
+
+You must install the Alibaba Cloud Python SDK core library to use the CPFS feature. The installation steps are as follows: If you use Python 2.x, run the following command to install the Alibaba Cloud SDK core library:
 
 ```
 pip install aliyun-python-sdk-core
@@ -494,9 +548,9 @@ secret when you create the instance.
 2. Create an API request and set the parameters.
 3. Send the request and handle the response or exceptions.
 
-### User guide
+### 3.2 User guide
 
-#### Install the Python SDK
+#### 3.2.1 Install the Python SDK
 
 This topic describes how to install and use the Python SDK.
 
@@ -506,7 +560,11 @@ The Apsara Stack Python SDK is compatible with Python 2.6.x, 2.7.x, and 3.x or l
 
 **Note**
 
-You must install the Alibaba Cloud Python SDK core library to use the SDK for any Alibaba Cloud product. Cloud Parallel File Storage Devel The CPFS feature requires you to install the Alibaba Cloud Python SDK core library. The installation steps are as follows: If you use Python 2.x, run the following command:
+You must install the Alibaba Cloud Python SDK core library to use the SDK for any Alibaba Cloud product.
+
+**Install the Python SDK core library**
+
+mples The CPFS feature requires you to install the Alibaba Cloud Python SDK core library. The installation steps are as follows: If you use Python 2.x, run the following command:
 
 ```
 pip install aliyun-python-sdk-core
@@ -518,7 +576,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-#### Set identity verification credentials
+#### 3.2.2 Set identity verification credentials
 
 When you use the Apsara Stack software development kit (SDK) to access Apsara Stack services, you must provide credentials for identity verification. This topic describes how to set identity verification credentials. The Python SDK supports identity verification using an AccessKey. For more information about how to obtain an AccessKey, see Obtain an AccessKey. When you use an AccessKey as an access credential, set the credential when you initialize the Client.
 
@@ -530,7 +588,7 @@ Ensure that code containing your AccessKey is not leaked, for example, by submit
 from aliyunsdkcore import client clt = client.AcsClient(access_key, access_secret, region_id)
 ```
 
-#### Call APIs Using CommonRequest
+#### 3.2.3 Call APIs Using CommonRequest
 
 Use CommonRequest when no SDK is available for a CPFS API or when the SDK’s request parameters or response values do not meet your requirements. CommonRequest enables you to call any OpenAPI interface.
 
@@ -540,7 +598,7 @@ CommonRequest provides the following benefits: Lightweight: You only need to dow
 
 **Use CommonRequest**
 
-To make a CommonRequest call, obtain the following parameter values. You can find them in the API documentation for each product. Domain name: the service endpoint for the product. API version: the version number of the API, in YYYY-MM-DD format. You can find the API version in the common parameters section of the product’s API documentation. Cloud Parallel File Storage Devel Operation name: the name of the API to call. Obtain the `Action` parameter. Set it using `request.set_action_name('Action')` . For example, to call the `DescribeFileSystems` API, specify the operation name using
+To make a CommonRequest call, obtain the following parameter values. You can find them in the API documentation for each product. Domain name: the service endpoint for the product. API version: the version number of the API, in YYYY-MM-DD format. You can find the API version in the common parameters section of the product’s API documentation. mples Operation name: the name of the API to call. Obtain the `Action` parameter. Set it using `request.set_action_name('Action')` . For example, to call the `DescribeFileSystems` API, specify the operation name using
 
 ```
  request.set_action_name('DescribeFileSystems')  in your  CommonRequest .
@@ -552,7 +610,7 @@ The following Python code shows how to call the DescribeFileSystems operation to
 
 **Note**
 
-Replace all placeholder values in the code with your actual values. Do not include the angle brackets (<>) in your final code. Replace these placeholders: Replace <yourRegionID> with your actual region ID. Replace <yourAccessKeyID> with your AccessKey ID. Replace <yourAccessKeySecret> with your AccessKey secret. Replace <yourSecurityToken> with your actual security token. <yourResourceGroupID> with your actual resource group ID. <yourOrganizationID> Replace this placeholder with your actual organization ID. Replace <yourInstanceID> with your instance ID. Replace <Endpoint> with the actual endpoint for your product. Cloud Parallel File Storage Devel
+Replace all placeholder values in the code with your actual values. Do not include the angle brackets (<>) in your final code. Replace these placeholders: Replace <yourRegionID> with your actual region ID. Replace <yourAccessKeyID> with your AccessKey ID. Replace <yourAccessKeySecret> with your AccessKey secret. Replace <yourSecurityToken> with your actual security token. <yourResourceGroupID> with your actual resource group ID. <yourOrganizationID> Replace this placeholder with your actual organization ID. Replace <yourInstanceID> with your instance ID. Replace <Endpoint> with the actual endpoint for your product. mples
 
 ```xml
 #!/usr/bin/env python
@@ -587,11 +645,13 @@ request.add_header("x-acs-caller-sdk-source","ApiTestDemo")
 ce. Replace <yourInstanceID> with your actual instance ID.
 # request.add_header("x-acs-instanceid", "<yourInstanceID>")
 response = client.do_action_with_exception(request)
+# Python 2: print(response)
+print(str(response, encoding = 'utf-8'))
 ```
 
-#### Error handling
+#### 3.2.4 Error handling
 
-Cloud Parallel File Storage Devel The Python Software Development Kit (SDK) returns an exception if an error occurs on the server-side or within the SDK. This exception includes a specific error code and error message. In most cases, you do not need to handle errors that originate from the Python SDK. Handle server-side errors based on the error messages that the server returns. `ServerException` indicates a server-side error. `ClientException` indicates an SDK error. For example, if the following error occurs, modify the AccessKey ID based on the error message.
+mples The Python Software Development Kit (SDK) returns an exception if an error occurs on the server-side or within the SDK. This exception includes a specific error code and error message. In most cases, you do not need to handle errors that originate from the Python SDK. Handle server-side errors based on the error messages that the server returns. `ServerException` indicates a server-side error. `ClientException` indicates an SDK error. For example, if the following error occurs, modify the AccessKey ID based on the error message.
 
 ```
 aliyunsdkcore.acs_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
@@ -610,11 +670,11 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-Cloud Parallel File Storage Devel s
+s
 
-## Go SDK call examples
+## 4 Go SDK call examples
 
-### Getting Started
+### 4.1 Getting Started
 
 The Alibaba Cloud Go SDK lets you access cloud services without complex programming. This topic describes how to install the Alibaba Cloud Go SDK and start making calls.
 
@@ -637,9 +697,9 @@ To use the Go SDK, follow these steps:
 2. Create an API request and set parameters.
 3. Send the request and handle the acknowledgement or exception.
 
-### User guide
+### 4.2 User guide
 
-#### Install the Go SDK core package
+#### 4.2.1 Install the Go SDK core package
 
 This topic describes how to install the Go SDK core package. The Alibaba Cloud Go SDK supports Go 1.10.x and later. You can run the following command to install the Go SDK core package.
 
@@ -647,16 +707,9 @@ This topic describes how to install the Go SDK core package. The Alibaba Cloud G
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Set up identity verification credentials
+#### 4.2.2 Set up identity verification credentials
 
-When you use the Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for identity verification. This topic describes how to set up identity verification credentials. Currently, the Go SDK supports identity verification using an AccessKey. For information about how to obtain an AccessKey, see Obtain an AccessKey. When you use an AccessKey as an access credential, set the credential during client initialization.
-
-| For example, to call the | DescribeFileSystems |  |
-|---|---|---|
-| request.ApiName("<DescribeFileSystem>") |  |  |
-|  |  | wh |
-
-Cloud Parallel File Storage Devel s
+When you use the Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for identity verification. This topic describes how to set up identity verification credentials. Currently, the Go SDK supports identity verification using an AccessKey. For information about how to obtain an AccessKey, see Obtain an AccessKey. When you use an AccessKey as an access credential, set the credential during client initialization. s
 
 **Note**
 
@@ -671,7 +724,7 @@ Ensure that code containing an AccessKey does not leak (such as by being committ
         "<yourAccessKeySecret>") // Replace with your actual AccessKey Secret.
 ```
 
-#### Call an API using CommonRequest
+#### 4.2.3 Call an API using CommonRequest
 
 Use the generic API call method (CommonRequest) if a product API does not have a software development kit (SDK). You can also use this method if the request parameters or response values in an SDK do not meet your needs. The CommonRequest method lets you call any OpenAPI.
 
@@ -683,13 +736,18 @@ CommonRequest provides the following benefits: Lightweight: You only need to dow
 
 To make a CommonRequest call, obtain the values for the following parameters from the API documentation. Domain name (domain): The service endpoint for the product. API version (version): The version number of the API. The format is YYYY-MM-DD. You can find the API version in the common parameters section of the product's API documentation. API information: The name of the API to call. Obtain the `Action` parameter and use `request.ApiName("<Action>")` to specify the API name.
 
+| For example, to call the | DescribeFileSystems |   |
+|---|---|---|
+| request.ApiName("<DescribeFileSystem>") |   |   |
+|   |   | wh |
+
 **Example: Call an RPC-style API**
 
-The following sample code shows how to use the DescribeFileSystems API to retrieve file system information: Cloud Parallel File Storage Devel s
+The following sample code shows how to use the DescribeFileSystems API to retrieve file system information: s
 
 **Note**
 
-In the following code sample, replace the variable parameters with your actual information. Do not include the angle brackets (<>) in the final code. The variable parameters that you must replace are as follows: <yourRegionID>: Replace with your actual region ID. <yourAccessKeyID>: Replace with your actual AccessKey ID. <yourAccessKeySecret>: Replace with your actual AccessKey secret. <yourSecurityToken>: Replace with your actual SecurityToken. <yourResourceGroupID>: Replace with your actual resource group ID. <yourOrganizationID>: Replace with your actual organization ID. <yourInstanceID>: Replace with your actual instance ID. <Endpoint>: Replace with the actual endpoint of your product. Cloud Parallel File Storage Devel s
+In the following code sample, replace the variable parameters with your actual information. Do not include the angle brackets (<>) in the final code. The variable parameters that you must replace are as follows: <yourRegionID>: Replace with your actual region ID. <yourAccessKeyID>: Replace with your actual AccessKey ID. <yourAccessKeySecret>: Replace with your actual AccessKey secret. <yourSecurityToken>: Replace with your actual SecurityToken. <yourResourceGroupID>: Replace with your actual resource group ID. <yourOrganizationID>: Replace with your actual organization ID. <yourInstanceID>: Replace with your actual instance ID. <Endpoint>: Replace with the actual endpoint of your product. s
 
 ```java
 package main import (
@@ -698,7 +756,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -708,7 +766,11 @@ func main() {
         "<yourAccessKeySecret>") // Replace with your actual AccessKey secret.
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<endpoint>" // The endpoint. This is an example value. Replace it
@@ -716,6 +778,7 @@ with the actual endpoint.
     request.Product = "CPFS"
     request.Version = "2017-06-26"
     // Because this is an RPC API, you must specify the ApiName (Action).
+    request.ApiName = "DescribeFileSystems"
     // Business parameters
     request.QueryParams["FileSystemType"] = "bmcpfs"
     request.QueryParams["PageNumber"] = "1"
@@ -748,13 +811,17 @@ hen you modify, delete, or view the details of a single instance. Replace with y
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-}
 ```
 
-Cloud Parallel File Storage Devel s
+`}`
 
-#### Error Handling
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` s
+
+#### 4.2.4 Error Handling
 
 The Alibaba Cloud Go SDK returns an error message when a fault occurs on the server side or within the SDK. These errors implement Go's standard Error interface, which lets you handle them in the same way as standard Go errors.
 
@@ -765,24 +832,19 @@ Use the following code for simple error handling.
 ```
 response, err := client.ProcessCommonRequest(request) if err != nil {
     panic(err)
-}
 ```
 
-| Categorization | List of Actions |
-|---|---|
-| File System | CreateFileSystem DeleteFileSystem DescribeFileSystems ModifyFileSystem |
+`}`
 
-Cloud Parallel File Storage Devel
+## 5 API reference
 
-## API reference
+### 5.1 Call APIs
 
-### Call APIs
-
-#### Overview
+#### 5.1.1 Overview
 
 An API operation call is an HTTP GET request that is sent to a product's service endpoint and includes the required parameters as specified in the API reference. After the call, the system returns a response. Both the request and the response are encoded in UTF-8.
 
-#### Request structure
+#### 5.1.2 Request structure
 
 **Service endpoint**
 
@@ -804,22 +866,19 @@ Each request must specify an operation using the Action parameter, such as Creat
 
 All requests and responses use UTF-8 encoding.
 
-#### API Authorization
+#### 5.1.3 API Authorization
 
 To ensure account security, use the identity credentials of a Resource Access Management (RAM) user to call APIs. If you use a RAM user to call CPFS file storage APIs, create and attach an appropriate authorization policy to that RAM user. In RAM, you can grant permissions for the following actions on a CPFS resource.
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Format | String | No | The return value type. Only JSON is supported. |
-| Version | String | Yes | The API version number. Enter it in YYYY-MM-DD format. The value is 2017-06-26. |
+| Categorization | List of Actions |
+|---|---|
+| File System | CreateFileSystem DeleteFileSystem DescribeFileSystems ModifyFileSystem |
 
-Cloud Parallel File Storage Devel
-
-#### Response
+#### 5.1.4 Response
 
 API calls return data in a standard format. An HTTP status code in the 2xx range indicates a successful call, while a status code in the 4xx or 5xx range indicates a failed call.
 
-### RAM authorization
+### 5.2 RAM authorization
 
 When a Resource Access Management (RAM) user uses OpenAPI to access resources of an Alibaba Cloud account, the system uses RAM to check permissions. This ensures that the resource owner has granted the required permissions to the caller.
 
@@ -831,7 +890,7 @@ By default, an Alibaba Cloud account or a RAM user can use the CPFS console or C
 
 Each CPFS API determines which resource permissions to check based on the resources involved and the semantics of the API call.
 
-### Common Parameters
+### 5.3 Common Parameters
 
 Common parameters include common request parameters, common header parameters, and common response parameters.
 
@@ -839,11 +898,18 @@ Common parameters include common request parameters, common header parameters, a
 
 Every API requires common request parameters. Table 1. Common Request Parameters
 
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Format | String | No | The return value type. Only JSON is supported. |
+| Version | String | Yes | The API version number. Enter it in YYYY-MM-DD format. The value is 2017-06-26. |
+
 | AccessKeyId | String | Yes | The AccessKey ID used to access the service. |
 |---|---|---|---|
 | AccessKeySecre t | String | Yes | The AccessKey secret used to access the service. |
 | RegionId | String | Yes | The region ID used to access the service. |
 | Product | String | Yes | The product name for the API. The product name is CPFS. |
+
+**Common Header Parameters**
 
 | Name | Description |
 |---|---|
@@ -851,13 +917,15 @@ Every API requires common request parameters. Table 1. Common Request Parameters
 | x-acs-resourcegroupid | The resource group ID on the Apsara Uni-manager Management Console. For details, see Get Resource Group ID. |
 | x-acs-instanceid | The instance ID for the operation. For details, see Get Instance ID. |
 
-Cloud Parallel File Storage Devel
-
 **Note**
 
 When you call cloud product APIs, add the actual values for parameters such as **x-acs-**
 **instanceid**, **x-acs-organizationid**, and **x-acs-resourcegroupid** to the request header
-in your code. This specifies the instance ID of the current instance (the instance ID does not exist when you create instances or query instance lists), and its organization and resource group. If you do not add the actual values for these header parameters, the call defaults to the root organization and root resource group. API responses use a unified format. HTTP status codes indicate the call status. A 2xx HTTP status code indicates that the call succeeded. A 4xx or 5xx HTTP status code indicates that the call failed. Successful calls return data in JSON format. For each API call, whether successful or not, the system returns a unique RequestId.
+in your code. This specifies the instance ID of the current instance (the instance ID does not exist when you create instances or query instance lists), and its organization and resource group. If you do not add the actual values for these header parameters, the call defaults to the root organization and root resource group.
+
+**Common Response Parameters**
+
+API responses use a unified format. HTTP status codes indicate the call status. A 2xx HTTP status code indicates that the call succeeded. A 4xx or 5xx HTTP status code indicates that the call failed. Successful calls return data in JSON format. For each API call, whether successful or not, the system returns a unique RequestId.
 
 **Get Region ID**
 
@@ -866,16 +934,6 @@ in your code. This specifies the instance ID of the current instance (the instan
 3. In the navigation pane on the left, choose **Resource Management** > **Region**
 **Management**.
 4. Click the target organization name.
-
-| Name | Type | Requi red | Example value | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateFileSystem | A required parameter. If you construct an HTTP or HTTPS URL to send an API request, set Action to CreateFileSystem. |
-| RegionId | String | Yes | cn-qingdao-exxx- d01 | The region ID. Call DescribeRegions to view the latest list of Alibaba Cloud regions. |
-| ZoneId | String | Yes | cn-qingdao-exxx- axxx-a | The zone ID. This is a required parameter. |
-| FileSystemType | String | Yes | bmcpfs | The file system type. Only bmcpfs is supported. |
-| Capacity | Long | Yes | 20480 | The capacity in GiB. Valid values are multiples of 10240 and greater than 20480. For compute-optimized instances, the maximum capacity is 10240000. |
-
-Cloud Parallel File Storage Devel
 5. View the Region ID in the **Region List** on the right.
 
 **Get Organization ID**
@@ -893,13 +951,21 @@ Retrieve the resource group ID by calling an API. For details, see the ListResou
 3. In the navigation pane on the left, click **CPFS List**.
 4. View the instance ID in the list and copy it.
 
-### File system
+### 5.4 File system
 
-#### CreateFileSystem
+#### 5.4.1 CreateFileSystem
 
 This topic describes how to create a CPFS file system by calling the CreateFileSystem operation.
 
 **Request parameters**
+
+| Name | Type | Requi red | Example value | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateFileSystem | A required parameter. If you construct an HTTP or HTTPS URL to send an API request, set Action to CreateFileSystem. |
+| RegionId | String | Yes | cn-qingdao-exxx- d01 | The region ID. Call DescribeRegions to view the latest list of Alibaba Cloud regions. |
+| ZoneId | String | Yes | cn-qingdao-exxx- axxx-a | The zone ID. This is a required parameter. |
+| FileSystemType | String | Yes | bmcpfs | The file system type. Only bmcpfs is supported. |
+| Capacity | Long | Yes | 20480 | The capacity in GiB. Valid values are multiples of 10240 and greater than 20480. For compute-optimized instances, the maximum capacity is 10240000. |
 
 | StorageType | String | Yes | bm advance 300 _ _ _ private | The file system specification. This corresponds to fsSpec in fscd. For bmcpfs, only bm advance 300 private (compute- _ _ _ optimized instance) is supported. |
 |---|---|---|---|---|
@@ -909,16 +975,26 @@ This topic describes how to create a CPFS file system by calling the CreateFileS
 | EncryptType | String | Yes | 0 | Set to 0 to disable encryption. Set to 1 to enable encryption. Encryption is not supported in Apsara Stack. |
 | Description | String | No | - | The description. Specify a string that meets the following requirements. 1. The length must be 2 to 128 characters. Characters can be English letters, digits, or Chinese characters. 2. The string must start with an English letter (uppercase or lowercase) or a Chinese character. It cannot start with http:// or https://. 3. The string can contain digits, colons (:), underscores ( ), or _ hyphens (-). |
 
+**Response data**
+
 | Name | Type | Example value | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 | FileSystemId | String | bmcpfs-01b06fa3 | The filesystem ID. |
 
-Cloud Parallel File Storage Devel
+**Examples**
+
+Successful response
 
 ```json
 {"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"bmcpfs-01b06fa3"}
 ```
+
+#### 5.4.2 DeleteFileSystem
+
+Deletes a CPFS file system.
+
+**Request parameters**
 
 | Name | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -927,30 +1003,28 @@ Cloud Parallel File Storage Devel
 | ZoneId | String | No | cn-qingdao- exxx-axxx-a | The zone ID. |
 | FileSystemId | String | Yes | bmcpfs- 0156ec1d | The ID of the file system. |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
-| > Document Versio | n: 20260701 |  |  | 3 |
-|---|---|---|---|---|
+**Examples**
 
-Cloud Parallel File Storage Devel
-
-#### DeleteFileSystem
-
-Deletes a CPFS file system.
-
-**Request parameters**
+Sample success response
 
 ```json
 {"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"bmcpfs-01b06fa3"}
 ```
 
-#### DescribeFileSystems
+#### 5.4.3 DescribeFileSystems
 
 This topic describes how to call the DescribeFileSystems operation to query CPFS file systems that you have created.
 
 **Request Parameters**
+
+| > Document Versio | n: 20260701 |   |   | 3 |
+|---|---|---|---|---|
 
 | Name | Type | Requir ed | Example Value | Description |
 |---|---|---|---|---|
@@ -963,11 +1037,11 @@ This topic describes how to call the DescribeFileSystems operation to query CPFS
 | PageSize | Integer | No | 10(default value) | Page size. |
 | PageNumber | Integer | No | 1(default value) | Page number. |
 
+**Response Data**
+
 | Name | Type | Example Value | Description |
 |---|---|---|---|
 | FileSystemId | String | bmcpfs-0156ec1d | File system ID. |
-
-Cloud Parallel File Storage Devel
 
 | Status | String | Running | File system status. All statuses are as follows: Initializing Running Deleting Scaling up Scaling down Starting Stopping Stopped |
 |---|---|---|---|
@@ -976,16 +1050,18 @@ Cloud Parallel File Storage Devel
 | MountTarget | String | - | Mount target information. |
 | MountTargetDomain | String | - | Mount target name. |
 
-Cloud Parallel File Storage Devel
+**Example**
 
-| Name | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Cloud Parallel File Storage Devel
+Example of a normal response `{`
 
 ```json
-{
-            {
+    "FileSystems": {
+        "FileSystem": [
+```
+
+`{`
+
+```json
                 "Status": "Running",
                 "Description": "cpfs",
                 "StorageType": "performance",
@@ -997,18 +1073,16 @@ Cloud Parallel File Storage Devel
                     "SupportedFeature": [
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "MountTargets": {
                     "MountTarget": [
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "MeteredSize": 0,
                 "QuotaSize": 40960,
                 "EncryptType": 0,
@@ -1017,33 +1091,34 @@ Cloud Parallel File Storage Devel
                     "Package": [
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "FileSystemType": "bmcpfs",
                 "FileSystemId": "bmcpfs-0156ec1d",
                 "RegionId": "cn-wulan-***-d01",
                 "VolumeSize": 40960
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "TotalCount": 1,
     "RequestId": "4306B744-C87D-45C7-8083-64C4E153F46C",
     "PageSize": 10,
     "PageNumber": 1
-}
 ```
 
-#### ModifyFileSystem
+`}`
+
+#### 5.4.4 ModifyFileSystem
 
 This topic describes how to call the ModifyFileSystem operation to modify a CPFS file system.
 
 **Request parameters**
+
+| Name | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | ModifyFileSyste m | Required parameter. If you manually construct an HTTP or HTTPS URL to send an API request, you must include the Action parameter. Set the value to ModifyFileSystem. |
 |---|---|---|---|---|
@@ -1053,11 +1128,15 @@ This topic describes how to call the ModifyFileSystem operation to modify a CPFS
 | Description | String | No | - | The description of the file system. |
 | Capacity | Long | No | 20480 | The capacity of the file system. The value must be greater than 20480 and a multiple of 10240. Only scale- out is supported. |
 
+**Response data**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The request ID. |
 
-Cloud Parallel File Storage Devel
+**Examples**
+
+Sample success response
 
 ```json
 {"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"bmcpfs-01b06fa3"}

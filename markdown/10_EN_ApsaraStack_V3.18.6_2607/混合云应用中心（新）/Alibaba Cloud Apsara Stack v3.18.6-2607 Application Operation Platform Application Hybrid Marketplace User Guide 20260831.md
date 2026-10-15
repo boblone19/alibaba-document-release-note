@@ -3,20 +3,42 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform A
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 31
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace User Guide 20260831.pdf"
+source_pdf: "20c368d04d139a1e_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplac"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E6%96%B0%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Operation%20Platform%20Application%20Hybrid%20Marketplace%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace User Guide 20260831
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Getting started
+  - 2.1 Log on to the Hybrid Cloud Application Center console
+  - 2.2 Deploy an application in an ACK cluster
+  - 2.3 Deploy an application in an ECS instance
+  - 2.4 Deploy the ONSP
+- 3 App Store
+  - 3.1 Import an application
+  - 3.2 Deploy an application
+- 4 My Applications
+- 5 Task management
+- 6 Plug-in center
+  - 6.1 Plug-in store
+  - 6.2 My plug-ins
+- 7 System management
+  - 7.1 Image repository management
+  - 7.2 Variable management
+    - 7.2.1 Manage global variables
+    - 7.2.2 Manage cluster variables
+
+## 1 Overview
 
 Hybrid Cloud Application Center serves as the third product R&D and delivery pipeline, in addition to Apsara Infrastructure Management and the Platform as a Service (PaaS) platform. It is used to deliver applications in Apsara Stack and provides features such as application import, application deployment, application upgrade, application unpublishing, basic monitoring, and system configuration and management. Hybrid Cloud Application Center supports the deployment of applications in Kubernetes clusters and Elastic Compute Service (ECS) instances in major application delivery scenarios.
 
-## Getting started
+## 2 Getting started
 
-### Log on to the Hybrid Cloud
+### 2.1 Log on to the Hybrid Cloud Application Center console
 
 **Application Center console**
 
@@ -35,7 +57,7 @@ with the highest resource consumption in Hybrid Cloud Application Center.
 **Cloud Resource Distribution**: displays the distribution of cloud resources in different
 regions.
 
-### Deploy an application in an
+### 2.2 Deploy an application in an ACK cluster
 
 **ACK cluster**
 
@@ -90,7 +112,7 @@ iii. **Application Settings** In the Application Settings step, configure the pa
 
 iv. **Confirmation** Confirm parameter settings in this step. v. **Complete** Click **Start Now** to deploy the application.
 
-### Deploy an application in an
+### 2.3 Deploy an application in an ECS instance
 
 **ECS instance**
 
@@ -232,7 +254,7 @@ iii. **Application Settings** In the Application Settings step, configure the pa
 
 iv. **Confirmation** Confirm parameter settings in this step. v. Click **Start Now** to deploy the application.
 
-### Deploy the ONSP
+### 2.4 Deploy the ONSP
 
 This topic describes how to use the Hybrid Cloud Application Center console to deploy Open Network Service Platform (ONSP).
 1. Log on to the Hybrid Cloud Application Center console.
@@ -244,9 +266,9 @@ that appears, click **Import Plug-in**. In the Import Plug-in dialog box, click 
 4. On the **My Plugins** page, click the ONSP plug-in to open the details page. In the **Access**
 **Portal** section, click **onsp** next to **Domain Name** to go to the ONSP console.
 
-## App Store
+## 3 App Store
 
-### Import an application
+### 3.1 Import an application
 
 You can import various cloud applications that are supported by Hybrid Cloud Application Center and deploy the applications by using the Hybrid Cloud Application Center console to meet your business requirements. The Hybrid Cloud Application Center console allows you to import OAM-compliant cloud applications published by Alibaba Cloud or third-party Independent Software Vendors (ISVs) in the form of cloud service packages. These packages are ZIP files formatted in accordance with OAM specifications.
 
@@ -268,7 +290,7 @@ operations. i. Upload the product file to the operations machine. ii. Enter the 
 **command**. The generated command is valid for 2 hours.
 iii. Click **Copy command** and go to the operations machine to run the copied command. The success message indicates that the command is successfully executed.
 
-### Deploy an application
+### 3.2 Deploy an application
 
 This topic describes how to deploy an application. The WordPress application is used in the example. Before application deployment, you need to prepare the relevant network resources, account, and Container Service for Kubernetes (ACK) cluster in Apsara Stack.
 1. Log on to the Hybrid Cloud Application Center console.
@@ -278,7 +300,7 @@ and go to the application details page.
 4. In the dialog box that appears, click **I understand and confirm the same** . On the page
 that appears, follow on-screen instructions to configure the basic information for application deployment and complete application deployment. Two application deployment modes are supported: Deploy applications in Kubernetes clusters. For more information, see Deploy an application in an ACK cluster. Deploy applications in Elastic Compute Service (ECS) instances. For more information, see Deploy an application in an ECS instance.
 
-## My Applications
+## 4 My Applications
 
 After an application is deployed, you can view all purchased and trial applications in the Hybrid Cloud Application Center console. You can also unpublish applications that have been deployed.
 
@@ -300,7 +322,7 @@ After an application is unpublished, the resources that you use in the productio
 i. On the application details page, click **Configure** in the upper-right corner. ii. You can view the **Input Configurations**, **Output Configurations**, and **System**
 **Configurations** of the application.
 
-## Task management
+## 5 Task management
 
 On the Task Management page of Hybrid Cloud Application Center, you can view application deployment tasks. If a task fails to be executed, you can manually retry or skip the steps.
 1. Log on to the Hybrid Cloud Application Center console.
@@ -311,9 +333,9 @@ You can filter tasks by **Application Name**, **Submitted By**, or **Ticket Stat
 3. Click the ticket ID of a task to open the task details page. You can view the ticket
 information and **Progress** of the task. You can retry or skip a failed task: Click **retry**. In the message that appears, click **OK** to restart the step. Click **skip**. In the message that appears, click **OK** to skip the step.
 
-## Plug-in center
+## 6 Plug-in center
 
-### Plug-in store
+### 6.1 Plug-in store
 
 **Import a plug-in**
 
@@ -345,7 +367,7 @@ plug-in is deployed.
 icon, and then click **Delete Plug-in**.
 2. In the message that appears, click **OK**.
 
-### My plug-ins
+### 6.2 My plug-ins
 
 **Restart Plug-in Center**
 
@@ -387,9 +409,9 @@ On the My Plugins page, find the plug-in that you want to uninstall, move the po
 2. Go to the details page of a plug-in and click **Update**.
 3. Select the version number of the plug-in and click **Next**. Wait until the plug-in is updated.
 
-## System management
+## 7 System management
 
-### Image repository management
+### 7.1 Image repository management
 
 An image repository is a Docker image repository. It provides images for specified clusters. You can configure an image repository for a specified cluster. When you deploy an application in the specified cluster, the system reads the configurations of the corresponding image repository to obtain the Docker image of the application. You can also configure a default image repository. If no image repository is configured for a cluster, the system obtains images from the default image repository.
 1. Log on to the Hybrid Cloud Application Center console.
@@ -415,9 +437,9 @@ existing image repositories: To modify an image repository, click **Modify** in 
 **Account**, **Account Password**, **Default**, and **Associated Cluster** based on your
 business requirement and then click **OK**. To delete an image repository, click **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
-### Variable management
+### 7.2 Variable management
 
-#### Manage global variables
+#### 7.2.1 Manage global variables
 
 A global variable is a global configuration in the key-value form. The effective scope of global variables is system-wide. Global variables maintain consistent values across all applications and clusters.
 1. Log on to the Hybrid Cloud Application Center console.
@@ -439,7 +461,7 @@ about all global variables and modify or delete existing global variables. To mo
 To delete a variable, find the variable that you want to delete and click **Delete** in the
 **Actions** column. In the message that appears, click **OK**.
 
-#### Manage cluster variables
+#### 7.2.2 Manage cluster variables
 
 Cluster variables are configuration variables of a cluster in the key-value form. The effective scope of a cluster variable is limited to the associated cluster. Therefore, if different clusters are associated with different cluster variables, the variables with the same name may have different values.
 1. Log on to the Hybrid Cloud Application Center console.

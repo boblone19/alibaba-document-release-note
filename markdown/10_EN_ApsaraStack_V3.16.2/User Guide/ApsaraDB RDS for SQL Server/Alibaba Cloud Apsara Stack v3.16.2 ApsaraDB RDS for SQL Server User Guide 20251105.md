@@ -3,16 +3,67 @@ title: "Alibaba Cloud Apsara Stack v3.16.2 ApsaraDB RDS for SQL Server User Guid
 product_version: "V3.16.2"
 doc_version: "20251105"
 pdf_pages: 56
-source_pdf: "Alibaba Cloud Apsara Stack v3.16.2 ApsaraDB RDS for SQL Server User Guide 20251105.pdf"
+source_pdf: "9f800665a68e7cd3_Alibaba Cloud Apsara Stack v3.16.2 ApsaraDB RDS for SQL Server User Guide 20251105.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20ApsaraDB%20RDS%20for%20SQL%20Server%20User%20Guide%2020251105.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 ApsaraDB RDS for SQL Server User Guide
 
+## Table of Contents
+
+- 1 ApsaraDB RDS for SQL Server Product Lifecycle Announcement
+- 2 What is ApsaraDB RDS?
+- 3 Instance types
+- 4 Log on to the ApsaraDB RDS console
+- 5 Quick Start
+  - 5.1 Procedure
+  - 5.2 Create an instance
+  - 5.3 Configure an IP address whitelist for an ApsaraDB RDS instance
+  - 5.4 Connect to an instance
+  - 5.5 Create an account
+  - 5.6 Create a database
+- 6 Instances
+  - 6.1 Create an instance
+  - 6.2 View basic information of an instance
+  - 6.3 Restart an instance
+  - 6.4 Change the specifications of an instance
+  - 6.5 Set a maintenance window
+  - 6.6 Configure primary/secondary switchover
+  - 6.7 Release an instance
+  - 6.8 Read-only instances
+    - 6.8.1 Overview of read-only ApsaraDB RDS for SQL Server instances
+    - 6.8.2 Create a read-only ApsaraDB RDS for SQL Server instance
+    - 6.8.3 View details of read-only instances
+- 7 Accounts
+  - 7.1 Create an account
+  - 7.2 Reset the password
+- 8 Databases
+  - 8.1 Create a database
+  - 8.2 Delete a database
+  - 8.3 Change the character set collation and the time zone of system databases
+  - 8.4 Replicate databases between ApsaraDB RDS instances
+- 9 Database connection
+  - 9.1 Change a vSwitch
+  - 9.2 Change the endpoint and port number of an instance
+  - 9.3 Apply for or release a public endpoint
+  - 9.4 Connect to an instance
+- 10 Monitoring and alerting
+  - 10.1 View resource and engine monitoring data
+- 11 Data security
+  - 11.1 Configure an IP address whitelist for an ApsaraDB RDS instance
+  - 11.2 Configure SSL encryption
+- 12 Service availability
+  - 12.1 Switch workloads between primary and secondary ApsaraDB RDS instances
+- 13 Database backup and restoration
+  - 13.1 Configure an automatic backup policy
+  - 13.2 Manually back up an instance
+  - 13.3 Shrink transaction logs
+- 14 Migrate full backup data to ApsaraDB RDS for SQL Server
+
 erver Product Lifecycle Announce ment
 
-## ApsaraDB RDS for SQL
+## 1 ApsaraDB RDS for SQL Server Product Lifecycle Announcement
 
 **Server Product Lifecycle**
 
@@ -28,7 +79,7 @@ Dear Customer, Apsara Stack ApsaraDB for SQL Server will reach its End of Market
 
 Please plan accordingly. If you have any questions, contact Alibaba Cloud. April 2024
 
-## What is ApsaraDB RDS?
+## 2 What is ApsaraDB RDS?
 
 ApsaraDB RDS supports four database engines, which are MySQL, SQL Server, PolarDB, and PostgreSQL. You can create RDS instances that run these engines to meet your business requirements.
 
@@ -36,7 +87,7 @@ ApsaraDB RDS supports four database engines, which are MySQL, SQL Server, PolarD
 
 ApsaraDB RDS for SQL Server provides strong support for a variety of enterprise applications under the high-availability architecture. ApsaraDB RDS for SQL Server can also restore data to a specific point in time, which reduces costs. ApsaraDB RDS for SQL Server provides basic features such as whitelist configuration, backup and restoration, data migration, and management for instances, accounts, and databases.
 
-## Instance types
+## 3 Instance types
 
 This topic describes the instance types of ApsaraDB RDS for SQL Server. Different instance types deliver different performance.
 
@@ -136,7 +187,7 @@ If the throughput of an RDS instance reaches the upper limit, the IOPS of the in
 
 RDS console
 
-## Log on to the ApsaraDB
+## 4 Log on to the ApsaraDB RDS console
 
 **RDS console**
 
@@ -149,13 +200,13 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
-## Quick Start
+## 5 Quick Start
 
-### Procedure
+### 5.1 Procedure
 
 ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS instance, configuring an IP address whitelist, creating a database, creating an account, and connecting to the instance. The following figure shows the operations that you must perform before you use an ApsaraDB RDS instance. Figure 1. Quick start flowchart
 
-### Create an instance
+### 5.2 Create an instance
 
 This topic describes how to create an instance in the ApsaraDB RDS console. An Apsara Stack tenant account is created.
 1. Log on to the ApsaraDB RDS console.
@@ -186,7 +237,7 @@ This topic describes how to create an instance in the ApsaraDB RDS console. An A
 
 4. Click **Submit**.
 
-### Configure an IP address
+### 5.3 Configure an IP address whitelist for an ApsaraDB RDS instance
 
 **whitelist for an ApsaraDB RDS**
 
@@ -205,7 +256,7 @@ If you want to connect an ECS instance to an ApsaraDB RDS instance by using an i
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. Limits for IP address whitelists: You must separate multiple IP addresses with commas (,). A maximum of 1,000 different IP addresses can be added. Supported formats are `0.0.0.0/0` , IP addresses such as `10.23.12.24` , or CIDR blocks such as `10.23.12.24/24` . `/24` indicates the length of the IP address prefix in the CIDR block. An IP address prefix can contain 1 to 32 bits. If an IP address whitelist is empty or contains only `0.0.0.0/0` , all IP addresses can access the ApsaraDB RDS instance. This may cause security risks to the instance. Proceed with caution. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all the Elastic Compute Service (ECS) instances that are created within your Apsara Stack tenant account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
-### Connect to an instance
+### 5.4 Connect to an instance
 
 This topic describes how to use Data Management (DMS) to connect to an ApsaraDB RDS instance. A database is created. For more information, see Create a database. A database account is created. For more information, see Create an account.
 1. Log on to the ApsaraDB RDS console.
@@ -218,7 +269,7 @@ If you want the browser to remember the password, select **Remember**
 **password** and click **Login**.
 If you cannot connect to the instance, check the IP address whitelist settings. For more information, see Configure an IP address whitelist for an ApsaraDB RDS instance.
 
-### Create an account
+### 5.5 Create an account
 
 This topic describes how to create an account on an ApsaraDB RDS for SQL Server instance. The instance is in the **Running** state.
 1. Log on to the ApsaraDB RDS console.
@@ -241,7 +292,7 @@ This topic describes how to create an account on an ApsaraDB RDS for SQL Server 
 
 7. Click **Create**.
 
-### Create a database
+### 5.6 Create a database
 
 This topic describes how to create a database on an ApsaraDB RDS for SQL Server instance in the ApsaraDB RDS console.
 1. Log on to the ApsaraDB RDS console.
@@ -259,9 +310,9 @@ This topic describes how to create a database on an ApsaraDB RDS for SQL Server 
 
 7. Click **Create**.
 
-## Instances
+## 6 Instances
 
-### Create an instance
+### 6.1 Create an instance
 
 This topic describes how to create an instance in the ApsaraDB RDS console. An Apsara Stack tenant account is created.
 1. Log on to the ApsaraDB RDS console.
@@ -294,7 +345,7 @@ This topic describes how to create an instance in the ApsaraDB RDS console. An A
 
 4. Click **Submit**.
 
-### View basic information of an
+### 6.2 View basic information of an instance
 
 **instance**
 
@@ -303,7 +354,7 @@ This topic describes how to view the details of an ApsaraDB RDS instance, such a
 2. Use one of the following methods to go to the **Basic Information** page of an instance:
 On the **Instances** page, click the ID of an instance to go to the **Basic Information** page. On the **Instances** page, click **Manage** in the **Actions** column corresponding to an instance to go to the **Basic Information** page.
 
-### Restart an instance
+### 6.3 Restart an instance
 
 This topic describes how to manually restart an ApsaraDB RDS instance. This applies if the number of connections exceeds the specified threshold or if an instance has performance issues. The instance is in the **Running** state.
 1. Log on to the ApsaraDB RDS console.
@@ -312,7 +363,7 @@ This topic describes how to manually restart an ApsaraDB RDS instance. This appl
 When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 4. In the Restart Instance message, click **Confirm**.
 
-### Change the specifications of
+### 6.4 Change the specifications of an instance
 
 **an instance**
 
@@ -324,7 +375,7 @@ This topic describes how to change specifications such as the instance type and 
 5. On the **Change Specifications** page, specify **Instance Type** and **Storage Capacity**.
 6. After you configure the preceding parameters, click **Submit**.
 
-### Set a maintenance window
+### 6.5 Set a maintenance window
 
 This topic describes how to set the maintenance window of an ApsaraDB RDS for SQL Server instance. The backend system performs maintenance on the ApsaraDB RDS instance during the maintenance window. This ensures the stability of the ApsaraDB RDS instance. The default maintenance window is from 02:00 (UTC+8) to 06:00 (UTC+8). We recommend that you set the maintenance window to off-peak hours of your business to avoid impacts on your business.
 
@@ -339,7 +390,7 @@ An instance enters the **Maintaining Instance** state before the maintenance win
 5. Select a maintenance window and click **Save**.
 The maintenance window is displayed in UTC+8.
 
-### Configure primary/secondary
+### 6.6 Configure primary/secondary switchover
 
 **switchover**
 
@@ -363,7 +414,7 @@ You may encounter a network interruption during a switchover. Make sure that you
 
 After the switchover is complete, the original primary instance becomes the secondary instance for the next primary/secondary switchover.
 
-### Release an instance
+### 6.7 Release an instance
 
 This topic describes how to manually release an instance.
 
@@ -374,9 +425,9 @@ Only instances in the running state can be manually released. After an instance 
 2. Find the instance that you want to release and choose **More > Release Instance**.
 3. In the **Release Instance** message, click **Confirm**.
 
-### Read-only instances
+### 6.8 Read-only instances
 
-#### Overview of read-only ApsaraDB RDS
+#### 6.8.1 Overview of read-only ApsaraDB RDS for SQL Server instances
 
 **for SQL Server instances**
 
@@ -398,7 +449,7 @@ You can create up to seven read-only instances. You cannot configure backup poli
 
 Can I manage the accounts created on the primary instance from its read-only instances? No, although accounts created on the primary instance are replicated to its read-only instances, you cannot manage the accounts on the read-only instances. The accounts have only read permissions on the read-only instances.
 
-#### Create a read-only ApsaraDB RDS for
+#### 6.8.2 Create a read-only ApsaraDB RDS for SQL Server instance
 
 **SQL Server instance**
 
@@ -433,7 +484,7 @@ You can create read-only instances for the primary ApsaraDB RDS instance. Howeve
 |   | VPC | Select a VPC if the network type is set to VPC. |
 |   | vSwitch | Select a vSwitch if the network type is set to VPC. |
 
-#### View details of read-only instances
+#### 6.8.3 View details of read-only instances
 
 This topic describes how to view details of read-only instances. You can go to the Basic Information page of a read-only instance from the Instances page or the read-only instance list of the primary instance. Read-only instances are managed in the same way as primary instances. The read-only instance management page shows the management operations that can be performed.
 
@@ -455,9 +506,9 @@ Figure 1. View a read-only instance
 displayed.
 5. Click the ID of the read-only instance to go to the read-only instance management page.
 
-## Accounts
+## 7 Accounts
 
-### Create an account
+### 7.1 Create an account
 
 This topic describes how to create an account on an ApsaraDB RDS for SQL Server instance. The instance is in the **Running** state.
 1. Log on to the ApsaraDB RDS console.
@@ -480,7 +531,7 @@ This topic describes how to create an account on an ApsaraDB RDS for SQL Server 
 
 7. Click **Create**.
 
-### Reset the password
+### 7.2 Reset the password
 
 You can use the ApsaraDB RDS console to reset the password of your database account. The instance is in the **Running** state.
 1. Log on to the ApsaraDB RDS console.
@@ -490,9 +541,9 @@ You can use the ApsaraDB RDS console to reset the password of your database acco
 5. In the dialog box that appears, enter and confirm the new password, and then click **OK**.
 The password must meet the following requirements: The password is 8 to 32 characters in length. The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 
-## Databases
+## 8 Databases
 
-### Create a database
+### 8.1 Create a database
 
 This topic describes how to create a database on an ApsaraDB RDS for SQL Server instance.
 
@@ -500,7 +551,7 @@ This topic describes how to create a database on an ApsaraDB RDS for SQL Server 
 
 Instance: a virtualized database server on which you can create and manage more than one database. Database: a set of data that is stored in an organized manner and can be shared by a number of users. A database provides the minimal redundancy and is independent of applications. In simple words, a database is a data warehouse that is used to store data. Character set: a collection of letters, special characters, and encoding rules that are used in a database. An ApsaraDB RDS for SQL Server instance is created. For more information, see Create an instance. For more information, see Create a database.
 
-### Delete a database
+### 8.2 Delete a database
 
 This topic describes how to delete a database from an ApsaraDB RDS for SQL Server instance. You can delete a database by using the ApsaraDB RDS console or an SQL statement.
 
@@ -550,7 +601,7 @@ EXEC sp_rds_drop_database 'database name'
 
 8. Click **execute**.
 
-### Change the character set
+### 8.3 Change the character set collation and the time zone of system databases
 
 **collation and the time zone of**
 
@@ -636,7 +687,7 @@ them, and click **OK**.
 | W. Central Africa Standard Time | (UTC+01:00) | West Central Africa |
 | W. Europe Standard Time | (UTC+01:00) | Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna |
 
-### Replicate databases between
+### 8.4 Replicate databases between ApsaraDB RDS instances
 
 **ApsaraDB RDS instances**
 
@@ -661,9 +712,9 @@ parameters described in the following table.
 
 5. Click **OK**.
 
-## Database connection
+## 9 Database connection
 
-### Change a vSwitch
+### 9.1 Change a vSwitch
 
 This topic describes how to change a vSwitch for an ApsaraDB RDS instance that is deployed in a VPC. The instance is deployed in a VPC.
 1. Log on to the ApsaraDB RDS console.
@@ -674,7 +725,7 @@ This topic describes how to change a vSwitch for an ApsaraDB RDS instance that i
 6. In the message that appears, click **Switch**.
 You may encounter a network interruption of about 30 seconds during the change process. Make sure that your application is configured to automatically reconnect to the instance. We recommend that you clear the cache immediately after the instance is switched to a new VPC and vSwitch. Otherwise, data can only be read but cannot be written.
 
-### Change the endpoint and port
+### 9.2 Change the endpoint and port number of an instance
 
 **number of an instance**
 
@@ -696,7 +747,7 @@ numbers.
 5. In the dialog box that appears, set Connection Type, Endpoint, and Port, and then click **OK**.
 The prefix of an endpoint must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be a value within the range of 1000 to 5999.
 
-### Apply for or release a public
+### 9.3 Apply for or release a public endpoint
 
 **endpoint**
 
@@ -722,7 +773,7 @@ If you have not applied for a public endpoint, click **Apply for Public Endpoint
 
 Q: Can I change the endpoints and port numbers of my RDS instance? A: No, you cannot change the endpoints of your RDS instance. You can change the prefixes of the endpoints. You can also change the port numbers of your instance. For more information, see Change the endpoint and port number of an instance. Q: Can I configure the endpoints of my RDS instances to static IP addresses? A: No, you cannot configure the endpoints of your RDS instance to static IP addresses. Both primary/secondary switchovers and specification changes may cause changes to the IP addresses. Therefore, we recommend that you connect to your instance by using an endpoint. This allows you to minimize the impact on your workloads and eliminates the need to modify the configuration data on your application.
 
-### Connect to an instance
+### 9.4 Connect to an instance
 
 This topic describes how to use Data Management (DMS) to connect to an ApsaraDB RDS instance. A database is created. For more information, see Create a database. A database account is created. For more information, see Create an account.
 1. Log on to the ApsaraDB RDS console.
@@ -735,9 +786,9 @@ If you want the browser to remember the password, select **Remember**
 **password** and click **Login**.
 If you cannot connect to the instance, check the IP address whitelist settings. For more information, see Configure an IP address whitelist for an ApsaraDB RDS instance.
 
-## Monitoring and alerting
+## 10 Monitoring and alerting
 
-### View resource and engine
+### 10.1 View resource and engine monitoring data
 
 **monitoring data**
 
@@ -772,9 +823,9 @@ following table describes the metrics.
 |   | Deadlock Frequency | The number of deadlocks on the instance per second. |
 |   | Lock Wait Frequency | The number of lock waits on the instance per second. |
 
-## Data security
+## 11 Data security
 
-### Configure an IP address
+### 11.1 Configure an IP address whitelist for an ApsaraDB RDS instance
 
 **whitelist for an ApsaraDB RDS**
 
@@ -793,7 +844,7 @@ If you want to connect an ECS instance to an ApsaraDB RDS instance by using an i
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. Limits for IP address whitelists: You must separate multiple IP addresses with commas (,). A maximum of 1,000 different IP addresses can be added. Supported formats are `0.0.0.0/0` , IP addresses such as `10.23.12.24` , or CIDR blocks such as `10.23.12.24/24` . `/24` indicates the length of the IP address prefix in the CIDR block. An IP address prefix can contain 1 to 32 bits. If an IP address whitelist is empty or contains only `0.0.0.0/0` , all IP addresses can access the ApsaraDB RDS instance. This may cause security risks to the instance. Proceed with caution. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all the Elastic Compute Service (ECS) instances that are created within your Apsara Stack tenant account appear. Then, you can select the IP addresses and add them to an IP address whitelist.
 
-### Configure SSL encryption
+### 11.2 Configure SSL encryption
 
 This topic describes how to enhance endpoint security. You can enable Secure Sockets Layer (SSL) encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required application services. SSL is used at the transport layer to encrypt network connections and enhance the security and integrity of communication data. However, SSL increases the response time.
 
@@ -856,9 +907,9 @@ caution. After you perform the **Update Validity period** operation, you must do
 6. Click **Update Validity**.
 7. In the message that appears, click **OK**.
 
-## Service availability
+## 12 Service availability
 
-### Switch workloads between
+### 12.1 Switch workloads between primary and secondary ApsaraDB RDS instances
 
 **primary and secondary ApsaraDB**
 
@@ -890,11 +941,11 @@ within the maintenance window. For more information about how to set the mainten
 
 Q: Can I connect to secondary instances? No, you cannot access secondary instances. You can access only the primary instance of your database system. Secondary instances serve only as a standby. estoration
 
-## Database backup and
+## 13 Database backup and restoration
 
 **restoration**
 
-### Configure an automatic
+### 13.1 Configure an automatic backup policy
 
 **backup policy**
 
@@ -916,7 +967,7 @@ Automatic backup supports full physical backups. ApsaraDB RDS automatically back
 
 8. Click **OK**.
 
-### Manually back up an instance
+### 13.2 Manually back up an instance
 
 This topic describes how to manually back up an ApsaraDB RDS instance. estoration
 1. Log on to the ApsaraDB RDS console.
@@ -937,7 +988,7 @@ full backup.
 After the backup is complete, you can view the backup task on the **Data Backup** tab of the
 **Backup and Restoration** page.
 
-### Shrink transaction logs
+### 13.3 Shrink transaction logs
 
 ApsaraDB RDS for SQL Server allows you to shrink transaction logs to reduce the log file size. The instance is in the **Running** state.
 1. Log on to the ApsaraDB RDS console.
@@ -947,7 +998,7 @@ ApsaraDB RDS for SQL Server allows you to shrink transaction logs to reduce the 
 5. In the upper-right corner of the page, click **Shrink Transaction Log**. In the message that
 appears, click **OK**. The shrinkage takes about 20 minutes to complete. ApsaraDB RDS for SQL Server shrinks transaction logs during each backup. to ApsaraDB RDS for SQL Server
 
-## Migrate full backup data
+## 14 Migrate full backup data to ApsaraDB RDS for SQL Server
 
 **to ApsaraDB RDS for SQL**
 

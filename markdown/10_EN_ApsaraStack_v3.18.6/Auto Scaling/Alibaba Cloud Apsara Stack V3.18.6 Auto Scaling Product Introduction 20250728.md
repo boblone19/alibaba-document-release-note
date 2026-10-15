@@ -2,18 +2,26 @@
 title: "Auto Scaling Product Introduction 20250728"
 product_version: "V3.18.6"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Product Introduction 20250728.pdf"
+source_pdf: "690c342ff37cb86c_Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Product Introduction 20250728.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%20ESS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Auto%20Scaling%20Product%20Introduction%2020250728.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Auto Scaling Product Introduction 20250728
 
-## Auto Scaling
+## Table of Contents
+
+- 1 Auto Scaling
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 Auto Scaling
 
 Auto Scaling is a service that automatically adjusts computing capacity (the number of ECS instances) as needed and policies. You can configure scaling policies to automatically increase the number of instances to ensure sufficient computing capacity when business demands grow, and automatically reduce the number of instances to save costs when business demands decrease. Auto Scaling is a free service that offers advantages such as automation, cost reduction, high availability (HA), flexible intelligence, and log recording. Auto Scaling helps you automatically adjust the number of instances and is suitable for applications with fluctuating business volumes along with applications with stable business volumes.
 
-### Product details
+### 1.1 Product details
 
 Auto Scaling is a management service that dynamically adjusts the number of computing resources (ECS) based on your actual business load. Auto Scaling automatically increases the number of ECS instances to ensure sufficient computing capacity when business demands grow, and automatically decreases the number of ECS instances to reduce costs when business demands decline. The core concepts of Auto Scaling are as follows:
 
@@ -41,7 +49,7 @@ and off-peak hours, you can create scheduled tasks to manage your business loads
 **Event-triggered task**: If your business loads do not have specific patterns or are
 unpredictable, scheduled tasks may not meet your business needs. Auto Scaling supports event-triggered tasks that dynamically scale resources based on specified monitoring metrics, providing more flexible ways to trigger scaling rules. During peak hours, Auto Scaling executes event-triggered tasks to add instances to scaling groups to alleviate business pressure. During off-peak hours, Auto Scaling executes event-triggered tasks to release instances from scaling groups to reduce production costs.
 
-### Benefits
+### 1.2 Benefits
 
 Compared with manually managing ECS instances, Auto Scaling effectively reduces infrastructure and operations and maintenance costs. Auto Scaling provides the following benefits: automation, cost-effectiveness, high availability, intelligence, and easy audit.
 
@@ -65,7 +73,7 @@ Auto Scaling supports various scaling modes, such as fixed-number mode, health m
 
 Auto Scaling logs the details of each scaling activity that is triggered. This facilitates troubleshooting. Auto Scaling also integrates with CloudMonitor. You can use CloudMonitor to monitor instances in scaling groups. You do not need to repeatedly check the status of multiple ECS instances. This helps you quickly understand the overall capacity of your business.
 
-### Scenarios
+### 1.3 Scenarios
 
 Auto Scaling is suitable for a wide range of applications, whether they have constantly fluctuating or stable workloads.
 
@@ -80,6 +88,8 @@ A government service system needs to handle high access pressure from 9:00 AM to
 To address these predictable and regular business fluctuations, you can use **scheduled**
 **scaling policies**. By configuring **scheduled tasks** in the scaling group, you can
 automatically increase the number of ECS instances at 9:00 AM every day to ensure system performance, and automatically reduce the number of ECS instances at 5:00 PM. This effectively reduces resource costs while meeting business requirements.
+
+**Business scenarios with sudden peaks**
 
 **Scenario example**
 
@@ -98,22 +108,22 @@ the preset threshold, the number of ECS instances automatically increases to ens
 
 An internal management system for government services needs to operate 24/7, with access volume remaining relatively stable throughout the time period, without obvious peak or valley periods. If the existing computing resources suddenly fail, manual intervention may not repair the fault in time.
 
-| Feature |  | Description |
-|---|---|---|
-| Scaling policies | Scheduled scaling | A scheduled task is a predefined action that automatically triggers a scaling rule at a specified time. It enables cost-efficient, automated scaling of computing resources to meet your business needs. You can configure a scheduled task to run repeatedly within a defined time window, increasing adaptability and ensuring it aligns with your business requirements. If multiple scheduled tasks must be completed within one minute, Auto Scaling will prioritize and execute the latest one. |
-|  | Dynamic scaling | If your workloads are unpredictable or prone to sudden surges, you can configure an event-triggered task in Auto Scaling to dynamically adjust resources. You must define a CloudMonitor metric that will be tracked in real time. Upon detecting the alert, Auto Scaling automatically executes the associated scaling rule, adding or removing instances in your scaling group to match demand. |
-|  | Manual scaling | You can manually run a scaling rule to add or remove instances anytime. |
-|  | Suspending scaling operations | Auto Scaling supports suspending ongoing scaling operations. |
-|  | Scaling based on ECS metrics | Auto Scaling supports scaling operations based on Elastic Compute Service (ECS) metrics. |
-|  | Scaling based on non-ECS metrics | Auto Scaling supports scaling operations based on non-ECS metrics. |
-| DDH cluster scaling |  | Auto Scaling supports scaling of dedicated hosts. |
-| Max. number of instances |  | The highest number of ECS instances allowed in a scaling group. Configure this based on your business needs to manage costs effectively. Value range: 0 to 1000. |
-
 **Solution**
 
 Using the **elastic self-healing** mechanism of the scaling group, the system regularly checks the running status of ECS instances. If abnormalities occur, it creates new instances to replace the abnormal ones in a timely manner, ensuring business stability.
 
-### Features
+### 1.4 Features
+
+| Feature |   | Description |
+|---|---|---|
+| Scaling policies | Scheduled scaling | A scheduled task is a predefined action that automatically triggers a scaling rule at a specified time. It enables cost-efficient, automated scaling of computing resources to meet your business needs. You can configure a scheduled task to run repeatedly within a defined time window, increasing adaptability and ensuring it aligns with your business requirements. If multiple scheduled tasks must be completed within one minute, Auto Scaling will prioritize and execute the latest one. |
+|   | Dynamic scaling | If your workloads are unpredictable or prone to sudden surges, you can configure an event-triggered task in Auto Scaling to dynamically adjust resources. You must define a CloudMonitor metric that will be tracked in real time. Upon detecting the alert, Auto Scaling automatically executes the associated scaling rule, adding or removing instances in your scaling group to match demand. |
+|   | Manual scaling | You can manually run a scaling rule to add or remove instances anytime. |
+|   | Suspending scaling operations | Auto Scaling supports suspending ongoing scaling operations. |
+|   | Scaling based on ECS metrics | Auto Scaling supports scaling operations based on Elastic Compute Service (ECS) metrics. |
+|   | Scaling based on non-ECS metrics | Auto Scaling supports scaling operations based on non-ECS metrics. |
+| DDH cluster scaling |   | Auto Scaling supports scaling of dedicated hosts. |
+| Max. number of instances |   | The highest number of ECS instances allowed in a scaling group. Configure this based on your business needs to manage costs effectively. Value range: 0 to 1000. |
 
 | Min. number of instances | The smallest number of ECS instances allowed in a scaling group. Configure this based on your business needs to maintain normal operations. Value range: 0 to 1000. |
 |---|---|

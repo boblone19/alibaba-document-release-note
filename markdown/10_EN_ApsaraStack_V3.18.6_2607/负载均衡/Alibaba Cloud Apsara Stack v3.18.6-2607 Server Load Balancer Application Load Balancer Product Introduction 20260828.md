@@ -3,14 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer Product Introduction 20260828.pdf"
+source_pdf: "94b05615be0caae1_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer Product Intro"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20Application%20Load%20Balancer%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer Product Introduction 20260828
 
-## Product details
+## Table of Contents
+
+- 1 Product details
+- 2 Product value
+- 3 Scenarios
+- 4 Features
+
+## 1 Product details
 
 **Overview**
 
@@ -28,7 +35,7 @@ Application Load Balancer (ALB) is a load balancing service from Alibaba Cloud t
 |---|---|
 | Certificate management | Manage server certificates and CA certificates: Server certificate: Proves the identity of the server. A browser uses the server certificate to check whether the certificate sent by the server is issued by a trusted authority. CA certificate: The server uses a CA certificate to authenticate the signature of a client certificate. If the authentication fails, the connection is rejected. |
 
-## Product value
+## 2 Product value
 
 Application Load Balancer (ALB) provides powerful processing capabilities and advanced routing features for application-layer protocols such as HTTP, HTTPS, and QUIC. This topic describes the benefits of ALB.
 
@@ -44,7 +51,7 @@ ALB supports the HTTP, HTTPS, and QUIC protocols. For online applications such a
 
 ALB can identify specific service traffic based on conditions such as the path, HTTP header, query string, HTTP request method, cookie, and source IP address, and then forward the traffic to different backend servers. ALB also supports advanced operations such as redirection, rewrites, and custom HTTPS headers.
 
-## Scenarios
+## 3 Scenarios
 
 Application Load Balancer (ALB) provides powerful application-layer processing and advanced routing features. It focuses on the HTTP, HTTPS, and QUIC application-layer protocols. Common scenarios for ALB include the following:
 **High elasticity at the application layer**: ALB operates at the application layer and
@@ -54,7 +61,7 @@ process traffic at a massive scale. For mobile Internet applications, such as Ap
 **Advanced content-based routing**: ALB can detect specific service traffic based on
 conditions such as the path, HTTP header, query string, HTTP request method, cookie, and source IP address. ALB then forwards the traffic to different backend servers. ALB also supports advanced operations such as redirection, rewrites, and custom HTTPS headers.
 
-## Features
+## 4 Features
 
 This topic describes the features of Application Load Balancer (ALB).
 

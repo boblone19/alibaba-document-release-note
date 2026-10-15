@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Product Introducti
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Product Introduction 20260828.pdf"
+source_pdf: "250e9284f8216ac2_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Product Introduction 20260828
 
-## Transit router
+## Table of Contents
+
+- 1 Transit router
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 Transit router
 
 TransitRouter (TR) is an enterprise-grade networking solution that enables you to quickly build high-speed, high-quality, and stable connections between virtual private clouds (VPCs) in the same region, along with between multiple VPCs and data centers.
 
-### Product details
+### 1.1 Product details
 
 Transit Router (TR) supports establishing private network communication channels between virtual private clouds (VPCs) in the same region and between VPCs and data centers. TR also provides rich network interconnection and routing management capabilities, such as forwarding association, route learning, custom route tables, and routing policies. These capabilities allow enterprises to customize network connectivity and help them build flexible, reliable, and large-scale enterprise interconnection networks.
 
@@ -54,7 +62,7 @@ Transit Router supports multicast traffic forwarding by default. After VPC insta
 
 VBRs can connect data centers to Alibaba Cloud through Express Connect circuits. After a VBR instance is connected to a transit router instance, you can use the health check feature to detect the connectivity of the Express Connect circuit.
 
-### Benefits
+### 1.2 Benefits
 
 Transit routers are easy to configure and quickly establish secure, flexible, high-speed, highquality, and stable communication channels between VPCs in the same region and between multiple VPCs and on-premises data centers. This helps enterprises build large-scale enterprise-class interconnection networks.
 
@@ -70,7 +78,7 @@ Transit routers provide low-latency and high-speed network transmission capabili
 
 Transit routers provide primary and secondary nodes that automatically switch between each other to ensure uninterrupted service. Multiple sets of high-quality transmission links exist between any two nodes in the network. When underlying links are interrupted, the network automatically converges without affecting your services.
 
-### Scenarios
+### 1.3 Scenarios
 
 Transit Router is used for scenarios such as connecting VPCs in the same region, connecting on-premises and cloud networks in the same region, and enabling multicast network communication.
 
@@ -90,7 +98,7 @@ After VPC-connected instances in the same region are connected to a transit rout
 
 On-premises data centers can connect directly to a transit router through Connect connections, enabling multicast network communication with VPC instances under the transit router through these Connect connections.
 
-### Functions and features
+### 1.4 Functions and features
 
 | Operation |   | Description |
 |---|---|---|

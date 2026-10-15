@@ -3,20 +3,30 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Operatio
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Operations and Maintenance Guide 20260827.pdf"
+source_pdf: "b50c919a16a1c423_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Operations and Maintenance Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20Operations%20and%20Maintenance%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Operations and Maintenance Guide 20260827
 
-## Service architecture
+## Table of Contents
+
+- 1 Service architecture
+- 2 Routine maintenance
+  - 2.1 View the status of a KV service
+  - 2.2 Query the information about file systems and users
+  - 2.3 Query the information about a cluster recycle job
+  - 2.4 View the module service logs of a NAS cluster
+  - 2.5 Set the disk usage limit
+
+## 1 Service architecture
 
 File Storage NAS (NAS) is a cloud service that provides file storage for compute nodes such as Elastic Compute Service (ECS) instances and Container Service for Kubernetes (ACK) clusters. NAS supports standard file access protocols. NAS file systems are based on Apsara Distributed File System. NAS maintains three copies for each data file across multiple storage nodes. Frontend nodes receive and cache connection requests from Network File System (NFS) clients. Frontend nodes are highly available because they are stateless and distributed. In a cluster of six nodes, less than 30 minutes is required to restore one TB of data. The larger the cluster size, the faster the restoration speed. For more information, see **NAS Technical Whitepaper**.
 
-## Routine maintenance
+## 2 Routine maintenance
 
-### View the status of a KV
+### 2.1 View the status of a KV service
 
 **service**
 
@@ -50,7 +60,7 @@ ii. Query kvmaster config.
 /apsara/deploy/mcu gac
 ```
 
-### Query the information about
+### 2.2 Query the information about file systems and users
 
 **file systems and users**
 
@@ -158,7 +168,7 @@ ii. Record the ocm_host, access_id, and access_key information and use the ocm t
 /apsara/deploy/ocm_tool lli --ocm_host=<ocm_host> --access_id=<access_id> --acces s_key=<access_key>
 ```
 
-### Query the information about a
+### 2.3 Query the information about a cluster recycle job
 
 **cluster recycle job**
 
@@ -181,7 +191,7 @@ Example
 /apsara/deploy/nas_ju info volume_recycle_20171024105007
 ```
 
-### View the module service logs
+### 2.4 View the module service logs of a NAS cluster
 
 **of a NAS cluster**
 
@@ -211,7 +221,7 @@ The tengine_starter.log file stores the startup logs. The latest access_log file
 vim /cloud/log/nas-kvengine/KVServer#/kv_server/ganesha.LOG
 ```
 
-### Set the disk usage limit
+### 2.5 Set the disk usage limit
 
 By setting the disk usage limit, you can control the total amount of data written to disks. When the data write volume reaches the limit, the system denies data writing. When the data write volume drops below the limit, the system resumes data writing. To set the disk usage limit, perform the following steps:
 1. Log in to the Apsara Uni-manager Operations Console

@@ -2,21 +2,25 @@
 title: "API Gateway Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 API Gateway Product Introduction 20260629.pdf"
+source_pdf: "553f32a79d639845_Alibaba Cloud Apsara Stack V3.18.6 API Gateway Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20API%20Gateway%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # API Gateway Product Introduction 20260629
 
-| Feature module | Description | Related documents |
-|---|---|---|
-| Instance management | Lets you manage the instance lifecycle, configure engine parameters, and enable auto scaling for instances based on workload. | API Gateway User Guide > Instance management |
-| Service exposure | Supports route grouping, route management, plugin management, and signature management. | API Gateway User Guide > Service exposure |
+## Table of Contents
 
-y
+- 1 API Gateway
+  - 1.1 Product details
+  - 1.2 Product value
+  - 1.3 Features
+  - 1.4 Scenarios
+  - 1.5 Instance specifications
+  - 1.6 Usage limits
+  - 1.7 Key concepts
 
-## API Gateway
+## 1 API Gateway
 
 API Gateway is a core component of modern application architectures. It unifies the management of API and AI requests and coordinates interactions between systems. It builds a stable, highly extensible, enterprise-grade service platform by hosting standardized interfaces, integrating services, and exposing capabilities.
 
@@ -38,9 +42,16 @@ It connects to service registries, such as Nacos, Eureka, and K8s, in a microser
 
 It provides an Open Platform that uses unified management and authorization to expose its capabilities to external partners. This helps you build ecosystems with your partners.
 
-### Product details
+### 1.1 Product details
 
 This topic describes the key features of API Gateway.
+
+**Features**
+
+| Feature module | Description | Related documents |
+|---|---|---|
+| Instance management | Lets you manage the instance lifecycle, configure engine parameters, and enable auto scaling for instances based on workload. | API Gateway User Guide > Instance management |
+| Service exposure | Supports route grouping, route management, plugin management, and signature management. | API Gateway User Guide > Service exposure |
 
 | Service invocation | Authentication and authorization: Provides client authentication and API authorization. Client authentication supports Basic, JSON Web Token (JWT), and other methods. API debugging: Supports online API testing. | API Gateway User Guide > Service invocation |
 |---|---|---|
@@ -49,9 +60,7 @@ This topic describes the key features of API Gateway.
 | Gateway cascading | Enables multiple gateways to work together. It connects routes and services across gateways, allowing users of one gateway to invoke services managed by another. | API Gateway User Guide > Gateway cascading |
 | Observability and analysis | Supports gateway instance monitoring, log search, log delivery, distributed tracing, and API monitoring. | API Gateway User Guide > Gateway Logs |
 
-y
-
-### Product value
+### 1.2 Product value
 
 API Gateway is a lightweight and easy-to-use service that delivers high performance, stability, and reliability. It provides open, cross-protocol interconnection and one-stop service management.
 
@@ -67,37 +76,41 @@ API Gateway enables the efficient digital delivery of business capabilities and 
 
 API Gateway enables interoperability by simplifying application calls, connecting new and legacy systems, and facilitating communication between enterprise organizations. It securely interconnects services across different systems and protocols and integrates with existing enterprise systems and account systems. It transforms complex parameter structures and supports publishing and consuming service APIs for various common protocols.
 
-| Feature | Description |
-|---|---|
-| Instance lifecycle management | Manages the full lifecycle of gateway instances, including creation, startup, shutdown, deletion, upgrades, and scaling. |
-| Auto scaling | Automatically adjusts the number of gateway instances based on business workload to handle traffic fluctuations. |
-
-| Feature | Description |
-|---|---|
-| Nacos | Lets you discover and import backend services from Nacos. |
-
-y
-
 **Microservice integration**
 
 API Gateway integrates with various microservice backend applications, such as Spring Cloud, Dubbo, and HSF.
 
 **One-stop service management**
 
-API Gateway provides centralized control for exposing capabilities across platforms, systems, and organizations, which enables unified management, organization, and interaction. It provides complete API lifecycle management, a Service Catalog, service authorization, and user management. It supports role-based service publishers, consumers, and administrators, and provides flexible permission management. AI Gateway features a high-concurrency architecture, millisecond-level zero-downtime configuration updates, WebAssembly (WASM) hot plugins, and a comprehensive plugin ecosystem. It supports the Server-Sent Events (SSE) streaming protocol and includes resource optimization features to ensure the stability, extensibility, and ease of use of AI services. Enterprise-grade reliability: Built on a solid foundation for high-concurrency scenarios, it enables zero-downtime intelligent configuration updates. Flexible extensibility: It offers a comprehensive plugin ecosystem with an innovative hot plugin architecture that uses a WASM sandbox. Out-of-the-box security and usability: A standardized console and GUI-based configuration provide a high degree of automation for simplified deployments. Efficient stream processing engine: It supports end-to-end streaming protocols to improve resource utilization, reduce infrastructure costs, and achieve performance breakthroughs. For more information, see **AI Gateway Product Introduction > Product Value**.
+API Gateway provides centralized control for exposing capabilities across platforms, systems, and organizations, which enables unified management, organization, and interaction. It provides complete API lifecycle management, a Service Catalog, service authorization, and user management. It supports role-based service publishers, consumers, and administrators, and provides flexible permission management.
 
-### Features
+**Highly adapted for AI scenarios**
+
+AI Gateway features a high-concurrency architecture, millisecond-level zero-downtime configuration updates, WebAssembly (WASM) hot plugins, and a comprehensive plugin ecosystem. It supports the Server-Sent Events (SSE) streaming protocol and includes resource optimization features to ensure the stability, extensibility, and ease of use of AI services. Enterprise-grade reliability: Built on a solid foundation for high-concurrency scenarios, it enables zero-downtime intelligent configuration updates. Flexible extensibility: It offers a comprehensive plugin ecosystem with an innovative hot plugin architecture that uses a WASM sandbox. Out-of-the-box security and usability: A standardized console and GUI-based configuration provide a high degree of automation for simplified deployments. Efficient stream processing engine: It supports end-to-end streaming protocols to improve resource utilization, reduce infrastructure costs, and achieve performance breakthroughs. For more information, see **AI Gateway Product Introduction > Product Value**.
+
+### 1.3 Features
 
 This topic describes the features of API Gateway.
 
 **Instance management**
 
+| Feature | Description |
+|---|---|
+| Instance lifecycle management | Manages the full lifecycle of gateway instances, including creation, startup, shutdown, deletion, upgrades, and scaling. |
+| Auto scaling | Automatically adjusts the number of gateway instances based on business workload to handle traffic fluctuations. |
+
 **Source management**
+
+| Feature | Description |
+|---|---|
+| Nacos | Lets you discover and import backend services from Nacos. |
 
 | EDAS microservice namespace | Lets you discover and import backend services from an EDAS microservice namespace. |
 |---|---|
 | Eureka | Lets you discover and import backend services from Eureka. |
 | Database | Lets you discover and import backend services from a database. |
+
+**Service publishing**
 
 | Feature | Description |
 |---|---|
@@ -106,22 +119,18 @@ This topic describes the features of API Gateway.
 | Plugin management | Supports a plugin marketplace and global plugins. |
 | Signature management | Supports signature authentication using Hash-based Message Authentication Code (HMAC) algorithms, including SHA-1, SHA-256, and SM3. |
 
+**Consumer management**
+
 | Feature | Description |
 |---|---|
 | Consumer lifecycle | Lets you register, deactivate, and delete API consumers, and assign them access permissions. |
 | Consumer authorization | Lets you assign API access permissions to consumers and control which APIs they can call. |
 
+**API debugging**
+
 | Feature | Description |
 |---|---|
 | API debugging | Provides an online testing tool to verify API availability and correctness, simplifying development and debugging. |
-
-y
-
-**Service publishing**
-
-**Consumer management**
-
-**API debugging**
 
 **Policy management**
 
@@ -139,21 +148,23 @@ y
 | Request tracing policy | Adds a request tracing header to requests passing through the gateway to enable end-to-end request tracing. |
 | ACL policy | Controls which authorized consumers can access a service. |
 
+**Cascading management**
+
 | Feature | Description |
 |---|---|
 | Cascading gateway | In complex, multi-environment scenarios, this feature automatically syncs services from a source gateway to a cascaded gateway. This makes the services accessible to consumers in other environments and automates cross-environment publishing. |
 
-y
-
-**Cascading management**
-
 | Cascading link | In a cascading setup, you define the relationships between gateway instances and ensure network reachability. The platform then automatically synchronizes route information, credentials, signatures, and some governance policies. This allows consumers in other environments to call the services under a unified governance strategy. |
 |---|---|
+
+**Domain name management**
 
 | Feature | Description |
 |---|---|
 | Domain operations | Lets you add or remove custom domain names for the API Gateway, enabling API access through these domains. |
 | Protocols and certificates | Lets you update Secure Sockets Layer (SSL)/Transport Layer Security (TLS) certificates or protocol configurations for a domain to ensure secure communication. You can configure encryption algorithms and cipher suites for HTTPS transport to optimize security. |
+
+**Observability and analysis**
 
 | Feature | Description |
 |---|---|
@@ -162,25 +173,27 @@ y
 | Distributed tracing | Lets you enable distributed tracing to analyze the entire flow of a request through your system. |
 | API-level monitoring | Lets you view performance metrics and access statistics for specific REST APIs and their operations. |
 
-y
-
-**Domain name management**
-
-**Observability and analysis**
-
-### Scenarios
+### 1.4 Scenarios
 
 This topic describes the core scenarios for API Gateway.
 
 **Exposing services and managing traffic**
 
 **Service exposure and traffic management:** The gateway is compatible with the K8s
-Ingress standard. It supports multiple backend services, such as microservices and functions. It also supports multiple service discovery methods, such as K8s and Nacos. The gateway provides high integration, ease of use, simple extensibility, and hot updates. y Traffic management for containers and microservices: The gateway acts as the access layer for container services. It is compatible with the K8s Ingress standard and provides finegrained routing and API management. It supports one-click import of K8s Services or Nacosregistered services. Requests connect directly to pod IPs. The gateway also supports core annotation extensions for Nginx Ingress and provides service administration capabilities, such as traffic throttling, prefetch, and grayscale releases. Multi-active disaster recovery: As a unified access layer for multiple clusters, the gateway enables features such as multi-active disaster recovery. It supports multiple service sources, such as ACK, MSE Nacos, FC, DNS domain names, and fixed IP addresses. The gateway enables precise routing based on ratios or request content and supports health checks and service fallback.
+Ingress standard. It supports multiple backend services, such as microservices and functions. It also supports multiple service discovery methods, such as K8s and Nacos. The gateway provides high integration, ease of use, simple extensibility, and hot updates. Traffic management for containers and microservices: The gateway acts as the access layer for container services. It is compatible with the K8s Ingress standard and provides finegrained routing and API management. It supports one-click import of K8s Services or Nacosregistered services. Requests connect directly to pod IPs. The gateway also supports core annotation extensions for Nginx Ingress and provides service administration capabilities, such as traffic throttling, prefetch, and grayscale releases. Multi-active disaster recovery: As a unified access layer for multiple clusters, the gateway enables features such as multi-active disaster recovery. It supports multiple service sources, such as ACK, MSE Nacos, FC, DNS domain names, and fixed IP addresses. The gateway enables precise routing based on ratios or request content and supports health checks and service fallback.
 
 **API full lifecycle management**
 
 **API full lifecycle management:** The gateway provides full lifecycle management for APIs,
 including design, development, publishing, and unpublishing. It also supports multienvironment management. This helps teams manage and publish APIs more efficiently and securely, which promotes rapid business iteration and innovation. Standardized development and improved efficiency: With API full lifecycle management, developers can use the API-first pattern for parallel development between the frontend and backend. This enables rapid system iteration. Fine-grained API management: Fine-grained API management prevents uncontrolled exposure in scenarios such as opening APIs to partners or integrating internal and external systems for collaboration. Multi-environment management: Multi-environment management keeps development, testing, pre-production, and production environments separate. This prevents development and testing activities from affecting the production environment. It also simplifies testing and validation at different stages.
+
+### 1.5 Instance specifications
+
+This topic describes the instance specifications that API Gateway supports to help you select the appropriate one for your business.
+
+**Specification types**
+
+The API Gateway instance specification types are as follows:
 
 | Specifications | Container CPU (cores) | Container memory (GB) | Container storage (GB) | TPS |
 |---|---|---|---|---|
@@ -189,17 +202,7 @@ including design, development, publishing, and unpublishing. It also supports mu
 | standard | 4 | 8 | 100 | 4000 |
 | large | 8 | 16 | 100 | 8000 |
 
-y
-
-### Instance specifications
-
-This topic describes the instance specifications that API Gateway supports to help you select the appropriate one for your business.
-
-**Specification types**
-
-The API Gateway instance specification types are as follows:
-
-### Usage limits
+### 1.6 Usage limits
 
 API Gateway enforces several usage limits to ensure stable operation. Exceeding these limits can cause system errors.
 
@@ -211,9 +214,7 @@ API Gateway enforces several usage limits to ensure stable operation. Exceeding 
 | File transfer | Not recommended | File transfers, like large request bodies, are a primary cause of gateway OOM errors. We recommend using a dedicated file service and passing only the file URL through the gateway. |
 | Timeout | 10 seconds | You can adjust the request timeout, but exceeding the default value increases the risk of gateway OOM errors. |
 
-y
-
-### Key concepts
+### 1.7 Key concepts
 
 This topic defines the key terms in API Gateway.
 
@@ -227,7 +228,7 @@ A route defines rules that map requests to services. Using request attributes su
 
 **Service**
 
-A service is a logical abstraction of a backend application. It represents a set of workloads that can process requests, such as a model-serving application, a REST API, or a database. y
+A service is a logical abstraction of a backend application. It represents a set of workloads that can process requests, such as a model-serving application, a REST API, or a database.
 
 **Domain name**
 

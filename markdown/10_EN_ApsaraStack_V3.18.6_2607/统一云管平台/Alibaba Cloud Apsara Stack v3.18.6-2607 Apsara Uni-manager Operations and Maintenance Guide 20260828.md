@@ -3,14 +3,64 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Operations an
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 74
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "557c1c2920316438_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Operations and Maintenance Guide 20260828"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Operations and Maintenance Guide 20260828
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 High-risk operations
+- 3 Architecture
+  - 3.1 System architecture
+  - 3.2 Deployment architecture
+  - 3.3 Architecture
+  - 3.4 Architecture difference
+    - 3.4.1 Deployment architecture
+    - 3.4.2 Technical architecture
+  - 3.5 Dependent base services
+  - 3.6 Server roles
+- 4 Routine maintenance
+  - 4.1 Monitoring metrics
+  - 4.2 Routine inspections
+- 5 Security maintenance
+- 6 Troubleshooting
+  - 6.1 Identify fault impact
+  - 6.2 Collect fault logs
+  - 6.3 Troubleshoot issues
+- 7 Alert handling
+  - 7.1 identity_service_request_error_alarm
+  - 7.2 one_router_business_error_alarm
+  - 7.3 one_console_slow_request_alarm
+  - 7.4 one_console_request_timeout_alarm
+- 8 Appendixes
+  - 8.1 Module logs
+  - 8.2 Common error codes
+  - 8.3 Common O&M commands
+  - 8.4 View logs
+  - 8.5 Common commands for Apsara Stack Agility PaaS
+  - 8.6 Commands of the Apsara Uni-manager Management Console
+  - 8.7 ASAPI domain names
+- 9 Troubleshooting
+  - 9.1 What do I do if an error occurs when I log on to the Apsara Uni-manager Management Console?
+  - 9.2 Configure a redirection page for a cloud service
+  - 9.3 What do I do if a timeout error occurs when I call the API operations of VPC, ECS, SLB, or ApsaraDB RDS in the Apsara Uni-manager Management Console?
+  - 9.4 What do I do if a timeout error occurs when I create an ACK cluster in the Apsara Uni-manager Management Console?
+  - 9.5 Timeout when obtaining ACK clusters in the Apsara Uni-manager Management Console
+  - 9.6 What do I do if an error is returned when I call the API operations of Blink in the Apsara Uni-manager Management Console?
+  - 9.7 What do I do if I do not have the required permissions when I perform operations in the Apsara Uni-manager Management Console?
+  - 9.8 An API operation called by using an SDK is not found
+  - 9.9 Inaccessible HTTPS domain name for ASAPI
+  - 9.10 What do I do if a cloud service API is unregistered?
+  - 9.11 What do I do if a timeout error occurs when ASAPI calls an API operation in the Apsara Uni-manager Management Console?
+  - 9.12 What do I do if an alert occurs when I log in to the Apsara Uni-manager Management Console by calling the login operation?
+  - 9.13 How do I turn off the switch that enforces attribution of interaction between instance resources?
+  - 9.14 Configure public internet exposure for the portal
+
+## 1 Overview
 
 This topic describes the purposes, requirements, precautions, and technical support for the Apsara Uni-manager Management Console.
 
@@ -34,7 +84,7 @@ To ensure a stable system and avoid unexpected events, the O&M personnel must co
 
 You can contact Alibaba Cloud technical support for help.
 
-## High-risk operations
+## 2 High-risk operations
 
 When you use the Apsara Uni-manager Management Console, high-risk operations may have significant impacts on business stability. Before you use the console, take note of the following high-risk operations and their impacts, and proceed with caution.
 
@@ -64,13 +114,13 @@ When you use the Apsara Uni-manager Management Console, high-risk operations may
 | MCM CLI | Use related commands to modify the Tair data. | The MCM does not operate properly, and a data error may occur. | Delete the cache or wait for the cache to expire. |
 |   | Use related commands to reset the user password. | The related user may fail to access the MCM. | Reset the user password. |
 
-## Architecture
+## 3 Architecture
 
-### System architecture
+### 3.1 System architecture
 
 This topic describes the major components of the Apsara Uni-manager Management Console and their features. The Apsara Uni-manager Management Console consists of four components: frontend (portal), resource hosting, ASAPI, and backend services. The following figure shows the architecture of the Apsara Uni-manager Operations Console. These modules provide the following features: AS-Console: hosts the in-house console page (such as the ECS console) of the Apsara Unimanager Management Console. Resource hosting: includes AS-Console and One-Console. They can host static files used at the frontend of different cloud products and provide unified API calling and configuration services for the frontend. ASAPI: acts as the unified gateway of the Apsara Uni-manager Management Console. It implements compatibility with SDKsfor Java, Python, or Node.js, and APIs, receives requests from the frontend and SDKs, and manages APIs in the cloud. This component provides the following features: Allows you to use SDKs to call APIs of cloud products. Provides account verification, automatic routing, throttling, and log auditing. Calls APIs of cloud products, modules of Apsara Uni-manager Management Console, and third-party integrated systems. Adopts the asynchronous and highly concurrent request solution to provide Jetty, NIO, and Servlet 3.0 non-blocking asynchronous requests, and features high concurrency and high throughput. Uses the thread pool isolation technology to boost request processing speed by dividing threads within ASAPI into business processing threads, routing threads, and result processing threads. Backend services: include modules of Apsara Uni-manager Management Console, general services of Apsara Infrastructure Management, and POP. They offer the following features: Apsara Uni-manager Management Console modules: implement resource management, authentication and authorization, metering and billing, and specifications management. General services of Apsara Infrastructure Management: include the data caching module, message center, task scheduling module, authentication module, high-availability components, and system logs. POP: acts as the unified gateway for cloud computing. After API requests are processed by ASAPI, they are forwarded to POP which then forwards them to cloud products for resource processing.
 
-### Deployment architecture
+### 3.2 Deployment architecture
 
 This topic describes how components are deployed in the Apsara Uni-manager Management Console.
 
@@ -87,7 +137,7 @@ This topic describes how components are deployed in the Apsara Uni-manager Manag
 | Billing | Cluster deployment. Billing is generally deployed in two-node mode. |
 | Cosmos | Cluster deployment. Cosmos is generally deployed in two-node mode. |
 
-### Architecture
+### 3.3 Architecture
 
 This topic describes the components in the Apsara Uni-manager Management Console.
 
@@ -108,9 +158,9 @@ This topic describes the components in the Apsara Uni-manager Management Console
 
 The following figure shows the key dependencies between components.
 
-### Architecture difference
+### 3.4 Architecture difference
 
-#### Deployment architecture
+#### 3.4.1 Deployment architecture
 
 This topic describes the differences between the old and new deployment architectures.
 
@@ -155,7 +205,7 @@ The following figure shows the deployment architecture of Enterprise Edition V3.
 |   |   |   | DbInit# |   |
 |   |   |   | ServiceTest# |   |
 
-#### Technical architecture
+#### 3.4.2 Technical architecture
 
 This topic describes the differences between the new and old technical architectures.
 
@@ -163,11 +213,11 @@ This topic describes the differences between the new and old technical architect
 
 The technical architecture of Enterprise Edition V3.15.0 and later resolves the issue of unauthorized access and improves security. It enhances account permission management, RAM authentication, and POP authentication in terms of security. Account security enhancement In Enterprise Edition V3.14.0 and earlier, you can use an Apsara Stack account to access cloud product APIs by exchanging the AccessKey pair for the Apsara Stack account corresponding to a Level-1 organization. In Enterprise Edition V3.15.0 and later, RAM users are granted STS tokens to access specific cloud resources. RAM authentication enhancement In Enterprise Edition V3.14.0 and earlier versions, you can access cloud services by changing your Apsara Stack account. If RAM authentication is in the pass state, no authentication is performed. In Enterprise Edition V3.15.0 and later, RAM users can access specific cloud resources with temporarily granted STS tokens. RAM proxies are added to obtain information about access permissions of organizations and resource sets from the Apsara Uni-manager Management Console for RAM authentication. POP-side authentication In Enterprise Edition V3.14.0 and earlier, cloud service APIs can be directly called through POP. No user authentication is implemented on the Apsara Uni-manager Management Console for access to organizations or resource sets. In Enterprise Edition V3.15.0 and later, POP proxies are added for POP-side authentication . When cloud service APIs are called, the POP proxy authenticates the cloud service on the Apsara Uni-manager Management Console. The call is made after the authentication succeeds. The following figure shows the technical architecture of Apsara Stack Enterprise Edition V3.14.0 and earlier. The following figure shows the technical architecture of Apsara Stack Enterprise Edition V3.15.0 and later.
 
-### Dependent base services
+### 3.5 Dependent base services
 
 This topic describes the base services that the Apsara Uni-manager Management Console depends on. Whether base services are normal is critical to the stability of the Apsara Uni-manager Management Console. The Apsara Uni-manager Management Console depends on the following base services: MiniRDS: used for business data persistency, such as storing organization and resource set data. Tair: caches frequently accessed data, such as the cloud resource list. UMM: used to obtain your AccessKey ID and AccessKey secret for authentication. POP: the access gateway of cloud products, used to call product API operations. RAM: implements user authorization and controls operation permissions on resources. AAS: used for account management. Tablestore: processes message data and time series data, such as message push and metering. Log Service: stores call logs, including backend service logs (such as access, call, and main) and API call audit logs.
 
-### Server roles
+### 3.6 Server roles
 
 This topic describes the server roles of the Apsara Uni-manager Management Console and their features. The following table describes the server roles of the Apsara Uni-manager Management Console.
 
@@ -200,17 +250,15 @@ This topic describes the server roles of the Apsara Uni-manager Management Conso
 |   |   | oneService- admin | one- console2# | Encapsulates API calls for some non-POP services, including Tablestore, Object Storage Service (OSS), and API Gateway. |
 |   | oneService AdminClust er |   |   |   |
 
-## Routine maintenance
+## 4 Routine maintenance
 
-### Monitoring metrics
+### 4.1 Monitoring metrics
 
 This topic describes monitoring metrics and how to view them.
 
 **View monitoring metrics**
 
 You can use one of the following methods to view monitoring metrics: Use ASD i. Log in to Apsara Stack Doctor (ASD). ii. In the left-side navigation pane, choose **Trace Diagnostics** > **Call Trace Analysis**. iii. On the Call Trace Analysis page, enter a trace ID in the TraceId field, specify a time range in the Time Range field, and then click **Search**. iv. On the **Topology Analysis** tab, click the required service role card to view the trend charts of related metrics. Use Linux commands The available Linux commands include vmstat, top, tsar, and jstat (/opt/taobao/java/bin). The Apsara Uni-manager Management Console provides common O&M scripts. For more information, see Common O&M commands.
-
-**Monitoring metrics**
 
 | Metric | Description | Anomaly criteria |
 |---|---|---|
@@ -227,7 +275,7 @@ You can use one of the following methods to view monitoring metrics: Use ASD i. 
 | JVM memory usage (MB) | Java virtual machine (JVM) memory usage | An anomaly can be determined based on the GC metrics and JVM configurations. |
 | netstat | Details of TCP connections | An anomaly can be determined based on the daily average baseline. Pay special attention to the TIME WAIT value surges. _ |
 
-### Routine inspections
+### 4.2 Routine inspections
 
 This topic describes how to perform routine inspections.
 
@@ -302,7 +350,7 @@ You can run the following commands to perform inspections:
 |---|---|---|---|
 |   | http://127.0.0.1:7003/preload.htm |   |   |
 
-## Security maintenance
+## 5 Security maintenance
 
 During the maintenance of the Apsara Uni-manager Management Console, you must pay attention to password maintenance and log audit.
 
@@ -316,9 +364,9 @@ The Apsara Uni-manager Management Console allows you to audit operation logs and
 **Search**.
 iv. In the trace list, view the API call information. v. Find the trace that you want to view and click **Details** in the **Actions** column. In the API Operation Audit Details dialog box, view the request parameters, response, and call logs. Due to the limitation of storage space in the base, the preceding logs cannot be stored for a long period. The logs can be stored for seven days at most. To store logs for more than seven days, dump them to Simple Log Service (SLS). For more information, consult the SLS team.
 
-## Troubleshooting
+## 6 Troubleshooting
 
-### Identify fault impact
+### 6.1 Identify fault impact
 
 This topic describes how to identify fault impact.
 1. Identify fault impact. Example:
@@ -326,7 +374,7 @@ Whether the physical environment is normal (such as the network, DNS device, and
 2. Identify fault types. Example:
 Physical environment faults (contact hardware vendors) Base environment faults (contact onsite Apsara Stack O&M engineers) Product performance issues Product feature issues
 
-### Collect fault logs
+### 6.2 Collect fault logs
 
 This topic describes how to collect fault logs.
 1. Use the following template to collect fault information.
@@ -350,7 +398,7 @@ This topic describes how to collect fault logs.
 2. Collect fault logs.
 i. Obtain the EagleEye ID when the fault occurred. If you can log on to the Apsara Uni-manager Management Console and reproduce the fault, you can obtain the EagleEye ID from the browser by pressing F12. The eagleeye-traceid from the ResponseHeaders is preferred, followed by the eagleEyeTraceId from the response. If you can log on to the Apsara Uni-manager Management Console but cannot reproduce the fault, you can query the API call logs when the fault occurred. For more information, see Security maintenance. If you cannot log on to the Apsara Uni-manager Management Console but can query the access and call logs in the ASAPI dockers, you can obtain the EagleEye ID from the container logs by using filters such as API names and other accessible key parameters for further analysis. ii. Obtain API operation call trace logs. Use API audit to obtain API operation call records. For more information, see Security maintenance. Use trace details in Apsara Stack Doctor to view logs. For more information, see View logs. Use Log Service to query API operation call logs. For more information, see View logs. Use the ASAPI containers to query API operation call logs. For more information, see Module logs.
 
-### Troubleshoot issues
+### 6.3 Troubleshoot issues
 
 This topic describes how to troubleshoot different types of issues.
 
@@ -382,7 +430,7 @@ ii. View the details of a single slow API call. You can enter the EagleEye ID of
 **Details** tab, view the trace details.
 iii. Query the performance metrics of machines. For more information about how to view the metrics, see Monitoring metrics.
 
-## Alert handling
+## 7 Alert handling
 
 **7.1.**
 
@@ -570,9 +618,9 @@ issue.
 
 If the alert persists after you perform the preceding steps, submit a ticket to contact Apsara Stack technical support.
 
-## Appendixes
+## 8 Appendixes
 
-### Module logs
+### 8.1 Module logs
 
 This topic describes the features of different log files.
 
@@ -641,7 +689,7 @@ This topic describes the features of different log files.
 |   | /home/admin/one-console2/logs/ascm- logger/exception trace.log _ | One-Console2 exception logs |
 |   | /home/admin/one-console2/logs/ascm- logger/main trace.log _ | One-Console2 debugging logs |
 
-### Common error codes
+### 8.2 Common error codes
 
 This topic describes common error codes and their solutions.
 
@@ -702,7 +750,7 @@ This topic describes common error codes and their solutions.
 |   | console.api.error | An error occurred when ONE-CONSOLE calls ASAPI. | Contact ascm ONE- _ CONSOLE O&M engineers. |
 |   | console.token.not.found | Failed to obtain x-as- console-token. | Refresh the page and try again. |
 
-### Common O&M commands
+### 8.3 Common O&M commands
 
 This topic describes common O&M commands for the Apsara Uni-manager Operations Console. top The `top` commands can dynamically display the current process and other conditions. You can continuously refresh the current status. If you run the command in the foreground, the command will exclusively occupy the foreground until you terminate the command. Command syntax: `top <Parameter>` .
 
@@ -821,7 +869,7 @@ The following table describes the jstat parameters.
 | -gccause | Displays a summary about GC information (same as -gcutil), with the cause of the last and current GC events. |
 | -printcompilation | Displays JIT compilation method information. |
 
-### View logs
+### 8.4 View logs
 
 This topic describes how to view API call logs in Apsara Stack Doctor (ASD) and Simple Log Service (SLS).
 
@@ -848,7 +896,7 @@ obtain the endpoint of SLS.
 AccessKey secret obtained in Step 2.
 5. Select the project to view logs in the Logstore.
 
-### Common commands for Apsara
+### 8.5 Common commands for Apsara Stack Agility PaaS
 
 **Stack Agility PaaS**
 
@@ -894,7 +942,7 @@ Exit the PaaS environment.
 exit
 ```
 
-### Commands of the Apsara Uni-
+### 8.6 Commands of the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -911,7 +959,7 @@ cat /opt/api-server/logs/apiServer-access.* | grep Ecs | grep DescribeInstances 
 
 The following figure shows sample command output. The first column displays EagleEye IDs, and the second column displays the actual time consumed at the ASAPI side. You can obtain more detailed logs based on the EagleEye IDs.
 
-### ASAPI domain names
+### 8.7 ASAPI domain names
 
 This topic describes the different types of ASAPI domain names and their limits.
 
@@ -928,9 +976,9 @@ This topic describes the different types of ASAPI domain names and their limits.
 |---|---|---|
 | asapi.${global:region}.${global:i ntranet-domain} | O&M network domain, a historical domain name | It uses HTTPS (HTTPS Proxy, port 8082 of the tengine for forwarding information to ASAPI). |
 
-## Troubleshooting
+## 9 Troubleshooting
 
-### What do I do if an error occurs
+### 9.1 What do I do if an error occurs when I log on to the Apsara Uni-manager Management Console?
 
 **when I log on to the Apsara Uni-**
 
@@ -989,7 +1037,7 @@ grep {eagleeye-traceid} /logs/ascm-logger/*.log -5
 
 ii. If an error is reported in the return value in the log, an error may have occurred when the ascm-auth service calls the ASS service. Contact AAS O&M engineers for further troubleshooting.
 
-### Configure a redirection page
+### 9.2 Configure a redirection page for a cloud service
 
 **for a cloud service**
 
@@ -1007,7 +1055,7 @@ You are a platform administrator.
 4. On the Redirection Page Configuration page, turn on or off the switch for removing a
 redirection page in the **Remove Redirection Page Configuration** column. indicates that the switch for removing a redirection page is turned on. After you turn on the switch, the redirection page does not pop up when you log in to the console of the corresponding cloud service. By default, the redirection page is displayed in the floating menu. You can switch accounts in the floating menu. indicates that the switch for removing a redirection page is turned off. After you turn off the switch, the redirection page pops up when you log in to the console of the corresponding cloud service. After you log in to the console, the redirection page is displayed in the floating menu. You can switch accounts in the floating menu.
 
-### What do I do if a timeout error
+### 9.3 What do I do if a timeout error occurs when I call the API operations of VPC, ECS, SLB, or ApsaraDB RDS in the Apsara Uni-manager Management Console?
 
 **occurs when I call the API**
 
@@ -1043,7 +1091,7 @@ OneConsole.
 4. After the containers are restarted, view the full GC processes that are run on POP.
 If the issue persists, contact on-site O&M engineers.
 
-### What do I do if a timeout error
+### 9.4 What do I do if a timeout error occurs when I create an ACK cluster in the Apsara Uni-manager Management Console?
 
 **occurs when I create an ACK cluster**
 
@@ -1087,7 +1135,7 @@ grep <EagleEye ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/*
 2. Compare the duration on ASAPI with that on POP.
 If the duration on POP is slightly longer than that on ASAPI, such as a time difference within 1 second to 2 seconds, contact service engineers to further troubleshoot the timeout error. If the duration on ASAPI is much longer than that on POP, you can check whether full garbage collection (GC) processes are run on POP. For more information, see What do I do if a timeout error occurs when I call the API operations of VPC, ECS, SLB, or ApsaraDB RDS in the Apsara Uni-manager Management Console?
 
-### Timeout when obtaining ACK
+### 9.5 Timeout when obtaining ACK clusters in the Apsara Uni-manager Management Console
 
 **clusters in the Apsara Uni-manager**
 
@@ -1139,7 +1187,7 @@ grep <EagleEye ID> /opt/tianji/alidata/www/logs/java/gateway/logs/trace/trace.lo
 The logs in the container will be refreshed soon. Up to 20 minutes are required to access the POP container and obtain the logs. Method 2: a. Log on to the Simple Log Service console. For more information about how to view logs in Simple Log Service, see View logs. b. Select **ali-pop-log** for Project and **pop_rpc_trace_log** for Logstore. c. If you cannot query desired logs by using the EagleEye ID, use `CS and DescribeClusters` as the filter condition, and select a small time range for calling the API operation.
 4. Based on the preceding logs, analyze which module consumes longer time.
 
-### What do I do if an error is
+### 9.6 What do I do if an error is returned when I call the API operations of Blink in the Apsara Uni-manager Management Console?
 
 **returned when I call the API**
 
@@ -1198,7 +1246,7 @@ cat /logs/ascm-logger/call_trace.log|grep foas |grep ListProject| grep Region ID
 4. Provide the collected logs for the on-site O&M engineers of the Apsara Uni-manager
 Management Console.
 
-### What do I do if I do not have
+### 9.7 What do I do if I do not have the required permissions when I perform operations in the Apsara Uni-manager Management Console?
 
 **the required permissions when I**
 
@@ -1240,7 +1288,7 @@ i. Log on to the Apsara Uni-manager Management Console as an administrator. ii. 
 
 You can modify only the permissions of custom roles. If the preset roles do not meet the requirements, create a custom role and grant permissions. For more information about how to create a role and grant permissions, see Apsara Uni-manager Management Console User Guide.
 
-### An API operation called by
+### 9.8 An API operation called by using an SDK is not found
 
 **using an SDK is not found**
 
@@ -1288,7 +1336,7 @@ cd /alidata/tools
 5. Check whether the API operation list contains the API operation that you want to call. If no,
 contact the relevant personnel of Alibaba Cloud to check whether the API operation is registered in POP. If yes, initiate the call again for testing.
 
-### Inaccessible HTTPS domain
+### 9.9 Inaccessible HTTPS domain name for ASAPI
 
 **name for ASAPI**
 
@@ -1334,7 +1382,7 @@ Contact the Alibaba Cloud HTTPSPROXY R&D team to generate a certificate for ASAP
 3. The Apsara Infrastructure Management issues a certificate.
 i. Open the cluster configuration file of the **ascm** Apsara Infrastructure Management. ii. In the **asapi** folder, create a user file directory and its subordinate one, and put the obtained certificate file into the **cert** folder. iii. Click **Save and Submit**.
 
-### What do I do if a cloud service
+### 9.10 What do I do if a cloud service API is unregistered?
 
 **API is unregistered?**
 
@@ -1384,7 +1432,7 @@ In this command, the service name is case-sensitive. Enter the actual service na
 After the API is obtained, the system displays the detailed API names. Check whether the API operation list contains the missing API. If no, check whether the service name and version number are correct. If the fault persists, contact the on-site O&M engineers of Apsara Stack.
 5. After the synchronization is successful, perform the operation that reports the error again.
 
-### What do I do if a timeout error
+### 9.11 What do I do if a timeout error occurs when ASAPI calls an API operation in the Apsara Uni-manager Management Console?
 
 **occurs when ASAPI calls an API**
 
@@ -1444,7 +1492,7 @@ If the table api_timeout_unlimited is not provided in the current version, you c
 6. After the execution is successful, wait for 5 minutes. Configure ASAPI to call the API operation
 again. If the fault persists, contact the O&M support personnel of Apsara Stack.
 
-### What do I do if an alert occurs
+### 9.12 What do I do if an alert occurs when I log in to the Apsara Uni-manager Management Console by calling the login operation?
 
 **when I log in to the Apsara Uni-**
 
@@ -1487,7 +1535,7 @@ Log in to ASD from the Apsara Uni-manager Operations Console. If you cannot log 
 3. Handle login API alerts caused by the Apsara Uni-manager Management Console exceptions.
 i. Log in to ASD. ii. Query the logs related to the unimanager-base.IdentityService# service role. iii. Send the logs to the R&D engineers for troubleshooting.
 
-### How do I turn off the switch
+### 9.13 How do I turn off the switch that enforces attribution of interaction between instance resources?
 
 **that enforces attribution of**
 
@@ -1530,11 +1578,9 @@ turned on. If this switch is turned on, click **Change Switch Status** in the Ac
 modification is successful.
 8. Wait about 10 minutes and log in to the Apsara Uni-manager Management Console again.
 
-### Configure public internet
+### 9.14 Configure public internet exposure for the portal
 
 **exposure for the portal**
-
-**Overview**
 
 Public internet exposure for the portal enables network connectivity from the portal to the customer's VPC. You must configure the network path from the VPC to the public internet yourself.
 

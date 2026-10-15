@@ -3,14 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Manag
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service Product Introduction 20260831.pdf"
+source_pdf: "93749ce3ceea93aa_Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service Product Introd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Key%20Management%20Service%20Key%20Management%20Service%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service Product Introduction 20260831
 
-## Product details
+## Table of Contents
+
+- 1 Product details
+- 2 Features
+- 3 Benefits
+- 4 Scenarios
+
+## 1 Product details
 
 Key Management Service (KMS) provides customer master keys, Bring-Your-Own-Key (BYOK), key rotation, master key aliases, and resource tags.
 
@@ -34,7 +41,7 @@ KMS supports creating aliases for master keys. Aliases make it easier to identif
 
 Resource tags make it easier to manage key resources in KMS.
 
-## Features
+## 2 Features
 
 | Primary feature | Secondary feature | Feature description |
 |---|---|---|
@@ -55,7 +62,7 @@ Resource tags make it easier to manage key resources in KMS.
 |   | Log management and auditing | Provides log management for key management and device management operations on the cloud platform. |
 |   | Monitoring and alerts | Supports real-time monitoring and alerts for core KMS services and core parameters of HSMs, such as CPU and memory usage. |
 
-## Benefits
+## 3 Benefits
 
 Compared with traditional key management infrastructure (KMI), Key Management Service (KMS) offers multi-service integration and is easy to use.
 
@@ -72,7 +79,7 @@ KMS seamlessly integrates with multiple products, such as ECS, RDS, and OSS. Thi
 | Bring-Your-Own- Key (BYOK) | KMS supports Bring-Your-Own-Key (BYOK). You can import your own keys to KMS to encrypt data on the cloud. This gives you better control over key management. |
 | Custom key rotation policies | KMS lets you automatically rotate symmetric encryption keys based on your security policies. Key rotation helps you achieve the following goals: Reduce the amount of data encrypted by a single key. Enable a faster response to security events. Logically isolate data. Reduce the time window for a key to be compromised. Meet compliance requirements. |
 
-## Scenarios
+## 4 Scenarios
 
 You can use Key Management Service (KMS) to encrypt and protect sensitive data in the cloud. For example, KMS enables application developers to protect the keys that are used to secure sensitive data in their applications.
 

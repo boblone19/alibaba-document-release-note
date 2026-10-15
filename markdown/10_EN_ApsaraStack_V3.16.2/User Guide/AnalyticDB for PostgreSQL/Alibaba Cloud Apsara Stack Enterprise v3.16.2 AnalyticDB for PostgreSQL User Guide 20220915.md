@@ -3,26 +3,75 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL 
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 85
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide 20220915.pdf"
+source_pdf: "37d92285c1466abf_Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 AnalyticDB for PostgreSQL User Guide
 
+## Table of Contents
+
+- 1 What is AnalyticDB for PostgreSQL?
+- 2 Quick start
+  - 2.1 Overview
+  - 2.2 Log on to the AnalyticDB for PostgreSQL console
+  - 2.3 Create an instance
+  - 2.4 Configure a whitelist
+  - 2.5 Create a database account
+  - 2.6 Obtain client tools
+  - 2.7 Connect to a database
+- 3 Instances
+  - 3.1 Reset the password of an account
+  - 3.2 Manage the endpoints of an instance
+  - 3.3 Monitoring and alerting
+  - 3.4 Change the specifications of an instance
+  - 3.5 Restart an instance
+  - 3.6 Release an instance
+  - 3.7 Configure SQL audit
+  - 3.8 SSL encryption
+  - 3.9 Update the minor engine version
+  - 3.10 Import data
+    - 3.10.1 Import data from or export data to OSS in parallel
+    - 3.10.2 Import data from MySQL
+    - 3.10.3 Import data from PostgreSQL
+    - 3.10.4 Use the COPY statement to import data
+- 4 Databases
+  - 4.1 Overview
+  - 4.2 Create a database
+  - 4.3 Create a distribution key
+  - 4.4 Construct data
+  - 4.5 Query data
+  - 4.6 Manage extensions
+  - 4.7 Manage users and permissions
+  - 4.8 Manage real-time materialized views
+  - 4.9 Manage JSON data
+  - 4.10 Use HyperLogLog
+  - 4.11 Use the CREATE LIBRARY statement
+  - 4.12 Create and use a PL/Java UDF
+- 5 Table
+  - 5.1 Create a table
+  - 5.2 Principles and scenarios of row store, column store, heap tables, and AO tables
+  - 5.3 Enable the column store and compression features
+  - 5.4 Add a field to a column-oriented table and set the default value
+  - 5.5 Configure table partitions
+  - 5.6 Configure the sort key
+- 6 Best practices
+  - 6.1 Configure memory and load parameters
+
 ostgreSQL?
 
-## What is AnalyticDB for
+## 1 What is AnalyticDB for PostgreSQL?
 
 PostgreSQL? AnalyticDB for PostgreSQL is a distributed cloud database service that uses multiple compute nodes to provide massively parallel processing (MPP) data warehousing. AnalyticDB for PostgreSQL is developed based on the open source Greenplum database project and enhanced by Alibaba Cloud. This service has the following features: Compatible with Greenplum and all tools that support Greenplum. Supports Object Storage Service (OSS), JSON, and HyperLogLog, which is a probabilistic algorithm for cardinality estimation. Supports SQL:2003-compliant syntax and Online Analytical Processing (OLAP) aggregate functions to provide flexible hybrid analysis. Supports both row store and column store to enhance analytics performance. Supports data compression to reduce storage costs. Provides online scaling and performance monitoring to enable database administrators (DBAs), developers, and data analysts to focus on improving enterprise productivity and creating core business value instead of managing and maintaining large numbers of MPP clusters.
 
-## Quick start
+## 2 Quick start
 
-### Overview
+### 2.1 Overview
 
-This topic describes all operations that you can perform on an AnalyticDB for PostgreSQL instance, from instance creation to database logon. It provides a quick start guide to the operations on the AnalyticDB for PostgreSQL instance. For more information, see workflow. AnalyticDB for PostgreSQL workflow Log on to the AnalyticDB for PostgreSQL console You can log on to the AnalyticDB for PostgreSQL console. Create an instance Before you perform other operations, you must first create an AnalyticDB for PostgreSQL instance in the console. Configure a whitelist Before you use an AnalyticDB for PostgreSQL instance, add IP addresses or CIDR blocks needed to access your database to the whitelist of the instance to improve the security and stability of the database. Create an initial account After you create an instance, you must create an initial account to log on to the database. Connect to a database You can use a client that supports PostgreSQL or Greenplum to connect to a database.
+This topic describes all operations that you can perform on an AnalyticDB for PostgreSQL instance, from instance creation to database logon. It provides a quick start guide to the operations on the AnalyticDB for PostgreSQL instance. For more information, see workflow. AnalyticDB for PostgreSQL workflow You can log on to the AnalyticDB for PostgreSQL console. Before you perform other operations, you must first create an AnalyticDB for PostgreSQL instance in the console. Before you use an AnalyticDB for PostgreSQL instance, add IP addresses or CIDR blocks needed to access your database to the whitelist of the instance to improve the security and stability of the database. Create an initial account After you create an instance, you must create an initial account to log on to the database. You can use a client that supports PostgreSQL or Greenplum to connect to a database.
 
-### Log on to the AnalyticDB for
+### 2.2 Log on to the AnalyticDB for PostgreSQL console
 
 PostgreSQL console This topic describes how to log on to the AnalyticDB for PostgreSQL console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -35,7 +84,7 @@ in the following scenarios: You log on to the Apsara Uni-manager Management Cons
 5. In the top navigation bar, choose Product s > Dat abase Services > Analyt icDB f or
 Post greSQL.
 
-### Create an instance
+### 2.3 Create an instance
 
 This topic describes how to create an AnalyticDB for PostgreSQL instance in the console. Before you perform other operations, you must first create an AnalyticDB for PostgreSQL instance.
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -77,7 +126,7 @@ in the following table.
 
 4. Click Submit .
 
-### Configure a whitelist
+### 2.4 Configure a whitelist
 
 To ensure a secure and stable database, you must add IP addresses or CIDR blocks that are allowed to access the database to a whitelist.
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -93,7 +142,7 @@ Create a whitelist a. Click Creat e Whit elist . b. In the Creat e Whit elist pa
 
 c. Click OK. Modify a whitelist a. Click Modif y to the right of a whitelist. b. In the Modify Whitelist panel, add or remove IP addresses or CIDR blocks in the IP Addresses section. Not e Whit elist Name cannot be modified. c. Click OK. Delete a whitelist Not e The default whitelist cannot be deleted. a. Click Delet e to the right of a whitelist. b. In the Delet e Whit elist message, click OK. Clear the default whitelist a. Click Clear to the right of the default whitelist. b. In the Clear Whit elist message, click OK. After you clear the default whitelist, it contains only 127.0.0.1. What's next We recommend that you maintain your whitelists on a regular basis to ensure secure access for AnalyticDB for PostgreSQL. You can click Modif y or Delet e to modify or delete custom whitelists.
 
-### Create a database account
+### 2.5 Create a database account
 
 This topic describes how to create a database account for an AnalyticDB for PostgreSQL instance. Context AnalyticDB for PostgreSQL provides the following types of database accounts: Privileged account: an account that has all permissions on all databases. The first account created for an instance in the console is a privileged account. Standard accounts: accounts that have all permissions only on their authorized databases. Not e Permissions include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER. Precautions Before you use databases in an AnalyticDB for PostgreSQL instance, you must create a privileged account. Standard accounts cannot be created by using the console. For information about how to create standard accounts, see the "Execute SQL statements to create accounts" section of this topic. After you create a privileged account for an instance, you cannot delete the privileged account.
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -136,7 +185,7 @@ Example:
 CREATE role test1 WITH LOGIN ENCRYPTED PASSWORD '111111';
 ```
 
-### Obtain client tools
+### 2.6 Obtain client tools
 
 The interface protocol of AnalyticDB for PostgreSQL is compatible with Greenplum Community Edition and PostgreSQL 8.2. You can use the Greenplum or PostgreSQL client to connect to AnalyticDB for PostgreSQL. Not e Apsara Stack is an isolated environment. You must deploy software installation packages to the internal environment. Graphical client tools AnalyticDB for PostgreSQL users can directly use client tools that support Greenplum, such as SQL Workbench, Navicat Premium, and Navicat for PostgreSQL. Command-line client psql (for RHEL 6, RHEL 7, CentOS 6, and CentOS 7) For Red Hat Enterprise Linux (RHEL) 6, RHEL 7, CentOS 6, and CentOS 7, download the tool from the following links and then decompress the package: RHEL 6 or CentOS 6: hybriddb_client_package_el6 RHEL 7 or CentOS 7: hybriddb_client_package_el7 Command-line client psql (for other Linux systems) For other Linux systems, perform the following operations to compile the client tools:
 1. Obtain the source code by using one of the following methods:
@@ -161,7 +210,7 @@ wget https://github.com/greenplum-db/gpdb/archive/5d87015609abd330c68a5402c1267f
 3. Obtain the psql and pg_dump tools from the following paths:
 psql: /usr/local/pgsql/bin/psql pg_dump: /usr/local/pgsql/bin/pg_dump Command-line client psql (for Windows and other systems) For Windows and other systems, go to the Pivotal website to download HybridDB Client.
 
-### Connect to a database
+### 2.7 Connect to a database
 
 Greenplum Database and AnalyticDB for PostgreSQL are both developed based on PostgreSQL 8.2 and fully compatible with its message protocol. AnalyticDB for PostgreSQL users can use tools that support the PostgreSQL 8.2 message protocol, such as libpq, Java Database Connectivity (JDBC), Open Database Connectivity (ODBC), and psycopg2. Context AnalyticDB for PostgreSQL provides psql, a binary program of Red Hat. For more information about the download link, see Obtain the client tool. The Greenplum official website provides an easy-to-install installation package that includes JDBC, ODBC, and libpq. For more information, see Greenplum official documentation. Not e Apsara Stack is an isolated environment. To access Apsara Stack, you must prepare the necessary software installation packages in advance. By default, AnalyticDB for PostgreSQL instances can be accessed only by clients that are deployed on Elastic Compute Service (ECS) instances within the same region and zone. DMS Data Management (DMS) allows you to manage relational databases such as MySQL, SQL Server, PostgreSQL, PPAS, and Petadata, online transaction processing (OLTP) databases such as PolarDB-X, online analytical processing (OLAP) databases such as AnalyticDB and Data Lake Analytics (DLA), and NoSQL databases such as MongoDB and Redis. DMS offers an integrated solution to manage data, schemas, and servers. You can also use DMS to authorize users, audit security, view BI charts and data trends, track data, and optimize performance. This section describes how to use DMS to connect to an AnalyticDB for PostgreSQL instance.
 1. Log on to the Log on to the AnalyticDB for PostgreSQL console.
@@ -354,9 +403,9 @@ The following information is returned if the database runs normally:
 5. After the ODBC driver is connected to the database, connect your application to the driver. For
 more information, see PostgreSQL ODBC driver and psqlODBC HOWTO - C#. References Pivotal Greenplum official documentation PostgreSQL psqlODBC Compiling psqlODBC on Unix Download ODBC connectors Download JDBC connectors The PostgreSQL JDBC Interface
 
-## Instances
+## 3 Instances
 
-### Reset the password of an account
+### 3.1 Reset the password of an account
 
 If you forget the password of your database account in the AnalyticDB for PostgreSQL console, you can reset the password. Not e To ensure data security, we recommend that you change your password on a regular basis.
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -367,7 +416,7 @@ If you forget the password of your database account in the AnalyticDB for Postgr
 The password must meet the following requirements: The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - = The password is 8 to 32 characters in length.
 6. Click OK.
 
-### Manage the endpoints of an
+### 3.2 Manage the endpoints of an instance
 
 instance This topic describes how to view the internal endpoint and port number and how to apply to and release a public endpoint for an AnalyticDB for PostgreSQL instance. View the internal endpoint and port number
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -386,7 +435,7 @@ Release a public endpoint
 4. Click Release Public Endpoint to the right of Public Endpoint .
 5. In the Release Public Endpoint message, click OK.
 
-### Monitoring and alerting
+### 3.3 Monitoring and alerting
 
 AnalyticDB for PostgreSQL provides the monitoring and alerting feature to help you view the running status of instances. Procedure
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -396,7 +445,7 @@ The following metrics are displayed on the Monit oring and Alert s page: Monit o
 4. (Optional)Select a time range to view metrics within the specified period. The following options are
 available for T ime Range: 1 Hour: You can view metrics within the last hour. 1 Day: You can view metrics within the last day. Cust om t ime range: You can view metrics within a custom time range. The time range cannot be longer than seven days.
 
-### Change the specifications of an
+### 3.4 Change the specifications of an instance
 
 instance This topic describes how to change specifications for an instance in storage included mode or reserved storage mode. Storage included mode
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -418,7 +467,7 @@ the Act ions column.
 4. Click Submit .
 Warning When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
 
-### Restart an instance
+### 3.5 Restart an instance
 
 When the number of connections of an instance reaches the upper limit or the instance has performance issues, you can restart the instance. Precautions The restart process takes about 3 to 30 minutes. During the restart period, the instance cannot provide external services. We recommend that you take precautionary measures before you restart the instance. After the instance is restarted and enters the running state, you can access the instance.
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -427,7 +476,7 @@ When the number of connections of an instance reaches the upper limit or the ins
 4. In the Rest art Inst ance message, click OK.
 Warning The database service may be interrupted when you restart an instance. Proceed with caution.
 
-### Release an instance
+### 3.6 Release an instance
 
 This topic describes how to manually release an AnalyticDB for PostgreSQL instance. Procedure
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -436,7 +485,7 @@ This topic describes how to manually release an AnalyticDB for PostgreSQL instan
 4. In the Release Inst ance message, click OK.
 Warning After an instance is released, all of its data is deleted. Back up your data before you release an instance.
 
-### Configure SQL audit
+### 3.7 Configure SQL audit
 
 AnalyticDB for PostgreSQL allows you to use the SQL audit feature to view SQL details and audit SQL queries on a regular basis. The SQL audit feature does not affect instance performance. Storage included mode
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -453,7 +502,7 @@ database, user, and keyword. Not e You can click Disable SQL Audit to disable th
 4. On the SQL Audit page, query SQL information based on conditions such as the database,
 execution duration, time range, database user, source IP address, execution status, operation category, operation type, and statement. Not e You can click the icon to export SQL information from the current page.
 
-### SSL encryption
+### 3.8 SSL encryption
 
 To enhance data transmission security, you can enable SSL encryption for your instances. SSL encryption can encrypt network connections at the transport layer. This improves data security and ensures data integrity. Precautions SSL encryption is supported only for instances in reserved st orage mode. Enable SSL encryption
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -478,7 +527,7 @@ Not e If you modify the status of SSL encryption, your instance restarts. We rec
 6. In the Disable SSL Encrypt ion message, click OK.
 Not e If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
-### Update the minor engine version
+### 3.9 Update the minor engine version
 
 To better meet your requirements, the minor engine version of AnalyticDB for PostgreSQL is updated on a regular basis. When you create an instance, the latest database engine version is used by default. After a new version is released, you can update your instance to the new version and use its extended features. This topic describes how to update the minor engine version of an instance. Precautions When you update the minor engine version of an instance, the instance restarts and is unavailable during the restart. We recommend that you update the minor engine version during off-peak hours. Procedure
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -489,9 +538,9 @@ Not e Minor version updates take 3 to 15 minutes to complete. When an instance i
 5. After you complete the preceding steps, check the state of the instance. If the update is
 complete, the instance enters the Running state. Otherwise, the instance remains in the Upgrading version state. Before the update, the system checks the minor engine version of your instance. If the latest minor version is used, the system skips the update and restart operations.
 
-### Import data
+### 3.10 Import data
 
-#### Import data from or export data to OSS in
+#### 3.10.1 Import data from or export data to OSS in parallel
 
 parallel AnalyticDB for PostgreSQL allows you to import data from or export data to Object Storage Service (OSS) tables in parallel by using the OSS external table feature (also called gpossext). AnalyticDB for PostgreSQL also supports GZIP compression for OSS external tables to reduce the file size and storage costs. gpossext can read from and write to TEXT and CSV files, even when they are compressed in GZIP packages. Create an OSS external table plug-in (oss_ext) To use an OSS external table, you must first create an OSS external table plug-in in AnalyticDB for PostgreSQL. You must create a plug-in for each database that you need to access. To create the plug-in, execute the CREATE EXTENSION IF NOT EXISTS oss_ext; statement. To delete the plug-in, execute the DROP EXTENSION IF EXISTS oss_ext; statement. Import data in parallel i. Distribute data evenly into multiple files in OSS. We recommend that you set the number of OSS files to an integer that is the multiple of the number of compute nodes in AnalyticDB for PostgreSQL. ii. Create a READABLE external table in AnalyticDB for PostgreSQL. iii. Execute the following statement to import data in parallel:
 
@@ -740,7 +789,7 @@ Not e All control characters must be single-byte characters. SDK troubleshooting
 
 You can handle timeout-related errors by using parameters related to oss_ext. References CREATE EXTERNAL TABLE CREATE TABLE
 
-#### Import data from MySQL
+#### 3.10.2 Import data from MySQL
 
 You can use the mysql2pgsql tool to migrate tables from MySQL to AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, or Postgres Plus Advanced Server (PPAS). Background information mysql2pgsql connects to both the source MySQL database and the destination AnalyticDB for PostgreSQL database. The tool retrieves the data that you want to export from the source MySQL database, and uses a COPY statement to import the data to the destination database. This tool supports simultaneous data import over multiple threads. Each worker thread imports data from specific database tables. You can download the binary installation package of mysql2pgsql. You can view instructions on source code compilation of mysql2pgsql. Procedure
 1. Modify the my.cfg configuration file to configure the connection information of source and
@@ -805,7 +854,7 @@ data that meets the c1 > 138888 condition is migrated.
  ./mysql2pgsql -l tab_list.txt
 ```
 
-#### Import data from PostgreSQL
+#### 3.10.3 Import data from PostgreSQL
 
 You can use the pgsql2pgsql tool to migrate tables across AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, and Postgres Plus Advanced Server (PPAS). Context pgsql2pgsql supports the following features: Full migration across PostgreSQL, PPAS, Greenplum Database, and AnalyticDB for PostgreSQL. Full migration and incremental migration from PostgreSQL or PPAS (version 9.4 or later) to AnalyticDB for PostgreSQL or PPAS. You can perform the following operations in the dbsync project library: Download the binary installation package of pgsql2pgsql. View instructions on source code compilation of pgsql2pgsql. Procedure
 1. Modify the my.cfg configuration file to configure the connection information of source and
@@ -838,7 +887,7 @@ By default, the migration program migrates the table data of all users from the 
 3. View the status information.
 You can view the status information in a single migration process by connecting to the selfmanaged database. The status information is stored in the db_sync_status table and includes the start and end time of full data migration, the start time of incremental data migration, and the status of incremental data synchronization.
 
-#### Use the COPY statement to import data
+#### 3.10.4 Use the COPY statement to import data
 
 You can use the \copy command to import data from local text files to AnalyticDB for PostgreSQL instances. Local text must be properly formatted and include necessary delimiters such as commas (,), semicolons (;), or special characters. Context Large amounts of data cannot be written in parallel because the \copy command writes data in series by using the coordinator node. If you need to import large amounts of data in parallel, you can use the data import method based on Object Storage Service (OSS). The \copy command is a psql instruction. If you use the database statement `COPY` instead of the \copy command, be aware that only stdin is supported. The COPY statement does not support files because the root user does not have the superuser permissions to perform operations on files. AnalyticDB for PostgreSQL also allows you to use Java Database Connectivity (JDBC) to execute the COPY statement. The CopyIn method is encapsulated within JDBC. For more information, see Interface CopyIn. For more information about how to use the COPY statement, see COPY. Procedure
 1. Execute the following COPY statement to import data:
@@ -869,13 +918,13 @@ You can use the \copy command to import data from local text files to AnalyticDB
       [IGNORE EXTERNAL PARTITIONS ]
 ```
 
-## Databases
+## 4 Databases
 
-### Overview
+### 4.1 Overview
 
 Basically, you can use AnalyticDB for PostgreSQL in the same manner as you use Greenplum Database. They have the same schemas, supported data types, and user permission requirements. Except for specific operations that are exclusive to Greenplum Database such as those on distribution keys and append-optimized (AO) tables, all operations are the same as those of the open source PostgreSQL. References Pivotal Greenplum official documentation GP 4.3 Best Practice Greenplum数据分布黄金法则
 
-### Create a database
+### 4.2 Create a database
 
 After you connect to an AnalyticDB for PostgreSQL instance, you can execute SQL statements to create databases. As in PostgreSQL, you can execute SQL statements to create databases in AnalyticDB for PostgreSQL. For example, after the psql client is used to connect to AnalyticDB for PostgreSQL, execute the following statement:
 
@@ -895,7 +944,7 @@ The following information is returned:
 You are now connected to database "mygpdb" as user "mygpdb".
 ```
 
-### Create a distribution key
+### 4.3 Create a distribution key
 
 AnalyticDB for PostgreSQL is a distributed database service where data is distributed across all the data nodes. You must create distribution keys to distribute data in AnalyticDB for PostgreSQL. Distribution keys are vital to query performance. Distribution keys are used to ensure even data distribution. Appropriate selection of keys can significantly improve query performance. Specify a distribution key In AnalyticDB for PostgreSQL, the data of a table can be distributed across all compute nodes in hash or random mode. When you create a table, you must specify a distribution key. Imported data is distributed to specific compute nodes based on the hash value calculated by using the distribution key.
 
@@ -905,7 +954,7 @@ CREATE TABLE vtbl(id serial, key integer, value text, shape cuboid, location geo
 
 If you do not specify a distribution key in the DISTRIBUTED BY clause, AnalyticDB for PostgreSQL distributes data by id field by using the round-robin algorithm. Rules for selecting a distribution key Select evenly distributed columns or multiple columns to prevent data skew. Select fields that are commonly used for connection operations, especially for highly concurrent statements. Select conditional columns that feature high concurrency queries and high filterability. Do not use random distribution.
 
-### Construct data
+### 4.4 Construct data
 
 In some test scenarios, you must construct data to fill the database.
 1. Create a function that generates random strings.
@@ -945,7 +994,7 @@ AS locate
      AS t;
 ```
 
-### Query data
+### 4.5 Query data
 
 This topic describes the query statements and how to view the query plans. Sample query statement
 
@@ -985,7 +1034,7 @@ The following information is returned:
   Optimizer status: legacy query optimizer
 ```
 
-### Manage extensions
+### 4.6 Manage extensions
 
 You can use extensions to expand database features. AnalyticDB for PostgreSQL enables you to manage extensions. Supported extensions AnalyticDB for PostgreSQL supports the following extensions: PostGIS: processes geographic data. MADlib: provides a machine learning function library. fuzzystrmatch: implements fuzzy match of strings. orafunc: provides compatibility with some Oracle functions. oss_ext: reads data from Object Storage Service (OSS). HyperLogLog: collects statistics. PL/Java: compiles user-defined functions (UDFs) in PL/Java. pgcrypto: provides cryptographic functions. IntArray: provides integer array-related functions, operators, and indexes. Create an extension Execute the following statements to create an extension:
 
@@ -1007,7 +1056,7 @@ DROP EXTENSION <extension name>; DROP EXTENSION IF EXISTS <extension name> CASCA
 
 Not e If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
 
-### Manage users and permissions
+### 4.7 Manage users and permissions
 
 This topic describes how to manage users and permissions in AnalyticDB for PostgreSQL. Manage users The system prompts you to specify an initial username and password when you create an instance. This initial user is the root user. After the instance is created, you can use the root user to connect to a database. The system also creates superusers such as aurora and replicator for internal management. You can run the \du+ command to view the information of all the users after you connect to the database by using the client tool of PostgreSQL or Greenplum. Sample output:
 
@@ -1031,7 +1080,7 @@ Manage permissions You can manage permissions at the database, schema, and table
 GRANT SELECT ON TABLE t1 TO normal_user1; REVOKE UPDATE ON TABLE t1 FROM normal_user1; REVOKE DELETE ON TABLE t1 FROM normal_user1;
 ```
 
-### Manage real-time materialized
+### 4.8 Manage real-time materialized views
 
 views AnalyticDB for PostgreSQL provides real-time materialized views. Compared with non-real-time materialized views, real-time materialized views can implement automatic refresh in response to data changes without the need to execute REFRESH statements. A real-time materialized view can be automatically updated with changes made to its base tables. Real-time materialized views of AnalyticDB for PostgreSQL support only statement-level automatic refresh. When an INSERT, COPY, UPDATE, or DELETE statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure strong data consistency. Not e In this mode, the write performance of base tables may be reduced. We recommend that you do not create more than five real-time materialized views on the same base table. For more information about materialized views, see CREATE MATERIALIZED VIEW. Statement-level refresh When a statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure data consistency. Such statements include INSERT, COPY, UPDATE, and DELETE. Real-time materialized views are updated based on the following logic: The database engine first updates base tables, and then updates their materialized views. If base tables fail to be updated, no data changes are made to their materialized views. If materialized views fail to be updated, no data changes are made to their base tables and an error is returned for the executed statement. For an explicit transaction that starts with the BEGIN TRANSACTION statement and ends with the COMMIT statement, after base tables are updated, data changes are also made to their materialized views in this transaction. If AnalyticDB for PostgreSQL uses the default READ COMMITTED isolation level, updates of materialized views are invisible to other transactions before this transaction is committed. If this transaction is rolled back, base tables and their materialized views are also rolled back. Limits AnalyticDB for PostgreSQL imposes the following limits on the query statements that are used to create real-time materialized views: If a query statement contains JOIN operations, only INNER JOIN can be used to join tables. OUTER JOIN or SELF JOIN is not supported. Query statements can contain most filtering and projection operations. Only the following aggregate operations are supported in a query statement: COUNT, SUM, AVG, MAX, and MIN. The HAVING clause is not supported. Complex statements such as those that contain subqueries and common table expressions (CTEs) are not supported. After you create a real-time materialized view on a base table, DDL statements that you execute on the base table are subject to the following limits: When you execute the TRUNCATE statement on the base table, the real-time materialized view is not synchronously updated. You must manually refresh the real-time materialized view or create another materialized view. You must specify the CASCADE option to execute the DROP TABLE statement on the base table. ALTER TABLE statements on the base table cannot be used to delete or modify fields referenced by the materialized view. Real-time materialized views are subject to the following limits: Real-time materialized views are supported for standard and partitioned heap tables, but not for append-optimized (AO) tables. Scenarios We recommend that you use real-time materialized views in the following scenarios: The number of rows or columns in the query results is much smaller than that of the base tables. For example, the query statement may contain a WHERE clause that effectively narrows down the results or may contain an aggregate function that consolidates multiple values into a single value. Large amounts of computations are required to obtain the query results of the following operations: Semi-structured data analysis Aggregate operations that take a long time to complete Base tables are not frequently changed. Real-time materialized views can be used in all scenarios where materialized views are suitable. Compared with non-real-time materialized views, real-time materialized views are highly consistent with their base tables. When a base table changes, its real-time materialized views synchronously change with minimal performance cost. However, when you use non-real-time materialized views, you must manually update them each time their base tables change. Therefore, when large amounts of data are changed on a base table or a streaming update is performed, real-time materialized views have great advantages over non-real-time materialized views. Disadvantages of real-time materialized views Real-time materialized views are similar to indexes maintained in real time. They can significantly optimize query performance but also reduce write performance. When you create a real-time materialized view that contains only a single table, the write performance of the related database is reduced because the data in the materialized view must be synchronously updated. The write latency can be up to three times longer compared with writing data to the base table but not updating the materialized view. We recommend that you do not create more than five real-time materialized views on the same base table. Batch data writes help reduce the maintenance overhead of real-time materialized views. When you execute COPY or INSERT statements, we recommend that you increase the number of batch processed rows within a single statement. This significantly reduces the maintenance overhead of real-time materialized views. When the query statement used to create a real-time materialized view contains a JOIN clause to join two tables, you must optimize the write performance of the real-time materialized view. If you do not have relevant experience or encounter low performance when you test the execution, we recommend that you use a real-time materialized view that contains only a single table. The following suggestions are available in scenarios where two tables are joined: Use the join key of each base table as their respective distribution keys. Create an index for the join key of each base table. Create or delete a real-time materialized view
 
@@ -1104,7 +1153,7 @@ The following information is returned, which indicates that the materialized vie
 (2 rows)
 ```
 
-### Manage JSON data
+### 4.9 Manage JSON data
 
 JSON has become a basic data type in the Internet and IoT fields. For more information about JSON, visit JSON official website. PostgreSQL provides full support for JSON. AnalyticDB for PostgreSQL is optimized by Alibaba Cloud to support the JSON type based on the PostgreSQL syntax. Check whether the current version supports JSON Execute the following statement to check whether the current version supports JSON:
 
@@ -1676,7 +1725,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Use HyperLogLog
+### 4.10 Use HyperLogLog
 
 AnalyticDB for PostgreSQL is highly optimized by Alibaba Cloud. It has the features of Greenplum Database and supports HyperLogLog. AnalyticDB for PostgreSQL is suited for industries such as Internet advertising and estimation analysis that require quick estimation of business metrics such as page views (PVs) and unique visitors (UVs). Create a HyperLogLog plug-in Execute the following statement to create a HyperLogLog plug-in:
 
@@ -1784,7 +1833,7 @@ The following information is returned:
 (1 row)
 ```
 
-### Use the CREATE LIBRARY
+### 4.11 Use the CREATE LIBRARY statement
 
 statement AnalyticDB for PostgreSQL introduces the CREATE LIBRARY and DROP LIBRARY statements to help you import custom software packages. Syntax
 
@@ -1827,7 +1876,7 @@ Example 4: View installed libraries.
 select name, lanname from pg_library;
 ```
 
-### Create and use a PL/Java UDF
+### 4.12 Create and use a PL/Java UDF
 
 AnalyticDB for PostgreSQL allows you to compile and upload JAR software packages that are written in PL/Java language, and use these JAR packages to create user-defined functions (UDFs). AnalyticDB for PostgreSQL supports PL/Java 1.5.0 and JVM 1.8. This topic describes how to create a PL/Java UDF. For more information about PL/Java examples, see PL/Java code. For more information about the compiling method, see PL/Java documentation. Procedure
 1. In AnalyticDB for PostgreSQL, execute the following statement to create a PL/Java extension. You
@@ -1911,9 +1960,9 @@ substring' language java;
  select java_substring(a, 1, 5) from temp;
 ```
 
-## Table
+## 5 Table
 
-### Create a table
+### 5.1 Create a table
 
 You can create tables within your databases. Syntax The following statement shows how to create a table. Not all clauses are required. Use the clauses that can fulfill your business needs.
 
@@ -2156,7 +2205,7 @@ CREATE TABLE sales (id int, year int, month int, day int, region text) DISTRIBUT
   DEFAULT PARTITION outlying_years);
 ```
 
-### Principles and scenarios of row
+### 5.2 Principles and scenarios of row store, column store, heap tables, and AO tables
 
 store, column store, heap tables, and AO tables AnalyticDB for PostgreSQL supports row store, column store, heap tables, and append-optimized (AO) tables. This topic describes their principles and scenarios. Row store and column store Comparison
 
@@ -2170,7 +2219,7 @@ store, column store, heap tables, and AO tables AnalyticDB for PostgreSQL suppor
 
 Heap tables A heap table is heap storage. All changes to the heap table generate redo logs that can be used to restore data by point in time. However, heap tables cannot implement logical incremental backup because all data blocks in the tables can be changed and it is inconvenient to record the position by using heap storage. Commit and redo logs are used to ensure reliability when transactions are finished. You can also implement redundancy by using secondary nodes through redo logs. AO tables AO tables are used to append data for storage. When you delete the updated data, you can use another bitmap file to mark the row that you want to delete and then use the offset of the bit to determine whether the row was deleted. When the transaction is finished, you must call the fsync() function to record the offset of the data block that performs the last write operation. Even if the data block contains only a single record, a new data block is appended for the next transaction. The data block is synchronized to the secondary node for data redundancy. AO tables are not suitable for small transactions because the fsync() function is called at the end of each transaction. This data block is not reused even if space is left. AO tables are suitable for OLAP scenarios, batch data writing, high compression ratio, and logical backup that supports incremental backup. During backup, you need only to record the offset from the backup and the bitmap deletion mark for each full backup. Use scenarios of heap tables When multiple small transactions are handled, use a heap table. When you need to restore data by point in time, use a heap table. Use scenarios of AO tables When you want to use column store, use an AO table. When data is written in batches, use an AO table.
 
-### Enable the column store and
+### 5.3 Enable the column store and compression features
 
 compression features If you want to improve performance, speed up data import, or reduce costs for tables that have infrequent updates and multiple fields, we recommend that you use column store and compression. These features increase the compression ratio by up to threefold to ensure high performance and speed up data import. To enable the column store and compression features, you must specify the column store and compression options when you create a table. For example, you can add the following clause to the CREATE statement to enable these features. For more information about the table creation syntax, see Create a table.
 
@@ -2180,7 +2229,7 @@ with (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, B
 
 Not e AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
 
-### Add a field to a column-oriented
+### 5.4 Add a field to a column-oriented table and set the default value
 
 table and set the default value This topic describes how to add a field to a column-oriented table and set the default value for the field, and how to use the ANALYZE statement to view the impact of updated data on the size of the column-oriented table. Context In a column-oriented table, each column is stored as a file, and two columns in the same row correspond to each other by using an offset. For example, if you add two fields of the INT8 type, you can quickly locate column B from column A by using the offset. When you add a field, append-optimized (AO) tables are not rewritten. If an AO table contains the records of deleted data, the added field must be filled with the deleted records before the offset can be used. Procedure
 1. Create three append-optimized column-oriented (AOCO) tables.
@@ -2311,7 +2360,7 @@ The following information is returned:
 
 When you add fields to the AO tables, the number of entries in the existing tables prevails. Even if all the entries are deleted, new fields are added to the original data.
 
-### Configure table partitions
+### 5.5 Configure table partitions
 
 For fact tables and large-sized tables in a database, we recommend that you configure table partitions. Configure table partitions You can use the table partitioning feature to add and remove data based on table partitions on a
 
@@ -2327,7 +2376,7 @@ CREATE TABLE LINEITEM ( L_ORDERKEY BIGINT NOT NULL, L_PARTKEY BIGINT NOT NULL, L
 
 Principles of table partitioning The purpose of partitioning is to minimize the amount of data to be scanned during a query. Therefore, partitions must be associated with the query conditions. Principle 1: Select the fields that are related to the query conditions to configure partitions and reduce the amount of data to be scanned. Principle 2: If multiple query conditions exist, configure sub-partitions to further reduce the amount of data to be scanned.
 
-### Configure the sort key
+### 5.6 Configure the sort key
 
 A sort key is an attribute of a table. Data on disks is stored in the order of the sort key. Context Sort keys have two major advantages: Speed up and optimize column-store operations. The min and max meta information the system collects seldom overlaps with each other, which features good filterability. Eliminate the need to perform ORDER BY and GROUP BY operations. The data directly read from the disk is ordered as required by the sorting conditions. Create a table
 
@@ -2391,9 +2440,9 @@ Examples:
 alter table test set sortkey (high,low);
 ```
 
-## Best practices
+## 6 Best practices
 
-### Configure memory and load
+### 6.1 Configure memory and load parameters
 
 parameters To improve database stability, you must configure memory and load parameters. Background information AnalyticDB for PostgreSQL is a massively parallel processing (MPP) database service with high computational and resource requirements. AnalyticDB for PostgreSQL consumes all of its resources. This allows AnalyticDB for PostgreSQL to reach high processing speeds but makes it very easy to exceed its limits. When CPU, network, or hard disk resources are exhausted, you may encounter hardware bottlenecks. However, databases may not respond if memory resources are overused. How to avoid OOM errors Out of memory (OOM) indicates that the system is unable to provide sufficient memory requested by a process. The following prompt appears when OOM errors occur:
 

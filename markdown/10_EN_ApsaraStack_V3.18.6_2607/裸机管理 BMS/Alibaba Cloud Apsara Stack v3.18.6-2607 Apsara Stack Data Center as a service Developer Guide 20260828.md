@@ -3,14 +3,126 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a se
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 139
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Developer Guide 20260828.pdf"
+source_pdf: "2c3892db2c82cccd_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Developer Guide 202608"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86%20BMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Data%20Center%20as%20a%20service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Developer Guide 20260828
 
-## API introduction
+## Table of Contents
+
+- 1 API introduction
+- 2 API overview
+- 3 Calling methods
+  - 3.1 Python-SDK
+  - 3.2 Go-SDK
+- 4 API Reference
+  - 4.1 Instances
+    - 4.1.1 Instance list
+    - 4.1.2 ListInstanceOverview
+    - 4.1.3 ApplyManagedInstance
+    - 4.1.4 ReApplyManagedInstance
+    - 4.1.5 ListUnApplyCPUArch
+    - 4.1.6 ListUnApplyCPUMfr
+    - 4.1.7 ListUnApplyGPUMfr
+    - 4.1.8 ListUnApplyMachineType
+    - 4.1.9 ListUnApplyInstance
+    - 4.1.10 CheckIPAvailability
+    - 4.1.11 ReleaseInstance
+    - 4.1.12 StartInstance
+    - 4.1.13 StopInstance
+    - 4.1.14 ReStartInstance
+    - 4.1.15 ModifyHostNameInstance
+    - 4.1.16 DescribeInstance
+    - 4.1.17 ListImageName
+    - 4.1.18 ListNetworkSubnetName
+    - 4.1.19 ListOccupiedVPCId
+    - 4.1.20 ListHistoryEvent
+    - 4.1.21 ListBmcpInstance
+    - 4.1.22 ModifyInstanceIpConfig
+    - 4.1.23 EnableInstance
+    - 4.1.24 DisableInstance
+    - 4.1.25 ListManageableInstance
+    - 4.1.26 ApplyBmcpInstance
+    - 4.1.27 ReApplyBmcpInstance
+    - 4.1.28 ReleaseBmcpInstance
+    - 4.1.29 CreateInstanceLvm
+  - 4.2 Images
+    - 4.2.1 ListImage
+    - 4.2.2 UploadCustomizedImage
+    - 4.2.3 DeleteImage
+    - 4.2.4 EnableImage
+    - 4.2.5 DisableImage
+    - 4.2.6 ListRelatedInstance
+  - 4.3 Models
+    - 4.3.1 ListMachineType
+  - 4.4 Hosted instances
+    - 4.4.1 HostInstance
+    - 4.4.2 ReHostInstance
+    - 4.4.3 DeleteHostedInstance
+    - 4.4.4 ListInstance
+  - 4.5 Gateway
+    - 4.5.1 ListCgw
+    - 4.5.2 ListCgwPort
+    - 4.5.3 ListBorder
+    - 4.5.4 BindVswitchToBorder
+    - 4.5.5 UnBindVswitchToBorder
+    - 4.5.6 ReBindVswitchToBorder
+    - 4.5.7 ReUnbindVswitchToBorder
+    - 4.5.8 ListVswitchBindToBorder
+    - 4.5.9 ListNetworkTopology
+  - 4.6 Security groups
+    - 4.6.1 CreateSecurityGroup
+    - 4.6.2 DeleteSecurityGroup
+    - 4.6.3 ModifySecurityGroup
+    - 4.6.4 AddSecurityGroupRule
+    - 4.6.5 ModifySecurityGroupRule
+    - 4.6.6 ListSecurityGroupInstance
+    - 4.6.7 ListSecurityGroup
+    - 4.6.8 ListSecurityGroupRule
+    - 4.6.9 AddSecurityGroupInstance
+    - 4.6.10 DeleteSecurityGroupRule
+    - 4.6.11 DeleteSecurityGroupInstance
+  - 4.7 Overview
+    - 4.7.1 DescribeManagedInstanceQt
+    - 4.7.2 DescribeHostedInstanceQt
+  - 4.8 Alerts
+    - 4.8.1 ListHealthScore
+    - 4.8.2 ListWarningSummary
+    - 4.8.3 ListWarningDetail
+    - 4.8.4 CreateWarningEvent
+  - 4.9 Cloud Assistant
+    - 4.9.1 RunCommand
+    - 4.9.2 DescribeInvocationResults
+  - 4.10 Key pairs
+    - 4.10.1 CreateKeyPair
+    - 4.10.2 ListKeyPair
+    - 4.10.3 ConfigKeyPair
+    - 4.10.4 UnbindKeyPair
+    - 4.10.5 DeleteKeyPair
+  - 4.11 Tasks
+    - 4.11.1 CreateTask
+    - 4.11.2 ListTasks
+    - 4.11.3 DescribeTask
+    - 4.11.4 GetResult
+  - 4.12 Diagnosis
+    - 4.12.1 GetDiagnoseItem
+    - 4.12.2 GetDiagnoseStatusById
+    - 4.12.3 GetDiagnoseDetail
+    - 4.12.4 QueryDiagnose
+    - 4.12.5 StartDiagnose
+  - 4.13 DescribeServiceStatus
+  - 4.14 QueryTotalAvailableResource
+  - 4.15 ListCluster
+  - 4.16 GetBaseline
+  - 4.17 DescribeLicenseInfo
+  - 4.18 ListModels
+  - 4.19 GetLogLink
+  - 4.20 GetLog
+  - 4.21 GetMachineIDbyCluster
+
+## 1 API introduction
 
 If you are familiar with network service protocols and one or more programming languages, we recommend that you call Bare Metal Service (BMS) API operations to manage your cloud resources and develop your applications.
 
@@ -30,7 +142,7 @@ BMS API supports HTTP or HTTPS requests. You can use only the POST method to sen
 | Applicati on group | ApplicationGrou p | Application groups are used to distinguish instance assets. Bare Metal Instances: BMS allows you to apply for, release, delete, and reapply for physical bare metal servers. You can also perform remote O&M operations on existing bare metal instances, such as starting, stopping, and restarting them. In-band Managed Instances: To meet user requirements for in-band hosting of existing servers, BMS allows you to add, search for, view displayed information of, monitor, and perform remote O&M operations on in-band managed instances. Out-of-band Managed Instances: To meet user requirements for out-of-band hosting of existing servers, BMS allows you to add, search for, view displayed information of, monitor, and perform remote O&M operations on out-of-band managed instances, and log into them from an out-of-band console. |
 |---|---|---|
 
-## API overview
+## 2 API overview
 
 The following tables list the API operations that are available for use in Bare Metal Service (BMS). API operations of `BMS version 2022-05-30` use the remote procedure call (RPC) protocol. For more information about signatures, seeRequest signatures. Developers can use the Portable OpenAPI Proxy (POP) gateway to directly call BMS API operations without the need to learn technical details. If the existing methods for calling BMS API operations cannot meet your requirements, send your feedback to us. Before you call an API operation, make sure that an Apsara Stack account is created and an AccessKey pair is created for the account. This way, you can call the API operation by using client tools such as SDKs and the CLI.
 
@@ -82,11 +194,11 @@ The following tables list the API operations that are available for use in Bare 
 | ListWarningDetail | POST | /v1/aso/monitor/listWarningDeta il | ListWarningDetail |
 | CreateWarningEve nt | POST | /v1/aso/monitor/createWarningE vent | CreateWarningEvent |
 
-## Calling methods
+## 3 Calling methods
 
 You can call Bare Metal Service (BMS) API operations over HTTP. We recommend that you use aliyunsdkcore to encapsulate API requests. The following example shows how to use aliyunsdkcore to encapsulate API requests.
 
-### Python-SDK
+### 3.1 Python-SDK
 
 The following are version dependency and parameter configuration requirements of the SDK for Python:
 1. aliyun-python-sdk-core>=2.13.8.
@@ -105,7 +217,7 @@ r.set_domain(bmsDomain) r.set_version("2022-05-30") r.set_action_name("ListInsta
 r.set_uri_pattern("/v1/ascm/instance/listInstance") r.add_body_params("PageNumber", 1) # Required. r.add_body_params("PageSize", 10) # Required. r.add_body_params("QueryKey", "") # Optional. r.add_body_params("QueryValue", "") # Optional. r.add_body_params("SortType", "asc") # Optional. You can specify "asc" or "desc" for th is parameter. r.add_body_params("SortField", "") # Optional. If you do not specify this parameter, th e query results are sorted in descending order based on the creation time. r.add_body_params("ApplicationGroup", "instance") r.add_body_params("OwnerType", "") # Optional. r.add_body_params("State", "") # Optional. If you do not specify this parameter, the qu ery results are sorted in descending order based on the creation time. r.set_method("POST") resp = client.do_action(r)
 ```
 
-### Go-SDK
+### 3.2 Go-SDK
 
 The following are version dependency and parameter configuration requirements of the SDK for Go:
 1. Go 1.10 or later.
@@ -161,13 +273,13 @@ func main() {
     fmt.Println(response)
 ```
 
-## API Reference
+## 4 API Reference
 
-### Instances
+### 4.1 Instances
 
 You can call the following API operations to manage instances: ListInstance, DescribeInstance, DescribeTask, ListInstanceOverview, ApplyManagedInstance, ReApplyManagedInstance, ListUnApplyCPUMfr, ListUnApplyGPUMfr, ListUnApplyMachineType, ListUnApplyInstance, StartInstance, StopInstance, ReStartInstance, ReleaseInstance, ModifyHostNameInstance, CheckIPAvailability, ListImageName, and ListOccupiedVPCId.
 
-#### Instance list
+#### 4.1.1 Instance list
 
 Call the ListInstance API to query all bare machine instances and display the results in a paginated list.
 
@@ -334,11 +446,11 @@ Example of a successful response
 </data> <errorTitle>InternalError</errorTitle> <requestId>*****-*****-*****</requestId> <success>true</success> <errorMessage>The requested service is xxxxx</errorMessage> <errorCode>InternalError</errorCode> <status>200</status>
 ```
 
-#### ListInstanceOverview
+#### 4.1.2 ListInstanceOverview
 
 Loads the full overview data of an instance, such as SN, IP address, VpcID, VswID, and AliUid. url:/v1/ascm/instance/listInstanceOverview Request method: POST Request parameters: none
 
-#### ApplyManagedInstance
+#### 4.1.3 ApplyManagedInstance
 
 Creates a bare metal instance in Bare Metal Service (BMS). url:/v1/ascm/instance/applyManagedInstance Request method: POST Request parameters: content-type: application/json;
 
@@ -376,7 +488,7 @@ on, do not specify this parameter.
   "ActivationCode": "xxxxxx"
 ```
 
-#### ReApplyManagedInstance
+#### 4.1.4 ReApplyManagedInstance
 
 Re-applies for a bare metal instance that fails to be created. url:/v1/ascm/instance/reApplyManagedInstance Request method: POST Request parameters: content-type: application/json;
 
@@ -409,7 +521,7 @@ e available architecture API operation. If you specify "all" for this parameter,
 available architecture API operation. If you specify "all" for this parameter, the quer y results of all GPU manufacturers are returned.
 ```
 
-#### ListUnApplyCPUArch
+#### 4.1.5 ListUnApplyCPUArch
 
 Queries the architecture of instances that have not been applied for in the resource pool. url:/v1/ascm/instance/listUnApplyCPUArch Request method: POST Request parameters: content-type: application/json;
 
@@ -419,7 +531,7 @@ Queries the architecture of instances that have not been applied for in the reso
   "DeployType": "service name"
 ```
 
-#### ListUnApplyCPUMfr
+#### 4.1.6 ListUnApplyCPUMfr
 
 Queries the CPU manufacturers of instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyCPUMfr Request method: POST Request parameters: content-type: application/json;
 
@@ -430,7 +542,7 @@ Queries the CPU manufacturers of instances that can be applied for in the resour
   "DeployType": "service name"
 ```
 
-#### ListUnApplyGPUMfr
+#### 4.1.7 ListUnApplyGPUMfr
 
 Queries the GPU manufacturers of instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyGPUMfr Request method: POST Request parameters: content-type: application/json;
 
@@ -441,7 +553,7 @@ Queries the GPU manufacturers of instances that can be applied for in the resour
   "DeployType": "service name"
 ```
 
-#### ListUnApplyMachineType
+#### 4.1.8 ListUnApplyMachineType
 
 Queries the models of instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyMachineType Request method: POST Request parameters: content-type: application/json;
 
@@ -456,7 +568,7 @@ ery results of all GPU manufacturers are returned.
   "DeployType": "service name"
 ```
 
-#### ListUnApplyInstance
+#### 4.1.9 ListUnApplyInstance
 
 Queries the instances that can be applied for in the resource pool. url:/v1/ascm/instance/listUnApplyInstance Request method: POST Request parameters: content-type: application/json;
 
@@ -473,7 +585,7 @@ ery results of all GPU manufacturers are returned.
   "DeployType": "service name"
 ```
 
-#### CheckIPAvailability
+#### 4.1.10 CheckIPAvailability
 
 Checks whether the specified IP address is duplicate and available. url:/v1/ascm/instance/checkIPAvailability Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -481,7 +593,7 @@ Checks whether the specified IP address is duplicate and available. url:/v1/ascm
   "IP": "xxx.xxx.xxx.xxx" # Required.
 ```
 
-#### ReleaseInstance
+#### 4.1.11 ReleaseInstance
 
 Releases a bare metal instance. url:/v1/ascm/instance/releaseInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -489,7 +601,7 @@ Releases a bare metal instance. url:/v1/ascm/instance/releaseInstance Request me
   "ID": 1 # Required.
 ```
 
-#### StartInstance
+#### 4.1.12 StartInstance
 
 Starts a bare metal instance. url:/v1/ascm/instance/startInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -497,7 +609,7 @@ Starts a bare metal instance. url:/v1/ascm/instance/startInstance Request method
   "ID": 1 # Required.
 ```
 
-#### StopInstance
+#### 4.1.13 StopInstance
 
 Stops a bare metal instance that is in the Running state. url:/v1/ascm/instance/stopInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -505,7 +617,7 @@ Stops a bare metal instance that is in the Running state. url:/v1/ascm/instance/
   "ID": 1 # Required.
 ```
 
-#### ReStartInstance
+#### 4.1.14 ReStartInstance
 
 Restarts a bare metal instance that is in the Running state. url:/v1/ascm/instance/reStartInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -513,7 +625,7 @@ Restarts a bare metal instance that is in the Running state. url:/v1/ascm/instan
   "ID": 1 # Required.
 ```
 
-#### ModifyHostNameInstance
+#### 4.1.15 ModifyHostNameInstance
 
 Modifies the hostname of a bare metal instance. url:/v1/ascm/instance/modifyHostNameInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -522,7 +634,7 @@ Modifies the hostname of a bare metal instance. url:/v1/ascm/instance/modifyHost
   "HostName": "xxxxxx" # Required.
 ```
 
-#### DescribeInstance
+#### 4.1.16 DescribeInstance
 
 Loads the details of an instance. url:/v1/ascm/instance/describeInstance Request method: POST Request parameters: content-type: multipart/json;
 
@@ -530,7 +642,7 @@ Loads the details of an instance. url:/v1/ascm/instance/describeInstance Request
   "ID": 1 # Required.
 ```
 
-#### ListImageName
+#### 4.1.17 ListImageName
 
 Queries the image information when a bare metal instance is created. url:/v1/ascm/image/listImageName Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -542,11 +654,11 @@ mages or "customize" for custom images.
 : image, software, or docker.
 ```
 
-#### ListNetworkSubnetName
+#### 4.1.18 ListNetworkSubnetName
 
 Queries the subnet name when a bare metal instance is created. url:/v1/aso/network/listNetworkSubnetName Request method: POST Request parameters: none
 
-#### ListOccupiedVPCId
+#### 4.1.19 ListOccupiedVPCId
 
 Queries a list of virtual private cloud (VPC) IDs that are used by all bare metal instances. url:/v1/ascm/instance/listOccupiedVPCId Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -554,7 +666,7 @@ Queries a list of virtual private cloud (VPC) IDs that are used by all bare meta
   "DeployType": "service name"
 ```
 
-#### ListHistoryEvent
+#### 4.1.20 ListHistoryEvent
 
 Queries the information about the most recent operation or all operations that have been performed on a resource based on the resource ID. url:/v1/event/listHistoryEvent Request method: POST Request parameters: content-type: multipart/form-data; or content-type: application/json;
 
@@ -570,7 +682,7 @@ If you do not specify this parameter, the current time is used.
 50]
 ```
 
-#### ListBmcpInstance
+#### 4.1.21 ListBmcpInstance
 
 Queries multiple bare metal instances at a time. You can filter and sort bare metal instances in multiple dimensions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -622,7 +734,7 @@ http(s)://[Endpoint]/?Action=ListBmcpInstance
  "errorTitle":"InternalError",
 ```
 
-#### ModifyInstanceIpConfig
+#### 4.1.22 ModifyInstanceIpConfig
 
 Modifies the IP address configurations of a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -654,7 +766,7 @@ http(s)://[Endpoint]/?Action=ModifyInstanceIpConfig
  "errorTitle":"InternalError",
 ```
 
-#### EnableInstance
+#### 4.1.23 EnableInstance
 
 Enables an instance in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -684,7 +796,7 @@ http(s)://[Endpoint]/?Action=EnableInstance
  "errorTitle":"InternalError",
 ```
 
-#### DisableInstance
+#### 4.1.24 DisableInstance
 
 Disables an instance in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -708,7 +820,7 @@ http(s)://[Endpoint]/?Action=DisableInstance
  "errorTitle":"InternalError",
 ```
 
-#### ListManageableInstance
+#### 4.1.25 ListManageableInstance
 
 Queries a list of bare metal instances by specifying multiple filter conditions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -751,7 +863,7 @@ http(s)://[Endpoint]/?Action=ListManageableInstance
  "errorTitle":"InternalError",
 ```
 
-#### ApplyBmcpInstance
+#### 4.1.26 ApplyBmcpInstance
 
 Performs flexible management and deployment of physical server resources in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -782,7 +894,7 @@ http(s)://[Endpoint]/?Action=ApplyBmcpInstance
  "errorTitle":"InternalError",
 ```
 
-#### ReApplyBmcpInstance
+#### 4.1.27 ReApplyBmcpInstance
 
 Re-applies for a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -815,7 +927,7 @@ http(s)://[Endpoint]/?Action=ReApplyBmcpInstance
  "dynamicMessage":"The specified store %s does not exist.",
 ```
 
-#### ReleaseBmcpInstance
+#### 4.1.28 ReleaseBmcpInstance
 
 Releases a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -842,7 +954,7 @@ http(s)://[Endpoint]/?Action=ReleaseBmcpInstance
  "dynamicMessage":"The specified store %s does not exist.",
 ```
 
-#### CreateInstanceLvm
+#### 4.1.29 CreateInstanceLvm
 
 Creates a logical volume manager (LVM) for an instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -876,11 +988,11 @@ http(s)://[Endpoint]/?Action=CreateInstanceLvm
  "errorTitle":"InternalError",
 ```
 
-### Images
+### 4.2 Images
 
 You can call the following API operations to manage images: ListImage, UploadCustomizedImage, DeleteImage, EnableImage, DisableImage, and ListRelatedInstance.
 
-#### ListImage
+#### 4.2.1 ListImage
 
 Queries a list of images. You can dynamically specify query conditions to determine whether to paginate the responses of this operation. url:/v1/ascm/image/listImage Request method: POST Request parameters: content-type: multipart/json;
 
@@ -898,7 +1010,7 @@ mages, "customize" for custom images, or "eflops" for Eflops dedicated images.
 r software. If you specify "image" for this parameter, an image package is returned. If you specify "software" for this parameter, a software package is returned.
 ```
 
-#### UploadCustomizedImage
+#### 4.2.2 UploadCustomizedImage
 
 Uploads an on-premises image file to an Elastic Compute Service (ECS) instance. The uploaded image file can be used as a custom image for later installations. url:/v1/ascm/image/uploadCustomizedImage Request method: POST Request parameters: content-type: multipart/json;
 
@@ -929,7 +1041,7 @@ and software. Default value: image. If you do not specify this parameter, the de
 are package is uploaded. Tentatively, the following component types are supported.Cloud-native Component: AppStack; Acceleration Suite: AcceleratorKit; Docker: docker.
 ```
 
-#### DeleteImage
+#### 4.2.3 DeleteImage
 
 Deletes a custom image. url:/v1/ascm/image/deleteImage Request method: POST Request parameters: content-type: multipart/json;
 
@@ -938,7 +1050,7 @@ Deletes a custom image. url:/v1/ascm/image/deleteImage Request method: POST Requ
   "Name": "image name", # Required.
 ```
 
-#### EnableImage
+#### 4.2.4 EnableImage
 
 Enables an image. url:/v1/ascm/image/enableImage Request method: POST Request parameters: content-type: multipart/json;
 
@@ -946,7 +1058,7 @@ Enables an image. url:/v1/ascm/image/enableImage Request method: POST Request pa
   "ID":1 # Specify the image ID. Required.
 ```
 
-#### DisableImage
+#### 4.2.5 DisableImage
 
 Disables an image. url:/v1/ascm/image/disableImage Request method: POST Request parameters: content-type: multipart/json;
 
@@ -954,7 +1066,7 @@ Disables an image. url:/v1/ascm/image/disableImage Request method: POST Request 
   "ID":1 # Specify the image ID. Required.
 ```
 
-#### ListRelatedInstance
+#### 4.2.6 ListRelatedInstance
 
 Queries all bare metal instances that use an image by the image name. url:/v1/ascm/image/listRelatedInstance Request method: POST Request parameters: content-type: multipart/json;
 
@@ -962,11 +1074,11 @@ Queries all bare metal instances that use an image by the image name. url:/v1/as
   "Name":1 # Specify the image name. Required.
 ```
 
-### Models
+### 4.3 Models
 
 You can call the ListMachineType operation to manage models.
 
-#### ListMachineType
+#### 4.3.1 ListMachineType
 
 Queries a list of models. You can also dynamically specify query conditions to determine whether to paginate the responses of this operation. Query conditions include the data about model specifications, such as CPU utilization, memory usage, and disk usage. url:/v1/ascm/machineType/listMachineType Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -985,11 +1097,11 @@ ed responses. Valid values: true and false. Default value: true. If you specify 
   "DeployType": "service name"
 ```
 
-### Hosted instances
+### 4.4 Hosted instances
 
 You can call the following API operations to manage hosted instances: HostInstance, ReHostInstance, DeleteHostedInstance, and ListInstance.
 
-#### HostInstance
+#### 4.4.1 HostInstance
 
 Hosts an in-band or out-of-band instance. url:/v1/ascm/instance/hostInstance Request method: POST Request parameters: content-type: application/json;
 
@@ -1028,7 +1140,7 @@ host in-band instances, and "oob_stock" to host out-of-band instances.
   "Description": "",
 ```
 
-#### ReHostInstance
+#### 4.4.2 ReHostInstance
 
 Rehosts an in-band or out-of-band instance. url:/v1/ascm/instance/reHostInstance Request method: POST Request parameters: content-type: application/json;
 
@@ -1067,7 +1179,7 @@ host in-band instances, and "oob_stock" to host out-of-band instances.
   "Description": "",
 ```
 
-#### DeleteHostedInstance
+#### 4.4.3 DeleteHostedInstance
 
 Deletes an in-band or out-of-band hosted instance. url:/v1/ascm/instance/deleteHostedInstance Request method: POST Request parameters: content-type: multipart/form-data;
 
@@ -1075,7 +1187,7 @@ Deletes an in-band or out-of-band hosted instance. url:/v1/ascm/instance/deleteH
   "ID": 1 # Required.
 ```
 
-#### ListInstance
+#### 4.4.4 ListInstance
 
 Queries a list of in-band or out-of-band hosted instances. url:/v1/ascm/instance/listInstance Request method: POST Request parameters: content-type: application/json;
 
@@ -1091,11 +1203,11 @@ sc.
   "ApplicationGroup": "ib_stoc/oob_stock/instance"
 ```
 
-### Gateway
+### 4.5 Gateway
 
 You can call the following API operations to manage gateway: ListCgw and ListCgwPort.
 
-#### ListCgw
+#### 4.5.1 ListCgw
 
 Queries a list of compute gateways (CGWs). url:/v1/ascm/instance/listCgw Request method: POST Request parameters: content-type: application/json;
 
@@ -1104,7 +1216,7 @@ Queries a list of compute gateways (CGWs). url:/v1/ascm/instance/listCgw Request
   "DeployType": "service name"
 ```
 
-#### ListCgwPort
+#### 4.5.2 ListCgwPort
 
 Queries a list of compute gateway (CGW) ports. url:/v1/ascm/instance/listCgwPort Request method: POST Request parameters: content-type: application/json;
 
@@ -1114,7 +1226,7 @@ Queries a list of compute gateway (CGW) ports. url:/v1/ascm/instance/listCgwPort
   "DeployType": "service name"
 ```
 
-#### ListBorder
+#### 4.5.3 ListBorder
 
 Queries a list of private line gateways that can be used to create private line resources. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1145,7 +1257,7 @@ http(s)://[Endpoint]/?Action=ListBorder
  "errorTitle":"InternalError",
 ```
 
-#### BindVswitchToBorder
+#### 4.5.4 BindVswitchToBorder
 
 Binds a vSwitch to a gateway. This operation is suitable for network configuration scenarios in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1190,7 +1302,7 @@ http(s)://[Endpoint]/?Action=BindVswitchToBorder
  "errorTitle":"InternalError",
 ```
 
-#### UnBindVswitchToBorder
+#### 4.5.5 UnBindVswitchToBorder
 
 Unbinds a vSwitch from a gateway. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1228,7 +1340,7 @@ http(s)://[Endpoint]/?Action=UnBindVswitchToBorder
  "errorTitle":"InternalError",
 ```
 
-#### ReBindVswitchToBorder
+#### 4.5.6 ReBindVswitchToBorder
 
 Rebinds a vSwitch to a gateway. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1270,7 +1382,7 @@ http(s)://[Endpoint]/?Action=ReBindVswitchToBorder
  "errorTitle":"InternalError",
 ```
 
-#### ReUnbindVswitchToBorder
+#### 4.5.7 ReUnbindVswitchToBorder
 
 Unbinds a vSwitch from a gateway again. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1305,7 +1417,7 @@ http(s)://[Endpoint]/?Action=ReUnbindVswitchToBorder
  "errorTitle":"InternalError",
 ```
 
-#### ListVswitchBindToBorder
+#### 4.5.8 ListVswitchBindToBorder
 
 Queries the binding relationship between a vSwitch and a gateway. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1347,7 +1459,7 @@ http(s)://[Endpoint]/?Action=ListVswitchBindToBorder
  "errorTitle":"InternalError",
 ```
 
-#### ListNetworkTopology
+#### 4.5.9 ListNetworkTopology
 
 Queries the network topology in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1390,9 +1502,9 @@ http(s)://[Endpoint]/?Action=ListNetworkTopology
  "errorTitle":"InternalError",
 ```
 
-### Security groups
+### 4.6 Security groups
 
-#### CreateSecurityGroup
+#### 4.6.1 CreateSecurityGroup
 
 Creates a security group in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1439,7 +1551,7 @@ http(s)://[Endpoint]/?Action=CreateSecurityGroup
  "errorTitle":"InternalError",
 ```
 
-#### DeleteSecurityGroup
+#### 4.6.2 DeleteSecurityGroup
 
 Deletes a security group by specifying its ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1470,7 +1582,7 @@ http(s)://[Endpoint]/?Action=DeleteSecurityGroup
  "errorTitle":"InternalError",
 ```
 
-#### ModifySecurityGroup
+#### 4.6.3 ModifySecurityGroup
 
 Modifies security group configurations in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1506,7 +1618,7 @@ http(s)://[Endpoint]/?Action=ModifySecurityGroup
  "errorTitle":"InternalError",
 ```
 
-#### AddSecurityGroupRule
+#### 4.6.4 AddSecurityGroupRule
 
 Adds a rule for a security group in Bare Metal Service (BMS) to control network traffic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1549,7 +1661,7 @@ http(s)://[Endpoint]/?Action=AddSecurityGroupRule
  "errorTitle":"InternalError",
 ```
 
-#### ModifySecurityGroupRule
+#### 4.6.5 ModifySecurityGroupRule
 
 Flexibly adjusts the configurations of security group rules in Bare Metal Service (BMS) to meet different network access control requirements. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1599,7 +1711,7 @@ http(s)://[Endpoint]/?Action=ModifySecurityGroupRule
  "errorTitle":"InternalError",
 ```
 
-#### ListSecurityGroupInstance
+#### 4.6.6 ListSecurityGroupInstance
 
 Queries a list of bare metal instances that are associated with a security group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1634,7 +1746,7 @@ http(s)://[Endpoint]/?Action=ListSecurityGroupInstance
  "errorTitle":"InternalError",
 ```
 
-#### ListSecurityGroup
+#### 4.6.7 ListSecurityGroup
 
 Queries a list of security groups in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1674,7 +1786,7 @@ http(s)://[Endpoint]/?Action=ListSecurityGroup
  "errorTitle":"InternalError",
 ```
 
-#### ListSecurityGroupRule
+#### 4.6.8 ListSecurityGroupRule
 
 Queries a list of security group rules. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1711,7 +1823,7 @@ http(s)://[Endpoint]/?Action=ListSecurityGroupRule
  "errorTitle":"InternalError",
 ```
 
-#### AddSecurityGroupInstance
+#### 4.6.9 AddSecurityGroupInstance
 
 Adds a bare metal instance to a security group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1740,7 +1852,7 @@ http(s)://[Endpoint]/?Action=AddSecurityGroupInstance
  "errorTitle":"InternalError",
 ```
 
-#### DeleteSecurityGroupRule
+#### 4.6.10 DeleteSecurityGroupRule
 
 Deletes a security group rule. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1778,7 +1890,7 @@ http(s)://[Endpoint]/?Action=DeleteSecurityGroupRule
  "errorTitle":"InternalError",
 ```
 
-#### DeleteSecurityGroupInstance
+#### 4.6.11 DeleteSecurityGroupInstance
 
 Deletes a bare metal instance from a specified security group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -1813,11 +1925,11 @@ http(s)://[Endpoint]/?Action=DeleteSecurityGroupInstance
  "errorTitle":"InternalError",
 ```
 
-### Overview
+### 4.7 Overview
 
 You can call the following API operations to manage overview: DescribeManagedInstanceQt and DescribeManagedInstanceQt.
 
-#### DescribeManagedInstanceQt
+#### 4.7.1 DescribeManagedInstanceQt
 
 Queries the total number of managed instances. url:/v1/ascm/instance/describeManagedInstanceQt Request method: POST Request parameters: content-type: multipart/json;
 
@@ -1827,7 +1939,7 @@ Queries the total number of managed instances. url:/v1/ascm/instance/describeMan
   "DeployType": "service name"
 ```
 
-#### DescribeHostedInstanceQt
+#### 4.7.2 DescribeHostedInstanceQt
 
 Queries the total number of hosted instances. url:/v1/ascm/instance/describeHostedInstanceQt Request method: POST Request parameters: content-type: multipart/json;
 
@@ -1836,11 +1948,11 @@ Queries the total number of hosted instances. url:/v1/ascm/instance/describeHost
   "DeployType": "service name"
 ```
 
-### Alerts
+### 4.8 Alerts
 
 You can call the following API operations to manage alerts: ListHealthScore, ListWarningSummary, ListWarningDetail, and CreateWarningEvent.
 
-#### ListHealthScore
+#### 4.8.1 ListHealthScore
 
 Queries the service health check score. url:/v1/aso/monitor/listHealthScore Request method: POST Request parameters: content-type: multipart/json;
 
@@ -1854,7 +1966,7 @@ Queries the service health check score. url:/v1/aso/monitor/listHealthScore Requ
   "DeployType": "service name"
 ```
 
-#### ListWarningSummary
+#### 4.8.2 ListWarningSummary
 
 Queries the total number of unhandled alerts. url:/v1/aso/monitor/listWarningSummary Request method: POST Request parameters: content-type: multipart/json;
 
@@ -1868,7 +1980,7 @@ Queries the total number of unhandled alerts. url:/v1/aso/monitor/listWarningSum
   "DeployType": "service name"
 ```
 
-#### ListWarningDetail
+#### 4.8.3 ListWarningDetail
 
 Queries a list of alerts. url:/v1/aso/monitor/listWarningDetail Request method: POST Request parameters: content-type: multipart/json;
 
@@ -1890,7 +2002,7 @@ dicate All, Unhandled, and Handled statuses, respectively.
   "DeployType": "service name"
 ```
 
-#### CreateWarningEvent
+#### 4.8.4 CreateWarningEvent
 
 Queries a list of new alert events. url:/v1/aso/monitor/createWarningEvent Request method: POST Request parameters: content-type: multipart/json;
 
@@ -1904,9 +2016,9 @@ Queries a list of new alert events. url:/v1/aso/monitor/createWarningEvent Reque
   "Organizations": "" # Required.
 ```
 
-### Cloud Assistant
+### 4.9 Cloud Assistant
 
-#### RunCommand
+#### 4.9.1 RunCommand
 
 Runs custom commands on bare metal servers. This operation is suitable for automated O&M scenarios. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1947,7 +2059,7 @@ http(s)://[Endpoint]/?Action=RunCommand
  "errorTitle":"InternalError",
 ```
 
-#### DescribeInvocationResults
+#### 4.9.2 DescribeInvocationResults
 
 Queries the command execution results of Cloud Assistant. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -1984,9 +2096,9 @@ http(s)://[Endpoint]/?Action=DescribeInvocationResults
  "errorTitle":"InternalError",
 ```
 
-### Key pairs
+### 4.10 Key pairs
 
-#### CreateKeyPair
+#### 4.10.1 CreateKeyPair
 
 Creates a Secure Shell (SSH) key pair for secure login to a bare metal server. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2024,7 +2136,7 @@ http(s)://[Endpoint]/?Action=CreateKeyPair
  "errorTitle":"InternalError",
 ```
 
-#### ListKeyPair
+#### 4.10.2 ListKeyPair
 
 Queries a list of key pairs in Bare Metal Service (BMS) to manage them. This operation is suitable for scenarios where you want to manage and retrieve multiple key pairs at a time. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2061,7 +2173,7 @@ http(s)://[Endpoint]/?Action=ListKeyPair
  "errorTitle":"InternalError",
 ```
 
-#### ConfigKeyPair
+#### 4.10.3 ConfigKeyPair
 
 Configures a key pair in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2096,7 +2208,7 @@ http(s)://[Endpoint]/?Action=ConfigKeyPair
  "errorTitle":"InternalError",
 ```
 
-#### UnbindKeyPair
+#### 4.10.4 UnbindKeyPair
 
 Unbinds a key pair from a specified bare metal server. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2125,7 +2237,7 @@ http(s)://[Endpoint]/?Action=UnbindKeyPair
  "errorTitle":"InternalError",
 ```
 
-#### DeleteKeyPair
+#### 4.10.5 DeleteKeyPair
 
 Deletes a key pair. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2156,9 +2268,9 @@ http(s)://[Endpoint]/?Action=DeleteKeyPair
  "errorTitle":"InternalError",
 ```
 
-### Tasks
+### 4.11 Tasks
 
-#### CreateTask
+#### 4.11.1 CreateTask
 
 Creates a task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2194,7 +2306,7 @@ http(s)://[Endpoint]/?Action=CreateTask
  "errorTitle":"InternalError",
 ```
 
-#### ListTasks
+#### 4.11.2 ListTasks
 
 Queries a list of tasks in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2242,7 +2354,7 @@ http(s)://[Endpoint]/?Action=ListTasks &PageNumber=99 &PageSize=10
  "Code":"ERROR",
 ```
 
-#### DescribeTask
+#### 4.11.3 DescribeTask
 
 Queries the details of a task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2278,7 +2390,7 @@ http(s)://[Endpoint]/?Action=DescribeTask &UID=1133166938931507
  "Code":"ERROR",
 ```
 
-#### GetResult
+#### 4.11.4 GetResult
 
 Queries the execution results of a task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2308,9 +2420,9 @@ http(s)://[Endpoint]/?Action=GetResult &UID=1133166938931507
  "Code":"ERROR",
 ```
 
-### Diagnosis
+### 4.12 Diagnosis
 
-#### GetDiagnoseItem
+#### 4.12.1 GetDiagnoseItem
 
 Queries the information about a diagnostic item in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2341,7 +2453,7 @@ http(s)://[Endpoint]/?Action=GetDiagnoseItem
  "Code":"ERROR"
 ```
 
-#### GetDiagnoseStatusById
+#### 4.12.2 GetDiagnoseStatusById
 
 Queries the current status of a diagnostic task based on the task ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2369,7 +2481,7 @@ http(s)://[Endpoint]/?Action=GetDiagnoseStatusById
  "Code":"ERROR"
 ```
 
-#### GetDiagnoseDetail
+#### 4.12.3 GetDiagnoseDetail
 
 Queries the details of a specific diagnostic task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2406,7 +2518,7 @@ http(s)://[Endpoint]/?Action=GetDiagnoseDetail
  "Code":"ERROR"
 ```
 
-#### QueryDiagnose
+#### 4.12.4 QueryDiagnose
 
 Queries diagnostic records in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2447,7 +2559,7 @@ http(s)://[Endpoint]/?Action=QueryDiagnose
  "Code":"ERROR"
 ```
 
-#### StartDiagnose
+#### 4.12.5 StartDiagnose
 
 Starts a diagnostic task in Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2487,7 +2599,7 @@ http(s)://[Endpoint]/?Action=StartDiagnose
  "Code":"ERROR"
 ```
 
-### DescribeServiceStatus
+### 4.13 DescribeServiceStatus
 
 Queries the status of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the
 
@@ -2513,7 +2625,7 @@ http(s)://[Endpoint]/?Action=DescribeServiceStatus
  "errorTitle":"InternalError",
 ```
 
-### QueryTotalAvailableResource
+### 4.14 QueryTotalAvailableResource
 
 Queries the total amount of all available resources in a Container Service for Kubernetes (ACK) cluster. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2547,7 +2659,7 @@ http(s)://[Endpoint]/?Action=QueryTotalAvailableResource &AckClusterID=cef51d60a
  "Code":"ERROR",
 ```
 
-### ListCluster
+### 4.15 ListCluster
 
 Queries a list of Bare Metal Service (BMS) clusters. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2577,7 +2689,7 @@ http(s)://[Endpoint]/?Action=ListCluster
  "errorTitle":"InternalError",
 ```
 
-### GetBaseline
+### 4.16 GetBaseline
 
 Queries the performance baseline data of Bare Metal Service (BMS). If you call this operation to query performance baseline data after a performance evaluation task is complete, the data will be retrieved and compared. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2610,7 +2722,7 @@ http(s)://[Endpoint]/?Action=GetBaseline &UID=1133166938931507
  "Code":"ERROR",
 ```
 
-### DescribeLicenseInfo
+### 4.17 DescribeLicenseInfo
 
 Queries the license information of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2630,7 +2742,7 @@ http(s)://[Endpoint]/?Action=DescribeLicenseInfo
  "errorTitle":"InternalError",
 ```
 
-### ListModels
+### 4.18 ListModels
 
 Queries a list of all models of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2668,7 +2780,7 @@ http(s)://[Endpoint]/?Action=ListModels
  "Code":"ERROR",
 ```
 
-### GetLogLink
+### 4.19 GetLogLink
 
 Queries the log link of a bare metal instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2701,7 +2813,7 @@ http(s)://[Endpoint]/?Action=GetLogLink &UID=1133166938931507
  "Code":"ERROR",
 ```
 
-### GetLog
+### 4.20 GetLog
 
 Queries the logs of Bare Metal Service (BMS). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 
@@ -2739,7 +2851,7 @@ http(s)://[Endpoint]/?Action=GetLog &UID=1133166938931507
  "Code":"ERROR",
 ```
 
-### GetMachineIDbyCluster
+### 4.21 GetMachineIDbyCluster
 
 Queries the ID of a bare metal server based on the cluster information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the
 

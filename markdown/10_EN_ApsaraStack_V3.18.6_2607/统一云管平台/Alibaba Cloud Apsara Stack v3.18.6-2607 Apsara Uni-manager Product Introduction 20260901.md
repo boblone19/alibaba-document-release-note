@@ -3,14 +3,22 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Product Intro
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 22
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Product Introduction 20260901.pdf"
+source_pdf: "3d04ec5d3700bde6_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Product Introduction 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Product%20Introduction%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Product Introduction 20260901
 
-## What is Apsara Uni-
+## Table of Contents
+
+- 1 What is Apsara Uni-manager?
+  - 1.1 Product details
+  - 1.2 Product value
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 What is Apsara Uni-manager?
 
 **manager?**
 
@@ -32,7 +40,7 @@ Apsara Uni-manager can be used in the following scenarios: Multi-level cloud man
 
 Apsara Uni-manager brings the following benefits: Unified portals to maximize user experience Intelligent analysis to expedite decision-making Open and simple integration For more information about benefits, see Benefits.
 
-### Product details
+### 1.1 Product details
 
 Apsara Uni-manager provides various operations management features, such as resource management, user management, permission management, operations center, and security center. These features help simplify the management and deployment of physical and virtual resources, improve resource utilization, and reduce operations costs. Apsara Uni-manager provides O&M management features such as general O&M, service O&M, security compliance, and system configuration to simplify daily O&M operations and improve the efficiency of O&M. Apsara Uni-manager also provides predefined dashboards to adapt to typical business scenarios, lets you create custom dashboards, and displays business data from different dimensions.
 
@@ -102,7 +110,7 @@ This feature provides role-based permission management, including the ability to
 
 You can manage the usage statistics of resources on multiple cloud platforms in a centralized manner. After the usage statistics of resources on multiple cloud platforms are collected and displayed, you can view and search for the statistics of resources.
 
-### Product value
+### 1.2 Product value
 
 Apsara Uni-manager helps you quickly build business systems, improve resource usage, and reduce management costs. Apsara Uni-manager also delivers various capabilities, such as proactive alerting and monitoring, root cause locating, and automatic troubleshooting by using automated O&M processes. The capabilities help minimize environment maintenance costs and ensure environment stability.
 
@@ -130,7 +138,7 @@ Centralized monitoring on hybrid cloud resources, inventory, and alerts is suppo
 
 Standard preset dashboards and flexible custom dashboards are provided to meet requirements in different business scenarios. Various data sources of JSON, ASAPI, ASAPI data pool, HTTP, JSONP, and Excel are supported for comprehensive O&M data. Rich visualization components and data sources allow you to create custom dashboards. Data presentations in bar charts, pie charts, dashboards, and maps improve the efficiency of O&M and help you quickly obtain information.
 
-### Scenarios
+### 1.3 Scenarios
 
 Apsara Uni-manager is suitable for various scenarios, such as hybrid cloud management, multi-level cloud management, industry cloud operations, and cloud O&M management.
 
@@ -150,7 +158,7 @@ If you want to build cloud operations platforms, you can perform personalized co
 
 You can manage your cloud resources in a comprehensive and multi-dimensional manner in the following scenarios: daily O&M, automated O&M, security O&M, and remote O&M.
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the functions and features of the Apsara Uni-manager Operations Console.
 

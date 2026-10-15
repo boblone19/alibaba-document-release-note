@@ -3,14 +3,59 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 49
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Security Orchestration Automation and Response (SOAR) User Guide 20260828.pdf"
+source_pdf: "438a1e0b43dd83fa_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Security Orchestr"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Security Orchestration Automation and Response (SOAR) User Guide 20260828
 
-## Prerequisites
+## Table of Contents
+
+- 1 Prerequisites
+- 2 Quick start
+  - 2.1 User permission description
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 Security Orchestration, Automation and Response SOAR
+  - 3.1 Risk handling
+    - 3.1.1 Case management
+  - 3.2 SOAR
+    - 3.2.1 Playbook template
+    - 3.2.2 List
+    - 3.2.3 Component list
+    - 3.2.4 Blocklist
+    - 3.2.5 Manage IOCs
+    - 3.2.6 Playbook execution records
+  - 3.3 Operations management
+    - 3.3.1 SOAR settings
+      - 3.3.1.1 Environment variable configuration
+      - 3.3.1.2 Streaming Data Source Configuration
+      - 3.3.1.3 War room instruction configuration
+    - 3.3.2 Organization authorization
+- 4 Apsara Stack Security configurations
+  - 4.1 Log on to the Apsara Uni-manager Management Console
+  - 4.2 规则运营
+    - 4.2.1 Create and manage IPS rules
+    - 4.2.2 Manage Anti-DDoS Service rules
+    - 4.2.3 Manage Server Guard rules
+    - 4.2.4 Create and manage WAF rules
+  - 4.3 Configure alert settings
+  - 4.4 全局设置
+    - 4.4.1 Configure the attack blocking feature
+  - 4.5 账号管理
+    - 4.5.1 Manage Apsara Stack tenant accounts
+    - 4.5.2 Manage Alibaba Cloud accounts
+  - 4.6 Migration to Apsara Uni-manager Operations Console
+    - 4.6.1 Log on to Cloud Shield Operations Center
+    - 4.6.2 View system monitoring data
+    - 4.6.3 Global settings
+      - 4.6.3.1 Configure host security rules
+      - 4.6.3.2 Configure whitelist settings
+    - 4.6.4 Upgrade center
+      - 4.6.4.1 Upgrade center overview
+      - 4.6.4.2 Feature library or version updates
+
+## 1 Prerequisites
 
 This document describes the information you must understand before using the Security Orchestration, Automation and Response user guide. It also lists the local PC configuration requirements you must confirm before logging in to the Apsara Stack Security console.
 
@@ -23,9 +68,9 @@ Your local PC must meet the requirements listed in the Configuration requirement
 | Browser | Internet Explorer: version 11 or later Chrome (recommended): version 42.0.0 or later Firefox: version 30 or later Safari: version 9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### User permission description
+### 2.1 User permission description
 
 This topic describes the user roles related to Apsara Stack Security. All Security Center roles in Apsara Stack Security are default roles. The system also supports custom role creation. Before you log in to Security Center, confirm that your account has been assigned a role related to Apsara Stack Security. For details about roles, see Default roles in Apsara Stack Security. Table 1. Default roles in Apsara Stack Security
 
@@ -38,7 +83,7 @@ This topic describes the user roles related to Apsara Stack Security. All Securi
 
 If you do not have an account or role, contact your administrator to create a user and assign a role. For specific steps, see **Apsara Uni-Manager Management Console User Guide** under **Create a user**.
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -66,15 +111,15 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-## Security Orchestration,
+## 3 Security Orchestration, Automation and Response SOAR
 
 **Automation and Response**
 
 ### SOAR
 
-### Risk handling
+### 3.1 Risk handling
 
-#### Case management
+#### 3.1.1 Case management
 
 The case management feature allows you to centrally manage and investigate security events. This topic describes how to create and investigate cases, and view case information and statistics.
 
@@ -145,9 +190,9 @@ You are navigated to the joint war room with parameters passed and converted to 
 investigation and response.
 7. On the **Evidences** tab, enter, edit, and delete evidences.
 
-### SOAR
+### 3.2 SOAR
 
-#### Playbook template
+#### 3.2.1 Playbook template
 
 This topic describes how to create a playbook by using a template.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -172,7 +217,7 @@ operation scripts. Only one-click blocking and联动封禁 playbook templates ar
 | Sharing scope | The sharing scope for using the automation orchestration playbook. The default value is Private. |
 | Description | The description of the automation orchestration playbook. |
 
-#### List
+#### 3.2.2 List
 
 Playbook management Automated orchestration improves security response speed and simplifies daily tasks for security experts by automating and streamlining routine security operations. This allows teams to focus on combating advanced persistent threats (APT). Routine security operations can be compiled into visual, interpretable, and executable playbooks stored within the product, facilitating the inheritance of operational experience. This article describes how to view, create, and edit playbooks.
 
@@ -291,7 +336,7 @@ trigger times. Streaming trigger: You must configure trigger conditions. a. Clic
 
 b. Click **Test**. c. In the **Test Data** dialog box, click **Test Run**. After the test run is complete, you can click **View Execution Logs** in the result dialog box to go to the **Playbook Execution Records** page and view the execution logs of the playbook. For more information, see Playbook execution records. If the test run result does not meet your expectations, you can adjust the relevant information in the **Test Data** dialog box. Copy or delete a playbook: Click **Actions** in the row that corresponds to the target playbook, move the pointer over **More**, and then click **Copy** or **Delete**.
 
-#### Component list
+#### 3.2.3 Component list
 
 A component is a collection of one or more assets and actions that complete specific tasks. When you need to connect to an external service, a component can act as a manager for that external service, such as WAF, Firewall, Database, or Notification Service. This topic describes how to view component information.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -304,7 +349,7 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 **Component Name**.
 You can view information such as component type, scope, version, actions, and assets.
 
-#### Blocklist
+#### 3.2.4 Blocklist
 
 The blocklist records various data accumulated during security event handling. It enables reuse of processing experience and data. The blocklist has two types: **Value Table** and **Key-**
 **value Table**. This topic describes how to create a blocklist, add entries to it, and import
@@ -377,7 +422,7 @@ to automatically download the template. The system provides different import tem
 6. After you prepare the template, click **Import**. In the Import List dialog box, follow the
 wizard to complete the import. You can click **Export** to export entries from the list at any time.
 
-#### Manage IOCs
+#### 3.2.5 Manage IOCs
 
 The Intelligence Library page displays all blocked indicators of compromise (IOCs). You can manage IOCs, such as viewing, blocking, and unblocking IOCs. This topic describes how to add and manage IOCs, and view IOC details.
 
@@ -427,7 +472,7 @@ region from the **Region** drop-down list and click **Access with Authorized Rol
 **Threat Level**: the threat level. Valid values: High Risk, Medium Risk, and
 Low Risk.
 
-#### Playbook execution records
+#### 3.2.6 Playbook execution records
 
 **Indicator Type**: the scenario. Valid values: Indicator of Attack and
 Indicator of Compromise. You can view all playbook information, playbook execution logs, and action execution logs on
@@ -478,11 +523,11 @@ the following actions: Search for executed actions by setting filters such as **
 **Occurred At**, and **Trigger Data ID**.
 View action execution information. View run details: Click **Details** in the Actions column of the playbook execution action list to view the **Complete Output Results**, **Input Parameters**, and **Output Parameters**.
 
-### Operations management
+### 3.3 Operations management
 
-#### SOAR settings
+#### 3.3.1 SOAR settings
 
-##### Environment variable configuration
+##### 3.3.1.1 Environment variable configuration
 
 An environment variable is a centralized and secure repository of configuration parameters. Playbooks can dynamically read the required variables and parameters at runtime.
 
@@ -507,7 +552,7 @@ configure environment variables. Create an environment variable Click **Create**
 
 Search for environment variables Search for environment variables by specifying the key, value, or description. Enable, disable, edit, or delete existing environment variables Click **Edit** or **Delete** in the Actions column of the target environment variable. Alternatively, toggle the switch in the **Enable** column to enable or disable it.
 
-##### Streaming Data Source Configuration
+##### 3.3.1.2 Streaming Data Source Configuration
 
 Streaming data sources include SOC alert message data and data manually created by users. The system primarily uses this data to automatically execute playbooks. This article describes how to create, search for, delete, and edit streaming data sources.
 
@@ -538,7 +583,7 @@ After you complete the configuration, the new data source appears in the streami
 
 After you configure a streaming data source, you can set the playbook execution method to streaming trigger and select the created streaming data source. When the trigger condition is met, the system automatically executes the playbook to enable real-time response and handling of security events. For specific operations, see View and manage playbooks.
 
-##### War room instruction configuration
+##### 3.3.1.3 War room instruction configuration
 
 Use war room instruction configuration to view and create case-related war room instructions. This article describes how to view and create war room instructions.
 
@@ -584,7 +629,7 @@ Descriptions include **Custom Instructions** and **Common Instructions**. **Comm
 modification time.
 **Edit** or **Delete** the war room instruction.
 
-#### Organization authorization
+#### 3.3.2 Organization authorization
 
 This topic describes how to enable organization authorization for Security Orchestration, Automation and Response (SOAR).
 
@@ -607,11 +652,11 @@ On the **Organization Authorization** page, in the **Security Orchestration, Aut
 **and Response** section, enable or disable **Assume RAM Role to Run Tasks** .
 This authorization allows SOAR to invoke other products or services using your RAM identity, including running scheduled playbooks and streaming playbooks continuously on your behalf. If you do not enable this feature, you cannot use SOAR product functions.
 
-## Apsara Stack Security
+## 4 Apsara Stack Security configurations
 
 **configurations**
 
-### Log on to the Apsara Uni-
+### 4.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -639,9 +684,9 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
 operations in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**.
 
-### 规则运营
+### 4.2 规则运营
 
-#### Create and manage IPS rules
+#### 4.2.1 Create and manage IPS rules
 
 Cloud Firewall provides built-in intrusion prevention system (IPS) rules. You can create custom IPS rules based on your business requirements and network environment to monitor the operations of Cloud Firewall. This topic describes how to create and manage custom IPS rules.
 
@@ -674,7 +719,7 @@ configure the parameters and click **OK**. The following table describes the par
 
 After you create custom IPS rules, you can perform the following operations on the rules: View the details of a rule You can filter rules by specifying filter conditions above the rule list. Find the rule whose details you want to view and click **Details** in the **Actions** column to view the rule details. Enable an IPS rule Find the rule that you want to enable and turn on the switch in the **Enable or not** column to change the state of the rule from **Disable** to **Enable**. Disable an IPS rule If a rule does not meet your business requirements, you can disable the rule. Find the rule that you want to disable and turn off the switch in the **Enable or not** column to change the state of the rule from **Enable** to **Disable**.
 
-#### Manage Anti-DDoS Service rules
+#### 4.2.2 Manage Anti-DDoS Service rules
 
 On the Anti-DDoS Service Rules page, you can modify threshold settings for traffic scrubbing and redirection based on your business requirements. This topic describes how to modify threshold settings for traffic scrubbing and redirection.
 
@@ -697,7 +742,7 @@ ii. In the **Modify Threshold** dialog box, specify custom thresholds and click 
 **Automatic Redirection** message, click **OK**.
 By default, **Automatic DDoS Traffic Redirection and Scrubbing** is turned off. If you turn on Automatic DDoS Traffic Redirection and Scrubbing, traffic scrubbing events are triggered based on the thresholds that you specify. The traffic of attacked IP addresses is automatically forwarded to an Anti-DDoS cluster for scrubbing. If you turn off Automatic DDoS Traffic Redirection and Scrubbing, alert events are triggered based on the thresholds that you specify. You can start or end traffic scrubbing in the Anti-DDoS Service console based on your business requirements.
 
-#### Manage Server Guard rules
+#### 4.2.3 Manage Server Guard rules
 
 You can view vulnerabilities, baselines, and server exceptions on the Server Guard Rules tab. This topic describes how to view the information about Server Guard rules.
 
@@ -720,7 +765,7 @@ You can view vulnerabilities, baselines, and server exceptions on the Server Gua
 | Baselines (marked with ② in the preceding figure) | On the Baselines tab, you can view the baseline types and the check items that are used. To search for a baseline, you can select a baseline type from the Baseline Type drop-down list, select a severity from the Risk Level drop-down list, and then enter a check item category or name in the search box. In the baseline list, you can view the information about a baseline in the following columns: Baseline Type, Check Item Category, Check Item Name, Risk Level, Updated At, and Status. |
 | Server Exceptions (marked with ② in the preceding figure) | On the Server Exceptions tab, you can view the following information: Rule Alert Types and Webshell & Malicious Processes. To search for an exception on a server, you can select a rule category from the Rule Category drop-down list, select a severity level from the Risk Level drop-down list, and then enter a rule subcategory name in the search box. In the server exception list, you can view the information about an exception in the following columns: Rule Subcategory, Rule Category, Risk Level, Updated At, Source, and Status. |
 
-#### Create and manage WAF rules
+#### 4.2.4 Create and manage WAF rules
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
@@ -751,7 +796,7 @@ parameters and click **OK**. The following table describes the parameters.
 
 After you create rules, you can perform the following operations on the rules: Filter WAF rules by specifying filter conditions above the rule list. Find the rule that you want to manage and click **Modify** in the **Actions** column to modify the rule.
 
-### Configure alert settings
+### 4.3 Configure alert settings
 
 On the Alert Settings page, you can configure alert contacts and alert rules. When monitoring data triggers alert rules, the system automatically sends alerts to specified alert contacts by using DingTalk messages or emails. This topic describes how to configure alert contacts and alert rules.
 
@@ -791,9 +836,9 @@ that you want to use and click **Save**.
 | Application whitelist event | Unauthorized process start | All levels |   |   |
 | Tamper- proofing event | Unusual file modification Unusual file addition Unusual file deletion | All levels |   |   |
 
-### 全局设置
+### 4.4 全局设置
 
-#### Configure the attack blocking feature
+#### 4.4.1 Configure the attack blocking feature
 
 The attack blocking feature protects your servers from web attacks and brute-force attacks. This topic describes how to configure the attack blocking feature.
 
@@ -808,9 +853,9 @@ The attack blocking feature protects your servers from web attacks and brute-for
 4. On the **Global Settings** tab, turn on or off the switch in the Actions column to enable or
 disable the attack blocking feature. After you disable the attack blocking feature, Apsara Stack Security generates alerts for web attacks and brute-force attacks but does not block them.
 
-### 账号管理
+### 4.5 账号管理
 
-#### Manage Apsara Stack tenant accounts
+#### 4.5.1 Manage Apsara Stack tenant accounts
 
 This topic describes how to view and modify the information about your Apsara Stack tenant account.
 
@@ -831,7 +876,7 @@ tenant account. i. Find the Apsara Stack tenant account that you want to modify 
 **Actions** column.
 ii. In the **Change Account** dialog box, modify the Apsara Stack Account, Access Key, and Access Secret parameters, and click **OK**. After the modification, you can click Details in the **Actions** column to view the details of the Apsara Stack tenant account.
 
-#### Manage Alibaba Cloud accounts
+#### 4.5.2 Manage Alibaba Cloud accounts
 
 After you add an Alibaba Cloud account to Apsara Stack Security, you can manage the Anti- DDoS Pro, Anti-DDoS Premium, and Web Application Firewall (WAF) instances that belong to the Alibaba Cloud account in Apsara Stack Security. This way, you can use features in a hybrid cloud. This topic describes how to add an Alibaba Cloud account to Apsara Stack Security.
 
@@ -855,11 +900,11 @@ In the **Add Account** dialog box, configure the parameters and click **OK**. Th
 
 After the Alibaba Cloud account is added, you can view the account in the account list. You can **modify** or **remove** the account.
 
-### Migration to Apsara Uni-
+### 4.6 Migration to Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
-#### Log on to Cloud Shield Operations
+#### 4.6.1 Log on to Cloud Shield Operations Center
 
 **Center**
 
@@ -886,7 +931,7 @@ The password is 10 to 20 characters in length.
 
 You can view information on the pages of **Cloud Shield Operations Center**.
 
-#### View system monitoring data
+#### 4.6.2 View system monitoring data
 
 You can use the system monitoring feature to monitor integrated cloud services and identify exceptions in the cloud services at the earliest opportunity. This facilitates service O&M. This topic describes how to view the system monitoring data.
 
@@ -903,9 +948,9 @@ services. On the **Monitoring Overview** tab, view the following information: Mo
 | Middlewar e | You can specify the monitoring time range and monitoring view to view the details of basic monitoring and middleware monitoring. Valid values for the time range: 3 Hours, 6 Hours, 12 Hours, 1 Day, 2 Days, and Custom. You can click the icon to manually update the monitoring data. You can also turn on Automatic Refresh to automatically update the monitoring data. The monitoring view supports Cluster View and Single-server View. You can view the following monitoring data: the QPS of MetaQ, the number of garbage collections (GCs) in the JVM, the amount of time consumed to monitor GCs in the JVM, the amount of JVM memory, the number of loaded classes in the JVM, the numbers of JVM threads in different states, the number of JVM threads, the QPS of HSF, the response time of HSF and database usage. |
 | Health Check | You can check the health status of all hosts in an application based on check methods such as TCP- and HTTP-based health checks. |
 
-#### Global settings
+#### 4.6.3 Global settings
 
-##### Configure host security rules
+##### 4.6.3.1 Configure host security rules
 
 1. Log in to the Cloud Shield Operations Center console.
 2. In the left-side navigation pane, choose **Cloud Services > Server Guard O&M > Global**
@@ -925,7 +970,7 @@ If you modify the global brute-force attack detection rule, the detection rules 
 | Suspicious Account Logon | If a remote login account is included in the list of suspicious accounts, an alert is generated for logins that use the account. Click Manage Suspicious Accounts. In the Suspicious Account Management panel, enter suspicious accounts or upload a list of suspicious accounts by using a template. Make sure that the file to be uploaded does not exceed 5 KB in size. To ensure compatibility with the Windows system mechanism, use lowercase letters when you enter Windows accounts. |
 | Audit of High- risk Commands | You can configure the silence threshold for high-risk command audit. After you configure the threshold, when the number of alerts generated by the rule reaches the threshold, the rule enters the silent mode and does not generate alerts until it resumes in the next cycle. Default threshold: 100 alerts within 5 minutes. For more information, see Configure host security rules in Apsara Stack Security User Guide for security administrators. |
 
-##### Configure whitelist settings
+##### 4.6.3.2 Configure whitelist settings
 
 1. Log in to the Cloud Shield Operations Center console.
 2. In the left-side navigation pane, choose **Cloud Services > Server Guard O&M > Global**
@@ -943,9 +988,9 @@ tab, click **Add**. In the **Create Whitelist** dialog box, configure the parame
 
 You can **delete** a whitelist that is no longer required.
 
-#### Upgrade center
+#### 4.6.4 Upgrade center
 
-##### Upgrade center overview
+##### 4.6.4.1 Upgrade center overview
 
 The upgrade center allows you to manually or automatically update the feature library and the version of Apsara Stack Security to ensure up-to-date protection. You can perform the following steps for an update:
 1. Configure the import mode of your update package.
@@ -953,7 +998,7 @@ The upgrade center supports**automatic import** and **manual import**. If Apsara
 2. Update the feature library and the version of Apsara Stack Security. For more information,
 see Update the feature library or the version of Apsara Stack Security.
 
-##### Feature library or version updates
+##### 4.6.4.2 Feature library or version updates
 
 The upgrade center supports automatic import and manual import of update packages. You can use the update packages to update the feature libraries or versions of Apsara Stack Security services. This topic describes how to update the feature libraries or versions of Apsara Stack Security services.
 

@@ -3,16 +3,24 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container Platform ACK One Product Introduction 20260828.pdf"
+source_pdf: "99a8fcf1ea1d8689_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Distributed%20Cloud%20Container%20Platform%20ACK%20One%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Distributed Cloud Container Platform ACK One Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is Distributed Cloud Container Platform for Kubernetes (ACK One)
+- 2 Product details
+- 3 Benefits
+- 4 Functions and features
+- 5 Common scenarios
+
 ainer Platform for Kubernetes (AC K One)
 
-## What is Distributed Cloud
+## 1 What is Distributed Cloud Container Platform for Kubernetes (ACK One)
 
 **Container Platform for**
 
@@ -20,7 +28,7 @@ ainer Platform for Kubernetes (AC K One)
 
 Distributed Cloud Container Platform for Kubernetes (ACK One) is an enterprise-grade cloud native platform that Alibaba Cloud provides for hybrid cloud, multi-cluster, distributed computing, and disaster recovery scenarios. ACK One connects to and manages your Kubernetes clusters on any infrastructure in any region. It provides consistent management and community-compatible APIs, supporting unified O&M for computing, networking, storage, security, monitoring, logging, jobs, applications, and traffic.
 
-## Product details
+## 2 Product details
 
 As an enterprise-grade cloud-native solution, ACK Onehelps enterprises build secure, standardized, and modern cloud-native IT architectures. It effectively addresses multi-cluster management challenges in distributed cloud scenarios and delivers comprehensive coverage and unified governance from local data centers to Apsara Stack and edge nodes.
 
@@ -58,7 +66,7 @@ Multi-Cluster Application Multi-Cluster Resource Distribution Distribution Open 
 
 Distributed Cloud Container Platform for Kubernetes (ACK One)is an enterprise-grade solution that Alibaba Cloud develops for complex distributed cloud scenarios. It overcomes the limitations of traditional cloud-native platforms by enabling unified management of Kubernetes clusters across regions and infrastructure. The platform delivers consistent O&M experience, intelligent resource scheduling, elastic computing power, and reliable disaster recovery for enterprises. Whether you need to build a hybrid cloud architecture, manage multi-cluster environments, implement application disaster recovery, or optimize AI and big data workloads, ACK One provides comprehensive, efficient, and secure solutions to accelerate your cloud-native transformation and enhance the agility and reliability of your IT infrastructure.
 
-## Benefits
+## 3 Benefits
 
 Distributed Cloud Container Platform for Kubernetes (ACK One) is an enterprise-grade cloudnative platform that Alibaba Cloud provides for hybrid cloud, multi-cluster, distributed computing, and disaster recovery scenarios. The platform connects to and manages Kubernetes clusters on any infrastructure in any region through a unified control plane. It delivers consistent operations experience and community-compatible APIs to help enterprises build secure and standardized cloud-native architectures. This topic describes the key benefits of ACK One.
 
@@ -80,7 +88,7 @@ ACK One uses an intelligent scheduler to support advanced capabilities such as G
 
 ACK One uses the registered cluster feature to centrally manage Kubernetes clusters in local data centers and on third-party public clouds.
 
-## Functions and features
+## 4 Functions and features
 
 Distributed Cloud Container Platform for Kubernetes (ACK One) is an enterprise-grade Cloud Native platform from Alibaba Cloud. The platform supports hybrid cloud, multi-cluster, distributed computing, and disaster recovery scenarios. It connects to and manages any Kubernetes cluster, provides consistent APIs, and enables unified O&M. This topic describes the specific features.
 
@@ -114,7 +122,7 @@ Distributed Cloud Container Platform for Kubernetes (ACK One) is an enterprise-g
 |---|---|
 | IPv4/IPv6 dual-stack support | ACK One clusters fully support the Kubernetes-Native IPv4/IPv6 dual- stack network mode. |
 
-## Common scenarios
+## 5 Common scenarios
 
 This topic describes scenarios of Distributed Cloud Container Platform for Kubernetes (ACK One).
 

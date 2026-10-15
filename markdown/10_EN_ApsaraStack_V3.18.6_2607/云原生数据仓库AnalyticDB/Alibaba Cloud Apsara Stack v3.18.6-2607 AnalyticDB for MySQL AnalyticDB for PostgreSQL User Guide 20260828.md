@@ -3,14 +3,107 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 259
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL User Guide 20260828.pdf"
+source_pdf: "af9f3765bf1d4e04_Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL User Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93AnalyticDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20AnalyticDB%20for%20MySQL%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 AnalyticDB for MySQL AnalyticDB for PostgreSQL User Guide 20260828
 
-## Kernel version release
+## Table of Contents
+
+- 1 Kernel version release notes
+- 2 What is AnalyticDB for PostgreSQL?
+- 3 Instance specifications
+- 4 Quick start
+  - 4.1 Log in to the AnalyticDB for PostgreSQL console
+  - 4.2 Create an instance
+  - 4.3 Configure a whitelist
+  - 4.4 Create a database account
+  - 4.5 Obtain client tools
+  - 4.6 Connect to a database
+- 5 Instances
+  - 5.1 Reset the password of an account
+  - 5.2 Manage the endpoints of an instance
+  - 5.3 Change the specifications of an instance
+  - 5.4 Restart an instance
+  - 5.5 Release an instance
+  - 5.6 Configure SQL audit
+  - 5.7 SSL encryption
+  - 5.8 Update the minor engine version
+  - 5.9 Label
+  - 5.10 Set instance parameters
+  - 5.11 Import data
+    - 5.11.1 Import data from or export data to OSS in parallel
+    - 5.11.2 Import data from MySQL
+    - 5.11.3 Import data from PostgreSQL
+    - 5.11.4 Use the COPY statement to import data
+- 6 Databases
+  - 6.1 Overview
+  - 6.2 Create a database
+  - 6.3 Create a distribution key
+  - 6.4 Construct data
+  - 6.5 Query data
+  - 6.6 Manage extensions
+  - 6.7 Manage users and permissions
+  - 6.8 Manage real-time materialized views
+  - 6.9 Manage JSON data
+  - 6.10 Use HyperLogLog
+  - 6.11 Use the CREATE LIBRARY statement
+  - 6.12 Create and use a PL/Java UDF
+- 7 Table
+  - 7.1 Create a table
+  - 7.2 Principles and scenarios of row store, column store, heap tables, and AO tables
+  - 7.3 Enable the column store and compression features
+  - 7.4 Add a field to a column-oriented table and set the default value
+  - 7.5 Configure table partitions
+  - 7.6 Configure the sort key
+- 8 Vector analysis
+  - 8.1 Overview
+  - 8.2 Usage of the vector search engine
+    - 8.2.1 Enable or disable vector search engine optimization
+    - 8.2.2 Access vector databases
+      - 8.2.2.1 Use SQL statements to access vector databases
+      - 8.2.2.2 Use API operations to access vector databases
+        - 8.2.2.2.1 Java
+        - 8.2.2.2.3 Python 3
+    - 8.2.3 Create a vector table
+    - 8.2.4 Create a vector index
+    - 8.2.5 Import vector data
+    - 8.2.6 Perform vector search
+    - 8.2.7 Use the FLOAT2 data type to compress vector storage
+  - 8.3 Use AnalyticDB for PostgreSQL sparse vectors
+  - 8.4 Use pgvector-compatible vector search
+  - 8.5 Use hybrid search
+  - 8.6 Performance tests for vector analysis
+  - 8.7 Case: Build an image-based search system
+  - 8.8 Case: Build a text semantic retrieval system
+- 9 Backup and restoration
+  - 9.1 Feature overview
+  - 9.2 Back up data
+  - 9.3 Restore data
+- 10 Performance monitoring
+  - 10.1 Monitoring and alerting
+    - 10.1.1 View instance monitoring information
+    - 10.1.2 View node monitoring information
+  - 10.2 Monitoring and alerting
+  - 10.3 Diagnostics and optimization
+    - 10.3.1 Instance status overview
+    - 10.3.2 Use the O&M Assistant feature
+    - 10.3.3 Query analysis
+    - 10.3.4 Lock diagnostics
+- 11 Cloud Monitor
+  - 11.1 View performance metrics
+  - 11.2 Alert history
+  - 11.3 Alert rules
+    - 11.3.1 Create an alert rule
+    - 11.3.2 Manage alert rules
+- 12 Best practices
+  - 12.1 Configure memory and load parameters
+- 13 Appendix
+  - 13.1 Authorize a tenant organization to access SLB
+
+## 1 Kernel version release notes
 
 **notes**
 
@@ -34,13 +127,13 @@ Release v3.18.6r-paas-polardb-hotfeature-SP009 includes the following kernel ver
 
 reSQL?
 
-## What is AnalyticDB for
+## 2 What is AnalyticDB for PostgreSQL?
 
 **PostgreSQL?**
 
 AnalyticDB for PostgreSQL is a distributed cloud database service that uses multiple compute nodes to provide massively parallel processing (MPP) data warehousing. AnalyticDB for PostgreSQL is developed based on the open source Greenplum database project and enhanced by Alibaba Cloud. This service has the following features: Compatible with Greenplum and all tools that support Greenplum. Supports Object Storage Service (OSS), JSON, and HyperLogLog, which is a probabilistic algorithm for cardinality estimation. Supports SQL:2003-compliant syntax and Online Analytical Processing (OLAP) aggregate functions to provide flexible hybrid analysis. Supports both row store and column store to enhance analytics performance. Supports data compression to reduce storage costs. Provides online scaling and performance monitoring to enable database administrators (DBAs), developers, and data analysts to focus on improving enterprise productivity and creating core business value instead of managing and maintaining large numbers of MPP clusters.
 
-## Instance specifications
+## 3 Instance specifications
 
 This topic describes the instance specifications supported by AnalyticDB for PostgreSQL.
 
@@ -101,9 +194,9 @@ This topic describes the instance specifications supported by AnalyticDB for Pos
 | 32 Cores, 256 GB (Ultra-high Concurrency) | 32C256G | 32 Core | 256 GB | 2560G |
 | 64 Cores, 512 GB (Ultra-high Concurrency) | 64C512G | 64 Core | 512 GB | 5120 GB |
 
-## Quick start
+## 4 Quick start
 
-### Log in to the AnalyticDB for
+### 4.1 Log in to the AnalyticDB for PostgreSQL console
 
 **PostgreSQL console**
 
@@ -147,7 +240,7 @@ For more information about how to enable MFA and bind an MFA device, see the
 5. In the top navigation bar, click **Products** and choose **Database Services > AnalyticDB**
 **for PostgreSQL**.
 
-### Create an instance
+### 4.2 Create an instance
 
 The first step is to create an AnalyticDB for PostgreSQL instance. You can quickly create an instance in the console.
 1. Log on to the AnalyticDB for PostgreSQL console.
@@ -193,7 +286,7 @@ panel on the right to ensure that it meets your requirements. If your quota is i
 **Guide**.
 5. After you configure the parameters, click **Submit**.
 
-### Configure a whitelist
+### 4.3 Configure a whitelist
 
 To ensure the security and stability of a database, you must add IP addresses or CIDR blocks that are allowed to access the database to a whitelist.
 1. Log in to the AnalyticDB for PostgreSQL console.
@@ -238,7 +331,7 @@ The default whitelist group cannot be deleted. a. Find the whitelist group that 
 
 We recommend that you maintain your whitelists on a regular basis to ensure the security of AnalyticDB for PostgreSQL.
 
-### Create a database account
+### 4.4 Create a database account
 
 This topic describes how to create a database account for an AnalyticDB for PostgreSQL instance.
 
@@ -299,7 +392,7 @@ Example:
 CREATE role test1 WITH LOGIN ENCRYPTED PASSWORD '111111';
 ```
 
-### Obtain client tools
+### 4.5 Obtain client tools
 
 The interface protocol of AnalyticDB for PostgreSQL is compatible with Greenplum Community Edition and PostgreSQL 8.2. You can use the Greenplum or PostgreSQL client to connect to AnalyticDB for PostgreSQL.
 
@@ -346,7 +439,7 @@ psql: /usr/local/pgsql/bin/psql pg_dump: /usr/local/pgsql/bin/pg_dump
 
 For Windows and other systems, go to the Pivotal website to download HybridDB Client.
 
-### Connect to a database
+### 4.6 Connect to a database
 
 Greenplum Database and AnalyticDB for PostgreSQL are both developed based on PostgreSQL 8.2 and fully compatible with its message protocol. AnalyticDB for PostgreSQL users can use tools that support the PostgreSQL 8.2 message protocol, such as libpq, Java Database Connectivity (JDBC), Open Database Connectivity (ODBC), and psycopg2.
 
@@ -573,9 +666,9 @@ For more information, see PostgreSQL ODBC driver and psqlODBC HOWTO - C#.
 
 Pivotal Greenplum official documentation PostgreSQL psqlODBC Compiling psqlODBC on Unix Download ODBC connectors Download JDBC connectors The PostgreSQL JDBC Interface
 
-## Instances
+## 5 Instances
 
-### Reset the password of an
+### 5.1 Reset the password of an account
 
 **account**
 
@@ -593,7 +686,7 @@ To ensure data security, we recommend that you change your password on a regular
 The password must meet the following requirements: The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - = The password is 8 to 32 characters in length.
 6. Click **OK**.
 
-### Manage the endpoints of an
+### 5.2 Manage the endpoints of an instance
 
 **instance**
 
@@ -635,7 +728,7 @@ column.
 After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 5. Click **OK**.
 
-### Change the specifications of
+### 5.3 Change the specifications of an instance
 
 **an instance**
 
@@ -675,7 +768,7 @@ When the specifications of coordinator nodes are being changed, DDL operations m
 
 When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
 
-### Restart an instance
+### 5.4 Restart an instance
 
 When the number of connections of an instance reaches the upper limit or the instance has performance issues, you can restart the instance.
 
@@ -691,7 +784,7 @@ The restart process takes about 3 to 30 minutes. During the restart period, the 
 
 The database service may be interrupted when you restart an instance. Proceed with caution.
 
-### Release an instance
+### 5.5 Release an instance
 
 This topic describes how to manually release an AnalyticDB for PostgreSQL instance.
 
@@ -706,7 +799,7 @@ This topic describes how to manually release an AnalyticDB for PostgreSQL instan
 
 After an instance is released, all of its data is deleted. Back up your data before you release an instance.
 
-### Configure SQL audit
+### 5.6 Configure SQL audit
 
 AnalyticDB for PostgreSQL allows you to use the SQL audit feature to view SQL details and audit SQL queries on a regular basis. The SQL audit feature does not affect instance performance.
 
@@ -737,7 +830,7 @@ execution duration, time range, database user, source IP address, execution stat
 
 You can click the icon to export SQL information from the current page.
 
-### SSL encryption
+### 5.7 SSL encryption
 
 To enhance data transmission security, you can enable SSL encryption for your instances. SSL encryption can encrypt network connections at the transport layer. This improves data security and ensures data integrity.
 
@@ -784,7 +877,7 @@ If you modify the status of SSL encryption, your instance restarts. We recommend
 
 If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
-### Update the minor engine
+### 5.8 Update the minor engine version
 
 **version**
 
@@ -809,7 +902,7 @@ complete, the instance enters the **Running** state. Otherwise, the instance rem
 **Upgrading version** state.
 Before the update, the system checks the minor engine version of your instance. If the latest minor version is used, the system skips the update and restart operations.
 
-### Label
+### 5.9 Label
 
 This topic describes how to create and delete tags.
 
@@ -840,7 +933,7 @@ You can unbind a maximum of 20 tags at a time. If a tag is unbound from an insta
 column.
 3. In the **Edit Tag** dialog box, delete the tag group and click **OK**.
 
-### Set instance parameters
+### 5.10 Set instance parameters
 
 You can view and modify the values of some parameters in the console, and query parameter modification records.
 
@@ -866,9 +959,9 @@ appears.
 4. Click the **Change History** tab.
 5. Select a time range to query the modification records, then click **Query**.
 
-### Import data
+### 5.11 Import data
 
-#### Import data from or export data to
+#### 5.11.1 Import data from or export data to OSS in parallel
 
 **OSS in parallel**
 
@@ -1126,7 +1219,7 @@ You can handle timeout-related errors by using parameters related to oss_ext.
 
 CREATE EXTERNAL TABLE CREATE TABLE
 
-#### Import data from MySQL
+#### 5.11.2 Import data from MySQL
 
 You can use the mysql2pgsql tool to migrate tables from MySQL to AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, or Postgres Plus Advanced Server (PPAS).
 
@@ -1212,7 +1305,7 @@ only data that meets the c1 > 138888 condition is migrated.
  ./mysql2pgsql -l tab_list.txt
 ```
 
-#### Import data from PostgreSQL
+#### 5.11.3 Import data from PostgreSQL
 
 You can use the pgsql2pgsql tool to migrate tables across AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, and Postgres Plus Advanced Server (PPAS).
 
@@ -1262,7 +1355,7 @@ By default, the migration program migrates the table data of all users from the 
 3. View the status information.
 You can view the status information in a single migration process by connecting to the selfmanaged database. The status information is stored in the db_sync_status table and includes the start and end time of full data migration, the start time of incremental data migration, and the status of incremental data synchronization.
 
-#### Use the COPY statement to import
+#### 5.11.4 Use the COPY statement to import data
 
 **data**
 
@@ -1302,9 +1395,9 @@ Execute the following COPY statement to import data:
       [IGNORE EXTERNAL PARTITIONS ]
 ```
 
-## Databases
+## 6 Databases
 
-### Overview
+### 6.1 Overview
 
 Basically, you can use AnalyticDB for PostgreSQL in the same manner as you use Greenplum Database. They have the same schemas, supported data types, and user permission requirements. Except for specific operations that are exclusive to Greenplum Database such as those on distribution keys and append-optimized (AO) tables, all operations are the same as those of the open source PostgreSQL.
 
@@ -1312,7 +1405,7 @@ Basically, you can use AnalyticDB for PostgreSQL in the same manner as you use G
 
 Pivotal Greenplum official documentation GP 4.3 Best Practice Greenplum数据分布黄金法则
 
-### Create a database
+### 6.2 Create a database
 
 After you connect to an AnalyticDB for PostgreSQL instance, you can execute SQL statements to create databases. As in PostgreSQL, you can execute SQL statements to create databases in AnalyticDB for PostgreSQL. For example, after the **psql** client is used to connect to AnalyticDB for PostgreSQL, execute the following statement:
 
@@ -1332,7 +1425,7 @@ The following information is returned:
 You are now connected to database "mygpdb" as user "mygpdb".
 ```
 
-### Create a distribution key
+### 6.3 Create a distribution key
 
 AnalyticDB for PostgreSQL is a distributed database service where data is distributed across all the data nodes. You must create distribution keys to distribute data in AnalyticDB for PostgreSQL. Distribution keys are vital to query performance. Distribution keys are used to ensure even data distribution. Appropriate selection of keys can significantly improve query performance.
 
@@ -1350,7 +1443,7 @@ If you do not specify a distribution key in the DISTRIBUTED BY clause, AnalyticD
 
 Select evenly distributed columns or multiple columns to prevent data skew. Select fields that are commonly used for connection operations, especially for highly concurrent statements. Select conditional columns that feature high concurrency queries and high filterability. Do not use random distribution.
 
-### Construct data
+### 6.4 Construct data
 
 In some test scenarios, you must construct data to fill the database.
 1. Create a function that generates random strings.
@@ -1390,7 +1483,7 @@ INSERT INTO tbl(KEY, COMMENT, locate)
      AS t;
 ```
 
-### Query data
+### 6.5 Query data
 
 This topic describes the query statements and how to view the query plans.
 
@@ -1428,7 +1521,7 @@ The following information is returned:
   Optimizer status: legacy query optimizer
 ```
 
-### Manage extensions
+### 6.6 Manage extensions
 
 You can use extensions to expand database features. AnalyticDB for PostgreSQL enables you to manage extensions.
 
@@ -1464,7 +1557,7 @@ DROP EXTENSION <extension name>; DROP EXTENSION IF EXISTS <extension name> CASCA
 
 If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
 
-### Manage users and
+### 6.7 Manage users and permissions
 
 **permissions**
 
@@ -1496,7 +1589,7 @@ You can manage permissions at the database, schema, and table levels. For exampl
 GRANT SELECT ON TABLE t1 TO normal_user1; REVOKE UPDATE ON TABLE t1 FROM normal_user1; REVOKE DELETE ON TABLE t1 FROM normal_user1;
 ```
 
-### Manage real-time materialized
+### 6.8 Manage real-time materialized views
 
 **views**
 
@@ -1590,7 +1683,7 @@ The following information is returned, which indicates that the materialized vie
 (2 rows)
 ```
 
-### Manage JSON data
+### 6.9 Manage JSON data
 
 JSON has become a basic data type in the Internet and IoT fields. For more information about JSON, visit JSON official website. PostgreSQL provides full support for JSON. AnalyticDB for PostgreSQL is optimized by Alibaba Cloud to support the JSON type based on the PostgreSQL syntax.
 
@@ -2024,8 +2117,6 @@ The following information is returned:
 
 **Code examples**
 
-**Create a table**
-
 Create a table and insert data into the table.
 
 ```
@@ -2192,7 +2283,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Use HyperLogLog
+### 6.10 Use HyperLogLog
 
 AnalyticDB for PostgreSQL is highly optimized by Alibaba Cloud. It has the features of Greenplum Database and supports HyperLogLog. AnalyticDB for PostgreSQL is suited for industries such as Internet advertising and estimation analysis that require quick estimation of business metrics such as page views (PVs) and unique visitors (UVs).
 
@@ -2315,7 +2406,7 @@ The following information is returned:
 (1 row)
 ```
 
-### Use the CREATE LIBRARY
+### 6.11 Use the CREATE LIBRARY statement
 
 **statement**
 
@@ -2366,7 +2457,7 @@ Example 4: View installed libraries.
 select name, lanname from pg_library;
 ```
 
-### Create and use a PL/Java UDF
+### 6.12 Create and use a PL/Java UDF
 
 AnalyticDB for PostgreSQL allows you to compile and upload JAR software packages that are written in PL/Java language, and use these JAR packages to create user-defined functions (UDFs). AnalyticDB for PostgreSQL supports PL/Java 1.5.0 and JVM 1.8. This topic describes how to create a PL/Java UDF. For more information about PL/Java examples, see PL/Java code. For more information about the compiling method, see PL/Java documentation.
 
@@ -2455,9 +2546,9 @@ t.substring' language java;
  select java_substring(a, 1, 5) from temp;
 ```
 
-## Table
+## 7 Table
 
-### Create a table
+### 7.1 Create a table
 
 You can create tables within your databases.
 
@@ -2707,7 +2798,7 @@ CREATE TABLE sales (id int, year int, month int, day int, region text) DISTRIBUT
   DEFAULT PARTITION outlying_years);
 ```
 
-### Principles and scenarios of
+### 7.2 Principles and scenarios of row store, column store, heap tables, and AO tables
 
 **row store, column store, heap**
 
@@ -2743,7 +2834,7 @@ When multiple small transactions are handled, use a heap table. When you need to
 
 When you want to use column store, use an AO table. When data is written in batches, use an AO table.
 
-### Enable the column store and
+### 7.3 Enable the column store and compression features
 
 **compression features**
 
@@ -2757,7 +2848,7 @@ with (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, B
 
 AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
 
-### Add a field to a column-
+### 7.4 Add a field to a column-oriented table and set the default value
 
 **oriented table and set the default**
 
@@ -2903,7 +2994,7 @@ The following information is returned:
 
 When you add fields to the AO tables, the number of entries in the existing tables prevails. Even if all the entries are deleted, new fields are added to the original data.
 
-### Configure table partitions
+### 7.5 Configure table partitions
 
 For fact tables and large-sized tables in a database, we recommend that you configure table partitions.
 
@@ -2924,7 +3015,7 @@ CREATE TABLE LINEITEM ( L_ORDERKEY BIGINT NOT NULL, L_PARTKEY BIGINT NOT NULL, L
 
 The purpose of partitioning is to minimize the amount of data to be scanned during a query. Therefore, partitions must be associated with the query conditions. Principle 1: Select the fields that are related to the query conditions to configure partitions and reduce the amount of data to be scanned. Principle 2: If multiple query conditions exist, configure sub-partitions to further reduce the amount of data to be scanned.
 
-### Configure the sort key
+### 7.6 Configure the sort key
 
 A sort key is an attribute of a table. Data on disks is stored in the order of the sort key.
 
@@ -2998,7 +3089,7 @@ Examples:
 alter table test set sortkey (high,low);
 ```
 
-## Vector analysis
+## 8 Vector analysis
 
 AnalyticDB for PostgreSQL provides vector analysis to help you implement approximate search and analysis of unstructured data. This topic describes the capabilities and benefits of vector analysis.
 
@@ -3022,7 +3113,7 @@ You can use AnalyticDB for PostgreSQL vector analysis in the following intellige
 
 AnalyticDB for PostgreSQL vector databases use the in-house FastANN vector engine to provide the vector analysis capability. Vector analysis is widely used in various fields such as Alibaba Group data mid-end, e-commerce, new retail, Alibaba Cloud City Brain, and Tongyi Qianwen Q&A service. Compared with other vector databases, AnalyticDB for PostgreSQL vector databases provide the following advantages: Hybrid analysis of structured and unstructured data AnalyticDB for PostgreSQL vector databases use the capabilities of traditional databases to implement hybrid analysis of structured, semi-structured, and unstructured data and utilize structured and semi-structured indexing capabilities in an efficient manner. Two-way retrieval based on vector search and full-text search AnalyticDB for PostgreSQL vector databases support vector indexes and full-text indexes, and can use vector search and full-text search to implement two-way retrieval. This significantly improves the retrieval accuracy of vector data. Real-time data update and query AnalyticDB for PostgreSQL vector databases support streaming import and real-time building of vector data. Ease of use AnalyticDB for PostgreSQL vector databases are easy to use after you create an instance and support standard SQL syntax. This significantly simplifies the development process. Cost-effectiveness AnalyticDB for PostgreSQL vector databases can compress FP32 data to the FP16 format. This reduces storage costs by 50%. AnalyticDB for PostgreSQL vector databases also build vector indexes on the segmented paging storage, and can utilize the cache-based swapping mechanism based on the shared buffer of PostgreSQL. This way, AnalyticDB for PostgreSQL can store vector indexes that exceed the available memory size.
 
-### Overview
+### 8.1 Overview
 
 AnalyticDB for PostgreSQL provides vector analysis to help you implement approximate search and analysis of unstructured data. This topic describes the capabilities and benefits of vector analysis.
 
@@ -3046,11 +3137,11 @@ You can use AnalyticDB for PostgreSQL vector analysis in the following intellige
 
 AnalyticDB for PostgreSQL vector databases use the in-house FastANN vector engine to provide the vector analysis capability. Vector analysis is widely used in various fields such as Alibaba Group data mid-end, e-commerce, new retail, Alibaba Cloud City Brain, and Tongyi Qianwen Q&A service. Compared with other vector databases, AnalyticDB for PostgreSQL vector databases provide the following advantages: Hybrid analysis of structured and unstructured data AnalyticDB for PostgreSQL vector databases use the capabilities of traditional databases to implement hybrid analysis of structured, semi-structured, and unstructured data and utilize structured and semi-structured indexing capabilities in an efficient manner. Two-way retrieval based on vector search and full-text search AnalyticDB for PostgreSQL vector databases support vector indexes and full-text indexes, and can use vector search and full-text search to implement two-way retrieval. This significantly improves the retrieval accuracy of vector data. Real-time data update and query AnalyticDB for PostgreSQL vector databases support streaming import and real-time building of vector data. Ease of use AnalyticDB for PostgreSQL vector databases are easy to use after you create an instance and support standard SQL syntax. This significantly simplifies the development process. Cost-effectiveness AnalyticDB for PostgreSQL vector databases can compress FP32 data to the FP16 format. This reduces storage costs by 50%. AnalyticDB for PostgreSQL vector databases also build vector indexes on the segmented paging storage, and can utilize the cache-based swapping mechanism based on the shared buffer of PostgreSQL. This way, AnalyticDB for PostgreSQL can store vector indexes that exceed the available memory size.
 
-### Usage of the vector search
+### 8.2 Usage of the vector search engine
 
 **engine**
 
-#### Enable or disable vector search engine
+#### 8.2.1 Enable or disable vector search engine optimization
 
 **optimization**
 
@@ -3083,9 +3174,9 @@ After you enable or disable vector search engine optimization, your instance res
 To disable vector search engine optimization, click **Disable Optimization** next to **Vector**
 **Search Engine Optimization**.
 
-#### Access vector databases
+#### 8.2.2 Access vector databases
 
-##### Use SQL statements to access vector
+##### 8.2.2.1 Use SQL statements to access vector databases
 
 ## databases
 
@@ -3290,11 +3381,11 @@ PQerrorMessage(conn));
 
 For information about how to use other language code to access AnalyticDB for PostgreSQL vector databases, see Use pgvector-compatible vector search.
 
-##### Use API operations to access vector
+##### 8.2.2.2 Use API operations to access vector databases
 
 ## databases
 
-###### Java
+###### 8.2.2.2.1 Java
 
 The AnalyticDB for PostgreSQL API encapsulates the vector-related DDL and DML operations of AnalyticDB for PostgreSQL. You can use API operations to manage vector data. This topic describes how to use API operations to import and query vector data by calling an SDK.
 
@@ -3415,9 +3506,9 @@ Sample result: `{`
 
 **References**
 
-向量检索 Perform vector search
+向量检索
 
-###### Go
+###### 8.2.2.2.2 Go
 
 The AnalyticDB for PostgreSQL API encapsulates the vector-related DDL and DML operations of AnalyticDB for PostgreSQL. You can use API operations to manage vector data. This topic describes how to use API operations to import and query vector data by calling Alibaba Cloud SDK for Go.
 
@@ -3806,7 +3897,7 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
 
 `}`
 
-###### Python 3
+###### 8.2.2.2.3 Python 3
 
 The AnalyticDB for PostgreSQL API encapsulates the vector-related DDL and DML operations of AnalyticDB for PostgreSQL. You can use API operations to manage vector data. This topic describes how to use API operations to import and query vector data by calling AnalyticDB for PostgreSQL SDK for Python 3.
 
@@ -4093,7 +4184,7 @@ vector=vector)
 8-ECF5-4064-B81E-FE35B19E01A6', 'Metadata': {'source': 1, 'page': '1', 'title': 'Test d ocument', 'content': 'Test content'}, 'Score': 0.7208109110736349, 'Values': {'value': [0.28947452, 0.5364747, 0.1485884, 0.4214075, 0.5780347, 0.114547536, 0.043290045, 0.7] }}]}, 'RequestId': '709E2C82-FE25-1722-9DBB-00AD0F85ABBB', 'Status': 'success'}
 ```
 
-#### Create a vector table
+#### 8.2.3 Create a vector table
 
 This topic describes how to create a vector table. The used syntax is fully compatible with SQL:1999 and partially compatible with SQL:2003.
 
@@ -4134,7 +4225,7 @@ CREATE TABLE FACE_TABLE (
 ) DISTRIBUTED BY (C1);
 ```
 
-#### Create a vector index
+#### 8.2.4 Create a vector index
 
 In search scenarios that involve large amounts of data or require fast data access, such as database query optimization, machine learning, data mining, image and video search, and spatial data query, you can create vector indexes to accelerate vector search. This way, you can accelerate data analysis, optimize search jobs, and improve the query performance and response efficiency of the system.
 
@@ -4322,7 +4413,7 @@ Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the follow
 -- Euclidean distance SELECT array[1,1,1,1]::real[] <-> array[2,2,2,2]::real[] AS score; -- Inner product distance SELECT array[1,1,1,1]::real[] <#> array[2,2,2,2]::real[] AS score; -- Cosine distance SELECT array[1,1,1,1]::real[] <=> array[2,2,2,2]::real[] AS score; -- Sum of two vectors SELECT array[1,1,1,1]::real[] + array[2,2,2,2]::real[] AS value; -- Difference between two vectors SELECT array[1,1,1,1]::real[] - array[2,2,2,2]::real[] AS value; -- Product of two vectors SELECT array[1,1,1,1]::real[] * array[2,2,2,2]::real[] AS value; -- Quotient of two vectors SELECT array[1,1,1,1]::real[] / array[2,2,2,2]::real[] AS value;
 ```
 
-#### Import vector data
+#### 8.2.5 Import vector data
 
 AnalyticDB for PostgreSQL uses standard SQL for all vector write operations. Use INSERT for small batches during development or incremental ingestion, and COPY for bulk loading large datasets.
 
@@ -4346,9 +4437,9 @@ COPY chunks (id, content, created_at, source, embedding) FROM '/path/to/data.csv
 
 **What's next**
 
-Create a vector index Query vector data
+Query vector data
 
-#### Perform vector search
+#### 8.2.6 Perform vector search
 
 AnalyticDB for PostgreSQL provides the exact search method that compares the distance or similarity between all vectors and the approximate index search method that uses Hierarchical Navigable Small World (HNSW) indexes. The approximate index search method returns results faster than the exact search method.
 
@@ -4504,7 +4595,7 @@ WHERE score > 0.5;
 
 You can configure the preceding parameters for sessions.
 
-#### Use the FLOAT2 data type to compress
+#### 8.2.7 Use the FLOAT2 data type to compress vector storage
 
 **vector storage**
 
@@ -4693,7 +4784,7 @@ SELECT * FROM FACE_TABLE ORDER BY C1 <-> ARRAY[2.81574,9.84361,8.07218]::FLOAT2[
 
 `ARRAY[2.81574,9.84361,8.07218]::FLOAT2[]` is the query face vector. The database returns the closest matches from the table.
 
-### Use AnalyticDB for
+### 8.3 Use AnalyticDB for PostgreSQL sparse vectors
 
 **PostgreSQL sparse vectors**
 
@@ -4957,7 +5048,7 @@ You can configure the preceding parameters for sessions.
 -- Squared Euclidean distance SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector <-> '{"indices":[1, 2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS score; -- Negative inner product distance SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector <#> '{"indices":[1, 2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS score; -- Cosine distance SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector <=> '{"indices":[1, 2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS score; -- Sum of two vectors SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector + '{"indices":[1,2, 3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS value; -- Difference between two vectors SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector + '{"indices":[1,2, 3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS value; -- Product of two vectors SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector * '{"indices":[1,2, 3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS value;
 ```
 
-### Use pgvector-compatible
+### 8.4 Use pgvector-compatible vector search
 
 **vector search**
 
@@ -5236,7 +5327,7 @@ Examples of vector operators:
 -- Squared Euclidean distance SELECT '[1,1,1,1]'::vector <-> '[2,2,2,2]'::vector AS score; -- Negative inner product distance SELECT '[1,1,1,1]'::vector <#> '[2,2,2,2]'::vector AS score; -- Cosine distance SELECT '[1,1,1,1]'::vector <=> '[2,2,2,2]'::vector AS score; -- Sum SELECT '[1,1,1,1]'::vector + '[2,2,2,2]'::vector AS value; -- Subtraction SELECT '[1,1,1,1]'::vector - '[2,2,2,2]'::vector AS value; -- Multiplication SELECT '[1,1,1,1]'::vector * '[2,2,2,2]'::vector AS value;
 ```
 
-### Use hybrid search
+### 8.5 Use hybrid search
 
 If you want to search for structured and unstructured data at the same time, you can use the hybrid search feature of AnalyticDB for PostgreSQL vector databases. Hybrid search supports structured field filtering, semi-structured field filtering, and two-way retrieval based on vector search and full-text search.
 
@@ -5499,7 +5590,7 @@ SELECT id, docname, title, text, MAX(similarity) as similarity,
 
 In the `UNION` clause, the first part uses vector search to retrieve 10 rows of data and the second part uses full-text search to retrieve 10 rows of data. Then, the data results are deduplicated based on the `id` column. Finally, the preceding two-way retrieval statement returns 20 or fewer rows of data.
 
-### Performance tests for vector
+### 8.6 Performance tests for vector analysis
 
 **analysis**
 
@@ -7126,7 +7217,7 @@ Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The follow
 |   | 30 | 385 | 77 | 138 |
 |   | 50 | 389 | 127 | 229 |
 
-### Case: Build an image-based
+### 8.7 Case: Build an image-based search system
 
 **search system**
 
@@ -7397,7 +7488,7 @@ show_images_from_full_dataset(dataset, 4, 5, indices)
 
 The following figures show the returned images.
 
-### Case: Build a text semantic
+### 8.8 Case: Build a text semantic retrieval system
 
 **retrieval system**
 
@@ -7659,9 +7750,9 @@ After testing, drop the table and index to release resources.
 drop_table_sql = '''DROP TABLE public.articles;''' cursor.execute(drop_table_sql) connection.commit() connection.close()
 ```
 
-## Backup and restoration
+## 9 Backup and restoration
 
-### Feature overview
+### 9.1 Feature overview
 
 AnalyticDB for PostgreSQL provides periodic base backups and log backups to protect against data loss.
 
@@ -7681,7 +7772,7 @@ The backup and restoration feature can be used in the following scenarios: Insta
 
 Data can be restored from the source instance only when the source instance has at least one backup set in the successful state. The backup and restoration feature is supported only for instances in reserved storage mode.
 
-### Back up data
+### 9.2 Back up data
 
 This topic describes how to view backup data and modify backup settings in AnalyticDB for PostgreSQL.
 
@@ -7735,7 +7826,7 @@ A restore point in time indicates the point in time to which you can restore ins
 5. On the **Log Backup** tab, view log backups.
 Log files record all data changes to databases. You can restore an instance to a previous state by using its corresponding log files. All log files are stored in OSS.
 
-### Restore data
+### 9.3 Restore data
 
 This topic describes how to restore backup data to a new instance in AnalyticDB for PostgreSQL.
 
@@ -7783,11 +7874,11 @@ table describes the parameters.
 
 6. Click **Submit**.
 
-## Performance monitoring
+## 10 Performance monitoring
 
-### Monitoring and alerting
+### 10.1 Monitoring and alerting
 
-#### View instance monitoring information
+#### 10.1.1 View instance monitoring information
 
 This topic describes how to view the instance monitoring information about an AnalyticDB for PostgreSQL instance.
 
@@ -7828,7 +7919,7 @@ Displays the performance and load information about the instance in the **Coordi
 
 The interval between the start time and the end time cannot exceed seven days.
 
-#### View node monitoring information
+#### 10.1.2 View node monitoring information
 
 This topic describes how to view the node monitoring information about an AnalyticDB for PostgreSQL instance.
 
@@ -7860,7 +7951,7 @@ You can set Time Range to Recent 1 Hour, Recent 6 Hours, Recent 1 Day, Recent 7 
 
 The interval between the start time and the end time of the custom time range cannot exceed seven days.
 
-### Monitoring and alerting
+### 10.2 Monitoring and alerting
 
 AnalyticDB for PostgreSQL provides the monitoring and alerting feature to help you view the running status of instances.
 
@@ -7883,9 +7974,9 @@ options are available for **Time Range**:
 **Custom time range**: You can view metrics within a custom time range. The time range
 cannot be longer than seven days.
 
-### Diagnostics and optimization
+### 10.3 Diagnostics and optimization
 
-#### Instance status overview
+#### 10.3.1 Instance status overview
 
 AnalyticDB for PostgreSQL provides an Overview page for the diagnostics and optimization feature. You can view the connection status, cluster status, and storage status of an instance on this page.
 
@@ -7922,7 +8013,7 @@ Line charts The following metrics are displayed in line charts: **SQL**, **Conne
 **Storage Usage (%)**, **Coordinator Nodes**, and **Compute Nodes**. You can move the
 pointer over each line chart to view the details.
 
-#### Use the O&M Assistant feature
+#### 10.3.2 Use the O&M Assistant feature
 
 AnalyticDB for PostgreSQL provides an O&M Assistant page for the diagnostics and optimization feature. You can view data bloat, data skew, and index statistics on this page.
 
@@ -7995,7 +8086,7 @@ The Index Statistics tab displays indexes that are larger than 100 MB in size.
 | Index Name | The name of the index. |
 | Last Diagnosed At | The time when the most recent DELETE, INSERT, or UPDATE operation was performed on the table. |
 
-#### Query analysis
+#### 10.3.3 Query analysis
 
 AnalyticDB for PostgreSQL provides the query analysis feature. You can view SQL execution plans and statistics for query analysis and optimization. This topic describes how to use the query analysis feature.
 
@@ -8068,7 +8159,7 @@ The **Execution Plan Tree** tab provides a tree chart to show the execution plan
 | Amount of Transmitted Data | The total amount of data transmitted between Motion operators. |
 | Data Transmission Duration | The amount of time consumed to transmit data between Motion operators. |
 
-#### Lock diagnostics
+#### 10.3.4 Lock diagnostics
 
 When a query runs for an extended period without returning results, it may be waiting for a lock to be released. The lock diagnostics feature helps you quickly identify and analyze lock contention within your database.
 
@@ -8127,9 +8218,9 @@ Terminate a query Use this method if the blocking session is already idle or if 
 SELECT pg_terminate_backend(<Process ID>);
 ```
 
-## Cloud Monitor
+## 11 Cloud Monitor
 
-### View performance metrics
+### 11.1 View performance metrics
 
 PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
 
@@ -8149,7 +8240,7 @@ and **read-only instances**. View performance metrics
 3. In the **time granularity** drop-down list, select **1 Minute** or **1 Hour** (default value) as the
 data collection interval.
 
-### Alert history
+### 11.2 Alert history
 
 After an alert is triggered, you can view its history. You can also export and download the alert history for local data analytics.
 
@@ -8170,9 +8261,9 @@ After an alert is triggered, you can view its history. You can also export and d
 | Export alert history | i. On the Alert History page, click in the upper-right corner. ii. In the Export Task dialog box, set Time Range and Task Name. Then, click OK. |
 |---|---|
 
-### Alert rules
+### 11.3 Alert rules
 
-#### Create an alert rule
+#### 11.3.1 Create an alert rule
 
 Create an alert rule that triggers alerts for a cloud service based on specified metric thresholds and promptly notifies relevant users.
 
@@ -8222,7 +8313,7 @@ The minimum alert detection frequency is once per minute.
 
 This example creates an alert rule named "example" for an Elastic Compute Service (ECS) instance to monitor its CPU utilization. The rule triggers a Critical alert if the maximum CPU utilization is greater than or equal to 70% for three occurrences within five detection periods. The following figure shows the rule description configuration for this scenario.
 
-#### Manage alert rules
+#### 11.3.2 Manage alert rules
 
 From the list of alert rules, you can modify, enable, disable, and delete rules.
 
@@ -8248,9 +8339,9 @@ From the list of alert rules, you can modify, enable, disable, and delete rules.
 |---|---|
 | Delete an alert rule | Delete a single rule a. In the Operation column of the target alert rule, click the icon, and then click Delete. b. In the Delete Alert Rule dialog box, click OK. Delete rules in a batch a. Select the check boxes next to the target alert rules, and then click Delete in the lower-left corner of the list. b. In the Delete Alert Rule dialog box, click OK. |
 
-## Best practices
+## 12 Best practices
 
-### Configure memory and load
+### 12.1 Configure memory and load parameters
 
 **parameters**
 
@@ -8413,9 +8504,9 @@ The memory of all resource queues cannot exceed gp_vmem_protect_limit. You can d
 gp_toolkit.gp_resq_activity gp_toolkit.gp_resq_activity_by_queue gp_toolkit.gp_resq_priority_backend gp_toolkit.gp_resq_priority_statement gp_toolkit.gp_resq_role gp_toolkit.gp_resqueue_status
 ```
 
-## Appendix
+## 13 Appendix
 
-### Authorize a tenant
+### 13.1 Authorize a tenant organization to access SLB
 
 **organization to access SLB**
 

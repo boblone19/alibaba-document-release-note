@@ -2,18 +2,45 @@
 title: "Security Orchestration Automation and Response (SOAR) Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 46
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) Developer Guide 20260701.pdf"
+source_pdf: "7a7962c7c6077bd0_Alibaba Cloud Apsara Stack V3.18.6 Security Orchestration Automation and Response (SOAR) Developer G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%87%AA%E5%8A%A8%E7%BC%96%E6%8E%92%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Security%20Orchestration%20Automation%20and%20Response%20%28SOAR%29%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Security Orchestration Automation and Response (SOAR) Developer Guide 20260701
 
-Security Orchestration Automatio n and Response (SOAR) Develop
+## Table of Contents
 
-## Getting started
+- 1 Getting started
+  - 1.1 Process of API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about an operation
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an AccessKey pair assigned by STS
+  - 2.5 Obtain an endpoint
+- 3 Call examples
+  - 3.1 Call examples for SDK for Java
+    - 3.1.1 Quick start
+    - 3.1.2 Use SDK
+      - 3.1.2.1 Install SDK for Java
+      - 3.1.2.2 Use CommonRequest to call API operations
+  - 3.2 Call examples for SDK for Python
+    - 3.2.1 Quick start
+    - 3.2.2 Use SDK
+      - 3.2.2.1 Install SDK for Python
+      - 3.2.2.2 Use CommonRequest to call API operations
+  - 3.3 Call examples for SDK for Go
+    - 3.3.1 Quick start
+    - 3.3.2 Use SDK
+      - 3.3.2.1 Install Go SDK
+      - 3.3.2.2 Use CommonRequest to call API operations
+- 4 Common parameters
+- 5 Error codes
 
-### Process of API calls
+## 1 Getting started
+
+### 1.1 Process of API calls
 
 You can use POP Gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. From Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure that user experience is consistent with that in Alibaba Cloud public cloud. This topic describes how to use POP Gateway to call Apsara Stack API operations.
 
@@ -32,29 +59,29 @@ For more information about how to obtain the AccessKey pair, see Obtain an Acces
 
 If you want to make API calls to use the Apsara Uni-manager Management Console or other Apsara Stack services, we recommend that you use the AccessKey pair of a personal account.
 2. Obtain the region ID.
-
-| <x-acs- |  |
-|---|---|
-
-|  | resourcegroupid>, |
-|---|---|
-
-Security Orchestration Automatio n and Response (SOAR) Develop For more information about how to obtain the value of the RegionID parameter, see Obtain header parameters.
+For more information about how to obtain the value of the RegionID parameter, see Obtain header parameters.
 3. Obtain the organization ID and resource set ID.
 You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Develope r Guide.
 
 **Note**
 
-to which a resource belong. This implements isolated query of instance resources. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is obtained by default. If you do not specify the `<x-acs-resourcegroupid>` parameter, no resource set IDs are specified by default. If you specify a resource set ID, you must specify an organization ID.
+| <x-acs- |   |
+|---|---|
+
+When you call an operation, specify the `<x-acs-organizationid>` and `<x-acs-`
+
+|   | resourcegroupid>, |
+|---|---|
+
+`resourcegroupid>,` header parameters. The organization ID <x-acs-organizationid> and resource set ID <x-acs-resourcegroupid> specify the organization and resource set to which a resource belong. This implements isolated query of instance resources. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is obtained by default. If you do not specify the `<x-acs-resourcegroupid>` parameter, no resource set IDs are specified by default. If you specify a resource set ID, you must specify an organization ID.
 4. Obtain the API reference of a service.
 For more information about how to view, use, and obtain the developer guide of a specific service, and understand the features and usage methods of operations, see Usage notes.
 5. Obtain the endpoint of the service.
 6. Obtain the service SDK and use the SDK to call an operation of the service.
-Security Orchestration Automatio n and Response (SOAR) Develop
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -81,9 +108,8 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 For more information, see the **Bind a virtual MFA device to enable MFA** topic in
 **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
-Security Orchestration Automatio n and Response (SOAR) Develop
 
-### View the information about an
+### 2.2 View the information about an operation
 
 **operation**
 
@@ -101,7 +127,7 @@ The operations on the API Directory page are for reference only. For information
 keyword of an operation name in the search box, and then click Search.
 4. View and record the service name, operation name, and API version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -119,8 +145,6 @@ The AccessKey pair of a personal account is managed by the permission system of 
 | x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. For example, you can obtain the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -144,9 +168,8 @@ To obtain the AccessKey pair of an organization, perform the following operation
 want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
-Security Orchestration Automatio n and Response (SOAR) Develop
 
-### Obtain an AccessKey pair
+### 2.4 Obtain an AccessKey pair assigned by STS
 
 **assigned by STS**
 
@@ -166,9 +189,9 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 
 **Note**
 
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS. Security Orchestration Automatio n and Response (SOAR) Develop
+You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -188,7 +211,12 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpo
 int is sts-vpc.${global:region}.${global:internet-domain}.
@@ -212,17 +240,21 @@ e that is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The
-following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS): Security Orchestration Automatio n and Response (SOAR) Develop
+following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with the actual region ID.Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourResourceGroupID>: Replace it with the actual organization ID. Security Orchestration Automatio n and Response (SOAR) Develop
+You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with the actual region ID.Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourResourceGroupID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -261,11 +293,11 @@ STS. The STS token is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### Obtain an endpoint
+`}` `}`
+
+### 2.5 Obtain an endpoint
 
 This topic describes how to obtain the endpoint of an Apsara Stack Security service.
 
@@ -278,7 +310,6 @@ To use the POP gateway to call the API operations of a cloud service, you must s
 1. Log on to the Apsara Infrastructure Management console. For more information, see
 **Getting Started > Log on to the Apsara Uni-manager Operations Console** in
 **Apsara Uni-manager Management Console User Guide** .
-Security Orchestration Automatio n and Response (SOAR) Develop
 2. In the top navigation bar, choose **Products > Infrastructure Management**.
 3. In the left-side navigation pane, click **Product & Cluster O&M**.
 4. On the page that appears, enter yundun-advance in the **Product | Cluster** search box. In
@@ -307,13 +338,11 @@ click the icon in the **Resource Application Result** column to obtain the value
 <vip_ip> <Endpoint of the API operation that you want to request>
 ```
 
-Security Orchestration Automatio n and Response (SOAR) Develop
+## 3 Call examples
 
-## Call examples
+### 3.1 Call examples for SDK for Java
 
-### Call examples for SDK for Java
-
-#### Quick start
+#### 3.1.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Java.
 
@@ -334,7 +363,7 @@ To use Apsara Stack SDK for Java, perform the following steps:
 
 **Note**
 
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your-region-id>: Replace this variable with the region ID. <your-access-key-id>: Replace this variable with your AccessKey ID. <your-access-key-secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation. Security Orchestration Automatio n and Response (SOAR) Develop
+In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your-region-id>: Replace this variable with the region ID. <your-access-key-id>: Replace this variable with your AccessKey ID. <your-access-key-secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -361,16 +390,15 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### Use SDK
+`}` `}` `}`
 
-##### Install SDK for Java
+#### 3.1.2 Use SDK
 
-This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs. Security Orchestration Automatio n and Response (SOAR) Develop
+##### 3.1.2.1 Install SDK for Java
+
+This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -380,7 +408,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest to call API operations
+##### 3.1.2.2 Use CommonRequest to call API operations
 
 **Note**
 
@@ -401,7 +429,7 @@ Apsara Stack services provide RPC and RESTful APIs. The request method of Common
 
 **Example: Call an RPC API operation**
 
-The following sample code shows how to use CommonRequest to call an API operation of Apsara Stack Security: Security Orchestration Automatio n and Response (SOAR) Develop
+The following sample code shows how to use CommonRequest to call an API operation of Apsara Stack Security:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -428,16 +456,15 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Call examples for SDK for
+`}` `}` `}`
+
+### 3.2 Call examples for SDK for Python
 
 **Python**
 
-#### Quick start
+#### 3.2.1 Quick start
 
 This topic describes how to obtain and use the SDK for Python.
 
@@ -447,7 +474,7 @@ An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) 
 
 **Install the core library of the SDK for Python**
 
-If you use Python 2.x, run the following command: Security Orchestration Automatio n and Response (SOAR) Develop
+If you use Python 2.x, run the following command:
 
 ```
 pip install aliyun-python-sdk-core
@@ -472,17 +499,15 @@ When you create a client instance, you must obtain a region ID, AccessKey ID, an
 In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your_region_id>: Replace the value of this parameter with the region ID. <your_access_key_id>: Replace the the value of this parameter with your AccessKey ID. <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret. <your-endpoint>: Replace the value of this parameter with the endpoint of the service. <API-version>: Replace the value of this parameter with the version of the API. <your-action>: Replace the value of this parameter with the name of the API operation.
 
 ```bash
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>')// The endpoint of the service. request.set_version('<API-version>')// The version of the API. request.set_action_name('<your-action>')// The name of the API operation.
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>')// The endpoint of the service. request.set_version('<API-version>')// The version of the API. request.set_action_name('<your-action>')// The name of the API operation.
 # or:
 # request =
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-Security Orchestration Automatio n and Response (SOAR) Develop
+#### 3.2.2 Use SDK
 
-#### Use SDK
-
-##### Install SDK for Python
+##### 3.2.2.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -500,89 +525,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest to call API operations
-
-**Note**
-
-If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
-
-**Benefits**
-
-CommonRequest provides the following benefits:
-1. Lightweight: You need only to download the core package. You do not need to download
-and install SDKs of Apsara Stack services.
-2. Easy to use: You can call the newly released API operations of an Apsara Stack service
-without the need to update the SDK for the service.
-3. Fast iteration.
-
-**Use CommonRequest to call an API operation**
-
-Apsara Stack services provide RPC and RESTful APIs. The request method of CommonRequest varies based on the style of the API that you want to call. In most cases, an API uses the RPC style if the API operations include the Action parameter. An API uses the RESTful style if the API operations include the PathPattern parameter. All API operations of a service use the same API style. The API of each service supports only one style. If you pass an invalid identifier, another API operation may be called, or the `ApiNotFound` error is returned. If you want to send a CommonRequest request, you must obtain the values of the following parameters. For more information about the values of these parameters, see the API reference in DocumentationDocumentation. You can also visit OpenAPI Explorer to obtain the parameter values of API operations for some services. Endpoint: the endpoint of a service. Version: the version of the API. The version is in the YYYY-MM-DD format. Security Orchestration Automatio n and Response (SOAR) Develop Operation information: the name of the API operation that you want to call. The APIs of most Apsara Stack services, such as Threat Detection Service, are RPC APIs. If you want to call an RPC API operation, you must obtain the value of the Action parameter, and then specify the value in the `request.ApiName = "<Action>"` format. If you want to call a RESTful API operation of a service, such as Container Service for Kubernetes (ACK), you must obtain the value of the PathPattern parameter, and then specify the RESTful path in the `request.PathPattern = "<PathPattern>"` format.
-
-**Example: Call an RPC API operation**
-
-The following sample code shows how to use the CommonRequest method to call the API operation:
-
-```bash
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>') //The endpoint of the service. request.set_version('<API-version>') //The version of the API. request.set_action_name('<your-action>')//The name of the API operation.
-# or:
-# request = CommonRequest(domain='<your-endpoint>', version='<API-version>',
-action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
-```
-
-### Call examples for SDK for Go
-
-#### Quick start
-
-Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use the SDK for Go.
-
-**Prerequisites**
-
-An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of a service is obtained. For more information, see Obtain an endpoint.
-
-**Install the core package of Apsara Stack SDK for Go**
-
-Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
-
-```
-go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
-```
-
-**Use the SDK for Go**
-
-To use the SDK for Go, perform the following steps:
-1. Initialize a client instance.
-Security Orchestration Automatio n and Response (SOAR) Develop
-2. Create an API request and specify the required parameters.
-3. Initiate the API request and process the response or exception.
-
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your_region_id>: Replace the value of this parameter with the region ID. <your_access_key_id>: Replace the value of this parameter with your AccessKey ID. <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret. <your-endpoint>: Replace the value of this parameter with the endpoint of the service. <API-version>: Replace the value of this parameter with the version of the API. <your-action>: Replace the value of this parameter with the name of the API operation.
-
-```java
-package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
-```
-
-)
-
-```
-func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
-```
-
-#### Use SDK
-
-##### Install Go SDK
-
-This topic describes how to install the Go SDK. Security Orchestration Automatio n and Response (SOAR) Develop The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
-1. Download the source code of the Go SDK from the official site of Apsara Stack.
-2. Extract the package to the directory where the GO_PATH file of the current user resides.
-
-##### Use CommonRequest to call API operations
+##### 3.2.2.2 Use CommonRequest to call API operations
 
 **Note**
 
@@ -603,7 +546,99 @@ Apsara Stack services provide RPC and RESTful APIs. The request method of Common
 
 **Example: Call an RPC API operation**
 
-The following sample code shows how to use the CommonRequest method to call the API operation: Security Orchestration Automatio n and Response (SOAR) Develop
+The following sample code shows how to use the CommonRequest method to call the API operation:
+
+```bash
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>') //The endpoint of the service. request.set_version('<API-version>') //The version of the API. request.set_action_name('<your-action>')//The name of the API operation.
+# or:
+# request = CommonRequest(domain='<your-endpoint>', version='<API-version>',
+action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
+```
+
+### 3.3 Call examples for SDK for Go
+
+#### 3.3.1 Quick start
+
+Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use the SDK for Go.
+
+**Prerequisites**
+
+An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of a service is obtained. For more information, see Obtain an endpoint.
+
+**Install the core package of Apsara Stack SDK for Go**
+
+Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
+
+```
+go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
+```
+
+**Use the SDK for Go**
+
+To use the SDK for Go, perform the following steps:
+1. Initialize a client instance.
+2. Create an API request and specify the required parameters.
+3. Initiate the API request and process the response or exception.
+
+**Note**
+
+In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following section describes the variables: <your_region_id>: Replace the value of this parameter with the region ID. <your_access_key_id>: Replace the value of this parameter with your AccessKey ID. <your_access_key_secret>: Replace the value of this parameter with your AccessKey secret. <your-endpoint>: Replace the value of this parameter with the endpoint of the service. <API-version>: Replace the value of this parameter with the version of the API. <your-action>: Replace the value of this parameter with the name of the API operation.
+
+```java
+package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
+```
+
+`)`
+
+```
+func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
+```
+
+`}`
+
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
+
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 Use SDK
+
+##### 3.3.2.1 Install Go SDK
+
+This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
+1. Download the source code of the Go SDK from the official site of Apsara Stack.
+2. Extract the package to the directory where the GO_PATH file of the current user resides.
+
+##### 3.3.2.2 Use CommonRequest to call API operations
+
+**Note**
+
+If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations.
+
+**Benefits**
+
+CommonRequest provides the following benefits:
+1. Lightweight: You need only to download the core package. You do not need to download
+and install SDKs of Apsara Stack services.
+2. Easy to use: You can call the newly released API operations of an Apsara Stack service
+without the need to update the SDK for the service.
+3. Fast iteration.
+
+**Use CommonRequest to call an API operation**
+
+Apsara Stack services provide RPC and RESTful APIs. The request method of CommonRequest varies based on the style of the API that you want to call. In most cases, an API uses the RPC style if the API operations include the Action parameter. An API uses the RESTful style if the API operations include the PathPattern parameter. All API operations of a service use the same API style. The API of each service supports only one style. If you pass an invalid identifier, another API operation may be called, or the `ApiNotFound` error is returned. If you want to send a CommonRequest request, you must obtain the values of the following parameters. For more information about the values of these parameters, see the API reference in DocumentationDocumentation. You can also visit OpenAPI Explorer to obtain the parameter values of API operations for some services. Endpoint: the endpoint of a service. Version: the version of the API. The version is in the YYYY-MM-DD format. Operation information: the name of the API operation that you want to call. The APIs of most Apsara Stack services, such as Threat Detection Service, are RPC APIs. If you want to call an RPC API operation, you must obtain the value of the Action parameter, and then specify the value in the `request.ApiName = "<Action>"` format. If you want to call a RESTful API operation of a service, such as Container Service for Kubernetes (ACK), you must obtain the value of the PathPattern parameter, and then specify the RESTful path in the `request.PathPattern = "<PathPattern>"` format.
+
+**Example: Call an RPC API operation**
+
+The following sample code shows how to use the CommonRequest method to call the API operation:
 
 ```java
 package main import (
@@ -612,7 +647,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -620,7 +655,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<your-endpoint>"// The endpoint of the service.
     request.Version = "<API-version>"// The version of the API.
@@ -630,10 +669,21 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+## 4 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all Apsara Stack Security API requests. Table 1. Table of common request parameters
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -643,23 +693,17 @@ your_access_key_secret}")
 | AccessKeySe cret | Strin g | Yes | The AccessKey secret provided to you by Apsara Stack. |
 | RegionId | Strin g | Yes | The region ID of the service. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
-## Common parameters
-
-**Common request parameters**
-
-Common request parameters must be included in all Apsara Stack Security API requests. Table 1. Table of common request parameters
-
 | Product | Strin g | Yes | The name of the service to which the API operation belongs. Valid values: Auditprivate: basic components of Apsara Stack Security yundunnextsoc: Security Operations Center (SOC) Sas: Threat Detection Service aegis: Server Guard yundun-css: Container Production secspy: Network Detection and Response Ddosprivate: Anti-DDoS Service hsm-private: Data Encryption Service Cloudfw: Cloud Firewall Sddp: Sensitive Data Discovery and Protection (SDDP) semawaf: Web Application Firewall (WAF) soar: Security Orchestration and Automation Response (SOAR) |
 |---|---|---|---|
 | EndpointPre | Strin g | Yes | The prefix in the endpoint of the service to which the API operation belongs. Valid values: auditprivate: the prefix in the endpoint of basic components of Apsara Stack Security yundunnextsoc-pop: the prefix in the endpoint of SOC tds: the prefix in the endpoint of Threat Detection Service aegis: the prefix in the endpoint of Server Guard yundun-css: the prefix in the endpoint of Container Protection secspy-share: the prefix in the endpoint of Network Detection and Response ddosprivate: the prefix in the endpoint of Anti-DDoS Service hsmprivate: the prefix in the endpoint of Data Encryption Service cloudfw: the prefix in the endpoint of Cloud Firewall sddp-api: the prefix in the endpoint of SDDP semawaf: the prefix in the endpoint of WAF soar: the prefix in the endpoint of SOAR |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 **Common response parameters**
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
+
+## 5 Error codes
+
+This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -675,12 +719,6 @@ API responses use the HTTP response format: A 2xx status code indicates a succes
 | yd.error.all.ConsoleSystemError 1011 _ | The regionId parameter is not specified. | The error message returned because the RegionId parameter is not specified. Check the parameter. |
 | yd.error.all.ConsoleSystemError 1012 _ | The format of the specified regionId parameter is invalid. | The error message returned because the format of the specified RegionId parameter is invalid. Check the parameter. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
-## Error codes
-
-This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
-
 | yd.error.all.ConsoleSystemError 1013 _ | The parameter is not specified. | The error message returned because the parameter is not specified. Check the parameter and try again. |
 |---|---|---|
 | yd.error.all.ConsoleSystemError 1014 _ | The format of the specified parameter is invalid. | The error message returned because the format of the specified parameter is invalid. Check the parameter and try again. |
@@ -693,11 +731,11 @@ This topic describes the error codes returned for operations in Apsara Stack Sec
 | yd.error.all.ServerError | A server error occurred. | The error message returned because a server error occurred. Try again later or contact Alibaba Cloud technical support. |
 | yd.error.all.UnkownError | An unknown error occurred. | The error message returned because an unknown error occurred. Try again later or contact Alibaba Cloud technical support. |
 
+Table 2. Error codes specific to Threat Detection Service
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.sas.1 | The specified field does not exist in the metadata. | The error message returned because the field you queried does not exist in the metadata. Check the request and try again. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop Table 2. Error codes specific to Threat Detection Service
 
 | yd.error.sas.2 | An error occurred while invoking the task engine. Try again. | The error message returned because the system failed to invoke the task engine. Try again later. |
 |---|---|---|
@@ -714,10 +752,10 @@ Security Orchestration Automatio n and Response (SOAR) Develop Table 2. Error co
 | yd.error.sas.500 | A system error occurred. | The error message returned because a system error occurred. Contact Alibaba Cloud technical support. |
 | yd.error.sas.501 | The feature is not available in the current version. | The error message returned because the version you used does not support this feature. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.sas.502 | You are not authorized to access the server. | The error message returned because you are not authorized to manage the server. |
 |---|---|---|
+
+Table 3. Error codes specific to Anti-DDoS Service
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -732,8 +770,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.ddos.IP SEGMENT REP _ _ EAT | One CIDR block cannot be used in different regions. Enter another CIDR block. | The error message returned because the specified CIDR block is invalid. Check the CIDR block specified in the request parameter. |
 | yd.error.ddos.IP SEGMENT ALR _ _ EADY | The specified CIDR block already exists. | The error message returned because the specified CIDR block is in use. Check the CIDR block specified in the request parameter. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop Table 3. Error codes specific to Anti-DDoS Service
-
 | yd.error.ddos.IP SEGMENT MAS _ _ K LENGTH ERR _ _ | The mask can contain a maximum of 24 bits. | The error message returned because the mask contains more than 24 bits. Check the mask of the CIDR block specified in the request parameter. |
 |---|---|---|
 | yd.error.ddos.QUERY REGION L _ _ IST ERR _ | An error occurred while obtaining the region list. | The error message returned because the system failed to obtain the region list. Try again later. |
@@ -746,8 +782,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop Table 3. Error co
 | yd.error.ddos.QUERY BEAVER _ _ URL ERR _ | An error occurred while obtaining the URL of Network Detection and Response. | The error message returned because the system failed to obtain the URL of Network Detection and Response. Check the network connection to Network Detection and Response and try again. |
 | yd.error.ddos.SET VALVE INVA _ _ LID | The threshold validation failed. Check the thresholds and enter correct values. | The error message returned because the threshold verification failed. Check the thresholds and try again. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.ddos.VALVE DEFAULT _ _ ALREADY | The specified request is invalid. You cannot add the default threshold. | The error message returned because the system failed to add the default threshold. The default threshold can only be modified. |
 |---|---|---|
 | yd.error.ddos.NOT BELONG BE _ _ AVER IP SEGMENT _ _ | Check whether the specified CIDR block belongs to the internal network of Network Detection and Response. | The error message returned because the CIDR block you entered does not belong to the internal network of Network Detection and Response. Check the CIDR block. |
@@ -756,9 +790,13 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.ddos.IS OPENED _ | Enabled. | The error message returned because the specified switch has been turned on. |
 | yd.error.ddos.IS CLOSED _ | Disabled. | The error message returned because the specified switch has been turned off. |
 
+Table 4. Error codes specific to Server Guard
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.aqs.REQUEST FAILED _ | Request failed. Try again later. | The error message returned because the request failed. Try again later. |
+
+Table 7. Error codes specific to Cloud Firewall
 
 | Error code | Error message |
 |---|---|
@@ -770,8 +808,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360104 | The specified application is invalid. Try again. |
 | yd.error.code.-360105 | An error occurred while obtaining the logs. |
 | yd.error.code.-360106 | An error occurred while obtaining the logs. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 | yd.error.code.-360107 | The specified UID is invalid.Try again. |
 |---|---|
@@ -800,8 +836,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360130 | The specified ECS instance is unavailable. |
 | yd.error.code.-360131 | An unknown error occurred. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.code.-360132 | An error occurred while searching the route table. |
 |---|---|
 | yd.error.code.-360133 | The ID of the firewall is invalid. |
@@ -826,8 +860,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360152 | The endpoint is invalid. |
 | yd.error.code.-360153 | The endpoint is invalid. |
 | yd.error.code.-360154 | A timeout error occurred while creating the endpoint. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 | yd.error.code.-360155 | A timeout error occurred while deleting the endpoint. |
 |---|---|
@@ -857,8 +889,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360179 | An error occurred while calling the operation. |
 | yd.error.code.-360180 | The number of VPCs that are attached to the CEN instance is insufficient. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.code.-360181 | The firewall of the CEN instance is overwritten. You do not need to create a firewall. |
 |---|---|
 | yd.error.code.-360182 | The security group does not exist. |
@@ -884,8 +914,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360202 | The specified network instance ID is invalid. |
 | yd.error.code.-360203 | The specified VPC does not exist. |
 | yd.error.code.-360204 | A timeout error occurred while creating a VPC. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 | yd.error.code.-360205 | A timeout error occurred while creating a VPC. |
 |---|---|
@@ -914,8 +942,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360309 | An error occurred while updating the information about the cluster. |
 | yd.error.code.-360310 | An error occurred while updating the Express Connect circuit. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.code.-360311 | An error occurred while inserting the VLAN. |
 |---|---|
 | yd.error.code.-360312 | An error occurred while querying the IP address pool. |
@@ -940,8 +966,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-360407 | An error occurred while updating the attributes of the VBR. |
 | yd.error.code.-360408 | An error occurred while querying the VBR. |
 | yd.error.code.-360409 | An error occurred while creating the RI. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 | yd.error.code.-360410 | An error occurred while updating the attributes of the RI. |
 |---|---|
@@ -969,8 +993,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-193201 | The specified parameters are insufficient. |
 | yd.error.code.-193202 | The specified parameter value is invalid. |
 | yd.error.code.-193203 | The specified time is invalid. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 | yd.error.code.-193204 | The parameter is invalid. |
 |---|---|
@@ -1001,8 +1023,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-200106 | The IP address in the address book is invalid. Check the parameter and enter another value. |
 | yd.error.code.-200107 | The address book already exists. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.code.-200108 | An error occurred. Try again. |
 |---|---|
 | yd.error.code.-200109 | The address book is in use and cannot be deleted. |
@@ -1029,8 +1049,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-200130 | The number of address books exceeds the upper limit. |
 | yd.error.code.-200200 | A backend error occurred. |
 | yd.error.code.-200201 | A backend error occurred. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
 
 | yd.error.code.-200202 | A backend error occurred. |
 |---|---|
@@ -1063,8 +1081,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-210400 | An error occurred. Try again. |
 | yd.error.code.200 | Success |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.code.-230100 | The request method is invalid. |
 |---|---|
 | yd.error.code.-230101 | Authentication failed. |
@@ -1094,8 +1110,6 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-230125 | The submitted information is invalid. |
 | yd.error.code.-230126 | The rule is not changed. You do not need to publish the rule. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | yd.error.code.-230127 | The security group ID is invalid. |
 |---|---|
 | yd.error.code.-230128 | The IP address in the rule is invalid. |
@@ -1113,16 +1127,14 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | yd.error.code.-230302 | A backend error occurred. |
 | yd.error.code.-230400 | An unknown error occurred. |
 
+**Error codes specific to Network Detection and Response**
+
 | Error code | Error message | Description |
 |---|---|---|
 | ErrorNeedLogin.-210204 | need login (You are not logged on.) | The error message returned because you are not logged on. Log on first. |
 | ErrorAuthentication.-210101 | authentication error (An authentication error occurred.) | The error message returned because an authentication error occurred. Use a RAM role that has the required permissions. |
 | ErrorParametersAliUid.-210902 | invalid AliUid (The value of the AliUid parameter is invalid.) | The error message returned because the value of the AliUid parameter is invalid. Specify a valid value. |
 | ErrorParametersIpType.-210920 | invalid para ip type (The value of the ipType parameter is invalid.) | The error message returned because the value of the ipType parameter is invalid. Specify a valid value. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop
-
-**Error codes specific to Network Detection and Response**
 
 | ErrorParametersSrcIP.-210919 | invalid para src ip (The value of the SrcIP parameter is invalid.) | The error message returned because the value of the SrcIP parameter is invalid. Specify a valid value. |
 |---|---|---|
@@ -1138,13 +1150,9 @@ Security Orchestration Automatio n and Response (SOAR) Develop
 | ErrorSourceAddressGroup.- 210304 | get source address in address group failed (Failed to obtain source addresses from the address group.) | The error message returned because the system failed to obtain source addresses from the address group. |
 | ErrorSourceAddressRange.- 210306 | source address range error, must be like \"192.168.XX.XX/192.168.XX.X X\" (The source address range is invalid. Example: \"192.168.XX.XX/192.168.XX.X X\") | The error message returned because the source address range is invalid. Specify the value in the \"192.168.XX.XX/192.168.XX.X X\" format. |
 
-Security Orchestration Automatio n and Response (SOAR) Develop
-
 | ErrorDestAddressGroup.- 210305 | get dest address in address group failed (Failed to obtain destination addresses from the address group.) | The error message returned because the system failed to obtain destination addresses from the address group. |
 |---|---|---|
 | ErrorNoBeaverRules.-210226 | no beaver rules for online (The specified Network Detection and Response rule does not exist.) | The error message returned because the specified Network Detection and Response rule does not exist. |
 | ErrorDBUpdate.-210121 | internal error: sql update (An internal error occurred while executing the UPDATE statement.) | The error message returned because an internal error occurred while executing the UPDATE statement. |
 | ErrorDBDelete.-210123 | internal error: sql delete (An internal error occurred while executing the DELETE statement.) | The error message returned because an internal error occurred while executing the DELETE statement. |
 | ErrorMarshalJSON.-210125 | internal error: marshal json (An internal error occurred while marshaling JSON data.) | The error message returned because an internal error occurred while marshaling JSON data. |
-
-Security Orchestration Automatio n and Response (SOAR) Develop

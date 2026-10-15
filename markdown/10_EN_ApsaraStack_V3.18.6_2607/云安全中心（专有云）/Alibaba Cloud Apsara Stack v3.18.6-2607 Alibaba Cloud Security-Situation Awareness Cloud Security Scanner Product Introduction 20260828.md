@@ -3,22 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner Product Introduction 20260828.pdf"
+source_pdf: "d4696711f06720d0_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Sc"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Scanner%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Scanner Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is Cloud Security Scanner?
+- 2 Features
+- 3 Benefits
+- 4 Scenarios
+
 ty Scanner?
 
-## What is Cloud Security
+## 1 What is Cloud Security Scanner?
 
 **Scanner?**
 
 Cloud Security Scanner is an intelligent security product that uses AI to help enterprises proactively identify security risks. It analyzes network environment exposures from the perspective of attackers and continuously discovers security vulnerabilities based on multidimensional assessments of vulnerability risks, high-risk services, and other security weaknesses. Cloud Security Scanner allows enterprises to efficiently respond to the latest security risks, achieve transparent asset control, comprehensively quantify asset security risks, and establish routine security operations.
 
-## Features
+## 2 Features
 
 This topic describes the features of vulnerability scanning.
 
@@ -52,7 +59,7 @@ This topic describes the features of vulnerability scanning.
 |   | Log auditing | Supports log auditing for events such as system operations, scan task executions, and report exports. The audit log includes event description, log type, event IP, time of occurrence, and event result. You can retrieve and query audit logs based on time, IP, and event. You can also download audit log reports and clear audit logs. |
 |   | Engine management | Provides a switch to automatically import assets from EIP and SLB instances. Supports adding and deleting scan engines. Displays engine information, number of engines, and engine status (running or abnormal). |
 
-## Benefits
+## 3 Benefits
 
 Cloud Security Scanner automates the O&M of Apsara Stack assets and risk management for enterprises. It automatically, quickly, and accurately discovers unknown assets based on known assets and detects vulnerabilities across all assets. It also comprehensively assesses the security posture of publicly exposed business, services, applications, and data. This provides enterprises with faster, more comprehensive, and more intelligent management of their Apsara Stack assets and asset security.
 
@@ -63,7 +70,7 @@ Cloud Security Scanner automates the O&M of Apsara Stack assets and risk managem
 | Provides accurate and comprehensive security risk quantification. | Cloud Security Scanner analyzes network system vulnerabilities from the perspective of attackers and performs unified risk assessments across multiple dimensions. It correlates asset data, attributes, events, and vulnerability library information to identify exposed risks, and uses weighted scoring to quantify the risks. |
 | Provides continuous asset inspection and discovery. | Cloud Security Scanner uses asset discovery and intelligent asset classification to actively probe unknown networks and passively monitor known networks. This enables continuous, automated asset discovery, including edge assets, helping enterprises quantify risks, visualize their assets, and establish routine security operations. Cloud Security Scanner also provides multi-dimensional views of asset topology, lifecycle, newly discovered assets, port updates, service changes, and other information. |
 
-## Scenarios
+## 4 Scenarios
 
 Cloud Security Scanner automates the O&M of IT assets and risk management for enterprises. It automatically, quickly, and accurately discovers unknown assets in enterprises based on their known assets and detects vulnerabilities across all assets. It also comprehensively assesses the security posture of publicly exposed business, services, applications, and data of enterprises and monitors the changes of their exposed services and assets in real time. This provides enterprises with faster, more comprehensive, and more intelligent management of their IT assets and asset security risks.
 

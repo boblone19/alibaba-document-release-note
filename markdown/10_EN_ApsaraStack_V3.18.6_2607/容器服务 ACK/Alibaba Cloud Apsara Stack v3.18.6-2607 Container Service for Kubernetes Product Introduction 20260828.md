@@ -3,20 +3,31 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 24
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Product Introduction 20260828.pdf"
+source_pdf: "8230979dea1bc058_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Product Introduction 202608"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is Container Service?
+- 2 Features
+- 3 Benefits
+- 4 Architecture
+- 5 Functions and features
+- 6 Scenarios
+- 7 Limits
+- 8 Terms
+
 tainer Service?
 
-## What is Container Service?
+## 1 What is Container Service?
 
 Container Service provides high-performance, scalable, and enterprise-class management services for Kubernetes containerized applications throughout the application lifecycle. Container Service simplifies the deployment and scale-out operations of Kubernetes clusters and is empowered by the capabilities of virtualization, storage, networking, and security provided by Alibaba Cloud. Based on these capabilities, Container Service provides an ideal runtime environment for containerized applications. Alibaba Cloud is a Kubernetes Certified Service Provider (KCSP). As one of the first services to participate in the Certified Kubernetes Conformance Program, Container Service provides enterprises with professional support and services.
 
-## Features
+## 2 Features
 
 **Features of Container Service**
 
@@ -56,15 +67,13 @@ Supports canary release and blue-green releases. Supports application monitoring
 
 Supports service-level affinity policies and scale-out. Provides cross-zone high availability and disaster recovery. Provides API operations for cluster and application management to easily implement continuous integration and integrate with private deployment systems.
 
-## Benefits
+## 3 Benefits
 
 **Overview**
 
 **Easy to use**
 
 You can easily create Kubernetes clusters in the Container Service console. You can easily upgrade Kubernetes clusters in the Container Service console. When you use custom Kubernetes clusters, you may need to handle clusters of different versions. Currently, each time you upgrade the clusters, you need to make major adjustments and high operation and maintenance costs are incurred. Container Service allows you to perform rolling upgrades based on images and supports full metadata backups. You can easily roll back clusters to previous versions. Allows you to easily scale Kubernetes clusters in the Container Service console. Kubernetes clusters enable you to quickly scale up or down applications to handle traffic fluctuations in a timely manner.
-
-**Features**
 
 | Feature | Description |
 |---|---|
@@ -78,7 +87,7 @@ You can easily create Kubernetes clusters in the Container Service console. You 
 | Stability | Dedicated support teams guarantee the stability of containers. All Linux and Kubernetes versions must pass rigorous testing before they are available to the public. Container Service supports Docker CE and provides a Docker community to help you communicate with other Docker enthusiasts and solve problems. Best practices are provided to help you address issues, such as network interruptions, kernel incompatibilities, or Docker crashes. |
 | Technical support | Allows you to quickly upgrade Kubernetes clusters to the latest version. Provides professional technical support services to help you solve the issues that may occur when you use containers. |
 
-## Architecture
+## 4 Architecture
 
 Container Service is adapted and enhanced on the basis of native Kubernetes. This service simplifies cluster creation and scaling and integrates Apsara Stack virtualization, storage, network, and security capabilities, providing the optimal environment to run Kubernetesbased containerized applications in the cloud.
 
@@ -91,7 +100,7 @@ Container Service is adapted and enhanced on the basis of native Kubernetes. Thi
 
 nd features
 
-## Functions and features
+## 5 Functions and features
 
 Alibaba Cloud Container Service for Kubernetes (ACK) is a high-performance and scalable container management service. It provides robust Kubernetes cluster management capabilities and delivers a one-stop container cluster management solution that covers cluster management, O&M, high availability, and container images. The service helps you manage the entire lifecycle of Kubernetes containerized applications in the cloud quickly and efficiently. This topic describes the specific features in detail.
 
@@ -198,17 +207,13 @@ nd features
 |---|---|
 | IPv4/IPv6 dual-stack support | ACK clusters fully support native Kubernetes IPv4/IPv6 dual-stack networking. |
 
-## Scenarios
+## 6 Scenarios
 
 **DevOps continuous delivery**
 
 **Optimized continuous delivery pipeline**
 
-Container Service for Kubernetes (ACK) works with Jenkins to automate the DevOps pipeline, from code submission to application deployments. The service ensures that code is only submitted for deployment after passing automated testing, and provides a better alternative to traditional delivery models that involve complex deployments and slow iterations.
-
-**Benefits**
-
-DevOps pipeline automation Automates the DevOps pipeline, from code updates to code builds, image builds, and application deployments. Consistent environment Allows you to deliver code and runtime environments based on the same architecture. Continuous feedback Provides immediate feedback on each integration or delivery.
+Container Service for Kubernetes (ACK) works with Jenkins to automate the DevOps pipeline, from code submission to application deployments. The service ensures that code is only submitted for deployment after passing automated testing, and provides a better alternative to traditional delivery models that involve complex deployments and slow iterations. DevOps pipeline automation Automates the DevOps pipeline, from code updates to code builds, image builds, and application deployments. Consistent environment Allows you to deliver code and runtime environments based on the same architecture. Continuous feedback Provides immediate feedback on each integration or delivery.
 
 **Related products and services**
 
@@ -218,11 +223,7 @@ ECS + ACK
 
 **Enables rapid application developments with a focus on machine learning**
 
-ACK allows data engineers to easily develop and deploy machine learning applications in heterogeneous computing clusters. Integrated with multiple distributed storage systems, the service supports faster read and write speeds to facilitate the testing, training, and release of data models. You can focus on your core business operations instead of worrying about the deployment and maintenance process.
-
-**Benefits**
-
-Ecosystem support Supports mainstream deep learning frameworks, such as TensorFlow, Caffe, MXNet, and Pytorch, and offers optimized features of these frameworks. Quick start and elastic scaling Supports fast model development, training, and inference based on machine learning, and supports quick startup of training tasks within seconds and elastic scaling of GPU resources. Easy to use Allows you to easily create and manage large-scale GPU clusters and monitor core metrics, such as GPU utilization. Deep integration Seamless integration with Apsara Stack storage, logging, monitoring, and security infrastructure capabilities.
+ACK allows data engineers to easily develop and deploy machine learning applications in heterogeneous computing clusters. Integrated with multiple distributed storage systems, the service supports faster read and write speeds to facilitate the testing, training, and release of data models. You can focus on your core business operations instead of worrying about the deployment and maintenance process. Ecosystem support Supports mainstream deep learning frameworks, such as TensorFlow, Caffe, MXNet, and Pytorch, and offers optimized features of these frameworks. Quick start and elastic scaling Supports fast model development, training, and inference based on machine learning, and supports quick startup of training tasks within seconds and elastic scaling of GPU resources. Easy to use Allows you to easily create and manage large-scale GPU clusters and monitor core metrics, such as GPU utilization. Deep integration Seamless integration with Apsara Stack storage, logging, monitoring, and security infrastructure capabilities.
 
 **Related products and services**
 
@@ -232,11 +233,7 @@ ECS/EGS/HPC + ACK + OSS/NAS/CPFS
 
 **Agile development and deployment to speed up business iteration**
 
-In the production environment, you can split your system into microservices and use Apsara Stack image repositories to store these microservices applications. Apsara Stack can schedule, orchestrate, deploy, and implement phased releases of microservices applications while you focus on feature updates.
-
-**Benefits**
-
-Load balancing and service discovery Forwards Layer 4 and Layer 7 requests and binds the requests to backend containers. Multiple scheduling and disaster recovery policies Supports service-level affinity scheduling policies, and cross-zone high availability and disaster recovery. Microservices monitoring and auto scaling Supports microservice and container monitoring, and auto scaling of microservices.
+In the production environment, you can split your system into microservices and use Apsara Stack image repositories to store these microservices applications. Apsara Stack can schedule, orchestrate, deploy, and implement phased releases of microservices applications while you focus on feature updates. Load balancing and service discovery Forwards Layer 4 and Layer 7 requests and binds the requests to backend containers. Multiple scheduling and disaster recovery policies Supports service-level affinity scheduling policies, and cross-zone high availability and disaster recovery. Microservices monitoring and auto scaling Supports microservice and container monitoring, and auto scaling of microservices.
 
 **Related products and services**
 
@@ -246,11 +243,7 @@ ECS + ApsaraDB RDS + OSS + ACK
 
 **Unified O&M of cloud resources**
 
-You can centrally manage cloud and on-premises resources in the ACK console. Containers hide the differences between infrastructures. This enables you to use the same images and orchestration templates to deploy applications in the cloud and on premises.
-
-**Benefits**
-
-Application scaling in the cloud During peak hours, ACK can scale up applications in the cloud and forward traffic to the scaled-up resources. Disaster recovery in the cloud Business systems can be deployed on premises for service provisioning and in the cloud for disaster recovery. On-premises development and testing Applications that are developed and tested on premises can be seamlessly released to the cloud.
+You can centrally manage cloud and on-premises resources in the ACK console. Containers hide the differences between infrastructures. This enables you to use the same images and orchestration templates to deploy applications in the cloud and on premises. Application scaling in the cloud During peak hours, ACK can scale up applications in the cloud and forward traffic to the scaled-up resources. Disaster recovery in the cloud Business systems can be deployed on premises for service provisioning and in the cloud for disaster recovery. On-premises development and testing Applications that are developed and tested on premises can be seamlessly released to the cloud.
 
 **Related products and services**
 
@@ -260,24 +253,20 @@ ECS + VPC + Express Connect
 
 **Traffic-based scalability**
 
-ACK enables businesses to auto-scale their resources based on traffic. This prevents traffic spikes from bringing down your system and eliminates idle resources during off-peak hours.
-
-**Benefits**
-
-Quick response Container scale-out can be triggered within seconds when traffic reaches the scale-out threshold. Auto scaling The scaling process is fully automated without manual intervention. Low cost Containers are automatically scaled in when traffic decreases to avoid resource waste.
+ACK enables businesses to auto-scale their resources based on traffic. This prevents traffic spikes from bringing down your system and eliminates idle resources during off-peak hours. Quick response Container scale-out can be triggered within seconds when traffic reaches the scale-out threshold. Auto scaling The scaling process is fully automated without manual intervention. Low cost Containers are automatically scaled in when traffic decreases to avoid resource waste.
 
 **Related products and services**
 
 ECS + CloudMonitor
 
-## Limits
+## 7 Limits
 
 | Limit | Description |
 |---|---|
 | Cluster | By default, you can create a maximum of 50 clusters across all regions. Each cluster can contain a maximum of 100 nodes. To increase these quotas, submit a ticket. After you create a cluster, you cannot perform the following actions: You cannot change a cluster's VPC. You cannot change the container network plugin. The storage plug-in cannot be changed. You cannot migrate applications between different namespaces. Ensure that you have purchased enough ACK licenses. If you have an insufficient number of licenses, cluster creation fails. |
 | ECS instance | Cluster creation, scale-out, and auto-scaling operations are subject to the quota and inventory of underlying products, such as Elastic Compute Service (ECS). If the quota or inventory is insufficient, some nodes may fail to be created. When you create a cluster, the ECS instances must have at least 2 vCPUs and 4 GiB of memory. |
 
-## Terms
+## 8 Terms
 
 **Terms**
 

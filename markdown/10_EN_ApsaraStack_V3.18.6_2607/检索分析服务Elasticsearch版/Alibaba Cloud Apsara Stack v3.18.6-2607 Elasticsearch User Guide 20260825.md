@@ -3,22 +3,96 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch User Guide 2026082
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 185
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch User Guide 20260825.pdf"
+source_pdf: "dfcb18e5bbbff984_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch User Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20User%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch User Guide 20260825
 
+## Table of Contents
+
+- 1 What is Alibaba Cloud Elasticsearch?
+- 2 Kernel version release notes
+- 3 Limits and configuration suggestions
+- 4 Terms
+- 5 Preparations
+  - 5.1 Sign in to the Alibaba Cloud Elasticsearch console
+  - 5.2 View information on the Overview page
+  - 5.3 Create a cluster
+  - 5.4 Access a cluster
+  - 5.5 View cluster information
+- 6 Quick start
+  - 6.1 Create an index
+  - 6.2 Manage documents
+    - 6.2.1 Create a document
+    - 6.2.2 Update a document
+    - 6.2.3 Retrieve a document
+    - 6.2.4 Search for documents
+    - 6.2.5 Perform a complex search
+    - 6.2.6 Analyze document statistics
+    - 6.2.7 Delete a document
+    - 6.2.8 Delete an index
+- 7 Manage clusters
+  - 7.1 Manage clusters
+    - 7.1.1 Customize the columns displayed in the cluster list
+    - 7.1.2 Export a list of Elasticsearch clusters
+    - 7.1.3 Refresh instance
+    - 7.1.4 Modify the name of a cluster
+    - 7.1.5 Manage cluster tags
+    - 7.1.6 Restart an instance or node
+    - 7.1.7 Releasing an instance
+  - 7.2 View cluster information
+    - 7.2.1 View the information about a cluster
+    - 7.2.2 View tasks
+    - 7.2.3 View the logs of a node
+  - 7.3 Scale in or out a cluster
+  - 7.4 Configuration and management
+    - 7.4.1 Configure clusters
+    - 7.4.2 Plugin configuration
+      - 7.4.2.1 Supported plugins
+        - 7.4.2.1.1 Elasticsearch plugins
+        - 7.4.2.1.2 Kibana plugins
+        - 7.4.2.1.3 OpenSearch plugins
+        - 7.4.2.1.4 Dashboard plugins
+      - 7.4.2.2 Install or uninstall plug-ins
+    - 7.4.3 Security settings
+    - 7.4.4 Data backup
+      - 7.4.4.1 Manual backup and restoration
+      - 7.4.4.2 Automatic backup
+  - 7.5 Kibana console
+    - 7.5.1 Log in to the Kibana console
+    - 7.5.2 Modify the Kibana configuration
+  - 7.6 Dashboards console
+    - 7.6.1 Log on to the Dashboards console
+    - 7.6.2 Modify Dashboards configuration
+- 8 Using plugins
+  - 8.1 Work with Elasticsearch plug-ins
+    - 8.1.1 Use a-pack-xdcr for cross-cluster index replication
+    - 8.1.2 Synchronize index data across clusters with the xdcr plugin
+    - 8.1.3 Use the opendistro_sql plug-in to query cluster data by executing SQL statements
+    - 8.1.4 Use the vector search plugin (aliyun-knn)
+    - 8.1.5 Manage index lifecycles with the ISM plugin
+    - 8.1.6 Use the opendistro_security plug-in to control permissions
+    - 8.1.7 Compress index files with the aliyun-codec plugin
+    - 8.1.8 Bulk aggregation with the faster-bulk plugin
+    - 8.1.9 Throttle cluster traffic with the aliyun-qos plug-in
+  - 8.2 Use OpenSearch plugins
+    - 8.2.1 Implement vector search using the opensearch-knn plugin
+    - 8.2.2 Replicate indexes across clusters
+  - 8.3 Work with Kibana plug-ins
+    - 8.3.1 Use the opendistro-alerting plug-in to implement cluster alerting
+- 9 Elasticsearch MCP Server
+
 d Elasticsearch?
 
-## What is Alibaba Cloud
+## 1 What is Alibaba Cloud Elasticsearch?
 
 **Elasticsearch?**
 
 Elasticsearch is a real-time, distributed search and analysis engine based on Lucene. It is a leading open source enterprise search engine available under the Apache license. It provides a distributed service that enables users to store, search, and analyze massive datasets quickly and in near real-time. Elasticsearch is often the core engine for applications that require complex query features and must handle high query volumes. An Elasticsearch cluster is a distributed system composed of multiple nodes. These nodes work together to store data and provide indexing and search capabilities across the entire cluster. To improve horizontal scaling, the system splits large indexes into multiple shards, which are then distributed among the nodes. Elasticsearch also creates replica shards on different nodes to back up data. This process increases high availability, distributes the search workload, and improves concurrent performance. Alibaba Cloud Elasticsearch provides a service that is 100% compatible with open source Elasticsearch. The service supports multiple versions of the open source ES kernel and includes targeted performance optimizations. Alibaba Cloud Elasticsearch also offers many proprietary technologies, such as plugins and features for Chinese tokenization, AISearch, query Quality of Service (QoS), cross-cluster replication, data compression, and aggregated writes. The service provides enterprise-grade capabilities, including zone-disaster recovery for high availability, snapshot backup and recovery, security authentication, visual cluster creation, plugin management, multi-tenancy, and Auto Scaling. In addition to Elasticsearch, Alibaba Cloud also fully supports OpenSearch. The default OpenSearch version provided is 3.1.0. OpenSearch, forked from Elasticsearch 7.10, is a continuously evolving project that aims to provide an open, extensible, and vendor-neutral platform for search and analysis. The Alibaba Cloud OpenSearch service is fully compatible with the open source OpenSearch ecosystem and supports core features such as Dashboards, SQL queries, Piped Processing Language (PPL), Index State Management, and asynchronous search. The service also integrates Alibaba Cloud's security systems, monitoring and alerts, automatic backups, and Auto Scaling capabilities. You can deploy either the Elasticsearch or OpenSearch engine to meet your business needs. This provides a unified, cloud-native management experience with an enterprise-grade Service-Level Agreement (SLA). e notes
 
-## Kernel version release
+## 2 Kernel version release notes
 
 **notes**
 
@@ -33,7 +107,7 @@ This topic describes the kernel version release notes of Apsara Stack Elasticsea
 
 You need to purchase OpenSearch kernel features before you can use them. By default, OpenSearch Dashboards and OpenSearch use the same kernel version. on suggestions
 
-## Limits and configuration
+## 3 Limits and configuration suggestions
 
 **suggestions**
 
@@ -88,7 +162,7 @@ As a distributed enterprise-class search engine, Apsara Stack Elasticsearch prov
 
 The performance stability of Elasticsearch depends on multiple factors, including physical resources, the actual business data, and how Elasticsearch is used. For example, the data volume, QPS, query method, and queried content directly affect cluster performance. To improve the performance stability of Elasticsearch clusters, we recommend that you take note of the following suggestions: on suggestions Ensure the cluster capacity. Assess the required cluster capacity and perform stress tests to meet the requirements of business scenarios. Make sure that the resource usage of the cluster is not high. Optimize the index structure. The design of the Elasticsearch index structure has a great impact on performance stability. To optimize the index structure, it is necessary to properly select the field type, mapping method, and tokenizer to avoid problems such as duplicate fields, unnecessary mappings, and wrong tokenizer selection. Optimize the query method. The complexity and use of query statements also affect the stability of the cluster. You need to continuously optimize the query method as needed. Manage the data volume. The volume of data stored on an Elasticsearch cluster is an important factor that affects the performance stability of the cluster. When the data volume is excessively large, the query and write speeds may be adversely affected, and the complexity of cluster maintenance also increases. Therefore, it is necessary to properly manage the data volume, including configuration of data shards and replicas, and clear unneeded data promptly. Periodic maintenance: Periodic cluster maintenance is an important approach to ensure cluster performance stability. Maintenance tasks include useless index and snapshot cleanup, index structure optimization, and node restarts. A variety of factors may affect the performance stability of Elasticsearch clusters. You need to play close attention to the status and resource usage of your cluster when using the cluster, scale out the cluster in a timely manner, and exercise caution when updating the cluster configuration. In addition, make sure that you have traffic throttling, circuit breaking, and service degradation plans to handle cluster stability issues.
 
-## Terms
+## 4 Terms
 
 This article introduces the basic concepts and brief descriptions of common terms encountered in the use of Alibaba Cloud Elasticsearch services.
 
@@ -143,9 +217,9 @@ A backup of an index, Elasticsearch multiple copies can be set. Write operations
 | Replica shard | Query requests | The number of replica shards can be changed at any time. | Replica shards are important to search performance and provide the following benefits: Improved fault tolerance: If a primary shard on a node is damaged or lost, you can restore the primary shard from its replica shards. Improved search efficiency: Elasticsearch automatically balances the load of queries among replica shards. |
 |---|---|---|---|
 
-## Preparations
+## 5 Preparations
 
-### Sign in to the Alibaba Cloud
+### 5.1 Sign in to the Alibaba Cloud Elasticsearch console
 
 **Elasticsearch console**
 
@@ -184,7 +258,7 @@ First-time sign-in after an administrator has enforced MFA: a. On the Bind Virtu
 
 Icons in the upper-right corner of the top navigation bar : Opens the **Apsara Assistant** dialog box. For more information, see Elasticsearch MCP Server. : Switches the display language. Options include English and Traditional Chinese. / : Switches between **light mode** and **dark mode**. : Displays notifications. Click **View More** to open the **Message Center** and view all messages. Icons in the floating menu in the lower-right corner : Opens the **Apsara Assistant** dialog box. : Opens the Pricing page, which includes a pricing calculator, configuration list, and service pricing details. : Opens the **Configuration Pricer**. The number on the icon indicates the quantity of services added. This icon's visibility depends on your user permissions.
 
-### View information on the
+### 5.2 View information on the Overview page
 
 **Overview page**
 
@@ -205,7 +279,7 @@ Log on to the Alibaba Cloud OpenSearch console. The **Overview** page appears by
 | Alert statistics | In the Alarm Statistics section, you can view the total number of alerts and the information about alerts at the P1 (critical), P2 (warning), and P3 (information) levels. |
 | Alert Trend | In the Alert Trend section, you can view the trends of alerts within the previous 7, 15, and 30 days. |
 
-### Create a cluster
+### 5.3 Create a cluster
 
 Elasticsearch allows you to create Elasticsearch and OpenSearch clusters. This topic describes how to create a cluster in the console, including how to configure cluster information and how to configure a whitelist.
 
@@ -375,7 +449,7 @@ If the cluster fails to be created due to insufficient resources when you submit
 A period of time is required before an Elasticsearch cluster can provide services after it is created. If **Normal** is displayed in the **Status** column of the cluster, the cluster has been successfully created. To view information in the **Security Level** column of the cluster on the **Instance List** page, you must first enable security level-based authorization. For more information, see **Apsara Uni-manager Management Console User Guide > Security policies**
 **> Security level-based authorization**.
 
-### Access a cluster
+### 5.4 Access a cluster
 
 This topic describes how to access an Elasticsearch cluster from Elastic Compute Service (ECS) or the Kibana or Dashboard console.
 
@@ -422,7 +496,7 @@ icon in the upper-left corner and choose **Management > Dev Tools**. In the
 **console**, run the `GET /` command to access the cluster.
 In the preceding example, the cluster is of Elasticsearch V6.8.2. The procedure may vary based on the Elasticsearch version. The actual console page shall prevail.
 
-### View cluster information
+### 5.5 View cluster information
 
 This topic describes how to view Elasticsearch cluster information in the Kibana console to help identify and handle potential risks.
 
@@ -475,9 +549,9 @@ View indexes
 GET /_cat/indices?v
 ```
 
-## Quick start
+## 6 Quick start
 
-### Create an index
+### 6.1 Create an index
 
 This topic describes how to create an index for an Elasticsearch cluster by using the Kibana console, including configuring the number of shards, number of replicas, and field mappings. You can create indexes in Elasticsearch V7.0.0 and later.
 
@@ -536,9 +610,9 @@ is `_doc` . The index is split into five shards, has one replica for each shard,
   "index" : "my_index"
 ```
 
-### Manage documents
+### 6.2 Manage documents
 
-#### Create a document
+#### 6.2.1 Create a document
 
 Elasticsearch allows you to create documents by sending PUT requests, specifying indexes, types, and IDs of documents, and defining fields in the request body. This topic describes how to create a document in an Elasticsearch cluster by running a PUT command.
 
@@ -622,7 +696,7 @@ After the document is created, the following result is returned:
 
 For more information, see Docs Index.
 
-#### Update a document
+#### 6.2.2 Update a document
 
 Elasticsearch allows you to update documents by using the PUT or POST method, which is suitable for real-time data processing. This topic describes how to update an entire document or part of a document in Elasticsearch.
 
@@ -714,7 +788,7 @@ If the document is updated, the following result is returned:
 
 You can also call the corresponding API operation to batch update documents. For more information, see Docs Update.
 
-#### Retrieve a document
+#### 6.2.3 Retrieve a document
 
 This topic describes how to retrieve a specific document in the Kibana console of an Elasticsearch cluster by sending GET requests.
 
@@ -764,7 +838,7 @@ If the command succeeds, the following result is returned:
 
 For more information, see Docs GET.
 
-#### Search for documents
+#### 6.2.4 Search for documents
 
 This topic describes how to search for Elasticsearch documents by URI parameters in the Kibana console by sending GET requests.
 
@@ -829,7 +903,7 @@ If the command succeeds, the following result is returned:
 
 `]` For more information, see Docs GET.
 
-#### Perform a complex search
+#### 6.2.5 Perform a complex search
 
 This topic describes how to perform a complex search in the Kibana console by sending GET requests, including queries by time range and keyword. By performing these operations, you can efficiently retrieve document data in a specific index.
 
@@ -976,7 +1050,7 @@ If the command succeeds, the following result is returned:
 
 `]` For more information, see Docs GET.
 
-#### Analyze document statistics
+#### 6.2.6 Analyze document statistics
 
 Elasticsearch allows you to perform aggregate queries on the data of a specific index in the Kibana console by sending POST requests. This topic describes how to use Elasticsearch to perform statistical analysis on document data.
 
@@ -1048,7 +1122,7 @@ If the command succeeds, the following result is returned:
 
 `]`
 
-#### Delete a document
+#### 6.2.7 Delete a document
 
 Elasticsearch allows you to delete specific documents in the Kibana console. This topic describes how to run the DELETE command to delete a document with a specific index, type, and ID.
 
@@ -1098,7 +1172,7 @@ If the document is deleted, the following result is returned:
 
 For more information, see Docs Delete.
 
-#### Delete an index
+#### 6.2.8 Delete an index
 
 You can delete Elasticsearch indexes by running a DELETE command in the Kibana console. This topic describes how to delete an index by specifying the index name and obtain the deletion confirmation result.
 
@@ -1126,11 +1200,11 @@ If the index is deleted, the following result is returned:
 
 For more information, see Docs Delete.
 
-## Manage clusters
+## 7 Manage clusters
 
-### Manage clusters
+### 7.1 Manage clusters
 
-#### Customize the columns displayed in the
+#### 7.1.1 Customize the columns displayed in the cluster list
 
 **cluster list**
 
@@ -1145,7 +1219,7 @@ icon.
 3. In the **Custom Columns** list, select the columns that you want to view. Then, the cluster
 list displays the specified columns.
 
-#### Export a list of Elasticsearch clusters
+#### 7.1.2 Export a list of Elasticsearch clusters
 
 This topic describes how to export a list of Elasticsearch clusters, including the export range and the selection of data columns to be exported.
 
@@ -1162,7 +1236,7 @@ Selected Data.
 **Columns to Export**: Select columns that you want to export.
 4. Click **OK**.
 
-#### Refresh instance
+#### 7.1.3 Refresh instance
 
 If the information of an Elasticsearch cluster, such as its status, is not updated promptly in the console, you can manually refresh the page to view the up-to-date information. This topic describes how to update the information of a cluster.
 
@@ -1173,7 +1247,7 @@ If the information of an Elasticsearch cluster, such as its status, is not updat
 2. There are two ways to refresh the instance.
 On the **Elasticsearch Instances** page, click the icon. Click the ID of the target instance. On the **Basic Information** page, click **Refresh** in the upper-right corner.
 
-#### Modify the name of a cluster
+#### 7.1.4 Modify the name of a cluster
 
 This topic describes how to modify the name of an Elasticsearch cluster.
 
@@ -1184,7 +1258,7 @@ This topic describes how to modify the name of an Elasticsearch cluster.
 3. Rename a cluster.
 You can use either of the following methods to rename the cluster: The cluster name must be 0 to 30 characters in length and start with a letter, digit, or Chinese character. It can contain underscores (_) or hyphens (-). Method 1: a. On the **Instance List** page, move the pointer over **Instance ID/name** and click . b. In the **Modify Name** dialog box that appears, enter a new name. c. Click **OK**. Method 2: a. On the **Instance List** page, click **Instance ID/name**. b. In the **Basic Information** section, click **Edit** next to **Name**. c. Enter a new name as prompted and click **OK**.
 
-#### Manage cluster tags
+#### 7.1.5 Manage cluster tags
 
 If you have multiple Elasticsearch clusters, you can add tags to the clusters to facilitate cluster management. A tag consists of a key and a value. You can use keys and values to further classify clusters. This topic describes how to add a tag to a cluster, filter clusters by tag, and remove a tag from a cluster.
 
@@ -1219,7 +1293,7 @@ i. Select multiple clusters from which you want to remove tags and click **Batch
 **Tags** below the cluster list.
 ii. In the **Batch Remove Tags** dialog box, select the tags that you want to remove and click **OK**. iii. In the Edited message, confirm that the tags are removed from the clusters, and then click **Close**.
 
-#### Restart an instance or node
+#### 7.1.6 Restart an instance or node
 
 You may need to restart an Elasticsearch instance or node when you modify its configuration or when a cluster or node is in an abnormal state. This topic describes how to restart an instance or node in the console.
 
@@ -1250,7 +1324,7 @@ In most cases, if the loads of a cluster are not high and the indexes in the clu
 6. Click **OK**.
 If you perform a forced restart, you must select the **Confirm Forced Restart** checkbox. While the instance is restarting, its status is Restarting (yellow). After the restart is complete, the status changes to Normal (green).
 
-#### Releasing an instance
+#### 7.1.7 Releasing an instance
 
 This topic describes how to release an instance that you no longer need.
 
@@ -1267,9 +1341,9 @@ After a cluster is released, data stored in the cluster cannot be restored. We r
 3. In the **Confirm Deletion** dialog box, click **OK**.
 After the instance is released, a **Deleted Successfully** message is displayed, and the instance is removed from the list.
 
-### View cluster information
+### 7.2 View cluster information
 
-#### View the information about a cluster
+#### 7.2.1 View the information about a cluster
 
 On the Basic Information page of an Elasticsearch cluster, you can view the basic information about the cluster, such as the ID, status, endpoint, and port of the cluster, the Kibana or Dashboard information, and the visualized node information. This topic describes how to view the information about a cluster.
 
@@ -1325,7 +1399,7 @@ information, and visualized node information of the cluster.
 | Node Visualization | N/A | Click the icon to enter the node visualization mode and view the status of the cluster and each node. Move the pointer over a node to view the name, status, CPU specification, memory capacity, and storage space of the node. You can also restart nodes or view node logs. Click the icon to enter the configuration list mode and view the configurations of the cluster, such as the specifications and number of data nodes. |
 |---|---|---|
 
-#### View tasks
+#### 7.2.2 View tasks
 
 You can view the progress of different tasks created for an Elasticsearch cluster, including tasks for cluster specification upgrade or downgrade, cluster configuration file update, cluster creation, plug-in installation, and cluster restart. This topic describes how to view the tasks of an Elasticsearch cluster.
 
@@ -1343,7 +1417,7 @@ icon in the upper-right corner.
 5. Click the
 icon to the left of the task to view the list that displays the status and uptime of each node in the cluster. Click **Node Information** or **Node Logs** to view the information or logs of the corresponding node. After the task completes, the icon in the upper-right corner of the Basic Information page changes to , and the icon in the task list disappears.
 
-#### View the logs of a node
+#### 7.2.3 View the logs of a node
 
 This topic describes how to view the logs of a node.
 
@@ -1357,7 +1431,7 @@ the icon of a node and click **View Node Logs** in the menu that appears.
 4. In the Node Logs message, view the logs of the node.
 By default, the system displays only the latest 100 log entries of the node. If auto refresh is enabled, log data is updated every 30 seconds. For more information about how to query log details, refer to Operations and Maintenance Guide and go to the corresponding log page.
 
-### Scale in or out a cluster
+### 7.3 Scale in or out a cluster
 
 If the configuration of your Elasticsearch cluster does not meet the business requirements, you can scale in or out the Elasticsearch cluster to avoid resource waste or handle unexpected business spikes. This topic describes how to scale in or out an Elasticsearch cluster.
 
@@ -1383,11 +1457,11 @@ configuration as needed. For more information about the parameters, see Create a
 6. In the **The operation is successful** message, click **OK**.
 On the **Instance List** page, wait for the instance status to change to **Normal**, which indicates that the configuration change is complete.
 
-### Configuration and
+### 7.4 Configuration and management
 
 **management**
 
-#### Configure clusters
+#### 7.4.1 Configure clusters
 
 You can use the cluster configuration feature to modify configurations and configure synonyms, security settings, and the YML file of an Elasticsearch cluster. This topic describes how to configure an Elasticsearch cluster.
 
@@ -1540,11 +1614,11 @@ Improper YML file configurations may cause cluster unavailability or data loss. 
 4. Select **This operation will restart the cluster. Continue?** and click **OK**.
 Then, the system restarts the Elasticsearch cluster. After the cluster is restarted, the configurations in the YML file are updated.
 
-#### Plugin configuration
+#### 7.4.2 Plugin configuration
 
-##### Supported plugins
+##### 7.4.2.1 Supported plugins
 
-###### Elasticsearch plugins
+###### 7.4.2.1.1 Elasticsearch plugins
 
 This topic lists the supported Elasticsearch plugins and their versions.
 
@@ -1646,7 +1720,7 @@ This topic lists the supported Elasticsearch plugins and their versions.
 | search-guard-5 | Built-in | 5.5.3 | The Search Guard 5 security plugin. It provides access control, authentication, and authorization features for Elasticsearch 5. |
 | sql | Built-in | 5.5.3 | The SQL query plugin. It lets you query Elasticsearch data using SQL syntax. |
 
-###### Kibana plugins
+###### 7.4.2.1.2 Kibana plugins
 
 This topic lists the plugins supported by Kibana and their corresponding versions.
 
@@ -1672,7 +1746,7 @@ This topic lists the plugins supported by Kibana and their corresponding version
 |---|---|---|---|
 | searchguard | Built-in | 5.5.3 | Search Guard Kibana plugin. Integrates Elasticsearch security features (such as access control and identity verification) into Kibana for unified permission management. |
 
-###### OpenSearch plugins
+###### 7.4.2.1.3 OpenSearch plugins
 
 This topic lists the plugins supported by OpenSearch and their corresponding versions.
 
@@ -1706,7 +1780,7 @@ This topic lists the plugins supported by OpenSearch and their corresponding ver
 | opensearch- system-templates | Built-in | 3.1.0 | Manages system-generated index templates used for internal OpenSearch features and plugins. |
 | query-insights | Built-in | 3.1.0 | Analyzes search query performance, latency, and resource usage to optimize relevance and efficiency. |
 
-###### Dashboard plugins
+###### 7.4.2.1.4 Dashboard plugins
 
 This topic lists the supported Dashboard plugins and their versions.
 
@@ -1716,7 +1790,7 @@ This topic lists the supported Dashboard plugins and their versions.
 |---|---|---|---|
 | indexManagement Dashboards | Built-in | 3.1.0 | Provides an interface to monitor and manage index lifecycles. Supported operations include rollover, deletion, and state transition. |
 
-##### Install or uninstall plug-ins
+##### 7.4.2.2 Install or uninstall plug-ins
 
 The plug-in configuration feature lets you manually install or uninstall plug-ins that have been uploaded to the Operations and Maintenance (O&M) platform.
 
@@ -1738,7 +1812,7 @@ Click the **Default Plug-ins** tab to view the plug-ins that are installed by de
 
 After you install or uninstall a plug-in, the cluster is restarted. Proceed with caution. After the cluster is restarted and the status of the plug-in displays Installed or Uninstalled, the plug-in is successfully installed or uninstalled.
 
-#### Security settings
+#### 7.4.3 Security settings
 
 This topic describes how to configure security settings in Elasticsearch, including configuring an IP address whitelist for accessing an Elasticsearch cluster over Virtual Private Cloud (VPC) and enabling HTTPS to manage access permissions and ensure data transmission security.
 
@@ -1771,9 +1845,9 @@ By default, the HTTPS feature is disabled for Elasticsearch clusters. we recomme
 1. Go to the Security page.
 2. Turn on the switch next to **Enable HTTPS** to enable HTTPS.
 
-#### Data backup
+#### 7.4.4 Data backup
 
-##### Manual backup and restoration
+##### 7.4.4.1 Manual backup and restoration
 
 You can call the snapshot API operation to back up or restore data for your Elasticsearch cluster. The snapshot API operation retrieves the status and data of your Elasticsearch cluster and stores them to a shared repository.
 
@@ -2159,7 +2233,7 @@ OSS bucket that stores the snapshot.
 4. Run the snapshot restoration command on the destination Elasticsearch cluster.
 These steps provide a simple solution to snapshot-based data migration. For more information, see Use a snapshot stored in OSS to migrate Elasticsearch data.
 
-##### Automatic backup
+##### 7.4.4.2 Automatic backup
 
 The snapshot feature lets you set the backup cycle and time for automatic backup. You can also manually create snapshots. This topic describes how to configure automatic backup.
 
@@ -2201,9 +2275,9 @@ The start time is based on the time zone of the current region. Avoid creating c
 8. Click **OK**.
 After you click OK, the system automatically backs up data based on the backup cycle that you set. You can view detailed backup information in the **Snapshot List**. To back up data immediately, click **Back Up Immediately** in the **Snapshot List**. The snapshot list automatically clears automatic backup records every hour. Only the latest 10 records are retained. The snapshot list does not clear manual backup records that are generated after you click **Create Snapshot**.
 
-### Kibana console
+### 7.5 Kibana console
 
-#### Log in to the Kibana console
+#### 7.5.1 Log in to the Kibana console
 
 Apsara Stack Elasticsearch provides the Kibana console for you to scale your businesses. The Kibana console is seamlessly integrated into Elasticsearch. It allows you to view the status of your Elasticsearch cluster in real time and manage the cluster. This topic describes how to log in to the Kibana console.
 
@@ -2224,7 +2298,7 @@ The default username is elastic. The password is set by you when you create the 
 5. Click the
 icon in the upper-left corner and choose **Management > Dev Tools** to go to the **console**.
 
-#### Modify the Kibana configuration
+#### 7.5.2 Modify the Kibana configuration
 
 You can modify the Kibana configuration to view, install, and uninstall Kibana plug-ins uploaded to the Elasticsearch O&M console. This topic describes how to modify the Kibana configuration.
 
@@ -2248,9 +2322,9 @@ Installing or uninstalling a plug-in restarts the cluster. Confirm the operation
 6. In the dialog box that appears, read the risk warning and click **Confirm**.
 Wait for the cluster to restart. The status of the plug-in changes to Installed or Uninstalled, which indicates that the operation is successful.
 
-### Dashboards console
+### 7.6 Dashboards console
 
-#### Log on to the Dashboards console
+#### 7.6.1 Log on to the Dashboards console
 
 This topic describes how to log on to the OpenSearch Dashboards console.
 
@@ -2270,7 +2344,7 @@ The default username is admin. The password is the one that you set when you cre
 5. Click the
 icon in the upper-left corner and choose **Management > Dev Tools** to open the **Console** page.
 
-#### Modify Dashboards configuration
+#### 7.6.2 Modify Dashboards configuration
 
 Modify the Dashboard configuration to view, install, or uninstall Dashboard plugins that you have uploaded to the O&M platform. This topic describes how to perform this task.
 
@@ -2290,13 +2364,13 @@ Installing or uninstalling a plugin triggers a cluster restart. Proceed with cau
 6. In the dialog box that appears, read the risk notice and click **Confirm**.
 After the cluster successfully restarts, the status of an installed plugin changes to Installed and the status of an uninstalled plugin changes to Not Installed. This confirms that the plugin was successfully installed or uninstalled.
 
-## Using plugins
+## 8 Using plugins
 
-### Work with Elasticsearch plug-
+### 8.1 Work with Elasticsearch plug-ins
 
 **ins**
 
-#### Use a-pack-xdcr for cross-cluster index
+#### 8.1.1 Use a-pack-xdcr for cross-cluster index replication
 
 **replication**
 
@@ -2388,7 +2462,7 @@ GET /my_test_index/_search
 DELETE /_xdcr/leader/my_test_index
 ```
 
-#### Synchronize index data across clusters
+#### 8.1.2 Synchronize index data across clusters with the xdcr plugin
 
 **with the xdcr plugin**
 
@@ -2651,7 +2725,7 @@ View ongoing synchronization tasks.
 GET /_cat/xdcr/concurrent_sync
 ```
 
-#### Use the opendistro_sql plug-in to query
+#### 8.1.3 Use the opendistro_sql plug-in to query cluster data by executing SQL statements
 
 **cluster data by executing SQL statements**
 
@@ -2859,7 +2933,7 @@ city,name,age Shanghai,Bob,28 Beijing,Alice,30 Beijing,Charlie,35
 
 For more information about SQL syntax, see SQL. If you want to execute Java code by using SQL statements, download the Java Database Connectivity (JDBC) driver from https://github.com/opendistro-forelasticsearch/sql-jdbc.
 
-#### Use the vector search plugin (aliyun-
+#### 8.1.4 Use the vector search plugin (aliyun-knn)
 
 **knn)**
 
@@ -3047,7 +3121,7 @@ Q: How do I evaluate the query recall rate? A: You can create two indexes with i
 **indices.breaker.vector.native.indexing.limit** (default is 70%), which triggers the write
 circuit breaker. Write operations typically resume automatically after the background index build tasks are complete and memory is released. We recommend that you implement a retry mechanism in your client-side write logic. Q: Why is the CPU still active after write tasks have stopped? A: Vector index building occurs during a refresh or flush operation. Even if the write traffic has stopped, background tasks for building the vector index may still be running. The computing resources are freed after the final refresh cycle completes. Q: What do I do if vector search with the aliyun-knn plugin is slow or a memory circuit breaker is triggered? A: The aliyun-knn plugin performs searches on in-memory vectors, making it memoryintensive. Large indexes can cause slow performance or trigger the memory circuit breaker. As a best practice, ensure the index size does not exceed 50% of the data node's memory. If you cannot reduce the data volume and memory is insufficient, upgrade your cluster specifications.
 
-#### Manage index lifecycles with the ISM
+#### 8.1.5 Manage index lifecycles with the ISM plugin
 
 **plugin**
 
@@ -3277,7 +3351,7 @@ POST test/_doc
 
 After you attach a policy to an index, the ISM plugin creates a job that runs every 5 minutes by default. This job executes policy actions, checks conditions, and transitions the index between states. You can also run the `GET _opendistro/_ism/explain/test-000001` command to check the current state of the ISM policy.
 
-#### Use the opendistro_security plug-in to
+#### 8.1.6 Use the opendistro_security plug-in to control permissions
 
 **control permissions**
 
@@ -3469,7 +3543,7 @@ GET test_security1/_search
 
 Expected result (only documents that the role is allowed to access are queried):
 
-#### Compress index files with the aliyun-
+#### 8.1.7 Compress index files with the aliyun-codec plugin
 
 **codec plugin**
 
@@ -3622,7 +3696,7 @@ apack.doc_values_fetch:
     queue_size: 1000
 ```
 
-#### Bulk aggregation with the faster-bulk
+#### 8.1.8 Bulk aggregation with the faster-bulk plugin
 
 **plugin**
 
@@ -3689,7 +3763,7 @@ PUT _cluster/settings
       "apack.fasterbulk.combine.enabled":"false"
 ```
 
-#### Throttle cluster traffic with the aliyun-
+#### 8.1.9 Throttle cluster traffic with the aliyun-qos plug-in
 
 **qos plug-in**
 
@@ -3991,9 +4065,9 @@ Get historical metric data for a specific rate limiter
 GET /_qos/limiter/metric/${limiterId}
 ```
 
-### Use OpenSearch plugins
+### 8.2 Use OpenSearch plugins
 
-#### Implement vector search using the
+#### 8.2.1 Implement vector search using the opensearch-knn plugin
 
 **opensearch-knn plugin**
 
@@ -4154,7 +4228,7 @@ The search results are as follows:
 
 In OpenSearch, you can either import your own vectors or let OpenSearch automatically generate vector embeddings from your data. Automating vector embedding generation reduces the data preprocessing workload required for data ingestion and search. For more information about OpenSearch, see the official OpenSearch documentation.
 
-#### Replicate indexes across clusters
+#### 8.2.2 Replicate indexes across clusters
 
 OpenSearch supports cross-cluster index replication using the opensearch-cross-clusterreplication plugin. This topic describes how to create and configure clusters, set up connections and replication, and manage replication tasks to improve query performance and disaster recovery.
 
@@ -4323,9 +4397,9 @@ By default, after creation, each node in a leader or follower cluster includes t
  node.roles: '["data", "cluster_manager", "remote_cluster_client"]' .
 ```
 
-### Work with Kibana plug-ins
+### 8.3 Work with Kibana plug-ins
 
-#### Use the opendistro-alerting plug-in to
+#### 8.3.1 Use the opendistro-alerting plug-in to implement cluster alerting
 
 **implement cluster alerting**
 
@@ -4504,7 +4578,7 @@ In the upper-left corner, click the More icon. In the left-side navigation pane,
 **Distro for Elasticsearch > Alerting**. On the **Dashboard** tab, view the created alert.
 rver
 
-## Elasticsearch MCP Server
+## 9 Elasticsearch MCP Server
 
 Powered by Model Context Protocol (MCP), Elasticsearch uses the hosting mode of Apsara Copilot to call the API to obtain Elasticsearch cluster information. You can also deploy MCP Server to query Elasticsearch cluster information. This helps you develop a natural languagedriven data query agent to query data and visualize intelligent data processing.
 

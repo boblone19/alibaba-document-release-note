@@ -3,18 +3,75 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub User Guide 20260825"
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 167
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub User Guide 20260825.pdf"
+source_pdf: "a0566c800729cc41_Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub User Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/DataHub/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataHub%20User%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub User Guide 20260825
 
-## What is DataHub?
+## Table of Contents
+
+- 1 What is DataHub?
+- 2 Terms
+- 3 Limits
+- 4 Quick Start
+  - 4.1 Overview
+  - 4.2 Before you begin
+    - 4.2.1 Log in to the DataHub console
+    - 4.2.2 View information on the Overview page
+    - 4.2.3 Create a project
+    - 4.2.4 Create a topic
+    - 4.2.5 Create a group
+  - 4.3 Use the data sampling feature
+- 5 DataHub permission control
+  - 5.1 Overview
+  - 5.2 DataHub resources
+  - 5.3 DataHub API
+  - 5.4 Conditions supported by DataHub
+  - 5.5 Sample RAM policies for DataHub
+    - 5.5.1 AliyunDataHubFullAccess
+    - 5.5.2 AliyunDataHubReadOnlyAccess
+- 6 Data collection
+  - 6.1 Overview
+  - 6.2 Fluentd
+  - 6.3 Logstash plugin
+  - 6.4 DataHub plug-ins for OGG
+    - 6.4.1 Overview
+    - 6.4.2 OGG for Oracle
+      - 6.4.2.1 OGG for Oracle
+      - 6.4.2.2 OGG Adapters
+      - 6.4.2.3 OGG for Big Data
+    - 6.4.3 OGG for MySQL
+    - 6.4.4 OGG for Big Data (Kafka)
+- 7 Data synchronization
+  - 7.1 Overview
+  - 7.2 Synchronize data to MaxCompute
+  - 7.3 Synchronize data to Hologres
+  - 7.4 Synchronize data to AnalyticDB for MySQL
+  - 7.5 Synchronize data to Elasticsearch
+  - 7.6 Synchronize data to OSS
+  - 7.7 Synchronize data to Tablestore
+  - 7.8 Synchronize data to ApsaraDB RDS and ApsaraDB RDS for MySQL
+- 8 View metrics
+- 9 Subscriptions
+  - 9.1 Overview
+  - 9.2 Create a subscription
+  - 9.3 Reset a consumption offset
+  - 9.4 Delete a subscription
+  - 9.5 View consumption details
+- 10 Collaborative consumption
+  - 10.1 Note
+  - 10.2 Overview
+  - 10.3 Usage notes
+  - 10.4 Maven dependencies and JDK
+  - 10.5 Usage examples
+
+## 1 What is DataHub?
 
 DataHub provides real-time streaming data collection, reliable storage, and efficient processing capabilities. It enables you to analyze data at a low latency and consume data in real time. DataHub is a distributed streaming data processing platform. It provides efficient data publishing, subscription, and distribution capabilities to help you analyze and consume data in real time. End-to-end streaming data processing: It can consistently collect volumetric data from mobile platforms, applications and services, website logs, and IoT sensors, persist data, and process data in real time. You can use custom programs or streaming compute engines to process real-time logs or transaction events and then quickly generate real-time statistics, visualized charts, and intelligent alerts. Enterprise-class architecture and base: DataHub is designed on top of Apsara Infrastructure Management. It features high availability, low latency, high scalability, and high throughput, which is suitable for handling large numbers of concurrent writes and real-time reads. Seamless ecosystem integration: DataHub is deeply integrated with Realtime Compute of Apsara Stack to simplify streaming data analysis by supporting standard SQL statements. In addition, its flexible data distribution capabilities can help you deliver processed streaming data to other cloud services in real time, such as MaxCompute and Object Storage Service (OSS). This way, you can process real-time and offline data in a unified architecture. DataHub provides the following features: Data queue (ordered and elastic): The architecture of DataHub is designed based on topics and shards. A data queue strictly maintains the order in which data is written and consumed within a shard. A data queue can be horizontally scaled for a specific shard to linearly improve the throughput of a single topic. Offset/checkpoint storage (offset/checkpoint hosting): DataHub can persist consumption offsets or checkpoints to its server for applications. When an application encounters a failover or restart, it can automatically resume consumption from the saved offset or checkpoint. This ensures the continuity and consistency of data consumption. Data synchronization (cross-service distribution): DataHub can automatically deliver streaming data to Apsara Stack services in real time, including MaxCompute, Hologres, AnalyticDB for MySQL, ApsaraDB RDS, Tablestore, and OSS. Elastic scaling (online adjustment): DataHub supports topic-specific dynamic scale-out and scale-in. It adopts the SplitShard and MergeShard mechanisms to flexibly adjust the throughput without business interruptions.
 
-## Terms
+## 2 Terms
 
 This topic describes the terms that are used in DataHub.
 
@@ -30,7 +87,7 @@ This topic describes the terms that are used in DataHub.
 | Record | The unit of data that is written into DataHub. |
 | RecordType | The data type of records in topics. The data type can be TUPLE or BLOB. Tuple topics contain records that are similar to data records in databases. Each record contains multiple columns. You can write a block of binary data as a record to blob topics. |
 
-## Limits
+## 3 Limits
 
 This topic describes the limits of DataHub. The following table describes the limits of DataHub.
 
@@ -47,9 +104,9 @@ This topic describes the limits of DataHub. The following table describes the li
 | Topics per project | Up to 500 | You can create up to 500 topics in a project. To create more topics, contact Apsara Stack technical support. |
 | Time-to-live (TTL) of records | [1,7] | The TTL of a record in a topic ranges from one to seven days. |
 
-## Quick Start
+## 4 Quick Start
 
-### Overview
+### 4.1 Overview
 
 This topic describes how to work with DataHub to complete basic operations.
 
@@ -68,9 +125,9 @@ DataHub provides the data synchronization feature. You can synchronize real-time
 5. Subscribe to topics.
 DataHub provides the subscription feature, which can persist consumption offsets to the DataHub server and reset offsets. This mechanism efficiently ensures the continuity of data transmission after an application recovers from a fault. It strictly guarantees that all messages are delivered at least once.
 
-### Before you begin
+### 4.2 Before you begin
 
-#### Log in to the DataHub console
+#### 4.2.1 Log in to the DataHub console
 
 This topic describes how to log in to the DataHub console. In this example, Google Chrome is used.
 
@@ -83,21 +140,13 @@ Before you log in to the DataHub console, make sure that the following requireme
 1. In the address bar of the browser, enter the URL of the Apsara Uni-manager Management
 Console and press the Enter key.
 2. On the login page, enter your username and password.
-You need to obtain the username and password from an operations administrator.
-
-**Note**
-
-The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types: Letters Digits Special characters, such as exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+You need to obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. To ensure the security of your account, you must specify a password that is 8 to 20 characters in length and contains at least two of the following character types: Letters Digits Special characters, such as exclamation marks (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 3. Click **Log In** to go to the Apsara Uni-manager Management Console.
 4. In the top navigation bar, choose **Products > Big Data Computing > DataHub** to go to
-the DataHub console.
-
-**Note**
-
-You can click icons in the upper-right corner of the page to use the following features: : switches between English, simplified Chinese, and traditional Chinese. or : switches between light mode and dark mode. : displays message notifications. You can click **More** to go to **Message**
+the DataHub console. You can click icons in the upper-right corner of the page to use the following features: : switches between English, simplified Chinese, and traditional Chinese. or : switches between light mode and dark mode. : displays message notifications. You can click **More** to go to **Message**
 **Center** to view all messages.
 
-#### View information on the Overview page
+#### 4.2.2 View information on the Overview page
 
 The Overview page of the DataHub console displays resource overview, storage overview, common information, and synchronization tasks. It supports real-time monitoring, storage management, quick operations, and multi-database synchronization. This topic describes the Overview page.
 
@@ -112,7 +161,7 @@ After you log in to the DataHub console, the **Overview** page appears by defaul
 | Common Information | In this section, you can perform the following operations: You can create a project by using Quick Access. You can click Beginner's Guide to view the documentation. You can view Primary Account ID, Classic Network (Private), and VPC (Private). |
 | Synchronization Task | DataHub allows you to synchronize data to the following services: MaxCompute: DataHub allows you to synchronize data to MaxCompute and create custom partitions. Hologres: DataHub allows you to use HoloHub to synchronize data to Hologres. Elasticsearch: You can synchronize data from DataHub to Elasticsearch. RDS & MySQL: You can synchronize data from DataHub to ApsaraDB RDS in IGNORE or OVERWRITE mode. Tablestore: DataHub allows you to synchronize data to Tablestore in PUT or UPDATE mode. Object Storage Service (OSS): DataHub allows you to archive data to OSS based on the time when data is written to DataHub. Click the icon next to the name of a cloud service to log in to the console of the cloud service. |
 
-#### Create a project
+#### 4.2.3 Create a project
 
 Projects are the basic organizational unit in DataHub. Each project contains one or more topics. To use DataHub, you must create a project first. This topic describes how to create a project and bind a virtual private cloud (VPC) to the project in the DataHub console.
 
@@ -154,7 +203,7 @@ DataHub adopts the VPC binding mechanism to isolate and limit access at the netw
 2. In the dialog box that appears, enter the name of the desired VPC and click **Bind VPC**.
 3. Optional. To unbind the VPC, click **Delete** in the Actions column of the VPC.
 
-#### Create a topic
+#### 4.2.4 Create a topic
 
 Topics are the smallest unit for data subscription and publishing in DataHub. You can use topics to distinguish different types of streaming data. This topic describes how to create a topic in the DataHub console.
 
@@ -190,9 +239,6 @@ You can select **Create Directly** or **Import MaxCompute Tables** to create the
 | Description | The description of the topic. The description can be 3 to 1,024 characters in length. |
 
 **Method 2**: **Import MaxCompute Tables**
-
-**Note**
-
 Before you perform the following steps, make sure that you have created a MaxCompute project and a destination table, and you have obtained the corresponding AccessKey ID and AccessKey secret.
 
 | Parameter | Description |
@@ -227,7 +273,7 @@ Refresh the **Topic List** tab to view the created topic. You can also perform t
 
 Before you delete a topic, you must check whether the topic is added to a group. If the topic is added to a group, you must remove it from the group before you can delete the topic.
 
-#### Create a group
+#### 4.2.5 Create a group
 
 A group is a collection of topics. If you subscribe to a group, you subscribe to all topics in the group. Groups are compatible with the Kafka protocol. This topic describes how to create a group in the DataHub console.
 
@@ -259,7 +305,7 @@ describes the parameters.
 5. View the information about the group on the **Groups** tab of the project details page.
 You can perform the following operations on the group: Click **Edit** in the Actions column. In the panel that appears, you can add topics to or remove topics from the group. Click **Delete** in the Actions column. In the message that appears, confirm the information and click **Delete** to delete the group.
 
-### Use the data sampling feature
+### 4.3 Use the data sampling feature
 
 DataHub provides the data sampling feature. You can use this feature to collect data samples from a specific shard to assess data quality. This topic describes how to work with the data sampling feature in the DataHub console.
 
@@ -283,19 +329,15 @@ you want to manage and click **View** in the **Actions** column.
 5. In the **Sampling Shard ID** panel, specify **Sampling Quantity** and **Start Time** and then
 click **Sample**. DataHub collects records that are written to the shard after the specified start time and displays the sampled records in the table. The number of sampled records does not exceed the specified sample quantity. control
 
-## DataHub permission
+## 5 DataHub permission control
 
 **control**
 
-### Overview
+### 5.1 Overview
 
-DataHub integrates Resource Access Management (RAM) to allow you to manage the permissions of Apsara Stack tenant accounts and RAM users in a fine-grained manner. Based on the least privilege principle, the security of data transmission can be greatly improved. DataHub uses RAM to manage resource access permissions. Only RAM users that are granted the required permissions can access resources in DataHub. An Apsara Stack tenant account has full permissions on the resources within the account. By default, a RAM user has no permissions on resources. You must grant permissions to the RAM user. The following topics describe how DataHub manages resource access permissions based on RAM.
+DataHub integrates Resource Access Management (RAM) to allow you to manage the permissions of Apsara Stack tenant accounts and RAM users in a fine-grained manner. Based on the least privilege principle, the security of data transmission can be greatly improved. DataHub uses RAM to manage resource access permissions. Only RAM users that are granted the required permissions can access resources in DataHub. An Apsara Stack tenant account has full permissions on the resources within the account. By default, a RAM user has no permissions on resources. You must grant permissions to the RAM user. The following topics describe how DataHub manages resource access permissions based on RAM. An Apsara Stack tenant account corresponds to a level-1 organization and requires no authorization. A RAM user corresponds to a specific user and must be granted permissions by an Apsara Stack tenant account.
 
-**Note**
-
-An Apsara Stack tenant account corresponds to a level-1 organization and requires no authorization. A RAM user corresponds to a specific user and must be granted permissions by an Apsara Stack tenant account.
-
-### DataHub resources
+### 5.2 DataHub resources
 
 Resource Access Management (RAM) allows you to control access to the projects, topics, and subscriptions in DataHub. A subscription is an action that allows an application to read and process the records in topics of a specific project. Access control is supported at the project, topic, and subscription level. Shard-level authentication is not supported. In RAM, each type of DataHub resource uses an Alibaba Cloud Resource Name (ARN) format to describe all resources or a specific resource of the type. For example, the ARN format of a project in a specific region is
 
@@ -318,7 +360,7 @@ control
 |---|---|
 | AllSubscription | acs:dhs:$region:$accountid:projects/$projectName/topics/$topicName/subscr iptions/* |
 
-### DataHub API
+### 5.3 DataHub API
 
 DataHub provides different API operations to allow you to manage projects, topics, shards, subscriptions, and records. A Resource Access Management (RAM) user must be granted the required permissions before the RAM user can call a DataHub API operation. Each DataHub API operation corresponds to a specific RAM action and a specific resource type. The following tables describe the RAM action and resource type for each API operation.
 
@@ -388,7 +430,7 @@ control
 |---|---|---|
 | GetCursor | dhs:GetRecords | SingleTopic |
 
-### Conditions supported by
+### 5.4 Conditions supported by DataHub
 
 **DataHub**
 
@@ -401,11 +443,11 @@ This topic describes the conditions that can be applied to the Resource Access M
 | acs:MFAPresent | Specifies whether multi- factor authentication (MFA) is enabled for logon. | true/false |
 | acs:CurrentTime | The time when the specified object can be accessed. | The time is specified in the ISO 8601 standard. |
 
-### Sample RAM policies for
+### 5.5 Sample RAM policies for DataHub
 
 **DataHub**
 
-#### AliyunDataHubFullAccess
+#### 5.5.1 AliyunDataHubFullAccess
 
 This topic provides an example of the AliyunDataHubFullAccess policy. The following is an example: `{`
 
@@ -424,7 +466,7 @@ This topic provides an example of the AliyunDataHubFullAccess policy. The follow
 
 `}` `]` `}` control
 
-#### AliyunDataHubReadOnlyAccess
+#### 5.5.2 AliyunDataHubReadOnlyAccess
 
 This section describes how to set the AliyunDataHubReadOnlyAccess policy content. The authorization policy content can be set as follows: `{`
 
@@ -443,13 +485,13 @@ This section describes how to set the AliyunDataHubReadOnlyAccess policy content
 
 `}` `]` `}`
 
-## Data collection
+## 6 Data collection
 
-### Overview
+### 6.1 Overview
 
 In addition to SDK, DataHub supports various data collection tools to help you quickly collect data to DataHub. The topics in this directory describe how to collect data by using Fluentd, Logstash, and Oracle GoldenGate (OGG).
 
-### Fluentd
+### 6.2 Fluentd
 
 The DataHub plug-in for Fluentd is an output plug-in developed based on Fluentd to write collected data to DataHub. The plug-in complies with the development conventions of Fluentd output plug-ins and is easy to install. You can use the plug-in to write the collected data to DataHub with ease. This topic describes how to install and use the DataHub plug-in for Fluentd.
 
@@ -583,17 +625,13 @@ Table 3. Write configuration
 | dirty data file /xxx/yyy _ _ | The directory in which the stale data file is stored. |
 | column names ["id"] _ | The name of the columns to be written to DataHub. |
 
-### Logstash plugin
+### 6.3 Logstash plugin
 
 This guide explains how to use the Logstash plugin to collect and upload log data to DataHub. With the DataHub Output and Input plugins for Logstash, you can process various data sources, structure the data, and transmit it. It covers installation, configuration, and usage, including data synchronization, error handling, and parameter configuration.
 
 **Logstash collection tool**
 
-To expand data collection in DataHub, Alibaba Cloud Real-time Compute provides DataHub Output and Input plugins for Logstash. These plugins allow you to connect to over 30 data sources supported by the open-source community, including files, syslog, Redis, Log4j, and Apache or Nginx logs. Logstash also supports features like the filter plugin for custom data processing. This guide uses log collection as an example to show you how to quickly collect and send log data to DataHub.
-
-**Note**
-
-The DataHub Output and Input plugins for Logstash are open source under the Apache License 2.0.
+To expand data collection in DataHub, Alibaba Cloud Real-time Compute provides DataHub Output and Input plugins for Logstash. These plugins allow you to connect to over 30 data sources supported by the open-source community, including files, syslog, Redis, Log4j, and Apache or Nginx logs. Logstash also supports features like the filter plugin for custom data processing. This guide uses log collection as an example to show you how to quickly collect and send log data to DataHub. The DataHub Output and Input plugins for Logstash are open source under the Apache License 2.0.
 
 **Installation**
 
@@ -1145,9 +1183,9 @@ filter{
 
 For more configuration parameters, refer to the official Logstash website and the ELK stack Chinese guide.
 
-### DataHub plug-ins for OGG
+### 6.4 DataHub plug-ins for OGG
 
-#### Overview
+#### 6.4.1 Overview
 
 As the big data market grows, traditional relational database management systems (RDBMSs) cannot meet the needs of online analytical processing (OLAP) scenarios. This topic describes how to synchronize data from an Oracle database to DataHub, which is a big data processing platform of Apsara Stack, in real time. Then, you can use big data tools to analyze your data.
 
@@ -1713,9 +1751,9 @@ Download link The plug-in is adapted to OGG for Big Data 12.3.2.1, and no longer
 
 Download link The plug-in is adapted to OGG for Big Data 19.1.0.0, and no longer supports OGG Application Adapters.
 
-#### OGG for Oracle
+#### 6.4.2 OGG for Oracle
 
-##### OGG for Oracle
+##### 6.4.2.1 OGG for Oracle
 
 The DataHub plug-in for Oracle GoldenGate (OGG) captures Oracle data through two modes— OGG Application Adapters and OGG for Big Data—which differ in the process type on the destination database.
 
@@ -1768,7 +1806,7 @@ The table lists selected plug-in versions. Download other versions from Oracle G
 | 2.0.8 | OGG 19.1.x.x (recommended version: 19.1.0.0) | OGG for Big Data 19.1.0.0 | Oracle Database 19c and earlier | Adapted to OGG for Big Data 19.1.0.0. No longer supports OGG Application Adapters. |
 | 2.1.0 | OGG 19.1.x.x (recommended version: 19.1.0.0) | OGG for Big Data 19.1.0.0 | Oracle Database 19c and earlier | Fixes known bugs. |
 
-##### OGG Adapters
+##### 6.4.2.2 OGG Adapters
 
 This document describes how to install and configure Oracle GoldenGate (OGG) and OGG Adapters to synchronize data from an Oracle database to DataHub.
 
@@ -1778,7 +1816,7 @@ Oracle 11g is installed on the source. The current plugin version supports only 
 
 **Procedure**
 
-This section describes how to install and configure OGG and its related components. The installation of the Oracle database is not covered. Important: A professional with operations and maintenance experience should configure the Oracle and OGG parameters. The following example provides a runnable sample configuration. This process requires the following installation packages: OGG OGG Adapters DataHub OGG plugin
+This section describes how to install and configure OGG and its related components. The installation of the Oracle database is not covered. Important: A professional with operations and maintenance experience should configure the Oracle and OGG parameters. The following example provides a runnable sample configuration. This process requires the following installation packages: OGG DataHub OGG plugin
 
 **OGG source configuration**
 
@@ -1877,8 +1915,6 @@ Use GGSCI to configure the Extract process. You can use any name for the process
 EXTRACT dhext SETENV (NLS_LANG="AMERICAN_AMERICA.AL32UTF8") DBOPTIONS ALLOWUNUSEDCOLUMN USERID ogg_test, PASSWORD ogg_test REPORTCOUNT EVERY 1 MINUTES, RATE NUMFILES 5000 DISCARDFILE ./dirrpt/ext_test.dsc, APPEND, MEGABYTES 100 DISCARDROLLOVER AT 2:00 WARNLONGTRANS 2h, CHECKINTERVAL 3m EXTTRAIL ./dirdat/st, MEGABYTES 200 DDL & INCLUDE MAPPED OBJTYPE 'table' & INCLUDE MAPPED OBJTYPE 'index' & INCLUDE MAPPED OBJTYPE 'SEQUENCE' & EXCLUDE OPTYPE COMMENT DDLOPTIONS NOCROSSRENAME REPORT TABLE OGG_TEST.*,tokens (TKN-ROWID=@GETENV('RECORD','rowid')); SEQUENCE OGG_TEST.*; GETUPDATEBEFORES
 ```
 
-**Note**
-
 The line TABLE OGG_TEST.*, tokens (TKN-ROWID=@GETENV('RECORD','rowid')); is used to capture the `rowid` from the source table. If you do not need to capture the `rowid` , you can change this line to `TABLE OGG_TEST.*` . Add and start the Extract process:
 
 ```bash
@@ -1892,9 +1928,6 @@ start dhext
 
 After the Extract process starts, it captures database changes, which you can view in the files in the `ggate/dirdat` directory.
 5. . Generate definition file**
-
-**Note**
-
 This step is not required for OGG versions 12.2.x and later. In GGSCI on the source, create a parameter file for the definition generator by running `edit` `params defgen` . Add the following content:
 
 ```
@@ -2115,7 +2148,7 @@ You can view a sample of the written data on the DataHub page:
 Shard ID System Time oid (STRING) num (STRING) pid (STRING) b ak (STRING) ctype (STRING) ctime (STRING) cid (STRING) rowid (ST RING) 0 11:29:30 AM, Dec 1, 2020 1 3 2 z h I 2020-12-01 03:29:24.000074 16067933700000 AAAWwyAA GAAABufAAC
 ```
 
-##### OGG for Big Data
+##### 6.4.2.3 OGG for Big Data
 
 1. . Environment requirements**
 Oracle database: Oracle Database 19c or earlier. The version of the Oracle database cannot be later than that of the source database. Source database: Oracle GoldenGate (OGG) 19.1.0.0. Destination database: OGG for Big Data 19.1.0.0. Official download link of OGG
@@ -2204,11 +2237,7 @@ Run the following command to install OGG:
 runInstaller -silent -responseFile {YOUR_OGG_INSTALL_FILE_PATH}/response/oggcore.rsp
 ```
 
-In this example, OGG is installed in the /home/oracle/u01/ggate directory, and the installation logs are stored in the /home/oracle/u01/ggate/cfgtoollogs/oui directory. The OGG installation is complete when the following message appears in the silentInstall{time}.log file:
-
-**Note**
-
-The installation of Oracle GoldenGate Core was successful. Run the /home/oracle/u01/ggate/ggsci command and enter `CREATE SUBDIRS` as prompted to create OGG directories whose names start with dir. OGG is installed in the source database.
+In this example, OGG is installed in the /home/oracle/u01/ggate directory, and the installation logs are stored in the /home/oracle/u01/ggate/cfgtoollogs/oui directory. The OGG installation is complete when the following message appears in the silentInstall{time}.log file: The installation of Oracle GoldenGate Core was successful. Run the /home/oracle/u01/ggate/ggsci command and enter `CREATE SUBDIRS` as prompted to create OGG directories whose names start with dir. OGG is installed in the source database.
 3. . Configure the Manager process in the source database**
 The following part describes how to configure the Manager process in the source database by using Oracle GoldenGate Software Command Interface (GGSCI). You can run the `edit params` `mgr` command to configure the Manager process. The following code shows the configurations:
 
@@ -2456,7 +2485,7 @@ You can view the following sample record in the DataHub console:
 Shard ID System Time oid (STRING) num (STRING) pid (STRING) bak (STRING) ctype (STRING) ctime (STRING) cid (STRING) rowid (STRING) 0 December 1, 2020 11:29:30 1 3 2 zh I 2020-12-01 03:29:24.000074 16067933700000 AAAWwyAAGAAABufAAC
 ```
 
-#### OGG for MySQL
+#### 6.4.3 OGG for MySQL
 
 1. . Environment requirements**
 MySQL Enterprise Edition or Community Edition is installed. Oracle GoldenGate (OGG) for MySQL 12.2.0.2 is installed. OGG Application Adapters 12.2.0.1 is installed. Java 7 is installed. We recommend that you install Java Development Kit (JDK) 1.8.
@@ -2472,7 +2501,7 @@ MySQL Enterprise Edition or Community Edition is installed. Oracle GoldenGate (O
 
 **Prepare the installation packages**
 
-You can download the required installation packages by referring to the last section of this topic. OGG for MySQL OGG Application Adapters DataHub agent for OGG
+You can download the required installation packages by referring to the last section of this topic. OGG Application Adapters DataHub agent for OGG
 
 **Configure OGG in the source database**
 
@@ -2771,7 +2800,7 @@ Only the download links of the DataHub plug-in for OGG are provided in this topi
 | 2.0.4 | 12.2.0.2 | 12.2.0.1 | Enterprise Edition and Community Edition |
 | 2.0.5 | 12.2.0.2 | 12.2.0.1 | Enterprise Edition and Community Edition |
 
-#### OGG for Big Data (Kafka)
+#### 6.4.4 OGG for Big Data (Kafka)
 
 Oracle GoldenGate (OGG) for Big Data streams Oracle database changes to big data systems in real time, and supports Oracle Database 19c and earlier. Because DataHub is compatible with the Kafka Producer protocol, you can write Oracle data directly to DataHub over the DataHub Kafka interface using OGG for Big Data — without a dedicated DataHub plugin.
 
@@ -3094,9 +3123,9 @@ After the SQL script runs, the three operations (INSERT, UPDATE, DELETE) are wri
 Shard ID System Time key (STRING) val (STRING) 0 May 29, 2020 18:01:38 OGG_TEST.ORDERS {"table":"OGG_TEST.ORDERS","op_type":"I","op_ts":"2020-05-29 10:01:27.000067","current_ts":"2020-05- 29T18:01:33.062000","pos":"00000002790849451348","after": {"OID":"1","PID":"2","NUM":"3"}} 0 May 29, 2020 18:01:38 OGG_TEST.ORDERS {"table":"OGG_TEST.ORDERS","op_type":"U","op_ts":"2020-05-29 10:01:27.000067","current_ts":"2020-05- 29T18:01:33.064000","pos":"00000002790849451514","before": {"OID":"1","PID":"2","NUM":"3"},"after":{"OID":"1","PID":"3","NUM":"3"}} 0 May 29, 2020 18:01:38 OGG_TEST.ORDERS {"table":"OGG_TEST.ORDERS","op_type":"D","op_ts":"2020-05-29 10:01:27.000067","current_ts":"2020-05- 29T18:01:33.064001","pos":"00000002790849451685","before": {"OID":"1","PID":"3","NUM":"3"}}
 ```
 
-## Data synchronization
+## 7 Data synchronization
 
-### Overview
+### 7.1 Overview
 
 DataHub allows you to synchronize data to Apsara Stack services in real time or near real time, including MaxCompute, ApsaraDB RDS, and Object Storage Service (OSS). During data synchronization, you need to pay attention to the network configuration and the duplicate record issue. This topic describes the usage notes for the data synchronization feature of DataHub.
 
@@ -3130,7 +3159,7 @@ When you create a DataConnector to synchronize data from DataHub to MaxCompute, 
 
 We recommend that you synchronize data between Apsara Stack services in the same region. This eliminates the need to configure cross-region network connectivity and reduces the network latency. Due to the network isolation of Apsara Stack, you must specify the internal endpoint of an Apsara Stack service when you configure data synchronization for the Apsara Stack service. Public endpoints are not supported. DataHub supports only the at-least-once mechanism for data synchronization. This mechanism may cause a small number of duplicate records in the destination service in certain scenarios, such as a scenario in which a network error occurs. In this case, you must delete the duplicate records. When you create a DataConnector, DataHub automatically associates a subscription ID with the DataConnector to record the offset from which DataHub starts to read data. The recorded offset differs from the offset from which synchronization starts. Do not change the subscription ID. Only the owner and creator of a topic can create DataConnectors for the topic.
 
-### Synchronize data to
+### 7.2 Synchronize data to MaxCompute
 
 **MaxCompute**
 
@@ -3285,7 +3314,7 @@ You can view the synchronization information of the DataConnector in the DataHub
 
 Question: What do I do if the timestamp for data synchronization to MaxCompute changes to 1970-01-19? Cause: The default unit of the timestamp for data synchronization from DataHub to MaxCompute is microseconds, and the unit of the timestamp when data was written to DataHub is milliseconds. Solution: Specify microseconds as the unit of the timestamp when data is written to DataHub.
 
-### Synchronize data to Hologres
+### 7.3 Synchronize data to Hologres
 
 This topic describes how to synchronize data from DataHub to a Hologres instance to implement real-time data synchronization and management. It covers the preparations, data type mapping, and parameter configuration.
 
@@ -3310,8 +3339,6 @@ DataHub synchronizes data based on the mappings between the data types of fields
 | BOOLEAN | BOOLEAN |
 | TIMESTAMP | TIMESTAMPTZ |
 
-**Note**
-
 The `TINYINT` , `SMALLINT` , `INTEGER` , and `FLOAT` data types in DataHub are supported by Hologres V2.0 and later.
 
 **Create a DataConnector**
@@ -3326,9 +3353,6 @@ the topic details page.
 in the upper-right corner.
 6. In the **Create Connector** panel, click **Hologres**. Then, configure the parameters and click
 **Create**.
-
-**Note**
-
 You can synchronize data to partitioned tables in Hologres. If you specify a partitioned table when you create a DataConnector, data is automatically synchronized to the partitions based on the partition key.
 
 | Parameter | Description |
@@ -3346,8 +3370,6 @@ You can synchronize data to partitioned tables in Hologres. If you specify a par
 | AccessKey Secret | The AccessKey secret used to access the Hologres instance. To obtain the AccessKey secret, choose Enterprise > Resources > Organizations in the Apsara Uni-manager Management Console. On the Organizations page, select a level-1 organization and click Manage AccessKey Pairs in the Basic Information section to view the AccessKey secret. |
 | Start Time | The time when DataHub starts to synchronize data to Hologres. |
 | Timestamp Unit | The unit of time that is used to synchronize data from Hologres. The Timestamp Unit parameter specifies the unit in which the data of the TIMESTAMP type is converted and written to the fields of the DATETIME type in Hologres. |
-
-**Note**
 
 The `dts` and `dts_old` synchronization modes are applicable to scenarios in which data is synchronized to DataHub by using Data Transmission Service (DTS) and then synchronized from DataHub to Hologres. For more information about the new and original additional columns, see Synchronize data from DataHub.
 7. Click the **Synchronization Task** tab to view the status of data synchronization from
@@ -3370,7 +3392,7 @@ SELECT COUNT(*) FROM lineitem;
 **Solution**: Hologres allows you to configure IP address whitelists to manage access in the
 HoloWeb console. If the preceding error is reported, check whether an IP address whitelist is configured in the HoloWeb console.
 
-### Synchronize data to
+### 7.4 Synchronize data to AnalyticDB for MySQL
 
 **AnalyticDB for MySQL**
 
@@ -3426,7 +3448,7 @@ data. In this example, four records are written.
 5. Connect to AnalyticDB for MySQL on the client and check whether the data is synchronized
 to AnalyticDB for MySQL. The following figure shows the synchronized data.
 
-### Synchronize data to
+### 7.5 Synchronize data to Elasticsearch
 
 **Elasticsearch**
 
@@ -3690,7 +3712,7 @@ You can use a DataHub SDK or a DataHub plug-in to write data to the DataHub topi
 5. Verify the synchronized data.
 First, check the synchronization offset of the DataConnector that is used to synchronize data to Elasticsearch. The synchronization offset and synchronization time of the DataConnector have changed. The synchronization time is the time when the data is written to DataHub, and the synchronization offset has changed to 1. The synchronization offset starts from 0, and an offset of 0 indicates that the first record is written. Then, check whether data is synchronized to Elasticsearch. You can view the synchronized data in the Kibana console.
 
-### Synchronize data to OSS
+### 7.6 Synchronize data to OSS
 
 This topic describes how to create a DataConnector in DataHub to synchronize data from topics of the TUPLE or BLOB type to OSS. It covers the preparations, usage notes, procedure, and synchronization example. You can use this feature to achieve efficient data storage and management.
 
@@ -3745,7 +3767,7 @@ In this example, a topic of the TUPLE type is created. The following figure show
 5. Verify the synchronized data
 The following figure shows the path of a synchronized file in OSS. The path contains the names of the OSS bucket, top-level directory, secondary directory, and file. Download the file and view the file content. The data that is synchronized from the TUPLE topic is in the CSV format. The following figure shows the file content.
 
-### Synchronize data to
+### 7.7 Synchronize data to Tablestore
 
 **Tablestore**
 
@@ -3802,7 +3824,7 @@ click **Create**. The following table describes the parameters.
 7. After the synchronization task is created, click **View** on the **Synchronization Task** tab of
 the topic details page to view the details of the synchronization task.
 
-### Synchronize data to ApsaraDB
+### 7.8 Synchronize data to ApsaraDB RDS and ApsaraDB RDS for MySQL
 
 **RDS and ApsaraDB RDS for MySQL**
 
@@ -3934,7 +3956,7 @@ data. In this example, four data records are written.
 5. Verify the synchronized data. In this example, a MySQL client is used to connect to
 ApsaraDB RDS to view the synchronized data. The following figure shows the synchronized data.
 
-## View metrics
+## 8 View metrics
 
 DataHub allows you to view topic-level metrics in the console, such as the queries per second (QPS) and traffic volume. This topic describes how to customize queries and view these metrics in the DataHub console.
 
@@ -3952,14 +3974,14 @@ to go to the topic details page.
 4. On the topic details page, click the **Metric Statistics** tab, select a specific time point from
 the drop-down list or specify a time range to view the metrics. You can view the following metrics: QPS: number of read and write requests per second. RPS: number of read and write records per second. Throughput: read/write throughput per second. Unit: KB. Latency: read/write latency per request. Unit: microseconds.
 
-## Subscriptions
+## 9 Subscriptions
 
-### Overview
+### 9.1 Overview
 
 **Resumable consumption** is required if you consume data in DataHub topics and want to
 resume data consumption from the time point when your application fails. If you need to resume data consumption, you must save the current consumption offset and make sure that the service that stores the consumption offsets is highly availability. This increases the complexity of application development. The subscription feature of DataHub can persist consumption offsets to the server of DataHub to resolve the preceding problem. You need only to complete a few configurations and add a few lines of code to your application to obtain a highly available consumption offset maintenance service. In addition, the subscription feature allows you to reset consumption offsets. This ensures that data can be consumed at least once. For example, if an error occurs when your application consumes data at a specific time point and you want to consume the data again, you can reset the consumption offset without the need to restart the application. Your application will automatically consume data from the specified consumption offset.
 
-### Create a subscription
+### 9.2 Create a subscription
 
 This topic describes how to create a subscription in the DataHub console. Make sure that your account has the permissions to subscribe to topics in a specific project. The subscription feature allows you to save consumption offsets. You can use the read capability of DataHub with the capability of saving consumption offsets.
 
@@ -4184,15 +4206,11 @@ rsorType.OLDEST).getCursor();
             System.exit(-1);
 ```
 
-`}` `}` `}`
-
-**Note**
-
-If you start an application for the first time, the application consumes data from the earliest record. When the application is running, you can refresh the Subscription List tab in the DataHub console. If you reset the consumption offset by clicking Reset in the DataHub console during the consumption, your application automatically detects the change of the consumption offset and consumes data from the specified consumption offset. When the application catches **OffsetResetedException**, the application calls the
+`}` `}` `}` If you start an application for the first time, the application consumes data from the earliest record. When the application is running, you can refresh the Subscription List tab in the DataHub console. If you reset the consumption offset by clicking Reset in the DataHub console during the consumption, your application automatically detects the change of the consumption offset and consumes data from the specified consumption offset. When the application catches **OffsetResetedException**, the application calls the
 **getSubscriptionOffset** operation to query the latest consumption offset from the
 server. Then, the application can consume data from the latest consumption offset. A shard in a subscription cannot be consumed by multiple threads or processes at the same time. Otherwise, the consumption offset submitted by a thread is overwritten by that submitted by another thread and the server cannot determine the thread to which the saved consumption offset belongs. In this case, the server reports **OffsetSessionChangedException**. We recommend that you exit the subscription session to check whether data is repeatedly consumed if this exception is detected.
 
-### Reset a consumption offset
+### 9.3 Reset a consumption offset
 
 You can reset a consumption offset to another one from which you want to consume data for each subscription in DataHub.
 
@@ -4207,7 +4225,7 @@ want to manage, and then click **Reset** in the **Actions** column.
 requirements.
 5. Click **Reset**.
 
-### Delete a subscription
+### 9.4 Delete a subscription
 
 DataHub allows you to permanently delete subscriptions. After a subscription is deleted, it cannot be restored. This topic describes how to delete a subscription in the DataHub console.
 
@@ -4224,7 +4242,7 @@ you want to manage and click View in the Actions column. On the project details 
 want to delete, and then click **Delete** in the **Actions** column.
 4. In the message that appears, confirm the information and click **Delete**.
 
-### View consumption details
+### 9.5 View consumption details
 
 DataHub allows you to view the consumption details of each subscription. This topic describes how to view consumption details in the DataHub console.
 
@@ -4239,15 +4257,15 @@ consumption details you want to view, and then click **Consumption Details** in 
 4. In the **Collaborative Consumption Details** panel, view the subscription ID, name of the
 application that consumes data, and shards from which data is consumed. ption
 
-## Collaborative
+## 10 Collaborative consumption
 
 **consumption**
 
-### Note
+### 10.1 Note
 
 DataHub-client-library encapsulates the Java SDK and integrates the consumer for collaborative consumption and the producer for distributing data evenly among shards.
 
-### Overview
+### 10.2 Overview
 
 This topic describes the implementation principles and usage of offset-based data consumption and collaborative consumption. Offset-based data consumption allows you to continue consumption from the last submitted offset when a task is restarted, while collaborative consumption simplifies the process of consuming a topic by multiple consumers at the same time.
 
@@ -4257,11 +4275,7 @@ The offset-based data consumption feature allows you to save consumption offsets
 
 **Collaborative consumption**
 
-The collaborative consumption feature automatically allocates shards when multiple consumers consume a topic at the same time. This feature simplifies the data processing of clients.
-
-**Note**
-
-Manual shard allocation is difficult because multiple consumers may reside on different machines. If multiple consumers that subscribe to the same topic are in the same consumer group, a shard can be allocated to only one consumer in the consumer group. Example: Assume that A, B, and C are three consumer instances and the topic has 10 shards.
+The collaborative consumption feature automatically allocates shards when multiple consumers consume a topic at the same time. This feature simplifies the data processing of clients. Manual shard allocation is difficult because multiple consumers may reside on different machines. If multiple consumers that subscribe to the same topic are in the same consumer group, a shard can be allocated to only one consumer in the consumer group. Example: Assume that A, B, and C are three consumer instances and the topic has 10 shards.
 1. When the consumer instance A is started at first, 10 shards are allocated to it.
 2. When the other two consumer instances are started, the shards are reallocated in the
 following way: four to A, three to B, and three to C. ption
@@ -4274,11 +4288,11 @@ six to A and five to B.
 
 You must use the heartbeat feature to notify the server of the status of consumer instances. If the server has not received heartbeats from a consumer instance after the specified interval, the server considers that the consumer instance is stopped. When the status of a consumer instance changes, the server reallocates shards. The server returns the new allocation plan in heartbeat requests. Therefore, the client takes time to detect the reallocation of shards.
 
-### Usage notes
+### 10.3 Usage notes
 
 A consumer or producer cannot access DataHub by using multiple threads. If you need to use multiple threads, specify a different consumer or producer for each thread.
 
-### Maven dependencies and JDK
+### 10.4 Maven dependencies and JDK
 
 This topic describes how to configure Maven dependencies and specify the JDK version for the DataHub client library.
 
@@ -4298,7 +4312,7 @@ This topic describes how to configure Maven dependencies and specify the JDK ver
 jdk: >= 1.7
 ```
 
-### Usage examples
+### 10.5 Usage examples
 
 This topic provides complete examples of writing data to and reading from DataHub. These examples demonstrate how to initialize a producer and a consumer, send and receive data, and transfer data efficiently.
 

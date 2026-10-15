@@ -2,18 +2,50 @@
 title: "cloud migration hub User Guide 20251217"
 product_version: "V3.18.6"
 pdf_pages: 133
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 cloud migration hub User Guide 20251217.pdf"
+source_pdf: "ae10e1172f80ac2c_Alibaba Cloud Apsara Stack V3.18.6 cloud migration hub User Guide 20251217.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20cloud%20migration%20hub%20User%20Guide%2020251217.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # cloud migration hub User Guide 20251217
 
-## What is AMC?
+## Table of Contents
+
+- 1 What is AMC?
+- 2 Migration guide
+- 3 Getting started
+  - 3.1 Server migration
+  - 3.2 VMware VM migration
+  - 3.3 OS replacement
+  - 3.4 Database migration
+  - 3.5 Storage migration
+- 4 Resource migration
+  - 4.1 Create a resource migration plan
+  - 4.2 Manage resource migration plans
+- 5 Advanced services
+  - 5.1 Server migration
+    - 5.1.1 Usage limits
+    - 5.1.2 Before you begin
+    - 5.1.3 Operation guide
+      - 5.1.3.1 Server migration
+      - 5.1.3.2 Agentless migration of VMware VMs
+      - 5.1.3.3 OS replacement
+  - 5.2 Cross-Platform Application Scanning
+    - 5.2.1 Source code scanning
+      - 5.2.1.1 Create an evaluation task
+      - 5.2.1.2 View source code scan suggestions
+      - 5.2.1.3 Download source code scan reports
+      - 5.2.1.4 Scan parameter settings
+    - 5.2.2 Software package evaluation
+      - 5.2.2.1 Create an evaluation task
+      - 5.2.2.2 View evaluation reports
+  - 5.3 JVM parameter tuning
+
+## 1 What is AMC?
 
 As the core engine of enterprise digital transformation, Apsara Migration Center (AMC) builds an end-to-end intelligent cloud migration system based on centralized management, support for mainstream products, incorporation of best practices, and application-centric services. This helps enterprises migrate their businesses to the cloud efficiently and securely in a costeffective manner.
 1. Centralized management: unified platform for the full lifecycle management of cloud
-End-to-end coverage: AMC manages the entire migration lifecycle, from assessment and planning to preparation, testing, execution, and validation. All migration operations are performed on AMC. Automated execution: AMC automatically collects the configuration information and operational data of the source system. Factoring in constraints like network bandwidth, AMC autonomously designs the execution strategy, generates compatibility adaptations, and determines data verification methods. This eliminates manual intervention and complex configuration and allows for a seamless, click-through migration experience. Process visualization: AMC provides a full-process tracking data dashboard to display the migration progress and resource status in real time. It captures key metrics during the migration process, such as the success rate of network transmission, migration bandwidth usage, and source resource load. Alerts are automatically triggered when exceptions occur.
+migration End-to-end coverage: AMC manages the entire migration lifecycle, from assessment and planning to preparation, testing, execution, and validation. All migration operations are performed on AMC. Automated execution: AMC automatically collects the configuration information and operational data of the source system. Factoring in constraints like network bandwidth, AMC autonomously designs the execution strategy, generates compatibility adaptations, and determines data verification methods. This eliminates manual intervention and complex configuration and allows for a seamless, click-through migration experience. Process visualization: AMC provides a full-process tracking data dashboard to display the migration progress and resource status in real time. It captures key metrics during the migration process, such as the success rate of network transmission, migration bandwidth usage, and source resource load. Alerts are automatically triggered when exceptions occur.
 2. Support for mainstream products: centralized management of multiple types of resources
 Server: AMC supports migration of on-premises servers to the cloud, migration of onpremises virtual machines (VMs) to the cloud, and cross-cloud VM migration. VMware: AMC supports agentless migration of on-premises VMware clusters to the cloud. Operating systems: AMC supports upgrades for End-of-Life (EOL) operating systems and compliant reconfiguration of operating systems. Storage: AMC supports migration of File Storage NAS (NAS) to the cloud and cross-cloud migration of Object Storage Service (OSS). Database: AMC supports MySQL database migration to the cloud and cross-cloud MySQL database migration.
 3. Incorporation of best practices: AMC meets enterprise demands for data security, business
@@ -21,7 +53,7 @@ stability, and migration efficiency Business continuity priority: Data migration
 4. Application-centric services: AMC manages migration from a business perspective
 Application migration plan: AMC combines the resources of an application into a migration plan and migrates the resources from the bottom up based on the architecture dependencies of the application. Application-level resource mapping: establishes mapping relationships between source and cloud resources from an application perspective. It provides a visual representation of the application architecture topology, which facilitates management across the entire lifecycle of application migration to the cloud. Application-level business cutover: AMC orchestrates all switchover operations for business cutovers, monitors the operational status of both source and cloud resources, and tracks data synchronization and cutover progress in real time. It enables collaboration across multiple teams on a unified platform, and supports real-time information sharing among multiple roles (business, technical, and O&M teams) to reduce communication costs.
 
-## Migration guide
+## 2 Migration guide
 
 This topic demonstrates the common procedures that can be performed in the Apsara Migration Center (AMC) console and explains the core components and usage logic of AMC, which guides you to perform migration operations more effectively.
 
@@ -31,7 +63,15 @@ After you log in to the AMC console, you are redirected to Guidance Center by de
 
 **Dashboard**
 
-The dashboard provides a comprehensive, global view of migration data, which enables you to monitor the current progress and review historical migration records. This helps you better formulate migration plans. You can manage and execute migration plans by using the resource migration module and perform the following six steps: survey and evaluation, solution design, preliminary preparation, migration test, migration execution, and result verification. The automated migration process reduces migration complexity and greatly improves migration efficiency. The Advanced Services module is mainly used for migration scenarios that do not require a resource survey. This module also provides cross-platform evaluation and Java Virtual Machine (JVM) parameter tuning tools. You can use it based on your business requirements.
+The dashboard provides a comprehensive, global view of migration data, which enables you to monitor the current progress and review historical migration records. This helps you better formulate migration plans.
+
+**Resource Migration**
+
+You can manage and execute migration plans by using the resource migration module and perform the following six steps: survey and evaluation, solution design, preliminary preparation, migration test, migration execution, and result verification. The automated migration process reduces migration complexity and greatly improves migration efficiency.
+
+**Advanced Services**
+
+The Advanced Services module is mainly used for migration scenarios that do not require a resource survey. This module also provides cross-platform evaluation and Java Virtual Machine (JVM) parameter tuning tools. You can use it based on your business requirements.
 **Server Migration**: supports **general server migration with agents**, **agentless**
 **migration of VMware VMs, and OS replacement**. After you complete pre-migration
 preparations, you can import the information about the migration source and create a migration task to quickly perform the migration.
@@ -40,9 +80,9 @@ source code or software packages after migration when instruction set architectu
 **JVM Parameter Tuning**: allows you to optimize and migrate JVM parameters based on the
 Java version, provider, platform, and CPU architecture.
 
-## Getting started
+## 3 Getting started
 
-### Server migration
+### 3.1 Server migration
 
 **Prerequisites**
 
@@ -57,6 +97,8 @@ Make sure that the system time of the server is the same as the standard time of
 Make sure that the system time of the server is the same as the standard time of the region in which the server resides. Otherwise, the SMC agent fails to be registered. Make sure that the Volume Shadow Copy Service (VSS) is enabled. Check whether the QEMU Guest Agent software is installed. If the software is installed, you need to uninstall it first. Check the authorized applications. After you migrate the server to Apsara Stack, the application licenses that are associated with the underlying hardware may become invalid. Perform a detailed check on the server based on its type: If you migrate data from a physical server, check its virtualized applications. ECS instances of Apsara Stack do not support built-in virtualized applications. After the migration, software such as VMware Workstation Pro, VirtualBox, and Hyper-V is not supported because such software can be used only on a physical server. If you migrate data from a Windows-based cloud server deployed on other QEMU KVM virtualization platforms, check whether the `QEMU Guest Agent VSS Provider` service is installed. If the QEMU Guest Agent VSS Provider service is installed, find the uninstall.bat script in the C:\Program Files (x86)\virtio\monitor directory and run the script to uninstall the service.
 
 **Procedure**
+
+**Step 1: Create a resource migration plan**
 
 **a. Create a migration plan**
 
@@ -179,13 +221,15 @@ Then, click**Confirm Completion**.
 2. The migration report page appears. You can view the overall execution status of the
 migration task.
 
-### VMware VM migration
+### 3.2 VMware VM migration
 
 **Prerequisites**
 
 If you deploy a Server Migration Connector on vCenter Server, the account used to log in to VMware ESXi and the account used to log in to the VMware VM to be migrated must be granted the following permissions: Datastore > Browse datastore Datastore > Low-level file operations Host > Local operations > Create virtual machine Virtual machine > Change Configuration > Acquire disk lease Virtual machine > Change Configuration > Toggle disk change tracking Virtual machine > Provisioning > Allow virtual machine download Virtual machine > Provisioning > Allow disk access Virtual machine > Provisioning > Allow read-only disk access Virtual machine > Snapshot management > Create snapshot Virtual machine > Snapshot management > Remove Snapshot If you deploy a Server Migration Connector on VMware ESXi, you must use an administrator account to log in to VMware ESXi.
 
 **Procedure**
+
+**Step 1: Create a resource migration plan**
 
 **a. Create a migration plan**
 
@@ -289,9 +333,6 @@ The result verification requires the ECS Cloud Assistant. If the ECS Cloud Assis
 2. After the verification is complete, you can click the report icon in the Validation Result
 column to view the verification report.
 
-| Category | Description |
-|---|---|
-
 **b. Confirm the verification results**
 
 1. Check that the Validation Result column for all the resources to be migrated is Success.
@@ -299,20 +340,25 @@ Then, click**Confirm Completion**.
 2. The migration report page appears. You can view the overall execution status of the
 migration task. 3.
 
-### OS replacement
+### 3.3 OS replacement
+
+**Limits**
+
+| Category | Description |
+|---|---|
 
 | General limits | Alibaba Cloud Linux does not provide i686-based software packages. If your CentOS operating system is equipped with i386-based or i686-based software packages, you cannot replace your OS with Alibaba Cloud Linux. Before you replace your OS of an Elastic Compute Service (ECS) instance with Alibaba Cloud Linux, make sure that the following resources are available: Memory size: 600 MiB Disk capacity: /usr: 250 MiB /var: 4 GiB /boot: 100 MiB |
 |---|---|
 | Replace CentOS 7 and Anolis OS 7 with Alibaba Cloud Linux 3 and Alibaba Cloud Linux V3 64bit | Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS. The GNU toolchain of Alibaba Cloud Linux 3 contains GCC 10.2, Binutils 2.35, and glibc 2.32. If your business uses applications that depend on kernel APIs for different purposes, such as building out- of-tree kernel modules and using hardware resources, you must assess the applications in advance and determine whether the applications can run as expected after a direct OS replacement. |
 | Replace CentOS 8 and Anolis OS 8 with Alibaba Cloud Linux 3 and Alibaba Cloud Linux V3 64bit | Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS. The GNU toolchain of Alibaba Cloud Linux 3 contains GCC 10.2, Binutils 2.35, and glibc 2.32. Alibaba Cloud Linux 3 is compatible with the CentOS 8 ecosystem. Before you replace CentOS 8 or Anolis OS 8 with Alibaba Cloud Linux 3, you must uninstall kmod-kvdo. You must evaluate whether uninstallation is feasible. Run the following command to uninstall your CentOS 8 or Anolis OS 8: yum remove kmod-kvdo. |
 
-| YUM repository image | Supported destination OS for replacement | Image deployment and configuration |
-|---|---|---|
-| YUM repository of Alibaba Cloud Linux 3 Free Edition | Alibaba Cloud Linux 3 | 1. Obtain the YUM repository ECS image that corresponds to Alibaba Cloud Linux 3 from technical support. 2. Import the obtained image in the ECS console. 3. After the image is imported, use the image to create an ECS instance. 4. Uncomment the comment on line 2 of the /root/alinux/migration/aliyuncs- install.sh file of the image instance and change export MIRROR SITE=xxxxxx to the _ actual YUM repository IP address. |
-
 **Prerequisites**
 
 A Yellowdog Updater Modified (YUM) repository is available for OS replacement. You must select a custom image based on the type of the destination OS to build the YUM repository.
+
+| YUM repository image | Supported destination OS for replacement | Image deployment and configuration |
+|---|---|---|
+| YUM repository of Alibaba Cloud Linux 3 Free Edition | Alibaba Cloud Linux 3 | 1. Obtain the YUM repository ECS image that corresponds to Alibaba Cloud Linux 3 from technical support. 2. Import the obtained image in the ECS console. 3. After the image is imported, use the image to create an ECS instance. 4. Uncomment the comment on line 2 of the /root/alinux/migration/aliyuncs- install.sh file of the image instance and change export MIRROR SITE=xxxxxx to the _ actual YUM repository IP address. |
 
 | YUM repository of Alibaba Cloud Linux 3 Commercial Edition | Alibaba Cloud Linux V3 64bit | 1. Obtain a YUM repository ECS image that corresponds to Alibaba Cloud Linux V3 64bit from technical support. 2. Import the obtained image in the ECS console. 3. After the image is imported, use the image to create an ECS instance. 4. Uncomment the comment on line 2 of the /root/alinux/migration/aliyuncs-install 3p.sh _ file of the image instance and change export MIRROR SITE=xxxxxx to the actual YUM _ repository IP address. |
 |---|---|---|
@@ -320,6 +366,8 @@ A Yellowdog Updater Modified (YUM) repository is available for OS replacement. Y
 After the ECS instance is created, run the `curl {YUM repository IP address}` command on the ECS instance to check whether the YUM repository is normal.
 
 **Procedure**
+
+**Step 1: Create a resource migration plan**
 
 **a. Create a migration plan**
 
@@ -422,13 +470,15 @@ Then, click**Confirm Completion**.
 2. The migration report page appears. You can view the overall execution status of the
 migration plan.
 
-### Database migration
+### 3.4 Database migration
 
 **Prerequisites**
 
 Before you migrate a database, check whether the database meets the following requirements: The server to which the source database belongs must have sufficient outbound bandwidth. Otherwise, the data migration speed decreases. The tables that you want to migrate must have PRIMARY KEY or UNIQUE constraints, and all fields must be unique. Otherwise, the destination database may contain duplicate data records. To perform incremental data migration, you must make sure that the following requirements are met: The binary logging feature is enabled. The value of the binlog_format parameter is set to row, and the value of the binlog_row_image parameter is set to full. Otherwise, error messages are returned during the precheck and the data migration task cannot be started. The binary logs of the ApsaraDB RDS instance must be stored for at least three days (seven days recommended). The binary logs of a self-managed MySQL database must be retained for at least seven days. Limits on operations that are performed on the source database: During schema migration and full data migration, do not execute DDL statements to change the schemas of databases or tables. Otherwise, the data migration task fails. If you perform only full data migration, do not write data to the source database during data migration. Otherwise, data inconsistency occurs between the source and destination databases.
 
 **Procedure**
+
+**Step 1: Create a resource migration plan**
 
 **a. Create a migration plan**
 
@@ -545,13 +595,15 @@ Then, click**Confirm Completion**.
 2. After you confirm the plan, the Migration Report page appears. You can view the overall
 execution status of the plan.
 
-### Storage migration
+### 3.5 Storage migration
 
 **Prerequisites**
 
 Before you perform a storage migration, ensure that the following conditions and requirements are met: Data migration occupies network bandwidth and may affect the performance of online applications. We recommend that you migrate data during off-peak hours. Apsara Migration Center (AMC) does not support data migration from CDN-enabled data sources or data sources accessed by using an intermediate proxy or relay server. Make sure that the endpoint of your source is directly accessible, without CDN acceleration or any dependency on intermediate relay services. You must not modify or delete source data until the migration is complete and the data is verified. If a file with the same name exists during migration, the file may be overwritten by the migration process. During data migration, symbolic links are skipped.
 
 **Procedure**
+
+**Step 1: Create a resource migration plan**
 
 **a. Create a migration plan**
 
@@ -667,9 +719,9 @@ Then, click**Confirm Completion**.
 2. The migration report page appears. You can view the overall execution status of the
 migration task.
 
-## Resource migration
+## 4 Resource migration
 
-### Create a resource migration
+### 4.1 Create a resource migration plan
 
 **plan**
 
@@ -682,7 +734,7 @@ page, click **Create Resource Migration Plan**.
 your business requirements. You can select multiple migration types.
 4. Click **OK** to create the resource migration plan.
 
-### Manage resource migration
+### 4.2 Manage resource migration plans
 
 **plans**
 
@@ -702,6 +754,14 @@ migration.
 8. Click **Delete** to delete the current migration plan. Only completed and terminated
 migration plans can be deleted.
 
+## 5 Advanced services
+
+### 5.1 Server migration
+
+#### 5.1.1 Usage limits
+
+**Specification description**
+
 | Specification item | Description | Met hod of incr eas ing the limi t |
 |---|---|---|
 | Block replication | The following Linux OSs support block replication: CentOS, Debian, OpenSUSE, Red Hat, SUSE, Ubuntu, Kylin, and UOS. Windows OSs support block replication by default. | Non e |
@@ -712,51 +772,47 @@ migration plans can be deleted.
 | Number of migration sources | By default, 10,000 migration sources are configured for a single tenant (level-1 department). | Sub mit a tick et |
 | Number of migration tasks | By default, 10,000 migration tasks are configured for a single tenant (level-1 department). | Sub mit a tick et |
 
-## Advanced services
-
-### Server migration
-
-#### Usage limits
-
-**Specification description**
-
 | Number of concurrent migration tasks | The maximum number of concurrent migration tasks for a single tenant (level-1 department) is 50. | Sub mit a tick et |
 |---|---|---|
 | Server Migration Connector | Each Server Migration Connector supports a maximum of 10 concurrent migration tasks. | Non e |
+
+**Limits on data partitions for server migration**
 
 | OS of the source server | Limit |
 |---|---|
 | Windows | The partitioning scheme of some disks cannot be replicated, such as dynamic disk partitions and extended disk partitions. If the partitioning scheme of a source disk cannot be replicated, the destination disk is built as a regular partitioned disk. You cannot migrate the volume shadow snapshots of the source server. |
 | Linux | The partitioning scheme of some disks cannot be replicated, such as extended disk partitions. If the partitioning scheme of a source disk cannot be replicated, the destination disk is built as a regular partitioned disk. LVM volume groups (VGs) that span multiple physical disks are not supported. Such configurations will be automatically converted to regular partitions. Swap partitions cannot be replicated. After the source server is migrated, you must reconfigure a swap partition. Some file system formats are not supported. During the migration process, the file systems in the unsupported formats are converted to the file systems in the mainstream formats, such as ext2, ext3, and ext4. By default, if block replication is disabled, the virtual memory, cache, system snapshots, software configurations such as cloud-init and network services, and Docker directory data are not migrated. For more information, see the rsync excludes linux.txt filtering configuration file in the installation directory of _ _ the SMC client. |
 
-| OVA template | Configuration of a Server Migration Connector | Environment requirement for deploying a Server Migration Connector on vCenter Server | Environment requirement for deploying a Server Migration Connector on VMware ESXi |
-|---|---|---|---|
+**Limits on agentless migration of VMware VMs**
 
 The following table describes the supported versions of vCenter Server and VMware ESXi.
+
+| OVA template | Configuration of a Server Migration Connector | Environment requirement for deploying a Server Migration Connector on vCenter Server | Environment requirement for deploying a Server Migration Connector on VMware ESXi |
+|---|---|---|---|
 
 | SMC VMware Connector 6.7 OVA | Number of vCPUs: four or more Memory size: 8 GB or more Disk space: 40 GB or more | vCenter Server version: 6.0, 6.5, or 6.7 Version of VMware ESXi on which the Server Migration Connector is deployed: 6.0, 6.5, or 6.7 Version of VMware ESXi on which the VMware VM to be migrated is deployed: 6.0, 6.5, or 6.7 Hardware version of the VMware VM to be migrated: 11, 12, 13, 14, or 15 | Version of VMware ESXi: 6.0, 6.5, or 6.7 Hardware version of the VMware VM to be migrated: 11, 12, 13, 14, or 15 |
 |---|---|---|---|
 | SMC VMware Connector 8.0 OVA | Number of vCPUs: four or more Memory size: 8 GB or more Disk space: 40 GB or more | vCenter Server version: 6.7, 7.0, or 8.0 Version of VMware ESXi on which the Server Migration Connector is deployed: 6.7, 7.0, or 8.0 Version of VMware ESXi on which the VMware VM to be migrated is deployed: 6.7, 7.0, or 8.0 Hardware version of the VMware VM to be migrated: 14, 15, 16, 17, 18, 19, 20, or 21 | Version of VMware ESXi: 6.7, 7.0, or 8.0 Hardware version of the VMware VM to be migrated: 14, 15, 16, 17, 18, 19, 20, or 21 |
 
-| Windwos | Linux |
-|---|---|
-
 **Limits on operating systems**
 
 Server migration and agentless migration of VMware VMs support the following OSs:
 
+| Windwos | Linux |
+|---|---|
+
 | Windows Server 2003 Windows Server 2008 Windows Server 2012 Windows Server 2016 Windows Server 2019 Windows Server 2022 | CentOS 5/6/7/8 Red Hat 5/6/7/8 Ubuntu 10/12/14/16/17/18/19/20 Debian 7/8/9/10 OpenSUSE 13/42/15 SUSE 11/12/15 Gentoo 13.0 Alibaba Cloud Linux Oracle Linux 5/6/7/8 Amazon Linux 2014 and later UOS 1050a/e, 1050u2a/e, 1060a/e, and 1070a Kylin-Sever-10-sp1/2/3 |
 |---|---|
+
+OS replacement supports the following OSs:
 
 | System architecture | Source OS | Destination OS |
 |---|---|---|
 | x86 | CentOS 7 and CentOS 8 | Alibaba Cloud Linux 3 |
-|  |  | Alibaba Cloud Linux V3 64bit |
-|  | Anolis OS 7 and Anolis OS 8 | Alibaba Cloud Linux V3 64bit |
-|  | Alibaba Cloud Linux 2 | Alibaba Cloud Linux 3 |
-|  | Alibaba Cloud Linux 3 | Alibaba Cloud Linux V3 64bit |
-
-OS replacement supports the following OSs:
+|   |   | Alibaba Cloud Linux V3 64bit |
+|   | Anolis OS 7 and Anolis OS 8 | Alibaba Cloud Linux V3 64bit |
+|   | Alibaba Cloud Linux 2 | Alibaba Cloud Linux 3 |
+|   | Alibaba Cloud Linux 3 | Alibaba Cloud Linux V3 64bit |
 
 **Other limits**
 
@@ -770,13 +826,15 @@ A migration task is unfinished if it is in the Ready, Running, Stopped, InError,
 
 You must use GRUB V2.02 or later for earlier versions of Linux distributions such as CentOS 5, Red Hat Enterprise Linux 5, Debian 7, Amazon Linux, and Oracle Linux.
 
-#### Before you begin
+#### 5.1.2 Before you begin
 
 Before you use server migration, you must determine applicable scenarios and limitations, configure permissions for the cloud migration account, back up data, establish network connectivity, and complete other prerequisite preparations.
 
 **Applicable scenarios**
 
 The server migration feature allows you to migrate data from servers in data centers, onpremises VMs, and third-party cloud platforms to Apsara Stack without service downtime. Data in a server includes data in the system disk and data disks. Supported VMs include VMware, Xen, KVM, and Hyper-V. Third-party cloud platforms can be Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), and Tencent Cloud. We recommend that you use the server migration tool to migrate common web middleware servers, load balancing servers, and O&M servers. Migration of big data workloads and storage systems that handle massive small files or dynamically growing large files is not recommended. If a source instance supports block replication, single-instance databases and containerized data of the instance can be migrated. If a source instance supports only file replication, singleinstance databases and containerized data of the instance cannot be migrated.
+
+**Limits**
 
 **Configure permissions**
 
@@ -786,10 +844,6 @@ A service-linked role is a RAM role whose trusted entity is an Apsara Stack serv
 
 **Back up data**
 
-|  | 8703 |  |
-|---|---|---|
-| 8703 |  |  |
-
 To prevent data loss or damage due to factors such as system failure, you must create snapshots to back up data.
 
 **Establish network connections**
@@ -798,7 +852,13 @@ SMC supports server migration over the Internet or a virtual private cloud (VPC)
 
 **Note**
 
-By default, all SMC endpoints use HTTPS port 443. HTTP port 80 may not be supported. During the migration process, the SMC client connects to port `8080` of the intermediate enabled for the source server.
+By default, all SMC endpoints use HTTPS port 443. HTTP port 80 may not be supported. During the migration process, the SMC client connects to port `8080` of the intermediate instance or destination instance to establish communication and transmits the disk data of
+
+|   | 8703 |   |
+|---|---|---|
+| 8703 |   |   |
+
+the source server to the data disks of the intermediate instance by using port `8703` of the intermediate instance or destination instance. In this case, ports `8080` and `8703` must be enabled for the source server.
 
 **Note**
 
@@ -814,9 +874,9 @@ Make sure that the system time of the source server is the same as the standard 
 
 Make sure that the system time of the server is the same as the standard time of the region in which the server resides. Otherwise, the SMC client fails to be registered. Make sure that the Volume Shadow Copy Service (VSS) is enabled. Check whether QEMU Guest Agent is installed. If QEMU Guest Agent is installed, you must uninstall it. Check the authorized applications. After you migrate the server to Apsara Stack, the application licenses that are associated with the underlying hardware may become invalid. Perform a detailed check on the server based on its type: If you migrate data from a physical server, check its virtualized applications. ECS instances of Apsara Stack do not support built-in virtualized applications. After the migration, software such as VMware Workstation Pro, VirtualBox, and Hyper-V is not supported because such software can be used only on a physical server. If you migrate data from a Windows-based cloud server deployed on other QEMU KVM virtualization platforms, check whether the `QEMU Guest Agent VSS Provider` service is installed. If the QEMU Guest Agent VSS Provider service is installed, find the uninstall.bat script in the C:\Program Files (x86)\virtio\monitor directory and run the script to uninstall the service.
 
-#### Operation guide
+#### 5.1.3 Operation guide
 
-##### Server migration
+##### 5.1.3.1 Server migration
 
 This topic describes how to migrate servers.
 
@@ -872,13 +932,9 @@ In the import descriptionsection of the SMC console, select the organization, re
 5. In the SMC client folder, run the following commands to run the SMC client.
 i. Run the following commands:
 
-```bash
+```python
 cd go2aliyun_client_linux_x86_64 sudo chmod +x go2aliyun_client sudo ./go2 aliyun_client --endpoint=SMC Endpoint
 ```
-
-| Folder or file | Description |
-|---|---|
-| go2aliyun client.exe _ | The Windows CLI executable file. |
 
 ii. Follow on-screen instructions to enter the activation code: If a message similar to Import Source Server [s-aoqriroegdp****] Successfully! is returned, the information about the migration source is imported.
 
@@ -886,7 +942,7 @@ ii. Follow on-screen instructions to enter the activation code: If a message sim
 
 If the information about the migration source fails to be imported, you can troubleshoot the issue based on the returned message. After you fix the issue, run the following commands to exit the background program and re-import the information about the migration source based on your permissions on the operating system of the migration source.
 
-```bash
+```python
 sudo ./go2aliyun_client --abort sudo ./go2aliyun_client
 ```
 
@@ -900,6 +956,10 @@ operating system (32-bit or 64-bit) of the source Windows server.
 package to the source Windows server.
 3. On the source Windows server, use the built-in decompression tool of Windows or the
 decompression tool installed on the server to decompress the SMC client package. The following figure shows the decompressed folders and files.
+
+| Folder or file | Description |
+|---|---|
+| go2aliyun client.exe _ | The Windows CLI executable file. |
 
 | go2aliyun gui.exe _ | The Windows GUI executable file. |
 |---|---|
@@ -925,16 +985,14 @@ To run the Windows CLI version, enter the obtained access_access_token_id and ac
 **Server Migration** > **Migration Sources**. Find the migration source that you want to
 manage, and then click **Create Migration Task** in the Operation column.
 2. Configure the parameters in the following table. If you need advanced settings, such as the
-network type and compression ratio, click **Expert Mode**.
+network type and compression ratio, click **Expert Mode**. On the **Migration Tasks** page, view the real-time status of the migration task. The amount of time required for data migration is subject to factors such as the data size of the migration source and network bandwidth. If you want to migrate incremental data, turn on **Automatic Incremental**
+**Synchronization** when you create the migration task**.**
+i. Basic parameters
 
 | Parameter | Description | Example |
 |---|---|---|
 | Task Name | The name of the migration task. | Agentless migration of VMware VMs |
 | Task Description | The description of the migration task. | test |
-
-On the **Migration Tasks** page, view the real-time status of the migration task. The amount of time required for data migration is subject to factors such as the data size of the migration source and network bandwidth. If you want to migrate incremental data, turn on **Automatic Incremental**
-**Synchronization** when you create the migration task.
-i. Basic parameters
 
 | Target Type (required) | The type of the destination. Select a destination type based on the actual migration scenario. Migrate to ECS image: migrates to a custom image. You can use the image to create an ECS instance. Migrate to ECS instance: uses an ECS instance that has no data and is compatible with the configuration of the source VM as the destination ECS instance. | Migrate to ECS image |
 |---|---|---|
@@ -943,27 +1001,29 @@ i. Basic parameters
 
 | Note: | The earliest time that you can specify to |
 |---|---|
-| run a migration task is 10 minutes after the task |  |
-| is created. |  |
-
-| Paramet er | Description | Example |
-|---|---|---|
-|  | Specifies whether to enable disk partition adjustment. |  |
+| run a migration task is 10 minutes after the task |   |
+| is created. |   |
 
 ii. Disk parameters
 
+| Paramet er | Description | Example |
+|---|---|---|
+|   | Specifies whether to enable disk partition adjustment. |   |
+
 | Guide·Advan | ced services cloud | migration hub |
 |---|---|---|
-|  | If this switch is turned off, the disk partitions of the destination system are the same as those of the migration source by default. If this switch is turned on, you can modify the disk partitions of the destination system, including the partition size, order, transmission mode, and whether to enable LVM. The following section describes the parameters for disk partitions. Configure disks System Disk: the size of the system disk of the destination instance. Unit: GiB. Valid values: 20 to 2048. The size of the destination system disk must be larger than the amount of data on the source system disk. For example, if the total size of the source system disk is 400 GiB but the amount of data stored on this disk is only 100 GiB, you must set this parameter to a value greater than 100. Warning The default value of this parameter is the size of the source system disk. We recommend that you retain the default value or specify a greater value. Data Disk <N>: the size of the data disk of the destination instance. Unit: GiB. Valid values: 1 to 32768. N indicates the serial number of the data disk. When you migrate a server to an ECS instance, N indicates the ID of the data disk. The size of the destination data disk must be larger than the amount of data on the source data disk. For example, if the total size of the source data disk is 500 GiB but the size of data stored on this disk is only 100 GiB, you must set this parameter to a value greater than 100. If a data disk has no mount target or No is selected from the drop-down list to the right of Regular Partition, the data on the data disk is not migrated. LVM: Logical Volume Manager (LVM) is a mechanism for managing disk partitions in a Linux system. LVM offers greater flexibility compared with ordinary disk partitions and allows dynamic adjustment of disk space. You can choose whether to enable LVM based on your business requirements. When LVM is enabled, the destination system automatically reconstructs the disk by using an LVM structure. |  |
+|   | If this switch is turned off, the disk partitions of the destination system are the same as those of the migration source by default. If this switch is turned on, you can modify the disk partitions of the destination system, including the partition size, order, transmission mode, and whether to enable LVM. The following section describes the parameters for disk partitions. Configure disks System Disk: the size of the system disk of the destination instance. Unit: GiB. Valid values: 20 to 2048. The size of the destination system disk must be larger than the amount of data on the source system disk. For example, if the total size of the source system disk is 400 GiB but the amount of data stored on this disk is only 100 GiB, you must set this parameter to a value greater than 100. Warning The default value of this parameter is the size of the source system disk. We recommend that you retain the default value or specify a greater value. Data Disk <N>: the size of the data disk of the destination instance. Unit: GiB. Valid values: 1 to 32768. N indicates the serial number of the data disk. When you migrate a server to an ECS instance, N indicates the ID of the data disk. The size of the destination data disk must be larger than the amount of data on the source data disk. For example, if the total size of the source data disk is 500 GiB but the size of data stored on this disk is only 100 GiB, you must set this parameter to a value greater than 100. If a data disk has no mount target or No is selected from the drop-down list to the right of Regular Partition, the data on the data disk is not migrated. LVM: Logical Volume Manager (LVM) is a mechanism for managing disk partitions in a Linux system. LVM offers greater flexibility compared with ordinary disk partitions and allows dynamic adjustment of disk space. You can choose whether to enable LVM based on your business requirements. When LVM is enabled, the destination system automatically reconstructs the disk by using an LVM structure. |   |
 
 | Adjust disk partition structur e | Instructions for enabling LVM For each LVM-enabled disk, the system creates one physical volume (PV) and its corresponding volume group (VG), and creates a number of logical volumes (LVs) that match the number of mount targets in this VG. The default name of a VG is vgX (X is the serial number of the disk), and the default name of an LV is lvX (X is the serial number of the LV). Examples: The following figure shows an example of disk partitions of the migration source. Enable LVM for the migration task: Result after migration: Disks are reconstructed as an LVM structure LVM is not supported in the following scenarios: If your migration source runs Windows, LVM is not | Retain the default value |
 |---|---|---|
-|  | supported. If the system disk does not have a boot partition, LVM is not supported. |  |
+|   | supported. If the system disk does not have a boot partition, LVM is not supported. |   |
 
-|  | After LVM is enabled, it does not take effect in the following scenarios: LVM2 is not supported on your migration source and the LVM2 software package is not installed. Your migration source runs Debian with a kernel version of 3.x or earlier, and XFS file systems are mounted. Configure mount targets Whether to migrate: You can specify whether to migrate a mount target based on your business requirements. Block Replication: If you turn on Block Replication, stable data transmission is ensured. The block-level replication feature also ensures that the source and destination disks use the same partitioning scheme. You cannot modify the size of each partition on the destination disk. SMC allows or disallows you to turn on this switch based on whether the migration source supports block replication. If the migration source does not support block replication, this switch cannot be turned on. The default file replication mode is used and the partition size can be changed. If the migration source supports block replication for partitions, the switch is turned on by default. You can migrate disk data at the partition level. Note If your source server runs Windows, block replication is enabled by default. You cannot disable this feature. If LVM is enabled for a disk and the partition size is not an integer multiple of 4 MiB, block replication does not take effect. File replication is used for data transfer. Set the partition size: If block replication is not enabled, you can set the partition size based on your business requirements. However, the total size of partitions cannot be greater than the size of the disk to which they belong. Note If the disk sizes of the destination instance do not match those of the migration source, the migration task cannot be created. In this case, the system automatically adjusts the locations of the mount targets to meet the disk size requirements. If the requirements still cannot be met after the mount targets are adjusted, follow the on-screen instructions to handle the issue. You can also drag and drop the mount targets to meet the disk |  |  |  |
+|   | After LVM is enabled, it does not take effect in the following scenarios: LVM2 is not supported on your migration source and the LVM2 software package is not installed. Your migration source runs Debian with a kernel version of 3.x or earlier, and XFS file systems are mounted. Configure mount targets Whether to migrate: You can specify whether to migrate a mount target based on your business requirements. Block Replication: If you turn on Block Replication, stable data transmission is ensured. The block-level replication feature also ensures that the source and destination disks use the same partitioning scheme. You cannot modify the size of each partition on the destination disk. SMC allows or disallows you to turn on this switch based on whether the migration source supports block replication. If the migration source does not support block replication, this switch cannot be turned on. The default file replication mode is used and the partition size can be changed. If the migration source supports block replication for partitions, the switch is turned on by default. You can migrate disk data at the partition level. Note If your source server runs Windows, block replication is enabled by default. You cannot disable this feature. If LVM is enabled for a disk and the partition size is not an integer multiple of 4 MiB, block replication does not take effect. File replication is used for data transfer. Set the partition size: If block replication is not enabled, you can set the partition size based on your business requirements. However, the total size of partitions cannot be greater than the size of the disk to which they belong. Note If the disk sizes of the destination instance do not match those of the migration source, the migration task cannot be created. In this case, the system automatically adjusts the locations of the mount targets to meet the disk size requirements. If the requirements still cannot be met after the mount targets are adjusted, follow the on-screen instructions to handle the issue. You can also drag and drop the mount targets to meet the disk |   |   |   |
 |---|---|---|---|---|
-|  |  | Note If the disk sizes of the destination instance do not match those of the migration source, the migration task cannot be created. In this case, the system automatically adjusts the locations of the mount targets to meet the disk size requirements. If the requirements still cannot be met after the mount targets are adjusted, follow the on-screen instructions to handle the issue. You can also drag and drop the mount targets to meet the disk |  |  |
-|  |  | size requirements. However, if the partition type is a boot partition or a system partition, you cannot drag and drop the mount targets. To drag and drop mount targets, perform the following operations: a. Move the pointer over the icon in front of a mount target. b. Drag and drop the mount target to another disk. |  |  |
+|   |   | Note If the disk sizes of the destination instance do not match those of the migration source, the migration task cannot be created. In this case, the system automatically adjusts the locations of the mount targets to meet the disk size requirements. If the requirements still cannot be met after the mount targets are adjusted, follow the on-screen instructions to handle the issue. You can also drag and drop the mount targets to meet the disk |   |   |
+|   |   | size requirements. However, if the partition type is a boot partition or a system partition, you cannot drag and drop the mount targets. To drag and drop mount targets, perform the following operations: a. Move the pointer over the icon in front of a mount target. b. Drag and drop the mount target to another disk. |   |   |
+
+iii. Advanced configurations
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -971,8 +1031,6 @@ ii. Disk parameters
 | Compression Rate | The compression rate of the data to be migrated. Set the compression rate based on your business requirements. If the bandwidth is limited, a high compression rate improves the transmission efficiency. If a high bandwidth is available, we recommend that you do not compress data. Data compression consumes CPU resources of the migration source. | Retain the default value |
 | Checksum Validation | Specifies whether to verify data integrity by using a checksum. By default, the checksum verification feature is disabled. If you enable this feature, data integrity is enhanced but transmission speed may be reduced. | Retain the default value |
 | Transfer Instance Specifications | The type of the intermediate instance. Select an intermediate instance type based on your business requirements. This parameter is available only if you set the Target Type parameter to Migrate to ECS image. If you specify an instance type, SMC creates an intermediate instance of the specified type. If the specified instance type is unavailable, the migration task fails to be created. If you do not specify an instance type, SMC automatically selects an instance type to create an intermediate instance. | Retain the default value |
-
-iii. Advanced configurations
 
 **Step 3: Run the migration task**
 
@@ -999,18 +1057,18 @@ task that you want to manage, and then click **Delete** in the Operation column.
 4. Perform incremental synchronization (incremental migration is configured for the migration
 task) Log in to the AMC console. In the left-side navigation pane, choose **Advanced Services** >
 **Server Migration** > **Migration Tasks**. On the **Server Migration** tab, find the migration
-task that you want to manage, and then click **Complete incremental synchronization** in the Operation column. In the Complete incremental synchronization dialog box, select or clear the Make the last synchronization check box based on your business requirements, and then click **OK**.
+task that you want to manage, and then click **Complete incremental synchronization** in the Operation column. In the Complete incremental synchronization dialog box, select or clear the Make the last synchronization check box based on your business requirements, and then click **OK****.**
 
-| OVA template | Configuration of a Server Migration Connector | vCenter deployment | Environment requirement for deploying a Server Migration Connector on VMware ESXi |
-|---|---|---|---|
-
-##### Agentless migration of VMware VMs
+##### 5.1.3.2 Agentless migration of VMware VMs
 
 This topic describes how to perform agentless migration of VMware VMs
 
 **Prerequisites**
 
 The following table describes the environment requirements that vary based on the Open Virtual Appliance (OVA) template.
+
+| OVA template | Configuration of a Server Migration Connector | vCenter deployment | Environment requirement for deploying a Server Migration Connector on VMware ESXi |
+|---|---|---|---|
 
 | SMC VMware Connector 6.7 OVA | Number of vCPUs: four or more Memory size: 8 GB or more Disk space: 40 GB or more | vCenter Server version: 6.0, 6.5, or 6.7 Version of VMware ESXi on which the Server Migration Connector is deployed: 6.0, 6.5, or 6.7 Version of VMware ESXi on which the VMware VM to be migrated is deployed: 6.0, 6.5, or 6.7 Hardware version of the VMware VM to be migrated: 11, 12, 13, 14, or 15 | VMware ESXi version: 6.0, 6.5, or 6.7 Hardware version of the VMware VM to be migrated: 11, 12, 13, 14, or 15 |
 |---|---|---|---|
@@ -1057,7 +1115,7 @@ iii. Select a compute resource and click **NEXT**.
 5. Select networks and click **NEXT**.
 6. Confirm the configuration information and click**FINISH**.
 7. After the Server Migration Connector is deployed, right-click the Server Migration Connector
-and choose **Power** > **Power On**.
+and choose **Power** **>** **Power On**.
 8. Test whether the Server Migration Connector can access 443 port and 902 port (default) of
 vCenter Server. If the Server Migration Connector cannot access the ports, enable the ports in the backend.
 9. On the **Summary** tab, obtain the IP address of the Server Migration Connector.
@@ -1194,15 +1252,13 @@ One Server Migration Connector supports the migration of up to 10 VMs. To suppor
 **Server Migration** > **Migration Sources**. Find the migration source that you want to
 manage, and then click **Create Migration Task** in the Operation column.
 2. Configure the parameters in the following table. If you need advanced settings, such as the
-network type and compression ratio, click **Expert Mode**.
+network type and compression ratio, click **Expert Mode**. On the **Migration Tasks** page, view the real-time status of the migration task. The amount of time required for data migration is subject to factors such as the data size of the migration source and network bandwidth. If you want to migrate incremental data, select **Automatic Incremental**
+**Synchronization** when you create the migration task**.**
+i. Basic parameters
 
 | Parameter | Description | Example |
 |---|---|---|
 | Task Name | The name of the migration task. | Agentless migration of VMware VMs |
-
-On the **Migration Tasks** page, view the real-time status of the migration task. The amount of time required for data migration is subject to factors such as the data size of the migration source and network bandwidth. If you want to migrate incremental data, select **Automatic Incremental**
-**Synchronization** when you create the migration task.
-i. Basic parameters
 
 | Task Description | The description of the migration task. | test |
 |---|---|---|
@@ -1212,14 +1268,16 @@ i. Basic parameters
 
 | Note: | The earliest time that you can specify to |
 |---|---|
-| run a migration task is 10 minutes after the task |  |
-| is created. |  |
+| run a migration task is 10 minutes after the task |   |
+| is created. |   |
+
+ii. Disk parameters
 
 | Parameter | Description | Example |
 |---|---|---|
 | Destination Disk (GiB) | The disk configurations of the destination ECS instance. Configure the following parameters based on your business requirements: System Disk: the size of the system disk of the ECS instance. Unit: GiB. Valid values: 20 to 2048. The size of the destination system disk must be larger than the amount of data on the source system disk. For example, if the total size of the source system disk is 400 GiB but the amount of data stored on this disk is only 100 GiB, you must set this parameter to a value greater than 100. Note The default value of this parameter is the size of the source system disk. We recommend that you retain the default value or specify a greater value. Data disk <N>: the size of the data disk of the destination instance. Unit: GiB. Valid values: 20 to 32768. If you select the Data disk check box, a destination data disk is generated. N indicates the serial number of the data disk. The size of the destination data disk must be larger than the amount of data on the source data disk. For example, if the total size of the source data disk is 500 GiB but the size of data stored on this disk is only 100 GiB, you must set this parameter to a value greater than 100. | Retain the default value |
 
-ii. Disk parameters
+iii. Advanced configurations
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -1227,8 +1285,6 @@ ii. Disk parameters
 | Compression Rate | The compression rate of the data to be migrated. Set the compression rate based on your business requirements. If the bandwidth is limited, a high compression rate improves the transmission efficiency. If a high bandwidth is available, we recommend that you do not compress data. Data compression consumes CPU resources of the migration source. | Retain the default value |
 | Checksum Validation | Specifies whether to verify data integrity by using a checksum. By default, the checksum verification feature is disabled. If you enable this feature, data integrity is enhanced but transmission speed may be reduced. | Retain the default value |
 | Transfer Instance Specifications | The type of the intermediate instance. Select an intermediate instance type based on your business requirements. This parameter is available only if you set the Target Type parameter to Migrate to ECS image. If you specify an instance type, SMC creates an intermediate instance of the specified type. If the specified instance type is unavailable, the migration task fails to be created. If you do not specify an instance type, SMC automatically selects an instance type to create an intermediate instance. | Retain the default value |
-
-iii. Advanced configurations
 
 **Step 5: Migrate another VMware VM**
 
@@ -1238,10 +1294,6 @@ If you specify multiple VM IDs when you configure the VMware VM to be migrated, 
 
 This step applies only to Server Migration Connectors in which the version of the agent is 2.0.0 or later. The following figure shows how to obtain the version.
 1. Log in to the Server Migration Connector.
-
-|  | Important When the SMC client is running, do not perform operations on the VMware VM to be migrated, such as shutting down the VMware VM, restarting the VMware VM, and creating or deleting snapshots for the VMware VM. If you create or delete snapshots for the VMware VM to be migrated, the migration may fail. If the migration fails, run the ./dist/migrate configure command in the /root/smc home directory of the SMC client to _ obtain the VM configurations again. Then, run the ./go2aliyun client --jobtype=3 _ command to start a new SMC client. |  |
-|---|---|---|
-
 2. Press `Ctrl+C` to exit the current SMC client process that is running. Then, run the
 following command to terminate the SMC client process:
 
@@ -1265,6 +1317,9 @@ the migration task that you want to manage, and then click **Start Task** in the
 2. On the Migration Tasks page, view the status of the migration task. The amount of time
 required for data transmission is subject to factors such as the data size of the migration source and network bandwidth. Wait until the migration task is complete.
 
+|   | Important When the SMC client is running, do not perform operations on the VMware VM to be migrated, such as shutting down the VMware VM, restarting the VMware VM, and creating or deleting snapshots for the VMware VM. If you create or delete snapshots for the VMware VM to be migrated, the migration may fail. If the migration fails, run the ./dist/migrate configure command in the /root/smc home directory of the SMC client to _ obtain the VM configurations again. Then, run the ./go2aliyun client --jobtype=3 _ command to start a new SMC client. |   |
+|---|---|---|
+
 **Step 7: Manage the migration task**
 
 1. Pause the task (the migration status is Synchronizing)
@@ -1285,27 +1340,27 @@ task) Log in to the AMC console. In the left-side navigation pane, choose **Adva
 **Server Migration** > **Migration Tasks**. On the **VMware Agentless Migration** tab, find
 the migration task that you want to manage, and then click **Complete incremental**
 **synchronization** in the Operation column. In the Complete incremental synchronization
-dialog box, select or clear the Make the last synchronization check box based on your business requirements, and then click **OK**.
+dialog box, select or clear the Make the last synchronization check box based on your business requirements, and then click **OK****.**
 
-| Category | Description |
-|---|---|
-
-##### OS replacement
+##### 5.1.3.3 OS replacement
 
 This topic describes how to perform an OS replacement.
 
 **Prerequisites**
+
+| Category | Description |
+|---|---|
 
 | General limits | Alibaba Cloud Linux does not provide i686-based software packages. If your CentOS operating system is equipped with i386-based or i686-based software packages, you cannot replace your OS with Alibaba Cloud Linux. Before you replace your OS of an Elastic Compute Service (ECS) instance with Alibaba Cloud Linux, make sure that the following resources are available: Memory size: 600 MiB Disk capacity: /usr: 250 MiB /var: 4 GiB /boot: 100 MiB |
 |---|---|
 | Replace CentOS 7 and Anolis OS 7 with Alibaba Cloud Linux 3 and Alibaba Cloud Linux V3 64bit | Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS. The GNU toolchain of Alibaba Cloud Linux 3 contains GCC 10.2, Binutils 2.35, and glibc 2.32. If your business uses applications that depend on kernel APIs for different purposes, such as building out- of-tree kernel modules and using hardware resources, you must assess the applications in advance and determine whether the applications can run as expected after a direct OS replacement. |
 | Replace CentOS 8 and Anolis OS 8 with Alibaba Cloud Linux 3 and Alibaba Cloud Linux V3 64bit | Alibaba Cloud Linux 3 uses Linux Kernel 5.10 LTS. The GNU toolchain of Alibaba Cloud Linux 3 contains GCC 10.2, Binutils 2.35, and glibc 2.32. Alibaba Cloud Linux 3 is compatible with the CentOS 8 ecosystem. Before you replace CentOS 8 or Anolis OS 8 with Alibaba Cloud Linux 3, you must uninstall kmod-kvdo. You must evaluate whether uninstallation is feasible. Run the following command to uninstall your CentOS 8 or Anolis OS 8: yum remove kmod-kvdo. |
 
+A Yellowdog Updater Modified (YUM) repository is available for OS replacement. You must select a custom image based on the type of the destination OS to build the YUM repository.
+
 | YUM repository image | Supported destination OS for replacement | Image deployment and configuration |
 |---|---|---|
 | YUM repository of Alibaba Cloud Linux 3 Free Edition | Alibaba Cloud Linux 3 | 1. Obtain the YUM repository ECS image that corresponds to Alibaba Cloud Linux 3 from technical support. 2. Import the obtained image in the ECS console. 3. After the image is imported, use the image to create an ECS instance. 4. Uncomment the comment on line 2 of the /root/alinux/migration/aliyuncs- install.sh file for the image instance and change export MIRROR SITE=xxxxxx to the _ actual YUM repository IP address. |
-
-A Yellowdog Updater Modified (YUM) repository is available for OS replacement. You must select a custom image based on the type of the destination OS to build the YUM repository.
 
 | YUM repository of Alibaba Cloud Linux 3 Commercial Edition | Alibaba Cloud Linux V3 64bit | 1. Obtain a YUM repository ECS image that corresponds to Alibaba Cloud Linux V3 64bit from technical support. 2. Import the obtained image in the ECS console. 3. After the image is imported, use the image to create an ECS instance. 4. Uncomment the comment on line 2 of the /root/alinux/migration/aliyuncs-install 3p.sh _ file for the image instance and change export MIRROR SITE=xxxxxx to the actual YUM _ repository IP address. |
 |---|---|---|
@@ -1328,6 +1383,9 @@ Instance Resource Set, and Examples.
 verification process takes less than 1 minute.
 4. After the YUM repository passes the verification, click**Import**. The import process takes
 less than 3 minutes.
+
+**Step 2: Create an OS replacement task**
+
 1. On the Alibaba Cloud ECS Server tab of the **Migration Sources** page, find the ECS
 instance whose OS you want to replace and click **Create Migration Task**.
 2. Select the destination OS type from the **Target Operating System** drop-down list.
@@ -1339,25 +1397,21 @@ feasibility is checked and OS replacement is not performed. If you set this para
 3. Wait until the OS replacement is complete. The OS replacement time depends on the disk
 size and the snapshot creation speed. After the migration task is complete, you cannot log in immediately. It takes 5 to 10 minutes to initialize the system. Then, you can log in normally.
 
-### Cross-Platform Application
+### 5.2 Cross-Platform Application Scanning
 
 **Scanning**
 
 By analyzing the source code and software package of the software to be migrated, the crossplatform application scanning tool provides migration guidance, migratability assessment, and visualized migration recommendations. This helps improve migration efficiency. The cross-platform code migration tool provides the following features:
 1. The source code scanning feature supports most mainstream development languages,
 including C/CPP, Java, Python, Go, and Rust.
-
-| Parameter | Description |
-|---|---|
-
 2. The tool supports Chinese-made processors such as Kunpeng, Hygon, and ShenWei.
 3. Scan reports contain detailed problem descriptions, code snippets, and modification
 suggestions, and provide a preliminary workload evaluation.
 4. This tool supports compatibility assessment for non-source software packages.
 
-#### Source code scanning
+#### 5.2.1 Source code scanning
 
-##### Create an evaluation task
+##### 5.2.1.1 Create an evaluation task
 
 This topic describes how to create a task for evaluating source code scanning.
 
@@ -1376,6 +1430,9 @@ compressed source code package, and then click **Confirm**.
 
 **The following table describes the parameters.**
 
+| Parameter | Description |
+|---|---|
+
 | Task Name | The task name, which is displayed in the Task Name column to distinguish between tasks. |
 |---|---|
 | Task Type | Select Source code scanning. |
@@ -1393,7 +1450,7 @@ evaluation task is created, the task is in the **Not Started** state.
 6. On the task management page, you can view that the task is in the **In execution** state.
 After the task execution is complete, the task changes to the **Completed** state.
 
-##### View source code scan suggestions
+##### 5.2.1.2 View source code scan suggestions
 
 This topic describes how to view the results of a source code scan and fix issues based on the source code scan suggestions.
 
@@ -1413,7 +1470,7 @@ Click **Source Code Suggestion** to go to the source code view. The files with c
 5. Fix issues.
 Move the pointer over the source code in red to display the issue details. You can fix the issues as prompted. The **Quick Fix** option is available for some issues. After you fix the issues, click the **save** icon in the upper-right corner to save the modification. Select the files that you want to replace and click the **download** icon to package and download the files. Fuzzy search is supported for file names.
 
-##### Download source code scan reports
+##### 5.2.1.3 Download source code scan reports
 
 This topic describes how to download and view source code scan reports.
 
@@ -1431,7 +1488,7 @@ code scan results.
 4. After the download process is complete, decompress and open the html file of the scan
 report to view the offline report.
 
-##### Scan parameter settings
+##### 5.2.1.4 Scan parameter settings
 
 You can configure parameters to dynamically modify workload evaluation results.
 
@@ -1445,9 +1502,9 @@ modify the workload parameter for each programming language.
 4. The workload evaluation in the scan report is calculated based on the value of the workload
 parameter.
 
-#### Software package evaluation
+#### 5.2.2 Software package evaluation
 
-##### Create an evaluation task
+##### 5.2.2.1 Create an evaluation task
 
 This topic describes how to create a software package evaluation task.
 
@@ -1461,6 +1518,10 @@ The software package to be scanned must be packaged into a compressed file and u
 2. In the left-side navigation pane, choose **Advanced Services > Cross-platform**
 **Application Scanning**.
 3. On the **Cross-Platform Application Scanning** page, click **Create Assessment Tasks**.
+4. In the **Create an application scan task** dialog box, configure the parameters, upload the
+compressed source code package, and then click **Confirm**.
+
+**The following table describes the parameters.**
 
 | Parameter | Description |
 |---|---|
@@ -1471,11 +1532,6 @@ The software package to be scanned must be packaged into a compressed file and u
 | Target Operating System | Valid values: ALinux3, CentOS7.4, CentOS7.5, CentOS7.6, and CentOS7.7. |
 | Task Description | An additional description field that has no impact on the scan result. It is only used to help users distinguish tasks. |
 
-4. In the **Create an application scan task** dialog box, configure the parameters, upload the
-compressed source code package, and then click **Confirm**.
-
-**The following table describes the parameters.**
-
 5. After the task is created, you can view the task in the evaluation task list. After an
 evaluation task is created, the task is in the **Not Started** state.
 6. In the task list, find the task that you want to start and click **Start Execution** in the
@@ -1483,7 +1539,7 @@ Operation column. In the message that appears, click **OK**.
 7. On the task management page, you can view that the task is in the **In execution** state.
 After the task execution is complete, the task changes to the **Completed** state.
 
-##### View evaluation reports
+##### 5.2.2.2 View evaluation reports
 
 This topic describes how to view the evaluation report for a software package.
 
@@ -1502,7 +1558,7 @@ view, and click the **preview** icon or **Task Name** to preview the scan report
 compatible with the destination platform. You can replace the dynamic link library and executable file to obtain an application that is compatible with the destination platform.
 5. You can click **Download Report** to download the offline scan report.
 
-### JVM parameter tuning
+### 5.3 JVM parameter tuning
 
 JVM parameter tuning tools allow you to optimize and migrate JVM parameters based on relevant information, such as the Java version, provider, platform, and CPU architecture. The entire process is simple and fast, and significantly reduces the cost of JVM parameter tuning.
 

@@ -2,16 +2,21 @@
 title: "Key Management Service Product Introduction 20260701"
 product_version: "V3.18.6"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Key Management Service Product Introduction 20260701.pdf"
+source_pdf: "f07a255594374869_Alibaba Cloud Apsara Stack V3.18.6 Key Management Service Product Introduction 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Key%20Management%20Service%20Product%20Introduction%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Key Management Service Product Introduction 20260701
 
-Key Management Service Produc
+## Table of Contents
 
-## Product details
+- 1 Product details
+- 2 Features
+- 3 Benefits
+- 4 Scenarios
+
+## 1 Product details
 
 Key Management Service (KMS) provides customer master keys, Bring-Your-Own-Key (BYOK), key rotation, master key aliases, and resource tags.
 
@@ -35,41 +40,28 @@ KMS supports creating aliases for master keys. Aliases make it easier to identif
 
 Resource tags make it easier to manage key resources in KMS.
 
+## 2 Features
+
 | Primary feature | Secondary feature | Feature description |
 |---|---|---|
 | Key lifecycle management | Key creation | Lets you create and use DEKs for encryption and decryption. Use HSMs to generate compliant DEKs. Supports the creation of keys that use the AES algorithm. Provides lifecycle management for CMKs. You can create CMKs that use the AES, RSA 2048, ECC P256, or ECC P256K algorithm. _ _ _ Use HSMs to generate keys that meet regulatory requirements. |
-|  | Key disabling | Lets you disable a key for immediate remediation in the event of a key leak. After a key is disabled, cloud products cannot use the key to encrypt or decrypt data. |
-|  | Key import | Supports the BYOK feature. You can import a 256-bit AES symmetric key into KMS as key material. |
-|  | Scheduled key deletion | Supports scheduled deletion of CMKs. After a CMK is scheduled for deletion, cloud products cannot use the key. You can revoke the deletion during the scheduled deletion period. |
-|  | Key rotation | Enhances key security through key versioning and periodic rotation. Provides a fully transparent automatic key rotation capability for applications. |
-|  | Multi-region key synchronizati on | Supports key data synchronization across different regions. This allows services in multiple regions to use the same key, which ensures business continuity. |
+|   | Key disabling | Lets you disable a key for immediate remediation in the event of a key leak. After a key is disabled, cloud products cannot use the key to encrypt or decrypt data. |
+|   | Key import | Supports the BYOK feature. You can import a 256-bit AES symmetric key into KMS as key material. |
+|   | Scheduled key deletion | Supports scheduled deletion of CMKs. After a CMK is scheduled for deletion, cloud products cannot use the key. You can revoke the deletion during the scheduled deletion period. |
+|   | Key rotation | Enhances key security through key versioning and periodic rotation. Provides a fully transparent automatic key rotation capability for applications. |
+|   | Multi-region key synchronizati on | Supports key data synchronization across different regions. This allows services in multiple regions to use the same key, which ensures business continuity. |
 | Cloud product integration for encryption | Cloud product integration for encryption | Provides key lifecycle management for server-side encryption of cloud platform products. Supports integration with cloud products such as ECS, OSS, RDS, and MaxCompute. |
 | Data encryption | Data encryption | Provides server-side encryption. Supports symmetric and asymmetric encryption and decryption, and data signing for data smaller than 6 KB. |
 | HSM integration | HSM integration | Supports TASS FIPS-compliant server HSMs. Use HSMs that are verified by trusted authorities to generate keys and perform cryptographic operations. |
 
-Key Management Service Produc
-
-## Features
-
 | Enterprise- grade capabilities | High availability | Key Management Service supports cluster deployment to achieve high availability (HA) and ensure uninterrupted business operations. |
 |---|---|---|
-|  | Zone-disaster recovery | Provides zone-disaster recovery. Supports multi-instance deployment clusters for key management across two data centers in the same city. |
-|  | Key authorization and authenticatio n | Supports key application authorization and application identity authentication based on Alibaba Cloud AccessKey pairs. |
-|  | Log management and auditing | Provides log management for key management and device management operations on the cloud platform. |
-|  | Monitoring and alerts | Supports real-time monitoring and alerts for core KMS services and core parameters of HSMs, such as CPU and memory usage. |
+|   | Zone-disaster recovery | Provides zone-disaster recovery. Supports multi-instance deployment clusters for key management across two data centers in the same city. |
+|   | Key authorization and authenticatio n | Supports key application authorization and application identity authentication based on Alibaba Cloud AccessKey pairs. |
+|   | Log management and auditing | Provides log management for key management and device management operations on the cloud platform. |
+|   | Monitoring and alerts | Supports real-time monitoring and alerts for core KMS services and core parameters of HSMs, such as CPU and memory usage. |
 
-Key Management Service Produc
-
-| Benefits | Description |
-|---|---|
-| Easy encryption | KMS simplifies cryptographic concepts by providing simple APIs for data encryption and decryption. For applications that require a key hierarchy, KMS provides a convenient envelope encryption feature to quickly implement the hierarchy. For example, you can generate a data key (DK) and use a master key (CMK) as a key encryption key (KEK) to protect the DK. |
-| Centralized key hosting | Key Management Service provides centralized hosting and control of your keys. You can import keys to KMS from your on-premises key management infrastructure (KMI) . Whether keys are created in KMS or imported from external sources, the confidential or sensitive data in the keys is used by other Alibaba Cloud products for encryption. |
-| Bring-Your-Own- Key (BYOK) | KMS supports Bring-Your-Own-Key (BYOK). You can import your own keys to KMS to encrypt data on the cloud. This gives you better control over key management. |
-| Custom key rotation policies | KMS lets you automatically rotate symmetric encryption keys based on your security policies. Key rotation helps you achieve the following goals: Reduce the amount of data encrypted by a single key. Enable a faster response to security events. Logically isolate data. Reduce the time window for a key to be compromised. Meet compliance requirements. |
-
-Key Management Service Produc
-
-## Benefits
+## 3 Benefits
 
 Compared with traditional key management infrastructure (KMI), Key Management Service (KMS) offers multi-service integration and is easy to use.
 
@@ -79,9 +71,14 @@ KMS seamlessly integrates with multiple products, such as ECS, RDS, and OSS. Thi
 
 **Ease of use**
 
-Key Management Service Produc
+| Benefits | Description |
+|---|---|
+| Easy encryption | KMS simplifies cryptographic concepts by providing simple APIs for data encryption and decryption. For applications that require a key hierarchy, KMS provides a convenient envelope encryption feature to quickly implement the hierarchy. For example, you can generate a data key (DK) and use a master key (CMK) as a key encryption key (KEK) to protect the DK. |
+| Centralized key hosting | Key Management Service provides centralized hosting and control of your keys. You can import keys to KMS from your on-premises key management infrastructure (KMI) . Whether keys are created in KMS or imported from external sources, the confidential or sensitive data in the keys is used by other Alibaba Cloud products for encryption. |
+| Bring-Your-Own- Key (BYOK) | KMS supports Bring-Your-Own-Key (BYOK). You can import your own keys to KMS to encrypt data on the cloud. This gives you better control over key management. |
+| Custom key rotation policies | KMS lets you automatically rotate symmetric encryption keys based on your security policies. Key rotation helps you achieve the following goals: Reduce the amount of data encrypted by a single key. Enable a faster response to security events. Logically isolate data. Reduce the time window for a key to be compromised. Meet compliance requirements. |
 
-## Scenarios
+## 4 Scenarios
 
 You can use Key Management Service (KMS) to encrypt and protect sensitive data in the cloud. For example, KMS enables application developers to protect the keys that are used to secure sensitive data in their applications.
 

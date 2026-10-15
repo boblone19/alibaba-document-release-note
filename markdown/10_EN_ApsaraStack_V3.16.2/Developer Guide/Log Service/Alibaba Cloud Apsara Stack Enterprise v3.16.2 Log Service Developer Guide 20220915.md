@@ -3,16 +3,116 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service Developer Guid
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 207
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service Developer Guide 20220915.pdf"
+source_pdf: "fb2b9cbd5c632e33_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Log%20Service%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service Developer Guide
 
-## Preparations
+## Table of Contents
 
-### Log on to the API Tool console
+- 1 Preparations
+  - 1.1 Log on to the API Tool console
+  - 1.2 View the information about API operations
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain the values of common headers
+  - 1.5 Obtain the endpoint of Log Service
+  - 1.6 Obtain a Log Service SDK
+- 2 SDK Reference
+  - 2.1 Introduction
+    - 2.1.1 Overview
+    - 2.1.2 Basic configurations
+    - 2.1.3 Error handling
+    - 2.1.4 API specifications
+  - 2.2 Java SDK
+  - 2.3. .NET SDK
+  - 2.4. .NET Core SDK
+  - 2.5 PHP SDK
+  - 2.6 Python SDK
+  - 2.7 SDK for Android
+  - 2.8 SDK for C
+  - 2.9 SDK for Go
+  - 2.10 iOS SDK
+  - 2.11 SDK for C ++
+  - 2.12 Node.js SDK
+- 3 API Reference
+  - 3.1 Overview
+  - 3.2 Common request headers
+  - 3.3 Common response headers
+  - 3.4 Request signatures
+  - 3.5 Common error codes
+  - 3.6 Project API
+    - 3.6.1 CreateProject
+    - 3.6.2 DeleteProject
+    - 3.6.3 UpdateProject
+    - 3.6.4 GetProject
+    - 3.6.5 ListProject
+    - 3.6.6 GetProjectLogs
+  - 3.7 Logstore operations
+    - 3.7.1 CreateLogstore
+    - 3.7.2 DeleteLogstore
+    - 3.7.3 UpdateLogstore
+    - 3.7.4 GetLogstore
+    - 3.7.5 ListLogstore
+    - 3.7.6 ListShards
+    - 3.7.7 SplitShard
+    - 3.7.8 MergeShards
+    - 3.7.9 GetCursor
+    - 3.7.10 GetCursorTime
+    - 3.7.11 PullLogs
+    - 3.7.12 PostLog
+    - 3.7.13 GetShipperStatus
+    - 3.7.14 RetryShipperTask
+    - 3.7.15 GetLogs
+    - 3.7.16 GetHistograms
+    - 3.7.17 UpdateIndex
+    - 3.7.18 CreateIndex
+    - 3.7.19 DeleteIndex
+    - 3.7.20 GetIndex
+    - 3.7.21 PutWebtracking
+  - 3.8 Logtail machine group operations
+    - 3.8.1 CreateMachineGroup
+    - 3.8.2 DeleteMachineGroup
+    - 3.8.3 UpdateMachineGroup
+    - 3.8.4 ListMachineGroup
+    - 3.8.5 GetMachineGroup
+    - 3.8.6 ApplyConfigToMachineGroup
+    - 3.8.7 RemoveConfigFromMachineGroup
+    - 3.8.8 ListMachines
+    - 3.8.9 GetAppliedConfigs
+  - 3.9 Logtail configuration operations
+    - 3.9.1 CreateConfig
+    - 3.9.2 ListConfig
+    - 3.9.3 GetAppliedMachineGroups
+    - 3.9.4 GetConfig
+    - 3.9.5 DeleteConfig
+    - 3.9.6 UpdateConfig
+  - 3.10 Consumer group operations
+    - 3.10.1 CreateConsumerGroup
+    - 3.10.2 DeleteConsumerGroup
+    - 3.10.3 GetCheckPoint
+    - 3.10.4 HeartBeat
+    - 3.10.5 ListConsumerGroup
+    - 3.10.6 UpdateCheckPoint
+    - 3.10.7 UpdateConsumerGroup
+  - 3.11 RAM or STS
+    - 3.11.1 Overview
+    - 3.11.2 Resource list
+    - 3.11.3 Action list
+    - 3.11.4 Authentication rules
+  - 3.12 Description of common resources
+    - 3.12.1 Encrypt data
+    - 3.12.2 Data model
+    - 3.12.3 Data encoding
+    - 3.12.4 Logstores
+    - 3.12.5 Shards
+    - 3.12.6 Logtail configurations
+    - 3.12.7 Logtail machine group
+
+## 1 Preparations
+
+### 1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -22,7 +122,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the information about API
+### 1.2 View the information about API operations
 
 operations You must obtain a service name, API operation name, and API version. All the information is required when you use SDKs. Procedure
 1. Log on to the API Tool console.
@@ -31,7 +131,7 @@ operations You must obtain a service name, API operation name, and API version. 
 operation name in the search box, and then click the search icon.
 4. View and remember the service name, API operation name, and API version.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient. Warning The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
@@ -59,7 +159,7 @@ to obtain.
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 1.4 Obtain the values of common headers
 
 headers You must provide multiple headers when you call Apsara Stack operations. This topic describes the headers and how to obtain the values of the headers. This topic also describes the return values of some headers after you call Apsara Stack operations. Headers
 
@@ -89,7 +189,7 @@ Response parameters The following response parameters are returned by default wh
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of Log
+### 1.5 Obtain the endpoint of Log Service
 
 Service This topic describes how to obtain the endpoint of Log Service. Background information When you call Apsara Stack operations, endpoints are used. You can obtain an endpoint from onsite Alibaba Cloud O&M engineers. You can alternatively perform the following operations to obtain an endpoint. Procedure Log on to the Apsara Infrastructure Management console.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -103,7 +203,7 @@ icon next to Service and search for `SLS` .
 6. Find `sls-backend-server` . Right-click the value in the Service Regist rat ion column and select
 Show More. On the Det ails page, view the value of sls_dat a.endpoint . The value indicates the `endpoint` of Log Service.
 
-### Obtain a Log Service SDK
+### 1.6 Obtain a Log Service SDK
 
 When you call Apsara Stack operations by using the point of presence (POP) gateway, you must use the SDK of your cloud service. This topic describes how to obtain Alibaba Cloud SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can obtain the SDKs from Alibaba Cloud SDKs based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. The following table provides GitHub links to the source code of Log Service SDKs for common programming languages.
 
@@ -114,11 +214,11 @@ When you call Apsara Stack operations by using the point of presence (POP) gatew
 | SDK for Go | Log Service SDK for Go |
 | SDK for PHP | Log Service SDK for PHP |
 
-## SDK Reference
+## 2 SDK Reference
 
-### Introduction
+### 2.1 Introduction
 
-#### Overview
+#### 2.1.1 Overview
 
 Log Service provide software development kits (SDKs) for multiple languages, such as Java, .NET, Python, PHP, and C. You can select an SDK based on your business requirements. Log Service SDKs are implemented based on Log Service APIs. Log Service SDKs provide the same capabilities as Log Service APIs. For more information about Log Service APIs, see API Reference. Before you can use a Log Service SDK, you must have an active Alibaba Cloud AccessKey pair (AccessKey ID and AccessKey secret). In addition, you must specify the endpoint of Log Service in the SDK. For more information, see Basic configurations. Log Service SDKs can be regarded as Log Service APIs that are encapsulated in different languages to provide the following features: Uniform encapsulation. Log Service APIs are uniformly encapsulated. You do not need to create API requests and parse API responses. For more information, see API specifications. The APIs in different languages are similar. This simplifies the switchover between different languages. Automatic digital signatures. You do not need to specify the digital signature logic of Log Service APIs. This simplifies the use of Log Service APIs. Protocol Buffer-formatted encapsulation. The logs collected by Log Service are encapsulated in the Protocol Buffer format. You do not need to specify the format. Automatic compression. Logs are compressed by using the method defined in Log Service APIs. You do not need to manually compress logs. SDKs in some languages allow you to specify whether to write logs in the compression mode. The compression mode is used by default. Centralized error handling methods. You can use SDKs to handle errors based on the relevant language. For more information, see Error handling. Synchronous requests. SDKs in all languages support only synchronous requests. The following table describes the download address and user guide of Log Service SDKs in different languages.
 
@@ -141,7 +241,7 @@ Log Service provide software development kits (SDKs) for multiple languages, suc
 | Android | SDK for Android | GitHub |
 | C++ | SDK for C ++ | GitHub |
 
-#### Basic configurations
+#### 2.1.2 Basic configurations
 
 Before you can use SDKs to interact with Log Service, you must configure the basic settings. This topic describes the basic SDK configurations. Basic configurations: Endpoint: You must specify the endpoint that is used by the client to access Log Service. AccessKey pair (AccessKey ID and AccessKey secret): You must specify the AccessKey pair that is used by the client to access Log Service. The following sections describe how to use endpoints and AccessKey pairs. Endpoint Before you use an SDK, you must determine the access method and endpoint.
 1. When you select an endpoint for a client instance, make sure that the region of your project is the
@@ -183,7 +283,7 @@ accessKey = '<youraccessKey>' client = LogClient(endpoint, accessKeyId, accessKe
 #use client to operate log project......
 ```
 
-#### Error handling
+#### 2.1.3 Error handling
 
 SDK errors are divided into the following types: Errors returned by Log Service. Errors of this type are handled by SDKs. For more information about this error type, see the common error codes of the Log Service API operations. Network errors that occur when you send requests to the server by using SDKs. This type of errors include network disconnection and server response timeout. Errors that are generated by SDKs and related to platforms or languages, for example, memory overflows. All SDKs provided by Alibaba Cloud handle errors by throwing exceptions based on the following principles: The first and second types of errors are encapsulated as the LogException class and sent to users by SDKs. The third type of errors are not handled by SDKs, but are sent to users as the platform-specific and language-specific NativeException class. LogException The LogException class is defined by SDKs to handle the logical errors of Log Service. This class inherits the base class for all exceptions from each language, and provides the following exception information: Error code: indicates the error type. For an error returned by Log Service when you use an SDK, the error code is the same as that returned by the relevant API operation. The error code of SDK network request errors is RequestError. For more information, see API Reference. Error message: indicates the message that is returned together with an error. For an error returned by Log Service when you use an SDK, the error message is the same as that returned by the relevant API operation. The error message of network errors is "request is failed". For more information, see the relevant API reference. Request ID: indicates the ID of the request for which the current error is returned. The request ID is generated by Log Service. This ID is returned only when an error message is returned by Log Service. Otherwise, an empty string is returned. If you receives a request error, you can provide the relevant request ID to the Log Service team for troubleshooting. Request failures and retries When you use an SDK to access Log Service, the access request may fail due to temporary network disconnection, transmission delay, and slow server response. These errors are sent as exceptions. Log Service does not implement retry logic. When you use the SDK, you must customize the handling logic, for example, retry the request or report an error. Examples For example, you want to access a project named big-game and retry the access request for a specified number of times in the case of network exceptions. You can use the following snippets based on the language: Java
 
@@ -305,7 +405,7 @@ client = Client(endpoint, accessId, accessKey) project = 'big-game' lsRequest = 
 // Other code...
 ```
 
-#### API specifications
+#### 2.1.4 API specifications
 
 SDKs in different languages are implemented in different methods. However, all relevant API operations comply with the request-response principle. These API operations are called by using the following procedure:
 1. Create a request instance by using request parameters.
@@ -346,7 +446,7 @@ names = res.get_logstores(); // Other code...
 
 The Log Service SDKs implement multiple API operations such as ListLogStores, and define the corresponding request and response classes. The Log Service SDKs of different languages also provide secondary APIs encapsulated with these basic request-response APIs. You do not need to create request instances or parse the content of the response. For more information about the secondary interfaces, see the API reference of each SDK.
 
-### Java SDK
+### 2.2 Java SDK
 
 Log Service SDK for Java allows Java developers to perform operations in Log Service by using Java programs. You can use Maven dependencies to add the SDK. You can also download the SDK package to an on-premises server. Download URL Log Service SDK for Java supports J2SE V6.0 and later. Click here to download the latest SDK. Step 1: Create an Apsara Stack tenant account To access Log Service, you must create an account in the Apsara Uni-manager Management Console. Step 2: Obtain an Apsara Stack AccessKey pair To use Log Service SDK for Java, you must obtain an AccessKey pair. Log on to the Apsara Uni-manager Management Console. Select an AccessKey pair for the SDK. The AccessKey pair will be used in the following steps and must be kept confidential. For information about how to use an AccessKey pair in Log Service SDK for Java, see Basic configurations. Step 3: Create a project and a Logstore in the Log Service console Use Log Service SDK for Java to create a project and a Logstore. Not e The account that you use to create the project and the Logstore must be the same as the account that you used to obtain the AccessKey pair. The project name must be unique in Log Service. The Logstore name must be unique in the project. After you create the project, you cannot modify its region or migrate the project across regions. Step 4: Install a Java development environment Log Service SDK for Java supports Java development environment J2SE V6.0 and later. You can visit the Java official website to download and install the Java development environment. Step 5: Install Log Service SDK for Java After you install the Java development environment, you must install Log Service SDK for Java. To install Log Service SDK for Java, use one of the following methods: Download the latest SDK for Java package from Apache Maven. Add the following configurations to your Maven project:
 
@@ -575,7 +675,7 @@ After you build the .NET Core development environment, you must install Log Serv
 6. Create a Log Service .NET Core project.
 After you install the .NET Core development environment and Log Service SDK for .NET Core, you can create a .NET Core project. For more information, visit GitHub Wiki.
 
-### PHP SDK
+### 2.5 PHP SDK
 
 Log Service provides developers with Log Service SDK for PHP to simplify the use of Log Service. Download URL You can download Log Service SDK for PHP from GitHub: Step 1: Create an Apsara Stack tenant account To access Log Service, you must create an account in the Apsara Uni-manager Management Console. Step 2: Obtain an Apsara Stack AccessKey pair To use Log Service SDK for PHP, you must obtain an AccessKey pair. Log on to the Apsara Uni-manager Management Console. Select an AccessKey pair for the SDK. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair will be used in the following steps and must be kept confidential. For information about how to use an AccessKey pair in Log Service SDK for PHP, see Basic configurations. Step 3: Create a project and a Logstore in the Log Service console Use Log Service SDK for PHP to create a project and a Logstore. Not e The account that you use to create the project and the Logstore must be the same as the account that you used to obtain the AccessKey pair. The project name must be unique in Log Service. The Logstore name must be unique in the project. After you create the project, you cannot modify its region or migrate the project across regions. Step 4: Install a PHP development environment Log Service SDK for PHP supports PHP V5.2.1 and later. You can install a supported PHP on an onpremises server and build a PHP development environment. Step 5: Download and install Log Service SDK for PHP After you build a PHP development environment, you must install Log Service SDK for PHP. To install Log Service SDK for PHP, perform the following steps:
 1. Download the latest SDK for PHP package from GitHub.
@@ -651,7 +751,7 @@ query, 5, 0, False);
 var_dump($res4);
 ```
 
-### Python SDK
+### 2.6 Python SDK
 
 Log Service provides developers with Log Service SDK for Python to simplify the use of Log Service. Download URLs You can click here to download Log Service SDK for Python. You can also download Log Service SDK for Python from GitHub: https://github.com/aliyun/aliyun-log-python-sdk Step 1: Create an Apsara Stack tenant account To access Log Service, you must create an account in the Apsara Uni-manager Management Console. Step 2: Obtain an Apsara Stack AccessKey pair To use Log Service SDK for Python, you must obtain an AccessKey pair. Log on to the Apsara Uni-manager Management Console. Select an AccessKey pair for the SDK. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair will be used in the following steps and must be kept confidential. For information about how to use an AccessKey pair in Log Service SDK for Python, see Basic configurations. Step 3: Create a project and a Logstore in the Log Service console Before you can use the SDK, you must create a project and a Logstore in the Log Service console.
 1. Log on to the Log Service console.
@@ -789,19 +889,19 @@ create_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-
     main()
 ```
 
-### SDK for Android
+### 2.7 SDK for Android
 
 The Log Service SDK for Android is used to collect user data from Android platforms and write the data to Log Service. Download URL at GitHub https://github.com/aliyun/aliyun-log-android-sdk
 
-### SDK for C
+### 2.8 SDK for C
 
 The Log Service SDK for C is used to access logs in Log Service from multiple platforms, such as the MIPS and OpenWrt systems. The SDK for C uses libcurl as a network library. The apr/apr-util library resolves issues about memory management and cross-platform operations. You can use the SDK for C after you compile a small part of the source code. In addition, the C Producer Library and C Producer Lite Library provide you with a one-stop log collection solution across different platforms. This solution features simple deployment, high performance, and low resource consumption. For more information, visit the following GitHub URLs: C Producer Library (recommended for servers) C Producer Lite Library (recommended for IoT and smart devices)
 
-### SDK for Go
+### 2.9 SDK for Go
 
 Log Service provides developers with the SDK for Go to simplify the use of Log Service. The Log Service SDK for Go allows developers to perform the following operations: Write and consume data in batches. Use keywords to query indexes. Manage Logtail configurations and machine groups. You can download the SDK for Go from the following GitHub URL: https://github.com/aliyun/aliyunlog-go-sdk. For information about the usage instructions and sample code, see README.
 
-### iOS SDK
+### 2.10 iOS SDK
 
 Log Service SDK for iOS is implemented based on Log Service APIs. The SDK allows you to write logs to Log Service. You can download Log Service SDK for iOS from GitHub based on your programming language. Swift: https://github.com/aliyun/aliyun-log-ios-sdk. Object-C: https://github.com/lujiajing1126/AliyunLogObjc. AliyunLogObjc is a third-party tested SDK. You can raise issues to the author and receive a quick response. Swift-based sample code of Log Service SDK for iOS `/*`
 
@@ -840,11 +940,11 @@ let myClient = try! LOGClient(endPoint: "",
 
 Objective-C For information about how to use Log Service SDK for iOS based on Objective-C, visit Objective-C at GitHub.
 
-### SDK for C ++
+### 2.11 SDK for C ++
 
 The Log Service SDK for C ++ allows you call Log Service API operations in C++ programs. This SDK applies only to Linux platforms. The Log Service SDK for C ++ supports all Log Service APIs and provides multiple features, such as resource creation and data read/write. You can download the SDK for C ++ from the following GitHub URL: https://github.com/aliyun/aliyunlog-cpp-sdk.
 
-### Node.js SDK
+### 2.12 Node.js SDK
 
 Log Service SDK for Node.js allows developers to use Log Service by using Node.js programs. This topic describes how to use Log Service SDK for Node.js to write log data to Log Service. Procedure
 1. Create an Apsara Stack tenant account.
@@ -968,9 +1068,9 @@ app.use(logger) app.get('/', (req, res) => res.send('Hello World!')) app.listen(
 5. View collected log data.
 In the Log Service console, find the Logstore in the project. Click the Logstore name, enter a query statement in the search box on the Search & Analysis page, and then click Search & Analyze to view log data. The following figure indicates that most page views (PVs) occurred between 18:30 and 19:00 on September 12 during the specified time range. You can record and display the PV statistics as a chart on your dashboard.
 
-## API Reference
+## 3 API Reference
 
-### Overview
+### 3.1 Overview
 
 Log Service allows you to collect and manage logs by using the Apsara Uni-manager Management Console. In addition, Log Service allows you to use the Log Service API to collect logs, query logs, and manage your projects and Logstores.
 
@@ -1001,7 +1101,7 @@ Log Service allows you to collect and manage logs by using the Apsara Uni-manage
 
 You can call the API to perform the following operations: Collect logs based on Logtail configurations and Logtail machine group. Create Logstores and write logs to or read logs from the Logstores. Not e The Log Service API is a RESTful API based on the HTTP protocol. Security verification is required for all API requests. For information about the API request signature method and process, see Request signatures.
 
-### Common request headers
+### 3.2 Common request headers
 
 The Log Service API is a RESTful API based on the HTTP protocol. The Log Service API supports a set of common request headers that can be used in all API requests. Each Log Service API request must provide a common request header. The following table describes the fields of the common request headers.
 
@@ -1026,7 +1126,7 @@ The Log Service API is a RESTful API based on the HTTP protocol. The Log Service
 
 Not e The maximum difference between the time represented by the Date field of a request and the time when Log Service receives the request is 15 minutes. If the difference exceeds 15 minutes, Log Service rejects the request. If an x-log-date field is specified in the request, the time difference is calculated based on the value of the x-log-date field. If the compression algorithm is specified in x-log-compresstype of a request, the raw data must be compressed and then placed into the HTTP request body. The values of Content- Length and Content-MD5 fields are calculated based on the compressed HTTP body. The value of the Date field cannot be specified for the HTTP requests sent by some platforms. As a result, no correct value of the Date field is available to calculate the request signature. In this case, you must specify an x-log-date field and use the value of this field to calculate the request signature. After Log Service receives an API request, it checks whether the request contains an x-log-date field. If yes, Log Service uses the value of the x-log-date field for signature verification. If no, Log Service uses the value of the standard HTTP field Date for signature verification.
 
-### Common response headers
+### 3.3 Common response headers
 
 The Log Service API is a RESTful API based on the HTTP protocol. Each Log Service API response provides a common response header. The following table describes the fields in the common response headers.
 
@@ -1038,7 +1138,7 @@ The Log Service API is a RESTful API based on the HTTP protocol. Each Log Servic
 | Date | Strin g | The time when the request is returned. Only the RFC 822 format is supported. The GMT standard time is used. The formatted string is %a, %d %b %Y %H:%M:%S GMT, for example, Mon, 3 Jan 2010 08:33:47 GMT. |
 | x-log- requestid | Strin g | The unique ID that marks the request. The ID is generated by Log Service. This response header field is irrelevant to applications. It is used to troubleshoot problems. To troubleshoot failed API requests, you can provide this ID to the technical support team of Log Service. |
 
-### Request signatures
+### 3.4 Request signatures
 
 Each HTTP request of a Log Service API operation must pass security verification to ensure log data security. The security verification is performed by using the symmetric encryption algorithm. You can use an AccessKey pair for security verification. The security verification process of an API request is as follows:
 1. The requester generates a signature string based on the API request content, including the HTTP
@@ -1171,7 +1271,7 @@ The digitally signed HTTP request is as follows:
 POST /logstores/test-logstore HTTP/1.1 Date: Mon, 09 Nov 2015 06:03:03 GMT Host: test-project.regionid.example.com x-log-apiversion: 0.6.0 x-log-signaturemethod: hmac-sha1 Content-MD5: 1DD45FA4A70A9300CC9FE7305AF2C494 Content-Length: 52 x-log-apiversion:0.6.0 x-log-bodyrawsize:50 x-log-compresstype:lz4 x-log-signaturemethod:hmac-sha1 Authorization: LOG <yourAccessKeyId>:<yourSignature> <The log is serialized to byte streams in the ProtoBuffer format.>
 ```
 
-### Common error codes
+### 3.5 Common error codes
 
 When an API request error occurs, Log Service returns an error message, including the HTTP status code and the specific error details in the response body. The error details in the response body are formatted as follows:
 
@@ -1220,9 +1320,9 @@ Some of the error messages that may be returned by Log Service apply to most API
 
 The {…} in the error message indicates the specific error information. For example, {name} in the ProjectNotExist error message is replaced by a specific project name.
 
-### Project API
+### 3.6 Project API
 
-#### CreateProject
+#### 3.6.1 CreateProject
 
 Creates a project. Request syntax
 
@@ -1267,7 +1367,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 07:43:27 GMT x-log-requestid: 5B0A619F205DC3F30EDA9322
 ```
 
-#### DeleteProject
+#### 3.6.2 DeleteProject
 
 Deletes a project. Request syntax
 
@@ -1300,7 +1400,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 08:25:04 GMT x-log-requestid: 5B0A6B60BB6EE39764D458B5
 ```
 
-#### UpdateProject
+#### 3.6.3 UpdateProject
 
 Modifies a project. Request syntax
 
@@ -1336,7 +1436,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 07:43:27 GMT x-log-requestid: 5B0A619F205DC3F30EDA9322
 ```
 
-#### GetProject
+#### 3.6.4 GetProject
 
 Queries a project based on the project name. Request syntax
 
@@ -1387,7 +1487,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 27 May 2018 08:25:04 GMT x-log-requestid: 5B0A6B60BB6EE39764D458B5
 ```
 
-#### ListProject
+#### 3.6.5 ListProject
 
 Lists all projects. Request syntax
 
@@ -1464,7 +1564,7 @@ HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 345 Co
 
 `]`
 
-#### GetProjectLogs
+#### 3.6.6 GetProjectLogs
 
 Queries logs in a project by using an SQL statement. Request syntax The following example shows the request syntax of the GetProjectLogs operation:
 
@@ -1531,9 +1631,9 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
 
 `]` In the sample response, the value of the x-log-progress parameter is Complete. This value indicates that all logs are queried and the returned results are complete. Two logs meet the specified query conditions. The logs are displayed as the value of the logs parameter. If the value of the x-logprogress parameter in the response is Incomplete, you must repeat the request to obtain complete query results.
 
-### Logstore operations
+### 3.7 Logstore operations
 
-#### CreateLogstore
+#### 3.7.1 CreateLogstore
 
 Creates a Logstore. Request syntax The request syntax of the CreateLogstore API operation is as follows:
 
@@ -1583,7 +1683,7 @@ Sample responses
 HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
 ```
 
-#### DeleteLogstore
+#### 3.7.2 DeleteLogstore
 
 Deletes a Logstore, including all shards and indexes of the Logstore. Request syntax
 
@@ -1616,7 +1716,7 @@ Sample responses
 HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=0, x-log-requestid=5642F7C399248C817B013A07, Connection=close, Server=nginx/1.6.1
 ```
 
-#### UpdateLogstore
+#### 3.7.3 UpdateLogstore
 
 Updates the attributes of a Logstore. Only the time to live (TTL) and shard attributes can be updated. Request syntax
 
@@ -1667,7 +1767,7 @@ Sample responses
 HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1
 ```
 
-#### GetLogstore
+#### 3.7.4 GetLogstore
 
 Queries the attributes of a Logstore. Request syntax
 
@@ -1716,7 +1816,7 @@ HTTP/1.1 200 OK Header : Date=Wed, 11 Nov 2015 07:53:30 GMT, Content-Length=107,
     "lastModifyTime": 1447833064
 ```
 
-#### ListLogstore
+#### 3.7.5 ListLogstore
 
 Lists all Logstores in a specified project. Request syntax
 
@@ -1764,7 +1864,7 @@ Sample responses
 HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:09:39 GMT, Content-Length=52, x-log-requestid=5642F7C399248C8D7B01342F, Connection=close, Content-Type=application/json, Server=nginx/1.6.1 Body: "count":1, "logstores":["test-logstore"], "total":1
 ```
 
-#### ListShards
+#### 3.7.6 ListShards
 
 Lists all available shards in a Logstore. Request syntax
 
@@ -1867,7 +1967,7 @@ Body :
 
 `]`
 
-#### SplitShard
+#### 3.7.7 SplitShard
 
 Splits a specified shard in the read/write state. Request syntax
 
@@ -1982,7 +2082,7 @@ Body :
 
 `]`
 
-#### MergeShards
+#### 3.7.8 MergeShards
 
 Merges two adjacent shards that are in the read/write state. If you specify the ID of a shard in the request, Log Service automatically finds the adjacent shard. Request syntax
 
@@ -2098,7 +2198,7 @@ Body :
 
 `]`
 
-#### GetCursor
+#### 3.7.9 GetCursor
 
 Queries a cursor based on a point in time. You can use a cursor to obtain the location of a specific log. The following figure shows the relationships among a cursor, project, Logstore, and shard. Each project has multiple Logstores. Each Logstore has multiple shards. You can use a cursor to obtain the location of a specific log. Request syntax The request syntax of the GetCursor API operation is as follows:
 
@@ -2159,7 +2259,7 @@ Body:
     "cursor": "MTQ0NzI5OTYwNjg5NjYzMjM1Ng=="
 ```
 
-#### GetCursorTime
+#### 3.7.10 GetCursorTime
 
 Queries the server time based on the cursor. Request syntax
 
@@ -2205,7 +2305,7 @@ HTTP/1.1 200 Server: nginx Content-Type: application/json Content-Length: 26 Con
   "cursor_time": 1554260243
 ```
 
-#### PullLogs
+#### 3.7.11 PullLogs
 
 Pulls logs from a Logstore. You must specify a shard when you call this API operation. Only Protocol Buffer log data can be pulled from a Logstore. For more information, see Protocol Buffer format. In scenarios that involve the Storm architecture, election and collaborative consumption can be performed through LoghubClientLib. Request syntax
 
@@ -2268,7 +2368,7 @@ Body: The <log group list in the Protocol Buffer format> after the compression.
 
 Page flip To flip the page (get the next token) without returning data, you can send HTTP HEAD requests.
 
-#### PostLog
+#### 3.7.12 PostLog
 
 Writes log data to a Logstore. Only Protocol Buffer log data can be written to a Logstore. For more information, see Protocol Buffer format. Not e Log data is written in the form of log groups. Log data can be written to a Logstore in either of the following modes: LoadBalance: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode provides high availability (SLA: 99.95%) in data writes. It applies to scenarios where data writes and reads are irrelevant to shards, for example, where ordering is not considered. KeyHash: The key field is added to the URL parameter. This determines which shard to store the log data. This field is optional. If you do not specify this field, Log Service automatically writes log data in the LoadBalance mode. For example, Log Service can hash an instance as a producer to a fixed shard based on the name of the instance. This ensures that data is written and consumed by using a strict order in the shard. The key is included only in the MD5 value range of a shard at a time even when the shard is merged or split. For more information, see Shards. Protocol Buffer log data The following table describes the fields of Protocol Buffer log data. For more information, see Data model and Data encoding. Log
 
@@ -2368,7 +2468,7 @@ Header
     "server": "nginx/1.6.1"
 ```
 
-#### GetShipperStatus
+#### 3.7.13 GetShipperStatus
 
 You can call this operation to query the LogShipper task status. Request syntax
 
@@ -2482,7 +2582,7 @@ HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-
 
 `]`
 
-#### RetryShipperTask
+#### 3.7.14 RetryShipperTask
 
 You can call this operation to rerun the failed LogShipper tasks. Request syntax q y
 
@@ -2525,7 +2625,7 @@ Sample responses:
 HTTP/1.1 200 OK Header: Date=Wed, 11 Nov 2015 08:28:20 GMT, Content-Length=0, x-log-requestid=5642FC2399248C8F7B0145FD, Connection=close, Server=nginx/1.6.1
 ```
 
-#### GetLogs
+#### 3.7.15 GetLogs
 
 Queries logs in a Logstore of a specified project, or queries the logs that meet the specified conditions. After a log is written to a Logstore, you can call the GetHistograms and GetLogs API operations to query the log. However, the query has a latency, which varies with the type of the log. Based on the log timestamp, Log Service classifies logs into the following two types: Real-time data: For this type, the difference between the time in a log and the current time on the server is (-180 seconds, 900 seconds]. For example, if the log time is UTC 2014-09-25 12:03:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is regarded as real-time data. Historical data: For this type, the difference between the time in a log and the current time on the server is [-7 × 86,400 seconds, -180 seconds). For example, if the log time is UTC 2014-09-25 12:00:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is regarded as historical data. Real-time data can be queried with a maximum latency of three seconds after being written to a Logstore. In most cases, 99.9% of real-time data can be queried in one second. Request syntax The request syntax of the GetLogs API operation is as follows:
 
@@ -2610,7 +2710,7 @@ HTTP/1.1 200 OK Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5 Content-Type: appl
 
 `]` In the sample response, the x-log-progress value is Complete. This indicates that the log query is completed and the returned results are complete. Two logs meet the specified query conditions and are displayed as the value of the logs parameter. If the x-log-progress value is Incomplete, you must repeat the request to obtain the complete results.
 
-#### GetHistograms
+#### 3.7.16 GetHistograms
 
 Queries the distribution of logs in a Logstore within a specified project, or queries the distribution of logs that meet the specified conditions. After a log is written to a Logstore, you can call the GetHistograms and GetLogs API operations to query the log. However, the query has a latency, which varies with the type of the log. Based on the log timestamp, Log Service classifies logs into the following two types: Real-time data: For this type, the difference between the time in a log and the current time on the server is within the interval (-180 seconds, 900 seconds]. For example, if the log time is UTC 2014-09- 25 12:03:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is regarded as realtime data. The latency for real-time data is three seconds, from the time when the data is written to the Logstore to the time when the data can be queried. Historical data: For this type, the difference between the time in a log and the current time on the server is [-7 × 86,400 seconds, -180 seconds). For example, if the log time is UTC 2014-09-25 12:00:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is regarded as historical data. Request syntax The request syntax of the GetHistograms API operation is as follows:
 
@@ -2710,7 +2810,7 @@ HTTP/1.1 200 OK Content-Type: application/json Content-MD5: E6AD9C21204868C2DE84
 
 `]`
 
-#### UpdateIndex
+#### 3.7.17 UpdateIndex
 
 Updates the indexes of a Logstore. Request syntax
 
@@ -2851,7 +2951,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Mon, 07 May 2018 09:47:21 GMT x-log-requestid: 5AF020A98CBAA2EF52AB66C9
 ```
 
-#### CreateIndex
+#### 3.7.18 CreateIndex
 
 Creates indexes for a specified Logstore. Request syntax
 
@@ -2982,7 +3082,7 @@ POST /logstores/my-logstore/index HTTP/1.1 Authorization: LOG <yourAccessKeyId>:
 
 `]`
 
-#### DeleteIndex
+#### 3.7.19 DeleteIndex
 
 Deletes the indexes of a Logstore. Request syntax
 
@@ -3017,7 +3117,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 06 May 2018 13:22:57 GMT x-log-requestid: 5AEF01B1A458E41C2F8326A8
 ```
 
-#### GetIndex
+#### 3.7.20 GetIndex
 
 Queries the indexes of a Logstore. Request syntax The request syntax of the GetIndex API operation is as follows:
 
@@ -3219,7 +3319,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
   "lastModifyTime": 1524155379
 ```
 
-#### PutWebtracking
+#### 3.7.21 PutWebtracking
 
 Merges multiple logs into one log during a single collection request. In the WebTracking mode, only one log can be written to each request. This API operation applies to scenarios where you need to collect a large amount of logs. Before you can call the PutWebtracking API operation, you must turn on the WebTracking switch for the corresponding Logstore. We recommend that you call this API operation to collect logs from web pages or clients. Request syntax
 
@@ -3296,9 +3396,9 @@ Sample responses
 HTTP/1.1 200 OK Header: Date=Wed, 20 May 2019 07:35:00 GMT, Content-Length=0, x-log-requestid=5642EFA499248C827B012B39, Connection=close, Server=nginx/1.6.1
 ```
 
-### Logtail machine group operations
+### 3.8 Logtail machine group operations
 
-#### CreateMachineGroup
+#### 3.8.1 CreateMachineGroup
 
 Creates a machine group to which the Logtail configuration is distributed and applied. Request syntax
 
@@ -3390,7 +3490,7 @@ HTTP/1.1 200 OK Header :
     "Server": "nginx/1.6.1"
 ```
 
-#### DeleteMachineGroup
+#### 3.8.2 DeleteMachineGroup
 
 Deletes a machine group. After you delete a machine group, the Logtail configuration applied to the machine group is also deleted. Request syntax
 
@@ -3437,7 +3537,7 @@ HTTP/1.1 200 OK Header :
     "Server": "nginx/1.6.1"
 ```
 
-#### UpdateMachineGroup
+#### 3.8.3 UpdateMachineGroup
 
 Updates the information of a machine group. If the Logtail configurations are applied to a machine group, the configurations are automatically applied to or removed from a machine when the machine is added to or removed from the machine group. Request syntax
 
@@ -3530,7 +3630,7 @@ HTTP/1.1 200 OK Header :
     "Server": "nginx/1.6.1"
 ```
 
-#### ListMachineGroup
+#### 3.8.4 ListMachineGroup
 
 Lists machine groups. Request syntax
 
@@ -3611,7 +3711,7 @@ Body :
     "total": 2
 ```
 
-#### GetMachineGroup
+#### 3.8.5 GetMachineGroup
 
 Queries the details of a machine group. Request syntax
 
@@ -3724,7 +3824,7 @@ Body :
     "lastModifyTime": 1447178253
 ```
 
-#### ApplyConfigToMachineGroup
+#### 3.8.6 ApplyConfigToMachineGroup
 
 Applies a Logtail configuration to a machine group. Request syntax
 
@@ -3774,7 +3874,7 @@ Sample responses
     "server": "nginx/1.6.1"
 ```
 
-#### RemoveConfigFromMachineGroup
+#### 3.8.7 RemoveConfigFromMachineGroup
 
 Deletes a Logtail configuration from a machine group. Request syntax
 
@@ -3821,7 +3921,7 @@ Sample responses
     "server": "nginx/1.6.1"
 ```
 
-#### ListMachines
+#### 3.8.8 ListMachines
 
 Lists your machines in a machine group that is connected with Log Service. Request syntax
 
@@ -3918,7 +4018,7 @@ Body :
     "total": 8
 ```
 
-#### GetAppliedConfigs
+#### 3.8.9 GetAppliedConfigs
 
 Queries the Logtail configurations that are applied to a machine group. Request syntax
 
@@ -3984,9 +4084,9 @@ Body :
     "count": 3
 ```
 
-### Logtail configuration operations
+### 3.9 Logtail configuration operations
 
-#### CreateConfig
+#### 3.9.1 CreateConfig
 
 Creates a Logtail configuration. Request syntax
 
@@ -4078,7 +4178,7 @@ HTTP/1.1 200 OK Header
     'server': 'nginx/1.6.1'
 ```
 
-#### ListConfig
+#### 3.9.2 ListConfig
 
 Lists all configurations of a project. You can set the relevant parameters in the syntax to list the configurations on multiple pages. Request syntax
 
@@ -4154,7 +4254,7 @@ Body:
     "total": 3
 ```
 
-#### GetAppliedMachineGroups
+#### 3.9.3 GetAppliedMachineGroups
 
 Lists the machines that apply a Logtail configuration. Request syntax
 
@@ -4219,7 +4319,7 @@ Body:
 
 `]`
 
-#### GetConfig
+#### 3.9.4 GetConfig
 
 Queries the details of a Logtail configuration. Request syntax
 
@@ -4313,7 +4413,7 @@ Body :
     "lastModifyTime": 1447050456
 ```
 
-#### DeleteConfig
+#### 3.9.5 DeleteConfig
 
 Deletes a Logtail configuration. When you call this API operation, the Logtail configuration is deleted even if it is applied to the Machine Group. Request syntax
 
@@ -4360,7 +4460,7 @@ Header :
     "server": "nginx/1.6.1"
 ```
 
-#### UpdateConfig
+#### 3.9.6 UpdateConfig
 
 Updates Logtail configurations. If the Logtail configurations are applied to a machine group, the configurations of the machine group are also updated. Request syntax
 
@@ -4469,9 +4569,9 @@ Sample responses
     "server": "nginx/1.6.1"
 ```
 
-### Consumer group operations
+### 3.10 Consumer group operations
 
-#### CreateConsumerGroup
+#### 3.10.1 CreateConsumerGroup
 
 Creates a consumer group in a Logstore. Request syntax
 
@@ -4520,7 +4620,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
 ```
 
-#### DeleteConsumerGroup
+#### 3.10.2 DeleteConsumerGroup
 
 Deletes a consumer group. Request syntax
 
@@ -4555,7 +4655,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
 ```
 
-#### GetCheckPoint
+#### 3.10.3 GetCheckPoint
 
 Queries the checkpoints of one or all shards from which data is consumed by a consumer group. Request syntax
 
@@ -4615,7 +4715,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length:
 
 `]`
 
-#### HeartBeat
+#### 3.10.4 HeartBeat
 
 Sends a heartbeat packet to Log Service for a consumer. Request syntax
 
@@ -4654,7 +4754,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Content-Length: 5 Connection: close Access-Control-Allow-Origin: * Date: Sun, 06 May 2018 09:44:11 GMT x-log-requestid: 5AEECE6B1FFC0366B2553FB5 [0,1]
 ```
 
-#### ListConsumerGroup
+#### 3.10.5 ListConsumerGroup
 
 Lists all consumer groups of a Logstore. Request syntax
 
@@ -4706,7 +4806,7 @@ HTTP/1.1 200 Server: nginx/1.12.1 Content-Type: application/json Connection: clo
 
 `]`
 
-#### UpdateCheckPoint
+#### 3.10.6 UpdateCheckPoint
 
 Updates the checkpoint of a shard in a Logstore of a project for a consumer group. Request syntax
 
@@ -4758,7 +4858,7 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Sun, 06 May 2018 09:14:54 GMT x-log-requestid: 5AEEC78E1FFC0366B24F1C63
 ```
 
-#### UpdateConsumerGroup
+#### 3.10.7 UpdateConsumerGroup
 
 Updates the attributes of a consumer group. Request syntax
 
@@ -4801,9 +4901,9 @@ Sample responses
 HTTP/1.1 200 Server: nginx/1.12.1 Content-Length: 0 Connection: close Access-Control-Allow-Origin: * Date: Fri, 04 May 2018 08:15:11 GMT x-log-requestid: 5AEC168FA796F4195BF404CB
 ```
 
-### RAM or STS
+### 3.11 RAM or STS
 
-#### Overview
+#### 3.11.1 Overview
 
 Use RAM to authorize a RAM user to access Log Service resources of an Alibaba Cloud account You can create projects, Logstores, Logtail configurations, and machine group in Log Service. You have full permissions on these resources. You can call all relevant API operations to use the resources. However, if you use your Alibaba Cloud account to create a RAM user, the RAM user is unauthorized to use your resources in Log Service. To allow the RAM user to use your resources, you must grant relevant permissions on the resources to the RAM user. You can use RAM policies to grant a RAM user the following permissions on Log Service resources: Upload data to a specified Logstore If you grant this permission to a RAM user, the RAM user can upload data to the specified Logstore by using the relevant API or SDK. The policy is as follows:
 
@@ -4842,9 +4942,9 @@ the Logstore>"],
         "Effect": "Allow"
 ```
 
-`]` You can skip this topic if you do not need to grant access to your Log Service resources across accounts. Skipping this topic does not affect your understanding and use of the other topics in the document. Related topics: Resource list Action list Authentication rules
+`]` You can skip this topic if you do not need to grant access to your Log Service resources across accounts. Skipping this topic does not affect your understanding and use of the other topics in the document. Related topics:
 
-#### Resource list
+#### 3.11.2 Resource list
 
 This topic describes the resources whose permissions you can grant to a RAM user. You can use an Alibaba Cloud account to grant a RAM user specific permissions on Log Service resources. The following table lists the resources and relevant expressions.
 
@@ -4895,7 +4995,7 @@ Not e The resources in Log Service have hierarchical relationships. Projects are
 | ${dashboardName} | The name of a dashboard. |
 | ${alarmName} | The name of an alert rule. |
 
-#### Action list
+#### 3.11.3 Action list
 
 This topic describes the actions that a RAM user can perform on Log Service resources after you grant the relevant permissions to the RAM user in the RAM console. Actions In the RAM console, you can authorize a RAM user to perform the following actions on Log Service resources.
 
@@ -4964,7 +5064,7 @@ This topic describes the actions that a RAM user can perform on Log Service reso
 | log:GetApp | Grants a RAM user the permission to view an application, for example, Cost Manager or Log Audit Service. |
 | log:DeleteApp | Grants a RAM user the permission to delete an application, for example, Cost Manager or Log Audit Service. |
 
-#### Authentication rules
+#### 3.11.4 Authentication rules
 
 When a RAM user calls Log Service API operations to access the resources of an Alibaba Cloud account, Log Service authenticate the RAM user. This ensures that the resource owner has granted the RAM user the relevant permissions on the resources. This topic describes the authentication rules that apply when a RAM user calls Log Service APIs to access the resources of an Alibaba Cloud account. Logstore authentication rules Each Log Service API operation determines which permissions to check based on the relevant resources and the API syntax. The following table describes the Logstore authentication rules for the relevant API operations.
 
@@ -5080,11 +5180,11 @@ Interactive API operations for configurations and machine groups
 |   | GetAppliedConfigs | oject/${projectName}/machinegroup/${machineGro |   |   |
 |   |   | upName} |   |   |
 
-### Description of common
+### 3.12 Description of common resources
 
 resources
 
-#### Encrypt data
+#### 3.12.1 Encrypt data
 
 Log Service allows you to use Key Management Service (KMS) to encrypt data for secure storage. This topic describes the data encryption mechanism of Log Service and how to encrypt data by using KMS. Data encryption mechanism Log Service encrypts data by using KMS. The data encryption mechanism has the following characteristics: Log Service supports the Advanced Encryption Standard (AES) encryption algorithm.和国密算法SM4 You can create and manage a customer master key (CMK) in the KMS console to ensure the security of the CMK. Log Service supports the following encryption types: Service key-based encryption: Log service generates an independent service key for each Logstore. The service key never expires. Bring Your Own Key (BYOK) encryption: You can create a CMK in the KMS console and grant the relevant permissions to Log Service. When Log Service calls a KMS API operation, this CMK is used to create a key for data encryption. If the CMK is deleted or disabled, the BYOK key becomes invalid. Not ice You can configure data encryption for a Logstore only when you call the CreateProject operation to create the Logstore. The algorithm or type of data encryption cannot be changed after the Logstore is created. If the CMK created in the KMS console becomes invalid, all read and write requests on the Logstore fail. The CMK generated by the service key of Log Service does not rotate. Service key-based encryption When you call the CreateProject operation to create a Logstore, add the encrypt_conf node to encrypt data by using the following sample code:
 
@@ -5116,7 +5216,7 @@ gcm或aes_gcm.
             "region_id" : ""# The ID of the region where the CMK resides.
 ```
 
-#### Data model
+#### 3.12.2 Data model
 
 This topic describes the data model of Log Service. Project A project is a basic management unit in Log Service and is used to isolate and control resources. You can use a project to manage all logs and log sources of an application. Logstore A Logstore is a unit that collects, stores, and consumes logs in Log Service. Each Logstore belongs to a single project. Each project can have multiple Logstores. You can create multiple Logstores for a project based on your business requirements. We recommend that you create an independent Logstore for each type of logs in an application. For example, you have a game application named big-game. The server stores three types of logs: operation_log, application_log, and access_log. You can create a project named big-game and then create three Logstores in the project to collect, store, and query the three types of logs. Log A log is the minimum data unit that is processed in Log Service. Log Service uses a semi-structured data model to define a log. The data model is as follows: Topic: a user-defined field that marks multiple logs. For example, access logs can be marked based on the sites. This field is an empty string by default. An empty string is also a valid topic. Time: a reserved field in a log, used to indicate the time when the log is generated. This value is a Unix timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Content: a field that records the content of a log. The content consists of one or more content items. Each content item is a key-value pair. Source: a field that indicates the source of a log, for example, the IP address of the machine where the log is generated. This field is empty by default. The following table describes the requirements for the values of these fields. Log fields
 
@@ -5189,7 +5289,7 @@ message LogGroupList
 
 Not e When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs.
 
-#### Data encoding
+#### 3.12.3 Data encoding
 
 Log Service uses Protocol Buffer as the standard log format. You can write logs to Log Service in the Protocol Buffer format. Protocol Buffer is used as a format to interchange structured data. Before you write logs to Log Service by calling relevant API operations, you must serialize raw log data to Protocol Buffer data streams as follows:
 
@@ -5216,7 +5316,7 @@ message LogGroupList
 
 Not e When you use the Protocol Buffer format, key-value pairs must be unique. Otherwise, an undefined behavior occurs. For more information about the Protocol Buffer format, visit GitHub. For more information about the API operations that write logs to Log Service, see PostLog.
 
-#### Logstores
+#### 3.12.4 Logstores
 
 A Logstore is a data storage unit. You can create up to 10 Logstores for each project by default. The name of a Logstore must be unique in the project to which the Logstore belongs. A Logstore is the portal for all log data. You can read data from or write data to the Logstore. The naming rules for Logstores are as follows: The name can only contain lowercase letters, digits, hyphens (-), and underscores (_). The name must start and end with a lowercase letter or a digit. The name must be 2 to 63 characters in length. Example
 
@@ -5238,7 +5338,7 @@ The following table describes the Logstore parameters. Logstore parameters
 | createTime | Integer | No | The time when the Logstore was created in Log Service. This parameter is displayed only in the output result. |
 | lastModifyTime | Integer | No | The time when the Logstore is updated in Log Service. This parameter is displayed only in the output result. |
 
-#### Shards
+#### 3.12.5 Shards
 
 A shard is a basic read/write unit in each Logstore. You can specify the number of shards in each Logstore. To read data from a shard, you must specify the shard. To write data to a shard, you do not need to specify the shard. Instead, you can use the load balancing mode. In this mode, data is written to multiple shards based on automatic balancing. This ensures high availability of the write operation. The following table describes the parameters of a shard. Shard parameters
 
@@ -5246,7 +5346,7 @@ A shard is a basic read/write unit in each Logstore. You can specify the number 
 |---|---|---|---|
 | shardID | Integer | Yes | The unique ID of a shard in the Logstore. The shard ID is automatically generated by the system. |
 
-#### Logtail configurations
+#### 3.12.6 Logtail configurations
 
 You can create up to 100 Logtail configurations for a project. The name of a Logtail configuration must be unique in a project. You can use a Logtail configuration to specify the location, method, and parameters for log collection. The naming rules for Logtail configurations are as follows: The name can only contain lowercase letters, digits, hyphens (-), and underscores (_). The name must start and end with a lowercase letter or a digit. The name must be 2 to 128 characters in length. Example
 
@@ -5331,7 +5431,7 @@ The following table describes the elements of the outputDetail parameter. output
 |---|---|---|---|
 | logstoreName | String | Yes | The name of the Logstore. |
 
-#### Logtail machine group
+#### 3.12.7 Logtail machine group
 
 After a machine with Logtail is started, the machine is automatically associated with the user specified in the Logtail configurations. The machine can be identified by using the following three methods: IP address: the IP address corresponding to the hostname. This is the simplest method, but the IP address may be duplicated in environments such as Virtual Private Cloud (VPC). Universally unique identifier (UUID): the UUID of the desktop management interface (DMI) device. For more information, visit RFC 4122. User-defined ID: the user-defined machine identifier in the Logtail directory. The attributes of each machine are as follows:
 

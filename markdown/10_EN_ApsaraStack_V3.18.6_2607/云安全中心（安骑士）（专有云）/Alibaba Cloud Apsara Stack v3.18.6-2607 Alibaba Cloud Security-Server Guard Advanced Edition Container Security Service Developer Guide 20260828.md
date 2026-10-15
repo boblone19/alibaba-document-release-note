@@ -3,16 +3,91 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Gu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 189
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Developer Guide 20260828.pdf"
+source_pdf: "92e5294fcfeb1cee_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Apsara Stack documentation
+- 1 Getting started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Obtain an AccessKey pair
+  - 2.2 Obtain an AccessKey pair assigned by STS
+  - 2.3 Obtain API information and the endpoint of an API operation
+- 3 Call examples
+  - 3.1 Call examples for SDK for Java
+    - 3.1.1 Quick start
+    - 3.1.2 Use SDK
+      - 3.1.2.1 Install SDK for Java
+      - 3.1.2.2 Use CommonRequest
+  - 3.2 Call examples for SDK for Python
+    - 3.2.1 Quick start
+    - 3.2.2 Use SDK
+      - 3.2.2.1 Install SDK for Python
+      - 3.2.2.2 Use CommonRequest
+  - 3.3 Call examples for SDK for Go
+    - 3.3.1 Quick start
+    - 3.3.2 Use SDK
+      - 3.3.2.1 Install the core package of SDK for Go
+      - 3.3.2.2 Use CommonRequest
+- 4 Common parameters
+- 5 API reference
+  - 5.1 DescribeLatestScanTask
+  - 5.2 ListImageRisk
+  - 5.3 UpdateJenkinsImageScanTaskStatus
+  - 5.4 DescribeImageInfoList
+  - 5.5 DescribeImageBaselineCheckSummary
+  - 5.6 DescribeImageListWithBaselineName
+  - 5.7 DescribeImageBaselineItemList
+  - 5.8 DescribeCycleTaskList
+  - 5.9 DescribeContainerCriteria
+  - 5.10 DescribeContainerFieldStatistics
+  - 5.11 DescribeContainerGroupedFieldDetail
+  - 5.12 DescribeContainerInstances
+  - 5.13 DescribeGroupedContainerInstances
+  - 5.14 DescribeImageSecurityScanCount
+  - 5.15 DescribeImageCriteria
+  - 5.16 GetRegistryScanDayNum
+  - 5.17 DescribeImageInstances
+  - 5.18 ListPrivateRegistryList
+  - 5.19 ListPrivateRegistryType
+  - 5.20 DescribeAlarmEventDetail
+  - 5.21 DescribeNsasSuspEventType
+  - 5.22 DescribeSuspEvents
+  - 5.23 DescribeConcernNecessity
+  - 5.24 DescribeEventLevelCount
+  - 5.25 DescribeSecurityEventOperations
+  - 5.26 DescribeGroupedVul
+  - 5.27 DescribeImageGroupedVulList
+  - 5.28 DescribeAllGroups
+  - 5.29 DescribeImageVulList
+  - 5.30 DescribeVulDetails
+  - 5.31 DescribeAssetDetailByUuid
+  - 5.32 DescribeAllEntity
+  - 5.33 DescribeClusterVulStatistics
+  - 5.34 DescribeContainerInstancesWithoutAscm
+  - 5.35 DescribeExportInfo
+  - 5.36 DescribePropertyCount
+  - 5.37 DescribePropertyCronDetail
+  - 5.38 DescribePropertySoftwareDetail
+  - 5.39 DescribePropertyUserDetail
+  - 5.40 ExportRecord
+  - 5.41 GetClusterCheckItemWarningStatistics
+  - 5.42 GetClusterSuspEventStatistics
+  - 5.43 IgnoreCheckItems
+  - 5.44 ListCheckItemWarningMachine
+  - 5.45 ListCheckItemWarningSummary
+  - 5.46 ModifyOperateVul
+- 6 Error codes
+
+## 1 Getting started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to find the required documentation when you call an API operation of an Apsara Stack service.
 
@@ -33,7 +108,7 @@ You can go to the Apsara Stack documentation center to view the desired document
 4. In the left-side navigation pane, select the Apsara Stack service whose documentation you want to view.
 5. In the product documentation section, click **View Details** or **Download PDF**.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
 By default, Apsara Stack Enterprise Edition V3.16.0 and later versions use the point of presence (POP) gateway to deliver the same user experience as in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -61,9 +136,9 @@ To learn the features of API operations and how to call the API operations, obta
 5. Obtain the endpoint of the cloud service.
 6. Obtain the SDK of the cloud service and make the API call.
 
-## Preparations
+## 2 Preparations
 
-### Obtain an AccessKey pair
+### 2.1 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -104,7 +179,7 @@ obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an AccessKey pair assigned
+### 2.2 Obtain an AccessKey pair assigned by STS
 
 **by STS**
 
@@ -230,7 +305,7 @@ token is obtained in the previous step.
 
 `}` `}`
 
-### Obtain API information and the
+### 2.3 Obtain API information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -250,11 +325,11 @@ The API information on the debugging page of the Apsara Uni-manager Management C
 6. In the API operation list, you can view all API operations of the current version.
 7. Select an API operation and obtain the POP endpoint of the cloud service on the Parameter tab.
 
-## Call examples
+## 3 Call examples
 
-### Call examples for SDK for Java
+### 3.1 Call examples for SDK for Java
 
-#### Quick start
+#### 3.1.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Java.
 
@@ -306,9 +381,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-#### Use SDK
+#### 3.1.2 Use SDK
 
-##### Install SDK for Java
+##### 3.1.2.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -320,7 +395,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest
+##### 3.1.2.2 Use CommonRequest
 
 Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
 
@@ -474,9 +549,9 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Call examples for SDK for Python
+### 3.2 Call examples for SDK for Python
 
-#### Quick start
+#### 3.2.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Python.
 
@@ -516,9 +591,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 tion>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### Use SDK
+#### 3.2.2 Use SDK
 
-##### Install SDK for Python
+##### 3.2.2.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -536,7 +611,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest
+##### 3.2.2.2 Use CommonRequest
 
 This topic describes how to use the POP Python software development kit (SDK) to call cloud product APIs.
 
@@ -669,9 +744,9 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-### Call examples for SDK for Go
+### 3.3 Call examples for SDK for Go
 
-#### Quick start
+#### 3.3.1 Quick start
 
 Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go.
 
@@ -723,9 +798,9 @@ fmt.Print(response.GetHttpContentString())
 
 `}`
 
-#### Use SDK
+#### 3.3.2 Use SDK
 
-##### Install the core package of SDK for Go
+##### 3.3.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -733,7 +808,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Use CommonRequest
+##### 3.3.2.2 Use CommonRequest
 
 This topic describes how to use the POP Go software development kit (SDK) to make API calls.
 
@@ -898,7 +973,7 @@ The client-level setting takes effect only if the request-level setting is not s
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the client to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting for the client.
 ```
 
-## Common parameters
+## 4 Common parameters
 
 **Common request parameters**
 
@@ -920,9 +995,9 @@ Common request parameters must be included in all Apsara Stack API requests. Tab
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-## API reference
+## 5 API reference
 
-### DescribeLatestScanTask
+### 5.1 DescribeLatestScanTask
 
 Queries the progress of the last virus scan task.
 
@@ -992,7 +1067,7 @@ rgetInfo>
 </DescribeLatestScanTaskResponse>
 ```
 
-### ListImageRisk
+### 5.2 ListImageRisk
 
 Queries security information about a container image.
 
@@ -1179,7 +1254,7 @@ cURLs>
 </ListImageRiskResponse>
 ```
 
-### UpdateJenkinsImageScanTaskStatus
+### 5.3 UpdateJenkinsImageScanTaskStatus
 
 Changes the status of the scan task on a Jenkins image repository.
 
@@ -1243,7 +1318,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusRe
 </UpdateJenkinsImageScanTaskStatusResponse>
 ```
 
-### DescribeImageInfoList
+### 5.4 DescribeImageInfoList
 
 Queries the information about images.
 
@@ -1611,7 +1686,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeImageBaselineItemList
+### 5.7 DescribeImageBaselineItemList
 
 Queries the baseline check items of an image.
 
@@ -1711,7 +1786,7 @@ passwords</BaselineItemAlias>
 
 `}`
 
-### DescribeCycleTaskList
+### 5.8 DescribeCycleTaskList
 
 Queries image scan tasks.
 
@@ -1821,7 +1896,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeContainerCriteria
+### 5.9 DescribeContainerCriteria
 
 Queries the conditions that are used to query containers.
 
@@ -1880,7 +1955,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeContainerFieldStatistics
+### 5.10 DescribeContainerFieldStatistics
 
 Queries statistics of container risks.
 
@@ -2065,7 +2140,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeContainerInstances
+### 5.12 DescribeContainerInstances
 
 Queries containers.
 
@@ -2362,7 +2437,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeImageSecurityScanCount
+### 5.14 DescribeImageSecurityScanCount
 
 Queries the results of an image scan.
 
@@ -2424,7 +2499,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeImageCriteria
+### 5.15 DescribeImageCriteria
 
 Queries the search conditions that can be used to obtain images.
 
@@ -2480,7 +2555,7 @@ Sample success responses `XML` format
 
 `}`
 
-### GetRegistryScanDayNum
+### 5.16 GetRegistryScanDayNum
 
 Queries the time setting for image scans.
 
@@ -2532,7 +2607,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeImageInstances
+### 5.17 DescribeImageInstances
 
 Queries the information of images.
 
@@ -2684,7 +2759,7 @@ Sample success responses `XML` format
 
 `}`
 
-### ListPrivateRegistryList
+### 5.18 ListPrivateRegistryList
 
 Queries third-party image repositories.
 
@@ -2764,7 +2839,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### ListPrivateRegistryType
+### 5.19 ListPrivateRegistryType
 
 Queries the types of image repositories.
 
@@ -2818,7 +2893,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeAlarmEventDetail
+### 5.20 DescribeAlarmEventDetail
 
 Queries the details of an exception.
 
@@ -2947,7 +3022,7 @@ licious file downloads. Stop the malicious processes that are running. If you tr
 
 `}` `}` `}` `}`
 
-### DescribeNsasSuspEventType
+### 5.21 DescribeNsasSuspEventType
 
 Queries the types of alert events.
 
@@ -3009,7 +3084,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeSuspEvents
+### 5.22 DescribeSuspEvents
 
 Queries exceptions.
 
@@ -3316,7 +3391,7 @@ ss on your server was highly suspicious. This may be related to trojans, viruses
 
 `}` `}` `}`
 
-### DescribeConcernNecessity
+### 5.23 DescribeConcernNecessity
 
 Queries the severities of alert events.
 
@@ -3357,7 +3432,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeEventLevelCount
+### 5.24 DescribeEventLevelCount
 
 Queries the severities of alerts.
 
@@ -3419,7 +3494,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeSecurityEventOperations
+### 5.25 DescribeSecurityEventOperations
 
 Queries the operations that are performed on alert events.
 
@@ -3516,7 +3591,7 @@ sType>
 
 `}` `}` `}`
 
-### DescribeGroupedVul
+### 5.26 DescribeGroupedVul
 
 Queries vulnerabilities by group.
 
@@ -3631,7 +3706,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeImageGroupedVulList
+### 5.27 DescribeImageGroupedVulList
 
 Queries image vulnerabilities by group.
 
@@ -3733,7 +3808,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeAllGroups
+### 5.28 DescribeAllGroups
 
 Queries the grouping information about servers.
 
@@ -3791,7 +3866,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeImageVulList
+### 5.29 DescribeImageVulList
 
 Queries image vulnerabilities.
 
@@ -3960,7 +4035,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeVulDetails
+### 5.30 DescribeVulDetails
 
 Queries the details of a vulnerability.
 
@@ -4091,7 +4166,7 @@ patch from:\\n&lt;br /&gt;https://github.com/FasterXML/jackson-databind/issues/2
 
 `}`
 
-### DescribeAssetDetailByUuid
+### 5.31 DescribeAssetDetailByUuid
 
 Queries the details of an asset by using the UUID of the asset.
 
@@ -4231,7 +4306,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeAllEntity
+### 5.32 DescribeAllEntity
 
 Queries information about all entities and supports multiple filter conditions for different scenarios.
 
@@ -4298,7 +4373,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}` `]` `}`
 
-### DescribeClusterVulStatistics
+### 5.33 DescribeClusterVulStatistics
 
 Queries vulnerability statistics.
 
@@ -4579,7 +4654,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeContainerInstancesWithoutA
 </DescribeContainerInstancesWithoutAscmResponse>
 ```
 
-### DescribeExportInfo
+### 5.35 DescribeExportInfo
 
 Queries the details of an export task.
 
@@ -4637,7 +4712,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### DescribePropertyCount
+### 5.36 DescribePropertyCount
 
 Counts the properties of assets in Security Center to provide a comprehensive overview of your assets.
 
@@ -4694,7 +4769,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### DescribePropertyCronDetail
+### 5.37 DescribePropertyCronDetail
 
 The DescribePropertyCronDetail operation queries the details of scheduled tasks on your host assets.
 
@@ -4856,7 +4931,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyCronDetailResponse
 </DescribePropertyCronDetailResponse>
 ```
 
-### DescribePropertySoftwareDetail
+### 5.38 DescribePropertySoftwareDetail
 
 Queries the details of software assets.
 
@@ -5021,7 +5096,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertySoftwareDetailResp
 </DescribePropertySoftwareDetailResponse>
 ```
 
-### DescribePropertyUserDetail
+### 5.39 DescribePropertyUserDetail
 
 Queries the details of server accounts.
 
@@ -5222,7 +5297,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyUserDetailResponse
 </DescribePropertyUserDetailResponse>
 ```
 
-### ExportRecord
+### 5.40 ExportRecord
 
 Call the ExportRecord operation to export detection results to an Excel file. You can export results from various pages, such as Asset Center, cloud platform configuration checks, image security scans, attack analysis, and AccessKey pair leak detection.
 
@@ -5368,13 +5443,11 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetClusterCheckItemWarningStatisti
 </GetClusterCheckItemWarningStatisticsResponse>
 ```
 
-**Error codes**
-
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | -101 | -101 | %s %s |
 
-### GetClusterSuspEventStatistics
+### 5.42 GetClusterSuspEventStatistics
 
 Call the GetClusterSuspEventStatistics operation to query statistics on the severity levels of alerts.
 
@@ -5463,7 +5536,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetClusterSuspEventStatisticsRespo
 </GetClusterSuspEventStatisticsResponse>
 ```
 
-### IgnoreCheckItems
+### 5.43 IgnoreCheckItems
 
 Call the IgnoreCheckItems operation to ignore risk items in baseline checks.
 
@@ -5529,15 +5602,13 @@ HTTP/1.1 200 OK Content-Type:application/xml <IgnoreCheckItemsResponse>
 </IgnoreCheckItemsResponse>
 ```
 
-**Error codes**
-
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | -100 | ServerError | ServerError |
 | 500 | ServerError | ServerError | ServerError |
 | 403 | NoPermission | NoPermission | caller has no permission |
 
-### ListCheckItemWarningMachine
+### 5.44 ListCheckItemWarningMachine
 
 Call the ListCheckItemWarningMachine operation to retrieve the machines that have alerts for a specific baseline check item.
 
@@ -5754,13 +5825,11 @@ ybersecurity-Level II</RiskName>
 </ListCheckItemWarningMachineResponse>
 ```
 
-**Error codes**
-
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | -101 | -101 | %s %s |
 
-### ListCheckItemWarningSummary
+### 5.45 ListCheckItemWarningSummary
 
 Call the ListCheckItemWarningSummary operation to retrieve statistics about risks for baseline check items.
 
@@ -5942,13 +6011,11 @@ ecurity Policy window, go to Security Settings\\Local Policies\\Audit Policy and
 </ListCheckItemWarningSummaryResponse>
 ```
 
-**Error codes**
-
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | -101 | -101 | %s %s |
 
-### ModifyOperateVul
+### 5.46 ModifyOperateVul
 
 Call the ModifyOperateVul operation to manage detected vulnerabilities.
 
@@ -6013,7 +6080,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <ModifyOperateVulResponse>
 </ModifyOperateVulResponse>
 ```
 
-## Error codes
+## 6 Error codes
 
 This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 

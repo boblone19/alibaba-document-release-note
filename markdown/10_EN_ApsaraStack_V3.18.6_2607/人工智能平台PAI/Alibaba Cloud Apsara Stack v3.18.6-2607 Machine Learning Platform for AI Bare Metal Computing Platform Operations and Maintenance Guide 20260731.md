@@ -3,14 +3,96 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI
 product_version: "V3.18.6_2607"
 doc_version: "20260731"
 pdf_pages: 73
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Operations and Maintenance Guide 20260731.pdf"
+source_pdf: "f589b963a018349c_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20Operations%20and%20Maintenance%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Operations and Maintenance Guide 20260731
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+- 2 Getting started
+  - 2.1 BMCP Operations Console
+  - 2.2 Work with the BMCP Operations Console
+  - 2.3 Log in to the BMCP O&M platform
+- 3 Overview
+- 4 Visualized monitoring
+  - 4.1 Job Path Analysis
+- 5 Alerts
+  - 5.1 Resource event alert
+  - 5.2 Job event alert
+- 6 Clusters
+  - 6.1 Computing
+    - 6.1.1 Clusters
+      - 6.1.1.1 Query the details of a computing cluster
+    - 6.1.2 Nodes
+      - 6.1.2.1 Query the details of a computing node
+  - 6.2 Storage
+  - 6.3 Network
+    - 6.3.1 Query subnets
+- 7 Resource management
+  - 7.1 Computing
+    - 7.1.1 Servers
+      - 7.1.1.1 View server details
+      - 7.1.1.2 Register server resources
+      - 7.1.1.3 Manage servers
+      - 7.1.1.4 Remotely log on to a server
+      - 7.1.1.5 Re-register a server
+      - 7.1.1.6 Enable or disable servers
+    - 7.1.2 GPUs
+      - 7.1.2.1 View GPU details
+  - 7.2 Storage
+    - 7.2.1 View file system details
+    - 7.2.2 View server resource details
+    - 7.2.3 View cache resources of a computing node
+  - 7.3 Network
+    - 7.3.1 Query network element details
+    - 7.3.2 View trace details
+- 8 Inspection and diagnostics
+  - 8.1 Inspection
+    - 8.1.1 Diagnose a cluster or node
+    - 8.1.2 Job diagnosis
+    - 8.1.3 Diagnostic item description
+- 9 Basic configurations
+  - 9.1 Models
+    - 9.1.1 Add a device model
+    - 9.1.2 Query machine types
+    - 9.1.3 Modify model
+    - 9.1.4 Delete a model
+  - 9.2 Images
+    - 9.2.1 Custom images
+    - 9.2.2 Public images
+  - 9.3 GPU settings
+    - 9.3.1 Add a GPU
+    - 9.3.2 Query GPU
+    - 9.3.3 Modify a GPU
+    - 9.3.4 Remove a GPU
+- 10 Logs
+  - 10.1 Cluster and node logs
+  - 10.2 Job logs
+- 11 Event center
+- 12 Instance operations
+  - 12.1 Upgrade task management
+    - 12.1.1 Create an upgrade task
+    - 12.1.2 View the details of an upgrade task
+    - 12.1.3 Pause or resume an upgrade task
+    - 12.1.4 Proceed to the next wave of upgrade tasks
+    - 12.1.5 Cancel an upgrade task
+  - 12.2 Component package management
+    - 12.2.1 Upload a component package
+    - 12.2.2 Query component packages
+    - 12.2.3 Delete a component package
+  - 12.3 Software stack profile
+    - 12.3.1 Create a bundle
+    - 12.3.2 View the details of a software stack bundle
+    - 12.3.3 Add components
+    - 12.3.4 Enable or disbale a bundle
+    - 12.3.5 Use the Detect and upgrade feature
+    - 12.3.6 Delete a bundle
+
+## 1 O&M overview
 
 This topic describes the objectives, requirements, and precautions of Bare Metal Computing Platform (BMCP) O&M and how to obtain technical support.
 
@@ -34,15 +116,15 @@ To ensure a stable system and prevent unexpected events, O&M engineers must comp
 
 O&M engineers can contact Apsara Stack technical support for help during the maintenance.
 
-## Getting started
+## 2 Getting started
 
-### BMCP Operations Console
+### 2.1 BMCP Operations Console
 
 The Bare Metal Computing Platform (BMCP) Operations Console is a cutting-edge O&M technical solution that focuses on intelligent computing, high-performance computing, and scenarios where intelligent computing and high-performance computing are integrated. The BMCP Operations Console provides a high-performance computing system based on an Intel architecture and an intelligent computing system based on a NVIDIA architecture. It is compatible with domestic software and hardware ecosystems. The BMCP Operations Console provides O&M engineers with computing resource topology visualization and resource O&M capabilities. O&M engineers can centrally manage and maintain computing, network, and storage resources from the job and trace perspective. It greatly improves the O&M efficiency.
 
 **Characteristics and benefits**
 
-Full-stack device management Provides a multi-tenant-oriented computing resource normalization and O&M platform that covers computing, storage, and network resource topology management and maintenance. Computing resource supply for various architectures Supports mainstream training and inference platforms that use intel CPUs and NVIDIA GPUs. Supports domestic software and hardware ecosystem platforms based on Hygon CPUs and Hygon GPUs or based on Kunpeng CPUs and Huawei Ascend NPUs to ensure the supply of computing resources. Visualized real-time monitoring Provides visualized topology monitoring for nodes, links, and network elements, and uses time slice labeling to display the real-time status of computing, storage, and network resources. Job path analysis The job path analysis feature provides a topology view to display O&M planes from the perspective of jobs in order to conduct fine-grained O&M, including monitoring, alerting, diagnostics, and logging. Intelligent device inspection and diagnostics Analyzes the status of hardware devices and logs and conducts multi-level inspection to eliminate potential job risks in clusters. Performs cluster and computing job diagnostics to quickly locate issues, isolate resources, or fix issues. ROI optimization Supports the reuse of vendor or data center-level GPUs to improve the stock of computing resources in order to optimize the Return on Investment (ROI).
+Full-stack device management Provides a multi-tenant-oriented computing resource normalization and O&M platform that covers computing, storage, and network resource topology management and maintenance. Computing resource supply for various architectures Supports mainstream training and inference platforms that use intel CPUs and NVIDIA GPUs. Supports domestic software and hardware ecosystem platforms based on Hygon CPUs and Hygon GPUs or based on Kunpeng CPUs and Huawei Ascend NPUs to ensure the supply of computing resources. Visualized real-time monitoring Provides visualized topology monitoring for nodes, links, and network elements, and uses time slice labeling to display the real-time status of computing, storage, and network resources. The job path analysis feature provides a topology view to display O&M planes from the perspective of jobs in order to conduct fine-grained O&M, including monitoring, alerting, diagnostics, and logging. Intelligent device inspection and diagnostics Analyzes the status of hardware devices and logs and conducts multi-level inspection to eliminate potential job risks in clusters. Performs cluster and computing job diagnostics to quickly locate issues, isolate resources, or fix issues. ROI optimization Supports the reuse of vendor or data center-level GPUs to improve the stock of computing resources in order to optimize the Return on Investment (ROI).
 
 **Note**
 
@@ -50,13 +132,7 @@ The BMCP Operations Console is an enterprise-class O&M solution which is suitabl
 
 **Features**
 
-**Job path analysis**
-
-This module analyzes the topology of jobs in data planes and manages the lifecycle of nodes, GPUs, RDMA networks, RDMA network elements, and links in a visualized manner.
-
-**Resource management**
-
-This module allows you to manage all physical resources that are used by your businesses, including computing, storage, and network resources.
+This module analyzes the topology of jobs in data planes and manages the lifecycle of nodes, GPUs, RDMA networks, RDMA network elements, and links in a visualized manner. This module allows you to manage all physical resources that are used by your businesses, including computing, storage, and network resources.
 
 **Alert management**
 
@@ -64,23 +140,19 @@ This module monitors the stability metrics of computing resources, including nod
 
 **Cluster management**
 
-This module manages all computing logic resources used by your businesses, allowing you to centrally manage computing, storage, and network resources.
-
-**Inspection and diagnostics**
-
-This module inspects and diagnoses resources in different scenarios to quickly locate the cause.
+This module manages all computing logic resources used by your businesses, allowing you to centrally manage computing, storage, and network resources. This module inspects and diagnoses resources in different scenarios to quickly locate the cause.
 
 **Log management**
 
 This module allows you to export cluster or node logs to help improve the overall O&M efficiency and system reliability.
 
-### Work with the BMCP
+### 2.2 Work with the BMCP Operations Console
 
 **Operations Console**
 
 This topic describes how to work with the Bare Metal Computing Platform (BMCP) Operations Console. You can view the topology of training and inference jobs within the last 7 days on the BMCP Operations Console, and view the GPU, network interface controller (NIC), and vSwitch usage of these jobs and their metrics.
 
-### Log in to the BMCP O&M
+### 2.3 Log in to the BMCP O&M platform
 
 **platform**
 
@@ -107,7 +179,7 @@ The password is 10 to 20 characters in length.
 5. In the menu bar at the top of the page, select **Product Operation > Computing > BMCP**
 **Operation platform**.
 
-## Overview
+## 3 Overview
 
 This topic describes the content displayed on the Overview page of the Bare Metal Computing Platform (BMCP) Operations Platform, where you can view Alert Dashboard, Resource Statistics, Computing Power Dashboard, and Control Services.
 
@@ -151,9 +223,9 @@ CPU computing power refers to the computing power of supercomputing CPUs, exclud
 
 The Control Services module displays the status: **Abnormal** or **At Desired**, of computing, networks, and storage control services. **Abnormal** indicates that the service deployment has not been completed. **At Desired State** indicates that the service has been deployed.
 
-## Visualized monitoring
+## 4 Visualized monitoring
 
-### Job Path Analysis
+### 4.1 Job Path Analysis
 
 This section describes how to use job path analysis.
 
@@ -193,9 +265,9 @@ resource utilization for that time slice. Topology includes components such as G
 
 When you hover your mouse over a GPU card, RDMA card, or other component, the system displays its specific name and resource utilization.
 
-## Alerts
+## 5 Alerts
 
-### Resource event alert
+### 5.1 Resource event alert
 
 The resource event alert monitors stability metrics for computing resources, including nodes, GPUs, RDMA software stack, and others. It issues real-time alerts for exceptions. This document describes how to view and handle resource event alerts (including compute and storage resources).
 
@@ -240,7 +312,7 @@ Alert levels include: **P1 emergency, P2 is serious, P3 Warning, P4 hint.** Aler
 ii. Click an alert ID to go to the **Alert details** page to view detailed alert information and handle the alert according to business needs. For more alert information, see the section **Alert list** in **Apsara Uni-manager**
 **Operations Console User Guide**.
 
-### Job event alert
+### 5.2 Job event alert
 
 A job event alert refers to failover events that occur on all compute nodes occupied by a task during its runtime. This document describes how to view job alerts.
 
@@ -254,13 +326,13 @@ By default, the system navigates to the **Resource Event Alert** tab.
 **Search**. The **Job Event Alert** displays all associated alerts generated during the lifecycle
 of the job.
 
-## Clusters
+## 6 Clusters
 
-### Computing
+### 6.1 Computing
 
-#### Clusters
+#### 6.1.1 Clusters
 
-##### Query the details of a computing cluster
+##### 6.1.1.1 Query the details of a computing cluster
 
 This topic describes how to query the details of a Bare Metal Computing Platform (BMCP) cluster, including the basic information, nodes, and operation logs of the cluster. You can query the details of a bare metal-intelligent computing cluster, ACK-intelligent computing cluster, bare metal-supercomputing cluster, or converged computing cluster.
 
@@ -287,9 +359,9 @@ ii. **Cluster Nodes** Click the **Cluster Node**s tab to view bare metal nodes a
 **Model**. You can click **Details** in the **Actions** column of a node to view its details. For
 more information, see View the details of a computing node. iii. **Monitoring** Click the **Monitoring** tab to view the monitoring information of the cluster, such as Memory Usage, Cluster Load, and Connections. iv. **Operation Logs** Click the Operation Logs tab to view the operation logs of the cluster. You can view the historical operation logs of the cluster by operation type and operation time. a. Select an option from the **Operation Type** drop-down list, such as Create Cluster, Delete Cluster, Scale out Cluster, or Scale in Cluster, to search for operation logs of the specified operation type. If you do not select an operation type, operation logs of all operation types will be displayed. b. Specify **Start Date** and **End Date** (accurate to seconds). Then, operation logs from the start date to the end date will be displayed. c. Click **Operation Details** in the Actions column to view atomic steps in the operation and the detailed information.
 
-#### Nodes
+#### 6.1.2 Nodes
 
-##### Query the details of a computing node
+##### 6.1.2.1 Query the details of a computing node
 
 This topic describes how to query Bare Metal Computing Platform (BMCP) computing nodes and their details, including basic information and operation logs. You can query nodes in bare metal-intelligent computing clusters, ACK-intelligent computing clusters, bare metalsupercomputing clusters, converged computing clusters, as well as unassigned nodes in the resource pool.
 1. Log on to the BMCP Operations Platform.
@@ -309,7 +381,7 @@ i. Basic Information The following table lists the information displayed on the 
 
 ii. Monitoring The **Monitoring** tab displays the node monitoring data, including CPU Utilization, Memory Usage, Load, and Connections. iii. Operation Logs You can filter the historical operation logs for the node by operation type. a. Select one of the following options from the **Operation Type** drop-down list: Apply for Instance, Regitser Again, O&M Instance, Attach Instance, Mount Storage, Unmount Storage, Request Error, and more. If you do not select a filter condition, operation logs of all types for the node will be displayed. b. Specify **Start Date** and **End Date** (accurate to days). Then, operation logs from 00:00:00 of the start date to 23:59:59 of the end date will be displayed. c. Click **Operation Details** in the **Actions** column to view all atomic steps included in the operation and the detailed information.
 
-### Storage
+### 6.2 Storage
 
 **View storage cluster details**
 
@@ -340,9 +412,9 @@ view detailed information about the cluster. On the **Cluster Details** tab, vie
 **status**.
 You can also click **Details** in the **Operation** column of the target node to view View cluster node details.
 
-### Network
+### 6.3 Network
 
-#### Query subnets
+#### 6.3.1 Query subnets
 
 This topic describes how to query and update the information about all switches connected to the cloud.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -354,13 +426,13 @@ This tab displays all switches connected to the cloud, including **HSW** and **C
 5. Click **Get subnet** to query the switches that are connected to the cloud in real time and
 synchronize the information to the current page.
 
-## Resource management
+## 7 Resource management
 
-### Computing
+### 7.1 Computing
 
-#### Servers
+#### 7.1.1 Servers
 
-##### View server details
+##### 7.1.1.1 View server details
 
 This topic describes how to query all physical servers and view their detailed information.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -379,7 +451,7 @@ i. Basic information The following table lists the information displayed on the 
 
 ii. Monitoring On the **Monitoring** tab, you can view the CPU utilization, memory utilization, loads, disk reads, disk writes, and number of connections within the specified time period. iii. Operation Log On the **Operation Log** tab, you can filter operation logs by operation type and operation time. a. You can select a tag from the **Operation Type** drop-down list to filter **operation logs**. You can select the following tags: Apply for an instance, Re-apply, O & M instance, Mount instance, Mount storage, and Unmount storage. If you do not select a filter condition, **operation logs** of types of operations that have been performed on the server are displayed. b. Click **Operation Time**, and specify **Start Date** and **End Date** (accurate to days). Then, **operation logs** from 00:00:00 of the start date to 23:59:59 of the end date are displayed. c. You can click **Operation details** in the Operation column to view all atomic steps included in the operation and the detailed information.
 
-##### Register server resources
+##### 7.1.1.2 Register server resources
 
 This topic describes how to register server resources.
 1. Log on to the BMCP Operations Platform.
@@ -461,7 +533,7 @@ If change authorization is enabled, you must contact the authorization administr
 **Operation > Task Center > Task List** before the resource can be successfully
 registered.
 
-##### Manage servers
+##### 7.1.1.3 Manage servers
 
 This topic describes how to start, restart, stop, delete, and initialize servers.
 
@@ -489,7 +561,7 @@ bottom of the server list.
 If change authorization is enabled, you must contact the authorization administrator of the Apsara Uni-manager Operations Console to complete the approval in **Platform**
 **Operation > Task Center > Task List** before the resource can be successfully deleted.
 
-##### Remotely log on to a server
+##### 7.1.1.4 Remotely log on to a server
 
 This topic describes how to remotely log on to a server.
 
@@ -503,7 +575,7 @@ By default, the **Calculation > Server** tab is displayed. You can view all phys
 4. Find the desired server and click **Remote logon** in the **Operation** column.
 5. In the dialog box that appears, enter the password and click **OK**.
 
-##### Re-register a server
+##### 7.1.1.5 Re-register a server
 
 This topic describes how to re-register servers.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -530,7 +602,7 @@ Keep your password confidential. If you lost the password, you can log on to the
 The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 6. After you complete the configuration, click **OK**.
 
-##### Enable or disable servers
+##### 7.1.1.6 Enable or disable servers
 
 This topic describes how to enable and disable servers.
 
@@ -569,9 +641,9 @@ icon in the **Actions** column of the server, choose
 **Resource** at the bottom of the server list.
 5. In the dialog box that appears, click **OK**.
 
-#### GPUs
+#### 7.1.2 GPUs
 
-##### View GPU details
+##### 7.1.2.1 View GPU details
 
 This section describes how to query the list of GPU cards installed on bare metal machines at a site and view detailed information for each GPU card.
 
@@ -594,9 +666,9 @@ The basic information page includes the following information.
 | GPU card information | Includes GPU ID, Node, Server to which the server belongs, Manufacturer, GPU model, Flash storage capacity, Computing power, and other information. |
 | Configuration information | Includes VBIOS version, Driver name, Driver version, BusInfo, and other information. |
 
-### Storage
+### 7.2 Storage
 
-#### View file system details
+#### 7.2.1 View file system details
 
 This topic describes how to view details of a file system resource.
 1. Log on to the BMCP Operations Platform.
@@ -612,7 +684,7 @@ cluster details. The details include the number of nodes, number of quorum nodes
 7. Click **Details** in the Operation column for your target file system.
 View the file system details, including the file system name, storage cluster, client cluster, specifications, and monitoring metrics.
 
-#### View server resource details
+#### 7.2.2 View server resource details
 
 This topic describes how to view server resource details.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -624,7 +696,7 @@ You can enter a **hostname**, **IP**, or **SN** into the search box above the li
 5. Click the ID of the desired server in the **Storage cluster ID** column.
 You can then view the storage cluster information of the server, including the number of file systems, number of nodes, capacity, health status, file system type, cluster node information, service roles, and monitoring data.
 
-#### View cache resources of a computing
+#### 7.2.3 View cache resources of a computing node
 
 **node**
 
@@ -648,9 +720,9 @@ The **fuse-related configuration parameters** section displays information such 
 **Kernel Cache**, **Cache Fragment Size**, **Aggregate fuse request size**, and
 **Asynchronous IO type**.
 
-### Network
+### 7.3 Network
 
-#### Query network element details
+#### 7.3.1 Query network element details
 
 This section describes how to query all network element resources (including DSW, RDSW, HSW, CHSW, EHSW, RASW, etc.) within a site.
 1. Log on to the BMCP Operations Platform.
@@ -673,7 +745,7 @@ device.
 network element to view more detailed information about the CPN network element. For more information, see the **CPN Network Element** chapter in **Apsara Uni-manager**
 **Operations Console User Guide**.
 
-#### View trace details
+#### 7.3.2 View trace details
 
 This section describes how to query all traces within a site, including switch traces and node traces, to quickly identify abnormal nodes.
 1. Log on to the BMCP Operations Platform.
@@ -691,11 +763,11 @@ site.
 **RDMA Nic Port**: Displays port information for this RDMA NIC, including **NIC name**,
 **Node**, **MAC address**, and **Management status**.
 
-## Inspection and diagnostics
+## 8 Inspection and diagnostics
 
-### Inspection
+### 8.1 Inspection
 
-#### Diagnose a cluster or node
+#### 8.1.1 Diagnose a cluster or node
 
 This topic describes how to diagnose a cluster or node.
 
@@ -729,7 +801,7 @@ Locate a diagnostics task in the **Running** state and click **Cancel** in the *
 3. View diagnostics details.
 Locate a diagnostics task in the **Complete** state and click **Details** in the **Actions** column.
 
-#### Job diagnosis
+#### 8.1.2 Job diagnosis
 
 This section describes how to diagnose clusters involved in job tasks.
 
@@ -761,7 +833,7 @@ For any task with the status **Running**, click **Cancel** in the **Operation** 
 3. View diagnostic details.
 After the diagnostic task status changes to **Completed**, click **Details** in the **Operation** column to view the diagnostic results.
 
-#### Diagnostic item description
+#### 8.1.3 Diagnostic item description
 
 The diagnosis feature provides cluster, node, and job diagnostics. This document describes the supported diagnostic items in detail.
 
@@ -934,11 +1006,11 @@ Diagnostic items relate to the graphics card. Refer to the interface display for
 | Monitor systemd health. | If the machine systemd/dbus hangs, or if the number of mount points exceeds 5000, systemd becomes unresponsive. |
 | Detect disk error messages. | Disk error messages in dmesg cause some operations of the container engine to fail. |
 
-## Basic configurations
+## 9 Basic configurations
 
-### Models
+### 9.1 Models
 
-#### Add a device model
+#### 9.1.1 Add a device model
 
 This topic describes how to add a device model.
 
@@ -976,7 +1048,7 @@ You can add **managed intelligent computing**, **In-Band**, and **HPC** device m
 
 5. Click **OK**.
 
-#### Query machine types
+#### 9.1.2 Query machine types
 
 This topic describes how to query machine types.
 1. Log on to the BMCP Operations Platform.
@@ -994,7 +1066,7 @@ You can find target machine types by using information such as **Model Name**, *
 **vendor**, **CPU model**, **GPU manufacturer**, and **GPU model**.
 You can also click **Advanced Filter** to select multiple filter items progressively for faster machine type lookup.
 
-#### Modify model
+#### 9.1.3 Modify model
 
 This topic describes how to modify a model.
 1. Log on to the BMCP Operations Platform.
@@ -1002,7 +1074,7 @@ This topic describes how to modify a model.
 3. Click **Modify** in the **Operation** column of the target model.
 4. In the **Modify model** dialog box, modify the model parameters and click **OK**.
 
-#### Delete a model
+#### 9.1.4 Delete a model
 
 This topic describes how to delete a model.
 
@@ -1014,11 +1086,11 @@ Before you delete a model, make sure that no instances are using this model. The
 3. Click **Delete** in the **Operation** column of the target model.
 4. In the confirmation dialog box, click **OK**.
 
-### Images
+### 9.2 Images
 
 You can manage custom images and public images on the Bare Metal Computing Platform (BMCP) Operations Console.
 
-#### Custom images
+#### 9.2.1 Custom images
 
 **Upload a custom image**
 
@@ -1057,7 +1129,7 @@ i. Delete the image a. Click **Delete image** in the **Operation** column of the
 
 Before you delete an image, make sure that no instances use this image. The delete operation is irreversible. ii. Enable the image Choose **Enable status > Enable images** in the **Operation** column of the image. iii. Disable the image Choose **Enable status > Disable images** in the **Operation** column of the image. iv. Export the image Click **Image export** in the **Operation** column of the image to export the image to your on-premises machine.
 
-#### Public images
+#### 9.2.2 Public images
 
 You can enable, disable, and export public images and export signature files.
 
@@ -1091,9 +1163,9 @@ By default, the **Custom image** tab is displayed.
 
 Before you run the command, make sure that the public key, signature file, and image are downloaded. Set the following parameters to the actual values: `public.key` indicates the public key. `signature.bin` indicates the signature file. `imagefile` indicates the image file.
 
-### GPU settings
+### 9.3 GPU settings
 
-#### Add a GPU
+#### 9.3.1 Add a GPU
 
 This topic describes how to add a GPU.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -1114,7 +1186,7 @@ This topic describes how to add a GPU.
 
 5. After you complete the configuration, click **OK**.
 
-#### Query GPU
+#### 9.3.2 Query GPU
 
 This topic describes how to query GPU.
 1. Log on to the BMCP Operations Platform.
@@ -1122,7 +1194,7 @@ This topic describes how to query GPU.
 3. On the **GPU Configuration** page, enter a **GPU model** in the search bar. The system
 automatically displays matching GPU configurations in the list. You can also click Advanced Filter, enter a GPU model, and then click Search to find matching GPU configurations.
 
-#### Modify a GPU
+#### 9.3.3 Modify a GPU
 
 This topic describes how to modify the information of a GPU.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -1136,7 +1208,7 @@ This topic describes how to modify the information of a GPU.
 You cannot modify the GPU manufacturer or GPU model parameter.
 5. Click **OK**.
 
-#### Remove a GPU
+#### 9.3.4 Remove a GPU
 
 This topic describes how to remove a GPU.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -1144,9 +1216,9 @@ This topic describes how to remove a GPU.
 3. Click **Delete** in the Operation column of the desired GPU.
 4. Confirm the GPU information and click **OK**.
 
-## Logs
+## 10 Logs
 
-### Cluster and node logs
+### 10.1 Cluster and node logs
 
 This topic describes how to collect logs from a cluster, node, or network.
 1. Log on to the BMCP Operations Platform.
@@ -1162,7 +1234,7 @@ When **Log Type** is **Cluster**, the cluster must be a bare metal-intelligent c
 5. When the **Log Collection Status** of the task is **Complete**, select the task and click
 **Export Logs** to download the compressed log package.
 
-### Job logs
+### 10.2 Job logs
 
 This topic describes how to collect job logs.
 
@@ -1180,7 +1252,7 @@ click **OK**.
 6. When the **log collection status** is **Completed**, select the log collection task and click
 **Export logs** to download the corresponding compressed log file package.
 
-## Event center
+## 11 Event center
 
 You can manage event tickets in the event center. For example, you can view the basic information about an event ticket, such as the number and status of the event ticket, and review an event ticket.
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -1201,13 +1273,13 @@ ii. If you select **Refuse**, click **OK**.
 **Repair an event ticket**: After you approve an event ticket, click Details in the Operation
 column. In the **Event Ticket Details** panel, click **Repair statement**. In the message that appears, click **OK**. View the details of an event ticket: After you approve an event ticket, click **Details** in the Operation column to view the details of the event ticket.
 
-## Instance operations
+## 12 Instance operations
 
 The Instance O&M module provides component package management, software stack compatibility table, and upgrade task management features. These features help O&M personnel manage software component version compatibility and perform batch upgrades for bare metal instances.
 
-### Upgrade task management
+### 12.1 Upgrade task management
 
-#### Create an upgrade task
+#### 12.1.1 Create an upgrade task
 
 An upgrade task in the BMCP Operations Console is a task unit used to issue new versions of component packages to target bare metal instances for batch upgrading. This topic describes how to create an upgrade task.
 1. Log on to the BMCP Operations Platform.
@@ -1234,7 +1306,7 @@ An upgrade task in the BMCP Operations Console is a task unit used to issue new 
 
 6. Click **Confirm Delivery**. In the confirmation dialog box, click **OK**.
 
-#### View the details of an upgrade task
+#### 12.1.2 View the details of an upgrade task
 
 This topic describes how to view the details of an upgrade task.
 1. Log on to the BMCP Operations Platform.
@@ -1244,7 +1316,7 @@ This topic describes how to view the details of an upgrade task.
 5. On the upgrade task details page, view the existing upgrade task information.
 The upgrade task details include **Task Information**, **Progress Overview**, and **Events**.
 
-#### Pause or resume an upgrade task
+#### 12.1.3 Pause or resume an upgrade task
 
 This topic describes how to pause or resume an upgrade task.
 
@@ -1256,7 +1328,7 @@ Pause: The **Status** of the upgrade task is **In Progress**. Resume: The **Stat
 3. In the **Actions** column of the target upgrade task, perform the operation as needed:
 i. Click **Pause**. ii. Click **Resume**.
 
-#### Proceed to the next wave of upgrade
+#### 12.1.4 Proceed to the next wave of upgrade tasks
 
 **tasks**
 
@@ -1272,7 +1344,7 @@ icon, and then click **Poceed**
 **with Next Wave**.
 4. In the confirmation dialog box, click **OK**.
 
-#### Cancel an upgrade task
+#### 12.1.5 Cancel an upgrade task
 
 This topic describes how to cancel an upgrade task. The cancel operation only stops the tasks that have not been issued.
 
@@ -1285,11 +1357,11 @@ The **Canary Release Mode** of the upgrade task is **By Wave** or **By Percentag
 icon, and then click **Cancel**.
 4. In the confirmation dialog box, click **OK**.
 
-### Component package
+### 12.2 Component package management
 
 **management**
 
-#### Upload a component package
+#### 12.2.1 Upload a component package
 
 This topic describes how to upload a component package.
 
@@ -1316,7 +1388,7 @@ list.
 
 5. Click **OK**.
 
-#### Query component packages
+#### 12.2.2 Query component packages
 
 This topic describes how to query component packages.
 1. Log on to the BMCP Operations Console.
@@ -1330,7 +1402,7 @@ The component package list automatically displays component packages that match 
 The details panel displays the complete information of the component package, including
 **Basic Information** and **Associated Bundle.**
 
-#### Delete a component package
+#### 12.2.3 Delete a component package
 
 This topic describes how to delete a component package.
 
@@ -1342,9 +1414,9 @@ Component packages referenced by software stack bundles cannot be deleted. Syste
 3. Locate the target component package and click **Delete** in the **Actions** column .
 4. In the confirmation dialog box, click **OK**.
 
-### Software stack profile
+### 12.3 Software stack profile
 
-#### Create a bundle
+#### 12.3.1 Create a bundle
 
 This topic describes how to create a software stack bundle.
 
@@ -1366,7 +1438,7 @@ A software stack bundle manages version match relationships among components and
 
 5. Click **OK**.
 
-#### View the details of a software stack
+#### 12.3.2 View the details of a software stack bundle
 
 **bundle**
 
@@ -1377,7 +1449,7 @@ This topic describes how to view the details of a software stack bundle.
 4. In the bundle list, locate the target bundle and click **Details** in the **Actions** column.
 5. On the bundle details page, view basic information and the component list.
 
-#### Add components
+#### 12.3.3 Add components
 
 This topic describes how to add components to a bundle.
 1. Log on to the BMCP Operations Platform.
@@ -1397,7 +1469,7 @@ This topic describes how to add components to a bundle.
 
 6. Click **OK**.
 
-#### Enable or disbale a bundle
+#### 12.3.4 Enable or disbale a bundle
 
 This topic describes how to enable or disable a software stack bundle.
 
@@ -1410,7 +1482,7 @@ To enable a bundle: The Rediness value of the bundle is **Ready**, and the Statu
 icon. Select the operation as needed: i. Click **Enable**. ii. Click **Disable**.
 4. In the confirmation dialog box, click **OK**.
 
-#### Use the Detect and upgrade feature
+#### 12.3.5 Use the Detect and upgrade feature
 
 Using the Detect and Upgrade feature, you can check whether component versions on bare metal instances match those defined in the bundle and batch issue upgrade tasks for components whose versions do not match. This topic describes how to detect component versions on bare metal instances and perform upgrades using the software stack bundle.
 
@@ -1432,7 +1504,7 @@ ii. **Detection Results**: After confirming the selected machines, click **Start
 4. (Optional) View the execution progress of the upgrade task. In the left-side navigation
 pane, click **Instance O&M > Upgrade Task Management** to view the execution status and progress of the upgrade task.
 
-#### Delete a bundle
+#### 12.3.6 Delete a bundle
 
 This topic describes how to delete a software stack bundle.
 

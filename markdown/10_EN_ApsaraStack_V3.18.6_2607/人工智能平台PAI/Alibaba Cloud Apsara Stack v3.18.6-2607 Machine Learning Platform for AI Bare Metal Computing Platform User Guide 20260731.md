@@ -3,14 +3,118 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI
 product_version: "V3.18.6_2607"
 doc_version: "20260731"
 pdf_pages: 149
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform User Guide 20260731.pdf"
+source_pdf: "d7523c4461cd372f_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20User%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform User Guide 20260731
 
-## What is BMCP?
+## Table of Contents
+
+- 1 What is BMCP?
+- 2 Getting started
+  - 2.1 Work with BMCP
+  - 2.2 Log in to BMCP
+- 3 Instructions
+  - 3.1 Key configurations and services for nodes
+  - 3.2 Linux system usage notes
+- 4 Overview
+- 5 Clusters and nodes
+  - 5.1 Node management
+    - 5.1.1 View the details of a node
+    - 5.1.2 Manage node status
+    - 5.1.3 Mount third-party storage to a node
+    - 5.1.4 View operation records
+    - 5.1.5 View the monitoring data of a node
+    - 5.1.6 Remotely log in to a node
+    - 5.1.7 GPU virtualization
+  - 5.2 Cluster management
+    - 5.2.1 Create a cluster
+      - 5.2.1.1 Create a bare metal - intelligent computing cluster
+      - 5.2.1.2 Create an ACK - intelligent computing cluster
+      - 5.2.1.3 Create a bare metal - supercomputing cluster
+      - 5.2.1.4 Create a converged computing cluster
+    - 5.2.2 View cluster details
+    - 5.2.3 Scale out a cluster
+    - 5.2.4 Scale in a cluster
+    - 5.2.5 View cluster tasks
+    - 5.2.6 Storage management
+    - 5.2.7 Enable and disable elastic cache acceleration
+    - 5.2.8 Jump to the ACK console
+    - 5.2.9 Connection information
+      - 5.2.9.1 Connect to a Kubernetes cluster by using kubectl
+      - 5.2.9.2 Revoke the KubeConfig credential of a cluster
+    - 5.2.10 Software instances
+    - 5.2.11 Query operation logs
+    - 5.2.12 Query cluster monitoring information
+    - 5.2.13 Delete a cluster
+    - 5.2.14 View GPU resources
+- 6 Recycle bin
+- 7 File backup
+- 8 Application services
+  - 8.1 Image center
+    - 8.1.1 Verify image signatures
+  - 8.2 Data acceleration
+    - 8.2.1 Image acceleration
+    - 8.2.2 Cache acceleration
+    - 8.2.3 Configure a Dragonfly image repository to accelerate image distribution
+  - 8.3 Data distribution
+    - 8.3.1 Create a data distribution task
+    - 8.3.2 Delete a data distribution task
+    - 8.3.3 Use P2P to distribute OSS data
+  - 8.4 Application center
+    - 8.4.1 Install a component
+    - 8.4.2 Add a custom component
+    - 8.4.3 Using KGPU
+- 9 Models and images
+  - 9.1 Node models
+    - 9.1.1 Query models
+    - 9.1.2 Modify a model
+    - 9.1.3 Delete a model
+  - 9.2 Bare metal instance images
+    - 9.2.1 Upload a custom image
+    - 9.2.2 View public images
+    - 9.2.3 Query custom images
+    - 9.2.4 Delete an image
+    - 9.2.5 Manage image status
+    - 9.2.6 Export an image
+    - 9.2.7 Verify the integrity of public images
+- 10 Network and security
+  - 10.1 VPC
+  - 10.2 EVPC management
+  - 10.3 Communication library management
+  - 10.4 Security groups
+    - 10.4.1 Overview
+    - 10.4.2 Manage security groups
+    - 10.4.3 Manage security group rules
+    - 10.4.4 Manage BMCP instances in security groups
+  - 10.5 Key pairs
+  - 10.6 Bare metal network
+    - 10.6.1 Bind an ECR
+    - 10.6.2 Unbind an ECR
+- 11 Tag management
+  - 11.1 Query tags
+  - 11.2 Create a tag and add the tag to resources
+- 12 Metering data
+  - 12.1 View metering data
+- 13 O&M management
+  - 13.1 Cluster monitoring
+  - 13.2 Event monitoring
+  - 13.3 Quick diagnostics
+  - 13.4 Performance evaluation
+    - 13.4.1 Create an evaluation task
+    - 13.4.2 View the details of an evaluation task
+  - 13.5 Elastic fault tolerance task
+  - 13.6 Cloud Assistant
+    - 13.6.1 Overview
+    - 13.6.2 Use Cloud Assistant
+      - 13.6.2.1 Create/Run a command
+      - 13.6.2.2 Clone a command
+      - 13.6.2.3 Delete a command
+      - 13.6.2.4 Manage command execution results
+
+## 1 What is BMCP?
 
 Bare Metal Computing Platform (BMCP) is a cutting-edge technical solution, designed to provide enterprises and developers that require high-performance computing with powerful, elastic, and high-performance computing resources. The platform enables users to directly access hardware without virtualization by creating bare metal clusters on servers, greatly improvings performance and resource utilization.
 
@@ -130,19 +234,15 @@ BMCP integrates the metering management module of the Apsara Uni-manager Managem
 
 The O&M management module provides the **cluster monitoring**, **event monitoring**, and
 **quick diagnostics** features to monitor the metrics and events of bare metal - intelligent
-computing clusters and ACK - intelligent computing clusters, including metrics related to instances, GPUs, and RDMA networks, helping maintain the status of the intelligent computing platform The **cluster monitoring** feature offers monitoring capabilities at the cluster level, including basic monitoring, GPU monitoring, RDMA monitoring, and other monitoring items. The **event monitoring** feature monitors events in bare metal - intelligent computing clusters and ACK - intelligent computing clusters, and supportsconfiguring alerts. You can configure event alert rules for various event monitoring metrics, such as GPU PCIE card drops, GPU driver crashes, computing engine anomalies, PCIE bandwidth degradation, and NVLink failures. You can configure event alert rules with different severity levels, including Serious, Warning, and Prompt. You can create different alert rules to send alert notifications to specific personnel with different permissions. You can view the event alarm history.
-
-**Quick diagnostics**
-
-You can diagnose computing, network, container and other resources with one click by creating inspection tasks. This helps you quickly locate the cause of cluster failures. This module can inspect clusters in various scenarios to ensure the health of BMCP. The quick diagnostics feature for bare metal - intelligent computing clusters supports server inspection and GPU inspection, and displays their health status in real time to detect hardware issues on bare metal nodes. Periodic inspections of physical servers identify issues such as potential hardware faults and performance bottlenecks. This helps you fix and prevent system faults promptly, and ensures the stability and reliability of intelligent computing clusters. The quick diagnostics feature for ACK - intelligent computing clusters supports server inspection, GPU inspection, and Kubernetes base inspection at the IaaS and PaaS layer. This helps you identify container anomalies and abnormal health status at the earliest opportunity.
+computing clusters and ACK - intelligent computing clusters, including metrics related to instances, GPUs, and RDMA networks, helping maintain the status of the intelligent computing platform The **cluster monitoring** feature offers monitoring capabilities at the cluster level, including basic monitoring, GPU monitoring, RDMA monitoring, and other monitoring items. The **event monitoring** feature monitors events in bare metal - intelligent computing clusters and ACK - intelligent computing clusters, and supportsconfiguring alerts. You can configure event alert rules for various event monitoring metrics, such as GPU PCIE card drops, GPU driver crashes, computing engine anomalies, PCIE bandwidth degradation, and NVLink failures. You can configure event alert rules with different severity levels, including Serious, Warning, and Prompt. You can create different alert rules to send alert notifications to specific personnel with different permissions. You can view the event alarm history. You can diagnose computing, network, container and other resources with one click by creating inspection tasks. This helps you quickly locate the cause of cluster failures. This module can inspect clusters in various scenarios to ensure the health of BMCP. The quick diagnostics feature for bare metal - intelligent computing clusters supports server inspection and GPU inspection, and displays their health status in real time to detect hardware issues on bare metal nodes. Periodic inspections of physical servers identify issues such as potential hardware faults and performance bottlenecks. This helps you fix and prevent system faults promptly, and ensures the stability and reliability of intelligent computing clusters. The quick diagnostics feature for ACK - intelligent computing clusters supports server inspection, GPU inspection, and Kubernetes base inspection at the IaaS and PaaS layer. This helps you identify container anomalies and abnormal health status at the earliest opportunity.
 **Performance evaluation**: Performance evaluation measures the computing power
 utilization and acceleration ratio of clustersrs by collecting key performance metrics of machine learning models under complex topologies, helping identify potential performance issues.
 **Elastic fault tolerance tasks**: Submit and manage distributed training tasks based on the
 KEA elastic fault tolerance framework. By coordinating with fault awareness and selfhealing mechanisms of the underlying infrastructure, it enables automatic recovery and dynamic resource adjustment during node failures, ensuring training continuity and overall platform robustness.
 
-## Getting started
+## 2 Getting started
 
-### Work with BMCP
+### 2.1 Work with BMCP
 
 This topic describes the procedure for getting started with Bare Metal Computing Platform (BMCP). To use the cluster service, make sure that you have created bare metal instances. You can log on to the BMCP Operations console to view your bare metal instances. Then, you can create bare metal-intelligent computing clusters, ACK-intelligent computing clusters, or bare metal-supercomputing clusters based on your business requirements. You can also scale out, scale in, or delete clusters and nodes to meet business requirements.
 **Create a cluster**: You can create a bare metal-intelligent computing cluster, ACK-
@@ -152,7 +252,7 @@ metal instances in the Bare-metal Management Service (BMS) console. Then, you ca
 **Scale in a cluster**: You can scale in an existing cluster by removing bare metal instances
 (nodes) from the cluster in the BMCP cluster. After the bare metal instances are released, the system automatically deletes the OS and data on the disks. The bare metal instances are released to the bare metal resource pool. The procedure is only for managing intelligent computing clusters.
 
-### Log in to BMCP
+### 2.2 Log in to BMCP
 
 This topic describes how to log on to the Apsara Uni-manager Management Console and then log on to Bare Metal Computing Platform (BMCP).
 
@@ -166,9 +266,9 @@ Obtain the username and password used to log on to the Apsara Uni-manager Manage
 3. Click **Log On** to log on to the Apsara Uni-manager Management Console.
 4. In the top navigation bar, choose **Products > Computing > BMCP** to log on to BMCP.
 
-## Instructions
+## 3 Instructions
 
-### Key configurations and
+### 3.1 Key configurations and services for nodes
 
 **services for nodes**
 
@@ -249,7 +349,7 @@ required, contact technical support in advance for impact assessment.
 
 The above configuration files and service processes are uniformly deployed and configured by the system during initial node provisioning. Do not modify them manually. If adjustments are required for business reasons, submit a ticket to technical support. Changes must be evaluated and applied uniformly by the O&M team. Unauthorized modifications may cause the node to be flagged as abnormal and trigger automatic isolation.
 
-### Linux system usage notes
+### 3.2 Linux system usage notes
 
 Before you use the Linux operating system, review the following notes. Violating these guidelines may cause system instability, network interruption, or service unavailability.
 
@@ -301,7 +401,7 @@ configurations, use the `network` service or directly edit the configuration fil
 **Swap partitions are not recommended** . In GPU computing scenarios, swap can trigger
 memory paging and cause performance jitter, affecting the stability of training tasks.
 
-## Overview
+## 4 Overview
 
 This topic describes the key metrics on the Overview page of Bare Metal Computing Platform (BMCP), including computing resources, resource usage trend, quota statistics, and resource alerts.
 
@@ -317,13 +417,13 @@ This topic describes the key metrics on the Overview page of Bare Metal Computin
 | Alarm Statistics | This section displays the total number of alerts and the number of P1, P2, and P3 alerts of the current account in the specified organization, resource set, and region. |
 | Alert Trend | This section displays the alert trend of the current account in the specified organization, resource set, and region within 7, 15, or 30 days. |
 
-## Clusters and nodes
+## 5 Clusters and nodes
 
-### Node management
+### 5.1 Node management
 
 Nodes (or computing nodes) are the smallest units defined in the resource specifications on Bare Metal Computing Platform (BMCP). Nodes are high-performance GPU servers. You can install OSs or deploy cloud services on nodes.
 
-#### View the details of a node
+#### 5.1.1 View the details of a node
 
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Cluster and Node > Node Management**.
@@ -339,7 +439,7 @@ ii. **Storage** You can mount third-party storage to a node to enable flexible e
 **Monitoring**, **GPU Monitoring**, and **RDMA Monitoring** tabs. For more information
 about node monitoring data, see View the monitoring data of a node.
 
-#### Manage node status
+#### 5.1.2 Manage node status
 
 You can start, restart, or stop a node. This topic describes how to manage the status of bare metal nodes in a bare metal-intelligent computing cluster, an ACK-intelligent computing cluster, or a bare metal-supercomputing cluster.
 
@@ -352,7 +452,7 @@ A bare metal-intelligent computing cluster, an ACK-intelligent computing cluster
 4. You can click **Start Node**, **Restart Node**, or **Stop Node** based on your business
 requirements.
 
-#### Mount third-party storage to a node
+#### 5.1.3 Mount third-party storage to a node
 
 Bare Metal Computing Platform (BMCP) provides a feature that allows you to mount thirdparty storage. With this feature, you can seamlessly integrate external storage, flexibly scale storage resources, and manage them efficiently. After the mount operation is complete, you can view the storage mount results on the Node Details page. This topic describes how to mount third-party storage to a node.
 
@@ -398,7 +498,7 @@ You can also find the node to which you want to mount storage on the **Node**
 **Management** page, and click **Mount Storage** in the Actions column to mount third-
 party storage.
 
-#### View operation records
+#### 5.1.4 View operation records
 
 This topic describes how to view operation records for a node, including aggregation logs and operation logs.
 1. Log in to BMCP.
@@ -426,7 +526,7 @@ By default, the system retains operation logs for 7 days. To adjust this duratio
 **center > Log dump settings** section in the Apsara Uni-manager Managem
 ent Console User Guide of the Apsara Stack documentation center. If you extend the retention period via dump settings, the system does not backfill historical log data. Advanced filtering allows you to apply multiple filter options sequentially. b. Click **Operation Details** for a target operation record to view detailed information.
 
-#### View the monitoring data of a node
+#### 5.1.5 View the monitoring data of a node
 
 The node management module provides the node monitoring feature, which allows you to view the basic, GPU, and RDMA monitoring data of nodes.
 1. Log in to Bare Metal Computing Platform (BMCP).
@@ -442,7 +542,7 @@ specify a time range to view the GPU monitoring data. iii. View the RDMA monitor
 **(count)**, and **rdma_out_of_seq (count)**. You can also specify a time range to view the
 RDMA monitoring data.
 
-#### Remotely log in to a node
+#### 5.1.6 Remotely log in to a node
 
 **Prerequisites**
 
@@ -454,7 +554,7 @@ the Actions column.
 4. On the Workbench Logon page that appears, enter the correct port number, username, and
 password to log in to the node.
 
-#### GPU virtualization
+#### 5.1.7 GPU virtualization
 
 This topic describes how to use GPU virtualization, along with notes.
 
@@ -473,7 +573,6 @@ Before you enable hardware virtualization, make sure no tasks are running on the
 
 **Enable GPU virtualization**
 
-1. Log in to BMCP
 2. In the left-side navigation pane, click **Cluster and Node > Node Management**.
 3. Click the target **Node ID/Name** to go to the node details page.
 4. In the **GPU Virtualization** section, click **Modify** on the right.
@@ -494,7 +593,6 @@ i. Click the target **Cluster ID/Name** or **Details** in the **Actions** column
 
 **Disable GPU virtualization**
 
-1. Log in to BMCP
 2. In the left-side navigation pane, click **Cluster and Node > Node Management**.
 3. Click the target **Node ID/Name** to go to the node details page.
 4. In the **GPU Virtualization** section, click **Modify** on the right.
@@ -504,11 +602,11 @@ i. Click the target **Cluster ID/Name** or **Details** in the **Actions** column
 8. You can also disable GPU virtualization in **Cluster and Node > Cluster Management**.
 i. Click the target **Cluster ID/Name** or **Details** in the **Actions** column of the target cluster to go to the **Cluster Details** page. ii. Click the **Cluster Node** tab. iii. Click **GPU Virtualization** in the **Actions** column of the target node.
 
-### Cluster management
+### 5.2 Cluster management
 
-#### Create a cluster
+#### 5.2.1 Create a cluster
 
-##### Create a bare metal - intelligent
+##### 5.2.1.1 Create a bare metal - intelligent computing cluster
 
 **computing cluster**
 
@@ -585,7 +683,7 @@ If the service management does not contain a service where the cloud service is 
 **Intelligent Computing Cluster**: Confirm the relevant parameters and click **Submit**.
 For more information about service management, see the **Service management** section in **Apsara Uni-manager Management Console User Guide** .
 
-##### Create an ACK - intelligent computing
+##### 5.2.1.2 Create an ACK - intelligent computing cluster
 
 **cluster**
 
@@ -709,7 +807,7 @@ If the service management does not contain a service where the cloud service is 
 **Intelligent Computing Cluster**: confirm the relevant parameters, then click **Submit**.
 For more information about service management, see the **Service management** section in **Apsara Uni-manager Management Console User Guide** .
 
-##### Create a bare metal - supercomputing
+##### 5.2.1.3 Create a bare metal - supercomputing cluster
 
 **cluster**
 
@@ -785,7 +883,7 @@ After creation completes, the system displays a cluster whose **Cluster Type** i
 **Supercomputing Cluster** in the cluster list. If the cluster status is Running, the cluster has
 been created successfully.
 
-##### Create a converged computing cluster
+##### 5.2.1.4 Create a converged computing cluster
 
 This topic describes how to create a converged computing cluster.
 
@@ -847,7 +945,7 @@ If the service management does not contain a service where the cloud product is 
 **Cluster**: Confirm the relevant parameters, then click **Submit**.
 For more information about service management, see the **Service management** section in **Apsara Uni-manager Management Console User Guide** .
 
-#### View cluster details
+#### 5.2.2 View cluster details
 
 This topic describes how to query clusters and view their detailed information.
 
@@ -876,7 +974,7 @@ ii. **Cluster Node** Click the **Cluster Node** tab to view information about al
 **Monitoring**, **GPU Monitoring**, and **RDAM Monitoring**. For more cluster monitoring
 information, see View cluster monitoring data.
 
-#### Scale out a cluster
+#### 5.2.3 Scale out a cluster
 
 When a cluster lacks sufficient bare metal instances or Elastic Compute Service (ECS) instances, you can scale out the cluster.
 
@@ -918,7 +1016,7 @@ After you click **Confirm Order** or **Submit**, the system automatically checks
 **Version** of the inconsistent machines. After confirmation, click **OK** to complete the
 scale-out operation.
 
-#### Scale in a cluster
+#### 5.2.4 Scale in a cluster
 
 When resources from bare metal instances or ECS instances in the cluster are in excess, you can scale in the cluster to optimize resource allocation and reduce the number of unnecessary instances.
 
@@ -970,7 +1068,7 @@ If service management does not contain a service where the cloud product is **Ba
 **Submit**.
 For more information about service management, see the **Service management** section in **Apsara Uni-manager Management Console User Guide** .
 
-#### View cluster tasks
+#### 5.2.5 View cluster tasks
 
 This topic describes how to view cluster tasks.
 1. Log in to BMCP.
@@ -988,7 +1086,7 @@ and more. You can filter tasks by **Operation Type** and **Operating Time**.
 6. Click **Task details** on the right side of the target task row to view detailed information,
 including **Task Type**, **Subitem**, **Started At**, **Execution Status**, and **Description**. Click **Retry** in the **Task Type** or **Subitem** column of a target task to re-execute a failed operation. Click in the **Actions** column of a failed task to diagnose the task. The diagnosis result includes **Exception Analysis** and **Solutions**. You can handle failed tasks based on the diagnosis result. The diagnosis feature depends on AI Base being deployed on the base and being online.
 
-#### Storage management
+#### 5.2.6 Storage management
 
 This topic describes how to enable, disable, mount, and unmount high-performance storage.
 
@@ -1058,7 +1156,7 @@ in the **Actions** column.
 4. Click **Storage Management > Unmount**.
 5. Click **OK**.
 
-#### Enable and disable elastic cache
+#### 5.2.7 Enable and disable elastic cache acceleration
 
 **acceleration**
 
@@ -1102,7 +1200,7 @@ When the task status of **Disable Elastic Cache Acceleration Cluster** under the
 **Tasks** tab of the **Cluster Details** page shows **Successful**, elastic cache acceleration is
 disabled.
 
-#### Jump to the ACK console
+#### 5.2.8 Jump to the ACK console
 
 This topic describes how to jump to the ACK console for a ACK - intelligent computing cluster.
 
@@ -1119,9 +1217,9 @@ in the **Actions** column.
 6. On the redirected **Container Service** page, select **Organization** and **Region**. Then,
 choose either **Access with Authorized Role** or **Access as Administrator** to access the ACK console. Access with authorized role: Jump to the console using the current user role (high security, recommended). Access as administrator: Jump to the console using the cloud product administrator account.
 
-#### Connection information
+#### 5.2.9 Connection information
 
-##### Connect to a Kubernetes cluster by using
+##### 5.2.9.1 Connect to a Kubernetes cluster by using kubectl
 
 **kubectl**
 
@@ -1164,7 +1262,7 @@ Expected output:
 NAME STATUS AGE default Active 4h39m kube-node-lease Active 4h39m kube-public Active 4h39m kube-system Active 4h39m
 ```
 
-##### Revoke the KubeConfig credential of a
+##### 5.2.9.2 Revoke the KubeConfig credential of a cluster
 
 **cluster**
 
@@ -1183,7 +1281,7 @@ After revoking the KubeConfig, you cannot use the original KubeConfig to connect
 7. In the pop-up dialog box, click **OK**.
 After you revoke the KubeConfig credential of this cluster under your current account, the system automatically assigns you a new KubeConfig credential.
 
-#### Software instances
+#### 5.2.10 Software instances
 
 This topic describes how to view details of software instances for an ACK - intelligent computing cluster.
 
@@ -1213,7 +1311,7 @@ i. Turn on the cluster O&M service switch. ii. In the pop-up software instance c
 7. View the names and descriptions of installed components.
 If you have Install a component for the cluster, view details of the installed components on the **Software Instance** tab and upgrade or uninstall them.
 
-#### Query operation logs
+#### 5.2.11 Query operation logs
 
 This topic describes how to query operation records for a cluster, including aggregation logs and operation logs.
 
@@ -1239,7 +1337,7 @@ By default, the system retains operation logs for 7 days. To adjust this duratio
 the Apsara Stack documentation center. If you extend the retention period via dump settings, the system does not backfill historical log data. Advanced filtering allows you to apply multiple filter options sequentially.
 5. Click **Operation Details** for a target operation record to view detailed information.
 
-#### Query cluster monitoring information
+#### 5.2.12 Query cluster monitoring information
 
 The system provides cluster monitoring in cluster management module. You can view basic, GPU, RDMA, and Aspeed inference service monitoring information for your clusters. This topic describes how to view cluster monitoring information.
 
@@ -1274,7 +1372,7 @@ a. In the cluster list, click the cluster ID in the **Cluster ID/Name** column f
 **computing-optimized training and inference instance** and the Aspeed
 component is installed. Data collection for Aspeed monitoring and Aspeed management & monitoring depends on Managed Service for Prometheus. To use these features, purchase and deploy Managed Service for Prometheus to ensure proper collection and display of monitoring data. For more information about metric monitoring, see Cluster monitoring.
 
-#### Delete a cluster
+#### 5.2.13 Delete a cluster
 
 You can delete a cluster no longer needed. After deletion, the bare metal nodes in the cluster move to the recycle bin. When the retention period expires, the system releases these nodes back to the resource pool and reinstalls them.
 
@@ -1309,7 +1407,7 @@ Click **Release**. For more information about service management, see the **Serv
 6. In the secondary confirmation dialog box, enter **Confirm Deletion** and click **Confirm**
 **Deletion** to complete the cluster deletion.
 
-#### View GPU resources
+#### 5.2.14 View GPU resources
 
 On the **GPU Resources** tab of the cluster details page, you can view the GPU resource overview, GPU virtualization overview, and allocation status of a cluster.
 
@@ -1333,7 +1431,7 @@ mode: enabled nodes, partitioning units, and total shares.
 For more information about GPU virtualization modes, see GPU virtualization. iii. **Allocated** Displays GPU resource allocation in the cluster, including allocation of **GPU** and **GPU**
 **Virtualization**.
 
-## Recycle bin
+## 6 Recycle bin
 
 The recycle bin provides the resource deletion protection feature to prevent accidental deletions. This ensures business continuity and improves O&M and production security.
 
@@ -1368,7 +1466,7 @@ remove and click **Batch Delete** in the lower-left corner of the node list.
 **Restore multiple nodes at a time**: Select multiple nodes that you want to restore and click
 **Batch Restore** in the lower-left corner of the node list.
 
-## File backup
+## 7 File backup
 
 The file backup feature can create snapshots for bare metal nodes to back up and restore all the directories in a file system. This feature provides an efficient means for data disaster recovery and supports periodic or manual data backup based on the backup plan.
 
@@ -1509,11 +1607,11 @@ forward slash ( `/` ), the script overwrites the files in the source path. If th
 8. (Optional)If you no longer need the snapshot, click **Delete** in the **Actions** column. In the
 pop-up dialog box, click **OK**.
 
-## Application services
+## 8 Application services
 
 Application services are AI-related Platform as a Service (PaaS) and Model as a Service (MaaS) services provided on Bare Metal Computing Platform (BMCP).
 
-### Image center
+### 8.1 Image center
 
 The image center provides secure, stable, and high-performance AI container images for Alibaba Cloud customers and AI-related cloud services. Bare Metal Computing Platform (BMCP) integrates Container Service for Kubernetes (ACK) on Apsara Uni-manager Management Console so that you can manage the lifecycle of container images requested by your ACK clusters.
 1. Log on to BMCP.
@@ -1528,7 +1626,7 @@ keyword to search images in fuzzy match mode.
 You can click **Container Registry** on the **Image Center** page to log on to the Container Registry console. For more information about Container Registry, see Apsara Stack Container Registry User Guide. If you have permissions to access Apsara Stack Help Center, you can find the following information in Apsara Stack Help Center: **Apsara Stack Help Center >**
 **Apsara Stack > Computing Service > Container Registry**.
 
-#### Verify image signatures
+#### 8.1.1 Verify image signatures
 
 The image signature verification feature ensures the integrity and security of container images that you use in AI training and inference scenarios. All officially released container images can be verified by using image signatures. Before you pull and run an image, you can verify the image signature to prevent the image from being tampered with or replaced. This topic describes how to verify an image signature.
 1. Log in to Bare Metal Computing Platform (BMCP).
@@ -1591,11 +1689,11 @@ Security risks may arise for unverified images. Therefore, we recommend that you
 
 If a valid signature is returned after the command to verify the image is run, the image is signed.
 
-### Data acceleration
+### 8.2 Data acceleration
 
 This topic describes value-added services for training and inference optimization, such as image acceleration and data cache acceleration.
 
-#### Image acceleration
+#### 8.2.1 Image acceleration
 
 This topic describes how to create an image conversion task.
 1. Log on to Bare Metal Computing Platform (BMCP).
@@ -1607,7 +1705,7 @@ icon to search images in fuzzy match mode.
 the image.
 6. Click **OK** to create the image conversion task.
 
-#### Cache acceleration
+#### 8.2.2 Cache acceleration
 
 This topic describes how to create a cache acceleration instance, delete a cache acceleration instance, and view cache acceleration instances.
 
@@ -1748,7 +1846,7 @@ real 0m0.048s user 0m0.001s sys 0m0.046s
 
 The output indicates that 48 milliseconds are consumed to copy the file. This means that the time consumption is reduced by more than 300 times. This is because the file is cached. It is much faster to access a cached file.
 
-#### Configure a Dragonfly image repository
+#### 8.2.3 Configure a Dragonfly image repository to accelerate image distribution
 
 **to accelerate image distribution**
 
@@ -1803,11 +1901,11 @@ For more information about how to install Dragonfly, see **Kubernetes clusters >
 **Components > Introduction > ack-dragonfly** in **ACK User Guide**. You can also modify
 the MySQL and Redis resource parameters on demand. For more information, see the related configuration instructions in the same topic.
 
-### Data distribution
+### 8.3 Data distribution
 
 Data distribution provides value-added features for Alibaba Cloud customers and AI-related products, including P2P distribution of files such as model files and training datasets in clusters.
 
-#### Create a data distribution task
+#### 8.3.1 Create a data distribution task
 
 This topic describes the prerequisites and procedure for creating a data distribution task.
 
@@ -1837,7 +1935,7 @@ You have integrated multiple NVMe solid-state drives (SSDs) into one or more log
 
 After the task is created, you can view the task on the Data Distribution page. The task is in the **Complete** state.
 
-#### Delete a data distribution task
+#### 8.3.2 Delete a data distribution task
 
 You can delete a data distribution task at any time if it is no longer needed, to avoid unnecessary management overhead. This topic describes how to delete a data distribution task.
 1. Log in to Bare Metal Computing Platform (BMCP).
@@ -1846,7 +1944,7 @@ You can delete a data distribution task at any time if it is no longer needed, t
 click **Delete** in the **Actions** column.
 4. In the message that appears, click **OK**.
 
-#### Use P2P to distribute OSS data
+#### 8.3.3 Use P2P to distribute OSS data
 
 This topic describes how to use a distributed file in a business process. In this example, an inference service is started.
 
@@ -1938,7 +2036,7 @@ ii. Switch to the inference service pod to view the model file of the mount poin
 | TP=1 | 13.66 | 8.20 |
 | TP=2 | 9.26 | 5.53 |
 
-### Application center
+### 8.4 Application center
 
 The application center integrates multiple types of kits. Different kits apply to different intelligent computing scenarios. You can manage kits uniformly based on kit capabilities.
 
@@ -2001,7 +2099,7 @@ Designed specifically for large language model (LLM) inference scenarios, this k
 
 aspeed: Includes deeply optimized components such as ASpeed inference service control, inference request scheduling, and cluster parallel components. It provides features such as Prefilling and Decoding (P/D) separation, EP parallelism, and multi-level KVCache caching.
 
-#### Install a component
+#### 8.4.1 Install a component
 
 This topic describes how to install a component for an intelligent computing cluster.
 1. Log in to BMCP.
@@ -2020,7 +2118,7 @@ After installation is complete, go to the details page of the corresponding clus
 **Software Instance** tab. When the status of the target component changes from **Installing**
 to **Running**, the component is successfully installed.
 
-#### Add a custom component
+#### 8.4.2 Add a custom component
 
 Add a custom component when existing components do not meet your business requirements.
 1. Log in to BMCP.
@@ -2043,7 +2141,7 @@ the **All Applications** tab.
 
 After you add the component, it appears under the **Custom Kit** tab. This indicates that the component has been added successfully.
 
-#### Using KGPU
+#### 8.4.3 Using KGPU
 
 This topic describes how to verify and configure isolation policies, configure GPU selection policies for shared APG scheduling nodes, and modify the minimum memory allocation unit for shared APG scheduling.
 
@@ -2274,13 +2372,13 @@ The following table describes the parameters:
 |---|---|
 | deviceCoreSplitCount | The minimum unit for splitting computing power. |
 
-## Models and images
+## 9 Models and images
 
-### Node models
+### 9.1 Node models
 
 You can add, query, modify, and remove node models.
 
-#### Query models
+#### 9.1.1 Query models
 
 This topic describes how to query models and view model details.
 
@@ -2293,7 +2391,7 @@ You have added a model in the BMCP Operations Console.
 4. Click the
 icon to search models in fuzzy match mode.
 
-#### Modify a model
+#### 9.1.2 Modify a model
 
 This topic describes how to modify the configuration of a model.
 
@@ -2308,7 +2406,7 @@ column.
 and **Model Name**.
 5. After you modify the model, click **OK**.
 
-#### Delete a model
+#### 9.1.3 Delete a model
 
 This topic describes how to delete a model.
 
@@ -2329,11 +2427,11 @@ This operation is a high-risk operation and is irreversible. Proceed with cautio
 **Actions** column.
 4. In the message that appears, click **OK**.
 
-### Bare metal instance images
+### 9.2 Bare metal instance images
 
 Bare metal instance images contain image metadata that is used when you create bare metal instances or clusters. Bare metal instance images are classified into custom images and public images. You can query, delete, and export custom images or manage the status of custom images, and query and export public images or manage the status of public images. You can also upload custom images to meet your business requirements.
 
-#### Upload a custom image
+#### 9.2.1 Upload a custom image
 
 This topic describes how to upload a custom image.
 
@@ -2368,7 +2466,7 @@ If the certificate of the environment has expired, the **Image upload failed** m
 redirected to a new page.
 5. Upload the image file again after you complete the preceding steps.
 
-#### View public images
+#### 9.2.2 View public images
 
 This topic describes how to use public images.
 
@@ -2385,7 +2483,7 @@ Bare Metal Computing Platform (BMCP) supports public images in the TGZ and QCOW2
 3. On the **Bare Metal Instance Image** page, click the **Public Image** tab.
 4. The tab displays all public images. You can manage image status and export images.
 
-#### Query custom images
+#### 9.2.3 Query custom images
 
 This topic describes how to query custom images and view the details of custom images.
 
@@ -2400,7 +2498,7 @@ images.
 4. Click the
 icon to search custom images in fuzzy match mode.
 
-#### Delete an image
+#### 9.2.4 Delete an image
 
 This topic describes how to delete an image.
 
@@ -2414,7 +2512,7 @@ A custom image is created. For more information, see Upload a custom image. You 
 **Delete Image** in the **Actions** column.
 4. In the message that appears, click **OK**.
 
-#### Manage image status
+#### 9.2.5 Manage image status
 
 This topic describes how to change the status of an image.
 
@@ -2431,7 +2529,7 @@ iii. On the **Bare Metal Instance Image** page, find the image that you want to 
 Enable an image i. On the **Bare Metal Instance Image** page, find the image that you want to manage and choose **Status > Enable Image** in the **Actions** column. ii. Then, the image is enabled. After the image is enabled, the status of the image changes from **Unavailable** to
 **Available. In addition, its status also changes from Disabled** to **Enabled**.
 
-#### Export an image
+#### 9.2.6 Export an image
 
 This topic describes how to export an image. You can export public images and custom images to your on-premises environment.
 
@@ -2446,7 +2544,7 @@ You already have a public image resource or have created a custom image. For mor
 5. After you click **Export Image**, the browser automatically downloads the image file to your
 on-premises environment. Wait for the download to complete.
 
-#### Verify the integrity of public images
+#### 9.2.7 Verify the integrity of public images
 
 Bare Metal Computing Platform (BMCP) allows you to verify the integrity of public images in case the images are tampered with. This topic describes how to verify the integrity of public images.
 1. Log on to BMCP.
@@ -2463,9 +2561,9 @@ Bare Metal Computing Platform (BMCP) allows you to verify the integrity of publi
 
 Before you run the command, make sure that the public key, signature file, and image to be verified are downloaded. Set the following parameters to the actual values: `public.key` indicates the public key. `signature.bin` indicates the signature file. `imagefile` indicates the image file to be verified.
 
-## Network and security
+## 10 Network and security
 
-### VPC
+### 10.1 VPC
 
 1. Log on to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Network and Security > VPC** to redirect to the
@@ -2475,7 +2573,7 @@ Before you run the command, make sure that the public key, signature file, and i
 have permissions to access Apsara Stack Help Center, you can find the following information in Apsara Stack Help Center: **Apsara Stack Help Center > Apsara Stack >**
 **Network Services > VPC**.
 
-### EVPC management
+### 10.2 EVPC management
 
 Express Virtual Private Cloud (EVPC) manages the RDMA network for intelligent computing nodes, enabling you to manage RDMA CIDR blocks and subnets for intelligent computing nodes and isolate RDMA networks between different intelligent computing clusters. Additionally, based on different chips and combined with Alibaba Cloud's unique network characteristics and extensive experience in tuning communication for large model tasks, EVPC provides optimized Communication Library services. This topic describes how to create, edit, and delete an EVPC.
 
@@ -2529,7 +2627,7 @@ Deleting an EVPC affects the network of intelligent computing cluster instances.
 2. In the **Delete EVPC** dialog that appears, confirm the resource information, then click
 **Release**.
 
-### Communication library
+### 10.3 Communication library management
 
 **management**
 
@@ -2557,9 +2655,9 @@ match mode.
 3. Click the **Communication Library Management** tab.
 4. Click **Download** in the Actions column of a communication library.
 
-### Security groups
+### 10.4 Security groups
 
-#### Overview
+#### 10.4.1 Overview
 
 Security groups are a type of virtual firewall that controls inbound and outbound network traffic of Bare Metal Computing Platform (BMCP) instances in the security groups to improve instance security. Security groups provide the packet filtering capability. You can use security groups and security group rules to define security domains in the cloud.
 
@@ -2580,7 +2678,7 @@ You can perform the following operations to use security groups to control the t
 4. Manage the security group and security group rules based on your needs.
 An instance can be added to at most five security groups. The total number of inbound and outbound rules in a security group must not exceed 200. By default, a BMCP security group allows all traffic. If you want to block traffic from specific sources, add Deny rules.
 
-#### Manage security groups
+#### 10.4.2 Manage security groups
 
 This topic describes how to create, modify, and delete a security group.
 
@@ -2626,7 +2724,7 @@ ii. Delete security groups in batches: Select one or more security groups that y
 5. In the confirmation dialog box, click **Delete**.
 You cannot delete a security group that contains BMCP instances. Remove the instances before deletion. You cannot delete a security group that is authorized for access by other security groups. Revoke the authorization before deletion.
 
-#### Manage security group rules
+#### 10.4.3 Manage security group rules
 
 This topic describes how to add, modify, delete, and clone a security group rule.
 
@@ -2714,7 +2812,7 @@ column.
 to delete the rule: i. Delete a single rule: Click **Delete** in the **Actions** column of the security group rule. ii. Delete rules in batches: Select one or more rules and click **Delete** below the rule list.
 7. In the confirmation dialog box, click **Delete**.
 
-#### Manage BMCP instances in security
+#### 10.4.4 Manage BMCP instances in security groups
 
 **groups**
 
@@ -2754,7 +2852,7 @@ instances that belong to the current security group.
 **from Security Group** below the list.
 7. Click **OK**.
 
-### Key pairs
+### 10.5 Key pairs
 
 Key pairs provide a secure and convenient method to authenticate logins. A key pair consists of a public key and a private key, and is supported only on Linux instances. This topic describes how to create, delete, bind, and unbind key pairs.
 
@@ -2820,11 +2918,11 @@ column.
 i. Delete a single key pair: Find the key pair that you want to delete and select **... > Delete** in the **Actions** column. ii. Delete key pairs in batches: Select one or more key pairs that you want to delete and click **Delete** at the bottom of the key pair list.
 6. In the pop-up dialog box, click **Delete**.
 
-### Bare metal network
+### 10.6 Bare metal network
 
 The Bare Metal Network page allows you to manage the associations between vSwitches and Express Connect routers (ECRs) in host switch (HSW) and computing host switch (CHSW) destacking scenarios.
 
-#### Bind an ECR
+#### 10.6.1 Bind an ECR
 
 **Usage notes**
 
@@ -2849,7 +2947,7 @@ After you click **Submit**, you can view the information about the ECR on the Ba
 Retry binding an ECR: Find the ECR that failed to be bound and click **Retry Binding** in the
 **Actions** column.
 
-#### Unbind an ECR
+#### 10.6.2 Unbind an ECR
 
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, choose **Network and Security > Bare Metal Instance**
@@ -2864,11 +2962,11 @@ Supported filter conditions: **Bare Metal Instance Network ID**, **vSwitch ID**,
 
 After the ECR is unbound, it is no longer listed on the Bare Metal Instance Network page.
 
-## Tag management
+## 11 Tag management
 
 Bare Metal Computing Platform (BMCP) integrates the tag management module of the Apsara Uni-manager Management Console. You can use tags to classify and manage resources from different dimensions.
 
-### Query tags
+### 11.1 Query tags
 
 Each tag consists of a tag key and a tag value. On the Tag Management page, you can view all tag keys and values, as well as the information about the resources to which the tags are added.
 1. Log on to Bare Metal Computing Platform (BMCP).
@@ -2881,7 +2979,7 @@ icon. In the **Filter**
 **Conditions** dialog box, specify **The Organization Of The Resource**, **Resource Set**, **The**
 **Region Of The Resource**, or **Keyword** and click **Confirm** to filter tag keys.
 
-### Create a tag and add the tag
+### 11.2 Create a tag and add the tag to resources
 
 **to resources**
 
@@ -2894,11 +2992,11 @@ i. In the **Create/Select Tags & Add to Resources** dialog box, select or enter 
 **Organization and Resource Set**, **Select Region**, and **Select Cloud Products** and
 click **Next**. You can select up to 50 cloud resources at a time. iii. Confirm the information about the tags and resources and click **Confirm**.
 
-## Metering data
+## 12 Metering data
 
 Bare Metal Computing Platform (BMCP) integrates the metering management module of the Apsara Uni-manager Management Console to help you manage the metering data of resources on the BMCP platform.
 
-### View metering data
+### 12.1 View metering data
 
 Bare Metal Computing Platform (BMCP) integrates the metering management module of the Apsara Uni-manager Management Console to help you manage the metering data of resources. You can view the number of instances on BMCP from the time, organization, resource set, or region dimension and export the statistics.
 1. Log on to BMCP.
@@ -2908,9 +3006,9 @@ page.
 **Resource Items** drop-down list and click **Search** to view the detailed metering data of
 cluster resources. You can filter the data by **Organization**, **Resource Set**, **Region**, **Time**, or **Instance ID**. You can also click the icon in the upper-right corner to export the statistics to an XLSX file and save the file to your computer. You can view or export at most 1,000 entries in the console. To view or export more entries, call the MeteringQuery operation.
 
-## O&M management
+## 13 O&M management
 
-### Cluster monitoring
+### 13.1 Cluster monitoring
 
 This topic describes how to view cluster monitoring for bare metal - intelligent computing clusters and Container Service for Kubernetes (ACK) - intelligent computing clusters.
 
@@ -2975,7 +3073,7 @@ cluster monitoring information from different perspectives. Select a target clus
 | rdma cqe error _ _ | The number of errors recorded in the local completion queue (CQE), such as invalid requests or insufficient resources. This metric reflects abnormal local RDMA operations. |
 | rdma service mon _ _ itor rnr nak retry _ _ _ err _ | The number of NAK (negative acknowledgment) packets returned by the peer device due to resource unavailability (Receive Not Ready). An excessive count indicates untimely processing by the receiver. |
 
-### Event monitoring
+### 13.2 Event monitoring
 
 This topic describes how to view the events of bare metal-intelligence computing clusters and Container Service for Kubernetes (ACK)-intelligence computing clusters. This topic also describes how to configure event-triggered alert rules.
 
@@ -3059,7 +3157,7 @@ ii. Review an event. a. By default, the **Pending Review** tab appears after you
 | Approve | a. Click OK. b. In the Please enter the confirmation information. dialog box, enter I confirm that I am aware of the operational risks but still wish to proceed. Important After you approve the event ticket, the instance enters the O&M state. In the O&M state, the instance is unavailable and all tasks running on the instance are affected. Exercise caution when you confirm approval. c. Click OK. |
 | Reject | Click OK. |
 
-### Quick diagnostics
+### 13.3 Quick diagnostics
 
 This topic describes how to perform quick diagnostics on bare metal - intelligent computing clusters, Container Service for Kubernetes (ACK) - intelligent computing clusters, and converged computing clusters.
 
@@ -3077,11 +3175,11 @@ If this detection includes time-consuming diagnostic items or stress tests, it o
 the **Diagnostic Item**.
 5. Click **OK**.
 
-### Performance evaluation
+### 13.4 Performance evaluation
 
 The performance evaluation feature collects the key performance metrics of machine learning models in complex topologies to measure the computing power usage and acceleration ratio of clusters. This helps identify potential performance issues.
 
-#### Create an evaluation task
+#### 13.4.1 Create an evaluation task
 
 Performance evaluation measures cluster computing power utilization and acceleration ratio by collecting key performance metrics of machine learning models under complex topologies. This helps identify potential performance issues.
 
@@ -3116,7 +3214,7 @@ The system currently supports only **ACK - intelligent computing cluster** for N
 
 6. Click **Submit**.
 
-#### View the details of an evaluation task
+#### 13.4.2 View the details of an evaluation task
 
 1. Log in to Bare Metal Computing Platform (BMCP).
 2. In the left-side navigation pane, click **Performance Benchmark**.
@@ -3137,7 +3235,7 @@ i. By default, the **Basic Information** tab appears. The following table descri
 
 ii. Click the **Subtask** tab. On this tab, you can perform the following operations to manage a subtask: a. Delete the subtask: Click **Delete Task** in the **Actions** column. b. View the configurations of the subtask: Click **Running Configuration** in the **Actions** column. c. View the logs of the subtask: Click **Task Logs** in the **Actions** column. iii. Click the **Event Pipeline** tab. On this tab, you can view the time consumption statistics at the forward computing, backward computing, and optimizer step scaling stages, staged-based time consumption distribution, and staged-based time consumption trend.
 
-### Elastic fault tolerance task
+### 13.5 Elastic fault tolerance task
 
 The elastic fault tolerance task feature submits and manages distributed training tasks based on the Elastic Fault Tolerance framework (KEA). The feature collaborates with the fault detection and self-healing mechanism of underlying infrastructure to automatically recover from node anomalies and dynamically adjust resources, ensuring continuity of training tasks and overall platform robustness.
 
@@ -3187,9 +3285,9 @@ The system supports only **ACK - intelligent computing clusters** . The cluster 
 |---|---|
 | View task details | i. Click Details in the Actions column for the target task to enter theB asic Information tab by default. ii. On the Elastic Fault Tolerance Task Details page, view task details. Basic Information: Includes task name, task ID, status, task source, creation time, end time, and duration. Configuration Information: Includes evaluation cluster ID, evaluation cluster name, model, and number of replicas. Model Performance: Includes Tflops/s/GPU and MFU. Fault Tolerance Information: Includes process restart count and pod restart count. iii. Click the Monitoring Data tab to view Model Monitoring, Basic Monitoring, GPU Monitoring, and RDMA Monitoring. Model Monitoring includes FP32 Operations Per Second per GPU and Training Loss. For monitoring metrics of Basic Monitoring, GPU Monitoring, and RDMA Monitoring, see Cluster monitoring. |
 
-### Cloud Assistant
+### 13.6 Cloud Assistant
 
-#### Overview
+#### 13.6.1 Overview
 
 BMCP Cloud Assistant is built on Elastic Compute Service (ECS) Cloud Assistant. It is an automated O&M tool developed for BMCP-related businesses to allow you to batch maintain bare metal nodes and batch execute shell, PowerShell, and batch scripts on nodes without passwords, logins, or jumpers. In most cases, you can use Cloud Assistant to install and uninstall software, start and stop services, and run common commands (or scripts).
 
@@ -3285,9 +3383,9 @@ state execution state execution The following table describes the states of recu
 |---|---|
 | Execution-level state | For more information, see the Execution states section of this topic. |
 
-#### Use Cloud Assistant
+#### 13.6.2 Use Cloud Assistant
 
-##### Create/Run a command
+##### 13.6.2.1 Create/Run a command
 
 You can run Cloud Assistant commands to perform routine tasks on bare metal nodes, including running automated O&M scripts, polling processes, resetting user passwords, installing or uninstalling software, updating applications, and installing patches. The Cloud Assistant commands can be batch or PowerShell commands for Windows servers and shell commands for Linux servers. You can specify custom parameters as variables in the commands.
 
@@ -3342,7 +3440,7 @@ run the generated command.
 **Run and Save**: Save and run the command.
 **Run**: Run the command without saving the command.
 
-##### Clone a command
+##### 13.6.2.2 Clone a command
 
 You can clone an existing Cloud Assistant command to create another command. You can retain all information of the original command (cloned command), or modify the name, description, type, content, execution path, or timeout period for the new command (command clone).
 
@@ -3383,7 +3481,7 @@ parameters and selected nodes in the **CLI Command** section, and click **oyCLI*
 the generated command.
 7. Click **Save**.
 
-##### Delete a command
+##### 13.6.2.3 Delete a command
 
 The number of Cloud Assistant commands that you can have within each Alibaba Cloud region is limited, and all cloud services share this quota. To ensure a sufficient command quota, we recommend that you regularly delete commands that are no longer needed.
 
@@ -3397,7 +3495,7 @@ Only operations administrators, organization administrators, and resource set ad
 **Delete**.
 5. In the dialog box that appears, click**Delete**.
 
-##### Manage command execution results
+##### 13.6.2.4 Manage command execution results
 
 You can view and export the execution results of Cloud Assistant commands for offline analysis, auditing, or archival storage.
 

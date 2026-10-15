@@ -3,20 +3,321 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Dev
 product_version: "V3.16.2"
 doc_version: "20221227"
 pdf_pages: 374
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Developer Guide 20221227.pdf"
+source_pdf: "99eed7f6ef79632f_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Developer Guide 20221227.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20221228/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Object%20Storage%20Service%20Developer%20Guide%2020221227.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Developer Guide 20221227
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 API reference
+  - 2.1 Overview
+  - 2.2 Access control
+    - 2.2.1 Authenticate users by using signatures
+    - 2.2.2 Add signatures to the Authorization header
+    - 2.2.3 Generate a signed URL
+    - 2.2.4 Authorize temporary access
+    - 2.2.5 Bucket ACL
+  - 2.3 Common HTTP headers
+  - 2.4 Service-relevant operations
+    - 2.4.1 GetService (ListBuckets)
+  - 2.5 Bucket-relevant operations
+    - 2.5.1 PutBucket
+    - 2.5.2 PutBucketACL
+    - 2.5.3 PutBucketLogging
+    - 2.5.4 PutBucketWebsite
+    - 2.5.5 PutBucketReferer
+    - 2.5.6 PutBucketLifecycle
+    - 2.5.7 GetBucket (ListObjects)
+    - 2.5.8 GetBucketAcl
+    - 2.5.9 GetBucketLocation
+    - 2.5.10 GetBucketInfo
+    - 2.5.11 GetBucketLogging
+    - 2.5.12 GetBucketWebsite
+    - 2.5.13 GetBucketReferer
+    - 2.5.14 GetBucketLifecycle
+    - 2.5.15 GetBucketTags
+    - 2.5.16 DeleteBucket
+    - 2.5.17 DeleteBucketLogging
+    - 2.5.18 DeleteBucketWebsite
+    - 2.5.19 DeleteBucketTagging
+    - 2.5.20 DeleteBucketTags
+  - 2.6 Object-relevant operations
+    - 2.6.1 PutObject
+    - 2.6.2 GetObject
+    - 2.6.3 CopyObject
+    - 2.6.4 AppendObject
+    - 2.6.5 DeleteObject
+    - 2.6.6 DeleteMultipleObjects
+    - 2.6.7 HeadObject
+    - 2.6.8 GetObjectMeta
+    - 2.6.9 PutObjectACL
+    - 2.6.10 GetObjectACL
+    - 2.6.11 PostObject
+    - 2.6.12 Callback
+    - 2.6.13 PutObjectTagging
+    - 2.6.14 GetObjectTagging
+    - 2.6.15 DeleteObjectTagging
+  - 2.7 Multipart upload-relevant operations
+    - 2.7.1 Overview
+    - 2.7.2 InitiateMultipartUpload
+    - 2.7.3 UploadPart
+    - 2.7.4 UploadPartCopy
+    - 2.7.5 CompleteMultipartUpload
+    - 2.7.6 AbortMultipartUpload
+    - 2.7.7 ListMultipartUploads
+    - 2.7.8 ListParts
+  - 2.8 CORS
+    - 2.8.1 Overview
+    - 2.8.2 PutBucketcors
+    - 2.8.3 GetBucketcors
+    - 2.8.4 DeleteBucketcors
+    - 2.8.5 OptionObject
+  - 2.9 Error responses
+- 3 ASAPI Developer Guide
+  - 3.1 Preparations
+    - 3.1.1 Obtain API information
+    - 3.1.2 Obtain an AccessKey pair
+    - 3.1.3 Obtain the values of common header parameters
+    - 3.1.4 Obtain an STS AccessKey pair
+  - 3.2 Use ASAPI to make API calls
+    - 3.2.1 ASAPI overview
+    - 3.2.2 Obtain the endpoint of ASAPI
+    - 3.2.3 Obtain Apsara Stack SDKs
+    - 3.2.4 Common parameters
+    - 3.2.5 SDK description
+      - 3.2.5.1 ASAPI SDK for Java
+      - 3.2.5.2 ASAPI SDK for Python
+      - 3.2.5.3 ASAPI SDK for Node.js
+  - 3.3 HTTP requests
+    - 3.3.1 Overview
+    - 3.3.2 Request syntax
+    - 3.3.3 Request signatures
+    - 3.3.4 Responses
+- 4 SDK reference
+  - 4.1 Java SDK
+    - 4.1.1 Preface
+    - 4.1.2 Installation
+    - 4.1.3 Initialization
+    - 4.1.4 Quick start
+    - 4.1.5 Buckets
+      - 4.1.5.1 Create buckets
+      - 4.1.5.2 List buckets
+      - 4.1.5.3 Determine whether buckets exist
+      - 4.1.5.4 Manage bucket ACLs
+      - 4.1.5.5 Delete buckets
+      - 4.1.5.6 Manage lifecycle rules
+      - 4.1.5.7 Configure hotlink protection
+      - 4.1.5.8 Configure CORS
+      - 4.1.5.9 Configure logging
+      - 4.1.5.10 Configure static website hosting
+    - 4.1.6 Upload objects
+      - 4.1.6.1 Overview
+      - 4.1.6.2 Simple upload
+      - 4.1.6.3 Form upload
+      - 4.1.6.4 Append upload
+      - 4.1.6.5 Resumable upload
+      - 4.1.6.6 Multipart upload
+      - 4.1.6.7 Use a progress bar
+      - 4.1.6.8 Upload callback
+    - 4.1.7 Download objects
+      - 4.1.7.1 Overview
+      - 4.1.7.2 Streaming download
+      - 4.1.7.3 Download to local files
+      - 4.1.7.4 Range download
+      - 4.1.7.5 Resumable download
+      - 4.1.7.6 Conditional download
+      - 4.1.7.7 Use a progress bar
+    - 4.1.8 Manage objects
+      - 4.1.8.1 Overview
+      - 4.1.8.2 Determine whether an object exists
+      - 4.1.8.3 Manage object ACLs
+      - 4.1.8.4 Manage object metadata
+      - 4.1.8.5 List objects
+      - 4.1.8.6 Query objects
+      - 4.1.8.7 Delete objects
+      - 4.1.8.8 Copy objects
+    - 4.1.9 Authorized access
+    - 4.1.10 IMG
+    - 4.1.11 Handle exceptions
+    - 4.1.12 FAQ
+  - 4.2 Python-SDK
+    - 4.2.1 Preface
+    - 4.2.2 Installation
+    - 4.2.3 Quick start
+    - 4.2.4 Initialization
+    - 4.2.5 Buckets
+      - 4.2.5.1 Create a bucket
+      - 4.2.5.2 List buckets
+      - 4.2.5.3 Determine whether a bucket exists
+      - 4.2.5.4 Manage bucket ACLs
+      - 4.2.5.5 Delete buckets
+      - 4.2.5.6 Manage lifecycle rules
+      - 4.2.5.7 Static website hosting
+      - 4.2.5.8 CORS
+      - 4.2.5.9 Hotlink protection
+      - 4.2.5.10 Configure logging
+    - 4.2.6 Upload objects
+      - 4.2.6.1 Overview
+      - 4.2.6.2 Simple upload
+      - 4.2.6.3 Append upload
+      - 4.2.6.4 Resumable upload
+      - 4.2.6.5 Multipart upload
+      - 4.2.6.6 Use progress bars
+      - 4.2.6.7 Upload callback
+    - 4.2.7 Download objects
+      - 4.2.7.1 Overview
+      - 4.2.7.2 Streaming download
+      - 4.2.7.3 Download to local files
+      - 4.2.7.4 Range download
+      - 4.2.7.5 Resumable download
+      - 4.2.7.6 Use progress bars
+    - 4.2.8 Manage objects
+      - 4.2.8.1 Overview
+      - 4.2.8.2 Determine whether an object exists
+      - 4.2.8.3 Manage object ACLs
+      - 4.2.8.4 Manage object metadata
+      - 4.2.8.5 List objects
+      - 4.2.8.6 Query objects
+      - 4.2.8.7 Delete objects
+      - 4.2.8.8 Copy objects
+    - 4.2.9 Authorized access
+    - 4.2.10 Chinese characters and time
+    - 4.2.11 IMG
+    - 4.2.12 Handle exceptions
+  - 4.3 PHP-SDK
+    - 4.3.1 Preface
+    - 4.3.2 Installation
+    - 4.3.3 Initialization
+    - 4.3.4 Getting Started
+    - 4.3.5 Buckets
+      - 4.3.5.1 Create buckets
+      - 4.3.5.2 List buckets
+      - 4.3.5.3 Determine whether a bucket exists
+      - 4.3.5.4 Manage the ACL of a bucket
+      - 4.3.5.5 Delete buckets
+      - 4.3.5.6 Manage lifecycle rules
+      - 4.3.5.7 Hotlink protection
+      - 4.3.5.8 Configure logging
+      - 4.3.5.9 Configure static website hosting
+      - 4.3.5.10 Configure CORS
+    - 4.3.6 Upload objects
+      - 4.3.6.1 Overview
+      - 4.3.6.2 Simple upload
+      - 4.3.6.3 Append upload
+      - 4.3.6.4 Multipart upload
+      - 4.3.6.5 Upload callback
+    - 4.3.7 Download objects
+      - 4.3.7.1 Overview
+      - 4.3.7.2 Download to local files
+      - 4.3.7.3 Download objects to local memory
+      - 4.3.7.4 Range download
+      - 4.3.7.5 Conditional download
+    - 4.3.8 Manage objects
+      - 4.3.8.1 Overview
+      - 4.3.8.2 Determine whether an object exists
+      - 4.3.8.3 Manage the ACL of an object
+      - 4.3.8.4 Manage object metadata
+      - 4.3.8.5 List objects
+      - 4.3.8.6 Delete objects
+      - 4.3.8.7 Copy objects
+    - 4.3.9 Authorized access
+    - 4.3.10 IMG
+    - 4.3.11 Error handling
+  - 4.4 C-SDK
+    - 4.4.1 Preface
+    - 4.4.2 Installation
+    - 4.4.3 Initialization
+    - 4.4.4 Getting Started
+    - 4.4.5 Buckets
+      - 4.4.5.1 Create buckets
+      - 4.4.5.2 List buckets
+      - 4.4.5.3 Manage bucket ACLs
+      - 4.4.5.4 Delete buckets
+      - 4.4.5.5 Manage lifecycle rules
+      - 4.4.5.6 CORS
+      - 4.4.5.7 Configure logging
+      - 4.4.5.8 Configure hotlink protection
+      - 4.4.5.9 Configure static website hosting
+    - 4.4.6 Upload objects
+      - 4.4.6.1 Overview
+      - 4.4.6.2 Simple upload
+      - 4.4.6.3 Append upload
+      - 4.4.6.4 Resumable upload
+      - 4.4.6.5 Multipart upload
+      - 4.4.6.6 Use progress bars
+      - 4.4.6.7 Upload callback
+    - 4.4.7 Download objects
+      - 4.4.7.1 Overview
+      - 4.4.7.2 Download to local files
+      - 4.4.7.3 Download to local memory
+      - 4.4.7.4 Range download
+      - 4.4.7.5 Resumable download
+      - 4.4.7.6 Use progress bars
+    - 4.4.8 Manage objects
+      - 4.4.8.1 Overview
+      - 4.4.8.2 Manage object ACLs
+      - 4.4.8.3 Manage object metadata
+      - 4.4.8.4 List objects
+      - 4.4.8.5 Delete objects
+      - 4.4.8.6 Copy objects
+    - 4.4.9 Authorized access
+    - 4.4.10 IMG
+    - 4.4.11 Error handling
+  - 4.5 Go-SDK
+    - 4.5.1 Preface
+    - 4.5.2 Installation
+    - 4.5.3 Initialization
+    - 4.5.4 Quick start
+    - 4.5.5 Buckets
+      - 4.5.5.1 Create buckets
+      - 4.5.5.2 List buckets
+      - 4.5.5.3 Manage bucket ACLs
+      - 4.5.5.4 Delete buckets
+      - 4.5.5.5 Manage lifecycle rules
+      - 4.5.5.6 Hotlink protection
+      - 4.5.5.7 Configure logging
+      - 4.5.5.8 Static website hosting
+      - 4.5.5.9 CORS
+    - 4.5.6 Upload objects
+      - 4.5.6.1 Overview
+      - 4.5.6.2 Simple upload
+      - 4.5.6.3 Append upload
+      - 4.5.6.4 Resumable upload
+      - 4.5.6.5 Multipart upload
+      - 4.5.6.6 Use a progress bar
+    - 4.5.7 Download objects
+      - 4.5.7.1 Overview
+      - 4.5.7.2 Streaming download
+      - 4.5.7.3 Range download
+      - 4.5.7.4 Download to local files
+      - 4.5.7.5 Resumable download
+      - 4.5.7.6 Conditional download
+      - 4.5.7.7 Use a progress bar
+    - 4.5.8 Manage objects
+      - 4.5.8.1 Overview
+      - 4.5.8.2 Determine whether an object exists
+      - 4.5.8.3 Manage object ACLs
+      - 4.5.8.4 Manage object metadata
+      - 4.5.8.5 List objects
+      - 4.5.8.6 Delete objects
+      - 4.5.8.7 Copy objects
+    - 4.5.9 Authorized access
+    - 4.5.10 IMG
+    - 4.5.11 Error handling
+- 5 Obtain an endpoint
+- 6 Obtain an AccessKey pair
+
+## 1 Usage notes
 
 Before using an OSS API to implement a specific function, developers need to understand the two methods that are used to call OSS API operations and choose the appropriate method according to the actual situation. Import ant If you encounter problems during use, contact Alibaba Cloud technical support. OSS API operations can be called by using ASAPI or OSS SDKs. Select an appropriate calling method based on your actual scenarios. If you want to perform operations on OSS buckets in a resource set of a specified organization, such as creating buckets, use ASAPI SDKs to call the corresponding OSS API operation. For more information, see related topics in ASAPI Developer Guide of OSS Developer Guide. If you want to perform operations on objects (such as object upload) in a bucket without the resource set and organization specified, you can use an OSS SDK to call the specific operation. For more information, see related topics in SDK Reference of OSS Developer Guide. Import ant To perform operations on objects in a bucket, you must have the required permissions.
 
-## API reference
+## 2 API reference
 
-### Overview
+### 2.1 Overview
 
 Apsara Stack Object Storage Service (OSS) is a secure, cost-effective, and highly reliable cloud storage service. It enables you to store a large amount of data in the cloud. You can upload data to and download data from OSS anytime, anywhere, and on any Internet device by calling the simple RESTful APIs. OSS enables you to develop a variety of services that are capable of processing large amounts of data. These services include multimedia sharing websites, online storage, and personal and corporate data backups. Not e Before you call these operations, ensure that you understand the OSS service instructions and usage agreements. Instructions OSS API reference provides request syntax, parameters, sample requests, and sample responses for operations. To implement secondary development, use SDK packages. For more information about how to install and use SDK, see OSS SDK reference. Terms
 
@@ -27,9 +328,9 @@ Apsara Stack Object Storage Service (OSS) is a secure, cost-effective, and highl
 | endpoint | The domain name used to access OSS. OSS uses HTTP RESTful APIs to provide services. Different regions are accessed by using different endpoints. A region has different endpoints for access over the internal network and for access over the Internet. For more information, see Obtain an endpoint. |
 | AccessKey | The access credential that is used to identify the requester. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. For more information, see Obtain an AccessKey pair. |
 
-### Access control
+### 2.2 Access control
 
-2.2.1. Authenticate users by using signatures OSS uses an AccessKey pair, which includes an AccessKey ID and an AccessKey secret to implement symmetric encryption and verify the identity of a requester. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. Not e For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. AccessKey pairs can be categorized based on the account types. AccessKey pair of an Alibaba Cloud account: The AccessKey pair of an Alibaba Cloud account has full permissions on its resources. AccessKey pair of a RAM user: A RAM user is created and authorized by an Alibaba Cloud account. The AccessKey pair of a RAM user has limited permissions on specified resources. AccessKey pair of an STS temporary access credential: A temporary access credential is generated by an Alibaba Cloud account or a RAM user. The AccessKey pair of a temporary credential has limited permissions on specified resources within the validity period of the credential. An STS temporary access credential becomes invalid after its validity period is exceeded. Before you send a request to OSS as an individual user, you must generate a signature string in the specified format for the request and use your AccessKey secret to encrypt the signature string and generate a verification code. After OSS receives the request, OSS finds the AccessKey secret based on your AccessKey ID, and uses the AccessKey secret to decrypt the signature string and verification code. Then, OSS calculates a verification code and compares it against the decrypted verification code. If the two verification codes are the same, OSS determines that the request is valid. Otherwise, OSS rejects the request and returns HTTP status code 403. 2.2.2. Add signatures to the Authorization header You can include the Authorization header in the HTTP request to carry signature information and indicate that the requester has been authorized. Calculation of the Authorization header
+OSS uses an AccessKey pair, which includes an AccessKey ID and an AccessKey secret to implement symmetric encryption and verify the identity of a requester. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. Not e For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. AccessKey pairs can be categorized based on the account types. AccessKey pair of an Alibaba Cloud account: The AccessKey pair of an Alibaba Cloud account has full permissions on its resources. AccessKey pair of a RAM user: A RAM user is created and authorized by an Alibaba Cloud account. The AccessKey pair of a RAM user has limited permissions on specified resources. AccessKey pair of an STS temporary access credential: A temporary access credential is generated by an Alibaba Cloud account or a RAM user. The AccessKey pair of a temporary credential has limited permissions on specified resources within the validity period of the credential. An STS temporary access credential becomes invalid after its validity period is exceeded. Before you send a request to OSS as an individual user, you must generate a signature string in the specified format for the request and use your AccessKey secret to encrypt the signature string and generate a verification code. After OSS receives the request, OSS finds the AccessKey secret based on your AccessKey ID, and uses the AccessKey secret to decrypt the signature string and verification code. Then, OSS calculates a verification code and compares it against the decrypted verification code. If the two verification codes are the same, OSS determines that the request is valid. Otherwise, OSS rejects the request and returns HTTP status code 403. You can include the Authorization header in the HTTP request to carry signature information and indicate that the requester has been authorized. Calculation of the Authorization header
 
 ```
 Authorization = "OSS " + AccessKeyId + ":" + Signature Signature = base64(hmac-sha1(AccessKeySecret,
@@ -166,7 +467,7 @@ OSS SDK automatically implements signatures in your requests. You do not need to
 | iOS SDK | OSSModel.m |
 | Android SDK | OSSUtils.java |
 
-FAQ Example: Calculate the Content-MD5 value of message content "123456789". Correct method:
+Example: Calculate the Content-MD5 value of message content "123456789". Correct method:
 1. Calculate the 128-bit MD5 hash.
 2. Encode the 128-bit MD5 hash (but not the 32-bit string) in Base64.
 Python is used in this example. Correct calculation code:
@@ -193,7 +494,7 @@ Result of encoding the incorrect MD5 value in Base64:
 >>> base64.b64encode(hash.hexdigest()) 'NzgxZTVlMjQ1ZDY5YjU2Njk3OWI4NmUyOGQyM2YyYzc='
 ```
 
-2.2.3. Generate a signed URL In addition to using an Authorization field in the header, you can also add signature information to a URL so that you can forward the URL to a third party for authorized access. Implementation The following code provides an example on how to generate a signed URL:
+In addition to using an Authorization field in the header, you can also add signature information to a URL so that you can forward the URL to a third party for authorized access. Implementation The following code provides an example on how to generate a signed URL:
 
 ```
 http://oss-example.regionid.example.com/oss-api.pdf? AccessKeyId=AccessKeyId&Expires=1141889120&Signature=vjb***%3D
@@ -237,7 +538,7 @@ OSS SDK provides methods for adding a signature to a URL. For more information, 
 | JavaScript SDK | signatureUrl | object.js |
 | C SDK | oss_gen_signed_url | oss_object.c |
 
-Detail analysis If you adopt the approach of generating a signed URL, the authorized data is exposed on the Internet before the authorization period is exceeded. We recommend that you assess the use risks in advance. You can add a signature to a URL in PUT and GET requests. When a signature is added to a URL, the sequence of the Signature, Expires, and AccessKeyId parameters can be swapped. If one or more of the Signature, Expires, and AccessKeyId parameters are missing, 403 Forbidden is returned. Error code: AccessDenied. If the current access time is later than the Expires value that is set in the request or the time format is invalid, 403 Forbidden is returned. Error code: AccessDenied. If a URL includes one or more of the Signature, Expires, and AccessKeyId parameters and the header includes signature information, 400 Bad Request is returned. Error code: InvalidArgument. When the signature string is generated, Date is replaced by Expires, but the headers such as content-type and content-md5 defined in the preceding section are still included. (Although Date still exists in the request header, you do not need to add Date to the signature string.) 2.2.4. Authorize temporary access OSS allows you to use STS to authorize temporary access. You can use STS to grant a third-party application or your RAM user an access credential that specifies the custom validity period and permissions. Introduction to STS STS is a web service that provides temporary access tokens for cloud computing users. You can use STS to grant a third-party application or federated user (whose user ID is managed by yourself) an access credential with a custom validity period and permissions. The third-party application or federated user can use the access credential to directly call the operations provided by Alibaba Cloud services or use the Alibaba Cloud service SDKs to access the operations. You do not need to expose your long-term AccessKey pair to a third-party application. You need only to generate an access token and send it to the third-party application. You can customize the permissions and validity period of this token. The access token automatically becomes invalid when it expires. The following figure uses an application as an example to show the authorization process. Authorization process Detailed solution description:
+Detail analysis If you adopt the approach of generating a signed URL, the authorized data is exposed on the Internet before the authorization period is exceeded. We recommend that you assess the use risks in advance. You can add a signature to a URL in PUT and GET requests. When a signature is added to a URL, the sequence of the Signature, Expires, and AccessKeyId parameters can be swapped. If one or more of the Signature, Expires, and AccessKeyId parameters are missing, 403 Forbidden is returned. Error code: AccessDenied. If the current access time is later than the Expires value that is set in the request or the time format is invalid, 403 Forbidden is returned. Error code: AccessDenied. If a URL includes one or more of the Signature, Expires, and AccessKeyId parameters and the header includes signature information, 400 Bad Request is returned. Error code: InvalidArgument. When the signature string is generated, Date is replaced by Expires, but the headers such as content-type and content-md5 defined in the preceding section are still included. (Although Date still exists in the request header, you do not need to add Date to the signature string.) OSS allows you to use STS to authorize temporary access. You can use STS to grant a third-party application or your RAM user an access credential that specifies the custom validity period and permissions. Introduction to STS STS is a web service that provides temporary access tokens for cloud computing users. You can use STS to grant a third-party application or federated user (whose user ID is managed by yourself) an access credential with a custom validity period and permissions. The third-party application or federated user can use the access credential to directly call the operations provided by Alibaba Cloud services or use the Alibaba Cloud service SDKs to access the operations. You do not need to expose your long-term AccessKey pair to a third-party application. You need only to generate an access token and send it to the third-party application. You can customize the permissions and validity period of this token. The access token automatically becomes invalid when it expires. The following figure uses an application as an example to show the authorization process. Authorization process Detailed solution description:
 1. Log on as an application user. You can manage your application user ID. You can customize the ID management system or use an external web account or open ID.
 AppServer can define the principle of least privilege (POLP) of each valid application user.
 2. AppServer requests a security token from STS. Before you call STS API operations, AppServer determines the POLP (described in policy syntax) of the app user and
@@ -247,9 +548,9 @@ time.
 4. AppServer returns the access credential to ClientApp. ClientApp caches this credential. When the credential becomes invalid, ClientApp must request a new valid
 access credential from AppServer. For example, if the access credential is valid for one hour, ClientApp can request AppServer to update the access credential every 30 minutes.
 5. ClientApp uses the cached access credential to call API operations provided by Alibaba Cloud services. Cloud services detect the STS access credential, verify the
-credential based on the STS service, and respond to the user request. For more information about STS security tokens, see "Role management" in RAM User Guide. The key of the process is to call the AssumeRole operation of STS to obtain a valid access credential. You can also use STS SDK to call this API operation. Use an STS credential to create a request that includes a signature After the client of the user obtains an STS temporary credential, the client of the user uses the security token and temporary AccessKey pair (AccessKey ID and AccessKey secret) in the credential to create a signature. The method to create a signature for authorized access is the same as using the AccessKey pair of a root account to add a signature to the Authorization header. Take note of the following items: The signature key used by the user is the temporary AccessKey pair (AccessKey ID and AccessKey secret) that STS provides. The user needs to add the security token to the request header or in the URI as a request parameter. Only one of these two methods can be used. If both methods are selected, OSS returns InvalidArgument. `x-oss-security-token:SecurityToken` is included in the request header. When CanonicalizedOSSHeaders of the signature is calculated, x-oss-security-token is taken into consideration. security-token=SecurityToken is included in the URL. When CanonicalizedResource of the signature is calculated, security-token is taken into consideration as a subresource. 2.2.5. Bucket ACL You can set the access control list (ACL) when you create a bucket, or modify the ACL for a created bucket. Only bucket owners can set or modify the ACL for buckets. The following list describes the ACLs for buckets: Public read/write: Any users, including anonymous users can perform the PutObject, GetObject, and DeleteObject operations on the objects in the bucket. The bucket owner is charged for these operations. Exercise caution when you specify this ACL. Public read: Only the bucket owner can perform the PutObject and DeleteObject operations on the objects in the bucket. Other users, including anonymous users can perform only the GetObject operation on the objects in the bucket. Private: Only the bucket owner can perform the PutObject, GetObject, and DeleteObject operations on the objects in the bucket. When you create a bucket, OSS sets the bucket ACL to private if you do not specify the bucket ACL. Only the bucket owner can call the PutBucketACL operation to modify the ACL of an existing bucket.
+credential based on the STS service, and respond to the user request. For more information about STS security tokens, see "Role management" in RAM User Guide. The key of the process is to call the AssumeRole operation of STS to obtain a valid access credential. You can also use STS SDK to call this API operation. Use an STS credential to create a request that includes a signature After the client of the user obtains an STS temporary credential, the client of the user uses the security token and temporary AccessKey pair (AccessKey ID and AccessKey secret) in the credential to create a signature. The method to create a signature for authorized access is the same as using the AccessKey pair of a root account to add a signature to the Authorization header. Take note of the following items: The signature key used by the user is the temporary AccessKey pair (AccessKey ID and AccessKey secret) that STS provides. The user needs to add the security token to the request header or in the URI as a request parameter. Only one of these two methods can be used. If both methods are selected, OSS returns InvalidArgument. `x-oss-security-token:SecurityToken` is included in the request header. When CanonicalizedOSSHeaders of the signature is calculated, x-oss-security-token is taken into consideration. security-token=SecurityToken is included in the URL. When CanonicalizedResource of the signature is calculated, security-token is taken into consideration as a subresource. You can set the access control list (ACL) when you create a bucket, or modify the ACL for a created bucket. Only bucket owners can set or modify the ACL for buckets. The following list describes the ACLs for buckets: Public read/write: Any users, including anonymous users can perform the PutObject, GetObject, and DeleteObject operations on the objects in the bucket. The bucket owner is charged for these operations. Exercise caution when you specify this ACL. Public read: Only the bucket owner can perform the PutObject and DeleteObject operations on the objects in the bucket. Other users, including anonymous users can perform only the GetObject operation on the objects in the bucket. Private: Only the bucket owner can perform the PutObject, GetObject, and DeleteObject operations on the objects in the bucket. When you create a bucket, OSS sets the bucket ACL to private if you do not specify the bucket ACL. Only the bucket owner can call the PutBucketACL operation to modify the ACL of an existing bucket.
 
-### Common HTTP headers
+### 2.3 Common HTTP headers
 
 This topic describes common request and response headers that are used for RESTful APIs. Common request headers In OSS, common HTTP request headers are used for RESTful APIs. These request headers can be used in all OSS requests. The following table lists the specific definitions of the request headers. Common request headers
 
@@ -275,9 +576,9 @@ Common response headers In OSS, common HTTP response headers are used for RESTfu
 | Server | The server that generates a response. Type: string Default value: AliyunOSS |
 | x-oss-request-id | The UUID that is created by the OSS server to identify the response. If you encounter any problems when you use OSS, you can contact OSS support personnel and provide this field to help them locate the problems. Type: string Default value: null |
 
-### Service-relevant operations
+### 2.4 Service-relevant operations
 
-2.4.1. GetService (ListBuckets) You can call this operation to obtain all buckets that you own. The forward slash (/) in the request structure represents the root directory. Usage notes The GetService operation is valid only for users who are authenticated. If no information for user authentication is provided in a request (anonymous access), OSS returns 403 Forbidden and error code AccessDenied. When all buckets are returned, the returned XML does not contain the Prefix, Marker, MaxKeys, IsTruncated, and NextMarker nodes. If not all results are returned, the preceding nodes are added, in which NextMarker is used to assign the marker for the subsequent query. Request structure
+You can call this operation to obtain all buckets that you own. The forward slash (/) in the request structure represents the root directory. The GetService operation is valid only for users who are authenticated. If no information for user authentication is provided in a request (anonymous access), OSS returns 403 Forbidden and error code AccessDenied. When all buckets are returned, the returned XML does not contain the Prefix, Marker, MaxKeys, IsTruncated, and NextMarker nodes. If not all results are returned, the preceding nodes are added, in which NextMarker is used to assign the marker for the subsequent query. Request structure
 
 ```
 GET / HTTP/1.1 Host: oss.example.com Date: GMT Date Authorization: SignatureValue
@@ -378,15 +679,15 @@ HTTP/1.1 200 OK Date: Thu, 15 May 2014 11:18:32 GMT Content-Type: application/xm
 </ListAllMyBucketsResult>
 ```
 
-### Bucket-relevant operations
+### 2.5 Bucket-relevant operations
 
-2.5.1. PutBucket You can call this operation to create a bucket. The region where the new bucket is located is consistent with the region in the endpoint that is contained in a request. After the data center of the bucket is determined, all objects in this bucket are stored in the corresponding region. Request structure
+You can call this operation to create a bucket. The region where the new bucket is located is consistent with the region in the endpoint that is contained in a request. After the data center of the bucket is determined, all objects in this bucket are stored in the corresponding region. Request structure
 
 ```
 PUT / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date x-oss-acl: Permission Authorization: SignatureValue
 ```
 
-Usage notes When you call the PutBucket operation, take note of the following items: Anonymous access is not supported. You can create up to 100 buckets in the same region by using an Alibaba Cloud account. Request headers
+When you call the PutBucket operation, take note of the following items: Anonymous access is not supported. You can create up to 100 buckets in the same region by using an Alibaba Cloud account. Request headers
 
 | Header | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -412,13 +713,13 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 03:15:40 GMT Location: /*** Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.5.2. PutBucketACL You can call this operation to modify the access control list (ACL) of a bucket. Request structure
+You can call this operation to modify the access control list (ACL) of a bucket. Request structure
 
 ```
 PUT /? acl HTTP/1.1 x-oss-acl: Permission Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
-Usage notes When you call the PutBucketAcl operation, take note of the following items: To call this operation, you must have write permissions on the bucket. PutBucketAcl uses the overwriting semantics. A new ACL overwrites the existing one. If the specified bucket for which you want to set ACL does not exist when you call this operation, a new bucket is created. Request headers
+When you call the PutBucketAcl operation, take note of the following items: To call this operation, you must have write permissions on the bucket. PutBucketAcl uses the overwriting semantics. A new ACL overwrites the existing one. If the specified bucket for which you want to set ACL does not exist when you call this operation, a new bucket is created. Request headers
 
 | Header | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -449,7 +750,7 @@ HTTP/1.1 400 Bad Request x-oss-request-id: 5***9 Date: Fri, 24 Feb 2012 03:55:00
 </Error>
 ```
 
-2.5.3. PutBucketLogging Bucket owners can enable logging for their buckets. When this feature is enabled, OSS automatically records detailed information about the requests to this bucket, and follows the user-specified rules to write access logs as an object to the user-specified bucket on an hourly basis. Import ant OSS provides logging for bucket owners to understand and analyze access to buckets. OSS does not guarantee that the bucket access logs contain all access records. Usage notes The source bucket to which an object belongs and the destination bucket where the processed object is stored must belong to the same user. To disable logging for a bucket, you need only to send a request that contains an empty BucketLoggingStatus element. For more information about the specific method, see the following sample request. All PutBucketLogging requests must include signatures. Anonymous access is not supported. When the source bucket is deleted, the corresponding logging rules are also deleted. OSS generates bucket access log objects on an hourly basis. However, requests in the previous hour may be recorded in the log object generated for the subsequent hour. In the naming conventions for log objects generated by the OSS, UniqueString is just a UUID that OSS generates to uniquely identify the object. Each time OSS generates a bucket access log object, OSS performs a PUT operation and records the storage space that the object uses. However, OSS does not record the traffic generated by the PUT operation. After log objects are generated, you can perform operations on these objects as common objects. OSS ignores all query string parameters whose values contain the x- prefix. However, these parameters are recorded in access log objects. To identify a special request from a large number of access logs, you can add a query string parameter whose value contains the x- prefix to the URL of the request. Example
+Bucket owners can enable logging for their buckets. When this feature is enabled, OSS automatically records detailed information about the requests to this bucket, and follows the user-specified rules to write access logs as an object to the user-specified bucket on an hourly basis. Import ant OSS provides logging for bucket owners to understand and analyze access to buckets. OSS does not guarantee that the bucket access logs contain all access records. The source bucket to which an object belongs and the destination bucket where the processed object is stored must belong to the same user. To disable logging for a bucket, you need only to send a request that contains an empty BucketLoggingStatus element. For more information about the specific method, see the following sample request. All PutBucketLogging requests must include signatures. Anonymous access is not supported. When the source bucket is deleted, the corresponding logging rules are also deleted. OSS generates bucket access log objects on an hourly basis. However, requests in the previous hour may be recorded in the log object generated for the subsequent hour. In the naming conventions for log objects generated by the OSS, UniqueString is just a UUID that OSS generates to uniquely identify the object. Each time OSS generates a bucket access log object, OSS performs a PUT operation and records the storage space that the object uses. However, OSS does not record the traffic generated by the PUT operation. After log objects are generated, you can perform operations on these objects as common objects. OSS ignores all query string parameters whose values contain the x- prefix. However, these parameters are recorded in access log objects. To identify a special request from a large number of access logs, you can add a query string parameter whose value contains the x- prefix to the URL of the request. Example
 
 | http://oss-example.regionid.example.com/aliyun-logo.png |   |
 |---|---|
@@ -547,7 +848,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 04 May 2012 04:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.5.4. PutBucketWebsite You can call this operation to set the static website hosting mode for a bucket. Usage notes Static websites are the websites where all web pages consist of static content, such as scripts in JavaScript run on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and APS.NET content. After a bucket is set to the static website hosting mode, OSS returns the index page for anonymous access to the root domain name of the static website, and returns the result of GetBucket for signed access to the root domain name of the static website. Request structure
+You can call this operation to set the static website hosting mode for a bucket. Static websites are the websites where all web pages consist of static content, such as scripts in JavaScript run on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and APS.NET content. After a bucket is set to the static website hosting mode, OSS returns the index page for anonymous access to the root domain name of the static website, and returns the result of GetBucket for signed access to the root domain name of the static website. Request structure
 
 ```xml
 PUT /? website HTTP/1.1 Date: GMT Date Content-Length: ContentLength Content-Type: application/xml Host: BucketName.regionid.example.com Authorization: SignatureValue <? xml version="1.0" encoding="UTF-8"? > <WebsiteConfiguration>
@@ -742,7 +1043,7 @@ PUT /? website HTTP/1.1 Date: Fri, 27 Jul 2018 09:03:18 GMT Content-Length: 2064
 </WebsiteConfiguration> HTTP/1.1 200 OK Server: AliyunOSS Date: Fri, 27 Jul 2018 09:03:18 GMT Content-Length: 0 Connection: keep-alive x-oss-request-id: 5B5ADFD6ED3CC49176CBE29D x-oss-server-time: 47
 ```
 
-2.5.5. PutBucketReferer You can call this operation to configure a Referer whitelist and specify whether to allow a request whose Refer field is empty. Usage notes PutBucketReferer replaces the existing configured whitelist with the whitelist specified by RefererList. When empty RefererList that contains no Referer request elements is uploaded, this operation overwrites the configured whitelist. The existing RefererList is deleted. Request structure
+You can call this operation to configure a Referer whitelist and specify whether to allow a request whose Refer field is empty. PutBucketReferer replaces the existing configured whitelist with the whitelist specified by RefererList. When empty RefererList that contains no Referer request elements is uploaded, this operation overwrites the configured whitelist. The existing RefererList is deleted. Request structure
 
 ```xml
 PUT /? referer HTTP/1.1 Date: GMT Date Content-Length: ContentLength Content-Type: application/xml Host: BucketName.oss.example.com Authorization: SignatureValue <? xml version="1.0" encoding="UTF-8"? > <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer >
@@ -782,7 +1083,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 04 May 2012 03:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.5.6. PutBucketLifecycle Configures lifecycle for a bucket. After a lifecycle rule is enabled, Object Storage Service (OSS) automatically deletes objects that match the rule or converts the storage class for the objects based on the rule on a regular basis. Usage notes When you call the PutBucketLifecycle operation, take note of the following items: Only the bucket owner or RAM users that have the PutBucketLifecycle permission can initiate a PutBucketLifecycle request. If no lifecycle rules are configured for a bucket, a lifecycle rule is created after you call PutBucketLifecycle. If a lifecycle rule is configured for the bucket, a new lifecycle rule is created and the existing lifecycle rule is overwritten. PutBucketLifecycle uses overwriting semantics. New lifecycle rules overwrite the existing rules. To add lifecycle rules for a bucket, call GetBucketLifecycle to obtain the existing lifecycle configurations of the bucket, add new lifecycle configurations, and call PutBucketLifecycle to update the lifecycle configurations for the bucket. When you call the PutBucketLifecycle operation, you can set a validity period or expiration date for objects or parts that are uploaded in incomplete multipart upload tasks. Request syntax
+Configures lifecycle for a bucket. After a lifecycle rule is enabled, Object Storage Service (OSS) automatically deletes objects that match the rule or converts the storage class for the objects based on the rule on a regular basis. When you call the PutBucketLifecycle operation, take note of the following items: Only the bucket owner or RAM users that have the PutBucketLifecycle permission can initiate a PutBucketLifecycle request. If no lifecycle rules are configured for a bucket, a lifecycle rule is created after you call PutBucketLifecycle. If a lifecycle rule is configured for the bucket, a new lifecycle rule is created and the existing lifecycle rule is overwritten. PutBucketLifecycle uses overwriting semantics. New lifecycle rules overwrite the existing rules. To add lifecycle rules for a bucket, call GetBucketLifecycle to obtain the existing lifecycle configurations of the bucket, add new lifecycle configurations, and call PutBucketLifecycle to update the lifecycle configurations for the bucket. When you call the PutBucketLifecycle operation, you can set a validity period or expiration date for objects or parts that are uploaded in incomplete multipart upload tasks.
 
 ```xml
 PUT /?lifecycle HTTP/1.1 Date: GMT Date Content-Length: ContentLength Content-Type: application/xml Authorization: SignatureValue Host: BucketName.oss.example.com <?xml version="1.0" encoding="UTF-8"?> <LifecycleConfiguration>
@@ -848,7 +1149,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:10 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.5.7. GetBucket (ListObjects) You can call this operation to list the information about all objects in a bucket. Detail analysis User metadata of objects is not returned for the GetBucket request. If listing cannot be complete at a time because of the max-keys setting, `<NextMarker>` is added to the returned result, which indicates that the subsequent listing can start from this marker. The value of NextMarker is still in the list result. During a conditional query, even if the marker does not exist in the list, items after the marker are returned in alphabetical order. If the value of max-keys is smaller than 0 or greater than 1000, OSS returns 400 Bad Request and error code InvalidArgument. The prefix and marker parameters are used to list the returned objects by page. The parameter value must be smaller than 1,024 bytes in length. If prefix is set to a folder name in the request, the objects whose names contain this prefix are listed, including all objects and subfolders in the folder. If prefix is set to a folder name and delimiter is set to a forward slash (/) in the request, the names of the objects and subfolders in the folder are listed in the CommonPrefixes element. Objects and subfolders are not listed. For example, a bucket contains the following objects: fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. If prefix is set to fun/, the three objects are returned. If prefix is set to fun/ and delimiter is set to a forward slash (/), fun/test.jpg and fun/movie/are returned. Request structure
+You can call this operation to list the information about all objects in a bucket. Detail analysis User metadata of objects is not returned for the GetBucket request. If listing cannot be complete at a time because of the max-keys setting, `<NextMarker>` is added to the returned result, which indicates that the subsequent listing can start from this marker. The value of NextMarker is still in the list result. During a conditional query, even if the marker does not exist in the list, items after the marker are returned in alphabetical order. If the value of max-keys is smaller than 0 or greater than 1000, OSS returns 400 Bad Request and error code InvalidArgument. The prefix and marker parameters are used to list the returned objects by page. The parameter value must be smaller than 1,024 bytes in length. If prefix is set to a folder name in the request, the objects whose names contain this prefix are listed, including all objects and subfolders in the folder. If prefix is set to a folder name and delimiter is set to a forward slash (/) in the request, the names of the objects and subfolders in the folder are listed in the CommonPrefixes element. Objects and subfolders are not listed. For example, a bucket contains the following objects: fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. If prefix is set to fun/, the three objects are returned. If prefix is set to fun/ and delimiter is set to a forward slash (/), fun/test.jpg and fun/movie/are returned. Request structure
 
 ```
 GET / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1067,7 +1368,7 @@ HTTP/1.1 200 OK Server: AliyunOSS Date: Tue, 26 May 2020 08:39:48 GMT Content-Ty
 </ListBucketResult>
 ```
 
-2.5.8. GetBucketAcl You can call this operation to obtain the access control list (ACL) of a bucket. Request structure
+You can call this operation to obtain the access control list (ACL) of a bucket. Request structure
 
 ```
 GET /? acl HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1104,7 +1405,7 @@ HTTP/1.1 200 OK x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 04:11:23 GMT Cont
 </AccessControlPolicy>
 ```
 
-2.5.9. GetBucketLocation You can call this operation to view the location information about the data center to which a bucket belongs. Request structure
+You can call this operation to view the location information about the data center to which a bucket belongs. Request structure
 
 ```
 GET /? location HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1128,7 +1429,7 @@ Sample responses
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Fri, 15 Mar 2013 05:31:04 GMT Connection: keep-alive Content-Length: 90 Server: AliyunOSS <? xml version="1.0" encoding="UTF-8"? > <LocationConstraint xmlns="http://doc.oss-cn-hangzhou.aliyuncs.com">oss-cn-hangzhou</LocationConstraint >
 ```
 
-2.5.10. GetBucketInfo You can call this operation to view the information about a bucket. You can view the following information when you call GetBucketInfo: The time when the bucket was created The public endpoint The internal endpoint The bucket owner information The bucket access control list (ACL) Request structure
+You can call this operation to view the information about a bucket. You can view the following information when you call GetBucketInfo: The time when the bucket was created The public endpoint The internal endpoint The bucket owner information The bucket access control list (ACL) Request structure
 
 ```
 GET /? bucketInfo HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authorization: SignatureValue
@@ -1201,7 +1502,7 @@ HTTP/1.1 403 x-oss-request-id: 5***C Date: Sat, 12 Sep 2015 07:51:28 GMT Connect
 </Error>
 ```
 
-2.5.11. GetBucketLogging You can call this operation to view the logging configurations of a bucket. Request structure
+You can call this operation to view the logging configurations of a bucket. Request structure
 
 ```
 GET /? logging HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1239,7 +1540,7 @@ Sample responses for buckets that have no logging rules configured
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Fri, 04 May 2012 05:31:04 GMT Connection: keep-alive Content-Length: 110 Server: AliyunOSS <? xml version="1.0" encoding="UTF-8"? > <BucketLoggingStatus xmlns="http://doc.oss-cn-hangzhou.aliyuncs.com"> </BucketLoggingStatus>
 ```
 
-2.5.12. GetBucketWebsite You can call this operation to view the static website hosting status of a bucket. Request structure
+You can call this operation to view the static website hosting status of a bucket. Request structure
 
 ```
 GET /? website HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1284,7 +1585,7 @@ HTTP/1.1 404 x-oss-request-id: 5***B Date: Thu, 13 Sep 2012 07:56:46 GMT Connect
 </Error>
 ```
 
-2.5.13. GetBucketReferer You can call this operation to view the Referer configurations of a bucket. Request structure
+You can call this operation to view the Referer configurations of a bucket. Request structure
 
 ```
 GET /? referer HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authorization: SignatureValue
@@ -1324,7 +1625,7 @@ Sample responses to requests that exclude the Referer element
 HTTP/1.1 200 x-oss-request-id: 5***B Date: Thu, 13 Sep 2012 07:56:46 GMT Connection: keep-alive Content-Length: 308 Server: AliyunOSS <? xml version="1.0" encoding="UTF-8"? > <RefererConfiguration> <AllowEmptyReferer>true</AllowEmptyReferer > < RefererList /> </RefererConfiguration>
 ```
 
-2.5.14. GetBucketLifecycle You can call this operation to view the lifecycle configurations of a bucket.
+You can call this operation to view the lifecycle configurations of a bucket.
 
 ```
 GET /? lifecycle HTTP/1.1 Host: BucketName.oss.example.com Date: GMT Date Authorization: SignatureValue
@@ -1390,7 +1691,7 @@ HTTP/1.1 404 x-oss-request-id: 5***B Date: Mon, 14 Apr 2014 01:17:29 GMT Connect
 </Error>
 ```
 
-2.5.15. GetBucketTags Obtains the tags for a bucket. Request syntax
+Obtains the tags for a bucket.
 
 ```
 GET /?tagging Host: BucketName.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
@@ -1435,13 +1736,13 @@ Response example:
 </Tagging>
 ```
 
-2.5.16. DeleteBucket You can call this operation to delete a bucket. Request structure
+You can call this operation to delete a bucket. Request structure
 
 ```
 DELETE / HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
-Usage notes To prevent unexpected data loss, OSS does not allow users to delete non-empty buckets. If you delete a non-empty bucket, OSS returns 409 Conflict and error code BucketNotEmpty. Only the bucket owner can delete the bucket. If you delete a bucket when you are not authorized, OSS returns 403 Forbidden and error code AccessDenied. Request headers The request headers involved in the DeleteBucket operation contain only common request headers. For more information, see Common request headers. Response headers The response headers involved in the DeleteBucket operation contain only common response headers. For more information, see Common response headers. Examples Sample requests
+To prevent unexpected data loss, OSS does not allow users to delete non-empty buckets. If you delete a non-empty bucket, OSS returns 409 Conflict and error code BucketNotEmpty. Only the bucket owner can delete the bucket. If you delete a bucket when you are not authorized, OSS returns 403 Forbidden and error code AccessDenied. Request headers The request headers involved in the DeleteBucket operation contain only common request headers. For more information, see Common request headers. Response headers The response headers involved in the DeleteBucket operation contain only common response headers. For more information, see Common response headers. Examples Sample requests
 
 ```
 DELETE / HTTP/1.1 Host: ***.regionid.example.com Date: Fri, 24 Feb 2012 05:31:04 GMT Authorization: OSS q***:c***=
@@ -1453,7 +1754,7 @@ Sample responses
 HTTP/1.1 204 No Content x-oss-request-id: 534B371674E88A4D8906008B Date: Fri, 24 Feb 2012 05:31:04 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-2.5.17. DeleteBucketLogging You can call this operation to disable logging for a bucket. Request structure
+You can call this operation to disable logging for a bucket. Request structure
 
 ```
 DELETE /? logging HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1471,7 +1772,7 @@ Sample responses
 HTTP/1.1 204 No Content x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 05:35:24 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-2.5.18. DeleteBucketWebsite You can call this operation to disable static website hosting for a bucket. Request structure
+You can call this operation to disable static website hosting for a bucket. Request structure
 
 ```
 DELETE /? website HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1489,7 +1790,7 @@ Sample responses
 HTTP/1.1 204 No Content x-oss-request-id: 5***B Date: Fri, 24 Feb 2012 05:45:34 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-2.5.19. DeleteBucketTagging You can call DeleteBucketTagging to delete all tags associated with a bucket. Request syntax
+You can call DeleteBucketTagging to delete all tags associated with a bucket.
 
 ```
 DELETE /? tagging HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1510,7 +1811,7 @@ Sample response:
 HTTP/1.1 204 No Content x-oss-request-id: 5***B Date: Thu, 23 Jun 2015 15:39:18 GMT Connection: close Content-Length: 0 Server: AliyunOSS
 ```
 
-2.5.20. DeleteBucketTags Deletes the tags added for a bucket. Request syntax
+Deletes the tags added for a bucket.
 
 ```
 DELETE /?tagging HTTP/1.1 Host: BucketName.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
@@ -1540,15 +1841,15 @@ Response example:
 HTTP/1.1 204 No Content x-oss-request-id: 5C22E0EFD127F6810B1A92A8 Date: Tue, 25 Dec 2018 17:35:24 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-### Object-relevant operations
+### 2.6 Object-relevant operations
 
-2.6.1. PutObject Uploads objects. Request syntax
+Uploads objects.
 
 ```
 PUT /ObjectName HTTP/1.1 Content-Length: ContentLength Content-Type: ContentType Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
 ```
 
-Usage notes When you call the PutObject operation, take note of the following items: The object that you want to upload cannot be larger than 5 GB in size. By default, if you upload an object that has the same name as that of an accessible existing object, the existing object is overwritten by the uploaded object and 200 OK is returned. OSS does not use folders. All elements are stored as objects. You can create a simulated folder by creating an object 0 KB in size whose name ends with a forward slash (/). To ensure data integrity, Object Storage Service (OSS) provides multiple methods to check the MD5 hash of the data that you want to upload. To perform MD5 verification based on the Content-MD5 header, add the header to the request. When the Content-MD5 header value is specified in a request, OSS calculates the MD5 hash of the sent data and compares the calculated MD5 hash with the Content-MD5 value specified in the request. If the two values do not match, the operation fails and 400 (Bad Request) is returned. Request headers
+When you call the PutObject operation, take note of the following items: The object that you want to upload cannot be larger than 5 GB in size. By default, if you upload an object that has the same name as that of an accessible existing object, the existing object is overwritten by the uploaded object and 200 OK is returned. OSS does not use folders. All elements are stored as objects. You can create a simulated folder by creating an object 0 KB in size whose name ends with a forward slash (/). To ensure data integrity, Object Storage Service (OSS) provides multiple methods to check the MD5 hash of the data that you want to upload. To perform MD5 verification based on the Content-MD5 header, add the header to the request. When the Content-MD5 header value is specified in a request, OSS calculates the MD5 hash of the sent data and compares the calculated MD5 hash with the Content-MD5 value specified in the request. If the two values do not match, the operation fails and 400 (Bad Request) is returned. Request headers
 
 | Header | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1571,7 +1872,7 @@ Sample responses
 HTTP/1.1 200 OK Server: AliyunOSS Date: Sat, 21 Nov 2015 18:52:34 GMT Content-Length: 0 Connection: keep-alive x-oss-request-id: 5***A x-oss-bucket-version: 1***9 ETag: "A***2"
 ```
 
-2.6.2. GetObject You can call this operation to query an object. To call this operation, you must have read permissions on the object. Detail analysis You can specify the Range parameter in the GetObject request to implement resumable data transfer. We recommend that you use this parameter when you download large objects. If the Range parameter is specified in the request, the response contains the length of the entire object and the range of bytes returned for this operation. For example, Content-Range: bytes 0-9/44 indicates that the length of the entire object is 44 bytes and the range of bytes returned in response to the request is from byte 0 to byte 9. If the value of Range is invalid, the entire object is returned and the response returned by OSS does not include Content-Range. Parameters in the GetObject request cannot be customized for OSS to return corresponding headers in the response if the access is anonymous. To obtain an object compressed in the GZIP format, add Accept-Encoding:gzip to the display mode in the request. OSS determines whether to return data compressed in the GZIP format based on the Content-Type value and size of the object. If the object is compressed in the GZIP format, the response returned by OSS does not include the ETag value of the object. OSS supports GZIP for objects whose Content-Type header is set to one of the following values: HTML, JavaScript, CSS, XML, RSS, and JSON. The object must be at least 1 KB in size. Request syntax
+You can call this operation to query an object. To call this operation, you must have read permissions on the object. Detail analysis You can specify the Range parameter in the GetObject request to implement resumable data transfer. We recommend that you use this parameter when you download large objects. If the Range parameter is specified in the request, the response contains the length of the entire object and the range of bytes returned for this operation. For example, Content-Range: bytes 0-9/44 indicates that the length of the entire object is 44 bytes and the range of bytes returned in response to the request is from byte 0 to byte 9. If the value of Range is invalid, the entire object is returned and the response returned by OSS does not include Content-Range. Parameters in the GetObject request cannot be customized for OSS to return corresponding headers in the response if the access is anonymous. To obtain an object compressed in the GZIP format, add Accept-Encoding:gzip to the display mode in the request. OSS determines whether to return data compressed in the GZIP format based on the Content-Type value and size of the object. If the object is compressed in the GZIP format, the response returned by OSS does not include the ETag value of the object. OSS supports GZIP for objects whose Content-Type header is set to one of the following values: HTML, JavaScript, CSS, XML, RSS, and JSON. The object must be at least 1 KB in size.
 
 ```
 GET /ObjectName HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue Range: bytes=ByteRange (optional)
@@ -1642,7 +1943,7 @@ Sample response
 HTTP/1.1 200 OK x-oss-request-id: 5***1 x-oss-object-type: Normal Date: Fri, 24 Feb 2012 06:09:48 GMT Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT ETag: "5***E " Content-Length: 344606 Connection: keep-alive Content-disposition: attachment; filename:testing.txt Content-language: Chinese Content-encoding: utf-8 Content-type: text Cache-control: no-cache Expires: Fri, 24 Feb 2012 17:00:00 GMT Server: AliyunOSS [344606 bytes of object data]
 ```
 
-2.6.3. CopyObject You can call this operation to copy objects within a bucket or between different buckets in the same region. To create a copy of an existing object in Object Storage Service (OSS), you can iniate a PUT request to OSS, and add x-oss-copy-source to the PUT request to specify the source object you want to copy. OSS determines that this request is a copy operation and performs the copy operation on the server side. If the copy operation is successful, OSS returns the information of the destination object to you. You can call this operation to copy objects smaller than or equal to 1 GB. To copy an object larger than 1 GB, you must use UploadPartCopy. For more information, see UploadPartCopy. Usage notes If the source object URL is the same as the destination object URL, the metadata of the source object is replaced regardless of the value of x-oss-metadatadirective. Request headers for the CopyObject operation start with x-oss- and must be added to a string-to-sign. Objects created by using the AppendObject operation cannot be copied. Request syntax
+You can call this operation to copy objects within a bucket or between different buckets in the same region. To create a copy of an existing object in Object Storage Service (OSS), you can iniate a PUT request to OSS, and add x-oss-copy-source to the PUT request to specify the source object you want to copy. OSS determines that this request is a copy operation and performs the copy operation on the server side. If the copy operation is successful, OSS returns the information of the destination object to you. You can call this operation to copy objects smaller than or equal to 1 GB. To copy an object larger than 1 GB, you must use UploadPartCopy. For more information, see UploadPartCopy. If the source object URL is the same as the destination object URL, the metadata of the source object is replaced regardless of the value of x-oss-metadatadirective. Request headers for the CopyObject operation start with x-oss- and must be added to a string-to-sign. Objects created by using the AppendObject operation cannot be copied.
 
 ```
 PUT /DestObjectName HTTP/1.1 Host: DestBucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue x-oss-copy-source: /SourceBucketName/SourceObjectName
@@ -1689,7 +1990,7 @@ HTTP/1.1 200 OK x-oss-request-id: 5***1 Content-Type: application/xml Content-Le
 </CopyObjectResult>
 ```
 
-2.6.4. AppendObject You can call this operation to upload an object by appending the object to an existing object. Objects created by using the AppendObject operation are append objects, whereas objects uploaded by using the PutObject operation are normal objects. Usage notes You can perform AppendObject only for an append object. For example, if a normal object that shares the same name already exists and AppendObject is called, OSS returns HTTP status code 409 and error code ObjectNotAppendable. If you perform a PutObject operation on an existing append object, the append object is overwritten by a new normal object. After HeadObject is performed, OSS returns x-oss-object-type to indicate the type of the object. If HeadObject is performed on an append object, the object type is Appendable. If HeadObject is performed on an append object, OSS also returns x-oss-next-append-position and x-oss-hash-crc64ecma. In the response in XML to the GetBucket (ListObjects) request, the type of an append object is set to Appendable. The append and position parameters belong to CanonicalizedResource that must be included in signatures. Request structure
+You can call this operation to upload an object by appending the object to an existing object. Objects created by using the AppendObject operation are append objects, whereas objects uploaded by using the PutObject operation are normal objects. You can perform AppendObject only for an append object. For example, if a normal object that shares the same name already exists and AppendObject is called, OSS returns HTTP status code 409 and error code ObjectNotAppendable. If you perform a PutObject operation on an existing append object, the append object is overwritten by a new normal object. After HeadObject is performed, OSS returns x-oss-object-type to indicate the type of the object. If HeadObject is performed on an append object, the object type is Appendable. If HeadObject is performed on an append object, OSS also returns x-oss-next-append-position and x-oss-hash-crc64ecma. In the response in XML to the GetBucket (ListObjects) request, the type of an append object is set to Appendable. The append and position parameters belong to CanonicalizedResource that must be included in signatures. Request structure
 
 ```
 POST /ObjectName? append&position=Position HTTP/1.1 Content-Length: ContentLength Content-Type: ContentType Host: BucketName.oss.example.com Date: GMT Date Authorization: SignatureValue
@@ -1748,7 +2049,7 @@ Sample responses
 HTTP/1.1 200 OK Date: Wed, 08 Jul 2015 06:57:01 GMT ETag: "0***0" Connection: keep-alive Content-Length: 0 Server: AliyunOSS x-oss-hash-crc64ecma: 14741617095266562575 x-oss-next-append-position: 1717 x-oss-request-id: 5***1
 ```
 
-2.6.5. DeleteObject You can call this operation to delete an object. Usage notes When you call the DeleteObject operation, take note of the following items: You must have write permissions on the object that you want to delete. HTTP status code 204 is returned when the DeleteObject operation succeeds, regardless of whether the object exists. If the object you want to delete is a symbolic link, the DeleteObject operation deletes only the symbolic link but not the content that the link points to. Request structure
+You can call this operation to delete an object. When you call the DeleteObject operation, take note of the following items: You must have write permissions on the object that you want to delete. HTTP status code 204 is returned when the DeleteObject operation succeeds, regardless of whether the object exists. If the object you want to delete is a symbolic link, the DeleteObject operation deletes only the symbolic link but not the content that the link points to. Request structure
 
 ```
 DELETE /ObjectName HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1766,7 +2067,7 @@ Sample responses
 HTTP/1.1 204 NoContent x-oss-request-id: 5***1 Date: Fri, 24 Feb 2012 07:45:28 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.6.6. DeleteMultipleObjects You can call this operation to delete multiple objects in the same bucket by using one HTTP request. A maximum of 1,000 objects can be deleted when you call the DeleteMultipleObjects operation. This operation supports the following return modes: Verbose mode: The message body returned by OSS contains the result of each deleted object. Quiet mode: The message body returned by OSS contains only the results for objects that fail to be deleted. If all objects are deleted, no message body is returned. Detail analysis You must specify Content-Length and Content-MD5 for the DeleteMultipleObjects request. OSS verifies that the received message body is correct based on the two header values before the delete operation is performed. The Content-MD5 value of the message content (excluding headers) is obtained by calculating the 128-bit hash value and then encoding the value in Base64 based on RFC 1864. If DeleteMultipleObjects is used to delete an object that does not exist, the operation is considered to be successful. The message body for DeleteMultipleObjects can be up to 2 MB. If the size of the message body exceeds 2 MB, OSS returns the MalformedXML error code. A maximum of 1,000 objects can be deleted when you call the DeleteMultipleObjects operation. If more than 1,000 objects are requested, OSS returns the MalformedXML error code. If the Content-MD5 request header is specified, OSS calculates the MD5 hash of the received content and compares the calculated MD5 hash with the Content-MD5 header value in the request. If the two MD5 hashes are different, OSS returns InvalidDigest. Request structure
+You can call this operation to delete multiple objects in the same bucket by using one HTTP request. A maximum of 1,000 objects can be deleted when you call the DeleteMultipleObjects operation. This operation supports the following return modes: Verbose mode: The message body returned by OSS contains the result of each deleted object. Quiet mode: The message body returned by OSS contains only the results for objects that fail to be deleted. If all objects are deleted, no message body is returned. Detail analysis You must specify Content-Length and Content-MD5 for the DeleteMultipleObjects request. OSS verifies that the received message body is correct based on the two header values before the delete operation is performed. The Content-MD5 value of the message content (excluding headers) is obtained by calculating the 128-bit hash value and then encoding the value in Base64 based on RFC 1864. If DeleteMultipleObjects is used to delete an object that does not exist, the operation is considered to be successful. The message body for DeleteMultipleObjects can be up to 2 MB. If the size of the message body exceeds 2 MB, OSS returns the MalformedXML error code. A maximum of 1,000 objects can be deleted when you call the DeleteMultipleObjects operation. If more than 1,000 objects are requested, OSS returns the MalformedXML error code. If the Content-MD5 request header is specified, OSS calculates the MD5 hash of the received content and compares the calculated MD5 hash with the Content-MD5 header value in the request. If the two MD5 hashes are different, OSS returns InvalidDigest. Request structure
 
 ```xml
 POST /? delete HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Content-Length: ContentLength Content-MD5: MD5Value Authorization: SignatureValue <? xml version="1.0" encoding="UTF-8"? > <Delete>
@@ -1853,7 +2154,7 @@ Sample response
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Feb 2012 12:33:45 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.6.7. HeadObject You can call this operation to return only the metadata of a specified object without returning the object content. Detail analysis After the HeadObject request is sent, no message body is returned, regardless of whether OSS returns the 200 OK message or an error message. If you specify user metadata prefixed with x-oss-meta- when you send a PutObject request, such as x-oss-meta-location, the user metadata is returned. If the object on which you want to perform the HeadObject operation does not exist, the system returns 404 Not Found. Request syntax
+You can call this operation to return only the metadata of a specified object without returning the object content. Detail analysis After the HeadObject request is sent, no message body is returned, regardless of whether OSS returns the 200 OK message or an error message. If you specify user metadata prefixed with x-oss-meta- when you send a PutObject request, such as x-oss-meta-location, the user metadata is returned. If the object on which you want to perform the HeadObject operation does not exist, the system returns 404 Not Found.
 
 ```
 HEAD /ObjectName HTTP/1.1 Host: BucketName/regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1895,7 +2196,7 @@ Sample response
 HTTP/1.1 200 OK x-oss-request-id: 5***1 x-oss-object-type: Normal Date: Fri, 24 Feb 2012 07:32:52 GMT Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT ETag: "f***8" Content-Length: 344606 Content-Type: image/jpg Connection: keep-alive Server: AliyunOSS
 ```
 
-2.6.8. GetObjectMeta You can call this operation to query the basic metadata of an object in a bucket. The basic metadata includes the ETag, Size (object size), and LastModified. The object content is not returned. Usage notes After the GetObjectMeta request is sent, no message body is contained in the response. You must include the Object meta parameter in the request when you call the GetObjectMeta operation. Otherwise, the request is used for GetObject. If the object does not exist, OSS returns 404 Not Found. GetObjectMeta is more lightweight than HeadObject. Only some basic metadata of an object in a bucket is returned for GetObjectMeta. The basic metadata includes the ETag, Size (object size), and LastModified. The value of the Content-Length response header indicates the object size. Request structure
+You can call this operation to query the basic metadata of an object in a bucket. The basic metadata includes the ETag, Size (object size), and LastModified. The object content is not returned. After the GetObjectMeta request is sent, no message body is contained in the response. You must include the Object meta parameter in the request when you call the GetObjectMeta operation. Otherwise, the request is used for GetObject. If the object does not exist, OSS returns 404 Not Found. GetObjectMeta is more lightweight than HeadObject. Only some basic metadata of an object in a bucket is returned for GetObjectMeta. The basic metadata includes the ETag, Size (object size), and LastModified. The value of the Content-Length response header indicates the object size. Request structure
 
 ```
 GET /ObjectName? objectMeta HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1921,7 +2222,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Apr 2015 05:21:12 GMT ETag: "5***E" Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT Content-Length: 344606 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.6.9. PutObjectACL You can call this operation to modify the ACL of an object. When you call PutObjectACL, you can set the x-oss-object-acl header in the PUT request to configure ACL for an object. Only bucket owners have permissions to configure object ACL. If the operation succeeds, 200 is returned. Otherwise, the corresponding error code and message are returned. The following object ACLs are available: private, public-read, public-read-write, and default. Usage notes You can call PutObjectACL to configure ACL for an object. In addition, when you write an object, you can also include the x-oss-object-acl header in the request to configure ACL for the object. For example, you can include the x-oss-object-acl header in the request to configure the ACL for an object when you call PutObject. The object ACL takes precedence over its bucket ACL. For example, the bucket ACL is private, but the object ACL is public read/write. When the object is accessed, the object ACL takes precedence over the bucket ACL. If an object has no ACL configured, its bucket ACL applies. Request structure
+You can call this operation to modify the ACL of an object. When you call PutObjectACL, you can set the x-oss-object-acl header in the PUT request to configure ACL for an object. Only bucket owners have permissions to configure object ACL. If the operation succeeds, 200 is returned. Otherwise, the corresponding error code and message are returned. The following object ACLs are available: private, public-read, public-read-write, and default. You can call PutObjectACL to configure ACL for an object. In addition, when you write an object, you can also include the x-oss-object-acl header in the request to configure ACL for the object. For example, you can include the x-oss-object-acl header in the request to configure the ACL for an object when you call PutObject. The object ACL takes precedence over its bucket ACL. For example, the bucket ACL is private, but the object ACL is public read/write. When the object is accessed, the object ACL takes precedence over the bucket ACL. If an object has no ACL configured, its bucket ACL applies. Request structure
 
 ```
 PUT /ObjectName? acl HTTP/1.1 x-oss-object-acl: Permission Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1945,7 +2246,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Apr 2015 05:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.6.10. GetObjectACL You can call this operation to query the ACL of an object. Request structure
+You can call this operation to query the ACL of an object. Request structure
 
 ```
 GET /ObjectName? acl HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -1982,7 +2283,7 @@ HTTP/1.1 200 OK x-oss-request-id: 5***1 Date: Wed, 29 Apr 2015 05:21:12 GMT Cont
 </AccessControlPolicy>
 ```
 
-2.6.11. PostObject You can call this operation to upload an object to a specific bucket by using HTML forms. Usage notes When you call the PostObject operation, take note of the following items: To perform the PostObject operation on a bucket, you must have write permissions on the bucket. If the ACL of the bucket is public read/write, you do not need to upload the signature information. If the ACL of the bucket is not public read/write, signature verification is required for this operation. Unlike PutObject, PostObject uses an AccessKey secret to calculate the signature for a policy. The calculated signature string is used as the value of the Signature form field. OSS checks this value to verify the validity of the signature. The URL of the submitted form can be the domain name of the bucket. You do not need to specify the object in the URL. In other words, the request line is in the format of `POST / HTTP/1.1` instead of `POST /ObjectName HTTP/1.1` . OSS does not check the signature included in headers or URLs in PostObject requests. Request structure
+You can call this operation to upload an object to a specific bucket by using HTML forms. When you call the PostObject operation, take note of the following items: To perform the PostObject operation on a bucket, you must have write permissions on the bucket. If the ACL of the bucket is public read/write, you do not need to upload the signature information. If the ACL of the bucket is not public read/write, signature verification is required for this operation. Unlike PutObject, PostObject uses an AccessKey secret to calculate the signature for a policy. The calculated signature string is used as the value of the Signature form field. OSS checks this value to verify the validity of the signature. The URL of the submitted form can be the domain name of the bucket. You do not need to specify the object in the URL. In other words, the request line is in the format of `POST / HTTP/1.1` instead of `POST /ObjectName HTTP/1.1` . OSS does not check the signature included in headers or URLs in PostObject requests. Request structure
 
 ```
 POST / HTTP/1.1 Host: BucketName.regionid.example.com User-Agent: browser_data Content-Length: ContentLength Content-Type: multipart/form-data; boundary=9431149156168 --9431149156168 Content-Disposition: form-data; name="key" key --9431149156168 Content-Disposition: form-data; name="success_action_redirect" success_redirect --9431149156168 Content-Disposition: form-data; name="Content-Disposition" attachment;filename=oss_download.jpg --9431149156168 Content-Disposition: form-data; name="x-oss-meta-uuid" myuuid --9431149156168 Content-Disposition: form-data; name="x-oss-meta-tag" mytag --9431149156168 Content-Disposition: form-data; name="OSSAccessKeyId" access-key-id --9431149156168 Content-Disposition: form-data; name="policy" encoded_policy --9431149156168 Content-Disposition: form-data; name="Signature" signature --9431149156168 Content-Disposition: form-data; name="file"; filename="MyFilename.jpg" Content-Type: image/jpeg file_content --9431149156168 Content-Disposition: form-data; name="submit" Upload to OSS --9431149156168--
@@ -2083,7 +2384,7 @@ Post Signature For signature authentication, the HTML form must contain policy a
 1. Create a UTF-8 encoded policy.
 2. Encode the policy in Base64. The encoding result is the value of the policy form field, and this value is used as the string-to-sign.
 3. Use the AccessKey secret to sign the string. The signing method is the same as the method to calculate the signature in the header, which replaces the string-to-sign
-with the policy form field value. 2.6.12. Callback To enable OSS to return callback information of an object to an application server after the object is uploaded to OSS, you need only to include a callback parameter in the upload request that is sent to OSS. This topic describes how to implement upload callback in detail. Not e Operations that support callbacks include PutObject, PostObject, and CompleteMultipartUpload. Step 1: Create parameters Callback parameter A callback parameter is a Base64-encoded string (field) in the JSON format. To create a callback parameter, you must specify the URL (callbackUrl) of the server to which the callback information is sent and the content (callbackBody) of the callback information. The following table describes the JSON fields that are included in a callback parameter.
+with the policy form field value. To enable OSS to return callback information of an object to an application server after the object is uploaded to OSS, you need only to include a callback parameter in the upload request that is sent to OSS. This topic describes how to implement upload callback in detail. Not e Operations that support callbacks include PutObject, PostObject, and CompleteMultipartUpload. Step 1: Create parameters Callback parameter A callback parameter is a Base64-encoded string (field) in the JSON format. To create a callback parameter, you must specify the URL (callbackUrl) of the server to which the callback information is sent and the content (callbackBody) of the callback information. The following table describes the JSON fields that are included in a callback parameter.
 
 | Field | Description | Required |
 |---|---|---|
@@ -2328,7 +2629,7 @@ Not e The response returned by the application server to OSS must contain the Co
 HTTP/1.1 200 OK Date: Mon, 14 Sep 2015 12:37:27 GMT Content-Type: application/json Content-Length: 9 Connection: keep-alive ETag: "D8E8FCA2DC0F896FD7CB4CB0031BA249" Server: AliyunOSS x-oss-bucket-version: 1442231779 x-oss-request-id: 55F6BF87207FB30F2640C548 {"a":"b"}
 ```
 
-Not e The body of responses to some requests such as CompleteMultipartUpload contains content such as information in the XML format. If you use the upload callback feature, the original body content such as `{"a":"b"}` is overwritten. Exercise caution when you implement upload callback. If the upload callback fails, HTTP status code 203 and error code CallbackFailed are returned. This response indicates that the object is uploaded to OSS, but the callback fails. A callback failure only indicates that OSS does not receive the expected callback response. It does not indicate that the application server does not receive a callback request. For example, a callback failure occurs if the response returned by the application server is not in the JSON format. 2.6.13. PutObjectTagging You can call this operation to configure object tagging. Usage notes The object tagging feature uses a key-value pair to tag an object. When you call this operation, take note of the following items: Limits on tags You can add up to 10 tags to an object. The tags added to an object must have unique tag keys. A tag key can be up to 128 bytes in length. A tag value can be up to 256 bytes in length. Tag keys and values are case-sensitive. The key and value of a tag can contain letters, digits, spaces, and the following special characters: + - =. _:/ If you configure the tags in the HTTP header and the tags contain any of the preceding characters, you can use URL encoding to encode the keys and values of the tags. Last-Modified The Last-Modified value of an object is not updated when the object tags are changed. Request structure
+Not e The body of responses to some requests such as CompleteMultipartUpload contains content such as information in the XML format. If you use the upload callback feature, the original body content such as `{"a":"b"}` is overwritten. Exercise caution when you implement upload callback. If the upload callback fails, HTTP status code 203 and error code CallbackFailed are returned. This response indicates that the object is uploaded to OSS, but the callback fails. A callback failure only indicates that OSS does not receive the expected callback response. It does not indicate that the application server does not receive a callback request. For example, a callback failure occurs if the response returned by the application server is not in the JSON format. You can call this operation to configure object tagging. The object tagging feature uses a key-value pair to tag an object. When you call this operation, take note of the following items: Limits on tags You can add up to 10 tags to an object. The tags added to an object must have unique tag keys. A tag key can be up to 128 bytes in length. A tag value can be up to 256 bytes in length. Tag keys and values are case-sensitive. The key and value of a tag can contain letters, digits, spaces, and the following special characters: + - =. _:/ If you configure the tags in the HTTP header and the tags contain any of the preceding characters, you can use URL encoding to encode the keys and values of the tags. Last-Modified The Last-Modified value of an object is not updated when the object tags are changed. Request structure
 
 ```xml
 PUT /objectname? tagging Content-Length: 114 Host: bucketname.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue <Tagging>
@@ -2374,7 +2675,7 @@ Sample responses
 200 (OK) content-length: 0 server: AliyunOSS x-oss-request-id: 5C8F55ED461FB4A64C000004 date: Mon, 18 Mar 2019 08:25:17 GMT
 ```
 
-2.6.14. GetObjectTagging You can call this operation to query the tag information of an object. Request structure
+You can call this operation to query the tag information of an object. Request structure
 
 ```
 GET /objectname? tagging Host: bucketname.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
@@ -2413,7 +2714,7 @@ Sample responses
 </Tagging>
 ```
 
-2.6.15. DeleteObjectTagging You can call this operation to delete tags of a specific object. Request structure
+You can call this operation to delete tags of a specific object. Request structure
 
 ```
 DELETE /objectname? tagging Host: bucketname.oss-cn-hangzhou.aliyuncs.com Date: GMT Date Authorization: SignatureValue
@@ -2431,9 +2732,9 @@ Sample responses
 204 (No Content) content-length: 0 server: AliyunOSS x-oss-request-id: 5CAC0AD16D0232E2051B**** date: Tue, 09 Apr 2019 03:00:33 GMT
 ```
 
-### Multipart upload-relevant operations
+### 2.7 Multipart upload-relevant operations
 
-2.7.1. Overview OSS provides multipart upload in addition to operations such as PutObject and PostObject. Multipart upload can be used in the following scenarios but is not limited to: Resumable upload of the object is required. The size of the object you want to upload is larger than 5 GB. The OSS server is frequently disconnected due to poor network conditions. The size of the object you want to upload is unknown. 2.7.2. InitiateMultipartUpload Before you use multipart upload to upload data, you must call the InitiateMultipartUpload operation to notify OSS to initiate a multipart upload task. The OSS server returns a globally unique upload ID for the InitiateMultipartUpload operation. The upload ID uniquely identifies the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task based on this upload ID. Usage notes When you perform this operation to calculate the signature for authentication, you must add ? uploads to CanonicalizedResource. Request structure
+OSS provides multipart upload in addition to operations such as PutObject and PostObject. Multipart upload can be used in the following scenarios but is not limited to: Resumable upload of the object is required. The size of the object you want to upload is larger than 5 GB. The OSS server is frequently disconnected due to poor network conditions. The size of the object you want to upload is unknown. Before you use multipart upload to upload data, you must call the InitiateMultipartUpload operation to notify OSS to initiate a multipart upload task. The OSS server returns a globally unique upload ID for the InitiateMultipartUpload operation. The upload ID uniquely identifies the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task based on this upload ID. When you perform this operation to calculate the signature for authentication, you must add ? uploads to CanonicalizedResource. Request structure
 
 ```
 POST /ObjectName? uploads HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT date Authorization: SignatureValue
@@ -2483,7 +2784,7 @@ HTTP/1.1 200 OK Content-Length: 230 Server: AliyunOSS Connection: keep-alive x-o
 </InitiateMultipartUploadResult>
 ```
 
-2.7.3. UploadPart After initializing a MultipartUpload task, you can call this operation to upload data in parts based on the specified object name and upload ID. Usage notes Before you call UploadPart to upload parts, you must call InitiateMultipartUpload to obtain an upload ID issued by the OSS server. The part number ranges from 1 to 10000. If a part number is not within this range, OSS returns the InvalidArgument error code. In the multipart upload mode, the minimum size of each part except the last part is 100 KB. The UploadPart operation does not immediately verify the sizes of the uploaded parts because this operation cannot immediately determine which part is the last part. The size of the uploaded part is verified only when multipart upload is complete. OSS includes the MD5 hash for each part received by the server in the ETag header and returns the ETag header to the user. Request structure
+After initializing a MultipartUpload task, you can call this operation to upload data in parts based on the specified object name and upload ID. Before you call UploadPart to upload parts, you must call InitiateMultipartUpload to obtain an upload ID issued by the OSS server. The part number ranges from 1 to 10000. If a part number is not within this range, OSS returns the InvalidArgument error code. In the multipart upload mode, the minimum size of each part except the last part is 100 KB. The UploadPart operation does not immediately verify the sizes of the uploaded parts because this operation cannot immediately determine which part is the last part. The size of the uploaded part is verified only when multipart upload is complete. OSS includes the MD5 hash for each part received by the server in the ETag header and returns the ETag header to the user. Request structure
 
 ```
 PUT /ObjectName? partNumber=PartNumber&uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Authorization: SignatureValue
@@ -2501,7 +2802,7 @@ Sample responses
 HTTP/1.1 200 OK Server: AliyunOSS Connection: keep-alive ETag: 7***9 x-oss-request-id: 3***a Date: Wed, 22 Feb 2012 08:32:21 GMT
 ```
 
-2.7.4. UploadPartCopy You can call this operation to copy data from an existing object to upload a part. Usage notes To copy an object larger than 1 GB, use UploadPartCopy. For more information about how to upload an object smaller than 1 GB, see CopyObject. When you call UploadPartCopy, take note of the following items: You cannot call AppendObject to copy data from append objects. When you call UploadPartCopy, the source and destination buckets must be located within the same region. Before you call UploadPart to upload a part, you must call InitiateMultipartUpload to obtain an upload ID issued by the OSS server. In multipart upload mode, each part except the last part must be larger than 100 KB in size. The size of each part is not verified when you call UploadPart because not all parts are uploaded and the system does not know which part is the last part. The size of each part is verified only when you call CompleteMultipartUpload. Request structure
+You can call this operation to copy data from an existing object to upload a part. To copy an object larger than 1 GB, use UploadPartCopy. For more information about how to upload an object smaller than 1 GB, see CopyObject. When you call UploadPartCopy, take note of the following items: You cannot call AppendObject to copy data from append objects. When you call UploadPartCopy, the source and destination buckets must be located within the same region. Before you call UploadPart to upload a part, you must call InitiateMultipartUpload to obtain an upload ID issued by the OSS server. In multipart upload mode, each part except the last part must be larger than 100 KB in size. The size of each part is not verified when you call UploadPart because not all parts are uploaded and the system does not know which part is the last part. The size of each part is verified only when you call CompleteMultipartUpload. Request structure
 
 ```
 PUT /ObjectName? partNumber=PartNumber&uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Authorization: SignatureValue x-oss-copy-source: /SourceBucketName/SourceObjectName x-oss-copy-source-range:bytes=first-last
@@ -2546,7 +2847,7 @@ HTTP/1.1 200 OK Server: AliyunOSS Connection: keep-alive x-oss-request-id: 3***a
 </CopyPartResult>
 ```
 
-2.7.5. CompleteMultipartUpload You can call this operation to complete multipart upload of an object after all parts are uploaded. Usage notes When you call the CompleteMultipartUpload operation, you must provide a complete list of all valid parts, which includes the part number and ETag of each part. After OSS receives the list of parts, OSS verifies the validity of each part one by one. After all these parts are validated, OSS combines these parts into a complete object. Confirm the size of each part When you perform the CompleteMultipartUpload operation, OSS checks whether each part except the last part is larger than or equal to 100 KB in size and verifies the part number and ETag of each part that are provided in the part list. Therefore, when a part is uploaded, the client must record not only the part number of the part but also the ETag value of the part returned from the server. Handle requests It may take a while for OSS to process the CompleteMultipartUpload request. If the client is disconnected from OSS during this period, OSS continues to process the request. PartNumber OSS verifies the value of PartNumber when you call the CompleteMultipartUpload operation. The value of PartNumber ranges from 1 to 10000. The part numbers listed in the request do not have to be consecutive but must be sorted in ascending order. For example, if the part number of the first part is 1, the part number of the second part can be 5. UploadId An object can be uploaded by multiple upload tasks that have independent upload IDs. When one upload task is complete, the corresponding upload ID becomes invalid and the upload IDs of other upload tasks are not affected. Request structure
+You can call this operation to complete multipart upload of an object after all parts are uploaded. When you call the CompleteMultipartUpload operation, you must provide a complete list of all valid parts, which includes the part number and ETag of each part. After OSS receives the list of parts, OSS verifies the validity of each part one by one. After all these parts are validated, OSS combines these parts into a complete object. Confirm the size of each part When you perform the CompleteMultipartUpload operation, OSS checks whether each part except the last part is larger than or equal to 100 KB in size and verifies the part number and ETag of each part that are provided in the part list. Therefore, when a part is uploaded, the client must record not only the part number of the part but also the ETag value of the part returned from the server. Handle requests It may take a while for OSS to process the CompleteMultipartUpload request. If the client is disconnected from OSS during this period, OSS continues to process the request. PartNumber OSS verifies the value of PartNumber when you call the CompleteMultipartUpload operation. The value of PartNumber ranges from 1 to 10000. The part numbers listed in the request do not have to be consecutive but must be sorted in ascending order. For example, if the part number of the first part is 1, the part number of the second part can be 5. UploadId An object can be uploaded by multiple upload tasks that have independent upload IDs. When one upload task is complete, the corresponding upload ID becomes invalid and the upload IDs of other upload tasks are not affected. Request structure
 
 ```xml
 POST /ObjectName? uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Content-Length: Size Authorization: Signature <CompleteMultipartUpload> <Part> <PartNumber>PartNumber</PartNumber> <ETag>ETag</ETag> </Part> ... </CompleteMultipartUpload>
@@ -2608,7 +2909,7 @@ HTTP/1.1 200 OK Server: AliyunOSS Content-Length: 329 Content-Type: Application/
 </CompleteMultipartUploadResult>
 ```
 
-2.7.6. AbortMultipartUpload You can call this operation to cancel a multipart upload task based on the specified upload ID. Usage notes When you call AbortMultipartUpload, take note of the following items: You must provide the upload ID of the multipart upload task that you want to cancel. When you cancel a multipart upload task, parts that are being uploaded cannot be deleted. After a multipart upload task is canceled, the upload ID of the task cannot be used to perform any operations and the parts uploaded by the task are deleted. We recommend that you complete or cancel multipart upload tasks that are not complete in a timely manner because parts generated by these tasks consume storage space and incur storage fees. Request structure
+You can call this operation to cancel a multipart upload task based on the specified upload ID. When you call AbortMultipartUpload, take note of the following items: You must provide the upload ID of the multipart upload task that you want to cancel. When you cancel a multipart upload task, parts that are being uploaded cannot be deleted. After a multipart upload task is canceled, the upload ID of the task cannot be used to perform any operations and the parts uploaded by the task are deleted. We recommend that you complete or cancel multipart upload tasks that are not complete in a timely manner because parts generated by these tasks consume storage space and incur storage fees. Request structure
 
 ```
 DELETE /ObjectName? uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
@@ -2632,7 +2933,7 @@ Sample responses
 HTTP/1.1 204 Server: AliyunOSS Connection: keep-alive x-oss-request-id: 0***d Date: Wed, 22 Feb 2012 08:32:21 GMT
 ```
 
-2.7.7. ListMultipartUploads You can call this operation to list all ongoing multipart upload tasks that have been initiated but not complete or canceled. The list returned by OSS contains a maximum of 1,000 multipart upload tasks. To specify the number of tasks that are returned in the response from OSS, you can add the max-uploads parameter to the request. In the response returned by OSS, the IsTruncated element indicates whether the response contains all the ongoing multipart upload tasks. Request structure
+You can call this operation to list all ongoing multipart upload tasks that have been initiated but not complete or canceled. The list returned by OSS contains a maximum of 1,000 multipart upload tasks. To specify the number of tasks that are returned in the response from OSS, you can add the max-uploads parameter to the request. In the response returned by OSS, the IsTruncated element indicates whether the response contains all the ongoing multipart upload tasks. Request structure
 
 ```
 Get /? uploads HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
@@ -2704,7 +3005,7 @@ HTTP/1.1 200 Server: AliyunOSS Connection: keep-alive Content-length: 1839 Conte
 </ListMultipartUploadsResult>
 ```
 
-2.7.8. ListParts You can call this operation to list all uploaded parts that are mapped to a specific upload ID. Usage notes ListParts supports two request parameters: max-parts and part-number-marker. The maximum value of the max-parts parameter is 1000. The default value is 1000. The results returned by OSS are listed based on the ascending order of part numbers. Errors may occur during network transmission. We recommend that you do not use the results (part numbers and ETag values) of ListParts to generate the final part list of CompleteMultipart. Request structure
+You can call this operation to list all uploaded parts that are mapped to a specific upload ID. ListParts supports two request parameters: max-parts and part-number-marker. The maximum value of the max-parts parameter is 1000. The default value is 1000. The results returned by OSS are listed based on the ascending order of part numbers. Errors may occur during network transmission. We recommend that you do not use the results (part numbers and ETag values) of ListParts to generate the final part list of CompleteMultipart. Request structure
 
 ```
 Get /ObjectName? uploadId=UploadId HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: Signature
@@ -2775,9 +3076,9 @@ HTTP/1.1 200 Server: AliyunOSS Connection: keep-alive Content-length: 1221 Conte
 </ListPartsResult>
 ```
 
-### CORS
+### 2.8 CORS
 
-2.8.1. Overview Cross-origin resource sharing (CORS) allows web applications to access resources across origins. OSS allows you to use CORS to develop more flexible web applications. OSS provides CORS-related API operations for developers to control cross-origin access. 2.8.2. PutBucketcors You can call this operation to configure a cross-origin resource sharing (CORS) rule for a specific bucket. If a CORS rule is configured for the bucket, PutBucketCORS overwrites the existing rule. By default, CORS is disabled for buckets. All cross-origin requests are not allowed. Usage notes When you call PutBucketCors, take note of the following items: Disabled-by-default design By default, CORS is disabled for buckets. All cross-origin requests are not allowed. Overwriting mechanism When you call PutBucketCors to configure a new CORS rule for a bucket for which a CORS rule is already configured, the existing rule is overwritten. Usage in applications When you use CORS in applications, you must call PutBucketCors to configure a CORS rule to enable CORS. For example, if you want to use the `XMLHttpRequest` feature of your browser to access OSS from the domain name `www.a.com` , you must call PutBucketCORS to configure a CORS rule that is described by an XML message body. CORS rule matching When OSS receives a cross-origin request or an OPTIONS request sent for a bucket, OSS reads the CORS rules configured for the bucket and checks the permission of the request. OSS matches the request with the rules one by one. When OSS finds the first match, OSS returns a corresponding header in the response. If no match is found, OSS does not include any CORS header in the response. The following conditions must be met before OSS determines that a CORS rule matches the request: The origin from which the request is initiated must match the value of one `AllowedOrigin` element in the CORS rule. The method of the request such as GET or PUT or the method corresponding to the `Access-Control-Request-Method` header in an OPTIONS request must match
+Cross-origin resource sharing (CORS) allows web applications to access resources across origins. OSS allows you to use CORS to develop more flexible web applications. OSS provides CORS-related API operations for developers to control cross-origin access. You can call this operation to configure a cross-origin resource sharing (CORS) rule for a specific bucket. If a CORS rule is configured for the bucket, PutBucketCORS overwrites the existing rule. By default, CORS is disabled for buckets. All cross-origin requests are not allowed. When you call PutBucketCors, take note of the following items: Disabled-by-default design By default, CORS is disabled for buckets. All cross-origin requests are not allowed. Overwriting mechanism When you call PutBucketCors to configure a new CORS rule for a bucket for which a CORS rule is already configured, the existing rule is overwritten. Usage in applications When you use CORS in applications, you must call PutBucketCors to configure a CORS rule to enable CORS. For example, if you want to use the `XMLHttpRequest` feature of your browser to access OSS from the domain name `www.a.com` , you must call PutBucketCORS to configure a CORS rule that is described by an XML message body. CORS rule matching When OSS receives a cross-origin request or an OPTIONS request sent for a bucket, OSS reads the CORS rules configured for the bucket and checks the permission of the request. OSS matches the request with the rules one by one. When OSS finds the first match, OSS returns a corresponding header in the response. If no match is found, OSS does not include any CORS header in the response. The following conditions must be met before OSS determines that a CORS rule matches the request: The origin from which the request is initiated must match the value of one `AllowedOrigin` element in the CORS rule. The method of the request such as GET or PUT or the method corresponding to the `Access-Control-Request-Method` header in an OPTIONS request must match
 
 | AllowedMethod |   | element in the CORS rule. |
 |---|---|---|
@@ -2853,7 +3154,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***F Date: Fri, 04 May 2012 03:21:12 GMT Content-Length: 0 Connection: keep-alive Server: AliyunOSS
 ```
 
-2.8.3. GetBucketcors You can call this operation to query the existing CORS rules of a specified bucket. Request structure
+You can call this operation to query the existing CORS rules of a specified bucket. Request structure
 
 ```
 GET /? cors HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -2891,7 +3192,7 @@ HTTP/1.1 200 x-oss-request-id: 5***F Date: Thu, 13 Sep 2012 07:51:28 GMT Connect
 </CORSConfiguration>
 ```
 
-2.8.4. DeleteBucketcors You can call this operation to delete CORS rules. Request structure
+You can call this operation to delete CORS rules. Request structure
 
 ```
 DELETE /? cors HTTP/1.1 Host: BucketName.regionid.example.com Date: GMT Date Authorization: SignatureValue
@@ -2909,7 +3210,7 @@ Sample responses
 HTTP/1.1 204 No Content x-oss-request-id: 5***C Date: Fri, 24 Feb 2012 05:45:34 GMT Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-2.8.5. OptionObject Before a cross-origin request is sent, the browser sends a preflight (OPTIONS) request that includes a specific origin, HTTP method, and header information to OSS to determine whether to send the cross-origin request. OSS allows you to call the PutBucketcors operation to enable CORS for buckets. OSS determines whether to allow the preflight request of the browser based on the specified rules after CORS is enabled. If OSS rejects this request or CORS is disabled, 403 Forbidden is returned. Request structure
+Before a cross-origin request is sent, the browser sends a preflight (OPTIONS) request that includes a specific origin, HTTP method, and header information to OSS to determine whether to send the cross-origin request. OSS allows you to call the PutBucketcors operation to enable CORS for buckets. OSS determines whether to allow the preflight request of the browser based on the specified rules after CORS is enabled. If OSS rejects this request or CORS is disabled, 403 Forbidden is returned. Request structure
 
 ```
 OPTIONS /ObjectName HTTP/1.1 Host: BucketName.regionid.example.com Origin:Origin Access-Control-Request-Method:HTTP method Access-Control-Request-Headers:Request Headers
@@ -2951,7 +3252,7 @@ Sample responses
 HTTP/1.1 200 OK x-oss-request-id: 5***C Date: Fri, 24 Feb 2012 05:45:34 GMT Access-Control-Allow-Origin: http://www.example.com Access-Control-Allow-Methods: PUT Access-Control-Expose-Headers: x-oss-test Connection: keep-alive Content-Length: 0 Server: AliyunOSS
 ```
 
-### Error responses
+### 2.9 Error responses
 
 If an error occurs when you access OSS, OSS returns the error code and error message so that you can locate and rectify the error. OSS error response format If an error occurs when you access OSS, OSS returns HTTP status code 3xx, 4xx, or 5xx and a message body in the application/xml format. Example of an error response body:
 
@@ -3059,18 +3360,18 @@ HTTP/1.1 400 Bad Request Server: AliyunOSS Date: Thu, 11 Aug 2016 01:44:54 GMT C
 
 uide
 
-## ASAPI Developer Guide
+## 3 ASAPI Developer Guide
 
-### Preparations
+### 3.1 Preparations
 
-3.1.1. Obtain API information To call API operations by using an SDK, you must first obtain information about the service name, API operation name, and API version. Context The information on the API Directory page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the API Directory page is different from that in the developer guide of a cloud service, the information in the developer guide prevails. Procedure
+To call API operations by using an SDK, you must first obtain information about the service name, API operation name, and API version. Context The information on the API Directory page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the API Directory page is different from that in the developer guide of a cloud service, the information in the developer guide prevails. Procedure
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Product s and choose Ot hers > API T ool.
 3. In the left-side navigation pane, click API Direct ory.
 4. On the API Direct ory page, select the required cloud service from the Product Name drop-down list, enter a keyword of an operation name in the search box, and
 then click Search.
 5. In the search result, you can view the cloud service name, API operat ion name, and API version.
-3.1.2. Obtain an AccessKey pair AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -3090,7 +3391,7 @@ uide Not e The AccessKey pair consists of an AccessKey ID and an AccessKey secre
 4. In the organization list, click the name of the level-1 organization whose AccessKey pair you want to obtain.
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
-3.1.3. Obtain the values of common header parameters You must provide multiple header parameters when you call API operations. This topic describes how to obtain the values of common header parameters. This topic also explains some response parameters. Obtain a region ID
+You must provide multiple header parameters when you call API operations. This topic describes how to obtain the values of common header parameters. This topic also explains some response parameters. Obtain a region ID
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane, choose Resources > Regions.
@@ -3110,7 +3411,7 @@ Response parameters The following table describes the additional response parame
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-3.1.4. Obtain an STS AccessKey pair This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey pair consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must use an STS AccessKey pa Procedure
+This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey pair consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must use an STS AccessKey pa Procedure
 1. Obtain the `RAM role` .
 i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer over the profile picture in the upper-right corner of the page and click Personal Inf ormat ion. uide iii. Click View Current Role Policy. In the View Policies of Current Role dialog box, view the ARN of your `RAM role` .
 2. Obtain the STS AccessKey pair.
@@ -3214,9 +3515,9 @@ import com.alibaba.fastjson.JSONObject; import com.alibaba.fastjson.serializer.S
         System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
 
-### Use ASAPI to make API calls
+### 3.2 Use ASAPI to make API calls
 
-3.2.1. ASAPI overview This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). uide The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide. 3.2.2. Obtain the endpoint of ASAPI This topic describes how to obtain the endpoint of Apsara Stack API (ASAPI) in the Apsara Uni-manager Operations Console. Procedure
+This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). uide The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Uni-manager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Uni-manager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. Not e If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide. This topic describes how to obtain the endpoint of Apsara Stack API (ASAPI) in the Apsara Uni-manager Operations Console. Procedure
 1. In the address bar, enter the URL region-id.aso.intranet-domain-id.com and press the Enter key.
 Not e You can select a language from the drop-down list in the upper-right corner of the page.
 2. Enter your username and password.
@@ -3230,7 +3531,7 @@ side navigation pane, choose Product Management >Product List >Apsara Inf rast r
 icon next to Service. In the dialog box that appears, search for asapi.
 8. Right-click the Service Regist rat ion column that corresponds to asapi and select Show More from the shortcut menu.
 9. In the Det ails dialog box, view the value of asapi.gat eway.endpoint . The value is the endpoint of ASAPI.
-3.2.3. Obtain Apsara Stack SDKs Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use the ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. You can go to Apsara Stack documentation and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. 3.2.4. Common parameters Common request parameters must be included in all API requests. Common request parameters The following table describes the common request parameters that are used when you call API operations supported by Apsara Stack API (ASAPI).
+Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use the ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. You can go to Apsara Stack documentation and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Common request parameters must be included in all API requests. Common request parameters The following table describes the common request parameters that are used when you call API operations supported by Apsara Stack API (ASAPI).
 
 | Paramet er | T ype | Required | Descript ion |
 |---|---|---|---|
@@ -3258,7 +3559,7 @@ Not e
 | SignatureVersion , | SignatureNonce , | Timestamp |
 |---|---|---|
 
-SDK. You do not need to specify these parameters. 3.2.5. SDK description 3.2.5.1. ASAPI SDK for Java This topic describes how to obtain and use ASAPI SDK for Java to call API operations. Prerequisites An authorized account is created, and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of ASAPI is obtained. For more information, see Obtain the endpoint of ASAPI. OSS SDK for Java 1.8 or later is installed. Background information uide The help center of Apsara Stack provides Maven dependencies and JAR files for Apsara Stack SDK for Java. You can write code to use Apsara Stack SDK for Java to call API operations. In this example, the Windows 10 64-bit OS and IntelliJ IDEA are used. Procedure
+SDK. You do not need to specify these parameters. This topic describes how to obtain and use ASAPI SDK for Java to call API operations. Prerequisites An authorized account is created, and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of ASAPI is obtained. For more information, see Obtain the endpoint of ASAPI. OSS SDK for Java 1.8 or later is installed. Background information uide The help center of Apsara Stack provides Maven dependencies and JAR files for Apsara Stack SDK for Java. You can write code to use Apsara Stack SDK for Java to call API operations. In this example, the Windows 10 64-bit OS and IntelliJ IDEA are used. Procedure
 1. Use one of the following methods to configure Maven in IntelliJ IDEA:
 Use Maven that is integrated in IntelliJ IDEA. Download Maven based on your OS from the official website and configure Maven. For more information, see Downloading Apache Maven 3.8.6.
 2. Obtain the Maven dependencies for Apsara Stack SDK for Java from the official website. For more information about how to obtain the dependencies, see Obtain the
@@ -3322,7 +3623,7 @@ Headers
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information, see Query a resource set ID. |
 | x-acs-inst anceid | The name of the bucket on which the operation is performed. For more information, see Query a bucket name. |
 
-3.2.5.2. ASAPI SDK for Python This topic describes how to obtain and use Apsara Stack SDK for Python to call API operations. Prerequisites uide An authorized account is created, and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret You can obtain and view y manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of the Apsara Stack API (ASAPI) is obtained. For more information, see Generate an endpoint for ASAPI. Install Apsara Stack SDK for Python
+This topic describes how to obtain and use Apsara Stack SDK for Python to call API operations. Prerequisites uide An authorized account is created, and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret You can obtain and view y manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of the Apsara Stack API (ASAPI) is obtained. For more information, see Generate an endpoint for ASAPI. Install Apsara Stack SDK for Python
 1. Download the required version of Apsara Stack SDK for Python. For more information, see Obtain Apsara Stack SDKs.
 2. Upload the compressed file of Apsara Stack SDK for Python to the host from which you want to send API requests and extract the file. Then, run the following code in
 
@@ -3406,7 +3707,7 @@ import os
 os.environ['http_proxy'] = "http://x.x.x.x:xxxx" os.environ['https_proxy'] = "https://x.x.x.x:xxxx"
 ```
 
-3.2.5.3. ASAPI SDK for Node.js This topic describes how to obtain and use ASAPI SDK for Node.js to call API operations. Prerequisites An authorized account is created, and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of ASAPI is generated. For more information, see Generate an endpoint for ASAPI. tnpm is installed. If tnpm is not installed, run the following command to install tnpm:
+This topic describes how to obtain and use ASAPI SDK for Node.js to call API operations. Prerequisites An authorized account is created, and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of ASAPI is generated. For more information, see Generate an endpoint for ASAPI. tnpm is installed. If tnpm is not installed, run the following command to install tnpm:
 
 ```
 npm i -g npminstall --registry=http://registry.npm.alibaba-inc.com npm install -g tnpm --registry=http://registry.npm.alibaba-inc.com
@@ -3492,9 +3793,9 @@ Headers
 |---|---|
 | x-acs-userid | The ID of the user. |
 
-### HTTP requests
+### 3.3 HTTP requests
 
-3.3.1. Overview This topic describes how to make API requests and is intended for users who use API URLs to initiate HTTP GET requests. If you are using an SDK to initiate requests, you can skip this topic. The request URL consists of different parameters and has a fixed syntax. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded to make them easy to read. Before you make a request, you must encode the request URL. After the authentication process is complete based on your signature, the results are returned to you. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message. 3.3.2. Request syntax ASAPI allows you to initiate HTTP GET requests based on URLs. Each URL must contain request parameters. This topic describes the syntax of HTTP GET requests and provides the endpoint of ASAPI. Sample request The following example shows an unencoded URL that is used to call the PutBucket operation:
+This topic describes how to make API requests and is intended for users who use API URLs to initiate HTTP GET requests. If you are using an SDK to initiate requests, you can skip this topic. The request URL consists of different parameters and has a fixed syntax. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded to make them easy to read. Before you make a request, you must encode the request URL. After the authentication process is complete based on your signature, the results are returned to you. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message. ASAPI allows you to initiate HTTP GET requests based on URLs. Each URL must contain request parameters. This topic describes the syntax of HTTP GET requests and provides the endpoint of ASAPI. Sample request The following example shows an unencoded URL that is used to call the PutBucket operation:
 
 ```
 https://public.asapi.aliyuns.com/asapi/v3?Action=DoOpenApi&Product=OneRouter&Version=2018-12-12&ProductName=oss&OpenApiAction=PutBucket&Id=<Organizat ion ID>&<Common request parameters>
@@ -3506,7 +3807,7 @@ https://public.asapi.aliyuns.com/asapi/v3?Action=DoOpenApi&Product=OneRouter&Ver
 |---|---|
 | <Common request parameters> |   |
 
-`<Common request parameters>` specifies the common parameters specified in the system. Protocols ASAPI supports only HTTPS. Endpoints For more information about how to generate the endpoint of ASAPI, see Generate an endpoint for ASAPI. You must specify parameters, such as the Action, Product, Version, ProductName, and OpenApiAction parameters, to specify the API operation that you want to call, such as Action=DoOpenApi&Product=OneRouter&Version=2018-12-12&ProductName=oss&OpenApiAction=PutBucket . You must also specify other operation-specific request parameters and common request parameters. For more information, see Common request parameters. 3.3.3. Request signatures This topic describes how to sign HTTP API requests. Alibaba Cloud uses the request signature to verify the identity of the requester. Specifically, Alibaba Cloud uses an AccessKey pair to perform symmetric encryption and verify the identity of the requester. Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify the identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must store the AccessKey secret in a secure location. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain Apsara Stack SDKs. Step 1: Construct a canonicalized query string
+`<Common request parameters>` specifies the common parameters specified in the system. Protocols ASAPI supports only HTTPS. Endpoints For more information about how to generate the endpoint of ASAPI, see Generate an endpoint for ASAPI. You must specify parameters, such as the Action, Product, Version, ProductName, and OpenApiAction parameters, to specify the API operation that you want to call, such as Action=DoOpenApi&Product=OneRouter&Version=2018-12-12&ProductName=oss&OpenApiAction=PutBucket . You must also specify other operation-specific request parameters and common request parameters. For more information, see Common request parameters. This topic describes how to sign HTTP API requests. Alibaba Cloud uses the request signature to verify the identity of the requester. Specifically, Alibaba Cloud uses an AccessKey pair to perform symmetric encryption and verify the identity of the requester. Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is issued to each user or organization in the Apsara Uni-manager Management Console. The AccessKey ID is used to verify the identities of users, and the AccessKey secret is used to encrypt and verify signature strings. You must store the AccessKey secret in a secure location. ASAPI provides SDKs for Node.js, Python, and Java to facilitate complex signature calculation. For more information, see Obtain Apsara Stack SDKs. Step 1: Construct a canonicalized query string
 
 | Sort the request parameters in alphabetical order, including all common and operation-specific parameters except for | Signature | . |
 |---|---|---|
@@ -3606,7 +3907,7 @@ final String HTTP_METHOD = "POST"; Map parameters = new HashMap(); // Specify re
 
 Encode the Signature parameter based on RFC 3986 and add the parameter to the URL. Then, you can obtain the following URL:
 5. Use a browser or a tool such as cURL or Wget to send the HTTP request.
-3.3.4. Responses Responses are returned only in the JSON format. If a return code is greater than or equal to 200 and less than 300, a success response is returned. Otherwise, an error response is returned. Sample success responses If a request is successful, the request ID and operation-specific parameter values are returned. For more information, see the developer guide of the corresponding Apsara Stack service. uide
+Responses are returned only in the JSON format. If a return code is greater than or equal to 200 and less than 300, a success response is returned. Otherwise, an error response is returned. Sample success responses If a request is successful, the request ID and operation-specific parameter values are returned. For more information, see the developer guide of the corresponding Apsara Stack service. uide
 
 ```json
    "successResponse":true,
@@ -3664,11 +3965,11 @@ Sample error responses If a request fails, the following information is returned
     "asapiErrorCode": "asapi.server.api.notfound" // The error code provided by ASAPI.
 ```
 
-## SDK reference
+## 4 SDK reference
 
-### Java SDK
+### 4.1 Java SDK
 
-4.1.1. Preface This topic is written for OSS SDK for Java version 3.8.0. Compatibility For SDKs version 3. ×. ×: API operation: compatible Namespace: compatible For SDKs version 2. ×. ×: API operation: compatible Namespace: compatible For SDKs version 1.0. ×: API operation: compatible Namespace: incompatible. The Tablestore code in version 1.0.x is removed from version 2.0.0. Package names `com.aliyun.openservices. *` and `com.aliyun.op` `enservices.oss. *` are replaced with `com.aliyun.oss. *` . SDK source code and API documents For the SDK source code, visit GitHub. For more information, visit Aliyun OSS SDK for Java V3.8.0 API. Sample code OSS SDK for Java provides a variety of sample code for you to reference or use. The following table describes the sample code.
+This topic is written for OSS SDK for Java version 3.8.0. Compatibility For SDKs version 3. ×. ×: API operation: compatible Namespace: compatible For SDKs version 2. ×. ×: API operation: compatible Namespace: compatible For SDKs version 1.0. ×: API operation: compatible Namespace: incompatible. The Tablestore code in version 1.0.x is removed from version 2.0.0. Package names `com.aliyun.openservices. *` and `com.aliyun.op` `enservices.oss. *` are replaced with `com.aliyun.oss. *` . SDK source code and API documents For the SDK source code, visit GitHub. For more information, visit Aliyun OSS SDK for Java V3.8.0 API. Sample code OSS SDK for Java provides a variety of sample code for you to reference or use. The following table describes the sample code.
 
 | Sample file | Description |
 |---|---|
@@ -3691,7 +3992,7 @@ Sample error responses If a request fails, the following information is returned
 | ConcurrentGetObjectSample.java | We recommend that you use the downloadFile operation to perform resumable download for concurrent downloads implemented by range download. |
 | UploadPartCopySample.java | Shows you how to perform multipart copy for large objects. |
 
-4.1.2. Installation This topic describes how to install OSS SDK for Java. Prerequisites Environment Use Java 1.7 or later. Compatibility Run the `java -version` command to check the Java version. Download the SDK Download directly Download from GitHub Download previous versions Install the SDK Method 1: (Recommended) Add dependencies to your Maven project To use OSS SDK for Java in Maven, you need only to add the corresponding dependencies to the pom.xml file. For example, when you use OSS SDK for Java version 3.8.0, add the following content to <dependencies>:
+This topic describes how to install OSS SDK for Java. Prerequisites Environment Use Java 1.7 or later. Compatibility Run the `java -version` command to check the Java version. Download the SDK Download directly Download from GitHub Download previous versions Install the SDK Method 1: (Recommended) Add dependencies to your Maven project To use OSS SDK for Java in Maven, you need only to add the corresponding dependencies to the pom.xml file. For example, when you use OSS SDK for Java version 3.8.0, add the following content to <dependencies>:
 
 ```xml
 <dependency>
@@ -3701,7 +4002,7 @@ Sample error responses If a request fails, the following information is returned
 </dependency>
 ```
 
-Method 2: Import the JAR package to your Eclipse project For example, when you use OSS SDK for Java version 3.8.0, take the following steps to install the SDK: i. Download the OSS SDK for Java package. ii. Decompress the package. iii. Copy the aliyun-sdk-oss-3.8.0.jar file and all files in the lib directory to your project. iv. Right-click your project name in Eclipse. Choose Propert ies > Java Build Pat h > Add JARs. v. Select all JAR files that you have copied in Step 3 and import them to Libraries. Method 3: Import the JAR package to your IntelliJ IDEA project For example, when you use OSS SDK for Java version 3.8.0, take the following steps to install the SDK: i. Download the OSS SDK for Java package. ii. Decompress the package. iii. Copy the aliyun-sdk-oss-3.8.0.jar file and all JAR files in the lib directory to your project. iv. In IntelliJ IDEA, select your project and choose File > Project St ruct ure > Modules > Dependencies > + > JARs or direct ories. v. Select all JAR files that you have copied in Step 3 and import them to External Libraries. 4.1.3. Initialization OSSClient serves as the Java client to manage OSS resources such as buckets and objects. To use OSS SDK for Java to initiate a request, you must initialize an OSSClient instance and modify the default configuration items of ClientConfiguration. Create an OSSClient instance To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient instance, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. Create an OSSClient instance based on an OSS endpoint The following code provides an example on how to create an OSSClient instance based on an OSS endpoint:
+Method 2: Import the JAR package to your Eclipse project For example, when you use OSS SDK for Java version 3.8.0, take the following steps to install the SDK: i. Download the OSS SDK for Java package. ii. Decompress the package. iii. Copy the aliyun-sdk-oss-3.8.0.jar file and all files in the lib directory to your project. iv. Right-click your project name in Eclipse. Choose Propert ies > Java Build Pat h > Add JARs. v. Select all JAR files that you have copied in Step 3 and import them to Libraries. Method 3: Import the JAR package to your IntelliJ IDEA project For example, when you use OSS SDK for Java version 3.8.0, take the following steps to install the SDK: i. Download the OSS SDK for Java package. ii. Decompress the package. iii. Copy the aliyun-sdk-oss-3.8.0.jar file and all JAR files in the lib directory to your project. iv. In IntelliJ IDEA, select your project and choose File > Project St ruct ure > Modules > Dependencies > + > JARs or direct ories. v. Select all JAR files that you have copied in Step 3 and import them to External Libraries. OSSClient serves as the Java client to manage OSS resources such as buckets and objects. To use OSS SDK for Java to initiate a request, you must initialize an OSSClient instance and modify the default configuration items of ClientConfiguration. Create an OSSClient instance To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient instance, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. Create an OSSClient instance based on an OSS endpoint The following code provides an example on how to create an OSSClient instance based on an OSS endpoint:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "https://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3756,13 +4057,13 @@ The following code provides an example on how to configure parameters for an OSS
 conf.setConnectionRequestTimeout(1000); // Configure the timeout period for idle connections. The connection is closed when the timeout period expires. Unit: milliseconds. Default value: 60 000. conf.setIdleConnectionTime(10000); // Configure the maximum number of allowed retry attempts in the case of a request error. Default value: 3. conf.setMaxErrorRetry(5); // Configure whether CNAME can be used as an endpoint. By default, CNAME can be used as an endpoint. conf.setSupportCname(true); // Configure whether access from second-level domains is enabled. By default, access from second-level domains is disabled. conf.setSLDEnabled(true); // Configure the protocol used to connect to OSS. Default value: HTTP. Valid values: HTTP and HTTPS. conf.setProtocol(Protocol.HTTP); // Configure the user agent in the HTTP header. Default value: aliyun-sdk-java. conf.setUserAgent("aliyun-sdk-java"); // Configure the port for the proxy host. conf.setProxyHost("<yourProxyHost>"); // Configure the username verified by the proxy host. conf.setProxyUsername("<yourProxyUserName>"); // Configure the password verified by the proxy host. conf.setProxyPassword("<yourProxyPassword>"); // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret, conf); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.4. Quick start This topic describes how to use OSS SDK for Java to complete routine operations such as create buckets, upload objects, and download objects. Sample projects OSS SDK for Java provides Maven- and Ant-based sample projects. You can compile and run the sample projects on local devices or develop your own applications based on the sample projects. For more information about how to compile and run a project, see README.md in the project directory. Maven-based sample project: aliyun-oss-java-sdk-demo-mvn.zip Ant-based sample project: aliyun-oss-java-sdk-demo-ant.zip Create a bucket A bucket is a global namespace in OSS. A bucket is a container for objects stored in OSS. The following code provides an example on how to create a bucket:
+This topic describes how to use OSS SDK for Java to complete routine operations such as create buckets, upload objects, and download objects. Sample projects OSS SDK for Java provides Maven- and Ant-based sample projects. You can compile and run the sample projects on local devices or develop your own applications based on the sample projects. For more information about how to compile and run a project, see README.md in the project directory. Maven-based sample project: aliyun-oss-java-sdk-demo-mvn.zip Ant-based sample project: aliyun-oss-java-sdk-demo-ant.zip A bucket is a global namespace in OSS. A bucket is a container for objects stored in OSS. The following code provides an example on how to create a bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a bucket. ossClient.createBucket(bucketName); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload an object to OSS:
+For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. The following code provides an example on how to upload an object to OSS:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Upload content to a specified bucket and save it by using the specified object name. String content = "Hello OSS"; ossClient.putObject(bucketName, objectName, new ByteArrayInputStream(content.getBytes())); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3783,7 +4084,7 @@ rogram cannot run properly.
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-List objects The following code provides an example on how to list objects in a specified bucket. By default, a maximum of 100 objects are listed.
+The following code provides an example on how to list objects in a specified bucket. By default, a maximum of 100 objects are listed.
 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Call ossClient.listObjects to obtain an ObjectListing instance. The ObjectListing instance contains the response to the listObject request. ObjectListing objectListing = ossClient.listObjects(bucketName); // Call objectListing.getObjectSummaries to query the descriptions of all objects. for (OSSObjectSummary objectSummary : objectListing.getObjectSummaries()) {
@@ -3792,19 +4093,19 @@ List objects The following code provides an example on how to list objects in a 
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-Delete objects For the complete code used to delete objects, visit GitHub. The following code provides an example on how to delete an object:
+For the complete code used to delete objects, visit GitHub. The following code provides an example on how to delete an object:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Delete the object. ossClient.deleteObject(bucketName, objectName); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5. Buckets 4.1.5.1. Create buckets A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a bucket. ossClient.createBucket(bucketName); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.2. List buckets A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to list buckets. Buckets are listed in alphabetical order. You can list all buckets or only buckets that meet specified conditions. To list buckets of the IA or Archive storage class, use OSS SDK for Java version 2.6.0 or later. List all buckets The following code provides an example on how to list all buckets:
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to list buckets. Buckets are listed in alphabetical order. You can list all buckets or only buckets that meet specified conditions. To list buckets of the IA or Archive storage class, use OSS SDK for Java version 2.6.0 or later. List all buckets The following code provides an example on how to list all buckets:
 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // List all buckets. List<Bucket> buckets = ossClient.listBuckets(); for (Bucket bucket : buckets) {
@@ -3833,13 +4134,13 @@ ListBucketsRequest listBucketsRequest = new ListBucketsRequest(); // Set the max
     System.out.println(" - " + bucket.getName());
 ```
 
-4.1.5.3. Determine whether buckets exist A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a specific bucket exists:
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a specific bucket exists:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Security risks may arise if you use the AccessKey pair of an Alibaba Cloud account to log on to OSS because the account has permissions on all API operations. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance. To create a RAM user, log on t o https://ram.console.aliyun.com. String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); boolean exists = ossClient.doesBucketExist("<yourBucketName>"); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.4. Manage bucket ACLs A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to configure and obtain the access control list (ACL) of a bucket. Configure ACL for a bucket The following table describes the ACLs for buckets.
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to configure and obtain the access control list (ACL) of a bucket. Configure ACL for a bucket The following table describes the ACLs for buckets.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -3859,13 +4160,13 @@ Query the ACL of a bucket The following code provides an example on how to query
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Query the ACL of the bucket. AccessControlList acl = ossClient.getBucketAcl("<yourBucketName>"); System.out.println(acl.toString()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.5. Delete buckets A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to delete a bucket. Not e Before you delete a bucket, you must delete all objects and parts generated by multipart upload in the bucket. The following code provides an example on how to delete a bucket:
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to delete a bucket. Not e Before you delete a bucket, you must delete all objects and parts generated by multipart upload in the bucket. The following code provides an example on how to delete a bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Delete the bucket. ossClient.deleteBucket("<yourBucketName>"); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.6. Manage lifecycle rules You can configure lifecycle rules for an OSS bucket to automatically delete expired objects to save storage space. This topic describes how to manage lifecycle rules. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules:
+You can configure lifecycle rules for an OSS bucket to automatically delete expired objects to save storage space. This topic describes how to manage lifecycle rules. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); SetBucketLifecycleRequest request = new SetBucketLifecycleRequest(bucketName); // Set the rule ID and the prefix of object names to match the rule. String ruleId0 = "rule0"; String matchPrefix0 = "A0/"; String ruleId1 = "rule1"; String matchPrefix1 = "A1/"; String ruleId2 = "rule2"; String matchPrefix2 = "A2/"; String ruleId3 = "rule3"; String matchPrefix3 = "A3/"; // Specify that objects expire three days after they are last modified. request.AddLifecycleRule(new LifecycleRule(ruleId0, matchPrefix0, RuleStatus.Enabled, 3)); // Specify that the objects that are last modified before the specified date expire. LifecycleRule rule = new LifecycleRule(ruleId1, matchPrefix1, RuleStatus.Enabled); rule.setCreatedBeforeDate(DateUtil.parseISO8601Date("2022-10-12T00:00:00.000Z")); request.AddLifecycleRule(rule); // Specify that parts expire three days after they are last modified. rule = new LifecycleRule(ruleId2, matchPrefix2, RuleStatus.Enabled); LifecycleRule.AbortMultipartUpload abortMultipartUpload = new LifecycleRule.AbortMultipartUpload(); abortMultipartUpload.setExpirationDays(3); rule.setAbortMultipartUpload(abortMultipartUpload); request.AddLifecycleRule(rule); // Specify that the parts that are last modified before the specified date expire. rule = new LifecycleRule(ruleId3, matchPrefix3, RuleStatus.Enabled); abortMultipartUpload = new LifecycleRule.AbortMultipartUpload(); abortMultipartUpload.setCreatedBeforeDate(DateUtil.parseISO8601Date("2022-10-12T00:00:00.000Z")); rule.setAbortMultipartUpload(abortMultipartUpload); request.AddLifecycleRule(rule); ossClient.setBucketLifecycle(request); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3891,7 +4192,7 @@ Delete lifecycle rules The following code provides an example on how to delete t
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); ossClient.deleteBucketLifecycle(bucketName); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.7. Configure hotlink protection OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Configure a Referer whitelist The following code provides an example on how to configure the Referer whitelist for a bucket:
+OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Configure a Referer whitelist The following code provides an example on how to configure the Referer whitelist for a bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); List<String> refererList = new ArrayList<String>(); // Add Referer values to the whitelist. You can use an asterisk (*) or a question mark (?) as a wildcard to set the Referer parameter. refererList.add("http://www.aliyun.com"); refererList.add("http://www. *.com"); refererList.add("http://www.?.aliyuncs.com"); // Configure BucketReferer. A value of true indicates that an empty Referer field is allowed. BucketReferer br = new BucketReferer(true, refererList); ossClient.setBucketReferer(bucketName, br); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3911,7 +4212,7 @@ Delete the hotlink configurations of a bucket The following code provides an exa
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // You cannot delete a Referer whitelist directly. To delete a Referer whitelist, you must create a rule that allows an empty Referer field to replac e the existing rule. BucketReferer br = new BucketReferer(); ossClient.setBucketReferer(bucketName, br); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.8. Configure CORS Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate crossorigin access control. Configure CORS rules The following code provides an example on how to configure CORS rules for a specific bucket:
+Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate crossorigin access control. Configure CORS rules The following code provides an example on how to configure CORS rules for a specific bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); SetBucketCORSRequest request = new SetBucketCORSRequest(bucketName); // Create a container for the CORS rules. A maximum of 10 CORS rules can be configured for each bucket. ArrayList<CORSRule> putCorsRules = new ArrayList<CORSRule>(); CORSRule corRule = new CORSRule(); ArrayList<String> allowedOrigin = new ArrayList<String>(); // Specify the allowed origins from which CORS requests are sent. allowedOrigin.add( "http://www.b.com"); ArrayList<String> allowedMethod = new ArrayList<String>(); // Specify the HTTP methods that CORS requests are allowed to use, including GET, PUT, DELETE, POST, and HEAD. allowedMethod.add("GET"); ArrayList<String> allowedHeader = new ArrayList<String>(); // Determine whether to allow the header specified in Access-Control-Request-Headers of the preflight (OPTIONS) request. allowedHeader.add("x-oss-test"); ArrayList<String> exposedHeader = new ArrayList<String>(); // Specify the response headers that you are allowed to access from applications. exposedHeader.add("x-oss-test1"); // You can use only one asterisk (*) as the wildcard for AllowedOrigins and AllowedMethods in a CORS rule. Asterisks (*) indicate to allow all origin s or operations. corRule.setAllowedMethods(allowedMethod); corRule.setAllowedOrigins(allowedOrigin); // AllowedHeaders and ExposeHeaders do not support wildcards. corRule.setAllowedHeaders(allowedHeader); corRule.setExposeHeaders(exposedHeader); // Specifies the time the browser can cache the response to a preflight (OPTIONS) request to a specific resource. Unit: seconds. corRule.setMaxAgeSeconds(10); // You can configure up to 10 CORS rules for the bucket. putCorsRules.add(corRule); // The existing rules are replaced. request.setCorsRules(putCorsRules); ossClient.setBucketCORS(request); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3946,7 +4247,7 @@ Delete CORS rules The following code provides an example on how to delete the CO
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Delete the CORS rules configured for the bucket. ossClient.deleteBucketCORSRules(bucketName); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.9. Configure logging You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The log objects are in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging The following code provides an example on how to enable logging for a bucket:
+You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The log objects are in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging The following code provides an example on how to enable logging for a bucket:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); SetBucketLoggingRequest request = new SetBucketLoggingRequest("<yourSourceBucketName>"); // Specify the bucket used to store log objects. request.setTargetBucket("<yourTargetBucketName>"); // Specify the folder where log objects are stored. request.setTargetPrefix("<yourTargetPrefix>"); ossClient.setBucketLogging(request); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3964,7 +4265,7 @@ Disable logging The following code provides an example on how to disable logging
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); SetBucketLoggingRequest request = new SetBucketLoggingRequest("<yourSourceBucketName>"); request.setTargetBucket(null); request.setTargetPrefix(null); ossClient.setBucketLogging(request); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.5.10. Configure static website hosting This topic describes how to set your bucket to the static website hosting mode. After the configurations take effect, you can use the bucket domain name to access this static website and be redirected to a specified index page or error page. Configure static website hosting The following code provides an example on how to configure static website hosting:
+This topic describes how to set your bucket to the static website hosting mode. After the configurations take effect, you can use the bucket domain name to access this static website and be redirected to a specified index page or error page. The following code provides an example on how to configure static website hosting:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); SetBucketWebsiteRequest request = new SetBucketWebsiteRequest("<yourBucketName>"); request.setIndexDocument("index.html"); request.setErrorDocument("error.html"); ossClient.setBucketWebsite(request); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -3982,7 +4283,7 @@ Delete static website hosting configurations The following code provides an exam
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ossClient.deleteBucketWebsite("<yourBucketName>"); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.6. Upload objects 4.1.6.1. Overview This topic describes a variety of methods OSS SDK for Java provides to upload objects. Objects are the basic unit for data operations in OSS. OSS SDK for Java provides the following object upload methods: Simple upload: includes streaming upload and local file upload. You can use this method to upload an object up to 5 GB in size. Form upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload in which you can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: supports the upload of an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using a progress bar. After the object is uploaded, you can perform upload callback. 4.1.6.2. Simple upload Simple upload allows you to use the PutObject operation to upload a single object to OSS. This topic describes how to perform simple upload by using OSS SDK for Java. Simple upload includes stream upload and file upload. Stream upload uses InputStream as the source object. File upload uses a local file as the source object. Not e For the complete code used to perform simple upload, visit GitHub. Stream upload Use ossClient.putObject to upload a data stream to OSS. Upload a string The following code provides an example on how to upload a string:
+This topic describes a variety of methods OSS SDK for Java provides to upload objects. Objects are the basic unit for data operations in OSS. OSS SDK for Java provides the following object upload methods: Simple upload: includes streaming upload and local file upload. You can use this method to upload an object up to 5 GB in size. Form upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload in which you can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: supports the upload of an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using a progress bar. After the object is uploaded, you can perform upload callback. Simple upload allows you to use the PutObject operation to upload a single object to OSS. This topic describes how to perform simple upload by using OSS SDK for Java. Simple upload includes stream upload and file upload. Stream upload uses InputStream as the source object. File upload uses a local file as the source object. Not e For the complete code used to perform simple upload, visit GitHub. Stream upload Use ossClient.putObject to upload a data stream to OSS. Upload a string The following code provides an example on how to upload a string:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a PutObjectRequest object. String content = "Hello OSS"; // <yourObjectName> indicates the complete path of the object you want to upload to OSS. The path must include the extension of the object name. Ex ample: abc/efg/123.jpg. PutObjectRequest putObjectRequest = new PutObjectRequest("<yourBucketName>", "<yourObjectName>", new ByteArrayInputStream(content.getBytes())); // Upload the string. ossClient.putObject(putObjectRequest); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4012,7 +4313,7 @@ Local file upload The following code provides an example on how to upload a loca
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Create a PutObjectRequest object. PutObjectRequest putObjectRequest = new PutObjectRequest("<yourBucketName>", "<yourObjectName>", new File("<yourLocalFile>")); // Upload the local file. ossClient.putObject(putObjectRequest); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.6.3. Form upload Form upload uses an HTML form to upload an object to a specified bucket. The maximum size of an object to upload is 5 GB. The following code provides an example on how to implement form upload:
+Form upload uses an HTML form to upload an object to a specified bucket. The maximum size of an object to upload is 5 GB. The following code provides an example on how to implement form upload:
 
 ```java
 public class PostObjectSample {
@@ -4179,19 +4480,19 @@ with x: and be in lower case.
         ossPostObject.PostObject();
 ```
 
-4.1.6.4. Append upload OSS allows you to use append object to append content directly to the end of an object. This method applies to append objects. You cannot perform copyObject for append objects. The following code provides an example on how to perform append upload:
+OSS allows you to use append object to append content directly to the end of an object. This method applies to append objects. You cannot perform copyObject for append objects. The following code provides an example on how to perform append upload:
 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; // Security risks may arise if you log on with the AccessKey pair of an Alibaba Cloud account because the account has permissions on all API operatio ns. We recommend that you use a RAM user's credentials to call API operations or perform routine operations and maintenance. To create a RAM user, lo g on to https://ram.console.aliyun.com. String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String content1 = "Hello OSS A \n"; String content2 = "Hello OSS B \n"; String content3 = "Hello OSS C \n"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ObjectMetadata meta = new ObjectMetadata(); // Specify the type of content you want to upload. meta.setContentType("text/plain"); // Configure parameters by using AppendObjectRequest. AppendObjectRequest appendObjectRequest = new AppendObjectRequest("<yourBucketName>", "<yourObjectName>", new ByteArrayInputStream(content1.getBytes( )),meta); // Configure a single parameter by using AppendObjectRequest. // Specify the bucket name. //appendObjectRequest.setBucketName("<yourBucketName>"); // Specify the object name. //appendObjectRequest.setKey("<yourObjectName>"); // Specify the content you want to append. Two types of content are available: InputStream and File. Select InputStream. //appendObjectRequest.setInputStream(new ByteArrayInputStream(content1.getBytes())); // Specify the content you want to append. Two types of content are available: InputStream and File. Select File. //appendObjectRequest.setFile(new File("<yourLocalFile>")); // Specify object metadata. The specified object metadata takes effect from the first append. //appendObjectRequest.setMetadata(meta); // Start the first append. // Configure the position where the object is appended based on the previous object length. appendObjectRequest.setPosition(0L); AppendObjectResult appendObjectResult = ossClient.appendObject(appendObjectRequest); // Calculate the 64-bit CRC value. The value is calculated based on the ECMA-182 standard. System.out.println(appendObjectResult.getObjectCRC()); // Start the second append. // nextPosition indicates the position included in the next request, which is equal to the length of the current object. appendObjectRequest.setPosition(appendObjectResult.getNextPosition()); appendObjectRequest.setInputStream(new ByteArrayInputStream(content2.getBytes())); appendObjectResult = ossClient.appendObject(appendObjectRequest); // Start the third append. appendObjectRequest.setPosition(appendObjectResult.getNextPosition()); appendObjectRequest.setInputStream(new ByteArrayInputStream(content3.getBytes())); appendObjectResult = ossClient.appendObject(appendObjectRequest); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.6.5. Resumable upload If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The following code provides an example on how to perform resumable upload:
+If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The following code provides an example on how to perform resumable upload:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); ObjectMetadata meta = new ObjectMetadata(); // Specify the type of content you want to upload. meta.setContentType("text/plain"); // Configure parameters by using UploadFileRequest. UploadFileRequest uploadFileRequest = new UploadFileRequest("<yourBucketName>","<yourObjectName>"); // Configure a single parameter by using UploadFileRequest. // Specify the bucket name. //uploadFileRequest.setBucketName("<yourBucketName>"); // Specify the object name. //uploadFileRequest.setKey("<yourObjectName>"); // Specify the local file to upload. uploadFileRequest.setUploadFile("<yourLocalFile>"); // Specify the number of threads for simultaneous upload. Default value: 1. uploadFileRequest.setTaskNum(5); // Specify the size of a part you want to upload. Valid values: 100 KB to 5 GB. The default size of each part is calculated based on the formula: Def ault size of each part = Object size/10000. uploadFileRequest.setPartSize(1 * 1024 * 1024); // Enable resumable upload. By default, resumable upload is disabled. uploadFileRequest.setEnableCheckpoint(true); // Specify the checkpoint file that records the upload results of each part. You need to configure this parameter when you enable resumable upload. T his file stores progress information. If a part fails to be uploaded, you can continue the upload based on the progress information recorded in the c heckpoint file. After the object is uploaded, the checkpoint file is deleted. By default, this file is stored in uploadFile.ucp, which is the same di rectory as that of the local file you want to upload. uploadFileRequest.setCheckpointFile("<yourCheckpointFile>"); // Configure object metadata. uploadFileRequest.setObjectMetadata(meta); // Configure upload callback. The parameter type is Callback. uploadFileRequest.setCallback("<yourCallbackEvent>"); // Start resumable upload. ossClient.uploadFile(uploadFileRequest); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.6.6. Multipart upload OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to finish the upload. To implement multipart upload, perform the following operations:
+OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to finish the upload. To implement multipart upload, perform the following operations:
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
@@ -4350,7 +4651,7 @@ List all multipart upload tasks by page The following code provides an example o
 } while (multipartUploadListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.6.7. Use a progress bar Progress bars are used to indicate the progress of an upload or download. The following code provides an example on how to use upload progress bars by using the ossClient.putObject method:
+Progress bars are used to indicate the progress of an upload or download. The following code provides an example on how to use upload progress bars by using the ossClient.putObject method:
 
 ```java
 public class PutObjectProgressListener implements ProgressListener {
@@ -4410,13 +4711,13 @@ all API operations. We recommend that you use a RAM user to call API operations 
         ossClient.shutdown();
 ```
 
-You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile. 4.1.6.8. Upload callback This topic describes how to use upload callback. The following code provides an example on how to use upload callback:
+You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile. This topic describes how to use upload callback. The following code provides an example on how to use upload callback:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Specify the IP address of the server to which you want send the callback request. Example: http://oss-demo.aliyuncs.com:23450 or http://127.0.0.1: 9090. String callbackUrl = "<yourCallbackServerUrl>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); String content = "Hello OSS"; PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, objectName,new ByteArrayInputStream(content.getBytes())); // Configure upload callback parameters. Callback callback = new Callback(); callback.setCallbackUrl(callbackUrl); // Optional. Configure the value of the host field included in the callback request header. This value is the same as the value of the host field spe cified for your server. // callback.setCallbackHost("yourCallbackHost"); // Configure the value of the body field included in the callback request. callback.setCallbackBody("{\\\"mimeType\\\":${mimeType},\\\"size\\\":${size}}"); // Configure Content-Type for the callback request. callback.setCalbackBodyType(CalbackBodyType.JSON); // Configure custom parameters for the callback request. Each custom parameter consists of a key and a value. The key must start with x:. callback.addCallbackVar("x:var1", "value1"); callback.addCallbackVar("x:var2", "value2"); putObjectRequest.setCallback(callback); PutObjectResult putObjectResult = ossClient.putObject(putObjectRequest); // Read the response for the upload callback request. byte[] buffer = new byte[1024]; putObjectResult.getResponse().getContent().read(buffer); // You must close the stream after the object is read. Otherwise, connection leaks may occur. Consequently, no connections are available and an excep tion occurs. putObjectResult.getResponse().getContent().close(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.7. Download objects 4.1.7.1. Overview OSS provides a variety of methods for you to download objects from OSS. OSS SDK for Java provides the following object download methods: Streaming download Download to local files Range download Resumable download Conditional download You can view the download progress by using a progress bar. For more information, see Use a progress bar. 4.1.7.2. Streaming download If you have a large object to download or it is time-consuming to download the entire object at a time, you can use streaming download. Streaming download enables you to download part of the object content each time until you download the entire object. If you do not close the ossObject object after it is used, connection leaks may occur. As a result, no connection is available and an exception occurs. The following code provides an example on how to close an ossObject object:
+OSS provides a variety of methods for you to download objects from OSS. OSS SDK for Java provides the following object download methods: You can view the download progress by using a progress bar. For more information, see Use a progress bar. If you have a large object to download or it is time-consuming to download the entire object at a time, you can use streaming download. Streaming download enables you to download part of the object content each time until you download the entire object. If you do not close the ossObject object after it is used, connection leaks may occur. As a result, no connection is available and an exception occurs. The following code provides an example on how to close an ossObject object:
 
 ```
 OSSObject ossObject = ossClient.getObject(bucketName, objectName); ossObject.close();
@@ -4432,13 +4733,13 @@ The following code provides an example on how to download an object by using str
 // You must close the stream that is obtained by using ossClient.getObject after the object is read. Otherwise, connection leaks may occur. As a resu lt, no connections are available and an exception occurs. reader.close(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.7.3. Download to local files This topic describes how to download an object to a local file. The following code provides an example on how to download a specified object to a local file:
+This topic describes how to download an object to a local file. The following code provides an example on how to download a specified object to a local file:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Download the object to a local file. If the name of the object is the same as that of the local file, the object replaces the local file. If the n ame of the object is different from that of the local file, the object is downloaded. ossClient.getObject(new GetObjectRequest(bucketName, objectName), new File("<yourLocalFile>")); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.7.4. Range download If you need only part of the data in an object, you can use range download to download data within the specified range. Specify a valid range The following code provides an example on how to specify a valid range to download an object:
+If you need only part of the data in an object, you can use range download to download data within the specified range. Specify a valid range The following code provides an example on how to specify a valid range to download an object:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; // <yourObjectName> indicates the complete path of the object you want to download from OSS. The path must include the file extension of the object. Example: abc/efg/123.jpg. String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, objectName); // The valid range for an object whose size is 1,000 bytes is from byte 0 to byte 999. // Query the data that is within the range from byte 0 to byte 999, which includes a total of 1,000 bytes. If the specified range is invalid, for exa mple, the specified range includes a negative number, or the specified value is larger than the object size, the entire object is downloaded. getObjectRequest.setRange(0, 999); // Start range download. OSSObject ossObject = ossClient.getObject(getObjectRequest); // Read the data. byte[] buf = new byte[1024]; InputStream in = ossObject.getObjectContent(); for (int n = 0; n ! = -1; ) {
@@ -4469,7 +4770,7 @@ the returned error code is InvalidRange.
 // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.7.5. Resumable download You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS SDK for Java provides the resumable download feature. To enable resumable download, you need to split the object you want to download into multiple parts and download them separately. After all parts are downloaded, these parts are combined into a complete object. You can use ossClient.downloadFile to enable resumable download. The following table describes the parameters you can configure for DownloadFileRequest.
+You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS SDK for Java provides the resumable download feature. To enable resumable download, you need to split the object you want to download into multiple parts and download them separately. After all parts are downloaded, these parts are combined into a complete object. You can use ossClient.downloadFile to enable resumable download. The following table describes the parameters you can configure for DownloadFileRequest.
 
 | Parameter | Description | Required | Default value | Configuration method |
 |---|---|---|---|---|
@@ -4493,7 +4794,7 @@ The following code provides an example on how to perform resumable download:
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Send a request to download 10 tasks simultaneously and start resumable download. DownloadFileRequest downloadFileRequest = new DownloadFileRequest(bucketName, objectName); downloadFileRequest.setDownloadFile("<yourDownloadFile>"); downloadFileRequest.setPartSize(1 * 1024 * 1024); downloadFileRequest.setTaskNum(10); downloadFileRequest.setEnableCheckpoint(true); downloadFileRequest.setCheckpointFile("<yourCheckpointFile>"); // Download the object. DownloadFileResult downloadRes = ossClient.downloadFile(downloadFileRequest); // After the object is downloaded, the object metadata is returned. downloadRes.getObjectMetadata(); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.7.6. Conditional download This topic describes how to download objects that meet the specified conditions. OSS allows you to configure one or more conditions for object downloads. If the specified conditions are met, the object can be downloaded. If the specified conditions are not met, an error code is returned and the object cannot be downloaded. The following table describes the download conditions.
+This topic describes how to download objects that meet the specified conditions. OSS allows you to configure one or more conditions for object downloads. If the specified conditions are met, the object can be downloaded. If the specified conditions are not met, an error code is returned and the object cannot be downloaded. The following table describes the download conditions.
 
 | Parameter | Description |
 |---|---|
@@ -4508,7 +4809,7 @@ You can use If-Modified-Since and If-Unmodified-Since as object download conditi
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); GetObjectRequest request = new GetObjectRequest(bucketName, objectName); // Configure the download conditions. request.setModifiedSinceConstraint(new Date()); // Download the object to a local file. ossClient.getObject(request, new File("<yourLocalFile>")); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-Conditional download supports ossClient.getObject and ossClient.downloadFile. 4.1.7.7. Use a progress bar Progress bars are used to indicate the progress of an upload or download. For the complete code of download progress bars, visit GitHub. The following code provides an example on how to use upload progress bars in ossClient.getObject:
+Conditional download supports ossClient.getObject and ossClient.downloadFile. Progress bars are used to indicate the progress of an upload or download. For the complete code of download progress bars, visit GitHub. The following code provides an example on how to use upload progress bars in ossClient.getObject:
 
 ```java
 static class GetObjectProgressListener implements ProgressListener {
@@ -4567,13 +4868,13 @@ public static void main(String[] args) {
     ossClient.shutdown();
 ```
 
-You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile. 4.1.8. Manage objects 4.1.8.1. Overview You can manage objects in a bucket by using a series of API operations such as SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, CopyObject, and DoesObjectExist. By using the preceding operations, you can perform the following operations: Determine whether an object exists Manage object ACLs Manage object metadata List objects Query objects Delete objects Copy objects 4.1.8.2. Determine whether an object exists This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
+You can view progress information when you use ossClient.putObject, ossClient.getObject, or ossClient.uploadPart. However, you cannot view progress information when you use ossClient.uploadFile or ossClient.downloadFile. You can manage objects in a bucket by using a series of API operations such as SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, CopyObject, and DoesObjectExist. By using the preceding operations, you can perform the following operations: This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
 
 ```java
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Determine whether the object exists. doesObjectExist includes the isOnlyInOSS parameter. If the value of isOnlyInOSS is true, OSS does not perform redirection back-to-origin or mirroring back-to-origin when the object does not exist. If the value of isOnlyInOSS is false, OSS performs redirection back-to-origin or mirroring back-to-origin when the object does not exist. boolean found = ossClient.doesObjectExist("<yourBucketName>", "<yourObjectName>"); System.out.println(found); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.8.3. Manage object ACLs This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that can be configured for objects.
+This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that can be configured for objects.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -4594,7 +4895,7 @@ Query the ACL of an object The following code provides an example on how to quer
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Query the ACL of an object. ObjectAcl objectAcl = ossClient.getObjectAcl("<yourBucketName>", "<yourObjectName>"); System.out.println(objectAcl.getPermission().toString()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.8.4. Manage object metadata Object metadata contains HTTP headers and user metadata. Configure object metadata Configure HTTP headers The following code provides an example on how to configure HTTP headers:
+Object metadata contains HTTP headers and user metadata. Configure object metadata Configure HTTP headers The following code provides an example on how to configure HTTP headers:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String content = "Hello OSS"; // Create object metadata. You can configure HTTP headers by using object metadata. ObjectMetadata meta = new ObjectMetadata(); String md5 = BinaryUtil.toBase64String(BinaryUtil.calculateMd5(content.getBytes())); // Enable MD5 verification. After MD5 verification is enabled, OSS calculates the actual MD5 hash and compares this MD5 hash wih that provided in t he request. If the two values are different, an error occurs. meta.setContentMD5(md5); // Specify the type of content you want to upload. The browser determines the format and encoding type used to read the object based on the content type of the object. If the content type is not specified, a content type is generated based on the object name extension. If no extension is availa ble, default value application/octet-stream is used as the content type. meta.setContentType("text/plain"); // Specify the name for the object when the content is downloaded. meta.setContentDisposition("attachment; filename=\"DownloadFilename\""); // Specify the length of the object content to upload. If the actual object length is greater than the specified length, the object is uploaded bas ed on the specified length. If the object is smaller than the specified length, the object is uploaded based on the actual length. meta.setContentLength(content.length()); // Specify the caching behavior of the website when the content is downloaded. meta.setCacheControl("Download Action"); // Specify the expiration time of the cache in the GMT. meta.setExpirationTime(DateUtil.parseIso8601Date("2022-10-12T00:00:00.000Z")); // Specify the content encoding format when the content is downloaded. meta.setContentEncoding("utf-8"); // Configure the header. meta.setHeader("<yourHeader>", "<yourHeaderValue>"); // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Upload the object. ossClient.putObject("<yourBucketName>", "<yourObjectName>", new ByteArrayInputStream(content.getBytes()), meta); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4625,7 +4926,7 @@ The following code provides an example on how to query the object metadata:
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; // Create an OSSClient instance. OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret); // Query parts of the object metadata. SimplifiedObjectMeta objectMeta = ossClient.getSimplifiedObjectMeta("<yourBucketName>", "<yourObjectName>"); System.out.println(objectMeta.getSize()); System.out.println(objectMeta.getETag()); System.out.println(objectMeta.getLastModified()); // Query all object metadata. ObjectMetadata metadata = ossClient.getObjectMetadata("<yourBucketName>", "<yourObjectName>"); System.out.println(metadata.getContentType()); System.out.println(metadata.getLastModified()); System.out.println(metadata.getExpirationTime()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.8.5. List objects Objects in a bucket are sorted alphabetically in OSS. You can use ossClient.listObjects to list objects in a bucket. listObjects supports the following types of parameter formats: ObjectListing listObjects(String bucketName): lists up to 100 objects in a bucket. ObjectListing listObjects(String bucketName, String prefix): lists objects whose names contain a specified prefix in a bucket. A maximum of 100 objects can be listed. ObjectListing listObjects(ListObjectsRequest listObjectsRequest): lists objects that meet a specified condition. You can use this format to list objects in a flexible manner. The following table describes parameters you can configure for ObjectListing.
+Objects in a bucket are sorted alphabetically in OSS. You can use ossClient.listObjects to list objects in a bucket. listObjects supports the following types of parameter formats: ObjectListing listObjects(String bucketName): lists up to 100 objects in a bucket. ObjectListing listObjects(String bucketName, String prefix): lists objects whose names contain a specified prefix in a bucket. A maximum of 100 objects can be listed. ObjectListing listObjects(ListObjectsRequest listObjectsRequest): lists objects that meet a specified condition. You can use this format to list objects in a flexible manner. The following table describes parameters you can configure for ObjectListing.
 
 | Parameter | Description | Method |
 |---|---|---|
@@ -4822,7 +5123,7 @@ List the sizes of objects in the specified directory The following code provides
         ossClient.shutdown();
 ```
 
-4.1.8.6. Query objects This topic describes how to call SelectObject to query CSV and JSON objects by using OSS SDK for Java. The following code provides an example on how to query CSV and JSON objects:
+This topic describes how to call SelectObject to query CSV and JSON objects by using OSS SDK for Java. The following code provides an example on how to query CSV and JSON objects:
 
 ```java
 package samples; import com.aliyun.oss.model.*; import com.aliyun.oss.OSS; import com.aliyun.oss.OSSClientBuilder; import java.io.BufferedReader; import java.io.ByteArrayInputStream; import java.io.InputStreamReader; /**
@@ -4919,7 +5220,7 @@ public class SelectObjectSample {
         ossClient.deleteObject(bucketName, key);
 ```
 
-4.1.8.7. Delete objects This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Delete the object. To delete a folder, set ObjectName to the folder name. If the folder is not empty, you must delete all objects in the folder be fore you can delete the folder. ossClient.deleteObject(bucketName, objectName); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -4965,7 +5266,7 @@ For the complete code used to delete multiple objects, visit GitHub. Delete obje
 } while (objectListing.isTruncated()); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.8.8. Copy objects This topic describes how to copy a small object and a large object. Copy a small object You can use ossClient.copyObject to copy an object that is up to 1 GB in size from a source bucket to another destination bucket within the same region. The following table describes the configuration methods of ossClient.copyObject.
+This topic describes how to copy a small object and a large object. Copy a small object You can use ossClient.copyObject to copy an object that is up to 1 GB in size from a source bucket to another destination bucket within the same region. The following table describes the configuration methods of ossClient.copyObject.
 
 | Configuration method | Description |
 |---|---|
@@ -5033,13 +5334,13 @@ System.out.println("total part count:" + partCount); // Initiate a multipart cop
 ossClient.completeMultipartUpload(completeMultipartUploadRequest); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.9. Authorized access This topic describes how to use Security Token Service (STS) and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud Security Token Service (STS) is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS has the following benefits: You need only to generate an access token and send the access token to a third-party application, instead of exposing your long-term AccessKey pair to the thirdparty application. You can customize the access permissions and validity period of this token. The access token automatically expires when the validity period ends. The following code provides an example on how to create a signature request by using STS:
+This topic describes how to use Security Token Service (STS) and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud Security Token Service (STS) is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS has the following benefits: You need only to generate an access token and send the access token to a third-party application, instead of exposing your long-term AccessKey pair to the thirdparty application. You can customize the access permissions and validity period of this token. The access token automatically expires when the validity period ends. The following code provides an example on how to create a signature request by using STS:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String securityToken = "<yourSecurityToken>"; // After you obtain a temporary STS credential for your OSSClient, an OSSClient instance is created based on the security token and temporary AccessK ey pair (AccessKey ID and AccessKey secret) contained in the credential. // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret, securityToken); // Perform an operation in OSS. For example, you can upload or download an object. // Upload an object to OSS. // ossClient.putObject(putObjectRequest); // Download an object to a local file. If the name of the object is the same as that of the local file, the object replaces the local file. If the na me of the object is different from that of the local file, the object is downloaded. // ossClient.getObject(new GetObjectRequest(bucketName, objectName), new File("<yourLocalFile>")); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-Use a signed URL to authorize temporary access Generate a signed URL You can generate a signed URL and provide it to a visitor to grant temporary access. When you generate a signed URL, you can specify the validity period of the URL to restrict the period of access from visitors. Generate a signed URL to allow HTTP GET requests The following code provides an example on how to generate a signed URL to allow HTTP GET requests:
+Use a signed URL to authorize temporary access You can generate a signed URL and provide it to a visitor to grant temporary access. When you generate a signed URL, you can specify the validity period of the URL to restrict the period of access from visitors. Generate a signed URL to allow HTTP GET requests The following code provides an example on how to generate a signed URL to allow HTTP GET requests:
 
 ```
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Set the validity period of the URL to one hour. Date expiration = new Date(new Date().getTime() + 3600 * 1000); // Generate a signed URL to allow HTTP GET requests. Visitors can use a browser for access. URL url = ossClient.generatePresignedUrl(bucketName, objectName, expiration); // Shut down the OSSClient instance. ossClient.shutdown();
@@ -5069,7 +5370,7 @@ Use a signed URL to upload an object The following code provides an example on h
 // The endpoint of the China (Hangzhou) region is used in this example. Specify the actual endpoint. String endpoint = "http://oss-cn-hangzhou.aliyuncs.com"; String accessKeyId = "<yourAccessKeyId>"; String accessKeySecret = "<yourAccessKeySecret>"; String bucketName = "<yourBucketName>"; String objectName = "<yourObjectName>"; // Create an OSSClient instance. OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret); // Generate a signed URL. Date expiration = DateUtil.parseRfc822Date("Thu, 19 Mar 2019 18:00:00 GMT"); GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, objectName, HttpMethod.PUT); // Set the validity period. request.setExpiration(expiration); // Set Content-Type. request.setContentType("application/octet-stream"); // Add user metadata. request.addUserMetadata("author", "aliy"); // Generate a signed URL to allow HTTP PUT requests. URL signedUrl = ossClient.generatePresignedUrl(request); System.out.println("signed url for putObject: " + signedUrl); // Use the signed URL to send a request. File f = new File("<yourLocalFile>"); FileInputStream fin = new FileInputStream(f); // Specify the request headers of PutObject. Map<String, String> customHeaders = new HashMap<String, String>(); customHeaders.put("Content-Type", "application/octet-stream"); customHeaders.put("x-oss-meta-author", "aliy"); PutObjectResult result = ossClient.putObject(signedUrl, fin, f.length(), customHeaders); // Shut down the OSSClient instance. ossClient.shutdown();
 ```
 
-4.1.10. IMG OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. You can use OSS IMG to build your own image processing service. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. Anonymous access If the ACL of an image object is public-read, as described in the following table, anonymous users can access the image object.
+OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. You can use OSS IMG to build your own image processing service. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. Anonymous access If the ACL of an image object is public-read, as described in the following table, anonymous users can access the image object.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -5127,7 +5428,7 @@ Access by using HTTPS IMG supports access by using HTTPS. Example:
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-Authorized access If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on it.
+If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on it.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -5235,7 +5536,7 @@ Cascade processing
     ossClient.shutdown();
 ```
 
-4.1.11. Handle exceptions If an exception occurs when you call the OSSClient class-related API operation, the related operation fails. Otherwise, the related operation succeeds. If an exception occurs, the data returned by the operation is invalid. OSS SDK for Java exceptions are classified into two types: OSSException and ClientException. Both are subclasses of RuntimeException. Examples
+If an exception occurs when you call the OSSClient class-related API operation, the related operation fails. Otherwise, the related operation succeeds. If an exception occurs, the data returned by the operation is invalid. OSS SDK for Java exceptions are classified into two types: OSSException and ClientException. Both are subclasses of RuntimeException. Examples
 
 ```java
 try {
@@ -5299,7 +5600,7 @@ ClientException ClientException indicates the exception that occurs when a clien
 | SignatureDoesNotMatch | The error message returned because the signature is invalid. | 403 |
 | InvalidEncryptionAlgorithmError | The error message returned because the specified encryption algorithm based on entropy encoding is invalid. | 400 |
 
-4.1.12. FAQ This topic lists the causes and solutions for common errors you may encounter when you use OSS SDK for Java. JAR conflicts If an error similar to the following is displayed when you use OSS SDK for Java, a JAR conflict is in your project:
+This topic lists the causes and solutions for common errors you may encounter when you use OSS SDK for Java. JAR conflicts If an error similar to the following is displayed when you use OSS SDK for Java, a JAR conflict is in your project:
 
 ```
 Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
@@ -5468,9 +5769,9 @@ Cause: A background thread IdleConnectionReaper from OSSClient shuts down idle c
 try { serviceClient.shutdown(); } catch(Exception e) {
 ```
 
-### Python-SDK
+### 4.2 Python-SDK
 
-4.2.1. Preface This topic describes the sample code of OSS SDK for Python in various use cases. Source code For the source code of OSS SDK for Python, visit GitHub. Sample programs The sample code of OSS SDK for Python is in the examples directory. For more information, visit GitHub. The following table describes the sample files in the sample programs.
+This topic describes the sample code of OSS SDK for Python in various use cases. Source code For the source code of OSS SDK for Python, visit GitHub. Sample programs The sample code of OSS SDK for Python is in the examples directory. For more information, visit GitHub. The following table describes the sample files in the sample programs.
 
 | Sample file | Description |
 |---|---|
@@ -5487,7 +5788,7 @@ try { serviceClient.shutdown(); } catch(Exception e) {
 | image.py | Shows you how to use Image Processing (IMG). |
 | bucket.py | Shows you how to manage buckets such as bucket creation, deletion, and listing. |
 
-4.2.2. Installation This topic describes how to install OSS SDK for Python. Preparation The version of OSS SDK for Python in this topic is compatible with Python 2.6, 2.7, 3.3, 3.4, 3.5, and 3.6. Install the environment For more information about how to install an appropriate version of Python, visit python. Check the Python version Run the `python -V` command to check Python version. In Windows, if a message is displayed, indicating that it is not an internal or external command, edit the environment variable `Path` . Add the installation path of Python and pip. The installation path of pip is the Scripts directory under the installation path of Python. Not e You may need to restart your computer to ensure that the environment variables take effect. Download OSS SDK for Python Download from GitHub Download previous versions For more information, see API Reference. Install python-devel OSS SDK for Python uses the crcmod library to calculate the value of CRC. The crcmod library depends on the Python.h file. If the Python.h file is missing, SDK installation is not affected but the installation of crcmod extensions in C fails. Therefore, the efficiency of operations such as object upload and download is low. Install pythondevel if it does not exist. When you install Python in Windows or Mac OS X systems, the Python.h file is installed together with Python. Therefore, you do not need to install python-devel. When you install Python in CentOS, RHEL, or Fedora systems, run the following command to install python-devel:
+This topic describes how to install OSS SDK for Python. Preparation The version of OSS SDK for Python in this topic is compatible with Python 2.6, 2.7, 3.3, 3.4, 3.5, and 3.6. Install the environment For more information about how to install an appropriate version of Python, visit python. Check the Python version Run the `python -V` command to check Python version. In Windows, if a message is displayed, indicating that it is not an internal or external command, edit the environment variable `Path` . Add the installation path of Python and pip. The installation path of pip is the Scripts directory under the installation path of Python. Not e You may need to restart your computer to ensure that the environment variables take effect. Download OSS SDK for Python Download from GitHub Download previous versions For more information, see API Reference. Install python-devel OSS SDK for Python uses the crcmod library to calculate the value of CRC. The crcmod library depends on the Python.h file. If the Python.h file is missing, SDK installation is not affected but the installation of crcmod extensions in C fails. Therefore, the efficiency of operations such as object upload and download is low. Install pythondevel if it does not exist. When you install Python in Windows or Mac OS X systems, the Python.h file is installed together with Python. Therefore, you do not need to install python-devel. When you install Python in CentOS, RHEL, or Fedora systems, run the following command to install python-devel:
 
 ```bash
 yum install python-devel
@@ -5553,7 +5854,7 @@ Uninstall OSS SDK for Python If OSS SDK for Python fails to be installed, uninst
 pip uninstall oss2
 ```
 
-4.2.3. Quick start This topic describes how to use OSS SDK for Python to perform routine operations such as create buckets, upload objects, and download objects. Create a bucket
+This topic describes how to use OSS SDK for Python to perform routine operations such as create buckets, upload objects, and download objects.
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5564,7 +5865,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 bucket.create_bucket(oss2.models.BUCKET_ACL_PRIVATE)
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
+For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. The following code provides an example on how to upload objects to OSS by using stream upload:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5577,7 +5878,7 @@ bc/efg/123.jpg.
 bucket.put_object_from_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
-Download objects The following code provides an example on how to download a specified object to a local directory:
+The following code provides an example on how to download a specified object to a local directory:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5590,7 +5891,7 @@ e: abc/efg/123.jpg.
 bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
-List objects The following code provides an example on how to list 10 objects in a specified bucket:
+The following code provides an example on how to list 10 objects in a specified bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5602,7 +5903,7 @@ for b in islice(oss2.ObjectIterator(bucket), 10):
     print(b.key)
 ```
 
-Delete objects The following code provides an example on how to delete an object:
+The following code provides an example on how to delete an object:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5613,7 +5914,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 abc/efg/123.jpg. bucket.delete_object('<yourObjectName>')
 ```
 
-4.2.4. Initialization This topic describes how to initialize OSS SDK for Python. Most operations of OSS SDK for Python are performed based on the oss2.Service and oss2.Bucket classes. oss2.Service is used to list buckets. oss2.Bucket is used to upload, download, and delete objects as well as configure buckets. You must specify the endpoint when you initiate the two classes. oss2.Service does not support access to buckets by using custom domain names that are mapped to the buckets. For more information about endpoints, see Obtain an endpoint. Initialize oss2.Service For more information, see List buckets. Initialize oss2.Bucket Use the endpoint of the region where the bucket is located to initialize the class The following code provides an example on how to initialize oss2.Bucket by using the endpoint of the region where the bucket is located:
+This topic describes how to initialize OSS SDK for Python. Most operations of OSS SDK for Python are performed based on the oss2.Service and oss2.Bucket classes. oss2.Service is used to list buckets. oss2.Bucket is used to upload, download, and delete objects as well as configure buckets. You must specify the endpoint when you initiate the two classes. oss2.Service does not support access to buckets by using custom domain names that are mapped to the buckets. For more information about endpoints, see Obtain an endpoint. Initialize oss2.Service For more information, see List buckets. Initialize oss2.Bucket Use the endpoint of the region where the bucket is located to initialize the class The following code provides an example on how to initialize oss2.Bucket by using the endpoint of the region where the bucket is located:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5642,7 +5943,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 endpoint = 'https://oss-cn-hangzhou.aliyuncs.com' bucket = oss2.Bucket(auth, endpoint, '<yourBucketName>', enable_crc=False)
 ```
 
-Warning We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object uploads and downloads. 4.2.5. Buckets 4.2.5.1. Create a bucket A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
+Warning We recommend that you do not disable CRC. If you disable CRC, data integrity may be affected during object uploads and downloads. A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5653,7 +5954,7 @@ ou) region is used. Specify your actual endpoint. bucket = oss2.Bucket(auth, 'ht
 bucket.create_bucket()
 ```
 
-4.2.5.2. List buckets A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following sample code provides an example on how to list all buckets that belong to an Alibaba Cloud account:
+A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following sample code provides an example on how to list all buckets that belong to an Alibaba Cloud account:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5662,7 +5963,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 service = oss2.Service(auth, 'http://oss-cn-hangzhou.aliyuncs.com') print([b.name for b in oss2.BucketIterator(service)])
 ```
 
-4.2.5.3. Determine whether a bucket exists A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a bucket exists:
+A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a bucket exists:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5684,7 +5985,7 @@ else:
     print('bucket not exist')
 ```
 
-4.2.5.4. Manage bucket ACLs A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. Configure the ACL of a bucket The following table describes the ACLs that you can configure for a bucket.
+A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. Configure the ACL of a bucket The following table describes the ACLs that you can configure for a bucket.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -5712,7 +6013,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') print(bucket.get_bucket_acl().acl)
 ```
 
-4.2.5.5. Delete buckets If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated during multipart upload in the bucket are deleted. The following code provides an example on how to delete buckets:
+If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated during multipart upload in the bucket are deleted. The following code provides an example on how to delete buckets:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5727,7 +6028,7 @@ except oss2.exceptions.NoSuchBucket:
     print('bucket does not exist')
 ```
 
-To delete a bucket that is not empty, you must clear the bucket by listing and deleting objects in the bucket. If a multipart upload task is ongoing, you must terminate the task before you can delete the bucket. 4.2.5.6. Manage lifecycle rules Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules for a bucket The following code provides an example on how to configure lifecycle rules for a bucket:
+To delete a bucket that is not empty, you must clear the bucket by listing and deleting objects in the bucket. If a multipart upload task is ongoing, you must terminate the task before you can delete the bucket. Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules for a bucket The following code provides an example on how to configure lifecycle rules for a bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5786,7 +6087,7 @@ except oss2.exceptions.NoSuchLifecycle:
     print('lifecycle is not configured')
 ```
 
-4.2.5.7. Static website hosting You can enable static website hosting for your bucket. After you enable static website hosting for a bucket, you can visit the website by directly accessing the bucket domain name. In this case, you are redirected to the index page or error page that are specified for the hosted website. Configure static website hosting The following code provides an example on how to configure static website hosting for a bucket:
+You can enable static website hosting for your bucket. After you enable static website hosting for a bucket, you can visit the website by directly accessing the bucket domain name. In this case, you are redirected to the index page or error page that are specified for the hosted website. The following code provides an example on how to configure static website hosting for a bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5820,7 +6121,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.delete_bucket_website()
 ```
 
-4.2.5.8. CORS Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. Object Storage Service (OSS) provides CORS API operations to control cross-origin access. Configure CORS rules The following code provides an example on how to configure CORS rules for a specific bucket:
+Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. Object Storage Service (OSS) provides CORS API operations to control cross-origin access. Configure CORS rules The following code provides an example on how to configure CORS rules for a specific bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5862,7 +6163,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') bucket.delete_bucket_cors()
 ```
 
-4.2.5.9. Hotlink protection Object Storage Service (OSS) provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can specify the Referer field in HTTP request headers to configure hotlink protection. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: specifies that only specified domain names are allowed to access your resources. Allow Empty Referer: determines whether requests that contain an empty Referer field are allowed. If you specify that an empty Referer field is not allowed, only HTTP and HTTPS requests that contain an allowed Referer field can access your OSS resources. Configure hotlink protection for a bucket The following code provides an example on how to configure a Referer whitelist for a bucket:
+Object Storage Service (OSS) provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can specify the Referer field in HTTP request headers to configure hotlink protection. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: specifies that only specified domain names are allowed to access your resources. Allow Empty Referer: determines whether requests that contain an empty Referer field are allowed. If you specify that an empty Referer field is not allowed, only HTTP and HTTPS requests that contain an allowed Referer field can access your OSS resources. Configure hotlink protection for a bucket The following code provides an example on how to configure a Referer whitelist for a bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5893,7 +6194,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 existing Referer whitelist. bucket.put_bucket_referer(BucketReferer(True, []))
 ```
 
-4.2.5.10. Configure logging You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The names of log objects are in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging for a bucket The following code provides an example on how to enable logging for a bucket:
+You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The names of log objects are in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging for a bucket The following code provides an example on how to enable logging for a bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -5930,7 +6231,7 @@ else:
     print("resp : ", logging.resp.response)
 ```
 
-4.2.6. Upload objects 4.2.6.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for Python provides a variety of methods to upload objects. OSS SDK for Python supports the following object upload methods: Simple upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload in which you can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: uploads an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using a progress bar. For more information, see Use progress bars. After the object is uploaded, you can perform upload callback. For more information, see Upload callback. 4.2.6.2. Simple upload You can use simple upload to upload the following types of data: strings, bytes, Unicode characters, network streams, and local files. You can use the bucket.put_object method to upload an object. The following table describes the types of inputs supported by this method.
+Objects are the basic unit for data operations in OSS. OSS SDK for Python provides a variety of methods to upload objects. OSS SDK for Python supports the following object upload methods: Simple upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload in which you can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: uploads an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using a progress bar. For more information, see Use progress bars. After the object is uploaded, you can perform upload callback. For more information, see Upload callback. You can use simple upload to upload the following types of data: strings, bytes, Unicode characters, network streams, and local files. You can use the bucket.put_object method to upload an object. The following table describes the types of inputs supported by this method.
 
 | Type | Upload method |
 |---|---|
@@ -6010,7 +6311,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 input = requests.get('http://www.aliyun.com') bucket.put_object('<yourObjectName>', input)
 ```
 
-4.2.6.3. Append upload Object Storage Service (OSS) allows you to use append upload to append content directly to the end of an object. You can apply this method only to appendable objects. The following code provides an example on how to upload local files to OSS by using append upload:
+Object Storage Service (OSS) allows you to use append upload to append content directly to the end of an object. You can apply this method only to appendable objects. The following code provides an example on how to upload local files to OSS by using append upload:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6023,7 +6324,7 @@ result = bucket.append_object('<yourObjectName>', 0, 'content of first append')
 he response returned by the last operation or by using the bucket.head_object method. bucket.append_object('<yourObjectName>', result.next_position, 'content of second append')
 ```
 
-If the object already exists, exceptions occur in the following cases: If the object is not appendable, ObjectNotAppendable is returned. If the object is appendable but the append position does not match the current object size, PositionNotEqualToLength is returned. 4.2.6.4. Resumable upload If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. You can use the oss2.resumable_upload method to perform resumable upload for a specified object. The following table describes the parameters you can configure for the oss2.resumable_upload method.
+If the object already exists, exceptions occur in the following cases: If the object is not appendable, ObjectNotAppendable is returned. If the object is appendable but the append position does not match the current object size, PositionNotEqualToLength is returned. If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. You can use the oss2.resumable_upload method to perform resumable upload for a specified object. The following table describes the parameters you can configure for the oss2.resumable_upload method.
 
 | Parameter | Description | Required | Default value |
 |---|---|---|---|
@@ -6062,7 +6363,7 @@ specify the number of concurrent upload threads, ensure that oss2.defaults.conne
     num_threads=4)
 ```
 
-Not e Multiple threads are used in resumable upload. Therefore, you do not need to encapsulate multiple upload threads when you call the resumable upload method. Otherwise, data may be transferred repeatedly. We recommend that you increase the part size when network conditions are good, and decrease the part size when network conditions are poor. 4.2.6.5. Multipart upload OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to complete the upload. To implement multipart upload, perform the following operations:
+Not e Multiple threads are used in resumable upload. Therefore, you do not need to encapsulate multiple upload threads when you call the resumable upload method. Otherwise, data may be transferred repeatedly. We recommend that you increase the part size when network conditions are good, and decrease the part size when network conditions are poor. OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to complete the upload. To implement multipart upload, perform the following operations:
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
@@ -6181,7 +6482,7 @@ for upload_info in oss2.MultipartUploadIterator(bucket, prefix='test'):
     print('upload_id:', upload_info.upload_id)
 ```
 
-4.2.6.6. Use progress bars Progress bars are used to indicate the progress of an upload or download. For the complete code of progress bar, visit GitHub. The following code uses bucket.put_object as an example to describe how to use a progress bars:
+Progress bars are used to indicate the progress of an upload or download. For the complete code of progress bar, visit GitHub. The following code uses bucket.put_object as an example to describe how to use a progress bars:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6198,7 +6499,7 @@ def percentage(consumed_bytes, total_bytes):
 bucket.put_object('<yourObjectName>', 'a'*1024*1024, progress_callback=percentage)
 ```
 
-4.2.6.7. Upload callback This topic describes how to use upload callback. For the complete code used to implement upload callback, visit GitHub. You can use upload callback when you use put_object, put_object_from_file, and complete_multipart_upload. The following code provides an example on how to use upload callback.
+This topic describes how to use upload callback. For the complete code used to implement upload callback, visit GitHub. You can use upload callback when you use put_object, put_object_from_file, and complete_multipart_upload. The following code provides an example on how to use upload callback.
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6223,7 +6524,7 @@ headers = {'x-oss-callback': base64_callback_body}
 result = bucket.put_object('<yourObjectName>', 'a'*1024*1024, headers)
 ```
 
-4.2.7. Download objects 4.2.7.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for Python provides the following object download methods: You can use one of the following methods to download an object: Streaming download Download to local files Range download Resumable download You can view the download progress by using a progress bar. For more information, see Use progress bars. 4.2.7.2. Streaming download If you must download a large object or if the download requires a long period of time to complete, you can perform streaming download to download the object in increments. The following code provides an example on how to download an object by using streaming download:
+Objects are the basic unit for data operations in OSS. OSS SDK for Python provides the following object download methods: You can use one of the following methods to download an object: You can view the download progress by using a progress bar. For more information, see Use progress bars. If you must download a large object or if the download requires a long period of time to complete, you can perform streaming download to download the object in increments. The following code provides an example on how to download an object by using streaming download:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6253,7 +6554,7 @@ The following code provides an example on how to copy data to another object in 
 object_stream = bucket.get_object('<yourObjectName>') bucket.put_object('<yourBackupObjectName>', object_stream)
 ```
 
-4.2.7.3. Download to local files This topic describes how to download an object to a local file. The following code provides an example on how to download a specified object to a local file:
+This topic describes how to download an object to a local file. The following code provides an example on how to download a specified object to a local file:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6266,7 +6567,7 @@ cal file does not exist, it is created.
 bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>')
 ```
 
-4.2.7.4. Range download You can use range download to download a specified range of data of an object. Specify a valid range to download data The following code provides an example on how to specify a valid range to download data:
+You can use range download to download a specified range of data of an object. Specify a valid range to download data The following code provides an example on how to specify a valid range to download data:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6297,7 +6598,7 @@ except oss2.exceptions.ServerError as e:
     print('standard get 1000~2000 error code:', e.code)
 ```
 
-4.2.7.5. Resumable download You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS SDK for Java provides the resumable download feature. You can perform the following steps to perform resumable download:
+You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS SDK for Java provides the resumable download feature. You can perform the following steps to perform resumable download:
 1. Create a temporary local file with a name that consists of the original object name and a random suffix.
 2. Read the object based on the range specified in the Range header in the HTTP request and write the read content to the corresponding position of the temporary
 local file.
@@ -6339,7 +6640,7 @@ al to the oss2.defaults.multiget_part_size value. oss2.resumable_download(bucket
   num_threads=3)
 ```
 
-Not e Do not use multiple programs or threads to call the method simultaneously to download the same object to a same destination file. This is because one piece of checkpoint information overwrites another on the local disk, or one temporary file name conflicts with another. 4.2.7.6. Use progress bars Progress bars are used to indicate the progress of an upload or download. For the complete code of progress bar, visit GitHub. The following code provides an example on how to use a progress bar in object download performed by using the bucket.get_object_to_file method:
+Not e Do not use multiple programs or threads to call the method simultaneously to download the same object to a same destination file. This is because one piece of checkpoint information overwrites another on the local disk, or one temporary file name conflicts with another. Progress bars are used to indicate the progress of an upload or download. For the complete code of progress bar, visit GitHub. The following code provides an example on how to use a progress bar in object download performed by using the bucket.get_object_to_file method:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6356,7 +6657,7 @@ def percentage(consumed_bytes, total_bytes):
 bucket.get_object_to_file('<yourObjectName>', '<yourLocalFile>', progress_callback=percentage)
 ```
 
-4.2.8. Manage objects 4.2.8.1. Overview You can manage objects in a bucket by using a variety of operations such as SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Determine whether an object exists Manage object ACLs Manage object metadata List objects Query objects Delete objects Copy an object 4.2.8.2. Determine whether an object exists This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
+You can manage objects in a bucket by using a variety of operations such as SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Copy an object This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6370,7 +6671,7 @@ else:
     print('object not exist')
 ```
 
-4.2.8.3. Manage object ACLs This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that you can configure for an object.
+This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that you can configure for an object.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -6399,7 +6700,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') print(bucket.get_object_acl('<yourObjectName>').acl)
 ```
 
-4.2.8.4. Manage object metadata Object metadata includes HTTP headers and user metadata. Configure HTTP headers The following code provides an example on how to configure the HTTP headers of an object:
+Object metadata includes HTTP headers and user metadata. Configure HTTP headers The following code provides an example on how to configure the HTTP headers of an object:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6452,7 +6753,7 @@ import oss2 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>') // Query part of the object metadata. simplifiedmeta = bucket.get_object_meta("<yourObjectName>") print(simplifiedmeta.headers['Last-Modified']) print(simplifiedmeta.headers['Content-Length']) print(simplifiedmeta.headers['ETag']) // Query all object metadata. objectmeta = bucket.head_object("<yourObjectName>") print(objectmeta.headers['Content-Type']) print(objectmeta.headers['Last-Modified']) print(objectmeta.headers['x-oss-object-type'])
 ```
 
-4.2.8.5. List objects Objects in a bucket are sorted alphabetically. OSS SDK for Python provides a series of object listing methods. Simple list The following code provides an example on how to list 10 objects in a specified bucket:
+Objects in a bucket are sorted alphabetically. OSS SDK for Python provides a series of object listing methods. Simple list The following code provides an example on how to list 10 objects in a specified bucket:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6533,7 +6834,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
         print('file:' + obj.key + '  length:' + str(obj.size) + "Byte.")
 ```
 
-4.2.8.6. Query objects This topic describes how to use SelectObject in OSS SDK for Python to query CSV and JSON objects. OSS SDK for Python examples The following code provides an example on how to query CSV and JSON objects:
+This topic describes how to use SelectObject in OSS SDK for Python to query CSV and JSON objects. OSS SDK for Python examples The following code provides an example on how to query CSV and JSON objects:
 
 ```java
 import oss2 def select_call_back(consumed_bytes, total_bytes = None):
@@ -6633,7 +6934,7 @@ The preceding code example is used to create Select Meta for or obtain Select Me
 | CompressionType | The format in which the object is compressed. No compression formats are supported. The default value is None. |
 | OverwriteIfExists | Specifies whether the created Select Meta overwrites the original Select Meta. You do not need to set this parameter in most cases. |
 
-Returned results of create_select_object_meta: A GetSelectObjectMetaResult object is returned, which includes the rows and splits attributes. If the object is a CSV object, the select_resp object in the result includes the columns attribute, which indicates the number of columns in the CSV object. 4.2.8.7. Delete objects This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
+Returned results of create_select_object_meta: A GetSelectObjectMetaResult object is returned, which includes the rows and splits attributes. If the object is a CSV object, the select_resp object in the result includes the columns attribute, which indicates the number of columns in the CSV object. This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6667,7 +6968,7 @@ for obj in oss2.ObjectIterator(bucket, prefix=prefix):
     bucket.delete_object(obj.key)
 ```
 
-4.2.8.8. Copy objects You can copy an object from a source bucket to a destination bucket within the same region. When you copy a object, take note of the following items: You must have read permissions on the source object and write permissions on the destination bucket. The source bucket and the destination bucket must be in the same region. Simple copy You can use simple copy for objects up to 1 GB in size. The following code provides an example on how to perform simple copy:
+You can copy an object from a source bucket to a destination bucket within the same region. When you copy a object, take note of the following items: You must have read permissions on the source object and write permissions on the destination bucket. The source bucket and the destination bucket must be in the same region. Simple copy You can use simple copy for objects up to 1 GB in size. The following code provides an example on how to perform simple copy:
 
 ```java
 # -*- coding: utf-8 -*-
@@ -6701,7 +7002,7 @@ part_number = 1 offset = 0 while offset < total_size:
 bucket.complete_multipart_upload(dst_object, upload_id, parts)
 ```
 
-4.2.9. Authorized access This topic describes how to use Security Token Service (STS) and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud STS is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS has the following benefits: You need only to generate an access token and send the access token to a third-party application, instead of exposing your long-term AccessKey pair to the thirdparty application. You can customize the access permissions and validity period of this token. The access token automatically expires when the validity period ends. First, run the following command to install the official Python STS client:
+This topic describes how to use Security Token Service (STS) and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud STS is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS has the following benefits: You need only to generate an access token and send the access token to a third-party application, instead of exposing your long-term AccessKey pair to the thirdparty application. You can customize the access permissions and validity period of this token. The access token automatically expires when the validity period ends. First, run the following command to install the official Python STS client:
 
 ```
 pip install aliyun-python-sdk-sts
@@ -6748,7 +7049,7 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 print(bucket.sign_url('GET', '<yourObjectName>', 60))
 ```
 
-4.2.10. Chinese characters and time This topic describes how to use Chinese characters and time in OSS SDK for Python. Chinese characters To use Chinese characters in Python code, you must include a character encoding declaration in the beginning of the code. Otherwise, errors occur when you run the code. Example of a character encoding statement:
+This topic describes how to use Chinese characters and time in OSS SDK for Python. Chinese characters To use Chinese characters in Python code, you must include a character encoding declaration in the beginning of the code. Otherwise, errors occur when you run the code. Example of a character encoding statement:
 
 ```bash
 # -*- coding: utf-8 -*-
@@ -6791,7 +7092,7 @@ Type conversion functions OSS SDK for Python provides three functions for type c
 | to_unicode | - Converts the str type to the unicode type in Python 2.x. Data of other types is returned without changes. - Converts the bytes type to the str type in Python 3.x. Data of other types is returned without changes. |
 | to_string | This function is equivalent to to_bytes in Python 2.x. This function is equivalent to to_unicode in Python 3.x. |
 
-Time OSS SDK for Python converts timestamp strings of the datetime.datetime type that are obtained from the server to a Unix timestamp corresponding to the amount of time in seconds elapsed since UTC 00:00 on January 1, 1970. For example, the last_modified parameter returned for bucket.get_object is an int Unix timestamp. You can use the datetime.datetime.fromtimestamp() method to convert time to obtain timestamp strings. 4.2.11. IMG OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call `RESTful` API operations to process the images anytime, anywhere, and on any Internet device. IMG provides image processing API operations. To upload images, use the upload API operations provided by OSS. You can use OSS IMG to build your own image processing service. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Call multiple IMG features by using cascade processing. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a `URL` . Anonymous access
+Time OSS SDK for Python converts timestamp strings of the datetime.datetime type that are obtained from the server to a Unix timestamp corresponding to the amount of time in seconds elapsed since UTC 00:00 on January 1, 1970. For example, the last_modified parameter returned for bucket.get_object is an int Unix timestamp. You can use the datetime.datetime.fromtimestamp() method to convert time to obtain timestamp strings. OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call `RESTful` API operations to process the images anytime, anywhere, and on any Internet device. IMG provides image processing API operations. To upload images, use the upload API operations provided by OSS. You can use OSS IMG to build your own image processing service. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Call multiple IMG features by using cascade processing. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a `URL` . Anonymous access
 
 | If the ACL of an image object is public-read , as described in the following table, anonymous users can access the image object. |   |
 |---|---|
@@ -6841,7 +7142,7 @@ IMG also supports HTTPS access. The following code provides an example:
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-Authorized access If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
+If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -6932,7 +7233,7 @@ bucket.delete_object(key)
 os.remove(new_pic)
 ```
 
-Not e `get_object` also supports the IMG feature. 4.2.12. Handle exceptions OssError exceptions of OSS SDK for Python are classified into ClientError, RequestError, and ServerError. Definitions of these errors are provided in the submodule of oss2.exceptions . The following table describes the variable, type, and description of exceptions.
+Not e `get_object` also supports the IMG feature. OssError exceptions of OSS SDK for Python are classified into ClientError, RequestError, and ServerError. Definitions of these errors are provided in the submodule of oss2.exceptions . The following table describes the variable, type, and description of exceptions.
 
 | Variable | Type | Description |
 |---|---|---|
@@ -6968,9 +7269,9 @@ ClientError ClientError occurs due to incorrect inputs on the client. For exampl
 | PositionNotEqualToLength | 409 | PositionNotEqualToLength | The error message returned because the configured position is not equal to the object length. |
 | ObjectNotAppendable | 409 | ObjectNotAppendable | The error message returned because the object is not appendable. |
 
-### PHP-SDK
+### 4.3 PHP-SDK
 
-4.3.1. Preface This topic provides the sample code of OSS SDK for PHP in various use cases. Source code For the source code of OSS SDK for PHP, visit GitHub. Sample codes OSS SDK for PHP provides a variety of sample code for your reference or use. The following table describes the sample codes.
+This topic provides the sample code of OSS SDK for PHP in various use cases. Source code For the source code of OSS SDK for PHP, visit GitHub. Sample codes OSS SDK for PHP provides a variety of sample code for your reference or use. The following table describes the sample codes.
 
 | Sample file | Description |
 |---|---|
@@ -6993,7 +7294,7 @@ ClientError ClientError occurs due to incorrect inputs on the client. For exampl
 | BucketWebsite.php | Shows you how to configure, query, and delete the static website hosting configurations for a bucket. |
 | BucketCors.php | Shows you how to configure, query, and delete the CORS configurations for a bucket. |
 
-4.3.2. Installation This topic describes how to install OSS SDK for PHP. Preparation OSS SDK for PHP is applicable to PHP 5.3 and later versions. This topic uses PHP 5.6.22 as an example. Install the environment You must install PHP and cURL extension: If a message that indicates the specified module is unavailable is displayed, set extension_dir to `C:/Windows/System32/` .
+This topic describes how to install OSS SDK for PHP. Preparation OSS SDK for PHP is applicable to PHP 5.3 and later versions. This topic uses PHP 5.6.22 as an example. Install the environment You must install PHP and cURL extension: If a message that indicates the specified module is unavailable is displayed, set extension_dir to `C:/Windows/System32/` .
 
 | sudo apt-get install php-curl |   |
 |---|---|
@@ -7038,7 +7339,7 @@ Source code i. Select the required version and download the ZIP package from Git
 require_once '/path/to/oss-sdk/autoload.php';
 ```
 
-4.3.3. Initialization An OSSClient serves as the OSS PHP client to manage OSS resources such as buckets and objects. Create an OSSClient instance To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. Use an endpoint to create an OSSClient
+An OSSClient serves as the OSS PHP client to manage OSS resources such as buckets and objects. Create an OSSClient instance To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. Use an endpoint to create an OSSClient
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7096,7 +7397,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-4.3.4. Getting Started This topic describes how to use Object Storage Service (OSS) SDK for PHP to perform routine operations, such as creating buckets, uploading objects, and downloading objects. Create a bucket The following code provides an example on how to create a bucket:
+This topic describes how to use Object Storage Service (OSS) SDK for PHP to perform routine operations, such as creating buckets, uploading objects, and downloading objects. The following code provides an example on how to create a bucket:
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7139,7 +7440,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-List objects The following code provides an example on how to list objects in a bucket. By default, 100 objects are listed.
+The following code provides an example on how to list objects in a bucket. By default, 100 objects are listed.
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7171,7 +7472,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
     print $e->getMessage();
 ```
 
-4.3.5. Buckets 4.3.5.1. Create buckets A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
+A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
 
 ```
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7197,7 +7498,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-For the complete code that is used to create a bucket, visit GitHub. 4.3.5.2. List buckets A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following sample code provides an example on how to list all buckets that belong to an Apsara Stack tenant account:
+For the complete code that is used to create a bucket, visit GitHub. A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following sample code provides an example on how to list all buckets that belong to an Apsara Stack tenant account:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7215,7 +7516,7 @@ $bucketList = $bucketListInfo->getBucketList(); foreach($bucketList as $bucket) 
     print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreatedate() . "\n");
 ```
 
-4.3.5.3. Determine whether a bucket exists A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a bucket exists:
+A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to determine whether a bucket exists. The following code provides an example on how to determine whether a bucket exists:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7235,7 +7536,7 @@ if ($res === true) {
     print(__FUNCTION__ . ": FAILED" . "\n");
 ```
 
-4.3.5.4. Manage the ACL of a bucket A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. Configure the ACL for a bucket The following table describes the ACLs that you can configure for a bucket.
+A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. Configure the ACL for a bucket The following table describes the ACLs that you can configure for a bucket.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -7277,7 +7578,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n"); print('acl: ' . $res);
 ```
 
-4.3.5.5. Delete buckets If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
+If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
 
 ```python
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7294,7 +7595,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.5.6. Manage lifecycle rules Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules for a bucket:
+Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules for a bucket:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7345,7 +7646,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.5.7. Hotlink protection Object Storage Service (OSS) provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Configure hotlink protection The following code provides an example on how to configure hotlink protection:
+Object Storage Service (OSS) provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. The following code provides an example on how to configure hotlink protection:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7398,7 +7699,7 @@ ty Referer fields to overwrite the existing hotlink protection configurations.
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.5.8. Configure logging You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The log objects are in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging The following code provides an example on how to enable logging for a bucket:
+You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The log objects are in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging The following code provides an example on how to enable logging for a bucket:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7452,7 +7753,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.5.9. Configure static website hosting You can configure static website hosting for your bucket. After the configurations take effect, you can use a bucket domain name as a static website address that can be used to access objects stored in the bucket. For example, index pages and error pages. For the complete code for static website hosting, visit GitHub. Configure static website hosting The following code provides an example on how to configure static website hosting:
+You can configure static website hosting for your bucket. After the configurations take effect, you can use a bucket domain name as a static website address that can be used to access objects stored in the bucket. For example, index pages and error pages. For the complete code for static website hosting, visit GitHub. The following code provides an example on how to configure static website hosting:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7503,7 +7804,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.5.10. Configure CORS CORS allows web applications to access resources that belong to different regions. OSS supports CORS API operations for cross-origin access control. For the complete CORS rule code, visit GitHub. Configure CORS rules The following code provides an example on how to configure CORS rules for a specific bucket:
+CORS allows web applications to access resources that belong to different regions. OSS supports CORS API operations for cross-origin access control. For the complete CORS rule code, visit GitHub. Configure CORS rules The following code provides an example on how to configure CORS rules for a specific bucket:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7555,7 +7856,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.6. Upload objects 4.3.6.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides a variety of methods to upload objects. You can upload objects to OSS by using one of the following methods: Simple upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Multipart upload: uploads an object up to 48.8 TB in size. Use multipart upload for large objects. 4.3.6.2. Simple upload Simple upload allows you to upload strings or local files. This topic describes how to upload strings and local files. Upload a string The following code provides an example on how to upload a string to an OSS object:
+Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides a variety of methods to upload objects. You can upload objects to OSS by using one of the following methods: Simple upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Multipart upload: uploads an object up to 48.8 TB in size. Use multipart upload for large objects. Simple upload allows you to upload strings or local files. This topic describes how to upload strings and local files. Upload a string The following code provides an example on how to upload a string to an OSS object:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7605,7 +7906,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.6.3. Append upload You can append strings and local files when you use append upload. The CopyObject operation cannot be performed on append objects. Append strings The following code provides an example on how to upload strings to OSS by using append upload:
+You can append strings and local files when you use append upload. The CopyObject operation cannot be performed on append objects. Append strings The following code provides an example on how to upload strings to OSS by using append upload:
 
 ```python
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -7645,7 +7946,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.6.4. Multipart upload Object Storage Service (OSS) allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to finish the upload. To implement multipart upload, perform the following operations:
+Object Storage Service (OSS) allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to finish the upload. To implement multipart upload, perform the following operations:
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
@@ -7876,7 +8177,7 @@ The following table describes the parameters contained in $options from the prec
 |---|---|
 | upload-id-marker | The upload ID of the multipart upload task after which the list begins. This parameter is used together with the key- marker parameter. If key-marker is not configured, upload-id-marker is invalid. If key-marker is configured, the query result includes: All objects whose names are alphabetically greater than the value of keyMarker. All objects whose names start with the letter the same as the value of key-marker. The value of uploadId is greater than that of upload-id-marker. |
 
-4.3.6.5. Upload callback This topic describes how to use upload callback in simple upload and multipart upload. Configure callback for simple upload The following code provides an example on how to configure callback for simple upload:
+This topic describes how to use upload callback in simple upload and multipart upload. Configure callback for simple upload The following code provides an example on how to configure callback for simple upload:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8014,7 +8315,7 @@ $options = array(OssClient::OSS_CALLBACK => $json,
 // You must provide all valid $uploadParts when you perform this operation. OSS verifies the validity of each part after it receives the submitted $u ploadParts. After all parts are verified, OSS combines these parts into a complete object. $ossClient->completeMultipartUpload($bucket, $object, $uploadId, $uploadParts, $options); printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
 ```
 
-4.3.7. Download objects 4.3.7.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides a variety of methods to download objects. You can use one of the following methods to download objects: Download to local files Download objects to local memory Range download Conditional download 4.3.7.2. Download to local files This topic describes how to use OSS SDK for PHP to download specific objects to local files. The following code provides an example on how to download a specific object to a local file:
+Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides a variety of methods to download objects. You can use one of the following methods to download objects: This topic describes how to use OSS SDK for PHP to download specific objects to local files. The following code provides an example on how to download a specific object to a local file:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8038,7 +8339,7 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt'" . "\n");
 ```
 
-4.3.7.3. Download objects to local memory This topic describes how to use OSS SDK for PHP to download specified objects to local memory. The following code provides an example on how to download a specified object to local memory and display the content of the object:
+This topic describes how to use OSS SDK for PHP to download specified objects to local memory. The following code provides an example on how to download a specified object to local memory and display the content of the object:
 
 ```python
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8055,7 +8356,7 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-Not e If a power outage occurs, data stored in the memory is lost. For more information about how to store the downloaded object in a local disk, see Download to local files. 4.3.7.4. Range download If you need only part of the data in an object, you can use range download to download data within the specified range. The following code provides an example on how to download data within the range from byte 0 to byte 4 in an object to local memory:
+Not e If a power outage occurs, data stored in the memory is lost. For more information about how to store the downloaded object in a local disk, see Download to local files. If you need only part of the data in an object, you can use range download to download data within the specified range. The following code provides an example on how to download data within the range from byte 0 to byte 4 in an object to local memory:
 
 ```python
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8072,7 +8373,7 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.7.5. Conditional download OSS allows you to configure one or more conditions for object download. If the specified conditions are met, the object is downloaded. If the specified conditions are not met, an error is returned and the object is not downloaded. The following table describes the conditions that you can configure for object download.
+OSS allows you to configure one or more conditions for object download. If the specified conditions are met, the object is downloaded. If the specified conditions are not met, an error is returned and the object is not downloaded. The following table describes the conditions that you can configure for object download.
 
 | Parameter | Description | Configuration method |
 |---|---|---|
@@ -8106,7 +8407,7 @@ use OSS\OssClient; $accessKeyId = "<yourAccessKeyId>"; $accessKeySecret = "<your
 print ($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.8. Manage objects 4.3.8.1. Overview You can manage objects in a bucket by using a variety of operations including SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Determine whether objects exist Manage object ACLs Manage object metadata List objects Delete objects Copy an object 4.3.8.2. Determine whether an object exists This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
+You can manage objects in a bucket by using a variety of operations including SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Determine whether objects exist Copy an object This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8123,7 +8424,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n"); var_dump($exist);
 ```
 
-4.3.8.3. Manage the ACL of an object This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that you can configure for an object.
+This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that you can configure for an object.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -8166,7 +8467,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n"); var_dump($objectAcl);
 ```
 
-4.3.8.4. Manage object metadata This topic describes how to manage object metadata. Configure object metadata The following code provides an example on how to configure object metadata:
+This topic describes how to manage object metadata. Configure object metadata The following code provides an example on how to configure object metadata:
 
 ```python
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8238,7 +8539,7 @@ print(__FUNCTION__ . ": OK" . "\n"); if (isset($objectMeta[strtolower('Content-D
     print(__FUNCTION__ . ": ObjectMeta checked FAILED" . "\n");
 ```
 
-4.3.8.5. List objects This topic describes how to list all objects or objects that meet specific conditions in a specified bucket. List all objects The following code provides an example on how to list all the objects in a specified bucket:
+This topic describes how to list all objects or objects that meet specific conditions in a specified bucket. List all objects The following code provides an example on how to list all the objects in a specified bucket:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8319,7 +8620,7 @@ The following table describes the parameters contained in $options from the prec
 | max-keys | Specifies the maximum number of objects that can be listed each time. The default value is 100. The maximum value is 1000. | No |
 | marker | Specifies the name of the object after which the list begins. | No |
 
-4.3.8.6. Delete objects This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. Delete a single object The following code provides an example on how to delete a single object:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8353,7 +8654,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeyId = "<yourAccessKeyId>"
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-Not e If an exception is thrown when you use try{}catch{} to catch errors, no objects are deleted. In this case, you can use $e->getMessage to obtain the error message and analyze the causes of the error. 4.3.8.7. Copy objects This topic describes how to copy an object. Take note of the following items when you copy an object: You must have read permissions on the source object and write permissions on the destination bucket. The source bucket and the destination bucket must be in the same region. Copy a small object You can call $ossClient->copyObject to copy an object less than or equal to 1 GB in size from the source bucket to the destination bucket within the same region. The following code provides an example on how to copy a small object:
+Not e If an exception is thrown when you use try{}catch{} to catch errors, no objects are deleted. In this case, you can use $e->getMessage to obtain the error message and analyze the causes of the error. This topic describes how to copy an object. Take note of the following items when you copy an object: You must have read permissions on the source object and write permissions on the destination bucket. The source bucket and the destination bucket must be in the same region. Copy a small object You can call $ossClient->copyObject to copy an object less than or equal to 1 GB in size from the source bucket to the destination bucket within the same region. The following code provides an example on how to copy a small object:
 
 ```python
 <?php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8424,7 +8725,7 @@ use OSS\OssClient; use OSS\Core\OssException; $accessKeySecret = "<yourAccessKey
 print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.9. Authorized access This topic describes how to use Security Token Service (STS) and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud STS is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS has the following benefits: You need only to generate an access token and send the access token to a third-party application, instead of exposing your long-term AccessKey pair to the thirdparty application. You can customize the access permissions and validity period of this token. The access token automatically expires when the validity period ends. The following code provides an example on how to create a signature request by using STS:
+This topic describes how to use Security Token Service (STS) and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud STS is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS has the following benefits: You need only to generate an access token and send the access token to a third-party application, instead of exposing your long-term AccessKey pair to the thirdparty application. You can customize the access permissions and validity period of this token. The access token automatically expires when the validity period ends. The following code provides an example on how to create a signature request by using STS:
 
 ```
 <? php if (is_file(__DIR__ . '/../autoload.php')) {
@@ -8482,7 +8783,7 @@ if ($res->isOK()) {
     print(__FUNCTION__ . ": FAILED" . "\n");
 ```
 
-}; 4.3.10. IMG OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. For the complete IMG code, visit GitHub. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. If the ACL of an image object is public-read, as described in the following table, anonymous users can access the image object.
+}; OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. For the complete IMG code, visit GitHub. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. If the ACL of an image object is public-read, as described in the following table, anonymous users can access the image object.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -8540,7 +8841,7 @@ Access by using HTTPS IMG supports access by using HTTPS. Example:
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-Authorized access If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
+If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -8639,7 +8940,7 @@ $content = $ossClient->getObject($bucket, $object, $options); $ossClient->putObj
 print($content); print(__FUNCTION__ . ": OK" . "\n");
 ```
 
-4.3.11. Error handling OSS SDK for PHP exceptions (OssException) include errors caused by invalid parameters and objects that do not exist. You can use getMessage to obtain an error message. For more information about OssException, visit GitHub. Error handling example The following code provides an example on how to rectify an error and display the error information when you create a bucket that already exists:
+OSS SDK for PHP exceptions (OssException) include errors caused by invalid parameters and objects that do not exist. You can use getMessage to obtain an error message. For more information about OssException, visit GitHub. Error handling example The following code provides an example on how to rectify an error and display the error information when you create a bucket that already exists:
 
 ```python
     try {
@@ -8699,9 +9000,9 @@ OSS error codes
 | SignatureDoesNotMatch | The error message returned because a signature error occurs. | 403 |
 | InvalidEncryptionAlgorithmError | The error message returned because the specified encryption algorithm based on entropy encoding is invalid. | 400 |
 
-### C-SDK
+### 4.4 C-SDK
 
-4.4.1. Preface This topic describes the information about OSS SDK for C. Compatibility For OSS SDK for C V3.*.*: *. compatible. For OSS SDK for C V2. *. *.*: Compatible with Windows Compatible with Linux API operations and incompatible with the following linked list (aos_list_t) traversal API operations: aos_list_for_each_entry aos_list_for_each_entry_reverse aos_list_for_each_entry_safe aos_list_for_each_entry_safe_reverse For OSS SDK for C V1.*.*: compatible except the following structures and API operations: oss_request_options_t oss_get_object_to_buffer oss_get_object_to_file oss_get_object_to_buffer_by_url oss_get_object_to_file_by_url oss_init_multipart_upload oss_complete_multipart_upload For OSS SDK for C V0.0.*: incompatible. SDK source code For the source code of OSS SDK for C, visit GitHub. Sample codes The OSS SDK for C provides a variety of sample codes for your reference or use. The following table describes the sample codes provided by OSS SDK for C.
+This topic describes the information about OSS SDK for C. Compatibility For OSS SDK for C V3.*.*: *. compatible. For OSS SDK for C V2. *. *.*: Compatible with Windows Compatible with Linux API operations and incompatible with the following linked list (aos_list_t) traversal API operations: aos_list_for_each_entry aos_list_for_each_entry_reverse aos_list_for_each_entry_safe aos_list_for_each_entry_safe_reverse For OSS SDK for C V1.*.*: compatible except the following structures and API operations: oss_request_options_t oss_get_object_to_buffer oss_get_object_to_file oss_get_object_to_buffer_by_url oss_get_object_to_file_by_url oss_init_multipart_upload oss_complete_multipart_upload For OSS SDK for C V0.0.*: incompatible. SDK source code For the source code of OSS SDK for C, visit GitHub. Sample codes The OSS SDK for C provides a variety of sample codes for your reference or use. The following table describes the sample codes provided by OSS SDK for C.
 
 | Document | Description |
 |---|---|
@@ -8717,7 +9018,7 @@ OSS error codes
 | oss_crc_sample.c | Shows you how to perform CRC in object upload and download. |
 | oss_image_sample.c | Shows you how to use Image Processing (IMG). |
 
-4.4.2. Installation This topic describes how to install OSS SDK for C. Install OSS SDK for C on Linux Install CMake and third-party libraries When you install OSS SDK for C on Linux, you must install CMake and the following third-party libraries: cRUL, APR, APR-util, and Mini-XML. The following table describes parameters required to install CMake and the third-party libraries.
+This topic describes how to install OSS SDK for C. Install OSS SDK for C on Linux Install CMake and third-party libraries When you install OSS SDK for C on Linux, you must install CMake and the following third-party libraries: cRUL, APR, APR-util, and Mini-XML. The following table describes parameters required to install CMake and the third-party libraries.
 
 | Parameter | Description | Version |
 |---|---|---|
@@ -8810,7 +9111,7 @@ You can specify a path to which third-party libraries cRUL, APR, APR-util, and M
 cmake -f CMakeLists.txt // Set the build type to Release. Typical build types include Debug, Release, RelWithDebInfo, and MinSizeRel. By default, Debug is used. -DCMAKE_BUILD_TYPE=Release // Set the directory to install the SDK. -DCMAKE_INSTALL_PREFIX=/usr/local/ // Specify the path where third-party libraries cRUL, APR, APR-util, and XML are installed. -DCURL_INCLUDE_DIR=/usr/include/curl -DCURL_LIBRARY=/usr/lib64/libcurl.so -DAPR_INCLUDE_DIR=/usr/include/apr-1 -DAPR_LIBRARY=/usr/lib64/libapr-1.so -DAPR_UTIL_INCLUDE_DIR=/usr/include/apr-1 -DAPR_UTIL_LIBRARY=/usr/lib64/libaprutil-1.so -DMINIXML_INCLUDE_DIR=/usr/include -DMINIXML_LIBRARY=/usr/lib64/libmxml.so // If the 'Could not find APR-config/APR-1-config' error is reported during compilation, one possible reason is that the APR-1-config file does n ot exist in the default path. Add the following options: -DAPR_CONFIG_BIN=/path/to/bin/apr-1-config // If the 'Could not find apu-config/apu-1-config' error is reported, add the following options: -DAPU_CONFIG_BIN=/path/to/bin/apu-1-config
 ```
 
-Install OSS SDK for C on Windows Download the SDK Download directly Download from GitHub Download previous versions Install the SDK For more information about how to use Visual Studio to compile OSS SDK for C, visit Use Alibaba Cloud OSS SDK for C on Windows. Not e If you use Visual Studio 2012 or later, you are prompted to choose whether to upgrade the project version to adapt to the latest versions of the compiler and libraries. We recommend that you use versions that match your project. If the project uses the compiler and libraries of the latest versions, upgrade the project. Otherwise, you do not need to upgrade the project. 4.4.3. Initialization You must initialize oss_request_options_t and specify an endpoint to use OSS SDK for C. You must specify an endpoint when you initialize OSS SDK for C. For more information about endpoints, see Obtain an endpoint. You must specify an AccessKey pair when you initialize OSS SDK for C. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. Use the OSS domain name to initialize request options The following code provides an example on how to use the OSS domain name to initialize request options:
+Install OSS SDK for C on Windows Download the SDK Download directly Download from GitHub Download previous versions Install the SDK For more information about how to use Visual Studio to compile OSS SDK for C, visit Use Alibaba Cloud OSS SDK for C on Windows. Not e If you use Visual Studio 2012 or later, you are prompted to choose whether to upgrade the project version to adapt to the latest versions of the compiler and libraries. We recommend that you use versions that match your project. If the project uses the compiler and libraries of the latest versions, upgrade the project. Otherwise, you do not need to upgrade the project. You must initialize oss_request_options_t and specify an endpoint to use OSS SDK for C. You must specify an endpoint when you initialize OSS SDK for C. For more information about endpoints, see Obtain an endpoint. You must specify an AccessKey pair when you initialize OSS SDK for C. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. Use the OSS domain name to initialize request options The following code provides an example on how to use the OSS domain name to initialize request options:
 
 ```
 #include "oss_api.h"
@@ -8961,13 +9262,13 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->ctl->options->speed_time = 15;
 ```
 
-4.4.4. Getting Started This topic describes how to use Object Storage Service (OSS) SDK for C to complete routine operations such as bucket creation, object upload, and object download. Sample projects Sample projects for Linux i. Download a sample project and extract it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: ***********************. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent thirdparty libraries. iii. Replace OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample project with valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./main` to run the executable program. To re-compile the project, run
+This topic describes how to use Object Storage Service (OSS) SDK for C to complete routine operations such as bucket creation, object upload, and object download. Sample projects Sample projects for Linux i. Download a sample project and extract it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: ***********************. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent thirdparty libraries. iii. Replace OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample project with valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./main` to run the executable program. To re-compile the project, run
 
 ```
  make clean .
 ```
 
-For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and extract it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project. Not e For more information about how to use Visual Studio, see Use Alibaba Cloud OSS SDK for C in Windows. Create a bucket The following code provides an example on how to create a bucket:
+For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and extract it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project. Not e For more information about how to use Visual Studio, see Use Alibaba Cloud OSS SDK for C in Windows. The following code provides an example on how to create a bucket:
 
 ```
 #include "oss_api.h"
@@ -9166,7 +9467,7 @@ _cname, and curl. */
     return 0;
 ```
 
-List objects The following code provides an example on how to list objects in a specified bucket:
+The following code provides an example on how to list objects in a specified bucket:
 
 ```
 #include "oss_api.h"
@@ -9305,7 +9606,7 @@ _cname, and curl. */
     return 0;
 ```
 
-4.4.5. Buckets 4.4.5.1. Create buckets A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
+A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. The following code provides an example on how to create a bucket:
 
 ```
 #include "oss_api.h"
@@ -9378,7 +9679,7 @@ The following code provides an example on how to specify the access control list
         printf("create bucket failed\n");
 ```
 
-4.4.5.2. List buckets A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following code provides an example on how to list buckets in all regions within the current Alibaba Cloud account:
+A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. The following code provides an example on how to list buckets in all regions within the current Alibaba Cloud account:
 
 ```
 #include "oss_api.h"
@@ -9443,7 +9744,7 @@ _cname, and curl. */
     return 0;
 ```
 
-4.4.5.3. Manage bucket ACLs A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. Configure ACL for a bucket The following table describes the bucket ACLs.
+A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. Configure ACL for a bucket The following table describes the bucket ACLs.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -9572,7 +9873,7 @@ _cname, and curl. */
     return 0;
 ```
 
-4.4.5.4. Delete buckets If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
+If you no longer use a bucket, delete the bucket to stop unnecessary charges. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
 
 ```
 #include "oss_api.h"
@@ -9632,7 +9933,7 @@ _cname, and curl. */
     return 0;
 ```
 
-4.4.5.5. Manage lifecycle rules Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules for a bucket:
+Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules for a bucket:
 
 ```
 #include "oss_api.h"
@@ -9850,7 +10151,7 @@ _cname, and curl. */
     return 0;
 ```
 
-4.4.5.6. CORS Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate crossorigin access control. Configure CORS rules Run the following code to configure CORS rules for a specified bucket:
+Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate crossorigin access control. Configure CORS rules Run the following code to configure CORS rules for a specified bucket:
 
 ```
 #include "oss_api.h"
@@ -10062,7 +10363,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.5.7. Configure logging You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The name of log objects is in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging Run the following code to enable bucket access logging:
+You can enable logging to record access to a bucket in log objects, which are stored in a specified bucket. The name of log objects is in the following format: `<TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString` . Enable logging Run the following code to enable bucket access logging:
 
 ```
 #include "oss_api.h"
@@ -10249,7 +10550,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.5.8. Configure hotlink protection OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Configure hotlink protection Run the following code to configure the referer whitelist:
+OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Run the following code to configure the referer whitelist:
 
 ```
 #include "oss_api.h"
@@ -10440,7 +10741,7 @@ n empty Referer field to replace the existing rule. */
     return 0;
 ```
 
-4.4.5.9. Configure static website hosting You can set the static website hosting mode for your bucket. After configurations take effect, you can use the bucket domain name to access this static website and be redirected to a specified index page or error page. Configure static website hosting Run the following code to configure static website hosting:
+You can set the static website hosting mode for your bucket. After configurations take effect, you can use the bucket domain name to access this static website and be redirected to a specified index page or error page. Run the following code to configure static website hosting:
 
 ```
 #include "oss_api.h"
@@ -10622,7 +10923,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.6. Upload objects 4.4.6.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for C provides a variety of methods to upload objects. You can upload an object to OSS by using one of the following methods: Simple upload: includes stream upload and object upload. You can use this method to upload an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload. You can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: uploads an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using a progress bar. For more information, see Use progress bars. After the object is uploaded, you can perform upload callbacks. For more information, see Upload callback. 4.4.6.2. Simple upload This topic describes how to use simple upload. For the complete code that is used to perform simple upload, visit GitHub. Upload data from memory The following code provides an example on how to upload data from memory:
+Objects are the basic unit for data operations in OSS. OSS SDK for C provides a variety of methods to upload objects. You can upload an object to OSS by using one of the following methods: Simple upload: includes stream upload and object upload. You can use this method to upload an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload. You can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: uploads an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using a progress bar. For more information, see Use progress bars. After the object is uploaded, you can perform upload callbacks. For more information, see Upload callback. This topic describes how to use simple upload. For the complete code that is used to perform simple upload, visit GitHub. Upload data from memory The following code provides an example on how to upload data from memory:
 
 ```
 #include "oss_api.h"
@@ -10820,7 +11121,7 @@ char * local_filename = multibyte_to_utf8(local_filename_ch, local_filename_buf,
 /* Release the memory pool, which releases memory resources allocated for the request. */ aos_pool_destroy(pool); /* Release the allocated global resources. */ aos_http_io_deinitialize(); return 0;
 ```
 
-4.4.6.3. Append upload You can append strings and files during append upload. You cannot perform CopyObject for append objects. Not e You cannot perform CopyObject for append objects. Append data from memory The following code provides an example on how to append data from memory:
+You can append strings and files during append upload. You cannot perform CopyObject for append objects. Not e You cannot perform CopyObject for append objects. Append data from memory The following code provides an example on how to append data from memory:
 
 ```
 #include "oss_api.h"
@@ -10970,7 +11271,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.6.4. Resumable upload If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The progress of the current upload is recorded in the checkpoint file during the upload process. If the upload of a part fails during the process, the next upload attempt starts from the recorded position in the checkpoint file. The checkpoint file is deleted after the resumable upload task is completed.
+If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The progress of the current upload is recorded in the checkpoint file during the upload process. If the upload of a part fails during the process, the next upload attempt starts from the recorded position in the checkpoint file. The checkpoint file is deleted after the resumable upload task is completed.
 
 | You can use oss_resumable_clt_params_t to perform resumable upload. The following table describes common parameters used in this method: |   |
 |---|---|
@@ -11052,7 +11353,7 @@ _cname, and curl. */
     return 0;
 ```
 
-4.4.6.5. Multipart upload OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to complete the upload. To implement multipart upload, perform the following operations:
+OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to complete the upload. To implement multipart upload, perform the following operations:
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
@@ -11268,7 +11569,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-Not e If a multipart upload task is canceled, the upload ID can no longer be used to upload any parts. The parts uploaded by using that upload ID are also deleted. 4.4.6.6. Use progress bars Progress bars are used to indicate the progress of an upload or download. For the complete code of upload progress bars, visit GitHub. The following code uses PutObject as an example to show you how to view progress information:
+Not e If a multipart upload task is canceled, the upload ID can no longer be used to upload any parts. The parts uploaded by using that upload ID are also deleted. Progress bars are used to indicate the progress of an upload or download. For the complete code of upload progress bars, visit GitHub. The following code uses PutObject as an example to show you how to view progress information:
 
 ```
 #include "oss_api.h"
@@ -11340,7 +11641,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-You cannot use progress bars when you use oss_put_object_from_file and oss_put_object_from_buffer. 4.4.6.7. Upload callback This topic describes how to use upload callback. For the complete code used to implement upload callback, visit GitHub. The following code provides an example on how to use upload callback:
+You cannot use progress bars when you use oss_put_object_from_file and oss_put_object_from_buffer. This topic describes how to use upload callback. For the complete code used to implement upload callback, visit GitHub. The following code provides an example on how to use upload callback:
 
 ```
 #include "oss_api.h"
@@ -11431,7 +11732,7 @@ int main(int argc, char *argv[])
     return 0;
 ```
 
-4.4.7. Download objects 4.4.7.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for C provides a variety of methods to upload objects. For the complete object download code, visit GitHub. You can use one of the following methods to download a single object: Download to local files Download to local memory Range download Resumable download You can view the download progress by using the progress bar. For more information, see Use progress bars. 4.4.7.2. Download to local files This topic describes how to download an object to a local file. For the complete code of object download, visit GitHub. The following code provides an example on how to download a specified object to a local file:
+Objects are the basic unit for data operations in OSS. OSS SDK for C provides a variety of methods to upload objects. For the complete object download code, visit GitHub. You can use one of the following methods to download a single object: You can view the download progress by using the progress bar. For more information, see Use progress bars. This topic describes how to download an object to a local file. For the complete code of object download, visit GitHub. The following code provides an example on how to download a specified object to a local file:
 
 ```
 #include "oss_api.h"
@@ -11498,7 +11799,7 @@ f the name of the object is different from that of the local file, the object is
     return 0;
 ```
 
-Not e Compared with OSS SDK for C V1.0.0, this version adds the params parameter to the oss_get_object_to_file operation, and the values of the headers and params parameters can be NULL. 4.4.7.3. Download to local memory This topic describes how to download an object to local memory. For the complete code that is used to download objects, visit GitHub. The following code provides an example on how to download a specified object to local memory:
+Not e Compared with OSS SDK for C V1.0.0, this version adds the params parameter to the oss_get_object_to_file operation, and the values of the headers and params parameters can be NULL. This topic describes how to download an object to local memory. For the complete code that is used to download objects, visit GitHub. The following code provides an example on how to download a specified object to local memory:
 
 ```
 #include "oss_api.h"
@@ -11577,7 +11878,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.7.4. Range download If you need only part of the data in an object, you can use range download to download data within the specified range. The following code provides an example on how to perform range download:
+If you need only part of the data in an object, you can use range download to download data within the specified range. The following code provides an example on how to perform range download:
 
 ```
 #include "oss_api.h"
@@ -11660,7 +11961,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.7.5. Resumable download You may fail to download a large object if the network is unstable or other exceptions occur. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS provides the resumable download feature.
+You may fail to download a large object if the network is unstable or other exceptions occur. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS provides the resumable download feature.
 
 | You can use the | oss_resumable_clt_params_t |
 |---|---|
@@ -11748,7 +12049,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.7.6. Use progress bars Progress bars are used to indicate the progress of an upload or download. For the complete code of download progress bars, visit GitHub. The following code provides an example on how to view the progress information:
+Progress bars are used to indicate the progress of an upload or download. For the complete code of download progress bars, visit GitHub. The following code provides an example on how to view the progress information:
 
 ```
 #include "oss_api.h"
@@ -11830,7 +12131,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-oss_get_object_from_file and oss_get_object_from_buffer does not support the progress bar feature. 4.4.8. Manage objects 4.4.8.1. Overview You can manage objects in a bucket by using a variety of operations including SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Manage object ACLs Manage object metadata List objects Delete objects Copy objects 4.4.8.2. Manage object ACLs This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that can be configured for an object.
+oss_get_object_from_file and oss_get_object_from_buffer does not support the progress bar feature. You can manage objects in a bucket by using a variety of operations including SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: This topic describes how to manage the access control list (ACL) of an object. The following table describes the ACLs that can be configured for an object.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -11909,7 +12210,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-4.4.8.3. Manage object metadata After you upload an object to OSS or before you read an object from OSS, you can use the `oss_get_object_meta` operation to query object metadata such as the content length and object type. The following code provides an example on how to configure and query object metadata:
+After you upload an object to OSS or before you read an object from OSS, you can use the `oss_get_object_meta` operation to query object metadata such as the content length and object type. The following code provides an example on how to configure and query object metadata:
 
 ```
 #include "oss_api.h"
@@ -11996,7 +12297,7 @@ s_cname, and curl. */
     return 0;
 ```
 
-Not e For more information about HTTP headers, see RFC 2616. 4.4.8.4. List objects This topic describes how to list the objects that are stored in a bucket. For the complete code that is used to list objects, visit GitHub. Objects are listed in alphabetical order. You can use the `oss_list_object` method to list objects in a bucket. The following table describes common parameters.
+Not e For more information about HTTP headers, see RFC 2616. This topic describes how to list the objects that are stored in a bucket. For the complete code that is used to list objects, visit GitHub. Objects are listed in alphabetical order. You can use the `oss_list_object` method to list objects in a bucket. The following table describes common parameters.
 
 | Parameter | Description |
 |---|---|
@@ -12553,7 +12854,7 @@ List the sizes of objects in a specified directory The following code provides a
 |   | /* Create and initialize options. This parameter includes global configuration information such as endpoint, access_key_id, access_key_secret, is_cname, and curl. */ oss_request_options_t *oss_client_options; /* The memory consumed by options is allocated by the memory pool and is released with the pool. */ oss_client_options = oss_request_options_create(pool); /* Initialize oss_client_options. */ init_options(oss_client_options); /* Initialize the parameters. */ aos_string_t bucket; aos_status_t *resp_status = NULL; oss_list_object_params_t *params = NULL; oss_list_object_content_t *content = NULL; oss_list_object_common_prefix_t *commonPrefix = NULL; int size = 0; char *line = NULL; /* List the objects whose names contain the specified prefix. */ char *prefix = "fun/"; char *nextMarker = ""; /* Set the delimiter to a forward slash (/). */ char *delimiter = "/"; aos_str_set(&bucket, bucket_name); params = oss_create_list_object_params(pool); params->max_ret = 100; aos_str_set(&params->prefix, prefix); aos_str_set(&params->marker, nextMarker); aos_str_set(&params->delimiter, delimiter); printf("Object\tSize\tLastModified\n"); /* List all objects. */ do { resp_status = oss_list_object(oss_client_options, &bucket, params, NULL); if (!aos_status_is_ok(resp_status)) { printf("list object failed\n"); break; } aos_list_for_each_entry(oss_list_object_content_t, content, &params->object_list, node) { ++size; line = apr_psprintf(pool, "%.*s\t%.*s\t%.*s\n", content->key.len, content->key.data, content->size.len, content->size.data, content->last_modified.len, content->last_modified.data); printf("%s", line); } aos_list_for_each_entry(oss_list_object_common_prefix_t, commonPrefix, &params->common_prefix_list, node) { line = apr_psprintf(pool, "%.*s", commonPrefix->prefix.len, commonPrefix->prefix.data); int64_t size = calculateFolderLength(bucket, commonPrefix->prefix.data); printf("Total %d\n", size); } nextMarker = apr_psprintf(pool, "%.*s", params->next_marker.len, params->next_marker.data); aos_str_set(&params->marker, nextMarker); aos_list_init(&params->object_list); aos_list_init(&params->common_prefix_list); } while (params->truncated == AOS_TRUE); printf("Total %d\n", size); /* Release the memory pool after the request is complete. In this case, the memory allocated to various resources used for the request is relea sed. */ aos_pool_destroy(pool); /* Before you exit the program, call aos_http_io_deinitialize to release the allocated global resources. */ aos_http_io_deinitialize(); return 0; } |
 |---|---|
 
-4.4.8.5. Delete objects This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. For the complete code that is used to delete an object, visit GitHub. Delete a single object The following code provides an example on how to delete a single object:
+This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. For the complete code that is used to delete an object, visit GitHub. Delete a single object The following code provides an example on how to delete a single object:
 
 ```
 #include "oss_api.h"
@@ -12753,7 +13054,7 @@ _cname, and curl. */
     return 0;
 ```
 
-Warning If you set the prefix to an empty string or NULL, all objects in the bucket are deleted. Exercise caution when you use this operation. 4.4.8.6. Copy objects This topic describes how to copy an object. Limits on object copying: You must have read permissions on the source object and write permissions on the destination bucket. You cannot copy an object across regions. Copy a small object The following code provides an example on how to copy an object smaller than or equal to 1 GB in size:
+Warning If you set the prefix to an empty string or NULL, all objects in the bucket are deleted. Exercise caution when you use this operation. This topic describes how to copy an object. Limits on object copying: You must have read permissions on the source object and write permissions on the destination bucket. You cannot copy an object across regions. Copy a small object The following code provides an example on how to copy an object smaller than or equal to 1 GB in size:
 
 ```
 #include "oss_api.h"
@@ -12966,7 +13267,7 @@ esp_headers);
     return 0;
 ```
 
-4.4.9. Authorized access This topic describes how to authorize access to OSS by using STS or a signed URL. Use STS for temporary access authorization Alibaba Cloud STS is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a set of temporary access credentials that have a custom validity period and custom permissions to a third-party application or a RAM user managed by you. STS provides the following benefits: You need to only generate an access token and send the access token to a third-party application. You do not need to expose your AccessKey pair to the thirdparty application. You can specify the access permissions and the validity period of the token. The token automatically expires after the validity period. Therefore, you do not need to manually revoke the access permissions of a token. The following sample code provides an example on how to upload a string to an object by using temporary access credentials obtained from STS.
+This topic describes how to authorize access to OSS by using STS or a signed URL. Use STS for temporary access authorization Alibaba Cloud STS is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a set of temporary access credentials that have a custom validity period and custom permissions to a third-party application or a RAM user managed by you. STS provides the following benefits: You need to only generate an access token and send the access token to a third-party application. You do not need to expose your AccessKey pair to the thirdparty application. You can specify the access permissions and the validity period of the token. The token automatically expires after the validity period. Therefore, you do not need to manually revoke the access permissions of a token. The following sample code provides an example on how to upload a string to an object by using temporary access credentials obtained from STS.
 
 ```
 #include "oss_api.h"
@@ -13197,7 +13498,7 @@ is_cname, and curl. */
     return 0;
 ```
 
-4.4.10. IMG OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. For the complete IMG code, visit GitHub. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. Anonymous access You can anonymously access a processed image by using a third-level domain in the following format:
+OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. For the complete IMG code, visit GitHub. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. Anonymous access You can anonymously access a processed image by using a third-level domain in the following format:
 
 ```
 http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<yourAction>,<yourParamValue>
@@ -13248,7 +13549,7 @@ Access by using HTTPS IMG supports access by using HTTPS. Example:
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-Authorized access If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
+If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -13472,7 +13773,7 @@ t, is_cname, and curl. */
     return 0;
 ```
 
-4.4.11. Error handling This topic describes how to handle errors when you use OSS SDK for C. Exception handling If an error occurs when you send a request by using OSS SDK for C, an corresponding error message is returned by aos_status_s. The following table describes the attributes of aos_status_s.
+This topic describes how to handle errors when you use OSS SDK for C. Exception handling If an error occurs when you send a request by using OSS SDK for C, an corresponding error message is returned by aos_status_s. The following table describes the attributes of aos_status_s.
 
 | Error code | Description | Type |
 |---|---|---|
@@ -13522,9 +13823,9 @@ Timeout handling If the code in the returned aos_status_t parameter is not 2xx a
 | SignatureDoesNotMatch | The error message returned because the signature is invalid. | 403 |
 | TooManyBuckets | The error message returned because the number of the buckets managed by a user exceeds the limit. | 400 |
 
-### Go-SDK
+### 4.5 Go-SDK
 
-4.5.1. Preface This topic describes the sample code of OSS SDK for Go in various use cases. SDK source code and API documents For the source code of OSS SDK for Go, visit GitHub. For more information, see OSS SDK for Go API documents. Sample programs OSS SDK for Go provides a variety of sample programs for your reference or use. The following table describes the sample programs provided.
+This topic describes the sample code of OSS SDK for Go in various use cases. SDK source code and API documents For the source code of OSS SDK for Go, visit GitHub. For more information, see OSS SDK for Go API documents. Sample programs OSS SDK for Go provides a variety of sample programs for your reference or use. The following table describes the sample programs provided.
 
 | Sample file | Description |
 |---|---|
@@ -13546,7 +13847,7 @@ Timeout handling If the code in the returned aos_status_t parameter is not 2xx a
 | bucket_lifecycle.go | Shows you how to configure, query, and delete lifecycle rules for objects in a bucket. |
 | bucket_cors.go | Shows you how to configure, query, and delete the cross-origin resource sharing (CORS) rules for a bucket. |
 
-4.5.2. Installation This topic describes how to install OSS SDK for Go. Prerequisites Environment Go 1.6 or later is required. For more information about how to download and install the environment for Go, visit Installing Go from source. After Go is installed, create a new system variable GOPATH, and set the value to your code directory. For more information about GOPATH, run the `go help gopath` command. Check the Go version Run the `go version` command to view the version of Go. Download OSS SDK for Go Download from GitHub Download previous versions Install OSS SDK for Go Run the following command to install OSS SDK for Go:
+This topic describes how to install OSS SDK for Go. Prerequisites Environment Go 1.6 or later is required. For more information about how to download and install the environment for Go, visit Installing Go from source. After Go is installed, create a new system variable GOPATH, and set the value to your code directory. For more information about GOPATH, run the `go help gopath` command. Check the Go version Run the `go version` command to view the version of Go. Download OSS SDK for Go Download from GitHub Download previous versions Install OSS SDK for Go Run the following command to install OSS SDK for Go:
 
 ```
 go get github.com/aliyun/aliyun-oss-go-sdk/oss
@@ -13567,7 +13868,7 @@ func main() {
   fmt.Println("OSS Go SDK Version: ", oss.Version)
 ```
 
-4.5.3. Initialization OSSClient serves as the client of OSS SDK for Go to manage OSS resources such as buckets and objects. To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient instance, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The following table describes the parameters you can configure for this operation.
+OSSClient serves as the client of OSS SDK for Go to manage OSS resources such as buckets and objects. To create an OSSClient instance, you must specify an endpoint. For more information about endpoints, see Obtain an endpoint. To create an OSSClient instance, you must specify an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The following table describes the parameters you can configure for this operation.
 
 | Parameter | Description | Default |
 |---|---|---|
@@ -13619,7 +13920,7 @@ import "github.com/aliyun/aliyun-oss-go-sdk/oss" client, err := oss.New("<yourEn
     os.Exit(-1)
 ```
 
-4.5.4. Quick start This topic describes how to use OSS SDK for Go to perform routine operations, such as creating buckets, uploading objects, and downloading objects. Create buckets A bucket is a global namespace in OSS. It is similar to a data container that stores files. The following code provides an example on how to create a bucket:
+This topic describes how to use OSS SDK for Go to perform routine operations, such as creating buckets, uploading objects, and downloading objects. A bucket is a global namespace in OSS. It is similar to a data container that stores files. The following code provides an example on how to create a bucket:
 
 ```java
 package main import (
@@ -13650,7 +13951,7 @@ func main() {
         handleError(err)
 ```
 
-For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. Upload objects The following code provides an example on how to upload objects to OSS by using stream upload:
+For more information about how to obtain an AccessKey ID and AccessKey secret, see Obtain an AccessKey pair. For more information about how to obtain an endpoint, see Obtain an endpoint. The following code provides an example on how to upload objects to OSS by using stream upload:
 
 ```java
 package main import (
@@ -13690,7 +13991,7 @@ abc/efg/123.jpg.
         handleError(err)
 ```
 
-Download objects The following code provides an example on how to download an object to your local device:
+The following code provides an example on how to download an object to your local device:
 
 ```java
 package main import (
@@ -13729,7 +14030,7 @@ object name. Example: abc/efg/123.jpg.
         handleError(err)
 ```
 
-List objects The following code provides an example on how to list objects in a specified bucket. By default, a maximum of 100 objects can be listed.
+The following code provides an example on how to list objects in a specified bucket. By default, a maximum of 100 objects can be listed.
 
 ```java
 package main import (
@@ -13769,7 +14070,7 @@ func main() {
             break
 ```
 
-Delete objects The following code provides an example on how to delete an object:
+The following code provides an example on how to delete an object:
 
 ```java
 package main import (
@@ -13807,7 +14108,7 @@ e. Example: abc/efg/123.jpg.
         handleError(err)
 ```
 
-For more information about how to delete objects, see Delete objects. 4.5.5. Buckets 4.5.5.1. Create buckets A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. For the complete code that is used to create a bucket, visit GitHub. The following code provides an example on how to create a bucket:
+For more information about how to delete objects, see Delete objects. A bucket is a container used to store objects in Object Storage Service (OSS). Each object is contained in a bucket. This topic describes how to create a bucket. For the complete code that is used to create a bucket, visit GitHub. The following code provides an example on how to create a bucket:
 
 ```java
 package main
@@ -13833,7 +14134,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.5.2. List buckets A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. For the complete code that is used to list buckets, visit GitHub. List all buckets Buckets are listed in alphabetical order. You can list all buckets or the buckets that meet the specified conditions. The following sample code provides an example on how to list all buckets that belong to an Apsara Stack tenant account:
+A bucket is a container that is used to store objects in Object Storage Service (OSS). All objects in OSS are contained in buckets. Bucket names are listed in alphabetical order. You can list buckets that belong to the current Alibaba Cloud account in all regions and meet the specific conditions. For the complete code that is used to list buckets, visit GitHub. List all buckets Buckets are listed in alphabetical order. You can list all buckets or the buckets that meet the specified conditions. The following sample code provides an example on how to list all buckets that belong to an Apsara Stack tenant account:
 
 ```java
 package main import (
@@ -13909,7 +14210,7 @@ List a specified number of buckets The following code provides an example on how
         fmt.Println("Bucket with maxKeys: ", bucket.Name)
 ```
 
-4.5.5.3. Manage bucket ACLs A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. For the complete code used to manage the ACL of a bucket, visit GitHub. Configure ACL for a bucket The following table describes the bucket ACLs.
+A bucket is a container used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. This topic describes how to configure and query the access control list (ACL) of a bucket. For the complete code used to manage the ACL of a bucket, visit GitHub. Configure ACL for a bucket The following table describes the bucket ACLs.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -13968,7 +14269,7 @@ func main() {
     fmt.Println("Bucket ACL:", aclRes.ACL)
 ```
 
-4.5.5.4. Delete buckets A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to delete a bucket. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
+A bucket is a container for objects stored in OSS. Every object is contained in a bucket. This topic describes how to delete a bucket. Before you delete a bucket, ensure that all objects, LiveChannels, and parts that are generated from multipart upload in the bucket are deleted. The following code provides an example on how to delete a bucket:
 
 ```java
 package main import (
@@ -13993,7 +14294,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.5.5. Manage lifecycle rules Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules:
+Object Storage Service (OSS) allows you to configure lifecycle rules to delete expired objects and parts or convert the storage class of expired objects to Infrequent Access (IA) or Archive to reduce your storage costs. This topic describes how to manage lifecycle rules for buckets. Background Each lifecycle rule contains the following information: Policy: specifies the mode to match objects and parts. Match by prefix: matches objects and parts by prefix. You can create multiple rules to configure different prefixes. Each prefix must be unique. Match by bucket: matches all objects and parts contained in the bucket. You can create only one rule if you select this method. Object lifecycle policy: specifies the validity period or expiration data and the operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired objects are deleted. Expiration date: specifies a date. Objects that are last modified before this date expire and are deleted. Part lifecycle policy: specifies the validity period or expiration time and the delete operation to perform on these objects after they expire. Validity period: specifies the number of days within which parts can be retained after they are last modified. After the validity period, expired parts are deleted. Expiration date: specifies a date. Parts that are last modified before this date expire and are deleted. Lifecycle rules also apply to the parts uploaded by using uploadPart. In this case, the last modified time of an object is the time the multipart upload task is initiated. Configure lifecycle rules The following code provides an example on how to configure lifecycle rules:
 
 ```java
 package main import (
@@ -14076,7 +14377,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.5.6. Hotlink protection OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Configure hotlink protection Run the following code to configure the referer whitelist:
+OSS provides hotlink protection to prevent unauthorized domain names from accessing your OSS data. You can configure the Referer field in the HTTP header. To configure hotlink protection, you must configure the following parameters: Referer Whitelist: Only specified domain names are allowed to access OSS resources. Allow Empty Referer: If you do not allow empty Refer fields, a request is allowed to access OSS resources only if the request includes the Referer field configured in the HTTP or HTTPS header. Run the following code to configure the referer whitelist:
 
 ```java
 package main import (
@@ -14161,7 +14462,7 @@ urations, you must create a rule that allows an empty Referer field to replace t
         os.Exit(-1)
 ```
 
-4.5.5.7. Configure logging You can enable logging to record access to a bucket in log objects. The log objects are stored in a specified bucket. The log file format is as follows:
+You can enable logging to record access to a bucket in log objects. The log objects are stored in a specified bucket. The log file format is as follows:
 
 ```xml
  <TargetPrefix><SourceBucket>-YYYY-mm-DD-HH-MM-SS-UniqueString
@@ -14250,7 +14551,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.5.8. Static website hosting You can set the static website hosting mode for your bucket. After the configurations take effect, you can use the bucket domain to access this static website and be redirected to a specified index page or error page. Configure static website hosting Run the following code to configure static website hosting:
+You can set the static website hosting mode for your bucket. After the configurations take effect, you can use the bucket domain to access this static website and be redirected to a specified index page or error page. Run the following code to configure static website hosting:
 
 ```java
 package main import (
@@ -14330,7 +14631,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.5.9. CORS Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate crossorigin access control. For the complete CORS rule code, visit GitHub. Configure CORS rules Run the following code to configure CORS rules for the specified bucket:
+Cross-origin resource sharing (CORS) allows web applications to access resources that belong to different regions. OSS provides CORS operations to facilitate crossorigin access control. For the complete CORS rule code, visit GitHub. Configure CORS rules Run the following code to configure CORS rules for the specified bucket:
 
 ```java
 package main import (
@@ -14421,7 +14722,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.6. Upload objects 4.5.6.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides the following object upload methods: You can upload objects to OSS by using one of the following methods: Simple upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload. You can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: uploads an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using progress bars. For more information, see Use a progress bar. 4.5.6.2. Simple upload This topic describes how to use simple upload. For the complete code used to perform simple upload, visit GitHub. Upload a string
+Objects are the basic unit for data operations in OSS. OSS SDK for PHP provides the following object upload methods: You can upload objects to OSS by using one of the following methods: Simple upload: uploads an object up to 5 GB in size. Append upload: uploads an object up to 5 GB in size. Resumable upload: supports concurrent upload and resumable upload. You can define the size of each part. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: uploads an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress by using progress bars. For more information, see Use a progress bar. This topic describes how to use simple upload. For the complete code used to perform simple upload, visit GitHub. Upload a string
 
 ```java
 package main import (
@@ -14553,7 +14854,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.6.3. Append upload This topic describes how to perform append upload. You cannot perform the copyObject operation on append objects. If the object to append does not exist, you can call `AppendObject` to create an append object. If the object to append exists, you can call `AppendObject` to append content to the end of the object. Run the following code to upload a file with append upload:
+This topic describes how to perform append upload. You cannot perform the copyObject operation on append objects. If the object to append does not exist, you can call `AppendObject` to create an append object. If the object to append exists, you can call `AppendObject` to append content to the end of the object. Run the following code to upload a file with append upload:
 
 ```java
 package main import (
@@ -14602,7 +14903,7 @@ You can specify object metadata when you perform the first append from the posit
         os.Exit(-1)
 ```
 
-4.5.6.4. Resumable upload If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The progress of the current upload is recorded in the checkpoint file during the upload process. If the upload of a part fails during the process, the next upload attempt starts from the recorded position in the checkpoint file. The checkpoint file is deleted after the resumable upload task is complete. Not e The SDK records the upload progress in the checkpoint file. Make sure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must upload all parts again. If the object being uploaded is modified, you must upload the entire object again.
+If the system stops responding during multipart upload, you can resume the upload by using the ListMultipartUploads and ListParts operations to retrieve all multipart upload tasks on an object and list the uploaded parts in each task. This method allows an upload task to be resumed from the last uploaded part. The progress of the current upload is recorded in the checkpoint file during the upload process. If the upload of a part fails during the process, the next upload attempt starts from the recorded position in the checkpoint file. The checkpoint file is deleted after the resumable upload task is complete. Not e The SDK records the upload progress in the checkpoint file. Make sure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must upload all parts again. If the object being uploaded is modified, you must upload the entire object again.
 
 | You can use Bucket.UploadFile to perform resumable upload. The following table describes the parameters of this operation. |   |
 |---|---|
@@ -14645,7 +14946,7 @@ e the extension of the object name. Example: abc/efg/123.jpg.
         os.Exit(-1)
 ```
 
-4.5.6.5. Multipart upload OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to complete the upload. To implement multipart upload, perform the following operations:
+OSS allows you to use multipart upload to split an object into several parts and upload them separately. After all parts are uploaded, you can combine the uploaded parts into a complete object to complete the upload. To implement multipart upload, perform the following operations:
 1. Initiate a multipart upload task.
 Call the ossClient.initiateMultipartUpload method to obtain a unique upload ID in OSS.
 2. Upload the parts.
@@ -14904,7 +15205,7 @@ List multipart upload tasks by specifying a prefix and the maximum number of rec
     fmt.Println("Uploads:", lsRes.Uploads)
 ```
 
-4.5.6.6. Use a progress bar Progress bars are used to indicate the progress of an upload or download. The following code provides an example on how to use a progress bar when you call Bucket.PutObjectFromFile to upload an object:
+Progress bars are used to indicate the progress of an upload or download. The following code provides an example on how to use a progress bar when you call Bucket.PutObjectFromFile to upload an object:
 
 ```java
 package main import (
@@ -14952,7 +15253,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.7. Download objects 4.5.7.1. Overview Objects are the basic unit for data operations in OSS. OSS SDK for Go provides a variety of object download methods. For the complete code that is used to download objects, visit GitHub. You can use one of the following methods to download objects: Streaming download Range download Download to local files Resumable download Conditional download You can view the download progress by using progress bars. For more information, see Use a progress bar. 4.5.7.2. Streaming download This topic describes how to use streaming download. Download an object to a stream The following code provides an example on how to download an object to a stream:
+Objects are the basic unit for data operations in OSS. OSS SDK for Go provides a variety of object download methods. For the complete code that is used to download objects, visit GitHub. You can use one of the following methods to download objects: You can view the download progress by using progress bars. For more information, see Use a progress bar. This topic describes how to use streaming download. Download an object to a stream The following code provides an example on how to download an object to a stream:
 
 ```java
 package main import (
@@ -15065,7 +15366,7 @@ func main() {
     io.Copy(fd, body)
 ```
 
-4.5.7.3. Range download If you need only part of the data in an object, you can use range download to download data within the specified range. Specify a valid range The following sample code provides an example on how to specify a valid range to download data:
+If you need only part of the data in an object, you can use range download to download data within the specified range. Specify a valid range The following sample code provides an example on how to specify a valid range to download data:
 
 ```java
 package main import (
@@ -15162,7 +15463,7 @@ nnot run properly.
     fmt.Println("data:", string(data))
 ```
 
-4.5.7.4. Download to local files This topic describes how to download an object to a local file. The following code provides an example on how to download a specified object to a local file:
+This topic describes how to download an object to a local file. The following code provides an example on how to download a specified object to a local file:
 
 ```java
 package main import (
@@ -15192,7 +15493,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.7.5. Resumable download You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS provides the resumable download feature. To enable resumable download, you need to split the object you want to download into multiple parts and download them separately. After you have downloaded all parts, these parts will be combined into a complete object. During the download, the download progress is recorded in a checkpoint file. If the download of a part fails, the next download starts from the position recorded in the checkpoint file. The checkpoint file is deleted after resumable download is complete. Not e The SDK records the download progress in the checkpoint file. Ensure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must download the entire object again. If the object being downloaded is modified (the ETag value of the object changes) or some parts are missing or modified, you must download the entire object again.
+You may fail to download a large object if the network is unstable or if the program stops responding. In some cases, you may still fail to download the object even after multiple attempts. To solve this problem, OSS provides the resumable download feature. To enable resumable download, you need to split the object you want to download into multiple parts and download them separately. After you have downloaded all parts, these parts will be combined into a complete object. During the download, the download progress is recorded in a checkpoint file. If the download of a part fails, the next download starts from the position recorded in the checkpoint file. The checkpoint file is deleted after resumable download is complete. Not e The SDK records the download progress in the checkpoint file. Ensure that you have write permissions on the checkpoint file. The checkpoint file contains a checksum. This file cannot be edited. If the checkpoint file is damaged, you must download the entire object again. If the object being downloaded is modified (the ETag value of the object changes) or some parts are missing or modified, you must download the entire object again.
 
 | You can use Bucket.DownloadFile to download an object by using resumable download. The following table describes the parameters of this operation. Parameter Description objectKey The name of the object to download. filePath The local file path to which to download the object. partSize The size of each part. The part size ranges from 1 byte to 5 GB. The optional parameters, including: Routines: the number of concurrent download threads. The default value is 1, indicating that only one thread is used to download parts. Checkpoint: specifies whether resumable download is enabled and the path of the checkpoint file. By default, resumable download is disabled. For example, oss.Che ckpoint(true, "") indicates that resumable download is enabled and the options checkpoint file is the file.cp file contained in the same directory as the destination local file. file is a variable that indicates the local file name. You can also use oss.Checkpoint(true, "your-cp-file.cp") to specify the checkpoint file. Conditions: conditions for multipart download. For more information about the conditions, seeManage object metadata. |   |   |   |
 |---|---|---|---|
@@ -15241,7 +15542,7 @@ ude the extension of the object name. Example: abc/efg/123.jpg.
         os.Exit(-1)
 ```
 
-4.5.7.6. Conditional download OSS allows you to configure one or more conditions for object downloads. If the specified conditions are met, the object can be downloaded. If the specified conditions are not met, an error is returned and the object cannot be downloaded. The following table describes the download conditions.
+OSS allows you to configure one or more conditions for object downloads. If the specified conditions are met, the object can be downloaded. If the specified conditions are not met, an error is returned and the object cannot be downloaded. The following table describes the download conditions.
 
 | Parameter | Description | Configuration method |
 |---|---|---|
@@ -15288,7 +15589,7 @@ func main() {
         os.Exit(-1)
 ```
 
-4.5.7.7. Use a progress bar Progress bars are used to indicate the progress of an upload or download. The following code provides an example on how to use a progress bar when you use Bucket.GetObjectToFile to download an object:
+Progress bars are used to indicate the progress of an upload or download. The following code provides an example on how to use a progress bar when you use Bucket.GetObjectToFile to download an object:
 
 ```java
 package main import (
@@ -15337,7 +15638,7 @@ func main() {
     fmt.Println("Transfer Completed.")
 ```
 
-4.5.8. Manage objects 4.5.8.1. Overview You can manage objects in a bucket by using a variety of operations including SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Determine whether objects exist Manage object ACLs Manage object metadata List objects Delete objects Copy objects 4.5.8.2. Determine whether an object exists This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
+You can manage objects in a bucket by using a variety of operations including SetObjectAcl, GetObjectAcl, ListObjects, DeleteObject, and CopyObject. By using the preceding operations, you can perform the following operations: Determine whether objects exist This topic describes how to determine whether an object exists. The following code provides an example on how to determine whether an object exists:
 
 ```java
 package main import (
@@ -15368,7 +15669,7 @@ func main() {
     fmt.Println("Exist:", isExist)
 ```
 
-4.5.8.3. Manage object ACLs This topic describes how to manage the access control list (ACL) of an object. For the complete code used to manage the ACL of an object, visit GitHub. The following table describes the ACLs that can be configured for objects.
+This topic describes how to manage the access control list (ACL) of an object. For the complete code used to manage the ACL of an object, visit GitHub. The following table describes the ACLs that can be configured for objects.
 
 | ACL | Description | Value |
 |---|---|---|
@@ -15413,7 +15714,7 @@ func main() {
     fmt.Println("Object ACL:", aclRes.ACL)
 ```
 
-4.5.8.4. Manage object metadata This topic describes how to use OSS SDK for Go to configure, modify and query object metadata. For the complete code used to manage object metadata, visit GitHub. Configure object metadata You can configure the metadata of an object when you upload the object. The following table describes the metadata that you can configure.
+This topic describes how to use OSS SDK for Go to configure, modify and query object metadata. For the complete code used to manage object metadata, visit GitHub. Configure object metadata You can configure the metadata of an object when you upload the object. The following table describes the metadata that you can configure.
 
 | Parameter | Description |
 |---|---|
@@ -15548,7 +15849,7 @@ func main() {
     fmt.Println("Object Meta:", props)
 ```
 
-4.5.8.5. List objects This topic describes how to list the objects that are contained in a bucket. Objects in a bucket are sorted alphabetically. You can use `Bucket.ListObjects` to list the objects in a bucket. The following table describes the parameters for Bucket.ListObjects.
+This topic describes how to list the objects that are contained in a bucket. Objects in a bucket are sorted alphabetically. You can use `Bucket.ListObjects` to list the objects in a bucket. The following table describes the parameters for Bucket.ListObjects.
 
 | Parameter | Description |
 |---|---|
@@ -15892,7 +16193,7 @@ func main() {
             break
 ```
 
-4.5.8.6. Delete objects This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. For the complete code used to delete objects, visit GitHub. Delete a single object The following sample code provides an example on how to delete the exampleobject.txt object from the examplebucket bucket:
+This topic describes how to delete objects. Warning Deleted objects cannot be recovered. Exercise caution when you delete objects. For the complete code used to delete objects, visit GitHub. Delete a single object The following sample code provides an example on how to delete the exampleobject.txt object from the examplebucket bucket:
 
 ```java
 package main import (
@@ -16014,7 +16315,7 @@ func main() {
     fmt.Printf("success,total delete object count:%d\n", count)
 ```
 
-4.5.8.7. Copy objects This topic describes how to copy objects. For the complete code that is used to copy objects, visit GitHub. Copy objects within a bucket The following code provides an example on how to copy an object within a bucket:
+This topic describes how to copy objects. For the complete code that is used to copy objects, visit GitHub. Copy objects within a bucket The following code provides an example on how to copy an object within a bucket:
 
 ```java
 package main import (
@@ -16189,7 +16490,7 @@ func main() {
         fmt.Println("CopyObject CopySourceIfUnmodifiedSince Error:", err)
 ```
 
-4.5.9. Authorized access This topic describes how to use STS and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud Security Token Service (STS) is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS provides the following benefits: You need to only generate an access token and send the access token to a third-party application. You do not need to expose your AccessKey pair to the thirdparty application. You can specify the access permissions and the validity period of the token. The token automatically expires after the validity period. Therefore, you do not need to manually revoke the access permissions of a token. The following code provides an example on how to create a signature request by using STS:
+This topic describes how to use STS and a signed URL to authorize access. Use STS to authorize temporary access Alibaba Cloud Security Token Service (STS) is a web service that provides a temporary access token to a cloud computing user. You can use STS to grant a third-party application or your RAM user an access credential with a customized validity period and permissions. STS provides the following benefits: You need to only generate an access token and send the access token to a third-party application. You do not need to expose your AccessKey pair to the thirdparty application. You can specify the access permissions and the validity period of the token. The token automatically expires after the validity period. Therefore, you do not need to manually revoke the access permissions of a token. The following code provides an example on how to create a signature request by using STS:
 
 ```java
 import "github.com/aliyun/aliyun-oss-go-sdk/oss" // After you obtain a temporary STS credential for your OSSClient, an OSSClient instance is created based on the security token and temporary AccessK ey pair (AccessKey ID and AccessKey secret) that are contained in the credential. // Create an OSSClient instance. client, err := oss.New("<yourEndpoint>", "<yourAccessKeyId>", "<yourAccessKeySecret>", oss.SecurityToken("<yourSecurityToken>")) if err ! = nil {
@@ -16289,7 +16590,7 @@ func main() {
         HandleError(err)
 ```
 
-4.5.10. IMG OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. Anonymous access You can anonymously access a processed image by using a third-level domain in the following format:
+OSS Image Processing (IMG) is a secure, cost-effective, and highly reliable image processing service that can process large amounts of data. After you upload source images to OSS, you can call RESTful API operations to process the images anytime, anywhere, and on any Internet device. Basic features OSS IMG provides the following features: Query image information. Convert image formats. Resize, crop, and rotate images. Apply image effect. Add image, text, and text-and-image watermarks to images. Customize image processing styles. Log on to the OSS console. Click a bucket name to go to the bucket details page. Click the Image Processing (IMG) tab and click Creat e Rule to customize an image processing style. Use cascade processing to call multiple IMG features. Usage You can use standard `HTTP GET` requests to access IMG. All processing parameters are encoded in the query string of a URL. Anonymous access You can anonymously access a processed image by using a third-level domain in the following format:
 
 ```
 http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<yourAction>,<yourParamValue>
@@ -16346,7 +16647,7 @@ Access by using HTTPS IMG supports access by using HTTPS. Example:
 https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
 ```
 
-Authorized access If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
+If the ACL of an image object is private, you must have permissions on the image object before you can perform operations on the image object.
 
 | Bucket ACL | Object ACL |
 |---|---|
@@ -16615,7 +16916,7 @@ ring([]byte(targetBucketName)))
         fmt.Println(result)
 ```
 
-4.5.11. Error handling This topic describes how to handle errors when you use OSS SDK for Go. Client errors If errors occur when you use OSS SDK for Go, a unified operation used to handle errors is returned. The following code defines the error operation:
+This topic describes how to handle errors when you use OSS SDK for Go. Client errors If errors occur when you use OSS SDK for Go, a unified operation used to handle errors is returned. The following code defines the error operation:
 
 ```
 type error interface {
@@ -16744,7 +17045,7 @@ OSS error codes The following table describes the OSS error codes.
 
 Not e In the preceding table, the error code is specified by the OssServiceError.Code parameter. The HTTP status code is specified by the OssServiceError.StatusCode parameter. t
 
-## Obtain an endpoint
+## 5 Obtain an endpoint
 
 You can obtain an endpoint of a service in the Apsara Uni-manager Operations Console. Procedure
 1. Log on to the Apsara Uni-manager Operations Console
@@ -16757,7 +17058,7 @@ menu.
 6. Click Format t ed Value.
 The value of api-endpoint is the OSS endpoint. ey pair
 
-## Obtain an AccessKey pair
+## 6 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair. Prerequisites Only the operations administrator or level-1 organization administrator can obtain the AccessKey pair of an organization. Obtain the AccessKey pair of an organization To obtain the AccessKey pair of an organization, perform the following operations:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.

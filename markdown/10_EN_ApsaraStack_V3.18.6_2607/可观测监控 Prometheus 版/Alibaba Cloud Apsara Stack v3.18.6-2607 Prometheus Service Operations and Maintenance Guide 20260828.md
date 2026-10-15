@@ -3,14 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Operations an
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "3ca31cb12a4cab85_Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Operations and Maintenance Guide 20260828"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Prometheus%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Operations and Maintenance Guide 20260828
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+- 2 Architectures
+  - 2.1 System architecture
+  - 2.2 Deployment architecture
+  - 2.3 Component architecture
+  - 2.4 Server roles
+- 3 System inspection
+- 4 Log audit
+- 5 Common O&M commands
+
+## 1 O&M overview
 
 This guide helps O&M engineers perform preventive maintenance on the Apsara Stack system to ensure the long-term stable operation of the system. O&M engineers can follow the instructions in this guide to handle system issues that are identified during maintenance. For system issues that are not covered in this guide, O&M engineers can contact Apsara Stack engineers for technical support.
 
@@ -26,9 +38,9 @@ To ensure a stable system and prevent unexpected events, O&M engineers must comp
 
 O&M engineers can contact Apsara Stack technical support for help during the maintenance.
 
-## Architectures
+## 2 Architectures
 
-### System architecture
+### 2.1 System architecture
 
 This topic describes the system architecture of Managed Service for Prometheus. Figure 1. System architecture of Managed Service for Prometheus Prometheus 2.0 ACK Monitoring Prometheus Console Management/Monitoring Perspective
 
@@ -62,7 +74,7 @@ Node Monitoring Network
 
 Monitoring Unified Cluster Authentication Host Monitoring Service Monitoring Discovery UI Adaptation Configuration Alerting Update Packaging and Prometheus Building Agent TSDB (VictoriaMetrics) Auto Scaling Auto Installation Pop UniConsole Configuration API Server API Integration Listening Agent Enterprise Base/Basic Services MiniRds Redis OSS Nacos Pop API ACR Managed Service for Prometheus agent: collects metrics from Container Service for Kubernetes (ACK) clusters, and is compatible with the capabilities of the open source Prometheus agent. Acos-Gateway: receives metrics sent from the Managed Service for Prometheus agent and sends the metric data to ApsaraMQ for Kafka for caching. ApsaraMQ for Kafka: caches the metric data. Consumers: persist metric data cached by ApsaraMQ for Kafka to VictoriaMetrics. VictoriaMetrics: a time series database used to store metric data. Prometheus-Console: queries data in VictoriaMetrics, performs PromQL computing, and returns the result to Grafana. Grafana: receives query results returned by Prometheus-Console and displays the results. Schedule-Alert: an alerting service that queries data in VictoriaMetrics, triggers alerts, and sends alert notifications. Schedule-Inspect: an inspection service that queries data in VictoriaMetrics and generates inspection reports.
 
-### Deployment architecture
+### 2.2 Deployment architecture
 
 This topic describes the deployment architecture of Managed Service for Prometheus.
 
@@ -78,7 +90,7 @@ This topic describes the deployment architecture of Managed Service for Promethe
 | Schedule-Inspect | Deployed in ACK clusters. It is usually deployed across two nodes. You can scale out the number of nodes based on your business requirements. |
 | Schedule-Alert | Deployed in ACK clusters. It is usually deployed across two nodes. You can scale out the number of nodes based on your business requirements. |
 
-### Component architecture
+### 2.3 Component architecture
 
 This topic describes the component architecture of Managed Service for Prometheus.
 
@@ -102,7 +114,7 @@ This topic describes the component architecture of Managed Service for Prometheu
 | Prometheus Agent | Collects metrics from Container Service for Kubernetes (ACK) clsuters and is compatible with the capabilities of the open source Prometheus agent. |
 | Grafana | Visualizes monitoring data. |
 
-### Server roles
+### 2.4 Server roles
 
 This topic describes the service roles of Managed Service for Prometheus.
 
@@ -117,11 +129,11 @@ This topic describes the service roles of Managed Service for Prometheus.
 |   | Prometheus2-schedule-alert | An alerting service that queries data in VictoriaMetrics, triggers alerts, and sends alert notifications. |
 |   | Prometheus2-Schedule-Inspect | An inspection service that queries data in VictoriaMetrics and generates inspection reports. |
 
-## System inspection
+## 3 System inspection
 
 This topic describes commonly used system inspection methods for Managed Service for Prometheus. Check the disk utilization of the system to which the component belongs. If the utilization exceeds 80%, contact the technical support of Apsara Stack. Check the peak CPU utilization of the system to which the component belongs. If the utilization exceeds 40%, contact the technical support of Apsara Stack. Check the memory utilization of the system to which the component belongs. If the utilization exceeds 90%, contact the technical support of Apsara Stack.
 
-## Log audit
+## 4 Log audit
 
 This topic describes log audit for Managed Service for Prometheus.
 
@@ -146,7 +158,7 @@ This topic describes log audit for Managed Service for Prometheus.
 |---|---|---|
 |   | /var/lib/influxdb/log/access.log | Access logs of InfluxDB. |
 
-## Common O&M commands
+## 5 Common O&M commands
 
 This topic describes commonly used O&M commands for Managed Service for Prometheus.
 

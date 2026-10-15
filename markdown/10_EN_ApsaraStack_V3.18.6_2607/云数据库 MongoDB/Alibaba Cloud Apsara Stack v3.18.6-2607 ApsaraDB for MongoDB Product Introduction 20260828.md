@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Product Int
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Product Introduction 20260828.pdf"
+source_pdf: "c355545591d071c4_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20MongoDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20MongoDB%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for MongoDB Product Introduction 20260828
 
-## ApsaraDB for MongoDB
+## Table of Contents
+
+- 1 ApsaraDB for MongoDB
+  - 1.1 What is ApsaraDB for MongoDB?
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 ApsaraDB for MongoDB
 
 ApsaraDB for MongoDB is a high-performance document database service that is fully compatible with the MongoDB protocol. Based on the Apsara distributed system and a highly reliable storage engine, ApsaraDB for MongoDB provides features such as high availability, elastic scaling, read/write splitting, high data security, backup and restoration, intelligent O&M, and online database management.
 
-### What is ApsaraDB for
+### 1.1 What is ApsaraDB for MongoDB?
 
 **MongoDB?**
 
@@ -56,7 +64,7 @@ A region is an Alibaba Cloud data center. A zone is a physical area within a reg
 
 An ECS instance and an ApsaraDB for MongoDB instance within the same zone can be connected by using an internal network with minimal network latency. The region and zone determine the physical location of an ApsaraDB for MongoDB instance. You cannot change the region of an ApsaraDB for MongoDB instance after the instance is created. Network planning A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways within a VPC. We recommend that you select VPC for improved security. Security policies ApsaraDB for MongoDB provides comprehensive security measures to improve data security. You can ensure database security by means of zone-disaster recovery, audit logs, network isolation, whitelists, password authentication, SSL encryption, and Transparent Data Encryption (TDE).
 
-### Benefits
+### 1.2 Benefits
 
 ApsaraDB for MongoDB is a MongoDB-compatible document-oriented database service that is developed based on the Apsara system and a high-reliability storage engine. ApsaraDB for MongoDB ensures high availability, supports elastic scaling, and delivers security.
 
@@ -84,7 +92,7 @@ ApsaraDB for MongoDB uses Virtual Private Cloud (VPC) to implement advanced netw
 
 Data Management (DMS) is an integrated and visualized database solution that offers data management, structure management, user authorization, security auditing, data trend analysis, data tracking, business intelligence (BI) charts, performance optimization, and server management. You can use DMS to log on to the ApsaraDB for MongoDB console and obtain a list of ApsaraDB for MongoDB instances for remote access and online management.
 
-### Scenarios
+### 1.3 Scenarios
 
 ApsaraDB for MongoDB is a MongoDB-compatible document-oriented database service that can store large amounts of data and provides features such as security auditing and backup and restoration. It is widely used in scenarios such as IoT and gaming.
 
@@ -108,7 +116,7 @@ ApsaraDB for MongoDB provides high performance and allows data to be asynchronou
 
 Gaming ApsaraDB for MongoDB can be used as a database service for game servers to store user information. The in-game equipment and credits of players are directly stored in the form of an embedded document to facilitate queries and updates. Logistics ApsaraDB for MongoDB can store order information. The order status is constantly updated during the shipping process and is stored in the form of an embedded array in ApsaraDB for MongoDB. You can read all the changes in an order in a straightforward manner by performing a single query. Social networking ApsaraDB for MongoDB can store the information of users and their published WeChat moments. Geographical location indexes can be used to search nearby people and places. Additionally, ApsaraDB for MongoDB is suitable for storing chat history because ApsaraDB for MongoDB provides rich query abilities and is fast in both writing and reading. Live video streaming ApsaraDB for MongoDB can store user information and gift information.
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the features of ApsaraDB for MongoDB.
 

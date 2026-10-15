@@ -3,16 +3,77 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Developer Guide 20
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 71
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Developer Guide 20260828.pdf"
+source_pdf: "9cec9cc513d049c3_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Developer Guide 20260828
 
-## Quick Start
+## Table of Contents
 
-### Developer document
+- 1 Quick Start
+  - 1.1 Developer document instructions
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View API information
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey
+  - 2.5 Obtain the values of common request headers
+  - 2.6 Obtain the product name endpoint
+- 3 Use the SDK for Java
+  - 3.1 Getting started
+  - 3.2 User guide
+    - 3.2.1 Install Java SDK
+    - 3.2.2 Configure identity verification credentials
+    - 3.2.3 Request connection configuration
+    - 3.2.4 Send a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Use the SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use the SDK
+    - 4.2.1 Install Python SDK
+    - 4.2.2 Configure identity verification credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Send a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call examples for SDK for Go
+  - 5.1 Getting started
+  - 5.2 Use the SDK
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure identity verification credentials
+    - 5.2.3 Initiate a call
+    - 5.2.4 Error handling
+    - 5.2.5 Use CommonRequest to call APIs
+- 6 API reference
+  - 6.1 API overview
+  - 6.2 Call API operations
+    - 6.2.1 Request syntax
+    - 6.2.2 API authorization
+    - 6.2.3 Signature method
+  - 6.3 RAM authentication
+  - 6.4 Common parameters
+  - 6.5 Dynamic VIP
+    - 6.5.1 ListDynamicVIPs
+    - 6.5.2 GetDynamicVIP
+    - 6.5.3 UpdateDynamicVIP
+    - 6.5.4 DeleteDynamicVIP
+    - 6.5.5 CreateDynamicVIP
+  - 6.6 Dynamic DNS
+    - 6.6.1 CreateDynamicDns
+    - 6.6.2 DeleteDynamicDns
+    - 6.6.3 UpdateDynamicDns
+- 7 Appendixes
+  - 7.1 STS overview
+    - 7.1.1 What is STS?
+    - 7.1.2 AssumeRole
+
+## 1 Quick Start
+
+### 1.1 Developer document instructions
 
 **instructions**
 
@@ -37,7 +98,7 @@ Stack version.
 want to view.
 5. Click **View details** or **Download PDF** in the target document area.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
 Apsara Stack allows you to call API operations using either the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To provide the same experience as the public cloud, API operations in Apsara Stack are called using the POP gateway by default starting from Apsara Stack Enterprise V3.16.0. This topic describes how to use the POP gateway to call Apsara Stack API operations. The method of using the ASAPI gateway to call Apsara Stack API operations in earlier versions is still valid. For more information, see ASAPI gateway call procedure, Generate an endpoint for ASAPI, and Obtain the SDK package for ASAPI.
 
@@ -56,9 +117,9 @@ You need to review the developer guide of the target cloud service to understand
 5. Obtain the endpoint of the cloud service.
 6. Obtain the SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -79,7 +140,7 @@ operations based on your scenario: The first time you log on to the Apsara Uni-m
 c. Enter the 6-digit MFA code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter the 6-digit MFA code and click **Authenticate**.
 5. In the menu bar at the top of the page, choose **Products > Others > API Tools**.
 
-### View API information
+### 2.2 View API information
 
 When using a service SDK, you need to obtain the service name, API operation name, and API version. This topic describes how to view API information.
 
@@ -94,7 +155,7 @@ The API operations in API Audit are for reference only. For information about ho
 3. On the **API Audit** page, enter keywords such as **API name** to search.
 4. View and record the corresponding service name, API operation name, and call status.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey pairs are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey pairs for authentication when you call API operations. This topic describes how to obtain an AccessKey pair assigned by RAM.
 
@@ -135,7 +196,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the AccessKey information of the organization.
 
-### Obtain an STS AccessKey
+### 2.4 Obtain an STS AccessKey
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack.
 
@@ -252,7 +313,7 @@ step
 
 `}` `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common request headers
 
 **request headers**
 
@@ -303,7 +364,7 @@ The following response parameters are returned by default when you call operatio
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the product name
+### 2.6 Obtain the product name endpoint
 
 **endpoint**
 
@@ -319,9 +380,9 @@ To use the Portable OpenAPI Proxy (POP) gateway to call API operations in Apsara
 
 1. 2. 3. 4. Java
 
-## Use the SDK for Java
+## 3 Use the SDK for Java
 
-### Getting started
+### 3.1 Getting started
 
 This section describes how to obtain Product Name SDK for Java and start using it. Replace Product Name with your actual product name.
 
@@ -432,9 +493,9 @@ protocol. Default value: HTTP.
 
 `}` `}` `}`
 
-### User guide
+### 3.2 User guide
 
-#### Install Java SDK
+#### 3.2.1 Install Java SDK
 
 This topic describes how to install and call Product Name SDK for Java. Replace Product Name with your actual product name. Apsara Stack SDK for Java supports JDK 1.8 and later versions. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the Alibaba Cloud SDK. To use the SDK for Product Name, you must install the core library of Alibaba Cloud SDK for Java and the SDK for Java for Product Name. We recommend that you use V4.5.17 or later of the core library, and the X.X.X version of SDK for Java for the actual service. Replace Product Name with your actual product name; Replace X.X.X with your product's SDK version. For example, to use ECS SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and ECS SDK for Java, and add the following dependencies to the pom.xml file. For the exact SDK version number, see Alibaba Cloud SDK. Each cloud product should replace this with their own example Java
 
@@ -450,7 +511,7 @@ This topic describes how to install and call Product Name SDK for Java. Replace 
 </dependency>
 ```
 
-#### Configure identity verification
+#### 3.2.2 Configure identity verification credentials
 
 **credentials**
 
@@ -465,7 +526,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
 
-#### Request connection configuration
+#### 3.2.3 Request connection configuration
 
 This topic describes how to configure HttpClientConfig. You can use the following code to configure HttpClientConfig. Select and configure parameters based on your business requirements. Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests for each server based on your business requirements. The value is in the INT format. <maxRequests>: Specify the maximum number of requests based on your business requirements. The value is in the INT format. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
@@ -485,7 +546,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace with the IP 
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Send a request
+#### 3.2.4 Send a request
 
 This topic describes how to send a request by using SDK for Java of a service.
 
@@ -534,7 +595,7 @@ If an exception occurs or you need the original HTTP response, you can use `doAc
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 When you use the SDK for Java, the server or SDK might encounter an error and return an error response. The error response contains specific information including error codes and error messages. Generally, you do not need to handle errors returned by the Java SDK. You only need to handle server errors based on error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -565,7 +626,7 @@ baba Cloud technical support personnel.
 
 `}`
 
-#### Use CommonRequest to call API
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -769,9 +830,9 @@ application/json, use the following method to pass data:
 
 `}` `}` `}` Python
 
-## Use the SDK for Python
+## 4 Use the SDK for Python
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain and use SDK for Python.
 
@@ -832,9 +893,9 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-### Use the SDK
+### 4.2 Use the SDK
 
-#### Install Python SDK
+#### 4.2.1 Install Python SDK
 
 This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python using pip. To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the core library of Apsara Stack SDK for Python and ECS SDK for Python. If you are using Python 2.x, run the following command to install the core library of Apsara Stack SDK:
 
@@ -862,7 +923,7 @@ pip3 install aliyun-python-sdk-ecs
 
 Python
 
-#### Configure identity verification
+#### 4.2.2 Configure identity verification credentials
 
 **credentials**
 
@@ -876,7 +937,7 @@ Do not disclose code that contains your AccessKey pair. For example, do not comm
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 SDK for Python enables you to send API requests using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or configure a global default protocol. The default protocol of a service (HTTP/HTTPS) takes precedence over the global default protocol.
 
@@ -906,7 +967,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request
 ```
 
-#### Send a request
+#### 4.2.4 Send a request
 
 This topic describes how to use SDK for Python to send a request.
 
@@ -936,7 +997,7 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Python, the SDK returns an error response. The error response contains an error code and an error message. Among the errors returned by the SDK for Python, you do not need to handle the SDK errors, but must solve the server errors. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -957,7 +1018,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -1083,11 +1144,11 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 or SDK for Go
 
-## Call examples for SDK for
+## 5 Call examples for SDK for Go
 
 **Go**
 
-### Getting started
+### 5.1 Getting started
 
 Apsara Stack SDK for Go enables you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go.
 
@@ -1161,9 +1222,9 @@ func main() {
 request.Scheme = "HTTPS"
 ```
 
-### Use the SDK
+### 5.2 Use the SDK
 
-#### Install the core package of SDK for Go
+#### 5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Alibaba Cloud SDK for Go supports Go 1.10.x and later versions. You can install the core package of SDK for Go by executing the following command.
 
@@ -1171,7 +1232,7 @@ This topic describes how to install the core package of SDK for Go. Alibaba Clou
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure identity verification
+#### 5.2.2 Configure identity verification credentials
 
 **credentials**
 
@@ -1190,7 +1251,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 
 In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
 
-#### Initiate a call
+#### 5.2.3 Initiate a call
 
 This topic describes how to use Alibaba Cloud product SDK for Go to initiate a call. The following example demonstrates how to use ECS SDK for Go to initiate a request.
 1. Import the cloud product SDK.
@@ -1231,7 +1292,7 @@ or SDK for Go
 response, err := ecsClient.DescribeInstanceAttribute(request)
 ```
 
-#### Error handling
+#### 5.2.4 Error handling
 
 When an error occurs on the server side or SDK side, Alibaba Cloud Go SDK returns the corresponding error information through the `ClientError` and `ServerError` types in the `sdk.errors` package. These errors conform to the standard Go error interface and can be handled similarly to standard Go errors.
 
@@ -1311,7 +1372,7 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
 
 `}`
 
-#### Use CommonRequest to call APIs
+#### 5.2.5 Use CommonRequest to call APIs
 
 If you need to call API operations of a cloud service that doesn't provide an SDK, or you cannot use an SDK to call API operations that meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations.
 
@@ -1470,9 +1531,9 @@ use the following method to pass data
 
 `}`
 
-## API reference
+## 6 API reference
 
-### API overview
+### 6.1 API overview
 
 The following tables list the API operations available for use in Virtual Private Cloud (VPC).
 
@@ -1512,9 +1573,9 @@ The following tables list the API operations available for use in Virtual Privat
 | UpdateDynamicDns | Updates a dynamic DNS resource (only supports DNS product). |
 | ListDynamicDnses | Obtains dynamic DNS resources. |
 
-### Call API operations
+### 6.2 Call API operations
 
-#### Request syntax
+#### 6.2.1 Request syntax
 
 To send a Virtual Private Cloud (VPC) API request, you must send an HTTP GET request to the VPC endpoint. You must add the request parameters that correspond to the API operation being called. After you call the API, the system returns a response. Requests and responses are encoded in UTF-8. VPC API operations use the RPC protocol. You can call VPC API operations by sending HTTP GET requests. The request syntax is as follows:
 
@@ -1536,11 +1597,11 @@ ampersands (&). Request parameters include both common parameters and operation-
 https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### API authorization
+#### 6.2.2 API authorization
 
 To ensure the security of your account, we recommend that you call VPC APIs as a RAM user. Before you can use a RAM account to call a VPC API, you must create a RAM account and assign corresponding permissions to it. For more information about VPC resources and APIs you can assign permissions on, see RAM authentication.
 
-#### Signature method
+#### 6.2.3 Signature method
 
 You must sign all API requests to ensure security. Apsara Stack uses the request signature to verify the identity of the API caller. VPC implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Apsara Stack tenant accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. To call an RPC API operation, you must add the signature to the API request in the following format: https://endpoint/?SignatureVersion=1.0 &SignatureMethod=HMAC- SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf Take DescribeVpcs as an example. Assume that the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The original request URL is as follows:
 
@@ -1568,7 +1629,7 @@ CT9X0VtwR86fNWSnsc6v8YGOjuE=
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.3 RAM authentication
 
 Before calling a VPC API using a RAM user, you must use an Apsara Stack tenant account to create an authorization policy to assign permissions to the RAM user. In the authorization policy, an Alibaba Cloud Resource Name (ARN) is used as the unique identifier of the resource to authorize.
 
@@ -1730,7 +1791,7 @@ The following table lists the API operations that can be authorized and their co
 |   |   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |
 | vpc:DeleteSnatEntry |   |   |   |
 
-### Common parameters
+### 6.4 Common parameters
 
 **Common request parameters**
 
@@ -1770,9 +1831,9 @@ When you call API operations of cloud services, you need to add the actual value
 
 API responses use the HTTP response format: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates that the call failed. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-### Dynamic VIP
+### 6.5 Dynamic VIP
 
-#### ListDynamicVIPs
+#### 6.5.1 ListDynamicVIPs
 
 Call the ListDynamicVIPs operation to retrieve dynamic VIP resources.
 
@@ -1809,7 +1870,7 @@ When you call this operation, note the following: If you do not specify the Filt
 | RequestId | String | 861E6630-AEC0- 4B2D-B214- 6CB5E44B7F04 | The ID of the request. |
 | VSwitchId | String | vsw- 25nsdf2aue4g**** | The ID of the vSwitch. |
 
-#### GetDynamicVIP
+#### 6.5.2 GetDynamicVIP
 
 You can call the GetDynamicVIP operation to obtain dynamic VIP resources.
 
@@ -1849,7 +1910,7 @@ When you call this operation, note the following: You can query dynamic VIP reso
 | ServerGroupI d | String | 8a91b49b74439879 017447aac4ae0015 | Used for adaptation layer SDK, modify, and delete interfaces. |
 | DynVipStatus | String | 8000 | The status code. |
 
-#### UpdateDynamicVIP
+#### 6.5.3 UpdateDynamicVIP
 
 Calls the UpdateDynamicVIP operation to modify the status code of a dynamic virtual IP address (VIP).
 
@@ -1867,7 +1928,7 @@ Calls the UpdateDynamicVIP operation to modify the status code of a dynamic virt
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706- 4D23-88ED- E11ED28DCAC0 | The ID of the request. |
 
-#### DeleteDynamicVIP
+#### 6.5.4 DeleteDynamicVIP
 
 You can call the DeleteDynamicVIP operation to delete a dynamic virtual IP address (VIP) resource.
 
@@ -1884,7 +1945,7 @@ You can call the DeleteDynamicVIP operation to delete a dynamic virtual IP addre
 |---|---|---|---|
 | RequestId | String | 9A572171-4E27- 40D1-BD36- D26C9E71E29E | The ID of the request. |
 
-#### CreateDynamicVIP
+#### 6.5.5 CreateDynamicVIP
 
 You can call the CreateDynamicVIP operation to create a dynamic virtual IP address (VIP) resource.
 
@@ -1926,9 +1987,9 @@ dynamic_vip_template_parameter database. The dynamic VIP is created successfully
 | RequestId | String | 9A572171-4E27- 40D1-BD36- D26C9E71E29E | The ID of the request. |
 | VIP | String | 66.248.51.171 | The created VIP. |
 
-### Dynamic DNS
+### 6.6 Dynamic DNS
 
-#### CreateDynamicDns
+#### 6.6.1 CreateDynamicDns
 
 You can call the CreateDynamicDns operation to create a dynamic DNS resource.
 
@@ -1959,7 +2020,7 @@ You can call the CreateDynamicDns operation to create a dynamic DNS resource.
 | RequestId | String | pc- bp1qrb3044eqixog0 **** | The ID of the request. |
 | DnsRecordId | Array | [120,121] | The IDs of the successfully created DNS records. |
 
-#### DeleteDynamicDns
+#### 6.6.2 DeleteDynamicDns
 
 You can call the DeleteDynamicDns operation to delete dynamic DNS resources.
 
@@ -1985,7 +2046,7 @@ Tenant DNS and OPS DNS share the same interface for deletion, distinguished by t
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74- 4534-BD0E- 403F3EE64CAF | The ID of the request. |
 
-#### UpdateDynamicDns
+#### 6.6.3 UpdateDynamicDns
 
 You can call the UpdateDynamicDns operation to modify dynamic DNS resources.
 
@@ -2008,11 +2069,11 @@ This operation supports modifying tenant DNS (DNS product). OPS DNS does not sup
 |---|---|---|---|
 | RequestId | String | 2B3670CD-670E- 4540-8C13- 6DE929AEDD3B | The ID of the request. |
 
-## Appendixes
+## 7 Appendixes
 
-### STS overview
+### 7.1 STS overview
 
-#### What is STS?
+#### 7.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -2024,7 +2085,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

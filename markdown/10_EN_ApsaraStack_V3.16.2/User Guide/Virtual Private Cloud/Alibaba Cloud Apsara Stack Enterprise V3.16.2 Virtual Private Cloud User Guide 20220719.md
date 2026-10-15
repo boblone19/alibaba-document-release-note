@@ -3,14 +3,67 @@ title: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 Virtual Private Cloud User
 product_version: "V3.16.2"
 doc_version: "20220719"
 pdf_pages: 69
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 Virtual Private Cloud User Guide 20220719.pdf"
+source_pdf: "41c76e344b6866e0_Alibaba Cloud Apsara Stack Enterprise V3.16.2 Virtual Private Cloud User Guide 20220719.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20Virtual%20Private%20Cloud%20User%20Guide%2020220719.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 Virtual Private Cloud User Guide
 
-## What is a VPC?
+## Table of Contents
+
+- 1 What is a VPC?
+- 2 Log on to the VPC console
+- 3 Quick start
+  - 3.1 Design networks
+  - 3.2 Create a VPC with an IPv4 CIDR block
+  - 3.3 Create an IPv6 VPC
+- 4 VPCs and VSwitches
+  - 4.1 Overview
+  - 4.2 VPC management
+    - 4.2.1 Create a VPC
+    - 4.2.2 Add a secondary IPv4 CIDR block
+    - 4.2.3 Delete a secondary IPv4 CIDR block
+    - 4.2.4 Modify the name and description of a VPC
+    - 4.2.5 Delete a VPC
+  - 4.3 VSwitch management
+    - 4.3.1 Create a vSwitch
+    - 4.3.2 Create cloud resources
+    - 4.3.3 Modify the information about a vSwitch
+    - 4.3.4 Delete a vSwitch
+- 5 Route tables
+  - 5.1 Overview
+  - 5.2 Create a custom route table
+  - 5.3 Add a custom route entry
+  - 5.4 Export route entries
+  - 5.5 Modify the information about a route table
+  - 5.6 Delete a custom route entry
+  - 5.7 Subnet routing
+- 6 HAVIPs
+  - 6.1 Overview
+  - 6.2 Create an HAVIP
+  - 6.3 Associate HAVIPs with backend cloud resources
+    - 6.3.1 Associate an HAVIP with an ECS instance
+    - 6.3.2 Associate an HAVIP with an ENI
+  - 6.4 Associate an HAVIP with an EIP
+  - 6.5 Disassociate HAVIPs from backend cloud resources
+    - 6.5.1 Disassociate an HAVIP from an ECS instance
+    - 6.5.2 Disassociate an HAVIP from an ENI
+  - 6.6 Disassociate an HAVIP from an EIP
+  - 6.7 Delete an HAVIP
+- 7 Network ACLs
+  - 7.1 Overview
+  - 7.2 Scenarios
+  - 7.3 Create a network ACL
+  - 7.4 Associate a network ACL with a vSwitch
+  - 7.5 Add network ACL rules
+    - 7.5.1 Add an inbound rule
+    - 7.5.2 Add an outbound rule
+    - 7.5.3 Change the priorities of network ACL rules
+  - 7.6 Disassociate a network ACL from a vSwitch
+  - 7.7 Delete a network ACL
+
+## 1 What is a VPC?
 
 A virtual private cloud (VPC) is a private network in the cloud. You can configure the CIDR block, route tables, and gateways of your VPC. You can use Alibaba Cloud services in a VPC, such as Elastic Compute Service (ECS), Server Load Balancer (SLB), and ApsaraDB RDS. You can connect your VPC to other VPCs or on-premises networks to create a custom network environment. This way, you can migrate applications to the cloud and extend data centers. Components Each VPC consists of one vRouter, at least one private CIDR block, and at least one vSwitch. Private CIDR blocks When you create a VPC and a vSwitch, you must specify the private IP address range for the VPC in CIDR notation. You can use the standard private CIDR blocks listed in the following table and their subsets as CIDR blocks for your VPCs. For more information, see the Plan and design a VPC topic in User Guide.
 
@@ -21,7 +74,7 @@ A virtual private cloud (VPC) is a private network in the cloud. You can configu
 
 vRouters A vRouter is the hub of a VPC. As a core component, it connects the vSwitches in a VPC and serves as a gateway between a VPC and other networks. After you create a VPC, the system automatically creates a vRouter. Each vRouter is associated with a route table. For more information, see the Route table overview topic in User Guide. vSwitches A vSwitch is a basic network component that connects different cloud resources in a VPC. After you create a VPC, you can create vSwitches to create one or more subnets for the VPC. vSwitches in the same VPC can communicate with each other. You can deploy your applications in vSwitches that belong to different zones to improve service availability. For more information, see the Create a vSwitch topic in User Guide. le
 
-## Log on to the VPC console
+## 2 Log on to the VPC console
 
 This topic describes how to log on to the Virtual Private Cloud (VPC) console of Apsara Uni-manager by using the Google Chrome browser. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
@@ -33,13 +86,13 @@ Obtain the username and password that you can use to log on to the console from 
 in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
 5. In the top navigation bar, choose Product s > Net working > Virt ual Privat e Cloud.
 
-## Quick start
+## 3 Quick start
 
-### Design networks
+### 3.1 Design networks
 
 Before you create virtual private clouds (VPCs) and vSwitches, you must decide the quantities and CIDR blocks of VPCs and vSwitches. How many VPCs do I use? How many vSwitches do I use? How do I specify CIDR blocks? How do I specify CIDR blocks if I want to connect a VPC to another VPC or a data center? How many VPCs do I use? One VPC If you do not want to deploy your business systems across regions or isolate different business systems, we recommend that you use one VPC. Multiple VPCs In the following scenarios, we recommend that you use multiple VPCs: Cross-region deployment A VPC cannot be deployed across regions. If you want to deploy your business system across regions, you must create VPCs in these regions. Then, you can use services such as Express Connect and VPN Gateway to connect the VPCs. Business system isolation If you want to isolate business systems deployed in the same region, you must create multiple VPCs. The following figure shows how the test environment is isolated from the production environment by using VPCs. How many vSwitches do I use? We recommend that you create at least two vSwitches in different zones for a VPC. This implements cross-zone disaster recovery. The network latency between different zones in a region is low. However. you still need to verify the network latency in your actual business system. This is because the network latency may be higher than expected due to complex data processing or cross-zone data transmission. We recommend that you optimize and adjust your business system to strike a balance between availability and latency. In addition, the size and design of your business system must also be taken into consideration when you create vSwitches. If your frontend systems are publicly accessible and your backend systems require Internet access, you can deploy the frontend systems in different vSwitches for redundancy. Then, deploy your backend systems in the remaining vSwitches. How do I specify CIDR blocks? When you create VPCs and vSwitches, you must specify their private IP addresses in CIDR block notation. Specify VPC CIDR blocks You can specify 192.168.0.0/16, 172.16.0.0/12, 10.0.0.0/8, or their subsets as the CIDR blocks of your VPCs. When you specify VPC CIDR blocks, take note of the following rules: If you have only one VPC and the VPC does not need to communicate with a data center, you can specify one of the preceding CIDR blocks or their subsets as the VPC CIDR block. If you have multiple VPCs, or you want to set up a hybrid cloud environment between a VPC and your data center, we recommend that you specify the subsets of the preceding CIDR blocks for your VPCs. In this case, we recommend that you set the subnet mask length to 16 bits or less. Specify vSwitch CIDR blocks The CIDR block of a vSwitch must be a subset of the CIDR block of the VPC to which the vSwitch belongs. For example, if the CIDR block of a VPC is 192.168.0.0/16, the CDIR block of a vSwitch that belongs to the VPC can range from 192.168.0.0/17 to 192.168.0.0/29. When you specify vSwitch CIDR blocks, take note of the following rules: The subnet mask of a vSwitch CIDR block must be 16 to 29 bits in length. This allows the vSwitch to provide 8 to 65,536 IP addresses. A 16-bit subnet mask provides IP addresses for 65,532 Elastic Compute Service (ECS) instances, which can meet your needs in most cases. A subnet mask of more than 29 bits in length provides few IP addresses. The first IP address and the last three IP addresses of each vSwitch CIDR block are reserved for the system. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved. When you specify the CIDR block of a vSwitch, you must also take into consideration the number of ECS instances that you want to attach to the vSwitch. How do I specify CIDR blocks if I want to connect a VPC to another VPC or a data center? Before you connect your VPC to another VPC or a data center, you must make sure that the VPC CIDR block does not conflict with that of the peer network. For example, you have three VPCs: VPC1 in the China (Hangzhou) region, VPC2 in the China (Beijing) region, and VPC3 in the China (Shenzhen) region, as shown in the following figure. An Express Connect circuit is used to connect VPC1 and VPC2. VPC3 does not communicate with other VPCs, but may need to communicate with VPC2 in the future. Additionally, you have a data center located in Shanghai, and you need to connect it to VPC1 by using an Express Connect circuit. In this example, the CIDR block of VPC2 is different from the CIDR block of VPC1, but is the same with the CIDR block of VPC3. Take into consideration that VPC2 and VPC3 need to communicate with each other through private connections, the vSwitches in these VPCs are assigned different CIDR blocks. The vSwitch CIDR blocks of VPCs that need to communicate with each other must be different. However, these VPCs can have the same CIDR block. When you specify CIDR blocks for multiple VPCs that need to communicate with each other, take note of the following rules: The preferred practice is to specify different CIDR blocks for different VPCs. You can use the subsets of standard CIDR blocks if the given CIDR blocks are insufficient. If you cannot assign different CIDR blocks to the VPCs, try to specify different CIDR blocks for vSwitches in these VPCs. If you cannot assign different CIDR blocks to all of the vSwitches in these VPCs, make sure that different CIDR blocks are specified for the vSwitches that need to communicate with each other.
 
-### Create a VPC with an IPv4 CIDR
+### 3.2 Create a VPC with an IPv4 CIDR block
 
 block This topic describes how to create a virtual private cloud (VPC) with an IPv4 CIDR block and how to create an Elastic Compute Service (ECS) instance in the VPC. Prerequisites To deploy cloud resources in a VPC, you must first plan the network. For more information, see Design networks. Step 1: Create a VPC
 1. Log on to the VPC console.
@@ -128,7 +181,7 @@ column.
 5. On the Creat e Inst ance page, set the parameters.
 For more information about how to configure ECS instances, see the Creat e an ECS inst ance topic in the Quick st art chapter of ECS User Guide.
 
-### Create an IPv6 VPC
+### 3.3 Create an IPv6 VPC
 
 This topic describes how to create a virtual private cloud (VPC) with an IPv6 CIDR block and how to create an Elastic Compute Service (ECS) instance that is assigned an IPv6 address in the VPC. This allows the ECS instance to access IPv6 services. Step 1: Create a VPC and a vSwitch Before you deploy cloud resources in a VPC, you must create a VPC and a vSwitch. Perform the following steps to create a VPC and a vSwitch:
 1. Log on to the VPC console.
@@ -218,9 +271,9 @@ Enable IPv6 Int ernet Bandwidt h in the Act ions column.
 7. Select a bandwidth plan and click OK.
 The bandwidth limit of an IPv6 gateway of Free, Enterprise, or Enhanced Edition is 2 Gbit/s. Step 5: Configure security group rules IPv4 and IPv6 addresses are independent of each other. If the current security group rules do not apply to your IPv6 services, you must configure security group rules for the ECS instances to regulate communication with IPv6 addresses. For more information about how to configure security group rules, see or the Add securit y group rules chapter in Securit y Groups of Elastic Compute Service User Guide. Step 6: Verify the network connectivity Log on to an ECS instance and ping an IPv6 service to verify the network connectivity.
 
-## VPCs and VSwitches
+## 4 VPCs and VSwitches
 
-### Overview
+### 4.1 Overview
 
 Before you can use cloud resources in a virtual private cloud (VPC), you must create a VPC and a vSwitch. You can create multiple vSwitches to divide a VPC into multiple subnets. By default, the subnets in a VPC can communicate with each other. VPCs and vSwitches VPCs are private networks dedicated to tenants. Not e You cannot directly deploy cloud resources in a VPC. You must deploy cloud resources in the vSwitches of a VPC. A vSwitch is a basic network device in a VPC and is used to connect cloud resources. You can deploy a VPC only in one region and cannot deploy a VPC across regions. However, a VPC covers all zones of the region to which the VPC belongs. You can create one or more vSwitches in a zone to divide a VPC into subnets. CIDR blocks and IP addresses VPCs support both IPv4 and IPv6. By default, VPCs use IPv4. You can enable IPv6 based on your business requirements. VPCs support the dual-stack mode. In dual-stack mode, resources in a VPC can communicate through both IPv4 and IPv6 addresses. IPv4 and IPv6 addresses are independent of each other. Therefore, you must configure routes and security groups for both IPv4 and IPv6 addresses. The following table lists the differences between IPv4 and IPv6 addresses.
 
@@ -237,9 +290,9 @@ Before you can use cloud resources in a virtual private cloud (VPC), you must cr
 
 By default, IPv4 and IPv6 addresses provided for VPCs support only communication over private networks. Cloud resources deployed in different vSwitches that belong to the same VPC can communicate with each other over private networks. To connect a VPC to another VPC or a data center, you can use Express Connect or VPN Gateway. To enable cloud resources in a VPC to communicate with the Internet, perform the following operations: IPv4 addresses You can configure NAT gateways or associate EIPs with Elastic Compute Service (ECS) instances in a VPC. This way, the ECS instances can communicate with the Internet through IPv4 addresses. IPv6 addresses To enable cloud resources in a VPC to communicate with the Internet through IPv6 addresses, you must purchase an IPv6 public bandwidth plan. You can configure egress-only rules for IPv6 addresses. This allows cloud resources in the VPC to access the Internet through IPv6 addresses. However, IPv6 clients cannot access the cloud resources over the Internet. Routes After you create a VPC, the system creates a system route table for the VPC and adds system routes to the route table. The system routes are used to route traffic within the VPC. A VPC has only one system route table. You cannot create or delete a system route table. You can create and associate custom route tables with vSwitches to facilitate network management. A vSwitch can be associated only with one route table. For more information, see Create a custom route table. If multiple route entries match the destination IP address, the route entry with the longest subnet mask is preferably used to determine the next hop. This ensures that the traffic is routed to the most precise destination. You can also add a custom route entry to route traffic to a specified destination. For more information, see Add a custom route entry.
 
-### VPC management
+### 4.2 VPC management
 
-#### Create a VPC
+#### 4.2.1 Create a VPC
 
 Virtual private clouds (VPCs) are private networks dedicated to tenants. You have full control over your VPC. For example, you can specify CIDR blocks, and configure route tables and gateways for your VPC. This topic describes how to create a VPC. Prerequisites Before you create a VPC, you must plan your networks. For more information, see Design networks.
 1. Log on to the VPC console.
@@ -262,7 +315,7 @@ Not e You must deploy the VPC in the same region as the cloud resources that you
 | IPv6 CIDR Block | Specify whether to assign an IPv6 CIDR block. Do Not Assign: The system does not assign an IPv6 CIDR block to the VPC. Assign: The system automatically assigns an IPv6 CIDR block to the VPC. Not e If you select Do Not Assign, you can click Enable IPv6 CIDR Block in the IPv6 CIDR Block column on the VPC page after the VPC is created. In the Enable IPv6 CIDR Block dialog box, you can select Enable IPv6 CIDR Block of all VSwit ches in VPC to enable IPv6 for all vSwitches in the VPC. The system automatically creates a free IPv6 gateway for this VPC, and assigns an IPv6 CIDR block with the subnet mask /61, such as 2XX1:db8::/61. By default, IPv6 addresses can be used for communication only within private networks. If you want to enable mutual access between an IPv6 address and the Internet, you must purchase an Internet bandwidth plan for the IPv6 address. For more information, see the Act ivat e IPv6 Int ernet bandwidt h section of the Manage IPv6 Int ernet bandwidt h topic of the IPv6 gateway user guide. |
 | Descript i on | Enter a description for the VPC. The description must be 2 to 256 characters in length, and can contain letters, digits, underscores ( ), hyphens (-), periods (.), colons (:), and commas (,). It must start with a _ letter and cannot start with http:// or https:// . |
 
-#### Add a secondary IPv4 CIDR block
+#### 4.2.2 Add a secondary IPv4 CIDR block
 
 After a virtual private cloud (VPC) is created, you can add a secondary IPv4 CIDR block to expand the VPC. Prerequisites A VPC is created. For more information, see Create a VPC. Context The IPv4 CIDR block that you configure when you create a VPC is the primary IPv4 CIDR block. After a VPC is created, the primary IPv4 CIDR block of the VPC cannot be modified. However, you can add a secondary IPv4 CIDR block to expand the VPC. After you add a secondary IPv4 CIDR block to the VPC, both the primary and secondary IPv4 CIDR blocks are in effect. You can create a vSwitch with the primary IPv4 CIDR block or the secondary IPv4 CIDR block. However, each vSwitch belongs to only one VPC CIDR block. The system automatically adds a vSwitch route to the VPC route table when you create a vSwitch with the primary IPv4 CIDR block or a secondary IPv4 CIDR block. The destination CIDR block of the vSwitch route is the CIDR block with which the vSwitch is created. The CIDR block range cannot be the same as or larger than those of other routes in the route table of the VPC. Not e You can add only one secondary IPv4 CIDR block to a VPC and cannot increase the quota.
 1. Log on to the VPC console.
@@ -279,7 +332,7 @@ After a virtual private cloud (VPC) is created, you can add a secondary IPv4 CID
 |---|---|
 | Secondary CIDR | Select a method to configure the secondary IPv4 CIDR block: Def ault CIDR Block: You can specify one of the following standard IPv4 CIDR blocks as the secondary IPv4 CIDR block: 192.168.0.0/16 and 172.16.0.0/12. Cust om CIDR Block: You can specify one of the following standard IPv4 CIDR blocks or one of their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16 and 172.16.0.0/12. When you add a secondary IPv4 CIDR block, take note of the following limits: The CIDR block cannot start with 0. The mask must be 8 to 24 bits in length. The secondary IPv4 CIDR block cannot overlap with the primary IPv4 CIDR block or an existing secondary IPv4 CIDR block. For example, if the primary IPv4 CIDR block of a VPC is 192.168.0.0/16, you cannot specify one of the following CIDR blocks as a secondary IPv4 CIDR block: A CIDR block larger than 192.168.0.0/16, for example, 192.168.0.0/8. 192.168.0.0/16. A CIDR block smaller than 192.168.0.0/16, for example, 192.168.0.0/24. |
 
-#### Delete a secondary IPv4 CIDR block
+#### 4.2.3 Delete a secondary IPv4 CIDR block
 
 You can delete the secondary IPv4 CIDR block of a virtual private cloud (VPC). However, you cannot delete the primary IPv4 CIDR block of a VPC. Prerequisites Before you delete a secondary IPv4 CIDR block, make sure that the vSwitches created with the secondary IPv4 CIDR block are deleted. For more information, see Delete a vSwitch.
 1. Log on to the VPC console.
@@ -290,7 +343,7 @@ Management in the Operat ion column.
 in the Operat ion column.
 5. In the message that appears, click OK.
 
-#### Modify the name and description of a VPC
+#### 4.2.4 Modify the name and description of a VPC
 
 This topic describes how to modify the name and description of a VPC.
 1. Log on to the VPC console.
@@ -302,7 +355,7 @@ next to VPC name. In the dialog box that appears, enter a new name and click OK.
 5. In the VPC Basic Inf ormat ion section, click
 next to Descript ion. In the dialog box that appears, enter a new description and click OK. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://` .
 
-#### Delete a VPC
+#### 4.2.5 Delete a VPC
 
 This topic describes how to delete a virtual private cloud (VPC). After you delete a VPC, vRouters and route tables that are associated with the VPC are also deleted. Prerequisites Before you delete a VPC, make sure that the following requirements are met: No vSwitch exists in the VPC. If the VPC contains a vSwitch, you must delete the vSwitch before you delete the VPC. For more information, see Delete a vSwitch. No IPv6 gateway exists in the VPC. If an IPv6 gateway exists in the VPC, delete the IPv6 gateway first. For more information, see the Delet e an IPv6 gat eway topic in the Manage IPv6 gat eways chapter of IPv6 Gateway User Guide.
 1. Log on to the VPC console.
@@ -311,9 +364,9 @@ This topic describes how to delete a virtual private cloud (VPC). After you dele
 Operat ion column.
 4. In the Delet e a propriet ary net work dialog box, click OK.
 
-### VSwitch management
+### 4.3 VSwitch management
 
-#### Create a vSwitch
+#### 4.3.1 Create a vSwitch
 
 A vSwitch is a basic network component that connects different cloud resources in a virtual private cloud (VPC). Context After you create a VPC, you can create vSwitches to create one or more subnets for the VPC. vSwitches in the same VPC can communicate with each other. Cloud resources must be deployed in vSwitches. You can deploy applications in vSwitches that belong to different zones to improve service availability. Not e vSwitches do not support multicasting or broadcasting.
 1. Log on to the VPC console.
@@ -339,7 +392,7 @@ A vSwitch is a basic network component that connects different cloud resources i
 | IPv6 CIDR Block | Specify an IPv6 CIDR block for the vSwitch. You must check whether IPv6 is enabled for the specified VPC. If IPv6 is not enabled, you cannot assign an IPv6 CIDR block to the vSwitch. If IPv6 is enabled for the VPC, you can enter a decimal number that ranges from 0 to 7 to define the last 8 bits of the IPv6 CIDR block of the vSwitch. For example, if the IPv6 CIDR block of the VPC is 2XX1:db8::/64, you can enter 255 to define the last 8 bits of the IPv6 CIDR block. In this case, the IPv6 CIDR block of the vSwitch is 2XX1:db8:ff::/64. ff is the hexadecimal value of 255. Not e If IPv6 is not enabled when you create a vSwitch, you can enable IPv6 after the vSwitch is created. To do this, go to the VSwit ches page, click Enable IPv6 CIDR in the IPv6 CIDR Block column. |
 | Descript ion | Enter a description for the vSwitch. The description must be 2 to 256 characters in length, and can contain letters, digits, underscores ( ), hyphens (-), periods (.), colons (:), and commas (,). It must _ start with a letter and cannot start with http:// or https:// . |
 
-#### Create cloud resources
+#### 4.3.2 Create cloud resources
 
 You cannot directly deploy cloud resources in a virtual private cloud (VPC). You must deploy cloud resources in a vSwitch in a VPC. This topic describes how to create cloud resources in a vSwitch. You can create Elastic Compute Service (ECS), Server Load Balancer (SLB), and ApsaraDB RDS instances in a vSwitch.
 1. Log on to the VPC console.
@@ -352,7 +405,7 @@ on the Creat e SLB Inst ance page. For more information about how to configure S
 > Creat e ApsaraDB RDS Inst ance, and then create an
 ApsaraDB RDS instance on the Creat e Inst ance page. For more information about how to configure ApsaraDB RDS instances, see the Creat e an ApsaraDB RDS inst ance topic in the Quick st art chapter of ApsaraDB RDS User Guide.
 
-#### Modify the information about a vSwitch
+#### 4.3.3 Modify the information about a vSwitch
 
 This topic describes how to modify the name and description of a vSwitch.
 1. Log on to the VPC console.
@@ -365,7 +418,7 @@ next to Swit ch name. In the dialog box that appears, enter a new name. The name
 6. In the Swit ch Basic inf ormat ion section, click
 next to Descript ion. In the dialog box that appears, enter a new description. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://` .
 
-#### Delete a vSwitch
+#### 4.3.4 Delete a vSwitch
 
 This topic describes how to delete a vSwitch. After you delete a vSwitch, you cannot deploy cloud resources in it. Prerequisites Before you delete a vSwitch, make sure that the following requirements are met: Cloud resources created in the vSwitch are deleted, such as Elastic Compute Service (ECS), Server Load Balancer (SLB), and ApsaraDB RDS instances. All resources associated with the vSwitch are deleted, such as high-availability virtual IP addresses (HAVIPs) and SNAT entries.
 1. Log on to the VPC console.
@@ -375,9 +428,9 @@ This topic describes how to delete a vSwitch. After you delete a vSwitch, you ca
 Operat ion column.
 5. In the Delet e vSwit ch message, click OK.
 
-## Route tables
+## 5 Route tables
 
-### Overview
+### 5.1 Overview
 
 After you create a virtual private cloud (VPC), the system automatically creates a system route table for the VPC and adds system routes to the route table. The system routes are used to route traffic within the VPC. You cannot create or delete system routes. However, you can create custom routes to route traffic from a specified CIDR block to a specified destination. Route tables After you create a VPC, the system creates a system route table to manage routes of the VPC. By default, vSwitches in the VPC use this route table. You cannot create or delete the system route table of a VPC. However, you can create a custom route table and associate it with a vSwitch to manage your network in a more flexible way. When you associate a vSwitch with a custom route table, the vSwitch is automatically disassociated from the system route table. For more information, see Add subnet routes to a route table. Each entry in a route table is a route entry. A route entry specifies the destination to which network traffic is routed and consists of the destination CIDR block, next hop type, and next hop. Route entries include system route entries and custom route entries. System routes After you create a VPC, the system automatically adds the following system routes to the route table: A route entry with a destination CIDR block of 100.64.0.0/10. This route is used for communication among cloud resources within the VPC. Route entries whose destination CIDR blocks are the same as the CIDR blocks of the vSwitches in the VPC. These routes are used for communication among cloud resources within the vSwitches. For example, if you create a VPC whose CIDR block is 192.168.0.0/16 and two vSwitches whose CIDR blocks are 192.168.1.0/24 and 192.168.0.0/24, three system routes are automatically added to the route table of the VPC. The following table describes the system routes.
 
@@ -472,7 +525,7 @@ Connect a VPC to a data center through a VPN gateway The following figure shows 
 |---|---|---|
 | 192.168.0.0/16 | VPN gateway | The VPN gateway that you created |
 
-### Create a custom route table
+### 5.2 Create a custom route table
 
 This topic describes how to use route tables. A route table consists of route entries. Each route entry specifies the destination to which network traffic is routed. You can create a custom route table to manage the inbound and outbound network traffic of subnets in a virtual private cloud (VPC). Create a custom route table
 1. Log on to the VPC console.
@@ -509,7 +562,7 @@ belongs.
 Operat ion column.
 5. In the Delet e Rout e T able message, click OK.
 
-### Add a custom route entry
+### 5.3 Add a custom route entry
 
 This topic describes how to add a custom route entry. After you create a virtual private cloud (VPC), the system creates a system route table and adds system route entries to the route table. The system route entries are used to route traffic within the VPC. You cannot create or delete system route entries. However, you can create custom route entries to route traffic destined for specified CIDR blocks to specified destinations. Context Each item in a route table is a route entry. A route entry consists of the destination CIDR block, next hop type, and next hop. A route entry specifies the destination of network traffic. Route entries include system route entries and custom route entries. You can add custom route entries to the system route table and custom route tables.
 1. Log on to the VPC console.
@@ -532,7 +585,7 @@ belongs.
 |---|---|
 | ECS Inst ance, VPN gat eway, NAT Gat eway, Auxiliary ENI, Highly available virt ual IP, Rout er Int erf ace (VPC Direct ion), Rout er Int erf ace (Border Rout er Direct ion), and IPv6 Gat eway | Select an instance as the next hop. |
 
-### Export route entries
+### 5.4 Export route entries
 
 This topic describes how to export route entries from a route table. The exported route entries can be stored as backups on your computer.
 1. Log on to the VPC console.
@@ -542,7 +595,7 @@ This topic describes how to export route entries from a route table. The exporte
 5. In the Rout e T able Det ails section, click the Rout e Ent ry List tab, and then click Export .
 The route entries are exported to a .csv file on your computer.
 
-### Modify the information about a
+### 5.5 Modify the information about a route table
 
 route table This topic describes how to modify the name and description of a route table.
 1. Log on to the VPC console.
@@ -554,7 +607,7 @@ next to Rout ing t able name. In the dialog box that appears, enter a new name f
 6. In the Rout ing t able Basic inf ormat ion section, click
 next to Descript ion. In the dialog box that appears, enter a new description for the route table and click OK. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://` .
 
-### Delete a custom route entry
+### 5.6 Delete a custom route entry
 
 This topic describes how to delete a custom route entry. A route table consists of one or more route entries. Each route entry specifies the destination network to which traffic is routed. You can delete custom route entries. However, you cannot delete system route entries.
 1. Log on to the VPC console.
@@ -565,7 +618,7 @@ This topic describes how to delete a custom route entry. A route table consists 
 the Act ions column.
 6. In the Delet e Rout e Ent ry message, click OK.
 
-### Subnet routing
+### 5.7 Subnet routing
 
 You can create a custom route table in a virtual private cloud (VPC) and add custom routes to the custom route table. Then, you can associate the custom route table with a vSwitch to control the traffic of the vSwitch. This facilitates network management. The preceding operations are referred to as subnet routing. Prerequisites A VPC is created. For more information, see Create a VPC. Step 1: Create a custom route table
 1. Log on to the VPC console.
@@ -655,9 +708,9 @@ belongs.
 swit ch.
 6. In the Bind swit ch dialog box, select the vSwitch that you want to associate and click OK.
 
-## HAVIPs
+## 6 HAVIPs
 
-### Overview
+### 6.1 Overview
 
 High-availability virtual IP addresses (HAVIPs) are private IP addresses that can be created and released as independent resources. You can use HAVIPs with high-availability (HA) software such as Keepalived to provide active/standby services. This improves the availability of your services. Introduction Each Elastic Compute Service (ECS) instance is assigned a private IP address as the primary IP address. You can associate HAVIPs with an ECS instance to increase the number of private IP addresses available for the ECS instance. Both the primary IP address and HAVIPs of an ECS instance can be used to access networks. In addition, you can use HAVIPs with HA software such as Keepalived to provide active/standby services. This improves the availability of your services. You can associate an HAVIP with ECS instances by using the following methods: Directly associate an HAVIP with ECS instances. Each HAVIP can be associated with two ECS instances. After an HAVIP is associated with ECS instances, the ECS instances can send Address Resolution Protocol (ARP) messages to advertise the HAVIP. After the ECS instances advertise the HAVIP, one of the ECS instances serves as the primary instance, and the other ECS instance serves as the secondary instance. If the primary ECS instance is down, the secondary ECS instance takes over to provide services. Attach secondary elastic network interfaces (ENIs) to ECS instances. Then, associate the HAVIP with the secondary ENIs. Each HAVIP can be associated with ENIs of two ECS instances. After the HAVIP is associated with the ENIs, the ECS instances can send ARP messages to advertise the HAVIP. After the ECS instances advertise the HAVIP, one of the ECS instances serves as the primary instance, and the other ECS instance serves as the secondary instance. If the primary ECS instance is down, the secondary ECS instance takes over to provide services. Not e Before you associate an HAVIP with secondary ENIs, make sure that the secondary ENIs are attached to two ECS instances. HAVIPs have the following features: HAVIPs are floating private IP addresses and are not statically assigned to specified ECS instances. HAVIPs can be associated with or disassociated from ECS instances through ARP announcements. An HAVIP can be associated only with ECS instances or ENIs that belong to the same vSwitch. You can associate each HAVIP with two ECS instances or two secondary ENIs. However, you cannot associate an HAVIP with an ECS instance and a secondary ENI at the same time. Scenarios HAVIPs support flexible configurations in the following scenarios: Scenario 1: Internal-facing HA services In the following figure, two ECS instances are assigned the same HAVIP. Keepalived is configured for the ECS instances to provide an internal-facing HA service. Other instances in the same virtual private cloud (VPC) can access this service. The HAVIP serves as the service address. If the primary ECS instance is down, the secondary ECS instance takes over. This improves the availability of your services. Scenario 2: Internet-facing HA services In the following figure, two ECS instances are assigned the same HAVIP. Keepalived is configured and the HAVIP is associated with an elastic IP address (EIP) for the ECS instances to provide an Internetfacing HA service. The EIP that is associated with the HAVIP serves as the service address. If the primary ECS instance is down, the secondary ECS instance takes over. This improves the availability of your services. Limits Before you use HAVIPs, take note of the following limits.
 
@@ -674,7 +727,7 @@ High-availability virtual IP addresses (HAVIPs) are private IP addresses that ca
 |---|---|
 | Whether HAVIPs support broadcasting or multicasting | N/A Not e HAVIPs support only unicasting. To implement high availability through third-party software such as keepalived, you must modify the configuration file to change the communication method to unicasting. |
 
-### Create an HAVIP
+### 6.2 Create an HAVIP
 
 A high-availability virtual IP address (HAVIP) is a private IP address that can be created and released as an independent resource. This topic describes how to create an HAVIP in the console. Prerequisites A virtual private cloud (VPC) and vSwitches are created. For more information, see Create a VPC and Create a vSwitch.
 1. Log on to the VPC console.
@@ -692,11 +745,11 @@ A high-availability virtual IP address (HAVIP) is a private IP address that can 
 | vSwit ch | Select the vSwitch to which the HAVIP that you want to create belongs. |
 | Privat e IP Address | Specify a private IP address for the HAVIP. Not e You must specify an idle private IP address that falls within the CIDR block of the vSwitch. |
 
-### Associate HAVIPs with backend
+### 6.3 Associate HAVIPs with backend cloud resources
 
 cloud resources
 
-#### Associate an HAVIP with an ECS instance
+#### 6.3.1 Associate an HAVIP with an ECS instance
 
 You can associate a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This way, the ECS instance can advertise the HAVIP and obtain multiple private IP addresses through Address Resolution Protocol (ARP). An HAVIP can be associated with at most two ECS instances. Prerequisites An ECS instance is created. For more information, see the Creat e an inst ance topic in the Quick St art chapter of ECS User Guide. Context An HAVIP can be associated with two ECS instances or two elastic network interfaces (ENIs). However, you cannot associate an HAVIP with an ECS instance and an ENI at the same time.
 1. Log on to the VPC console.
@@ -713,7 +766,7 @@ Act ions column.
 | Binding t ype | Select the type of resource with which you want to associate the HAVIP. Supported resource types are: ECS inst ance Elast ic net work card In this example, ECS inst ance is selected. |
 | Binding resource | Select the ECS instance with which you want to associate the HAVIP. The ECS instance must meet the following requirements: The ECS instance is deployed in a VPC. The ECS instance and the HAVIP belong to the same vSwitch. |
 
-#### Associate an HAVIP with an ENI
+#### 6.3.2 Associate an HAVIP with an ENI
 
 You can associate a high-availability virtual IP address (HAVIP) with an elastic network interface (ENI). This way, an Elastic Compute Service (ECS) instance can advertise the HAVIP and obtain multiple private IP addresses through Address Resolution Protocol (ARP). Prerequisites An ENI is created. For more information, see the Creat e an ENI topic in the Elast ic Net work Int erf ace chapter of ECS User Guide. Context An HAVIP can be associated with two ECS instances or two ENIs. However, you cannot associate an HAVIP with an ECS instance and an ENI at the same time.
 1. Log on to the VPC console.
@@ -730,7 +783,7 @@ Act ions column.
 | Binding t ype | Select the type of resource with which you want to associate the HAVIP. Supported resource types are: ECS inst ance Elast ic net work card In this example, Elast ic net work card is selected. |
 | Bind resource | Select the ENI with which you want to associate the HAVIP. The ENI and HAVIP must belong to the same vSwitch. |
 
-### Associate an HAVIP with an EIP
+### 6.4 Associate an HAVIP with an EIP
 
 You can associate a high-availability virtual IP address (HAVIP) with an elastic IP address (EIP). This way, the HAVIP can provide services over the Internet by using the EIP. Prerequisites An EIP is created. For more information, see the Create an EIP topic in Quick St art of Elast ic IP Address User Guide.
 1. Log on to the VPC console.
@@ -741,11 +794,11 @@ net work IP in the Act ions column.
 5. In the dialog box that appears, select the EIP with which you want to associate the HAVIP and click
 OK. The EIP must meet the following requirements: The EIP and the HAVIP must be deployed in the same region. The EIP must be in the Available state.
 
-### Disassociate HAVIPs from
+### 6.5 Disassociate HAVIPs from backend cloud resources
 
 backend cloud resources
 
-#### Disassociate an HAVIP from an ECS
+#### 6.5.1 Disassociate an HAVIP from an ECS instance
 
 instance This topic describes how to disassociate a high-availability virtual private IP address (HAVIP) from an Elastic Compute Service (ECS) instance. After you disassociate an HAVIP from an ECS instance, the ECS instance cannot send Address Resolution Protocol (ARP) messages to advertise the HAVIP.
 1. Log on to the VPC console.
@@ -756,7 +809,7 @@ column.
 5. In the Resources section, find the ECS instance that you want to manage and click Unbind.
 6. In the message that appears, click OK.
 
-#### Disassociate an HAVIP from an ENI
+#### 6.5.2 Disassociate an HAVIP from an ENI
 
 This topic describes how to disassociate a high-availability virtual IP address (HAVIP) from an elastic network interface (ENI). After you disassociate an HAVIP from an ENI, the Elastic Compute Service (ECS) instance with which the ENI is associated cannot send Address Resolution Protocol (ARP) messages to advertise the HAVIP.
 1. Log on to the VPC console.
@@ -767,7 +820,7 @@ column.
 5. In the Resources section, find the ENI that you want to manage and click Unbind.
 6. In the message that appears, click OK.
 
-### Disassociate an HAVIP from an
+### 6.6 Disassociate an HAVIP from an EIP
 
 EIP This topic describes how to disassociate a high-availability virtual IP address (HAVIP) from an elastic IP address (EIP). After you disassociate an HAVIP from an EIP, the HAVIP can no longer provide services over the Internet.
 1. Log on to the VPC console.
@@ -777,7 +830,7 @@ EIP This topic describes how to disassociate a high-availability virtual IP addr
 Operat ion column.
 5. In the message that appears, click OK.
 
-### Delete an HAVIP
+### 6.7 Delete an HAVIP
 
 This topic describes how to delete a high-availability virtual IP address (HAVIP). Prerequisites If an HAVIP is associated with an elastic IP address (EIP), you must disassociate the HAVIP from the EIP before you delete the HAVIP. For more information, see Disassociate an HAVIP from an EIP. The HAVIP is not associated with an Elastic Compute Service (ECS) instance. If the HAVIP is associated with an ECS instance, disassociate the HAVIP from the ECS instance first. For more information, see Disassociate an HAVIP from an ECS instance. The HAVIP is not associated with an elastic network interface (ENI). If the HAVIP is associated with an ENI, disassociate the HAVIP from the ENI first. For more information, see Associate an HAVIP with an ENI.
 1. Log on to the VPC console.
@@ -787,9 +840,9 @@ This topic describes how to delete a high-availability virtual IP address (HAVIP
 column.
 5. In the message that appears, click OK.
 
-## Network ACLs
+## 7 Network ACLs
 
-### Overview
+### 7.1 Overview
 
 Network access control lists (ACLs) allow you to regulate access control for a virtual private cloud (VPC). You can create network ACL rules and associate a network ACL with a vSwitch. This allows you to control inbound and outbound traffic of Elastic Compute Service (ECS) instances that are associated with the vSwitch. Features Network ACLs have the following features: A network ACL is used to filter inbound and outbound network traffic of ECS instances that are associated with a vSwitch in a VPC. The network traffic forwarded to ECS instances by Server Load Balancer (SLB) instances is also filtered. Network ACLs are stateless. You must set both inbound and outbound rules. Otherwise, the system may fail to respond to requests. If you create a network ACL that does not contain a rule, all inbound and outbound access is denied. If a network ACL is associated with a vSwitch, the network ACL does not filter the traffic forwarded between ECS instances that are associated with the vSwitch. Network ACL rules You can add rules to or delete rules from a network ACL. Changes to the rules are automatically synchronized to the associated vSwitch. By default, an inbound rule and an outbound rule are automatically added to a newly created network ACL. These rules allow all inbound and outbound network traffic transmitted through the associated vSwitch. You can delete the default rules. The following table lists the default inbound and outbound rules. Default inbound rule
 
@@ -836,7 +889,7 @@ The following figure shows how network ACLs and security groups are applied to e
 
 The following flowchart shows how to use a network ACL.
 
-### Scenarios
+### 7.2 Scenarios
 
 If you are familiar with the ports that are commonly used by ECS instances, you can specify them in access control list (ACL) rules to facilitate precise network traffic filtering. This topic describes the ports that are commonly used by ECS instances and the application scenarios of these ports. Ports The following table lists the ports and the services that use these ports.
 
@@ -915,7 +968,7 @@ Ephemeral ports Clients use different ports to initiate requests. You can select
 | Windows Server 2008 and later | 49152/65535 |
 | NAT gateway | 1024/65535 |
 
-### Create a network ACL
+### 7.3 Create a network ACL
 
 A network access control list (ACL) allows you to manage network access in a virtual private cloud (VPC). You can create network ACLs in the VPC console. Prerequisites A VPC is created. For more information about how to create MSE Nacos Professional Edition instances, see Create a VPC.
 1. Log on to the VPC console.
@@ -933,7 +986,7 @@ A network access control list (ACL) allows you to manage network access in a vir
 | Descript ion | Enter a description for the network ACL. |
 | VPC | Select the VPC for which you want to create the network ACL. Not e The VPC and network ACL must be deployed in the same region. |
 
-### Associate a network ACL with a
+### 7.4 Associate a network ACL with a vSwitch
 
 vSwitch After you create a network access control list (ACL), you can associate it with a vSwitch. This way, you can use the network ACL to control the traffic that flows through the Elastic Compute Service (ECS) instances that are connected to the vSwitch. Prerequisites Before you associate a network ACL with a vSwitch, make sure that the following requirements are met: A network ACL is created. For more information, see Create a network ACL. A vSwitch is created. The vSwitch and network ACL must belong to the same VPC. For more information, see Create a vSwitch.
 1. Log on to the VPC console.
@@ -946,9 +999,9 @@ Management in the Operat ion column.
 6. In the Associat ed resources dialog box, select a vSwitch and click OK.
 Not e The network ACL and vSwitch must belong to the same VPC. A vSwitch can be associated only with one network ACL.
 
-### Add network ACL rules
+### 7.5 Add network ACL rules
 
-#### Add an inbound rule
+#### 7.5.1 Add an inbound rule
 
 After you create a network access control list (ACL), you can add inbound rules to the network ACL. You can use inbound rules to control whether Elastic Compute Service (ECS) instances in a vSwitch can be accessed over the Internet or private networks. Prerequisites A network ACL is created. For more information, see Create a network ACL.
 1. Log on to the VPC console.
@@ -970,7 +1023,7 @@ direct ion rule in the Operat ion column.
 | Source address | The source CIDR block from which data is transmitted. Default value: 0.0.0.0/32. |
 | Dest inat ion Port Range | Enter the destination port range. Valid values: 1 to 65535. Use a forward slash (/) to separate the highest and lowest values in a port range, for example, 1/200 or 80/80. -1/-1 indicates that all ports are available. You cannot set the value to -1/-1. |
 
-#### Add an outbound rule
+#### 7.5.2 Add an outbound rule
 
 This topic describes how to add an outbound rule to a network access control list (ACL). You can use outbound rules to control how Elastic Compute Service (ECS) instances connected to a vSwitch access the Internet or other private networks. Prerequisites A network ACL is created. For more information, see Create a network ACL.
 1. Log on to the VPC console.
@@ -992,7 +1045,7 @@ direct ion rule in the Operat ion column.
 | Dest inat ion address | The destination CIDR block to which data is transmitted. Default value: 0.0.0.0/32. |
 | Dest inat ion port range | Enter the destination port range. Valid values: 1 to 65535. Use a forward slash (/) to separate the highest and lowest values in a port range, for example, 1/200 or 80/80. -1/-1 indicates that all ports are available. Do not set the value to -1/-1. |
 
-#### Change the priorities of network ACL rules
+#### 7.5.3 Change the priorities of network ACL rules
 
 Network ACL rules take effect in descending order of priority. A smaller value indicates a higher priority. You can prioritize network ACL rules based on your business requirements. Change the priority of an inbound rule
 1. Log on to the VPC console.
@@ -1012,7 +1065,7 @@ Management in the Act ions column.
 6. In the Sort dialog box, change the priority of the rule by dragging and dropping the rule. Then,
 click OK. Not e Rules are listed in descending order of priority.
 
-### Disassociate a network ACL from
+### 7.6 Disassociate a network ACL from a vSwitch
 
 a vSwitch This topic describes how to disassociate a network access control list (ACL) from a vSwitch. After you disassociate a network ACL from a vSwitch, the network ACL no longer controls the traffic of Elastic Compute Service (ECS) instances that belong to the vSwitch.
 1. Log on to the VPC console.
@@ -1022,7 +1075,7 @@ a vSwitch This topic describes how to disassociate a network access control list
 5. On the Resources tab, find the vSwitch and click Unbind in the Act ions column.
 6. In the Unbind Net work ACL message, click OK.
 
-### Delete a network ACL
+### 7.7 Delete a network ACL
 
 This topic describes how to delete a network access control list (ACL). Prerequisites Make sure that the network ACL is not associated with a vSwitch. If the network ACL is associated with a vSwitch, disassociate the network ACL from the vSwitch first. For more information, see Disassociate a VSwitch from a network ACL.
 1. Log on to the VPC console.

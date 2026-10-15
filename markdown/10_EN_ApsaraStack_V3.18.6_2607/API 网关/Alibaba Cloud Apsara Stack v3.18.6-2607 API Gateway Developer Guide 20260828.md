@@ -3,16 +3,178 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 2026
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 367
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828.pdf"
+source_pdf: "84d5a4914866c714_Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20API%20Gateway%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Obtain API information and
+- 1 Preparations
+  - 1.1 Obtain API information and endpoints
+  - 1.2 Obtain an AccessKey
+  - 1.3 Get common header parameters
+  - 1.4 Obtain an STS AccessKey
+  - 1.5 Obtain user and role information
+  - 1.6 Obtain the region ID and organization ID
+- 2 Calling Apsara Stack APIs through a POP gateway
+  - 2.1 Java version
+  - 2.2 Common API call methods
+    - 2.2.1 API call - Cluster management
+    - 2.2.2 API call - Origin management
+    - 2.2.3 API call - Service management
+    - 2.2.4 API call - Instance management
+    - 2.2.5 API call - Group management
+    - 2.2.6 API call - Route management
+    - 2.2.7 API call - Policy configuration management
+    - 2.2.8 API call - Consumer management
+    - 2.2.9 API call - Domain name management
+    - 2.2.10 API call - Route plugin management
+    - 2.2.11 API call - Certificate management
+- 3 API Gateway
+  - 3.1 Cluster management
+    - 3.1.1 ListClusters
+    - 3.1.2 GetK8sClusterInfoByGwInstanceId
+    - 3.1.3 GetK8sClusterName
+    - 3.1.4 ImportCluster
+    - 3.1.5 UpdateCluster
+    - 3.1.6 CancelImportCluster
+    - 3.1.7 CheckConnectCluster
+    - 3.1.8 ListK8sAllNamespaces
+    - 3.1.9 ListAllNamespaces
+  - 3.2 Instance Management
+    - 3.2.1 ListInstances
+    - 3.2.2 ListAllInstances
+    - 3.2.3 ListInstancesByServiceId
+    - 3.2.4 GetInstanceInfo
+    - 3.2.5 CreateInstance
+    - 3.2.6 AscmCreateInstance
+    - 3.2.7 ModifyInstance
+    - 3.2.8 ModifyInstanceImageUrl
+    - 3.2.9 UpgradeInstance
+    - 3.2.10 DeleteInstance
+    - 3.2.11 RestartInstance
+    - 3.2.12 StopInstance
+    - 3.2.13 RefreshInstance
+    - 3.2.14 CreateInstanceDeployConfig
+    - 3.2.15 GetInstanceDeployDeployConfig
+    - 3.2.16 GetInstanceDeployMsg
+    - 3.2.17 GetCustomDeployConfig
+    - 3.2.18 GetInstanceAccessModeConfig
+    - 3.2.19 GetResource
+    - 3.2.20 ModifyResource
+  - 3.3 Group Management
+    - 3.3.1 ModifyGroup
+    - 3.3.2 CreateGroup
+    - 3.3.3 ListGroups
+    - 3.3.4 GetAllGroups
+    - 3.3.5 GetGroup
+    - 3.3.6 DeleteGroup
+    - 3.3.7 AddGroupDomain
+    - 3.3.8 DeleteGroupDomain
+  - 3.4 Ingress management
+    - 3.4.1 CreateRoute
+    - 3.4.2 BatchDeleteRoute
+    - 3.4.3 ListRoutes
+    - 3.4.4 ListRoutesByAppId
+    - 3.4.5 ListRoutesByGwInstanceId
+    - 3.4.6 GetAllRoutePath
+    - 3.4.7 GetRoute
+    - 3.4.8 GetProtocolByRoute
+    - 3.4.9 ModifyRoute
+    - 3.4.10 DeleteRoute
+    - 3.4.11 ChangeRouteStatus
+  - 3.5 Source Management
+    - 3.5.1 ListSources
+    - 3.5.2 ListAllSources
+    - 3.5.3 GetSource
+    - 3.5.4 CreateSource
+    - 3.5.5 ModifySource
+    - 3.5.6 DeleteSource
+    - 3.5.7 BatchDeleteSource
+  - 3.6 Service Management
+    - 3.6.1 ListServices
+    - 3.6.2 ListAllServices
+    - 3.6.3 GetService
+    - 3.6.4 CreateService
+    - 3.6.5 ModifyService
+    - 3.6.6 ModifyNode
+    - 3.6.7 DeleteService
+    - 3.6.8 BatchDeleteService
+    - 3.6.9 ImportServices
+  - 3.7 Consumer management
+    - 3.7.1 ListApps
+    - 3.7.2 ListAppsByGwInstanceId
+    - 3.7.3 GetApp
+    - 3.7.4 CreateApp
+    - 3.7.5 ModifyApp
+    - 3.7.6 DeleteApp
+    - 3.7.7 ModifyAppOpenStatus
+    - 3.7.8 ModifyAppWhiteListStatus
+    - 3.7.9 GetAppAuth
+    - 3.7.10 CreateAppAuth
+    - 3.7.11 BatchCreateAppAuthByRoute
+    - 3.7.12 ModifyAppAuthStatus
+    - 3.7.13 DeleteAppAuth
+    - 3.7.14 RefreshToken
+    - 3.7.15 ResetSecretKey
+    - 3.7.16 HandlerConsumerAuth
+    - 3.7.17 CreateAppAuthByRoute
+    - 3.7.18 BatchDeleteApp
+  - 3.8 Plugin Management
+    - 3.8.1 ListPlugins
+    - 3.8.2 ListOpenPlugins
+    - 3.8.3 ListGlobalPlugins
+    - 3.8.4 ListRoutePlugins
+    - 3.8.5 GetPlugin
+    - 3.8.6 CreatePlugin
+    - 3.8.7 CreateGlobalPlugin
+    - 3.8.8 CreateRoutePlugin
+    - 3.8.9 ModifyPlugin
+    - 3.8.10 ModifyGlobalPlugin
+    - 3.8.11 ModifyRoutePlugin
+    - 3.8.12 DeletePlugin
+    - 3.8.13 DeleteGlobalPlugin
+    - 3.8.14 DeleteRoutePlugin
+    - 3.8.15 ModifyGlobalPluginStatus
+    - 3.8.16 ModifyRoutePluginStatus
+    - 3.8.17 ListPluginUsage
+  - 3.9 Policy Management
+    - 3.9.1 ModifyStrategyConfig
+    - 3.9.2 CreateStrategyConfig
+    - 3.9.3 ListStrategies
+    - 3.9.4 ListStrategyConfigs
+    - 3.9.5 GetStrategy
+    - 3.9.6 GetStrategyConfig
+    - 3.9.7 GetRoutePolicies
+    - 3.9.8 ModifyRoutePolicy
+    - 3.9.9 DeleteStrategyConfig
+    - 3.9.10 ModifyStrategyConfigStatus
+  - 3.10 Domain name management
+    - 3.10.1 ListDomains
+    - 3.10.2 ListAllDomains
+    - 3.10.3 GetDomain
+    - 3.10.4 CreateDomain
+    - 3.10.5 ModifyDomain
+    - 3.10.6 DeleteDomain
+  - 3.11 Certificate Management
+    - 3.11.1 ListCertificates
+    - 3.11.2 ListAllServerCertificates
+    - 3.11.3 ListAllCACertificates
+    - 3.11.4 GetCertificate
+    - 3.11.5 CreateCertificate
+    - 3.11.6 ModifyCertificate
+    - 3.11.7 DeleteCertificate
+  - 3.12 Other
+    - 3.12.1 GetTotalityInfo
+    - 3.12.2 GetSettings
+    - 3.12.3 GetSlsStatistics
+
+## 1 Preparations
+
+### 1.1 Obtain API information and endpoints
 
 **endpoints**
 
@@ -34,7 +196,7 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 7. Select the desired API operation. Obtain the POP Endpoint information for the cloud product,
 which is displayed under the parameter name.
 
-### Obtain an AccessKey
+### 1.2 Obtain an AccessKey
 
 An AccessKey supports two authorization patterns: Resource Access Management (RAM) and Security Token Service (STS). You can use an AccessKey from either pattern to initiate a call. This topic describes how to obtain an AccessKey that uses RAM authorization.
 
@@ -76,7 +238,7 @@ To obtain an organization AccessKey, perform the following steps:
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization AccessKey information.
 
-### Get common header
+### 1.3 Get common header parameters
 
 **parameters**
 
@@ -137,7 +299,7 @@ When you call an API to list resource instances of a cloud product, the followin
 | Department | The ID of the organization. |
 |---|---|
 
-### Obtain an STS AccessKey
+### 1.4 Obtain an STS AccessKey
 
 This topic describes how to use Security Token Service (STS) to call product APIs in Apsara Stack.
 
@@ -215,7 +377,7 @@ entation.
 
 `}` `}`
 
-### Obtain user and role
+### 1.5 Obtain user and role information
 
 **information**
 
@@ -242,7 +404,7 @@ i. In the left-side navigation pane, select **User Management > User Management*
 5. Add the user to a resource set.
 i. On the **System Users** tab, find the newly created user and click the username. ii. On the **Resource Sets** tab, click **Join Resource Set** above the list. iii. In the **Join Resource Set** dialog box, select the user role from the **Select Role Type** drop-down list, select the resource sets to join in the **Select Resource Set** list, and then click **OK**.
 
-### Obtain the region ID and
+### 1.6 Obtain the region ID and organization ID
 
 **organization ID**
 
@@ -267,11 +429,11 @@ refresh the page.
 5. In the search box, enter **ListResourceGroupByOrgId**. Click the API operation name. On
 the Preview tab on the right, obtain the organization ID.
 
-## Calling Apsara Stack APIs
+## 2 Calling Apsara Stack APIs through a POP gateway
 
 **through a POP gateway**
 
-### Java version
+### 2.1 Java version
 
 **Environment requirements**
 
@@ -569,7 +731,7 @@ private static <T extends AcsResponse> void initDefaultHeader(CommonRequest requ
 | Create a route | /route/createRoute |
 | Query the domain name list | /domain/listDomains |
 
-### Common API call methods
+### 2.2 Common API call methods
 
 **Overview**
 
@@ -833,7 +995,7 @@ Use pagination parameters for list operations to avoid excessive data volume. Ob
 4. . Instance differentiation**
 Confirm the gateway type that corresponds to `gwInstanceId` before you perform an operation. Call `/gatewayInstance/getInstance` to query instance details and confirm the type.
 
-#### API call - Cluster management
+#### 2.2.1 API call - Cluster management
 
 **Overview**
 
@@ -1376,7 +1538,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Origin management
+#### 2.2.2 API call - Origin management
 
 **Overview**
 
@@ -1977,7 +2139,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Service management
+#### 2.2.3 API call - Service management
 
 **Overview**
 
@@ -2771,7 +2933,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Instance management
+#### 2.2.4 API call - Instance management
 
 **Overview**
 
@@ -3417,7 +3579,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Group management
+#### 2.2.5 API call - Group management
 
 **Overview**
 
@@ -4001,7 +4163,7 @@ response.getHttpResponse().getHttpContentString());
 |---|---|
 | 500 | An internal server error occurred. |
 
-#### API call - Route management
+#### 2.2.6 API call - Route management
 
 **Overview**
 
@@ -4682,7 +4844,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Policy configuration
+#### 2.2.7 API call - Policy configuration management
 
 **management**
 
@@ -5649,7 +5811,7 @@ You can apply policies to different scopes. The priority is: **route > domain > 
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Consumer management
+#### 2.2.8 API call - Consumer management
 
 **Overview**
 
@@ -6206,7 +6368,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Domain name management
+#### 2.2.9 API call - Domain name management
 
 **Overview**
 
@@ -6702,7 +6864,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Route plugin management
+#### 2.2.10 API call - Route plugin management
 
 **Overview**
 
@@ -7131,7 +7293,7 @@ The route Plugin applies only to the SCG engine. Use the policy configuration mo
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-#### API call - Certificate management
+#### 2.2.11 API call - Certificate management
 
 **Overview**
 
@@ -7570,11 +7732,11 @@ response.getHttpResponse().getHttpContentString());
 |---|---|
 | 500 | An internal server error occurred. |
 
-## API Gateway
+## 3 API Gateway
 
-### Cluster management
+### 3.1 Cluster management
 
-#### ListClusters
+#### 3.1.1 ListClusters
 
 Queries a list of clusters.
 
@@ -7619,7 +7781,7 @@ This operation has no special request headers. For more information about common
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
-#### GetK8sClusterInfoByGwInstanceId
+#### 3.1.2 GetK8sClusterInfoByGwInstanceId
 
 Queries Kubernetes cluster information based on a gateway instance ID.
 
@@ -7647,7 +7809,7 @@ This operation uses common request headers. No special request headers are requi
 | - k8sClusterStat usDesc | String | Running | The description of the Kubernetes cluster status. |
 | - k8sClusterImp ortDateTime | String | 2024-10-14 10:00:00 | The time when the Kubernetes cluster was imported. |
 
-#### GetK8sClusterName
+#### 3.1.3 GetK8sClusterName
 
 Queries the name of a Kubernetes cluster.
 
@@ -7667,7 +7829,7 @@ This operation has no special request headers. For more information about common
 | msg | String | Operation successful. | The message |
 | data | String | {} | The returned data. |
 
-#### ImportCluster
+#### 3.1.4 ImportCluster
 
 Imports a cluster.
 
@@ -7690,7 +7852,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### UpdateCluster
+#### 3.1.5 UpdateCluster
 
 Updates a cluster.
 
@@ -7713,7 +7875,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### CancelImportCluster
+#### 3.1.6 CancelImportCluster
 
 Cancels the import of a cluster.
 
@@ -7736,7 +7898,7 @@ This operation uses common request headers. No special request headers are requi
 | Developer Guide·A | PI Gateway |   | API Gatewa |
 |---|---|---|---|
 
-#### CheckConnectCluster
+#### 3.1.7 CheckConnectCluster
 
 Checks the connection status of a cluster.
 
@@ -7758,7 +7920,7 @@ This operation uses only common request headers. For more information, see Commo
 | -connectStatus | Integer | 1 | The connection status. |
 | - connectStatus Desc | String | Connected | The description of the connection status. |
 
-#### ListK8sAllNamespaces
+#### 3.1.8 ListK8sAllNamespaces
 
 Queries all namespaces in the Kubernetes.
 
@@ -7778,7 +7940,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The returned data. |
 
-#### ListAllNamespaces
+#### 3.1.9 ListAllNamespaces
 
 Lists all namespaces.
 
@@ -7804,9 +7966,9 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The response message. |
 
-### Instance Management
+### 3.2 Instance Management
 
-#### ListInstances
+#### 3.2.1 ListInstances
 
 Queries a list of instances.
 
@@ -7887,7 +8049,7 @@ This operation uses only common request headers. For more information, see Commo
 | -current | Integer | 1 | The number of the current page. |
 | -size | Integer | 100 | The size. |
 
-#### ListAllInstances
+#### 3.2.2 ListAllInstances
 
 Queries a list of all instances.
 
@@ -7917,7 +8079,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ListInstancesByServiceId
+#### 3.2.3 ListInstancesByServiceId
 
 This operation queries a list of instances.
 
@@ -7943,7 +8105,7 @@ This operation uses only common request headers. For more information, see Commo
 | -serviceStruct | Map | {} | The service structure. |
 | -instanceList | Map | {} | The list of instances. |
 
-#### GetInstanceInfo
+#### 3.2.4 GetInstanceInfo
 
 Queries information about an instance.
 
@@ -8016,7 +8178,7 @@ This operation uses only common request headers. For more information, see the C
 |---|---|---|---|
 | -vSwitchId | String | vsw- bp1234567890 | The ID of the virtual switch. |
 
-#### CreateInstance
+#### 3.2.5 CreateInstance
 
 Creates an instance.
 
@@ -8050,7 +8212,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### AscmCreateInstance
+#### 3.2.6 AscmCreateInstance
 
 Creates an instance.
 
@@ -8106,7 +8268,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### ModifyInstance
+#### 3.2.7 ModifyInstance
 
 Modifies an instance.
 
@@ -8130,7 +8292,7 @@ This operation uses common request headers. No special request headers are requi
 | PI Gateway |   |   | Developer Guide·API Gatewa |
 |---|---|---|---|
 
-#### ModifyInstanceImageUrl
+#### 3.2.8 ModifyInstanceImageUrl
 
 Modifies the image URL of an instance.
 
@@ -8151,7 +8313,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
 
-#### UpgradeInstance
+#### 3.2.9 UpgradeInstance
 
 Upgrades an instance.
 
@@ -8173,7 +8335,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-#### DeleteInstance
+#### 3.2.10 DeleteInstance
 
 Deletes an instance.
 
@@ -8197,7 +8359,7 @@ This operation uses common request headers. No special request headers are requi
 | PI Gateway |   |   | Developer Guide·API Gatewa |
 |---|---|---|---|
 
-#### RestartInstance
+#### 3.2.11 RestartInstance
 
 Restarts an instance.
 
@@ -8217,7 +8379,7 @@ This operation includes only common request headers. For more information, see C
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The data. |
 
-#### StopInstance
+#### 3.2.12 StopInstance
 
 Stops an instance.
 
@@ -8237,7 +8399,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
 
-#### RefreshInstance
+#### 3.2.13 RefreshInstance
 
 Refreshes an instance.
 
@@ -8275,7 +8437,7 @@ This operation uses only common request headers. For more information about thes
 | -modifyTime | String | 2024-10-14 12:30:00 | The update time. |
 | -tid | String | t-123456789 | The task ID. |
 
-#### CreateInstanceDeployConfig
+#### 3.2.14 CreateInstanceDeployConfig
 
 Creates an instance deployment configuration.
 
@@ -8320,7 +8482,7 @@ This operation uses common request headers. Special request headers are not requ
 | - accessModeCo nfigYamlStr | String | mode: public enabled: true | The access mode configuration as a YAML string. |
 |---|---|---|---|
 
-#### GetInstanceDeployDeployConfig
+#### 3.2.15 GetInstanceDeployDeployConfig
 
 Queries the deployment configuration of an instance.
 
@@ -8340,7 +8502,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### GetInstanceDeployMsg
+#### 3.2.16 GetInstanceDeployMsg
 
 Queries the deployment message of an instance.
 
@@ -8396,7 +8558,7 @@ This operation uses common request headers. No special request headers are requi
 | --namespace | String | prod-ns | The namespace. |
 | --clusterCode | String | cluster-001 | The cluster code. |
 
-#### GetCustomDeployConfig
+#### 3.2.17 GetCustomDeployConfig
 
 Queries a custom deployment configuration.
 
@@ -8422,7 +8584,7 @@ This operation uses only common request headers. For more information, see Commo
 | -wgetStr | String | wget https://example.co m/file | The Wget command string. |
 |---|---|---|---|
 
-#### GetInstanceAccessModeConfig
+#### 3.2.18 GetInstanceAccessModeConfig
 
 Retrieves the access mode configuration of an instance.
 
@@ -8442,7 +8604,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The response message. |
 | data | Map | {} | The data |
 
-#### GetResource
+#### 3.2.19 GetResource
 
 Queries the resources of an instance.
 
@@ -8491,7 +8653,7 @@ This operation uses common request headers. For more information, see Common req
 | --amount | String | 100.00 | The amount. |
 | --unit | String | requests/second | The unit. |
 
-#### ModifyResource
+#### 3.2.20 ModifyResource
 
 Modifies the resources of an instance.
 
@@ -8522,9 +8684,9 @@ This operation uses only common request headers. For more information, see Commo
 | data | String | {} | The data. |
 |---|---|---|---|
 
-### Group Management
+### 3.3 Group Management
 
-#### ModifyGroup
+#### 3.3.1 ModifyGroup
 
 This operation modifies a group.
 
@@ -8551,7 +8713,7 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | data | String | {} | The data. |
 
-#### CreateGroup
+#### 3.3.2 CreateGroup
 
 Creates a group.
 
@@ -8578,7 +8740,7 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | data | String | {} | The data. |
 
-#### ListGroups
+#### 3.3.3 ListGroups
 
 Retrieves a list of groups.
 
@@ -8624,7 +8786,7 @@ This operation uses only common request headers. For more information, see Commo
 | -size | Integer | 100 | The size. |
 |---|---|---|---|
 
-#### GetAllGroups
+#### 3.3.4 GetAllGroups
 
 Retrieves a list of all groups.
 
@@ -8661,7 +8823,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetGroup
+#### 3.3.5 GetGroup
 
 Queries the details of a group.
 
@@ -8700,7 +8862,7 @@ This operation uses common request headers and does not use special request head
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
 
-#### DeleteGroup
+#### 3.3.6 DeleteGroup
 
 Deletes a group.
 
@@ -8721,7 +8883,7 @@ This operation has no special request headers. For more information about common
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### AddGroupDomain
+#### 3.3.7 AddGroupDomain
 
 Adds a domain name to a group.
 
@@ -8765,7 +8927,7 @@ Request example `{`
 
 `}`
 
-#### DeleteGroupDomain
+#### 3.3.8 DeleteGroupDomain
 
 Deletes a domain name from a group.
 
@@ -8787,9 +8949,9 @@ This operation does not have special request headers. For more information about
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-### Ingress management
+### 3.4 Ingress management
 
-#### CreateRoute
+#### 3.4.1 CreateRoute
 
 Creates a route.
 
@@ -8966,7 +9128,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### BatchDeleteRoute
+#### 3.4.2 BatchDeleteRoute
 
 Deletes multiple routes at once.
 
@@ -8989,7 +9151,7 @@ This operation uses common request headers. No special request headers are requi
 | -successIds | String | [] | List of successful IDs. |
 | -failedIds | String | [] | List of failed IDs. |
 
-#### ListRoutes
+#### 3.4.3 ListRoutes
 
 Queries a list of routes.
 
@@ -9098,7 +9260,7 @@ POST /route/listRoutes HTTP/1.1
 
 `}` `]` `}` `}`
 
-#### ListRoutesByAppId
+#### 3.4.4 ListRoutesByAppId
 
 Queries a list of routes.
 
@@ -9142,7 +9304,7 @@ This operation uses only common request headers. For more information, see Commo
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-#### ListRoutesByGwInstanceId
+#### 3.4.5 ListRoutesByGwInstanceId
 
 Queries a list of routes.
 
@@ -9171,7 +9333,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetAllRoutePath
+#### 3.4.6 GetAllRoutePath
 
 Retrieves all routing paths.
 
@@ -9194,7 +9356,7 @@ No special request headers are required for this operation. For more information
 |---|---|---|---|
 | -RoutePaths | String | [] | The list of routing paths. |
 
-#### GetRoute
+#### 3.4.7 GetRoute
 
 Queries the details of a specified route.
 
@@ -9443,7 +9605,7 @@ This operation uses only common request headers. For more information, see Commo
 | -- isEnableDown stream | Boolean | true | Indicates whether to enable downstream tracing. |
 | -- isEnableTracin g | Boolean | true | Indicates whether to enable tracing. |
 
-#### GetProtocolByRoute
+#### 3.4.8 GetProtocolByRoute
 
 Queries the protocol of a route.
 
@@ -9465,7 +9627,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data |
 
-#### ModifyRoute
+#### 3.4.9 ModifyRoute
 
 Modifies a route.
 
@@ -9526,7 +9688,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | success | The returned message. If the operation is successful, success is typically returned. |
 | data | String | rt-a1b2c3d4e5f6 | The returned data. If the operation is successful, the ID of the modified route is typically returned. |
 
-#### DeleteRoute
+#### 3.4.10 DeleteRoute
 
 Deletes a route.
 
@@ -9547,7 +9709,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ChangeRouteStatus
+#### 3.4.11 ChangeRouteStatus
 
 Changes the status of a route.
 
@@ -9571,9 +9733,9 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-### Source Management
+### 3.5 Source Management
 
-#### ListSources
+#### 3.5.1 ListSources
 
 Queries a list of sources.
 
@@ -9608,7 +9770,7 @@ This operation uses common request headers. No special request headers are used.
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-#### ListAllSources
+#### 3.5.2 ListAllSources
 
 Queries a list of all sources.
 
@@ -9634,7 +9796,7 @@ This operation uses common request headers. For more information, see Common req
 | code | Integer | 200 | The response code. |
 | msg | String | The operation is successful. | The message. |
 
-#### GetSource
+#### 3.5.3 GetSource
 
 Queries a source.
 
@@ -9665,7 +9827,7 @@ This operation uses common request headers and does not have special request hea
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
 |---|---|---|---|
 
-#### CreateSource
+#### 3.5.4 CreateSource
 
 Creates a source.
 
@@ -9694,7 +9856,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifySource
+#### 3.5.5 ModifySource
 
 Modifies a source.
 
@@ -9719,7 +9881,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteSource
+#### 3.5.6 DeleteSource
 
 Deletes a source.
 
@@ -9740,7 +9902,7 @@ This operation has no special request headers. For more information about common
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### BatchDeleteSource
+#### 3.5.7 BatchDeleteSource
 
 Deletes sources in batches.
 
@@ -9763,9 +9925,9 @@ This operation uses only common request headers. For more information, see Commo
 | -successIds | String | [] | The successful IDs. |
 | -failedIds | String | [] | A list of IDs of the sources that failed to be deleted. |
 
-### Service Management
+### 3.6 Service Management
 
-#### ListServices
+#### 3.6.1 ListServices
 
 Queries a list of services.
 
@@ -9818,7 +9980,7 @@ This operation uses common request headers and does not require any special requ
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The number of the returned page. |
 
-#### ListAllServices
+#### 3.6.2 ListAllServices
 
 Queries the list of all services.
 
@@ -9842,7 +10004,7 @@ This operation uses common request headers and does not require special request 
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetService
+#### 3.6.3 GetService
 
 Retrieves the details of a service.
 
@@ -9923,7 +10085,7 @@ This operation uses common request headers. No special request headers are requi
 | -- httpSuccesses | Integer | 3 | The number of consecutive successful HTTP checks. |
 | --httpFailures | Integer | 5 | The number of consecutive failed HTTP checks. |
 
-#### CreateService
+#### 3.6.4 CreateService
 
 Creates a service.
 
@@ -9955,7 +10117,7 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyService
+#### 3.6.5 ModifyService
 
 This operation modifies a service.
 
@@ -9989,7 +10151,7 @@ This operation requires only common request headers. For more information, see C
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyNode
+#### 3.6.6 ModifyNode
 
 Modifies a service node.
 
@@ -10014,7 +10176,7 @@ This operation uses only common request headers. For more information, see the d
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteService
+#### 3.6.7 DeleteService
 
 Deletes a service.
 
@@ -10061,7 +10223,7 @@ POST /microservice/deleteService HTTP/1.1
 
 `}`
 
-#### BatchDeleteService
+#### 3.6.8 BatchDeleteService
 
 Deletes multiple services at a time.
 
@@ -10086,7 +10248,7 @@ This operation uses common request headers. No special request headers are requi
 | -successIds | String | [] | List of success IDs. |
 | -failedIds | String | [] | List of failed IDs. |
 
-#### ImportServices
+#### 3.6.9 ImportServices
 
 This operation imports services.
 
@@ -10117,9 +10279,9 @@ This operation uses common request headers. For more information, see Common req
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The messages |
 
-### Consumer management
+### 3.7 Consumer management
 
-#### ListApps
+#### 3.7.1 ListApps
 
 Queries a list of consumers.
 
@@ -10180,7 +10342,7 @@ This operation uses common request headers. No special request headers are requi
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
-#### ListAppsByGwInstanceId
+#### 3.7.2 ListAppsByGwInstanceId
 
 Queries a list of applications by gateway instance ID.
 
@@ -10253,7 +10415,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetApp
+#### 3.7.3 GetApp
 
 Queries a consumer.
 
@@ -10343,7 +10505,7 @@ This operation uses only common request headers. For more information, see the C
 | --redirectUris | String | https://example.co m/callback | The redirection URI. |
 | --pkce | Boolean | true | Indicates whether Proof Key for Code Exchange (PKCE) is enabled. |
 
-#### CreateApp
+#### 3.7.4 CreateApp
 
 Creates a consumer.
 
@@ -10387,7 +10549,7 @@ This operation uses common request headers and does not require special request 
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyApp
+#### 3.7.5 ModifyApp
 
 Modifies a consumer.
 
@@ -10442,7 +10604,7 @@ This operation uses common request headers. For more information, see the topic 
 | msg | String | The operation was successful. | The returned message. |
 | data | String | {} | The data |
 
-#### DeleteApp
+#### 3.7.6 DeleteApp
 
 Deletes a consumer.
 
@@ -10463,7 +10625,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyAppOpenStatus
+#### 3.7.7 ModifyAppOpenStatus
 
 Enables or disables a consumer application.
 
@@ -10488,7 +10650,7 @@ This operation uses common request headers. No special request headers are requi
 | Developer Guide·A | PI Gateway |   | API Gatewa |
 |---|---|---|---|
 
-#### ModifyAppWhiteListStatus
+#### 3.7.8 ModifyAppWhiteListStatus
 
 Modifies the status of a consumer whitelist.
 
@@ -10510,7 +10672,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### GetAppAuth
+#### 3.7.9 GetAppAuth
 
 Queries the authorization for a consumer.
 
@@ -10539,7 +10701,7 @@ This operation uses common request headers. No special request headers are requi
 | - serviceProtoco l | String | HTTP | The service protocol. |
 | -authStatus | Integer | 1 | The authentication status. |
 
-#### CreateAppAuth
+#### 3.7.10 CreateAppAuth
 
 Creates a consumer authorization.
 
@@ -10559,7 +10721,7 @@ This operation uses only common request headers. For more information, see Commo
 | Msg | String | Operation successful | The response message. |
 | Data | String | {} | The data. |
 
-#### BatchCreateAppAuthByRoute
+#### 3.7.11 BatchCreateAppAuthByRoute
 
 Grants batch authorization to consumers.
 
@@ -10584,7 +10746,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
 
-#### ModifyAppAuthStatus
+#### 3.7.12 ModifyAppAuthStatus
 
 Modifies the authorization status of a consumer.
 
@@ -10616,7 +10778,7 @@ This operation uses only common request headers. For more information, see Commo
 | -authStatus | Integer | 1 | The authorization status. |
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The gateway instance ID. |
 
-#### DeleteAppAuth
+#### 3.7.13 DeleteAppAuth
 
 Deletes a consumer authorization.
 
@@ -10637,7 +10799,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### RefreshToken
+#### 3.7.14 RefreshToken
 
 Refreshes a token.
 
@@ -10683,7 +10845,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-#### ResetSecretKey
+#### 3.7.15 ResetSecretKey
 
 Resets a secret key.
 
@@ -10706,7 +10868,7 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | data | Boolean | {} | The data |
 
-#### HandlerConsumerAuth
+#### 3.7.16 HandlerConsumerAuth
 
 Queries the authentication information for a consumer.
 
@@ -10729,7 +10891,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### CreateAppAuthByRoute
+#### 3.7.17 CreateAppAuthByRoute
 
 Create a consumer authorization.
 
@@ -10752,7 +10914,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation is successful. | The message. |
 | data | String | {} | The data. |
 
-#### BatchDeleteApp
+#### 3.7.18 BatchDeleteApp
 
 Deletes consumers in a batch.
 
@@ -10778,9 +10940,9 @@ This operation uses only common request headers. For more information, see Commo
 | -successIds | String | [] | Successful IDs |
 | -failedIds | String | [] | Failed IDs |
 
-### Plugin Management
+### 3.8 Plugin Management
 
-#### ListPlugins
+#### 3.8.1 ListPlugins
 
 Queries a list of plugins.
 
@@ -10821,7 +10983,7 @@ This operation has no special request headers. For more information about common
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-#### ListOpenPlugins
+#### 3.8.2 ListOpenPlugins
 
 Lists the open plugins.
 
@@ -10856,7 +11018,7 @@ This operation uses only the common request headers. For more information, see C
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ListGlobalPlugins
+#### 3.8.3 ListGlobalPlugins
 
 Retrieves a list of global plugins.
 
@@ -10896,7 +11058,7 @@ This operation uses common request headers. For more information, see Common req
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-#### ListRoutePlugins
+#### 3.8.4 ListRoutePlugins
 
 Queries a list of routing plugins.
 
@@ -10936,7 +11098,7 @@ This operation uses common request headers. For more information, see Common req
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-#### GetPlugin
+#### 3.8.5 GetPlugin
 
 Retrieves a plugin.
 
@@ -10969,7 +11131,7 @@ This operation uses only common request headers. For more information, see Commo
 | -type | Integer | 1 | The type. |
 | -used | Boolean | false | Indicates whether the plugin is used. |
 
-#### CreatePlugin
+#### 3.8.6 CreatePlugin
 
 Creates a plugin.
 
@@ -10995,7 +11157,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-#### CreateGlobalPlugin
+#### 3.8.7 CreateGlobalPlugin
 
 Creates a global plugin.
 
@@ -11021,7 +11183,7 @@ This operation uses only common request headers. For more information, see the c
 |---|---|---|---|
 | data | String | {} | The data. |
 
-#### CreateRoutePlugin
+#### 3.8.8 CreateRoutePlugin
 
 Creates a routing plugin.
 
@@ -11048,7 +11210,7 @@ This operation uses common request headers. No special request headers are requi
 | data | String | {} | The data. |
 |---|---|---|---|
 
-#### ModifyPlugin
+#### 3.8.9 ModifyPlugin
 
 Modifies a plugin.
 
@@ -11076,7 +11238,7 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | data | String | {} | The data. |
 
-#### ModifyGlobalPlugin
+#### 3.8.10 ModifyGlobalPlugin
 
 Modifies a global plugin.
 
@@ -11103,7 +11265,7 @@ This operation uses only common request headers. For more information, see Commo
 | PI Gateway |   |   | Developer Guide·API Gatewa |
 |---|---|---|---|
 
-#### ModifyRoutePlugin
+#### 3.8.11 ModifyRoutePlugin
 
 Modifies a routing plugin.
 
@@ -11128,7 +11290,7 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeletePlugin
+#### 3.8.12 DeletePlugin
 
 Deletes a plugin.
 
@@ -11149,7 +11311,7 @@ This operation requires only common request headers. For more information, see C
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### DeleteGlobalPlugin
+#### 3.8.13 DeleteGlobalPlugin
 
 Deletes a global plugin.
 
@@ -11172,7 +11334,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteRoutePlugin
+#### 3.8.14 DeleteRoutePlugin
 
 Deletes a route plugin.
 
@@ -11196,7 +11358,7 @@ This operation uses only common request headers. For more information, see the C
 |---|---|---|---|
 | data | String | {} | The data |
 
-#### ModifyGlobalPluginStatus
+#### 3.8.15 ModifyGlobalPluginStatus
 
 Modifies the status of a global plugin.
 
@@ -11223,7 +11385,7 @@ This operation uses only common request headers. For more information, see Commo
 | PI Gateway |   |   | Developer Guide·API Gatewa |
 |---|---|---|---|
 
-#### ModifyRoutePluginStatus
+#### 3.8.16 ModifyRoutePluginStatus
 
 Modifies the status of a route plugin.
 
@@ -11248,7 +11410,7 @@ This operation uses common request headers. No special request headers are used.
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ListPluginUsage
+#### 3.8.17 ListPluginUsage
 
 Queries the usage of plugins.
 
@@ -11280,9 +11442,9 @@ This operation uses common request headers. For more information, see Common req
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-### Policy Management
+### 3.9 Policy Management
 
-#### ModifyStrategyConfig
+#### 3.9.1 ModifyStrategyConfig
 
 Modifies a policy configuration.
 
@@ -11319,7 +11481,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-#### CreateStrategyConfig
+#### 3.9.2 CreateStrategyConfig
 
 Creates a strategy configuration.
 
@@ -11356,7 +11518,7 @@ This operation uses common request headers and requires no special request heade
 | msg | String | Operation successful | The message |
 | data | String | {} | The data. |
 
-#### ListStrategies
+#### 3.9.3 ListStrategies
 
 Queries a list of policies.
 
@@ -11399,7 +11561,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ListStrategyConfigs
+#### 3.9.4 ListStrategyConfigs
 
 Queries a list of policy configurations.
 
@@ -11459,7 +11621,7 @@ This operation uses common request headers. For more information, see Common req
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
-#### GetStrategy
+#### 3.9.5 GetStrategy
 
 Queries a policy.
 
@@ -11491,7 +11653,7 @@ This operation uses only common request headers. For more information, see Commo
 | -order | Integer | 100 | The sort number. |
 | -document | String | API operation document | The document. |
 
-#### GetStrategyConfig
+#### 3.9.6 GetStrategyConfig
 
 Queries a policy configuration.
 
@@ -11552,7 +11714,7 @@ This operation uses common request headers. No special request headers are requi
 | ---id | String | 123456 | The ID. |
 |---|---|---|---|
 
-#### GetRoutePolicies
+#### 3.9.7 GetRoutePolicies
 
 Queries routing policies.
 
@@ -11611,7 +11773,7 @@ This operation uses common request headers. For more information, see Common par
 | --enabled | Boolean | true | Indicates whether the feature is enabled. |
 | -- fallbackStrate gy | String | default | The fallback strategy. |
 
-#### ModifyRoutePolicy
+#### 3.9.8 ModifyRoutePolicy
 
 Modifies a routing policy.
 
@@ -11636,7 +11798,7 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteStrategyConfig
+#### 3.9.9 DeleteStrategyConfig
 
 Deletes a policy configuration.
 
@@ -11659,7 +11821,7 @@ This operation uses common request headers and requires no special request heade
 |---|---|---|---|
 | data | String | {} | The data. |
 
-#### ModifyStrategyConfigStatus
+#### 3.9.10 ModifyStrategyConfigStatus
 
 Modifies the status of a policy configuration.
 
@@ -11681,9 +11843,9 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The response message. |
 | data | String | {} | The data |
 
-### Domain name management
+### 3.10 Domain name management
 
-#### ListDomains
+#### 3.10.1 ListDomains
 
 Queries a list of domain names.
 
@@ -11763,7 +11925,7 @@ Sample response in `JSON` format `{`
 
 `}`
 
-#### ListAllDomains
+#### 3.10.2 ListAllDomains
 
 Queries a list of all domain names.
 
@@ -11796,7 +11958,7 @@ This operation requires only common request headers. For more information, see C
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetDomain
+#### 3.10.3 GetDomain
 
 Queries the details of a domain name.
 
@@ -11835,7 +11997,7 @@ This operation uses only common request headers. For more information, see Commo
 | -subjectDn | String | CN=example.com, O=Example,C=CN | The subject distinguished name (DN) of the certificate. |
 | -issuerDn | String | CN=Example CA, O=Example Inc, C=CN | The issuer DN. |
 
-#### CreateDomain
+#### 3.10.4 CreateDomain
 
 Creates a domain name.
 
@@ -11865,7 +12027,7 @@ This operation uses common request headers and does not use special request head
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyDomain
+#### 3.10.5 ModifyDomain
 
 Modifies a domain name.
 
@@ -11895,7 +12057,7 @@ This operation uses common request headers and does not have any special request
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteDomain
+#### 3.10.6 DeleteDomain
 
 Deletes a domain name.
 
@@ -11916,9 +12078,9 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-### Certificate Management
+### 3.11 Certificate Management
 
-#### ListCertificates
+#### 3.11.1 ListCertificates
 
 Retrieves a list of certificates.
 
@@ -11957,7 +12119,7 @@ This operation uses only common request headers. For more information, see Commo
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-#### ListAllServerCertificates
+#### 3.11.2 ListAllServerCertificates
 
 Queries the list of all server certificates.
 
@@ -11978,7 +12140,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | Map | {} | The data |
 
-#### ListAllCACertificates
+#### 3.11.3 ListAllCACertificates
 
 Retrieves the list of all CA certificates.
 
@@ -12006,7 +12168,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetCertificate
+#### 3.11.4 GetCertificate
 
 Queries a certificate.
 
@@ -12042,7 +12204,7 @@ This operation uses only common request headers. For more information, see Commo
 | -certType | Integer | 1 | The certificate type. |
 | -SN | String | SN12345678 | The serial number. |
 
-#### CreateCertificate
+#### 3.11.5 CreateCertificate
 
 Creates a certificate.
 
@@ -12070,7 +12232,7 @@ This operation uses common request headers and no special request headers. For m
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### ModifyCertificate
+#### 3.11.6 ModifyCertificate
 
 Modifies a certificate.
 
@@ -12098,7 +12260,7 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteCertificate
+#### 3.11.7 DeleteCertificate
 
 Deletes a certificate.
 
@@ -12121,9 +12283,9 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
 
-### Other
+### 3.12 Other
 
-#### GetTotalityInfo
+#### 3.12.1 GetTotalityInfo
 
 This operation queries summary information.
 
@@ -12153,7 +12315,7 @@ This operation uses only common request headers. For more information, see Commo
 | - mcpServerCou nt | Integer | 3 | The number of MCP servers. |
 | -strategyCount | Integer | 5 | The number of policies. |
 
-#### GetSettings
+#### 3.12.2 GetSettings
 
 Queries system settings.
 
@@ -12191,7 +12353,7 @@ This operation uses common request headers. No special request headers are requi
 | -licenseEnable | Boolean | true | Indicates whether the license is enabled. |
 | - customPluginE nable | Boolean | true | Indicates whether custom plugins are enabled. |
 
-#### GetSlsStatistics
+#### 3.12.3 GetSlsStatistics
 
 Queries statistics information from Simple Log Service (SLS).
 

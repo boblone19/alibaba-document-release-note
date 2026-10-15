@@ -3,16 +3,135 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 262
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Developer Guide 20260828.pdf"
+source_pdf: "41f2c8e4e4177bf2_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Ma"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Log on to OpenAPI Explorer
+- 1 Preparations
+  - 1.1 Log on to OpenAPI Explorer
+  - 1.2 View the information about an operation
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain an AccessKey pair assigned by STS
+  - 1.5 Obtain an endpoint
+- 2 Call examples
+  - 2.1 Call examples for SDK for Java
+    - 2.1.1 Quick start
+    - 2.1.2 Use SDK
+      - 2.1.2.1 Install SDK for Java
+      - 2.1.2.2 Use CommonRequest
+  - 2.2 Call examples for SDK for Python
+    - 2.2.1 Quick start
+    - 2.2.2 Use SDK
+      - 2.2.2.1 Install SDK for Python
+      - 2.2.2.2 Use CommonRequest
+  - 2.3 Call examples for SDK for Go
+    - 2.3.1 Quick start
+    - 2.3.2 Use SDK
+      - 2.3.2.1 Install Go SDK
+      - 2.3.2.2 Use CommonRequest
+- 3 Common parameters
+- 4 Security Operations Center
+  - 4.1 Request method
+    - 4.1.1 Request syntax
+    - 4.1.2 Request signature
+    - 4.1.3 Common parameters
+    - 4.1.4 Response structure
+  - 4.2 Operations
+    - 4.2.1 DescribeAttacks
+    - 4.2.2 DescribeAlarms
+    - 4.2.3 DescribeVulFrangs
+    - 4.2.4 DescribeHcFrangs
+  - 4.3 Operations Center
+    - 4.3.1 QueryThreats
+    - 4.3.2 QueryThreatChartData
+- 5 APIs
+  - 5.1 CreateEventType
+  - 5.2 DescribeEventType
+  - 5.3 DeleteEventType
+  - 5.4 CreateLogFilter
+  - 5.5 DescribeLogFilter
+  - 5.6 DeleteLogFilter
+  - 5.7 CreateReceiver
+  - 5.8 DescribeReceiver
+  - 5.9 DeleteReceiver
+  - 5.10 CreateRule
+  - 5.11 DescribeRule
+  - 5.12 EnableRule
+  - 5.13 DisableRule
+  - 5.14 DeleteRule
+  - 5.15 CreateTask
+  - 5.16 DescribeTask
+  - 5.17 DescribeSetting
+  - 5.18 ModifySetting
+  - 5.19 DescribeLogType
+  - 5.20 DescribeLogSource
+  - 5.21 DescribeLogCountStat
+  - 5.22 DescribeLog
+  - 5.23 DescribeEventRisk
+  - 5.24 DescribeEventRiskStat
+  - 5.25 DescribeEventTypeStat
+  - 5.26 DescribeEventCountStat
+  - 5.27 DescribeEvent
+  - 5.28 DescribeArchiveCountStat
+  - 5.29 DeleteTask
+  - 5.30 DescribeArchive
+- 6 Threat Detection Service (TDS)
+  - 6.1 Asset management
+    - 6.1.1 DescribeFieldStatistics
+    - 6.1.2 DescribeGroupedTags
+    - 6.1.3 DescribeAllGroups
+    - 6.1.4 DescribeInstanceStatistics
+    - 6.1.5 DescribeCloudProductFieldStatistics
+    - 6.1.6 DescribeCloudCenterInstances
+    - 6.1.7 DescribeSummaryInfo
+  - 6.2 Secure score
+    - 6.2.1 DescribeSecureSuggestion
+  - 6.3 Security alerts
+    - 6.3.1 DescribeAlarmEventList
+    - 6.3.2 DescribeAlarmEventDetail
+    - 6.3.3 DescribeSuspEvents
+    - 6.3.4 DescribeSuspEventDetail
+  - 6.4 Configuration assessment
+    - 6.4.1 DescribeRiskItemType
+    - 6.4.2 StartBaselineSecurityCheck
+    - 6.4.3 DescribeRiskCheckSummary
+    - 6.4.4 DescribeRiskCheckResult
+    - 6.4.5 DescribeSecurityCheckScheduleConfig
+  - 6.5 Vulnerability management
+    - 6.5.1 DescribeVulList
+    - 6.5.2 DescribeVulWhitelist
+    - 6.5.3 DescribeConcernNecessity
+    - 6.5.4 DescribeGroupedVul
+    - 6.5.5 DescribeAutoDelConfig
+  - 6.6 Baseline check
+    - 6.6.1 DescribeCheckWarningSummary
+    - 6.6.2 DescribeStratety
+    - 6.6.3 DescribeStrategyExecDetail
+    - 6.6.4 DescribeCheckWarnings
+    - 6.6.5 DescribeCheckWarningDetail
+    - 6.6.6 DescribeWarningMachines
+  - 6.7 Asset fingerprints
+    - 6.7.1 DescribePropertyCount
+    - 6.7.2 DescribePropertyPortDetail
+    - 6.7.3 DescribePropertyProcDetail
+    - 6.7.4 DescribePropertyPortItem
+    - 6.7.5 DescribePropertyProcItem
+    - 6.7.6 DescribePropertySoftwareDetail
+    - 6.7.7 DescribePropertySoftwareItem
+    - 6.7.8 DescribePropertyUserDetail
+    - 6.7.9 DescribePropertyUserItem
+    - 6.7.10 DescribeModuleConfig
+  - 6.8 Asset exposure
+    - 6.8.1 DescribeExposedInstanceList
+
+## 1 Preparations
+
+### 1.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -41,7 +160,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
-### View the information about an
+### 1.2 View the information about an operation
 
 **operation**
 
@@ -59,7 +178,7 @@ The operations on the API Directory page are for reference only. For information
 keyword of an operation name in the search box, and then click Search.
 4. View and record the service name, operation name, and API version.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -100,7 +219,7 @@ want to obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an AccessKey pair
+### 1.4 Obtain an AccessKey pair assigned by STS
 
 **assigned by STS**
 
@@ -228,7 +347,7 @@ STS. The STS token is obtained in the previous step.
 
 `}` `}`
 
-### Obtain an endpoint
+### 1.5 Obtain an endpoint
 
 This topic describes how to obtain the endpoint of an Apsara Stack Security service.
 
@@ -255,11 +374,11 @@ ${EndpointPre}.${global:region}.${global:internet-domain}
 
 s
 
-## Call examples
+## 2 Call examples
 
-### Call examples for SDK for Java
+### 2.1 Call examples for SDK for Java
 
-#### Quick start
+#### 2.1.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Java.
 
@@ -312,9 +431,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-#### Use SDK
+#### 2.1.2 Use SDK
 
-##### Install SDK for Java
+##### 2.1.2.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs. s
 
@@ -326,7 +445,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest
+##### 2.1.2.2 Use CommonRequest
 
 **Note**
 
@@ -378,11 +497,11 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-### Call examples for SDK for
+### 2.2 Call examples for SDK for Python
 
 **Python**
 
-#### Quick start
+#### 2.2.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Python.
 
@@ -426,9 +545,9 @@ CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<y
 
 s
 
-#### Use SDK
+#### 2.2.2 Use SDK
 
-##### Install SDK for Python
+##### 2.2.2.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -446,7 +565,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest
+##### 2.2.2.2 Use CommonRequest
 
 **Note**
 
@@ -476,9 +595,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### Call examples for SDK for Go
+### 2.3 Call examples for SDK for Go
 
-#### Quick start
+#### 2.3.1 Quick start
 
 Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go.
 
@@ -532,16 +651,16 @@ fmt.Print(response.GetHttpContentString())
 
 `}`
 
-#### Use SDK
+#### 2.3.2 Use SDK
 
-##### Install Go SDK
+##### 2.3.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 s
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-##### Use CommonRequest
+##### 2.3.2.2 Use CommonRequest
 
 **Note**
 
@@ -603,7 +722,7 @@ your_access_key_secret}")
 
 `}` ameters
 
-## Common parameters
+## 3 Common parameters
 
 **Common request parameters**
 
@@ -627,11 +746,11 @@ ameters
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful. rations Center
 
-## Security Operations Center
+## 4 Security Operations Center
 
-### Request method
+### 4.1 Request method
 
-#### Request syntax
+#### 4.1.1 Request syntax
 
 where: `endpoint` : the endpoint of the Security Operations Center (SOC) API is `yundunnewsoc-pop.`
 
@@ -643,7 +762,7 @@ where: `endpoint` : the endpoint of the Security Operations Center (SOC) API is 
 
 `Action` : the name of the operation being performed. For example, if `Action=GetEcsProtectCount` ,You can call this operation to query the number of ECS instances with an online Server Guard agent and the number of ECS instances with an offline agent.
 
-#### Request signature
+#### 4.1.2 Request signature
 
 Alibaba Cloud Security authenticates every access request. You must include a signature in each request that you send over the HTTP or HTTPS protocol.
 
@@ -688,7 +807,7 @@ rations Center
 5. Add the resulting signature value to the request parameters as the Signature parameter.
 This completes the request signing process.
 
-#### Common parameters
+#### 4.1.3 Common parameters
 
 Common request parameters must be included in all Apsara Stack Security API requests, such as the API version number and authentication information.
 
@@ -712,7 +831,7 @@ rations Center
 | Format | String | No | The response format. Valid values: JSON and XML. Note Default value: XML. |
 |---|---|---|---|
 
-#### Response structure
+#### 4.1.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -736,9 +855,9 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 `}`
 
-### Operations
+### 4.2 Operations
 
-#### DescribeAttacks
+#### 4.2.1 DescribeAttacks
 
 Queries attacks on the user side or the platform side based on specified conditions.
 
@@ -858,7 +977,7 @@ Sample success response `JSON` format
 </Data>
 ```
 
-#### DescribeAlarms
+#### 4.2.2 DescribeAlarms
 
 Queries security alerts on the user side or the platform side based on specified conditions.
 
@@ -964,7 +1083,7 @@ Sample success responses `XML` format rations Center
 {"RequestId":"8010791A-3154-4154-ACB2-866E56A6****","Data": {"PageSize":"20","Total":"200","PageNo":"1","Items": [{"AlarmId":"4008888","UserName":"Organization A","AlarmType":"Suspicious process","SourceFrom":"20","AssetName":"zzzz_88****","AssetPrivateIps":"192.168.XX.XX","P cessState":"1","AssetType":"ECS","AlarmName":"Reverse**","UserId":"295614088","AlarmUniqu nfo":"eeee98dd0c4cd5cc61c016b2bdcf****","AssetPublicIps":"172.12.XX.XX","Asset":"ae3ef6ef 8888-4aee-8bac-19879e68****","RaisedTime":"1640931449000","RiskLevel":"2","Detail":"{\" lastTime\": 1641536460051,\"assetsType\": 0,\"modifiedTime\": \"2022-01-07 14:21:00\"}","LastTime":"1641537619"}]}}
 ```
 
-#### DescribeVulFrangs
+#### 4.2.3 DescribeVulFrangs
 
 Queries vulnerabilities based on specified conditions.
 
@@ -1079,7 +1198,7 @@ Sample success responses `XML` format
 
 rations Center
 
-#### DescribeHcFrangs
+#### 4.2.4 DescribeHcFrangs
 
 Queries the risks in the host configurations on the user side.
 
@@ -1182,9 +1301,9 @@ Sample success responses `XML` format
 {"RequestId":"8010791A-3154-4154-ACB2-866E56A6****","Data": {"PageSize":"10","Total":"200","PageNo":"1","Items":[{"UserName":"Organization A","Sour ceFrom":"2","HcType":"Alibaba Cloud Standard - Windows 2016/2019 Security Baseline","AssetName":"zz_78****","HcAsset":"ae3ef6ef-8888-4aee-8bac- 19879e68****","AssetPrivateIps":"192.168.XX.XX","ProcessState":"2","LastFoundTime":"16420 910000","AssetType":"ECS","HcName":"CIS standard***","UserId":"2956140888888888","AssetPublicIps":"172.12.XX.XX","Asset":"ae3ef6e 8888-4aee-8bac-19879e68****","Id":"65357","RiskLevel":"1"}]}}
 ```
 
-### Operations Center
+### 4.3 Operations Center
 
-#### QueryThreats
+#### 4.3.1 QueryThreats
 
 Queries attack data in the Operations Center dashboard.
 
@@ -1262,7 +1381,7 @@ Sample success responses `XML` format
 {\"lastTime\":1641549724000,\"__logTime\":1641549724287,\"process_way\":\"\"}","Total":"2 ","FromTime":"1641484800000"}
 ```
 
-#### QueryThreatChartData
+#### 4.3.2 QueryThreatChartData
 
 Queries the data in a chart of the Operations Center dashboard.
 
@@ -1332,9 +1451,9 @@ Sample success responses `XML` format
 {"RequestId":"8010791A-3154-4154-ACB2-866E56A6****","Data":"{\"20\": {\"src_from,count\":\"23507\"}}"}
 ```
 
-## APIs
+## 5 APIs
 
-### CreateEventType
+### 5.1 CreateEventType
 
 Creates an audit event type.
 
@@ -1405,7 +1524,7 @@ Sample success responses
 
 `}` `}`
 
-### DescribeEventType
+### 5.2 DescribeEventType
 
 Queries audit event types.
 
@@ -1481,7 +1600,7 @@ Sample success responses `JSON` format `{`
 
 `}` `]` `}`
 
-### DeleteEventType
+### 5.3 DeleteEventType
 
 Deletes an audit event type.
 
@@ -1520,7 +1639,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### CreateLogFilter
+### 5.4 CreateLogFilter
 
 Creates a filter condition to query audit logs.
 
@@ -1600,7 +1719,7 @@ Sample success responses `JSON` format `{`
 
 `}` `}`
 
-### DescribeLogFilter
+### 5.5 DescribeLogFilter
 
 Queries filter conditions for audit logs.
 
@@ -1698,7 +1817,7 @@ Sample success responses `JSON` format `{`
 
 `}` `]` `}`
 
-### DeleteLogFilter
+### 5.6 DeleteLogFilter
 
 Deletes a filter condition for audit logs.
 
@@ -1742,7 +1861,7 @@ Sample success responses
 
 `}`
 
-### CreateReceiver
+### 5.7 CreateReceiver
 
 Creates an alert recipient for audit events.
 
@@ -1814,7 +1933,7 @@ Sample success responses `JSON` format `{`
 
 `}` `}`
 
-### DescribeReceiver
+### 5.8 DescribeReceiver
 
 Queries information about alert recipients.
 
@@ -1896,7 +2015,7 @@ Sample success responses `JSON` format `{`
 
 `}` `]` `}`
 
-### DeleteReceiver
+### 5.9 DeleteReceiver
 
 Deletes an alert recipient for audit events.
 
@@ -1943,7 +2062,7 @@ Sample success responses
 
 `}`
 
-### CreateRule
+### 5.10 CreateRule
 
 Creates an audit rule.
 
@@ -2034,7 +2153,7 @@ Sample success responses
 
 `}` `}`
 
-### DescribeRule
+### 5.11 DescribeRule
 
 Queries audit rules.
 
@@ -2138,7 +2257,7 @@ Sample success responses
 
 `}`
 
-### EnableRule
+### 5.12 EnableRule
 
 Enables an audit rule.
 
@@ -2178,7 +2297,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DisableRule
+### 5.13 DisableRule
 
 Disables an audit rule.
 
@@ -2210,7 +2329,7 @@ This operation does not have operation-specific request headers and uses only co
 
 `}`
 
-### DeleteRule
+### 5.14 DeleteRule
 
 Deletes an audit rule.
 
@@ -2248,7 +2367,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### CreateTask
+### 5.15 CreateTask
 
 Creates an export task.
 
@@ -2310,7 +2429,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeTask
+### 5.16 DescribeTask
 
 Queries export tasks.
 
@@ -2384,7 +2503,7 @@ a.env30.shuguang.com/OPS/20211224151432914-e902e5b4/EVENT/OPS-20211224151432.zip
 
 `}` `]` `}`
 
-### DescribeSetting
+### 5.17 DescribeSetting
 
 Queries the system parameter settings of security audit.
 
@@ -2445,7 +2564,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### ModifySetting
+### 5.18 ModifySetting
 
 Modifies the system parameter settings of security audit.
 
@@ -2484,7 +2603,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeLogType
+### 5.19 DescribeLogType
 
 Queries log types.
 
@@ -2537,7 +2656,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeLogSource
+### 5.20 DescribeLogSource
 
 Queries log sources.
 
@@ -2614,7 +2733,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeLogCountStat
+### 5.21 DescribeLogCountStat
 
 Queries raw log statistics.
 
@@ -2684,7 +2803,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeLog
+### 5.22 DescribeLog
 
 Queries raw logs.
 
@@ -2811,7 +2930,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeEventRisk
+### 5.23 DescribeEventRisk
 
 Queries the risk level information about audit events.
 
@@ -2862,7 +2981,7 @@ Sample success responses `JSON` format `{`
 
 `}` `]` `}`
 
-### DescribeEventRiskStat
+### 5.24 DescribeEventRiskStat
 
 Queries audit event statistics by risk level.
 
@@ -2929,7 +3048,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeEventTypeStat
+### 5.25 DescribeEventTypeStat
 
 Queries audit event statistics by event type.
 
@@ -2997,7 +3116,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeEventCountStat
+### 5.26 DescribeEventCountStat
 
 Queries audit event statistics.
 
@@ -3064,7 +3183,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeEvent
+### 5.27 DescribeEvent
 
 Queries audit event details.
 
@@ -3208,7 +3327,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeArchiveCountStat
+### 5.28 DescribeArchiveCountStat
 
 Queries archived statistics about logs and events.
 
@@ -3275,7 +3394,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DeleteTask
+### 5.29 DeleteTask
 
 Deletes an export task.
 
@@ -3313,7 +3432,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-### DescribeArchive
+### 5.30 DescribeArchive
 
 Queries the details of archived logs and events.
 
@@ -3398,13 +3517,13 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-## Threat Detection Service
+## 6 Threat Detection Service (TDS)
 
 **(TDS)**
 
-### Asset management
+### 6.1 Asset management
 
-#### DescribeFieldStatistics
+#### 6.1.1 DescribeFieldStatistics
 
 Queries assets.
 
@@ -3503,7 +3622,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeGroupedTags
+#### 6.1.2 DescribeGroupedTags
 
 Queries the statistics of asset tags.
 
@@ -3565,7 +3684,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeAllGroups
+#### 6.1.3 DescribeAllGroups
 
 Queries the information about server groups.
 
@@ -3625,7 +3744,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeInstanceStatistics
+#### 6.1.4 DescribeInstanceStatistics
 
 Queries the risk information about assets.
 
@@ -3713,7 +3832,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeCloudProductFieldStatistics
+#### 6.1.5 DescribeCloudProductFieldStatistics
 
 Queries the statistics of cloud services.
 
@@ -3765,7 +3884,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeCloudCenterInstances
+#### 6.1.6 DescribeCloudCenterInstances
 
 Queries the asset information on the Assets page, such as the name and region of an asset.
 
@@ -3980,7 +4099,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeSummaryInfo
+#### 6.1.7 DescribeSummaryInfo
 
 Queries the security information about assets, such as the security score of your assets, the number of protected assets, and the number of unprotected assets.
 
@@ -4031,9 +4150,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Secure score
+### 6.2 Secure score
 
-#### DescribeSecureSuggestion
+#### 6.2.1 DescribeSecureSuggestion
 
 Queries suggestions on how to handle the security risks that affect the security score.
 
@@ -4106,9 +4225,9 @@ ed. The instances are at risk"
 
 `}`
 
-### Security alerts
+### 6.3 Security alerts
 
-#### DescribeAlarmEventList
+#### 6.3.1 DescribeAlarmEventList
 
 Queries alert events on the Alerts page. An alert event consists of an alert and exceptions. Each alert event is associated with multiple exceptions.
 
@@ -4261,7 +4380,7 @@ commands</AlarmEventNameOriginal>
 | { "PageInfo": { "TotalCount": 1, "PageSize": 20, "CurrentPage": 1, "Count": 1 }, "RequestId": "28267723-D857-4DD8-****-013100000000", "SuspEvents": { "K8sNodeId": "i-km100o6qy******", "Description": "After an attacker accesses a server, the attacker may import ma licious shell scripts into scheduled tasks to keep malicious programs running. The sche duled tasks include crontab and systemd.", "K8sNodeName": "node1", "ContainHwMode": false, "EndTime": 1543740301000, "OperateErrorCode": "kill and quara.Success", _ _ "AlarmEventName": "Execution of malicious commands", "SecurityEventIds": 1, "GmtModified": 1569235879000, "HasTraceInfo": true, "IntranetIp": "192.168.XX.XX", "K8sClusterId": "cb9218d50728c470fb7dfbc16*****", "AppName": "app1", "K8sNamespace": "kube-system", "InternetIp": "47.100.XX.XX", "ContainerId": "sadjadash***", "AlarmEventType": "Suspicious process", "Solution": "Check the malicious URLs that are listed in the alert. Check the d irectory for malicious files. Terminate malicious processes. If you manually run the pr ocesses, you can mark them as false positives in the console.", "CanCancelFault": false, "AlarmEventNameOriginal": "Precise defense against malicious commands", "InstanceId": "i-e***", "Stages": "[\"attack entrance\"]", _ "StartTime": 1543740301000, "K8sPodName": "podname1", "SaleVersion": 1, "Dealed": false, "ContainerImageId": "cri-asdaks*****", "DataSource": "aegis ***", _ "InstanceName": "Test server", "OperateTime": 1234567890123, "CanBeDealOnLine": true, "K8sClusterName": "cqqtesttest", "Uuid": "47900178-885d-4fa4-9d77-***", "ContainerImageName": "centos1", "SuspiciousEventCount": 1, "AlarmUniqueInfo": "8df9******f4211fbf756ef*****", "Level": "serious" } } |   |
 |---|---|
 
-#### DescribeAlarmEventDetail
+#### 6.3.2 DescribeAlarmEventDetail
 
 Queries the details of an alert event. An alert event consists of an alert and exceptions. Each alert event is associated with multiple exceptions.
 
@@ -4419,7 +4538,7 @@ vulnerabilities in parameter configuration, and resolve these issues.",
 
 `}` `}` `}` `}`
 
-#### DescribeSuspEvents
+#### 6.3.3 DescribeSuspEvents
 
 Queries the information about an exception. An alert event consists of an alert and exceptions. Each alert event is associated with multiple exceptions.
 
@@ -4689,7 +4808,7 @@ oller:demo",
 
 `}` `}` `}`
 
-#### DescribeSuspEventDetail
+#### 6.3.4 DescribeSuspEventDetail
 
 Queries the details of an exception. An alert event consists of an alert and exceptions. Each alert event is associated with multiple exceptions.
 
@@ -4790,9 +4909,9 @@ your website. Check the validity of this file.",
 
 `}`
 
-### Configuration assessment
+### 6.4 Configuration assessment
 
-#### DescribeRiskItemType
+#### 6.4.1 DescribeRiskItemType
 
 Queries the types of check items in configuration assessment. Each check item is categorized into a type. The types of check items include identity authentication and permissions, network access control, log audit, data security, monitoring and alerting, and basic security protection.
 
@@ -4843,7 +4962,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### StartBaselineSecurityCheck
+#### 6.4.2 StartBaselineSecurityCheck
 
 Checks cloud service configurations. You can check all items or a specific item and verify whether an item is checked.
 
@@ -4885,7 +5004,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeRiskCheckSummary
+#### 6.4.3 DescribeRiskCheckSummary
 
 Queries the summary information about the check results of cloud service configurations. The operation returns the following information: the number of risk items, the risk rate, the number of affected assets, the last check time, and the statistics of each type of check items.
 
@@ -5001,7 +5120,7 @@ Sample success responses `XML` format
 
 `}` `}` `}`
 
-#### DescribeRiskCheckResult
+#### 6.4.4 DescribeRiskCheckResult
 
 Queries the check results of cloud service configurations by check item type or name.
 
@@ -5124,7 +5243,7 @@ bled\\n\", \"url\": \"https://***.aliyun.com/#/secure\\n\" }",
 
 `}`
 
-#### DescribeSecurityCheckScheduleConfig
+#### 6.4.5 DescribeSecurityCheckScheduleConfig
 
 Queries the custom check cycle and time period.
 
@@ -5181,9 +5300,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Vulnerability management
+### 6.5 Vulnerability management
 
-#### DescribeVulList
+#### 6.5.1 DescribeVulList
 
 Queries vulnerabilities by type.
 
@@ -5477,7 +5596,7 @@ ate",
 
 `}`
 
-#### DescribeVulWhitelist
+#### 6.5.2 DescribeVulWhitelist
 
 Queries the whitelist of vulnerabilities by page.
 
@@ -5545,7 +5664,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeConcernNecessity
+#### 6.5.3 DescribeConcernNecessity
 
 Queries the priorities to fix vulnerabilities.
 
@@ -5588,7 +5707,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeGroupedVul
+#### 6.5.4 DescribeGroupedVul
 
 Queries information about vulnerabilities by group.
 
@@ -5685,7 +5804,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeAutoDelConfig
+#### 6.5.5 DescribeAutoDelConfig
 
 Queries the configurations for automatic vulnerability deletion.
 
@@ -5725,9 +5844,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Baseline check
+### 6.6 Baseline check
 
-#### DescribeCheckWarningSummary
+#### 6.6.1 DescribeCheckWarningSummary
 
 Queries the statistical information about baseline check results. The information includes the number of servers on which a baseline check is performed, the number of baseline check items, and the pass rate of check items in the last baseline check.
 
@@ -6464,7 +6583,7 @@ rotection)"
 
 `}` `]` `}`
 
-#### DescribeStratety
+#### 6.6.2 DescribeStratety
 
 Queries the configurations of baseline check policies.
 
@@ -6634,7 +6753,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeStrategyExecDetail
+#### 6.6.3 DescribeStrategyExecDetail
 
 Queries the details of the last baseline check by using a baseline check policy. The details include the time when the check was performed, the number of risk items, and the details of baseline risks.
 
@@ -6710,7 +6829,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeCheckWarnings
+#### 6.6.4 DescribeCheckWarnings
 
 Queries specified risk items and check items of a specified server.
 
@@ -6795,7 +6914,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeCheckWarningDetail
+#### 6.6.5 DescribeCheckWarningDetail
 
 Queries the details of a specified check item.
 
@@ -6852,7 +6971,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeWarningMachines
+#### 6.6.6 DescribeWarningMachines
 
 Queries information about servers on which a baseline check is performed. The information includes the statistics of a risk item, the status of the risk item, the IDs of the servers, and the names of the servers.
 
@@ -6951,9 +7070,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Asset fingerprints
+### 6.7 Asset fingerprints
 
-#### DescribePropertyCount
+#### 6.7.1 DescribePropertyCount
 
 Queries the statistics of asset fingerprints, including the numbers of processes, ports, software assets, accounts, and scheduled tasks.
 
@@ -7009,7 +7128,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePropertyPortDetail
+#### 6.7.2 DescribePropertyPortDetail
 
 Queries the details of a port.
 
@@ -7124,7 +7243,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePropertyProcDetail
+#### 6.7.3 DescribePropertyProcDetail
 
 Queries the details of a process.
 
@@ -7249,7 +7368,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePropertyPortItem
+#### 6.7.4 DescribePropertyPortItem
 
 Queries information about all ports.
 
@@ -7386,7 +7505,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribePropertyProcItem
+#### 6.7.5 DescribePropertyProcItem
 
 Queries information about all processes.
 
@@ -7479,7 +7598,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribePropertySoftwareDetail
+#### 6.7.6 DescribePropertySoftwareDetail
 
 Queries the details of a software asset.
 
@@ -7595,7 +7714,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePropertySoftwareItem
+#### 6.7.7 DescribePropertySoftwareItem
 
 Queries information about all software assets.
 
@@ -7693,7 +7812,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePropertyUserDetail
+#### 6.7.8 DescribePropertyUserDetail
 
 Queries the details of a specified account.
 
@@ -7820,7 +7939,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePropertyUserItem
+#### 6.7.9 DescribePropertyUserItem
 
 Queries the account information about an asset.
 
@@ -7893,7 +8012,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeModuleConfig
+#### 6.7.10 DescribeModuleConfig
 
 Queries the configurations of asset fingerprint modules.
 
@@ -8043,9 +8162,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### Asset exposure
+### 6.8 Asset exposure
 
-#### DescribeExposedInstanceList
+#### 6.8.1 DescribeExposedInstanceList
 
 Queries the assets that are exposed.
 

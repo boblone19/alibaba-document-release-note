@@ -3,22 +3,32 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Product Introduction 20260828.pdf"
+source_pdf: "ec4038f81da270a0_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Product Introduction 20260828
 
+## Table of Contents
+
+- 1 Enterprise distributed application service (EDAS)
+- 2 Product details
+- 3 Product value
+- 4 Features
+- 5 Scenarios
+- 6 Limits
+- 7 Key concepts
+
 rprise distributed application serv ice (EDAS)
 
-## Enterprise distributed
+## 1 Enterprise distributed application service (EDAS)
 
 **application service (EDAS)**
 
 Enterprise Distributed Application Service (EDAS) is a cloud-native Platform as a Service (PaaS) offering for application hosting and microservice management. It provides full-stack solutions for application development, deployment, monitoring, and operations and maintenance (O&M). EDAS also supports microservice runtime environments, such as Spring Cloud and Apache Dubbo (Dubbo), to help you easily migrate your applications to the cloud. uct details
 
-## Product details
+## 2 Product details
 
 Enterprise Distributed Application Service (EDAS) is a core product in Alibaba's distributed service architecture. It provides a wide range of features, such as application hosting, full application lifecycle management, and operations and maintenance (O&M) control.
 
@@ -57,7 +67,7 @@ After an application is hosted on EDAS, you can monitor its performance and stat
 
 EDAS provides system administration features to manage and control permissions for accounts and roles. Root user and RAM user system: The root user and RAM user system lets you establish relationships between these user types on the EDAS platform. These relationships can be based on your company's organizational structure, such as departments, teams, and projects. ECS resources can also be divided based on these relationships, which makes resource allocation easier. Roles and access control: Application lifecycle management involves different roles, such as developers and O&M personnel, who perform different operations. EDAS provides a role and access control mechanism that lets you define roles for different accounts and assign the corresponding permissions. Service authentication: To ensure the stability and security of distributed services, strict authentication is performed for every service invocation. This authentication occurs at every step of the process, including service registration, service subscription, and service invocation. uct value
 
-## Product value
+## 3 Product value
 
 EDAS supports over 99% of the large-scale applications within Alibaba Group. These applications include core online services such as membership, transactions, products, stores, logistics, and reviews. EDAS offers unique advantages in stability and reliability.
 
@@ -77,7 +87,7 @@ Access to in-depth business metrics and comprehensive report generation. Compreh
 
 Built on multiple open source Internet middleware products. Contributions to top-level Apache projects that have earned an excellent industry reputation. No vendor lock-in. You can easily replace components with open source software.
 
-## Features
+## 4 Features
 
 Enterprise Distributed Application Service (EDAS) is a core product of Alibaba's distributed service architecture. It provides a wide range of features, such as application management, microservice governance, and operations and maintenance (O&M).
 
@@ -145,7 +155,7 @@ Enterprise Distributed Application Service (EDAS) is a core product of Alibaba's
 
 narios
 
-## Scenarios
+## 5 Scenarios
 
 EDAS is an application hosting platform that is ideal for distributed architectures and for migrating digital businesses to the cloud. It is used in a wide range of scenarios.
 
@@ -177,7 +187,7 @@ microservices model on containers based on Kubernetes.
 **No need to build images**: You can directly deploy WAR and JAR packages. EDAS builds
 the images and deploys them to your Kubernetes cluster. This simplifies the process and lowers the barrier to entry. ts
 
-## Limits
+## 6 Limits
 
 This topic describes the limitations of EDAS. Review them carefully before you use the service.
 
@@ -192,7 +202,7 @@ This topic describes the limitations of EDAS. Review them carefully before you u
 
 concepts
 
-## Key concepts
+## 7 Key concepts
 
 This topic summarizes the core concepts of Enterprise Distributed Application Service (EDAS) to help you quickly understand them.
 

@@ -3,16 +3,105 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 201
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828.pdf"
+source_pdf: "2cd57708065b91f2_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 User Guide 20260828
 
+## Table of Contents
+
+- 1 Kernel release notes
+- 2 Primary instance specifications
+- 3 Log in to the PolarDB Converged Edition (Centralized & Distributed) console
+- 4 Instance management
+  - 4.1 Create an instance
+  - 4.2 Change instance specifications
+  - 4.3 Add or remove nodes
+  - 4.4 Release an instance and manage release protection
+  - 4.5 Restart a PolarDB-X cluster or a node
+  - 4.6 Upgrade the kernel version
+  - 4.7 Add read-only instances
+  - 4.8 Manage tags
+  - 4.9 Manage binary logs
+  - 4.10 Columnar engine
+  - 4.11 Upgrade an instance from Standard Edition to Enterprise Edition
+  - 4.12 Migrate network zones
+  - 4.13 Perform a canary upgrade on a single data node
+  - 4.14 Quick data rollback
+- 5 PolarDB AI
+  - 5.1 Intelligent Assistant
+  - 5.2 Intelligent migration
+    - 5.2.1 Intelligent migration guide
+    - 5.2.2 AI Migration Assistant
+    - 5.2.3 Migrate data from an ApsaraDB RDS for MySQL instance to a cluster of PolarDB-X V2.0 Standard Edition by using the console
+    - 5.2.4 Migrate data from a PolarDB-X 2.0 instance to a PolarDB-X 2.0 instance through visualized operations
+- 6 Parameter management
+  - 6.1 Configure parameters on the Parameter Settings page
+  - 6.2 Use parameter templates
+- 7 Database management
+  - 7.1 Manage databases
+  - 7.2 Disable full table scan
+- 8 Network and connection
+  - 8.1 Connect to a database
+  - 8.2 Cluster endpoints and read-only endpoints
+  - 8.3 Apply for and release a public endpoint
+  - 8.4 Manage custom endpoints
+- 9 Data node management
+  - 9.1 Add or release nodes
+  - 9.2 Change configurations
+- 10 Accounts and security
+  - 10.1 Manage database accounts
+  - 10.2 Configure an IP address whitelist
+  - 10.3 Configure SSL encryption
+  - 10.4 Configure the TDE feature
+  - 10.5 Three-role mode
+    - 10.5.1 Overview
+    - 10.5.2 Enable and disable the three-role mode
+    - 10.5.3 Manage the accounts for the three-role mode
+    - 10.5.4 Permission verification
+- 11 Performance monitoring
+  - 11.1 Computing resource monitoring
+  - 11.2 Monitor storage resources
+  - 11.3 Log resource monitoring
+  - 11.4 Monitor columnstore resources
+- 12 Cloud Monitor
+  - 12.1 View performance metrics
+  - 12.2 Alert history
+  - 12.3 Alert rules
+    - 12.3.1 Create an alert rule
+    - 12.3.2 Manage alert rules
+- 13 Diagnosis and optimization
+  - 13.1 Sessions
+  - 13.2 Slow query log
+  - 13.3 Storage analysis
+  - 13.4 Lock analysis
+  - 13.5 Performance trends
+  - 13.6 Real-time performance
+  - 13.7 Diagnostic reports
+- 14 Log management
+  - 14.1 SQL audit and analysis
+  - 14.2 Slow query logs
+- 15 Backup and restoration
+  - 15.1 Back up data
+  - 15.2 View and download Binlog backups
+  - 15.3 Data restoration
+  - 15.4 Native flashback
+  - 15.5 Data archiving
+- 16 Migration evaluation
+  - 16.1 Migrate data from a PolarDB-X V1.0 instance to a PolarDB-X V2.0 instance
+    - 16.1.1 Migration solution
+    - 16.1.2 Business switchover and rollback solution
+- 17 High availability
+  - 17.1 Single-zone instance
+  - 17.2 Three-zone deployment
+- 18 Appendix
+  - 18.1 Authorize a tenant organization to access SLB
+
 release notes
 
-## Kernel release notes
+## 1 Kernel release notes
 
 This topic describes the kernel release notes for PolarDB HTAP. For a detailed list of updates, see the **cloud-native distributed database PolarDB-X**
 **2.0** section in the **Hotfix release notes**.
@@ -35,7 +124,7 @@ v3.18.6r-paas-drds-hotfeature-SP007 provides a kernel upgrade for PolarDB-X 2.0 
 
 y instance specifications
 
-## Primary instance
+## 2 Primary instance specifications
 
 **specifications**
 
@@ -192,7 +281,7 @@ y instance specifications
 
 to the PolarDB Converged Edition (Centralized & Distributed) conso le
 
-## Log in to the PolarDB
+## 3 Log in to the PolarDB Converged Edition (Centralized & Distributed) console
 
 **Converged Edition**
 
@@ -230,9 +319,9 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 **Database > Cloud-Native Distributed Database PolarDB-X 2.0**.
 e management
 
-## Instance management
+## 4 Instance management
 
-### Create an instance
+### 4.1 Create an instance
 
 This topic shows you how to create a PolarDB for HTAP instance.
 
@@ -287,7 +376,7 @@ If your quota is insufficient, click **Manage** to adjust it. For more informati
 **Management** section in the **Unified Cloud Management Platform User Guide**.
 5. Click **Submit**. You are redirected to the console to view the successfully created instance.
 
-### Change instance
+### 4.2 Change instance specifications
 
 **specifications**
 
@@ -311,7 +400,7 @@ share type, and configuration change time. After you submit the change, the comp
 information about how to set the O&M time, see Set a maintenance window.
 4. Click **Submit** to complete the specification change.
 
-### Add or remove nodes
+### 4.3 Add or remove nodes
 
 A PolarDB-X instance is a distributed cluster that consists of multiple nodes. This topic describes how to scale out or in a PolarDB-X instance by adding or removing nodes.
 
@@ -325,7 +414,7 @@ or **Delete nodes** in the **Operation** column.
 4. Click **Activate Now**.
 After the operation is successful, you can view the post-change status of the instance in the console.
 
-### Release an instance and
+### 4.4 Release an instance and manage release protection
 
 **manage release protection**
 
@@ -354,7 +443,7 @@ The console provides the following features: : Click to refresh the instance lis
 4. In the dialog box that appears, select **Enable**.
 5. Click **Confirm**.
 
-### Restart a PolarDB-X cluster or
+### 4.5 Restart a PolarDB-X cluster or a node
 
 **a node**
 
@@ -372,7 +461,7 @@ Restart the cluster In the upper-right corner of the page, click **Restart Insta
 
 This operation disconnects the cluster from your application. Make sure that your business is not interrupted before you perform this operation. Restart a node In the **Compute NodeList** section, click **Restart Node** in the **Actions** column of the desired node. In the message that appears, click **Determine** to restart the cluster or node.
 
-### Upgrade the kernel version
+### 4.6 Upgrade the kernel version
 
 You can manually upgrade the kernel version of your PolarDB for HTAP instances. Although the console automatically checks for new versions when you log on, it does not apply upgrades automatically. You can initiate an upgrade from the Basic Information page of your instance. An upgrade may include performance enhancements, new features, or bug fixes.
 
@@ -395,7 +484,7 @@ If this button is unavailable (grayed out), it means the kernel is already at th
 
 If you do not select a target version, the instance is upgraded to the latest kernel version by default.
 
-### Add read-only instances
+### 4.7 Add read-only instances
 
 This topic describes how to create a read-only PolarDB-X instance for a primary PolarDB-X instance.
 
@@ -439,7 +528,7 @@ e management
 
 4. Click **Buy Now**. You can go to the PolarDB-X console to view the new instance.
 
-### Manage tags
+### 4.8 Manage tags
 
 To efficiently categorize and search for instances when a large number of instances exist, you can create and add tags to the instances.
 
@@ -490,7 +579,7 @@ icon in the **Tag** column.
 icon.
 5. Click OK.
 
-### Manage binary logs
+### 4.9 Manage binary logs
 
 Change data capture (CDC) nodes of PolarDB-X provide the incremental subscription capability, which is compatible with the format and protocol of MySQL binary logs. CDC nodes also provide the primary/secondary replication capability, which is compatible with the MySQL replication protocol. This topic describes how to manage binary logs on the log engine page in the PolarDB-X console. You can perform the following operations in the PolarDB-X console: view the details of an instance, activate binary logging in multi-stream mode, upgrade an instance, change instance configurations, and release an instance.
 
@@ -522,7 +611,7 @@ This operation may interrupt the subscription to binary logs. Enable binary logg
 | Splitting Quantity | The number of log streams that you want to split into. Valid values: 2 to twice the number of data nodes. We recommend that you set this parameter to the number of data nodes. |
 | Splitting Level | The splitting level. You can select Recording Level, Database Level, or Table Level to split binary logs into multiple streams based on a hash function. |
 
-### Columnar engine
+### 4.10 Columnar engine
 
 This topic describes how to manage columnar nodes.
 
@@ -573,7 +662,7 @@ side of the page and configure the following parameters.
 
 5. Click **Submit**.
 
-### Upgrade an instance from
+### 4.11 Upgrade an instance from Standard Edition to Enterprise Edition
 
 **Standard Edition to Enterprise**
 
@@ -632,7 +721,7 @@ icon in the upper-right corner to open the task list and view the task progress.
 5. The instance edition is changed to Enterprise Edition on the instance list page a few
 minutes after the upgrade is complete. Click the instance ID to go to the management page of the Enterprise Edition instance.
 
-### Migrate network zones
+### 4.12 Migrate network zones
 
 **Prerequisites**
 
@@ -654,7 +743,7 @@ e management In the instance list, you can view that the instance is in the **Mo
 **connection** state. After the instance changes to the **Running** state, the operation is
 complete.
 
-### Perform a canary upgrade on
+### 4.13 Perform a canary upgrade on a single data node
 
 **a single data node**
 
@@ -724,7 +813,7 @@ to the instance details page.
 6. In the message that appears, click **OK**.
 The three replicas (primary, standby, and log) on the data node are all upgraded to the new kernel version.
 
-### Quick data rollback
+### 4.14 Quick data rollback
 
 e management Quick data rollback is a data protection feature provided by Standard Edition instances of PolarDB Converged Edition (Centralized & Distributed). After business verification, such as DDL changes or data writes, this feature enables you to rapidly roll back data to the status before the verification.
 
@@ -808,9 +897,9 @@ The instance is in the Copy is being maintained state (the Disconnect replica sy
 6. Verify the rollback result:
 e management View the data node list and confirm that the original follower node has been promoted to the leader node. Confirm that the remaining replicas have been re-built based on the new leader. Log in to the primary instance to query data and confirm that the data has been restored to the status before replica synchronization is stopped. B AI
 
-## PolarDB AI
+## 5 PolarDB AI
 
-### Intelligent Assistant
+### 5.1 Intelligent Assistant
 
 The PolarDB-X 2.0 Intelligent Assistant is an intelligent operations and maintenance (O&M) assistance tool for PolarDB-X (also known as PolarDB-X). Based on large language models (LLMs) and an expert knowledge base for distributed databases, the assistant integrates capabilities such as instance detail query, intelligent Q&A, and intelligent diagnosis. It supports natural language interaction, has a deep understanding of the distributed architecture of PolarDB-X, performs root cause diagnosis for multi-node performance issues, and provides optimization suggestions.
 
@@ -858,9 +947,9 @@ accordance with our privacy policy. We do not use this data for model training o
 **Disclaimer**: The diagnostic conclusions and optimization recommendations provided by
 the Intelligent Assistant are for reference only. Before you apply any changes in a production environment, especially distributed operations that involve adjustments to sharding rules or global indexes, a qualified technical professional must review and evaluate them.
 
-### Intelligent migration
+### 5.2 Intelligent migration
 
-#### Intelligent migration guide
+#### 5.2.1 Intelligent migration guide
 
 Intelligent One-Click Migration of PolarDB is a one-stop database migration platform built on DTS capabilities. It provides an end-to-end visual guided workflow that covers scenario selection, prechecks, task configuration, and endpoint switching. Through automated configuration and seamless switchover, it enables transparent application migration with zero downtime. In addition, the integrated AI Migration Assistant supports intelligent Q&A, log diagnostics, and optimization recommendations, significantly improving both migration efficiency and success rates. B AI
 
@@ -935,7 +1024,7 @@ databases and click **Switch Endpoint**.
 
 Seamless application migration is implemented with zero downtime. The switchover process can be traced and rolled back with high security.
 
-#### AI Migration Assistant
+#### 5.2.2 AI Migration Assistant
 
 AI Migration Assistant is an intelligent tool that supports the one-click migration platform. It uses the Data Transmission Service (DTS) Model Context Protocol (MCP) to provide natural language Q&A, task status queries, and diagnostic capabilities. This helps you resolve issues related to migration path queries, configuration guidance, and error handling during the migration process.
 
@@ -957,7 +1046,7 @@ User question: For a migration path from an RDS for PostgreSQL cloud instance to
 
 User question: Is DTS migration task `l65e721` running correctly? If there are errors, how do I resolve them? AI response: DTS MCP automatically pulls the task's real-time status, latency trends, synchronization progress, throughput, and error logs to accurately assess its health. If an error or potential threat is detected, the AI assistant generates a diagnostic report and recommends a solution. This approach reduces the response time for failures and the need for manual intervention, which decreases tickets and alerts by 30%.
 
-#### Migrate data from an ApsaraDB RDS for
+#### 5.2.3 Migrate data from an ApsaraDB RDS for MySQL instance to a cluster of PolarDB-X V2.0 Standard Edition by using the console
 
 **MySQL instance to a cluster of PolarDB-X**
 
@@ -1134,7 +1223,7 @@ Switch to the endpoint of the destination database during the migration process.
 6. . (Optional) Roll back the migration**
 If you want to roll back the migration, perform Step 5 to switch to the endpoint of the source database.
 
-#### Migrate data from a PolarDB-X 2.0
+#### 5.2.4 Migrate data from a PolarDB-X 2.0 instance to a PolarDB-X 2.0 instance through visualized operations
 
 **instance to a PolarDB-X 2.0 instance through**
 
@@ -1305,9 +1394,9 @@ Switch to the endpoint of the destination database during the migration process.
 6. . (Optional) Roll back the migration**
 If you want to roll back the migration, perform Step 5 to switch to the endpoint of the source database. eter management
 
-## Parameter management
+## 6 Parameter management
 
-### Configure parameters on the
+### 6.1 Configure parameters on the Parameter Settings page
 
 **Parameter Settings page**
 
@@ -1811,7 +1900,7 @@ eter management
 | loose innodb dat _ _ a file purge inter _ _ _ val | No | 100 | [0-10000] | Specifies the interval at which files are purged. Unit: milliseconds. |
 | loose innodb dat _ _ a file purge max _ _ _ size _ | No | 128 | [16- 1073741824] | Specifies the maximum size of a single file that can be purged. Unit: MB. |
 
-### Use parameter templates
+### 6.2 Use parameter templates
 
 This topic describes how to use a parameter template to configure the parameters of multiple instances at a time.
 
@@ -1883,9 +1972,9 @@ want to export parameter templates, and click the icon to move the selected inst
 6. Click **OK**.
 se management
 
-## Database management
+## 7 Database management
 
-### Manage databases
+### 7.1 Manage databases
 
 After you create an instance of PolarDB Converged Edition (Centralized & Distributed), you need to create a database and a database account on the cluster.
 
@@ -1927,7 +2016,7 @@ the Running state, the database is created.
 4. Find the database that you want to delete and click **Delete** in the Actions column.
 5. In the message that appears, click **OK**.
 
-### Disable full table scan
+### 7.2 Disable full table scan
 
 This topic describes how to disable and enable full table scan for a PolarDB-X V2.0 instance.
 
@@ -1957,9 +2046,9 @@ The console provides the following features: : Click to refresh the instance lis
 6. In the **Set full table scan** dialog box, click **OK**.
 k and connection
 
-## Network and connection
+## 8 Network and connection
 
-### Connect to a database
+### 8.1 Connect to a database
 
 You can connect to a PolarDB-X database by using Data Management (DMS), the MySQL command-line client mysql, a third-party client, or a third-party driver for MySQL. This topic describes how to connect to a PolarDB-X database by using the MySQL command line.
 
@@ -2038,7 +2127,7 @@ The following sample code provides an example on how to use a connection pool to
 
 We recommend that you use the Druid connection pools.
 
-### Cluster endpoints and read-
+### 8.2 Cluster endpoints and read-only endpoints
 
 **only endpoints**
 
@@ -2081,7 +2170,7 @@ k and connection
 endpoint.
 4. Click **OK**.
 
-### Apply for and release a public
+### 8.3 Apply for and release a public endpoint
 
 **endpoint**
 
@@ -2107,7 +2196,7 @@ k and connection The console provides the following features: : Click to refresh
 4. In the dialog box that appears, click **OK**.
 After you release the public endpoint, you cannot use the public endpoint to connect to the instance. After the public endpoint is released, we recommend that you remove the corresponding public IP address from the whitelist to ensure data security.
 
-### Manage custom endpoints
+### 8.4 Manage custom endpoints
 
 PolarDB Converged Edition (Centralized & Distributed) instances support custom endpoints. You can use custom endpoints to distribute traffic to specific compute nodes based on your business requirements.
 
@@ -2183,11 +2272,11 @@ k and connection
 6. In the message that appears, click **OK**.
 ode management
 
-## Data node management
+## 9 Data node management
 
 Only Enterprise Edition instances support the data node management feature.
 
-### Add or release nodes
+### 9.1 Add or release nodes
 
 A PolarDB-X instance is a distributed cluster that consists of multiple nodes. This topic describes how to scale out or in a PolarDB-X instance by adding or releasing nodes.
 
@@ -2215,7 +2304,7 @@ ode management The console provides the following features: : Click to refresh t
 **Release node**.
 4. In the **Release node** dialog box that appears, click **Release**.
 
-### Change configurations
+### 9.2 Change configurations
 
 A PolarDB-X instance is a distributed cluster that consists of multiple nodes. Each node provides features such as SQL routing, data merging, and data aggregation. You can change the node specifications for an instance. During peak hours, you can upgrade the specifications to handle high numbers of queries per second (QPS). During off-peak hours, you can downgrade the specifications to reduce resource waste.
 
@@ -2236,9 +2325,9 @@ You can select **Immediately change configuration** or **O&M time**
 **configuration change** for the **Configuration change time** parameter.
 After you change the storage size and node specifications of data nodes, you can also change the storage space of an instance in a unified manner. ts and security
 
-## Accounts and security
+## 10 Accounts and security
 
-### Manage database accounts
+### 10.1 Manage database accounts
 
 A PolarDB-X instance supports two types of accounts: privileged accounts and standard accounts. This topic describes how to create and manage an account.
 
@@ -2328,7 +2417,7 @@ The console provides the following features: : Click to refresh the instance lis
 4. Find the account that you want to lock and click **Lock** in the Actions column.
 5. In the message that appears, click **Determine**.
 
-### Configure an IP address
+### 10.2 Configure an IP address whitelist
 
 **whitelist**
 
@@ -2392,7 +2481,7 @@ ts and security
 the **Operation** column.
 5. In the message that appears, click **OK**.
 
-### Configure SSL encryption
+### 10.3 Configure SSL encryption
 
 This topic describes how to make data transmission more secure by configuring Secure Sockets Layer (SSL) encryption. You must enable SSL encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required applications. SSL is used to encrypt connections at the transport layer and enhance the security and integrity of the transmitted data. However, SSL encryption increases the round-trip time.
 
@@ -2481,7 +2570,7 @@ The console provides the following features: : Click to refresh the instance lis
 6. In the message that appears, click **OK**.
 ts and security
 
-### Configure the TDE feature
+### 10.4 Configure the TDE feature
 
 This topic describes how to configure the transparent data encryption (TDE) feature for a PolarDB-X instance.
 
@@ -2524,9 +2613,9 @@ To decrypt a TDE-encrypted table on a PolarDB-X instance, log on to the instance
 alter table <tablename> ENCRYPTION='N';
 ```
 
-### Three-role mode
+### 10.5 Three-role mode
 
-#### Overview
+#### 10.5.1 Overview
 
 PolarDB-X supports the three-role mode for database management. In the three-role mode, three roles are created to manage databases. The three roles are database administrator (DBA), database security administrator (DSA), and data audit administrator (DAA). This makes your database more secure because the database management permissions are not granted to one account.
 
@@ -2566,7 +2655,7 @@ ts and security
 
 Before you use the three-role mode, you must take note of the following limits: You cannot run GRANT ROLE or REVOKE ROLE commands on the DBA, DSA, and DAA accounts. You cannot run GRANT PRIVILEGES or REVOKE PRIVILEGES commands on the DBA, DSA, and DAA accounts. You can change the password of a system account when you use the account to log on to the database. For example, if you want to change the password of the DBA account, you must log on to the database by using the DBA account. You cannot run the SET DEFAULT ROLE command on the DBA, DSA, and DAA accounts.
 
-#### Enable and disable the three-role
+#### 10.5.2 Enable and disable the three-role mode
 
 **mode**
 
@@ -2622,7 +2711,7 @@ ts and security The console provides the following features: : Click to refresh 
 6. In the **Password verification of high-privilege account** dialog box, enter the password
 of the privileged account and click **OK**. About 3 to 5 seconds are required for the new configuration to take effect.
 
-#### Manage the accounts for the three-
+#### 10.5.3 Manage the accounts for the three-role mode
 
 **role mode**
 
@@ -2659,7 +2748,7 @@ in the Actions column.
 The password must meet the following requirements: The password must be 8 to 20 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters: @#$%^&+=
 7. Click **OK**.
 
-#### Permission verification
+#### 10.5.4 Permission verification
 
 After you enable the three-role mode for your PolarDB-X instance, the privileged account becomes the database administrator (DBA) account. You must create a database security administrator (DSA) account and a data audit administrator (DAA) account. The DBA, DSA, and DAA accounts are granted different permissions. When you perform an operation on your database, you must enter the password of the account that is granted the required permissions for this operation. This topic describes the operations that require permission verification and how you can be authorized to perform the operations.
 
@@ -2690,9 +2779,9 @@ The console provides the following features: : Click to refresh the instance lis
 4. In the **Confirm Audit Permissions** dialog box, enter the password of the DAA account and
 click **OK**. mance monitoring
 
-## Performance monitoring
+## 11 Performance monitoring
 
-### Computing resource
+### 11.1 Computing resource monitoring
 
 **monitoring**
 
@@ -2731,7 +2820,7 @@ mance monitoring
 
 View the performance data of your instance: Click the **Instance** tab. On the Instance tab, specify a time range and click **OK**. View the performance data of your cluster: Click the **Cluster** tab. On the Cluster tab, specify a time range and click **OK**. View the performance data of a node: Click the **Node** tab. On the Node tab, select the node whose performance data you want to view from the drop-down list, specify a time range, and then click **OK**.
 
-### Monitor storage resources
+### 11.2 Monitor storage resources
 
 PolarDB-X provides the monitoring feature to help you monitor the status of your instance. You can view the information of computing resources, storage resources, and log resources in the console. This topic describes how to view the performance data of storage resources on your instance.
 
@@ -2799,7 +2888,7 @@ mance monitoring
 
 To view the metrics of an instance, click the **Instance** tab. Specify the time range within which the metrics that you want to view are collected and click **OK**. mance monitoring To view the metrics of a node, click the **Node** tab. Select the data node whose metrics you want to view from the drop-down list, specify the time range within which the metrics that you want to view are collected, and then click **OK**. To view the metrics of a cluster, click the **Cluster** tab. Specify the time range within which the metrics that you want to view are collected and click **OK**.
 
-### Log resource monitoring
+### 11.3 Log resource monitoring
 
 This topic describes how to view log resource monitoring information in the PolarDB-X console.
 
@@ -2822,7 +2911,7 @@ The console provides the following features: : Click to refresh the instance lis
 
 mance monitoring To view the metrics of your cluster, click the **Cluster** tab. Specify the time range within which the metrics that you want to view are collected and click **OK**. To view the metrics of a node, click the **Node** tab. Select the log node whose metrics you want to view from the drop-down list, specify the time range within which the metrics that you want to view are collected, and then click **OK**.
 
-### Monitor columnstore
+### 11.4 Monitor columnstore resources
 
 **resources**
 
@@ -2857,9 +2946,9 @@ mance monitoring
 
 Monitor
 
-## Cloud Monitor
+## 12 Cloud Monitor
 
-### View performance metrics
+### 12.1 View performance metrics
 
 PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
 
@@ -2879,7 +2968,7 @@ and **read-only instances**. View performance metrics
 3. In the **time granularity** drop-down list, select **1 Minute** or **1 Hour** (default value) as the
 data collection interval.
 
-### Alert history
+### 12.2 Alert history
 
 After an alert is triggered, you can view its history. You can also export and download the alert history for local data analytics.
 
@@ -2902,9 +2991,9 @@ Monitor
 | Export alert history | i. On the Alert History page, click in the upper-right corner. ii. In the Export Task dialog box, set Time Range and Task Name. Then, click OK. |
 |---|---|
 
-### Alert rules
+### 12.3 Alert rules
 
-#### Create an alert rule
+#### 12.3.1 Create an alert rule
 
 Create an alert rule that triggers alerts for a cloud service based on specified metric thresholds and promptly notifies relevant users.
 
@@ -2953,7 +3042,7 @@ Monitor
 
 This example creates an alert rule named "example" for an Elastic Compute Service (ECS) instance to monitor its CPU utilization. The rule triggers a Critical alert if the maximum CPU utilization is greater than or equal to 70% for three occurrences within five detection periods. The following figure shows the rule description configuration for this scenario. Monitor
 
-#### Manage alert rules
+#### 12.3.2 Manage alert rules
 
 From the list of alert rules, you can modify, enable, disable, and delete rules.
 
@@ -2985,11 +3074,11 @@ Monitor
 
 sis and optimization
 
-## Diagnosis and
+## 13 Diagnosis and optimization
 
 **optimization**
 
-### Sessions
+### 13.1 Sessions
 
 You can view the sessions of a PolarDB-X cluster and the relevant statistics. PolarDB-X provides the 10-second SQL analysis feature to help you analyze SQL queries whose execution duration is less than 10 seconds in real time if your cluster experiences a sharp spike in the CPU utilization, number of active sessions, or response time.
 
@@ -3069,7 +3158,7 @@ The 10-second SQL analysis feature helps you analyze SQL queries that are execut
 5. After 10 seconds, you can view the SQL queries that are most frequently executed and
 whether slow SQL queries exist within the 10-second time window. sis and optimization
 
-### Slow query log
+### 13.2 Slow query log
 
 This topic describes the slow query log feature of PolarDB-X.
 
@@ -3094,7 +3183,7 @@ slow SQL statements for compute nodes and data nodes, respectively.
 **Optimize**. Note that you can only optimize slow queries from compute nodes (CNs).
 5. View the optimization suggestions for the slow SQL statement.
 
-### Storage analysis
+### 13.3 Storage analysis
 
 PolarDB-X provides the storage analysis feature. You can use this feature to view the storage usage of a PolarDB-X instance and the number of days for which the remaining storage space is available. You can also view information about the usage, fragments, and anomaly diagnosis results of a tablespace in a database. This topic describes how to use the storage analysis feature of PolarDB-X. sis and optimization
 
@@ -3107,7 +3196,7 @@ PolarDB-X provides the storage analysis feature. You can use this feature to vie
 4. On the **Storage Analysis** page, you can view the following information.
 On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
 
-### Lock analysis
+### 13.4 Lock analysis
 
 This topic describes how to use Lock Analysis.
 
@@ -3127,7 +3216,7 @@ Permission or data exceptions: If the deadlock details show the "You do not have
 6. The Lock Analysis dialog box displays deadlock diagnosis details. Click **View Deadlock Log**
 to view the most recent deadlock log.
 
-### Performance trends
+### 13.5 Performance trends
 
 This topic describes how to view performance trends for PolarDB-X. PolarDB-X integrates with the performance trends feature of Database Autonomy Service (DAS) to provide monitoring metrics for compute nodes (CNs), data nodes (DNs), GMS nodes, and log nodes (CDCs). It allows you to view performance trends over a specific time range, compare trends between two periods, and create custom charts.
 
@@ -3232,7 +3321,7 @@ sis and optimization
 
 sis and optimization
 
-### Real-time performance
+### 13.6 Real-time performance
 
 PolarDB for HTAP provides instance-level real-time performance, helping you monitor your database in real time during stress tests or high-traffic events.
 
@@ -3245,7 +3334,7 @@ PolarDB for HTAP provides instance-level real-time performance, helping you moni
 4. On the **Real-time Performance** details page, view the performance metrics.
 PolarDB for HTAP supports two views: **Real-time Chart** and **Real-time Table**. The charts refresh every second. You cannot view data node (DN) metrics for a column-store read-only instance. You can perform the following operations on the details page: Enterprise Edition (Distributed) Click **Parameter Description** to view metric descriptions. Click the **Compute Node(CN)**, **Data Node(DN)**, **GMS Node**, or **Cluster** tab to view its performance information. Click the **Select Node** drop-down list to view performance information for different nodes. Standard Edition (Centralized) Click **Parameter Description** to view metric descriptions.
 
-### Diagnostic reports
+### 13.7 Diagnostic reports
 
 PolarDB Converged Edition (Centralized & Distributed) provides the diagnostic report feature, which helps you comprehensively assess the operational status of your database instance and identify performance bottlenecks and potential risks. You can trigger diagnostics manually or configure scheduled tasks to generate reports automatically. Currently, this feature provides only operational status assessments and issue identification. It does not provide automated optimization recommendations. You can perform troubleshooting and optimization based on the report findings.
 
@@ -3277,9 +3366,9 @@ The list on the page shows all available diagnostic reports. Click **View Report
 
 Click **View Report** to go to the diagnostic report details page. Then, click **Download** to download the report to your on-premises machine for archiving or sharing. anagement
 
-## Log management
+## 14 Log management
 
-### SQL audit and analysis
+### 14.1 SQL audit and analysis
 
 This topic describes how to query SQL statements.
 
@@ -3294,7 +3383,7 @@ You can click the following icons in the console to perform corresponding operat
 **Transaction ID**, **Node ID**, and **TraceID** as needed in sequence. Click **Search**.
 You can also click **Export File** in the upper-right corner to export the search results as a file.
 
-### Slow query logs
+### 14.2 Slow query logs
 
 All PolarDB Converged Edition (Centralized & Distributed) instances support log management. You can query the details of slow query logs of an instance in the PolarDB Converged Edition (Centralized & Distributed) console. The logs help you troubleshoot issues.
 
@@ -3315,9 +3404,9 @@ query logs by **compute node (CN)** and **data node (DN)**.
 
 and restoration
 
-## Backup and restoration
+## 15 Backup and restoration
 
-### Back up data
+### 15.1 Back up data
 
 PolarDB-X supports automatic backup and manual backup. This helps you restore historical data from backups. This topic describes the features that are used to back up data.
 
@@ -3395,7 +3484,7 @@ and restoration y g
 5. In the **Download Backup Sets** dialog box, click **Copy** below the download link of the
 backup file that you want to download. Access the copied download link in your browser. The file is automatically downloaded.
 
-### View and download Binlog
+### 15.2 View and download Binlog backups
 
 **backups**
 
@@ -3410,7 +3499,7 @@ For Standard Edition (Centralized) instances: In the navigation pane on the left
 **Download backup**: Click **Download** in the Actions column for the target backup set.
 By default, Binlog backup files are retained for 15 days. If a download link expires during this period, you can refresh the page to generate a new link.
 
-### Data restoration
+### 15.3 Data restoration
 
 PolarDB-X allows you to restore historical data from backups. This topic describes how to restore data.
 
@@ -3447,7 +3536,7 @@ click **Restore** in the Actions column.
 5. Configure the parameters and click **Submit**.
 You must set the restoration method to restoration by backup set. The created instance contains all the data of the original instance. You can use the new instance or migrate the data of the new instance to the original instance.
 
-### Native flashback
+### 15.4 Native flashback
 
 This topic describes the native flashback feature. This feature allows you to use SQL statements to query or restore data at a specific point in time. This feature enables you to quickly retrieve historical data after unintended operations. During database O&M, errors such as accidental update or deletion operations may cause business interruptions. Traditional restoration methods, such as binary logs or backup sets, are complex and timeconsuming. PolarDB Converged Edition (Centralized & Distributed) provides the native flashback feature. You can use simple SQL statements to query historical data at the specified point in time or restore data to the state before an error occurs. This minimizes business loss.
 
@@ -3603,7 +3692,7 @@ and restoration v. Confirm the restored data.
 +----+---------+ 3 rows in set (0.00 sec)
 ```
 
-### Data archiving
+### 15.5 Data archiving
 
 The data archiving feature helps you reduce data storage costs. This topic describes how to archive data.
 
@@ -3624,15 +3713,15 @@ and restoration The console provides the following features: : Click to refresh 
 **with One Click**, and then click **OK**.
 on evaluation
 
-## Migration evaluation
+## 16 Migration evaluation
 
-### Migrate data from a PolarDB-
+### 16.1 Migrate data from a PolarDB-X V1.0 instance to a PolarDB-X V2.0 instance
 
 **X V1.0 instance to a PolarDB-X**
 
 **V2.0 instance**
 
-#### Migration solution
+#### 16.1.1 Migration solution
 
 PolarDB-X provides the migration evaluation feature to help you migrate databases from PolarDB-X 1.0 to PolarDB-X 2.0.
 
@@ -3717,7 +3806,7 @@ phase, full data and incremental data are migrated.
 4. Click the task name to go to the **Task Details** page. In the left-side navigation pane,
 choose **Migration > Data Migration Details** to view the progress of the migration task. Start the full migration process. After the migration task is started, all historical data that you want to migrate from the source database is migrated to the destination database. After the full migration is complete, the system immediately starts the incremental migration process. In this process, all data updated in the source database after the full migration starts is synchronized to the destination database. Incremental migration is a dynamic and continuous process and does not stop until the business is switched to the destination database. If the incremental data migration is delayed by 30 seconds, the data in the destination database is almost the same as the data in the source database. In this case, the system starts the data verification process to verify the consistency between the source and destination databases.
 
-#### Business switchover and rollback
+#### 16.1.2 Business switchover and rollback solution
 
 **solution**
 
@@ -3761,9 +3850,9 @@ of the destination database. You can run the `show processlist` command to check
 **database has no business connection** to release the read-only status of the
 destination database. You can run the `show processlist` command to check the connected client IP addresses and determine whether a connection from the application side exists. vailability
 
-## High availability
+## 17 High availability
 
-### Single-zone instance
+### 17.1 Single-zone instance
 
 This topic describes the operations performed on a single-zone instance.
 
@@ -3776,7 +3865,7 @@ On the PolarDB-X instance creation page, set the **Deployment Method** parameter
 
 You can view the details of a zone in the following ways. View the zone information in the instance list. On the Instance List page, you can view the zone information of the instance. View the zone information on the instance details page. vailability On the instance details page, you can view the zone information of the instance.
 
-### Three-zone deployment
+### 17.2 Three-zone deployment
 
 This topic describes the operations related to three-zone deployment.
 
@@ -3813,9 +3902,9 @@ parameters. When you switch your workloads to another zone, a transient disconne
 6. In the upper-right corner of the page, click **Tasks** to view the progress of the task.
 dix
 
-## Appendix
+## 18 Appendix
 
-### Authorize a tenant
+### 18.1 Authorize a tenant organization to access SLB
 
 **organization to access SLB**
 

@@ -3,16 +3,253 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Virtual Private Cloud Deve
 product_version: "V3.16.2"
 doc_version: "20220916"
 pdf_pages: 498
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Virtual Private Cloud Developer Guide 20220916.pdf"
+source_pdf: "fe7326071064b64b_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Virtual Private Cloud Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Virtual%20Private%20Cloud%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Virtual Private Cloud Developer Guide
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Call API operations
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about API operations
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common headers
+  - 2.6 Obtain the endpoint of VPC
+  - 2.7 Obtain VPC SDK
+- 3 Call examples for SDK for Java
+  - 3.1 Quick start
+  - 3.2 Use SDK
+    - 3.2.1 Install VPC SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples for SDK for Python
+  - 4.1 Quick start
+  - 4.2 Use SDK
+    - 4.2.1 Install VPC SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call examples for SDK for Go
+  - 5.1 Quick start
+  - 5.2 Use SDK
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Troubleshooting
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API reference
+  - 6.1 Overview
+  - 6.2 Call VPC APIs
+    - 6.2.1 Request syntax
+    - 6.2.2 API authorization
+    - 6.2.3 Request signatures
+  - 6.3 RAM authentication
+  - 6.4 Common parameters
+  - 6.5 VPC
+    - 6.5.1 CreateVpc
+    - 6.5.2 DeleteVpc
+    - 6.5.3 ModifyVpcAttribute
+    - 6.5.4 DescribeVpcAttribute
+    - 6.5.5 AssociateVpcCidrBlock
+    - 6.5.6 UnassociateVpcCidrBlock
+    - 6.5.7 MoveResourceGroup
+  - 6.6 vSwitch
+    - 6.6.1 CreateVSwitch
+    - 6.6.2 DeleteVSwitch
+    - 6.6.3 ModifyVSwitchAttribute
+    - 6.6.4 DescribeVSwitchAttributes
+  - 6.7 vRouter
+    - 6.7.1 ModifyVRouterAttribute
+    - 6.7.2 DescribeVRouters
+  - 6.8 Route table
+    - 6.8.1 CreateRouteTable
+    - 6.8.2 CreateRouteEntry
+    - 6.8.3 DeleteRouteEntry
+    - 6.8.4 DescribeRouteEntryList
+    - 6.8.5 ModifyRouteEntry
+    - 6.8.6 AssociateRouteTable
+    - 6.8.7 DeleteRouteTable
+    - 6.8.8 DescribeRouteTableList
+    - 6.8.9 UnassociateRouteTable
+  - 6.9 Region
+    - 6.9.1 DescribeRegions
+    - 6.9.2 DescribeZones
+  - 6.10 Tag
+    - 6.10.1 TagResources
+    - 6.10.2 ListTagResources
+    - 6.10.3 UnTagResources
+  - 6.11 Physical connections
+    - 6.11.1 CreatePhysicalConnection
+    - 6.11.2 DescribeAccessPoints
+    - 6.11.3 CancelPhysicalConnection
+    - 6.11.4 DescribePhysicalConnections
+    - 6.11.5 ModifyPhysicalConnectionAttribute
+    - 6.11.6 TerminatePhysicalConnection
+    - 6.11.7 EnablePhysicalConnection
+    - 6.11.8 DeletePhysicalConnection
+    - 6.11.9 CreatePhysicalConnectionOccupancyOrder
+    - 6.11.10 ApplyPhysicalConnectionLOA
+    - 6.11.11 CreatePhysicalConnectionSetupOrder
+    - 6.11.12 CompletePhysicalConnectionLOA
+    - 6.11.13 DescribePhysicalConnectionLOA
+  - 6.12 VBR
+    - 6.12.1 CreateVirtualBorderRouter
+    - 6.12.2 DeleteVirtualBorderRouter
+    - 6.12.3 DescribeVirtualBorderRouters
+    - 6.12.4 DescribeVirtualBorderRoutersForPhysicalConnection
+    - 6.12.5 TerminateVirtualBorderRouter
+    - 6.12.6 RecoverVirtualBorderRouter
+    - 6.12.7 ModifyVirtualBorderRouterAttribute
+    - 6.12.8 AssociatePhysicalConnectionToVirtualBorderRouter
+    - 6.12.9 UnassociatePhysicalConnectionFromVirtualBorderRouter
+  - 6.13 BGP
+    - 6.13.1 CreateBgpGroup
+    - 6.13.2 DescribeBgpGroups
+    - 6.13.3 ModifyBgpGroupAttribute
+    - 6.13.4 DeleteBgpGroup
+    - 6.13.5 CreateBgpPeer
+    - 6.13.6 DescribeBgpPeers
+    - 6.13.7 ModifyBgpPeerAttribute
+    - 6.13.8 DeleteBgpPeer
+    - 6.13.9 AddBgpNetwork
+    - 6.13.10 DeleteBgpNetwork
+    - 6.13.11 DescribeBgpNetworks
+  - 6.14 Router interface
+    - 6.14.1 CreateRouterInterface
+    - 6.14.2 ConnectRouterInterface
+    - 6.14.3 DeactivateRouterInterface
+    - 6.14.4 ModifyRouterInterfaceSpec
+    - 6.14.5 DeleteRouterInterface
+    - 6.14.6 DescribeRouterInterfaces
+    - 6.14.7 ActivateRouterInterface
+    - 6.14.8 ModifyRouterInterfaceAttribute
+  - 6.15 VPN gateways
+    - 6.15.1 VPN gateway
+      - 6.15.1.1 CreateVpnGateway
+      - 6.15.1.2 DescribeVpnGateways
+      - 6.15.1.3 DescribeVpnGateway
+      - 6.15.1.4 DeleteVpnGateway
+      - 6.15.1.5 ModifyVpnGatewayAttribute
+    - 6.15.2 Customer gateway
+      - 6.15.2.1 CreateCustomerGateway
+      - 6.15.2.2 DescribeCustomerGateways
+      - 6.15.2.3 DescribeCustomerGateway
+      - 6.15.2.4 DeleteCustomerGateway
+      - 6.15.2.5 ModifyCustomerGatewayAttribute
+    - 6.15.3 Routes for VPN gateways
+      - 6.15.3.1 DeleteVpnPbrRouteEntry
+      - 6.15.3.2 DeleteVpnRouteEntry
+      - 6.15.3.3 DescribeVpnRouteEntries
+      - 6.15.3.4 ModifyVpnRouteEntryWeight
+      - 6.15.3.5 CreateVpnRouteEntry
+      - 6.15.3.6 ModifyVpnPbrRouteEntryWeight
+      - 6.15.3.7 DescribeVpnPbrRouteEntries
+      - 6.15.3.8 PublishVpnRouteEntry
+      - 6.15.3.9 CreateVpnPbrRouteEntry
+    - 6.15.4 IPsec-VPN
+      - 6.15.4.1 DescribeVpnConnection
+      - 6.15.4.2 DeleteVpnConnection
+      - 6.15.4.3 DownloadVpnConnectionConfig
+      - 6.15.4.4 CreateVpnConnection
+      - 6.15.4.5 DescribeVpnConnections
+      - 6.15.4.6 ModifyVpnConnectionAttribute
+    - 6.15.5 SSL-VPN
+      - 6.15.5.1 CreateSslVpnServer
+      - 6.15.5.2 DeleteSslVpnServer
+      - 6.15.5.3 ModifySslVpnServer
+      - 6.15.5.4 DeleteSslVpnClientCert
+      - 6.15.5.5 ModifySslVpnClientCert
+      - 6.15.5.6 CreateSslVpnClientCert
+      - 6.15.5.7 DescribeSslVpnClientCerts
+      - 6.15.5.8 DescribeSslVpnClientCert
+      - 6.15.5.9 DescribeSslVpnServers
+      - 6.15.5.10 DescribeVpnSslServerLogs
+  - 6.16 NAT gateways
+    - 6.16.1 CreateNatGateway
+    - 6.16.2 ModifyNatGatewayAttribute
+    - 6.16.3 ModifyNatGatewaySpec
+    - 6.16.4 DeleteNatGateway
+    - 6.16.5 DescribeNatGateways
+    - 6.16.6 CreateForwardEntry
+    - 6.16.7 DescribeForwardTableEntries
+    - 6.16.8 ModifyForwardEntry
+    - 6.16.9 DeleteForwardEntry
+    - 6.16.10 CreateSnatEntry
+    - 6.16.11 DescribeSnatTableEntries
+    - 6.16.12 ModifySnatEntry
+    - 6.16.13 DeleteSnatEntry
+    - 6.16.14 ModifyBandwidthPackageSpec
+    - 6.16.15 DeleteBandwidthPackage
+    - 6.16.16 CreateBandwidthPackage
+    - 6.16.17 DescribeBandwidthPackages
+    - 6.16.18 ModifyBandwidthPackageAttribute
+    - 6.16.19 AddBandwidthPackageIps
+  - 6.17 Elastic IP addresses
+    - 6.17.1 AllocateEipAddress
+    - 6.17.2 AllocateEipAddressPro
+    - 6.17.3 AssociateEipAddress
+    - 6.17.4 ModifyEipAddressAttribute
+    - 6.17.5 DescribeEipAddresses
+    - 6.17.6 UnassociateEipAddress
+    - 6.17.7 ReleaseEipAddress
+    - 6.17.8 DescribeEipGatewayInfo
+    - 6.17.9 DescribeHighDefinitionMonitorLogAttribute
+  - 6.18 HAVIPs
+    - 6.18.1 CreateHaVip
+    - 6.18.2 DescribeHaVips
+    - 6.18.3 ModifyHaVipAttribute
+    - 6.18.4 AssociateHaVip
+    - 6.18.5 UnassociateHaVip
+    - 6.18.6 DeleteHaVip
+  - 6.19 ACLs
+    - 6.19.1 CreateNetworkAcl
+    - 6.19.2 AssociateNetworkAcl
+    - 6.19.3 ModifyNetworkAclAttributes
+    - 6.19.4 UpdateNetworkAclEntries
+    - 6.19.5 UnassociateNetworkAcl
+    - 6.19.6 CopyNetworkAclEntries
+    - 6.19.7 DeleteNetworkAcl
+    - 6.19.8 DescribeNetworkAcls
+    - 6.19.9 DescribeNetworkAclAttributes
+  - 6.20 IPv6 gateways
+    - 6.20.1 CreateIpv6Gateway
+    - 6.20.2 DeleteIpv6Gateway
+    - 6.20.3 DescribeIpv6Gateways
+    - 6.20.4 ModifyIpv6GatewaySpec
+    - 6.20.5 DescribeIpv6EgressOnlyRules
+    - 6.20.6 CreateIpv6EgressOnlyRule
+    - 6.20.7 DeleteIpv6EgressOnlyRule
+    - 6.20.8 DeleteIpv6InternetBandwidth
+    - 6.20.9 DescribeIpv6GatewayAttribute
+    - 6.20.10 DescribeIpv6Addresses
+    - 6.20.11 ModifyIpv6InternetBandwidth
+    - 6.20.12 AllocateIpv6InternetBandwidth
+    - 6.20.13 ModifyIpv6AddressAttribute
+    - 6.20.14 ModifyIpv6GatewayAttribute
+- 7 Appendixes
+  - 7.1 Use the ASAPI gateway to call API operations
+  - 7.2 Use the ASAPI gateway to make API calls
+    - 7.2.1 Obtain an endpoint of ASAPI
+    - 7.2.2 Obtain Apsara Stack SDKs
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Centerpage by using a browser.
@@ -21,7 +258,7 @@ documentation This topic describes how to view the desired product development d
 4. In the left-side navigation pane, select the name of the product that you want to view.
 5. In the upper-right corner of the product documentation section, click View Det ails or Download PDF.
 
-### Call API operations
+### 1.2 Call API operations
 
 Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to use POP Gateway to call Apsara Stack API operations. Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, and Obtain ASAPI SDK. Procedure
 1. Obtain an AccessKey pair.
@@ -35,9 +272,9 @@ For more information about how to view, use, and obtain the developer guide of a
 5. Obtain the endpoint of a cloud service.
 6. Obtain the cloud service SDK and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
@@ -46,7 +283,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the information about API
+### 2.2 View the information about API operations
 
 operations This topic describes how to view the information about API operations. The information includes service names, API operation names, and API versions. The information is required when you use an SDK to call API operations. Context The API operations on the API Directory page are only for reference. For information about how to call API operations, see developer guides of the corresponding cloud services. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
 1. Go to the API Tool console. For more information, see Log on to the API Tool console.
@@ -56,7 +293,7 @@ an API operation name in the search box, and then click Search.
 4. View and record the service name, API operation name, and API version of the API operation that you want to
 call.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are provided by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is provided by RAM. Context An AccessKey ID and an AccessKey secret are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign AccessKey credentials: An AccessKey pair that is provided by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is provided by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed by the permission system of the Apsara Unimanager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -82,7 +319,7 @@ Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call Apsara Stack API operations. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS. Procedure
 1. Obtain the `RAM role` .
@@ -181,7 +418,7 @@ rStsAccessSecret>");
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain the values of common headers
+### 2.5 Obtain the values of common headers
 
 You must provide multiple headers when you call Apsara Stack operations. This topic describes the headers and how to obtain the values of the headers. This topic also describes the return values of specific headers after you call Apsara Stack operations. Headers
 
@@ -212,7 +449,7 @@ Response parameters The following additional response parameters are returned by
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of VPC
+### 2.6 Obtain the endpoint of VPC
 
 This topic describes how to obtain the endpoint of Virtual Private Cloud (VPC). Background information To use (Portable OpenAPI Proxy) POP Gateway to call Apsara Stack API operations, you must use a service endpoint. You can obtain a service endpointfrom Apsara Stack onsite O&M engineers. You can also perform the following steps to obtain an endpoint. Procedure
 1. Log on to the Apsara Infrastructure Management console.
@@ -224,15 +461,15 @@ icon next to Service and search for `VPC` .
 5. Find `vpc-yaochi` . Right-click the value in the Service Regist rat ion column and select Show More.
 On the Det ails page, view the value of vpc-int ernal.openapi.endpoint . The value indicates the `endpoint` of VPC.
 
-### Obtain VPC SDK
+### 2.7 Obtain VPC SDK
 
 When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain Virtual Private Cloud (VPC) SDK. Background information To use VPC features, you must install both the VPC SDK and the Alibaba Cloud core library. For example, to use VPC SDK for Java, you must download `aliyun-java-sdk-vpc` and `aliyun-java-sdk-core` . VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies callers based on their AccessKey pairs and provides features such as automatic signing to allow you to create and manage resources by calling API operations. Alibaba Cloud SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is applicable to all cloud services and is compatible with Apsara Stack. Instructions Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Quick start
+### 3.1 Quick start
 
-This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java. Prerequisites You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use SDK for Java. For more information, see Obtain an AccessKey pair. Obtain the endpoint of VPC. For more information, see Obtain the endpoint of VPC. To install Alibaba Cloud SDK for Java,you must useJava Development Kit (JDK) 1.8 or later. Install VPC SDK for Java If you use Apache Maven to manage Java projects, you need to only add Maven commands to the pom.xml file of the projects. To use VPC SDK, you must install the SDK core library and VPC SDK. We recommend that you use the core library version 4.5.17 or later, and use the SDK version 3.2.0.
+This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java. Prerequisites You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use SDK for Java. For more information, see Obtain an AccessKey pair. Obtain the endpoint of VPC. For more information, see Obtain the endpoint of VPC. To install Alibaba Cloud SDK for Java,you must useJava Development Kit (JDK) 1.8 or later. If you use Apache Maven to manage Java projects, you need to only add Maven commands to the pom.xml file of the projects. To use VPC SDK, you must install the SDK core library and VPC SDK. We recommend that you use the core library version 4.5.17 or later, and use the SDK version 3.2.0.
 
 ```xml
 <dependencies>
@@ -315,9 +552,9 @@ ult value: HTTP.
 
 SDK for Java
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install VPC SDK for Java
+#### 3.2.1 Install VPC SDK for Java
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. Alibaba Cloud SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Alibaba Cloud SDK for Java by adding Maven dependencies or downloading Alibaba Cloud SDK. To use VPC SDK, you must install the core library of Alibaba Cloud SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use VPC SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDK.
 
@@ -336,7 +573,7 @@ This topic describes how to install and use Virtual Private Cloud (VPC) SDK for 
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client. Not e Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -349,7 +586,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Not e In the preceding sample code,replace the parameterswith the actual information. Remove the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. SDK for Java You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
@@ -369,7 +606,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to initiate a request. Procedure
 1. Create an AcsClient instance.
@@ -409,7 +646,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -438,9 +675,9 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-#### Use CommonRequest to call API operations
+#### 3.2.6 Use CommonRequest to call API operations
 
-If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call API operations If you want to send a CommonRequest request, you must obtain the values of the following parameters: You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You must obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Acti` `on>")` . For example, if you want to call the DescribeVpcs operation, you must use `request.setSysAction("DescribeVpcs"` `)` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations. SDK for Java Not e In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration If you want to send a CommonRequest request, you must obtain the values of the following parameters: You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You must obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Acti` `on>")` . For example, if you want to call the DescribeVpcs operation, you must use `request.setSysAction("DescribeVpcs"` `)` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations. SDK for Java Not e In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; public class Sample {
@@ -510,11 +747,11 @@ field in the request parameters.
 
 SDK for Python
 
-## Call examples for SDK for Python
+## 4 Call examples for SDK for Python
 
-### Quick start
+### 4.1 Quick start
 
-This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python. Prerequisites You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use VPC SDK for Python. For more information, see Obtain AccessKey credentials. Obtain the endpoint of VPC. For more information, see Obtain the endpoint of VPC. Install VPC SDK for Python
+This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python. Prerequisites You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use VPC SDK for Python. For more information, see Obtain AccessKey credentials. Obtain the endpoint of VPC. For more information, see Obtain the endpoint of VPC.
 1. Install the SDK core library.
 If you use Python 2.x, run the following command:
 
@@ -564,9 +801,9 @@ request = DescribeVpcsRequest.DescribeVpcsRequest() request.set_accept_format('j
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, the default value is print (response).
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install VPC SDK for Python
+#### 4.2.1 Install VPC SDK for Python
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip. Not e To use the SDK of a cloud service, you must install the SDK core library for Python. For example, if you want to use VPC SDK for Python, you must install the SDK core library for Python and VPC SDK for Python. If you use Python 2.x, run the following command:
 
@@ -592,7 +829,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-vpc
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. SDK for Python If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client. Not ice Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -600,7 +837,7 @@ When using Alibaba Cloud SDK to access Apsara Stack services, you must provide a
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python.
 
@@ -628,7 +865,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Python to initiate a request. Procedure
 1. Import the VPC SDK.
@@ -656,7 +893,7 @@ request = DescribeVpcsRequest.DescribeVpcsRequest() request.set_accept_format('j
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, the default value is print (response).
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -677,9 +914,9 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API operations
+#### 4.2.6 Use CommonRequest to call API operations
 
-If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call API operations SDK for Python If you want to send a CommonRequest request, you must obtain the values of the following parameters: You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. To call an RPC API operation: You must obtain the value of the Action parameter and use `request.set_action_name('Action')` to specify the API operation. For example, if you want to call the DescribeVpcs operation, you must use `request.set_action_name('DescribeVp` `cs')` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations. Not e In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. SDK for Python
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration SDK for Python If you want to send a CommonRequest request, you must obtain the values of the following parameters: You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. To call an RPC API operation: You must obtain the value of the Action parameter and use `request.set_action_name('Action')` to specify the API operation. For example, if you want to call the DescribeVpcs operation, you must use `request.set_action_name('DescribeVp` `cs')` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations. Not e In the following sample code, replace the parameters with the actual information. Remove the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. SDK for Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -715,9 +952,9 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 SDK for Go
 
-## Call examples for SDK for Go
+## 5 Call examples for SDK for Go
 
-### Quick start
+### 5.1 Quick start
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Go. Prerequisites You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use VPC SDK. For more information, see Obtain an AccessKey pair. Obtain the endpoint of VPC. For more information, see Obtain the endpoint of VPC. Install the core package of Alibaba Cloud SDK for Go Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package: You can check whether the latest version of the core package is installed on the Alibaba Cloud SDK for Go page.
 
@@ -770,15 +1007,15 @@ func main() {
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example to show how to initialize a vpcClient instance. SDK for Go
 
@@ -791,7 +1028,7 @@ When using Alibaba Cloud SDK to access Apsara Stack services, you must provide a
 
 Not e In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. The following example shows how to use VPC SDK for Go to initiate a request.
 1. Import VPC SDK for Go.
@@ -829,9 +1066,9 @@ request := vpc.CreateDescribeVpcsRequest() request.InstanceId = ""
 response, err := vpcClient.DescribeVpcs(request)
 ```
 
-#### Troubleshooting
+#### 5.2.4 Troubleshooting
 
-When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. Handle errors You can use the following code to handle errors: SDK for Go
+When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. You can use the following code to handle errors: SDK for Go
 
 ```
 response,err := vpcClient.DescribeVpcs(request) if err != nil {
@@ -901,7 +1138,7 @@ response, err := vpcClient.DescribeVpcs(request) if serverError, ok := err.(*err
     response.GetOriginHttpResponse()
 ```
 
-#### Use CommonRequest to call API operations
+#### 5.2.5 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following code provides an example of how to call the `DescribeVpcs` operation to query virtual private clouds (VPCs). VPC API operations are RPC operations. Not e In the following code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
 
@@ -963,9 +1200,9 @@ is parameter is required if you want to modify, delete, or query an instance.
     fmt.Print(response.GetHttpContentString())
 ```
 
-## API reference
+## 6 API reference
 
-### Overview
+### 6.1 Overview
 
 The following tables list the API operations available for use in Virtual Private Cloud (VPC). VPC management
 
@@ -1213,9 +1450,9 @@ IPv6 gateway management
 | ModifyIpv6AddressAttribute | Modifies the name and description of an IPv6 address. |
 | ModifyIpv6GatewayAttribute | Modifies the information about an IPv6 gateway. |
 
-### Call VPC APIs
+### 6.2 Call VPC APIs
 
-#### Request syntax
+#### 6.2.1 Request syntax
 
 To call a Virtual Private Cloud (VPC) API operation, you must send an HTTP GET request to the endpoint of the VPC API. You must add the request parameters that correspond to the API operation being called. After you call the API, the system returns a response. The request and response are encoded in UTF-8. VPC API operations use the RPC protocol. You can call VPC API operations by sending HTTP GET requests. The following example shows the syntax of a VPC API request:
 
@@ -1229,11 +1466,11 @@ where: Endpoint: the endpoint of the API. The endpoint of the VPC API is `vpc.`e
 https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### API authorization
+#### 6.2.2 API authorization
 
 To ensure the security of your account, we recommend that you call VPC APIs as a RAM user. Before you can use a RAM account to call a VPC API, you must create a RAM account and assign corresponding permissions to it. For more information about VPC resources and APIs you can assign permissions on, see RAM authentication.
 
-#### Request signatures
+#### 6.2.3 Request signatures
 
 You must sign all API requests to ensure security. Virtual Private Cloud (VPC) uses the request signature to verify the identity of the API caller. VPC implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Alibaba Cloud accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. You must add the signature to an RPC API request in the following format:
 
@@ -1267,7 +1504,7 @@ CT9X0VtwR86fNWSnsc6v8YGOjuE=
 http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.3 RAM authentication
 
 Before calling a VPC API using a RAM user, you must use an Apsara Stack tenant account to create an authorization policy to assign permissions to the RAM user. In the authorization policy, an Alibaba Cloud Resource Name (ARN) is used as the unique identifier of the resource to authorize. VPC resources The following table lists the VPC resources that can be authorized and their corresponding ARN formats.
 
@@ -1385,7 +1622,7 @@ $regionid`/`accoutid`/`vrouterid are IDs of the specific resources, `*` represen
 | vpc:DescribeSnatTableEntries | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |   |
 | vpc:DeleteSnatEntry | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |   |
 
-### Common parameters
+### 6.4 Common parameters
 
 Common request parameters Common request parameters are request parameters that you must use when you call each API. Common request parameters
 
@@ -1429,9 +1666,9 @@ JSON format `{`
       /*Returned results*/
 ```
 
-### VPC
+### 6.5 VPC
 
-#### CreateVpc
+#### 6.5.1 CreateVpc
 
 Deletes a virtual private cloud (VPC). Descriptions When you call this operation, take note of the following rules: You can specify only one CIDR block for a VPC. The CIDR block must be 172.16.0.0/16, 192.168.0.0/16, or their subnets, and the subnet mask must be 8 to 24 bits in length. The default CIDR block is 192.168.0.0/16. After you create a VPC, you cannot modify its CIDR block. In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota. After you create a VPC, a vRouter and a route table are automatically created. At most three customer-side CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 192.168.0.0/16 and 192.168.0.0/24 are specified, only 192.168.0.0/16 takes effect. Request parameters
 
@@ -1518,7 +1755,7 @@ Error codes
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID is invalid. |
 | 400 | OperationUnsupported. ResourceGroupId | ResourceGroup is not supported in this region. | The error message returned because the resource group feature is not enabled. |
 
-#### DeleteVpc
+#### 6.5.2 DeleteVpc
 
 Deletes a virtual private cloud (VPC). Descriptions When you call this operation, take note of the following limits: Before you delete a VPC, make sure that you have released or removed all resources deployed in the VPC, such as vSwitches, instances, and high-availability virtual IP addresses (HAVIPs). You can delete only a VPC that is in the Available state. Request parameters
 
@@ -1588,7 +1825,7 @@ Error codes
 | 400 | Forbbiden | Active custom route in vpc. | The error message returned because you must add a custom route entry to the VPC. |
 | 400 | DependencyViolation.D hcpOptionsSet | The VPC cannot be deleted when it is associated with dhcpOptionsSet. | The error message returned because DHCP options sets exist in the VPC and the VPC cannot be deleted. Delete the DHCP options sets and try again. |
 
-#### ModifyVpcAttribute
+#### 6.5.3 ModifyVpcAttribute
 
 Modifies the name and description of a virtual private cloud (VPC). Request parameters
 
@@ -1647,7 +1884,7 @@ Error codes
 |---|---|---|---|
 | 400 | InvalidCidrBlock.Malfor med | Specified CIDR block is not valid. | The error message returned because the format of the specified CIDR block is invalid. |
 
-#### DescribeVpcAttribute
+#### 6.5.4 DescribeVpcAttribute
 
 Queries the detailed information about a specified virtual private cloud (VPC). Request parameters
 
@@ -1817,7 +2054,7 @@ Sample success responses `XML` format
 | 400 | IncorrectVpcStatus | Current VPC status does not support this operation. | The error message returned because this operation cannot be performed while the VPC is in the current state. |
 | 404 | InvalidVpcId.NotFound | Specified VPC does not exist. | The error message returned because the specified VPC does not exist. |
 
-#### AssociateVpcCidrBlock
+#### 6.5.5 AssociateVpcCidrBlock
 
 Adds a secondary IPv4 CIDR block to a virtual private cloud (VPC). Request parameters
 
@@ -1863,7 +2100,7 @@ Error codes
 | 400 | MissingParam.Secondar yCidrBlockOrIpv6CidrBlo ck | Either SecondaryCidrBlock or Ipv6CidrBlock must be specified. | The error message returned because the secondary IPv4 CIDR block or the IPv6 CIDR block is not set. |
 | 400 | MissingParam.VpcId | You must specify VpcId. | The error message returned because VpcId is not set. |
 
-#### UnassociateVpcCidrBlock
+#### 6.5.6 UnassociateVpcCidrBlock
 
 Deletes a secondary IPv4 CIDR block from a virtual private cloud (VPC). Descriptions Before you delete a secondary IPv4 CIDR block from a VPC, delete the vSwitch which is created with the IPv4 CIDR block. For more information, see `DeleteVSwitch` . Request parameters
 
@@ -1906,7 +2143,7 @@ Sample success responses `XML` format
  "RequestId":"C1221A1F-2ACD-4592-8F27-474E02883159"
 ```
 
-#### MoveResourceGroup
+#### 6.5.7 MoveResourceGroup
 
 Moves a resource to a different resource group. Request parameters
 
@@ -1953,9 +2190,9 @@ Error codes
 |---|---|---|---|
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID is invalid. |
 
-### vSwitch
+### 6.6 vSwitch
 
-#### CreateVSwitch
+#### 6.6.1 CreateVSwitch
 
 Creates a vSwitch. Descriptions When you call this operation, take note of the following limits: You can create at most 24 vSwitches in a virtual private cloud (VPC). The first IP address and last three IP addresses of each vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved. The number of instances in a vSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances. Each instance can belong to only one vSwitch. vSwitches do not support multicasting or broadcasting. After you create a vSwitch, you cannot modify its CIDR block. Request parameters
 
@@ -2039,7 +2276,7 @@ Error codes
 |---|---|---|---|
 | 400 | Forbidden.VpcNotFoun d | Specified VPC can not found. | The error message returned because the specified VPC does not exist. Check whether the specified VPC ID is valid. |
 
-#### DeleteVSwitch
+#### 6.6.2 DeleteVSwitch
 
 Deletes a vSwitch. Descriptions When you call this operation, take note of the following limits: Before you delete a vSwitch, delete all the resources that are deployed in the vSwitch first, including Elastic Compute Service (ECS) instances, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances. If SNAT entries and high-availability virtual IP addresses (HAVIPs) are configured in the vSwitch, delete them before you delete the vSwitch. You can delete only vSwitches that are in the Available state. You cannot delete a vSwitch from a virtual private cloud (VPC) if a vSwitch is being created, a vSwitch is being deleted, or a route entry is being deleted in the VPC. Request parameters
 
@@ -2088,7 +2325,7 @@ Error codes
 | 404 | InvalidVSwitchId.NotFou nd | VSwitch not exist. | The error message returned because the specified vSwitch does not exist. Check whether you specify a valid vSwitch. |
 | 404 | IncorrectStatus | Vswtich status not stable. | The error message returned because the vSwitch is in the Pending or Modifying state. Try again later. |
 
-#### ModifyVSwitchAttribute
+#### 6.6.3 ModifyVSwitchAttribute
 
 Modifies the name and description of a vSwitch. Request parameters
 
@@ -2136,7 +2373,7 @@ Error codes
 | 400 | InvalidVSwitchDiscriptio n.Malformed | Specified virtual switch description is not valid. | The error message returned because the format of the specified vSwitch description is invalid. Check whether the specified description is valid. |
 | 400 | InvalidVSwitchDiscriptio n.Malformed | Specified virtual switch description is not valid. | The error message returned because the specified description of the vSwitch is invalid. |
 
-#### DescribeVSwitchAttributes
+#### 6.6.4 DescribeVSwitchAttributes
 
 Queries detailed information about a vSwitch. Request parameters
 
@@ -2250,9 +2487,9 @@ Sample success responses `XML` format
         "ResourceType": "VSwitch"
 ```
 
-### vRouter
+### 6.7 vRouter
 
-#### ModifyVRouterAttribute
+#### 6.7.1 ModifyVRouterAttribute
 
 Modifies the name and description of a vRouter. Request parameters
 
@@ -2306,7 +2543,7 @@ Error codes
 | 400 | InvalidVRouterDiscriptio n.Malformed | Specified virtual router description is not valid. | The error message returned because the description format of the specified vRouter is invalid. |
 | 400 | MissingParameter | Miss mandatory parameter. | The error message returned because required parameters are not set. Check whether you have set all the required parameters before you call this operation. |
 
-#### DescribeVRouters
+#### 6.7.2 DescribeVRouters
 
 Queries vRouters in a specified region. Request parameters
 
@@ -2418,9 +2655,9 @@ Sample success responses `XML` format
     "RequestId": "CB2793A8-845F-444C-8E93-76F1BBDF9C78"
 ```
 
-### Route table
+### 6.8 Route table
 
-#### CreateRouteTable
+#### 6.8.1 CreateRouteTable
 
 Creates a custom route table. Request parameters
 
@@ -2469,7 +2706,7 @@ Error codes
 | 400 | InvalidParameter.Descri ption.Malformed | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 | 404 | InvalidVpcId.NotFound | Specified VPC does not exist. | The error message returned because the specified VPC does not exist. |
 
-#### CreateRouteEntry
+#### 6.8.2 CreateRouteEntry
 
 Adds a custom route entry to the route table of a vRouter or a virtual border router (VBR). Descriptions When you call t his operat ion t o add a cust om rout e ent ry t o t he rout e t able of a vRout er, t ake not e of t he f ollowing limit s: The number of custom route entries in a route table cannot exceed 48. The destination CIDR block (Dest inat ionCidrBlock) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the virtual private cloud (VPC). The destination CIDR block (Dest inat ionCidrBlock) of a custom route entry cannot be 100.64.0.0/10 or a subset of it. The destination CIDR blocks (Dest inat ionCidrBlock) of route entries in the same route table must be unique. If you do not include the mask length when you specify the destination CIDR block (Dest inat ionCidrBlock), the destination CIDR block is considered a host IP address whose mask length is 32 bits. Multiple custom route entries can be destined for the same next hop (Next HopId). The next hop (Next HopId) of a custom route entry must belong to the same VPC as the route table. Equal-cost multi-path (ECMP) route entries can be configured by specifying the Next HopList parameter. If you want to add a non-ECMP route entry, you must specify Dest inat ionCidrBlock, Next HopT ype, and Next HopId, and you cannot specify Next HopList . If you want to add an ECMP route entry, you must specify Dest inat ionCidrBlock and Next HopList , and you cannot specify Next HopT ype or Next HopId. When you call t his operat ion t o add a cust om rout e ent ry t o t he rout e t able of a VBR, t ake not e of t he f ollowing limit s: The number of custom route entries in a route table cannot exceed 48. The Next HopList parameter is not supported. The destination CIDR block (Dest inat ionCidrBlock) of a custom route entry cannot be 100.64.0.0/10 or a subset of it. The destination CIDR blocks (Dest inat ionCidrBlock) of route entries in the same route table must be unique. If you do not include the mask length when you specify the destination CIDR block (Dest inat ionCidrBlock), the destination CIDR block is considered a host IP address whose mask length is 32 bits. Multiple custom route entries can be destined for the same next hop (Next HopId). The next hop (Next HopId) of a custom route entry must be a router interface associated with the VBR. You can add route entries only when the VBR is in the Act ive state, and the Express Connect circuit associated with the VBR is in the Enabled state. Only non-ECMP route entries are supported. When you add non-ECMP route entries, you must specify Dest inat ionCidrBlock, Next HopT ype, and Next HopId, and you cannot specify Next HopList . Request parameters
 
@@ -2575,7 +2812,7 @@ Error codes
 | 400 | InvalidRouteEntrySize | The Specified routerEntry size not legal. | The error message returned because you must specify two to four router interfaces as next hops if you want to configure ECMP routing. |
 | 400 | InvalidRouteEntry | Specified routeEntry not exist. | The error message returned because the specified route entry does not exist. |
 
-#### DeleteRouteEntry
+#### 6.8.3 DeleteRouteEntry
 
 Deletes a custom route entry from a route table. Descriptions When you call this operation, take note of the following rules: You can delete only a custom route entry that is in the Available state. You cannot delete a custom route entry from a virtual private cloud (VPC) where a vSwitch is being created or deleted. Request parameters
 
@@ -2646,7 +2883,7 @@ Error codes
 | 400 | InvalidRouteEntry | Specified routeEntry not exist. | The error message returned because the specified route entry does not exist. |
 | 400 | IncorrectVpcStatus | Current VPC status does not support this operation. | The error message returned because this operation cannot be performed while the VPC is in the current state. |
 
-#### DescribeRouteEntryList
+#### 6.8.4 DescribeRouteEntryList
 
 Queries information about route entries in a route table. Request parameters
 
@@ -2774,7 +3011,7 @@ Error codes
 |---|---|---|---|
 | 400 | OperationFailed.QueryC enEntry | Operation is denied because getting CEN route entry has failed. | The error message returned because the system cannot obtain the Cloud Enterprise Network (CEN) routes. |
 
-#### ModifyRouteEntry
+#### 6.8.5 ModifyRouteEntry
 
 Modifies the name and description of a custom route entry. Request parameters
 
@@ -2825,7 +3062,7 @@ Error codes
 |---|---|---|---|
 | 400 | InvalidRouteEntryId.Not Found | The specified routeEntry does not exist. | The error message returned because the specified route entry does not exist. |
 
-#### AssociateRouteTable
+#### 6.8.6 AssociateRouteTable
 
 Associates a custom route table with a vSwitch in the same virtual private cloud (VPC). Request parameters
 
@@ -2869,7 +3106,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRouteTableId.Not Found | Specified route table does not exist. | The error message returned because the specified route table does not exist. |
 
-#### DeleteRouteTable
+#### 6.8.7 DeleteRouteTable
 
 Deletes a custom route table. Descriptions Before you delete a custom route table, disassociate the vSwitch that is associated with the custom route table. Request parameters
 
@@ -2911,7 +3148,7 @@ Error codes
 |---|---|---|---|
 | 400 | IncorrectVSwitchStatus | The current virtual switch status does not support this operation. | The error message returned because the vSwitch is in the Configuring state and cannot be deleted. |
 
-#### DescribeRouteTableList
+#### 6.8.8 DescribeRouteTableList
 
 Queries route tables. Request parameters
 
@@ -3051,7 +3288,7 @@ Error codes
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Apply for the permissions and try again. |
 
-#### UnassociateRouteTable
+#### 6.8.9 UnassociateRouteTable
 
 Disassociates a route table from a vSwitch. Request parameters
 
@@ -3095,9 +3332,9 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRouteTableId.Not Found | Specified route table does not exist. | The error message returned because the specified route table does not exist. |
 
-### Region
+### 6.9 Region
 
-#### DescribeRegions
+#### 6.9.1 DescribeRegions
 
 Queries the most recent region list. Request parameters
 
@@ -3153,7 +3390,7 @@ Sample success responses `XML` format
         "LocalName": "China (Qingdao)"
 ```
 
-#### DescribeZones
+#### 6.9.2 DescribeZones
 
 Queries zones in a specified region. Request parameters
 
@@ -3202,9 +3439,9 @@ Sample success responses `XML` format
         "LocalName": "Hangzhou Zone B"
 ```
 
-### Tag
+### 6.10 Tag
 
-#### TagResources
+#### 6.10.1 TagResources
 
 Creates tags and adds the tags to resources at a time. Descriptions Tags are used to classify instances. Each tag consists of a key and a value. To use tags, make sure that the following requirements are met: The keys of tags that are added to the same instance must be unique. You cannot create tags without adding them to instances. All tags must be added to instances. Tag information is not shared across regions. Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Apsara Stack tenant account and in the same region share tag information with each other. For example, if you have added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and in the same region where the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted. You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached. Request parameters
 
@@ -3252,7 +3489,7 @@ Error codes
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Submit a ticket to obtain the required permissions. |
 
-#### ListTagResources
+#### 6.10.2 ListTagResources
 
 Queries tags that are added to one or more instances. Descriptions Set ResourceId.N or T ag.N t hat consist s of T ag.N.Key and T ag.N.Value in the request to specify the object to be queried. T ag.N is a resource tag that consists of a key-value pair. If you set only T ag.N.Key, all tag values that are associated with the specified key are returned. If you set only T ag.N.Value, an error message is returned. If you set T ag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs. If you specify multiple key-value pairs, resources that contain these key-value pairs are returned. Request parameters
 
@@ -3325,7 +3562,7 @@ Error codes
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Submit a ticket to obtain the required permissions. |
 
-#### UnTagResources
+#### 6.10.3 UnTagResources
 
 Removes tags from specified resources. Request parameters
 
@@ -3376,9 +3613,9 @@ Error codes
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. To obtain the required permissions, submit a ticket. |
 
-### Physical connections
+### 6.11 Physical connections
 
-#### CreatePhysicalConnection
+#### 6.11.1 CreatePhysicalConnection
 
 Applies for an Express Connect circuit. Descriptions After your application is approved, the Express Connect circuit changes to the Init ial state. You can contact the Internet service provider (ISP) to start construction. When you call this operation, take note of the following limits: If your Apsara Stack tenant account has more than five Express Connect circuits that are not in the Enabled state, you cannot apply for another Express Connect circuit. If your account has an Express Connect circuit with overdue payments, you cannot apply for another Express Connect circuit. Request parameters
 
@@ -3459,7 +3696,7 @@ Error codes
 | 400 | InvalidCircuitCode.Malfo rmed | circuitCode is illegal. | The error message returned because CircuitCode is set to an invalid value. |
 | 400 | QuotaExceeded.freePco nnPerAP | free physical connections count excceeded. | The error message returned because the quota on Express Connect circuits is reached. |
 
-#### DescribeAccessPoints
+#### 6.11.2 DescribeAccessPoints
 
 Queries the access points of Express Connect circuits in a specified region. Request parameters
 
@@ -3560,7 +3797,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotSup port | The RegionId provided does not support in our records. | The error message returned because the specified region ID is invalid. |
 
-#### CancelPhysicalConnection
+#### 6.11.3 CancelPhysicalConnection
 
 Cancels an Express Connect circuit before it is enabled. After you cancel an Express Connect circuit, it changes to the Canceled state. Limits You can cancel only an Express Connect circuit that is in the Init ial, Approved, Allocat ed, or Conf irmed state. Request parameters
 
@@ -3604,7 +3841,7 @@ Error codes
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the specified Express Connect circuit does not exist. |
 | 400 | Forbidden.NotAllowedI nState | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### DescribePhysicalConnections
+#### 6.11.4 DescribePhysicalConnections
 
 Queries Express Connect circuits in a region. Request parameters
 
@@ -3762,7 +3999,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidFilterKey.ValueNo tSupported | Specified filter key is not supported: Filter.X.key | The error message returned because Filter.X.key is not supported. |
 
-#### ModifyPhysicalConnectionAttribute
+#### 6.11.5 ModifyPhysicalConnectionAttribute
 
 Modifies the configuration of a physical connection. When you call this operation, take note of the following limits: You can only modify the configuration of a physical connection that is in the Init ial, Enabled, or Reject ed state. You cannot modify the configurations of a physical connection that is in the Canceled, Allocat ing, Allocat ionFailed, or T erminat ed state. After you modify the configurations of a physical connection that is in the Reject ed state, its state becomes Init ial. Request parameters
 
@@ -3826,7 +4063,7 @@ Error codes
 | 400 | InvalidRedundantPhysic alConnectionStatus | invalid redundant physical connection status. | The error message returned because the state of the backup physical connection is invalid. |
 | 400 | InvalidCircuitCode.Malfo rmed | circuitCode is illegal. | The error message returned because the value of the CircuitCode parameter is invalid. |
 
-#### TerminatePhysicalConnection
+#### 6.11.6 TerminatePhysicalConnection
 
 Disables an Express Connect circuit after it is enabled. Descriptions After you call this operation, the specified Express Connect circuit changes to the T erminat ing state. After the Express Connect circuit is disabled, it changes to the T erminat ed state. When you call this operation, take note of the following limits: You can only terminate an Express Connect circuit that is in the Enabled state. Before you disable an Express Connect circuit, you must delete the virtual border routers (VBRs) associated with it. Request parameters
 
@@ -3871,7 +4108,7 @@ Error codes
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the specified Express Connect circuit does not exist. |
 | 400 | Forbidden.NotAllowedI nState | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### EnablePhysicalConnection
+#### 6.11.7 EnablePhysicalConnection
 
 Enables an Express Connect circuit that is in the Conf irmed state. After you enable an Express Connect circuit, it changes to the Enabled state. Descriptions When you call this operation, take note of the following limits: You can enable only an Express Connect circuit that is in the Conf irmed state. After you enable an Express Connect circuit, it changes to the Enabled state. Request parameters
 
@@ -3915,7 +4152,7 @@ Error codes
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the Express Connect circuit does not exist. |
 | 400 | Forbidden.NotAllowedI nState | The request does not allow in this state. | The error message returned because the operation cannot be performed when the Express Connect circuit in the current state. |
 
-#### DeletePhysicalConnection
+#### 6.11.8 DeletePhysicalConnection
 
 Deletes an Express Connect circuit. Limits You can only delete an Express Connect circuit that is in the Reject ed, Canceled, Allocat ionFailed, or T erminat ed state. Request parameters
 
@@ -3969,7 +4206,7 @@ Error codes
 | 400 | Forbidden.VBRExists | vbr owner's vbr still exists. | The error message returned because the VBR still exists. |
 | 400 | Forbidden.AssociateTo VBR | The physical connection still associate to VBR. | The error message returned because the Express Connect circuit is already associated with a VBR. |
 
-#### CreatePhysicalConnectionOccupancyOrder
+#### 6.11.9 CreatePhysicalConnectionOccupancyOrder
 
 Creates an order for resource occupation of one or more physical connections. Not e You can perform this operation only for a physical connection that is in the Complet e state. Request parameters
 
@@ -4023,7 +4260,7 @@ Error codes
 | 404 | InvalidPhysicalConnectio nId.NotFound | The PhysicalConnectionId provided does not exist in our records. | The error message returned because the physical connection does not exist. |
 | 400 | Forbidden.NotAllowedI nState | The request does not allow in this state. | The error message returned because the state is invalid. |
 
-#### ApplyPhysicalConnectionLOA
+#### 6.11.10 ApplyPhysicalConnectionLOA
 
 Requests a letter of authorization (LOA) for a physical connection. Request parameters
 
@@ -4077,7 +4314,7 @@ Sample success responses `XML` format
     "RequestId":"A47BD386-7FDE-42C4-8D22-C6223D18AA1C"
 ```
 
-#### CreatePhysicalConnectionSetupOrder
+#### 6.11.11 CreatePhysicalConnectionSetupOrder
 
 Creates an order for initial installation of a physical connection. Request parameters
 
@@ -4130,7 +4367,7 @@ Sample success responses `XML` format
     "PhysicalConnectionId": "pc-2zegmc02v7ss4******"
 ```
 
-#### CompletePhysicalConnectionLOA
+#### 6.11.12 CompletePhysicalConnectionLOA
 
 Generates a report for an installed physical connection. Request parameters
 
@@ -4178,7 +4415,7 @@ Sample success responses `XML` format
     "success":true
 ```
 
-#### DescribePhysicalConnectionLOA
+#### 6.11.13 DescribePhysicalConnectionLOA
 
 Queries letter of authorization (LOA) information about an Express Connect circuit. Request parameters
 
@@ -4295,9 +4532,9 @@ Sample success responses `XML` format
     "success": true
 ```
 
-### VBR
+### 6.12 VBR
 
-#### CreateVirtualBorderRouter
+#### 6.12.1 CreateVirtualBorderRouter
 
 Creates a virtual border router (VBR). Descriptions After you create a VBR for your Apsara Stack tenant account, the VBR is in the Act ive state. After you create a VBR for another Apsara Stack tenant account, the VBR is in the Unconf irmed state. The other Apsara Stack tenant account must confirm the VBR. Request parameters
 
@@ -4390,7 +4627,7 @@ Error codes
 | 400 | InvalidIp.NotSameSubn et | Local gateway ip and peer gateway ip are not in the same subnet. | The error message returned because the IP addresses of the local gateway and the peer gateway do not fall within the same subnet. |
 | 404 | CROSS BID.FORBIDDEN _ | Create VBR across bid is illegal | The error message returned because you are not allowed to create a VBR for another Apsara Stack tenant account. |
 
-#### DeleteVirtualBorderRouter
+#### 6.12.2 DeleteVirtualBorderRouter
 
 Deletes a virtual border router (VBR). When you call this operation, take note of the following rules: Before you delete a VBR, you must delete all router interfaces on the VBR. You can delete only a VBR that is in the Unconfirmed, Enabled, or Terminated state. If the owner of a physical connection wants to delete a VBR that belongs to another Apsara Stack tenant account, the VBR must be in the Unconfirmed state. Request parameters
 
@@ -4442,7 +4679,7 @@ Error codes
 | 403 | Forbidden.NoRiFound | No vlan router interfaces are found. | The error message returned because no VLAN router interface is available. |
 | 400 | InvalidStatus.NotAllowe d | The virtual border has been associated by physicalConnection. | The error message returned because the VBR is associated with a physical connection. |
 
-#### DescribeVirtualBorderRouters
+#### 6.12.3 DescribeVirtualBorderRouters
 
 Queries virtual border routers (VBRs) that you have created. Request parameters
 
@@ -4747,7 +4984,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidPhysicalConnectio nId.NotFound | The specified PhysicalConnectionId does not belong to user. | The error message returned because the specified Express Connect circuit does not belong to your Apsara Stack tenant account. |
 
-#### TerminateVirtualBorderRouter
+#### 6.12.5 TerminateVirtualBorderRouter
 
 Disables a virtual border router (VBR). After you call this operation, the state of the VBR changes from Enabled to T erminat ing. After the VBR is disabled, its state changes to T erminat ed. Not e Only the owner of the physical connection to which the VBR connects can call this operation. Request parameters
 
@@ -4802,7 +5039,7 @@ Error codes
 | 400 | InvalidOperation.Operat ionNotAllowedInState | The specified VirutalBorderRouter is in invalid state. | The error message returned because the state of the specified VBR is invalid. Check the state of the VBR. |
 | 403 | Forbidden.OperationTer minateNotAllowedByUs er | The caller is not allowed to terminate the specified VirtualBorderRouter. | The error message returned because you are not authorized to disable the specified VBR. |
 
-#### RecoverVirtualBorderRouter
+#### 6.12.6 RecoverVirtualBorderRouter
 
 Enables a disabled VBR. After you call the operation, the state of the VBR changes from T erminat ed to Recovering. When the VBR is enabled, its state changes to Enabled. When you call this operation, take note of the following items: Only the owner of the physical connection can call this operation. The physical connection to which the VBR belongs must be in the Enabled state. Request parameters
 
@@ -4848,7 +5085,7 @@ Error codes
 | 400 | OperationFailed.VlanIdA lreadyInUse | The specifed vlanId has been used. | The error message returned because the VLAN interface is being used. |
 | 403 | Forbidden.OperationRec overNotAllowedByUser | The caller is not allowed to recover the specified VirtualBorderRouter. | The error message returned because you do not have the permissions to recover the VBR. |
 
-#### ModifyVirtualBorderRouterAttribute
+#### 6.12.7 ModifyVirtualBorderRouterAttribute
 
 Modifies the configuration of a virtual border router (VBR). Descriptions Only the owner of an Express Connect circuit can modify the VlanId parameter. One VLAN ID of an Express Connect circuit cannot be used by two VBRs at the same time. The VLAN ID of a VBR in the T erminat ed state is reserved for seven days and cannot be used by other VBRs. The VLAN ID can be used by other VBRs after 7 days. You cannot set LocalGat ewayIp, PeerGat ewayIp, or PeeringSubnet Mask for VBRs that do not belong to your Apsara Stack tenant account. Set PeeringSubnet Mask to a subnet mask with 24 to 30 bits in length (255.255.255.0～255.255.255.252). Set LocalGat ewayIp and PeerGat ewayIp to IP addresses that belong to the same CIDR block. For example, you can set LocalGatewayIp to 192.168.XX.XX, PeerGatewayIp to 192.168.XX.XX, and PeeringSubnetMask to 255.255.255.248. Request parameters
 
@@ -5089,9 +5326,9 @@ Error codes
 | 400 | InvalidStatus.NotAllowe d | Invalid virtual border router status. | The error message returned because the status of the VBR is invalid. |
 | 400 | PHYSICAL NOT ALLOW _ _ _ ASSOCIATE VBR _ | The specified operation not allow. | The error message returned because the physical connection is associated with a VBR and the operation cannot be performed. |
 
-### BGP
+### 6.13 BGP
 
-#### CreateBgpGroup
+#### 6.13.1 CreateBgpGroup
 
 Creates a Border Gateway Protocol (BGP) group for a specified virtual border router (VBR). BGP groups allow VBRs to communicate with data centers. Each BGP group is associated with a VBR. You can add a BGP peer that needs to communicate with a VBR to the corresponding BGP group and advertise the BGP network in the VBR. BGP groups are used to simplify BGP configurations. You can save time and effort by adding BGP peers that use the same configurations to one BGP group. You must use an autonomous system (AS) number to create a BGP group. When you call this operation, take note of the following limits: Only BGP4 is supported by the BGP groups. BGP groups support IPv4 BGP. IPv6 BGP is not supported. Request parameters
 
@@ -5166,7 +5403,7 @@ Error codes
 | 400 | InvalidStatus.CannotOp erate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 | 400 | QuotaExceeded.Bgp | bgp group count per vbr quota exceed. | The error message returned because the number of BGP groups in the VBR has reached the upper limit. |
 
-#### DescribeBgpGroups
+#### 6.13.2 DescribeBgpGroups
 
 Queries Border Gateway Protocol (BGP) groups in a region. Request parameters
 
@@ -5282,7 +5519,7 @@ Sample success responses `XML` format
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because unknown errors occur. |
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. Check whether the region ID is valid. |
 
-#### ModifyBgpGroupAttribute
+#### 6.13.3 ModifyBgpGroupAttribute
 
 Modifies the configuration of a Border Gateway Protocol (BGP) group. Request parameters
 
@@ -5358,7 +5595,7 @@ Error codes
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOp erate | invalid status cannot operate | The error message returned because the state is invalid and the operation cannot be performed. |
 
-#### DeleteBgpGroup
+#### 6.13.4 DeleteBgpGroup
 
 Deletes a Border Gateway Protocol (BGP) group. Request parameters
 
@@ -5423,7 +5660,7 @@ Error codes
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOp erate | invalid status cannot operate | The error message returned because the state is invalid and the operation cannot be performed. |
 
-#### CreateBgpPeer
+#### 6.13.5 CreateBgpPeer
 
 Adds a Border Gateway Protocol (BGP) peer to a BGP group. Request parameters
 
@@ -5499,7 +5736,7 @@ Error codes
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOp erate | invalid status cannot operate | The error message returned because you cannot perform the operation when the specified resource is in the current state. |
 
-#### DescribeBgpPeers
+#### 6.13.6 DescribeBgpPeers
 
 Queries BGP peers in a specified region. Request parameters
 
@@ -5632,7 +5869,7 @@ Error codes
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because unknown errors occur. |
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. Check whether the region ID is valid. |
 
-#### ModifyBgpPeerAttribute
+#### 6.13.7 ModifyBgpPeerAttribute
 
 Modifies the configuration of a Border Gateway Protocol (BGP) peer. Request parameters
 
@@ -5682,7 +5919,7 @@ Error codes
 |---|---|---|---|
 | 400 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DeleteBgpPeer
+#### 6.13.8 DeleteBgpPeer
 
 Deletes a specific Border Gateway Protocol (BGP) peer. Request parameters
 
@@ -5747,7 +5984,7 @@ Error codes
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOp erate | invalid status cannot operate | The error message returned because the state is invalid and the operation cannot be performed. |
 
-#### AddBgpNetwork
+#### 6.13.9 AddBgpNetwork
 
 Advertises a Border Gateway Protocol (BGP) network. Request parameters
 
@@ -5824,7 +6061,7 @@ Error codes
 |---|---|---|---|
 | 400 | QuotaExceeded.Bgp | bgp group count per vbr quota exceed. | The error message returned because the number of BGP groups in the VBR has reached the quota. |
 
-#### DeleteBgpNetwork
+#### 6.13.10 DeleteBgpNetwork
 
 Deletes an advertised Border Gateway Protocol (BGP) network. Request parameters
 
@@ -5890,7 +6127,7 @@ Error codes
 | 400 | InvalidParams.AlreadyEx ists | bgp network already exists | The error message returned because the BGP network already exists. |
 | 400 | InvalidStatus.CannotOp erate | invalid status cannot operate | The error message returned because the state is invalid and the operation cannot be performed. |
 
-#### DescribeBgpNetworks
+#### 6.13.11 DescribeBgpNetworks
 
 Queries advertised Border Gateway Protocol (BGP) networks. Request parameters
 
@@ -5968,9 +6205,9 @@ Error codes
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because unknown errors have occurred. |
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. Check whether the region ID is valid. |
 
-### Router interface
+### 6.14 Router interface
 
-#### CreateRouterInterface
+#### 6.14.1 CreateRouterInterface
 
 Creates a router interface. Usage notes When you call this operation, take note of the following limits: You can create only one pair of interfaces to be connected between two routers. You can create a maximum of five router interfaces for a router. Each destination CIDR block of route entries in the same route table must be unique. A virtual border router (VBR) can serve only as an initiator. The VBR must be in the Activated state. Request parameters
 
@@ -6070,7 +6307,7 @@ Error codes
 | 400 | InvalidAccessPoint.NotE xist | The accessPoint not exit | The error message returned because the access point does not exist. |
 | 400 | InvalidRouterType.Value NotSupported | The specified RouterType is not valid | The error message returned because the type of the router is invalid. |
 
-#### ConnectRouterInterface
+#### 6.14.2 ConnectRouterInterface
 
 Initiates a connection from the initiator router interface to the acceptor. After you call this operation, the router interface enters the Connecting state. When the connection is established, it enters the Active state. When you call this operation, take note of the following: Only an initiator router interface in the Idle state can initiate a connection. You can interconnect only a single pair of router interfaces between two routers. You cannot initiate a connection if your account contains a router interface with overdue payments. Request parameters
 
@@ -6106,7 +6343,7 @@ JSON format `{`
    "RequestId": "079874CD-AEC1-43E6-AC03-ADD96B6E4907"
 ```
 
-#### DeactivateRouterInterface
+#### 6.14.3 DeactivateRouterInterface
 
 Deactivates a router interface. After you call this operation, the router interface enters the Deactivating state. When the router interface is deactivated, it enters the Inactive state. Not e You cannot deactivate a router interface that has overdue payments. Request parameters
 
@@ -6142,7 +6379,7 @@ JSON format `{`
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-#### ModifyRouterInterfaceSpec
+#### 6.14.4 ModifyRouterInterfaceSpec
 
 Modifies the specifications of a router interface. After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot modify the specifications of a router interface that has overdue payments. Request parameters
 
@@ -6183,7 +6420,7 @@ JSON format `{`
      "Spec":"Middle.2"
 ```
 
-#### DeleteRouterInterface
+#### 6.14.5 DeleteRouterInterface
 
 Deletes a router interface. When you call this operation, take note of the following: You can only delete a router interface that is in the Idle or Inactive state. Before you delete a router interface, you must delete all custom route entries destined for the router interface. Request parameters
 
@@ -6224,7 +6461,7 @@ JSON format `{`
    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-#### DescribeRouterInterfaces
+#### 6.14.6 DescribeRouterInterfaces
 
 Queries router interfaces in a specified region. Request parameters
 
@@ -6400,7 +6637,7 @@ JSON format `{`
 
 `]`
 
-#### ActivateRouterInterface
+#### 6.14.7 ActivateRouterInterface
 
 Activates a router interface that is in the Inactive state. After you call this operation, the router interface enters the Activating state. When the router interface is activated, it enters the Active state. Not e You cannot activate a router interface that has overdue payments. Request parameters
 
@@ -6436,7 +6673,7 @@ JSON format `{`
     "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
 ```
 
-#### ModifyRouterInterfaceAttribute
+#### 6.14.8 ModifyRouterInterfaceAttribute
 
 Modifies the configuration of a router interface. Request parameters
 
@@ -6501,11 +6738,11 @@ Error codes
 | 400 | LinkRole.NotSupport | This linkrole is not supported | The error message returned because this link is not supported. |
 | 400 | InvalidParam.ModifyRou terInterface | Modify routerinterface param invalide | The error message returned because the value of the parameter that you set to modify the router interface is invalid. |
 
-### VPN gateways
+### 6.15 VPN gateways
 
-#### VPN gateway
+#### 6.15.1 VPN gateway
 
-##### CreateVpnGateway
+##### 6.15.1.1 CreateVpnGateway
 
 Creates a VPN gateway. Request parameters
 
@@ -6560,7 +6797,7 @@ Sample success responses `XML` format
 { "CreateVpnGatewayResponse":{ "Name":"myVpn", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "RequestId":" 54B48E3D-DF70-471B-AA93-08E683A1B457" } }
 ```
 
-##### DescribeVpnGateways
+##### 6.15.1.2 DescribeVpnGateways
 
 Queries VPN gateways. Request parameters
 
@@ -6681,7 +6918,7 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. Apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeVpnGateway
+##### 6.15.1.3 DescribeVpnGateway
 
 Queries the details of a specified VPN gateway. Request parameters
 
@@ -6765,7 +7002,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnGatewayInsta nceId.NotFound | The specified vpn gateway instance id does not exist. | The error message returned because the specified VPN gateway does not exist. Check whether the configuration of the VPN gateway is valid. |
 
-##### DeleteVpnGateway
+##### 6.15.1.4 DeleteVpnGateway
 
 Deletes a specified VPN gateway. Not e You cannot delete a VPN gateway that is associated with an IPsec-VPN connection. Request parameters
 
@@ -6813,7 +7050,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Configurin g | The specified VPN gateway is being configured. | The error message returned because the VPN gateway is being configured. |
 
-##### ModifyVpnGatewayAttribute
+##### 6.15.1.5 ModifyVpnGatewayAttribute
 
 Modifies the name and description of a VPN gateway. Request parameters
 
@@ -6895,9 +7132,9 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &RegionId=cn-qingdao-e
  "VpcId":"vpc-bp1ub1yt9cvakoelj****"
 ```
 
-#### Customer gateway
+#### 6.15.2 Customer gateway
 
-##### CreateCustomerGateway
+##### 6.15.2.1 CreateCustomerGateway
 
 Creates a customer gateway. Request parameters
 
@@ -6965,7 +7202,7 @@ Error codes
 | 400 | InvalidDescription | The description is not valid | The error message returned because the description format of the specified parameter is invalid. |
 | 400 | Resource.QuotaFull | The quota of resource is full | The error message returned because the resource quota is reached. |
 
-##### DescribeCustomerGateways
+##### 6.15.2.2 DescribeCustomerGateways
 
 Queries customer gateways in a specified region. Request parameters
 
@@ -7048,7 +7285,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are not authorized to perform this operation on the specified resource. Apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. Submit a ticket to obtain the required permissions. |
 
-##### DescribeCustomerGateway
+##### 6.15.2.3 DescribeCustomerGateway
 
 Queries details of a specified customer gateway. Request parameters
 
@@ -7105,7 +7342,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidCustomerGatewa yInstanceId.NotFound | The specified customer gateway instance id does not exist. | The error message returned because the specified instance ID does not exist. |
 
-##### DeleteCustomerGateway
+##### 6.15.2.4 DeleteCustomerGateway
 
 Deletes a specified customer gateway. Request parameters
 
@@ -7159,7 +7396,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidCustomerGatewa yInstanceId.NotFound | The specified customer gateway instance id does not exist. | The error message returned because the specified instance ID does not exist. |
 
-##### ModifyCustomerGatewayAttribute
+##### 6.15.2.5 ModifyCustomerGatewayAttribute
 
 Modifies the name and description of a customer gateway. Request parameters
 
@@ -7224,9 +7461,9 @@ Error codes
 | 400 | InvalidName | The name is not valid | The error message returned because the format of the name is invalid. |
 | 400 | InvalidDescription | The description is not valid | The error message returned because the format of the description is invalid. |
 
-#### Routes for VPN gateways
+#### 6.15.3 Routes for VPN gateways
 
-##### DeleteVpnPbrRouteEntry
+##### 6.15.3.1 DeleteVpnPbrRouteEntry
 
 Deletes a policy-based route from a VPN gateway. Request parameters
 
@@ -7285,7 +7522,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DeleteVpnRouteEntry
+##### 6.15.3.2 DeleteVpnRouteEntry
 
 Deletes a destination-based route from a VPN gateway. Request parameters
 
@@ -7340,7 +7577,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DescribeVpnRouteEntries
+##### 6.15.3.3 DescribeVpnRouteEntries
 
 Queries destination-based routes of a VPN gateway. Request parameters
 
@@ -7436,7 +7673,7 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### ModifyVpnRouteEntryWeight
+##### 6.15.3.4 ModifyVpnRouteEntryWeight
 
 Modifies the weight of a destination-based route for a VPN gateway. Request parameters
 
@@ -7495,7 +7732,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### CreateVpnRouteEntry
+##### 6.15.3.5 CreateVpnRouteEntry
 
 Creates a destination-based route on a VPN gateway. Request parameters
 
@@ -7577,7 +7814,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### ModifyVpnPbrRouteEntryWeight
+##### 6.15.3.6 ModifyVpnPbrRouteEntryWeight
 
 Modifies the weight of a policy-based route of a VPN gateway. Request parameters
 
@@ -7634,7 +7871,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DescribeVpnPbrRouteEntries
+##### 6.15.3.7 DescribeVpnPbrRouteEntries
 
 Queries policy-based routes of a VPN gateway. Request parameters
 
@@ -7728,7 +7965,7 @@ Sample success responses `XML` format
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### PublishVpnRouteEntry
+##### 6.15.3.8 PublishVpnRouteEntry
 
 Advertises a route of a VPN gateway to the route table of the associated virtual private cloud (VPC). Request parameters
 
@@ -7783,7 +8020,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### CreateVpnPbrRouteEntry
+##### 6.15.3.9 CreateVpnPbrRouteEntry
 
 Creates a policy-based route for a VPN gateway. Request parameters
 
@@ -7870,9 +8107,9 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-#### IPsec-VPN
+#### 6.15.4 IPsec-VPN
 
-##### DescribeVpnConnection
+##### 6.15.4.1 DescribeVpnConnection
 
 Queries the details of an IPsec-VPN connection. Request parameters
 
@@ -8036,7 +8273,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnConnectionIns tanceId.NotFound | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec-VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 
-##### DeleteVpnConnection
+##### 6.15.4.2 DeleteVpnConnection
 
 Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted. Request parameters
 
@@ -8082,7 +8319,7 @@ Error codes
 | 404 | InvalidVpnConnectionIns tanceId.NotFound | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec-VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 
-##### DownloadVpnConnectionConfig
+##### 6.15.4.3 DownloadVpnConnectionConfig
 
 Queries the configuration of an IPsec-VPN connection. Request parameters
 
@@ -8203,7 +8440,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnConnectionIns tanceId.NotFound | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec-VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 
-##### CreateVpnConnection
+##### 6.15.4.4 CreateVpnConnection
 
 Creates an IPsec-VPN connection. Request parameters
 
@@ -8285,7 +8522,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DescribeVpnConnections
+##### 6.15.4.5 DescribeVpnConnections
 
 Queries one or more IPsec-VPN connections. Request parameters
 
@@ -8460,7 +8697,7 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### ModifyVpnConnectionAttribute
+##### 6.15.4.6 ModifyVpnConnectionAttribute
 
 Modifies the configuration of an IPsec-VPN connection. Request parameters
 
@@ -8620,9 +8857,9 @@ Error codes
 |---|---|---|---|
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-#### SSL-VPN
+#### 6.15.5 SSL-VPN
 
-##### CreateSslVpnServer
+##### 6.15.5.1 CreateSslVpnServer
 
 Creates an SSL-VPN server. Request parameters
 
@@ -8699,7 +8936,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DeleteSslVpnServer
+##### 6.15.5.2 DeleteSslVpnServer
 
 Deletes an SSL-VPN server. Request parameters
 
@@ -8745,7 +8982,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### ModifySslVpnServer
+##### 6.15.5.3 ModifySslVpnServer
 
 Modifies the configuration of an SSL-VPN server. Request parameters
 
@@ -8867,7 +9104,7 @@ Error codes
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-##### DeleteSslVpnClientCert
+##### 6.15.5.4 DeleteSslVpnClientCert
 
 Deletes an SSL-VPN client certificate. Request parameters
 
@@ -8912,7 +9149,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 400 | VpnGateway.Configurin g | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 
-##### ModifySslVpnClientCert
+##### 6.15.5.5 ModifySslVpnClientCert
 
 Modifies the name of an SSL-VPN client certificate. Request parameters
 
@@ -8970,7 +9207,7 @@ Error codes
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-##### CreateSslVpnClientCert
+##### 6.15.5.6 CreateSslVpnClientCert
 
 Creates an SSL-VPN client certificate. Request parameters
 
@@ -9026,7 +9263,7 @@ Error codes
 | 400 | VpnGateway.FinancialLo cked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-##### DescribeSslVpnClientCerts
+##### 6.15.5.7 DescribeSslVpnClientCerts
 
 Queries one or more SSL-VPN client certificates. Request parameters
 
@@ -9137,7 +9374,7 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeSslVpnClientCert
+##### 6.15.5.8 DescribeSslVpnClientCert
 
 Queries a specified SSL-VPN client certificate. Request parameters
 
@@ -9216,7 +9453,7 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeSslVpnServers
+##### 6.15.5.9 DescribeSslVpnServers
 
 Queries one or more SSL-VPN servers. Request parameters
 
@@ -9342,7 +9579,7 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-##### DescribeVpnSslServerLogs
+##### 6.15.5.10 DescribeVpnSslServerLogs
 
 Queries the logs of an SSL-VPN server. Request parameters
 
@@ -9415,9 +9652,9 @@ Error codes
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-### NAT gateways
+### 6.16 NAT gateways
 
-#### CreateNatGateway
+#### 6.16.1 CreateNatGateway
 
 Creates a NAT gateway. Descriptions When you call this operation, take note of the following items: You cannot deploy a NAT gateway and a user-created SNAT gateway in the same virtual private cloud (VPC) if the SNAT gateway is an Elastic Compute Service (ECS) instance. After a NAT gateway is created, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop of the route entry is the NAT gateway. The route entry ensures that traffic is routed to the NAT gateway. If the route table of the VPC already contains a route entry whose destination CIDR block is 0.0.0.0/0, delete the route entry. Otherwise, you cannot create a NAT gateway. Request parameters
 
@@ -9542,7 +9779,7 @@ Error codes
 | 400 | InvalidParameter.Spec.V alueNotSupported | The specified Spec is not valid. | The error message returned because the specified gateway size is invalid. |
 | 400 | Forbidden.CheckEntryRu leQuota | Route entry quota rule check error. | The error message returned because an error occurs when the system checks the quota of route entries. |
 
-#### ModifyNatGatewayAttribute
+#### 6.16.2 ModifyNatGatewayAttribute
 
 Modifies the name and description of a NAT gateway. Request parameters
 
@@ -9589,7 +9826,7 @@ Error codes
 | 400 | InvalidParameter.Name. Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 | 400 | InvalidParameter.Descri ption.Malformed | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 
-#### ModifyNatGatewaySpec
+#### 6.16.3 ModifyNatGatewaySpec
 
 Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
@@ -9651,7 +9888,7 @@ Error codes
 | 400 | NATGW MODIFY SPEC S _ _ _ AME | The specified Spec is same with now. | The error message returned because the specified gateway size is the same as the current one. |
 | 400 | InvalidParameter.Spec.V alueNotSupported | The specified Spec is not valid. | The error message returned because the specified gateway size is invalid. |
 
-#### DeleteNatGateway
+#### 6.16.4 DeleteNatGateway
 
 Deletes a specified NAT gateway. Not e Before you delete a NAT gateway, you must disassociate NAT service plans from the NAT gateway. Request parameters
 
@@ -9708,7 +9945,7 @@ Error codes
 |---|---|---|---|
 | 400 | DependencyViolation.Ba ndwidthPackages | There are BandwidthPackages on specified NatGateway not deleted. | The error message returned because one or more NAT service plans are associated with the NAT gateway. Disassociate all NAT service plans from the NAT gateway and try again. |
 
-#### DescribeNatGateways
+#### 6.16.5 DescribeNatGateways
 
 Queries NAT gateways. Request parameters
 
@@ -9895,7 +10132,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### CreateForwardEntry
+#### 6.16.6 CreateForwardEntry
 
 Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table. Request parameters
 
@@ -9975,7 +10212,7 @@ Error codes
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 400 | InvalidParameter.Name. Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 
-#### DescribeForwardTableEntries
+#### 6.16.7 DescribeForwardTableEntries
 
 Queries DNAT entries. Request parameters
 
@@ -10075,7 +10312,7 @@ Error codes
 | 400 | IncorretForwardEntrySt atus | Some Forward entry status blocked this operation.. | The error message returned because you are not authorized to perform the specified operation. One or more DNAT entries in the DNAT table are in the Pending or Modifying state. |
 | 404 | InvalidForwardTableId. NotFound | Specified forwardTableId does not exist | The error message returned because the specified DNAT table does not exist. Check the parameter value and try again. |
 
-#### ModifyForwardEntry
+#### 6.16.8 ModifyForwardEntry
 
 Modifies a DNAT entry. Not e You cannot modify DNAT entries if one or more DNAT entries in the DNAT table are in the Pending or Modif ying state. Request parameters
 
@@ -10146,7 +10383,7 @@ Error codes
 | 400 | Forbidden.Already.Boun ded | The specified instance already bounded | The error message returned because the specified instance is already associated with another DNAT entry. |
 | 400 | InvalidParameter.Name. Malformed | The specified Name is not valid. | The error message returned because the format of the specified name is invalid. |
 
-#### DeleteForwardEntry
+#### 6.16.9 DeleteForwardEntry
 
 Deletes a DNAT entry. Not e You cannot delete DNAT entries if one or more DNAT entries in the DNAT table are in the Pending or Modif ying state. Request parameters
 
@@ -10195,7 +10432,7 @@ Error codes
 | 400 | IncorretForwardEntrySt atus | The Specified forwardEntry is not exist | The error message returned because the specified DNAT entry does not exist. |
 | 400 | MissingParameter | Missing mandatory parameter | The error message returned because one or more required parameters are not set. Check whether you have set all required parameters. |
 
-#### CreateSnatEntry
+#### 6.16.10 CreateSnatEntry
 
 Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. Request parameters
 
@@ -10274,7 +10511,7 @@ Error codes
 | 400 | OperationUnsupported. CidrConflict | The specified CIDR block conflicts with an existing SNAT entry. | The error message returned because the specified CIDR block conflicts with those in existing SNAT entries. |
 | 400 | InvalidParameter.Name. Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 
-#### DescribeSnatTableEntries
+#### 6.16.11 DescribeSnatTableEntries
 
 Queries SNAT entries. Request parameters
 
@@ -10362,7 +10599,7 @@ Error codes
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 404 | InvalidSnatTableId.NotF ound | Specified SNAT table does not exist. | The error message returned because the specified SNAT table does not exist. Check whether the ID of the SNAT table is valid. |
 
-#### ModifySnatEntry
+#### 6.16.12 ModifySnatEntry
 
 Modifies a specified SNAT entry. Not e You cannot modify SNAT entries if one or more SNAT entries in the SNAT table are in the Pending or Modif ying state. Request parameters
 
@@ -10415,7 +10652,7 @@ Error codes
 | 400 | Forbidden.IpUsedInForw ardTable | The specified SnatIp already used in forward table | The error message returned because the specified public IP address is already used by a DNAT entry. Select another IP address or delete the DNAT rule that uses the public IP address. |
 | 400 | InvalidParameter.Name. Malformed | The specified Name is not valid. | The error message returned because the specified name format is invalid. |
 
-#### DeleteSnatEntry
+#### 6.16.13 DeleteSnatEntry
 
 Deletes a specified SNAT entry. Not e You cannot delete SNAT entries if one or more SNAT entries in the SNAT table are in the Pending or Modif ying state. Request parameters
 
@@ -10463,7 +10700,7 @@ Error codes
 | 404 | InvalidSnatTableId.NotF ound | Specified SNAT table does not exist. | The error message returned because the specified SNAT table does not exist. Check whether the ID of the SNAT table is valid. |
 | 404 | InvalidSnatEntryId.NotF ound | Specified SNAT entry does not exist. | The error message returned because the specified SNAT entry does not exist. Check whether the SNAT entry is valid. |
 
-#### ModifyBandwidthPackageSpec
+#### 6.16.14 ModifyBandwidthPackageSpec
 
 Modifies the bandwidth value of a specified NAT service plan. Request parameters
 
@@ -10508,7 +10745,7 @@ Error codes
 | 404 | InvalidBandwidth.Value NotSupported | The specified value of Bandwidth not supported. | The error message returned because the specified maximum bandwidth value is invalid. |
 | 404 | BandwidthPackage.Fina ncialLocked | The specified BandwidthPackage has been Financail Lock. | The error message returned because the specified NAT service plan is locked due to overdue payments. |
 
-#### DeleteBandwidthPackage
+#### 6.16.15 DeleteBandwidthPackage
 
 Deletes a specified NAT service plan. Request parameters
 
@@ -10562,7 +10799,7 @@ Error codes
 | 400 | DependencyViolation.Fo rwardEntry | The specified BandwidthPackageId has dependent resource. | The error message returned because the NAT service plan contains SNAT or DNAT entries. Delete them and try again. |
 | 400 | DependencyViolation.Sn atEntry | The specified BandwidthPackageId has dependent resource. | The error message returned because the NAT service plan contains SNAT or DNAT entries. Delete them and try again. |
 
-#### CreateBandwidthPackage
+#### 6.16.16 CreateBandwidthPackage
 
 Creates a NAT service plan. A NAT service plan consists of bandwidth resources and one or more public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources One or more public IP addresses Not e This operation can be performed by only Apsara Stack accounts that have purchased NAT service plans before November 3, 2017. If you have not purchased a NAT service plan before November 3, 2017, you can apply for public IP addresses by associating elastic IP addresses (EIPs). Request parameters
 
@@ -10631,7 +10868,7 @@ Error codes
 | 400 | InvalidParameter.Bandw idthPackage.n.ISP.Value NotSupport | The specified ISP of BandwidthPackage is not valid. | The error message returned because the specified Internet service provider (ISP) of the EIP bandwidth plan is invalid. |
 | 400 | ZONE NO AVAILABLE IP _ _ _ | The Zone have no available ip. | The error message returned because no IP address is available in the zone. |
 
-#### DescribeBandwidthPackages
+#### 6.16.17 DescribeBandwidthPackages
 
 Queries NAT service plans in a specified region. Request parameters
 
@@ -10755,7 +10992,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyBandwidthPackageAttribute
+#### 6.16.18 ModifyBandwidthPackageAttribute
 
 Modifies the name and description of a specified NAT service plan. Request parameters
 
@@ -10802,7 +11039,7 @@ Error codes
 | 400 | InvalidParameter.Name. Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 | 400 | InvalidParameter.Descri ption.Malformed | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 
-#### AddBandwidthPackageIps
+#### 6.16.19 AddBandwidthPackageIps
 
 Adds one or more public IP addresses to a NAT service plan. Request parameters
 
@@ -10858,9 +11095,9 @@ Error codes
 |---|---|---|---|
 | 404 | BandwidthPackage.Fina ncialLocked | The specified BandwidthPackage has been Financail Lock. | The error message returned because the specified NAT service plan is locked due to overdue payments. |
 
-### Elastic IP addresses
+### 6.17 Elastic IP addresses
 
-#### AllocateEipAddress
+#### 6.17.1 AllocateEipAddress
 
 Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the Available state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported. Request parameters
 
@@ -10946,7 +11183,7 @@ Error codes
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 | 409 | OperationConflict | Request was denied due to conflict with a previos request. | The error message returned because a request conflict occurs. Try again later or submit a ticket to report the problem. |
 
-#### AllocateEipAddressPro
+#### 6.17.2 AllocateEipAddressPro
 
 Applies for a specified EIP. Request parameters
 
@@ -11036,7 +11273,7 @@ Error codes
 |---|---|---|---|
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 
-#### AssociateEipAddress
+#### 6.17.3 AssociateEipAddress
 
 Associates an elastic IP address (EIP) with an instance in the same region. When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account. Request parameters
 
@@ -11106,7 +11343,7 @@ Error codes
 | 400 | InvalidParams.NotFoun d | instance not found | The error message returned because the specified instance does not exist. |
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | The error message returned because the request failed due to a temporary malfunction of the server. |
 
-#### ModifyEipAddressAttribute
+#### 6.17.4 ModifyEipAddressAttribute
 
 Modifies the name, description, and bandwidth limit of a specified elastic IP address (EIP). Request parameters
 
@@ -11168,7 +11405,7 @@ Error codes
 | 400 | InvalidParameter | The parameter is invalid. | The error message returned because the parameter is set to an invalid value. |
 | 404 | Forbidden.RegionNotFo und | Specified region is not found during access authentication. | The error message returned because the specified region does not exist. Check whether the specified region ID is valid. |
 
-#### DescribeEipAddresses
+#### 6.17.5 DescribeEipAddresses
 
 Queries elastic IP addresses (EIPs) created in a specific region. Request parameters
 
@@ -11421,7 +11658,7 @@ Error codes
 | 400 | InvalidResourceGroupId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 | 400 | OperationUnsupported. ResourceGroupId | ResourceGroup is not supported in this region. | The error message returned because the resource group feature is disabled. |
 
-#### UnassociateEipAddress
+#### 6.17.6 UnassociateEipAddress
 
 Disassociates an elastic IP address (EIP) from an instance. Request parameters
 
@@ -11481,7 +11718,7 @@ Error codes
 | 400 | Forbbiden | The eip instance owener error | The error message returned because you are unauthorized to perform the operation on the EIP. |
 | 400 | InvalidBindingStatus | The eip binding status invalid. | The error message returned because the binding mode of the EIP is invalid. |
 
-#### ReleaseEipAddress
+#### 6.17.7 ReleaseEipAddress
 
 Releases a specified elastic IP address (EIP). Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the Available state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs. Request parameters
 
@@ -11532,7 +11769,7 @@ Error codes
 | 400 | Forbbiden | The eip instance owener error | The error message returned because you are unauthorized to perform the operation on the EIP. |
 | 400 | TaskConflict.AssociateG lobalAccelerationInstan ce | Operate too frequent. | The error message returned because the number of requests that you send exceeds the upper limit. |
 
-#### DescribeEipGatewayInfo
+#### 6.17.8 DescribeEipGatewayInfo
 
 Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode. Request parameters
 
@@ -11594,7 +11831,7 @@ Error codes
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. Apply for permissions and try again. |
 
-#### DescribeHighDefinitionMonitorLogAttribute
+#### 6.17.9 DescribeHighDefinitionMonitorLogAttribute
 
 Queries configurations about the fine-grained monitoring feature of an elastic IP address (EIP). Request parameters
 
@@ -11650,9 +11887,9 @@ Sample success responses `XML` format
         "Success": true
 ```
 
-### HAVIPs
+### 6.18 HAVIPs
 
-#### CreateHaVip
+#### 6.18.1 CreateHaVip
 
 Creates a high-availability virtual IP address (HAVIP). Descriptions When you call this operation, take note of the following rules: You can create a maximum of five HAVIPs for a virtual private cloud (VPC). Before you delete a VPC, you must delete the HAVIPs that you have created for it. Request parameters
 
@@ -11714,7 +11951,7 @@ Error codes
 | 400 | InvalidIPAddress.NotAva ilable | The specified IPAddress is not available because it is a system reserved IPAddress. | The error message returned because the specified IP address is reserved by the system and cannot be used. |
 | 400 | InvalidIPAddress.Alread yUsed | The specified IPAddress is already used by other resource. | The error message returned because the specified IP address is already used by another resource. |
 
-#### DescribeHaVips
+#### 6.18.2 DescribeHaVips
 
 Queries high-availability virtual IP addresses (HAVIPs) in a specified region. Request parameters
 
@@ -11830,7 +12067,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidFilterKey.ValueNo tSupported | Specified filter key is not supported: Filter.X.key | The error message returned because Filter.X.key is not supported. |
 
-#### ModifyHaVipAttribute
+#### 6.18.3 ModifyHaVipAttribute
 
 Modifies the description of a high-availability virtual IP address (HAVIP). Request parameters
 
@@ -11877,7 +12114,7 @@ Error codes
 | 400 | IncorrectStatus | HaVip can be deleted only when it's status is Available or InUse. | The error message returned because the HAVIP is unavailable and failed to be deleted. |
 | 400 | InvalidDescription.Malfo rmed | The specified Description is wrongly formed. | The error message returned because the format of the specified description is invalid. The description must be 2 to 256 characters in length. It cannot start with http:// or https://. |
 
-#### AssociateHaVip
+#### 6.18.4 AssociateHaVip
 
 Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance. Descriptions When you call this operation, take note of the following limits: The HAVIP takes effect immediately after it is associated with an ECS instance. You do not need to restart the ECS instance. However, you must associate the HAVIP with the elastic network interface (ENI) of the ECS instance. The HAVIP and ECS instance must belong to the same vSwitch. You can associate an HAVIP with at most two ECS instances. The ECS instance must be in the Running or Stopped state. The HAVIP must be in the Available or InUse state. Request parameters
 
@@ -11930,7 +12167,7 @@ Error codes
 | 400 | CountLimitExceeded.Ha VipOnECSInstance | The amount of Instance associated with the specified HaVip reach its limits. | The error message returned because the number of ECS instances associated with the specified HAVIP has reached the upper limit. |
 | 400 | InvalidNetworkInterface Id.NotFound | The network interface is not found. | The error message returned because the specified ENI does not exist. |
 
-#### UnassociateHaVip
+#### 6.18.5 UnassociateHaVip
 
 Disassociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). Descriptions When you call this operation, take note of the following limits: The ECS instance must be in the Running or Stopped state. The HAVIP must be in the Available or InUse state. Request parameters
 
@@ -11986,7 +12223,7 @@ Error codes
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 400 | InvalidNetworkInterface Id.NotFound | The network interface is not found. | The error message returned because the specified elastic network interface (ENI) does not exist. |
 
-#### DeleteHaVip
+#### 6.18.6 DeleteHaVip
 
 Deletes a high-availability virtual IP address (HAVIP). When you call this operation, take note of the following rules: You can delete only HAVIPs that are in the Available state. Make sure that no routes are destined for the HAVIP that you want to delete. Make sure that no elastic IP addresses (EIPs) are associated with the HAVIP that you want to delete. Request parameters
 
@@ -12041,9 +12278,9 @@ Error codes
 | 400 | DependencyViolation.H aVipReferedByRouteEnt ry | HaVip cannot be deleted when it is refered by a route table entry as next hop. | The error message returned because the HAVIP functions as the next hop of a route entry and cannot be deleted. You must delete the route entry before you can delete the HAVIP. |
 | 400 | DependencyViolation.H aVipAssociatedWithEIP | HaVip cannot be deleted when it is associated with EIP. | The error message returned because the HAVIP is associated with an elastic IP address (EIP) and cannot be deleted. |
 
-### ACLs
+### 6.19 ACLs
 
-#### CreateNetworkAcl
+#### 6.19.1 CreateNetworkAcl
 
 Creates a network access control list (ACL). Request parameters
 
@@ -12204,7 +12441,7 @@ Sample success responses `XML` format
             "ResourceType": "VSwitch"
 ```
 
-#### AssociateNetworkAcl
+#### 6.19.2 AssociateNetworkAcl
 
 Associates a network access control list (ACL) with a vSwitch. Request parameters
 
@@ -12246,7 +12483,7 @@ Sample success responses `XML` format
     "RequestId":"4CF20CC7-D1FC-425B-A15B-DF7C8E2131A7"
 ```
 
-#### ModifyNetworkAclAttributes
+#### 6.19.3 ModifyNetworkAclAttributes
 
 Modifies the attributes of a network access control list (ACL). Request parameters
 
@@ -12285,7 +12522,7 @@ Sample success response `XML` format
     "RequestId": "8F76C3E4-B39F-465D-B8B3-50BAF03CA833"
 ```
 
-#### UpdateNetworkAclEntries
+#### 6.19.4 UpdateNetworkAclEntries
 
 Updates the rules of a network access control list (ACL). Request parameters
 
@@ -12346,7 +12583,7 @@ Sample success responses `XML` format
     "RequestId": "1170A5A0-E760-4331-9133-A7D38D973215"
 ```
 
-#### UnassociateNetworkAcl
+#### 6.19.5 UnassociateNetworkAcl
 
 Disassociates a network access control list (ACL) from a vSwitch. Request parameters
 
@@ -12388,7 +12625,7 @@ Sample success response `XML` format
     "RequestId": "AD024BAA-2D91-48FD-810B-8FB7489B6EE6"
 ```
 
-#### CopyNetworkAclEntries
+#### 6.19.6 CopyNetworkAclEntries
 
 Copies rules of a network access control list (ACL). Request parameters
 
@@ -12425,7 +12662,7 @@ Sample success responses `XML` format
     "RequestId": "6608E72F-F276-440F-ABEF-419971CEC4D1"
 ```
 
-#### DeleteNetworkAcl
+#### 6.19.7 DeleteNetworkAcl
 
 Deletes a network access control list (ACL). Request parameters
 
@@ -12462,7 +12699,7 @@ Sample success responses `XML` format
     "RequestId": "34F1206D-04B0-4A05-9D8A-80521E288BD1"
 ```
 
-#### DescribeNetworkAcls
+#### 6.19.8 DescribeNetworkAcls
 
 Queries network ACLs. Request parameters
 
@@ -12642,7 +12879,7 @@ Sample success responses `XML` format
     "PageNumber": 1
 ```
 
-#### DescribeNetworkAclAttributes
+#### 6.19.9 DescribeNetworkAclAttributes
 
 Queries details about a network access control list (ACL). Request parameters
 
@@ -12807,9 +13044,9 @@ Error codes
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 
-### IPv6 gateways
+### 6.20 IPv6 gateways
 
-#### CreateIpv6Gateway
+#### 6.20.1 CreateIpv6Gateway
 
 Creates an IPv6 gateway. Request parameters
 
@@ -12862,7 +13099,7 @@ Error codes
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 404 | InvalidVpcId.NotFound | Specified VPC does not exist. | The error message returned because the specified VPC does not exist. |
 
-#### DeleteIpv6Gateway
+#### 6.20.2 DeleteIpv6Gateway
 
 Deletes an IPv6 gateway. Before you delete an Enterprise Edition or Enhanced Enterprise Edition IPv6 gateway, you must delete the egress-only rules configured on the IPv6 gateway. Request parameters
 
@@ -12904,7 +13141,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6Gateways
+#### 6.20.3 DescribeIpv6Gateways
 
 Queries IPv6 gateways in a specified region. Request parameters
 
@@ -13043,7 +13280,7 @@ Sample success responses `XML` format
     "RequestId": "E3A06196-3E7C-490D-8F39-CB4B5A0CE8AD"
 ```
 
-#### ModifyIpv6GatewaySpec
+#### 6.20.4 ModifyIpv6GatewaySpec
 
 Changes the specification of an IPv6 gateway. The forwarding capacity and bandwidth of an IPv6 gateway vary based on the specification. Request parameters
 
@@ -13093,7 +13330,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6EgressOnlyRules
+#### 6.20.5 DescribeIpv6EgressOnlyRules
 
 Queries egress-only rules. Request parameters
 
@@ -13170,7 +13407,7 @@ Sample success responses `XML` format
         "Name": "rulename"
 ```
 
-#### CreateIpv6EgressOnlyRule
+#### 6.20.6 CreateIpv6EgressOnlyRule
 
 Creates an egress-only rule for an IPv6 address. Request parameters
 
@@ -13223,7 +13460,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DeleteIpv6EgressOnlyRule
+#### 6.20.7 DeleteIpv6EgressOnlyRule
 
 Deletes an egress-only rule. Request parameters
 
@@ -13260,7 +13497,7 @@ Sample success responses `XML` format
  "RequestId": "4E40EAF1-783D-4C05-948D-DA0426C398C1"
 ```
 
-#### DeleteIpv6InternetBandwidth
+#### 6.20.8 DeleteIpv6InternetBandwidth
 
 Sets the Internet bandwidth value of an IPv6 address to zero. Request parameters
 
@@ -13303,7 +13540,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6GatewayAttribute
+#### 6.20.9 DescribeIpv6GatewayAttribute
 
 Queries detailed information about a specified IPv6 gateway. Request parameters
 
@@ -13381,7 +13618,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### DescribeIpv6Addresses
+#### 6.20.10 DescribeIpv6Addresses
 
 Queries the IPv6 addresses in a specified region. Request parameters
 
@@ -13517,7 +13754,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyIpv6InternetBandwidth
+#### 6.20.11 ModifyIpv6InternetBandwidth
 
 Modifies the Internet bandwidth value of an IPv6 address. Request parameters
 
@@ -13562,7 +13799,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### AllocateIpv6InternetBandwidth
+#### 6.20.12 AllocateIpv6InternetBandwidth
 
 Purchases Internet bandwidth resources for an IPv6 address. Request parameters
 
@@ -13623,7 +13860,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyIpv6AddressAttribute
+#### 6.20.13 ModifyIpv6AddressAttribute
 
 Modifies the name and description of an IPv6 address. Request parameters
 
@@ -13673,7 +13910,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-#### ModifyIpv6GatewayAttribute
+#### 6.20.14 ModifyIpv6GatewayAttribute
 
 Modifies the name and description of an IPv6 gateway. Request parameters
 
@@ -13717,9 +13954,9 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFoun d | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
-## Appendixes
+## 7 Appendixes
 
-### Use the ASAPI gateway to call API
+### 7.1 Use the ASAPI gateway to call API operations
 
 operations You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Procedure
 1. Obtain the ASAPI SDK.
@@ -13771,11 +14008,11 @@ ve.
 ttyFormat));
 ```
 
-### Use the ASAPI gateway to make API
+### 7.2 Use the ASAPI gateway to make API calls
 
 calls
 
-#### Obtain an endpoint of ASAPI
+#### 7.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -13846,7 +14083,7 @@ to go to Apsara Infrastructure Management.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the file content
 in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Obtain Apsara Stack SDKs
+#### 7.2.2 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -13884,13 +14121,13 @@ Apsara Stack SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-#### What is STS?
+#### 7.3.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

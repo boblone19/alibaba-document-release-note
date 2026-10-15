@@ -3,14 +3,93 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS fo
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 164
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 20260831.pdf"
+source_pdf: "7431d4b3b9062cdf_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 2026"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20PostgreSQL%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PostgreSQL User Guide 20260831
 
-## Console release notes
+## Table of Contents
+
+- 1 Console release notes
+- 2 What is ApsaraDB RDS?
+- 3 Limits on ApsaraDB RDS for PostgreSQL
+- 4.[Announcement] ApsaraDB RDS instances that run PostgreSQL 9.4 and PostgreSQL 10 are no longer available for purchase in Apsara Stack V3.18
+- 5 Instance types
+- 6 Log on to the ApsaraDB RDS console
+- 7 Quick Start
+  - 7.1 Procedure
+  - 7.2 Create an instance
+  - 7.3 Configure an IP address whitelist
+  - 7.4 Create a database and an account
+  - 7.5 Connect to an ApsaraDB RDS for PostgreSQL instance
+- 8 Instances
+  - 8.1 Create an instance
+  - 8.2 View basic information of an instance
+  - 8.3 Restart an instance
+  - 8.4 Change the specifications of an instance
+  - 8.5 Set a maintenance window
+  - 8.6 Configure primary/secondary switchover
+  - 8.7 Release an instance
+  - 8.8 Configure instance parameters
+  - 8.9 Read-only instances
+    - 8.9.1 Overview of read-only ApsaraDB RDS for PostgreSQL instances
+    - 8.9.2 Create a read-only ApsaraDB RDS for PostgreSQL instance
+    - 8.9.3 View a read-only ApsaraDB RDS for PostgreSQL instance
+    - 8.9.4 Manage a read-only ApsaraDB RDS for PostgreSQL instance
+  - 8.10 Manage tags
+- 9 Database connection
+  - 9.1 Connect to an ApsaraDB RDS for PostgreSQL instance
+  - 9.2 Use DMS to log on to an ApsaraDB RDS instance
+  - 9.3 View and modify the internal endpoint and port number
+- 10 Accounts
+  - 10.1 Create an account
+  - 10.2 Reset the password of a database account
+  - 10.3 Lock or delete an account from an instance
+  - 10.4 Delete an account
+- 11 Databases
+  - 11.1 Create a database
+  - 11.2 Delete a database
+- 12 Networks, VPCs, and vSwitches
+  - 12.1 Change the VPC and vSwitch of an instance
+  - 12.2 Change the network type of an ApsaraDB RDS for PostgreSQL instance
+  - 12.3 Configure hybrid access from both the classic network and VPCs
+- 13 Monitoring
+  - 13.1 View monitored resources
+  - 13.2 Configure an alert rule
+- 14 Data security
+  - 14.1 Configure an IP address whitelist
+  - 14.2 Configure SSL encryption
+  - 14.3 Configure data encryption
+  - 14.4 Configure TDE
+- 15 Logs and audit
+  - 15.1 SQL Audit (DataBase Audit)
+  - 15.2 Manage logs
+- 16 Backup
+  - 16.1 Back up an ApsaraDB RDS for PostgreSQL instance
+  - 16.2 Download data and log backup files
+  - 16.3 Create a logical backup for an ApsaraDB RDS for PostgreSQL instance
+  - 16.4 Create a full backup of an ApsaraDB RDS for PostgreSQL instance
+- 17 Restoration
+  - 17.1 Restore data of an ApsaraDB RDS for PostgreSQL instance
+  - 17.2 Restore data from a logical backup file
+- 18 DAS
+  - 18.1 Introduction to DAS
+  - 18.2 Diagnostics
+    - 18.2.1 Session management
+    - 18.2.2 Real-time monitoring
+    - 18.2.3 Storage analysis
+  - 18.3 Dashboard
+  - 18.4 View slow query logs
+- 19 Plug-ins
+  - 19.1 Plug-ins supported
+  - 19.2 Use mysql_fdw to read and write data from and to a MySQL database
+  - 19.3 Use oss_fdw to read and write foreign data files
+- 20 Use Pgpool for read/write splitting in ApsaraDB RDS for PostgreSQL
+- 21 Use ShardingSphere to develop ApsaraDB RDS for PostgreSQL
+
+## 1 Console release notes
 
 This topic describes new features and important updates for the RDS PostgreSQL console.
 
@@ -20,7 +99,7 @@ This topic describes new features and important updates for the RDS PostgreSQL c
 |---|---|---|
 | Configuration overview for instance creation | During instance creation, a configuration overview panel appears on the right after you enter all required parameters. This panel lets you review the instance's overall configuration and ensure it meets your requirements. | Create Instance |
 
-## What is ApsaraDB RDS?
+## 2 What is ApsaraDB RDS?
 
 ApsaraDB RDS is a stable, reliable, and scalable online database service that is built on top of Apsara Distributed File System and high-performance storage. It provides a comprehensive portfolio of solutions for disaster recovery, backup, restoration, monitoring, and migration to facilitate database O&M. ApsaraDB RDS supports four database engines: MySQL, SQL Server, PolarDB, and PostgreSQL. You can create database instances based on these database engines to meet your business requirements. This topic describes the PostgreSQL engine.
 
@@ -28,7 +107,7 @@ ApsaraDB RDS is a stable, reliable, and scalable online database service that is
 
 ApsaraDB RDS for PostgreSQL is an advanced database service that is fully compatible with SQL syntax and supports a diverse range of data such as JSON, IP, and geometric data. It supports SQL:2003 and later, as well as procedural SQL languages such as PL/pgSQL and PL/Java. It also supports Java Database Connectivity (JDBC) and Open Database Connectivity (ODBC). In addition to features such as transactions, subqueries, multi-version concurrency control (MVCC), and data integrity check, ApsaraDB RDS for PostgreSQL integrates a series of features including high availability, backup, and restoration to ease O&M loads. for PostgreSQL
 
-## Limits on ApsaraDB RDS for
+## 3 Limits on ApsaraDB RDS for PostgreSQL
 
 **PostgreSQL**
 
@@ -77,7 +156,7 @@ You can no longer purchase ApsaraDB RDS instances that run PostgreSQL 9.4 or Pos
 
 If you want to purchase an ApsaraDB RDS for PostgreSQL instance, we recommend that you select PostgreSQL 11 or later.
 
-## Instance types
+## 5 Instance types
 
 This topic describes the instance types of ApsaraDB RDS for PostgreSQL. Different instance types deliver different performance.
 
@@ -195,7 +274,7 @@ If the throughput of an RDS instance reaches the upper limit, the IOPS of the in
 
 RDS console
 
-## Log on to the ApsaraDB
+## 6 Log on to the ApsaraDB RDS console
 
 **RDS console**
 
@@ -215,9 +294,9 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
-## Quick Start
+## 7 Quick Start
 
-### Procedure
+### 7.1 Procedure
 
 ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS instance, configuring a whitelist, creating a database, creating an account, and connecting to the instance.
 
@@ -225,7 +304,7 @@ ApsaraDB RDS quick start covers the following topics: creating an ApsaraDB RDS i
 
 If you are using ApsaraDB RDS for the first time, you can start with Limits on ApsaraDB RDS for PostgreSQL. The following figure shows the operations that you must perform before you use an ApsaraDB RDS instance.
 
-### Create an instance
+### 7.2 Create an instance
 
 This topic describes how to create an ApsaraDB RDS for PostgreSQL instance in the ApsaraDB RDS console.
 
@@ -268,7 +347,7 @@ This topic describes how to create an ApsaraDB RDS for PostgreSQL instance in th
 
 4. Click **Submit**.
 
-### Configure an IP address
+### 7.3 Configure an IP address whitelist
 
 **whitelist**
 
@@ -290,7 +369,7 @@ You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks used to access the
 instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your ApsaraDB RDS instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Alibaba Cloud account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
-### Create a database and an
+### 7.4 Create a database and an account
 
 **account**
 
@@ -403,7 +482,7 @@ create user test2 password '123456';
 
 0. Click **Execute**.
 
-### Connect to an ApsaraDB RDS
+### 7.5 Connect to an ApsaraDB RDS for PostgreSQL instance
 
 **for PostgreSQL instance**
 
@@ -444,9 +523,9 @@ following figure.
 
 The postgres database is the default system database. Do not perform operations on the postgres database.
 
-## Instances
+## 8 Instances
 
-### Create an instance
+### 8.1 Create an instance
 
 This topic describes how to create an ApsaraDB for RDS for PostgreSQL instance in the console.
 
@@ -491,7 +570,7 @@ settings are correct. If you have insufficient quota, click **Quota Management**
 **Platform User Guide**.
 5. When you have finished configuring the parameters, click **Submit**.
 
-### View basic information of an
+### 8.2 View basic information of an instance
 
 **instance**
 
@@ -503,7 +582,7 @@ This topic describes how to view the details of an ApsaraDB RDS instance, such a
 2. Use one of the following methods to go to the **Basic Information** page of an instance:
 On the **Instances** page, click the ID of the instance to go to the **Basic Information** page. On the **Instances** page, find the instance and click **Manage** in the **Actions** column to go to the **Basic Information** page.
 
-### Restart an instance
+### 8.3 Restart an instance
 
 This topic describes how to manually restart an ApsaraDB RDS instance. This applies if the number of connections exceeds the specified threshold or if an instance has performance issues.
 
@@ -521,7 +600,7 @@ The instance is in the **Running** state.
 When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 5. In the message that appears, click **Confirm**.
 
-### Change the specifications of
+### 8.4 Change the specifications of an instance
 
 **an instance**
 
@@ -543,7 +622,7 @@ The instance is in the **Running** state and is not in the backing up or restori
 **Capacity**.
 6. Click **Submit**.
 
-### Set a maintenance window
+### 8.5 Set a maintenance window
 
 This topic describes how to set a maintenance window for an ApsaraDB RDS instance.
 
@@ -568,7 +647,7 @@ to data in the database and query operations such as performance monitoring are 
 5. Select a maintenance window and click **OK**.
 The time displayed on the page is in UTC+8.
 
-### Configure primary/secondary
+### 8.6 Configure primary/secondary switchover
 
 **switchover**
 
@@ -591,7 +670,7 @@ Data is synchronized in real time between the primary and secondary instances. Y
 **OK**.
 During the switchover, operations such as managing databases and accounts and changing network types cannot be performed. Therefore, we recommend that you select Switch Within Maintenance Window. For more information about how to set a maintenance window, see Set a maintenance window.
 
-### Release an instance
+### 8.7 Release an instance
 
 This topic describes how to manually release an instance.
 
@@ -606,7 +685,7 @@ Only instances in the Running state can be manually released. After an instance 
 Actions column.
 3. In the message that appears, click **OK**.
 
-### Configure instance
+### 8.8 Configure instance parameters
 
 **parameters**
 
@@ -885,9 +964,9 @@ Modify multiple parameters at a time: a. Export the parameters. On the Editable 
 | xmlbinary | 13 | base 64 | [base6 4\|hex] | No | Sets how binary values are encoded as XML. |
 | xmloption | 13 | cont ent | [conte nt\|doc ument ] | No | Sets whether XML data is treated as a document or a content fragment in implicit parsing and serialization operations. |
 
-### Read-only instances
+### 8.9 Read-only instances
 
-#### Overview of read-only ApsaraDB RDS
+#### 8.9.1 Overview of read-only ApsaraDB RDS for PostgreSQL instances
 
 **for PostgreSQL instances**
 
@@ -909,7 +988,7 @@ A maximum of five read-only RDS instances can be created on a primary RDS instan
 
 Q: After I create accounts on my primary RDS instance, can I manage the accounts on the read-only RDS instances of my primary RDS instance? No, you cannot manage the accounts on the read-only RDS instances. Although the accounts created on your primary RDS instance are synchronized to the read-only RDS instances, the accounts have only the read permissions on the read-only RDS instances.
 
-#### Create a read-only ApsaraDB RDS for
+#### 8.9.2 Create a read-only ApsaraDB RDS for PostgreSQL instance
 
 **PostgreSQL instance**
 
@@ -946,7 +1025,7 @@ following table describes the parameters.
 |   | VPC | The VPC in which you want to create the read- only instance. This parameter is required when Network Type is set to VPC. |
 |   | vSwitch | The vSwitch in the VPC. This parameter is required when Network Type is set to VPC. |
 
-#### View a read-only ApsaraDB RDS for
+#### 8.9.3 View a read-only ApsaraDB RDS for PostgreSQL instance
 
 **PostgreSQL instance**
 
@@ -979,7 +1058,7 @@ instance.
 
 A read-only RDS instance may synchronize data from the primary RDS instance at a specific latency. You can go to the Basic Information page of a read-only RDS instance to view the latency of data replication to the instance.
 
-#### Manage a read-only ApsaraDB RDS for
+#### 8.9.4 Manage a read-only ApsaraDB RDS for PostgreSQL instance
 
 **PostgreSQL instance**
 
@@ -1023,7 +1102,7 @@ Information page.
 4. In the left-side navigation pane, click **Monitoring and Alerts**.
 The monitoring and alerting feature of read-only RDS instances can be used in the same manner as that of the primary instance. For more information, see View monitored resources.
 
-### Manage tags
+### 8.10 Manage tags
 
 If you have a large number of instances, you can create multiple tags and add the tags to the instances. Then, you can query instances by tag. This topic describes how to manage tags.
 
@@ -1060,9 +1139,9 @@ icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, click the
 icon to the right of the tag and click **OK**.
 
-## Database connection
+## 9 Database connection
 
-### Connect to an ApsaraDB RDS
+### 9.1 Connect to an ApsaraDB RDS for PostgreSQL instance
 
 **for PostgreSQL instance**
 
@@ -1103,7 +1182,7 @@ following figure.
 
 The postgres database is the default system database. Do not perform operations on the postgres database.
 
-### Use DMS to log on to an
+### 9.2 Use DMS to log on to an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -1136,7 +1215,7 @@ The IP address whitelist is configured. For more information about how to config
 If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-### View and modify the internal
+### 9.3 View and modify the internal endpoint and port number
 
 **endpoint and port number**
 
@@ -1166,9 +1245,9 @@ instance.
 
 Q: Do I need to modify the endpoint or port number in my application after I modify the endpoint or port number of an instance? A: Yes, you must modify the endpoint or port number in the application after you modify them. Otherwise, the application cannot connect to databases of the instance. Q: Does the modification of the endpoint take effect immediately? Do I need to restart the instance? A: No, you do not need to restart the instance. The modification takes effect immediately.
 
-## Accounts
+## 10 Accounts
 
-### Create an account
+### 10.1 Create an account
 
 Database accounts are required for using ApsaraDB RDS instances. This topic describes how to create an account on an ApsaraDB RDS for PostgreSQL instance.
 
@@ -1206,7 +1285,7 @@ You can create multiple privileged accounts and standard accounts in the ApsaraD
 
 6. Click **OK**.
 
-### Reset the password of a
+### 10.2 Reset the password of a database account
 
 **database account**
 
@@ -1223,7 +1302,7 @@ This topic describes how to use the ApsaraDB RDS console to reset the password o
 6. In the dialog box that appears, enter a new password and click **OK**.
 The password must meet the following requirements: The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters: ! @ # $ % ^ & * ( ) _ + - =
 
-### Lock or delete an account
+### 10.3 Lock or delete an account from an instance
 
 **from an instance**
 
@@ -1255,7 +1334,7 @@ If the account that you want to delete is granted permissions on databases, tabl
 5. In the **Actions** column corresponding to the account, click **Delete**.
 6. In the message that appears, click **OK**.
 
-### Delete an account
+### 10.4 Delete an account
 
 You can delete a database account in the ApsaraDB RDS console.
 
@@ -1272,9 +1351,9 @@ You can use the console to delete privileged and standard accounts that are no l
 5. In the message that appears, click **Confirm**.
 Accounts in the **Processing** state cannot be deleted.
 
-## Databases
+## 11 Databases
 
-### Create a database
+### 11.1 Create a database
 
 Before you start to use ApsaraDB RDS, you must create a database on an ApsaraDB RDS instance. This topic describes how to create a database on an ApsaraDB RDS for PostgreSQL instance.
 
@@ -1321,7 +1400,7 @@ create database test;
 
 8. Click **execute**.
 
-### Delete a database
+### 11.2 Delete a database
 
 This topic describes how to delete a database in the ApsaraDB RDS for PostgreSQL console.
 
@@ -1363,11 +1442,11 @@ drop database test2;
 8. Click **execute**.
 witches
 
-## Networks, VPCs, and
+## 12 Networks, VPCs, and vSwitches
 
 **vSwitches**
 
-### Change the VPC and vSwitch
+### 12.1 Change the VPC and vSwitch of an instance
 
 **of an instance**
 
@@ -1390,7 +1469,7 @@ If you want to create a vSwitch, click **go to the VPC console**.
 7. In the message that appears, click **Switch**.
 When you switch an instance to a different vSwitch, a transient connection that lasts approximately 30 seconds occurs. Make sure that your application is configured to automatically reconnect to your instance. If data is cached on your client, you can read data but cannot write data. After the vSwitch of your instance is changed, we recommend that you immediately clear the cache on the client.
 
-### Change the network type of
+### 12.2 Change the network type of an ApsaraDB RDS for PostgreSQL instance
 
 **an ApsaraDB RDS for PostgreSQL**
 
@@ -1445,7 +1524,7 @@ date after the network type is changed. For more information, see Configure hybr
 7. Add the internal IP addresses of ECS instances located in the selected VPC to an IP address
 whitelist of the VPC network type. This allows the ECS instances to connect to your ApsaraDB RDS instance over an internal network. If no IP address whitelists of the VPC network type are available, create one. If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the ApsaraDB RDS instance over the internal network are interrupted. You must add the VPC endpoint to ECS instances in the VPC immediately after the network type is changed. witches
 
-### Configure hybrid access from
+### 12.3 Configure hybrid access from both the classic network and VPCs
 
 **both the classic network and VPCs**
 
@@ -1480,9 +1559,9 @@ During the period in which your instance can be accessed over the classic networ
 5. On the **Instance Connection** tab, click **Change Expiration Time**.
 6. In the **Change Expiration Time** dialog box, select an expiration time and click **OK**.
 
-## Monitoring
+## 13 Monitoring
 
-### View monitored resources
+### 13.1 View monitored resources
 
 ApsaraDB RDS provides a wide range of performance metrics. This topic describes how to view resource monitoring data in the ApsaraDB RDS console.
 
@@ -1496,7 +1575,7 @@ ApsaraDB RDS provides a wide range of performance metrics. This topic describes 
 5. On the **Monitoring** tab, select a time range to query the corresponding monitoring data.
 You can click **Refresh** in the upper-right corner of the **Monitoring** tab to refresh the monitoring information.
 
-### Configure an alert rule
+### 13.2 Configure an alert rule
 
 This topic describes how to create alert rules in the ApsaraDB RDS for PostgreSQL console. This allows you to identify and handle monitoring data anomalies at the earliest opportunity.
 
@@ -1527,9 +1606,9 @@ table and click **OK**.
 | No data processing method | Specify how Cloud Monitor acts when no alert is triggered. Valid values: No processing: Cloud Monitor does not perform any operations when no alert is triggered. Send no data alarm: Cloud Monitor sends the corresponding notifications to contacts when no alert is triggered. |
 | Alarm contact | The alert contacts or alert contact groups to which Cloud Monitor sends alert notifications. By default, the value of this parameter is a dummy user used to test whether the alert rule is effective. |
 
-## Data security
+## 14 Data security
 
-### Configure an IP address
+### 14.1 Configure an IP address whitelist
 
 **whitelist**
 
@@ -1551,7 +1630,7 @@ You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks used to access the
 instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your ApsaraDB RDS instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Alibaba Cloud account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
-### Configure SSL encryption
+### 14.2 Configure SSL encryption
 
 This topic describes how to configure SSL encryption for an ApsaraDB RDS instance.
 
@@ -1632,7 +1711,7 @@ that you want to manage and click the ID of the instance or click **Manage** in 
 
 This operation triggers a restart of your RDS instance. Proceed with caution.
 
-### Configure data encryption
+### 14.3 Configure data encryption
 
 This topic describes how to configure data encryption for an ApsaraDB RDS instance that uses standard SSDs. The disk encryption feature improves data security and eliminates the need to modify business or application configurations. ApsaraDB RDS automatically applies disk encryption to both the snapshots that are generated from the encrypted SSDs and the SSDs that are created from those snapshots.
 
@@ -1676,7 +1755,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 8. Create an RDS instance. Select Disk Encryption when you create the instance. For more
 information, see Create an instance.
 
-### Configure TDE
+### 14.4 Configure TDE
 
 ApsaraDB RDS for PostgreSQL provides the Transparent Data Encryption (TDE) feature. This topic describes how to enable TDE for your ApsaraDB RDS for PostgreSQL instance. This topic also describes how to use TDE to encrypt and decrypt tables and indexes.
 
@@ -1755,9 +1834,9 @@ View the encryption status of a table or an index.
 SELECT relname, reloptions FROM pg_class WHERE relname IN('<tablename>', '<indexname>');
 ```
 
-## Logs and audit
+## 15 Logs and audit
 
-### SQL Audit (DataBase Audit)
+### 15.1 SQL Audit (DataBase Audit)
 
 The SQL Audit feature for RDS enables you to view SQL details and regularly audit SQL statements. This feature does not affect the performance of your instance.
 
@@ -1811,7 +1890,7 @@ By default, audit logs are stored in SLS-inner. You can switch the storage locat
 
 This operation cannot be reversed. Proceed with caution.
 
-### Manage logs
+### 15.2 Manage logs
 
 You can view logs for errors, slow queries, and primary/secondary instance switching for ApsaraDB RDS for PostgreSQL instances in the ApsaraDB RDS console or by executing SQL statements. These logs help you troubleshoot errors. This topic describes how to manage logs in the console.
 
@@ -1833,9 +1912,9 @@ You can view logs for errors, slow queries, and primary/secondary instance switc
 | Primary/Secondary Switching Logs | Records switchovers between the primary and secondary instances within the last month. |
 |---|---|
 
-## Backup
+## 16 Backup
 
-### Back up an ApsaraDB RDS for
+### 16.1 Back up an ApsaraDB RDS for PostgreSQL instance
 
 **PostgreSQL instance**
 
@@ -1888,7 +1967,7 @@ The backup mode is fixed at **Full Backup** and the backup policy is fixed at **
 
 You can click the icon in the upper-right corner of the page to open the **Task Progress** list and view the task progress.
 
-### Download data and log
+### 16.2 Download data and log backup files
 
 **backup files**
 
@@ -1923,7 +2002,7 @@ wget -c '<Download URL of the backup file>' -O <File name>
 
 The -c option enables resumable download. The -O option saves the downloaded file by using a specified name. We recommend that you use the file name contained in the download URL. If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
 
-### Create a logical backup for
+### 16.3 Create a logical backup for an ApsaraDB RDS for PostgreSQL instance
 
 **an ApsaraDB RDS for PostgreSQL**
 
@@ -2070,7 +2149,7 @@ pg_dump -h 'pgm-bpxxxxx.pg.rds.aliyuncs.com' -U test123 -p 3433 -s -Fc testdb2 >
 2. When `Password:` appears on the command line, enter the password of the privileged
 account of the RDS instance and press the Enter key.
 
-### Create a full backup of an
+### 16.4 Create a full backup of an ApsaraDB RDS for PostgreSQL instance
 
 **ApsaraDB RDS for PostgreSQL**
 
@@ -2118,9 +2197,9 @@ pg_basebackup -Ft -Pv -Xf -z -D /pg12/backup1/ -Z5 -h pgm-bpxxxxx.pg.rds.aliyunc
 2. When `Password:` appears, enter the password of the username of the ApsaraDB RDS for
 PostgreSQL instance and press the Enter key.
 
-## Restoration
+## 17 Restoration
 
-### Restore data of an ApsaraDB
+### 17.1 Restore data of an ApsaraDB RDS for PostgreSQL instance
 
 **RDS for PostgreSQL instance**
 
@@ -2165,7 +2244,7 @@ The original RDS instance whose data you want to restore must meet the following
 
 7. Click **Submit**.
 
-### Restore data from a logical
+### 17.2 Restore data from a logical backup file
 
 **backup file**
 
@@ -2272,9 +2351,9 @@ pg_restore -h 'pgm-bpxxxxx.pg.rds.aliyuncs.com' -U test123 -p 3433 -d testdb4 -s
 2. When `Password:` appears, enter the password of the privileged account of your ApsaraDB
 RDS instance and press the Enter key. You can ignore alerts generated by the embedded plpgsql plug-in.
 
-## DAS
+## 18 DAS
 
-### Introduction to DAS
+### 18.1 Introduction to DAS
 
 Database Autonomy Service (DAS) is a cloud service that uses machine learning and expert experience to automate perception, healing, optimization, O&M, and security for databases. DAS simplifies database management and prevents service failures that are caused by manual operations. This way, DAS helps ensure that the database service of users runs in a stable, secure, and efficient manner.
 
@@ -2282,9 +2361,9 @@ Database Autonomy Service (DAS) is a cloud service that uses machine learning an
 
 ApsaraDB RDS for PostgreSQL leverages the core capabilities of DAS to deeply integrate intelligent diagnostics and autonomy services into the ApsaraDB RDS console. It offers the following features to provide a one-stop database management experience: Diagnostics: Diagnostics integrates selected features of DAS, including session management, real-time monitoring, and storage analysis. This allows you to conveniently view database diagnostics and optimization results. Session management: supports real-time monitoring, analysis, and intervention of active sessions on database instances. It allows you to view abnormal sessions (such as longrunning uncommitted transactions) and export or terminate sessions. These features help you quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation. Real-time monitoring: allows you to view visualized charts and tables generated from key operational metrics collected at high frequencies. This feature is designed to help database administrators (DBAs) and developers gain insights into the real-time loads of database instances, quickly locate the root cause of performance jitters, and assess the resource usage of database instances. Storage analysis: allows you to view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database. Dashboard: allows you to view performance metrics, such as TPS, QPS, and throughput, of an instance. You can view performance metrics in different ways. For example, you can view the performance metrics within a specific time period, compare performance metrics collected during different time periods, or customize the performance metrics you want to view. View slow query logs: allows you to view slow query log trends, statistical information, and execution details. It also provides optimization recommendations and allows you to export historical data, helping you quickly locate and resolve performance bottlenecks.
 
-### Diagnostics
+### 18.2 Diagnostics
 
-#### Session management
+#### 18.2.1 Session management
 
 Log in to the RDS console and navigate to the **Session Management** page of Database Autonomy Service (DAS) to monitor, analyze, and manage active sessions of database instances in real time. You can view abnormal sessions such as long-uncommitted transactions, export sessions, or terminate sessions. this feature helps you quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation.
 
@@ -2313,7 +2392,7 @@ You can view summarized session information by user, access source, or database,
 
 You can export session statistics by summary, user, access source, or database.
 
-#### Real-time monitoring
+#### 18.2.2 Real-time monitoring
 
 After you log in to the ApsaraDB RDS console and navigate to the instance performance page of Database Autonomy Service (DAS), you can view visualized charts and tables generated from key operational metrics collected at high frequencies. This feature is designed to help database administrators (DBAs) and developers gain insights into the real-time loads of database instances, quickly locate the root cause of performance jitters, and assess the resource usage of database instances.
 
@@ -2382,7 +2461,7 @@ The upper-right corner displays the remaining refresh count. You can manually co
 
 Establish a baseline: During stable business periods, observe and record normal QPS, TPS, and CPU usage as a benchmark for subsequent fault comparison. Perform correlation analysis: Avoid viewing a single metric in isolation. For example, when QPS drops, immediately check whether InnoDB row lock waits increase or slow queries increase, and observe forwhether physical reads show abnormal fluctuations in physical reads. Watch for spikes: Sudden spikes in charts typically correspond to specific business events (such as scheduled jobs starts or flash sales). Cross-referencing the timestampCorrelating the point in time with business logs helps you quickly locate the issue.
 
-#### Storage analysis
+#### 18.2.3 Storage analysis
 
 After you log in to the ApsaraDB RDS console and navigate to the Storage Analysis page of Database Autonomy Service (DAS), you can view the storage usage and the number of remaining days for which storage is available on a database instance. This feature also allows you to view the storage usage of a specified table, tablespace fragments, and diagnostic results on the database.
 
@@ -2400,7 +2479,7 @@ instance ID, or click **Management** in the **Operation** column, to go to the *
 **Storage Analysis** tab, you can perform the following operations:
 On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
 
-### Dashboard
+### 18.3 Dashboard
 
 After you log in to the ApsaraDB RDS console and navigate to the Dashboard page of Database Autonomy Service (DAS), you can view performance metrics, such as TPS, QPS, and throughput, of the instance. You can view performance metrics in different ways. For example, you can view the performance metrics within a specific time period, compare performance metrics collected during different time periods, or customize the performance metrics you want to view.
 
@@ -2413,7 +2492,7 @@ instance ID, or click **Management** in the **Operation** column, to go to the *
 3. In the left-side navigation pane, choose **Autonomy Services > Dashboard**.
 On the **Performance Trends** tab, you can view the trends of changes in the TPS, QPS, and sessions. You can also click **More Metrics** to customize the metrics you want to view. Click the icon next to the name of a metric to view its description. On the **Performance Trend Comparison** tab, select two time periods to compare the performance metrics collected within the specified time periods. On the **Custom Charts** tab, you can centrally display and manage the desired performance metrics in one chart by customizing performance charts. This simplifies troubleshooting. You must create a dashboard if this is the first time you use **custom charts**.
 
-### View slow query logs
+### 18.4 View slow query logs
 
 After you log in to the ApsaraDB RDS console and navigate to the Slow Query Logs page of Database Autonomy Service (DAS), you can view slow query log trends, statistical information, and execution details. It also provides optimization recommendations and allows you to export historical data, helping you quickly locate and resolve performance bottlenecks.
 
@@ -2426,9 +2505,9 @@ instance ID, or click **Management** in the **Operation** column, to go to the *
 3. In the left-side navigation pane, choose **Autonomy Services****>****Slow Query Logs** to go to
 the slow log analysis details page. On this page, you can view the following information: In the **Slow Log Trend** section, view the slow query log trend of the instance. Click the **Slow Log Statistics** tab to view slow log details for a specified time range and optimize the slow SQL statements. The instances of some database types do not support the SQL optimization feature. Refer to the actual features available in the console. For the instances of ApsaraDB RDS for MySQL and PolarDB for MySQL Primary/Secondary Edition, click the **Optimize** button in the Actions column of the slow SQL record that you want to mange. The record is highlighted in blue to help you quickly locate the SQL statement being analyzed in a large number of slow SQL statements. This highlight persists after you close the optimization window and automatically shifts to the new record when you optimize another slow SQL statement. Click the **Slow Log Details** tab to view the execution details of slow query logs.
 
-## Plug-ins
+## 19 Plug-ins
 
-### Plug-ins supported
+### 19.1 Plug-ins supported
 
 This topic describes the plug-ins that are supported by ApsaraDB RDS for PostgreSQL and their available versions. The following table only lists the common plug-ins. After connecting to the instance, you can use the SELECT * FROM pg_available_extensions; command to view all plug-ins and versions supported by the current instance. The actual query results prevail. If the queried plug-in versions are different from the following table, upgrade the cloud environment to the latest version.
 
@@ -2542,7 +2621,7 @@ This topic describes the plug-ins that are supported by ApsaraDB RDS for Postgre
 | zhparser | 1.0 | 1.0 | 1.0 | 1.0 |
 | zombodb | Not supported | Not supported | 4.0 | Not supported |
 
-### Use mysql_fdw to read and
+### 19.2 Use mysql_fdw to read and write data from and to a MySQL database
 
 **write data from and to a MySQL**
 
@@ -2628,7 +2707,7 @@ Run postgres=> explain verbose select count(*) from ft_test; to find out how the
 (6 rows)
 ```
 
-### Use oss_fdw to read and
+### 19.3 Use oss_fdw to read and write foreign data files
 
 **write foreign data files**
 
@@ -2737,7 +2816,7 @@ mf.aliyuncs.com,id=MD5xxxxxxxx,key=MD5xxxxxxxx,bucket=067862}
 
 The encrypted information is preceded by the MD5 hash value. The remainder of the total length divided by 8 is 3. Therefore, encryption is not performed again when the exported data is imported. You cannot create an AccessKey pair that is preceded by MD5. e splitting in ApsaraDB RDS for P ostgreSQL
 
-## Use Pgpool for read/write
+## 20 Use Pgpool for read/write splitting in ApsaraDB RDS for PostgreSQL
 
 **splitting in ApsaraDB RDS for**
 
@@ -3378,7 +3457,7 @@ pcp_node_info -U manage -h /tmp -p 9898 -n 1 -v Password: # Enter the password. 
 
 Q: Which listening ports are used by Pgpool for read/write splitting? A: The following listening ports are used by Pgpool for read/write splitting: Primary ApsaraDB RDS instance: Port 3389 Secondary ApsaraDB RDS instance: Port 8002 Pgpool: Port 8001 PCP: Port 9898 develop ApsaraDB RDS for Postgr eSQL
 
-## Use ShardingSphere to
+## 21 Use ShardingSphere to develop ApsaraDB RDS for PostgreSQL
 
 **develop ApsaraDB RDS for**
 

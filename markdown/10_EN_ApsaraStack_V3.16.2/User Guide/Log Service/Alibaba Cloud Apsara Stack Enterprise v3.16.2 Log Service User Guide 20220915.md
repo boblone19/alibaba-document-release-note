@@ -3,22 +3,295 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service User Guide"
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 605
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service User Guide 20220915.pdf"
+source_pdf: "2d6f0b9ac4c04c31_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service User Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Log%20Service%20User%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Log Service User Guide
 
-## What is Log Service?
+## Table of Contents
+
+- 1 What is Log Service?
+- 2 Quick start
+  - 2.1 Procedure
+  - 2.2 Log on to the Log Service console
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Manage a project
+  - 2.5 Manage a Metricstore
+  - 2.6 Manage Logstores
+  - 2.7 Manage shards
+  - 2.8 Terms
+    - 2.8.1 Terms
+    - 2.8.2 Log
+    - 2.8.3 Log group
+    - 2.8.4 Project
+    - 2.8.5 Logstore
+    - 2.8.6 Metricstore
+    - 2.8.7 Metric
+    - 2.8.8 Shard
+    - 2.8.9 Topic
+- 3 Data collection
+  - 3.1 Collection by Logtail
+    - 3.1.1 Overview
+      - 3.1.1.1 Logtail overview
+      - 3.1.1.2 Log collection process of Logtail
+      - 3.1.1.3 Logtail configuration files and record files
+    - 3.1.2 Installation
+      - 3.1.2.1 Install Logtail on a Linux server
+      - 3.1.2.2 Install Logtail in Windows
+      - 3.1.2.3 Set Logtail startup parameters
+    - 3.1.3 Logtail machine group
+      - 3.1.3.1 Overview
+      - 3.1.3.2 Configure a user identifier
+      - 3.1.3.3 Create an IP address-based machine group
+      - 3.1.3.4 Create a custom ID-based machine group
+      - 3.1.3.5 View server groups
+      - 3.1.3.6 Modify a server group
+      - 3.1.3.7 View the status of a server group
+      - 3.1.3.8 Delete a machine group
+      - 3.1.3.9 Manage a Logtail configuration
+    - 3.1.4 Collect text logs
+      - 3.1.4.1 Configure text log collection
+      - 3.1.4.2 Collect logs in simple mode
+      - 3.1.4.3 Collect logs in full regex mode
+      - 3.1.4.4 Collect logs in delimiter mode
+      - 3.1.4.5 Collect logs in JSON mode
+      - 3.1.4.6 Collect logs in NGINX mode
+      - 3.1.4.7 Collect logs in IIS mode
+      - 3.1.4.8 Collect logs in Apache mode
+      - 3.1.4.9 Configure parsing scripts
+      - 3.1.4.10 Time formats
+      - 3.1.4.11 Import historical log files
+      - 3.1.4.12 Log topics
+    - 3.1.5 Collect container logs
+      - 3.1.5.1 Overview
+      - 3.1.5.2 Install the Logtail component
+      - 3.1.5.3 Use the Log Service console to collect container text logs in DaemonSet mode
+      - 3.1.5.4 Use the Log Service console to collect container stdout and stderr in DaemonSet mode
+      - 3.1.5.5 Use CRDs to collect container logs in DaemonSet mode
+      - 3.1.5.6 Use CRDs to collect container text logs in Sidecar mode
+      - 3.1.5.7 Use the Log Service console to collect container text logs in Sidecar mode
+      - 3.1.5.8 Collect logs from standard Docker containers
+      - 3.1.5.9 Collect Kubernetes events
+      - 3.1.5.10 Collect container text logs
+      - 3.1.5.11 Collect container stdout and stderr logs
+      - 3.1.5.12 Collect standard Docker logs
+    - 3.1.6 Custom plug-ins
+      - 3.1.6.1 Collect MySQL binary logs
+      - 3.1.6.2 Collect MySQL query results
+      - 3.1.6.3 Collect syslogs
+      - 3.1.6.4 Customize Logtail plug-ins to process data
+    - 3.1.7 Limits
+  - 3.2 Other collection methods
+    - 3.2.1 Use the web tracking feature to collect logs
+    - 3.2.2 Use SDKs to collect logs
+      - 3.2.2.1 Producer Library
+      - 3.2.2.2 Log4j Appender
+      - 3.2.2.3 Logback Appender
+      - 3.2.2.4 Golang Producer Library
+      - 3.2.2.5 Python logging
+    - 3.2.3 Collect common logs
+      - 3.2.3.1 Collect Log4j logs
+      - 3.2.3.2 Collect Python logs
+      - 3.2.3.3 Collect Node.js logs
+      - 3.2.3.4 Collect WordPress logs
+      - 3.2.3.5 Collect Unity3D logs
+- 4 Query and analysis
+  - 4.1 Log search overview
+  - 4.2 Log analysis overview
+  - 4.3 Configure indexes
+  - 4.4 Query and analyze logs
+  - 4.5 Download logs
+  - 4.6 Index data type
+    - 4.6.1 Overview
+    - 4.6.2 Text type
+    - 4.6.3 Numeric type
+    - 4.6.4 JSON type
+  - 4.7 Query syntax and functions
+    - 4.7.1 Search syntax
+    - 4.7.2 LiveTail
+    - 4.7.3 LogReduce
+    - 4.7.4 Contextual query
+    - 4.7.5 Saved search
+    - 4.7.6 Quick analysis
+  - 4.8 Analysis grammar
+    - 4.8.1 General aggregate functions
+    - 4.8.2 Security check functions
+    - 4.8.3 Map functions and operators
+    - 4.8.4 Approximate functions
+    - 4.8.5 Mathematical statistics functions
+    - 4.8.6 Mathematical calculation functions
+    - 4.8.7 String functions
+    - 4.8.8 Date and time functions
+    - 4.8.9 URL functions
+    - 4.8.10 Regular expression functions
+    - 4.8.11 JSON functions
+    - 4.8.12 Type conversion functions
+    - 4.8.13 IP functions
+    - 4.8.14 GROUP BY clause
+    - 4.8.15 Window functions
+    - 4.8.16 HAVING clause
+    - 4.8.17 ORDER BY clause
+    - 4.8.18 LIMIT syntax
+    - 4.8.19 Conditional expressions
+    - 4.8.20 Nested subquery
+    - 4.8.21 Array functions and operators
+    - 4.8.22 Binary string functions
+    - 4.8.23 Bitwise functions
+    - 4.8.24 Interval-valued comparison and periodicity-valued comparison functions
+    - 4.8.25 Comparison functions and operators
+    - 4.8.26 Lambda expressions
+    - 4.8.27 Logical functions
+    - 4.8.28 Column aliases
+    - 4.8.29 JOIN queries on a Logstore and a MySQL database
+    - 4.8.30 Geospatial functions
+    - 4.8.31 Geography functions
+    - 4.8.32 JOIN clause
+    - 4.8.33 UNNEST clause
+  - 4.9 Machine learning syntax and functions
+    - 4.9.1 Overview
+    - 4.9.2 Smooth functions
+    - 4.9.3 Multi-period estimation functions
+    - 4.9.4 Change point detection functions
+    - 4.9.5 Maximum value detection function
+    - 4.9.6 Prediction and anomaly detection functions
+    - 4.9.7 Time series decomposition function
+    - 4.9.8 Time series clustering functions
+    - 4.9.9 Frequent pattern statistics function
+    - 4.9.10 Differential pattern statistics function
+    - 4.9.11 Root cause analysis function
+    - 4.9.12 Correlation analysis functions
+    - 4.9.13 Kernel density estimation function
+  - 4.10 Advanced analysis
+    - 4.10.1 Optimize queries
+    - 4.10.2 Use cases
+    - 4.10.3 Examples of time field conversion
+  - 4.11 Associate Log Service with external data sources
+    - 4.11.1 Overview
+    - 4.11.2 Associate Log Service with a MySQL database
+    - 4.11.3 Associate Log Service with an OSS bucket
+    - 4.11.4 Associate Log Service with a hosted CSV file
+  - 4.12 Visual analysis
+    - 4.12.1 Charts
+      - 4.12.1.1 Chart overview
+      - 4.12.1.2 Display query results in a table
+      - 4.12.1.3 Display query results on a line chart
+      - 4.12.1.4 Display query results on a column chart
+      - 4.12.1.5 Display query results on a bar chart
+      - 4.12.1.6 Display query results on a pie chart
+      - 4.12.1.7 Display query results on an area chart
+      - 4.12.1.8 Display query results on a single value chart
+      - 4.12.1.9 Display query results on a progress bar
+      - 4.12.1.10 Display query results on a map
+      - 4.12.1.11 Display query results in a Sankey diagram
+      - 4.12.1.12 Display query results on a word cloud
+      - 4.12.1.13 Display query results on a treemap chart
+    - 4.12.2 Dashboard
+      - 4.12.2.1 Overview
+      - 4.12.2.2 Create and delete a dashboard
+      - 4.12.2.3 Manage a dashboard in display mode
+      - 4.12.2.4 Manage a dashboard in edit mode
+      - 4.12.2.5 Configure a drill-down event
+      - 4.12.2.6 Add a filter
+      - 4.12.2.7 Manage a Markdown chart
+- 5 Alerts
+  - 5.1 Overview
+  - 5.2 Configure an alarm
+    - 5.2.1 Configure an alert rule
+    - 5.2.2 Authorize a RAM user to manage alert rules
+    - 5.2.3 Configure alert notification methods
+  - 5.3 Modify and view an alarm
+    - 5.3.1 Modify an alert rule
+    - 5.3.2 View alert statistics
+    - 5.3.3 Manage alerts
+  - 5.4 Relevant syntax and fields for reference
+    - 5.4.1 Syntax of conditional expressions in alert rules
+    - 5.4.2 Fields in alert logs
+  - 5.5 FAQ
+    - 5.5.1 A DingTalk alert notification fails to be sent and the error message "send webhook failed: unable to send request: Post" is reported. Why?
+- 6 Real-time consumption
+  - 6.1 Overview
+  - 6.2 Consume log data
+  - 6.3 Consumption by consumer groups
+    - 6.3.1 Use consumer groups to consume log data
+    - 6.3.2 View the status of a consumer group
+  - 6.4 Use Storm to consume log data
+  - 6.5 Use Flume to consume log data
+  - 6.6 Use open source Flink to consume log data
+  - 6.7 Use Logstash to consume log data
+  - 6.8 Use Spark Streaming to consume log data
+  - 6.9 Use Realtime Compute to consume log data
+- 7 Data shipping
+  - 7.1 Ship logs to OSS
+    - 7.1.1 Overview
+    - 7.1.2 Ship log data from Log Service to OSS
+    - 7.1.3 Obtain the ARN of a RAM role
+    - 7.1.4 Storage Formats
+    - 7.1.5 Decompress Snappy compressed files
+- 8 Time series storage
+  - 8.1 Data import
+    - 8.1.1 Collect metric data from hosts
+    - 8.1.2 Import metrics collected by Telegraf
+      - 8.1.2.1 Telegraf overview
+      - 8.1.2.2 Collect metric data from MySQL servers
+      - 8.1.2.3 Collect metric data from Java applications or Tomcat servers
+      - 8.1.2.4 Collect metric data from NGINX servers
+    - 8.1.3 Collect metric data from Prometheus
+      - 8.1.3.1 Collect metric data from Prometheus by using the Remote Write Protocol
+      - 8.1.3.2 Collect metric data from Prometheus by using a Logtail plug-in
+  - 8.2 Query and analysis
+    - 8.2.1 Overview of query and analysis of time series data
+    - 8.2.2 Query and analyze time series data
+  - 8.3 Visualization
+    - 8.3.1 Configure a time series chart
+    - 8.3.2 Send time series data from Log Service to Grafana
+- 9 RAM
+  - 9.1 Overview
+  - 9.2 Create a RAM role
+  - 9.3 Create a user
+  - 9.4 Create a user group
+  - 9.5 Add a user to a user group
+  - 9.6 Create a policy
+  - 9.7 Grant a RAM user the permissions to manage a project
+  - 9.8 Grant permissions to a RAM role
+  - 9.9 Use custom policies to grant permissions to a RAM user
+- 10 Monitor Log Service
+  - 10.1 Overview
+  - 10.2 Manage service logs
+  - 10.3 Log types
+  - 10.4 Service log dashboards
+- 11 FAQ
+  - 11.1 Log collection
+    - 11.1.1 How do I troubleshoot errors that occur when I use Logtail to collect logs?
+    - 11.1.2 What can I do if Log Service does not receive heartbeats from a Logtail client?
+    - 11.1.3 How do I query the status of local log collection?
+    - 11.1.4 How do I debug a regular expression?
+    - 11.1.5 How do I optimize regular expressions?
+    - 11.1.6 How do I use the full regex mode to collect log entries in multiple formats?
+    - 11.1.7 How do I specify time formats for logs?
+    - 11.1.8 How do I configure non-printable characters in a sample log?
+    - 11.1.9 How do I troubleshoot errors that occur when I collect logs from containers?
+    - 11.1.10 How do I obtain the labels and environment variables of a container?
+  - 11.2 Log search and analysis
+    - 11.2.1 FAQ about log query
+    - 11.2.2 What can I do if I cannot obtain the required results from a log query?
+    - 11.2.3 What are the differences between log consumption and log query?
+    - 11.2.4 How do I resolve common errors that occur when I query log data?
+    - 11.2.5 Why data queries are inaccurate?
+  - 11.3 Alarm
+    - 11.3.1 FAQ about alerts
+  - 11.4 What do I do if the Forbidden.SLS::ListProject error occurs when I log on to the Apsara Uni-manager Management Console?
+
+## 1 What is Log Service?
 
 Log Service is a cloud-native monitoring and analysis platform that provides large-scale, low-cost, and real-time services to process log data. Log Service allows you to collect, query, analyze, visualize, consume, and ship log data. Log Service also allows you to configure alerts. This helps improve the digital capabilities of your business in scenarios such as R&D, O&M, operations, and security. Log Service is tested and verified by Alibaba Group in various big data scenarios. You can collect, consume, query, and analyze data without the need to develop separate features. Log Service provides the following features: Log collection: Log Service allows you to collect various types of logs in real time, such as events, binary logs, and text logs by using multiple methods. For example, you can use Logtail and JavaScript to collect logs. Query and analysis: Log Service allows you to query and analyze the collected logs in real time and view analysis results on charts and dashboards. Alerting: Log Service can run query statements at regular intervals after an alert task is created. If the results match the specified conditions, Log Service sends an alert to the specified contacts in real time. You can specify the conditions and contacts when you create the alert task. Real-time consumption: Log Service provides real-time consumption interfaces that log consumers can use to consume the collected logs. Shipping: Log Service allows you to ship the collected logs to Object Storage Service (OSS) in real time.
 
-## Quick start
+## 2 Quick start
 
-### Procedure
+### 2.1 Procedure
 
-This topic describes the basic procedure to use Log Service. You can follow this procedure to create projects, create Logstores, and collect log data. The following figure shows the procedure. Procedure
+This topic describes the basic procedure to use Log Service. You can follow this procedure to create projects, create Logstores, and collect log data. The following figure shows the procedure.
 1. Optional. Obtain an AccessKey pair.
 An AccessKey pair is a secure identity credential that you can use to call API operations and access your Alibaba Cloud resources. You can use the AccessKey pair to sign API requests and pass security authentication.
 2. Create a project.
@@ -34,9 +307,9 @@ Log Service allows you to configure alert rules based on query and analysis resu
 7. Consume logs.
 Log Service allows you to consume logs by using multiple methods, such as a Spark Streaming client, Storm spout, and Flink connector. For more information, see Real-time consumption.
 
-### Log on to the Log Service console
+### 2.2 Log on to the Log Service console
 
-This topic describes how to log on to the Log Service console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
+This topic describes how to log on to the Log Service console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
@@ -47,7 +320,7 @@ following scenarios: You log on to the Apsara Uni-manager Management Console for
 6. On the page that appears, select an organization and region, and then click Access as Administ rat or. The
 home page of the Log Service console is displayed.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair. Prerequisites Only the operation administrators or level-1 organization administrators can obtain the AccessKey pair of an organization. Context To call Apsara Uni-manager and cloud service APIs, we recommend that you use the AccessKey pair of a personal account. If you use the AccessKey pair of a personal account, you must configure header parameters as described in the following table for access control.
 
@@ -72,7 +345,7 @@ The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKe
 6. In the Management AccessKey, view the AccessKey pair of the organization.
 An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
-### Manage a project
+### 2.4 Manage a project
 
 A project in Log Service is a resource management unit that is used to separate and manage different resources. This topic describes how to create and delete a project in the Log Service console. Create a project You can create up to 50 projects for each Apsara Stack tenant account.
 1. Log on to the Log Service console.
@@ -108,7 +381,7 @@ Project-related API operations
 
 For more information, see API Reference in Log Service Developer Guide.
 
-### Manage a Metricstore
+### 2.5 Manage a Metricstore
 
 This topic describes how to create, modify, and delete a Metricstore in the Log Service console. Prerequisites A project is created. For more information, see Manage a project. Create a Metricstore
 1. Log on to the Log Service console.
@@ -138,7 +411,7 @@ delete and choose
 Warning After you delete a Metricstore, all metric data in the Metricstore is deleted and cannot be restored. Proceed with caution.
 2. In the message that appears, click OK.
 
-### Manage Logstores
+### 2.6 Manage Logstores
 
 A Logstore in Log Service is used to collect, store, and query logs. This topic describes how to create, modify, and delete a Logstore in the Log Service console. Create a Logstore You can create up to 200 Logstores in each project.
 1. Log on to the Log Service console.
@@ -180,7 +453,7 @@ Logstore-related API operations
 | Query a Logstore | Query a Logstore: GetLogstore Query all Logstores: ListLogstore |
 | Modify a Logstore | UpdateLogstore |
 
-### Manage shards
+### 2.7 Manage shards
 
 Log data on which read and write operations can be performed is stored in a shard of a Logstore. This topic describes how to split, merge, and delete shards in the Log Service console. Context When you create a Logstore, you must specify the number of shards for the Logstore. After the Logstore is created, you can split or merge shards to increase or decrease the number of shards in the Logstore. Each shard supports a write speed of up to 5 MB/s and a read speed of up to 10 MB/s. If the read speed or write speed of a shard cannot meet your business requirements, we recommend that you split the shard. You can split a shard of a Logstore on the Logst ore At t ribut es page of the Logstore. If the data traffic is very small compared with the maximum read speed or write speed of a shard, we recommend that you merge the shard. Split a shard Each shard supports a write speed of up to 5 MB/s and a read speed of up to 10 MB/s. If the read speed or write speed of a shard cannot meet your business requirements, we recommend that you increase the number of shards. You can split a shard to increase the number of shards.
 1. Log on to the Log Service console.
@@ -209,9 +482,9 @@ After you merge shards, the specified shard and the shard next to the specified 
 | Merge shards | MergeShards |
 | Query shards | ListShard |
 
-### Terms
+### 2.8 Terms
 
-#### Terms
+#### 2.8.1 Terms
 
 This topic introduces the terms that are used in Log Service. Basic resources
 
@@ -230,8 +503,6 @@ This topic introduces the terms that are used in Log Service. Basic resources
 | topic | A topic is a basic management unit in Log Service. You can specify topics when you collect logs. This way, Log Service can classify logs by topic. |
 | endpoint | An endpoint of Log Service is a URL that is used to access a project and the data of the project. To access the projects in different regions, you must use different endpoints. To access the projects in the same region over an internal network or the Internet, you must also use different endpoints. For more information, see Obtain the endpoint of Log Service in Developer Guide. |
 | AccessKey pair | An AccessKey pair is an identity credential that consists of an AccessKey ID and an AccessKey secret. The AccessKey ID and AccessKey secret are used for symmetric encryption and identity authentication. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt and verify a signature string. The AccessKey secret must be kept confidential. For more information, see Obtain an AccessKey pair in Developer Guide. |
-
-Data collection
 
 | Term | Description |
 |---|---|
@@ -263,7 +534,7 @@ Alerting
 |---|---|
 | alert | An alert indicates an alert event. If an alert is triggered based on a specific alert monitoring rule, the alert management system sends the alert event to the notification management system. Log Service also provides alert-related subsystems, features, entities, and modules, such as the alert monitoring system and alert monitoring rules. For more information, see Alerts. |
 
-#### Log
+#### 2.8.2 Log
 
 Logs are records of changes that occur in a system during the running of the system. The records contain information about the operations that are performed on specific objects and the results of the operations. The records are ordered by time. Format Log data is stored in different formats, such as log files, log events, binary logs, and metric data. Log Service uses a semi-structured data model to define logs. A log consists of the following fields: topic, time, content, source, and tags. Log Service has different format requirements on different log fields. The following table describes the log fields and provides the format requirements.
 
@@ -281,23 +552,23 @@ Example The following sample website access log shows the mapping between the ra
 127.0.0.1 - - [01/Mar/2021:12:36:49 0800] "GET /index.html HTTP/1.1" 200 612 "-" "Mozilla/5.0 (Macint osh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
 ```
 
-#### Log group
+#### 2.8.3 Log group
 
 A log group is a collection of logs. A log group is the basic unit that is used to write and read logs. The logs in a log group contain the same metadata, such as the IP address and log source. When you write logs to or read logs from Log Service, multiple logs are encapsulated into a log group. This way, you can write and read logs by log group. This method can reduce the number of read and write operations and improve business efficiency. The maximum length of a log group is 5 MB.
 
-#### Project
+#### 2.8.4 Project
 
 A project in Log Service is used to isolate the resources of different users and control access to specific resources. A project contains resources such as Logstores, Metricstores, and machine groups, and provides an endpoint that you can use to access the resources of Log Service. We recommend that you use different projects to manage the data in different applications, services, or projects. You can use a project to organize and manage Logstores or Metricstores. You may need to use Log Service to collect and store the log data of different projects, services, or environments. You can specify different projects to manage the log data. This facilitates the consumption, export, and analysis of the log data. You can use a project to perform access control. You can grant the permissions to manage a specified project to a RAM user. A project provides an endpoint that you can use to access the resources in the project. Log Service allocates an exclusive endpoint to each project. You can use the endpoint of a project to read, write, and manage log data. For more information about the endpoints, see the "Obtain the endpoint of Log Service" topic in Developer Guid e.
 
-#### Logstore
+#### 2.8.5 Logstore
 
 A Logstore in Log Service is used to collect, store, and query log data. Each Logstore belongs to a project. You can create multiple Logstores in a project. After you create a project, you can create multiple Logstores in the project to store different types of logs that are collected from the same application. For example, if you want to collect the operation logs, application logs, and access logs of App A, you can create a project named app-a and create three Logstores named operation_log, application_log, and access_log in the project to store the logs. When you perform operations such as writing, querying, analyzing, consuming, or shipping logs, you must specify a Logstore. Log Service uses Logstores as a collection unit to collect logs. Log Service uses Logstores as a storage unit to support operations such as storing, consuming, and shipping logs. Log Service creates indexes in a Logstore to support query and analysis operations.
 
-#### Metricstore
+#### 2.8.6 Metricstore
 
 A Metricstore is a unit that is used to collect, store, and query metrics in Log Service. Each Metricstore belongs to a project. You can create multiple Metricstores in a project. After you create a project, you can create multiple Metricstores in the project to store different types of metrics that are collected. For example, if you want to collect the metrics of hosts, cloud services, and business applications, you can create a project named demo-monitor and create three Metricstores named host-metrics, cloud-service-metrics, and appmetrics in the project to store the metrics. You must specify a Metricstore when you write, query, analyze, or consume metrics. Log Service uses a Metricstore as a collection unit to collect metrics. Log Service uses a Metricstore as a storage unit to store and consume metrics. Log Service supports the SQL-92 syntax and the PromQL syntax for you to query and analyze metrics.
 
-#### Metric
+#### 2.8.7 Metric
 
 Log Service stores all data in Metricstores as time series. Log Service uses the model of time series data that is defined by Prometheus. Each time series consists of samples with the same metric identifier. Metric identifier Each time series has a unique metric identifier that consists of a metric name and a label. Metric names are strings and must match the [a-zA-Z_:][a-zA-Z0-9_:]* regular expression. In most cases, a metric name indicates a description of a time series. For example, http_request_total indicates that each sample of a time series indicates the total number of received HTTP requests. Labels are key-value pairs. Label keys must match the [a-zA-Z_][a-zA-Z0-9_]* regular expression. Label values can contain all characters except vertical bars (|). In most cases, a label indicates an attribute of a time series. For example, the value of the method key may be POST, and the value of the URL key may be /api/v1/get. Samples A sample indicates the value of a metric at a point in time. Each sample consists of a timestamp and a value. Timestamps are accurate to the nanosecond, and values are of the DOUBLE type. Encoding format When metric data is written to Log Service, the Protocol Buffer (Protobuf) format must be used. This format is also used to write log data. The metric identifier and samples are contained in the content field. The following table describes the related subfields.
 
@@ -308,7 +579,7 @@ Log Service stores all data in Metricstores as time series. Log Service uses the
 | time nano __ _ __ | The timestamp of a sample. The value is accurate to the nanosecond. | 1585727297293000000 |
 | value __ __ | The value of a sample. | 36.0 |
 
-#### Shard
+#### 2.8.8 Shard
 
 Shards are used to manage the read and write capacity of Logstores or Metricstores. In Log Service, data is stored in a shard. MD5 value range Each shard has an MD5 value range. and each range is a left-closed, right-open interval in the [BeginKey, EndKey) format. Each range does not overlap the ranges of other shards. The entire MD5 value range is within the following range: [00000000000000000000000000000000,ffffffffffffffffffffffffffffffff). You can specify the number of shards when you create a Logstore or Metricstore. Log Service evenly divides the entire MD5 value range for each shard. BeginKey: the start of a shard. The value is included in the MD5 value range of the shard. EndKey: the end of a shard. The value is excluded from the MD5 value range of the shard. In this example, Logstore A has four shards. The following table describes the MD5 value range of each shard. MD5 value range
 
@@ -321,25 +592,25 @@ Shards are used to manage the read and write capacity of Logstores or Metricstor
 
 To read data from a shard, you must specify the ID of the shard. To write data to a shard, you can use the load balancing method or specify a hash key. If you use the load balancing method, each data packet is randomly written to an available shard. If you specify a hash key, data is written to the shard whose MD5 value range includes the value of the specified hash key. For example, you use the shard range that is shown in the preceding table. If you specify 5F as a hash key to write data to a Logstore, the data is written to Shard1 because the MD5 value range of Shard1 contains the hash key 5F. If you specify 8C as a hash key, the data is written to Shard2 because the MD5 value range of Shard2 contains the hash key 8C. Shard capacity Each shard provides the following read capacity and write capacity: Write capacity: 5 MB/s or 500 times/s Read capacity: 10 MB/s or 100 times/s We recommend that you adjust the number of shards based on the actual data traffic. If the data traffic exceeds the read or write capacity of a shard, you can split the shard into multiple shards to increase the capacity. If the data traffic is much lower than the read or write capacity of a shard, you can merge the shard with another shard to reduce the capacity and save costs. For example, you have two shards that are in the readwrite state and the shards can provide a write capacity of up to 10 MB/s. If you need to write data at a speed of 14 MB/s in real time, we recommend that you split one of your shards into two shards. This way, you can have three shards that are in the readwrite state. If you need to write data at a speed of 3 MB/s in real time, we recommend that you merge your shards. Not ice If the error code 403 or 500 is frequently returned when you write data by calling the Log Service API, you can go to the CloudMonitor console to check the traffic and status codes. Then, you can determine whether to increase the number of shards. If the data traffic exceeds the capacity of your shards, Log Service attempts to provide services to meet your business requirements. However, Log Service cannot ensure the quality of the services. Shard status A shard can be in the readwrite state or readonly state. When you create a shard, the shard is in the readwrite state. If you split a shard or merge shards, the status of the original shard changes to readonly. The newly generated shards are in the readwrite state. The status of a shard does not affect the read capacity of the shard. Data can be written to the shards that are in the readwrite state, but cannot be written to the shards that are in the readonly state. Splitting and merging Log Service allows you to split and merge shards. After you split a shard, two more shards are added. The new shards are in the readwrite state and are listed under the original shard. The MD5 value range of the new shards includes the MD5 value range of the original shard. You can split only a shard that is in the readwrite state. After you split a shard, the status of the shard changes from readwrite to readonly. This indicates that data can still be read from the shard, but cannot be written to the shard. You can merge two shards into one shard. The new shard is in the readwrite state and is listed under the original shards. The MD5 value range of the new shard includes the MD5 value range of the two original shards. When you merge shards, you must specify a shard that is in the readwrite state. The shard cannot be the last shard in the shard list. Log Service finds the shard whose MD5 value range is next to the specified shard and then merges the two shards. After you merge the shards, the status of the shards changes from readwrite to readonly. This indicates that data can still be read from the shards, but cannot be written to the shards.
 
-#### Topic
+#### 2.8.9 Topic
 
 A topic is a basic management unit in Log Service. When you collect logs, you can specify topics to identify the logs. You can use topics to identify logs that are generated by different services, users, and instances. For example, System A consists of an HTTP request processing module, a cache module, a logic processing module, and a storage module. You can set the log topic of the HTTP request processing module to http_module, the log topic of the cache module to cache_module, the log topic of the logic processing module to logic_module, and the log topic of the storage module to store_module. After the logs of the preceding modules are collected and saved to the same Logstore, you can identify logs based on the topics. If you do not need to identify logs in a Logstore, set the topic to Null - Do not generate topic when you collect logs. A topic can be an empty string. The following figure shows the relationships between Logstores, topics, and shards.
 
-## Data collection
+## 3 Data collection
 
-### Collection by Logtail
+### 3.1 Collection by Logtail
 
-#### Overview
+#### 3.1.1 Overview
 
-##### Logtail overview
+##### 3.1.1.1 Logtail overview
 
-Logtail is a log collection agent that is provided by Log Service. You can use Logtail to collect logs from multiple data sources in real time. These sources include Elastic Compute Service (ECS) instances, data centers, and servers that belong to third-party cloud service providers. This topic describes the features, benefits, limits, and configuration process of Logtail. Logtail-based log collection Benefits Supports non-intrusive log collection based on log files. You do not need to modify your application code. Your applications are not affected when Logtail collects logs. Allows you to collect text logs, binary logs, HTTP data, and container logs. Allows you to collect logs from standard containers, swarm clusters, and Kubernetes clusters. Handles exceptions during log collection. If a network or server exception occurs, Logtail retries log collection and caches logs on local servers to ensure data security. Provides centralized management based on Log Service. After you install Logtail on servers and create a machine group and Logtail configurations, Logtail collects logs from the servers and sends the logs to Log Service. Provides a comprehensive self-protection mechanism. The CPU, memory, and network resources that Logtail can use are limited. This ensures that Logtail does not affect the performance of other services on the server. Limits For more information about the limits of Logtail, see Limits. Configuration process To collect logs from servers by using Logtail, perform the following steps:
+Logtail is a log collection agent that is provided by Log Service. You can use Logtail to collect logs from multiple data sources in real time. These sources include Elastic Compute Service (ECS) instances, data centers, and servers that belong to third-party cloud service providers. This topic describes the features, benefits, limits, and configuration process of Logtail. Logtail-based log collection Benefits Supports non-intrusive log collection based on log files. You do not need to modify your application code. Your applications are not affected when Logtail collects logs. Allows you to collect text logs, binary logs, HTTP data, and container logs. Allows you to collect logs from standard containers, swarm clusters, and Kubernetes clusters. Handles exceptions during log collection. If a network or server exception occurs, Logtail retries log collection and caches logs on local servers to ensure data security. Provides centralized management based on Log Service. After you install Logtail on servers and create a machine group and Logtail configurations, Logtail collects logs from the servers and sends the logs to Log Service. Provides a comprehensive self-protection mechanism. The CPU, memory, and network resources that Logtail can use are limited. This ensures that Logtail does not affect the performance of other services on the server. For more information about the limits of Logtail, see Limits. Configuration process To collect logs from servers by using Logtail, perform the following steps:
 1. Install Logtail.
 Install Logtail on servers from which you want to collect logs. For more information, see Install Logtail in Linux and Install Logtail in Windows.
 2. Create a machine group.
 Log Service allows you to create a custom ID-based machine group or an IP address-based machine group. For more information, see Create a machine group based on a server IP address and Create a machine group based on a custom ID.
 3. Create a Logtail configuration and apply it to the machine group.
-After you complete the preceding procedure, Logtail collects logs from your server and sends the logs to the specified Logstore. You can use the Log Service console, call API operations, or use SDKs to query logs. Terms Machine group: A machine group contains one or more servers from which logs of a specific type are collected. After you apply Logtail configurations to a machine group, Log Service collects logs from the servers in the machine group based on the configurations. You can set an IP address-based identifier or a custom identifier for a machine group. Then, you can manage the servers in the machine group based on the identifier. You can create and delete a machine group, add servers to a machine group, and remove servers from a machine group in the Log Service console. Logtail: Logtail is a log collection agent that is provided by Log Service. Logtail runs on servers to collect logs from the servers. For more information, see Install Logtail in Linux or Install Logtail in Windows. For a Linux-based server, Logtail is installed in the /usr/local/ilogtail directory. Logtail initiates the following processes whose names start with ilogtail: a log collection process and a daemon process. The logs of Logtail are stored in the /usr/local/ilogtail/ilogtail.LOG file. For a Windows-based server, Logtail is installed in the C:\Program Files\Alibaba\Logtail directory (32-bit system) or C:\Program Files (x86)\Alibaba\Logtail directory (64-bit system). Choose Cont rol Panel > Administ rat ive T ools > Services. On the Services window, you can view the LogtailDaemon service. The logs of Logtail are stored in the `ilogtail.LOG` file. Logtail configurations: Logtail configurations are a set of policies that Logtail uses to collect logs. You can specify the data source and collection mode to create custom Logtail configurations for log collection. The configurations specify how to collect logs from servers, parse the logs, and send the logs to a specified Logstore. Features
+After you complete the preceding procedure, Logtail collects logs from your server and sends the logs to the specified Logstore. You can use the Log Service console, call API operations, or use SDKs to query logs. Machine group: A machine group contains one or more servers from which logs of a specific type are collected. After you apply Logtail configurations to a machine group, Log Service collects logs from the servers in the machine group based on the configurations. You can set an IP address-based identifier or a custom identifier for a machine group. Then, you can manage the servers in the machine group based on the identifier. You can create and delete a machine group, add servers to a machine group, and remove servers from a machine group in the Log Service console. Logtail: Logtail is a log collection agent that is provided by Log Service. Logtail runs on servers to collect logs from the servers. For more information, see Install Logtail in Linux or Install Logtail in Windows. For a Linux-based server, Logtail is installed in the /usr/local/ilogtail directory. Logtail initiates the following processes whose names start with ilogtail: a log collection process and a daemon process. The logs of Logtail are stored in the /usr/local/ilogtail/ilogtail.LOG file. For a Windows-based server, Logtail is installed in the C:\Program Files\Alibaba\Logtail directory (32-bit system) or C:\Program Files (x86)\Alibaba\Logtail directory (64-bit system). Choose Cont rol Panel > Administ rat ive T ools > Services. On the Services window, you can view the LogtailDaemon service. The logs of Logtail are stored in the `ilogtail.LOG` file. Logtail configurations: Logtail configurations are a set of policies that Logtail uses to collect logs. You can specify the data source and collection mode to create custom Logtail configurations for log collection. The configurations specify how to collect logs from servers, parse the logs, and send the logs to a specified Logstore. Features
 
 | Feature | Description |
 |---|---|
@@ -358,7 +629,7 @@ After you complete the preceding procedure, Logtail collects logs from your serv
 
 Data collection reliability Logtail stores checkpoints that are periodically collected to the local server during log collection. If an exception such as an unexpected server shutdown or a process failure occurs, Logtail restarts and then collects data from the last checkpoint. This process avoids incomplete data collection. Logtail runs based on the startup parameters that are specified in the startup configuration file. If the usage of a resource exceeds the limit for more than 5 minutes, Logtail is forcibly restarted. After the restart, a small amount of duplicate data may be collected to the specified Logstore. To improve log collection reliability, Logtail uses multiple internal mechanisms. However, logs may fail to be collected in the following scenarios: Logtail is not running, but logs are rotated multiple times. The log rotation rate is high, for example, one rotation per second. The log collection rate is lower than the log generation rate for a long period of time.
 
-##### Log collection process of Logtail
+##### 3.1.1.2 Log collection process of Logtail
 
 This topic describes how Logtail collects logs. The log collection process consists of the following steps: monitor log files, read log files, process logs, filter logs, aggregate logs, and send logs. Monitor log files After you install Logtail on a server and create a Logtail configuration that is used to collect logs in the Log Service console, Log Service delivers the Logtail configuration to Logtail in real time. Then, Logtail monitors log files of the server based on the Logtail configuration. Logtail scans log directories and files based on the log file path and the maximum directory depth that you specify for monitoring in the Logtail configuration. If the log files of the server in a machine group are not updated after you apply the Logtail configuration to the machine group, the log files are considered historical log files. Logtail does not collect historical log files. If log files are updated, Logtail reads and collects the files, and then sends the log files to Log Service. For more information about how to collect historical log files, see Import historical logs. Logtail registers event listeners to monitor directories from which log files are collected. The event listeners pool the log files in the directories on a regular basis. This ensures that logs are collected at the earliest opportunity in a stable manner. For Linux-based servers, Inotify is used to monitor the directories and pool log files. Read log files After Logtail detects updated log files, Logtail reads the log files. The first time Logtail reads a log file, Logtail checks the size of the file. If the file size is less than 1 MB, Logtail reads data from the beginning of the file. If the file size is greater than 1 MB, Logtail reads from the last 1 MB of data in the file. If a log file is read before, Logtail reads the file from the previous checkpoint. Logtail can read up to 512 KB of data at the same time. Make sure that the size of each log in a log file does not exceed 512 KB. Not ice If you change the system time on the server, you must restart Logtail. Otherwise, the log time becomes invalid and logs are dropped. Process logs After Logtail reads a log file, Logtail splits each log in the file into multiple lines, parses the log, and then configures the time field for the log. Split a log into multiple lines If you specify a regular expression to match the start part in the first line of a log, Logtail splits the log into multiple lines based on the regular expression. If you do not specify a regular expression, a single log line is processed as a log. Parse logs Logtail parses each log based on the collection mode that you specify in the Logtail configuration. If you specify complex regular expressions, Logtail may consume an excessive amount of CPU resources. We recommend that you specify regular expressions that allow Logtail to parse logs in an efficient manner. If Logtail fails to parse a log, Logtail handles the failure based on the setting of the Drop Failed to Parse Logs parameter in the Logtail configuration. If you turn on Drop Failed t o Parse Logs, Logtail drops the log and reports an error. If you turn off Drop Failed t o Parse Logs, Logtail uploads the log. The key of the log is set to raw_log and the value is set to the log content. Configure the time field for a log If you do not configure the time field for a log, the log time is set to the time when the log is parsed. If you configure the time field for a log, Logtail processes the log based on the following conditions: If the difference between the time when the log is generated and the current time is within 12 hours, the log time is extracted from the parsed log fields. If the difference between the time when the log is generated and the current time is greater than 12 hours, the log is dropped and an error is reported. Filter logs After logs are processed, Logtail filters the logs based on the specified filter conditions. If you do not specify filter conditions in the Filt er Conf igurat ion field, the logs are not filtered. If you specify filter conditions in the Filt er Conf igurat ion field, the fields in each log are traversed. Logtail collects only the logs that meet the filter conditions. Aggregate logs To reduce the number of network requests, Logtail caches the processed and filtered logs for a specified period of time. Then, Logtail aggregates the logs and sends the logs to Log Service. If one of the following conditions is met during the cache process, logs are aggregated and sent to Log Service: The aggregation duration exceeds 3 seconds. The number of aggregated logs exceeds 4,096. The total size of aggregated logs exceeds 512 KB. Send logs Logtail sends the aggregated logs to Log Service. You can set the max_bytes_per_sec and send_request_concurrency parameters in the Logtail startup configuration file to specify the maximum transmission rate of log data and concurrent requests. For more information, see Set Logtail startup parameters. If a log fails to be sent, Logtail retries or no longer sends the log based on the error code.
 
@@ -369,7 +640,7 @@ This topic describes how Logtail collects logs. The log collection process consi
 | 403 | The shard quota is exhausted. | Logtail tries again after 3 seconds. |
 | 500 | A server exception occurs. | Logtail tries again after 3 seconds. |
 
-##### Logtail configuration files and record files
+##### 3.1.1.3 Logtail configuration files and record files
 
 This topic describes the basic configuration files and record files of Logtail. When Logtail is active, Logtail uses the configuration files and generates record files. Startup configuration file (ilogtail_config.json) The ilogtail_config.json file is used to set the startup parameters of Logtail. For more information, see Set Logtail startup parameters. The file must be a valid JSON file. Otherwise, Logtail cannot be started. If you modify the file, you must restart Logtail for the modifications to take effect. After you install Logtail on a server, you can perform the following operations on the ilogtail_config.json file: Modify the runtime parameters of Logtail. Check whether the installation commands are correct. The values of the config_server_address and data_server_list parameters in the ilogtail_config.json file vary based on the installation command that you select. If the region in the command is different from the region where the Log Service project resides or the address in the command cannot be accessed, the command is incorrect. If the command is incorrect, Logtail cannot collect logs and must be reinstalled. File path Linux: The file is stored in /usr/local/ilogtail/ilogtail_config.json. Windows: 64-bit: The file is stored in C:\Program Files (x86)\Alibaba\Logtail\ilogtail_config.json. 32-bit: The file is stored in C:\Program Files\Alibaba\Logtail\ilogtail_config.json. You can run both 32-bit and 64-bit applications in a 64-bit Windows operating system. To ensure compatibility, the operating system stores 32-bit applications in a separate x86 directory. Logtail for Windows is a 32-bit application. Therefore, Logtail is installed in the Program Files (x86) directory in 64-bit Windows. If Logtail for 64-bit Windows is available, you can install Logtail in the Program Files directory. Containers: The file is stored in a Logtail container. The file path is specified in the environment variable ALIYUN _LOGTAIL_USER_ID of the Logtail container. You can run the docker inspect ${logtail_container_name} | g `rep ALIYUN_LOGTAIL_CONFIG` command to view the file path. Example: /etc/ilogtail/conf/cn-hangzhou/ilogt ail_config.json. Sample file If you run the `cat /usr/local/ilogtail/ilogtail_config.json` command, the following output is returned: `{`
 
@@ -542,11 +813,11 @@ d10\",\n \"Path\" : \"/logtail_host/var/lib/docker/overlay2/947db346695a1f65e63e
 
 `}`
 
-#### Installation
+#### 3.1.2 Installation
 
-##### Install Logtail on a Linux server
+##### 3.1.2.1 Install Logtail on a Linux server
 
-This topic describes how to install, upgrade, and uninstall Logtail on a Linux server. Supported operating systems You can install Logtail on servers that run one of the following x86-64 Linux operating systems: Aliyun Linux 2 Red Hat Enterprise Linux 6, Red Hat Enterprise Linux 7, and Red Hat Enterprise Linux 8 CentOS Linux 6, CentOS Linux 7, and CentOS Linux 8 Debian GNU/Linux 8, Debian GNU/Linux 9, and Debian GNU/Linux 10 Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04, and Ubuntu 20.04 SUSE Linux Enterprise Server 11, SUSE Linux Enterprise Server 12, and SUSE Linux Enterprise Server 15 openSUSE Leap 15.1, openSUSE Leap 15.2, and openSUSE Leap 42.3 Glibc 2.5 or later Procedure If you run the installation command on a server on which Logtail is installed, the installer uninstalls Logtail from the server, deletes the `/usr/local/ilogtail` directory, and then reinstalls Logtail. If the installation is successful, Logtail starts when the system reboots.
+This topic describes how to install, upgrade, and uninstall Logtail on a Linux server. Supported operating systems You can install Logtail on servers that run one of the following x86-64 Linux operating systems: Aliyun Linux 2 Red Hat Enterprise Linux 6, Red Hat Enterprise Linux 7, and Red Hat Enterprise Linux 8 CentOS Linux 6, CentOS Linux 7, and CentOS Linux 8 Debian GNU/Linux 8, Debian GNU/Linux 9, and Debian GNU/Linux 10 Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04, and Ubuntu 20.04 SUSE Linux Enterprise Server 11, SUSE Linux Enterprise Server 12, and SUSE Linux Enterprise Server 15 openSUSE Leap 15.1, openSUSE Leap 15.2, and openSUSE Leap 42.3 Glibc 2.5 or later If you run the installation command on a server on which Logtail is installed, the installer uninstalls Logtail from the server, deletes the `/usr/local/ilogtail` directory, and then reinstalls Logtail. If the installation is successful, Logtail starts when the system reboots.
 1. Run the following command to download the Logtail installer:
 
 ```
@@ -633,9 +904,9 @@ Uninstall Logtail Run the following command as an administrator to uninstall Log
 wget http://${service:sls-backend-server:sls_data.endpoint}/logtail.sh -O logtail.sh chmod 755 logtail.sh ./logtail.sh uninstall
 ```
 
-##### Install Logtail in Windows
+##### 3.1.2.2 Install Logtail in Windows
 
-This topic describes how to install Logtail on a Windows server. Supported systems Logtail supports the following Windows operating systems: Windows 7 (Client) 32-bit Windows 7 (Client) 64-bit Windows Server 2008 32-bit Windows Server 2008 64-bit Windows Server 2012 64-bit Windows Server 2016 64-bit Procedure
+This topic describes how to install Logtail on a Windows server. Supported systems Logtail supports the following Windows operating systems: Windows 7 (Client) 32-bit Windows 7 (Client) 64-bit Windows Server 2008 32-bit Windows Server 2008 64-bit Windows Server 2012 64-bit Windows Server 2016 64-bit
 1. Download the installation package.
 Run the following command to download the installation package:
 
@@ -668,7 +939,7 @@ Installation directory After you run the installation command, Logtail is instal
 
 After Logtail is uninstalled, the installation directory is deleted. However, some residual configuration data is still maintained in the C:\LogtailData directory. You can manually delete the data. The residual configuration data includes the following information: checkpoint: checkpoints of all plug-ins, for example, the Windows event log plug-in. logtail_check_point: checkpoints of Logtail. users: IDs of Apsara Stack tenant accounts.
 
-##### Set Logtail startup parameters
+##### 3.1.2.3 Set Logtail startup parameters
 
 This topic describes how to set Logtail startup parameters. Context You may need to set Logtail startup parameters in the following scenarios: You need to collect a large number of log files that consume much memory. You want to maintain the metadata (such as the file signature, collection location, and file name) of each file in the memory. The CPU usage is high due to heavy log data traffic. The traffic sent to Log Service is heavy due to a large amount of log data. You want to collect syslogs or TCP data streams. Startup configurations File path
 
@@ -732,15 +1003,15 @@ Ensure that the modified configurations are in the valid JSON format.
 /etc/init.d/ilogtaild stop /etc/init.d/ilogtaild start /etc/init.d/ilogtaild status
 ```
 
-#### Logtail machine group
+#### 3.1.3 Logtail machine group
 
-##### Overview
+##### 3.1.3.1 Overview
 
 Log Service uses machine groups to manage the servers from which you want to collect logs by using Logtail. A machine group is a virtual group that contains multiple servers. If you want to use a Logtail configuration file to collect logs from multiple servers, you can add the servers to a machine group. Then, you can apply the Logtail configuration file to the machine group. To define a machine group, you can use one of the following methods: IP address: Add the IP addresses of all servers to a machine group. Each server can be identified by using its unique IP address. Custom ID: Use a custom ID to identify the machine group and use the same ID for servers in the machine group. Windows and Linux servers cannot be added to the same machine group. IP address-based machine groups You can add multiple servers to a machine group by adding their IP addresses to the machine group. Then, you can create a Logtail configuration file for all the servers at the same time. If you use ECS instances and have not associated them with hostnames or changed their network types, you can add their private IP addresses to the machine group. In other cases, you must add the server IP addresses obtained by Logtail to a machine group. The IP address of each server is recorded in the IP address field of the app_info.json file on the server. The app_info.json file records the internal information of Logtail. This file includes the server IP addresses obtained by Logtail. If you modify the IP address field of the file, the IP addresses obtained by Logtail remain unchanged. Logtail obtains a server IP address by using the following methods: If the IP address of a server is associated with the hostname in the /etc/hosts file of the server, Logtail obtains this IP address. If the IP address of a server is not associated with the hostname, Logtail obtains the IP address of the first network interface controller (NIC) on the server. For more information, see Create an IP address-based server group. Custom ID-based machine groups You can use custom IDs to dynamically define machine groups. An application system consists of multiple modules. You can scale out each module by adding multiple servers to the module. If you want to collect logs by module, you can create a machine group for each module. Therefore, you must specify a custom ID for each server in each module. For example, a website consists of an HTTP request processing module, a caching module, a logic processing module, and a storage module. The custom IDs of these modules can be http_module, cache_module, logic_module, and store_module. For more information, see Create a machine group based on a custom ID.
 
-##### Configure a user identifier
+##### 3.1.3.2 Configure a user identifier
 
-This topic describes how to specify the ID of an Apsara Stack tenant account as a user identifier on a server. Prerequisites A server is available. The server can be an Elastic Compute Service (ECS) instance that belongs to another Apsara Stack tenant account, a server that is provided by a third-party cloud service provider, or a self-managed data center. Logtail is installed on the server from which you want to collect logs. For more information, see Install Logtail in Linux or Install Logtail in Windows. Context If your server is an ECS instance that belongs to another Apsara Stack tenant account, a server that is provided by a third-party cloud service provider, or a self-managed data center, you must specify the ID of your Apsara Stack tenant account as a user identifier on your server after Logtail is installed. Then, the Apsara Stack tenant account can use Logtail to collect logs from the server. If you do not configure a user identifier on your server, Log Service cannot receive the heartbeat of the server and Logtail cannot collect logs from the server. Procedure
+This topic describes how to specify the ID of an Apsara Stack tenant account as a user identifier on a server. Prerequisites A server is available. The server can be an Elastic Compute Service (ECS) instance that belongs to another Apsara Stack tenant account, a server that is provided by a third-party cloud service provider, or a self-managed data center. Logtail is installed on the server from which you want to collect logs. For more information, see Install Logtail in Linux or Install Logtail in Windows. Context If your server is an ECS instance that belongs to another Apsara Stack tenant account, a server that is provided by a third-party cloud service provider, or a self-managed data center, you must specify the ID of your Apsara Stack tenant account as a user identifier on your server after Logtail is installed. Then, the Apsara Stack tenant account can use Logtail to collect logs from the server. If you do not configure a user identifier on your server, Log Service cannot receive the heartbeat of the server and Logtail cannot collect logs from the server.
 1. View the ID of your Apsara Stack tenant account.
 i. Log on to the Log Service console. For more information, see Log on to the Log Service console. ii. In the top navigation bar, click Ent erprise. iii. In the left-side navigation pane, click Organizat ions. iv. Select the account that you want to view and click Obt ain an accesskey v. In the AccessKey dialog box, view the ID of the Apsara Stack tenant account.
 2. Log on to the server and specify the ID of the Apsara Stack tenant account as a user identifier.
@@ -752,9 +1023,9 @@ touch /etc/ilogtail/users/1************* touch /etc/ilogtail/users/1************
 
 Windows server: In the C:\LogtailData\users directory, create a file and set the name of the file to the ID of the Apsara Stack tenant account. For example, you can set the file name to C:\LogtailData\users\1**************. If the /etc/ilogtail/users directory does not exist, you must create the directory. You can configure the IDs of multiple Apsara Stack tenant accounts on the same server. After you configure or delete a user identifier, the change takes effect within 1 minute. If you no longer need a user identity file on a server, we recommend that you delete the file from the server at the earliest opportunity.
 
-##### Create an IP address-based machine group
+##### 3.1.3.3 Create an IP address-based machine group
 
-Log Service allows you to create an IP address-based machine group. This topic describes how to create an IP address-based machine group in the Log Service console. Prerequisites A project and a Logstore are created. At least one server is available. If you use an Elastic Compute Service (ECS) instance, you must make sure that the ECS instance and Log Service project belong to the same Apsara Stack tenant account and reside in the same region. If the ECS instance belongs to another Apsara Stack tenant account, you must configure a user identifier for the ECS instance before you create an IP address-based machine group. If the server is provided by a thirdparty cloud service provider or is deployed in a self-managed data center, you must also configure a user identifier. For more information, see Configure an account ID on a server. Logtail is installed on the server. For more information, see Install Logtail in Linux and Install Logtail in Windows. Procedure
+Log Service allows you to create an IP address-based machine group. This topic describes how to create an IP address-based machine group in the Log Service console. Prerequisites A project and a Logstore are created. At least one server is available. If you use an Elastic Compute Service (ECS) instance, you must make sure that the ECS instance and Log Service project belong to the same Apsara Stack tenant account and reside in the same region. If the ECS instance belongs to another Apsara Stack tenant account, you must configure a user identifier for the ECS instance before you create an IP address-based machine group. If the server is provided by a thirdparty cloud service provider or is deployed in a self-managed data center, you must also configure a user identifier. For more information, see Configure an account ID on a server. Logtail is installed on the server. For more information, see Install Logtail in Linux and Install Logtail in Windows.
 1. Obtain the IP addresses of the servers.
 The IP addresses that are obtained by Logtail are recorded in the ip field of the app_info.json file. On the servers where Logtail is installed, you can go to the following path to check the app_info.json file: Linux: /usr/local/ilogtail/app_info.json 64-bit Windows: C:\Program Files (x86)\Alibaba\Logtail\app_info.json 32-bit Windows: C:\Program Files\Alibaba\Logtail\app_info.json The following figure shows the IP address of the server in Linux.
 2. Log on to the Log Service console.
@@ -775,9 +1046,9 @@ parameters.
 7. View the status of the machine group.
 i. In the Machine Groups list, click the machine group that you create. ii. On the Machine Group Set t ings page, view the status of the machine group. If the Heart beat status is OK, the server is connected to Logtail. If the status is FAIL, click Aut omat ic Ret ry. Result You can view the created machine group in the Machine Groups list.
 
-##### Create a custom ID-based machine group
+##### 3.1.3.4 Create a custom ID-based machine group
 
-Log Service allows you to create a custom ID-based machine group. This topic describes how to create a custom ID-based machine group in the Log Service console. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. At least one server is available. If you use an Elastic Compute Service (ECS) instance, you must make sure that the ECS instance and Log Service project belong to the same Apsara Stack tenant account and reside in the same region. If the ECS instance belongs to another Apsara Stack tenant account, you must configure a user identifier for the ECS instance before you create a custom ID-based machine group. If the server is provided by a third-party cloud service provider or is deployed in a self-managed data center, you must also configure a user identifier. For more information, see Configure an account ID on a server. Logtail is installed on the server. For more information, see Install Logtail on ECS instances. Context Custom ID-based machine groups offer significant benefits in the following scenarios: If your servers reside in multiple custom network environments such as virtual private clouds (VPCs), some IP addresses of the servers may conflict. In this case, Logtail cannot collect logs as expected. You can use a custom ID to prevent this issue. If you want to add multiple servers to a machine group, you can set the same custom ID for new servers as the machine group. Log Service identifies the custom ID and adds the servers with the same custom ID to the machine group. Procedure
+Log Service allows you to create a custom ID-based machine group. This topic describes how to create a custom ID-based machine group in the Log Service console. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. At least one server is available. If you use an Elastic Compute Service (ECS) instance, you must make sure that the ECS instance and Log Service project belong to the same Apsara Stack tenant account and reside in the same region. If the ECS instance belongs to another Apsara Stack tenant account, you must configure a user identifier for the ECS instance before you create a custom ID-based machine group. If the server is provided by a third-party cloud service provider or is deployed in a self-managed data center, you must also configure a user identifier. For more information, see Configure an account ID on a server. Logtail is installed on the server. For more information, see Install Logtail on ECS instances. Context Custom ID-based machine groups offer significant benefits in the following scenarios: If your servers reside in multiple custom network environments such as virtual private clouds (VPCs), some IP addresses of the servers may conflict. In this case, Logtail cannot collect logs as expected. You can use a custom ID to prevent this issue. If you want to add multiple servers to a machine group, you can set the same custom ID for new servers as the machine group. Log Service identifies the custom ID and adds the servers with the same custom ID to the machine group.
 1. Create a file named user_defined_id in a specified directory.
 Linux: Store the file in the /etc/ilogtail/user_defined_id directory. Windows: Store the file in the C:\LogtailData\user_defined_ided_id directory.
 2. Set a custom ID for the server.
@@ -820,17 +1091,17 @@ Time to take effect By default, after you add, delete, or modify the user_define
 
 Windows: i. Choose St art Menu > Cont rol Panel > Administ rat ive T ools > Services. ii. In the Services window, select the required service. For Logtail V0.x.x.x, select LogtailWorker. For Logtail V1.0.0.0 or later, select LogtailDaemon. iii. Right-click the service and then select Rest art to validate the configurations.
 
-##### View server groups
+##### 3.1.3.5 View server groups
 
-This topic describes how to view the server groups of a project on the Server Groups page in the Log Service console. Procedure
+This topic describes how to view the server groups of a project on the Server Groups page in the Log Service console.
 1. Log on to the Log Service console.
 2. Find the target project in the project list and click the project name.
 3. In the left-side navigation pane of the page that appears, click the Server Groups icon to display the list of
 server groups. You can view all server groups of the project.
 
-##### Modify a server group
+##### 3.1.3.6 Modify a server group
 
-This topic describes how to modify a server group in the Log Service console. After you create a server group, you can modify the parameters of the server group. Procedure
+This topic describes how to modify a server group in the Log Service console. After you create a server group, you can modify the parameters of the server group.
 1. Log on to the Log Service console.
 2. Find the target project in the project list and click the project name.
 3. In the left-side navigation pane of the page that appears, click the Server Groups icon to display the list of
@@ -839,9 +1110,9 @@ server groups.
 The name of the server group cannot be modified.
 5. Modify the parameters of the server group, and then click Save.
 
-##### View the status of a server group
+##### 3.1.3.7 View the status of a server group
 
-This topic describes how to view the status of a server group in the Log Service console. You can view the heartbeat information of Logtail to check whether Logtail is installed on the servers in a server group. Procedure
+This topic describes how to view the status of a server group in the Log Service console. You can view the heartbeat information of Logtail to check whether Logtail is installed on the servers in a server group.
 1. Log on to the Log Service console.
 2. Find the target project in the project list and click the project name.
 3. In the left-side navigation pane of the page that appears, click the Server Groups icon to display the list of
@@ -849,9 +1120,9 @@ server groups.
 4. Click the name of the server group. On the Server Group Set t ings page, check the server group status.
 If the heartbeat is OK, Logtail is installed on the servers in the server group and Logtail is connected to Log Service. If the heartbeat status is FAIL, Logtail fails to connect to Log Service. If the FAIL state persists, perform troubleshooting based on the instructions provided in What can I do if no heartbeat packet is received from a Logtail client?
 
-##### Delete a machine group
+##### 3.1.3.8 Delete a machine group
 
-This topic describes how to delete a machine group in the Log Service console. You can delete a machine group if you no longer need to collect logs from the machine group. Procedure
+This topic describes how to delete a machine group in the Log Service console. You can delete a machine group if you no longer need to collect logs from the machine group.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to delete a machine group.
 3. In the left-side navigation pane, click the
@@ -860,7 +1131,7 @@ icon. The Machine Groups list is displayed.
 icon next to the machine group, and then select Delet e.
 5. In the message that appears, click OK.
 
-##### Manage a Logtail configuration
+##### 3.1.3.9 Manage a Logtail configuration
 
 This topic describes how to create, view, modify, and delete a Logtail configuration in the Log Service console. View a list of Logtail configurations
 1. Log on to the Log Service console.
@@ -871,11 +1142,11 @@ to view Logtail configurations. Then, choose Dat a Import > Logt ail Conf igurat
 5. On the Logt ail Conf ig page, view the details of the Logtail configuration.
 Create a Logtail configuration You can create a Logtail configuration in the Log Service console. For more information, see Configure text log collection. Modify a Logtail configuration Click the name of the Logtail configuration that you want to modify. On the Logt ail Conf ig page, click Modif y. You can also change the log collection mode of the Logtail configuration, and then apply the Logtail configuration to the related machine group again. The procedure to modify a Logtail configuration is the same as the procedure to create a Logtail configuration. Delete a Logtail configuration In the Logt ail Conf igurat ions list, find the Logtail configuration that you want to delete, click the icon next to the Logtail configuration, and then select Delet e. Warning After you delete a Logtail configuration, the Logtail configuration is disassociated from the related machine group. Logtail no longer collects the logs that are specified by the Logtail configuration. Proceed with caution.
 
-#### Collect text logs
+#### 3.1.4 Collect text logs
 
-##### Configure text log collection
+##### 3.1.4.1 Configure text log collection
 
-This topic describes the configuration process and collection modes when you use Logtail to collect text logs from servers. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Configuration process Log Service provides a configuration wizard that you can use to configure log collection. Collection modes Logtail supports various collection modes, such as simple mode, full regex mode, delimiter mode, JSON mode, NGINX configuration mode, IIS configuration mode, and Apache configuration mode. Collect logs in simple mode Collect logs in full regex mode Collect logs in delimiter mode Collect logs in JSON mode Collect logs in NGINX mode Collect logs in IIS mode Collect logs in Apache mode Procedure
+This topic describes the configuration process and collection modes when you use Logtail to collect text logs from servers. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Configuration process Log Service provides a configuration wizard that you can use to configure log collection. Collection modes Logtail supports various collection modes, such as simple mode, full regex mode, delimiter mode, JSON mode, NGINX configuration mode, IIS configuration mode, and Apache configuration mode.
 1. Log on to the Log Service console.
 2. Select a data source.
 Select a data source based on your business requirements. Log Service supports the following data sources of text logs: RegEx - T ext Log, Single Line - T ext Log, Mult i-Line - T ext Log, Delimit er Mode - T ext Log, JSON - T ext Log, Nginx - T ext Log, IIS - T ext Log, and Apache - T ext Log.
@@ -926,9 +1197,9 @@ Set the parameters in the Advanced Options section based on your business requir
 8. Configure indexes in the Configure Query and Analysis step. Click Next .
 By default, Log Service enables Full Text Index to query and analyze logs. You can manually or automatically configure Field Search. For more information, see Enable the index feature and configure indexes for a Logstore. To query and analyze logs, you must enable Full Text Index or Field Search. If you enable both Full Text Index and Field Search, the settings of Field Search prevail. If the data type of the index is long or double, the Case-Sensitive switch and the Delimiter field are unavailable. After you complete the settings, you can start to collect logs.
 
-##### Collect logs in simple mode
+##### 3.1.4.2 Collect logs in simple mode
 
-When you collect logs in simple mode, the logs are not parsed. Each log is collected and uploaded to Log Service as a whole. This simplifies the process of log collection. This topic describes how to create a Logtail configuration in simple mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Context The simple mode supports the following types of text logs: Single-line text log Each log line is collected as a log. Two logs in a log file are separated by a line feed. In single-line mode, you must specify the directories and names of log files. Then, Logtail collects logs by line from the specified files. Multi-line text log Multiple log lines are collected as a log by default. In multi-line mode, you must specify the directories and names of log files. In addition, you must enter a sample log and configure a regular expression to match the start part in the first line of a log. Logtail uses the regular expression to match the start part in the first line of a log and reckons unmatched lines as part of the log. If you collect logs in simple mode, the timestamp of a log indicates the system time of the server when the log is collected. Procedure
+When you collect logs in simple mode, the logs are not parsed. Each log is collected and uploaded to Log Service as a whole. This simplifies the process of log collection. This topic describes how to create a Logtail configuration in simple mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Context The simple mode supports the following types of text logs: Single-line text log Each log line is collected as a log. Two logs in a log file are separated by a line feed. In single-line mode, you must specify the directories and names of log files. Then, Logtail collects logs by line from the specified files. Multi-line text log Multiple log lines are collected as a log by default. In multi-line mode, you must specify the directories and names of log files. In addition, you must enter a sample log and configure a regular expression to match the start part in the first line of a log. Logtail uses the regular expression to match the start part in the first line of a log and reckons unmatched lines as part of the log. If you collect logs in simple mode, the timestamp of a log indicates the system time of the server when the log is collected.
 1. Log on to the Log Service console.
 2. Select a data source.
 Select Single Line - T ext Log.
@@ -972,9 +1243,9 @@ Set the parameters in the Advanced Options section based on your business requir
 8. Configure indexes in the Configure Query and Analysis step. Click Next .
 By default, Log Service enables Full Text Index to query and analyze logs. You can manually or automatically configure Field Search. For more information, see Enable the index feature and configure indexes for a Logstore. To query and analyze logs, you must enable Full Text Index or Field Search. If you enable both Full Text Index and Field Search, the settings of Field Search prevail. If the data type of the index is long or double, the Case-Sensitive switch and the Delimiter field are unavailable. After you complete the settings, you can start to collect logs in full regex mode.
 
-##### Collect logs in full regex mode
+##### 3.1.4.3 Collect logs in full regex mode
 
-You can use the full regex mode to extract custom fields from logs. This topic describes how to create a Logtail configuration in full regex mode in the Log Service console to collect logs. Context If you want to collect multi-line logs and extract fields from the logs, we recommend that you use regular expressions. Log Service can generate a regular expression based on a sample log that you specify in the Import Data wizard. However, you must modify a regular expression before it can match fields in the sample log as expected. For more information, see How do I test a regular expression?. Procedure
+You can use the full regex mode to extract custom fields from logs. This topic describes how to create a Logtail configuration in full regex mode in the Log Service console to collect logs. Context If you want to collect multi-line logs and extract fields from the logs, we recommend that you use regular expressions. Log Service can generate a regular expression based on a sample log that you specify in the Import Data wizard. However, you must modify a regular expression before it can match fields in the sample log as expected. For more information, see How do I test a regular expression?.
 1. Log on to the Log Service console.
 2. Select a data source.
 Select RegEx - T ext Log.
@@ -1029,9 +1300,9 @@ Set the parameters in the Advanced Options section based on your business requir
 8. Configure indexes in the Configure Query and Analysis step. Click Next .
 By default, Log Service enables Full Text Index to query and analyze logs. You can manually or automatically configure Field Search. For more information, see Enable the index feature and configure indexes for a Logstore. To query and analyze logs, you must enable Full Text Index or Field Search. If you enable both Full Text Index and Field Search, the settings of Field Search prevail. If the data type of the index is long or double, the Case-Sensitive switch and the Delimiter field are unavailable. After you complete the settings, you can start to collect logs in full regex mode.
 
-##### Collect logs in delimiter mode
+##### 3.1.4.4 Collect logs in delimiter mode
 
-Log Service allows you to collect logs in delimiter mode. After logs are collected, you can transform and ship the logs, and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in delimiter mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Procedure
+Log Service allows you to collect logs in delimiter mode. After logs are collected, you can transform and ship the logs, and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in delimiter mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs.
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select Delimit er Mode - T ext Log.
 3. Select a destination project and Logstore, and then click Next .
@@ -1123,7 +1394,7 @@ hAgQ7b1c%3D HTTP/1.1&&200&&18204&&aliyun-sdk-java 05/May/2016:13:31:23&&10.200.*
 
 A multi-character delimiter can contain two or three characters, such as ||, &&&, and ^_^. Log Service parses logs based on delimiters. You do not need to use quotes to enclose log fields. You must make sure that the delimiters in a field cannot be parsed into a new field. Otherwise, Log Service cannot parse the fields as expected. For example, if you specify && as the delimiter, the log 1997&&Ford&&E350&&ac&abs&moon&&3000.00 is parsed into the following five fields: 1997, Ford, E350, ac&abs&moon, and 3000.00.
 
-##### Collect logs in JSON mode
+##### 3.1.4.5 Collect logs in JSON mode
 
 Log Service allows you to collect JSON logs in JSON mode by using Logtail. After logs are collected, you can transform and ship the logs, and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in JSON mode in the Log Service console to collect logs. Context JSON logs can be written in the object or array structure. A log in the object structure contains key-value pairs, and a log in the array structure contains an ordered list of values. In JSON mode, Logtail can parse JSON logs in the object structure and extract the keys and values from the first layer of each object. The extracted keys are used as field names, and the extracted values are used as field values. Logtail cannot parse JSON logs in the array structure. If you want to parse JSON logs in the array structure, you can collect data from the JSON logs in full regex or simple mode. For more information, see Collect logs by line or Use regular expressions to collect logs. Sample JSON logs:
 
@@ -1131,7 +1402,6 @@ Log Service allows you to collect JSON logs in JSON mode by using Logtail. After
 {"url": "POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=U0Ujpek********&Date=Fri%2C%2028%20Jun%2 02013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D HTTP/1.1", "ip": "10.2 00.98.220", "user-agent": "aliyun-sdk-java", "request": {"status": "200", "latency": "18204"}, "time": "05/Jan/2020:13:30:28"} {"url": "POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=U0Ujpek********&Date=Fri%2C%2028%20Jun%2 02013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D HTTP/1.1", "ip": "10.2 00.98.210", "user-agent": "aliyun-sdk-java", "request": {"status": "200", "latency": "10204"}, "time": "05/Jan/2020:13:30:29"}
 ```
 
-Procedure
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select JSON - T ext Log.
 3. Select a destination project and Logstore, and then click Next .
@@ -1182,9 +1452,9 @@ Set the parameters in the Advanced Options section based on your business requir
 8. Configure indexes in the Configure Query and Analysis step. Click Next .
 By default, Log Service enables Full Text Index to query and analyze logs. You can manually or automatically configure Field Search. For more information, see Enable the index feature and configure indexes for a Logstore. To query and analyze logs, you must enable Full Text Index or Field Search. If you enable both Full Text Index and Field Search, the settings of Field Search prevail. If the data type of the index is long or double, the Case-Sensitive switch and the Delimiter field are unavailable. After you complete the settings, you can start to collect logs in JSON mode.
 
-##### Collect logs in NGINX mode
+##### 3.1.4.6 Collect logs in NGINX mode
 
-Log Service allows you to collect NGINX logs and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in NGINX mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Procedure
+Log Service allows you to collect NGINX logs and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in NGINX mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs.
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select Nginx - T ext Log.
 3. Select a destination project and Logstore, and then click Next .
@@ -1265,9 +1535,9 @@ Sample log
 192.168.1.2 - - [10/Jul/2020:15:51:09 +0800] "GET /ubuntu.iso HTTP/1.0" 0.000 129 404 168 "-" "Wget /1.11.4 Red Hat modified"
 ```
 
-##### Collect logs in IIS mode
+##### 3.1.4.7 Collect logs in IIS mode
 
-Log Service allows you to collect Internet Information Services (IIS) logs and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in IIS mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Logs are generated on the server in the IIS, NCSA Common, or W3C Extended format. We recommend that you use the W3C Extended log format. If you select the W3C Extended format, you must configure the fields in the W3C Logging Fields dialog box. To do so, you must select Byt es Sent (sc-byt es) and Byt es Received (cs-byt es) and use the default settings for other fields. Procedure
+Log Service allows you to collect Internet Information Services (IIS) logs and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in IIS mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Logs are generated on the server in the IIS, NCSA Common, or W3C Extended format. We recommend that you use the W3C Extended log format. If you select the W3C Extended format, you must configure the fields in the W3C Logging Fields dialog box. To do so, you must select Byt es Sent (sc-byt es) and Byt es Received (cs-byt es) and use the default settings for other fields.
 1. Log on to the Log Service console.
 2. Select a data source.
 In the Import Data section, select IIS - T ext Log.
@@ -1362,9 +1632,9 @@ Fields
 | cs-bytes | The number of bytes that are received by the server. |
 | time-taken | The time that is required to process the request. Unit: milliseconds. |
 
-##### Collect logs in Apache mode
+##### 3.1.4.8 Collect logs in Apache mode
 
-Log Service allows you to collect Apache logs and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in Apache mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. The print format, log path, and log file name are specified in the Apache configuration file. For more information, see Appendix: log formats and sample logs. Procedure
+Log Service allows you to collect Apache logs and perform multidimensional log analysis. This topic describes how to create a Logtail configuration in Apache mode in the Log Service console to collect logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. The print format, log path, and log file name are specified in the Apache configuration file. For more information, see Appendix: log formats and sample logs.
 1. Log on to the Log Service console.
 2. Select a data source.
 In the Import Data section, select Apache - T ext Log.
@@ -1476,7 +1746,7 @@ Sample log
 192.168.1.2 - - [02/Feb/2020:17:44:13 +0800] "GET /favicon.ico HTTP/1.1" 404 209 "http://localhost/ x1.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Ch rome/48.0.2564.97 Safari/537.36"
 ```
 
-##### Configure parsing scripts
+##### 3.1.4.9 Configure parsing scripts
 
 When Log Service collects logs, Log Service extracts some fields in raw logs as log content based on specific parsing methods. This way, you can collect logs based on your business requirements. This topic describes the parsing methods that are supported by Log Service. Specify a method to separate log lines A complete access log such as an NGINX access log occupies a line. Separate multiple logs with line feeds. The following example shows two access logs:
 
@@ -1519,7 +1789,7 @@ Specify the log time A log must contain a time field whose value is a UNIX times
 
 Extract the time in the log content as the log time. In this example, the time in the log content is `13/Mar/2016:10:00:10` . To extract the time, use the following time expression: %d/%b/%Y:%H:%M:%S . Use the system time when the log was collected by Logtail as the log time. If you use the system time when the log was collected by Logtail as the log time, the time is converted to a timestamp.
 
-##### Time formats
+##### 3.1.4.10 Time formats
 
 When you use Logtail to collect logs, you must specify time formats based on the time strings of raw logs. Logtail extracts a time string from a raw log and parses the string into a UNIX timestamp. This topic describes the commonly used time formats and provides related examples. Commonly used time formats of logs The following table describes the time formats that are supported by Logtail. The timestamp of a log in Log Service is accurate to seconds. Therefore, you can specify the time format only to seconds. You need to specify the time format only for the time in a time string. Other parameters such as the time zone are not required. In Linux, Logtail supports all time formats provided by the strftime function. Logtail can parse and use all log time strings that can be formatted by using the strftime function.
 
@@ -1572,9 +1842,9 @@ Examples The following table lists commonly used time formats. It also provides 
 | 2006-01-02T15:04:05Z07:00 | %Y-%m-%dT%H:%M:%S | RFC3339 |
 | 2006-01-02T15:04:05.999999999Z07:00 | %Y-%m-%dT%H:%M:%S | RFC3339Nano |
 
-##### Import historical log files
+##### 3.1.4.11 Import historical log files
 
-This topic describes how to import historical log files from a server to Log Service. By default, Logtail collects only incremental logs from servers. You can configure Logtail to collect historical logs. Prerequisites Logtail V0.16.15 (Linux), Logtail V1.0.0.1 (Windows), or later is installed on the server. For more information, see Install Logtail in Linux and Install Logtail in Windows. A Logtail configuration is created and applied to a machine group. For more information, see Configure text log collection. If you use the Logtail configuration to import only historical files, you can specify a log collection path that does not exist. Context Logtail collects logs based on the modifications in the log files that are monitored. Logtail can also collect logs by loading events from local files. Logtail collects historical logs by loading local events. You must import historical log files to the installation directory of Logtail. The directory varies based on the operating system. Linux: /usr/local/ilogtail Windows: 32-bit: C:\Program Files\Alibaba\Logtail 64-bit: C:\Program Files (x86)\Alibaba\Logtail The maximum interval between the time when a local event is generated and the time when the local event is imported is 1 minute. If a local event is loaded, Logtail sends the `LOAD_LOCAL_EVENT_ALARM` message to the server. If you want to import a large number of log files, we recommend that you modify the startup parameters of Logtail to increase the value of the cpu_usage_limit parameter to 2 or more and increase the value of the mem_usage_limit parameter to 512 MB or more. For more information, see Set Logtail startup parameters. Procedure
+This topic describes how to import historical log files from a server to Log Service. By default, Logtail collects only incremental logs from servers. You can configure Logtail to collect historical logs. Prerequisites Logtail V0.16.15 (Linux), Logtail V1.0.0.1 (Windows), or later is installed on the server. For more information, see Install Logtail in Linux and Install Logtail in Windows. A Logtail configuration is created and applied to a machine group. For more information, see Configure text log collection. If you use the Logtail configuration to import only historical files, you can specify a log collection path that does not exist. Context Logtail collects logs based on the modifications in the log files that are monitored. Logtail can also collect logs by loading events from local files. Logtail collects historical logs by loading local events. You must import historical log files to the installation directory of Logtail. The directory varies based on the operating system. Linux: /usr/local/ilogtail Windows: 32-bit: C:\Program Files\Alibaba\Logtail 64-bit: C:\Program Files (x86)\Alibaba\Logtail The maximum interval between the time when a local event is generated and the time when the local event is imported is 1 minute. If a local event is loaded, Logtail sends the `LOAD_LOCAL_EVENT_ALARM` message to the server. If you want to import a large number of log files, we recommend that you modify the startup parameters of Logtail to increase the value of the cpu_usage_limit parameter to 2 or more and increase the value of the mem_usage_limit parameter to 512 MB or more. For more information, see Set Logtail startup parameters.
 1. Obtain the unique identifier of the Logtail configuration.
 Open the user_log_config.json file in the directory where Logtail is installed. You can obtain the unique identifier of the Logtail configuration from this file. For example, to obtain the unique identifier of the Logtail configuration in a Linux server, run the following command:
 
@@ -1631,9 +1901,9 @@ The following example shows how to configure a local event in Linux by using the
     "name": "access.log.2017-08-09"
 ```
 
-`}` `]` FAQ How do I check whether Logtail loads a Logtail configuration? After you save the local_event.json file, Logtail loads the configurations of the local event to the memory within 1 minute. Then, the content of the local_event.json file is deleted. You can use the following methods to check whether the Logtail configuration is loaded. i. If no content exists in the local_event.json file, Logtail reads the local event from the file. ii. Check whether the ilogtail.LOG file in the Logtail installation directory contains the process local event parameter. If the content in the local_event.json file is cleared but the process local event parameter does not exist, the content of the local_event.json file may be invalid and filtered out. Why am I unable to collect a log file after a Logtail configuration is loaded? The Logtail configuration is invalid. The configurations of the local event in the local_event.json file are invalid. The log file does not exist in the path that is specified in the Logtail configuration. The log file has been collected by Logtail.
+`}` `]` How do I check whether Logtail loads a Logtail configuration? After you save the local_event.json file, Logtail loads the configurations of the local event to the memory within 1 minute. Then, the content of the local_event.json file is deleted. You can use the following methods to check whether the Logtail configuration is loaded. i. If no content exists in the local_event.json file, Logtail reads the local event from the file. ii. Check whether the ilogtail.LOG file in the Logtail installation directory contains the process local event parameter. If the content in the local_event.json file is cleared but the process local event parameter does not exist, the content of the local_event.json file may be invalid and filtered out. Why am I unable to collect a log file after a Logtail configuration is loaded? The Logtail configuration is invalid. The configurations of the local event in the local_event.json file are invalid. The log file does not exist in the path that is specified in the Logtail configuration. The log file has been collected by Logtail.
 
-##### Log topics
+##### 3.1.4.12 Log topics
 
 Logs can be identified by log topics. When you collect logs, you can specify a topic for the logs. You can specify a topic in the following scenarios: when you use Logtail to collect logs, when you call API operations, or when you use an SDK to upload log data. In the Log Service console, you can set the topic generation mode to Null - Do not generate topic, Machine Group Topic Attributes, or File Path RegEx. Null - Do not generate topic In this mode, the topic is an empty string. You can query logs without the need to specify a topic. Machine Group Topic Attributes You can use this mode to identify logs that are generated on different servers. If the logs are saved with the same file name or the logs are saved in the same directory, you can specify different topics to identify the logs. You can add servers to different machine groups, and configure different topic attributes for the machine groups. When you create a Logtail configuration, set T opic Generat ion Mode to Machine Group T opic At t ribut es. If Logtail sends the logs of a server in a machine group to Log Service, Logtail uploads the topic attributes of the machine group as topic names. You can use the topic attributes as filters to query logs. File Path RegEx You can use this mode to identify logs that are generated by different users or instances. Log Service stores logs in different directories for different users or instances. However, if duplicate sub-directory names or log file names exist in these directories, Log service cannot identify which user or instance generates the logs. To resolve this issue, you can set T opic generat ion modes to File Pat h Regex and enter the regular expression of the log file path when you create a Logtail configuration. The regular expression must match the log file path. When Logtail sends logs to Log Service, Logtail uploads the username or the instance name as the topic name. You can use the topic name as a filter to query logs. Logs that are generated by different users or instances may be stored in different files with the same name. Each file is stored in a different directory. For example, three log files are all named service.log and you only specify the service.log file in the /logs directory as the log source when you collect logs from these files. After the logs are sent to Log Service, Log Service cannot identify which users or instances generate the logs. To resolve this issue, you can set T opic Generat ion Mode to File Pat h RegEx, and enter the \/(.*)\/serviceA\ `/.*` regular expression. Then, Log Service generates the following topics for logs that are in different directories: userA, userB, and userC.
 
@@ -1667,9 +1937,9 @@ custom topic name .
 
 Static topic generation is supported by Logtail V0.16.21 (Linux) and later.
 
-#### Collect container logs
+#### 3.1.5 Collect container logs
 
-##### Overview
+##### 3.1.5.1 Overview
 
 Log Service allows you to collect Kubernetes container logs in DaemonSet mode or Sidecar mode. This topic describes the procedures and differences of log collection in the two modes. Log collection modes Log collection in DaemonSet mode features simple O&M, low resource usage, and flexible configurations. You can collect container stdout and stderr. You can also collect container text logs. In DaemonSet mode, Logtail collects logs from all containers on the DaemonSet-specific node. However, in this mode, performance bottleneck issues may occur on Logtail, and containers are loosely isolated. In Sidecar mode, a Sidecar container is created for each container from which you want to collect logs. In this mode, Logtail provides good performance, and tenants are completely isolated. Log collection configurations You can create log collection configurations by using the Log Service console or custom resource definitions (CRDs). The following table describes the differences between the two modes.
 
@@ -1696,7 +1966,7 @@ Log Service allows you to create log collection configurations by using CRDs or 
 2. Install Sidecar and create a log collection configuration.
 Log Service allows you to create log collection configurations by using CRDs or the Log Service console to collect container logs from Kubernetes clusters. Use CRDs to collect container text logs in Sidecar mode. Use the Log Service console to collect container text logs in Sidecar mode.
 
-##### Install the Logtail component
+##### 3.1.5.2 Install the Logtail component
 
 This topic describes how to install the Logtail component in a Kubernetes cluster. Context Before you can collect container logs from a Kubernetes cluster, you must install the Logtail component. When you install the Logtail component, the following operations are automatically completed:
 1. The alibaba-log-configuration ConfigMap is created. This ConfigMap stores the configuration information
@@ -1717,7 +1987,6 @@ After the component is installed, a machine group named k8s-group-${your_k8s_clu
 3. On the Clust ers page, click Creat e Kubernet es Clust er.
 4. In the Component Conf igurat ions step, select Enable Log Service.
 In this example, only the steps that are required to enable Log Service are provided. For more information about how to create an ACK cluster, see Create a Kubernetes cluster in Container Service for K ubernetes User Guide. If you select Enable Log Service, the system prompts you to create a Log Service project. You can use one of the following methods to create a project: Select Project You can select an existing project to manage the container logs that are collected. Creat e Project Log Service automatically creates a project named `k8s-log-{ClusterID}` to manage the container logs that are collected. `ClusterID` indicates the unique ID of the ACK cluster that is created. After the component is installed, a machine group named k8s-group-${your_k8s_cluster_id} and a Logstore named `config-operation-log` are automatically created in the project that you use. Not ice Do not delete the `config-operation-log` Logstore. Self-managed Kubernetes clusters
-1. Log on to the Log Service console
 2. Create a project whose name starts with `k8s-log-custom-` .
 Example: k8s-log-custom-sd89ehdq. For more information, see Create a project..
 3. Log on to your Kubernetes cluster.
@@ -1750,7 +2019,7 @@ After the component is installed, a machine group named k8s-group-${your_k8s_clu
 |---|---|---|
 |   | pri |   |
 
-FAQ How do I collect and send container logs from multiple Kubernetes clusters to the same Log Service project? Alibaba Cloud ACK clusters If you want to collect and send container logs from multiple ACK clusters to the same Log Service project, you must select the same project when you create the ACK clusters. Self-managed Kubernetes clusters If you want to collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project, you must set the {your-project-suffix} parameter to the same value when you install the Logtail component in each of the Kubernetes clusters. You can collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project only if the Kubernetes clusters reside in the same region. How do I view the logs of Logtail? The logs of Logtail are stored in the files named ilogtail.LOG and logtail_plugin.LOG in the /usr/local/ilogtail/ directory of a Logtail container. The stdout and stderr of the Logtail container are not for reference. You can ignore the following stdout and stderr:
+How do I collect and send container logs from multiple Kubernetes clusters to the same Log Service project? Alibaba Cloud ACK clusters If you want to collect and send container logs from multiple ACK clusters to the same Log Service project, you must select the same project when you create the ACK clusters. Self-managed Kubernetes clusters If you want to collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project, you must set the {your-project-suffix} parameter to the same value when you install the Logtail component in each of the Kubernetes clusters. You can collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project only if the Kubernetes clusters reside in the same region. How do I view the logs of Logtail? The logs of Logtail are stored in the files named ilogtail.LOG and logtail_plugin.LOG in the /usr/local/ilogtail/ directory of a Logtail container. The stdout and stderr of the Logtail container are not for reference. You can ignore the following stdout and stderr:
 
 ```
 start umount useless mount points, /shm$|/merged$|/mqueue$ umount: /logtail_host/var/lib/docker/overlay2/3fd0043af174cb0273c3c7869500fbe2bdb95d13b1e110172ef57 fe840c82155/merged: must be superuser to unmount umount: /logtail_host/var/lib/docker/overlay2/d5b10aa19399992755de1f85d25009528daa749c1bf8c16edff44 beab6e69718/merged: must be superuser to unmount umount: /logtail_host/var/lib/docker/overlay2/5c3125daddacedec29df72ad0c52fac800cd56c6e880dc4e8a640 b1e16c22dbe/merged: must be superuser to unmount ...... xargs: umount: exited with status 255; aborting umount done start logtail ilogtail is running logtail status: ilogtail is running
@@ -1830,9 +2099,9 @@ ilogtail is running
 
 What's next Create Logtail configurations to collect container logs. DaemonSet mode For more information about how to collect container logs by using CRDs, see Use CRDs to collect container logs in DaemonSet mode. For more information about how to collect container stdout and stderr by using the Log Service console, see Use the Log Service console to collect container stdout and stderr in DaemonSet mode. For more information about how to collect container text logs by using the Log Service console, see Use the Log Service console to collect container text logs in DaemonSet mode. Sidecar mode For more information about how to collect container text logs by using CRDs, see Use CRDs to collect container text logs in Sidecar mode. For more information about how to collect container text logs by using the Log Service console, see Use the Log Service console to collect container text logs in Sidecar mode.
 
-##### Use the Log Service console to collect container text
+##### 3.1.5.3 Use the Log Service console to collect container text logs in DaemonSet mode
 
-logs in DaemonSet mode This topic describes how to create a Logtail configuration in the Log Service console and use the Logtail configuration to collect container text logs in DaemonSet mode. Prerequisites The Logtail component is installed. For more information, see Install the Logtail component. Features Logtail can collect container text logs, and then upload the text logs together with container metadata to Log Service. Logtail supports the following features: Allows you to specify a log file path in a container. You do not need to manually map the log file path to a path on the host. Uses the container label whitelist to specify containers from which text logs are collected. Uses the container label blacklist to specify containers from which text logs are not collected. Uses the environment variable whitelist to specify containers from which text logs are collected. Uses the environment variable blacklist to specify containers from which text logs are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container text logs. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which text logs are collected. Uses the Kubernetes label whitelist to specify containers from which text logs are collected. Uses the Kubernetes label blacklist to specify containers from which text logs are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container text logs. Limits If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects text logs from the container. If collection latency exists, some text logs that are collected before the container is stopped may be lost. For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount a volume to the directory of logs. Then, a temporary directory is generated. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted to the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted to the /var/log/service directory and you set the collection directory to /var /log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory. By default, Kubernetes mounts the root directory of the host to the `/logtail_host` directory of the Logtail container. If you want to collect text logs from the host, you must specify `/logtail_host` as the prefix of the log file path. For example, if you want to collect logs from the `/home/logs/app_log/` directory of the host, you must specify `/logtail_host/home/logs/app_log/` as the log file path. Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. Create a Logtail configuration
+logs in DaemonSet mode This topic describes how to create a Logtail configuration in the Log Service console and use the Logtail configuration to collect container text logs in DaemonSet mode. Prerequisites The Logtail component is installed. For more information, see Install the Logtail component. Features Logtail can collect container text logs, and then upload the text logs together with container metadata to Log Service. Logtail supports the following features: Allows you to specify a log file path in a container. You do not need to manually map the log file path to a path on the host. Uses the container label whitelist to specify containers from which text logs are collected. Uses the container label blacklist to specify containers from which text logs are not collected. Uses the environment variable whitelist to specify containers from which text logs are collected. Uses the environment variable blacklist to specify containers from which text logs are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container text logs. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which text logs are collected. Uses the Kubernetes label whitelist to specify containers from which text logs are collected. Uses the Kubernetes label blacklist to specify containers from which text logs are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container text logs. If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects text logs from the container. If collection latency exists, some text logs that are collected before the container is stopped may be lost. For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount a volume to the directory of logs. Then, a temporary directory is generated. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted to the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted to the /var/log/service directory and you set the collection directory to /var /log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory. By default, Kubernetes mounts the root directory of the host to the `/logtail_host` directory of the Logtail container. If you want to collect text logs from the host, you must specify `/logtail_host` as the prefix of the log file path. For example, if you want to collect logs from the `/home/logs/app_log/` directory of the host, you must specify `/logtail_host/home/logs/app_log/` as the log file path. Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. Create a Logtail configuration
 1. Log on to the Log Service console.
 2. In the Import Dat a section, click Kubernet es - Object .
 3. Select a project and a Logstore. Then, click Next .
@@ -1918,9 +2187,9 @@ For more information about how to create a Logtail configuration that is used to
 | pod uid _ _ _ | The unique identifier of the pod. |
 | container ip _ _ _ | The IP address of the pod. |
 
-##### Use the Log Service console to collect container
+##### 3.1.5.4 Use the Log Service console to collect container stdout and stderr in DaemonSet mode
 
-stdout and stderr in DaemonSet mode This topic describes how to create a Logtail configuration in the Log Service console and use the Logtail configuration to collect container stdout and stderr in DaemonSet mode. Prerequisites The Logtail component is installed. For more information, see Collect Kubernetes logs. A Logstore is created in the project that you use to install the Logtail component. For more information, see Create a Logstore. Features Logtail can collect container stdout and stderr, and then upload the stdout and stderr together with container metadata to Log Service. Logtail supports the following features: Collects stdout and stderr. Uses the container label whitelist to specify containers from which stdout and stderr are collected. Uses the container label blacklist to specify containers from which stdout and stderr are not collected. Uses the environment variable whitelist to specify containers from which stdout and stderr are collected. Uses the environment variable blacklist to specify containers from which stdout and stderr are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container stdout and stderr. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which stdout and stderr are collected. Uses the Kubernetes label whitelist to specify containers from which stdout and stderr are collected. Uses the Kubernetes label blacklist to specify containers from which stdout and stderr are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container stdout and stderr. Implementation Logtail communicates with the domain socket of Docker. Logtail queries all Docker containers and identifies the containers from which stdout and stderr are collected by using the specified labels and environment variables. Logtail runs the `docker logs` command to collect logs from the specified containers. When Logtail collects stdout and stderr from a container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is stopped and then started, Logtail collects logs from the last checkpoint. Limits You can use the Log Service console to collect stdout and stderr in DaemonSet mode only if Logtail runs V0.16.0 or later and runs on Linux. For more information about Logtail versions and version updates, see Install Logtail in Linux. Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can change the cache time by modifying the `BeginLineTimeoutMs` parameter. We recommend that you do not specify a value less than 1000 with millisecond precision. If you specify a value that is less than 1000, an error may occur. If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects stdout or stderr from the container. If collection latency exists, some stdout and stderr that are collected before the container is stopped may be lost. The logging driver collects stdout and stderr only in the JSON format from containers that use the Docker engine. By default, stdout and stderr that are collected from different containers by using the same Logtail configuration have the same context. If you want to specify a different context for the stdout and stderr that are collected from each container, you must create a Logtail configuration for each container. By default, the collected data is stored in the `content` field. Logtail can process the collected data. For more information, see Configure data processing methods. Create a Logtail configuration
+stdout and stderr in DaemonSet mode This topic describes how to create a Logtail configuration in the Log Service console and use the Logtail configuration to collect container stdout and stderr in DaemonSet mode. Prerequisites The Logtail component is installed. For more information, see Collect Kubernetes logs. A Logstore is created in the project that you use to install the Logtail component. For more information, see Create a Logstore. Features Logtail can collect container stdout and stderr, and then upload the stdout and stderr together with container metadata to Log Service. Logtail supports the following features: Collects stdout and stderr. Uses the container label whitelist to specify containers from which stdout and stderr are collected. Uses the container label blacklist to specify containers from which stdout and stderr are not collected. Uses the environment variable whitelist to specify containers from which stdout and stderr are collected. Uses the environment variable blacklist to specify containers from which stdout and stderr are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container stdout and stderr. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which stdout and stderr are collected. Uses the Kubernetes label whitelist to specify containers from which stdout and stderr are collected. Uses the Kubernetes label blacklist to specify containers from which stdout and stderr are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container stdout and stderr. Implementation Logtail communicates with the domain socket of Docker. Logtail queries all Docker containers and identifies the containers from which stdout and stderr are collected by using the specified labels and environment variables. Logtail runs the `docker logs` command to collect logs from the specified containers. When Logtail collects stdout and stderr from a container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is stopped and then started, Logtail collects logs from the last checkpoint. You can use the Log Service console to collect stdout and stderr in DaemonSet mode only if Logtail runs V0.16.0 or later and runs on Linux. For more information about Logtail versions and version updates, see Install Logtail in Linux. Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can change the cache time by modifying the `BeginLineTimeoutMs` parameter. We recommend that you do not specify a value less than 1000 with millisecond precision. If you specify a value that is less than 1000, an error may occur. If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects stdout or stderr from the container. If collection latency exists, some stdout and stderr that are collected before the container is stopped may be lost. The logging driver collects stdout and stderr only in the JSON format from containers that use the Docker engine. By default, stdout and stderr that are collected from different containers by using the same Logtail configuration have the same context. If you want to specify a different context for the stdout and stderr that are collected from each container, you must create a Logtail configuration for each container. By default, the collected data is stored in the `content` field. Logtail can process the collected data. For more information, see Configure data processing methods. Create a Logtail configuration
 1. Log on to the Log Service console.
 2. In the Import Dat a section, click Kubernet es - St andard Out put .
 3. Select a project and a Logstore. Then, click Next .
@@ -2247,7 +2516,7 @@ Log fields The following table describes the fields that are uploaded by default
 |   | 02-02T02:18:41.979147844Z |
 |---|---|
 
-##### Use CRDs to collect container logs in DaemonSet mode
+##### 3.1.5.5 Use CRDs to collect container logs in DaemonSet mode
 
 After you install Logtail in a container in DaemonSet mode, you can use a custom resource definition (CRD) to create a Logtail configuration and use the Logtail configuration to collect container logs. Prerequisites The alibaba-log-controller component is installed. For more information, see Collect Kubernetes logs. Implementation The following list describes the process in which logs are collected by using a CRD:
 1. The `kubectl` tool or other tools are used to apply an AliyunLogConfig CRD.
@@ -2259,7 +2528,7 @@ new or updated Logtail configuration and perform hot reloading.
 5. Logtail collects stdout and stderr logs or text logs from each container based on the obtained Logtail
 configuration.
 6. Logtail sends the collected container logs to Log Service.
-Limits Limits on text log collection If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting text logs from the container. If collection latency occurs, some text logs that are generated before the container is stopped may be lost. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted on the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted on the /var/log/service directory and you set the collection directory to / var/log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory. By default, Kubernetes mounts the root directory of the host on the `/logtail_host` directory of the Logtail container. If you want to collect text logs from the host, you must specify `/logtail_host` as the prefix of the log file path. For example, if you want to collect logs from the `/home/logs/app_log/` directory of the host, you must specify `/logtail_host/home/logs/app_log/` as the log file path. For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount a volume on the directory of logs. Then, a temporary directory is generated. Limits on stdout and stderr log collection The logging driver collects stdout and stderr logs only in the JSON format from containers that use the Docker engine. General limits Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. Create a Logtail configuration To create a Logtail configuration, you need to only create an AliyunLogConfig CRD. After you create a Logtail configuration, the system automatically applies the Logtail configuration. If you want to delete the Logtail configuration, you need to only delete the CRD.
+Limits on text log collection If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting text logs from the container. If collection latency occurs, some text logs that are generated before the container is stopped may be lost. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted on the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted on the /var/log/service directory and you set the collection directory to / var/log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory. By default, Kubernetes mounts the root directory of the host on the `/logtail_host` directory of the Logtail container. If you want to collect text logs from the host, you must specify `/logtail_host` as the prefix of the log file path. For example, if you want to collect logs from the `/home/logs/app_log/` directory of the host, you must specify `/logtail_host/home/logs/app_log/` as the log file path. For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount a volume on the directory of logs. Then, a temporary directory is generated. Limits on stdout and stderr log collection The logging driver collects stdout and stderr logs only in the JSON format from containers that use the Docker engine. General limits Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. Create a Logtail configuration To create a Logtail configuration, you need to only create an AliyunLogConfig CRD. After you create a Logtail configuration, the system automatically applies the Logtail configuration. If you want to delete the Logtail configuration, you need to only delete the CRD.
 1. Log on to your Kubernetes cluster.
 2. Run the following command to create a YAML file.
 In this example, the file name is cube.yaml. Replace the file name with an actual file name.
@@ -2614,7 +2883,7 @@ ainers whose environment variable configurations include a key of ALIYUN_LOGTAIL
         ALIYUN_LOGTAIL_USER_DEFINED_ID: ""
 ```
 
-##### Use CRDs to collect container text logs in Sidecar
+##### 3.1.5.6 Use CRDs to collect container text logs in Sidecar mode
 
 mode This topic describes how to install Sidecar. This topic also describes how to use a custom resource definition (CRD) to create a Logtail configuration that is used to collect container text logs in Sidecar mode. Prerequisites The alibaba-log-controller component is installed. For more information, see Collect Kubernetes logs. Context In Sidecar mode, the Logtail container shares a log directory with an application container. The application container writes logs to the shared directory. Logtail monitors changes to the log files in the shared directory and collects logs. For more information, see Sidecar container with a logging agent and How Pods manage multiple containers. Step 1: Install Sidecar
 1. Log on to your Kubernetes cluster.
@@ -3209,7 +3478,7 @@ If you want to collect single-line logs, set the value to '.*'.
 # config for error log
 ```
 
-##### Use the Log Service console to collect container text
+##### 3.1.5.7 Use the Log Service console to collect container text logs in Sidecar mode
 
 logs in Sidecar mode This topic describes how to install Sidecar. This topic also describes how to use the Log Service console to create a Logtail configuration that is used to collect container text logs in Sidecar mode. Prerequisites The alibaba-log-controller component is installed. For more information, see Collect Kubernetes logs. Context In Sidecar mode, the Logtail container shares a log directory with an application container. The application container writes logs to the shared directory. Logtail monitors changes to log files in the shared directory and collects logs. For more information, see Sidecar container with a logging agent and How Pods manage multiple containers. Step 1: Install Sidecar
 1. Log on to your Kubernetes cluster.
@@ -3371,7 +3640,6 @@ kubectl apply -f sidecar.yaml
 ```
 
 Step 2: Create a machine group
-1. Log on to the Log Service console
 2. In the Projects section, click the project that you use to install Logtail components.
 3. In the left-side navigation pane, choose Resources > Machine Groups.
 4. In the Machine Groups list, choose
@@ -3387,7 +3655,6 @@ the parameters.
 | Cust om Ident if ier | The custom identifier of the machine group. The identifier must be the same as the value of the ${yourmachinegroupuserdefinedid} parameter that you configured _ _ _ _ _ when you installed Sidecar. Example: nginx-log-sidecar. |
 
 Step 3: Create a Logtail configuration
-1. Log on to the Log Service console
 2. In the Import Dat a section, click RegEx - T ext Log.
 In this example, a Logtail configuration is created to collect text logs in full regex mode. For information about how to collect text logs in other modes, see Collect text logs.
 3. Select a project and a Logstore. Then, click Next .
@@ -3400,7 +3667,7 @@ You can collect logs in simple mode, NGINX mode, delimiter mode, JSON mode, or f
 7. Preview data, configure indexes, and then click Next .
 By default, Log Service enables full-text indexing. You can configure field indexes based on the logs that are collected in manual mode or automatic mode. For more information, see Configure indexes. If you want to query and analyze logs, you must enable full-text indexing or field indexing. If you enable full-text indexing and field indexing, the system uses only field indexes.
 
-##### Collect logs from standard Docker containers
+##### 3.1.5.8 Collect logs from standard Docker containers
 
 This topic describes how to deploy a Logtail container and create a Logtail configuration to collect logs from standard Docker containers. Step 1: Deploy a Logtail container
 1. Run the following command to pull the Logtail image:
@@ -3481,7 +3748,7 @@ Restart Logtail. To restart Logtail, use the following sample code:
 docker exec a287de895e40 /etc/init.d/ilogtaild stop kill process Name: ilogtail pid: 7 kill process Name: ilogtail pid: 8 stop success docker exec a287de895e40 /etc/init.d/ilogtaild start ilogtail is running
 ```
 
-##### Collect Kubernetes events
+##### 3.1.5.9 Collect Kubernetes events
 
 This topic describes how to use the eventer component to collect events from Kubernetes and send the events to Log Service. Log Service allows you to collect events from Kubernetes by using kube-eventer. For more information about the source code for Kubernetes event collection, visit GitHub. Create a Logtail configuration If you use self-managed Kubernetes, you must configure the endpoint, project, logStore, regionId, internal, accessKeyId, and accessKeySecret parameters. The following example shows the event collection configuration:
 
@@ -3641,9 +3908,9 @@ hostname: cn-hangzhou.i-***********" level: Normal pod_id: 2a360760-**** pod_nam
 | pod name _ | string | The name of a pod. This field is available only if the event type is related to the pod. |
 | eventId | json | The details of an event. The value of this field is a JSON string. |
 
-##### Collect container text logs
+##### 3.1.5.10 Collect container text logs
 
-Logtail can collect and upload container text logs together with container metadata to Log Service. Features Logtail can collect and upload container text logs together with container metadata to Log Service. Compared with basic log file collection, Docket file collection by using Logtail has the following features: Allows you to specify the log path of a container without the need to manually map the log path of the container to a path on the host. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java Stack logs. Supports automatic labeling for Docker container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers. Limits Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting logs from the container. If collection latency occurs, some logs that are collected before the container is stopped may be lost. Docker storage driver: For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount the log directory on the on-premises host. Logtail running mode: Logtail must run in a container and must be deployed based on Logtail deployment solutions. Step 1: Deploy and configure Logtail Kubernetes For more information about how to collect Kubernetes logs, see Collect Kubernetes logs. Configure Logtail on other containers For more information about the methods used to manage other containers, such as Swarm and Mesos, see Collect standard Docker logs. Step 2: Create a Logtail configuration for log collection
+Logtail can collect and upload container text logs together with container metadata to Log Service. Features Logtail can collect and upload container text logs together with container metadata to Log Service. Compared with basic log file collection, Docket file collection by using Logtail has the following features: Allows you to specify the log path of a container without the need to manually map the log path of the container to a path on the host. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java Stack logs. Supports automatic labeling for Docker container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers. Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting logs from the container. If collection latency occurs, some logs that are collected before the container is stopped may be lost. Docker storage driver: For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount the log directory on the on-premises host. Logtail running mode: Logtail must run in a container and must be deployed based on Logtail deployment solutions. Step 1: Deploy and configure Logtail Kubernetes For more information about how to collect Kubernetes logs, see Collect Kubernetes logs. Configure Logtail on other containers For more information about the methods used to manage other containers, such as Swarm and Mesos, see Collect standard Docker logs. Step 2: Create a Logtail configuration for log collection
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select Docker File - Cont ainer.
 3. Select a destination project and Logstore, and then click Next .
@@ -3699,9 +3966,9 @@ The following table describes the fields that are uploaded by default for each l
 | pod uid _ _ _ | The unique identifier of the pod. |
 | container ip _ _ _ | The IP address of the pod. |
 
-##### Collect container stdout and stderr logs
+##### 3.1.5.11 Collect container stdout and stderr logs
 
-Logtail can collect and upload container standard output (stdout) and standard error (stderr) logs together with container metadata to Log Service. This topic describes how to create a Logtail configuration in the Log Service console to collect Kubernetes stdout and stderr logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. The alibaba-log-controller Helm package is installed. For more information, see Install Logtail. Features Logtail can collect container stdout and stderr logs, and upload the stdout and stderr logs together with container metadata to Log Service. The following features are supported by Logtail to collect container stdout and stderr logs: Collects stdout and stderr logs in real time. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java stack logs. Supports automatic labeling for Docker container logs. Supports automatic labeling for Kubernetes container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers. Implementation A Logtail container uses a UNIX domain socket to communicate with the Docker daemon. The Logtail container queries all Docker containers and finds the specified Docker containers based on the specified labels and environment variables. Logtail runs the `docker logs` command to collect the logs of the specified Docker containers. When Logtail collects the stdout and stderr logs of a Docker container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is restarted, Logtail collects logs from the last checkpoint. Limits Logtail version: Only Logtail V0.16.0 or later that runs on Linux can be used to collect stdout and stderr logs. For more information, see Install Logtail in Linux. Permissions: By default, Logtail uses the `/var/run/docker.sock` socket to access the Docker engine. You must make sure that a UNIX domain socket is available and the Logtail container has permissions to access the Docker engine. Multi-line logs: By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can set the cache time by specifying the `BeginLineTimeoutMs` parameter. The value of the `BeginLineTimeoutMs` parameter cannot be less than 1,000 ms. Otherwise, an error may occur. Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting stdout and stderr logs from the container. If collection latency occurs, some stdout and stderr logs that are collected before the container is stopped may be lost. Docker logging driver: The logging driver collects stdout and stderr logs only in the JSON format from containers that use the Docker engine. Context: By default, logs that are collected from different containers by using a Logtail configuration are in the same context. If you want the logs of each container to be in different contexts, create a Logtail configuration for each container. Data processing: The collected data is contained in the `content` field. You can process the data by using a common processing method. For more information, see Configure data processing methods. Create a Logtail configuration
+Logtail can collect and upload container standard output (stdout) and standard error (stderr) logs together with container metadata to Log Service. This topic describes how to create a Logtail configuration in the Log Service console to collect Kubernetes stdout and stderr logs. Prerequisites A project and a Logstore are created. For more information, see Create a project and Create a Logstore. The alibaba-log-controller Helm package is installed. For more information, see Install Logtail. Features Logtail can collect container stdout and stderr logs, and upload the stdout and stderr logs together with container metadata to Log Service. The following features are supported by Logtail to collect container stdout and stderr logs: Collects stdout and stderr logs in real time. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java stack logs. Supports automatic labeling for Docker container logs. Supports automatic labeling for Kubernetes container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers. Implementation A Logtail container uses a UNIX domain socket to communicate with the Docker daemon. The Logtail container queries all Docker containers and finds the specified Docker containers based on the specified labels and environment variables. Logtail runs the `docker logs` command to collect the logs of the specified Docker containers. When Logtail collects the stdout and stderr logs of a Docker container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is restarted, Logtail collects logs from the last checkpoint. Logtail version: Only Logtail V0.16.0 or later that runs on Linux can be used to collect stdout and stderr logs. For more information, see Install Logtail in Linux. Permissions: By default, Logtail uses the `/var/run/docker.sock` socket to access the Docker engine. You must make sure that a UNIX domain socket is available and the Logtail container has permissions to access the Docker engine. Multi-line logs: By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can set the cache time by specifying the `BeginLineTimeoutMs` parameter. The value of the `BeginLineTimeoutMs` parameter cannot be less than 1,000 ms. Otherwise, an error may occur. Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting stdout and stderr logs from the container. If collection latency occurs, some stdout and stderr logs that are collected before the container is stopped may be lost. Docker logging driver: The logging driver collects stdout and stderr logs only in the JSON format from containers that use the Docker engine. Context: By default, logs that are collected from different containers by using a Logtail configuration are in the same context. If you want the logs of each container to be in different contexts, create a Logtail configuration for each container. Data processing: The collected data is contained in the `content` field. You can process the data by using a common processing method. For more information, see Configure data processing methods. Create a Logtail configuration
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select Docker St andard Out put - Cont ainer.
 3. Select a destination project and Logstore, and then click Next .
@@ -3985,9 +4252,9 @@ Collect the JSON logs of the containers whose labels include `app=monitor` . The
 
 `}` `}` `]` `}`
 
-##### Collect standard Docker logs
+##### 3.1.5.12 Collect standard Docker logs
 
-This topic describes how to use Logtail to collect standard Docker logs and upload these logs together with the container metadata to Log Service. Procedure Procedure
+This topic describes how to use Logtail to collect standard Docker logs and upload these logs together with the container metadata to Log Service.
 1. Deploy a Logtail container.
 2. Configure a Logtail server group.
 Create a server group with a custom ID in the Log Service console. The container cluster can automatically scale up or down based on data traffic.
@@ -4072,7 +4339,7 @@ Restart Logtail. To restart Logtail, use the following sample code:
 [root@iZbp17enxc2us3624wexh2Z ilogtail]# docker exec a287de895e40 /etc/init.d/ilogtaild stop kill process Name: ilogtail pid: 7 kill process Name: ilogtail pid: 8 stop success [root@iZbp17enxc2us3624wexh2Z ilogtail]# docker exec a287de895e40 /etc/init.d/ilogtaild start ilogtail is running
 ```
 
-#### Custom plug-ins
+#### 3.1.6 Custom plug-ins
 
 Context Log Service allows you to collect text logs and system logs by using Logtail. Logtail supports connections with multiple data sources, such as HTTP or MySQL query results and MySQL binary logs. You can collect HTTP request data and upload the processing results to Log Service in real time to check service availability and perform continuous availability monitoring. You can configure MySQL query results as the data source, and then synchronize incremental data based on custom IDs or time. You can also configure an SQL data source to synchronize MySQL binary logs, subscribe to database changes, and query or analyze logs in real time. This feature supports only Logtail V0.16.0 or later that runs on Linux. For more information about Logtail versions and version updates, see Install Logtail in Linux. Configuration process
 1. Configure a collection method for a data source.
@@ -4082,13 +4349,13 @@ Logtail provides multiple processing methods for binary logs, MySQL query result
 3. Apply the configurations to the specified machine group.
 Apply the log collection configurations and processing configurations to the specified machine group. Then, Logtail automatically pulls the configurations and starts to collect logs.
 
-##### Collect MySQL binary logs
+##### 3.1.6.1 Collect MySQL binary logs
 
 This topic describes how to create a Logtail configuration in the Log Service console to collect MySQL binary logs. Prerequisites Logtail is installed on the server from which you want to collect MySQL binary logs. For more information, see Install Logtail in Linux or Install Logtail in Windows. Linux servers support Logtail V0.16.0 or later. Windows servers support Logtail V1.0.0.8 or later. How it works Logtail acts as a secondary MySQL node to communicate with the primary MySQL node. The following list describes the communication process:
 1. Logtail acts as a secondary MySQL node and sends a dump request to the primary MySQL node.
 2. After the primary MySQL node receives the dump request, the node sends binary logs to Logtail in real time.
 3. Logtail performs operations such as event parsing, event filtering, and data parsing on binary logs. Then,
-Logtail uploads the parsed data to Log Service. Features Binary logs can be incrementally collected. This way, you can collect data related to the update operations that are performed on your databases. MySQL databases such as ApsaraDB RDS for MySQL are supported. Multiple methods are provided to filter data in databases, such as regular expressions. You can specify the positions of binary log files. Checkpoints are used to synchronize data storage status. Limits Binary logs of MySQL 8.0 or later cannot be collected. The binary logging feature must be enabled for your MySQL database, and the binlog_format parameter must be set to ROW for the database. By default, the feature is enabled for an RDS database. You can run the following command to check whether the binary logging feature is enabled:
+Logtail uploads the parsed data to Log Service. Features Binary logs can be incrementally collected. This way, you can collect data related to the update operations that are performed on your databases. MySQL databases such as ApsaraDB RDS for MySQL are supported. Multiple methods are provided to filter data in databases, such as regular expressions. You can specify the positions of binary log files. Checkpoints are used to synchronize data storage status. Binary logs of MySQL 8.0 or later cannot be collected. The binary logging feature must be enabled for your MySQL database, and the binlog_format parameter must be set to ROW for the database. By default, the feature is enabled for an RDS database. You can run the following command to check whether the binary logging feature is enabled:
 
 ```
 show variables like "log_bin";
@@ -4129,13 +4396,13 @@ The ID of the secondary MySQL node whose role Logtail assumes must be unique on 
     ...
 ```
 
-`}` Data reliability We recommend that you enable the global transaction identifier (GTID) feature on your MySQL server and upgrade Logtail to V0.16.15 or later. This prevents data from being repeatedly collected after a primary/secondary switchover is triggered on your database and ensures data reliability. Incomplete data collection: If the network between Logtail and your MySQL server is disconnected for a long period of time, some data may not be collected. If the network between Logtail and your primary MySQL node is disconnected, the primary node still generates binary logs and deletes expired binary logs. After the network connection is re-established and your primary MySQL node and Logtail are reconnected, Logtail uses a checkpoint to request binary log data from the primary MySQL node. However, if the network is disconnected for a long period of time, the data that is generated after the checkpoint may be deleted. In this case, the recovery mechanism is triggered. The recovery mechanism identifies the most recent binary log file position from which Logtail resumes collection on the primary MySQL node. The data that is generated between the checkpoint and the most recent binary log file position is not collected. This leads to incomplete data collection. Repeated data collection: If a primary/secondary switchover is triggered when the sequence numbers of binary logs are inconsistent between your primary MySQL node and secondary MySQL node, binary logs may be repeatedly collected. If you configure primary/secondary synchronization for MySQL, the primary node automatically synchronizes the binary logs to the secondary node. The secondary node stores the logs to local binary log files. If the sequence numbers are inconsistent between the primary and secondary nodes and a primary/secondary switchover is triggered, logs may be repeatedly collected. This issue occurs because the checkpoint mechanism identifies checkpoints based on the names of binary log files and the offsets of the files. For example, a data block is in the checkpoint range from `(binlog.100, 4)` to `(binlog.105, 4)` on the primary MySQL node, and in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the secondary MySQL node. Logtail has obtained the data from the primary node and updated the local checkpoint to `(binlog.105, 4)` . If a primary/secondary switchover is triggered and no error occurs, Logtail continues to
+`}` Data reliability We recommend that you enable the global transaction identifier (GTID) feature on your MySQL server and upgrade Logtail to V0.16.15 or later. This prevents data from being repeatedly collected after a primary/secondary switchover is triggered on your database and ensures data reliability. Incomplete data collection: If the network between Logtail and your MySQL server is disconnected for a long period of time, some data may not be collected. If the network between Logtail and your primary MySQL node is disconnected, the primary node still generates binary logs and deletes expired binary logs. After the network connection is re-established and your primary MySQL node and Logtail are reconnected, Logtail uses a checkpoint to request binary log data from the primary MySQL node. However, if the network is disconnected for a long period of time, the data that is generated after the checkpoint may be deleted. In this case, the recovery mechanism is triggered. The recovery mechanism identifies the most recent binary log file position from which Logtail resumes collection on the primary MySQL node. The data that is generated between the checkpoint and the most recent binary log file position is not collected. This leads to incomplete data collection. Repeated data collection: If a primary/secondary switchover is triggered when the sequence numbers of binary logs are inconsistent between your primary MySQL node and secondary MySQL node, binary logs may be repeatedly collected. If you configure primary/secondary synchronization for MySQL, the primary node automatically synchronizes the binary logs to the secondary node. The secondary node stores the logs to local binary log files. If the sequence numbers are inconsistent between the primary and secondary nodes and a primary/secondary switchover is triggered, logs may be repeatedly collected. This issue occurs because the checkpoint mechanism identifies checkpoints based on the names of binary log files and the offsets of the files. For example, a data block is in the checkpoint range from `(binlog.100, 4)` to `(binlog.105, 4)` on the primary MySQL node, and in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the secondary MySQL node. Logtail has obtained the data from the primary node and updated the local checkpoint to `(binlog.105, 4)` . If a primary/secondary switchover is triggered and no error occurs, Logtail continues to collect binary logs from the new primary node based on the local checkpoint `(binlog.105, 4)` . However, the
 
 | heckpoint | (binlog.105, 4) |   |   | . However, the |
 |---|---|---|---|---|
 | (binlog.1000, 4) |   | to | (binlog.1005, 4) |   |
 
-collect binary logs from the new primary node based on the local checkpoint `(binlog.105, 4)` . However, the sequence number of the data that is in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the new primary node is greater than the sequence number of the data that is requested by Logtail. The new primary node returns all data in the range to Logtail. This leads to repeated data collection. Procedure
+sequence number of the data that is in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the new primary node is greater than the sequence number of the data that is requested by Logtail. The new primary node returns all data in the range to Logtail. This leads to repeated data collection.
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select MySQL BinLog - Plug-in.
 3. Select a destination project and Logstore, and then click Next .
@@ -4280,9 +4547,9 @@ __source__: 203.0.**.** __tag__:__hostname__: iZbp145dd9fccu**** __topic__: _db_
 | filename _ _ | The name of the binary log file. |
 | offset _ _ | The offset of the binary log file. The value is updated only when a COMMIT operation is performed. |
 
-##### Collect MySQL query results
+##### 3.1.6.2 Collect MySQL query results
 
-This topic describes how to create a Logtail configuration in the Log Service console to collect MySQL query results. Prerequisites Logtail is installed on the server from which you want to collect MySQL query results. For more information, see Install Logtail in Linux or Install Logtail in Windows. Linux servers support Logtail V0.16.0 or later. Windows servers support Logtail V1.0.0.8 or later. Implementation Logtail executes the SELECT statement that is specified in a Logtail configuration on a regular basis, and then uploads the query results to Log Service. After Logtail obtains query results, Logtail saves the value of the CheckPoint field in the results to the Logtail server. The next time Logtail executes the SELECT statement, Logtail adds the value of the CheckPoint field to the SELECT statement. This way, Logtail can collect incremental data. Features MySQL databases are supported. You can configure paged query settings. You can specify time zones. You can specify timeout periods. The values of the CheckPoint field can be saved. SSL is supported. You can specify the maximum size of data that can be collected at a time. Scenarios Collect incremental data based on marks such as an auto-increment ID or a point in time. Synchronize data based on filter conditions. Procedure The following procedure describes how to synchronize incremental data from a MySQL database to Log Service. In this procedure, the logtail.VersionOs field is synchronized every 10 seconds and the value of the count parameter in this field is greater than 0. The value of the initial checkpoint is 2017-09-25 11:00:00. Logs are paginated and each page contains 100 logs. The checkpoint of each page is saved. The procedure includes the following steps:
+This topic describes how to create a Logtail configuration in the Log Service console to collect MySQL query results. Prerequisites Logtail is installed on the server from which you want to collect MySQL query results. For more information, see Install Logtail in Linux or Install Logtail in Windows. Linux servers support Logtail V0.16.0 or later. Windows servers support Logtail V1.0.0.8 or later. Implementation Logtail executes the SELECT statement that is specified in a Logtail configuration on a regular basis, and then uploads the query results to Log Service. After Logtail obtains query results, Logtail saves the value of the CheckPoint field in the results to the Logtail server. The next time Logtail executes the SELECT statement, Logtail adds the value of the CheckPoint field to the SELECT statement. This way, Logtail can collect incremental data. Features MySQL databases are supported. You can configure paged query settings. You can specify time zones. You can specify timeout periods. The values of the CheckPoint field can be saved. SSL is supported. You can specify the maximum size of data that can be collected at a time. Scenarios Collect incremental data based on marks such as an auto-increment ID or a point in time. Synchronize data based on filter conditions. The following procedure describes how to synchronize incremental data from a MySQL database to Log Service. In this procedure, the logtail.VersionOs field is synchronized every 10 seconds and the value of the count parameter in this field is greater than 0. The value of the initial checkpoint is 2017-09-25 11:00:00. Logs are paginated and each page contains 100 logs. The checkpoint of each page is saved. The procedure includes the following steps:
 1. Log on to the Log Service console.
 2. Select a data source.
 In the Import Dat a section, select MySQL Query Result - Plug-in.
@@ -4373,9 +4640,9 @@ CREATE TABLE `VersionOs` (
 "count": "4" "id: "721097" "os: "Windows" "time: "2017-08-25 13:00:00" "version": "1.3.0"
 ```
 
-##### Collect syslogs
+##### 3.1.6.3 Collect syslogs
 
-This topic describes how to create a Logtail configuration in the Log Service console to collect syslogs. Prerequisites Logtail is installed on the server from which you want to collect syslogs. For more information, see Install Logtail in Linux or Install Logtail in Windows. Linux servers support Logtail V0.16.13 or later. Windows servers support Logtail V1.0.0.8 or later. Overview Linux servers allow you to use syslog agents such as rsyslog to forward on-premises syslogs to the IP address and port of a specified server. After you apply a Logtail configuration to the specified server, the Logtail plug-in specified in the configuration receives the forwarded syslogs over TCP or UDP. The plug-in also parses the syslogs based on the specified syslog protocol, and extracts the facility, tag(program), severity, and content fields from the syslogs. The syslog protocols defined in RFC 3164 and RFC 5424 are supported. For more information, see RFC 5424 and RFC 3164. You can configure multiple Logtail plug-ins based on your business requirements. For example, you can configure two Logtail plug-ins to listen on 127.0.0.1:9999 over TCP and UDP. Implementation After you configure Logtail plug-ins to listen on a specified address and port, Logtail collects and sends data to Log Service. The data includes the system logs that are collected by using rsyslog, the access logs or error logs that are forwarded by NGINX, and the logs that are forwarded by syslog clients. Configure Logtail plug-ins to collect syslogs
+This topic describes how to create a Logtail configuration in the Log Service console to collect syslogs. Prerequisites Logtail is installed on the server from which you want to collect syslogs. For more information, see Install Logtail in Linux or Install Logtail in Windows. Linux servers support Logtail V0.16.13 or later. Windows servers support Logtail V1.0.0.8 or later. Linux servers allow you to use syslog agents such as rsyslog to forward on-premises syslogs to the IP address and port of a specified server. After you apply a Logtail configuration to the specified server, the Logtail plug-in specified in the configuration receives the forwarded syslogs over TCP or UDP. The plug-in also parses the syslogs based on the specified syslog protocol, and extracts the facility, tag(program), severity, and content fields from the syslogs. The syslog protocols defined in RFC 3164 and RFC 5424 are supported. For more information, see RFC 5424 and RFC 3164. You can configure multiple Logtail plug-ins based on your business requirements. For example, you can configure two Logtail plug-ins to listen on 127.0.0.1:9999 over TCP and UDP. Implementation After you configure Logtail plug-ins to listen on a specified address and port, Logtail collects and sends data to Log Service. The data includes the system logs that are collected by using rsyslog, the access logs or error logs that are forwarded by NGINX, and the logs that are forwarded by syslog clients. Configure Logtail plug-ins to collect syslogs
 1. Add a forwarding rule for rsyslog.
 i. Modify the /etc/rsyslog.conf configuration file of rsyslog on the server from which you want to collect syslogs. Add a forwarding rule to the end of the configuration file. After the forwarding rule is added, rsyslog forwards syslogs to a specified IP address and port. If Logtail resides on the syslog server, you must specify the IP address 127.0.0.1 and a non-well-known port that is unoccupied in the forwarding rule. If Logtail resides on a different server from the syslog server, you must specify the public IP address of the different server and a non-well-known port that is unoccupied in the forwarding rule. The following example shows a forwarding rule, which allows all syslogs to be forwarded to 127.0.0.1:9000 over TCP. For more information about the configuration file, see RSyslog Documentation.
 
@@ -4467,9 +4734,9 @@ For more information, see Configure Logtail plug-ins to collect syslogs. What's 
 | content _ _ | The content of the log. If the log fails to be parsed, this field contains the content of the raw log. |
 | ip _ _ | The IP address of the current host. |
 
-##### Customize Logtail plug-ins to process data
+##### 3.1.6.4 Customize Logtail plug-ins to process data
 
-If you have complex logs that cannot be parsed in basic modes such as full regex, NGINX, and JSON, you can use Logtail plug-ins to parse the logs. You can configure Logtail plug-ins for one or more processing methods. Then, Logtail executes the processing methods in sequence. Limits Performance limits If a plug-in is used to process data, Logtail consumes more resources. Most of these resources are CPU resources. You can modify the Logtail parameter settings based on your business requirements. For more information, see Set Logtail startup parameters. Limits on text logs Log Service allows you to process text logs in basic modes such as full regex, NGINX, or JSON. Log Service also allows you to use Logtail plug-ins to process text logs. However, Logtail plug-ins have the following limits on text logs: If you enable the plug-in processing feature, some advanced features of the specified mode become unavailable. For example, you cannot configure the filter, upload raw logs, specify the system time zone, drop logs that fail to be parsed, or upload incomplete logs in delimiter mode. Plug-ins use the line mode to process text logs. In this mode, file-level metadata such as __tag__:__path__ and __topic__ is stored in each log. If you use Logtail plug-ins to process data, the following limits apply to tag-related features: You cannot use the contextual query and LiveTail features because these features depend on fields such as __tag__:__path__. The name of the __topic__ field is renamed to __log_topic__. Fields such as __tag__:__path__ no longer have original field indexes. You must configure indexes for these fields. Usage notes When you configure data processing methods, you must set the key in the configuration file to processors and set the value to an array of JSON objects. Each object of the array contains the details of a processing method. Each processing method contains the type and detail fields. The type field specifies the type of the processing method and the detail field contains configuration details.
+If you have complex logs that cannot be parsed in basic modes such as full regex, NGINX, and JSON, you can use Logtail plug-ins to parse the logs. You can configure Logtail plug-ins for one or more processing methods. Then, Logtail executes the processing methods in sequence. Performance limits If a plug-in is used to process data, Logtail consumes more resources. Most of these resources are CPU resources. You can modify the Logtail parameter settings based on your business requirements. For more information, see Set Logtail startup parameters. Limits on text logs Log Service allows you to process text logs in basic modes such as full regex, NGINX, or JSON. Log Service also allows you to use Logtail plug-ins to process text logs. However, Logtail plug-ins have the following limits on text logs: If you enable the plug-in processing feature, some advanced features of the specified mode become unavailable. For example, you cannot configure the filter, upload raw logs, specify the system time zone, drop logs that fail to be parsed, or upload incomplete logs in delimiter mode. Plug-ins use the line mode to process text logs. In this mode, file-level metadata such as __tag__:__path__ and __topic__ is stored in each log. If you use Logtail plug-ins to process data, the following limits apply to tag-related features: You cannot use the contextual query and LiveTail features because these features depend on fields such as __tag__:__path__. The name of the __topic__ field is renamed to __log_topic__. Fields such as __tag__:__path__ no longer have original field indexes. You must configure indexes for these fields. Usage notes When you configure data processing methods, you must set the key in the configuration file to processors and set the value to an array of JSON objects. Each object of the array contains the details of a processing method. Each processing method contains the type and detail fields. The type field specifies the type of the processing method and the detail field contains configuration details.
 
 ```json
 "processors" : [
@@ -5240,7 +5507,7 @@ Logtail plug-in configurations for data processing
 "method" : "ACCESS" "type" : "QAS" "ip" : "203.0.113.10" "time" : "1508729889935" "req_id" : "52460dbed4d540b88a973cf5452b1447" "size" : "1238" "appKey" : "ba" "env" : "pub" "requestTime" : "1508729889913" "latency" : "22ms" "request" : "{appKey:nui-banma,optional:{\\domains\\:\\daily-faq\\,\\version\\:\\v2\\},rawQuery:{\\ query\\:\\\345\216\273\344\271\220\345\261\261\347\232\204\350\267\257\347\272\277\\,\\domain\\:\\\ 345\257\274\350\210\252\\,\\intent\\:\\navigate\\,\\slots\\:\\to_geo:level3=\344\271\220\345\261\26 1\\,\\location\\:\\\345\214\227\344\272\254\\},requestId:52460dbed4d540b88a973cf5452b1447}" "response_answers" : "[]" "response_status" : "SUCCESS"
 ```
 
-#### Limits
+#### 3.1.7 Limits
 
 This topic describes the limits of Logtail. These limits apply when you collect files, manage resources, and resolve errors. Limits on file collection
 
@@ -5311,9 +5578,9 @@ Other limits
 | Log collection latency | A latency of less than 1 second exists between the point in time when a log is written to a disk and the point in time when Logtail collects the log. However, if the log collection speed is restricted, the latency increases. |
 | Log upload policy | Before Logtail uploads logs, Logtail aggregates the logs in the same file. The log upload starts if the number of logs exceeds 2,000, the total size of logs exceeds 2 MB, or the log collection duration exceeds 3 seconds. |
 
-### Other collection methods
+### 3.2 Other collection methods
 
-#### Use the web tracking feature to collect logs
+#### 3.2.1 Use the web tracking feature to collect logs
 
 Log Service provides the web tracking feature that you can use to collect logs from the HTML, HTML5, iOS, and Android platforms. You can also customize dimensions and metrics to collect logs. This topic describes how to use the web tracking feature to collect logs. Context You can use the web tracking feature to collect user information from browsers, iOS apps, or Android apps. The information includes: Browsers, operating systems, and resolutions that are used by users. User browsing behavior, such as the number of clicks and purchases on a website. The amount of time that users spend on an app and whether users are active users. Usage notes After you enable the web tracking feature for a Logstore, the write permissions on the Logstore are granted to anonymous users from the Internet. This may generate dirty data. The HTTP body of each GET request cannot exceed 16 KB. You can use the POST method to call the PutLogs API operation and write a maximum of 3 MB or 4,096 log entries to Log Service. Step 1: Enable the web tracking feature You can use the Log Service console or an SDK to enable the web tracking feature. Enable the web tracking feature in the Log Service console. i. Log on to the Log Service console. ii. In the Project s section, click the project in which you want to enable the web tracking feature for a Logstore. iii. Find the Logstore for which you want to enable the web tracking feature and choose
 > Modif y.
@@ -5422,17 +5689,17 @@ Use HTML <img> tags to upload logs.
 
 The track_ua.gif file contains custom parameters that you want to upload to Log Service. If you use this method to upload logs, Log Service records the custom parameters and the User-Agent and Referer HTTP headers as log fields. To collect the Referer HTTPS header, make sure that the URL in the preceding <img> tag uses the HTTPS protocol. Use the POST method to upload logs. You can send an HTTP POST request to upload a large amount of data. For more information, see the "PutWebtacking" topic of API Ref erence in Log Service Developer Guide.
 
-#### Use SDKs to collect logs
+#### 3.2.2 Use SDKs to collect logs
 
-##### Producer Library
+##### 3.2.2.1 Producer Library
 
 The Aliyun LOG Java Producer supports Java applications that run in big data processing scenarios with high concurrency. The library is easy to use and highly customizable. For more information about the related GitHub project, visit Aliyun LOG Java Producer.
 
-##### Log4j Appender
+##### 3.2.2.2 Log4j Appender
 
 This topic describes Alibaba Cloud Log4j Appender. Log4j is an open source project of Apache. Log4j allows you to specify the output destination and format of logs. You can also specify the severity level of each log for fine-grained control on log generation. Log4j consists of the following three components: Loggers The severity levels of logs are classified into ERROR, WARN, INFO, and DEBUG in descending order. Appenders An appender specifies that logs are sent to the Log Service console or files. Layouts A layout specifies the output format of logs. You can use Alibaba Cloud Log4j Appender to send logs to Log Service. For more information about Alibaba Cloud Log4j Appender, visit Log4j Appender.
 
-##### Logback Appender
+##### 3.2.2.3 Logback Appender
 
 This topic describes how to write logs to Log Service by using Aliyun Log Logback Appender. Logback is an open source project that is developed by the founder of Log4j. Logback allows you to write logs to multiple destinations. These destinations include the Log Service console, files, graphical user interface (GUI) components, socket servers, NT kernel loggers, and UNIX syslog daemons. You can specify the output format of each log. You can also specify the severity level of each log for fine-grained control on log generation. The following example shows the format of a log that is written to Log Service by using Aliyun Log Logback Appender:
 
@@ -5442,11 +5709,11 @@ level: ERROR location: com.aliyun.openservices.log.logback.example.LogbackAppend
 
 For more information about Aliyun Log Logback Appender, see Logback Appender.
 
-##### Golang Producer Library
+##### 3.2.2.4 Golang Producer Library
 
 The Aliyun LOG Go Producer Library supports Go applications that run in big data processing scenarios with high concurrency. The library is easy to use and highly customizable. You can use the library to create producers that allow you to resend failed logs. Before Go applications send log data to Log Service, you can use these producers to compress the log data. This improves write performance. For more information about the related GitHub project, visit Aliyun Log Go Producer.
 
-##### Python logging
+##### 3.2.2.5 Python logging
 
 This topic describes how to use the Python logging module to collect log data. Configurations For more information about the configurations that are related to the Python logging module, see Logging configuration. The Python logging module allows you to use code or a configuration file to configure logging. The following example shows how to use the `logging.conf` configuration file to configure logging.
 
@@ -5554,9 +5821,9 @@ logger = logging.getLogger('sls') logger.info("Hello world")
 
 If you want to instantiate an object of the `aliyun.log.QueuedLogHandler` class, pass named parameters to the constructor. For more information, see Parameters.
 
-#### Collect common logs
+#### 3.2.3 Collect common logs
 
-##### Collect Log4j logs
+##### 3.2.3.1 Collect Log4j logs
 
 Log Service allows you to use LogHub Log4j Appender or Logtail to collect Log4j logs. Log format Log4j is an open source project of Apache. Log4j allows you to specify the output destination and format of logs. You can also specify the severity level of logs. The severity levels of logs are classified into ERROR, WARN, INFO, and DEBUG in descending order. The output destination specifies whether logs are sent to the console or files. The output format specifies the format of logs. The following example shows the default configurations of Log4j:
 
@@ -5617,7 +5884,7 @@ The following table lists the extraction results of the sample log.
 
 Use LogHub Log4j Appender to collect Log4j logs For more information about how to collect Log4j logs by using LogHub Log4j Appender, see Log4j Appender. Use Logtail to collect Log4j logs The procedure when you use Logtail to collect Log4j logs is similar to that when you use Logtail to collect Python logs. Configure Logtail based on the actual network deployment and your business requirements. For more information, see Python logs.
 
-##### Collect Python logs
+##### 3.2.3.2 Collect Python logs
 
 Log Service allows you to use the Python logging module to collect Python logs. This topic describes how to use Logtail to collect Python logs. Context The Python logging module provides a general logging system, which can be used by third-party modules or applications. The logging module defines multiple log severity levels and logging methods. The logging module consists of the following components: loggers, handlers, filters, and formatters. To collect Python logs, we recommend that you use logging handlers. For more information, see the following topics: Use logging handlers to automatically upload Python logs Use logging handlers to automatically upload and parse logs in the key-value format Use logging handlers to automatically parse logs in the JSON format Log format Formatters specify the output format of logs. The fields in the configurations of a formatter are in the %(key)s format.
 
@@ -5652,7 +5919,6 @@ The following example shows sample logs:
 2015-03-04 23:21:59,682 - log_test.py:16 - tst - first info message 2015-03-04 23:21:59,682 - log_test.py:17 - tst - first debug message
 ```
 
-Procedure
 1. Log on to the Log Service console.
 2. In the Import Dat a section, select RegEx - T ext Log.
 3. Select a destination project and Logstore, and then click Next .
@@ -5683,7 +5949,7 @@ Set the parameters in the Advanced Options section based on your business requir
 8. Configure indexes in the Configure Query and Analysis step. Click Next .
 By default, Log Service enables Full Text Index to query and analyze logs. You can manually or automatically configure Field Search. For more information, see Enable the index feature and configure indexes for a Logstore. To query and analyze logs, you must enable Full Text Index or Field Search. If you enable both Full Text Index and Field Search, the settings of Field Search prevail. If the data type of the index is long or double, the Case-Sensitive switch and the Delimiter field are unavailable. After you complete the settings, you can start to collect Python logs.
 
-##### Collect Node.js logs
+##### 3.2.3.3 Collect Node.js logs
 
 Node.js logs are displayed in the Log Service console by default. This affects your data collection and troubleshooting efficiency. Log4js is a tool used to manage Node.js logs. You can use Log4js to send Node.js logs to files and customize the log format. Log4js allows you to collect and consolidate data in an efficient manner. The following code shows how to configure Log4js to send logs to a file:
 
@@ -5743,7 +6009,7 @@ Extracted fields
 | ip, | request |
 |---|---|
 
-##### Collect WordPress logs
+##### 3.2.3.4 Collect WordPress logs
 
 This topic describes the format of WordPress logs and extraction results of a sample log. Log format Sample log:
 
@@ -5782,9 +6048,9 @@ The following table lists the extraction results of the sample log.
 | ref | http://wordpress.c4a1a0aecdb1943169555231dcc4adfb7.cn- hangzhou.alicontainer.com/wp-admin/install.php |
 | user-agent | Mozilla/5.0 (Macintosh; Intel Mac OS X 10 10 5) AppleWebKit/537.36 (KHTML, _ _ like Gecko) Chrome/47.0.2526.106 Safari/537.36 |
 
-##### Collect Unity3D logs
+##### 3.2.3.5 Collect Unity3D logs
 
-This topic describes how to use the web tracking feature of Log Service to collect Unity3D logs. Context Unity3D is a cross-platform game engine that is developed by Unity Technologies. You can use the engine to create 3D video games, VR buildings, real-time 3D animation, and other interactive content. In this example, Unity Debug.Log is used to describe how to collect Unity3D logs. Procedure
+This topic describes how to use the web tracking feature of Log Service to collect Unity3D logs. Context Unity3D is a cross-platform game engine that is developed by Unity Technologies. You can use the engine to create 3D video games, VR buildings, real-time 3D animation, and other interactive content. In this example, Unity Debug.Log is used to describe how to collect Unity3D logs.
 1. Enable the web tracking feature.
 For more information, see WebTracking.
 2. Create a Unity3D logging handler.
@@ -5874,9 +6140,9 @@ using UnityEngine; using System.Collections; public class LogglyTest : MonoBehav
 4. View logs in the Log Service console.
 After you run the Unity3D application, logs are generated and sent to Log Service. You can view the logs in the Log Service console.
 
-## Query and analysis
+## 4 Query and analysis
 
-### Log search overview
+### 4.1 Log search overview
 
 Log Service allows you to search for 1 billion to hundreds of billions of rows of log data within seconds. This topic describes the syntax and limits of the log search feature and provides examples. Syntax Each query statement consists of a search statement and an analytic statement. The search statement and the analytic statement are separated by a vertical bar (|). For more information about the query statement, see Search syntax. A search statement can be executed alone. However, an analytic statement must be executed together with a search statement. The log analysis feature is based on search results or all data in a Logstore. If you need to search for tens of billions of rows of data, you can repeatedly execute a search statement up to 10 times to obtain the complete result. Syntax
 
@@ -5895,9 +6161,9 @@ Example
 * | SELECT status, count(*) AS PV GROUP BY status
 ```
 
-Limits Each project supports a maximum of 1,000 concurrent search statements at the same time. For example, 1,000 users can concurrently search for data in all Logstores of a project at the same time. You can specify a maximum of 30 keywords for each search statement. The maximum size of a field value is 10 KB. If the size of a field value exceeds 10 KB, the excess content is not queried. The returned logs are displayed on multiple pages. Each page displays a maximum of 100 search results. Log Service performs the DOM operation only on the first 10,000 characters of a log. If you perform a fuzzy search, Log Service searches for 100 words that meet the specified conditions. Logs that contain one or more of the 100 words and meet the search conditions are returned. Search methods Not ice Before you search for logs, you must make sure that logs are collected and indexes are configured for the fields. Indexes are used in a storage structure to sort one or more columns of log data. For more information, see Enable the indexing feature and configure indexes for a Logstore. Use the Log Service console Log on to the Log Service console. On the Search & Analysis page of a Logstore, specify a time range and execute a search statement. For more information, see Query logs and Search syntax. Call API operations Call the GetLogs and GetHistograms operations to search for log data. For more information, see the GetLogs and GetHistograms topics of API Reference in Developer Guide.
+Each project supports a maximum of 1,000 concurrent search statements at the same time. For example, 1,000 users can concurrently search for data in all Logstores of a project at the same time. You can specify a maximum of 30 keywords for each search statement. The maximum size of a field value is 10 KB. If the size of a field value exceeds 10 KB, the excess content is not queried. The returned logs are displayed on multiple pages. Each page displays a maximum of 100 search results. Log Service performs the DOM operation only on the first 10,000 characters of a log. If you perform a fuzzy search, Log Service searches for 100 words that meet the specified conditions. Logs that contain one or more of the 100 words and meet the search conditions are returned. Search methods Not ice Before you search for logs, you must make sure that logs are collected and indexes are configured for the fields. Indexes are used in a storage structure to sort one or more columns of log data. For more information, see Enable the indexing feature and configure indexes for a Logstore. Use the Log Service console Log on to the Log Service console. On the Search & Analysis page of a Logstore, specify a time range and execute a search statement. For more information, see Query logs and Search syntax. Call API operations Call the GetLogs and GetHistograms operations to search for log data. For more information, see the GetLogs and GetHistograms topics of API Reference in Developer Guide.
 
-### Log analysis overview
+### 4.2 Log analysis overview
 
 Log Service provides the log analysis feature. This feature allows you to search for log data and use SQL functions to analyze the data. This topic describes the syntax and limits of the analytic statements. This topic also provides the SQL functions that you can call when you use the log analysis feature. If you want to use the log analysis feature, you must turn on Enable Analyt ics when you configure indexes for log fields. For more information, see Enable the indexing feature and configure indexes for a Logstore. If you turn on Enable Analyt ics, you can analyze log data within seconds without additional costs. Syntax Each query statement consists of a search statement and an analytic statement. The search statement and the analytic statement are separated by a vertical bar (|). You can execute a search statement alone. However, you must execute an analytic statement together with a search statement. You can use the log analysis feature to analyze data that meets specified search conditions in a Logstore. You can also use the feature to analyze all data in a Logstore. You do not need to specify a FROM or WHERE clause in an analytic statement. By default, all data of the current Logstore is analyzed. You do not need to add a semicolon (;) at the end of an analytic statement to end the statement. Analytic statements are case-insensitive. Syntax
 
@@ -5916,9 +6182,9 @@ Example
 * | SELECT status, count(*) AS PV GROUP BY status
 ```
 
-Limits Each project supports a maximum of 15 concurrent analytic statements at the same time. For example, 15 users can concurrently execute analytic statements in all Logstores of a project at the same time. You can analyze only the data that is written to Log Service after the log analysis feature is enabled. By default, an analytic statement returns a maximum of 100 rows of data. If you want to view more data, use a LIMIT clause. For more information, see LIMIT syntax. The maximum size of a field value is 16 KB. If the size of a field value exceeds 16 KB, the excess content is not analyzed. The maximum timeout period for an analytic statement is 55 seconds. Each shard supports only 1 GB of data for an analytic statement. The value of a double-type field can contain a maximum of 52 digits after the decimal point. If the number of digits after the decimal point is greater than 52, the accuracy of the field value is compromised. SQL functions and syntax This section lists the SQL functions and syntax that Log Service supports. The following aggregate functions are available for SELECT statements: General aggregate functions Security check functions Map functions Approximate functions Mathematical statistics functions Mathematical calculation functions String functions Date and time functions URL functions Regular expression functions JSON functions Type conversion functions IP functions Array functions Binary string functions Bitwise operations Interval-valued comparison and periodicity-valued comparison functions Comparison functions and operators Lambda functions Logical functions Geospatial functions Geography functions Machine learning syntax and functions GROUP BY syntax Window functions HAVING syntax ORDER BY syntax LIMIT syntax Syntax for CASE statements and if() functions UNNEST function Field aliases Nested subqueries
+Each project supports a maximum of 15 concurrent analytic statements at the same time. For example, 15 users can concurrently execute analytic statements in all Logstores of a project at the same time. You can analyze only the data that is written to Log Service after the log analysis feature is enabled. By default, an analytic statement returns a maximum of 100 rows of data. If you want to view more data, use a LIMIT clause. For more information, see LIMIT syntax. The maximum size of a field value is 16 KB. If the size of a field value exceeds 16 KB, the excess content is not analyzed. The maximum timeout period for an analytic statement is 55 seconds. Each shard supports only 1 GB of data for an analytic statement. The value of a double-type field can contain a maximum of 52 digits after the decimal point. If the number of digits after the decimal point is greater than 52, the accuracy of the field value is compromised. SQL functions and syntax This section lists the SQL functions and syntax that Log Service supports. The following aggregate functions are available for SELECT statements: Map functions Array functions Bitwise operations Interval-valued comparison and periodicity-valued comparison functions Lambda functions GROUP BY syntax HAVING syntax ORDER BY syntax Syntax for CASE statements and if() functions UNNEST function Field aliases Nested subqueries
 
-### Configure indexes
+### 4.3 Configure indexes
 
 Indexes are used in a storage structure to sort one or more columns of log data. You can query and analyze log data only after you configure indexes. Query and analysis results vary based on index configurations. Therefore, you must configure indexes based on your business requirements. Prerequisites Logs are collected. For more information, see Data collection. Index types The following table describes the index types that are supported by Log Service.
 
@@ -5981,9 +6247,9 @@ If the indexing feature is not enabled, click Enable.
 6. Click OK.
 The index configurations take effect within 1 minute.
 
-### Query and analyze logs
+### 4.4 Query and analyze logs
 
-After you enable the indexing feature and configure indexes for a Logstore, you can query and analyze the logs that are stored in the Logstore in real time. Prerequisites Logs are collected and stored in a Logstore. For more information, see Data collection. The indexing feature is enabled and indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore. Query and analyze logs
+After you enable the indexing feature and configure indexes for a Logstore, you can query and analyze the logs that are stored in the Logstore in real time. Prerequisites Logs are collected and stored in a Logstore. For more information, see Data collection. The indexing feature is enabled and indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project to which the Logstore belongs.
 3. Choose Log St orage > Logst ores. On the Logstores tab, click the Logstore where logs are stored.
@@ -5992,11 +6258,11 @@ A query statement consists of a search statement and an analytic statement in th
 5. Click 15 Minut es(Relat ive) to specify a time range.
 You can select a relative time or a time frame. You can also specify a custom time range. The query results may contain logs that are generated 1 minute earlier or later than the specified time range.
 6. Click Search & Analyze to view the query and analysis results.
-Manage query and analysis results You can view the query and analysis results in a log distribution histogram, on the Raw Logs tab, or in a chart that is displayed on the Graph tab. You can also configure alerts and saved searches. By default, only 100 rows of data are returned after you execute a query statement. You can use a LIMIT clause to change the number of returned rows. For more information, see LIMIT syntax. Log distribution histogram The log distribution histogram displays the distribution of query and analysis results in different time ranges. If you move the pointer over a green rectangle, you can view the time range that is represented by the rectangle and the number of logs that are obtained within the time range. If you click the green rectangle, you can view a more fine-grained log distribution. You can also view the query and analysis results on the Raw Logs tab. Raw Logs tab On the Raw Logs tab, you can view the logs that match your search conditions. Quick analysis: You can use this feature to analyze the distribution of a specific field within a specific period of time. For more information, see Quick analysis. Contextual query: If you click the icon of a log and select Cont ext View, you can view the context of the log. For more information, see Contextual query. The contextual query feature supports only the log data that is collected by Logtail. LiveTail: If you click the icon of a log on the Raw Log tab, you can monitor logs in real time and extract important information. For more information, see LiveTail. LiveTail can monitor and extract only the log data that is collected by Logtail. Log download: To download logs, click the download icon, select a method, and then click OK. For more information, see Export logs. Column settings: You can click the icon and select Column Set t ings to specify the columns that you want to display in the table. The column names are field names, and the column content is used as field values. To view the log content on the tab, select Cont ent . JSON configurations: You can click the icon and select JSON Conf igurat ions to specify the levels of JSON data. Tag configurations: On the Raw Dat a tab, you can click the icon and select T ag Conf igurat ions to hide fields that are less important. Charts If you turn on Enable Analytics when you configure indexes for fields and use query statements to query logs, you can view the analysis results on the Graph tab. Log Service provides multiple chart types, such as tables, line charts, and bar charts. You can select a chart type to display analysis results. For more information, see Chart overview. Log Service allows you to create dashboards to perform real-time data analysis. You can click Add t o New Dashboard to save query statements as charts to a dashboard. For more information, see Dashboard overview. Drill-down analysis allows you to view more details of analysis results. You can configure the drill-down parameters and add a chart to the dashboard. Then, you can click the values in the chart to view the analysis results in multiple dimensions. For more information, see Drill-down analysis. LogReduce tab On the LogReduce tab, you can click Enable LogReduce to cluster similar logs. For more information, see LogReduce. Alerts On the Search & Analysis page, click Save as Alert to create an alert monitoring rule for query results. For more information, see Alert overview. Saved searches On the Search & Analysis page, you can click Save Search to save a query statement as a saved search. For more information, see Saved search.
+Manage query and analysis results You can view the query and analysis results in a log distribution histogram, on the Raw Logs tab, or in a chart that is displayed on the Graph tab. You can also configure alerts and saved searches. By default, only 100 rows of data are returned after you execute a query statement. You can use a LIMIT clause to change the number of returned rows. For more information, see LIMIT syntax. Log distribution histogram The log distribution histogram displays the distribution of query and analysis results in different time ranges. If you move the pointer over a green rectangle, you can view the time range that is represented by the rectangle and the number of logs that are obtained within the time range. If you click the green rectangle, you can view a more fine-grained log distribution. You can also view the query and analysis results on the Raw Logs tab. Raw Logs tab On the Raw Logs tab, you can view the logs that match your search conditions. Quick analysis: You can use this feature to analyze the distribution of a specific field within a specific period of time. For more information, see Quick analysis. Contextual query: If you click the icon of a log and select Cont ext View, you can view the context of the log. For more information, see Contextual query. The contextual query feature supports only the log data that is collected by Logtail. LiveTail: If you click the icon of a log on the Raw Log tab, you can monitor logs in real time and extract important information. For more information, see LiveTail. LiveTail can monitor and extract only the log data that is collected by Logtail. Log download: To download logs, click the download icon, select a method, and then click OK. For more information, see Export logs. Column settings: You can click the icon and select Column Set t ings to specify the columns that you want to display in the table. The column names are field names, and the column content is used as field values. To view the log content on the tab, select Cont ent . JSON configurations: You can click the icon and select JSON Conf igurat ions to specify the levels of JSON data. Tag configurations: On the Raw Dat a tab, you can click the icon and select T ag Conf igurat ions to hide fields that are less important. If you turn on Enable Analytics when you configure indexes for fields and use query statements to query logs, you can view the analysis results on the Graph tab. Log Service provides multiple chart types, such as tables, line charts, and bar charts. You can select a chart type to display analysis results. For more information, see Chart overview. Log Service allows you to create dashboards to perform real-time data analysis. You can click Add t o New Dashboard to save query statements as charts to a dashboard. For more information, see Dashboard overview. Drill-down analysis allows you to view more details of analysis results. You can configure the drill-down parameters and add a chart to the dashboard. Then, you can click the values in the chart to view the analysis results in multiple dimensions. For more information, see Drill-down analysis. LogReduce tab On the LogReduce tab, you can click Enable LogReduce to cluster similar logs. For more information, see LogReduce. On the Search & Analysis page, click Save as Alert to create an alert monitoring rule for query results. For more information, see Alert overview. Saved searches On the Search & Analysis page, you can click Save Search to save a query statement as a saved search. For more information, see Saved search.
 
-### Download logs
+### 4.5 Download logs
 
-This topic describes how to download logs from Log Service to an on-premises host. Procedure
+This topic describes how to download logs from Log Service to an on-premises host.
 1. Log on to the Log Service console.
 2. In the Projects section, click the name of the project in which you want to download logs.
 3. Click the
@@ -6006,9 +6272,9 @@ icon.
 5. In the Log Download dialog box, select a method that you can use to download logs and click OK.
 Download Log in Current Page: Download the logs that are displayed on the current page to a file in the comma-separated values (CSV) format. Download All Logs Using Command Line T ool: Download all logs as prompted.
 
-### Index data type
+### 4.6 Index data type
 
-#### Overview
+#### 4.6.1 Overview
 
 When you configure indexes, you can set the data type of a field to text, long, double, or JSON. This topic describes the index data types that are supported by Log Service. Data types The following table describes the supported data types.
 
@@ -6026,7 +6292,7 @@ When you configure indexes, you can set the data type of a field to text, long, 
 |---|---|---|
 | o query logs. | method:"post" |   |
 
-#### Text type
+#### 4.6.2 Text type
 
 This topic describes how to query text data. Usage notes Similar to search engines, Log Service queries text data based on terms. Therefore, you must set the Delimiter and Case Sensitive parameters when you configure indexes. Case Sensitive switch You can specify whether searches are case-sensitive. For example, you want to query a log entry that contains
 
@@ -6054,7 +6320,7 @@ time:2018-01-02 12:00:00 level:"error" status:200 message:"some thing is error i
 
 Prefixes are not required for full-text indexes. If you use error as a keyword, the level and message field values that contain error match the keyword. You must specify delimiters for full-text indexes. For example, if you specify a comma (,) as a delimiter, the `status:200` string is processed as a single word. If you specify a colon (:) as a delimiter, the string is split into the following two words: `status` and `200` . Numbers are processed as text data. For example, you can find the log entry by using the keyword 200. The time field is not processed as text data. If the query statement is a key, for example, `status` , the log entry is matched.
 
-#### Numeric type
+#### 4.6.3 Numeric type
 
 When you configure indexes, you can set the data type of a field to a numeric type. Then, you can query the value of the field by value range. Usage notes You can query the value of a field by using a numeric range only after you set the data type of the field to long or double. If the value of a log field is an integer, we recommend that you set the data type of the field to long when you configure indexes. If the value of a log field is a floating-point number, we recommend that you set the data type of the field to double when you configure indexes. Not ice If you set the data type of a field to long but the value of the field is a floating-point number, you cannot query the value of the field. If you set the data type of a field to long or double but the value of the field is a string, you cannot query the value of the field. If you set the data type of a field to long or double, you cannot use asterisks (*) or question marks (?) to query the value of the field in fuzzy match mode. If the value of a field is an invalid numeric value, you can query data by using the not key > -1000000 search statement. The not key > -1000000 search statement returns the log entries in which a field value is an invalid numeric value. -100000 can be replaced by a valid value that is less than or equal to the smallest valid value of the field in your log entries. Sample search statements Sample log entry Index configurations Query statements To query the log entries in which the request duration is greater than 60 seconds, execute the following search statement:
 
@@ -6074,7 +6340,7 @@ To query the log entries in which the response status code is 200, execute the f
 status = 200
 ```
 
-#### JSON type
+#### 4.6.4 JSON type
 
 If the value of a field is in the JSON format, you can set the data type of the field to JSON when you configure indexes. This topic describes how to set the data type of a field to JSON and provides some examples. Usage notes You can set the data type of a field in JSON objects to long, double, or text based on the field value, and turn on Enable Analytics to enable the analysis feature. After you turn on Enable Analytics, Log Service allows you to query and analyze fields in JSON objects. For partially valid JSON-formatted data, only the valid parts can be parsed in Log Service. The following example shows an incomplete JSON log entry. Log Service can parse the conctent.remote_addr, content.request.request_length, and content.request.request_method fields.
 
@@ -6154,9 +6420,9 @@ Use SQL statements to analyze fields. You must configure each JSON field. A JSON
 * | select avg("message.usedTime") as avg_time ,"message.methodName"  group by "message.methodName"
 ```
 
-### Query syntax and functions
+### 4.7 Query syntax and functions
 
-#### Search syntax
+#### 4.7.1 Search syntax
 
 This topic describes how to use the search syntax that is provided by Log Service to specify search conditions. You can efficiently query logs based on the search syntax. Search types A search statement specifies one or more search conditions and returns the logs that meet the specified conditions. Searches are classified by indexing method into full-text searches and field-specific searches, or classified by precision into exact searches and fuzzy searches. If you configure both full-text indexes and field indexes, the configurations of the field indexes take precedence. Before you can specify a numeric range to query logs based on a field, you must set the data type of the field to double or long. If you do not set the data type of a field to double or long, or the syntax of the numeric range is invalid, Log Service performs a full-text search and the search result that is returned may be different from the expected result. For example, if you execute the `owner_id>100` search statement and the data type of the owner_id field is not double or long, logs that contain owner_id, > (non-delimiter), and 100 are returned. If you change the data type of a field from text to double or long, you can use only the equal sign (=) to query the logs that are collected before the change. Full-text searches and field-specific searches
 
@@ -6267,9 +6533,9 @@ Examples of search statements
 | Logs in which the value of the city field is not Shanghai | not city:Shanghai |
 | Logs in which the value of the path field starts with /learn but does not contain /learn/level | path:/learn* not path:/learn/level |
 
-#### LiveTail
+#### 4.7.2 LiveTail
 
-This topic describes how to use LiveTail to monitor and analyze logs. Prerequisites Logs are collected by Logtail. For more information, see Use Logtail to collect logs. LiveTail can monitor and extract only the log data that is collected by Logtail. Context In online O&M scenarios, you may need to monitor log data in real time and extract key information from the latest log data to identify causes of errors. If you use a traditional O&M method, you must run the t ail -f command on each server to query log data. If you want to narrow the scope of the command output, you must run the grep or grep -v command to filter the log data by keyword. LiveTail that is provided in the Log Service console allows you to monitor and analyze online log data in real time. This helps you reduce your O&M workloads. Benefits Logs are monitored in real time and filtered by keyword. Logs are collected and indexed based on the configurations of log collection. Log fields are delimited. This allows you to query contextual logs that contain delimiters. A log file can be found based on a log in the log file. This allows you to monitor the log file in real time without the need to log on to a server. Procedure
+This topic describes how to use LiveTail to monitor and analyze logs. Prerequisites Logs are collected by Logtail. For more information, see Use Logtail to collect logs. LiveTail can monitor and extract only the log data that is collected by Logtail. Context In online O&M scenarios, you may need to monitor log data in real time and extract key information from the latest log data to identify causes of errors. If you use a traditional O&M method, you must run the t ail -f command on each server to query log data. If you want to narrow the scope of the command output, you must run the grep or grep -v command to filter the log data by keyword. LiveTail that is provided in the Log Service console allows you to monitor and analyze online log data in real time. This helps you reduce your O&M workloads. Benefits Logs are monitored in real time and filtered by keyword. Logs are collected and indexed based on the configurations of log collection. Log fields are delimited. This allows you to query contextual logs that contain delimiters. A log file can be found based on a log in the log file. This allows you to monitor the log file in real time without the need to log on to a server.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. Click the
@@ -6294,7 +6560,7 @@ After you stop LiveTail, logs in the log monitoring list are no longer updated. 
 | Filter logs by field | You can select one or more fields from the Filt er by Field drop-down list. The LiveTail section does not display the logs that contain the specified fields. |
 | Stop LiveTail | You can click St op to stop LiveTail. After you stop LiveTail, logs in the log monitoring list are no longer updated. You can analyze and fix errors that are found when you monitor logs. |
 
-#### LogReduce
+#### 4.7.3 LogReduce
 
 This topic describes how to use the LogReduce feature of Log Service. You can enable the feature, view log clustering results and raw logs, and compare the number of clustered logs in different time periods. Context The LogReduce feature allows you to cluster similar logs and extract patterns from the logs. The feature can cluster text logs in multiple formats. You can use the feature to perform O&M operations in DevOps scenarios. For example, you can use the feature to identify errors, detect anomalies, and roll back versions. You can also use the feature to detect intrusions in security scenarios. You can save log clustering results as charts to a dashboard and view the clustered data in real time. Benefits You can cluster logs in multiple formats, such as Log4j logs, JSON-formatted logs, and single-line logs. You can cluster hundreds of millions of logs within seconds. You can cluster logs in a variety of modes. You can retrieve raw logs based on pattern signatures. You can compare patterns that are extracted in different time periods. You can adjust the precision of log clustering based on your business requirements. Enable the LogReduce feature By default, the LogReduce feature is disabled.
 1. Log on to the Log Service console.
@@ -6372,7 +6638,7 @@ At t ribut es > At t ribut es.
 2. Turn off LogReduce.
 3. Click OK.
 
-#### Contextual query
+#### 4.7.4 Contextual query
 
 This topic describes the contextual query feature provided in the Log Service console. You can use this feature to query the full context of the log file from which specified logs are obtained. Prerequisites Logs are collected by Logtail. For more information, see Use Logtail to collect logs. The contextual query feature is supported only for log data that is collected by Logtail. The indexing feature is enabled and indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore. Context To perform a contextual query, you must specify a source server, a source file, and a log whose context you want to query. You can obtain the logs that precede or follow the specified logcollected from the log file of the server. This helps you identify and resolve errors. Scenario For example, a transaction on an online-to-offline (O2O) takeout website is recorded in an application log file on a server. You must perform the following steps to complete a transaction: logon to the website, browse products, select a product, add the product to the shopping cart, place an order, pay for the order, deduct the order amount, and generate the order. If the order fails, the O&M engineers must identify the cause of the failure at the earliest opportunity. In traditional contextual queries, the O&M engineers must be authorized by an administrator before they can log on to each server on which the O2O application is deployed. After the authorization is complete, the O&M engineers can search application logs files by order ID to identify the cause of the failure. In Log Service, the O&M engineers can perform the following steps to locate the cause of the failure:
 1. Install Logtail on the server. Create a machine group and a Logtail configuration in the Log Service console.
@@ -6380,7 +6646,7 @@ Then, enable Logtail to upload incremental logs to Log Service.
 2. On the Search & Analysis page of the Log Service console, specify a time range and find the log that records
 the failure based on the order ID.
 3. After you find the log, scroll up until other related logs are found, for example, a log that records a credit card
-payment failure. The contextual query feature does not support syslog logs. Benefits You can identify the causes of failures without the need to modify applications or log file formats. You can query the context of a log from a log file that is collected from a server in the Log Service console. You do not need to log on to the server to query the context. You can specify a time range to find suspicious logs before you perform a contextual query in the Log Service console. This improves troubleshooting efficiency. You do not need to worry about data loss that is caused by insufficient server storage or log file rotation. You can view historical log data in the Log Service console at any time. Procedure
+payment failure. The contextual query feature does not support syslog logs. Benefits You can identify the causes of failures without the need to modify applications or log file formats. You can query the context of a log from a log file that is collected from a server in the Log Service console. You do not need to log on to the server to query the context. You can specify a time range to find suspicious logs before you perform a contextual query in the Log Service console. This improves troubleshooting efficiency. You do not need to worry about data loss that is caused by insufficient server storage or log file rotation. You can view historical log data in the Log Service console at any time.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to perform contextual queries.
 3. Click the
@@ -6391,7 +6657,7 @@ icon.
 6. On the page that appears, scroll up and down to view the contextual logs.
 To scroll up, click Old. To scroll down, click New. To highlight specific strings, enter the strings in the Highlight field. The specified strings are highlighted in the Context View section. To filter logs by string, enter strings in the Filt er By field. The Context View section displays only the logs that contain the specified strings.
 
-#### Saved search
+#### 4.7.5 Saved search
 
 If you need to frequently view the result of a query statement, you can save the query statement as a saved search. Log Service provides the saved search feature to save the required data query and analysis operations. You can use a saved search to quickly perform query and analysis operations. Prerequisites The indexing feature is enabled and indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore. Context If you need to frequently view the result of a query statement, you can save the query statement as a saved search. Then, you can click the name of the saved search on the left side of the Search & Analysis page to execute the query statement and view the result. You can also use the saved search in alert rules. Log Service periodically executes the query statement of the saved search and sends alert notifications if the query result meets the preset condition. Create a saved search
 1. Log on to the Log Service console.
@@ -6421,15 +6687,15 @@ Obtain the ID of a saved search After you create a saved search, you can use the
 2. In the Saved Search list, click the saved search whose ID you want to obtain.
 3. Obtain the ID of the saved search in the URL.
 
-#### Quick analysis
+#### 4.7.6 Quick analysis
 
-Log Service provides the quick analysis feature that allows you to analyze the distribution of a field within a specified time range in an efficient manner. Prerequisites Indexes are configured and the analysis feature is enabled for specified fields. For more information, see Enable the indexing feature and configure indexes for a Logstore. Features Allows you to analyze the first 100,000 log entries that are returned for a query. When you perform quick analysis on log entries within a specified time range, Log Service collects the first 100,000 log entries. If you use a saved search to query all data in a Logstore, you must delete the Limit 100000 clause. Groups fields of the text type and provides statistics about the top 10 groups. Generates approx_dist inct statements for fields of the text type. Supports histogram-based statistics about the approximate distribution of fields of the long and double type. Histogram-based statistics group sampling data and calculate the average value of each group. Searches for the maximum, minimum, average, or sum of fields of the long and double type. Generates a query statement based on quick analysis. Procedure
+Log Service provides the quick analysis feature that allows you to analyze the distribution of a field within a specified time range in an efficient manner. Prerequisites Indexes are configured and the analysis feature is enabled for specified fields. For more information, see Enable the indexing feature and configure indexes for a Logstore. Features Allows you to analyze the first 100,000 log entries that are returned for a query. When you perform quick analysis on log entries within a specified time range, Log Service collects the first 100,000 log entries. If you use a saved search to query all data in a Logstore, you must delete the Limit 100000 clause. Groups fields of the text type and provides statistics about the top 10 groups. Generates approx_dist inct statements for fields of the text type. Supports histogram-based statistics about the approximate distribution of fields of the long and double type. Histogram-based statistics group sampling data and calculate the average value of each group. Searches for the maximum, minimum, average, or sum of fields of the long and double type. Generates a query statement based on quick analysis.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to perform quick analysis.
 3. Click the name of the Logstore in which you want to perform quick analysis.
 4. On the Raw Logs tab, click the field that you want to analyze in the Quick Analysis column.
 5. Click the
-icon to perform quick analysis based on the current query time range and view the distribution of the field in logs. Text type Group and analyze log data by field of the text type. Click the Eye icon next to a field of the t ext type to group the first 100,000 log entries and obtain the percentages of the top 10 groups. The following example shows a query statement:
+icon to perform quick analysis based on the current query time range and view the distribution of the field in logs. Group and analyze log data by field of the text type. Click the Eye icon next to a field of the t ext type to group the first 100,000 log entries and obtain the percentages of the top 10 groups. The following example shows a query statement:
 
 ```
 $Search | select ${keyName} , pv, pv *1.0/sum(pv) over() as percentage from( select count(1) as pv , "${keyName}" from (select "${keyName}" from log limit 100000) group by "${keyName}" order by pv d esc) order by pv desc limit 10
@@ -6443,9 +6709,9 @@ $Search | select numeric_histogram(10, ${keyName})
 
 The following figure shows the approximate distribution of the values in the `request_time` field. In this example, the largest percentage of request time is distributed at approximately 0.059 seconds. Perform quick analysis by using the `Max` , `Min` , `Avg` , and `Sum` clauses. You can click `Max` under a field to search for the maximum value, `Min` to search for the minimum value, `Av` `g` to calculate the average value, and `Sum` to calculate the sum of the values. Automatically copy the query statement that is used to calculate the approximate distribution to the Search & Analyze search box. Click the icon next to `Sum` . The query statement that is used to calculate the approximate distribution is automatically copied to the Search & Analyze search box. You can modify the query statement.
 
-### Analysis grammar
+### 4.8 Analysis grammar
 
-#### General aggregate functions
+#### 4.8.1 General aggregate functions
 
 An aggregate function is used to calculate a set of values and return a single value. This topic describes the syntax of aggregate functions. This topic also provides examples on how to use the functions.
 
@@ -6475,7 +6741,7 @@ An aggregate function is used to calculate a set of values and return a single v
 | bitwise and agg(KEY) _ _ | Returns the result of the bitwise AND operation for the values of a specified column. The returned result is in the two's complement format. | The following query statement performs a bitwise AND operation on all values of the request time column: _ * \| SELECT bitwise and agg(request time) _ _ _ |
 | bitwise or agg(KEY) _ _ | Returns the result of the bitwise OR operation for values of a specified column. The returned result is in the two's complement format. | The following query statement performs a bitwise OR operation on all values of the request time column: _ * \| SELECT bitwise or agg(request time) _ _ _ |
 
-#### Security check functions
+#### 4.8.2 Security check functions
 
 Security check functions in Log Services are designed based on the globally shared WhiteHat Security asset library. This topic describes security check functions that you can use to check whether an IP address, domain name, or URL in logs is secure. Scenarios O&M personnel of enterprises and institutions in Internet, gaming, information, and other industries that require robust O&M services can use security check functions to identify suspicious requests or attacks. They can also use the functions to implement in-depth analysis and defend against potential attacks. O&M personnel of enterprises and institutions in banking, securities, e-commerce, and other industries that require strong protection for internal assets can use security check functions to identify requests to suspicious websites and downloads initiated by trojans. Then the O&M personnel can take immediate actions to prevent potential losses. Features Reliability: built upon the globally shared WhiteHat Security asset library that is updated in a timely manner. Efficiency: capable of screening millions of IP addresses, domain names, and URLs within seconds. Ease of use: supports the analysis of network logs by using the security_check_ip, security_check_domain, and security_check_url functions. Flexibility: supports interactive queries, report creation, and alert configurations and subsequent actions. Functions
 
@@ -6515,7 +6781,7 @@ e(site) = 1 or security_check_url(concat(site, url)) = 1 group by client_ip orde
 
 The operator can save this statement as a saved search and configure an alert. An alert is triggered when a client frequently accesses suspicious websites. The statement in the alert can be configured to run every five minutes to check if a client has frequently (more than five times) accessed suspicious websites in the past one hour. The following figure shows the configurations of an alert.
 
-#### Map functions and operators
+#### 4.8.3 Map functions and operators
 
 This topic describes the syntax of map functions and operators. This topic also provides examples on how to use the functions and operators. The following table describes the map functions and operators that are supported by Log Service. Not ice If you want to use strings in analytic statements, you must enclose the strings in single quotation marks (''). Strings that are not enclosed or are enclosed in double quotation marks ("") indicate field names or column names. For example, 'status' indicates the status string, and status or "status" indicates the status log field.
 
@@ -6861,7 +7127,7 @@ Query statement
 
 Query and analysis result
 
-#### Approximate functions
+#### 4.8.4 Approximate functions
 
 This topic describes the syntax of approximate functions. This topic also provides examples on how to use the functions.
 
@@ -6905,7 +7171,7 @@ This topic describes the syntax of approximate functions. This topic also provid
 
 Buckets are evenly divided by aggregation degree. The returned result for each bucket includes the average value of the bucket and the number of values in the bucket.
 
-#### Mathematical statistics functions
+#### 4.8.5 Mathematical statistics functions
 
 This topic describes the syntax of mathematical statistics functions. This topic also provides examples on how to use the functions. Syntax
 
@@ -6944,7 +7210,7 @@ Query and analysis result Example 2: Query the sample standard deviation and pop
 
 Query and analysis result
 
-#### Mathematical calculation functions
+#### 4.8.6 Mathematical calculation functions
 
 This topic describes the syntax of mathematical calculation functions. This topic also provides examples on how to use the functions. Syntax Mathematical calculation functions support the following operators: +-*/% . In the following functions, x and y can be numbers, log fields, or expressions whose calculation result is a number.
 
@@ -7000,7 +7266,7 @@ Example Compare the number of page views (PVs) of today with the number of PVs o
 
 Query and analysis result
 
-#### String functions
+#### 4.8.7 String functions
 
 This topic describes the syntax of string functions. This topic also provides examples on how to use the functions. Syntax If you want to use strings in analytic statements, you must enclose the strings in single quotation marks (''). Strings that are not enclosed or enclosed in double quotation marks ("") indicate field names or column names. For example, 'status' indicates the status string, and status or "status" indicates the status log field. The key parameter in the following table indicates a log field.
 
@@ -7091,7 +7357,7 @@ Replace cn in the region field with China.
 * | select replace(region,'cn','China')
 ```
 
-#### Date and time functions
+#### 4.8.8 Date and time functions
 
 Log Service provides the following types of date and time functions that you can use to analyze log data: date function, time function, truncation function, interval function, and time series padding function. You can use the functions to convert the date and time formats of log data. You can also use the functions to group and aggregate log data. The timestamp of a log in Log Service is accurate to seconds. Therefore, you can specify the precision of the time format only to seconds. You need to specify the time format only for the time in a time string. Other parameters such as the time zone are not required. Each log in Log Service contains the reserved __time__ field. The value of the field is a UNIX timestamp. For example, 1592374067 indicates 2020-06-17 14:07:47. Date functions
 
@@ -7286,7 +7552,7 @@ Example To add missing data by 2 hours, execute the following query statement:
 group by time order by time
 ```
 
-#### URL functions
+#### 4.8.9 URL functions
 
 This topic describes the syntax of URL functions. This topic also provides examples on how to use the functions. URL functions extract fields from standard URLs. The following example shows the format of a URL:
 
@@ -7373,7 +7639,7 @@ The following table describes common URL functions.
 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | userid=testu |   |   |   |   |   |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ser |   |   |   |   |   |   |   |   |   |
 
-#### Regular expression functions
+#### 4.8.10 Regular expression functions
 
 This topic describes the available regular expression functions. You can use these functions when you query and analyze data in Log Service. A regular expression function parses a string and returns the required substrings. The following table lists common regular expression functions.
 
@@ -7430,7 +7696,7 @@ This topic describes the available regular expression functions. You can use the
 | regexp split(string, _ | el s |
 |---|---|
 
-#### JSON functions
+#### 4.8.11 JSON functions
 
 This topic describes the syntax of JSON functions. This topic also provides examples on how to use the functions. If a string fails to be parsed into JSON data, null is returned. In analytic statements of Log Service, a JSON array that is enclosed in single quotation marks ('') indicates a string. If the value of a log field is of the JSON type and needs to be expanded to multiple rows, we recommend that you use UNNEST clauses. For more information, see UNNEST function. json_parse() function The json_parse() function is used to convert a string to JSON data. The returned result is of the JSON type. Syntax
 
@@ -7549,7 +7815,7 @@ Example Calculate the number of elements in the status field.
 
 The returned result is 3.
 
-#### Type conversion functions
+#### 4.8.12 Type conversion functions
 
 Type conversion functions convert the data type of a specified value or column in a query. You can use the index attribute feature of Log Service to set the data type of a field to LONG, DOUBLE, TEXT, or JSON. You can also query fields of various data types, including BIGINT, DOUBLE, VARCHAR, and TIMESTAMP. To query fields of a specific data type, you can use type conversion functions to convert the data type configured in an index into the data type that you use in a query. Syntax We recommend that you use the try_cast() function if a log contains dirty data. Otherwise, a query may fail due to the dirty data. Convert the data type of a column of values or a specific value into the specified type in a query. If the data type of a value fails to be converted, the query is terminated.
 
@@ -7580,7 +7846,7 @@ To convert the data type of the uid field values to the VARCHAR type, use the fo
 cast(uid AS varchar)
 ```
 
-#### IP functions
+#### 4.8.13 IP functions
 
 IP functions can be used to identify whether an IP address is an internal or external IP address. IP functions can also be used to identify the country, state, and city to which an IP address belongs. This topic describes the syntax of IP functions and provides examples on how to use the functions. The KEY parameter in the following functions indicates a log field, for example, client_ip. The value of this parameter is an IP address.
 
@@ -7601,7 +7867,7 @@ IP functions can be used to identify whether an IP address is an internal or ext
 | ip to city geo(KEY) _ _ _ | Identifies the longitude and latitude of the city to which an IP address belongs. This function returns the longitude and latitude of a city. Each city has only one set of coordinates. The returned result is in the latitude,longitude format. | * \| SELECT ip to city geo(client ip) _ _ _ _ |
 | ip to provider(KEY) _ _ | Identifies the Internet service provider (ISP) of an IP address. The returned result is the name of an ISP. | * \| SELECT ip to provider(client ip) _ _ _ |
 
-#### GROUP BY clause
+#### 4.8.14 GROUP BY clause
 
 GROUP BY clauses are used together with aggregate functions to group analysis results based on one or more columns. Syntax
 
@@ -7642,7 +7908,7 @@ To extract a column that is not grouped by using a GROUP BY clause, you can exec
 * | SELECT status, arbitrary(request_time), count(*) AS PV GROUP BY status
 ```
 
-#### Window functions
+#### 4.8.15 Window functions
 
 This topic describes the syntax of window functions. Window functions are used to perform calculations across rows of a log. Common SQL aggregate functions calculate the results of only one row or aggregate all rows into one row for calculation. Window functions support cross-row calculation and fill the calculation results in each row. Syntax of window functions:
 
@@ -7733,7 +7999,7 @@ select approx_distinct(ip) as uv, date_trunc('day',__time__) as day from log gro
 | 2017-12-06 00:00:00 | 225 | 1.125 |
 | 2017-12-07 00:00:00 | 250 | 1.11 |
 
-#### HAVING clause
+#### 4.8.16 HAVING clause
 
 This topic describes the syntax of HAVING clauses. The query and analysis feature of Log Service supports the standard SQL HAVING clause. A HAVING clause is used together with a GROUP BY clause to filter GROUP BY results. The following example shows the syntax of a HAVING clause:
 
@@ -7747,7 +8013,7 @@ Difference between HAVING and WHERE clauses A HAVING clause is used to filter th
 * | select avg(rain) ,province where temperature > 10 group by province having avg(rain) > 100
 ```
 
-#### ORDER BY clause
+#### 4.8.17 ORDER BY clause
 
 This topic describes the syntax of ORDER BY clauses. An ORDER BY clause is used to sort query results based on only one column. Syntax
 
@@ -7761,7 +8027,7 @@ Example
 method :PostLogstoreLogs |select avg(latency) as avg_latency,projectName group by projectName HAVING avg(latency) > 5700000 order by avg_latency desc
 ```
 
-#### LIMIT syntax
+#### 4.8.18 LIMIT syntax
 
 The LIMIT clause is used to limit the number of returned rows. Syntax formats Log Service supports the following LIMIT syntax formats: Reads only the first N rows:
 
@@ -7799,7 +8065,7 @@ To obtain a total of 1,000 results from row 1,000 to row 1,999, run the followin
 * | select distinct(url) from log limit 1000,1000
 ```
 
-#### Conditional expressions
+#### 4.8.19 Conditional expressions
 
 This topic describes the syntax of conditional expressions and provides examples on how to use conditional expressions. CASE WHEN statement CASE WHEN statements are used to classify data. Syntax
 
@@ -7895,7 +8161,7 @@ Y file
 
 Query and analysis result
 
-#### Nested subquery
+#### 4.8.20 Nested subquery
 
 This topic describes how to use nested subqueries when you query logs. You can use nested queries to perform more complicated queries. You must specify a FROM clause in the SQL statement of each nested query. However, this rule does not apply to non-nested queries. You must specify the `from log` keyword in each SQL statement to read raw data from logs. Example:
 
@@ -7911,7 +8177,7 @@ select count(1) as pv from log group by method
 
 `)`
 
-#### Array functions and operators
+#### 4.8.21 Array functions and operators
 
 This topic describes the syntax of array functions and operators. This topic also provides examples on how to use the functions and operators. The following table describes the array functions and operators that are supported by Log Service. Not ice If you want to use strings in analytic statements, you must enclose the strings in single quotation marks (''). Strings that are not enclosed or are enclosed in double quotation marks ("") indicate field names or column names. For example, 'status' indicates the status string, and status or "status" indicates the status log field.
 
@@ -8541,7 +8807,7 @@ SELECT zip_with(array[1,2], array[3,4],(x,y) -> x + y)
 
 Query and analysis result
 
-#### Binary string functions
+#### 4.8.22 Binary string functions
 
 This topic describes the syntax of binary string functions. This topic also provides examples on how to use the functions. Varbinary data is different from varchar data.
 
@@ -8567,7 +8833,7 @@ This topic describes the syntax of binary string functions. This topic also prov
 | sha512(binary) | Calculate the SHA512 value of a binary string. The return value is of the varbinary type. |
 | xxhash64(binary) | Calculates the xxhash64 value of a binary string. The return value is of the varbinary type. |
 
-#### Bitwise functions
+#### 4.8.23 Bitwise functions
 
 This topic describes the syntax of bitwise functions. This topic also provides examples on how to use the functions.
 
@@ -8579,7 +8845,7 @@ This topic describes the syntax of bitwise functions. This topic also provides e
 | bitwise or(x, y) _ | Returns the bitwise OR of x and y in two's complement. The return value is of the bigint type. | None |
 | bitwise xor(x, y) _ | Returns the bitwise XOR of x and y in two's complement. The return value is of the bigint type. | None |
 
-#### Interval-valued comparison and periodicity-
+#### 4.8.24 Interval-valued comparison and periodicity-valued comparison functions
 
 valued comparison functions Log Service supports interval-valued comparison and periodicity-valued comparison functions. You can use these functions to query and analyze log data. compare() function The compare() function is used to compare the calculation result of the current time period with the calculation result of a time period N seconds before. You can use this function to perform an interval-valued comparison or periodicity-valued comparison on data. Syntax
 
@@ -8647,7 +8913,7 @@ nt(*) AS PV from log GROUP BY time ORDER BY time ) GROUP BY time
 
 The following figure shows the returned result.
 
-#### Comparison functions and operators
+#### 4.8.25 Comparison functions and operators
 
 This topic describes the comparison functions and operators in Log Service. You can use these functions and operators to query and analyze log data. A comparison function compares the values of two parameters. The values can be one of the arbitrary comparable data types, such as integer, bigint, double, and text. Comparison operators A comparison operator is used to compare two values. If the statement is true, TRUE is returned. Otherwise, FALSE is returned.
 
@@ -8699,7 +8965,7 @@ Examples:
 SELECT 'hello' = ANY (VALUES 'hello', 'world'); -- true SELECT 21 < ALL (VALUES 19, 20, 21); -- false SELECT 42 >= SOME (SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43); -- true
 ```
 
-#### Lambda expressions
+#### 4.8.26 Lambda expressions
 
 Log Service allows you to define a lambda expression in an analytic statement and pass the expression to a specified function. This topic describes the syntax of lambda expressions. This topic also provides examples on how to use the expressions. Syntax You must use lambda expressions together with functions, such as Array functions, Array functions, Array functions, Array functions, and Map functions. Syntax:
 
@@ -8758,7 +9024,7 @@ Query and analysis result Additional examples
 * | SELECT zip_with(array['a', 'b', 'c'], array['d', 'e', 'f'], (x, y) -> concat(x, y))
 ```
 
-#### Logical functions
+#### 4.8.27 Logical functions
 
 This topic describes the available logical functions in Log Service. You can use these functions to query and analyze log data. Logical operators
 
@@ -8790,7 +9056,7 @@ Truth table 2
 | FALSE | TRUE |
 | NULL | NULL |
 
-#### Column aliases
+#### 4.8.28 Column aliases
 
 This topic describes how to specify an alias for a column and provides some examples. A column name in an SQL statement can contain only letters, digits, and underscores (_). The column name must start with a letter. When you configure log collection, you may specify a column name that does not conform to the SQL standard, for example, User-Agent. In this case, you must specify an alias for the column in the Search & Analysis panel in which you can configure index attributes. The alias is used only if you execute an SQL statement to query and analyze logs. The original name of each column is stored. Therefore, you must search for columns by original name. If the original name of a column is long, you can specify an alias for the column in an SQL statement. Sample aliases
 
@@ -8801,9 +9067,9 @@ This topic describes how to specify an alias for a column and provides some exam
 | 123 | col |
 | abceefghijklmnopqrstuvw | a |
 
-#### JOIN queries on a Logstore and a MySQL
+#### 4.8.29 JOIN queries on a Logstore and a MySQL database
 
-database Log Service allows you to use the JOIN syntax to query data from a Logstore and a MySQL database. The query results are saved to the database. Prerequisites An external store is created. For more information, see Associate Log Service with a MySQL database. Context Procedure
+database Log Service allows you to use the JOIN syntax to query data from a Logstore and a MySQL database. The query results are saved to the database. Prerequisites An external store is created. For more information, see Associate Log Service with a MySQL database. Context
 1. Log on to the Log Service console.
 2. In the Projects section, click the name of the project that you want to manage.
 3. Choose Log St orage > Logst ores. On the Logstores tab, click the Logstore that you want to manage.
@@ -8860,7 +9126,7 @@ logstore );
     res.log_print();
 ```
 
-#### Geospatial functions
+#### 4.8.30 Geospatial functions
 
 This topic describes the available geospatial functions in Log Service. You can use these functions to query and analyze log data. Concept of geometry Geospatial functions support geometries in the well-known text (WKT) format. Geometry formats
 
@@ -8965,7 +9231,7 @@ Accessors
 | ST NumPoints(Geometry) → bigint _ | Returns the number of points in a geometry. |
 | ST NumInteriorRing(Geometry) → bigint _ | Returns the cardinality of the collection of interior rings of a polygon. |
 
-#### Geography functions
+#### 4.8.31 Geography functions
 
 This topic describes the syntax of geography functions and provides some examples. IP functions identify the country, province, city, Internet service provider (ISP), and longitude and latitude of a specific IP address. For more information, see IP functions.
 
@@ -8981,9 +9247,9 @@ This topic describes the syntax of geography functions and provides some example
 |---|---|---|
 | represented by a string in the format of "<latitude>, <longitude>". The | 'wwjcbrdnzs' |   |
 
-#### JOIN clause
+#### 4.8.32 JOIN clause
 
-You can use JOIN clauses in SQL statements to join multiple tables by using fields that are shared by the tables. In Log Service, you can join one or more Logstores. You can also join Logstores with ApsaraDB RDS instances. This topic describes how to join different Logstores. Procedure
+You can use JOIN clauses in SQL statements to join multiple tables by using fields that are shared by the tables. In Log Service, you can join one or more Logstores. You can also join Logstores with ApsaraDB RDS instances. This topic describes how to join different Logstores.
 1. Download the latest version of the Log Service SDK for Python.
 2. Call the GetProjectLogs operation to query logs.
 Sample SDK
@@ -9009,7 +9275,7 @@ _date__ >'2018-04-10 00:00:00' and s.__date__ < '2018-04-11 00:00:00' and m.__da
 
 For more information about the syntax and usage examples of JOIN clauses, see JOIN clause.
 
-#### UNNEST clause
+#### 4.8.33 UNNEST clause
 
 This topic describes the syntax of UNNEST clauses. Scenario The value of a column in log data is stored as a primitive data type, such as string or number. In some cases, the value of a column may be of a complex data type, such as array, map, or JSON. When you query and analyze logs that contain fields whose values are of the preceding types, you can use an UNNEST clause to expand the field values into multiple rows for analysis. Example:
 
@@ -9086,13 +9352,13 @@ To visualize the result of the numeric_histogram function, execute the following
 t(key, value)
 ```
 
-### Machine learning syntax and
+### 4.9 Machine learning syntax and functions
 
 functions
 
-#### Overview
+#### 4.9.1 Overview
 
-Log Service provides the machine learning feature that supports multiple algorithms and calling methods. You can use SELECT statements and machine learning functions to call machine learning algorithms and analyze the characteristics of one or more fields within a specific period of time. Log Service offers various time series analysis algorithms. You can call these algorithms to solve problems that are related to time series data. For example, you can predict time series, detect time series anomalies, decompose time series, and cluster multiple time series. In addition, the algorithms are compatible with standard SQL functions. This simplifies the usage of the algorithms and improves the efficiency of troubleshooting. Features Supports various smooth operations on single-time series data. Supports algorithms that are used for the prediction, anomaly detection, change point detection, inflection point detection, and multi-period estimation of single-time series data. Supports decomposition operations on single-time series data. Supports various clustering algorithms for multi-time series data. Supports multi-field pattern mining based on the sequence of numeric data or text. Limits When you use the machine learning feature of Log Service, take note of the following limits: The specified time series data must be sampled based on the same interval. The specified time series data cannot contain data that is repeatedly sampled from the same point in time. The processing capacity cannot exceed the maximum capacity. The following table describes the limits.
+Log Service provides the machine learning feature that supports multiple algorithms and calling methods. You can use SELECT statements and machine learning functions to call machine learning algorithms and analyze the characteristics of one or more fields within a specific period of time. Log Service offers various time series analysis algorithms. You can call these algorithms to solve problems that are related to time series data. For example, you can predict time series, detect time series anomalies, decompose time series, and cluster multiple time series. In addition, the algorithms are compatible with standard SQL functions. This simplifies the usage of the algorithms and improves the efficiency of troubleshooting. Features Supports various smooth operations on single-time series data. Supports algorithms that are used for the prediction, anomaly detection, change point detection, inflection point detection, and multi-period estimation of single-time series data. Supports decomposition operations on single-time series data. Supports various clustering algorithms for multi-time series data. Supports multi-field pattern mining based on the sequence of numeric data or text. When you use the machine learning feature of Log Service, take note of the following limits: The specified time series data must be sampled based on the same interval. The specified time series data cannot contain data that is repeatedly sampled from the same point in time. The processing capacity cannot exceed the maximum capacity. The following table describes the limits.
 
 | Item | Description |
 |---|---|
@@ -9133,7 +9399,7 @@ Machine learning functions
 |   | ts similar _ | Identifies the metrics that are correlated to specified time series data among multiple observed metrics in the system. |
 | Kernel density estimation function | kernel density estimation _ _ | Uses the smooth peak function to fit the observed data points. In this way, the function simulates the real probability distribution curve. |
 
-#### Smooth functions
+#### 4.9.2 Smooth functions
 
 This topic describes the smooth functions that you can use to smooth and filter specified time series curves. Filtering is the first step to discover the shapes of time series curves. Functions
 
@@ -9256,7 +9522,7 @@ Query result The following table describes the display items.
 | Vertical axis | src | The unfiltered data. |
 |   | filter | The filtered data. |
 
-#### Multi-period estimation functions
+#### 4.9.3 Multi-period estimation functions
 
 This topic describes multi-period estimation functions that you can use to estimate the periodicity of time series data distributed in different time intervals. This topic also describes how to extract the periodicity by using a series of operations such as Fourier transform (FT). Functions
 
@@ -9323,7 +9589,7 @@ Query result The following table describes the display items.
 | prob | The ratio of the number of values within the primary period to the total number of values on the time series curve. Valid values: [0, 1]. You can set the value to 0.15 for testing. |
 | type | The type of the curve. Valid values: -1: The time series curve has a length of less than 64 points. -2: The time series curve has a failure rate of higher than 20%. 0: The time series curve is periodic. |
 
-#### Change point detection functions
+#### 4.9.4 Change point detection functions
 
 This topic describes the change point detection functions that you can use to detect the change points in time series data. Change point detection functions can detect the following two kinds of change points: Changes in statistical features within a specific period of time Anomalies in time series data Functions
 
@@ -9393,7 +9659,7 @@ Query result The following table describes the display items.
 | Vertical axis | src | The unfiltered data. Example: 1956092.7647745228. |
 |   | prob | The probability that a point in time is a change point. Valid values: 0 to 1. |
 
-#### Maximum value detection function
+#### 4.9.5 Maximum value detection function
 
 This topic describes the maximum value detection function that you can use to detect the local maximum value of time series data in a specified window. ts_find_peaks Syntax
 
@@ -9424,7 +9690,7 @@ Query result The following table describes the display items.
 | Vertical axis | src | The unfiltered data. Example: 1956092.7647745228. |
 |   | peak flag _ | Indicates whether the numeric value at a point in time is the maximum value. Valid values: 1.0: The numeric value at the point in time is the maximum value. 0.0: The numeric value at the point in time is not the maximum value. |
 
-#### Prediction and anomaly detection functions
+#### 4.9.6 Prediction and anomaly detection functions
 
 Prediction and anomaly detection functions predict the trend of time series curves and identify the Ksigma and quantiles of the errors between a predicted curve and an actual curve. You can use the functions to detect anomalies. Introduction to Log Service machine learning (01): time series statistics modeling Introduction to Log Service machine learning (03): time series anomaly detection modeling Introduction to Log Service machine learning (05): time series prediction Best practices for Log Service machine learning: time series anomaly detection and alerting Functions
 
@@ -9633,7 +9899,7 @@ reds | probs |
 1,2,3,4] | [0,0,1,NaN] |
 ```
 
-#### Time series decomposition function
+#### 4.9.7 Time series decomposition function
 
 This topic describes the time series decomposition function that you can use to decompose time series curves and show the trend and periodicity of curves. ts_decompose Syntax
 
@@ -9665,7 +9931,7 @@ Query result The following table describes the display items.
 |   | season | The decomposed data that indicates the periodicity of the time series data. |
 |   | residual | The residual data that is decomposed from the time series data. |
 
-#### Time series clustering functions
+#### 4.9.8 Time series clustering functions
 
 You can use time series clustering functions to cluster data of multiple time series and obtain different curve shapes. Then, you can use the data to find the cluster center and identify curves with shapes that are different from other curve shapes in the cluster. Functions
 
@@ -9775,7 +10041,7 @@ The following table describes the display items.
 | time series _ | The timestamp sequence of the cluster center. |
 | data series _ | The data sequence of the cluster center. |
 
-#### Frequent pattern statistics function
+#### 4.9.9 Frequent pattern statistics function
 
 The frequent pattern statistics function combines representative attributes in a specified multi-attribute field sample. pattern_stat Syntax:
 
@@ -9809,7 +10075,7 @@ Display item
 | support score _ | The score of the current pattern. The score indicates the degree to which the current pattern is supported. |
 | pattern | The content of the pattern. The pattern is organized in the format that is defined by the query conditions. |
 
-#### Differential pattern statistics function
+#### 4.9.10 Differential pattern statistics function
 
 The differential pattern statistics function analyzes differential patterns of specified multi-field samples based on the specified condition. The function helps you identify the causes of the differences under the current condition at the earliest opportunity. pattern_diff Syntax
 
@@ -9846,7 +10112,7 @@ Display item
 | negsupport | The support ratio of negative samples for the mined patterns. |
 | diffpattern | The content of the mined patterns. |
 
-#### Root cause analysis function
+#### 4.9.11 Root cause analysis function
 
 Log Service provides alerting and analysis capabilities that allow you to analyze and identify anomalies in specific subdimensions of a metric at the earliest opportunity. You can use the root cause analysis function to identify and analyze the subdimension attributes that cause the anomalies. rca_kpi_search Syntax
 
@@ -9954,7 +10220,7 @@ The following example shows the query result that is in the JSON format: `{`
 
 `}` `]` `}` `]` `}`
 
-#### Correlation analysis functions
+#### 4.9.12 Correlation analysis functions
 
 You can use a correlation analysis function to find the metrics that are correlated with a specified metric or time series data among multiple observed metrics in the system. Functions
 
@@ -10065,7 +10331,7 @@ Query result
 
 Description of the query result score: the correlation between the analyzed metric and the specified time series curve. Valid values: [-1, 1].
 
-#### Kernel density estimation function
+#### 4.9.13 Kernel density estimation function
 
 Kernel density estimation (KDE) is a non-parametric way to estimate the probability density function of a random variable. The Kernel density estimation function uses the smooth peak function to fit the observed data points. In this way, the function simulates the real probability distribution curve. Syntax
 
@@ -10103,9 +10369,9 @@ order by time)
 
 Response
 
-### Advanced analysis
+### 4.10 Advanced analysis
 
-#### Optimize queries
+#### 4.10.1 Optimize queries
 
 This topic describes how to optimize queries to improve query efficiency. Increase the number of shards More shards indicate more computing resources and faster computing speed. You can increase the number of shards to ensure that the average number of log entries that are scanned in each shard does not exceed 50 million. You can increase the number of shards by splitting shards. For more information, see Split a shard. Reduce the query time range and data volume A larger time range means a slower query. If you query data within a year or a month, data is computed on a daily basis. To improve the computing speed, you can reduce the query time range. Larger data volumes slow down queries. Reduce the amount of data that you want to query as much as possible. Repeat queries multiple times If you find that the result of a query is inaccurate, you can repeat the query multiple times. The underlying acceleration mechanism ensures that each query uses the previous query result to analyze data. This way, multiple queries can improve the accuracy of the query result. Optimize SQL statements for queries A time-consuming query statement has the following characteristics: Uses GROUP BY clauses to group string-formatted columns. Use GROUP BY clauses to group more than five columns. Includes operations that generate strings. We recommend that you use the following methods to optimize SQL statements for queries: Avoid operations that generate strings if possible. If you use the date_format function to generate a formatted timestamp, the query is inefficient.
 
@@ -10151,7 +10417,7 @@ Avoid using the IN operator if possible. Use the OR operator in SQL statements i
 Fast: key : a or key :b or key:c | select count(1) Slow: * | select count(1) where key in ('a','b')
 ```
 
-#### Use cases
+#### 4.10.2 Use cases
 
 This topic describes some use cases of data analysis in Log Service. Cases Trigger an alert if the error rate exceeds 40% over the last 5 minutes Calculate the amount of transferred data and configure alerts Calculate the average latency of traffic data in different sizes Obtain the percentages of different results Calculate the number of log entries that meet the query condition Trigger an alert if the error rate exceeds 40% over the last 5 minutes Calculate the percentage of 500 Internal Server Error every minute. If the error rate exceeds 40% over the last 5 minutes, an alert is triggered.
 
@@ -10266,7 +10532,7 @@ You can use the following clause to calculate the number of URLs that end with l
 %register') .
 ```
 
-#### Examples of time field conversion
+#### 4.10.3 Examples of time field conversion
 
 In most cases, you need to process the time fields in log data when you query and analyze the log data. For example, you need to convert a timestamp to a specified time format. This topic provides some examples on how to convert the values of time fields. A log may contain multiple fields that record points in time for different events. Examples: `__time__` : records the time when you call the API or use an SDK to write log data. You can use this field when you ship, query, and analyze log data. Original time field in log data: records the time when the log data is generated. This field exists in raw logs. Time fields in different formats are difficult to read. To simplify the read process, you can convert the time format when you query and analyze log data. Examples:
 1. Convert the value of __time__ to a timestamp
@@ -10297,11 +10563,11 @@ Sample SQL statement
 oup by day order by day asc
 ```
 
-### Associate Log Service with external
+### 4.11 Associate Log Service with external data sources
 
 data sources
 
-#### Overview
+#### 4.11.1 Overview
 
 Log Service provides the external storage feature. You can use the feature to associate Log Service with MySQL databases, Alibaba Cloud Object Storage Service (OSS) buckets, or hosted CSV files. This topic describes the scenarios, benefits, and supported external stores of the external storage feature. Scenarios When you analyze data, you may need to obtain different types of data from separate storage resources. For example, you need to obtain data on user operations and user behavior from Log Service, and obtain data on user properties, registration, funds, and props from a database. In this example, you must classify and analyze data and then write the analysis results to the report system of the database. To do this, you can migrate data to a centralized storage system and then analyze the data. However, the migration process is time-consuming and labor-intensive. During migration, data must be cleansed and formatted, and network resources are consumed. To address these issues, Log Service provides API operations for external storage. You can call the API operations to achieve the following goals: Define mappings between data in external stores and data in Log Service. Data migration is not required. Use a unified query engine. You can use JOIN statements to perform JOIN queries on data in Log Service and data in external stores. Store query results in external stores. Benefits Cost-effective The external storage feature eliminates the need for data migration, which helps you reduce overall costs. Data in different storage systems is stored in different formats. The API operations that you can call to manage data also vary based on the storage systems. This results in complicated data conversion during data migration. If you use the external storage feature of Log Service, you do not need to migrate data. The external storage feature eliminates the need for data maintenance, which helps you reduce overall costs. If you migrate data, you must update and maintain the data at the earliest opportunity. Convenient You can use SQL statements to analyze data and obtain the analysis results within seconds. You can add charts to a dashboard and view the charts when you open the dashboard. Supported external stores The external storage feature of Log Service allows you to associate Log Service with MySQL databases, OSS buckets, or hosted CSV files. The following table describes the supported external stores.
 
@@ -10311,9 +10577,9 @@ Log Service provides the external storage feature. You can use the feature to as
 | OSS | Supported | Supported | SQL create table |
 | Hosted CSV files | Supported | Not supported | SDK |
 
-#### Associate Log Service with a MySQL database
+#### 4.11.2 Associate Log Service with a MySQL database
 
-This topic describes how to create an external store to associate Log Service with a MySQL database. Prerequisites Data is collected and stored in Log Service. For more information, see Data collection. Data is stored in a MySQL database. Context The external storage feature of Log Service allows you to associate Log Service with databases that are deployed on ApsaraDB RDS for MySQL instances, self-managed MySQL databases that are deployed on Elastic Compute Service (ECS) instances, and self-managed MySQL databases that are created in other scenarios. The external storage feature also allows you to write query and analysis results to the MySQL databases for processing. In the following descriptions, the ApsaraDB RDS for MySQL instances are referred to as RDS instances. Procedure
+This topic describes how to create an external store to associate Log Service with a MySQL database. Prerequisites Data is collected and stored in Log Service. For more information, see Data collection. Data is stored in a MySQL database. Context The external storage feature of Log Service allows you to associate Log Service with databases that are deployed on ApsaraDB RDS for MySQL instances, self-managed MySQL databases that are deployed on Elastic Compute Service (ECS) instances, and self-managed MySQL databases that are created in other scenarios. The external storage feature also allows you to write query and analysis results to the MySQL databases for processing. In the following descriptions, the ApsaraDB RDS for MySQL instances are referred to as RDS instances.
 1. Configure an allowlist for your MySQL database.
 If you use a MySQL database that is deployed on an RDS instance, add the following CIDR blocks to the allowlist: 100.104.0.0/16, 11.194.0.0/16, and 11.201.0.0/16. For more information, see Configure an allowlist in ApsaraDB RDS User Guide. If you use a self-managed MySQL database deployed on an ECS instance that resides in a virtual private cloud (VPC) and the ECS instance is added to a security group, configure security group rules to allow access from the following CIDR blocks: 100.104.0.0/16, 11.194.0.0/16, and 11.201.0.0/16. For more information, see Add security group rules in ECS User Guide. If you use a self-managed MySQL database that is created in other scenarios, add the following CIDR blocks to the allowlist: 100.104.0.0/16, 11.194.0.0/16, and 11.201.0.0/16.
 2. Create an external store.
@@ -10376,10 +10642,9 @@ aliyunlog log delete_external_store --project_name="log-rds-demo" --store_name=a
 
 What's next JOIN operations between Logstores and Relational Database Service (RDS) tables
 
-#### Associate Log Service with an OSS bucket
+#### 4.11.3 Associate Log Service with an OSS bucket
 
-This topic describes how to create an external store to associate Log Service with an Object Storage Service (OSS) bucket. Prerequisites Logs are collected. For more information, see Data collection. The indexing feature is enabled and indexes are configured. For more information, see Configure indexes. An OSS bucket is created. For more information, see Create buckets in OSS User Guide. CSV files are uploaded to the OSS bucket. For more information, see Upload objects in OSS User Guide. Benefits The external storage feature that is used to associate Log Service with OSS buckets provides the following benefits: Reduced O&M workload: You can perform lightweight association analysis without the need to store all data in one storage system. High efficiency: You can use SQL statements to analyze data and view the analysis results within seconds. You can also create charts based on analysis results that are commonly queried. Then, you can click the charts to view the analysis results. Procedure
-1. Log on to the Log Service console
+This topic describes how to create an external store to associate Log Service with an Object Storage Service (OSS) bucket. Prerequisites Logs are collected. For more information, see Data collection. The indexing feature is enabled and indexes are configured. For more information, see Configure indexes. An OSS bucket is created. For more information, see Create buckets in OSS User Guide. CSV files are uploaded to the OSS bucket. For more information, see Upload objects in OSS User Guide. Benefits The external storage feature that is used to associate Log Service with OSS buckets provides the following benefits: Reduced O&M workload: You can perform lightweight association analysis without the need to store all data in one storage system. High efficiency: You can use SQL statements to analyze data and view the analysis results within seconds. You can also create charts based on analysis results that are commonly queried. Then, you can click the charts to view the analysis results.
 2. In the Projects section, click the project that you want to manage.
 3. Choose Log St orage > Logst ores. On the Logstores tab, click the Logstore that you want to manage.
 4. On the page that appears, enter a query statement in the search box and click Search & Analyze.
@@ -10421,15 +10686,15 @@ Execute the following statement to perform a JOIN query. A Logstore is associate
 * | select * from test_accesslog l join user_meta1 u on l.userid = u.userid
 ```
 
-#### Associate Log Service with a hosted CSV file
+#### 4.11.4 Associate Log Service with a hosted CSV file
 
-Log Service allows you to upload a CSV file from your computer to Log Service by using an SDK. This way, the CSV file is hosted on Log Service and can be associated with a Logstore of Log Service. This topic describes how to perform a JOIN query on a CSV file that is hosted on Log Service and data in a Logstore of Log Service. Prerequisites Logs are collected. For more information, see Data collection. Indexes are configured. For more information, see Configure indexes. A CSV file is created. Log Service SDK for Python is installed. For more information, see Log Service SDK for Python in Log Service Devel oper Guide. Log Service SDK for Python V0.7.3 and later are supported. You can use the pip inst all aliyun-log-pyt hon-sdk -U command to upgrade the SDK. Limits Only one CSV file can be associated at a time. After you delete an external store, you cannot create an external store that has the same name as the deleted external store. You can associate Log Service with a CSV file that contains no more than 50 MB of data. The CSV file is uploaded to Log Service after it is compressed by using the SDK. The size of the file after compression must be less than 9.9 MB. Sample data The Logstore stores the logon operations of a user, and the CSV file records the basic information about the user, such as the gender and age. After you associate the Logstore with the CSV file, you can analyze the metrics for user properties. Logstore
+Log Service allows you to upload a CSV file from your computer to Log Service by using an SDK. This way, the CSV file is hosted on Log Service and can be associated with a Logstore of Log Service. This topic describes how to perform a JOIN query on a CSV file that is hosted on Log Service and data in a Logstore of Log Service. Prerequisites Logs are collected. For more information, see Data collection. Indexes are configured. For more information, see Configure indexes. A CSV file is created. Log Service SDK for Python is installed. For more information, see Log Service SDK for Python in Log Service Devel oper Guide. Log Service SDK for Python V0.7.3 and later are supported. You can use the pip inst all aliyun-log-pyt hon-sdk -U command to upgrade the SDK. Only one CSV file can be associated at a time. After you delete an external store, you cannot create an external store that has the same name as the deleted external store. You can associate Log Service with a CSV file that contains no more than 50 MB of data. The CSV file is uploaded to Log Service after it is compressed by using the SDK. The size of the file after compression must be less than 9.9 MB. Sample data The Logstore stores the logon operations of a user, and the CSV file records the basic information about the user, such as the gender and age. After you associate the Logstore with the CSV file, you can analyze the metrics for user properties.
 
 ```
 userid:100001 action:login __time__:1637737306
 ```
 
-CSV file Procedure
+CSV file
 1. Use Log Service SDK for Python to create an external store.
 For more information about Log Service SDK for Python, see Log Service SDK for Python in Log Service Develop er Guide.
 
@@ -10463,7 +10728,6 @@ res.log_print()
 | csv file _ | The path and name of the CSV file. |
 | Table schema | The properties of the virtual external table, including the column names and data types. The following section shows an example of a table schema. You can replace the table schema based on your business scenario. [ {"name" : "userid", "type" : "bigint"}, {"name" : "nick", "type" : "varchar"}, {"name" : "gender", "type" : "varchar"}, {"name" : "province", "type" : "varchar"}, {"name" : "age", "type" : "bigint"} ] |
 
-2. Log on to the Log Service console
 3. In the Projects section, click the project that you want to manage.
 4. Choose Log St orage > Logst ores. On the Logstores tab, click the Logstore where logs are stored.
 5. Execute the following statement to check whether the external store is created.
@@ -10481,11 +10745,11 @@ The Logstore is associated with the CSV file based on the value of the userid fi
 * | SELECT * FROM website_log JOIN user_meta ON website_log.userid = user_meta.userid
 ```
 
-### Visual analysis
+### 4.12 Visual analysis
 
-#### Charts
+#### 4.12.1 Charts
 
-##### Chart overview
+##### 4.12.1.1 Chart overview
 
 Log Service allows you to render query and analysis results into visualized charts. Prerequisites Indexes are configured and the analysis feature is enabled. To enable the analysis feature, turn on Enable Analyt ics for the fields in the Search & Analysis panel. For more information, see Enable the index feature and configure indexes for a Logstore. Before you configure charts, we recommend that you are familiar with the log analysis feature. For more information, see Log analysis overview. You must specify an analytic statement in a query statement. Log Service cannot display charts based on query results. Usage notes When you execute multiple query statements in sequence, the Value Column, X Axis, or Y Axis configurations are not automatically modified based on the current query statement. The X-axis and Y-axis configurations may remain the same as the configurations in the previous query statement. In this case, the query and analysis result of the current query statement cannot be automatically displayed on a chart. If the following errors occur, you must modify the Propert ies settings based on the current query statement: The dimensions that you selected are not in the query results. Check and modify the Properties settings. X Axis or Y Axis is unavailable. Check and modify the Properties settings. Chart configurations To go to the Graph tab, perform the following steps:
 1. Log on to the Log Service console.
@@ -10494,9 +10758,9 @@ Log Service allows you to render query and analysis results into visualized char
 4. Click Graph to go to the Graph tab.
 On the Graph tab, multiple charts are provided to display query and analysis results. You can select a type of chart from the chart bar based on your business requirements. On the Graph tab, query and analysis results are displayed in the Chart Preview and Dat a Preview sections. The Chart Preview section shows the query and analysis results that are displayed in the specified type of chart. The Dat a Preview section shows the data of the related chart in a table. On the Graph tab, you can configure the following settings: On the Dat a Source tab, you can specify placeholder variables. For example, you can configure the drilldown event of Chart A to redirect to the dashboard on which Chart B is located. After you configure the drilldown event of Chart A, the placeholder variable is replaced by the variable that you click to trigger the drilldown event and execute the query statement of Chart B. To trigger the drill-down event, you must click the placeholder variable that you configured for Chart B. For more information, see Drill-down analysis. This feature is suitable for scenarios in which you want to configure drill-down events to redirect to specified dashboards. On the Propert ies tab, you can configure the chart properties that you want to display. You can configure the X-axis, left Y-axis and right Y-axis, margins, and other parameters. Different types of charts have different properties. For more information, see the related topic of each chart. This feature is suitable for all query and analysis scenarios. On the Int eract ive Behavior tab, you can configure drill-down events for a chart. Then, you can click the variable value in the chart to trigger the specified drill-down event. For more information, see Drill-down analysis. This feature is suitable for scenarios in which you want to trigger drill-down events for charts. Supported chart types Table Line chart Column chart Bar chart Pie chart Area chart Individual value plot Progress bar Map Sankey diagram Word cloud Treemap chart
 
-##### Display query results in a table
+##### 4.12.1.2 Display query results in a table
 
-Tables are used to sort and display data for quick reference and analysis. All query results that match specified query statements can be rendered into visualized charts. By default, query results are displayed in a table. Components Table header Row Column Where: The number of columns can be specified by using a `SELECT` statement. The number of rows is calculated based on the number of log entries in a specified time range. The default clause is `LIMIT 100` . Procedure
+Tables are used to sort and display data for quick reference and analysis. All query results that match specified query statements can be rendered into visualized charts. By default, query results are displayed in a table. Components Table header Row Column Where: The number of columns can be specified by using a `SELECT` statement. The number of rows is calculated based on the number of log entries in a specified time range. The default clause is `LIMIT 100` .
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10527,9 +10791,9 @@ Example To query and analyze the distribution of page views (PVs) for different 
 * |select Status,AlertDisplayName as name,COUNT(*) as count group by Status,name
 ```
 
-##### Display query results on a line chart
+##### 4.12.1.3 Display query results on a line chart
 
-This topic describes how to configure a line chart to display query results. Background information Line charts are used to analyze the changes of field values based on an ordered data type. In most cases, the analysis is based on a specified time range. You can use a line chart to analyze the following change characteristics of field values over a specified period of time: Increment or decrement Increment or decrement rate Increment or decrement pattern, for example, periodicity Peak value and bottom value You can use line charts to analyze the changes of field values over a specified period of time. You can also use line charts to analyze the changes of multiple field values in multiple lines over the same period. This way, you can analyze the relationship between different fields. For example, the values of a field are proportional or inversely proportional to the values of another field. Each line chart consists of the following elements: X-axis Left Y-axis Right Y-axis (optional) Data point Line of trend changes Legend Procedure
+This topic describes how to configure a line chart to display query results. Background information Line charts are used to analyze the changes of field values based on an ordered data type. In most cases, the analysis is based on a specified time range. You can use a line chart to analyze the following change characteristics of field values over a specified period of time: Increment or decrement Increment or decrement rate Increment or decrement pattern, for example, periodicity Peak value and bottom value You can use line charts to analyze the changes of field values over a specified period of time. You can also use line charts to analyze the changes of multiple field values in multiple lines over the same period. This way, you can analyze the relationship between different fields. For example, the values of a field are proportional or inversely proportional to the values of another field. Each line chart consists of the following elements: X-axis Left Y-axis Right Y-axis (optional) Data point Line of trend changes Legend
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10576,9 +10840,9 @@ stinct(remote_addr) as UV group by time order by time limit 1000
 
 Select `time` for X Axis, `PV` for Left Y Axis, `UV` for Right Y Axis, and `PV` for Column Marker.
 
-##### Display query results on a column chart
+##### 4.12.1.4 Display query results on a column chart
 
-This topic describes how to configure a column chart to display query results. Background information A column chart uses vertical or horizontal bars to show the values of different categories. You can use a column chart to count the number of values in each category. Each column chart consists of the following elements: X-axis (horizontal) Y-axis (vertical) Rectangular bar Legend By default, column charts in Log Service use vertical bars. Each rectangular bar has a fixed width and a variable height that indicates a value. If you select multiple columns of data for the Y-axis, a grouped column chart is used to display the data. Procedure
+This topic describes how to configure a column chart to display query results. Background information A column chart uses vertical or horizontal bars to show the values of different categories. You can use a column chart to count the number of values in each category. Each column chart consists of the following elements: X-axis (horizontal) Y-axis (vertical) Rectangular bar Legend By default, column charts in Log Service use vertical bars. Each rectangular bar has a fixed width and a variable height that indicates a value. If you select multiple columns of data for the Y-axis, a grouped column chart is used to display the data.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10610,9 +10874,9 @@ Select `http_referer` for X Axis and `count` for Y Axis. Example of a grouped co
 
 Select `http_referer` for X Axis. Select `count` and `avg` for Y Axis.
 
-##### Display query results on a bar chart
+##### 4.12.1.5 Display query results on a bar chart
 
-This topic describes how to configure a bar chart to display query results. Background information A bar chart is a horizontal column chart that is used to analyze the top N values of fields. You can configure a bar chart in a similar manner in which you configure a column chart. Each bar chart consists of the following elements: X-axis (vertical) Y-axis (horizontal) Rectangular bar Legend Each rectangular bar has a fixed height and a variable width. The variable width indicates a value. If multiple columns of data are mapped to the Y-axis, you can use a grouped bar chart to display the data. Procedure
+This topic describes how to configure a bar chart to display query results. Background information A bar chart is a horizontal column chart that is used to analyze the top N values of fields. You can configure a bar chart in a similar manner in which you configure a column chart. Each bar chart consists of the following elements: X-axis (vertical) Y-axis (horizontal) Rectangular bar Legend Each rectangular bar has a fixed height and a variable width. The variable width indicates a value. If multiple columns of data are mapped to the Y-axis, you can use a grouped bar chart to display the data.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10636,9 +10900,9 @@ Example To analyze the top 10 request URIs ( `request_uri` ) that are most frequ
 * | select request_uri, count(1) as count group by request_uri order by count desc limit 10
 ```
 
-##### Display query results on a pie chart
+##### 4.12.1.6 Display query results on a pie chart
 
-This topic describes how to configure a pie chart to display query results. Background information A pie chart is used to show the percentages of different categories of data. The arc length of each segment in a pie chart is proportionate to the quantity that is represented by each category. A pie chart is divided into multiple segments based on the percentages of categories. Each segment shows the percentage of a category. The sum of all percentages is equal to 100%. Each pie chart consists of the following elements: Segment Percentage in the text format Legend Types Log Service provides the following types of standard pie charts: pie chart, donut chart, and polar area chart. Donut chart A donut chart is a variant of a pie chart that has a hollow center. Compared with a pie chart, a donut chart provides the following advantages: Displays more information, such as the total number of occurrences of all field values. Allows you to compare data between two donut charts based on ring lengths. Data across different pie charts is difficult to compare. Polar area chart A polar area chart is a column chart in the polar coordinate system. Each category of data is represented by a segment with the same angle, and the radius of each segment varies based on the value. Compared with a pie chart, a polar area chart provides the following advantages: If a query statement returns no more than 10 log entries, you can use a pie chart to display the query results. If a query statement returns 10 to 30 log entries, you can use a polar area chart to display the query results. Enlarges the differences among the values of categories because the area of the segment correlates with the square of the radius. Therefore, the polar area chart is suitable for the comparison of similar values. A circle can be used to display a periodic pattern. Therefore, you can use a polar area chart to analyze value changes in different periods, such as weeks and months. Procedure
+This topic describes how to configure a pie chart to display query results. Background information A pie chart is used to show the percentages of different categories of data. The arc length of each segment in a pie chart is proportionate to the quantity that is represented by each category. A pie chart is divided into multiple segments based on the percentages of categories. Each segment shows the percentage of a category. The sum of all percentages is equal to 100%. Each pie chart consists of the following elements: Segment Percentage in the text format Legend Types Log Service provides the following types of standard pie charts: pie chart, donut chart, and polar area chart. Donut chart A donut chart is a variant of a pie chart that has a hollow center. Compared with a pie chart, a donut chart provides the following advantages: Displays more information, such as the total number of occurrences of all field values. Allows you to compare data between two donut charts based on ring lengths. Data across different pie charts is difficult to compare. Polar area chart A polar area chart is a column chart in the polar coordinate system. Each category of data is represented by a segment with the same angle, and the radius of each segment varies based on the value. Compared with a pie chart, a polar area chart provides the following advantages: If a query statement returns no more than 10 log entries, you can use a pie chart to display the query results. If a query statement returns 10 to 30 log entries, you can use a polar area chart to display the query results. Enlarges the differences among the values of categories because the area of the segment correlates with the square of the radius. Therefore, the polar area chart is suitable for the comparison of similar values. A circle can be used to display a periodic pattern. Therefore, you can use a polar area chart to analyze value changes in different periods, such as weeks and months.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10676,9 +10940,9 @@ Example of a polar area chart To analyze the percentages of the `requestURI` fie
 * | select requestURI as uri , count(1) as c group by uri limit 10
 ```
 
-##### Display query results on an area chart
+##### 4.12.1.7 Display query results on an area chart
 
-This topic describes how to configure an area chart to display query results. Background information An area chart is built based on a line chart. The colored section between a line and the axis is an area. The color is used to highlight the trend. An area chart is similar to a line chart and shows the changes of numeric values over a specified period of time. An area chart is used to highlight the overall data trend. Both line charts and area charts display the trend and relationship between numeric values instead of specific values. Each area chart consists of the following elements: X-axis (horizontal) Y-axis (vertical) Area segment Procedure
+This topic describes how to configure an area chart to display query results. Background information An area chart is built based on a line chart. The colored section between a line and the axis is an area. The color is used to highlight the trend. An area chart is similar to a line chart and shows the changes of numeric values over a specified period of time. An area chart is used to highlight the overall data trend. Both line charts and area charts display the trend and relationship between numeric values instead of specific values. Each area chart consists of the following elements: X-axis (horizontal) Y-axis (vertical) Area segment
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10711,9 +10975,9 @@ stinct(remote_addr) as UV group by time order by time limit 1000
 
 Select `time` for X Axis. Select `PV` and `UV` for Y Axis.
 
-##### Display query results on a single value chart
+##### 4.12.1.8 Display query results on a single value chart
 
-This topic describes how to configure a single value chart to display query results. Background information A single value chart highlights a single value. Log Service supports the following types of single value charts: Rectangle Frame: shows a general value. Dial: shows the difference between the current value and a specified threshold value. Compare Numb Chart: shows the SQL query results of interval-valued comparison and periodicity-valued comparison functions. For more information, see Interval-valued comparison and periodicity-valued comparison functions. By default, Rectangle Frame is selected. Rectangle Frame is the most basic type of single value chart to display data at a specified point. In most cases, this chart type is used to show the key information at a specified point in time. To display a proportional metric, you can select Dial. Each single value chart consists of the following elements: Numeric value Unit (optional) Description (optional) Chart type Procedure
+This topic describes how to configure a single value chart to display query results. Background information A single value chart highlights a single value. Log Service supports the following types of single value charts: Rectangle Frame: shows a general value. Dial: shows the difference between the current value and a specified threshold value. Compare Numb Chart: shows the SQL query results of interval-valued comparison and periodicity-valued comparison functions. For more information, see Interval-valued comparison and periodicity-valued comparison functions. By default, Rectangle Frame is selected. Rectangle Frame is the most basic type of single value chart to display data at a specified point. In most cases, this chart type is used to show the key information at a specified point in time. To display a proportional metric, you can select Dial. Each single value chart consists of the following elements: Numeric value Unit (optional) Description (optional) Chart type
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10808,9 +11072,9 @@ Compare numb chart To view and compare the PVs on the current day and in the pre
 count(1) as pv from log))
 ```
 
-##### Display query results on a progress bar
+##### 4.12.1.9 Display query results on a progress bar
 
-This topic describes how to configure a progress bar to display query results. Background information A progress bar shows the percentage of the actual value of a field to the maximum value of the field. You can configure the properties of a progress bar to change the style and configure display rules for the progress bar. Each progress bar consists of the following elements: Actual value Unit (optional) Total value Procedure
+This topic describes how to configure a progress bar to display query results. Background information A progress bar shows the percentage of the actual value of a field to the maximum value of the field. You can configure the properties of a progress bar to change the style and configure display rules for the progress bar. Each progress bar consists of the following elements: Actual value Unit (optional) Total value
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10850,9 +11114,9 @@ Example To calculate the ratio of the page views (PVs) of the current hour to th
 diff FROM (SELECT count(*) AS PV FROM log))
 ```
 
-##### Display query results on a map
+##### 4.12.1.10 Display query results on a map
 
-This topic describes how to configure a map to display query results. Background information You can color and mark a map to display geographic data. Log Service provides the map of China. The display modes of an AMap include the anchor point and heat map. You can use specific functions in query statements to display analysis results as maps. Each map consists of the following elements: Map canvas Colored area Procedure
+This topic describes how to configure a map to display query results. Background information You can color and mark a map to display geographic data. Log Service provides the map of China. The display modes of an AMap include the anchor point and heat map. You can use specific functions in query statements to display analysis results as maps. Each map consists of the following elements: Map canvas Colored area
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10877,7 +11141,7 @@ esc limit 10
 
 Select address for Provinces and count for Value Column.
 
-##### Display query results in a Sankey diagram
+##### 4.12.1.11 Display query results in a Sankey diagram
 
 This topic describes how to configure a Sankey diagram to display query results. Background information A Sankey diagram is a type of flow chart. A Sankey diagram shows the flow from one set of values to another set of values. You can use Sankey diagrams to collect statistics about network traffic flows. A Sankey diagram
 
@@ -10893,7 +11157,7 @@ contains the values of the `source` , `target` , and `value` fields. The `source
 | node1 | node3 | 12 |
 | node3 | node4 | 5 |
 
-The following figure shows the data relationships in a Sankey diagram. Procedure
+The following figure shows the data relationships in a Sankey diagram.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10928,9 +11192,9 @@ ime__ desc) group by sourceValue,
  targetValue
 ```
 
-##### Display query results on a word cloud
+##### 4.12.1.12 Display query results on a word cloud
 
-This topic describes how to configure a word cloud to display query results. Background information A word cloud shows text data. A word cloud is a cloud-like and colored image composed of words. You can use a word cloud to display a large amount of text data. The font size or color of a word indicates the significance of the word. This allows you to identify whether a word is significant in an efficient manner. The words in a word cloud are sorted. Procedure
+This topic describes how to configure a word cloud to display query results. Background information A word cloud shows text data. A word cloud is a cloud-like and colored image composed of words. You can use a word cloud to display a large amount of text data. The font size or color of a word indicates the significance of the word. This allows you to identify whether a word is significant in an efficient manner. The words in a word cloud are sorted.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10953,9 +11217,9 @@ Example To query the distribution of hostnames in NGINX logs, execute the follow
 
 Select `hostname` for Word Column and `count` for Value Column.
 
-##### Display query results on a treemap chart
+##### 4.12.1.13 Display query results on a treemap chart
 
-This topic describes how to configure a treemap chart to display query results. Background information A treemap chart consists of multiple rectangles that represent the data volumes. A larger rectangle area represents a larger proportion of the categorical data. Procedure
+This topic describes how to configure a treemap chart to display query results. Background information A treemap chart consists of multiple rectangles that represent the data volumes. A larger rectangle area represents a larger proportion of the categorical data.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -10977,13 +11241,13 @@ Example To query the distribution of hostnames in NGINX logs, execute the follow
 
 Select `host` for Legend Filt er and select `count` for Value Column.
 
-#### Dashboard
+#### 4.12.2 Dashboard
 
-##### Overview
+##### 4.12.2.1 Overview
 
-A dashboard provided by Log Service is a platform where you can analyze data in real time. You can add multiple charts to a dashboard for data analysis. Each chart is a visualized search and analytic statement. A dashboard allows you to view the charts of multiple search and analytic statements at one time. When you open or refresh the dashboard, the statements of the charts run automatically. After you add a chart to a dashboard, you can configure Drill-down analysis for the chart. Then you can click the chart on the dashboard to further analyze data and obtain more fine-grained analysis results. Limits You can create a maximum of 50 dashboards for a project. Each dashboard can contain a maximum of 50 analysis charts. Features A dashboard has two modes: display mode and edit mode. Configure the display mode of a dashboard In the display mode, you can configure multiple display settings on the dashboard page. Dashboard: You can specify the time range, the automatic refresh interval, full screen, and the display mode of the title for the dashboard, configure alerts for all charts on the dashboard, and filter chart data based on the Configure and use a filter on a dashboard of a Logstore. Chart: You can view the analysis details of a specified chart, specify the time range and configure alerts for the chart, download logs and the chart, and check whether drill-down analysis is configured for the chart. Edit mode In the edit mode, you can change the configurations of the dashboard and charts. Dashboard: You can use a dashboard as a canvas and add Markdown chart, custom charts, text, icons, and other chart elements to the dashboard. You can also add lines between chart elements that are self-adaptive to the positions of the charts. You can also add Configure and use a filter on a dashboard of a Logstore, which can be used to filter chart data in the display mode. In addition, you can configure display gridlines to help arrange chart elements such as icons in an orderly manner. Chart: You can also edit a chart on the dashboard. You can modify the statement, properties, and interactive behavior such as drill-down analysis of the chart.
+A dashboard provided by Log Service is a platform where you can analyze data in real time. You can add multiple charts to a dashboard for data analysis. Each chart is a visualized search and analytic statement. A dashboard allows you to view the charts of multiple search and analytic statements at one time. When you open or refresh the dashboard, the statements of the charts run automatically. After you add a chart to a dashboard, you can configure Drill-down analysis for the chart. Then you can click the chart on the dashboard to further analyze data and obtain more fine-grained analysis results. You can create a maximum of 50 dashboards for a project. Each dashboard can contain a maximum of 50 analysis charts. Features A dashboard has two modes: display mode and edit mode. Configure the display mode of a dashboard In the display mode, you can configure multiple display settings on the dashboard page. Dashboard: You can specify the time range, the automatic refresh interval, full screen, and the display mode of the title for the dashboard, configure alerts for all charts on the dashboard, and filter chart data based on the Configure and use a filter on a dashboard of a Logstore. Chart: You can view the analysis details of a specified chart, specify the time range and configure alerts for the chart, download logs and the chart, and check whether drill-down analysis is configured for the chart. Edit mode In the edit mode, you can change the configurations of the dashboard and charts. Dashboard: You can use a dashboard as a canvas and add Markdown chart, custom charts, text, icons, and other chart elements to the dashboard. You can also add lines between chart elements that are self-adaptive to the positions of the charts. You can also add Configure and use a filter on a dashboard of a Logstore, which can be used to filter chart data in the display mode. In addition, you can configure display gridlines to help arrange chart elements such as icons in an orderly manner. Chart: You can also edit a chart on the dashboard. You can modify the statement, properties, and interactive behavior such as drill-down analysis of the chart.
 
-##### Create and delete a dashboard
+##### 4.12.2.2 Create and delete a dashboard
 
 This topic describes how to create a dashboard. After you create a dashboard, you can follow, view, and delete the dashboard. Prerequisites The indexing feature is enabled and indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore. Create a dashboard
 1. Log on to the Log Service console.
@@ -10997,7 +11261,7 @@ click OK. Related operations After you create a dashboard, you can follow, view,
 Not ice After you delete a dashboard, the dashboard cannot be restored. Proceed with caution. In the Dashboard list, find the dashboard that you created and choose
 > Det ails to view the dashboard.
 
-##### Manage a dashboard in display mode
+##### 4.12.2.3 Manage a dashboard in display mode
 
 This topic describes how to configure a dashboard in display mode. By default, a dashboard shows all charts in display mode. You can perform multiple operations on a dashboard in display mode. Specify a time range for a dashboard By default, the time range that you specify for a dashboard applies to all charts on the dashboard. After you specify a time range for a dashboard, all charts on the dashboard display the query and analysis results of the time range. For information about how to specify a time range for a single chart, see Specify a time range for a chart.
 1. Log on to the Log Service console.
@@ -11008,9 +11272,9 @@ icon.
 5. Click Please Select to specify a time range.
 Log Service supports the following types of time ranges: Relative: queries log data that is generated within a time range that ends with the current time, such as the previous 1, 5, or 15 minutes. The time range is accurate to seconds. For example, if the current time is 19:20:31 and you select 1Hour(Relative) as the time range, the charts on the dashboard display the log data that is generated from 18:20:31 to 19:20:31. Time Frame: queries log data that is generated within a time range that ends with the current time, such as the previous 1 or 15 minutes. The time range is accurate to minutes, hours, or days. For example, if the current time is 19:20:31 and you select 1Hour(Time Frame) as the time range, the charts on the dashboard display the log data that is generated from 18:00:00 to 19:00:00. Custom: queries log data that is generated within a custom time range.
 6. Mover the pointer over the Please Select button to confirm the specified time range.
-Enter the edit mode In the Dashboard list, click the dashboard that you want to modify. On the page that appears, click Edit to enter the edit mode. In edit mode, you can perform multiple operations on the dashboard and the charts on the dashboard. For more information, see Edit mode. Configure an alert rule In the upper-right corner of the dashboard page, click Alert s and select Creat e to create an alert rule for the charts on the dashboard. For more information, see Configure an alert rule. Configure a refresh method You can manually refresh a dashboard or select an interval to automatically refresh the dashboard. In the upper-right corner of the dashboard page, choose Ref resh > Once. The dashboard is immediately refreshed. In the upper-right corner of the dashboard page, choose Ref resh > Aut o Ref resh and select an interval at which the dashboard is automatically refreshed. The interval can be 15 seconds, 60 seconds, 5 minutes, or 15 minutes. If your browser is inactive, the dashboard may not refresh at the specified interval as expected. Share a dashboard In the upper-right corner of the dashboard page, click Share to copy the link of the dashboard to the clipboard. Then, you can send the link to authorized users. The shared dashboard page uses the settings of the dashboard at the point in time when you share the dashboard. The settings include the time range of charts and the display format of chart titles. Before you share a dashboard with other users, you must grant the read permissions to the users. Display a dashboard in full screen In the upper-right corner of the dashboard page, click Full Screen. Then, the dashboard enters the full-screen mode. This mode is suitable for scenarios such as presentations and reporting. Select a display format for chart titles In the upper-right corner of the dashboard page, click T it le Conf igurat ion to select a display format for chart titles. Valid values: Single-line Title and Time Display Title Only Time Only Reset the time range In the upper-right corner of the dashboard page, click Reset T ime to restore the saved time range of all charts on the dashboard. You can use this feature to restore time settings. Configure charts You can select a chart and perform the following operations on the chart. Different types of charts on a dashboard can display different information. You cannot view the analysis details of non-statistical charts such as custom charts and Markdown charts. View analysis details Find the chart whose details you want to view, click the icon and select View Analysis Det ails. On the page that appears, you can view the query statement and the properties of the chart. Specify a time range for a chart Find the chart that you want to manage, click the icon and select Select T ime Range to specify a time range for the chart. Configure an alert rule for a chart Find the chart for which you want to configure an alert rule, click the icon and select Creat e Alert to create an alert rule for the chart. For more information, see Configure an alert rule. Download log data Find the chart whose log data you want to download, click the icon and select Download Log. The log data that is returned by the query statement of the chart within the current time range is downloaded in a commaseparated values (CSV) file. Check whether a drill-down event is configured for a chart Find the chart that you want to check, click the icon and move the pointer over the icon to check whether a drill-down event is configured for the chart. If the icon is red, a drill-down event is configured for the chart. Preview the query statement of a chart Find the chart whose query statement you want to preview, click the icon, and then click the icon. In the Preview Query Statement dialog box, you can view the query statement of the chart.
+Enter the edit mode In the Dashboard list, click the dashboard that you want to modify. On the page that appears, click Edit to enter the edit mode. In edit mode, you can perform multiple operations on the dashboard and the charts on the dashboard. For more information, see Edit mode. In the upper-right corner of the dashboard page, click Alert s and select Creat e to create an alert rule for the charts on the dashboard. For more information, see Configure an alert rule. Configure a refresh method You can manually refresh a dashboard or select an interval to automatically refresh the dashboard. In the upper-right corner of the dashboard page, choose Ref resh > Once. The dashboard is immediately refreshed. In the upper-right corner of the dashboard page, choose Ref resh > Aut o Ref resh and select an interval at which the dashboard is automatically refreshed. The interval can be 15 seconds, 60 seconds, 5 minutes, or 15 minutes. If your browser is inactive, the dashboard may not refresh at the specified interval as expected. Share a dashboard In the upper-right corner of the dashboard page, click Share to copy the link of the dashboard to the clipboard. Then, you can send the link to authorized users. The shared dashboard page uses the settings of the dashboard at the point in time when you share the dashboard. The settings include the time range of charts and the display format of chart titles. Before you share a dashboard with other users, you must grant the read permissions to the users. Display a dashboard in full screen In the upper-right corner of the dashboard page, click Full Screen. Then, the dashboard enters the full-screen mode. This mode is suitable for scenarios such as presentations and reporting. Select a display format for chart titles In the upper-right corner of the dashboard page, click T it le Conf igurat ion to select a display format for chart titles. Valid values: Single-line Title and Time Display Title Only Time Only Reset the time range In the upper-right corner of the dashboard page, click Reset T ime to restore the saved time range of all charts on the dashboard. You can use this feature to restore time settings. Configure charts You can select a chart and perform the following operations on the chart. Different types of charts on a dashboard can display different information. You cannot view the analysis details of non-statistical charts such as custom charts and Markdown charts. View analysis details Find the chart whose details you want to view, click the icon and select View Analysis Det ails. On the page that appears, you can view the query statement and the properties of the chart. Specify a time range for a chart Find the chart that you want to manage, click the icon and select Select T ime Range to specify a time range for the chart. Configure an alert rule for a chart Find the chart for which you want to configure an alert rule, click the icon and select Creat e Alert to create an alert rule for the chart. For more information, see Configure an alert rule. Download log data Find the chart whose log data you want to download, click the icon and select Download Log. The log data that is returned by the query statement of the chart within the current time range is downloaded in a commaseparated values (CSV) file. Check whether a drill-down event is configured for a chart Find the chart that you want to check, click the icon and move the pointer over the icon to check whether a drill-down event is configured for the chart. If the icon is red, a drill-down event is configured for the chart. Preview the query statement of a chart Find the chart whose query statement you want to preview, click the icon, and then click the icon. In the Preview Query Statement dialog box, you can view the query statement of the chart.
 
-##### Manage a dashboard in edit mode
+##### 4.12.2.4 Manage a dashboard in edit mode
 
 You can manage a dashboard in edit mode. For example, you can add chart elements, adjust chart layouts, edit charts, and change the dashboard name. Add chart elements
 1. In the Projects section, click the project in which you want to modify a dashboard.
@@ -11026,9 +11290,9 @@ ii. Drag the copy to a position. Then, specify the margins and size of the copy.
 > Delet e.
 ii. In the upper-right corner of the dashboard page, click Save.
 
-##### Configure a drill-down event
+##### 4.12.2.5 Configure a drill-down event
 
-Log Service allows you to configure a drill-down event for a chart to obtain more details in analysis results. This topic describes how to configure a drill-down event in the Log Service console. Prerequisites The indexing feature is enabled and indexes are configured. For more information, see Configure indexes. A Logstore is created. This prerequisite must be met if you want to configure a drill-down event to open a Logstore. For more information, see Create a Logstore. A saved search is created. This prerequisite must be met if you want to configure a drill-down event to open a saved search. For more information, see Saved search. Placeholder variables are configured in the query statement of the saved search. This prerequisite must be met if you want to configure variables. For more information, see Configure a placeholder variable. A dashboard is created. This prerequisite must be met if you want to configure a drill-down event to open a dashboard. For more information, see Create a dashboard. Placeholder variables are configured in the related chart on the dashboard. This prerequisite must be met if you want to configure variables. For more information, see Configure a placeholder variable. If you want to configure a drill-down event to open a custom HTTP URL, you must create the HTTP URL. Context Drilling is required for data analysis. This feature allows you to analyze data in a fine-grained manner or coarsegrained manner. Drilling includes roll-up and drill-down. Drill-down allows you to obtain more details in analysis results. This way, you extract more value from data and make better decisions for your business. Procedure
+Log Service allows you to configure a drill-down event for a chart to obtain more details in analysis results. This topic describes how to configure a drill-down event in the Log Service console. Prerequisites The indexing feature is enabled and indexes are configured. For more information, see Configure indexes. A Logstore is created. This prerequisite must be met if you want to configure a drill-down event to open a Logstore. For more information, see Create a Logstore. A saved search is created. This prerequisite must be met if you want to configure a drill-down event to open a saved search. For more information, see Saved search. Placeholder variables are configured in the query statement of the saved search. This prerequisite must be met if you want to configure variables. For more information, see Configure a placeholder variable. A dashboard is created. This prerequisite must be met if you want to configure a drill-down event to open a dashboard. For more information, see Create a dashboard. Placeholder variables are configured in the related chart on the dashboard. This prerequisite must be met if you want to configure variables. For more information, see Configure a placeholder variable. If you want to configure a drill-down event to open a custom HTTP URL, you must create the HTTP URL. Context Drilling is required for data analysis. This feature allows you to analyze data in a fine-grained manner or coarsegrained manner. Drilling includes roll-up and drill-down. Drill-down allows you to obtain more details in analysis results. This way, you extract more value from data and make better decisions for your business.
 1. Log on to the Log Service console.
 2. Click the name of the project that you want to manage.
 3. Click the
@@ -11111,9 +11375,9 @@ Select a chart type. In this example, a table is selected. Configure a drill-dow
 3. View drill-down results.
 On the RequestMethod dashboard, click GET . You are redirected to the destination_drilldown dashboard. The asterisk (*) in the query statement is replaced by the value GET . The trend of PVs for GET requests over a specified period of time is displayed in a line chart.
 
-##### Add a filter
+##### 4.12.2.6 Add a filter
 
-You can add a filter to a dashboard. Then, you can use the filter to refine query results or replace placeholder variables with specific values. This topic describes how to add a filter to a dashboard. Prerequisites Log data is collected. For more information, see Data collection overview. Indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore. Charts are added to a dashboard. For more information, see Add a chart to a dashboard. Not ice If you set the filter type to Replace Variable, you must configure placeholder variables for the charts on the dashboard. Context A filter is used to modify query statements or replace placeholder variables for all charts on a dashboard. Each chart displays the query and analysis result of a query statement, which is in the [search query] | [sql query] format. After you add a filter to a dashboard, the filter condition or variables that you specify for the filter apply to the query statement that corresponds to each chart on the dashboard. The following types of filters are supported: Filter: uses key-value pairs as a filter condition. The filter condition is added to the start of a query statement by using the AND or NOT operator. For example, the Key: Value AND [search query] | [sql query] statement queries logs that contain Key:Value in the query result of the [search query] | [sql query] statement. For the Filter type, you can select or enter multiple key-value pairs. If you specify multiple key-value pairs, the logical OR operator is used between the pairs. Replace Variable: uses a variable and the value of the variable. If the variable that you specify for the filter is configured for existing charts on the dashboard, the variable in the query statement of each chart is automatically replaced by the variable value that you specify for the filter. This applies to all charts for which the same variable is configured. Procedure
+You can add a filter to a dashboard. Then, you can use the filter to refine query results or replace placeholder variables with specific values. This topic describes how to add a filter to a dashboard. Prerequisites Log data is collected. For more information, see Data collection overview. Indexes are configured. For more information, see Enable the indexing feature and configure indexes for a Logstore. Charts are added to a dashboard. For more information, see Add a chart to a dashboard. Not ice If you set the filter type to Replace Variable, you must configure placeholder variables for the charts on the dashboard. Context A filter is used to modify query statements or replace placeholder variables for all charts on a dashboard. Each chart displays the query and analysis result of a query statement, which is in the [search query] | [sql query] format. After you add a filter to a dashboard, the filter condition or variables that you specify for the filter apply to the query statement that corresponds to each chart on the dashboard. The following types of filters are supported: Filter: uses key-value pairs as a filter condition. The filter condition is added to the start of a query statement by using the AND or NOT operator. For example, the Key: Value AND [search query] | [sql query] statement queries logs that contain Key:Value in the query result of the [search query] | [sql query] statement. For the Filter type, you can select or enter multiple key-value pairs. If you specify multiple key-value pairs, the logical OR operator is used between the pairs. Replace Variable: uses a variable and the value of the variable. If the variable that you specify for the filter is configured for existing charts on the dashboard, the variable in the query statement of each chart is automatically replaced by the variable value that you specify for the filter. This applies to all charts for which the same variable is configured.
 1. Log on to the Log Service console.
 2. Click the name of the project that you want to manage.
 3. In the left-side navigation pane, click the Dashboard icon.
@@ -11136,7 +11400,7 @@ icon and configure the parameters. Then, click OK. The following table describes
 |---|---|
 | Add Dynamic List It em | If you turn on Add Dynamic List It em, dynamic values can be retrieved for Key. Dynamic list items are dynamic values that are retrieved by executing the specified query statement. The values vary based on the time ranges during which the query statement is executed. If you turn on Add Dynamic List It em, you must configure the following parameters: Select Logst ore: Select a Logstore from which data is queried. Inherit Filt ering Condit ions: If you turn on Inherit Filt ering Condit ions, the filter condition on the dashboard is added before the query statement. Query statement: Enter a query statement and specify a time range. Dynamic List It em Preview: Preview query results. |
 
-##### Manage a Markdown chart
+##### 4.12.2.7 Manage a Markdown chart
 
 Log Service allows you to add a Markdown chart to a dashboard. In the Markdown chart, you can insert images, links, videos, and other elements to make your dashboard page more intuitive to use. Context You can add multiple analysis charts to a dashboard. This allows you to view multiple analysis results and monitor the status of multiple applications on a single dashboard. You can also add Markdown charts to a dashboard. A Markdown chart is edited by using the Markdown syntax. You can create different Markdown charts based on your business requirements. Markdown charts can make a dashboard more intuitive to use. You can insert text such as background information, chart description, notes, and extension information into a Markdown chart. You can insert custom images and videos into a Markdown chart. You can also insert saved searches or the dashboard links of other projects to redirect to other query pages. You can insert links into a Markdown chart to redirect to the other dashboard pages of the current project. You can also insert an image that corresponds to each link. In addition, you can use a Markdown chart to describe the parameters of analysis charts. Add a Markdown chart
 1. Log on to the Log Service console.
@@ -11201,11 +11465,11 @@ Preview Special tag Markdown syntax
 
 Result
 
-## Alerts
+## 5 Alerts
 
-### Overview
+### 5.1 Overview
 
-Log Service provides the alerting feature. You can configure alert rules to trigger alerts based on query and analysis results. After you create an alert rule, Log Service checks related query and analysis results on a regular basis. If a query and analysis result meets the trigger condition that you specify in the alert rule, Log Service sends an alert notification. This way, you can monitor the service status in real time. Limits The following table describes the limits of the alerting feature in Log Service.
+Log Service provides the alerting feature. You can configure alert rules to trigger alerts based on query and analysis results. After you create an alert rule, Log Service checks related query and analysis results on a regular basis. If a query and analysis result meets the trigger condition that you specify in the alert rule, Log Service sends an alert notification. This way, you can monitor the service status in real time. The following table describes the limits of the alerting feature in Log Service.
 
 | Item | Description |
 |---|---|
@@ -11217,11 +11481,11 @@ Log Service provides the alerting feature. You can configure alert rules to trig
 
 Query statements in alert rules An alert rule is associated with one or more charts in a dashboard. Each chart displays the result of a query statement. You can associate an alert rule with one or more search statements or query statements. A search statement returns the log entries that meet the specified search condition. For example, you can execute the error statement to search for the log entries that are generated in the previous 15 minutes and contain error. A total of 154 log entries are returned. Each log entry consists of keyvalue pairs. You can specify a trigger condition based on the value of a key. If the number of returned log entries exceeds 100, Log Service checks only the first 100 log entries. If one of the log entries meets the specified condition, an alert is triggered. A query statement consists of a search statement and an analytic statement. The analytic statement analyzes the log entries that meet the search condition and returns a result. For example, the * | select sum(case when status='ok' then 1 else 0 end) *1.0/count(1) as ratio statement returns the percentage of the log entries in which the value of the status field is ok. If you set the trigger condition of an alert rule to ratio < 0.9, an alert is triggered if the percentage of the log entries whose status code is ok is less than 90%.
 
-### Configure an alarm
+### 5.2 Configure an alarm
 
-#### Configure an alert rule
+#### 5.2.1 Configure an alert rule
 
-You can create an alert rule on the Search & Analysis page of a Logstore or on a dashboard page in the Log Service console. After you create an alert rule, Log Service sends alert notifications when the trigger condition in the alert rule is met. This topic describes how to create an alert rule in the Log Service console. Prerequisites Logs are collected and stored in a Logstore. The indexing feature is enabled and indexes are configured. For more information, see Enable the index feature and configure indexes for a Logstore. Context Log Service allows you to configure alert rules based on charts. You can create an alert rule for a query statement on the Search & Analysis page. After you create the alert rule, a chart that shows the query result of the query statement is automatically created on the specified dashboard. You can also create an alert rule for one or more existing charts on a dashboard. Create a chart and configure an alert rule for the chart After you create an alert rule for a query statement, a chart that shows the query result of the query statement is automatically created on the specified dashboard. When you create an alert rule for a query statement on the Search & Analysis page, you must specify a dashboard and a name for the chart. Create an alert rule for existing charts on a dashboard If you create an alert rule for multiple existing charts, you can specify one or more charts with which you want to associate the alert rule. You can specify a conditional expression for each chart, and combine the conditional expressions into a trigger condition of the alert rule. The following section describes how to configure an alert rule for multiple existing charts on a dashboard. If you modify the query statement of a chart with which an alert rule is associated, you must update the query statement in the alert rule. For more information, see Modify an alert. For information about common configurations for alert rules, see FAQ about alerts. Procedure
+You can create an alert rule on the Search & Analysis page of a Logstore or on a dashboard page in the Log Service console. After you create an alert rule, Log Service sends alert notifications when the trigger condition in the alert rule is met. This topic describes how to create an alert rule in the Log Service console. Prerequisites Logs are collected and stored in a Logstore. The indexing feature is enabled and indexes are configured. For more information, see Enable the index feature and configure indexes for a Logstore. Context Log Service allows you to configure alert rules based on charts. You can create an alert rule for a query statement on the Search & Analysis page. After you create the alert rule, a chart that shows the query result of the query statement is automatically created on the specified dashboard. You can also create an alert rule for one or more existing charts on a dashboard. Create a chart and configure an alert rule for the chart After you create an alert rule for a query statement, a chart that shows the query result of the query statement is automatically created on the specified dashboard. When you create an alert rule for a query statement on the Search & Analysis page, you must specify a dashboard and a name for the chart. Create an alert rule for existing charts on a dashboard If you create an alert rule for multiple existing charts, you can specify one or more charts with which you want to associate the alert rule. You can specify a conditional expression for each chart, and combine the conditional expressions into a trigger condition of the alert rule. The following section describes how to configure an alert rule for multiple existing charts on a dashboard. If you modify the query statement of a chart with which an alert rule is associated, you must update the query statement in the alert rule. For more information, see Modify an alert. For information about common configurations for alert rules, see FAQ about alerts.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. In the left-side navigation pane, click the
@@ -11250,9 +11514,9 @@ The following table describes the parameters.
 7. In the Not if icat ions step, configure alert notification methods and click Submit .
 Log Service supports the following alert notification methods: WebHook-Custom and WebHook-DingTalk Bot. For more information, see Notification methods.
 
-#### Authorize a RAM user to manage alert rules
+#### 5.2.2 Authorize a RAM user to manage alert rules
 
-You can use your Apsara Stack tenant account to authorize a RAM user to manage alert rules. This topic describes how to create a RAM user and authorize the RAM user to manage alert rules. Procedure
+You can use your Apsara Stack tenant account to authorize a RAM user to manage alert rules. This topic describes how to create a RAM user and authorize the RAM user to manage alert rules.
 1. Log on to the ASCM console ASCM console as an administrator.
 2. Create a RAM role.
 3. Create a permission policy.
@@ -11315,7 +11579,7 @@ Replace the content in the Policy Document field with the following script. Repl
 6. Add a RAM user to a RAM user group
 7. Grant permissions to a RAM role.
 
-#### Configure alert notification methods
+#### 5.2.3 Configure alert notification methods
 
 Log Service supports the following alert notification methods: Webhook-Custom and WebHook-DingTalk Bot. This topic describes how to configure alert notification methods. Webhook-Custom If you set the notification method to WebHook-Custom, Log Service sends alert notifications to a custom webhook URL. If Log Service does not receive a response within 5 seconds after a notification is sent, the request times out.
 1. When you configure an alert rule, select WebHook-Cust om from the Not if icat ions drop-down list. For more
@@ -11365,11 +11629,11 @@ iii. Click Submit . Template variables You can use template variables when you c
 |---|---|---|---|
 | Results | The parameters and results of a query. The value is of the array type. For more information, see Fields in alert log entries. Not e The Results variable can contain the information of up to 100 alerts. | [ { "EndTime": 1542507580, "FireResult": { " time ": __ __ "1542453580", "count": "0" }, "LogStore": "test- logstore", "Query": "* \| SELECT COUNT(*) as count", "RawResultCount": 1, "RawResults": [ { " time ": __ __ "1542453580", "count": "0" } ], "StartTime": 1542453580 } ] | The first query starts at ${Results[0].StartTime} and ends at ${Results[0].EndTime}. The alert is triggered ${Results[0].FireResult.count} times. Not e In this example, 0 is the serial number of a chart. For more information, see How can I view the serial number of a chart? |
 
-### Modify and view an alarm
+### 5.3 Modify and view an alarm
 
-#### Modify an alert rule
+#### 5.3.1 Modify an alert rule
 
-This topic describes how to modify an alert rule. After you create an alert rule, you can modify the chart that is associated with the alert rule, and then update the alert rule. If you associate a query statement with an alert rule, you can modify the query statement to modify the alert rule. Procedure
+This topic describes how to modify an alert rule. After you create an alert rule, you can modify the chart that is associated with the alert rule, and then update the alert rule. If you associate a query statement with an alert rule, you can modify the query statement to modify the alert rule.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. In the left-side navigation pane, click the
@@ -11385,7 +11649,7 @@ Next . For more information, see Configure alerts.
 9. Modify the alert notification method and click Submit .
 For more information, see Configure alert notification methods.
 
-#### View alert statistics
+#### 5.3.2 View alert statistics
 
 Log Service records historical alert statistics in logs and automatically creates a dashboard to display the execution results of all alert monitoring rules and the alert notifications that are sent. Context View alert logs in a Logstore After you create an alert monitoring rule, Log Service automatically creates a Logstore named int ernal-alert hist ory in the project to which the alert monitoring rule belongs. A log is generated and written to the Logstore each time an alert monitoring rule is executed in the project, regardless of whether an alert is triggered. For more information about log fields, see Fields in alert log entries. You are not charged for the internal-alert-history Logstore. The Logstore cannot be deleted. View alert statistics in a dashboard After you create an alert monitoring rule, Log Service automatically creates a dashboard named Alert Hist ory St at ist ics in the project to which the alert monitoring rule belongs. The dashboard displays information about all alerts that are triggered in the current project. The information includes Alerts, Execution Success Rate, Notification Rate upon Successful Execution, and Top 10 Alert Rule Executions. The Alert History Statistics dashboard cannot be deleted or modified. View alert logs in a Logstore
 1. Log on to the Log Service console.
@@ -11402,7 +11666,7 @@ icon.
 4. In the Dashboard list, click Alert Hist ory St at ist ics.
 The Alert Hist ory St at ist ics dashboard displays information about alerts, such as whether an alert is triggered, the reason why the alert is triggered, and the error information and description of the alert.
 
-#### Manage alerts
+#### 5.3.3 Manage alerts
 
 After you configure an alert, you can manage the alert. For example, you can view information about the alert, modify the alert, and delete the alert. View information about an alert
 1. Log on to the Log Service console.
@@ -11415,13 +11679,13 @@ On the Alert Overview page, you can view the dashboard to which the alert belong
 2. Configure Disabled Duration and click OK.
 After the alert notification feature is suspended, you can view the value of Monit oring St at us to determine the point in time when the alert notification feature is scheduled to resume. If you want to resume the alert notification feature before the scheduled point in time, you can click Modif y on the right side of Monit oring St at us. In the message that appears, click OK. Delete an alert Warning After you delete an alert, the alert cannot be restored. Proceed with caution. In the upper-right corner of the Alert Overview page, click Delet e Alert .
 
-### Relevant syntax and fields for
+### 5.4 Relevant syntax and fields for reference
 
 reference
 
-#### Syntax of conditional expressions in alert rules
+#### 5.4.1 Syntax of conditional expressions in alert rules
 
-Log Service checks whether the specified trigger conditions are met based on the execution results of conditional expressions specified in alert rules. The result of a specified query statement is used as input, and the fields in the result of set operations are used as variables. If the condition that is specified in a conditional expression is met, an alert is triggered. Limits The conditional expressions that you can specify in an alert rule have the following limits: Negative numbers must be enclosed in parentheses (), for example, x+(-100)<100. Numeric values are converted to 64-bit floating-point numbers. If a comparison operator such as equal-to (==) is used, errors may occur. Variable names can contain only letters and digits, and must start with a letter. A conditional expression must be 1 to 128 characters in length. You can specify up to 1,000 conditions in a conditional expression. If the evaluation result of each condition in a conditional expression is false, the evaluation result of the conditional expression is false. An alert rule can be associated with a maximum of three charts or query statements. An alert is triggered only if the result of the specified conditional expression is true. For example, if a conditional expression is 100+100, the result is 200 and is not true, and no alert is triggered. Log Service reserves the words true and false. Log Service also reserves the special characters dollar sign ($) and period (.). You cannot use the reserved words and special characters as variables. Syntax The following table describes the types of syntax that is supported for the conditional expressions of an alert rule.
+Log Service checks whether the specified trigger conditions are met based on the execution results of conditional expressions specified in alert rules. The result of a specified query statement is used as input, and the fields in the result of set operations are used as variables. If the condition that is specified in a conditional expression is met, an alert is triggered. The conditional expressions that you can specify in an alert rule have the following limits: Negative numbers must be enclosed in parentheses (), for example, x+(-100)<100. Numeric values are converted to 64-bit floating-point numbers. If a comparison operator such as equal-to (==) is used, errors may occur. Variable names can contain only letters and digits, and must start with a letter. A conditional expression must be 1 to 128 characters in length. You can specify up to 1,000 conditions in a conditional expression. If the evaluation result of each condition in a conditional expression is false, the evaluation result of the conditional expression is false. An alert rule can be associated with a maximum of three charts or query statements. An alert is triggered only if the result of the specified conditional expression is true. For example, if a conditional expression is 100+100, the result is 200 and is not true, and no alert is triggered. Log Service reserves the words true and false. Log Service also reserves the special characters dollar sign ($) and period (.). You cannot use the reserved words and special characters as variables. Syntax The following table describes the types of syntax that is supported for the conditional expressions of an alert rule.
 
 | Syntax type | Description | Example |   |   |
 |---|---|---|---|---|
@@ -11467,7 +11731,7 @@ Evaluate the results of multiple query statements Syntax An alert rule can be as
 |   | Operation between variables | Operation between a non- string constant and a variable | Operation between a string constant and a variable |
 | Parentheses () | Parentheses () are used to override the standard precedence order and force Log Service to evaluate the enclosed part of a trigger condition before an unenclosed part. | Parentheses () are used to override the standard precedence order and force Log Service to evaluate the enclosed part of a trigger condition before an unenclosed part. | Parentheses () are used to override the standard precedence order and force Log Service to evaluate the enclosed part of a trigger condition before an unenclosed part. |
 
-#### Fields in alert logs
+#### 5.4.2 Fields in alert logs
 
 After you configure an alert rule, Log Service automatically creates a Logstore to store log entries that are generated when the alert rule is executed and alert notifications are sent. This topic describes the fields in alert logs. Fields in the logs that are generated when an alert rule is executed
 
@@ -11508,11 +11772,11 @@ Results field
 | FireResult | The log entry that records the triggers of an alert. If no alert is triggered, the value is NULL. | { " time ": "1542334840", __ __ "count": "0" } |
 | FireResultAsKv | The log entry that records the triggers of an alert. The log entry is formatted in key-value pairs. Not e This field can be used as a template variable. No data is stored to a Logstore for this field. | [foo:0] |
 
-### FAQ
+### 5.5 FAQ
 
-#### A DingTalk alert notification fails to be sent and
+#### 5.5.1 A DingTalk alert notification fails to be sent and the error message "send webhook failed: unable to send request: Post" is reported. Why?
 
-the error message "send webhook failed: unable to send request: Post" is reported. Why? Problem description A DingTalk alert notification fails to be sent and the error message `send webhook failed: unable to send` `request: Post ****` is reported. Possible cause The DingTalk certificate is not loaded on the physical machine on which Log Service is deployed. Solution Download the DingTalk certificate, import the certificate to the physical machine on which Log Service is deployed, and then restart the SlsEtlFramework# server role. Procedure
+the error message "send webhook failed: unable to send request: Post" is reported. Why? Problem description A DingTalk alert notification fails to be sent and the error message `send webhook failed: unable to send` `request: Post ****` is reported. Possible cause The DingTalk certificate is not loaded on the physical machine on which Log Service is deployed. Solution Download the DingTalk certificate, import the certificate to the physical machine on which Log Service is deployed, and then restart the SlsEtlFramework# server role.
 1. Download the DingTalk certificate.
 i. Use a browser to visit https://oapi.dingtalk.com. The following information is returned:
 
@@ -11549,9 +11813,9 @@ cat oapi.dingtalk.com-cert.pem >> /etc/pki/tls/certs/ca-bundle.crt
 3. Restart the SlsEtlFramework# server role.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar of the Apsara Uni-manager Operations Console, click Product s. Then, choose Base/Plat f orms > Apsara Inf rast ruct ure Management Framework. iii. In the left-side navigation pane, click Project & Clust er O&M. On the page that appears, enter sls in the search box. In the search result, click the SlsEtlFramework# server role. iv. On the Inst ances tab, find the instance that you want to use and click Actions in the Actions column. v. Click Rest art .
 
-## Real-time consumption
+## 6 Real-time consumption
 
-### Overview
+### 6.1 Overview
 
 Log Service provides the real-time log consumption feature that allows you to read and write full data in the firstin, first-out (FIFO) order. This feature is similar to the features provided by Kafka. This topic describes the types of real-time consumption. The following table describes the methods that you can use to process log data after the log data is sent to Log Service.
 
@@ -11565,9 +11829,9 @@ Real-time log consumption Log Service allows you to pull log data and consume th
 1. Obtain a cursor based on the start time and end time of data consumption.
 2. Read log data based on the cursor and step parameters and return the position of the next cursor.
 3. Move the cursor to continuously consume log data.
-Use an SDK to consume log data Log Service provides SDKs in multiple programming languages, such as Java, Python, and Go. You can use an SDK to consume log data. Use consumer groups to consume log data Log Service provides an advanced method that allows you to consume log data by using consumer groups. A consumer group is a lightweight computing framework that allows multiple consumers to consume data from a Logstore at the same time. Shards are automatically allocated to consumers in a consumer group. Data is consumed in sequence based on the time when data is written to the Logstore. After a breakpoint, consumers can continue to consume data by using checkpoints. You can use consumer group SDKs in multiple programming languages, such as Go, Python, and Java, to consume log data. Use real-time computing systems to consume log data Use Spark Streaming to consume log data. Use Storm to consume log data Use open source Flink to consume log data Use open source services to consume log data Use Flume to consume log data
+Use an SDK to consume log data Log Service provides SDKs in multiple programming languages, such as Java, Python, and Go. You can use an SDK to consume log data. Log Service provides an advanced method that allows you to consume log data by using consumer groups. A consumer group is a lightweight computing framework that allows multiple consumers to consume data from a Logstore at the same time. Shards are automatically allocated to consumers in a consumer group. Data is consumed in sequence based on the time when data is written to the Logstore. After a breakpoint, consumers can continue to consume data by using checkpoints. You can use consumer group SDKs in multiple programming languages, such as Go, Python, and Java, to consume log data. Use real-time computing systems to consume log data Use Spark Streaming to consume log data. Use open source services to consume log data
 
-### Consume log data
+### 6.2 Consume log data
 
 This topic describes how to use an SDK to consume log data and preview log data in the Log Service console. Use an SDK to consume log data Log Service provides SDKs in various programming languages. You can use an SDK to consume log data. For more information, see the SDK Reference topic in Log Service Developer Guide. The following example shows how to use Log Service SDK for Java to consume log data from a shard:
 
@@ -11607,18 +11871,18 @@ icon next to the Logstore, and then select Consumpt ion Preview.
 4. In the Consumpt ion Preview panel, select a shard and a time range, and then click Preview.
 The Consumption Preview panel displays the log data of the first 10 packets in the specified time range.
 
-### Consumption by consumer groups
+### 6.3 Consumption by consumer groups
 
-#### Use consumer groups to consume log data
+#### 6.3.1 Use consumer groups to consume log data
 
-If you use consumer groups to consume log data, you do not need to focus on factors such as Log Service implementation, load balancing among consumers, and failovers that may occur. This way, you can focus on the business logic during log data consumption. Terms
+If you use consumer groups to consume log data, you do not need to focus on factors such as Log Service implementation, load balancing among consumers, and failovers that may occur. This way, you can focus on the business logic during log data consumption.
 
 | Term | Description |
 |---|---|
 | consumer group | A consumer group consists of multiple consumers. Each consumer in a consumer group consumes different data in a Logstore. You can create a maximum of 30 consumer groups for a Logstore. |
 | consumer | The consumers in a consumer group consume data. The name of each consumer in a consumer group must be unique. |
 
-A Logstore has multiple shards. A consumer library allocates shards to the consumers in a consumer group based on the following rules: You can allocate a shard to only one consumer. Each consumer can consume data from multiple shards. After you add a consumer to a consumer group, shards that are allocated to the consumer group are reallocated to each consumer for load balancing. The shards are reallocated based on the preceding rules. A consumer library stores checkpoints. This way, consumers can resume data consumption from a checkpoint and do not consume data after a program fault is resolved. Procedure You can use Java, Python, or Go to create consumers and consume data. The following procedure uses Java as an example:
+A Logstore has multiple shards. A consumer library allocates shards to the consumers in a consumer group based on the following rules: You can allocate a shard to only one consumer. Each consumer can consume data from multiple shards. After you add a consumer to a consumer group, shards that are allocated to the consumer group are reallocated to each consumer for load balancing. The shards are reallocated based on the preceding rules. A consumer library stores checkpoints. This way, consumers can resume data consumption from a checkpoint and do not consume data after a program fault is resolved. You can use Java, Python, or Go to create consumers and consume data. The following procedure uses Java as an example:
 1. Add Maven dependencies.
 
 ```xml
@@ -11764,7 +12028,7 @@ class SampleLogHubProcessorFactory implements ILogHubProcessorFactory {
         return new SampleLogHubProcessor();
 ```
 
-`}` `}` For more information, see Java, Python, and Go. View the status of a consumer group You can use the Log Service console, call the API, or use an SDK to view the progress of your data consumption. For more information, see View the status of a consumer group. Related operations Handle exceptions. We recommend that you configure Log4j for the consumer program to return error messages in consumer groups. This way, you can handle exceptions at the earliest opportunity. The following code shows a configuration file of log4j.properties:
+`}` `}` For more information, see Java, Python, and Go. You can use the Log Service console, call the API, or use an SDK to view the progress of your data consumption. For more information, see View the status of a consumer group. Related operations Handle exceptions. We recommend that you configure Log4j for the consumer program to return error messages in consumer groups. This way, you can handle exceptions at the earliest opportunity. The following code shows a configuration file of log4j.properties:
 
 ```
 log4j.rootLogger = info,stdout log4j.appender.stdout = org.apache.log4j.ConsoleAppender log4j.appender.stdout.Target = System.out log4j.appender.stdout.layout = org.apache.log4j.PatternLayout log4j.appender.stdout.layout.ConversionPattern = [%-5p] %d{yyyy-MM-dd HH:mm:ss,SSS} method:%l%n%m%n
@@ -11887,7 +12151,7 @@ nsumergroup/consumergroup-test"
 
 `}` `]` `}`
 
-#### View the status of a consumer group
+#### 6.3.2 View the status of a consumer group
 
 This topic describes how to view the status of a consumer group. View the consumption progress in the Log Service console
 1. Log on to the Log Service console.
@@ -11974,9 +12238,9 @@ g);
 
 `}` `}` `}` `}`
 
-### Use Storm to consume log data
+### 6.4 Use Storm to consume log data
 
-Log Service LogHub provides efficient and reliable log collection and consumption channels. You can use services such as Logtail or SDKs to collect log data in real time. After log data is collected and sent to Log Service, you can use stream computing systems such as Spark Streaming and Apache Storm to consume the log data. To reduce the costs of data consumption, Log Service provides LogHub Storm spouts to read data from Log Service in real time. Architecture and implementation In the following figure, LogHub Storm spouts are enclosed in red dashed-line boxes. Each Storm topology has a group of spouts that work together to read data from a Logstore. Spouts in different topologies are independent of each other. Each topology is identified by the unique name of a LogHub consumer group. Spouts in the same topology use a consumer group to perform load balancing and automatic failover. For more information, see Use consumer groups to consume log data. Spouts in a topology read data from a Logstore in real time, and then send the data to bolts in the topology. The spouts save consumption checkpoints to the LogHub server on a regular basis. Architecture and implementation Limits You can create a maximum of 10 consumer groups to consume log data from a Logstore. If you no longer need a consumer group, you can call the DeleteConsumerGroup operation of the SDK for Java to delete the consumer group. We recommend that you configure the same number of spouts for a Logstore as the number of shards in the Logstore. This is because a single spout may not be able to process a large amount of data from multiple shards. If the data volume in a shard exceeds the processing capacity of a single spout, you can split the shard to reduce the data volume in each shard. LogHub Storm spouts and bolts must use the ack method to check whether log data is sent from spouts to bolts and whether the data is processed by the bolts. Examples The following code provides an example to show how to construct a Storm topology:
+Log Service LogHub provides efficient and reliable log collection and consumption channels. You can use services such as Logtail or SDKs to collect log data in real time. After log data is collected and sent to Log Service, you can use stream computing systems such as Spark Streaming and Apache Storm to consume the log data. To reduce the costs of data consumption, Log Service provides LogHub Storm spouts to read data from Log Service in real time. Architecture and implementation In the following figure, LogHub Storm spouts are enclosed in red dashed-line boxes. Each Storm topology has a group of spouts that work together to read data from a Logstore. Spouts in different topologies are independent of each other. Each topology is identified by the unique name of a LogHub consumer group. Spouts in the same topology use a consumer group to perform load balancing and automatic failover. For more information, see Use consumer groups to consume log data. Spouts in a topology read data from a Logstore in real time, and then send the data to bolts in the topology. The spouts save consumption checkpoints to the LogHub server on a regular basis. Architecture and implementation You can create a maximum of 10 consumer groups to consume log data from a Logstore. If you no longer need a consumer group, you can call the DeleteConsumerGroup operation of the SDK for Java to delete the consumer group. We recommend that you configure the same number of spouts for a Logstore as the number of shards in the Logstore. This is because a single spout may not be able to process a large amount of data from multiple shards. If the data volume in a shard exceeds the processing capacity of a single spout, you can split the shard to reduce the data volume in each shard. LogHub Storm spouts and bolts must use the ack method to check whether log data is sent from spouts to bolts and whether the data is processed by the bolts. Examples The following code provides an example to show how to construct a Storm topology:
 
 ```
      public static void main( String[] args )
@@ -12138,9 +12402,9 @@ The following code provides an example to show how to add Maven dependencies for
 </dependency>
 ```
 
-### Use Flume to consume log data
+### 6.5 Use Flume to consume log data
 
-This topic describes how to use Flume to consume log data. You can use the aliyun-log-flume plug-in to connect Log Service to Flume and write log data to Log Service or consume log data from Log Service. Context The aliyun-log-flume plug-in connects Log Service to Flume. When Log Service is connected to Flume, you can use Flume to connect Log Service to other systems such as Hadoop distributed file system (HDFS) and Kafka. The aliyun-log-flume plug-in provides sinks and sources to connect Log Service to Flume. Sink: reads data from other data sources and writes the data to Log Service. Source: consumes log data from Log Service and writes the log data to other systems. For more information, visit GitHub. Procedure
+This topic describes how to use Flume to consume log data. You can use the aliyun-log-flume plug-in to connect Log Service to Flume and write log data to Log Service or consume log data from Log Service. Context The aliyun-log-flume plug-in connects Log Service to Flume. When Log Service is connected to Flume, you can use Flume to connect Log Service to other systems such as Hadoop distributed file system (HDFS) and Kafka. The aliyun-log-flume plug-in provides sinks and sources to connect Log Service to Flume. Sink: reads data from other data sources and writes the data to Log Service. Source: consumes log data from Log Service and writes the log data to other systems. For more information, visit GitHub.
 1. Download and install Flume. For more information, see Flume.
 2. Download the aliyun-log-flume plug-in and save the plug-in in the cd/***/flume/lib directory. To download
 the plug-in, click aliyun-log-flume-1.3.jar.
@@ -12212,7 +12476,7 @@ For more information about how to configure a sink, visit GitHub. Source You can
 
 For more information about how to configure a source, visit GitHub.
 
-### Use open source Flink to consume log
+### 6.6 Use open source Flink to consume log data
 
 data Log Service provides the flink-log-connector agent to connect with Flink. This topic describes how to connect Log Service with Flink to consume log data. Prerequisites An AccessKey pair is obtained. For more information, see Obtain an AccessKey pair. A project and a Logstore are created. For more information, see Create a project and Create a Logstore. A RAM user is authorized to access the Logstore from which you want to consume data. For more information, see Grant a RAM user the permissions to consume data from a specified Logstore. Context The flink-log-connector agent consists of the flink-log-consumer and flink-log-producer agents. The two agents have the following differences: The flink-log-consumer agent reads data from Log Service. This agent supports the exactly-once semantics and load balancing among shards. The flink-log-producer agent writes data to Log Service. Before you can use the flink-log-producer agent to write data to Log Service, you must add Maven dependencies. The following example shows sample Maven dependencies:
 
@@ -12382,9 +12646,9 @@ r(), configProps);
 
 `}` `}` `}`
 
-### Use Logstash to consume log data
+### 6.7 Use Logstash to consume log data
 
-Log Service provides Logstash that you can use to consume log data. You can configure the Logstash input plug-in to read log data from Log Service, and then write the data to other systems, such as Kafka and Hadoop Distributed File System (HDFS). Features Distributed collaborative consumption: You can configure multiple servers to consume log data from a Logstore at the same time. High performance: If you use a Java consumer group, the consumption speed of a single-core CPU can reach 20 MB/s. High reliability: Log Service saves consumption checkpoints. This mechanism resumes log consumption from the last checkpoint after a consumption exception is resolved. Automatic load balancing: Shards are automatically allocated based on the number of consumers in a consumer group. If you add a consumer to a consumer group or remove a consumer from the consumer group, shards are automatically reallocated. Procedure
+Log Service provides Logstash that you can use to consume log data. You can configure the Logstash input plug-in to read log data from Log Service, and then write the data to other systems, such as Kafka and Hadoop Distributed File System (HDFS). Features Distributed collaborative consumption: You can configure multiple servers to consume log data from a Logstore at the same time. High performance: If you use a Java consumer group, the consumption speed of a single-core CPU can reach 20 MB/s. High reliability: Log Service saves consumption checkpoints. This mechanism resumes log consumption from the last checkpoint after a consumption exception is resolved. Automatic load balancing: Shards are automatically allocated based on the number of consumers in a consumer group. If you add a consumer to a consumer group or remove a consumer from the consumer group, shards are automatically reallocated.
 1. Install Logstash.
 i. Download the Logstash installation package. ii. Decompress the package that you downloaded to the specified directory.
 2. Install the Logstash input plug-in.
@@ -12448,7 +12712,7 @@ output {
 
 `}`
 
-### Use Spark Streaming to consume log
+### 6.8 Use Spark Streaming to consume log data
 
 data After Log Service collects log data, you can use Spark Streaming to consume the data. The Spark SDK provided by Alibaba Cloud allows you to consume log data from Log Service in Receiver or Direct mode. You must add the following Maven dependency:
 
@@ -12626,7 +12890,7 @@ rt=localhost:2181>
 
 `}` `}` For more information, visit GitHub.
 
-### Use Realtime Compute to consume
+### 6.9 Use Realtime Compute to consume log data
 
 log data You can use Realtime Compute (Blink) to create a schema for data in Log Service and consume the data. This topic describes how to use Realtime Compute to create a schema for data in Log Service. This topic also describes the attribute fields and data type mapping that you can configure when you create a schema. Create a schema for data in Log Service Log Service stores streaming data. Realtime Compute can use the streaming data as input data. The following example is a sample log entry:
 
@@ -12710,17 +12974,17 @@ create table sls_stream(
 
 Usage notes Blink 2.2.0 or earlier versions do not support shard scaling. If you split or merge shards when a job is reading data from a Logstore, the job fails and cannot continue. In this case, you must restart the job. You cannot delete or recreate a Logstore whose log data is being consumed, regardless of the Blink version. In Blink version 1.6.0 and earlier, the read performance may be affected if you specify a consumer group to consume log data from a Logstore that contains a large number of shards. You cannot define the map data type in Realtime Compute when you create a schema for data in Log Service. Fields that do not exist are set to null. Fields can be converted in a random order. However, we recommend that you convert the fields in the same order as the fields in the schema. If no new data is written to a shard, the latency of a job increases. In this case, you must change the number of concurrent tasks in the job to the number of shards in which data is read and written. To extract fields from tags such as `__tag__:__hostname__` and `__tag__:__path__` , you can delete the __tag__: prefix and follow the method used to extract attribute fields. You cannot extract this type of data during debugging. We recommend that you use the onpremises debugging method and the print method to display data in logs.
 
-## Data shipping
+## 7 Data shipping
 
-### Ship logs to OSS
+### 7.1 Ship logs to OSS
 
-#### Overview
+#### 7.1.1 Overview
 
 Log Service provides the data shipping feature. You can use this feature to ship logs to Object Storage Service (OSS) in real time by using the Log Service console. This topic describes the benefits and scenarios of the data shipping feature. In the Log Service console, you can ship logs to other Apsara Stack services. Then, you can store or consume the log data by using other systems such as E-MapReduce. After you enable the log shipping feature, Log Service ships the collected logs to the specified cloud service at regular intervals. Scenarios The data shipping feature can be used to connect Log Service with data warehouses. Benefits The data shipping feature of Log Service has the following benefits: Ease of use You only need to complete a few settings in the Log Service console before you can ship logs from Logstores to other Apsara Stack services such as OSS. High efficiency Log Service stores logs that are collected from multiple servers. This improves efficiency when you ship log data to Apsara Stack services such as OSS. Effective management You can ship logs from different projects or Logstores to different OSS buckets. This way, you can efficiently manage the logs by log type or log source. Log shipping destinations For information about how to ship logs to OSS, see Ship log data from Log Service to OSS.
 
-#### Ship log data from Log Service to OSS
+#### 7.1.2 Ship log data from Log Service to OSS
 
-You can use Log Service to collect log data and ship the log data to Object Storage Service (OSS) for storage and analysis. This topic describes how to ship log data from Log Service to OSS. Prerequisites Log data is collected. For more information, see Log collection methods. OSS is activated. A bucket is created in the region where the Log Service project resides. For more information, see the Creat e bucket s section in the Service User Guide -Ojbect Storage Service(OSS). A Resource Access Management (RAM) role is created for the level-1 organization. For more information, see Obtain the ARN of a RAM role. Context Log Service can automatically ship log data from a Logstore to an OSS bucket. You can set a custom retention period for the log data in the OSS bucket. Permanent retention is supported. You can use data processing platforms such as E-MapReduce and Data Lake Analytics (DLA) or use custom programs to consume log data from the OSS bucket. Procedure
+You can use Log Service to collect log data and ship the log data to Object Storage Service (OSS) for storage and analysis. This topic describes how to ship log data from Log Service to OSS. Prerequisites Log data is collected. For more information, see Log collection methods. OSS is activated. A bucket is created in the region where the Log Service project resides. For more information, see the Creat e bucket s section in the Service User Guide -Ojbect Storage Service(OSS). A Resource Access Management (RAM) role is created for the level-1 organization. For more information, see Obtain the ARN of a RAM role. Context Log Service can automatically ship log data from a Logstore to an OSS bucket. You can set a custom retention period for the log data in the OSS bucket. Permanent retention is supported. You can use data processing platforms such as E-MapReduce and Data Lake Analytics (DLA) or use custom programs to consume log data from the OSS bucket.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project from which you want to ship log data to OSS.
 3. On the Logstores tab, click the > icon on the left of the specific Logstore and choose Dat a T ransf ormat ion
@@ -12787,9 +13051,9 @@ Error messages If a shipping task fails, an error message is returned for the ta
 
 Retry a shipping task By default, if a shipping task fails, Log Service retries the task based on the retry policy. You can also manually retry the task. By default, Log Service retries all tasks of the last two days. The minimum interval between two consecutive retries is 15 minutes. If a task fails for the first time, Log Service retries the task 15 minutes later. If the task fails for the second time, Log Service retries the task 30 minutes later. If the task fails for the third time, Log Service retries the task 60 minutes later. A similar method is used for subsequent attempts. To immediately retry a failed task, you can click Ret ry All Failed T asks or Ret ry on the right of the task. You can also use the Log Service API or an SDK to retry a task.
 
-#### Obtain the ARN of a RAM role
+#### 7.1.3 Obtain the ARN of a RAM role
 
-When you use a RAM user to ship data from Log Service to Object Storage Service (OSS), you must first create a Resource Access Management (RAM) role and specify the ARN of the RAM role. This topic describes how to create a RAM role and obtain the ARN of a RAM role. Procedure
+When you use a RAM user to ship data from Log Service to Object Storage Service (OSS), you must first create a Resource Access Management (RAM) role and specify the ARN of the RAM role. This topic describes how to create a RAM role and obtain the ARN of a RAM role.
 1. Log on to the Log Service console.
 2. In the top navigation bar, click Conf igurat ions.
 3. On the Service-Linked Roles page, click Creat e RAM Role.
@@ -12800,7 +13064,7 @@ Search.
 6. Obtain the ARN of the RAM role.
 In the search results, the value in the role ident if ier column is the ARN of the RAM role.
 
-#### Storage Formats
+#### 7.1.4 Storage Formats
 
 Different storage formats are supported when Log Service ships logs to OSS, including JSON, CSV, and Parquet. This topic describes the field details of the formats. JSON format You can set the storage format for the data that is shipped to OSS. The following table shows how to set the st orage f ormat to JSON. For more information, see Configure a data shipping rule.
 
@@ -12843,7 +13107,7 @@ The following table lists the directories in OSS buckets that store data shipped
 | Uncompressed | .parquet | oss://oss-shipper- shenzhen/ecs test/2016/01/26/20 _ /54 1453812893059571256 937.pa _ _ rquet | You can download the OSS buckets to the local host and use the parquet-tools utility to open the objects. For more information about the parquet-tools utility, visit parquet-tools. |
 | Snappy | .snappy.parquet | oss://oss-shipper- shenzhen/ecs test/2016/01/26/20 _ /54 1453812893059571256 937.sn _ _ appy.parquet | You can download the OSS buckets to the local host and use the parquet-tools utility to open the objects. For more information about the parquet-tools utility, visit parquet-tools. |
 
-#### Decompress Snappy compressed files
+#### 7.1.5 Decompress Snappy compressed files
 
 When you ship data from Log Service to Object Storage Service (OSS), you can use Snappy to compress OSS objects. After the data is shipped to OSS, you can decompress OSS objects by using the C++ library, Java library, Python library, and decompression tool for Linux. Use the C++ library to decompress OSS objects Download the C++ library from the snappy page and use the Snappy.Uncompress method to decompress Snappy compressed OSS objects. Use the Java library to decompress OSS objects Download the Java library from the xerial snappy-java page and use the Snappy.Uncompress or Snappy.SnappyInputStream method to decompress Snappy compressed OSS objects. The SnappyFramedInputStream method is not supported. If you use Java Library 1.1.2.1, some Snappy compressed OSS objects may fail to be decompressed. For more information, see Bad handling of the MAGIC HEADER. To fix this issue, you can use Java Library 1.1.2.6 or later.
 
@@ -12885,13 +13149,13 @@ Use decompression tools for Linux to decompress OSS buckets Log Service allows y
 ./snappy_tool 03_1453457006548078722_44148.snappy 03_1453457006548078722_44148 compressed.size: 2217186 snappy::Uncompress return: 1 uncompressed.size: 25223660
 ```
 
-## Time series storage
+## 8 Time series storage
 
-### Data import
+### 8.1 Data import
 
-#### Collect metric data from hosts
+#### 8.1.1 Collect metric data from hosts
 
-Log Service allows you to collect metric data from hosts by using Logtail. The metric data includes CPU, memory, load, disk, and network data. This topic describes how to create a Logtail configuration in the Log Service console to collect metric data from hosts. Prerequisites Logtail V0.16.40 or later is installed on a Linux server. For more information, see Install Logtail in Linux. Limits Windows servers are not supported. Metric data related to GPUs and hardware status cannot be collected. Procedure
+Log Service allows you to collect metric data from hosts by using Logtail. The metric data includes CPU, memory, load, disk, and network data. This topic describes how to create a Logtail configuration in the Log Service console to collect metric data from hosts. Prerequisites Logtail V0.16.40 or later is installed on a Linux server. For more information, see Install Logtail in Linux. Windows servers are not supported. Metric data related to GPUs and hardware status cannot be collected.
 1. Log on to the Log Service console.
 2. In the Import Dat a section, click Host Monit oring Dat a.
 3. In the Specif y Logst ore step, select the project and the Metricstore that you want to use. Then, click Next .
@@ -13021,15 +13285,15 @@ System-related metrics
 
 What's next Query and analyze data After metric data is collected, you can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results in Log Service You can create a time series chart and add the chart to a dashboard to visualize the query and analysis results. You can also configure alert rules for the chart.
 
-#### Import metrics collected by Telegraf
+#### 8.1.2 Import metrics collected by Telegraf
 
-##### Telegraf overview
+##### 8.1.2.1 Telegraf overview
 
 Telegraf is an agent developed by InfluxData to collect metric data. Telegraf supports multiple input plug-ins and output plug-ins, such as MySQL, Redis, and Elasticsearch. This topic describes how Telegraf works, how to install Telegraf, and how to use Telegraf to collect metric data. Implementation You can use Telegraf to collect metric data from MySQL, Redis, and Elasticsearch. After you collect metric data, you can use the InfluxDB line protocol to write the collected data to Logtail. Then, Logtail uploads the metric data to a Metricstore of Log Service. Log Service allows you to configure plug-ins and create dashboards in the console for the collected data. The following figure shows how Telegraf works. Collection methods Telegraf provides the following collection methods: Local collection You can use Telegraf to collect metric data from a local server by using the local collection method. The server that is specified in your machine group is the server from which metric data is collected. When you create a Logtail configuration file, you can set the IP address of the server to 127.0.0.1. We recommend that you use this collection method. Remote collection You can use Telegraf that is installed on a server to collect metric data from other servers by using the remote collection method. When you create a Logtail configuration file, you can set the IP address to the actual IP address or the actual endpoint of the server. If you use the remote collection method, you can configure only one server in the machine group. If you configure more than one servers, duplicate data is generated. You can use the remote collection method in the following scenarios: You want to collect metric data of a cloud service where you cannot install Logtail and Telegraf. You do not want to install a metric collection agent on a running server.
 
-##### Collect metric data from MySQL servers
+##### 8.1.2.2 Collect metric data from MySQL servers
 
-You can use Telegraf to collect metric data from MySQL servers, and then use Logtail to send the metric data to a Metricstore in Log Service. This way, you can monitor metric data of MySQL servers in a visualized manner. This topic describes how to collect metric data from a MySQL server by using Log Service and visualize the data. Prerequisites Logtail V0.16.48 or later is installed on a Linux server. For more information, see Install Logtail in Linux. Telegraf is installed on a server that is connected to the MySQL server over a private network. Limit Only MySQL 5.5 or later is supported. Procedure
+You can use Telegraf to collect metric data from MySQL servers, and then use Logtail to send the metric data to a Metricstore in Log Service. This way, you can monitor metric data of MySQL servers in a visualized manner. This topic describes how to collect metric data from a MySQL server by using Log Service and visualize the data. Prerequisites Logtail V0.16.48 or later is installed on a Linux server. For more information, see Install Logtail in Linux. Telegraf is installed on a server that is connected to the MySQL server over a private network. Limit Only MySQL 5.5 or later is supported.
 1. Log on to the Log Service console.
 2. In the Import Dat a section, click MySQL Monit oring Dat a.
 3. In the Specif y Logst ore step, select the project and the Metricstore that you want to use. Then, click Next .
@@ -13050,9 +13314,9 @@ Applied Server Groups section. Then, click Next . Not ice If you enable a machin
 | Server List | Click the + icon to add the MySQL server and configure the following parameters: Account : the username of the account that is used to log on to the MySQL server. Not e We recommend that you create a dedicated account to monitor the data of the MySQL server and grant the account only the permissions that are required to monitor data. Password: the password of the account. Address: the endpoint of the MySQL server. The endpoint can be the IP address, hostname, or domain name of the server. Port : the port number of the MySQL server. The default value is 3306. You can add multiple MySQL servers based on your business requirements. |
 | Custom Tags | Create a custom tag in Cust om T ags. The created tag is added to the data that is collected based on the Logtail configuration. You can use custom tags to identify the data that is collected based on different Logtail configurations in a Metricstore. You can click the + icon to create a custom tag. You can create multiple custom tags. The custom tags are added to all data that is collected based on the Logtail configuration. |
 
-FAQ How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service. What's next Query and analyze data After you configure the settings, Telegraf uses Logtail to upload collected metric data to the specified Metricstore in Log Service. You can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules.
+How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service. What's next Query and analyze data After you configure the settings, Telegraf uses Logtail to upload collected metric data to the specified Metricstore in Log Service. You can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules.
 
-##### Collect metric data from Java applications or Tomcat
+##### 8.1.2.3 Collect metric data from Java applications or Tomcat servers
 
 servers You can use Telegraf to collect metric data from Java applications or Tomcat servers. Then, you can use Logtail to send the metric data to a Metricstore in Log Service. This way, you can monitor the metric data of Java applications and Tomcat servers in a visualized manner. This topic describes how to collect metric data from Java applications by using Log Service and visualize the data. Prerequisites Logtail V0.16.48 or later is installed on a Linux server. For more information, see Install Logtail in Linux. Java 1.6 or later is installed on the server. Step 1: Create a Logtail configuration
 1. Log on to the Log Service console.
@@ -13108,9 +13372,9 @@ curl http://127.0.0.1:7777/jolokia/
 {"request":{"type":"version"},"value":{"agent":"1.6.2","protocol":"7.2","config":{"listenForHttpServic e":"true","maxCollectionSize":"0","authIgnoreCerts":"false","agentId":"30.43.124.186-752-5b091b5d-jvm" ,"debug":"false","agentType":"jvm","policyLocation":"classpath:\/jolokia-access.xml","agentContext":"\ /jolokia","serializeException":"false","mimeType":"text\/plain","maxDepth":"15","authMode":"basic","au thMatch":"any","discoveryEnabled":"true","streaming":"true","canonicalNaming":"true","historyMaxEntrie s":"10","allowErrorDetails":"true","allowDnsReverseLookup":"true","realm":"jolokia","includeStackTrace ":"true","maxObjects":"0","useRestrictorService":"false","debugMaxEntries":"100"},"info":{"product":"t omcat","vendor":"Apache","version":"8.5.57"}},"timestamp":1602663330,"status":200}⏎
 ```
 
-FAQ How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service. What's next Query and analyze data After you configure the settings, Telegraf uses Logtail to upload collected metric data to the specified Metricstore in Log Service. You can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules.
+How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service. What's next Query and analyze data After you configure the settings, Telegraf uses Logtail to upload collected metric data to the specified Metricstore in Log Service. You can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules.
 
-##### Collect metric data from NGINX servers
+##### 8.1.2.4 Collect metric data from NGINX servers
 
 NGINX provides a built-in status page that allows you to monitor the status of NGINX metric data. You can use Telegraf to collect metric data from NGINX servers, and then use Logtail to send the metric data to a Metricstore in Log Service. This way, you can monitor metric data of NGINX servers in a visualized manner. This topic describes how to collect metric data from a NGINX server by using Log Service and visualize the data. Prerequisites Logtail V0.16.50 or later is installed on a Linux server. For more information, see Install Logtail in Linux. Step 1: Configure the NGINX status module
 1. Run the following command to check whether NGINX has the status module. For more information, see Module
@@ -13165,13 +13429,13 @@ parameters.
 | Server List | Click the + icon to add the NGINX server and configure the following parameters: Address: the endpoint of the NGINX server. Port : the port number of the NGINX server. Pat h: the URI of the NGINX status module. Example: /private/nginxstatus. For _ information about how to configure the NGINX status module, see Step 1: Configure the NGINX status module. You can add multiple NGINX servers based on your business requirements. |
 | Custom Tags | Create a custom tag in Cust om T ags. The created tag is added to the data that is collected based on the Logtail configuration. You can use custom tags to identify the data that is collected based on different Logtail configurations in a Metricstore. You can click the + icon to create a custom tag. You can create multiple custom tags. The custom tags are added to all data that is collected based on the Logtail configuration. |
 
-FAQ How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service. What's next Query and analyze data After you configure the settings, Telegraf uses Logtail to upload collected metric data to the specified Metricstore in Log Service. You can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules.
+How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service. What's next Query and analyze data After you configure the settings, Telegraf uses Logtail to upload collected metric data to the specified Metricstore in Log Service. You can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules.
 
-#### Collect metric data from Prometheus
+#### 8.1.3 Collect metric data from Prometheus
 
-##### Collect metric data from Prometheus by using the
+##### 8.1.3.1 Collect metric data from Prometheus by using the Remote Write Protocol
 
-Remote Write Protocol Prometheus is a cloud native application that you can use to collect and monitor metric data of various software and systems. This topic describes how to import metric data from Prometheus to Log Service. This topic also describes how to use Log Service to analyze and monitor the data. Prerequisites A Metricstore is created. For more information, see Create a Metricstore. Prometheus is installed. For more information, see GETTING STARTED. Data collection rules are configured in Prometheus. For more information, see scrape_config. Procedure Log Service supports the Remote Write Protocol. You can use the remote write feature of Prometheus to import metric data to Log Service. Before you can use the remote write feature, you must perform the following steps to enable the feature in Prometheus:
+Remote Write Protocol Prometheus is a cloud native application that you can use to collect and monitor metric data of various software and systems. This topic describes how to import metric data from Prometheus to Log Service. This topic also describes how to use Log Service to analyze and monitor the data. Prerequisites A Metricstore is created. For more information, see Create a Metricstore. Prometheus is installed. For more information, see GETTING STARTED. Data collection rules are configured in Prometheus. For more information, see scrape_config. Log Service supports the Remote Write Protocol. You can use the remote write feature of Prometheus to import metric data to Log Service. Before you can use the remote write feature, you must perform the following steps to enable the feature in Prometheus:
 1. Log on to the server on which Prometheus is installed.
 2. Open the configuration file and configure the parameters based on your business scenario. The following
 table describes the parameters. For more information, see remote_write.
@@ -13203,9 +13467,9 @@ After you configure Prometheus, you can use the preview feature in the Log Servi
 > Consumpt ion Preview.
 If data is displayed in the Consumpt ion Preview panel, Prometheus is correctly configured. What's next After metric data is collected from Prometheus, you can perform the following operations on the data: Query and analyze Prometheus metric data in Log Service. For more information, see Query and analyze time series data. Visualize Prometheus metric data in Grafana. For more information, see Send time series data from Log Service to Grafana.
 
-##### Collect metric data from Prometheus by using a
+##### 8.1.3.2 Collect metric data from Prometheus by using a Logtail plug-in
 
-Logtail plug-in Log Service allows you to collect various types of Prometheus metrics by using a Logtail plug-in. The metrics include Prometheus-formatted metrics from Node Exporter and Kafka Exporter, and Prometheus metrics that are collected from applications. This topic describes how to create a Logtail configuration in the Log Service console to collect metric data from Prometheus. Prerequisites A Metricstore is created. For more information, see Manage a Metricstore. Procedure Not ice A Logtail plug-in supports only one Logtail configuration for Prometheus. If more than one configuration exists, Logtail uses a random configuration.
+Logtail plug-in Log Service allows you to collect various types of Prometheus metrics by using a Logtail plug-in. The metrics include Prometheus-formatted metrics from Node Exporter and Kafka Exporter, and Prometheus metrics that are collected from applications. This topic describes how to create a Logtail configuration in the Log Service console to collect metric data from Prometheus. Prerequisites A Metricstore is created. For more information, see Manage a Metricstore. Not ice A Logtail plug-in supports only one Logtail configuration for Prometheus. If more than one configuration exists, Logtail uses a random configuration.
 1. Log on to the Log Service console.
 2. In the Import Dat a section, click Promet heus Met ric Scrape.
 3. In the Specif y Logst ore step, select the project and the Metricstore that you want to use. Then, click Next .
@@ -13232,9 +13496,9 @@ Next . Plug-in Conf ig includes the inputs and processors parameters. Log Servic
 
 `}` `}` `]` `}` For more information, see Add log fields. What's next Query and analyze data After metric data is collected, you can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results in Log Service You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules. Visualize data on Grafana Log Service allows you to send time series data to Grafana for visualization. For more information, see Send time series data from Log Service to Grafana.
 
-### Query and analysis
+### 8.2 Query and analysis
 
-#### Overview of query and analysis of time series
+#### 8.2.1 Overview of query and analysis of time series data
 
 data This topic describes the syntax and limits of query and analysis on time series data. Log Service supports the following types of syntax for the query and analysis of time series data: SQL: You can use the SQL syntax to query and analyze time series data based on the encoding format of the data. Combination of SQL and PromQL: This combination allows you to query and analyze time series data in an efficient manner. The combination is implemented by using nested queries. PromQL is the query language that is provided by Prometheus. For more information, see Prometheus documentation. SQL Examples of SQL-based query statements: Query and analyze all data from a Metricstore.
 
@@ -13288,11 +13552,11 @@ The following table describes the schema of a table that is returned by the `pro
 |---|---|---|
 | series | map<varchar, varchar> | The time series. |
 
-Limits A Metricstore supports only the query API endpoints of Prometheus, such as /query and /query_range. Other API endpoints, such as /admin, /alerts, and /rules, are not supported. If you use the combination of SQL and PromQL for query and analysis, a maximum of 11,000 points in time can be returned for a query. If you use the combination of SQL and PromQL for query and analysis, the metric name and label that you specify must comply with the naming conventions. For more information, see Metric.
+A Metricstore supports only the query API endpoints of Prometheus, such as /query and /query_range. Other API endpoints, such as /admin, /alerts, and /rules, are not supported. If you use the combination of SQL and PromQL for query and analysis, a maximum of 11,000 points in time can be returned for a query. If you use the combination of SQL and PromQL for query and analysis, the metric name and label that you specify must comply with the naming conventions. For more information, see Metric.
 
-#### Query and analyze time series data
+#### 8.2.2 Query and analyze time series data
 
-This topic describes how to query and analyze time series data in a Metricstore and how to specify a legend format for a time series chart. Prerequisites Time series data is collected. For more information, see Collect time series data. Procedure Only the combination of the SQL syntax and the PromQL syntax is supported on the query page of a Metricstore. If you want to use the standard SQL syntax, click the Search & Analyze button in the upperright corner of the query page to go to the Search & Analysis page of the Metricstore.
+This topic describes how to query and analyze time series data in a Metricstore and how to specify a legend format for a time series chart. Prerequisites Time series data is collected. For more information, see Collect time series data. Only the combination of the SQL syntax and the PromQL syntax is supported on the query page of a Metricstore. If you want to use the standard SQL syntax, click the Search & Analyze button in the upperright corner of the query page to go to the Search & Analysis page of the Metricstore.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. Choose T ime Series St orage > Met ricst ore. On the Metricstore tab, click the Metricstore that you want to
@@ -13320,11 +13584,11 @@ Related operations
 | Share query and analysis results | In the upper-right corner of the query page, click Share to copy the URL of the page. You can send the URL to other users who have the permissions to query the time series data in the Metricstore. The query and analysis results that are displayed when you copy the URL are also displayed when a user visits the URL. |
 | Go to the Search & Analysis page | In the upper-right corner of the query page, click Search & Analyze. |
 
-### Visualization
+### 8.3 Visualization
 
-#### Configure a time series chart
+#### 8.3.1 Configure a time series chart
 
-This topic describes how to configure a time series chart. Background information Time series charts are designed for Metricstores. A time series chart displays the results of one or more queries on data that is collected from Prometheus and stored to a Metricstore. Procedure
+This topic describes how to configure a time series chart. Background information Time series charts are designed for Metricstores. A time series chart displays the results of one or more queries on data that is collected from Prometheus and stored to a Metricstore.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. Choose T ime Series St orage > Met ricst ore. On the Metricstore tab, click the Metricstore that you want to
@@ -13352,7 +13616,7 @@ Example: __labels__:hostname#$#hostname1|ip#$#192.0.2.0 __time_nano__:1644309671
 
 `:52.71 __name__:cpu_util` . Log Service generates a time series chart based on the collected time series data and the metrics that you select. For example, if you want to query the CPU utilization of different hosts, you can select the cpu_util metric. Then, Log Service displays a time series chart for the CPU utilization of different hosts.
 
-#### Send time series data from Log Service to
+#### 8.3.2 Send time series data from Log Service to Grafana
 
 Grafana Metricstores of Log Service are compatible with the query API of Prometheus. You can send data from Log Service to Grafana and visualize the data in Grafana. This topic describes how to connect Log Service as a Prometheus data source to Grafana. Prerequisites Grafana is installed. For more information, see Install Grafana. Time series data is imported to Log Service. For more information, see Collect metric data from Prometheus. Connect Log Service to Grafana
 1. Log on to Grafana.
@@ -13389,15 +13653,15 @@ Access Log Service by using the query API of Prometheus Log Service is compatibl
 | Querying label values | GET /api/v1/label/<label name>/values _ |
 | Finding series by label matchers | GET /api/v1/series POST /api/v1/series |
 
-## RAM
+## 9 RAM
 
-### Overview
+### 9.1 Overview
 
 Resource Access Management (RAM) is a resource access control service provided by Apsara Stack. You can use RAM to manage users, including employees, systems, and applications. You can also use RAM to grant users permissions to access resources. RAM provides the following features: RAM Role To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role. This role specifies the operations that the cloud service can perform on the resources. Only system administrators and level-1 organization administrators can create RAM roles. User group You can create multiple RAM users for an organization and grant the users different permissions on the same cloud resources in the organization. You can create RAM user groups to classify and authorize RAM users within your Apsara Stack tenant account. This simplifies the management of RAM users and their permissions. You can create RAM policies to grant permissions to different user groups.
 
-### Create a RAM role
+### 9.2 Create a RAM role
 
-To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role. This RAM role specifies the operations that the cloud service can perform on the resources. Procedure
+To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role. This RAM role specifies the operations that the cloud service can perform on the resources.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click Roles.
@@ -13405,9 +13669,9 @@ To authorize a cloud service in a level-1 organization to use other resources in
 5. On the Roles - Creat e RAM Role page, configure the Role Name and Descript ion parameters.
 6. Click Creat e.
 
-### Create a user
+### 9.3 Create a user
 
-You can create a user and assign the user different roles as an administrator to meet different requirements for system access control. Procedure
+You can create a user and assign the user different roles as an administrator to meet different requirements for system access control.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click Users.
@@ -13430,9 +13694,9 @@ You can create a user and assign the user different roles as an administrator to
 
 6. Click OK.
 
-### Create a user group
+### 9.4 Create a user group
 
-You can create a user group in a selected organization and grant permissions to the users within the group at the same time. Prerequisites An organization is created. Context Relationships between user groups and users: A user group can contain zero or more users. A user does not need to belong to a user group. A user can be added to multiple user groups. Relationships between user groups and organizations: A user group belongs to only one organization. You can create multiple user groups within an organization. Relationships between user groups and roles: Only one role can be assigned to each user group. A role can be assigned to multiple user groups. When a role is assigned to a user group, the permissions that the role has are automatically granted to the users within the user group. Relationships between user groups and resource sets: Zero or more user groups can be added to a resource set. A user group can be added to multiple resource sets. Procedure
+You can create a user group in a selected organization and grant permissions to the users within the group at the same time. Prerequisites An organization is created. Context Relationships between user groups and users: A user group can contain zero or more users. A user does not need to belong to a user group. A user can be added to multiple user groups. Relationships between user groups and organizations: A user group belongs to only one organization. You can create multiple user groups within an organization. Relationships between user groups and roles: Only one role can be assigned to each user group. A role can be assigned to multiple user groups. When a role is assigned to a user group, the permissions that the role has are automatically granted to the users within the user group. Relationships between user groups and resource sets: Zero or more user groups can be added to a resource set. A user group can be added to multiple resource sets.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click User Groups.
@@ -13441,9 +13705,9 @@ You can create a user group in a selected organization and grant permissions to 
 parameters.
 6. Click OK.
 
-### Add a user to a user group
+### 9.5 Add a user to a user group
 
-You can add a user to a user group. Procedure
+You can add a user to a user group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click User Groups.
@@ -13452,9 +13716,9 @@ You can add a user to a user group. Procedure
 arrow to move the user to the right section.
 6. Click OK.
 
-### Create a policy
+### 9.6 Create a policy
 
-To use a cloud service to access other cloud resources, you must create a policy and attach it to a user group. Procedure
+To use a cloud service to access other cloud resources, you must create a policy and attach it to a user group.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click Roles.
@@ -13464,11 +13728,11 @@ column to go to the Roles page.
 6. Click Add Permission Policy.
 7. In the Add Permission Policy dialog box, enter the information about the policy.
 
-### Grant a RAM user the permissions to
+### 9.7 Grant a RAM user the permissions to manage a project
 
 ### manage a project
 
-This topic describes how to grant a Resource Access Management (RAM) user the permissions to manage a specified project. Prerequisites A RAM user is created. For more information, see Create a user. A resource set is created and the RAM user is added to the resource set. For more information, see Ent erprise Cent er > Resource Set s in Apsara Uni-manager Management Console User Guide. Procedure
+This topic describes how to grant a Resource Access Management (RAM) user the permissions to manage a specified project. Prerequisites A RAM user is created. For more information, see Create a user. A resource set is created and the RAM user is added to the resource set. For more information, see Ent erprise Cent er > Resource Set s in Apsara Uni-manager Management Console User Guide.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click Dat a Permissions.
@@ -13479,9 +13743,9 @@ In this example, the instance is a Log Service project whose name is test-projec
 7. Grant the RAM user the permissions to manage the project.
 If you turn on the Action switch of the Updat e Project permission, the RAM user can modify the project that is selected in Step .
 
-### Grant permissions to a RAM role
+### 9.8 Grant permissions to a RAM role
 
-When you grant permissions to a RAM role, all users in the user groups that are assigned this role share the granted permissions. Procedure
+When you grant permissions to a RAM role, all users in the user groups that are assigned this role share the granted permissions.
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane of the Ent erprise page, click Roles.
@@ -13492,7 +13756,7 @@ column to go to the Roles page.
 7. In the dialog box that appears, select a RAM policy and click OK.
 If no RAM policies are available, see Create a permission policy.
 
-### Use custom policies to grant
+### 9.9 Use custom policies to grant permissions to a RAM user
 
 permissions to a RAM user This topic describes how to use custom policies to grant permissions to a RAM user. In the Resource Access Management (RAM) console, you can grant permissions to the RAM users that belong to your Apsara Stack tenant account. Context In terms of data security, we recommend that you follow the principle of least privilege (PoLP) when you grant permissions to RAM users. You must grant the read-only permissions on the project list to RAM users. Otherwise, the RAM users cannot view the projects in the project list. Use the RAM console to grant permissions to a RAM user The read-only permissions on projects For example, you want to use your Apsara Stack tenant account to grant the following permissions to a RAM user: The permissions to view the project list of the Apsara Stack tenant account The read-only permissions on the projects that are specified by the Apsara Stack tenant account Use the following policy: `{`
 
@@ -13810,9 +14074,9 @@ permissions to a RAM user This topic describes how to use custom policies to gra
 
 `}` `]` `}`
 
-## Monitor Log Service
+## 10 Monitor Log Service
 
-### Overview
+### 10.1 Overview
 
 The service log feature of Log Service helps you record log data about the operations that are performed on the resources of a project. This feature also provides dashboards that allow you to analyze data in multiple dimensions. You can use this feature to view the service status of Log Service in real time and improve O&M efficiency. Default configurations
 
@@ -13827,7 +14091,7 @@ The service log feature of Log Service helps you record log data about the opera
 
 Scenarios Check whet her dat a is evenly writ t en and consumed among shards You can use predefined dashboards to view the data write and consumption trends of shards and check whether data is evenly written or consumed among shards. Multiple Logstores in a project may share the same shards. To view the data writes to multiple shards of a Logstore, you can specify the Logstore as a filter condition. Monit or API request st at us You can call API operations to write log data, consume log data, and create projects or Logstores. A log is generated in the int ernal-operat ion_log Logstore each time an API operation is called. If an API request fails, the value of the St at us field in the generated log is an integer that is greater than 200. For example, the value of the field is 404. You can monitor API requests by viewing the number of logs in which the value of the St at us field is greater than 200. View Logt ail st at us By default, the following Logtail-related dashboards are created after you enable the service log feature: Logt ail Monit oring and Logt ail Collect ion St at ist ics. The Logtail Monitoring dashboard helps you monitor Logtail exceptions such as regular expression mismatches and log data parsing failures.
 
-### Manage service logs
+### 10.2 Manage service logs
 
 This topic describes how to enable and disable the service log feature. This topic also describes how to modify service log configurations. Prerequisites A project is created. For more information, see Manage a project in Log Service User Guide. The RAM user that you want to use to log on to the Log Service console is granted the required permissions. You must use an Apsara Stack tenant account to grant the required permissions to a RAM user. For more information, see Grant permissions to a RAM role in Log Service User Guide. Enable the service log feature
 1. Log on to the Log Service console.
@@ -13934,9 +14198,9 @@ ing",
 
 `}` `]` `}`
 
-### Log types
+### 10.3 Log types
 
-Log Service provides the service log feature. You can use this feature to generate different types of logs. This topic describes the log types and the fields for each log type. Log types If you enable the service log feature, you must select the types of the logs that you want to generate. The following table describes the log types.
+Log Service provides the service log feature. You can use this feature to generate different types of logs. This topic describes the log types and the fields for each log type. If you enable the service log feature, you must select the types of the logs that you want to generate. The following table describes the log types.
 
 | Log type | Overview | Logstore | Log source | Description |
 |---|---|---|---|---|
@@ -14178,17 +14442,17 @@ The following table describes the fields that are included in the detail_metric 
 | start time _ | The start time. | 2021-07-20 16:19:22 |
 | used sending concurrency _ _ | The number of packets that are concurrently sent. | 0 |
 
-### Service log dashboards
+### 10.4 Service log dashboards
 
 After you enable the service log feature, Log Service automatically creates the following dashboards based on the log types that you selected to display the related statistics: Operations Statistics, Logtail Collection Statistics, Logtail Monitoring, and Consumer Group Monitoring. Dashboards When you enable the service log feature for a project, you can select one or more of the following log types: If you turn on Det ailed Logs, Log Service automatically creates the Operations Statistics dashboard. For more information, see Operations Statistics. If you turn on Import ant Logs, Log Service automatically creates the following dashboards: Logtail Collection Statistics, Logtail Monitoring, and Consumer Group Monitoring. For more information, see Logtail Collection Statistics, Logtail Monitoring, and Consumer Group Monitoring. Operations Statistics This dashboard displays the statistics about visits and operations, such as API requests and operations that are performed on projects. Logtail Collection Statistics This dashboard displays the statistics about the logs collected by Logtail. Logtail Monitoring This dashboard displays the statistics about Logtail errors and alerts to help you monitor the status of Logtail in real time. Consumer Group Monitoring This dashboard displays the statistics about consumer groups, including the volume of data consumed from shards, consumption delay, and the details of consumer groups.
 
-## FAQ
+## 11 FAQ
 
-### Log collection
+### 11.1 Log collection
 
-#### How do I troubleshoot errors that occur when I
+#### 11.1.1 How do I troubleshoot errors that occur when I use Logtail to collect logs?
 
-use Logtail to collect logs? If the preview page is blank or the No Data message appears on the query page after you create a Logtail configuration to collect logs, perform the steps that are described in the topic to troubleshoot the issue. Procedure
+use Logtail to collect logs? If the preview page is blank or the No Data message appears on the query page after you create a Logtail configuration to collect logs, perform the steps that are described in the topic to troubleshoot the issue.
 1. Check whether Log Service receives heartbeats from the machine group.
 You can view the Logtail heartbeat status in the Log Service console. For more information, see View the status of a server group. If the heartbeat status is OK, perform the next step. If the heartbeat status is FAIL, identify the cause of the failure. For more information, see What can I do if no heartbeat packet is received from a Logtail client?.
 2. Check whether the Logtail configuration is created.
@@ -14198,7 +14462,7 @@ For more information, see Manage server group configurations.
 4. Check collection errors.
 If the Logtail configuration is valid, check whether new logs are generated in real time. Logtail collects only incremental log data. Logtail does not read log files that are not updated. If a log file is updated but the updated data cannot be found in Log Service, you can use the following method to troubleshoot the issue: View the logs of the Logtail client. Client logs include key INFO logs, all WARNING logs, and all ERROR logs. To view complete and real-time error information, view the client logs in the following paths: Linux: /usr/local/ilogtail/ilogtail.LOG. Linux: /usr/local/ilogtail/logtail_plugin.LOG. The file contains the logs such as HTTP logs, MySQL binary logs, and MySQL query results. Windows x64 : C:\Program Files (x86)\Alibaba\Logtail\logtail_*.log Windows x32 : C:\Program Files\Alibaba\Logtail\logtail_*.log Check whether the amount of log data exceeds the limit. To collect large amounts of log data, you may need to modify the startup parameters of Logtail to increase the log collection throughput. For more information, see Set Logtail startup parameters.
 
-#### What can I do if Log Service does not receive
+#### 11.1.2 What can I do if Log Service does not receive heartbeats from a Logtail client?
 
 heartbeats from a Logtail client? If Log Service does not receive heartbeats from a Logtail client, perform the steps that are described in the topic to troubleshoot the issue. Context After Logtail is installed on a server, the Logtail client sends heartbeats to Log Service. If the status page of the machine group shows that Log Service does not receive heartbeats from a Logtail client, the Logtail client is not installed or disconnected from the server. Step 1: Check whether Logtail is installed Use the following method to check whether Logtail is installed: On a Linux server, run the following command:
 
@@ -14236,7 +14500,7 @@ sudo /etc/init.d/ilogtaild stop sudo /etc/init.d/ilogtaild start
 
 On a Windows server, perform the following steps: On Cont rol Panel, choose Administ rat ive T ools > Services. In the list that appears, find LogtailWorker and restart LogtailWorker.
 
-#### How do I query the status of local log
+#### 11.1.3 How do I query the status of local log collection?
 
 collection? You can use the status query feature of Logtail to query the health status of Logtail and the log collection status. You can also use this feature to troubleshoot log collection issues and customize status monitoring for log collection. Usage notes After you install a Logtail client that supports the status query feature, you can query the local log collection status by running commands on the client. For more information about how to install Logtail, see Install Logtail in Linux.
 
@@ -14505,7 +14769,7 @@ history command Syntax
 The history command is used to query the collection status of a Logstore or log file in the query time window. The `beginIndex` and `endIndex` parameters specify the start and end indexes of the time windows that you want to query. You must ensure that beginIndex must be less than or equal to endIndex ( `beginIndex <= endIndex` ). The `fileFullPath` parameter is optional. If you specify the path of a log file, the collection status of the log file is queried. Otherwise, the collection status of the Logstore is queried. Examples Query the collection status of a Logstore. Command
 
 ```
-/etc/init.d/ilogtaild status history 1 3 sls-zc-test release-test-same /disk2/test/normal/access. log
+/etc/init.d/ilogtaild status history 1 3 sls-zc-test release-test-same /disk2/test/normal/access.
 ```
 
 Response
@@ -14610,9 +14874,9 @@ parameter is large. Use the value of the `read_bytes` parameter to calculate the
 3. The value of the `parse_fail_lines` parameter is greater than 0.
 Check whether the regular expression for log parsing can match all required log fields.
 
-#### How do I debug a regular expression?
+#### 11.1.4 How do I debug a regular expression?
 
-If you select the full regex mode when you configure Logtail to collect and parse text logs, you must specify a regular expression based on your sample log entries. This topic describes how to debug a regular expression. Context To debug the regular expression that you specified in the Log Service console, you can click Validat e in the console and check the following results: If the regular expression is used to match the start part of the first line in a log entry, check whether the regular expression can match the expected number of log entries. If the fields are extracted by the regular expression, check whether the value of each field meets your requirements. You can use online tools such as regex101.com and regextester.com to debug a regular expression. You can copy and paste the regular expression that is generated by Log Service to an online tool, and specify a sample log entry as the test string. If you use the full regex mode, Log Service automatically generates a regular expression based on the sample log entry that you specify. However, the regular expression may fail to match the message field in multi-line log entries as expected. The following example shows how to use the regex101.com tool to debug a regular expression. Procedure
+If you select the full regex mode when you configure Logtail to collect and parse text logs, you must specify a regular expression based on your sample log entries. This topic describes how to debug a regular expression. Context To debug the regular expression that you specified in the Log Service console, you can click Validat e in the console and check the following results: If the regular expression is used to match the start part of the first line in a log entry, check whether the regular expression can match the expected number of log entries. If the fields are extracted by the regular expression, check whether the value of each field meets your requirements. You can use online tools such as regex101.com and regextester.com to debug a regular expression. You can copy and paste the regular expression that is generated by Log Service to an online tool, and specify a sample log entry as the test string. If you use the full regex mode, Log Service automatically generates a regular expression based on the sample log entry that you specify. However, the regular expression may fail to match the message field in multi-line log entries as expected. The following example shows how to use the regex101.com tool to debug a regular expression.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. In the Logstores list, find the Logstore that you want to manage and choose Dat a Import > Logt ail
@@ -14630,11 +14894,11 @@ The following figure shows that the regular expression fails to match fields in 
 10. Replace the last subexpression in the regular expression with [\S\s]+ , and check whether the regular
 expression can match fields in the sample log entries as expected. The following figure shows how the modified regular expression matches the substring that follows the `at` word. The following figure shows how the modified regular expression matches the sample log entry that contains two colons (::). You can perform the preceding steps to debug your regular expression. After you validate the regular expression, you can apply the expression to a Logtail configuration.
 
-#### How do I optimize regular expressions?
+#### 11.1.5 How do I optimize regular expressions?
 
 A regular expression that accurately matches data with a high match rate can improve the performance of log collection. When you optimize regular expressions, we recommend that you conform to the following rules: Use precise characters. We recommend that you do not use wildcard characters `.*` in a regular expression to match fields in log entries. Wildcard characters may cause mismatches that reduce the matching performance. For example, if you want to extract a field that consists of only letters, use `[A-Za-z]` . Use appropriate quantifiers. We recommend that you do not use `+,*` . For example, if you want to query data in a more efficient and accurate manner, use \d instead of \d+ or \d{1,3} to match IP addresses. Debug regular expressions. If an error occurs when you use a regular expression, you can use online tools such as regex101.com to debug the regular expression. This way, you can troubleshoot the issue and optimize the regular expression in an efficient manner.
 
-#### How do I use the full regex mode to collect log
+#### 11.1.6 How do I use the full regex mode to collect log entries in multiple formats?
 
 entries in multiple formats? The full regex mode requires that log entries to be collected be in the same format. Therefore, if you want to collect log entries that are in multiple formats, you must use the schema-on-write or schema-on-read solution. Taking Java logs as an example, the following section lists the types of error log entry and normal log entry. Multi-line WARNING log entries Simple text INFO log entries Key-value DEBUG log entries
 
@@ -14648,7 +14912,7 @@ entries in multiple formats? The full regex mode requires that log entries to be
 
 To collect log entries of these types, you can use the following solutions: Schema-on-write: To extract log fields, you must apply multiple Logtail configurations with different regular expressions to a log file. However, Logtail cannot apply multiple Logtail configurations directly to the same log file. Therefore, you must set up multiple symbolic links for the directory in which the log file resides. Each Logtail configuration applies to a symbolic link to collect log entries in a specific format. Schema-on-read: you can use a common regular expression to collect log entries in different formats. For example, if you want to collect log entries in multiple formats, you can configure a regular expression that matches the time and log level fields as the first line, and specify the rest of the log entries as the log message. If you want to parse the message, create an index for the message, specify a regular expression to extract log messages, and then extract target fields. We recommend that you use this solution only for scenarios in which tens of millions of log entries are collected, or fewer.
 
-#### How do I specify time formats for logs?
+#### 11.1.7 How do I specify time formats for logs?
 
 If you configure Logtail to collect logs, you must specify a common time format for the time field of the logs. The timestamp of a log is accurate to seconds. Therefore, you can specify the time format only to seconds. You need to specify the time format only for the time in the time field. The following examples show time formats that are commonly used:
 
@@ -14656,9 +14920,9 @@ If you configure Logtail to collect logs, you must specify a common time format 
 Custom1 2017-12-11 15:05:07 %Y-%m-%d %H:%M:%S Custom2 [2017-12-11 15:05:07.012] [%Y-%m-%d %H:%M:%S] RFC822 02 Jan 06 15:04 MST %d %b %y %H:%M RFC822Z 02 Jan 06 15:04 -0700 %d %b %y %H:%M RFC850 Monday, 02-Jan-06 15:04:05 MST %A, %d-%b-%y %H:%M:%S RFC1123 Mon, 02 Jan 2006 15:04:05 MST %A, %d-%b-%y %H:%M:%S RFC3339 2006-01-02T15:04:05Z07:00 %Y-%m-%dT%H:%M:%S RFC3339Nano 2006-01-02T15:04:05.999999999Z07:00 %Y-%m-%dT%H:%M:%S
 ```
 
-#### How do I configure non-printable characters in
+#### 11.1.8 How do I configure non-printable characters in a sample log?
 
-a sample log? This topic describes how to configure non-printable characters in a sample log. Context If you collect logs in delimiter mode, Log Service allows you to specify a non-printable character as the delimiter or quote. Non-printable characters are characters whose decimal ASCII codes are within the range of 1 to 31 and 127. If you use a non-printable character as a delimiter or quote, you must find the hexadecimal ASCII code of the character and enter the character in the following format: `0x`Hexadecimal ASCII code of the non-printable character. For example, a sample log is `123456780` . You can specify 0x01 as the delimiter and 0x02 as the quote, and then enter a non-printable character 0x01 between the digits 5 and 6. Procedure
+a sample log? This topic describes how to configure non-printable characters in a sample log. Context If you collect logs in delimiter mode, Log Service allows you to specify a non-printable character as the delimiter or quote. Non-printable characters are characters whose decimal ASCII codes are within the range of 1 to 31 and 127. If you use a non-printable character as a delimiter or quote, you must find the hexadecimal ASCII code of the character and enter the character in the following format: `0x`Hexadecimal ASCII code of the non-printable character. For example, a sample log is `123456780` . You can specify 0x01 as the delimiter and 0x02 as the quote, and then enter a non-printable character 0x01 between the digits 5 and 6.
 1. Log on to the Log Service console.
 2. Right-click the blank space on the browser and select Inspect from the shortcut menu.
 3. On the page that appears, click the Console tab.
@@ -14670,7 +14934,7 @@ In the Logt ail Conf ig step, paste the result in the Log Sample field. For more
 7. Delete the double quotation marks (") between the digits 5 and 6.
 A non-printable character is configured in a sample log.
 
-#### How do I troubleshoot errors that occur when I
+#### 11.1.9 How do I troubleshoot errors that occur when I collect logs from containers?
 
 collect logs from containers? If an error occurs when you use Logtail to collect logs from Docker containers, self-managed Kubernetes, or Container Service for Kubernetes (ACK), you can perform the steps that are described in this topic to troubleshoot the issue. Troubleshoot an error if Log Service does not receive heartbeats from a Logtail client To check whether Logtail is installed, perform the following steps:
 1. View the heartbeat status of servers in a machine group.
@@ -14770,7 +15034,7 @@ The following output is expected: `{`
 
 `}`
 
-#### How do I obtain the labels and environment
+#### 11.1.10 How do I obtain the labels and environment variables of a container?
 
 variables of a container? Log Service allows you to collect logs from containers. You can specify the containers by label or environment variable. Labels are retrieved by running the docker inspect command and environment variables are specified in the startup configuration of each container. Obtain container labels
 1. Log on to the host where the container whose labels you want to obtain resides. For example, the host is an
@@ -14808,9 +15072,9 @@ The 2ba4ebdaf503 variable in the command is the ID of a container. Replace the v
 docker exec 2ba4ebdaf503 env
 ```
 
-### Log search and analysis
+### 11.2 Log search and analysis
 
-#### FAQ about log query
+#### 11.2.1 FAQ about log query
 
 This topic provides answers to some frequently asked questions (FAQ) about log query in Log Service. How do I identify the source server from which Logtail collects logs during a query? If a machine group uses IP addresses as its identifiers when logs are collected by using Logtail, the servers in the machine group are distinguished by internal IP addresses. When you query logs, you can use the hostname and custom IP address to identify the source server from which logs are collected. For example, you can use the following query statement to calculate the number of occurrences of each hostname. You must configure an index for the __tag__:__hostname__ field and enable the analysis feature.
 
@@ -14837,11 +15101,11 @@ post():351]:&nbsp;device_id:&nbsp;BTAddr&nbsp;:&nbsp;B6:xF:xx:65:xx:A1&nbsp;IMEI
 
 keyword `POS version` is returned. How do I use two conditions to query log data? You can specify two conditions in a query statement to query log data. For example, if you want to query logs in which the value of the status field is not 200 and the value of the request_method field is not GET in a Logstore, you can execute the `not status:200 not request_method:GET` statement to query logs as expected. How do I query collected logs in Log Service? You can use one of the following methods to query logs in Log Service: Use the Log Service console. Use an SDK. Use the Restful API.
 
-#### What can I do if I cannot obtain the required
+#### 11.2.2 What can I do if I cannot obtain the required results from a log query?
 
 results from a log query? If you cannot find the required log data by using the query feature of Log Service, perform the steps that are described in this topic to troubleshoot the issue. Log collection failure If log data fails to be collected by Log Service, you cannot query the log data. Check whether log data is available on the consumption preview page of your Logstore. If log data is available, log data is collected by Log Service. If log data is unavailable, check whether the issue occurs due to the following causes: The log source does not generate log data. If no log data is generated by the log source, no log data can be sent to Log Service. Check your log source. Logtail has no heartbeat. On the Machine Group Set t ings page, check whether the heartbeat status of the related server is OK in the Machine Group Status section. For more information about how to troubleshoot the issue if Log Service does not receive heartbeats from a Logtail client, see What can I do if no heartbeat packet is received from a Logtail client?. Data is not written to the file that is monitored in real time. If data is not written to the file that is monitored in real time, you can view error messages in the /usr/local/ilogt ail/ilogtail.LOG file. Common error messages: parse delimiter log fail: The error message returned because an error occurs when Log Service collects logs in delimiter mode. parse regex log fail: The error message returned because an error occurs when Log Service collects logs in full regex mode. Delimiter setting errors View the specified delimiters and check whether you can use a keyword to find a log after the log content is split by using the delimiters. In this example, the default delimiters ,;=()[]{}?@&<>/:’ are used. If a log contains abc"defg,hij, the log is split into the following two words: abc"defg and hij. If the log is split, you cannot use the keyword abc to find the log. Fuzzy match is supported. For more information, see Query syntax. The indexing feature of Log Service is optimized. If you configure both full-text indexes and field indexes, the configurations of the field indexes take precedence. This helps you reduce indexing costs. For example, you configure an index for a log field whose key is message and specify a space character as a delimiter. To use a space character as a delimiter, you must specify the space character in the middle of the delimiters that you specify for an index. You can find a log that contains "message: this is a test message" by using the keyword message:this in the key:value format. However, you cannot find the log by using the keyword this because you have configured a field index for the key and the fulltext indexing feature does not take effect for the log field. You can create indexes or modify existing indexes. However, new or modified indexes take effect only for new data. You can click Index Attributes to check whether the specified delimiters meet your business requirements. Other reasons If log data is generated, modify the query time range and perform a query operation again. Log Service allows you to preview log data in real time. The maximum latency of the query feature is 1 minute. We recommend that you query log data at least 1 minute after logs are generated. If the issue persists, submit a ticket.
 
-#### What are the differences between log
+#### 11.2.3 What are the differences between log consumption and log query?
 
 consumption and log query? Log Service provides the log consumption and log query features that allow you to read log data from Log Service. Log consumption The log consumption feature allows you to read and write full data in the first-in, first-out (FIFO) order. This feature is similar to the features provided by Kafka. Each Logstore has one or more shards. Data is written to a random shard. You can read multiple logs at a time from a specified shard based on the order in which the logs were written to the shard. You can specify a start position (cursor) to pull logs from shards based on the time when Log Service receives the logs. Log query Log Service allows you to query and analyze a large amount of log data based on specific conditions. You can specify query conditions to find required log data. You can use multiple operators such as AND, NOT, and OR to specify query conditions and perform SQL analysis on query results. The log query feature is independent of shards. Differences
 
@@ -14855,7 +15119,7 @@ consumption and log query? Log Service provides the log consumption and log quer
 | Fee | Medium. | Low. |
 | Scenario | Monitoring, issue troubleshooting, and analysis. | Full data processing scenarios, such as stream computing and batch processing. |
 
-#### How do I resolve common errors that occur
+#### 11.2.4 How do I resolve common errors that occur when I query log data?
 
 when I query log data? This topic describes the common error messages that are returned when you query log data in the Log Service console and provides related solutions. Error messages
 
@@ -14896,13 +15160,13 @@ when I query log data? This topic describes the common error messages that are r
 | logstore (xxx) is not found | The XXX Logstore does not exist or the analysis feature is not enabled. | Check whether the Logstore exists. If the Logstore exists, you must index at least one field and enable the analysis feature for the Logstore. |
 | condition number 43 is more than 30 | A maximum of 30 fields can be referenced by a user in a query statement. | Modify the query statement to reduce the number of the referenced fields, and then execute the query statement. |
 
-#### Why data queries are inaccurate?
+#### 11.2.5 Why data queries are inaccurate?
 
 This topic describes the causes for inaccurate data queries. It also includes solutions to these issues. When you search and analyze log data, the message T he result s are inaccurat e may prompt in the console. This indicates that the returned result is inaccurate because some log data in a Logstore was not queried. Possible causes include: The time range for queries is excessive. Cause The time range for a query is excessively wide, for example, three months or a year. In this case, Log Service cannot scan all log data generated within this time period for one query. Solution Narrow down the query time range and perform multiple queries. Query statements are complex. Cause The query statement is exceedingly complex or contains multiple frequently used words. In this case, Log Service cannot scan all related log data or read the query results at one time. Solution Narrow down the query scope and perform multiple queries. The SQL computing needs to read an excessively large amount of data. Cause The SQL computing needs to read an excessively large amount of data. In this case, query results are likely to become inaccurate. A maximum of 1 GB of data can be read from each shard. For example, if the SQL computing needs to read strings from multiple columns, which exceed the threshold data volume, inaccurate query results will be returned. Solution Narrow down the query scope and perform multiple queries.
 
-### Alarm
+### 11.3 Alarm
 
-#### FAQ about alerts
+#### 11.3.1 FAQ about alerts
 
 This topic provides answers to some frequently asked questions (FAQ) about alerts in the Log Service console. How do I add raw logs to an alert notification? For example, if more than five error logs are detected in the previous 5 minutes, an alert is triggered and an alert notification is sent. To add the raw logs to the alert notification, perform the following steps:
 1. Log on to the Log Service console.
@@ -14922,9 +15186,9 @@ What can I do if the DingTalk chatbot fails to send a notification? For example,
 
 This error message is returned because the security settings of the latest chatbot are invalid. You can reconfigure the security settings. For more information, see DingTalk chatbot webhooks. If the issue persists or other error messages are returned, submit a ticket.
 
-### What do I do if the
+### 11.4 What do I do if the Forbidden.SLS::ListProject error occurs when I log on to the Apsara Uni-manager Management Console?
 
-Forbidden.SLS::ListProject error occurs when I log on to the Apsara Uni-manager Management Console? Error description If you are redirected to the Log Service console when you use a RAM user to log on to the Apsara Uni-manager Management Console, the Forbidden.SLS::ListProject error may occur. Cause The Log Service-related role that the RAM user assumes is not granted the permissions to access Log Service. Therefore, you cannot use the RAM user to access Log Service. Solution Procedure
+Forbidden.SLS::ListProject error occurs when I log on to the Apsara Uni-manager Management Console? Error description If you are redirected to the Log Service console when you use a RAM user to log on to the Apsara Uni-manager Management Console, the Forbidden.SLS::ListProject error may occur. Cause The Log Service-related role that the RAM user assumes is not granted the permissions to access Log Service. Therefore, you cannot use the RAM user to access Log Service. Solution
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click Ent erprise.
 3. In the left-side navigation pane, choose Permissions > Role Permissions. In the search box, enter SLS to view

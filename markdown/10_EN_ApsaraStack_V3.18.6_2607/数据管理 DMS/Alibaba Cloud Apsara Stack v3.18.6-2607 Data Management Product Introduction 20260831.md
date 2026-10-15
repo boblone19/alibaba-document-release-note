@@ -3,16 +3,24 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Product Introduc
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Product Introduction 20260831.pdf"
+source_pdf: "aea31fa2896d2e12_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%20DMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Management%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Product Introduction 20260831
 
+## Table of Contents
+
+- 1 What is DMS?
+- 2 Features
+- 3 Benefits
+- 4 Scenarios
+- 5 Features
+
 S?
 
-## What is DMS?
+## 1 What is DMS?
 
 Data Management (DMS) is a fully managed service that is provided by Apsara Stack. You can use this service to manage data, table schemas, R&D processes, R&D specifications, users, permissions, and access security.
 
@@ -28,7 +36,7 @@ Self-managed databases are databases that are installed on Apsara Stack Elastic 
 
 DMS provides support for the entire database development process. You can design table schemas in an on-premises environment based on the design specifications. Before you publish SQL statements to an online environment, DMS can review the add, remove, modify, and query operations in the statements. Then, you can publish schemas to the specified environment as needed. DMS provides fine-grained access control at the database, table, or field level. You can perform all operations on databases in the DMS console. The operations can be traced and audited. DMS allows you to configure operation specifications and approval processes for multiple modules based on your business requirements. These modules include the schema design, data change, data export, and permission application. DMS integrates database development with database interaction. You can manage databases without the need to switch between database endpoints at a high frequency by using database accounts and passwords. DMS provides the task orchestration feature that allows you to orchestrate and schedule SQL tasks for databases. You can use this feature to perform a variety of operations with ease. For example, you can use this feature to dump historical data or generate periodical S? reports.
 
-## Features
+## 2 Features
 
 Data Management (DMS) provides seven features to cater to various scenarios. These features are: data asset management, SQL console, database development, data transmission service (DTS), security and compliance, solutions, and operations and maintenance (O&M) management.
 
@@ -60,7 +68,7 @@ T+1 full data snapshot: This feature creates snapshots for individual tables eve
 
 User management: You can add and delete DMS users, manage user permissions, and grant permissions on instances, databases, tables, rows, and sensitive columns. Task management: You can create SQL tasks and manage existing tasks. Configuration management: You can change the system configurations of DMS to suit the requirements of your business at any time. For example, you can enable automatic synchronization of instance resources. Database grouping: You can add multiple databases with the same environment or engine type to one group. You can use this feature to apply a data change or schema design to all of the databases in a database group with ease.
 
-## Benefits
+## 3 Benefits
 
 DMS provides multiple benefits. These benefits include various data sources, secure and controllable procedures, and fine-grained access control. These benefits improve data security and simplify data management.
 
@@ -86,7 +94,7 @@ You can create custom design specifications for MySQL table schemas. These desig
 
 DMS provides a quick method to create the required orchestration and recurring schedules for the SQL task nodes of various databases in a quick manner. You can use this feature to perform serval operations on databases to explore the value of data. These operations include transferring historical data and generating periodical reports.
 
-## Scenarios
+## 4 Scenarios
 
 Data Management (DMS) is ideal for implementing data security and improving development efficiency. It is typically used in scenarios such as cloud migration, disaster recovery, T +1 data warehouses, real-time data warehouses, and cross-instance queries.
 
@@ -102,7 +110,7 @@ DMS allows you to create snapshots for individual tables every hour or day on a 
 
 DMS allows you to perform real-time join queries across online or heterogeneous data sources that are deployed in different environments. You can perform queries on MySQL databases, SQL Server databases, PostgreSQL databases, and Redis databases. Even when such database instances are deployed in different regions and environments, you can write a dynamic SQL statement to perform join queries on these databases. Benefits: Cross-database queries after vertical and horizontal partitioning: You can perform real-time join queries for common commodity databases and order databases across multiple regions and units. Join queries on heterogeneous databases: For example, after data is migrated from a SQL Server database to a MySQL database, you can perform join queries to verify the consistency between both databases. Join queries in hybrid clouds: You can perform join queries on databases across on-premise IDC and cloud environments.
 
-## Features
+## 5 Features
 
 This article introduces the features of Alibaba Cloud Data Management (DMS), helping you quickly understand the product functionality.
 

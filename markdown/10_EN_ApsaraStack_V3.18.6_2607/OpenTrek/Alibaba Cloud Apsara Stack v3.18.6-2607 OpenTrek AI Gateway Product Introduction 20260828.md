@@ -3,20 +3,28 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway Product Intr
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 23
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway Product Introduction 20260828.pdf"
+source_pdf: "774568d7987326aa_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20AI%20Gateway%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AI Gateway Product Introduction 20260828
 
-What is AI Gateway
+## Table of Contents
 
-## What is AI Gateway
+- 1 What is AI Gateway
+- 2 Product details
+- 3 Product value
+- 4 Features
+- 5 Use cases
+- 6 Usage limits
+- 7 Key concepts
 
-An AI Gateway is a core tool that connects AI applications to large language model (LLM) services. It addresses key challenges in model integration, management, security, and stability. As enterprises adopt large models, they encounter challenges with traditional service invocation methods. These challenges include incompatible APIs from multiple vendors, complex resource management, data breach risks, and poor service stability. An AI Gateway provides a standardized entry point with unified administration capabilities, enabling efficient and secure service invocation for large models. Its core features include the following: Unified invocation method: Integrates commercial models, such as those from Alibaba Cloud Model Studio and OpenAI, with self-built models, such as Llama3.x. The gateway is compatible with the OpenAI API standard and uses policies to switch between model services flexibly. These policies allocate requests based on the model name or a specified ratio. AI invocation observability: Monitors key metrics in real time, such as queries per second (QPS), token consumption, and response time. It uses logging and tracing features to provide greater transparency into service calls. Security protection: Ensures data compliance and protects sensitive information through features such as API key rotation, consumer authentication (JWT/API Key), and Content Moderation. Intelligent administration: Includes built-in mechanisms for rate limiting, caching, and multi-level service degradation (fallback). These features optimize resource allocation and improve the success rate of service calls. Product details
+## 1 What is AI Gateway
 
-## Product details
+An AI Gateway is a core tool that connects AI applications to large language model (LLM) services. It addresses key challenges in model integration, management, security, and stability. As enterprises adopt large models, they encounter challenges with traditional service invocation methods. These challenges include incompatible APIs from multiple vendors, complex resource management, data breach risks, and poor service stability. An AI Gateway provides a standardized entry point with unified administration capabilities, enabling efficient and secure service invocation for large models. Its core features include the following: Unified invocation method: Integrates commercial models, such as those from Alibaba Cloud Model Studio and OpenAI, with self-built models, such as Llama3.x. The gateway is compatible with the OpenAI API standard and uses policies to switch between model services flexibly. These policies allocate requests based on the model name or a specified ratio. AI invocation observability: Monitors key metrics in real time, such as queries per second (QPS), token consumption, and response time. It uses logging and tracing features to provide greater transparency into service calls. Security protection: Ensures data compliance and protects sensitive information through features such as API key rotation, consumer authentication (JWT/API Key), and Content Moderation. Intelligent administration: Includes built-in mechanisms for rate limiting, caching, and multi-level service degradation (fallback). These features optimize resource allocation and improve the success rate of service calls.
+
+## 2 Product details
 
 This topic describes AI Gateway, the challenges that enterprises face in AI scenarios, and the core capabilities of AI Gateway.
 
@@ -36,7 +44,7 @@ operations of regular applications to extend their features. In practice, enterp
 1. **High cost of integration and switching between different LLM services**: Different
 model providers have different standards and access methods for their LLM API operations. This makes it difficult for applications to switch smoothly between providers or use models from different providers simultaneously.
 2. **Difficulty in managing internal users of LLM services** : LLM API operations are a
-shared and scarce resource within an enterprise. Misuse by some callers can lead to issues such as rate limiting. Different models also have significant cost differences. Enterprises need to ensure that high-cost models are used for high-value business scenarios. However, achieving fine-grained permission management and resource control for users is difficult. It is also hard to apply different models and policies for different business scenarios. Product details
+shared and scarce resource within an enterprise. Misuse by some callers can lead to issues such as rate limiting. Different models also have significant cost differences. Enterprises need to ensure that high-cost models are used for high-value business scenarios. However, achieving fine-grained permission management and resource control for users is difficult. It is also hard to apply different models and policies for different business scenarios.
 3. **High data security and compliance risks** : LLM services are typically offered as Software
 as a Service (SaaS) due to hardware and other limitations. When an enterprise calls an LLM service API operation, its internal data is at risk of being exposed. In addition, data compliance is a critical issue when calling LLM services, especially open source or external ones.
 4. **Poor stability of LLM services**: LLM services are limited by hardware. Their API operation
@@ -52,7 +60,7 @@ AI Gateway provides a complete solution to expose and manage AI applications as 
 1. All calls to LLM services pass through AI Gateway. This resolves issues related to model
 stability, authorization, security, compliance, observability, and administration at the gateway layer.
 2. All API calls exposed by AI applications pass through AI Gateway. This addresses
-requirements for protocol access, authentication, authorization, rate limiting, and degradation at the gateway layer. Product details To address these challenges, AI Gateway provides the following core capabilities:
+requirements for protocol access, authentication, authorization, rate limiting, and degradation at the gateway layer. To address these challenges, AI Gateway provides the following core capabilities:
 
 **Unified calling method**
 
@@ -60,17 +68,17 @@ AI Gateway can quickly integrate various types of LLM services, including commer
 
 **Observability for AI calls**
 
-Product details AI Gateway integrates observability features for AI calls, including Metrics, Logging, and Tracing. Unlike general API observability, AI observability supports statistics for AI calls based on a token dimension. It supports observability dimensions such as API, model, and consumer. Logs of AI requests and responses are also recorded for subsequent tracking and auditing. The key metrics for AI observability are as follows: Queries Per Second (QPS): The number of AI requests and responses per second. This is broken down into QPS for AI requests, QPS for streaming responses, and QPS for nonstreaming responses. Request success rate: The success rate of AI requests. Statistics can be collected per second, every 15 seconds, or per minute. Token consumption/s: The number of tokens consumed per second. This is broken down into input tokens, output tokens, and total tokens. Average request response time (RT): The average response time (in ms) of AI requests over a specified period, such as a second, 15 seconds, or a minute. This is broken down into non-streaming RT, streaming RT (the total time for a streaming response), and streaming first-packet RT (the time to the first packet of a streaming response). Cache hits: Statistics on the number of cache hits and misses over a specified period. Rate limiting statistics: Statistics on the number of rate-limited requests and normal requests over a specified period. Token statistics by model: Statistics on token consumption for different models over a specified period. Token statistics by consumer: Statistics on token consumption for different consumers over a specified period. Threat statistics: Statistics on threats detected by Content Moderation, categorized by dimensions such as threat type and consumer.
+AI Gateway integrates observability features for AI calls, including Metrics, Logging, and Tracing. Unlike general API observability, AI observability supports statistics for AI calls based on a token dimension. It supports observability dimensions such as API, model, and consumer. Logs of AI requests and responses are also recorded for subsequent tracking and auditing. The key metrics for AI observability are as follows: Queries Per Second (QPS): The number of AI requests and responses per second. This is broken down into QPS for AI requests, QPS for streaming responses, and QPS for nonstreaming responses. Request success rate: The success rate of AI requests. Statistics can be collected per second, every 15 seconds, or per minute. Token consumption/s: The number of tokens consumed per second. This is broken down into input tokens, output tokens, and total tokens. Average request response time (RT): The average response time (in ms) of AI requests over a specified period, such as a second, 15 seconds, or a minute. This is broken down into non-streaming RT, streaming RT (the total time for a streaming response), and streaming first-packet RT (the time to the first packet of a streaming response). Cache hits: Statistics on the number of cache hits and misses over a specified period. Rate limiting statistics: Statistics on the number of rate-limited requests and normal requests over a specified period. Token statistics by model: Statistics on token consumption for different models over a specified period. Token statistics by consumer: Statistics on token consumption for different consumers over a specified period. Threat statistics: Statistics on threats detected by Content Moderation, categorized by dimensions such as threat type and consumer.
 
 **Built-in security protection**
 
-AI Gateway provides three core security capabilities: Unified management and rotation of API keys: Store the API keys for LLM services at the gateway layer to shield them from callers. You can also configure multiple API keys for automatic rotation. Unified authorization: Use the built-in consumer authorization feature to grant separate permissions to different callers. It supports authorization methods such as JWT and API keys. You can also observe call status and configure rate limiting by consumer. Content moderation: Deep integration with Alibaba Cloud Content Moderation lets you review and protect the content of AI requests and responses. You can configure review policies and sensitive words as needed. This helps ensure the compliance of request content and prevents the leakage of sensitive enterprise information. Product details
+AI Gateway provides three core security capabilities: Unified management and rotation of API keys: Store the API keys for LLM services at the gateway layer to shield them from callers. You can also configure multiple API keys for automatic rotation. Unified authorization: Use the built-in consumer authorization feature to grant separate permissions to different callers. It supports authorization methods such as JWT and API keys. You can also observe call status and configure rate limiting by consumer. Content moderation: Deep integration with Alibaba Cloud Content Moderation lets you review and protect the content of AI requests and responses. You can configure review policies and sensitive words as needed. This helps ensure the compliance of request content and prevents the leakage of sensitive enterprise information.
 
 **Governance and acceleration for AI calls**
 
-AI Gateway provides a unified administration center for enterprise AI applications. It uses features such as rate limiting, caching, and fallback to effectively improve the success rate of model calls. These features include the following: Token-based rate limiting: AI Gateway has a built-in token rate limiting policy. This policy can limit the number of tokens consumed per unit of time based on request features, such as headers. Automatic rotation of multiple API keys: AI Gateway supports configuring multiple API keys for a model service. When processing AI requests, the keys are automatically rotated to prevent an issue with one key from affecting all requests. AI cache: AI Gateway integrates an AI cache policy. This policy can cache responses to recurring requests to improve response efficiency and reduce LLM service costs. Model service fallback: AI Gateway supports falling back to a backup model when a model service is unavailable. It also supports multi-level fallback, which can effectively improve the success rate of AI requests. In summary, AI Gateway is a key tool for enterprises to improve the efficiency of their AI applications. By simplifying integration, unifying administration, strengthening security, and accelerating responses, AI Gateway helps enterprises make their AI innovation process more efficient, secure, and controllable. Product value
+AI Gateway provides a unified administration center for enterprise AI applications. It uses features such as rate limiting, caching, and fallback to effectively improve the success rate of model calls. These features include the following: Token-based rate limiting: AI Gateway has a built-in token rate limiting policy. This policy can limit the number of tokens consumed per unit of time based on request features, such as headers. Automatic rotation of multiple API keys: AI Gateway supports configuring multiple API keys for a model service. When processing AI requests, the keys are automatically rotated to prevent an issue with one key from affecting all requests. AI cache: AI Gateway integrates an AI cache policy. This policy can cache responses to recurring requests to improve response efficiency and reduce LLM service costs. Model service fallback: AI Gateway supports falling back to a backup model when a model service is unavailable. It also supports multi-level fallback, which can effectively improve the success rate of AI requests. In summary, AI Gateway is a key tool for enterprises to improve the efficiency of their AI applications. By simplifying integration, unifying administration, strengthening security, and accelerating responses, AI Gateway helps enterprises make their AI innovation process more efficient, secure, and controllable.
 
-## Product value
+## 3 Product value
 
 AI Gateway provides stability, extensibility, and ease of use for AI services. It features a highconcurrency architecture, zero-downtime configuration updates that take effect in milliseconds, and a comprehensive ecosystem of Wasm hot plugins. The gateway also supports the Server-Sent Events (SSE) streaming protocol and resource optimization.
 
@@ -112,7 +120,7 @@ Native support for streaming protocols such as SSE(Server-Sent Events) allows th
 **Resource Optimization and Performance Breakthrough** In high-bandwidth and high-
 throughput scenarios, such as AI model services, stream processing significantly reduces memory usage, improves resource utilization, and lower infrastructure costs.
 
-## Features
+## 4 Features
 
 This topic describes the features of AI Gateway. AI Gateway connects enterprise AI applications with large language model services, providing the following features:
 
@@ -253,9 +261,7 @@ This topic describes the features of AI Gateway. AI Gateway connects enterprise 
 | Log management | Deliver access logs, error logs, and other information from the API gateway to a specified storage or analysis service. |
 | API-level monitoring | View performance metrics and access statistics for specific REST APIs and their endpoints. |
 
-Use cases
-
-## Use cases
+## 5 Use cases
 
 This article outlines the core use cases of the AI gateway.
 
@@ -274,15 +280,15 @@ across the application, gateway, and backend LLM services for end-to-end tracing
 **Unified management and access for MCP Server**
 
 **Unified management and access for MCP Server:** The AI gateway provides proxying,
-security authentication, and centralized governance capabilities for MCP Server, including unified observability and rate limiting. Use cases
+security authentication, and centralized governance capabilities for MCP Server, including unified observability and rate limiting.
 **API-to-MCP:** Directly converts REST APIs into MCP Server instances, eliminating the need
 to build and maintain them manually.
 **Protocol offloading:** Reduces upgrade costs with seamless support for the latest official
 MCP protocol. For example, it converts Server-Sent Events (SSE) to streaming HTTP responses, allowing stateless applications to process streams without implementing SSE handlers.
 **MCP marketplace:** Provides an officially maintained MCP marketplace that ensures the
-availability, ease of use, and security of MCP Server implementations. Usage limits
+availability, ease of use, and security of MCP Server implementations.
 
-## Usage limits
+## 6 Usage limits
 
 AI Gateway has operational limits to ensure the stability and responsiveness of your gateway instance. Follow the recommendations in the table below.
 
@@ -294,15 +300,11 @@ AI Gateway has operational limits to ensure the stability and responsiveness of 
 | File transfer | Not recommended | The gateway is primarily designed for signaling traffic. For large files, such as images or audio/video segments, we recommend uploading them directly to OSS. The gateway should then only pass through the file URL or forward minimal metadata. |
 | Request timeout | 300 seconds | We recommend increasing the timeout period for time- consuming tasks like large model inference, especially for reasoning-intensive models. To prevent a buildup of zombie connections, pair this with an effective idle connection cleanup policy. |
 
-Usage limits
-
 | Wasm plugin memory | 128 MB (per virtual machine) | Plugins such as AI Proxy run within a Wasm sandbox. Be mindful of this memory limit when processing large context or performing frequent regular expression filtering to avoid OOM. |
 |---|---|---|
 | Number of certificates | 1,000 | This is the recommended maximum number of certificates to mount on a single gateway instance via SNI. An excessive number of certificates reduces memory lookup efficiency during the TLS handshake. |
 
-Key concepts
-
-## Key concepts
+## 7 Key concepts
 
 This document defines the core terms of AI Gateway to help you understand its design principles and operate it effectively.
 
@@ -352,4 +354,4 @@ A `consumer` represents the identity of an API caller. It represents an independ
 
 **MCP**
 
-Key concepts In the context of AI, `MCP` (Model Context Protocol) is a standardized tool invocation protocol initiated by companies like Anthropic. It simplifies the integration between large language models (acting as agents) and external data sources or services, such as databases, email clients, or other APIs. Within the `Higress` architecture, `MCP` can also refer to Mesh Configuration Protocol. The McpBridge component uses this protocol to connect to various `service discovery` sources, such as `Nacos` or `K8s` , and synchronize service configurations across different environments.
+In the context of AI, `MCP` (Model Context Protocol) is a standardized tool invocation protocol initiated by companies like Anthropic. It simplifies the integration between large language models (acting as agents) and external data sources or services, such as databases, email clients, or other APIs. Within the `Higress` architecture, `MCP` can also refer to Mesh Configuration Protocol. The McpBridge component uses this protocol to connect to various `service discovery` sources, such as `Nacos` or `K8s` , and synchronize service configurations across different environments.

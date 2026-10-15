@@ -3,18 +3,25 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Para
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 10
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage Product Introduction 20260827.pdf"
+source_pdf: "d5818174c2c07557_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage Product In"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Cloud%20Parallel%20File%20Storage%20Product%20Introduction%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage Product Introduction 20260827
 
-## Product details
+## Table of Contents
+
+- 1 Product details
+- 2 Product value
+- 3 Scenarios
+- 4 Features
+
+## 1 Product details
 
 Cloud Parallel File Storage (CPFS) is a high-performance parallel file system for Apsara Stack that supports the POSIX protocol. It provides sub-millisecond data access and read/write throughput of tens of GB/s. CPFS is ideal for scenarios such as AIGC, autonomous driving, EDA simulation, and CG rendering.
 
-## Product value
+## 2 Product value
 
 **Ultra-high Performance**
 
@@ -28,7 +35,7 @@ CPFS supports online storage capacity scale-out, and performance scales elastica
 
 Data is stored using erasure coding (EC) and supports a 4D+2P configuration.
 
-## Scenarios
+## 3 Scenarios
 
 CPFS is a high-performance file storage service from Alibaba Cloud. It supports end-to-end Remote Direct Memory Access (RDMA) networks for intelligent computing scenarios, such as AI-Generated Content (AIGC) and autonomous driving.
 
@@ -44,7 +51,7 @@ For autonomous driving, high-performance CPFS storage improves the utilization o
 
 CPFS integrates with Container Service for Kubernetes (ACK), Serverless Kubernetes (ASK), and Genomics Service (AGS) to build a fast, low-cost, and high-precision container environment for genomics. This setup satisfies the requirements for gene sequencing computation and data sharing. CPFS serves as shared storage for genomic data analytics. It stores raw sequencing data, assembled data, and intermediate data. This meets the lowlatency and high input/output operations per second (IOPS) storage requirements of the genomics industry and reduces data copying and transfers. Additionally, computational results from CPFS can be synchronized to Object Storage Service (OSS), which provides massive storage capacity and helps reduce storage costs.
 
-## Features
+## 4 Features
 
 This topic describes the features of CPFS.
 

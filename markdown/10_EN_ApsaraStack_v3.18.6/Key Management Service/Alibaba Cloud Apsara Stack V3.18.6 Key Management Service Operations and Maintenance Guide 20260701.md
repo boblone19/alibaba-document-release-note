@@ -3,16 +3,60 @@ title: "Key Management Service Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 25
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Key Management Service Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "a94569db21cce893_Alibaba Cloud Apsara Stack V3.18.6 Key Management Service Operations and Maintenance Guide 20260701."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Key%20Management%20Service%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Key Management Service Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to Cloud Shield Operations Center
+- 2 Quota management
+  - 2.1 Manage resources
+  - 2.2 Manage tasks
+  - 2.3 Manage a throttling rule
+  - 2.4 Manage a user quota
+  - 2.5 View global quotas
+  - 2.6 Configure global settings
+- 3 Security Audit
+  - 3.1 Overview
+  - 3.2 Log in to the Apsara Uni-manager Operations Console
+  - 3.3 View the summary information about security audit
+  - 3.4 Query audit events
+  - 3.5 View raw logs
+  - 3.6 View the number of logs
+  - 3.7 Policy settings
+    - 3.7.1 Manage audit rules
+    - 3.7.2 Configure alert recipients
+    - 3.7.3 Query the events logs
+    - 3.7.4 Download exported audit events or logs
+    - 3.7.5 Modify system settings
+- 4 Log analysis
+  - 4.1 Overview
+  - 4.2 View logs by using request IDs
+  - 4.3 Common KMS errors
+    - 4.3.1 Overview
+    - 4.3.2 Errors with HTTP status code 4XX
+    - 4.3.3 Errors with HTTP status code 500
+    - 4.3.4 Errors with HTTP status code 503
+    - 4.3.5 Degradation of dependency on a service
+- 5 Access control
+  - 5.1 Manage read/write permission verification
+- 6 O&M of KMS components
+  - 6.1 Overview
+  - 6.2 Log on to the Apsara Infrastructure Management console
+  - 6.3 KMS_HOST
+  - 6.4 HSA
+  - 6.5 etcd
+  - 6.6 Rotator
+    - 6.6.1 Primary data center
+    - 6.6.2 Secondary data center
+
 on to Cloud Shield Operations Ce nter
 
-## Log on to Cloud Shield Operations Center
+## 1 Log on to Cloud Shield Operations Center
 
 Cloud Shield Operations Center is an operations platform for Apsara Stack Security services. The platform monitors the status and workloads of Apsara Stack Security services in real time and sends alert notifications to users. This topic describes how to log on to Cloud Shield Operations Center.
 
@@ -32,9 +76,9 @@ on to Cloud Shield Operations Ce nter
 
 You can view information on the pages of **Cloud Shield Operations Center**. a management
 
-## Quota management
+## 2 Quota management
 
-### Manage resources
+### 2.1 Manage resources
 
 This topic describes how to manage resources. You can register and initialize resources.
 1. Log on to Cloud Shield Operations Center.
@@ -69,7 +113,7 @@ status of the O&M task on the **Tasks** tab. After the HSM is initialized, healt
 5. Disable the HSM.
 i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS O&M**. ii. On the **Resources** tab, find the HSM that you want to disable and click **Bring Offline** in the **Actions** column. iii. Obtain the O&M code for this operation from Apsara Stack technical support as prompted, enter the O&M code in the field, and then click **OK**.
 
-### Manage tasks
+### 2.2 Manage tasks
 
 This topic describes how to view existing tasks on the Tasks tab. a management
 1. Log on to Cloud Shield Operations Center.
@@ -79,7 +123,7 @@ the task that you want to query.
 4. Click the
 icon to the left of the task ID to query the execution information about its sub-tasks.
 
-### Manage a throttling rule
+### 2.3 Manage a throttling rule
 
 This topic describes how to create and modify a throttling rule.
 
@@ -119,7 +163,7 @@ a management
 | Throttling Policy | The throttling policy. Valid values: Standalone Throttling: Throttling is implemented on a single KMS API operation. Standalone Token Bucket: Throttling is implemented on a single user. |
 | Time Unit | The time unit for throttling. |
 
-### Manage a user quota
+### 2.4 Manage a user quota
 
 This topic describes how to create and modify a user quota.
 
@@ -149,7 +193,7 @@ This topic describes how to create and modify a user quota.
 | Key Quota | The maximum number of keys that are supported. |
 | Alias Quota | The maximum number of aliases. |
 
-### View global quotas
+### 2.5 View global quotas
 
 This topic describes how to view global quotas.
 1. Log on to Cloud Shield Operations Center.
@@ -157,7 +201,7 @@ This topic describes how to view global quotas.
 3. On the Tenant-side KMS O&M page, click the Global Quotas tab. On the **Global Quotas** tab, view the information about global quotas.
 Global quotas cannot be modified. a management
 
-### Configure global settings
+### 2.6 Configure global settings
 
 By default, TASS Crypto Engine hardware security modules (HSMs) do not support ShangMi (SM) algorithms. If your business requires SM algorithms, you need to turn on HSMs (TASSCryptoEngine) Support SM Algorithms on the Global Settings tab. This topic describes how to enable TASS Crypto Engine HSMs to support SM algorithms.
 
@@ -170,13 +214,13 @@ By default, this feature is disabled. After this feature is enabled, TASS Crypto
 **(TASSCryptoEngine) Support SM Algorithms**.
 rity Audit
 
-## Security Audit
+## 3 Security Audit
 
-### Overview
+### 3.1 Overview
 
 A security audit refers to the systemic and independent inspection and verification of activities and behavior in the computer network environment. Delegated by property owners and authorized by management authorities, professional auditors give their assessments according to relevant laws and regulations. When the administrator needs to backtrack system operations, the administrator can perform a security audit. Security audits are long-term security management activities throughout the lifecycle of cloud services. The security audit feature of Apsara Stack Security can collect system security data, analyze weaknesses in system operations, report audit events, and classify audit events into important, moderate, and low risk levels. The security administrator views and analyzes audit events to continuously improve the system and ensure the security and reliability of cloud services.
 
-### Log in to the Apsara Uni-manager Operations
+### 3.2 Log in to the Apsara Uni-manager Operations Console
 
 **Console**
 
@@ -192,7 +236,7 @@ You can select a language from the drop-down list in the upper-right corner of t
 To obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console, contact the deployment personnel or administrators. Upon your first login to the Apsara Uni-manager Operations Console, you must change the your password as prompted. To enhance security, make sure that the password meets the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
-### View the summary information about security
+### 3.3 View the summary information about security audit
 
 **audit**
 
@@ -214,7 +258,7 @@ number of audit events is at a normal level. Audit Risk Distribution This chart 
 6. View the audit summary in a specific time range.
 i. Specify **End Time** as the end of the time range to query. ii. In the **Audit Type** section, select the audit types that you want to query. iii. Click **View** to query the audit summary in the last seven days before the specified end time.
 
-### Query audit events
+### 3.4 Query audit events
 
 This topic describes how to query audit events.
 
@@ -232,7 +276,7 @@ Basic query a. Configure the following parameters: **Audit Type**, **Audit Targe
 6. Click **Export** to export the audit events.
 Download the exported file for analysis. For more information, see Manage export tasks. rity Audit
 
-### View raw logs
+### 3.5 View raw logs
 
 On the Raw Logs tab, you can view the raw logs that are generated by a running audit object. Raw logs contain information that is required for debugging. Security administrators can use these raw logs to troubleshoot system failures. This topic describes how to view raw audit logs.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -245,7 +289,7 @@ specific time range. i. Specify **Audit Type** and **Audit Target**. ii. Specify
 5. Click **Export** to export the audit events.
 Download the exported file for analysis. For more information, see Download exported audit events or logs.
 
-### View the number of logs
+### 3.6 View the number of logs
 
 This topic describes how to view and manage log sources.
 
@@ -262,9 +306,7 @@ You can view the number of logs that are recorded on the current day and the num
 5. Click the **Log Sources** tab and view the number of logs for each device instance.
 You can view the number of logs that are recorded on the current day and the number of logs that are recorded during the last 30 days for each device instance. If you do not want to display the logs for an audit object from a specific device instance, perform the following steps: i. Find the device instance and click **Hide** in the **Actions** column. ii. In the message that appears, click **OK**. The process that is used to display the logs for an audit object is similar to the process that is used to hide the logs.
 
-### Policy settings
-
-**3.7.1. Manage audit rules**
+### 3.7 Policy settings
 
 This topic describes how to create, modify, or delete an audit rule.
 
@@ -292,11 +334,7 @@ The security audit module defines the default audit rule based on the string tha
 6. Create an audit rule.
 i. Click **New**. ii. In the dialog box that appears, configure the parameters. iii. Click **Add**. The system sends an alert email to the specified alert recipient after you create an audit rule. This applies if one string in an audit log of the specified audit type, audit object, or risk level matches the regular expression of the audit rule.
 7. Manage audit rules.
-You can create, query, disable, enable, and delete audit rules. Query audit rules Specify **Audit Type** and **Audit Target**. Enter a keyword in the search box and click **Search**. Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column. You can delete only custom rules.
-
-**3.7.2. Configure alert recipients**
-
-This topic describes how to configure the recipients of alerts on audit events.
+You can create, query, disable, enable, and delete audit rules. Query audit rules Specify **Audit Type** and **Audit Target**. Enter a keyword in the search box and click **Search**. Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column. You can delete only custom rules. This topic describes how to configure the recipients of alerts on audit events.
 
 **Background information**
 
@@ -311,11 +349,7 @@ rity Audit After you specify an alert recipient, the system sends a report to th
 6. Create an alert recipient.
 i. Click **New**. ii. In the **Add Alert Recipient** dialog box, configure the parameters. iii. Click **OK**.
 7. Manage alert recipients.
-Search for alert recipients Specify **Audit Type**, **Audit Target**, and **Risk Level**, enter the keyword of the email address, and then click **Search**. Delete alert recipients Find the email address that you want to delete and click **Delete** in the Actions column.
-
-**3.7.3. Query the events logs**
-
-This topic describes how to query and download the archives of audit events and raw logs.
+Search for alert recipients Specify **Audit Type**, **Audit Target**, and **Risk Level**, enter the keyword of the email address, and then click **Search**. Delete alert recipients Find the email address that you want to delete and click **Delete** in the Actions column. This topic describes how to query and download the archives of audit events and raw logs.
 
 **Background information**
 
@@ -328,11 +362,7 @@ You can download the archives of events and logs to analyze audit events. This e
 4. On the Security Audit page, click the **Policy Settings** tab.
 5. On the **Policy Settings** tab, click the **Archiving** tab.
 6. Query the archives of events and logs.
-i. Specify **Audit Type** and **Archiving Type**. ii. Specify a time range to query. iii. Click **Search**. Find the file where the archive information is stored and click Download in the Actions column to save the archive file to your computer.
-
-**3.7.4. Download exported audit events or logs**
-
-This topic describes how to download exported audit events or logs.
+i. Specify **Audit Type** and **Archiving Type**. ii. Specify a time range to query. iii. Click **Search**. Find the file where the archive information is stored and click Download in the Actions column to save the archive file to your computer. This topic describes how to download exported audit events or logs.
 
 **Background information**
 
@@ -346,11 +376,7 @@ You can export audit events or logs on the **Audit Query** or **Raw Log** tab of
 5. On the **Policy Settings** tab, click the **Exporting** tab.
 6. View the created export tasks.
 7. Click **download** to download audit events or logs to your on-premises server.
-To delete an export task, click **Delete**.
-
-**3.7.5. Modify system settings**
-
-This topic describes how to configure system parameters for security audit. rity Audit
+To delete an export task, click **Delete**. This topic describes how to configure system parameters for security audit. rity Audit
 
 **Background information**
 
@@ -366,41 +392,23 @@ You can configure system parameters to specify the maximum number of system aler
 7. Enter a required value in the Value column and click **OK** in the Actions column.
 analysis
 
-## Log analysis
+## 4 Log analysis
 
-### Overview
+### 4.1 Overview
 
 When the administrator needs to backtrack operations of Key Management Service (KMS), the administrator can perform a security audit. Security audits are long-term security management activities throughout the lifecycle of cloud services. The security audit feature of Apsara Stack Security can collect system security data, analyze weaknesses in system operations, and report audit events to administrators. The administrator can view and analyze the audit events to continuously improve the security and reliability of cloud services. KMS logs are collected to Log Service by using Logtail. You can analyze the logs in the Log Service console or by calling Log Service API operations. If you cannot analyze the logs in the Log Service console or by calling Log Service API operations, you must log on to the servers on which KMS is deployed and analyze the logs on each server.
 
-### View logs by using request IDs
+### 4.2 View logs by using request IDs
 
 After you send a request to Key Management Service (KMS), KMS sends you a message that contains a request ID. This topic describes how to view logs by using request IDs. Request IDs can be used in the following scenarios: You can view the KMS audit logs in the /cloud/log/kms/KmsHost#/kms_host/audit.log file. You can view the audit log information of the current access based on the value of request_id. For log entries whose expected_code values are not 200, you can view error information in the debug logs based on the value of request_id. Path to the on-premises logs: /cloud/log/kms/KmsHost#/kms_host/debug.log The /cloud/log/kms/KmsHost#/kms_host/debug.log and audit.log files are stored on the same machine. If you need all details of a request, you can view detailed information in the trace logs. Path to the on-premises logs: /cloud/log/kms/KmsHost#/kms_host/debug.log The /cloud/log/kms/KmsHost#/kms_host/debug.log and audit.log files are stored on the same machine. You can associate a cryptographic API operation with the trace logs of HSA by using the value of request_id. Path to the on-premises logs: /cloud/log/kms/HSA#/hsa/trace.log The /cloud/log/kms/KmsHost#/kms_host/trace.log and audit.log files may be stored on different machines. You can retrieve log information based on other information. You can retrieve the information in the audit logs of KMS by using information other than request_id. If you need to associate the audit logs with other logs, you must use request_id.
 
-### Common KMS errors
+### 4.3 Common KMS errors
 
-**4.3.1. Overview**
+KMS has two HTTP status codes in audit.log: expected_code and status_code. Typically, the expected code and status code of an error are the same. ( `expected_code = status_code` ). However, there are exceptions. status_code is the HTTP status code that is actually returned to a user. Most errors with HTTP status code 4XX are included in the business logic of KMS. For example, HTTP status code 403 indicates a user request authentication failure, and HTTP status code 400 indicates that an input parameter is invalid. You can view the details of an error in the debug log by using the value of request_id. This type of error is not included in the business logic of KMS. They are severe errors and must be fixed immediately. In most scenarios, if the status code of an error is **500**, the expected code of this error is also **500**. Such an error may be caused by an unexpected exception in a dependency service. We recommend that you contact the technical support personnel of the dependency service for further assistance. You can view the details of an error in the debug log by using the value of request_id. An error with HTTP status code 503 occurs when the user interrupts the connection or a dependency service of Key Management Service (KMS) is abnormal. We recommend that you handle the exception at the earliest opportunity. The status code and expected code of such an error may be different or consistent. The status code is 503 but the expected code is not 503. analysis Possible causes: The client of a user interrupts the connection in advance. The client times out because KMS that functions as the server does not respond within the timeout period. You can check the trace logs by using the value of request_id to determine whether the error is caused by a slow response of the server and identify the specific module. Both the status code and expected code are 503. Such an error is an expected error in a dependency service of KMS. It may occur when the performance of the dependency service is unstable. You can view the details of the error in the debug logs by using the value of request_id. We recommend that you contact the technical support of the dependency service for further assistance. KMS stores the data of its dependency services in the local cache. If a dependency service is unavailable, KMS uses the obsolete data stored in the cache. In this scenario, the status code in the audit log of KMS is 200, but an additional debug log will be generated. When this situation occurs, users with cached data can access KMS. However, users without cached data encounter a 503 error when they try to access KMS. ss control
 
-KMS has two HTTP status codes in audit.log: expected_code and status_code. Typically, the expected code and status code of an error are the same. ( `expected_code = status_code` ). However, there are exceptions. status_code is the HTTP status code that is actually returned to a user.
+## 5 Access control
 
-**4.3.2. Errors with HTTP status code 4XX**
-
-Most errors with HTTP status code 4XX are included in the business logic of KMS. For example, HTTP status code 403 indicates a user request authentication failure, and HTTP status code 400 indicates that an input parameter is invalid. You can view the details of an error in the debug log by using the value of request_id.
-
-**4.3.3. Errors with HTTP status code 500**
-
-This type of error is not included in the business logic of KMS. They are severe errors and must be fixed immediately. In most scenarios, if the status code of an error is **500**, the expected code of this error is also **500**. Such an error may be caused by an unexpected exception in a dependency service. We recommend that you contact the technical support personnel of the dependency service for further assistance. You can view the details of an error in the debug log by using the value of request_id.
-
-**4.3.4. Errors with HTTP status code 503**
-
-An error with HTTP status code 503 occurs when the user interrupts the connection or a dependency service of Key Management Service (KMS) is abnormal. We recommend that you handle the exception at the earliest opportunity. The status code and expected code of such an error may be different or consistent. The status code is 503 but the expected code is not 503. analysis Possible causes: The client of a user interrupts the connection in advance. The client times out because KMS that functions as the server does not respond within the timeout period. You can check the trace logs by using the value of request_id to determine whether the error is caused by a slow response of the server and identify the specific module. Both the status code and expected code are 503. Such an error is an expected error in a dependency service of KMS. It may occur when the performance of the dependency service is unstable. You can view the details of the error in the debug logs by using the value of request_id. We recommend that you contact the technical support of the dependency service for further assistance.
-
-**4.3.5. Degradation of dependency on a service**
-
-KMS stores the data of its dependency services in the local cache. If a dependency service is unavailable, KMS uses the obsolete data stored in the cache. In this scenario, the status code in the audit log of KMS is 200, but an additional debug log will be generated. When this situation occurs, users with cached data can access KMS. However, users without cached data encounter a 503 error when they try to access KMS. ss control
-
-## Access control
-
-### Manage read/write permission verification
+### 5.1 Manage read/write permission verification
 
 The Apsara Uni-manager Operations Console allows you to verify role permissions in a centralized manner. By default, read/write permission verification is enabled. You can disable read/write permission verification if required.
 1. Log on to a server on which Key Management Service (KMS) is deployed. For more information, see KMS_HOST.
@@ -415,13 +423,13 @@ If you set KmsEnableRwPermission to false, read/write permission verification is
 4. Restart the AdminPortalBackend service to ensure that the configuration changes take effect.
 Method 1: Log on to the Apsara Infrastructure Management console and restart the AdminPortalBackend service. For more information, see Log on to the Apsara Infrastructure Management console. Method 2: Log on to the server and stop the admin_portal_backend process. The Apsara Infrastructure Management console automatically starts the process again. of KMS components
 
-## O&M of KMS components
+## 6 O&M of KMS components
 
-### Overview
+### 6.1 Overview
 
 You can deploy Key Management Service (KMS) and perform O&M on KMS components in the Apsara Infrastructure Management console. You can log on to a server where KMS is deployed on the **Machines** page in the Apsara Infrastructure Management console.
 
-### Log on to the Apsara Infrastructure
+### 6.2 Log on to the Apsara Infrastructure Management console
 
 **Management console**
 
@@ -439,7 +447,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products > Base/Platforms > Apsara**
 **Infrastructure Management**.
 
-### KMS_HOST
+### 6.3 KMS_HOST
 
 This topic describes how to check the status of the KMS_HOST component.
 
@@ -474,7 +482,7 @@ of KMS components
 |---|---|
 | exit code 1 | View debug logs in the debug.log file to identify the cause of the abnormal exit. |
 
-### HSA
+### 6.4 HSA
 
 This topic describes how to check the status of the HSA component.
 
@@ -502,7 +510,7 @@ If the HSA component abnormally exits after it starts, view debug logs in the de
 
 of KMS components Error: `exit code 1` Troubleshooting: View debug logs in the debug.log file to identify the cause of the abnormal exit. This error can be caused by one of the following reasons: The etcd component does not start as expected. The etcd component starts as expected, but the corresponding data is invalid. During disaster recovery, synchronization errors in a secondary cluster may cause this error.
 
-### etcd
+### 6.5 etcd
 
 This topic describes how to check the status of the etcd component.
 
@@ -529,9 +537,7 @@ View logs in the /cloud/log/kms/Etcd#/etcd and /cloud/log/kms/EtcdDecider#/decid
 | Errors in EtcdDecider during service updates cause errors in the etcd component. | In most scenarios, this error occurs when a rolling task exists. You can analyze the error and identify the cause based on the debug.log file of EtcdDecider. |
 | The data directory of the etcd component is missing and the etcd component cannot be started. | Use the Apsara Infrastructure Management console to remove the abnormal etcd node, and then add the node again. |
 
-### Rotator
-
-**6.6.1. Primary data center**
+### 6.6 Rotator
 
 This topic describes how to check the status of the rotator of the primary data center. The rotator is a special component. Even if the service role of the rotator is in the desired state, the rotator is not necessarily working as expected. You can view the status of the rotator in the Apsara Infrastructure Management console. Rotator exceptions do not have an impact on the API logic of Key Management Service (KMS). of KMS components In most scenarios, you need to identify the cause of a rotator exception only when unexpected results are found, such as, when the data in ApsaraDB RDS does not meet expectations.
 
@@ -545,11 +551,7 @@ The rotator of the primary data center is deployed on all nodes. The nodes work 
 
 **Possible errors**
 
-Abnormal ApsaraDB RDS database access. Statistics collection and key deletion tasks cannot be executed. Abnormal HSA service. Key rotation tasks cannot be executed. Abnormal Log Service. Metering tasks cannot be executed. Abnormal etcd service. Distributed locks are unavailable and tasks cannot be executed. If one of the tasks on the rotator is abnormal, the rotator may be unable to reach the desired state. In this case, the rotator may be stuck in the desired state, which you can view in the Apsara Infrastructure Management console.
-
-**6.6.2. Secondary data center**
-
-This topic describes how to check the running status of the rotator of the secondary data center. The rotator of the secondary data center is deployed on all nodes, which are all in the working state. The work scopes of the nodes are idempotent in a certain time range.
+Abnormal ApsaraDB RDS database access. Statistics collection and key deletion tasks cannot be executed. Abnormal HSA service. Key rotation tasks cannot be executed. Abnormal Log Service. Metering tasks cannot be executed. Abnormal etcd service. Distributed locks are unavailable and tasks cannot be executed. If one of the tasks on the rotator is abnormal, the rotator may be unable to reach the desired state. In this case, the rotator may be stuck in the desired state, which you can view in the Apsara Infrastructure Management console. This topic describes how to check the running status of the rotator of the secondary data center. The rotator of the secondary data center is deployed on all nodes, which are all in the working state. The work scopes of the nodes are idempotent in a certain time range.
 
 **Check whether the rotator starts in secondary data center mode**
 

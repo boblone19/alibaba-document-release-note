@@ -3,20 +3,794 @@ title: "Apsara Uni-manager Operations Console Platform Operation and Maintenance
 product_version: "V3.18.6"
 doc_version: "20260703"
 pdf_pages: 1253
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Platform Operation and Maintenance Operations Guide 20260703.pdf"
+source_pdf: "da198cc21cc62d7d_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Platform Operation and Main"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20Platform%20Operation%20and%20Maintenance%20Operations%20Guide%2020260703.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Uni-manager Operations Console Platform Operation and Maintenance Operations Guide
 
+## Table of Contents
+
+- 1 Management service O&M
+  - 1.1 Basic Service Control
+    - 1.1.1 Rule Center
+    - 1.1.2 Configuration Center
+    - 1.1.3 Load Balancing Middleware
+    - 1.1.4 MetaQ
+      - 1.1.4.1 MetaQ clusters
+      - 1.1.4.2 MetaQ topics
+    - 1.1.5 Scheduled Task schedulerx
+      - 1.1.5.1 Configure a DTS job
+      - 1.1.5.2 Manage DTS jobs
+    - 1.1.6 Dubbo Registration Center
+      - 1.1.6.1 Dubbo3 Registration Center
+    - 1.1.7 Cache middleware
+    - 1.1.8 ZooKeeper
+  - 1.2 CMDB
+    - 1.2.1 Getting started
+      - 1.2.1.1 Log on to the Apsara Uni-manager Operations Console
+      - 1.2.1.2 Go to the CMDB platform
+    - 1.2.2 Overview
+    - 1.2.3 Resource topology
+      - 1.2.3.1 Manage resources
+      - 1.2.3.2 Query topologies
+    - 1.2.4 Model information
+      - 1.2.4.1 Manage models
+      - 1.2.4.2 View model topologies
+  - 1.3 Base Container O&M Platform
+    - 1.3.1 Introduction to Base Container O&M Platform
+    - 1.3.2 Overview
+      - 1.3.2.1 Container Engines
+      - 1.3.2.2 Container Instances
+  - 1.4 API O&M
+    - 1.4.1 Temporary Throttling
+    - 1.4.2 POP Gateway
+      - 1.4.2.1 Gateway Call Statistics
+      - 1.4.2.2 API Call Statistics
+      - 1.4.2.3 View the call history
+      - 1.4.2.4 Cross-region call history
+      - 1.4.2.5 Manage the API compatibility mapping layer
+      - 1.4.2.6 Metadata query
+    - 1.4.3 OPSAPI Gateway
+      - 1.4.3.1 Gateway Call Statistics
+      - 1.4.3.2 API Call Statistics
+      - 1.4.3.3 View the call history
+    - 1.4.4 API management
+      - 1.4.4.1 Namespace Management
+      - 1.4.4.2 API Management
+      - 1.4.4.3 API statistics
+        - 1.4.4.3.1 Tasks
+        - 1.4.4.3.2 Reports
+    - 1.4.5 O&M Tools
+      - 1.4.5.1 Service Overview
+      - 1.4.5.2 Link Analysis
+  - 1.5 Operating System O&M Platform
+    - 1.5.1 System Baseline Center
+      - 1.5.1.1 Product Cluster System Baseline
+    - 1.5.2 Diagnostic Center
+      - 1.5.2.1 System diagnostics
+      - 1.5.2.2 Resource QoS diagnostics
+        - 1.5.2.2.1 Node QoS diagnostics
+        - 1.5.2.2.2 Container QoS diagnostics
+    - 1.5.3 Task Center
+    - 1.5.4 Authorized Activation Center
+      - 1.5.4.1 Authorization activation status
+      - 1.5.4.2 Authorization details
+      - 1.5.4.3 License transfer
+- 2 Disaster recovery management
+  - 2.1 ASR for Zone-disaster Recovery
+    - 2.1.1 ASR introduction
+      - 2.1.1.1 What is Apsara Stack Resilience for Zone-disaster Recovery?
+      - 2.1.1.2 ASR deployment architecture
+      - 2.1.1.3 Roles and features
+    - 2.1.2 Log on to the ASR console
+    - 2.1.3 Normal views
+      - 2.1.3.1 Overview
+      - 2.1.3.2 Platform monitoring
+        - 2.1.3.2.1 Usage scenarios
+        - 2.1.3.2.2 Service monitoring
+        - 2.1.3.2.3 Synchronization monitoring
+        - 2.1.3.2.4 Dashboard monitoring
+      - 2.1.3.3 Platform check
+        - 2.1.3.3.1 Check an environment
+        - 2.1.3.3.2 Check products
+      - 2.1.3.4 Disaster recovery drills
+        - 2.1.3.4.1 Usage notes
+        - 2.1.3.4.2 Drill plans
+          - 2.1.3.4.2.1 Predefined drills
+          - 2.1.3.4.2.2 Custom virtual drills
+        - 2.1.3.4.3 Drill records
+        - 2.1.3.4.4 Dashboard monitoring
+      - 2.1.3.5 Disaster recovery
+        - 2.1.3.5.1 Disaster recovery
+          - 2.1.3.5.1.1 Power outage recovery in the primary data center
+          - 2.1.3.5.1.2 Network outage recovery in the primary data center
+          - 2.1.3.5.1.3 Recovery from power outages or split-brain scenarios of the secondary data center
+        - 2.1.3.5.2 Fault simulation
+          - 2.1.3.5.2.1 Fault simulation for two data centers-based zone disaster recovery
+          - 2.1.3.5.2.2 Fault simulation for three data centers-based zone disaster recovery
+        - 2.1.3.5.3 Disaster recovery records
+    - 2.1.4 System settings
+      - 2.1.4.1 Monitoring center
+        - 2.1.4.1.1 Check an environment
+        - 2.1.4.1.2 Check products
+      - 2.1.4.2 Configuration center
+        - 2.1.4.2.1 Manage leased lines
+        - 2.1.4.2.2 Arbitration management
+        - 2.1.4.2.3 Alert management
+          - 2.1.4.2.3.1 Modify an alert rule
+        - 2.1.4.2.4 Configure theme settings
+      - 2.1.4.3 Security center
+        - 2.1.4.3.1 Data backup
+        - 2.1.4.3.2 Configure escape login
+    - 2.1.5 Appendix
+      - 2.1.5.1 Encryption and backup
+      - 2.1.5.2 How to obtain the endpoint of ASR for Zone-disaster Recover
+  - 2.2 ASR for Geo-disaster Recovery
+    - 2.2.1 Log on to the O&M console of ASR for Geo-disaster Recovery
+    - 2.2.2 Homepage
+    - 2.2.3 Disaster recovery monitoring
+      - 2.2.3.1 View the cloud platform monitoring
+      - 2.2.3.2 View the protection group monitoring
+    - 2.2.4 Basic capability O&M
+      - 2.2.4.1 Manage cloud service information
+      - 2.2.4.2 Manage a disaster recovery interconnection
+      - 2.2.4.3 Manage a disaster recovery gateway
+      - 2.2.4.4 Configure a dashboard map
+    - 2.2.5 Disaster recovery O&M
+      - 2.2.5.1 Manage synchronization entities
+        - 2.2.5.1.1 Skip a step
+        - 2.2.5.1.2 Reperform a single step
+        - 2.2.5.1.3 Configure throttling
+        - 2.2.5.1.4 Delete an entity from a protection group
+        - 2.2.5.1.5 View the logs of a synchronization entity
+      - 2.2.5.2 Perform a site switchover drill
+      - 2.2.5.3 Perform a site failover
+      - 2.2.5.4 View the execution history of a site disaster recovery plan
+    - 2.2.6 Independent disaster recovery management
+      - 2.2.6.1 Create an independent disaster recovery plan
+      - 2.2.6.2 Perform a failover
+      - 2.2.6.3 Perform a switchover drill
+      - 2.2.6.4 View the details of an independent disaster recovery plan
+      - 2.2.6.5 Disassociate configured nodes from an independent disaster recovery plan
+      - 2.2.6.6 Delete an independent disaster recovery plan
+    - 2.2.7 Appendixes
+      - 2.2.7.1 Look up a DNS address
+      - 2.2.7.2 Configure DNS forwarding
+      - 2.2.7.3 Configure DTS parameters
+- 3 Computing O&M
+  - 3.1 Compute Operations Console
+    - 3.1.1 Computing overview
+    - 3.1.2 Cluster O&M
+      - 3.1.2.1 View compute clusters
+      - 3.1.2.2 Log on to the AG of a cluster
+      - 3.1.2.3 Manage computing clusters
+        - 3.1.2.3.1 Get an overview of a compute cluster
+        - 3.1.2.3.2 Manage cluster configurations
+          - 3.1.2.3.2.1 View cluster configurations
+          - 3.1.2.3.2.2 Configure cluster-level CPU oversold ratios
+        - 3.1.2.3.3 Manage computing servers
+          - 3.1.2.3.3.1 View computing servers
+          - 3.1.2.3.3.2 Manage server status
+    - 3.1.3 Computing servers
+      - 3.1.3.1 Manage computing servers
+        - 3.1.3.1.1 View computing servers
+        - 3.1.3.1.2 View O&M details about a computing server
+        - 3.1.3.1.3 Diagnose a computing server
+        - 3.1.3.1.4 Lock a server
+        - 3.1.3.1.5 Unlock a server
+        - 3.1.3.1.6 Activate a computing server
+        - 3.1.3.1.7 Migrate all instances from a computing server
+        - 3.1.3.1.8 Deactivate a physical machine for maintenance
+        - 3.1.3.1.9 View audit logs
+      - 3.1.3.2 View computing server-level migration tasks
+      - 3.1.3.3 ECS physical machine O&M
+    - 3.1.4 DRP O&M
+      - 3.1.4.1 Create a dedicated resource pool
+      - 3.1.4.2 View the details of a dedicated resource pool
+      - 3.1.4.3 Manage DRPs
+        - 3.1.4.3.1 Add a server to a dedicated resource pool
+        - 3.1.4.3.2 Remove a server from a dedicated resource pool
+        - 3.1.4.3.3 Change the administrator account ID
+        - 3.1.4.3.4 Manage server status
+      - 3.1.4.4 Delete a dedicated resource pool
+    - 3.1.5 ECS
+        - 3.1.5.1.1 View ECS instances
+        - 3.1.5.1.2 View the details of an instance
+        - 3.1.5.1.3 Manage instance status
+          - 3.1.5.1.3.1 Start instances
+          - 3.1.5.1.3.2 Stop an instance
+          - 3.1.5.1.3.3 Restart an instance
+        - 3.1.5.1.4 Migrate an instance
+        - 3.1.5.1.5 View migration logs in Server Controller
+        - 3.1.5.1.6 ISO management
+        - 3.1.5.1.7 Modify the internal bandwidth of an instance
+      - 3.1.5.2 Disks
+        - 3.1.5.2.1 View disks
+        - 3.1.5.2.2 View disk details
+        - 3.1.5.2.3 Create a snapshot
+        - 3.1.5.2.4 View snapshots
+      - 3.1.5.3 Images
+        - 3.1.5.3.1 Overview
+        - 3.1.5.3.2 View images
+        - 3.1.5.3.3 Manage ISO images
+        - 3.1.5.3.4 Convert the format of an image
+        - 3.1.5.3.5 Unpublish an image
+      - 3.1.5.4 Snapshots
+        - 3.1.5.4.1 Overview
+        - 3.1.5.4.2 View snapshots
+        - 3.1.5.4.3 Delete snapshots
+        - 3.1.5.4.4 Create an image
+        - 3.1.5.4.5 View audit logs
+        - 3.1.5.4.6 View automatic snapshot policies
+      - 3.1.5.5 ENIs
+        - 3.1.5.5.1 View the details of an ENI
+        - 3.1.5.5.2 View audit logs
+      - 3.1.5.6 Security groups
+        - 3.1.5.6.1 Overview
+        - 3.1.5.6.2 View the details of a security group
+        - 3.1.5.6.3 Security group configurations
+        - 3.1.5.6.4 View audit logs
+      - 3.1.5.7 O&M devices
+        - 3.1.5.7.1 Attach a USB device to an instance
+        - 3.1.5.7.2 Attach a CD-ROM device
+    - 3.1.6 Specifications and capacity O&M
+      - 3.1.6.1 Analyze compute capacity
+      - 3.1.6.2 Instance type management
+        - 3.1.6.2.1 All Specifications
+        - 3.1.6.2.2 Custom instance types
+          - 3.1.6.2.2.1 Add a custom instance type
+          - 3.1.6.2.2.2 View a custom instance type
+          - 3.1.6.2.2.3 Disable custom instance types
+          - 3.1.6.2.2.4 View audit logs
+      - 3.1.6.3 Resource reservations
+        - 3.1.6.3.1 Create a resource reservation for an instance
+        - 3.1.6.3.2 Create a resource reservation for a physical machine
+    - 3.1.7 Migration task management
+      - 3.1.7.1 Manage migration tasks
+        - 3.1.7.1.1 Create an ECS migration task
+        - 3.1.7.1.2 Create a computing server-level migration task
+        - 3.1.7.1.3 Create a batch ECS migration task
+        - 3.1.7.1.4 Create a batch machine migration task
+        - 3.1.7.1.5 Create a cluster-level migration task
+        - 3.1.7.1.6 Off-peak migration tasks
+        - 3.1.7.1.7 View migration tasks
+        - 3.1.7.1.8 Stop a migration task
+      - 3.1.7.2 Configure migration constraints
+      - 3.1.7.3 View CPU compatibility configurations
+    - 3.1.8 ECS intelligent O&M
+      - 3.1.8.1 ECS events
+        - 3.1.8.1.1 View ECS instance events
+        - 3.1.8.1.2 Physical machine events
+      - 3.1.8.2 ECS maintenance events
+        - 3.1.8.2.1 Physical machine O&M
+        - 3.1.8.2.2 Instance O&M
+      - 3.1.8.3 ECS workflows
+      - 3.1.8.4 Use the ECS diagnostics feature
+    - 3.1.9 Computing O&M configurations
+      - 3.1.9.1 View monitoring settings
+      - 3.1.9.2 Configure O&M actions
+        - 3.1.9.2.1 Configure throttling for a proactive O&M action
+        - 3.1.9.2.2 Configure the approval process for a proactive O&M action
+      - 3.1.9.3 Modify the release time of a disk
+    - 3.1.10 View O&M audit logs
+    - 3.1.11 Tiangong O&M
+      - 3.1.11.1 Manage Tiangong products
+      - 3.1.11.2 View Tiangong workflows
+    - 3.1.12 Log on to the Apsara Uni-manager Operations Console
+  - 3.2 ECS diagnostics
+    - 3.2.1 Log on to the Apsara Uni-manager Operations Console
+    - 3.2.3 Instance O&M
+    - 3.2.4 View O&M events
+    - 3.2.5 Configure OpsCode throttling rules
+  - 3.3 BMS Operations Console
+    - 3.3.1 What is BMS?
+    - 3.3.2 Getting started
+      - 3.3.2.1 Work with the BMS Operations Console
+      - 3.3.2.2 Log in to the BMS Operations Console
+    - 3.3.3 Instance management
+      - 3.3.3.1 Register an instance
+      - 3.3.3.2 Batch register instances
+      - 3.3.3.3 Re-register an instance
+      - 3.3.3.4 Search for an instance
+      - 3.3.3.5 Release an instance
+      - 3.3.3.6 Restart an instance
+      - 3.3.3.7 Stop an instance
+      - 3.3.3.8 Start an instance
+      - 3.3.3.9 Delete an instance
+      - 3.3.3.10 View the operation logs of an ECS bare metal instance
+      - 3.3.3.11 Modify the properties of an ECS bare metal instance
+      - 3.3.3.12 Modify the hostname of an ECS bare metal instance
+      - 3.3.3.13 Reset the password of an ECS bare metal instance
+      - 3.3.3.14 Change the gateway port of an ECS bare metal instance
+      - 3.3.3.15 Log in to the out-of-band console
+    - 3.3.4 Monitoring and alerting
+      - 3.3.4.1 Instance monitoring
+        - 3.3.4.1.1 View the monitoring information of ECS bare metal instances
+      - 3.3.4.2 Alerts of ECS bare metal instances
+        - 3.3.4.2.1 Query the alerts of ECS bare metal instances
+        - 3.3.4.2.2 View pending alerts
+        - 3.3.4.2.3 View handled alerts
+        - 3.3.4.2.4 Handle alerts
+      - 3.3.4.3 Alerts of managed instances
+        - 3.3.4.3.1 Query the alerts of managed instances
+        - 3.3.4.3.2 View pending alerts
+        - 3.3.4.3.3 View handled alerts
+        - 3.3.4.3.4 Handle alerts
+    - 3.3.5 Basic settings
+      - 3.3.5.1 Image management
+        - 3.3.5.1.1 Upload a custom image
+        - 3.3.5.1.2 Query images
+        - 3.3.5.1.3 Delete an image
+        - 3.3.5.1.4 Manage public images
+        - 3.3.5.1.5 Manage image status
+        - 3.3.5.1.6 Export an image
+      - 3.3.5.2 Network management
+      - 3.3.5.3 Model management
+        - 3.3.5.3.1 Add a model
+        - 3.3.5.3.2 Modify a model
+        - 3.3.5.3.3 Query models
+        - 3.3.5.3.4 Delete a model
+      - 3.3.5.4 GPU settings
+        - 3.3.5.4.1 Add a GPU
+        - 3.3.5.4.2 Modify a GPU
+        - 3.3.5.4.3 Query GPUs
+        - 3.3.5.4.4 Delete a GPU
+  - 3.4 Container Operations Console
+    - 3.4.1 ACK cluster O&M
+    - 3.4.2 Component O&M
+      - 3.4.2.1 Components
+    - 3.4.3 GUI-based changes
+      - 3.4.3.1 Kubernetes version baselines
+      - 3.4.3.2 Troopers configurations
+    - 3.4.4 Log management
+    - 3.4.5 Operation audit
+    - 3.4.6 etcd O&M
+      - 3.4.6.1 etcd backup
+  - 3.5 BMCP Operations Platform
+    - 3.5.1 O&M overview
+    - 3.5.2 Getting started
+      - 3.5.2.1 BMCP Operations Console
+      - 3.5.2.2 Work with the BMCP Operations Console
+      - 3.5.2.3 Log on to the BMCP Operations Console
+    - 3.5.3 Overview
+    - 3.5.4 Visualized monitoring
+      - 3.5.4.1 Job path analysis
+    - 3.5.5 Alerts
+      - 3.5.5.1 Resource event alerts
+      - 3.5.5.2 Job event alerts
+    - 3.5.6 Clusters
+      - 3.5.6.1 Computing
+        - 3.5.6.1.1 Clusters
+          - 3.5.6.1.1.1 Query the details of a computing cluster
+        - 3.5.6.1.2 Nodes
+          - 3.5.6.1.2.1 View the details of a computing node
+          - 3.5.6.1.2.2 Manage computing nodes
+      - 3.5.6.2 Storage
+      - 3.5.6.3 Network
+        - 3.5.6.3.1 Query subnets
+    - 3.5.7 Resource management
+      - 3.5.7.1 Computing
+        - 3.5.7.1.1 Servers
+          - 3.5.7.1.1.1 View server details
+          - 3.5.7.1.1.2 Register resources
+          - 3.5.7.1.1.3 Manage server status
+          - 3.5.7.1.1.4 Remotely log on to a server
+          - 3.5.7.1.1.5 Re-register a server
+          - 3.5.7.1.1.6 Enable or disable servers
+        - 3.5.7.1.2 GPUs
+          - 3.5.7.1.2.1 View GPU details
+      - 3.5.7.2 Storage
+        - 3.5.7.2.1 View the file system details
+        - 3.5.7.2.2 View server resource details
+        - 3.5.7.2.3 View cache resources of a computing node
+      - 3.5.7.3 Network
+        - 3.5.7.3.1 Network elements
+          - 3.5.7.3.1.1 Query network element details
+    - 3.5.8 Inspection and diagnostics
+      - 3.5.8.1 Inspection
+        - 3.5.8.1.1 Clusters and nodes
+        - 3.5.8.1.2 Jobs
+        - 3.5.8.1.3 Description of diagnostic items
+    - 3.5.9 Basic configurations
+      - 3.5.9.1 Models
+        - 3.5.9.1.1 Add a model
+        - 3.5.9.1.2 Query models
+        - 3.5.9.1.3 Modify a model
+        - 3.5.9.1.4 Remove a model
+      - 3.5.9.2 Images
+        - 3.5.9.2.1 Custom images
+        - 3.5.9.2.2 Public images
+      - 3.5.9.3 GPU settings
+        - 3.5.9.3.1 Add a GPU
+        - 3.5.9.3.2 Query GPUs
+        - 3.5.9.3.3 Modify a GPU
+        - 3.5.9.3.4 Remove a GPU
+    - 3.5.10 Logs
+      - 3.5.10.1 Clusters and nodes
+    - 3.5.11 Event center
+- 4 Network operations
+  - 4.1 Network Operations Console
+    - 4.1.1 Dashboard
+      - 4.1.1.1 Overview
+      - 4.1.1.2 Network topology
+      - 4.1.1.3 Custom views
+    - 4.1.2 Basic network
+      - 4.1.2.1 Network element management
+      - 4.1.2.2 Syslog
+      - 4.1.2.3 HPN management
+        - 4.1.2.3.1 HPN network elements
+        - 4.1.2.3.2 RDMA NIC O&M
+        - 4.1.2.3.3 HPN performance analysis
+        - 4.1.2.3.4 HPN instant diagnostics
+      - 4.1.2.4 CPN management
+        - 4.1.2.4.1 CPN diagnosis
+        - 4.1.2.4.2 CPN performance analysis
+        - 4.1.2.4.3 CPN alert center
+        - 4.1.2.4.4 CPN access gateways
+          - 4.1.2.4.4.1 Manage RDMA devices
+          - 4.1.2.4.4.2 Manage RDMA device policies
+          - 4.1.2.4.4.3 Manage policies for RDMA device interfaces
+        - 4.1.2.4.5 RDMA NIC O&M
+        - 4.1.2.4.6 CPN management
+          - 4.1.2.4.6.1 CPN topology
+          - 4.1.2.4.6.2 CPN network element
+        - 4.1.2.4.7 CPN network monitoring
+          - 4.1.2.4.7.1 CPN host monitoring dashboard
+          - 4.1.2.4.7.2 CPN switch dashboard
+          - 4.1.2.4.7.3 NAK packet analysis tool
+          - 4.1.2.4.7.4 High-precision monitoring dashboard
+          - 4.1.2.4.7.5 High-precision vSwitch monitoring dashboard
+          - 4.1.2.4.7.6 Job monitoring
+          - 4.1.2.4.7.7 CPN stream monitoring
+      - 4.1.2.5 Cloud Gateway
+      - 4.1.2.6 Leased line management
+        - 4.1.2.6.1 Leased lines
+        - 4.1.2.6.2 Leased line group
+        - 4.1.2.6.3 Access point management
+        - 4.1.2.6.4 Access device management
+        - 4.1.2.6.5 Express Connect circuit management
+        - 4.1.2.6.6 VBR management
+        - 4.1.2.6.7 Router interface management
+        - 4.1.2.6.8 Route table management
+      - 4.1.2.7 opsDNS management
+        - 4.1.2.7.1 opsDNS monitoring
+        - 4.1.2.7.2 opsDNS domain service
+      - 4.1.2.8 Tenant DNS management
+        - 4.1.2.8.1 Node management (in-cloud)
+        - 4.1.2.8.2 Node management (cross-cloud)
+      - 4.1.2.9 Computing access gateways
+    - 4.1.3 Networking services
+      - 4.1.3.1 SLB O&M
+        - 4.1.3.1.1 SLB cluster management
+        - 4.1.3.1.2 SLB management
+      - 4.1.3.2 Proxy O&M
+        - 4.1.3.2.1 Proxy management
+      - 4.1.3.3 XGW O&M
+        - 4.1.3.3.1 XGW cluster management
+        - 4.1.3.3.2 XGW management
+        - 4.1.3.3.3 NAT gateway monitoring
+        - 4.1.3.3.4 Router interface instances
+      - 4.1.3.4 CGW O&M
+        - 4.1.3.4.1 CGW cluster management
+        - 4.1.3.4.2 CGW management
+      - 4.1.3.5 CEN O&M
+        - 4.1.3.5.1 CEN-TR cluster management
+        - 4.1.3.5.2 CEN workflows
+      - 4.1.3.6 AVS O&M
+        - 4.1.3.6.1 AVS management
+      - 4.1.3.7 VPC O&M
+        - 4.1.3.7.1 VPC-On-ECS
+        - 4.1.3.7.2 VPC workflows
+    - 4.1.4 Network monitoring and alerting
+      - 4.1.4.1 Network alert dashboard
+      - 4.1.4.2 Network alert settings
+        - 4.1.4.2.1 Monitoring rule management
+        - 4.1.4.2.2 Alert template management
+        - 4.1.4.2.3 Trap template settings
+    - 4.1.5 Intelligent diagnostics
+      - 4.1.5.1 Network inspection
+      - 4.1.5.2 Intelligent path analysis
+        - 4.1.5.2.1 Packet capture and analysis
+        - 4.1.5.2.2 Topology analysis
+      - 4.1.5.3 Network instance diagnostics
+      - 4.1.5.4 Network instance diagnostics
+      - 4.1.5.5 Container network diagnostics
+      - 4.1.5.6 Network health assessment
+      - 4.1.5.7 Optical transceiver module diagnostics
+    - 4.1.6 Network resources
+      - 4.1.6.1 Network asset management
+      - 4.1.6.2 IP address pool management
+        - 4.1.6.2.1 IP address pools
+        - 4.1.6.2.2 Collection settings
+      - 4.1.6.3 Reverse access
+      - 4.1.6.4 Cloud instance management
+    - 4.1.7 Traffic visualization
+      - 4.1.7.1 Visual settings
+    - 4.1.8 Platform management
+      - 4.1.8.1 Metric management
+        - 4.1.8.1.1 TSDB clusters
+- 5 Storage operations
+  - 5.1 CDS-OPS
+    - 5.1.1 Operations Guide
+      - 5.1.1.1 Log in to the Apsara Uni-manager Operations Console
+      - 5.1.1.2 Feature overview
+      - 5.1.1.3 Permission configuration
+        - 5.1.1.3.1 Manage permissions on CDS-OPS
+        - 5.1.1.3.2 Manage permissions on HDR-OPS
+      - 5.1.1.4 Service overview
+      - 5.1.1.5 Storage management
+        - 5.1.1.5.1 Before you begin
+        - 5.1.1.5.2 Manage EBS clusters (EBS-2.0 and CDS-EBS)
+          - 5.1.1.5.2.1 Overview of EBS clusters
+          - 5.1.1.5.2.2 Manage cluster details
+          - 5.1.1.5.2.3 View compute nodes
+          - 5.1.1.5.2.4 Manage storage sets
+          - 5.1.1.5.2.5 Manage disks
+          - 5.1.1.5.2.6 Create hot migration jobs to migrate cloud disks
+          - 5.1.1.5.2.7 Perform canary O&M
+        - 5.1.1.5.3 Manage EBS clusters (EBS-1.0)
+          - 5.1.1.5.3.1 Overview of EBS clusters
+          - 5.1.1.5.3.2 Manage cluster details
+        - 5.1.1.5.4 Manage OSS clusters
+          - 5.1.1.5.4.1 Overview of OSS clusters
+          - 5.1.1.5.4.2 Manage cluster details
+          - 5.1.1.5.4.3 Manage buckets
+          - 5.1.1.5.4.4 Manage synchronization configurations
+          - 5.1.1.5.4.5 O&M robots
+        - 5.1.1.5.5 Manage log storage clusters
+          - 5.1.1.5.5.1 Overview of SLS clusters
+          - 5.1.1.5.5.2 Manage cluster details
+      - 5.1.1.6 Monitoring center
+        - 5.1.1.6.1 View the custom dashboard
+        - 5.1.1.6.2 View the monitoring data of resources
+        - 5.1.1.6.3 View the monitoring data of storage metrics
+        - 5.1.1.6.4 View the monitoring data of services
+      - 5.1.1.7 Event Alerts
+        - 5.1.1.7.1 Alert overview
+        - 5.1.1.7.2 Handle current alerts
+        - 5.1.1.7.3 View historical alerts
+      - 5.1.1.8 Routine Inspection
+        - 5.1.1.8.1 Inspection center
+        - 5.1.1.8.2 SLA monitoring
+      - 5.1.1.9 Intelligent O&M
+        - 5.1.1.9.1 Host O&M
+          - 5.1.1.9.1.1 View all workflows
+          - 5.1.1.9.1.2 Initiate a CDS Cluster Scale Up workflow
+          - 5.1.1.9.1.3 Initiate a CDS Cluster Scale Down workflow
+          - 5.1.1.9.1.4 Initiate a CDS Cluster Node Maintenance workflow
+          - 5.1.1.9.1.5 Initiate a CDS Cluster Three Availability Zones Scale Up workflow
+          - 5.1.1.9.1.6 Initiate a CDS Cluster Deployment Mode Switch workflow
+        - 5.1.1.9.2 Maintain disks
+          - 5.1.1.9.2.1 Maintain corrupted disks
+          - 5.1.1.9.2.2 Actively replace a hard disk
+          - 5.1.1.9.2.3 View hard disk maintenance history
+        - 5.1.1.9.3 Log Management
+          - 5.1.1.9.3.1 Collect log data
+          - 5.1.1.9.3.2 Query logs
+      - 5.1.1.10 System Management
+        - 5.1.1.10.1 View plug-in information
+        - 5.1.1.10.2 View tasks
+        - 5.1.1.10.3 Query audit logs
+        - 5.1.1.10.4 System Cleanup
+          - 5.1.1.10.4.1 Manage cleanup configurations
+          - 5.1.1.10.4.2 Run cleanup tasks
+      - 5.1.1.11 Data Service
+        - 5.1.1.11.1 Manage CSG instances
+        - 5.1.1.11.2 Use HDR-OPS
+          - 5.1.1.11.2.1 Before you begin
+          - 5.1.1.11.2.2 View site pair information
+          - 5.1.1.11.2.3 View alert information
+          - 5.1.1.11.2.4 View inspection tasks
+          - 5.1.1.11.2.5 Manage O&M tasks
+          - 5.1.1.11.2.6 Manage O&M configurations
+          - 5.1.1.11.2.7 Manage cloud sites
+- 6 Database O&M
+  - 6.1 ApsaraDB Operations and Maintenance System
+    - 6.1.1 Log on to the ApsaraDB Operations and Maintenance System
+    - 6.1.2 Homepage
+    - 6.1.3 Instance management
+      - 6.1.3.1 Instance batch management
+        - 6.1.3.1.1 Migrate instances in batch
+        - 6.1.3.1.2 Modify instance parameters in batch
+        - 6.1.3.1.3 Modify DIY parameters in batch
+        - 6.1.3.1.4 Modify Redis parameters in batch
+        - 6.1.3.1.5 Manage batch tasks
+        - 6.1.3.1.6 Manage batch task types
+        - 6.1.3.1.7 Manage SQL templates
+      - 6.1.3.2 Singal instance management
+        - 6.1.3.2.1 Overview
+        - 6.1.3.2.2 Views instances.
+        - 6.1.3.2.3 Instance diagnostics
+        - 6.1.3.2.4 Manage emergency response plans
+        - 6.1.3.2.5 Use the instance dashboard
+        - 6.1.3.2.6 Manage instance migration plans
+    - 6.1.4 Host management
+      - 6.1.4.1 Create a host
+      - 6.1.4.2 Configure hosts in batch
+      - 6.1.4.3 View the details of a host
+    - 6.1.5 Cluster management
+      - 6.1.5.1 Create a cluster
+      - 6.1.5.2 Manage service types
+      - 6.1.5.3 Manage service nodes
+      - 6.1.5.4 Manage DB configuration templates
+      - 6.1.5.5 Manage Fangcunshan clusters
+      - 6.1.5.6 Manage locations
+    - 6.1.6 Task management
+      - 6.1.6.1 Manage interrupted tasks
+      - 6.1.6.2 Manage temporarily closed tasks
+    - 6.1.7 System management
+  - 6.2 Data Transmission Service
+    - 6.2.1 DTS O&M console overview
+    - 6.2.2 Log on to the DTS O&M console
+    - 6.2.3 Task management
+      - 6.2.3.1 Manage tasks
+      - 6.2.3.2 Manage the modules of a task
+    - 6.2.4 Task engine
+      - 6.2.4.1 Query tasks
+    - 6.2.5 Monitoring and alerting
+      - 6.2.5.1 View the monitoring information of full data migration tasks
+      - 6.2.5.2 View dashboards
+    - 6.2.6 Cluster management
+      - 6.2.6.1 Manage clusters
+      - 6.2.6.2 Manage change tracking tasks in DStore Workbench
+    - 6.2.7 Resource management
+      - 6.2.7.1 View DTS resources
+      - 6.2.7.2 Manage DTS resources
+      - 6.2.7.3 View the CIDR blocks of DTS servers
+    - 6.2.8 O&M practices
+      - 6.2.8.1 View alerts
+      - 6.2.8.2 View logs
+      - 6.2.8.3 Practices for managing data migration and data synchronization tasks
+      - 6.2.8.4 Practices for managing change tracking tasks
+  - 6.3 Database Backup
+    - 6.3.1 DBS O&M console overview
+    - 6.3.2 Logon to the DBS O&M console
+    - 6.3.3 Task management
+      - 6.3.3.1 Manage tasks
+      - 6.3.3.2 Manage a task module
+    - 6.3.4 Resource management
+      - 6.3.4.1 View DBS resources
+      - 6.3.4.2 Unpublish DBS resources
+      - 6.3.4.3 View DBS CIDR blocks
+    - 6.3.5 Usage
+      - 6.3.5.1 View all subtasks in a backup plan
+      - 6.3.5.2 Quickly view a full backup task or a backup set download task
+      - 6.3.5.3 Manually restart a task
+- 7 Middleware O&M
+  - 7.1 RocketMQ Operations Console
+    - 7.1.1 Log in to the RocketMQ Operations Console
+    - 7.1.2 Overview
+    - 7.1.3 Broker management
+    - 7.1.4 NameServer management
+    - 7.1.5 Metadata management
+    - 7.1.6 Copilot
+      - 7.1.6.1 Hot upgrade
+      - 7.1.6.2 Disaster recovery deployment
+      - 7.1.6.3 Disaster recovery removal
+      - 7.1.6.4 Capacity analysis
+    - 7.1.7 Operational audit
+  - 7.2 文档标题缺失，请补全后重新导出
+    - 7.2.1 Log in to the Kafka Operations Console
+    - 7.2.2 Overview
+    - 7.2.3 Instance list
+    - 7.2.4 Broker list
+- 8 Big data O&M
+  - 8.1 Bigdata Manager
+    - 8.1.1 Apsara Big Data Manager
+    - 8.1.2 Common operations
+    - 8.1.3 Quick start
+      - 8.1.3.1 Log on to the ABM console
+      - 8.1.3.2 Set the theme of the console
+      - 8.1.3.3 View the trace dashboards
+      - 8.1.3.4 View the cluster running status
+      - 8.1.3.5 View and clear cluster alerts
+    - 8.1.4 Monitoring
+      - 8.1.4.1 ABM dashboard
+      - 8.1.4.2 ABM repository
+      - 8.1.4.3 Health
+      - 8.1.4.4 Reports
+    - 8.1.5 ABM
+      - 8.1.5.1 O&M overview
+      - 8.1.5.2 Business O&M
+        - 8.1.5.2.1 View cron jobs
+        - 8.1.5.2.2 Create and configure a zone-disaster recovery project in MaxCompute
+    - 8.1.6 Management
+      - 8.1.6.1 Overview
+      - 8.1.6.2 Jobs
+        - 8.1.6.2.1 Overview
+        - 8.1.6.2.2 Jobs
+          - 8.1.6.2.2.1 Manually run a job
+          - 8.1.6.2.2.2 Enable or disable a cron job
+          - 8.1.6.2.2.3 View the execution history of a job
+          - 8.1.6.2.2.4 View execution history
+      - 8.1.6.3 Health management
+        - 8.1.6.3.1 Health management
+        - 8.1.6.3.2 Inspection management
+      - 8.1.6.4 Operation auditing
+    - 8.1.7 Go to other consoles
+  - 8.2 Elasticsearch
+    - 8.2.1 Log in to the Elasticsearch O&M console
+    - 8.2.2 Cluster management
+      - 8.2.2.1 Cluster list
+      - 8.2.2.2 Create a cluster
+      - 8.2.2.3 View the basic information of an Elasticsearch cluster
+      - 8.2.2.4 Log in to the Kibana console
+      - 8.2.2.5 Log on to the Dashboards console
+      - 8.2.2.6 Backup and recovery
+        - 8.2.2.6.1 Snapshots
+        - 8.2.2.6.2 Restore data from snapshots
+      - 8.2.2.7 Plug-in management
+        - 8.2.2.7.1 Install, update, and uninstall plug-ins
+        - 8.2.2.7.2 Modify the configuration of built-in plug-ins
+      - 8.2.2.8 Configure cluster O&M
+        - 8.2.2.8.1 Upgrade the version
+        - 8.2.2.8.2 Security settings
+        - 8.2.2.8.3 Instance specifications
+        - 8.2.2.8.4 Cluster configuration
+        - 8.2.2.8.5 Upgrade the deployment method
+    - 8.2.3 Platform management
+      - 8.2.3.1 Repository management
+      - 8.2.3.2 Plug-in management
+      - 8.2.3.3 Resource management
+      - 8.2.3.4 Zone configuration
+      - 8.2.3.5 Operation control
+      - 8.2.3.6 Benchmark test
+    - 8.2.4 Logging and monitoring
+      - 8.2.4.1 View logs
+      - 8.2.4.2 View Elasticsearch monitoring metrics
+      - 8.2.4.3 View the Grafana monitoring dashboard for Elasticsearch
+      - 8.2.4.4 Instance monitoring alerts
+      - 8.2.4.5 Default monitoring alerts for the O&M platform
+- 9 Security management
+  - 9.1 Security operations
+    - 9.1.1 Security Operations Center (SOC)
+      - 9.1.1.1 Use the threat monitoring feature
+      - 9.1.1.2 Risk analysis
+        - 9.1.1.2.1 View threat events
+        - 9.1.1.2.2 Use the threat investigation feature
+        - 9.1.1.2.3 Use the cloud service check feature
+        - 9.1.1.2.4 View vulnerability analysis results
+        - 9.1.1.2.5 Use the traffic analysis feature
+      - 9.1.1.3 Threat intelligence
+        - 9.1.1.3.1 View the intelligence overview
+        - 9.1.1.3.2 Manage the threat intelligence module
+      - 9.1.1.4 Asset management
+        - 9.1.1.4.1 View platform assets
+      - 9.1.1.5 Log management
+        - 9.1.1.5.1 View the information on the Log Overview page
+        - 9.1.1.5.2 View platform logs
+        - 9.1.1.5.3 View tenant logs
+        - 9.1.1.5.4 Log configurations
+          - 9.1.1.5.4.1 Manage log sources
+          - 9.1.1.5.4.2 Configure a log parsing template
+          - 9.1.1.5.4.3 Configure log forwarding
+      - 9.1.1.6 Policy management
+        - 9.1.1.6.1 Create an analysis rule
+        - 9.1.1.6.2 Create a response policy
+  - 9.2 Network security
+    - 9.2.1 Web Application Firewall (WAF)
+      - 9.2.1.1 Protection configuration
+        - 9.2.1.1.1 Add a website to WAF for protection
+        - 9.2.1.1.2 Configure protection policies
+        - 9.2.1.1.3 Create a custom rule
+        - 9.2.1.1.4 Configure an HTTP flood protection rule
+      - 9.2.1.2 Protection logs
+        - 9.2.1.2.1 View attack detection logs
+        - 9.2.1.2.2 View HTTP flood protection logs
+        - 9.2.1.2.3 View system operation logs
+        - 9.2.1.2.4 View access logs
+      - 9.2.1.3 System management
+        - 9.2.1.3.1 Configure global system settings
+
 nt service O&M
 
-## Management service O&M
+## 1 Management service O&M
 
-### Basic Service Control
+### 1.1 Basic Service Control
 
-#### Rule Center
+#### 1.1.1 Rule Center
 
 On the Rule Center page, you can query the business rules of basic services to facilitate dynamic business logic adjustment.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -31,7 +805,7 @@ details of the rule. nt service O&M
 6. On the **Operation Logs** tab, you can query operation logs by **status**. The information is
 displayed in the following columns: Basic Feature Status Type Created At Approved At Workflow ID nt service O&M
 
-#### Configuration Center
+#### 1.1.2 Configuration Center
 
 Configuration Center allows you to dynamically query and manage service configurations, such as enabling and disabling service configurations and throttling.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -45,7 +819,7 @@ view the details of the configuration.
 6. On the **Operation Logs** tab, configuration information is listed by **status** by default. The
 configuration information is displayed in the following columns: Basic Feature Status Type Created At Approved At Workflow ID
 
-#### Load Balancing Middleware
+#### 1.1.3 Load Balancing Middleware
 
 On the Load Balancing Middleware page, you can query the load balancing configurations of software and domain names and the status of backend server IP addresses.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -58,11 +832,11 @@ Domain Name Scenario tag Configuration Status Registered At
 5. Find the configuration that you want to view and click **Details** in the Actions column to
 view the details of the load balancing configuration. nt service O&M
 
-#### MetaQ
+#### 1.1.4 MetaQ
 
 The Graphical User Interface (GUI) of MetaQ allows you to query clusters, topics, and messages.
 
-##### MetaQ clusters
+##### 1.1.4.1 MetaQ clusters
 
 This topic describes how to view the information about a MetaQ cluster.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -73,7 +847,7 @@ This topic describes how to view the information about a MetaQ cluster.
 4. The following information is displayed:
 Shard ID IP Address Version Message Production TPS Message Consumption TPS Total Production Yesterday Total Consumption Yesterday Total Production Today Total Consumption Today
 
-##### MetaQ topics
+##### 1.1.4.2 MetaQ topics
 
 This topic describes how to view the information about a MetaQ topic.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -83,11 +857,11 @@ This topic describes how to view the information about a MetaQ topic.
 4. Search for a MetaQ topic by specifying the **Topic** parameter to view the information about
 the MetaQ topic. nt service O&M Topic Find the MetaQ topic that you want to view and click **States** in the Actions column to view the state of the topic. Find the MetaQ topic that you want to view and click **Routes** in the Actions column to view the information about the routes for the topic. nt service O&M nt service O&M Find the MetaQ topic that you want to view and click **Consumer Management** in the Actions column to view the information about the consumers for the topic. Find the MetaQ topic that you want to view and click **Configurations** in the Actions column to view the configurations of the topic.
 
-#### Scheduled Task schedulerx
+#### 1.1.5 Scheduled Task schedulerx
 
 This topic describes the Scheduled Task schedulerx module.
 
-##### Configure a DTS job
+##### 1.1.5.1 Configure a DTS job
 
 You can perform O&M operations on and view O&M logs of scheduled jobs in the Apsara Unimanager Operations Console. For example, you can query, delete, modify, trigger, stop, and terminate a job.
 
@@ -146,7 +920,7 @@ navigation pane and click the Operation Logs tab.
 2. You can select a state from the Status drop-down list to query O&M operations by approval
 status.
 
-##### Manage DTS jobs
+##### 1.1.5.2 Manage DTS jobs
 
 This topic describes how to query the information about a scheduled job, including the trigger time and status.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -158,11 +932,11 @@ This topic describes how to query the information about a scheduled job, includi
 5. View the information displayed in the following columns:
 Job ID Job Description Job Status Triggered At
 
-#### Dubbo Registration Center
+#### 1.1.6 Dubbo Registration Center
 
 This topic describes the Dubbo Registration Center module.
 
-##### Dubbo3 Registration Center
+##### 1.1.6.1 Dubbo3 Registration Center
 
 Dubbo3 Registration Center, which is the Nacos Graphical User Interface (GUI) console, allows you to query service information and node information.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -174,7 +948,7 @@ nt service O&M
 4. View information on the **Service** and **Node** tabs.
 i. On the **Service** tab, the following information is displayed: Service Name Find the service that you want to view and click **Instance** in the Actions column to view instance details. The following information is displayed: IP Port Number Dubbo Version Weight Health Status nt service O&M Find the service that you want to view and click **Subscriber** in the Actions column to view subscriber information. The following information is displayed: app IP agent ii. View the status and details of Nacos nodes in the current environment on the **Node** tab. Node IP Address Node Status Find the node that you want to view and click **Details** in the Actions column to view the details of the node. nt service O&M
 
-#### Cache middleware
+#### 1.1.7 Cache middleware
 
 This topic describes how to view the details of namespaces on the Cache Middleware page.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -182,13 +956,13 @@ This topic describes how to view the details of namespaces on the Cache Middlewa
 **service operation and maintenance** > **Basic Service Control**.
 3. In the left-side navigation pane, click **Cache Middleware**.
 4. On the Cache Middleware page, search for a **namespace** to view the information about the
-namespace. The information is displayed in the following columns: namespace usersize quota Usage nt service O&M
+namespace. The information is displayed in the following columns: namespace usersize quota nt service O&M
 5. Find the namespace that you want to view and click **Traffic Details** in the Actions column.
 The information is displayed in the following columns: server namespace in out status
 6. Find the namespace that you want to view and click **Query by Key** in the Actions column.
 In the Query by Key dialog box, you can query information by key. The following information is displayed: key value version mdate cdate edate nt service O&M
 
-#### ZooKeeper
+#### 1.1.8 ZooKeeper
 
 You can query information about ZooKeeper distributed application coordination services in the Graphical User Interface (GUI) console.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -200,13 +974,13 @@ You can query information about ZooKeeper distributed application coordination s
 **Product**: the name of the product.
 **Number of Child Nodes**: the number of child nodes in the path.
 
-### CMDB
+### 1.2 CMDB
 
-#### Getting started
+#### 1.2.1 Getting started
 
 nt service O&M
 
-##### Log on to the Apsara Uni-manager
+##### 1.2.1.1 Log on to the Apsara Uni-manager Operations Console
 
 **Operations Console**
 
@@ -222,13 +996,13 @@ Press the Enter key. nt service O&M You can click the current language in the up
 Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. nt service O&M The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
-##### Go to the CMDB platform
+##### 1.2.1.2 Go to the CMDB platform
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
 **service operation and maintenance** > **CMDB**.
 
-#### Overview
+#### 1.2.2 Overview
 
 This topic describes the Overview page of the Configuration Management Database (CMDB) platform.
 
@@ -252,11 +1026,11 @@ Displays the statistics on models in the current CMDB platform and the detailed 
 | Resource Instance Changes | The number of instances added, modified, or deleted within a specific time range. |
 | Calls | The number of times internal and external systems call the API operations of CMDB. The data is collected for statistical analysis by caller and day. |
 
-#### Resource topology
+#### 1.2.3 Resource topology
 
 Configuration Management Database (CMDB) provides resource-oriented management capabilities. You can query the resources of a single model and the resource topology among multiple models, and view resource change logs.
 
-##### Manage resources
+##### 1.2.3.1 Manage resources
 
 On the Resource Management page, you can view the resources of a single model by model category.
 
@@ -275,7 +1049,7 @@ You can view the resource information, association relationships, and change his
 
 On the **Resource Management** page, click **Export** in the upper-right corner of the resource list to export the resources of the selected model.
 
-##### Query topologies
+##### 1.2.3.2 Query topologies
 
 On the Topology Query page, you can query data of models that have association relationships.
 
@@ -298,9 +1072,9 @@ of models.
 6. (Optional) In the **Search Result** section, click the Settings icon next to a model name to
 change the sorting order of fields in the model. nt service O&M
 
-#### Model information
+#### 1.2.4 Model information
 
-##### Manage models
+##### 1.2.4.1 Manage models
 
 The Model Management page displays the information about all model fields and model associations in the current configuration management database (CMDB) platform.
 
@@ -322,7 +1096,7 @@ about models that are associated with the current model.
 7. In the **Model Information** section, click the **Rule Verification** tab to view verification
 rules of the current model.
 
-##### View model topologies
+##### 1.2.4.2 View model topologies
 
 On the Model Topology page, you can view model associations in a graphic view.
 
@@ -337,9 +1111,9 @@ with the model as the center is displayed. nt service O&M
 icon next to a model to view the in-depth relationship between it and other models. nt service O&M
 6. Click a model to view its details.
 
-### Base Container O&M Platform
+### 1.3 Base Container O&M Platform
 
-#### Introduction to Base Container O&M
+#### 1.3.1 Introduction to Base Container O&M Platform
 
 **Platform**
 
@@ -353,11 +1127,11 @@ In the past, the O&M system of Apsara Stack lacked a unified view from the persp
 
 You can view the status of container engines of all machines where Apsara Infrastructure Management and PaaS are deployed from the global perspective. You can view the status of all container instances of all machines where Apsara Infrastructure Management and PaaS are deployed from the global perspective. You can use Base Container O&M Platform to collect the operational logs, stack traces, and performance analysis logs of container engines for specified machines with a few clicks. You can use Base Container O&M Platform to perform diagnostics on container engines and container instances with a few clicks, and the system automatically provides related KB documents for known issues. You can use Base Container O&M Platform to fix container engines and container instances with a few clicks. This way, known issues are automatically fixed.
 
-#### Overview
+#### 1.3.2 Overview
 
-This topic describes the two modules of Base Container O&M Platform in order. Container Engines Container Instances The following figure shows how to log on to Base Container O&M Platform. In the top navigation bar of the Apsara Uni-manager Operations Console, choose Platform Operation > Management and control service operation and maintenance > Base Container O&M Platform. nt service O&M
+This topic describes the two modules of Base Container O&M Platform in order. The following figure shows how to log on to Base Container O&M Platform. In the top navigation bar of the Apsara Uni-manager Operations Console, choose Platform Operation > Management and control service operation and maintenance > Base Container O&M Platform. nt service O&M
 
-##### Container Engines
+##### 1.3.2.1 Container Engines
 
 This topic describes the sections of the Container Engines page, including the container engine list, container engine diagnostics and fixing, and container engine log collection.
 1. . Container engine list**
@@ -378,7 +1152,7 @@ nt service O&M Diagnoses are provided only for abnormal container engines. There
 3. . Container engine log collection**
 nt service O&M On the Container Engines page, find the desired container engine and click `Log Collection` in the Operation column to go to the Container Engine log collection page. Click `Start` `collection` in the upper-right corner of the page to start log collection. After log collection is complete, the names, sizes, and download links of log files are displayed in the log File list section. The log Collection tab displays the operational logs of the engine process, the stack Collection tab displays the stack traces of the container engine process, and the pprof collection tab displays the performance logs of the container engine which include flame graphs and latency. Only the log Collection and stack Collection tabs allow you to preview the last 5,000 rows of collected logs. The pprof collection tab does not support preview, and pprof collection takes minutes because it needs to collect the running status of programs.
 
-##### Container Instances
+##### 1.3.2.2 Container Instances
 
 This topic describes the sections of the Container Instances page, including the container instance list and container instance diagnostics and fixing.
 1. . Container instance list**
@@ -397,9 +1171,9 @@ nt service O&M If you want to perform diagnostics only on a single container ins
 
 Diagnoses are provided only for abnormal container instances. Therefore, the `Processing` and `Ignore` options in the Operation column are unavailable for normal container instances. You can select To be repaired from the Status drop-down list above the container instance list to filter abnormal container instances. If you click `Ignore` in the Operation column that corresponds to a container instance, the information about the container instance is temporarily hidden. However, if the error of the container instance is diagnosed in the next diagnostics, the information about the container instance will be displayed again. After you click Processing in the Operation column, you can view specific diagnoses which include diagnostics items, and fixing suggestions. You can also click `View KB` in the Operation column to download the corresponding KB document. Click `One-click repair` in the upper-right corner of the page to fix some known issues. The diagnosed issues may not be fixed. You can use only the automatic fix feature. For more information, see the related KB document. nt service O&M
 
-### API O&M
+### 1.4 API O&M
 
-#### Temporary Throttling
+#### 1.4.1 Temporary Throttling
 
 **Create a throttling mode**
 
@@ -451,11 +1225,11 @@ You can disable throttling modes that are in the **Enabled** state.
 1. Find the desired throttling mode and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-#### POP Gateway
+#### 1.4.2 POP Gateway
 
 nt service O&M
 
-##### Gateway Call Statistics
+##### 1.4.2.1 Gateway Call Statistics
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -474,7 +1248,7 @@ or Other Failures in the lower-left corner to hide the corresponding data. Valid
 **Metrics** and **Time range** parameters to view desired data.
 i. You can click **Call source distribution** in the Operation column to view the AccessKey pairs of the callers. ii. You can click **Temporary Throttling** in the Operation column to create a throttling mode.
 
-##### API Call Statistics
+##### 1.4.2.2 API Call Statistics
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -493,7 +1267,7 @@ or Other Failures in the lower-left corner to hide the corresponding data. Valid
 6. View the information about specific API operations in the section below the Call statistics
 section. i. You can click **Call source statistics** in the Operation column that corresponds to an API operation to view the distribution of the AccessKey pairs, namespace, source IP address, and user agent information. nt service O&M ii. You can click **Monitoring data** in the Operation column that corresponds to an API operation to view the metrics of the API operation. iii. You can click **Call trend** in the Operation column that corresponds to an API operation to view the call trend of the API operation. You can also select a time granularity.
 
-##### View the call history
+##### 1.4.2.3 View the call history
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -503,7 +1277,7 @@ nt service O&M
 4. View the information about the POP call history. You can filter results by specifying query
 conditions in the upper part of the page. The statistical dimension can be the call volume or the statistical time.
 
-##### Cross-region call history
+##### 1.4.2.4 Cross-region call history
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -514,7 +1288,7 @@ nt service O&M
 4. View the historical records of cross-region calls. You can specify search conditions to filter
 records. The IP addresses support fuzzy match. The call records from a region different from the current region are displayed. nt service O&M
 
-##### Manage the API compatibility mapping
+##### 1.4.2.5 Manage the API compatibility mapping layer
 
 **layer**
 
@@ -531,7 +1305,7 @@ It takes up to 5 minutes for a compatibility mapping rule to take effect on the 
 4. Click **Details** in the Actions column to view the compatibility mapping rules of an API. The
 following figure shows the compatibility mapping rule for the ASRBR_2021-10- 15_RestartRecoveryInstance API. This API has undergone parameter name changes in the current version. To ensure the compatibility with client-side API calls, when this mapping rule takes effect, each time a caller calls the API and includes the InstanceTaskId parameter in input parameters, the POP gateway recognizes this parameter, converts it to TaskInstanceId, and finally passes it to the server.
 
-##### Metadata query
+##### 1.4.2.6 Metadata query
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -545,9 +1319,9 @@ You can view the following information about the API operations: **Basic informa
 **configuration**, and **API XML configuration**.
 nt service O&M
 
-#### OPSAPI Gateway
+#### 1.4.3 OPSAPI Gateway
 
-##### Gateway Call Statistics
+##### 1.4.3.1 Gateway Call Statistics
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -565,7 +1339,7 @@ Only the number of **successful requests** and **failed requests** can be displa
 **Metrics** and **Time range** parameters to view desired data.
 i. You can click **Call source distribution** in the Operation column to view the AccessKey pairs of the callers. ii. You can click **Temporary Throttling** in the Operation column to create a throttling mode.
 
-##### API Call Statistics
+##### 1.4.3.2 API Call Statistics
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -579,7 +1353,7 @@ sections of the **Call statistics** section. Only the number of **successful req
 6. View the information about a specific API operation in the section below the Call statistics
 section. i. You can click **Call source statistics** in the Operation column that corresponds to a specific API operation to view the distribution of the AccessKey pairs of the callers for the API operation. ii. You can click **Monitoring data** in the Operation column that corresponds to an API operation to view the metrics of the API operation. iii. You can click **Call trend** in the Operation column that corresponds to an API operation to view the call trend of the API operation.
 
-##### View the call history
+##### 1.4.3.3 View the call history
 
 nt service O&M
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -589,11 +1363,11 @@ nt service O&M
 4. View the information about the OPSAPI call history. You can filter results by specifying
 query conditions in the upper part of the page. The statistical dimension can be the call volume or the statistical time.
 
-#### API management
+#### 1.4.4 API management
 
 The API Management module is used to view and manage product information and API information registered on OpsAPI Gateway.
 
-##### Namespace Management
+##### 1.4.4.1 Namespace Management
 
 nt service O&M On the Namespace management page, you can view the namespaces of services that are registered on OpsAPI Gateway.
 
@@ -610,7 +1384,7 @@ search for the desired service by namespace to query the service information.
 **API management** page. On this page, you can obtain the information about the desired
 API operation.
 
-##### API Management
+##### 1.4.4.2 API Management
 
 On the API management page, you can view the information about the API operations of services registered on OpsAPI Gateway.
 
@@ -628,9 +1402,9 @@ column. In the Preview dialog box, you can view the details of the API operation
 6. Find the API operation that you want to manage and click **Debugging** in the **Operation**
 column to test whether the API operation that is registered on OpsAPI Gateway is available. In the API debugging dialog box, configure parameters and click **Submit** to initiate the request. Then, the response data is displayed in the **Return Information** field. nt service O&M
 
-##### API statistics
+##### 1.4.4.3 API statistics
 
-###### Tasks
+###### 1.4.4.3.1 Tasks
 
 You can create a statistical task to periodically retrieve the audit logs of gateways based on a statistical policy and aggregate the logs into a report.
 
@@ -683,7 +1457,7 @@ column.
 1. Find the statistical task that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-###### Reports
+###### 1.4.4.3.2 Reports
 
 nt service O&M On the Statistical report page, you can view the statistical reports that are periodically collected by statistical tasks.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -696,9 +1470,9 @@ task name in the search box.
 6. In the dialog box that appears, you can view the report details, including the basic
 information, matching information, and time distribution. Drag the slider in the lower part of the Time distribution section to view the details of search condition matching within a time range. Move the pointer over the graph to view the times that the search conditions are matched within a time range. nt service O&M
 
-#### O&M Tools
+#### 1.4.5 O&M Tools
 
-##### Service Overview
+##### 1.4.5.1 Service Overview
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -719,7 +1493,7 @@ nt service O&M
 
 **Message Sending Information**
 
-##### Link Analysis
+##### 1.4.5.2 Link Analysis
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Management and control**
@@ -727,13 +1501,13 @@ nt service O&M
 3. In the left-side navigation pane, choose **O&M Tools** > **Link Analysis**.
 4. Specify the **Traceld** and **Time Range** parameters to view the corresponding data.
 
-### Operating System O&M
+### 1.5 Operating System O&M Platform
 
 **Platform**
 
-#### System Baseline Center
+#### 1.5.1 System Baseline Center
 
-##### Product Cluster System Baseline
+##### 1.5.1.1 Product Cluster System Baseline
 
 You can view the system baseline by product cluster and maintain a system baseline for each cluster of each product. You can change the system baseline of a single cluster based on the canary release policy. For example, you can install or uninstall RPM software packages, control the start and stop of system services, modify system parameters, and change file owners.
 
@@ -772,9 +1546,9 @@ Move the pointer over the content in the **Baseline Information** column and cli
 **comparison**, the point of difference between the two baselines will be displayed.
 Click **Check Desired State** in the **Actions** column of a machine. In the message that appears, click **OK**. Then, the system checks the consistency between the system configurations and the system baseline.
 
-#### Diagnostic Center
+#### 1.5.2 Diagnostic Center
 
-##### System diagnostics
+##### 1.5.2.1 System diagnostics
 
 You can perform system diagnostics on specific or all machines as needed.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -791,9 +1565,9 @@ ii. In the **Self-Help Diagnosis** section, select a diagnostic item from the **
 **Capability Set** drop-down list and click **Execute**.
 iii. After the **task status** changes to succeeded, view the **diagnostic results**.
 
-##### Resource QoS diagnostics
+##### 1.5.2.2 Resource QoS diagnostics
 
-###### Node QoS diagnostics
+###### 1.5.2.2.1 Node QoS diagnostics
 
 Node QoS diagnostics check and aggregate the quality of service (QoS) of nodes based on multiple basic metrics. This feature helps O&M engineers track node health status, observe node resource contention status and interference status, and make informed decisions on resource allocation.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -808,7 +1582,7 @@ Click **Advanced Filter** to filter the QoS of nodes by the following filter con
 **Hostname/IP**, **Product**, **Cluster**, **CPU QoS**, **Memory QoS**, and **I/O QoS**.
 Levels of node QoS: Critical Warning Normal If the QoS of a node is critical or warning, move the pointer over the state to view the **resource QoS score** and **resource QoS details**.
 
-###### Container QoS diagnostics
+###### 1.5.2.2.2 Container QoS diagnostics
 
 Container QoS diagnostics check and aggregate the quality of service (QoS) of containers based on multiple basic metrics. This feature helps O&M engineers track instance health status, observe instance resource contention status and interference status on nodes, and make informed decisions on resource allocation.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -823,7 +1597,7 @@ Click **Advanced Filter** to filter the QoS of instances by the following filter
 **Memory QoS**, and **I/O QoS**.
 nt service O&M Levels of instance QoS: Critical Warning Normal If the QoS of an instance is critical or warning, move the pointer over the state to view the **resource QoS score** and **resource QoS details**.
 
-#### Task Center
+#### 1.5.3 Task Center
 
 Task Center records all system O&M tasks performed by users and the task status.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -835,9 +1609,9 @@ Task Center records all system O&M tasks performed by users and the task status.
 You can click **Advanced Filter** to filter O&M operation records by the following dimensions or a combination of the following dimensions: **Task ID**, **Name**, **Status**, **Creator**, and
 **Created At**.
 
-#### Authorized Activation Center
+#### 1.5.4 Authorized Activation Center
 
-##### Authorization activation status
+##### 1.5.4.1 Authorization activation status
 
 The Authorization Activation Status page displays the license authorization status about Alibaba Cloud Linux 3. nt service O&M
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -849,7 +1623,7 @@ The Authorization Activation Status page displays the license authorization stat
 **Name/ID**,**Total Licenses**,**Software License Lifecycle**, **Activated At**, **License Type**,
 and **Status**.
 
-##### Authorization details
+##### 1.5.4.2 Authorization details
 
 The Authorization Details page displays the authorization details about Alibaba Cloud Linux 3.
 
@@ -865,7 +1639,7 @@ The software licenses of Alibaba Cloud Linux 3 are activated.
 **Name/ID**,**Licensed quantity**,**Used Licenses**,**Remaining Licenses**,**Licensed Type**,
 and **Update Time**. You can filter authorization details by **update time**.
 
-##### License transfer
+##### 1.5.4.3 License transfer
 
 You can transfer licenses across regions for product activation and authorization statistics purposes. License transfer does not affect license renewals or license types.
 
@@ -898,23 +1672,23 @@ column.
 **licenses**, **source region**, **destination region**, **user name**, and **operation time**.
 covery management
 
-## Disaster recovery
+## 2 Disaster recovery management
 
 #### management
 
-### ASR for Zone-disaster
+### 2.1 ASR for Zone-disaster Recovery
 
 **Recovery**
 
-#### ASR introduction
+#### 2.1.1 ASR introduction
 
-##### What is Apsara Stack Resilience for Zone-
+##### 2.1.1.1 What is Apsara Stack Resilience for Zone-disaster Recovery?
 
 **disaster Recovery?**
 
 Apsara Stack Resilience (ASR) for Zone-disaster Recovery consists of a primary site and a secondary site. The primary and secondary sites are deployed in the same region but in different zones. This deployment method is used to combat local disasters with a small impact. ASR for Zone-disaster Recovery is adopted on all core cloud products such as networking, cloud computing, database, storage, middleware, and big data products. This can be used in cross-AZ deployment for high availability. When a disaster occurs, your business can be quickly failed over to a secondary AZ. The service domain names of the cloud products remain unchanged. ASR for Zone-disaster Recovery can be deployed in two or three data centers in the same region.
 
-##### ASR deployment architecture
+##### 2.1.1.2 ASR deployment architecture
 
 This topic describes the deployment architecture of Apsara Stack Resilience (ASR). ASR does not rely on other Apsara Stack services. When a data center fails, ASR can still provide services to ensure business continuity. An ASR system is deployed in each of the primary and secondary data centers to handle data center-level failures in different scenarios. The following figure shows the deployment architecture: covery management
 1. ASR in the primary data center implements failovers when the secondary data center
@@ -922,7 +1696,7 @@ encounters power and network outages or when split-brain issues occur in two dat
 2. ASR in the secondary data center implements failovers when the primary data center
 encounters power and network outages.
 
-##### Roles and features
+##### 2.1.1.3 Roles and features
 
 This topic describes the ASR for Zone-disaster Recovery features that the primary and secondary data centers support and the roles used to implement these features.
 
@@ -994,7 +1768,7 @@ covery management
 |---|---|---|---|---|---|
 |   | Settings > Data Backup | Data backup | Supported | Suppor ted | System administrator |
 
-#### Log on to the ASR console
+#### 2.1.2 Log on to the ASR console
 
 ASR for Zone-disaster Recovery provides three logon methods for routine O&M, escape logon, and tenant operation scenarios. In subsequent documents, the ASR for Zone-disaster Recovery console is referred to as the ASR for Zone-disaster Recovery console.
 
@@ -1052,9 +1826,9 @@ operations based on your login scenario: You log on to the Apsara Uni-manager Ma
 7. In the **Disaster Recovery and Backup** section, choose **Disaster Recovery > ASR for**
 **Zone-disaster Recovery**.
 
-#### Normal views
+#### 2.1.3 Normal views
 
-##### Overview
+##### 2.1.3.1 Overview
 
 The Overview page displays the overall disaster recovery capabilities. It allows you to understand the disaster recovery capabilities of your platform more intuitively and quickly. After logging on to the ASR for Zone-disaster Recovery console, you can have a general understanding of the disaster recovery capabilities of your ASR platform. You can view the status of a secondary data center and the network traffic between data centers, predict the duration and results of forced switchover, and view the usage records of the platform. covery management
 1. Log on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zone-
@@ -1080,9 +1854,9 @@ covery management
 | Usage Records | Displays the current disaster recovery capabilities, the last drill (switchover) information, the last alert/monitoring check time, and the disaster recovery usage. Current Disaster Recovery Capabilities: displays the number and proportion of services that have not been switched, and displays the names of the services that have never been switched over. Last Drill (Switchover) Information: displays the number of products participating in the last switchover drill and the time since the last switchover drill. Disaster Recovery Usage (Forced Switchover): displays the usage records of disaster recovery, including the number of forced switchovers of the data center and the number of forced switchovers of a single product. |
 |---|---|
 
-##### Platform monitoring
+##### 2.1.3.2 Platform monitoring
 
-###### Usage scenarios
+###### 2.1.3.2.1 Usage scenarios
 
 This topic describes the usage scenarios of platform monitoring and precautions.
 
@@ -1094,7 +1868,7 @@ Platform monitoring consists of three parts: product monitoring, synchronization
 
 Routine monitoring: During the daily operations of the cloud platform, you need to regularly inspect various check items. Check before drills: Before switchover and switchback drills, you need to check platform monitoring information. Ensure that monitoring items do not have exceptions. For some products, you need to perform inspections in addition to the product monitoring check. Contact the ASR R&D team to perform inspections before a drill.
 
-###### Service monitoring
+###### 2.1.3.2.2 Service monitoring
 
 Before a switchover or switchback, the total number of products and the number of exceptions are counted by service type. The information about each product, node locations of base components, feature status, and inspection results are displayed in cards. If a product or base component is in an abnormal state, fix the issue before performing the switchover or switchback. covery management
 
@@ -1123,7 +1897,7 @@ name of a product whose status is abnormal to go to the corresponding card in th
 3. Select the service name, primary service location, and service status from the drop-down
 lists to filter the monitoring items that meet disaster recovery conditions. In the upper-right corner, click **Visualized Dashboard** to go to the dashboard monitoring page. For more information, see Dashboard monitoring. Common exceptions and solutions: An SSH tunnel exception exists: Check whether services have been deployed and reached the desired state in Apsara Infrastructure Management. If the services are not deployed or have not reached the desired state, resolve this exception first. If the exception persists after the services are deployed and reach the desired state, submit a ticket. MiniRDS instances that have synchronization latencies exist, and running tasks exist: Log on to ApsaraDB Operations and Maintenance System and check the synchronization status and the task execution status of the instances. The primary or secondary service fails: Check whether services have been deployed and reached the desired state in Apsara Infrastructure Management. If the services are not deployed or have not reached the desired state, resolve this exception at your earliest opportunity. If the exception persists after the services are deployed and reach the desired state, submit a ticket.
 
-###### Synchronization monitoring
+###### 2.1.3.2.3 Synchronization monitoring
 
 covery management This topic describes how to view data synchronization latency compliance rate, instances with successful synchronization, instances with synchronization exceptions, and synchronization latency of each instance for ApsaraDB RDS, Tair (Redis OSS-compatible), PolarDB-X 2.0, ApsaraDB for MongoDB, ApsaraDB for PostgreSQL, Object Storage Service (OSS).
 1. Log on to the ASR for Zone-disaster Recovery (Secondary Zone) console.
@@ -1144,7 +1918,7 @@ covery management
 |---|---|
 | View instance synchronization information | Click in the Actions column to view the instance synchronization information (RPO) in the last 24 hours, last 6 hours, and last 1 hour. Click in the Actions column to hide the line chart of instance synchronization information. |
 
-###### Dashboard monitoring
+###### 2.1.3.2.4 Dashboard monitoring
 
 This topic describes how to view the continuity metrics of your overall business in ASR Dashboard, including the number of disaster recovery services, details of abnormal instances, and overview of selected services.
 1. Log on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more
@@ -1170,9 +1944,9 @@ covery management If you click **Auto Carousel** in the lower-left corner, the p
 
 Click **Back to Old Version** to view the ASR platform.
 
-##### Platform check
+##### 2.1.3.3 Platform check
 
-###### Check an environment
+###### 2.1.3.3.1 Check an environment
 
 This topic describes how to check a deployed environment. After a check, you can learn more about information such as the versions of disaster recovery services, service baselines, Domain Name System (DNS) resources, VIP resources, and database resources. Additionally, you can verify that all check items meet disaster recovery conditions. covery management
 1. Log on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zone-
@@ -1199,7 +1973,7 @@ can advertise routes of SLB and CIDR blocks of virtual private cloud (VPCs). If 
 **BGP Route**: ASR checks whether switches can advertise routes of OPS-DNS, Apsara
 Stack DNS, SLB, and VPC and whether the routes are propagated to Border Gateway Protocol (BGP) peers. If abnormalities exist, contact O&M engineers.
 
-###### Check products
+###### 2.1.3.3.2 Check products
 
 You can perform product checks to check the status of products that support disaster recovery (DR) before and after failovers and failbacks.
 1. Log on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Primary Zone)
@@ -1209,11 +1983,11 @@ console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more
 **MiniRDS** section to check the status of each product.
 If the status of a check item is Unhealthy, check the content in the Error Message column. Troubleshoot problems based on the error message. covery management
 
-##### Disaster recovery drills
+##### 2.1.3.4 Disaster recovery drills
 
 You can perform disaster recovery drills to switch over or back services between the primary and secondary data centers when no power or network outages occur.
 
-###### Usage notes
+###### 2.1.3.4.1 Usage notes
 
 Disaster recovery drills are classified into two types: custom drills and predefined drills. Custom drills allow you to select one or more products to perform drills based on your needs. Predefined drills allow you to select all products or a single product to perform drills.
 
@@ -1226,11 +2000,11 @@ Zone-disaster recovery drills are an important part of the delivery acceptance a
 
 covery management
 
-###### Drill plans
+###### 2.1.3.4.2 Drill plans
 
 Drill plans are divided into plans for custom drills and predefined drills based on the type of drill. You can create a drill plan based on your actual needs. You can select multiple cloud products for a custom drill. After the drill is complete, the drill data is automatically aggregated and a drill report is generated. You can select a single product or all products to perform a predefined drill.
 
-###### Predefined drills
+###### 2.1.3.4.2.1 Predefined drills
 
 This topic describes how to perform predefined drills to switch over services from the primary data center to the secondary data center when no power or network outages occur and how to switch back services. If you perform a predefined drill, you can select a single service or all services.
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
@@ -1263,7 +2037,7 @@ covery management Verify that business is switched back and services are availab
 1. Click **Return** In the upper-right corner to return to the Details page. You can view the drill
 history of the product.
 
-###### Custom virtual drills
+###### 2.1.3.4.2.2 Custom virtual drills
 
 This topic describes how to run virtual drills to switch over services from the primary data center to the secondary data center when no power or network outages occur and how to switch back services. You can select multiple services to perform a custom drill. After the drill is complete, the drill data is automatically aggregated and a drill report is generated.
 1. Use an administrator account or an account that is assigned the advanced O&M role to log
@@ -1319,7 +2093,7 @@ On the **Custom Plan** page, you can view all drill plans. Click **View Details*
 **Actions** column to view the details of a drill plan. Click **Delete** in the **Actions** column
 to delete a drill plan. You cannot delete a drill plan in the **Executing** state.
 
-###### Drill records
+###### 2.1.3.4.3 Drill records
 
 This topic describes how to view the records and results of predefined drills and custom drills.
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Secondary
@@ -1344,7 +2118,7 @@ historical predefined drills.
 2. In the list of drill records, click a drill name or click **View Details** in the **Actions** column to
 view the detailed execution process of the drill.
 
-###### Dashboard monitoring
+###### 2.1.3.4.4 Dashboard monitoring
 
 covery management This topic describes how to view the continuity metrics of your overall business in ASR Dashboard, including the number of disaster recovery services, details of abnormal instances, and overview of selected services.
 1. Log on to the ASR for Zone-disaster Recovery (Secondary Zone) console. For more
@@ -1374,7 +2148,7 @@ If you click **Auto Carousel** in the lower-left corner, the platform displays n
 
 Click **Back to Old Version** to view the ASR platform.
 
-##### Disaster recovery
+##### 2.1.3.5 Disaster recovery
 
 covery management This topic describes disaster recovery. It ensures continuous operation or quick recovery to the running state after natural disasters, system faults, or other emergencies. It is suitable for scenarios where a cloud platform disaster occurs. If no disasters occur, you can use the fault injection feature of ASR and then perform disaster recovery for drills.
 
@@ -1386,7 +2160,7 @@ the event of major faults or disasters. It is designed to ensure continuous oper
 outage scenarios in data centers. In a scenario where three data centers are deployed, ASR allows you to switch the primary database of your instance back to the zone where the database resides during instance creation, including but not limited to **service switchback after single-service**
 **faults** and **service switchback after power outages**.
 
-###### Disaster recovery
+###### 2.1.3.5.1 Disaster recovery
 
 This topic describes disaster recovery. Disaster recovery refers to quickly recover a cloud platform and its business systems in the event of major faults or disasters. It is designed to ensure continuous operation or quick recovery to the running state after natural disasters, system faults or other emergencies.
 
@@ -1398,7 +2172,7 @@ Disaster recovery has the following scenarios: Power outage recovery in the prim
 
 covery management You must manually perform platform switchover and switchback operations during disaster recovery. However, after the arbitration feature is enabled, automatic arbitration switchover capabilitiesare supported for the base middleware service(including Zookeeper, Tair, and Schedulerx middleware components), quickly recovering online business.
 
-###### Power outage recovery in the primary
+###### 2.1.3.5.1.1 Power outage recovery in the primary data center
 
 **data center**
 
@@ -1422,7 +2196,7 @@ covery management
 4. Click **Perform Global Switchback**. In the message that appears, click **OK**.
 If the failback fails, contact the ASR R&D team for troubleshooting.
 
-###### Network outage recovery in the
+###### 2.1.3.5.1.2 Network outage recovery in the primary data center
 
 **primary data center**
 
@@ -1445,7 +2219,7 @@ Zone) console. For more information, see the "Escape logon scenarios" section in
 covery management
 4. Click **Perform Global Switchback**. In the message that appears, click **OK**.
 
-###### Recovery from power outages or split-
+###### 2.1.3.5.1.3 Recovery from power outages or split-brain scenarios of the secondary data center
 
 **brain scenarios of the secondary data center**
 
@@ -1488,7 +2262,7 @@ Zone) console. For more information, see Escape logon scenarios. covery manageme
 6. In the message that appears, click **Switchback**.
 If the switchback fails, contact the ASR R&D team for troubleshooting.
 
-###### Fault simulation
+###### 2.1.3.5.2 Fault simulation
 
 Fault simulation is a testing and verification technique used to evaluate the resilience of a cloud platform in the event of a fault or disaster. It simulates potential system faults by artificially introducing faults to observe and analyze the disaster recovery process of the cloud platform.
 
@@ -1504,7 +2278,7 @@ Power outage: The entire power facility of the primary or secondary data center 
 
 Power outage: The entire power facility of the primary, secondary, or quorum data center is faulty, no UPS is available, and all devices are powered off. Network outage: The network devices, optical fibers, or leased lines of the primary, secondary, or quorum data center for external connections are faulty. Therefore, the data center cannot communicate with external systems outside the cloud. Single-connection failure: One of the three data centers fails to communicate with the other two data centers. Single-product fault: A product in the primary, secondary, or quorum data center is faulty and in the abnormal state. covery management Fault simulation refers to manually inject fault types similar to (but not) real disasters in a data center. It is used to verify disaster recovery capabilities and help business personnel quickly get familiar with disaster recovery services.
 
-###### Fault simulation for two data centers-
+###### 2.1.3.5.2.1 Fault simulation for two data centers-based zone disaster recovery
 
 **based zone disaster recovery**
 
@@ -1539,7 +2313,7 @@ Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. Fo
 2. In the left-side navigation pane, choose **Disaster Recovery > Fault Simulation >**
 **Authentication Code History**.
 3. Click **Add**. Configure the Scenario and User parameters and click **Submit**.
-The generated authentication code is displayed in the message that appears. Record the authentication code. You must provide the authentication code when you inject faults. Check an environment To ensure the accuracy of disaster recovery drill results, you must check whether the environment works as expected before you inject faults. If the environment does not work as expected, do not perform further operations. This topic describes how to check an environment.
+The generated authentication code is displayed in the message that appears. Record the authentication code. You must provide the authentication code when you inject faults. To ensure the accuracy of disaster recovery drill results, you must check whether the environment works as expected before you inject faults. If the environment does not work as expected, do not perform further operations. This topic describes how to check an environment.
 
 **Background information**
 
@@ -1713,7 +2487,7 @@ If the cluster fails to start, click **Retry**.
 6. If the cluster is started, click **Complete**.
 7. Click **Complete**.
 
-###### Fault simulation for three data
+###### 2.1.3.5.2.2 Fault simulation for three data centers-based zone disaster recovery
 
 **centers-based zone disaster recovery**
 
@@ -1914,7 +2688,7 @@ If the cluster fails to start, click **Retry**.
 6. If the cluster is started, click **Complete**.
 7. Click **Complete**.
 
-###### Disaster recovery records
+###### 2.1.3.5.3 Disaster recovery records
 
 This topic describes how to view disaster recovery records. The records include the time for various recovery and switchover operations, execution results, logs, and switchover duration. covery management
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Secondary
@@ -1925,13 +2699,13 @@ View log details for power outage disaster recovery and network outage disaster 
 **Records** section to view the operation time, execution result, and switchover duration.
 b. Click **Logs** in the Actions column to view the details of recovery logs. View the details of the recovery process. Click **View Details** in the **Actions** column to view the execution process of a recovery record.
 
-#### System settings
+#### 2.1.4 System settings
 
 covery management
 
-##### Monitoring center
+##### 2.1.4.1 Monitoring center
 
-###### Check an environment
+###### 2.1.4.1.1 Check an environment
 
 This topic describes how to check a deployed environment. After a check, you can learn more about information such as the versions of disaster recovery services, service baselines, Domain Name System (DNS) resources, VIP resources, and database resources. Additionally, you can verify that all check items meet disaster recovery conditions.
 1. Log on to the ASR for Zone-disaster Recovery (Primary Zone) console or the ASR for Zone-
@@ -1958,7 +2732,7 @@ can advertise routes of SLB and CIDR blocks of virtual private cloud (VPCs). If 
 **BGP Route**: ASR checks whether switches can advertise routes of OPS-DNS, Apsara
 Stack DNS, SLB, and VPC and whether the routes are propagated to Border Gateway Protocol (BGP) peers. If abnormalities exist, contact O&M engineers. covery management
 
-###### Check products
+###### 2.1.4.1.2 Check products
 
 You can perform product checks to check the status of products that support disaster recovery (DR) before and after failovers and failbacks.
 1. Log on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Primary Zone)
@@ -1968,9 +2742,9 @@ console or the ASR for Zone-disaster Recovery (Secondary Zone) console. For more
 **MiniRDS** section to check the status of each product.
 If the status of a check item is Unhealthy, check the content in the Error Message column. Troubleshoot problems based on the error message.
 
-##### Configuration center
+##### 2.1.4.2 Configuration center
 
-###### Manage leased lines
+###### 2.1.4.2.1 Manage leased lines
 
 After leased lines are configured, the network traffic between the devices in data centers is displayed on the **Overview** page. This allows you to view data transmission between the devices in different data centers. covery management
 
@@ -2012,7 +2786,7 @@ covery management
 | Modify leased line information | 1. Click Modify in the Actions column. 2. Modify the parameter values as required. 3. Click OK. |
 | Delete a leased line | 1. Click Delete in the Actions column. 2. In the message that appears, click OK. |
 
-###### Arbitration management
+###### 2.1.4.2.2 Arbitration management
 
 In the standard three-data-center deployment scenario, the arbitration service detects whether a real data center-level fault occurs. If so, the arbitration service determines whether the current conditions are met to initiate arbitration switchover and then switches the products and base to a normal data center.
 
@@ -2061,7 +2835,7 @@ After the arbitration service is enabled, you can perform the following operatio
 | Modify arbitration | 1. On the Arbitration Management page, click Modify Arbitration. 2. Modify the Execution Attempts parameter or ISW information and click Submit. |
 | Disable Arbitration | 1. On the Arbitration Management page, click Disable Arbitration. 2. In the message that appears, click OK. |
 
-###### Alert management
+###### 2.1.4.2.3 Alert management
 
 You can modify preset alert rules or create new alert rules based on your needs.
 
@@ -2099,7 +2873,7 @@ covery management
 | Data synchro nization latency checks | Tair (Redis OSS-compatible), ApsaraDB RDS, Hologres, ApsaraDB for MongoDB, AnalyticDB for PostgreSQL, OSS, and Tablestore | P2 | 1 minu te |
 | Protectio n group checks | ASR for zone-disaster recovery | P2 | 1 minu te |
 
-###### Modify an alert rule
+###### 2.1.4.2.3.1 Modify an alert rule
 
 You can modify alert rules when your requirements change.
 1. Log on to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Secondary Zone)
@@ -2120,7 +2894,7 @@ covery management
 covery management
 5. Click **OK**.
 
-###### Configure theme settings
+###### 2.1.4.2.4 Configure theme settings
 
 This topic describes how to configure theme settings for the monitoring dashboard or drill dashboard page, including the theme color, logo, and platform name.
 
@@ -2148,9 +2922,9 @@ covery management
 **Settings** in the lower part of the page. The configurations take effect the next time you log
 in to the console.
 
-##### Security center
+##### 2.1.4.3 Security center
 
-###### Data backup
+###### 2.1.4.3.1 Data backup
 
 You can back up data such as user accounts and alert rules that are configured in the Apsara Stack Resilience (ASR) console to an Object Storage Service (OSS) bucket. You can restore the data to the ASR console as required with a few clicks.
 1. Use an administrator account to log on to the ASR for Zone-disaster Recovery (Primary
@@ -2159,7 +2933,7 @@ Zone) console or the ASR for Zone-disaster Recovery (Secondary Zone) console. Fo
 3. Click **Back Up**. In the message that appears, click **OK**. ASR backs up data such as user
 accounts and alert rules to an OSS bucket. To restore the data from OSS to the ASR console, click **Recover**. In the message that appears, click **OK**. covery management
 
-###### Configure escape login
+###### 2.1.4.3.2 Configure escape login
 
 This topic describes how to configure the escape login feature.
 1. Log in to the Apsara Stack Resilience (ASR) for Zone-disaster Recovery (Primary Zone)
@@ -2177,13 +2951,13 @@ the ASR console.
 
 The password must be 12 to 20 characters in length and can contain the following types of characters: Digits Letters Special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
 
-#### Appendix
+#### 2.1.5 Appendix
 
-##### Encryption and backup
+##### 2.1.5.1 Encryption and backup
 
 Apsara Stack Resilience (ASR) ensures the security of user data by using key encryption and offline backup. ASR generates audit logs to record system security events and activities, prevent internal data misuse, track suspicious behaviors, and identify potential security threats and attacks. Key encryption: ASR stores logon passwords in the database by using the MD5 algorithm. covery management Other data such as configurations and personnel information is not encrypted. Audit logs: ASR sends operation logs to Apsara Stack Security for auditing. Logs are stored in SLS-Inner. Docker logs are not backed up. Offline backup: ASR uses mysqldump to back up database data offline every 12 hours. The backup data is stored in Object Storage Service (OSS) and deleted after 5 days.
 
-##### How to obtain the endpoint of ASR for
+##### 2.1.5.2 How to obtain the endpoint of ASR for Zone-disaster Recover
 
 **Zone-disaster Recover**
 
@@ -2206,9 +2980,9 @@ asr-xs.cn represents the endpoint of the secondary data center and asr-xm-cn rep
 7. For more information about logging on to the ASR for Zone-disaster Recovery console, see
 Log on to the ASR console.
 
-### ASR for Geo-disaster Recovery
+### 2.2 ASR for Geo-disaster Recovery
 
-#### Log on to the O&M console of ASR for
+#### 2.2.1 Log on to the O&M console of ASR for Geo-disaster Recovery
 
 **Geo-disaster Recovery**
 
@@ -2228,7 +3002,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Disaster Recovery Management > ASR for Geo-disaster Recovery**.
 
-#### Homepage
+#### 2.2.2 Homepage
 
 The homepage of the ASR for Geo-disaster Recovery O&M console displays information in the following sections: Authorization usage statistics, Node task load statistics, Total number of abnormal synchronization entities, Unassigned task statistics, Bandwidth Usage, and Dedicated Line traffic usage.
 
@@ -2249,9 +3023,9 @@ When deploying the ASR for Geo-disaster Recovery O&M console, you must also conf
 
 covery management
 
-#### Disaster recovery monitoring
+#### 2.2.3 Disaster recovery monitoring
 
-##### View the cloud platform monitoring
+##### 2.2.3.1 View the cloud platform monitoring
 
 Cloud platform monitoring is designed to monitor the disaster recovery status of cloud services, including metrics such as service availability, domain name resolution, and network access. It allows you to quickly switch your cloud platform to another region when a region fails, thereby ensuring business continuity.
 1. Log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console from the
@@ -2263,7 +3037,7 @@ service inspection information in the selected interconnected regions. covery ma
 4. Move the pointer over a service to view the check details of the service.
 5. Click **View More**. In the panel that appears, view the details of check items.
 
-##### View the protection group monitoring
+##### 2.2.3.2 View the protection group monitoring
 
 This topic describes how to view the check results of synchronization entities in a protection group. covery management
 1. Log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console from the
@@ -2273,7 +3047,7 @@ Apsara Uni-manager Operations Console.
 3. Find the protection group that you want to view and click **View Check Results** in the
 Actions column. In the panel that appears, view the following information about each synchronization entity in the protection group: synchronization entity name, cloud service, synchronization status, synchronization latency, primary instance status, secondary instance status, and the time when the check was performed.
 
-#### Basic capability O&M
+#### 2.2.4 Basic capability O&M
 
 This topic describes the basic capability O&M features of ASR for Geo-disaster Recovery. In the ASR for Geo-disaster Recovery O&M console, the basic capability O&M features of ASR for Geo-disaster Recovery are categorized into the following modules: cloud information management, parameter management, node management, virtual private cloud (VPC) management, capacity management, and data upgrade. The following table describes the features.
 
@@ -2301,7 +3075,7 @@ covery management
 |---|---|---|---|
 | Data upgrade | You can upgrade all data of protection groups and disaster recovery plans. | Existing users are required to upgrade data after a version update. | 1. On the Data Upgrade page, click Data Upgrade. 2. In the Delete Synchronization Entity message, click OK. 3. Upgrade data as prompted. |
 
-##### Manage cloud service information
+##### 2.2.4.1 Manage cloud service information
 
 Before you can use ASR for Geo-disaster Recovery in the Apsara Uni-manager Management Console, you must configure the primary and secondary clouds in the Apsara Uni-manager Operations Console. After you add a primary cloud, you must configure the cloud services that support disaster recovery and the addresses of the cloud services for the primary cloud. This way, ASR for Geo-disaster Recovery can perform disaster recovery for resource instances in the primary cloud. This topic describes the configurations for cross-cloud disaster recovery.
 
@@ -2606,7 +3380,7 @@ The following table describes the operations that you can perform after a cloud 
 
 covery management
 
-##### Manage a disaster recovery
+##### 2.2.4.2 Manage a disaster recovery interconnection
 
 **interconnection**
 
@@ -2641,7 +3415,7 @@ covery management
 | Modify the disaster recovery interconnection | 1. Click Edit in the Operation column of the disaster recovery interconnection. 2. In the dialog box that appears, modify settings as needed, and then click Submit. |
 | Delete the disaster recovery interconnection | 1. Click Delete in the Operation column of the disaster recovery interconnection. 2. In the message that appears, click OK. |
 
-##### Manage a disaster recovery gateway
+##### 2.2.4.3 Manage a disaster recovery gateway
 
 This topic describes how to configure peer gateway information across clouds to establish a disaster recovery relationship and a network connection between two cross-cloud ends.
 
@@ -2677,7 +3451,7 @@ covery management
 | Modify ACL | 1. Click View ACL in the Actions column corresponding to a region. 2. Click Modify in the Actions column. 3. Select another action and then click Submit. |
 | Delete ACL | 1. Click View ACL in the Actions column corresponding to a region. 2. Click Delete in the Actions column. 3. In the message that appears, click OK. |
 
-##### Configure a dashboard map
+##### 2.2.4.4 Configure a dashboard map
 
 This topic describes how to configure disaster recovery regions displayed on a dashboard. After configuration, the geo-disaster recovery data is displayed on the dashboard.
 
@@ -2716,7 +3490,7 @@ After you create a disaster recovery region, you can also perform the operations
 | Edit the disaster recovery region | 1. Find the disaster recovery region and click Edit in the Actions column. 2. In the Edit Disaster Recovery Region dialog box, enter a new region name or select another city. 3. Click OK. |
 | Delete the disaster recovery region | 1. Find the disaster recovery region and click Delete in the Actions column. 2. In the message that appears, click OK. |
 
-#### Disaster recovery O&M
+#### 2.2.5 Disaster recovery O&M
 
 This topic describes the disaster recovery O&M features of ASR for Geo-disaster Recovery. The disaster recovery O&M features of ASR for Geo-disaster Recovery are categorized into the synchronization entity management and plan management modules. The following table describes the modules.
 
@@ -2732,9 +3506,9 @@ covery management
 |   | Fault switchover |   |   |
 |   | Fault switchback |   |   |
 
-##### Manage synchronization entities
+##### 2.2.5.1 Manage synchronization entities
 
-###### Skip a step
+###### 2.2.5.1.1 Skip a step
 
 The procedure to skip a single step in the synchronization entity management and plan management sections are the same. This topic describes how to skip a single step in the synchronization entity management section.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2761,7 +3535,7 @@ covery management On the Protection Group page, you can also perform the operati
 | Customize displayed fields | Click the icon and select the fields that you want to display on the page. |
 | Enable the full screen mode | Click the icon to display data in full screen mode. Click the icon to disable the full screen mode. |
 
-###### Reperform a single step
+###### 2.2.5.1.2 Reperform a single step
 
 The procedure to reperform a single step in the synchronization entity management and plan management sections are the same. This topic describes how to reperform a single step in the synchronization entity management section.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2787,7 +3561,7 @@ covery management On the Protection Group page, you can also perform the operati
 | Change the display mode | Click the icon and select the Default or Compact display mode. |
 | Customize columns | Click the icon and select the columns that you want to display on the page. |
 
-###### Configure throttling
+###### 2.2.5.1.3 Configure throttling
 
 You can configure throttling only for instances of the Object Storage Service (OSS), ApsaraDB RDS, Distributed ApsaraDB RDS DRDS, ApsaraDB Redis, or ApsaraDB MongoDB.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2808,7 +3582,7 @@ table and click **OK**.
 | Task Type | The type of the throttling task. Valid values: Incremental Replication: enables throttling only for new data. Historical Replication: enables throttling for all data. Note This parameter is required only when OSS instances are protected. If other types of the instances are protected, you do not need to configure this parameter. |
 | Throttling Value (bps) | The custom throttling threshold. |
 
-###### Delete an entity from a protection group
+###### 2.2.5.1.4 Delete an entity from a protection group
 
 This topic describes how to delete an entity from a protection group.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2820,7 +3594,7 @@ This topic describes how to delete an entity from a protection group.
 **Delete** in the **Actions** column.
 5. In the Delete Synchronization Entity message, click **OK**.
 
-###### View the logs of a synchronization entity
+###### 2.2.5.1.5 View the logs of a synchronization entity
 
 Logs are generated during disaster recovery drills or actual disaster recovery. This topic describes how to view the logs of a synchronization entity in a protection group.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2833,7 +3607,7 @@ covery management
 **Logs** in the **Actions** column.
 5. Click **OK** or **Cancel** to close the panel.
 
-##### Perform a site switchover drill
+##### 2.2.5.2 Perform a site switchover drill
 
 This topic describes how to associate disaster recovery plans with a switchover drill that simulates the scenario in which all devices at the primary site fail and all business needs to be switched over to the secondary site. During the switchover drill, the associated disaster recovery plans are executed.
 
@@ -2861,7 +3635,7 @@ On the Site Switchover page, you can also perform the operations described in th
 | Download a failover summary report | On the Historical Records tab of the plan details page, find a failover and click Download Report in the Actions column to save the failover report to your computer. |
 | Disassociate one or more disaster recovery plans from the site switchover | Disassociate multiple disaster recovery plans at a time i. On the Site Switchover page, select the disaster recovery plans that you want to disassociate from the site switchover. ii. In the lower part of the page, click Unbind. iii. In the Start All Failovers message, click OK. Disassociate a single disaster recovery plan i. On the Site Switchover page, find the disaster recovery plan that you want to disassociate from the site switchover and click Unbind in the Actions column. ii. In the Unbind Independent Disaster Recovery message, click OK. |
 
-##### Perform a site failover
+##### 2.2.5.3 Perform a site failover
 
 This topic describes how to associate disaster recovery plans with a site failover that is performed when all devices at the primary site fail and all business needs to be switched over to the secondary site. During the site failover, the associated disaster recovery plans are executed. covery management
 
@@ -2892,7 +3666,7 @@ covery management
 | Download a failover summary report | On the Historical Records tab of the plan details page, find a failover and click Download Report in the Actions column to save the failover report to your computer. |
 | Disassociate one or more disaster recovery plans from the site failover | Disassociate multiple disaster recovery plans at a time i. On the Site Disaster Recovery page, select the disaster recovery plans that you want to disassociate from the site failover. ii. In the lower part of the page, click Unbind. iii. In the Unbind Independent Disaster Recovery message, click OK. Disassociate a single disaster recovery plan i. On the Site Disaster Recovery page, find the disaster recovery plan that you want to disassociate from the site failover and click Unbind in the Actions column. ii. In the Unbind Independent Disaster Recovery message, click OK. |
 
-##### View the execution history of a site
+##### 2.2.5.4 View the execution history of a site disaster recovery plan
 
 **disaster recovery plan**
 
@@ -2927,13 +3701,13 @@ View disaster recovery records. a. On the Plan Execution History page, click the
 | Associated Protection Group | This tab displays the status of all protection groups associated with the plan and the number of instances in each protection group. |
 | Historical Records | This tab displays disaster recovery records. |
 
-#### Independent disaster recovery
+#### 2.2.6 Independent disaster recovery management
 
 #### management
 
 covery management This topic describes how to create, view the details of, and delete an independent disaster recovery plan.
 
-##### Create an independent disaster recovery
+##### 2.2.6.1 Create an independent disaster recovery plan
 
 **plan**
 
@@ -2956,7 +3730,7 @@ and complete the configurations later.
 **Configuration Completed** state. The following figure shows an example.
 covery management
 
-##### Perform a failover
+##### 2.2.6.2 Perform a failover
 
 If a secondary site fails when the site is used to provide services, you can switch the business back to the primary site by using the independent disaster recovery feature. This topic describes how to perform a failover in the O&M console of ASR for Geo-disaster Recovery (ASR-DR). This topic also describes how to view the failover steps and progress.
 
@@ -2976,7 +3750,7 @@ Failover section of the Switching Steps tab. covery management
 4. After the failover is started, log on to the O&M console of ASR-DR from the primary site and
 view the steps and progress of the failover. For more information, see View the details of an independent disaster recovery plan.
 
-##### Perform a switchover drill
+##### 2.2.6.3 Perform a switchover drill
 
 If ASR for Geo-disaster Recovery (ASR-DR) is deployed on the secondary cloud and your business is switched over to run on the secondary cloud, the business cannot be switched back to the primary cloud when the secondary cloud fails. To resolve this issue, ASR-DR provides the independent disaster recovery feature. You can perform a switchover drill to increase the success rate of a failover.
 
@@ -2999,7 +3773,7 @@ covery management
 4. After the switchover drill is started, log on to the Apsara Uni-manager Operations Console
 from the primary site and view the steps and progress of the switchover drill. For more information, see View the details of an independent disaster recovery plan.
 
-##### View the details of an independent
+##### 2.2.6.4 View the details of an independent disaster recovery plan
 
 **disaster recovery plan**
 
@@ -3010,7 +3784,7 @@ You can view the steps and progress of failovers and switchover drills at the pr
 4. Find an independent disaster recovery plan and click **View Details** in the **Actions** column.
 On the plan details page, view the basic information about the plan and the steps and progress of business switchovers.
 
-##### Disassociate configured nodes from an
+##### 2.2.6.5 Disassociate configured nodes from an independent disaster recovery plan
 
 **independent disaster recovery plan**
 
@@ -3021,7 +3795,7 @@ recovery plan that you want to manage. covery management
 4. Click **Unbind** in the **Actions** column. In the message that appears, click **OK**. After the
 configured nodes are disassociated from the independent disaster recovery plan, you can reconfigure or delete the plan. You must disassociate configured nodes from an independent disaster recovery plan in ASR-DR at the secondary site.
 
-##### Delete an independent disaster recovery
+##### 2.2.6.6 Delete an independent disaster recovery plan
 
 **plan**
 
@@ -3032,9 +3806,9 @@ You can delete only independent disaster recovery plans that are not configured.
 recovery plan that you want to manage.
 4. Click **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
-#### Appendixes
+#### 2.2.7 Appendixes
 
-##### Look up a DNS address
+##### 2.2.7.1 Look up a DNS address
 
 This topic describes how to look up a Domain Name System (DNS) address.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -3054,7 +3828,7 @@ covery management
 6. Click **Show Content**. The value of the AnycastVip field is the IP address of the DNS name
 server, which is the same as the ServerIP value shown on the DNS management page. The first two IP addresses in the internetIps field are the source IPs used by the DNS service to forward requests. In most cases, two IPs are bound to the bindServerRole containers.
 
-##### Configure DNS forwarding
+##### 2.2.7.2 Configure DNS forwarding
 
 When you set up a primary-secondary disaster recovery system between two clouds, you must configure Domain Name System (DNS) at the primary and secondary sites. Make sure that DNS queries can be smoothly forwarded across the system. This topic describes how to configure DNS forwarding.
 
@@ -3147,7 +3921,7 @@ iii. Log on to the Apsara Uni-manager Management console and choose **Products >
 **Networking > Cloud Network > Alibaba Cloud DNS**.
 iv. On the **DNS within Cloud** page, click the **Global Forwarding Configuration** tab. covery management v. The tianji cluster is rolled and the dns_zone.conf.jj2 file is fixed.
 
-##### Configure DTS parameters
+##### 2.2.7.3 Configure DTS parameters
 
 If you configure a primary/secondary disaster recovery solution between two clouds, you must configure Data Transmission Service (DTS) for database products. This topic describes how to configure DTS.
 
@@ -3211,11 +3985,11 @@ select * from dts_region_info where region = 'Region ID'\G
 
 O&M
 
-## Computing O&M
+## 3 Computing O&M
 
-### Compute Operations Console
+### 3.1 Compute Operations Console
 
-#### Computing overview
+#### 3.1.1 Computing overview
 
 This topic describes the Overview page of the Compute Operations Console. On the Overview page, you can obtain a high-level overview of services in IaaS O&M, stay updated with service status, and view service information, such as diagnostics results, alerts, inventory usage, core metrics, and health status.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3245,9 +4019,9 @@ compute clusters, storage clusters, and hybrid clusters. You can also view the t
 0. In the **Health Status of Services** section, view the health status of each service.
 Click the name of a service that you want to view. In the **Deployed Machines** dialog box, view information about the service, including the service status, server role, IP address of the physical server on which the service is deployed, hostname, cluster, description, and the Apsara Stack service to which the service belongs.
 
-#### Cluster O&M
+#### 3.1.2 Cluster O&M
 
-##### View compute clusters
+##### 3.1.2.1 View compute clusters
 
 This topic describes how to query and view information about all compute clusters, including the total number of clusters, the number of clusters that are not in the desired state, the number of clusters in the desired state, the cluster names, cluster types, and cluster specifications.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3269,7 +4043,7 @@ displayed. You can view the basic information, instance resources, and inventory
 **Name/Alias** column. On the Computing Cluster Details page, click the **Configuration**
 tab. You can view the configurations of a cluster and the change records of the cluster configurations. For more information, see Manage cluster configurations. Manage computing servers. On the Compute Cluster O&M page, find the cluster that you want to view and click the cluster name in the **Cluster Name/Alias** column. On the Computing Cluster Details page, click the **Computing Servers** tab. You can view the basic information and O&M details of a computing server in a cluster, or manage the business status of a computing server, such as manually locking a server. For more information, see Manage computing servers. Log on to the Admin Gateway (AG) of the cluster that you want to manage to perform simple O&M on VMs. O&M For more information, see Log on to the AG of a cluster.
 
-##### Log on to the AG of a cluster
+##### 3.1.2.2 Log on to the AG of a cluster
 
 You can log on to the Admin Gateway (AG) of a cluster to go to the Terminal Service page. Then, you can perform O&M operations on virtual machines (VMs) in the cluster by using the CLI. This topic describes how to log on to the AG of a cluster from the Computing Clusters page.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3283,9 +4057,9 @@ The Terminal Service page appears.
 5. In the left-side navigation pane, click vmXXX. Then, specify the O&M operation that you
 want to perform in the CLI on the right side. vmXXX indicates the VM ID.
 
-##### Manage computing clusters
+##### 3.1.2.3 Manage computing clusters
 
-###### Get an overview of a compute cluster
+###### 3.1.2.3.1 Get an overview of a compute cluster
 
 In the Compute Operations Console, you can view the details of a compute cluster on the Overview tab of the Computing Cluster Details page. The details include the basic information about the cluster, statistics about computing server resources, numbers of Elastic Compute Service (ECS) instances, distribution of physical servers by state, distribution of ECS instances by state, inventory utilization, and inventory of instances by instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3323,9 +4097,9 @@ O&M
 
 In the **Inventory Usage** section, view the total amount of resources, the amount of used resources, and the percentage of used resources in all resources. In the **Inventory** section, view the inventory details of instances by instance type in the cluster. The inventories of public and dedicated resources are included. All resources: include public and dedicated resources. Public resources: the resources that are available to all users. drp-xxxx: indicates the dedicated resources in a dedicated resource pool. The dedicated resources are available only to users who have access to the corresponding dedicated resource pool.
 
-###### Manage cluster configurations
+###### 3.1.2.3.2 Manage cluster configurations
 
-###### View cluster configurations
+###### 3.1.2.3.2.1 View cluster configurations
 
 This topic describes how to view the configurations of a cluster, including the values of configuration items and the time when configuration items were last modified.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3341,7 +4115,7 @@ CPU oversold ratio configuration records on the **CPU Oversold Ratio Configurati
 **Records** tab.
 O&M
 
-###### Configure cluster-level CPU oversold
+###### 3.1.2.3.2.2 Configure cluster-level CPU oversold ratios
 
 **ratios**
 
@@ -3387,9 +4161,9 @@ However, the CPU oversold ratios of specific servers failed to be changed due to
 
 O&M When you reduce the CPU oversold ratio of a cluster, the system only checks whether the number of used vCPUs of the entire cluster instead of individual servers exceeds the threshold. As a result, the number of unused vCPUs on specific servers may be negative. In this case, you can perform hot or cold migration to move some ECS instances to other servers.
 
-###### Manage computing servers
+###### 3.1.2.3.3 Manage computing servers
 
-###### View computing servers
+###### 3.1.2.3.3.1 View computing servers
 
 This topic describes how to view computing servers in a computing cluster and the details of each computing server. The details include server basic information, O&M details, and information about Elastic Compute Service (ECS) instances that are deployed on a computing server.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3404,7 +4178,7 @@ i. **Optional.** Modify the columns that are displayed in the computing server l
 7. View O&M details of a computing server and the details of ECS instances that are deployed
 on the computing server. View O&M details of a computing server. a. On the Computing Servers tab, find the computing server that you want to view and click the server name in the **Hostname/Alias** column. b. View O&M details of the computing server on the **Computing Server Details** page. For more information, see View O&M details about a computing server. View the details of the ECS instances that are deployed on the computing server. a. Click the number in the **ECS Instances** column. O&M b. In the **Instance List** panel, view the values in the Instance ID, Status, Instance Name, CPU, and Memory columns of each instance. c. To view the details of an ECS instance, click the instance ID in the **Instance ID** column. The **Instance Details** page appears, which displays the basic information and configurations of the instance. For more information, see View the details of an instance.
 
-###### Manage server status
+###### 3.1.2.3.3.2 Manage server status
 
 This topic describes how to manage the status of computing servers (NCs) in a cluster. You can manually lock, unlock, and activate computing servers.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3425,11 +4199,11 @@ you can perform on computing servers.
 
 O&M
 
-#### Computing servers
+#### 3.1.3 Computing servers
 
-##### Manage computing servers
+##### 3.1.3.1 Manage computing servers
 
-###### View computing servers
+###### 3.1.3.1.1 View computing servers
 
 This topic describes how to view computing servers and the details of each computing server. The details of each computing server include the hostname, IP address, model, number of CPU cores, memory size, CPU processor, compute type, whether to be a dedicated host, business status, and computing cluster to which the computing server belongs.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3451,7 +4225,7 @@ i. Find the computing server that you want to view and click its name in the
 **Hostname/Alias** column.
 ii. On the **Computing Server Details** page, view the O&M information about the computing server. For more information, see View O&M details about a computing server.
 
-###### View O&M details about a computing
+###### 3.1.3.1.2 View O&M details about a computing server
 
 **server**
 
@@ -3481,7 +4255,7 @@ O&M
 | Machine Migration Tasks | Displays the list of server-level migration tasks and the details of each task, including the task ID, number of migrated instances, destination physical machine, task status, migration progress, start time, update time, and task creator. You can click Details in the Operation column corresponding to a server- level migration task and view its details, such as the migration status, destination physical machine, migration type, and number of retries, in the Task Details panel. Note Cold migration task: migrates instances in the Pending state. Hot migration task: migrates instances in the Running state. You can click Terminate Task in the Operation column corresponding to a server-level migration task to cancel the task. In the message that appears, click OK. For more information, see Stop a migration task. |
 | Operation Audit | Displays information about audited operations. In the O&M of the computing server, all operations that may cause risks are audited. You can view the historical operations in the Apsara Uni-manager Operations Console, historical POP API calls, and historical server controller API calls for the computing server. For more information, see View O&M audit logs. |
 
-###### Diagnose a computing server
+###### 3.1.3.1.3 Diagnose a computing server
 
 O&M This topic describes how to diagnose a computing server and view the diagnostic results.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3506,7 +4280,7 @@ O&M
 | ⑤ | Diagnostic details | The list of exceptions that are related to the diagnostic object. The list consists of the following information: Diagnostic information sorted by exception type Detailed exception information You can click links to view details. |
 |---|---|---|
 
-###### Lock a server
+###### 3.1.3.1.4 Lock a server
 
 You can lock servers based on your business requirements. You cannot create instances on locked servers.
 
@@ -3523,7 +4297,7 @@ By default, the **Computing Servers** tab of the Computing Server O&M page appea
 Locking Reason parameters.
 6. Click **OK**.
 
-###### Unlock a server
+###### 3.1.3.1.5 Unlock a server
 
 You can unlock a server to allow the server to be scheduled. After you unlock a server, the server is automatically activated and you can schedule instances to the server.
 
@@ -3542,7 +4316,7 @@ icon in the
 reason in the **Reason** field.
 6. Click **OK**.
 
-###### Activate a computing server
+###### 3.1.3.1.6 Activate a computing server
 
 This topic describes how to activate a computing server.
 
@@ -3564,7 +4338,7 @@ icon in the **Operation** column, and then select **Activate**.
 enter your reason for the activation operation in the **Reason** field.
 6. Click **OK**.
 
-###### Migrate all instances from a computing
+###### 3.1.3.1.7 Migrate all instances from a computing server
 
 **server**
 
@@ -3628,7 +4402,7 @@ O&M
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View computing server-level migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-###### Deactivate a physical machine for
+###### 3.1.3.1.8 Deactivate a physical machine for maintenance
 
 **maintenance**
 
@@ -3678,7 +4452,7 @@ Apsara Infrastructure Management and requires an extended period of time to comp
 **Confirmation** section of the maintenance details page. Then, in the dialog box that
 appears, click **OK**. The procedure of deactivating the physical machine for maintenance is automatically executed. When **Step9: Finish** is complete, the procedure is complete and the physical machine is automatically added back to its original computing cluster. O&M If **Step8: expandTianjiClusterMachineExternal** remains in the **Waiting** (**rolling**) state, check the status and the **rolling** progress of the computing cluster to which the physical machine belongs.
 
-###### View audit logs
+###### 3.1.3.1.9 View audit logs
 
 Server O&M operations that may introduce risks are audited. You can view the historical operations in the Apsara Uni-manager Operations Console, historical POP API calls, and historical server controller API calls for a computing server.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3691,7 +4465,7 @@ By default, the **Computing Servers** tab of the Computing Server O&M page appea
 5. In the **Audit Operations** panel, view audit logs.
 For more information, see View O&M audit logs.
 
-##### View computing server-level migration
+##### 3.1.3.2 View computing server-level migration tasks
 
 ###### tasks
 
@@ -3729,7 +4503,7 @@ O&M
 |   | migrate tasks belong to this task success! |
 |---|---|
 
-##### ECS physical machine O&M
+##### 3.1.3.3 ECS physical machine O&M
 
 You can use the Elastic Compute Service (ECS) physical machine O&M feature to create and view physical machine maintenance tasks.
 
@@ -3792,11 +4566,11 @@ Apsara Infrastructure Management and requires an extended period of time to comp
 **OK**.
 The procedure of deactivating the physical machine for maintenance is automatically executed. When **Step9: Finish** is complete, the procedure is complete and the physical machine is automatically added back to its original compute cluster. If **Step8: expandTianjiClusterMachineExternal** remains in the **rolling** state, check the status and the **rolling** progress of the compute cluster to which the physical machine belongs in the Apsara Infrastructure Management console.
 
-#### DRP O&M
+#### 3.1.4 DRP O&M
 
 A Dedicated Resource Pool (DRP) is a resource pool dedicated to a tenant. A DRP is visible and available only to the corresponding tenant. Other tenants cannot access the DRP without authorization. DRPs are created by O&M administrators and assigned to tenants. DRPs allow you to allocate resources in a flexible manner, share resources among tenants, and perform O&M operations in a centralized manner. By creating a DRP, Apsara Stack O&M administrators can grant the permissions on a group of physical machines to a single tenant for exclusive use. This eliminates physical resource competition among tenants to implement resource isolation. Tenants can also obtain detailed attribute information about DRPs, including the number of vCPUs, memory size, list of available instance types, number of remaining specifications, and permissions to adjust oversold ratios. This allows tenants to plan resources independently, meet security compliance requirements, and optimize deployment costs. DRPs support the deployment set feature. Deployment sets can be used to constrain the instance affinity within a DRP.
 
-##### Create a dedicated resource pool
+##### 3.1.4.1 Create a dedicated resource pool
 
 This topic describes how to create a dedicated resource pool.
 
@@ -3858,7 +4632,7 @@ O&M
 |---|---|---|---|
 |   | Reason | Yes | The reason for creating the dedicated resource pool. |
 
-##### View the details of a dedicated resource
+##### 3.1.4.2 View the details of a dedicated resource pool
 
 **pool**
 
@@ -3888,9 +4662,9 @@ The **Overview** tab of the Dedicated Resource Pool Details page appears by defa
 7. Click the **Computing Servers** tab to view the information about the servers in the
 dedicated resource pool. O&M
 
-##### Manage DRPs
+##### 3.1.4.3 Manage DRPs
 
-###### Add a server to a dedicated resource
+###### 3.1.4.3.1 Add a server to a dedicated resource pool
 
 **pool**
 
@@ -3910,7 +4684,7 @@ to manage and click its ID in the **Dedicated Resource Pool ID/Name** column. Th
 7. In the Add Server panel, select the physical server that you want to add to the dedicated
 resource pool and click **OK**.
 
-###### Remove a server from a dedicated
+###### 3.1.4.3.2 Remove a server from a dedicated resource pool
 
 **resource pool**
 
@@ -3930,7 +4704,7 @@ resource pool and click **Remove from Dedicated Resource Pool** in the **Operati
 7. In the Remove from Dedicated Resource Pool message, confirm the information about the
 dedicated resource pool and the physical server to be removed, and click **OK**.
 
-###### Change the administrator account ID
+###### 3.1.4.3.3 Change the administrator account ID
 
 The administrator account ID is the ID of the dedicated resource pool administrator, which corresponds to the UID of the level-1 organization to which the administrator belongs. This topic describes how to change the administrator account ID for a dedicated resource pool.
 
@@ -3951,7 +4725,7 @@ account ID from the drop-down list or directly enter an account ID in the field.
 **management > Organization management > Manage organizations** in **Apsara Uni-**
 **manager Management Console User Guide**.
 
-###### Manage server status
+###### 3.1.4.3.4 Manage server status
 
 This topic describes how to manage the status of servers in a dedicated resource pool, including locking and unlocking a server and activating a server.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -3970,7 +4744,7 @@ the operations that you can perform on the computing servers.
 | Unlock NC | You can unlock servers in the no heartbeat, mlock, or rlock state. After you unlock a server, the server is automatically activated and you can schedule instances to the server. | i. On the Computing Servers tab, find the server that you want to unlock and click Unlock NC in the Operation column. ii. In the Unlock NC dialog box, confirm the server and enter a reason for this operation in the Reason field. iii. Click OK. |
 | Activate | You can activate servers in the no heartbeat, mlock, rlock, failover, or initializing state. | i. On the Computing Servers tab, find the server that you want to activate and click Activate in the Operation column. ii. In the dialog box that appears, confirm the server and enter a reason for this operation in the Reason field. iii. Click OK. |
 
-##### Delete a dedicated resource pool
+##### 3.1.4.4 Delete a dedicated resource pool
 
 **Prerequisites**
 
@@ -3984,11 +4758,11 @@ to delete and click **Delete** in the **Operation** column. O&M
 5. In the Delete Dedicated Resource Pool dialog box, confirm the information about the
 dedicated resource pool, enter a reason for this operation in the **Reason** field, and then click **OK**.
 
-#### ECS
+#### 3.1.5 ECS
 
-##### VM
+##### 3.1.5.1 VM
 
-###### View ECS instances
+###### 3.1.5.1.1 View ECS instances
 
 This topic describes how to search for Elastic Compute Service (ECS) instances and view information about the instances, such as the physical machines (computing servers) on which the instances reside, the clusters to which the instances belong, and the hostnames, aliases, status, networks, and bandwidth of the instances.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -4012,7 +4786,7 @@ i. In the upper-right corner of the ECS Instances page, click the icon. ii. In t
 6. View the values in the Host, Hostname/Alias, Cluster, vCPUs/Memory, Status, Private IP
 Address/EIP, RDMA IP, and Bandwidth columns corresponding to an ECS instance. View the details of an ECS instance. On the **ECS Instances** page, find the ECS instance that you want to view and click its ID in the **Instance ID/Name** column to view the details of the instance on the Instance Details page. For more information about instances, see View the details of an instance. View the O&M details of the computing server that hosts an ECS instance. On the **ECS Instances** page, click the **NC IP** address in the **Host** column corresponding to an ECS instance to view the O&M details of the computing server that hosts the instance on the Computing Server Details page. For more information, see View O&M details about a computing server. View the O&M details of the computing cluster to which an ECS instance belongs. On the **ECS Instances** page, click the cluster name in the **Cluster** column corresponding to an ECS instance to view the O&M details of the computing cluster to which the instance belongs on the Computing Cluster Details page. For more information, see Get an overview of a compute cluster. O&M
 
-###### View the details of an instance
+###### 3.1.5.1.2 View the details of an instance
 
 This topic describes how to view the details of an Elastic Compute Service (ECS) instance and perform operations on the instance.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4056,9 +4830,9 @@ O&M
 |---|---|
 | Audit Operations | On this tab, you can view the historical operations that were performed on the instance in the Apsara Uni-manager Operations Console and the historical POP API calls and historical Server Controller API calls that were made for the instance. For more information, see Audit logs. |
 
-###### Manage instance status
+###### 3.1.5.1.3 Manage instance status
 
-###### Start instances
+###### 3.1.5.1.3.1 Start instances
 
 If an Elastic Compute Service (ECS) instance is in a state in which the instance cannot provide services, such as the Stopped state, you must start the instance before you can use the instance.
 
@@ -4076,7 +4850,7 @@ You can also select multiple instances and click **Start** in the lower part of 
 5. In the dialog box that appears, enter a reason for the operation in the **Reason** field.
 6. Click **OK**.
 
-###### Stop an instance
+###### 3.1.5.1.3.2 Stop an instance
 
 You can stop the instances that are not used.
 
@@ -4098,7 +4872,7 @@ You can also select multiple instances and click **Stop** in the lower part of t
 5. In the dialog box that appears, enter a reason for the stop operation in the **Reason** field.
 6. Click **OK**.
 
-###### Restart an instance
+###### 3.1.5.1.3.3 Restart an instance
 
 After you change the logon passwords or install system updates for instances, you must restart the instances.
 
@@ -4121,7 +4895,7 @@ You can also select multiple instances and click **Restart** in the lower part o
 operation.
 6. Click **OK**.
 
-###### Migrate an instance
+###### 3.1.5.1.4 Migrate an instance
 
 If an Elastic Compute Service (ECS) instance or the physical server (NC) that hosts it fails, you can migrate the instance to a healthy NC to ensure system stability. An instance can be migrated using cold migration or hot migration, depending on its status. This topic describes how to migrate a single ECS instance.
 
@@ -4364,7 +5138,7 @@ O&M
 |---|---|---|---|
 | 3030 |   | CPU compatibility check failed. The instruction set currently perceivable by the VM is partially unavailable on the destination. |   |
 
-###### View migration logs in Server Controller
+###### 3.1.5.1.5 View migration logs in Server Controller
 
 In the Compute Operations Console, you can view the migration logs of an Elastic Compute Service (ECS) instance in Server Controller, including hot migration and cold migration that are performed on the ECS instance.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4387,7 +5161,7 @@ In the Compute Operations Console, you can view the migration logs of an Elastic
 
 O&M
 
-###### ISO management
+###### 3.1.5.1.6 ISO management
 
 You can mount an ISO file to or unmount an ISO file from an Elastic Compute Service (ECS) instance. After you mount an ISO file to an instance, the instance enters the Rescue mode and you can perform operations on the instance.
 
@@ -4409,7 +5183,7 @@ To unmount an ISO file, find the ISO file in the **Mounted ISOs** section and cl
 6. In the dialog box that appears, enter an operator name, a ticket title, and a reason and
 click **OK**.
 
-###### Modify the internal bandwidth of an
+###### 3.1.5.1.7 Modify the internal bandwidth of an instance
 
 **instance**
 
@@ -4426,9 +5200,9 @@ O&M In the left-side navigation pane, click **Computing Server O&M**. On the Com
 4. In the dialog box that appears, configure the Inbound Internal Bandwidth, Outbound
 Internal Bandwidth, and Reason parameters. The unit of bandwidth is KB/s. You can modify the internal bandwidth only for ECS instances that are in the Pending, Running, Shutted, or ShutFailure state. You can modify the internal bandwidth for multiple instances at a time. If you modify the internal bandwidth of a single instance, the current inbound and outbound internal bandwidth values of the instance are displayed by default. If you modify the internal bandwidth of multiple instances at a time, these values are not displayed. The outbound internal bandwidth takes effect only for an instance that has more than 4 CPU cores.
 
-##### Disks
+##### 3.1.5.2 Disks
 
-###### View disks
+###### 3.1.5.2.1 View disks
 
 You can view a list of disks and the details of each disk. The details include the basic information of the disk, and Elastic Compute Service (ECS) instances and computing clusters that are associated with the disk.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4440,7 +5214,7 @@ search for disks. In the upper-right corner of the page, select a **All in ECS P
 5. View information about the disks, including disk ID, disk types, disk capacity, associated
 ECS instances, and mount points. To view the details of a disk, find the disk and click the disk ID in the **Disk ID/Name** column to go to the **Disk Details** page. For more information, see View disk details. To view the details of the ECS instance to which a disk is attached, find the disk and click the instance ID in the **ECS Instance** column to go to the **Instance Details** page. For more information, see View the details of an instance. To view the details of the computing cluster to which a disk belongs, find the disk and click the cluster name in the **Cluster** column to go to the **Computing Cluster Details** page. For more information, see the **Manage computing clusters** chapter. O&M The following disk types are supported: system disk and data disk. The following disk categories are supported: standard SSD, ultra disk, shared standard SSD, shared ultra disk, standard performance disk, and premium performance disk.
 
-###### View disk details
+###### 3.1.5.2.2 View disk details
 
 You can view the details of disks, such as the basic information and the snapshot information.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4452,7 +5226,7 @@ column.
 5. View the basic information and snapshot information of the disk.
 Basic Information: the disk ID, disk ID in the server controller, disk name, disk type, disk category, disk capacity, and mount point. Snapshot Information: the ID of the automatic snapshot policy.
 
-###### Create a snapshot
+###### 3.1.5.2.3 Create a snapshot
 
 You can create snapshots for disks to back up data.
 
@@ -4475,7 +5249,7 @@ O&M You can use snapshots to back up data, restore ECS instances that are releas
 the reason for creating the snapshot. The snapshot name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-). The name cannot start with auto because snapshots whose names start with auto are recognized as automatic snapshots.
 6. Click **OK**.
 
-###### View snapshots
+###### 3.1.5.2.4 View snapshots
 
 You can view the snapshots of disks, manage snapshots, and view automatic snapshot policies.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4485,13 +5259,13 @@ You can view the snapshots of disks, manage snapshots, and view automatic snapsh
 4. Find the disk that you want to view and click **View Snapshots** in the **Operation** column.
 For more information, see View snapshots.
 
-##### Images
+##### 3.1.5.3 Images
 
-###### Overview
+###### 3.1.5.3.1 Overview
 
 An image is a template for running environments within Elastic Compute Service (ECS) instances. An image includes an operating system and pre-installed applications. An image works as a copy that stores data from one or more disks. An ECS image may store data from a system disk or from both system and data disks. You can use an image to create an ECS instance or replace the system disk of an ECS instance.
 
-###### View images
+###### 3.1.5.3.2 View images
 
 In the Compute Operations Console, you can view a list of images and the information about each image. O&M
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4507,7 +5281,7 @@ search box and specify the image type. Then, the image is displayed in the image
 If you set the **Image Type** parameter to **Custom Image**, you must configure the
 **Apsara Stack Tenant Account ID** parameter.
 
-###### Manage ISO images
+###### 3.1.5.3.3 Manage ISO images
 
 This topic describes how to upload an ISO file, check the system type of the ISO file, and check whether the ISO file can be mounted.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4531,7 +5305,7 @@ ISO file by name in the search box.
 
 O&M If you want to mount an ISO file to an instance, make sure that the ISO file and the instance have the same architecture type. Otherwise, the instance may fail to start or fail to run as expected. If you mount an ISO file that is not fully adapted to an instance, a timeout error may occur when you stop the instance. The timeout period for the stop operation is 500 seconds. After the period elapses, the instance is forcibly stopped. After you mount an ISO file to an instance, you cannot perform management operations, such as hot configuration changes or hot migrations, on the instance. Unmount the ISO file at the earliest opportunity to restore the availability of the instance and prevent exceptions.
 
-###### Convert the format of an image
+###### 3.1.5.3.4 Convert the format of an image
 
 You are not allowed to import Virtual Machine Disk format (VMDK) images to the Apsara Unimanager Operations Console. To import a VMDK image, you can convert a VMDK image into a RAW image. This topic describes how to convert a VMDK image into a RAW image.
 
@@ -4558,7 +5332,7 @@ O&M To obtain the required AccessKey ID and AccessKey secret, log on to the Apsa
 6. Click **OK** to convert the format of the image and check whether the conversion is
 successful.
 
-###### Unpublish an image
+###### 3.1.5.3.5 Unpublish an image
 
 This topic describes how to unpublish an image. After you unpublish an image, the image is no longer displayed in the image list.
 
@@ -4573,13 +5347,13 @@ The **Images** tab of the Image page appears by default. On this tab, find the i
 4. In the Deprecate dialog box, confirm the image ID, specify a reason for this operation, and
 then click **OK**.
 
-##### Snapshots
+##### 3.1.5.4 Snapshots
 
-###### Overview
+###### 3.1.5.4.1 Overview
 
 O&M Snapshots are point-in-time copies of disks. You can use snapshots to back up data or create custom images. When you use disks, you may encounter the following scenarios: You want to use the data of a disk to write or save data to a different disk. Disks provide secure storage for your data. However, data that is stored on a disk may be incorrect due to specific reasons, such as application errors or application vulnerabilities that are exploited. If this occurs, a mechanism is required to help restore your instance to a desired state. Apsara Stack allows you to create snapshots to back up disk data at specific points in time. You can create disk snapshots on a schedule to ensure business continuity.
 
-###### View snapshots
+###### 3.1.5.4.2 View snapshots
 
 In the Compute Operations Console, you can view snapshots and the details of each snapshot.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4593,7 +5367,7 @@ The **Apsara Stack Tenant Account ID** parameter is required.
 5. View the information about each snapshot, such as the snapshot ID or name, snapshot ID in
 Server Controller, snapshot type, disk ID or type, and snapshot creation progress. The snapshot ID in Server Controller indicates the unique ID that is generated for a snapshot when the snapshot is created. This ID is only used in the Server Controller database for Elastic Compute Service (ECS). The supported snapshot types include system snapshot, user snapshot, scheduled snapshot, and snapshot copy.
 
-###### Delete snapshots
+###### 3.1.5.4.3 Delete snapshots
 
 You can delete snapshots that you no longer require in the Compute Operations Console.
 
@@ -4612,7 +5386,7 @@ The **Apsara Stack Tenant Account ID** parameter is required.
 5. Find the snapshot that you want to delete and click **Delete** in the **Operation** column.
 6. In the dialog box that appears, enter a reason for deleting the snapshot and click **OK**.
 
-###### Create an image
+###### 3.1.5.4.4 Create an image
 
 In the Compute Operations Console, you can create a custom image from a snapshot. The image contains the operating system and the environment variables of the snapshot.
 
@@ -4644,7 +5418,7 @@ O&M
 
 7. Click **OK**.
 
-###### View audit logs
+###### 3.1.5.4.5 View audit logs
 
 This topic describes how to view the audit logs of a snapshot.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4660,7 +5434,7 @@ column.
 6. In the **Audit Operations** panel, view the operations that were performed in the Apsara
 Uni-manager Operations Console, POP API calls, and API calls in Server Controller.
 
-###### View automatic snapshot policies
+###### 3.1.5.4.6 View automatic snapshot policies
 
 You can apply automatic snapshot policies to system disks and data disks to automatically create snapshots of the disks on a periodical basis. You can view the details of each automatic snapshot policy, including the policy ID, policy name, and number of associated disks.
 
@@ -4676,9 +5450,9 @@ By default, the **Snapshots** tab is displayed.
 5. On the **Automatic Snapshot Policies** tab, view the details of each automatic snapshot
 policy, including the policy ID, policy name, and number of associated disks.
 
-##### ENIs
+##### 3.1.5.5 ENIs
 
-###### View the details of an ENI
+###### 3.1.5.5.1 View the details of an ENI
 
 In the Compute Operations Console, you can view the list of elastic network interfaces (ENIs) and the details of each ENI.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4693,7 +5467,7 @@ Service (ECS) instance. View the details of the specified ENI. In the ENI list, 
 **Instance ID** column to go to the Instance Details page. On the **Instance Details** page,
 view the details of the ECS instance. For more information about ECS instances, see View the details of an instance.
 
-###### View audit logs
+###### 3.1.5.5.2 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical API calls in Server Controller for elastic network interfaces (ENIs).
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4706,13 +5480,13 @@ You can view the historical operations that were performed in the Apsara Uni-man
 6. In the **Audit Operations** panel, view the operations that were performed in the Apsara
 Uni-manager Operations Console, POP API calls, and API calls in Server Controller. For more information, see View O&M audit logs.
 
-##### Security groups
+##### 3.1.5.6 Security groups
 
-###### Overview
+###### 3.1.5.6.1 Overview
 
 A security group is a virtual firewall that provides Stateful Packet Inspection (SPI). Security groups provide virtual firewall-like functionality and are used for network access control for one or more ECS instances. They are important means of network security isolation and are used to divide security domains on the cloud. Security group rules can permit the inbound and outbound traffic of the ECS instances associated with the security group. You can authorize or cancel security group rules at any time. Changes to security group rules are automatically applied to ECS instances that are members of the security group. When you configure security group rules, ensure that the rules are concise and easy to manage. If you associate an instance with multiple security groups, hundreds of rules may apply to the instance, which may cause connection errors when you access the instance.
 
-###### View the details of a security group
+###### 3.1.5.6.2 View the details of a security group
 
 In the Compute Operations Console, you can view the information about each security group in the security group list, including the region, network type, virtual private cloud (VPC) ID, associated Elastic Compute Service (ECS) instances, and creation time. You can also view the details of a security group on the details page. The details include the basic information, inbound and outbound rules of the security group, and the details of ECS instances that are associated with the security group.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4744,7 +5518,7 @@ O&M
 
 View the associated ECS instances Click the **Instances** tab to view the ECS instances that are associated with the security group.
 
-###### Security group configurations
+###### 3.1.5.6.3 Security group configurations
 
 O&M The maximum number of inbound and outbound rules for each security group is 1,000. If you need to raise this limit, you can increase the number to 2,000 on the Security Group Configurations tab. We recommend that you periodically clear redundant rules to improve management efficiency.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4763,7 +5537,7 @@ inbound and outbound rules for each security group under the account can reach 2
 **Type**: The default value is **Security Group Whitelist**.
 If you want to remove the limit on the number of security group rules, find the added configuration and click **Delete** in the **Actions** column.
 
-###### View audit logs
+###### 3.1.5.6.4 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical Server Controller API calls for security groups.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4777,9 +5551,9 @@ You can view the basic information of each security group in the security group 
 5. In the **Audit Operations** panel, view the operation records on the Operations in the Apsara
 Uni-manager Operations Console, POP API Calls, and Server Controller API Calls tabs. For more information, see Audit logs. O&M
 
-##### O&M devices
+##### 3.1.5.7 O&M devices
 
-###### Attach a USB device to an instance
+###### 3.1.5.7.1 Attach a USB device to an instance
 
 This topic describes how to attach a USB device on a physical machine to an Elastic Compute Service (ECS) instance.
 
@@ -4800,7 +5574,7 @@ device.
 7. If the USB device is no longer in use, click **Detach** in the Operation column to detach the
 USB device.
 
-###### Attach a CD-ROM device
+###### 3.1.5.7.2 Attach a CD-ROM device
 
 This topic describes how to attach a CD-ROM device from a physical server to an Elastic Compute Service (ECS) instance.
 
@@ -4821,9 +5595,9 @@ the Instance, Device Name, CD-ROM Device File Address, and MD5 Verification para
 8. If a CD-ROMB device is no longer needed, find the CD-ROMB device in the device list and
 click **Detach** in the Operation column to detach the CD-ROM device.
 
-#### Specifications and capacity O&M
+#### 3.1.6 Specifications and capacity O&M
 
-##### Analyze compute capacity
+##### 3.1.6.1 Analyze compute capacity
 
 This topic describes how to query the inventory usage of Elastic Compute Service (ECS) instance types. This helps you understand trends in ECS capacity and inventory usage.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4840,9 +5614,9 @@ time range in the upper-right corner to view the usage trends of vCPUs and memor
 **Inventory**: In the **Inventory** section, select a zone and a resource type in the upper-left
 corner. Then, enter an instance type to view its inventory information.
 
-##### Instance type management
+##### 3.1.6.2 Instance type management
 
-###### All Specifications
+###### 3.1.6.2.1 All Specifications
 
 In the Compute Operations Console, you can view all instance types and the details of each instance type.
 
@@ -4866,9 +5640,9 @@ see Disable custom instance types.
 8. Click **Operation Records** in the Operation column of the instance type. In the Operation
 Records panel, view the historical operations that were performed on the instance type in the Apsara Uni-manager Operations Console and historical POP API calls that were made for the instance type. For more information, see View audit logs.
 
-###### Custom instance types
+###### 3.1.6.2.2 Custom instance types
 
-###### Add a custom instance type
+###### 3.1.6.2.2.1 Add a custom instance type
 
 If the existing instance types do not meet your requirements, you can add custom instance types in the Apsara Uni-manager Operations Console. You can then create instances of these custom types.
 
@@ -4925,7 +5699,7 @@ The new custom instance type appears in the list of custom instance types. You c
 **Instances > Create an instance** section of the ECS User Guide in the Apsara Stack
 Documentation Center. O&M
 
-###### View a custom instance type
+###### 3.1.6.2.2.2 View a custom instance type
 
 You can view existing custom instance types in the Compute Operations Console and the details of each custom instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4940,7 +5714,7 @@ memory (GiB), maximum number of attachable disks, maximum number of attachable E
 6. Click **Details** in the **Operation** column of the instance type. In the Instance Type Details
 panel, view the basic information and extended attributes of the instance type.
 
-###### Disable custom instance types
+###### 3.1.6.2.2.3 Disable custom instance types
 
 In the Compute Operations Console, you can disable the custom instance types that you no longer require. After you disable a custom instance type, you can no longer select the custom instance type when you create instances.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4952,7 +5726,7 @@ that you want to disable and click **Disable** in the **Operation** column.
 5. In the dialog box that appears, specify a reason and click **OK**.
 If a custom instance type was used to create instances, you cannot disable the instance type. To re-enable a custom instance type that you disabled, find the instance type and click **Enable** in the **Operation** column. After you disable or enable a custom instance type, you must wait for the disable or enable operation to take effect. After you disable or enable a custom instance type, you must wait for the disable or enable operation to take effect. Do not perform operations on the instance type until the status of the instance type changes to **Disabled** or **Enabled**.
 
-###### View audit logs
+###### 3.1.6.2.2.4 View audit logs
 
 O&M You can view the historical operations that are performed in the Apsara Uni-manager Operations Console and the historical POP API calls that are made for a custom instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -4964,9 +5738,9 @@ that you want to manage and click **Operation Records** in the **Operation** col
 5. In the **Operation Records** panel, view the historical operations that are performed in the
 Apsara Uni-manager Operations Console and the historical POP API calls that are made for the custom instance type.
 
-##### Resource reservations
+##### 3.1.6.3 Resource reservations
 
-###### Create a resource reservation for an
+###### 3.1.6.3.1 Create a resource reservation for an instance
 
 **instance**
 
@@ -4985,7 +5759,7 @@ Reservation dialog box, configure the Instance ID, Reservation Name, Expiration 
 
 To create a resource reservation specific to an ECS instance, make sure that the ECS instance is in the Running or Stopped state. After a resource reservation is created for an ECS instance, resources on a different physical server are reserved for the ECS instance. After an ECS instance for which a resource reservation is created is cold migrated, hot migrated, or failed over to the physical server where the reserved resources reside, the ECS instance uses the reserved resources. The reserved resources expire 6 hours after the resource reservation expires. O&M
 
-###### Create a resource reservation for a
+###### 3.1.6.3.2 Create a resource reservation for a physical machine
 
 **physical machine**
 
@@ -5005,11 +5779,11 @@ view the information about the physical machines for which resources are reserve
 Physical Machine Reservation dialog box, configure the Physical Machine IP Address, Reservation Name, Expiration Time, and Reservation Description parameters.
 6. Click **OK**.
 
-#### Migration task management
+#### 3.1.7 Migration task management
 
-##### Manage migration tasks
+##### 3.1.7.1 Manage migration tasks
 
-###### Create an ECS migration task
+###### 3.1.7.1.1 Create an ECS migration task
 
 If an Elastic Compute Service (ECS) instance or a physical server that hosts an ECS instance fails, you can migrate the instance from the failed physical server to another physical server to ensure system stability. This topic describes how to create an ECS migration task.
 
@@ -5093,7 +5867,7 @@ O&M
 7. For cold migration, click **Submit**. For hot migration, click **Pre-migration Check**. After the
 precheck is passed, click **Submit**. You can view the status and progress of the migration task in the task list. For more information, see View migration tasks.
 
-###### Create a computing server-level
+###### 3.1.7.1.2 Create a computing server-level migration task
 
 **migration task**
 
@@ -5151,7 +5925,7 @@ O&M
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-###### Create a batch ECS migration task
+###### 3.1.7.1.3 Create a batch ECS migration task
 
 If an ECS instance or the physical server that hosts it fails, you can migrate the instance to a healthy physical server to ensure system stability. In addition to migrating a single instance or performing a full-copy migration, you can also migrate multiple instances simultaneously. This topic describes how to perform a batch migration of ECS instances.
 
@@ -5221,7 +5995,7 @@ O&M
 **Submit**.
 You can view the status of the migration task in the task list. For more information, see View migration tasks. If the migration task is no longer required, you can stop it. For more information, see Stop a migration task.
 
-###### Create a batch machine migration task
+###### 3.1.7.1.4 Create a batch machine migration task
 
 This topic describes how to migrate all Elastic Compute Service (ECS) instances on computing servers to other computing servers at a time.
 
@@ -5261,7 +6035,7 @@ O&M
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-###### Create a cluster-level migration task
+###### 3.1.7.1.5 Create a cluster-level migration task
 
 This topic describes how to migrate all Elastic Compute Service (ECS) instances from all physical machines in a cluster to another cluster.
 
@@ -5305,7 +6079,7 @@ O&M
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-###### Off-peak migration tasks
+###### 3.1.7.1.6 Off-peak migration tasks
 
 Hot migrations of Elastic Compute Service (ECS) instances can affect the performance of large-scale services. They can cause temporary service downtime or slow responses, which impacts business continuity and the user experience. To minimize this impact, you can analyze your services to identify off-peak periods and then schedule hot migrations within recommended time windows.
 
@@ -5390,7 +6164,7 @@ O&M iii. In the **Instance Migration Plans** area, perform operations as needed.
 4. Cancel the task:
 O&M After you cancel an off-peak migration task, the associated data analysis task that is running in the background does not stop immediately. These instances are still counted toward the total number of instances being analyzed in the environment. If you try to create a new off-peak migration task at this time, an error message may appear indicating that the number of instances being analyzed exceeds the limit of 100. You must wait for the previous analysis task to finish before you can create a new one. i. In the **Operation** column, click **Cancel Task**. ii. In the dialog box that appears, click **OK**.
 
-###### View migration tasks
+###### 3.1.7.1.7 View migration tasks
 
 After you create a migration task, you can view information about the migration task in the migration task list, such as the task ID, instance information, machine information, task status, task success rate, task execution result, migration reason, and operator.
 
@@ -5545,7 +6319,7 @@ O&M
 | Operator | The account used to create the cluster-level migration task. |
 | Operation | Details: Click Details to view information about the cluster-level migration task in the task details panel. The task details panel consists of the following sections: Basic Information: This section displays the basic information about the cluster-level migration task, including the task ID, number of physical machines, and task status. Physical Machines: This section displays the physical machines involved in the cluster-level migration task. Click Details in the Actions column of a physical machine to view the ECS instances migrated from the physical machine. Cancel Task: Click Cancel Task to cancel the cluster-level migration task. For more information about the usage notes and limits that apply when you stop a migration task, see Stop a migration task. Pause Task: Click Pause Task to pause the cluster-level migration task. Restore Task: Click Restore Task to resume the paused cluster-level migration task. |
 
-###### Stop a migration task
+###### 3.1.7.1.8 Stop a migration task
 
 This topic describes how to stop an in-progress migration task. A migration task, such as a machine migration task, a batch Elastic Compute Service (ECS) migration task, a batch machine migration task, or a cluster-level migration task, includes multiple subtasks. You can stop a migration task based on your business requirements.
 
@@ -5576,7 +6350,7 @@ You can click **Details** in the **Operation** column of a migration task to vie
 **Migration Tasks** tab. To view the details of a batch machine migration task or a cluster-
 level migration task, you can click **Details** in the **Operation** column of the task. For more information, see View migration tasks.
 
-##### Configure migration constraints
+##### 3.1.7.2 Configure migration constraints
 
 Customize the migration task constraints if the default migration rate and timeout do not meet your business requirements. Migration tasks created after you modify the default migration rate and timeout will use the new default settings.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -5673,7 +6447,7 @@ migration rate.
 | Enable Off-peak Migration | Yes: Off-peak migration tasks are displayed in the task list. No: Off-peak migration tasks are not displayed in the task list. | Yes |
 | Off-peak Migration Rate | The rate that ASO allows for off-peak migration. Unit: MBps. Value range: 20 to 2000. | 800 |
 
-##### View CPU compatibility configurations
+##### 3.1.7.3 View CPU compatibility configurations
 
 If **Enhanced Hot Migration Compatibility** is enabled when you create a hot migration task for an Elastic Compute Service (ECS) instance, the migration is successful only if the CPUs of the source and destination physical machines are compatible. An CPU incompatibility issue causes the hot migration task to fail. Before you enable the **Enhanced Hot Migration**
 **Compatibility** feature, we recommend that you follow the procedure in this topic to view the
@@ -5697,11 +6471,11 @@ You can view CPU compatibility information in the CPU list. You can search for C
 | Source CPU Model | The CPU model of the physical server on which the ECS instance to be migrated resides. |
 | Destination CPU Model | The CPU model of the physical server to which you want to migrate the ECS instance. |
 
-#### ECS intelligent O&M
+#### 3.1.8 ECS intelligent O&M
 
-##### ECS events
+##### 3.1.8.1 ECS events
 
-###### View ECS instance events
+###### 3.1.8.1.1 View ECS instance events
 
 You can query events by instance. This allows you to know the exceptions of Elastic Compute Service (ECS) instances.
 
@@ -5730,7 +6504,7 @@ the instance. For more information, see View the O&M details of a computing serv
 **Name** column to view the O&M details of the compute cluster to which the instance
 belongs. For more information, see View the O&M details of a compute cluster.
 
-###### Physical machine events
+###### 3.1.8.1.2 Physical machine events
 
 In the Compute Operations Console, you can use the Elastic Compute Service (ECS) physical machine events feature to analyze the impact of physical machine events. If the breakdown of an ECS physical machine triggers the ECS instance migration process, you can view the migrated ECS instances.
 
@@ -5767,9 +6541,9 @@ page. For more information, see View computing clusters
 0. In the Details panel of an ECS physical machine event, click **Export** to download the ECS
 physical machine event in an XLSX file.
 
-##### ECS maintenance events
+##### 3.1.8.2 ECS maintenance events
 
-###### Physical machine O&M
+###### 3.1.8.2.1 Physical machine O&M
 
 View proactive O&M workflows for ECS O&M events. You can also submit custom proactive O&M events and local disk repair orders. O&M
 
@@ -5904,7 +6678,7 @@ ii. In the message that appears, click **OK**. Cancel a workflow i. Find the wor
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
 ii. In the message that appears, click **OK**.
 
-###### Instance O&M
+###### 3.1.8.2.2 Instance O&M
 
 ECS O&M events allow you to view proactive O&M workflows for ECS instances and modify their statuses.
 
@@ -5939,7 +6713,7 @@ ii. In the message that appears, click **OK**. Cancel a workflow i. Find the wor
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
 ii. In the message that appears, click **OK**.
 
-##### ECS workflows
+##### 3.1.8.3 ECS workflows
 
 This topic describes how to view the Elastic Compute Service (ECS) workflow information and manage ECS workflows.
 
@@ -5989,7 +6763,7 @@ The workflow that you want to terminate is in the **HUMAN_PROCESSING** state.
 **Terminate** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-##### Use the ECS diagnostics feature
+##### 3.1.8.4 Use the ECS diagnostics feature
 
 The Elastic Compute Service (ECS) diagnostics feature supports end-to-end exception diagnostics for physical machines and ECS instances. If an exception occurs on an ECS instance (VM) or a host (NC), you can diagnose the exception on the End-to-end Demarcation or Batch Diagnosis tab and identify the exception cause based on the diagnostics result.
 
@@ -6025,9 +6799,9 @@ You can view the diagnostics information in the following columns: **Diagnostic 
 **NC IP**, **Local Disk**, **Machine Status**, **Exception Occurred At**, **Severity Level**, and
 **Possible Cause**.
 
-#### Computing O&M configurations
+#### 3.1.9 Computing O&M configurations
 
-##### View monitoring settings
+##### 3.1.9.1 View monitoring settings
 
 This topic describes how to enable the feature of pushing alerts to the alert list in the Apsara Uni-manager Operations Console for an Elastic Compute Service (ECS) monitoring metric and configure alert levels.
 
@@ -6096,9 +6870,9 @@ O&M
 6. Click **OK**.
 You can find a metric in the monitoring metric list and view the alert levels in the JSONformatted array displayed in the **Apsara Uni-manager Operations Console Alert Level** column.
 
-##### Configure O&M actions
+##### 3.1.9.2 Configure O&M actions
 
-###### Configure throttling for a proactive O&M
+###### 3.1.9.2.1 Configure throttling for a proactive O&M action
 
 **action**
 
@@ -6139,7 +6913,7 @@ O&M
 | Cluster-wide Throttling Window (Minutes) | The maximum number of times that the workflow of the proactive O&M action can be executed in the cluster. We recommend that you set this parameter to 1. |
 | Throttling Policy | Set this parameter to Cancel, which specifies that the workflow is canceled when the proactive O&M action exceeds a throttling limit. |
 
-###### Configure the approval process for a
+###### 3.1.9.2.2 Configure the approval process for a proactive O&M action
 
 **proactive O&M action**
 
@@ -6183,7 +6957,7 @@ O&M
 | Support for Manual Reporting | Specifies whether you can submit proactive O&M events related to the proactive O&M action on the Proactive O&M page. Default value: Yes. Important If you set this parameter to No, you cannot submit proactive O&M events related to the proactive O&M action on the Proactive O&M page. Proceed with caution when you set this parameter to No. |
 | Approval for Manually Reported O&M Workflow | Specifies whether manually submitted proactive O&M events require approval. Default value: Yes. Important If you set this parameter to No, the proactive O&M action can be performed without the need for approval. |
 
-##### Modify the release time of a disk
+##### 3.1.9.3 Modify the release time of a disk
 
 On the Computing O&M Configurations page, you can specify the disk release time based on your business requirements. This feature is used to prevent resource waste and ensure data security and business continuity. O&M engineers can specify the disk release time in the Compute Operations Console to complete O&M based on the actual business requirements.
 
@@ -6204,7 +6978,7 @@ described in the following table and click **Submit**. O&M
 | Disk Reclamation Time | If you set this parameter to a value in the range of 0 to 48: The period after which disks that are released together with associated instances are reclaimed by PANGU. A released disk is automatically reclaimed after 0 to 48 hours after the associated instance is released. The disk can be used as expected after it is reclaimed. If you set this parameter to -1: The disk reclamation time is not specified. The disk is reclaimed based on the default policy of ECS. When the instance is released, the disk is released or reclaimed based on the policy. |
 | Description | The reason for adjusting the disk release time. |
 
-#### View O&M audit logs
+#### 3.1.10 View O&M audit logs
 
 The Compute Operations Console provides traceability of resource operations. In the Compute Operations Console, you can view the historical operations performed on resources, historical POP API calls, and historical Server Controller API calls and identify high-risk operations.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -6225,9 +6999,9 @@ O&M
 | Server Controller API Calls | In the upper part of the tab, enter an operation, a request ID, or a request IP address in the Keyword field, specify a time range for the Time Range parameter, and then click Search. In the API call list, view the following information about the calls: operation, request ID, request time, response code, request IP address, request duration, and request parameters. |
 |---|---|
 
-#### Tiangong O&M
+#### 3.1.11 Tiangong O&M
 
-##### Manage Tiangong products
+##### 3.1.11.1 Manage Tiangong products
 
 This topic describes how to view the basic information about cloud products that are deployed on ECS in the Tiangong 1.0 and Tiangong 2.0 architectures.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -6253,7 +7027,7 @@ resource template of the machine group. Find the machine group that you want to 
 **(Created/Total)** column. In the Instance Details panel, view the status of the
 instances.
 
-##### View Tiangong workflows
+##### 3.1.11.2 View Tiangong workflows
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Computing** > **Compute**
@@ -6279,7 +7053,7 @@ i. Find the workflow that you want to manage and click **View workflow logs** in
 **Operation** column.
 ii. In the Workflow logs panel, specify a time range and view the workflow logs within the specified time range. You can view the information about each log, including the time, log level, and log content. You can view logs only within the last seven days. O&M
 
-#### Log on to the Apsara Uni-manager
+#### 3.1.12 Log on to the Apsara Uni-manager Operations Console
 
 **Operations Console**
 
@@ -6295,9 +7069,9 @@ Press the Enter key. O&M You can click the current language in the upper-right c
 Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. O&M The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
-### ECS diagnostics
+### 3.2 ECS diagnostics
 
-#### Log on to the Apsara Uni-manager
+#### 3.2.1 Log on to the Apsara Uni-manager Operations Console
 
 **Operations Console**
 
@@ -6313,7 +7087,7 @@ Press the Enter key. O&M You can click the current language in the upper-right c
 Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. O&M The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
-#### NC O&M
+#### 3.2.2 NC O&M
 
 After you diagnose the exceptions of an Elastic Compute Service (ECS) instance or a host on the End-to-end Demarcation page, you can use the NC O&M feature of proactive O&M to handle the exceptions.
 
@@ -6518,7 +7292,7 @@ O&M
 | alertRuleName | The name of the triggered O&M rule. |
 |---|---|
 
-#### Instance O&M
+#### 3.2.3 Instance O&M
 
 After you diagnose the exceptions of an Elastic Compute Service (ECS) instance on the Endto-end Demarcation page, you can use the instance O&M feature of proactive O&M to handle the exceptions.
 
@@ -6593,7 +7367,7 @@ O&M
 
 This workflow does not require configuration settings. You can use this workflow without any settings.
 
-#### View O&M events
+#### 3.2.4 View O&M events
 
 The O&M event list can record O&M events submitted by network computer (NC) O&M, virtual machine (VM) O&M, and alert center. This topic describes how to search for and view event information in the O&M event list, including the ID, resource type, status, author, extended field, and workflow of an O&M event.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -6627,7 +7401,7 @@ O&M
 | Operation | You can modify the status of the O&M event: submitError: A failure occurs when the event is being submitted. ignore: The event is ignored. No further operation is performed. wait: The system waits for subsequent operations or retries the event. plan: The O&M event is to be executed. scheduled: The O&M event is in the progress. fail: The O&M event failed. limited: The O&M event is not executed and is terminated based on the throttling policy. blacked: The O&M event is added to the blacklist for specific reasons and is not executed. abort: The O&M event is interrupted or proactively terminated during execution. success: The event is successfully processed. Note In the lower-left corner of the page, clickB atch Change Status to update the status of multiple O&M events. |
 |---|---|
 
-#### Configure OpsCode throttling rules
+#### 3.2.5 Configure OpsCode throttling rules
 
 You can configure OpsCode throttling rules to control the number of O&M workflows that can be executed within a specific period of time. This prevents redundant operations and ensures the system stability and the reasonableness of resource allocation. You can also adjust the throttling rules to meet the requirements of different proactive O&M tasks. This topic describes how to configure an OpsCode throttling rule.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -6674,9 +7448,9 @@ On the opscode Throttling Rules page, you can view the **Modified By** and
 7. (Optional) If you no longer require an OpsCode throttling rule, you can delete it.
 i. In the OpsCode throttling rule list, find the rule that you want to delete and click the icon in the **Operation** column. ii. In the dialog box that is displayed, click **OK**.
 
-### BMS Operations Console
+### 3.3 BMS Operations Console
 
-#### What is BMS?
+#### 3.3.1 What is BMS?
 
 Bare Metal Management Service (BMS) is a cloud service that allows tenants to use physical machines on a cloud platform on an elastic and pay-as-you-go basis. BMS is commonly used to provide computing resources for core databases, key application systems, and highperformance computing systems. O&M BMS is powered by the one-stop operations console of Apsara Stack, allowing you to manage nodes deployed on physical machines in a fine-grained manner. You can add or remove nodes on physical machines, power on or off physical machines, and deploy systems. After you complete installing and provisioning servers, administrators can batch deploy bare metal devices in the UI interface. After the deployment, you can create high-performance Elastic Compute Service (ECS) bare metal instances on these bare metal devices and install different OSs, including AliOS and CentOS for x86, to meet diverse business requirements. In addition, BMS allows you to manage the lifecycle of ECS bare metal instances in a fine-grained manner, from instance creation to instance decommissioning.
 
@@ -6708,13 +7482,13 @@ The monitoring and alerting feature provides administrators with a bare metal re
 
 The basic configuration feature provides core parameters for ECS bare metal instance registration and O&M, covering image data, network, model, and GPU heterogeneous computing resource configuration. The basic configuration feature consists of the following modules: Image management Supports full lifecycle management of custom images and public images, including image exporting and image status management by enabling or disabling images. You can also upload and delete custom images. With image management, the installation of OSs and the deployment of application environments are standardized. Network management Supports subnet information query and retrieval, and displays subnet parameters, such as the subnet name, IP range, and gateway. Model management Supports flexible configuration of hardware specifications, including model creation, parameter modification, and model deletion, to meet the requirements in diverse business scenarios and optimize resource utilization. GPU resource configuration Supports fine-grained management of heterogeneous computing units, allowing you to add GPU models, modify parameters, and release resources. This ensures that resources can adapt to AI or high-performance computing scenarios.
 
-#### Getting started
+#### 3.3.2 Getting started
 
-##### Work with the BMS Operations Console
+##### 3.3.2.1 Work with the BMS Operations Console
 
 This topic describes how to use the Bare Metal Service (BMS) Operations Console. In the BMS Operations Console, you can register bare metal instances with Apsara Stack, and perform O&M and management operations on them as an administrator. These operations include powering on or off, deleting, releasing, modifying attributes of, and resetting passwords of bare metal instances. Note that the required server installation and related network connection work must be done before you use the O&M and management service of bare metal instances. You can perform the following operations on bare metal instances: Add a model: When you register a bare metal instance, you must select a model for it. You can also add a model in the BMS Operations Console and configure related parameters, such as the model name, CPU, and memory, as prompted. Register an instance: You can log in to the BMS Operations Console as an administrator, register a bare metal instance, and specify the basic settings for it. To register a bare metal instance, you need to select the management type and instance architecture, specify the image to be installed on the instance, specify the network, and enter the instance name and description. Search for an instance: You can search for all registered bare metal instances in the resource pool. The information about each instance includes both the instance details entered by the administrator and those automatically configured by the system, such as creation time, automatically assigned IP address, running status of bare metal instance, agent status, power status, and O&M status. O&M Release an instance: You can log in to the BMS Operations Console as an administrator and release a bare metal instance with a specified instance ID. After the instance is released, it is returned to the resource pool for reinstallation. You can apply for using it again.
 
-##### Log in to the BMS Operations Console
+##### 3.3.2.2 Log in to the BMS Operations Console
 
 This topic describes how to log in to the Apsara Uni-manager Operations Console and then access the Bare Metal Management Service (BMS) Operations Console.
 
@@ -6728,11 +7502,11 @@ the browser.
 4. In the top navigation bar, choose **Product Operation > Computing > BMS Operations**
 **Console**.
 
-#### Instance management
+#### 3.3.3 Instance management
 
 Instance management allows you to register a single instance, batch register instances, release instances, re-register instances, and query assets for management and maintenance. Administrators can perform remote O&M operations, such as remotely starting or stopping instances and forcefully restarting instances.
 
-##### Register an instance
+##### 3.3.3.1 Register an instance
 
 This topic describes how to register an instance in Bare Metal Management Service (BMS).
 1. Log in to the BMS Operations Console.
@@ -6757,7 +7531,7 @@ O&M The **Image** settings are available only when **Management Type** is set to
 **Description** as required.
 0. After you complete the configuration, click **OK** to register the instance.
 
-##### Batch register instances
+##### 3.3.3.2 Batch register instances
 
 Bare Metal Management Service (BMS) allows administrators to batch register instances by uploading a file of the required format, such as an XLS file. This topic describes how to register multiple Elastic Compute Service (ECS) bare metal instances at a time by uploading a local file.
 
@@ -6784,7 +7558,7 @@ O&M
 
 O&M The following table describes the parameters in the template. The values of the parameters are not case-sensitive. CPUArch: the CPU architecture. Valid values: x86_64, aarch64, and sw_64. MachineType: the physical machine model. DeviceModel: the device model. IDC: the data center. Room: the server room. Rack: the rack. RackUnit: the rack number. WarrantyPeriod: the period of time for repairing. ImageType: the image type. ASWID: the gateway of the physical machine. CGWPorts: the gateway port of the physical machine. Subnet: the subnet. RawIP: the CIDR block of the subnet. SN: the serial number. DefaultHostName: the hostname. InstanceName: the instance name. BMCIP: the out-of-band IP address. BMCUser: the out-of-band username. BMCPassword: the out-of-band password.
 
-##### Re-register an instance
+##### 3.3.3.3 Re-register an instance
 
 Bare Metal Management Service (BMS) allows administrators to re-register existing Elastic Compute Service (ECS) bare metal instances in order to re-install these instances. This topic describes how to re-register an instance.
 
@@ -6799,7 +7573,7 @@ information, see **Register an instance**.
 5. After you complete the configuration, click **OK** to re-register the instance.
 O&M
 
-##### Search for an instance
+##### 3.3.3.4 Search for an instance
 
 This topic describes how to search for an instance and view the details of the instance.
 
@@ -6814,7 +7588,7 @@ to search for the ECS bare metal instance that meets the condition. The followin
 4. After you find the ECS bare metal instance, click **Manage** in the Actions column of the
 instance to go to the **Instance details** page and view the detailed information, such as the instance name, SN, region, online status, power status, agent status, creation time, and configuration.
 
-##### Release an instance
+##### 3.3.3.5 Release an instance
 
 Elastic Compute Service (ECS) bare metal instances on the tenant side must be released on the same side. If you fail to release ECS bare metal instances on the tenant side, you can use the Bare Metal Management Service (BMS) Operations Console to forcefully release them. This topic describes how to release an ECS bare metal instance.
 
@@ -6836,7 +7610,7 @@ move the pointer over **Instance Status** in the Actions column. O&M
 4. Click **Release Instance** in the drop-down list.
 5. In the message that appears, click **Release** to release the instance.
 
-##### Restart an instance
+##### 3.3.3.6 Restart an instance
 
 This topic describes how to restart an instance.
 
@@ -6872,7 +7646,7 @@ move the pointer over **Instance Status** in the Actions column.
 5. In the message that appears, click **OK**.
 6. In the **Warning** message, click **OK** to restart the instance.
 
-##### Stop an instance
+##### 3.3.3.7 Stop an instance
 
 Administrators can stop Elastic Compute Service (ECS) bare metal instances. After an ECS bare metal instance is stopped, its status changes to No Heartbeat. This topic describes how to stop an ECS bare metal instance. O&M
 
@@ -6904,7 +7678,7 @@ the pointer over **Instance Status** in the Actions column.
 5. In the message that appears, click **OK**.
 6. In the **Warning** message, click **OK** to stop the instance.
 
-##### Start an instance
+##### 3.3.3.8 Start an instance
 
 Administrators can start Elastic Compute Service (ECS) bare metal instances. After an ECS bare metal instance is started, its status changes to Normal. This topic describes how to start an ECS bare metal instance.
 
@@ -6931,7 +7705,7 @@ the pointer over **Instance Status** in the Actions column.
 4. On the Instance details page, click **Start** in the upper-right corner.
 5. In the message that appears, click **OK** to start the instance.
 
-##### Delete an instance
+##### 3.3.3.9 Delete an instance
 
 This topic describes how to delete an Elastic Compute Service (ECS) bare metal instance.
 
@@ -6954,7 +7728,7 @@ move the pointer over **Instance Status** in the Actions column.
 5. In the message that appears, confirm the instance information.
 6. Click **Delete** to delete the instance.
 
-##### View the operation logs of an ECS bare
+##### 3.3.3.10 View the operation logs of an ECS bare metal instance
 
 **metal instance**
 
@@ -6973,7 +7747,7 @@ Running, Stopped, or Creation failed) or click **Operation Logs in the Actions c
 5. In the **Operation Logs** dialog box, view information about the operations performed on the
 instance, such as the operation status, sub-items, start time, check result, and description.
 
-##### Modify the properties of an ECS bare
+##### 3.3.3.11 Modify the properties of an ECS bare metal instance
 
 **metal instance**
 
@@ -6990,7 +7764,7 @@ An ECS bare metal instance is registered. For more information, see Register an 
 6. In the **Modify Property** dialog box, follow the on-screen instructions to modify the name
 and description of the instance.
 
-##### Modify the hostname of an ECS bare
+##### 3.3.3.12 Modify the hostname of an ECS bare metal instance
 
 **metal instance**
 
@@ -7006,7 +7780,7 @@ An ECS bare metal instance is registered. For more information, see Register an 
 5. Click **Modify host name** in the drop-down list.
 6. In the **Modify host name** dialog box, modify the hostname of the instance.
 
-##### Reset the password of an ECS bare metal
+##### 3.3.3.13 Reset the password of an ECS bare metal instance
 
 **instance**
 
@@ -7024,7 +7798,7 @@ An ECS bare metal instance is registered. For more information, see Register an 
 new password.
 7. Click **OK** to reset the password of the instance.
 
-##### Change the gateway port of an ECS bare
+##### 3.3.3.14 Change the gateway port of an ECS bare metal instance
 
 **metal instance**
 
@@ -7043,7 +7817,7 @@ O&M
 port of the instance.
 7. Click **OK** to complete the modification.
 
-##### Log in to the out-of-band console
+##### 3.3.3.15 Log in to the out-of-band console
 
 To fix machine faults in O&M scenarios, administrators are allowed to log in to the out-ofband consoles of Elastic Compute Service (ECS) bare metal instances to diagnose issues and locate the cause. This topic describes how to log in to the out-of-band console of an ECS bare metal instance.
 
@@ -7058,11 +7832,11 @@ An ECS bare metal instance is registered. For more information, see Register an 
 6. On the out-of-band console login page, enter the account information and click **Log In** to
 log in to the out-of-band console.
 
-#### Monitoring and alerting
+#### 3.3.4 Monitoring and alerting
 
 The monitoring and alerting module provides administrators with capabilities to centrally monitor the resources of registered Elastic Compute Service (ECS) bare metal instances, and allows them to query and handle alerts generated by ECS bare metal instances in the resource pool. It also allows administrators to query and handle alerts generated by ECS bare metal instances on the tenant side.
 
-##### Instance monitoring
+##### 3.3.4.1 Instance monitoring
 
 The instance monitoring feature allows administrators to view the status of registered Elastic Compute Service (ECS) bare metal instances, such as the CPU utilization and metrics related to memory and networks. Administrators can view the following metrics:
 
@@ -7082,7 +7856,7 @@ O&M
 
 **Connections**
 
-###### View the monitoring information of ECS
+###### 3.3.4.1.1 View the monitoring information of ECS bare metal instances
 
 **bare metal instances**
 
@@ -7096,11 +7870,11 @@ An ECS bare metal instance is registered. For more information, see Register an 
 3. On the **Instance Monitoring** page, you can view the basic metrics of the ECS bare metal
 instance.
 
-##### Alerts of ECS bare metal instances
+##### 3.3.4.2 Alerts of ECS bare metal instances
 
 Administrators can view and handle alerts generated by Elastic Compute Service (ECS) bare metal instances to identify potential issues promptly and ensure the stability of ECS bare metal instances.
 
-###### Query the alerts of ECS bare metal
+###### 3.3.4.2.1 Query the alerts of ECS bare metal instances
 
 **instances**
 
@@ -7121,7 +7895,7 @@ O&M
 search for alerts that meet the conditions. You can specify the following filter conditions: SN, Alert Type, Alert Level, Alerts, Instance IP Address, and Start and End Time.
 4. After you find the ECS bare metal instance, you can view alerts related to the instance.
 
-###### View pending alerts
+###### 3.3.4.2.2 View pending alerts
 
 This topic describes how to view the pending alerts of Elastic Compute Service (ECS) bare metal instances.
 
@@ -7134,7 +7908,7 @@ An ECS bare metal instance is registered. For more information, see Register an 
 3. On the **Bare Metal Instance Alerts** page, click the **Unprocessed** tab.
 4. On the **Unprocessed** tab, you can view the pending alerts of all ECS bare metal instances.
 
-###### View handled alerts
+###### 3.3.4.2.3 View handled alerts
 
 This topic describes how to view the handled alerts of Elastic Compute Service (ECS) bare metal instances.
 
@@ -7147,7 +7921,7 @@ An ECS bare metal instance is registered. For more information, see Register an 
 3. On the **Bare Metal Instance Alerts** page, click the **Processed** tab.
 4. On the **Processed** tab, you can view the handled alerts of all ECS bare metal instances.
 
-###### Handle alerts
+###### 3.3.4.2.4 Handle alerts
 
 This section describes how to handle the alerts of registered Elastic Compute Service (ECS) bare metal instances.
 
@@ -7169,11 +7943,11 @@ if the alert is a false positive or the alert does not require any operations, s
 information and submitted the feedback, you can select **Fixed**, specify **Handler** and
 **Closing Reason**, and then click **OK**.
 
-##### Alerts of managed instances
+##### 3.3.4.3 Alerts of managed instances
 
 Administrators can view and handle alerts generated by managed instances on the tenant side. This allows administrators to identify potential issues promptly and ensures the stability and high availability of managed instances.
 
-###### Query the alerts of managed instances
+###### 3.3.4.3.1 Query the alerts of managed instances
 
 This topic describes how to query the alerts of managed instances.
 
@@ -7191,7 +7965,7 @@ You can query and view the alerts of managed instances. The platform generates t
 search for alerts that meet the conditions. You can specify the following filter conditions: SN, Alert Type, Alert Level, Alerts, Instance IP Address, and Start and End Time.
 4. After you find the managed instance, you can view alerts related to the instance.
 
-###### View pending alerts
+###### 3.3.4.3.2 View pending alerts
 
 This topic describes how to view the pending alerts of managed instances. O&M
 
@@ -7204,7 +7978,7 @@ A managed instance is created.
 3. On the **Managed Instance Alerts** page, click the **Unprocessed** tab.
 4. On the **Unprocessed** tab, you can view the pending alerts of all managed instances.
 
-###### View handled alerts
+###### 3.3.4.3.3 View handled alerts
 
 This topic describes how to view the handled alerts of managed instances.
 
@@ -7217,7 +7991,7 @@ A managed instance is created.
 3. On the **Managed Instance Alerts** page, click the **Processed** tab.
 4. On the **Processed** tab, you can view the handled alerts of all managed instances.
 
-###### Handle alerts
+###### 3.3.4.3.4 Handle alerts
 
 This section describes how to handle the alerts of managed instances.
 
@@ -7238,15 +8012,15 @@ if the alert is a false positive or the alert does not require any operations, s
 5. If the O&M engineer has repaired the managed instance based on the alert information and
 submitted the feedback, you can select **Fixed**, specify **Handler** and **Closing Reason**, and then click **OK**.
 
-#### Basic settings
+#### 3.3.5 Basic settings
 
 The basic settings module aggregates important information required for registering and maintaining Elastic Compute Service (ECS) bare metal instances, including image metadata, network configuration, models and specifications, and GPU information. This module greatly simplifies the management of ECS bare metal instances and improves the efficiency and reliability of instance deployment.
 
-##### Image management
+##### 3.3.5.1 Image management
 
 The image management feature is used to maintain image metadata required for installing Elastic Compute Service (ECS) bare metal instances. It allows administrators to query custom images, manage custom image status, delete images, and export images, and query public images, manage public image status, and export public images. Administrators can upload custom images based on their business requirements.
 
-###### Upload a custom image
+###### 3.3.5.1.1 Upload a custom image
 
 This topic describes how to upload a custom image.
 
@@ -7273,7 +8047,7 @@ O&M The certificate of the environment to which you are logged in affects image 
 redirected to a new page.
 5. After you complete the preceding operations, you can continue to upload the image.
 
-###### Query images
+###### 3.3.5.1.2 Query images
 
 This topic describes how to query images and view the details of images.
 
@@ -7288,7 +8062,7 @@ click the Search icon to search for images that meet the filter condition. You c
 4. After you find the desired image, you can view its details in the list, including the image
 name, ID, size, architecture, platform, format, creation time, whether the image is available, and whether the image is enabled.
 
-###### Delete an image
+###### 3.3.5.1.3 Delete an image
 
 This topic describes how to delete an image.
 
@@ -7306,7 +8080,7 @@ O&M By default, the **Custom Image** tab is displayed.
 Actions column.
 4. In the message that appears, click **OK**.
 
-###### Manage public images
+###### 3.3.5.1.4 Manage public images
 
 This topic describes how to use public images.
 
@@ -7324,7 +8098,7 @@ By default, the **Custom Image** tab is displayed.
 4. The tab displays all available public images. You can manage image status and export
 images. For more information, see Manage image status and Image export.
 
-###### Manage image status
+###### 3.3.5.1.5 Manage image status
 
 This topic describes how to change the status of an image.
 
@@ -7358,7 +8132,7 @@ pointer over **Enabling Status** in the Actions column.
 5. Then, the Available Status column of the image changes to **Available,** and the Enabling
 Status column of the image changes to **Enable**.
 
-###### Export an image
+###### 3.3.5.1.6 Export an image
 
 This topic describes how to export a public image or an uploaded custom image to the onpremises machine.
 
@@ -7372,7 +8146,7 @@ By default, the **Custom Image** tab is displayed.
 the Actions column.
 4. Wait until the image is downloaded.
 
-##### Network management
+##### 3.3.5.2 Network management
 
 Administrators can query and view information about existing subnets and new subnets. This topic describes how to query the information about existing subnets and update subnet information.
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
@@ -7383,11 +8157,11 @@ click the Search icon to search for subnets that meet the filter condition. You 
 4. On the **Network** page, click **Get Subnet** above the list to obtain or update the subnet
 information.
 
-##### Model management
+##### 3.3.5.3 Model management
 
 The model management feature allows administrators to add, query, delete, and modify models. This way, administrators can flexibly manage models to meet diverse business requirements. This feature also helps ensure the accuracy and consistency of model information, which simplifies the management and deployment of Elastic Compute Service (ECS) bare metal instances.
 
-###### Add a model
+###### 3.3.5.3.1 Add a model
 
 After you create a model, you can query and view the information about the model. This topic describes how to add a model.
 1. Log in to the Bare Metal Management Service (BMS) Operations Console.
@@ -7397,7 +8171,7 @@ After you create a model, you can query and view the information about the model
 parameters.
 5. After you complete the configuration, click **OK** to add the model.
 
-###### Modify a model
+###### 3.3.5.3.2 Modify a model
 
 This topic describes how to modify the configuration of a model.
 
@@ -7416,7 +8190,7 @@ Actions column.
 5. After you modify the model, click **OK**.
 O&M
 
-###### Query models
+###### 3.3.5.3.3 Query models
 
 Administrators can query and view information about existing models. This topic describes how to query models and view the details of models.
 
@@ -7428,7 +8202,7 @@ A model is added. For more information, see Add a model.
 3. On the **Models** page, select a filter condition, enter the keyword into the search box, and
 click the Search icon to search for models that meet the filter condition. You can search models by Model Name, Disk Type, and Manufacturer.
 
-###### Delete a model
+###### 3.3.5.3.4 Delete a model
 
 This topic describes how to delete a model.
 
@@ -7445,11 +8219,11 @@ This operation is a high-risk operation and is irreversible. Proceed with cautio
 Actions column.
 4. In the message that appears, click **OK** to delete the model.
 
-##### GPU settings
+##### 3.3.5.4 GPU settings
 
 The GPU settings feature allows administrators to add, query, modify, and delete GPUs. Administrators can use this feature to add GPU settings, efficiently search GPU settings, update existing GPU settings, and delete GPU settings in certain scenarios.
 
-###### Add a GPU
+###### 3.3.5.4.1 Add a GPU
 
 O&M This section describes how to add a GPU.
 
@@ -7463,7 +8237,7 @@ After you add a GPU, you can query and view the information about the GPU.
 information.
 5. After you complete the configuration, click **OK** to add the GPU.
 
-###### Modify a GPU
+###### 3.3.5.4.2 Modify a GPU
 
 This topic describes how to modify the configuration of a GPU.
 
@@ -7477,7 +8251,7 @@ Actions column.
 4. In the **Edit GPU** dialog box, modify the GPU parameters.
 5. After you complete the configuration, click **OK**.
 
-###### Query GPUs
+###### 3.3.5.4.3 Query GPUs
 
 Administrators can query and view information about GPUs. This topic describes how to query GPUs.
 
@@ -7489,7 +8263,7 @@ A GPU is added. For more information, see Add a GPU.
 3. On the **GPU Settings** page, enter a GPU model into the search box to find the GPU that
 meets the condition.
 
-###### Delete a GPU
+###### 3.3.5.4.4 Delete a GPU
 
 Administrators can delete the specified GPUs. This topic describes how to delete a GPU.
 
@@ -7506,9 +8280,9 @@ This operation is irreversible. Proceed with caution.
 Actions column.
 4. In the message that appears, click **OK** to delete the GPU.
 
-### Container Operations Console
+### 3.4 Container Operations Console
 
-#### ACK cluster O&M
+#### 3.4.1 ACK cluster O&M
 
 This topic described how to view the basic information about all Container Service for Kubernetes (ACK) clusters created in the environment on the ACK Clusters page.
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -7540,9 +8314,9 @@ column to go to the cluster details page. The following parameters are displayed
 **Pod Network CIDR**, **Service CIDR**, **Kube-proxy Mode**, **Node IP Addresses**, and
 **Network Plug-ins**.
 
-#### Component O&M
+#### 3.4.2 Component O&M
 
-##### Components
+##### 3.4.2.1 Components
 
 This topic describes how to view the basic information about all components on the Component List page.
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -7555,9 +8329,9 @@ version. Find the component that you want to manage and click its name in the **
 following parameters are displayed: **Component Name**, **Component ID**, **Component**
 **Type**, **Created At**, **Component Description**, and **Component Template**.
 
-#### GUI-based changes
+#### 3.4.3 GUI-based changes
 
-##### Kubernetes version baselines
+##### 3.4.3.1 Kubernetes version baselines
 
 This topic describes how to view the information about baselines on the **K8S version**
 **baseline** page.
@@ -7568,7 +8342,7 @@ version baseline page, view the baseline information displayed in the following 
 **Name**, **Baseline Type**, **Version**, **Cluster Type**, **Property**, **Creation Time**, and
 Operation. You can also search for baselines by name. To view the YAML or JSON file of the baseline, click the file in the **Actions** column.
 
-##### Troopers configurations
+##### 3.4.3.2 Troopers configurations
 
 This topic describes how to view and modify the information about troopers configurations on the Troopers Configurations page. O&M
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -7579,7 +8353,7 @@ Configurations page, view the name, content, creation time, and update time of e
 **Content** column to view the configuration information about the configuration item. You
 can also click **Edit** in the **Actions** column to modify the configuration information about the configuration item.
 
-#### Log management
+#### 3.4.4 Log management
 
 This topic describes how to query and view service logs such as troopers logs. O&M
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -7587,7 +8361,7 @@ This topic describes how to query and view service logs such as troopers logs. O
 2. In the left-side navigation pane, click **Log Management**. On the page that appears, search
 for logs, such as troopers logs, by Logstore and time range.
 
-#### Operation audit
+#### 3.4.5 Operation audit
 
 This topic describes how to view the information about operations.
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -7600,9 +8374,9 @@ the operation information in the following columns: **Change Name**, **Change De
 
 In the **Actions** column, click **View Change** to view the change in read-only mode or click **Roll Back Change** to roll back the change.
 
-#### etcd O&M
+#### 3.4.6 etcd O&M
 
-##### etcd backup
+##### 3.4.6.1 etcd backup
 
 This topic describes how to back up the etcd data of a Container Service for Kubernetes (ACK) cluster and view historical backup information on the ETCD Backup Records page. O&M
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -7620,11 +8394,11 @@ the parameters that are described in the following table and click **OK**.
 | Cluster ID | The ID of the cluster. |
 | Bucket name | The name of the Object Storage Service (OSS) bucket that stores the etcd data. |
 
-### BMCP Operations Platform
+### 3.5 BMCP Operations Platform
 
 O&M
 
-#### O&M overview
+#### 3.5.1 O&M overview
 
 This topic describes the objectives, requirements, and precautions of Bare Metal Computing Platform (BMCP) O&M and how to obtain technical support.
 
@@ -7648,49 +8422,27 @@ To ensure a stable system and prevent unexpected events, O&M engineers must comp
 
 O&M engineers can contact Apsara Stack technical support for help during the maintenance.
 
-#### Getting started
+#### 3.5.2 Getting started
 
 O&M
 
-##### BMCP Operations Console
+##### 3.5.2.1 BMCP Operations Console
 
 The Bare Metal Computing Platform (BMCP) Operations Console is a cutting-edge O&M technical solution that focuses on intelligent computing, high-performance computing, and scenarios where intelligent computing and high-performance computing are integrated. The BMCP Operations Console provides a high-performance computing system based on an Intel architecture and an intelligent computing system based on a NVIDIA architecture. It is compatible with domestic software and hardware ecosystems. The BMCP Operations Console provides O&M engineers with computing resource topology visualization and resource O&M capabilities. O&M engineers can centrally manage and maintain computing, network, and storage resources from the job and trace perspective. It greatly improves the O&M efficiency.
 
 **Characteristics and benefits**
 
-Full-stack device management Provides a multi-tenant-oriented computing resource normalization and O&M platform that covers computing, storage, and network resource topology management and maintenance. Computing resource supply for various architectures Supports mainstream training and inference platforms that use intel CPUs and NVIDIA GPUs. Supports domestic software and hardware ecosystem platforms based on Hygon CPUs and Hygon GPUs or based on Kunpeng CPUs and Huawei Ascend NPUs to ensure the supply of computing resources. Visualized real-time monitoring Provides visualized topology monitoring for nodes, links, and network elements, and uses time slice labeling to display the real-time status of computing, storage, and network resources. Job path analysis The job path analysis feature provides a topology view to display O&M planes from the perspective of jobs in order to conduct fine-grained O&M, including monitoring, alerting, diagnostics, and logging. Intelligent device inspection and diagnostics Analyzes the status of hardware devices and logs and conducts multi-level inspection to eliminate potential job risks in clusters. Performs cluster and computing job diagnostics to quickly locate issues, isolate resources, or fix issues. ROI optimization Supports the reuse of vendor or data center-level GPUs to improve the stock of computing resources in order to optimize the Return on Investment (ROI). The BMCP Operations Console is an enterprise-class O&M solution which is suitable for scientific institutions that need to process massive computing jobs, intelligent computing jobs, large-sized Internet enterprises, and the financial industry. It is a powerful and flexible resource O&M platform.
+Full-stack device management Provides a multi-tenant-oriented computing resource normalization and O&M platform that covers computing, storage, and network resource topology management and maintenance. Computing resource supply for various architectures Supports mainstream training and inference platforms that use intel CPUs and NVIDIA GPUs. Supports domestic software and hardware ecosystem platforms based on Hygon CPUs and Hygon GPUs or based on Kunpeng CPUs and Huawei Ascend NPUs to ensure the supply of computing resources. Visualized real-time monitoring Provides visualized topology monitoring for nodes, links, and network elements, and uses time slice labeling to display the real-time status of computing, storage, and network resources. The job path analysis feature provides a topology view to display O&M planes from the perspective of jobs in order to conduct fine-grained O&M, including monitoring, alerting, diagnostics, and logging. Intelligent device inspection and diagnostics Analyzes the status of hardware devices and logs and conducts multi-level inspection to eliminate potential job risks in clusters. Performs cluster and computing job diagnostics to quickly locate issues, isolate resources, or fix issues. ROI optimization Supports the reuse of vendor or data center-level GPUs to improve the stock of computing resources in order to optimize the Return on Investment (ROI). The BMCP Operations Console is an enterprise-class O&M solution which is suitable for scientific institutions that need to process massive computing jobs, intelligent computing jobs, large-sized Internet enterprises, and the financial industry. It is a powerful and flexible resource O&M platform.
 
 **Features**
 
-**Job path analysis**
+This module analyzes the topology of jobs in data planes and manages the lifecycle of nodes, GPUs, RDMA networks, RDMA network elements, and links in a visualized manner. O&M This module allows you to manage all physical resources that are used by your businesses, including computing, storage, and network resources. This module monitors the stability metrics of computing resources, including nodes, GPUs, and RDMA resources, and generates alerts in real time when events are detected. This module manages all computing logic resources used by your businesses, allowing you to centrally manage computing, storage, and network resources. This module inspects and diagnoses resources in different scenarios to quickly locate the cause. This module allows you to export cluster or node logs to help improve the overall O&M efficiency and system reliability.
 
-This module analyzes the topology of jobs in data planes and manages the lifecycle of nodes, GPUs, RDMA networks, RDMA network elements, and links in a visualized manner. O&M
-
-**Resource management**
-
-This module allows you to manage all physical resources that are used by your businesses, including computing, storage, and network resources.
-
-**Alert management**
-
-This module monitors the stability metrics of computing resources, including nodes, GPUs, and RDMA resources, and generates alerts in real time when events are detected.
-
-**Cluster management**
-
-This module manages all computing logic resources used by your businesses, allowing you to centrally manage computing, storage, and network resources.
-
-**Inspection and diagnostics**
-
-This module inspects and diagnoses resources in different scenarios to quickly locate the cause.
-
-**Log management**
-
-This module allows you to export cluster or node logs to help improve the overall O&M efficiency and system reliability.
-
-##### Work with the BMCP Operations Console
+##### 3.5.2.2 Work with the BMCP Operations Console
 
 This topic describes how to work with the Bare Metal Computing Platform (BMCP) Operations Console. You can view the topology of training and inference jobs within the last 7 days on the BMCP Operations Console, and view the GPU, network interface controller (NIC), and vSwitch usage of these jobs and their metrics.
 
-##### Log on to the BMCP Operations Console
+##### 3.5.2.3 Log on to the BMCP Operations Console
 
 This topic describes how to log on to the Apsara Uni-manager Operations Console and then access the Bare Metal Computing Platform (BMCP) Operations Console.
 
@@ -7706,7 +8458,7 @@ Operations Console.
 4. In the top navigation bar, choose **Product Operation > Computing > BMCP**
 **Operations Platform**.
 
-#### Overview
+#### 3.5.3 Overview
 
 This topic describes the content displayed on the Overview page of the Bare Metal Computing Platform (BMCP) Operations Console. The Overview page displays alerts, resource data, computing power statistics, and control services.
 
@@ -7737,9 +8489,9 @@ The Control Service module displays the service status of the control services r
 **state** or **Has reached the final state**. **Not reaching the final state** indicates that the
 service deployment has not been completed. **Has reached the final state** indicates that the service deployment is complete. O&M
 
-#### Visualized monitoring
+#### 3.5.4 Visualized monitoring
 
-##### Job path analysis
+##### 3.5.4.1 Job path analysis
 
 This topic describes how to work with job path analysis.
 
@@ -7763,9 +8515,9 @@ resource usage of the job within the selected time slice. The topology displays 
 **RDMA cards, and vSwitches**, and the connections among them. Resource usage metrics
 such as GPU utilization and RDMA network bandwidth usage are also displayed. O&M Move the pointer over a GPU or RDMA card to view the name and resource usage of the resource.
 
-#### Alerts
+#### 3.5.5 Alerts
 
-##### Resource event alerts
+##### 3.5.5.1 Resource event alerts
 
 This topic introduces the resource event alert module and how to create an event ticket to handle alerts.
 
@@ -7790,7 +8542,7 @@ including alert name, alert content, and alert start time. The following alert s
 Alerts can be in the following states: **Processed and Unprocessed**. Alerts related to the following resources are generated: **Calculation (in-band),**
 **Calculation (out-of-band), and Network**.
 
-##### Job event alerts
+##### 3.5.5.2 Job event alerts
 
 Thistopicdescribeshowtoviewjobalerts O&M This topic describes how to view job alerts.
 1. Log on to the BMCP Operations Console.
@@ -7798,13 +8550,13 @@ Thistopicdescribeshowtoviewjobalerts O&M This topic describes how to view job al
 3. On the **Job Event Alert** tab, you can search for a job based on **Cluster ID**, **Namespace**,
 or **Job ID** and click Search to view all relevant alerts generated during the lifecycle of the job.
 
-#### Clusters
+#### 3.5.6 Clusters
 
-##### Computing
+##### 3.5.6.1 Computing
 
-###### Clusters
+###### 3.5.6.1.1 Clusters
 
-###### Query the details of a computing
+###### 3.5.6.1.1.1 Query the details of a computing cluster
 
 **cluster**
 
@@ -7836,11 +8588,11 @@ information, see View the details of a computing node. iii. **Monitoring** Click
 **operation logs** of all operation types are displayed.
 b. Click **Operation Time** and specify **Start Date** and **End Date** (accurate to seconds). Then, **operation logs** from the start date to the end date are displayed. c. You can click **Operation details** in the Operation column to view atomic steps in the operation and the detailed information.
 
-###### Nodes
+###### 3.5.6.1.2 Nodes
 
 O&M
 
-###### View the details of a computing node
+###### 3.5.6.1.2.1 View the details of a computing node
 
 This topic describes how to query Bare Metal Computing Platform (BMCP) computing nodes and node details, including basic information and operation logs. You can query nodes in bare metal-intelligent computing clusters, ACK-intelligent computing clusters, bare metalsupercomputing clusters, and idle nodes in the resource pool.
 1. Log on to the BMCP Operations Console.
@@ -7864,7 +8616,7 @@ information, see Manage computing nodes.
 7. Click **Resource Enable** in the Operation column of a node to manage the node. For more
 information, see Manage computing nodes.
 
-###### Manage computing nodes
+###### 3.5.6.1.2.2 Manage computing nodes
 
 This section describes how to manage idle Bare Metal Computing Platform (BMCP) nodes in the resource pool.
 
@@ -7891,7 +8643,7 @@ click **OK**.
 Go to **Clusters > Calculation > Node > Node details** and choose **More > Out-of-**
 **band console** to log on to the out-of-band console.
 
-##### Storage
+##### 3.5.6.2 Storage
 
 **View the details of a storage cluster**
 
@@ -7921,9 +8673,9 @@ In the upper-right corner of the cluster list, you can enter a **cluster name** 
 6. Click **Details** in the **Operation** column of the desired cluster to view the cluster details.
 The **Cluster Details** tab displays detailed cluster information, including the number of nodes, number of Quorum nodes, basic information, and configuration information. The **Cluster Node** tab displays the basic node information, including the node type and node status. You can also click **Details** in the **Operation** column of the desired node to view the node details, including the basic information, configuration information, monitoring data, and operation logs.
 
-##### Network
+##### 3.5.6.3 Network
 
-###### Query subnets
+###### 3.5.6.3.1 Query subnets
 
 This topic describes how to query and update the information about all switches connected to the cloud.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -7935,13 +8687,13 @@ This tab displays all switches connected to the cloud, including **HSW** and **C
 5. Click **Get subnet** to query the switches that are connected to the cloud in real time and
 synchronize the information to the current page.
 
-#### Resource management
+#### 3.5.7 Resource management
 
-##### Computing
+##### 3.5.7.1 Computing
 
-###### Servers
+###### 3.5.7.1.1 Servers
 
-###### View server details
+###### 3.5.7.1.1.1 View server details
 
 This topic describes how to query all physical servers and view their detailed information.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -7960,7 +8712,7 @@ i. Basic information The following table lists the information displayed on the 
 
 ii. Monitoring On the **Monitoring** tab, you can view the CPU utilization, memory utilization, loads, disk reads, disk writes, and number of connections within the specified time period. iii. Operation Log On the **Operation Log** tab, you can filter operation logs by operation type and operation time. a. You can select a tag from the **Operation Type** drop-down list to filter **operation logs**. You can select the following tags: Apply for an instance, Re-apply, O & M instance, Mount instance, Mount storage, and Unmount storage. If you do not select a filter condition, **operation logs** of types of operations that have been performed on the server are displayed. b. Click **Operation Time**, and specify **Start Date** and **End Date** (accurate to days). Then, **operation logs** from 00:00:00 of the start date to 23:59:59 of the end date are displayed. c. You can click **Operation details** in the Operation column to view all atomic steps included in the operation and the detailed information.
 
-###### Register resources
+###### 3.5.7.1.1.2 Register resources
 
 This topic describes how to register server resources. O&M
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -7979,7 +8731,7 @@ Keep your password confidential. If you lost the password, you can log on to the
 The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 7. After you complete the configuration, click **OK**.
 
-###### Manage server status
+###### 3.5.7.1.1.3 Manage server status
 
 This topic describes how to start, restart, stop, delete, and release servers.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -7991,7 +8743,7 @@ You can start, restart, stop, delete, or release the server.
 5. You can also select one or more servers and click **Delete Resource** or **Release Resource**
 below the server list.
 
-###### Remotely log on to a server
+###### 3.5.7.1.1.4 Remotely log on to a server
 
 This topic describes how to remotely log on to a server.
 
@@ -8005,7 +8757,7 @@ By default, the **Calculation > Server** tab is displayed. You can view all phys
 4. Find the desired server and click **Remote logon** in the **Operation** column.
 5. In the dialog box that appears, enter the password and click **OK**.
 
-###### Re-register a server
+###### 3.5.7.1.1.5 Re-register a server
 
 This topic describes how to re-register servers.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8029,7 +8781,7 @@ Keep your password confidential. If you lost the password, you can log on to the
 The resource name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), and hyphens (-). The name must start with a letter or digit.
 6. After you complete the configuration, click **OK**.
 
-###### Enable or disable servers
+###### 3.5.7.1.1.6 Enable or disable servers
 
 This topic describes how to enable and disable a server.
 
@@ -8062,9 +8814,9 @@ icon in the **Operation** column of the server.
 5. Choose **Resource Enable > Disable**.
 6. In the message that appears, click OK.
 
-###### GPUs
+###### 3.5.7.1.2 GPUs
 
-###### View GPU details
+###### 3.5.7.1.2.1 View GPU details
 
 O&M This topic describes how to query GPUs on an installed bare metal instance and view the detailed information about each GPU.
 
@@ -8085,9 +8837,9 @@ The following table lists the information displayed on the Basic Information pag
 | GPU card information | Displays GPU ID, Node, Server to which the server belongs, Manufacturer, GPU model, Flash storage capacity, and Computing Power. |
 | Configuration Information | Displays VBIOS version, Driver name, Driver version, and BusInfo. |
 
-##### Storage
+##### 3.5.7.2 Storage
 
-###### View the file system details
+###### 3.5.7.2.1 View the file system details
 
 This topic describes how to view the file system details.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8103,7 +8855,7 @@ You can then view the client cluster information of the file system, including t
 7. Click Details in the **Operation** column of the file system.
 You can then view the details of the file system, including the file system name, storage cluster, client cluster, specification, and monitoring data.
 
-###### View server resource details
+###### 3.5.7.2.2 View server resource details
 
 This topic describes how to view server resource details.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8115,7 +8867,7 @@ You can enter a **hostname**, **IP**, or **SN** into the search box above the li
 5. Click the ID of the desired server in the **Storage cluster ID** column.
 You can then view the storage cluster information of the server, including the number of file systems, number of nodes, capacity, health status, file system type, cluster node information, service roles, and monitoring data.
 
-###### View cache resources of a computing
+###### 3.5.7.2.3 View cache resources of a computing node
 
 **node**
 
@@ -8139,11 +8891,11 @@ The **fuse-related configuration parameters** section displays information such 
 **Kernel Cache**, **Cache Fragment Size**, **Aggregate fuse request size**, and
 **Asynchronous IO type**.
 
-##### Network
+##### 3.5.7.3 Network
 
-###### Network elements
+###### 3.5.7.3.1 Network elements
 
-###### Query network element details
+###### 3.5.7.3.1.1 Query network element details
 
 This topic describes how to query all network elements, including DSW, RDSW, HSW, CHSW, EHSW, and RASW.
 
@@ -8164,11 +8916,11 @@ O&M
 7. Query ports:
 Basic filtering: a. You can search ports by name or select a tag from the drop-down list. b. Click the icon to search ports in fuzzy match mode. Advanced filtering: a. Click **Advanced Filter**. b. Enter a port name. c. Click **Search** to search ports in fuzzy match mode.
 
-#### Inspection and diagnostics
+#### 3.5.8 Inspection and diagnostics
 
-##### Inspection
+##### 3.5.8.1 Inspection
 
-###### Clusters and nodes
+###### 3.5.8.1.1 Clusters and nodes
 
 This topic describes how to diagnose a cluster or node.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8185,7 +8937,7 @@ Click **Cancel** in the **Operation** column of the task.
 8. View the diagnostic result.
 After the diagnostic task enters the Completed state, click **Details** to view the diagnostic result.
 
-###### Jobs
+###### 3.5.8.1.2 Jobs
 
 This topic describes how to diagnose the cluster in which a job runs.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8203,7 +8955,7 @@ Click **Cancel** in the **Operation** column of the diagnostic task to cancel th
 9. View the diagnostic result.
 After the diagnostic task enters the Completed state, click **Details** to view the diagnostic result.
 
-###### Description of diagnostic items
+###### 3.5.8.1.3 Description of diagnostic items
 
 The diagnostics feature provides cluster, node, and job diagnostics. This topic describes the supported diagnostic items.
 
@@ -8391,11 +9143,11 @@ O&M
 | systemd health monitoring | A hang in the systemd or dbus daemon or an excessive number of mount points (> 5,000) can cause systemd to become unresponsive. |
 | Check for disk error information | Disk error messages in dmesg can cause certain operations of the container runtime to fail. |
 
-#### Basic configurations
+#### 3.5.9 Basic configurations
 
-##### Models
+##### 3.5.9.1 Models
 
-###### Add a model
+###### 3.5.9.1.1 Add a model
 
 This topic describes how to add a model. O&M
 
@@ -8438,7 +9190,7 @@ O&M
 
 5. After you complete the configurations, click **OK**.
 
-###### Query models
+###### 3.5.9.1.2 Query models
 
 This topic describes how to query models.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8447,7 +9199,7 @@ This topic describes how to query models.
 4. Click the
 icon to search in fuzzy match mode. O&M
 
-###### Modify a model
+###### 3.5.9.1.3 Modify a model
 
 This topic describes how to modify a model.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8455,7 +9207,7 @@ This topic describes how to modify a model.
 3. Click **Modify** in the **Operation** column of a model.
 4. In the **Modify model** dialog box, modify the model parameters.
 
-###### Remove a model
+###### 3.5.9.1.4 Remove a model
 
 This topic describes how to remove a model.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8467,11 +9219,11 @@ This topic describes how to remove a model.
 
 Before you remove a model, make sure that the model is not used by instances. This operation is irreversible.
 
-##### Images
+##### 3.5.9.2 Images
 
 You can manage custom images and public images on the Bare Metal Computing Platform (BMCP) Operations Console.
 
-###### Custom images
+###### 3.5.9.2.1 Custom images
 
 **Upload a custom image**
 
@@ -8512,7 +9264,7 @@ i. Delete the image a. Click **Delete image** in the **Operation** column of the
 
 Before you delete an image, make sure that no instances use this image. The delete operation is irreversible. ii. Enable the image Choose **Enable status > Enable images** in the **Operation** column of the image. iii. Disable the image Choose **Enable status > Disable images** in the **Operation** column of the image. iv. Export the image Click **Image export** in the **Operation** column of the image to export the image to your on-premises machine.
 
-###### Public images
+###### 3.5.9.2.2 Public images
 
 You can enable, disable, and export public images and export signature files.
 
@@ -8544,9 +9296,9 @@ By default, the **Custom image** tab is displayed.
 
 Before you run the command, make sure that the public key, signature file, and image are downloaded. Set the following parameters to the actual values: `public.key` indicates the public key. `signature.bin` indicates the signature file. `imagefile` indicates the image file.
 
-##### GPU settings
+##### 3.5.9.3 GPU settings
 
-###### Add a GPU
+###### 3.5.9.3.1 Add a GPU
 
 This topic describes how to add a GPU.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8569,7 +9321,7 @@ O&M
 
 5. After you complete the configuration, click **OK**.
 
-###### Query GPUs
+###### 3.5.9.3.2 Query GPUs
 
 This topic describes how to query GPUs.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8579,7 +9331,7 @@ O&M
 4. Click the
 icon to search GPUs in fuzzy match mode.
 
-###### Modify a GPU
+###### 3.5.9.3.3 Modify a GPU
 
 This topic describes how to modify the information of a GPU.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8589,7 +9341,7 @@ This topic describes how to modify the information of a GPU.
 (Chinese), GPU memory size, and TFLOPS parameters. You cannot modify the GPU manufacturer or GPU model parameter. O&M
 5. Click **OK**.
 
-###### Remove a GPU
+###### 3.5.9.3.4 Remove a GPU
 
 This topic describes how to remove a GPU.
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8597,9 +9349,9 @@ This topic describes how to remove a GPU.
 3. Click **Delete** in the Operation column of the desired GPU.
 4. Confirm the GPU information and click **OK**.
 
-#### Logs
+#### 3.5.10 Logs
 
-##### Clusters and nodes
+##### 3.5.10.1 Clusters and nodes
 
 This section describes how to pull logs from a cluster or node. O&M
 1. Log on to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8613,7 +9365,7 @@ log package.
 7. You can click **Details** in the Operation column of the task to view the log pulling details.
 8. Select the task and click **Export logs** to download the log package.
 
-#### Event center
+#### 3.5.11 Event center
 
 You can manage event tickets in the event center. For example, you can view the basic information about an event ticket, such as the number and status of the event ticket, and review an event ticket.
 1. Log in to the Bare Metal Computing Platform (BMCP) Operations Console.
@@ -8634,13 +9386,13 @@ ii. If you select **Refuse**, click **OK**.
 **Repair an event ticket**: After you approve an event ticket, click Details in the Operation
 column. In the **Event Ticket Details** panel, click **Repair statement**. In the message that appears, click **OK**. View the details of an event ticket: After you approve an event ticket, click **Details** in the Operation column to view the details of the event ticket. perations
 
-## Network operations
+## 4 Network operations
 
-### Network Operations Console
+### 4.1 Network Operations Console
 
-#### Dashboard
+#### 4.1.1 Dashboard
 
-##### Overview
+##### 4.1.1.1 Overview
 
 The Overview page displays the key metrics of network services to help users keep track of the status of services and devices at the earliest opportunity.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -8692,7 +9444,7 @@ perations
 | Network Resources | EIP xgw eip bps (inbound and outbound) _ _ xgw eip pps (inbound and outbound) _ _ Reverse Access xgw ecs maping bps (inbound and outbound) _ _ _ xgw ecs mapping pps (inbound and outbound) _ _ _ xgw ecs mapping ratelimit drop pps (inbound and outbound) _ _ _ _ _ xgw ecs mapping drop pps (inbound and outbound) _ _ _ _ NATGW xgw snat session count _ _ _ xgw snat session drop cps _ _ _ _ xgw snat session ratelimit drop cps _ _ _ _ _ vlink xgw vlink bps (inbound and outbound) _ _ xgw vlink pps (inbound and outbound) _ _ Layer 4 VIP lvs listener connsPS/lvs realserver connsPS _ _ _ _ lvs listener dropConnPS/lvs realserver dropConnPS _ _ _ _ lvs listener connections 1m/lvs realserver connections 1m _ _ _ _ _ _ lvs listener PktsPS (inbound and _ _ outbound)/lvs realserver PktsPS (inbound and outbound) _ _ lvs listener BitsPS (inbound and _ _ outbound)/lvs realserver BitsPS (inbound and outbound) _ _ lvs listener DropPktsPS (inbound and _ _ outbound)/lvs realserver DropBitsPS (inbound and outbound) _ _ Layer 7 VIP proxy listener cps _ _ proxy listener qps _ _ proxy listener rt _ _ proxy listener conn concurrent _ _ _ vport avs vport tcp connecting flows num sum 1m _ _ _ _ _ _ _ avs vport tcp established flows num sum 1m _ _ _ _ _ _ _ avs vport pkts 1m (inbound and outbound) _ _ _ avs vport bytes 1m (inbound and outbound) _ _ _ avs vport drop pkts 1m (inbound and outbound) _ _ _ _ |
 |---|---|
 
-##### Network topology
+##### 4.1.1.2 Network topology
 
 The network topology feature allows you to view the physical network topology.
 
@@ -8719,7 +9471,7 @@ Find the alert that you want to view and move the pointer over **View** in the *
 **information List** and **Alert List**.
 Find the alert that you want to view and move the pointer over **View** in the **Alert details** column to view the details of the alert. perations
 
-##### Custom views
+##### 4.1.1.3 Custom views
 
 The Apsara Uni-manager Operations Console allows you to create a custom view. After the view is created, you can configure the display content and rules of the view to summarize and demonstrate the monitoring data and graph information based on your business requirements.
 
@@ -8760,9 +9512,9 @@ right corner of the Custom Views page to delete the view. perations
 
 If you delete a view, all subviews of the view are also deleted. Proceed with caution.
 
-#### Basic network
+#### 4.1.2 Basic network
 
-##### Network element management
+##### 4.1.2.1 Network element management
 
 Network elements are network devices such as vSwitches and routers. The Network Element Management module displays the basic information and status of physical network devices. The module also supports configuration management operations on physical network devices, including device management, password management, and configuration consistency comparison. For more information about the features of the Network Operations Console that are applicable to device manufacturers, see vSwitch Monitoring Capabilities Supported by Network Operations Console.
 
@@ -9021,7 +9773,7 @@ You can enter a device name in the search box to perform an exact search.
 7. In the upper-right corner, click **Export Results** to export the comparison results to your
 computer for viewing.
 
-##### Syslog
+##### 4.1.2.2 Syslog
 
 The Syslog module records and stores the logs generated by network hardware devices in the system based on dimensions such as time, log level, and module to facilitate subsequent analysis and management. This helps you identify and solve issues to improve the availability and stability of devices.
 
@@ -9065,11 +9817,11 @@ If you click **Reset**, the content in the Original Text field is cleared.
 3. In the Parsing Results section, view the parsed information, such as the description,
 hostname, and log level.
 
-##### HPN management
+##### 4.1.2.3 HPN management
 
 By default, the HPN Management module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the HPN Management module.
 
-###### HPN network elements
+###### 4.1.2.3.1 HPN network elements
 
 This topic describes how to view High Performance Network (HPN) network element assets and monitoring and O&M information in the Apsara Uni-manager Operations Console.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9130,7 +9882,7 @@ click **Delete** in the **Operation** column. In the message that appears, click
 |---|---|---|
 |   | out discard _ | The number of outbound packets dropped on the port per second. Unit: PPS. |
 
-###### RDMA NIC O&M
+###### 4.1.2.3.2 RDMA NIC O&M
 
 To perform O&M on Remote Direct Memory Access (RDMA) network interface cards (NICs), you must check the performance metrics of RDMA NICs. RDMA NIC O&M allows you to identify and troubleshoot issues and ensure network stability and reliability.
 
@@ -9176,7 +9928,7 @@ perations
 
 Click the **Node** tab. On this tab, enter a node name in the search box to view the monitoring information about the node. For more information, see Cluster-related metrics.
 
-###### HPN performance analysis
+###### 4.1.2.3.3 HPN performance analysis
 
 The Apsara Uni-manager Operations Console provides the High Performance Network (HPN) performance analysis feature. This feature analyzes the maximum load and pressure resistance of the software and hardware by testing the performance of a machine under stress conditions. This helps you identify the pressure resistance limit of the machine and provides data support for O&M engineers to improve network performance.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9239,7 +9991,7 @@ task: **Task Name**, **Protocol Type**, **Test Type**, **Test Duration**, **Node
 
 Click **Refresh** in the **Actions** column of a task to refresh the task.
 
-###### HPN instant diagnostics
+###### 4.1.2.3.4 HPN instant diagnostics
 
 High Performance Network (HPN) instant diagnostics refer to diagnostics on HPN nodes. During the diagnostics, the system software, network, and GPU of nodes are checked. After the diagnostics, the diagnostic results and details are provided to help administrators troubleshoot network performance issues.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9257,9 +10009,9 @@ list, select a node from the **Node** drop-down list, and then click **Diagnosis
 | Diagnost ic Details | Displays the diagnostic details of each diagnostic item. For example, the RDMA device port rates are consistent. |
 | Current Value | Displays the diagnostic value corresponding to each diagnostic item. |
 
-##### CPN management
+##### 4.1.2.4 CPN management
 
-###### CPN diagnosis
+###### 4.1.2.4.1 CPN diagnosis
 
 The Computing Platform Network (CPN) diagnosis feature checks the nodes in CPN and displays information such as diagnostic items, diagnostic details, and diagnostic results to help administrators better understand and manage network performance and troubleshoot issues.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9327,7 +10079,7 @@ The following table describes the operations that you can perform on the **CPN Q
 
 perations
 
-###### CPN performance analysis
+###### 4.1.2.4.2 CPN performance analysis
 
 You can perform a Computing Platform Network (CPN) performance analysis task to test the performance of machines under stress conditions. The task analyzes the maximum load and pressure resistance of the existing software and hardware. This helps identify the pressure limits of the machines and provides sufficient data for the O&M team to improve network performance.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9407,7 +10159,7 @@ perations
 | Delete an analysis task | 1. In the analysis task list, find the analysis task that you want to delete and click Delete in the Actions column. 2. In the message that appears, click OK. |
 | Stop an analysis task | 1. In the analysis task list, find the analysis task that you want to stop and click Stop in the Actions column. 2. In the message that appears, click OK. The displayed value of Task Status changes to Stopping. If the displayed value of Task Status finally becomes Stopped, it indicates that the analysis task has stopped. |
 
-###### CPN alert center
+###### 4.1.2.4.3 CPN alert center
 
 The CPN Alarm Center module displays alerts, including real-time alerts that are not closed and closed historical alerts.
 
@@ -9455,9 +10207,9 @@ Click **Advanced Filter** and filter alerts by **Alert Item ID**, **Alert Start 
 **Level**, **Alert Object Name**, or any combination of them.
 Click an alert item ID in the **Alert Item ID** column to go to the **Alert Details** page and view the details of the alert. For more information, see Alert details. Move the pointer over **Details** in the **Alert Details** column of an alert to view the details of the alert.
 
-###### CPN access gateways
+###### 4.1.2.4.4 CPN access gateways
 
-###### Manage RDMA devices
+###### 4.1.2.4.4.1 Manage RDMA devices
 
 This topic describes how to manage Remote Direct Memory Access (RDMA) devices, including how to scan for and delete RDMA devices.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9478,7 +10230,7 @@ their combinations. c. Click **Search** to filter data. Delete a device a. In th
 **Actions** column.
 b. In the message that appears, click **OK**.
 
-###### Manage RDMA device policies
+###### 4.1.2.4.4.2 Manage RDMA device policies
 
 This topic describes how to configure policies for Remote Direct Memory Access (RDMA) devices to manage RDMA devices in a centralized manner.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9521,7 +10273,7 @@ perations
 | View the details of an RDMA device policy | Find the RDMA device policy that you want to view and clickD etails in the Actions column. In the panel that appears, view the details of the RDMA device policy. |
 | Retry an RDMA device policy | Note An RDMA device policy whose Status is Create Failed can be retried. 1. Find the RDMA device policy that you want to retry and clickR etry in the Actions column. 2. In the message that appears, click OK. |
 
-###### Manage policies for RDMA device
+###### 4.1.2.4.4.3 Manage policies for RDMA device interfaces
 
 **interfaces**
 
@@ -9582,7 +10334,7 @@ perations
 |---|---|
 | Retry an RDMA device interface policy | Note An RDMA device interface policy whose Status is Create Failed can be retried. 1. Find the RDMA device interface policy that you want to retry and clickR etry in the Actions column. 2. In the message that appears, click OK. |
 
-###### RDMA NIC O&M
+###### 4.1.2.4.5 RDMA NIC O&M
 
 To perform O&M on Remote Direct Memory Access (RDMA) network interface cards (NICs), you must check the performance metrics of RDMA NICs. RDMA NIC O&M allows you to identify and troubleshoot issues and ensure network stability and reliability.
 
@@ -9623,9 +10375,9 @@ On the **Node** tab, enter a node name in the search box to view the monitoring 
 **RDMA_RX_BYTES_AVG**: specifies the average number of bytes
 For more information, see Cluster-related metrics. that are received over the RDMA network. perations
 
-###### CPN management
+###### 4.1.2.4.6 CPN management
 
-###### CPN topology
+###### 4.1.2.4.6.1 CPN topology
 
 This topic describes how to query the topology information about clusters and nodes.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9646,7 +10398,7 @@ After the topology is displayed, you can perform the following operations. perat
 | Reset the topology canvas | Click in the upper-right corner of the topology to reset the canvas. |
 | Display the topology in full screen | 1. Click in the upper-right corner of the topology to display the topology in full screen. 2. Click in the upper-right corner to exit the full screen. |
 
-###### CPN network element
+###### 4.1.2.4.6.2 CPN network element
 
 This topic describes how to view network devices and monitoring and O&M information in the cloud platform.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9715,9 +10467,9 @@ On the **CPN Network Elements** page, you can also perform the following operati
 | discard | in discard _ | The number of inbound packets dropped on the port per second. Unit: PPS. |
 |   | out discard _ | The number of outbound packets dropped on the port per second. Unit: PPS. |
 
-###### CPN network monitoring
+###### 4.1.2.4.7 CPN network monitoring
 
-###### CPN host monitoring dashboard
+###### 4.1.2.4.7.1 CPN host monitoring dashboard
 
 You can use the CPN host monitoring dashboard feature to monitor the key metrics of Remote Direct Memory Access (RDMA) networks on the server side of the intelligent computing network. The metrics include bandwidth, packet loss rate, and traffic control.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9743,7 +10495,7 @@ Click the icon in the upper-right corner of the page. In the **Settings** panel,
 **Dashboard Catalog**. All catalogs are expanded by default.
 You can enter keywords to search for cards or card groups. Click the icon in the upper-right corner to pin the dashboard catalog for display. perations
 
-###### CPN switch dashboard
+###### 4.1.2.4.7.2 CPN switch dashboard
 
 You can use this feature to monitor the running status metrics of vSwitches. The metrics include bandwidth, packet loss, and traffic control.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9768,7 +10520,7 @@ Click the icon in the upper-right corner of the page. In the **Settings** panel,
 **Dashboard Catalog**. All catalogs are expanded by default.
 You can enter keywords to search for cards or card groups. Click the icon in the upper-right corner to pin the dashboard catalog for display.
 
-###### NAK packet analysis tool
+###### 4.1.2.4.7.3 NAK packet analysis tool
 
 You can use this tool to collect NAK packets in real time. After the packets are aggregated and analyzed, a matrix diagram is generated to help you quickly identify abnormal nodes.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9793,7 +10545,7 @@ Click the icon in the upper-right corner of the page. In the **Settings** panel,
 **Dashboard Catalog**. All catalogs are expanded by default.
 You can enter keywords to search for cards or card groups. Click the icon in the upper-right corner to pin the dashboard catalog for display.
 
-###### High-precision monitoring dashboard
+###### 4.1.2.4.7.4 High-precision monitoring dashboard
 
 The high-precision monitoring dashboard of Computing Platform Network (CPN) allows you to monitor traffic of network interface cards (NICs) and bond devices with a latency of seconds.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -9819,7 +10571,7 @@ Click the icon in the upper-right corner of the page. In the **Settings** panel,
 **Dashboard Catalog**. All catalogs are expanded by default.
 You can enter keywords to search for cards or card groups. Click the icon in the upper-right corner to pin the dashboard catalog for display. perations
 
-###### High-precision vSwitch monitoring
+###### 4.1.2.4.7.5 High-precision vSwitch monitoring dashboard
 
 #### dashboard
 
@@ -9856,7 +10608,7 @@ perations Click the icon in the upper-right corner of the page. In the **Setting
 **Dashboard Catalog**. All catalogs are expanded by default.
 You can enter keywords to search for cards or card groups. Click the icon in the upper-right corner to pin the dashboard catalog for display. perations
 
-###### Job monitoring
+###### 4.1.2.4.7.6 Job monitoring
 
 Computing Platform Network (CPN) provides the job monitoring feature, including the monitoring of top N metrics for hosts, end-to-end packet loss caused by congestion, and Remote Direct Memory Access (RDMA) packet loss of network interface cards (NICs).
 
@@ -9890,7 +10642,7 @@ perations Click the icon in the upper-right corner of the page. In the **Setting
 **Dashboard Catalog**. All catalogs are expanded by default.
 You can enter keywords to search for cards or card groups. Click the icon in the upper-right corner to pin the dashboard catalog for display.
 
-###### CPN stream monitoring
+###### 4.1.2.4.7.7 CPN stream monitoring
 
 perations Computing Platform Network (CPN) supports the global traffic observability feature, including the stream-based visualization of communication relationships, communication paths, communication quality, and impacts of congestion.
 
@@ -9934,7 +10686,7 @@ You can select multiple local device ports or peer devices. perations
 7. View stream details.
 i. In the port monitoring data list, find the port whose stream details you want to view and click **Details** in the **Actions** column. On the **Stream List** page, view the streams that carry the port load. You can click **Advanced Filter** to filter streams by **Date Range**. perations ii. Find the stream whose details you want to view and click **Details** in the **Actions** column. On the **Stream Details** page, you can view the basic information of the stream and other details in the **Stream Change Events**, **Path Change Events**, and **RTT Trend** sections. You can search for stream data changes within a specified time range by **Date Range**.
 
-##### Cloud Gateway
+##### 4.1.2.5 Cloud Gateway
 
 You can connect bare metal instances to a virtual private cloud (VPC) by using Cloud Gateway (CGW) to manage the bare metal instances in a centralized manner. CGW instances are dedicated hybrid switches (HSWs). The system supports operations such as instance management, operation log management, VPC management and Express Connect circuit management of bare metal instances, and O&M configurations to complete routine O&M operations on CGW. By default, the CGW module is not displayed in the left-side navigation pane. To use this module, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu**
 **Management**. On the Menu management page, find Cloud Gateways and click Modify in
@@ -10667,9 +11419,9 @@ If the specified values are invalid, click **Re-enter** in the lower part of the
 7. Check whether the parameter configurations are valid.
 If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
 
-##### Leased line management
+##### 4.1.2.6 Leased line management
 
-###### Leased lines
+###### 4.1.2.6.1 Leased lines
 
 The Apsara Uni-manager Operations Console allows you to manage virtual private cloud (VPC), Data Center Interconnect (DCI), and interconnection leased lines. You can also view the monitoring data of the leased lines. perations
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -10736,7 +11488,7 @@ On the **Hosted Connection** tab, view the interconnection leased line topology 
 **Details** in the **Actions** column of a leased line to view its details.
 Modify an interconnection leased line: Find the leased line that you want to modify and click **Modify** in the **Actions** column. In the dialog box that appears, modify parameters based on your business requirements and click **OK**. Delete an interconnection leased line: Find the leased line that you want to delete, move the pointer over the icon in the **Actions** column, and then select **Delete**. In the message that appears, click **Delete**. After you delete a leased line, it cannot be recovered. Proceed with caution. Perform quick diagnostics: Find the leased line that you want to manage, move the pointer over the icon in the **Actions** column, and then select **Quick Diagnostics**. The **Network instance diagnosis results** page appears. For more information, see Network instance diagnosis. On the **Monitoring & Alerting** tab, view the monitoring and alerting information of the leased lines. Click **Details** in the **Alert Details** column of an alert to view its details. perations
 
-###### Leased line group
+###### 4.1.2.6.2 Leased line group
 
 Leased line management allows you to manage groups of data center interconnection (DCI) leased lines and interconnection leased lines.
 
@@ -10788,7 +11540,7 @@ delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 perations This operation deletes the leased line group and disassociates the leased line group from leased lines. Proceed with caution.
 
-###### Access point management
+###### 4.1.2.6.3 Access point management
 
 Access points are Apsara Stack data centers located in different regions. One or more access points are deployed in each region. This topic describes how to manage access points.
 
@@ -10825,7 +11577,7 @@ perations
 | Data center operator | The Internet service provider (ISP) of the data center to which the access point belongs. |
 | Physical Region | The region ID of the access point. |
 
-###### Access device management
+###### 4.1.2.6.4 Access device management
 
 This topic describes how to manage access devices.
 
@@ -10873,7 +11625,7 @@ perations
 
 perations
 
-###### Express Connect circuit management
+###### 4.1.2.6.5 Express Connect circuit management
 
 You can use an Express Connect circuit to connect your on-premises data center to an Apsara Stack access point. This topic describes how to manage Express Connect circuits.
 
@@ -10907,7 +11659,7 @@ perations
 you created in the previous step, and click **Enable** in the **Operation** column. You can also click **Cancel**, **Termination**, **Delete**, **Approval**, **Reject**, or **Confirm** in the
 **Operation** column of an Express Connect circuit to manage it.
 
-###### VBR management
+###### 4.1.2.6.6 VBR management
 
 A virtual border router (VBR) functions as a router between a customer-premises equipment (CPE) device and a virtual private cloud (VPC). VBRs route traffic between VPCs and data centers. This topic describes how to manage VBRs. perations
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -10941,7 +11693,7 @@ perations
 To manage the VBR, click **Release**, **Modify**, **Terminate**, or **Show Details** in the
 **Operation** column of the VBR.
 
-###### Router interface management
+###### 4.1.2.6.7 Router interface management
 
 After you create a virtual border router (VBR), you must create a pair of router interfaces to connect the VBR and a virtual private cloud (VPC). The connection initiator must be a VBR.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -11005,7 +11757,7 @@ and then click **Create**.
 8. On the Router interface management page, find the router interfaces that you created in
 previous steps. If the router interfaces are in the **active** state, they are created. perations
 
-###### Route table management
+###### 4.1.2.6.8 Route table management
 
 A route table contains a set of rules that are called route entries. This topic describes how to manage route tables.
 1. Configure routes that point to a virtual private cloud (VPC) and a data center for a virtual
@@ -11027,9 +11779,9 @@ vii. Repeat the preceding steps to configure a route that points to a data cente
 2. Configure a route that points to the router interface of a VBR for the VPC.
 3. Configure a route that points to the VPC for the gateway device in the data center.
 
-##### opsDNS management
+##### 4.1.2.7 opsDNS management
 
-###### opsDNS monitoring
+###### 4.1.2.7.1 opsDNS monitoring
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -11041,7 +11793,7 @@ perations
 **Rate** of all cluster instances. By default, the trend charts within the last 1 hour are
 displayed. You can filter the monitoring data of a cluster instance within a specified time range based on a combination of **Cluster** and **Start/End Time**. You can select **Last1Hour**, **Last3Hours**, **Last6Hours**, or **Last1Day** to query the monitoring data within the selected time range. Move the pointer over a point in time in a trend chart to view the monitoring data at that point in time.
 
-###### opsDNS domain service
+###### 4.1.2.7.2 opsDNS domain service
 
 This topic describes how to configure an opsDNS domain service.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -11106,9 +11858,9 @@ the **Actions**column. In the dialog box that appears, read the risk notice and 
 **DELETE**in the field, and then click**OK**.
 After 0 to 5 minutes, the DNS record is deleted.
 
-##### Tenant DNS management
+##### 4.1.2.8 Tenant DNS management
 
-###### Node management (in-cloud)
+###### 4.1.2.8.1 Node management (in-cloud)
 
 perations The Node Management page displays the DNS servers within the cloud. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -11125,7 +11877,7 @@ that appears, turn on or off **Emergency Group**. If you turn on **Emergency Gro
 6. Return to the Node Management page.
 Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column. After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
 
-###### Node management (cross-cloud)
+###### 4.1.2.8.2 Node management (cross-cloud)
 
 The Node Management page displays the DNS servers across clouds. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -11142,7 +11894,7 @@ that appears, turn on or off **Emergency Group**. If you turn on **Emergency Gro
 6. Return to the Node Management page.
 Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. perations Find a node that you want to manage and click **Switch to Primary** in the **Actions** column. After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
 
-##### Computing access gateways
+##### 4.1.2.9 Computing access gateways
 
 You can use computing access gateways such as dedicated computing host switches (CHSWs) to connect intelligent computing servers to virtual private clouds (VPCs). This helps implement the centralized management of intelligent computing servers. The system supports operations such as instance management, operation log management, VPC management and Express Connect circuit management of bare metal instances, and O&M configurations to complete routine O&M operations on computing access gateways. By default, the Computing Access Gateway module is not displayed in the left-side navigation pane. To use this module, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menus page, find Computing Access Gateway and click Modify in the Actions column. In the Modify Menu panel, turn on **Show**.
 
@@ -11693,13 +12445,13 @@ This operation is only for emergency scenarios and must be performed under the g
 
 If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
 
-#### Networking services
+#### 4.1.3 Networking services
 
 perations
 
-##### SLB O&M
+##### 4.1.3.1 SLB O&M
 
-###### SLB cluster management
+###### 4.1.3.1.1 SLB cluster management
 
 After you add tags to Server Load Balancer (SLB) clusters, you can easily select clusters in the tenant console. This improves the usability of SLB clusters.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -11712,7 +12464,7 @@ cluster information.
 5. Find the cluster that you want to manage and click **Edit Tag** in the **Actions** column. In the
 dialog box that appears, modify the tag name and click **OK**. The default cluster tag named **default** cannot be modified.
 
-###### SLB management
+###### 4.1.3.1.2 SLB management
 
 The SLB Management page displays Layer 4 service resources and monitoring and O&M information of Server Load Balancer (SLB) clusters and SLB instances.
 
@@ -11814,9 +12566,9 @@ perations
 | OutDPktsPS | The number of outbound packets dropped per second. | 0 |
 | OutPktsPS | The number of outbound packets per second. | 1 |
 
-##### Proxy O&M
+##### 4.1.3.2 Proxy O&M
 
-###### Proxy management
+###### 4.1.3.2.1 Proxy management
 
 The SLB Proxy Management module displays information about Layer 7 Server Load Balancer (SLB) resources and monitoring O&M.
 
@@ -11979,9 +12731,9 @@ perations
 | status code other _ _ | The number of requests for which a response code other than 2xx, 3xx, 4xx, and 5xx is returned. |
 | upstream code 4xx _ _ | The number of requests with a 4xx response code returned by backend ECS instances. |
 
-##### XGW O&M
+##### 4.1.3.3 XGW O&M
 
-###### XGW cluster management
+###### 4.1.3.3.1 XGW cluster management
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -12021,7 +12773,7 @@ column.
 4. Find the change record that you want to manage and click **View details** in the **Actions**
 column. On the **Execution Details** page, view details of the change record. For more information, see View change plans. perations
 
-###### XGW management
+###### 4.1.3.3.2 XGW management
 
 The XGW Management module allows you to manage virtual private cloud (VPC) gateways and view the usage data of device nodes and service instances.
 
@@ -12092,7 +12844,7 @@ perations
 | InSynAckSpeed | The number of inbound SYN/ACK packets per second. Unit: PPS. |
 | OutSynAckSpeed | The number of outbound SYN/ACK packets per second. Unit: PPS. |
 
-###### NAT gateway monitoring
+###### 4.1.3.3.3 NAT gateway monitoring
 
 In scenarios such as multi-cloud geo-disaster recovery and hybrid cloud, you can query the monitoring data of a NAT gateway by tunnel ID.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -12115,7 +12867,7 @@ By default, the monitoring data of the instance within the last hour is displaye
 | IninNum | The number of initialized instances. |
 | RatelimitDropInc | The number of packets dropped due to the Inc throttling. |
 
-###### Router interface instances
+###### 4.1.3.3.4 Router interface instances
 
 This topic describes how to view the instances of a router interface and the O&M information about the instances. perations
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -12170,11 +12922,11 @@ perations
 | out syn speed _ _ | The number of outbound SYN packets per second. Unit: PPS. |
 | ratelimit drop speed _ _ | The number of packets dropped per second due to throttling. Unit: PPS. |
 
-##### CGW O&M
+##### 4.1.3.4 CGW O&M
 
 perations By default, the **CGW O&M** module is hidden in the navigation pane. If you need to perform O&M operations on CGW clusters, you can modify the corresponding menu settings by referring to **User permissions** > **Menu Management** in Apsara Unimanager Operations Console User Guide.
 
-###### CGW cluster management
+###### 4.1.3.4.1 CGW cluster management
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -12217,7 +12969,7 @@ perations
 3. Find the change record that you want to manage and click **View details** in the **Actions**
 column. On the **Execution Details** page, view details of the change record. For more information, see View change plans.
 
-###### CGW management
+###### 4.1.3.4.2 CGW management
 
 The CGW Management module allows you to view the basic information, status, aggregated traffic, and usage of each device node of Cloud Gateway (CGW) clusters.
 
@@ -12248,13 +13000,13 @@ information of all devices in the cluster. perations In the **Node Information**
 |---|---|---|
 |   | PacketRateOut | The number of outbound packets per second. Unit: PPS. |
 
-##### CEN O&M
+##### 4.1.3.5 CEN O&M
 
 By default, the CEN O&M module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, click **User Authorities**. In the left-side navigation pane, click **Menu**
 **Management**. On the Menu management page, modify the menu settings to display the
 CEN O&M module.
 
-###### CEN-TR cluster management
+###### 4.1.3.5.1 CEN-TR cluster management
 
 VM instances that run on physical machines have their own IP addresses, and can access the Internet and host applications.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -12293,7 +13045,7 @@ perations
 | CPU utilization |   | cpu util _ | The CPU utilization, in percentage. |
 | Memory usage |   | mem util _ | The memory usage, in percentage. |
 
-###### CEN workflows
+###### 4.1.3.5.2 CEN workflows
 
 On the CEN Workflows page, you can view the workflow event details and relevant information of a Cloud Enterprise Network (CEN) instance.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -12320,9 +13072,9 @@ perations
 | Roll back a workflow. | 1. In the Basic Information section, click Roll Back. 2. In the message that appears, click OK. |
 | Jump a workflow | 1. In the Basic Information section, click Jump. 2. In the dialog box that appears, configure the Select Jump Method and Steps to Jump parameters. Select Jump Method: The jump method. Valid values:P revious Step, Next, and Specify Steps. Steps to Jump: The number of steps to jump. This parameter takes effect only if you set the Select Jump Method parameter to Specify Steps. 3. Click OK. |
 
-##### AVS O&M
+##### 4.1.3.6 AVS O&M
 
-###### AVS management
+###### 4.1.3.6.1 AVS management
 
 This topic describes how to view the basic information and usage dashboard of Apsara virtual switches (AVSes).
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -12475,9 +13227,9 @@ perations
 |   | BandWidth | rx bytes avg _ _ | The number of bytes that are received per second. |
 |   |   | tx bytes avg _ _ | The number of bytes that are sent per second. |
 
-##### VPC O&M
+##### 4.1.3.7 VPC O&M
 
-###### VPC-On-ECS
+###### 4.1.3.7.1 VPC-On-ECS
 
 1. Log in to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -12524,7 +13276,7 @@ perations
 
 After you delete a vSwitch, the vSwitch cannot be restored. Proceed with caution.
 
-###### VPC workflows
+###### 4.1.3.7.2 VPC workflows
 
 This topic describes how to view and manage Business Foundation System workflows in virtual private clouds (VPCs).
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -12557,9 +13309,9 @@ perations Select an execution status from the **Execution Status** drop-down lis
 **Retry a workflow**: Find the workflow that you want to manage, and click **Retry** in the
 **Actions** column to re-run the workflow.
 
-#### Network monitoring and alerting
+#### 4.1.4 Network monitoring and alerting
 
-##### Network alert dashboard
+##### 4.1.4.1 Network alert dashboard
 
 The Network Alert Dashboard module displays the alert information of all network components on the platform.
 
@@ -12588,11 +13340,11 @@ alert. If you have confirmed that the alert is meaningless, click **Delete** in 
 | Export alert information | 1. Click Export Table. 2. In the message that appears, click OK to export the alert information to your local device. |
 | Delete all alerts | 1. Click Delete All. 2. In the message that appears, click OK to delete all alerts. |
 
-##### Network alert settings
+##### 4.1.4.2 Network alert settings
 
 perations
 
-###### Monitoring rule management
+###### 4.1.4.2.1 Monitoring rule management
 
 You can associate the monitoring metrics of a monitored instance with an alert template. When the value of a metric meets the conditions specified in the alert template, an alert event is triggered.
 
@@ -12668,7 +13420,7 @@ column. perations Only the monitoring rules whose value in the **Enabled** colum
 1. Find the monitoring rule that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **Delete**.
 
-###### Alert template management
+###### 4.1.4.2.2 Alert template management
 
 The alert conditions for monitoring metrics are configured in alert templates. When the monitoring metrics meet the specified alert conditions, alert notifications or message suppression actions are performed based on the configured alert rule or the suppression rule.
 
@@ -12743,7 +13495,7 @@ column. Only enabled alert templates can be disabled.
 1. Find the alert template that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **Delete**.
 
-###### Trap template settings
+###### 4.1.4.2.3 Trap template settings
 
 This topic describes how to configure and manage trap alert rules of network devices. If the initially configured trap subscriptions do not meet the monitoring requirements, you can add a trap to enhance monitoring coverage. perations
 
@@ -12801,9 +13553,9 @@ On the Trap Template Setting page, click **Export Table** to export all trap inf
 1. Find the trap that you want to delete and click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-#### Intelligent diagnostics
+#### 4.1.5 Intelligent diagnostics
 
-##### Network inspection
+##### 4.1.5.1 Network inspection
 
 The network inspection feature allows you to schedule network inspection tasks on a regular basis and convert inspection results into inspection events or alerts.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -12856,9 +13608,9 @@ perations
 |---|---|
 | Disable an inspection configuration | Note You can disable only inspection configurations whose Status is Enable. 1. In the inspection configuration list, find the inspection configuration that you want to disable and click Disable in the Actions column. 2. In the message that appears, click OK. |
 
-##### Intelligent path analysis
+##### 4.1.5.2 Intelligent path analysis
 
-###### Packet capture and analysis
+###### 4.1.5.2.1 Packet capture and analysis
 
 The packet capture and analysis feature provides path diagnostics capabilities. You can use this feature to perform end-to-end analysis by quickly establishing IP paths. This facilitates fault localization and shortens the time required for fault localization.
 
@@ -12923,7 +13675,7 @@ You can select a time range to view the information about the intelligent packet
 | View the details of an analysis task | 1. In the analysis task list, find the analysis task whose details you want to view and click Details in the Actions column. 2. View the details of the analysis task, including its basic information,P acket Capture and Analysis, Diagnosis details, and Analyze one by one. For more information, see Task details of an analysis task whose status is Running or Completed.After the task is complete, each section displays the updated task analysis result and related information. The analysis result is subject to the actually displayed information. In the Packet Capture and Analysis section, a topology that shows the status and path of the analysis task is displayed. In the Diagnosis details section, the analysis result is updated and displayed as Analysis successful or Analysis failed. In the Analyze one by one section, the analysis details of the packets captured by the task are displayed. Logical Link Physical link: If Physical link analysis is enabled when you create an analysis task, you can click Physical link to view the analysis details of each packet. |
 | Terminate an analysis task | When an analysis task is running, you can return to the analysis task list and click Terminate in the Actions column to terminate the analysis task whose Task Status is Running. Note You cannot terminate an analysis task whose Task Status is Completed. |
 
-###### Topology analysis
+###### 4.1.5.2.2 Topology analysis
 
 **Prerequisites**
 
@@ -12954,7 +13706,7 @@ perations
 5. Click **Analysis**. In the **Topology Analysis** section, view and manage the logical topology.
 Click any topology icon to view related content in the panel that appears. For a path node of the ECS type, you can go to the ECS console to view the instance details. For a path node of the NC type, you can click the **blue link** in the topology to view details. You can also go to the machine details page of the Apsara Infrastructure Management console to view details.
 
-##### Network instance diagnostics
+##### 4.1.5.3 Network instance diagnostics
 
 The network instance diagnostics feature allows you to analyze the status of network instances with a few clicks.
 
@@ -12979,7 +13731,7 @@ the **Instance details**, **Instance topology**, and **Diagnosis details** secti
 Instance Diagnosis page to view historical diagnostic results of an instance: Specify a time range, find the diagnostic task that you want to view, and then click **Details** in the **Operation** column to go to the Network instance diagnosis results page. On this page, view the diagnostic results in the **Instance details**, **Instance topology**, and
 **Diagnosis details** sections.
 
-##### Network instance diagnostics
+##### 4.1.5.4 Network instance diagnostics
 
 The network instance diagnostics feature allows you to analyze the status of network instances with a few clicks.
 
@@ -13004,7 +13756,7 @@ the **Instance details**, **Instance topology**, and **Diagnosis details** secti
 Instance Diagnosis page to view historical diagnostic results of an instance: Specify a time range, find the diagnostic task that you want to view, and then click **Details** in the **Operation** column to go to the Network instance diagnosis results page. On this page, view the diagnostic results in the **Instance details**, **Instance topology**, and
 **Diagnosis details** sections.
 
-##### Container network diagnostics
+##### 4.1.5.5 Container network diagnostics
 
 This topic describes the automated intelligent diagnostics capabilities for container networks based on mutual accessibility.
 
@@ -13050,7 +13802,7 @@ perations
 |---|---|
 | Terminate a diagnostic task | 1. When a diagnostic task is running, go back to the Container Network Diagnostics page, find the diagnostic task that you want to terminate in the container network O&M list, and click Terminate in the Actions column. 2. In the message that appears, click OK. Note You can terminate only the diagnostic tasks whose Task Status is Running. |
 
-##### Network health assessment
+##### 4.1.5.6 Network health assessment
 
 The Network Health Assessment module evaluates and diagnoses the health status of each layer of the network based on the dimensions such as performance, capacity, function, and status. This module provides an overview of the network health status and detects issues and risks at all layers of the network in real time to ensure that the network runs as expected.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -13128,7 +13880,7 @@ Event details include **Instance details** and **Instance topology**. For certai
 **Infrastructure Management** console from the Exception event details panel.
 perations
 
-##### Optical transceiver module diagnostics
+##### 4.1.5.7 Optical transceiver module diagnostics
 
 The Optical Module Diagnostics module analyzes and predicts the status of optical transceiver modules based on AI algorithms and assists O&M engineers in troubleshooting issues.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -13196,9 +13948,9 @@ perations
 | Received power (dBM) | RX POWER _ | The received power of an optical transceiver module refers to the power of the receiver to receive optical signals. The received power of the optical transceiver module affects the receiver sensitivity and transmission performance of the optical transceiver module. If the received power exceeds the specified range, issues such as signal transmission interruption, error increase, and transmission distance decrease may occur. In this case, you can monitor the received power to identify and resolve issues at the earliest opportunity. If the received power is higher than expected, you can decrease the transmit power or check the length of the jointed fiber. If the received power is lower than expected, you can increase the transmit power or check the quality of the jointed fiber. |
 |---|---|---|
 
-#### Network resources
+#### 4.1.6 Network resources
 
-##### Network asset management
+##### 4.1.6.1 Network asset management
 
 This topic describes how to view the network assets in virtual private clouds (VPCs). You can query a network asset by using a property such as Asset Type, IP Address, or Instance ID.
 
@@ -13224,9 +13976,9 @@ When you query a network asset, you must specify the **Product**, **ClusterName*
 5. Find the asset that you want to view and click **View Details** in the **Actions** column. You
 can then view the details of the asset, including **Instance details** and **Instance topology**. The asset details vary based on the **asset type**.
 
-##### IP address pool management
+##### 4.1.6.2 IP address pool management
 
-###### IP address pools
+###### 4.1.6.2.1 IP address pools
 
 You can view the CIDR blocks of each cloud service on the IP segment management page. You can also add CIDR blocks, query the details of CIDR blocks, or delete CIDR blocks based on your O&M requirements. The conflict check feature provides the address conflict check capability for CIDR block scaling scenarios. You can use the feature to check and analyze whether a CIDR block contains another CIDR block or is contained in another CIDR block.
 
@@ -13283,7 +14035,7 @@ View the details of a CIDR block: Find the CIDR block that you want to view and 
 **Details** in the **Operation** column. In the panel that appears, you can view the details of
 the CIDR block. Delete a CIDR block. Find the CIDR block that you want to delete and click **Delete** in the **Operation** column. In the message that appears, click **OK**.
 
-###### Collection settings
+###### 4.1.6.2.2 Collection settings
 
 On the Collection Settings page, you can view the collection settings of the IP address pools of cloud services across the platform. You can also trigger a data update for a single IP address pool on this page.
 
@@ -13315,7 +14067,7 @@ perations Find the IP address pool that you want to manage and click **Single tr
 **Operation** column.
 In the message that appears, click **OK**.
 
-##### Reverse access
+##### 4.1.6.3 Reverse access
 
 The reverse access feature implements active access from base cloud services to virtual private clouds (VPCs) by establishing NAT mappings.
 
@@ -13431,7 +14183,7 @@ manage and click **Modify** in the **Actions** column. perations
 2. In the dialog box that appears, modify the parameters and click **Modify**.
 You can modify only the **Instance ID/Name** and **Description** parameters.
 
-##### Cloud instance management
+##### 4.1.6.4 Cloud instance management
 
 This topic describes how to manage the lifecycle of cloud instances, including creating instances, deleting instances, and querying instance status.
 
@@ -13563,11 +14315,11 @@ perations
 |---|---|
 | Delete a cloud instance | 1. Find the cloud instance that you want to delete and clickD elete in the Operation column. 2. In the message that appears, click OK. |
 
-#### Traffic visualization
+#### 4.1.7 Traffic visualization
 
 The Traffic Visualization module can monitor physical and virtual networks in the cloud platform, and analyze real-time and historical traffic in the networks. This module also analyzes traffic by virtual network, public network, and border physical network and generates visualized charts. You can also troubleshoot issues based on the traffic data or monitored traffic metrics. By default, the Traffic Visualization module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the Traffic Visualization module.
 
-##### Visual settings
+##### 4.1.7.1 Visual settings
 
 Before you use traffic visualization, you must configure items such as analyzers, collection rules, and scenarios to collect, process, and analyze traffic based on your business requirements.
 
@@ -13768,11 +14520,11 @@ view the network resource information in the following columns: **Zone**, **Reso
 **Resource Value**, **Resource Type**, **VpcId**, **Resource Usage**, **Resource Owner**, and
 **Created At**.
 
-#### Platform management
+#### 4.1.8 Platform management
 
-##### Metric management
+##### 4.1.8.1 Metric management
 
-###### TSDB clusters
+###### 4.1.8.1.1 TSDB clusters
 
 This topic describes how to query time series database (TSDB) clusters and view the details of stored time series metrics.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -13790,13 +14542,13 @@ Find the cluster that you want to view, and click **Details** in the **Access Po
 **Information** column. In the dialog box that appears, view the endpoint information
 about the cluster. Find the cluster that you want to view, and click **Details** in the **Service Nodes** column. In the dialog box that appears, view the service nodes of the cluster. Find the cluster that you want to view, and click **Details** in the **Configurations** column. In the dialog box that appears, view the configurations of the cluster. erations
 
-## Storage operations
+## 5 Storage operations
 
-### CDS-OPS
+### 5.1 CDS-OPS
 
-#### Operations Guide
+#### 5.1.1 Operations Guide
 
-##### Log in to the Apsara Uni-manager
+##### 5.1.1.1 Log in to the Apsara Uni-manager Operations Console
 
 **Operations Console**
 
@@ -13814,7 +14566,7 @@ erations Obtain the username and password that are used to log on to the Apsara 
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 
-##### Feature overview
+##### 5.1.1.2 Feature overview
 
 Cloud Defined Storage (CDS)-OPS is a centralized O&M platform for CDS. CDS-OPS allows you to perform routine O&M on storage clusters and the cloud services that are deployed in the storage clusters, such as Object Storage Service (OSS), Elastic Block Storage (EBS), and Simple Log Service (SLS). This topic describes the features of CDS-OPS. You can use these features based on your business requirements. If you have questions when you use the features of CDS-OPS, contact Apsara Stack technical support.
 
@@ -13939,9 +14691,9 @@ You can use the system management features to manage system plug-ins and service
 | Manage CSGs | After you create and configure a CSG, you can view the information about the CSG. You can also collect and download the OSS access logs that are generated by a Network File System (NFS) share or a Server Message Block (SMB) share, and the logs that are generated by sharing operations. |
 | HDR-OPS | HDR-OPS is a centralized O&M management tool for Hybrid Disaster Recovery (HDR). In data disaster recovery scenarios, you can perform O&M operations on cloud sites in HDR, such as view site pair Information, view alert information, view inspection tasks, view O&M tasks, and view cloud sites. |
 
-##### Permission configuration
+##### 5.1.1.3 Permission configuration
 
-###### Manage permissions on CDS-OPS
+###### 5.1.1.3.1 Manage permissions on CDS-OPS
 
 erations By default, a system administrator has the permissions to use all features of Cloud Defined Storage (CDS)-OPS. To meet the access control requirements for different users, the system supports the following roles for CDS-OPS: CDS administrator, CDS support, and CDS developer. These roles are granted different permissions on CDS-OPS.
 
@@ -13981,7 +14733,7 @@ erations
 | Email Address | The email address of the user. |
 | Allowed to Create AccessKey ID | Specifies whether to allow the user to create AccessKey pairs. By default, users are not allowed to create AccessKey pairs. |
 
-###### Manage permissions on HDR-OPS
+###### 5.1.1.3.2 Manage permissions on HDR-OPS
 
 Hybrid Disaster Recovery (HDR)-OPS is a centralized O&M management tool for HDR. Before you use HDR-OPS, you must create a role for HDR-OPS and assign the role to a user.
 
@@ -14013,7 +14765,7 @@ After you create a user and assign the role for HDR-OPS to the user, the user ca
 5. In the **Add User** dialog box, configure the user information and click **OK**.
 i. Configure the Username, Password, Confirm Password, Logon Policy, and Department parameters. To make it easy to identify the user, you can configure the Display name, Mobile phone, or Email address parameter based on your business requirements. ii. Select the role that you created from the Role drop-down list.
 
-##### Service overview
+##### 5.1.1.4 Service overview
 
 On the CDS-Overview page, you can view the overall information of Cloud Defined Storage (CDS), such as the total capacity usage, current alerts, used capacity distribution in different storage services, hardware resources, storage resources, and cluster status. This way, you can understand the overall information about CDS and promptly handle exceptions.
 1. Log on to the CDS-OPS console.
@@ -14035,9 +14787,9 @@ erations
 
 Cluster status In the Cluster Status section, you can view the information about all clusters that are managed by CDS-OPS. The information includes the cluster name, cluster update time, cluster type such as CDS-EBS, CDS-EBS&CDS-OSS, OSS, CDS-OSS, or EBS-1.0, percentage of the used physical capacity, total physical capacity, and used physical capacity. Clusters can be sorted in ascending or descending order by cluster name, total capacity, or used capacity. By default, clusters are sorted in descending order by used capacity. You can sort clusters as required. You can perform the following operations to go to the Cluster O&M page on which you can manage and configure a storage cluster: Find the EBS-1.0, OSS 1.0, CDS-EBS, CDS-OSS, or CDS-SLS cluster that you want to manage and click **O&M**. Find the cluster in hybrid deployment of EBS and OSS that you want to manage, move the pointer over **O&M** and select **Elastic Block Storage** or **OSS**.
 
-##### Storage management
+##### 5.1.1.5 Storage management
 
-###### Before you begin
+###### 5.1.1.5.1 Before you begin
 
 You can view, monitor, configure, manage, or maintain the clusters of various storage services. The features supported by a cluster vary based on the cluster type. The actual features that are available prevail.
 
@@ -14059,11 +14811,11 @@ erations
 
 OSS and EBS can be deployed together only in CDS clusters. You cannot use CDS-OPS to manage the PANGU clusters of managed OSS clusters. Exercise caution when you perform high-risk operations, such as modifying cluster configurations, restarting servers, restarting services, and deleting files. If you need to perform the preceding high-risk operations, contact Apsara Stack technical support.
 
-###### Manage EBS clusters (EBS-2.0 and CDS-
+###### 5.1.1.5.2 Manage EBS clusters (EBS-2.0 and CDS-EBS)
 
 **EBS)**
 
-###### Overview of EBS clusters
+###### 5.1.1.5.2.1 Overview of EBS clusters
 
 erations On the Cluster O&M page, you can view the capacity usage, I/O hangs, resource overview, and current alerts of Elastic Block Storage (EBS) clusters. You can also view a list of EBS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -14079,7 +14831,7 @@ the EBS clusters. View overall information about EBS clusters You can view the c
 | Resource Overview | The number of hosts, number of disks, number of existing cloud disks, and number of snapshots created for cloud disks in all EBS clusters. |
 | Current Alerts | The numbers of alerts at different levels in all EBS clusters and the latest five alert records. You can click More or an alert level to view and handle the current alerts on the Current Alert page. For more information, see Handle current alerts. |
 
-Manage clusters In the **Clusters** section, you can view the information about all the deployed EBS clusters that are managed by the CDS-OPS platform and perform operations based on your business requirements.
+In the **Clusters** section, you can view the information about all the deployed EBS clusters that are managed by the CDS-OPS platform and perform operations based on your business requirements.
 
 | Operation | Description |
 |---|---|
@@ -14098,7 +14850,7 @@ erations
 | Manage cluster details | Find the cluster that you want to manage and click its name to go to the Cluster Details page. On the Cluster Details page, view the attributes, overall information, capacity information, monitoring data, and hosts of the cluster. You can also configure the cluster and manage services for the cluster based on your business requirements. View cluster attributes View the attributes of the cluster, including the cluster name, storage medium, storage architecture, disaster recovery information, zone, total number of physical hosts, and total number of chunk servers. View cluster overview View the physical capacity usage, BlockMaster nodes, BlockServer nodes, number of cloud disks, number of snapshots, recent inspection items, and monitoring data of the cluster. For more information, see View cluster overview. View cluster capacity information View the physical capacity usage, distribution of used physical capacity, physical capacity usage trend, inventory capacity usage trend, and predicted physical capacity usage based on your business requirements. For more information, see View capacity information. View cluster monitoring data View the real-time monitoring data and historical monitoring data of the cluster and BlockServer nodes, such as the average latency, IOPS, and throughput within a specific time range. For more information, see View cluster monitoring information and View the monitoring information of BlockServer nodes. Configure the cluster Configure the erasure coding (EC) mode, block rebalance, and PANGU services for the cluster. For more information, see Configure the EC mode, Configure block rebalance, and Configure PANGU. Manage cluster services Manage the BlockMaster nodes, BlockServer nodes, snapshot servers, and PANGU services for the cluster. For more information, see Manage BlockMaster nodes, Manage BlockServer nodes, Manage snapshot servers, and Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 |---|---|
 
-###### Manage cluster details
+###### 5.1.1.5.2.2 Manage cluster details
 
 View cluster overview On the Overview tab of an Elastic Block Storage (EBS) cluster, you can view the physical capacity usage, number of disks, number of snapshots, and inspection items of the cluster. This way, you can understand the overall information about the cluster and promptly handle exceptions.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -14480,7 +15232,7 @@ erations
 |---|---|---|
 | Total LBAs R _ _ ead | Total LBAs Read | The total number of sectors read by LBAs after a disk is powered on. This attribute is used to analyze the load pattern and read performance trends of a disk. |
 
-###### View compute nodes
+###### 5.1.1.5.2.3 View compute nodes
 
 Compute nodes are used to run computing tasks in a cluster. Cloud Defined Storage (CDS)- OPS allows you to view the information about compute nodes in clusters, Elastic Compute Service (ECS) instances on compute nodes, and disks associated with ECS instances. This way, you can understand the association among compute nodes, ECS instances, and disks, and quickly identify the compute nodes with abnormal TDC status.
 
@@ -14501,7 +15253,7 @@ i. Find a compute node and click **View ECS** in the **Actions** column. eration
 | View the information about ECS instances on a compute node | View the ID, compute cluster name, hostname, and IP address of each ECS instance. |
 | View the information about disks associated with an ECS instance | View the information about disks associated with an ECS instance and manage disks. a. On the ECS Instances page, find an ECS instance and click Details in the Actions column. b. In the Cloud Disks panel, view the information about disks associated with the ECS instance. In the Cloud Disks panel, find a disk and click its device key in the Disk Device (deviceKey) column to view disk details and manage the disk. |
 
-###### Manage storage sets
+###### 5.1.1.5.2.4 Manage storage sets
 
 You can search for an Elastic Block Storage (EBS) storage set by cluster name or storage set ID, and then perform the following operations to manage the storage set: view the information about the storage set, view disks in the storage set, view capacity usage in each partition of the storage set, and modify the clusters in each partition of the storage set.
 
@@ -14529,7 +15281,7 @@ erations
 |---|---|
 | View the information about disks in a storage set | If you specify a storage set when you create a disk or an Elastic Compute Service (ECS) instance, you can view the information about the disk and its relationship with the storage set. Find the storage set that you want to manage and clickD isk in the Actions column. On the Disk page, you can view the information about the disks in the storage set and manage the disks. For more information, see Manage disks. |
 
-###### Manage disks
+###### 5.1.1.5.2.5 Manage disks
 
 You can view the information about the disks of all clusters, such as disk attributes and monitoring data.
 
@@ -14577,7 +15329,7 @@ You can view the latency data only within the last hour. If an exception occurs 
 
 Only abnormal I/O operations with a latency of greater than 1,000 milliseconds can be analyzed. Find the I/O operation that you want to view, click the Plus icon on the left side of the value in the Duration column, and then view the latency of the I/O operation in different modules. Move the pointer over a module name and view the module details.
 
-###### Create hot migration jobs to migrate
+###### 5.1.1.5.2.6 Create hot migration jobs to migrate cloud disks
 
 **cloud disks**
 
@@ -14612,7 +15364,7 @@ After you create hot migration jobs to migrate cloud disks, you can view the mig
 **Actions** column. In the **Close** message, click **OK**.
 Stop a hot migration job To stop a hot migration job in the Prepared, Created, Running, Verify, Verifying, or Verified state, find the hot migration job and click **Stop** in the **Actions** column. In the **Stop** message, click **OK**.
 
-###### Perform canary O&M
+###### 5.1.1.5.2.7 Perform canary O&M
 
 You can initiate canary O&M tasks to run a common O&M command on multiple hosts at a time. This simplifies O&M operations and minimizes the impact in case of a failure. You can stop running a command immediately if the exit code of the command result is not 0. You can also specify a speed and observation period for a canary O&M task. This way, the canary O&M task can run an O&M command at an appropriate speed on the specified hosts. During a canary O&M task, you can view the progress and results in real time.
 
@@ -14644,9 +15396,9 @@ erations
 5. Click **OK**. In the message that appears, click **OK**.
 After a canary O&M task is executed, you can perform the following operations: View execution records Click **Details** in the **Actions** column of the canary O&M task. In the **Execution Details** panel, you can view the execution details, command details, and progress of the canary O&M task. In the **Progress Details** section, click **View** in the **Execution Result Details** column to view the detailed execution result. Re-execute the canary O&M task Click **Execute Again** in the **Actions** column. In the **Execute Again** dialog box, modify the parameters such as Destination Machine and Execution Reason and then click **OK** to re-execute the task. Find the canary O&M tasks of a specific cluster After you specify a cluster and an execution state, the system displays the O&M tasks in the specified state of the cluster.
 
-###### Manage EBS clusters (EBS-1.0)
+###### 5.1.1.5.3 Manage EBS clusters (EBS-1.0)
 
-###### Overview of EBS clusters
+###### 5.1.1.5.3.1 Overview of EBS clusters
 
 On the Cluster O&M page, you can view the capacity usage, I/O hangs, resource overview, and current alerts of Elastic Block Storage (EBS) clusters. You can also view a list of EBS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -14667,7 +15419,7 @@ clusters. View overall information about EBS clusters You can view the capacity 
 | Resource Overview | The number of hosts, number of disks, number of existing cloud disks, and number of snapshots created for cloud disks in all EBS clusters. |
 | Current Alerts | The numbers of alerts at different levels in all EBS clusters and the latest five alert records. You can click More or an alert level to go to the Current Alert page. On the Current Alert page, you can view and handle the alerts. For more information, see Handle current alerts. |
 
-Manage clusters In the **Clusters** section, you can view the information about all the deployed EBS clusters that are managed by the CDS-OPS platform and perform operations based on your business requirements.
+In the **Clusters** section, you can view the information about all the deployed EBS clusters that are managed by the CDS-OPS platform and perform operations based on your business requirements.
 
 | Operation | Description |
 |---|---|
@@ -14680,7 +15432,7 @@ erations
 | Manage cluster details | Find the EBS 1.0 cluster that you want to manage and click its name. On the Cluster Details page, view the attributes, overall information, capacity information, and monitoring data of the cluster. You can also manage services and hosts for the cluster based on your business requirements. View cluster attributes View the information about a cluster, including the cluster name, storage medium, storage architecture, capacity information, zone, total number of physical hosts, and total number of chunk servers. View cluster overview View the physical capacity usage, RiverCluster nodes, RiverServer nodes, number of cloud disks, number of snapshots, recent inspection items, and monitoring data of the cluster. For more information, see View cluster overview. View cluster capacity information View the information about the remaining capacity and physical capacity of the cluster. For more information, see View capacity information. View cluster monitoring data View the real-time monitoring data and historical monitoring data of the cluster and RiverServer nodes, such as the average latency, IOPS, and throughput within a specific time range. For more information, see View cluster monitoring information and View the monitoring information of RiverServer nodes. Manage cluster services Manage the RiverCluster nodes, RiverServer nodes, and PANGU services for the cluster. For more information, see View the information about RiverCluster nodes, View the information about RiverServer nodes, and Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 |---|---|
 
-###### Manage cluster details
+###### 5.1.1.5.3.2 Manage cluster details
 
 View cluster overview On the Overview tab of an Elastic Block Storage (EBS) cluster, you can view the information about the cluster, such as the physical capacity usage, number of disks, number of snapshots, and inspection items. This way, you can understand the overall information about the cluster and handle exceptions at the earliest opportunity.
 
@@ -14884,9 +15636,9 @@ server roles, cluster, monitoring data, and logical resources. The following tab
 | View the monitoring data of the host | On the Monitor tab, select a time range to view the monitoring data of the host, including the CPU, memory, load, IOPS, Network Time Protocol (NTP), and traffic. In the Actions column of each metric, you can select Download Data to download the monitoring data to your computer, or select Save as Image to save the monitoring data as an image. |
 | View resource roles | On the Logical Resources tab, view the resource roles of the host. |
 
-###### Manage OSS clusters
+###### 5.1.1.5.4 Manage OSS clusters
 
-###### Overview of OSS clusters
+###### 5.1.1.5.4.1 Overview of OSS clusters
 
 On the Cluster O&M page, you can view the capacity usage, resource overview, and current alerts of Object Storage Service (OSS) clusters. You can also view a list of OSS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -14904,8 +15656,6 @@ You can view the capacity information, resource overview, and current alerts of 
 | Capacity | The physical capacity usage of all OSS clusters and the logical capacity usage of OSS 2.0 clusters, including the total capacity, used capacity, and percentage of used capacity. |
 | Resource Overview | The number of hosts, number of disks, number of buckets, and number of objects of all OSS clusters. |
 | Current Alerts | The numbers of alerts at different levels in all OSS clusters and the latest five alert records. You can click More or an alert level to view and handle the alerts on the Current Alert page. For more information, see Handle current alerts. |
-
-**Manage OSS clusters**
 
 In the **Clusters** section, you can view the information about all the deployed OSS clusters that are managed by the CDS-OPS platform and perform operations based on your business requirements. The following table describes the operations that you can perform.
 
@@ -14926,7 +15676,7 @@ erations
 | Manage cluster details | Find the cluster that you want to manage and click its name to go to the Cluster Details page. On the Cluster Details page, view the attributes, overview, capacity information, and monitoring data of the cluster. You can also configure the cluster and manage services and hosts for the cluster based on your business requirements. View cluster attributes View the attributes of the cluster, such as the cluster name, storage medium, storage architecture, disaster recovery information, zone, total number of physical hosts, total number of chunk servers, and total number of meta servers. View cluster overview View the overall information about the cluster and the top 10 buckets in different ranking lists. For more information, see View cluster overview. View cluster capacity information View the logical capacity usage, physical capacity usage, distribution of used physical capacity, and physical capacity usage trend of the OSS cluster. For more information, see View capacity information. View cluster monitoring data View the cluster and third-party monitoring data, check the cluster health status, and run background tasks based on your business requirements. For more information, see View cluster monitoring information, Check the health status of a cluster, and Run background tasks. Configure the cluster Configure cluster settings, including the key-value (KV) configurations, erasure coding (EC) mode, background tasks, global flags, quality of service (QoS) policy, and PANGU services. For more information, see Modify KV configurations, Configure the EC mode, Configure a scheduled time for background tasks, Configure a global flag, Configure PANGU, and Configure QoS settings. Manage cluster services Manage KV services, frontend services, and PANGU services for the cluster. For more information, see Manage KV services, Manage access- layer services, and Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 |---|---|
 
-###### Manage cluster details
+###### 5.1.1.5.4.2 Manage cluster details
 
 View cluster overview On the Overview tab of an Object Storage Service (OSS) cluster, you can view the information about the cluster and the top 10 buckets in different ranking lists.
 
@@ -15411,7 +16161,7 @@ erations
 |---|---|---|
 | Total LBAs R _ _ ead | Total LBAs Read | The total number of sectors read by LBAs after a disk is powered on. This attribute is used to analyze the load pattern and read performance trends of a disk. |
 
-###### Manage buckets
+###### 5.1.1.5.4.3 Manage buckets
 
 Manage bucket information On the Buckets page, you can view the information about buckets in a cluster or a location, manage bucket attributes, and view the monitoring data of buckets.
 
@@ -15476,7 +16226,7 @@ erations
 | Modify the number of buckets that can be created | Important Modifying the number of buckets that can be created is a high-risk operation. Proceed with caution. By default, a user can create a maximum of 100 buckets. You can adjust the maximum number of buckets that a user can create as required. a. Click Modify the number of buckets that can be created in the Actions column. b. In the Modify the number of buckets that can be created dialog box, specify the maximum number of buckets that can be created. Valid values: 100 to 10000. Select a value as required. c. Click Confirm. |
 | View the status change history of the user | View the change history of the user, such as the operator who modified the user status, the new status, and the reason. To view the change history, click View user status change history in the Actions column. |
 
-Manage buckets Buckets that meet the filter conditions are displayed in the bucket list. You can view bucket information and manage buckets as required.
+Buckets that meet the filter conditions are displayed in the bucket list. You can view bucket information and manage buckets as required.
 
 | Operation | Description |
 |---|---|
@@ -15532,7 +16282,7 @@ After a QoS rule is configured, you can manage the QoS rule based on your busine
 | Enable or disable the QoS rule | To enable the QoS rule, click Start in the Actions column. After the QoS rule is enabled, you can clickC ancel in the Actions column to disable it. |
 | Quickly create a QoS rule | Find the QoS rule and click Copy in the Actions column to copy the information about the QoS rule and quickly configure a QoS rule for other resources. |
 
-###### Manage synchronization configurations
+###### 5.1.1.5.4.4 Manage synchronization configurations
 
 Manage synchronization processes This topic describes how to manage the cross-region or cross-cloud synchronization processes in a source cluster in a centralized manner. For example, you can view the synchronization status, configure the quality of service (QoS) settings, and configure the number of subqueues.
 
@@ -15748,7 +16498,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **Cluster Synchronization Monitoring** page, select a time range and click **View**.
 The system displays the synchronization monitoring data of clusters in each region within the specified time range, including the number of errors of each type, the number of synchronized files, and the number of fragments.
 
-###### O&M robots
+###### 5.1.1.5.4.5 O&M robots
 
 Manage O&M robots You can use O&M robots to perform automatic O&M tasks, such as intelligent analysis and diagnostics on faulty machines, intelligent analysis and diagnostics on hot issues, automatic repair of key-value (KV) CheckReady failures, emergency solutions for file damages, automatic adjustment of the KV recycle bin, and automatic write prohibition and recovery of Object Storage Service (OSS). O&M robots simplify O&M operations and improve O&M efficiency.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -15780,9 +16530,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. Click the **O&M History** tab, select an O&M task type and specify a time range.
 After you query an O&M task, you can view the name, batch sequence number, status, start time, and end time of the O&M task. The values in the **Status** column indicate the status of the O&M task. Valid values: SCHEDULABLE, RUNNING, PAUSED, HUMAN_PROCESSING, COMPLETED, FAILED, TIMEOUT, and TERMINATED. SCHEDULABLE indicates the O&M task is not running. RUNNING indicates the O&M task is running. PAUSED indicates the O&M task is paused. HUMAN_PROCESSING indicates the O&M task is paused and waiting to be processed. COMPLETED indicates the O&M task is complete. FAILED indicates the O&M task is failed. TIMEOUT indicates the O&M task times out. TERMINATED indicates the O&M task is terminated. You can click the plus icon before an O&M task to view the running information about the O&M task, such as the workflow ID, O&M result, and trigger type.
 
-###### Manage log storage clusters
+###### 5.1.1.5.5 Manage log storage clusters
 
-###### Overview of SLS clusters
+###### 5.1.1.5.5.1 Overview of SLS clusters
 
 erations On the Cluster O&M page, you can view the capacity usage, resource overview, and current alerts of Simple Log Service (SLS) clusters. You can also view a list of SLS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -15797,7 +16547,7 @@ SLS clusters. View the overall information about SLS clusters You can view the c
 | Resource Overview | The numbers of hosts and disks in all SLS clusters. |
 | Current Alerts | The numbers of alerts at different levels and the latest five alert records in all SLS clusters. You can click More or an alert level to view and handle the alerts on the Current Alert page. For more information, see Handle current alerts. |
 
-Manage clusters In the **Clusters** section, you can view the information about all the deployed SLS clusters that are managed by CDS-OPS and perform operations based on your business requirements.
+In the **Clusters** section, you can view the information about all the deployed SLS clusters that are managed by CDS-OPS and perform operations based on your business requirements.
 
 | Operation | Description |
 |---|---|
@@ -15816,7 +16566,7 @@ erations
 | Manage cluster details | Find the cluster that you want to manage and click its name to go the Cluster Details page. On the Cluster Details page, view the attributes, overall information, capacity information, and hosts of the cluster. You can also configure the cluster and manage services for the cluster based on your business requirements. View cluster attributes View the attributes of the cluster, such as the cluster name, storage medium, storage architecture, disaster recovery information, zone, total number of physical hosts, total number of chunk servers, and total number of meta servers. View cluster overview On the Overview tab, view the top 10 logstores with the highest traffic in the cluster. For more information, see View cluster overview. View cluster capacity information On the Capacity tab, view the logical capacity usage, physical capacity usage, and physical capacity usage trends of the cluster. For more information, see View capacity information. Configure the cluster On the Configure tab, configure the erasure coding (EC) mode and PANGU services for the cluster. For more information, see Configure the EC mode and Configure PANGU. Manage cluster services On the Service tab, manage PANGU services for the cluster. For more information, see Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 |---|---|
 
-###### Manage cluster details
+###### 5.1.1.5.5.2 Manage cluster details
 
 View cluster overview On the Overview tab, you can view the top 10 Logstores with the highest traffic in a Simple Log Service (SLS) cluster.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16063,11 +16813,11 @@ erations
 | Total LBAs W _ _ ritten | Total LBAs Written | The total number of sectors written by logical block addresses (LBAs) after a disk is powered on. This attribute is used to estimate the lifespan of a disk. |
 | Total LBAs R _ _ ead | Total LBAs Read | The total number of sectors read by LBAs after a disk is powered on. This attribute is used to analyze the load pattern and read performance trends of a disk. |
 
-##### Monitoring center
+##### 5.1.1.6 Monitoring center
 
 erations
 
-###### View the custom dashboard
+###### 5.1.1.6.1 View the custom dashboard
 
 After you add the monitoring data of frequently used resources to the custom dashboard, you can view the detailed metrics of the resources on the Custom Dashboard page.
 
@@ -16080,7 +16830,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **Custom Dashboard** page, view or remove custom monitoring data.
 View monitoring data You can specify a time range to view the detailed metrics of resources within the specified time range. Remove monitoring data If you no longer need to view the monitoring charts of a resource, click **Remove** in the upper-right corner to remove the monitoring data of the resource from the custom dashboard.
 
-###### View the monitoring data of resources
+###### 5.1.1.6.2 View the monitoring data of resources
 
 On the Resource Monitoring page, you can view the performance monitoring data of various resources, such as clusters, hosts, and hard disks. You can also add the monitoring data of resources to the custom dashboard. This way, you can view the detailed metrics of the resources on the Custom Dashboard page.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16095,7 +16845,7 @@ disks. View the monitoring data of clusters On the **Cluster** tab, select one o
 **Custom Dashboard** in the upper-right corner and select the metrics that you want to add.
 After the monitoring data of the resource is added to the custom dashboard, you can view the detailed metrics of the resource on the Custom Dashboard page. For more information, see View the custom dashboard.
 
-###### View the monitoring data of storage
+###### 5.1.1.6.3 View the monitoring data of storage metrics
 
 **metrics**
 
@@ -16139,7 +16889,7 @@ right corner and select a group or metric. After the metric is added, you can vi
 
 Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-###### View the monitoring data of services
+###### 5.1.1.6.4 View the monitoring data of services
 
 If an exception occurs in a module of a cluster, you can view the service metrics of the module to troubleshoot and identify issues.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16148,9 +16898,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. View the monitoring data of different services.
 The displayed tabs may vary based on the cluster type. View the monitoring data of PANGU On the **PANGU** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_MS_CPUUsage, which measures the CPU utilization of the master process, PG_CS_CPUUsage, which measures the CPU utilization of the chunkserver process, PG_CS_DiskCapacity, which measures the disk usage of the chunkserver process, and PG_CS_ReadWriteThroughput, which measures the throughput of read and write operations other than replication for the chunkserver process. View the monitoring data of Object Storage Service (OSS) On the **OSS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include KV Add Latency, KV Query Latency, KV Read Amplication, and KV Write Amplication. View the monitoring data of Elastic Block Storage (EBS) On the **Elastic Block Storage** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_BM_MigrationMediumUsage, which measures the cluster usage, PG_BS_IoLatency, which measures the latency of BlockServer during each task, PG_BS_Throughput, which measures the read and write traffic processed by BlockServer per second, and PG_BS_Iops, which measures the number of I/O operations processed by BlockServer per second. erations You can find a chart and click **Actions** in the upper-right corner to download the data or save the data as an image.
 
-##### Event Alerts
+##### 5.1.1.7 Event Alerts
 
-###### Alert overview
+###### 5.1.1.7.1 Alert overview
 
 On the Alert Overview page, you can view the current alerts, alert statistics, and alert history.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16168,7 +16918,7 @@ The current alerts include alerts for disassembled cluster and maintenance of un
 | Alert Statistics | In this section, alert statistics are displayed in charts by cluster or by module. The statistics include the total number of alerts at the current alert level. You can view the information for different alert levels. The most frequently triggered five alerts at the current alert level are displayed, including the alert name and frequently. |
 | Alert History | In this section, the most recent five alert records are displayed, including the alert name, module, cluster name, and alert time. You can click More in the upper-right corner of the section to view details of historical alerts on the Alert History page. |
 
-###### Handle current alerts
+###### 5.1.1.7.2 Handle current alerts
 
 erations The alerts that are managed by Cloud Defined Storage (CDS)-OPS come from CDS clusters and the clusters that are managed by CDS-OPS. After alerts are triggered in the system, you can view the list of alerts and the details of each alert, including the alert name, module, cluster name, description, resource name, and alert time. We recommend that you handle alerts at the earliest opportunity by confirming or clearing the alerts based on your business requirements.
 1. Log on to the CDS-OPS console.
@@ -16185,7 +16935,7 @@ whether the alert is confirmed, and an alert time range, and click **Search**. T
 | Confirm an alert | After you receive an alert, you can confirm the alert to indicate that the alert is received and is being handled. Select the alert that you want to confirm and clickC onfirm Alert In the upper- left corner. After you confirm the alert, the value in the Confirmed column changes to Yes. |
 | Clear an alert | After you resolve the issue of an alert or determine that an alert can be ignored, you can manually clear the alert to indicate that the alert is handled. After you manually clear an alert, the alert is moved to the Alert History page. Select the alert that you want to clear and clickM anually Clear in the upper-left corner. |
 
-###### View historical alerts
+###### 5.1.1.7.3 View historical alerts
 
 Alerts that are automatically or manually cleared are displayed on the Alert History page. You can view the information about the alerts within the specified time range, including the alert name, module, cluster name, description, resource name, alert time, auto recovery status, and confirmation status.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16210,9 +16960,9 @@ time range. The system displays the historical alerts at the specified alert lev
 
 erations
 
-##### Routine Inspection
+##### 5.1.1.8 Routine Inspection
 
-###### Inspection center
+###### 5.1.1.8.1 Inspection center
 
 By default, the system uses built-in inspection items to regularly inspect clusters. On the Inspection Center page, you can view the information about the latest inspection results of different inspection items and manually run inspection tasks.
 
@@ -16237,7 +16987,7 @@ erations
 | View the history of an inspection item | Find the inspection item that you want to view and click the time in the Last Executed At column. On the Inspection History page, the inspection history within the previous day is displayed. You can perform the following operations on the Inspection History page: View inspection history View the start time, completion time, statistics, status, and progress of the inspection item within the previous day. Note The number of times that different inspection items are inspected within a day varies based on the inspection schedules. Filter historical inspections Select a time range to filter historical inspections within the specified time range. View and export inspection results Click a number in the Statistics column. On the Inspection Results page, view and export the inspection results. |
 |---|---|
 
-###### SLA monitoring
+###### 5.1.1.8.2 SLA monitoring
 
 The system monitors the key service level agreement (SLA) metrics of Cloud Defined Storage (CDS) in real time. This provides availability monitoring guarantee for scenarios such as software update, configuration change, and service O&M. This allows you to detect system exceptions at the earliest opportunity, and minimizes the impact when exceptions occur.
 
@@ -16270,11 +17020,11 @@ If exceptions occur in SLA system links, the heartbeat check stops. In this case
 2. In the **Historical SLA Exceptions** panel, select a cluster name and specify a time range.
 By default, historical SLA exceptions in the previous hour are displayed. You can view historical SLA exceptions in the previous 30 days.
 
-##### Intelligent O&M
+##### 5.1.1.9 Intelligent O&M
 
-###### Host O&M
+###### 5.1.1.9.1 Host O&M
 
-###### View all workflows
+###### 5.1.1.9.1.1 View all workflows
 
 erations You can log on to the Cloud Defined Storage (CDS)-OPS console, go to the Host O&M page, and click the All Workflows tab to view detailed information about scale-up activities, scaledown activities, node maintenance, and switchovers of the CDS cluster deployment mode. You can also manage workflows based on your business requirements.
 
@@ -16302,7 +17052,7 @@ erations
 |---|---|
 |   | Refresh a workflow: Click Refresh to refresh the workflow information. Stop a workflow: Click Stop to stop the execution of subsequent steps of the current workflow. Note This operation stops the current step of the workflow and does not stop the process of the corresponding step in the cluster. The system re-executes the step after you resume the workflow. Resume a workflow: You may need to manually handle or stop a workflow due to exceptions. To resume a workflow, click Restore. Repair a workflow: Click the icon and click Repair to repair the workflow that encounters exceptions. Discard a workflow: If a workflow is not complete and you no longer need to execute the workflow, click the icon and click Discard to discard the workflow. Important You cannot restore a discarded workflow. Proceed with caution. |
 
-###### Initiate a CDS Cluster Scale Up
+###### 5.1.1.9.1.2 Initiate a CDS Cluster Scale Up workflow
 
 **workflow**
 
@@ -16334,7 +17084,7 @@ In the message that appears, click **Confirm**. The system starts to run the wor
 
 View workflow progress and manage workflows. For more information, see View all workflows.
 
-###### Initiate a CDS Cluster Scale Down
+###### 5.1.1.9.1.3 Initiate a CDS Cluster Scale Down workflow
 
 **workflow**
 
@@ -16364,7 +17114,7 @@ The system starts to run the workflow. The process takes some time.
 
 View workflow progress and manage workflows. For specific operations, see View all workflows.
 
-###### Initiate a CDS Cluster Node
+###### 5.1.1.9.1.4 Initiate a CDS Cluster Node Maintenance workflow
 
 **Maintenance workflow**
 
@@ -16390,7 +17140,7 @@ The system starts to run the workflow. The process takes some time.
 
 View workflow progress and manage workflows. For specific operations, see View all workflows.
 
-###### Initiate a CDS Cluster Three
+###### 5.1.1.9.1.5 Initiate a CDS Cluster Three Availability Zones Scale Up workflow
 
 **Availability Zones Scale Up workflow**
 
@@ -16440,7 +17190,7 @@ The execution process takes a long period of time. If an issue occurs during the
 
 View workflow progress and manage workflows. For more information, see View all workflows. After you scale up a single-zone cluster to a three-zone cluster, you can scale or maintain the three-zone cluster based on your business requirements. For more information, see Initiate a CDS Cluster Scale Up workflow, Initiate a CDS Cluster Scale Down workflow, and Initiate a CDS Cluster Node Maintenance workflow.
 
-###### Initiate a CDS Cluster Deployment
+###### 5.1.1.9.1.6 Initiate a CDS Cluster Deployment Mode Switch workflow
 
 **Mode Switch workflow**
 
@@ -16473,9 +17223,9 @@ In the pop-up prompt, click **OK**. The system starts executing the workflow ste
 
 After the workflow is complete, check whether the deployment mode of the cluster is switched. View workflow progress and manage workflows. For more information, see View all workflows.
 
-###### Maintain disks
+###### 5.1.1.9.2 Maintain disks
 
-###### Maintain corrupted disks
+###### 5.1.1.9.2.1 Maintain corrupted disks
 
 When a hard disk drive (HDD) or Non-Volatile Memory Express (NVMe) SSD disk of a chunk server is corrupted, you can view the information about the corrupted disk in real time and initiate a disk replacement process and disk hot maintenance after the data of the corrupted disk is backed up. After the disk hot maintenance is complete, you can view the maintenance record in the maintenance history. Tablestore clusters, Cloud Parallel File Storage (CPFS) clusters, Elastic Block Storage (EBS)-1.0 clusters, and Object Storage Service (OSS)-1.0 clusters do not support the disk maintenance feature.
 
@@ -16534,7 +17284,7 @@ On the **Corrupted Disks** tab, you can perform more operations based on your bu
 
 After the disk replacement is complete, you can view the maintenance history of the disk on the **Disk Maintenance History** tab. For more information, see View disk maintenance history.
 
-###### Actively replace a hard disk
+###### 5.1.1.9.2.2 Actively replace a hard disk
 
 If a healthy hard disk needs to be replaced due to capacity upgrade, performance improvement, and regular maintenance, you can actively replace the disk. To replace a hard disk that is running properly, you must change the state of the hard disk to Error, and then replace the hard disk by using the process of maintaining corrupted hard disks.
 
@@ -16557,7 +17307,7 @@ For more information, see Maintain corrupted disks.
 After the hard disk is replaced, you can view the maintenance history of the disk on the **Disk**
 **Maintenance History** tab. For more information, see View hard disk maintenance history.
 
-###### View hard disk maintenance history
+###### 5.1.1.9.2.3 View hard disk maintenance history
 
 After you replace a hard disk, you can view the detailed hard disk maintenance history, including the cluster, chunk server, hard disk ID, hard disk mount type, and execution status.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -16570,9 +17320,9 @@ perform operations as required. Search for hard disk maintenance records Search 
 **Actions** column. On the **Disk Hot Maintenance Details** page, view the detailed
 maintenance history and continue executing or stopping in-progress maintenance tasks as needed. The information displayed on the page of each step in the maintenance details is the snapshot information recorded during hard disk hot maintenance.
 
-###### Log Management
+###### 5.1.1.9.3 Log Management
 
-###### Collect log data
+###### 5.1.1.9.3.1 Collect log data
 
 erations After you identify abnormal services or modules based on an issue, you can manually collect their run logs to quickly identify and handle the issue.
 
@@ -16592,7 +17342,7 @@ Name parameters. After the log collection task is complete, you can view the log
 **Download** in the **Result File** column. A message indicating that the certificate is not
 secure may appear. Click Trust to download the logs. The downloaded log file is in the tar.gz format. Decompress the file and view the logs.
 
-###### Query logs
+###### 5.1.1.9.3.2 Query logs
 
 The system centrally stores and indexes logs of key services. You can query logs within a time range by service type, project, and storage service.
 
@@ -16620,9 +17370,9 @@ A search condition consists of a search statement and an analytic statement in t
 4. Click **Query**.
 The system displays the log data that meets the conditions. Different types of logs have different formats. The actual log formats prevail.
 
-##### System Management
+##### 5.1.1.10 System Management
 
-###### View plug-in information
+###### 5.1.1.10.1 View plug-in information
 
 By default, the system registers the deployed Apsara Stack data services, such as Cloud Storage Gateway (CSG). You can use the plug-in management feature to view the registered Apsara Stack data services.
 
@@ -16639,7 +17389,7 @@ Registered plug-ins may include cds-plugin-sgw and HDR-OPS. cds-plugin-sgw indic
 
 Perform O&M operations on a registered data service. For more information, see Data Service.
 
-###### View tasks
+###### 5.1.1.10.2 View tasks
 
 The system runs time-consuming tasks in an asynchronous manner. You can view the status of asynchronous tasks on the Tasks page.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16649,7 +17399,7 @@ The system automatically obtains and displays the tasks of the previous day.
 3. On the **Tasks** page, select a time range to view the information about the tasks within the
 specified time range and perform operations based on your business requirements. View task information In the task list, you can view the information about tasks, including the name, description, status, update time, and creation time of each task. The value in the **Status** column of a task indicates the state of the task. Valid values: PROCESSING: The task is running. COMPLETED: The task is complete. FAILED: The task failed. CLEANING: The task failed and is being cleaned up. FAILED_CLEANUP_FAIL: The task failed and the cleanup also failed. Contact O&M engineers to handle the issue. erations Go to the page on which a task is triggered Find the task that you want to manage and click **Redirect** in the **Execution Location** column to go to the page on which the asynchronous task is triggered. View run logs If a task has exceptions, you can find the task and click **Execution Logs** in the **Actions** column to view the run logs that can help you identify the cause. View details Find the task that you want to manage and click **Details** in the **Actions** column to view the details of the task.
 
-###### Query audit logs
+###### 5.1.1.10.3 Query audit logs
 
 The audit logs record the modifications made by users to the system. During security maintenance, you can filter the audit logs by using different keywords to quickly locate and handle security issues in a timely manner.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16659,9 +17409,9 @@ Each time you go to the **ActionTrail** page, the system automatically queries y
 3. On the **ActionTrail** page, select a time range and specify filter conditions.
 You can filter the logs by user, operation, object, and object attributes. After you find a log record, you can view the user, operation, object, and object attributes of the log record. Click the plus icon in front of a log record to view the detailed request and response information about the log record.
 
-###### System Cleanup
+###### 5.1.1.10.4 System Cleanup
 
-###### Manage cleanup configurations
+###### 5.1.1.10.4.1 Manage cleanup configurations
 
 By default, the feature of automatically triggering compression tasks and cleanup tasks is disabled. You can manually enable the feature based on your business requirements. After you enable the auto trigger feature, the system automatically compresses service logs or clears tasks when the storage space reaches the specified threshold. You can also modify the automatic cleanup configurations such as enabling or disabling the auto trigger feature, modifying the thresholds, or deleting log cleanup configurations.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16692,7 +17442,7 @@ You can delete the log cleanup configurations of a service only after the servic
 **Confirm Deletion** message, click **OK**.
 If the log cleanup configurations of a service are deleted but the service is still running, the log cleanup configurations are displayed again when the service generates logs. If the service is stopped and does not generate logs, the log cleanup configurations are no longer displayed.
 
-###### Run cleanup tasks
+###### 5.1.1.10.4.2 Run cleanup tasks
 
 Task logs are stored on system disks. You can view the information about the task logs, such as the size, space usage, and compression status, based on the following aggregation dimensions: cluster, cluster and host, service, and service and component. You can compress or delete the logs based on your requirements to save storage on the system disks and improve the stability of system services.
 
@@ -16710,9 +17460,9 @@ that are generated before the selected date, and calculates the number of files 
 **Confirm** to start the compression task.
 To delete the logs, click **Start Cleanup**. In the message that appears, click **Confirm** to start the deletion task.
 
-##### Data Service
+##### 5.1.1.11 Data Service
 
-###### Manage CSG instances
+###### 5.1.1.11.1 Manage CSG instances
 
 erations After you create and configure a Cloud Storage Gateway (CSG) instance, you can view the gateway information and collect and download the gateway logs.
 
@@ -16725,9 +17475,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **Storage Gateway Service** page, click the **Overview** tab. You can perform the
 following operations: View the gateway information You can view the information about all gateways in the current system, such as the ID, name, version, service IP address, Elastic Compute Service (ECS) instance ID, type, and status. Collect and download the gateway logs You can collect the logs of gateways only in the **Running** state. Click **Collect the logs** in the **Operation** column of the gateway whose logs you want to collect. You can collect the Object Storage Service (OSS) access logs that are generated by a Network File System (NFS) share or a Server Message Block (SMB) share, and the logs that are generated by sharing operations. After the logs are collected, wait for a period of time and click **Refresh** to refresh the gateway information. Click **Download log** in the **Operation** column to download the logs.
 
-###### Use HDR-OPS
+###### 5.1.1.11.2 Use HDR-OPS
 
-###### Before you begin
+###### 5.1.1.11.2.1 Before you begin
 
 Hybrid Disaster Recovery (HDR)-OPS is a centralized O&M management tool for HDR. Before you use HDR-OPS, read the following information to understand the features and concepts of HDR.
 
@@ -16750,7 +17500,7 @@ erations
 | View cloud sites | By default, the system displays the HDR information of the current cloud. Before you establish a disaster recovery relationships between two clouds, you must configure the HDR information for the clouds, and add the HDR information of the destination cloud to the cloud site list of the current cloud, and then view and manage the HDR information. | Manage cloud sites |
 |---|---|---|
 
-###### View site pair information
+###### 5.1.1.11.2.2 View site pair information
 
 Hybrid Disaster Recovery (HDR)-OPS automatically obtains the disaster recovery site pairs created in the HDR console. You can view the site pairs that you create and the details about the site pairs in the site pair list. The details include the information about protection groups, infrastructure, and historical tasks.
 
@@ -16791,7 +17541,7 @@ erations
 | View historical task information | The system automatically generates historical tasks when you perform the following operations on the production group of the site pair: add or remove protected instances, start or stop replication, perform failover and failback, confirm failover and failback, and create or remove drill groups. On the Historical Tasks tab, view the details of all tasks that are run for the site pair, such as the parent task ID, task name, object name, and status. Click the plus icon in front of a task to view the information about the subtasks, such as the subtask ID, subtask name, object name, and status. |
 |---|---|
 
-###### View alert information
+###### 5.1.1.11.2.3 View alert information
 
 The alerts that are managed by Hybrid Disaster Recovery (HDR)-OPS are triggered by the resources of HDR. When an alert is triggered, you can view the current alert information in the alert list. The alerts that are triggered by time series data are displayed in the alert history after they are automatically cleared. Event-triggered alerts are displayed in the alert history after they are manually handled. You can query historical alerts in a specified time range.
 
@@ -16805,13 +17555,9 @@ i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigatio
 
 **View current alerts**
 
-On the **Current alert** page, set the alert type, Alibaba Cloud account ID, and fault instance ID. The system displays the information about the current alerts that meet the specified conditions, such as the alert level, trigger reason, and occurrence time. After you receive a system alert, handle the alert based on the description of the trigger reason in a timely manner. erations
+On the **Current alert** page, set the alert type, Alibaba Cloud account ID, and fault instance ID. The system displays the information about the current alerts that meet the specified conditions, such as the alert level, trigger reason, and occurrence time. After you receive a system alert, handle the alert based on the description of the trigger reason in a timely manner. erations On the **Alarm history** page, set the time type and time range, fault instance ID, Alibaba Cloud account ID, and alert type. The system displays the information about the historical alerts that meet the specified conditions, such as the alert level, trigger reason, occurrence time, and recovery time.
 
-**View historical alerts**
-
-On the **Alarm history** page, set the time type and time range, fault instance ID, Alibaba Cloud account ID, and alert type. The system displays the information about the historical alerts that meet the specified conditions, such as the alert level, trigger reason, occurrence time, and recovery time.
-
-###### View inspection tasks
+###### 5.1.1.11.2.4 View inspection tasks
 
 Inspection tasks are created to check the virtual private cloud (VPC) availability, network availability, security group availability, and security group policy consistency of site pairs. In the inspection task list, you can view the overall information about historical inspection tasks and view the details of an inspection task. The system periodically runs inspection tasks. The system generates alerts if the system detects changes in computing, network, and storage information at the production site and the disaster recovery site.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16820,7 +17566,7 @@ i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigatio
 3. On the **Inspection list** tab, specify the site pair ID, Alibaba Cloud account ID, and time
 range to search for inspection tasks that meet the specified conditions. Click the name of the desired inspection task. On the **Inspection details** page, view the execution details of the inspection task, such as the basic information and the inspection results of each inspection item. If the status of an inspection item is abnormal, handle the exception based on the fixing suggestions.
 
-###### Manage O&M tasks
+###### 5.1.1.11.2.5 Manage O&M tasks
 
 If operations cannot be performed on a protection group at the production site or the disaster recovery site due to data loss or corruption, you can use the Clear Protection Group feature to forcibly delete the protection group. If you want to perform an operation such as clearing a protection group, an O&M task of the operation is created and displayed in the O&M center. To prevent accidental operations, the system runs an O&M task only after the O&M task is confirmed by an O&M engineer. After an O&M task is run, the task execution status is displayed and the backup information about the O&M task is generated.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -16835,7 +17581,7 @@ site pair ID, resource ID, ticket status, and time range to search for O&M tasks
 | Confirm an O&M task | Important You can confirm an O&M task only if the ticket is in theI nitialization state. After you confirm an O&M task that is run to clear a protection group, the resources of the protection group are cleared. Proceed with caution. If you confirm that an O&M task can be run to clear a protection group, click OK in the Operation column. In the Clear Protection Group message, click OK. The system starts to clear the resources of the protection group, and the ticket is in the In progressing state. Note If the protection group fails to be cleared due to network issues or the internal issues of dependent services, the system automatically retries the O&M task. In this case, the ticket is in the Retry state. If the O&M task fails after multiple retries, the ticket is in the Failure state. Contact O&M engineers to troubleshoot the issue and then restart the O&M task. If a ticket is in the Initialization, In progressing, or Retry state and has been created for more than one week, the ticket becomes invalid. In this case, the ticket is in the Failure state. |
 | View the details of a site pair | Click the site pair ID of an O&M task. On the site pair details page, view the information about the site pair, including the information about the site pair, protection groups, infrastructure, and historical tasks. For more information, see View the details of a site pair. |
 
-###### Manage O&M configurations
+###### 5.1.1.11.2.6 Manage O&M configurations
 
 You can adjust the inspection interval and cross-cloud configuration switch status. You can view O&M configurations, modify common configuration items, and add or delete configuration items.
 
@@ -16868,7 +17614,7 @@ erations
 | Delete a configuration item | Note In most cases, you do not need to manually add or delete configuration items. You can delete a configuration item that is no longer required. To delete a configuration item, perform the following steps. i. Click Delete in the Operation column. ii. In the message that appears, click OK. |
 |---|---|
 
-###### Manage cloud sites
+###### 5.1.1.11.2.7 Manage cloud sites
 
 By default, the system displays the Hybrid Disaster Recovery (HDR) information of the current cloud. Before you establish a disaster recovery relationships between two clouds, you need to configure the HDR information for the clouds, and add the HDR information of the destination cloud to the cloud site list of the current cloud, and then view and manage the HDR information.
 
@@ -16902,13 +17648,13 @@ Add a cross-cloud disaster recovery site pair in the HDR console. For more infor
 **User Guide**.
 O&M
 
-## Database O&M
+## 6 Database O&M
 
-### ApsaraDB Operations and
+### 6.1 ApsaraDB Operations and Maintenance System
 
 **Maintenance System**
 
-#### Log on to the ApsaraDB Operations and
+#### 6.1.1 Log on to the ApsaraDB Operations and Maintenance System
 
 **Maintenance System**
 
@@ -16928,15 +17674,15 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 > **Databases** > **ApsaraDB Operations and Maintenance System** .
 
-#### Homepage
+#### 6.1.2 Homepage
 
 The homepage of ApsaraDB Operations and Maintenance System provides an overview of your databases. You can view the basic information and exceptions, search for instances, and use the advanced search features. Log on to the ApsaraDB Operations and Maintenance System console. On the homepage that is displayed, you can find and handle ApsaraDB RDS alerts in time, and continuously optimize existing metrics. Click the number next to the exception information to view the exception details. For example, if you click **Backup exception** in the **Backup information** section, you can view the all the exceptions on RDS instances on the page that appears. You can click the exceptions and handle them accordingly.
 
-#### Instance management
+#### 6.1.3 Instance management
 
-##### Instance batch management
+##### 6.1.3.1 Instance batch management
 
-###### Migrate instances in batch
+###### 6.1.3.1.1 Migrate instances in batch
 
 This topic describes how to migrate multiple instances at a time. O&M
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -16956,7 +17702,7 @@ You can click **Batch instance migration success list** or **Batch instance migr
 **failure list** in the upper part of the **Batch instance migration waiting list** page to view
 the details of the migration operations.
 
-###### Modify instance parameters in batch
+###### 6.1.3.1.2 Modify instance parameters in batch
 
 This topic describes how to modify multiple instance parameters at a time.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -16980,7 +17726,7 @@ You can click **Batch refresh parameter instance successful list** or **Batch re
 **refresh** page to view the details of the modified parameters.
 O&M
 
-###### Modify DIY parameters in batch
+###### 6.1.3.1.3 Modify DIY parameters in batch
 
 This topic describes how to modify multiple DIY parameters at a time.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17010,7 +17756,7 @@ You can click **BatchDIYRefresh parameter successful list** or **BatchDIYRefresh
 **parameter failure list** in the upper part of the **Batch DIY parameter refresh** page to view
 the details of the modified DIY parameters.
 
-###### Modify Redis parameters in batch
+###### 6.1.3.1.4 Modify Redis parameters in batch
 
 This topic describes how to modify multiple Redis parameters at a time.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17023,7 +17769,7 @@ O&M
 enter the new values in the **Set value** column. Click **Save** for each parameter.
 7. In the **Modify configuration** message, click **Determine**.
 
-###### Manage batch tasks
+###### 6.1.3.1.5 Manage batch tasks
 
 This topic describes how to manage batch tasks.
 
@@ -17055,7 +17801,7 @@ O&M
 
 7. Click **Submit**.
 
-###### Manage batch task types
+###### 6.1.3.1.6 Manage batch task types
 
 This topic describes how to create a type of batch tasks.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17082,7 +17828,7 @@ This topic describes how to create a type of batch tasks.
 
 7. Click **Submit**.
 
-###### Manage SQL templates
+###### 6.1.3.1.7 Manage SQL templates
 
 This topic describes how to create an SQL template. O&M
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17105,16 +17851,16 @@ This topic describes how to create an SQL template. O&M
 Custom SQL templates support only SELECT statements and can be used only for DBaaS databases. The creation of SQL templates must be approved in the business process management system. To ensure that the SQL template is not mistakenly executed by other users, we recommend that you give the template a descriptive name and describe the purpose of the template in detail in the New reason parameter.
 7. Click **Submit**.
 
-##### Singal instance management
+##### 6.1.3.2 Singal instance management
 
-###### Overview
+###### 6.1.3.2.1 Overview
 
 In the instance list, you can view the information about instances, such as the basic information, data links, databases, and accounts.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
 2. In the left-side navigation pane, choose **Instance management > Instance List**.
 On the Instances page, you can perform the following operations: Click **Batch query** and enter instance names to query multiple instances at a time. Click **Advanced search** and configure parameters such as Database type and Instance status to query instances. Click the name of the instance that you want to view to go to the Basic information page of the instance. You can view the instance information or manage the instance. O&M For more information, see View an instance, Diagnose an instance, Manage emergency response plans, Use the instance dashboard, and Manage instance migration plans.
 
-###### Views instances.
+###### 6.1.3.2.2 Views instances.
 
 This topic describes how to view information of an instance, such as the basic information and instance performance, on the instance details page.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17124,7 +17870,7 @@ You can also search for the target instance by entering keywords in the search b
 4. In the **Basic Information** section, view the basic information about the instance. You can
 also click the options in the Instance details column to perform operations such as performing backup and restoration, viewing the change records, and querying the SQL information.
 
-###### Instance diagnostics
+###### 6.1.3.2.3 Instance diagnostics
 
 You can use the instance diagnostics feature to view the performance metrics of an instance.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17169,7 +17915,7 @@ O&M
 | MySQL ROW LOCK _ _ | The maximum time of a row-level lock that has been waited for in milliseconds, the average time of row-level locks that have been waited for in milliseconds, and the number of times the row-level locks have been waited for. |
 | MySQL SelectScan _ | The number of times that full table scans are performed on the RDS instance. Unit: scans. |
 
-###### Manage emergency response plans
+###### 6.1.3.2.4 Manage emergency response plans
 
 This topic describes how to manage emergency response plans for instances.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17181,7 +17927,7 @@ check box to the left of the instance.
 5. You can export the instance information to your computer as a spreadsheet file by clicking
 O&M the button in the upper part of the page. Specifying conditions to search for the instance is required for exporting the instance information.
 
-###### Use the instance dashboard
+###### 6.1.3.2.5 Use the instance dashboard
 
 This topic describes how to view metrics of instances, such as CPU utilization and connection utilization, on the instance dashboard.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17191,7 +17937,7 @@ choose **Instance management > Instance List**.
 4. On the page that appears, you can view the CPU utilization, connection utilization, IOPS,
 and disk usage of the instances.
 
-###### Manage instance migration plans
+###### 6.1.3.2.6 Manage instance migration plans
 
 Instance migration plans can be uploaded by specifying the instances or the IP addresses of hosts. This topic describes how to migrate instances by instance plans.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17211,9 +17957,9 @@ For more information about instance migration, see Instance migration.
 You can click **Push success list** or **Deleted list** in the upper part of the **Instance plan**
 **migration management** page to view the information about the migrated instances.
 
-#### Host management
+#### 6.1.4 Host management
 
-##### Create a host
+##### 6.1.4.1 Create a host
 
 This topic describes how to create a host.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17223,7 +17969,7 @@ choose **Host management > System host**.
 4. On the page that appears, click **New host**.
 5. In the dialog box that appears, configure the parameters and click **Submit**.
 
-##### Configure hosts in batch
+##### 6.1.4.2 Configure hosts in batch
 
 This topic describes how to configure multiple hosts at a time.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17232,7 +17978,7 @@ This topic describes how to configure multiple hosts at a time.
 upper part of the page.
 4. In the dialog box that appears, configure the parameters and click **Submit**.
 
-##### View the details of a host
+##### 6.1.4.3 View the details of a host
 
 This topic describes how to view the details of a host.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17242,9 +17988,9 @@ O&M
 4. Click the IP address of the host and view information on the **Host details** page. The
 information includes the CPU utilization, memory usage, disk usage, and the number of instances. You can also click the options in the Host details column to view the information about host instances, performance, backups, and accounts.
 
-#### Cluster management
+#### 6.1.5 Cluster management
 
-##### Create a cluster
+##### 6.1.5.1 Create a cluster
 
 This topic describes how to create a cluster.
 
@@ -17268,7 +18014,7 @@ on the page that appears.
 **Submit**.
 You can refer to the tooltip or text next to the parameter for detailed description.
 
-##### Manage service types
+##### 6.1.5.2 Manage service types
 
 This topic describes how to manage cloud service types.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17278,7 +18024,7 @@ O&M
 **Management** page appears.
 Find the target service type and click **Edit** in the **Operation** column to modify the service type. Find the target service type and click **Delete** in the **Operation** column to delete the service type.
 
-##### Manage service nodes
+##### 6.1.5.3 Manage service nodes
 
 This topic describes how to create, modify, or delete a service node.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17286,7 +18032,7 @@ This topic describes how to create, modify, or delete a service node.
 3. In the Cluster management column, click **Service node management**.
 In the upper part of the page, click **New service node**. In the dialog box that appears, configure the required parameters and click **OK**. Find the target service node that you want to modify and click **Edit** in the **Operation** column to modify the service node. Find the target service node that you want to delete and click **Delete** in the **Operation** column to delete the service node.
 
-##### Manage DB configuration templates
+##### 6.1.5.4 Manage DB configuration templates
 
 This topic describes how to manage DB configuration templates.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17295,7 +18041,7 @@ This topic describes how to manage DB configuration templates.
 **configuration template** page.
 In the upper part of the page, click **New DB template**, enter the template information, and then click **Save** in the **Operation** column. Find the template that you want to modify, click **Edit** in the **Operation** column to modify the template, and then click **Save** in the **Operation** column. Find the template that you want to delete and click **Delete** in the **Operation** column to delete the template.
 
-##### Manage Fangcunshan clusters
+##### 6.1.5.5 Manage Fangcunshan clusters
 
 This topic describes how to manage Fangcunshan clusters.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17313,7 +18059,7 @@ column to modify the template.
 8. Optional. Find the cluster group that you want to delete and click **Delete** in the **Operation**
 column to delete the template.
 
-##### Manage locations
+##### 6.1.5.6 Manage locations
 
 This topic describes how to configure the locations of clusters.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17324,9 +18070,9 @@ You can also perform cluster consistency check and subdomain consistency check o
 **Submit**.
 Click **Parameters** next to the required unit, region, zone, or subdomain to add, modify, or delete parameters. Click **Delete** next to the required unit, region, zone, or subdomain to delete a unit, region, zone, or subdomain.
 
-#### Task management
+#### 6.1.6 Task management
 
-##### Manage interrupted tasks
+##### 6.1.6.1 Manage interrupted tasks
 
 This topic describes how to manage interrupted tasks, including user instance tasks, host instance tasks, and host tasks. This topic uses a user instance task as an example to describe how to manage interrupted tasks.
 1. Log on to the ApsaraDB Operations and Maintenance System console.
@@ -17347,7 +18093,7 @@ with the task or purposes of the steps.
 7. In the upper-left corner of the Instance tasks page, select **Running tasks** from the drop-
 down list to view the status of the task. If the task fails again, repeat the preceding steps.
 
-##### Manage temporarily closed tasks
+##### 6.1.6.2 Manage temporarily closed tasks
 
 This topic describes how to manage temporarily closed tasks.
 1. Log on to the ApsaraDB Operations and Maintenance System.
@@ -17356,7 +18102,7 @@ click **Task management**. In the upper-left corner of the Instance tasks page, 
 **Temporarily Closed tasks** from the drop-down list.
 Click the **name** of a task. In the message that appears, view the steps during the execution of the task. Click the **operation object** of a task to view the tasks for this operation object. Click the **executor** of a task to view the information of the executor. Click **Operation** in the **Operation** column of a task to view the reason why the task is temporarily closed. On the page that appears, click **Perform tasks** to retry the task. On the page that appears, click **Intervention record** to view the intervention records of the task. Click **Add remarks** in the Operation column of a task to add remarks for the task. O&M
 
-#### System management
+#### 6.1.7 System management
 
 This topic describes the features of system management. Table 1. System management
 
@@ -17381,17 +18127,17 @@ O&M
 | Scheduled task management | Manage the scheduled tasks in the system. | None. |
 |---|---|---|
 
-### Data Transmission Service
+### 6.2 Data Transmission Service
 
-#### DTS O&M console overview
+#### 6.2.1 DTS O&M console overview
 
 The Data Transmission Service (DTS) O&M console is a backend system for DTS. This topic describes the features of the DTS O&M console.
 
 **Features**
 
-The DTS O&M console provides the following features: Task management You can view the information about DTS tasks, such as the basic information, source database information, and destination database information. Monitoring and alerting You can view the information about performance monitoring and alerts. Cluster management You can manage clusters. Resource management You can manage various resources of DTS.
+The DTS O&M console provides the following features: You can view the information about DTS tasks, such as the basic information, source database information, and destination database information. You can view the information about performance monitoring and alerts. You can manage clusters. You can manage various resources of DTS.
 
-#### Log on to the DTS O&M console
+#### 6.2.2 Log on to the DTS O&M console
 
 This topic describes how to log on to the Data Transmission Service (DTS) O&M console as a role such as an O&M engineer.
 
@@ -17403,9 +18149,9 @@ Press the ENTER key. O&M You can click the current language in the upper-right c
 3. Choose **Databases** > **Data Transmission Service**. Then, you are navigated to the **DTS**
 **O&M console**.
 
-#### Task management
+#### 6.2.3 Task management
 
-##### Manage tasks
+##### 6.2.3.1 Manage tasks
 
 You can view and manage all existing tasks and asynchronous tasks on the Task Management page.
 1. Log on to the Data Transmission Service (DTS) O&M console.
@@ -17422,7 +18168,7 @@ requirements: View the details of the task. You can view the instance informatio
 
 After a task is released, all the data of the task is deleted and cannot be retrieved. Proceed with caution. Update the change tracking information. This feature applies only to change tracking tasks. In the **Task Information** section, click **Update Information**. In the message that appears, click **OK**.
 
-##### Manage the modules of a task
+##### 6.2.3.2 Manage the modules of a task
 
 A Data Transmission Service (DTS) task contains multiple modules. This topic describes how to manage the modules of a task.
 1. Log on to the DTS O&M console.
@@ -17435,9 +18181,9 @@ displayed. The color of a module indicates the state of the module: Red: the Abn
 6. On the management page of the module, perform the following operations based on your
 business requirements: O&M In this example, the operations that can be performed on the Schema Migration module are described. You can refer to the operations that can be performed on the Schema Migration module to manage other modules. On the **Basic Information** tab, you can perform various operations. For example, restart, pause, or skip the module, change the server on which the module is run, or modify the running memory. On the **Migration Objects** tab, you can view the information, status, and table creation statements of the objects involved in the module. On the **Operation History** tab, you can view the O&M operation records of the module. On the **Operation Logs** tab, you can view the operation logs of the module. You can also perform operations on the logs, such as pulling, tracking, previewing, and downloading the logs. On the **User-visible Operation Logs** tab, you can filter and search for operation logs based on specific conditions. On the **Task Progress** tab, you can view the progress of the task.
 
-#### Task engine
+#### 6.2.4 Task engine
 
-##### Query tasks
+##### 6.2.4.1 Query tasks
 
 On the Task Query page, you can find tasks in the task engine using the task ID, business ID, sub-business ID, task creation time, or task type.
 1. Log on to the DTS console.
@@ -17445,9 +18191,9 @@ On the Task Query page, you can find tasks in the task engine using the task ID,
 3. On the **Task Engine - Query** page, specify the filter conditions and click **Query**.
 Click the **ID** of a task to view its detailed information.
 
-#### Monitoring and alerting
+#### 6.2.5 Monitoring and alerting
 
-##### View the monitoring information of full
+##### 6.2.5.1 View the monitoring information of full data migration tasks
 
 **data migration tasks**
 
@@ -17459,7 +18205,7 @@ O&M
 3. On the **Full Data Monitoring** page, you can specify filter conditions and click **Search** to
 filter full data migration tasks and view the monitoring information.
 
-##### View dashboards
+##### 6.2.5.2 View dashboards
 
 The Data Transmission Service (DTS) O&M console provides the dashboards of full data migration tasks, incremental data migration tasks, and data synchronization tasks. This topic describes how to view a dashboard. In this example, the dashboard of full data migration tasks is used.
 1. Log on to the DTS console.
@@ -17471,9 +18217,9 @@ You can also choose **Monitoring and Alerting > Incremental Data**
 3. On the page that appears, perform the following operations based on your business
 requirements: View the information about full data migration tasks On the **Full Data Migration Dashboard** page, you can view the basic information, status, and monitoring data of all full data migration tasks. You can also specify filter conditions in the upper part of the page to filter tasks. Manage full data migration tasks You can pause, restart, or skip one or more full data migration tasks at a time.
 
-#### Cluster management
+#### 6.2.6 Cluster management
 
-##### Manage clusters
+##### 6.2.6.1 Manage clusters
 
 This topic describes how to manage clusters in the Data Transmission Service (DTS) O&M console.
 1. Log on to the DTS console.
@@ -17481,7 +18227,7 @@ This topic describes how to manage clusters in the Data Transmission Service (DT
 3. By default, the information about all clusters is displayed. You can find a cluster and click
 the buttons in the **Actions** column to perform operations on the cluster based on your business requirements. O&M
 
-##### Manage change tracking tasks in DStore
+##### 6.2.6.2 Manage change tracking tasks in DStore Workbench
 
 **Workbench**
 
@@ -17491,25 +18237,25 @@ The DStore module is used to store incremental data. You can view the details of
 3. On the **DStore Workbench** page, perform the following operations based on your business
 requirements. In the upper-right corner of the page, you can enter a keyword to search for tasks or click Advanced Options to specify more filter conditions to filter tasks. View the details of a functional module Click a tab to view the details of specific tasks on the tab. Restart or pause multiple tasks at a time a. Click the **Batch Restart Reader/Writer** tab. b. Select one or more tasks. c. Click **Batch Restart** or **Batch Pause**. d. In the dialog box that appears, click **Batch Run**.
 
-#### Resource management
+#### 6.2.7 Resource management
 
-##### View DTS resources
+##### 6.2.7.1 View DTS resources
 
 You can view the overview information of Data Transmission Service (DTS) resources. This helps you understand the status of DTS resources.
 1. Log on to the DTS console.
 2. In the left-side navigation pane, choose **Resource Management > DTS Resources**.
 On the DTS Resources page, the information about all DTS resources is displayed. The information about a resource includes the region in which the resource resides, CPU utilization, and memory usage.
 
-##### Manage DTS resources
+##### 6.2.7.2 Manage DTS resources
 
 You can view and manage Data Transmission Service (DTS) resources in the DTS O&M console.
 1. Log on to the DTS console.
 O&M
 2. In the left-side navigation pane, choose **Resource Management > DTS Resources**.
 3. Perform the following operations based on your business requirements:
-View resource information By default, the information about all DTS resources is displayed. In the upper part of the page, you can specify filter conditions such as resource group, region, and server IP address, and then click **Search** to filter resources. Manage resources Find a resource and click the buttons in the **Actions** column to perform operations on the resource. Initialize multiple servers at a time Select one or more resources and click **Initialize Servers**. Then, complete the subsequent operations as prompted. Add resources to a resource group Select one or more resources and click **Add Resources to Group**. Then, complete the subsequent operations as prompted.
+View resource information By default, the information about all DTS resources is displayed. In the upper part of the page, you can specify filter conditions such as resource group, region, and server IP address, and then click **Search** to filter resources. Find a resource and click the buttons in the **Actions** column to perform operations on the resource. Initialize multiple servers at a time Select one or more resources and click **Initialize Servers**. Then, complete the subsequent operations as prompted. Add resources to a resource group Select one or more resources and click **Add Resources to Group**. Then, complete the subsequent operations as prompted.
 
-##### View the CIDR blocks of DTS servers
+##### 6.2.7.3 View the CIDR blocks of DTS servers
 
 You can view the CIDR blocks of Data Transmission Service (DTS) servers of different regions and network types. This helps you troubleshoot DTS connectivity issues. For example, you can check whether the CIDR blocks of DTS servers of the corresponding region and network type are added to the IP address whitelist of a database instance or the firewall rules of a selfmanaged database.
 1. Log on to the DTS console.
@@ -17518,9 +18264,9 @@ By default, the CIDR blocks of all regions and all network types are displayed.
 3. In the upper part of the page, specify a region and a network type. Then, click **Search** to
 filter CIDR blocks.
 
-#### O&M practices
+#### 6.2.8 O&M practices
 
-##### View alerts
+##### 6.2.8.1 View alerts
 
 You can specify filter conditions on the **Alerts** page to filter alerts, such as product, alert ID, alert source, alert level, alert status, and time range. Then, you can perform O&M operations on an alert. For more information about monitoring and alerting and O&M operations, see
 **Apsara Uni-manager Operations Console Operations and Maintenance Guide**.
@@ -17544,7 +18290,7 @@ i. In the **Alert View** section, you can view the alert metric chart before the
 i. Click **Processing** or **Close** in the upper-right corner of the Alert information section. ii. In the message that appears, click **OK**. Then, the state of the alert changes to
 **Processing** or **Closed**.
 
-##### View logs
+##### 6.2.8.2 View logs
 
 O&M This topic describes the types of Data Transmission Service (DTS) logs and how to view important logs. This helps you troubleshoot issues if a task becomes abnormal.
 
@@ -17614,7 +18360,7 @@ O&M
 
 O&M
 
-##### Practices for managing data migration and
+##### 6.2.8.3 Practices for managing data migration and data synchronization tasks
 
 **data synchronization tasks**
 
@@ -17697,7 +18443,7 @@ O&M You can also click the **Run Logs** tab to troubleshoot issues.
 
 In this example, the error message indicates that the synchronization or migration fails due to an incorrect database account or password. You can return to the **Task Details** page, and click **Modify Configurations** to modify the database account or password. Then, restart the task.
 
-##### Practices for managing change tracking
+##### 6.2.8.4 Practices for managing change tracking tasks
 
 ###### tasks
 
@@ -17719,17 +18465,17 @@ information, see Manage change tracking tasks in DRC Workbench.
 7. On the **Incremental Management** tab of DRC Workbench, find the store that you want to
 manage and click the **+** icon next to the store name to view the start consumption checkpoint, current consumption checkpoint, and status of the store. In this example, the binary logs fail to be read. You can check whether the binary log files are dumped in the source database and make sure that the status of the task is normal.
 
-### Database Backup
+### 6.3 Database Backup
 
-#### DBS O&M console overview
+#### 6.3.1 DBS O&M console overview
 
 The Database Backup Service (DBS) O&M console is a backend O&M system for DBS. This topic describes the features of this console.
 
 **Features**
 
-This console provides the following features: Task management You can view and manage all existing tasks and abnormal tasks, task execution details, and information about the source and destination databases. Resource management You can view the running status of DBS resources, unpublished DBS resources, and DBS CIDR blocks.
+This console provides the following features: You can view and manage all existing tasks and abnormal tasks, task execution details, and information about the source and destination databases. You can view the running status of DBS resources, unpublished DBS resources, and DBS CIDR blocks.
 
-#### Logon to the DBS O&M console
+#### 6.3.2 Logon to the DBS O&M console
 
 This topic describes how users such as O&M engineers log on to the DBS O&M console.
 
@@ -17750,9 +18496,9 @@ The password is 10 to 20 characters in length.
 
 6. Select **DBS** from the **Database O&M** drop-down list to go to the **DBS O&M console**.
 
-#### Task management
+#### 6.3.3 Task management
 
-##### Manage tasks
+##### 6.3.3.1 Manage tasks
 
 This topic describes how to view and manage all existing and abnormal tasks on the task management page.
 1. Log on to the DBS O&M console.
@@ -17781,7 +18527,7 @@ O&M
 You can also choose **Tasks > Abnormal Tasks** to view all anomalous tasks within your account, and then click the name of an abnormal task to go to the task details page for viewing or managing the task. Related operations are the same as those mentioned in the
 **Procedure** section of this topic. This section is for reference only.
 
-##### Manage a task module
+##### 6.3.3.2 Manage a task module
 
 A DBS task contains multiple modules. This topic describes how to manage a task module.
 1. Log on to the DBS O&M console.
@@ -17794,9 +18540,9 @@ displayed. O&M The color of a module indicates the state of the module: Red: the
 6. On the management page of the module, perform the following operations based on your
 business requirements: The following list provides an example on how to manage the full backup module. The management operations of another module are the same as those in this example. You can go to the details page of each module to view specific management operations. On the **Basic Information** tab, you can restart, pause, skip, reset, or fail the module, or modify the memory of the running service node. On the **Migration Objects** tab, you can view information such as object type and migration status. On the **Operation History** tab, you can view the O&M operation records of the module. On the **Operation Logs** tab, you can view the operation logs of the module. You can also perform operations on the logs, such as pulling, tracking, previewing, and downloading.
 
-#### Resource management
+#### 6.3.4 Resource management
 
-##### View DBS resources
+##### 6.3.4.1 View DBS resources
 
 This topic describes how to view the overview information of DBS resources. This helps you understand the status of DBS resources.
 1. Log on to the DBS O&M console.
@@ -17805,7 +18551,7 @@ On the DBS Resources page, information about all DBS resources is displayed. The
 **Resources** page. Then, you can enter the resource IP and click **Search** to filter the
 resource. You can click the trend icon in the **Network** column to filter a time range and view network traffic trends within the time range. O&M
 
-##### Unpublish DBS resources
+##### 6.3.4.2 Unpublish DBS resources
 
 This topic describes how to unpublish DBS resources in the DBS O&M console.
 1. Log on to the DBS O&M console.
@@ -17813,16 +18559,16 @@ This topic describes how to unpublish DBS resources in the DBS O&M console.
 3. Select one or more DBS resources and click **Unpublish Machine** below the DBS resource
 list to unpublish the service node where the resources reside. Running service nodes are not allowed to go offline.
 
-##### View DBS CIDR blocks
+##### 6.3.4.3 View DBS CIDR blocks
 
 This topic describes how to view DBS CIDR blocks. This helps you obtain the IP addresses of regions and network types to which DBS servers belong, which enables you to troubleshoot DBS connectivity issues. For example, you can check whether the CIDR blocks of DBS servers in the same region and network type as a database instance or a self-managed database are added to an IP address whitelist of the instance or the firewall rules of the database.
 1. Log on to the DBS O&M console.
 2. In the left-side navigation pane, choose **Resources > DBS CIDR Blocks**.
 By default, the CIDR blocks of all regions and network types are displayed. In the upper part of the CIDR block list page, specify a region and a network type. Then, click **Search** to filter CIDR blocks. Click the icon in the upper-right corner to copy the CIDR blocks.
 
-#### Usage
+#### 6.3.5 Usage
 
-##### View all subtasks in a backup plan
+##### 6.3.5.1 View all subtasks in a backup plan
 
 This topic describes how to view all subtasks in a backup plan, including full backup tasks, incremental tasks, backup set download tasks, and restoration tasks. This helps you have a comprehensive insight into the overall operation of the backup plan.
 1. Log on to the DBS O&M console.
@@ -17836,7 +18582,7 @@ task nodule, such as the schema backup module, full backup module, and continuou
 6. Click **Details** next to a module to go to the module details page. On this page, view the
 basic module information, backup objects, operation records, and operation logs. For more information about tasks and modules, see Manage tasks and Manage a module of a task.
 
-##### Quickly view a full backup task or a
+##### 6.3.5.2 Quickly view a full backup task or a backup set download task
 
 **backup set download task**
 
@@ -17851,7 +18597,7 @@ ii. In the left-side navigation pane of the DBS console, click **Backup Plans** 
 **Backup**. On the page that appears, copy the ID of the backup set that you want to
 download. Alternatively, click **Backup Set Download** In the left-side navigation pane of the backup plan details page to copy the ID of a download task.
 
-##### Manually restart a task
+##### 6.3.5.3 Manually restart a task
 
 This topic describes how to manually restart a task.
 1. Log on to the DBS O&M console.
@@ -17864,11 +18610,11 @@ The following list provides an example on how to manage the **Full Backup** modu
 5. On the **Basic Information** tab of the page that appears, select **Restart** for **Status**.
 If the task is abnormal, you must restart it. e O&M
 
-## Middleware O&M
+## 7 Middleware O&M
 
-### RocketMQ Operations Console
+### 7.1 RocketMQ Operations Console
 
-#### Log in to the RocketMQ Operations
+#### 7.1.1 Log in to the RocketMQ Operations Console
 
 **Console**
 
@@ -17886,7 +18632,7 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 5. In the top navigation bar, choose **Product Operation > Middleware > RocketMQ**
 **Operations Console**.
 
-#### Overview
+#### 7.1.2 Overview
 
 This topic describes the core features and key metrics of ApsaraMQ for RocketMQ so that you can better understand the running status and health status of ApsaraMQ for RocketMQ instances.
 1. Log in to the RocketMQ 4.x Operations Console.
@@ -17906,7 +18652,7 @@ e O&M
 | Alarm Statistics | This section displays the total number of alerts with different severity levels, such as P1 Critical, P2 Major, P3 Minor, and P4 Warning. |
 | Last 5 alarm records | This section displays the most recent five alert records, including the alert item, severity, and alert time. Click View more to go to the Alert List page. On this page, you can view the alert information, including real-time alerts that are not handled and historical alerts that are handled. |
 
-#### Broker management
+#### 7.1.3 Broker management
 
 This topic describes how to view the basic information and configurations of a broker.
 
@@ -17984,7 +18730,7 @@ e O&M If you want to write new messages to the broker, you can restore the write
 **Restart** in the **Operation** column.
 4. In the message that appears, click **OK**.
 
-#### NameServer management
+#### 7.1.4 NameServer management
 
 This topic describes how to view the information about a NameServer node.
 
@@ -18010,7 +18756,7 @@ e O&M
 4. Click **Details** in the **Operation** column of the NameServer node. In the **Details** dialog box,
 view the keys and values of the NameServer node.
 
-#### Metadata management
+#### 7.1.5 Metadata management
 
 This topic describes how to view and manage the virtual private cloud (VPC) configurations associated with an ApsaraMQ for RocketMQ 4.x cluster.
 1. Log in to the RocketMQ 4.x Operations Console.
@@ -18030,9 +18776,9 @@ Click the **Configuration Management** tab. You can view the configuration items
 
 e O&M The modification will update the configuration values of the relevant configuration items of all brokers in the cluster. Exercise caution when you perform this operation.
 
-#### Copilot
+#### 7.1.6 Copilot
 
-##### Hot upgrade
+##### 7.1.6.1 Hot upgrade
 
 This topic describes how to create a hot upgrade task.
 
@@ -18078,7 +18824,7 @@ When **Upgrade Status** of the primary and secondary nodes is **Upgrade complete
 **HA status** is **SYNC_STATE**, click **Release write prohibition** in the **Operation** column for
 the primary and secondary nodes. In the message that appears, click **OK**.
 
-##### Disaster recovery deployment
+##### 7.1.6.2 Disaster recovery deployment
 
 This topic describes how to deploy disaster recovery for a single cluster and scale out a disaster recovery cluster.
 
@@ -18156,7 +18902,7 @@ After the original secondary node is promoted to the primary node, **Add a secon
 **node** appears in the **Operation** column.
 Click **Add a secondary node**, select a secondary node, and click **OK** to add the second secondary node in the secondary data center, synchronize the cached metadata file to the broker, and set the broker to read and write prohibiting. Meanwhile, the information about the second secondary node is inserted into the broker_name table.
 
-##### Disaster recovery removal
+##### 7.1.6.3 Disaster recovery removal
 
 This topic describes how to remove a disaster recovery relationship.
 
@@ -18205,7 +18951,7 @@ secondary node, and then click **OK**. This operation stops the broker and remov
  /home/admin/store/config/subscriptionGroup.json .
 ```
 
-##### Capacity analysis
+##### 7.1.6.4 Capacity analysis
 
 You can view the performance metrics of a cluster within a specified time range, including the cluster-level resource usage overview and historical resource usage trends.
 
@@ -18223,7 +18969,7 @@ rate, and total throughput of the cluster. The dotted orange line in the chart r
 **Save time trend**: displays the trend chart of the retention period of messages on the
 broker. The default message retention period is 72 hours. e O&M
 
-#### Operational audit
+#### 7.1.7 Operational audit
 
 This topic describes how to view the logs of operations performed on an ApsaraMQ for RocketMQ 4.x cluster.
 1. Log in to the RocketMQ 4.x Operations Console.
@@ -18234,9 +18980,9 @@ operation logs.
 **Department ID**, **Operation type**, **Operation Time**, **Action Item**, and **Operation**
 **parameters**.
 
-### 文档标题缺失，请补全后重新导出
+### 7.2 文档标题缺失，请补全后重新导出
 
-#### Log in to the Kafka Operations Console
+#### 7.2.1 Log in to the Kafka Operations Console
 
 e O&M This topic describes how to log in to the Kafka Operations Console.
 
@@ -18252,7 +18998,7 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 5. In the top navigation bar, choose **Product Operation > Middleware > Kafka**
 **Operations Console**.
 
-#### Overview
+#### 7.2.2 Overview
 
 This topic describes how to query the metrics of ApsaraMQ for Kafka.
 1. Log in to the Kafka Operations Console.
@@ -18273,7 +19019,7 @@ usage top broker, inflow TPS top broker, outflow TPS top broker, alert statistic
 |---|---|
 | Last 5 alarm records | This section displays the most recent five alert records, including the alert item, severity, and alert time. Click View more to go to the Alert List page. On this page, you can view the alert information, including real-time alerts that are not handled and historical alerts that are handled. |
 
-#### Instance list
+#### 7.2.3 Instance list
 
 This topic describes how to view, configure, and diagnose instances.
 1. Log in to the Kafka Operations Console.
@@ -18297,7 +19043,7 @@ e O&M
 | Version Number | The Kafka version used by the instance. |
 | Operation | Click View to go to the Broker Management page. You can view the information about the brokers on the instance. Click Configuration. In the Instance configuration panel, you can view the keys and values of the current instance. Click Diagnosis to view the diagnostic report of the instance. In the Diagnostic Report dialog box, click View Details in the Operation column. The detailed diagnostic information is displayed in the JSON format. |
 
-#### Broker list
+#### 7.2.4 Broker list
 
 This topic describes how to view the detailed information about a broker.
 1. Log in to the Kafka Operations Console.
@@ -18332,15 +19078,15 @@ e O&M
 
 &M
 
-## Big data O&M
+## 8 Big data O&M
 
-### Bigdata Manager
+### 8.1 Bigdata Manager
 
-#### Apsara Big Data Manager
+#### 8.1.1 Apsara Big Data Manager
 
 Apsara Big Data Manager (ABM) is an operations and maintenance (O&M) platform tailored for big data services. ABM supports monitoring, management, and O&M in multiple dimensions, such as business, services, clusters, and hosts. Customer O&M teams or on-site personnel can easily complete unified O&M of big data services based on the service capabilities of ABM. ABM supports the following services: MaxCompute DataWorks Realtime Compute (Blink) Quick BI DataHub MaxCompute DataWorks Realtime Compute Quick BI Graph Analytics DataHub ABM supports O&M on big data services from the perspectives of business, services, clusters, and hosts. ABM also allows you to update big data services, customize alert configurations, and view the O&M history. ABM provides the following features: Allows you to view and configure MaxCompute projects. Allows you to perform O&M on big data services from the perspectives of business, services, clusters, and hosts. Allows you to manage jobs, accounts, alerts, patches, and health check items of various services. Allows you to manage data stored in Tablestore and Object Storage Service (OSS).
 
-#### Common operations
+#### 8.1.2 Common operations
 
 The data tables and legends in the ABM console help you perform common operations. This topic uses MaxCompute to describe the common operations.
 
@@ -18368,9 +19114,9 @@ checkers in ascending order or descending order. The highlighted up arrow indica
 
 Log on to the ABM console. In the upper-left corner of the ANM console, click the More icon and select MaxCompute. In the upper-right corner of the **MaxCompute** page, click **O&M**. On the page that appears, click the **Clusters** tab. On the Clusters page, you can view relevant metrics, such as CPU and memory usage, of the desired cluster. The following example describes the CPU usage of a cluster. The trend chart displays the trend lines of the total CPU usage (cpu), CPU usage for executing code in kernel space (sys), and CPU usage for executing code in user space (user) for the specified cluster over time in different colors. Click in the upper-right corner of the chart to zoom in the chart. You can specify the start time and end time in the upper-left corner of the enlarged chart to view the CPU utilization of the cluster in the specified period.
 
-#### Quick start
+#### 8.1.3 Quick start
 
-##### Log on to the ABM console
+##### 8.1.3.1 Log on to the ABM console
 
 This topic describes how to log on to the Apsara Big Data Manager (ABM) console. &M
 
@@ -18389,7 +19135,7 @@ The password is 10 to 20 characters in length.
 6. In the **Big Data** section, click **Apsara Bigdata Manager** to go to the homepage of the
 ABM console.
 
-##### Set the theme of the console
+##### 8.1.3.2 Set the theme of the console
 
 You can set the theme of the Apsara Big Data Manager (ABM) console to dark or bright based on your preferences. By default, the dark theme is used.
 
@@ -18404,7 +19150,7 @@ An ABM account and the corresponding password are obtained.
 | Bright | If the dark theme is used, you can move the pointer over the username in the upper-right corner and turn off the switch to change to the bright theme. |
 | Dark | If the bright theme is used, you can move the pointer over the username in the upper-right corner and turn on the switch to change to the dark theme. |
 
-##### View the trace dashboards
+##### 8.1.3.3 View the trace dashboards
 
 The dashboard is used to display the key running metrics of MaxCompute, DataWorks, RealtimeCompute, and DataHub products, as well as alarms of all big data products. This allows you to understand the running status of big data products as a whole. &M
 
@@ -18437,7 +19183,7 @@ RealtimeCompute cluster jobs, and the trend charts of CPU and memory usage.
 **DataHub** section displays the trend charts of read /write latency, number of read /write
 records, read /write QPS, read /write byte traffic, CPU level, and memory level of the DataHub cluster.
 
-##### View the cluster running status
+##### 8.1.3.4 View the cluster running status
 
 Apsara Big Data Manager (ABM) provides you with several operation metrics of clusters, such as CPU usage, memory usage, load, storage, and health check result. This helps you understand the running status of clusters at any time. Based on relevant metrics, you can evaluate whether the selected cluster has operation risks.
 
@@ -18460,7 +19206,7 @@ for the cluster appears. On the **Overview** page, you can view the host status,
 
 You can evaluate the operation risks of a cluster based on the metrics such as the service status, CPU usage, disk usage, memory usage, and load. If the cluster has any Critical, Warning, or Exception alerts, you need to check and clear them in a timely manner. You need to pay special attention to the Critical and Warning alerts. For more information, see View and clear cluster alerts.
 
-##### View and clear cluster alerts
+##### 8.1.3.5 View and clear cluster alerts
 
 If you find alerts on the cluster overview page, go to the cluster health status page to view and clear the alerts. This topic uses one Apsara Big Data Manager (ABM) service as an example to describe how to view and clear alerts.
 
@@ -18487,9 +19233,9 @@ To log on to a host with alerts for related operations, click the **Log On** ico
 8. After you clear an alert for a host, click **Refresh** in the Actions column of the host to run
 the checker again for the host. In this way, you can check whether the alert is cleared.
 
-#### Monitoring
+#### 8.1.4 Monitoring
 
-##### ABM dashboard
+##### 8.1.4.1 ABM dashboard
 
 &M The Apsara Bigdata Manager (ABM) dashboard shows the key indicators of MaxCompute, DataWorks, Realtime Compute for Apache Flink, and DataHub. The dashboard also provides information about the alerts for all big data services and helps you understand the overall status of these services. The dashboard supports auto-refresh and full-screen display.
 
@@ -18548,7 +19294,7 @@ If auto-refresh is enabled, the icon is replaced with the icon. The system autom
 
 The dashboard supports full-screen display. This feature allows you to view the status of big data services. &M At the top of the **Dashboard** tab, click the icon to display the **Dashboard** tab in fullscreen mode.
 
-##### ABM repository
+##### 8.1.4.2 ABM repository
 
 The Repository page in the Apsara Big Data Manager (ABM) console displays the resource usage in MaxCompute, DataWorks, and DataHub. This topic describes the features of the ABM repository and how to access the Repository page.
 
@@ -18574,7 +19320,7 @@ In the left-side navigation pane of the **Repository** page, click **DataHub**. 
 
 You can filter or sort records of CU, storage, and slot usage based on a column to facilitate information retrieval. For more information, see Common operations.
 
-##### Health
+##### 8.1.4.3 Health
 
 In the Apsara Big Data Manager (ABM) console, the Degree of health page allows you to view the monitoring items of each big data service and the alerts of different levels of severity and check the monitoring items and alerts again after the alerts are handled.
 1. Log in to the ABM console.
@@ -18583,7 +19329,7 @@ After you log in to the **ABM** console, the **Instrument cluster** page appears
 3. Click the **Degree of health** tab to view the health check result.
 The Degree of health page displays the monitoring items, monitoring sources, severity level, and monitoring details. You can filter data based on your business requirements.
 
-##### Reports
+##### 8.1.4.4 Reports
 
 In the Apsara Big Data Manager (ABM) console, the Report page allows you to view the inspection results of each big data service.
 1. Log in to the ABM console.
@@ -18592,9 +19338,9 @@ After you log in to the **ABM** console, the **Instrument cluster** page appears
 3. Click the **Report** tab to view the reports.
 The Report page displays the following information about each report: ID, Report Name, Product, Template Name, Instance Type, Created By, and Created At. You can also view the details about each report.
 
-#### ABM
+#### 8.1.5 ABM
 
-##### O&M overview
+##### 8.1.5.1 O&M overview
 
 This topic describes the O&M modules of Apsara Big Data Manager (ABM) and how to go to the O&M page of ABM.
 
@@ -18614,9 +19360,9 @@ icon and click **ABM**.
 3. In the upper-right corner of the ABM page, click **O&M**. By default, the **Business** tab
 appears. The **O&M** page consists of the **Business** and **Environment O&M** modules.
 
-##### Business O&M
+##### 8.1.5.2 Business O&M
 
-###### View cron jobs
+###### 8.1.5.2.1 View cron jobs
 
 This topic describes how to use Apsara Big Data Manager (ABM) to view cron jobs that are run by each product, trend charts of tunnel engine scheduling, and trend charts of instances that have execution errors.
 1. In the upper-left corner of the ABM console, click the
@@ -18626,7 +19372,7 @@ icon and click **ABM**.
 3. In the left-side navigation pane, click **Cron Jobs** to view the details about the cron jobs.
 &M
 
-###### Create and configure a zone-disaster
+###### 8.1.5.2.2 Create and configure a zone-disaster recovery project in MaxCompute
 
 **recovery project in MaxCompute**
 
@@ -18686,15 +19432,15 @@ column.
 7. Confirm the correctness of parameter configurations and click **Run**.
 If the modified configurations do not take effect, the reason may be that the zonedisaster recovery feature of ABM is not enabled. In this case, contact Apsara Stack technical support.
 
-#### Management
+#### 8.1.6 Management
 
-##### Overview
+##### 8.1.6.1 Overview
 
 The management module is the configuration and software management center of Apsara Big Data Manager (ABM). It is an important functional module that supports and customizes O&M items for services. The management module supports the following features: Jobs: allows you to run jobs to perform O&M operations on big data products. API Management: allows you to manage the permissions of ABM APIs. Health Checks: allows you to create health check items and apply them to service hosts. Operation Logs: allows you to view the job execution records and other service O&M operations in ABM.
 
-##### Jobs
+##### 8.1.6.2 Jobs
 
-###### Overview
+###### 8.1.6.2.1 Overview
 
 This topic describes the UIs for job management and terms related to jobs in Apsara Big Data Manager (ABM). ABM allows you to run jobs to perform O&M operations on big data services. Jobs in ABM are run to perform O&M operations on physical devices in a cluster. The Job Services module contains the **Job Execution** page. &M
 
@@ -18712,9 +19458,9 @@ The **Job Execution** page contains the following tabs:
 | Cron Jobs | You can enable, disable, view, or run cron jobs, and view their execution history. You can search, copy, export, and delete cron jobs. |
 | Execution History | You can view the execution history of ordinary and cron jobs. You can search, view details of, and preview job execution history. |
 
-###### Jobs
+###### 8.1.6.2.2 Jobs
 
-###### Manually run a job
+###### 8.1.6.2.2.1 Manually run a job
 
 After you create an ordinary job in the Apsara Big Data Manager (ABM) console, you must manually run the job to perform O&M operations on the corresponding service. You can also manually run a cron job.
 
@@ -18736,7 +19482,7 @@ After you click Confirm, an execution record is automatically generated on the *
 8. On the Job Execution page, click **Start** at the top to run the job.
 If you exit the Job Execution page without performing any operations, you can find the execution record about a job on the **Execution History** page and click **View** to go to the detailed execution page. &M
 
-###### Enable or disable a cron job
+###### 8.1.6.2.2.2 Enable or disable a cron job
 
 By default, cron jobs are disabled in the Apsara Big Data Manager (ABM) console and do not take effect. You need to manually enable cron jobs. If you do not need a cron job to run during a specified period of time, you can manually disable it.
 
@@ -18750,7 +19496,7 @@ An ABM administrator account is obtained.
 5. On the **Cron Jobs** page, you can enable or disable a cron job.
 To enable a cron job in the Inactive status, click **Enable** in the Actions column of the cron job. After a cron job is enabled, its **Status** changes to **Active**, and the **Enable** button changes to **Disable**. To disable a cron job in the Active status, click **Disable** in the Actions column of the cron job. After a cron job is disabled, its **Status** changes to **Inactive**. The **Disable** button changes to **Enable**.
 
-###### View the execution history of a job
+###### 8.1.6.2.2.3 View the execution history of a job
 
 Apsara Big Data Manager (ABM) allows you to view the execution history of a specific job to learn its execution status.
 
@@ -18773,7 +19519,7 @@ navigation pane of the page that appears, click **Job Services**.
 **History** page appears.
 On the **Execution History** page, you can view the execution history of this job. For more information, see View the execution history.
 
-###### View execution history
+###### 8.1.6.2.2.4 View execution history
 
 Apsara Big Data Manager (ABM) allows you to view the execution history of jobs and schemes to learn about their execution details.
 
@@ -18826,9 +19572,9 @@ The following table lists the operations that you can perform on records in diff
 |   | View the execution details of failed steps | On the Servers page of a step, click View Details in the Actions column of a certain server. The execution details of the step on the server, including the execution output and error message, appear in the Execution Details section. After you view the details of the server that has exceptions during the execution, you can click Skip to skip this server. Alternatively, you can click Retry to execute the step again on the server. If the step contains a script, the Script Content and Execution Parameters pages will appear. You can view the script content and the script execution parameters. If the step contains a command, the Commands and Execution Parameters pages will appear. You can view the command content and the command execution parameters. |
 |   | Cancel the job | Click Cancel in the upper-right corner of the job details page to cancel the job. |
 
-##### Health management
+##### 8.1.6.3 Health management
 
-###### Health management
+###### 8.1.6.3.1 Health management
 
 Apsara Big Data Manager (ABM) provides a wide variety of built-in checkers for each big data service. These checkers are used to check service faults and send alerts. This helps you detect and fix faults in a timely manner.
 
@@ -18942,7 +19688,7 @@ appears.
 5. Find the desired monitoring item and click **Delete** in the Actions column. In the message
 that appears, click **OK**. The monitoring item is deleted.
 
-###### Inspection management
+###### 8.1.6.3.2 Inspection management
 
 The inspection management feature of Apsara Big Data Manager (ABM) allows you to configure inspection scenarios, inspection items, and scenario combinations based on your business requirements. &M
 
@@ -18990,7 +19736,7 @@ requirements.
 After a scenario combination is created, you can **Edit**, **Manage Patrol Items**, and view
 **Execution History** of the scenario combination.
 
-##### Operation auditing
+##### 8.1.6.4 Operation auditing
 
 This feature allows you to view the O&M operations of the current service of Apsara Big Data Manager (ABM). The details of each operation are provided for retrieval and fault locating.
 
@@ -19027,7 +19773,7 @@ operations listed in the following table based on your situation.
 7. To download the O&M operation execution logs, click **Download Execution Details** at the
 top to save the logs to your local device.
 
-#### Go to other consoles
+#### 8.1.7 Go to other consoles
 
 Apsara Big Data Manager (ABM) provides links to the Apsara Uni-manager Operations Console (ASO), Apsara Infrastructure Management Framework console, and Apsara Stack Security Center console to facilitate the operations and maintenance (O&M) of big data services.
 
@@ -19042,9 +19788,9 @@ icon in the upper-left corner. In the **Site Navigation** section, click **ASO**
 
 After you click **ASO** or **TIANJI**, you can log on to the Apsara Uni-manager Operations Console or the Apsara Infrastructure Management Framework console without the need to enter your username and password. After you click **YUNDUN**, you must enter the username and password to log on to the Apsara Stack Security Center console.
 
-### Elasticsearch
+### 8.2 Elasticsearch
 
-#### Log in to the Elasticsearch O&M
+#### 8.2.1 Log in to the Elasticsearch O&M console
 
 **console**
 
@@ -19067,9 +19813,9 @@ The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 5. In the top navigation bar, choose **Product Operation > Big Data > Elasticsearch**.
 
-#### Cluster management
+#### 8.2.2 Cluster management
 
-##### Cluster list
+##### 8.2.2.1 Cluster list
 
 After you create an Elasticsearch cluster, you can view the basic information of the cluster in the cluster list of the Elasticsearch O&M console. Log in to the Elasticsearch O&M console. The Instance Management page appears. In the cluster list on the Instance Management page, you can view all Elasticsearch clusters and perform the following operations: Search or filter clusters. When you have large numbers of clusters, you can search clusters by cluster ID or customer ID, or filter clusters by namespace. View the basic information of a cluster, including the ID, status, health status, version, number of data nodes, customer ID, and namespace of the cluster. Delete a cluster. To delete a cluster, click **Delete** in the **Action** column of the cluster.
 
@@ -19077,7 +19823,7 @@ After you create an Elasticsearch cluster, you can view the basic information of
 
 After the cluster is deleted, the related data is cleared and the cluster cannot be restored. Exercise caution when you perform this operation.
 
-##### Create a cluster
+##### 8.2.2.2 Create a cluster
 
 We recommend that you create clusters in the user-side console. If the clusters in the userside console cannot meet your business requirements, you can create clusters in the O&Mside console after assessing the O&M risks. For example, you can create clusters of low specifications for testing or create clusters of Elasticsearch versions other than the suggested versions in the O&M-side console. This topic describes how to create an Elasticsearch cluster in the O&M-side console. &M For more information about how to create a cluster in the user-side console, see the
 **Create a cluster** topic in **Elasticsearch User Guide**.
@@ -19121,7 +19867,7 @@ version. Then, click **Next**. We recommend that you select V7.10.0 or V6.8.13.
 6. Click **Start Creation**.
 After the cluster is created, you are redirected to the **Instance Management** page. Check the status of the cluster. Wait until the cluster enters the Normal state. Before you use the cluster, you must configure a whitelist. Otherwise, you may encounter issues such as monitoring data collection failure or Kibana console login failure. For more information, see Security settings. &M
 
-##### View the basic information of an
+##### 8.2.2.3 View the basic information of an Elasticsearch cluster
 
 **Elasticsearch cluster**
 
@@ -19137,7 +19883,7 @@ column.
 4. On the **Basic Information** page, view the basic information of the cluster.
 The **Basic Information** page displays the chip architecture, deployment mode, endpoint, and IP address and port of the domain name of the cluster. This page also displays the entry to the Kibana console. You can use this information to access the cluster or Kibana console. The page also displays the configuration for each type of node in the cluster and visualizes the cluster, which allows you to learn about the cluster configuration and helps you decide whether to upgrade or downgrade the cluster to meet your business requirements.
 
-##### Log in to the Kibana console
+##### 8.2.2.4 Log in to the Kibana console
 
 Apsara Stack Elasticsearch provides the Kibana console for you to scale your businesses. The Kibana console is seamlessly integrated into Elasticsearch. It allows you to view the status of your Elasticsearch cluster in real time and manage the cluster. This topic describes how to log in to the Kibana console.
 
@@ -19152,7 +19898,7 @@ The cluster is in the Normal state, and Kibana nodes are enabled. An account is 
 6. On the login page of the Kibana console, enter the username and password, and click Log
 in. The username is elastic. The password is the one that is specified when you created the Elasticsearch cluster.
 
-##### Log on to the Dashboards console
+##### 8.2.2.5 Log on to the Dashboards console
 
 &M The OpenSearch Dashboards console is the core visualization and interaction tool in the OpenSearch ecosystem. It provides a web-based user interface to query, analyze, visualize, and manage data stored in an OpenSearch cluster. With features such as rich charts, dashboards, log browsing, and alerting, you can efficiently explore data, monitor system status, and generate insights. This topic describes how to log on to the OpenSearch Dashboards console.
 
@@ -19168,9 +19914,9 @@ The default username is admin. The password is the one that you set when you cre
 6. In the upper-left corner, click the
 icon and choose **Management > Dev Tools** to go to the **Console** page.
 
-##### Backup and recovery
+##### 8.2.2.6 Backup and recovery
 
-###### Snapshots
+###### 8.2.2.6.1 Snapshots
 
 This topic describes how to use the snapshot feature to configure automatic backup and manually create snapshots.
 
@@ -19195,7 +19941,7 @@ and time, and click **Confirm**.
 
 The first snapshot is a backup of all cluster data. The amount of time required for creating the first snapshot depends on the data volume. We recommend that you create snapshots during off-peak hours. The scheduled backup feature compromises the query and write performance of the cluster. Therefore, you need to specify a proper backup frequency and interval. We recommend that you do not specify a short backup interval. After you confirm the configuration, the system periodically creates backups based on the specified backup cycle. If you want to create a backup immediately, click **Backup Now**. After automatic backup is complete, you can click **Disable Automatic Backup** to disable the feature. If you enable the feature again, you must re-associate a repository. The existing backup records are not affected. You can also query snapshots and refresh the snapshot list. The snapshot list automatically clears automatic backup records once every hour. Only the latest 10 records are retained. The snapshot list does not clear manual backup records that are generated after you click **Backup Now**.
 
-###### Restore data from snapshots
+###### 8.2.2.6.2 Restore data from snapshots
 
 The snapshot restoration feature allows you to restore Elasticsearch data from snapshots with a few clicks. It is suitable for auto and manual data restoration from snapshots. You can use this feature to restore data from snapshots of other Elasticsearch clusters.
 1. Log on to the Search & Analysis Service O&M console.
@@ -19225,9 +19971,9 @@ data.
 
 6. Click **Restore**.
 
-##### Plug-in management
+##### 8.2.2.7 Plug-in management
 
-###### Install, update, and uninstall plug-ins
+###### 8.2.2.7.1 Install, update, and uninstall plug-ins
 
 You must install a plug-in before you can use it. Built-in plug-ins are installed by default. This topic describes how to install a non-built-in plug-in.
 
@@ -19250,7 +19996,7 @@ Plug-in installation triggers cluster restarts. Proceed with caution. Update a p
 6. Click **Confirm**.
 Then, the system restarts the cluster. After the cluster is restarted, the plug-in is installed or updated. You can also use the same method to install or update Kibana plug-ins on the Kibana Plugin page. After the plug-in is installed or updated, you can click **Uninstall** or **Batch Uninstall** to uninstall the plug-in. If an error occurs during the plug-in installation or update, contact the O&M engineer.
 
-###### Modify the configuration of built-in plug-
+###### 8.2.2.7.2 Modify the configuration of built-in plug-ins
 
 **ins**
 
@@ -19276,7 +20022,7 @@ side. &M
 9. Click **Confirm**. In the message that appears, click **Confirm**.
 After you confirm the operation, the system restarts the cluster. After the cluster is restarted, the configuration file of the plug-in is modified.
 
-##### Configure cluster O&M
+##### 8.2.2.8 Configure cluster O&M
 
 You can use the cluster O&M feature to update the kernel version, diagnose cluster health, and upgrade the deployment mode. You can also modify the password, specifications, and YML file of an Elasticsearch cluster. This topic describes how to use the cluster O&M feature.
 
@@ -19438,7 +20184,7 @@ If the resources meet the condition, click **Next**.
 7. In the message that appears, click **Confirm**.
 Then, the system starts to upgrade the deployment mode and restarts the cluster at the same time. After the cluster enters the Normal state, the upgrade is complete.
 
-###### Upgrade the version
+###### 8.2.2.8.1 Upgrade the version
 
 This topic describes how to upgrade the kernel version during cluster Operations and Maintenance (O&M).
 
@@ -19472,7 +20218,7 @@ If no upgradable version or kernel image is detected, no action is required.
 5. In the dialog box that appears, click **Confirm**.
 After the upgrade is complete, the cluster status is Normal, and the instance version and image version are updated to the latest versions.
 
-###### Security settings
+###### 8.2.2.8.2 Security settings
 
 Security settings let you enable the HTTPS protocol with one click, change the ES port number, manage the VPC internal-facing access whitelist, modify account information, and view certificate details.
 
@@ -19582,7 +20328,7 @@ Solution: Add the IP address of the Kibana service to the account's whitelist an
 **Can log on to Kibana**.
 Cross-cluster access error Error message: [][22.0.x.x:9300] general node connection failure Cause: The interacting clusters have different certificates. &M Solution: Consult an on-site O&M engineer, or see the instance management operations in the O&M guide.
 
-###### Instance specifications
+###### 8.2.2.8.3 Instance specifications
 
 You can modify the specifications of an instance to change the size of its nodes.
 
@@ -19597,7 +20343,7 @@ For more information about the configuration parameters, see Create an instance.
 5. Click **Save**.
 6. In the dialog box, select a restart method for the cluster and click **OK**.
 
-###### Cluster configuration
+###### 8.2.2.8.4 Cluster configuration
 
 The configuration of an Elasticsearch cluster is not displayed in the console. However, it helps you learn more about the cluster. This topic describes the parameters in the index template.
 
@@ -19716,7 +20462,7 @@ The configuration of an Elasticsearch cluster is not displayed in the console. H
 |---|---|---|---|
 | led |   |   |   |
 
-###### Upgrade the deployment method
+###### 8.2.2.8.5 Upgrade the deployment method
 
 You can upgrade the deployment method of a cluster, such as from a single-zone to a multizone deployment.
 
@@ -19742,9 +20488,9 @@ click **Start**.
 7. In the dialog box that appears, click **OK**.
 &M After you click OK, the system begins to upgrade the deployment method, and the cluster restarts. The upgrade is complete when the cluster status changes to Normal.
 
-#### Platform management
+#### 8.2.3 Platform management
 
-##### Repository management
+##### 8.2.3.1 Repository management
 
 This topic describes how to use the repository management feature to manage the snapshot repositories of Elasticsearch. The automatic backup feature of Elasticsearch clusters relies on repositories. You can use this feature to query, add, modify, and delete repositories.
 
@@ -19790,7 +20536,7 @@ If automatic backup is enabled, the configuration of automatic backup remains un
 A deleted repository cannot be restored. Exercise caution when you perform this operation.
 3. In the message that appears, click **Confirm**.
 
-##### Plug-in management
+##### 8.2.3.2 Plug-in management
 
 The plug-in management feature allows you to manage Elasticsearch plug-ins, Logstash plugins, and Kibana plug-ins. The plug-ins described in this topic are platform plug-ins, which are separately managed by Elasticsearch cluster version. The installation and updating of plugins rely on the plug-in library of the platform.
 
@@ -19821,10 +20567,10 @@ After the upload is complete, the plug-in is displayed in the plug-in list. &M I
 1. Go to the plug-in management page.
 2. In the upper-left corner of the page, select an Elasticsearch version.
 3. Click **Update** in the **Action** column of a plug-in.
+不支持更新内置插件。
 
 **Important**
 
-不支持更新内置插件。
 4. In the **Update Plugin** dialog box, upload the plug-in installation package.
 5. Click **Upload**.
 
@@ -19839,7 +20585,7 @@ After the upload is complete, the plug-in is displayed in the plug-in list. &M I
 Proceed with caution because you must reinstall the plug-in if you want to use the plug-in again. If an existing cluster uses a plug-in that has been deleted, the cluster fails to perform the rolling, scale-out, and restart operations.
 4. Click **Confirm**.
 
-##### Resource management
+##### 8.2.3.3 Resource management
 
 This topic describes how to view the resource usage of physical machines on the Resource Management page.
 1. Log in to the Elasticsearch O&M console.
@@ -19849,7 +20595,7 @@ This topic describes how to view the resource usage of physical machines on the 
 resource usage. You can view the following resource usage information: **Physical Machine Name**, **CPU**
 **Allocated Resources**, **CPU**, **Memory Allocated Resources**, and **Memory Size**.
 
-##### Zone configuration
+##### 8.2.3.4 Zone configuration
 
 &M The zone configuration feature allows you to manage zones based on the deployment method of Elasticsearch clusters. This topic describes how to modify the zone configuration.
 
@@ -19866,7 +20612,7 @@ The zone configuration feature applies only to Elasticsearch clusters that are d
 4. Select a deployment method and zones based on your business requirements.
 5. Click **Save**.
 
-##### Operation control
+##### 8.2.3.5 Operation control
 
 The operation control feature allows you to manage and control the use of AnyTunnel and operations performed by other users to modify Elasticsearch clusters. This topic describes how to control the use of AnyTunnel and the operations performed by other users to modify Elasticsearch clusters.
 
@@ -19901,7 +20647,7 @@ This setting affects the use of Elasticsearch. Proceed with caution. Refer to th
 4. After you change the settings, click **Modify**.
 &M
 
-##### Benchmark test
+##### 8.2.3.6 Benchmark test
 
 To assess whether the configuration of a newly created Elasticsearch cluster meets your business requirements, you can use the benchmark test feature provided by Apsara Stack Elasticsearch to benchmark the read and write performance of the cluster with a few clicks.
 
@@ -19931,9 +20677,9 @@ Wait until the test is complete and click **View Results** in the Action column 
 6. Optional. Delete the benchmark test results.
 On the Benchmark Testing page, click **Delete** in the **Action** column of the test to delete the benchmark test results. You can also select multiple tests and click **Batch Delete** to delete the benchmark test results of these tests at a time.
 
-#### Logging and monitoring
+#### 8.2.4 Logging and monitoring
 
-##### View logs
+##### 8.2.4.1 View logs
 
 This topic describes the types and levels of Elasticsearch logs and how to view logs.
 
@@ -20155,7 +20901,7 @@ kubectl get es ${es_name} -o yaml -n ${namespace} | grep -w image
 
 ${es_name} indicates the name of the Elasticsearch cluster. ${namespace} indicates the namespace of the Elasticsearch cluster. The baseline Elasticsearch cluster is used as an example. Run the `kubectl get es` elasticsearch-cluster -o yaml -n elasticsearch | grep -w image command to query the tag number of the image. The following figure shows the result. The obtained tag number is 6.8.13_1.3.0_5-arm64. The image uses the ARM architecture. The image tag number 6.8.13_1.3.0_5 is greater than 6.8.13_1.3.0_3_1. Therefore, the baseline cluster runs a new Elasticsearch version. &M
 
-##### View Elasticsearch monitoring metrics
+##### 8.2.4.2 View Elasticsearch monitoring metrics
 
 This topic describes how to view Elasticsearch monitoring metrics on a custom dashboard.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -20424,7 +21170,7 @@ For more information about operations on custom dashboards, see the **Monitoring
 **Dashboards > Custom Dashboards** section in the **Apsara Stack O&M Platform**
 **User Guide**.
 
-##### View the Grafana monitoring dashboard
+##### 8.2.4.3 View the Grafana monitoring dashboard for Elasticsearch
 
 **for Elasticsearch**
 
@@ -20456,7 +21202,7 @@ icon. In the search box, enter Elasticsearch. In the search results, click the n
 9. On the monitoring dashboard, select the target instance from the **Cluster** drop-down list at
 the top to view the monitoring dashboard for the instance.
 
-##### Instance monitoring alerts
+##### 8.2.4.4 Instance monitoring alerts
 
 You can use the Grafana monitoring dashboard to view the monitoring metrics for your Elasticsearch cluster. This helps you understand the real-time status of the cluster, promptly address potential risks, and ensure stable operation. This topic describes the meaning of each monitoring metric, common causes of anomalies, and recommended actions.
 
@@ -20816,7 +21562,7 @@ This metric represents the number of active threads in the cluster thread pool.
 
 The maximum thread count depends on the node specifications. For write and search threads, the limit typically matches the number of CPU cores. For example, a 4-core data node allows up to 4 write threads. If the write concurrency exceeds this limit, excess requests are queued, which is visible in the Thread Pool operations queued metric. If the queue becomes full, additional requests are rejected.
 
-##### Default monitoring alerts for the O&M
+##### 8.2.4.5 Default monitoring alerts for the O&M platform
 
 **platform**
 
@@ -20980,13 +21726,13 @@ Synchronization is abnormal, which affects disaster recovery.
 
 This alert is triggered if the index synchronization speed of the secondary cluster is slower than the index write speed of the primary cluster for 5 minutes. anagement
 
-## Security management
+## 9 Security management
 
-### Security operations
+### 9.1 Security operations
 
-#### Security Operations Center (SOC)
+#### 9.1.1 Security Operations Center (SOC)
 
-##### Use the threat monitoring feature
+##### 9.1.1.1 Use the threat monitoring feature
 
 Security administrators can use the threat monitoring feature to understand the overall security of a network. This topic describes how to use the threat monitoring feature.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -21007,9 +21753,9 @@ anagement
 |---|---|
 | Threat Situation | The following list describes the statistics on the threat event situation from the perspective of threat event management: Threat Event Distribution by Level: displays the distribution and statistics on threat events at the following severity levels: emergency, serious, suspicious, moderate, and information. Trend of Threat Events: displays the trend in the number of threat events. If you select Today or Last 24 Hours from the time picker, the trend is displayed by hour. If you select Last 7 Days or Last 30 Days from the time picker, the trend is displayed by day. Threat Event Distribution by Type: displays the distribution and statistics on threat events in the following types: exception, malware, unauthorized privilege escalation, vulnerability exploitation, and risk connection. ATT&CK Attack Behavior: displays the statistics on ATT&CK involved in threat events. Top 10 Threat Events: displays the number of times that the top 10 threat events are detected. Threat Event Distribution by Attack Chain: displays the attack phases involved in threat events and the number of times that the threat events are detected. Attack phases include payload delivery, vulnerability exploitation, webshell insertion, command control, scan extension, privilege escalation, and target attack. |
 
-##### Risk analysis
+##### 9.1.1.2 Risk analysis
 
-###### View threat events
+###### 9.1.1.2.1 View threat events
 
 This topic describes how to view threat events. Security administrators can obtain threat details based on these events to ensure network security.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21032,7 +21778,7 @@ Click the rule ID next to **Analytic Rule** to view more information about the r
 **and Response (SOAR)** console. This helps monitor and handle this threat event.
 On the **Evidence Details** tab, view the raw logs of the threat event.
 
-###### Use the threat investigation feature
+###### 9.1.1.2.2 Use the threat investigation feature
 
 The threat investigation feature allows you to perform comprehensive threat investigations based on IP addresses, asset names, and asset IDs. This topic describes how to use the threat investigation feature.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21045,7 +21791,7 @@ of the required asset, and then click the icon. For an asset whose threat inform
 5. On the page that appears, view the risk items.
 The modules displayed vary based on the asset. The modules displayed on the console shall prevail. The following list describes the common modules: Asset Details: displays the network topology and asset fingerprints of the asset. The asset fingerprints include ports, software, processes, accounts, middleware, and startup items. Suspicious Process: displays statistics on the suspicious processes in the asset in the form of charts and tables. The statistics include the total number of suspicious processes, suspicious process distribution by level, suspicious process distribution by type, and the top five suspicious processes. Network Attack: displays statistics on the network attacks on the asset in the form of charts and tables. The statistics include the total number of network attacks, distribution of network attack data sources, distribution of network attack types, and the top five network attacks. Vulnerabilities: displays statistics on the vulnerabilities in the asset and the failed baseline check items for the asset in the form of lists. Attack Surface: displays the attack paths of attacks to which the asset is exposed.
 
-###### Use the cloud service check feature
+###### 9.1.1.2.3 Use the cloud service check feature
 
 You can use built-in security baselines to check and manage the security compliance of Apsara Stack services. This topic describes how to perform a cloud service check and view check data.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21087,7 +21833,7 @@ After you configure the check policy, Security Operations Center (SOC) automatic
 8. View the check results.
 In the baseline list, view the following information about baselines: Cloud Product Baseline, Baseline Category, Baseline Type, Risk Level, Affected assets, Last Checked At, and Status. Find a baseline and click its name or click **Details** in the **Actions** column. In the panel that appears, view data on the Baseline Check Details and Cloud Service Instances tabs. If an organization or instance is riskless, you can select and add the organization or instance to the whitelist. Find a baseline and click **Verify** in the **Actions** column, or select multiple baselines and click **Verify** below the baseline list to verify that the detected baseline risks are fixed. During the verification for a baseline, click **View** in the Actions column of the baseline to view the verification progress. You can also click **Cancel Verification** in the Actions column of the baseline to cancel the verification.
 
-###### View vulnerability analysis results
+###### 9.1.1.2.4 View vulnerability analysis results
 
 This topic describes how to view vulnerability analysis results on the platform side. Security administrators can use the results to troubleshoot issues.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21131,7 +21877,7 @@ anagement
 
 All search results are displayed in the baseline list. You can perform the following operations based on your business requirements: Click the icon to refresh the baseline list. Click the icon to export the baseline list. Click the name of a baseline or click **Details** in the **Actions** column of a baseline to view the baseline details, including the baseline description and affected cloud service instances.
 
-###### Use the traffic analysis feature
+###### 9.1.1.2.5 Use the traffic analysis feature
 
 This topic describes how to view traffic analysis data, including traffic of source and destination IP addresses, inbound and outbound traffic, and average traffic. anagement
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21148,9 +21894,9 @@ conditions to view the global traffic information.
 | Search condition (marked 2 in the preceding figure) | In this section, you can specify search conditions to search for traffic analysis data. You can specify search conditions based on your business requirements. You can specify the time range, application, source IP address, destination IP address, source port, and destination port. |
 | Search result (marked 3 in the preceding figure) | In this section, Security Operations Center (SOC) displays the search results that meet the specified search conditions. |
 
-##### Threat intelligence
+##### 9.1.1.3 Threat intelligence
 
-###### View the intelligence overview
+###### 9.1.1.3.1 View the intelligence overview
 
 You can view the overall situation and statistics of threats to your assets on the Intelligence Overview page. This topic describes how to view the threat intelligence of assets. anagement
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21168,7 +21914,7 @@ detected on your assets by the threat intelligence feature.
 | Threat Intelligence Call Summary | This section displays the query statistics of threat intelligence in the following parts: Threat Indicators: the number of API calls. Threat IoC Query Type: the numbers of queries for IP addresses, domain names, and files. API Query Source Distribution: the proportions of query sources. Threat Intelligence Query Statistics: the trends of threats within the specified time range. |
 | Threat Intelligence Tag Distribution | This section displays the following statistics about the tags that are added to threat intelligence: The numbers of tags at the high, medium, and low severity levels. Top 10 Hit Intelligence Tags: This part displays the top 10 tags that occur most frequently in the Threat Tag column and the number of occurrences for each tag in the Hits column. |
 
-###### Manage the threat intelligence module
+###### 9.1.1.3.2 Manage the threat intelligence module
 
 The threat intelligence module displays an overview of threat intelligence quota usage and statistics on intelligence applications, providing a centralized presentation of the threat intelligence quota. A security administrator can monitor and collect threat intelligence about services by using the threat intelligence module. This topic describes how to manage the threat intelligence module.
 1. Log on to the Apsara Uni-manager Operations Console..
@@ -21194,9 +21940,9 @@ anagement
 After the configuration is complete, you can view information and statistics of threats on the
 **Intelligence Overview** page. For more information, see Query threat intelligence.
 
-##### Asset management
+##### 9.1.1.4 Asset management
 
-###### View platform assets
+###### 9.1.1.4.1 View platform assets
 
 anagement This topic describes how to view the protection information about physical machines on which platform assets are deployed. Security administrators can locate issues and obtain handling suggestions based on the information.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21218,9 +21964,9 @@ behavior characteristics and distribution of each process in the system. You can
 **Today**, **Last 24 Hours**, **Last 7 Days**, **Last 30 Days**, or **Custom** as a time range to
 query. The default time range is 30 days. In the **Process Tree** section, you can view the process location based on PIDs, usernames, and process names, along with a process tree view that provides correlation analysis and traceability for related scenarios. In the **Process Behavior** section,you can view the process behavior and its details. You can click a process behavior name to view the detailed timeline of the corresponding process. You can also **Details** next to a process to view the process details.
 
-##### Log management
+##### 9.1.1.5 Log management
 
-###### View the information on the Log
+###### 9.1.1.5.1 View the information on the Log Overview page
 
 **Overview page**
 
@@ -21254,7 +22000,7 @@ Move a widget In the widget that you want to manage, click the icon and drag the
 **View**. In the upper-right corner of the **Overview** page, click the
 icon. . Export snapshots on the page In the upper-right corner of the **Overview** page, click the icon. Customize a widget View a statement In the **test** widget, move the pointer over the icon and click **View Statement**. Edit a widget a. In the **test** widget, move the pointer over the icon and click **Edit View**. b. In the **Customize Chart** section of the **Edit View** dialog box, configure the Chart Type, Chart Size, Chart Title, Statistics Field, X-axis Field, and Y-Axis Field parameters. c. Click **Generate Preview** to view the custom widget. After you confirm the configurations, click **Save to Log Overview**. Close a widget In the **test** widget, move the pointer over the icon and click **Close View**. In the upper-right corner of the **Overview** page, click the icon. Remove a widget from default widgets In the **test** widget, move the pointer over the icon and click **Remove from Default**. In the upper-right corner of the **Overview** page, click the icon. anagement
 
-###### View platform logs
+###### 9.1.1.5.2 View platform logs
 
 Platform logs record information about Apsara Stack Security. Security administrators can use these logs to troubleshoot issues that occur on Apsara Stack Security. This topic describes how to view platform logs.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -21297,7 +22043,7 @@ The system displays logs in a column chart based on the specified filter conditi
 5. Optional. Click **Save as Analysis Rule**. In the **Create Rule** dialog box, the **Log Scope**
 and **Search Condition** parameters are automatically configured based on the previous parameter settings. Configure the **Threat Name** parameter and click **OK**. For more information about parameter settings, see Create an analysis rule. After a rule is created, you can view the rule whose type is **Custom Association Rule** on the **Analytic Rules** page.
 
-###### View tenant logs
+###### 9.1.1.5.3 View tenant logs
 
 Tenant logs record information about tenants. Security administrators can use these logs to troubleshoot issues that occur on the tenant side. This topic describes how to view tenant logs. anagement
 1. Log on to the Apsara Uni-manager Management Console.
@@ -21338,9 +22084,9 @@ Example 2:
 
 The system displays **tenant logs** in a column chart based on the query conditions that you specify. You can view the numbers of logs at different points in time within the specified time range. You can also view the details of the queried logs in the log list. To configure the fields that you want to display in the log list, click the icon. To view the details of a log, click **Details** in the data column of the log. To export the log list, click the icon.
 
-###### Log configurations
+###### 9.1.1.5.4 Log configurations
 
-###### Manage log sources
+###### 9.1.1.5.4.1 Manage log sources
 
 You can manage log sources of the Third-party Network Element or Terminal type on the Log Sources tab as a security administrator. This topic describes how to manage the log sources that are connected to Security Operations Center (SOC).
 1. Log on to the Apsara Uni-manager Management Console.
@@ -21405,7 +22151,7 @@ step. If a different value is displayed in the Why Not Recognized column, click 
 **Parsing Rule** to modify the existing rules based on the value, or click **Create Rule**
 to create a parsing rule for the log source. You can **modify** or **delete** a log source based on your business requirements.
 
-###### Configure a log parsing template
+###### 9.1.1.5.4.2 Configure a log parsing template
 
 Security Operations Center (SOC) provides the log parsing feature. Security administrators can configure log parsing templates based on their business requirements to manage logs in an efficient manner. This topic describes how to configure a log parsing template.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -21423,7 +22169,7 @@ Specify a log parsing method. Configure the **Log Sample**, **Log Identifier**, 
 7. After all rules are created, click **Confirmation**.
 The log parsing template that you created is displayed in the log parsing list. You can modify or delete the template based on your business requirements.
 
-###### Configure log forwarding
+###### 9.1.1.5.4.3 Configure log forwarding
 
 Security Operations Center (SOC) provides the log forwarding feature. Security administrators can forward logs based on their business requirements and view logs at the earliest opportunity. You can specify multiple log sources for a log forwarding task. You can also forward logs that belong to specified organizations. This topic describes how to configure a log forwarding task.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -21432,11 +22178,7 @@ Security Operations Center (SOC) provides the log forwarding feature. Security a
 **Region** drop-down list and click **Access with Authorized Role**.
 3. In the left-side navigation pane, choose **Logs > Log Configurations**.
 4. On the **Log Forwarding** tab, click **Create Forwarding Task**. In the panel that appears,
-configure the following parameters and click **OK**. You can set the Data Protocol parameter to Syslog or Kafka.
-
-**Syslog**
-
-anagement
+configure the following parameters and click **OK**. You can set the Data Protocol parameter to Syslog or Kafka. anagement
 
 | Parameter | Description |
 |---|---|
@@ -21464,9 +22206,9 @@ anagement
 
 To create multiple log forwarding tasks, repeat the preceding steps. After you create a log forwarding task, you can view and manage the log forwarding task in the log forwarding task list. You can filter log forwarding tasks by **scope** or **task name**. You can **turn on** or **turn off** the switches in the Status column to enable or disable log forwarding. You can **modify** or **delete** a log forwarding task.
 
-##### Policy management
+##### 9.1.1.6 Policy management
 
-###### Create an analysis rule
+###### 9.1.1.6.1 Create an analysis rule
 
 You can perform comprehensive association analysis on a large number of logs based on the analysis logic of an analysis rule to detect threats and risks and trace attack paths of multiphase attacks. This way, security administrators can obtain helpful risk information in an efficient and quick manner and the efficiency of security operations is improved. This topic describes how to create a custom analysis rule. This topic describes how to create an analysis rule. anagement
 
@@ -21526,7 +22268,7 @@ In the rule list, click **Copy** in the **Actions** column. In the **Copy Rule**
 
 You can edit or delete a custom rule that is created based on the Copy operation. You can delete a predefined rule that is created based on the Copy operation.
 
-###### Create a response policy
+###### 9.1.1.6.2 Create a response policy
 
 You can create a response policy to quickly handle threat events and security alerts (security alerts on the Operations Center page), and monitor risk information related to threat events, security alerts (security alerts on the Operations Center page), security baselines, and security vulnerabilities. Real-time alert notifications are sent to specified contacts via DingTalk or email. This topic describes how to create a response policy. anagement
 
@@ -21625,15 +22367,15 @@ b. The notification settings. You can configure the notification methods and rec
 1. In the left-side navigation pane, choose **Policies** > **Response Policy**.
 2. In the response policy list, click **Edit** or **Delete** in the **Actions** column.
 
-### Network security
+### 9.2 Network security
 
 anagement
 
-#### Web Application Firewall (WAF)
+#### 9.2.1 Web Application Firewall (WAF)
 
-##### Protection configuration
+##### 9.2.1.1 Protection configuration
 
-###### Add a website to WAF for protection
+###### 9.2.1.1.1 Add a website to WAF for protection
 
 Compared with tenant-side Web Application Firewall (WAF), platform-side WAF is used to manage the status of intrusion protection configurations at the WAF platform management side and the service group management side. Platform-side WAF performs intrusion detection and request processing on platform-side web traffic. If you want WAF to perform actions on traffic to a specific domain name, you must add the domain name to WAF. This topic describes how to add a domain name to WAF.
 
@@ -21696,7 +22438,7 @@ After you add a website to WAF, WAF processes attacks that match the protection 
 **More** drop-down list.
 Modify basic information about protected websites Find the protected website whose basic information you want to modify and click the icon in the **Actions** column. On the **Basic Information** tab, click the icon to the right of each configuration item to modify the corresponding information. You can modify the following information about the website on the Basic Information tab: name, listening port, domain name, and remarks. Modify the method of recording logs Click the icon in the **Actions** column. On the **Request Processing Method** tab, click the icon to the right of **Access Log Record** to modify the method of recording logs. View and modify protection methods Website Protection Policies: View the details of the protection policies that you configured, such as decoding methods, attack detection modules, block options, HTTP response processing, HTTP request body detection, and detection timeout. Click the icon to the right of Default Policy Set to modify protection policies. For more information about protection policies, see Configure protection policies. Customize Rules: You can click Add Customized Rule to add custom rules in the Customize Rules section. For more information, see Create a custom rule. anagement Source IP Recording Options: You can specify the method to obtain the IP address of the origin server. The IP address of the origin server can be obtained from the X- Forwarded-For header. User Identification: You can specify the method to identify users. For more information, see the description of the User Identification parameter in this topic.
 
-###### Configure protection policies
+###### 9.2.1.1.2 Configure protection policies
 
 Web Application Firewall (WAF) provides default protection policies. You can also configure custom protection policies. This topic describes how to configure custom protection policies.
 
@@ -21748,7 +22490,7 @@ i. Find a specific module in the **Attack Detection Modules** section and click 
 6. Manage a protection policy.
 To delete a protection policy, perform the following steps: Select the protection policy. In the upper-right corner, choose **More > Delete Selected Protection Policies**. In the message that appears, click **OK**.
 
-###### Create a custom rule
+###### 9.2.1.1.3 Create a custom rule
 
 You can create custom rules to meet different requirements for intrusion protection and filter out specific requests. This topic describes how to create a custom rule for Web Application Firewall (WAF).
 
@@ -21795,7 +22537,7 @@ You can view and manage custom rules in the custom rule list. View custom rules 
 **Rules**, **Disable Selected Rules**, or **Delete Selected Rules** to enable, disable, or delete
 the rules.
 
-###### Configure an HTTP flood protection rule
+###### 9.2.1.1.4 Configure an HTTP flood protection rule
 
 An HTTP flood attack is a type of DDoS attack that targets the application layer. Attackers use proxy servers or zombies to overwhelm targeted web servers by sending a large number of HTTP requests. This topic describes how to configure an HTTP flood protection rule.
 
@@ -21837,9 +22579,9 @@ Filter HTTP flood protection rules In the upper-right corner of the page, click 
 **Selected Rules**, **Disable Selected Rules**, or **Delete Selected Rules** from the **More**
 drop-down list.
 
-##### Protection logs
+##### 9.2.1.2 Protection logs
 
-###### View attack detection logs
+###### 9.2.1.2.1 View attack detection logs
 
 You can use attack detection logs to analyze the attacks on your web services. You can update your protection policies and custom rules and fix web service vulnerabilities based on the analysis results to enhance the security of your web services. This topic describes how to view attack detection logs. 1.
 2. In the top navigation bar, choose **Security Management > Network Security > Web**
@@ -21861,7 +22603,7 @@ icon in the
 **Actions** column to download the logs.
 Switch between display modes Click the icon and select **List** or **Detailed View** as the display mode as the logs.
 
-###### View HTTP flood protection logs
+###### 9.2.1.2.2 View HTTP flood protection logs
 
 You can use HTTP flood protection logs to analyze the HTTP flood attacks on your web services. You can update your HTTP flood protection rules and HTTP flood attack whitelist and fix web service vulnerabilities based on the analysis results to enhance the security of your web services. This topic describes how to view HTTP flood protection logs. 1.
 2. In the top navigation bar, choose **Security Management > Network Security > Web**
@@ -21869,7 +22611,7 @@ You can use HTTP flood protection logs to analyze the HTTP flood attacks on your
 3. In the left-side navigation pane, choose **Detection Logs > HTTP Flood Detection Logs**.
 On the HTTP Flood Detection Logs page, you can view HTTP flood protection logs and perform the following operations based on your business requirements: Filter logs Click **Filter**, specify filter conditions, and then click **OK**. If you specify multiple filter conditions, Web Application Firewall (WAF) combines the conditions by using the logical AND operator. The system returns logs that match all conditions. Add an HTTP flood attack to the blacklist anagement Find the HTTP flood attack that you want to add to the blacklist and click the icon in the **Actions** column to create a blacklist rule. In the **Add to Blacklist** panel, enter a name for the blacklist rule and click **OK**.
 
-###### View system operation logs
+###### 9.2.1.2.3 View system operation logs
 
 This topic describes how to view system operation logs. 1.
 2. In the top navigation bar, choose **Security Management > Network Security > Web**
@@ -21884,7 +22626,7 @@ icon in the
 Switch between display modes In the upper-right corner of the Attack Detection Logs page, click the icon and select
 **List** or **Detailed View** to specify the display mode for the logs.
 
-###### View access logs
+###### 9.2.1.2.4 View access logs
 
 This topic describes how to view access logs. 1.
 2. In the top navigation bar, choose **Security Management > Network Security > Web**
@@ -21899,9 +22641,9 @@ icon in the
 Switch between display modes In the upper-right corner of the Attack Detection Logs page, click the icon and select
 **List** or **Detailed View** to specify the display mode for the logs.
 
-##### System management
+##### 9.2.1.3 System management
 
-###### Configure global system settings
+###### 9.2.1.3.1 Configure global system settings
 
 You can configure global system settings for Web Application Firewall (WAF) to enable the global protection engine, specify the upper limit of downloaded logs, and enable traffic forwarding for the HTTPS proxy. This topic describes how to configure global system settings. 1.
 2. In the top navigation bar, choose **Security Management > Network Security > Web**

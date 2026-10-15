@@ -3,16 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "7781c39f8542828b_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Ma"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Situation%20Awareness%20Cloud%20Security%20Management%20Center%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Situation Awareness Cloud Security Management Center Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log in to the Apsara Infrastructure Management console
+- 2 SOC
+  - 2.1 Check the service status
+    - 2.1.1 Perform the basic inspection
+    - 2.1.2 Perform the advanced inspection
+      - 2.1.2.1 Perform the advanced inspection on SocApp
+      - 2.1.2.2 Perform the advanced inspection on SiemAPP
+    - 2.1.3 Perform the business inspection
+  - 2.2 Restart SocApp
+  - 2.3 Restart SiemApp
+
 ucture Management console
 
-## Log in to the Apsara
+## 1 Log in to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -44,11 +57,11 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Apsara Infrastructure Management**.
 
-## SOC
+## 2 SOC
 
-### Check the service status
+### 2.1 Check the service status
 
-#### Perform the basic inspection
+#### 2.1.1 Perform the basic inspection
 
 The basic inspection of Security Operations Center (SOC) checks whether a service runs as expected. This topic describes how to perform the basic inspection.
 
@@ -65,11 +78,11 @@ The basic inspection of Security Operations Center (SOC) checks whether a servic
 6. In the left-side pane of the **Component Details** page, click **yundun-soc** to check whether
 the value of the Status Details parameter is Ready.
 
-#### Perform the advanced inspection
+#### 2.1.2 Perform the advanced inspection
 
 The advanced inspection of Threat Detection Service (TDS) checks whether the service runs as expected and check the service features.
 
-##### Perform the advanced inspection on
+##### 2.1.2.1 Perform the advanced inspection on SocApp
 
 **SocApp**
 
@@ -87,7 +100,7 @@ Run the following command: `sudo -u admin /home/admin/yundunsoc/bin/preload.sh` 
 5. View the following log files:
 /home/admin/yundunsoc/logs/isoc.log: stores the info logs that are generated during the running of SocApp, including the operations center, risk analysis, and log management. /home/admin/yundunsoc/logs/common-default.log: stores the info logs that are generated during the running of SocApp, including asset management and alert rule settings. /home/admin/yundunsoc/logs/common-error.log: stores the logs that are generated when SocApp fails.
 
-##### Perform the advanced inspection on
+##### 2.1.2.2 Perform the advanced inspection on SiemAPP
 
 **SiemAPP**
 
@@ -101,7 +114,7 @@ Run the `sudo -u admin /home/admin/yundunsiem/bin/preload.sh` command. If ok is 
 5. View the following log files:
 /home/admin/yundunsiem/logs/importer_all.log: stores the info logs that are generated during the running of SiemApp. /home/admin/yundunsiem/logs/common-error.log: stores the logs that are generated when SiemApp fails. /home/admin/yundunsiem/logs/common-default.log: stores the middleware-related logs that are generated during the running of SiemApp.
 
-#### Perform the business inspection
+#### 2.1.3 Perform the business inspection
 
 The business inspection of Security Operations Center (SOC) checks whether the businesslevel services run as expected.
 1. Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, choose
@@ -139,7 +152,7 @@ Product Operation > Security O&M > Cloud Shield Operations Center.
 6. Click the ASM tab to view the detailed system monitoring information.
 7. Click the Report tab to view the detailed system monitoring information.
 
-### Restart SocApp
+### 2.2 Restart SocApp
 
 If SocApp of Security Operations Center (SOC) fails, perform the following steps to restart SocApp:
 1. Log in to the terminal server.
@@ -182,7 +195,7 @@ kill -9 Process ID
   curl http://127.0.0.1:10070/checkpreload.htm
 ```
 
-### Restart SiemApp
+### 2.3 Restart SiemApp
 
 If SiemApp of Security Operations Center (SOC) fails, perform the following steps to restart SiemApp:
 1. Log in to the terminal server.

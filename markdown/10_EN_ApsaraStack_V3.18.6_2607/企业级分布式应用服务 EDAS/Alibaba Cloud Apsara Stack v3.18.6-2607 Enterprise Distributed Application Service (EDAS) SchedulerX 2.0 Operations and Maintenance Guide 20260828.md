@@ -3,18 +3,40 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "47d6254ada378be1_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20SchedulerX%202.0%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Service architecture
+  - 1.1 System architecture
+  - 1.2 Components and their functions
+- 2 Routine maintenance
+  - 2.1 Central scheduling cluster inspection
+  - 2.2 Control platform health check
+  - 2.3 Health checks for basic components
+    - 2.3.1 MySQL health check
+    - 2.3.2 ZooKeeper health check
+    - 2.3.3 DAuth health check
+  - 2.4 Security maintenance
+- 3 Troubleshooting
+  - 3.1 Incident response mechanism
+  - 3.2 Troubleshooting methods
+  - 3.3 Troubleshooting and O&M
+    - 3.3.1 SchedulerX console
+    - 3.3.2 Central scheduling cluster (SchedulerX-Server)
+    - 3.3.3 Common basic components: ZooKeeper cluster
+  - 3.4 Connect SchedulerX2 to Monitoring and Alerts
+
 cture
 
-## Service architecture
+## 1 Service architecture
 
-### System architecture
+### 1.1 System architecture
 
 SchedulerX consists of a scheduling cluster, a control system, clients, ZooKeeper, MySQL, and a monitoring and alerting system. The following figure shows the system architecture. Figure 1. SchedulerX service architecture SchedulerX-Console Netty
 
@@ -24,7 +46,7 @@ SchedulerX consists of a scheduling cluster, a control system, clients, ZooKeepe
 
 MySQL ZooKeeper Netty SchedulerX-Client
 
-### Components and their
+### 1.2 Components and their functions
 
 **functions**
 
@@ -45,11 +67,11 @@ SchedulerX includes the central scheduling cluster (SchedulerX-Server), the web 
 
 enance
 
-## Routine maintenance
+## 2 Routine maintenance
 
 After deployment, SchedulerX requires ongoing operations and maintenance (O&M) to ensure its stability and availability. This maintenance includes managing the middleware components that SchedulerX depends on. The main daily O&M checks are as follows.
 
-### Central scheduling cluster
+### 2.1 Central scheduling cluster inspection
 
 **inspection**
 
@@ -81,7 +103,7 @@ Ensure that you can connect to the address server and that the latency is low. O
 ping jmenv.tbsite.net
 ```
 
-### Control platform health check
+### 2.2 Control platform health check
 
 The SchedulerX Console is a web application that runs in an AliTomcat container. The default HTTP port is 7001. To perform a health check on the control platform, follow these steps:
 1. Verify that the Tomcat process is running and that port 7001 is open.
@@ -96,17 +118,17 @@ status.
 4. As the admin user, go to the /home/admin/dts-console/bin directory and run **./appctl.sh**
 **start**.
 
-### Health checks for basic
+### 2.3 Health checks for basic components
 
 **components**
 
 This topic describes the health checks for basic components, such as MySQL, ZooKeeper, and Dauth.
 
-#### MySQL health check
+#### 2.3.1 MySQL health check
 
 SchedulerX depends on the MySQL database service. Run the following command: telnet ${db_domainName} 3306 . In this command, db_domainName is the domain name of the database. A successful connection indicates that the database service is running correctly.
 
-#### ZooKeeper health check
+#### 2.3.2 ZooKeeper health check
 
 1. Check the disk space.
 ZooKeeper writes data to the disk. If the disk is full, data cannot be added or modified.
@@ -121,7 +143,7 @@ df -lh df -lh /home/admin/
 
 2. Run `top` to ensure that system memory and CPU usage are normal.
 
-#### DAuth health check
+#### 2.3.3 DAuth health check
 
 DAuth is a web system that is deployed on Tomcat. Perform the following checks.
 1. Check if the Tomcat process is running and port 8080 is open.
@@ -136,23 +158,23 @@ Because DAuth is also a Diamond client, perform the following checks:
 2. Run the command `curl 'http://jmenv.tbsite.net:8080/diamond-server/diamond-unit-`
 `spas'` to retrieve a list of servers for the Diamond SPAS unit. Ping each server and ensure enance the latency is below 10 ms.
 
-### Security maintenance
+### 2.4 Security maintenance
 
 Regularly change account passwords and use strong passwords to ensure account security. This is especially important for SchedulerX administrator accounts. As needed, configure an Intrusion Detection and Prevention System (IDPS) to monitor internal and external network traffic in real time to prevent abnormal activity and attacks.
 
-## Troubleshooting
+## 3 Troubleshooting
 
-### Incident response mechanism
+### 3.1 Incident response mechanism
 
 A maintenance team should establish an incident response mechanism to promptly resolve failures or security incidents and resume production.
 
-### Troubleshooting methods
+### 3.2 Troubleshooting methods
 
 If you find a system fault during routine maintenance, use the O&M features of Scheduler and the system logs to obtain detailed information, analyze the cause, and resolve the fault. If you cannot resolve the fault, collect relevant information, such as system info and fault symptoms, and contact an Alibaba Cloud technical support engineer for assistance. After you resolve a fault, review the issue, summarize your findings, and implement improvements.
 
-### Troubleshooting and O&M
+### 3.3 Troubleshooting and O&M
 
-#### SchedulerX console
+#### 3.3.1 SchedulerX console
 
 **The console starts but is inaccessible**
 
@@ -174,7 +196,7 @@ automatic log cleanup is configured, and then restart ZooKeeper. For configurati
 2. Check if the ZooKeeper process is shut down. If it is, restart ZooKeeper.
 3. Restart the console.
 
-#### Central scheduling cluster (SchedulerX-
+#### 3.3.2 Central scheduling cluster (SchedulerX-Server)
 
 **Server)**
 
@@ -193,13 +215,13 @@ If your application is working correctly, this issue is likely caused by a serve
 2. The server process is not running. If the ZooKeeper connection is normal, check the status
 of the server process. If the process is not running, restart the server.
 
-#### Common basic components: ZooKeeper
+#### 3.3.3 Common basic components: ZooKeeper cluster
 
 **cluster**
 
 Insufficient disk space A full disk is often caused by log files. Check the ZooKeeper log file usage and verify that automatic log cleanup is configured as follows: i. autopurge.purgeInterval This parameter specifies the cleanup frequency in hours. The value must be an integer of 1 or greater. The default value is 0, which disables the automatic cleanup feature. Set the value to 24. ii. autopurge.snapRetainCount This parameter is used with the autopurge.purgeInterval parameter. It specifies the number of files to retain. The default value is 3. Set the value to 7. Missing process Restart the process.
 
-### Connect SchedulerX2 to
+### 3.4 Connect SchedulerX2 to Monitoring and Alerts
 
 **Monitoring and Alerts**
 

@@ -2,16 +2,73 @@
 title: "Database Security Audit Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 98
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Database Security Audit Developer Guide 20260701.pdf"
+source_pdf: "73db1cb82506c174_Alibaba Cloud Apsara Stack V3.18.6 Database Security Audit Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Database%20Security%20Audit%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Database Security Audit Developer Guide 20260701
 
-## Preparations
+## Table of Contents
 
-### Log on to the API Tool console
+- 1 Preparations
+  - 1.1 Log on to the API Tool console
+  - 1.2 Obtain the information and the endpoint of an API operation
+  - 1.3 Obtain access credentials assigned by RAM
+  - 1.4 Obtain access credentials assigned by STS
+  - 1.5 Obtain the values of common request headers
+- 2 Call examples
+  - 2.1 SDK for Java
+    - 2.1.1 Use the SDK
+      - 2.1.1.1 Install the SDK for Java
+      - 2.1.1.2 Configure authentication credentials
+      - 2.1.1.3 Configure connection requests
+      - 2.1.1.4 Initiate a request
+      - 2.1.1.5 Troubleshooting
+      - 2.1.1.6 Use CommonRequest to call API operations
+  - 2.2 SDK for Python
+    - 2.2.1 Use the SDK
+      - 2.2.1.1 Install the SDK for Python
+      - 2.2.1.2 Configure authentication credentials
+      - 2.2.1.3 Configure HTTPS requests
+      - 2.2.1.4 Initiate a request
+      - 2.2.1.5 Troubleshooting
+      - 2.2.1.6 Use CommonRequest to call API operations
+  - 2.3 SDK for Go
+    - 2.3.1 Use the SDK
+      - 2.3.1.1 Install the core package of the SDK for Go
+      - 2.3.1.2 Configure authentication credentials
+      - 2.3.1.3 Initiate a request
+      - 2.3.1.4 Troubleshooting
+      - 2.3.1.5 Use CommonRequest to call API operations
+- 3 Common parameters
+- 4 DataBase Audit API reference
+  - 4.1 Databases
+    - 4.1.1 ListSupportDbTypesForDataSource
+    - 4.1.2 ListDataSources
+    - 4.1.3 CreateDataSource
+    - 4.1.4 ModifyDataSource
+    - 4.1.5 DeleteDataSource
+  - 4.2 Agents
+    - 4.2.1 GetAgentList
+  - 4.3 Risk identification rules
+    - 4.3.1 GetRuleList
+    - 4.3.2 EnableRulesForThisDB
+    - 4.3.3 DisableRulesForThisDB
+  - 4.4 Audit
+    - 4.4.1 GetDBAuditCount
+    - 4.4.2 GetAuditSearchList
+    - 4.4.3 GetFailedSqlList
+    - 4.4.4 GetSessionSearchList
+    - 4.4.5 GetFailedSessionList
+    - 4.4.6 GetRiskSqlSearchList
+    - 4.4.7 GetRiskBitsList
+    - 4.4.8 GetApiSearchConditionResult
+- 5 Error codes
+
+## 1 Preparations
+
+### 1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -39,7 +96,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### Obtain the information and
+### 1.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -62,14 +119,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-| Header | Description |
-|---|---|
-| x-acs-regionid | The region ID. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-instanceid | The ID of the instance that you want to manage. For example, you can use the ID of an Elastic Compute Service (ECS) instance obtained from the ECS instance list. |
-
-### Obtain access credentials
+### 1.3 Obtain access credentials assigned by RAM
 
 **assigned by RAM**
 
@@ -83,6 +133,13 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 
 The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions.
 
+| Header | Description |
+|---|---|
+| x-acs-regionid | The region ID. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-instanceid | The ID of the instance that you want to manage. For example, you can use the ID of an Elastic Compute Service (ECS) instance obtained from the ECS instance list. |
+
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
@@ -94,7 +151,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 
 The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair strictly confidential.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -116,7 +173,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 
 Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the actual session name. You can customize the session name. We recommend that you set the session name to your identity information such as username. This way, users who assume the same RAM role to perform operations can be distinguished based on the value of the `RoleSessionName` variable. This facilitates user-specific audit. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace this variable with the actual ARN of your RAM role. "sts.aliyuns.com": Replace this variable with the actual endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -136,7 +193,12 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the actual endpoint of STS. The format of an STS
 endpoint is sts-vpc.${global:region}.${global:internet-domain}.
@@ -160,20 +222,21 @@ evious step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a service. The
 following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
 Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace this variable with the actual region ID. <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS. <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS. <yourStsToken>: Replace this variable with the security token assigned by STS. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID.
-
-| Header | Description |
-|---|---|
 
 ```java
 public static void main(String[] args) {
@@ -212,15 +275,20 @@ ned in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### Obtain the values of common
+`}` `}`
+
+### 1.5 Obtain the values of common request headers
 
 **request headers**
 
 You must specify multiple request headers when you call Apsara Stack API operations. This topic describes the common request headers and how to obtain the values of the request headers. This topic also describes the return values of specific parameters after you call API operations.
+
+**Common request headers**
+
+| Header | Description |
+|---|---|
 
 | x-acs-regionid | The region ID. For more information about how to obtain region IDs, see Obtain a region ID. |
 |---|---|
@@ -263,25 +331,25 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The organization ID. |
 
-## Call examples
+## 2 Call examples
 
-### SDK for Java
+### 2.1 SDK for Java
 
-#### Use the SDK
+#### 2.1.1 Use the SDK
 
-##### Install the SDK for Java
+##### 2.1.1.1 Install the SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 and later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit OpenAPI Explorer. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about SDK versions, visit SDK Center.
 
 ```xml
-<dependency>
+<!-- Alibaba Cloud SDK for Java --> <dependency>
     <groupId>com.aliyun</groupId>
     <artifactId>aliyun-java-sdk-core</artifactId>
     <version>4.5.17</version>
 </dependency>
 ```
 
-##### Configure authentication credentials
+##### 2.1.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
@@ -300,7 +368,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
 
-##### Configure connection requests
+##### 2.1.1.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
@@ -312,7 +380,7 @@ Replace the variables in the following sample code with actual values. Delete th
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // Optional. Specify a read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // Optional. Specify a connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // Optional. Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // Optional. Specify the maximum number of requests. The supported data type is INTEGER
 ```
 
-.
+`.`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>); // Optional. Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** Optional. Specify whether to configure a proxy based on your business requirements. Sample code: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -330,7 +398,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace the variable
 profile.setHttpClientConfig(clientConfig);
 ```
 
-##### Initiate a request
+##### 2.1.1.4 Initiate a request
 
 This topic describes how to initiate a request by using Apsara Stack SDK for Java.
 
@@ -356,15 +424,18 @@ DescribeInstancesResponse response; try {
     response = client.getAcsResponse(request);
     for (DescribeInstancesResponse.Instance instance:response.getInstances()) {
         System.out.println(instance.getPublicIpAddress());
-    }
+```
+
+`}`
+
+```
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
-}
 ```
 
-In most cases, all returned parameters are deserialized into the response. You can call the `response.getXXX()` method to obtain the parameters in the response.
+`}` In most cases, all returned parameters are deserialized into the response. You can call the `response.getXXX()` method to obtain the parameters in the response.
 
 ```
 instanceStatus := response.getStatus()
@@ -376,7 +447,7 @@ If an exception occurs or you need the original HTTP response, you can use the `
 HttpResponse response = client.doAction(request);
 ```
 
-##### Troubleshooting
+##### 2.1.1.5 Troubleshooting
 
 If an error occurs on the server or in the SDK when you use Apsara Stack SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by Apsara Stack SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -404,10 +475,11 @@ to request technical support.
     // For example, you can display the error information.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-##### Use CommonRequest to call API operations
+`}`
+
+##### 2.1.1.6 Use CommonRequest to call API operations
 
 **Prerequisites**
 
@@ -417,7 +489,11 @@ page that appears, choose **API Integration** > **API Debugging**.
 
 **Important**
 
-We recommend that you do not download SDKs fromSDK Centerand use them in Apsara Stack. SDKs for the Alibaba Cloud public cloud may not support Apsara Stack API operations and may have compatibility issues. Proceed with caution. The following sample code provides an example on how to call RPC API operations. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
+We recommend that you do not download SDKs fromSDK Centerand use them in Apsara Stack. SDKs for the Alibaba Cloud public cloud may not support Apsara Stack API operations and may have compatibility issues. Proceed with caution.
+
+**Use CommonRequest to call API operations**
+
+The following sample code provides an example on how to call RPC API operations. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -472,14 +548,15 @@ ete operations.
             // Initiate the request and handle the response or exception.
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
-} th(S
 ```
 
-E `ti`
+`}`
 
 ```
-){
+th(S
 ```
+
+`E` `ti` `)``{`
 
 ```java
         } catch (ServerException e) {
@@ -488,12 +565,9 @@ E `ti`
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-The following sample code provides an example on how to call ROA API operations. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA API operations. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -555,16 +629,15 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### SDK for Python
+`}` `}` `}`
 
-#### Use the SDK
+### 2.2 SDK for Python
 
-##### Install the SDK for Python
+#### 2.2.1 Use the SDK
+
+##### 2.2.1.1 Install the SDK for Python
 
 This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x and later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -582,7 +655,7 @@ If you use Python 3.x, run the following command to install the core library of 
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Configure authentication credentials
+##### 2.2.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Python supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
@@ -594,7 +667,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-##### Configure HTTPS requests
+##### 2.2.1.3 Configure HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol.
 
@@ -629,7 +702,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 quest.
 ```
 
-##### Initiate a request
+##### 2.2.1.4 Initiate a request
 
 This topic describes how to initiate a request by using Apsara Stack SDK for Python.
 
@@ -659,7 +732,7 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-##### Troubleshooting
+##### 2.2.1.5 Troubleshooting
 
 If an error occurs on the server or in the SDK when you use Apsara Stack SDK for Python, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by Apsara Stack SDK for Python. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -680,7 +753,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-##### Use CommonRequest to call API operations
+##### 2.2.1.6 Use CommonRequest to call API operations
 
 **Prerequisites**
 
@@ -707,7 +780,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set the timeout period.
     verify=False, # Ignore the certificate or set verify='<certificate_path>'.
+```
+
 );
+
+```bash
 # Use with HTTPS.
 ```
 
@@ -735,7 +812,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. Required for modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -775,7 +856,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # Region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HTTPS. client.do_action_with_exception(request)
@@ -793,7 +874,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Ignore SSL certificate verification.
 ```
 
-)
+`)`
 
 **Specify a CA certificate file**
 
@@ -803,13 +884,13 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # Certificate path
 ```
 
-)
+`)`
 
-### SDK for Go
+### 2.3 SDK for Go
 
-#### Use the SDK
+#### 2.3.1 Use the SDK
 
-##### Install the core package of the SDK for Go
+##### 2.3.1.1 Install the core package of the SDK for Go
 
 This topic describes how to install the core package of Apsara Stack SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package of Apsara Stack SDK for Go:
 
@@ -817,7 +898,7 @@ This topic describes how to install the core package of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Configure authentication credentials
+##### 2.3.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Go supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
@@ -832,7 +913,7 @@ n ID.
         "<yourAccessKeyID>",             // Replace this variable with your AccessKey ID
 ```
 
-.
+`.`
 
 ```
         "<yourAccessKeySecret>")        // Replace this variable with your AccessKey
@@ -843,7 +924,7 @@ secret.
 
 Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
 
-##### Initiate a request
+##### 2.3.1.3 Initiate a request
 
 This topic describes how to initiate a request by using Apsara Stack SDK for Go. In this example, a request is initiated by using Elastic Compute Service (ECS) SDK for Go.
 1. Import ECS SDK for Go.
@@ -881,7 +962,7 @@ request := ecs.CreateDescribeInstanceAttributeRequest() request.InstanceId = ""
 response, err := ecsClient.DescribeInstanceAttribute(request)
 ```
 
-##### Troubleshooting
+##### 2.3.1.4 Troubleshooting
 
 When you use Apsara Stack SDK for Go, a `ClientError` response is returned if an error occurs on the client, or a `ServerError` response is returned if an error occurs on the server. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in the same manner as standard Go errors.
 
@@ -893,8 +974,9 @@ You can use the following code to handle errors:
 response,err := ecsClient.DescribeInstances(request) if err != nil {
     // Obtain the error information.
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
@@ -914,7 +996,7 @@ ame of the actual service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -924,8 +1006,9 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
     clientError.Message()
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
@@ -945,7 +1028,7 @@ ame of the actual service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -955,10 +1038,11 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
     serverError.Message()
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
-}
 ```
 
-##### Use CommonRequest to call API operations
+`}`
+
+##### 2.3.1.5 Use CommonRequest to call API operations
 
 **Prerequisites**
 
@@ -972,7 +1056,11 @@ Do not download SDKs directly from the SDK Center for Apsara Stack environments.
 
 **Background information**
 
-You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style. The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example:
+You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
+
+**CommonRequest call examples**
+
+The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example:
 
 ```java
 package main import (
@@ -981,7 +1069,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1009,12 +1097,15 @@ eter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
 
 ```java
 package main import (
@@ -1024,7 +1115,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -1053,10 +1144,15 @@ eld to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Set a proxy**
 
@@ -1067,17 +1163,17 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
-Set the proxy on the client. The following code is an example:
+`}` Set the proxy on the client. The following code is an example:
 
 ```
 // Proxy settings on the client have a higher priority than environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Set the HTTP proxy. client.GetHttpProxy() // Get the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Set the HTTPS proxy. client.GetHttpsProxy() // Get the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Set the proxy whitelist. client.GetNoProxy() // Get the proxy whitelist.
@@ -1109,18 +1205,18 @@ The client-level setting takes effect only if the request-level setting is not s
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the clien t to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting f or the client.
 ```
 
+## 3 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all Apsara Stack API requests. Table 1: Common request parameters
+
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
 | Format | Strin g | No | The format in which to return the response. Set the value to JSON. |
 | Version | Strin g | Yes | The version number of the API. Specify the version number in the YYYY-MM-DD format. Valid values: If you call the API operations of the cloud service whose service code is Auditprivate, set the value to 2018-01-16. If you call the API operations of the cloud service whose service code is yundunnextsoc, set the value to 2019-07-23. If you call the API operations of the cloud service whose service code is Sas, set the value to 2018-12-03. If you call the API operations of the cloud service whose service code is aegis, set the value to 2016-11-11. If you call the API operations of the cloud service whose service code is yundun-css, set the value to 2021-10-11. If you call the API operations of the cloud service whose service code is secspy, set the value to 2019-08-05. If you call the API operations of the cloud service whose service code is Ddosprivate, set the value to 2018-01-16. If you call the API operations of the cloud service whose service code is hsm-private, set the value to 2018-06-30. If you call the API operations of the cloud service whose service code is Cloudfw, set the value to 2017-12-07. If you call the API operations of the cloud service whose service code is Sddp, set the value to 2019-01-03. If you call the API operations of the cloud service whose service code is semawaf, set the value to 2020-07-01. If you call the API operations of the cloud service whose service code is soar, set the value to 2018-12-03. |
 | AccessKeyId | Strin g | Yes | The AccessKey ID provided by Apsara Stack. |
 | AccessKeySe cret | Strin g | Yes | The AccessKey secret provided by Apsara Stack. |
-
-## Common parameters
-
-**Common request parameters**
-
-Common request parameters must be included in all Apsara Stack API requests. Table 1: Common request parameters
 
 | RegionId | Strin g | Yes | The region ID of the service. |
 |---|---|---|---|
@@ -1131,11 +1227,25 @@ Common request parameters must be included in all Apsara Stack API requests. Tab
 
 Responses are returned in the unified format for API requests. The following HTTP status codes indicate different request states: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates a failed call. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the call is successful.
 
+## 4 DataBase Audit API reference
+
+**reference**
+
+### 4.1 Databases
+
+#### 4.1.1 ListSupportDbTypesForDataSource
+
+Queries a list of database types supported by Database Security Audit.
+
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ListSupportDb TypesForDataS ource | The operation that you want to perform. Set the value to ListSupportDbTypesForDataSo urce. |
 | RegionId | String | Yes | cn-hangzhou | The region ID. |
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1143,66 +1253,48 @@ Responses are returned in the unified format for API requests. The following HTT
 | DbTypes | Array | None | The queried database types. |
 | └ DbTypeName | String | Mysql | The name of the database type. |
 
-## DataBase Audit API
-
-**reference**
-
-### Databases
-
-#### ListSupportDbTypesForDataSource
-
-Queries a list of database types supported by Database Security Audit.
-
-**Request parameters**
-
-**Response parameters**
-
 | └ DbType | Integer | 3 | The code of the database type. Note The specific database type depends on the database type that you want to audit. You must specify the code of the database type when you add a database. |
 |---|---|---|---|
 | └ DbVersions | Array | None | The database versions. |
 | └ DbVersionNa me | String | 5.7 | The name of the database version. |
 | └ DbVersion | Integer | 5700 | The code of the database version. Note The specific database version depends on the database version that you want to audit. You must specify the code of the database version when you add a database. |
 
+**Examples**
+
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListSupportDbTypesForDataSource &RegionId=cn-hangzhou
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListSupportDbTypesForDataSource &RegionId=cn-hangzhou &InstanceId=dbaudit-****
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ListDataSource s | The operation that you want to perform. Set the value to ListDataSources. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "DbTypes":[
-        {
-            "DbVersions":[
-                {
-                    "DbVersion":5700,
-                    "DbVersionName":"5.7"
-                }
 ```
 
-`],`
+`{`
+
+```json
+            "DbVersions":[
+```
+
+`{`
+
+```json
+                    "DbVersion":5700,
+                    "DbVersionName":"5.7"
+```
+
+`}` `],`
 
 ```json
             "DbType":3,
             "DbTypeName":"Mysql"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
 <ListSupportDbTypesForDataSourceResponse>
@@ -1222,15 +1314,22 @@ Sample success responses `JSON` format
 </ListSupportDbTypesForDataSourceResponse>
 ```
 
-#### ListDataSources
+#### 4.1.2 ListDataSources
 
 Queries a list of databases to be audited.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ListDataSource s | The operation that you want to perform. Set the value to ListDataSources. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
+
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
 |---|---|---|---|---|
 | DbId | Integer | Yes | 1 | The database source ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1245,25 +1344,24 @@ Queries a list of databases to be audited.
 | └ DbAddress | List | None | The address of the data source. |
 | └ CreateTime | String | 2019-06-06 00:00:00 | The time when the data source was added. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListDataSources &RegionId=cn-hangzhou &DbId=1
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ListDataSources &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1
 ```
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateDataSou rce | The operation that you want to perform. Set the value to CreateDataSource. |
-
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "DataSources":[
-        {
+```
+
+`{`
+
+```json
             "DbVersion":5700,
             "CreateTime":"2019-06-06 00:00:00",
             "DbId":1,
@@ -1271,18 +1369,12 @@ Sample success responses `JSON` format
             "DbVersionName":"5.7",
             "DbType":3,
             "DbTypeName":"Mysql"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
+<ListDataSourcesResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <DataSources>
         <info>
@@ -1298,13 +1390,18 @@ Sample success responses `JSON` format
             <CreateTime>2019-06-06 00:00:00</CreateTime>
         </info>
     </DataSources>
+</ListDataSourcesResponse>
 ```
 
-#### CreateDataSource
+#### 4.1.3 CreateDataSource
 
 Adds a database to be audited.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateDataSou rce | The operation that you want to perform. Set the value to CreateDataSource. |
 
 | RegionId | String | Yes | cn-hangzhou | The region ID. |
 |---|---|---|---|---|
@@ -1316,23 +1413,27 @@ Adds a database to be audited.
 
 **Response parameters**
 
-None. Sample requests
+None.
+
+**Examples**
+
+Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=CreateDataSource &RegionId=cn-hangzhou &DbName=Platform Database &DbType=32 &DbVersion=6 &DbAddresses=192.168.XX.XX
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=CreateDataSource &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbName=Platform Database &DbType=32 &DbVersion=6 &DbAddresses=192.168.XX.XX
 ```
 
-Sample success responses `JSON` format
-
-```
-{}
-```
-
-`XML` format
+Sample success responses `JSON` format `{}` `XML` format
 
 ```xml
 <CreateDataSourceResponse></CreateDataSourceResponse>
 ```
+
+#### 4.1.4 ModifyDataSource
+
+Modifies the information about an audited database.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1344,21 +1445,48 @@ Sample success responses `JSON` format
 | DbVersion | Integer | Yes | 6 | The database version of the data source. For more information, see ListSupportDbTypesForDataSourc e. |
 | DbAddresses | String | Yes | 192.168.XX.XX | The IP address and port number of the data source. Separate multiple IP addresses and port numbers with commas (,). |
 
-#### ModifyDataSource
-
-Modifies the information about an audited database.
-
-**Request parameters**
-
 **Response parameters**
 
-None. Sample requests
+None.
+
+**Examples**
+
+Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ModifyDataSource &RegionId=cn-hangzhou &DbId=1 &DbName=Platform Database &DbVersion=6 &DbAddresses=192.168.XX.XX
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=ModifyDataSource &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1 &DbName=Platform Database &DbVersion=6 &DbAddresses=192.168.XX.XX
 ```
 
-Sample success responses
+Sample success responses `JSON` format `{`
+
+```json
+    "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
+    "DataSources":[
+```
+
+`{`
+
+```json
+            "DbVersion":5700,
+            "CreateTime":"2019-06-06 00:00:00",
+            "DbId":1,
+            "DbName":"Platform Database",
+            "DbVersionName":"5.7",
+            "DbType":3,
+            "DbTypeName":"Mysql"
+```
+
+`}` `]` `}` {} `XML` format
+
+```xml
+<ModifyDataSourceResponse></ModifyDataSourceResponse>
+```
+
+#### 4.1.5 DeleteDataSource
+
+Removes a data source from Database Security Audit.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1367,44 +1495,31 @@ Sample success responses
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
 | DbId | Integer | Yes | 1 | The database source ID. |
 
-`JSON` format
-
-```json
-{
-    "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
-    "DataSources":[
-        {
-            "DbVersion":5700,
-            "CreateTime":"2019-06-06 00:00:00",
-            "DbId":1,
-            "DbName":"Platform Database",
-            "DbVersionName":"5.7",
-            "DbType":3,
-            "DbTypeName":"Mysql"
-        }
-```
-
-]
-
-```
-}
-```
-
-{} `XML` format
-
-```xml
-<ModifyDataSourceResponse></ModifyDataSourceResponse>
-```
-
-#### DeleteDataSource
-
-Removes a data source from Database Security Audit.
-
-**Request parameters**
-
 **Response parameters**
 
-None. Sample requests
+None.
+
+**Examples**
+
+Sample requests
+
+```
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DeleteDataSource &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1
+```
+
+Sample success responses `JSON` format `{}` `XML` format
+
+```xml
+<DeleteDataSourceResponse></DeleteDataSourceResponse>
+```
+
+### 4.2 Agents
+
+#### 4.2.1 GetAgentList
+
+Queries a list of installed agents.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1413,32 +1528,10 @@ None. Sample requests
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
 | AgentIp | String | No | 192.168.XX.XX | The IP address of the agent. |
 
-```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DeleteDataSource &RegionId=cn-hangzhou &DbId=1
-```
-
-Sample success responses `JSON` format
-
-```
-{}
-```
-
-`XML` format
-
-```xml
-<DeleteDataSourceResponse></DeleteDataSourceResponse>
-```
-
-### Agents
-
-#### GetAgentList
-
-Queries a list of installed agents.
-
-**Request parameters**
-
 | AgentStatus | String | No | 0 | The state of the agent. Valid values: 0: all. 1: normal. 2: suspending. 3: actively suspended. 4: suspended due to timeout. 5: awakening. 6: interrupting. 7: interrupted. 8: abnormal. 9: abnormal version. 10: authenticating. 12: configuring. 13: upgrading. 14: upgrade failed. 15: upgrade timed out. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1450,8 +1543,6 @@ Queries a list of installed agents.
 | └ AgentCpu | String | 3 | The CPU utilization (%) of the agent. |
 | └ AgentMem | String | 3 | The memory usage (%) of the agent. |
 
-**Response parameters**
-
 | └ SendPacketC ount | String | 10000 | The total number of packets sent by the agent. |
 |---|---|---|---|
 | └ SendPackets | String | 100 | The packet rate of the agent. Unit: packets per second. |
@@ -1459,19 +1550,24 @@ Queries a list of installed agents.
 | └ FirstLoginTi me | String | 2020-09-01 00:00:00 | The time when the agent first logged in. |
 | └ LastActiveTi me | String | 2020-09-02 00:00:00 | The last time when the agent sent packets. |
 
+**Examples**
+
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAgentList &RegionId=cn-hangzhou &AgentIp=192.168.XX.XX
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAgentList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &AgentIp=192.168.XX.XX &AgentStatus=0
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "AgentList":[
-        {
+```
+
+`{`
+
+```json
             "AgentOs":"redhat6",
             "AgentStatus":"1",
             "AgentVersion":"3.2.5.3",
@@ -1482,18 +1578,12 @@ Sample success responses `JSON` format
             "AgentMem":"3",
             "SendPacketCount":"10000",
             "FirstLoginTime":"2020-09-01 00:00:00"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
+<GetAgentListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <AgentList>
         <info>
@@ -1504,17 +1594,21 @@ Sample success responses `JSON` format
             <AgentMem>3</AgentMem>
             <SendPacketCount>10000</SendPacketCount>
             <SendPackets>100</SendPackets>
+            <AgentStatus>1</AgentStatus>
             <FirstLoginTime>2020-09-01 00:00:00</FirstLoginTime>
             <LastActiveTime>2020-09-01 00:00:00</LastActiveTime>
         </info>
     </AgentList>
+</GetAgentListResponse>
 ```
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-### Risk identification rules
+### 4.3 Risk identification rules
 
-#### GetRuleList
+#### 4.3.1 GetRuleList
 
 Queries a list of rules contained in each rule group of Database Security Audit.
 
@@ -1525,6 +1619,8 @@ Queries a list of rules contained in each rule group of Database Security Audit.
 | Action | String | Yes | GetRuleList | The operation that you want to perform. Set the value to GetRuleList. |
 | RegionId | String | Yes | cn-hangzhou | The region ID. |
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1539,48 +1635,48 @@ Queries a list of rules contained in each rule group of Database Security Audit.
 | └ RiskType | Integer | 5 | The type of the risk that triggers the rule. |
 | └ SysDefn | Integer | 0 | Indicates whether the rule is a system default rule. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRuleList &RegionId=cn-hangzhou
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRuleList &RegionId=cn-hangzhou &InstanceId=dbaudit-****
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "RuleGroupList":[
-        {
+```
+
+`{`
+
+```json
             "GroupName":"Rule Group 1",
             "RuleList":[
-                {
+```
+
+`{`
+
+```json
                     "SysDefn":"0",
                     "RuleId":"2000001",
                     "RiskLevel":"3",
                     "RuleName":"Batch Deletion",
                     "RiskType":"5"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "GroupId":"1001"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
+<GetRuleListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <RuleGroupList>
         <info>
@@ -1597,9 +1693,14 @@ Sample success responses `JSON` format
             </RuleList>
         </info>
     </RuleGroupList>
+</GetRuleListResponse>
 ```
 
-#### EnableRulesForThisDB
+#### 4.3.2 EnableRulesForThisDB
+
+Enables rules for a database.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1609,45 +1710,65 @@ Sample success responses `JSON` format
 | DbId | Integer | Yes | 1 | The database ID. |
 | RuleIds | String | Yes | 94,106 | The rule IDs. Separate multiple rule IDs with commas (,). |
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DisableRulesFo rThisDB | The operation that you want to perform. Set the value to DisableRulesForThisDB. |
-
-Enables rules for a database.
-
-**Request parameters**
-
 **Response parameters**
 
-None. Sample requests
+None.
+
+**Examples**
+
+Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=EnableRulesForThisDB &RegionId=cn-hangzhou &DbId=1 &RuleIds=94,106
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=EnableRulesForThisDB &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1 &RuleIds=94,106
 ```
 
-Sample success responses `JSON` format
-
-```
-{}
-```
-
-`XML` format
+Sample success responses `JSON` format `{}` `XML` format
 
 ```xml
 <EnableRulesForThisDBResponse></EnableRulesForThisDBResponse>
 ```
 
-#### DisableRulesForThisDB
+#### 4.3.3 DisableRulesForThisDB
 
 Disables rules for a database.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DisableRulesFo rThisDB | The operation that you want to perform. Set the value to DisableRulesForThisDB. |
 
 | RegionId | String | Yes | cn-hangzhou | The region ID. |
 |---|---|---|---|---|
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
 | DbId | Integer | Yes | 1 | The database ID. |
 | RuleIds | String | Yes | 94,106 | The rule IDs. Separate multiple rule IDs with commas (,). |
+
+**Response parameters**
+
+None.
+
+**Examples**
+
+Sample requests
+
+```
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DisableRulesForThisDB &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1 &RuleIds=94,106
+```
+
+Sample success responses `JSON` format `{}` `XML` format
+
+```xml
+<DisableRulesForThisDBResponse></DisableRulesForThisDBResponse>
+```
+
+### 4.4 Audit
+
+#### 4.4.1 GetDBAuditCount
+
+Queries the audit statistics of a database.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1657,32 +1778,6 @@ Disables rules for a database.
 | DbId | String | Yes | 1 | The database ID. |
 
 **Response parameters**
-
-None. Sample requests
-
-```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=DisableRulesForThisDB &RegionId=cn-hangzhou &DbId=1 &RuleIds=94,106
-```
-
-Sample success responses `JSON` format
-
-```
-{}
-```
-
-`XML` format
-
-```xml
-<DisableRulesForThisDBResponse></DisableRulesForThisDBResponse>
-```
-
-### Audit
-
-#### GetDBAuditCount
-
-Queries the audit statistics of a database.
-
-**Request parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1696,19 +1791,19 @@ Queries the audit statistics of a database.
 | └ CurrentFailS essionCount | Long | 10000 | The number of failed sessions today. |
 | └ CurrentRiskC ount | Long | 10000 | The number of risks today. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetDBAuditCount &RegionId=cn-hangzhou &DbId=1
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetDBAuditCount &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &DbId=1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
+    "AuditInfo":{
         "SqlCount":10000,
         "CurrentSqlCount":20000,
         "AuditCount":15000,
@@ -1716,9 +1811,30 @@ Sample success responses `JSON` format
         "CurrentSessionCount":40000,
         "CurrentFailSessionCount":10000,
         "CurrentRiskCount":10000
-    }
-}
 ```
+
+`}` `}` `XML` format
+
+```xml
+<GetDBAuditCountResponse>
+    <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
+    <AuditInfo>
+        <RunTime>10000</RunTime>
+        <AuditCount>20000</AuditCount>
+        <SqlCount>15000</SqlCount>
+        <CurrentSqlCount>30000</CurrentSqlCount>
+        <CurrentSessionCount>40000</CurrentSessionCount>
+        <CurrentFailSessionCount>10000</CurrentFailSessionCount>
+        <CurrentRiskCount>10000</CurrentRiskCount>
+    </AuditInfo>
+</GetDBAuditCountResponse>
+```
+
+#### 4.4.2 GetAuditSearchList
+
+Queries a list of audit logs generated for SQL statements that are executed to connect a database.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1733,27 +1849,11 @@ Sample success responses `JSON` format
 | ClientIps | String | No | 192.168.XX.XX | The IP address of the client. Separate multiple IP addresses with commas (,). |
 | DbUsers | String | No | root | The name of the database user. Separate multiple names with commas (,). |
 
-`XML` format
-
-```xml
-    <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
-        <RunTime>10000</RunTime>
-        <SqlCount>15000</SqlCount>
-        <CurrentSqlCount>30000</CurrentSqlCount>
-        <CurrentSessionCount>40000</CurrentSessionCount>
-        <CurrentFailSessionCount>10000</CurrentFailSessionCount>
-        <CurrentRiskCount>10000</CurrentRiskCount>
-```
-
-#### GetAuditSearchList
-
-Queries a list of audit logs generated for SQL statements that are executed to connect a database.
-
-**Request parameters**
-
 | RiskLevels | String | No | 1 | The level of the risk. Separate multiple risk levels with commas (,). Valid values: 1: low risk. 3: medium risk. 5: high risk. |
 |---|---|---|---|---|
 | KeyWords | String | No | select,update | The keywords. Separate multiple keywords with commas (,). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1774,8 +1874,6 @@ Queries a list of audit logs generated for SQL statements that are executed to c
 | └ Affectrows | String | 100 | The number of affected rows. |
 | └ Execcostus | String | 323 | The response time. Unit: microseconds. |
 
-**Response parameters**
-
 | └ Fetchcostus | String | 323 | The execution duration of the SQL statement. Unit: microseconds. |
 |---|---|---|---|
 | └ Clientmac | String | 0EB6EF12**** | The Media Access Control (MAC) address of the client. |
@@ -1793,20 +1891,26 @@ Queries a list of audit logs generated for SQL statements that are executed to c
 | └ Dbsessionid | String | 0E320477 | The session ID of the database. |
 | └ RelatedRule Name | String | Trusted Statement | The rule of the SQL statement. |
 
+**Examples**
+
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAuditSearchList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &RiskLevels=1,3,5 &KeyWords=select,update
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetAuditSearchList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &RiskLevels=1,3,5 &KeyWords=select,update
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
+    "ApiAuditSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dbsessionid":"0E320477",
                 "Machinename":"compute-internal",
                 "Dbuser":"root",
@@ -1834,25 +1938,14 @@ Sample success responses `JSON` format
                 "Appclientip":"111.164.XX.XX",
                 "Sessionid":"0E320477",
                 "RiskLevel":"1"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetFailedSqlLis t | The operation that you want to perform. Set the value to GetFailedSqlList. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
+`}` `]` `}` `}` `XML` format
 
 ```xml
+<GetAuditSearchListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
+    <ApiAuditSearchResult>
         <FinalSize>10000</FinalSize>
         <Data>
             <info>
@@ -1885,13 +1978,20 @@ Sample success responses `JSON` format
                 <RelatedRuleName>Trusted Statement</RelatedRuleName>
             </info>
         </Data>
+    </ApiAuditSearchResult>
+</GetAuditSearchListResponse>
 ```
 
-#### GetFailedSqlList
+#### 4.4.3 GetFailedSqlList
 
 Queries a list of SQL statements that failed to connect to a database.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetFailedSqlLis t | The operation that you want to perform. Set the value to GetFailedSqlList. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
 
 | InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
 |---|---|---|---|---|
@@ -1903,6 +2003,8 @@ Queries a list of SQL statements that failed to connect to a database.
 | ClientIps | String | No | 192.168.XX.XX | The IP address of the client. Separate multiple IP addresses with commas (,). |
 | DbUsers | String | No | root | The name of the database user. Separate multiple names with commas (,). |
 | AckNum | Integer | No | 100002 | The error code. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1916,8 +2018,6 @@ Queries a list of SQL statements that failed to connect to a database.
 | └ Capturetime | String | 2020-05-24 14:17:26 | The time when the SQL statement was captured. |
 | └ Dbserver | String | 100.100.XX.XX | The IP address of the database. |
 | └ Serverport | String | 3306 | The port number of the database. |
-
-**Response parameters**
 
 | └ Dbuser | String | root | The name of the database user. |
 |---|---|---|---|
@@ -1935,20 +2035,26 @@ Queries a list of SQL statements that failed to connect to a database.
 | └ DbName | String | SCHEMA | The name of the database. |
 | └ Dbinstancen ame | String | INS | The name of the Database Security Audit instance instance. |
 
+**Examples**
+
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSqlList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &AckNum=100002
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSqlList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &AckNum=100002
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
+    "ApiAuditSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dbuser":"root",
                 "Dbclient":"192.168.XX.XX",
                 "Responsetext":"Table G_STATUS doesn't exist",
@@ -1969,29 +2075,14 @@ Sample success responses `JSON` format
                 "Dbinstancename":"INS",
                 "Capturetime":"2020-05-24 14:17:26",
                 "Sessionid":"1062887119822061570"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetSessionSea rchList | The operation that you want to perform. Set the value to GetSessionSearchList. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
-| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
-| PageNumber | Integer | Yes | 1 | The page number. |
-| PageSize | Integer | Yes | 50 | The number of entries per page. Default value: 50. |
-| Dbid | String | Yes | 1 | The database ID. |
+`}` `]` `}` `}` `XML` format
 
 ```xml
+<GetFailedSqlListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
+    <ApiAuditSearchResult>
         <FinalSize>10000</FinalSize>
         <Data>
             <info>
@@ -2017,19 +2108,32 @@ Sample success responses `JSON` format
                 <Dbinstancename>INS</Dbinstancename>
             </info>
         </Data>
+    </ApiAuditSearchResult>
+</GetFailedSqlListResponse>
 ```
 
-#### GetSessionSearchList
+#### 4.4.4 GetSessionSearchList
 
 Queries a list of sessions that are established to connect to a database.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetSessionSea rchList | The operation that you want to perform. Set the value to GetSessionSearchList. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
+| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
+| PageNumber | Integer | Yes | 1 | The page number. |
+| PageSize | Integer | Yes | 50 | The number of entries per page. Default value: 50. |
+| Dbid | String | Yes | 1 | The database ID. |
 
 | StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
 |---|---|---|---|---|
 | EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
 | ClientIps | String | No | 192.168.XX.XX | The IP address of the client. Separate multiple IP addresses with commas (,). |
 | DbUsers | String | No | root | The name of the database user. Separate multiple names with commas (,). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2050,26 +2154,29 @@ Queries a list of sessions that are established to connect to a database.
 | └ Statetime | String | 60 | The duration of the session. Unit: minutes. |
 | └ Dback | String | 0 | The error code. |
 
-**Response parameters**
-
 | └ Dbackmessa ge | String | None | The login information. |
 |---|---|---|---|
+
+**Examples**
 
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetSessionSearchList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetSessionSearchList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiSessionSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dback":"0",
                 "Dbuser":"root",
                 "Dbclient":"192.168.XX.XX",
@@ -2083,30 +2190,12 @@ Sample success responses `JSON` format
                 "Dbackmessage":"",
                 "Dbserver":"100.100.XX.XX",
                 "Sessionid":"1062887119822061570"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetFailedSessi onList | The operation that you want to perform. Set the value to GetFailedSessionList. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
-| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
-| PageNumber | Integer | Yes | 1 | The page number. |
-| PageSize | Integer | Yes | 50 | The number of entries per page. Default value: 50. |
-| Dbid | String | Yes | 1 | The database ID. |
-| StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
-| EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
+`}` `]` `}` `}` `XML` format
 
 ```xml
+<GetSessionSearchListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiSessionSearchResult>
         <FinalSize>10000</FinalSize>
@@ -2128,17 +2217,31 @@ Sample success responses `JSON` format
             </info>
         </Data>
     </ApiSessionSearchResult>
+</GetSessionSearchListResponse>
 ```
 
-#### GetFailedSessionList
+#### 4.4.5 GetFailedSessionList
 
 Queries a list of sessions that failed to log in to a database.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetFailedSessi onList | The operation that you want to perform. Set the value to GetFailedSessionList. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
+| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
+| PageNumber | Integer | Yes | 1 | The page number. |
+| PageSize | Integer | Yes | 50 | The number of entries per page. Default value: 50. |
+| Dbid | String | Yes | 1 | The database ID. |
+| StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
+| EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
+
 | ClientIps | String | No | 192.168.XX.XX | The IP address of the client. Separate multiple IP addresses with commas (,). |
 |---|---|---|---|---|
 | DbUsers | String | No | root | The name of the database user. Separate multiple names with commas (,). |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2156,21 +2259,24 @@ Queries a list of sessions that failed to log in to a database.
 | └ Dback | String | 1045 | The error code. |
 | └ Dbackmessa ge | String | Access denied for user 'root'@ (using password: YES) | The login information. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSessionList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetFailedSessionList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "SessionList":[
-        {
+```
+
+`{`
+
+```json
             "Clientmac":"0EB6EF12****",
             "Programnm":"libmysql",
             "Dbackmessage":"Access denied for user 'root'@ (using password: YES)",
@@ -2182,30 +2288,12 @@ Sample success responses `JSON` format
             "Serverport":"3306",
             "Connecttime":"2020-05-24 14:00:00",
             "Sid":"test"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetRiskSqlSear chList | The operation that you want to perform. Set the value to GetRiskSqlSearchList. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
-| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
-| PageNumber | Integer | Yes | 1 | The page number. Default value: 1. |
-| PageSize | Integer | Yes | 50 | The number of entries per page. Default value: 50. |
-| Dbid | String | Yes | 1 | The database ID. |
-| StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
-| EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
-| ClientIps | String | No | 192.168.XX.XX | The IP address of the client. Separate multiple IP addresses with commas (,). |
+`}` `]` `}` `XML` format
 
 ```xml
+<GetFailedSessionListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <SessionList>
         <info>
@@ -2223,13 +2311,26 @@ Sample success responses `JSON` format
 </Dbackmessage>
         </info>
     </SessionList>
+</GetFailedSessionListResponse>
 ```
 
-#### GetRiskSqlSearchList
+#### 4.4.6 GetRiskSqlSearchList
 
 Queries a list of risky SQL statements.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetRiskSqlSear chList | The operation that you want to perform. Set the value to GetRiskSqlSearchList. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
+| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
+| PageNumber | Integer | Yes | 1 | The page number. Default value: 1. |
+| PageSize | Integer | Yes | 50 | The number of entries per page. Default value: 50. |
+| Dbid | String | Yes | 1 | The database ID. |
+| StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
+| EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
+| ClientIps | String | No | 192.168.XX.XX | The IP address of the client. Separate multiple IP addresses with commas (,). |
 
 | DbUsers | String | No | root | The name of the database user. Separate multiple names with commas (,). |
 |---|---|---|---|---|
@@ -2237,6 +2338,8 @@ Queries a list of risky SQL statements.
 | RiskTypes | String | No | 5 | The risk type of the SQL statement. Separate multiple risk types with commas (,). Valid values: 2: sensitive statement. 3: SQL injection. 4: vulnerability attack. 5: operation rule. 6: access rule. 7: password attack. |
 | RuleName | String | No | Batch Query Rule 1 | The name of the risk rule that is hit by the SQL statement. |
 | ExcuteResult | String | No | 0 | The execution result of the SQL statement. Valid values: 0: failed. 1: successful. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2247,8 +2350,6 @@ Queries a list of risky SQL statements.
 | └ Logsecquenc e | String | 162183812690744 01037 | The keyword of the log. |
 | └ Dbid | String | 1 | The database ID. |
 | └ Writeprepare dsql | String | SELECT*FROM G STATUS LIMIT _ 0,1000 | The SQL statement. |
-
-**Response parameters**
 
 | └ Capturetime | String | 2020-05-24 14:17:26 | The time when the query was performed. |
 |---|---|---|---|
@@ -2266,21 +2367,26 @@ Queries a list of risky SQL statements.
 | └ Appclientip | String | 111.164.XX.XX | The IP address of the application client. |
 | └ Dbinstancen ame | String | INS | The name of the Database Security Audit instance instance. |
 
+**Examples**
+
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskSqlSearchList &RegionId=cn-hangzhou &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &RiskLevels=1,3,5 &RiskTypes=5 &RuleName=Batch Query Rule 1 &ExcuteResult=0
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskSqlSearchList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &PageNumber=1 &PageSize=50 &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &ClientIps=192.168.XX.XX &DbUsers=root &RiskLevels=1,3,5 &RiskTypes=5 &RuleName=Batch Query Rule 1 &ExcuteResult=0
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiRiskSearchResult":{
         "FinalSize":10000,
         "Data":[
-            {
+```
+
+`{`
+
+```json
                 "Dbuser":"root",
                 "Dbclient":"192.168.XX.XX",
                 "Responsetext":"",
@@ -2298,28 +2404,12 @@ Sample success responses `JSON` format
                 "RiskLevel":"1",
                 "RiskType":"5",
                 "RuleName":"Batch Query Rule 1"
-            }
 ```
 
-]
-
-```
-    }
-}
-```
-
-`XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetRiskBitsList | The operation that you want to perform. Set the value to GetRiskBitsList. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
-| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
-| Dbid | String | Yes | 1 | The database ID. |
-| StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
-| EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
+`}` `]` `}` `}` `XML` format
 
 ```xml
+<GetRiskSqlSearchListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiRiskSearchResult>
         <FinalSize>10000</FinalSize>
@@ -2345,18 +2435,30 @@ Sample success responses `JSON` format
             </info>
         </Data>
     </ApiRiskSearchResult>
+</GetRiskSqlSearchListResponse>
 ```
 
-#### GetRiskBitsList
+#### 4.4.7 GetRiskBitsList
 
 Queries the statistics of hit risk rules.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetRiskBitsList | The operation that you want to perform. Set the value to GetRiskBitsList. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
+| InstanceId | String | Yes | dbaudit-**** | The Database Security Audit instance ID. |
+| Dbid | String | Yes | 1 | The database ID. |
+| StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
+| EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
+
 | RiskLevel | String | No | 5 | The level of the risk. Valid values: 1: low risk. 3: medium risk. 5: high risk. |
 |---|---|---|---|---|
 | RiskType | String | No | 5 | The type of the risk. Valid values: 2: sensitive statement. 3: SQL injection. 4: vulnerability attack. 5: operation rule. 6: access rule. 7: password attack. |
 | RuleName | String | No | Batch Deletion Rule 1 | The name of the rule. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2368,41 +2470,35 @@ Queries the statistics of hit risk rules.
 | └ RiskLevel | String | 1 | The level of the risk. Separate multiple risk levels with commas (,). Valid values: 1: low risk. 3: medium risk. 5: high risk. |
 | └ HitCount | String | 35 | The number of risks. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskBitsList &RegionId=cn-hangzhou &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &RiskLevel=5 &RiskType=5 &RuleName=Batch Deletion Rule 1
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetRiskBitsList &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &Dbid=1 &StartTime=2020-01-01 00:00:00 &EndTime=2020-01-01 23:59:59 &RiskLevel=5 &RiskType=5 &RuleName=Batch Deletion Rule 1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "ApiRiskHitList":[
-        {
+```
+
+`{`
+
+```json
             "HitCount":"35",
             "RuleId":"2000001",
             "RiskLevel":"1",
             "RuleName":"Batch Deletion Rule 1",
             "RiskType":"5"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
+<GetRiskBitsListResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <ApiRiskHitList>
         <info>
@@ -2413,13 +2509,17 @@ Sample success responses `JSON` format
             <HitCount>35</HitCount>
         </info>
     </ApiRiskHitList>
+</GetRiskBitsListResponse>
 ```
 
-#### GetApiSearchConditionResult
+#### 4.4.8 GetApiSearchConditionResult
 
 Queries the conditions that can be used to query SQL statements.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | GetApiSearchC onditionResult | The operation that you want to perform. Set the value to GetApiSearchConditionResult. |
 |---|---|---|---|---|
@@ -2429,6 +2529,8 @@ Queries the conditions that can be used to query SQL statements.
 | StartTime | String | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
 | EndTime | String | No | 2020-01-01 23:59:59 | The end of the time range to query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 53e59af3-3209- 452a-853c- ac10ad815929 | The request ID. |
@@ -2436,30 +2538,32 @@ Queries the conditions that can be used to query SQL statements.
 | └ DbClientList | List | 192.168.XX.XX | The client IP addresses. |
 | └ DbUserList | List | root | The names of database users. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetApiSearchConditionResult &RegionId=cn-hangzhou &Dbid=1
+https://dbauditprivate.[RegionId].aliyuncs.com/?Action=GetApiSearchConditionResult &RegionId=cn-hangzhou &InstanceId=dbaudit-**** &Dbid=1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"53e59af3-3209-452a-853c-ac10ad815929",
     "Conditions":[
-      {
-        "DbClientList":"192.168.XX.XX",
-        "DbUserList":"root",
-      }
-}
 ```
 
-`XML` format
+`{`
+
+```json
+        "DbClientList":"192.168.XX.XX",
+        "DbUserList":"root",
+```
+
+`}` `}` `XML` format
 
 ```xml
+<GetApiSearchConditionResultResponse>
     <RequestId>53e59af3-3209-452a-853c-ac10ad815929</RequestId>
     <Conditions>
         <DbClientList>
@@ -2469,7 +2573,12 @@ Sample success responses `JSON` format
             <info>root</info>
         </DbUserList>
     </Conditions>
+</GetApiSearchConditionResultResponse>
 ```
+
+## 5 Error codes
+
+This topic describes the error codes returned for API operations in Apsara Stack Security. Table 1: Common error codes of Apsara Stack Security
 
 | Error code | Error message | Solution |
 |---|---|---|
@@ -2492,14 +2601,12 @@ Sample success responses `JSON` format
 | yd.error.all.InvalidResult | One or more return values are invalid. | Try again later. |
 | yd.error.all.PropertyConvertFail ed | An error occurred during conversion. | Try again later. |
 
-## Error codes
-
-This topic describes the error codes returned for API operations in Apsara Stack Security. Table 1: Common error codes of Apsara Stack Security
-
 | yd.error.all.NoPermission | You do not have the required permissions. | Check your account permissions. |
 |---|---|---|
 | yd.error.all.ServerError | A server error has occurred. | Try again later or contact Apsara Stack technical support. |
 | yd.error.all.UnkownError | An unknown error has occurred. | Try again later or contact Apsara Stack technical support. |
+
+Table 2: Error codes of Threat Detection Service
 
 | Error code | Error message | Solution |
 |---|---|---|
@@ -2518,6 +2625,8 @@ This topic describes the error codes returned for API operations in Apsara Stack
 | yd.error.sas.500 | A system error has occurred. | Contact Apsara Stack technical support. |
 | yd.error.sas.501 | The feature is not available in the current version. | N/A |
 | yd.error.sas.502 | You are not authorized to access the server. | N/A |
+
+Table 3: Error codes of Anti-DDoS
 
 | Error code | Error message | Solution |
 |---|---|---|
@@ -2552,9 +2661,13 @@ This topic describes the error codes returned for API operations in Apsara Stack
 | yd.error.ddos.IS OPENED _ | The specified switch has been turned on. | The specified switch cannot be turned on again. |
 | yd.error.ddos.IS CLOSED _ | The specified switch has been turned off. | The specified switch cannot be turned off again. |
 
+Table 4: Error codes of Server Guard
+
 | Error code | Error message | Solution |
 |---|---|---|
 | yd.error.aqs.REQUEST FAILED _ | The request failed. | Try again later. |
+
+Table 7: Error codes of Cloud Firewall
 
 | Error code | Error message |
 |---|---|
@@ -2884,6 +2997,8 @@ This topic describes the error codes returned for API operations in Apsara Stack
 | yd.error.code.-230302 | A backend error has occurred. |
 |---|---|
 | yd.error.code.-230400 | An unknown error has occurred. |
+
+**Error codes of Network Detection and Response**
 
 | Error code | Error message | Description |
 |---|---|---|

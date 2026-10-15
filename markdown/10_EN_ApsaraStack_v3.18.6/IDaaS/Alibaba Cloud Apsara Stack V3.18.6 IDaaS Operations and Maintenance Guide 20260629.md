@@ -3,16 +3,31 @@ title: "IDaaS Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 IDaaS Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "6e53be67fa85d583_Alibaba Cloud Apsara Stack V3.18.6 IDaaS Operations and Maintenance Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20IDaaS%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # IDaaS Operations and Maintenance Guide
 
-## IDaaS O&M Manual
+## Table of Contents
 
-### Deployment architecture
+- 1 IDaaS O&M Manual
+  - 1.1 Deployment architecture
+  - 1.2 High availability
+  - 1.3 Disaster recovery and backup
+  - 1.4 Capacity planning
+  - 1.5 Hot upgrade
+- 2 IDaaS O&M operations
+  - 2.1 Log on to the Apsara Infrastructure Management console
+  - 2.2 Routine inspection on system monitoring
+  - 2.3 Query the version information of IDaaS
+  - 2.4 Log in to a service container
+  - 2.5 Query service PV logs
+
+## 1 IDaaS O&M Manual
+
+### 1.1 Deployment architecture
 
 This topic describes the deployment architecture of Identity as a Service (IDaaS).
 
@@ -55,7 +70,7 @@ Server Middleware SLS MiniRds OSS ...... The following table describes the compo
 | 11 | Db-Init | Initialization base content module |
 | 12 | Asconfig-Init | Initialization asconfig module |
 
-### High availability
+### 1.2 High availability
 
 This topic describes how Identity as a Service (IDaaS) ensures high availability. The server side of IDaaS consists of stateless applications and implements load balancing based on virtual IP addresses (VIPs) and Dubbo to ensure service availability. The server side is stateless and is deployed in a Kubernetes cluster with at least two nodes. Availability is guaranteed as long as at least one node remains operational. Data is stored in middleware such as MetaQ or cloud services such as MiniRDS, Simple Log Service (SLS), Object Storage Service (OSS), and Tair. The middleware and cloud services provide high data storage availability. IDaaS provides API operations that can be called over HTTPS and implements load balancing based on domain names and VIPs to ensure service availability. Service calls in IDaaS depend on the Dubbo microservices framework. Software-based load balancing of Dubbo ensures service availability.
 
@@ -67,7 +82,7 @@ This topic describes how Identity as a Service (IDaaS) ensures high availability
 |   | VIP |   |
 |---|---|---|
 
-### Disaster recovery and backup
+### 1.3 Disaster recovery and backup
 
 This topic describes the zone-disaster recovery architecture (active-active mode) of Identity as a Service (IDaaS).
 
@@ -118,7 +133,7 @@ Primary data center Primary data center The following table describes each compo
 
 Geo-disaster recovery is delivered based on independent regions. The multi-region architecture of IDaaS follows the rules of independent regions. General regions do not depend on the central region, and data is completely isolated from services.
 
-### Capacity planning
+### 1.4 Capacity planning
 
 This topic describes the capacity planning of `Identity as a Service (IDaaS)` .
 
@@ -144,13 +159,13 @@ This topic describes the capacity planning of `Identity as a Service (IDaaS)` .
 | idaas eiam connector _ _ | rds-mys2-large | 100 |
 | idaas eiam notify _ _ | rds-mys2-large | 100 |
 
-### Hot upgrade
+### 1.5 Hot upgrade
 
 This topic describes the hot upgrade logic of Identity as a Service (IDaaS). IDaaS supports hot upgrade by default. No additional O&M operations are required.
 
-## IDaaS O&M operations
+## 2 IDaaS O&M operations
 
-### Log on to the Apsara
+### 2.1 Log on to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -180,7 +195,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Base/Platforms > Apsara Infrastructure Management**.
 
-### Routine inspection on system
+### 2.2 Routine inspection on system monitoring
 
 **monitoring**
 
@@ -197,7 +212,7 @@ Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, 
 3. . Query the system monitoring data of IDaaS**
 4. . Click a module to query monitoring details**
 
-### Query the version information
+### 2.3 Query the version information of IDaaS
 
 **of IDaaS**
 
@@ -216,7 +231,7 @@ The URL, username, and password of the Apsara Uni-manager Operations Console are
 
 **build-id to locate the corresponding version information.**
 
-### Log in to a service container
+### 2.4 Log in to a service container
 
 This topic describes how to log in to a service container of `Identity as a Service (IDaaS)` .
 1. . Find the master node of PaaS and log in to the node**
@@ -245,7 +260,7 @@ kubectl exec -it <Target pod ID> -nidaas -- bash
 
 <Target pod ID> is the idaas-eiam2-admin-control-0 or idaas-eiam2-authn-0 queried in Step 2. Expected result
 
-### Query service PV logs
+### 2.5 Query service PV logs
 
 If you are unable to access a pod to view logs due to frequent restarts, you can use the following method to query the logs.
 1. . Find the master node of PaaS and log in to the node**

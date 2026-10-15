@@ -3,16 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Maski
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking Product Introduction 20260831.pdf"
+source_pdf: "04325330e3f50c8a_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking Product "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Static%20Data%20Masking%20and%20Watermarking%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Static Data Masking and Watermarking Product Introduction 20260831
 
+## Table of Contents
+
+- 1 What is static data desensitization and watermarking?
+- 2 Functions and features
+- 3 Benefits
+- 4 Product architecture
+- 5 Common scenarios
+- 6 Limits
+- 7 Terms
+
 is static data desensitization and watermarking?
 
-## What is static data
+## 1 What is static data desensitization and watermarking?
 
 **desensitization and**
 
@@ -20,7 +30,7 @@ is static data desensitization and watermarking?
 
 Data Desensitization Service (DMS) is a tool used by data managers to convert sensitive data in the original environment into fictitious data and then send it to the target environment. DMS retains the data characteristics required by the business in the target environment to ensure data security. DMS supports database-to-database, database-to-file, file-to-file, and file-to-database data desensitization tasks. Through intelligent sensitive data identification, DMS can provide users with sensitive data identification results, and users can manually adjust and intervene in the results. Based on the final sensitive data identification results, DMS provides a variety of sensitive data de-identification algorithms to convert user production data into de-identified data that can be used by third-party partners. This meets the data protection requirements of test, development, training, and data sharing scenarios. DMS is widely applicable to data-intensive and information-sensitive industries such as finance and carriers. It is also applicable to government departments and secret-related organizations. The product meets the policy compliance requirements of the financial industry, carrier industry, energy industry, and government departments for testing, development, and training environments.
 
-## Functions and features
+## 2 Functions and features
 
 | Feature categor y | Feature | Description |
 |---|---|---|
@@ -70,7 +80,7 @@ Data Desensitization Service (DMS) is a tool used by data managers to convert se
 
 fits
 
-## Benefits
+## 3 Benefits
 
 **Built-in efficient and extensive masking algorithms**
 
@@ -88,11 +98,11 @@ DMS divides a data masking process into four steps: discover sensitive data, sor
 
 DMS allows you to view the status of data masking tasks that are in progress and the list of data masking tasks that are run. DMS allows you to query historical records in the previous week, previous month, this month, last month, and the specified time range. DMS allows you to export data files with masked data, the run logs of data masking, and database DDL statements. uct architecture
 
-## Product architecture
+## 4 Product architecture
 
 The following figure shows the product architecture: Data Source Data Masking Target System Environment Sensitive Development/Testi Database Source Extraction Masking Output Discovery Data Analysis Envi Data Source Management Sensitive Data Feature Data Masking Rule Management Data Masking Task Object Source User Role-Based Access Control Research/Teaching Audit Trail mon scenarios
 
-## Common scenarios
+## 5 Common scenarios
 
 **Development or testing**
 
@@ -106,11 +116,11 @@ The effectiveness of data analysis often depends on the quality of basic data, a
 
 As modern enterprises are increasingly collaborating with external organizations, they more frequently exchange files and data. This increases the risk of the leakage of important documents and data. In such scenarios, data transmission must be controlled. When you transmit sensitive data to low-security zones, you can mask the data to prevent the leakage of privacy data. s
 
-## Limits
+## 6 Limits
 
 Static Data Masking and Watermarking (DMS) supports data masking for GoldenDB databases, SequoiaDB databases, and generic JDBC databases. For these database types, source schema masking and heterogeneous data masking are not supported. In source schema masking mode, filter conditions and expressions for data subsets as well as blacklists and whitelists are supported only if temporary tables are used. Other masking methods in source schema masking mode do not support the preceding features. In source schema masking mode, troubleshooting is optimized only for temporary tables. Troubleshooting is not optimized for other masking methods in source schema masking mode. s
 
-## Terms
+## 7 Terms
 
 **database masking**: a feature that masks the data in a database and saves the masked
 data in a database or as files.

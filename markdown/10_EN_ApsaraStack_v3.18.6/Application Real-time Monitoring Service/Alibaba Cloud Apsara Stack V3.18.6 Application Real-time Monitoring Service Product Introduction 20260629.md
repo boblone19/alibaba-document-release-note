@@ -2,20 +2,32 @@
 title: "Application Real-time Monitoring Service Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Application Real-time Monitoring Service Product Introduction 20260629.pdf"
+source_pdf: "e8af571d1c80f566_Alibaba Cloud Apsara Stack V3.18.6 Application Real-time Monitoring Service Product Introduction 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1%20ARMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Real-time%20Monitoring%20Service%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Application Real-time Monitoring Service Product Introduction 20260629
 
-## Application Real-Time
+## Table of Contents
+
+- 1 Application Real-Time Monitoring Service
+- 2 Features
+- 3 Benefits
+- 4 Features
+- 5 Scenarios
+- 6 Limits
+- 7 Key concepts
+
+Real-Time Monitoring Service
+
+## 1 Application Real-Time Monitoring Service
 
 **Monitoring Service**
 
 Application Real-Time Monitoring Service (ARMS) is an application performance management (APM) service. If you want to comprehensively monitor an application, you only need to install an ARMS agent for the application without the need to modify code. ARMS can automatically generate application topologies, locate faulty and slow interfaces and request parameters, and discover system bottlenecks. This greatly improves the efficiency of diagnostics in production environments.
 
-## Features
+## 2 Features
 
 Application Real-Time Monitoring Service (ARMS) provides quick integration, proactive diagnostics, and lossless statistics.
 
@@ -39,7 +51,7 @@ You can configure the sampling rate, custom thresholds of slow requests, and URL
 
 ARMS provides multidimensional performance analysis and monitoring capabilities for applications, Java virtual machines, hosts, exceptions, errors, SQL queries, and interface snapshots.
 
-## Benefits
+## 3 Benefits
 
 Application Real-Time Monitoring Service (ARMS) allows you to monitor Java applications that run in distributed architectures and view application topologies, interface calls, abnormal transactions, and slow transactions.
 
@@ -67,34 +79,34 @@ Topology: displays how Message Queue (MQ) messages are published and subscribed 
 
 Dynamic sampling rate Dynamic plug-in switch Custom thresholds of slow requests URL convergence settings
 
+## 4 Features
+
+Alibaba Cloud ARMS provides powerful application diagnostics and alert monitoring. It lets you monitor and manage application performance in real time, analyze and optimize application performance, and improve system stability.
+
+**Application list**
+
 | Feature | Description |
 |---|---|
 | Application overview | On the Application Overview page, view application information such as request count, error count, response time, and instance count. |
 
+**Application topology**
+
 | Feature | Description |
 |---|---|
 | Application topology | On the Application Topology page, view the call relationships between the internal services of an application. |
+
+**Trace analysis**
 
 | Feature | Description |
 |---|---|
 | End-to-end trace aggregation | Query for the Trace ID of a distributed trace by specifying conditions. Spans are then aggregated to generate the final result and ensure trace integrity. |
 | Trace details | View the details of a trace. These details include all interfaces in the trace, the trace start time, total response time, interface status, and the response time of each interface call. |
 
+**Application diagnostics**
+
 | Feature | Description |
 |---|---|
 | Continuous profiling | ARMS proactively discovers bottlenecks in Java programs that are caused by CPU, memory, and I/O. It helps developers optimize their programs. |
-
-## Features
-
-Alibaba Cloud ARMS provides powerful application diagnostics and alert monitoring. It lets you monitor and manage application performance in real time, analyze and optimize application performance, and improve system stability.
-
-**Application list**
-
-**Application topology**
-
-**Trace analysis**
-
-**Application diagnostics**
 
 **Event hub**
 
@@ -102,15 +114,15 @@ Alibaba Cloud ARMS provides powerful application diagnostics and alert monitorin
 |---|---|
 | Topology view | Generates topology graphs for application resources. These resources include compute and storage resources such as ECS, pods, RDS, and Redis, and network resources such as SLB and NAT. |
 
+**Alert rules**
+
 | Feature | Description |
 |---|---|
 | Threshold detection | Create alert rules for specific applications. When a rule is triggered, an alert notification is sent, prompting for corrective action. |
 | Interval Detection | Use dynamic thresholds to perform anomaly detection on metric data. This is suitable for fluctuating metrics, such as response time (RT) and queries per second (QPS). |
 | Manage alert rules | Start, stop, edit, and delete alert rules. You can also test alerts to verify that the rules are effective. |
 
-**Alert rules**
-
-## Scenarios
+## 5 Scenarios
 
 Application Real-Time Monitoring Service (ARMS) discovers application topologies, and captures exceptions and slow interfaces to diagnose application problems.
 
@@ -132,6 +144,12 @@ ARMS can automatically discover and monitor common web frameworks and RPC framew
 
 By using trace drill-down analysis, thread analysis, and exception analysis, ARMS analyzes the performance, availability, and errors of applications, and helps you locate root causes of the errors.
 
+## 6 Limits
+
+This topic lists the ARMS limits.
+
+**Application monitoring**
+
 | Item | Maximum value |
 |---|---|
 | Maximum nodes per application (by default, TLog outputs data from three physical machines) | 500 |
@@ -141,22 +159,18 @@ By using trace drill-down analysis, thread analysis, and exception analysis, ARM
 | Maximum number of unique SQL patterns per user | 1,000 |
 | Supported plugins | Refer to the ARMS User Guide > Custom Configurations. |
 
+**Custom monitoring**
+
 | Item | Maximum value/Description |
 |---|---|
 | Supported data sources | Log collection and message queue (MQ). |
 | MQ data source support | Supports only topics in the default namespace. |
 
+**General limits**
+
 | Item | Maximum value/Description |
 |---|---|
 | Alerting | Available for application monitoring and custom monitoring. |
-
-## Limits
-
-This topic lists the ARMS limits.
-
-**Application monitoring**
-
-**Custom monitoring**
 
 | Maximum contacts per user | 100 |
 |---|---|
@@ -164,7 +178,7 @@ This topic lists the ARMS limits.
 
 s
 
-## Key concepts
+## 7 Key concepts
 
 This topic introduces key concepts for ARMS.
 **APM**: Application Performance Management. It monitors application performance by

@@ -3,14 +3,143 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for 
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 218
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster User Guide 20260901.pdf"
+source_pdf: "c83492ae5f431135_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster User Guide 2026"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster User Guide 20260901
 
-## ASR for Geo-disaster
+## Table of Contents
+
+- 1 ASR for Geo-disaster Recovery operations in the Apsara Uni-manager Management Console
+  - 1.1 Overview of ASR for Geo-disaster Recovery
+  - 1.2 Getting Started
+    - 1.2.1 Roles and permissions
+    - 1.2.2 Log in to the ASR for Geo-disaster Recovery console
+    - 1.2.3 Disaster recovery scenarios
+  - 1.3 Overview
+  - 1.4 Instance management
+    - 1.4.1 View instances
+    - 1.4.2 Manage ingress traffic gateway instances
+      - 1.4.2.1 Create an ingress traffic gateway instance
+      - 1.4.2.2 View the topology of an ingress traffic gateway instance
+      - 1.4.2.3 View the monitoring metrics of an ingress traffic gateway instance
+  - 1.5 DR for business
+    - 1.5.1 Manage protection groups
+      - 1.5.1.1 Create a protection group
+      - 1.5.1.2 Protection group details
+        - 1.5.1.2.1 View the details of a protection group
+        - 1.5.1.2.2 View a protection entity
+        - 1.5.1.2.3 Change the group of a protected entity
+        - 1.5.1.2.4 Start a protection group
+        - 1.5.1.2.5 Delete a protection entity
+        - 1.5.1.2.6 View the operations records of a protection group
+        - 1.5.1.2.7 Modify the permissions of read-only accounts
+        - 1.5.1.2.8 Modify the privileged account of an ApsaraDB RDS instance
+        - 1.5.1.2.9 Manage protection entity account permissions
+        - 1.5.1.2.10 Modify the objects to be synchronized
+        - 1.5.1.2.11 View the health status of a protection group
+        - 1.5.1.2.12 Manage topology application bindings
+        - 1.5.1.2.13 View an application topology
+      - 1.5.1.3 Add a synchronization entity
+        - 1.5.1.3.1 Configure disaster recovery for ApsaraDB RDS instances
+        - 1.5.1.3.2 Configure disaster recovery for PolarDB-X 2.0 instances
+        - 1.5.1.3.3 PolarDB for MySQL
+        - 1.5.1.3.4 PolarDB for PostgreSQL
+        - 1.5.1.3.5 Configure disaster recovery for OSS buckets
+        - 1.5.1.3.6 Big data products
+        - 1.5.1.3.7 DNS (Multicloud Integration)
+        - 1.5.1.3.8 Private domain name resolution (DNS)
+        - 1.5.1.3.9 Message Queue
+        - 1.5.1.3.10 Message Queue for Kafka
+        - 1.5.1.3.11 Configure disaster recovery for Tair (Redis OSS-compatible) instances
+        - 1.5.1.3.12 Configure disaster recovery for ApsaraDB for MongoDB instances
+        - 1.5.1.3.13 ECS
+        - 1.5.1.3.14 DataHub
+        - 1.5.1.3.15 Ingress gateway AsrIngressGW
+        - 1.5.1.3.16 API Gateway
+      - 1.5.1.4 Fail over a protection group
+      - 1.5.1.5 Fail back a protection group
+      - 1.5.1.6 Stop a protection group
+      - 1.5.1.7 Perform reprotection
+      - 1.5.1.8 Export protection groups
+      - 1.5.1.9 Delete a protection group
+    - 1.5.2 Manage business disaster recovery plans
+      - 1.5.2.1 Overview
+      - 1.5.2.2 Create a business disaster recovery plan
+      - 1.5.2.3 Configure drill metrics
+      - 1.5.2.4 Query a business disaster recovery plan
+      - 1.5.2.5 Perform a business disaster recovery
+      - 1.5.2.6 Execute a business disaster recovery drill plan
+      - 1.5.2.7 View the execution history of a plan
+    - 1.5.3 Manage a disaster recovery unit namespace
+      - 1.5.3.1 Create a disaster recovery unit namespace
+      - 1.5.3.2 Fail over a disaster recovery unit namespace
+      - 1.5.3.3 Fail back a disaster recovery unit namespace
+    - 1.5.4 Manage synchronization entities
+  - 1.6 Data verification
+    - 1.6.1 Manage verification tasks
+    - 1.6.2 Manage validation clusters
+  - 1.7 Alert management
+    - 1.7.1 Configure alert rules
+    - 1.7.2 View and export alert information
+    - 1.7.3 Configure synchronization latency alert thresholds
+  - 1.8 System Management
+    - 1.8.1 Cloud instance management
+    - 1.8.2 Manage disaster recovery relationships
+    - 1.8.3 Manage logs
+    - 1.8.4 Hybrid disaster recovery management
+    - 1.8.5 Manage scoring items for synchronization entities
+  - 1.9 FAQ
+    - 1.9.1 What do I do if entities fail to be protected?
+    - 1.9.2 Troubleshoot abnormal disaster recovery relationship checks
+  - 1.10 Appendix
+    - 1.10.1 Create a RAM role
+    - 1.10.2 Obtain the AccessKey pair of a personal account of public cloud
+    - 1.10.3 View the synchronization logs of MaxCompute
+    - 1.10.4 Modify policy configuration
+    - 1.10.5 Suspend synchronization entities under a protection group
+    - 1.10.6 Obtain an AccessKey pair
+    - 1.10.7 Manually synchronize data
+    - 1.10.8 Obtain the settings of the primary cloud instance
+    - 1.10.9 Customize the data-plane SDK to implement access from multiple endpoints
+- 2 O&M console of ASR for Geo-disaster Recovery
+  - 2.1 Log in to the O&M console of ASR for Geo-disaster Recovery
+  - 2.2 Homepage
+  - 2.3 Disaster recovery monitoring
+    - 2.3.1 View the cloud platform monitoring
+    - 2.3.2 View the protection group monitoring
+  - 2.4 Basic capability O&M
+    - 2.4.1 Manage scoring items for synchronization entities
+    - 2.4.2 Manage cloud product information
+    - 2.4.3 Manage a disaster recovery interconnection
+    - 2.4.4 Manage a disaster recovery gateway
+    - 2.4.5 Configure a dashboard map
+  - 2.5 Disaster recovery O&M
+    - 2.5.1 Manage synchronization entities
+      - 2.5.1.1 Skip a step
+      - 2.5.1.2 Reperform a single step
+      - 2.5.1.3 Configure throttling
+      - 2.5.1.4 Delete an entity from a protection group
+      - 2.5.1.5 View the logs of a synchronization entity
+    - 2.5.2 Perform a site switchover drill
+    - 2.5.3 Perform a site failover
+    - 2.5.4 View the execution history of a site disaster recovery plan
+    - 2.5.5 Manage fault injection tasks
+  - 2.6 Independent disaster recovery management
+    - 2.6.1 Create an independent disaster recovery plan
+    - 2.6.2 Perform a failover
+    - 2.6.3 Perform a switchover drill
+    - 2.6.4 View the details of an independent disaster recovery plan
+    - 2.6.5 Disassociate configured nodes from an independent disaster recovery plan
+    - 2.6.6 Delete an independent disaster recovery plan
+  - 2.7 Appendixes
+    - 2.7.1 Look up a DNS address
+    - 2.7.2 Configure DNS forwarding
+    - 2.7.3 Configure DTS parameters
+
+## 1 ASR for Geo-disaster Recovery operations in the Apsara Uni-manager Management Console
 
 **Recovery operations in the**
 
@@ -20,7 +149,7 @@ converter: pdf2md (PyMuPDF line classifier)
 
 This topic describes the ASR for Geo-disaster Recovery operations in the Apsara Uni-manager Management Console.
 
-### Overview of ASR for Geo-
+### 1.1 Overview of ASR for Geo-disaster Recovery
 
 **disaster Recovery**
 
@@ -47,9 +176,9 @@ Protection group: A business object that is protected by ASR for Geo-disaster Re
 |---|---|
 | Dashboar d monitorin g | Displays disaster recovery overview, protection group disaster recovery status, disaster recovery metrics, product synchronization latency, and changes in protection group synchronization latency on a large screen. |
 
-### Getting Started
+### 1.2 Getting Started
 
-#### Roles and permissions
+#### 1.2.1 Roles and permissions
 
 This topic describes the permissions of operations administrators, organization administrators, global disaster recovery (DR) administrators, and organization DR administrators.
 
@@ -62,7 +191,7 @@ This topic describes the permissions of operations administrators, organization 
 | Organization DR administrator | 1. Log on to the Apsara Uni-manager Management Console by using an account that assumes the organization DR administrator role. 2. Select the corresponding organization to access the ASR-DR console. | Inherit the primary cloud instances that are added by the operations administrator but cannot configure cloud services. Manage DR resources for cloud services only in the current organization and subordinate organizations. |
 |---|---|---|
 
-#### Log in to the ASR for Geo-disaster
+#### 1.2.2 Log in to the ASR for Geo-disaster Recovery console
 
 **Recovery console**
 
@@ -98,7 +227,7 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 8. You are redirected to the ASR for Geo-disaster Recovery console. All data is displayed by
 cloud, organization, resource set, and region. The first time you log on to the console, you must configure disaster recovery relationships and cloud instances.
 
-#### Disaster recovery scenarios
+#### 1.2.3 Disaster recovery scenarios
 
 Apsara Stack supports cross-cloud disaster recovery and cross-region disaster recovery. This topic describes two disaster recovery scenarios. Cross-cloud disaster recovery and cross-region disaster recovery: Cross-cloud disaster recovery: Disaster recovery is performed between two cloud instances. If the primary cloud fails, business is failed over to the secondary cloud. Cross-cloud disaster recovery can be implemented in the following modes: Cross-cloud disaster recovery for a single cloud: If the central region of the primary cloud fails, business is failed over to the central region of the secondary cloud. The unit Region in the production cloud supports 1:1 disaster recovery to the central Region in the DR cloud. Cross-cloud disaster recovery for multiple clouds: If multiple primary clouds fail, business is failed over to the central region of the secondary cloud. Three data centers across two regions. Disaster recovery between Apsara Stack and Alibaba Public Cloud (1:1). Cross-region disaster recovery: Disaster recovery is performed across multiple regions within a cloud instance. Cross-region disaster recovery can be implemented in the following modes: If a general region fails, business can be failed over to the central region. Disaster recovery between Cell Regions. Disaster recovery from the central region to a cell region (for service failures only, but not for region-wide power or network outages in the central region). The following table describes the products and features supported in the two disaster recovery scenarios.
 
@@ -114,7 +243,7 @@ Apsara Stack supports cross-cloud disaster recovery and cross-region disaster re
 | Cr os s- re gio n dis ast er rec ov er y | All modes | ApsaraDB RDS for MySQL 5.6, 5.7, and 8.0 ApsaraDB for PolarDB- O PolarDB-X 2.0 Cloud-native distributed database PolarDB-M with local disks Cloud-native database PolarDB for PostgreSQL with local disks ApsaraDB for MongoDB ApsaraDB for Redis Object Storage Service (OSS) Message Queue MaxCompute and DataWorks (data synchronization only) Apsara Stack DNS DataHub MaxCompute DataWorks SchedulerX | ApsaraDB RDS for MySQL 8.0 PolarDB-X 2.0 is a cloud-native distributed database. Cloud-native distributed database PolarDB-M with local disks Cloud-native database PolarDB for PostgreSQL with local disks ApsaraDB for PolarDB-O Object Storage Service (OSS) Message Queue Apsara Stack DNS DataHub MaxCompute DataWorks SchedulerX | Instance management, business disaster recovery, big data disaster recovery, log management, and alert management |
 |---|---|---|---|---|
 
-### Overview
+### 1.3 Overview
 
 The Overview page provides charts and numbers to show the disaster recovery (DR) overview of business. You can view the real-time DR metrics and learn the DR protection group status on this page. This helps improve the efficiency of DR management and the continuity of application business.
 
@@ -141,9 +270,9 @@ The following table describes the information that is displayed in each module o
 | Synchronization Entities Disaster Recovery Analysis Details | Displays the synchronization latency distribution of synchronization entities and the average synchronization latency in a line chart. You can view the data on the Last 24 Hours, Last 15 Days, Last Month, Last 3 Months, Last 6 Months, and Last Year tabs. You can move the pointer over the line chart to view the maximum, minimum, median, and average latency values. Note The data sampling frequency is low for a long-term time range. Data of a specific period of time may not exist when you view the data of a newly configured protection group by month or by year. The maximum period during which no data exists is one month. |
 | Alert Preview | Displays the number of alerts of the Urgent, Critical, Warning, and Information levels in a donut chart. On the All tab, you can view the details about alerts of all levels. You can click the Urgent, Critical, Warning, or Information tab to view the alerts of the related level. |
 
-### Instance management
+### 1.4 Instance management
 
-#### View instances
+#### 1.4.1 View instances
 
 Create the instances that you want to protect on the production and disaster recovery sites. The number and specifications of instances in the protection group must be identical for both the production and disaster recovery sites.
 1. Log on to the Apsara Uni-manager Management Console for the production and disaster
@@ -184,11 +313,11 @@ following table describes the tasks to complete and important notes for creating
 | Traffic Gateway AsrIngressGW | On the production and disaster recovery sites, create AsrIngressGW instances. | The production and disaster recovery sites must have the same number of AsrIngressGW instances for your services. The recommended minimum configuration for an ECS instance attached to an AsrIngressGW instance is 2 vCPUs and 4 GiB of memory. The ECS instance must also be attached to an Elastic IP address (EIP). The Server Load Balancer (SLB) instance attached to the AsrIngressGW instance must be in the same VPC as the ECS instance, in a connected VPC, or in the classic network. |
 | API Gateway | On the production and disaster recovery sites, create API Gateway instances. | The historical data of the disaster recovery module in the API Gateway instances on the production site must be consistent with the historical data on the disaster recovery site. |
 
-#### Manage ingress traffic gateway
+#### 1.4.2 Manage ingress traffic gateway instances
 
 **instances**
 
-##### Create an ingress traffic gateway instance
+##### 1.4.2.1 Create an ingress traffic gateway instance
 
 This topic describes how to create an ingress traffic gateway instance and bind Elastic Compute Service (ECS) and Server Load Balancer (SLB) instances.
 
@@ -213,7 +342,7 @@ column.
 3. Add the same instance and associate it with the ECS instance and SLB instance by following
 the preceding steps.
 
-##### View the topology of an ingress traffic
+##### 1.4.2.2 View the topology of an ingress traffic gateway instance
 
 **gateway instance**
 
@@ -230,7 +359,7 @@ information, see Log on to the ASR for Geo-disaster Recovery console.
 **Configurations** in the Actions column.
 5. On the **Basic Settings** tab, view the topology of the ingress traffic gateway instance.
 
-##### View the monitoring metrics of an ingress
+##### 1.4.2.3 View the monitoring metrics of an ingress traffic gateway instance
 
 **traffic gateway instance**
 
@@ -244,11 +373,11 @@ the Actions column.
 5. On the page that appears, click the **Monitoring** tab. On this tab, view service performance
 metrics and host performance metrics.
 
-### DR for business
+### 1.5 DR for business
 
-#### Manage protection groups
+#### 1.5.1 Manage protection groups
 
-##### Create a protection group
+##### 1.5.1.1 Create a protection group
 
 A protection group is a group of resources on which disaster recovery is implemented in the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console. You can create a protection group for a set of related resources used by an application.
 
@@ -282,11 +411,11 @@ For more information about how to add synchronization entities for each cloud se
 7. Click **OK**. The protection group is created. On the Protection Groups page, click the
 icon to view the status of the protection group.
 
-##### Protection group details
+##### 1.5.1.2 Protection group details
 
 You can view the details and operation history of a protection group, and manage the instances and associated plans in the protection group.
 
-###### View the details of a protection group
+###### 1.5.1.2.1 View the details of a protection group
 
 You can view the details of a protection group to monitor protection entities in the protection group. The details include the synchronization latency information and inspection information about the protection entities.
 1. Log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console.
@@ -399,7 +528,7 @@ The check items vary based on the services of the instances. The following table
 
 When an entity fails to be protected because the entity fails to be connected to the underlying services due to errors such as network errors, click **Reprotection**. The system checks the protection state and determines the next state based on the query result. When changes are made to the tables of ApsaraDB RDS instances or databases of the primary and secondary ApsaraDB RDS instances, entities fail to be protected. For more information about recovery methods, see What do I do if entities fail to be protected?
 
-###### View a protection entity
+###### 1.5.1.2.2 View a protection entity
 
 You can view the logs of a protection entity to identify and analyze the causes of protection failures.
 1. Log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console.
@@ -416,7 +545,7 @@ Optional. View the recovery point objective (RPO) of the protection entity durin
 | Log Level | The log level. Valid values: Message Error Warning |
 | Server | The server on which the synchronization link of the entity runs. |
 
-###### Change the group of a protected entity
+###### 1.5.1.2.3 Change the group of a protected entity
 
 You can move an instance to a different protection group. This is useful if your business requirements change or if you accidentally add an instance to the wrong group.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -439,7 +568,7 @@ You must configure a global domain name when you move an entity from a primary/s
 6. Select a new protection group and click **OK**.
 The new protection group must have the same production region organization, disaster recovery region organization, and synchronization direction as the current protection group.
 
-###### Start a protection group
+###### 1.5.1.2.4 Start a protection group
 
 This topic describes the prerequisites, features, and procedure for starting a protection group.
 
@@ -465,7 +594,7 @@ icon in the Actions column and select **Configure** to configure synchronization
 You can modify only the Synchronization Policy. Other parameters cannot be modified. When Synchronization Policy is set to Incremental, you can modify the Synchronized From parameter for ApsaraDB RDS, PolarDB-X, and AnalyticDB for MySQL. You can modify the Synchronization Object and Synchronization Policy parameters for Object Storage Service (OSS).
 7. Click **OK** to start the protection group.
 
-###### Delete a protection entity
+###### 1.5.1.2.5 Delete a protection entity
 
 You can remove instances from a protection group if the instances no longer require protection implemented based on disaster recovery (DR). After the instances are removed, the instances are no longer protected, and the related link for DR is interrupted.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -477,7 +606,7 @@ You can remove instances from a protection group if the instances no longer requ
 icon in the **Actions** column, and then click **Delete**.
 6. In the message that appears, click **OK**.
 
-###### View the operations records of a
+###### 1.5.1.2.6 View the operations records of a protection group
 
 **protection group**
 
@@ -490,7 +619,7 @@ the group.
 5. To view the historical operations records of the protection group, click **Details** in the
 **Actions** column.
 
-###### Modify the permissions of read-only
+###### 1.5.1.2.7 Modify the permissions of read-only accounts
 
 **accounts**
 
@@ -510,7 +639,7 @@ the icon in the Actions column, and then click **Modify Permission Granted to Re
 from the Database drop-down list and enter an account name.
 6. Click **OK**.
 
-###### Modify the privileged account of an
+###### 1.5.1.2.8 Modify the privileged account of an ApsaraDB RDS instance
 
 **ApsaraDB RDS instance**
 
@@ -528,7 +657,7 @@ the icon in the **Actions** column, and then click **Modify Privileged Account**
 5. In the **Modify Privileged Accounts for Primary and Secondary Instances** dialog box,
 specify a username and a password for the instances on the primary and secondary sites and click **Modify**.
 
-###### Manage protection entity account
+###### 1.5.1.2.9 Manage protection entity account permissions
 
 **permissions**
 
@@ -547,7 +676,7 @@ that you want to manage, click the icon in the **Actions** column, and then clic
 5. On the **Manage Accounts** page, view and modify the read-only permissions or read and
 write permissions of database accounts that are used to log on to the primary instance and secondary instance.
 
-###### Modify the objects to be synchronized
+###### 1.5.1.2.10 Modify the objects to be synchronized
 
 This topic describes how to modify or add databases and synchronize tables for a PolarDB for MySQL instance after it is added to a protection group.
 
@@ -565,7 +694,7 @@ that you want to modify, click the icon in the **Actions** column, and then sele
 icon to add them to the Selected Objects section.
 6. Click **OK**.
 
-###### View the health status of a protection
+###### 1.5.1.2.11 View the health status of a protection group
 
 **group**
 
@@ -584,7 +713,7 @@ The **Health Score** tab displays daily data such as "Change from Previous Day",
 | Health Score | On the Health Score tab, view the detailed health score information of the protection group. Overall Health Score: Displays the overall health score, change from the previous day, 7-day average value, status compared to the previous day, and average health score. Recent 7-day Health Trends: Displays the health trend chart for the last 7 days. Key Metrics: Displays the key metrics for the health score. Instance Health Details: Displays the detailed health information of instances. Click Details in a check dimension to expand the detailed information of that dimension check. Point Deduction Details Traceability Table: Displays the detailed deduction information. |
 |---|---|
 
-###### Manage topology application bindings
+###### 1.5.1.2.12 Manage topology application bindings
 
 Manage associated topology applications on the Topology Application Association tab of a protection group.
 1. Log in to ASR-DR: Geo-Disaster Recovery Platform. For details, see Log on to the ASR-DR
@@ -627,7 +756,7 @@ application association.
 | Delete an application | i. On the Topology Application Association tab, click Delete in the Actions column of the application. Note You cannot delete automatically parsed topology applications. ii. Click OK. |
 |---|---|
 
-###### View an application topology
+###### 1.5.1.2.13 View an application topology
 
 View the application-level disaster recovery topology of a protection group. The topology shows the disaster recovery pairs, data replication direction, data synchronization latency, and application traffic flow.
 1. Log in to ASR-DR: Geo-Disaster Recovery Platform. For details, see Log on to the ASR-DR
@@ -639,11 +768,11 @@ console.
 application-level disaster recovery topology. Scroll the mouse wheel to zoom in or out on the topology. The number displayed on a data center in the topology indicates the number of topology applications associated with the current protection group. Click on the data center to open the Edit Application dialog box and go to the application list to associate applications. Click **In Carousel** in the lower-left corner of the topology to pause carousel playback. When paused, click **Suspend Carousel** to resume playback. Click in the upper-right corner of the topology to enter or exit full-screen mode. Click in the upper-right corner of the topology to expand the
 **SynchronizationLatency** panel and view the latency of each synchronization entity.
 
-##### Add a synchronization entity
+##### 1.5.1.3 Add a synchronization entity
 
 After you create a protection group, you must add instances to the protection group before disaster recovery can be implemented. Limits on the number of instances: The maximum total number of instances in all protection groups is 200. The default maximum total number of protected database instances is 60, including ApsaraDB RDS instances associated with PolarDB-X instances, standalone Apsara RDS instances, ApsaraDB for Redis instances, and ApsaraDB for MongoDB instances. If more than 60 database instances need to be protected, DTS needs to be scaled out, so that a maximum of 100 database instances can be protected. The maximum number of protected ApsaraDB for HBase instances is 20. The maximum number of protected Object Storage Service (OSS) buckets is 20. The maximum number of protected Tablestore instances is 20. The maximum number of protected Elastic Compute Service (ECS) instances is 50. The maximum number of protected Message Queue instances is 20. The maximum number of protected Apsara Stack DNS instances is 20. The maximum number of protected MaxCompute projects is 20. The maximum number of protected DataHub instances is 20.
 
-###### Configure disaster recovery for
+###### 1.5.1.3.1 Configure disaster recovery for ApsaraDB RDS instances
 
 **ApsaraDB RDS instances**
 
@@ -700,7 +829,7 @@ After you specify the global domain name, click **Precheck**. If no problem is d
 6. After the configuration is complete, preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the status of the protection group. If the protection group is in the Protect Failed state, click **Reprotection**.
 
-###### Configure disaster recovery for PolarDB-
+###### 1.5.1.3.2 Configure disaster recovery for PolarDB-X 2.0 instances
 
 **X 2.0 instances**
 
@@ -749,7 +878,7 @@ After you specify the global domain name, click **Precheck**. If no problem is d
 6. After the configuration is complete, preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the status of the protection group. If the protection group is in the Protect Failed state, click **Reprotection**.
 
-###### PolarDB for MySQL
+###### 1.5.1.3.3 PolarDB for MySQL
 
 This topic describes how to configure disaster recovery for PolarDB instances that use local disks or shared storage.
 
@@ -799,7 +928,7 @@ After you configure the global domain name, click **Precheck**. If no issues are
 **Confirm**. On the protection group list page, click the
 icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the status of the protection group. If the protection group is in the Protect Failed state, click **Reprotection**.
 
-###### PolarDB for PostgreSQL
+###### 1.5.1.3.4 PolarDB for PostgreSQL
 
 This topic describes how to configure disaster recovery for PolarDB for PostgreSQL instances.
 
@@ -853,7 +982,7 @@ After you configure the global domain name, click **Precheck**. If no issues are
 8. After completing the configuration, preview the settings. If they are correct, click **Confirm**.
 On the protection group list page, click the icon to view the status of the protection group. After the protection group is created, the system begins an initialization process. If initialization fails, retry the operation. Once initialization is complete, check the group's status. If the status is Protection Failed, click**Reprotect**.
 
-###### Configure disaster recovery for OSS
+###### 1.5.1.3.5 Configure disaster recovery for OSS buckets
 
 **buckets**
 
@@ -902,7 +1031,7 @@ After you specify the global domain name, click **Precheck**. If no problem is d
 6. After the configuration is complete, you can preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the protection group status. If the protection group is in the Protection Failed state, click **Reprotect** in the Actions column of the protection group. For OSS, when you create a full protection group, you must wait about 90 to 110 minutes before full synchronization actually starts due to product limits.
 
-###### Big data products
+###### 1.5.1.3.6 Big data products
 
 This topic describes how to configure disaster recovery for DataWorks and MaxCompute synchronization entities, including the prerequisites and procedure.
 
@@ -942,7 +1071,7 @@ icon in the **Actions** column, and then click **Configure**. Configure the para
 6. After the configuration is complete, preview the configurations and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the protection group status. If the state is Protect Failed, click **Reprotection**.
 
-###### DNS (Multicloud Integration)
+###### 1.5.1.3.7 DNS (Multicloud Integration)
 
 This topic describes how to configure disaster recovery for the synchronization entities of DNS (Multicloud Integration), including the prerequisites and procedure.
 
@@ -983,7 +1112,7 @@ to manage, click the icon in the **Actions** column, and then click **Configure*
 6. After the configuration is complete, preview the configurations and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the protection group status. If the state is Protect Failed, click **Reprotection**.
 
-###### Private domain name resolution (DNS)
+###### 1.5.1.3.8 Private domain name resolution (DNS)
 
 This topic describes how to configure synchronization entities for DNS within Cloud. During a switchover, ASR-DR adjusts the DNS weights of the virtual IP addresses (VIPs) for the global internal domain names.
 
@@ -1032,7 +1161,7 @@ click **Submit**, and then click **Next**. The following table describes the par
 6. After you complete the configurations, preview them. Confirm that the configurations are
 correct and click **Submit**. On the protection group list page, click the icon to view the protection group status. After a protection group is created and initialized, check its status. If the status is Protection Failed, perform a re-protection.
 
-###### Message Queue
+###### 1.5.1.3.9 Message Queue
 
 This topic describes how to configure disaster recovery for Message Queue, including the prerequisites and procedure.
 
@@ -1062,7 +1191,7 @@ the icon in the **Actions** column, and then select **Configure**. Configure **b
 6. After the configuration is complete, you can preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the status of the protection group. If the protection group is in the Protect Failed state, click **Reprotection**.
 
-###### Message Queue for Kafka
+###### 1.5.1.3.10 Message Queue for Kafka
 
 This topic describes the prerequisites and procedure for configuring disaster recovery for Kafka instances.
 
@@ -1095,7 +1224,7 @@ in the **Actions** column of the target instance and select **Configure**. Confi
 6. After the configuration is complete, you can preview the settings. If the settings are correct,
 click **Confirm**. On the protection groups page, click the icon to view the status of the protection group. After a protection group is created, the system performs an initialization. When the initialization is complete, check the status of the protection group. If the status is Protection Failed, perform the **Reprotect** operation.
 
-###### Configure disaster recovery for Tair
+###### 1.5.1.3.11 Configure disaster recovery for Tair (Redis OSS-compatible) instances
 
 **(Redis OSS-compatible) instances**
 
@@ -1145,7 +1274,7 @@ After you specify the global domain name, click **Precheck**. If no problem is d
 6. After the configuration is complete, preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the protection group status. If the protection group is in the Protection Failed state, click **Reprotect** in the Actions column of the protection group.
 
-###### Configure disaster recovery for
+###### 1.5.1.3.12 Configure disaster recovery for ApsaraDB for MongoDB instances
 
 **ApsaraDB for MongoDB instances**
 
@@ -1205,7 +1334,7 @@ After you specify the global domain name, click **Precheck**. If no problem is d
 6. After the configuration is complete, preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the protection group status. If the protection group is in the Protection Failed state, click **Reprotect** in the Actions column of the protection group.
 
-###### ECS
+###### 1.5.1.3.13 ECS
 
 This topic describes how to configure disaster recovery for Elastic Compute Service (ECS) instances.
 
@@ -1252,7 +1381,7 @@ the icon in the **Actions** column, and then click **Configure**. In the Synchro
 6. After the configuration is complete, preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the status of the protection group. If the protection group is in the Protect Failed state, click **Reprotection**.
 
-###### DataHub
+###### 1.5.1.3.14 DataHub
 
 This topic describes how to configure disaster recovery for DataHub, including the prerequisites and procedure.
 
@@ -1282,7 +1411,7 @@ the icon in the **Actions** column, and then click **Configure**. Configure the 
 7. After the configuration is complete, preview the configuration and click **OK**. On the
 Protection Groups page, click the icon to view the status of the protection group. After the protection group is created, the system initializes the protection group. After the protection group is initialized, check the status of the protection group. If the protection group is in the Protect Failed state, click **Reprotection**.
 
-###### Ingress gateway AsrIngressGW
+###### 1.5.1.3.15 Ingress gateway AsrIngressGW
 
 This topic describes the prerequisites and procedure for adding a synchronization entity for an Ingress Gateway.
 
@@ -1342,7 +1471,7 @@ The system preconfigures a default route. If traffic does not match any custom r
 **Confirm**. On the protection group list page, click the
 icon to view the protection group status. After the protection group is created, the system starts to initialize it. After the initialization is completed, check the protection group status. If the status is Protection Failed, click **Reprotection**.
 
-###### API Gateway
+###### 1.5.1.3.16 API Gateway
 
 This topic describes how to add an API Gateway 2.0 sync entity to a protection group.
 1. Log on to the ASR-DR console.
@@ -1371,7 +1500,7 @@ in the **Actions** column of the target instance and select **Configure**. Confi
 click the icon to view the protection group status. The system initializes the protection group after it is created. When initialization is complete, check the protection group status. If the status is Protection Failed, perform a
 **Reprotect** operation.
 
-##### Fail over a protection group
+##### 1.5.1.4 Fail over a protection group
 
 You can fail over a protection group that you created.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -1387,7 +1516,7 @@ protection group. All traffic is directed to the disaster recovery site, and the
 **Recover Traffic**: Fails back all traffic-class sync entities in the protection group. This
 restores service so that both the production and disaster recovery sites provide services simultaneously. c. Select whether to perform a forced switchover. When a data center fails, traffic is forcibly switched to an active data center. If the primary data center fails, traffic is switched to the secondary site. If the secondary data center fails, traffic is switched to the primary site. d. Click **Precheck**. A precheck verifies the plan without executing it. This increases the success rate of disaster recovery drills. e. Click **Start Switchover**.
 
-##### Fail back a protection group
+##### 1.5.1.5 Fail back a protection group
 
 You can fail back a protection group that has been failed over.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -1401,7 +1530,7 @@ improves the success rate of disaster recovery drills.
 **End-to-End**: The system directly switches back the protection group.
 5. Click **OK**.
 
-##### Stop a protection group
+##### 1.5.1.6 Stop a protection group
 
 This topic describes the scenario and procedure for stopping a protection group.
 
@@ -1423,7 +1552,7 @@ icon on the right of the protection group that you want to stop and then click *
 4. Click the name of the protection group. Alternatively, click the
 icon in the Actions column of the protection group and then click **Details**. Confirm that the synchronization entities are in the **Stop** state.
 
-##### Perform reprotection
+##### 1.5.1.7 Perform reprotection
 
 After a failover, the state of a protection group becomes Protect Failed regardless of the state of the primary cloud. In this case, you must perform reprotection for the protection group.
 
@@ -1439,7 +1568,7 @@ more information, see Log on to the ASR-DR console.
 icon in the Actions column, and then click **Reprotection**.
 5. In the dialog box that appears, click **OK**.
 
-##### Export protection groups
+##### 1.5.1.8 Export protection groups
 
 This topic describes how to export protection group information to your local computer.
 1. Log on to the ASR-DR console.
@@ -1451,7 +1580,7 @@ This topic describes how to export protection group information to your local co
 6. Select a local path for the download.
 7. Click **Download**.
 
-##### Delete a protection group
+##### 1.5.1.9 Delete a protection group
 
 Delete protection groups that you no longer need.
 
@@ -1468,13 +1597,13 @@ All synchronization entities in the protection group are deleted, and the protec
 | Delete a single protection group | i. Click in the Actions column of the protection group and select Delete. ii. Click Delete. |
 | Delete multiple protection groups | i. In the protection group list, select the protection groups that you want to delete. ii. Click Batch Delete below the list. iii. Click Delete. |
 
-#### Manage business disaster recovery
+#### 1.5.2 Manage business disaster recovery plans
 
 **plans**
 
 This topic describes how to create business disaster recovery plans (including drill plans and recovery plans), how to query business disaster recovery plans, and how to view the execution histories of disaster recovery plans.
 
-##### Overview
+##### 1.5.2.1 Overview
 
 Plans are categorized into drill plans and recovery plans based on whether the primary cloud fails.
 
@@ -1488,7 +1617,7 @@ You can also modify the failover plan to change the failover mode. Try Minimum R
 
 In the failover or switchover process, resources in a protection group in the primary cloud are unavailable, and workloads are switched over to the secondary cloud. Failbacks or switchbacks are a reverse process of failovers or switchovers. In the failback or switchback process, resources in the protection group in the secondary cloud are unavailable, and workloads are switched over to the primary cloud. Failovers and switchovers are available only for a protection group whose synchronization direction is set to Forward. After a failover or switchover is performed, the synchronization direction of the protection group becomes backward. Failbacks and switchbacks are available only for a protection group whose synchronization direction is set to Backward. After a failback or switchback is performed, the synchronization direction of the protection group becomes forward.
 
-##### Create a business disaster recovery plan
+##### 1.5.2.2 Create a business disaster recovery plan
 
 This topic describes how to create a business disaster recovery plan, including a drill plan and a recovery plan. This topic also describes how to configure execution steps and policies for drills or failovers and failbacks.
 
@@ -1531,7 +1660,7 @@ phases. The system presets a plan based on the protection groups you selected in
 7. In the **Confirm Information** step, check whether all settings are correct.
 If not, click **Previous** to modify the settings. If yes, click **Submit**.
 
-##### Configure drill metrics
+##### 1.5.2.3 Configure drill metrics
 
 You can specify a variety of metrics to be collected as drill results. ASR for Geo-disaster Recovery then provides optimization suggestions for unsatisfactory results. This helps you evaluate the performance of your enterprise disaster recovery architecture and quickly discover and solve problems.
 
@@ -1548,7 +1677,7 @@ icon in the
 5. In the **Modify Expected Values of Drill Metrics** dialog box, click **Add Entry**, modify the
 values of the parameters, and click **OK**. You can click **Add Entry** repeatedly to add multiple cloud services, which must be unique.
 
-##### Query a business disaster recovery plan
+##### 1.5.2.4 Query a business disaster recovery plan
 
 You can query a disaster recovery plan by production region, plan type, plan name, or plan ID.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -1567,7 +1696,7 @@ You can query a disaster recovery plan by production region, plan type, plan nam
 
 You can also click Advanced Filter and specify multiple dimensions. i. Click **Advanced Filter**. ii. Select a plan type and then enter the name and ID of the disaster recovery plan that you want to query. iii. Click **Search**.
 
-##### Perform a business disaster recovery
+##### 1.5.2.5 Perform a business disaster recovery
 
 After a business recovery plan is created, you can execute a disaster recovery plan. This topic describes how to execute a disaster recovery plan and the usage notes.
 
@@ -1587,7 +1716,7 @@ the icon in the **Actions** column, and click **Start Failover**. Before you sta
 one. During the failover, you can click **Terminate** on the **Progress** tab to terminate the failover task. Terminated failover tasks cannot be restored. If you want to perform the failover tasks, you must create new failover tasks. During the failover, you can click **Force Pass** on the **Progress** tab to skip the current step. During the failover, if a step fails, click **Retry** to re-execute the step. In hybrid disaster recovery scenarios, when you perform a switchback in the ASR for Geo-disaster Recovery console, click **Reset Synchronization Offset** to configure the start offset for incremental synchronization. This way, the system automatically initiates the reprotection process for the synchronization entity and creates an incremental synchronization task. After the protection group enters the Protected state, click Next to switch back your business to Apsara Stack.
 6. After the failover is complete, view the failover result on the **Historical Records** tab.
 
-##### Execute a business disaster recovery drill
+##### 1.5.2.6 Execute a business disaster recovery drill plan
 
 **plan**
 
@@ -1617,7 +1746,7 @@ for the drill. You can click **View Details** in the upper part of the page to v
 9. In the upper-right corner of the page, click **Generate Report**. The system automatically
 generates a drill report. Click **Download Report** to export the report in Microsoft Word format.
 
-##### View the execution history of a plan
+##### 1.5.2.7 View the execution history of a plan
 
 This topic describes how to view drill records and disaster recovery records on the Plan Execution History page.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -1631,7 +1760,7 @@ ii. Select a plan state or drill conclusion, or enter a keyword of disaster reco
 5. View disaster recovery records.
 i. Click the **Disaster Recovery Records** tab and click Advanced Filter. You can view disaster recovery records by **Plan Status** or **Disaster Recovery Plan Name**. ii. Select a plan state or enter a keyword of disaster recovery plan names, and then click the icon. iii. Disaster recovery records that meet the specified condition are filtered.
 
-#### Manage a disaster recovery unit
+#### 1.5.3 Manage a disaster recovery unit namespace
 
 **namespace**
 
@@ -1641,7 +1770,7 @@ ASR-DR supports two active-active modes: active-active services with active-stan
 
 Active-active services with active-standby cloud products: In normal cases, the read and write operations of services at both the primary site and the secondary site are processed by the production instances of synchronization entities. Active-active services with separated cloud products for read and write operations: In normal cases, the write operations of services at both the primary site and the secondary site are processed by the production instances of synchronization entities. Read operations are processed by the cloud products in the nearest data center.
 
-##### Create a disaster recovery unit namespace
+##### 1.5.3.1 Create a disaster recovery unit namespace
 
 ASR for Geo-disaster Recovery allows you to bind a disaster recovery unit namespace to a protection group. This ensures that only the synchronization entities in the bound unit namespace are failed over to the secondary site when the primary site fails. A disaster recovery unit namespace can be bound to only one protection group. A synchronization entity can be used by only one disaster recovery unit namespace.
 
@@ -1693,7 +1822,7 @@ The following table describes the operations that you can perform on the disaste
 | Customize column fields for the list of disaster recovery unit namespaces | Click the icon in the upper-right corner of the Disaster Recovery Unit Namespace page and select the column fields that you want to display in the list. |
 | Display the list of disaster recovery unit namespaces in full screen | Click the icon in the upper-right corner of the Disaster Recovery Unit Namespace page. The list of disaster recovery unit namespaces is displayed in full screen. |
 
-##### Fail over a disaster recovery unit
+##### 1.5.3.2 Fail over a disaster recovery unit namespace
 
 **namespace**
 
@@ -1709,7 +1838,7 @@ The disaster recovery unit namespace is bound to a protection group. For more in
 namespace and click **Failover** in the **Actions** column.
 4. In the message that appears, click **OK**.
 
-##### Fail back a disaster recovery unit
+##### 1.5.3.3 Fail back a disaster recovery unit namespace
 
 **namespace**
 
@@ -1725,7 +1854,7 @@ The disaster recovery unit namespace in the primary data center is failed over t
 namespace and click **Failback** in the **Actions** column.
 4. In the message that appears, click **OK**.
 
-#### Manage synchronization entities
+#### 1.5.4 Manage synchronization entities
 
 On the Synchronization Entity page, view all synchronization entities of a specified disaster recovery relationship and the protection groups that contain these synchronization entities.
 1. Log in to the ASR for Geo-disaster Recovery console.
@@ -1737,9 +1866,9 @@ On the Synchronization Entity page, view all synchronization entities of a speci
 Click a synchronization entity ID to go to the **Entity Details** page and view the detailed information of the synchronization entity. Move the pointer over the **Associated Protection Group** column to view the protection group associated with the synchronization entity. Click **Delete** in the Actions column of a synchronization entity to delete the synchronization entity. Select multiple synchronization entities and click **Batch**
 **Delete** below the list to delete the synchronization entities in batches.
 
-### Data verification
+### 1.6 Data verification
 
-#### Manage verification tasks
+#### 1.6.1 Manage verification tasks
 
 Create and start verification tasks, and view the verification progress and results.
 1. Log in to the ASR for Geo-disaster Recovery console.
@@ -1786,7 +1915,7 @@ Create and start verification tasks, and view the verification progress and resu
 | View verification results | i. Click View Verification Results in the Actions column of the target verification task to go to the Verification Results page. ii. On the Verification Results page, click View Details in the Actions column to go to the Verification Result Details page. iii. On the Verification Result Details page, view the detailed information of the verification results. |
 | Delete a verification task | i. Select Delete in the Actions column of the verification task. ii. In the dialog box, click OK. |
 
-#### Manage validation clusters
+#### 1.6.2 Manage validation clusters
 
 The ASR for Geo-disaster Recovery platform manages data consistency check clusters as resources. You can associate multiple Elastic Compute Service (ECS) instances with a cluster as needed to form a data validation cluster that executes data consistency check tasks.
 
@@ -1829,9 +1958,9 @@ The deployment architecture supports only ECS deployment. The database supports 
 |---|---|
 | Delete | i. Click Delete in the Actions column of the target validation cluster. ii. In the dialog box, click Delete. |
 
-### Alert management
+### 1.7 Alert management
 
-#### Configure alert rules
+#### 1.7.1 Configure alert rules
 
 The ASR for Geo-disaster Recovery console triggers alerts based on specific rules. You can create one or more alert rules based on your business requirements.
 1. Log on to the ASR-DR console.
@@ -1868,7 +1997,7 @@ After creating an alert rule, you can perform the following operations.
 |---|---|
 | Delete an alert rule | 1. On the Alert Rules list page, click in the Operation column of an alert rule. 2. Click Delete. 3. In the pop-up message, click OK. |
 
-#### View and export alert information
+#### 1.7.2 View and export alert information
 
 You can view alert information to obtain abnormality information.
 1. Log on to the Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) console. For
@@ -1877,7 +2006,7 @@ more information, see Log on to the ASR-DR console.
 3. View alert information or set filter conditions.
 In the upper part of the page, you can customize the alert conditions. Click the ID of an alert. You can view details of the alert.
 
-#### Configure synchronization latency alert
+#### 1.7.3 Configure synchronization latency alert thresholds
 
 **thresholds**
 
@@ -1889,9 +2018,9 @@ more information, see Log on to the ASR-DR console.
 3. Configure the synchronization latency alert threshold of each service in seconds. Click **OK**.
 This feature is available only in the cross-cloud DR scenario.
 
-### System Management
+### 1.8 System Management
 
-#### Cloud instance management
+#### 1.8.1 Cloud instance management
 
 Before you can configure a protection group and a disaster recovery plan, you must create a cloud instance. Cloud instances are managed by level-1 organizations. All authorized users in a level-1 organization and its subordinate organizations can configure cloud instances for their organizations. The configured cloud instances are available only in the organizations to which they belong.
 
@@ -1928,7 +2057,7 @@ The following table describes the operations that you can perform after the clou
 | Adjust the display style of the cloud instance list | In the upper-right corner of the All Instances section, click the icon and select Default or Compact to display the cloud instance list in the corresponding style. |
 | Customize column fields for the cloud instance list | In the upper-right corner of the All Instances section, click the icon and clear the fields that you do not want to display in the list. |
 
-#### Manage disaster recovery relationships
+#### 1.8.2 Manage disaster recovery relationships
 
 To perform disaster recovery (DR), you must first add a DR relationship in the ASR-DR console. You can perform DR operations only between regions that have a DR relationship.
 
@@ -1971,7 +2100,7 @@ After you create a disaster recovery relationship, you can perform the following
 | Disable or enable a disaster recovery relationship | 1. In the Actions column, click Disable/Enable. 2. In the dialog box that appears, click OK. After a DR relationship is disabled, ongoing DR plans continue to run, but no new tasks can be triggered. |
 | Delete a disaster recovery relationship | 1. In the Actions column, click Delete. 2. In the dialog box that appears, click Delete. Important A DR relationship is associated with many DR resource objects. Therefore, disable the DR relationship instead of deleting it. If you must delete a DR relationship, first delete all its associated resource objects, such as protection groups and DR plans. |
 
-#### Manage logs
+#### 1.8.3 Manage logs
 
 Operation logs record information about all operations in the system. These operations include the creation, deletion, and execution of protection groups, plans, and instances.
 1. Log on to the ASR for Geo-disaster Recovery console.
@@ -1988,7 +2117,7 @@ You can filter specific operations logs by user, module, alert level, operation 
 4. (Optional)
 Click **Retry**. ASR for Geo-disaster Recovery clears search conditions and refreshes information of logs in the list.
 
-#### Hybrid disaster recovery management
+#### 1.8.4 Hybrid disaster recovery management
 
 Before you can configure a protection group and a disaster recovery plan, you must create a cloud instance. Hybrid cloud instances are managed by level-1 organizations. All authorized users in a level-1 organization and its subordinate organizations can configure cloud instances for their organizations. The configured cloud instances are available only in the organizations to which they belong.
 
@@ -2028,7 +2157,7 @@ The following table describes the operations that you can perform after the hybr
 | Adjust the display style of the cloud instance list | In the upper-right corner of the All Instances section, click the icon and select Default or Compact to display the cloud instance list in the corresponding style. |
 | Customize column fields for the cloud instance list | In the upper-right corner of the All Instances section, click the icon and clear the fields that you do not want to display in the list. |
 
-#### Manage scoring items for
+#### 1.8.5 Manage scoring items for synchronization entities
 
 **synchronization entities**
 
@@ -2056,9 +2185,9 @@ On the operations platform, scoring items for synchronization entities are manag
 | Enable or disable a scoring item | Click or in the Enable column of the scoring item. : The scoring item is enabled. : The scoring item is disabled. |
 | Restore a scoring item to default settings | After you modify the default settings of a scoring item, theA ctions column displays the Restore to Defaults option. You can use this option to restore the configuration of the scoring item to the default configuration. |
 
-### FAQ
+### 1.9 FAQ
 
-#### What do I do if entities fail to be
+#### 1.9.1 What do I do if entities fail to be protected?
 
 **protected?**
 
@@ -2075,7 +2204,7 @@ Entities in a protection group may fail to be protected when the number of prima
 | Tables added to a secondary Tablestore instance |   | Manually remove the added tables from the secondary instance. Click the Recover button. After 10 minutes, the status of the entity becomes Protecting. The link remains the same. |
 | Tables removed from a secondary Tablestore instance |   | Click the Recover button. The removed tables are added to the secondary instance. After 10 minutes, the status of the entity becomes Protecting. However, after 15 minutes, the status of the entity becomes Protect Failed again. Click the Recover button again. The entity enters the Protecting state. The link returns to the previous state. |
 
-#### Troubleshoot abnormal disaster
+#### 1.9.2 Troubleshoot abnormal disaster recovery relationship checks
 
 **recovery relationship checks**
 
@@ -2123,9 +2252,9 @@ The disaster recovery interconnection is not configured, or its status is abnorm
 
 See Disaster Recovery Interconnection Management to reconfigure the disaster recovery interconnection relationship.
 
-### Appendix
+### 1.10 Appendix
 
-#### Create a RAM role
+#### 1.10.1 Create a RAM role
 
 For the organization corresponding to the instance to be protected, you must create a Resource Access Management (RAM) role for Data Transmission Service (DTS) and ASR-DR in the Apsara Uni-manager Management Console of the primary and secondary sites.
 1. Log on to the Apsara Uni-manager Management Console from the primary site.
@@ -2142,7 +2271,7 @@ protected. For more information, see Step 3.
 6. Log on to the Apsara Uni-manager Management Console from the secondary site. Repeat
 the preceding steps to create a RAM role for the secondary site.
 
-#### Obtain the AccessKey pair of a
+#### 1.10.2 Obtain the AccessKey pair of a personal account of public cloud
 
 **personal account of public cloud**
 
@@ -2164,7 +2293,7 @@ created AccessKey pair can be used in all scenarios.
 6. In the **Create *********** dialog box, save the AccessKey ID and AccessKey secret, and
 click **OK**.
 
-#### View the synchronization logs of
+#### 1.10.3 View the synchronization logs of MaxCompute
 
 **MaxCompute**
 
@@ -2178,7 +2307,7 @@ icon in the Actions column that corresponds to the required protection group and
 4. On the **Protection Group Details** page, click the
 icon in the Actions column that corresponds to the required instance and select **MaxCompute Logs** from the shortcut menu. You can view the Apsara Bigdata Manager (ABM) logs of the instance at the primary and secondary sites.
 
-#### Modify policy configuration
+#### 1.10.4 Modify policy configuration
 
 You can modify the policy configuration for MaxCompute synchronization entities added to a protection group. You can add allowlists and blocklists.
 1. Log on to the ASR-DR console.
@@ -2200,7 +2329,7 @@ icon next to the synchronization entity and select **Modify Policy Configuration
 
 6. Click **OK**.
 
-#### Suspend synchronization entities
+#### 1.10.5 Suspend synchronization entities under a protection group
 
 **under a protection group**
 
@@ -2220,7 +2349,7 @@ synchronization suspension.
 6. Click **OK**.
 After suspension succeeds, the entity status changes to Suspending. You can click the icon on the right side of the synchronization entity and select **Re-protect**.
 
-#### Obtain an AccessKey pair
+#### 1.10.6 Obtain an AccessKey pair
 
 To use Apsara Stack Resilience for Disaster Recovery (ASR-DR), the operations administrator or organization administrator must obtain the AccessKey pair of the personal account or the organization account used for the primary center and secondary center, and configure the corresponding AccessKey pair in ASR-DR.
 
@@ -2252,7 +2381,7 @@ choose **Resources > Product & Cluster O&M**.
 **accesskey** type, and click the
 icon in the **Resource Application Result** column of the resource to view the AccessKey pair of ASR-DR.
 
-#### Manually synchronize data
+#### 1.10.7 Manually synchronize data
 
 By default, data of MaxCompute and DataWorks is synchronized from the primary region to the secondary region based on the scheduled time. To immediately perform computing in the secondary region, you can manually synchronize incremental data to the secondary region.
 1. Log on to the ASR for Geo-disaster Recovery console
@@ -2262,7 +2391,7 @@ By default, data of MaxCompute and DataWorks is synchronized from the primary re
 4. On the **Protection Group Details** page, click the
 icon on the right of the instance and click **Synchronize Incremental Data Now**. Then, the system synchronizes the incremental data of MaxCompute and DataWorks.
 
-#### Obtain the settings of the primary
+#### 1.10.8 Obtain the settings of the primary cloud instance
 
 **cloud instance**
 
@@ -2347,7 +2476,7 @@ If the key value is displayed in ciphertext, use the following method for decryp
 curl --fail --unix-socket /var/run/proxyssl/pssl.sockrest 'http://host/api/v1/configs' -H 'Content-Type: application/octet-stream' -X POS T -d {"<Parameter key>":"<Parameter value in the ciphertext>"}
 ```
 
-#### Customize the data-plane SDK to
+#### 1.10.9 Customize the data-plane SDK to implement access from multiple endpoints
 
 **implement access from multiple endpoints**
 
@@ -2391,13 +2520,13 @@ java -server -Xms4096m -Xmx4096m -Xmn2048m -Xss512k -XX:MetaspaceSize=512m -XX:M
 
 O&M console of ASR for Geo-disa ster Recovery
 
-## O&M console of ASR for
+## 2 O&M console of ASR for Geo-disaster Recovery
 
 **Geo-disaster Recovery**
 
 This topic describes operations related to ASR for Geo-disaster Recovery in the Apsara Unimanager Operations Console.
 
-### Log in to the O&M console of
+### 2.1 Log in to the O&M console of ASR for Geo-disaster Recovery
 
 **ASR for Geo-disaster Recovery**
 
@@ -2417,7 +2546,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Disaster Recovery Management > ASR for Geo-disaster Recovery**.
 
-### Homepage
+### 2.2 Homepage
 
 The homepage of the ASR for Geo-disaster Recovery O&M console displays information in the following sections: Authorization usage statistics, Node task load statistics, Total number of abnormal synchronization entities, Unassigned task statistics, Bandwidth Usage, and Dedicated Line traffic usage.
 
@@ -2438,9 +2567,9 @@ When deploying the ASR for Geo-disaster Recovery O&M console, you must also conf
 
 O&M console of ASR for Geo-disa ster Recovery
 
-### Disaster recovery monitoring
+### 2.3 Disaster recovery monitoring
 
-#### View the cloud platform monitoring
+#### 2.3.1 View the cloud platform monitoring
 
 Cloud platform monitoring is designed to monitor the disaster recovery status of cloud services, including metrics such as service availability, domain name resolution, and network access. It allows you to quickly switch your cloud platform to another region when a region fails, thereby ensuring business continuity.
 1. Log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console from the
@@ -2452,7 +2581,7 @@ service inspection information in the selected interconnected regions. O&M conso
 4. Move the pointer over a service to view the check details of the service.
 5. Click **View More**. In the panel that appears, view the details of check items.
 
-#### View the protection group monitoring
+#### 2.3.2 View the protection group monitoring
 
 This topic describes how to view the check results of synchronization entities in a protection group. O&M console of ASR for Geo-disa ster Recovery
 1. Log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console from the
@@ -2462,7 +2591,7 @@ Apsara Uni-manager Operations Console.
 3. Find the protection group that you want to view and click **View Check Results** in the
 Actions column. In the panel that appears, view the following information about each synchronization entity in the protection group: synchronization entity name, cloud service, synchronization status, synchronization latency, primary instance status, secondary instance status, and the time when the check was performed.
 
-### Basic capability O&M
+### 2.4 Basic capability O&M
 
 This topic describes the basic capability O&M features of ASR for Geo-disaster Recovery. In the ASR for Geo-disaster Recovery O&M console, the basic capability O&M features of ASR for Geo-disaster Recovery are categorized into the following modules: cloud information management, parameter management, node management, virtual private cloud (VPC) management, capacity management, and data upgrade. The following table describes the features.
 
@@ -2490,7 +2619,7 @@ O&M console of ASR for Geo-disa ster Recovery
 |---|---|---|---|
 | Data upgrade | You can upgrade all data of protection groups and disaster recovery plans. | Existing users are required to upgrade data after a version update. | 1. On the Data Upgrade page, click Data Upgrade. 2. In the Delete Synchronization Entity message, click OK. 3. Upgrade data as prompted. |
 
-#### Manage scoring items for
+#### 2.4.1 Manage scoring items for synchronization entities
 
 **synchronization entities**
 
@@ -2516,7 +2645,7 @@ O&M console of ASR for Geo-disa ster Recovery
 | Adjust the remediation recommendation template | i. Click in the Remediation Recommendation Template column of the scoring item. ii. After you adjust the template, click OK. |
 | Enable or disable a scoring item | Click or in the Enable column of the scoring item. : The scoring item is enabled. : The scoring item is disabled. |
 
-#### Manage cloud product information
+#### 2.4.2 Manage cloud product information
 
 Before you use the geo-disaster recovery platform in the Apsara Uni-manager Management Console, you must configure the disaster recovery and production clouds in the Apsara Unimanager Operations Console. After you add a production cloud instance, you must configure the supported disaster recovery products and their endpoints. This allows ASR-DR to perform disaster recovery for resource instances in the production cloud. This topic describes the configurations for a cross-cloud disaster recovery scenario.
 
@@ -2772,7 +2901,7 @@ After you add a cloud, you can also perform the following operations.
 | Edit Cloud | 1. Click Edit in the Actions column. 2. In the dialog box that appears, modify the parameter values. 3. After you complete the modification, click Verify. After the verification is successful, click OK. |
 | Delete a cloud | 1. Click Delete in the Actions column. 2. In the message that appears, click OK. |
 
-#### Manage a disaster recovery
+#### 2.4.3 Manage a disaster recovery interconnection
 
 **interconnection**
 
@@ -2807,7 +2936,7 @@ O&M console of ASR for Geo-disa ster Recovery
 | Modify the disaster recovery interconnection | 1. Click Edit in the Operation column of the disaster recovery interconnection. 2. In the dialog box that appears, modify settings as needed, and then click Submit. |
 | Delete the disaster recovery interconnection | 1. Click Delete in the Operation column of the disaster recovery interconnection. 2. In the message that appears, click OK. |
 
-#### Manage a disaster recovery gateway
+#### 2.4.4 Manage a disaster recovery gateway
 
 This topic describes how to configure peer gateway information across clouds to establish a disaster recovery relationship and a network connection between two cross-cloud ends.
 
@@ -2841,7 +2970,7 @@ click **Next**.
 | Modify ACL | 1. Click View ACL in the Actions column corresponding to a region. 2. Click Modify in the Actions column. 3. Select another action and then click Submit. |
 | Delete ACL | 1. Click View ACL in the Actions column corresponding to a region. 2. Click Delete in the Actions column. 3. In the message that appears, click OK. |
 
-#### Configure a dashboard map
+#### 2.4.5 Configure a dashboard map
 
 This topic describes how to configure disaster recovery regions displayed on a dashboard. After configuration, the geo-disaster recovery data is displayed on the dashboard.
 
@@ -2881,7 +3010,7 @@ O&M console of ASR for Geo-disa ster Recovery
 | Edit the disaster recovery region | 1. Find the disaster recovery region and click Edit in the Actions column. 2. In the Edit Disaster Recovery Region dialog box, enter a new region name or select another city. 3. Click OK. |
 | Delete the disaster recovery region | 1. Find the disaster recovery region and click Delete in the Actions column. 2. In the message that appears, click OK. |
 
-### Disaster recovery O&M
+### 2.5 Disaster recovery O&M
 
 This topic describes the disaster recovery O&M features of ASR for Geo-disaster Recovery. The disaster recovery O&M features of ASR for Geo-disaster Recovery are categorized into the synchronization entity management and plan management modules. The following table describes the modules.
 
@@ -2895,9 +3024,9 @@ This topic describes the disaster recovery O&M features of ASR for Geo-disaster 
 
 O&M console of ASR for Geo-disa ster Recovery
 
-#### Manage synchronization entities
+#### 2.5.1 Manage synchronization entities
 
-##### Skip a step
+##### 2.5.1.1 Skip a step
 
 The procedure to skip a single step in the synchronization entity management and plan management sections are the same. This topic describes how to skip a single step in the synchronization entity management section.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2929,7 +3058,7 @@ O&M console of ASR for Geo-disa ster Recovery
 |---|---|
 | Enable the full screen mode | Click the icon to display data in full screen mode. Click the icon to disable the full screen mode. |
 
-##### Reperform a single step
+##### 2.5.1.2 Reperform a single step
 
 The procedure to reperform a single step in the synchronization entity management and plan management sections are the same. This topic describes how to reperform a single step in the synchronization entity management section.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2958,7 +3087,7 @@ On the Protection Group page, you can also perform the operations described in t
 
 O&M console of ASR for Geo-disa ster Recovery
 
-##### Configure throttling
+##### 2.5.1.3 Configure throttling
 
 You can configure throttling only for instances of the Object Storage Service (OSS), ApsaraDB RDS, Distributed ApsaraDB RDS DRDS, ApsaraDB Redis, or ApsaraDB MongoDB.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2980,7 +3109,7 @@ table and click **OK**.
 
 O&M console of ASR for Geo-disa ster Recovery
 
-##### Delete an entity from a protection group
+##### 2.5.1.4 Delete an entity from a protection group
 
 This topic describes how to delete an entity from a protection group.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -2992,7 +3121,7 @@ This topic describes how to delete an entity from a protection group.
 **Delete** in the **Actions** column.
 5. In the Delete Synchronization Entity message, click **OK**.
 
-##### View the logs of a synchronization entity
+##### 2.5.1.5 View the logs of a synchronization entity
 
 Logs are generated during disaster recovery drills or actual disaster recovery. This topic describes how to view the logs of a synchronization entity in a protection group.
 1. Log on to the O&M console of ASR for Geo-disaster Recovery (ASR-DR).
@@ -3004,7 +3133,7 @@ Logs are generated during disaster recovery drills or actual disaster recovery. 
 **Logs** in the **Actions** column.
 5. Click **OK** or **Cancel** to close the panel.
 
-#### Perform a site switchover drill
+#### 2.5.2 Perform a site switchover drill
 
 This topic describes how to associate disaster recovery plans with a switchover drill that simulates the scenario in which all devices at the primary site fail and all business needs to be switched over to the secondary site. During the switchover drill, the associated disaster recovery plans are executed.
 
@@ -3036,7 +3165,7 @@ O&M console of ASR for Geo-disa ster Recovery
 | Download a failover summary report | On the Historical Records tab of the plan details page, find a failover and click Download Report in the Actions column to save the failover report to your computer. |
 | Disassociate one or more disaster recovery plans from the site switchover | Disassociate multiple disaster recovery plans at a time i. On the Site Switchover page, select the disaster recovery plans that you want to disassociate from the site switchover. ii. In the lower part of the page, click Unbind. iii. In the Start All Failovers message, click OK. Disassociate a single disaster recovery plan i. On the Site Switchover page, find the disaster recovery plan that you want to disassociate from the site switchover and click Unbind in the Actions column. ii. In the Unbind Independent Disaster Recovery message, click OK. |
 
-#### Perform a site failover
+#### 2.5.3 Perform a site failover
 
 This topic describes how to associate disaster recovery plans with a site failover that is performed when all devices at the primary site fail and all business needs to be switched over to the secondary site. During the site failover, the associated disaster recovery plans are executed.
 
@@ -3067,7 +3196,7 @@ O&M console of ASR for Geo-disa ster Recovery
 | Disassociate one or more disaster recovery plans from the site failover | Disassociate multiple disaster recovery plans at a time i. On the Site Disaster Recovery page, select the disaster recovery plans that you want to disassociate from the site failover. ii. In the lower part of the page, click Unbind. iii. In the Unbind Independent Disaster Recovery message, click OK. Disassociate a single disaster recovery plan i. On the Site Disaster Recovery page, find the disaster recovery plan that you want to disassociate from the site failover and click Unbind in the Actions column. ii. In the Unbind Independent Disaster Recovery message, click OK. |
 |---|---|
 
-#### View the execution history of a site
+#### 2.5.4 View the execution history of a site disaster recovery plan
 
 **disaster recovery plan**
 
@@ -3106,7 +3235,7 @@ View the disaster recovery records a. Click the **Disaster Recovery Records** ta
 | Associated Protection Group | This tab displays the status of all protection groups associated with the plan and the number of instances in each protection group. |
 | Historical Records | This tab displays disaster recovery records. |
 
-#### Manage fault injection tasks
+#### 2.5.5 Manage fault injection tasks
 
 Manage fault injection tasks and view the task execution status.
 1. Log in to the O&M console of ASR for Geo-disaster Recovery.
@@ -3146,13 +3275,13 @@ O&M console of ASR for Geo-disa ster Recovery
 | Retry a fault injection task | i. Click Retry in the Actions column of the task. Note You can retry only tasks in the Inject Failed status. ii. In the dialog box, click OK. |
 | Recover a fault injection task | i. Click Recover in the Actions column of the task. Note You can recover only tasks in the Injected status. You can also recover individual subtasks from the subtask list on the task details page. ii. In the dialog box, click OK. Recovering this fault injection task recovers all injected subtasks. |
 
-### Independent disaster recovery
+### 2.6 Independent disaster recovery management
 
 **management**
 
 This topic describes how to create, view the details of, and delete an independent disaster recovery plan. O&M console of ASR for Geo-disa ster Recovery
 
-#### Create an independent disaster
+#### 2.6.1 Create an independent disaster recovery plan
 
 **recovery plan**
 
@@ -3175,7 +3304,7 @@ and complete the configurations later.
 **Configuration Completed** state. The following figure shows an example.
 O&M console of ASR for Geo-disa ster Recovery
 
-#### Perform a failover
+#### 2.6.2 Perform a failover
 
 If a secondary site fails when the site is used to provide services, you can switch the business back to the primary site by using the independent disaster recovery feature. This topic describes how to perform a failover in the O&M console of ASR for Geo-disaster Recovery (ASR-DR). This topic also describes how to view the failover steps and progress.
 
@@ -3195,7 +3324,7 @@ Failover section of the Switching Steps tab. O&M console of ASR for Geo-disa ste
 4. After the failover is started, log on to the O&M console of ASR-DR from the primary site and
 view the steps and progress of the failover. For more information, see View the details of an independent disaster recovery plan.
 
-#### Perform a switchover drill
+#### 2.6.3 Perform a switchover drill
 
 If ASR for Geo-disaster Recovery (ASR-DR) is deployed on the secondary cloud and your business is switched over to run on the secondary cloud, the business cannot be switched back to the primary cloud when the secondary cloud fails. To resolve this issue, ASR-DR provides the independent disaster recovery feature. You can perform a switchover drill to increase the success rate of a failover.
 
@@ -3218,7 +3347,7 @@ O&M console of ASR for Geo-disa ster Recovery
 4. After the switchover drill is started, log on to the Apsara Uni-manager Operations Console
 from the primary site and view the steps and progress of the switchover drill. For more information, see View the details of an independent disaster recovery plan.
 
-#### View the details of an independent
+#### 2.6.4 View the details of an independent disaster recovery plan
 
 **disaster recovery plan**
 
@@ -3229,7 +3358,7 @@ You can view the steps and progress of failovers and switchover drills at the pr
 4. Find an independent disaster recovery plan and click **View Details** in the **Actions** column.
 On the plan details page, view the basic information about the plan and the steps and progress of business switchovers.
 
-#### Disassociate configured nodes from an
+#### 2.6.5 Disassociate configured nodes from an independent disaster recovery plan
 
 **independent disaster recovery plan**
 
@@ -3240,7 +3369,7 @@ recovery plan that you want to manage. O&M console of ASR for Geo-disa ster Reco
 4. Click **Unbind** in the **Actions** column. In the message that appears, click **OK**. After the
 configured nodes are disassociated from the independent disaster recovery plan, you can reconfigure or delete the plan. You must disassociate configured nodes from an independent disaster recovery plan in ASR-DR at the secondary site.
 
-#### Delete an independent disaster
+#### 2.6.6 Delete an independent disaster recovery plan
 
 **recovery plan**
 
@@ -3251,9 +3380,9 @@ You can delete only independent disaster recovery plans that are not configured.
 recovery plan that you want to manage.
 4. Click **Delete** in the **Actions** column. In the message that appears, click **OK**.
 
-### Appendixes
+### 2.7 Appendixes
 
-#### Look up a DNS address
+#### 2.7.1 Look up a DNS address
 
 This topic describes how to look up a Domain Name System (DNS) address.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -3273,7 +3402,7 @@ O&M console of ASR for Geo-disa ster Recovery
 6. Click **Show Content**. The value of the AnycastVip field is the IP address of the DNS name
 server, which is the same as the ServerIP value shown on the DNS management page. The first two IP addresses in the internetIps field are the source IPs used by the DNS service to forward requests. In most cases, two IPs are bound to the bindServerRole containers.
 
-#### Configure DNS forwarding
+#### 2.7.2 Configure DNS forwarding
 
 When you set up a primary-secondary disaster recovery system between two clouds, you must configure Domain Name System (DNS) at the primary and secondary sites. Make sure that DNS queries can be smoothly forwarded across the system. This topic describes how to configure DNS forwarding.
 
@@ -3366,7 +3495,7 @@ iii. Log on to the Apsara Uni-manager Management console and choose **Products >
 **Networking > Cloud Network > Alibaba Cloud DNS**.
 iv. On the **DNS within Cloud** page, click the **Global Forwarding Configuration** tab. O&M console of ASR for Geo-disa ster Recovery v. The tianji cluster is rolled and the dns_zone.conf.jj2 file is fixed.
 
-#### Configure DTS parameters
+#### 2.7.3 Configure DTS parameters
 
 If you configure a primary/secondary disaster recovery solution between two clouds, you must configure Data Transmission Service (DTS) for database products. This topic describes how to configure DTS.
 

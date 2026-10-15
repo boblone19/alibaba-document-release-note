@@ -3,14 +3,20 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Product 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Product Introduction 20260828.pdf"
+source_pdf: "8c5e5e3dc1587ff7_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Product Introduction 20260828
 
-## Features
+## Table of Contents
+
+- 1 Features
+- 2 Benefits
+- 3 Scenarios
+
+## 1 Features
 
 | Function module | Features | Description |
 |---|---|---|
@@ -30,7 +36,7 @@ converter: pdf2md (PyMuPDF line classifier)
 |   | Event logs | Supports searching event logs by source IP address, destination IP address, event type, action taken, and time dimension. |
 |   | Traffic logs | Supports searching traffic logs by multiple dimensions. |
 
-## Benefits
+## 2 Benefits
 
 Apsara Stack Security is a leading service in the cloud security industry and has received various certifications from relevant authorities. It fully protects the security of the Apsara Stack environment through advanced security systems and technologies.
 
@@ -55,7 +61,7 @@ Apsara Stack Security is developed based on over ten years of protection experie
 | Comprehensive protection system that supports unified detection and response | Traditional security services add devices to improve security capabilities. The devices can collect only device logs and status data, and display the data on the management platform. You cannot integrate the devices to use additional features. | Apsara Stack Security provides comprehensive Internet protection to ensure the security of networks, servers, applications, data, and user identities. The security modules automatically interact with each other to respond to security issues and share intelligence. |
 | Compatibility with all data center environments and decoupling from specific cloud platforms | Most traditional security services are provided as hardware appliances. Due to this reason, the services are incompatible with the cloud platforms that adopt Software Defined Network (SDN) technology. | Based on the interactions between servers and the operating system, Apsara Stack Security performs data analysis to detect threats at the network perimeter. This ensures that Apsara Stack Security is compatible with all data center environments and addresses the complex network topology in data centers. |
 
-## Scenarios
+## 3 Scenarios
 
 Apsara Stack Security provides flexible and scalable security solutions for users of different scales across various sectors, including industry, agriculture, transportation, public service, finance, and education.
 

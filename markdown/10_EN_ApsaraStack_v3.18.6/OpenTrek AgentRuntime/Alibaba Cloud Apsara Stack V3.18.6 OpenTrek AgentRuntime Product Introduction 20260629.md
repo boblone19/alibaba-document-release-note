@@ -2,16 +2,26 @@
 title: "OpenTrek AgentRuntime Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 OpenTrek AgentRuntime Product Introduction 20260629.pdf"
+source_pdf: "ca65dd93b14c62de_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek AgentRuntime Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Agent%20Runtime/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20AgentRuntime%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # OpenTrek AgentRuntime Product Introduction 20260629
 
-OpenTrek AgentRuntime Product Introducti
+## Table of Contents
 
-## What is AgentRuntime
+- 1 What is AgentRuntime agent runtime service
+- 2 Product details
+- 3 Benefits
+- 4 Functions and features
+- 5 Common scenarios
+- 6 Terms
+- 7 Limits
+
+untime service
+
+## 1 What is AgentRuntime agent runtime service
 
 **agent runtime service**
 
@@ -23,9 +33,9 @@ grade AI Agent applications and deployed within the customer's private cloud env
 **elastic scheduling of underlying heterogeneous resources, and multi-level security**
 
 **isolation**.
-AgentRuntime supports runtimes for mainstream languages such as Python, Node.js, and Java. It provides standardized deployment, version management, canary release, and elastic instance scheduling for Agent applications. The platform includes two built-in sandbox services: Code Interpreter and Browser Use, supporting secure, isolated code execution (including file I/O and session management) and browser automation tasks (such as web browsing, data scraping, and form filling), respectively. The platform provides unified governance for tool invocation. It is compatible with the MCP protocol and supports one-click tool onboarding, custom publishing, and centralized credential management. The platform centrally manages access credentials for Agents, sandboxes, large models, and tools through security mechanisms. It can integrate with the enterprise credential center or AI Gateway. Observability covers tracing analysis and runtime metrics. You can visually monitor the duration and status of each step in Agent execution. AgentRuntime Product Introducti OpenTrek
+AgentRuntime supports runtimes for mainstream languages such as Python, Node.js, and Java. It provides standardized deployment, version management, canary release, and elastic instance scheduling for Agent applications. The platform includes two built-in sandbox services: Code Interpreter and Browser Use, supporting secure, isolated code execution (including file I/O and session management) and browser automation tasks (such as web browsing, data scraping, and form filling), respectively. The platform provides unified governance for tool invocation. It is compatible with the MCP protocol and supports one-click tool onboarding, custom publishing, and centralized credential management. The platform centrally manages access credentials for Agents, sandboxes, large models, and tools through security mechanisms. It can integrate with the enterprise credential center or AI Gateway. Observability covers tracing analysis and runtime metrics. You can visually monitor the duration and status of each step in Agent execution.
 
-## Product details
+## 2 Product details
 
 AgentRuntime agent runtime service is an all-in-one infrastructure platform for enterprisegrade Agent applications. The platform provides full lifecycle management capabilities, from debugging and deployment to monitoring and upgrades. It includes a unified execution environment that supports Python, Node.js, Java, and other language runtimes. It integrates secure sandboxing (Code Interpreter, Browser Use), model access and governance, tool invocation, credential management, and observability features. This topic describes the working principles and core features of AgentRuntime.
 
@@ -68,7 +78,7 @@ and efficient runtime environment. It aligns with public cloud functionality to 
 **Full lifecycle management**: Supports the complete process management of Agent
 applications, from debugging and deployment to monitoring and upgrades.
 **Multi-language runtimes**: Includes built-in runtimes for Python 3.0+, Node.js, and Java,
-and enables enterprises to build Agents using their existing technology stacks. OpenTrek AgentRuntime Product Introducti
+and enables enterprises to build Agents using their existing technology stacks.
 **Secure sandbox capabilities**: Provides two types of sandbox capabilities: Code
 Interpreter (for code execution and session management) and Browser Use (for web browsing, data scraping, and form filling). Both are built on MicroVMs to deliver multi-level isolation.
 **Model access**: Supports access to third-party models, open-source hosted models, and
@@ -80,9 +90,9 @@ Agents, Sandboxes, LLMs, and tool invocations.
 **Observability capability**: Supports visualized Trace call chains and real-time Metrics
 monitoring, displaying execution duration, status, and error information.
 **Multi-mode development**: Supports two development methods: no-code (for business
-users) and high-code (coding in Python/Node.js/Java). AgentRuntime provides a unified execution environment, full lifecycle management, multilanguage runtime, secure sandbox, model management, tool management, credential management, and observability capabilities, empowering enterprises to operate Agent applications based on their own technology stacks. AgentRuntime Product Introducti OpenTrek
+users) and high-code (coding in Python/Node.js/Java). AgentRuntime provides a unified execution environment, full lifecycle management, multilanguage runtime, secure sandbox, model management, tool management, credential management, and observability capabilities, empowering enterprises to operate Agent applications based on their own technology stacks.
 
-## Benefits
+## 3 Benefits
 
 AgentRuntime agent runtime service is an all-in-one infrastructure platform for enterprisegrade Agentic applications. It provides a unified execution environment, full lifecycle management, multi-language runtime support, security sandbox services, model management, tool ecosystem integration, centralized credential management, and observability capabilities. The platform supports both no-code and pro-code development modes, adapts to languages such as Python, Node.js, and Java, remains compatible with mainstream Agent frameworks, and integrates model and tool services through the AI Gateway. This topic introduces the core product benefits of AgentRuntime.
 
@@ -106,11 +116,19 @@ Through the enterprise AI Gateway, the platform integrates mainstream models suc
 
 The platform supports trace-based visualization of Agent decision paths, displaying the full chain from frontend requests, gateways, Agents, models, to tool invocation. It provides metric-based monitoring of latency and status, allowing real-time tracking of execution status and response time for each step. The platform also offers version management, canary release, endpoint configuration, and auto-scaling policy settings, meeting enterprise requirementss for continuous evolution and stable operation.
 
+## 4 Functions and features
+
+AgentRuntime is an enterprise-grade AI Agent runtime platform. It provides a unified execution environment, full lifecycle management, multi-language runtime support, security sandboxes, elastic resource scheduling, multi-level isolation, observability, tool and model integration, and credential management.
+
+**Runtime management**
+
 | Feature | Description |
 |---|---|
 | Unified execution environment | The system provides a standardized execution environment, supporting the operation of various Agent applications. |
 | Full lifecycle management | The system supports the debugging, deployment, monitoring, and upgrading of Agent applications. |
 | Python/Node.js/Java runtime | The system supports Python, Node.js, and Java runtimes. |
+
+**Sandbox capabilities**
 
 | Feature | Description |
 |---|---|
@@ -119,16 +137,6 @@ The platform supports trace-based visualization of Agent decision paths, display
 | All-in-One sandbox | The system integrates capabilities such as code execution, browser interaction, and file system access into a single sandbox instance. |
 | File system | The system provides an isolated, read/write virtual file system for the sandbox. It supports creating, reading, modifying, and deleting files. |
 | Operation capability (Computer/Mobile Use) | The system supports simulating graphical user interface (GUI) operations on desktop or mobile devices. |
-
-OpenTrek AgentRuntime Product Introducti
-
-## Functions and features
-
-AgentRuntime is an enterprise-grade AI Agent runtime platform. It provides a unified execution environment, full lifecycle management, multi-language runtime support, security sandboxes, elastic resource scheduling, multi-level isolation, observability, tool and model integration, and credential management.
-
-**Runtime management**
-
-**Sandbox capabilities**
 
 **Elastic scheduling**
 
@@ -140,6 +148,8 @@ AgentRuntime is an enterprise-grade AI Agent runtime platform. It provides a uni
 | High-concurrency elastic scale-out | The system automatically increases the number of instances based on predefined policies. |
 | Business-aware scheduling API | The system provides an API that allows business code to actively request or release computing resources. |
 
+**Security isolation**
+
 | Feature | Description |
 |---|---|
 | Multi-level security isolation | The system supports request-level, instance- level, and session-level isolation. |
@@ -147,14 +157,12 @@ AgentRuntime is an enterprise-grade AI Agent runtime platform. It provides a uni
 | Physical/cluster isolation | The system supports deploying Agents with different security levels or belonging to different business units in completely independent physical clusters to achieve the highest level of security isolation. |
 | Node isolation | Through scheduling policies, the system confines high-risk Agents to a dedicated “sandbox node pool,” ensuring physical isolation from other regular workloads at the compute node level. |
 
-AgentRuntime Product Introducti OpenTrek
-
-**Security isolation**
-
 | Kernel-level isolation (strong sandbox) (coming soon) | The platform seamlessly integrates strong security sandbox capabilities such as ACK's runD. For high-risk tasks like executing untrusted code, the system runs them within an independent kernel based on hardware virtualization. This effectively prevents container escape by malicious code and protects the host and other applications. |
 |---|---|
 | TLS 1.2+ transmission encryption | The system encrypts all network communications using TLS version 1.2 or higher. |
 | Storage isolation and mount | The system supports securely mounting external storage (such as Object Storage Service or local disks) to the sandbox. |
+
+**Observability**
 
 | Feature | Description |
 |---|---|
@@ -162,22 +170,20 @@ AgentRuntime Product Introducti OpenTrek
 | AI application monitoring (requires integration with AI observability products) | The system supports monitoring via Prometheus or ARMS, analyzing model performance, token consumption, and GPU utilization. |
 | Log and evaluation | The system centrally stores logs and supports retrieval and SQL analysis. It also evaluates model call logs for quality, security, and intent. |
 
+**Tool and model management**
+
 | Feature | Description |
 |---|---|
 | MCP | The system supports Model Context Protocol (MCP) mode. |
 | Tool governance and version management | The system manages the lifecycle, version control, and permission governance of tools. |
 | Integration with mainstream models | The system integrates mainstream large language models such as Qwen and DeepSeek. |
 
-OpenTrek AgentRuntime Product Introducti
-
-**Observability**
-
-**Tool and model management**
-
 | Load balancing and degradation across multiple models | The integrated AI Gateway distributes requests across multiple model instances. The system fails over to a backup model if the primary model fails. |
 |---|---|
 | Content security and token throttling | The integrated AI Gateway audits the input and output of models for content security. The system limits token consumption according to defined policies. |
 | Unified tool definition and invocation | The system provides standardized protocols for defining, registering, versioning, and invoking tools. |
+
+**Credential management**
 
 | Feature | Description |
 |---|---|
@@ -185,13 +191,7 @@ OpenTrek AgentRuntime Product Introducti
 | Inject credentials dynamically | The system works with the AgentRuntime to inject credentials securely at runtime. |
 | Enable or disable control | The system enables you to enable or disable credentials with one click. |
 
-AgentRuntime Product Introducti OpenTrek
-
-**Credential management**
-
-OpenTrek AgentRuntime Product Introducti
-
-## Common scenarios
+## 5 Common scenarios
 
 AgentRuntime agent runtime service provides a unified execution environment, full lifecycle management, security sandbox, and multi-language runtime support to meet the foundational deployment and operations requirements of enterprise-grade Agent applications. This topic describes the scenarios for using AgentRuntime.
 
@@ -215,15 +215,19 @@ To mitigate security risks associated with executing untrusted code, AgentRuntim
 
 **Scenario 4: Automated tasks and data processing**
 
-AgentRuntime Product Introducti OpenTrek The AgentRuntime platform supports code execution and data processing capabilities. It provides a securely isolated Code Interpreter environment for executing dynamically generated code, supporting file I/O and session management. It also enables browser automation via VNC + Playwright to perform tasks such as web browsing, data scraping, and form filling. Additionally, it supports desktop application automation through GUI-based interaction with local applications. This scenario applies to enterprise applications requiring automated data collection, processing, and analysis, such as public opinion monitoring, market research, and business process automation.
+The AgentRuntime platform supports code execution and data processing capabilities. It provides a securely isolated Code Interpreter environment for executing dynamically generated code, supporting file I/O and session management. It also enables browser automation via VNC + Playwright to perform tasks such as web browsing, data scraping, and form filling. Additionally, it supports desktop application automation through GUI-based interaction with local applications. This scenario applies to enterprise applications requiring automated data collection, processing, and analysis, such as public opinion monitoring, market research, and business process automation.
 
 **Scenario 5: Cross-departmental sharing of models and tools**
 
-The AgentRuntime platform supports cross-departmental and cross-project sharing of models and tools. The credential management module centrally stores LLM access keys and tool API credentials, assigning usage permissions by project or role. The Tool Hub supports custom tool publishing and internal sharing, facilitating the accumulation of enterprise-grade capability assets. Multiple sandbox environments can be independently configured with dependencies and images to accommodate varying technology stacks across teams. The development mode supports a smooth transition from low-code rapid validation to pro-code engineering implementation. This scenario applies to large enterprise groups where headquarters centrally build Agent infrastructure, and subsidiaries or business units develop dedicated Agent applications on the same platform to achieve capability reuse and standardization. OpenTrek AgentRuntime Product Introducti
+The AgentRuntime platform supports cross-departmental and cross-project sharing of models and tools. The credential management module centrally stores LLM access keys and tool API credentials, assigning usage permissions by project or role. The Tool Hub supports custom tool publishing and internal sharing, facilitating the accumulation of enterprise-grade capability assets. Multiple sandbox environments can be independently configured with dependencies and images to accommodate varying technology stacks across teams. The development mode supports a smooth transition from low-code rapid validation to pro-code engineering implementation. This scenario applies to large enterprise groups where headquarters centrally build Agent infrastructure, and subsidiaries or business units develop dedicated Agent applications on the same platform to achieve capability reuse and standardization.
 
-## Terms
+## 6 Terms
 
-This topic describes the basic concepts of AgentRuntime agent runtime service. AgentRuntime **platform** The PaaS platform deployed in an Apsara Stack environment provides unified runtime management for agents, full lifecycle management for tools, heterogeneous resource scheduling, and multi-level security isolation. The agent runtime provides a standardized containerized execution environment. It supports runtime environments such as Python, Node.js, and Java, and offers full lifecycle management capabilities.
+This topic describes the basic concepts of AgentRuntime agent runtime service. AgentRuntime **platform** The PaaS platform deployed in an Apsara Stack environment provides unified runtime management for agents, full lifecycle management for tools, heterogeneous resource scheduling, and multi-level security isolation.
+
+**Agent runtime**
+
+The agent runtime provides a standardized containerized execution environment. It supports runtime environments such as Python, Node.js, and Java, and offers full lifecycle management capabilities.
 
 **Security sandbox**
 
@@ -261,15 +265,13 @@ The system supports mounting OSS and local disks to meet data persistence requir
 
 The system provides HTTP APIs compatible with the OpenAI Chat Completions protocol and SDKs for multiple programming languages.
 
+## 7 Limits
+
+Do not exceed the specified limits when you use AgentRuntime agent runtime service. Exceeding these limits may cause exceptions in your program.
+
 | Category | Limitation description |
 |---|---|
 | Cluster | Deploy the management cluster and workload clusters separately (at least two Kubernetes clusters). Each cluster requires a minimum configuration of 16 cores and 32 GB of memory. The management console must be able to access the Kubernetes API Server of the workload clusters. The AI Gateway in the workload clusters must have an externally accessible IP address (via a LoadBalancer-type Service). In exclusive mode, a large number of concurrent sessions increases pressure on cluster resources. Plan your cluster capacity according to your business scale. |
 | Sandbox | The first startup of a sandbox may take longer due to image pull and pod scheduling. We recommend that you perform image warm-up in advance. |
 | Credential | User experience for certain operations may be affected in a self-signed certificate environment. |
 | Storage | Prepare the OSS bucket and image repository in advance and ensure sufficient storage quota. OSS is optional, but you must configure it if you want to use zero- code agents, sandbox state persistence, or deployment acceleration features. |
-
-AgentRuntime Product Introducti OpenTrek
-
-## Limits
-
-Do not exceed the specified limits when you use AgentRuntime agent runtime service. Exceeding these limits may cause exceptions in your program.

@@ -3,20 +3,30 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Rock
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 25
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Product Introduction 20260828.pdf"
+source_pdf: "d02ee6302e359810_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Product Introducti"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20RocketMQ%20v5.0%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Product Introduction 20260828
 
-## ApsaraMQ for RocketMQ
+## Table of Contents
 
-## x
+- 1 ApsaraMQ for RocketMQ 5.x
+- 2 Product details
+- 3 Benefits
+- 4 Features
+- 5 Scenarios
+- 6 Limits
+- 7 Terms
+
+## 1 ApsaraMQ for RocketMQ 5.x
+
+## 5 x
 
 ApsaraMQ for RocketMQ 5.x is a distributed messaging middleware that is developed by Alibaba Cloud based on Apache RocketMQ 5.x. It features low latency, high concurrency, high availability, and high reliability. ApsaraMQ for RocketMQ 5.x is a core service in the enterprise-level Internet architecture. Using the highly available distributed cluster technology, it offers a series of messaging services in the cloud, including message subscription and publishing, message trace query, scheduled and delayed messages, and resource statistics. ApsaraMQ for RocketMQ 5.x provides asynchronous decoupling and peak-load shifting capabilities for distributed application systems. It also supports various features for Internet applications, including accumulation of large numbers of messages, high throughput, and reliable message consumption retries. ApsaraMQ for RocketMQ 5.x is one of the core cloud services that are used to support Double 11. ApsaraMQ for RocketMQ 5.x supports connections over TCP and supports multiple programming languages such as Java, C++, and .NET. This allows you to connect applications that are developed in different programming languages to ApsaraMQ for RocketMQ 5.x. ApsaraMQ for RocketMQ 5.x uses a compute-storage separation architecture to support independent scaling of computing and storage resources. This enables a lighter-weight deployment mode and a more flexible and miniaturized cluster configuration, reducing resource overheads and O&M complexity.
 
-## Product details
+## 2 Product details
 
 This topic describes the basic principles of Cloud Message Queue and the core features and technical specifications of . supports the TCP protocol and provides software development kits (SDKs) for multiple programming languages. It delivers high performance and ensures high availability through a multi-replica mechanism. It also supports enterprise-grade features, such as message traces and dead-letter queues, and provides multi-dimensional O&M and management tools.
 
@@ -110,7 +120,7 @@ hybrid cloud architectures.
 **O&M control:** Apsara Stack supports the mqadmin command set and OpenAPI O&M tools.
 This simplifies integration with management platforms and enables unified O&M.
 
-## Benefits
+## 3 Benefits
 
 is a professional message middleware that provides benefits such as high reliability, high availability, and high performance. It supports TCP connections and on-premises deployment.
 
@@ -165,7 +175,7 @@ open source version requires manual operations and is limited by the hardware en
 **Multi-chip support**: Apsara Stack supports heterogeneous chip deployment across
 multiple clusters. The open source version only supports the same chip type within a single cluster.
 
-## Features
+## 4 Features
 
 is a distributed messaging middleware service developed based on Apache RocketMQ. It provides access methods for multiple programming languages and multi-dimensional management tools, along with a range of distinctive features such as dead-letter queues and message queries for different application scenarios. The following sections describe these features in detail.
 
@@ -265,7 +275,7 @@ CloudMonitor provides real-time resource monitoring, monitoring data collection 
 | No single point of failure | The system eliminates single points of failure by using a large-scale distributed cluster architecture. Nodes in the cluster run independently. If one node goes down, it does not affect other nodes in the cluster. |
 | Overload protection | The system provides overload protection. When traffic exceeds the system capacity, services within the capacity limit remain unaffected. |
 
-## Scenarios
+## 5 Scenarios
 
 supports distributed transactions, real-time computing, Internet of Things (IoT) applications, and large-scale cache synchronization.
 
@@ -299,7 +309,7 @@ IoT devices connect to the cloud through a micro message queue for bidirectional
 
 During major sales promotions, such as the Double 11 event, many products are displayed and their prices change in real time. High concurrent access to the product database leads to long page response times. A centralized cache creates a bandwidth bottleneck and cannot handle the high demand for product price information. reduces page response times through large-scale cache synchronization. This approach involves a multi-cache design for different sales venues to meet the high demand for accessing product prices. Figure 4. Large-scale cache synchronization scenario
 
-## Limits
+## 6 Limits
 
 enforces constraints on specific metrics. When you use , ensure that you do not exceed the corresponding limits to prevent system exceptions. The following table describes the specific limits and their values. Table 1. Limits
 
@@ -316,7 +326,7 @@ enforces constraints on specific metrics. When you use , ensure that you do not 
 | Scheduled message concurrency | Default: 200 for clusters | If the default limit does not meet your requirements, contact Apsara Stack technical support to submit a request. |
 | Transactional message concurrency | Default: 200 for clusters | If the default limit does not meet your requirements, contact Apsara Stack technical support to submit a request. |
 
-## Terms
+## 7 Terms
 
 This topic introduces the terms related to to help you understand the concepts and use .
 

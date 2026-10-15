@@ -3,16 +3,72 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 139
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 User Guide 20260828.pdf"
+source_pdf: "96760cba07596ff6_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20SchedulerX%202.0%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 User Guide 20260828
 
+## Table of Contents
+
+- 1 Distributed Task Scheduling Platform SchedulerX 2.0
+- 2 Quick Start
+  - 2.1 Log on to the Apsara Uni-manager Management Console
+  - 2.2 Log on to the SchedulerX console
+  - 2.3 Get the domainName for SchedulerX
+  - 2.4 Connect clients to SchedulerX
+    - 2.4.1 Integrate a Java application with SchedulerX 2.0
+    - 2.4.2 Integrate a Spring application with SchedulerX 2.0
+    - 2.4.3 Integrate a Spring Boot application with SchedulerX 2.0
+  - 2.5 Create standalone script tasks using an agent
+  - 2.6 Adapt to IPv6 access
+  - 2.7 Client release history
+    - 2.7.1 Java SDK
+- 3 Scheduling and triggers
+  - 3.1 Timed scheduling
+  - 3.2 Workflow scheduling
+  - 3.3 API trigger
+  - 3.4 Backfill data
+  - 3.5 Second-level scheduling
+- 4 Task types
+  - 4.1 Java tasks
+  - 4.2 Script tasks
+  - 4.3 HTTP tasks
+- 5 Distributed programming model
+  - 5.1 Standalone
+  - 5.2 Broadcast
+  - 5.3 Map model
+  - 5.4 MapReduce model
+  - 5.5 Multi-language sharding models
+- 6 Console user guide
+  - 6.1 Overview
+  - 6.2 Execution List
+  - 6.3 Task List
+  - 6.4 Workflow Management
+  - 6.5 Application Management
+  - 6.6 Operation records
+- 7 Advanced features
+  - 7.1 Create a second-level scheduling task
+  - 7.2 Create a new account
+  - 7.3 How to pass data between upstream and downstream nodes in a workflow
+- 8 Configuration reference
+  - 8.1 JobContext parameters
+  - 8.2 Advanced configuration parameters for task management
+  - 8.3 SchedulerxWorker configuration parameters
+- 9 Permission management
+  - 9.1 Overview of permission management
+  - 9.2 Create users and user groups
+  - 9.3 Create a role and attach permissions
+  - 9.4 Verify logon permissions
+  - 9.5 Verify application-level permissions
+- 10 FAQ
+  - 10.1 FAQ
+  - 10.2 Alert FAQ
+
 buted Task Scheduling Platform SchedulerX 2.0
 
-## Distributed Task
+## 1 Distributed Task Scheduling Platform SchedulerX 2.0
 
 **Scheduling Platform**
 
@@ -20,9 +76,9 @@ buted Task Scheduling Platform SchedulerX 2.0
 
 SchedulerX 2.0 is Alibaba Group's next-generation Distributed Task Scheduling Platform, built on the Akka architecture. It supports timed scheduling, workflow task orchestration, and distributed batch scheduling. It delivers high reliability, manages massive task volumes, and schedules tasks in seconds. You configure and manage your timed scheduling tasks in the console. You query task execution records and operational logs. You orchestrate tasks and pass data using workflows. SchedulerX 2.0 provides a simple, easy-to-use distributed programming model. With just a few lines of code, you can distribute large data volumes across multiple machines for execution.
 
-## Quick Start
+## 2 Quick Start
 
-### Log on to the Apsara Uni-
+### 2.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -85,7 +141,7 @@ the Captcha, and then click **Confirm**.
 
 For Account Name, enter your username. For Email Address, enter the email address that you used to create the account. A password reset link is sent to your email address. Open the link to reset your password.
 
-### Log on to the SchedulerX
+### 2.2 Log on to the SchedulerX console
 
 **console**
 
@@ -146,7 +202,7 @@ Enter the six-digit MFA code and click **Authenticate**.
 
 If you are an administrator, click **Access With Administrator Permissions**. If you are not an administrator, click **Access With Role-based Authorization**.
 
-### Get the domainName for
+### 2.3 Get the domainName for SchedulerX
 
 **SchedulerX**
 
@@ -179,9 +235,9 @@ select **Show More**.
 4. In the **Details** dialog box, obtain the domainName for SchedulerX 2.0 and record it.
 The **domain** value is the domainName for SchedulerX 2.0.
 
-### Connect clients to SchedulerX
+### 2.4 Connect clients to SchedulerX
 
-#### Integrate a Java application with
+#### 2.4.1 Integrate a Java application with SchedulerX 2.0
 
 **SchedulerX 2.0**
 
@@ -338,7 +394,7 @@ Based on the hello world example in Integrate a Java application with SchedulerX
 
 Cron expressions do not support second-level granularity. To schedule tasks at the second level, use second_delay.
 
-#### Integrate a Spring application with
+#### 2.4.2 Integrate a Spring application with SchedulerX 2.0
 
 **SchedulerX 2.0**
 
@@ -490,7 +546,7 @@ Based on the "hello world" example in Integrate a Spring application with Schedu
 
 Cron expressions do not support second-level precision. To schedule tasks by the second, use second_delay.
 
-#### Integrate a Spring Boot application
+#### 2.4.3 Integrate a Spring Boot application with SchedulerX 2.0
 
 **with SchedulerX 2.0**
 
@@ -662,7 +718,7 @@ Create a timed scheduling task in the console based on the "hello world" example
 
 Cron expressions do not support second-level precision. To schedule tasks at the second level, use the second_delay parameter.
 
-### Create standalone script tasks
+### 2.5 Create standalone script tasks using an agent
 
 **using an agent**
 
@@ -730,7 +786,7 @@ After you start the agent, check the ${user.home}/schedulerx/worker.log file. Th
 
 To stop the agent, go to the schedulerxAgent/bin directory and run **stop.sh**.
 
-### Adapt to IPv6 access
+### 2.6 Adapt to IPv6 access
 
 SchedulerX 2.0 supports IPv4/IPv6 dual-stack communication for the console, server, and worker components.
 
@@ -796,11 +852,11 @@ After startup, the logs in the log directory display IPv6 addresses.
 3. On the **Application Management** page, in the **Actions** column, click **Connect Machine**
 to query machine IP information.
 
-### Client release history
+### 2.7 Client release history
 
 This topic provides the release notes for the SchedulerX client SDK.
 
-#### Java SDK
+#### 2.7.1 Java SDK
 
 This topic describes the updates for the SchedulerX Java software development kit (SDK), which include new features, optimizations, and important bug fixes for each release.
 
@@ -1049,9 +1105,9 @@ This topic describes the updates for the SchedulerX Java software development ki
 
 duling and triggers
 
-## Scheduling and triggers
+## 3 Scheduling and triggers
 
-### Timed scheduling
+### 3.1 Timed scheduling
 
 Timed scheduling includes methods such as Cron, Second delay, and Fixed rate.
 
@@ -1094,26 +1150,26 @@ Second delay scheduling is designed for services that require high real-time per
 
 This method schedules tasks at a fixed frequency. The frequency is measured in seconds and must be 60 seconds or longer.
 
-### Workflow scheduling
+### 3.2 Workflow scheduling
 
 Orchestrate tasks using visual workflows. You can trigger these workflows using cron expressions or APIs. Jobs in a workflow do not have independent schedules. Instead, they follow the schedule of the workflow. You can transfer data between upstream and downstream nodes in a workflow. For more information, see How to pass data between upstream and downstream nodes in a workflow. To schedule a workflow, it must contain at least two Jobs with a dependency. If you have only one Job, use task management instead.
 
-### API trigger
+### 3.3 API trigger
 
 You can use an API to trigger job scheduling. duling and triggers For information on using the API trigger, see the **Integration Guide** section of the
 **SchedulerX Developer Guide**.
 
-### Backfill data
+### 3.4 Backfill data
 
 You can use the data backfill feature to re-trigger instances for a specific time range to backfill business data. For instructions and examples, see Backfill data for scheduling tasks.
 
-### Second-level scheduling
+### 3.5 Second-level scheduling
 
 Second-level tasks are ideal for services that require high real-time performance, such as near-real-time services that perform continuous polling. A memory grid and second-level scheduling enable you to continuously process massive amounts of data. Second-level tasks in SchedulerX are a type of timed scheduling. They support simple Java tasks, distributed Java tasks, script tasks, and various execution methods. For more information, see How to create a second-level scheduling task. types
 
-## Task types
+## 4 Task types
 
-### Java tasks
+### 4.1 Java tasks
 
 You can run Java scheduled tasks in your application process. This topic describes how to manage Java tasks.
 
@@ -1330,7 +1386,7 @@ ages.
 
 `}` `}` types
 
-### Script tasks
+### 4.2 Script tasks
 
 You can create a script task by writing a Shell, Python, or Go script.
 
@@ -1354,7 +1410,7 @@ types
 
 types
 
-### HTTP tasks
+### 4.3 HTTP tasks
 
 SchedulerX 2.0 supports HTTP tasks. You do not need a client. You can configure the task in the console.
 
@@ -1476,15 +1532,15 @@ The execution timed out. Error message: `Service request error: Read timed out` 
 
 HTTP tasks support error alerts. You can configure alerts for exceptions, such as unexpected return values and execution timeouts, when you create a task. buted programming model
 
-## Distributed programming
+## 5 Distributed programming model
 
 **model**
 
-### Standalone
+### 5.1 Standalone
 
 Standalone execution is a mode where a task instance is triggered on a single, randomly selected Worker. This mode supports all task types.
 
-### Broadcast
+### 5.2 Broadcast
 
 In a broadcast execution, a task instance is sent to all Workers in a group. The task is considered complete only after all Workers finish executing. If any Worker fails, the entire task fails.
 
@@ -1550,7 +1606,7 @@ Worker 3
 this is process
 ```
 
-### Map model
+### 5.3 Map model
 
 You can use the `MapJobProcessor` and call the `map` method to run distributed batch jobs for big data.
 
@@ -1856,7 +1912,7 @@ buted programming model
 
 `}` `}`
 
-### MapReduce model
+### 5.4 MapReduce model
 
 The MapReduce model is an extension of the Map model. It adds a Reduce interface and requires the implementation of `MapReduceJobProcessor`.
 
@@ -2219,7 +2275,7 @@ result.getValue());
 
 `}` `}`
 
-### Multi-language sharding
+### 5.5 Multi-language sharding models
 
 **models**
 
@@ -2304,9 +2360,9 @@ i. In the navigation pane on the left, click **Execution List**. ii. On the **Ex
 
 Shell and Go sharding tasks are similar to Python sharding tasks. For the creation steps, see Python sharding task. ole user guide
 
-## Console user guide
+## 6 Console user guide
 
-### Overview
+### 6.1 Overview
 
 The Overview page displays a summary of Jobs, task instances, and a list of failed instances.
 
@@ -2336,7 +2392,7 @@ instance. In the **Basic Information** panel, view **Instance ID**, **Retries**,
 **Start Time**, **End Time**, **Scheduled Time**, **Data Timestamp**, **Server IP**, **Worker**
 **Address**, and **Result or Error Message**.
 
-### Execution List
+### 6.2 Execution List
 
 Use the Execution List to view today’s task execution status. The list includes two tabs: Task Instances and Workflow Instances.
 
@@ -2379,7 +2435,7 @@ Each task is color-coded by its execution status. For example, red indicates fai
 4. After making changes, right-click the task again. In the shortcut menu, click **Rerun** to re-
 execute it. If the task succeeds, downstream tasks run. If you do not want to rerun the task, click **Mark as Succeeded** in the shortcut menu. This forces the task into the succeeded state, and downstream tasks start running.
 
-### Task List
+### 6.3 Task List
 
 On the Task Management page, you can create, edit, run, copy, enable, disable, import, export, and delete scheduling tasks. You can also refresh task data and assign specific machines to a task.
 
@@ -2554,7 +2610,7 @@ By default, all tasks are exported.
 
 If machine transfer is enabled, the task runs on non-assigned machines when all assigned machines go offline.
 
-### Workflow Management
+### 6.4 Workflow Management
 
 SchedulerX supports cross-application task orchestration. You can orchestrate tasks from the same or different applications into a single workflow based on their execution logic.
 
@@ -2661,7 +2717,7 @@ ole user guide
 2. In the **Export Workflow** dialog box, select the application ID and click **OK**.
 3. In the pop-up dialog box, click **Download** to save the workflow file to your local machine.
 
-### Application Management
+### 6.5 Application Management
 
 The Application Management page lets you create application groups, test machine connections, authorize RAM users, and delete unneeded groups.
 
@@ -2752,7 +2808,7 @@ and then select **Operation Records**.
 2. You can view the application group's operation details on the **Operation Records** page.
 For more information, see the referenced document.
 
-### Operation records
+### 6.6 Operation records
 
 The Operation records page lists the operation records for application groups, jobs, and flows.
 
@@ -2765,9 +2821,9 @@ the corresponding ID in the text box, and then click Search.
 4. In the search results, view the operation records for the corresponding group, task, or flow.
 nced features
 
-## Advanced features
+## 7 Advanced features
 
-### Create a second-level
+### 7.1 Create a second-level scheduling task
 
 **scheduling task**
 
@@ -2781,7 +2837,7 @@ To view the details of a task instance, see Execution list. The details page of 
 
 A task execution failure alert is triggered if the initial execution fails. After a successful initial execution, subsequent failures do not trigger this alert. A consecutive failure alert is triggered if a task fails more than 10 times consecutively after a successful initial execution. To receive these two alerts, enable the failure alert switch in the task's alert configuration.
 
-### Create a new account
+### 7.2 Create a new account
 
 This topic explains how to create a new account for SchedulerX.
 
@@ -2797,7 +2853,7 @@ Log on to the console with your username and password to verify that the account
 
 Click the profile picture in the upper-right corner, and then click **Log Out**.
 
-### How to pass data between
+### 7.3 How to pass data between upstream and downstream nodes in a workflow
 
 **upstream and downstream nodes**
 
@@ -2908,9 +2964,9 @@ jobName=jobB, data=2 jobName=jobA, data=1 TestSimpleJobC sum=3
 
 guration reference
 
-## Configuration reference
+## 8 Configuration reference
 
-### JobContext parameters
+### 8.1 JobContext parameters
 
 This topic describes the JobContext parameters. The following table describes the JobContext parameters.
 
@@ -2937,7 +2993,7 @@ guration reference
 |---|---|
 | List<JobInstanceData> upstreamData | The upstream data of the workflow instance. A workflow instance can have multiple upstream sources. The data is in the List<JobInstanceData> format. |
 
-### Advanced configuration
+### 8.2 Advanced configuration parameters for task management
 
 **parameters for task management**
 
@@ -2960,7 +3016,7 @@ guration reference
 | Sub-task queue capacity (pull model only) | Parallel computing Memory grid Grid computing | The size of the queue on a slave node that caches sub-tasks. | 10 |
 | Global sub-task concurrency (pull model only) | Parallel computing Memory grid Grid computing | The distributed pull model supports global sub-task concurrency, which can be used for rate limiting. | 0 |
 
-### SchedulerxWorker
+### 8.3 SchedulerxWorker configuration parameters
 
 **configuration parameters**
 
@@ -3008,9 +3064,9 @@ This topic describes the parameters for configuring SchedulerxWorker. The follow
 
 ssion management
 
-## Permission management
+## 9 Permission management
 
-### Overview of permission
+### 9.1 Overview of permission management
 
 **management**
 
@@ -3043,7 +3099,7 @@ A RAM user cannot directly log on to SchedulerX. To log on, the RAM user must me
 
 Different RAM users are typically responsible for different applications. An application created by a RAM user is not visible to other RAM users, but is visible to the Alibaba Cloud account. Both the Alibaba Cloud account and the RAM user who created the application can grant permissions on it to other RAM users.
 
-### Create users and user groups
+### 9.2 Create users and user groups
 
 You can use an Alibaba Cloud account to create users and assign roles to them to manage system access.
 
@@ -3141,7 +3197,7 @@ ssion management
 
 ssion management
 
-### Create a role and attach
+### 9.3 Create a role and attach permissions
 
 **permissions**
 
@@ -3197,7 +3253,7 @@ in its
 down list, and then click **OK**.
 5. In the **Add Role** dialog box, select the target role, and then click **OK**.
 
-### Verify logon permissions
+### 9.4 Verify logon permissions
 
 This topic describes how to verify logon permissions after SchedulerX is integrated with Resource Access Management (RAM).
 
@@ -3221,7 +3277,7 @@ button in the lower-right corner. Select **Organization Settings** and **Region 
 
 You cannot use an Alibaba Cloud account to directly grant permissions to a user. Instead, you must create a role, grant the role the permissions to log on to SchedulerX, and then attach the role to a user group. Users in the user group will then have the permissions to log on to SchedulerX.
 1. Create a role and grant it the permissions to log on to SchedulerX.
-For more information, see: Create a role and attach permissions Attach SchedulerX permissions to a role
+For more information, see: Attach SchedulerX permissions to a role
 2. Attach the role to a user group.
 For more information, see Attach a role to a user group.
 3. **Optional:**Add the user to the user group.
@@ -3236,7 +3292,7 @@ When a user with the required permissions logs on to SchedulerX, no error messag
 3. On the **Distributed Task Scheduling Platform** page, click the **Switch Account** floating
 button in the lower-right corner. Select **Organization Settings** and **Region Settings**. Then, click **Role-based Access**. The user successfully logs on to the SchedulerX console.
 
-### Verify application-level
+### 9.5 Verify application-level permissions
 
 **permissions**
 
@@ -3288,9 +3344,9 @@ You can add multiple RAM user IDs to grant permissions in a batch.
 To revoke permissions for a user, select the user ID in the lower-right corner and click
 **Revoke Authorization**.
 
-## FAQ
+## 10 FAQ
 
-### FAQ
+### 10.1 FAQ
 
 You might encounter issues when you use SchedulerX. This topic describes how to resolve common issues.
 
@@ -3449,7 +3505,7 @@ Symptom The application is published without issues. However, when you restart t
 
 Symptom A scheduling task is always in the running state and does not end. Possible causes A business logic issue. A SchedulerX issue. Solution When `schedulerx-worker` executes each processor, it adds the task instance ID to the thread name to help you view the thread stack. This section uses a stuck sub-task of a distributed task as an example. The solution for a standalone task or a broadcast task is similar. i. On the **Execution List** page in the console, view the details of the stuck task instance to retrieve its instance ID. ii. Log on to the stuck machine and run **jstack [pid] | grep [instance id] -A 20** to view the thread stack. If the execution result is similar to the one shown in the following figure, the cause is a business logic issue. Otherwise, contact the SchedulerX helpdesk.
 
-### Alert FAQ
+### 10.2 Alert FAQ
 
 This topic describes how to handle the alerts that you may receive when using SchedulerX.
 

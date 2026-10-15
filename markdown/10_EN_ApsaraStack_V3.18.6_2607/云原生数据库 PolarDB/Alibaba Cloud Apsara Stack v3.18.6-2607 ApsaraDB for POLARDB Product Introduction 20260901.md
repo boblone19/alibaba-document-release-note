@@ -3,16 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB Product Int
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 29
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB Product Introduction 20260901.pdf"
+source_pdf: "b7fab4f039128fa1_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB Product Introduction 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20Product%20Introduction%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB Product Introduction 20260901
 
+## Table of Contents
+
+- 1 Product details
+- 2 Benefits
+- 3 Scenarios
+- 4 Features
+  - 4.1 Features of PolarDB for MySQL
+    - 4.1.1 Primary/Secondary edition
+  - 4.2 Features of PolarDB for PostgreSQL
+    - 4.2.1 Primary/Secondary edition
+  - 4.3 Features of PolarDB-X
+    - 4.3.1 Functions and features
+
 ails
 
-## Product details
+## 1 Product details
 
 PolarDB is a powerful cloud-native database. It delivers high availability, high performance, and easy scalability, making it suitable for enterprise applications of any scale.
 
@@ -148,7 +161,7 @@ PolarDB-X features a comprehensive account and permission system compatible with
 
 On the console, you can achieve unified multi-level tenant management, including dynamic resource configuration, usage statistics, and strict resource isolation. Premission management and fine-grained user operation auditing are provided. ails A robust permission authentication and isolation mechanism is provided to ensure the privacy of your data. Resource isolation is supported via the multi-tenant mode.
 
-## Benefits
+## 2 Benefits
 
 You can use the cloud-native database PolarDB just as you would a traditional database. PolarDB has the following benefits:
 
@@ -214,7 +227,7 @@ To maximize cloud database scalability, PolarDB-X uses a Shared-Nothing system a
 
 PolarDB-X aims to provide an experience of operating a distributed database that is as simple as using a standalone MySQL database. To achieve this, PolarDB-X offers the following easy-to-use, transparent distributed capabilities: By default, PolarDB-X uses automatic sharding based on the primary key. This removes the need to design a **partition key** when you migrate data and services, and enables automatic sharding. High-performance, strong consistency distributed transactions. PolarDB-X uses the selfdeveloped X-Paxos protocol to ensure a recovery point objective (RPO) of 0 during failover. It also uses a Timestamp Oracle (TSO) policy and distributed Multi-Version Concurrency Control (MVCC) to guarantee the isolation and consistency of distributed transactions. Distributed linear scaling. PolarDB-X uses a partitioning policy based on consistent hashing for effective load balancing and hot spot suppression. During scale-out, it maintains computation pushdown and data consistency with zero impact on your business. Parallel processing and throttling capabilities provide strong support for business continuity during scaling. Global binary logging and globally consistent backups. These features solve the challenges of streaming data from each node of a distributed database to downstream systems, along with recovery consistency issues caused by different backup times across nodes.
 
-## Scenarios
+## 3 Scenarios
 
 PolarDB, a cloud-native database, is designed for a wide range of business scenarios. It delivers high performance, high availability, and high scalability to meet diverse business needs.
 
@@ -296,15 +309,15 @@ large enterprises undergoing digital transformation. As a core foundational soft
 **Product capabilities**: PolarDB Converged Edition (Centralized & Distributed) is Alibaba
 Cloud's self-developed cloud-native distributed database, designed for autonomy and control. It offers multiple deployment models—including public cloud, Apsara Stack, DBStack, and software editions—and features comprehensive delivery and service teams. It has already helped over a hundred enterprises complete commercial database replacements, core database distributed transformations, distributed database technical training, and architectural consulting.
 
-## Features
+## 4 Features
 
-### Features of PolarDB for
+### 4.1 Features of PolarDB for MySQL
 
 **MySQL**
 
 This topic describes the features of PolarDB for MySQL.
 
-#### Primary/Secondary edition
+#### 4.1.1 Primary/Secondary edition
 
 This topic describes the features of Alibaba Cloud PolarDB for MySQLPrimary/Standby Edition, helping you quickly understand the product capabilities.
 
@@ -366,11 +379,11 @@ This topic describes the features of Alibaba Cloud PolarDB for MySQLPrimary/Stan
 |---|---|---|
 |   | Migrate from PolarDB for MySQL 5.7 to PolarDB for MySQL 8.0 | Migrating PolarDB for MySQL 5.7 to PolarDB for MySQL 8.0 is supported by PolarDB. |
 
-### Features of PolarDB for
+### 4.2 Features of PolarDB for PostgreSQL
 
 **PostgreSQL**
 
-#### Primary/Secondary edition
+#### 4.2.1 Primary/Secondary edition
 
 This topic describes the features of Alibaba Cloud PolarDB for PostgreSQL Primary/Standby Edition (formerly known as PolarDB for PostgreSQL with local disks). This helps you quickly understand the product's capabilities.
 
@@ -428,9 +441,9 @@ This topic describes the features of Alibaba Cloud PolarDB for PostgreSQL Primar
 | CloudDBA | Quick diagnosis | Use the quick diagnosis feature to diagnose instances and obtain visualized diagnostic results. |
 |   | Slow SQL queries | View the trends and statistics of slow queries. |
 
-### Features of PolarDB-X
+### 4.3 Features of PolarDB-X
 
-#### Functions and features
+#### 4.3.1 Functions and features
 
 This topic describes the functions and features of Alibaba Cloud PolarDB-X to help you quickly understand the product.
 

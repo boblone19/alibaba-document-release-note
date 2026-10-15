@@ -3,22 +3,189 @@ title: "Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud Message Queue User Guid
 product_version: "V3.16.2"
 doc_version: "20250725"
 pdf_pages: 330
-source_pdf: "Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud Message Queue User Guide 20250725.pdf"
+source_pdf: "e226f0e9c1240392_Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud Message Queue User Guide 20250725.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Alibaba%20Cloud%20Message%20Queue%20User%20Guide%2020250725.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud Message Queue User Guide
 
+## Table of Contents
+
+- 1 Message Queue for Apache RocketMQ?
+- 2 Updates
+- 3 Quick start
+  - 3.1 Overview
+  - 3.2 Log on to the Message Queue for Apache RocketMQ console
+  - 3.3 Create resources
+  - 3.4 Send messages
+    - 3.4.1 Use the TCP client SDK for Java to send and subscribe to normal messages
+    - 3.4.2 Use the HTTP client SDK for Java to send and subscribe to normal messages
+    - 3.4.3 Check whether messages are sent
+  - 3.5 Subscribe to messages
+- 4 Message types
+  - 4.1 Normal messages
+  - 4.2 Scheduled messages and delayed messages
+  - 4.3 Transactional messages
+  - 4.4 Ordered messages
+- 5 Console guide
+  - 5.1 Resource management
+    - 5.1.1 Resource management overview
+    - 5.1.2 Manage instances
+    - 5.1.3 Manage topics
+    - 5.1.4 Manage groups
+  - 5.2 Message query
+    - 5.2.1 Overview
+    - 5.2.2 Query messages
+    - 5.2.3 Query results
+  - 5.3 Message tracing
+    - 5.3.1 Overview
+    - 5.3.2 Query message traces
+    - 5.3.3 Status in message traces
+  - 5.4 View the consumer status
+  - 5.5 Reset consumer offsets
+  - 5.6 Dead-letter queues
+  - 5.7 Resource statistics
+    - 5.7.1 Overview
+    - 5.7.2 Query the statistics of produced messages
+    - 5.7.3 Query the statistics of consumed messages
+  - 5.8 Account authorization management
+  - 5.9 Switch between different access modes
+  - 5.10 Bind a VPC to a Message Queue for Apache RocketMQ instance
+  - 5.11 Route messages from a cluster to another cluster
+- 6 SDK user guide
+  - 6.1 Overview
+  - 6.2 SDK user guide
+    - 6.2.1 Demo projects
+      - 6.2.1.1 Overview
+      - 6.2.1.2 Prepare the environment
+      - 6.2.1.3 Configure a demo project
+      - 6.2.1.4 Run the demo project
+    - 6.2.2 Client parameters
+    - 6.2.3 Client error codes
+    - 6.2.4 SDK for Java
+      - 6.2.4.1 Usage notes
+      - 6.2.4.2 Prepare the environment
+      - 6.2.4.3 Configure logging
+      - 6.2.4.4 Spring integration
+        - 6.2.4.4.1 Overview
+        - 6.2.4.4.2 Integrate a producer with Spring
+        - 6.2.4.4.3 Integrate a transactional message producer with Spring
+        - 6.2.4.4.4 Integrate a consumer with Spring
+      - 6.2.4.5 Three modes for sending messages
+        - 6.2.4.5.1 Overview
+        - 6.2.4.5.2 Reliable synchronous transmission
+        - 6.2.4.5.3 Reliable asynchronous transmission
+        - 6.2.4.5.4 One-way transmission
+      - 6.2.4.6 Send messages by using multiple threads
+      - 6.2.4.7 Send and subscribe to ordered messages
+      - 6.2.4.8 Send and subscribe to transactional messages
+      - 6.2.4.9 Send and subscribe to delayed messages
+      - 6.2.4.10 Send and subscribe to scheduled messages
+      - 6.2.4.11 Subscribe to messages
+    - 6.2.5 SDK for C or C++
+      - 6.2.5.1 Prepare the SDK for C or C++ environment
+        - 6.2.5.1.1 Overview
+        - 6.2.5.1.2 Download SDK for C++
+        - 6.2.5.1.3 Use SDK for C++ in Linux
+      - 6.2.5.2 Send and subscribe to normal messages
+      - 6.2.5.3 Send and subscribe to ordered messages
+      - 6.2.5.4 Send and subscribe to scheduled messages
+      - 6.2.5.5 Send and subscribe to transactional messages
+      - 6.2.5.6 Subscribe to messages
+    - 6.2.6 SDK for .NET
+      - 6.2.6.1. .Prepare the SDK for .NET environment
+        - 6.2.6.1.1 Overview
+        - 6.2.6.1.2 Download SDK for .NET
+        - 6.2.6.1.3. .Configure SDK for .NET
+      - 6.2.6.2 Send and subscribe to normal messages
+      - 6.2.6.3 Send and subscribe to ordered messages
+      - 6.2.6.4 Send and subscribe to scheduled messages
+      - 6.2.6.5 Send and subscribe to transactional messages
+      - 6.2.6.6 Subscribe to messages
+  - 6.3 HTTP client SDK reference
+    - 6.3.1 Protocol description
+      - 6.3.1.1 Common parameters
+      - 6.3.1.2 Request signatures
+      - 6.3.1.3 Operation for sending messages
+      - 6.3.1.4 Operation for consuming messages
+      - 6.3.1.5 Operation for acknowledging messages
+    - 6.3.2 Java SDK
+      - 6.3.2.1 Prepare the environment
+      - 6.3.2.2 Send and consume normal messages
+      - 6.3.2.3 Send and consume ordered messages
+      - 6.3.2.4 Send and consume scheduled messages and delayed messages
+      - 6.3.2.5 Send and consume transactional messages
+    - 6.3.3 Go SDK
+      - 6.3.3.1 Prepare the environment
+      - 6.3.3.2 Send and consume normal messages
+      - 6.3.3.3 Send and consume ordered messages
+      - 6.3.3.4 Send and consume scheduled messages and delayed messages
+      - 6.3.3.5 Send and consume transactional messages
+    - 6.3.4 Python SDK
+      - 6.3.4.1 Prepare the environment
+      - 6.3.4.2 Send and consume normal messages
+      - 6.3.4.3 Send and consume ordered messages
+      - 6.3.4.4 Send and consume scheduled messages and delayed messages
+      - 6.3.4.5 Send and consume transactional messages
+    - 6.3.5 Node.js SDK
+      - 6.3.5.1 Prepare the environment
+      - 6.3.5.2 Send and consume normal messages
+      - 6.3.5.3 Send and consume ordered messages
+      - 6.3.5.4 Send and consume scheduled messages and delayed messages
+      - 6.3.5.5 Send and consume transactional messages
+    - 6.3.6 PHP SDK
+      - 6.3.6.1 Prepare the environment
+      - 6.3.6.2 Send and consume normal messages
+      - 6.3.6.3 Send and consume ordered messages
+      - 6.3.6.4 Send and consume scheduled messages and delayed messages
+      - 6.3.6.5 Send and consume transactional messages
+    - 6.3.7 C# SDK
+      - 6.3.7.1 Prepare the environment
+      - 6.3.7.2 Send and consume normal messages
+      - 6.3.7.3 Send and consume ordered messages
+      - 6.3.7.4 Send and consume scheduled messages and delayed messages
+      - 6.3.7.5 Send and consume transactional messages
+    - 6.3.8 C++ SDK
+      - 6.3.8.1 Prepare the environment
+      - 6.3.8.2 Send and consume normal messages
+      - 6.3.8.3 Send and consume ordered messages
+      - 6.3.8.4 Send and consume scheduled messages and delayed messages
+      - 6.3.8.5 Send and consume transactional messages
+- 7 Best practices
+  - 7.1 Clustering consumption and broadcasting consumption
+  - 7.2 Message filtering
+  - 7.3 Subscription consistency
+  - 7.4 Consumption idempotence
+  - 7.5 Active geo-redundancy
+  - 7.6 Message routing
+- 8 Service usage FAQ
+  - 8.1 FAQ
+    - 8.1.1 Quick start
+    - 8.1.2 Configurations
+    - 8.1.3 Message tracing
+    - 8.1.4 Alert handling
+    - 8.1.5 Ordered messages
+  - 8.2 Exceptions
+    - 8.2.1 Usage-related exceptions
+    - 8.2.2 Nonexistent resources
+    - 8.2.3 Inconsistent status
+  - 8.3 Troubleshooting
+    - 8.3.1 Unexpected consumer connections
+    - 8.3.2 Inconsistent subscriptions
+    - 8.3.3 Message accumulation
+    - 8.3.4 Message accumulation in Java processes
+    - 8.3.5 Application OOM due to message caching on the client
+
 pache RocketMQ?
 
-## Message Queue for Apache
+## 1 Message Queue for Apache RocketMQ?
 
 **RocketMQ?**
 
 Message Queue for Apache RocketMQ is a distributed messaging middleware that is developed based on Apache RocketMQ. Message Queue for Apache RocketMQ features low latency, high concurrency, high availability, and high reliability. Message Queue for Apache RocketMQ provides a complete set of cloud messaging services based on the technologies that are used for building highly available and distributed clusters. The messaging services include message subscription and publishing, message tracing, scheduled and delayed messages, and resource statistics. Message Queue for Apache RocketMQ is used as a core service in an enterprise-grade Internet architecture. Message Queue for Apache RocketMQ provides asynchronous decoupling and peak-load shifting capabilities for distributed application systems. It also supports various features for Internet applications, including accumulation of large numbers of messages, high throughput, and reliable message consumption retries. Message Queue for Apache RocketMQ is one of the core cloud services that are used to support the Double 11 Shopping Festival. Message Queue for Apache RocketMQ supports connections over TCP and HTTP and supports multiple programming languages such as Java, C++, and .NET. This allows you to connect applications that are developed in different programming languages to Message Queue for Apache RocketMQ.
 
-## Updates
+## 2 Updates
 
 This topic describes the updates of Message Queue for Apache RocketMQ from V3.8.0 to V3.18.3 to help you get started with the updated version.
 
@@ -58,9 +225,9 @@ Compatible configuration: Use a producer ID to identify a producer and a consume
 // When you create a producer, you must set the PropertyKeyConst.ProducerId paramet er. properties.put(PropertyKeyConst.ProducerId, "The original PID-XXX or the GID-XXX"); // When you create a consumer, you must set the PropertyKeyConst.ConsumerId paramet er. properties.put(PropertyKeyConst.ConsumerId, "The original CID-XXX or the GID-XXX");
 ```
 
-## Quick start
+## 3 Quick start
 
-### Overview
+### 3.1 Overview
 
 Message Queue for Apache RocketMQ provides TCP client SDKs and HTTP client SDKs for multiple programming languages. You can use the SDKs to send and subscribe to different types of messages. This topic describes how to use TCP client SDKs and HTTP client SDKs for multiple programming languages to send and subscribe to normal messages and the relevant usage notes.
 
@@ -92,7 +259,7 @@ C and C++: Send and subscribe to normal messages .NET: Send and subscribe to nor
 
 Go: Send and consume normal messages Python: Send and consume normal messages Node.js: Send and consume normal messages PHP: Send and consume normal messages C#: Send and consume normal messages C++: Send and consume normal messages
 
-### Log on to the Message Queue
+### 3.2 Log on to the Message Queue for Apache RocketMQ console
 
 **for Apache RocketMQ console**
 
@@ -122,7 +289,7 @@ For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 5. In the top navigation bar, choose **Products > Middleware > ApsaraMQ for RocketMQ**.
 
-### Create resources
+### 3.3 Create resources
 
 Before you use a client SDK to send and subscribe to messages, create the required resources and obtain the resource information in the Message Queue for Apache RocketMQ console. When you use the SDK, you must configure the resource parameters based on the resource information.
 
@@ -179,17 +346,15 @@ If you want to use TCP-based SDKs to send and receive messages, click the **TCP 
 6. Click **Create Group ID**. In the **Create Group ID** dialog box, configure the parameters and
 click **OK**.
 
-### Send messages
+### 3.4 Send messages
 
-#### Use the TCP client SDK for Java to send
+#### 3.4.1 Use the TCP client SDK for Java to send and subscribe to normal messages
 
 **and subscribe to normal messages**
 
 After you create the required resources in the Message Queue for Apache RocketMQ console, you can use Message Queue for Apache RocketMQ TCP client SDK for Java to send and subscribe to normal messages.
 
 **Before you begin**
-
-Create resources
 
 **Install Message Queue for Apache RocketMQ SDK for Java**
 
@@ -317,17 +482,13 @@ subscription, and click **Subscription** in the **Actions** column. If the value
 
 **What to do next**
 
-Query messages Query message traces
-
-#### Use the HTTP client SDK for Java to
+#### 3.4.2 Use the HTTP client SDK for Java to send and subscribe to normal messages
 
 ##### send and subscribe to normal messages
 
 After you create the required resources in the Message Queue for Apache RocketMQ console, you can use Message Queue for Apache RocketMQ HTTP client SDK for Java to send and subscribe to normal messages.
 
 **Before you begin**
-
-Create resources
 
 **Install Message Queue for Apache RocketMQ SDK for Java**
 
@@ -548,9 +709,7 @@ subscription, and click **Subscription** in the **Actions** column. If the value
 
 **What to do next**
 
-Query messages Query message traces
-
-#### Check whether messages are sent
+#### 3.4.3 Check whether messages are sent
 
 After you send a message, you can check the status of the message in the console.
 
@@ -572,7 +731,7 @@ This step demonstrates the situation where Message Queue for Apache RocketMQ is 
 
 You can start the consumer and subscribe to messages. For more information, see Subscribe to messages. For more information about the message status, see Query messages and Status in message traces.
 
-### Subscribe to messages
+### 3.5 Subscribe to messages
 
 After a message is sent, the consumer can subscribe to the message. You need to use the SDK for the corresponding protocol and programming language to subscribe to the message. This topic describes how to subscribe to messages by using TCP client SDK for Java.
 
@@ -611,21 +770,21 @@ After you run the code, you can check whether the consumer is started in the Mes
 **Subscription** in the **Actions** column.
 If the value of **Online** is **Yes**, the consumer has been started and the subscription is successful. Otherwise, the subscription fails.
 
-## Message types
+## 4 Message types
 
-### Normal messages
+### 4.1 Normal messages
 
 This topic describes the definition of normal messages and provides the sample code for sending and subscribing to normal messages. In Message Queue for Apache RocketMQ, normal messages do not have special features. They are different from the following featured messages: scheduled messages, delayed messages, ordered messages, and transactional messages. For more information about these featured messages, see Scheduled messages and delayed messages, Ordered messages, and Transactional messages. The following sample code provide examples on how to use TCP client SDKs and HTTP client SDKs for different programming languages to send and subscribe to normal messages:
 
 **Sample code for using TCP client SDKs**
 
-For information about the sample code for using TCP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: Overview Send messages by using multiple threads Subscribe to messages The SDK for C and the SDK for C++: Send and subscribe to normal messages The SDK for .NET: Send and subscribe to normal messages
+For information about the sample code for using TCP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: The SDK for C and the SDK for C++: Send and subscribe to normal messages The SDK for .NET: Send and subscribe to normal messages
 
 **Sample code for using HTTP client SDKs**
 
 For information about the sample code for using HTTP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: Send and subscribe to normal messages The SDK for Go: Send and subscribe to normal messages The SDK for Python: Send and subscribe to normal messages The SDK for Node.js: Send and subscribe to normal messages The SDK for PHP: Send and subscribe to normal messages The SDK for C#: Send and subscribe to normal messages The SDK for C++: Send and subscribe to normal messages
 
-### Scheduled messages and
+### 4.2 Scheduled messages and delayed messages
 
 **delayed messages**
 
@@ -649,13 +808,13 @@ The **msg.setStartDeliverTime** parameter for a scheduled message or a delayed m
 
 **Sample code for using TCP client SDKs**
 
-For information about the sample code for using TCP client SDKs to send and subscribe to scheduled messages or delayed messages, see the following topics: Java SDK Send and subscribe to scheduled messages Send and subscribe to delayed messages The SDK for C++: Send and subscribe to scheduled messages The SDK for .NET: Send and subscribe to scheduled messages
+For information about the sample code for using TCP client SDKs to send and subscribe to scheduled messages or delayed messages, see the following topics: The SDK for C++: Send and subscribe to scheduled messages The SDK for .NET: Send and subscribe to scheduled messages
 
 **Sample code for using HTTP client SDKs**
 
 For information about the sample code for using HTTP client SDKs to send and subscribe to scheduled messages and delayed messages, see the following topics: The SDK for Java: Send and subscribe to scheduled messages and delayed messages The SDK for Go: Send and consume scheduled messages and delayed messages The SDK for Python: Send and consume scheduled messages and delayed messages The SDK for Node.js: Send and consume scheduled messages and delayed messages The SDK for PHP: Send and consume scheduled messages and delayed messages The SDK for C#: Send and consume scheduled messages and delayed messages The SDK for C++: Send and consume scheduled messages and delayed messages
 
-### Transactional messages
+### 4.3 Transactional messages
 
 This topic introduces the terms that are related to transactional messages in Message Queue for Apache RocketMQ. This topic also describes the scenarios, methods, and usage notes of using transactional messages.
 
@@ -700,7 +859,7 @@ For information about sample code, see the following references: SDK for Java: S
 
 For information about sample code, see the following references: SDK for Java: Send and consume transactional messages SDK for Go: Send and consume transactional messages SDK for Python: Send and consume transactional messages SDK for Node.js: Send and consume transactional messages SDK for PHP: Send and consume transactional messages SDK for C#: Send and consume transactional messages SDK for C++: Send and consume transactional messages
 
-### Ordered messages
+### 4.4 Ordered messages
 
 This topic introduces the terms that are related to ordered messages in Message Queue for Apache RocketMQ. This topic also describes the scenarios and usage notes of using ordered messages.
 
@@ -759,15 +918,15 @@ For information about sample code, see the following references: SDK for Java: S
 
 For information about sample code, see the following references: SDK for Java: Send and consume ordered messages SDK for Go: Send and consume ordered messages SDK for Python: Send and consume ordered messages SDK for Node.js: Send and consume ordered messages SDK for PHP: Send and consume ordered messages SDK for C#: Send and consume ordered messages SDK for C++: Send and consume ordered messages
 
-## Console guide
+## 5 Console guide
 
-### Resource management
+### 5.1 Resource management
 
-#### Resource management overview
+#### 5.1.1 Resource management overview
 
 This topic describes how to manage resources in Message Queue for Apache RocketMQ. If a new application needs to access Message Queue for Apache RocketMQ, you must create the following Message Queue for Apache RocketMQ resources for the application: Instance: As a virtual machine (VM) resource of Message Queue for Apache RocketMQ, an instance stores the topics and group IDs of messages. Topic: In Message Queue for Apache RocketMQ, a producer sends a message to a specified topic, and a consumer subscribes to the topic to obtain and consume the message. Group ID: A group ID is used to identify a group of message consumers or producers. You can add, delete, modify, and query these resources by using the Message Queue for Apache RocketMQ console or by calling the Message Queue for Apache RocketMQ API. When you use SDKs to send and subscribe to messages, you must specify the topic and group ID that you created in the Message Queue for Apache RocketMQ console. You must also enter the AccessKey ID and AccessKey secret that you created in the Apsara Uni-manager Management Console for identity authentication. If you have not obtained the AccessKey ID and AccessKey secret, you can obtain them in the Apsara Uni-manager Management Console. For more information, see Obtain the AccessKey ID and AccessKey secret.
 
-#### Manage instances
+#### 5.1.2 Manage instances
 
 In Message Queue for Apache RocketMQ, topics and groups are included in instances. This topic describes how to create, update, view, and delete an instance in the Message Queue for Apache RocketMQ console.
 
@@ -822,7 +981,7 @@ After the instance is deleted, a message whose content is **The instance is dele
 
 If you want to call API operations to perform the operations that are described in this topic, see **Message Queue for Apache RocketMQ Developer Guide**.
 
-#### Manage topics
+#### 5.1.3 Manage topics
 
 Topic is the first-level identifier that classifies messages in Message Queue for Apache RocketMQ. For example, you can create a topic named Topic_Trade to identify transactionspecific messages. This topic describes how to create, update, view, and delete topics in the Message Queue for Apache RocketMQ console.
 
@@ -882,7 +1041,7 @@ The topic no longer appears in the topic list in the instance.
 If you need to call the Message Queue for Apache RocketMQ API to perform relevant operations, follow the instructions provided in **Message Queue for Apache RocketMQ**
 **Developer Guide**.
 
-#### Manage groups
+#### 5.1.4 Manage groups
 
 After you create an instance and a topic, you need to create a group for message consumers or producers. This topic describes how to create, view, and delete a group in the Message Queue for Apache RocketMQ console.
 
@@ -941,9 +1100,9 @@ group, click **OK**. After the group is deleted, the group is not displayed in t
 
 If you want to call API operations to perform the operations that are described in this topic, see Message Queue for Apache RocketMQ Developer Guide.
 
-### Message query
+### 5.2 Message query
 
-#### Overview
+#### 5.2.1 Overview
 
 If a message is not consumed as expected, you can query the message content to troubleshoot problems. Message Queue for Apache RocketMQ allows you to query messages by message ID, by message key, and by topic. Table 1. Comparison of query methods
 
@@ -955,7 +1114,7 @@ If a message is not consumed as expected, you can query the message content to t
 
 We recommend that you query messages by using the following process. Figure 1. Message query process
 
-#### Query messages
+#### 5.2.2 Query messages
 
 This topic describes how to query messages in the Message Queue for Apache RocketMQ console by using three different methods.
 1. Log on to the Message Queue for Apache RocketMQ console.
@@ -1004,7 +1163,7 @@ If you cannot query messages by message ID or message key, query messages by top
 
 If you query messages by topic, take note of the following points: If you specify a topic and time range to query messages, range match is used to retrieve all messages that meet the time condition within the topic. The number of retrieved messages is large. Therefore, we recommend that you narrow down the time range. If you query messages by topic, a large number of messages are returned on multiple pages.
 
-#### Query results
+#### 5.2.3 Query results
 
 This topic describes the results returned when you query messages. You can view the queried messages on the **Message Query** page of the Message Queue for Apache RocketMQ console. The displayed information includes the message ID, tag, key, and storage time. In addition, click the corresponding buttons in the Actions column of a message to download the message content, Query message traces, and view the message details. The delivery status is calculated by Message Queue for Apache RocketMQ based on the consumption progress of each group ID. For more information about the delivery status, see Message delivery status.
 
@@ -1026,9 +1185,9 @@ Message Queue for Apache RocketMQ provides the consumption verification feature.
 
 The consumption verification feature is used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
 
-### Message tracing
+### 5.3 Message tracing
 
-#### Overview
+#### 5.3.1 Overview
 
 A message trace is the complete trace of a message that is sent from a producer to the Message Queue for Apache RocketMQ broker and then consumed by a consumer. The message trace includes the time, status, and other information of each node in the preceding process. The message trace provides robust data support for troubleshooting in production environments. This topic describes the scenarios, query procedure, and parameters of query results for message tracing.
 
@@ -1061,7 +1220,7 @@ query the message trace based on the available information.
 3. Check the query results and analyze the cause.
 If **Not Consumed** appears in the trace, go to the **Groups** page to View the consumer status. Then, you can determine whether message accumulation is the reason why the message is not consumed. If the message is consumed, find the corresponding consumer and the time when the message is consumed in the consumption information. Then, log on to the consumer to view the relevant log.
 
-#### Query message traces
+#### 5.3.2 Query message traces
 
 No extra fees are incurred when you use the message tracing feature. To use this feature, you must make sure that the version of your client SDK supports this feature. After a message is sent or received, you can query the trace of the message based on the message attributes in the Message Queue for Apache RocketMQ console.
 
@@ -1085,7 +1244,7 @@ message attributes and consumption status. If no data is found, verify whether t
 4. Click **View Traces** to check the complete trace.
 The message trace consists of three parts: Producer information Topic information Consumer information You can move the pointer over a field to view the details about the field. If you query traces by message key or topic, multiple traces may be displayed. You can page up and down to view and compare the traces. For more information about the query results of message traces, see Status in message traces.
 
-#### Status in message traces
+#### 5.3.3 Status in message traces
 
 This topic describes the terms and status information displayed on the Message Trace page. Table 1. Terms for message tracing
 
@@ -1120,7 +1279,7 @@ Table 2. Sending status and consumption status
 |   | Consumption Failed | A failure result is returned for the message consumption method, or the method threw an exception. |
 |---|---|---|
 
-### View the consumer status
+### 5.4 View the consumer status
 
 The Message Queue for Apache RocketMQ console allows you to check the consumer status to troubleshoot exceptions that occur during message consumption. This feature allows you to view the information about a group ID or a consumer identified by the group ID. The information includes the connection status, subscription, consumption TPS, number of accumulated messages, and thread stacks. This topic describes how to view the information.
 
@@ -1163,7 +1322,7 @@ consumer threads, consumption start time, subscription, and message consumption 
 instance, find the consumer instance and click **Stack Information** in the **Stack**
 **Information** column.
 
-### Reset consumer offsets
+### 5.5 Reset consumer offsets
 
 You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them, or to consume messages sent after a point in time regardless of whether the messages sent before this point in time are consumed.
 
@@ -1185,7 +1344,7 @@ option is selected, consumers identified by the group ID skip all accumulated (u
 appears. Select a point in time. Only the messages that are sent after the selected point in time will be consumed. The period allowed for the time picker ranges from the production time of the earliest message stored in the topic to the production time of the latest message stored in the topic. You can select a point in time only within the allowed time range.
 4. Click **OK** to reset the consumer offset.
 
-### Dead-letter queues
+### 5.6 Dead-letter queues
 
 Dead-letter queues are used to process messages that cannot be consumed as expected. This topic describes how to query, export, and resend dead-letter messages in dead-letter queues. This helps you manage dead-letter messages as needed and prevent missing messages.
 
@@ -1263,9 +1422,9 @@ If a message enters a dead-letter queue, the message cannot be consumed as expec
 
 After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days. Resend a single dead-letter message In the Message Queue for Apache RocketMQ console, query one dead-letter message by message ID or query dead-letter messages by group ID. Find the dead-letter message that you want to resend and click **Resend** in the **Actions** column. Resend dead-letter messages in batches In the Message Queue for Apache RocketMQ console, query dead-letter messages by group ID, select the dead-letter messages that you want to resend, and then click **Batch Resend**.
 
-### Resource statistics
+### 5.7 Resource statistics
 
-#### Overview
+#### 5.7.1 Overview
 
 This topic describes how to use the resource statistics feature to query the statistics of produced messages and consumed messages. The resource statistics feature provides the statistics of produced messages and consumed messages. This feature allows you to query the following data:
 
@@ -1277,7 +1436,7 @@ Queries by topic: You can query the total number of messages that are received b
 
 Queries by group ID: You can query the total number of messages that are sent from a topic to consumers identified by a group ID or the average number of messages that are sent from a topic to consumers identified by a group ID per second in a specified period of time. Queries by instance: You can query the total number of messages that are sent to all groups in a specified instance or the average number of messages that are sent to all groups in a specified instance per second in a specified period of time.
 
-#### Query the statistics of produced
+#### 5.7.2 Query the statistics of produced messages
 
 **messages**
 
@@ -1303,7 +1462,7 @@ parameter specifies the interval at which data is collected. A smaller value ind
 **Time Range**: Message Queue for Apache RocketMQ allows you to query messages that
 are produced in the last three days. Query results are displayed in charts.
 
-#### Query the statistics of consumed
+#### 5.7.3 Query the statistics of consumed messages
 
 **messages**
 
@@ -1333,7 +1492,7 @@ parameter specifies the interval at which data is collected. A smaller value ind
 **Time Range**: Message Queue for Apache RocketMQ allows you to query messages that
 are consumed in the last three days. Query results are displayed in charts.
 
-### Account authorization
+### 5.8 Account authorization management
 
 **management**
 
@@ -1381,7 +1540,7 @@ in the **Actions** column, and then select **View Authorization** from the drop-
 
 You do not need to authorize your account to manage the topics that you create. After you log on to the Message Queue for Apache RocketMQ console by using an authorized account, you can view the topic that the account is authorized to manage. Then, you must create a group ID. You cannot use the group ID of the Apsara Stack tenant account that is used to grant permissions to your account. A topic that an account is authorized to manage belongs to the Apsara Stack tenant account that is used to grant permissions. Therefore, you cannot use the authorized account to delete the topic. If you grant permissions to a RAM user, you cannot use the authorized RAM user to create topics. If you grant permissions to another Apsara Stack tenant account, you can use the authorized Apsara Stack tenant account to create topics. However, the created topics are not associated to the Apsara Stack tenant account that is used to grant permissions.
 
-### Switch between different
+### 5.9 Switch between different access modes
 
 **access modes**
 
@@ -1406,7 +1565,7 @@ environment.
 The switching between access modes may cause the transient interruption of services. When forcible switching is disabled, one access mode can be switched to another access mode only when the instance traffic is light. This means that the transactions per second (TPS) must be no more than 10. When forcible switching is enabled, one access mode can be switched to another access mode regardless of the service traffic.
 5. Click **OK**.
 
-### Bind a VPC to a Message
+### 5.10 Bind a VPC to a Message Queue for Apache RocketMQ instance
 
 **Queue for Apache RocketMQ**
 
@@ -1467,7 +1626,7 @@ VPC. Then, click the **Network Management** tab.
 column.
 5. In the **Unbind** dialog box, check the information about the VPC and click **OK**.
 
-### Route messages from a
+### 5.11 Route messages from a cluster to another cluster
 
 **cluster to another cluster**
 
@@ -1627,9 +1786,9 @@ On the **Details** page, the value that is displayed for the **client.onsAddr** 
 **Show More** from the shortcut menu.
 On the **Details** page, the value that is displayed for the **console.domain** parameter is the value of {console.domain} in the **MQ API** parameter.
 
-## SDK user guide
+## 6 SDK user guide
 
-### Overview
+### 6.1 Overview
 
 This topic lists the protocols supported by Message Queue for Apache RocketMQ and the related SDKs for multiple programming languages.
 
@@ -1654,15 +1813,15 @@ The following table lists the protocols and SDKs for multiple programming langua
 
 Message Queue for Apache RocketMQ provides TCP client SDKs and HTTP client SDKs for you to send and consume messages. You cannot specify the same group ID in the code of a TCP client SDK and the code of an HTTP client SDK at the same time. If you want to use a TCP client SDK to send and consume messages, you must create a group for the TCP protocol. You cannot specify a group that is created for the HTTP protocol in the code of the TCP client SDK. A Message Queue for Apache RocketMQ instance provides a TCP endpoint and an HTTP endpoint. An endpoint for a specific protocol must be used together with an SDK for the same protocol. For example, if you want to use a TCP client SDK to send and consume messages, you must obtain the TCP endpoint of your Message Queue for Apache RocketMQ instance. You cannot use the HTTP endpoint to connect to the instance.
 
-### SDK user guide
+### 6.2 SDK user guide
 
-#### Demo projects
+#### 6.2.1 Demo projects
 
-##### Overview
+##### 6.2.1.1 Overview
 
 This topic helps engineers who are new to Message Queue for Apache RocketMQ to build a Message Queue for Apache RocketMQ test project. The demo project is a Java project. It contains test code for normal messages, transactional messages, and scheduled messages. The demo project also contains Spring configurations.
 
-##### Prepare the environment
+##### 6.2.1.2 Prepare the environment
 
 This topic describes how to prepare an environment for a Message Queue for Apache RocketMQ demo project.
 
@@ -1670,7 +1829,7 @@ This topic describes how to prepare an environment for a Message Queue for Apach
 
 Install an integrated development environment (IDE). You can use IntelliJ IDEA or Eclipse as the IDE. IntelliJ IDEA is used in this example. Download IntelliJ IDEA Ultimate Edition from IntelliJ IDEA. Then, follow the installation instructions to install IntelliJ IDEA Ultimate Edition. Download a demo project. Download a demo project from GitHub to your on-premises machine. Figure 1. Download a demo project After the downloaded package is decompressed, a folder named mq-demomaster appears on your on-premises machine.
 
-##### Configure a demo project
+##### 6.2.1.3 Configure a demo project
 
 This topic describes how to configure a demo project.
 
@@ -1710,7 +1869,7 @@ You must use the AccessKey ID and AccessKey secret of the account that you use t
 </props>
 ```
 
-##### Run the demo project
+##### 6.2.1.4 Run the demo project
 
 After you configure the demo project, you can start the corresponding classes to send and receive messages of different types.
 
@@ -1752,7 +1911,7 @@ Run the MQTimerProducer class to send messages. These messages are delivered aft
 
 You can specify an exact delay, which is up to 40 days. For more information, see Send and subscribe to scheduled messages.
 
-#### Client parameters
+#### 6.2.2 Client parameters
 
 This topic describes the parameters that are configured for Message Queue for Apache RocketMQ clients. Table 1. Client parameters
 
@@ -1785,7 +1944,7 @@ This topic describes the parameters that are configured for Message Queue for Ap
 |---|---|---|---|---|---|
 | MaxCachedM essageSizeIn MiB | Consumer | 512 | Adjusted based on the memory of consumer clients | The maximum size of messages that a consumer client can cache. A large value can cause an out of memory (OOM) issue on the client. The value ranges from 16 to 2048. The default value is 512. Unit: MB. | >=1.7.0.Final |
 
-#### Client error codes
+#### 6.2.3 Client error codes
 
 This topic describes error codes related to sending and subscribing to messages and their references.
 
@@ -1814,9 +1973,9 @@ This topic describes error codes related to sending and subscribing to messages 
 | 1 | SYSTEM ERROR _ (permission verification) | This error is returned when the permission verification fails. | Check whether the user is granted the permissions to publish messages to and subscribe messages from the topic. | >=4.0.1 |
 | 2 | SYSTEM BUSY _ | This error is returned when the system is busy and the request is denied. | This is a temporary timeout that results from the restart of the Message Queue for Apache RocketMQ broker or heavy load on the broker. For more information, see the "The message failed to be sent." section in the Usage- related exceptions topic. | >=4.0.1 |
 
-#### SDK for Java
+#### 6.2.4 SDK for Java
 
-##### Usage notes
+##### 6.2.4.1 Usage notes
 
 Message Queue for Apache RocketMQ provides SDK for Java for you to send and subscribe to messages. This topic describes the parameters of Java methods and how to call these methods. Table 1. Common parameters
 
@@ -1854,9 +2013,7 @@ Figure 3. Methods and parameters for using SDK for Java to subscribe to messages
 
 **Sample code for sending and subscribing to messages**
 
-Send and subscribe to normal messages Send and subscribe to ordered messages Send and subscribe to scheduled messages Send and subscribe to delayed messages Send and subscribe to transactional messages
-
-##### Prepare the environment
+##### 6.2.4.2 Prepare the environment
 
 Before you run the Java code provided in this topic, prepare the environment based on the following instructions:
 
@@ -1879,7 +2036,7 @@ You can customize message tags in your application. For more information about h
 3. For applications that use the TCP client SDK to access Message Queue for Apache
 RocketMQ, make sure that the applications are deployed on Elastic Compute Service (ECS) instances in the same region.
 
-##### Configure logging
+##### 6.2.4.3 Configure logging
 
 Client logs record exceptions that occur when the Message Queue for Apache RocketMQ clients are running. Client logs help you locate and handle these exceptions in a quick manner. This topic describes how to print the logs of a Message Queue for Apache RocketMQ client and provides the default and custom configurations.
 
@@ -1977,13 +2134,13 @@ Add the following system parameters to the startup script or integrated developm
 
 /home/admin/ and D:\ are only examples. Replace them with your system directories.
 
-##### Spring integration
+##### 6.2.4.4 Spring integration
 
-###### Overview
+###### 6.2.4.4.1 Overview
 
 This topic describes how to send and subscribe to messages by using Message Queue for Apache RocketMQ in the Spring framework. This topic includes three parts: the integration of a normal message producer and Spring, the integration of a transactional message producer and Spring, and the integration of a message consumer and Spring. The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency. The configuration parameters supported in the Spring framework are the same as those used in TCP client SDK for Java. For more information, see Usage notes.
 
-###### Integrate a producer with Spring
+###### 6.2.4.4.2 Integrate a producer with Spring
 
 This topic describes how to integrate a producer with Spring.
 
@@ -2067,7 +2224,7 @@ arameter.
                  System.out.println("failed to send the message");
 ```
 
-###### Integrate a transactional message
+###### 6.2.4.4.3 Integrate a transactional message producer with Spring
 
 **producer with Spring**
 
@@ -2158,7 +2315,7 @@ es for TransactionStatus based on the execution result of the local transaction.
          }, null);
 ```
 
-###### Integrate a consumer with Spring
+###### 6.2.4.4.4 Integrate a consumer with Spring
 
 This topic describes how to integrate a consumer with Spring.
 
@@ -2273,9 +2430,9 @@ ClassPathXmlApplicationContext("consumer.xml");
         System.out.println("Consumer Started");
 ```
 
-##### Three modes for sending messages
+##### 6.2.4.5 Three modes for sending messages
 
-###### Overview
+###### 6.2.4.5.1 Overview
 
 In Message Queue for Apache RocketMQ, messages can be sent in reliable synchronous mode, reliable asynchronous mode, and one-way mode. This topic describes the principles, scenarios, and differences of these modes, and provides sample code for your reference.
 
@@ -2283,7 +2440,7 @@ In Message Queue for Apache RocketMQ, messages can be sent in reliable synchrono
 
 Ordered messages can be sent only in reliable synchronous mode.
 
-###### Reliable synchronous transmission
+###### 6.2.4.5.2 Reliable synchronous transmission
 
 This topic describes the principle and scenarios of the reliable synchronous transmission mode.
 
@@ -2359,7 +2516,7 @@ sg.getTopic());
         producer.shutdown();
 ```
 
-###### Reliable asynchronous transmission
+###### 6.2.4.5.3 Reliable asynchronous transmission
 
 This topic describes the principle and scenarios of the reliable asynchronous transmission mode.
 
@@ -2448,7 +2605,7 @@ an choose not to shut down the producer object.
         producer.shutdown();
 ```
 
-###### One-way transmission
+###### 6.2.4.5.4 One-way transmission
 
 This topic describes the principle and scenarios of the one-way transmission mode, and provides sample code.
 
@@ -2530,7 +2687,7 @@ response from the Message Queue for Apache RocketMQ broker. Therefore, data loss
         producer.shutdown();
 ```
 
-##### Send messages by using multiple threads
+##### 6.2.4.6 Send messages by using multiple threads
 
 This topic describes how to send messages by using multiple threads and provides sample code. The consumer and producer objects of Message Queue for Apache RocketMQ are threadsecure and can be shared among threads. You can deploy multiple producer and consumer instances on one or more cloud servers. A producer or consumer instance can also run multiple threads to send or receive messages. This improves the transactions per second (TPS) for sending or receiving messages. Do not create a producer instance or consumer instance for every thread. The following sample code provides an example on how to share a producer among threads:
 
@@ -2629,7 +2786,7 @@ resources.
         // producer.shutdown();
 ```
 
-##### Send and subscribe to ordered messages
+##### 6.2.4.7 Send and subscribe to ordered messages
 
 This topic describes how to send and subscribe to ordered messages and provides sample code. Ordered messages, also known as first-in-first-out (FIFO) messages, are a type of message provided by Message Queue for Apache RocketMQ. Such messages are published and consumed in a strict order. This topic provides the sample code for using TCP client SDK for Java to send and subscribe to ordered messages. For more information, see Ordered messages. Use SDK for Java 1.2.7 or later to send and subscribe to ordered messages. The methods of sending and subscribing to globally ordered messages and partitionally ordered messages are the same. The following code provides examples on how to send and subscribe to ordered messages:
 
@@ -2711,7 +2868,7 @@ ext) {
         consumer.start();
 ```
 
-##### Send and subscribe to transactional
+##### 6.2.4.8 Send and subscribe to transactional messages
 
 **messages**
 
@@ -2871,7 +3028,7 @@ Why must the back-check mechanism for transaction status be implemented when tra
 
 The method for subscribing to transactional messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to delayed messages
+##### 6.2.4.9 Send and subscribe to delayed messages
 
 This topic describes how to send and subscribe to delayed messages and provides sample code. Delayed messages are delivered to a consumer after a specified period of time from when they are sent to the Message Queue for Apache RocketMQ broker. For example, the specified period of time can be 3 seconds. Delayed messages are used in scenarios where a time window between message production and consumption is required or tasks need to be triggered after a delay. Delayed messages are used in a similar way to delay queues. For more information about the concepts and usage notes of delayed messages, see Scheduled messages and delayed messages.
 
@@ -2950,7 +3107,7 @@ msg.getTopic());
 
 The method for subscribing to delayed messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to scheduled
+##### 6.2.4.10 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -3021,7 +3178,7 @@ msg.getTopic());
 
 The method for subscribing to scheduled messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 6.2.4.11 Subscribe to messages
 
 This topic describes message subscription modes and provides sample code.
 
@@ -3095,11 +3252,11 @@ Subscribe to all tags.
 
 In broadcasting consumption mode, you cannot query message accumulation information in the Message Queue for Apache RocketMQ console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
 
-#### SDK for C or C++
+#### 6.2.5 SDK for C or C++
 
-##### Prepare the SDK for C or C++ environment
+##### 6.2.5.1 Prepare the SDK for C or C++ environment
 
-###### Overview
+###### 6.2.5.1.1 Overview
 
 Make sure that the following prerequisites are met before you use SDK for C++ to access Message Queue for Apache RocketMQ:
 
@@ -3107,7 +3264,7 @@ Make sure that the following prerequisites are met before you use SDK for C++ to
 
 You have created the topics and group IDs involved in the code in the Message Queue for Apache RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources. Applications that use Message Queue for Apache RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for C++
+###### 6.2.5.1.2 Download SDK for C++
 
 This topic describes the preparations, instructions, and usage notes for using SDK for C++ to access Message Queue for Apache RocketMQ so that you can use SDK for C++ to send and subscribe to messages.
 
@@ -3117,7 +3274,7 @@ This topic describes the preparations, instructions, and usage notes for using S
 2. Decompress the downloaded package.
 After the package is decompressed, the following directory structure appears: demos/ Contains examples on how to send and consume normal messages and ordered messages and how to send messages in one-way transmission mode. This directory also contains the CMakeList.txt file that is used to compile and manage demos. include/ Contains header files that are required by your own programs. lib/ Contains dynamic libraries based on x86_64. The libraries include the libonsclient4cpp.so interface library and the librocketmq_client_core.so core library. changelog Contains bug fixes and new features in the new releases.
 
-###### Use SDK for C++ in Linux
+###### 6.2.5.1.3 Use SDK for C++ in Linux
 
 This topic describes how to use SDK for C++ in Linux. Starting June 28, 2019, the new SDK version provides only dynamic library solutions. The library file of Message Queue for Apache RocketMQ is stored in the lib/ directory. You must link librocketmq_client_core.so with libonsclient4cpp.so when you generate executable files. demos has introduced the features of C++ 11 and uses CMake for management. Therefore, you must install CMake 3.0 or later and g++ 4.8 or later in advance.
 
@@ -3131,7 +3288,7 @@ The following sample code provides an example on how to use demos:
 cd aliyun-mq-linux-cpp-sdk // The path to which the downloaded SDK package is decompres sed. cd demos // Go to the demos directory and modify the demos file by entering information such as the topic and key that you created in the Message Queue for Apache RocketMQ con sole. cmake . // Check the dependencies and generate a compilation script. make // Compile the code. cd bin // Run the program in the directory where the generated executable files are loc ated.
 ```
 
-##### Send and subscribe to normal messages
+##### 6.2.5.2 Send and subscribe to normal messages
 
 This topic provides the sample code for sending and subscribing to normal messages.
 
@@ -3223,7 +3380,7 @@ e producer, issues such as memory leaks may occur.
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to ordered messages
+##### 6.2.5.3 Send and subscribe to ordered messages
 
 This topic provides the sample code for sending and subscribing to ordered messages.
 
@@ -3397,7 +3554,7 @@ erwise, issues such as memory leaks may occur.
    return 0;
 ```
 
-##### Send and subscribe to scheduled
+##### 6.2.5.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -3495,7 +3652,7 @@ memory leaks occur.
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to transactional
+##### 6.2.5.5 Send and subscribe to transactional messages
 
 **messages**
 
@@ -3725,7 +3882,7 @@ Queue for Apache RocketMQ broker is expected to send a request again to the prod
 
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 6.2.5.6 Subscribe to messages
 
 This topic describes how to subscribe to messages by using SDK for C or C++ provided by Message Queue for Apache RocketMQ.
 
@@ -3784,11 +3941,11 @@ onsumer.
     return 0;
 ```
 
-#### SDK for .NET
+#### 6.2.6 SDK for .NET
 
 ##### 6.2.6.1. .Prepare the SDK for .NET environment
 
-###### Overview
+###### 6.2.6.1.1 Overview
 
 Before you use SDK for . NET to access Message Queue for Apache RocketMQ and send and subscribe to messages, make sure that the following prerequisites are met:
 
@@ -3796,7 +3953,7 @@ Before you use SDK for . NET to access Message Queue for Apache RocketMQ and sen
 
 You have created the topics and group IDs involved in the code in the Message Queue for Apache RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources. Applications that use Message Queue for Apache RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for .NET
+###### 6.2.6.1.2 Download SDK for .NET
 
 Message Queue for Apache RocketMQ SDK for .NET is a managed wrapper based on Apache RocketMQ Client CPP.Message Queue for Apache RocketMQ SDK for .NET is independent of Windows .NET public library.Multithreading and parallel processing in C++ are used to ensure the efficiency and stability of Message Queue for Apache RocketMQ SDK for .NET.
 
@@ -3932,7 +4089,7 @@ and run the program. Figure 7. .NET SDK-7
 **Use the 64 bit version of IIS Express for websites and projects** check box.
 Figure 8. .NET SDK-8 Figure 9. .NET SDK-9
 
-##### Send and subscribe to normal messages
+##### 6.2.6.2 Send and subscribe to normal messages
 
 This topic provides the sample code for sending and subscribing to normal messages.
 
@@ -4015,7 +4172,7 @@ age body");
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to ordered messages
+##### 6.2.6.3 Send and subscribe to ordered messages
 
 This topic describes how to send and subscribe to ordered messages and provides sample code.
 
@@ -4191,7 +4348,7 @@ MyMsgOrderListener());
             consumer.shutdown();
 ```
 
-##### Send and subscribe to scheduled
+##### 6.2.6.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -4291,7 +4448,7 @@ Otherwise, memory leaks may occur.
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to transactional
+##### 6.2.6.5 Send and subscribe to transactional messages
 
 **messages**
 
@@ -4522,7 +4679,7 @@ Queue for Apache RocketMQ broker is expected to send a request again to the prod
 
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 6.2.6.6 Subscribe to messages
 
 This topic describes how to use Message Queue for Apache RocketMQ SDK for .NET to subscribe to messages.
 
@@ -4653,11 +4810,11 @@ must set a proper value to make sure that the process does not unexpectedly exit
         consumer.shutdown();
 ```
 
-### HTTP client SDK reference
+### 6.3 HTTP client SDK reference
 
-#### Protocol description
+#### 6.3.1 Protocol description
 
-##### Common parameters
+##### 6.3.1.1 Common parameters
 
 This topic describes the common request parameters in an HTTP request header and the common response parameters in an HTTP response header for Message Queue for Apache RocketMQ.
 
@@ -4690,7 +4847,7 @@ This topic describes the common request parameters in an HTTP request header and
 | x-mq-request-id | The ID of the request. |
 | x-mq-version | The version of the Message Queue for Apache RocketMQ API. The value is 2015-06-06. |
 
-##### Request signatures
+##### 6.3.1.2 Request signatures
 
 Message Queue for Apache RocketMQ verifies each HTTP access request. Each HTTP request that is sent to Message Queue for Apache RocketMQ contains the Authorization parameter in the request header, and the Authorization parameter contains a signature. This topic describes how to generate a signature.
 
@@ -4731,7 +4888,7 @@ requested by the HTTP request. For example, set the URI of a consumption request
 
 The string-to-sign must be in the UTF-8 format. The HMAC-SHA1 method defined in RFC 2104 is used to calculate the signature. In this method, the AccessKey secret is used as an encryption key.
 
-##### Operation for sending messages
+##### 6.3.1.3 Operation for sending messages
 
 You can call this operation to send messages from a producer to a Message Queue for Apache RocketMQ broker.
 
@@ -4803,7 +4960,7 @@ Sample responses
 <Message xmlns="http://mq.aliyuncs.com/doc/v1/"> <MessageId>1E057D566EAD42A579935B5CD874****</MessageId> <MessageBodyMD5>0CC175B9C0F1B6A831C399E26977****</MessageBodyMD5> </Message>
 ```
 
-##### Operation for consuming messages
+##### 6.3.1.4 Operation for consuming messages
 
 You can call this operation to consume messages from a Message Queue for Apache RocketMQ broker.
 
@@ -4926,7 +5083,7 @@ No message is available for consumption.
 </Error>
 ```
 
-##### Operation for acknowledging messages
+##### 6.3.1.5 Operation for acknowledging messages
 
 You can call this operation to acknowledge the consumption status of messages.
 
@@ -5011,9 +5168,9 @@ The handle of the request has expired. This indicates that the handle is not use
     </Errors>
 ```
 
-#### Java SDK
+#### 6.3.2 Java SDK
 
-##### Prepare the environment
+##### 6.3.2.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Java to send and consume messages.
 
@@ -5039,7 +5196,7 @@ Use Maven to import dependencies and add the following dependency to the pom.xml
 
 For more information about the versions of the SDK for Java, see Overview.
 
-##### Send and consume normal messages
+##### 6.3.2.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume normal messages.
 
@@ -5246,7 +5403,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-##### Send and consume ordered messages
+##### 6.3.2.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume ordered messages.
 
@@ -5457,7 +5614,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-##### Send and consume scheduled messages
+##### 6.3.2.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -5678,7 +5835,7 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-##### Send and consume transactional messages
+##### 6.3.2.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume transactional messages.
 
@@ -5979,9 +6136,9 @@ errors.getErrorMessages().get(errorHandle).getErrorMessage());
         } while (true);
 ```
 
-#### Go SDK
+#### 6.3.3 Go SDK
 
-##### Prepare the environment
+##### 6.3.3.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Go to send and consume messages.
 
@@ -6016,7 +6173,7 @@ go mod init
 go get github.com/aliyunmq/mq-http-go-sdk
 ```
 
-##### Send and consume normal messages
+##### 6.3.3.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume normal messages.
 
@@ -6226,7 +6383,7 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-##### Send and consume ordered messages
+##### 6.3.3.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume ordered messages.
 
@@ -6447,7 +6604,7 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-##### Send and consume scheduled messages
+##### 6.3.3.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -6667,7 +6824,7 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-##### Send and consume transactional messages
+##### 6.3.3.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume transactional messages.
 
@@ -6992,9 +7149,9 @@ the value is set to 3. The maximum value that you can specify is 30.
         <-endChan
 ```
 
-#### Python SDK
+#### 6.3.4 Python SDK
 
-##### Prepare the environment
+##### 6.3.4.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Python to send and consume messages.
 
@@ -7014,7 +7171,7 @@ Run the following command to install the SDK for Python:
 pip install mq_http_sdk
 ```
 
-##### Send and consume normal messages
+##### 6.3.4.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume normal messages.
 
@@ -7179,7 +7336,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume ordered messages
+##### 6.3.4.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume ordered messages.
 
@@ -7346,7 +7503,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume scheduled messages
+##### 6.3.4.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -7533,7 +7690,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume transactional messages
+##### 6.3.4.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume transactional messages.
 
@@ -7813,9 +7970,9 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-#### Node.js SDK
+#### 6.3.5 Node.js SDK
 
-##### Prepare the environment
+##### 6.3.5.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Node.js to send and consume messages.
 
@@ -7831,7 +7988,7 @@ Run the following command to install the SDK for Node.js:
 npm i @aliyunmq/mq-http-sdk
 ```
 
-##### Send and consume normal messages
+##### 6.3.5.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume normal messages.
 
@@ -7945,7 +8102,7 @@ e.RequestId, e.Code);
 })();
 ```
 
-##### Send and consume ordered messages
+##### 6.3.5.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume ordered messages.
 
@@ -8071,7 +8228,7 @@ e.RequestId, e.Code);
 })();
 ```
 
-##### Send and consume scheduled messages
+##### 6.3.5.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -8173,7 +8330,7 @@ e.RequestId, e.Code);
 })();
 ```
 
-##### Send and consume transactional messages
+##### 6.3.5.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume transactional messages.
 
@@ -8376,9 +8533,9 @@ e.RequestId, e.Code);
 })();
 ```
 
-#### PHP SDK
+#### 6.3.6 PHP SDK
 
-##### Prepare the environment
+##### 6.3.6.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for PHP to send and consume messages.
 
@@ -8403,7 +8560,7 @@ To install the SDK for PHP, perform the following steps:
 composer install
 ```
 
-##### Send and consume normal messages
+##### 6.3.6.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume normal messages.
 
@@ -8622,7 +8779,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume ordered messages
+##### 6.3.6.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume ordered messages.
 
@@ -8849,7 +9006,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume scheduled messages
+##### 6.3.6.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -9077,7 +9234,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume transactional messages
+##### 6.3.6.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume transactional messages.
 
@@ -9369,9 +9526,9 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-#### C# SDK
+#### 6.3.7 C# SDK
 
-##### Prepare the environment
+##### 6.3.7.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for C# to send and consume messages.
 
@@ -9389,7 +9546,7 @@ Aliyun_MQ_SDK project.
 3. Run the Samples.cs file. In the Aliyun_MQ_SDK project, the Samples.cs file appears. This file
 provides the sample code on how to send and consume messages by using the SDK for C#. Replace the values in the sample code with the actual values that are used in your application. Then, save and run the file.
 
-##### Send and consume normal messages
+##### 6.3.7.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume normal messages.
 
@@ -9656,7 +9813,7 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-##### Send and consume ordered messages
+##### 6.3.7.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume ordered messages.
 
@@ -9927,7 +10084,7 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-##### Send and consume scheduled messages
+##### 6.3.7.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -10194,7 +10351,7 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-##### Send and consume transactional messages
+##### 6.3.7.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume transactional messages.
 
@@ -10604,9 +10761,9 @@ errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + e
                     Thread.Sleep(2000);
 ```
 
-#### C++ SDK
+#### 6.3.8 C++ SDK
 
-##### Prepare the environment
+##### 6.3.8.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for C++ to send and consume messages.
 
@@ -10694,7 +10851,7 @@ parameter values based on the comments in the code, and then save the changes. F
 premises machine. g++ producer.cpp -o producer lib/libmqcpp.a -I include/ -lcurl -lcrypto
 ```
 
-##### Send and consume normal messages
+##### 6.3.8.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in Message Queue for Apache RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume normal messages.
 
@@ -10921,7 +11078,7 @@ ed: b.oSt g() ed;
     } while(true);
 ```
 
-##### Send and consume ordered messages
+##### 6.3.8.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in Message Queue for Apache RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume ordered messages.
 
@@ -11153,7 +11310,7 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-##### Send and consume scheduled messages
+##### 6.3.8.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -11402,7 +11559,7 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-##### Send and consume transactional messages
+##### 6.3.8.5 Send and consume transactional messages
 
 Message Queue for Apache RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. Message Queue for Apache RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume transactional messages.
 
@@ -11770,9 +11927,9 @@ me.GetRequestId() << endl;
     } while(true);
 ```
 
-## Best practices
+## 7 Best practices
 
-### Clustering consumption and
+### 7.1 Clustering consumption and broadcasting consumption
 
 **broadcasting consumption**
 
@@ -11808,7 +11965,7 @@ Figure 2. Broadcasting consumption mode Scenarios and usage notes: Ordered messa
 
 If the broadcasting consumption mode is required for your business, you can create multiple group IDs to subscribe to the same topic. Figure 3. Use the clustering consumption mode to simulate the broadcasting consumption mode Scenarios and usage notes: Each message needs to be processed by multiple consumers, and the logic of the consumers can be the same or different. The consumption progress is recorded on the Message Queue for Apache RocketMQ broker. Therefore, the reliability is higher than that in broadcasting consumption mode. For each group ID, one or more consumer instances can be deployed. When multiple consumer instances are deployed, these instances compose a cluster and work together to consume messages. Assume that three consumer instances C1, C2, and C3 are deployed for Group ID 1. These instances share the messages sent from the Message Queue for Apache RocketMQ broker to Group ID 1. In addition, these instances must subscribe to the same topics and same tags.
 
-### Message filtering
+### 7.2 Message filtering
 
 This topic describes how Message Queue for Apache RocketMQ consumers filter messages on the Message Queue for Apache RocketMQ broker based on tags. A tag is used to classify messages in a topic into different types. Message Queue for Apache RocketMQ allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages including order messages, payment messages, and logistics messages are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, analysis system for transaction success rate, and real-time computing system. Among these systems, the logistics system receives only logistics messages and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. Figure 1. Filter messages
 
@@ -11818,13 +11975,13 @@ To classify messages, you can create multiple topics, or create multiple tags in
 
 **Examples**
 
-Send messages Specify a tag for each message before the message is sent.
+Specify a tag for each message before the message is sent.
 
 ```
 Message msg = new Message("MQ_TOPIC","TagA","Hello MQ".getBytes());
 ```
 
-Subscribe to messages Consumption method 1 If a consumer needs to subscribe to messages of all types in a topic, use an asterisk (*) to represent all tags.
+Consumption method 1 If a consumer needs to subscribe to messages of all types in a topic, use an asterisk (*) to represent all tags.
 
 ```java
 consumer.subscribe("MQ_TOPIC", "*", new MessageListener() {
@@ -11868,13 +12025,13 @@ Consumption method 4 (error example) If a consumer subscribes to messages with s
 });
 ```
 
-### Subscription consistency
+### 7.3 Subscription consistency
 
 In Message Queue for Apache RocketMQ, a group ID represents a consumer instance group. For most distributed applications, multiple consumer instances are attached to the same group ID. Subscription consistency means that the processing logic of all consumer instances identified by the same group ID must be identical. If the subscriptions of the consumer instances are inconsistent, errors occur in the message consumption logic and messages may be lost. Subscriptions in Message Queue for Apache RocketMQ involve topics and tags. Therefore, all consumer instances identified by the same group ID must be consistent in the following two aspects to ensure subscription consistency: The topics to which the consumer instances subscribe must be the same. The tags of the topics to which the consumer instances subscribe must be the same.
 
 **Examples of subscriptions**
 
-Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions Inconsistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
+Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
 
 **Sample code of subscriptions**
 
@@ -11942,7 +12099,7 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
 });
 ```
 
-### Consumption idempotence
+### 7.4 Consumption idempotence
 
 After a Message Queue for Apache RocketMQ consumer receives messages, the consumer needs to perform idempotent processing on these messages based on the unique businessspecific keys of the messages.
 
@@ -11968,7 +12125,7 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
 });
 ```
 
-### Active geo-redundancy
+### 7.5 Active geo-redundancy
 
 Message Queue for Apache RocketMQ leverages Alibaba Cloud Express Connect and Multi- Site High Availability (MSHA) to support active geo-redundancy. MSHA allows you to implement two-way data synchronization and business traffic switchover across instances. This way, business recovery is decoupled from fault recovery. If a fault occurs, business continuity can be ensured. This topic introduces the concept of MSHA and describes the common scenarios in which MSHA is suitable. This topic also describes the benefits of MSHA.
 
@@ -11994,7 +12151,7 @@ MSHA effectively ensures business continuity. MSHA decouples business recovery f
 
 The limited resources in a single data center or region may not meet the requirements as the business rapidly develops. In addition, the business may face bottlenecks such as limited storage and computing performance. The horizontal scaling capability of Message Queue for Apache RocketMQ allows the business to be expanded in other data centers or regions to improve cost efficiency.
 
-### Message routing
+### 7.6 Message routing
 
 The message routing feature provided by Message Queue for Apache RocketMQ can be used to synchronize message data across clusters to ensure message consistency and integrity between clusters. This topic introduces the concept of message routing and describes the common scenarios in which the message routing feature is suitable. This topic also describes the benefits of the feature and how to configure the feature.
 
@@ -12044,11 +12201,11 @@ Before you create a routing task, you must specify information to create a cloud
 
 Specify the message source and the message destination, and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization.
 
-## Service usage FAQ
+## 8 Service usage FAQ
 
-### FAQ
+### 8.1 FAQ
 
-#### Quick start
+#### 8.1.1 Quick start
 
 This topic provides answers to questions frequently asked by new users when they use Message Queue for Apache RocketMQ.
 1. Where do consumers identified by a new group ID start to consume?
@@ -12091,7 +12248,7 @@ Message Queue for Apache RocketMQ provides the following methods for Message que
 4. Can Message Queue for Apache RocketMQ ensure that no duplicate messages are
 delivered to consumers? In most cases, Message Queue for Apache RocketMQ can ensure that no duplicate messages are delivered to consumers. As a distributed messaging middleware, Message Queue for Apache RocketMQ cannot ensure that no duplicate messages are delivered to consumers when exceptions such as network jitter and application processing timeout occur. However, Message Queue for Apache RocketMQ can ensure that no messages are lost.
 
-#### Configurations
+#### 8.1.2 Configurations
 
 This topic provides answers to frequently asked questions about Message Queue for Apache RocketMQ configurations.
 1. How long can messages be retained on the Message Queue for Apache RocketMQ broker?
@@ -12128,7 +12285,7 @@ consumer? To set the number of consumer threads on a Message Queue for Apache Ro
 4. What do I do if an error in loading DLL or another running error occurs due to invalid .NET
 client configuration? For more information, see SDK_GUIDE.pdf in the compressed package of SDK for .NET to verify that the project configuration is the same as that described in the document.
 
-#### Message tracing
+#### 8.1.3 Message tracing
 
 This topic provides answers to frequently asked questions about the message tracing feature of Message Queue for Apache RocketMQ.
 1. Why is trace data not found?
@@ -12140,11 +12297,11 @@ The possible cause is that a large number of downstream consumers have subscribe
 4. Why are previous query tasks not displayed?
 A large number of historical query tasks affect the display result. Therefore, Message Queue for Apache RocketMQ regularly cleans up historical query tasks and retains only query tasks created within the recent seven days. If you cannot find a historical task, query it again.
 
-#### Alert handling
+#### 8.1.4 Alert handling
 
 Alert handling is unavailable for Message Queue for Apache RocketMQ. Apsara Stack provides an isolated cloud-based environment and cannot be connected to the APIs of Internet services, such as the short message service (SMS) gateway. Therefore, the monitoring and alerting module in the console is unavailable.
 
-#### Ordered messages
+#### 8.1.5 Ordered messages
 
 This topic provides answers to frequently asked questions about ordered messages in Message Queue for Apache RocketMQ.
 1. Do ordered messages support clustering consumption and broadcasting consumption?
@@ -12158,9 +12315,9 @@ Globally ordered messages are processed in first-in-first-out (FIFO) order. If t
 5. What transmission modes do ordered messages support?
 Ordered messages support only the reliable synchronous transmission mode.
 
-### Exceptions
+### 8.2 Exceptions
 
-#### Usage-related exceptions
+#### 8.2.1 Usage-related exceptions
 
 This topic describes the exceptions that may occur when you use Message Queue for Apache RocketMQ. This topic also provides solutions.
 1. The producer or consumer failed to be started, or duplicate group IDs exist.
@@ -12196,7 +12353,7 @@ method, this line of log is not printed.
 
 If the problem persists, contact technical support engineers and provide the local SDK logs.
 
-#### Nonexistent resources
+#### 8.2.2 Nonexistent resources
 
 This topic describes exceptions related to nonexistent resources and provides solutions.
 1. Nonexistent group ID
@@ -12216,7 +12373,7 @@ If an error is returned, check whether an alias is defined for the hostname. For
 
 If the hostname cannot be pinged, add the local IP address to the /etc/hosts file. By default, each Elastic Compute Service (ECS) instance establishes a binding relationship between the local IP address and the hostname. Do not manually remove the relationship. iii. Check the system configurations. Check whether the hostname recorded in /etc/sysconfig/network is the same as that added to /etc/hosts. If the hostname is not the same as that added to /etc/hosts, modify the hostname. If you modify the content in /etc/sysconfig/network, you must restart the host after you modify the content. This way, the modification can take effect. Exercise caution when you modify configurations in a system file, because this operation may cause other exceptions. After the preceding three steps are performed, UnknownHostException will no longer be returned when your client starts.
 
-#### Inconsistent status
+#### 8.2.3 Inconsistent status
 
 This topic describes the exceptions related to inconsistent status and provides solutions.
 1. Invalid messages
@@ -12326,9 +12483,9 @@ Example 2: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
 
 If you start multiple consumer instances identified by the same group ID in different JVM processes, make sure that the topics and tags to which the consumer instances subscribe are the same.
 
-### Troubleshooting
+### 8.3 Troubleshooting
 
-#### Unexpected consumer connections
+#### 8.3.1 Unexpected consumer connections
 
 This topic describes the symptoms of an unexpected consumer connection, analyzes causes, provides a solution, and verifies the solution.
 
@@ -12355,7 +12512,7 @@ Log on to the Message Queue for Apache RocketMQ console. In the left-side naviga
 **Consumer Status** in the Actions column. In the Consumer Status panel, view the connection
 information of consumers identified by the group ID in the **Connection Information** section. The displayed information shows that IP addresses of all consumers are within the expected range and the value of **Consistent Subscription** is **Yes**.
 
-#### Inconsistent subscriptions
+#### 8.3.2 Inconsistent subscriptions
 
 This topic describes the symptoms of inconsistent subscriptions, analyzes causes, provides a solution, and verifies the solution.
 
@@ -12444,7 +12601,7 @@ Consumers can receive messages as expected. Log on to the Message Queue for Apac
 **Consumer Status** in the Actions column. In the Consumer Status panel, the value of
 **Consistent Subscription** is **Yes**.
 
-#### Message accumulation
+#### 8.3.3 Message accumulation
 
 This topic describes the symptoms of message accumulation, analyzes causes, provides a solution, and verifies the solution.
 
@@ -12471,7 +12628,7 @@ Print the Jstack information **jstack -l {PID} | grep ConsumeMessageThread** in 
 the value of **Real-time Consumption Speed** increases and the value of **Accumulated**
 **Messages** decreases.
 
-#### Message accumulation in Java
+#### 8.3.4 Message accumulation in Java processes
 
 **processes**
 
@@ -12512,7 +12669,7 @@ The following figure shows an example of command output. For more information ab
 
 Message Queue for Apache RocketMQ can support 1 billion accumulated messages without compromising the performance. If the problem of compromised performance is not solved after you perform the preceding steps, contact O&M engineers and provide the following information: The heap.bin file. Run the jmap -dump:format=b,file=heap.bin [$PID] command to obtain this file. Then, run the `gzip heap.bin` command to generate a compressed package.[$PID] represents the PID of the Java process recorded in Step 2. The local ons.log file of the consumer client where messages are accumulated. The version of the consumer client.
 
-#### Application OOM due to message
+#### 8.3.5 Application OOM due to message caching on the client
 
 **caching on the client**
 

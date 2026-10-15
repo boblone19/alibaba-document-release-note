@@ -3,16 +3,27 @@ title: "Cloud Parallel File Storage Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 22
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "563621fb4b41a914_Alibaba Cloud Apsara Stack V3.18.6 Cloud Parallel File Storage Operations and Maintenance Guide 2026"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8CPFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Parallel%20File%20Storage%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Parallel File Storage Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Overview
+- 2 Log in to the Apsara Uni-manager Operations Console
+- 3 Query CPFS O&M metrics
+  - 3.1 Query the metrics about the CPFS overall status
+  - 3.2 Overall performance metrics of CPFS
+  - 3.3 CPFS pdisk metrics
+- 4 FAQ about CPFS
+  - 4.1 Downtime maintenance process
+
 erview
 
-## Overview
+## 1 Overview
 
 This topic describes the purpose of, requirements on, and usage notes for performing O&M operations on Cloud Parallel File Storage (CPFS). This topic also describes how to contact technical support.
 
@@ -36,7 +47,7 @@ To ensure a stable system and prevent unexpected events, O&M engineers must comp
 
 O&M engineers can contact CPFS technical support for help during the maintenance. in to the Apsara Uni-manager Op erations Console
 
-## Log in to the Apsara Uni-
+## 2 Log in to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -57,11 +68,11 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 
-## Query CPFS O&M metrics
+## 3 Query CPFS O&M metrics
 
 This topic describes the core O&M metrics of Cloud Parallel File Storage (CPFS), including the system status metrics, performance metrics, and pdisk metrics.
 
-### Query the metrics about the
+### 3.1 Query the metrics about the CPFS overall status
 
 **CPFS overall status**
 
@@ -86,7 +97,7 @@ status of the cluster. If the value 0 is displayed in the Failed and Degraded co
 |   |   | tail -f |   |
 |   | /var/mmfs/gen/mmfslog |   |   |
 
-### Overall performance metrics
+### 3.2 Overall performance metrics of CPFS
 
 **of CPFS**
 
@@ -109,7 +120,7 @@ host.
 6. Run the `mmlsnode -N waiters -L` command to check the return value.
 i. Success code: c25a02005_ext.cloud.a02.amtest38: Waiting 0.0034 sec since 2024-06-26_11:43:09, monitored, thread 329701 ReadmitWorkThread: onThCond 0x7FAD24025A98 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' c25a02005_ext.cloud.a02.amtest38: Waiting 0.0021 sec since 2024-06-26_11:43:09, monitored, thread 276130 ReadmitWorkThread: onThCond 0x7FAD24027D78 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' c25a02005_ext.cloud.a02.amtest38: Waiting 0.0019 sec since 2024-06-26_11:43:09, monitored, thread 2275926 ReadmitWorkThread: on ThCond 0x7FAD24026C50 (IOBundleNSPDCondvar), reason 'wait for NSPD I/O' ii. Error codes for moderate-severity latency: Waiting 95.0805 sec since 2024-06-26_11:43:01, monitored, thread 3932937 ReadmitWorkThread: on ThCond 0x557F293C9130 (PdiskAvailabilityCondvar), reason 'Until disk availability stabilizes' Waiting 95.0777 sec since 2024-06-26_11:43:01, monitored, thread 2711607 ReadmitWorkThread: on ThCond 0x7F24041146A8 (VLogIOCondvar), reason 'wait for another thread to do log write' Waiting 95.0777 sec since 2024-06-26_11:43:01, monitored, thread 3782474 ReadmitWorkThread: on ThCond 0x7F2404114628 (VLogIOCondvar), reason 'wait for another thread to do log write' Under idle conditions, return values of 0.00XX sec are normal. Sporadic latency spikes below 2 seconds constitute low-severity latency. Irregular intervals of sub-2-second latencies can be ignored for I/O-insensitive services. Sustained waiters latencies between 2 seconds and 10 seconds cause file system responsiveness degradation (such as slow ls command execution), while CPFS remains operational under redundancy mechanisms if not persistent. Sustained I/O latencies that exceed 15 seconds trigger persistent system stuttering for CPFS file systems. For general business systems, system stuttering can be solved by restarting CPFS. For key business nodes where disk/node loss tolerance is paramount, real-time dump analysis can be performed to troubleshoot the issue. In deadlock scenarios, CPFS automatically captures diagnostic dumps and traces during exception windows. In emergency situations, you can reboot the node where long waiters are located to solve the issue.
 
-### CPFS pdisk metrics
+### 3.3 CPFS pdisk metrics
 
 This topic describes how to monitor hard disk status.
 
@@ -136,11 +147,11 @@ of CPFS. The following figure shows the return value (State).
 | Missing | pdisk loss | Replace the pdisk with a new one. |
 | PTOW | pdisk I/O timeout | Replace the pdisk with a new one. |
 
-## FAQ about CPFS
+## 4 FAQ about CPFS
 
 This topic describes how to handle Cloud Parallel File Storage (CPFS) downtime maintenance issues.
 
-### Downtime maintenance
+### 4.1 Downtime maintenance process
 
 **process**
 

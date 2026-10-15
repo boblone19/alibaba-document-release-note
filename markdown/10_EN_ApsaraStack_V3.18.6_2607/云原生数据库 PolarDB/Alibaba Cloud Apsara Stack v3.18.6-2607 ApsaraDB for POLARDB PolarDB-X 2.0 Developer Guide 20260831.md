@@ -3,20 +3,110 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 179
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260831.pdf"
+source_pdf: "dfb0e86f940f5d0f_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260831."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB-X%202.0%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB-X 2.0 Developer Guide 20260831
 
+## Table of Contents
+
+- 1 Use the SDK for Java
+  - 1.1 Use the SDK
+    - 1.1.1 Configure connection requests
+    - 1.1.2 Error handling
+- 2 Use the SDK for Python
+  - 2.1 Use the SDK
+    - 2.1.1 Configure HTTPS requests
+    - 2.1.2 Handle errors
+- 3 Use the SDK for Go
+  - 3.1 Use the SDK
+    - 3.1.1 Install the core package of Apsara Stack SDK for Go
+- 4 API Reference
+  - 4.1 Request structure
+  - 4.2 Common parameters
+  - 4.3 Performance parameters
+  - 4.4 Instance states
+  - 4.5 Instance management
+    - 4.5.1 CreateDBInstance
+    - 4.5.2 DeleteDBInstance
+    - 4.5.3 DescribeDBInstanceAttribute
+    - 4.5.4 DescribeDBInstances
+    - 4.5.5 DescribeScaleOutMigrateTaskList
+    - 4.5.6 DescribeTasks
+    - 4.5.7 ModifyDBInstanceClass
+    - 4.5.8 ModifyDBInstanceConfig
+    - 4.5.9. \ ModifyDBInstanceDescription
+    - 4.5.10 ReleaseInstancePublicConnection
+    - 4.5.11 RestartDBInstance
+    - 4.5.12 UpgradeDBInstanceKernelVersion
+    - 4.5.13 UpdatePolarDBXInstanceNode
+    - 4.5.14 DescribeBinaryLogList
+    - 4.5.15 ModifyDBInstanceVip
+    - 4.5.16 CreateTransformOperation
+    - 4.5.17 DescribeTransformStatus
+    - 4.5.18 ModifyDBInstanceSeries
+    - 4.5.19 DescribeDBInstanceTopology
+    - 4.5.20 RestoreDBInstance
+  - 4.6 Database management
+    - 4.6.1 CreateDB
+    - 4.6.2. \ DescribeTableDetail
+    - 4.6.3 DeleteDB
+    - 4.6.4 DescribeCharacterSet
+    - 4.6.5 DescribeDistributeTableList
+    - 4.6.6 ModifyDatabaseDescription
+    - 4.6.7 DescribeDbList
+  - 4.7 Regions
+    - 4.7.1 DescribeRegions
+  - 4.8 Account management
+    - 4.8.1 CreateAccount
+    - 4.8.2 ModifyAccountPrivilege
+    - 4.8.3 EnableRightsSeparation
+    - 4.8.4 ResetAccountPassword
+    - 4.8.5 CreateSuperAccount
+    - 4.8.6 DeleteAccount
+    - 4.8.7 DescribeAccountList
+    - 4.8.8 ModifyAccountDescription
+  - 4.9 Data security
+    - 4.9.1 AllocateInstancePublicConnection
+    - 4.9.2 CheckCloudResourceAuthorized
+    - 4.9.3 DescribeDBInstanceTDE
+    - 4.9.4. \ DescribeUserEncryptionKeyList
+    - 4.9.5 DescribeSecurityIps
+    - 4.9.6 ModifySecurityIps
+    - 4.9.7 UpdateDBInstanceTDE
+    - 4.9.8 DescribeSQLLogRecords
+  - 4.10 Backup management
+    - 4.10.1 CreateBackup
+    - 4.10.2 DescribeBackupPolicy
+    - 4.10.3 DescribeBackupSetList
+    - 4.10.4 UpdateBackupPolicy
+  - 4.11 Parameter management
+    - 4.11.1. \ DescribeParameters
+    - 4.11.2 ModifyParameter
+  - 4.12 SSL encryption
+    - 4.12.1 DescribeDBInstanceSSL
+    - 4.12.2 UpdateDBInstanceSSL
+  - 4.13 Monitoring
+    - 4.13.1 DescribeInstanceDbPerformance
+    - 4.13.2 DescribeInstanceStoragePerformance
+    - 4.13.3 DescribeInstancePerformance
+    - 4.13.4 DescribeMetricsPerf
+  - 4.14 DAS
+    - 4.14.1 GetSlowRequestRecords
+- 5 Appendixes
+  - 5.1 STS overview
+    - 5.1.1 What is STS?
+    - 5.1.2 AssumeRole
+
 se the SDK for Java
 
-## Use the SDK for Java
+## 1 Use the SDK for Java
 
-### Use the SDK
+### 1.1 Use the SDK
 
-#### Configure connection requests
+#### 1.1.1 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
@@ -40,7 +130,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Error handling
+#### 1.1.2 Error handling
 
 If an error occurs on the server or in the SDK when you use Apsara Stack SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -70,11 +160,11 @@ try {
 
 `}` se the SDK for Python
 
-## Use the SDK for Python
+## 2 Use the SDK for Python
 
-### Use the SDK
+### 2.1 Use the SDK
 
-#### Configure HTTPS requests
+#### 2.1.1 Configure HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
@@ -110,7 +200,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Handle errors
+#### 2.1.2 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Python, the SDK returns an error response. The error response contains an error code and an error message. se the SDK for Python Among the errors returned by the SDK for Python, you do not need to handle the SDK errors, but must solve the server errors. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -133,11 +223,11 @@ except ServerException as e:
 
 se the SDK for Go
 
-## Use the SDK for Go
+## 3 Use the SDK for Go
 
-### Use the SDK
+### 3.1 Use the SDK
 
-#### Install the core package of Apsara
+#### 3.1.1 Install the core package of Apsara Stack SDK for Go
 
 **Stack SDK for Go**
 
@@ -147,9 +237,9 @@ This topic describes how to install the core package of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-## API Reference
+## 4 API Reference
 
-### Request structure
+### 4.1 Request structure
 
 PolarDB-X exposes a Query API that accepts HTTP GET requests with URL-encoded parameters. This reference covers the regional endpoints, supported protocols, request URL format, parameter types, and encoding requirements.
 
@@ -192,7 +282,7 @@ Each request must specify the operation to perform by using the Action parameter
 
 The system encodes all requests and responses in UTF-8.
 
-### Common parameters
+### 4.2 Common parameters
 
 This topic describes the common parameters that can be used to call each API operation in PolarDB-X. Common parameters include request parameters and response parameters.
 
@@ -233,7 +323,7 @@ JSON format `{`
 
 `}`
 
-### Performance parameters
+### 4.3 Performance parameters
 
 This topic describes the parameters that are used to monitor the performance of compute nodes, data nodes, Global Meta Service (GMS) nodes, and change data capture (CDC) nodes in PolarDB-X instances.
 
@@ -296,7 +386,7 @@ This topic describes the parameters that are used to monitor the performance of 
 | Cdc DumperHeapUsage _ | The usage of JVM heap memory as a percentage value. The value of this parameter is calculated based on the following formula: Usage of JVM heap memory = Amount of the used JVM heap memory/Total amount of JVM heap memory × 100%. |
 | Cdc DumperOps _ | The information about binary log events that are processed. The following data can be returned: dumper total eps: the average number of _ _ binary log events that are processed per second. dumper dml eps: the average number of _ _ binary log events during which DML statements are executed per second. dumper tps: the average number of _ transactions that are processed per second. |
 
-### Instance states
+### 4.4 Instance states
 
 | State | Description |
 |---|---|
@@ -319,9 +409,9 @@ This topic describes the parameters that are used to monitor the performance of 
 | INS CLONING _ | The instance is being cloned. |
 | Released | The instance is released. |
 
-### Instance management
+### 4.5 Instance management
 
-#### CreateDBInstance
+#### 4.5.1 CreateDBInstance
 
 Call the CreateDBInstance operation to create a PolarDB-X instance.
 
@@ -398,7 +488,7 @@ Sample success responses `JSON` format `{`
 <RequestId>9B2F3840-5C98-475C-B269-2D5C3A31797C</RequestId> <OrderId>12345</OrderId> <DBInstanceName>pxc-*********</DBInstanceName>
 ```
 
-#### DeleteDBInstance
+#### 4.5.2 DeleteDBInstance
 
 Deletes a PolarDB-X instance.
 
@@ -450,7 +540,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeDBInstanceAttribute
+#### 4.5.3 DescribeDBInstanceAttribute
 
 Call the DescribeDBInstanceAttribute API to query the attributes of an instance.
 
@@ -670,7 +760,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 `}` `}`
 ```html ``````html ``````html ```
 
-#### DescribeDBInstances
+#### 4.5.4 DescribeDBInstances
 
 Call the DescribeDBInstances operation to list database instances.
 
@@ -829,7 +919,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeScaleOutMigrateTaskList
+#### 4.5.5 DescribeScaleOutMigrateTaskList
 
 Queries the progress of a scale-out task.
 
@@ -883,7 +973,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeTasks
+#### 4.5.6 DescribeTasks
 
 Queries the tasks performed on a PolarDB-X instance within a specified time range.
 
@@ -988,7 +1078,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ModifyDBInstanceClass
+#### 4.5.7 ModifyDBInstanceClass
 
 Changes the instance type of a PolarDB-X instance.
 
@@ -1047,7 +1137,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ModifyDBInstanceConfig
+#### 4.5.8 ModifyDBInstanceConfig
 
 Modifies the configuration items of a PolarDB-X instance.
 
@@ -1157,7 +1247,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ReleaseInstancePublicConnection
+#### 4.5.10 ReleaseInstancePublicConnection
 
 Call the ReleaseInstancePublicConnection operation to release the public endpoint of a PolarDB-X instance.
 
@@ -1210,7 +1300,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### RestartDBInstance
+#### 4.5.11 RestartDBInstance
 
 Restarts a PolarDB-X instance.
 
@@ -1264,7 +1354,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### UpgradeDBInstanceKernelVersion
+#### 4.5.12 UpgradeDBInstanceKernelVersion
 
 Updates the kernel version of a PolarDB-X instance.
 
@@ -1326,7 +1416,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### UpdatePolarDBXInstanceNode
+#### 4.5.13 UpdatePolarDBXInstanceNode
 
 Call the UpdatePolarDBXInstanceNode operation to change the number of nodes in an instance. This operation supports scale out and scale in. The request generates a transaction order.
 
@@ -1385,7 +1475,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeBinaryLogList
+#### 4.5.14 DescribeBinaryLogList
 
 Queries the binary log files of a PolarDB-X instance. By default, binary log files are saved for 15 days. Each binary log file that is returned by this operation contains the log entries that are generated over the time range that is specified by the StartTime and EndTime parameters. If the value of the DownloadLink response parameter is a URL instead of NULL, you can download the binary log file from this URL. This URL is valid within two days after it is generated. Download the binary log file before the URL expires.
 
@@ -1506,7 +1596,7 @@ hangzhou.aliyuncs.com/polardbx_cdc/pxc-hzfd13214******/binlog.000001? Expires=16
 
 For a list of error codes, visit the API Error Center.
 
-#### ModifyDBInstanceVip
+#### 4.5.15 ModifyDBInstanceVip
 
 Modify the virtual IP address (VIP) of a PolarDB-X instance.
 
@@ -1557,7 +1647,7 @@ Sample success responses `JSON` format `{`
 <Message>Success</Message> <RequestId>0A5C7D6B-XXXX-XXXX-XXXX-XXXXXXXXXXXX</RequestId> <Success>true</Success>
 ```
 
-#### CreateTransformOperation
+#### 4.5.16 CreateTransformOperation
 
 Call the CreateTransformOperation operation to handle transformation tasks for a PolarDB-X instance.
 
@@ -1617,7 +1707,7 @@ Sample success responses `JSON` format `{`
 </Data> <Success>true</Success>
 ```
 
-#### DescribeTransformStatus
+#### 4.5.17 DescribeTransformStatus
 
 Query the transformation status. This API retrieves the transformation status of a PolarDB-X instance. Ensure that you provide all required request parameters when you call this API.
 
@@ -1711,7 +1801,7 @@ Sample success responses `JSON` format `{`
 </Data> <Success>true</Success>
 ```
 
-#### ModifyDBInstanceSeries
+#### 4.5.18 ModifyDBInstanceSeries
 
 Call the ModifyDBInstanceSeries operation to upgrade a PolarDB-X Standard Edition instance to an Enterprise Edition instance.
 
@@ -1765,7 +1855,7 @@ Sample success responses `JSON` format `{`
 <RequestId>0000-ABCD-1234-EFGH</RequestId> <OrderId>2020101010101010</OrderId>
 ```
 
-#### DescribeDBInstanceTopology
+#### 4.5.19 DescribeDBInstanceTopology
 
 Call the DescribeDBInstanceTopology operation to retrieve the topology of a PolarDB-X instance.
 
@@ -2176,7 +2266,7 @@ iti
 |---|---|---|---|
 | 404 |   | InvalidDBInstance.NotFound | The specified database instance does not exist. |
 
-#### RestoreDBInstance
+#### 4.5.20 RestoreDBInstance
 
 Call the RestoreDBInstance operation to restore an instance.
 
@@ -2244,9 +2334,9 @@ Sample success responses `JSON` format `{`
 <RequestId>BFC01449-C5D2-4457-8909-8285B9E1710</RequestId> <OrderId>11</OrderId> <DBInstanceName>pxc-unrwuyttjx****</DBInstanceName>
 ```
 
-### Database management
+### 4.6 Database management
 
-#### CreateDB
+#### 4.6.1 CreateDB
 
 Creates a PolarDB-X database.
 
@@ -2398,7 +2488,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}` `}`
 
-#### DeleteDB
+#### 4.6.3 DeleteDB
 
 Deletes a database from a PolarDB-X instance.
 
@@ -2457,7 +2547,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeCharacterSet
+#### 4.6.4 DescribeCharacterSet
 
 Queries the character sets supported by databases in a PolarDB-X instance.
 
@@ -2527,7 +2617,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}` `}`
 
-#### DescribeDistributeTableList
+#### 4.6.5 DescribeDistributeTableList
 
 Queries the details of tables in a PolarDB-X database.
 
@@ -2609,7 +2699,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}` `}`
 
-#### ModifyDatabaseDescription
+#### 4.6.6 ModifyDatabaseDescription
 
 Modifies the description of a PolarDB-X database.
 
@@ -2671,7 +2761,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeDbList
+#### 4.6.7 DescribeDbList
 
 Queries the databases in a PolarDB-X instance, including each database's character set and the accounts authorized to access it.
 
@@ -2758,9 +2848,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### Regions
+### 4.7 Regions
 
-#### DescribeRegions
+#### 4.7.1 DescribeRegions
 
 Call the DescribeRegions operation to get the region list.
 
@@ -2851,9 +2941,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### Account management
+### 4.8 Account management
 
-#### CreateAccount
+#### 4.8.1 CreateAccount
 
 Call the CreateAccount operation to create an account.
 
@@ -2922,7 +3012,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ModifyAccountPrivilege
+#### 4.8.2 ModifyAccountPrivilege
 
 Call the ModifyAccountPrivilege operation to modify account permissions.
 
@@ -2987,7 +3077,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### EnableRightsSeparation
+#### 4.8.3 EnableRightsSeparation
 
 Call the EnableRightsSeparation operation to enable the three-role mode for a PolarDB-X instance.
 
@@ -3053,7 +3143,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ResetAccountPassword
+#### 4.8.4 ResetAccountPassword
 
 Call the ResetAccountPassword operation to reset the password for a database account.
 
@@ -3115,7 +3205,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### CreateSuperAccount
+#### 4.8.5 CreateSuperAccount
 
 Creates a privileged account for a PolarDB-X instance. Each instance supports only one privileged account.
 
@@ -3178,7 +3268,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DeleteAccount
+#### 4.8.6 DeleteAccount
 
 Deletes a database account from a PolarDB-X instance.
 
@@ -3241,7 +3331,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeAccountList
+#### 4.8.7 DescribeAccountList
 
 Queries the accounts in a PolarDB-X instance. Filter by account name or account type, or retrieve all accounts at once.
 
@@ -3331,7 +3421,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ModifyAccountDescription
+#### 4.8.8 ModifyAccountDescription
 
 Modifies the description of a database account in a PolarDB-X instance.
 
@@ -3393,9 +3483,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### Data security
+### 4.9 Data security
 
-#### AllocateInstancePublicConnection
+#### 4.9.1 AllocateInstancePublicConnection
 
 Creates a public endpoint for a PolarDB-X instance.
 
@@ -3451,7 +3541,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### CheckCloudResourceAuthorized
+#### 4.9.2 CheckCloudResourceAuthorized
 
 Call the CheckCloudResourceAuthorized operation to check whether your Alibaba Cloud account is authorized to use Key Management Service (KMS) for a PolarDB-X instance.
 
@@ -3524,7 +3614,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 For a list of error codes, visit the API Error Center.
 
-#### DescribeDBInstanceTDE
+#### 4.9.3 DescribeDBInstanceTDE
 
 Call the DescribeDBInstanceTDE operation to query whether Transparent Data Encryption (TDE) is enabled for an instance.
 
@@ -3658,7 +3748,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 For a list of error codes, visit the API Error Center.
 
-#### DescribeSecurityIps
+#### 4.9.5 DescribeSecurityIps
 
 Call the DescribeSecurityIps operation to query the IP address whitelist of a PolarDB-X instance.
 
@@ -3745,7 +3835,7 @@ Sample success responses `JSON` format `{`
 </Data> <Success>true</Success>
 ```
 
-#### ModifySecurityIps
+#### 4.9.6 ModifySecurityIps
 
 Call the ModifySecurityIps operation to modify the IP address whitelist for an instance.
 
@@ -3799,7 +3889,7 @@ Sample success responses `JSON` format `{`
 <RequestId>FEA5DC20-6D8A-5979-97AA-FC57546ADC20</RequestId> <Message>success</Message> <Success>true</Success>
 ```
 
-#### UpdateDBInstanceTDE
+#### 4.9.7 UpdateDBInstanceTDE
 
 Call the UpdateDBInstanceTDE operation to enable Transparent Data Encryption (TDE) for an instance.
 
@@ -3871,7 +3961,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 For a list of error codes, visit the API Error Center.
 
-#### DescribeSQLLogRecords
+#### 4.9.8 DescribeSQLLogRecords
 
 Queries the SQL log records of a PolarDB-X instance.
 
@@ -3981,9 +4071,9 @@ Sample success responses `XML` format
 {"RequestId":"02895B72-1178-5799-991E-663FB4EEDD84","Data": {"TotalRecordCount":"100","PageRecordCount":"5","RequestId":"02895B72-1178-5799-991E-66 3FB4EEDD84","PageNumber":"1","SQLRecordItems": [{"SQLTemplateID":"11","ExecuteTime":"2022-08- 24T08:21:22.660+00:00","ExecuteProcessID":"101","DBNodeRole":"master","TotalExecutionTime :"1000","ExtraFieldItems":"{ \"Tddlversion\":\"5.4.14-16563827\", \"Sct\":\"0\", \"Smem \":\"0\", \"executestarttime\":\"2022-08-24T08:21:22.660+00:00\", \"Frows\":\"0\", \"Sc nt\":\"0\", \"executesourceuser\":\"drds\", \"tag:packid\":\"2e0c13c56e251d03-92482\", \"Ts\":\"1661329272656\", \"sqlrendered\":\"select sleep(10)\", \"Tmem\":\"0\", \"sqlto talcosttime\":-1, \"sqlselectrows\":-1, \"Lmem\":\"0\", \"sqlscanrows\":1, \"Mem\":\"0\", \"executetargetschema\":\"drds\", \"Ltc\":\"3983013\", \"schemaType\":\"polarx\", \"uid\":\"1012354764658849\", \"Ptc\":\"0\", \"Txid\":\"14ce2d05de409000\", \"sqltemplateparams\":\"\", \"sqlupdaterows\":-1, \"Mr\" :\"0\", \"Mpct\":\"-1.0\", \"threadid\":-1, \"Arows\":\"0\", \"Prstc\":\"0\", \"Bid\":\ "-1\", \"executelogicid\":\"pxc-i-cfwboi1k6o\", \"Mbt\":\"0\", \"\":\"TDDL\", \"topic\" :\"pxc-unrwuyttjxwhfk\", \"Traceid\":\"14ce2d05de409000\", \"Pctc\":\"0\", \"Pid\":\"-1 \", \"Letc\":\"922668\", \"Tid\":\"36f3bf88\", \"Type\":\"000\", \"executesourceport\":55738, \"Lio\":\"0\", \"Pstc\":\"0\", \"Lnet\":\"0.0\", \"Lotc\": \"3060345\", \"sqlcosttime\":\"10004070\", \"Logversion\":\"V3\", \"Lcpu\":\"0\", \"exe cutesource_ip\":\"10.213.1.1\", \"Wt\":\"TP\" }","SourcePort":"55738","ReturnRows":"1","UpdateRows":"1","SQLText":"select * from a1;" ,"ScanRows":"1","SourceIP":"10.213.1.1","DBName":"rtyui","SQLType":"select","AccountName" huijnb"}]}}
 ```
 
-### Backup management
+### 4.10 Backup management
 
-#### CreateBackup
+#### 4.10.1 CreateBackup
 
 Creates a backup for a PolarDB-X instance and returns the backup set ID.
 
@@ -4052,7 +4142,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeBackupPolicy
+#### 4.10.2 DescribeBackupPolicy
 
 Queries the backup policy of a PolarDB-X instance.
 
@@ -4158,7 +4248,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeBackupSetList
+#### 4.10.3 DescribeBackupSetList
 
 Queries backup sets of a PolarDB-X instance.
 
@@ -4250,7 +4340,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### UpdateBackupPolicy
+#### 4.10.4 UpdateBackupPolicy
 
 Call the UpdateBackupPolicy operation to modify the backup policy for an instance.
 
@@ -4344,7 +4434,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### Parameter management
+### 4.11 Parameter management
 
 #### 4.11.1. \ DescribeParameters
 
@@ -4455,7 +4545,7 @@ or storage nodes.(-1: turn off; 0: turn on)",
 
 For a list of error codes, visit the API Error Center.
 
-#### ModifyParameter
+#### 4.11.2 ModifyParameter
 
 Call the ModifyParameter operation to modify instance parameters for both the compute layer and the storage layer.
 
@@ -4518,9 +4608,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 For a list of error codes, visit the API Error Center.
 
-### SSL encryption
+### 4.12 SSL encryption
 
-#### DescribeDBInstanceSSL
+#### 4.12.1 DescribeDBInstanceSSL
 
 Call the DescribeDBInstanceSSL operation to view SSL information.
 
@@ -4601,7 +4691,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 For a list of error codes, visit the API Error Center.
 
-#### UpdateDBInstanceSSL
+#### 4.12.2 UpdateDBInstanceSSL
 
 Call the UpdateDBInstanceSSL operation to update the SSL configuration of an instance.
 
@@ -4670,9 +4760,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 For a list of error codes, visit the API Error Center.
 
-### Monitoring
+### 4.13 Monitoring
 
-#### DescribeInstanceDbPerformance
+#### 4.13.1 DescribeInstanceDbPerformance
 
 Queries the detailed information about database monitoring.
 
@@ -4736,7 +4826,7 @@ Sample success responses `XML` format
 {"Message":"****","RequestId":"5C07B700-A7CC-4F81-8861-86F840G7YH6U","Data":{"Performan ceItems":[{"Measurement":"lqps,active,running_count","MetricName":"lqps","Points":[{"Va lue":"1","Timestamp":"1597179542"}]}]},"Success":"true"}
 ```
 
-#### DescribeInstanceStoragePerformance
+#### 4.13.2 DescribeInstanceStoragePerformance
 
 Queries the monitoring information of a storage node.
 
@@ -4798,7 +4888,7 @@ Sample success responses `XML` format
 {"Message":"****","RequestId":"39518C53-F3C3-424B-8108-27CCF9DR54TH","Data":{"Performan ceItems":[{"Measurement":"com_insert","MetricName":"com_insert","Points": [{"Value":"0.1","Timestamp":"1597180560000"}]}]},"Success":"true"}
 ```
 
-#### DescribeInstancePerformance
+#### 4.13.3 DescribeInstancePerformance
 
 Queries the monitoring information of an instance.
 
@@ -4860,7 +4950,7 @@ Sample success responses `XML` format
 {"Message":"****","RequestId":"88DC5709-8BEC-4D17-A6D5-4DACA9DF45TP","Data":{"Performan ceItems":[{"Measurement":"cpu,old","MetricName":"cpu","Points": [{"Value":"1","Timestamp":"1597201474"}]}]},"Success":"true"}
 ```
 
-#### DescribeMetricsPerf
+#### 4.13.4 DescribeMetricsPerf
 
 Queries the monitoring information of computing resources, storage resources, and log resources.
 
@@ -4958,9 +5048,9 @@ Sample success responses `XML` format
 {"RequestId":"BFC01449-C5D2-4457-8909-8285B9E1710","Data":{"EndTime":"2022-08-24T06:57: 37Z","Message":"success","InstanceID":"pxcunrwuyttjx****","UserID":"26842","InstanceNodeRole":"master","StartTime":"2022-08-24T05 :57:37Z","HttpStatusCode":"200","InstanceEngine":"polarx","HostId":"1000","Code":"200","S cess":"true","HostMetricItems":[{"InsId":" pxchzrqdp9iwn****","MetricsKey":"avg(node_slow_request_count),avg(node_physical_slow_request ount),avg(node_network_in_bytes),avg(node_network_out_bytes),avg(jvmstats_ygc_collector_t e),avg(jvmstats_fgc_collector_time)","MetricsGroupKey":"Connections","InsLogicId":"pxcc-xxxxxxx","InsName":"pxc-hzr1m03gei****","MetricsValues": [{"MetricsData":"24","MetricsTimestamp":"1568620311000"}]}]}}
 ```
 
-### DAS
+### 4.14 DAS
 
-#### GetSlowRequestRecords
+#### 4.14.1 GetSlowRequestRecords
 
 Queries slow request records.
 
@@ -5058,11 +5148,11 @@ t\t\t\"query_time\":1.494,\t\t\t\t\"timestamp\":1752227282000\t\t\t}\t]}",
 
 ppendixes
 
-## Appendixes
+## 5 Appendixes
 
-### STS overview
+### 5.1 STS overview
 
-#### What is STS?
+#### 5.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -5074,7 +5164,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 5.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

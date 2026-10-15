@@ -3,16 +3,112 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Developer Guide 20260825
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 128
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Developer Guide 20260825.pdf"
+source_pdf: "6fe921b0497f09a6_Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Developer Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/DataHub/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataHub%20Developer%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Developer Guide 20260825
 
-## API reference
+## Table of Contents
 
-### ListUserSubscriptions
+- 1 API reference
+  - 1.1 ListUserSubscriptions
+  - 1.2 GetTopicSchema
+  - 1.3 CreateConnector
+  - 1.4 ListTopicAction
+  - 1.5 DeleteTopic
+  - 1.6 UpdateConnectorState
+  - 1.7 GetShardDetail
+  - 1.8 SplitShard
+  - 1.9 GetAlarmRule
+  - 1.10 CreateKafkaGroup
+  - 1.11 CreateTopic
+  - 1.12 MergeShard
+  - 1.13 ExtendShard
+  - 1.14 GetConsumerPlan
+  - 1.15 AddTopicSchema
+  - 1.16 ListKafkaGroup
+  - 1.17 ResetSubscriptionOffset
+  - 1.18 ListSubscriptions
+  - 1.19 ReloadConnector
+  - 1.20 DeleteSubscription
+  - 1.21 ListTopics
+  - 1.22 GetSubscriptionOffset
+  - 1.23 GetConnectorShardStatus
+  - 1.24 GetTopicDataTrendByDay
+  - 1.25 GetSchemaByOdps
+  - 1.26 UpdateTopicsForKafkaGroup
+  - 1.27 ListShards
+  - 1.28 GetTopicMetric
+  - 1.29 ListRegions
+  - 1.30 ResetConnectorOffset
+  - 1.31 AppendField
+  - 1.32 GetConnector
+  - 1.33 AddProjectVpcWhiteList
+  - 1.34 GetTopic
+  - 1.35 ListTopicSchema
+  - 1.36 DeleteConnector
+  - 1.37 ListConnectors
+  - 1.38 CreateSubscription
+  - 1.39 DeleteKafkaGroup
+  - 1.40 GetKafkaGroup
+  - 1.41 SampleShard
+  - 1.42 GetUserStorage
+  - 1.43 GetProject
+  - 1.44 ListTopicsByKafkaGroup
+  - 1.45 UpdateConnectorField
+  - 1.46 ListProjects
+  - 1.47 DeleteProject
+  - 1.48 CreateProject
+  - 1.49 CheckServiceLinkedRoleForDeleting
+  - 1.50 DeleteProjectVpcWhiteList
+  - 1.51 DeleteTopicSchema
+  - 1.52 GetAssumeRole
+  - 1.53 GetProjectVpcWhiteList
+  - 1.54 InitializeDataImportProcess
+- 2 SDK reference
+  - 2.1 SDK overview
+  - 2.2 Prerequisites
+    - 2.2.1 Overview
+    - 2.2.2 Obtain an AccessKey pair
+    - 2.2.3 Obtain endpoints
+  - 2.3 DataHub SDK for Java
+    - 2.3.1 Overview
+    - 2.3.2 Preparations
+    - 2.3.3 Ingest tuple data
+      - 2.3.3.1 Create a tuple topic
+      - 2.3.3.2 Obtain the list of shards
+      - 2.3.3.3 Write data into DataHub
+      - 2.3.3.4 Consume data
+    - 2.3.4 Ingest blob data
+      - 2.3.4.1 Create a blob topic
+      - 2.3.4.2 Obtain the list of shards
+      - 2.3.4.3 Write data into DataHub
+      - 2.3.4.4 Consume data
+    - 2.3.5 Data ingestion methods
+      - 2.3.5.1 Ingest data based on shard IDs
+      - 2.3.5.2 Ingest data based on hash values
+      - 2.3.5.3 Ingest data based on partition keys
+    - 2.3.6 Create a DataConnector
+      - 2.3.6.1 Create a DataConnector for MaxCompute
+      - 2.3.6.2 Create a DataConnector for AnalyticDB or ApsaraDB RDS for MySQL
+  - 2.4 DataHub SDK for Python
+    - 2.4.1 Install DataHub SDK for Python
+    - 2.4.2 Preparations
+    - 2.4.3 Create topics
+    - 2.4.4 Write records into DataHub and subscribe applications to records
+- 3 Scalability
+  - 3.1 Scenario
+  - 3.2 Obtain shard details
+  - 3.3 Split a shard
+  - 3.4 Merge shards
+- 4 Insert a column to a topic schema
+  - 4.1 Insert a column
+
+## 1 API reference
+
+### 1.1 ListUserSubscriptions
 
 You can call the ListUserSubscriptions operation to query information about user subscriptions. The ListUserSubscriptions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -89,7 +185,7 @@ http(s)://[Endpoint]/?Action=ListUserSubscriptions &RegionId=cn-wuhan
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### GetTopicSchema
+### 1.2 GetTopicSchema
 
 Call the GetTopicSchema operation to retrieve the topic schema. The GetTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
@@ -133,7 +229,7 @@ http(s)://[Endpoint]/?Action=GetTopicSchema &RegionId=cn-wuhan &ProjectName=test
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### CreateConnector
+### 1.3 CreateConnector
 
 You can call the CreateConnector operation to create a connector. The CreateConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -180,7 +276,7 @@ http(s)://[Endpoint]/?Action=CreateConnector &RegionId=cn-wuhna &ProjectName=tes
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListTopicAction
+### 1.4 ListTopicAction
 
 Call the ListTopicAction operation to retrieve topic operations. The ListTopicAction operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
@@ -236,7 +332,7 @@ http(s)://[Endpoint]/?Action=ListTopicAction &RegionId=cn-wuhan &ProjectName=tes
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### DeleteTopic
+### 1.5 DeleteTopic
 
 Calls the DeleteTopic operation to delete a topic. The DeleteTopic operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -269,7 +365,7 @@ http(s)://[Endpoint]/?Action=DeleteTopic &ProjectName=test &TopicName=test
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### UpdateConnectorState
+### 1.6 UpdateConnectorState
 
 Call the UpdateConnectorState operation to update the connector status. The UpdateConnectorState operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -307,7 +403,7 @@ http(s)://[Endpoint]/?Action=UpdateConnectorState &ProjectName=test &TopicName=t
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### GetShardDetail
+### 1.7 GetShardDetail
 
 You can call the GetShardDetail operation to retrieve shard information. The GetShardDetail operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -376,7 +472,7 @@ http(s)://[Endpoint]/?Action=GetShardDetail &RegionId=cn-wuhan &ProjectName=test
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### SplitShard
+### 1.8 SplitShard
 
 Calls the SplitShard operation to split a shard. The SplitShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -410,7 +506,7 @@ http(s)://[Endpoint]/?Action=SplitShard
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 
-### GetAlarmRule
+### 1.9 GetAlarmRule
 
 Calls the GetAlarmRule operation to retrieve an alarm rule.
 
@@ -473,7 +569,7 @@ http(s)://[Endpoint]/?Action=GetAlarmRule &RegionId=cn-wuhan &ProjectName=test_p
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### CreateKafkaGroup
+### 1.10 CreateKafkaGroup
 
 You can call the CreateKafkaGroup operation to create a group. The CreateKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -507,7 +603,7 @@ http(s)://[Endpoint]/?Action=CreateKafkaGroup &RegionId=cn-wuhan &ProjectName=te
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### CreateTopic
+### 1.11 CreateTopic
 
 You can call the CreateTopic operation to create a topic. The CreateTopic operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -561,7 +657,7 @@ http(s)://[Endpoint]/?Action=CreateTopic &RegionId=cn-wu &ProjectName=test_pro &
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### MergeShard
+### 1.12 MergeShard
 
 You can call the MergeShard operation to merge shards. The MergeShard operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
 
@@ -602,7 +698,7 @@ http(s)://[Endpoint]/?Action=MergeShard &RegionId=cn-wuhan &ProjectName=test_pro
 |---|---|---|---|
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 
-### ExtendShard
+### 1.13 ExtendShard
 
 You can call the ExtendShard operation to extend a shard. The ExtendShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -639,7 +735,7 @@ http(s)://[Endpoint]/?Action=ExtendShard &RegionId=cn-wuhan &ProjectName=test_pr
 | 502 | InternalServerError | InternalServerError | %s |
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 
-### GetConsumerPlan
+### 1.14 GetConsumerPlan
 
 You can call the GetConsumerPlan operation to retrieve a collaborative consumption plan. The GetConsumerPlan operation does not have operation-specific request headers and uses only common request headers. For more information, see the documentation of common request parameters.
 
@@ -710,7 +806,7 @@ http(s)://[Endpoint]/?Action=GetConsumerPlan &RegionId=cn-wuhan &ProjectName=tes
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### AddTopicSchema
+### 1.15 AddTopicSchema
 
 You can call the AddTopicSchema operation to add a topic schema. The AddTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -751,7 +847,7 @@ http(s)://[Endpoint]/?Action=AddTopicSchema &RegionId=cn-wuhan &ProjectName=test
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListKafkaGroup
+### 1.16 ListKafkaGroup
 
 Call the ListKafkaGroup operation to retrieve a list of Kafka groups. The ListKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -821,9 +917,9 @@ http(s)://[Endpoint]/?Action=ListKafkaGroup &RegionId=cn-wuan &ProjectName=test 
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-2019-11-20 ListKafkaGroup
+2019-11-20
 
-### ResetSubscriptionOffset
+### 1.17 ResetSubscriptionOffset
 
 Call the ResetSubscriptionOffset operation to reset the subscription offset. The ResetSubscriptionOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -863,7 +959,7 @@ http(s)://[Endpoint]/?Action=ResetSubscriptionOffset &ProjectName=test_pro &Topi
 |---|---|---|---|
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### ListSubscriptions
+### 1.18 ListSubscriptions
 
 You can call the ListSubscriptions operation to query the list of subscription IDs. The ListSubscriptions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -936,7 +1032,7 @@ http(s)://[Endpoint]/?Action=ListSubscriptions &PageNumber=1 &PageSize=10 &Regio
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### ReloadConnector
+### 1.19 ReloadConnector
 
 Call the ReloadConnector operation to restart a connector. The ReloadConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -983,7 +1079,7 @@ http(s)://[Endpoint]/?Action=ReloadConnector &ProjectName=test_pro &TopicName=te
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### DeleteSubscription
+### 1.20 DeleteSubscription
 
 You can call the DeleteSubscription operation to delete a subscription. The DeleteSubscription operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -1017,7 +1113,7 @@ http(s)://[Endpoint]/?Action=DeleteSubscription &RegionId=cn-wuan &ProjectName=p
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListTopics
+### 1.21 ListTopics
 
 You can call the ListTopics operation to query a list of topics. The ListTopics operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1098,7 +1194,7 @@ http(s)://[Endpoint]/?Action=ListTopics &PageNumber=1 &RegionId=cn-uw &ProjectNa
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 | 400 | ResourceOffline | ResourceOffline | %s |
 
-### GetSubscriptionOffset
+### 1.22 GetSubscriptionOffset
 
 You can call the GetSubscriptionOffset operation to retrieve subscription offsets. The GetSubscriptionOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
@@ -1152,7 +1248,7 @@ http(s)://[Endpoint]/?Action=GetSubscriptionOffset &RegionId=cn-wuhan &ProjectNa
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### GetConnectorShardStatus
+### 1.23 GetConnectorShardStatus
 
 Call the GetConnectorShardStatus operation to retrieve the connector shard status. The GetConnectorShardStatus operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -1218,7 +1314,7 @@ http(s)://[Endpoint]/?Action=GetConnectorShardStatus &RegionId=cn-wuhan &Project
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### GetTopicDataTrendByDay
+### 1.24 GetTopicDataTrendByDay
 
 You can call the GetTopicDataTrendByDay operation to retrieve the read and write traffic of a topic. The GetTopicDataTrendByDay operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
 
@@ -1265,7 +1361,7 @@ http(s)://[Endpoint]/?Action=GetTopicDataTrendByDay &RegionId=cn-wujan &ProjectN
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### GetSchemaByOdps
+### 1.25 GetSchemaByOdps
 
 Call the GetSchemaByOdps operation to obtain the structure of an ODPS table. The GetSchemaByOdps operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -1320,7 +1416,7 @@ http(s)://[Endpoint]/?Action=GetSchemaByOdps &RegionId=cn-wuhan &Project=test_da
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### UpdateTopicsForKafkaGroup
+### 1.26 UpdateTopicsForKafkaGroup
 
 You can call the UpdateTopicsForKafkaGroup operation to update the topic list of a Kafka group. The UpdateTopicsForKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common parameters topic.
 
@@ -1358,7 +1454,7 @@ http(s)://[Endpoint]/?Action=UpdateTopicsForKafkaGroup &RegionId=20240205113332e
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListShards
+### 1.27 ListShards
 
 You can call the ListShards operation to retrieve a list of shards. The ListShards operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -1412,7 +1508,7 @@ http(s)://[Endpoint]/?Action=ListShards &RegionId=cn-wuhan &ProjectName=project_
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 400 | ResourceOffline | ResourceOffline | %s |
 
-### GetTopicMetric
+### 1.28 GetTopicMetric
 
 Call the GetTopicMetric operation to retrieve topic metric information. The GetTopicMetric operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1464,7 +1560,7 @@ http(s)://[Endpoint]/?Action=GetTopicMetric &RegionId=cn-han &ProjectName=test_p
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### ListRegions
+### 1.29 ListRegions
 
 Call the ListRegions operation to obtain a list of regions. The ListRegions operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1515,7 +1611,7 @@ Call the ListRegions operation to obtain a list of regions. The ListRegions oper
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### ResetConnectorOffset
+### 1.30 ResetConnectorOffset
 
 You can call the ResetConnectorOffset operation to reset the connector offset. The ResetConnectorOffset operation does not have operation-specific request headers and uses only common request headers. For more information, see Common parameters.
 
@@ -1548,7 +1644,7 @@ http(s)://[Endpoint]/?Action=ResetConnectorOffset &ProjectName=test_pro &TopicNa
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### AppendField
+### 1.31 AppendField
 
 You can call the AppendField operation to add fields. The AppendField operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1600,7 +1696,7 @@ Sample success response
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### GetConnector
+### 1.32 GetConnector
 
 Call the GetConnector operation to retrieve connector information. The GetConnector operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1661,7 +1757,7 @@ http(s)://[Endpoint]/?Action=GetConnector &RegionId=cn-wuhan &ProjectName=test_p
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### AddProjectVpcWhiteList
+### 1.33 AddProjectVpcWhiteList
 
 You can call the AddProjectVpcWhiteList operation to add a project whitelist. The AddProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -1706,7 +1802,7 @@ http(s)://[Endpoint]/?Action=AddProjectVpcWhiteList &RegionId=cn_wuhan &ProjectN
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### GetTopic
+### 1.34 GetTopic
 
 Call the GetTopic operation to retrieve topic information. This operation uses common request headers without special request headers. For more information, see the common request parameters document.
 
@@ -1779,7 +1875,7 @@ http(s)://[Endpoint]/?Action=GetTopic &RegionId=cn_wuhan &ProjectName=test_pro &
 |---|---|---|---|
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListTopicSchema
+### 1.35 ListTopicSchema
 
 Call the ListTopicSchema operation to retrieve a list of topic schemas. The ListTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1846,7 +1942,7 @@ http(s)://[Endpoint]/?Action=ListTopicSchema &PageNumber=1 &RegionId=cn-wuahn &P
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### DeleteConnector
+### 1.36 DeleteConnector
 
 Calls the DeleteConnector operation to delete a connector.
 
@@ -1895,7 +1991,7 @@ http(s)://[Endpoint]/?Action=DeleteConnector &ProjectName=test_pro &TopicName=te
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListConnectors
+### 1.37 ListConnectors
 
 Call the ListConnectors operation to view connector list information. The ListConnectors operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -1971,7 +2067,7 @@ http(s)://[Endpoint]/?Action=ListConnectors &PageNumber=1 &PageSize=1 &RegionId=
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### CreateSubscription
+### 1.38 CreateSubscription
 
 You can call the CreateSubscription operation to create a subscription. The CreateSubscription operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -2013,7 +2109,7 @@ http(s)://[Endpoint]/?Action=CreateSubscription &RegionId=cn-wu &ProjectName=tes
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### DeleteKafkaGroup
+### 1.39 DeleteKafkaGroup
 
 You can call the DeleteKafkaGroup operation to delete a Kafka group. The DeleteKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -2046,7 +2142,7 @@ http(s)://[Endpoint]/?Action=DeleteKafkaGroup &RegionId=cn-wuhan &ProjectName=pr
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### GetKafkaGroup
+### 1.40 GetKafkaGroup
 
 Call the GetKafkaGroup operation to retrieve Kafka group information. The GetKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -2102,7 +2198,7 @@ http(s)://[Endpoint]/?Action=GetKafkaGroup &RegionId=cn_hangzhou &ProjectName=te
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### SampleShard
+### 1.41 SampleShard
 
 Call the SampleShard operation to sample a shard. The SampleShard operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -2149,7 +2245,7 @@ http(s)://[Endpoint]/?Action=SampleShard &ProjectName=test_pro &TopicName=topic_
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### GetUserStorage
+### 1.42 GetUserStorage
 
 You can call the GetUserStorage operation to retrieve the storage capacity of a project. The GetUserStorage operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
@@ -2196,7 +2292,7 @@ http(s)://[Endpoint]/?Action=GetProject &RegionId=cn_hangzhou &ProjectName=test_
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### GetProject
+### 1.43 GetProject
 
 Call the GetProject operation to retrieve project information. The GetProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -2246,7 +2342,7 @@ http(s)://[Endpoint]/?Action=GetProject &RegionId=cn-wihan &ProjectName=test_ro
 | 400 | ResourceAlreadyExi st | ResourceAlreadyExist | %s |
 | 400 | ResourceNotFound | ResourceNotFound | %s |
 
-### ListTopicsByKafkaGroup
+### 1.44 ListTopicsByKafkaGroup
 
 You can call the ListTopicsByKafkaGroup operation to query the list of topics in a Kafka group. The ListTopicsByKafkaGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -2300,7 +2396,7 @@ http(s)://[Endpoint]/?Action=ListTopicsByKafkaGroup &RegionId=cn-hangzhou &Proje
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### UpdateConnectorField
+### 1.45 UpdateConnectorField
 
 You can call the UpdateConnectorField operation to update synchronization fields. The UpdateConnectorField operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common parameters topic.
 
@@ -2354,7 +2450,7 @@ http(s)://[Endpoint]/?Action=CheckServiceLinkedRoleForDeleting &RegionId=cn-wuha
 | 502 | ApiProxyServiceErr or | ApiProxyServiceError | %s |
 | 502 | InternalServerError | InternalServerError | %s |
 
-### ListProjects
+### 1.46 ListProjects
 
 Call the ListProjects operation to retrieve a list of projects. The ListProjects operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
@@ -2414,7 +2510,7 @@ http(s)://[Endpoint]/?Action=ListProjects &PageNumber= &RegionId= &PageSize=
 </List>
 ```
 
-### DeleteProject
+### 1.47 DeleteProject
 
 Call the DeleteProject operation to delete a project. The DeleteProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -2436,7 +2532,7 @@ http(s)://[Endpoint]/?Action=DeleteProject &RegionId=cn-hangzhou &ProjectName=te
 <RequestId>2018050817492199d6650a00000039</RequestId>
 ```
 
-### CreateProject
+### 1.48 CreateProject
 
 You can call the CreateProject operation to create a project. The CreateProject operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -2498,7 +2594,7 @@ http(s)://[Endpoint]/?Action=CreateProject
 </RoleUsages>
 ```
 
-### DeleteProjectVpcWhiteList
+### 1.50 DeleteProjectVpcWhiteList
 
 You can call the DeleteProjectVpcWhiteList operation to delete a project whitelist. The DeleteProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -2521,7 +2617,7 @@ http(s)://[Endpoint]/?Action=DeleteProjectVpcWhiteList &RegionId=cn-hangzhou &Pr
 <RequestId>2018050817492199d6650a00000039</RequestId>
 ```
 
-### DeleteTopicSchema
+### 1.51 DeleteTopicSchema
 
 You can call the DeleteTopicSchema operation to delete a topic schema. The DeleteTopicSchema operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -2553,7 +2649,7 @@ Sample success response
 <RequestId>2018050817492199d6650a00000039</RequestId>
 ```
 
-### GetAssumeRole
+### 1.52 GetAssumeRole
 
 You can call the GetAssumeRole operation to retrieve a role. The GetAssumeRole operation does not have operation-specific request headers and uses only common request headers. For more information, see the documentation of common request parameters.
 
@@ -2578,7 +2674,7 @@ http(s)://[Endpoint]/?Action=GetAssumeRole
 <RequestId>2018050817492199d6650a00000039</RequestId> <HasAssumeRole>admin</HasAssumeRole> <RoleId>1293021</RoleId>
 ```
 
-### GetProjectVpcWhiteList
+### 1.53 GetProjectVpcWhiteList
 
 Calls the GetProjectVpcWhiteList operation to retrieve the project whitelist. The GetProjectVpcWhiteList operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
@@ -2615,7 +2711,7 @@ http(s)://[Endpoint]/?Action=GetProjectVpcWhiteList &RegionId=cn-wuhan &ProjectN
 <Comment>comment</Comment> <RequestId>2018050817492199d6650a00000039</RequestId> <ProjectName>test_project</ProjectName> <CreateTime>154110235</CreateTime> <UpdateTime>154110236</UpdateTime> <Creator>admin</Creator> <VpcWhiteList>12378</VpcWhiteList>
 ```
 
-### InitializeDataImportProcess
+### 1.54 InitializeDataImportProcess
 
 You can call the InitializeDataImportProcess operation to initialize a process. The InitializeDataImportProcess operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the Common parameters topic.
 
@@ -2638,9 +2734,9 @@ http(s)://[Endpoint]/?Action=InitializeDataImportProcess &RegionId=cn-wuhan
 <TaskId>12</TaskId> <RequestId>2018050817492199d6650a00000039</RequestId>
 ```
 
-## SDK reference
+## 2 SDK reference
 
-### SDK overview
+### 2.1 SDK overview
 
 This topic describes the SDKs that are provided by DataHub.
 
@@ -2650,13 +2746,13 @@ This topic describes the SDKs that are provided by DataHub.
 
 DataHub provides SDKs for Java, Python, Go, and C++. The following sections describe how to use DataHub SDKs for Java and Python.
 
-### Prerequisites
+### 2.2 Prerequisites
 
-#### Overview
+#### 2.2.1 Overview
 
 Before you use MaxCompute SDKs, you must prepare the required environment. Create an Alibaba Cloud account that is authorized to access MaxCompute and obtain an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. Obtain the endpoint of MaxCompute.
 
-#### Obtain an AccessKey pair
+#### 2.2.2 Obtain an AccessKey pair
 
 You can obtain an AccessKey pair in the Apsara Stack console.
 
@@ -2681,7 +2777,7 @@ To obtain the AccessKey pair of an individual account, perform the following ste
 On the page that appears, find the AccessKey ID in the AccessKey Pair section.
 3. Click the **Show** icon in the ******************** column to view the AccessKey secret.
 
-#### Obtain endpoints
+#### 2.2.3 Obtain endpoints
 
 You can obtain the endpoints of DataHub in the Apsara Uni-manager Management Console.
 
@@ -2696,9 +2792,9 @@ Press the ENTER key.
 6. Click **DataHub**. The DataHub console appears.
 7. Obtain the DataHub endpoints in the **General Information** section on the right.
 
-### DataHub SDK for Java
+### 2.3 DataHub SDK for Java
 
-#### Overview
+#### 2.3.1 Overview
 
 You do not need to download the DataHub SDK for Java. You only need to configure the SDK as a Maven dependency in a pom.xml file. Add the following dependency configuration to the pom.xml file:
 
@@ -2726,7 +2822,7 @@ If you use DataHub V3.8.1 or earlier, use the preceding dependency configuration
 
 If you use DataHub V3.8.1 or later, use the preceding dependency configuration, where the SDK version is 2.13.1.
 
-#### Preparations
+#### 2.3.2 Preparations
 
 To access DataHub, you must have an account that is authorized to access DataHub, the AccessKey for the account, and an endpoint of DataHub. If you are using Apsara Stack V2, obtain the endpoint from the CMDB system. If you are using Apsara Stack V3, obtain the endpoint from the Apsara Infrastructure Management Framework console. The sample code is shown as follows:
 
@@ -2744,9 +2840,9 @@ DatahubClient client = new DatahubClient(conf);
 
 After the DataHub client is initialized, you can call the DatahubClient operation to access DataHub. You can use this client to perform all operations on DataHub because the client is thread-safe.
 
-#### Ingest tuple data
+#### 2.3.3 Ingest tuple data
 
-##### Create a tuple topic
+##### 2.3.3.1 Create a tuple topic
 
 The sample code is shown as follows:
 
@@ -2758,7 +2854,7 @@ RecordSchema schema = new RecordSchema(); schema.addField(new Field("a", FieldTy
 
 In the sample code, lifeCycle indicates the time-to-live of each record in the topic.
 
-##### Obtain the list of shards
+##### 2.3.3.2 Obtain the list of shards
 
 The sample code is shown as follows:
 
@@ -2766,7 +2862,7 @@ The sample code is shown as follows:
 ListShardResult listShardResult = client.listShard(projectName, topicName);
 ```
 
-##### Write data into DataHub
+##### 2.3.3.3 Write data into DataHub
 
 The sample code is shown as follows:
 
@@ -2783,7 +2879,7 @@ that the MalformedRecord, NoSuchProject, and NoSuchTopic errors occur.}
 
 A request body size cannot exceed 4 MB. For more information, see Data ingestion methods.
 
-##### Consume data
+##### 2.3.3.4 Consume data
 
 You can use this SDK to obtain the cursor that points to the first record to be consumed. The cursor type can be **OLDEST**, **LATEST**, or **SYSTEM_TIME**. OLDEST: the cursor that points to the earliest record in DataHub. LATEST: the cursor that points to the latest record in DataHub. SYSTEM_TIME: the cursor that points to the first record ingested after the specified time. The sample code is shown as follows:
 
@@ -2813,9 +2909,9 @@ GetCursorRequest.CursorType.OLDEST);
         ex.printStackTrace();
 ```
 
-#### Ingest blob data
+#### 2.3.4 Ingest blob data
 
-##### Create a blob topic
+##### 2.3.4.1 Create a blob topic
 
 The sample code is shown as follows:
 
@@ -2823,7 +2919,7 @@ The sample code is shown as follows:
 int shardCount = 5; int lifeCycle = 3; String topicName = "topic_example"; String topicDesc = "topic_example_desc"; client.createTopic(projectName, topicName, shardCount, lifeCycle, RecordType.BLOB, topic Desc); // Wait until the shards are in Active status. client.waitForShardReady(projectName, topicName);
 ```
 
-##### Obtain the list of shards
+##### 2.3.4.2 Obtain the list of shards
 
 The sample code is shown as follows:
 
@@ -2831,7 +2927,7 @@ The sample code is shown as follows:
 ListShardResult listShardResult = client.listShard(projectName, topicName);
 ```
 
-##### Write data into DataHub
+##### 2.3.4.3 Write data into DataHub
 
 The sample code is shown as follows:
 
@@ -2846,7 +2942,7 @@ NoSuchTopic errors occur.
 
 A request body size cannot exceed 4 MB.
 
-##### Consume data
+##### 2.3.4.4 Consume data
 
 The sample code is shown as follows:
 
@@ -2880,9 +2976,9 @@ GetCursorRequest.CursorType.OLDEST);
 
 Before being consumed, blob records that have been base64 encoded during ingestion must be decoded.
 
-#### Data ingestion methods
+#### 2.3.5 Data ingestion methods
 
-##### Ingest data based on shard IDs
+##### 2.3.5.1 Ingest data based on shard IDs
 
 By using this method, you can write data into a specific shard and ensure that data is written into each shard in a specified order. The sample code is shown as follows:
 
@@ -2892,7 +2988,7 @@ By using this method, you can write data into a specific shard and ensure that d
 // Write into DataHub starting from any active shard returned by listShardResult. In thi s example, start from the first active shard. String shardId = listShardResult.getShards().get(0).getShardId(); entry.setShardId(shardId); recordEntries.add(entry); // Write data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
-##### Ingest data based on hash values
+##### 2.3.5.2 Ingest data based on hash values
 
 Specify a 128-bit hash value produced by MD5 message-digest algorithm. Use the hash value to map associated records to a shard based on the hash key range of the shards. You cannot specify the ingestion order of records by using this method. The sample code is shown as follows:
 
@@ -2902,7 +2998,7 @@ Specify a 128-bit hash value produced by MD5 message-digest algorithm. Use the h
 entry.setHashKey("7FFFFFFFFFFFFFFD7FFFFFFFFFFFFFFD"); recordEntries.add(entry); // Write the data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
-##### Ingest data based on partition keys
+##### 2.3.5.3 Ingest data based on partition keys
 
 Specify a partition key as a string. DataHub creates an MD5 hash from the string and maps the records to shards based on the hash key range of the shards. You do not need to provide hash values by using this method. The sample code is shown as follows:
 
@@ -2912,9 +3008,9 @@ Specify a partition key as a string. DataHub creates an MD5 hash from the string
 entry.setPartitionKey("TestPartitionKey"); recordEntries.add(entry); // Write the data into DataHub. PutRecordsResult result = client.putRecords("projectName", "topicName", recordEntries);
 ```
 
-#### Create a DataConnector
+#### 2.3.6 Create a DataConnector
 
-##### Create a DataConnector for MaxCompute
+##### 2.3.6.1 Create a DataConnector for MaxCompute
 
 The sample code is shown as follows:
 
@@ -2963,7 +3059,7 @@ ConnectorType.SINK_ODPS, shard);
     System.out.println(getDataConnectorShardStatusResult.getLastErrorMessage());
 ```
 
-##### Create a DataConnector for AnalyticDB or
+##### 2.3.6.2 Create a DataConnector for AnalyticDB or ApsaraDB RDS for MySQL
 
 **ApsaraDB RDS for MySQL**
 
@@ -3012,9 +3108,9 @@ ConnectorType.SINK_ADS, shard);
 
 You cannot create DataConnectors for services that reside in virtual private clouds (VPCs) by using the SDK. You must create this type of DataConnectors in the DataHub console.
 
-### DataHub SDK for Python
+### 2.4 DataHub SDK for Python
 
-#### Install DataHub SDK for Python
+#### 2.4.1 Install DataHub SDK for Python
 
 Run the following commands to install DataHub SDK for Python.
 
@@ -3036,7 +3132,7 @@ $ git clone https://github.com/aliyun/aliyun-datahub-sdk-python.git $ cd aliyun-
 $ python -c "from datahub import DataHub"
 ```
 
-#### Preparations
+#### 2.4.2 Preparations
 
 To access DataHub, you must have an account that is authorized to access DataHub, the AccessKey for the account, and an endpoint of DataHub. If you are using Apsara Stack V2, obtain the endpoint from the CMDB system. If you are using Apsara Stack V3, obtain the endpoint from the Apsara Infrastructure Management Framework console. The following example shows how to initialize DataHub configurations:
 
@@ -3044,7 +3140,7 @@ To access DataHub, you must have an account that is authorized to access DataHub
 import sys import traceback from datahub import DataHub from datahub.utils import Configer from datahub.models import Topic, RecordType, FieldType, RecordSchema, BlobRecord, Tuple Record, CursorType from datahub.errors import DatahubException, ObjectAlreadyExistException access_id = ***your access id*** access_key = ***your access key*** endpoint = ***your datahub server endpoint*** dh = DataHub(access_id, access_key, endpoint)
 ```
 
-#### Create topics
+#### 2.4.3 Create topics
 
 **Create a tuple topic**
 
@@ -3092,7 +3188,7 @@ except Exception, e:
     sys.exit(-1)
 ```
 
-#### Write records into DataHub and
+#### 2.4.4 Write records into DataHub and subscribe applications to records
 
 **subscribe applications to records**
 
@@ -3221,13 +3317,13 @@ else:
     sys.exit(-1)
 ```
 
-## Scalability
+## 3 Scalability
 
-### Scenario
+### 3.1 Scenario
 
 DataHub can scale flexibly to increase or decrease the number of shards in a cluster. This allows you to handle traffic surges or save resource costs based on actual business conditions. For example, if the topic throughput cannot handle a surge in the service load during Double 11, you can split existing shards to up to 256 to increase the throughput to 256 MB/s. As the service load decreases after Double 11, you can reduce the number of shards as needed by performing the merge operation.
 
-### Obtain shard details
+### 3.2 Obtain shard details
 
 You can call the ListShard operation to obtain details about all shards. The sample response is shown as follows:
 
@@ -3242,7 +3338,7 @@ You can call the ListShard operation to obtain details about all shards. The sam
     "RightShardId": "string"
 ```
 
-### Split a shard
+### 3.3 Split a shard
 
 You can split a shard by using an SDK or in the console. You can specify the shard by setting a shard ID and a 128-bit hash key value. After the shard is split into two child shards, the IDs and key values of the child shards are returned. The status of the parent shard is changed to Deactivated. For example, before the split operation, the parent shard details are shown as follows:
 
@@ -3262,7 +3358,7 @@ After the split operation, the parent shard turns into the following three shard
 ShardId:0 Status:Deactivated BeginHashKey:00000000000000000000000000000000 EndHashKey:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF ShardId:1 Status:ACTIVE BeginHashKey:00000000000000000000000000000000 EndHashKey:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ShardId:2 Status:ACTIVE BeginHashKey:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA EndHashKey:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 ```
 
-### Merge shards
+### 3.4 Merge shards
 
 You can merge two adjacent shards by using an SDK or in the console. Shards are considered adjacent if the union of the hash key ranges for the two shards forms a contiguous set with no gaps. After the two shards are merged, the ID and key value of the new shard are returned. The statuses of the two parent shards change to Deactivated. For example, before the merge operation, the details of the two parent shards are as follows:
 
@@ -3286,11 +3382,11 @@ ShardId:0 Status:Deactivated BeginHashKey:00000000000000000000000000000000 EndHa
 
 After merge or split operations are performed, the statuses of the parent shards change to Deactivated. New data cannot be written into deactivated shards, whereas existing data in deactivated shards can still be consumed. A deactivated shard cannot be split into two shards or merged with any other shards. When the time-to-live of the records in a deactivated shard expires, the shard is deleted. If a DataConnector is configured for a deactivated shard, the DataConnector will be stopped after all records in the shard are copied to the destination platform. The DataConnector is automatically deleted after the shard is deleted. The new shard can only be used after its status is changed to Active. It requires less than five seconds for the status to change to Active. to a topic schema
 
-## Insert a column to a topic
+## 4 Insert a column to a topic schema
 
 **schema**
 
-### Insert a column
+### 4.1 Insert a column
 
 This section describes how to insert columns to a topic schema. The sample code is shown as follows:
 

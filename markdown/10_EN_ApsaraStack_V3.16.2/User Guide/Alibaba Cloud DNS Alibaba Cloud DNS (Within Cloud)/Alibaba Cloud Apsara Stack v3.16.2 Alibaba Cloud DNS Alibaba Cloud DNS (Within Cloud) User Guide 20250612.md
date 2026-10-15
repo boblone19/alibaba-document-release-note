@@ -3,20 +3,112 @@ title: "Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud DNS Alibaba Cloud DNS (
 product_version: "V3.16.2"
 doc_version: "20250612"
 pdf_pages: 49
-source_pdf: "Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide 20250612.pdf"
+source_pdf: "ce5c5d8217237948_Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Alibaba%20Cloud%20DNS%20Alibaba%20Cloud%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020250612.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Alibaba Cloud DNS Alibaba Cloud DNS (Within Cloud) User Guide
 
+## Table of Contents
+
+- 1 What is Apsara Stack DNS?
+- 2 User roles and permissions
+- 3 Log on to the Apsara Stack DNS console
+- 4 Global internal domain names in Apsara Stack
+  - 4.1 Global internal domain names
+    - 4.1.1 Overview
+    - 4.1.2 View a global internal domain name
+    - 4.1.3 Create a global internal domain name
+    - 4.1.4 Add a description for a global internal domain name
+    - 4.1.5 Delete a global internal domain name
+    - 4.1.6 Delete multiple global internal domain names at a time
+    - 4.1.7 Configure DNS records for a global internal domain name
+  - 4.2 Global forwarding configurations
+    - 4.2.1 Global forwarding domain names
+      - 4.2.1.1 Overview
+      - 4.2.1.2 View a global forwarding domain name
+      - 4.2.1.3 Create a global forwarding domain name
+      - 4.2.1.4 Add a description for a global forwarding domain name
+      - 4.2.1.5 Modify the configurations of a global forwarding domain name
+      - 4.2.1.6 Delete a global forwarding domain name
+      - 4.2.1.7 Delete multiple global forwarding domain names at a time
+    - 4.2.2 Global default forwarding configurations
+      - 4.2.2.1 Enable default forwarding
+      - 4.2.2.2 Modify default forwarding configurations
+      - 4.2.2.3 Disable default forwarding
+  - 4.3 Global recursive resolution
+    - 4.3.1 Enable global recursive resolution
+    - 4.3.2 Disable global recursive resolution
+- 5 Private domain names for VPCs
+  - 5.1 Tenant internal domain name
+    - 5.1.1 View a tenant internal domain name
+    - 5.1.2 Create a tenant internal domain name
+    - 5.1.3 Configure DNS records for a tenant internal domain name
+    - 5.1.4 Associate a tenant internal domain name with a VPC
+    - 5.1.5 Disassociate a tenant internal domain name from a VPC
+    - 5.1.6 Add a description for a tenant internal domain name
+    - 5.1.7 Delete a tenant internal domain name
+    - 5.1.8 Delete multiple tenant internal domain names at a time
+    - 5.1.9 View the load balancing policy configured for a tenant internal domain name
+  - 5.2 Tenant forwarding configurations
+    - 5.2.1 Tenant forwarding domain names
+      - 5.2.1.1 View a tenant forwarding domain name
+      - 5.2.1.2 Create a tenant forwarding domain name
+      - 5.2.1.3 Associate a tenant forwarding domain name with a VPC
+        - 5.2.1.3.1 Modify the forwarding configurations of a tenant forwarding domain name
+      - 5.2.1.4 Disassociate a tenant forwarding domain name from a VPC
+      - 5.2.1.5 Add a description for a tenant forwarding domain name
+      - 5.2.1.6 Delete a tenant forwarding domain name
+      - 5.2.1.7 Delete multiple tenant forwarding domain names at a time
+    - 5.2.2 Tenant default forwarding configurations
+      - 5.2.2.1 View default forwarding configurations
+      - 5.2.2.2 Create a default forwarding configuration
+      - 5.2.2.3 Associate a default forwarding configuration with a VPC
+      - 5.2.2.4 Disassociate a default forwarding configuration from a VPC
+      - 5.2.2.5 Modify a default forwarding configuration
+      - 5.2.2.6 Add a description to a default forwarding configuration
+      - 5.2.2.7 Delete a default forwarding configuration
+      - 5.2.2.8 Delete multiple default forwarding configurations at a time
+- 6 Scheduling instances
+  - 6.1 Scheduling instances
+    - 6.1.1 Create a scheduling instance
+    - 6.1.2 Modify a scheduling instance
+    - 6.1.3 Configure a scheduling instance
+      - 6.1.3.1 Create an access policy
+      - 6.1.3.2 Modify an access policy
+      - 6.1.3.3 Delete an access policy
+    - 6.1.4 Delete a scheduling instance
+  - 6.2 Address pools
+    - 6.2.1 Create an address pool
+    - 6.2.2 Modify an address pool
+    - 6.2.3 Delete an address pool
+    - 6.2.4 Create a health check task for an address pool
+- 7 Global lines
+  - 7.1 Create a global line
+  - 7.2 Change the priority of a global line
+  - 7.3 Modify a global line
+  - 7.4 Delete a global line
+- 8 Private lines
+  - 8.1 Create a private line
+  - 8.2 Change the priority of a private line
+  - 8.3 Modify a private line
+  - 8.4 Delete a private line
+- 9 Nodes
+  - 9.1 Configure the emergency group feature
+  - 9.2 Add a description for a node
+  - 9.3 Set a follower node as the leader node
+- 10 View a node
+- 11 Logs
+  - 11.1 Query alert logs
+
 DNS?
 
-## What is Apsara Stack DNS?
+## 1 What is Apsara Stack DNS?
 
 Apsara Stack DNS is a service that runs on Apsara Stack to resolve domain names. You can configure rules to map domain names to IP addresses. Then, Apsara Stack DNS distributes domain name requests from clients to cloud resources, business systems on your internal networks, or the business resources of Internet service providers (ISPs). Apsara Stack DNS provides DNS resolution in virtual private clouds (VPCs). You can perform the following operations in your VPC by using Apsara Stack DNS: Access other ECS instances deployed in your VPC. Access cloud service instances provided by Apsara Stack. Access custom enterprise business systems. Access Internet services and businesses. Establish network connections between DNS and user-created DNS over a leased line. Manage internal domain names. Manage DNS records of internal domain names. Manage forwarding configurations. Manage recursive resolution configurations. sions
 
-## User roles and permissions
+## 2 User roles and permissions
 
 | Role | Permission |
 |---|---|
@@ -28,7 +120,7 @@ Apsara Stack DNS is a service that runs on Apsara Stack to resolve domain names.
 
 Stack DNS console
 
-## Log on to the Apsara Stack
+## 3 Log on to the Apsara Stack DNS console
 
 **DNS console**
 
@@ -59,19 +151,19 @@ For more information, see the **Bind a virtual MFA device to enable**
 5. In the top navigation bar, choose **Products > Networking > DNS within Cloud**.
 n names in Apsara Stack
 
-## Global internal domain
+## 4 Global internal domain names in Apsara Stack
 
 **names in Apsara Stack**
 
 Apsara Stack DNS allows you to manage global internal domain names, global forwarding configurations, and global recursive resolution configurations on the Global Domain Names page.
 
-### Global internal domain names
+### 4.1 Global internal domain names
 
-#### Overview
+#### 4.1.1 Overview
 
 All the operations of this feature require administrator privileges.
 
-#### View a global internal domain name
+#### 4.1.2 View a global internal domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Choose **DNS within Cloud > Global Domain Name within Cloud** in the left-side
@@ -81,7 +173,7 @@ want to view in the search box next to **Add Domain Name**.
 4. Click **Search**.
 In the search result that is returned, find and view the required domain name.
 
-#### Create a global internal domain name
+#### 4.1.3 Create a global internal domain name
 
 This topic describes how to create a global internal domain name in the Apsara Uni-manager Management Console.
 1. Log on to the Apsara Stack DNS console.
@@ -92,7 +184,7 @@ navigation pane.
 to create in the **Global Internal Domain Name** field and specify a domain name type.
 5. Click **OK**.
 
-#### Add a description for a global internal
+#### 4.1.4 Add a description for a global internal domain name
 
 **domain name**
 
@@ -109,7 +201,7 @@ a description and click **Add Description** in the Actions column.
 4. In the Add Description dialog box, enter a description in the Add Description field.
 5. Click **OK**.
 
-#### Delete a global internal domain name
+#### 4.1.5 Delete a global internal domain name
 
 This topic describes how to delete a global internal domain name in the Apsara Uni-manager Management Console.
 1. Log on to the Apsara Stack DNS console.
@@ -119,7 +211,7 @@ navigation pane.
 and click **Delete** in the **Actions** column.
 4. In the message that appears, click **Delete**.
 
-#### Delete multiple global internal domain
+#### 4.1.6 Delete multiple global internal domain names at a time
 
 **names at a time**
 
@@ -131,7 +223,7 @@ navigation pane.
 to delete and click **Batch Delete** in the lower-left corner.
 4. In the message that appears, click **Delete**.
 
-#### Configure DNS records for a global
+#### 4.1.7 Configure DNS records for a global internal domain name
 
 **internal domain name**
 
@@ -143,17 +235,17 @@ navigation pane.
 configure DNS records and click **Configure DNS Records** in the Actions column.
 4. On the **DNS Settings** page, click **Add DNS Record** in the upper-right corner.
 
-### Global forwarding
+### 4.2 Global forwarding configurations
 
 **configurations**
 
-#### Global forwarding domain names
+#### 4.2.1 Global forwarding domain names
 
-##### Overview
+##### 4.2.1.1 Overview
 
 All operations on global forwarding domain names require system administrator permissions. Apsara Stack DNS forwards specific domain names to other DNS servers for resolution. Apsara Stack DNS can forward requests with or without recursion. In the mode of forwarding without recursion, only the specified DNS server is used to resolve domain names. If the resolution fails or times out, a message is returned to the DNS client to indicate that the current request fails. In the mode of forwarding with recursion, the specified DNS server is preferentially used to resolve domain names. If the resolution fails, the local DNS server is used.
 
-##### View a global forwarding domain name
+##### 4.2.1.2 View a global forwarding domain name
 
 This topic describes how to view a global forwarding domain name in the Apsara Uni-manager Management Console. This operation requires system administrator permissions.
 1. Log on to the Apsara Stack DNS console.
@@ -163,7 +255,7 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 3. On the Global Forwarding Domain Names subtab, enter a keyword of the domain name that
 you want to view in the search box next to **Add Domain Name** and click **Search**.
 
-##### Create a global forwarding domain name
+##### 4.2.1.3 Create a global forwarding domain name
 
 This topic describes how to create a global forwarding domain name in the Apsara Unimanager Management Console. This operation requires system administrator permissions.
 1. Log on to the Apsara Stack DNS console.
@@ -174,7 +266,7 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 4. In the Add Global Forwarding Domain Name dialog box, set the required parameters,
 n names in Apsara Stack including Global Forwarding Domain Name, Forwarding Mode, and Destination IP Address, and click **OK**.
 
-##### Add a description for a global forwarding
+##### 4.2.1.4 Add a description for a global forwarding domain name
 
 **domain name**
 
@@ -192,7 +284,7 @@ to add a description and click **Add Description** in the Actions column.
 4. In the Add Description dialog box, enter a description in the Add Description field, and click
 **OK**.
 
-##### Modify the configurations of a global
+##### 4.2.1.5 Modify the configurations of a global forwarding domain name
 
 **forwarding domain name**
 
@@ -206,7 +298,7 @@ configurations you want to modify and click **Modify** in the Actions column.
 4. In the dialog box that appears, modify the Global Forwarding Domain Name, Forwarding
 Mode, and Destination IP Address parameters based on your business requirements and click **OK**.
 
-##### Delete a global forwarding domain name
+##### 4.2.1.6 Delete a global forwarding domain name
 
 This topic describes how to delete a global forwarding domain name in the Apsara Unimanager Management Console. This operation requires system administrator permissions. n names in Apsara Stack
 1. Log on to the Apsara Stack DNS console.
@@ -217,7 +309,7 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 delete and click **Delete** in the Actions column.
 4. In the message that appears, click **Delete**.
 
-##### Delete multiple global forwarding domain
+##### 4.2.1.7 Delete multiple global forwarding domain names at a time
 
 **names at a time**
 
@@ -230,11 +322,11 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 you want to delete and click **Batch Delete** in the lower-left corner.
 4. In the message that appears, click **Delete**.
 
-#### Global default forwarding
+#### 4.2.2 Global default forwarding configurations
 
 **configurations**
 
-##### Enable default forwarding
+##### 4.2.2.1 Enable default forwarding
 
 This topic describes how to enable default forwarding in the Apsara Uni-manager Management Console. This operation requires system administrator permissions.
 1. Log on to the Apsara Stack DNS console.
@@ -246,7 +338,7 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 **Save**.
 You must make sure that the **Default Forwarding** switch is turned on.
 
-##### Modify default forwarding configurations
+##### 4.2.2.2 Modify default forwarding configurations
 
 This topic describes how to modify default forwarding configurations in the Apsara Unimanager Management Console. This operation requires system administrator permissions. n names in Apsara Stack
 1. Log on to the Apsara Stack DNS console.
@@ -255,7 +347,7 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 **Configurations** tab. Then, click the Global Default Forwarding Configurations subtab.
 3. Modify the Default Forwarding Mode and Destination IP Address parameters and click **Save**.
 
-##### Disable default forwarding
+##### 4.2.2.3 Disable default forwarding
 
 This topic describes how to disable default forwarding in the Apsara Uni-manager Management Console. This operation requires system administrator permissions.
 1. Log on to the Apsara Stack DNS console.
@@ -265,9 +357,9 @@ navigation pane. On the Global Domain Names page, click the **Global Forwarding*
 3. Turn off **Default Forwarding**.
 4. Click **Save**.
 
-### Global recursive resolution
+### 4.3 Global recursive resolution
 
-#### Enable global recursive resolution
+#### 4.3.1 Enable global recursive resolution
 
 **Prerequisites**
 
@@ -279,7 +371,7 @@ navigation pane. On the Global Domain Names page, click the **Global Recursive**
 3. Turn on **Global Recursive Resolution**.
 4. Click **Save**.
 
-#### Disable global recursive resolution
+#### 4.3.2 Disable global recursive resolution
 
 **Prerequisites**
 
@@ -291,15 +383,15 @@ navigation pane. On the Global Domain Names page, click the **Global Recursive**
 3. Turn off **Global Recursive Resolution**.
 4. Click **Save**.
 
-## Private domain names for
+## 5 Private domain names for VPCs
 
 **VPCs**
 
 Apsara Stack DNS allows you to create VPC-specific tenant internal domain names. You can associate the domain names with VPCs based on your business requirements to achieve tenant isolation.
 
-### Tenant internal domain name
+### 5.1 Tenant internal domain name
 
-#### View a tenant internal domain name
+#### 5.1.1 View a tenant internal domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Private DNS > Private Domain Name for VPC** in the left-side navigation pane.
@@ -309,7 +401,7 @@ a keyword of the domain name that you want to view in the field next to **Add Do
 4. Click Search.
 In the **search result** that is returned, find and view the required domain name.
 
-#### Create a tenant internal domain name
+#### 5.1.2 Create a tenant internal domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Private DNS > Private Domain Name for VPC** in the left-side navigation pane.
@@ -319,7 +411,7 @@ In the **search result** that is returned, find and view the required domain nam
 Tenant Internal Domain Name.
 5. Click **OK**.
 
-#### Configure DNS records for a tenant
+#### 5.1.3 Configure DNS records for a tenant internal domain name
 
 **internal domain name**
 
@@ -405,7 +497,7 @@ NS record
 6. After you add DNS records, perform the following operations on the DNS Settings page
 based on your business requirements. Add a description for a DNS record Find the DNS record for which you want to add a description and click **Add Description** in the Actions column. In the dialog box that appears, enter a description in the Add Description and click **OK**. Delete a DNS record Find the DNS record that you want to delete and click **Delete** in the Actions column. In the message that appears, click **Delete**. Modify a DNS record Find the DNS record that you want to modify and click **Modify** in the Actions column. In the Modify DNS Record dialog box, modify the parameters based on your business requirements and click **OK**. Delete multiple DNS records at a time Select the DNS records that you want to delete at a time and click **Batch Delete** in the lower-left corner of the page. In the message that appears, click **Delete**.
 
-#### Associate a tenant internal domain
+#### 5.1.4 Associate a tenant internal domain name with a VPC
 
 **name with a VPC**
 
@@ -417,7 +509,7 @@ associate a VPC and click **Associate VPC** in the Actions column.
 4. In the Associate VPC dialog box, select a **region** from the Region drop-down list, select a
 VPC that you want to associate with the domain name from the **Associate VPC** drop-down list, and then click **OK**.
 
-#### Disassociate a tenant internal domain
+#### 5.1.5 Disassociate a tenant internal domain name from a VPC
 
 **name from a VPC**
 
@@ -429,7 +521,7 @@ disassociate from a VPC and click the number in the **Associated VPCs** column.
 4. On the **VPCs** page, find the VPC from which you want to disassociate the domain name and
 click **Disassociate** in the **Actions** column. The VPC from which you dissociate the domain name is no longer displayed on the VPCs page.
 
-#### Add a description for a tenant internal
+#### 5.1.6 Add a description for a tenant internal domain name
 
 **domain name**
 
@@ -440,7 +532,7 @@ a description and click **Add Description** in the Actions column.
 4. In the Add Description dialog box, enter a description in the Add Description field.
 5. Click **OK**.
 
-#### Delete a tenant internal domain name
+#### 5.1.7 Delete a tenant internal domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Private DNS > Private Domain Name for VPC** in the left-side navigation pane.
@@ -448,7 +540,7 @@ a description and click **Add Description** in the Actions column.
 and click **Delete** in the Actions column.
 4. In the message that appears, click **Delete**.
 
-#### Delete multiple tenant internal domain
+#### 5.1.8 Delete multiple tenant internal domain names at a time
 
 **names at a time**
 
@@ -458,7 +550,7 @@ and click **Delete** in the Actions column.
 to delete and click **Batch Delete** in the lower-left corner of the tab.
 4. In the message that appears, click **Delete**.
 
-#### View the load balancing policy
+#### 5.1.9 View the load balancing policy configured for a tenant internal domain name
 
 **configured for a tenant internal domain name**
 
@@ -470,13 +562,13 @@ policy settings you want to view and click **Configure DNS Records** in the Acti
 4. On the DNS Settings page, view the load balancing policy that you configure for the domain
 name.
 
-### Tenant forwarding
+### 5.2 Tenant forwarding configurations
 
 **configurations**
 
-#### Tenant forwarding domain names
+#### 5.2.1 Tenant forwarding domain names
 
-##### View a tenant forwarding domain name
+##### 5.2.1.1 View a tenant forwarding domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Private DNS > Private Domain Name for VPC** in the left-side navigation pane.
@@ -487,7 +579,7 @@ that you want to view in the field next to Add Domain Name.
 4. Click **Search**.
 In the search result that is returned, find and view the required domain name.
 
-##### Create a tenant forwarding domain name
+##### 5.2.1.2 Create a tenant forwarding domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Choose **Private DNS > Private Domain Name for VPC** in the left-side navigation pane.
@@ -505,7 +597,7 @@ including Organization, Resource Set, Tenant Forwarding Domain Name, Forwarding 
 
 5. Click **OK**.
 
-##### Associate a tenant forwarding domain
+##### 5.2.1.3 Associate a tenant forwarding domain name with a VPC
 
 **name with a VPC**
 
@@ -517,7 +609,7 @@ page, click the **Tenant Forwarding Configurations** tab.
 want to associate a VPC and click **Associate VPC** in the Actions column.
 4. Select one or more VPCs from the Associate VPC drop-down list and click **OK**.
 
-###### Modify the forwarding configurations of
+###### 5.2.1.3.1 Modify the forwarding configurations of a tenant forwarding domain name
 
 **a tenant forwarding domain name**
 
@@ -530,7 +622,7 @@ want to modify the forwarding configurations and click Modify in the Actions col
 parameter based on your business requirements.
 5. Click **OK**.
 
-##### Disassociate a tenant forwarding domain
+##### 5.2.1.4 Disassociate a tenant forwarding domain name from a VPC
 
 **name from a VPC**
 
@@ -543,7 +635,7 @@ disassociate from a VPC and click the number in the **Associated VPCs** column.
 4. On the VPCs page, find the VPC from which you want to disassociate the domain name and
 click **Disassociate** in the Actions column. The VPC from which you dissociate the domain name is no longer displayed on the VPCs page.
 
-##### Add a description for a tenant forwarding
+##### 5.2.1.5 Add a description for a tenant forwarding domain name
 
 **domain name**
 
@@ -555,7 +647,7 @@ want to add a description and click Add Description in the Actions column.
 4. In the Add Description dialog box, enter a description in the Add Description field.
 5. Click **OK**.
 
-##### Delete a tenant forwarding domain name
+##### 5.2.1.6 Delete a tenant forwarding domain name
 
 1. Log on to the Apsara Stack DNS console.
 2. Click **VPCs** in the left-side navigation pane. On the **Private Domain Names for VPC**
@@ -564,7 +656,7 @@ page, click the **Tenant Forwarding Configurations** tab.
 delete and click **Delete** in the Actions column.
 4. In the message that appears, click **Delete**.
 
-##### Delete multiple tenant forwarding domain
+##### 5.2.1.7 Delete multiple tenant forwarding domain names at a time
 
 **names at a time**
 
@@ -575,11 +667,11 @@ page, click the **Tenant Forwarding Configurations** tab.
 you want to delete and click **Batch Delete** in the lower-left corner of the tab.
 4. In the message that appears, click **Delete**.
 
-#### Tenant default forwarding
+#### 5.2.2 Tenant default forwarding configurations
 
 **configurations**
 
-##### View default forwarding configurations
+##### 5.2.2.1 View default forwarding configurations
 
 **Prerequisites**
 
@@ -590,7 +682,7 @@ click the **Tenant Forwarding Configurations** tab. Then, click the **Tenant Def
 **Forwarding Configurations** subtab. You can view the created default forwarding
 configurations on this subtab.
 
-##### Create a default forwarding configuration
+##### 5.2.2.2 Create a default forwarding configuration
 
 **Prerequisites**
 
@@ -610,7 +702,7 @@ Destination IP Address. The following table describes the Forwarding Mode and De
 
 5. Click **OK**.
 
-##### Associate a default forwarding
+##### 5.2.2.3 Associate a default forwarding configuration with a VPC
 
 **configuration with a VPC**
 
@@ -627,7 +719,7 @@ click the **Tenant Forwarding Configurations** tab. Then, click the **Tenant Def
 **Associate VPC** in the Actions column.
 4. Select one or more VPCs from the Associate VPC drop-down list and click **OK**.
 
-##### Disassociate a default forwarding
+##### 5.2.2.4 Disassociate a default forwarding configuration from a VPC
 
 **configuration from a VPC**
 
@@ -641,7 +733,7 @@ the number in the **Associated VPCs** column.
 4. On the VPCs page, find the VPC from which you want to disassociate the default forwarding
 configuration and click **Disassociate** in the Actions column. The VPC from which you dissociate the default forwarding configuration is no longer displayed on the VPCs page.
 
-##### Modify a default forwarding configuration
+##### 5.2.2.5 Modify a default forwarding configuration
 
 **Prerequisites**
 
@@ -656,7 +748,7 @@ Actions column.
 parameter based on your business requirements.
 5. Click **OK**.
 
-##### Add a description to a default forwarding
+##### 5.2.2.6 Add a description to a default forwarding configuration
 
 **configuration**
 
@@ -672,7 +764,7 @@ click the **Tenant Forwarding Configurations** tab. Then, click the **Tenant Def
 4. In the Add Description dialog box, enter a description in the **Add Description** field.
 5. Click **OK**.
 
-##### Delete a default forwarding configuration
+##### 5.2.2.7 Delete a default forwarding configuration
 
 **Prerequisites**
 
@@ -685,7 +777,7 @@ click the **Tenant Forwarding Configurations** tab. Then, click the **Tenant Def
 Actions column.
 4. In the message that appears, click **Delete**.
 
-##### Delete multiple default forwarding
+##### 5.2.2.8 Delete multiple default forwarding configurations at a time
 
 **configurations at a time**
 
@@ -700,15 +792,15 @@ click the **Tenant Forwarding Configurations** tab. Then, click the **Tenant Def
 left corner.
 4. In the message that appears, click **Delete**.
 
-## Scheduling instances
+## 6 Scheduling instances
 
 A scheduling instance is a unit for global traffic management. Apsara Stack DNS schedules the traffic of specific domain names based on scheduling instances.
 
-### Scheduling instances
+### 6.1 Scheduling instances
 
 The Scheduling Instance page displays all existing scheduling instances. You can create, delete, modify, and configure scheduling instances on this page. You must associate an address pool and a scheduling domain with the instance.
 
-#### Create a scheduling instance
+#### 6.1.1 Create a scheduling instance
 
 You must associate a scheduling instance with a scheduling domain and an address pool.
 1. In the left-side navigation pane, click **Scheduling Instances.**
@@ -717,7 +809,7 @@ corner.
 3. In the Create Scheduling Instance dialog box, set parameters such as Scheduling Instance
 Name, Scheduling Domain Name, Scheduling Domain, and Global TTL, and click **OK**.
 
-#### Modify a scheduling instance
+#### 6.1.2 Modify a scheduling instance
 
 1. In the left-side navigation pane, click **Scheduling Instances.**
 2. On the Scheduling Instance tab, find the scheduling instance that you want to modify and
@@ -725,7 +817,7 @@ click **Modify** in the Actions column.
 3. In the Modify Scheduling Instance dialog box, modify the configurations of the scheduling
 instance based on your business requirements and click **OK**.
 
-#### Configure a scheduling instance
+#### 6.1.3 Configure a scheduling instance
 
 You can create, delete, modify, and query access policies for scheduling instances.
 1. In the left-side navigation pane, click **Scheduling Instances**.
@@ -766,7 +858,7 @@ When the system compares the numbers of normal addresses between the primary and
 | Same DNS request source: Scenario 2 | IPv4 | Domain name | Addresses of the domain name type take effect. |
 | Same DNS request source: Scenario 3 | IPv6 | Domain name | Addresses of the domain name type take effect. |
 
-##### Create an access policy
+##### 6.1.3.1 Create an access policy
 
 You can create multiple access policies to resolve different address pools based on different DNS request sources.
 1. On the Access Policy page, click **Create Access Policy** in the upper-left corner.
@@ -820,7 +912,7 @@ The following tables describe the limits on address types of primary address poo
 | Same DNS request source: Scenario 6 | Domain name | Domain name | The address pools are allowed to be added, and they can coexist. However, the following conditions must be met: 1. The two secondary address pools are the same. 2. Both of the two primary address pools exist. In addition, one primary address pool is of the IPv4 address type, and the other is of the IPv6 address type. |
 |---|---|---|---|
 
-##### Modify an access policy
+##### 6.1.3.2 Modify an access policy
 
 **Important**
 
@@ -842,11 +934,11 @@ address pool is less than the value of this parameter, the address pool is deter
 You can change the value to **Manual**. If you set the Address Pool Switchover Policy parameter to **Automatic**, the system automatically selects an available address pool. If you set the Address Pool Switchover Policy parameter to **Manual**, you must manually specify whether to use the **primary address pool** or **secondary address pool**.
 5. Click **OK**.
 
-##### Delete an access policy
+##### 6.1.3.3 Delete an access policy
 
 On the Access Policy page, find the access policy that you want to delete and click **Delete** in the Actions column. In the message that appears, verify the information and click **Delete**.
 
-#### Delete a scheduling instance
+#### 6.1.4 Delete a scheduling instance
 
 1. **Click Scheduling Instances in the left-side navigation pane.**
 2. On the Scheduling Instance tab, find the scheduling instance that you want to delete and
@@ -854,7 +946,7 @@ click **Delete** in the Actions column.
 3. In the message that appears, click **Delete**.
 Note: After you delete the instance, its configuration data is also deleted.
 
-### Address pools
+### 6.2 Address pools
 
 You can manage address pools on the Address Pool page. For example, you can associate address pools with the access policies of scheduling instances. Address pools are classified into three types: IPv4 address pools, IPv6 address pools, and domain name address pools. The load balancing policy of an address pool can be set to Round-robin Scheduling or Weight.
 1. Log on to the Apsara Stack DNS console.
@@ -865,7 +957,7 @@ Pool Name/ID, Address Type, Load Balancing Policy, Addresses, Created At, and La
 4. Click the plus icon (+) to the left of an address pool. In the section that appears, you can
 view the addresses in the address pool and the return mode and health status of the addresses.
 
-#### Create an address pool
+#### 6.2.1 Create an address pool
 
 You can define a list of addresses that form an address pool, which can be associated with the access policies of scheduling instances when you configure the access policies.
 1. Log on to the Apsara Stack DNS console.
@@ -883,7 +975,7 @@ the **Addresses** section, and then click **OK**. The following table describes 
 | Load Balancing Policy (Among Addresses) | The load balancing policy of the address pool. You can select Round-robin Scheduling or Weight from the drop-down list. You cannot modify this parameter after you create the address pool. |
 | Mode | The mode of the added address. Valid values: Automatically Returned: The system determines whether the address is available based on the health check result of the address. Always Online: The system ignores the health check result of the address and sets the address to be always available. The health check task is still running. Always Online: The system ignores the health check result of the address and sets the address to be always unavailable. The health check task is still running. |
 
-#### Modify an address pool
+#### 6.2.2 Modify an address pool
 
 **Important**
 
@@ -897,7 +989,7 @@ the Actions column.
 addresses specified in the **Addresses** section.
 5. Click **OK**.
 
-#### Delete an address pool
+#### 6.2.3 Delete an address pool
 
 1. **In the left-side navigation pane, click Scheduling Instances.****On the Scheduling**
 
@@ -907,7 +999,7 @@ addresses specified in the **Addresses** section.
 the Actions column.
 3. In the message that appears, click **Delete**.
 
-#### Create a health check task for an
+#### 6.2.4 Create a health check task for an address pool
 
 **address pool**
 
@@ -934,17 +1026,17 @@ the Create Health Check Task dialog box, turn on or off **Health Check** based o
 |   | Timeout Period | The timeout period for which the system waits after an exception occurs. |   |
 |   | Number of Retries | The minimum number of consecutive health check failures that must occur before the status of an address is considered abnormal. |   |
 
-## Global lines
+## 7 Global lines
 
 Apsara Stack DNS allows you to define lines based on IP addresses on the Global Line page. The lines are used to group request sources to achieve intelligent load balancing. The lines can be referenced by global domain names in Apsara Stack.
 
-### Create a global line
+### 7.1 Create a global line
 
 1. Click **Query Source** in the left-side navigation pane.
 2. Click **Add Line** in the upper-left corner of the Global Line page.
 3. In the Add Line dialog box, set the required parameters and click **OK**.
 
-### Change the priority of a global
+### 7.2 Change the priority of a global line
 
 **line**
 
@@ -953,7 +1045,7 @@ Apsara Stack DNS allows you to define lines based on IP addresses on the Global 
 the Actions column.
 3. In the Sort Line dialog box, specify a sorting method and click **OK**.
 
-### Modify a global line
+### 7.3 Modify a global line
 
 1. Click **Query Source** in the left-side navigation pane.
 2. On the Global Line page, find the line that you want to modify and click **Modify** in the
@@ -961,24 +1053,24 @@ Actions column.
 3. In the Modify Line dialog box, modify the parameters based on your business requirements
 and click **OK**.
 
-### Delete a global line
+### 7.4 Delete a global line
 
 1. Click **Query Source** in the left-side navigation pane.
 2. On the Global Line page, find the line that you want to delete and click **Delete** in the
 Actions column.
 3. In the message that appears, click **Delete**.
 
-## Private lines
+## 8 Private lines
 
 Apsara Stack DNS allows you to define lines based on IP addresses on the Private Line page. The lines are used to group request sources to achieve intelligent load balancing. The lines can be referenced by private domain names for VPCs.
 
-### Create a private line
+### 8.1 Create a private line
 
 1. Click **Query Source (Private Zone)** in the left-side navigation pane.
 2. Click **Add Line** in the upper-left corner of the Private Line page.
 3. In the Add Line dialog box, set the required parameters and click **OK**.
 
-### Change the priority of a
+### 8.2 Change the priority of a private line
 
 **private line**
 
@@ -987,7 +1079,7 @@ Apsara Stack DNS allows you to define lines based on IP addresses on the Private
 the Actions column.
 3. In the Sort Line dialog box, specify a sorting method and click **OK**.
 
-### Modify a private line
+### 8.3 Modify a private line
 
 1. Click **Query Source (Private Zone)** in the left-side navigation pane.
 2. On the Private Line page, find the line that you want to modify and click **Modify** in the
@@ -995,18 +1087,18 @@ Actions column.
 3. In the Modify Line dialog box, modify the parameters based on your business requirements
 and click **OK**.
 
-### Delete a private line
+### 8.4 Delete a private line
 
 1. Click **Query Source (Private Zone)** in the left-side navigation pane.
 2. On the Private Line page, find the line that you want to delete and click **Delete** in the
 Actions column.
 3. In the message that appears, click **Delete**.
 
-## Nodes
+## 9 Nodes
 
 The Nodes page displays the DNS servers that serve as nodes. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
 
-### Configure the emergency
+### 9.1 Configure the emergency group feature
 
 **group feature**
 
@@ -1015,14 +1107,14 @@ The Nodes page displays the DNS servers that serve as nodes. On this page, you c
 3. In the Create Emergency Group dialog box, turn on or off **Emergency Group** based on
 your business requirements. If you turn on the switch, you need to set the Service Instance parameter.
 
-### Add a description for a node
+### 9.2 Add a description for a node
 
 1. Click **Nodes** in the left-side navigation pane.
 2. Find the node for which you want to add a description based on IP addresses and click **Add**
 **Description** in the Actions column. In the Add Description dialog box, enter a description in
 the Add Description field and click OK.
 
-### Set a follower node as the
+### 9.3 Set a follower node as the leader node
 
 **leader node**
 
@@ -1030,7 +1122,7 @@ the Add Description field and click OK.
 2. Find the follower node that you want to set as the leader node based on IP addresses and
 click **Switch Primary Node** in the Actions column. In the message that appears, click **OK**. Then, the system sets the selected node as the new leader of the cluster for data synchronization.
 
-## View a node
+## 10 View a node
 
 1. Click **Nodes** in the left-side navigation pane.
 2. On the Nodes page, find the node that you want to view and check the information
@@ -1038,11 +1130,11 @@ displayed in the **Service Instance IP Address**, **Service Instance Role**, **W
 **Working Status**, **Latest Synchronization Log ID**, **Service Address**, and **Description**
 columns. You can also view the operations that you can perform on the node in the **Actions** column.
 
-## Logs
+## 11 Logs
 
 The Logs page displays the alert information about the DNS server cluster.
 
-### Query alert logs
+### 11.1 Query alert logs
 
 1. Click **Logs** in the left-side navigation pane.
 2. On the Logs page, select the type of alert log that you want to query from the drop-down

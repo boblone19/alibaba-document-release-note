@@ -3,16 +3,147 @@ title: "ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) Opera
 product_version: "V3.18.6"
 doc_version: "20260630"
 pdf_pages: 192
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) Operations and Maintenance Guide 20260630.pdf"
+source_pdf: "139b0e55bd6401d3_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/PolarDB%20MySQL%E6%9C%AC%E5%9C%B0%E7%9B%98/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20MySQL%20%28Primary_Secondary%20Edition%29%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for POLARDB PolarDB for MySQL (Primary_Secondary Edition) Operations and Maintenance Guide
 
-## Architecture
+## Table of Contents
 
-### Architecture
+- 1 Architecture
+  - 1.1 Architecture
+  - 1.2 Component architecture
+- 2 文档标题缺失，请补全后重新导出
+  - 2.1 Log in to ApsaraDB Operations and Maintenance System Smart Edition
+  - 2.2 Overview of the homepage of ApsaraDB Operations and Maintenance System Smart Edition
+  - 2.3 Instance management
+    - 2.3.1 Overview of the instance details page
+    - 2.3.2 View instance information
+    - 2.3.3 Instance O&M operations
+      - 2.3.3.1 Important Notes
+      - 2.3.3.2 Recreate a secondary database
+      - 2.3.3.3 Migrate an instance
+      - 2.3.3.4 Upgrade the minor version
+      - 2.3.3.5 Change the specification of a database instance
+      - 2.3.3.6 Lock an instance
+      - 2.3.3.7 Perform an HA switchover
+      - 2.3.3.8 Modify the storage capacity
+    - 2.3.4 Monitoring and alerting
+    - 2.3.5 Diagnose an instance
+    - 2.3.6 View status inspection records
+    - 2.3.7 Manage audit logs
+    - 2.3.8 Change records
+    - 2.3.9 Manage tasks
+    - 2.3.10 Backup management
+    - 2.3.11 Data restoration
+    - 2.3.12 Security configuration
+    - 2.3.13 Parameter configurations
+    - 2.3.14 O&M configurations
+    - 2.3.15 Tag configurations
+    - 2.3.16 Manage databases
+    - 2.3.17 Account management
+  - 2.4 Intelligent O&M
+    - 2.4.1 Intelligent host diagnostics
+    - 2.4.2 Information collection
+    - 2.4.3 Automated script management
+  - 2.5 Host management
+    - 2.5.1 Host software package management
+    - 2.5.2 Physical machine groups
+  - 2.6 Software package management
+- 3 文档标题缺失，请补全后重新导出
+  - 3.1 Log in to ApsaraDB Operations and Maintenance System
+  - 3.2 Home page
+  - 3.3 Manage instances
+    - 3.3.1 Instance list
+    - 3.3.2 View instance details
+    - 3.3.3 General instance O&M
+      - 3.3.3.1 Important Notes
+      - 3.3.3.2 Check instances
+      - 3.3.3.3 Diagnose an instance
+      - 3.3.3.4 Restart an instance
+      - 3.3.3.5 Migrate an instance
+      - 3.3.3.6 Upgrade the minor version
+      - 3.3.3.7 Manage instance parameters
+      - 3.3.3.8 Change specifications
+      - 3.3.3.9 Change storage capacity
+      - 3.3.3.10 Perform an HA switchover
+      - 3.3.3.11 Lock an instance
+      - 3.3.3.12 Backup and restoration
+      - 3.3.3.13 Recreate a secondary database
+      - 3.3.3.14 Manage instance tasks
+      - 3.3.3.15 Disable instance allocation
+    - 3.3.4 Other instance O&M
+      - 3.3.4.1 Upgrade an instance from ApsaraDB RDS for MySQL Two-node Edition with Local Disks to PolarDB for MySQL Primary/Secondary Edition
+      - 3.3.4.2 Common O&M operations for secondary PolarDB for MySQL nodes
+      - 3.3.4.3 Perform zone-disaster recovery switchover for PolarDB for PostgreSQL Shared Storage Edition
+      - 3.3.4.4 Query SQL information for PolarDB-X instances
+      - 3.3.4.5 Handle failed PolarDB-X tasks
+      - 3.3.4.6 Change PolarDB-X data node specifications
+      - 3.3.4.7 Configure PolarDB-X instance resources
+      - 3.3.4.8 Add proxy nodes to a Tair (Redis OSS-compatible) instance
+      - 3.3.4.9 Temporarily increase the primary/secondary synchronization buffer for a Tair (Redis OSS-compatible) instance
+    - 3.3.5 Manage instances in batches
+      - 3.3.5.1 Migrate multiple instances at a time
+      - 3.3.5.2 Modify multiple instance parameters at a time
+      - 3.3.5.3 Modify DIY parameters for multiple instances at a time
+      - 3.3.5.4 Modify Redis parameters for multiple clusters at a time
+      - 3.3.5.5 Manage tasks in batches
+      - 3.3.5.6 Manage batch task types
+      - 3.3.5.7 Manage SQL templates
+    - 3.3.6 Manage instance plan migration
+    - 3.3.7 View the instance dashboard
+  - 3.4 Host management
+    - 3.4.1 Create a host
+    - 3.4.2 Configure multiple hosts at a time
+    - 3.4.3 View host information
+    - 3.4.4 Physical machine group
+    - 3.4.5 Manage host software packages
+  - 3.5 Cluster management
+    - 3.5.1 Configure cluster parameters
+    - 3.5.2 Manage service types
+    - 3.5.3 Manage service nodes
+    - 3.5.4 Manage DB configuration templates
+    - 3.5.5 Manage Fangcunshan clusters
+    - 3.5.6 Manage locations
+  - 3.6 Task management
+    - 3.6.1 Manage interrupted tasks
+    - 3.6.2 Manage temporarily closed tasks
+    - 3.6.3 View workflow O&M information
+  - 3.7 System management
+    - 3.7.1 Feature Overview
+    - 3.7.2 Change the unified storage location of logs
+  - 3.8 Check important components
+  - 3.9 Handle exceptions
+  - 3.10 Appendix
+    - 3.10.1 Log in to the Apsara Uni-manager Operations Console
+- 4 Apsara Uni-manager Platform Operations
+  - 4.1 Turn on the IPv6 display switch for PolarDB
+  - 4.2 Configure a custom password policy for PolarDB
+  - 4.3 Enable the PolarDB MySQL 8.4 kernel parameter switch
+  - 4.4 Enable the minor version switch for PolarDB
+- 5 Security maintenance
+  - 5.1 Network security maintenance
+  - 5.2 Account and password maintenance
+- 6 Trouble shooting
+  - 6.1 Fault emergency mechanism
+  - 6.2 Stock-up mechanism
+  - 6.3 Troubleshooting procedure
+  - 6.4 Common faults and solutions
+    - 6.4.1 What do I do if the disk space is insufficient?
+    - 6.4.2 Interrupted replication
+    - 6.4.3 Insufficient swap space
+    - 6.4.4 High loads
+    - 6.4.5 High replication latency
+    - 6.4.6 Module exception
+  - 6.5 Hardware troubleshooting
+    - 6.5.1 Memory, motherboard, CPU, power supply, etc. need to be stopped and replaced
+- 7 High-risk operations
+
+## 1 Architecture
+
+### 1.1 Architecture
 
 This topic describes the architecture of cloud-native PolarDB for MySQL.
 
@@ -36,7 +167,7 @@ When an instance host or instance crashes, the PolarDB high-availability compone
 
 You can create, delete, and switch between internal and external instances in the PolarDB console or through PolarDB APIs. The backend schedules instances in the form of tasks and tracks and displays all operations on instances.
 
-### Component architecture
+### 1.2 Component architecture
 
 This topic lists the components of cloud-native PolarDB for MySQL and their functions.
 
@@ -64,9 +195,9 @@ This topic lists the components of cloud-native PolarDB for MySQL and their func
 | Tcprt | Collects the response time of user requests. |
 | Webdump | Collects the Internet traffic of users. |
 
-## 文档标题缺失，请补全后重新导出
+## 2 文档标题缺失，请补全后重新导出
 
-### Log in to ApsaraDB Operations
+### 2.1 Log in to ApsaraDB Operations and Maintenance System Smart Edition
 
 **and Maintenance System Smart**
 
@@ -91,7 +222,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar, click **Products** and choose **Databases** > **ApsaraDB System**
 **O&M Smart Pro Edition**.
 
-### Overview of the homepage of
+### 2.2 Overview of the homepage of ApsaraDB Operations and Maintenance System Smart Edition
 
 **ApsaraDB Operations and**
 
@@ -168,9 +299,9 @@ When an alert is triggered, check the statistics in the Overview of abnormal dat
 3. Knowledge accumulation
 When a new issue is identified, search for it by keyword on the homepage, such as an excessive number of connections. Benefits: Automatically matches topics in the knowledge base to avoid making the same mistake.
 
-### Instance management
+### 2.3 Instance management
 
-#### Overview of the instance details page
+#### 2.3.1 Overview of the instance details page
 
 The instance details page of ApsaraDB O&M System Smart Pro Edition is a key feature module. This page displays and allows you to manage the status, configurations, performance metrics, and O&M operations of a database instance.
 
@@ -322,7 +453,7 @@ the Not Started, Failed, Interrupted, or Checking state, you can go to the **Par
 
 A: You can specify the expiration time for some tags. When the specified expiration time is reached, the tag value may become invalid or a specific behavior may be triggered. When you edit a tag, you can use the date picker to specify the expiration time for the tag. The specified expiration time can be accurate to hour, minute, and second. You can also leave the Expiration Time parameter blank. In this case, No is displayed for the Expiration Time parameter.
 
-#### View instance information
+#### 2.3.2 View instance information
 
 This topic describes how to view the basic information (including instance type, performance, and network type) and the logical and physical topology of an instance on the instance details page in the ApsaraDB O&M System Smart Pro Edition console. This topic also describes how to view the details of child instances of a primary instance.
 
@@ -393,9 +524,9 @@ including instance name, cluster, and locked state. You can copy the instance na
 **Host list**: This section displays the information about all hosts, including host IP address,
 port number, master/slave role, and host instance ID. You can click **View details** to check the connectivity.
 
-#### Instance O&M operations
+#### 2.3.3 Instance O&M operations
 
-##### Important Notes
+##### 2.3.3.1 Important Notes
 
 **Read before operation**
 
@@ -403,7 +534,7 @@ port number, master/slave role, and host instance ID. You can click **View detai
 
 Some operations described in this section, such as instance restart, minor engine version update, and backup and restoration, involve core changes to the underlying infrastructure. These operations are irreversible or high-risk. Improper operations may lead to data loss, service interruption, or performance jitter. Before you perform any O&M operations, carefully read the relevant tutorials and the precautions and key risk reminders on the console interface. If necessary, perform operations under the guidance of Alibaba Cloud professional technicians. Once you click Submit, Confirm or similar commands, it is deemed that you have been fully aware of all potential risks and voluntarily bear all the consequences arising therefrom. Proceed with caution.
 
-##### Recreate a secondary database
+##### 2.3.3.2 Recreate a secondary database
 
 If an exception occurs in the secondary database, you can recreate the secondary database to ensure the continuity of the primary/secondary HA architecture.
 
@@ -444,7 +575,7 @@ The following table describes the parameters. The actual parameters displayed in
 7. Then, you can view the task progress on the **Task Management** page until the task is
 completed. If the task is interrupted, contact Apsara Stack technical support. For more information about how to view the task progress, see the Task management topic.
 
-##### Migrate an instance
+##### 2.3.3.3 Migrate an instance
 
 ApsaraDB Operations and Maintenance System Smart Edition allows you to migrate instances across zones or subdomains. You can migrate instances in scenarios such as resource scheduling, disaster recovery drilling, and hardware upgrades. You can also choose to migrate the primary nodes, standby nodes, and read-only nodes.
 
@@ -482,7 +613,7 @@ After you click **Submit**, you are redirected to the **Task Management > Migrat
 
 Navigate to the **Basic information** page of the instance. In the **Host Information** section, view the host ID before the migration and the host ID after the migration.
 
-##### Upgrade the minor version
+##### 2.3.3.4 Upgrade the minor version
 
 ApsaraDB Operations and Maintenance System Smart Edition allows you to securely upgrade the minor version of database instances. Minor version upgrades usually involve performance optimization, new features, and fixes. They can ensure the stability and performance of databases.
 
@@ -513,7 +644,7 @@ following parameters, and then click **Submit**. This topic uses PolarDB for MyS
 
 After the upgrade task is initiated, you can go to the **Task Management** page to view the upgrade progress.
 
-##### Change the specification of a database
+##### 2.3.3.5 Change the specification of a database instance
 
 **instance**
 
@@ -551,7 +682,7 @@ Whether to align with the minor engine version of the source primary and replica
 **Management** page until the task is complete. If the task is interrupted, contact Apsara
 Stack technical support. For more information about how to view the task progress, see the Manage instance tasks topic.
 
-##### Lock an instance
+##### 2.3.3.6 Lock an instance
 
 This topic describes how to lock an instance to help you resolve issues.
 
@@ -573,7 +704,7 @@ instance.
 5. View the task progress on the **Task Management** page until the task is complete. If the
 task is interrupted, contact Apsara Stack technical support. For more information about how to view the task progress, see the Manage instance tasks topic.
 
-##### Perform an HA switchover
+##### 2.3.3.7 Perform an HA switchover
 
 This topic describes how to manually perform an HA switchover.
 
@@ -614,7 +745,7 @@ After Step 4 is complete, the IP addresses and ports are reassigned to match the
 
 Follow the same procedure to swap the roles of the primary and secondary nodes.
 
-##### Modify the storage capacity
+##### 2.3.3.8 Modify the storage capacity
 
 This topic describes how to modify the storage capacity of an instance.
 
@@ -646,7 +777,7 @@ instance.
 2. On the **Instance list > Task Management** page, you can view the status of tasks.
 You can view the details of all tasks, interrupted tasks, and paused tasks. You can also customize the columns displayed in the task list.
 
-#### Monitoring and alerting
+#### 2.3.4 Monitoring and alerting
 
 This topic describes how to view information and perform operations on the performance monitoring dashboard of an instance in the ApsaraDB O&M System Smart Pro Edition console. You can dynamically select monitoring metrics, change the monitoring granularity of a monitored node, select a time range, and quickly search for specific metrics from the full monitoring metric directory. Through these operations, you can fully understand the status of your instance.
 
@@ -666,7 +797,7 @@ in different periods of time.
 **View the full monitoring metric directory**: Click the
 icon in the middle-right part of the page to show the full monitoring metric directory. You can enter keywords to quickly search for and locate the monitoring metrics.
 
-#### Diagnose an instance
+#### 2.3.5 Diagnose an instance
 
 This topic describes how to perform comprehensive health checks and performance analysis on a database instance in the ApsaraDB O&M System Smart Pro Edition console, including viewing 360 diagnostic reports, querying MaxScale logs, monitoring real-time sessions, checking InnoDB status, analyzing slow SQL query logs, diagnosing instance stutters and slow responses, executing SQL statements online in a safe manner.
 
@@ -869,7 +1000,7 @@ SELECT queries: This tab displays the query results in a table. The number of re
 **Execution History** tab:
 This tab displays all historical execution records, including SQL statements, execution time, destination database, and success/failed status. For a record that shows the successful execution of an SQL statement, the number of returned rows and the execution duration are displayed. For a record that shows a failure in executing an SQL statement, the error information is displayed. You must switch a PolarDB child instance to the primary instance to execute SQL statements.
 
-#### View status inspection records
+#### 2.3.6 View status inspection records
 
 This topic describes how to view the status inspection records of an instance in the ApsaraDB O&M System Smart Pro Edition console, including availability check logs, fault event records, and runtime error logs. This helps you quickly identify instance exceptions and potential risks.
 
@@ -900,7 +1031,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 3. On the page that appears, click the **View error logs** tab.
 On this tab, the runtime error logs of the instance are displayed in a table.These logs help you identify and handle runtime exceptions. You can filter runtime error logs by time range.
 
-#### Manage audit logs
+#### 2.3.7 Manage audit logs
 
 This topic describes how to manage the SQL audit logs of an instance in ApsaraDB O&M System Smart Pro Edition. You can query and filter real-time logs by conditions, archive historical logs to Object Storage Service (OSS), and view historical archive records and download archived historical logs.
 
@@ -964,7 +1095,7 @@ the list of historical archive records. The following table describes the fields
 | Status | The state of data archiving. |
 | Download address | Click Download to download the object. |
 
-#### Change records
+#### 2.3.8 Change records
 
 This topic describes how to view various change and O&M records of an instance in the ApsaraDB O&M System Smart Pro Edition console, including general operation logs, HA logs, API call logs, management logs, primary/secondary inconsistency check, historical tasks of automated robots (ROBOT/bartender), data migration list, and restoration logs, to help comprehensively audit key events in the instance lifecycle.
 
@@ -1149,7 +1280,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 4. View the restoration log list, which includes the following fields:
 Migration ID (clickable link), current cluster, recovery type (based on backup sets or points in time), backup set ID, recovery time point, migration status, retain the original instance (yes/no), migration time, and migration information.
 
-#### Manage tasks
+#### 2.3.9 Manage tasks
 
 This topic describes how to manage the tasks of an instance in ApsaraDB O&M System Smart Pro Edition. You can view the task list and filter tasks by status and time range. You can also perform operations such as viewing subtasks, modifying remarks, viewing intervention records, viewing details, and retrying multiple tasks at a time.
 
@@ -1192,7 +1323,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 3. In the task list, select one or more tasks that you want to retry.
 4. In the upper part of the page, click **Batch retry**.
 
-#### Backup management
+#### 2.3.10 Backup management
 
 This topic describes how to manage data and log backups for instances in the ApsaraDB O&M System Smart Pro Edition console. You can view and modify automatic backup policies and binary log backup policies and query historical backup records.
 
@@ -1326,7 +1457,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 
 This operation is irreversible once initiated.
 
-#### Data restoration
+#### 2.3.11 Data restoration
 
 This topic describes how to perform data restoration operations in the ApsaraDB O&M System Smart Pro Edition console, including backup set-based restoration and point-in-time restoration.
 
@@ -1371,7 +1502,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 | Cross-cluster allocation | Select whether to enable cross-cluster allocation as needed. When no resources are available in the current cluster, resources can be requested from other clusters within the same data center. Note that if you use a virtual IP address (VIP) to access the instance, you may need to re-bind or modify the VIP configuration after restoration. |
 | Network type | Select Private network or Public network based on your business requirements. |
 
-#### Security configuration
+#### 2.3.12 Security configuration
 
 This topic describes how to manage IP address whitelist rules and associated security group rules for an instance in the ApsaraDB O&M System Smart Pro Edition console.
 
@@ -1402,7 +1533,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 **Disassociate a security group**: disassociates an associated security group from the
 instance.
 
-#### Parameter configurations
+#### 2.3.13 Parameter configurations
 
 This document describes how to view and modify runtime parameters at both the database kernel level and the management system level in the ApsaraDB O&M System Smart Pro Edition console.
 
@@ -1449,7 +1580,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 3. On the page that appears, click the **Control instance parameters** tab.
 4. View the control parameter list, including the parameter names and parameter values.
 
-#### O&M configurations
+#### 2.3.14 O&M configurations
 
 This topic describes how to manage temporary resource allocation and underlying O&M policies for instances in the ApsaraDB O&M System Smart Pro Edition console. You can temporarily increase computing or storage resources to handle traffic spikes, and configure system-level parameters such as high availability, log auditing, and performance metric collection.
 
@@ -1623,7 +1754,7 @@ You can configure the interval for collecting instance performance metrics, such
 |---|---|
 | Collection frequency | The interval at which data is collected. Unit: seconds. A higher frequency enables finer-grained monitoring but increases system overhead. |
 
-#### Tag configurations
+#### 2.3.15 Tag configurations
 
 This topic describes how to view and modify the tags of an instance in the ApsaraDB O&M System Smart Pro Edition console. The tag information includes the label type, current value, and expiration time.
 
@@ -1657,7 +1788,7 @@ Find the tag that you want to manage and click **Edit** in the Operation column.
 
 6. Click **OK**. The list is automatically updated.
 
-#### Manage databases
+#### 2.3.16 Manage databases
 
 This topic describes how to manage the databases of an instance in ApsaraDB O&M System Smart Pro Edition. You can view the database list and details, create one or more databases at a time, and delete databases.
 
@@ -1720,7 +1851,7 @@ pane, choose **Instance Management > Instance list**. Find the instance that you
 3. Find the database that you want to delete and click **Delete** in the Operation column.
 4. In the message that appears, confirm the database name and click **OK**.
 
-#### Account management
+#### 2.3.17 Account management
 
 This topic describes how to manage user accounts and system accounts of instances in the ApsaraDB O&M System Smart Pro Edition console. The core features include account viewing, account creation (normal, privileged, and management), password maintenance (modify, reset, or view), modification of remarks, authorization, and account deletion.
 
@@ -1906,9 +2037,9 @@ Then, click the **System account** tab.
 3. Find the account that you want to manage and click **Delete** in the Operation column.
 4. In the message that appears, click **Submit**.
 
-### Intelligent O&M
+### 2.4 Intelligent O&M
 
-#### Intelligent host diagnostics
+#### 2.4.1 Intelligent host diagnostics
 
 ApsaraDB Operations and Maintenance System Smart Edition provides the intelligent host performance diagnostics feature, which displays statistics in flame graphs. This feature can automatically parse CPU-intensive functions, abnormal call stacks, and resource consumption tracing. It can accurately identify system-level performance bottlenecks, locate the root cause, and compare the performance of instances in scenarios where your database is heavily loaded, responds with a high latency, or experiences kernel-level stuttering.
 
@@ -1974,7 +2105,7 @@ Issue: The CPU utilization of the database process is not high, but the loads (L
 
 Issue: After you optimize SQL queries or modify parameters, you need to confirm whether the performance of the database instance is improved. Diagnostics: Quantify changes in hotspot functions. Procedure: i. Collect performance data before the optimization and after the optimization. ii. Use the hotspot comparison feature. iii. Observe the change in the width of the hotspot function bar. Analysis: The hotspot function bar becomes narrow or disappears. Conclusion: The optimization takes effect and the performance bottleneck is eliminated. The width of the hotspot function bar remains unchanged, but a new hotspot appears. Conclusion: The bottleneck is transferred. In this case, you need to optimize the new hotspot.
 
-#### Information collection
+#### 2.4.2 Information collection
 
 ApsaraDB Operations and Maintenance System Smart Edition provides the information collection feature, which allows you to use various search parameters (including keywords, ApsaraDB Operations and Maintenance System task IDs, DTS task IDs, or instance IDs) to quickly trigger a diagnostic task. It can automatically aggregate the logs of relevant services and generate a structured diagnostic report. This topic uses Data Transmission Service (DTS) task diagnosis as an example to describe how to collect information based on task IDs and keywords. This topic also describes how to download logs, decrypt logs, and import logs for offline analysis.
 
@@ -2028,7 +2159,7 @@ After the logs are downloaded, log in to Apsara Stack Inspection System. On the 
 
 On the **One-click information collection** page, click **Import view** and upload the log package ( `ZIP file` ). Make sure that the log package uses the requested format. The system will automatically parse and display the log content for offline replay and analysis. For more information about how to download logs, see Step 4 in the Method 1 or Method 2 section of this topic.
 
-#### Automated script management
+#### 2.4.3 Automated script management
 
 ApsaraDB Operations and Maintenance System Smart Edition provides the automated script management capability to help you transform frequent, complex CLI-based O&M operations, such as instance status restoration, backup task intervention, and resource cleanup, into standardized automated workflows. With the built-in risk classification and review mechanism, this capability can greatly reduce user errors and the time consumption of database O&M, improving the overall efficiency and security.
 
@@ -2227,9 +2358,9 @@ Click **Disable** in the **Operation** column of a script and click **OK** in th
 You can terminate only script execution tasks in the **Pending approval**. You cannot terminate succeeded or failed tasks. Click **Execution record** in the **Operation** column of a script. In the panel that appears, choose
 **> Termination**.
 
-### Host management
+### 2.5 Host management
 
-#### Host software package management
+#### 2.5.1 Host software package management
 
 This topic describes the core management features of software packages on cloud database hosts, including installation, uninstallation, and operation record query. You can maintain the host running environment in a secure and traceable manner through the unified interface, ensuring the stability and compliance of database services.
 
@@ -2281,7 +2412,7 @@ that appears, find the host that you want to manage and click **Details** in the
 3. In the left-side navigation pane, click **Host software package management**. On the
 page that appears, click **Package change Records**. The page displays information including operation type, operation time, and result description.
 
-#### Physical machine groups
+#### 2.5.2 Physical machine groups
 
 ApsaraDB Operations and Maintenance System Smart Edition allows you to create physical machine groups to build independent logical resource pools in order to physically isolate underlying hardware resources and schedule them in a fine-grained manner. This way, your businesses are able to use resources exclusively and stably.
 
@@ -2320,7 +2451,7 @@ Before you delete a physical machine group, make sure that all instances deploye
 to delete and click **Delete** in the Operation column.
 2. In the message that appears, click **OK**.
 
-### Software package
+### 2.6 Software package management
 
 **management**
 
@@ -2371,9 +2502,9 @@ You can query whether software packages are enabled, disabled, installed, or uni
 2. In the left-side navigation pane, choose **Package Management > Package List**. On the
 Package List page, find the desired package and click **Change record** in the **Operation** column. The panel displays each operation, the time when the operation was performed, and the result of the operation. You can specify filter conditions (time range or operation) above the list to quickly find specific operations.
 
-## 文档标题缺失，请补全后重新导出
+## 3 文档标题缺失，请补全后重新导出
 
-### Log in to ApsaraDB Operations
+### 3.1 Log in to ApsaraDB Operations and Maintenance System
 
 **and Maintenance System**
 
@@ -2398,7 +2529,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, click **Product**
 **Operation**. In the **Databases** section, select **ApsaraDB O&M System**.
 
-### Home page
+### 3.2 Home page
 
 This topic provides an overview of the home page of the ApsaraDB Operations and Maintenance System console and describes how to navigate to other pages.
 
@@ -2447,9 +2578,9 @@ In the left-side navigation pane, you can go to the **Host**, **Host Instance**,
 **Service**, and **Backup** pages to view critical-level exception information for various
 resources. You can also switch to the **Abnormal market** page, which supports sorting by score and component name, as well as searching by component name. Click a component name to go to the Exception information Host page, where exception handling operations can be performed on problematic hosts.
 
-### Manage instances
+### 3.3 Manage instances
 
-#### Instance list
+#### 3.3.1 Instance list
 
 This topic describes how to view the information about instances, such as the basic information, data links, databases, and accounts, in the instance list.
 
@@ -2459,7 +2590,7 @@ This topic describes how to view the information about instances, such as the ba
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System**
 console, choose **Instance management > Instance List**. On the Instance List page, you can perform the following operations: Click **Batch query**. In the Batch query dialog box, enter instance names to query multiple instances at a time. Click **Advance search** and configure parameters such as Database type and Instance status to query instances. Find an instance that you want to manage and click its name to go to the Instance details page. You can view the instance information and manage the instance. For more information, see Diagnose an instance, Manage multiple instances at a time, Use the instance dashboard, and Manage instance migration plans.
 
-#### View instance details
+#### 3.3.2 View instance details
 
 On the Instance Details page, you can view the basic information of the instance and perform O&M operations.
 
@@ -2504,9 +2635,9 @@ The following table describes parameters for the new version of the console. If 
 | Migration recovery log | Displays a list of migration tasks, instance recovery logs, and logs for database migration across instances. | None. |
 | Historical availability | Allows you to view availability, failures, and error logs. | None. |
 
-#### General instance O&M
+#### 3.3.3 General instance O&M
 
-##### Important Notes
+##### 3.3.3.1 Important Notes
 
 **Read before operation**
 
@@ -2514,7 +2645,7 @@ The following table describes parameters for the new version of the console. If 
 
 Some operations described in this section, such as instance restart, minor engine version update, and backup and restoration, involve core changes to the underlying infrastructure. These operations are irreversible or high-risk. Improper operations may lead to data loss, service interruption, or performance jitter. Before you perform any O&M operations, carefully read the relevant tutorials and the precautions and key risk reminders on the console interface. If necessary, perform operations under the guidance of Alibaba Cloud professional technicians. Once you click Submit, Confirm or similar commands, it is deemed that you have been fully aware of all potential risks and voluntarily bear all the consequences arising therefrom. Proceed with caution.
 
-##### Check instances
+##### 3.3.3.2 Check instances
 
 This topic describes instance-related check operations to help you resolve issues quickly.
 
@@ -2584,7 +2715,7 @@ command box, and then click **Execution** to obtain the minor version and kernel
 show variables like 'rds_release_date'; select version();
 ```
 
-##### Diagnose an instance
+##### 3.3.3.3 Diagnose an instance
 
 The instance diagnosis feature of ApsaraDB Operations and Maintenance System provides comprehensive database health check and performance analysis services. The feature supports real-time monitoring of instance resource usage, performance metrics, and internal engine status. This helps O&M personnel accurately locate performance bottlenecks, efficiently troubleshoot exceptions, and optimize instance configurations. This comprehensively improves the efficiency and stability of database O&M.
 
@@ -2613,7 +2744,7 @@ corresponding tab to view data or perform operations. The diagnostic capabilitie
 | Instance Log and Slow Diagnosis | Automatically analyzes slow SQL queries and performance lag in the instance and provides optimization suggestions, with customizable interval time queries. |
 | Execution of SQL Statements | i. Configure the SQL execution location: primary or secondary, and set the destination database and maximum number of returned rows. ii. Enter the SQL statement to execute and click the Execute button. Important Executing SQL statements is risky and may cause failures. Exercise caution when you perform this operation. Line breaks are not supported. Only single-line SQL statements can be executed. SQL execution for PolarDB child instances is only allowed on the primary instance. |
 
-##### Restart an instance
+##### 3.3.3.4 Restart an instance
 
 ApsaraDB Operations and Maintenance System supports restarting various database instances to handle service exceptions, enable configuration changes, or meet maintenance requirements.
 
@@ -2640,7 +2771,7 @@ example to describe operations on the restart page. The restart policies display
 | Concurrencie s | Controls the number of nodes that are restarted at the same time. A smaller value reduces impact on services but increases total duration; a larger value improves parallelism but causes higher instantaneous load. We recommend that you configure the settings based on your business tolerance. |
 | Host instance | Lists all compute nodes under the current instance. You can select specific nodes as needed for a rolling restart. For example, you can restart only abnormal nodes to avoid impacting overall services caused by a full restart. |
 
-##### Migrate an instance
+##### 3.3.3.5 Migrate an instance
 
 ApsaraDB Operations and Maintenance System supports migrating instances across zones or subdomains. Migration applies to scenarios such as resource scheduling, disaster recovery drills, and hardware upgrades. You can configure migration for primary instances, standby instances, and read-only (RO) instances.
 
@@ -2679,7 +2810,7 @@ After you click **Submit**, you are redirected to the **Task Management > Migrat
 
 Go to the **Basic information** page of the instance. In the **Host instance information** section, view the host ID before and after the migration.
 
-##### Upgrade the minor version
+##### 3.3.3.6 Upgrade the minor version
 
 ApsaraDB Operations and Maintenance System supports secure and controllable minor version upgrades for database instances. This type of upgrade usually includes performance optimization, introduction of new features, and fixes for known issues, helping ensure stable and efficient operation of databases.
 
@@ -2712,7 +2843,7 @@ following parameters, and then click **Submit**. This document uses the minor ve
 
 After the upgrade task is initiated, you can go to the **Task Management** page to view the upgrade progress.
 
-##### Manage instance parameters
+##### 3.3.3.7 Manage instance parameters
 
 ApsaraDB Operations and Maintenance System supports manual configuration of instance kernel parameters and viewing of the managed parameters, which can be used for information query or fault troubleshooting scenarios. The instance parameter management capabilities vary by database engine. The actual displayed capabilities are subject to the console configuration.
 
@@ -2746,7 +2877,7 @@ You can enter a keyword in the search box to quickly query the required instance
 4. In the left-side navigation pane, click **Management-instance parameters**.
 On the **Management-instance parameters** page, you can view the parameters, including **Parameter name**, **Parameter value**, and **Modify**.
 
-##### Change specifications
+##### 3.3.3.8 Change specifications
 
 This topic describes how to change specifications and helps you resolve related issues.
 
@@ -2780,7 +2911,7 @@ Forced alignment of minor engine versions during migration: Yes: The system enfo
 6. After the operation, you can view the task progress on the **Task Management** page until
 the task is completed. If the task is interrupted, contact Alibaba Cloud technical support. For more information about how to view the task progress, see Manage instance tasks.
 
-##### Change storage capacity
+##### 3.3.3.9 Change storage capacity
 
 This topic describes how to modify the storage capacity of an instance to help you resolve issues efficiently.
 
@@ -2812,7 +2943,7 @@ instance.
 2. On the **Task Management > Instance tasks** page, you can view the task status.
 You can view details of tasks in various states, including all tasks, interrupted tasks, and suspended tasks. You can customize list items. You can select the task fields that you want to view based on your needs.
 
-##### Perform an HA switchover
+##### 3.3.3.10 Perform an HA switchover
 
 This topic describes how to manually perform an HA switchover and helps you efficiently resolve related issues.
 
@@ -2852,7 +2983,7 @@ After Step 4, the IP addresses and port numbers are reassigned to match the new 
 
 Repeat the procedure to swap the primary and secondary nodes.
 
-##### Lock an instance
+##### 3.3.3.11 Lock an instance
 
 This topic describes how to lock an instance to help you resolve issues.
 
@@ -2874,7 +3005,7 @@ Instance List page, click the name of the instance that you want to manage.
 5. View the task progress on the **Task Management** page until the task is complete. If the
 task is interrupted, contact Alibaba Cloud technical support. For more information about how to view the task progress, see Manage instance tasks.
 
-##### Backup and restoration
+##### 3.3.3.12 Backup and restoration
 
 ApsaraDB Operations and Maintenance System supports automatic policy configuration, manual temporary backup, and multi-dimensional restoration (by backup set and by point in time). Through full, incremental, and log backup mechanisms, the platform can meet strict RPO (Recovery Point Objective) and RTO (Recovery Time Objective) requirements against user errors, hardware failures, and logical corruptions.
 
@@ -3045,7 +3176,7 @@ the page that appears, view the data backup policy.
 4. In the **Instance details** section, click **BINLOG management**. On the **Backup history**
 tab, view the backup history of binary logs.
 
-##### Recreate a secondary database
+##### 3.3.3.13 Recreate a secondary database
 
 If an exception occurs in the secondary database, you can recreate a secondary database to ensure the continuity of the primary/secondary high-availability architecture.
 
@@ -3086,7 +3217,7 @@ The following table describes the related parameters. The parameters displayed i
 7. After the operation, you can view the task progress on the **Task Management** page until
 the task is completed. If the task is interrupted, contact Alibaba Cloud technical support. For more information about how to view task progress, see Manage instance tasks.
 
-##### Manage instance tasks
+##### 3.3.3.14 Manage instance tasks
 
 This topic describes how to view the progress and details of a task.
 
@@ -3122,7 +3253,7 @@ and redis), **target type**, and **workflow ID**.
 **Operation** column.
 You can view the status of various tasks, such as all tasks, interrupted tasks, and suspended tasks. You can customize the task fields that you want to view based on your requirements.
 
-##### Disable instance allocation
+##### 3.3.3.15 Disable instance allocation
 
 **Background information**
 
@@ -3207,9 +3338,9 @@ scheduler.
 accidentally disabled.
 3. Click Batch turn on instance allocation.
 
-#### Other instance O&M
+#### 3.3.4 Other instance O&M
 
-##### Upgrade an instance from ApsaraDB RDS
+##### 3.3.4.1 Upgrade an instance from ApsaraDB RDS for MySQL Two-node Edition with Local Disks to PolarDB for MySQL Primary/Secondary Edition
 
 **for MySQL Two-node Edition with Local Disks to**
 
@@ -3439,7 +3570,7 @@ The following tables describe the impact on related cloud services that are cate
 | APIs | Affected. External systems must be reconnected to PolarDB. For the PolarDB for MySQL primary/secondary instance, the pop code is _ polardb and the version is 2024-01-30. For the ApsaraDB RDS for MySQL instance, the pop code is rds and the _ version is 2014-08-15. OpenAPI: The PolarDB for MySQL primary/Secondary instance and the ApsaraDB RDS for MySQL instance are consistent. Their API operation names and parameters are the same, and only the pop code and version _ are different | Mediu m |
 |---|---|---|
 
-##### Common O&M operations for secondary
+##### 3.3.4.2 Common O&M operations for secondary PolarDB for MySQL nodes
 
 **PolarDB for MySQL nodes**
 
@@ -3492,7 +3623,7 @@ HA switchover allows switching between read-write (RW) nodes and read-only (RO) 
 2. On the **Task Management > Instance tasks** page, you can view the task status.
 You can view details of tasks in various states, including all tasks, interrupted tasks, and suspended tasks. You can customize list items. You can select the task fields that you want to view based on your needs.
 
-##### Perform zone-disaster recovery switchover
+##### 3.3.4.3 Perform zone-disaster recovery switchover for PolarDB for PostgreSQL Shared Storage Edition
 
 **for PolarDB for PostgreSQL Shared Storage Edition**
 
@@ -3532,7 +3663,7 @@ primary node. This ensures data consistency. If the read-only node is normal, th
 Switching the standby node to read/write mode will delete and rebuild existing readonly nodes. During this period, the services of the read-only nodes are interrupted. Be aware of this risk and proceed with caution. After the switchover is complete, you can view the updated instance architecture in the
 **Instance topology** section on the **Basic information** page.
 
-##### Query SQL information for PolarDB-X
+##### 3.3.4.4 Query SQL information for PolarDB-X instances
 
 **instances**
 
@@ -3560,7 +3691,7 @@ Export current query results or save them to a historical archive database. This
 **SQL archive query**:
 Access the query interface for archived historical SQL logs. Search for saved SQL records across different time periods.
 
-##### Handle failed PolarDB-X tasks
+##### 3.3.4.5 Handle failed PolarDB-X tasks
 
 The data nodes and GMS of the PolarDB-X cluster are independent ApsaraDB RDS for MySQL instances. Therefore, PolarDB-X tasks such as cluster creation, specification modification, upgrade, release, and node addition will all trigger corresponding ApsaraDB RDS for MySQL task flows. If an ApsaraDB RDS for MySQL workflow fails, the corresponding PolarDB-X task also fails. All PolarDB-X task steps are idempotent and support retry. However, some failure scenarios require special handling, such as failures in underlying RDS tasks. This document describes common solutions for failed ApsaraDB RDS for MySQL tasks that affect PolarDB-X operations.
 
@@ -3588,7 +3719,7 @@ If the add_node_polardbx_cluster task is stuck at wait_new_storage_activation, t
 
 If the task is stuck at wait_backup_job_finished, the system is waiting for the completion of the backup task on new storage nodes. If the task is stuck at additional_backup_set_info, the system is retrieving information about ApsaraDB RDS for MySQL backup sets, such as backup set size. This step fails because the task is completed when wait_backup_job_finished is displayed, but the backup set is unavailable. In this case, you also need to check the execution status of the backup task on storage nodes. On the Instance details page of each data node, click **Backup Recovery** in the left-side navigation pane to view the status of the backup task.
 
-##### Change PolarDB-X data node specifications
+##### 3.3.4.6 Change PolarDB-X data node specifications
 
 This topic describes how to change data node specifications and helps you resolve related issues.
 
@@ -3613,7 +3744,7 @@ instance.
 2. On the **Task Management > Instance tasks** page, you can view the task status.
 You can view details of tasks in various states, including all tasks, interrupted tasks, and suspended tasks. You can customize list items. You can select the task fields that you want to view based on your needs.
 
-##### Configure PolarDB-X instance resources
+##### 3.3.4.7 Configure PolarDB-X instance resources
 
 You can configure IOPS, CPU specifications, and disk space for instances. This topic uses IOPS configuration as an example to describe the detailed procedure and help you resolve issues quickly.
 
@@ -3636,7 +3767,7 @@ click the **Instance resource configuration** tab.
 5. In the message that appears, click **OK**.
 After the configured restoration time expires, the IOPS value is restored within 5 minutes.
 
-##### Add proxy nodes to a Tair (Redis OSS-
+##### 3.3.4.8 Add proxy nodes to a Tair (Redis OSS-compatible) instance
 
 **compatible) instance**
 
@@ -3650,7 +3781,7 @@ instance.
 3. In the lower part of the Basic information page, click **Add Proxy Instance Node**.
 4. In the dialog box that appears, enter the number of nodes and click **Submit**.
 
-##### Temporarily increase the
+##### 3.3.4.9 Temporarily increase the primary/secondary synchronization buffer for a Tair (Redis OSS-compatible) instance
 
 **primary/secondary synchronization buffer for a**
 
@@ -3672,9 +3803,9 @@ instance.
 4. In the dialog box that appears, enter the target scaling ratio and click **Submit**.
 The scaling ratio ranges from 1.0 to 5.0. This operation applies to normal, db, and logic instances. When performed on a logic instance, the operation takes effect on all underlying db instances. normal instance: Also known as a Redis-Normal instance. A standard Redis instance in single-node or primary-replica architecture. db instance: a subinstance that acts as the data node in the Redis-Logic cluster architecture. It refers to the DB-role subinstance that physically stores data in the Cluster Edition. logic instance: a Redis-Logic cluster instance that has multiple roles of Proxy, CS, and DB. It is a clustered deployment that supports read/write splitting and shard routing.
 
-#### Manage instances in batches
+#### 3.3.5 Manage instances in batches
 
-##### Migrate multiple instances at a time
+##### 3.3.5.1 Migrate multiple instances at a time
 
 This topic describes how to migrate multiple instances at a time.
 
@@ -3699,7 +3830,7 @@ You can click **Batch instance migration success list** or **Batch instance migr
 **failure list** in the upper part of the **Batch instance migration** page to view the details of
 the migrated instances.
 
-##### Modify multiple instance parameters at a
+##### 3.3.5.2 Modify multiple instance parameters at a time
 
 **time**
 
@@ -3727,7 +3858,7 @@ You can click **Batch refresh parameter instance successful list** or **Batch re
 **parameter instance failure list** in the upper part of the **Batch instance parameter**
 **refresh** page to view the details of the modified parameters.
 
-##### Modify DIY parameters for multiple
+##### 3.3.5.3 Modify DIY parameters for multiple instances at a time
 
 **instances at a time**
 
@@ -3761,7 +3892,7 @@ You can click **BatchDIYRefresh parameter successful list** or **BatchDIYRefresh
 **parameter failure list** in the upper part of the **Batch DIY parameter refresh** page to view
 the details of the modified DIY parameters.
 
-##### Modify Redis parameters for multiple
+##### 3.3.5.4 Modify Redis parameters for multiple clusters at a time
 
 **clusters at a time**
 
@@ -3778,7 +3909,7 @@ This topic describes how to modify multiple Redis parameters at a time.
 value in the **Set value** column, and then click **Save**.
 7. In the **Modify configuration** message, click **Determine**.
 
-##### Manage tasks in batches
+##### 3.3.5.5 Manage tasks in batches
 
 This topic describes how to manage tasks in batches.
 
@@ -3808,7 +3939,7 @@ This topic describes how to manage tasks in batches.
 
 7. Click **Submit**.
 
-##### Manage batch task types
+##### 3.3.5.6 Manage batch task types
 
 This topic describes how to create a type of batch tasks.
 
@@ -3837,7 +3968,7 @@ This topic describes how to create a type of batch tasks.
 
 7. Click **Submit**.
 
-##### Manage SQL templates
+##### 3.3.5.7 Manage SQL templates
 
 This topic describes how to create an SQL template.
 
@@ -3865,7 +3996,7 @@ table.
 Custom SQL templates support only SELECT statements and can be used only for DBaaS databases. The creation of SQL templates requires BPMS approval. To prevent the SQL template from being accidentally executed by other members, which could result in batch tasks being sent to incorrect instances, we recommend that you provide a detailed description of the template name and the reason for its addition in the SQL template.
 7. Click **Submit**.
 
-#### Manage instance plan migration
+#### 3.3.6 Manage instance plan migration
 
 The instance plan migration list can be uploaded in two ways: batch submission by instance or by host IP address. This topic describes the detailed procedures for instance plan migration.
 
@@ -3886,7 +4017,7 @@ Mode 1: If you select Submit by instance and non-migratable instances are detect
 You can click **Push success list** or **Deleted list** in the upper part of the **Instance plan**
 **migration management** page to view details.
 
-#### View the instance dashboard
+#### 3.3.7 View the instance dashboard
 
 This topic describes how to view metrics of instances, such as CPU utilization and connection utilization, on the instance dashboard.
 
@@ -3899,9 +4030,9 @@ console, choose **Instance management > Instance List**.
 4. You can view the CPU utilization, connections, IOPS, and disk utilization of an instance. The
 top 20 items are displayed by default.
 
-### Host management
+### 3.4 Host management
 
-#### Create a host
+#### 3.4.1 Create a host
 
 This topic describes how to create a host.
 
@@ -3913,7 +4044,7 @@ This topic describes how to create a host.
 4. On the Host Information page, click **New host**.
 5. In the dialog box that appears, configure the parameters and click **Submit**.
 
-#### Configure multiple hosts at a time
+#### 3.4.2 Configure multiple hosts at a time
 
 This topic describes how to configure multiple hosts at a time.
 
@@ -3926,7 +4057,7 @@ This topic describes how to configure multiple hosts at a time.
 4. In the Batch configuration parameters dialog box, configure the parameters and click
 **Submit**.
 
-#### View host information
+#### 3.4.3 View host information
 
 This topic describes how to view the information about a host.
 
@@ -3938,7 +4069,7 @@ This topic describes how to view the information about a host.
 4. Click the IP address of the host and view information on the **Host details** page. The
 information includes the CPU utilization, memory usage, disk usage, and the number of instances. You can also click the options in the Host details section to view the information about host instances, performance, backups, and accounts.
 
-#### Physical machine group
+#### 3.4.4 Physical machine group
 
 ApsaraDB Operations and Maintenance System allows you to use the physical machine group feature to build an independent logical resource pool. This enables physical isolation and finegrained scheduling of underlying hardware resources to ensure resource exclusivity and stability across different business scenarios.
 
@@ -3977,7 +4108,7 @@ Before you delete a physical machine group, make sure that all instances deploye
 to delete and click **Delete** in the Operation column.
 2. In the message that appears, click **OK**.
 
-#### Manage host software packages
+#### 3.4.5 Manage host software packages
 
 This topic describes the core management features of software packages on cloud database hosts, including installation, uninstallation, and operation record query. You can maintain the host running environment in a secure and traceable manner through the unified interface, ensuring the stability and compliance of database services.
 
@@ -4029,9 +4160,9 @@ that appears, find the host that you want to manage and click **Details** in the
 3. In the left-side navigation pane, click **Host software package management**. On the
 page that appears, click **Package change Records**. The page displays information including operation type, operation time, and result description.
 
-### Cluster management
+### 3.5 Cluster management
 
-#### Configure cluster parameters
+#### 3.5.1 Configure cluster parameters
 
 This topic describes how to configure cluster parameters.
 
@@ -4076,7 +4207,7 @@ You can configure only one cluster at a time. Different database types, such as 
 | Set perf status _ | Specifies the link type for collecting performance monitoring data. Supported options: Old link, Grayscale second link, and Second level link. |
 | Set host support for gigabit NICs | If not explicitly specified during cluster creation, Gigabit NIC support is disabled by default. Supported options: Not supported (default), Support. |
 
-#### Manage service types
+#### 3.5.2 Manage service types
 
 This topic describes how to manage service types.
 
@@ -4089,7 +4220,7 @@ console, click **Cluster management**.
 **Management** page appears.
 Find the service type that you want to modify and click **Edit** in the **Operation** column to modify the service type. Find the service type that you want to delete and click **Delete** in the **Operation** column to delete the service type.
 
-#### Manage service nodes
+#### 3.5.3 Manage service nodes
 
 This topic describes how to create, modify, and delete a service node.
 
@@ -4100,7 +4231,7 @@ This topic describes how to create, modify, and delete a service node.
 3. In the Cluster management section, click **Service node management**.
 In the upper part of the page, click **New service node**. In the dialog box that appears, configure the required parameters and click **OK**. Find the service node that you want to modify and click **Edit** in the **Operation** column to modify the service node. Find the service node that you want to delete and click **Delete** in the **Operation** column to delete the service node.
 
-#### Manage DB configuration templates
+#### 3.5.4 Manage DB configuration templates
 
 This topic describes how to manage DB configuration templates.
 
@@ -4113,7 +4244,7 @@ console, click **Cluster management**.
 **configuration template** page.
 In the upper part of the page, click **New DB template**, enter the template information, and then click **Save** in the **Operation** column. Find the template that you want to modify, click **Edit** in the **Operation** column to modify the template, and then click **Save** in the **Operation** column. Find the template that you want to delete and click **Delete** in the **Operation** column. In the dialog box that appears, click **OK** to delete the template.
 
-#### Manage Fangcunshan clusters
+#### 3.5.5 Manage Fangcunshan clusters
 
 This topic describes how to manage Fangcunshan clusters.
 
@@ -4133,7 +4264,7 @@ in the **Operation** column to modify the cluster group name.
 8. Optional. Find the cluster group that you want to delete and click **Delete a cluster group**
 in the **Operation** column to delete a cluster group.
 
-#### Manage locations
+#### 3.5.6 Manage locations
 
 This topic describes how to configure the locations of clusters.
 
@@ -4147,9 +4278,9 @@ You can also perform cluster consistency check and subdomain consistency check o
 **Submit**.
 Click **Parameters** next to the required unit, region, zone, or subdomain to add, modify, or delete parameters. Click **Delete** next to the required unit, region, zone, or subdomain to delete a unit, region, zone, or subdomain.
 
-### Task management
+### 3.6 Task management
 
-#### Manage interrupted tasks
+#### 3.6.1 Manage interrupted tasks
 
 This topic describes how to manage interrupted tasks, including user instance tasks, host instance tasks, and host tasks. This topic uses a user instance task as an example to describe how to manage interrupted tasks.
 
@@ -4173,7 +4304,7 @@ with the task or purposes of its steps.
 7. In the upper-left corner of the Instance tasks page, select **Running tasks** from the drop-
 down list to view the status of the task. If the task fails again, repeat the preceding steps.
 
-#### Manage temporarily closed tasks
+#### 3.6.2 Manage temporarily closed tasks
 
 This topic describes how to manage temporarily closed tasks.
 
@@ -4183,7 +4314,7 @@ This topic describes how to manage temporarily closed tasks.
 2. In the left-side navigation pane of the **ApsaraDB Operations and Maintenance System**
 console, click **Task Management**. In the upper-left corner of the Instance tasks page, select **Temporarily Closed tasks** from the drop-down list. Click a task name in the **Task name** column. In the message that appears, view the steps of the task. Find a task and click the operation object name in the **Operation object** column to view the task logs of this operation object. Find a task and click the operator name in the **Executor** column to view the information about the operator. Find a task and click **Operation** in the **Operation** column to view the reason why the task is temporarily closed. On the page that appears, click **Perform tasks** to retry the task. On the page that appears, click **Intervention record** to view the intervention records of the task. Find a task and click **Add remarks** in the Operation column to add remarks for the task.
 
-#### View workflow O&M information
+#### 3.6.3 View workflow O&M information
 
 This topic describes how to view the task list and workflow O&M information. A workflow is triggered when you perform O&M tasks on an instance, such as creating an instance, restarting the instance, and changing its configurations. When the workflow is completed, the related O&M task ends. If a step in the workflow fails, you must troubleshoot the failure.
 
@@ -4208,9 +4339,9 @@ execution time, parameters, status, and duration. It also displays the operation
 **Interrupt Workflows**: displays the Interrupted task tab. Click the ID of the interrupted task
 to go to the workflow details page. You can use it to handle interrupted steps. Retry: Click it to retry the current step. If the step is still interrupted, contact Alibaba Cloud technical support personnel. Temporarily shutdown: If a workflow does not require processing or is temporarily not needed, close the workflow to avoid affecting other workflows. Contact Alibaba Cloud technical support personnel to perform this operation. Redirect to the specified step: You are redirected to another step. Contact Alibaba Cloud technical support personnel to perform this operation.
 
-### System management
+### 3.7 System management
 
-#### Feature Overview
+#### 3.7.1 Feature Overview
 
 This topic describes the features of system management. Table 1. System management
 
@@ -4231,7 +4362,7 @@ This topic describes the features of system management. Table 1. System manageme
 | Disaster recovery management | You can perform inspections on link components and control components, perform switchover, and manage disaster recovery tasks. | None. |
 | Scheduled task management | You can manage the scheduled tasks in the system. | None. |
 
-#### Change the unified storage location of
+#### 3.7.2 Change the unified storage location of logs
 
 **logs**
 
@@ -4269,7 +4400,7 @@ Global switchover is a one-time, irreversible operation. After you enable log st
 
 After you change the storage location, you can perform the following log query operations: Query by a time range before the change: Historical logs that are stored in SLS-inner can be queried. Query by a time range after the change: New logs that are stored in SLS-PUB can be queried. Query by a time range that spans the point in time of change: Only the logs that are stored in SLS-PUB can be queried. Historical logs that are stored in SLS-inner before the change are not automatically merged and displayed. You must select a time range before the change for the log query.
 
-### Check important components
+### 3.8 Check important components
 
 **Procedure**
 
@@ -4308,7 +4439,7 @@ Important components involve high-risk operations. We recommend that you should 
 | ROBOT management | Displays ROBOT processing logs, switch controls, alert contacts, repair statistics, and more. |
 | Redis proxy slow log management | View Redis proxy slow logs and analyze their causes. |
 
-### Handle exceptions
+### 3.9 Handle exceptions
 
 This topic describes how to handle database alerts in the ApsaraDB Operations and Maintenance System console and optimize existing monitoring metrics.
 
@@ -4326,9 +4457,9 @@ If you want to handle multiple exceptions at the same time, you can select all t
 accordingly. If you want to handle multiple exceptions at a time, you can view the details and troubleshoot the error accordingly in the **Batch handling exceptions** dialog box.
 6. Click **Submit**.
 
-### Appendix
+### 3.10 Appendix
 
-#### Log in to the Apsara Uni-manager
+#### 3.10.1 Log in to the Apsara Uni-manager Operations Console
 
 **Operations Console**
 
@@ -4350,11 +4481,11 @@ The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 ager Platform Operations
 
-## Apsara Uni-manager
+## 4 Apsara Uni-manager Platform Operations
 
 **Platform Operations**
 
-### Turn on the IPv6 display
+### 4.1 Turn on the IPv6 display switch for PolarDB
 
 **switch for PolarDB**
 
@@ -4374,7 +4505,6 @@ The URL of the Apsara Uni-manager Operations Console and the username and passwo
 
 **Procedure**
 
-1. **Log in to the Apsara Uni-manager Operations Console**
 i. Open a browser. ii. In the address bar, enter the URL of the Apsara Uni-manager Operations Console and press Enter. You can select a language from the drop-down list in the upper-right corner of the page. ager Platform Operations iii. Enter your username and password. Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** .
 2. **Navigate to the switch management page of** PolarDB
 i. In the top navigation bar of Apsara Uni-manager Operations Console, move the pointer over **Platform Operation**. Under **Management and Control Service O&M**, select
@@ -4385,7 +4515,7 @@ On the **polardb Switches** page, search for `enableIPv6` . Click **Change Switc
 4. **Create a** PolarDB **instance and configure IPv6**
 After the switch is turned on, log in to the PolarDB console, create a PolarDB instance, and configure **IP Type**. For more information, see the **Create an instance** topic in User Guide. ager Platform Operations
 
-### Configure a custom password
+### 4.2 Configure a custom password policy for PolarDB
 
 **policy for PolarDB**
 
@@ -4409,7 +4539,6 @@ The URL of the Apsara Uni-manager Operations Console and the username and passwo
 
 **Procedure**
 
-1. **Log in to the Apsara Uni-manager Operations Console**
 i. Open a browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the Enter key. You can select a language from the drop-down list in the upper-right corner of the page. ager Platform Operations iii. Enter your username and password. Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** .
 2. **Go to the PolarDB switch management page**
 i. In the top navigation bar of Apsara Uni-manager Operations Console, move the pointer over **Platform Operation**. Under **Management and Control Service O&M**, select
@@ -4422,7 +4551,7 @@ After the password policy takes effect, create a PolarDB database account in the
 **topic in the User Guide**. The system automatically applies the configured password
 policy and prompts an error in real time when you enter a password that does not comply with the rule. ager Platform Operations
 
-### Enable the PolarDB MySQL 8.4
+### 4.3 Enable the PolarDB MySQL 8.4 kernel parameter switch
 
 **kernel parameter switch**
 
@@ -4450,7 +4579,7 @@ After the switch is enabled, go to the cloud-native database PolarDB Apsara Stac
 **Guide** to create a PolarDB MySQL instance with kernel version 8.4. During instance
 creation, make the following key configurations: Syntax compatibility: Select **8 (compatible with 8.0 and 8.4)** . Parameter template: Select `mysql_innodb_8.4_standard_normal_safe` .
 
-### Enable the minor version
+### 4.4 Enable the minor version switch for PolarDB
 
 **switch for PolarDB**
 
@@ -4477,9 +4606,9 @@ On the **PolarDB Switch List** page, search for `showPolarDBMiniVersion` and ena
 4. **Create a cluster and specify a minor version**
 Once the switch is enabled, go to the ApsaraDB for PolarDB Apsara Stack operations console. For instructions, see the "Create a cluster" topic in the **User Guide**. When creating the cluster, set the **Minor Database Version** parameter. nance
 
-## Security maintenance
+## 5 Security maintenance
 
-### Network security maintenance
+### 5.1 Network security maintenance
 
 Network security maintenance helps you ensure device and network security.
 
@@ -4491,15 +4620,15 @@ Check network devices and enable security management protocols and configuration
 
 Based on your network conditions, select the intrusion detection system (IDS) or intrusion prevention system (IPS) to detect abnormal traffic from the Internet or internal networks. This protects services against abnormal behaviors and attacks in real time.
 
-### Account and password
+### 5.2 Account and password maintenance
 
 **maintenance**
 
 Account passwords include PolarDB system passwords and device passwords. To ensure account security, you must use complex passwords for your systems and devices and change these passwords on a regular basis. g
 
-## Trouble shooting
+## 6 Trouble shooting
 
-### Fault emergency mechanism
+### 6.1 Fault emergency mechanism
 
 A fault emergency mechanism must be established to minimize the impacts on business.
 
@@ -4507,17 +4636,17 @@ A fault emergency mechanism must be established to minimize the impacts on busin
 
 A fault emergency response mechanism must be established, so that you can contact relevant maintenance engineers to rectify faults or handle security events as soon as possible.
 
-### Stock-up mechanism
+### 6.2 Stock-up mechanism
 
 A stock-up mechanism must be established for fragile hardware devices to ensure that hardware faults are rectified in a timely manner. This mitigates the negative impacts of hardware faults.
 
-### Troubleshooting procedure
+### 6.3 Troubleshooting procedure
 
 Faults must be promptly identified and rectified based on their symptoms. This topic describes the troubleshooting procedure. When you detect a system fault during routine maintenance, you can use ApsaraDB Operations and Maintenance System to check the fault details, analyze its causes, and then rectify the fault based on fault logs. If the fault cannot be rectified, collect fault information such as system information and fault symptoms, contact Apsara Stack technical support engineers, and then troubleshoot the fault under the guidance of the engineers. After the fault is rectified, verify the solution, review the troubleshooting method, and then make improvements.
 
-### Common faults and solutions
+### 6.4 Common faults and solutions
 
-#### What do I do if the disk space is
+#### 6.4.1 What do I do if the disk space is insufficient?
 
 **insufficient?**
 
@@ -4531,7 +4660,7 @@ Monitoring logs, MySQL data files, or MySQL log files are too large.
 
 If monitoring logs (stored in /usr/local/rds/log) are too large, delete the preceding logs. If MySQL data files (stored in /u01) are too arge, scale up the instance or migrate the files to other hosts. If MySQL log files (stored in /u02) are too large, use RDS Operations and Maintenance System to clear logs. g
 
-#### Interrupted replication
+#### 6.4.2 Interrupted replication
 
 Interruptions may occur when data is being replicated from a primary database to a secondary database.
 
@@ -4548,7 +4677,7 @@ If the data in the primary and secondary databases is inconsistent, rebuild the 
  start slave;
 ```
 
-#### Insufficient swap space
+#### 6.4.3 Insufficient swap space
 
 This topic describes the possible causes and solutions for insufficient swap space.
 
@@ -4570,7 +4699,7 @@ iii. Clean swap.
  swapoff -a ; date ; swapon -a;
 ```
 
-#### High loads
+#### 6.4.4 High loads
 
 This topic describes the possible causes and solutions of high loads.
 
@@ -4582,7 +4711,7 @@ Data is being backed up, too many programs are running concurrently, or the effi
 
 If data is being backed up, ignore this fault. If a large number of programs are concurrently running, contact the developers to reduce the number of concurrent programs. If high loads are caused by low efficiency of executing SQL statements, execute the EXPLAIN statement to check how the system processes the SQL statements and to find performance bottlenecks. If you cannot use indexes to improve the execution efficiency, contact the developers. Ease the limit on CPU and I/O resources.
 
-#### High replication latency
+#### 6.4.5 High replication latency
 
 This topic describes the possible causes and solutions of high replication latencies.
 
@@ -4600,7 +4729,7 @@ If the latency is less than 5,000 milliseconds and continues to decrease, the ne
  start slave;
 ```
 
-#### Module exception
+#### 6.4.6 Module exception
 
 This topic describes the possible causes and solutions of module exceptions.
 
@@ -4622,9 +4751,9 @@ or
  modprode $module file. ko
 ```
 
-### Hardware troubleshooting
+### 6.5 Hardware troubleshooting
 
-#### Memory, motherboard, CPU, power
+#### 6.5.1 Memory, motherboard, CPU, power supply, etc. need to be stopped and replaced
 
 **supply, etc. need to be stopped and replaced**
 
@@ -4650,7 +4779,7 @@ iv. If you cannot access the system, you need to force shut down the server. Aft
 **Maintenance System** and rebuild the secondary databases.
 ions
 
-## High-risk operations
+## 7 High-risk operations
 
 | Type | High-risk operations | Impact |
 |---|---|---|

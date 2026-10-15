@@ -3,16 +3,155 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Developer Guide 202
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 419
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Developer Guide 20260828.pdf"
+source_pdf: "30c99f511f7c4ff3_Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Auto%20Scaling%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Apsara Stack documentation
+- 1 Getting started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Process of API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about API operations
+  - 2.3 Obtain AccessKey credentials
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain Auto Scaling SDKs
+- 3 Examples of using Auto Scaling SDK for Java
+  - 3.1 Getting started
+  - 3.2 Work with Auto Scaling SDK for Java
+    - 3.2.1 Install Auto Scaling SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Use Auto Scaling SDK for Java to initiate requests
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples of Auto Scaling SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use Auto Scaling SDK for Python
+    - 4.2.1 Install Auto Scaling SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Use Auto Scaling SDK for Python to initiate requests
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Examples of using Auto Scaling SDK for Go
+  - 5.1 Getting started
+  - 5.2 Work with Auto Scaling SDK for Go
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API Reference
+  - 6.1 API usage instructions
+  - 6.2 Make API requests
+  - 6.3 Request structure
+  - 6.4 Common parameters
+  - 6.5 Responses
+    - 6.5.1 Successful response examples
+    - 6.5.2 Sample error responses
+  - 6.6 Request signatures
+  - 6.7 Scaling groups
+    - 6.7.1 CreateScalingGroup
+    - 6.7.2 ModifyScalingGroup
+    - 6.7.3 EnableScalingGroup
+    - 6.7.4 DisableScalingGroup
+    - 6.7.5 DeleteScalingGroup
+    - 6.7.6 DescribeScalingGroups
+    - 6.7.7 DescribeScalingInstances
+    - 6.7.8 DescribeScalingActivityDetail
+    - 6.7.9 DescribeScalingActivities
+    - 6.7.10 AttachDBInstances
+    - 6.7.11 DetachDBInstances
+    - 6.7.12 SetGroupDeletionProtection
+    - 6.7.13 ResumeProcesses
+    - 6.7.14 SuspendProcesses
+    - 6.7.15 AttachVServerGroups
+    - 6.7.16 DetachVServerGroups
+    - 6.7.17 AttachAlbServerGroups
+    - 6.7.18 DetachAlbServerGroups
+    - 6.7.19 AttachLoadBalancers
+    - 6.7.20 DetachLoadBalancers
+  - 6.8 Scaling configurations
+    - 6.8.1 CreateScalingConfiguration
+    - 6.8.2 DescribeScalingConfigurations
+    - 6.8.3 ModifyScalingConfiguration
+    - 6.8.4 DeleteScalingConfiguration
+    - 6.8.5 CreateEciScalingConfiguration
+    - 6.8.6 DescribeEciScalingConfigurations
+    - 6.8.7 ModifyEciScalingConfiguration
+    - 6.8.8 DeleteEciScalingConfiguration
+  - 6.9 Scaling rules
+    - 6.9.1 CreateScalingRule
+    - 6.9.2 ModifyScalingRule
+    - 6.9.3 DescribeScalingRules
+    - 6.9.4 DeleteScalingRule
+  - 6.10 Scaling tasks
+    - 6.10.1 ExecuteScalingRule
+    - 6.10.2 ScaleWithAdjustment
+    - 6.10.3 AttachInstances
+    - 6.10.4 RemoveInstances
+    - 6.10.5 DetachInstances
+  - 6.11 Scheduled tasks
+    - 6.11.1 CreateScheduledTask
+    - 6.11.2 ModifyScheduledTask
+    - 6.11.3 DescribeScheduledTasks
+    - 6.11.4 DeleteScheduledTask
+  - 6.12 Event-triggered tasks
+    - 6.12.1 CreateAlarm
+    - 6.12.2 DescribeAlarms
+    - 6.12.3 ModifyAlarm
+    - 6.12.4 EnableAlarm
+    - 6.12.5 DisableAlarm
+    - 6.12.6 DeleteAlarm
+  - 6.13 Lifecycle hooks
+    - 6.13.1 CreateLifecycleHook
+    - 6.13.2 ModifyLifecycleHook
+    - 6.13.3 RecordLifecycleActionHeartbeat
+    - 6.13.4 DescribeLifecycleHooks
+    - 6.13.5 DescribeLifecycleActions
+    - 6.13.6 CompleteLifecycleAction
+    - 6.13.7 DeleteLifecycleHook
+  - 6.14 Notification rules
+    - 6.14.1 CreateNotificationConfiguration
+    - 6.14.2 ModifyNotificationConfiguration
+    - 6.14.3 DescribeNotificationConfigurations
+    - 6.14.4 DescribeNotificationTypes
+    - 6.14.5 DeleteNotificationConfiguration
+  - 6.15 Instances
+    - 6.15.1 EnterStandby
+    - 6.15.2 ExitStandby
+    - 6.15.3 SetInstancesProtection
+    - 6.15.4 SetInstanceHealth
+    - 6.15.5 RebalanceInstances
+  - 6.16 Regions
+    - 6.16.1 DescribeRegions
+  - 6.17 Tags
+    - 6.17.1 TagResources
+    - 6.17.2 ListTagResources
+    - 6.17.3 UntagResources
+    - 6.17.4 ListTagKeys
+    - 6.17.5 ListTagValues
+  - 6.18 Others
+    - 6.18.1 DescribeLimitation
+  - 6.19 Error codes
+    - 6.19.1 Client errors
+    - 6.19.2 Server errors
+  - 6.20 Ensure idempotence
+- 7 Appendixes
+  - 7.1 STS overview
+    - 7.1.1 What is STS?
+    - 7.1.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to find the required documentation when you call an API operation of an Apsara Stack service.
 
@@ -35,7 +174,7 @@ use.
 want to view.
 5. In the product documentation section, click **View Details** or **Download PDF**.
 
-### Process of API calls
+### 1.2 Process of API calls
 
 Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud Public Cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called by using the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -63,9 +202,9 @@ You can refer to the developer guide of the cloud service that you want to use t
 5. Obtain the endpoint of the cloud service.
 6. Obtain the cloud service SDK and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -92,7 +231,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 3. Click **Log In**.
 4. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### View the information about
+### 2.2 View the information about API operations
 
 **API operations**
 
@@ -106,7 +245,7 @@ You must obtain a service name, API operation name, and API version. All the inf
 operation name in the search box, and then click the search icon.
 4. View and remember the service name, API operation name, and API version.
 
-### Obtain AccessKey credentials
+### 2.3 Obtain AccessKey credentials
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You must use one of the preceding types of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain AccessKey credentials that are assigned by RAM.
 
@@ -150,7 +289,7 @@ credentials you want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey credentials of the organization.
 
-### Obtain an STS AccessKey 3-
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 **tuple**
 
@@ -279,7 +418,7 @@ tained in the previous step.
 
 `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common header parameters
 
 **header parameters**
 
@@ -335,7 +474,7 @@ The following table describes the additional response parameters returned by def
 | Department | The ID of the organization. |
 |---|---|
 
-### Obtain Auto Scaling SDKs
+### 2.6 Obtain Auto Scaling SDKs
 
 When you call Auto Scaling API operations by using the Portable OpenAPI Proxy (POP) gateway, you must obtain Auto Scaling SDKs. This topic describes how to obtain Alibaba Cloud SDKs.
 
@@ -351,11 +490,11 @@ Currently, SDKs for Java, Python, and Go are supported. You can go to the SDK Ce
 
 We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. ng Auto Scaling SDK for Java
 
-## Examples of using Auto
+## 3 Examples of using Auto Scaling SDK for Java
 
 **Scaling SDK for Java**
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use Auto Scaling SDK for Java.
 
@@ -459,11 +598,11 @@ y specified resources.
 
 `}` `}` `}`
 
-### Work with Auto Scaling SDK
+### 3.2 Work with Auto Scaling SDK for Java
 
 **for Java**
 
-#### Install Auto Scaling SDK for Java
+#### 3.2.1 Install Auto Scaling SDK for Java
 
 This topic describes how to install and use Auto Scaling SDK for Java. Auto Scaling SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Auto Scaling SDK for Java by adding Maven dependencies or downloading the SDK. For more information, see Alibaba Cloud SDKs. To use the development tool kit of Auto Scaling, you must install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java. We recommend that you use the core library version 4.5.17 or later and Auto Scaling SDK for Java version 2.1.1. To install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java, you must add the following dependencies to the pom.xml file. For information about the specific SDK version, visit Alibaba Cloud SDKs. ng Auto Scaling SDK for Java
 
@@ -479,7 +618,7 @@ This topic describes how to install and use Auto Scaling SDK for Java. Auto Scal
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Java supports authentication based on an AccessKey pair. For information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
@@ -499,7 +638,7 @@ ret.
 
 In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. ng Auto Scaling SDK for Java
 
@@ -529,7 +668,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Use Auto Scaling SDK for Java to
+#### 3.2.4 Use Auto Scaling SDK for Java to initiate requests
 
 **initiate requests**
 
@@ -576,7 +715,7 @@ If an exception occurs or if you require the original HTTP response, call `doAct
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. ng Auto Scaling SDK for Java `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -607,7 +746,7 @@ try {
 
 `}`
 
-#### Use CommonRequest to call API
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -701,11 +840,11 @@ he SecurityToken field in the request parameters.
 
 `}` `}` `}` f Auto Scaling SDK for Python
 
-## Call examples of Auto
+## 4 Call examples of Auto Scaling SDK for Python
 
 **Scaling SDK for Python**
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain and use Auto Scaling SDK for Python.
 
@@ -770,11 +909,11 @@ request = CreateScalingGroupRequest() request.set_accept_format('json') # Specif
 response = clt.do_action_with_exception(request) print response
 ```
 
-### Use Auto Scaling SDK for
+### 4.2 Use Auto Scaling SDK for Python
 
 **Python**
 
-#### Install Auto Scaling SDK for Python
+#### 4.2.1 Install Auto Scaling SDK for Python
 
 This topic describes how to install and use Auto Scaling SDK for Python.
 
@@ -810,7 +949,7 @@ pip install aliyun-python-sdk-ess==2.3.19
 
 In the preceding code, the version of `aliyun-python-sdk-ess` is 2.3.19. You can replace the version with the latest one.
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Auto Scaling SDK for Python supports authentication based on AccessKey credentials. For information about how to obtain the AccessKey credentials, see Obtain AccessKey credentials. If you want to use your AccessKey credentials to access Apsara Stack, you must specify the AccessKey credentials as the authentication credentials when you initialize the client.
 
@@ -826,7 +965,7 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. f Auto Scaling SDK for Python
 
@@ -870,7 +1009,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Use Auto Scaling SDK for Python to
+#### 4.2.4 Use Auto Scaling SDK for Python to initiate requests
 
 **initiate requests**
 
@@ -903,7 +1042,7 @@ request = DescribeScalingGroupsRequest() request.set_accept_format('json')
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -924,7 +1063,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -987,11 +1126,11 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 ng Auto Scaling SDK for Go
 
-## Examples of using Auto
+## 5 Examples of using Auto Scaling SDK for Go
 
 **Scaling SDK for Go**
 
-### Getting started
+### 5.1 Getting started
 
 Alibaba Cloud SDK for Go allows you to access services without the need for complex coding. This topic describes how to obtain and use Auto Scaling SDK for Go.
 
@@ -1071,17 +1210,17 @@ AccessKey secret.
 request.Scheme = "HTTPS"
 ```
 
-### Work with Auto Scaling SDK
+### 5.2 Work with Auto Scaling SDK for Go
 
 **for Go**
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 ng Auto Scaling SDK for Go When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
@@ -1103,7 +1242,7 @@ AccessKey secret.
 
 In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use Auto Scaling SDK for Go to initiate a request. To use Auto Scaling SDK for Go to initiate a request, perform the following steps:
 1. Import Auto Scaling SDK for Go
@@ -1144,7 +1283,7 @@ request := ess.CreateDescribeScalingGroupsAttributeRequest() request.InstanceId 
 response, err := essClient.DescribeScalingGroupsAttribute(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 If an error occurs on the server or in the SDK when you can use Auto Scaling SDK for Go, a
 
@@ -1230,7 +1369,7 @@ response, err := essClient.DescribeScalingGroups(request) if serverError, ok := 
 
 `}`
 
-#### Use CommonRequest to call API
+#### 5.2.5 Use CommonRequest to call API operations
 
 **operations**
 
@@ -1335,9 +1474,9 @@ e instance ID. If you want to modify, delete, or query an instance, you must con
 
 `}`
 
-## API Reference
+## 6 API Reference
 
-### API usage instructions
+### 6.1 API usage instructions
 
 Before you call Auto Scaling API operations, you must be granted the Auto Scaling API permissions in the Auto Scaling console. The following table describes the errors that occur if you are not granted the permissions.Table 1. Description
 
@@ -1346,15 +1485,15 @@ Before you call Auto Scaling API operations, you must be granted the Auto Scalin
 | 403 | Forbidden.Unsubscribe d | Do not have permission to access this API. | The error message returned because Auto Scaling is not activated, and you are not authorized to call Auto Scaling API operations. |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 
-### Make API requests
+### 6.2 Make API requests
 
 Call an Auto Scaling API operation, send an HTTP GET request to the Auto Scaling API server, and then add corresponding parameters to the request based on the description of the corresponding API operation. After the request is processed, the system returns a result.
 
-### Request structure
+### 6.3 Request structure
 
 This topic describes the syntax of an API request. Service endpoint Communications protocol You can send requests over HTTP or HTTPS. We recommend that you use HTTPS to improve security. Method You can send requests by using the HTTP GET method. This method requires that you specify request parameters in the request URLs. Request parameters For each request, you must specify the operation that you want to perform, such as CreateScalingGroup. Additionally, each request must contain the common request parameters and operation-specific request parameters. Character encoding All requests and responses are encoded in UTF-8.
 
-### Common parameters
+### 6.4 Common parameters
 
 **Common request parameters**
 
@@ -1388,9 +1527,9 @@ organization ID, resource set ID, and instance ID. You cannot configure the x-ac
 
 API responses use the HTTP response format: A 2xx HTTP status code indicates that the call is successful. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-### Responses
+### 6.5 Responses
 
-#### Successful response examples
+#### 6.5.1 Successful response examples
 
 API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML.
 
@@ -1415,7 +1554,7 @@ JSON format `{`
 
 `}`
 
-#### Sample error responses
+#### 6.5.2 Sample error responses
 
 When an error occurs during an API call, no result data is returned. You can locate the cause of an error based on the error codes defined by each API operation, the error code table in the appendix Client errors, and Server errors. When an error occurs on an HTTP request for an API operation, a 4xx or 5xx HTTP status code is returned. The response body includes the error code and error message. The response body also contains a globally unique request ID (RequestId) and the ID of the site you accessed with this request (HostId). XML format
 
@@ -1439,7 +1578,7 @@ JSON format `{`
 
 `}`
 
-### Request signatures
+### 6.6 Request signatures
 
 This topic describes how to use the request signature to verify the identity of the API caller. Auto Scaling authenticates each access request. Therefore, each request must contain signature information, regardless of whether the request is sent over HTTP or HTTPS. Auto Scaling implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. You can obtain the AccessKey ID and the AccessKey secret in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The AccessKey ID is used to verify the identity of a user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. Perform the following operations to sign an access request:
 1. Create a canonicalized query string by using request parameters.
@@ -1484,9 +1623,9 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 
 The signature string is used as the value of the Signature parameter, and the parameter is added to the request URL.
 
-### Scaling groups
+### 6.7 Scaling groups
 
-#### CreateScalingGroup
+#### 6.7.1 CreateScalingGroup
 
 Creates a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios. You can create up to 50 scaling groups in one region. A scaling group does not immediately take effect after you create it. You must call the EnableScalingGroup operation to enable the scaling group. After the scaling group is enabled, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group. Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are associated with a scaling group must reside in the same region as the scaling group. For more information, see the Regions and zones topic in ECS documentation. If you specify an SLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the specified SLB instance. The default weight of an ECS instance added to the backend server group is 50. The specified SLB instance must meet the following requirements: The SLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the status of the specified SLB instance. The health check feature is enabled on all listener ports configured for the SLB instance. Otherwise, the scaling group cannot be created. If you specify an ApsaraDB RDS instance when you create a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the whitelist that manages access to the specified ApsaraDB RDS instance. The specified ApsaraDB RDS instance must meet the following requirements: The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the status of the specified ApsaraDB RDS instance. The number of IP addresses in the whitelist that manages access to the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the Configure a whiteli st topic in ApsaraDB RDS documentation. If the MultiAZPolicy parameter of the scaling group is set to COST_OPTIMIZED, the following rules apply: You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the percentages of pay-as-you-go instances and preemptible instances based on the cost optimization policy. This instance allocation method is prioritized during scaling. If OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools is not specified, the instance types provided at the lowest cost are used to create instances based on the cost optimization policy.
 
@@ -1634,7 +1773,7 @@ Sample success responses `XML` format
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersio n parameter contains non-digit characters. |
 |---|---|---|---|
 
-#### ModifyScalingGroup
+#### 6.7.2 ModifyScalingGroup
 
 Modifies a scaling group. You cannot modify the following parameters: RegionId LoadBalancerId
 
@@ -1738,7 +1877,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersio n parameter of the launch template contains non-digit characters. |
 
-#### EnableScalingGroup
+#### 6.7.3 EnableScalingGroup
 
 Enables a scaling group. You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group.
 
@@ -1835,7 +1974,7 @@ Sample success responses `XML` format
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersio n parameter contains non-digit characters. |
 |---|---|---|---|
 
-#### DisableScalingGroup
+#### 6.7.4 DisableScalingGroup
 
 Disables a scaling group. The scaling activity that is being executed before this operation is called continues until the scaling activity is complete. Scaling activity requests that are issued after this operation is called are rejected. You can call this operation only if the scaling group is in the Active state.
 
@@ -1882,7 +2021,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within your Apsara Stack tenant account. |
 
-#### DeleteScalingGroup
+#### 6.7.5 DeleteScalingGroup
 
 Deletes a scaling group. When a scaling group is deleted, the scaling configurations, rules, activities, and scaling requests that are associated with the scaling group are also deleted. The following tasks and instances are not deleted after a scaling group is deleted: scheduled tasks, event-triggered tasks, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances.
 
@@ -1934,7 +2073,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | The error message returned because the specified scaling group contains ECS instances. |
 
-#### DescribeScalingGroups
+#### 6.7.6 DescribeScalingGroups
 
 Queries scaling groups. A scaling group can have the following states during its lifecycle: Active: The scaling group is active. Scaling groups that are in the Active state can receive requests to execute scaling rules and trigger scaling activities. Inactive: The scaling group is inactive. Scaling groups that are in the Inactive state cannot receive any requests to execute scaling rules. Deleting: The scaling group is being deleted. Scaling groups that are in the Deleting state cannot receive any requests to execute scaling rules.
 
@@ -2137,7 +2276,7 @@ onfigurationId>
 
 `]` `}` `}` `]` `}` `}`
 
-#### DescribeScalingInstances
+#### 6.7.7 DescribeScalingInstances
 
 Queries the Elastic Compute Service (ECS) instances in a scaling group and the details of the instances. You can query the ECS instances in a scaling group by specifying the scaling group ID, scaling configuration ID, health status, lifecycle status, and how an ECS instance is created.
 
@@ -2251,7 +2390,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### DescribeScalingActivityDetail
+#### 6.7.8 DescribeScalingActivityDetail
 
 Queries information about a scaling activity.
 
@@ -2306,7 +2445,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidParameter | The input parameter "ScalingActivityId" that is mandatory for processing this request is not supplied | No value is specified for ScalingActivityId. |
 
-#### DescribeScalingActivities
+#### 6.7.9 DescribeScalingActivities
 
 Queries one or more scaling activities. You can specify a scaling group ID to query all scaling activities in the scaling group. You can filter query results based on the status of scaling activities. You can query scaling activities that are executed in the previous 30 days.
 
@@ -2406,7 +2545,7 @@ the Total Capacity from \"0\" to \"1\".",
 
 `}` `}` `}`
 
-#### AttachDBInstances
+#### 6.7.10 AttachDBInstances
 
 Associates ApsaraDB RDS instances with a scaling group.
 
@@ -2468,7 +2607,7 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.DBInst anceSecurityIP | Security IP quota exceeded in DB instance "%s". | The maximum number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance has been reached. |
 | 400 | InvalidInstanceIds.Priv ateIpNotFound | Can not find all private ips of instances in specific scaling group. | The private IP addresses of instances in the scaling group cannot be obtained. |
 
-#### DetachDBInstances
+#### 6.7.11 DetachDBInstances
 
 Disassociates ApsaraDB RDS instances from a scaling group.
 
@@ -2522,7 +2661,7 @@ Sample success responses `XML` format
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
 | 400 | InvalidDBInstanceId.N otFound | DB instance "%s" does not exist. | The ApsaraDB RDS instance does not exist. |
 
-#### SetGroupDeletionProtection
+#### 6.7.12 SetGroupDeletionProtection
 
 Enables or disables deletion protection for a scaling group.
 
@@ -2572,7 +2711,7 @@ Sample success responses `XML` format
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 | 400 | InvalidOperation.Confli ct | Specific operation may conflicts with other operations, please retry later. | The operation conflicts with another operation that is in progress. Try again later. |
 
-#### ResumeProcesses
+#### 6.7.13 ResumeProcesses
 
 Resumes suspended processes in a scaling group.
 
@@ -2626,7 +2765,7 @@ Sample success responses `XML` format
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within the Apsara Stack tenant account. |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 
-#### SuspendProcesses
+#### 6.7.14 SuspendProcesses
 
 Suspends processes in a scaling group.
 
@@ -2679,7 +2818,7 @@ Sample success responses `XML` format
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within the Apsara Stack tenant account. |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 
-#### AttachVServerGroups
+#### 6.7.15 AttachVServerGroups
 
 Attaches one or more vServer groups to a scaling group.
 
@@ -2764,7 +2903,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidVServerGroupId. ForLoadBalancer | Invalid VServerGroupId For LoadBalancer "%s". | The vServer group that is specified by VServerGroupId does not belong to the specified load balancer. |
 | 400 | QuotaExceeded.VServ erGroup | VServerGroup quota exceeded in the specified scaling group. | The maximum number of vServer groups that can be associated with the scaling group has been reached. |
 
-#### DetachVServerGroups
+#### 6.7.16 DetachVServerGroups
 
 Detaches vServer groups of a Server Load Balancer (SLB) instance from a scaling group.
 
@@ -2828,7 +2967,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 | 400 | MissingParameter | The input parameter "%s" that is mandatory for processing this request is not supplied. | A required parameter is not specified. |
 
-#### AttachAlbServerGroups
+#### 6.7.17 AttachAlbServerGroups
 
 Associates Application Load Balancer (ALB) server groups with a scaling group.
 
@@ -2891,7 +3030,7 @@ Sample success responses `XML` format
 | 400 | AlbServerGroup.NotExi st | The ServerGroup "%s" do(es) not exist. | The ALB server group does not exist within the Apsara Stack tenant account. |
 | 400 | AlbServerGroup.Alread yAttached | The ALB ServerGroups are already attached. | The ALB server group is already associated with the scaling group. |
 
-#### DetachAlbServerGroups
+#### 6.7.18 DetachAlbServerGroups
 
 Disassociates Application Load Balancer (ALB) server groups from a scaling group.
 
@@ -2950,7 +3089,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | AlbServerGroup.NotAtt ached | The ALB server groups are not attached to specific ScalingGroup. | The ALB server group is not associated with the scaling group. |
 
-#### AttachLoadBalancers
+#### 6.7.19 AttachLoadBalancers
 
 Associates Server Load Balancer (SLB) instances with a scaling group.
 
@@ -3024,7 +3163,7 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.Backe ndServer | Backend server quota exceeded in the load balancer "%s". | The maximum number of backend servers of the SLB instance has been reached. |
 | 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | The scaling configuration of the scaling group does not exist. |
 
-#### DetachLoadBalancers
+#### 6.7.20 DetachLoadBalancers
 
 Detaches Server Load Balancer (SLB) instances from a scaling group.
 
@@ -3087,9 +3226,9 @@ Sample success responses `XML` format
 | 404 | InvalidLoadBalancerId. NotFound | The Load Balancer "%s" does not exist. | The specified SLB instance is not attached to the scaling group. |
 |---|---|---|---|
 
-### Scaling configurations
+### 6.8 Scaling configurations
 
-#### CreateScalingConfiguration
+#### 6.8.1 CreateScalingConfiguration
 
 Creates a scaling configuration. Auto Scaling automatically scales out Elastic Compute Service (ECS) instances based on a scaling configuration. ECS instances can be configured in the following modes: InstancePatternInfo.N: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and price limit. The system creates ECS instances of an instance type that is provided at the lowest price based on your configurations. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types. InstanceType: In this mode, you must specify an instance type. InstanceTypes.N: In this mode, you must specify multiple instance types. InstanceTypeOverride.N: In this mode, you must specify multiple instance types and weights for the instance types. Cpu and Memory: In this mode, you can specify the Cpu and Memory parameters to configure the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
 
@@ -3275,7 +3414,7 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.Scalin gConfiguration | Scaling configuration quota exceeded in the specified scaling group. | The error message returned because the maximum number of scaling configurations has been reached. |
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | The error message returned because the maximum number of ECS instances that can be associated with the specified security group is reached. |
 
-#### DescribeScalingConfigurations
+#### 6.8.2 DescribeScalingConfigurations
 
 Queries one or more scaling configurations.
 
@@ -3480,7 +3619,7 @@ gConfigurationName>
 
 `}` `}` `}` `}` `}`
 
-#### ModifyScalingConfiguration
+#### 6.8.3 ModifyScalingConfiguration
 
 Modifies a scaling configuration.
 
@@ -3648,7 +3787,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | The user data size exceeds the upper limit. |
 
-#### DeleteScalingConfiguration
+#### 6.8.4 DeleteScalingConfiguration
 
 Deletes a scaling configuration. You cannot delete a scaling configuration in one of the following scenarios: The scaling configuration in your scaling group is in the Active state. Your scaling group contains Elastic Compute Service (ECS) instances that are created based on the scaling configuration.
 
@@ -3697,7 +3836,7 @@ Sample success responses `XML` format
 | 400 | IncorrectScalingConfig urationLifecycleState | The current lifecycle state of specified scaling configuration does not support this action. | The error message returned because the specified scaling configuration is in the Active state. |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | The error message returned because the scaling group contains ECS instances that are created based on the specified scaling configuration. |
 
-#### CreateEciScalingConfiguration
+#### 6.8.5 CreateEciScalingConfiguration
 
 Creates a scaling configuration that is used to create elastic container instances.
 
@@ -3942,7 +4081,7 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | The maximum number of elastic container instances that can be associated with the security group has been reached. |
 |---|---|---|---|
 
-#### DescribeEciScalingConfigurations
+#### 6.8.6 DescribeEciScalingConfigurations
 
 Queries scaling configurations that are used to create elastic container instances.
 
@@ -4588,7 +4727,7 @@ d01.nas.aliyuncs.com",
 
 `}` `}`
 
-#### ModifyEciScalingConfiguration
+#### 6.8.7 ModifyEciScalingConfiguration
 
 Modifies a scaling configuration that is used to create elastic container instances.
 
@@ -4832,7 +4971,7 @@ Sample success responses `XML` format
 | 400 | InvalidUserData.Base6 4FormatInvalid | The specified parameter UserData must be base64 encoded. | The user data is not encoded in Base64. |
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | The maximum size of the user data has been reached. |
 
-#### DeleteEciScalingConfiguration
+#### 6.8.8 DeleteEciScalingConfiguration
 
 Deletes a scaling configuration that is used to create elastic container instances.
 
@@ -4878,9 +5017,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Scaling rules
+### 6.9 Scaling rules
 
-#### CreateScalingRule
+#### 6.9.1 CreateScalingRule
 
 Creates a scaling rule. A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances. This way, the number of ECS instances is still within the specified range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. You can create scaling rules based on input parameters. If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0. If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group. If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that must be scaled: Value of TotalCapacity × Value of AdjustmentValue/100. If the cooldown time (Cooldown) is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group. A scaling group can have up to 10 scaling rules. The following API operations use the unique identifier that is indicated by the ScalingRuleAri parameter of a scaling rule returned by this operation: ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier. CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier.
 
@@ -4986,7 +5125,7 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****"
 | 400 | InvalidStepAdjustment s.MaxNum | Your scaling rule can have at most %s StepAdjustments. | The error message returned because the maximum number of step adjustments in the scaling group has been reached. |
 | 400 | StepBeyondPermitRan ge | Specific parameter "%s" beyond permit range. | The error message returned because the specified upper limit or lower limit of the step adjustment is invalid. |
 
-#### ModifyScalingRule
+#### 6.9.2 ModifyScalingRule
 
 Modifies a scaling rule.
 
@@ -5081,7 +5220,7 @@ Sample success responses `XML` format
 | 400 | InvalidStepAdjustment s.MaxNum | Your scaling rule can have at most %s StepAdjustments. | The error message returned because the maximum number of step adjustments in the scaling group has been reached. |
 | 400 | StepBeyondPermitRan ge | Specific parameter "%s" beyond permit range. | The error message returned because the specified upper limit or lower limit of the step adjustment is invalid. |
 
-#### DescribeScalingRules
+#### 6.9.3 DescribeScalingRules
 
 Queries all scaling rules in a scaling group and information about the scaling rules. You can query all scaling rules in a scaling group by specifying the ID of the scaling group and filter scaling rules that are returned by scaling rule ID, name, unique identifier, and type.
 
@@ -5223,7 +5362,7 @@ d01:134****:scalingRule/efcqrZdjlookc0UkE3dA****",
 
 `}` `]` `}` `}`
 
-#### DeleteScalingRule
+#### 6.9.4 DeleteScalingRule
 
 Deletes a scaling rule.
 
@@ -5270,9 +5409,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScalingRuleId.N otFound | The specified scaling rule does not exist. | The error message returned because the specified scaling rule does not exist within the Apsara Stack tenant account. |
 
-### Scaling tasks
+### 6.10 Scaling tasks
 
-#### ExecuteScalingRule
+#### 6.10.1 ExecuteScalingRule
 
 Executes a scaling rule. Before you call this operation, make sure that the following conditions are met: The scaling group is in the Active state. No scaling activities are in progress in the scaling group. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities without the need to wait for the cooldown time to expire. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can check the returned ScalingActivityId parameter to obtain the status of the scaling activity. If the number of Elastic Compute Service (ECS) instances that you want to add causes the number of instances in the scaling group to exceed the MaxSize value, the rule Total Capacity = MaxSize takes effect. If the number of ECS instances that you want to remove causes the number of instances in the scaling group to be less than the MinSize value, the rule Total Capacity = MinSize takes effect.
 
@@ -5355,7 +5494,7 @@ Sample success responses `XML` format
 | 400 | BreachThresholdBeyon dPermitRange | Specific parameter "%s" beyond permit range. | The error message returned because the specified threshold is invalid. |
 |---|---|---|---|
 
-#### ScaleWithAdjustment
+#### 6.10.2 ScaleWithAdjustment
 
 Triggers a scaling activity based on an adjustment rule.
 
@@ -5412,7 +5551,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### AttachInstances
+#### 6.10.3 AttachInstances
 
 Adds Elastic Compute Service (ECS) instances to a scaling group. Before you add ECS instances to a scaling group, take note of the following items: The ECS instances and the scaling group must reside in the same region. The ECS instances must be in the Running state. The ECS instances are not added to other scaling groups. The ECS instances use the subscription or pay-as-you-go billing method. If the VswitchID parameter is specified for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group. If the VswitchID parameter is not specified for the scaling group, the ECS instances must not reside in VPCs. You can call this operation to add ECS instances to a scaling group only if the scaling group is in the Active state. You can call this operation only if no scaling activities are in progress in the scaling group. If no scaling activities are in progress in the scaling group, the operation can trigger scaling activities even before the cooldown period ends. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the ScalingActivityId parameter in the response. If the total number of ECS instances in the scaling group is greater than the value that you specify for the MaxSize parameter after you add a specific number of ECS instances to the scaling group, the call fails. ECS instances that you manually add to the scaling group are not associated with the active scaling configuration in the scaling group.
 
@@ -5493,7 +5632,7 @@ Sample success responses `XML` format
 | 400 | IncorrectCapacity.Max Size | To attach the instances, the total capacity will be greater than the MaxSize. | The error message returned because the total number of ECS instances that is indicated by the Total Capacity parameter exceeds the specified value of the MaxSize parameter after ECS instances are added to the specified scaling group. |
 |---|---|---|---|
 
-#### RemoveInstances
+#### 6.10.4 RemoveInstances
 
 Removes Elastic Compute Service (ECS) instances from a scaling group. Before you call this operation, make sure that the following requirements are met: The scaling group is in the Active state. No scaling activity is in progress in the scaling group. If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires. The cooldown time is specified by the DefaultCooldown parameter. When an automatically created ECS instance is removed from a scaling group, the instance is stopped and released. When a manually added ECS instance is removed from a scaling group, the ECS instance is not stopped or released. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can use the value of the ScalingActivityId parameter in the response to check the status of the scaling activity. If the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter, the call fails.
 
@@ -5558,7 +5697,7 @@ Sample success responses `XML` format
 | 400 | IncorrectDBInstanceSt atus | The current status of DB instance "XXX" does not support this action. | The error message returned because the specified ApsaraDB RDS instance that is associated with the scaling group to which the specified scaling rule belongs is not in the Running state. |
 | 400 | IncorrectCapacity.MinS ize | To remove the instances, the total capacity will be lesser than the MinSize. | The error message the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter. |
 
-#### DetachInstances
+#### 6.10.5 DetachInstances
 
 Removes one or more Elastic Compute Service (ECS) instances from a scaling group. After ECS instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances that are removed from the scaling group to other scaling groups. After you remove an ECS instance by calling the DetachInstances operation, the ECS instance is not stopped or released. Before you call the DetachInstances operation, make sure that the following conditions are met: The specified scaling group is enabled. The specified scaling group cannot have a scaling activity in progress. If no scaling activities in the scaling group are in progress, the DetachInstances operation can trigger scaling activities without the need to wait for the cooldown period to end. A successful call to the DetachInstances operation indicates only that the request for the call is accepted. The scaling activity can be triggered, but may fail to be executed. You can use the ScalingActivityId parameter in the response to query the status of the scaling activity. The difference between the number of existing ECS instances in the specified scaling group and the number of ECS instances that you want to remove must be greater than or equal to the value of the MinSize parameter. Otherwise, an error message is returned.
 
@@ -5622,9 +5761,9 @@ Sample success responses `XML` format
 | 404 | InvalidInstanceId.NotF ound | Instance “XXX” does not exist. | The error message returned because the specified ECS instance does not exist. |
 |---|---|---|---|
 
-### Scheduled tasks
+### 6.11 Scheduled tasks
 
-#### CreateScheduledTask
+#### 6.11.1 CreateScheduledTask
 
 Creates a scheduled task. You can create up to 20 scheduled tasks within an Apsara Stack tenant account. If a scheduled task fails to trigger a scaling rule due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling rule after the period ends, the task is automatically skipped. If multiple tasks are scheduled at similar points in time to execute scaling rules in the same scaling group, the earliest task executes the scaling activity first. Other tasks may attempt to execute their scaling rules during their launch expiration time, but only one scaling activity can be triggered in a scaling group at a time. If the previous scaling activity is complete and another scheduled task executes the scaling rule during the period that is specified by the LaunchExpirationTime parameter, the scaling rule in the scheduled task is executed, and a new scaling activity is triggered. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
 
@@ -5698,7 +5837,7 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.Sched uledTask | Scheduled task quota exceeded. | The error message returned because the maximum number of scheduled tasks has been reached. |
 | 400 | ScheduledAction.Regio nMismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | The error message returned because the specified scaling rule and the specified scheduled task do not reside in the same region. |
 
-#### ModifyScheduledTask
+#### 6.11.2 ModifyScheduledTask
 
 Modifies a scheduled task. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
 
@@ -5782,7 +5921,7 @@ Sample success responses `XML` format
 |---|---|---|
 | e.Duplicate |   |   |
 
-#### DescribeScheduledTasks
+#### 6.11.3 DescribeScheduledTasks
 
 Queries scheduled tasks. You can query scheduled tasks based on scaling rule, task ID, and task name.
 
@@ -5923,7 +6062,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteScheduledTask
+#### 6.11.4 DeleteScheduledTask
 
 Deletes scheduled tasks.
 
@@ -5972,9 +6111,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScheduledTaskI d.NotFound | The specified scheduled task does not exist. | The error message returned because the specified scheduled task does not exist within the Apsara Stack tenant account. |
 
-### Event-triggered tasks
+### 6.12 Event-triggered tasks
 
-#### CreateAlarm
+#### 6.12.1 CreateAlarm
 
 Creates an event-triggered task.
 
@@ -6067,7 +6206,7 @@ skId>
 |---|---|---|---|
 | 404 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of "%s" is invalid. |
 
-#### DescribeAlarms
+#### 6.12.2 DescribeAlarms
 
 Queries information about event-triggered tasks.
 
@@ -6199,7 +6338,7 @@ d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
 
 `}` `}`
 
-#### ModifyAlarm
+#### 6.12.3 ModifyAlarm
 
 Modifies an event-triggered task.
 
@@ -6281,7 +6420,7 @@ skId>
 
 `}`
 
-#### EnableAlarm
+#### 6.12.4 EnableAlarm
 
 Enables an event-triggered task.
 
@@ -6325,7 +6464,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DisableAlarm
+#### 6.12.5 DisableAlarm
 
 Disables an event-triggered task.
 
@@ -6367,7 +6506,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteAlarm
+#### 6.12.6 DeleteAlarm
 
 Deletes an event-triggered task.
 
@@ -6415,9 +6554,9 @@ skId>
 
 `}`
 
-### Lifecycle hooks
+### 6.13 Lifecycle hooks
 
-#### CreateLifecycleHook
+#### 6.13.1 CreateLifecycleHook
 
 Creates lifecycle hooks.
 
@@ -6513,7 +6652,7 @@ Sample success responses `XML` format
 | 400 | InvalidLifecycleHookN ame.Duplicate | The specified value of parameter lifecycleHookName is duplicated. | The name of the lifecycle hook already exists. |
 | 400 | QuotaExceeded.Lifecy cleHook | Lifecycle hook quota exceeded in the specified scaling group. | The maximum number of lifecycle hooks that you can create has been reached. |
 
-#### ModifyLifecycleHook
+#### 6.13.2 ModifyLifecycleHook
 
 Modifies a lifecycle hook.
 
@@ -6595,7 +6734,7 @@ Sample success responses `XML` format
 | 400 | LifecycleHook | The specified queue does not exist. | The MNS queue does not exist. |
 | 400 | TopicNotExist | The specified topic does not exist. | The MNS topic does not exist. |
 
-#### RecordLifecycleActionHeartbeat
+#### 6.13.3 RecordLifecycleActionHeartbeat
 
 Extends the timeout period of a lifecycle hook.
 
@@ -6654,7 +6793,7 @@ Sample success responses `XML` format
 | 400 | LifecycleAction.TimeEx ceeded | The specified parameter heartbeatTime exceed lifecycleAction max suspend time. | The timeout period of the lifecycle hook exceeds 6 hours. |
 | 400 | LifecycleAction.Record TimesExceeded | The specified lifecycleAction exceed lifecycleAction max record times. | The maximum number of times that you can extend the timeout period of the lifecycle hook has been reached. |
 
-#### DescribeLifecycleHooks
+#### 6.13.4 DescribeLifecycleHooks
 
 Queries information about lifecycle hooks.
 
@@ -6753,7 +6892,7 @@ d01:161456884340****:null/null</NotificationArn>
 |---|---|---|---|
 | 400 | InvalidParamter | The specified value of parameter is not valid. | The value of a parameter is invalid. |
 
-#### DescribeLifecycleActions
+#### 6.13.5 DescribeLifecycleActions
 
 Queries the information about lifecycle actions.
 
@@ -6844,7 +6983,7 @@ CEE24444F7BB</LifecycleActionToken>
 | 400 | InvalidParameter | The specified value of parameter "MaxResults" is not valid. | The value of MaxResults is invalid. |
 | 400 | InvalidParameter | The specified value of parameter "LifecycleActionStatus " is not valid. | The value of LifecycleActionStatus is invalid. |
 
-#### CompleteLifecycleAction
+#### 6.13.6 CompleteLifecycleAction
 
 Ends the timeout period of a lifecycle hook ahead of schedule.
 
@@ -6904,7 +7043,7 @@ Sample success responses `XML` format
 | 400 | InvalidParamter | The specified value of parameter is invalid. | The value of a parameter is invalid. |
 | 400 | LifecycleHookIdAndLif ecycleActionToken.Inv alid | The specified LifecycleActionToken and LifecycleHookId you provided does not match any in process lifecycle action. | The value of LifecycleActionToken does not match the value of LifecycleHookId. |
 
-#### DeleteLifecycleHook
+#### 6.13.7 DeleteLifecycleHook
 
 Deletes a lifecycle hook.
 
@@ -6960,9 +7099,9 @@ Sample success responses `XML` format
 | 400 | InvalidLifecycleHookId. NotExist | The specified LifecycleHookId does not exist. | The lifecycle hook ID does not exist. |
 | 400 | InvalidLifecycleHookN ame.NotExist | The specified LifecycleHookName you provided does not exist. | The lifecycle hook name does not exist. |
 
-### Notification rules
+### 6.14 Notification rules
 
-#### CreateNotificationConfiguration
+#### 6.14.1 CreateNotificationConfiguration
 
 Creates a notification rule.
 
@@ -7038,7 +7177,7 @@ Sample success responses `XML` format
 | 400 | UnsupportedNotificatio nType.CurrentRegion | The notificationType is not supported in the special region which scalingGroup belongs to. | The notification method is not supported in the region of the scaling group. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-#### ModifyNotificationConfiguration
+#### 6.14.2 ModifyNotificationConfiguration
 
 Modifies a notification rule.
 
@@ -7104,7 +7243,7 @@ Sample success responses `XML` format
 | 400 | NotificationConfigurati onNotExist | The specified notification configuration not exist for the scaling group. | The specified event during which Auto Scaling resources change does not exist. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-#### DescribeNotificationConfigurations
+#### 6.14.3 DescribeNotificationConfigurations
 
 Queries the information about notification rules.
 
@@ -7180,7 +7319,7 @@ beijing:161456884340****:topic/modifyLifecycleHo****",
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-#### DescribeNotificationTypes
+#### 6.14.4 DescribeNotificationTypes
 
 Queries information about notification types.
 
@@ -7241,7 +7380,7 @@ Sample success responses `XML` format
 
 `]` `}` `}`
 
-#### DeleteNotificationConfiguration
+#### 6.14.5 DeleteNotificationConfiguration
 
 Deletes a notification rule.
 
@@ -7304,9 +7443,9 @@ Sample success responses `XML` format
 | 400 | NotificationConfigurati onNotExist | The specified NotificationConfigurati on not exist for the scalingGroup. | The notification rule and the event that triggers the notification rule do not exist. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-### Instances
+### 6.15 Instances
 
-#### EnterStandby
+#### 6.15.1 EnterStandby
 
 Puts an Elastic Compute Service (ECS) instance into the Standby state.
 
@@ -7365,7 +7504,7 @@ Sample success responses `XML` format
 | 404 | InvalidInstanceId.NotF ound | Instance "XXX" does not exist. | The ECS instance does not exist. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-#### ExitStandby
+#### 6.15.2 ExitStandby
 
 Removes an Elastic Compute Service (ECS) instance from the Standby state.
 
@@ -7429,7 +7568,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
 
-#### SetInstancesProtection
+#### 6.15.3 SetInstancesProtection
 
 Puts Elastic Compute Service (ECS) instances into or removes ECS instances from the Protected state.
 
@@ -7489,7 +7628,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-#### SetInstanceHealth
+#### 6.15.4 SetInstanceHealth
 
 Configures the health check feature for Elastic Compute Service (ECS) instances.
 
@@ -7542,7 +7681,7 @@ Sample success responses `XML` format
 | 400 | InvalidInstanceId.NotF ound | Instance "%s" does not exist. | The instance does not exist in the scaling group. |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 
-#### RebalanceInstances
+#### 6.15.5 RebalanceInstances
 
 Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group.
 
@@ -7603,9 +7742,9 @@ Sample success responses `XML` format
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the RebalanceInstances operation. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within your Apsara Stack tenant account. |
 
-### Regions
+### 6.16 Regions
 
-#### DescribeRegions
+#### 6.16.1 DescribeRegions
 
 Queries the regions in which Auto Scaling is available.
 
@@ -7672,9 +7811,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidAcceptLanguag e.NotFound | Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed. | The specified language is not supported. |
 
-### Tags
+### 6.17 Tags
 
-#### TagResources
+#### 6.17.1 TagResources
 
 Creates and adds tags to Auto Scaling resources.
 
@@ -7725,7 +7864,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListTagResources
+#### 6.17.2 ListTagResources
 
 Queries the tags that are added to Auto Scaling resources.
 
@@ -7799,7 +7938,7 @@ Sample success responses `XML` format
 
 `}]` `}`
 
-#### UntagResources
+#### 6.17.3 UntagResources
 
 Removes tags from Auto Scaling resources. After you remove a tag that is not added to other resources, the tag is automatically deleted.
 
@@ -7844,7 +7983,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListTagKeys
+#### 6.17.4 ListTagKeys
 
 Queries the tag keys of Auto Scaling resources.
 
@@ -7905,7 +8044,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidResourceType.N otFound | The ResourceType provided does not exist in our records. | The value of ResourceType is invalid. |
 
-#### ListTagValues
+#### 6.17.5 ListTagValues
 
 Queries the tag values of Auto Scaling resources.
 
@@ -7970,9 +8109,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidTagKey.Malform ed | The specified tag key "%s" is not valid. | The tag key does not exist. |
 
-### Others
+### 6.18 Others
 
-#### DescribeLimitation
+#### 6.18.1 DescribeLimitation
 
 Queries information about resource quota.
 
@@ -8053,9 +8192,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 <MaxNumberOfScalingInstances>1000</MaxNumberOfScalingInstances> <RequestId>BE9BEB41-E7B8-4C7D-A3CF-2DCB106665E9</RequestId> <MaxNumberOfScheduledTasks>20</MaxNumberOfScheduledTasks> <MaxNumberOfVServerGroups>5</MaxNumberOfVServerGroups> <MaxNumberOfLoadBalancers>10</MaxNumberOfLoadBalancers> <MaxNumberOfAlbServerGroup>30</MaxNumberOfAlbServerGroup> <MaxNumberOfMinSize>2000</MaxNumberOfMinSize> <MaxNumberOfScalingGroups>50</MaxNumberOfScalingGroups> <MaxNumberOfNotificationConfigurations>6</MaxNumberOfNotificationConfigurations> <MaxNumberOfMaxSize>2000</MaxNumberOfMaxSize> <MaxNumberOfDBInstances>8</MaxNumberOfDBInstances> <MaxNumberOfLifecycleHooks>6</MaxNumberOfLifecycleHooks> <MaxNumberOfScalingRules>50</MaxNumberOfScalingRules> <MaxNumberOfNlbServerGroup /> <MaxNumberOfScalingConfigurations>10</MaxNumberOfScalingConfigurations>
 ```
 
-### Error codes
+### 6.19 Error codes
 
-#### Client errors
+#### 6.19.1 Client errors
 
 This topic describes the details of errors caused by clients. Table 1. Description
 
@@ -8076,7 +8215,7 @@ This topic describes the details of errors caused by clients. Table 1. Descripti
 | 403 | Forbidden.UserVerifica tion | Your user account is not verified by Aliyun. | The error message returned because the real-name verification is not complete. |
 | 400 | ResourceNotAvailable | Resource you requested is not available in this region or zone. | The error message returned because Auto Scaling is unavailable in the specified region. |
 
-#### Server errors
+#### 6.19.2 Server errors
 
 This topic describes the details of errors caused by servers. Table 1. Description
 
@@ -8085,15 +8224,15 @@ This topic describes the details of errors caused by servers. Table 1. Descripti
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because the server fails to process the request. |
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | The error message returned because the server fails to process this request. |
 
-### Ensure idempotence
+### 6.20 Ensure idempotence
 
 This topic describes how to ensure that requests are idempotent by using ClientToken. If a request times out or an internal server error occurs when the ExecuteScalingRule operation is called to create or release ECS instances, the client may attempt to resend the request. In this case, the client provides the ClientToken parameter to prevent the server from creating or releasing more instances than intended. The ClientToken parameter also ensures that requests are idempotent. The ClientToken value is a unique and case-sensitive string that is generated by the client. The token can only contain ASCII characters and cannot exceed 64 characters in length. If the same ClientToken value is used to call the CreateInstance operation, the server returns identical request results with identical ScalingActivityId values. Therefore, when the request is resent due to an error, the same ClientToken value can ensure that only one scaling activity is created and the corresponding ScalingActivityId value is obtained. If you provide a used ClientToken value and other request parameters are different, Auto Scaling returns the `IdempotentParameterMismatch` error code. Note: You must specify the SignatureNonce, Timestamp, and Signature parameters again before the request is resent because Auto Scaling uses SignatureNonce to prevent replay attacks and uses Timestamp to mark the time of each request. Therefore, you must provide different SignatureNonce and Timestamp values. This also produces a different Signature value. Typically, you only need to configure the client to resend a request in the case of Error 503 (ServiceUnAvailable) or no response. If Error 200 is returned, a retry can obtain the same result as that of the previous request, but the server status is not affected. If Error 4xx or 500 is returned, the request cannot be retried unless the error message states Try it later.
 
-## Appendixes
+## 7 Appendixes
 
-### STS overview
+### 7.1 STS overview
 
-#### What is STS?
+#### 7.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -8105,7 +8244,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

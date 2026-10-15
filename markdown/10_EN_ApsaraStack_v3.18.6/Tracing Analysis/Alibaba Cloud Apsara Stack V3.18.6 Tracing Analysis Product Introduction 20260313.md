@@ -2,20 +2,27 @@
 title: "Tracing Analysis Product Introduction 20260313"
 product_version: "V3.18.6"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis Product Introduction 20260313.pdf"
+source_pdf: "f12c64a1a965aa8f_Alibaba Cloud Apsara Stack V3.18.6 Tracing Analysis Product Introduction 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Tracing%20Analysis%20Product%20Introduction%2020260313.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Tracing Analysis Product Introduction 20260313
 
+## Table of Contents
+
+- 1 Tracing Analysis
+- 2 Product details
+- 3 Product value
+- 4 Scenarios
+
 ysis
 
-## Tracing Analysis
+## 1 Tracing Analysis
 
 Tracing Analysis provides developers of distributed applications with tools to restore complete call traces, collect call request statistics, visualize trace topology, and perform application dependency analysis. These capabilities help developers quickly identify and diagnose performance bottlenecks in distributed application architectures and improve development and diagnostic efficiency in the microservice era. ails
 
-## Product details
+## 2 Product details
 
 Tracing Analysis is based on the OpenTracing standard. It supports applications written in multiple languages and reconstructs complete call traces.
 
@@ -33,9 +40,13 @@ Tracing Analysis collects distributed call data from all your distributed micros
 
 **Multi-language program integration**
 
-Built on the OpenTracing standard, it is compatible with open source projects such as Jaeger and Zipkin. Collected traces can be used directly for log analysis and integrated with downstream analytics platforms such as MaxCompute. e
+Built on the OpenTracing standard, it is compatible with open source projects such as Jaeger and Zipkin.
 
-## Product value
+**Rich downstream integration scenarios**
+
+Collected traces can be used directly for log analysis and integrated with downstream analytics platforms such as MaxCompute. e
+
+## 3 Product value
 
 Tracing Analysis monitors and analyzes request flows in distributed systems. It provides realtime monitoring views to help developers and Operations and Maintenance (O&M) teams identify performance bottlenecks, optimize resource allocation, and troubleshoot faults.
 
@@ -51,7 +62,7 @@ You can view call information from two dimensions: By node: View the overall res
 
 Tracing Analysis helps you quickly locate problems in several ways: Compare data from today and yesterday to quickly find new and surging exceptions. Associate exceptions with requests to identify the originating requests and view the average number of exceptions per request. This ensures that no critical exceptions are missed. View exceptions from three dimensions: name, message, and interface. This helps you quickly locate the core exceptions in your system.
 
-## Scenarios
+## 4 Scenarios
 
 Tracing Analysis applies to scenarios such as topology visualization, troubleshooting and diagnostics, and database call statistics.
 

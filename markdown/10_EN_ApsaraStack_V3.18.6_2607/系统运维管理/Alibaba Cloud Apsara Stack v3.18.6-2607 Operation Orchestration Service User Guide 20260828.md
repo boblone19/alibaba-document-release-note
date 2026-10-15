@@ -3,16 +3,38 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 59
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828.pdf"
+source_pdf: "ee84c750e3205063_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service User Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the OOS console
+- 2 Welcome page
+- 3 Scheduled O&M
+- 4 Public templates
+- 5 Custom templates
+  - 5.1 Template overview
+  - 5.2 Template syntax
+    - 5.2.1 Template structure
+    - 5.2.2 Overview
+    - 5.2.3 Tasks
+    - 5.2.4 Output
+    - 5.2.5 Built-in functions
+    - 5.2.6 Loop
+  - 5.3 Create a template
+  - 5.4 Create an execution
+  - 5.5 View a custom template
+  - 5.6 Update a custom template
+  - 5.7 Delete a custom template
+- 6 Manage task executions
+
 nsole
 
-## Log on to the OOS console
+## 1 Log on to the OOS console
 
 This topic describes how to log on to the CloudOps Orchestration Service (OOS) console.
 
@@ -75,11 +97,11 @@ parameters, enter the verification code, and then click **Confirm**.
 
 Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-## Welcome page
+## 2 Welcome page
 
 After you log on to the OOS console, the **Welcome** page appears. This page displays the following information: Click **Public Template** to go to the Public Template page. In the **Common O&M** Tasks section, you can view the following details: Batch run commands on physical machines or docker instances. Event Trigger Scheduled Tasks Data Backup In the **Advantages** section, you can view the following benefits: Auditable Security Ease of Use Visualized Execution Process
 
-## Scheduled O&M
+## 3 Scheduled O&M
 
 This topic describes the operations on scheduled O&M tasks, including creating an execution, filtering tasks, viewing details, cloning an execution, cancelling an execution, and deleting an execution.
 
@@ -123,7 +145,7 @@ Find the task and click **Details** in the **Actions** column to view details.
 2. In the **Cancel Execution** message, click **OK**.
 After the task is canceled, its status changes to **Canceled**.
 
-## Public templates
+## 4 Public templates
 
 CloudOps Orchestration Service (OOS) provides a variety of templates that are suitable for different scenarios. The following table describes the templates and scenarios supported by OOS.
 
@@ -161,15 +183,15 @@ After you find the template that you want to use on the Public Template page, yo
 **Create Execution** to execute the template. For more information, see the **Manage task**
 **executions** topic.
 
-## Custom templates
+## 5 Custom templates
 
-### Template overview
+### 5.1 Template overview
 
 CloudOps Orchestration Service (OOS) uses templates to define the O&M operations that require orchestration. The templates are classified into public templates and custom templates. You can use the OOS process configuration editor to create templates. The template content uses the YAML or JSON format. OOS provides public templates for use and reference. Before you use a public template, you must check the operations to be performed in the template and observe the template performance in a test environment. You can also create custom templates to perform O&M operations based on your business requirements.
 
-### Template syntax
+### 5.2 Template syntax
 
-#### Template structure
+#### 5.2.1 Template structure
 
 An OOS template is a UTF-8 encoded JSON or YAML document that defines the version, parameters, tasks, sequence, inputs, and outputs for O&M operations. A template is UTF-8 text in JSON or YAML format. It defines the version, parameters, tasks, sequence, inputs, and outputs for O&M operations. YAML format
 
@@ -188,7 +210,7 @@ JSON format (For more information, see the parameter description for the YAML fo
   "Outputs": {}
 ```
 
-#### Overview
+#### 5.2.2 Overview
 
 When creating and executing a template, you can use parameters to improve the flexibility and reusability of the template.
 
@@ -264,7 +286,7 @@ OOS provides pseudo parameters for obtaining the execution information. You can 
 |---|---|---|---|
 | ACS::AccountId | String | The account that is used to execute the template. | 12345678901234 |
 
-#### Tasks
+#### 5.2.3 Tasks
 
 The Tasks parameter is the most important component of a template and defines the details of O&M operations. The type of a task is called an action. Operation Orchestration Service (OOS) provides you with a wide range of actions, including actions for common cloud products, such as Elastic Compute Service (ECS) and Relational Database Service (RDS). If you need more common actions for cloud products than those that are provided by OOS, you can contact us and provide us with your scenarios. You can also customize atom actions so that you can immediately orchestrate and execute O&M operations.
 
@@ -330,7 +352,7 @@ JSON format (For more information, see the parameter description for the YAML fo
       "OnSuccess": "ACS::NEXT/other-task-name/ACS::END",
 ```
 
-#### Output
+#### 5.2.4 Output
 
 You can configure the output parameters for a template. The output parameters can define the results you need after the O&M operations are completed. For example, you can set the output parameters to obtain the ID of an Elastic Compute Service (ECS) instance after the O&M operation for creating the ECS instance is completed. YAML format
 
@@ -353,7 +375,7 @@ JSON format (For more information, see the parameter description for the YAML fo
       "Value": "{{ taskName.OutputParameter1 }}"
 ```
 
-#### Built-in functions
+#### 5.2.5 Built-in functions
 
 Operation Orchestration Service (OOS) provides multiple built-in functions to help you process the parameters and outputs of templates.
 
@@ -1427,7 +1449,7 @@ List
     "Value": "value2"
 ```
 
-#### Loop
+#### 5.2.6 Loop
 
 Operation Orchestration Service (OOS) provides a special task attribute Loop, which is used to loop a single task. Tasks developed based on API actions and cloud product actions support loops, while tasks developed based on functional actions such as Trigger and Sleep do not support loops. Multiple loop items can be executed at the same time. However, in the manual mode, the loop items need to be executed one by one.
 
@@ -2261,7 +2283,7 @@ instance.",
       "Value": "{{ runInstances.instanceIds }}"
 ```
 
-### Create a template
+### 5.3 Create a template
 
 This topic describes how to create a custom task template.
 
@@ -2280,7 +2302,7 @@ method. You can also click **Select Local Template** to upload a template.
 validated, click **Create Template** to create the template. You can also click **Create**
 **Template** to automatically validate the template.
 
-### Create an execution
+### 5.4 Create an execution
 
 This topic describes how to create and execute a task by using a template.
 
@@ -2313,7 +2335,7 @@ This topic describes how to create and execute a task by using a template.
 you confirm the information, click **Create**. You can view a created execution on the **Task**
 **Execution Management** page.
 
-### View a custom template
+### 5.5 View a custom template
 
 This topic describes how to view a custom template.
 
@@ -2326,7 +2348,7 @@ parameters: Template Name, Template Description, Latest Version, Format, Created
 4. Find the template and click **Details** in the **Actions** column.
 On the details page, click **Process Configuration** to view the template structure. On the details page, click **YAML** or **JSON** to view the template content, including parameters, outputs, and tasks.
 
-### Update a custom template
+### 5.6 Update a custom template
 
 This topic describes how to update a custom template.
 
@@ -2337,7 +2359,7 @@ This topic describes how to update a custom template.
 3. Find the template and click **Update** in the **Actions** column.
 4. After you modify the template, click **Update Template**.
 
-### Delete a custom template
+### 5.7 Delete a custom template
 
 This topic describes how to delete a custom template.
 
@@ -2349,7 +2371,7 @@ This topic describes how to delete a custom template.
 4. In the **Delete Template** message, click OK.
 ons
 
-## Manage task executions
+## 6 Manage task executions
 
 **Procedure**
 

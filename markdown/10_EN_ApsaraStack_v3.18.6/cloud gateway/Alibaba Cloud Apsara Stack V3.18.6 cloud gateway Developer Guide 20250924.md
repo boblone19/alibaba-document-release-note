@@ -2,16 +2,77 @@
 title: "cloud gateway Developer Guide 20250924"
 product_version: "V3.18.6"
 pdf_pages: 71
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 cloud gateway Developer Guide 20250924.pdf"
+source_pdf: "cd76afe2486c1bd3_Alibaba Cloud Apsara Stack V3.18.6 cloud gateway Developer Guide 20250924.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20cloud%20gateway%20Developer%20Guide%2020250924.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # cloud gateway Developer Guide 20250924
 
-## Quick Start
+## Table of Contents
 
-### Developer document
+- 1 Quick Start
+  - 1.1 Developer document instructions
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View API information
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey
+  - 2.5 Obtain the values of common request headers
+  - 2.6 Obtain the product name endpoint
+- 3 Use the SDK for Java
+  - 3.1 Getting started
+  - 3.2 User guide
+    - 3.2.1 Install Java SDK
+    - 3.2.2 Configure identity verification credentials
+    - 3.2.3 Request connection configuration
+    - 3.2.4 Send a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Use the SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use the SDK
+    - 4.2.1 Install Python SDK
+    - 4.2.2 Configure identity verification credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Send a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call examples for SDK for Go
+  - 5.1 Getting started
+  - 5.2 Use the SDK
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure identity verification credentials
+    - 5.2.3 Initiate a call
+    - 5.2.4 Error handling
+    - 5.2.5 Use CommonRequest to call APIs
+- 6 API reference
+  - 6.1 API overview
+  - 6.2 Call API operations
+    - 6.2.1 Request syntax
+    - 6.2.2 API authorization
+    - 6.2.3 Signature method
+  - 6.3 RAM authentication
+  - 6.4 Common parameters
+  - 6.5 Dynamic VIP
+    - 6.5.1 ListDynamicVIPs
+    - 6.5.2 GetDynamicVIP
+    - 6.5.3 UpdateDynamicVIP
+    - 6.5.4 DeleteDynamicVIP
+    - 6.5.5 CreateDynamicVIP
+  - 6.6 Dynamic DNS
+    - 6.6.1 CreateDynamicDns
+    - 6.6.2 DeleteDynamicDns
+    - 6.6.3 UpdateDynamicDns
+- 7 Appendixes
+  - 7.1 STS overview
+    - 7.1.1 What is STS?
+    - 7.1.2 AssumeRole
+
+## 1 Quick Start
+
+### 1.1 Developer document instructions
 
 **instructions**
 
@@ -23,7 +84,11 @@ You can follow the procedure in the figure below to access the development docum
 
 **Prerequisites**
 
-You need to obtain the Apsara Stack version from Operations and Maintenance (O&M) personnel or an operations administrator. You can visit the Apsara Stack documentation center to view the required documentation.
+You need to obtain the Apsara Stack version from Operations and Maintenance (O&M) personnel or an operations administrator.
+
+**Procedure**
+
+You can visit the Apsara Stack documentation center to view the required documentation.
 1. Open the Apsara Stack documentation center in your browser.
 2. Click the **Enterprise Edition**, **Agility Edition**, or **Appliance** tab based on your Apsara
 Stack version.
@@ -32,52 +97,41 @@ Stack version.
 want to view.
 5. Click **View details** or **Download PDF** in the target document area.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
-Apsara Stack allows you to call API operations using either the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To provide the same experience as the public cloud, API operations in Apsara Stack are called using the POP gateway by default starting from Apsara Stack Enterprise V3.16.0. This topic describes how to use the POP gateway to call Apsara Stack API operations.
-
-**Note**
-
-The method of using the ASAPI gateway to call Apsara Stack API operations in earlier versions is still valid. For more information, see ASAPI gateway call procedure, Generate an endpoint for ASAPI, and Obtain the SDK package for ASAPI.
+Apsara Stack allows you to call API operations using either the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To provide the same experience as the public cloud, API operations in Apsara Stack are called using the POP gateway by default starting from Apsara Stack Enterprise V3.16.0. This topic describes how to use the POP gateway to call Apsara Stack API operations. The method of using the ASAPI gateway to call Apsara Stack API operations in earlier versions is still valid. For more information, see ASAPI gateway call procedure, Generate an endpoint for ASAPI, and Obtain the SDK package for ASAPI.
 
 **Flowchart**
 
+**Procedure**
+
 1. Obtain an AccessKey pair.
-Obtain the AccessKey parameter required for the call. For more information, see Obtain an AccessKey pair or Obtain STS AccessKey credentials.
-
-**Note**
-
-We recommend that you use the AccessKey pair of a personal account or STS AccessKey credentials to call the API operations of the Apsara Uni-manager Management Console and cloud services.
+Obtain the AccessKey parameter required for the call. For more information, see Obtain an AccessKey pair or Obtain STS AccessKey credentials. We recommend that you use the AccessKey pair of a personal account or STS AccessKey credentials to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain a region ID.
 Obtain the RegionID parameter required for the call. For more information, see Obtain common header parameters.
 3. Obtain the organization ID and resource set ID.
-You need to obtain the organization ID through an API. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You need to obtain the resource set ID through an API. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Guide.
-
-**Note**
-
-When you call an API operation, add the organization ID `<x-acs-organizationid>` and resource set ID `<x-acs-resourcegroupid>` to the header parameters to specify the organization and resource set to which the resources belong. This enables you to query resources in isolation. If you do not specify the organization ID `<x-acs-organizationid>` , the system obtains the organization to which the current user belongs by default. If you do not specify the resource set ID `<x-acs-resourcegroupid>` , it is empty by default. If you want to specify a resource set, you must also specify the organization ID.
+You need to obtain the organization ID through an API. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You need to obtain the resource set ID through an API. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Guide. When you call an API operation, add the organization ID `<x-acs-organizationid>` and resource set ID `<x-acs-resourcegroupid>` to the header parameters to specify the organization and resource set to which the resources belong. This enables you to query resources in isolation. If you do not specify the organization ID `<x-acs-organizationid>` , the system obtains the organization to which the current user belongs by default. If you do not specify the resource set ID `<x-acs-resourcegroupid>` , it is empty by default. If you want to specify a resource set, you must also specify the organization ID.
 4. Obtain the API references.
 You need to review the developer guide of the target cloud service to understand the functions and usage of the API operations. For more information about the process and method to obtain the developer guide, see Instructions for using developer documentation.
 5. Obtain the endpoint of the cloud service.
 6. Obtain the SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
 **Prerequisites**
 
 Before you log on to the Apsara Uni-manager Management Console, you must obtain the endpoint of the console from the deployment personnel. A browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. In the address bar of your browser, enter the endpoint of the Apsara Uni-manager
 Management Console and press Enter.
 2. Enter the correct username and password.
-Obtain the username and password from an operations administrator.
-
-**Note**
-
-The first time you log on to the Apsara Uni-manager Management Console, you must follow the on-screen instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters (such as exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
+Obtain the username and password from an operations administrator. The first time you log on to the Apsara Uni-manager Management Console, you must follow the on-screen instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following types of characters: Uppercase or lowercase letters (A to Z, a to z) Digits (0 to 9) Special characters (such as exclamation point (!), at sign (@), number sign (#), dollar sign ($), and percent sign (%))
 3. Click **Account Logon**.
 4. If Multi-Factor Authentication (MFA) is enabled for your account, perform the following
 operations based on your scenario: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Account**
@@ -85,23 +139,22 @@ operations based on your scenario: The first time you log on to the Apsara Uni-m
 c. Enter the 6-digit MFA code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter the 6-digit MFA code and click **Authenticate**.
 5. In the menu bar at the top of the page, choose **Products > Others > API Tools**.
 
-### View API information
+### 2.2 View API information
 
 When using a service SDK, you need to obtain the service name, API operation name, and API version. This topic describes how to view API information.
 
 **Background information**
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The region, such as cn-hangzhou-*. |
-
 The API operations in API Audit are for reference only. For information about how to use specific API operations, see the API documentation of each cloud service. If there are inconsistencies, the API support information takes precedence.
+
+**Procedure**
+
 1. Log on to the API & Tools console.
 2. In the left-side navigation pane, select **API Audit**.
 3. On the **API Audit** page, enter keywords such as **API name** to search.
 4. View and record the corresponding service name, API operation name, and call status.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey pairs are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey pairs for authentication when you call API operations. This topic describes how to obtain an AccessKey pair assigned by RAM.
 
@@ -113,21 +166,27 @@ An AccessKey pair is used to verify the identity of a request sender based on sy
 
 The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you want to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The region, such as cn-hangzhou-*. |
+
 | x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain the organization ID, see the GetOrganizationList topic in Apsara Uni- manager Management Console Developer Guide. |
 |---|---|
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain the resource set ID, see the ListResourceGroup topic in Apsara Uni- manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
+
+**Obtain an AccessKey pair for personal accounts**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the page, click the profile picture and then click **Personal**
 **Information**.
 3. In the **Alibaba Cloud AccessKey** section, you can view the AccessKey information of your
-personal account.
+personal account. The AccessKey pair provides full permissions on cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
 
-**Note**
+**Obtain an AccessKey pair for organizations**
 
-The AccessKey pair provides full permissions on cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential. To obtain the AccessKey pair of an organization, perform the following steps:
+To obtain the AccessKey pair of an organization, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resource Management > Organization**
@@ -136,24 +195,24 @@ The AccessKey pair provides full permissions on cloud resources within your Apsa
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the AccessKey information of the organization.
 
-### Obtain an STS AccessKey
+### 2.4 Obtain an STS AccessKey
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack.
 
 **Background information**
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials for your Apsara Stack resources. You can use STS credentials to call Apsara Stack API operations. When you use STS to call API operations, you must specify an AccessKey ID, an AccessKey secret, and a security token, which together form an STS AccessKey 3-tuple. For more information, see What is STS.
+
+**Procedure**
+
 1. Obtain the `RAM Role` of the user.
 i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page, and click **Personal**
 **information**.
 iii. Click **View current role policy**. In the **Current selected role policy** dialog box, view the `RAM Role` .
 2. Obtain the STS AccessKey 3-tuple.
-
-**Note**
-
 In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the name of the current session. <yourRoleArn>: Replace it with your RAM role. <sts.aliyuns.com>: Replace it with the STS endpoint.
 
-```java
+```
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize the instance.
     // Replace with your region ID, AccessKey ID, AccessKey secret
@@ -171,7 +230,12 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     //  Replace with the actual STS Endpoint, generally in the format of sts-vpc.${gl
 obal:region}.${global:internet-domain}
@@ -196,17 +260,17 @@ in the previous step
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Call cloud service API operations by using the STS AccessKey 3-tuple. The following code
-uses the `DescribeZones` operation of ECS as an example.
-
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>: Replace it with the security token of the STS AccessKey 3tuple. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID.
+uses the `DescribeZones` operation of ECS as an example. In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>: Replace it with the security token of the STS AccessKey 3tuple. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -244,9 +308,17 @@ step
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
+
+`}` `}`
+
+### 2.5 Obtain the values of common request headers
+
+**request headers**
+
+When calling Apsara Stack API operations, you must provide multiple header parameters. This topic describes these header parameters and how to obtain their values. It also describes the values of some response parameters returned after you call API operations.
+
+**Common request headers**
 
 | Name | Description |
 |---|---|
@@ -254,12 +326,6 @@ step
 | x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see Obtain an organization ID. |
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see Obtain a resource set ID. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. For more information about how to obtain an instance ID, see Obtain an instance ID. |
-
-### Obtain the values of common
-
-**request headers**
-
-When calling Apsara Stack API operations, you must provide multiple header parameters. This topic describes these header parameters and how to obtain their values. It also describes the values of some response parameters returned after you call API operations.
 
 **Obtain a region ID**
 
@@ -279,13 +345,6 @@ You need to obtain the resource set ID through an API. For more information abou
 
 **Obtain an instance ID**
 
-| Name | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-| DepartmentName | The name of the organization. |
-| Department | The ID of the organization. |
-
 Each cloud service should modify and replace the product name and the process of obtaining an instance ID You can obtain the ID of an instance in a service console of the Apsara Uni-manager Management Console. This section uses the Elastic Compute Service (ECS) console as an example. Perform the following operations to obtain the ID of an ECS instance:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, choose **Products** > **Elastic Computing** > **Elastic Compute Service**
@@ -297,7 +356,14 @@ Each cloud service should modify and replace the product name and the process of
 
 The following response parameters are returned by default when you call operations to query the instances of cloud services.
 
-### Obtain the product name
+| Name | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+| DepartmentName | The name of the organization. |
+| Department | The ID of the organization. |
+
+### 2.6 Obtain the product name endpoint
 
 **endpoint**
 
@@ -307,13 +373,15 @@ This topic describes how to obtain the product name endpoint.Replace the product
 
 To use the Portable OpenAPI Proxy (POP) gateway to call API operations in Apsara Stack, you must obtain the service endpoint. You can obtain service endpoints from Alibaba Cloud onsite O&M engineers. You can also follow these steps to obtain an endpoint.
 
+**Procedure**
+
 **Warning**
 
 1. 2. 3. 4. Java
 
-## Use the SDK for Java
+## 3 Use the SDK for Java
 
-### Getting started
+### 3.1 Getting started
 
 This section describes how to obtain Product Name SDK for Java and start using it. Replace Product Name with your actual product name.
 
@@ -331,11 +399,7 @@ To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exception.
-Replace with your product-specific example Java
-
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret. <Product>: Replace the parameter with the name of the current service. <Endpoint>: Replace the variable parameter with the endpoint of your service. <readTimeout>: Replace the variable parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the variable parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the variable parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the variable parameter with the maximum number of requests. <http://192.168.XX:33XX>: Replace the variable with the IP address and port of the proxy that you use.
+Replace with your product-specific example Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret. <Product>: Replace the parameter with the name of the current service. <Endpoint>: Replace the variable parameter with the endpoint of your service. <readTimeout>: Replace the variable parameter with a read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Replace the variable parameter with a connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Replace the variable parameter with the maximum number of requests that are supported by each host. <maxRequests>: Replace the variable parameter with the maximum number of requests. <http://192.168.XX:33XX>: Replace the variable with the IP address and port of the proxy that you use.
 
 ```java
  import com.aliyuncs.profile.DefaultProfile;
@@ -368,19 +432,13 @@ the maximum number of requests per host.
         clientConfig.setMaxRequests(<maxRequests>);// Optional. Specify the maximum n
 ```
 
-Java g q
-
-```
-(
-```
-
-q
+Java `g` `q` `(` `q`
 
 ```
 );//
 ```
 
-p p y
+`p` `p` `y`
 
 ```
 umber of requests.
@@ -398,7 +456,7 @@ protocol. Default value: HTTP.
 
 `*/`
 
-```java
+```
         profile.setHttpClientConfig(clientConfig);
         IAcsClient client = new DefaultAcsClient(profile);
         // Create an API request and configure parameters.
@@ -415,21 +473,28 @@ protocol. Default value: HTTP.
         try {
             response = client.getAcsResponse(request);
             for (DescribeInstancesResponse.Instance instance:response.getInstances())
-{
+```
+
+`{`
+
+```java
                 System.out.println(instance.getPublicIpAddress());
-            }
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
-        }
-     }
- }
 ```
 
-### User guide
+`}` `}` `}`
 
-#### Install Java SDK
+### 3.2 User guide
+
+#### 3.2.1 Install Java SDK
 
 This topic describes how to install and call Product Name SDK for Java. Replace Product Name with your actual product name. Apsara Stack SDK for Java supports JDK 1.8 and later versions. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the Alibaba Cloud SDK. To use the SDK for Product Name, you must install the core library of Alibaba Cloud SDK for Java and the SDK for Java for Product Name. We recommend that you use V4.5.17 or later of the core library, and the X.X.X version of SDK for Java for the actual service. Replace Product Name with your actual product name; Replace X.X.X with your product's SDK version. For example, to use ECS SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and ECS SDK for Java, and add the following dependencies to the pom.xml file. For the exact SDK version number, see Alibaba Cloud SDK. Each cloud product should replace this with their own example Java
 
@@ -445,15 +510,11 @@ This topic describes how to install and call Product Name SDK for Java. Replace 
 </dependency>
 ```
 
-#### Configure identity verification
+#### 3.2.2 Configure identity verification credentials
 
 **credentials**
 
-When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure identity verification credentials. Currently, Java SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To access Apsara Stack using your AccessKey pair, you must specify the AccessKey pair as credentials when initializing the client.
-
-**Note**
-
-Do not disclose code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
+When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure identity verification credentials. Currently, Java SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To access Apsara Stack using your AccessKey pair, you must specify the AccessKey pair as credentials when initializing the client. Do not disclose code that contains your AccessKey pair. For example, do not commit the code to publicly accessible GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -462,17 +523,11 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace with your actual AccessKey Secret
 ```
 
-**Note**
-
 In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
 
-#### Request connection configuration
+#### 3.2.3 Request connection configuration
 
-This topic describes how to configure HttpClientConfig. You can use the following code to configure HttpClientConfig. Select and configure parameters based on your business requirements. Java
-
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests for each server based on your business requirements. The value is in the INT format. <maxRequests>: Specify the maximum number of requests based on your business requirements. The value is in the INT format. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+This topic describes how to configure HttpClientConfig. You can use the following code to configure HttpClientConfig. Select and configure parameters based on your business requirements. Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests for each server based on your business requirements. The value is in the INT format. <maxRequests>: Specify the maximum number of requests based on your business requirements. The value is in the INT format. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```
 // Get the HttpClientConfig object HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore the certificate clientConfig.setIgnoreSSLCerts(true); // Optional. Specify the read timeout period. Unit: milliseconds clientConfig.setReadTimeoutMillis(<readTimeout>); // Optional. Specify the connection timeout period. Unit: milliseconds clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // Optional. Specify the maximum number of requests for each server. The value is in th e INT format clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // Optional. Specify the maximum number of requests. The value is in the INT format clientConfig.setMaxRequests(<maxRequests>); // Optional. Specify the protocol type clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -490,9 +545,12 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace with the IP 
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Send a request
+#### 3.2.4 Send a request
 
 This topic describes how to send a request by using SDK for Java of a service.
+
+**Procedure**
+
 1. Create an AcsClient.
 
 ```
@@ -513,15 +571,18 @@ DescribeInstancesResponse response; try {
     response = client.getAcsResponse(request);
     for (DescribeInstancesResponse.Instance instance:response.getInstances()) {
         System.out.println(instance.getPublicIpAddress());
-    }
+```
+
+`}`
+
+```
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
-}
 ```
 
-Under normal circumstances, all fields in the response are deserialized to the response object. You can directly call `response.getXXX()` to obtain fields from the response.
+`}` Under normal circumstances, all fields in the response are deserialized to the response object. You can directly call `response.getXXX()` to obtain fields from the response.
 
 ```
 instanceStatus := response.getStatus()
@@ -533,7 +594,7 @@ If an exception occurs or you need the original HTTP response, you can use `doAc
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 When you use the SDK for Java, the server or SDK might encounter an error and return an error response. The error response contains specific information including error codes and error messages. Generally, you do not need to handle errors returned by the Java SDK. You only need to handle server errors based on error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -560,10 +621,11 @@ baba Cloud technical support personnel.
     // For example, print the error message.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-#### Use CommonRequest to call API
+`}`
+
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -571,21 +633,19 @@ If you want to call API operations of a cloud service that does not provide an S
 
 **Characteristics of CommonRequest calling**
 
-The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration To send a CommonRequest request, you must obtain the values of the following parameters. You can obtain these values from the API references of cloud services. Domain: specifies the service endpoint. Version: the version number of the API, in the YYYY-MM-DD format. You can obtain the API version from the common parameters in the API documents. Operation information: the name of the API operation that you want to call. You need to obtain the **Action** parameter and use `request.setSysAction("")` to specify the API name. For example, for the RunInstances operation, you need to use `request.setSysAction("RunInstances")` to specify the API name when you send a CommonRequest request.
+The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration
+
+**Use CommonRequest**
+
+To send a CommonRequest request, you must obtain the values of the following parameters. You can obtain these values from the API references of cloud services. Domain: specifies the service endpoint. Version: the version number of the API, in the YYYY-MM-DD format. You can obtain the API version from the common parameters in the API documents. Operation information: the name of the API operation that you want to call. You need to obtain the **Action** parameter and use `request.setSysAction("")` to specify the API name. For example, for the RunInstances operation, you need to use `request.setSysAction("RunInstances")` to specify the API name when you send a CommonRequest request. Java You need to obtain the **PathPattern** parameter and use `request.setSysUriPattern("")` to specify the RESTful path. For example, the **PathPattern** of the API operation that is used to view all cluster instances
 
 | is | /api/v1/clusters | . When you send a Commo |
 |---|---|---|
-| request.setSysUriPattern("/api/v1/clusters") |  |  |
-
-Java You need to obtain the **PathPattern** parameter and use `request.setSysUriPattern("")` to specify the RESTful path.
+| request.setSysUriPattern("/api/v1/clusters") |   |   |
 
 **Example: Call an RPC API operation**
 
-The following code provides an example of how to call the API operation that queries the status list of instances (ECS uses the RPC style).
-
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
+The following code provides an example of how to call the API operation that queries the status list of instances (ECS uses the RPC style). In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -653,10 +713,9 @@ he SecurityToken field in the request parameters.
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Example: Call a RESTful API operation**
 
@@ -672,11 +731,7 @@ If the request method is `POST` or `PUT` , and the ContentType value is `applica
 String requestBody = "{\"page_number\":\"1\",\"page_size\":\"5\",\"SecurityToken\", \ "\"}"; request.setHttpContent(requestBody.getBytes(), "utf-8", FormatType.JSON);
 ```
 
-The following code provides an example of how to call the API operation that queries the cluster list (CS uses the RESTful style). Java
-
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy. <yourSecurityToken>: Replace it with your security token.
+The following code provides an example of how to call the API operation that queries the cluster list (CS uses the RESTful style). Java In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <http://192.168.XX.XX:33XX>: Replace it with the IP address and port of the proxy. <yourSecurityToken>: Replace it with your security token.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -770,14 +825,13 @@ application/json, use the following method to pass data:
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-## Use the SDK for Python
+`}` `}` `}` Python
 
-### Getting started
+## 4 Use the SDK for Python
+
+### 4.1 Getting started
 
 This topic describes how to obtain and use SDK for Python.
 
@@ -820,10 +874,7 @@ To use ECS SDK for Python, perform the following steps:
 AccessKey ID, and AccessKey secret.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exception.
-
-**Note**
-
-In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace the variable with your AccessKey secret. <ecs.aliyuns.com>: Replace the variable with the endpoint of the service.
+In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable with your AccessKey ID. <yourAccessKeySecret>: Replace the variable with your AccessKey secret. <ecs.aliyuns.com>: Replace the variable with the endpoint of the service. Python
 
 ```python
 #!/usr/bin/env python
@@ -841,15 +892,11 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-### Use the SDK
+### 4.2 Use the SDK
 
-#### Install Python SDK
+#### 4.2.1 Install Python SDK
 
-This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python using pip.
-
-**Note**
-
-To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the core library of Apsara Stack SDK for Python and ECS SDK for Python. If you are using Python 2.x, run the following command to install the core library of Apsara Stack SDK:
+This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python using pip. To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use ECS SDK for Python, you must install the core library of Apsara Stack SDK for Python and ECS SDK for Python. If you are using Python 2.x, run the following command to install the core library of Apsara Stack SDK:
 
 ```
 pip install aliyun-python-sdk-core
@@ -873,7 +920,9 @@ If you are using Python 3.x, run the following command to install ECS SDK:
 pip3 install aliyun-python-sdk-ecs
 ```
 
-#### Configure identity verification
+Python
+
+#### 4.2.2 Configure identity verification credentials
 
 **credentials**
 
@@ -887,13 +936,9 @@ Do not disclose code that contains your AccessKey pair. For example, do not comm
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
-SDK for Python enables you to send API requests using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or configure a global default protocol.
-
-**Note**
-
-The default protocol of a service (HTTP/HTTPS) takes precedence over the global default protocol.
+SDK for Python enables you to send API requests using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or configure a global default protocol. The default protocol of a service (HTTP/HTTPS) takes precedence over the global default protocol.
 
 **Add OpenSSL dependency**
 
@@ -914,16 +959,19 @@ request = DescribeInstancesRequest() request.set_protocol_type("https")
 
 **Configure a global default protocol**
 
-The following code example shows how to configure a global default protocol:
+The following code example shows how to configure a global default protocol: Python
 
 ```java
 import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 # Create a request and call client.do_action_with_exception() to send the request
 ```
 
-#### Send a request
+#### 4.2.4 Send a request
 
 This topic describes how to use SDK for Python to send a request.
+
+**Procedure**
+
 1. Import the SDK of the related product.
 
 ```python
@@ -948,7 +996,7 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Python, the SDK returns an error response. The error response contains an error code and an error message. Among the errors returned by the SDK for Python, you do not need to handle the SDK errors, but must solve the server errors. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -956,11 +1004,7 @@ If the server or SDK encounters an error when you use the SDK for Python, the SD
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
 ```
 
-If you want to handle the SDK errors returned by the SDK, refer to the following example to write your code:
-
-| ances is | /api/v1/clusters | . When you send a C |
-|---|---|---|
-| request.set uri pattern('/api/v1/clusters') _ _ |  |  |
+If you want to handle the SDK errors returned by the SDK, refer to the following example to write your code: Python
 
 ```bash
 try:
@@ -973,7 +1017,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -981,15 +1025,19 @@ If you want to call API operations of a cloud service that does not provide an S
 
 **Characteristics of CommonRequest calling**
 
-The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration To send a CommonRequest request, you must obtain the values of the following parameters. You can obtain these values from the API references of cloud services. Domain: specifies the service endpoint. Version: the version number of the API, in the YYYY-MM-DD format. You can obtain the API version from the common parameters chapter in the API document. Operation information: the name of the API operation that you want to call. To call an RPC API operation: You need to obtain the **Action** parameter and use `request.set_action_name('Action')` to specify the API operation name. For example, to call the RunInstances operation, you must use `request.set_action_name('RunInstances')` to specify the API operation name. To call a RESTful API operation: You need to obtain the **PathPattern** parameter and use `request.set_uri_pattern('Pattern')` to specify the RESTful path.
+The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration
+
+**Use CommonRequest**
+
+To send a CommonRequest request, you must obtain the values of the following parameters. You can obtain these values from the API references of cloud services. Domain: specifies the service endpoint. Version: the version number of the API, in the YYYY-MM-DD format. You can obtain the API version from the common parameters chapter in the API document. Operation information: the name of the API operation that you want to call. To call an RPC API operation: You need to obtain the **Action** parameter and use `request.set_action_name('Action')` to specify the API operation name. For example, to call the RunInstances operation, you must use `request.set_action_name('RunInstances')` to specify the API operation name. To call a RESTful API operation: You need to obtain the **PathPattern** parameter and use `request.set_uri_pattern('Pattern')` to specify the RESTful path. For example, the **PathPattern** of the API operation that is used to view all cluster
+
+| ances is | /api/v1/clusters | . When you send a C |
+|---|---|---|
+| request.set uri pattern('/api/v1/clusters') _ _ |   |   |
 
 **Example: Call an RPC API operation**
 
-The following code provides an example of how to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain the status list of instances:
-
-**Note**
-
-In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <ecs.aliyuncs.com>: Replace it with the endpoint of the service.
+The following code provides an example of how to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain the status list of instances: Python In the following sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code. The following list describes the parameters: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <ecs.aliyuncs.com>: Replace it with the endpoint of the service. Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1028,7 +1076,7 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 **Example: Call a RESTful API operation**
 
-You must pass parameters in two methods depending on the request method and ContentType value. If the request method is `GET` or `DELETE` , or the ContentType value is `application/x-` `www-form-urlencoded` , use the following method to pass parameters: Add the request parameters to the Query section. For example,
+You must pass parameters in two methods depending on the request method and ContentType value. If the request method is `GET` or `DELETE` , or the ContentType value is `application/x-` `www-form-urlencoded` , use the following method to pass parameters: Python Add the request parameters to the Query section. For example,
 
 ```
  request.add_query_param("page_number", "1") .
@@ -1040,11 +1088,7 @@ If the request method is `POST` or `PUT` , and the ContentType value is `applica
 body = '{"page_number":"1",page_size"5":"SecurityToken","":"<yourSecurityToken>"}' request.set_content(body.encode('utf-8'))
 ```
 
-The following code provides an example of how to call the DescribeClusterV1 operation of Container Service (CS) to obtain the cluster list:
-
-**Note**
-
-In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <cs.aliyuncs.com>: Replace it with the endpoint of the service.
+The following code provides an example of how to call the DescribeClusterV1 operation of Container Service (CS) to obtain the cluster list: In the following sample code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. <cs.aliyuncs.com>: Replace it with the endpoint of the service.
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
@@ -1066,6 +1110,8 @@ request.set_accept_format('json') request.set_method('GET') request.add_header('
 # Optional. Specify the resource set ID.
 request.add_header("x-acs-resourcegroupid", "<yourResourceGroupID")
 ```
+
+Python
 
 ```python
 # Required. Specify the organization ID.
@@ -1095,13 +1141,19 @@ use the following method to pass data.
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-## Call examples for SDK for
+or SDK for Go
+
+## 5 Call examples for SDK for Go
 
 **Go**
 
-### Getting started
+### 5.1 Getting started
 
-Apsara Stack SDK for Go enables you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go. An authorized Apsara Stack tenant account and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are required before you can use Apsara Stack SDK for Python. For more information, see Obtain an AccessKey to obtain and view your AccessKey in the Apsara Uni-manager Management Console. The endpoint is obtained. For more information, see Obtain the endpoint of the product.
+Apsara Stack SDK for Go enables you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go.
+
+**Preparations**
+
+An authorized Apsara Stack tenant account and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are required before you can use Apsara Stack SDK for Python. For more information, see Obtain an AccessKey to obtain and view your AccessKey in the Apsara Uni-manager Management Console. The endpoint is obtained. For more information, see Obtain the endpoint of the product.
 
 **Install the core package of Apsara Stack SDK for Go**
 
@@ -1117,10 +1169,7 @@ The following sample code shows how to use Apsara Stack SDK for Go:
 1. Initialize a client instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
-
-**Note**
-
-In the following sample code, replace the parameters with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret. <Endpoint>: Replace the variable parameter with your endpoint.
+In the following sample code, replace the parameters with actual values based on your business requirements and remove the angle brackets <> from the final code. The following list describes the variables: <yourRegionID>: Replace the variable with the actual region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace <yourAccessKeySecret> with your AccessKey secret. <Endpoint>: Replace the variable parameter with your endpoint. or SDK for Go
 
 ```java
 package main import (
@@ -1129,7 +1178,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1139,8 +1188,13 @@ func main() {
         "<yourAccessKeyID>",         // Replace with your actual AccessKey ID
         "<yourAccessKeySecret>")        // Replace with your actual AccessKey Secret
     if err != nil {
+        // Handle errors
         panic(err)
-    }
+```
+
+`}`
+
+```
     // Create an API request and configure parameters
     request := ecs.CreateDescribeInstancesRequest()
     // Specify the endpoint of the product
@@ -1152,20 +1206,24 @@ func main() {
     if err != nil {
         // Handle exceptions
         panic(err)
-    }
-    fmt.Println(response)
-}
 ```
 
+`}`
+
+```
+    fmt.Println(response)
+```
+
+`}`
 4. (Optional) Switch to HTTP or HTTPS.
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### Use the SDK
+### 5.2 Use the SDK
 
-#### Install the core package of SDK for Go
+#### 5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Alibaba Cloud SDK for Go supports Go 1.10.x and later versions. You can install the core package of SDK for Go by executing the following command.
 
@@ -1173,11 +1231,11 @@ This topic describes how to install the core package of SDK for Go. Alibaba Clou
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure identity verification
+#### 5.2.2 Configure identity verification credentials
 
 **credentials**
 
-When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. Currently, Go SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when initializing the client.
+When using Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. or SDK for Go Currently, Go SDK supports authentication through AccessKey. For more information, see Obtain an AccessKey. To use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when initializing the client.
 
 **Important**
 
@@ -1190,11 +1248,9 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
         "<yourAccessKeySecret>")        // Replace with your actual AccessKey Secret
 ```
 
-**Note**
-
 In the preceding sample code, replace the variable parameters with your actual information. Remove the angle brackets (<>) in the final code.
 
-#### Initiate a call
+#### 5.2.3 Initiate a call
 
 This topic describes how to use Alibaba Cloud product SDK for Go to initiate a call. The following example demonstrates how to use ECS SDK for Go to initiate a request.
 1. Import the cloud product SDK.
@@ -1204,9 +1260,6 @@ import github.com/aliyun/alibaba-cloud-sdk-go/services/ecs
 ```
 
 2. Create a client that includes all of the API operations for the product.
-
-**Note**
-
 In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code.
 
 ```
@@ -1232,21 +1285,27 @@ request := ecs.CreateDescribeInstanceAttributeRequest() request.InstanceId = ""
 ```
 
 4. Initiate the call.
+or SDK for Go
 
 ```
 response, err := ecsClient.DescribeInstanceAttribute(request)
 ```
 
-#### Error handling
+#### 5.2.4 Error handling
 
-When an error occurs on the server side or SDK side, Alibaba Cloud Go SDK returns the corresponding error information through the `ClientError` and `ServerError` types in the `sdk.errors` package. These errors conform to the standard Go error interface and can be handled similarly to standard Go errors. You can use the following code to handle errors:
+When an error occurs on the server side or SDK side, Alibaba Cloud Go SDK returns the corresponding error information through the `ClientError` and `ServerError` types in the `sdk.errors` package. These errors conform to the standard Go error interface and can be handled similarly to standard Go errors.
+
+**Error handling**
+
+You can use the following code to handle errors:
 
 ```
 response,err := ecsClient.DescribeInstances(request) if err != nil {
     // Obtain error information
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
@@ -1266,7 +1325,7 @@ ame of the actual service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1276,12 +1335,13 @@ response, err := ecsClient.DescribeInstances(request) if clientError, ok := err.
     clientError.Message()
     // Obtain the original error. The returned value may be nil.
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
-When the server returns an error response, the SDK encapsulates this response into a `ServerError` . In this case, you can still obtain the original HTTP response from Response. The following example uses ECS to demonstrate how you can identify and obtain ServerError and error information from Response:
+or SDK for Go When the server returns an error response, the SDK encapsulates this response into a `ServerError` . In this case, you can still obtain the original HTTP response from Response. The following example uses ECS to demonstrate how you can identify and obtain ServerError and error information from Response:
 
 **Important**
 
@@ -1297,7 +1357,7 @@ ame of the actual service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1307,20 +1367,17 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
     serverError.Message()
     // Obtain the original HTTP response
     response.GetOriginHttpResponse()
-}
 ```
 
-#### Use CommonRequest to call APIs
+`}`
+
+#### 5.2.5 Use CommonRequest to call APIs
 
 If you need to call API operations of a cloud service that doesn't provide an SDK, or you cannot use an SDK to call API operations that meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations.
 
 **Example: Call an RPC API operation**
 
-The following code demonstrates how to use CommonRequest to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain a list of instance statuses (ECS uses the RPC style):
-
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <ecs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID.
+The following code demonstrates how to use CommonRequest to call the DescribeInstanceStatus operation of Elastic Compute Service (ECS) to obtain a list of instance statuses (ECS uses the RPC style): or SDK for Go In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <ecs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. or SDK for Go
 
 ```java
 package main import (
@@ -1329,7 +1386,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1339,13 +1396,17 @@ func main() {
         "<yourAccessKeySecret>") //Replace it with your AccessKey secret
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<ecs.aliyuncs.com>" // Replace it with the endpoint of the servic
 ```
 
-e
+`e`
 
 ```
     request.Product = "Ecs"
@@ -1384,24 +1445,25 @@ e instance ID. This parameter is required if you want to modify, delete, or quer
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Example: Call a RESTful API operation**
 
-You must pass parameters using two methods depending on the request method and ContentType value: If the request method is `GET` or `DELETE` , or the ContentType is `application/x-www-` `form-urlencoded` , use the following method: Place the request parameters in the Query, such as `request.QueryParams["page_number"] =` `"1"` . If the request method is `POST` or `PUT` , and the ContentType is `application/json` , use the following method: Place the request parameters in the Body, for example:
+or SDK for Go You must pass parameters using two methods depending on the request method and ContentType value: If the request method is `GET` or `DELETE` , or the ContentType is `application/x-www-` `form-urlencoded` , use the following method: Place the request parameters in the Query, such as `request.QueryParams["page_number"] =` `"1"` . If the request method is `POST` or `PUT` , and the ContentType is `application/json` , use the following method: Place the request parameters in the Body, for example:
 
 ```
 body := "{\"page_number\":\"1\",page_size:\"5\"}" request.SetContent([]byte(body)) request.SetContentType("application/json")
 ```
 
-The following code demonstrates how to use CommonRequest to call the DescribeClusterV1 operation of CS to obtain a list of clusters (CS uses the RESTful style):
-
-**Note**
-
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <cs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID.
+The following code demonstrates how to use CommonRequest to call the DescribeClusterV1 operation of CS to obtain a list of clusters (CS uses the RESTful style): In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <yourRegionID>: Replace it with your region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <cs.aliyuncs.com>: Replace it with the endpoint of the service. <yourSecurityToken>: Replace it with your security token. <yourResourceGroupID>: Replace it with your resource set ID. <yourOrganizationID>: Replace it with your organization ID. <yourInstanceID>: Replace it with your instance ID. or SDK for Go
 
 ```java
 package main import (
@@ -1410,7 +1472,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1420,7 +1482,11 @@ func main() {
         "<yourAccessKeySecret>")  //Replace it with your AccessKey secret
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "GET"
     request.Domain = "cs.aliyuncs.com" // Replace it with the endpoint of the service
@@ -1454,10 +1520,23 @@ use the following method to pass data
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+## 6 API reference
+
+### 6.1 API overview
+
+The following tables list the API operations available for use in Virtual Private Cloud (VPC).
+
+**Dynamic VIP management APIs**
 
 | API | Description |
 |---|---|
@@ -1476,12 +1555,6 @@ use the following method to pass data
 | GetTmplVipDetailByName | Obtains details of VIPs registered by an application. |
 | ListSupportIPTypes | Supported types. |
 
-## API reference
-
-### API overview
-
-The following tables list the API operations available for use in Virtual Private Cloud (VPC).
-
 | ListSupportTunnelTypes | Obtains supported tunnel types. |
 |---|---|
 | CreateDynamicVIP | Creates a dynamic VIP. |
@@ -1490,6 +1563,8 @@ The following tables list the API operations available for use in Virtual Privat
 | DeleteDynamicVipParams | Deletes dynamic VIP parameters. |
 | GetDynamicVipParam | Obtains details of dynamic VIP parameters. |
 
+**Dynamic DNS management APIs**
+
 | API | Description |
 |---|---|
 | CreateDynamicDns | Creates a dynamic DNS resource. |
@@ -1497,9 +1572,9 @@ The following tables list the API operations available for use in Virtual Privat
 | UpdateDynamicDns | Updates a dynamic DNS resource (only supports DNS product). |
 | ListDynamicDnses | Obtains dynamic DNS resources. |
 
-### Call API operations
+### 6.2 Call API operations
 
-#### Request syntax
+#### 6.2.1 Request syntax
 
 To send a Virtual Private Cloud (VPC) API request, you must send an HTTP GET request to the VPC endpoint. You must add the request parameters that correspond to the API operation being called. After you call the API, the system returns a response. Requests and responses are encoded in UTF-8. VPC API operations use the RPC protocol. You can call VPC API operations by sending HTTP GET requests. The request syntax is as follows:
 
@@ -1509,42 +1584,28 @@ http://Endpoint/?Action=xx&Parameters
 
 In the request,
 **Endpoint**: The endpoint of the VPC API is `vpc.example.com` .
-
-**Note**
-
 `example.com` is a custom domain name. You can obtain the endpoint in the Apsara Stack Operations console. For more information, see Obtain the endpoint of Asapi.
 **Action**: the name of the operation being performed. For example, to query created VPC
 instances, you must set the Action parameter to DescribeVpcs.
 **Version**: the version of the API that you want to use. The current VPC API version is 2016-
 04-28.
 **Parameters**: the request parameters for the operation. Separate multiple parameters with
-ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters are used for all VPC API calls regardless of the operation. For more information, see Common parameters. The following example demonstrates how to call the DescribeVpcs operation.
-
-**Note**
-
-The examples in this topic have been formatted for ease of reading.
+ampersands (&). Request parameters include both common parameters and operation-specific parameters. Common parameters are used for all VPC API calls regardless of the operation. For more information, see Common parameters. The following example demonstrates how to call the DescribeVpcs operation. The examples in this topic have been formatted for ease of reading.
 
 ```
-https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
+https://vpc.example.com/?Action=DescribeVpcs &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### API authorization
+#### 6.2.2 API authorization
 
 To ensure the security of your account, we recommend that you call VPC APIs as a RAM user. Before you can use a RAM account to call a VPC API, you must create a RAM account and assign corresponding permissions to it. For more information about VPC resources and APIs you can assign permissions on, see RAM authentication.
 
-#### Signature method
+#### 6.2.3 Signature method
 
-You must sign all API requests to ensure security. Apsara Stack uses the request signature to verify the identity of the API caller. VPC implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Apsara Stack tenant accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. To call an RPC API operation, you must add the signature to the API request in the following format: https://endpoint/?SignatureVersion=1.0 &SignatureMethod=HMAC- SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf
-
-| Resource type | ARN format |
-|---|---|
-| Virtual Private Cloud | acs:vpc:$regionid:$accountid:vpc/$vpcid |
-| 0 | > Document Version: 2025092 |
-
-Take DescribeVpcs as an example. Assume that the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The original request URL is as follows:
+You must sign all API requests to ensure security. Apsara Stack uses the request signature to verify the identity of the API caller. VPC implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Apsara Stack tenant accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. To call an RPC API operation, you must add the signature to the API request in the following format: https://endpoint/?SignatureVersion=1.0 &SignatureMethod=HMAC- SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf Take DescribeVpcs as an example. Assume that the AccessKey ID is `testid` and the AccessKey secret is `testsecret` . The original request URL is as follows:
 
 ```
-http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
+http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0
 ```
 
 To calculate the signature, perform the following operations:
@@ -1564,10 +1625,10 @@ CT9X0VtwR86fNWSnsc6v8YGOjuE=
 3. Add the signature to the request parameters:
 
 ```
-http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
+http://vpc.example.com/?Action=DescribeVpcs &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.3 RAM authentication
 
 Before calling a VPC API using a RAM user, you must use an Apsara Stack tenant account to create an authorization policy to assign permissions to the RAM user. In the authorization policy, an Alibaba Cloud Resource Name (ARN) is used as the unique identifier of the resource to authorize.
 
@@ -1575,167 +1636,172 @@ Before calling a VPC API using a RAM user, you must use an Apsara Stack tenant a
 
 The following table lists the VPC resources that can be authorized and their corresponding ARN formats.
 
-| loud gateway | Developer Guide·API reference |  |
+| Resource type | ARN format |
+|---|---|
+| Virtual Private Cloud | acs:vpc:$regionid:$accountid:vpc/$vpcid |
+| 0 | > Document Version: 2025092 |
+
+| loud gateway | Developer Guide·API reference |   |
 |---|---|---|
-| Virtual Private Cloud (VPC) | acs:vpc:$regionid:$accountid:vpc/* acs:vpc:*:$accountid:vpc/* acs:vpc:$regionid:$accountid:vrouter/$vrouterid acs:vpc:$regionid:$accountid:vrouter/* acs:vpc:*:$accountid:vrouter/* acs:vpc:$regionid:$accountid:vswitch/$vswitchid acs:vpc:$regionid:$accountid:vswitch/* acs:vpc:*:$accountid:vswitch/* acs:vpc:$regionid:$accountid:routetable/$routetableid acs:vpc:$regionid:$accountid:routetable/* acs:vpc:*:$accountid:routetable/* acs:vpc:$regionid:$accountid:eip/$allocationid acs:vpc:$regionid:$accountid:eip/* acs:vpc:*:$accountid:eip/* acs:vpc:$regionid:$accountid:natgateway/$natgatewayid acs:vpc:$regionid:$accountid:natgateway/* acs:vpc*:$accountid:vpc/* acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid acs:vpc:$regionid:$accountid:bandwidthpackage/* aacs:vpc:*:$accountid:vpc/* acs:vpc:$regionid:$accountid:forwardtable/$forwardtableid acs:vpc:$regionid:$accountid:forwardtable/* acs:vpc:*:$accountid:vpc/* acs:vpc:$regionid:$accountid:snattable/$snattableid acs:vpc:$regionid:$accountid:snattable/* acs:vpc:*:$accountid:vpc/* |  |
-|  | acs:vpc:$regionid:$accountid:vpc/* |  |
-|  | acs:vpc:*:$accountid:vpc/* |  |
-| VRouter | acs:vpc:$regionid:$accountid:vrouter/$vrouterid |  |
-|  | acs:vpc:$regionid:$accountid:vrouter/* |  |
-|  | acs:vpc:*:$accountid:vrouter/* |  |
-| VSwitch | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |  |
-|  | acs:vpc:$regionid:$accountid:vswitch/* |  |
-|  | acs:vpc:*:$accountid:vswitch/* |  |
-| Routing table | acs:vpc:$regionid:$accountid:routetable/$routetableid |  |
-|  | acs:vpc:$regionid:$accountid:routetable/* |  |
-|  | acs:vpc:*:$accountid:routetable/* |  |
-| Elastic IP Address (EIP) | acs:vpc:$regionid:$accountid:eip/$allocationid |  |
-|  | acs:vpc:$regionid:$accountid:eip/* |  |
-|  | acs:vpc:*:$accountid:eip/* |  |
-| NAT Gateway | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |
-|  | acs:vpc:$regionid:$accountid:natgateway/* |  |
-|  | acs:vpc*:$accountid:vpc/* |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
-| NAT Gateway service plan |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/* |  |
-|  | aacs:vpc:*:$accountid:vpc/* |  |
-| Forwarding table | acs:vpc:$regionid:$accountid:forwardtable/$forwardtableid |  |
-|  | acs:vpc:$regionid:$accountid:forwardtable/* |  |
-|  | acs:vpc:*:$accountid:vpc/* |  |
-| SNAT table | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |
-|  | acs:vpc:$regionid:$accountid:snattable/* |  |
-|  | acs:vpc:*:$accountid:vpc/* |  |
+| Virtual Private Cloud (VPC) | acs:vpc:$regionid:$accountid:vpc/* acs:vpc:*:$accountid:vpc/* acs:vpc:$regionid:$accountid:vrouter/$vrouterid acs:vpc:$regionid:$accountid:vrouter/* acs:vpc:*:$accountid:vrouter/* acs:vpc:$regionid:$accountid:vswitch/$vswitchid acs:vpc:$regionid:$accountid:vswitch/* acs:vpc:*:$accountid:vswitch/* acs:vpc:$regionid:$accountid:routetable/$routetableid acs:vpc:$regionid:$accountid:routetable/* acs:vpc:*:$accountid:routetable/* acs:vpc:$regionid:$accountid:eip/$allocationid acs:vpc:$regionid:$accountid:eip/* acs:vpc:*:$accountid:eip/* acs:vpc:$regionid:$accountid:natgateway/$natgatewayid acs:vpc:$regionid:$accountid:natgateway/* acs:vpc*:$accountid:vpc/* acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid acs:vpc:$regionid:$accountid:bandwidthpackage/* aacs:vpc:*:$accountid:vpc/* acs:vpc:$regionid:$accountid:forwardtable/$forwardtableid acs:vpc:$regionid:$accountid:forwardtable/* acs:vpc:*:$accountid:vpc/* acs:vpc:$regionid:$accountid:snattable/$snattableid acs:vpc:$regionid:$accountid:snattable/* acs:vpc:*:$accountid:vpc/* |   |
+|   | acs:vpc:$regionid:$accountid:vpc/* |   |
+|   | acs:vpc:*:$accountid:vpc/* |   |
+| VRouter | acs:vpc:$regionid:$accountid:vrouter/$vrouterid |   |
+|   | acs:vpc:$regionid:$accountid:vrouter/* |   |
+|   | acs:vpc:*:$accountid:vrouter/* |   |
+| VSwitch | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |   |
+|   | acs:vpc:$regionid:$accountid:vswitch/* |   |
+|   | acs:vpc:*:$accountid:vswitch/* |   |
+| Routing table | acs:vpc:$regionid:$accountid:routetable/$routetableid |   |
+|   | acs:vpc:$regionid:$accountid:routetable/* |   |
+|   | acs:vpc:*:$accountid:routetable/* |   |
+| Elastic IP Address (EIP) | acs:vpc:$regionid:$accountid:eip/$allocationid |   |
+|   | acs:vpc:$regionid:$accountid:eip/* |   |
+|   | acs:vpc:*:$accountid:eip/* |   |
+| NAT Gateway | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |
+|   | acs:vpc:$regionid:$accountid:natgateway/* |   |
+|   | acs:vpc*:$accountid:vpc/* |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwidthpackageid |
+| NAT Gateway service plan |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/* |   |
+|   | aacs:vpc:*:$accountid:vpc/* |   |
+| Forwarding table | acs:vpc:$regionid:$accountid:forwardtable/$forwardtableid |   |
+|   | acs:vpc:$regionid:$accountid:forwardtable/* |   |
+|   | acs:vpc:*:$accountid:vpc/* |   |
+| SNAT table | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |
+|   | acs:vpc:$regionid:$accountid:snattable/* |   |
+|   | acs:vpc:*:$accountid:vpc/* |   |
 
 | General resource | acs:vpc:$regionid:$accountid:* |
 |---|---|
-|  | acs:vpc:*:$accountid:* |
+|   | acs:vpc:*:$accountid:* |
 
-| Operation | ARN format |  |  |
-|---|---|---|---|
-| vpc:CreateVpc | acs:vpc:$regionid:$accountid:vpc/* |  |  |
-| vpc:DeleteVpc | acs:vpc:$regionid:$accountid:vpc/$vpcid |  |  |
-| vpc:DescribeVpcs | vpc:$regionid:$accountid:vpc/* |  |  |
-| vpc:ModifyVpcAttribute | acs:vpc:$regionid:$accountid:vpc/$vpcid |  |  |
-|  | acs:vpc:$regionid:$accountid:vrouter/* |  |  |
-|  | The VRouter ID is specified: "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |  |  |
-|  |  | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |  |
-| vpc:DescribeVRouters |  |  |  |
-|  | The VRouter ID is not specified: "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/*" |  |  |
-| vpc:ModifyVRouterAttribute | acs:vpc:$regionid:$accountid:vrouter/$vrouterid |  |  |
-| vpc:CreateVSwitch | acs:vpc:$regionid:$accountid:vswitch/* |  |  |
-|  | acs:vpc:$regionid:$accountid:vpc/$vpcid |  |  |
-| vpc:DeleteVSwitch | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |  |  |
-| vpc:DescribeVSwitches | acs:vpc:$regionid:$accountid:vswitch/* |  |  |
-|  | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |  |  |
-|  |  | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |  |
-| vpc:ModifyVSwitchAttribute | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |  |  |
-|  | acs:vpc:$regionid:$accountid:routetable/$routetableid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:routetable/$routetableid |  |
-| vpc:CreateRouteEntry |  |  |  |
-|  | acs:vpc:$regionid:$accountid:routetable/$routetableid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:routetable/$routetableid |  |
-| vpc:DeleteRouteEntry |  |  |  |
-| vpc:DescribeRouteTables | acs:vpc:$regionid:$accountid:routetable/* |  |  |
-| 2 | > Document Version: 2025092 |  |  |
-
-$regionid/accoutid/vrouterid are IDs of the specific resources, * represents all resources.
+$regionid/accoutid/vrouterid are IDs of the specific resources, `*` represents all resources.
 
 **VPC API operations**
 
 The following table lists the API operations that can be authorized and their corresponding ARN formats.
 
-| loud gateway | Developer Guide·API referenc |  |  |
+| Operation | ARN format |   |   |
 |---|---|---|---|
-| vpc:DescribeRouteTables |  |  |  |
-|  | "vpc:VRouter":"acs:vpc$regionid:$accountid:vrouter/$vr outerid" |  |  |
-|  |  | "vpc:VRouter":"acs:vpc$regionid:$accountid:vrouter/$vr |  |
-|  | outerid" |  |  |
-| vpc:AllocateEipAddress | acs:vpc:$regionid:$accountid:eip/* |  |  |
-| vpc:AssociateEipAddres | acs:vpc:$regionid:$accountid:eip/* |  |  |
-|  | Bind an ECS instance acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-| vpc:DescribeEipAddresses | acs:vpc:$regionid:$accountid:eip/* |  |  |
-| vpc:UnassociateEipAddress | Bind an ECS instance acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-| vpc:ReleaseEipAddress | acs:vpc:$regionid:$accountid:eip/$allocationid |  |  |
-| vpc:DescribeEipMonitorData | acs:vpc:$regionid:$accountid:eip/$allocationid |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-| vpc:CreateNatGateway | acs:vpc:$regionid:$accountid:natgateway/* |  |  |
-|  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |
-| vpc:DescribeNatGateways |  |  |  |
-|  | acs:vpc:$regionid:$accountid:natgateway/* |  |  |
-|  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |
-| vpc:ModifyNatGatewaySpec |  |  |  |
-|  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |
-| vpc:ModifyNatGatewayAttribute |  |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |  |
-| vpc:DeleteNatGateway |  |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-| vpc:CreateBandwidthPackage | acs:vpc:$regionid:$accountid:bandwidthpackage/* |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |  |
-|  | thpackageid |  |  |
-| vpc:DescribeBandwidthPackages |  |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/* |  |  |
-| > Document Version: 20250924 | 5 |  |  |
+| vpc:CreateVpc | acs:vpc:$regionid:$accountid:vpc/* |   |   |
+| vpc:DeleteVpc | acs:vpc:$regionid:$accountid:vpc/$vpcid |   |   |
+| vpc:DescribeVpcs | vpc:$regionid:$accountid:vpc/* |   |   |
+| vpc:ModifyVpcAttribute | acs:vpc:$regionid:$accountid:vpc/$vpcid |   |   |
+|   | acs:vpc:$regionid:$accountid:vrouter/* |   |   |
+|   | The VRouter ID is specified: "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |   |   |
+|   |   | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |   |
+| vpc:DescribeVRouters |   |   |   |
+|   | The VRouter ID is not specified: "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/*" |   |   |
+| vpc:ModifyVRouterAttribute | acs:vpc:$regionid:$accountid:vrouter/$vrouterid |   |   |
+| vpc:CreateVSwitch | acs:vpc:$regionid:$accountid:vswitch/* |   |   |
+|   | acs:vpc:$regionid:$accountid:vpc/$vpcid |   |   |
+| vpc:DeleteVSwitch | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |   |   |
+| vpc:DescribeVSwitches | acs:vpc:$regionid:$accountid:vswitch/* |   |   |
+|   | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |   |   |
+|   |   | "vpc:Vpc":"acs:vpc:$regionid:$accountid:vpc/$vpcid" |   |
+| vpc:ModifyVSwitchAttribute | acs:vpc:$regionid:$accountid:vswitch/$vswitchid |   |   |
+|   | acs:vpc:$regionid:$accountid:routetable/$routetableid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:routetable/$routetableid |   |
+| vpc:CreateRouteEntry |   |   |   |
+|   | acs:vpc:$regionid:$accountid:routetable/$routetableid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:routetable/$routetableid |   |
+| vpc:DeleteRouteEntry |   |   |   |
+| vpc:DescribeRouteTables | acs:vpc:$regionid:$accountid:routetable/* |   |   |
+| 2 | > Document Version: 2025092 |   |   |
 
-| Developer Guide·API reference |  |  |  |
+| loud gateway | Developer Guide·API referenc |   |   |
 |---|---|---|---|
-|  | cloud gatewa |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |  |
-| vpc:ModifyBandwidthPackageSpec | thpackageid |  |  |
-| vpc:ModifyBandwidthPackageAttrib | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |  |
-| ute | thpackageid |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |  |
-| vpc:AddBandwidthPackageIps | thpackageid |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |  |
-| vpc:RemoveBandwidthPackageIps | thpackageid |  |  |
-|  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |  |
-| vpc:DeleteBandwidthPackage | thpackageid |  |  |
-|  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |  |
-| vpc:CreateForwardEntry | eid |  |  |
-|  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |  |
-| vpc:DeleteForwardEntry | eid |  |  |
-|  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |  |
-| vpc:ModifyForwardEntry | eid |  |  |
-|  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |  |
-| vpc:DescribeForwardTableEntries | eid |  |  |
-| vpc:CreateSnatEntry | acs:vpc:$regionid:$accountid:snattable/* |  |  |
-|  | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |
-| vpc:ModifySnatEntry |  |  |  |
-|  | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |
-| vpc:DescribeSnatTableEntries |  |  |  |
-|  | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |  |
-|  |  | acs:vpc:$regionid:$accountid:snattable/$snattableid |  |
-| vpc:DeleteSnatEntry |  |  |  |
+| vpc:DescribeRouteTables |   |   |   |
+|   | "vpc:VRouter":"acs:vpc$regionid:$accountid:vrouter/$vr outerid" |   |   |
+|   |   | "vpc:VRouter":"acs:vpc$regionid:$accountid:vrouter/$vr |   |
+|   | outerid" |   |   |
+| vpc:AllocateEipAddress | acs:vpc:$regionid:$accountid:eip/* |   |   |
+| vpc:AssociateEipAddres | acs:vpc:$regionid:$accountid:eip/* |   |   |
+|   | Bind an ECS instance acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+| vpc:DescribeEipAddresses | acs:vpc:$regionid:$accountid:eip/* |   |   |
+| vpc:UnassociateEipAddress | Bind an ECS instance acs:vpc:$regionid:$accountid:eip/$allocationid acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+| vpc:ReleaseEipAddress | acs:vpc:$regionid:$accountid:eip/$allocationid |   |   |
+| vpc:DescribeEipMonitorData | acs:vpc:$regionid:$accountid:eip/$allocationid |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+| vpc:CreateNatGateway | acs:vpc:$regionid:$accountid:natgateway/* |   |   |
+|   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |
+| vpc:DescribeNatGateways |   |   |   |
+|   | acs:vpc:$regionid:$accountid:natgateway/* |   |   |
+|   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |
+| vpc:ModifyNatGatewaySpec |   |   |   |
+|   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |
+| vpc:ModifyNatGatewayAttribute |   |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:natgateway/$natgatewayid |   |
+| vpc:DeleteNatGateway |   |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+| vpc:CreateBandwidthPackage | acs:vpc:$regionid:$accountid:bandwidthpackage/* |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |   |
+|   | thpackageid |   |   |
+| vpc:DescribeBandwidthPackages |   |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/* |   |   |
+| > Document Version: 20250924 | 5 |   |   |
+
+| Developer Guide·API reference |   |   |   |
+|---|---|---|---|
+|   | cloud gatewa |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |   |
+| vpc:ModifyBandwidthPackageSpec | thpackageid |   |   |
+| vpc:ModifyBandwidthPackageAttrib | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |   |
+| ute | thpackageid |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |   |
+| vpc:AddBandwidthPackageIps | thpackageid |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |   |
+| vpc:RemoveBandwidthPackageIps | thpackageid |   |   |
+|   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid thpackageid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:bandwidthpackage/$bandwid |   |
+| vpc:DeleteBandwidthPackage | thpackageid |   |   |
+|   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |   |
+| vpc:CreateForwardEntry | eid |   |   |
+|   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |   |
+| vpc:DeleteForwardEntry | eid |   |   |
+|   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |   |
+| vpc:ModifyForwardEntry | eid |   |   |
+|   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl eid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:forwardtable/$forwardtabl |   |
+| vpc:DescribeForwardTableEntries | eid |   |   |
+| vpc:CreateSnatEntry | acs:vpc:$regionid:$accountid:snattable/* |   |   |
+|   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |
+| vpc:ModifySnatEntry |   |   |   |
+|   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |
+| vpc:DescribeSnatTableEntries |   |   |   |
+|   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |   |
+|   |   | acs:vpc:$regionid:$accountid:snattable/$snattableid |   |
+| vpc:DeleteSnatEntry |   |   |   |
+
+### 6.4 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all API requests. Table 1. Common request parameters
 
 | Name | Type | Requi red | Description |
 |---|---|---|---|
 | Format | Strin g | No | The type of the return value. Valid value: JSON. |
 | Version | Strin g | Yes | The version number of the API. The value is in the YYYY-MM-DD format. Set the value to 2019-05-10. |
 
-### Common parameters
-
-**Common request parameters**
-
-Common request parameters must be included in all API requests. Table 1. Common request parameters
-
-| loud gateway |  |  | Developer Guide·API referenc |
+| loud gateway |   |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | AccessKeyId | Strin g | Yes | The AccessKey ID that is used to access the service. |
@@ -1743,12 +1809,6 @@ Common request parameters must be included in all API requests. Table 1. Common 
 | AccessKeySe cret | Strin g | Yes | The AccessKey secret that is used to access the service. |
 | RegionId | Strin g | Yes | The region ID that is used to access the service. |
 | Product | Strin g | Yes | The name of the service to which the operation belongs. |
-
-| Name | Description |
-|---|---|
-| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information, see Obtain an organization ID. |
-| x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information, see Obtain a resource set ID. |
-| x-acs-instanceid | The ID of the instance on which you want to perform operations. For more information, see Obtain an instance ID. |
 
 You can also obtain the `Product` and `Version` parameters required for the API from the Apsara Uni-manager Management Console. To do this, perform the following steps.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -1758,7 +1818,11 @@ You can also obtain the `Product` and `Version` parameters required for the API 
 
 **Common header parameters**
 
-**Note**
+| Name | Description |
+|---|---|
+| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information, see Obtain an organization ID. |
+| x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information, see Obtain a resource set ID. |
+| x-acs-instanceid | The ID of the instance on which you want to perform operations. For more information, see Obtain an instance ID. |
 
 When you call API operations of cloud services, you need to add the actual values of the **x-acs-organizationid**, **x-acs-resourcegroupid**, and **x-acs-instanceid** parameters to the request header in your code. These parameters specify the instance ID (the instance ID does not exist when you create an instance or query instance lists), and the organization and resource set to which the instance belongs. If you do not specify the headers when you call an API operation, the system uses the organization and resource set at the root level by default.
 
@@ -1766,25 +1830,9 @@ When you call API operations of cloud services, you need to add the actual value
 
 API responses use the HTTP response format: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates that the call failed. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-### Dynamic VIP
+### 6.5 Dynamic VIP
 
-| Name | Type | Requ ired | Example | Description |
-|---|---|---|---|---|
-| Info | Json | Yes | {key,valu e} | See the description of request parameters below |
-
-| Name | Type | Req uire d | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ListDynamicVIPs | The operation that you want to execute. Value: ListDynamicVIPs. |
-| PageSize | Integ er | No | 1 | The number of rows per page in a paged query. Maximum value: 50. Default value: 10. |
-| PageNumbe r | Integ er | No | 10 | The page number of the list. Default value: 1. |
-| Filter | Array | No | [] | See the Filter details below |
-
-| Name | Type | Req uire d | Example | Description |
-|---|---|---|---|---|
-| Key | String | No | DynVipIp |  |
-| Value | Array | No | [ "100.231.244.247 ", "198.146.15.31" ] |  |
-
-#### ListDynamicVIPs
+#### 6.5.1 ListDynamicVIPs
 
 Call the ListDynamicVIPs operation to retrieve dynamic VIP resources.
 
@@ -1794,9 +1842,25 @@ When you call this operation, note the following: If you do not specify the Filt
 
 **Request parameters**
 
+| Name | Type | Requ ired | Example | Description |
+|---|---|---|---|---|
+| Info | Json | Yes | {key,valu e} | See the description of request parameters below |
+
 **Description of request parameters**
 
+| Name | Type | Req uire d | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ListDynamicVIPs | The operation that you want to execute. Value: ListDynamicVIPs. |
+| PageSize | Integ er | No | 1 | The number of rows per page in a paged query. Maximum value: 50. Default value: 10. |
+| PageNumbe r | Integ er | No | 10 | The page number of the list. Default value: 1. |
+| Filter | Array | No | [] | See the Filter details below |
+
 **Filter parameters**
+
+| Name | Type | Req uire d | Example | Description |
+|---|---|---|---|---|
+| Key | String | No | DynVipIp |   |
+| Value | Array | No | [ "100.231.244.247 ", "198.146.15.31" ] |   |
 
 **Response parameters**
 
@@ -1805,20 +1869,7 @@ When you call this operation, note the following: If you do not specify the Filt
 | RequestId | String | 861E6630-AEC0- 4B2D-B214- 6CB5E44B7F04 | The ID of the request. |
 | VSwitchId | String | vsw- 25nsdf2aue4g**** | The ID of the vSwitch. |
 
-| Name | Type | Req uire d | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetDynamicVIP | The operation that you want to perform. Set the value to GetDynamicVIP. |
-| VIP | String | Yes | 172.16.1.2 | The filter conditions. |
-
-| Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 0ED8D006-F706- 4D23-88ED- E11ED28DCAC0 | The ID of the request. |
-| Application | String | resource init _ | The application. |
-| ClusterName | String | Oss2L54Cluster | The name of the cluster. |
-| DynVipLbId | String | 171ed137b50-cn- qingdao-env17- d01 825176289 - _ _ 1320843925 | The dynamic VIP LoadBalancer ID. |
-| DynVipIp | String | 172.16.1.2 | The VIP. |
-
-#### GetDynamicVIP
+#### 6.5.2 GetDynamicVIP
 
 You can call the GetDynamicVIP operation to obtain dynamic VIP resources.
 
@@ -1828,7 +1879,20 @@ When you call this operation, note the following: You can query dynamic VIP reso
 
 **Request parameters**
 
+| Name | Type | Req uire d | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetDynamicVIP | The operation that you want to perform. Set the value to GetDynamicVIP. |
+| VIP | String | Yes | 172.16.1.2 | The filter conditions. |
+
 **Response parameters**
+
+| Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 0ED8D006-F706- 4D23-88ED- E11ED28DCAC0 | The ID of the request. |
+| Application | String | resource init _ | The application. |
+| ClusterName | String | Oss2L54Cluster | The name of the cluster. |
+| DynVipLbId | String | 171ed137b50-cn- qingdao-env17- d01 825176289 - _ _ 1320843925 | The dynamic VIP LoadBalancer ID. |
+| DynVipIp | String | 172.16.1.2 | The VIP. |
 
 | DynVipResour ceId | String | 7b87d5f0b3248d00 7cb8b3c3f32d086a | The VIP resource ID. A dynamic VIP resource has a unique ID that is locally generated by MD5 based on a combination of other fields. |
 |---|---|---|---|
@@ -1845,54 +1909,42 @@ When you call this operation, note the following: You can query dynamic VIP reso
 | ServerGroupI d | String | 8a91b49b74439879 017447aac4ae0015 | Used for adaptation layer SDK, modify, and delete interfaces. |
 | DynVipStatus | String | 8000 | The status code. |
 
+#### 6.5.3 UpdateDynamicVIP
+
+Calls the UpdateDynamicVIP operation to modify the status code of a dynamic virtual IP address (VIP).
+
+**Request parameters**
+
 | Name | Type | Req uire d | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | UpdateDynamicVI P | The operation that you want to execute. Value: UpdateDynamicVIP. |
 | VIP | String | Yes | 172.16.1.2 | The VIP to be modified. |
 | DynVipStat us | String | Yes | 8000 | The dynamic VIP status. 8000 indicates normal. |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0ED8D006-F706- 4D23-88ED- E11ED28DCAC0 | The ID of the request. |
+
+#### 6.5.4 DeleteDynamicVIP
+
+You can call the DeleteDynamicVIP operation to delete a dynamic virtual IP address (VIP) resource.
+
+**Request parameters**
 
 | Name | Type | Req uire d | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteDynamicVI P | The operation that you want to execute. Value: DeleteDynamicVIP. |
 | VIP | String | Yes | 172.16.1.2 | The VIP that you want to delete. |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9A572171-4E27- 40D1-BD36- D26C9E71E29E | The ID of the request. |
 
-#### UpdateDynamicVIP
-
-Calls the UpdateDynamicVIP operation to modify the status code of a dynamic virtual IP address (VIP).
-
-**Request parameters**
-
-**Response parameters**
-
-#### DeleteDynamicVIP
-
-You can call the DeleteDynamicVIP operation to delete a dynamic virtual IP address (VIP) resource.
-
-**Request parameters**
-
-**Response parameters**
-
-| Name | Type | Req uire d | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateDynamicVI P | The operation that you want to perform. Set the value to CreateDynamicVIP. |
-| ProductNam e | String | Yes | opsapi | The product name. |
-| ClusterNam e | String | Yes | Oss2L54Cluster | The cluster name. |
-| ServiceNam e | String | Yes | opsapi | The service name. |
-| ServiceRole | String | Yes | ApiServer# | The SR name. |
-| Application | String | Yes | api-server | The application name. |
-| Name | String | Yes | opsapiserver | The template VIP name. |
-| Region | String | Yes | cn-qingdao- env17-d01 | The ID of the region. |
-| IntranetDo main | String | Yes | http://intra.env17 e.shuguang.com/ | The domain. |
-
-#### CreateDynamicVIP
+#### 6.5.5 CreateDynamicVIP
 
 You can call the CreateDynamicVIP operation to create a dynamic virtual IP address (VIP) resource.
 
@@ -1910,27 +1962,33 @@ dynamic_vip_template_parameter database. The dynamic VIP is created successfully
 
 **Request parameters**
 
+| Name | Type | Req uire d | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateDynamicVI P | The operation that you want to perform. Set the value to CreateDynamicVIP. |
+| ProductNam e | String | Yes | opsapi | The product name. |
+| ClusterNam e | String | Yes | Oss2L54Cluster | The cluster name. |
+| ServiceNam e | String | Yes | opsapi | The service name. |
+| ServiceRole | String | Yes | ApiServer# | The SR name. |
+| Application | String | Yes | api-server | The application name. |
+| Name | String | Yes | opsapiserver | The template VIP name. |
+| Region | String | Yes | cn-qingdao- env17-d01 | The ID of the region. |
+| IntranetDo main | String | Yes | http://intra.env17 e.shuguang.com/ | The domain. |
+
 | Ipprotocol | String | Yes | ipv4 | The VIP resource type: ipv4 or ipv6. |
 |---|---|---|---|---|
 | DynVipType | String | Yes | internet | The type of the SLB instance. Valid values: internet and intranet. internet: The SLB instance provides only a public IP address. The SLB service can be accessed over the Internet. intranet: The SLB instance provides only a private IP address (or an address in the VPC). The SLB service can be accessed only over the internal network. |
 | DynVipTunn elType | String | Yes | classic to any tu _ _ _ nnel | The tunnel type. Valid values: none, single tunnel, classic to any tunnel, and _ _ _ _ xregion any tunnel. _ _ |
+
+**Response parameters**
 
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9A572171-4E27- 40D1-BD36- D26C9E71E29E | The ID of the request. |
 | VIP | String | 66.248.51.171 | The created VIP. |
 
-| Name | Type | Req uire d | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateDynamicDn s | The operation that you want to perform. Set the value to: CreateDynamicDns |
-| Region | String | Yes | hangzhou | The region on which your application is deployed. |
-| LocalCloudI d | String | Yes |  | The local cloud ID. |
+### 6.6 Dynamic DNS
 
-**Response parameters**
-
-### Dynamic DNS
-
-#### CreateDynamicDns
+#### 6.6.1 CreateDynamicDns
 
 You can call the CreateDynamicDns operation to create a dynamic DNS resource.
 
@@ -1940,7 +1998,13 @@ You can call the CreateDynamicDns operation to create a dynamic DNS resource.
 
 **Request parameters**
 
-| RemoteClou dId | String | Yes |  | The remote cloud ID. |
+| Name | Type | Req uire d | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateDynamicDn s | The operation that you want to perform. Set the value to: CreateDynamicDns |
+| Region | String | Yes | hangzhou | The region on which your application is deployed. |
+| LocalCloudI d | String | Yes |   | The local cloud ID. |
+
+| RemoteClou dId | String | Yes |   | The remote cloud ID. |
 |---|---|---|---|---|
 | DnsType | String | No | dns product | The DNS type. Valid values: dns product: tenant DNS. ops dns: OPS DNS. |
 | DnsRecordT ype | String | Yes | Forward-Zone | The record type. Valid values: [Forward- Zone, A]. OPS DNS corresponds to A record. DNS product corresponds to forward zone. |
@@ -1948,17 +2012,14 @@ You can call the CreateDynamicDns operation to create a dynamic DNS resource.
 | DnsDomain | String | No | asd.inter.env17e. shuguang.com | Fill in when the DNS type is OPS DNS: Enter one DNS domain record, for example: asd.inter.env17e.shuguang.com. Note that the DomainName must be a domain that is already registered in the environment. |
 | DnsRecord | String | Yes | 10.0.0.1,10.0.0.2 | Forwarders/Records. Multiple records are separated by commas. |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | pc- bp1qrb3044eqixog0 **** | The ID of the request. |
 | DnsRecordId | Array | [120,121] | The IDs of the successfully created DNS records. |
 
-| Name | Type | Req uire d | Example | Description |
-|---|---|---|---|---|
-
-**Response parameters**
-
-#### DeleteDynamicDns
+#### 6.6.2 DeleteDynamicDns
 
 You can call the DeleteDynamicDns operation to delete dynamic DNS resources.
 
@@ -1968,6 +2029,9 @@ Tenant DNS and OPS DNS share the same interface for deletion, distinguished by t
 
 **Request parameters**
 
+| Name | Type | Req uire d | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DeleteDynamicDn s | The operation that you want to execute. Value: DeleteDynamicDns |
 |---|---|---|---|---|
 | DnsType | String | Yes | dns product | The DNS type. Valid values: dns product: tenant DNS, ops dns: OPS DNS. |
@@ -1975,9 +2039,21 @@ Tenant DNS and OPS DNS share the same interface for deletion, distinguished by t
 | DnsDomain | String | No | domain1.com | Required when DnsType is OPS DNS: The DNS domain. |
 | DnsRecord | String | No | 10.0.0.1 | Required when DnsType is OPS DNS: The Forwarders/Records record |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74- 4534-BD0E- 403F3EE64CAF | The ID of the request. |
+
+#### 6.6.3 UpdateDynamicDns
+
+You can call the UpdateDynamicDns operation to modify dynamic DNS resources.
+
+**API description**
+
+This operation supports modifying tenant DNS (DNS product). OPS DNS does not support modification, only addition and deletion.
+
+**Request parameters**
 
 | Name | Type | Req uire d | Example | Description |
 |---|---|---|---|---|
@@ -1988,32 +2064,15 @@ Tenant DNS and OPS DNS share the same interface for deletion, distinguished by t
 
 **Response parameters**
 
-#### UpdateDynamicDns
-
-You can call the UpdateDynamicDns operation to modify dynamic DNS resources.
-
-**API description**
-
-This operation supports modifying tenant DNS (DNS product). OPS DNS does not support modification, only addition and deletion.
-
-**Request parameters**
-
-**Response parameters**
-
 | Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2B3670CD-670E- 4540-8C13- 6DE929AEDD3B | The ID of the request. |
 
-| Parameter | Type | Requ ired | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
-| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+## 7 Appendixes
 
-## Appendixes
+### 7.1 STS overview
 
-### STS overview
-
-#### What is STS?
+#### 7.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -2025,7 +2084,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
@@ -2033,8 +2092,15 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 
 | Parameter | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
+| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
+| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+
+| Parameter | Type | Requ ired | Example | Description |
+|---|---|---|---|---|
 | RoleSessionNa me | String | Yes | alice | The name of the role session. Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the user who calls the operation. For example, specify a username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing. The name must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores ( ). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | The policy that specifies the permissions of the STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. The policy must be 1 to 1,024 characters in length. |
+
+**Responses**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2044,14 +2110,14 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 | AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The security token. |
 
-**Responses**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Expiration | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495** **:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -2117,10 +2183,11 @@ le in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
+
+**Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
 
@@ -2166,10 +2233,9 @@ in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Error codes**
 

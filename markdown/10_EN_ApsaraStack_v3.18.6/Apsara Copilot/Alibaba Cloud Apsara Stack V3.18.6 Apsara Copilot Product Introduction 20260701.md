@@ -2,20 +2,25 @@
 title: "Apsara Copilot Product Introduction 20260701"
 product_version: "V3.18.6"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot Product Introduction 20260701.pdf"
+source_pdf: "5fbdc1040cd2196e_Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot Product Introduction 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%A3%9E%E5%A4%A9%E5%8A%A9%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Copilot%20Product%20Introduction%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Copilot Product Introduction 20260701
 
-Apsara Copilot Product Introducti
+## Table of Contents
 
-## Product details
+- 1 Product details
+- 2 Product value
+- 3 Scenarios
+- 4 Features
 
-This topic introduces Apsara Copilot. Apsara Copilot is an intelligent cloud assistant powered by AI technologies, such as large models and agents. It helps you use cloud products and services efficiently through natural language interaction. Apsara Copilot transforms Apsara Stack management from manual processes to an AI-driven management model. Unified AI assistant: The tenant console features a single entry point for the AI assistant, named Apsara Copilot by default. This ensures a consistent user experience. Multi-agent collaboration: It uses a multi-agent architecture and intent recognition to call the most suitable agent. Cloud products can be extended with dedicated agents or tools as plug-ins, which allows for decoupled upgrades. Full product line coverage: It supports the integration of AI capabilities into the consoles of core cloud products in the Enterprise Edition. Apsara Copilot Product Introducti
+## 1 Product details
 
-## Product value
+This topic introduces Apsara Copilot. Apsara Copilot is an intelligent cloud assistant powered by AI technologies, such as large models and agents. It helps you use cloud products and services efficiently through natural language interaction. Apsara Copilot transforms Apsara Stack management from manual processes to an AI-driven management model. Unified AI assistant: The tenant console features a single entry point for the AI assistant, named Apsara Copilot by default. This ensures a consistent user experience. Multi-agent collaboration: It uses a multi-agent architecture and intent recognition to call the most suitable agent. Cloud products can be extended with dedicated agents or tools as plug-ins, which allows for decoupled upgrades. Full product line coverage: It supports the integration of AI capabilities into the consoles of core cloud products in the Enterprise Edition.
+
+## 2 Product value
 
 This topic describes the product value of Apsara Assistant.
 
@@ -29,9 +34,9 @@ Apsara Assistant quickly understands user questions and fetches accurate informa
 
 **Drives an artificial intelligence management model**
 
-Apsara Assistant creates a "Conversation as a Service" interaction model. This makes the cloud platform function more like an intelligent partner than a system of tools. It also lays the foundation for future autonomous and intelligent management. Apsara Copilot Product Introducti
+Apsara Assistant creates a "Conversation as a Service" interaction model. This makes the cloud platform function more like an intelligent partner than a system of tools. It also lays the foundation for future autonomous and intelligent management.
 
-## Scenarios
+## 3 Scenarios
 
 This topic describes the common scenarios for Apsara Assistant.
 
@@ -67,6 +72,10 @@ code is tailored to specific developer scenarios.
 **One-click code debugging**: For the generated OpenAPI sample code, you can click the
 debug link to go directly to the online API debugging page in the developer portal and quickly test the code.
 
+## 4 Features
+
+This topic describes the typical features of Apsara Copilot.
+
 | Feature | Description |
 |---|---|
 | Homepage | The homepage demonstrates the full capabilities of Apsara Copilot to help users deeply understand the product's value and how to use it, with clear guidance. |
@@ -81,12 +90,6 @@ debug link to go directly to the online API debugging page in the developer port
 | Resource operation | You can create, modify, and delete cloud resources to simplify resource management workflows. |
 | Bill analysis | Apsara Copilot analyzes your cloud resource usage costs, generates detailed expense reports, and provides optimization recommendations to reduce overall spending. |
 
-Apsara Copilot Product Introducti
-
-## Features
-
-This topic describes the typical features of Apsara Copilot.
-
 | Resource analysis | Apsara Copilot tracks cloud resource usage, including utilization and performance metrics, to help you fully understand resource status and optimize resource allocation. |
 |---|---|
 | Code generation | Apsara Copilot automatically generates code samples in multiple programming languages for OpenAPI and Terraform based on your requirements, improving development efficiency and code quality. |
@@ -95,5 +98,3 @@ This topic describes the typical features of Apsara Copilot.
 | Operations analytics dashboard | Apsara Copilot provides an operations analytics dashboard that helps customers better monitor its usage patterns and evaluate business effects. |
 | Operation audit | Apsara Copilot supports audit log recording. |
 | Command center | The command center displays a complete list of command examples, categorized and filterable by type, allowing users to quickly send commands. |
-
-Apsara Copilot Product Introducti

@@ -3,14 +3,70 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStac
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 58
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Developer Guide 20260827.pdf"
+source_pdf: "76d8da31bd2d60ac_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Devel"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20Developer%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Developer Guide 20260827
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Getting Started
+  - 2.1 Call an API operation
+- 3 Preparations
+  - 3.1 Obtain an AccessKey pair
+  - 3.2 Obtain access credentials assigned by STS
+  - 3.3 Obtain the information about region ID and endpoint
+  - 3.4 Use POP gateway to call Apsara Stack API operations
+- 4 Use Apsara Stack SDK for Java
+  - 4.1 Get started with Apsara Stack SDK for Java
+  - 4.2 Use the SDK
+    - 4.2.1 Install Apsara Stack SDK for Java
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Configure connection requests
+    - 4.2.4 Use CommonRequest to call API operations
+    - 4.2.5 Handle errors
+- 5 Use Apsara Stack SDK for Python
+  - 5.1 Get started with Apsara Stack SDK for Python
+  - 5.2 Use the SDK
+    - 5.2.1 Install Apsara Stack SDK for Python
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Configure HTTPS requests
+    - 5.2.4 Use CommonRequest to call API operations
+    - 5.2.5 Handle errors
+- 6 Use Apsara Stack SDK for Go
+  - 6.1 Get started with Apsara Stack SDK for Go
+  - 6.2 Use the SDK
+    - 6.2.1 Install the core package of Apsara Stack SDK for Go
+    - 6.2.2 Configure authentication credentials
+    - 6.2.3 Use CommonRequest to call API operations
+    - 6.2.4 Handle errors
+- 7 API Reference
+  - 7.1 Call API operations
+    - 7.1.1 Overview
+    - 7.1.2 Request structure
+    - 7.1.3 API authorization
+    - 7.1.4 Responses
+  - 7.2 RAM authentication
+  - 7.3 Common parameters
+  - 7.4 Region
+    - 7.4.1 DescribeZones
+  - 7.5 File system
+    - 7.5.1 CreateFileSystem
+    - 7.5.2 DescribeFileSystems
+    - 7.5.3 ModifyFileSystem
+    - 7.5.4 DeleteFileSystem
+  - 7.6 Data flow
+    - 7.6.1 CreateBackupPlan
+    - 7.6.2 DescribeImportJobs
+    - 7.6.3 CreateImportJob
+    - 7.6.4 DeleteImportJob
+    - 7.6.5 ControlReplicaTask
+    - 7.6.6 ControlImportJob
+
+## 1 Usage notes
 
 If you call an API operation to use a feature of ApsaraStack Parallel File System (APFS), you must specify a service name and an API version. The service name and API version vary depending on the feature that you want to use. To use a file system feature of APFS, call the corresponding API operation by using the Portable OpenAPI Proxy (POP) SDK. When you use the POP SDK to call the corresponding API operation, specify EFS as the service name and 2017-06-26 as the API version. The following figure shows how to use the POP SDK to call an API operation.
 
@@ -21,9 +77,9 @@ If you call an API operation to use a feature of ApsaraStack Parallel File Syste
 
 Make pre Make API c
 
-## Getting Started
+## 2 Getting Started
 
-### Call an API operation
+### 2.1 Call an API operation
 
 You can use the Portable OpenAPI Proxy (POP) gateway or Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. As of Apsara Stack Enterprise V3.16.0, the POP gateway is used by default to ensure that user experience is the same as that in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -62,9 +118,9 @@ Obtain the developer guide of the Apsara Stack service that you want to use. You
 For more information about how to obtain an Endpoint, see Obtain RegionID and Endpoint information.
 6. Obtain the SDK of the Apsara Stack service and call an API operation.
 
-## Preparations
+## 3 Preparations
 
-### Obtain an AccessKey pair
+### 3.1 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you call an API operation. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -108,7 +164,7 @@ AccessKey pair you want to obtain.
 5. Click **Manage AccessKey Pairs** on the right side of the page.
 6. You can view the AccessKey pair of the organization in the message that appears.
 
-### Obtain access credentials
+### 3.2 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -194,7 +250,7 @@ eceding step.
 
 Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
 
-### Obtain the information about
+### 3.3 Obtain the information about region ID and endpoint
 
 **region ID and endpoint**
 
@@ -220,7 +276,7 @@ icon in the **Service Registration** column.
 5. In the **Registration Variables** message, the value of the **efs.openapi-pub.endpoint**
 parameter is the endpoint of the APFS file system.
 
-### Use POP gateway to call
+### 3.4 Use POP gateway to call Apsara Stack API operations
 
 **Apsara Stack API operations**
 
@@ -316,13 +372,13 @@ HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server
 
 ck SDK for Java
 
-## Use Apsara Stack SDK for
+## 4 Use Apsara Stack SDK for Java
 
 **Java**
 
 This topic describes how to obtain and use Apsara Stack SDK for Java to call API operations.
 
-### Get started with Apsara Stack
+### 4.1 Get started with Apsara Stack SDK for Java
 
 **SDK for Java**
 
@@ -343,9 +399,9 @@ To use Apsara Stack SDK for Java, perform the following steps:
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exception.
 
-### Use the SDK
+### 4.2 Use the SDK
 
-#### Install Apsara Stack SDK for Java
+#### 4.2.1 Install Apsara Stack SDK for Java
 
 This topic describes how to install and use Apsara Stack SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 and later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. To use the features of ApsaraStack Parallel File System (APFS), you must install the core library of Apsara Stack SDK for Java. We recommend that you install the core library of version 4.5.17 or later. ck SDK for Java
 
@@ -357,7 +413,7 @@ This topic describes how to install and use Apsara Stack SDK for Java. Apsara St
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
@@ -376,7 +432,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the variables in the preceding sample code with actual values. Remove the angle brackets (<>) from the final code.
 
-#### Configure connection requests
+#### 4.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. ck SDK for Java
 
@@ -406,7 +462,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace the variable
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.4 Use CommonRequest to call API operations
 
 **operations**
 
@@ -520,7 +576,7 @@ ck SDK for Java `q` `p` `y` `y` `,` `y` `y`
 
 `}` `}` `}`
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server or SDK when you use the Apsara Stack SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Apsara Stack SDK for Java. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -552,11 +608,11 @@ to request technical support.
 
 `}` ck SDK for Python
 
-## Use Apsara Stack SDK for
+## 5 Use Apsara Stack SDK for Python
 
 **Python**
 
-### Get started with Apsara Stack
+### 5.1 Get started with Apsara Stack SDK for Python
 
 **SDK for Python**
 
@@ -588,9 +644,9 @@ ID, AccessKey ID, and AccessKey secret.
 2. Create an API request and configure required parameters.
 3. Initiate the API request and handle the response or exception.
 
-### Use the SDK
+### 5.2 Use the SDK
 
-#### Install Apsara Stack SDK for Python
+#### 5.2.1 Install Apsara Stack SDK for Python
 
 This topic describes how to install and use Apsara Stack SDK for Python.
 
@@ -616,7 +672,7 @@ If you use Python 3.x, run the following command to install the core library of 
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Python supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
@@ -628,7 +684,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 from aliyunsdkcore import client clt = client.AcsClient(access_key, acces_secret, region_id)
 ```
 
-#### Configure HTTPS requests
+#### 5.2.3 Configure HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol. ck SDK for Python
 
@@ -662,7 +718,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Use CommonRequest to call API
+#### 5.2.4 Use CommonRequest to call API operations
 
 **operations**
 
@@ -728,7 +784,7 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding = 'utf-8'))
 ```
 
-#### Handle errors
+#### 5.2.5 Handle errors
 
 ck SDK for Python If an error occurs on the server or SDK when you use the Apsara Stack SDK for Python, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Apsara Stack SDK for Python. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -751,11 +807,11 @@ except ServerException as e:
 
 ck SDK for Go
 
-## Use Apsara Stack SDK for
+## 6 Use Apsara Stack SDK for Go
 
 **Go**
 
-### Get started with Apsara Stack
+### 6.1 Get started with Apsara Stack SDK for Go
 
 **SDK for Go**
 
@@ -780,9 +836,9 @@ To use Apsara Stack SDK for Go, perform the following steps:
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
 
-### Use the SDK
+### 6.2 Use the SDK
 
-#### Install the core package of Apsara
+#### 6.2.1 Install the core package of Apsara Stack SDK for Go
 
 **Stack SDK for Go**
 
@@ -792,7 +848,7 @@ This topic describes how to install the core package of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 6.2.2 Configure authentication credentials
 
 ck SDK for Go When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Go supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
@@ -809,7 +865,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
         "<yourAccessKeySecret>") // Replace the variable with your AccessKey secret.
 ```
 
-#### Use CommonRequest to call API
+#### 6.2.3 Use CommonRequest to call API operations
 
 **operations**
 
@@ -909,7 +965,7 @@ e instance ID. If you want to modify, delete, or view the details of a specific 
 
 `}` ck SDK for Go
 
-#### Handle errors
+#### 6.2.4 Handle errors
 
 When you use Apsara Stack SDK for Go, a `ClientError` or a `ServerError` is returned if an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a manner similar to standard Go errors.
 
@@ -989,15 +1045,15 @@ response, err := ecsClient.DescribeDisks(request) if serverError, ok := err.(*er
 
 `}`
 
-## API Reference
+## 7 API Reference
 
-### Call API operations
+### 7.1 Call API operations
 
-#### Overview
+#### 7.1.1 Overview
 
 To call an API operation, you can send an HTTP GET request to the endpoint of the ApsaraStack Parallel File System (APFS) server. You must specify the relevant request parameters in the request based on the operation description. Then, the system returns the processing result of the request. All requests and responses are UTF-8 encoded.
 
-#### Request structure
+#### 7.1.2 Request structure
 
 **Endpoint**
 
@@ -1019,7 +1075,7 @@ In each request, you must set the Action parameter to specify the operation that
 
 All requests and responses are UTF-8 encoded.
 
-#### API authorization
+#### 7.1.3 API authorization
 
 To ensure the security of your Apsara Stack tenant account, we recommend that you use a Resource Access Management (RAM) user to call API operations. In the RAM console, you can authorize a RAM user to call the following operations on an ApsaraStack Parallel File System (APFS) resource.
 
@@ -1029,11 +1085,11 @@ To ensure the security of your Apsara Stack tenant account, we recommend that yo
 | File system | CreateFileSystem DeleteFileSystem DescribeFileSystems ModifyFileSystem DescribeZones |
 |---|---|
 
-#### Responses
+#### 7.1.4 Responses
 
 API responses use the HTTP response format. A 2xx status code indicates a successful call, and a 4xx or 5xx status code indicates a failed call.
 
-### RAM authentication
+### 7.2 RAM authentication
 
 When you call API operations to access resources within an Apsara Stack tenant account as a Resource Access Management (RAM) user, the system checks whether the RAM user is granted the required permissions.
 
@@ -1045,7 +1101,7 @@ You can use your Apsara Stack tenant account or a RAM user account to manage you
 
 The permissions that APFS checks vary based on the resources that are requested by the API operation and the syntax of the API operation.
 
-### Common parameters
+### 7.3 Common parameters
 
 Common parameters include common request parameters, common request headers, and common response parameters.
 
@@ -1080,9 +1136,9 @@ the request header to specify the ID of the instance and the IDs of the organiza
 
 Responses are returned in the unified format for API requests. The following HTTP status codes indicate different request statuses: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates that the call failed. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the call is successful.
 
-### Region
+### 7.4 Region
 
-#### DescribeZones
+#### 7.4.1 DescribeZones
 
 You can call the DescribeZones operation to query the information about ApsaraStack Parallel File System (APFS) clusters in the current region.
 
@@ -1136,9 +1192,9 @@ Sample success responses `{`
 
 `}` `]` `}` `}` `]` `}` `}` `]` `}` `}`
 
-### File system
+### 7.5 File system
 
-#### CreateFileSystem
+#### 7.5.1 CreateFileSystem
 
 You can call the CreateFileSystem operation to create a file system in ApsaraStack Parallel File System (APFS).
 
@@ -1174,7 +1230,7 @@ Sample success responses
 {"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"efs-01b06fa3"}
 ```
 
-#### DescribeFileSystems
+#### 7.5.2 DescribeFileSystems
 
 You can call the DescribeFileSystems operation to query a created file system in ApsaraStack Parallel File System (APFS).
 
@@ -1265,7 +1321,7 @@ Sample success responses `{`
 
 `}`
 
-#### ModifyFileSystem
+#### 7.5.3 ModifyFileSystem
 
 You can call the ModifyFileSystem operation to modify a file system in ApsaraStack Parallel File System (APFS). Note that each time you call this operation, you can modify only the
 **Capacity** or **Description** parameter.
@@ -1298,7 +1354,7 @@ Sample success responses `{`
 
 `}`
 
-#### DeleteFileSystem
+#### 7.5.4 DeleteFileSystem
 
 You can call the DeleteFileSystem operation to delete a file system from ApsaraStack Parallel File System (APFS).
 
@@ -1325,9 +1381,9 @@ Sample success responses
 {"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"efs-01b06fa3"}
 ```
 
-### Data flow
+### 7.6 Data flow
 
-#### CreateBackupPlan
+#### 7.6.1 CreateBackupPlan
 
 Creates a backup plan. This operation creates a backup plan in APFS. Ensure that all required parameters are specified and meet the data type requirements.
 
@@ -1393,7 +1449,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DescribeImportJobs
+#### 7.6.2 DescribeImportJobs
 
 Retrieves a list of import jobs.
 
@@ -1521,7 +1577,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### CreateImportJob
+#### 7.6.3 CreateImportJob
 
 Creates an import job to transfer files from OSS to a file system.
 
@@ -1578,7 +1634,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### DeleteImportJob
+#### 7.6.4 DeleteImportJob
 
 Deletes an import job. Before deleting an import job, ensure it is complete or no longer needed to prevent accidental data loss.
 
@@ -1625,7 +1681,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ControlReplicaTask
+#### 7.6.5 ControlReplicaTask
 
 Performs an operation on a replica task, such as canceling the task. Use the `ReplicaId` and `Operation` parameters to perform a specific operation on a replica task.
 
@@ -1672,7 +1728,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### ControlImportJob
+#### 7.6.6 ControlImportJob
 
 Cancels an import job.
 

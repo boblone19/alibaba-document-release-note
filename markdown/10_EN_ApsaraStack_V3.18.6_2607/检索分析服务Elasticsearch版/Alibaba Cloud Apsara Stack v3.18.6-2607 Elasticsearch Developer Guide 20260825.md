@@ -3,16 +3,104 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 177
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825.pdf"
+source_pdf: "42c3cf441a6bfee2_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20Developer%20Guide%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Developer Guide 20260825
 
+## Table of Contents
+
+- 1 Interact using RESTful APIs
+- 2 Interact using the Python API
+  - 2.1 Preparations
+  - 2.2 Basic operation examples
+  - 2.3 Complete operation example
+  - 2.4 Performance optimization suggestions
+  - 2.5 FAQ
+  - 2.6 Use the Java API to access a cluster
+    - 2.6.1 Connect to an instance
+    - 2.6.2 Create an index
+    - 2.6.3 Write data
+    - 2.6.4 Query data
+    - 2.6.5 Delete an index
+- 3 Interact with OpenAPI
+  - 3.1 Process of API calls
+  - 3.2 Preparations
+    - 3.2.1 Obtain API information and its endpoint
+    - 3.2.2 Obtain AccessKey credentials
+    - 3.2.3 Obtain an STS AccessKey pair
+    - 3.2.4 Obtain the values of common headers
+  - 3.3 Use POP to make API calls
+    - 3.3.1 Java version
+    - 3.3.2 SDK for Go
+    - 3.3.3 Python Version
+  - 3.4 SLB instances
+    - 3.4.1 Create a Notebook modeling instance
+      - 3.4.1.1 CreateInstance
+      - 3.4.1.2 ListZones
+      - 3.4.1.3 ListDeploymentArchs
+      - 3.4.1.4 ListNetworkTypes
+      - 3.4.1.5 ListEsVersions
+      - 3.4.1.6 ListCpubrands
+      - 3.4.1.7 ListAvailiableSpecs
+      - 3.4.1.8 ListStorageClass
+    - 3.4.2 Instance management
+      - 3.4.2.1 ListInstance
+      - 3.4.2.2 DescribeInstance
+      - 3.4.2.3 RestartInstance
+      - 3.4.2.4 UpdateInstance
+      - 3.4.2.5 DeleteInstance
+      - 3.4.2.6 DescribeElasticsearchHealth
+      - 3.4.2.7 UpdateDescription
+      - 3.4.2.8 UpdateAdminPassword
+      - 3.4.2.9 ListAllNode
+      - 3.4.2.10 GetElasticsearchPodInfo
+      - 3.4.2.11 UpdateElasticsearchSettings
+      - 3.4.2.12 GetElasticsearchSettings
+      - 3.4.2.13 GetElasticsearchPodLogs
+      - 3.4.2.14 UpdateInstanceSettings
+    - 3.4.3 Snapshots
+      - 3.4.3.1 CreateSnapshot
+      - 3.4.3.2 ListSnapshots
+      - 3.4.3.3 DescribeSnapshotSetting
+      - 3.4.3.4 ListSnapshotRepoInfos
+      - 3.4.3.5 GetSnapshotRepoInfo
+      - 3.4.3.6 UpdateSnapshotSetting
+    - 3.4.4 Manage dictionaries
+      - 3.4.4.1 ListDicts
+      - 3.4.4.2 ListDictInformation
+      - 3.4.4.3 UpdateDict
+      - 3.4.4.4 UpdateSynonymsDicts
+      - 3.4.4.5 UpdateHotIkDicts
+    - 3.4.5 Plug-in
+      - 3.4.5.1 ListPlugins
+      - 3.4.5.2 ListKibanaPlugins
+      - 3.4.5.3 InstallKibanaSystemPlugin
+      - 3.4.5.4 UninstallKibanaPlugin
+      - 3.4.5.5 InstallSystemPlugin
+      - 3.4.5.6 InstallUserPlugins
+      - 3.4.5.7 UninstallPlugin
+      - 3.4.5.8 GetConfigFiles
+      - 3.4.5.9 UpdateConfigFiles
+      - 3.4.5.10 DeleteConfigFile
+    - 3.4.6 security-configuration-discontinued
+      - 3.4.6.1 ListInstanceCertificateFinger
+      - 3.4.6.2 ListUserSecurityInfo
+      - 3.4.6.3 UpdateUserSecurityInfo
+      - 3.4.6.4 ModifyAclWhiteIps
+      - 3.4.6.5 DisableHttps
+      - 3.4.6.6 EnableHttps
+      - 3.4.6.7 ListGlobalFeatures
+- 4 Appendixes
+  - 4.1 STS overview
+    - 4.1.1 What is STS?
+    - 4.1.2 Obtain an STS token
+
 ESTful APIs
 
-## Interact using RESTful APIs
+## 1 Interact using RESTful APIs
 
 Elasticsearch uses RESTful APIs. All operations, such as creating, retrieving, updating, and deleting data, and configuring aliases, are performed through HTTP APIs. This topic describes how to use RESTful APIs.
 
@@ -98,13 +186,13 @@ GET /_count
 
 he Python API
 
-## Interact using the Python
+## 2 Interact using the Python API
 
 **API**
 
 This topic describes how to use Python to access Alibaba Cloud Elasticsearch version 7.10. It covers client installation, connection configuration, basic operations, and end-to-end testing. Developers can use this guide to quickly learn how to work with Elasticsearch in Python.
 
-### Preparations
+### 2.1 Preparations
 
 This topic describes the preparations required to use Python to access Alibaba Cloud Elasticsearch version 7.10, including environment requirements, dependency installation, network configuration, client initialization, connection configuration, and authentication setup.
 
@@ -207,7 +295,7 @@ es = Elasticsearch(
 
 `)`
 
-### Basic operation examples
+### 2.2 Basic operation examples
 
 This topic provides basic operation examples, including indexing documents, searching documents, aggregate queries, and deleting documents.
 
@@ -255,7 +343,7 @@ res = es.search(index="my-index", body=agg_body) for bucket in res['aggregations
 res = es.delete(index="test-index", doc_type='_doc', id=1) print(res['result'])
 ```
 
-### Complete operation example
+### 2.3 Complete operation example
 
 he Python API This topic provides a complete operation example for performing basic Create, Read, Update, and Delete (CRUD) operations.
 
@@ -414,13 +502,13 @@ he Python API
         es_client.close_connection()
 ```
 
-### Performance optimization
+### 2.4 Performance optimization suggestions
 
 **suggestions**
 
 This topic provides suggestions for improving performance. You can optimize performance in the following ways: The ES product is fully compatible with Elasticsearch 7.10. We recommend that you use tools such as Tongyi Lingma to perform checks. Use the bulk API to process large amounts of data. Adjust the timeout value to balance response time and resource consumption. Use the Elasticsearch caching mechanism. Create appropriate indexes on frequently queried fields. he Python API
 
-### FAQ
+### 2.5 FAQ
 
 This topic describes how to troubleshoot common issues that occur when you run search operations with the Python client.
 
@@ -438,11 +526,11 @@ except Exception as e:
 
 This code sample applies to the following Alibaba Cloud Elasticsearch development scenarios. It demonstrates how to use the Python client to properly catch and handle exceptions when you run search operations: Index existence validation During development or debugging, you can quickly verify whether a target index exists. Catch the `NotFoundError` exception to determine if the index is missing. This lets you trigger a subsequent index creation or data initialization flow. Connection status check You can catch the `ConnectionError` exception to check the network connectivity between the client and the Elasticsearch cluster, authentication configurations such as the username and password, or cluster availability. This ensures that the connection parameters are correct. Fault tolerance design for production environments In a production system, you can use exception handling to prevent the program from crashing if a search operation fails. You can also provide helpful error messages or log records to help operations and maintenance (O&M) engineers quickly identify the issue. General error debugging You can catch unexpected exceptions, such as insufficient permissions or query syntax errors, and output detailed error messages to help developers diagnose issues and optimize the code.
 
-### Use the Java API to access a
+### 2.6 Use the Java API to access a cluster
 
 **cluster**
 
-#### Connect to an instance
+#### 2.6.1 Connect to an instance
 
 This topic describes how to connect to a Elasticsearch instance by using a Java High Level REST Client.
 
@@ -502,7 +590,7 @@ String(encodedBytes))};
    return new RestHighLevelClient(builder);
 ```
 
-#### Create an index
+#### 2.6.2 Create an index
 
 This topic describes how to create an index by using the Java API.
 
@@ -633,13 +721,13 @@ Collections.emptyMap(), entity);
   return "request failed";
 ```
 
-#### Write data
+#### 2.6.3 Write data
 
 This topic describes how to use the Java API to write data to a Elasticsearch cluster, including single write and bulk write (batch write).
 
 **Single write**
 
-In the case of single write data, after specifying the document id, if the document id does not exist, the document is created. If the id exists, the corresponding document is updated. If you do not specify a document ID, the document ID is randomly generated by the Elasticsearch. Example: Write data
+In the case of single write data, after specifying the document id, if the document id does not exist, the document is created. If the id exists, the corresponding document is updated. If you do not specify a document ID, the document ID is randomly generated by the Elasticsearch. Example:
 
 ```
 in JSON format // The index to be written. IndexRequest request = new IndexRequest("index_name"); // The ID of the document. request.id("6"); // The type of the document. It must be included in versions earlier than 7.x. In 5.5 .3, it cannot start with an underscore (_). request.type("_doc"); // The written information. String jsonString = "{" +
@@ -650,7 +738,7 @@ in JSON format // The index to be written. IndexRequest request = new IndexReque
 request.source(jsonString, XContentType.JSON); // In V6.3.2 and earlier, the RequestOptions.DEFAULT parameter is not required. IndexResponse response = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 ```
 
-Write data he Python API
+he Python API
 
 ```
 as a map // The index to write. IndexRequest request = new IndexRequest("index_name"); // The ID of the document. request.id("6"); // The type of the document. It must be included in versions earlier than 7.x. In 5.5 .3, it cannot start with an underscore (_). request.type("_doc"); // The written information. Map<String, String> map = new HashMap<String, String>(); map.put("user","kimchy"); map.put("postDate","2013-01-30"); map.put("message","trying out Elasticsearch"); request.source(map); // In V6.3.2 and earlier, the RequestOptions.DEFAULT parameter is not required. IndexResponse response = restHighLevelClient.index(request,RequestOptions.DEFAULT);
@@ -696,7 +784,7 @@ BulkResponse response = restHighLevelClient.bulk(request);
 
 he Python API
 
-#### Query data
+#### 2.6.4 Query data
 
 This topic describes how to use the Java API to query data in a Elasticsearch cluster.
 
@@ -738,7 +826,7 @@ sourceBuilder.aggregation(aggregation); SearchRequest request = new SearchReques
 
 You can aggregate only fields of the Keyword type. If you aggregate fields of other types, an error illegal_argument_exception is reported.
 
-#### Delete an index
+#### 2.6.5 Delete an index
 
 This topic describes how to use the Java API to delete an index.
 
@@ -790,9 +878,9 @@ Collections.emptyMap());
     return "request failed";
 ```
 
-## Interact with OpenAPI
+## 3 Interact with OpenAPI
 
-### Process of API calls
+### 3.1 Process of API calls
 
 You can use POP Gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. From Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure that user experience is consistent with that in Alibaba Cloud public cloud. This topic describes how to use POP Gateway to call Apsara Stack API operations.
 
@@ -825,9 +913,9 @@ For more information about how to view, use, and obtain the developer guide of a
 5. Obtain the endpoint of the service.
 6. Obtain the service SDK and use the SDK to call an operation of the service.
 
-### Preparations
+### 3.2 Preparations
 
-#### Obtain API information and its
+#### 3.2.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -849,7 +937,7 @@ The information on the API Directory page of the Apsara Uni-manager Management C
 7. Select the corresponding API operation and obtain the POP endpoint information of the
 cloud service under the parameter name.
 
-#### Obtain AccessKey credentials
+#### 3.2.2 Obtain AccessKey credentials
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use either type of access credential for authentication when you make an API request. This topic describes how to obtain an access credential that is assigned by RAM.
 
@@ -890,7 +978,7 @@ want to obtain.
 5. On the right side of the page, click **Manage AccessKey Pairs**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-#### Obtain an STS AccessKey pair
+#### 3.2.3 Obtain an STS AccessKey pair
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack.
 
@@ -1011,7 +1099,7 @@ tained in the previous step.
         System.out.println(e.getErrMsg());
 ```
 
-#### Obtain the values of common headers
+#### 3.2.4 Obtain the values of common headers
 
 You must specify multiple request headers when you call Apsara Stack API operations. This topic describes the common request headers and how to obtain the values of the request headers. This topic also describes the return values of specific parameters after you call API operations.
 
@@ -1072,9 +1160,9 @@ If you call the API operation of a list instance, the following value is added b
 | DepartmentName | The name of an organization. |
 | Department | The ID of an organization. |
 
-### Use POP to make API calls
+### 3.3 Use POP to make API calls
 
-#### Java version
+#### 3.3.1 Java version
 
 Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
 
@@ -1269,7 +1357,7 @@ When you use HTTPS to access OpenAPI operations, the SDK enables SSL/TLS certifi
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify that the server certificate is not verified. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-#### SDK for Go
+#### 3.3.2 SDK for Go
 
 This topic describes how to use the Point of Presence (POP) gateway to call the SDK for Go.
 
@@ -1440,7 +1528,7 @@ The HTTPSInsecure setting takes effect for the client only when you do not speci
 // If you specify the HTTPSInsecure parameter for the client, the setting takes effect for all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter for the client to true. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-#### Python Version
+#### 3.3.3 Python Version
 
 This topic describes how to POP Python SDK call the API operations of cloud services.
 
@@ -1565,11 +1653,11 @@ cate.
 
 `)`
 
-### SLB instances
+### 3.4 SLB instances
 
-#### Create a Notebook modeling instance
+#### 3.4.1 Create a Notebook modeling instance
 
-##### CreateInstance
+##### 3.4.1.1 CreateInstance
 
 Creates an Elasticsearch instance.
 
@@ -1759,7 +1847,7 @@ Example of a successful response `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
 
-##### ListZones
+##### 3.4.1.2 ListZones
 
 Before you create an Elasticsearch instance, call the ListZones operation to retrieve a list of zones where ES instances can be created.
 
@@ -1816,7 +1904,7 @@ Successful response example `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
 
-##### ListDeploymentArchs
+##### 3.4.1.3 ListDeploymentArchs
 
 Call ListDeploymentArchs when you create an Elasticsearch cluster to retrieve the supported deployment architectures and zone list for the specified region.
 
@@ -1881,7 +1969,7 @@ Sample success response `JSON` format
 </Result>
 ```
 
-##### ListNetworkTypes
+##### 3.4.1.4 ListNetworkTypes
 
 Call ListNetworkTypes to obtain the network type architecture.
 
@@ -1928,7 +2016,7 @@ Response example `JSON` format
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>singleTunnel</Result>
 ```
 
-##### ListEsVersions
+##### 3.4.1.5 ListEsVersions
 
 Retrieves the available versions for an Elasticsearch cluster.
 
@@ -1990,7 +2078,7 @@ Successful response `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
 
-##### ListCpubrands
+##### 3.4.1.6 ListCpubrands
 
 Call ListCpubrands to retrieve a list of CPU architectures.
 
@@ -2051,7 +2139,7 @@ Sample success response `JSON` format
 </Result>
 ```
 
-##### ListAvailiableSpecs
+##### 3.4.1.7 ListAvailiableSpecs
 
 When creating an Elasticsearch instance, call ListAvailiableSpecs to retrieve the available node specifications for different node types.
 
@@ -2110,7 +2198,7 @@ Normal Response Example `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The provided instance ID does not exist. |
 
-##### ListStorageClass
+##### 3.4.1.8 ListStorageClass
 
 When you create an Elasticsearch instance, you can call ListStorageClass to retrieve the available disk types for the current node and their corresponding minimum and maximum storage capacities.
 
@@ -2184,9 +2272,9 @@ Normal response example `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The provided instance ID does not exist. |
 
-#### Instance management
+#### 3.4.2 Instance management
 
-##### ListInstance
+##### 3.4.2.1 ListInstance
 
 Call ListInstance to retrieve a list of information about all instances.
 
@@ -2474,7 +2562,7 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
 | 401 | UserUnauthorized | Authentication required | Valid identity authentication information is not provided. Check the configuration of your AccessKey. |
 | 401 | SubAccountNoPer mission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM | The RAM user does not have the required permissions. Grant the required permissions to the RAM user in the Resource Access Management (RAM) console. |
 
-##### DescribeInstance
+##### 3.4.2.2 DescribeInstance
 
 Queries the details of a specified instance.
 
@@ -2731,7 +2819,7 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
 
-##### RestartInstance
+##### 3.4.2.3 RestartInstance
 
 You can call the RestartInstance operation to restart an ES cluster.
 
@@ -2791,7 +2879,7 @@ Successful response example `JSON` format
 | 400 | InstanceActivating | Instance is activating | The instance is being activated and cannot be restarted. |
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the status of the instance and try again. |
 
-##### UpdateInstance
+##### 3.4.2.4 UpdateInstance
 
 Call the UpdateInstance operation to modify the configuration of an Elasticsearch cluster. You can modify the configuration of only one node type at a time.
 
@@ -2960,7 +3048,7 @@ Sample normal response `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and retry. |
 
-##### DeleteInstance
+##### 3.4.2.5 DeleteInstance
 
 Call the DeleteInstance operation to release an Elasticsearch instance.
 
@@ -3214,7 +3302,7 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check whether the instance ID is correct or whether the instance has been deleted. |
 
-##### DescribeElasticsearchHealth
+##### 3.4.2.6 DescribeElasticsearchHealth
 
 Call DescribeElasticsearchHealth to retrieve the health status of an Elasticsearch cluster.
 
@@ -3272,7 +3360,7 @@ Sample response `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Confirm the instance ID is correct. |
 
-##### UpdateDescription
+##### 3.4.2.7 UpdateDescription
 
 Call UpdateDescription to update the name of an Alibaba Cloud Elasticsearch instance.
 
@@ -3390,7 +3478,7 @@ Normal Response Example `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is activating. Cannot perform the update operation. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The provided instance ID does not exist. Check the instance status and retry. |
 
-##### UpdateAdminPassword
+##### 3.4.2.8 UpdateAdminPassword
 
 Call the UpdateAdminPassword operation to modify the access password for an ES cluster.
 
@@ -3448,7 +3536,7 @@ Response example `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is being activated. The password cannot be modified. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and retry the request. |
 
-##### ListAllNode
+##### 3.4.2.9 ListAllNode
 
 Call ListAllNode to retrieve information about all nodes in a specified cluster.
 
@@ -3523,7 +3611,7 @@ Response examples `JSON` format
 </Result>
 ```
 
-##### GetElasticsearchPodInfo
+##### 3.4.2.10 GetElasticsearchPodInfo
 
 Call GetElasticsearchPodInfo to retrieve pod information for an Elasticsearch cluster.
 
@@ -3589,7 +3677,7 @@ Sample successful response `JSON` format
 |---|---|---|---|
 |   | InstanceNotFound | The specified instance does not exist. Check the instance status and try again. | The specified instance does not exist. Check the instance status and try again. |
 
-##### UpdateElasticsearchSettings
+##### 3.4.2.11 UpdateElasticsearchSettings
 
 Call UpdateElasticsearchSettings to modify the white screen configuration of a Elasticsearch instance.
 
@@ -3928,7 +4016,7 @@ Sample success responses `JSON` format
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### GetElasticsearchSettings
+##### 3.4.2.12 GetElasticsearchSettings
 
 Call GetElasticsearchSettings to obtain the white screen configuration information of the Elasticsearch instance.
 
@@ -4182,7 +4270,7 @@ space) such as 500mb, 100g</valueDesc>
 </Result>
 ```
 
-##### GetElasticsearchPodLogs
+##### 3.4.2.13 GetElasticsearchPodLogs
 
 Call the GetElasticsearchPodLogs operation to retrieve the log records of a pod in a specified Elasticsearch instance.
 
@@ -4237,7 +4325,7 @@ Example of a successful response `JSON` format
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>es-cn-6ja1ro4jt000c****</Result>
 ```
 
-##### UpdateInstanceSettings
+##### 3.4.2.14 UpdateInstanceSettings
 
 You can call the UpdateInstanceSettings operation to update the configuration of an Alibaba Cloud Elasticsearch instance.
 
@@ -4310,9 +4398,9 @@ Sample success response `JSON` format
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-#### Snapshots
+#### 3.4.3 Snapshots
 
-##### CreateSnapshot
+##### 3.4.3.1 CreateSnapshot
 
 Call the CreateSnapshot operation to create a snapshot replica of an instance.
 
@@ -4367,7 +4455,7 @@ Normal response example `JSON` format
 | 401 | StsRoleAccountNoP ermission | StsRoleAccountNoPermission | Role account has no permission or expired. |
 | 401 | SubAccountNoPer mission | SubAccountNoPermission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM. |
 
-##### ListSnapshots
+##### 3.4.3.2 ListSnapshots
 
 Call ListSnapshots to retrieve a list of snapshots for an Elasticsearch cluster.
 
@@ -4443,7 +4531,7 @@ Sample success response `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
 
-##### DescribeSnapshotSetting
+##### 3.4.3.3 DescribeSnapshotSetting
 
 Call DescribeSnapshotSetting to view the data backup configuration of a specified cluster.
 
@@ -4513,7 +4601,7 @@ Normal Response Example `JSON` format
 |---|---|---|---|
 | 404 | InstanceNotFound | The specified cluster does not exist. Check the cluster status and try again. | The specified cluster does not exist. Check the cluster status and try again. |
 
-##### ListSnapshotRepoInfos
+##### 3.4.3.4 ListSnapshotRepoInfos
 
 Call the ListSnapshotRepoInfos operation to retrieve a list of snapshot repositories.
 
@@ -4585,7 +4673,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### GetSnapshotRepoInfo
+##### 3.4.3.5 GetSnapshotRepoInfo
 
 Call the GetSnapshotRepoInfo operation to retrieve information about the snapshot repository of a specified instance.
 
@@ -4661,7 +4749,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### UpdateSnapshotSetting
+##### 3.4.3.6 UpdateSnapshotSetting
 
 Updates the data backup configuration of a specified instance.
 
@@ -4739,9 +4827,9 @@ Sample response `JSON` format
 | 400 | InstanceActivating | InstanceActivating | The instance is being activated. |
 | 400 | InstanceNotFound | InstanceNotFound | The specified instance ID does not exist. |
 
-#### Manage dictionaries
+#### 3.4.4 Manage dictionaries
 
-##### ListDicts
+##### 3.4.4.1 ListDicts
 
 Retrieves a list of dictionaries that are installed on a specified Elasticsearch cluster.
 
@@ -4812,7 +4900,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### ListDictInformation
+##### 3.4.4.2 ListDictInformation
 
 You can call the ListDictInformation operation to retrieve the OSS information for the dictionary of an Elasticsearch instance.
 
@@ -4896,7 +4984,7 @@ Sample success response `JSON` format
 | 401 | SubAccountNoPer mission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM | The RAM user has no permissions. Grant permissions to the RAM user in the RAM console. |
 | 401 | UserUnauthorized | Authentication required | Authentication failed. Provide valid credentials. |
 
-##### UpdateDict
+##### 3.4.4.3 UpdateDict
 
 Updates the IK dictionary of an Elasticsearch instance.
 
@@ -4986,7 +5074,7 @@ Sample normal response `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is activating. Retry later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and ID. |
 
-##### UpdateSynonymsDicts
+##### 3.4.4.4 UpdateSynonymsDicts
 
 Updates the synonym dictionaries for a cluster.
 
@@ -5109,7 +5197,7 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
 | 400 | InstanceActivating | Instance is activating | The instance is being activated. Try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and try again. |
 
-##### UpdateHotIkDicts
+##### 3.4.4.5 UpdateHotIkDicts
 
 Updates the IK hot word dictionary for a cluster.
 
@@ -5238,9 +5326,9 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
 | 400 | InstanceActivating | Instance is activating | The instance is activating. Try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and ID. |
 
-#### Plug-in
+#### 3.4.5 Plug-in
 
-##### ListPlugins
+##### 3.4.5.1 ListPlugins
 
 Call the ListPlugins operation to retrieve a list of all installed and uninstalled plugins for an Elasticsearch cluster.
 
@@ -5332,7 +5420,7 @@ Sample success response `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
 
-##### ListKibanaPlugins
+##### 3.4.5.2 ListKibanaPlugins
 
 Call ListKibanaPlugins to retrieve the list of plugins for the Kibana nodes of an Elasticsearch instance.
 
@@ -5424,7 +5512,7 @@ Response example `JSON` format
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### InstallKibanaSystemPlugin
+##### 3.4.5.3 InstallKibanaSystemPlugin
 
 Call InstallKibanaSystemPlugin to install a Kibana system plugin. The Kibana instance must have at least 2 CPU cores and 4 GB of memory.
 
@@ -5483,7 +5571,7 @@ Response example `JSON` format
 | 400 | InstanceActivating | InstanceActivating | The instance is being activated. |
 | 400 | InstanceNotFound | InstanceNotFound | The specified instance ID does not exist. |
 
-##### UninstallKibanaPlugin
+##### 3.4.5.4 UninstallKibanaPlugin
 
 The UninstallKibanaPlugin operation uninstalls a Kibana plugin.
 
@@ -5533,7 +5621,7 @@ Response example `JSON` format
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### InstallSystemPlugin
+##### 3.4.5.5 InstallSystemPlugin
 
 Installs system plugins on a specified instance.
 
@@ -5599,7 +5687,7 @@ Successful response example `JSON` format
 | HTTP status code | Error code | Error message | Description |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The provided instance ID does not exist. |
 
-##### InstallUserPlugins
+##### 3.4.5.6 InstallUserPlugins
 
 Call InstallUserPlugins to install custom user plugins for a specified instance.
 
@@ -5659,7 +5747,7 @@ POST /openapi/instances/[InstanceId]/plugins/user/actions/install HTTP/1.1
 | 400 | InstanceActivating | Instance is activating. | The instance is being activated. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
 
-##### UninstallPlugin
+##### 3.4.5.7 UninstallPlugin
 
 Use the UninstallPlugin operation to uninstall an Elasticsearch cluster plugin.
 
@@ -5719,7 +5807,7 @@ POST /openapi/instances/[InstanceId]/plugins/actions/uninstall HTTP/1.1
 | 400 | InstanceActivating | Instance is activating. | The instance is being activated. The uninstall operation cannot be performed. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
 
-##### GetConfigFiles
+##### 3.4.5.8 GetConfigFiles
 
 Call GetConfigFiles to retrieve information about plugin configuration files.
 
@@ -5778,7 +5866,7 @@ Example of a successful response `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
 
-##### UpdateConfigFiles
+##### 3.4.5.9 UpdateConfigFiles
 
 Call UpdateConfigFiles to update a plugin configuration file.
 
@@ -5840,7 +5928,7 @@ Successful response example `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is still activating. Wait and try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
 
-##### DeleteConfigFile
+##### 3.4.5.10 DeleteConfigFile
 
 You can call DeleteConfigFile to delete a plugin configuration.
 
@@ -5903,9 +5991,9 @@ Normal Response Example `JSON` Format
 | 400 | InstanceActivating | Instance is activating. | The instance is activating. Try again later. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
 
-#### security-configuration-discontinued
+#### 3.4.6 security-configuration-discontinued
 
-##### ListInstanceCertificateFinger
+##### 3.4.6.1 ListInstanceCertificateFinger
 
 Call ListInstanceCertificateFinger to view Elasticsearch certificate information.
 
@@ -5960,7 +6048,7 @@ Normal response example `JSON` format
 </Result>
 ```
 
-##### ListUserSecurityInfo
+##### 3.4.6.2 ListUserSecurityInfo
 
 You can call ListUserSecurityInfo to view the security information for user accounts in a specified instance.
 
@@ -6032,7 +6120,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### UpdateUserSecurityInfo
+##### 3.4.6.3 UpdateUserSecurityInfo
 
 Call UpdateUserSecurityInfo to modify user security information.
 
@@ -6096,7 +6184,7 @@ Sample success response `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is still activating. You cannot perform this operation. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
 
-##### ModifyAclWhiteIps
+##### 3.4.6.4 ModifyAclWhiteIps
 
 Call the ModifyAclWhiteIps operation to configure an internal IP address whitelist for the Elasticsearch instance.
 
@@ -6169,7 +6257,7 @@ POST /openapi/instances/es-cn-xxxxx/actions/modify-acl-white-ips Content-Type:ap
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### DisableHttps
+##### 3.4.6.5 DisableHttps
 
 You can call the CloseHttps operation to disable HTTPS.
 
@@ -6224,7 +6312,7 @@ Sample success responses `JSON` format
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### EnableHttps
+##### 3.4.6.6 EnableHttps
 
 Enables HTTPS.
 
@@ -6283,7 +6371,7 @@ Sample success responses `JSON` format
 | HttpCo de | Error code | Error message | Examples |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### ListGlobalFeatures
+##### 3.4.6.7 ListGlobalFeatures
 
 Retrieves the global features of Elasticsearch.
 
@@ -6355,11 +6443,11 @@ Sample responses `JSON` format
 </Result>
 ```
 
-## Appendixes
+## 4 Appendixes
 
-### STS overview
+### 4.1 STS overview
 
-#### What is STS?
+#### 4.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -6371,7 +6459,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### Obtain an STS token
+#### 4.1.2 Obtain an STS token
 
 You can call the AssumeRole operation to obtain a Security Token Service (STS) token. A Resource Access Management (RAM) user can use the STS token to assume a RAM role whose trusted entity is an Alibaba Cloud account.
 

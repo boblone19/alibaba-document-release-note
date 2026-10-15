@@ -3,14 +3,99 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for 
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 199
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Developer Guide 20260902.pdf"
+source_pdf: "858fc6ba2397c2f7_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Developer Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Developer%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Developer Guide 20260902
 
-## Procedure for API calls
+## Table of Contents
+
+- 1 Procedure for API calls
+- 2 Preparations
+  - 2.1 Obtain AccessKey pair
+  - 2.2 Obtain an endpoint
+  - 2.3 Obtain an SDK
+- 3 Use the SDK for Java
+  - 3.1 Install the SDK for Java
+  - 3.2 Configure authentication credentials
+  - 3.3 Initiate a request
+  - 3.4 Handle exceptions
+- 4 API reference
+  - 4.1 Legacy API (deprecated)
+    - 4.1.1 API overview
+    - 4.1.2 Initialization operations
+      - 4.1.2.1 InitUser
+    - 4.1.3 Cloud instances
+      - 4.1.3.1 CreateBackupCloud
+      - 4.1.3.2 CreateMainCloud
+      - 4.1.3.3 DescribeBackupCloud
+      - 4.1.3.4 DescribeCloud
+      - 4.1.3.5 ListMainCloud
+      - 4.1.3.6 ListSupportRegion
+      - 4.1.3.7 UpdateBackupCloud
+      - 4.1.3.8 UpdateMainCloud
+      - 4.1.3.9 UpdateProductConfig
+      - 4.1.3.10 UpdateProductConfig
+    - 4.1.4 Protection groups
+      - 4.1.4.1 CreateProtectGroup
+      - 4.1.4.2 DescribeProtectGroup
+      - 4.1.4.3 ListProtectGroup
+      - 4.1.4.4 RemoveProtectGroup
+      - 4.1.4.5 UpdateProtectGroup
+    - 4.1.5 Plan
+      - 4.1.5.1 CreatePlan
+      - 4.1.5.2 DescribePlan
+      - 4.1.5.3 DescribePlanInstance
+      - 4.1.5.4 ListPlan
+      - 4.1.5.5 ListPlanInstance
+      - 4.1.5.6 RemovePlan
+      - 4.1.5.7 StartPlan
+      - 4.1.5.8 StartUserTask
+      - 4.1.5.9 UpdatePlan
+  - 4.2 New API
+    - 4.2.1 API overview
+    - 4.2.2 Cloud instances
+      - 4.2.2.1 UpdateCloudInstance
+      - 4.2.2.2 ListCloudInstances
+      - 4.2.2.3 GetCloudInstance
+      - 4.2.2.4 DeleteCloudInstance
+      - 4.2.2.5 ListCloudCenter
+      - 4.2.2.6 CreateCloudInstanceFromCloudCenter
+    - 4.2.3 Disaster recovery relationship
+      - 4.2.3.1 UpdateDrGroup
+      - 4.2.3.2 ListDrGroups
+      - 4.2.3.3 GetDrGroup
+      - 4.2.3.4 DeleteDrGroup
+      - 4.2.3.5 CreateDrGroup
+    - 4.2.4 Protection groups
+      - 4.2.4.1 UpdateProtectGroup
+      - 4.2.4.2 ProtectGroupCtl
+      - 4.2.4.3 ListProtectGroups
+      - 4.2.4.4 GetProtectGroup
+      - 4.2.4.5 DeleteProtectGroup
+      - 4.2.4.6 CreateProtectGroup
+    - 4.2.5 Sync entities
+      - 4.2.5.1 UpdateSyncGroup
+      - 4.2.5.2 SyncGroupCtl
+      - 4.2.5.3 ListSyncGroups
+      - 4.2.5.4 GetSyncGroup
+      - 4.2.5.5 DeleteSyncGroup
+      - 4.2.5.6 CreateSyncGroup
+    - 4.2.6 Disaster recovery plan
+      - 4.2.6.1 UpdateRecoveryPlan
+      - 4.2.6.2 RecoveryTaskCtl
+      - 4.2.6.3 ListRecoveryTasks
+      - 4.2.6.4 ListRecoveryPlans
+      - 4.2.6.5 GetRecoveryTask
+      - 4.2.6.6 GetRecoveryPlan
+      - 4.2.6.7 DeleteRecoveryTask
+      - 4.2.6.8 DeleteRecoveryPlan
+      - 4.2.6.9 CreateRecoveryTask
+      - 4.2.6.10 CreateRecoveryPlan
+
+## 1 Procedure for API calls
 
 You can use the POP gateway to call API operations in ASR for Geo-disaster Recovery.
 
@@ -36,9 +121,9 @@ see Obtain the SDK package.
 
 Only users who are granted the permissions of the operations administrator, organization administrator, global disaster recovery administrator, or organization disaster recovery administrator role can call API operations in ASR for Geo-disaster Recovery.
 
-## Preparations
+## 2 Preparations
 
-### Obtain AccessKey pair
+### 2.1 Obtain AccessKey pair
 
 This topic describes how to obtain an AccessKey ID and an AccessKey secret.
 
@@ -91,7 +176,7 @@ The AccessKey pair of a personal account is managed and controlled by the permis
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization AccessKey information.
 
-### Obtain an endpoint
+### 2.2 Obtain an endpoint
 
 This topic describes how to obtain an endpoint.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -104,7 +189,7 @@ disaster Recovery (ASR-DR) in the search result and click **Cluster Details** in
 5. On the details page of the primary cluster, click the **Resource Details** tab. Find the
 icon in the **Resource Application Result** resource named `asrdr-api` and click the column. The value of the `domain` parameter is the endpoint.
 
-### Obtain an SDK
+### 2.3 Obtain an SDK
 
 If you want to call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) by using the POP gateway, you must obtain the SDK core library from SDK Center and integrate the SDK dependencies of ASR-DR. Obtain the SDK core library: Go to SDK Center and download the **SDK core library** for your programming language. Integrate the SDK dependencies of ASR-DR: For more information, see the documentation of Alibaba Cloud SDKs.
 
@@ -112,9 +197,9 @@ If you want to call the API operations of Apsara Stack Resilience for Geo-disast
 
 We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack. ASR-DR SDK supports Java.
 
-## Use the SDK for Java
+## 3 Use the SDK for Java
 
-### Install the SDK for Java
+### 3.1 Install the SDK for Java
 
 This topic describes how to install Apsara Stack Resilience for Geo-disaster Recovery (ASR- DR) SDK for Java.
 
@@ -142,7 +227,7 @@ If you use Apache Maven to manage a Java project, you need to only import the JA
 </dependencies>
 ```
 
-### Configure authentication
+### 3.2 Configure authentication credentials
 
 **credentials**
 
@@ -175,7 +260,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 
 In the preceding sample code, replace the variables `<yourRegionID>` , `<yourAccessKeyID>` , and `<yourAccessKeySecret>` with actual values and remove the angle brackets (<>) from the code. You must call the API operations of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) as a user that is assigned one of the following roles: operations administrator, organization administrator, global disaster recovery administrator, and organization disaster recovery administrator.
 
-### Initiate a request
+### 3.3 Initiate a request
 
 This topic describes how to use the SDK for Java to initiate a request.
 
@@ -244,7 +329,7 @@ xception {
 
 `}` `}` `}`
 
-### Handle exceptions
+### 3.4 Handle exceptions
 
 If the server or client encounters an exception when you use the SDK for Java, the SDK returns the exception information. The exception information contains an error code and an error message. In most cases, you do not need to handle exceptions based on the exception information returned by the SDK for Java. You need to only handle server exceptions based on error messages generated on the server side. ServerException indicates a server exception. ClientException indicates a client exception. For example, when the following exception occurs, you can modify the AccessKey ID based on the error message:
 
@@ -271,13 +356,13 @@ try {
 
 `}`
 
-## API reference
+## 4 API reference
 
-### Legacy API (deprecated)
+### 4.1 Legacy API (deprecated)
 
 As of enterprise edition v3.18.6, the legacy API is deprecated. Please use the new API.
 
-#### API overview
+#### 4.1.1 API overview
 
 | API | Version | Description |
 |---|---|---|
@@ -308,9 +393,9 @@ As of enterprise edition v3.18.6, the legacy API is deprecated. Please use the n
 | StartUserTask | 2022-02-09 | Starts a user task. |
 | UpdatePlan | 2022-02-09 | Updates a plan. |
 
-#### Initialization operations
+#### 4.1.2 Initialization operations
 
-##### InitUser
+##### 4.1.2.1 InitUser
 
 Call InitUser to initialize user information.
 
@@ -383,9 +468,9 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>docker010017049017</NodeHost>
 ```
 
-#### Cloud instances
+#### 4.1.3 Cloud instances
 
-##### CreateBackupCloud
+##### 4.1.3.1 CreateBackupCloud
 
 Call CreateBackupCloud to create a secondary cloud.
 
@@ -448,7 +533,7 @@ The CreateBackupCloud operation does not have operation-specific request headers
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>docker010017049017</NodeHost>
 ```
 
-##### CreateMainCloud
+##### 4.1.3.2 CreateMainCloud
 
 Call CreateMainCloud to create a primary cloud.
 
@@ -484,7 +569,7 @@ The CreateMainCloud operation does not have operation-specific request headers a
 | Data | Struct | - | The detailed information about the primary cloud. |
 | -Id | String | ffe1********6d6d | The ID of the primary cloud. |
 
-##### DescribeBackupCloud
+##### 4.1.3.3 DescribeBackupCloud
 
 Call DescribeBackupCloud to query the details of a disaster recovery cloud.
 
@@ -560,9 +645,9 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-Asrdr 2022-02-09 DescribeBackupCloud
+Asrdr 2022-02-09
 
-##### DescribeCloud
+##### 4.1.3.4 DescribeCloud
 
 Call DescribeCloud to query cloud instance information.
 
@@ -653,9 +738,9 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-Asrdr 2022-02-09 DescribeCloud
+Asrdr 2022-02-09
 
-##### ListMainCloud
+##### 4.1.3.5 ListMainCloud
 
 You can call ListMainCloud to query the list of primary clouds.
 
@@ -766,9 +851,9 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-Asrdr 2022-02-09 ListMainCloud
+Asrdr 2022-02-09
 
-##### ListSupportRegion
+##### 4.1.3.6 ListSupportRegion
 
 Call ListSupportRegion to query the regions visible to the current user.
 
@@ -831,7 +916,7 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateBackupCloud
+##### 4.1.3.7 UpdateBackupCloud
 
 You can call UpdateBackupCloud to update the secondary cloud information.
 
@@ -902,7 +987,7 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1
 <RequestID>b870********433d</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateMainCloud
+##### 4.1.3.8 UpdateMainCloud
 
 Call UpdateMainCloud to update the primary cloud information.
 
@@ -954,9 +1039,9 @@ Sample success responses `JSON` format `{`
 <RequestID>2927********44d9</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-Asrdr 2022-02-09 UpdateMainCloud
+Asrdr 2022-02-09
 
-##### UpdateProductConfig
+##### 4.1.3.9 UpdateProductConfig
 
 Call UpdateProductConfig to update the product configuration of the primary cloud.
 
@@ -1057,7 +1142,7 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/updateConfigList HTTP/1.1
 <RequestID>ae36********e1f7</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateProductConfig
+##### 4.1.3.10 UpdateProductConfig
 
 Calls UpdateProductConfig to update the product configuration of the primary cloud.
 
@@ -1149,9 +1234,9 @@ Sample success responses `JSON` format `{`
 <RequestID>ae36********e1f7</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-#### Protection groups
+#### 4.1.4 Protection groups
 
-##### CreateProtectGroup
+##### 4.1.4.1 CreateProtectGroup
 
 You can call CreateProtectGroup to create a protection group.
 
@@ -1221,7 +1306,7 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### DescribeProtectGroup
+##### 4.1.4.2 DescribeProtectGroup
 
 Call DescribeProtectGroup to query the details of a protection group.
 
@@ -1429,7 +1514,7 @@ Sample success responses `JSON` format `{`
 <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### ListProtectGroup
+##### 4.1.4.3 ListProtectGroup
 
 Call ListProtectGroup to query the protection group list.
 
@@ -1557,7 +1642,7 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### RemoveProtectGroup
+##### 4.1.4.4 RemoveProtectGroup
 
 Call RemoveProtectGroup to delete a protection group.
 
@@ -1611,7 +1696,7 @@ Sample success responses `JSON` format `{`
 <RequestID>5c4a********1d04</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdateProtectGroup
+##### 4.1.4.5 UpdateProtectGroup
 
 You can call the UpdateProtectGroup operation to update protection group information.
 
@@ -1661,9 +1746,9 @@ Sample success responses `JSON` format `{`
 <RequestID>5c4a********1d04</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-#### Plan
+#### 4.1.5 Plan
 
-##### CreatePlan
+##### 4.1.5.1 CreatePlan
 
 You can call CreatePlan to create a plan.
 
@@ -1732,7 +1817,7 @@ POST https://AsrdrDomain/asr-web/api/v3/plan/create/inner HTTP/1.1
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### DescribePlan
+##### 4.1.5.2 DescribePlan
 
 Call DescribePlan.
 
@@ -1822,7 +1907,7 @@ The DescribePlan operation does not have operation-specific request headers and 
 | -- BackupOrgani zationName | String | asrdr | The organization name of the secondary cloud. |
 | -- MainOrganizat ionName | String | asrdr | The organization name of the primary cloud. |
 
-##### DescribePlanInstance
+##### 4.1.5.3 DescribePlanInstance
 
 Call DescribePlanInstance to obtain the details of a plan execution.
 
@@ -1929,7 +2014,7 @@ Sample success responses `XML` format
 <RequestID>7884********3854</RequestID><Data><-PlanInstanceDetail><-- MainOrganizationId>9</--MainOrganizationId><--MainOrganizationName>asrdr</-- MainOrganizationName><--RelevancePlanId>sasc********4d4c</--RelevancePlanId><--MainClou dId>39e0********0e1d</--MainCloudId><--RestTime>233</--RestTime><-- FailoverMode>DEFAULT</--FailoverMode><--PlanInstanceStatus>RUNNING</-- PlanInstanceStatus><--BackupOrganizationId>6</--BackupOrganizationId><-- BackupOrganizationName>asrdr</--BackupOrganizationName><--PlanTasks><--- TaskType>SWITCH</---TaskType><---TaskDescription>Manual inspection task</--- TaskDescription><---TaskName>Manual inspection task</---TaskName><---Priority>3</---Pri ority><---Progress>100</---Progress><---Status>SUCCESS</---Status><---TaskNum>1</---Tas kNum><---Stage>S1</---Stage><---DurationInMillis>3002</---DurationInMillis></-- PlanTasks><--BackupRegionId>region-2</--BackupRegionId><--PriorityInfoModels><---Priori ty /><---EntityInstances><----Progress>100</----Progress><----TaskId>eaad********0da</- ---TaskId><----EntityType>RDS</----EntityType><----Status>PROTECT</----Status><----DestI nstanceName>asrdr-test-backup</----DestInstanceName><----SourceInstanceId>rmsd13****fp1s</----SourceInstanceId><----DestInstanceId>rm-sd1z****o87j</---- DestInstanceId><----ActionStatus>RUN</----ActionStatus><----SubStepInfo><----status>Init</-----status><-----startTime>1671006381749</-----startTime><-----mainStage>C ONFIGURING</-----mainStage><-----hasErrorLog>false</-----hasErrorLog><-----stepNo>1</--- --stepNo><-----stepName>TUNNEL_START</-----stepName><-----endTime>1671006381749</-----en dTime></----SubStepInfo><----PriorityNumber>3</----PriorityNumber><---- Operations>DELETE</----Operations><----DstRegionId>cn-****-d01</----DstRegionId><---- EntityId>c596********18e8</----EntityId><----SourceRegionId>cn-****-d01</---- SourceRegionId><----Stage>S1</----Stage><----SourceInstanceName>asrdr-test-main</---- SourceInstanceName></---EntityInstances></--PriorityInfoModels><--CurrentTaskStep>1</-- CurrentTaskStep><--BackupCloudId>004a********3972</--BackupCloudId><-- MainRegionId>region-1</--MainRegionId></-PlanInstanceDetail></Data> <NodeIp>127.0.0.1</NodeIp><Code>200</Code><Result>SUCCESS</Result><NodeHost>B-W0Y1MD6R- 1914.local</NodeHost>
 ```
 
-##### ListPlan
+##### 4.1.5.4 ListPlan
 
 Call ListPlan to retrieve a list of plans.
 
@@ -2064,7 +2149,7 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### ListPlanInstance
+##### 4.1.5.5 ListPlanInstance
 
 Call ListPlanInstance to retrieve a list of plan executions.
 
@@ -2179,7 +2264,7 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### RemovePlan
+##### 4.1.5.6 RemovePlan
 
 You can call RemovePlan to delete a plan.
 
@@ -2227,7 +2312,7 @@ Sample success responses `JSON` format `{`
 <RequestID>cbfe********c7f4</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### StartPlan
+##### 4.1.5.7 StartPlan
 
 You can call StartPlan to initiate a plan.
 
@@ -2286,7 +2371,7 @@ Sample success responses `JSON` format `{`
 </Data> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### StartUserTask
+##### 4.1.5.8 StartUserTask
 
 You can call StartUserTask to initiate a user task.
 
@@ -2336,7 +2421,7 @@ Sample success responses `JSON` format `{`
 <RequestID>1e7a********54ad</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-##### UpdatePlan
+##### 4.1.5.9 UpdatePlan
 
 Call UpdatePlan to update a plan.
 
@@ -2387,9 +2472,9 @@ Sample success responses `JSON` format `{`
 <RequestID>4067********1415</RequestID> <NodeIp>127.0.0.1</NodeIp> <Code>200</Code> <Result>SUCCESS</Result> <NodeHost>B-W0Y1MD6R-1914.local</NodeHost>
 ```
 
-### New API
+### 4.2 New API
 
-#### API overview
+#### 4.2.1 API overview
 
 | API | Version | Description |
 |---|---|---|
@@ -2431,9 +2516,9 @@ Sample success responses `JSON` format `{`
 | DeleteRecoveryTask | 2025-01-15 | Deletes a recovery plan task. |
 | RecoveryTaskCtl | 2025-01-15 | Performs control operations on recovery plan tasks. |
 
-#### Cloud instances
+#### 4.2.2 Cloud instances
 
-##### UpdateCloudInstance
+##### 4.2.2.1 UpdateCloudInstance
 
 Update the basic information of a cloud instance, such as the instance name and the resource group, by using the cloud instance ID.
 
@@ -2528,7 +2613,7 @@ This API uses common request headers and requires no special request headers. Fo
 
 `}` `}`
 
-##### ListCloudInstances
+##### 4.2.2.2 ListCloudInstances
 
 This API retrieves a paginated list of cloud instances under the current account and allows you to filter the instances by dimensions such as status and version for O&M and DR management scenarios.
 
@@ -2650,7 +2735,7 @@ This API uses common request headers and does not require special request header
 
 `}` `}`
 
-##### GetCloudInstance
+##### 4.2.2.3 GetCloudInstance
 
 Query the details of a single Cloud Instance by its Cloud Instance ID.
 
@@ -2743,7 +2828,7 @@ This API uses common request headers and does not require special request header
 
 `}` `}`
 
-##### DeleteCloudInstance
+##### 4.2.2.4 DeleteCloudInstance
 
 Deletes a managed cloud instance by cloud instance ID.
 
@@ -2779,7 +2864,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}`
 
-##### ListCloudCenter
+##### 4.2.2.5 ListCloudCenter
 
 This API queries the available cloud centers in the current ASRDR environment to obtain a cloud center ID that you can use to create cloud instances.
 
@@ -2895,7 +2980,7 @@ This API uses common request headers and requires no special request headers. Fo
 
 `}` `}` `}`
 
-##### CreateCloudInstanceFromCloudCenter
+##### 4.2.2.6 CreateCloudInstanceFromCloudCenter
 
 You can manage a global cloud instance registered in Cloud Center as a cloud instance under the current account by specifying the Cloud Center ID and the AccessKey pair of the operations administrator.
 
@@ -3005,9 +3090,9 @@ Sample success response `JSON` format `{`
 
 `}` `}`
 
-#### Disaster recovery relationship
+#### 4.2.3 Disaster recovery relationship
 
-##### UpdateDrGroup
+##### 4.2.3.1 UpdateDrGroup
 
 Update the basic information, such as the name and description, of a disaster recovery relationship based on its ID.
 
@@ -3116,7 +3201,7 @@ and Shanghai",
 
 `}` `}`
 
-##### ListDrGroups
+##### 4.2.3.2 ListDrGroups
 
 This API queries a paginated list of disaster recovery relationships under the current account and allows you to filter the results by name, status, primary and secondary regions, and other dimensions.
 
@@ -3244,7 +3329,7 @@ hanghai",
 
 `}` `}`
 
-##### GetDrGroup
+##### 4.2.3.3 GetDrGroup
 
 Query the details of a single disaster recovery relationship by using the disaster recovery relationship ID.
 
@@ -3340,7 +3425,7 @@ This API uses common request headers and does not require special request header
 
 `}` `}`
 
-##### DeleteDrGroup
+##### 4.2.3.4 DeleteDrGroup
 
 Deletes the specified disaster recovery relationship by using its ID.
 
@@ -3378,7 +3463,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}`
 
-##### CreateDrGroup
+##### 4.2.3.5 CreateDrGroup
 
 Creates a disaster recovery relationship to establish disaster recovery protection between two or more cloud regions.
 
@@ -3497,9 +3582,9 @@ This API uses common request headers and has no special request headers. For mor
 
 `}` `}`
 
-#### Protection groups
+#### 4.2.4 Protection groups
 
-##### UpdateProtectGroup
+##### 4.2.4.1 UpdateProtectGroup
 
 Update basic information of a protection group, such as the name and description. This public API requires signature authentication by using an AccessKey pair. It supports HTTP and HTTPS protocols and uses AccessKey (AK) signatures for authentication. Ensure that you have created the target protection group and have the required modification permissions.
 
@@ -3611,7 +3696,7 @@ This API uses common request headers and does not require special request header
 
 `}`
 
-##### ProtectGroupCtl
+##### 4.2.4.2 ProtectGroupCtl
 
 This API sends control commands to a specified protection group to perform operations such as switchover, failback, and pause.
 
@@ -3677,7 +3762,7 @@ This API uses common request headers and does not require special request header
 
 `}` `}`
 
-##### ListProtectGroups
+##### 4.2.4.3 ListProtectGroups
 
 Query the list of protection groups. You can filter the results by multiple conditions and paginate the output.
 
@@ -3818,7 +3903,7 @@ This API uses common request headers and does not require special request header
 
 `}`
 
-##### GetProtectGroup
+##### 4.2.4.4 GetProtectGroup
 
 This API obtains the details of a protection group in the ASRDR service and returns extended data such as synchronization groups, status details, and failover tasks on demand.
 
@@ -3957,7 +4042,7 @@ Sample success response `JSON` format `{`
 
 `}`
 
-##### DeleteProtectGroup
+##### 4.2.4.5 DeleteProtectGroup
 
 Deletes a specified protection group resource.
 **Authentication method**: You must use an AccessKey (AK) for signature authentication
@@ -4020,7 +4105,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### CreateProtectGroup
+##### 4.2.4.6 CreateProtectGroup
 
 Create a protection group.
 
@@ -4127,9 +4212,9 @@ Sample success response `JSON` format `{`
 
 `}`
 
-#### Sync entities
+#### 4.2.5 Sync entities
 
-##### UpdateSyncGroup
+##### 4.2.5.1 UpdateSyncGroup
 
 Update the product instance list, metadata, and other configuration information of a synchronization group based on the synchronization group ID.
 
@@ -4260,7 +4345,7 @@ This API uses common request headers and requires no special request headers. Fo
 
 `}` `}`
 
-##### SyncGroupCtl
+##### 4.2.5.2 SyncGroupCtl
 
 Sends control commands to a specified synchronization group, such as start, pause, and switchover operations.
 **Authentication method**: You must use an AccessKey (AK) for signature authentication.
@@ -4312,7 +4397,7 @@ POST /asr-web/api/syncGroup/ctl HTTP/1.1
 
 `}`
 
-##### ListSyncGroups
+##### 4.2.5.3 ListSyncGroups
 
 Query synchronization groups by page and filter the results by protection group, disaster recovery relationship, type, and status.
 
@@ -4493,7 +4578,7 @@ Successful response example `JSON` format `{`
 
 `}` `}`
 
-##### GetSyncGroup
+##### 4.2.5.4 GetSyncGroup
 
 Query the details of a single synchronization group based on the synchronization group ID.
 
@@ -4651,7 +4736,7 @@ Sample success response `JSON` format `{`
 
 `}` `}`
 
-##### DeleteSyncGroup
+##### 4.2.5.5 DeleteSyncGroup
 
 Deletes the specified synchronization group by its ID.
 
@@ -4702,7 +4787,7 @@ Successful response example `JSON` format `{`
 
 `}`
 
-##### CreateSyncGroup
+##### 4.2.5.6 CreateSyncGroup
 
 Create a synchronization group to define specific data synchronization links under a protection group.
 
@@ -4875,9 +4960,9 @@ Sample success response `JSON` format `{`
 `}` `}`
 ```html ```
 
-#### Disaster recovery plan
+#### 4.2.6 Disaster recovery plan
 
-##### UpdateRecoveryPlan
+##### 4.2.6.1 UpdateRecoveryPlan
 
 Updates the basic information of a disaster recovery plan, such as the name, type, and description, based on the plan ID.
 
@@ -4967,7 +5052,7 @@ gzhou and Shanghai",
 
 `}` `}` `}`
 
-##### RecoveryTaskCtl
+##### 4.2.6.2 RecoveryTaskCtl
 
 Sends control commands to a specified DR task, such as start, pause, and stop.
 
@@ -5030,7 +5115,7 @@ This API uses common request headers and does not require special request header
 
 `}` `}` `}`
 
-##### ListRecoveryTasks
+##### 4.2.6.3 ListRecoveryTasks
 
 Queries disaster recovery tasks by page. You can filter tasks by plan, status, execution mode, and other dimensions.
 
@@ -5117,7 +5202,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}` `}`
 
-##### ListRecoveryPlans
+##### 4.2.6.4 ListRecoveryPlans
 
 Query the disaster recovery plans of the current account by page. You can filter the results by type, disaster recovery relationship, and protection group.
 
@@ -5230,7 +5315,7 @@ This API uses common request headers and requires no specific request headers. F
 
 `}` `}`
 
-##### GetRecoveryTask
+##### 4.2.6.5 GetRecoveryTask
 
 Queries the details of a disaster recovery task by disaster recovery task ID or disaster recovery plan ID.
 
@@ -5289,7 +5374,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}` `}` `}`
 
-##### GetRecoveryPlan
+##### 4.2.6.6 GetRecoveryPlan
 
 Queries the details of a specific disaster recovery plan by its ID.
 
@@ -5363,7 +5448,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}` `}` `}`
 
-##### DeleteRecoveryTask
+##### 4.2.6.7 DeleteRecoveryTask
 
 Deletes a specified disaster recovery task record based on the disaster recovery task ID.
 
@@ -5401,7 +5486,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}`
 
-##### DeleteRecoveryPlan
+##### 4.2.6.8 DeleteRecoveryPlan
 
 Deletes a specified disaster recovery plan by its ID.
 
@@ -5442,7 +5527,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}`
 
-##### CreateRecoveryTask
+##### 4.2.6.9 CreateRecoveryTask
 
 Creates and starts a recovery task based on an existing disaster recovery plan to perform a drill or disaster recovery.
 
@@ -5505,7 +5590,7 @@ This operation uses common request headers only. For more information, see the d
 
 `}` `}` `}`
 
-##### CreateRecoveryPlan
+##### 4.2.6.10 CreateRecoveryPlan
 
 Create a disaster recovery plan under a specified disaster recovery relationship for drill or disaster recovery scenarios.
 

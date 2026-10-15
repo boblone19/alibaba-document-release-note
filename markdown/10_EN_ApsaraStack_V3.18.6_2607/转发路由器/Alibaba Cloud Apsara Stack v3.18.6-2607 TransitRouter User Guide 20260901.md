@@ -3,16 +3,45 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter User Guide 2026090
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 59
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter User Guide 20260901.pdf"
+source_pdf: "667f647052e3edcd_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter User Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter User Guide 20260901
 
+## Table of Contents
+
+- 1 Log on to the Transit Router console
+- 2 Instance management
+  - 2.1 Create and manage a CEN instance
+  - 2.2 Manage transit routers
+    - 2.2.1 Transit routers
+    - 2.2.2 Intra-region connections
+      - 2.2.2.1 Create a VPC connection
+      - 2.2.2.2 Create a VBR connection
+      - 2.2.2.3 Create a Connect attachment
+      - 2.2.2.4 View network instance connections
+    - 2.2.3 Route management
+      - 2.2.3.1 Custom route tables
+      - 2.2.3.2 Custom route entries
+      - 2.2.3.3 Associated forwarding
+      - 2.2.3.4 Route learning
+      - 2.2.3.5 Routing policies
+        - 2.2.3.5.1 Routing policy overview
+        - 2.2.3.5.2 Work with routing policies
+    - 2.2.4 Multicast management
+      - 2.2.4.1 Multicast overview
+      - 2.2.4.2 Create and manage a multicast domain
+      - 2.2.4.3 Manage vSwitches
+      - 2.2.4.4 Multicast group
+  - 2.3 Tag management
+- 3 Configure health checks
+- 4 View operation logs
+
 Router console
 
-## Log on to the Transit
+## 1 Log on to the Transit Router console
 
 **Router console**
 
@@ -43,9 +72,9 @@ For information about how to bind and enable MFA, see **Manage MFA** in **Apsara
 Inthetopnavigationbarchoose **Products****>****Networking****>****CEN** Router console
 5. In the top navigation bar, choose **Products > Networking > CEN**.
 
-## Instance management
+## 2 Instance management
 
-### Create and manage a CEN
+### 2.1 Create and manage a CEN instance
 
 **instance**
 
@@ -97,9 +126,9 @@ in the **Cen ID/name** column.
 2. On the **CEN Instance** page, you can manage your CEN instances.
 Click the **Basic information** tab to view and manage the basic information about the CEN instance and transit routers. In the **Basic information** section, find the **Instance name** parameter, move the pointer over the parameter value, and then click the icon to modify the name of the CEN instance. In the **Basic information** section, find the **Description** parameter, move the pointer over the parameter value, and then click the icon to modify the description of the CEN instance. In the list below the **Basic information** section, you can manage the transit routers of the CEN instance. For more information, see Manage transit routers. Click the **Resource topology** tab to view the resource topology of the CEN instance.
 
-### Manage transit routers
+### 2.2 Manage transit routers
 
-#### Transit routers
+#### 2.2.1 Transit routers
 
 You can create one transit router in each region. A transit router is a key network element that is used to forward data within a region.
 
@@ -159,9 +188,9 @@ If you no longer use a transit router, you can delete the CEN instance along wit
 in the **Actions** column.
 4. In the **Delete a CEN instance** message, check the CEN instance ID and click **OK**.
 
-#### Intra-region connections
+#### 2.2.2 Intra-region connections
 
-##### Create a VPC connection
+##### 2.2.2.1 Create a VPC connection
 
 You can connect virtual private clouds (VPCs) to a transit router. After you connect the VPCs to the same transit router, the VPCs can communicate with each other.
 
@@ -239,7 +268,7 @@ tab and click the ID of the VPC connection that you want to manage.
 7. In the **Edit zone/Subnet** dialog box, select a vSwitch from the **Select zone/Subnet** drop-
 down list and click **OK**.
 
-##### Create a VBR connection
+##### 2.2.2.2 Create a VBR connection
 
 This topic describes how to establish communication between virtual border routers (VBRs) by connecting them to the transit router of Cloud Enterprise Network (CEN) in the same region. The transit router allows you to access cloud resources over private connections.
 
@@ -269,7 +298,7 @@ following table describes the parameters.
 | Advanced VBR Settings | VBRs support the following advanced features. If you enable the advanced settings, the system automatically configures required routes. Associate with Default Route Table of Transit Router After this feature is enabled, the VBR connection is automatically associated with the default route table of the transit router. The transit router forwards the traffic of the VBR based on the default route table. Propagate System Routes to Default Route Table of Transit Router After this feature is enabled, the system routes of the VBR are automatically advertised to the default route table of the transit router. Propagate Routes to VBR After this feature is enabled, the system automatically advertises the routes in the route table that is associated with the VBR connection to the VBR. You can disable the advanced features by clearing the check boxes. If you want to enable the VBR to communicate with other network instances, you can configure associated forwarding and route learning on the transit router. For more information, see Route management. |
 |---|---|
 
-##### Create a Connect attachment
+##### 2.2.2.3 Create a Connect attachment
 
 A Connect attachment connects a transit router to a third-party device, such as an SD-WAN device. Connect attachments simplify the process of cloud adoption. You can connect networks to Alibaba Cloud after simple configurations.
 
@@ -376,7 +405,7 @@ attachment that you want to manage.
 **Delete** in the **Actions** column.
 8. In the message that appears, review the information and click **OK**.
 
-##### View network instance connections
+##### 2.2.2.4 View network instance connections
 
 This topic describes how to view information about network instance connections.
 
@@ -403,9 +432,9 @@ network instance connection.
 | Creation time | The time when the network instance connection was created. |
 | Status | The status of the network instance connection. Valid values: Loaded Loading Unmounting |
 
-#### Route management
+#### 2.2.3 Route management
 
-##### Custom route tables
+##### 2.2.3.1 Custom route tables
 
 Transit routers support custom route tables. After you create a custom route table, you can create associated forwarding correlations, route learning correlations, or custom routes in the route table. This helps you manage traffic in a more flexible manner.
 
@@ -458,7 +487,7 @@ the transit router that you want to manage.
 7. In the **Basic routing table information** section, click **Delete**.
 8. In the message, review the information and click **Delete**.
 
-##### Custom route entries
+##### 2.2.3.2 Custom route entries
 
 Route tables of transit routers support custom route entries. This topic describes how to add static or blackhole routes to the route table of a transit router to facilitate traffic management.
 
@@ -517,7 +546,7 @@ the transit router that you want to manage.
 **Delete** in the **Actions** column.
 8. In the **Delete a route entry** message, check the route and click **OK**.
 
-##### Associated forwarding
+##### 2.2.3.3 Associated forwarding
 
 After you connect a network instance to a transit router, you can create an associated forwarding correlation to associate the network instance connection with a route table. After you configure an associated forwarding correlation, the transit router forwards the traffic of the network instance based on the route table.
 
@@ -576,7 +605,7 @@ page of the route table, click the **Associated forwarding** tab.
 manage and click **Disassociate a forwarding relationship** in the **Actions** column.
 8. In the **Prompt** message, review the information and click **OK**.
 
-##### Route learning
+##### 2.2.3.4 Route learning
 
 This topic describes how to create a route learning policy for a network instance connection. After route learning is enabled between a network instance connection and a route table of a transit router, the route table of the transit router can automatically learn routes from the network instance.
 
@@ -613,9 +642,9 @@ page of the route table, click the **Route Propagation** tab.
 and click **Release route learning relationship** in the **Actions** column.
 8. In the **Prompt** message, review the information and click **OK**.
 
-##### Routing policies
+##### 2.2.3.5 Routing policies
 
-###### Routing policy overview
+###### 2.2.3.5.1 Routing policy overview
 
 Transit routers support routing policies. You can configure routing policies to filter and modify routes. This allows you to manage network communication in the cloud.
 
@@ -709,7 +738,7 @@ Routing policies filter routes in match-action mode. Actions are performed after
 
 Each transit router contains a default routing policy that applies in the Egress Regional Gateway direction. The priority of the default routing policy is 5000, and the policy action is Reject. The default routing policy disables network communication between VBRs that are connected to the same transit router. The following section describes whether VPCs and VBRs that are connected to the same transit router can communicate with each other by default: A VPC that is connected to a transit router can communicate with VPCs and VBRs that are also connected to the transit router. A VBR that is connected to a transit router cannot communicate with other VBRs that are also connected to the transit router.
 
-###### Work with routing policies
+###### 2.2.3.5.2 Work with routing policies
 
 You can create routing policies to filter and modify routes. This allows you to manage network communication in the cloud. This topic describes how to create, modify, and delete a routing policy.
 
@@ -769,9 +798,9 @@ table that you want to manage. On the details page of the route table, click the
 7. In the **Actions** column, click **Delete**.
 8. In the **Prompt** message, click **OK**.
 
-#### Multicast management
+#### 2.2.4 Multicast management
 
-##### Multicast overview
+##### 2.2.4.1 Multicast overview
 
 Multicast is supported by transit routers. After you connect a transit router to network instances, you can use the transit router to enable and manage multicast. The transit router also forwards multicast packets. This topic describes how multicast works, the limits of multicast, and how to use multicast.
 
@@ -818,7 +847,7 @@ Multicast is supported by transit routers by default. The elastic network interf
 
 For more information, see Create and manage a multicast network.
 
-##### Create and manage a multicast domain
+##### 2.2.4.2 Create and manage a multicast domain
 
 This topic describes how to use a transit router to create and manage a multicast domain.
 
@@ -858,7 +887,7 @@ multicast domain and manage the multicast domain. In the **Basic multicast domai
 
 Before you delete a multicast domain, make sure that the following requirements are met: The multicast domain is disassociated from all vSwitches. For more information about how to disassociate a vSwitch, see the "Disassociate a vSwitch" section in the Manage vSwitches topic. All multicast sources and members are removed from the multicast domain. For more information about how to remove multicast sources and members, see Delete a multicast group. Click the **Switch** tab to manage the multicast domain and its vSwitches. For more information, see Manage vSwitches. Click the **Multicast group** tab to manage multicast sources and members in the multicast domain. For more information, see Crate and manage a multicast group.
 
-##### Manage vSwitches
+##### 2.2.4.3 Manage vSwitches
 
 After you create a multicast domain, you can associate it with one or more vSwitches to specify the scope of the multicast network. If you want to remove a vSwitch from a multicast domain, you can disassociate the vSwitch from the multicast domain.
 
@@ -897,7 +926,7 @@ Before you disassociate a multicast domain from a vSwitch, make sure that the vS
 domain and click **Unbind** in the **Actions** column.
 2. In the **Unbind Switch** message, click **OK**.
 
-##### Multicast group
+##### 2.2.4.4 Multicast group
 
 This topic describes how to create and manage multicast sources and multicast members.
 
@@ -964,7 +993,7 @@ If a multicast source or member no longer needs to send or receive multicast tra
 | Delete a multicast source | 1. On the Multicast tab, find the target multicast source and click Delete in the Actions column. Multicast sources are identified by Static in the Multicast source type column. 2. In the Delete multicast source dialog box, click OK. |
 | Delete a multicast member | 1. On the Multicast tab, find the target multicast member and click Delete in the Actions column. Multicast members are identified by Static in the Multicast member type column. 2. In the Delete multicast member dialog box, click OK. |
 
-### Tag management
+### 2.3 Tag management
 
 When you use transit routers, you can use tags to mark and classify Cloud Enterprise Network (CEN) instances. Tags facilitate resource search and aggregation. This topic describes how to manage and use tags.
 
@@ -1003,7 +1032,7 @@ After you add a tag to a CEN instance, you can add more tags to the CEN instance
 3. On the **CEN Instance** page, perform the following steps to manage CEN instance tags:
 Modify the tags of a single CEN instance a. On the **CEN Instance** page, find the CEN instance that you want to manage and click the icon in the **Tag** column. b. In the **Edit Tags** dialog box, perform the following operations and click **OK**: Add tags: You can add more tags to the CEN instance. Modify a tag: You can select a tag and modify the tag key or tag value. Remove a tag: You can click the icon on the right side of a tag to remove the tag from the CEN instance. c. In the **Edited** message, check the tag information and click **Close**. Remove tags from multiple CEN instances a. On the **CEN Instance** page, select the IDs of the CEN instances that you want to manage and click **Batch Remove Tags** below the instance list. b. In the **Batch Remove Tags** dialog box, select the tags that you want to remove from the CEN instances. c. In the **Edited** message, check the tag information and click **Close**. cks
 
-## Configure health checks
+## 3 Configure health checks
 
 You can connect virtual border routers (VBRs) to data centers by using Express Connect circuits. After you connect a VBR to a transit router, you can run health checks to probe the availability of the Express Connect circuit.
 
@@ -1131,7 +1160,7 @@ Whether the system switches to another route is determined by the connectivity o
 
 If you delete health check configurations in the Transit Router console, the deletion does not cause frequent route switchover. By default, the system considers the Express Connect circuit healthy and continues forwarding network traffic to the Express Connect circuit based on specified routes. However, network traffic will be interrupted if the Express Connect circuit is faulty. If you delete health check configurations in the data center, whether the traffic will be interrupted is determined by your network configurations.
 
-## View operation logs
+## 4 View operation logs
 
 Cloud Enterprise Network (CEN) allows you to view the operation logs of a CEN instance, which record the instance status, operation sources, operation time, and API call details. You can analyze and trace historical operations based on the operation logs.
 

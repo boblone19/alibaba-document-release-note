@@ -2,12 +2,26 @@
 title: "Managed Service for Prometheus Developer Guide 20260422"
 product_version: "V3.18.6"
 pdf_pages: 24
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus Developer Guide 20260422.pdf"
+source_pdf: "04e41b44cb4fe55d_Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus Developer Guide 20260422.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Managed%20Service%20for%20Prometheus%20Developer%20Guide%2020260422.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Managed Service for Prometheus Developer Guide 20260422
+
+## Table of Contents
+
+- 1 Download SDKs
+- 2 Request examples
+- 3 Obtain API parameters
+- 4 API reference
+  - 4.1 ListDashboards
+  - 4.2 SearchAlertContact
+  - 4.3 SearchAlertContactGroup
+
+## 1 Download SDKs
+
+Prometheus Monitoring provides SDKs for Java, TypeScript, Go, PHP, Python, and C#. This topic describes the methods to download them.
 
 | Download SDK | Download method |
 |---|---|
@@ -18,13 +32,9 @@ converter: line-classifier (PyMuPDF)
 | Download the Python SDK | Run the following command to download the Python SDK: pip install alibabacloud arms20190808==1.0.0 _ |
 | Download the C# SDK | Run the following command to download the C# SDK: dotnet add package AlibabaCloud.SDK.ARMS20190808 -- version 1.0.0 |
 
-Managed Service for Prometheus
+les
 
-## Download SDKs
-
-Prometheus Monitoring provides SDKs for Java, TypeScript, Go, PHP, Python, and C#. This topic describes the methods to download them. les Managed Service for Prometheus
-
-## Request examples
+## 2 Request examples
 
 This topic provides examples of how to call the ListDashboards API operation to access Prometheus Monitoring. The examples demonstrate how to send HTTP POST requests to retrieve data using different programming languages, such as Java and Python.
 
@@ -36,7 +46,7 @@ package com.aliyun.sample; import com.aliyun.tea.*; import com.aliyun.arms201908
  * Use the AccessKey ID and AccessKey secret to initialize the client.
 ```
 
-*
+`*`
 
 ```
  * @param accessKeyId
@@ -57,7 +67,6 @@ roduct is located.
  config.endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the Prom
 etheus product.
  return new com.aliyun.arms20190808.Client(config);
- }
  public static void main(String[] args_) throws Exception {
  com.aliyun.arms20190808.Client client =createClient("accessKeyId", "accessKeySecret");
  ListDashboardsRequestl istDashboardsRequest = new ListDashboardsRequest();
@@ -65,13 +74,11 @@ etheus product.
  listDashboardsRequest.setRegionId("regionIdValue");
  ListDashboardsResponse response =client.listDashboards(listDashboardsRequest);
  System.out.println(response.body);
- }
-}
 ```
 
 **TypeScript request example**
 
-Managed Service for Prometheus les
+les
 
 ```java
 import ARMS20190808, * as $ARMS20190808 from '@alicloud/arms20190808'; // For information about module dependencies, download the module dependency file for t he project or check the SDK dependency information in the upper-right corner. import OpenApi, * as $OpenApi from '@alicloud/openapi-client'; import * as $tea from '@alicloud/tea-typescript'; export default class Client {
@@ -96,19 +103,17 @@ import ARMS20190808, * as $ARMS20190808 from '@alicloud/arms20190808'; // For in
  config.endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the Prom
 etheus product.
  return new ARMS20190808(config);
- }
  static async main(args: string[]): Promise<void> {
  let client = Client.createClient("accessKeyId", "accessKeySecret");
        let listDashboardsRequest = new $ARMS20190808.ListDashboardsRequest({ });
        ... // Set business parameters.
  await client.listDashboards(listDashboardsRequest);
- }
-} Client.main(process.argv.slice(2));
+Client.main(process.argv.slice(2));
 ```
 
 **Go request example**
 
-les Managed Service for Prometheus
+les
 
 ```java
 package main import (
@@ -118,7 +123,7 @@ package main import (
  "github.com/alibabacloud-go/tea/tea"
 ```
 
-)
+`)`
 
 ```
 /**
@@ -138,34 +143,29 @@ func CreateClient (accessKeyId *string, accessKeySecret *string) (_result *arms2
        AccessKeySecret: accessKeySecret,
        RegionId:“${regionId}”, // The region ID where the Prometheus product is
 located.
- }
  // The domain name to access.
  config.Endpoint = tea.String("${proxy_prometheus_api_domain}") // The POP domain name
 of the Prometheus product.
  _result = &arms20190808.Client{}
  _result, _err = arms20190808.NewClient(config)
  return _result, _err
-} func _main (args []*string) (_err error) {
+func _main (args []*string) (_err error) {
  client, _err := CreateClient(tea.String("accessKeyId"), tea.String("accessKeySecret"))
  if _err != nil {
  return _err
- }
  listDashboardsRequest := &arms20190808.ListDashboardsRequest{}
  ... // Set business parameters.
  _, _err = client.ListDashboards(listDashboardsRequest)
  if _err != nil {
  return _err
- }
  return _err
-} func main() {
+func main() {
  err := _main(tea.StringSlice(os.Args[1:]))
  if err != nil {
  panic(err)
- }
-}
 ```
 
-Managed Service for Prometheus les
+les
 
 **PHP request example**
 
@@ -192,7 +192,6 @@ located.
    $config->endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the
 Prometheus product.
    return new ARMS($config);
- }
  /**
  * @param string[] $args
  * @return void
@@ -206,10 +205,9 @@ Prometheus product.
  $listDashboardsRequest = new ListDashboardsRequest([]);
  ... // Set business parameters.
                $client->listDashboards($listDashboardsRequest);
- }
-} $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'vendor' . \DIRE CTORY_SEPARATOR . 'autoload.php'; if (file_exists($path)) {
+$path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'vendor' . \DIRE CTORY_SEPARATOR . 'autoload.php'; if (file_exists($path)) {
  require_once $path;
-} Sample::main(array_slice($argv, 1));
+Sample::main(array_slice($argv, 1));
 ```
 
 **Python request example**
@@ -221,22 +219,25 @@ Prometheus product.
 
 | l | Developer Guide·Request examp Managed Service for Prometheu es | s |
 |---|---|---|
-| from typing import List from alibabacloud arms20190808.client import Client as ARMS20190808Client _ from alibabacloud tea openapi import models as open api models _ _ _ _ from alibabacloud arms20190808 import models as arms20190808 models _ _ class Sample: def init (self): __ __ pass @staticmethod def create client( _ access key id: str, _ _ access key secret: str, _ _ region id: str, _ ) -> ARMS20190808Client: """ Use the AccessKey ID and AccessKey secret to initialize the client. @param access key id: _ _ @param access key secret: _ _ @return: Client @throws Exception """ config = open api models.Config( _ _ # Your AccessKey ID. access key id=access key id, _ _ _ _ # Your AccessKey secret. access key secret=access key secret _ _ _ _ region id=“${regionId}” // The region ID where the Prometheus pro _ duct is located. ) # The domain name to access. config.endpoint = "${proxy prometheus api domain}" # The POP domain name of the Promet _ _ _ heus product. return ARMS20190808Client(config) @staticmethod def main( args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. client.list dashboards(list dashboards request) _ _ _ @staticmethod async def main async( _ args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. await client.list dashboards async(list dashboards request) _ _ _ _ if name == ' main ': __ __ __ __ Sample.main(sys.argv[1:]) | from typing import List from alibabacloud arms20190808.client import Client as ARMS20190808Client _ from alibabacloud tea openapi import models as open api models _ _ _ _ from alibabacloud arms20190808 import models as arms20190808 models _ _ class Sample: def init (self): __ __ pass @staticmethod def create client( _ access key id: str, _ _ access key secret: str, _ _ region id: str, _ ) -> ARMS20190808Client: """ Use the AccessKey ID and AccessKey secret to initialize the client. @param access key id: _ _ @param access key secret: _ _ @return: Client @throws Exception """ config = open api models.Config( _ _ # Your AccessKey ID. access key id=access key id, _ _ _ _ # Your AccessKey secret. access key secret=access key secret _ _ _ _ region id=“${regionId}” // The region ID where the Prometheus pro _ duct is located. ) # The domain name to access. config.endpoint = "${proxy prometheus api domain}" # The POP domain name of the Promet _ _ _ heus product. return ARMS20190808Client(config) @staticmethod def main( args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. client.list dashboards(list dashboards request) _ _ _ @staticmethod async def main async( _ args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. await client.list dashboards async(list dashboards request) _ _ _ _ if name == ' main ': __ __ __ __ Sample.main(sys.argv[1:]) |  |
+| from typing import List from alibabacloud arms20190808.client import Client as ARMS20190808Client _ from alibabacloud tea openapi import models as open api models _ _ _ _ from alibabacloud arms20190808 import models as arms20190808 models _ _ class Sample: def init (self): __ __ pass @staticmethod def create client( _ access key id: str, _ _ access key secret: str, _ _ region id: str, _ ) -> ARMS20190808Client: """ Use the AccessKey ID and AccessKey secret to initialize the client. @param access key id: _ _ @param access key secret: _ _ @return: Client @throws Exception """ config = open api models.Config( _ _ # Your AccessKey ID. access key id=access key id, _ _ _ _ # Your AccessKey secret. access key secret=access key secret _ _ _ _ region id=“${regionId}” // The region ID where the Prometheus pro _ duct is located. ) # The domain name to access. config.endpoint = "${proxy prometheus api domain}" # The POP domain name of the Promet _ _ _ heus product. return ARMS20190808Client(config) @staticmethod def main( args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. client.list dashboards(list dashboards request) _ _ _ @staticmethod async def main async( _ args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. await client.list dashboards async(list dashboards request) _ _ _ _ if name == ' main ': __ __ __ __ Sample.main(sys.argv[1:]) | from typing import List from alibabacloud arms20190808.client import Client as ARMS20190808Client _ from alibabacloud tea openapi import models as open api models _ _ _ _ from alibabacloud arms20190808 import models as arms20190808 models _ _ class Sample: def init (self): __ __ pass @staticmethod def create client( _ access key id: str, _ _ access key secret: str, _ _ region id: str, _ ) -> ARMS20190808Client: """ Use the AccessKey ID and AccessKey secret to initialize the client. @param access key id: _ _ @param access key secret: _ _ @return: Client @throws Exception """ config = open api models.Config( _ _ # Your AccessKey ID. access key id=access key id, _ _ _ _ # Your AccessKey secret. access key secret=access key secret _ _ _ _ region id=“${regionId}” // The region ID where the Prometheus pro _ duct is located. ) # The domain name to access. config.endpoint = "${proxy prometheus api domain}" # The POP domain name of the Promet _ _ _ heus product. return ARMS20190808Client(config) @staticmethod def main( args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. client.list dashboards(list dashboards request) _ _ _ @staticmethod async def main async( _ args: List[str], ) -> None: client = Sample.create client('accessKeyId', 'accessKeySecret') _ list dashboards request = arms20190808 models.ListDashboardsRequest() _ _ _ ... # Set business parameters. await client.list dashboards async(list dashboards request) _ _ _ _ if name == ' main ': __ __ __ __ Sample.main(sys.argv[1:]) |   |
 
-Managed Service for Prometheus les p
-
-```
-(y
-```
-
-g[ `])`
+les `p` `(``y` `g``[` `])`
 
 **C# request example**
 
+```
+using System; using System.Collections; using System.Collections.Generic; using System.IO; using System.Threading.Tasks; using Tea; using Tea.Utils; namespace AlibabaCloud.SDK.Sample
+```
+
+`{`
+
 ```java
-using System; using System.Collections; using System.Collections.Generic; using System.IO; using System.Threading.Tasks; using Tea; using Tea.Utils; namespace AlibabaCloud.SDK.Sample {
  public class Sample
- {
+```
+
+`{`
+
+```
  /**
  * Use the AccessKey ID and AccessKey secret to initialize the client.
  * @param accessKeyId
@@ -250,36 +251,48 @@ using System; using System.Collections; using System.Collections.Generic; using 
 ```
  public static AlibabaCloud.SDK.ARMS20190808.Client CreateClient(string accessKeyId, st
 ring accessKeySecret)
- {
+```
+
+`{`
+
+```
  AlibabaCloud.OpenApiClient.Models.Config config = new
 AlibabaCloud.OpenApiClient.Models.Config
- {
+```
+
+`{`
+
+```
  AccessKeyId = accessKeyId,
  AccessKeySecret = accessKeySecret,
                                regionId = “${regionId}”, // The region ID where the Prom
 etheus product is located.
- };
+```
+
+};
+
+```
  // The domain name to access.
  config.Endpoint = "${proxy_prometheus_api_domain}"; // The POP domain name of the Prom
 etheus product.
  return new AlibabaCloud.SDK.ARMS20190808.Client(config);
- }
  public static void Main(string[] args)
- {
+```
+
+`{`
+
+```
  AlibabaCloud.SDK.ARMS20190808.Client client = CreateClient("accessKeyId",
 "accessKeySecret");
  AlibabaCloud.SDK.ARMS20190808.Models.ListDashboardsRequest listDashboardsRequest = new
 AlibabaCloud.SDK.ARMS20190808.Models.ListDashboardsRequest();
  ... // Set business parameters.
  client.ListDashboards(listDashboardsRequest);
- }
- }
-}
 ```
 
-Managed Service for Prometheus
+meters
 
-## Obtain API parameters
+## 3 Obtain API parameters
 
 This topic describes how to obtain the parameters required to access the Prometheus monitoring developer API. These parameters allow you to quickly access the Platform Open Protocol (POP) API for Prometheus monitoring.
 
@@ -298,44 +311,40 @@ Contact technical support to obtain the RegionId for the current environment.
 **Information**.
 3. In the Alibaba Cloud **AccessKey** section, find the AccessKey information for your account.
 
-| Name | Type | Requir ed | Example | Description |  |  |
-|---|---|---|---|---|---|---|
-| Action | String | Yes | ListDashboards | A required parameter. Set the value to ListDashboards. |  |  |
-| ClusterId | String | Yes | cc7a37ee31aea 4ed1a059eff803 4b**** | The ID of the Container Service for Kubernetes (ACK) cluster. |  |  |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |  |  |
-| ClusterType | String | No | Node | The cluster type. Use this parameter to query the dashboard list for a virtual cluster. |  |  |
-| Title | String | No | ApiServer | The title of the dashboard. The dashboard title may change. Use the DashboardName parameter for queries. |  |  |
-| Product | String | No | xxxx | The code of the cloud product. |  |  |
-| RecreateSwitch | Boolean | No | false | A switch that controls the creation or query of virtual clusters. It ensures compatibility with historical data. |  |  |
-| DashboardName | String | No | k8s-node- overview | The unique names of the dashboards. You can query dashboards by specifying their names. Unlike the Title parameter, the Title can change, but the name does not. You can also specify multiple names separated by commas (,). For example: k8s-event,k8s- overview . A dashboard can have multiple versions under the same name. To specify a version, append the version information to the name, for example: k8s-event:v1,k8s- overview:latest . |  |  |
-|  |  |  |  |  | k8s-event:v1,k8s- |  |
-|  |  |  |  | overview:latest |  |  |
+## 4 API reference
 
-|  |  | k8s-event,k8s- |
-|---|---|---|
-|  | overview |  |
-
-Managed Service for Prometheus
-
-## API reference
-
-### ListDashboards
+### 4.1 ListDashboards
 
 Call the ListDashboards operation to retrieve a list of Grafana dashboards for a cluster.
 
 **Request parameters**
 
+| Name | Type | Requir ed | Example | Description |   |   |
+|---|---|---|---|---|---|---|
+| Action | String | Yes | ListDashboards | A required parameter. Set the value to ListDashboards. |   |   |
+| ClusterId | String | Yes | cc7a37ee31aea 4ed1a059eff803 4b**** | The ID of the Container Service for Kubernetes (ACK) cluster. |   |   |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |   |   |
+| ClusterType | String | No | Node | The cluster type. Use this parameter to query the dashboard list for a virtual cluster. |   |   |
+| Title | String | No | ApiServer | The title of the dashboard. The dashboard title may change. Use the DashboardName parameter for queries. |   |   |
+| Product | String | No | xxxx | The code of the cloud product. |   |   |
+| RecreateSwitch | Boolean | No | false | A switch that controls the creation or query of virtual clusters. It ensures compatibility with historical data. |   |   |
+| DashboardName | String | No | k8s-node- overview | The unique names of the dashboards. You can query dashboards by specifying their names. Unlike the Title parameter, the Title can change, but the name does not. You can also specify multiple names separated by commas (,). For example: k8s-event,k8s- overview . A dashboard can have multiple versions under the same name. To specify a version, append the version information to the name, for example: k8s-event:v1,k8s- overview:latest . |   |   |
+|   |   |   |   |   | k8s-event:v1,k8s- |   |
+|   |   |   |   | overview:latest |   |   |
+
+|   |   | k8s-event,k8s- |
+|---|---|---|
+|   | overview |   |
+
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
-| DashboardVos | Array of DashboardVos |  | The information about the Grafana dashboards. |
+| DashboardVos | Array of DashboardVos |   | The information about the Grafana dashboards. |
 | DashboardTyp e | String | Node | The dashboard type. This parameter has the same function as Exporter, but its meaning is more specific. |
 | Exporter | String | Nginx | The type of the exporter source. Valid values include the following: Prometheus Node GPU Redis MySQL Kafka Nginx (v2) Nginx ZooKeeper MongoDB RabbitMQ PostgreSQL Kubernetes Client Library Elasticsearch RocketMQ |
 | HttpUrl | String | http://g.console.ali yun.com/d/113197 1649496228-*****- 59/ApiServer? orgId=3**&refresh =60s | The URL of the dashboard. |
 | HttpsUrl | String | http://g.console.ali yun.com/d/113197 1649496228-*****- 59/ApiServer? orgId=3**&refresh =60s | The URL of the dashboard. |
-
-Managed Service for Prometheus
-
-**Response parameters**
 
 | Id | String | 1100** | The ID of the Grafana dashboard. This ID is unique only when the Grafana dashboard is installed. |
 |---|---|---|---|
@@ -350,16 +359,16 @@ Managed Service for Prometheus
 | Uid | String | 113197164949622 8-*****-59 | The unique identifier of the dashboard when multiple Grafana dashboards are installed. This is the unique business ID displayed on the page. |
 | Url | String | http://g.console.ali yun.com/d/113197 1649496228-*****- 59/ApiServer? orgId=3**&refresh =60s | The complete URL of the Grafana dashboard. |
 
-Managed Service for Prometheus
-
 | Version | String | v2 | The version of the dashboard. This parameter and the name form a unique key to identify a dashboard. |
 |---|---|---|---|
 | RequestId | String | 2A0CEDF1-06FE- 44AC-8E21- 21A5BE65**** | The request ID. |
 
-Managed Service for Prometheus Sample request
+**Examples**
+
+Sample request
 
 ```
-&ClusterId=cc7a37ee31aea4ed1a059eff8034b**** &RegionId=cn-hangzhou &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListDashboards &ClusterId=cc7a37ee31aea4ed1a059eff8034b**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
 Sample responses `XML` format
@@ -388,20 +397,9 @@ orgId=3**&amp;refresh=60s</Url>
 </DashboardVos> <RequestId>2A0CEDF1-06FE-44AC-8E21-21A5BE65****</RequestId>
 ```
 
-`JSON` format
-
-| Name | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SearchAlertCont act | A required parameter. Set the value to SearchAlertContact. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. |
-| ContactName | String | No | John Doe | The name of the alert contact. |
-| Phone | String | No | 1381111**** | The phone number of the alert contact. |
-| Email | String | No | someone@exam ple.com | The email address of the contact. |
-
-Managed Service for Prometheus
+`JSON` format `{`
 
 ```json
-{
     "DashboardVos": {
         "Title": "ApiServer",
         "Time": 1590136924,
@@ -422,26 +420,39 @@ orgId=3**&amp;refresh=60s",
 orgId=3**&amp;refresh=60s",
         "IsArmsExporter": false,
         "Tags": "[\"arms-k8s\",\"ccc8ce1fe0c9543629e39ee657e34****\"]"
-    },
-    "RequestId": "2A0CEDF1-06FE-44AC-8E21-21A5BE65****"
-}
 ```
 
-### SearchAlertContact
+`},`
+
+```json
+    "RequestId": "2A0CEDF1-06FE-44AC-8E21-21A5BE65****"
+```
+
+### 4.2 SearchAlertContact
 
 You can call the SearchAlertContact operation to query alert contacts.
 
 **Request parameters**
+
+| Name | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SearchAlertCont act | A required parameter. Set the value to SearchAlertContact. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. |
+| ContactName | String | No | John Doe | The name of the alert contact. |
+| Phone | String | No | 1381111**** | The phone number of the alert contact. |
+| Email | String | No | someone@exam ple.com | The email address of the contact. |
 
 | CurrentPage | String | No | 1 | The number of the page to return. |
 |---|---|---|---|---|
 | PageSize | String | No | 20 | The number of items to return on each page. |
 | ContactIds | String | No | [12345] | The ID of the alert contact. |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
-| PageBean | Struct |  | The returned struct. |
-| Contacts | Array of Contact |  | A list of contact objects. |
+| PageBean | Struct |   | The returned struct. |
+| Contacts | Array of Contact |   | A list of contact objects. |
 | ContactId | Long | 123 | The contact ID. |
 | ContactName | String | John Doe | The contact name. |
 | CreateTime | Long | 1572349025000 | The creation timestamp. |
@@ -451,10 +462,6 @@ You can call the SearchAlertContact operation to query alert contacts.
 | SystemNoc | Boolean | false | Indicates whether the contact receives system notifications: true: The contact receives system notifications. false: The contact does not receive system notifications. |
 | UpdateTime | Long | 1580258717000 | The update timestamp. |
 
-Managed Service for Prometheus
-
-**Response parameters**
-
 | UserId | String | 113197164949**** | The user ID. |
 |---|---|---|---|
 | Webhook | String | {\"body\":\"{ \\\"msg type\\\": _ \\\"text\\\", \\\"content\\\": { \\\"text\\\": \\\"$content\\\" } }\",\"header\": {\"Arms-Content- Type\":\"json\"},\" method\":\"post\",\ "params\": {},\"url\":\"https://* **",\"userId\":\"113 1971649***\"}", | The webhook information. |
@@ -463,13 +470,15 @@ Managed Service for Prometheus
 | TotalCount | Integer | 23 | The total number of items returned. |
 | RequestId | String | 21E85B16-75A6- 429A-9F65- 8AAC9A54**** | The request ID. |
 
-Managed Service for Prometheus
+**Examples**
+
+Request example
 
 ```
 http(s)://[Endpoint]/?Action=SearchAlertContact &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-Response example `XML` format Managed Service for Prometheus
+Response example `XML` format
 
 ```xml
 <PageBean>
@@ -493,10 +502,9 @@ Response example `XML` format Managed Service for Prometheus
 </PageBean> <RequestId>21E85B16-75A6-429A-9F65-8AAC9A54****</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PageBean": {
         "TotalCount": 23,
         "PageSize": 10,
@@ -514,11 +522,19 @@ Response example `XML` format Managed Service for Prometheus
 access_token=91f2f6****",
             "SystemNoc": false,
             "ContactName": "John Doe"
-        }
-    },
-    "RequestId": "21E85B16-75A6-429A-9F65-8AAC9A54****"
-}
 ```
+
+`},`
+
+```json
+    "RequestId": "21E85B16-75A6-429A-9F65-8AAC9A54****"
+```
+
+### 4.3 SearchAlertContactGroup
+
+You can call the SearchAlertContactGroup operation to query alert contact groups.
+
+**Request parameters**
 
 | Name | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -530,23 +546,15 @@ access_token=91f2f6****",
 | ContactGroupIds | String | No | 746 | The ID of the alert contact group. You can specify multiple IDs. Separate them with commas (,). |
 | IsDetail | Boolean | No | true | Specifies whether to return all contacts in the contact group. By default, the contacts are not returned. |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
-| ContactGroups | Array of ContactGroup |  | The information about the alert contact groups. |
+| ContactGroups | Array of ContactGroup |   | The information about the alert contact groups. |
 | ContactGroupI d | Long | 746 | The ID of the alert contact group. |
 | ContactGroup Name | String | TestGroup | The name of the alert contact group. |
 
-Managed Service for Prometheus
-
-### SearchAlertContactGroup
-
-You can call the SearchAlertContactGroup operation to query alert contact groups.
-
-**Request parameters**
-
-**Response parameters**
-
-| Contacts | Array of Contact |  | A list of contact objects. |
+| Contacts | Array of Contact |   | A list of contact objects. |
 |---|---|---|---|
 | ContactId | Long | 123 | The ID of the contact. |
 | ContactName | String | John Doe | The name of the contact. |
@@ -562,7 +570,9 @@ You can call the SearchAlertContactGroup operation to query alert contact groups
 | UserId | String | 113197164949**** | The user ID. |
 | RequestId | String | 4D6C358A-A58B- 4F4B-94CE- F5AAF023**** | The request ID. |
 
-Managed Service for Prometheus Managed Service for Prometheus
+**Examples**
+
+Request example
 
 ```
 http(s)://[Endpoint]/?Action=SearchAlertContactGroup &RegionId=cn-hangzhou &<Common request parameters>
@@ -592,10 +602,9 @@ Response example `XML` format
 </ContactGroups> <RequestId>4D6C358A-A58B-4F4B-94CE-F5AAF023****</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "ContactGroups": {
         "ContactGroupId": 746,
         "ContactGroupName": "TestGroup",
@@ -613,10 +622,10 @@ Response example `XML` format
 access_token=91f2f6****",
             "SystemNoc": false,
             "ContactName": "John Doe"
-        }
-    },
-    "RequestId": "4D6C358A-A58B-4F4B-94CE-F5AAF023****"
-}
 ```
 
-Managed Service for Prometheus
+`},`
+
+```json
+    "RequestId": "4D6C358A-A58B-4F4B-94CE-F5AAF023****"
+```

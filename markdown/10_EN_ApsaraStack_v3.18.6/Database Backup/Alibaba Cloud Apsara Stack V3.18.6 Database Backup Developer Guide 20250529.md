@@ -2,20 +2,43 @@
 title: "Database Backup Developer Guide 20250529"
 product_version: "V3.18.6"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Database Backup Developer Guide 20250529.pdf"
+source_pdf: "73a7d75bd5196763_Alibaba Cloud Apsara Stack V3.18.6 Database Backup Developer Guide 20250529.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Database%20Backup%20Developer%20Guide%2020250529.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Database Backup Developer Guide 20250529
 
-Database Backup
+## Table of Contents
 
-## What is DBS?
+- 1 What is DBS?
+- 2 Technical advantages
+- 3 Feature matrix
+  - 3.1 MySQL
+  - 3.2 PPAS
+  - 3.3 Redis
+  - 3.4 PostgreSQL
+  - 3.5 Oracle
+  - 3.6 PolarDB-X
+  - 3.7 MongoDB
+- 4 Features
+  - 4.1 Configure the backup source and destination
+  - 4.2 Configure backup objects
+  - 4.3 Configure the backup time
+  - 4.4 Configure the lifecycle
+  - 4.5 Backup Schedules page
+  - 4.6 Full Data page
+  - 4.7 Transaction Log Backup page
+  - 4.8 Configure the restoration time
+  - 4.9 Configure the objects to restore
+  - 4.10 Restore tasks
+  - 4.11 Download backup sets
 
-Database Backup (DBS) is a cost-effective backup service for continuous data protection. The service offers strong protection for data stored in multiple environments, such as on-premises data centers, cloud offerings from other vendors, hybrid clouds, and Alibaba Cloud public cloud. Database Backup
+## 1 What is DBS?
 
-## Technical advantages
+Database Backup (DBS) is a cost-effective backup service for continuous data protection. The service offers strong protection for data stored in multiple environments, such as on-premises data centers, cloud offerings from other vendors, hybrid clouds, and Alibaba Cloud public cloud. ntages
+
+## 2 Technical advantages
 
 Database Backup (DBS) supports databases that are deployed in various environments. By using Express Connect and VPN Gateway, it supports the backup of databases deployed in on-premises data centers, Elastic Compute Service (ECS) instances, and third-party cloud environments. DBS also allows you to back up ApsaraDB RDS databases at a different location. You can use DBS to perform full data backup, incremental data backup, and data restoration with a few clicks.
 
@@ -33,11 +56,17 @@ The process of activating DBS to configuring a backup schedule and running a bac
 
 **High performance**
 
-DBS captures in-memory logs in real time and achieves per-second recovery point objective (RPO). DBS allows you to restore backup data to any point in time. DBS allows you to select a single table as the object to restore. This greatly reduces the recovery time objective (RTO). DBS supports streaming backup. Data is not flushed to disks. The entire backup window is unlocked. The backup speed can be adjusted based on the concurrency configuration. DBS uses a multi-line Border Gateway Protocol (BGP) backbone network that has no bandwidth limits. This allows a large number of users to perform backup and restore operations simultaneously. Database Backup
+DBS captures in-memory logs in real time and achieves per-second recovery point objective (RPO). DBS allows you to restore backup data to any point in time. DBS allows you to select a single table as the object to restore. This greatly reduces the recovery time objective (RTO). DBS supports streaming backup. Data is not flushed to disks. The entire backup window is unlocked. The backup speed can be adjusted based on the concurrency configuration. DBS uses a multi-line Border Gateway Protocol (BGP) backbone network that has no bandwidth limits. This allows a large number of users to perform backup and restore operations simultaneously. ntages
 
 **High reliability**
 
 DBS uses Apsara Distributed File System to provide a distributed storage service with high reliability. DBS uses a redundant storage design to deliver a designed durability of at least 99.999999999%. During the backup process, data integrity is verified in real time. Tested by a large number of users, DBS is able to efficiently detect and fix vulnerabilities.
+
+## 3 Feature matrix
+
+### 3.1 MySQL
+
+**Logical backup**
 
 | MySQL version | Full backup | Incremental backup | Data restoration | Backup set download |
 |---|---|---|---|---|
@@ -48,13 +77,25 @@ DBS uses Apsara Distributed File System to provide a distributed storage service
 |---|---|---|---|
 | RDS MySQL 8.0 | Supported | Supported | Supported |
 
+### 3.2 PPAS
+
+**Logical backup**
+
 | PPAS version | Full backup | Incremental backup | Data restoration |
 |---|---|---|---|
 | 9.3 | Supported | Not supported | Supported |
 
+### 3.3 Redis
+
+**Logical backup**
+
 | Redis version | Full backup | Incremental backup | Data restoration |
 |---|---|---|---|
 | ApsaraDB for Redis 4.0 | Supported | Not supported | Supported |
+
+### 3.4 PostgreSQL
+
+**Logical backup**
 
 | PostgreSQL version | Full backup | Incremental backup | Data restoration |
 |---|---|---|---|
@@ -62,28 +103,12 @@ DBS uses Apsara Distributed File System to provide a distributed storage service
 | Self-managed PostgreSQL 10 | Supported | Not supported | Supported |
 | RDS PostgreSQL 9.4 | Supported | Not supported | Supported |
 
-Database Backup
-
-## Feature matrix
-
-### MySQL
-
-**Logical backup**
-
-### PPAS
-
-**Logical backup**
-
-### Redis
-
-**Logical backup**
-
-### PostgreSQL
-
-**Logical backup**
-
 | RDS PostgreSQL 10 | Supported | Not supported | Supported |
 |---|---|---|---|
+
+### 3.5 Oracle
+
+**Physical backup**
 
 | Oracle version | Full backup | Incremental backup | Data restoration |
 |---|---|---|---|
@@ -93,33 +118,25 @@ Database Backup
 | 18c | Supported | Not supported | Supported |
 | 19c | Supported | Not supported | Supported |
 
+### 3.6 PolarDB-X
+
+**Logical backup**
+
 | PolarDB-X version | Full backup | Incremental backup | Data restoration | Backup set download |
 |---|---|---|---|---|
 | PolarDB-X 1.0 | Supported | Not supported | Supported | Supported |
+
+### 3.7 MongoDB
+
+**Logical backup**
 
 | MongoDB version | Full backup | Incremental backup | Data restoration | Backup set download |
 |---|---|---|---|---|
 | Replica set instances that run MongoDB 4.0 | Supported | Supported | Supported | Supported |
 
-Database Backup
+## 4 Features
 
-### Oracle
-
-**Physical backup**
-
-### PolarDB-X
-
-**Logical backup**
-
-### MongoDB
-
-**Logical backup**
-
-Database Backup
-
-## Features
-
-### Configure the backup source
+### 4.1 Configure the backup source and destination
 
 **and destination**
 
@@ -131,7 +148,7 @@ Self-managed databases that are connected by using public IP addresses and port 
 
 Service logic: the DBS built-in storage and the purchased backup schedules reside in the same region.
 
-### Configure backup objects
+### 4.2 Configure backup objects
 
 **Databases and tables**
 
@@ -141,7 +158,7 @@ An entire instance Multiple databases A single database Multiple tables A single
 
 Views Stored procedures Triggers
 
-### Configure the backup time
+### 4.3 Configure the backup time
 
 **Full backup cycle**
 
@@ -151,7 +168,7 @@ We recommend that you perform a full backup at least once a week.
 
 We recommend that you enable the incremental log backup feature.
 
-### Configure the lifecycle
+### 4.4 Configure the lifecycle
 
 **Retention period**
 
@@ -159,29 +176,29 @@ Backup sets can be retained for up to two years and are automatically deleted up
 
 **Transit to Infrequent Access (IA) After**
 
-Database Backup The number of days before you transit the storage class from Standard to IA.
+The number of days before you transit the storage class from Standard to IA.
 
 **Transit to Archive After**
 
 The number of days before you transit the storage class from IA or Standard to Archive.
 
-### Backup Schedules page
+### 4.5 Backup Schedules page
 
 The **Backup Schedules** page display the configuration details of backup schedules and allows you to modify the backup schedule configurations.
 
-### Full Data page
+### 4.6 Full Data page
 
 The **Full Data** page displays all backup sets of backup schedules. You can click the ID of a full backup set to go to the details page.
 
-### Transaction Log Backup page
+### 4.7 Transaction Log Backup page
 
 The **Transaction Log Backup** page displays all the incremental backup sets of backup schedules. You can click the ID of an incremental backup set to go to the details page.
 
-### Configure the restoration time
+### 4.8 Configure the restoration time
 
 Database Backup (DBS) provides a calendar and a timeline so that you can select a point in time to which data is restored.
 
-### Configure the objects to
+### 4.9 Configure the objects to restore
 
 **restore**
 
@@ -197,16 +214,16 @@ fails. The database instance that you want to restore has only one object named 
 **DB1.table1**. In this case, you must manually change the name of the object from
 **DB1.table1** to another name and re-initiate a DBS restore task.
 **Rename Object with the Same Name** : If an object that uses the same name exists when
-you run a restore task, the object that you want to restore will still use the name. The existing object that uses the same name remains unchanged. We recommend that you do not use this option. Database Backup For example, if an object that uses the **DB1.table1** name exists and you select the
+you run a restore task, the object that you want to restore will still use the name. The existing object that uses the same name remains unchanged. We recommend that you do not use this option. For example, if an object that uses the **DB1.table1** name exists and you select the
 **Rename Object with the Same Name** option, the restore task succeeds. The database
 instance that you want to restore has the existing object **DB1.table1** and a new object
-**DB1xxx.table1xxx**. You must specify x based on the naming rule.
+**DB1xxx.table1xxx**. You must specify **x** based on the naming rule.
 
 **Important**
 
 If you select the **Rename Object with the Same Name** option, the incremental data may fail to be restored. If you encounter the issue, we recommend that you manually modify the name of the object that uses the same name on the destination database instance.
 
-### Restore tasks
+### 4.10 Restore tasks
 
 **Restore process**
 
@@ -216,6 +233,6 @@ Schema restoration before full data restoration Full data restoration Schema res
 
 Exception causes are displayed. You can restart abnormal tasks.
 
-### Download backup sets
+### 4.11 Download backup sets
 
 You can download specific backup sets.

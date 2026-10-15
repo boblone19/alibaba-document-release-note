@@ -3,16 +3,139 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for MongoDB Devel
 product_version: "V3.16.2"
 doc_version: "20220913"
 pdf_pages: 221
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for MongoDB Developer Guide 20220913.pdf"
+source_pdf: "62916d8b6b6ac546_Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for MongoDB Developer Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for MongoDB Developer Guide
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Process of API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the API-related information
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain the values of common headers
+  - 2.5 Obtain the endpoint of ApsaraDB for MongoDB
+  - 2.6 Obtain the SDKs of ApsaraDB for MongoDB
+- 3 Call examples for SDK for Java
+  - 3.1 Getting started
+  - 3.2 Use SDK
+    - 3.2.1 Install ApsaraDB for MongoDB SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+- 4 Call examples for SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use SDK
+    - 4.2.1 Install ApsaraDB for MongoDB SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+- 5 Call examples for SDK for Go
+  - 5.1 Getting started
+  - 5.2 Use SDK
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+- 6 List of operations by function
+- 7 API Reference
+  - 7.1 Lifecycle management
+    - 7.1.1 CreateDBInstance
+    - 7.1.2 ModifyDBInstanceSpec
+    - 7.1.3 DeleteDBInstance
+    - 7.1.4 CreateShardingDBInstance
+    - 7.1.5 CreateNode
+    - 7.1.6 DeleteNode
+    - 7.1.7 ModifyNodeSpec
+  - 7.2 Region management
+    - 7.2.1 MigrateToOtherZone
+    - 7.2.2 DescribeRegions
+    - 7.2.3 MigrateAvailableZone
+  - 7.3 Resource management
+    - 7.3.1 DescribeAvailableResource
+  - 7.4 Connection management
+    - 7.4.1 AllocatePublicNetworkAddress
+    - 7.4.2 ReleasePublicNetworkAddress
+    - 7.4.3 ModifyInstanceVpcAuthMode
+    - 7.4.4 DescribeShardingNetworkAddress
+    - 7.4.5 ModifyDBInstanceConnectionString
+    - 7.4.6 ReleaseNodePrivateNetworkAddress
+  - 7.5 Instance information query
+    - 7.5.1 DescribeReplicaSetRole
+    - 7.5.2 DescribeKernelReleaseNotes
+    - 7.5.3 DescribeAvailableEngineVersion
+    - 7.5.4 DescribeDBInstances
+    - 7.5.5 DescribeDBInstanceAttribute
+    - 7.5.6 DescribeRoleZoneInfo
+  - 7.6 Instance management
+    - 7.6.1 RestartDBInstance
+    - 7.6.2 ModifyDBInstanceMaintainTime
+    - 7.6.3 ModifyDBInstanceDescription
+    - 7.6.4 SwitchDBInstanceHA
+    - 7.6.5 UpgradeDBInstanceEngineVersion
+    - 7.6.6 UpgradeDBInstanceKernelVersion
+    - 7.6.7 ModifyDBInstanceNetExpireTime
+  - 7.7 Account management
+    - 7.7.1 DescribeAccounts
+    - 7.7.2 ResetAccountPassword
+    - 7.7.3 ModifyAccountDescription
+  - 7.8 IP whitelists and security groups
+    - 7.8.1 DescribeSecurityGroupConfiguration
+    - 7.8.2 ModifySecurityGroupConfiguration
+    - 7.8.3 DescribeSecurityIps
+    - 7.8.4 ModifySecurityIps
+  - 7.9 Key management
+    - 7.9.1 DescribeDBInstanceTDEInfo
+    - 7.9.2 ModifyDBInstanceTDE
+  - 7.10 SSL encryption
+    - 7.10.1 ModifyDBInstanceSSL
+    - 7.10.2 DescribeDBInstanceSSL
+  - 7.11 Audit logs
+    - 7.11.1 DescribeAuditRecords
+    - 7.11.2 DescribeAuditFiles
+    - 7.11.3 DescribeAuditPolicy
+    - 7.11.4 ModifyAuditLogFilter
+    - 7.11.5 DescribeAuditLogFilter
+    - 7.11.6 ModifyAuditPolicy
+  - 7.12 Log management
+    - 7.12.1 DescribeSlowLogRecords
+    - 7.12.2 DescribeErrorLogRecords
+    - 7.12.3 DescribeRunningLogRecords
+  - 7.13 Performance monitoring management
+    - 7.13.1 DescribeDBInstancePerformance
+    - 7.13.2 DescribeDBInstanceMonitor
+  - 7.14 Parameter management
+    - 7.14.1 DescribeParameterModificationHistory
+    - 7.14.2 DescribeParameters
+    - 7.14.3 ModifyParameters
+  - 7.15 Backup and recovery
+    - 7.15.1 DescribeBackupPolicy
+    - 7.15.2 ModifyBackupPolicy
+    - 7.15.3 CreateBackup
+    - 7.15.4 DescribeBackups
+    - 7.15.5 RestoreDBInstance
+    - 7.15.6 DescribeBackupDBs
+  - 7.16 Instance states
+- 8 Appendixes
+  - 8.1 Call the ASAPI gateway
+  - 8.2 Use the ASAPI gateway to make API calls
+    - 8.2.1 Obtain an endpoint of ASAPI
+    - 8.2.2 Obtain Apsara Stack SDKs
+  - 8.3 STS overview
+    - 8.3.1 What is STS?
+    - 8.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Center page by using a browser.
@@ -22,7 +145,7 @@ documentation This topic describes how to view the desired product development d
 5. In the upper-right corner of the product documentation section, click View Det ails or Download
 PDF.
 
-### Process of API calls
+### 1.2 Process of API calls
 
 You can use POP Gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. Since Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure that the user experience is consistent with that in Alibaba Cloud public cloud. This topic describes how to use POP Gateway to call Apsara Stack API operations. You can continue to use the ASAPI gateway to call API operations in Apsara Stack that is earlier than V3.16.0. For more information, see Process of API calls by using the ASAPI gateway, Generate an endpoint for ASAPI, and Obtain Apsara Stack SDKs. Procedure
 1. Obtain an AccessKey pair.
@@ -40,9 +163,9 @@ ApsaraDB for MongoDB.
 7. Make an API call. For more information, see Getting started (Java), Getting started (Python), or
 Getting started (Go).
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -52,7 +175,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the API-related information
+### 2.2 View the API-related information
 
 This topic describes how to view the API-related information. Before you use SDKs, you must obtain service names, API operation names, and API versions. Context The API operations listed in API Reference are for reference only. For more information about how to call an API operation, see ApsaraDB for MongoDB Developer Guide. Procedure
 1. Log on to the API Tool console.
@@ -61,7 +184,7 @@ This topic describes how to view the API-related information. Before you use SDK
 the product name field.
 4. View and record the service name, API operation name, and API version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -86,7 +209,7 @@ to obtain.
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 2.4 Obtain the values of common headers
 
 headers You must provide multiple headers when you call Apsara Stack operations. This topic describes the headers and how to obtain the values of the headers. This topic also describes the return values of specific headers after you call Apsara Stack operations. Headers
 
@@ -121,7 +244,7 @@ the Inst ance ID/Name column. Response parameters The following additional respo
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of ApsaraDB
+### 2.5 Obtain the endpoint of ApsaraDB for MongoDB
 
 for MongoDB This topic describes how to obtain the endpoint of ApsaraDB MongoDB. Background To use POP Gateway to call Apsara Stack API operations, you must use a service endpoint. You can obtain a service endpoint from an Apsara Stack onsite O&M engineer or by performing the following operations: Procedure
 1. Log on to the Apsara Infrastructure Management console.
@@ -138,7 +261,7 @@ icon next to Service and search for
 5. Find the `mongodb-yaochi` service, right-click the Service Regist rat ion column, and then select
 Show More from the shortcut menu. In the Det ails dialog box, obtain the mongodb.openapi-inc.endpoint value. This value is the endpoint of ApsaraDB for MongoDB.
 
-### Obtain the SDKs of ApsaraDB for
+### 2.6 Obtain the SDKs of ApsaraDB for MongoDB
 
 MongoDB Before you use POP Gateway to call Apsara Stack API operations of ApsaraDB for MongoDB, you must obtain the SDKs of ApsaraDB for MongoDB. This topic describes how to obtain the SDKs of ApsaraDB for MongoDB.
 
@@ -150,9 +273,9 @@ MongoDB Before you use POP Gateway to call Apsara Stack API operations of Apsara
 
 We recommend that you use an SDK for Java, Python, or Go. If you use an SDK for a different programming language, the SDK may be incompatible with your system. SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Java. Environment requirements An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. For more information about how to obtain the endpoint of ApsaraDB for MongoDB, see Obtain the endpoint of a cloud service. Apsara Stack SDK for Java 1.8 or later is installed. Install Apsara Stack SDK for Java If you use Apache Maven to manage Java projects, you need to only import JAR files to the pom.xml file of the projects. To use an ApsaraDB for MongoDB SDK, you must install the SDK core library and the ApsaraDB for MongoDB SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, the ApsaraDB for MongoDB SDK uses version 3.6.3. Use Apsara Stack SDK for Java Perform the following operations to use Apsara Stack SDK for Java:
 1. Create a DefaultAcsClient instance and initialize the instance.
@@ -181,9 +304,9 @@ ssKeyID>", "<yourAccessKeySecret>");
 
 `}` `}` `}`
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install ApsaraDB for MongoDB SDK for Java
+#### 3.2.1 Install ApsaraDB for MongoDB SDK for Java
 
 This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. Apsara Stack SDK for Java 1.8 or later is required. To install ApsaraDB for MongoDB SDK for Java, add Maven dependencies or download ApsaraDB for MongoDB SDKs. For more information, see Obtain the SDKs of ApsaraDB for MongoDB. To use ApsaraDB for MongoDB SDK for Java, you must install the core library of Apsara Stack SDK for Java and ApsaraDB for MongoDB SDK for Java. We recommend that you use version 4.5.17 or later for the core library of Apsara Stack SDK for Java. In this example, ApsaraDB for MongoDB SDK for Java uses version 3.6.3. For example, to use ApsaraDB for MongoDB SDK for Java, you must install the core library of Apsara Stack SDK for Java and ApsaraDB for MongoDB SDK for Java, and then add the following dependencies to the pom.xml file. For information about the SDK version number, see Obtain the SDKs of ApsaraDB for MongoDB. SDK for Java
 
@@ -199,7 +322,7 @@ This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. A
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
@@ -209,7 +332,7 @@ DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourAcces
 
 You must use actual values to replace the variables in the preceding sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. SDK for Java You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
@@ -229,7 +352,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use ApsaraDB for MongoDB SDK for Java to initiate a request. Procedure
 1. Create an ACS client.
@@ -266,7 +389,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -297,11 +420,11 @@ try {
 
 `}` SDK for Python
 
-## Call examples for SDK for
+## 4 Call examples for SDK for Python
 
 Python
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Python. Environment requirements An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information about how to obtain the endpoint of ApsaraDB for MongoDB, see Obtain the endpoint of ApsaraDB for MongoDB. Install ApsaraDB for MongoDB SDK for Python
 1. Install the SDK core library.
@@ -345,9 +468,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 print(str(response, encoding='utf-8'))
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install ApsaraDB for MongoDB SDK for
+#### 4.2.1 Install ApsaraDB for MongoDB SDK for Python
 
 Python This topic describes how to install the core library of Apsara Stack SDK for Python and ApsaraDB for MongoDB SDK for Python. Background information To use a service SDK, you must install the core library of Apsara Stack SDK for Python. To use ApsaraDB for MongoDB SDK for Python, you must install the core library of Apsara Stack SDK for Python and ApsaraDB for MongoDB SDK for Python. Install the core library of Apsara Stack SDK for Python Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, as well as 3.x and later. You can use the pip command to install Apsara Stack SDK for Python. If you use Python 2.x, run the following command:
 
@@ -373,7 +496,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-dds
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Python supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Not ice Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
@@ -383,7 +506,7 @@ clt = client.AcsClient(<yourRegionID>, <yourAccessKeyID>, <yourAccessKeySecret>)
 
 In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. SDK for Python Add OpenSSL dependency HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python. Run the `python -c "import ssl"` command to check if the Python environment supports OpenSSL. If the `ImportError: No module named ssl` error message does not appear, OpenSSL is supported in Python. If Python does not support OpenSSL, run the following command to install OpenSSL:
 
@@ -405,7 +528,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use ApsaraDB for MongoDB SDK for Python to initiate a request. The DescribeAccounts operation is used in the example. Procedure
 1. Import ApsaraDB for MongoDB SDK for Python.
@@ -436,7 +559,7 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding='utf-8'))
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -459,9 +582,9 @@ except ServerException as e:
 
 SDK for Go
 
-## Call examples for SDK for Go
+## 5 Call examples for SDK for Go
 
-### Getting started
+### 5.1 Getting started
 
 This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Go. Environment requirements An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. Install the core library of Apsara Stack SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core library of Apsara Stack SDK for Go:
 
@@ -508,15 +631,15 @@ yourAccessKeySecret>")
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Go supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Not ice Do not disclose any code that may contain your AccessKey pair. For example, your AccessKey pair may become disclosed if you commit your code to a public GitHub project, which could compromise your Alibaba Cloud account.
 
@@ -526,7 +649,7 @@ client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>",
 
 SDK for Go In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use ApsaraDB for MongoDB SDK for Go to initiate a request. Use ApsaraDB for MongoDB SDK for Go to initiate a request.
 1. Import ApsaraDB for MongoDB SDK for Go.
@@ -561,7 +684,7 @@ SDK for Go
 response, err := client.DescribeAccounts(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server or SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. Handle errors You can use the following code to handle the errors:
 
@@ -626,7 +749,7 @@ response, err := Client.DescribeAccounts(request) if serverError, ok := err.(*er
 
 `}` by function
 
-## List of operations by function
+## 6 List of operations by function
 
 The following tables list API operations available for use in ApsaraDB for MongoDB. Lifecycle management
 
@@ -778,11 +901,11 @@ Backup and recovery by function
 | RestoreDBInstance | Restores data to the current ApsaraDB for MongoDB instance. |
 | DescribeBackupDBs | Views the databases at a specified point in time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance. |
 
-## API Reference
+## 7 API Reference
 
-### Lifecycle management
+### 7.1 Lifecycle management
 
-#### CreateDBInstance
+#### 7.1.1 CreateDBInstance
 
 Creates or clones an ApsaraDB for MongoDB replica set instance. For more information about instance types, see Inst ance t ypes in ApsaraDB f or MongoDB Product Int roduct ion. To create sharded cluster instances, you can call the Creat eShardingDBInst ance operation. Request parameters
 
@@ -880,7 +1003,7 @@ Sample success responses `XML` format
 | 400 | InvalidCapacity.NotF ound | The Capacity provided does not exist in our records. | The error message returned because the configured space is invalid. Check the specified parameter. |
 | 400 | IdempotentParamet erMismatch | Request uses a client token in a previous request but is not identical to that request. | The error message returned because the two specified requests use the same ClientToken value. |
 
-#### ModifyDBInstanceSpec
+#### 7.1.2 ModifyDBInstanceSpec
 
 Modifies the specifications or storage capacity of an ApsaraDB for MongoDB replica set instance. This operation is applicable to replica set instances. You can call the Modif yNodeSpec, Creat eNode, or Delet eNode operation to change the configurations of a sharded cluster instance. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-resourcegrou` `pid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource set and organization. For more information about the code, see SDK description in ApsaraDB for MongoDB Developer Guide. Request parameters
 
@@ -943,7 +1066,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteDBInstance
+#### 7.1.3 DeleteDBInstance
 
 Releases an ApsaraDB for MongoDB instance. The instance must be in the Running state when you call this operation. After an instance is released, all the data in the instance is deleted and cannot be restored. Proceed with caution. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-resourcegrou` `pid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource group and organization. For more information about the code, see SDK Description in ApsaraDB for MongoDB Developer Guide. Request parameters
 
@@ -981,7 +1104,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateShardingDBInstance
+#### 7.1.4 CreateShardingDBInstance
 
 Creates or clones an ApsaraDB for MongoDB sharded cluster instance. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource set and organization. For more information about the code, see SDK description in ApsaraDB for MongoDB Developer Guide. Request parameters
 
@@ -1070,7 +1193,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateNode
+#### 7.1.5 CreateNode
 
 You can call this operation to create the shard or mongos node for an ApsaraDB for MongoDB sharded cluster instances. This operation is applicable only to sharded cluster instances. Request parameters
 
@@ -1123,7 +1246,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteNode
+#### 7.1.6 DeleteNode
 
 You can call this operation to delete a shard or mongos in an ApsaraDB for MongoDB sharded cluster instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A sharded cluster instance is used. The number of shard or mongos nodes in the instance must be greater than two. Request parameters
 
@@ -1169,7 +1292,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyNodeSpec
+#### 7.1.7 ModifyNodeSpec
 
 You can call this operation to modify the specifications and storage capacity of the nodes in an ApsaraDB for MongoDB sharded cluster instance. This operation is applicable only to sharded cluster instances. Request parameters
 
@@ -1223,9 +1346,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Region management
+### 7.2 Region management
 
-#### MigrateToOtherZone
+#### 7.2.1 MigrateToOtherZone
 
 You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call the ReleasePublicNet workAddress operation to release the public endpoint. Request parameters
 
@@ -1266,7 +1389,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeRegions
+#### 7.2.2 DescribeRegions
 
 You can call this operation to view the regions and zones that an ApsaraDB for MongoDB instance can be created. Before you call the CreateDBInstance or CreateShardingDBInstance operation to create an instance, you must call this operation to view the regions and zones that the that ApsaraDB for MongoDB instance can be created. Request parameters
 
@@ -1398,7 +1521,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}` `]` `}` `}`
 
-#### MigrateAvailableZone
+#### 7.2.3 MigrateAvailableZone
 
 You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call ReleasePublicNet workAddress to release the public endpoint. Request parameters
 
@@ -1438,9 +1561,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Resource management
+### 7.3 Resource management
 
-#### DescribeAvailableResource
+#### 7.3.1 DescribeAvailableResource
 
 You can call this operation to view the ApsaraDB for MongoDB instances that can be created in a specified zone. Request parameters
 
@@ -1611,9 +1734,9 @@ S: 14000)</InstanceClassRemark>
 
 `}` `]` `}` `]` `}` `]` `}` `]` `}` `]` `}` `]` `}`
 
-### Connection management
+### 7.4 Connection management
 
-#### AllocatePublicNetworkAddress
+#### 7.4.1 AllocatePublicNetworkAddress
 
 You can call this operation to assign a public endpoint to an ApsaraDB for MongoDB instance. Request parameters
 
@@ -1651,7 +1774,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ReleasePublicNetworkAddress
+#### 7.4.2 ReleasePublicNetworkAddress
 
 You can call this operation to release the public endpoint of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -1692,7 +1815,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyInstanceVpcAuthMode
+#### 7.4.3 ModifyInstanceVpcAuthMode
 
 You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The database engine version of the instance is MongoDB 4.0 or 4.2. You can call the DescribeDBInst anceAt t ribut e operation to view the database engine version of the instance. If necessary, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. The network type of the instance must be VPC. Request parameters
 
@@ -1732,7 +1855,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeShardingNetworkAddress
+#### 7.4.4 DescribeShardingNetworkAddress
 
 You can call this operation to view the connection information of an ApsaraDB for MongoDB sharded cluster instance. This operation supports sharded cluster instances only. Request parameters
 
@@ -1851,7 +1974,7 @@ Sample success responses `XML` format
 
 `}` `]` `}`
 
-#### ModifyDBInstanceConnectionString
+#### 7.4.5 ModifyDBInstanceConnectionString
 
 You can call this operation to modify the connection string of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -1894,7 +2017,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ReleaseNodePrivateNetworkAddress
+#### 7.4.6 ReleaseNodePrivateNetworkAddress
 
 You can call this operation to release the internal endpoint of the shard or Configserver node of a sharded cluster instance. This operation is only applicable to sharded cluster instances. For more information, see Release endpoints of shard or Configserver nodes. This operation releases the internal endpoint of the node. If you have also applied for a public endpoint of the node and want to release it, you can call the ReleasePublicNetworkAddress operation to release the public endpoint. Request parameters
 
@@ -1936,9 +2059,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Instance information query
+### 7.5 Instance information query
 
-#### DescribeReplicaSetRole
+#### 7.5.1 DescribeReplicaSetRole
 
 You can call this operation to view the role and connection information of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
 
@@ -2065,7 +2188,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### DescribeKernelReleaseNotes
+#### 7.5.2 DescribeKernelReleaseNotes
 
 You can call this operation to view the release notes of the minor database versions of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -2126,7 +2249,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### DescribeAvailableEngineVersion
+#### 7.5.3 DescribeAvailableEngineVersion
 
 You can call this operation to view the database engine versions that an ApsaraDB for MongoDB instance can be upgraded to. Request parameters
 
@@ -2178,7 +2301,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstances
+#### 7.5.4 DescribeDBInstances
 
 Queries the list of ApsaraDB for MongoDB instances. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource group and organization. For more information about the code, see SDK Description in ApsaraDB for MongoDB Developer Guide. Request parameters
 
@@ -2423,7 +2546,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `]` `}`
 
-#### DescribeDBInstanceAttribute
+#### 7.5.5 DescribeDBInstanceAttribute
 
 You can call this operation to view the details of a MongoDB instance. Request parameters
 
@@ -2794,7 +2917,7 @@ ngodb.rds.example.com:3717",
 
 `}` `]` `}` `]` `}`
 
-#### DescribeRoleZoneInfo
+#### 7.5.6 DescribeRoleZoneInfo
 
 You can call this operation to view the roles and zones of nodes in an ApsaraDB for MongoDB instance. Request parameters
 
@@ -2901,9 +3024,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Instance management
+### 7.6 Instance management
 
-#### RestartDBInstance
+#### 7.6.1 RestartDBInstance
 
 You can call this operation to restart an ApsaraDB for MongoDB instance. This operation can also be used to restart a shard or mongos node in a replica set instance. Request parameters
 
@@ -2944,7 +3067,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceMaintainTime
+#### 7.6.2 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -2986,7 +3109,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceDescription
+#### 7.6.3 ModifyDBInstanceDescription
 
 You can call this operation to change the name of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -3028,7 +3151,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SwitchDBInstanceHA
+#### 7.6.4 SwitchDBInstanceHA
 
 You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes. Request parameters
 
@@ -3071,7 +3194,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpgradeDBInstanceEngineVersion
+#### 7.6.5 UpgradeDBInstanceEngineVersion
 
 You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The available database versions are subject to the storage engine used by the instance. You can call the DescribeAvailableEngineVersion operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours. Request parameters
 
@@ -3112,7 +3235,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpgradeDBInstanceKernelVersion
+#### 7.6.6 UpgradeDBInstanceKernelVersion
 
 You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The instance will be restarted once during the upgrade. Perform this operation during off-peak hours. Request parameters
 
@@ -3149,7 +3272,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceNetExpireTime
+#### 7.6.7 ModifyDBInstanceNetExpireTime
 
 You can call this operation to extend the retention period of the classic network of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance must be running. The network of the instance is in hybrid access mode. Request parameters
 
@@ -3188,9 +3311,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Account management
+### 7.7 Account management
 
-#### DescribeAccounts
+#### 7.7.1 DescribeAccounts
 
 You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance. This operation can display only the information of the root account. Request parameters
 
@@ -3262,7 +3385,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ResetAccountPassword
+#### 7.7.2 ResetAccountPassword
 
 You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. This operation can reset only the password of the root account of an instance. Request parameters
 
@@ -3303,7 +3426,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyAccountDescription
+#### 7.7.3 ModifyAccountDescription
 
 You can call this operation to modify the description of the root account of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -3345,9 +3468,9 @@ Sample success responses `XML` format
 
 `}`
 
-### IP whitelists and security groups
+### 7.8 IP whitelists and security groups
 
-#### DescribeSecurityGroupConfiguration
+#### 7.8.1 DescribeSecurityGroupConfiguration
 
 You can call this operation to view ECS security groups to which an ApsaraDB for MongoDB instance is added. Request parameters
 
@@ -3408,7 +3531,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifySecurityGroupConfiguration
+#### 7.8.2 ModifySecurityGroupConfiguration
 
 You can call this operation to modify the ECS Security group that is bound to an ApsaraDB for MongoDB instance. For a sharded cluster instance, the bound ECS security group takes effect only for the mongos node. Request parameters
 
@@ -3447,7 +3570,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeSecurityIps
+#### 7.8.3 DescribeSecurityIps
 
 You can call this operation to view the IP whitelist of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -3527,7 +3650,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifySecurityIps
+#### 7.8.4 ModifySecurityIps
 
 You can call this operation to modify the IP whitelist of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -3571,9 +3694,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Key management
+### 7.9 Key management
 
-#### DescribeDBInstanceTDEInfo
+#### 7.9.1 DescribeDBInstanceTDEInfo
 
 You can call this operation to view whether TDE is enabled for an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. Request parameters
 
@@ -3613,7 +3736,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceTDE
+#### 7.9.2 ModifyDBInstanceTDE
 
 You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the UpgradeDBInst anceEngineVersion operation to upgrade the database engine. Request parameters
 
@@ -3665,9 +3788,9 @@ Sample success responses `XML` format
 | 403 | IncorrectDBInstanceS tate | Current DB instance state does not support this operation. | The error message returned because the operation is not supported while the instance is in its current state. Check whether the specified parameters are correct. |
 | 403 | IncorrectDBInstanceL ockMode | Current DB instance lock mode does not support this operation. | The error message returned because the instance is locked. |
 
-### SSL encryption
+### 7.10 SSL encryption
 
-#### ModifyDBInstanceSSL
+#### 7.10.1 ModifyDBInstanceSSL
 
 You can call this operation to modify the SSL settings of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. A replica set instance is used. The database engine version of the instance is 3.4, 4.0, or 4.2. Whenever you enable or disable SSL encryption, or update the SSL certificate, the instance will restart. We recommend that you call this operation during off-peak hours. Request parameters
 
@@ -3716,7 +3839,7 @@ Sample success responses `XML` format
 | 403 | IncorrectDBInstanceS tate | Current DB instance state does not support this operation. | The error message returned because the operation is not supported while the instance is in its current state. Check whether the specified parameters are correct. |
 | 403 | IncorrectDBInstanceL ockMode | Current DB instance lock mode does not support this operation. | The error message returned because the instance is locked. |
 
-#### DescribeDBInstanceSSL
+#### 7.10.2 DescribeDBInstanceSSL
 
 You can call this operation to view the SSL settings of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The primary instance must be in the Running state. A replica set instance is used. The database engine version of the instance is 3.4, 4.0, or 4.2. Request parameters
 
@@ -3765,9 +3888,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Audit logs
+### 7.11 Audit logs
 
-#### DescribeAuditRecords
+#### 7.11.1 DescribeAuditRecords
 
 You can call this operation to view the audit logs of ApsaraDB for MongoDB instances. When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log. Request parameters
 
@@ -3872,7 +3995,7 @@ esult\": \"OK\" }</Syntax>
 |---|---|---|---|
 | 400 | InvalidEndTime.Form at | Specified end time is not valid. | The error message returned when the end time is invalid. Check the format of the specified time. |
 
-#### DescribeAuditFiles
+#### 7.11.2 DescribeAuditFiles
 
 You can call this operation to view the audit log files of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -3971,7 +4094,7 @@ xxxx_xxxxxx.csv",
 | 404 | InvalidDBInstanceCla ss.NotFound | Specified DB instance class is not found. | The error message returned because the specified instance type does not exist. Verify the specified instance type. |
 | 403 | IncorrectDBInstance Type | Current DB instance type does not support this operation. | The error message returned because the operation is not supported by the current instance type. |
 
-#### DescribeAuditPolicy
+#### 7.11.3 DescribeAuditPolicy
 
 You can call this operation to view whether the log audit feature is enabled for an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Request parameters
 
@@ -4011,7 +4134,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyAuditLogFilter
+#### 7.11.4 ModifyAuditLogFilter
 
 You can call this operation to modify the type of audit logs to be collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
 
@@ -4050,7 +4173,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeAuditLogFilter
+#### 7.11.5 DescribeAuditLogFilter
 
 You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances. Request parameters
 
@@ -4097,7 +4220,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyAuditPolicy
+#### 7.11.6 ModifyAuditPolicy
 
 You can call this operation to enable or disable the audit log feature or set the retention period of audit logs for an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4136,9 +4259,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Log management
+### 7.12 Log management
 
-#### DescribeSlowLogRecords
+#### 7.12.1 DescribeSlowLogRecords
 
 You can call this operation to view the slow operation log details of the ApsaraDB for MongoDB instance. Request parameters
 
@@ -4239,7 +4362,7 @@ stomer\",\"filter\":{\"name\":\"jack\"}}}</SQLText>
 
 `}`
 
-#### DescribeErrorLogRecords
+#### 7.12.2 DescribeErrorLogRecords
 
 You can call this operation to view the error logs of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4332,7 +4455,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeRunningLogRecords
+#### 7.12.3 DescribeRunningLogRecords
 
 You can call this operation to view the operational logs of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4448,11 +4571,11 @@ ctions now open)"
 
 `}`
 
-### Performance monitoring
+### 7.13 Performance monitoring management
 
 management
 
-#### DescribeDBInstancePerformance
+#### 7.13.1 DescribeDBInstancePerformance
 
 You can call this operation to view the performance data of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4561,7 +4684,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceMonitor
+#### 7.13.2 DescribeDBInstanceMonitor
 
 You can call this operation to set the collection frequency of monitoring data for an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4598,9 +4721,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Parameter management
+### 7.14 Parameter management
 
-#### DescribeParameterModificationHistory
+#### 7.14.1 DescribeParameterModificationHistory
 
 You can call this operation to view the parameter modification records of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4679,7 +4802,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeParameters
+#### 7.14.2 DescribeParameters
 
 You can call this operation to view parameter configurations of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4904,7 +5027,7 @@ default is 33554432(i.e. 32MB)",
 | 404 | InvalidDBInstanceCla ss.NotFound | Specified DB instance class is not found. | The error message returned when the specified instance type does not exists. Verify the specified instance type. |
 | 403 | IncorrectDBInstance Type | Current DB instance type does not support this operation. | The error message returned when the current operation is not supported by the instance type of the specified instance. |
 
-#### ModifyParameters
+#### 7.14.3 ModifyParameters
 
 You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the DescribeParamet erT emplat es operation to query the parameters that take effect only after the instance is restarted. Request parameters
 
@@ -4947,9 +5070,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Backup and recovery
+### 7.15 Backup and recovery
 
-#### DescribeBackupPolicy
+#### 7.15.1 DescribeBackupPolicy
 
 You can call this operation to view the backup policy of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -4992,7 +5115,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyBackupPolicy
+#### 7.15.2 ModifyBackupPolicy
 
 You can call this operation to modify the backup policy of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -5034,7 +5157,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateBackup
+#### 7.15.3 CreateBackup
 
 You can call this operation to manually back up an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. Request parameters
 
@@ -5075,7 +5198,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeBackups
+#### 7.15.4 DescribeBackups
 
 You can call this operation to view the backups of an ApsaraDB for MongoDB instance. Request parameters
 
@@ -5174,7 +5297,7 @@ xxxxx/xxxxx.tar.gz",
 
 `}` `]` `}`
 
-#### RestoreDBInstance
+#### 7.15.5 RestoreDBInstance
 
 You can call this operation to restore data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances. You also can use the following methods to clone an instance: Create an instance from a backup to clone a standalone instance. Call the CreateShardingDBInstance operation to clone a sharded cluster instance. This operation overwrites the data of the current instance, and the data cannot be recovered. Proceed with caution. Request parameters
 
@@ -5215,7 +5338,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeBackupDBs
+#### 7.15.6 DescribeBackupDBs
 
 You can call this operation to view the databases at a specified time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance. You can call the Creat eDBInst ance operation to restore a database for an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set instance is used. The database engine version of the instance must be 3.0, 3.4, 4.0, or 4.2. Request parameters
 
@@ -5285,7 +5408,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | IncorrectDBInstance Type | Current DB instance type does not support this operation. | The error message returned when the current operation is not supported by the instance type of the specified instance. |
 
-### Instance states
+### 7.16 Instance states
 
 This topic descries the instance states of ApsaraDB for MongoDB instances.
 
@@ -5320,9 +5443,9 @@ This topic descries the instance states of ApsaraDB for MongoDB instances.
 | Transing | The instance is being migrated. |
 | TransingToOthers | A database in the instance is being migrated. |
 
-## Appendixes
+## 8 Appendixes
 
-### Call the ASAPI gateway
+### 8.1 Call the ASAPI gateway
 
 You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Flowchart Procedure
 1. Obtain ASAPI SDK.
@@ -5376,11 +5499,11 @@ erFeature.PrettyFormat));
 
 `}`
 
-### Use the ASAPI gateway to make
+### 8.2 Use the ASAPI gateway to make API calls
 
 API calls
 
-#### Obtain an endpoint of ASAPI
+#### 8.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -5451,7 +5574,7 @@ name.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
 file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Obtain Apsara Stack SDKs
+#### 8.2.2 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -5492,13 +5615,13 @@ Apsara Stack SDK for Python
 
 You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 8.3 STS overview
 
-#### What is STS?
+#### 8.3.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 8.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

@@ -2,16 +2,23 @@
 title: "Operation Orchestration Service Product Introduction 20250728"
 product_version: "V3.18.6"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Operation Orchestration Service Product Introduction 20250728.pdf"
+source_pdf: "1f455df16a320e9b_Alibaba Cloud Apsara Stack V3.18.6 Operation Orchestration Service Product Introduction 20250728.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%BF%90%E7%BB%B4%E7%BC%96%E6%8E%92%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Operation%20Orchestration%20Service%20Product%20Introduction%2020250728.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Operation Orchestration Service Product Introduction 20250728
 
-Operation Orchestration Service ils
+## Table of Contents
 
-## Service details
+- 1 Service details
+- 2 Benefits
+- 3 Scenarios
+- 4 Features
+
+ils
+
+## 1 Service details
 
 You can use templates to define O&M tasks, including task execution sequence, task input, and task output. Operation Orchestration Service (OOS) can automatically execute the O&M tasks after you define the tasks in the templates. OOS can be used to manage other Alibaba Cloud services, such as Elastic Compute Service (ECS), ApsaraDB RDS, Server Load Balancer (SLB), and Virtual Private Cloud (VPC).
 
@@ -21,9 +28,9 @@ OOS uses templates to define the O&M operations that require orchestration. The 
 
 **Execution**
 
-OOS supports a variety of execution modes, including automatic execution, semi-automatic execution, and manual execution. This helps you complete diverse O&M tasks. Automatic execution: We recommend that you execute a template in this mode in the test environment first. This way, you can have a better understanding of the O&M operations performed by using the template. If the test result meets the expectations, you can execute the template in this mode in the production environment. Manual execution: This execution mode is similar to debugging. If you want to know more about the execution of each task, we recommend that you use the manual execution mode. Operation Orchestration Service
+OOS supports a variety of execution modes, including automatic execution, semi-automatic execution, and manual execution. This helps you complete diverse O&M tasks. Automatic execution: We recommend that you execute a template in this mode in the test environment first. This way, you can have a better understanding of the O&M operations performed by using the template. If the test result meets the expectations, you can execute the template in this mode in the production environment. Manual execution: This execution mode is similar to debugging. If you want to know more about the execution of each task, we recommend that you use the manual execution mode.
 
-## Benefits
+## 2 Benefits
 
 Operation Orchestration Service (OOS) can help enterprises better standardize, manage, and perform automated O&M operations. You can define required operations by using templates and execute the operations in the system. This improves the overall efficiency of O&M operations, enhances the security of O&M operations, and reduces manual O&M errors.
 
@@ -53,9 +60,9 @@ OOS provides templates to standardize common O&M tasks. In OOS, you can manage t
 
 **Delegated authorization**
 
-Operation Orchestration Service Authorization must be appropriately delegated to O&M engineers. O&M engineers must be granted the required permissions to complete the corresponding O&M tasks. To prevent risks, they cannot be granted higher permissions than required to execute unexpected O&M tasks. OOS provides a delegated authorization solution to meet the preceding O&M requirements. When a high-privileged O&M engineer creates a template, a RAM role can be specified and granted the required permissions to use the template. The high-privileged O&M engineers can also grant a lower-privileged O&M engineer the permissions to execute the template. If the duty of executing the template is transferred to the lower-privileged O&M engineer, accidental operations that require high privileges may be reduced. Operation Orchestration Service
+Authorization must be appropriately delegated to O&M engineers. O&M engineers must be granted the required permissions to complete the corresponding O&M tasks. To prevent risks, they cannot be granted higher permissions than required to execute unexpected O&M tasks. OOS provides a delegated authorization solution to meet the preceding O&M requirements. When a high-privileged O&M engineer creates a template, a RAM role can be specified and granted the required permissions to use the template. The high-privileged O&M engineers can also grant a lower-privileged O&M engineer the permissions to execute the template. If the duty of executing the template is transferred to the lower-privileged O&M engineer, accidental operations that require high privileges may be reduced.
 
-## Scenarios
+## 3 Scenarios
 
 Common O&M scenarios of Operation Orchestration Service (OOS) include executing multiple O&M tasks at a time, updating images, managing approval requests, and managing scheduled O&M tasks. You can create custom templates based on your business requirements.
 
@@ -75,15 +82,13 @@ In many scenarios, you need to manage approval requests to ensure that only expe
 
 Some O&M tasks must be executed as scheduled. For example, each morning, you need to delete all Object Storage Service (OSS) files generated by the previous tests to prepare a clean runtime environment for the next test. In this case, you can create a template and schedule delete operations in the morning.
 
+## 4 Features
+
+This topic describes the features of CloudOps Orchestration Service (OOS).
+
 | Feature | Description |
 |---|---|
 | Scheduled O&M | OOS allows you to execute O&M tasks at the specified points in time. For example, you can create a template and execute it at 00:00 every day to delete Object Storage Service (OSS) files that are generated by tests within an account on the previous day. This produces a new and clean test environment every day to prevent subsequent test results from being affected. |
 | Public templates | OOS provides templates for multiple scenarios, such as instance management, command execution, image management, data backup, security audit, scheduled execution, auto scaling management, and cross-region replication. |
 | Custom templates | You can use custom templates to meet your O&M requirements. |
 | Manage executions | You can manage the entire lifecycle of task executions created by using templates. You can view the execution status, cancel the execution, delete the execution, and obtain detailed execution logs and output information. This ensures the transparency and accuracy of task execution to better meet automated O&M requirements. |
-
-Operation Orchestration Service
-
-## Features
-
-This topic describes the features of CloudOps Orchestration Service (OOS).

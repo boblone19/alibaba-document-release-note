@@ -2,18 +2,153 @@
 title: "Server Load Balancer Developer Guide 20251028"
 product_version: "V3.18.6"
 pdf_pages: 326
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Developer Guide 20251028.pdf"
+source_pdf: "95386ef1756e8abb_Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Developer Guide 20251028.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Load%20Balancer%20Developer%20Guide%2020251028.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Server Load Balancer Developer Guide 20251028
 
-Server Load Balancer
+## Table of Contents
 
-## Getting Started
+- 1 Getting Started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Log on to OpenAPI Explorer
+  - 2.2 Obtain API information and its endpoint
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain STS credentials
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain the SLB SDK
+- 3 Use POP to make API calls
+  - 3.1 Preparations
+  - 3.2 SDK for Java
+  - 3.3 SDK for Go
+  - 3.4 Python version
+- 4 Call examples for SDK for Java
+  - 4.1 Quick start
+  - 4.2 Work with SLB SDK for Java
+    - 4.2.1 Install SLB SDK for Java
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Call SLB SDK for Java
+    - 4.2.4 Handle errors
+- 5 Use SLB SDK for Python to make API calls
+  - 5.1 Quick start
+  - 5.2 Work with SLB SDK for Python
+    - 5.2.1 Install SDK for Python
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Set HTTPS requests
+    - 5.2.4 Call SLB SDK for Python
+    - 5.2.5 Troubleshooting
+- 6 Use SLB SDK for Go to make API calls
+  - 6.1 Quick start
+  - 6.2 Work with SLB SDK for Go
+    - 6.2.1 Install the core package of SDK for Go
+    - 6.2.2 Configure authentication credentials
+    - 6.2.3 Call SLB SDK for Go
+    - 6.2.4 Troubleshooting
+- 7 API Reference
+  - 7.1 Access method
+  - 7.2 RAM authentication
+  - 7.3 Common parameters
+  - 7.4 SLB instance
+    - 7.4.1 DescribeLoadBalancerListeners
+    - 7.4.2 DeleteLoadBalancerListener
+    - 7.4.3 StopLoadBalancerListener
+    - 7.4.4 StartLoadBalancerListener
+    - 7.4.5 SetLoadBalancerModificationProtection
+    - 7.4.6 SetLoadBalancerDeleteProtection
+    - 7.4.7 SwitchMasterSlaveServerGroup
+    - 7.4.8 SetLoadBalancerListenerAttributeEx
+    - 7.4.9 ModifyHighDefinationMonitor
+    - 7.4.10 EnableHighDefinationMonitor
+    - 7.4.11 CreateLoadBalancer
+    - 7.4.12 DeleteLoadBalancer
+    - 7.4.13 ModifyLoadBalancerInstanceSpec
+    - 7.4.14 ModifyLoadBalancerInternetSpec
+    - 7.4.15 SetLoadBalancerName
+    - 7.4.16 SetLoadBalancerStatus
+    - 7.4.17 DescribeLoadBalancerAttribute
+    - 7.4.18 DescribeLoadBalancers
+    - 7.4.19 DescribeRegions
+    - 7.4.20 DescribeZones
+  - 7.5 Listeners
+    - 7.5.1 TCP listeners
+      - 7.5.1.1 CreateLoadBalancerTCPListener
+      - 7.5.1.2 SetLoadBalancerTCPListenerAttribute
+      - 7.5.1.3 DescribeLoadBalancerTCPListenerAttribute
+    - 7.5.2 UDP listeners
+      - 7.5.2.1 CreateLoadBalancerUDPListener
+      - 7.5.2.2 SetLoadBalancerUDPListenerAttribute
+      - 7.5.2.3 DescribeLoadBalancerUDPListenerAttribute
+    - 7.5.3 HTTP listeners
+      - 7.5.3.1 CreateLoadBalancerHTTPListener
+      - 7.5.3.2 SetLoadBalancerHTTPListenerAttribute
+      - 7.5.3.3 DescribeLoadBalancerHTTPListenerAttribute
+    - 7.5.4 HTTPS listeners
+      - 7.5.4.1 CreateLoadBalancerHTTPSListener
+      - 7.5.4.2 SetLoadBalancerHTTPSListenerAttribute
+      - 7.5.4.3 DescribeLoadBalancerHTTPSListenerAttribute
+      - 7.5.4.4 DescribeHealthStatus
+    - 7.5.5 Access control
+      - 7.5.5.1 SetListenerAccessControlStatus
+      - 7.5.5.2 DescribeListenerAccessControlAttribute
+      - 7.5.5.3 AddListenerWhiteListItem
+      - 7.5.5.4 RemoveListenerWhiteListItem
+      - 7.5.5.5 CreateAccessControlList
+      - 7.5.5.6 DeleteAccessControlList
+      - 7.5.5.7 DescribeAccessControlLists
+      - 7.5.5.8 DescribeAccessControlListAttribute
+      - 7.5.5.9 SetAccessControlListAttribute
+      - 7.5.5.10 AddAccessControlListEntry
+      - 7.5.5.11 RemoveAccessControlListEntry
+  - 7.6 Forwarding rules
+  - 7.7 Access logs
+  - 7.8 Server certificates
+    - 7.8.1 UploadServerCertificate
+    - 7.8.2 DeleteServerCertificate
+    - 7.8.3 DescribeServerCertificates
+    - 7.8.4 SetServerCertificateName
+    - 7.8.5 UploadCACertificate
+    - 7.8.6 DeleteCACertificate
+    - 7.8.7 DescribeCACertificates
+    - 7.8.8 SetCACertificateName
+    - 7.8.9 DescribeCertificateRelations
+  - 7.9 Backend servers
+    - 7.9.1 AddBackendServers
+    - 7.9.2 RemoveBackendServers
+    - 7.9.3 SetBackendServers
+  - 7.10 vServer groups
+    - 7.10.1 CreateVServerGroup
+    - 7.10.2 SetVServerGroupAttribute
+    - 7.10.3 AddVServerGroupBackendServers
+    - 7.10.4 RemoveVServerGroupBackendServers
+    - 7.10.5 ModifyVServerGroupBackendServers
+    - 7.10.6 DeleteVServerGroup
+    - 7.10.7 DescribeVServerGroups
+    - 7.10.8 DescribeVServerGroupAttribute
+  - 7.11 Primary/secondary server groups
+    - 7.11.1 CreateMasterSlaveServerGroup
+    - 7.11.2 DeleteMasterSlaveServerGroup
+    - 7.11.3 DescribeMasterSlaveServerGroups
+    - 7.11.4 DescribeMasterSlaveServerGroupAttribute
+  - 7.12 Tags
+    - 7.12.1 AddTags
+    - 7.12.2 DescribeTags
+    - 7.12.3 RemoveTags
+    - 7.12.4 UntagResources
+    - 7.12.5 TagResources
+    - 7.12.6 ListTagResources
+  - 7.13 Error codes
+- 8 Appendix
+  - 8.1 STS overview
+    - 8.1.1 What is STS?
+    - 8.1.2 AssumeRole
 
-### Apsara Stack documentation
+## 1 Getting Started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to view the references of an Apsara Stack service when you call Apsara Stack API.
 
@@ -23,7 +158,11 @@ The following figure shows how to find your desired information in the Apsara St
 
 **Prerequisites**
 
-The Apsara Stack version is obtained from O&M personnel or an operations administrator. You can go to the Apsara Stack documentation center to view the documentation of an Apsara Stack service.
+The Apsara Stack version is obtained from O&M personnel or an operations administrator.
+
+**Procedure**
+
+You can go to the Apsara Stack documentation center to view the documentation of an Apsara Stack service.
 1. Go to the Apsara Stack documentation center.
 2. Click the **Enterprise**, **Agility**, or **All-in-one** tab based on the Apsara Stack version that you
 use.
@@ -32,11 +171,13 @@ use.
 5. In the upper-right corner of the documentation section, click **View Details** or **Download**
 **PDF**.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
-Apsara Stack allows you to call API operations through the point of presence (POP) gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud public cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called through the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations. Server Load Balancer
+Apsara Stack allows you to call API operations through the point of presence (POP) gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud public cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called through the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
 **Flowchart**
+
+**Procedure**
 
 1. Obtain an AccessKey pair.
 Obtain the AccessKey parameters required for the call. For more information, see Obtain an AccessKey pair or Obtain STS AccessKey credentials.
@@ -47,7 +188,7 @@ We recommend that you use the AccessKey pair of a personal account or an AccessK
 2. Obtain a region ID.
 Obtain the region ID parameter required for the call. For more information, see Obtain common header parameters.
 3. Obtain the organization ID and resource set ID.
-You must obtain the organization ID by using an API operation. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-m anager Management Console Developer Guide. You must obtain the resource set ID by using an API operation. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-ma nager Management Console Developer Guide. Server Load Balancer
+You must obtain the organization ID by using an API operation. For more information about how to obtain the organization ID, see the GetOrganizationList chapter in the Apsara Uni-m anager Management Console Developer Guide. You must obtain the resource set ID by using an API operation. For more information about how to obtain the resource set ID, see the ListResourceGroup chapter in the Apsara Uni-ma nager Management Console Developer Guide.
 
 **Note**
 
@@ -56,17 +197,19 @@ When you call an API operation, add the organization ID and resource set ID to t
 You need to review the developer guide of the cloud service that you want to use to learn about the features and usage of the API operations. For more information about how to obtain the developer guide, see Instructions for using developer documentation.
 5. Obtain the endpoint of the cloud service.
 6. Obtain the service SDK and use it to call an operation of the service.
-Server Load Balancer
 
-## Preparations
+## 2 Preparations
 
-### Log on to OpenAPI Explorer
+### 2.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment engineer. A web browser is available. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. In the address bar of your browser, enter the endpoint of the Apsara Uni-manager
 Management Console and press Enter.
 2. Enter your username and password.
@@ -85,9 +228,8 @@ For more information about how to bind and enable an MFA device, see the **Bind 
 **enable a virtual MFA device** section in the **Apsara Uni-manager Management**
 **Console User Guide**.
 5. In the top menu bar, choose **Products > Application Services > OpenAPI Explorer**.
-Server Load Balancer
 
-### Obtain API information and its
+### 2.2 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -96,6 +238,9 @@ To call an API operation of a cloud service, you must obtain information about t
 **Background information**
 
 The information on the API Directory page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the API Directory page differs from that in the developer guide of the corresponding cloud service, the information in the developer guide prevails.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, choose **Products** > **Development Tools** > **API & SDK**> **OpenAPI**
 **Explorer**.
@@ -106,16 +251,9 @@ The information on the API Directory page of the Apsara Uni-manager Management C
 7. Select the corresponding API operation and obtain the POP endpoint information of the
 cloud service under the parameter name.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
-
-Server Load Balancer AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You only need to provide one type of AccessKey credential for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
+AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You only need to provide one type of AccessKey credential for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
 **Background information**
 
@@ -125,11 +263,17 @@ An AccessKey pair is used to verify the identity of request senders. An AccessKe
 
 The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
+
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
-Server Load Balancer
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
@@ -148,25 +292,27 @@ want to obtain.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain STS credentials
+### 2.4 Obtain STS credentials
 
 This topic describes how to use Security Token Service (STS) credentials to make API calls.
 
 **Background information**
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. You can use STS credentials to make API calls. To call Apsara Stack APIs, you must obtain an AccessKey ID, an AccessKey secret, and a security token assigned by STS. For more information, see STS.
+
+**Procedure**
+
 1. Obtain the `Resource Access Management (RAM) role` .
 i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click **User**
 **Information**.
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, you can obtain information about the `RAM role` that is assigned to the current user.
 2. Obtain the STS credentials.
-Server Load Balancer
 
 **Note**
 
-In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the name of the current session. <yourRoleArn>: Replace it with your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS. Server Load Balancer
+In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace it with the region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with the name of the current session. <yourRoleArn>: Replace it with your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -185,7 +331,12 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of the STS. In most cases,
 endpoint is in the following format: sts-vpc.${global:region}.${global:internet-domai n}.
@@ -212,13 +363,17 @@ endpoint is in the following format: sts-vpc.${global:region}.${global:internet-
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
-        }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. The following sample code shows how to use STS credentials to call the
-DescribeLoadBalancers operation of the Server Load Balancer (SLB) API: Server Load Balancer
+DescribeLoadBalancers operation of the Server Load Balancer (SLB) API:
 
 **Note**
 
@@ -260,9 +415,17 @@ ey ID and AccessKey secret assigned by STS.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
+
+`}` `}`
+
+### 2.5 Obtain the values of common header parameters
+
+**header parameters**
+
+You must set header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the values of some response parameters after you call API operations.
+
+**Header parameters**
 
 | Parameter | Description |
 |---|---|
@@ -270,14 +433,6 @@ ey ID and AccessKey secret assigned by STS.
 | x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see Obtain an organization ID. |
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see Obtain a resource set ID. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. For more information about how to obtain instance IDs, see Obtain an instance ID. |
-
-Server Load Balancer
-
-### Obtain the values of common
-
-**header parameters**
-
-You must set header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the values of some response parameters after you call API operations.
 
 **Obtain a region ID**
 
@@ -297,14 +452,7 @@ You must call an operation to obtain a resource set ID. For more information abo
 
 **Obtain an instance ID**
 
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-| DepartmentName | The name of the organization. |
-| Department | The ID of the organization. |
-
-Server Load Balancer You can obtain the ID of an instance in the cloud service console of the Apsara Uni-manager Management Console. For example, to obtain the ID of an elastic IP address (EIP), perform the following steps:
+You can obtain the ID of an instance in the cloud service console of the Apsara Uni-manager Management Console. For example, to obtain the ID of an elastic IP address (EIP), perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **ProductsNetworkingServer Load Balancer**.
 3. In the left-side navigation pane, choose **Instances & Images > Instances**.
@@ -314,7 +462,14 @@ Server Load Balancer You can obtain the ID of an instance in the cloud service c
 
 The following response parameters are returned by default when you call operations to query the instances of cloud services.
 
-### Obtain the SLB SDK
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+| DepartmentName | The name of the organization. |
+| Department | The ID of the organization. |
+
+### 2.6 Obtain the SLB SDK
 
 When you call API operations of a cloud service in Apsara Stack by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK. This topic describes how to obtain Alibaba Cloud SDK.
 
@@ -330,15 +485,15 @@ The SLB SDK encapsulates the API released on May 15, 2014. The SDK identifies ca
 
 **Instructions**
 
-Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. Server Load Balancer
+Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements.
 
 **Note**
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. Server Load Balancer
+We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. e API calls
 
-## Use POP to make API calls
+## 3 Use POP to make API calls
 
-### Preparations
+### 3.1 Preparations
 
 You can use the POP gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations required before calling API operations.
 
@@ -362,7 +517,7 @@ parameter name.
 
 **Obtain an endpoint from Apsara Infrastructure Management**
 
-Server Load Balancer To use the POP gateway to call Apsara Stack API operations, you must use the service endpoint. You can obtain an endpoint from onsite Alibaba Cloud O&M engineers. You can also obtain service endpoints by yourself. In this example, API Gateway is used to demonstrate how to obtain the endpoints of a cloud service.
+e API calls To use the POP gateway to call Apsara Stack API operations, you must use the service endpoint. You can obtain an endpoint from onsite Alibaba Cloud O&M engineers. You can also obtain service endpoints by yourself. In this example, API Gateway is used to demonstrate how to obtain the endpoints of a cloud service.
 1. Go to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Platform Operation**> **Apsara Infrastructure**
 **Management** > **O&M Tools**.
@@ -376,10 +531,14 @@ Server Load Balancer To use the POP gateway to call Apsara Stack API operations,
 
 icon.
 7. Click the text information in the **Service Registration** column of the `apigateway` service.
-In the **Registration Variable** dialog box that appears, view the apigateway.openapi.endpoint value, which is the `Endpoint` . For information about how to obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack API operations through the POP gateway, see the **Obtain common header parameters** section under
+In the **Registration Variable** dialog box that appears, view the apigateway.openapi.endpoint value, which is the `Endpoint` .
+
+**Obtain common parameters**
+
+For information about how to obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack API operations through the POP gateway, see the **Obtain common header parameters** section under
 **Preparations** in this guide.
 
-### SDK for Java
+### 3.2 SDK for Java
 
 Before you use point of presence (POP) SDK for Java to make API calls, you must first understand the remote procedure call (RPC) and resource-oriented architecture (ROA) styles.
 
@@ -391,13 +550,17 @@ We recommend that you use CommonRequest to make API calls in Apsara Stack. You c
 
 **Important**
 
-We do not recommend that you download SDKs from the SDK Center for use in Apsara Stack scenarios. The SDKs for Alibaba Cloud public cloud may not support the APIs of Apsara Stack. Compatibility issues may occur. Use these SDKs with caution! RPC call example with the following API information: product (apigateway), operation (DescribeApiGroups), and version (2016-07-14). Sample code:
+We do not recommend that you download SDKs from the SDK Center for use in Apsara Stack scenarios. The SDKs for Alibaba Cloud public cloud may not support the APIs of Apsara Stack. Compatibility issues may occur. Use these SDKs with caution!
+
+**Examples**
+
+RPC call example with the following API information: product (apigateway), operation (DescribeApiGroups), and version (2016-07-14). Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; importcomaliyuncsexceptionsClientException;
 ```
 
-Server Load Balancer
+e API calls
 
 ```java
 import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -445,7 +608,7 @@ resources.
         // request.putHeadParameter("x-acs-instanceid", "");
 ```
 
-Server Load Balancer
+e API calls
 
 ```java
         try {
@@ -458,12 +621,9 @@ Server Load Balancer
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA call example with the following API information: product (CR), operation (GetNamespaceList), and version (2016-06-07). Sample code:
+`}` `}` `}` ROA call example with the following API information: product (CR), operation (GetNamespaceList), and version (2016-06-07). Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -496,7 +656,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 API
 ```
 
-i Server Load Balancer
+`i` e API calls
 
 ```java
         // Specify the API version
@@ -532,20 +692,19 @@ the x-acs-security-token field to the header
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java Server Load Balancer
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java e API calls
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 3.3 SDK for Go
 
 This topic describes how to work with the POP SDK for Go.
 
@@ -560,7 +719,11 @@ We do not recommend that you download SDKs from the SDK center for use in Apsara
 
 **Background information**
 
-Remote procedure call (RPC) and resource-oriented architecture (ROA) styles are supported for API calls. RPC example API information: product (apigateway), API operation (DescribeApiGroups), and version (2016-07-14). The following sample code provides an example: Server Load Balancer
+Remote procedure call (RPC) and resource-oriented architecture (ROA) styles are supported for API calls.
+
+**Examples**
+
+RPC example API information: product (apigateway), API operation (DescribeApiGroups), and version (2016-07-14). The following sample code provides an example: e API calls
 
 ```java
 package main import (
@@ -569,7 +732,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -596,12 +759,15 @@ erations, you must specify the SecurityToken parameter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA example API information: product (CR), API operation (GetNamespaceList), and version (2016-06-07). Sample code: Server Load Balancer
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA example API information: product (CR), API operation (GetNamespaceList), and version (2016-06-07). Sample code: e API calls
 
 ```java
 package main import (
@@ -611,7 +777,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -639,31 +805,36 @@ acs-security-token field to the header
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Proxy settings**
 
-You can configure a proxy in one of the following ways when you call API operations: Method 1: Configure a proxy by using environment variables. Specify the HTTP_PROXY and HTTPS_PROXY environment variables, or specify the NO_PROXY environment variable. Sample code: Server Load Balancer
+You can configure a proxy in one of the following ways when you call API operations: Method 1: Configure a proxy by using environment variables. Specify the HTTP_PROXY and HTTPS_PROXY environment variables, or specify the NO_PROXY environment variable. Sample code: e API calls
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Specify the HTTP_PROXY environment
 variable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Specify the HTTPS_PROXY environm
-ent variable. }
+ent variable.
 ```
 
-Method 2: Configure a proxy on the client. Sample code:
+`}` Method 2: Configure a proxy on the client. Sample code:
 
 ```
 // The proxy settings on the client take precedence over the environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -689,13 +860,13 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 // Configure HTTPSInsecure for the request (affects only the current request) request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Query the HTTPSInsecure sett ing for the request.
 ```
 
-Server Load Balancer The HTTPSInsecure setting takes effect for the client only when you do not specify the HTTPSInsecure parameter for the request.
+e API calls The HTTPSInsecure setting takes effect for the client only when you do not specify the HTTPSInsecure parameter for the request.
 
 ```
 // Configure HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true for t he client. isInsecure := client.GetHTTPSInsecure() // Query the HTTPSInsecure setting for the client.
 ```
 
-### Python version
+### 3.4 Python version
 
 This topic describes how to use POP Python SDK to call cloud product APIs.
 
@@ -725,7 +896,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set timeout
     verify=False, # Ignore certificate or verify='<certificate location>'
+```
+
 );
+
+```python
 # Use with https
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -734,11 +909,12 @@ def describe_api_groups():
     # Create request and set parameters
 ```
 
-Server Load Balancer
+e API calls
 
-```python
+```bash
     request = CommonRequest()
     # When using sts ak to call rpc interface, you need to add SecurityToken field in p
+arameters
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
 SecurityToken>"};
     params = {"PageSize":"10","PageNumber":"1"};
@@ -754,7 +930,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional, required for modify & delete operations
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -783,7 +963,7 @@ os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 
 **HTTPS configuration**
 
-Server Load Balancer The following describes how to access OpenAPI using HTTPS protocol.
+e API calls The following describes how to access OpenAPI using HTTPS protocol.
 
 **Using HTTPS protocol**
 
@@ -794,7 +974,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # Region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use https client.do_action_with_exception(request)
@@ -812,7 +992,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Ignore SSL certificate verification
 ```
 
-)
+`)`
 
 **Specify CA certificate file**
 
@@ -822,19 +1002,27 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # Certification path
 ```
 
-) Server Load Balancer
+`)` or SDK for Java
 
-## Call examples for SDK for
+## 4 Call examples for SDK for Java
 
 **Java**
 
-### Quick start
+### 4.1 Quick start
 
 This topic describes how to obtain and use the Server Load Balancer (SLB) SDK for Java.
 
 **Prerequisites**
 
-An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. For more information about how to obtain the endpoint of the SLB API, see Obtain the endpoint of the SLB API. Java Development Kit (JDK) 1.8 or later is installed. SDKs for Java provided by Alibaba Cloudrequire JDK 1.8or later. If you use Apache Maven to manage a Java project, import the JAR file to the pom.xml file of the project. To use the SLB SDK, you must install the SDK core library and the SLB SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, the SLB SDK uses version 3.3.8. To use Apsara Stack SDK for Java, perform the following steps:
+An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. For more information about how to obtain the endpoint of the SLB API, see Obtain the endpoint of the SLB API. Java Development Kit (JDK) 1.8 or later is installed. SDKs for Java provided by Alibaba Cloudrequire JDK 1.8or later.
+
+**Install Alibaba Cloud SDK for Java**
+
+If you use Apache Maven to manage a Java project, import the JAR file to the pom.xml file of the project. To use the SLB SDK, you must install the SDK core library and the SLB SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, the SLB SDK uses version 3.3.8.
+
+**Procedure**
+
+To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
@@ -847,7 +1035,7 @@ In the following code, replace the parameters with your actual information. Dele
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.alibaba.fastjson.JSON; import java.util.*; import com.aliyuncs.slb.model.v20140515.*;
 ```
 
-Server Load Balancer
+or SDK for Java
 
 ```java
 public class DescribeImages {
@@ -889,7 +1077,7 @@ lue based on your business requirements.
 value based on your business requirements.
 ```
 
-Server Load Balancer
+or SDK for Java
 
 ```java
         request.setAddress("test"); // This value is for reference only. Enter a
@@ -919,16 +1107,15 @@ printed.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### Work with SLB SDK for Java
+`}` `}` `}`
 
-#### Install SLB SDK for Java
+### 4.2 Work with SLB SDK for Java
 
-This topic describes how to install Server Load Balancer (SLB) SDK for Java and how to use the SDK to make API calls. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. Before you start, you must install the core library of Apsara Stack SDK for Java and SLB SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use the SDK for Java 3.3.9. Server Load Balancer To use SLB SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Apsara Stack SDK.
+#### 4.2.1 Install SLB SDK for Java
+
+This topic describes how to install Server Load Balancer (SLB) SDK for Java and how to use the SDK to make API calls. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. Before you start, you must install the core library of Apsara Stack SDK for Java and SLB SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use the SDK for Java 3.3.9. or SDK for Java To use SLB SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Apsara Stack SDK.
 
 ```xml
 <dependencies>
@@ -945,7 +1132,7 @@ This topic describes how to install Server Load Balancer (SLB) SDK for Java and 
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -964,16 +1151,19 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the preceding variables with your actual information. Remove the angle brackets (<>) when you specify the parameters.
 
-#### Call SLB SDK for Java
+#### 4.2.3 Call SLB SDK for Java
 
 This topic describes how to call SLB SDK for Java.
+
+**Procedure**
+
 1. Create an AcsClient.
 
 ```
 IAcsClient client = new DefaultAcsClient(profile);
 ```
 
-Server Load Balancer
+or SDK for Java
 2. Create a request.
 The naming convention for requests is ${apiName}Request , where **${apiName}** is the API name such as DescribeLoadBalancers. When the SDKs of multiple services are used, different requests may have the same name. Differentiate the requests by SDK package.
 
@@ -981,7 +1171,7 @@ The naming convention for requests is ${apiName}Request , where **${apiName}** i
 DescribeLoadBalancersRequest request = new DescribeLoadBalancersRequest(); // Set service-specific parameters. request.setResourceOwnerAccount("test"); // This value is for reference only. Enter a value based on your business requirements. request.setResourceOwnerId("1"); // This value is for reference only. Enter a value b ased on your business requirements. request.setRegionId("test"); // This value is for reference only. Enter a value based on your business requirements. request.setServerId("test"); // This value is for reference only. Enter a value based on your business requirements. request.setAddressIPVersion("test"); // This value is for reference only. Enter a val ue based on your business requirements. request.setLoadBalancerStatus("test"); // This value is for reference only. Enter a v alue based on your business requirements. request.setLoadBalancerId("test"); // This value is for reference only. Enter a value based on your business requirements. request.setLoadBalancerName("test"); // This value is for reference only. Enter a val ue based on your business requirements. request.setServerIntranetAddress("test"); // This value is for reference only. Enter a value based on your business requirements. request.setAddressType("test"); // This value is for reference only. Enter a value ba sed on your business requirements. request.setInternetChargeType("test"); // This value is for reference only. Enter a v alue based on your business requirements. request.setVpcId("test"); // This value is for reference only. Enter a value based on your business requirements. request.setVSwitchId("test"); // This value is for reference only. Enter a value base d on your business requirements. request.setNetworkType("test"); // This value is for reference only. Enter a value ba sed on your business requirements. request.setAddress("test"); // This value is for reference only. Enter a value based on your business requirements. request.setMasterZoneId("test"); // This value is for reference only. Enter a value b
 ```
 
-Server Load Balancer
+or SDK for Java
 
 ```
 ased on your business requirements. request.setSlaveZoneId("test"); // This value is for reference only. Enter a value ba sed on your business requirements. request.setOwnerAccount("test"); // This value is for reference only. Enter a value b ased on your business requirements. request.setTags("test"); // This value is for reference only. Enter a value based on your business requirements. request.setPayType("test"); // This value is for reference only. Enter a value based on your business requirements. request.setResourceGroupId("test"); // This value is for reference only. Enter a valu e based on your business requirements.
@@ -993,7 +1183,7 @@ ased on your business requirements. request.setSlaveZoneId("test"); // This valu
 DescribeLoadBalancersResponse response = client.getAcsResponse(request); System.out.println(JSON.toJSONString(response));
 ```
 
-#### Handle errors
+#### 4.2.4 Handle errors
 
 Server Load Balancer (SLB) SDK for Java returns error codes and messages when errors occur on the server side or the SDK side. You do not need to handle the errors returned by the SDK. You need to only handle the errors on the server side. `ServerException` indicates a server error. `ClientException` indicates an error returned by the SDK. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -1001,7 +1191,7 @@ Server Load Balancer (SLB) SDK for Java returns error codes and messages when er
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-The following code provides an example on how to handle errors returned by the SDK: Server Load Balancer
+The following code provides an example on how to handle errors returned by the SDK: or SDK for Java
 
 ```java
 try {
@@ -1020,16 +1210,15 @@ try {
     // For example, you can obtain the error information.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-Server Load Balancer
+`}` r Python to make API calls
 
-## Use SLB SDK for Python to
+## 5 Use SLB SDK for Python to make API calls
 
 **make API calls**
 
-### Quick start
+### 5.1 Quick start
 
 This topic describes how to obtain and use Server Load Balancer (SLB) SDK for Python.
 
@@ -1065,12 +1254,14 @@ If you use Python 3.x, run the following command to install the SLB SDK:
 pip3 install aliyun-python-sdk-slb==3.3.8
 ```
 
+**Call SLB SDK for Python**
+
 To call SLB SDK for Python, perform the following steps:
 1. Create a client instance. When you create a client instance, you must obtain a region ID,
 your AccessKey ID, and your AccessKey secret.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exception.
-Server Load Balancer
+r Python to make API calls
 
 **Note**
 
@@ -1079,16 +1270,16 @@ In the following code, replace the parameters with your actual information. Dele
 ```
 #!/usr/bin/env python
 #coding=utf-8
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkslb.request.v20140515.DescribeLoadBalancersRequest import client = AcsClient('<yourAccessKeyID>', '<yourAccessKeySecret>', '<yourRegionID>') // Create an API request and set the required parameters. // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerId("1") // This value is for reference only. Enter a value based on your business requirements. request.set_RegionId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ServerId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressIPVersion("test") // This value is for reference only. Enter a value based on your business requirements. // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerId("test") // This value is for reference only. Enter a value based on your business
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkslb.request.v20140515.DescribeLoadBalancersRequest import DescribeLoadBalancersRequest client = AcsClient('<yourAccessKeyID>', '<yourAccessKeySecret>', '<yourRegionID>') // Create an API request and set the required parameters. request = DescribeLoadBalancersRequest() // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerId("1") // This value is for reference only. Enter a value based on your business requirements. request.set_RegionId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ServerId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressIPVersion("test") // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerStatus("test") // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerId("test") // This value is for reference only. Enter a value based on your business
 ```
 
-i t Server Load Balancer
+`i` `t` r Python to make API calls
 
 ```
-requirements. // This value is for reference only. Enter a value based on your business requirements. request.set_ServerIntranetAddress("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_InternetChargeType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_VpcId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_VSwitchId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_NetworkType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_Address("test") // This value is for reference only. Enter a value based on your business requirements. request.set_MasterZoneId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_SlaveZoneId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_OwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_Tags("test") // This value is for reference only. Enter a value based on your business requirements. request.set_PayType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceGroupId("test")
+requirements. request.set_LoadBalancerName("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ServerIntranetAddress("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_InternetChargeType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_VpcId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_VSwitchId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_NetworkType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_Address("test") // This value is for reference only. Enter a value based on your business requirements. request.set_MasterZoneId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_SlaveZoneId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_OwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_Tags("test") // This value is for reference only. Enter a value based on your business requirements. request.set_PayType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceGroupId("test")
 ```
 
-Server Load Balancer
+r Python to make API calls
 
 ```python
 response = client.do_action_with_exception(request) // Print the required return values.
@@ -1096,9 +1287,9 @@ response = client.do_action_with_exception(request) // Print the required return
 print(str(response, encoding='utf-8'))
 ```
 
-### Work with SLB SDK for Python
+### 5.2 Work with SLB SDK for Python
 
-#### Install SDK for Python
+#### 5.2.1 Install SDK for Python
 
 This topic describes how to install and use Server Load Balancer (SLB) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -1128,7 +1319,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-slb==3.3.8
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -1140,9 +1331,9 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-Server Load Balancer
+r Python to make API calls
 
-#### Set HTTPS requests
+#### 5.2.3 Set HTTPS requests
 
 SDK for Python allows you to send API requests by using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or set a global default protocol.
 
@@ -1163,7 +1354,7 @@ pip install pyopenssl
 The following code shows how to set HTTPS as the protocol for a request:
 
 ```bash
-request.set_protocol_type("https")
+request = DescribeLoadBalancersRequest() request.set_protocol_type("https")
 # Set the value to https or http.
 ```
 
@@ -1176,17 +1367,20 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Call SLB SDK for Python
+#### 5.2.4 Call SLB SDK for Python
 
 This topic describes how to call Server Load Balancer (SLB) SDK for Python.
+
+**Procedure**
+
 1. Import SLB SDK for Python.
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkslb.request.v20140515.DescribeLoadBalancersRequest import
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkslb.request.v20140515.DescribeLoadBalancersRequest import DescribeLoadBalancersRequest
 ```
 
 2. Create an AcsClient instance.
-Server Load Balancer
+r Python to make API calls
 
 ```
 client = AcsClient('<yourAccessKeyId>', '<yourAccessKeySecret>', '<yourRegionID>')
@@ -1195,10 +1389,10 @@ client = AcsClient('<yourAccessKeyId>', '<yourAccessKeySecret>', '<yourRegionID>
 3. Create a Request object.
 
 ```
-// This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerId("1") // This value is for reference only. Enter a value based on your business requirements. request.set_RegionId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ServerId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressIPVersion("test") // This value is for reference only. Enter a value based on your business requirements. // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerId("test") // This value is for reference only. Enter a value based on your business requirements. // This value is for reference only. Enter a value based on your business requirements. request.set_ServerIntranetAddress("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_InternetChargeType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_VpcId("test") // This value is for reference only. Enter a value based on your business reqirements
+request = DescribeLoadBalancersRequest() // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceOwnerId("1") // This value is for reference only. Enter a value based on your business requirements. request.set_RegionId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ServerId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressIPVersion("test") // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerStatus("test") // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_LoadBalancerName("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ServerIntranetAddress("test") // This value is for reference only. Enter a value based on your business requirements. request.set_AddressType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_InternetChargeType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_VpcId("test") // This value is for reference only. Enter a value based on your business reqirements
 ```
 
-Server Load Balancer
+r Python to make API calls
 
 ```
 requirements. request.set_VSwitchId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_NetworkType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_Address("test") // This value is for reference only. Enter a value based on your business requirements. request.set_MasterZoneId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_SlaveZoneId("test") // This value is for reference only. Enter a value based on your business requirements. request.set_OwnerAccount("test") // This value is for reference only. Enter a value based on your business requirements. request.set_Tags("test") // This value is for reference only. Enter a value based on your business requirements. request.set_PayType("test") // This value is for reference only. Enter a value based on your business requirements. request.set_ResourceGroupId("test")
@@ -1212,9 +1406,9 @@ response = client.do_action_with_exception(request) // Print the required return
 print(str(response, encoding='utf-8'))
 ```
 
-#### Troubleshooting
+#### 5.2.5 Troubleshooting
 
-The Python SDK returns error messages when errors occur on the server side or the SDK side. These errors contain detailed error information, including the error code and the error message. You do not need to handle the errors returned by the SDK. You only need to handle server errors based on the error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID. Server Load Balancer
+The Python SDK returns error messages when errors occur on the server side or the SDK side. These errors contain detailed error information, including the error code and the error message. You do not need to handle the errors returned by the SDK. You only need to handle server errors based on the error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID. r Python to make API calls
 
 ```
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
@@ -1233,13 +1427,13 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-Server Load Balancer
+r Go to make API calls
 
-## Use SLB SDK for Go to
+## 6 Use SLB SDK for Go to make API calls
 
 **make API calls**
 
-### Quick start
+### 6.1 Quick start
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Server Load Balancer (SLB) SDK for Go.
 
@@ -1254,6 +1448,8 @@ Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
+
+**Call SLB SDK for Go**
 
 To call SLB SDK for Go, perform the following steps:
 1. Initialize a client instance.
@@ -1270,7 +1466,7 @@ package main import (
   slb "github.com/aliyun/alibaba-cloud-sdk-go/services/slb"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1280,7 +1476,7 @@ rAccessKeySecret>")
 request:=ecsCreateDescribeLoadBalancersRequest()
 ```
 
-Server Load Balancer
+r Go to make API calls
 
 ```
   request := ecs.CreateDescribeLoadBalancersRequest()
@@ -1326,19 +1522,19 @@ requirements.
 //Thisvalueisforreferenceonly.Enteravaluebasedonyourbusiness
 ```
 
-Server Load Balancer `//` s
+r Go to make API calls `//` `s`
 
 ```
 aue
 ```
 
-s o
+`s` `o`
 
 ```
 eeeceo
 ```
 
-`y.` `te` a
+`y.` `te` `a`
 
 ```
 auebasedo you bus ess requirements.
@@ -1368,29 +1564,33 @@ requirements.
   if err != nil {
     fmt.Println(err)
     return
-  }
-  // Print response parameters. In this example, the RequestId parameter is printed.
-  fmt.Println(response.RequestId)
-}
 ```
 
+`}`
+
+```
+  // Print response parameters. In this example, the RequestId parameter is printed.
+  fmt.Println(response.RequestId)
+```
+
+`}`
 4. Optional. Switch to HTTP or HTTPS.
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### Work with SLB SDK for Go
+### 6.2 Work with SLB SDK for Go
 
-#### Install the core package of SDK for Go
+#### 6.2.1 Install the core package of SDK for Go
 
-This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package: Server Load Balancer
+This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package: r Go to make API calls
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 6.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -1406,7 +1606,7 @@ client, err := slb.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>",
 
 In the preceding code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Call SLB SDK for Go
+#### 6.2.3 Call SLB SDK for Go
 
 This topic describes how to call Server Load Balancer (SLB) SDK for Go.
 1. Import SLB SDK for Go.
@@ -1417,7 +1617,7 @@ import (
   slb "github.com/aliyun/alibaba-cloud-sdk-go/services/slb"
 ```
 
-)
+`)`
 2. Create a client that includes all of the API operations.
 
 **Note**
@@ -1441,7 +1641,7 @@ requirements.
 //Thisvalueisforreferenceonly Enteravaluebasedonyourbusiness
 ```
 
-Server Load Balancer
+r Go to make API calls
 
 ```
   // This value is for reference only. Enter a value based on your business
@@ -1487,7 +1687,7 @@ requirements.
 requirements. request.Address="test"
 ```
 
-Server Load Balancer
+r Go to make API calls
 
 ```
 equest.ddess test
@@ -1517,21 +1717,26 @@ requirements.
 response, err := client.DescribeLoadBalancers(request)
 ```
 
-#### Troubleshooting
+#### 6.2.4 Troubleshooting
 
-When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned if an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. You can use the following code to handle errors:
+When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned if an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors.
+
+**Troubleshooting**
+
+You can use the following code to handle errors:
 
 ```
   response, err := client.DescribeLoadBalancers(request)
   if err != nil {
     fmt.Println(err)
     return
-  }
 ```
+
+`}`
 
 **ClientError**
 
-When you make a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to identify and obtain the error message in the `ClientError` : Server Load Balancer
+When you make a request, if an error occurs in the SDK and cannot be automatically handled, the SDK returns a `ClientError` . The following code shows how to identify and obtain the error message in the `ClientError` : r Go to make API calls
 
 **Important**
 
@@ -1544,7 +1749,7 @@ package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/a
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := client.DescribeLoadBalancers(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1554,8 +1759,9 @@ response, err := client.DescribeLoadBalancers(request) if clientError, ok := err
     clientError.Message()
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
@@ -1572,7 +1778,7 @@ package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "github.com/a
     "fmt"
 ```
 
-) Server Load Balancer
+`)` r Go to make API calls
 
 ```
 response, err := client.DescribeLoadBalancers(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1582,14 +1788,13 @@ response, err := client.DescribeLoadBalancers(request) if serverError, ok := err
     serverError.Message()
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
-}
 ```
 
-Server Load Balancer
+`}`
 
-## API Reference
+## 7 API Reference
 
-### Access method
+### 7.1 Access method
 
 To call a Server Load Balancer (SLB) API operation, you need to send an HTTP GET request to the SLB API endpoint. You must include request parameters corresponding to the API operation you want to call. After you call the API operation, the system returns a response. Both requests and responses are encoded in UTF-8.
 
@@ -1621,7 +1826,7 @@ The sample request is formatted to improve readability.
 https://slb.example.com/?Action=DescribeLoadBalancers &Format=xml &Version=2014-05-15 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &TimeStamp=2016-02-23T12:46:24Z
 ```
 
-… Server Load Balancer
+…
 
 **API authorization**
 
@@ -1658,168 +1863,174 @@ CT9X0VtwR86fNWSnsc6v8YG****E=
 
 3. Add the signature string to the request:
 
-| Resource type | ARN format |
-|---|---|
-| LoadBalancer | acs:slb:$regionid:$accountid:loadbalancer/$loadbalancerid |
-|  | acs:slb:$regionid:$accountid:loadbalancer/* |
-|  | acs:slb:*:$accountid:loadbalancer/* |
-|  | acs:slb:*:*:loadbalancer/* |
-| Certificate | acs:slb:$regionid:$accountid:certificate/$servercertificateId |
-|  | acs:slb:$regionid:$accountid:certificate/* |
-
-| API | ARN format |  |  |
-|---|---|---|---|
-| CreateLoadBalancer | acs:slb:$regionid:$accountid:loadbalancer/* |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| ModifyLoadBalancerInternetSpec | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DeleteLoadBalancer | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| SetLoadBalancerStatus | rid |  |  |
-
-| > Document Version: 20251028 | 5 |
-|---|---|
-
-Server Load Balancer
-
 ```
 http://slb.example.com/?Action=DescribeLoadBalancers &TimeStamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2014-05-15 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 7.2 RAM authentication
 
 Before calling an SLB API as a RAM user, you must use an Alibaba Cloud account to create an authorization policy to assign permissions to the RAM user. In the authorization policy, you must use an Alibaba Cloud Resource Name (ARN) as the unique identifier of the resource.
 
 **Available SLB resources**
 
-The following table describes the ARN format for different types of SLB resources. $regionid/accoutid/servercertificateId is the resource ID. * indicates the corresponding resources.
+The following table describes the ARN format for different types of SLB resources.
+
+| Resource type | ARN format |
+|---|---|
+| LoadBalancer | acs:slb:$regionid:$accountid:loadbalancer/$loadbalancerid |
+|   | acs:slb:$regionid:$accountid:loadbalancer/* |
+|   | acs:slb:*:$accountid:loadbalancer/* |
+|   | acs:slb:*:*:loadbalancer/* |
+| Certificate | acs:slb:$regionid:$accountid:certificate/$servercertificateId |
+|   | acs:slb:$regionid:$accountid:certificate/* |
+
+$regionid/accoutid/servercertificateId is the resource ID. `*` indicates the corresponding resources.
 
 **SLB APIs**
 
 The following table lists the APIs that can be authorized and their corresponding ARN formats.
 
+| API | ARN format |   |   |
+|---|---|---|---|
+| CreateLoadBalancer | acs:slb:$regionid:$accountid:loadbalancer/* |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| ModifyLoadBalancerInternetSpec | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DeleteLoadBalancer | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| SetLoadBalancerStatus | rid |   |   |
+
+| > Document Version: 20251028 | 5 |
+|---|---|
+
 | Developer Guide·API Reference | Server Load Balance |
 |---|---|
 
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
 |---|---|---|---|
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| SetLoadBalancerName | rid |  |  |
-| DescribeLoadBalancers | acs:slb:$regionid:$accountid:loadbalancer/* |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DescribeLoadBalancerAttribute | rid |  |  |
-| DescribeRegions | acs:slb:*:$accountid:* |  |  |
-| UploadServerCertificate | acs:slb:%s:%s:certificate/* |  |  |
-| DeleteServerCertificate | acs:slb:%s:%s:certificate/% |  |  |
-| DescribeServerCertificate | acs:slb:%s:%s:certificate/% |  |  |
-| SetServerCertificateName | acs:slb:%s:%s:certificate/% |  |  |
-| DescribeServerCertificates | acs:slb:%s:%s:certificate/* |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| CreateLoadBalancerHTTPListener | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| CreateLoadBalancerHTTPSListener | rid |  |  |
-|  | acs:slb:%s:%s:certificate/% |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| CreateLoadBalancerTCPListener | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| CreateLoadBalancerUDPListener | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DeleteLoadBalancerListener | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| StartLoadBalancerListener | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| StopLoadBalancerListener | rid |  |  |
-| SetLoadBalancerHTTPListenerAttrib | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| ute | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| SetLoadBalancerHTTPSListenerAttri | rid |  |  |
-| bute |  |  |  |
-|  | acs:slb:%s:%s:certificate/% |  |  |
-| SetLoadBalancerTCPListenerAttribu | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| te | rid |  |  |
-| 0 | > Document Version: 2025102 |  |  |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| SetLoadBalancerName | rid |   |   |
+| DescribeLoadBalancers | acs:slb:$regionid:$accountid:loadbalancer/* |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DescribeLoadBalancerAttribute | rid |   |   |
+| DescribeRegions | acs:slb:*:$accountid:* |   |   |
+| UploadServerCertificate | acs:slb:%s:%s:certificate/* |   |   |
+| DeleteServerCertificate | acs:slb:%s:%s:certificate/% |   |   |
+| DescribeServerCertificate | acs:slb:%s:%s:certificate/% |   |   |
+| SetServerCertificateName | acs:slb:%s:%s:certificate/% |   |   |
+| DescribeServerCertificates | acs:slb:%s:%s:certificate/* |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| CreateLoadBalancerHTTPListener | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| CreateLoadBalancerHTTPSListener | rid |   |   |
+|   | acs:slb:%s:%s:certificate/% |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| CreateLoadBalancerTCPListener | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| CreateLoadBalancerUDPListener | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DeleteLoadBalancerListener | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| StartLoadBalancerListener | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| StopLoadBalancerListener | rid |   |   |
+| SetLoadBalancerHTTPListenerAttrib | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| ute | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| SetLoadBalancerHTTPSListenerAttri | rid |   |   |
+| bute |   |   |   |
+|   | acs:slb:%s:%s:certificate/% |   |   |
+| SetLoadBalancerTCPListenerAttribu | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| te | rid |   |   |
+| 0 | > Document Version: 2025102 |   |   |
 
-| erver Load Balancer | Developer Guide·API Referenc |  |  |
+| erver Load Balancer | Developer Guide·API Referenc |   |   |
 |---|---|---|---|
-| SetLoadBalancerUDPListenerAttrib | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| ute | rid |  |  |
-| DescribeLoadBalancerHTTPListener | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| Attribute | rid |  |  |
-| DescribeLoadBalancerHTTPSListen | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| erAttribute | rid |  |  |
-| DescribeLoadBalancerTCPListenerA | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| ttribute | rid |  |  |
-| DescribeLoadBalancerUDPListener | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| Attribute | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| AddBackendServers | rid |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| RemoveBackendServers | rid |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| SetBackendServers | rid |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DescribeHealthStatus | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| CreateVServerGroup | rid |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| SetVServerGroupAttribute | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DeleteVServerGroup | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DescribeVServerGroups | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| DescribeVServerGroupAttribute | rid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-|  | rid |  |  |
-| AddVServerGroupBackendServers |  |  |  |
-| > Document Version: 20251028 | 6 |  |  |
+| SetLoadBalancerUDPListenerAttrib | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| ute | rid |   |   |
+| DescribeLoadBalancerHTTPListener | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| Attribute | rid |   |   |
+| DescribeLoadBalancerHTTPSListen | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| erAttribute | rid |   |   |
+| DescribeLoadBalancerTCPListenerA | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| ttribute | rid |   |   |
+| DescribeLoadBalancerUDPListener | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| Attribute | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| AddBackendServers | rid |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| RemoveBackendServers | rid |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| SetBackendServers | rid |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DescribeHealthStatus | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| CreateVServerGroup | rid |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| SetVServerGroupAttribute | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DeleteVServerGroup | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DescribeVServerGroups | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| DescribeVServerGroupAttribute | rid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+|   | rid |   |   |
+| AddVServerGroupBackendServers |   |   |   |
+| > Document Version: 20251028 | 6 |   |   |
 
-| Developer Guide·API Reference | Server Load Balance |  |  |
+| Developer Guide·API Reference | Server Load Balance |   |   |
 |---|---|---|---|
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| RemoveVServerGroupBackendServ | rid |  |  |
-| ers |  |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
-|  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |  |  |
-|  |  | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |  |
-| ModifyVServerGroupBackendServe | rid |  |  |
-| rs |  |  |  |
-|  | acs:ecs:$regionid:$accountid:instance/$instanceid |  |  |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| RemoveVServerGroupBackendServ | rid |   |   |
+| ers |   |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+|   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance rid |   |   |
+|   |   | acs:slb:$regionid:$accountid:loadbalancer/$loadbalance |   |
+| ModifyVServerGroupBackendServe | rid |   |   |
+| rs |   |   |   |
+|   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
+
+### 7.3 Common parameters
+
+**Common request parameters**
+
+Common request parameters are request parameters that you must use when you call any API. Table 1. Common request parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1831,19 +2042,11 @@ The following table lists the APIs that can be authorized and their correspondin
 | Timestamp | String | Yes | The request timestamp. The timestamp uses UTC and it complies with the ISO 8601 standard. The timestamp format is YYYY-MM-DDThh:mm:ssZ . For example, 20:00:00 on January 1st, 2013 in China Standard Time (UTC +8) would be written as 2013-01- 10T12:00:00Z. |
 | SignatureVersion | String | Yes | The signature algorithm version. Valid value: 1.0 |
 
-### Common parameters
-
-**Common request parameters**
-
-Common request parameters are request parameters that you must use when you call any API. Table 1. Common request parameters
-
 | SignatureNonce | String | Yes | A unique random number that is used to prevent network replay attacks. You must use different random numbers for different requests. |
 |---|---|---|---|
 
-Server Load Balancer
-
 ```
-http://slb.example.com/?Action=DescribeLoadBalancers &TimeStamp=2014-05-19T10%3A33%3A56Z &Format=xml &AccessKeyId=testid &SignatureMethod=Hmac-SHA1 &LoadBalancerId=loadBalancerID &SignatureNonce=NwDAxvLU6tFE0DVb &Version=2014-05-15 &SignatureVersion=1.0 &Signature=Signature
+http://slb.example.com/?Action=DescribeLoadBalancers &TimeStamp=2014-05-19T10%3A33%3A56Z &Format=xml &AccessKeyId=testid &Action=DescribeLoadBalancerAttribute &SignatureMethod=Hmac-SHA1 &LoadBalancerId=loadBalancerID &SignatureNonce=NwDAxvLU6tFE0DVb &Version=2014-05-15 &SignatureVersion=1.0 &Signature=Signature
 ```
 
 **Common response parameters**
@@ -1860,35 +2063,24 @@ API responses use a unified format. The 2xx HTTP status code indicates a success
     </API name+Response>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
     /*Returned result*/
-    }
 ```
 
-### SLB instance
+`}`
 
-#### DescribeLoadBalancerListeners
+### 7.4 SLB instance
+
+#### 7.4.1 DescribeLoadBalancerListeners
 
 Queries the listeners of Server Load Balancer (SLB) instances.
 
 **Prerequisites**
 
-v3.16.2r-slb-SP009 is installed.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Query | No | cn-hangzhou | The ID of the region where the SLB instance is created. You can call the DescribeRegions operation to query the most recent region list. If the endpoint of the region is slb.aliyuncs.com, you must specify RegionId . |
-| Action | Strin g | Query | No | DescribeLoadBalancerLi steners | The operation that you want to perform. Set the value to DescribeLoadBalance rListeners . |
-| OwnerId | Long | Query | No |  |  |
-| Resource OwnerAcc ount | Strin g | Query | No |  |  |
-| Resource OwnerId | Long | Query | No |  |  |
-| OwnerAcc ount | Strin g | Query | No |  |  |
-
-Server Load Balancer An SLB instance is created. For more information, see `CreateLoadBalancer` . Listeners are configured for the SLB instance. For more information, see the following topics:
+v3.16.2r-slb-SP009 is installed. An SLB instance is created. For more information, see `CreateLoadBalancer` . Listeners are configured for the SLB instance. For more information, see the following topics:
 
 **Usage notes**
 
@@ -1900,7 +2092,16 @@ This operation uses only common request headers. For more information, see the "
 
 **Request parameters**
 
-| S | erver Load B | alancer |  |  | Dev | eloper Guide·API Referenc | e |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Query | No | cn-hangzhou | The ID of the region where the SLB instance is created. You can call the DescribeRegions operation to query the most recent region list. If the endpoint of the region is slb.aliyuncs.com, you must specify RegionId . |
+| Action | Strin g | Query | No | DescribeLoadBalancerLi steners | The operation that you want to perform. Set the value to DescribeLoadBalance rListeners . |
+| OwnerId | Long | Query | No |   |   |
+| Resource OwnerAcc ount | Strin g | Query | No |   |   |
+| Resource OwnerId | Long | Query | No |   |   |
+| OwnerAcc ount | Strin g | Query | No |   |   |
+
+| S | erver Load B | alancer |   |   | Dev | eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -1910,14 +2111,14 @@ This operation uses only common request headers. For more information, see the "
 | ListenerPr otocol | Strin g | Query | No | http | The listener protocol. Valid values: tcp udp http https |
 | LoadBalan cerId | Repe atList | Query | No | LoadBalancerId.1=lb- uf6so8u4g35prnvsw****, LoadBalancerId.2=lb- uf6s1l1kukqv4u5nt**** | The SLB instance IDs. You can specify up to 10 IDs. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Listeners | Array |  | The listeners. This parameter is not returned if no listener is configured for the SLB instance. |
-| -AclId | String | nacl- a2do9e413e0spzas x**** | The ACL ID. |
-
 **Response parameters**
 
-| Developer Guide·A | PI Reference |  | Server Load Balance |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Listeners | Array |   | The listeners. This parameter is not returned if no listener is configured for the SLB instance. |
+| -AclId | String | nacl- a2do9e413e0spzas x**** | The ACL ID. |
+
+| Developer Guide·A | PI Reference |   | Server Load Balance |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1928,10 +2129,10 @@ This operation uses only common request headers. For more information, see the "
 | -Bandwidth | Integer | -1 | The maximum bandwidth of the listener. Unit: Mbit/s. Valid values: -1 : If -1 is returned, the bandwidth of the listener is unlimited. 1 to 5120 : If a value from 1 to 5120 is returned, the value indicates the maximum bandwidth of the listener. The sum of the maximum bandwidth of all listeners added to an SLB instance does not exceed the maximum bandwidth of the SLB instance. |
 | -Description | String | test | The description of the listener. |
 
-| 6 |  |  | > Document Version: 2025102 |
+| 6 |   |   | > Document Version: 2025102 |
 |---|---|---|---|
 
-| erver Load Balan | cer |  | Developer Guide·API Referenc |
+| erver Load Balan | cer |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1942,7 +2143,7 @@ This operation uses only common request headers. For more information, see the "
 | -Scheduler | String | wrr | The scheduling algorithm. Valid values: wrr : Backend servers with higher weights receive more requests than those with lower weights. rr : Requests are distributed to backend servers in sequence. |
 | -Status | String | running | The status of the listener. Valid values: running stopped |
 | - VServerGroupI d | String | rsp-cige6j**** | The ID of the vServer group that is associated with the listener. |
-| - HTTPListenerC onfig | Struct |  | The configuration of the HTTP listener. |
+| - HTTPListenerC onfig | Struct |   | The configuration of the HTTP listener. |
 | --Cookie | String | B490B5EBF6F3CD4 02E515D22BCDA** ** | The cookie that is configured on the backend server. |
 | -- CookieTimeout | Integer | 500 | The timeout period of a cookie. Unit: seconds. Valid values: 1 to 86400 . |
 | --ForwardPort | Integer | 80 | The listener port that is used to redirect requests from HTTP to HTTPS. If ListenerForward is set to off , this parameter is not returned. |
@@ -1962,8 +2163,6 @@ This operation uses only common request headers. For more information, see the "
 | -- HealthCheckU RI | String | /test/index.html | The URI that is used for health checks. |
 | -- HealthyThresh old | Integer | 4 | The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from fail to success . Valid values: 2 to 10 . |
 
-Server Load Balancer
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | --IdleTimeout | Integer | 15 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60 . If no request is received within the specified timeout period, SLB closes the connection. When a request is received, SLB creates a new connection. |
@@ -1971,8 +2170,6 @@ Server Load Balancer
 | -- RequestTimeo ut | Integer | 60 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180 . If no response is received from a backend server during the request timeout period, SLB sends the HTTP 504 status code to the client. |
 | -- StickySession | String | on | Indicates whether session persistence is enabled. Valid values: on off |
 | -- StickySessionT ype | String | insert | The method that is used to handle a cookie. Valid values: insert : inserts a cookie. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client contains the cookie, and the listener forwards the request to the recorded backend server. server : rewrites a cookie. When SLB detects a user-defined cookie, SLB overwrites the original cookie with the user-defined cookie. The next request from the client contains the user- defined cookie, and the listener forwards the request to the recorded backend server. |
-
-Server Load Balancer
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1983,35 +2180,31 @@ Server Load Balancer
 | -- XForwardedFo r SLBIP _ | String | on | Indicates whether the SLB-IP header is used to obtain the virtual IP address (VIP) requested by the client. Valid values: on off |
 | -- XForwardedFo r SLBPORT _ | String | on | Indicates whether the XForwardedFor SLBPORT header is _ used to obtain the listener port of the SLB instance. Valid values: on off |
 
-|  | For |
+|   | For |
 |---|---|
 
-Server Load Balancer
-
-| Parameter | Type | Example | Description |  |  |
+| Parameter | Type | Example | Description |   |   |
 |---|---|---|---|---|---|
-| -- XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to obtain the listener protocol. Valid values: on off |  |  |
-|  |  |  |  | X-Forwarded- |  |
-| - HTTPSListener Config | Struct |  | The configuration of the HTTPS listener. |  |  |
-| -- CACertificateId | String | idkp-234-cn-test- 0**** | The ID of the CA certificate. |  |  |
-| --Cookie | String | B490B5EBF6F3CD4 02E515D22BCDA** ** | The cookie that is configured on the backend server. |  |  |
-| -- CookieTimeout | Integer | 500 | The timeout period of a cookie. Unit: seconds. Valid values: 1 to 86400 . |  |  |
-| --EnableHttp2 | String | off | Indicates whether HTTP 2.0 is enabled. Valid values: on off |  |  |
-| --Gzip | String | on | Indicates whether GZIP compression is enabled. Valid values: on off |  |  |
-| --HealthCheck | String | on | Indicates whether the health check feature is enabled. Valid values: on off |  |  |
-| -- HealthCheckC onnectPort | Integer | 8080 | The port that is used for health checks. |  |  |
-| -- HealthCheckD omain | String | www.example.com | The domain name that is used for health checks. |  |  |
-| -- HealthCheckHt tpCode | String | http 2xx,http 3xx _ _ | The HTTP status code for a successful health check. |  |  |
+| -- XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to obtain the listener protocol. Valid values: on off |   |   |
+|   |   |   |   | X-Forwarded- |   |
+| - HTTPSListener Config | Struct |   | The configuration of the HTTPS listener. |   |   |
+| -- CACertificateId | String | idkp-234-cn-test- 0**** | The ID of the CA certificate. |   |   |
+| --Cookie | String | B490B5EBF6F3CD4 02E515D22BCDA** ** | The cookie that is configured on the backend server. |   |   |
+| -- CookieTimeout | Integer | 500 | The timeout period of a cookie. Unit: seconds. Valid values: 1 to 86400 . |   |   |
+| --EnableHttp2 | String | off | Indicates whether HTTP 2.0 is enabled. Valid values: on off |   |   |
+| --Gzip | String | on | Indicates whether GZIP compression is enabled. Valid values: on off |   |   |
+| --HealthCheck | String | on | Indicates whether the health check feature is enabled. Valid values: on off |   |   |
+| -- HealthCheckC onnectPort | Integer | 8080 | The port that is used for health checks. |   |   |
+| -- HealthCheckD omain | String | www.example.com | The domain name that is used for health checks. |   |   |
+| -- HealthCheckHt tpCode | String | http 2xx,http 3xx _ _ | The HTTP status code for a successful health check. |   |   |
 
-|  | Proto |
+|   | Proto |
 |---|---|
 
-| > Document Versi | on: 20251028 |  | 7 |
+| > Document Versi | on: 20251028 |   | 7 |
 |---|---|---|---|
 
-Server Load Balancer
-
-| Developer Guide·A | PI Reference |  | Server Load Balance |
+| Developer Guide·A | PI Reference |   | Server Load Balance |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2031,54 +2224,46 @@ Server Load Balancer
 |---|---|---|---|
 | -- StickySession | String | on | Indicates whether session persistence is enabled. Valid values: on off |
 | -- StickySessionT ype | String | insert | The method that is used to handle a cookie. insert : inserts a cookie. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client contains the cookie, and the listener forwards the request to the recorded backend server. server : rewrites a cookie. When SLB detects a user-defined cookie, SLB overwrites the original cookie with the user-defined cookie. The next request from the client contains the user- defined cookie, and the listener forwards the request to the recorded backend server. |
-|  |  |  | Each security policy contains TLS protocol versions and cipher suites available for HTTPS. Valid values: tls cipher policy 1 0 : _ _ _ _ Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2 Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 1 : _ _ _ _ Supported TLS versions: TLS 1.1 and TLS 1.2 Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA |
-
-Server Load Balancer
+|   |   |   | Each security policy contains TLS protocol versions and cipher suites available for HTTPS. Valid values: tls cipher policy 1 0 : _ _ _ _ Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2 Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 1 : _ _ _ _ Supported TLS versions: TLS 1.1 and TLS 1.2 Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA |
 
 | Parameter | Type | Example | tls cipher policy 1 2 Desc_ription_ _ _ Supported TLS version: TLS 1.2 |
 |---|---|---|---|
 | -- TLSCipherPolic y | String | tls cipher policy 1 _ _ _ 0 _ | Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 2 strict _ _ _ _ _ Supported TLS version: TLS 1.2 Supported cipher suites: ECDHE-RSA- |
-|  |  |  | AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA tls cipher policy 1 2 strict with 1 _ _ _ _ _ _ _ _ 3 Supported TLS versions: TLS 1.2 and TLS 1.3 Supported cipher suites: TLS AES 128 GCM SHA256, _ _ _ _ TLS AES 256 GCM SHA384, _ _ _ _ TLS CHACHA20 POLY1305 SHA256, _ _ _ TLS AES 128 CCM SHA256, _ _ _ _ TLS AES 128 CCM 8 SHA256, ECDHE- _ _ _ _ _ ECDSA-AES128-GCM-SHA256, ECDHE- ECDSA-AES256-GCM-SHA384, ECDHE- ECDSA-AES128-SHA256, ECDHE-ECDSA- AES256-SHA384, ECDHE-RSA-AES128- GCM-SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA-AES128- SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE- ECDSA-AES256-SHA, ECDHE-RSA- AES128-SHA, and ECDHE-RSA-AES256- SHA |
+|   |   |   | AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA tls cipher policy 1 2 strict with 1 _ _ _ _ _ _ _ _ 3 Supported TLS versions: TLS 1.2 and TLS 1.3 Supported cipher suites: TLS AES 128 GCM SHA256, _ _ _ _ TLS AES 256 GCM SHA384, _ _ _ _ TLS CHACHA20 POLY1305 SHA256, _ _ _ TLS AES 128 CCM SHA256, _ _ _ _ TLS AES 128 CCM 8 SHA256, ECDHE- _ _ _ _ _ ECDSA-AES128-GCM-SHA256, ECDHE- ECDSA-AES256-GCM-SHA384, ECDHE- ECDSA-AES128-SHA256, ECDHE-ECDSA- AES256-SHA384, ECDHE-RSA-AES128- GCM-SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA-AES128- SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE- ECDSA-AES256-SHA, ECDHE-RSA- AES128-SHA, and ECDHE-RSA-AES256- SHA |
 | -- UnhealthyThre shold | Integer | 4 | The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from success to fail . Valid values: 2 to 10 . |
 
-Server Load Balancer
-
-| Parameter |  | Type |  | Example | Description |  |  |
+| Parameter |   | Type |   | Example | Description |   |   |
 |---|---|---|---|---|---|---|---|
-| -- XForwardedFo r |  | String |  | on | Indicates whether the X-Forwarded- For header is used to obtain client IP addresses. Valid values: on off |  |  |
-| -- XForwardedFo r ClientCertCli _ entVerify |  |  |  |  | Indicates whether the XForwardedFor ClientCertClientVerify _ header is used to obtain the verification result of the client certificate. Valid values: on off |  |  |
-|  |  |  |  |  |  | XForwardedFor ClientCertClientVerify _ |  |
-|  |  | String |  | off |  |  |  |
-| -- XForwardedFo r ClientCertFin _ gerprint |  |  |  |  | Indicates whether the XForwardedFor ClientCertFingerprint _ header is used to obtain the fingerprint of the client certificate. Valid values: on off |  |  |
-|  |  |  |  |  |  | XForwardedFor ClientCertFingerprint _ |  |
-|  |  | String |  | off |  |  |  |
-| -- XForwardedFo r ClientCertIss _ uerDN |  | String |  | off | Indicates whether the XForwardedFor ClientCertIssuerDN _ header is used to obtain information about the authority that issues the client certificate. Valid values: on off |  |  |
-| -- XForwardedFo r ClientCertSu _ bjectDN |  | String |  |  | Indicates whether the XForwardedFor ClientCertSubjectDN _ header is used to obtain information about the owner of the client certificate. Valid values: on off |  |  |
-|  |  |  |  |  |  | XForwardedFor ClientCertSubjectDN _ |  |
-|  |  |  |  | off |  |  |  |
-| -- XForwardedFo r ClientSrcPort _ |  | String |  | off | Indicates whether the XForwardedFor ClientSrcPort _ header is used to obtain the client port. Valid values: on off |  |  |
+| -- XForwardedFo r |   | String |   | on | Indicates whether the X-Forwarded- For header is used to obtain client IP addresses. Valid values: on off |   |   |
+| -- XForwardedFo r ClientCertCli _ entVerify |   |   |   |   | Indicates whether the XForwardedFor ClientCertClientVerify _ header is used to obtain the verification result of the client certificate. Valid values: on off |   |   |
+|   |   |   |   |   |   | XForwardedFor ClientCertClientVerify _ |   |
+|   |   | String |   | off |   |   |   |
+| -- XForwardedFo r ClientCertFin _ gerprint |   |   |   |   | Indicates whether the XForwardedFor ClientCertFingerprint _ header is used to obtain the fingerprint of the client certificate. Valid values: on off |   |   |
+|   |   |   |   |   |   | XForwardedFor ClientCertFingerprint _ |   |
+|   |   | String |   | off |   |   |   |
+| -- XForwardedFo r ClientCertIss _ uerDN |   | String |   | off | Indicates whether the XForwardedFor ClientCertIssuerDN _ header is used to obtain information about the authority that issues the client certificate. Valid values: on off |   |   |
+| -- XForwardedFo r ClientCertSu _ bjectDN |   | String |   |   | Indicates whether the XForwardedFor ClientCertSubjectDN _ header is used to obtain information about the owner of the client certificate. Valid values: on off |   |   |
+|   |   |   |   |   |   | XForwardedFor ClientCertSubjectDN _ |   |
+|   |   |   |   | off |   |   |   |
+| -- XForwardedFo r ClientSrcPort _ |   | String |   | off | Indicates whether the XForwardedFor ClientSrcPort _ header is used to obtain the client port. Valid values: on off |   |   |
 
-|  | For |
+|   | For |
 |---|---|
 
-Server Load Balancer
-
-|  | Parameter | Type | Example | Description |  |  |
+|   | Parameter | Type | Example | Description |   |   |
 |---|---|---|---|---|---|---|
-|  | -- XForwardedFo r SLBID _ | String | on | Indicates whether the SLB-ID header is used to obtain the ID of the SLB instance. Valid values: on off |  |  |
-|  | -- XForwardedFo r SLBIP _ | String | on | Indicates whether the SLB-IP header is used to obtain the VIP requested by the client. Valid values: on off |  |  |
-|  | -- XForwardedFo r SLBPORT _ | String | off | Indicates whether the XForwardedFor SLBPORT header is _ used to obtain the listener port. Valid values: on off |  |  |
-|  | -- XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to obtain the listener protocol. Valid values: on off |  |  |
-|  |  |  |  |  | X-Forwarded- |  |
-|  | - TCPListenerCo nfig | Struct |  | The configuration of the TCP listener. |  |  |
-|  | -- ConnectionDra in | String | off | Indicates whether connection draining is enabled. Valid values: on off |  |  |
-|  | -- ConnectionDra inTimeout | Integer | 300 | The timeout period of connection draining. Unit: seconds. Value values: 10 to 900 . |  |  |
-|  | -- EstablishedTi meout | Integer | 500 | The timeout period of a connection. Unit: seconds. |  |  |
+|   | -- XForwardedFo r SLBID _ | String | on | Indicates whether the SLB-ID header is used to obtain the ID of the SLB instance. Valid values: on off |   |   |
+|   | -- XForwardedFo r SLBIP _ | String | on | Indicates whether the SLB-IP header is used to obtain the VIP requested by the client. Valid values: on off |   |   |
+|   | -- XForwardedFo r SLBPORT _ | String | off | Indicates whether the XForwardedFor SLBPORT header is _ used to obtain the listener port. Valid values: on off |   |   |
+|   | -- XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to obtain the listener protocol. Valid values: on off |   |   |
+|   |   |   |   |   | X-Forwarded- |   |
+|   | - TCPListenerCo nfig | Struct |   | The configuration of the TCP listener. |   |   |
+|   | -- ConnectionDra in | String | off | Indicates whether connection draining is enabled. Valid values: on off |   |   |
+|   | -- ConnectionDra inTimeout | Integer | 300 | The timeout period of connection draining. Unit: seconds. Value values: 10 to 900 . |   |   |
+|   | -- EstablishedTi meout | Integer | 500 | The timeout period of a connection. Unit: seconds. |   |   |
 
-|  | Proto |
+|   | Proto |
 |---|---|
-
-Server Load Balancer
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2094,13 +2279,11 @@ Server Load Balancer
 | -- HealthyThresh old | Integer | 4 | The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from fail to success . Valid values: 2 to 10 . |
 | -- MasterSlaveSe rverGroupId | String | rsp-0bfucw***** | The ID of the primary/secondary server group that is associated with the listener. |
 
-Server Load Balancer
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -- PersistenceTi meout | Integer | 0 | Indicates whether session persistence is enabled. Unit: seconds. Valid values: 0 to 3600 . 0 indicates that session persistence is disabled. |
 | -- UnhealthyThre shold | Integer | 4 | The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from success to fail . Valid values: 2 to 10 . |
-| - UDPListenerCo nfig | Struct |  | The configuration of the UDP listener. |
+| - UDPListenerCo nfig | Struct |   | The configuration of the UDP listener. |
 | -- ConnectionDra in | String | off | Indicates whether connection draining is enabled. Valid values: on off |
 | -- ConnectionDra inTimeout | Integer | 300 | The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900 . |
 | --HealthCheck | String | on | Indicates whether the health check feature is enabled. Valid values: on off |
@@ -2109,10 +2292,8 @@ Server Load Balancer
 | -- HealthCheckE xp | String | ok | The response string for UDP listener health checks. |
 | -- HealthCheckIn terval | Integer | 5 | The interval between two consecutive health checks. Unit: seconds. |
 
-| 8 |  |  | > Document Version: 2025102 |
+| 8 |   |   | > Document Version: 2025102 |
 |---|---|---|---|
-
-Server Load Balancer
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2125,7 +2306,9 @@ Server Load Balancer
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The request ID. |
 | TotalCount | Integer | 10 | The total number of entries returned. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerListeners &Common request parameters
@@ -2134,12 +2317,13 @@ http(s)://[Endpoint]/?Action=DescribeLoadBalancerListeners &Common request param
 Sample success responses `JSON` format
 
 ```
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-Server Load Balancer
+`{`
 
 ```json
+ "Listeners":{
   "Status":"running",
   "ListenerPort":80,
   "VServerGroupId":"rsp-cige6j****",
@@ -2174,7 +2358,11 @@ Server Load Balancer
    "HealthCheckDomain":"www.example.com",
    "XForwardedFor_proto":"on",
    "HealthCheckType":"tcp"
-  },
+```
+
+`},`
+
+```json
   "-UDPListenerConfig":{
    "ConnectionDrainTimeout":300,
    "HealthCheckInterval":5,
@@ -2187,7 +2375,11 @@ Server Load Balancer
    "HealthCheckConnectTimeout":100,
    "MasterSlaveServerGroupId":"rsp-0bfucw****",
    "ConnectionDrain":"off"
-  },
+```
+
+`},`
+
+```json
   "LoadBalancerId":"lb-bp1b6c719dfa****",
   "BackendServerPort":80,
   "ListenerProtocol":"http",
@@ -2195,8 +2387,6 @@ Server Load Balancer
    "CookieTimeout":500,
 "UnhealthThreshold"4
 ```
-
-Server Load Balancer
 
 ```json
    "UnhealthyThreshold":4,
@@ -2231,7 +2421,11 @@ Server Load Balancer
    "XForwardedFor_ClientCertClientVerify":"off",
    "XForwardedFor_ClientCertFingerprint":"off",
    "HealthCheckType":"tcp"
-  },
+```
+
+`},`
+
+```json
   "-TCPListenerConfig":{
    "HealthCheckInterval":5,
    "UnhealthyThreshold":4,
@@ -2249,27 +2443,29 @@ Server Load Balancer
    "HealthCheckHttpCode":"http_2xx,http_3xx",
    "HealthCheckType":"tcp",
    "EstablishedTimeout":500
-  },
+```
+
+`},`
+
+```json
   "AclStatus":"off",
   "Bandwidth":-1,
   "AclType":"white"
-},
 ```
 
-Server Load Balancer
+`},` `},`
 
 ```json
- },
  "TotalCount":10,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710",
  "MaxResults":50
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
+<Listeners>
  <Status>running</Status>
  <ListenerPort>80</ListenerPort>
  <VServerGroupId>rsp-cige6j****</VServerGroupId>
@@ -2317,13 +2513,13 @@ Server Load Balancer
 lhCh
 ```
 
-`kC` i
+`kC` `i`
 
 ```
 100/ lhCh
 ```
 
-`kC` i Server Load Balancer
+`kC` `i`
 
 ```xml
   <HealthCheckConnectTimeout>100</HealthCheckConnectTimeout>
@@ -2383,19 +2579,6 @@ lhCh
 <HealthCheckDomain>wwwexamplecom</HealthCheckDomain>
 ```
 
-| HttpCo de | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParam.Listen erProtocol | IllegalParam.ListenerProtocol | The param of ListenerProtocol is illegal. |
-| 400 | InvalidParam.Page Size | IllegalParam.MaxResults | The param of MaxResults is illegal. |
-| 400 | QueryTokenInvalid | IllegalParam.NextToken | The param of NextToken is illegal. |
-| 400 | InvalidParamSize.L oadBalancerId | IllegalParamSize.LoadBalancerI d | The param size of LoadBalancerId is illegal. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteLoadBala ncerListener | The operation that you want to perform. Set the value to DeleteLoadBalancerListener. |
-
-Server Load Balancer
-
 ```xml
   <HealthCheckDomain>www.example.com</HealthCheckDomain>
   <MasterSlaveServerGroupId>rsp-0bfucw*****</MasterSlaveServerGroupId>
@@ -2406,10 +2589,19 @@ Server Load Balancer
  <AclStatus>off</AclStatus>
  <Bandwidth>-1</Bandwidth>
  <AclType>white</AclType>
-<TotalCount>10</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId> <MaxResults>50</MaxResults>
+</Listeners> <TotalCount>10</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId> <MaxResults>50</MaxResults>
 ```
 
-#### DeleteLoadBalancerListener
+**Error codes**
+
+| HttpCo de | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParam.Listen erProtocol | IllegalParam.ListenerProtocol | The param of ListenerProtocol is illegal. |
+| 400 | InvalidParam.Page Size | IllegalParam.MaxResults | The param of MaxResults is illegal. |
+| 400 | QueryTokenInvalid | IllegalParam.NextToken | The param of NextToken is illegal. |
+| 400 | InvalidParamSize.L oadBalancerId | IllegalParamSize.LoadBalancerI d | The param size of LoadBalancerId is illegal. |
+
+#### 7.4.2 DeleteLoadBalancerListener
 
 Deletes a listener.
 
@@ -2419,17 +2611,21 @@ You can delete only listeners that are in the **stopped** or **running** state.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteLoadBala ncerListener | The operation that you want to perform. Set the value to DeleteLoadBalancerListener. |
+
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
 |---|---|---|---|---|
 | LoadBalancerId | String | Yes | lb- bp13jaf5qli5xm* *** | The ID of the SLB instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2440,24 +2636,28 @@ http(s)://[Endpoint]/?Action=DeleteLoadBalancerListener &ListenerPort=80 &LoadBa
 Sample success responses `XML` format
 
 ```xml
+<DeleteLoadBalancerListenerResponse>
      <RequestId>791D8B68-AE0F-4174-AF54-088C8B3C5D54</RequestId>
+  </DeleteLoadBalancerListenerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "791D8B68-AE0F-4174-AF54-088C8B3C5D54"
-}
 ```
 
-#### StopLoadBalancerListener
+`}`
+
+#### 7.4.3 StopLoadBalancerListener
 
 Disables a listener. When you call this operation, take note of the following items: If the operation is successful, the listener switches to the Stopped state. You cannot perform the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state.
 
 **Note**
 
 After a listener is disabled, it stops forwarding requests to the associated backend servers. This may cause service interruptions. Proceed with caution.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2466,15 +2666,13 @@ After a listener is disabled, it stops forwarding requests to the associated bac
 | LoadBalancerId | String | Yes | lb- bp13jaf5qli5xmg l**** | The ID of the SLB instance. |
 | Tags | String | No | null | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2485,16 +2683,24 @@ http(s)://[Endpoint]/?Action=StopLoadBalancerListener &ListenerPort=80 &LoadBala
 Sample success responses `XML` format
 
 ```xml
+<StopLoadBalancerListenerResponse>
      <RequestId>21D2B318-650E-4B0B-A3B5-693D462247B3</RequestId>
+  </StopLoadBalancerListenerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "21D2B318-650E-4B0B-A3B5-693D462247B3"
-}
 ```
+
+`}`
+
+#### 7.4.4 StartLoadBalancerListener
+
+Enables a listener. When you call this operation, take note of the following items: You can call the operation only when the listener is in the Stopped state. If the operation is successful, the state of the listener changes to Starting. You cannot call the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2503,19 +2709,13 @@ Sample success responses `XML` format
 | LoadBalancerId | String | Yes | lb- bp13jaf5qli5**** | The ID of the SLB instance. |
 | Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-#### StartLoadBalancerListener
-
-Enables a listener. When you call this operation, take note of the following items: You can call the operation only when the listener is in the Stopped state. If the operation is successful, the state of the listener changes to Starting. You cannot call the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2525,30 +2725,21 @@ http(s)://[Endpoint]/?Action=StartLoadBalancerListener &ListenerPort=80 &LoadBal
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed |  | Example | Description |  |
-|---|---|---|---|---|---|---|
-| Action | String | Yes |  | SetLoadBalancer ModificationProt ection | Set the value to SetLoadBalancerModifyProtectio n. |  |
-| LoadBalancerId | String | Yes |  | lb- bp1b6c719dfa0 8e***** | The ID of the CLB instance. |  |
-| ModificationProt ectionStatus | String | Yes |  | ConsoleProtectio n | Specifies whether to enable the configuration read-only mode for the CLB instance. Valid values: NonProtection: disables the configuration read-only mode. If you set ModificationProtectionStatus to NonProtection, the value of ModificationProtectionReason is cleared. ConsoleProtection: enables the configuration read-only mode. |  |
-|  |  |  |  |  |  | ModificationProtectionReason |
-| LoadBalancerNa me | String | No |  | test1 | The CLB instance name. |  |
-| access key id _ _ | String | No |  | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |  |
-
-Server Load Balancer
-
 ```xml
+<StartLoadBalancerListenerResponse>
      <RequestId>CC000321-00F2-49B8-9BCA-60D822414960</RequestId>
+  </StartLoadBalancerListenerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CC000321-00F2-49B8-9BCA-60D822414960"
-}
 ```
 
-#### SetLoadBalancerModificationProtection
+`}`
+
+#### 7.4.5 SetLoadBalancerModificationProtection
 
 Enables or disables the configuration read-only mode for a Classic Load Balancer (CLB) instance.
 
@@ -2558,19 +2749,28 @@ v3.16.2r-slb-hotfeature-SP006 is installed.
 
 **Request parameters**
 
-| Tags | String | No |  | [{"tagKey":"Key 1","tagValue":"V alue1"}] | The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary. You can specify up to 10 tags in each call. |  |  |  |
+| Parameter | Type | Requir ed |   | Example | Description |   |
+|---|---|---|---|---|---|---|
+| Action | String | Yes |   | SetLoadBalancer ModificationProt ection | Set the value to SetLoadBalancerModifyProtectio n. |   |
+| LoadBalancerId | String | Yes |   | lb- bp1b6c719dfa0 8e***** | The ID of the CLB instance. |   |
+| ModificationProt ectionStatus | String | Yes |   | ConsoleProtectio n | Specifies whether to enable the configuration read-only mode for the CLB instance. Valid values: NonProtection: disables the configuration read-only mode. If you set ModificationProtectionStatus to NonProtection, the value of ModificationProtectionReason is cleared. ConsoleProtection: enables the configuration read-only mode. |   |
+|   |   |   |   |   |   | ModificationProtectionReason |
+| LoadBalancerNa me | String | No |   | test1 | The CLB instance name. |   |
+| access key id _ _ | String | No |   | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |   |
+
+| Tags | String | No |   | [{"tagKey":"Key 1","tagValue":"V alue1"}] | The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary. You can specify up to 10 tags in each call. |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-| ModificationProt ectionReason | String | No |  | Modify configurations | The reason for enabling the configuration read-only mode. The value must be 1 to 80 characters in length. It must start with a letter and can contain digits, periods (.), underscores ( ), and hyphens (-). _ Note This parameter takes effect only if you set ModificationProtectionStatu s to ConsoleProtection. |  |  |  |
-|  |  |  |  |  |  |  | ModificationProtectionStatu |  |
-|  |  |  |  |  |  | s |  |  |
+| ModificationProt ectionReason | String | No |   | Modify configurations | The reason for enabling the configuration read-only mode. The value must be 1 to 80 characters in length. It must start with a letter and can contain digits, periods (.), underscores ( ), and hyphens (-). _ Note This parameter takes effect only if you set ModificationProtectionStatu s to ConsoleProtection. |   |   |   |
+|   |   |   |   |   |   |   | ModificationProtectionStatu |   |
+|   |   |   |   |   |   | s |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Details |
 |---|---|---|---|
 | RequestId | String | 791D8B68-AE0F- 4174-AF54- 088C8B3C5D54 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2584,13 +2784,15 @@ Sample success responses `XML` format
 <RequestId>791D8B68-AE0F-4174-AF54-088C8B3C5D54</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "791D8B68-AE0F-4174-AF54-088C8B3C5D54"
-}
 ```
+
+`}`
+
+**Error code**
 
 | HttpCod e | Error code | Error message | Details |
 |---|---|---|---|
@@ -2598,17 +2800,7 @@ Sample success responses `XML` format
 | 400 | InvalidParam.Modifi cationProtectionSta tus | The param ModificationProtectionStatus is invalid. | ModificationProtectionStatus is set to an invalid value. Specify a valid value and try again. |
 | 400 | InvalidParam.Modifi cationProtectionRe ason | The param ModificationProtectionReason is invalid. | ModificationProtectionReason is set to an invalid value. Specify a valid value and try again. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SetLoadBalancer DeleteProtection | The operation that you want to perform. Set the value to SetLoadBalancerDeleteProtectio n. |
-| DeleteProtection | String | Yes | off | Specifies whether to enable deletion protection for the CLB instance. Valid values: on off |
-| LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8e***** | The CLB instance ID. |
-| LoadBalancerNa me | String | No | test1 | The CLB instance name. |
-| access key id _ _ | String | No | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |
-
-Server Load Balancer
-
-#### SetLoadBalancerDeleteProtection
+#### 7.4.6 SetLoadBalancerDeleteProtection
 
 Enables or disables deletion protection for a Classic Load Balancer (CLB) instance.
 
@@ -2618,20 +2810,24 @@ v3.16.2r-slb-hotfeature-SP006 is installed.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SetLoadBalancer DeleteProtection | The operation that you want to perform. Set the value to SetLoadBalancerDeleteProtectio n. |
+| DeleteProtection | String | Yes | off | Specifies whether to enable deletion protection for the CLB instance. Valid values: on off |
+| LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8e***** | The CLB instance ID. |
+| LoadBalancerNa me | String | No | test1 | The CLB instance name. |
+| access key id _ _ | String | No | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |
+
 | Tags | String | No | [{"tagKey":"Key 1","tagValue":"V alue1"}] | The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary. You can specify up to 10 tags in each call. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 791D8B68-AE0F- 4174-AF54- 088C8B3C5D54 | The ID of the request. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | OperationUnsuppor ted.DeleteProtectio nForPrePayInstanc e | The operation failed because prepay instance does not support delete protection. | Deletion protection is not supported by subscription CLB instances. |
-
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2645,21 +2841,29 @@ Sample success responses `XML` format
 <RequestId>791D8B68-AE0F-4174-AF54-088C8B3C5D54</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "791D8B68-AE0F-4174-AF54-088C8B3C5D54"
-}
 ```
 
-#### SwitchMasterSlaveServerGroup
+`}`
+
+**Error code**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | OperationUnsuppor ted.DeleteProtectio nForPrePayInstanc e | The operation failed because prepay instance does not support delete protection. | Deletion protection is not supported by subscription CLB instances. |
+
+#### 7.4.7 SwitchMasterSlaveServerGroup
 
 Switches between the primary and secondary server groups of a Server Load Balancer (SLB) instance.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2674,25 +2878,18 @@ This operation uses only common request headers. For more information, see the C
 | LoadBalan cerId | Strin g | Query | Yes | lb- 8vb86hxixo8lvsja8**** | The ID of the CLB instance. |
 | TargetSer verGroupI d | Strin g | Query | Yes | 1234567890 | The ID of the server group to be set as the active server group. |
 
-Server Load Balancer
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ListenerPr otocol | Strin g | Query | Yes | https | The frontend protocol that is used by the SLB instance. This parameter is required if listeners for the same port use different protocols. |
 | ListenerPo rt | Integ er | Query | Yes | 443 | The listener port. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Request example
 
@@ -2702,27 +2899,28 @@ http(s)://[Endpoint]/?Action=SwitchMasterSlaveServerGroup &RegionId=cn-east-hang
 
 Response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-}
 ```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | ListenerNotSupport SuchAction | ListenerNotSupportSuchAction | The specified listener does not support this action for the failover strategy. |
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ListenerPo rt | Integ er | Query | Yes | 443 | The listener port. |
-| LoadBalan cerId | Strin g | Query | Yes | lb- 8vb86hxixo8lvsja8**** | The ID of the Classic Load Balancer (CLB) instance. |
-| Protocol | Strin g | Query | Yes | https | The frontend protocol that is used by the SLB instance. If listeners that use different protocols listen on the same port, this parameter is required. |
-| RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the CLB instance. |
-| KvAttribut e | Repe atList | Query | No | role | The user's preferred currency, such as CNY or USD. |
-
-Server Load Balancer
-
-#### SetLoadBalancerListenerAttributeEx
+#### 7.4.8 SetLoadBalancerListenerAttributeEx
 
 Modifies the advanced properties of a Server Load Balancer (SLB) listener.
 
@@ -2734,24 +2932,32 @@ This operation uses common request headers. It does not have special request hea
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| -Key | Strin g |  | No | TestKey | The key of a tag. N can be an integer from 1 to 20 . This parameter cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
-| -Value | Strin g |  | No | TestValue | The value of a tag. N can be an integer from 1 to 20 . This parameter can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
+| ListenerPo rt | Integ er | Query | Yes | 443 | The listener port. |
+| LoadBalan cerId | Strin g | Query | Yes | lb- 8vb86hxixo8lvsja8**** | The ID of the Classic Load Balancer (CLB) instance. |
+| Protocol | Strin g | Query | Yes | https | The frontend protocol that is used by the SLB instance. If listeners that use different protocols listen on the same port, this parameter is required. |
+| RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the CLB instance. |
+| KvAttribut e | Repe atList | Query | No | role | The user's preferred currency, such as CNY or USD. |
 
-|  | aliyun |
-|---|---|
-| acs: |  |
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| -Key | Strin g |   | No | TestKey | The key of a tag. N can be an integer from 1 to 20 . This parameter cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
+| -Value | Strin g |   | No | TestValue | The value of a tag. N can be an integer from 1 to 20 . This parameter can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
 
-|  | http:// |
+|   | aliyun |
 |---|---|
-| https:// |  |
+| acs: |   |
+
+|   | http:// |
+|---|---|
+| https:// |   |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response data**
+**Examples**
 
 Request example
 
@@ -2760,6 +2966,20 @@ http(s)://[Endpoint]/?Action=SetLoadBalancerListenerAttributeEx &ListenerPort=44
 ```
 
 Successful response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -2777,14 +2997,6 @@ Successful response example `JSON` format
 | 400 | InvalidParam.Acces sLogTracingType | InvalidParameter.AccessLogTr acingType | The specified value of key AccessLogTracingType in KvAttribute is invalid. |
 | 400 | MissingParam.Acce ssLogTracingSampl e | MissingParameter.AccessLogTr acingSample | The key AccessLogTracingSample in KvAttribute is required. |
 
-Server Load Balancer
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-}
-```
-
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | MissingParam.Acce ssLogTracingType | MissingParameter.AccessLogTr acingType | The key AccessLogTracingType in KvAttribute is required. |
@@ -2794,13 +3006,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | OperationDenied.M issingMasterSlaveG roupMonitor | OperationDenied.MissingMaste rSlaveGroupMonitor | The operation is not allowed because the listener for the primary/secondary server group is not found. |
 | 400 | HDMonitorQuotaEx ceed | HDMonitorQuotaExceed | The number of listeners that have high-definition monitoring enabled exceeds the limit. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Query | No | ModifyHighDefinationMo nitor | A required parameter. Set the value to ModifyHighDefinationMo nitor. |
-| OwnerId | Long | Query | No | 1234567890 | A system parameter for authentication. Leave this parameter empty. |
-| Resource OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Leave this parameter empty. |
-
-#### ModifyHighDefinationMonitor
+#### 7.4.9 ModifyHighDefinationMonitor
 
 Modifies the configuration of fine-grained monitoring.
 
@@ -2810,7 +3016,13 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
-| Developer Gui | de·API R | eference |  |  | Server Load Balance |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Action | Strin g | Query | No | ModifyHighDefinationMo nitor | A required parameter. Set the value to ModifyHighDefinationMo nitor. |
+| OwnerId | Long | Query | No | 1234567890 | A system parameter for authentication. Leave this parameter empty. |
+| Resource OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Leave this parameter empty. |
+
+| Developer Gui | de·API R | eference |   |   | Server Load Balance |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -2821,14 +3033,37 @@ This operation uses common request headers. No special request headers are requi
 | LogProject | Strin g | Query | Yes | my-project | The name of the Simple Log Service LogProject. The name must be 4 to 63 characters in length. It can contain digits, lowercase letters, and hyphens (-). The name must start and end with a digit or a letter. |
 | LogStore | Strin g | Query | Yes | my-log-store | The name of the Simple Log Service LogStore. The name must be 2 to 64 characters in length. It can contain digits, lowercase letters, hyphens (-), and underscores ( ). The _ name must start and end with a digit or a letter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Success | String | true | Indicates whether the request was successful. |
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Request example
+
+```
+http(s)://[Endpoint]/?Action=ModifyHighDefinationMonitor &RegionId=cn-east-hangzhou-01 &LogProject=my-project &LogStore=my-log-store &<Common request parameters>
+```
+
+Response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984",
+ "Success":"true"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -2838,24 +3073,15 @@ Request example
 | 400 | HdMonitorVipExist | OperationDenied.HdMonitorLis tenerExist | The operation is denied because there are still listeners enabling HighDefinationMonitor. |
 | 400 | HDMonitorRegional NotConfig | OperationNotAllowed.HighDefi nitionMonitorNotEnabled | The operation is not allowed because HighDefinationMonitor is not enabled in this region. |
 
-Server Load Balancer
-
-```
-http(s)://[Endpoint]/?Action=ModifyHighDefinationMonitor &RegionId=cn-east-hangzhou-01 &LogProject=my-project &LogStore=my-log-store &<Common request parameters>
-```
-
-Response example `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984",
- "Success":"true"
-}
-```
+#### 7.4.10 EnableHighDefinationMonitor
 
 Enables monitoring for an instance at one-second intervals.
 
-#### EnableHighDefinationMonitor
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2867,27 +3093,19 @@ Enables monitoring for an instance at one-second intervals.
 | Tags | Strin g | Query | No | [{"tagKey":"Key1","tagV alue":"Value1"}] | The list of tags attached to the Classic Load Balancer (CLB) instance. The value is a JSON dictionary that contains tag keys and tag values. You can add up to 10 tags in each request. |
 | RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the Classic Load Balancer (CLB) instance. |
 
-Server Load Balancer
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LogProject | Strin g | Query | Yes | my-project | The name of the Simple Log Service LogProject. The name must be 4 to 63 characters in length. It can contain digits, lowercase letters, and hyphens (-). The name must start and end with a digit or a letter. |
 | LogStore | Strin g | Query | Yes | my-log-store | The name of the Simple Log Service LogStore. The name must be 2 to 64 characters in length. It can contain digits, lowercase letters, hyphens (-), and underscores ( ). The _ name must start and end with a digit or a letter. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Success | String | true | Indicates whether the request was successful. |
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Request example
 
@@ -2897,29 +3115,35 @@ http(s)://[Endpoint]/?Action=EnableHighDefinationMonitor &RegionId=cn-east-hangz
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984",
+ "Success":"true"
+```
+
+`}`
+
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | HD MONITOR REGI _ _ ON CONFIG EXIST _ _ ED | OperationNotAllowed.HighDefi nitionMonitorEnabled | The operation is not allowed because HighDefinationMonitor is already enabled in this region. |
 | 400 | UnsupportedFeatur e.User | UnsupportedFeature.User | The feature of HighDefinationMonitor is not supported. |
 | 400 | NoPermission.Aliyu nServiceRoleForSlb LogDelivery | NoPermission.AliyunServiceRol eForSlbLogDelivery | You are not authorized to create the service-linked role. Role Name: AliyunServiceRoleForSlbLogDel ivery. Service Name: logdelivery.slb.aliyuncs.com. Make sure that the user is granted the ram:CreateServiceLinkedRole permission. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Server Load Balancer
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984",
- "Success":"true"
-}
-```
-
-#### CreateLoadBalancer
+#### 7.4.11 CreateLoadBalancer
 
 Creates a Server Load Balancer (SLB) instance. Before you call this operation, take note of the following items: Before you create an SLB instance, call the DescribeAvailableResource operation to query the resources available for purchase in the zone where you want to create the SLB instance. You are charged for the SLB instances that you create. For more information, see Create an SLB instance. If you do not set **LoadBalancerSpec**, a shared-resource SLB instance is created. We recommend that you set the **LoadBalancerSpec** parameter to specify the specification of the SLB instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | CreateLoadBala ncer | The operation that you want to perform. Set the value to CreateLoadBalancer. |
 |---|---|---|---|---|
@@ -2927,8 +3151,6 @@ Creates a Server Load Balancer (SLB) instance. Before you call this operation, t
 | AddressType | String | No | internet | The network type of the SLB instance. Valid values: internet and intranet. internet: After an Internet-facing SLB instance is created, the system allocates a public IP address to the SLB instance. Then, the SLB instance can forward requests from the Internet. intranet: After an internal-facing SLB instance is created, the system allocates a private IP address to the SLB instance. Then, the SLB instance can forward only internal requests. |
 | InternetChargeT ype | String | No | paybytraffic | The billing method of the Internet- facing SLB instance. Set the value to paybytraffic. |
 | Bandwidth | Integer | No | 10 | The bandwidth limit of the listener. Unit: Mbit/s. Valid values: 1 to 5120 and -1. -1: For a pay-by-data-transfer Internet-facing SLB instance, you can set the value to -1. If you set the value to -1, the bandwidth is unlimited. 1 to 5120: For a pay-by- bandwidth Internet-facing SLB instance, you can specify the bandwidth limit for each listener. The sum of bandwidth limit values that you set for all listeners cannot exceed the bandwidth limit of the SLB instance. For more information, see Bandwidth of a shared-resource SLB instance. |
-
-Server Load Balancer
 
 | ClientToken | String | No | 5A2CFF0E-5718- 45B5-9D4D- 70B3FF3898 | This parameter is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
@@ -2938,14 +3160,14 @@ Server Load Balancer
 | MasterZoneId | String | No | cn-hangzhou-b | The ID of the primary zone to which the SLB instance belongs. You can call the DescribeZone operation to query information about the primary and secondary zones in a region. |
 | SlaveZoneId | String | No | cn-hangzhou-d | The ID of the secondary zone to which the SLB instance belongs. You can call the DescribeZone operation to query information about the primary and secondary zones in a region. |
 
-Server Load Balancer
-
 | access key id _ _ | String | No | 111 | The AccessKey ID. |
 |---|---|---|---|---|
 | Tags | String | No | test | The tags that you want to add to the SLB instance. |
 | EnableVpcVipFlo w | String | No | 1 | The flow log. |
 | LoadBalancerSp ec | String | No | slb.s2.small | Apsara Stack provides two types of SLB instance: shared-resource SLB instances and high-performance SLB instances. You can create high-performance SLB instances of different specifications. Valid values: slb.s1.small slb.s2.small slb.s3.small slb.s2.medium For more information about the specifications of high-performance SLB instances, see High-performance SLB instances. |
 | AddressIPVersio n | String | No | ipv4 | The IP version that is used by the SLB instance. Valid values: ipv4 and ipv6. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2955,16 +3177,14 @@ Server Load Balancer
 | VSwitchId | String | vsw-255ecr*** | The ID of the vSwitch to which the SLB instance belongs. |
 | LoadBalancer Name | String | abc | The name of the SLB instance. |
 
-Server Load Balancer
-
-**Response parameters**
-
 | AddressIPVersi on | String | ipv4 | The IP version that is used by the SLB instance. |
 |---|---|---|---|
 | NetworkType | String | classic | The type of network where the SLB instance is deployed. Valid values: vpc: a VPC classic: a classic network |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateLoadBalancer &RegionId=cn-east-hangzhou-01 &<Common request parameters>
@@ -2973,6 +3193,7 @@ http(s)://[Endpoint]/?Action=CreateLoadBalancer &RegionId=cn-east-hangzhou-01 &<
 Sample success responses `XML` format
 
 ```xml
+<CreateLoadBalancerResponse>
     <NetworkType>vpc</NetworkType>
       <LoadBalancerName>abc</LoadBalancerName>
       <Address>192.168.0.**</Address>
@@ -2982,6 +3203,7 @@ Sample success responses `XML` format
       <LoadBalancerId>lb-bp1b6c719dfa0***</LoadBalancerId>
       <VSwitchId>vsw-bp12mw1f8k3jgygk9****</VSwitchId>
       <VpcId>vpc-bp1aevy8sofi8mh1q***</VpcId>
+</CreateLoadBalancerResponse>
 ```
 
 `JSON` format
@@ -2990,20 +3212,9 @@ Sample success responses `XML` format
 {"LoadBalancerName":"abc", "VpcId":"vpc-25dvzy9*****", "Address":"42.250.**.**", "RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710", "NetworkType":"classic", "AddressIPVersion":"ipv4", "VSwitchId":"vsw-255ecr***", "LoadBalancerId":"lb-hddhfjg*******"}
 ```
 
+#### 7.4.12 DeleteLoadBalancer
+
 Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
-
-#### DeleteLoadBalancer
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteLoadBala ncer | The operation that you want to perform. Set the value to DeleteLoadBalancer. |
-| LoadBalancerId | String | Yes | lb- bp1h66tp5uat8* *** | The ID of the SLB instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
-
-Server Load Balancer
 
 **Note**
 
@@ -3011,20 +3222,27 @@ After you delete an SLB instance, the listeners configured for the SLB instance 
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteLoadBala ncer | The operation that you want to perform. Set the value to DeleteLoadBalancer. |
+| LoadBalancerId | String | Yes | lb- bp1h66tp5uat8* *** | The ID of the SLB instance. |
+
 **Response parameters**
 
-If the SLB instance that you want to delete has deletion protection enabled, the system reports an error in the following formats: JSON format
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
+
+If the SLB instance that you want to delete has deletion protection enabled, the system reports an error in the following formats: JSON format `{`
 
 ```json
-    {
  "RequestId": "7B7AB375-1EA6-4A18-9D1C-F258F2D57638",
  "HostId": "slb.aliyuncs.com",
  "Code": "OperationDenied.DeleteProtectionIsOn",
  "Message": "The loadbalancer can't be deleted due to DeleteProtection is enabled."
-     }
 ```
 
-XML format
+`}` XML format
 
 ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
@@ -3037,14 +3255,9 @@ age>
        </DeleteLoadBabalancerResponse>
 ```
 
+**Examples**
+
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyLoadBala ncerInstanceSpe c | The operation that you want to perform. Set the value to: ModifyLoadBalancerInstanceSpec . |
-| LoadBalancerId | String | Yes | lb- bp1b6c719df*** * | The ID of the SLB instance. |
-
-Server Load Balancer
 
 ```
 http(s)://[Endpoint]/?Action=DeleteLoadBalancer &LoadBalancerId=lb-bp1h66tp5uat8******** &<Common request parameters>
@@ -3058,34 +3271,60 @@ Sample success responses `XML` format
 </DeleteLoadBabalancerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "0D9B7343-AC1F-498C-A18A-78FE14A7C3A3"
-}
 ```
 
-#### ModifyLoadBalancerInstanceSpec
+`}`
+
+#### 7.4.13 ModifyLoadBalancerInstanceSpec
 
 Call ModifyLoadBalancerInstanceSpec operation to modify the specification of an SLB instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyLoadBala ncerInstanceSpe c | The operation that you want to perform. Set the value to: ModifyLoadBalancerInstanceSpec . |
+| LoadBalancerId | String | Yes | lb- bp1b6c719df*** * | The ID of the SLB instance. |
 
 | LoadBalancerSp ec | String | Yes | slb.s1.small | The specification of the SLB instance. Valid values: slb.s1.small slb.s2.small slb.s3.small slb.s2.medium slb.s3.medium slb.s3.large The available specifications vary by region. Note When you change a shared- resource SLB instance to a high- performance SLB instance, your service may be temporarily interrupted for 10 to 30 seconds. Therefore, we recommend that you modify the specification during off-peak hours. In addition, you can use Alibaba Cloud DNS (DNS) to schedule your workloads to another SLB instance before you modify the specification. |
 |---|---|---|---|---|
 | access key id _ _ | String | No | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |
 | Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The tags attached to the SLB instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The request ID. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Example for request
+
+```
+http(s)://[Endpoint]/?Action=ModifyLoadBalancerInstanceSpec &LoadBalancerId=lb-bp1b6c719df**** &LoadBalancerSpec=slb.s2.small
+```
+
+`&` Examples for successful responses `XML` format
+
+```
+D456A34A-6E40-4379-8DAF-9175760FE215
+```
+
+`JSON` format `{`
+
+```json
+    "ModifyLoadBalancerInstanceSpecResponse": {
+        "RequestId": "D456A34A-6E40-4379-8DAF-9175760FE215"
+```
+
+`}` `}`
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -3095,59 +3334,32 @@ Example for request
 | 400 | Operation.NotAllow ed | Operation Denied. Unfinished purchase exists. | The error message returned because the payment of an order is not completed. |
 | 400 | Operation.NotAllow ed | Operation Denied. Prepay instance only permitted to increase loadBalancerSpec. | The error message returned because prepaid instances only allow specification upgrades. |
 
-Server Load Balancer
-
-```
-http(s)://[Endpoint]/?Action=ModifyLoadBalancerInstanceSpec &LoadBalancerId=lb-bp1b6c719df**** &LoadBalancerSpec=slb.s2.small
-```
-
-& Examples for successful responses `XML` format
-
-```
-D456A34A-6E40-4379-8DAF-9175760FE215
-```
-
-`JSON` format
-
-```json
-{
-    "ModifyLoadBalancerInstanceSpecResponse": {
-        "RequestId": "D456A34A-6E40-4379-8DAF-9175760FE215"
-    }
-}
-```
-
 | 400 | Operation.NotAllow ed | Operation Denied. The Purchase status of the instance is not valid. | The error message returned because a parameter in the SLB order is set to an invalid value. |
 |---|---|---|---|
 | 400 | InvalidParameter.B andwidth | The param Bandwidth is invalid. | The specified bandwidth is invalid. Please specify a valid parameter and try again. |
 | 400 | ChangeLbSpecNotA llowed | You cannot change the specification for the specified load balancer. | The error message returned because you cannot modify the specification of the specified SLB instance. |
+
+#### 7.4.14 ModifyLoadBalancerInternetSpec
+
+Modifies the billing method of an Internet-facing Server Load Balancer (SLB) instance. You can modify the billing method of an Internet-facing SLB instance in the following ways: Change the bandwidth limit of a pay-by-bandwidth SLB instance. The new bandwidth limit immediately takes effect. Change the billing method of an SLB instance from pay-by-data-transfer to pay-bybandwidth. The new billing method takes effect at 00:00 the following day. Change the billing method of an SLB instance from pay-by-bandwidth to pay-by-datatransfer. The new billing method takes effect at 00:00 the following day.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyLoadBala ncerInternetSpe c | The operation that you want to perform. Set the value to ModifyLoadBalancerInternetSpec . |
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8ex**** | The ID of the SLB instance. |
 
-Server Load Balancer
-
-#### ModifyLoadBalancerInternetSpec
-
-Modifies the billing method of an Internet-facing Server Load Balancer (SLB) instance. You can modify the billing method of an Internet-facing SLB instance in the following ways: Change the bandwidth limit of a pay-by-bandwidth SLB instance. The new bandwidth limit immediately takes effect. Change the billing method of an SLB instance from pay-by-data-transfer to pay-bybandwidth. The new billing method takes effect at 00:00 the following day. Change the billing method of an SLB instance from pay-by-bandwidth to pay-by-datatransfer. The new billing method takes effect at 00:00 the following day.
-
-**Request parameters**
-
 | Bandwidth | Integer | No | 10 | The bandwidth limit of the Internet- facing SLB instance that is billed on a pay-by-bandwidth basis. Unit: Mbit/s. Valid values: 1 to 5000. The bandwidth limit varies based on the region where the SLB instance is created. Note You do not need to set this parameter for pay-by- data-transfer SLB instances. In this case, the value of InternetChargeType is paybytraffic. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-| 12 |  |  |  | > Document Version: 2025102 |
-|---|---|---|---|---|
-
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3158,22 +3370,27 @@ http(s)://[Endpoint]/?Action=ModifyLoadBalancerInternetSpec &LoadBalancerId=lb-b
 Sample success responses `XML` format
 
 ```xml
+<ModifyLoadBalancerInternetSpecResponse>
       <RequestId>E4DD2D80-8DC0-4A2E-BFBA-BE983A31AFED</RequestId>
+</ModifyLoadBalancerInternetSpecResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "E4DD2D80-8DC0-4A2E-BFBA-BE983A31AFED"
-}
 ```
 
-#### SetLoadBalancerName
+`}`
+
+#### 7.4.15 SetLoadBalancerName
 
 Modifies the name of a Server Load Balancer (SLB) instance.
 
 **Request parameters**
+
+| 12 |   |   |   | > Document Version: 2025102 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3181,13 +3398,13 @@ Modifies the name of a Server Load Balancer (SLB) instance.
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8e**** | The ID of the SLB instance. |
 | LoadBalancerNa me | String | Yes | lb-instance-test | The name of the SLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores ( ), and hyphens (-). _ |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3198,20 +3415,24 @@ http(s)://[Endpoint]/?Action=SetLoadBalancerName &LoadBalancerId=lb-bp1b6c719dfa
 Sample success responses `XML` format
 
 ```xml
+<SetLoadBalancerStatusResponse>
    <RequestId>3C7F675E-9F82-4806-BA47-FF57E3ACC850</RequestId>
+</SetLoadBalancerStatusResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "3C7F675E-9F82-4806-BA47-FF57E3ACC850"
-}
 ```
+
+`}`
+
+#### 7.4.16 SetLoadBalancerStatus
 
 Sets the state of a Server Load Balancer (SLB) instance.
 
-#### SetLoadBalancerStatus
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3221,30 +3442,15 @@ Sets the state of a Server Load Balancer (SLB) instance.
 | access key id _ _ | String | No | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |
 | Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLoadBal ancerAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerAttribute. |
-| LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8ex**** | The ID of the SLB instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| LoadBalancerI d | String | lb-dhhd**** | The ID of the SLB instance. |
-| RegionId | String | cn-qingdao-env17- d01 | The ID of the region where the SLB instance is deployed. |
-| RegionIdAlias | String | cn-qingdao-env17- d01 | The alias of the region where the SLB instance is deployed. |
-
-Server Load Balancer
 
 ```
 http(s)://[Endpoint]/?Action=SetLoadBalancerStatus &LoadBalancerId=lb-bp1b6c719dfa08e****** &LoadBalancerStatus=active &<Common request parameters>
@@ -3253,24 +3459,37 @@ http(s)://[Endpoint]/?Action=SetLoadBalancerStatus &LoadBalancerId=lb-bp1b6c719d
 Sample success responses `XML` format
 
 ```xml
+<SetLoadBalancerStatusResponse>
      <RequestId>E6DDFE22-F019-4F34-B8DD-FD14973450A6</RequestId>
+  </SetLoadBalancerStatusResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "E6DDFE22-F019-4F34-B8DD-FD14973450A6"
-}
 ```
 
-#### DescribeLoadBalancerAttribute
+`}`
+
+#### 7.4.17 DescribeLoadBalancerAttribute
 
 Queries detailed information about a specified Server Load Balancer (SLB) instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLoadBal ancerAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerAttribute. |
+| LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8ex**** | The ID of the SLB instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| LoadBalancerI d | String | lb-dhhd**** | The ID of the SLB instance. |
+| RegionId | String | cn-qingdao-env17- d01 | The ID of the region where the SLB instance is deployed. |
+| RegionIdAlias | String | cn-qingdao-env17- d01 | The alias of the region where the SLB instance is deployed. |
 
 | LoadBalancer Name | String | abc | The name of the SLB instance. |
 |---|---|---|---|
@@ -3282,16 +3501,14 @@ Queries detailed information about a specified Server Load Balancer (SLB) instan
 | Bandwidth | Integer | 5 | The bandwidth limit of the Internet-facing SLB instance that is billed on a pay-by- bandwidth basis. |
 | CreateTime | String | 2017-08- 31T02:49:05Z | The time when the SLB instance was created. |
 | ListenerPorts | List | 80 | The list of frontend ports that are used by the SLB instance. |
-| ListenerPortsA ndProtocol | Array of ListenerPortAn dProtocol |  | The list of frontend ports and protocols that are used by the SLB instance. |
-| ListenerPortAn dProtocol |  |  |  |
+| ListenerPortsA ndProtocol | Array of ListenerPortAn dProtocol |   | The list of frontend ports and protocols that are used by the SLB instance. |
+| ListenerPortAn dProtocol |   |   |   |
 | ListenerPort | Integer | 443 | The frontend port that is used by the SLB instance. |
-
-Server Load Balancer
 
 | ListenerProtoc ol | String | https | The frontend protocol that is used by the SLB instance. |
 |---|---|---|---|
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers that are added to the SLB instance. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers that are added to the SLB instance. |
+| BackendServe r |   |   |   |
 | ServerId | String | i-djghr2**** | The ID of the backend server. |
 | Weight | Integer | 90 | The weight of the backend server. |
 | ServerIp | String | 192.168.0.1 | The IP address of the backend server. |
@@ -3302,10 +3519,8 @@ Server Load Balancer
 | EndTime | String | 2999-09- 08T16:00:00Z | The time when the SLB instance was suspended. |
 | EndTimeStam p | Long | 32493801600000 | The timestamp that indicates when the SLB instance was suspended. |
 | InternetCharg eType | String | paybybandwidth | The billing method of the Internet-facing SLB instance. Valid values: paybybandwidth and paybytraffic. paybybandwidth: pay-by-bandwidth paybytraffic (default): pay-by-data- transfer |
-| ListenerPortsA ndProtocal | Array of ListenerPortAn dProtocal |  | The port and protocol of the listener. |
-| ListenerPortAn dProtocal |  |  |  |
-
-Server Load Balancer
+| ListenerPortsA ndProtocal | Array of ListenerPortAn dProtocal |   | The port and protocol of the listener. |
+| ListenerPortAn dProtocal |   |   |   |
 
 | ListenerPort | Integer | 443 | The frontend port that is used by the SLB instance. |
 |---|---|---|---|
@@ -3316,22 +3531,27 @@ Server Load Balancer
 | SlaveZoneId | String | cn-hangzhou-d | The ID of the secondary zone to which the SLB instance belongs. |
 | VSwitchId | String | vsw- 255ecrwq5**** | The ID of the vSwitch to which the internal-facing SLB instance belongs. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerAttribute &LoadBalancerId=lb-bp1b6c719dfa08ex**** &<Common request parameters>
 ```
 
-Sample success responses `XML` format Server Load Balancer
+Sample success responses `XML` format
 
 ```xml
+<DescribeLoadBalancerAttributeResponse>
       <CreateTimeStamp>1541679713000</CreateTimeStamp>
    <RegionIdAlias>cn-hangzhou</RegionIdAlias>
+   <BackendServers>
       <BackendServer>
          <ServerId>i-bp1c3zrr37ablp8ujo7v</ServerId>
          <Weight>100</Weight>
          <Type>ecs</Type>
       </BackendServer>
+   </BackendServers>
    <HasReservedInfo>false</HasReservedInfo>
    <ListenerPorts></ListenerPorts>
    <InternetChargeType>paybytraffic</InternetChargeType>
@@ -3357,35 +3577,37 @@ Sample success responses `XML` format Server Load Balancer
    <AddressType>intranet</AddressType>
    <EndTime>2999-09-08T16:00:00Z</EndTime>
    <LoadBalancerStatus>active</LoadBalancerStatus>
+</DescribeLoadBalancerAttributeResponse>
 ```
 
-`JSON` format
-
-| 20 |  |  |  | > Document Version: 2025102 |
-|---|---|---|---|---|
-
-Server Load Balancer
+`JSON` format `{`
 
 ```json
-{
     "CreateTimeStamp": 1541679713000,
     "RegionIdAlias": "cn-hangzhou",
+    "BackendServers": {
         "BackendServer": [
-            {
+```
+
+`{`
+
+```json
                 "ServerId": "i-bp1c3zrr37ab*****",
                 "Weight": 100,
                 "Type": "ecs"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "HasReservedInfo": "false",
     "ListenerPorts": {
         "ListenerPort": [ ]
-    },
+```
+
+`},`
+
+```json
     "InternetChargeType": "paybytraffic",
     "VSwitchId": "vsw-bp12mw1f8k******",
     "VpcId": "vpc-bp1aevy8sofi8mh******",
@@ -3394,7 +3616,11 @@ Server Load Balancer
     "NetworkType": "vpc",
     "ListenerPortsAndProtocol": {
         "ListenerPortAndProtocol": [ ]
-    },
+```
+
+`},`
+
+```json
     "PayType": "PayOnDemand",
     "Bandwidth": 5120,
     "LoadBalancerName": "abc1",
@@ -3405,7 +3631,11 @@ Server Load Balancer
     "MasterZoneId": "cn-hangzhou-b",
     "ListenerPortsAndProtocal": {
         "ListenerPortAndProtocal": [ ]
-    },
+```
+
+`},`
+
+```json
     "Address": "192.168.0.1",
     "RegionId": "cn-hangzhou",
     "RequestId": "35D745B3-1567-4855-9EF1-F5CED3C1670C",
@@ -3413,14 +3643,18 @@ Server Load Balancer
     "AddressType": "intranet",
     "EndTime": "2999-09-08T16:00:00Z",
     "LoadBalancerStatus": "active"
-}
 ```
 
-#### DescribeLoadBalancers
+`}`
+
+#### 7.4.18 DescribeLoadBalancers
 
 Queries Server Load Balancer (SLB) instances.
 
 **Request parameters**
+
+| 20 |   |   |   | > Document Version: 2025102 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3432,8 +3666,6 @@ Queries Server Load Balancer (SLB) instances.
 | ServerIntranetA ddress | String | No | 10.XX.XX.6 | The private IP address of the backend server that is added to the SLB instance. You can specify multiple IP addresses to query SLB instances. Separate multiple IP addresses with commas (,). |
 | AddressType | String | No | intranet | The type of network where the SLB instance is deployed. Valid values: intranet and internet. internet: After an Internet-facing SLB instance is created, the system allocates a public IP address to the SLB instance. Then, the SLB instance can forward requests from the Internet. intranet: After an internal-facing SLB instance is created, the system allocates a private IP address to the SLB instance. Then, the SLB instance can forward only internal requests. |
 
-Server Load Balancer
-
 | InternetChargeT ype | String | No | paybybandwidth | The billing method of the Internet- facing SLB instance. Valid values: paybybandwidth and paybytraffic. paybybandwidth: pay-by- bandwidth paybytraffic: pay-by-data- transfer. Note If you do not specify this parameter, the billing method of the SLB instance remains unchanged. |
 |---|---|---|---|---|
 | VpcId | String | No | vpc- bp1aevy8sof**** | The ID of the virtual private cloud (VPC) to which the SLB instance belongs. |
@@ -3444,24 +3676,20 @@ Server Load Balancer
 | SlaveZoneId | String | No | cn-hangzhou-d | The ID of the secondary zone to which the SLB instance belongs. Multiple zones are not supported for users whose workloads are deployed on Alibaba Finance Cloud. |
 | Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The list of tags that are added to the SLB instances. The tags must be key- value pairs in a JSON dictionary. You can specify at most 10 tags in each request. |
 
-Server Load Balancer
-
 | PayType | String | No | PayOnDemand | The billing method of the SLB instance. Valid values: PayOnDemand and PrePay. PayOnDemand: pay-as-you-go PrePay: subscription |
 |---|---|---|---|---|
 | AddressIPVersio n | String | No | ipv4 | The IP version. Valid values: ipv4 and ipv6. Note You can create high-performance IPv6 SLB instances only in the following zones: Hangzhou Zone E and Hangzhou Zone F in the China (Hangzhou) region, Beijing Zone F and Beijing Zone G in the China (Beijing) region, Nantong Zone D and Nantong Zone E in the China (Nantong) region, Zhangjiakou Zone A and Zhangjiakou Zone B in the China (Zhangjiakou) region, and Shenzhen Zone D and Shenzhen Zone E in the China (Shenzhen) region. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| LoadBalancers | Array of LoadBalancer |  | The list of SLB instances. |
-| LoadBalancer |  |  |  |
+| LoadBalancers | Array of LoadBalancer |   | The list of SLB instances. |
+| LoadBalancer |   |   |   |
 | LoadBalancerI d | String | lb-hjfng**** | The ID of the SLB instance. |
 | LoadBalancer Name | String | def | The name of the SLB instance. |
 | LoadBalancerS tatus | String | active | The state of the SLB instance. Valid values: inactive: Listeners do not forward requests. active: Newly created SLB instances are in the active state by default. locked: The SLB instance is locked. |
 | Address | String | 100.XX.XX.28 | The IP address of the SLB instance. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | RegionId | String | cn-qingdao-env17- d01 | The ID of the region where the SLB instance is deployed. |
 |---|---|---|---|
@@ -3477,13 +3705,13 @@ Server Load Balancer
 | CreateTimeSta mp | Long | 1504147745000 | The timestamp generated when the SLB instance was created. |
 | InternetCharg eType | String | paybybandwidth | The billing method of the Internet-facing SLB instance. Set the value to paybytraffic. paybytraffic (default): pay-by-data- transfer Note If the value of the PayType parameter is set to PrePay, only pay-by-bandwidth is supported. |
 
-Server Load Balancer
-
 | PayType | String | PrePay | The billing method of the SLB instance. Valid values: PayOnDemand and PrePay. |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancers &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
@@ -3492,6 +3720,7 @@ http(s)://[Endpoint]/?Action=DescribeLoadBalancers &RegionId=cn-qingdao-env17-d0
 Sample success responses `XML` format
 
 ```xml
+<DescribeLoadBalancersResponse>
       <PageNumber>1</PageNumber>
       <TotalCount>1</TotalCount>
       <PageSize>50</PageSize>
@@ -3518,22 +3747,13 @@ Sample success responses `XML` format
             </LoadBalancer>
       </LoadBalancers>
       <RequestId>1C7445CB-C21C-4C19-9A3C-65C3190D1944</RequestId>
+</DescribeLoadBalancersResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Regions | Array of Region |  | The list of regions. |
-
-Server Load Balancer
+`JSON` format `{`
 
 ```json
-{
+    "DescribeLoadBalancersResponse": {
         "PageNumber": 1,
         "TotalCount": 1,
         "PageSize": 50,
@@ -3557,35 +3777,44 @@ Server Load Balancer
                 "AddressType": "intranet",
                 "PayType": "PayOnDemand",
                 "LoadBalancerStatus": "active"
-            }
-        },
-        "RequestId": "1C7445CB-C21C-4C19-9A3C-65C3190D1944"
-    }
-}
 ```
 
-#### DescribeRegions
+`}` `},`
+
+```json
+        "RequestId": "1C7445CB-C21C-4C19-9A3C-65C3190D1944"
+```
+
+`}` `}`
+
+#### 7.4.19 DescribeRegions
 
 Queries regions.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
+
 **Response parameters**
 
-| Region |  |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Regions | Array of Region |   | The list of regions. |
+
+| Region |   |   |   |
 |---|---|---|---|
 | RegionId | String | cn-qingdao-env17- d01 | The ID of the region. |
 | LocalName | String | China (Qingdao) | The name of the region. |
 | RequestId | String | 1651FBB6-4FBF- 49FF-A9F5- DF5D696C7EC6 | The ID of the request. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParameter | Illegal parameter, query.namespace is not auth. | The error message returned because you are unauthorized to perform the operation. Acquire the permissions and try again. |
+**Examples**
 
-Server Load Balancer Sample requests
+Sample requests
 
 ```
-&<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeRegions &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -3599,56 +3828,61 @@ Sample success responses `XML` format
 </Regions>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "1651FBB6-4FBF-49FF-A9F5-DF5D696C7EC6",
     "Regions": {
         "Region": {
             "RegionId": "cn-beijing",
             "LocalName": "China (Beijing)"
-        }
-    }
-}
 ```
+
+`}` `}` `}`
+
+**Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParameter | Illegal parameter, query.namespace is not auth. | The error message returned because you are unauthorized to perform the operation. Acquire the permissions and try again. |
+
+#### 7.4.20 DescribeZones
+
+Queries zones in a specified region.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeZones | The operation that you want to perform. Set the value to DescribeZones. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Zones | Array of Zone |  | The list of zones. |
-| Zone |  |  |  |
+| Zones | Array of Zone |   | The list of zones. |
+| Zone |   |   |   |
 | ZoneId | String | cn-hangzhou-b | The ID of the zone. |
 | LocalName | String | Hangzhou Zone | The name of the zone. |
-| SlaveZones | Array of SlaveZone |  | The list of secondary zones. |
-| SlaveZone |  |  |  |
+| SlaveZones | Array of SlaveZone |   | The list of secondary zones. |
+| SlaveZone |   |   |   |
 | ZoneId | String | cn-hangzhou-g | The ID of the secondary zone. |
 | LocalName | String | Hangzhou Zone G | The name of the secondary zone. |
 | RequestId | String | A48D35FF-440A- 4BC0-A4A2- A9BF69B7E43A | The ID of the request. |
 
-Server Load Balancer
-
-#### DescribeZones
-
-Queries zones in a specified region.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-east-hangzhou-01 &<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-east-hangzhou-01 &<Common request parameters>
 ```
 
-Server Load Balancer Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeZonesResponse>
   <RequestId>3FF183FF-F4AA-40E8-8B5D-90788C6799C2</RequestId>
    <Zones>
       <Zone>
@@ -3701,8 +3935,6 @@ Server Load Balancer Sample success responses `XML` format
       </Zone>
 ```
 
-Server Load Balancer
-
 ```xml
       <Zone>
          <SlaveZones>
@@ -3729,139 +3961,167 @@ Server Load Balancer
          <LocalName>Hangzhou Zone H</LocalName>
       </Zone>
    </Zones>
+</DescribeZonesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "DescribeZonesResponse": {
         "RequestId": "3FF183FF-F4AA-40E8-8B5D-90788C6799C2",
         "Zones": {
             "Zone": [
-                {
-                    "SlaveZones": {
-                        "SlaveZone": [
-                            {
-                                "ZoneId": "cn-hangzhou-g",
-                                "LocalName": "Hangzhou Zone G"
-                            },
-                            {
-                                "ZoneId": "cn-hangzhou-d",
-                                "LocalName": "Hangzhou Zone D"
-                            }
 ```
 
-]
+`{`
 
 ```json
-                    },
+                    "SlaveZones": {
+                        "SlaveZone": [
+```
+
+`{`
+
+```json
+                                "ZoneId": "cn-hangzhou-g",
+                                "LocalName": "Hangzhou Zone G"
+```
+
+`},` `{`
+
+```json
+                                "ZoneId": "cn-hangzhou-d",
+                                "LocalName": "Hangzhou Zone D"
+```
+
+`}` `]` `},`
+
+```json
                     "ZoneId": "cn-hangzhou-b",
                     "LocalName": "Hangzhou Zone B"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "SlaveZones": {
                         "SlaveZone": {
 "ZoneId":"cn-hangzhou-e",
 ```
 
-Server Load Balancer
-
 ```json
                             ZoneId: cnhangzhoue,
                             "LocalName": "Hangzhou Zone E"
-                        }
-                    },
-                    "ZoneId": "cn-hangzhou-d",
-                    "LocalName": "Hangzhou Zone D"
-                },
-                {
-                    "SlaveZones": {
-                        "SlaveZone": [
-                            {
-                                "ZoneId": "cn-hangzhou-f",
-                                "LocalName": "Hangzhou Zone F"
-                            },
-                            {
-                                "ZoneId": "cn-hangzhou-d",
-                                "LocalName": "Hangzhou Zone D"
-                            }
 ```
 
-]
+`}` `},`
 
 ```json
-                    },
+                    "ZoneId": "cn-hangzhou-d",
+                    "LocalName": "Hangzhou Zone D"
+```
+
+`},` `{`
+
+```json
+                    "SlaveZones": {
+                        "SlaveZone": [
+```
+
+`{`
+
+```json
+                                "ZoneId": "cn-hangzhou-f",
+                                "LocalName": "Hangzhou Zone F"
+```
+
+`},` `{`
+
+```json
+                                "ZoneId": "cn-hangzhou-d",
+                                "LocalName": "Hangzhou Zone D"
+```
+
+`}` `]` `},`
+
+```json
                     "ZoneId": "cn-hangzhou-e",
                     "LocalName": "Hangzhou Zone E"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "SlaveZones": {
                         "SlaveZone": {
                             "ZoneId": "cn-hangzhou-e",
                             "LocalName": "Hangzhou Zone E"
-                        }
-                    },
-                    "ZoneId": "cn-hangzhou-f",
-                    "LocalName": "Hangzhou Zone F"
-                },
-                {
-                    "SlaveZones": {
-                        "SlaveZone": [
-                            {
-                                "ZoneId": "cn-hangzhou-h",
-                                "LocalName": "Hangzhou Zone H"
-                            },
-                            {
-                                "ZoneId": "cn-hangzhou-b",
-                                "LocalName": "Hangzhou Zone B"
-                            }
 ```
 
-]
+`}` `},`
 
 ```json
-                    },
+                    "ZoneId": "cn-hangzhou-f",
+                    "LocalName": "Hangzhou Zone F"
+```
+
+`},` `{`
+
+```json
+                    "SlaveZones": {
+                        "SlaveZone": [
+```
+
+`{`
+
+```json
+                                "ZoneId": "cn-hangzhou-h",
+                                "LocalName": "Hangzhou Zone H"
+```
+
+`},` `{`
+
+```json
+                                "ZoneId": "cn-hangzhou-b",
+                                "LocalName": "Hangzhou Zone B"
+```
+
+`}` `]` `},`
+
+```json
                     "ZoneId": "cn-hangzhou-g",
                     "LocalName": "Hangzhou Zone G"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "SlaveZones": {
                         "SlaveZone": {
                             "ZoneId": "cn-hangzhou-g",
                             "LocalName": "Hangzhou Zone G"
-                        }
 ```
+
+`}` `},`
+
+```json
+                    "ZoneId": "cn-hangzhou-h",
+                    "LocalName": "Hangzhou Zone H"
+```
+
+`}` `]` `}` `}` `}`
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidParameter | Illegal parameter, query.namespace is not auth. | The error message returned because you are unauthorized to perform the operation. Request the permissions and try again. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateLoadBala ncerTCPListener | The operation that you want to perform. Valid value: CreateLoadBalancerTCPListener. |
+### 7.5 Listeners
 
-Server Load Balancer
+#### 7.5.1 TCP listeners
 
-```json
-                    },
-                    "ZoneId": "cn-hangzhou-h",
-                    "LocalName": "Hangzhou Zone H"
-                }
-```
-
-]
-
-```
-        }
-    }
-}
-```
-
-### Listeners
-
-#### TCP listeners
-
-##### CreateLoadBalancerTCPListener
+##### 7.5.1.1 CreateLoadBalancerTCPListener
 
 Creates a TCP listener.
 
@@ -3871,13 +4131,15 @@ Newly created listeners are in the stopped state. After creation, you can call t
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateLoadBala ncerTCPListener | The operation that you want to perform. Valid value: CreateLoadBalancerTCPListener. |
+
 | Bandwidth | Integer | Yes | -1 | The peak bandwidth of the listener. Unit: Mbit/s. Valid values: -1 or 1 to 5120. -1: For an Internet-facing SLB instance that uses the pay-by- data-transfer billing method, you can set the bandwidth limit to -1, which specifies that the bandwidth is not limited. 1 to 5120: For an Internet-facing SLB instance that uses the pay-by- bandwidth billing method, you can set the peak bandwidth for each listener. However, the sum of peak bandwidth values of all listeners cannot exceed the peak bandwidth of the SLB instance. |
 |---|---|---|---|---|
 | ListenerPort | Integer | Yes | 80 | The frontend port that you want to use for the SLB instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8ex**** | The ID of the SLB instance. |
 | BackendServerP ort | Integer | No | 80 | The backend port that you want to use for the SLB instance. Valid values: 1 to 65535. This parameter is required if you do not use a server group (you do not specify VServerGroupId). |
-
-Server Load Balancer
 
 | Scheduler | String | No | wrr | The scheduling algorithm. Valid values: wrr (default): Backend servers that have higher weights receive more requests. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. sch: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server. tch: Consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server. Note Only high-performance SLB instances support the sch and tch consistent hashing algorithms. |
 |---|---|---|---|---|
@@ -3885,16 +4147,12 @@ Server Load Balancer
 | HealthyThreshol d | Integer | No | 4 | The number of consecutive successful health checks that must occur before a backend server is declared healthy (from failed to success). Valid values: 2 to 10. |
 | UnhealthyThres hold | Integer | No | 4 | The number of consecutive failed health checks that must occur before a backend server is declared unhealthy (from success to failed). Valid values: 2 to 10. |
 
-Server Load Balancer
-
 | HealthCheckCon nectTimeout | Integer | No | 100 | The timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5. |
 |---|---|---|---|---|
 | HealthCheckCon nectPort | Integer | No | 80 | The port that is used for health checks. Valid values: 1 to 65535. If you do not set this parameter, the backend port is used for health checks. |
 | healthCheckInte rval | Integer | No | 3 | The interval between two consecutive health checks. Unit: seconds. Valid values: 1 to 50. |
 | HealthCheckDo main | String | No | 172.XX.XX.6 | The domain name used for health checks. Valid values: $ ip: The private IP address of the _ backend server. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER IP, _ the CLB instance uses the private IP addresses of backend servers for health checks. domain: The domain name must be 1 to 80 characters in length and can contain only letters, digits, periods (.), and hyphens (-). |
 | HealthCheckURI | String | No | /test/index.html | The URI that is used for health checks. The URI must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), number signs (#), and ampersands (&amp;). The URL cannot be a single forward slash (/) but it must start with a forward slash (/). You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed. |
-
-Server Load Balancer
 
 | HealthCheckHttp Code | String | No | http 2xx,http 3x _ _ x | The HTTP status code that is returned when a health check is successful. Separate multiple HTTP status codes with commas (,). Valid values: http 2xx (default), _ http 3xx, http 4xx, and http 5xx. _ _ _ |
 |---|---|---|---|---|
@@ -3906,15 +4164,11 @@ Server Load Balancer
 | RegionId | String | Yes | cn-east- hangzhou-01 | The ID of the region where the SLB instance is deployed. You can call the DescribeRegions operation to query region IDs. |
 | AclId | String | No | acl- bp1l0kk4gxce43 kz****** | The ID of the access control list (ACL) that you want to associate with the listener. This parameter is required when the AclStatus parameter is set to on. |
 
-Server Load Balancer
-
 | AclType | String | No | off | Specifies whether to enable access control. Valid values: on: enables access control. off (default): disables access control. |
 |---|---|---|---|---|
 | AclStatus | String | No | white | The type of the ACL. Valid values: white: Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. After a whitelist is configured, only IP addresses in the whitelist can access the SLB listener. Risks may arise if the whitelist is improperly set. If you enable a whitelist but do not add an IP address to the whitelist, the listener forwards all requests. black: Requests from the IP addresses or CIDR blocks in the ACL are not forwarded. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If you enable a blacklist but do not add an IP address to the blacklist, the listener forwards all requests. Note This parameter takes effect only when the AclStatus parameter is set to on. |
 | ConnectionDrain | String | No | off | Specifies whether to enable connection draining. Valid values: on: enables connection draining. off: disables connection draining. |
 | ConnectionDrain Timeout | Integer | No | 300 | The timeout period for connection draining. Unit: seconds. Valid values: 10 to 900. Note This parameter is required when ConnectionDrain is set to on. |
-
-Server Load Balancer
 
 **Response parameters**
 
@@ -3922,20 +4176,15 @@ Server Load Balancer
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The request ID. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParameterVa lue.SpecNotSuppor t | The loadBalancer of shared spec does not support the parameter value, %s. | Shared-resource CLB instances do not support the specified parameter value. |
-| 400 | InvalidParameterVa lue.RegionNotSupp ort | The region does not support the parameter value, %s. | The specified parameter value is not supported in the current region. |
-| 400 | Abs.VServerGroupI dAndMasterSlaveS erverGroupId.Miss Match | The parameters VServerGroupId or MasterSlaveServerGroupId miss match. | VServerGroupId and MasterSlaveServerGroupId conflict with each other. |
-| 400 | IpVersionConflict | The ip version of this LoadBalancer and the Acl is conflict. | The specified IP version is not supported by the network ACL. |
+**Examples**
 
-Server Load Balancer Sample request
+Sample request
 
 ```
 http(s)://[Endpoint]/?Action=CreateLoadBalancerTCPListener &Bandwidth=-1 &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex****
 ```
 
-& Sample success responses `XML` format
+`&` Sample success responses `XML` format
 
 ```
 CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -3946,6 +4195,15 @@ CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 ```json
 {"RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"}
 ```
+
+**Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParameterVa lue.SpecNotSuppor t | The loadBalancer of shared spec does not support the parameter value, %s. | Shared-resource CLB instances do not support the specified parameter value. |
+| 400 | InvalidParameterVa lue.RegionNotSupp ort | The region does not support the parameter value, %s. | The specified parameter value is not supported in the current region. |
+| 400 | Abs.VServerGroupI dAndMasterSlaveS erverGroupId.Miss Match | The parameters VServerGroupId or MasterSlaveServerGroupId miss match. | VServerGroupId and MasterSlaveServerGroupId conflict with each other. |
+| 400 | IpVersionConflict | The ip version of this LoadBalancer and the Acl is conflict. | The specified IP version is not supported by the network ACL. |
 
 | 400 | InvalidParameterVa lue.ZoneNotSuppor t | The zone does not support the parameter value, %s. | The specified parameter value is not supported in the current zone. |
 |---|---|---|---|
@@ -3961,8 +4219,6 @@ CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 | 400 | QuotaLimitExceeds .AclAttachedToList ener | %s. | The number of listeners associated with the network ACL has reached the upper limit. |
 | 400 | QuotaLimitExceeds .TotalAclEntry | %s. | The number of network ACL rules has reached the upper limit. |
 
-Server Load Balancer
-
 | 400 | Duplicated.AclEntry | %s. | The specified ACL entry already exists. |
 |---|---|---|---|
 | 400 | OperationUnsuppor ted.SetAccessContr ol | The singleTunnel/anyTunnel loadbalancer does not support config AccessControlList. | Single Tunnel and Any Tunnel CLB instances do not support network ACLs. |
@@ -3976,13 +4232,17 @@ Server Load Balancer
 | 400 | IllegalParam.Failov erThreshold | The parameter FailoverThreshold is illegal. | FailoverThreshold is set to an invalid value. Specify a valid tag value and try again. |
 | 400 | IllegalParam.Failov erStrategy | The parameter FailoverStrategy is illegal. | FailoverStrategy is set to an invalid value. Specify a valid UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 
-Server Load Balancer
-
 | 400 | MasterSlaveServer Conflict | The servers are conflict for MasterSlaveGroup. | The backend servers in the primary/secondary server group must not be the same. |
 |---|---|---|---|
 | 400 | OperationDenied.H ealthCheckClosedF orMasterSlaveMode | The operation is denied because of HealthCheckClosedForMasterSl aveMode. | Health checks must be enabled in primary/secondary mode. |
 | 400 | IllegalParam.Health Check | The param of HelathCheck is illegal. | HealthCheck is set to an invalid value. Specify a valid parameter and try again. |
 | 400 | Mismatch.SlbSpecT ypeAndListenerProt ocol | The SlbSpecType and ListenerProtocol are mismatched. | The specified instance type and listener type do not match. |
+
+##### 7.5.1.2 SetLoadBalancerTCPListenerAttribute
+
+Modifes the configurations of a TCP listener.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3990,19 +4250,9 @@ Server Load Balancer
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb- bp1ygod3yctvg1 y**** | The ID of the SLB instance. |
 
-Server Load Balancer
-
-##### SetLoadBalancerTCPListenerAttribute
-
-Modifes the configurations of a TCP listener.
-
-**Request parameters**
-
 | Bandwidth | Integer | No | 43 | The bandwidth limit of the listener. Unit: Mbit/s. Valid values: -1 and 1 to 5120. -1: For a pay-by-data-transfer Internet-facing SLB instance, you can set the value to -1. If you set the value to -1, the bandwidth is unlimited. 1 to 5120: For a pay-by- bandwidth Internet-facing SLB instance, you can specify the bandwidth limit of each listener. The sum of bandwidth limit values that you set for all listeners cannot exceed the bandwidth limit of the SLB instance. |
 |---|---|---|---|---|
 | Scheduler | String | No | wrr | The scheduling algorithm. Valid values: wrr: Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. sch: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server. tch: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same preceding information are distributed to the same backend server. Note Only high- performance SLB instances support the sch and tch consistent hashing algorithms. |
-
-Server Load Balancer
 
 | PersistenceTime out | Integer | No | 0 | The timeout period of session persistence. Valid values: 0 to 3600. Unit: seconds. Default value: 0. If you set the value to 0, session persistence is disabled. |
 |---|---|---|---|---|
@@ -4012,16 +4262,12 @@ Server Load Balancer
 | HealthCheckCon nectPort | Integer | No | 8080 | The port that is used for health checks. Valid values: 1 to 65535. If this parameter is not set, the port specified in BackendServerPort is used for health checks. |
 | HealthCheckInte rval | Integer | No | 5 | The interval between two consecutive health checks. Valid values: 1 to 50. Unit: seconds. |
 
-Server Load Balancer
-
 | HealthCheckDo main | String | No | 172.XX.XX.6 | The domain name that is used for health checks. You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed. $ ip: The private IP address of the _ backend server. If you do not set this parameter or set the parameter to $ ip, the SLB _ instance uses the private IP address of each backend server as the domain name for health checks. domain: The domain name must be 1 to 80 characters in length. It can contain only letters, digits, periods (.),and hyphens (-). |
 |---|---|---|---|---|
 | HealthCheckURI | String | No | /test/index.html | The URL that is used for health checks. The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL must not be a single forward slash (/). However, it must start with a forward slash (/). You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed. ) |
 | HealthCheckHttp Code | String | No | http 2xx _ | The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Valid values: http 2xx, http 3xx, _ _ http 4xx, and http 5xx. _ _ |
 | HealthCheckTyp e | String | No | tcp | The type of health checks. Valid values: tcp and http. |
 | SynProxy | String | No | enable | Specifies whether to enable SynProxy to protect backend servers against attacks. We recommend that you use the default value for this parameter. Valid values: enable and disable. |
-
-Server Load Balancer
 
 | MaxConnection | Integer | No | 20 | The maximum number of connections. |
 |---|---|---|---|---|
@@ -4033,27 +4279,15 @@ Server Load Balancer
 | EstablishedTime out | Integer | No | 500 | The timeout period of connections. Valid values: 10 to 900. Unit: seconds. |
 | Description | String | No | test | The description of the TCP listener. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLoadBal ancerTCPListene rAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerTCPListene rAttribute. |
-| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
-| LoadBalancerId | String | Yes | lb- bp1ygod3yctvg1 y**** | The ID of the SLB instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ListenerPort | Integer | 80 | The frontend port that is used by the SLB instance. |
-
-Server Load Balancer
 
 ```
 http(s)://[Endpoint]/?Action=SetLoadBalancerTCPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y**** &<Common request parameters>
@@ -4067,21 +4301,31 @@ Sample success responses `XML` format
 </SetLoadBalancerTCPListenerAttributeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "59B41B53-BC4B-481A-9D8D-2A0D20B3FCD1"
-}
 ```
 
-##### DescribeLoadBalancerTCPListenerAttribute
+`}`
+
+##### 7.5.1.3 DescribeLoadBalancerTCPListenerAttribute
 
 Queries the configurations of a TCP listener.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLoadBal ancerTCPListene rAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerTCPListene rAttribute. |
+| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
+| LoadBalancerId | String | Yes | lb- bp1ygod3yctvg1 y**** | The ID of the SLB instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ListenerPort | Integer | 80 | The frontend port that is used by the SLB instance. |
 
 | BackendServe rPort | Integer | 80 | The backend port that is used by the SLB instance. Note When the SLB instance uses a vServer group, this parameter is not displayed. |
 |---|---|---|---|
@@ -4090,25 +4334,21 @@ Queries the configurations of a TCP listener.
 | SynProxy | String | enable | Indicates whether SynProxy is enabled. SynProxy is a feature that protects SLB from attacks. We recommend that you use the default value for this parameter. Valid values: Enable: SynProxy is enabled. Disable: SynProxy is disabled. |
 | Scheduler | String | wrr | The scheduling algorithm. Valid values: wrr (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. |
 
-Server Load Balancer
-
-| PersistenceTi meout | Integer |  | 0 | Indicates whether session persistence is enabled. If the value is set to 0, it indicates that session persistence is disabled. |  |  |
+| PersistenceTi meout | Integer |   | 0 | Indicates whether session persistence is enabled. If the value is set to 0, it indicates that session persistence is disabled. |   |   |
 |---|---|---|---|---|---|---|
-| HealthCheckT ype | String |  | tcp | The health check method that is used by the TCP listener. Valid values: tcp and http. |  |  |
-| HealthCheck | String |  | on | Indicates whether health checks are enabled. Valid values: on and off. |  |  |
-| HealthyThresh old | Integer |  | 4 | The healthy threshold. |  |  |
-| UnhealthyThre shold | Integer |  | 4 | The unhealthy threshold. |  |  |
-| HealthCheckC onnectPort | Integer |  | 8080 | The port that is used for health checks. |  |  |
-| HealthCheckIn terval | Integer |  | 5 | The interval between two consecutive health checks. Unit: seconds. |  |  |
-| HealthCheckD omain | String |  | www.domain.com | The domain name that is used for health checks. |  |  |
-| HealthCheckU RI | String |  | /test/index.html | The URL that is used for health checks. The value must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), |  |  |
-|  |  |  |  |  | hyphens (-), forward slashes (/), |  |
-|  |  |  |  | periods (.),%?number signs (#), and |  |  |
-|  |  |  |  | ampersands (&) |  |  |
-| HealthCheckHt tpCode | String |  | http 2xx _ | The HTTP status code that indicates a successful health check. Valid values: http 2xx, http 3xx, http 4xx, and _ _ _ http 5xx. Default value: http 2xx. _ _ |  |  |
-| VServerGroupI d | String |  | rsp-cige6******8 | The ID of the associated vServer group. |  |  |
-
-Server Load Balancer
+| HealthCheckT ype | String |   | tcp | The health check method that is used by the TCP listener. Valid values: tcp and http. |   |   |
+| HealthCheck | String |   | on | Indicates whether health checks are enabled. Valid values: on and off. |   |   |
+| HealthyThresh old | Integer |   | 4 | The healthy threshold. |   |   |
+| UnhealthyThre shold | Integer |   | 4 | The unhealthy threshold. |   |   |
+| HealthCheckC onnectPort | Integer |   | 8080 | The port that is used for health checks. |   |   |
+| HealthCheckIn terval | Integer |   | 5 | The interval between two consecutive health checks. Unit: seconds. |   |   |
+| HealthCheckD omain | String |   | www.domain.com | The domain name that is used for health checks. |   |   |
+| HealthCheckU RI | String |   | /test/index.html | The URL that is used for health checks. The value must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), |   |   |
+|   |   |   |   |   | hyphens (-), forward slashes (/), |   |
+|   |   |   |   | periods (.),%?number signs (#), and |   |   |
+|   |   |   |   | ampersands (&) |   |   |
+| HealthCheckHt tpCode | String |   | http 2xx _ | The HTTP status code that indicates a successful health check. Valid values: http 2xx, http 3xx, http 4xx, and _ _ _ http 5xx. Default value: http 2xx. _ _ |   |   |
+| VServerGroupI d | String |   | rsp-cige6******8 | The ID of the associated vServer group. |   |   |
 
 | Description | String | Description. | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. |
 |---|---|---|---|
@@ -4118,13 +4358,15 @@ Server Load Balancer
 | MaxConnectio n | Integer | 10 | The maximum number of connections. |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerTCPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y****** &<Common request parameters>
 ```
 
-Sample success responses `XML` format Server Load Balancer
+Sample success responses `XML` format
 
 ```xml
 <DescribeLoadBalancerTCPListenerAttributeResponse>
@@ -4150,10 +4392,9 @@ Sample success responses `XML` format Server Load Balancer
     </DescribeLoadBalancerTCPListenerAttributeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "HealthCheckHttpCode": "http_2xx,http_3xx",
     "PersistenceTimeout": 0,
     "HealthCheckType": "tcp",
@@ -4173,14 +4414,21 @@ Sample success responses `XML` format Server Load Balancer
     "HealthCheckInterval": 2,
     "RequestId": "9A113A8C-BB8F-475E-9533-7819ECA2FFC1",
     "BackendServerPort": 80
-}
 ```
 
-#### UDP listeners
+`}`
 
-##### CreateLoadBalancerUDPListener
+#### 7.5.2 UDP listeners
+
+##### 7.5.2.1 CreateLoadBalancerUDPListener
 
 Creates a UDP listener.
+
+**Note**
+
+You cannot view the source IP addresses of network traffic if you create UDP listeners for a Server Load Balancer (SLB) instance that is deployed in a classic network. In addition, newly created listeners are in the **stopped** state. After a listener is created, you must call the StartLoadBalancerListener operation to enable the listener. This way, the listener can forward network traffic.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -4190,20 +4438,10 @@ Creates a UDP listener.
 | LoadBalancerId | String | Yes | lb- bp1ygod3yctvg1 y7**** | The ID of the SLB instance. |
 | BackendServerP ort | Integer | No | 80 | The backend port that is used by the SLB instance. Valid values: 1 to 65535. If the VServerGroupId parameter is not set, this parameter is required. |
 
-Server Load Balancer
-
-**Note**
-
-You cannot view the source IP addresses of network traffic if you create UDP listeners for a Server Load Balancer (SLB) instance that is deployed in a classic network. In addition, newly created listeners are in the **stopped** state. After a listener is created, you must call the StartLoadBalancerListener operation to enable the listener. This way, the listener can forward network traffic.
-
-**Request parameters**
-
 | Scheduler | String | No | wrr | The scheduling algorithm. Valid values: wrr (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. sch: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server. tch: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same preceding information are distributed to the same backend server. qch: specifies consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server. Note Only high- performance SLB instances support the sch, tch, and qch consistent hashing algorithms. |
 |---|---|---|---|---|
 | HealthyThreshol d | Integer | No | 4 | The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from fail to success). Valid values: 2 to 10. |
 | UnhealthyThres hold | Integer | No | 4 | The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from success to fail). Valid values: 2 to 10. |
-
-Server Load Balancer
 
 | HealthCheckCon nectTimeout | Integer | No | 100 | The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Valid values: 1 to 300. Unit: seconds. |
 |---|---|---|---|---|
@@ -4215,22 +4453,15 @@ Server Load Balancer
 | MasterSlaveServ erGroupId | String | No | rsp-0bfucwu**** | The ID of the primary/secondary server group. Note You cannot specify both VServerGroupId and MasterSlaveServerGroupId. |
 | Description | String | No | test | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. |
 
-Server Load Balancer
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | Abs.VServerGroupI dAndMasterSlaveS erverGroupId.Miss Match | The parameters VServerGroupId or MasterSlaveServerGroupId miss match. | The error message returned because the VServerGroupId parameter or the MasterSlaveServerGroupId parameter does not match. |
+**Examples**
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateLoadBalancerUDPListener &Bandwidth=34 &ListenerPort=80 &LoadBalancerId=lb-bp1ygod3yctvg1y7****** &<Common request parameters>
@@ -4239,22 +4470,33 @@ http(s)://[Endpoint]/?Action=CreateLoadBalancerUDPListener &Bandwidth=34 &Listen
 Sample success responses `XML` format
 
 ```xml
+<CreateLoadBalancerUDPListenerResponse>
       <RequestId>06F00FBB-3D9E-4CCE-9D43-1A6946A75456</RequestId>
+</CreateLoadBalancerUDPListenerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "06F00FBB-3D9E-4CCE-9D43-1A6946A75456"
-}
 ```
 
-##### SetLoadBalancerUDPListenerAttribute
+`}`
+
+**Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | Abs.VServerGroupI dAndMasterSlaveS erverGroupId.Miss Match | The parameters VServerGroupId or MasterSlaveServerGroupId miss match. | The error message returned because the VServerGroupId parameter or the MasterSlaveServerGroupId parameter does not match. |
+
+##### 7.5.2.2 SetLoadBalancerUDPListenerAttribute
 
 Modifies the configurations of a UDP listener.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | SetLoadBalancer UDPListenerAttri bute | The operation that you want to perform. Set the value to SetLoadBalancerUDPListenerAttr ibute. |
 |---|---|---|---|---|
@@ -4262,14 +4504,10 @@ Modifies the configurations of a UDP listener.
 | LoadBalancerId | String | Yes | lb- bp1rtfnodmywb 43ecu4sf-c**** | The ID of the SLB instance. |
 | Bandwidth | Integer | No | -1 | The bandwidth limit of the listener. Unit: Mbit/s. Valid values: 1 to 5120 and -1. -1: For a pay-by-data-transfer Internet-facing SLB instance, you can set the value to -1. If you set the value to -1, the bandwidth is unlimited. 1 to 5120: For a pay-by- bandwidth Internet-facing SLB instance, you can specify a value as the bandwidth limit for each listener. The sum of maximum bandwidth values that you set for all listeners cannot exceed the bandwidth limit of the SLB instance. For more information, see Bandwidth limit of a shared- resource SLB instance. |
 
-Server Load Balancer
-
 | Scheduler | String | No | wrr | The scheduling algorithm. Valid values: wrr: Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. sch: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server. tch: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same preceding information are distributed to the same backend server. qch: specifies consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server. Note Only high- performance SLB instances support the sch, tch, and qch consistent hashing algorithms. |
 |---|---|---|---|---|
 | HealthyThreshol d | Integer | No | 4 | The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from fail to success). Valid values: 2 to 10. |
 | UnhealthyThres hold | Integer | No | 4 | The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from success to fail). Valid values: 2 to 10. |
-
-Server Load Balancer
 
 | HealthCheckCon nectTimeout | Integer | No | 100 | The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Valid values: 1 to 300. Note If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the value of the HealthCheckConnectTimeout parameter is ignored and the value of the HealthCheckInterval parameter is regarded as the timeout period. |
 |---|---|---|---|---|
@@ -4280,8 +4518,6 @@ Server Load Balancer
 | MaxConnection | Integer | No | 10 | The maximum number of connections. |
 | Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The key and value of the tag. |
 
-Server Load Balancer
-
 | VServerGroup | String | No | on | Specifies whether to use a vServer group. Valid values: on and off. Note You cannot set both VserverGroup and MasterSlaveServerGroup to on. |
 |---|---|---|---|---|
 | VServerGroupId | String | No | rsp-cige6**** | The ID of the vServer group. |
@@ -4289,13 +4525,13 @@ Server Load Balancer
 | MasterSlaveServ erGroup | String | No | on | Specifies whether to use a primary/secondary server group. Valid values: on and off. You cannot set both VserverGroup and MasterSlaveServerGroup to on. |
 | Description | String | No | test | The description of the listener. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4305,32 +4541,19 @@ http(s)://[Endpoint]/?Action=SetLoadBalancerUDPListenerAttribute &ListenerPort=8
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLoadBal ancerUDPListen erAttribute | The operation that you want to perform. Valid values: DescribeLoadBalancerUDPListene rAttribute. |
-| ListenerPort | Integer | Yes | 80 | The frontend port that you want to use for the SLB instance. Valid values: 1 to 65535. |
-| LoadBalancerId | String | Yes | lb- bp1rtfnodmywb 43e**** | The ID of the SLB instance. |
-| RegionId | String | Yes | cn-east- hangzhou-01 | The region ID of the Server Load Balancer (SLB) instance. You can call the DescribeRegions operation to query region IDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ListenerPort | Integer | 80 | The frontend port of the SLB instance. |
-
-Server Load Balancer
-
 ```xml
 <SetLoadBalancerUDPListenerAttributeResponse>
      <RequestId>A0F0643E-D653-4F6F-A67F-205B2A92BE18</RequestId>
 </SetLoadBalancerUDPListenerAttributeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "A0F0643E-D653-4F6F-A67F-205B2A92BE18"
-}
 ```
+
+`}`
 
 **7.5.2.3.**
 
@@ -4340,7 +4563,18 @@ Queries the configuration of a UDP listener.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLoadBal ancerUDPListen erAttribute | The operation that you want to perform. Valid values: DescribeLoadBalancerUDPListene rAttribute. |
+| ListenerPort | Integer | Yes | 80 | The frontend port that you want to use for the SLB instance. Valid values: 1 to 65535. |
+| LoadBalancerId | String | Yes | lb- bp1rtfnodmywb 43e**** | The ID of the SLB instance. |
+| RegionId | String | Yes | cn-east- hangzhou-01 | The region ID of the Server Load Balancer (SLB) instance. You can call the DescribeRegions operation to query region IDs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ListenerPort | Integer | 80 | The frontend port of the SLB instance. |
 
 | BackendServe rPort | Integer | 53 | The backend port that is used by the SLB instance. Note If the listener is associated with a vServer group, this parameter is not returned. |
 |---|---|---|---|
@@ -4348,8 +4582,6 @@ Queries the configuration of a UDP listener.
 | Status | String | stopped | The listener status. Valid values: running: The listener is running. stopped: The listener is stopped. |
 | Scheduler | String | wrr | The scheduling algorithm. wrr (default): Backend servers that have higher weights receive more requests. wlc: Requests are distributed based on the weights and connections of backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests. rr: Requests are distributed to backend servers in sequence. |
 | HealthCheck | String | on | Indicates whether the health check feature is enabled. Valid values: on or off. |
-
-Server Load Balancer
 
 | HealthyThresh old | Integer | 4 | The number of consecutive successful health checks after which the health check status of the backend server is changed from failed to successful. Valid values: 2 to 10. |
 |---|---|---|---|
@@ -4360,8 +4592,6 @@ Server Load Balancer
 | VServerGroupI d | String | rsp-cige6j**** | The ID of the vServer group that is associated with the listener. |
 | AclId | String | acl- bp1l0kk4gxce43kz ****** | The ID of the access control list (ACL) that is associated with the listener. This parameter is required when the AclStatus parameter is set to on. |
 
-Server Load Balancer
-
 | AclStatus | String | white | The type of the ACL. Valid values: white: Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists are applicable to scenarios in which an application allows access only from specific IP addresses. After a whitelist is configured, only IP addresses in the whitelist can access the SLB listener. Risks may arise if the whitelist is improperly set. If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests. black: Requests from the IP addresses or CIDR blocks in the ACL are not forwarded. Blacklists are applicable to scenarios in which an application denies access only from specific IP addresses. If you enable a blacklist but do not add an IP address to the ACL, the listener forwards all requests. Note This parameter takes effect only when the AclStatus parameter is set to on. |
 |---|---|---|---|
 | AclType | String | off | Indicates whether access control is enabled. Valid values: on: enabled. off: disabled. |
@@ -4371,13 +4601,13 @@ Server Load Balancer
 | MasterSlaveSe rverGroupId | String | rsp-0bfucw**** | The ID of the primary/secondary server group that is associated with the listener. |
 | MaxConnectio n | Integer | 10 | The maximum number of connections. |
 
-Server Load Balancer
-
 | PersistenceTi meout | Integer | 0 | The timeout period for session persistence. |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The request ID. |
 
-Server Load Balancer Sample request
+**Examples**
+
+Sample request
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerUDPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1rtfnodmywb43e**** &<Common request parameters>
@@ -4403,16 +4633,9 @@ Sample success responses `XML` format
 </DescribeLoadBalancerUDPListenerAttributeResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateLoadBala ncerHTTPListene r | The operation that you want to perform. Set the value to CreateLoadBalancerHTTPListener . |
-
-Server Load Balancer
+`JSON` format `{`
 
 ```json
-{
  "AclStatus":"off",
  "HealthCheck":"on",
  "HealthCheckConnectTimeout":5,
@@ -4426,12 +4649,13 @@ Server Load Balancer
  "UnhealthyThreshold":3,
  "BackendServerPort":34,
  "Bandwidth":67
-}
 ```
 
-#### HTTP listeners
+`}`
 
-##### CreateLoadBalancerHTTPListener
+#### 7.5.3 HTTP listeners
+
+##### 7.5.3.1 CreateLoadBalancerHTTPListener
 
 Creates an HTTP listener.
 
@@ -4441,46 +4665,42 @@ Newly created listeners are in the **stopped** state. After a listener is create
 
 **Request parameters**
 
-| Bandwidth | Integer | Yes | -1 | The bandwidth limit of the listener. Unit: Mbit/s. Valid values: -1: If you set the value to -1, the bandwidth of the listener is unlimited. 1 to 5120: If you set a value from 1 to 5120, the value that you specify equals the bandwidth limit of the listener. The sum of bandwidth limit values that you specify for all listeners of the Server Load Balancer (SLB) instance cannot exceed the bandwidth limit of the SLB instance. Note This parameter applies only to mainland China. |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateLoadBala ncerHTTPListene r | The operation that you want to perform. Set the value to CreateLoadBalancerHTTPListener . |
+
+| Bandwidth | Integer | Yes | -1 | The bandwidth limit of the listener. Unit: Mbit/s. Valid values: -1: If you set the value to -1, the bandwidth of the listener is unlimited. 1 to 5120: If you set a value from 1 to 5120, the value that you specify equals the bandwidth limit of the listener. The sum of bandwidth limit values that you specify for all listeners of the Server Load Balancer (SLB) instance cannot exceed the bandwidth limit of the SLB instance. Note This parameter applies only to mainland China. |   |   |
 |---|---|---|---|---|---|---|
-| HealthCheck | String | Yes | on | Specifies whether to enable health checks. Valid values: on and off. |  |  |
-| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. |  |  |
-| LoadBalancerId | String | Yes | lb- bp1c9vixxjh92q 83tw**** | The ID of the SLB instance. |  |  |
-| StickySession | String | Yes | off | Specifies whether to enable session persistence. Valid values: on and off. |  |  |
-| BackendServerP ort | Integer | No | 80 | The backend port that is used by the SLB instance. Valid values: 1 to 65535. Note If the VServerGroupId parameter is not set, this parameter is required. |  |  |
-| XForwardedFor | String | No | on | Specifies whether to use the X- Forwarded-For header to obtain the real IP address of the client. Set the value to on. |  |  |
-|  |  |  |  |  | X- |  |
+| HealthCheck | String | Yes | on | Specifies whether to enable health checks. Valid values: on and off. |   |   |
+| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. |   |   |
+| LoadBalancerId | String | Yes | lb- bp1c9vixxjh92q 83tw**** | The ID of the SLB instance. |   |   |
+| StickySession | String | Yes | off | Specifies whether to enable session persistence. Valid values: on and off. |   |   |
+| BackendServerP ort | Integer | No | 80 | The backend port that is used by the SLB instance. Valid values: 1 to 65535. Note If the VServerGroupId parameter is not set, this parameter is required. |   |   |
+| XForwardedFor | String | No | on | Specifies whether to use the X- Forwarded-For header to obtain the real IP address of the client. Set the value to on. |   |   |
+|   |   |   |   |   | X- |   |
 
-|  | Forwarded-For |
+|   | Forwarded-For |
 |---|---|
-
-Server Load Balancer
 
 | Scheduler | String | No | wrr | The scheduling algorithm. Valid values: wrr (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. |
 |---|---|---|---|---|
 | StickySessionTy pe | String | No | insert | The method that is used to handle a cookie. Valid values: insert: inserts a cookie. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client will contain this cookie, and the listener will forward this request to the recorded backend server. server: rewrites a cookie. When SLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will forward the request to the recorded backend server. Note If you set the StickySession parameter to on, this parameter is required. |
 | CookieTimeout | Integer | No | 500 | The timeout period of a cookie. Valid values: 1 to 86400. Unit: seconds. Note If you set the StickySession parameter to on and the StickySessionType parameter to insert, this parameter is required. |
 
-Server Load Balancer
-
-| Cookie |  | String | No |  | B490B5EBF6F3C D402E515D22B CDA1598 | The cookie to be configured on the backend server. The value must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). Note If you set the StickySession parameter to on and the StickySessionType parameter to server, this parameter is required. |  |  |
+| Cookie |   | String | No |   | B490B5EBF6F3C D402E515D22B CDA1598 | The cookie to be configured on the backend server. The value must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). Note If you set the StickySession parameter to on and the StickySessionType parameter to server, this parameter is required. |   |   |
 |---|---|---|---|---|---|---|---|---|
-| HealthCheckDo main |  | String | No |  | 172.XX.XX.6 | The domain name that is used for health checks. Valid values: $ ip: The private IP address of the _ backend server. If the $ ip _ parameter is set or the HealthCheckDomain parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks. domain: The domain name must be 1 to 80 characters in length. It can contain only letters, digits, periods (.),and hyphens (-). Note This parameter takes effect only when the HealthCheck parameter is set to on. |  |  |
-|  |  |  |  |  |  | The URL that is used for health checks. The value must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward |  |  |
-|  |  |  |  |  |  |  | hyphens (-), forward |  |
-|  |  |  |  |  |  | slashes (/), periods (.),%? |  |  |
-|  |  |  |  |  |  | number signs (#), and |  |  |
-| HealthCheckURI |  |  |  |  |  |  |  |  |
-|  |  | String | No |  | /test/index.html | ampersands (&) |  |  |
-
-Server Load Balancer
+| HealthCheckDo main |   | String | No |   | 172.XX.XX.6 | The domain name that is used for health checks. Valid values: $ ip: The private IP address of the _ backend server. If the $ ip _ parameter is set or the HealthCheckDomain parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks. domain: The domain name must be 1 to 80 characters in length. It can contain only letters, digits, periods (.),and hyphens (-). Note This parameter takes effect only when the HealthCheck parameter is set to on. |   |   |
+|   |   |   |   |   |   | The URL that is used for health checks. The value must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward |   |   |
+|   |   |   |   |   |   |   | hyphens (-), forward |   |
+|   |   |   |   |   |   | slashes (/), periods (.),%? |   |   |
+|   |   |   |   |   |   | number signs (#), and |   |   |
+| HealthCheckURI |   |   |   |   |   |   |   |   |
+|   |   | String | No |   | /test/index.html | ampersands (&) |   |   |
 
 | HealthyThreshol d | Integer | No | 4 | The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from fail to success). Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
 | UnhealthyThres hold | Integer | No | 4 | The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from success to fail). Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthCheckTim eout | Integer | No | 3 | The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. This parameter takes effect only when the HealthCheck parameter is set to on. Valid values: 1 to 300. Unit: seconds. Note If the value of the HealthCHeckTimeout parameter is smaller than that of the HealthCheckInterval parameter, the value of the HealthCHeckTimeout parameter is invalid and the value of the HealthCheckInterval parameter is used as the timeout period. |
-
-Server Load Balancer
 
 | HealthCheckCon nectPort | Integer | No | 80 | The backend port that is used for health checks. Valid values: 1 to 65535. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
@@ -4490,50 +4710,42 @@ Server Load Balancer
 | XForwardedFor _ SLBIP | String | No | on | Specifies whether to use the SLB- IP header to obtain the real IP address of the client. Valid values: on and off. Default value: off. |
 | XForwardedFor _ SLBID | String | No | on | Specifies whether to use the SLB- ID header to obtain the ID of the SLB instance. Valid values: on and off. Default value: off. |
 
-|  | IP |
+|   | IP |
 |---|---|
 
-|  | ID |
+|   | ID |
 |---|---|
 
-Server Load Balancer
-
-| XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to obtain the listener protocol of the SLB instance. Valid values: on and off. Default value: off. |  |  |
+| XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to obtain the listener protocol of the SLB instance. Valid values: on and off. Default value: off. |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | X- |  |
-| Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Default value: on. Valid values: on and off. Default value: off. |  |  |
-| IdleTimeout | Integer | No | 3 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received during the specified timeout period, the SLB instance closes the connection. When another request is received, the SLB instance establishes a new connection. |  |  |
-| RequestTimeout | Integer | No | 6 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the specified timeout period, SLB sends an HTTP 504 error code to the client. |  |  |
-| ListenerForward | String | No | off | Specifies whether to enable HTTP-to- HTTPS redirection. Valid values: on and off. |  |  |
-| ForwardPort | Integer | No | 443 | The listening port that is used to redirect HTTP requests to HTTPS. |  |  |
-| Description | String | No | ListenerDescripti on | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. |  |  |
+|   |   |   |   |   | X- |   |
+| Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Default value: on. Valid values: on and off. Default value: off. |   |   |
+| IdleTimeout | Integer | No | 3 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received during the specified timeout period, the SLB instance closes the connection. When another request is received, the SLB instance establishes a new connection. |   |   |
+| RequestTimeout | Integer | No | 6 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the specified timeout period, SLB sends an HTTP 504 error code to the client. |   |   |
+| ListenerForward | String | No | off | Specifies whether to enable HTTP-to- HTTPS redirection. Valid values: on and off. |   |   |
+| ForwardPort | Integer | No | 443 | The listening port that is used to redirect HTTP requests to HTTPS. |   |   |
+| Description | String | No | ListenerDescripti on | The description of the listener. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. |   |   |
 
-|  | Forwarded-Proto |
+|   | Forwarded-Proto |
 |---|---|
 
-| HTTP |  |
+| HTTP |   |
 |---|---|
 
-|  | 504 |
+|   | 504 |
 |---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-Server Load Balancer
-
-**Response parameters**
-
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SetLoadBalancer HTTPListenerAtt ribute | The operation that you want to perform. Set the value to SetLoadBalancerHTTPListenerAtt ribute. |
-| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
-| LoadBalancerId | String | Yes | lb- bp1qjwo61pqz3 ah**** | The ID of the SLB instance. |
+**Examples**
 
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPListener &HealthCheck=off &ListenerPort=80 &LoadBalancerId=lb-bp1c9vixxjh92q83tw***** &StickySession=off &BackendServerPort=80 &<Common request parameters>
@@ -4542,22 +4754,30 @@ http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPListener &HealthCheck=off &Li
 Sample success responses `XML` format
 
 ```xml
+<CreateLoadBalancerHTTPListenerResponse>
    <RequestId>1FF504CB-BFFF-4508-A51A-58A416604FC8</RequestId>
+</CreateLoadBalancerHTTPListenerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "1FF504CB-BFFF-4508-A51A-58A416604FC8"
-}
 ```
 
-##### SetLoadBalancerHTTPListenerAttribute
+`}`
+
+##### 7.5.3.2 SetLoadBalancerHTTPListenerAttribute
 
 Modifies the configurations of an HTTP listener.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SetLoadBalancer HTTPListenerAtt ribute | The operation that you want to perform. Set the value to SetLoadBalancerHTTPListenerAtt ribute. |
+| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
+| LoadBalancerId | String | Yes | lb- bp1qjwo61pqz3 ah**** | The ID of the SLB instance. |
 
 | Bandwidth | Integer | No | -1 | The bandwidth limit of the listener. Unit: Mbit/s. Valid values: -1: For a pay-by-data-transfer Internet-facing SLB instance, you can set the value to -1. If you set the value to -1, the bandwidth is unlimited. |
 |---|---|---|---|---|
@@ -4565,22 +4785,16 @@ Modifies the configurations of an HTTP listener.
 | Scheduler | String | No | wrr | The scheduling algorithm. Valid values: wrr: Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. |
 | StickySession | String | No | on | Specifies whether to enable session persistence. Valid values: on and off. |
 
-Server Load Balancer
-
 | StickySessionTy pe | String | No | insert | The method that is used to handle a cookie. Valid values: insert: inserts a cookie. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client will contain this cookie, and the listener will forward this request to the recorded backend server. server: rewrites a cookie. When SLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will forward the request to the recorded backend server. Note If you set the StickySession parameter to on, this parameter is required. |
 |---|---|---|---|---|
 | CookieTimeout | Integer | No | 500 | The timeout period of a cookie. Valid values: 1 to 86400. Unit: seconds. Note If you set the StickySession parameter to on and the StickySessionType parameter to insert, this parameter is required. |
 | Cookie | String | No | B490B5EBF6F3C D402E515D22B CDA1598 | The cookie to be configured on the backend server. The value must be 1 to 200 characters in length, and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). Note If you set the StickySession parameter to on and the StickySessionType parameter to server, this parameter is required. |
 | HealthCheck | String | No | on | Specifies whether to enable health checks. Valid values: on and off. |
 
-Server Load Balancer
-
 | HealthCheckDo main | String | No | 172.XX.XX.6 | The domain name that is used for health checks. Valid values: $ ip: The private IP address of the _ backend server. If the $ ip _ parameter is specified or the HealthCheckDomain parameter is not specified, the SLB instance uses the private IP address of the backend server as the domain name for health checks. domain: The domain name must be 1 to 80 characters in length. It can contain only letters, digits, periods (.),and hyphens (-). Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
 | HealthCheckURI | String | No | /test/index.html | The URL that is used for health checks. The value must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL must not be a single forward slash (/). However, it must start with a forward slash (/). Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthyThreshol d | Integer | No | 4 | The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from fail to success). Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
-
-Server Load Balancer
 
 | UnhealthyThres hold | Integer | No | 4 | The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from success to fail). Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
@@ -4588,47 +4802,43 @@ Server Load Balancer
 | HealthCheckInte rval | Integer | No | 5 | The interval between two consecutive health checks. Valid values: 1 to 50. Unit: seconds. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthCheckCon nectPort | Integer | No | 8080 | The port that is used for health checks. Valid values: 1 to 65535. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 
-Server Load Balancer
-
-| HealthCheckHttp Code | String | No | http 2xx _ | The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Valid values: http 2xx, http 3xx, _ _ http 4xx, and http 5xx. _ _ Note This parameter takes effect only when the HealthCheck parameter is set to on. |  |  |
+| HealthCheckHttp Code | String | No | http 2xx _ | The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Valid values: http 2xx, http 3xx, _ _ http 4xx, and http 5xx. _ _ Note This parameter takes effect only when the HealthCheck parameter is set to on. |   |   |
 |---|---|---|---|---|---|---|
-| MaxConnection | Integer | No | 10 | The maximum number of connections. |  |  |
-| VServerGroup | String | No | on | Specifies whether to use a vServer group. Valid values: on and off. |  |  |
-| VServerGroupId | String | No | rsp-cige6j**** | The ID of the server group. |  |  |
-| Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The key and value of the tag. |  |  |
-| XForwardedFor _ SLBIP | String | No | on | Specifies whether to use the SLB- IP header to obtain the real IP address of the client. Valid values: on and off. |  |  |
-| XForwardedFor _ SLBID | String | No | on | Specifies whether to use the SLB- ID header to obtain the ID of the SLB instance. Valid values: on and off. |  |  |
-| XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to obtain the listener protocol of the SLB instance. Valid values: on and off. |  |  |
-|  |  |  |  |  | X- |  |
-| Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Valid values: on and off. |  |  |
+| MaxConnection | Integer | No | 10 | The maximum number of connections. |   |   |
+| VServerGroup | String | No | on | Specifies whether to use a vServer group. Valid values: on and off. |   |   |
+| VServerGroupId | String | No | rsp-cige6j**** | The ID of the server group. |   |   |
+| Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The key and value of the tag. |   |   |
+| XForwardedFor _ SLBIP | String | No | on | Specifies whether to use the SLB- IP header to obtain the real IP address of the client. Valid values: on and off. |   |   |
+| XForwardedFor _ SLBID | String | No | on | Specifies whether to use the SLB- ID header to obtain the ID of the SLB instance. Valid values: on and off. |   |   |
+| XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to obtain the listener protocol of the SLB instance. Valid values: on and off. |   |   |
+|   |   |   |   |   | X- |   |
+| Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Valid values: on and off. |   |   |
 
-|  | IP |
+|   | IP |
 |---|---|
 
-|  | ID |
+|   | ID |
 |---|---|
 
-|  | Forwarded-Proto |
+|   | Forwarded-Proto |
 |---|---|
 
-Server Load Balancer
-
-| IdleTimeout | Integer | No | 12 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received within the specified timeout period, SLB closes the connection. When another request is received, SLB establishes a new connection. |  |  |
+| IdleTimeout | Integer | No | 12 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received within the specified timeout period, SLB closes the connection. When another request is received, SLB establishes a new connection. |   |   |
 |---|---|---|---|---|---|---|
-| RequestTimeout | Integer | No | 3 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the specified timeout period, SLB sends an HTTP 504 error code to the client. |  |  |
-|  |  |  |  |  | HTTP |  |
-| Description | String | No | test | The description of the listener. |  |  |
+| RequestTimeout | Integer | No | 3 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the specified timeout period, SLB sends an HTTP 504 error code to the client. |   |   |
+|   |   |   |   |   | HTTP |   |
+| Description | String | No | test | The description of the listener. |   |   |
 
-|  | 504 |
+|   | 504 |
 |---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4648,21 +4858,9 @@ Sample success responses `XML` format
 
 ```json
 {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-        }
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLoadBal ancerHTTPListen erAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerHTTPListe nerAttribute. |
-| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
-| LoadBalancerId | String | Yes | lb- bp1o94dp5**** | The ID of the SLB instance. |
-| RegionId | String | Yes | cn-east- hangzhou-01 | The ID of the region where the SLB instance is deployed. You can call the DescribeRegions operation to query the most recent region list. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ListenerPort | Integer | 80 | The frontend port that is used by the SLB instance. |
-
-Server Load Balancer
+`}`
 
 **7.5.3.3.**
 
@@ -4672,7 +4870,18 @@ Queries the configurations of an HTTP listener.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLoadBal ancerHTTPListen erAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerHTTPListe nerAttribute. |
+| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
+| LoadBalancerId | String | Yes | lb- bp1o94dp5**** | The ID of the SLB instance. |
+| RegionId | String | Yes | cn-east- hangzhou-01 | The ID of the region where the SLB instance is deployed. You can call the DescribeRegions operation to query the most recent region list. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ListenerPort | Integer | 80 | The frontend port that is used by the SLB instance. |
 
 | Bandwidth | Integer | -1 | The maximum bandwidth of the listener. Unit: Mbit/s. Valid values: -1: If -1 is returned, it indicates that the bandwidth of the listener is unlimited. 1 to 5120: the maximum bandwidth of the listener. The sum of the maximum bandwidth of all listeners added to an SLB instance cannot exceed the maximum bandwidth of the SLB instance. Note This parameter is available only in the Chinese mainland. |
 |---|---|---|---|
@@ -4681,8 +4890,6 @@ Queries the configurations of an HTTP listener.
 | Scheduler | String | wrr | The scheduling algorithm. Valid values: wrr, wlc, and rr. wrr (default): Backend servers with higher weights receive more requests than backend servers with lower weights. wlc: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests. rr: Requests are distributed to backend servers in sequence. |
 | StickySession | String | on | Indicates whether session persistence is enabled. Valid values: on and off. Default value: off. |
 
-Server Load Balancer
-
 | StickySessionT ype | String | insert | The method that is used to handle a cookie. Valid values: insert and server. insert: inserts a cookie. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client carries this cookie, and the listener will forward this request to the recorded backend server. server: rewrites a cookie. When SLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute this request to the recorded backend server. Note This parameter is required if the StickySession parameter is set to on. |
 |---|---|---|---|
 | CookieTimeout | Integer | 500 | The timeout period of a cookie. Unit: seconds. Valid values: 1 to 86400. |
@@ -4690,8 +4897,6 @@ Server Load Balancer
 | HealthCheck | String | on | Indicates whether the health check feature is enabled. Valid values: on and off. |
 | HealthCheckD omain | String | www.example.com | The domain name that is used for health checks. |
 | HealthCheckU RI | String | /test/index.html | The URL path that is used for health checks. It is 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL path is not a single forward slash (/) but it starts with a forward slash (/). ) |
-
-Server Load Balancer
 
 | HealthyThresh old | Integer | 4 | The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. |
 |---|---|---|---|
@@ -4703,8 +4908,6 @@ Server Load Balancer
 | VServerGroupI d | String | rsp-cige6j**** | The ID of the vServer group that is associated with the forwarding rule. |
 | Gzip | String | on | Indicates whether Gzip compression is enabled to compress specific types of files. Valid values: on and off. |
 
-Server Load Balancer
-
 | AclId | String | acl- bp1l0kk4gxce43kz ****** | The ID of the network access control list (ACL) that is associated with the listener. If AclStatus is set to on, this parameter is required. |
 |---|---|---|---|
 | AclStatus | String | off | Indicates whether access control is enabled. Valid values: on and off. |
@@ -4713,15 +4916,13 @@ Server Load Balancer
 | Description | String | test | The description of the HTTP listener. The description is 1 to 80 characters in length, and can contain letters, digits, hyphens (- ), forward slashes (/), periods (.), and underscores ( ). _ |
 | ForwardPort | Integer | 80 | The listening port that is used to redirect HTTP requests to HTTPS. Note If the ListenerForward parameter is set to off, this parameter is not returned. |
 
-Server Load Balancer
-
 | IdleTimeout | Integer | 2 | The timeout period of an idle connection. Unit: seconds. Valid values: 1~60. Default value: 15. If no request is received within the specified timeout period, SLB closes the connection. When another request is received, SLB establishes a new connection. |
 |---|---|---|---|
 | ListenerForwar d | String | on | Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values: on: enabled off: disabled |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 | RequestTimeo ut | Integer | 34 | The request timeout period. Unit: seconds. Valid values: 1 to 180. Unit: seconds. Default value: 60. If no response is received from a backend server within the specified timeout period, SLB returns the HTTP 504 error code to the client. |
-| Rules | Array of Rule |  | The list of forwarding rules. |
-| Rule |  |  |  |
+| Rules | Array of Rule |   | The list of forwarding rules. |
+| Rule |   |   |   |
 | Domain | String | www.example.com | The domain name. |
 | RuleId | String | rule-xjsq****** | The ID of the forwarding rule. |
 | RuleName | String | example | The name of the forwarding rule. |
@@ -4729,18 +4930,18 @@ Server Load Balancer
 | VServerGroupI d | String | rsp-bp****** | The ID of the vServer group that is associated with the forwarding rule. |
 | SecurityStatus | String | on | Indicates whether the listener is in the Secure state. Valid values: on and off. |
 
-Server Load Balancer
-
-| XForwardedFo r SLBID _ | String | on | Indicates whether the SLB-ID header is used to retrieve the ID of the SLB instance. |  |  |
+| XForwardedFo r SLBID _ | String | on | Indicates whether the SLB-ID header is used to retrieve the ID of the SLB instance. |   |   |
 |---|---|---|---|---|---|
-| XForwardedFo r SLBIP _ | String | on | Indicates whether the SLB-IP header is used to retrieve the IP address of the SLB instance. |  |  |
-| XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to retrieve the listening protocol. |  |  |
-|  |  |  |  | X-Forwarded- |  |
+| XForwardedFo r SLBIP _ | String | on | Indicates whether the SLB-IP header is used to retrieve the IP address of the SLB instance. |   |   |
+| XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to retrieve the listening protocol. |   |   |
+|   |   |   |   | X-Forwarded- |   |
 
-|  | Proto |
+|   | Proto |
 |---|---|
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerHTTPListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1o94dp5********* &<Common request parameters>
@@ -4764,19 +4965,9 @@ Sample success responses `XML` format
 {"CookieTimeout":"500","VServerGroupId":"rspcige6j****","Description":"test","UnhealthyThreshold":"4","HealthCheckURI":"/test/index.h l","Scheduler":"wrr","HealthCheck":"on","IdleTimeout":"2","BackendServerPort":"80","XForw dedFor_SLBID":"on","HealthCheckConnectPort":"8080","SecurityStatus":"on","Bandwidth":"- 1","Gzip":"on","StickySessionType":"insert ","XForwardedFor_SLBIP":"on","HealthCheckHttpCode":"http_2xx","Cookie":"B490B5EBF6F3CD402 15D22BCDA1598","Status":"stopped","RequestTimeout":"34","ListenerPort":"80","HealthCheckI erval":"5","RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710","AclId":"acl-bp1l0kk4gxce 43kz******","HealthCheckTimeout":"3","Rules":[{"VServerGroupId":"rspbp******","RuleId":"rulexjsq******","Domain":"www.example.com","Url":"/example","RuleName":"example"}],"ListenerF ward":"on","StickySession":"on","ForwardPort":"80","AclStatus":"off","HealthyThreshold":" ,"XForwardedFor":"on","HealthCheckDomain":"www.example.com","AclType":"white","XForwarded r_proto":"on"}
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateLoadBala ncerHTTPSListen er | The operation that you want to perform. Set the value to CreateLoadBalancerHTTPSListen er. |
-| Bandwidth | Integer | Yes | -1 | The maximum bandwidth of the listener. Unit: Mbit/s. Valid values: -1: For a pay-by-data-transfer Internet-facing Server Load Balancer (SLB) instance, you can set this parameter to -1. This way, the bandwidth of the listener is unlimited. 1 to 5120: For a pay-by- bandwidth Internet-facing SLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the SLB instance. |
-| HealthCheck | String | Yes | on | Specifies whether to enable the health check feature. Valid values: on and off. |
-| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. |
-| LoadBalancerId | String | Yes | lb- bp1o94dp5i6ear r**** | The ID of the SLB instance. |
+#### 7.5.4 HTTPS listeners
 
-Server Load Balancer
-
-#### HTTPS listeners
-
-##### CreateLoadBalancerHTTPSListener
+##### 7.5.4.1 CreateLoadBalancerHTTPSListener
 
 Creates an HTTPS listener.
 
@@ -4786,24 +4977,28 @@ Newly created listeners are in the stopped state. After a listener is created, c
 
 **Request parameters**
 
-| StickySession | String | Yes | on | Specifies whether to enable session persistence. Valid values: on and off. |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateLoadBala ncerHTTPSListen er | The operation that you want to perform. Set the value to CreateLoadBalancerHTTPSListen er. |
+| Bandwidth | Integer | Yes | -1 | The maximum bandwidth of the listener. Unit: Mbit/s. Valid values: -1: For a pay-by-data-transfer Internet-facing Server Load Balancer (SLB) instance, you can set this parameter to -1. This way, the bandwidth of the listener is unlimited. 1 to 5120: For a pay-by- bandwidth Internet-facing SLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the SLB instance. |
+| HealthCheck | String | Yes | on | Specifies whether to enable the health check feature. Valid values: on and off. |
+| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. |
+| LoadBalancerId | String | Yes | lb- bp1o94dp5i6ear r**** | The ID of the SLB instance. |
+
+| StickySession | String | Yes | on | Specifies whether to enable session persistence. Valid values: on and off. |   |   |
 |---|---|---|---|---|---|---|
-| BackendServerP ort | Integer | No | 80 | The backend port that is used by the SLB instance. Valid values: 1 to 65535. If the VServerGroupId parameter is not set, this parameter is required. |  |  |
-| XForwardedFor | String | No | on | Specifies whether to use the X- Forwarded-For header to retrieve client IP addresses. Set the value to on. |  |  |
-|  |  |  |  |  | X- |  |
-| Scheduler | String | No | wrr | The routing algorithm. Valid values: wrr (default): Backend servers with higher weights receive more requests than backend servers with lower weights. wlc: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests. rr: Requests are distributed to backend servers in sequence. |  |  |
+| BackendServerP ort | Integer | No | 80 | The backend port that is used by the SLB instance. Valid values: 1 to 65535. If the VServerGroupId parameter is not set, this parameter is required. |   |   |
+| XForwardedFor | String | No | on | Specifies whether to use the X- Forwarded-For header to retrieve client IP addresses. Set the value to on. |   |   |
+|   |   |   |   |   | X- |   |
+| Scheduler | String | No | wrr | The routing algorithm. Valid values: wrr (default): Backend servers with higher weights receive more requests than backend servers with lower weights. wlc: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests. rr: Requests are distributed to backend servers in sequence. |   |   |
 
-|  | Forwarded-For |
+|   | Forwarded-For |
 |---|---|
-
-Server Load Balancer
 
 | StickySessionTy pe | String | No | insert | The method that is used to handle a cookie. Default value: Insert. Valid values: insert: inserts a cookie. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client carries this cookie, and the listener will distribute the request to the recorded backend server. server: rewrites a cookie. When SLB detects a user-defined cookie, SLB rewrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener distributes the request to the recorded backend server. Note This parameter is required when the StickySession parameter is set to on. |
 |---|---|---|---|---|
 | CookieTimeout | Integer | No | 500 | The timeout period of a cookie. Unit: seconds. Valid values: 1 to 86400. Note If StickySession is set to on and StickySessionType is set to insert, this parameter is required. |
 | Cookie | String | No | B490B5EBF6F3C D402E515D22B CDA1598 | The cookie that is configured on the backend server. It must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). Note This parameter is required if the StickySession parameter is set to on and the StickySessionType parameter is set to server. |
-
-Server Load Balancer
 
 | HealthCheckMet hod | String | No | get | The health check method used in HTTP health checks. Valid values: head and get. Note This parameter takes effect only if the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
@@ -4811,14 +5006,10 @@ Server Load Balancer
 | HealthCheckURI | String | No | /test/index.html | The URI that is used for health checks. It must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: - / . % ? # & . The URL path is not a single forward slash (/) but it starts with a forward slash (/). Note This parameter takes effect when the HealthCheck parameter is set to on. |
 | HealthyThreshol d | Integer | No | 4 | The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 
-Server Load Balancer
-
 | UnhealthyThres hold | Integer | No | 4 | The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
 | HealthCheckTim eout | Integer | No | 3 | The timeout period of a health check. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds. Valid values: 1 to 300. If the value of the HealthCheckTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter is ignored and the value of the HealthCheckInterval parameter is used as the timeout period. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthCheckCon nectPort | Integer | No | 8080 | The port that is used for health checks. Valid values: 1 to 65535. Note This parameter takes effect only if the HealthCheck parameter is set to on. |
-
-Server Load Balancer
 
 | HealthCheckInte rval | Integer | No | 5 | The interval between two consecutive health checks. Unit: seconds. Valid values: 1 to 50. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
@@ -4829,34 +5020,28 @@ Server Load Balancer
 | XForwardedFor _ SLBIP | String | No | on | Specifies whether to use the SLB- IP header to retrieve client IP addresses. Valid values: on and off. Default value: off. |
 | XForwardedFor _ SLBID | String | No | on | Specifies whether to use the SLB- ID header to retrieve the ID of the SLB instance. Valid values: on and off. Default value: off. |
 
-|  | IP |
+|   | IP |
 |---|---|
 
-|  | ID |
+|   | ID |
 |---|---|
 
-Server Load Balancer
-
-|  | XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to retrieve the listener protocol. Valid values: on and off. Default value: off. |  |  |
+|   | XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to retrieve the listener protocol. Valid values: on and off. Default value: off. |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | X- |  |
-|  | Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Valid values: on and off. Default value: off. |  |  |
-|  | IdleTimeout | Integer | No | 12 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received within the specified timeout period, SLB closes the connection. When a request is received, SLB establishes a new connection. |  |  |
-|  | RequestTimeout | Integer | No | 23 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the request timeout period, SLB returns the HTTP 504 error code to the client. |  |  |
-|  |  |  |  |  | You can specify the TLSCipherPolicy parameter only for a high- performance SLB instance. Each security policy includes TLS protocol versions and cipher suites that are available for HTTPS. The following security policies are supported. For more information about the differences, see Differences in TLS security policies. tls cipher policy 1 0: _ _ _ _ Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2 |  |  |
+|   |   |   |   |   |   | X- |   |
+|   | Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Valid values: on and off. Default value: off. |   |   |
+|   | IdleTimeout | Integer | No | 12 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received within the specified timeout period, SLB closes the connection. When a request is received, SLB establishes a new connection. |   |   |
+|   | RequestTimeout | Integer | No | 23 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server within the request timeout period, SLB returns the HTTP 504 error code to the client. |   |   |
+|   |   |   |   |   | You can specify the TLSCipherPolicy parameter only for a high- performance SLB instance. Each security policy includes TLS protocol versions and cipher suites that are available for HTTPS. The following security policies are supported. For more information about the differences, see Differences in TLS security policies. tls cipher policy 1 0: _ _ _ _ Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2 |   |   |
 
-|  | Forwarded-Proto |
+|   | Forwarded-Proto |
 |---|---|
-
-Server Load Balancer
 
 | TLSCipherPolicy | String | No | tls cipher policy _ _ 1 1 _ _ | Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA |
 |---|---|---|---|---|
-|  |  |  |  | tls cipher policy 1 1: _ _ _ _ Supported TLS versions: TLS 1.1 and TLS 1.2 Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 2 _ _ _ _ Supported TLS version: TLS 1.2 Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 2 strict _ _ _ _ _ Supported TLS version: TLS 1.2 Supported cipher suites: ECDHE-RSA-AES128-GCM- |
+|   |   |   |   | tls cipher policy 1 1: _ _ _ _ Supported TLS versions: TLS 1.1 and TLS 1.2 Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 2 _ _ _ _ Supported TLS version: TLS 1.2 Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA tls cipher policy 1 2 strict _ _ _ _ _ Supported TLS version: TLS 1.2 Supported cipher suites: ECDHE-RSA-AES128-GCM- |
 | Description | String | No | CreateListeners | SHA256, ECDHE-RSA-AES256- The dGeCsMcr-iSpHtioAn3 8o4f ,t hEeC DliHstEe-nReSrA. -The descrAipEtSio1n2 8m-SuHstA b2e5 61, tEoC 8D0HE-RSA- charaAcEtSer2s5 i6n- SleHnAg3t8h4, ,a EnCd DcHanE -cRoSnAt-ain letterAsE, Sd1ig2i8ts-,S hHyAp, haennds E(C-)D, fHoErw-RaSrAd- slashAeEs S(2/)5, 6p-eSrHioAds (.), and underscores ( ). _ |
 | RegionId | String | Yes | cn-east- hangzhou-01 | The ID of the region where the SLB instance is deployed. You can call the DescribeRegions operation to query the most recent region list. |
-
-Server Load Balancer
 
 | AclId | String | No | acl- bp1l0kk4gxce43 kz****** | The ID of the network ACL that is associated with the listener. If AclStatus is set to on, this parameter is required. |
 |---|---|---|---|---|
@@ -4864,23 +5049,17 @@ Server Load Balancer
 | AclStatus | String | No | off | Specifies whether to enable access control. Valid values: Valid values: on and off. Default value: off. |
 | EnableHttp2 | String | No | off | Specifies whether to enable HTTP/2. Valid values: on and off. Default value: off. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Server Load Balancer
-
-**Response parameters**
 
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 |---|---|---|---|
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertSubj _ ectDNAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertSubj _ ectDNAlias is duplicate. |
-| 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertIssu _ erDNAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertIssu _ erDNAlias is duplicate. |
-| 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertFing _ erprintAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertFing _ erprintAlias is duplicate. |
+**Examples**
 
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateLoadBalancerHTTPSListener &Bandwidth=-1 &HealthCheck=on &ListenerPort=80 &LoadBalancerId=lb-bp1o94dp5i6earr***** &StickySession=on &<Common request parameters>
@@ -4898,8 +5077,17 @@ Sample responses `XML` format
 
 ```json
 {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-  }
 ```
+
+`}`
+
+**Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertSubj _ ectDNAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertSubj _ ectDNAlias is duplicate. |
+| 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertIssu _ erDNAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertIssu _ erDNAlias is duplicate. |
+| 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertFing _ erprintAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertFing _ erprintAlias is duplicate. |
 
 | 400 | ParamDuplicateErr or | The specified parameter value of XForwardedFor ClientCertClien _ tVerifyAlias is duplicate. Please change to a different one. | The error message returned because the value of XForwardedFor ClientCertClien _ tVerifyAlias is duplicate. |
 |---|---|---|---|
@@ -4914,8 +5102,6 @@ Sample responses `XML` format
 | 400 | InvalidParameter.Li stenerPortConflict | There is conflict listener port exists. | The error message returned because the specified listening port already exists. |
 | 400 | ResourceNotAvailib le.HttpsListener | The specified Zone did not have enough resource. | The error message returned because resources are insufficient in the specified zone. |
 | 400 | OperationUnsuppor ted.CreateLoadBal ancerLayer7Listene r | The slb instance does not support create HTTP or HTTPS listener. | The error message returned because the specified SLB instance does not support HTTP or HTTPS listeners. |
-
-Server Load Balancer
 
 | 400 | InvalidParameter.V ServerGroupId | The MasterSlaveServerGroup can not be attached to HTTP or HTTPS listener. | The error message returned because HTTP and HTTPS listeners do not support primary/secondary server groups. |
 |---|---|---|---|
@@ -4932,8 +5118,6 @@ Server Load Balancer
 | 400 | CertificateTypeMis matched | The certificate type does not match. | The error message returned because the specified certificate type is invalid. |
 | 400 | MissingParam.Serv erCertificates | Server certificates are required. | The error message returned because the ServerCertificates parameter is not set. |
 
-Server Load Balancer
-
 | 400 | TooManyCertificate s | The number of certificates must not be greater than one. | The error message returned because the number of certificates cannot exceed 1. |
 |---|---|---|---|
 | 400 | CnCertificateNotSu pport | The cn certificate is not support. | The error message returned because ShangMi (SM) cipher suites are not supported. |
@@ -4945,19 +5129,17 @@ Server Load Balancer
 | 400 | ListenerNotSupport Rule | You cannot create a rule for the specified listener. | The error message returned because the specified listener does not allow you to create forwarding rules. |
 | 400 | Mismatch.SlbSpecT ypeAndListenerProt ocol | The SlbSpecType and ListenerProtocol are mismatched. | The error message returned because the specified instance type and listener type do not match. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SetLoadBalancer HTTPSListenerAt tribute | The operation that you want to perform. Set the value to SetLoadBalancerHTTPSListenerA ttribute. |
-
-Server Load Balancer
-
-##### SetLoadBalancerHTTPSListenerAttribute
+##### 7.5.4.2 SetLoadBalancerHTTPSListenerAttribute
 
 Modifies the configurations of an HTTPS listener.
 
 **Request parameters**
 
-| Developer Guide·AP | I Reference |  |  | Server Load Balance |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SetLoadBalancer HTTPSListenerAt tribute | The operation that you want to perform. Set the value to SetLoadBalancerHTTPSListenerA ttribute. |
+
+| Developer Guide·AP | I Reference |   |   | Server Load Balance |
 |---|---|---|---|---|
 
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
@@ -4973,22 +5155,16 @@ Modifies the configurations of an HTTPS listener.
 | CookieTimeout | Integer | No | 500 | The timeout period of a cookie. Valid values: 1 to 86400. Unit: seconds. Note If you set the StickySession parameter to on and the StickySessionType parameter to insert, this parameter is required. |
 | Cookie | String | No | B490B5EBF6F3C D402E515D22B CDA1598 | The cookie that is configured on the backend server. The value must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($). Note If you set the StickySession parameter to on and the StickySessionType parameter to server, this parameter is required. |
 
-Server Load Balancer
-
 | HealthCheck | String | No | on | Specifies whether to enable health checks. Valid values: on and off. |
 |---|---|---|---|---|
 | HealthCheckDo main | String | No | 172.XX.XX.6 | The domain name that is used for health checks. Valid values: $ ip: The private IP address of the _ backend server. If the $ ip _ parameter is set or the HealthCheckDomain parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks. domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-). Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthCheckURI | String | No | /test/index.html | The URL that is used for health checks. The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL must not be a single forward slash (/). However, it must start with a forward slash (/). Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthyThreshol d | Integer | No | 4 | The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from fail to success). Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 
-Server Load Balancer
-
 | UnhealthyThres hold | Integer | No | 4 | The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from success to fail). Valid values: 2 to 10. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
 | HealthCheckTim eout | Integer | No | 3 | The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Valid values: 1 to 300. Unit: seconds. Note If the value of the HealthCheckTimeout parameter is smaller than that of the HealthCheckInterval parameter, the value of the HealthCheckTimeout parameter is ignored and the value of the HealthCheckInterval parameter is used as the timeout period. This parameter takes effect only when the HealthCheck parameter is set to on. |
 | HealthCheckInte rval | Integer | No | 5 | The interval between two consecutive health checks. Valid values: 1 to 50. Unit: seconds. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
-
-Server Load Balancer
 
 | HealthCheckCon nectPort | Integer | No | 8080 | The port that is used for health checks. Valid values: 1 to 65535. Note This parameter takes effect only when the HealthCheck parameter is set to on. |
 |---|---|---|---|---|
@@ -5000,49 +5176,40 @@ Server Load Balancer
 | Tags | String | No | loadbalancerhtt ps**** | The tags. |
 | XForwardedFor _ SLBIP | String | No | on | Specifies whether to use the SLB- IP header to obtain the real IP address of the client. Valid values: on and off. |
 
-|  | IP |
+|   | IP |
 |---|---|
 
-Server Load Balancer
-
-|  | XForwardedFor _ SLBID | String | No | on | Specifies whether to use the SLB- ID header to obtain the ID of the SLB instance. Valid values: on and off. |  |  |
+|   | XForwardedFor _ SLBID | String | No | on | Specifies whether to use the SLB- ID header to obtain the ID of the SLB instance. Valid values: on and off. |   |   |
 |---|---|---|---|---|---|---|---|
-|  | XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to obtain the listener protocol of the SLB instance. Valid values: on and off. |  |  |
-|  |  |  |  |  |  | X- |  |
-|  | Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Valid values: on and off. |  |  |
-|  | IdleTimeout | Integer | No | 23 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received during the specified timeout period, the SLB instance closes the connection. When another request is received, the SLB instance establishes a new connection. |  |  |
-|  | RequestTimeout | Integer | No | 223 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server during the specified timeout period, SLB sends an HTTP 504 error code to the client. |  |  |
-|  |  |  |  |  | You can specify the TLSCipherPolicy parameter only for a high- performance SLB instance. Each security policy includes TLS protocol versions and cipher suites that are available for HTTPS. You can select a security policy based on your requirements. The following security policies are supported: tls cipher policy 1 0: _ _ _ _ Supported TLS versions: TLSv1.0, TLSv1.1, and TLSv1.2. |  |  |
+|   | XForwardedFor _ proto | String | No | on | Specifies whether to use the X- Forwarded-Proto header to obtain the listener protocol of the SLB instance. Valid values: on and off. |   |   |
+|   |   |   |   |   |   | X- |   |
+|   | Gzip | String | No | on | Specifies whether to enable gzip compression to compress specific types of files. Valid values: on and off. |   |   |
+|   | IdleTimeout | Integer | No | 23 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received during the specified timeout period, the SLB instance closes the connection. When another request is received, the SLB instance establishes a new connection. |   |   |
+|   | RequestTimeout | Integer | No | 223 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If no response is received from the backend server during the specified timeout period, SLB sends an HTTP 504 error code to the client. |   |   |
+|   |   |   |   |   | You can specify the TLSCipherPolicy parameter only for a high- performance SLB instance. Each security policy includes TLS protocol versions and cipher suites that are available for HTTPS. You can select a security policy based on your requirements. The following security policies are supported: tls cipher policy 1 0: _ _ _ _ Supported TLS versions: TLSv1.0, TLSv1.1, and TLSv1.2. |   |   |
 
-|  | ID |
+|   | ID |
 |---|---|
 
-|  | Forwarded-Proto |
+|   | Forwarded-Proto |
 |---|---|
 
-Server Load Balancer
-
-|  |  |  |  | Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- |
+|   |   |   |   | Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- |
 |---|---|---|---|---|
 | TLSCipherPolicy | String | No | tls cipher policy _ _ 1 2 _ _ | AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. tls cipher policy 1 1: _ _ _ _ Supported TLS versions: TLSv1.1 and TLSv1.2. Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. tls cipher policy 1 2 _ _ _ _ Supported TLS version: TLSv1.2. Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, AES128-GCM- SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128- SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. tls cipher policy 1 2 strict _ _ _ _ _ Supported TLS version: TLSv1.2. Supported cipher suites: ECDHE-RSA-AES128-GCM- SHA256, ECDHE-RSA-AES256- GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA- AES256-SHA384, ECDHE-RSA- AES128-SHA, and ECDHE-RSA- AES256-SHA. |
 
-Server Load Balancer
-
-| Description | String | No | ListenerDescripti on |  | The description of the listener. The description must be 2 to 256 characters in length. It can contain only characters in the following string: ^([^\x00-\xff]\| [\w.,;/@-]){2,256}$ . |  |  |
+| Description | String | No | ListenerDescripti on |   | The description of the listener. The description must be 2 to 256 characters in length. It can contain only characters in the following string: ^([^\x00-\xff]\| [\w.,;/@-]){2,256}$ . |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | ^([^\x00-\xff]\| |  |
-|  |  |  |  |  | [\w.,;/@-]){2,256}$ |  |  |
+|   |   |   |   |   |   | ^([^\x00-\xff]\| |   |
+|   |   |   |   |   | [\w.,;/@-]){2,256}$ |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5058,13 +5225,13 @@ Sample success responses `XML` format
 </SetLoadBalancerHTTPSListenerAttributeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-}
 ```
+
+`}`
 
 **7.5.4.3.**
 
@@ -5074,10 +5241,15 @@ Queries the configurations of an HTTPS listener.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DescribeLoadBal ancerHTTPSListe nerAttribute | The operation that you want to perform. Set the value to DescribeLoadBalancerHTTPSList enerAttribute. |
 |---|---|---|---|---|
 | ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
 | LoadBalancerId | String | Yes | lb- bp1mxu5r8lau** ** | The ID of the SLB instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5088,10 +5260,6 @@ Queries the configurations of an HTTPS listener.
 | XForwardedFo r | String | on | Indicates whether the X-Forwarded-For header is used to obtain the real IP address of the client. Valid values: on and off. |
 | Scheduler | String | wrr | The scheduling algorithm. Valid values: wrr, wlc, and rr. wrr (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights. wlc: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests. rr: Requests are distributed to backend servers in sequence. |
 
-Server Load Balancer
-
-**Response parameters**
-
 | StickySession | String | on | Indicates whether session persistence is enabled. Valid values: on and off. |
 |---|---|---|---|
 | StickySessionT ype | String | insert | The method that is used to handle a cookie. If you set the StickySession parameter to on, this parameter is required. Valid values: insert and server. insert: inserts a cookie into the response. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client will contain this cookie, and the listener will forward this request to the recorded backend server. server: rewrites the original cookie. When SLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will distribute the request to the recorded backend server. Note If you set the StickySession parameter to on, this parameter is required. |
@@ -5099,8 +5267,6 @@ Server Load Balancer
 | Cookie | String | B490B5EBF6F3CD4 02E515D22BCDA1 598 | The cookie configured on the backend server. |
 | HealthCheck | String | on | Indicates whether health checks are enabled. Valid values: on and off. |
 | HealthCheckD omain | String | www.test.com | The domain name that is used for health checks. |
-
-Server Load Balancer
 
 | HealthCheckU RI | String | /test/index.html | The URL that is used for health checks. The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL must start with a forward slash (/) but cannot contain only a forward slash (/). |
 |---|---|---|---|
@@ -5115,37 +5281,33 @@ Server Load Balancer
 | VServerGroupI d | String | rsp-cige6j5e**** | The ID of the associated vServer group. |
 | Gzip | String | on | Indicates whether gzip compression is enabled. Valid values: on and off. |
 
-Server Load Balancer
-
 | Description | String | ListenerDescription | The description of the listener. The description must be 2 to 256 characters in length. It can contain only Chinese characters and characters in the following string: /^([^\x00-\xff]\|[\w.,;/@- ]){2,256}$/. |
 |---|---|---|---|
 | IdleTimeout | Integer | 23 | The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60. Default value: 15. If no request is received during the specified timeout period, SLB closes the connection. When another request is received, SLB establishes a new connection. |
-| MaxConnectio n | Integer | 10 |  |
+| MaxConnectio n | Integer | 10 |   |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 | RequestTimeo ut | Integer | 43 | The timeout period of a request. Unit: seconds. Valid values: 1 to 180. Default value: 60. If the backend server does not respond within the specified timeout period, SLB returns the HTTP 504 error code to the client. |
 | SecurityStatus | String | on | The security status. Valid values: on and off. |
-|  |  |  | The security policy. You can specify the TLSCipherPolicy parameter only for a high- performance SLB instance. Each security policy includes different TLS protocol versions and cipher suites for HTTPS. The following security policies are supported. For more information about the differences, see Differences in TLS security policies. You can specify a security policy based on your requirements. Valid values: tls cipher policy 1 0: _ _ _ _ Supported TLS versions: TLSv1.0, TLSv1.1, and TLSv1.2. |
+|   |   |   | The security policy. You can specify the TLSCipherPolicy parameter only for a high- performance SLB instance. Each security policy includes different TLS protocol versions and cipher suites for HTTPS. The following security policies are supported. For more information about the differences, see Differences in TLS security policies. You can specify a security policy based on your requirements. Valid values: tls cipher policy 1 0: _ _ _ _ Supported TLS versions: TLSv1.0, TLSv1.1, and TLSv1.2. |
 
-Server Load Balancer
-
-|  |  |  | Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. |
+|   |   |   | Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. |
 |---|---|---|---|
 | TLSCipherPolic y | String | tls cipher policy 1 _ _ _ 0 _ | tls cipher policy 1 1: _ _ _ _ Supported TLS versions: TLSv1.1 and TLSv1.2. Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. tls cipher policy 1 2 _ _ _ _ Supported TLS version: TLSv1.2. Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, AES128-GCM-SHA256, AES256- GCM-SHA384, AES128-SHA256, AES256- SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA. tls cipher policy 1 2 strict _ _ _ _ _ Supported TLS version: TLSv1.2. Supported cipher suites: ECDHE-RSA- AES128-GCM-SHA256, ECDHE-RSA- AES256-GCM-SHA384, ECDHE-RSA- AES128-SHA256, ECDHE-RSA-AES256- SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA. |
 | XForwardedFo r SLBID _ | String | on | Indicates whether the SLB-ID header is used to obtain the ID of the SLB instance. Valid values: on and off. |
 | XForwardedFo r SLBIP _ | String | on | Indicates whether the SLB-IP header is used to obtain the real IP address of the client. Valid values: on and off. |
 
-Server Load Balancer
-
 | XForwardedFo r proto _ | String | on | Indicates whether the X-Forwarded- Proto header is used to obtain the listener protocol of the SLB instance. Valid values: on and off. |
 |---|---|---|---|
 
-| X-Forwarded- |  |
+| X-Forwarded- |   |
 |---|---|
 
-|  | Proto |
+|   | Proto |
 |---|---|
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeLoadBalancerHTTPSListenerAttribute &ListenerPort=80 &LoadBalancerId=lb-bp1mxu5r8lau******* &<Common request parameters>
@@ -5161,7 +5323,7 @@ Sample success responses `XML` format
 <ServerCertificateId>1231579xxxxxxxx_15dbf6ff26f_1991415478_2054196746</ServerCertificate
 ```
 
->
+`>`
 
 ```xml
       <XForwardedFor_SLBID>off</XForwardedFor_SLBID>
@@ -5185,18 +5347,9 @@ Sample success responses `XML` format
 </DescribeLoadBalancerHTTPSListenerAttributeResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeHealthS tatus | The operation that you want to perform. Set the value to DescribeHealthStatus. |
-| LoadBalancerId | String | Yes | lb- bp1qjwo61pqz3 ah**** | The ID of the Server Load Balancer (SLB) instance. |
-| ListenerPort | Integer | No | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. Note If you do not specify this parameter, the health status of all ports is returned. |
-
-Server Load Balancer
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "11F52428-64ED-40F7-98C2-DBB6D0BB0AD7",
     "HealthCheckHttpCode": "http_2xx,http_3xx",
     "HealthCheckTimeout": 5,
@@ -5219,31 +5372,38 @@ Server Load Balancer
     "HealthCheckDomain": "",
     "HealthCheckInterval": 2,
     "BackendServerPort": 443
-}
 ```
 
-##### DescribeHealthStatus
+`}`
+
+##### 7.5.4.4 DescribeHealthStatus
 
 Queries the health status of backend servers.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeHealthS tatus | The operation that you want to perform. Set the value to DescribeHealthStatus. |
+| LoadBalancerId | String | Yes | lb- bp1qjwo61pqz3 ah**** | The ID of the Server Load Balancer (SLB) instance. |
+| ListenerPort | Integer | No | 80 | The frontend port that is used by the SLB instance. Valid values: 1 to 65535. Note If you do not specify this parameter, the health status of all ports is returned. |
+
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the SLB instance is deployed. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | i- bp1h5u3fv54ytf*** * | The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI). |
 | ServerHealthS tatus | String | abnormal | The health status of the backend server: normal: The backend server is healthy. abnormal: The backend server is unhealthy. unavailable: The health check is not completed. |
 | ListenerPort | Integer | 80 | The frontend port that is used by the SLB instance. |
-| port | Integer | 80 |  |
+| port | Integer | 80 |   |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5251,10 +5411,12 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeHealthStatus &LoadBalancerId=lb-bp1qjwo61pqz3ah**** &<Common request parameters>
 ```
 
-Sample success responses `XML` format Server Load Balancer
+Sample success responses `XML` format
 
 ```xml
+<DescribeHealthStatusResponse>
   <RequestId>E69BA4CE-2B55-45EC-94CA-E47B16759459</RequestId>
+  <BackendServers>
         <BackendServer>
               <ListenerPort>80</ListenerPort>
               <ServerId>i-bp1h5u3fv54ytf0******</ServerId>
@@ -5271,42 +5433,49 @@ Sample success responses `XML` format Server Load Balancer
               <ServerHealthStatus>abnormal</ServerHealthStatus>
               <Protocol>tcp</Protocol>
         </BackendServer>
+  </BackendServers>
+</DescribeHealthStatusResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "E69BA4CE-2B55-45EC-94CA-E47B16759459",
+    "BackendServers": {
         "BackendServer": [
-            {
+```
+
+`{`
+
+```json
                 "ListenerPort": 80,
                 "ServerId": "i-bp1h5u3fv54ytf*****",
                 "Port": 80,
                 "ServerIp": "192.168.**.**",
                 "ServerHealthStatus": "abnormal",
                 "Protocol": "http"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ListenerPort": 8080,
                 "ServerId": "i-bp1h5u3fv54ytf0******",
                 "Port": 80,
                 "ServerIp": "192.168.**.**",
                 "ServerHealthStatus": "abnormal",
                 "Protocol": "tcp"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
+#### 7.5.5 Access control
 
-#### Access control
+##### 7.5.5.1 SetListenerAccessControlStatus
 
-##### SetListenerAccessControlStatus
+Enables or disables the whitelist of a specified listener.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5317,38 +5486,26 @@ Sample success responses `XML` format Server Load Balancer
 | access key id _ _ | String | No | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |
 | Tags | String | No | {"tagKey":"Key1 ","tagValue":"Va lue1"} | The key and value of the tag. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer Enables or disables the whitelist of a specified listener.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeListener AccessControlAt tribute | The operation that you want to perform. Set the value to DescribeListenerAccessControlAt tribute. |
-| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
-| LoadBalancerId | String | Yes | lb- 8vb86hxixo8*** ****6jaz | The ID of the SLB instance. |
-| Tags | String | No | listeneraccessco ntrolslb**** | The tags. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Server Load Balancer
-
 ```
-http(s)://[Endpoint]/?Action=SetListenerAccessControlStatus &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=SetListenerAccessControlStatus &AccessControlStatus=open_white_list &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<SetListenerAccessControlStatusResponse>
     <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
+</SetListenerAccessControlStatusResponse>
 ```
 
 `JSON` format
@@ -5357,24 +5514,32 @@ Sample success responses `XML` format
 {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"}
 ```
 
-##### DescribeListenerAccessControlAttribute
+##### 7.5.5.2 DescribeListenerAccessControlAttribute
 
 Queries the whitelist configurations of a listener.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeListener AccessControlAt tribute | The operation that you want to perform. Set the value to DescribeListenerAccessControlAt tribute. |
+| ListenerPort | Integer | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |
+| LoadBalancerId | String | Yes | lb- 8vb86hxixo8*** ****6jaz | The ID of the SLB instance. |
+| Tags | String | No | listeneraccessco ntrolslb**** | The tags. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | AccessControl Status | String | open white list _ _ | Indicates whether the whitelist is enabled. Valid values: open white list: the whitelist is _ _ enabled. close: the whitelist is disabled. |
 |---|---|---|---|
 | SourceItems | String | 192.168.0.1 | The IP addresses or CIDR blocks that are added to the whitelist. |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AddListenerWhit eListItem | The operation that you want to perform. Set the value to AddListenerWhiteListItem. |
+**Examples**
 
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeListenerAccessControlAttribute &ListenerPort=80 &LoadBalancerId=lb-8vb86hxixo8*******6jaz &<Common request parameters>
@@ -5396,25 +5561,29 @@ Sample success responses `XML` format
 {"AccessControlStatus":"open_white_list", "RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710", "SourceItems":"192.168.0.1"}
 ```
 
-##### AddListenerWhiteListItem
+##### 7.5.5.3 AddListenerWhiteListItem
 
 Adds IP addresses to the whitelist of a listener.
 
 **Request parameters**
 
-| ListenerPort | Integer |  | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | AddListenerWhit eListItem | The operation that you want to perform. Set the value to AddListenerWhiteListItem. |
+
+| ListenerPort | Integer |   | Yes | 80 | The frontend port that is used by the Server Load Balancer (SLB) instance. Valid values: 1 to 65535. |   |
 |---|---|---|---|---|---|---|
-| LoadBalancerId | String |  | Yes | 139a00604ad- cn-east- hangzhou-01 | The ID of the SLB instance. |  |
-| SourceItems | String |  | Yes | 1.XX.XX.1,1.XX. XX.0/21 | The IP addresses or CIDR blocks that you want to add to the whitelist. This parameter takes effect only when AccessControlStatus of the listener is set to open white list. _ _ Separate multiple IP addresses or CIDR blocks with commas (,). You cannot enter 0.0.0.0 or 0.0.0.0/0. You can call the SetListenerAccessControlStatus operation to set the value of the AccessControlStatus parameter to close. This indicates that access control is disabled. |  |
-|  |  |  |  |  |  | SetListenerAccessControlStatus |
+| LoadBalancerId | String |   | Yes | 139a00604ad- cn-east- hangzhou-01 | The ID of the SLB instance. |   |
+| SourceItems | String |   | Yes | 1.XX.XX.1,1.XX. XX.0/21 | The IP addresses or CIDR blocks that you want to add to the whitelist. This parameter takes effect only when AccessControlStatus of the listener is set to open white list. _ _ Separate multiple IP addresses or CIDR blocks with commas (,). You cannot enter 0.0.0.0 or 0.0.0.0/0. You can call the SetListenerAccessControlStatus operation to set the value of the AccessControlStatus parameter to close. This indicates that access control is disabled. |   |
+|   |   |   |   |   |   | SetListenerAccessControlStatus |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5425,10 +5594,25 @@ http(s)://[Endpoint]/?Action=AddListenerWhiteListItem &ListenerPort=80 &LoadBala
 Sample success responses `XML` format
 
 ```xml
+<AddListenerWhiteListItemResponse>
       <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
+</AddListenerWhiteListItemResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "AddListenerWhiteListItemResponse": {
+        "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+```
+
+`}` `}`
+
+##### 7.5.5.4 RemoveListenerWhiteListItem
+
+Removes IP addresses from the whitelist of a listener.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5437,34 +5621,15 @@ Sample success responses `XML` format
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8ex**** | The ID of the Server Load Balancer (SLB) instance. |
 | SourceItems | String | Yes | 192.168.0.1/24 | The IP addresses or CIDR blocks to be removed. Separate multiple IP addresses or CIDR blocks with commas (,). Note If all IP addresses are removed from the whitelist, the listener does not forward requests. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
+**Examples**
 
-```json
-{
-        "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-    }
-}
-```
-
-##### RemoveListenerWhiteListItem
-
-Removes IP addresses from the whitelist of a listener.
-
-**Request parameters**
-
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateAccessCo ntrolList | The operation that you want to perform. Set the value to CreateAccessControlList. |
-| AclName | String | Yes | rule1 | The name of the ACL. ACL names must be unique within the region. |
-| RegionId | String | Yes | cn-hangzhou | The ID of the region where you want to create the ACL. |
-
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=RemoveListenerWhiteListItem &ListenerPort=80 &LoadBalancerId=lb-bp1b6c719dfa08ex**** &SourceItems=192.168.0.1 &<Common request parameters>
@@ -5473,7 +5638,9 @@ http(s)://[Endpoint]/?Action=RemoveListenerWhiteListItem &ListenerPort=80 &LoadB
 Sample success responses `XML` format
 
 ```xml
+<RemoveListenerWhiteListItemResponse>
     <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
+</RemoveListenerWhiteListItemResponse>
 ```
 
 `JSON` format
@@ -5482,24 +5649,30 @@ Sample success responses `XML` format
 {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"}
 ```
 
-##### CreateAccessControlList
+##### 7.5.5.5 CreateAccessControlList
 
 Creates an access control list (ACL). You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits: Each Apsara Stack tenant account can create at most 50 ACLs in a region. The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL is 50. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is 300. The maximum number of ACLs that can be associated with a listener is 50.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateAccessCo ntrolList | The operation that you want to perform. Set the value to CreateAccessControlList. |
+| AclName | String | Yes | rule1 | The name of the ACL. ACL names must be unique within the region. |
+| RegionId | String | Yes | cn-hangzhou | The ID of the region where you want to create the ACL. |
+
 | AddressIPVersio n | String | No | ipv4 | The IP version. Valid values: ipv4 and ipv6. Note You can create high-performance IPv6 Server Load Balancer (SLB) instances only in the following zones: Hangzhou Zone E and Hangzhou Zone F, Beijing Zone F and Beijing Zone G, Shenzhen Zone D and Shenzhen Zone E, and all zones in the China (Shanghai) region. |
 |---|---|---|---|---|
 | ResourceGroupI d | String | No | rg-atstuj3rt**** | The ID of the resource group to which the ACL belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclId | String | acl- rj9xpxzcwxrukois** ** | The ID of the ACL. |
 | RequestId | String | 988CB45E-1643- 48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5510,8 +5683,10 @@ http(s)://[Endpoint]/?Action=CreateAccessControlList &AclName=rule1 &RegionId=cn
 Sample responses `XML` format
 
 ```xml
+<CreateAccessControlListResponse>
     <RequestId>988CB45E-1643-48C0-87B4-928DDF77EA49</RequestId>
     <AclId>acl-rj9xpxzcwxrukois******</AclId>
+</CreateAccessControlListResponse>
 ```
 
 `JSON` format
@@ -5520,6 +5695,8 @@ Sample responses `XML` format
 {"RequestId":"988CB45E-1643-48C0-87B4-928DDF77EA49","AclId":"acl-rj9xpxzcwxrukois****"}
 ```
 
+**Error codes**
+
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidAction.Regio nNotSupport | The region does not support this action. | The error message returned because the parameter is not supported in the current region. |
@@ -5527,36 +5704,27 @@ Sample responses `XML` format
 | 400 | InvalidResourceGro upId.NotFound | The specified ResourceGroupId is not found. | The error message returned because the specified resource group does not exist. |
 | 400 | ResourceInConfigur ing.Acl | The specified resource is configuring, please try again later. | The error message returned because the specified ACL is being configured. Try again later. |
 
+##### 7.5.5.6 DeleteAccessControlList
+
+Deletes an access control list (ACL). You can delete an ACL only if it is not associated with a listener.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteAccessCo ntrolList | The operation that you want to perform. Set the value to DeleteAccessControlList. |
 | AclId | String | Yes | acl- bp1l0kk4gxce43 kz**** | The ID of the ACL. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 988CB45E-1643- 48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
-Server Load Balancer
+**Examples**
 
-##### DeleteAccessControlList
-
-Deletes an access control list (ACL). You can delete an ACL only if it is not associated with a listener.
-
-**Request parameters**
-
-**Response parameters**
-
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | OperationFailed.Acl BindedWithVip | The ACL has binded with vip. | The error message returned because the ACL is associated with a listener and the operation failed. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAccess ControlLists | The operation that you want to perform. Set the value to DescribeAccessControlLists. |
-| RegionId | String | Yes | cn-hangzhou | The ID of the region where the network ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
-
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DeleteAccessControlList &AclId=acl-bp1l0kk4gxce43kz****** &RegionId=cn-hangzhou &<Common request parameters>
@@ -5565,22 +5733,35 @@ http(s)://[Endpoint]/?Action=DeleteAccessControlList &AclId=acl-bp1l0kk4gxce43kz
 Sample responses `XML` format
 
 ```xml
+<DeleteAccessControlListResponse>
     <RequestId>988CB45E-1643-48C0-87B4-928DDF77EA49</RequestId>
+</DeleteAccessControlListResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "988CB45E-1643-48C0-87B4-928DDF77EA49"
-}
 ```
 
-##### DescribeAccessControlLists
+`}`
+
+**Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | OperationFailed.Acl BindedWithVip | The ACL has binded with vip. | The error message returned because the ACL is associated with a listener and the operation failed. |
+
+##### 7.5.5.7 DescribeAccessControlLists
 
 Queries network access control lists (ACLs).
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAccess ControlLists | The operation that you want to perform. Set the value to DescribeAccessControlLists. |
+| RegionId | String | Yes | cn-hangzhou | The ID of the region where the network ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 
 | AclName | String | No | acl | The name of the network ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores ( ). The name of the network ACL _ must be unique within the region. |
 |---|---|---|---|---|
@@ -5589,19 +5770,17 @@ Queries network access control lists (ACLs).
 | PageNumber | Integer | No | 1 | The number of the page to return. Default value: 1. |
 | ResourceGroupI d | String | No | rg- atstuj3rtop**** | The ID of the resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Acls | Array of Acl |  | A list of network ACLs. |
-| Acl |  |  |  |
+| Acls | Array of Acl |   | A list of network ACLs. |
+| Acl |   |   |   |
 | AclId | String | acl- bp1l0kk4gxce43k* **** | The ID of the network ACL. |
 | AclName | String | rule1 | The name of the network ACL. |
 | AddressIPVersi on | String | ipv4 | The IP version that is used by the associated SLB instance. |
 | ResourceGrou pId | String | rg-jfenf*********** | The ID of the resource group. |
 | Count | Integer | 5 | The number of network ACLs on the current page. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | PageNumber | Integer | 2 | The number of the returned page. Minimum value: 1. Default value: 1. |
 |---|---|---|---|
@@ -5609,7 +5788,9 @@ Server Load Balancer
 | RequestId | String | 3CB646EF-6147- 4566-A9D9- CE8FBE86F971 | The ID of the request. |
 | TotalCount | Integer | 3 | The number of network ACLs. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeAccessControlLists &RegionId=cn-hangzhou &<Common request parameters>
@@ -5618,6 +5799,7 @@ http(s)://[Endpoint]/?Action=DescribeAccessControlLists &RegionId=cn-hangzhou &<
 Sample responses `XML` format
 
 ```xml
+<DescribeAccessControlListsResponse>
    <RequestId>3CB646EF-6147-4566-A9D9-CE8FBE86F971</RequestId>
    <Acls>
       <Acl>
@@ -5631,13 +5813,46 @@ Sample responses `XML` format
          <AddressIPVersion>ipv4</AddressIPVersion>
       </Acl>
    </Acls>
+</DescribeAccessControlListsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "3CB646EF-6147-4566-A9D9-CE8FBE86F971",
+    "Acls": {
+        "Acl": [
+```
+
+`{`
+
+```json
+                "AclId": "acl-bp1j9vn2g7wm9wn0****",
+                "AclName": "test",
+                "AddressIPVersion": "ipv4"
+```
+
+`},` `{`
+
+```json
+                "AclId": "acl-bp1l0kk4gxce43*****",
+                "AclName": "doctest",
+                "AddressIPVersion": "ipv4"
+```
+
+`}` `]` `}` `}`
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidResourceGro upId.NotFound | The specified ResourceGroupId is not found. | The error message returned because the specified resource group does not exist. |
+
+##### 7.5.5.8 DescribeAccessControlListAttribute
+
+Queries the configurations of a network access control list (ACL).
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5645,66 +5860,34 @@ Sample responses `XML` format
 | AclId | String | Yes | acl- bp1l0kk4gxce43 kzet04s | The ID of the network ACL that you want to query. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the network ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 
-Server Load Balancer
-
-```json
-{
-    "RequestId": "3CB646EF-6147-4566-A9D9-CE8FBE86F971",
-    "Acls": {
-        "Acl": [
-            {
-                "AclId": "acl-bp1j9vn2g7wm9wn0****",
-                "AclName": "test",
-                "AddressIPVersion": "ipv4"
-            },
-            {
-                "AclId": "acl-bp1l0kk4gxce43*****",
-                "AclName": "doctest",
-                "AddressIPVersion": "ipv4"
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-##### DescribeAccessControlListAttribute
-
-Queries the configurations of a network access control list (ACL).
-
-**Request parameters**
-
 | AclEntryComme nt | String | No | test | The description of the network ACL entry. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AclEntrys | Array of AclEntry |  | A list of ACL entries. |
-| AclEntry |  |  |  |
+| AclEntrys | Array of AclEntry |   | A list of ACL entries. |
+| AclEntry |   |   |   |
 | AclEntryComm ent | String | The network ACL entry. | The description of the ACL entry. |
 | AclEntryIP | String | 192.168.0.1 | The IP address specified in the network ACL entry. |
 | AclId | String | acl- bp1l0kk4gxce43kz et04s | The ID of the network ACL. |
 | AclName | String | doctest | The name of the network ACL. |
 | AddressIPVersi on | String | ipv4 | The IP version of the instance with which the network ACL is associated. |
-| RelatedListene rs | Array of RelatedListene r |  | A list of listeners with which the network ACL is associated. |
-| RelatedListene r |  |  |  |
+| RelatedListene rs | Array of RelatedListene r |   | A list of listeners with which the network ACL is associated. |
+| RelatedListene r |   |   |   |
 | AclType | String | white | The type of the network ACL. Valid values: black: a denylist. white: an allowlist. |
 | ListenerPort | Integer | 443 | The frontend port of the listener with which the network ACL is associated. |
 | LoadBalancerI d | String | lb- bp13jaf5qli5xmgl1 miup | The ID of the SLB instance. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | Protocol | String | https | The type of protocol that the associated listener uses. Valid values: tcp udp http https |
 |---|---|---|---|
 | RequestId | String | C9906A1D-86F7- 4C9C-A369- 54DA42EF206A | The ID of the request. |
 | ResourceGrou pId | String | rg-atstuj3rtop**** | The ID of the resource group. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 /?Action=DescribeAccessControlListAttribute &AclId=acl-bp1l0kk4gxce43kzet04s &RegionId=cn-hangzhou &<Common request parameters>
@@ -5715,12 +5898,14 @@ Sample responses `XML` format
 ```xml
 <DescribeAccessControlListAttributeResponse>
    <AclId>acl-bp1l0kk4gxce43kzet04s</AclId>
+   <RelatedListeners>
       <RelatedListener>
          <AclType>white</AclType>
          <LoadBalancerId>lb-bp13jaf5qli5xmgl1miup</LoadBalancerId>
          <Protocol>https</Protocol>
          <ListenerPort>443</ListenerPort>
       </RelatedListener>
+   </RelatedListeners>
    <AclName>doctest</AclName>
    <RequestId>C9906A1D-86F7-4C9C-A369-54DA42EF206A</RequestId>
    <AddressIPVersion>ipv4</AddressIPVersion>
@@ -5735,6 +5920,12 @@ clEntrys":{"AclEntry":[{"AclEntryComment":"Network ACL entry","AclEntryIP":"192.
 54DA42EF206A","AddressIPVersion":"ipv4","AclId":"aclbp1l0kk4gxce43kzet04s","RelatedListeners":{"RelatedListener": [{"ListenerPort":"443","AclType":"white","LoadBalancerId":"lbbp13jaf5qli5xmgl1miup","Protocol":"https"}]},"AclName":"doctest"}{"A
 ```
 
+##### 7.5.5.9 SetAccessControlListAttribute
+
+Changes the name of a network access control list (ACL).
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | SetAccessContro lListAttribute | The operation that you want to perform. Set the value to SetAccessControlListAttribute. |
@@ -5742,20 +5933,14 @@ clEntrys":{"AclEntry":[{"AclEntryComment":"Network ACL entry","AclEntryIP":"192.
 | AclName | String | Yes | test1 | The name of the network ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores ( ). The name of the network ACL _ must be unique within the region. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the network ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclId | String | acl- bp1l0kk4gxce43kz et04s | The ID of the network ACL. |
 | RequestId | String | 988CB45E-1643- 48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
-Server Load Balancer
-
-##### SetAccessControlListAttribute
-
-Changes the name of a network access control list (ACL).
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5763,7 +5948,27 @@ Sample requests
 http(s)://[Endpoint]/?Action=SetAccessControlListAttribute &AclId=acl-bp1l0kk4gxce43kzet04s &AclName=test1 &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-Sample responses
+Sample responses `XML` format
+
+```xml
+<SetAccessControlListAttributeResponse>
+    <RequestId>988CB45E-1643-48C0-87B4-928DDF77EA49</RequestId>
+</SetAccessControlListAttributeResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "988CB45E-1643-48C0-87B4-928DDF77EA49"
+```
+
+`}`
+
+##### 7.5.5.10 AddAccessControlListEntry
+
+Adds IP addresses to an access control list (ACL). Each ACL can contain one or more IP addresses or CIDR blocks. The limits on ACLs are: The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL in each call is **50**. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is **300**.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5771,36 +5976,16 @@ Sample responses
 | AclId | String | Yes | acl- bp1l0kk4gxce43 kze***** | The ID of the ACL. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the ACL is created. |
 
-Server Load Balancer `XML` format
-
-```xml
-    <RequestId>988CB45E-1643-48C0-87B4-928DDF77EA49</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "988CB45E-1643-48C0-87B4-928DDF77EA49"
-}
-```
-
-##### AddAccessControlListEntry
-
-Adds IP addresses to an access control list (ACL). Each ACL can contain one or more IP addresses or CIDR blocks. The limits on ACLs are: The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL in each call is **50**. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is **300**.
-
-**Request parameters**
-
 | AclEntrys | String | No | [{"entry":"10.0.* *.**/24","comme nt":"privaterule1 "}, {"entry":"192.16 8.**.**/16","com ment":"privateru le2"}] | The IP addresses that you want to add to the ACL. entry: the IP addresses or CIDR blocks that you want to add to the ACL. Separate multiple IP addresses or CIDR blocks with commas (,). comment: the comment on the ACL. Note You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 988CB45E-1643- 48C0-87B4- 928DDF77EA4 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5811,16 +5996,20 @@ http(s)://[Endpoint]/?Action=AddAccessControlListEntry &AclId=acl-bp1l0kk4gxce43
 Sample responses `XML` format
 
 ```xml
+<AddAccessControlListEntryResponse>
     <RequestId>988CB45E-1643-48C0-87B4-928DDF77EA49</RequestId>
+</AddAccessControlListEntryResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "988CB45E-1643-48C0-87B4-928DDF77EA49"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -5831,30 +6020,28 @@ Sample responses `XML` format
 | 503 | ServiceUnavailable | Service is unavailable now. | The error message returned because the service is unavailable. |
 | 400 | AclEntryExceedLimi t | The maximum number of ACL entries is exceeded. | The error message returned because the number of specified IP addresses or CIDR blocks exceeds the upper limit. |
 
+##### 7.5.5.11 RemoveAccessControlListEntry
+
+Removes IP addresses from an access control list (ACL).
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RemoveAccessC ontrolListEntry | The operation that you want to perform. Set the value to RemoveAccessControlListEntry. |
 | AclId | String | Yes | acl- bp1l0kk4gxce43 k****** | The ID of the ACL. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region where the ACL is created. You can call the DescribeRegions operation to query the most recent region list. |
 
-Server Load Balancer
-
-##### RemoveAccessControlListEntry
-
-Removes IP addresses from an access control list (ACL).
-
-**Request parameters**
-
 | AclEntrys | String | No | [{"entry":"10.0.* *.**/24","comme nt":"privaterule1 "}] | The IP addresses that you want to remove from the ACL. entry: the IP address or CIDR block that you want to remove from the ACL. Separate multiple IP addresses or CIDR blocks with commas (,). comment: the comment of the ACL. Note If the ACL is associated with a listener, you cannot remove all IP addresses from the ACL. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 988CB45E-1643- 48C0-87B4- 928DDF77EA49 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5865,20 +6052,30 @@ http(s)://[Endpoint]/?Action=RemoveAccessControlListEntry &AclId=acl-bp1l0kk4gxc
 Sample responses `XML` format
 
 ```xml
+<RemoveAccessControlListEntryResponse>
     <RequestId>988CB45E-1643-48C0-87B4-928DDF77EA49</RequestId>
+</RemoveAccessControlListEntryResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "988CB45E-1643-48C0-87B4-928DDF77EA49"
-}
 ```
 
-### Forwarding rules
+`}`
 
-### Access logs
+### 7.6 Forwarding rules
+
+### 7.7 Access logs
+
+### 7.8 Server certificates
+
+#### 7.8.1 UploadServerCertificate
+
+Uploads a server certificate. You can upload only one server certificate and its private key in each request. The request is successful only when the server certificate and its private key are both uploaded. If the server certificate or its private key is not uploaded, the request fails. After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your account are returned.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5888,21 +6085,13 @@ Sample responses `XML` format
 | AliCloudCertifica teName | String | No | testcertkey | The name of the server certificate that is provided by Apsara Stack SSL Certificates Service. |
 | ServerCertificate | String | No | test | The public key certificate that you want to upload. Note This parameter is required if you use a server certificate that is provided by a third party. |
 
-Server Load Balancer
-
-### Server certificates
-
-#### UploadServerCertificate
-
-Uploads a server certificate. You can upload only one server certificate and its private key in each request. The request is successful only when the server certificate and its private key are both uploaded. If the server certificate or its private key is not uploaded, the request fails. After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your account are returned.
-
-**Request parameters**
-
 | PrivateKey | String | No | wmsa**** | The private key that you want to upload. Note This parameter is required if you use a server certificate that provided by a third party. |
 |---|---|---|---|---|
 | ServerCertificate Name | String | No | mycert01 | The name of the server certificate that you want to upload. The name must be 1 to 80 characters in length and can contain digits, periods (.), underscores ( ), _ and hyphens (-). It must start with a letter. |
 | Tags | String | No | ServerCertificat e**** | The tag that you want to add to the server certificate. |
 | StandardType | String | No | ServerCertificat e | The type of the server certificate. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5913,16 +6102,14 @@ Uploads a server certificate. You can upload only one server certificate and its
 | AliCloudCertifi cateName | String | testcert**** | The name of the server certificate if the server certificate is provided by Apsara Stack SSL Certificates Service. |
 | IsAliCloudCerti ficate | Integer | 0 | Indicates whether the server certificate is provided by Apsara Stack SSL Certificates Service. Valid values: 0: The server certificate is provided by a third-party CA. 1: The server certificate is provided by Apsara Stack SSL Certificates Service. |
 
-Server Load Balancer
-
-**Response parameters**
-
 | RegionId | String | cn-qingdao-env17- d01 | The ID of the region where the server certificate is created. |
 |---|---|---|---|
 | RegionIdAlias | String | hangzhou | The name of the region where the server certificate is created. |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=UploadServerCertificate &RegionId=cn-east-hangzhou-01 &<Common request parameters>
@@ -5931,6 +6118,7 @@ http(s)://[Endpoint]/?Action=UploadServerCertificate &RegionId=cn-east-hangzhou-
 Sample success responses `XML` format
 
 ```xml
+<UploadServerCertificateResponse>
       <RegionIdAlias>cn-east-hangzhou-01</RegionIdAlias>
       <Fingerprint>01:DF:AB:**</Fingerprint>
       <AliCloudCertificateName>testcert***</AliCloudCertificateName>
@@ -5940,13 +6128,13 @@ Sample success responses `XML` format
       <ServerCertificateName>mycert01</ServerCertificateName>
       <RegionId>cn-hangzhou</RegionId>
       <AliCloudCertificateId>730912xxxxx_15d97e7709a_71445759hr_7*******
-</AliCloudCertificateId>
+</AliCloudCertificateId> </UploadServerCertificateResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "UploadServerCertificateResponse": {
         "RegionIdAlias": "cn-east-hangzhou-01",
         "Fingerprint": "01:DF:AB:**",
         "AliCloudCertificateName": "testcert***",
@@ -5956,23 +6144,11 @@ Sample success responses `XML` format
         "ServerCertificateName": "mycert01",
         "RegionId": "cn-hangzhou",
         "AliCloudCertificateId": "730912xxxxx_15d97e7709a_71445759hr_7*******"
-    }
-}
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteServerCer tificate | The operation that you want to perform. Set the value to DeleteServerCertificate. |
-| ServerCertificate Id | String | Yes | 123157**** 166 _ f8204689 1714 _ 763408 7099*** _ * | The ID of the server certificate. |
-| RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. You can call the DescribeRegions operation to query region IDs. |
+`}` `}`
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
-
-Server Load Balancer
-
-#### DeleteServerCertificate
+#### 7.8.2 DeleteServerCertificate
 
 Deletes a server certificate.
 
@@ -5982,7 +6158,19 @@ You cannot delete a server certificate that is in use.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteServerCer tificate | The operation that you want to perform. Set the value to DeleteServerCertificate. |
+| ServerCertificate Id | String | Yes | 123157**** 166 _ f8204689 1714 _ 763408 7099*** _ * | The ID of the server certificate. |
+| RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. You can call the DescribeRegions operation to query region IDs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -5993,31 +6181,21 @@ http(s)://[Endpoint]/?Action=DeleteServerCertificate &ServerCertificateId=123157
 Sample success responses `XML` format
 
 ```xml
+<DeleteServerCertificateResponse>
       <RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
+</DeleteServerCertificateResponse>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeServerC ertificates | The operation that you want to perform. Set the value to DescribeServerCertificates. |
-| RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. You can call the DescribeRegions operation to query region IDs. |
-| ServerCertificate Id | String | No | 12315790xxxxx xx 166f8204689 _ 1714763408 7 _ _ 09***** | The ID of the server certificate. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ServerCertifica tes | Array of ServerCertifica te |  | The list of server certificates. |
-| ServerCertifica te |  |  |  |
-| ServerCertifica teId | String | 123157xxxxxxxx 1 _ 66f8204689 17147 _ 63408 709981430- _ cn-east- hangz****** | The ID of the server certificate. |
-
-Server Load Balancer `JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "DeleteServerCertificateResponse": {
         "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-    }
-}
 ```
 
-#### DescribeServerCertificates
+`}` `}`
+
+#### 7.8.3 DescribeServerCertificates
 
 Queries server certificates in a specified region.
 
@@ -6027,7 +6205,19 @@ For security reasons, only fingerprints and names of the server certificates are
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeServerC ertificates | The operation that you want to perform. Set the value to DescribeServerCertificates. |
+| RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. You can call the DescribeRegions operation to query region IDs. |
+| ServerCertificate Id | String | No | 12315790xxxxx xx 166f8204689 _ 1714763408 7 _ _ 09***** | The ID of the server certificate. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ServerCertifica tes | Array of ServerCertifica te |   | The list of server certificates. |
+| ServerCertifica te |   |   |   |
+| ServerCertifica teId | String | 123157xxxxxxxx 1 _ 66f8204689 17147 _ 63408 709981430- _ cn-east- hangz****** | The ID of the server certificate. |
 
 | ServerCertifica teName | String | slb | The name of the server certificate. |
 |---|---|---|---|
@@ -6040,16 +6230,20 @@ For security reasons, only fingerprints and names of the server certificates are
 | StandardType | String | ServerCertificate | The type of the server certificate. |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeServerCertificates &<Common request parameters>
 ```
 
-Sample success responses `XML` format Server Load Balancer
+Sample success responses `XML` format
 
 ```xml
+<DescribeServerCertificatesResponse>
       <RequestId>9FFF450B-CC09-4FFB-900F-E347EB7AA2CC</RequestId>
+      <ServerCertificates>
             <ServerCertificate>
                   <CreateTimeStamp>1541761156000</CreateTimeStamp>
                   <CommonName>*.example1.com</CommonName>
@@ -6080,20 +6274,22 @@ Sample success responses `XML` format Server Load Balancer
                   <IsAliCloudCertificate>0</IsAliCloudCertificate>
                   <AliCloudCertificateName></AliCloudCertificateName>
             </ServerCertificate>
+      </ServerCertificates>
+</DescribeServerCertificatesResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Server Load Balancer
+`JSON` format `{`
 
 ```json
-{
+    "DescribeServerCertificatesResponse": {
         "RequestId": "9FFF450B-CC09-4FFB-900F-E347EB7AA2CC",
+        "ServerCertificates": {
             "ServerCertificate": [
-                {
+```
+
+`{`
+
+```json
                     "CreateTimeStamp": 1541761156000,
                     "CommonName": "*.example1.com",
                     "RegionIdAlias": "cn-hangzhou",
@@ -6110,8 +6306,11 @@ Server Load Balancer
                     "ServerCertificateName": "*.example1.com",
                     "IsAliCloudCertificate": 1,
                     "AliCloudCertificateName": "slb"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "CreateTimeStamp": 1481623069000,
                     "RegionIdAlias": "cn-hangzhou",
                     "ResourceGroupId": "rg-acfmxazb4ph6aiy",
@@ -6126,22 +6325,18 @@ Server Load Balancer
                     "ServerCertificateName": "test_certificate",
                     "IsAliCloudCertificate": 0,
                     "AliCloudCertificateName": ""
-                }
 ```
 
-]
+`}` `]` `}` `}` `}`
 
-```
-        }
-    }
-}
-```
-
-#### SetServerCertificateName
+#### 7.8.4 SetServerCertificateName
 
 Sets the name of a server certificate.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | SetServerCertifi cateName | The operation that you want to perform. Set the value to SetServerCertificateName. |
 |---|---|---|---|---|
@@ -6149,13 +6344,13 @@ Sets the name of a server certificate.
 | ServerCertificate Id | String | Yes | 139a****-cn- qingdao-env17- d01 | The ID of the server certificate. |
 | ServerCertificate Name | String | Yes | slb- servercertificate -cn-east- hangzhou**** | The name of the server certificate. The name must be 1 to 80 characters in length and can contain digits, periods (.), underscores ( ), _ and hyphens (-). It must start with a letter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FE7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6166,10 +6361,25 @@ http(s)://[Endpoint]/?Action=SetServerCertificateName &RegionId=cn-east-hangzhou
 Sample success responses `XML` format
 
 ```xml
+<SetServerCertificateNameResponse>
       <RequestId>CEF72CEB-54B6-4AE8-B225-F876FE7BA984</RequestId>
+</SetServerCertificateNameResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "SetServerCertificateNameResponse": {
+        "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FE7BA984"
+```
+
+`}` `}`
+
+#### 7.8.5 UploadCACertificate
+
+Uploads a CA certificate. You can upload only one CA certificate in each call. After a CA certificate is uploaded, the ID, name, and fingerprint of the certificate are returned.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6178,6 +6388,8 @@ Sample success responses `XML` format
 | CACertificate | String | Yes | test | The content of the CA certificate that you want to upload. |
 | CACertificateNa me | String | No | mycacert01 | The name of the CA certificate. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CACertificateId | String | 139a00604ad-cn- east-hangzh**** | The ID of the CA certificate. |
@@ -6185,28 +6397,9 @@ Sample success responses `XML` format
 | Fingerprint | String | 02:DF:AB:ED | The fingerprint of the CA certificate. |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer
+**Examples**
 
-```json
-{
-        "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FE7BA984"
-    }
-}
-```
-
-#### UploadCACertificate
-
-Uploads a CA certificate. You can upload only one CA certificate in each call. After a CA certificate is uploaded, the ID, name, and fingerprint of the certificate are returned.
-
-**Request parameters**
-
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteCACertific ate | The operation that you want to perform. Set the value to DeleteCACertificate. |
-
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=UploadCACertificate &RegionId=cn-qingdao-env17-d01 &CACertificate=test &<Common request parameters>
@@ -6215,25 +6408,27 @@ http(s)://[Endpoint]/?Action=UploadCACertificate &RegionId=cn-qingdao-env17-d01 
 Sample success responses `XML` format
 
 ```xml
+<UploadCACertificateResponse>
       <Fingerprint>02:DF:AB:ED</Fingerprint>
       <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId>
       <CACertificateId>139a00604ad-cn-east-hangzh*****</CACertificateId>
       <CACertificateName>mycacert01</CACertificateName>
+</UploadCACertificateResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "UploadCACertificateResponse": {
         "Fingerprint": "02:DF:AB:ED",
         "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
         "CACertificateId": "139a00604ad-cn-east-hangzh*****",
         "CACertificateName": "mycacert01"
-    }
-}
 ```
 
-#### DeleteCACertificate
+`}` `}`
+
+#### 7.8.6 DeleteCACertificate
 
 Deletes a CA certificate.
 
@@ -6243,17 +6438,21 @@ You cannot delete a CA certificate that is in use.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteCACertific ate | The operation that you want to perform. Set the value to DeleteCACertificate. |
+
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is created. You can call the DescribeRegions operation to query region IDs. |
 |---|---|---|---|---|
 | CACertificateId | String | Yes | 123157908**** _ 15c73d77203 - _ 986300114 - _ 2110544**** | The ID of the CA certificate. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6264,39 +6463,23 @@ http(s)://[Endpoint]/?Action=DeleteCACertificate &RegionId=cn-east-hangzhou-01 &
 Sample success responses `XML` format
 
 ```xml
+<DeleteCACertificateResponse>
       <RequestId>CEFxxxxx72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
+</DeleteCACertificateResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "DeleteCACertificateResponse": {
         "RequestId": "CEFxxxxx72CEB-54B6-4AE8-B225-F876FF7BA984"
-    }
-}
 ```
 
+`}` `}`
+
+#### 7.8.7 DescribeCACertificates
+
 Queries CA certificates.
-
-#### DescribeCACertificates
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeCACerti ficates | The operation that you want to perform. Set the value to DescribeCACertificates. |
-| RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the CA certificate is created. You can call the DescribeRegions operation to query region IDs. |
-| CACertificateId | String | No | 139a006****-cn- qingdao-env17- d01 | The ID of the CA certificate. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| CACertificates | Array of CACertificate |  | Information about the CA certificate. |
-| CACertificate |  |  |  |
-| CACertificateId | String | 139a006****-cn- qingdao-env17- d01 | The ID of the CA certificate. |
-| CACertificateN ame | String | test | The name of the CA certificate. |
-| RegionId | String | cn-qingdao-env17- d01 | The ID of the region where the CA certificate is created. |
-| Fingerprint | String | AC:BE:FD | The fingerprint of the CA certificate. |
-| RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
-
-Server Load Balancer
 
 **Note**
 
@@ -6304,15 +6487,27 @@ For security reasons, only fingerprints and names of the CA certificates are ret
 
 **Request parameters**
 
-**Response parameters**
-
-Sample requests
-
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-| Action | String | Yes | SetCACertificate Name | The operation that you want to perform. Set the value to SetCACertificateName. |
+| Action | String | Yes | DescribeCACerti ficates | The operation that you want to perform. Set the value to DescribeCACertificates. |
+| RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the CA certificate is created. You can call the DescribeRegions operation to query region IDs. |
+| CACertificateId | String | No | 139a006****-cn- qingdao-env17- d01 | The ID of the CA certificate. |
 
-Server Load Balancer
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| CACertificates | Array of CACertificate |   | Information about the CA certificate. |
+| CACertificate |   |   |   |
+| CACertificateId | String | 139a006****-cn- qingdao-env17- d01 | The ID of the CA certificate. |
+| CACertificateN ame | String | test | The name of the CA certificate. |
+| RegionId | String | cn-qingdao-env17- d01 | The ID of the region where the CA certificate is created. |
+| Fingerprint | String | AC:BE:FD | The fingerprint of the CA certificate. |
+| RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
+
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeCACertificates &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
@@ -6332,10 +6527,9 @@ Sample success responses `XML` format
 </DescribeCACertificateResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "DescribeCACertificateResponse": {
         "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
         "CACertificates": {
@@ -6343,16 +6537,19 @@ Sample success responses `XML` format
             "Fingerprint": "AC:BE:FD",
             "RegionId": "cn-east-hangzhou-01",
             "CACertificateId": "139a006****-cn-east-hangzhou-02"
-        }
-    }
-}
 ```
 
-#### SetCACertificateName
+`}` `}` `}`
+
+#### 7.8.8 SetCACertificateName
 
 Sets the name of a CA certificate.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SetCACertificate Name | The operation that you want to perform. Set the value to SetCACertificateName. |
 
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. You can call the DescribeRegions operation to query region IDs. |
 |---|---|---|---|---|
@@ -6360,13 +6557,13 @@ Sets the name of a CA certificate.
 | CACertificateNa me | String | Yes | mycacert02 | The name of the CA certificate. The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores ( ), and _ hyphens (-). It must start with a letter. |
 | access key id _ _ | String | No | acc- hp34s2h0xx1ht4 nwo**** | The AccessKey ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FE7BA984 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6377,10 +6574,29 @@ http(s)://[Endpoint]/?Action=SetCACertificateName &RegionId=cn-qingdao-env17-d01
 Sample success responses `XML` format
 
 ```xml
+<SetCACertificateNameResponse>
       <RequestId>CEF72CEB-54B6-4AE8-B225-F876FE7BA984</RequestId>
+</SetCACertificateNameResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "SetCACertificateNameResponse": {
+        "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FE7BA984"
+```
+
+`}` `}`
+
+#### 7.8.9 DescribeCertificateRelations
+
+Queries the resources associated with a specified certificate in Server Load Balancer.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6393,31 +6609,14 @@ Sample success responses `XML` format
 | CertType | Strin g | Query | Yes | ca/server | The type of the certificate. |
 | OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Do not specify this parameter. |
 
-Server Load Balancer
-
-```json
-{
-        "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FE7BA984"
-    }
-}
-```
-
-#### DescribeCertificateRelations
-
-Queries the resources associated with a specified certificate in Server Load Balancer.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the Common parameters document.
-
-**Request parameters**
-
-|  | Developer Gui | de·API R | eference |  |  | Server Load Balance | r |
+|   | Developer Gui | de·API R | eference |   |   | Server Load Balance | r |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Tags | Strin g | Query | No | [{"tagKey":"Key1","tagV alue":"Value1"}] | The list of tags that are attached to the Classic Load Balancer instance. The value is a JSON dictionary that contains tag keys and tag values. Each request supports a maximum of 10 tags. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6431,15 +6630,9 @@ This operation uses only common request headers. For more information, see the C
 | -ListenerPort | Integer | 53 | The frontend port that is used by the instance. |
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Request example
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | CertificateNotExist | CertificateNotExist | The specified CertificateId does not exist. |
-
-Server Load Balancer
 
 ```
 http(s)://[Endpoint]/?Action=DescribeCertificateRelations &RegionId=cn-east-hangzhou-01 &CertificateId=12345678-1234-1234-1234-12345678**** &CertType=cas &<Common request parameters>
@@ -6447,36 +6640,50 @@ http(s)://[Endpoint]/?Action=DescribeCertificateRelations &RegionId=cn-east-hang
 
 Response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-  {
-   "ListenerPort":53,
-   "LoadBalancerId":"lb-bp1b6c719dfa****"
-  }
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`],`
+`{`
+
+```json
+ "Listeners":[
+```
+
+`{`
+
+```json
+   "ListenerPort":53,
+   "LoadBalancerId":"lb-bp1b6c719dfa****"
+```
+
+`}` `],`
 
 ```json
  "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984",
  "DomainExtensions":[
-  {
+```
+
+`{`
+
+```json
    "ListenerPort":53,
    "DomainExtensionId":"de-bp1rp7ta19******",
    "LoadBalancerId":"lb-bp1b6c719dfa****",
    "Domain":"example.com"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+**Error codes**
 
-### Backend servers
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | CertificateNotExist | CertificateNotExist | The specified CertificateId does not exist. |
 
-#### AddBackendServers
+### 7.9 Backend servers
+
+#### 7.9.1 AddBackendServers
 
 Adds backend servers.
 
@@ -6486,66 +6693,66 @@ If multiple identical Elastic Compute Service (ECS) instances are specified in a
 
 **Request parameters**
 
-|  | Parameter |  | Type | Requir ed | Example |  | Description |  |  |
+|   | Parameter |   | Type | Requir ed | Example |   | Description |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  | Action |  | String | Yes | AddBackendSer vers |  | The operation that you want to perform. Set the value to AddBackendServers. |  |  |
-|  | LoadBalancerId |  | String | Yes | lb- 2ze7o5h52g02k kzz**** |  | The ID of the Server Load Balancer (SLB) instance. |  |  |
-|  | BackendServers |  | String | Yes | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", |  | The list of backend servers that you want to add to the SLB instance. The following parameters are used to specify the backend servers: ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. You can specify the ID of an ECS instance or an elastic network interface (ENI). If ServerId is set to the ID of an ENI, the Type parameter is required. Weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. Note If the weight is set to 0, no requests are forwarded to the backend server. Description: Optional. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. Type: Specify the type of backend server. Valid values: ecs (default): an ECS instance. eni: an ENI. ServerIp: Specify the IP address of the ECS instance or ENI. Examples: ECS: [{ "ServerId": "i- |  |  |
-|  |  |  |  |  |  |  |  | [{ "ServerId": "i- |  |
-|  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", | xxxxxxxxx", "Weight": "100", |  |  |
-|  |  |  |  |  | "Type": "eni", |  |  |  |  |
-|  |  |  |  |  |  |  | "Type": "ecs", |  |  |
-|  |  |  |  |  | "ServerIp": |  | "Port":"80","Description":"tes |  |  |
-|  |  |  |  |  | "172.XX.XX.6", "Port":"80","Des |  | t-112" }] |  |  |
-|  |  |  |  |  | cription":"test- |  |  |  |  |
+|   | Action |   | String | Yes | AddBackendSer vers |   | The operation that you want to perform. Set the value to AddBackendServers. |   |   |
+|   | LoadBalancerId |   | String | Yes | lb- 2ze7o5h52g02k kzz**** |   | The ID of the Server Load Balancer (SLB) instance. |   |   |
+|   | BackendServers |   | String | Yes | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", |   | The list of backend servers that you want to add to the SLB instance. The following parameters are used to specify the backend servers: ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. You can specify the ID of an ECS instance or an elastic network interface (ENI). If ServerId is set to the ID of an ENI, the Type parameter is required. Weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. Note If the weight is set to 0, no requests are forwarded to the backend server. Description: Optional. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. Type: Specify the type of backend server. Valid values: ecs (default): an ECS instance. eni: an ENI. ServerIp: Specify the IP address of the ECS instance or ENI. Examples: ECS: [{ "ServerId": "i- |   |   |
+|   |   |   |   |   |   |   |   | [{ "ServerId": "i- |   |
+|   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", | xxxxxxxxx", "Weight": "100", |   |   |
+|   |   |   |   |   | "Type": "eni", |   |   |   |   |
+|   |   |   |   |   |   |   | "Type": "ecs", |   |   |
+|   |   |   |   |   | "ServerIp": |   | "Port":"80","Description":"tes |   |   |
+|   |   |   |   |   | "172.XX.XX.6", "Port":"80","Des |   | t-112" }] |   |   |
+|   |   |   |   |   | cription":"test- |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  | p 113" }] | ENI: [{ "ServerId": "eni- |  |  |  |
+|   |   |   |   |   | p 113" }] | ENI: [{ "ServerId": "eni- |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |
-|  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |
-|  |  |  |  |  |  | "192.168.**.**", |  |  |  |
-|  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |
-|  |  |  |  |  |  | t-112" }] |  |  |  |
-|  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |
-|  |  |  |  |  |  | "192.168.**.**", |  |  |  |
-|  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |
-|  |  |  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |
-|  |  |  |  |  |  | "172.166.**.**", |  |  |  |
-|  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |
-|  |  |  |  |  |  | t-113" }] |  |  |  |
+|   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |
+|   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |
+|   |   |   |   |   |   | "192.168.**.**", |   |   |   |
+|   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |
+|   |   |   |   |   |   | t-112" }] |   |   |   |
+|   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |
+|   |   |   |   |   |   | "192.168.**.**", |   |   |   |
+|   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |
+|   |   |   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |
+|   |   |   |   |   |   | "172.166.**.**", |   |   |   |
+|   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |
+|   |   |   |   |   |   | t-113" }] |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LoadBalancerI d | String | lb- 2ze7o5h52g02kkzz **** | The ID of the SLB instance. |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | i- 2zej4lxhjoq1icu**** | The ID of the ECS instance or ENI. |
 | Weight | String | 100 | The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the value is set to 0, the SLB instance does not forward requests to the backend server. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | Description | String | BackendServer | The description of the backend server. |
 |---|---|---|---|
 | RequestId | String | 34B82C81-F13B- 4EEB-99F6- A048C67CC830 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
-&LoadBalancerId=lb-2ze7o5h52g02kkzz**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddBackendServers &LoadBalancerId=lb-2ze7o5h52g02kkzz**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<AddBackendServersResponse>
+    <BackendServers>
         <BackendServer>
             <ServerId>i-2zej4lxhjoq1icu*****</ServerId>
             <Weight>100</Weight>
@@ -6556,44 +6763,46 @@ Sample success responses `XML` format
             <Weight>100</Weight>
             <Type>ecs</Type>
         </BackendServer>
+    </BackendServers>
     <RequestId>34B82C81-F13B-4EEB-99F6-A048C67CC830</RequestId>
     <LoadBalancerId>lb-2ze7o5h52g02kkzz*****</LoadBalancerId>
+</AddBackendServersResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | RemoveBackend Servers | The operation that you want to perform. Set the value to RemoveBackendServers. |
-
-Server Load Balancer
+`JSON` format `{`
 
 ```json
-{
+    "AddBackendServersResponse": {
+        "BackendServers": {
             "BackendServer": [
-                {
+```
+
+`{`
+
+```json
                     "ServerId": "i-2zej4lxhjoq1icu*****",
                     "Weight": 100,
                     "Type": "ecs"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "ServerId": "i-2ze1u9ywulp5pbv*****",
                     "Weight": 100,
                     "Type": "ecs"
-                }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-        },
         "RequestId": "34B82C81-F13B-4EEB-99F6-A048C67CC830",
         "LoadBalancerId": "lb-2ze7o5h52g02kkzz*****"
-    }
-}
 ```
 
-#### RemoveBackendServers
+`}` `}`
+
+#### 7.9.2 RemoveBackendServers
 
 Removes backend servers.
 
@@ -6603,31 +6812,35 @@ If the backend server that you want to remove does not belong to the specified S
 
 **Request parameters**
 
-| BackendServers |  |  | String | Yes |  |  | [{"ServerId":"i- 2zej4lxhjoq****" , "Type": "ecs","Weight":" 100"}] | The backend servers to be removed. Valid values: ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Type: Specify the type of the backend server. Valid values: ecs: an Elastic Compute Service (ECS) instance. This is the default value. eni: an elastic network interface (ENI). Note You can remove up to 20 backend servers in each call. Examples: ECS: [{"ServerId":"i- 2zej |  |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RemoveBackend Servers | The operation that you want to perform. Set the value to RemoveBackendServers. |
+
+| BackendServers |   |   | String | Yes |   |   | [{"ServerId":"i- 2zej4lxhjoq****" , "Type": "ecs","Weight":" 100"}] | The backend servers to be removed. Valid values: ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Type: Specify the type of the backend server. Valid values: ecs: an Elastic Compute Service (ECS) instance. This is the default value. eni: an elastic network interface (ENI). Note You can remove up to 20 backend servers in each call. Examples: ECS: [{"ServerId":"i- 2zej |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | 4lxhjoq ***", "Type": |  |  |  |
-|  |  |  |  |  |  |  |  | "ecs","Weight":"100"}] |  |  |  |
-|  |  |  |  |  |  |  |  | ENI: | [{"ServerId":"eni- 2ze |  |  |
-|  |  |  |  |  |  |  |  | 1sdp 5***","Type": |  |  |  |
-|  |  |  |  |  |  |  |  | "eni","Weight":"100"}] |  |  |  |
-| LoadBalancerId |  |  | String | Yes |  |  | lb- bp1qjwo61pqz3 ahl**** | The ID of the SLB instance. |  |  |  |
+|   |   |   |   |   |   |   |   | 4lxhjoq ***", "Type": |   |   |   |
+|   |   |   |   |   |   |   |   | "ecs","Weight":"100"}] |   |   |   |
+|   |   |   |   |   |   |   |   | ENI: | [{"ServerId":"eni- 2ze |   |   |
+|   |   |   |   |   |   |   |   | 1sdp 5***","Type": |   |   |   |
+|   |   |   |   |   |   |   |   | "eni","Weight":"100"}] |   |   |   |
+| LoadBalancerId |   |   | String | Yes |   |   | lb- bp1qjwo61pqz3 ahl**** | The ID of the SLB instance. |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LoadBalancerI d | String | lb- bp1vjkb671z53**** | The ID of the SLB instance. |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | i-jjgjgjgggd**** | The ID of the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. Valid values: 0 to 100. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 |---|---|---|---|
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=RemoveBackendServers &BackendServers=[{"ServerId":"i-2zej4lxhjoq****", "Type": "ecs","Weight":"100"}] &LoadBalancerId=lb-bp1qjwo61pqz3ahl**** &<Common request parameters>
@@ -6636,8 +6849,10 @@ http(s)://[Endpoint]/?Action=RemoveBackendServers &BackendServers=[{"ServerId":"
 Sample success responses `XML` format
 
 ```xml
+<RemoveBackendServersResponse>
   <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId>
   <LoadBalancerId>lb-bp1vjkb671z53cy******</LoadBalancerId>
+  <BackendServers>
         <BackendServer>
               <ServerId>i-jjgjgjg*****</ServerId>
               <Weight>100</Weight>
@@ -6646,32 +6861,41 @@ Sample success responses `XML` format
               <ServerId>i-jjgjgituitu****</ServerId>
               <Weight>100</Weight>
         </BackendServer>
+  </BackendServers>
+</RemoveBackendServersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "RemoveBackendServers": {
         "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
         "LoadBalancerId": "lb-bp1vjkb671z53cy******",
+        "BackendServers": {
             "BackendServer": [
-                {
+```
+
+`{`
+
+```json
                     "ServerId": "i-jjgjgjg*****",
                     "Weight": 100
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "ServerId": "i-jjgjgituitu****",
                     "Weight": 100
-                }
 ```
 
-]
+`}` `]` `}` `}` `}`
 
-```
-        }
-    }
-}
-```
+#### 7.9.3 SetBackendServers
+
+Sets the weights of backend servers.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6679,66 +6903,60 @@ Sample success responses `XML` format
 | LoadBalancerId | String | Yes | lb- bp1qjwo61pqz3 a**** | The ID of the Server Load Balancer (SLB) instance. |
 | BackendServers | String | Yes | [{ "ServerId": "i- xxxxxxxxx", "Weight": "100", "Type": "ecs", | The list of backend servers that you want to add to the SLB instance. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each request. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also _ contain Chinese characters. Type: Specify the type of backend server. This parameter must be of the STRING type. Valid values: ecs (default): an Elastic Compute Service (ECS) instance eni: an elastic network interface (ENI) ServerIp: Specify the IP address of the ECS instance or ENI. |
 
-Server Load Balancer
-
-#### SetBackendServers
-
-Sets the weights of backend servers.
-
-**Request parameters**
-
-|  |  |  |  |  |  |  | "Port":"80","Des cription":"test- 112" }] |  | Examples: ECS: [{ "ServerId": "i- |  |  |  |  |
+|   |   |   |   |   |   |   | "Port":"80","Des cription":"test- 112" }] |   | Examples: ECS: [{ "ServerId": "i- |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "ecs", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ENI: |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "172.166.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-113" }] |  |  |  |  |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "ecs", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ENI: |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-113" }] |   |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LoadBalancerI d | String | lb- bp1qjwo61pqz3a** ** | The ID of the SLB instance. |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | eni-hg231**** | The ID of the ECS instance. |
 | Weight | String | 100 | The weight of the backend server. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | Description | String | BackendServer | The description of the backend server. |
 |---|---|---|---|
 | Type | String | ecs | The type of backend server. Valid values: ecs (default): an ECS instance eni: an ENI |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
-&LoadBalancerId=lb-bp1qjwo61pqz3a**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=SetBackendServers &LoadBalancerId=lb-bp1qjwo61pqz3a**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<SetBackendServersResponse>
       <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId>
       <LoadBalancerId>lb-dhf13*******</LoadBalancerId>
+      <BackendServers>
             <BackendServer>
                   <ServerId>eni-hg231**</ServerId>
                   <Weight>100</Weight>
@@ -6749,9 +6967,45 @@ Sample success responses `XML` format
                   <Weight>100</Weight>
                               <Type>eni</Type>
             </BackendServer>
+      </BackendServers>
+</SetBackendServersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "SetBackendServersResponse": {
+        "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
+        "LoadBalancerId": "lb-dhf13*******",
+        "BackendServers": {
+            "BackendServer": [
+```
+
+`{`
+
+```json
+                    "ServerId": "eni-hg231**",
+                    "Weight": 100,
+                    "Type": "eni"
+```
+
+`},` `{`
+
+```json
+                    "ServerId": "eni-hfhf***",
+                    "Weight": 100,
+                    "Type": "eni"
+```
+
+`}` `]` `}` `}` `}`
+
+### 7.10 vServer groups
+
+#### 7.10.1 CreateVServerGroup
+
+Creates a vServer group and adds backend servers to the vServer group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6760,85 +7014,48 @@ Sample success responses `XML` format
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the SLB instance is deployed. |
 | VServerGroupNa me | String | No | Group1 | The name of the vServer group. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). _ |
 
-Server Load Balancer
-
-```json
-{
-        "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
-        "LoadBalancerId": "lb-dhf13*******",
-            "BackendServer": [
-                {
-                    "ServerId": "eni-hg231**",
-                    "Weight": 100,
-                    "Type": "eni"
-                },
-                {
-                    "ServerId": "eni-hfhf***",
-                    "Weight": 100,
-                    "Type": "eni"
-                }
-```
-
-]
-
-```
-        }
-    }
-}
-```
-
-### vServer groups
-
-#### CreateVServerGroup
-
-Creates a vServer group and adds backend servers to the vServer group.
-
-**Request parameters**
-
-|  | BackendServers |  |  | String | No |  | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" }, { "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" }] |  | The list of backend servers to be added. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements in a list for each request. ServerId: Required. Specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI). This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also _ contain Chinese characters. Type: Required. Specify the type of the backend server. This parameter must be of the STRING type. Valid values: ecs (default): an ECS instance eni: an ENI. ServerIp: The IP address of the ECS instance or ENI. Examples: ECS: [{ "ServerId": "i- |  |  |  |  |
+|   | BackendServers |   |   | String | No |   | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" }, { "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" }] |   | The list of backend servers to be added. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements in a list for each request. ServerId: Required. Specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI). This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also _ contain Chinese characters. Type: Required. Specify the type of the backend server. This parameter must be of the STRING type. Valid values: ecs (default): an ECS instance eni: an ENI. ServerIp: The IP address of the ECS instance or ENI. Examples: ECS: [{ "ServerId": "i- |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "ecs", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ENI: |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "ecs", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ENI: |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  | "Port":"80","Description":"tes |  |  |
+|   |   |   |   | "Port":"80","Description":"tes |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |
-|  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |
-|  |  |  |  | "Type": "eni", "ServerIp": |  |  |
-|  |  |  |  | "172.166.**.**", |  |  |
-|  |  |  |  | "Port":"80","Description":"tes |  |  |
-|  |  |  |  | t-113" }] |  |  |
+|   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |
+|   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |
+|   |   |   |   | "Type": "eni", "ServerIp": |   |   |
+|   |   |   |   | "172.166.**.**", |   |   |
+|   |   |   |   | "Port":"80","Description":"tes |   |   |
+|   |   |   |   | t-113" }] |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupI d | String | rsp-cige6**** | The ID of the vServer group. |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | vm-2**** | The ID of the ECS instance or ENI. |
 | Port | Integer | 70 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | Description | String | vServerGroup | The description of the vServer group. |
-| ServerType | String | ECS |  |
+| ServerType | String | ECS |   |
 | Type | String | Type | The type of backend server. Valid values: ecs (default): an ECS instance eni: an ENI |
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6846,16 +7063,13 @@ Sample requests
 http(s)://[Endpoint]/?Action=CreateVServerGroup &LoadBalancerId=lb-bp1qjwo61pqz3ahl**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Server Load Balancer `XML` format
+Sample success responses `XML` format
 
 ```xml
+<CreateVServerGroupResponse>
   <VServerGroupId>rsp-bp1i4c******</VServerGroupId>
   <RequestId>3EBBDBAE-8E8B-438F-A109-95C2FDB2C333</RequestId>
+  <BackendServers>
         <BackendServer>
               <Type>ecs</Type>
               <ServerId>i-bp1ds2yjlk66********</ServerId>
@@ -6863,95 +7077,97 @@ Server Load Balancer `XML` format
               <Port>80</Port>
               <Weight>100</Weight>
         </BackendServer>
+  </BackendServers>
+</CreateVServerGroupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "VServerGroupId": "rsp-bp1i4c3******",
   "RequestId": "3EBBDBAE-8E8B-438F-A109-95C2FDB2C333",
+  "BackendServers": {
     "BackendServer": [
-      {
+```
+
+`{`
+
+```json
         "Type": "ecs",
         "ServerId": "i-bp1ds2yjlk666******",
         "Description": "test-11244",
         "Port": 80,
         "Weight": 100
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-#### SetVServerGroupAttribute
+#### 7.10.2 SetVServerGroupAttribute
 
 Modifies the configurations of a vServer group. This operation allows you to modify only the name of a server group and the weights of the backend servers in the server group: If you want to modify a vServer group, see the `ModifyVServerGroupBackendServers` operation. If you want to add backend servers, see the `AddVServerGroupBackendServers` operation.
 
 **Request parameters**
 
-|  | Action |  | String | Yes | SetVServerGrou pAttribute |  | The operation that you want to perform. Valid value: SetVServerGroupAttribute. |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
+|   | Action |   | String | Yes | SetVServerGrou pAttribute |   | The operation that you want to perform. Valid value: SetVServerGroupAttribute. |   |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  | RegionId |  | String | Yes | cn-qingdao- env17-d01 |  | The ID of the region where the Server Load Balancer instance is deployed. |  |  |
-|  | VServerGroupId |  | String | Yes | rsp-cige6**** |  | The ID of the server group. |  |  |
-|  | VServerGroupNa me |  | String | No | vserver-group- test |  | The name of the virtual server group. |  |  |
-|  | BackendServers |  | String | No | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": |  | The list of virtual server groups. You can add up to 20 backend servers in each request. ServerId: String type, required. The ID of the backend server instance or Elastic Network Interface (ENI) instance. Port: Integer type, required. The port used by the backend server. Valid values: 1 to 65535. Weight: Integer type, required. The weight of the backend server. Valid values: 0 to 100. Description : String type, optional. The description of the backend server. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores ( ). It can also contain Chinese _ characters. Type: String type. The type of the backend server. Valid values: ecs (default): ECS instance. eni: Elastic Network Interface (ENI). ServerIp: The IP address of the ECS instance or ENI. Examples: Attach an ECS instance: [{ |  |  |
-|  |  |  |  |  |  |  |  | [{ |  |
-|  |  |  |  |  |  |  | "ServerId": "i-xxxxxxxxx", |  |  |
-|  |  |  |  |  | "172.XX.XX.6", "Port":"80","Des |  |  |  |  |
-|  |  |  |  |  |  |  | "Weight": "100", "Type": |  |  |
-|  |  |  |  |  | cription":"test- |  | "ecs", |  |  |
-|  |  |  |  |  | 113" }] |  | "Port":"80","Description":"tes |  |  |
-|  |  |  |  |  |  |  | t-112" }] |  |  |
+|   | RegionId |   | String | Yes | cn-qingdao- env17-d01 |   | The ID of the region where the Server Load Balancer instance is deployed. |   |   |
+|   | VServerGroupId |   | String | Yes | rsp-cige6**** |   | The ID of the server group. |   |   |
+|   | VServerGroupNa me |   | String | No | vserver-group- test |   | The name of the virtual server group. |   |   |
+|   | BackendServers |   | String | No | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": |   | The list of virtual server groups. You can add up to 20 backend servers in each request. ServerId: String type, required. The ID of the backend server instance or Elastic Network Interface (ENI) instance. Port: Integer type, required. The port used by the backend server. Valid values: 1 to 65535. Weight: Integer type, required. The weight of the backend server. Valid values: 0 to 100. Description : String type, optional. The description of the backend server. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores ( ). It can also contain Chinese _ characters. Type: String type. The type of the backend server. Valid values: ecs (default): ECS instance. eni: Elastic Network Interface (ENI). ServerIp: The IP address of the ECS instance or ENI. Examples: Attach an ECS instance: [{ |   |   |
+|   |   |   |   |   |   |   |   | [{ |   |
+|   |   |   |   |   |   |   | "ServerId": "i-xxxxxxxxx", |   |   |
+|   |   |   |   |   | "172.XX.XX.6", "Port":"80","Des |   |   |   |   |
+|   |   |   |   |   |   |   | "Weight": "100", "Type": |   |   |
+|   |   |   |   |   | cription":"test- |   | "ecs", |   |   |
+|   |   |   |   |   | 113" }] |   | "Port":"80","Description":"tes |   |   |
+|   |   |   |   |   |   |   | t-112" }] |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  | Attach an ENI: [{ "ServerId": |  |  |  |  |
+|   |   |   |   |   |   |   |   |   | Attach an ENI: [{ "ServerId": |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  | [{ "ServerId": |  |
-|  |  |  |  |  |  |  |  |  | "eni-xxxxxxxxx", "Weight": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "100", "Type": "eni", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "ServerIp": "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "172.166.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   | [{ "ServerId": |   |
+|   |   |   |   |   |   |   |   |   | "eni-xxxxxxxxx", "Weight": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "100", "Type": "eni", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "ServerIp": "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+
+```
+t-113" }]
+```
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupI d | String | rsp-cige6**** | The ID of the server group. |
 | VServerGroup Name | String | Group1 | The name of the virtual server group. |
-| BackendServe rs | Array of BackendServe r |  | The backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | i- bp1ek6yd7jvkx**** | The ID of the ECS instance or ENI. |
 | Port | Integer | 70 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | Description | String | The description of the server group. | The description of the server group. |
 
-Server Load Balancer
-
-**Response parameters**
-
 | Type | String | ecs | The type of backend server. Valid values: ecs: ECS instance. eni: Elastic Network Interface (ENI). |
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The request ID. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
+**Examples**
 
-Server Load Balancer Sample request
+Sample request
 
 ```
 http(s)://[Endpoint]/?Action=SetVServerGroupAttribute &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
@@ -6960,15 +7176,19 @@ http(s)://[Endpoint]/?Action=SetVServerGroupAttribute &RegionId=cn-qingdao-env17
 Sample success responses `XML` format
 
 ```xml
+<SetVServerGroupAttributeResponse>
+  <BackendServers>
         <BackendServer>
               <ServerId>i-bp1ek6yd7jvkx*****</ServerId>
               <Port>80</Port>
               <Weight>100</Weight>
               <Type>ecs</Type>
         </BackendServer>
+  </BackendServers>
   <RequestId>A4FDF333-F904-4540-88FC-ED6F87AEFFCB</RequestId>
   <VServerGroupId>rsp-bp1d2e3*****</VServerGroupId>
   <VServerGroupName>test1</VServerGroupName>
+</SetVServerGroupAttributeResponse>
 ```
 
 `JSON` format
@@ -6977,59 +7197,60 @@ Sample success responses `XML` format
 {"VServerGroupId":"rsp-cige6****","RequestId":"9DEC9C28-AB05-4DDF-9A78- 6B08EC9CE18C","VServerGroupName":"Group1","BackendServers": [{"Type":"ecs","Description":"The description of the server group.","ServerId":"i-bp1ek 6yd7jvkx****","Port":"70","Weight":"100"}]}
 ```
 
+**Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+
 | 400 | MissingParameter | The VServerGroupName or BackendServers is required at lease one. | At least one of the VServerGroupName and BackendServers parameters must be specified. |
 |---|---|---|---|
 | 400 | InvalidParameter.Z oneNotSupport | The zone does not support the parameter %s. | The specified parameter is not supported in the current zone. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AddVServerGrou pBackendServer s | The operation that you want to perform. Set the value to AddVServerGroupBackendServer s. |
-|  |  |  | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6*", "Port":"80","Des cription":"test- | The list of backend servers that you want to add to the vServer group. You can specify up to 20 backend servers in each request. The following parameters are used to specify the backend servers: ServerId: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI). Port: Required. The port that is used by the backend server. Valid values: 1 to 65535. Weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the value is set to 0, no requests are forwarded to the backend server. Type: The type of backend server. Valid values: ecs: an ECS instance. This is the default value. eni: an ENI. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), |
-
-Server Load Balancer
-
-#### AddVServerGroupBackendServers
+#### 7.10.3 AddVServerGroupBackendServers
 
 Adds backend servers to a specified vServer group.
 
 **Request parameters**
 
-|  | BackendServers |  |  | String | Yes |  | 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Des cription":"test- 113" }] |  | periods (.),and underscores ( ). It _ can also contain Chinese characters. ServerIp: The IP address of the ECS instance or ENI. Examples: ECS: [{ "ServerId": "i- |  |  |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | AddVServerGrou pBackendServer s | The operation that you want to perform. Set the value to AddVServerGroupBackendServer s. |
+|   |   |   | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6*", "Port":"80","Des cription":"test- | The list of backend servers that you want to add to the vServer group. You can specify up to 20 backend servers in each request. The following parameters are used to specify the backend servers: ServerId: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI). Port: Required. The port that is used by the backend server. Valid values: 1 to 65535. Weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the value is set to 0, no requests are forwarded to the backend server. Type: The type of backend server. Valid values: ecs: an ECS instance. This is the default value. eni: an ENI. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), |
+
+|   | BackendServers |   |   | String | Yes |   | 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Des cription":"test- 113" }] |   | periods (.),and underscores ( ). It _ can also contain Chinese characters. ServerIp: The IP address of the ECS instance or ENI. Examples: ECS: [{ "ServerId": "i- |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | 113" }] | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "ecs", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ENI: |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "172.166.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-113" }] |  |  |  |  |
-|  | RegionId |  |  | String | Yes |  | cn-qingdao- env17-d01 |  | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |  |  |  |  |
-|  | VServerGroupId |  |  | String | Yes |  | rsp-cige6**** |  | The ID of the vServer group. |  |  |  |  |
+|   |   |   |   |   |   |   |   | 113" }] | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "ecs", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ENI: |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-113" }] |   |   |   |   |
+|   | RegionId |   |   | String | Yes |   | cn-qingdao- env17-d01 |   | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |   |   |   |   |
+|   | VServerGroupId |   |   | String | Yes |   | rsp-cige6**** |   | The ID of the vServer group. |   |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupI d | String | rsp-cige6j**** | The ID of the vServer group. |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | vm-231 | The ID of the ECS instance or ENI. |
-
-Server Load Balancer
-
-**Response parameters**
 
 | Port | Integer | 70 | The port that is used by the backend server. |
 |---|---|---|---|
@@ -7038,7 +7259,9 @@ Server Load Balancer
 | Type | String | ecs | The type of backend server. Valid values: ecs (default): an ECS instance eni: an ENI |
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```json
 http(s)://[Endpoint]/?Action=AddVServerGroupBackendServers &BackendServers=[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Server Ip": "192.XX.XX.6", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx ", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Description":"test-113" }] &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
@@ -7047,35 +7270,29 @@ http(s)://[Endpoint]/?Action=AddVServerGroupBackendServers &BackendServers=[{ "S
 Sample success responses `XML` format
 
 ```xml
+<AddVServerGroupBackendServersResponse>
   <VServerGroupId>rsp-cige6j******</VServerGroupId>
   <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
+  <BackendServers>
         <Type>ecs</Type>
         <Description>test</Description>
         <ServerId>vm-231</ServerId>
         <Weight>100</Weight>
         <Port>70</Port>
+  </BackendServers>
+</AddVServerGroupBackendServersResponse>
 ```
 
 `JSON` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | RemoveVServer GroupBackendS ervers | The operation that you want to perform. Set the value to RemoveVServerGroupBackendSe rvers. |
-
-Server Load Balancer
-
 ```json
-{"VServerGroupId":"rsp-cige6j******", "RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
+{"VServerGroupId":"rsp-cige6j******", "RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C", "BackendServers":[
     {"Type":"ecs","Description":"test","ServerId":"vm-231","Weight":"100","Port":"70"}
 ```
 
-]
+`]` `}`
 
-```
-    }
-```
-
-#### RemoveVServerGroupBackendServers
+#### 7.10.4 RemoveVServerGroupBackendServers
 
 Removes a backend server from a specified vServer group.
 
@@ -7085,28 +7302,32 @@ If one or more backend servers specified by **BackendServers** do not exist in t
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RemoveVServer GroupBackendS ervers | The operation that you want to perform. Set the value to RemoveVServerGroupBackendSe rvers. |
+
 | BackendServers | String | Yes | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Des cription":"test- 113" }] | The list of backend servers that you want to remove from the vServer group. You can specify at most 20 backend servers for a vServer group in each call. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each request. ServerId: Required. Specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI). This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also _ contain Chinese characters. Type: Specify the type of backend server. This parameter must be of the STRING type. Valid values: ecs: an ECS instance. This is the default value. eni: an ENI. ServerIp: Specify the IP address of the ECS instance or ENI. |
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6**** | The ID of the vServer group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-Server Load Balancer
-
-**Response parameters**
-
 | VServerGroupI d | String | rsp-cige6j**** | The ID of the vServer group. |
 |---|---|---|---|
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | vm-230 | The ID of the ECS instance or ENI. |
 | Port | Integer | 80 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```json
 http(s)://[Endpoint]/?Action=RemoveVServerGroupBackendServers &BackendServers=[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Server Ip": "192.XX.XX.6", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx ", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Description":"test-113" }] &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
@@ -7118,115 +7339,115 @@ Sample success responses `XML` format
 <RemoveVServerGroupBackendServersResponse>
    <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
    <VServerGroupId>rsp-cige6******</VServerGroupId>
+   <BackendServers>
       <BackendServer>
          <ServerId>vm-231</ServerId>
          <Port>70</Port>
          <Weight>100</Weight>
                               <Type>ecs</Type>
       </BackendServer>
+   </BackendServers>
 </RemoveVServerGroupBackendServersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+  "RemoveVServerGroupBackendServersResponse": {
+    "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
+    "VServerGroupId": "rsp-cige6******",
+    "BackendServers": {
+      "BackendServer": {
+        "ServerId": "vm-231",
+        "Port": "70",
+        "Weight": "100",
+        "Type": "ecs"
+```
+
+`}` `}` `}` `}`
+
+#### 7.10.5 ModifyVServerGroupBackendServers
+
+Replaces backend servers in a specified vServer group. You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the `SetVServerGroupAttribute` operation.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyVServerG roupBackendSer vers | The operation that you want to perform. Set the value to ModifyVServerGroupBackendSer vers. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6j**** | The ID of the vServer group. |
-|  |  |  |  | The list of backend servers to be replaced. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each request. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend |
+|   |   |   |   | The list of backend servers to be replaced. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each request. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend |
 
-Server Load Balancer
+|   | OldBackendServ ers |   |   | String | No |   | [{ "ServerId": "i- xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Des cription":"test- 112" }] |   | server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. Specify the description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It _ can also contain Chinese characters. Type: Specify the type of backend server. This parameter must be of the STRING type. Valid values: ecs (default): an Elastic Compute Service (ECS) instance eni: an ENI ServerIp: Specify the IP address of the ECS instance or ENI Examples: ECS: [{ "ServerId": "i- |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "ecs", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ENI: |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "172.166.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-113" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The list of backend servers to be added. |   |   |   |   |
 
-```json
-{
-  "RemoveVServerGroupBackendServersResponse": {
-    "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
-    "VServerGroupId": "rsp-cige6******",
-      "BackendServer": {
-        "ServerId": "vm-231",
-        "Port": "70",
-        "Weight": "100",
-        "Type": "ecs"
-      }
-    }
-  }
-}
+|   | Developer Guide·AP |   |   | I Reference |   |   |   |   | Server Load Balance |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|   | NewBackendSer vers |   |   | String | No |   | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Des cription":"test- 113" }] |   | You can specify at most 20 backend servers for a vServer group in each call. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each request. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. It can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. Type: The type of the backend server. This parameter must be of the STRING type. Valid values: ecs (default): an ECS instance eni: an ENI ServerIp: the IP address of the ECS instance or ENI Examples: ECS: [{ "ServerId": "i- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "ecs", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | ENI: |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" }] |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | "Port":"80","Description":"tes |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | t-112" },{ "ServerId": "eni- |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |   |
+|   | 76 |   |   |   |   |   |   |   | > Document Version: 2025102 |   |   |   |   |
+
+|   |   |   |   | "Type": "eni", "ServerIp": |   |
+|---|---|---|---|---|---|
+|   |   |   |   | "172.166.**.**", |   |
+|   |   |   |   | "Port":"80","Description":"tes |   |
+
+```
+t-113" }]
 ```
 
-#### ModifyVServerGroupBackendServers
-
-Replaces backend servers in a specified vServer group. You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the `SetVServerGroupAttribute` operation.
-
-**Request parameters**
-
-|  | OldBackendServ ers |  |  | String | No |  | [{ "ServerId": "i- xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Des cription":"test- 112" }] |  | server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. Specify the description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It _ can also contain Chinese characters. Type: Specify the type of backend server. This parameter must be of the STRING type. Valid values: ecs (default): an Elastic Compute Service (ECS) instance eni: an ENI ServerIp: Specify the IP address of the ECS instance or ENI Examples: ECS: [{ "ServerId": "i- |  |  |  |  |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "ecs", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ENI: |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "172.166.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-113" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The list of backend servers to be added. |  |  |  |  |
-
-Server Load Balancer
-
-|  | Developer Guide·AP |  |  | I Reference |  |  |  |  | Server Load Balance |  |  |  |  |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  | NewBackendSer vers |  |  | String | No |  | [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.XX.XX.6", "Port":"80","Des cription":"test- 112" },{ "ServerId": "eni- xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.XX.XX.6", "Port":"80","Des cription":"test- 113" }] |  | You can specify at most 20 backend servers for a vServer group in each call. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each request. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. It can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). It can also contain _ Chinese characters. Type: The type of the backend server. This parameter must be of the STRING type. Valid values: ecs (default): an ECS instance eni: an ENI ServerIp: the IP address of the ECS instance or ENI Examples: ECS: [{ "ServerId": "i- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "ecs", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | ENI: |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" }] |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | "Port":"80","Description":"tes |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | t-112" },{ "ServerId": "eni- |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |  |
-|  | 76 |  |  |  |  |  |  |  | > Document Version: 2025102 |  |  |  |  |
-
-|  |  |  |  | "Type": "eni", "ServerIp": |  |
-|---|---|---|---|---|---|
-|  |  |  |  | "172.166.**.**", |  |
-|  |  |  |  | "Port":"80","Description":"tes |  |
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupI d | String | rsp-cige6j**** | The ID of the vServer group. |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | vm-236 | The ID of the ECS instance or ENI. |
 | Port | Integer | 70 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7240,13 +7461,33 @@ Sample success responses `XML` format
 <ModifyVServerGroupBackendServersResponse>
       <VServerGroupId>rsp-cige6j******</VServerGroupId>
       <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
+      <BackendServers>
             <ServerId>vm-236</ServerId>
             <Weight>100</Weight>
             <Port>70</Port>
+      </BackendServers>
 </ModifyVServerGroupBackendServersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "ModifyVServerGroupBackendServersResponse": {
+        "VServerGroupId": "rsp-cige6j******",
+        "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
+        "BackendServers": {
+            "ServerId": "vm-236",
+            "Weight": 100,
+            "Port": 70
+```
+
+`}` `}` `}`
+
+#### 7.10.6 DeleteVServerGroup
+
+Deletes a vServer group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7254,32 +7495,13 @@ Sample success responses `XML` format
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6j**** | The ID of the vServer group. Note You cannot delete a vServer group that is in use. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer
-
-```json
-{
-    "ModifyVServerGroupBackendServersResponse": {
-        "VServerGroupId": "rsp-cige6j******",
-        "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
-            "ServerId": "vm-236",
-            "Weight": 100,
-            "Port": 70
-        }
-    }
-}
-```
-
-#### DeleteVServerGroup
-
-Deletes a vServer group.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7287,43 +7509,49 @@ Sample requests
 http(s)://[Endpoint]/?Action=DeleteVServerGroup &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6j**** &<Common request parameters>
 ```
 
+Sample success responses `XML` format
+
+```xml
+<DeleteVServerGroupResponse>
+   <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
+</DeleteVServerGroupResponse>
+```
+
+`JSON` format `{`
+
+```json
+"RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C"
+```
+
+`}`
+
+#### 7.10.7 DescribeVServerGroups
+
+Queries the vServer groups of a Server Load Balancer (SLB) instance.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeVServer Groups | The operation that you want to perform. Set the value to DescribeVServerGroups. |
 | LoadBalancerId | String | Yes | lb- bp1o94dp5i6ea* *** | The ID of the SLB instance. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the SLB instance is deployed. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| VServerGroup s | Array of VServerGroup |  | The list of backend servers. |
-| VServerGroup |  |  |  |
+| VServerGroup s | Array of VServerGroup |   | The list of backend servers. |
+| VServerGroup |   |   |   |
 | VServerGroupI d | String | rsp-bp1oygn**** | The ID of the vServer group. |
 | VServerGroup Name | String | k8s/31065/nginx- ingress-lb/kube- system/clust****" | The name of the vServer group. |
-
-Server Load Balancer Sample success responses `XML` format
-
-```xml
-   <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
-```
-
-`JSON` format
-
-```json
-{ "RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C" }
-```
-
-#### DescribeVServerGroups
-
-Queries the vServer groups of a Server Load Balancer (SLB) instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 |---|---|---|---|
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVServerGroups &LoadBalancerId=lb-bp1o94dp5i6ea**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
@@ -7332,11 +7560,15 @@ http(s)://[Endpoint]/?Action=DescribeVServerGroups &LoadBalancerId=lb-bp1o94dp5i
 Sample success responses `XML` format
 
 ```xml
+<DescribeVServerGroupsResponse>
+  <VServerGroups>
         <VServerGroup>
               <VServerGroupId>rsp-bp1oygn******</VServerGroupId>
               <VServerGroupName>k8s/31065/nginx-ingress-lb/kube-system/clust****</VServe
 rGroupName>
               <AssociatedObjects>
+                    <Listeners>
+            </Listeners>
                     <Rules>
             </Rules>
               </AssociatedObjects>
@@ -7346,6 +7578,8 @@ rGroupName>
               <VServerGroupName>k8s/31605/nginx-ingress-lb/kube-
 system/clusterid</VServerGroupName>
               <AssociatedObjects>
+                    <Listeners>
+            </Listeners>
                     <Rules>
             </Rules>
               </AssociatedObjects>
@@ -7354,62 +7588,84 @@ system/clusterid</VServerGroupName>
               <VServerGroupId>rsp-bp1f85n******</VServerGroupId>
               <VServerGroupName>VSG1</VServerGroupName>
               <AssociatedObjects>
+                    <Listeners>
+            </Listeners>
                     <Rules>
             </Rules>
               </AssociatedObjects>
         </VServerGroup>
+  </VServerGroups>
   <RequestId>31ADDBCD-275F-4C37-B0A3-5DFC8564E686</RequestId>
+</DescribeVServerGroupsResponse>
 ```
 
-Server Load Balancer `JSON` format
+`JSON` format `{`
 
 ```json
-{
+ "VServerGroups": {
   "VServerGroup": [
-   {
+```
+
+`{`
+
+```json
     "VServerGroupId": "rsp-bp1oygn******",
     "VServerGroupName": "k8s/31065/nginx-ingress-lb/kube-system/clust****",
     "AssociatedObjects": {
+     "Listeners": {
       "Listener": []
-     },
+```
+
+`},`
+
+```json
      "Rules": {
       "Rule": []
-     }
-    }
-   },
-   {
+```
+
+`}` `}` `},` `{`
+
+```json
     "VServerGroupId": "rsp-bp1i6sn******",
     "VServerGroupName": "k8s/31605/nginx-ingress-lb/kube-system/clusterid",
     "AssociatedObjects": {
+     "Listeners": {
       "Listener": []
-     },
+```
+
+`},`
+
+```json
      "Rules": {
       "Rule": []
-     }
-    }
-   },
-   {
+```
+
+`}` `}` `},` `{`
+
+```json
     "VServerGroupId": "rsp-bp1f85n******",
     "VServerGroupName": "VSG1",
     "AssociatedObjects": {
+     "Listeners": {
       "Listener": []
-     },
-     "Rules": {
-      "Rule": []
-     }
-    }
-   }
 ```
 
-]
+`},`
 
 ```json
- },
- "RequestId": "31ADDBCD-275F-4C37-B0A3-5DFC8564E686"
-}
+     "Rules": {
+      "Rule": []
 ```
 
-#### DescribeVServerGroupAttribute
+`}` `}` `}` `]` `},`
+
+```json
+ "RequestId": "31ADDBCD-275F-4C37-B0A3-5DFC8564E686"
+```
+
+`}`
+
+#### 7.10.8 DescribeVServerGroupAttribute
 
 Queries detailed information about a vServer group.
 
@@ -7421,27 +7677,27 @@ Queries detailed information about a vServer group.
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 | VServerGroupId | String | Yes | rsp-cige6**** | The ID of the vServer group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | VServerGroupI d | String | rsp-cige6**** | The ID of the vServer group. |
 | VServerGroup Name | String | Group1 | The name of the vServer group. The name is 1 to 80 characters in length, and can contain Chinese characters, letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). _ |
-| BackendServe rs | Array of BackendServe r |  | The list of backend servers. |
-| BackendServe r |  |  |  |
+| BackendServe rs | Array of BackendServe r |   | The list of backend servers. |
+| BackendServe r |   |   |   |
 | ServerId | String | vm-233 | The ID of the Elastic Compute Service (ECS) instance. |
 | Port | Integer | 90 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | Description | String | vServerGroupDescr iption. | The description of the vServer group. |
-| ServerType | String | ecs |  |
-
-Server Load Balancer
-
-**Response parameters**
+| ServerType | String | ecs |   |
 
 | Type | String | ecs | The type of backend server. Valid values: ecs (default): an Elastic Compute Service (ECS) instance eni: an elastic network interface (ENI) |
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVServerGroupAttribute &RegionId=cn-qingdao-env17-d01 &VServerGroupId=rsp-cige6**** &<Common request parameters>
@@ -7450,9 +7706,11 @@ http(s)://[Endpoint]/?Action=DescribeVServerGroupAttribute &RegionId=cn-qingdao-
 Sample success responses `XML` format
 
 ```xml
+<DescribeVServerGroupAttributeResponse>
    <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
    <VServerGroupId>rsp-cige6******</VServerGroupId>
    <VServerGroupName>Group1</VServerGroupName>
+   <BackendServers>
       <BackendServer>
          <ServerId>vm-232</ServerId>
          <Port>80</Port>
@@ -7463,6 +7721,8 @@ Sample success responses `XML` format
          <Port>90</Port>
          <Weight>100</Weight>
       </BackendServer>
+   </BackendServers>
+</DescribeVServerGroupAttributeResponse>
 ```
 
 `JSON` format
@@ -7472,9 +7732,15 @@ Sample success responses `XML` format
 **","Port":"90","ServerIp":"192.168.*.*","Weight":"100"}]}
 ```
 
-### Primary/secondary server
+### 7.11 Primary/secondary server groups
 
 **groups**
+
+#### 7.11.1 CreateMasterSlaveServerGroup
+
+Creates a primary/secondary server group. A primary/secondary server group contains only two Elastic Compute Service (ECS) instances. One of the ECS instances serves as the primary server. The other ECS instance serves as the secondary server.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7482,68 +7748,60 @@ Sample success responses `XML` format
 | LoadBalancerId | String | Yes | lb- bp1hv944r69al4 j**** | The ID of the Server Load Balancer (SLB) instance. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the SLB instance is deployed. |
 | MasterSlaveServ erGroupName | String | No | sg- atstuj3rtopty**** | The name of the primary/secondary server group. |
-|  |  |  |  | The list of backend servers in the primary/secondary server group. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each call. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). The _ description can contain Chinese characters. |
+|   |   |   |   | The list of backend servers in the primary/secondary server group. The value of this parameter must be a STRING list in the JSON format. You can specify at most 20 elements for this parameter in each call. ServerId: Required. Specify the ID of the backend server. This parameter must be of the STRING type. Port: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: 1 to 65535. Weight: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: 0 to 100. Description: Optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores ( ). The _ description can contain Chinese characters. |
 
-Server Load Balancer
-
-#### CreateMasterSlaveServerGroup
-
-Creates a primary/secondary server group. A primary/secondary server group contains only two Elastic Compute Service (ECS) instances. One of the ECS instances serves as the primary server. The other ECS instance serves as the secondary server.
-
-**Request parameters**
-
-|  |  |  |  |  |  |  |  | [{ "ServerId": "i- xxxxxxxxx", "Weight": "100", |  | ServerType: Specify the type of the backend server. This parameter must be of the STRING type. Valid values: Master: primary server Slave: secondary server Type: The type of the backend server. This parameter must be of the STRING type. Valid values: ecs (default): an ECS instance eni: an elastic network interface (ENI) ServerIp: the IP address of the ECS instance or ENI. |  |  |  |
+|   |   |   |   |   |   |   |   | [{ "ServerId": "i- xxxxxxxxx", "Weight": "100", |   | ServerType: Specify the type of the backend server. This parameter must be of the STRING type. Valid values: Master: primary server Slave: secondary server Type: The type of the backend server. This parameter must be of the STRING type. Valid values: ecs (default): an ECS instance eni: an elastic network interface (ENI) ServerIp: the IP address of the ECS instance or ENI. |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  | MasterSlaveBac kendServers |  |  | String | No |  | "Type": "ecs", "Port":"80","Serv erType":"Master ","Description":" test-112" }, { "ServerId": "i- xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Serv erType":"Slave", |  | A primary/secondary server group can contain at most two backend servers. If you do not set this parameter, an empty primary/secondary server group is created. Examples: ECS: [{ "ServerId": "i- |  |  |  |
-|  |  |  |  |  |  |  |  |  | erType":"Slave", | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  |  |  | "Description":"te st-112" }] | "Description":"te |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Type": "ecs", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Port":"80","ServerType":"Mast |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | er","Description":"test-112" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | }, |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | { "ServerId": "i-xxxxxxxxx", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Weight": "100", "Type": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "ecs", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Port":"80","ServerType":"Slav |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | e","Description":"test-112" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | }] ENI: [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |
-|  |  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Type": "eni", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Port":"80","ServerType":"Mast |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | er","Description":"test-112" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | }, |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | { "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Type": "eni", "ServerIp": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Port":"80","ServerType":"Slav |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | e","Description":"test-112" |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | }] ENI with multiple IP addresses: [{ "ServerId": "eni- |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | [{ "ServerId": "eni- |  |  |
-|  |  |  |  |  |  |  |  |  |  | xxxxxxxxx", "Weight": "100", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Type": "eni","ServerIp": |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "192.168.**.**", |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | "Port":"80","ServerType":"Mast |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | er","Description":"test-112" |  |  |  |
+|   |   | MasterSlaveBac kendServers |   |   | String | No |   | "Type": "ecs", "Port":"80","Serv erType":"Master ","Description":" test-112" }, { "ServerId": "i- xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Serv erType":"Slave", |   | A primary/secondary server group can contain at most two backend servers. If you do not set this parameter, an empty primary/secondary server group is created. Examples: ECS: [{ "ServerId": "i- |   |   |   |
+|   |   |   |   |   |   |   |   |   | erType":"Slave", | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   |   |   | "Description":"te st-112" }] | "Description":"te |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Type": "ecs", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Port":"80","ServerType":"Mast |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | er","Description":"test-112" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | }, |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | { "ServerId": "i-xxxxxxxxx", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Weight": "100", "Type": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "ecs", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Port":"80","ServerType":"Slav |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | e","Description":"test-112" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | }] ENI: [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |
+|   |   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Type": "eni", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Port":"80","ServerType":"Mast |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | er","Description":"test-112" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | }, |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | { "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Type": "eni", "ServerIp": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Port":"80","ServerType":"Slav |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | e","Description":"test-112" |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | }] ENI with multiple IP addresses: [{ "ServerId": "eni- |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | [{ "ServerId": "eni- |   |   |
+|   |   |   |   |   |   |   |   |   |   | xxxxxxxxx", "Weight": "100", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Type": "eni","ServerIp": |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "192.168.**.**", |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | "Port":"80","ServerType":"Mast |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | er","Description":"test-112" |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  | }, |  |
+|   |   |   |   | }, |   |
 |---|---|---|---|---|---|
-|  |  |  |  | { "ServerId": "eni- |  |
-|  |  |  |  | xxxxxxxxx", "Weight": "100", |  |
-|  |  |  |  | "Type": "eni","ServerIp": |  |
-|  |  |  |  | "192.168.**.**", |  |
-|  |  |  |  | "Port":"80","ServerType":"Slav |  |
-|  |  |  |  | e","Description":"test-112" |  |
-|  |  |  |  | }] |  |
+|   |   |   |   | { "ServerId": "eni- |   |
+|   |   |   |   | xxxxxxxxx", "Weight": "100", |   |
+|   |   |   |   | "Type": "eni","ServerIp": |   |
+|   |   |   |   | "192.168.**.**", |   |
+|   |   |   |   | "Port":"80","ServerType":"Slav |   |
+|   |   |   |   | e","Description":"test-112" |   |
+|   |   |   |   | }] |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | MasterSlaveSe rverGroupId | String | rsp-cige6j**** | The ID of the primary/secondary server group. |
-| MasterSlaveBa ckendServers | Array of MasterSlaveBa ckendServer |  | The list of backend servers in the primary/secondary server group. |
-| MasterSlaveBa ckendServer |  |  |  |
+| MasterSlaveBa ckendServers | Array of MasterSlaveBa ckendServer |   | The list of backend servers in the primary/secondary server group. |
+| MasterSlaveBa ckendServer |   |   |   |
 | ServerId | String | vm-2h**** | The ID of the ECS instance or ENI that is added. |
 | Port | Integer | 90 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
@@ -7552,11 +7810,9 @@ Server Load Balancer
 | Type | String | ecs | The type of backend server. Valid values: ecs (default): an ECS instance eni: an ENI |
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer
+**Examples**
 
-**Response parameters**
-
-Server Load Balancer Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=CreateMasterSlaveServerGroup &LoadBalancerId=lb-bp1hv944r69al4j**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
@@ -7565,19 +7821,57 @@ http(s)://[Endpoint]/?Action=CreateMasterSlaveServerGroup &LoadBalancerId=lb-bp1
 Sample success responses `XML` format
 
 ```xml
+<CreateMasterSlaveServerGroupResponse>
       <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
       <MasterSlaveServerGroupId>rsp-cige******</MasterSlaveServerGroupId>
+      <MasterSlaveBackendServers>
+            <MasterSlaveBackendServers>
                   <ServerId>vm-gtgt***</ServerId>
                   <Port>80</Port>
                   <Weight>100</Weight>
                   <ServerType>Master</ServerType>
+            </MasterSlaveBackendServers>
+            <MasterSlaveBackendServers>
                   <ServerId>vm-tygtyg****</ServerId>
                   <Port>90</Port>
                   <Weight>100</Weight>
                   <ServerType>Slave</ServerType>
+            </MasterSlaveBackendServers>
+      </MasterSlaveBackendServers>
+</CreateMasterSlaveServerGroupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "CreateMasterSlaveServerGroupResponse": {
+        "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
+        "MasterSlaveServerGroupId": "rsp-cige******",
+        "MasterSlaveBackendServers": {
+            "MasterSlaveBackendServers": [
+```
+
+`{`
+
+```json
+                    "ServerId": "vm-gtgt***",
+                    "Port": 80,
+                    "Weight": 100,
+                    "ServerType": "Master"
+```
+
+`},` `{`
+
+```json
+                    "ServerId": "vm-tygtyg****",
+                    "Port": 90,
+                    "Weight": 100,
+                    "ServerType": "Slave"
+```
+
+`}` `]` `}` `}` `}`
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -7588,36 +7882,14 @@ Sample success responses `XML` format
 | 400 | INVALID SERVER T _ _ YPE | Invalid server type. | The error message returned because the specified type of backend server is invalid. |
 | 400 | BACKEND SERVER _ _ PORT CAN NOT E _ _ _ MPTY | Backend server port can not empty. | The error message returned because the port of the backend server is not specified. |
 
-Server Load Balancer
-
-```json
-{
-        "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
-        "MasterSlaveServerGroupId": "rsp-cige******",
-                {
-                    "ServerId": "vm-gtgt***",
-                    "Port": 80,
-                    "Weight": 100,
-                    "ServerType": "Master"
-                },
-                {
-                    "ServerId": "vm-tygtyg****",
-                    "Port": 90,
-                    "Weight": 100,
-                    "ServerType": "Slave"
-                }
-```
-
-]
-
-```
-        }
-    }
-}
-```
-
 | 400 | RealServerPortNotS upport | Real server port not support. | The error message returned because the specified port of the backend server is invalid. |
 |---|---|---|---|
+
+#### 7.11.2 DeleteMasterSlaveServerGroup
+
+Deletes a specified primary/secondary server group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7625,19 +7897,13 @@ Server Load Balancer
 | MasterSlaveServ erGroupId | String | Yes | rsp-cige6**** | The ID of the primary/secondary server group. Note You cannot delete a primary/secondary server group that is in use. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is deployed. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer
-
-#### DeleteMasterSlaveServerGroup
-
-Deletes a specified primary/secondary server group.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7647,43 +7913,47 @@ http(s)://[Endpoint]/?Action=DeleteMasterSlaveServerGroup &MasterSlaveServerGrou
 
 Sample success responses `XML` format
 
+```xml
+<DeleteMasterSlaveServerGroupResponse>
+   <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
+</DeleteMasterSlaveServerGroupResponse>
+```
+
+`JSON` format `{`
+
+```json
+"RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C"
+```
+
+`}`
+
+#### 7.11.3 DescribeMasterSlaveServerGroups
+
+Queries backend servers in a primary/secondary server group.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeMasterS laveServerGroup s | The operation that you want to perform. Set the value to DescribeMasterSlaveServerGroup s. |
 | LoadBalancerId | String | Yes | lb- bp14zi0n66zpg6 o**** | The ID of the Server Load Balancer (SLB) instance. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the SLB instance is deployed. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| MasterSlaveSe rverGroups | Array of MasterSlaveSe rverGroup |  | The list of backend servers in the primary/secondary server group. |
-| MasterSlaveSe rverGroup |  |  |  |
+| MasterSlaveSe rverGroups | Array of MasterSlaveSe rverGroup |   | The list of backend servers in the primary/secondary server group. |
+| MasterSlaveSe rverGroup |   |   |   |
 | MasterSlaveSe rverGroupId | String | rsp-0bfuc**** | The ID of the primary/secondary server group. |
 | MasterSlaveSe rverGroupNam e | String | Group3 | The name of the primary/secondary server group. |
-
-Server Load Balancer
-
-```xml
-   <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
-```
-
-`JSON` format
-
-```json
-{ "RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C" }
-```
-
-#### DescribeMasterSlaveServerGroups
-
-Queries backend servers in a primary/secondary server group.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 |---|---|---|---|
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeMasterSlaveServerGroups &LoadBalancerId=lb-bp14zi0n66zpg6o**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
@@ -7703,29 +7973,25 @@ Sample success responses `XML` format
 </DescribeMasterSlaveServerGroupsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "265989FE-136B-4D6A-B549-FD40E7",
     "MasterSlaveServerGroups": {
         "MasterSlaveServerGroup": [
-            {
+```
+
+`{`
+
+```json
                 "MasterSlaveServerGroupId": "rsp-bp1nly******",
                 "MasterSlaveServerGroupName": "primary/secondary1",
                 "AssociatedObjects": {
+                    "Listeners": {
                         "Listener": [ ]
-                    }
-                }
-            }
 ```
 
-]
-
-```
-    }
-}
-```
+`}` `}` `}` `]` `}` `}`
 
 **7.11.4.**
 
@@ -7733,35 +7999,35 @@ Sample success responses `XML` format
 
 Queries detailed information about a primary/secondary server group.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeMasterS laveServerGroup Attribute | The operation that you want to perform. Set the value to DescribeMasterSlaveServerGroup Attribute. |
 | MasterSlaveServ erGroupId | String | Yes | rsp-cige6j**** | The ID of the primary/secondary server group. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the Server Load Balancer (SLB) instance is created. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | MasterSlaveSe rverGroupId | String | rsp-cige6**** | The ID of the primary/secondary server group. |
 | MasterSlaveSe rverGroupNam e | String | Group1 | The name of the primary/secondary server group. |
-| MasterSlaveBa ckendServers | Array of MasterSlaveBa ckendServer |  | The list of backend servers in the primary/secondary server group. |
-| MasterSlaveBa ckendServer |  |  |  |
+| MasterSlaveBa ckendServers | Array of MasterSlaveBa ckendServer |   | The list of backend servers in the primary/secondary server group. |
+| MasterSlaveBa ckendServer |   |   |   |
 | ServerId | String | vm-hrf**** | The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI). |
 | Port | Integer | 90 | The port that is used by the backend server. |
 | Weight | Integer | 100 | The weight of the backend server. |
 | ServerType | String | Slave | The type of backend server. Valid values: Master and Slave. Default value: Master. |
-
-Server Load Balancer
-
-**Request parameters**
-
-**Response parameters**
 
 | Description | String | Primary/Secondary ServerGroupDescri ption. | The description of the primary/secondary server group. |
 |---|---|---|---|
 | Type | String | ecs | The type of backend server. Valid values: ecs: an ECS instance. This is the default value. eni: an ENI. |
 | RequestId | String | 9DEC9C28-AB05- 4DDF-9A78- 6B08EC9CE18C | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeMasterSlaveServerGroupAttribute &MasterSlaveServerGroupId=rsp-cige6j**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
@@ -7773,96 +8039,105 @@ Sample success responses `XML` format
 <DescribeMasterSlaveServerGroupAttributeResponse>
     <RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
     <MasterSlaveServerGroupId>rsp-cige6******</MasterSlaveServerGroupId>
+    <MasterSlaveBackendServers>
+          <MasterSlaveBackendServers>
                 <ServerId>vm-sshssh****</ServerId>
                 <Port>80</Port>
                 <Weight>100</Weight>
                 <ServerType>Master</ServerType>
+          </MasterSlaveBackendServers>
+          <MasterSlaveBackendServers>
                 <ServerId>vm-ffff*****</ServerId>
                 <Port>90</Port>
                 <Weight>100</Weight>
                 <ServerType>Slave</ServerType>
+          </MasterSlaveBackendServers>
+    </MasterSlaveBackendServers>
 </DescribeMasterSlaveServerGroupAttributeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+  "DescribeMasterSlaveServerGroupAttributeResponse": {
+    "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
+    "MasterSlaveServerGroupId": "rsp-cige6******",
+    "MasterSlaveBackendServers": {
+      "MasterSlaveBackendServers": [
+```
+
+`{`
+
+```json
+          "ServerId": "vm-sshssh****",
+          "Port": "80",
+          "Weight": "100",
+          "ServerType": "Master"
+```
+
+`},` `{`
+
+```json
+          "ServerId": "vm-ffff*****",
+          "Port": "90",
+          "Weight": "100",
+          "ServerType": "Slave"
+```
+
+`}` `]` `}` `}` `}`
+
+### 7.12 Tags
+
+#### 7.12.1 AddTags
+
+Adds tags to a Server Load Balancer (SLB) instance. When you call this operation, take note of the following items: You can add at most 10 tags to an SLB instance. You can specify at most five tags in each request. All tags and keys added to an SLB instance must be unique. If you add a tag that has the same key as an existing tag but with a different value, the new tag overwrites the existing tag.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | AddTags | The operation that you want to perform. Set the value to AddTags. |
 | LoadBalancerId | String | Yes | lb- bp1b6c719dfa0 8ex**** | The ID of the SLB instance. |
 
-Server Load Balancer
-
-```json
-{
-  "DescribeMasterSlaveServerGroupAttributeResponse": {
-    "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
-    "MasterSlaveServerGroupId": "rsp-cige6******",
-        {
-          "ServerId": "vm-sshssh****",
-          "Port": "80",
-          "Weight": "100",
-          "ServerType": "Master"
-        },
-        {
-          "ServerId": "vm-ffff*****",
-          "Port": "90",
-          "Weight": "100",
-          "ServerType": "Slave"
-        }
-```
-
-]
-
-```
-    }
-  }
-}
-```
-
-### Tags
-
-#### AddTags
-
-Adds tags to a Server Load Balancer (SLB) instance. When you call this operation, take note of the following items: You can add at most 10 tags to an SLB instance. You can specify at most five tags in each request. All tags and keys added to an SLB instance must be unique. If you add a tag that has the same key as an existing tag but with a different value, the new tag overwrites the existing tag.
-
-**Request parameters**
-
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the SLB instance is deployed. |
 |---|---|---|---|---|
 | Tags | String | Yes | [{"TagKey":"Key 1","TagValue":" Value1"}, {"TagKey":"Key 2","TagValue":" Value2"}] | The list of tags to be added. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}] &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddTags &LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}] &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<AddTagsResponse>
    <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId>
+</AddTagsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710"
-}
 ```
 
-#### DescribeTags
+`}`
 
-Queries a list of tags. When you call this operation, take note of the following items: You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions. If the logical relationship among the specified conditions is `AND` , only tags that match all of the specified conditions are returned. If the Tagkey parameter is specified and the Tagvalue parameter is not specified, all tags
+#### 7.12.2 DescribeTags
+
+Queries a list of tags. When you call this operation, take note of the following items: You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions. If the logical relationship among the specified conditions is `AND` , only tags that match all of the specified conditions are returned. If the Tagkey parameter is specified and the Tagvalue parameter is not specified, all tags that contain the specified tag key are returned. If you have specified the Tagvalue parameter in a request, you must also specify the Tagkey parameter in this request. If you specify both the Tagkey and Tagvalue parameters, tags with the specified key-value pair are returned.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7874,17 +8149,13 @@ Queries a list of tags. When you call this operation, take note of the following
 | PageSize | Integer | No | 50 | The number of entries to return on each page. Default value: 50. Maximum value: 100. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Minimum value: 1. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TagSets | Array of TagSet |  | The list of tags. |
-| TagSet |  |  |  |
+| TagSets | Array of TagSet |   | The list of tags. |
+| TagSet |   |   |   |
 | TagKey | String | test | The key of the tag. |
-
-Server Load Balancer that contain the specified tag key are returned. If you have specified the Tagvalue parameter in a request, you must also specify the Tagkey parameter in this request. If you specify both the Tagkey and Tagvalue parameters, tags with the specified key-value pair are returned.
-
-**Request parameters**
-
-**Response parameters**
 
 | TagValue | String | api | The value of the tag. |
 |---|---|---|---|
@@ -7894,15 +8165,18 @@ Server Load Balancer that contain the specified tag key are returned. If you hav
 | TotalCount | Integer | 1 | The total number of instances that are returned after the tags are matched against the specified conditions. |
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer Sample requests
+**Examples**
+
+Sample requests
 
 ```
-&RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeTags &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<DescribeTagsResponse>
    <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId>
     <TagSets>
             <TagSet>
@@ -7913,9 +8187,39 @@ Sample success responses `XML` format
    <PageSize>50</PageSize>
    <PageNumber>1</PageNumber>
    <TotalCount>1</TotalCount>
+</DescribeTagsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
+    "TagSets": {
+        "TagSet": [
+```
+
+`{`
+
+```json
+                "TagKey": "test",
+                "TagValue": "api"
+```
+
+`}` `],`
+
+```json
+        "PageNumber": 1,
+        "PageSize": 50,
+        "TotalCount": 1
+```
+
+`}` `}`
+
+#### 7.12.3 RemoveTags
+
+Removes tags from a Server Load Balancer (SLB) instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7924,60 +8228,26 @@ Sample success responses `XML` format
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the SLB instance is deployed. |
 | Tags | String | Yes | [{"TagKey":"Key 1","TagValue":" Value1"}, {"TagKey":"Key 2","TagValue":" Value2"}] | The list of tags that you want to remove. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 365F4154-92F6- 4AE4-92F8- 7FF34B540710 | The ID of the request. |
 
-Server Load Balancer
-
-```json
-{
-    "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710",
-    "TagSets": {
-        "TagSet": [
-            {
-                "TagKey": "test",
-                "TagValue": "api"
-            }
-```
-
-`],`
-
-```json
-        "PageNumber": 1,
-        "PageSize": 50,
-        "TotalCount": 1
-    }
-}
-```
-
-#### RemoveTags
-
-Removes tags from a Server Load Balancer (SLB) instance.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Query | No | UntagResources | A required parameter. Set the value to UntagResources. |
-| OwnerId | Long | Query | No | 1234567890 | A system parameter for authentication. Do not specify this parameter. |
-| OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Do not specify this parameter. |
-| RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the Classic Load Balancer instance. |
-
-Server Load Balancer
-
 ```
-&LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}] &<Common request parameters>
+http(s)://[Endpoint]/?Action=RemoveTags &LoadBalancerId=lb-bp1b6c719dfa08ex**** &RegionId=cn-qingdao-env17-d01 &Tags=[{"TagKey":"Key1","TagValue":"Value1"},{"TagKey":"Key2","TagValue":"Value2"}] &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<RemoveTagsResponse>
    <RequestId>365F4154-92F6-4AE4-92F8-7FF34B540710</RequestId>
+</RemoveTagsResponse>
 ```
 
 `JSON` format
@@ -7986,7 +8256,7 @@ Sample success responses `XML` format
 { "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710" }
 ```
 
-#### UntagResources
+#### 7.12.4 UntagResources
 
 Removes tags from specified resources.
 
@@ -7998,26 +8268,55 @@ This operation uses common request headers and has no special request headers. F
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Action | Strin g | Query | No | UntagResources | A required parameter. Set the value to UntagResources. |
+| OwnerId | Long | Query | No | 1234567890 | A system parameter for authentication. Do not specify this parameter. |
+| OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Do not specify this parameter. |
+| RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the Classic Load Balancer instance. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | ResourceT ype | Strin g | Query | Yes | instance | The resource type. Valid values: instance : an SLB instance. certificate : a certificate. acl : a network access control list (ACL). |
 | ResourceI d | Repe atList | Query | Yes | lb- bp16qjewdsunr41m1*** * | To change the resource group of a resource, you need the resource ID. |
 | TagKey | Repe atList | Query | No | TestKey | Specifies the tag value for the resource. N is an integer from 1 to 20 . The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: , and it cannot contain http:// or https:// . If you do not specify TagKey , all tags are removed from the instance. |
 | All | Boole an | Query | No | false | Specifies whether to remove all tags. This parameter is valid only when TagKey.N is not specified. Valid values: true and false . |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The request ID. |
 
-Server Load Balancer
+**Examples**
 
-**Response parameters**
+Sample request
+
+```
+http(s)://[Endpoint]/?Action=UntagResources &RegionId=cn-east-hangzhou-01 &ResourceType=instance &ResourceId=lb-bp16qjewdsunr41m1**** &<Common request parameters>
+```
+
+Sample response `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -8033,21 +8332,7 @@ Server Load Balancer
 | 400 | InvalidParam.TagO wnerBid | InvalidParam.TagOwnerBid | The specified TagOwnerBid is invalid. |
 | 400 | MissingParam.Tag OwnerUid | MissingParam.TagOwnerUid | The parameter TagOwnerUid is required. |
 
-Server Load Balancer Sample request
-
-```
-&RegionId=cn-east-hangzhou-01 &ResourceType=instance &ResourceId=lb-bp16qjewdsunr41m1**** &<Common request parameters>
-```
-
-Sample response `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-}
-```
-
-| Developer Gu | ide·API Reference |  | Server Load Balance |
+| Developer Gu | ide·API Reference |   | Server Load Balance |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8060,14 +8345,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | SizeLimitExceeded. ResourceId | SizeLimitExceeded.ResourceId | The ResourceId exceeds the maximum size. |
 | 400 | SizeLimitExceeded. TagKey | SizeLimitExceeded.TagKey | The number of specified tag keys exceeds the upper limit. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Query | No | TagResources | A required system parameter. Set the value to TagResources. |
-| OwnerId | Long | Query | No | 1234567890 | A system parameter for authentication. Do not specify this parameter. |
-| OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Do not specify this parameter. |
-| RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the Classic Load Balancer instance. |
-
-#### TagResources
+#### 7.12.5 TagResources
 
 Adds tags to specified resources.
 
@@ -8077,7 +8355,14 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
-| S | erver Load B | alancer |  |  | Dev | eloper Guide·API Referenc | e |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Action | Strin g | Query | No | TagResources | A required system parameter. Set the value to TagResources. |
+| OwnerId | Long | Query | No | 1234567890 | A system parameter for authentication. Do not specify this parameter. |
+| OwnerAcc ount | Strin g | Query | No | test | A system parameter for authentication. Do not specify this parameter. |
+| RegionId | Strin g | Query | Yes | cn-east-hangzhou-01 | The region ID of the Classic Load Balancer instance. |
+
+| S | erver Load B | alancer |   |   | Dev | eloper Guide·API Referenc | e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -8085,25 +8370,49 @@ This operation uses common request headers. No special request headers are requi
 | ResourceT ype | Strin g | Query | Yes | instance | The resource type. Valid values: instance : an SLB instance. certificate : a certificate. acl : a network access control list (ACL). |
 | ResourceI d | Repe atList | Query | Yes | lb- bp16qjewdsunr41m1*** * | Modify the ID of the target resource in the resource group. |
 | Tag | Repe atList | Query | Yes | UploadCACertificate | The collection of tags associated with the listener. |
-| -Key | Strin g |  | No | TestKey | The key of tag N. The value of N can be from 1 to 20 . The tag key cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: . It cannot contain http:// or https:// . |
-| -Value | Strin g |  | No | TestValue | The value of tag N. The value of N can be from 1 to 20 . The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: . It cannot contain http:// or https:// . |
+| -Key | Strin g |   | No | TestKey | The key of tag N. The value of N can be from 1 to 20 . The tag key cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: . It cannot contain http:// or https:// . |
+| -Value | Strin g |   | No | TestValue | The value of tag N. The value of N can be from 1 to 20 . The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: . It cannot contain http:// or https:// . |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+| https:// |   |
 
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The ID of the request. |
+
+**Examples**
+
+Sample request
+
+```
+http(s)://[Endpoint]/?Action=TagResources &RegionId=cn-east-hangzhou-01 &ResourceType=instance &ResourceId=lb-bp16qjewdsunr41m1**** &Tag=UploadCACertificate &<Common request parameters>
+```
+
+Sample success response `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -8115,20 +8424,6 @@ This operation uses common request headers. No special request headers are requi
 | 400 | InvalidParam.Scope | InvalidParam.Scope | The specified Scope is invalid. |
 | 400 | InvalidParam.Reso urceType | InvalidParam.ResourceType | The specified ResourceType is invalid. |
 | 400 | InvalidParam.TagK ey | InvalidParam.TagKey | The specified TagKey is invalid. |
-
-Server Load Balancer Sample request
-
-```
-&RegionId=cn-east-hangzhou-01 &ResourceType=instance &ResourceId=lb-bp16qjewdsunr41m1**** &<Common request parameters>
-```
-
-Sample success response `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-}
-```
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -8147,9 +8442,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | SizeLimitExceeded. ResourceId | SizeLimitExceeded.ResourceId | The maximum size of ResourceId is exceeded. |
 | 400 | SizeLimitExceeded. Tag | SizeLimitExceeded.Tag | The maximum size of Tag is exceeded. |
 
-Server Load Balancer
-
-#### ListTagResources
+#### 7.12.6 ListTagResources
 
 Lists the tags of specified resources.
 
@@ -8170,20 +8463,20 @@ This operation uses only common request headers. For more information, see Commo
 | ResourceI d | Repe atList | Query | No | lb- bp16qjewdsunr41m1*** * | Modify the ID of the target resource in the resource group. |
 | Tag | Repe atList | Query | No | UploadCACertificate | A collection of tags. |
 
-Server Load Balancer
-
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| -Key | Strin g |  | No | TestKey | The key of tag N. N is an integer from 1 to 20 . The tag key cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
-| -Value | Strin g |  | No | TestValue | The value of tag N. N is an integer from 1 to 20 . The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
+| -Key | Strin g |   | No | TestKey | The key of tag N. N is an integer from 1 to 20 . The tag key cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
+| -Value | Strin g |   | No | TestValue | The value of tag N. N is an integer from 1 to 20 . The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https:// . |
 
-|  | aliyun |
+|   | aliyun |
 |---|---|
-| acs: |  |
+| acs: |   |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8192,11 +8485,9 @@ Server Load Balancer
 | -ResourceType | String | instance | The resource type. |
 | -ResourceId | String | lb- bp16qjewdsunr4** ** | The resource ID. |
 
-|  | acs: |
+|   | acs: |
 |---|---|
-| http:// |  |
-
-**Response parameters**
+| http:// |   |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8204,31 +8495,40 @@ Server Load Balancer
 | NextToken | String | FFmyTO70tTpLG6I 3FmYAXGKPd**** | The token that is used to retrieve the next page of results. Valid values: If NextToken is empty, no more results are returned. If a value is returned for NextToken , the value is the token that is used to retrieve the next page of results. |
 | RequestId | String | CEF72CEB-54B6- 4AE8-B225- F876FF7BA984 | The request ID. |
 
-Server Load Balancer Request example
+**Examples**
+
+Request example
 
 ```
-&RegionId=cn-east-hangzhou-01 &ResourceType=instance &<Common request parameters>
+http(s)://[Endpoint]/?Action=ListTagResources &RegionId=cn-east-hangzhou-01 &ResourceType=instance &<Common request parameters>
 ```
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"CEF72CEB-54B6-4AE8-B225-F876FF7BA984",
-  {
+ "TagResources":[
+```
+
+`{`
+
+```json
    "ResourceId":"lb-bp16qjewdsunr4****",
    "TagKey":"TestKey",
    "ResourceType":"instance",
    "TagValue":"api"
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -8251,683 +8551,654 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | SizeLimitExceeded. ResourceId | SizeLimitExceeded.ResourceId | The number of resource IDs exceeds the limit. |
 | 400 | SizeLimitExceeded. Tag | SizeLimitExceeded.Tag | The number of tags exceeds the limit. |
 
-Server Load Balancer
+### 7.13 Error codes
 
-### Error codes
-
-|  |  |  |  | Error code |  |  |  |  |  |  |  |  |  | Error message |  |  |  |  | HTTP status code |  | Description |  |
+|   |   |   |   | Error code |   |   |   |   |   |   |   |   |   | Error message |   |   |   |   | HTTP status code |   | Description |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  | CertificateAndPriv |  |  |  |  |  |  |  |  |  | Certificate and |  |  |  |  |  |  | The error message returned because the certificate is used by other resources. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Certificate and |  |  |  |  |  | The er |  |
-|  |  |  |  |  | CertificateAndPriv |  |  |  |  |  |  |  |  |  | Certificate |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ficateAndPriv |  |  |  |  |  |  | PrivateKey Is |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  | ateKeyIsRefered |  |  | IsRefered |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | Refered. |  |  |  |  |  |  |  |  |
-|  |  |  |  | CertificateNotMatc |  |  |  |  |  |  |  |  |  | Certificate and |  |  |  |  |  |  | The error message returned because the certificate and the private key do not match. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Certificate and |  |  |  |  |  | The |  |
-|  |  |  |  |  | CertificateNotMatc |  |  |  |  |  |  |  |  |  | Certific |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ficateNotMatc |  |  |  |  |  |  | key does |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 4 |  |  |  |
-|  |  |  |  | hPrivateKey |  |  | teKey |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | match. |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | No health- |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | No health- |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | checked Listener |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | CheckedListenerNot |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | to |  | the specified |  |  |  |  | The error message returned because health checks are |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 404 |  | because h |  |
-|  |  |  |  | Found |  |  |  |  |  |  |  |  |  | port of the Load |  |  |  |  |  |  | disabled. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | Balancer. |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | User not |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | User not |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | authorized to |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | operate on the |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | specified |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  | Forbbiden.SubUser |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | resource as your |  |  |  |  | 403 |  | because you are unauthorized to |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | perform the operation |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | account is |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | created by |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | another user. |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | User not |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | User not |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | authorized to |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | operate on the |  |  |  |  |  |  | because you are un |  |
-|  |  |  |  |  | Forbidden |  |  |  |  |  |  |  |  |  |  |  |  |  | 403 |  | b |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | specified |  |  |  |  |  |  | p |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | resource. |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | Current |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Current |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | listener access |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  | IncorrectListenerA |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | control status |  |  |  |  |  |  | because the access control |  |
-|  |  |  |  | ccessControlStatusSt |  |  |  |  |  |  |  |  |  | doe |  | s not support |  |  | 500 |  | configuration of t |  |
-|  |  |  |  | atus |  |  |  |  |  |  |  |  |  | this |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | operation. |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing has |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | failed due to |  |  |  |  |  |  | The error message returne |  |
-|  |  |  |  |  | InternalError |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | backend service |  |  |  |  |  |  | because a |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | exception. |  |  |  |  |  |  |  |  |
+|   |   |   |   | CertificateAndPriv |   |   |   |   |   |   |   |   |   | Certificate and |   |   |   |   |   |   | The error message returned because the certificate is used by other resources. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Certificate and |   |   |   |   |   | The er |   |
+|   |   |   |   |   | CertificateAndPriv |   |   |   |   |   |   |   |   |   | Certificate |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ficateAndPriv |   |   |   |   |   |   | PrivateKey Is |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   | ateKeyIsRefered |   |   | IsRefered |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | Refered. |   |   |   |   |   |   |   |   |
+|   |   |   |   | CertificateNotMatc |   |   |   |   |   |   |   |   |   | Certificate and |   |   |   |   |   |   | The error message returned because the certificate and the private key do not match. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Certificate and |   |   |   |   |   | The |   |
+|   |   |   |   |   | CertificateNotMatc |   |   |   |   |   |   |   |   |   | Certific |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ficateNotMatc |   |   |   |   |   |   | key does |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 4 |   |   |   |
+|   |   |   |   | hPrivateKey |   |   | teKey |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | match. |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | No health- |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | No health- |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | checked Listener |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | CheckedListenerNot |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | to |   | the specified |   |   |   |   | The error message returned because health checks are |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 404 |   | because h |   |
+|   |   |   |   | Found |   |   |   |   |   |   |   |   |   | port of the Load |   |   |   |   |   |   | disabled. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | Balancer. |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | User not |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | User not |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | authorized to |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | operate on the |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | specified |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   | Forbbiden.SubUser |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | resource as your |   |   |   |   | 403 |   | because you are unauthorized to |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | perform the operation |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | account is |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | created by |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | another user. |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | User not |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | User not |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | authorized to |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | operate on the |   |   |   |   |   |   | because you are un |   |
+|   |   |   |   |   | Forbidden |   |   |   |   |   |   |   |   |   |   |   |   |   | 403 |   | b |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | specified |   |   |   |   |   |   | p |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | resource. |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | Current |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Current |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | listener access |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   | IncorrectListenerA |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | control status |   |   |   |   |   |   | because the access control |   |
+|   |   |   |   | ccessControlStatusSt |   |   |   |   |   |   |   |   |   | doe |   | s not support |   |   | 500 |   | configuration of t |   |
+|   |   |   |   | atus |   |   |   |   |   |   |   |   |   | this |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | operation. |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing has |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | failed due to |   |   |   |   |   |   | The error message returne |   |
+|   |   |   |   |   | InternalError |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | backend service |   |   |   |   |   |   | because a |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | exception. |   |   |   |   |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request |  |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing has |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | failed due to |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  | InternalInvokeErro |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | some unknown |  |  |  | 500 | because an internal error oc |  |
-|  |  |  |  |  |  | r |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | because an i |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | error, exception |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | or failure. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Specified |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Specified |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | LoadBalancer |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | instance's |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | addresstype is |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | private, so it |  |  |  |  |  | because the network types of the |  |
-|  |  |  |  |  |  |  | InvalidBackendServ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Elastic Compute Service (ECS) |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | is |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  | ers.Inconsistent |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | instances and that of the Server |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Load Balancer (SLB) instance do |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | forbidden to add |  |  |  |  |  | not match. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ecs vpc |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | backendservers |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | for now. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | All |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | All |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | BackendServers |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | on one Specified |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | LoadBalancer |  |  |  |  |  | because you cannot specify both ECS instances in a classic network |  |
-|  |  |  |  |  |  |  | InvalidBackendServ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ECS instances in a classic ne |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | have to be in |  |  |  |  | 400 | and ECS instances in a virtu |  |
-|  |  |  |  |  |  | ers.Inconsistent |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | and ECS ins |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | the same |  |  |  |  |  | private clou |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | se |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | vpc or all |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | classic |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request |  |  |  |  |  | The error message returned because you are unauthorized to perform the operation. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | identity was not |  |  |  |  |  | T |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | b |  |
-|  |  |  |  |  |  | InvalidIdentity | InvalidIdentity |  |  |  | dentity |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | allowed |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | operated. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  | InvalidLoadBalance |  |  |  |  |  |  |  |  |  |  | LoadBalancerId does not exist. |  |  |  |  |  | The error message returned because the specified SLB instance is invalid. |  |
-|  |  |  |  |  |  |  | InvalidLoadBalance |  |  |  |  |  |  |  |  |  |  |  | LoadBalan |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | idLoadBalance |  |  |  |  |  |  |  | does not |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  | rId.NotFound |  |  | tFound |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | exist. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ServerCertificate |  |  |  |  |  | because the speci |  |
-|  |  |  |  |  |  |  | InvalidParameter |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | format is |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | error. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  | The error message returned because the certificate is not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error message return |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  | The err |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 404 | becaus |  |
-|  |  |  |  |  |  | InvalidParameter | InvalidParameter |  |  | dParameter |  |  |  |  |  |  |  |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ServerCertificate |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Id is empty. |  |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing has |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | failed due to |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   | InternalInvokeErro |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | some unknown |   |   |   | 500 | because an internal error oc |   |
+|   |   |   |   |   |   | r |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | because an i |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | error, exception |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | or failure. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Specified |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Specified |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | LoadBalancer |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | instance's |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | addresstype is |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | private, so it |   |   |   |   |   | because the network types of the |   |
+|   |   |   |   |   |   |   | InvalidBackendServ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Elastic Compute Service (ECS) |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | is |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   | ers.Inconsistent |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | instances and that of the Server |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Load Balancer (SLB) instance do |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | forbidden to add |   |   |   |   |   | not match. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ecs vpc |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | backendservers |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | for now. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | All |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | All |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | BackendServers |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | on one Specified |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | LoadBalancer |   |   |   |   |   | because you cannot specify both ECS instances in a classic network |   |
+|   |   |   |   |   |   |   | InvalidBackendServ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ECS instances in a classic ne |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | have to be in |   |   |   |   | 400 | and ECS instances in a virtu |   |
+|   |   |   |   |   |   | ers.Inconsistent |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | and ECS ins |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | the same |   |   |   |   |   | private clou |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | se |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | vpc or all |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | classic |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request |   |   |   |   |   | The error message returned because you are unauthorized to perform the operation. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | identity was not |   |   |   |   |   | T |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | b |   |
+|   |   |   |   |   |   | InvalidIdentity | InvalidIdentity |   |   |   | dentity |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | allowed |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | operated. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   | InvalidLoadBalance |   |   |   |   |   |   |   |   |   |   | LoadBalancerId does not exist. |   |   |   |   |   | The error message returned because the specified SLB instance is invalid. |   |
+|   |   |   |   |   |   |   | InvalidLoadBalance |   |   |   |   |   |   |   |   |   |   |   | LoadBalan |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | idLoadBalance |   |   |   |   |   |   |   | does not |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   | rId.NotFound |   |   | tFound |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | exist. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ServerCertificate |   |   |   |   |   | because the speci |   |
+|   |   |   |   |   |   |   | InvalidParameter |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | format is |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | error. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   | The error message returned because the certificate is not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error message return |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   | The err |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 404 | becaus |   |
+|   |   |   |   |   |   | InvalidParameter | InvalidParameter |   |   | dParameter |   |   |   |   |   |   |   |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | ServerCertificate |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Id is empty. |   |   |   |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | The error message r |  |
-|  |  |  |  |  |  |  |  |  | ServerCertificate |  |  | because the ID of th |  |
-|  |  |  |  |  | InvalidParameter |  |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  |  |  |  | Id is not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | support. |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  | ServerCertificate |  |  | because the certif |  |
-|  |  |  |  |  | InvalidParameter |  |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  |  |  |  | or Key is |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | empty. |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified private key is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  | The error mess |  |
-|  |  |  |  |  |  |  |  |  | parameter key |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 404 |  |  |
-|  |  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | format is |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | error. |  |  |  |  |
-|  |  |  |  | InvalidParameter |  |  |  |  | Specified |  |  | The error message returned because the specified region does not support the operation. |  |
-|  |  |  |  |  |  |  |  |  |  | Specified |  | The e |  |
-|  |  |  |  |  | InvalidPar |  | ameter |  | region does not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  |  |  |  | supported. |  |  |  |  |
-|  |  |  |  | InvalidParameter |  |  |  |  | Port is not Integer. |  | 400 | The error message returned because the specified port is invalid. Valid values: 1 to 65535. |  |
-|  |  |  |  | InvalidParameter |  |  |  |  | The specified |  |  | The error message returned because the specified port is invalid. Valid values: 1 to 65535. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  | Invali | dParameter |  |  | port is not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  |  | InvalidParameter |  |  |  |  | The specified |  |  | The error message returned because the specified bandwidth limit is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  | The e |  |
-|  |  |  |  |  | Invali | dParameter |  |  | bandwidth is not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  |  | InvalidParameter |  |  |  |  | Specified |  |  | The error message returned because a specified parameter is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | Specified |  | The error |  |
-|  |  |  |  |  | InvalidPar |  | ameter |  | parameter Check |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | is not valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  | HealthCheckHttpCo |  |  | because the speci |  |
-|  |  |  |  |  | InvalidParameter |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | de is not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | The error message r |   |
+|   |   |   |   |   |   |   |   |   | ServerCertificate |   |   | because the ID of th |   |
+|   |   |   |   |   | InvalidParameter |   |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   |   |   |   | Id is not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | support. |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   | ServerCertificate |   |   | because the certif |   |
+|   |   |   |   |   | InvalidParameter |   |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   |   |   |   | or Key is |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | empty. |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified private key is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   | The error mess |   |
+|   |   |   |   |   |   |   |   |   | parameter key |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 404 |   |   |
+|   |   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | format is |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | error. |   |   |   |   |
+|   |   |   |   | InvalidParameter |   |   |   |   | Specified |   |   | The error message returned because the specified region does not support the operation. |   |
+|   |   |   |   |   |   |   |   |   |   | Specified |   | The e |   |
+|   |   |   |   |   | InvalidPar |   | ameter |   | region does not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   |   |   |   | supported. |   |   |   |   |
+|   |   |   |   | InvalidParameter |   |   |   |   | Port is not Integer. |   | 400 | The error message returned because the specified port is invalid. Valid values: 1 to 65535. |   |
+|   |   |   |   | InvalidParameter |   |   |   |   | The specified |   |   | The error message returned because the specified port is invalid. Valid values: 1 to 65535. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   | Invali | dParameter |   |   | port is not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   |   | InvalidParameter |   |   |   |   | The specified |   |   | The error message returned because the specified bandwidth limit is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   | The e |   |
+|   |   |   |   |   | Invali | dParameter |   |   | bandwidth is not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   |   | InvalidParameter |   |   |   |   | Specified |   |   | The error message returned because a specified parameter is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | Specified |   | The error |   |
+|   |   |   |   |   | InvalidPar |   | ameter |   | parameter Check |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | is not valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   | HealthCheckHttpCo |   |   | because the speci |   |
+|   |   |   |   |   | InvalidParameter |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | de is not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |
 
-|  | Port is not | 400 |
+|   | Port is not | 400 |
 |---|---|---|
-| Integer. |  |  |
+| Integer. |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  | The specified |  |  |  |  |
+|   |   |   |   |   |   |   | The specified |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  | bandwidth is not |  |  | The error message returned |  |
-|  |  |  |  |  |  |  | valid, out of |  |  | because the specified value of |  |
-|  |  |  |  | InvalidParameter |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | the instance |  |  | Bandwidth e |  |
-|  |  |  |  |  |  |  | total |  |  |  |  |
-|  |  |  |  |  |  |  | bandwidth. |  |  |  |  |
-|  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of Bandwidth is invalid. |  |
-|  |  |  |  |  |  |  |  | The specified |  | The error messag |  |
-|  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | bandwidth is not |  |  |  |  |
-|  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified health check configuration is invalid. |  |
-|  |  |  |  |  |  |  |  | The specified |  | The error message re |  |
-|  |  |  |  |  |  |  | parameter |  |  | Th |  |
-|  |  |  |  |  |  |  |  |  | 400 | be |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | HealthCheck is |  |  |  |  |
-|  |  |  |  |  |  |  | not valid. |  |  |  |  |
-|  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of SourceItem is invalid. |  |
-|  |  |  |  |  |  |  |  | The specified |  | The error message |  |
-|  |  |  |  |  |  |  | parameter |  |  | T |  |
-|  |  |  |  |  |  |  |  |  | 400 | b |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | SourceItem is |  |  |  |  |
-|  |  |  |  |  |  |  | not valid. |  |  |  |  |
-|  |  |  | InvalidParameter |  |  |  | The specified |  |  | The error message returned because the specified protocol type is invalid. |  |
-|  |  |  |  |  |  |  |  | The specified |  | The e |  |
-|  |  |  |  | Invali | dParameter |  | protocol is not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  | InvalidParameter |  |  |  | RS Pool is empty. |  | 400 | The error message returned because no backend server is available. |  |
-|  |  |  | InvalidParameter |  |  |  | RS Pool doesn't exist. |  | 400 | The error message returned because no backend server is available. |  |
-|  |  |  | InvalidParameter |  |  |  | Illegal user ID. |  | 400 | The error message returned because the user ID is invalid. |  |
-|  |  |  | InvalidParameter |  |  |  | User ID is null |  | 400 | The error message returned because the user ID is not specified. |  |
-|  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified type of SLB instance is invalid. |  |
-|  |  |  |  |  |  |  |  | The specified |  | The error messa |  |
-|  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  | 40 |  |  |
-|  |  |  |  |  |  |  | lb type is not _ |  |  |  |  |
-|  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  | InvalidParameter |  |  |  | The specified |  |  | The error message returned because the specified value of Mode is invalid. |  |
-|  |  |  |  |  |  |  |  | The specified |  | The error mes |  |
-|  |  |  |  | Invali | dParameter |  | parameter mode |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | is not valid.. |  |  |  |  |
+|   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   | bandwidth is not |   |   | The error message returned |   |
+|   |   |   |   |   |   |   | valid, out of |   |   | because the specified value of |   |
+|   |   |   |   | InvalidParameter |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | the instance |   |   | Bandwidth e |   |
+|   |   |   |   |   |   |   | total |   |   |   |   |
+|   |   |   |   |   |   |   | bandwidth. |   |   |   |   |
+|   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of Bandwidth is invalid. |   |
+|   |   |   |   |   |   |   |   | The specified |   | The error messag |   |
+|   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | bandwidth is not |   |   |   |   |
+|   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified health check configuration is invalid. |   |
+|   |   |   |   |   |   |   |   | The specified |   | The error message re |   |
+|   |   |   |   |   |   |   | parameter |   |   | Th |   |
+|   |   |   |   |   |   |   |   |   | 400 | be |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | HealthCheck is |   |   |   |   |
+|   |   |   |   |   |   |   | not valid. |   |   |   |   |
+|   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of SourceItem is invalid. |   |
+|   |   |   |   |   |   |   |   | The specified |   | The error message |   |
+|   |   |   |   |   |   |   | parameter |   |   | T |   |
+|   |   |   |   |   |   |   |   |   | 400 | b |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | SourceItem is |   |   |   |   |
+|   |   |   |   |   |   |   | not valid. |   |   |   |   |
+|   |   |   | InvalidParameter |   |   |   | The specified |   |   | The error message returned because the specified protocol type is invalid. |   |
+|   |   |   |   |   |   |   |   | The specified |   | The e |   |
+|   |   |   |   | Invali | dParameter |   | protocol is not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   | InvalidParameter |   |   |   | RS Pool is empty. |   | 400 | The error message returned because no backend server is available. |   |
+|   |   |   | InvalidParameter |   |   |   | RS Pool doesn't exist. |   | 400 | The error message returned because no backend server is available. |   |
+|   |   |   | InvalidParameter |   |   |   | Illegal user ID. |   | 400 | The error message returned because the user ID is invalid. |   |
+|   |   |   | InvalidParameter |   |   |   | User ID is null |   | 400 | The error message returned because the user ID is not specified. |   |
+|   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified type of SLB instance is invalid. |   |
+|   |   |   |   |   |   |   |   | The specified |   | The error messa |   |
+|   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   | 40 |   |   |
+|   |   |   |   |   |   |   | lb type is not _ |   |   |   |   |
+|   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   | InvalidParameter |   |   |   | The specified |   |   | The error message returned because the specified value of Mode is invalid. |   |
+|   |   |   |   |   |   |   |   | The specified |   | The error mes |   |
+|   |   |   |   | Invali | dParameter |   | parameter mode |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | is not valid.. |   |   |   |   |
 
-|  | RS Pool is |  |
+|   | RS Pool is |   |
 |---|---|---|
-| empty. |  |  |
+| empty. |   |   |
 
-|  | RS Pool doesn't | 400 |
+|   | RS Pool doesn't | 400 |
 |---|---|---|
-| exist. |  |  |
+| exist. |   |   |
 
-|  | Illegal user |  |
+|   | Illegal user |   |
 |---|---|---|
-| ID. |  |  |
+| ID. |   |   |
 
-|  | User ID is |
+|   | User ID is |
 |---|---|
-| null |  |
+| null |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  | The specified |  |  |  |  |
+|   |   |   |   |   |   |   |   | The specified |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  | AccessControlStat |  |  | because the speci |  |
-|  |  |  |  | InvalidParameter |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | us is not |  |  |  |  |
-|  |  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of SourceItem is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error message re |  |
-|  |  |  |  |  |  |  |  | parameter |  |  | Th |  |
-|  |  |  |  |  |  |  |  |  |  | 400 | be |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | SourceItems is |  |  |  |  |
-|  |  |  |  |  |  |  |  | not valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of BackendServers is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error message retur |  |
-|  |  |  |  |  |  |  |  | parameter |  |  | The er |  |
-|  |  |  |  |  |  |  |  |  |  | 404 | becau |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  | 404 |  |  |
-|  |  |  |  |  |  |  |  | BackendServers |  |  |  |  |
-|  |  |  |  |  |  |  |  | is not valid. |  |  |  |  |
-|  |  |  | InvalidParameter |  |  |  |  | Specified |  |  | The error message returned because a specified parameter is invalid. |  |
-|  |  |  |  |  |  |  |  |  | Specified |  | T |  |
-|  |  |  |  | InvalidPar |  | ameter |  | parameter is not |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  | InvalidParameter |  |  |  |  | The specified |  |  | The error message returned because the specified value of Domain is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error mes |  |
-|  |  |  |  | Invali | dParameter |  |  | parameter Domain |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | is not valid. |  |  |  |  |
-|  |  |  | InvalidParameter |  |  |  |  | The specified |  |  | The error message returned because the specified value of URI is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error m |  |
-|  |  |  |  | Invali | dParameter |  |  | parameter URI is |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | not valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of Scheduler is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error messag |  |
-|  |  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | Scheduler is not |  |  |  |  |
-|  |  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of ListenerStatus is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error message retur |  |
-|  |  |  |  |  |  |  |  | parameter |  |  | The er |  |
-|  |  |  |  |  |  |  |  |  |  | 400 | becau |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | ListenerStatus |  |  |  |  |
-|  |  |  |  |  |  |  |  | is not valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  | The specified |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  |  | parameter |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  | The error messa |  |
-|  |  |  |  |  |  |  |  | PersistenceTimeou |  | 400 | because the spe |  |
-|  |  |  |  | InvalidParameter |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | t is not |  |  |  |  |
-|  |  |  |  |  |  |  |  | valid. |  |  |  |  |
-|  |  |  |  |  |  |  |  | The specified |  |  | The error message returned because the specified value of ConnectPort is invalid. |  |
-|  |  |  |  |  |  |  |  |  | The specified |  | The error message re |  |
-|  |  |  |  |  |  |  |  | parameter |  |  | Th |  |
-|  |  |  |  |  |  |  |  |  |  | 400 | be |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  | ConnectPort is |  |  |  |  |
-|  |  |  |  |  |  |  |  | not valid. |  |  |  |  |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   | AccessControlStat |   |   | because the speci |   |
+|   |   |   |   | InvalidParameter |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | us is not |   |   |   |   |
+|   |   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of SourceItem is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error message re |   |
+|   |   |   |   |   |   |   |   | parameter |   |   | Th |   |
+|   |   |   |   |   |   |   |   |   |   | 400 | be |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | SourceItems is |   |   |   |   |
+|   |   |   |   |   |   |   |   | not valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of BackendServers is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error message retur |   |
+|   |   |   |   |   |   |   |   | parameter |   |   | The er |   |
+|   |   |   |   |   |   |   |   |   |   | 404 | becau |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   | 404 |   |   |
+|   |   |   |   |   |   |   |   | BackendServers |   |   |   |   |
+|   |   |   |   |   |   |   |   | is not valid. |   |   |   |   |
+|   |   |   | InvalidParameter |   |   |   |   | Specified |   |   | The error message returned because a specified parameter is invalid. |   |
+|   |   |   |   |   |   |   |   |   | Specified |   | T |   |
+|   |   |   |   | InvalidPar |   | ameter |   | parameter is not |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   | InvalidParameter |   |   |   |   | The specified |   |   | The error message returned because the specified value of Domain is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error mes |   |
+|   |   |   |   | Invali | dParameter |   |   | parameter Domain |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | is not valid. |   |   |   |   |
+|   |   |   | InvalidParameter |   |   |   |   | The specified |   |   | The error message returned because the specified value of URI is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error m |   |
+|   |   |   |   | Invali | dParameter |   |   | parameter URI is |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | not valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of Scheduler is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error messag |   |
+|   |   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | Scheduler is not |   |   |   |   |
+|   |   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of ListenerStatus is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error message retur |   |
+|   |   |   |   |   |   |   |   | parameter |   |   | The er |   |
+|   |   |   |   |   |   |   |   |   |   | 400 | becau |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | ListenerStatus |   |   |   |   |
+|   |   |   |   |   |   |   |   | is not valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   | The specified |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   |   | parameter |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   | The error messa |   |
+|   |   |   |   |   |   |   |   | PersistenceTimeou |   | 400 | because the spe |   |
+|   |   |   |   | InvalidParameter |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | t is not |   |   |   |   |
+|   |   |   |   |   |   |   |   | valid. |   |   |   |   |
+|   |   |   |   |   |   |   |   | The specified |   |   | The error message returned because the specified value of ConnectPort is invalid. |   |
+|   |   |   |   |   |   |   |   |   | The specified |   | The error message re |   |
+|   |   |   |   |   |   |   |   | parameter |   |   | Th |   |
+|   |   |   |   |   |   |   |   |   |   | 400 | be |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   | ConnectPort is |   |   |   |   |
+|   |   |   |   |   |   |   |   | not valid. |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified value of ConnectTimeout is invalid. |  |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified value of ConnectTimeout is invalid. |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error message retu |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  | The |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | beca |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | ConnectTimeou is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | not valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message return |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error mes |  |
-|  |  |  |  |  |  |  |  |  | StickySessionType |  |  |  | 400 | because the s |  |
-|  |  |  |  | InvalidParameter |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified value of HealthyThreshold is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error message return |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  | The erro |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | because |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | HealthyThreshold |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | is not valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  | UnhealthyThreshol |  |  |  | 400 | because the spec |  |
-|  |  |  |  | InvalidParameter |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | d is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified value of Interval is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | Interval is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified value of XForwardedFor is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error message retu |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  | The |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | beca |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | XForwardedFor is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | not valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified value of IsPublicAddress is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error message return |  |
-|  |  |  |  |  |  |  |  |  | parameter |  |  |  |  | The err |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | becaus |  |
-|  |  |  | InvalidParameter | InvalidParameter | dParameter |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  | IsPublicAddress |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | is not valid. |  |  |  |  |  |  |
-|  |  |  | InvalidRegionId.No tFound |  |  |  |  |  | Specified region does not exist. |  |  |  | 404 | The error message returned because the specified region is invalid. |  |
-|  |  |  |  |  |  |  |  |  | A specified |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  | A specified |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | server ID is not |  |  |  |  |  |  |
-|  |  |  |  | InvalidServerId.Ma |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | valid |  |  | , flush |  | The error message re because the ID of the |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | becau |  |
-|  |  |  | lformed |  |  |  |  |  | control ip chain |  |  |  |  | serve |  |
-|  |  |  |  |  |  |  |  |  | fail. |  |  |  |  |  |  |
-|  |  |  | InvalidServerId.No |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified backend server is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | Th |  |
-|  |  |  |  | InvalidServerId.No |  |  |  |  |  | The |  |  |  |  |  |
-|  |  |  |  |  | dServerId.No |  |  |  | serv |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | 40 |  |  |
-|  |  |  | tFound |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | found. |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error message retu |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   | The |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | beca |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | ConnectTimeou is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | not valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message return |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error mes |   |
+|   |   |   |   |   |   |   |   |   | StickySessionType |   |   |   | 400 | because the s |   |
+|   |   |   |   | InvalidParameter |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified value of HealthyThreshold is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error message return |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   | The erro |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | because |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | HealthyThreshold |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | is not valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   | UnhealthyThreshol |   |   |   | 400 | because the spec |   |
+|   |   |   |   | InvalidParameter |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | d is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified value of Interval is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | Interval is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified value of XForwardedFor is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error message retu |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   | The |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | beca |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | XForwardedFor is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | not valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified value of IsPublicAddress is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error message return |   |
+|   |   |   |   |   |   |   |   |   | parameter |   |   |   |   | The err |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | becaus |   |
+|   |   |   | InvalidParameter | InvalidParameter | dParameter |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   | IsPublicAddress |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | is not valid. |   |   |   |   |   |   |
+|   |   |   | InvalidRegionId.No tFound |   |   |   |   |   | Specified region does not exist. |   |   |   | 404 | The error message returned because the specified region is invalid. |   |
+|   |   |   |   |   |   |   |   |   | A specified |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   | A specified |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | server ID is not |   |   |   |   |   |   |
+|   |   |   |   | InvalidServerId.Ma |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | valid |   |   | , flush |   | The error message re because the ID of the |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | becau |   |
+|   |   |   | lformed |   |   |   |   |   | control ip chain |   |   |   |   | serve |   |
+|   |   |   |   |   |   |   |   |   | fail. |   |   |   |   |   |   |
+|   |   |   | InvalidServerId.No |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified backend server is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | Th |   |
+|   |   |   |   | InvalidServerId.No |   |   |   |   |   | The |   |   |   |   |   |
+|   |   |   |   |   | dServerId.No |   |   |   | serv |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | 40 |   |   |
+|   |   |   | tFound |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | found. |   |   |   |   |   |   |
 
-|  | InvalidRegionId.No | Speci |
+|   | InvalidRegionId.No | Speci |
 |---|---|---|
-| tFound |  |  |
+| tFound |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  | InvalidWeight.Malf |  |  |  |  |  |  |  |  |  |  |  | A specified |  |  |  |  | The error message returned because the specified value of weight is invalid. |  |
+|   |   |   |   |   |   | InvalidWeight.Malf |   |   |   |   |   |   |   |   |   |   |   | A specified |   |   |   |   | The error message returned because the specified value of weight is invalid. |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | A specified |  |  |  |  |  |
-|  |  |  |  |  |  |  | InvalidWeight.Malf |  |  |  |  |  |  |  |  |  |  |  | A |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  | eight.Malf |  |  |  |  | wei |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 40 |  |  |
-|  |  |  |  |  |  | ormed |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified value of Address is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error messa |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  | IpNotAvailable | IpNotAvailable |  |  |  |  | vailable |  |  |  |  |  |  |  |  |  | 40 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Address is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | valid. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | There is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | There is |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | already a |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | listener bound |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | ListenerAlreadyExi |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | t |  | o the port on |  |  | The error message returned because the specified listener |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | because the |  |
-|  |  |  |  |  |  | sts |  |  |  |  |  |  |  |  |  |  |  | the specified |  |  |  |  | already exist |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | load |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | balancer. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | No Listener to |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | No Listener to |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | the specified |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returne |  |
-|  |  |  |  |  |  |  | ListenerNotFound |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | port of the Load |  |  |  | 404 | because t |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Balancer. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter Cookie |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | that is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | mandatory for |  |  |  |  | because the Cookie parameter is |  |
-|  |  |  |  |  |  |  | MissingParameter |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | because the Cookie param |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing this |  |  |  |  | not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | request is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | supplied. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | BackendServerPort |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | that is |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  | MissingParameter |  |  |  |  |  |  |  |  |  |  | mandatory for |  |  |  | 400 | because the BackendServerPort |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing |  |  |  |  | parameter is not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | this request is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | not supplied. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | LoadBalancerId |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | that is |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  | MissingParameter |  |  |  |  |  |  |  |  |  |  | mandatory for |  |  |  | 400 | because the LoadBalancerId |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing |  |  |  |  | parameter is not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | this request is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | not supplied. |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | A specified |   |   |   |   |   |
+|   |   |   |   |   |   |   | InvalidWeight.Malf |   |   |   |   |   |   |   |   |   |   |   | A |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   | eight.Malf |   |   |   |   | wei |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 40 |   |   |
+|   |   |   |   |   |   | ormed |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified value of Address is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error messa |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   | IpNotAvailable | IpNotAvailable |   |   |   |   | vailable |   |   |   |   |   |   |   |   |   | 40 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Address is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | valid. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | There is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | There is |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | already a |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | listener bound |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | ListenerAlreadyExi |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | t |   | o the port on |   |   | The error message returned because the specified listener |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | because the |   |
+|   |   |   |   |   |   | sts |   |   |   |   |   |   |   |   |   |   |   | the specified |   |   |   |   | already exist |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | load |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | balancer. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | No Listener to |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | No Listener to |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | the specified |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returne |   |
+|   |   |   |   |   |   |   | ListenerNotFound |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | port of the Load |   |   |   | 404 | because t |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Balancer. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter Cookie |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | that is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | mandatory for |   |   |   |   | because the Cookie parameter is |   |
+|   |   |   |   |   |   |   | MissingParameter |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | because the Cookie param |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing this |   |   |   |   | not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | request is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | supplied. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | BackendServerPort |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | that is |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   | MissingParameter |   |   |   |   |   |   |   |   |   |   | mandatory for |   |   |   | 400 | because the BackendServerPort |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing |   |   |   |   | parameter is not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | this request is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | not supplied. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | LoadBalancerId |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | that is |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   | MissingParameter |   |   |   |   |   |   |   |   |   |   | mandatory for |   |   |   | 400 | because the LoadBalancerId |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing |   |   |   |   | parameter is not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | this request is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | not supplied. |   |   |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | RegionId that is |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | mandatory for |  |  |  |  | because the RegionId parameter |  |
-|  |  |  |  |  |  | MissingParameter |  |  |  |  |  |  |  |  |  |  |  |  | 400 | because the RegionId par |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing this |  |  |  |  | is not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | is not spe |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | request is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | supplied. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The combination |  |  |  |  | The error message returned because a required parameter is not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The combination |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | of some |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The |  |
-|  |  |  |  |  |  | MissingParameter |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameters |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | violates the |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | spec. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | parameter |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | OwnerId,OwnerAcco |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | unt that is |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  | MissingParameter |  |  |  |  |  |  |  |  | mandatory for |  |  |  | 403 | because OwnerAccount and |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | OwnerId are not specified. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | processing this |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | request is not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | supplied. |  |  |  |  |  |  |
-|  |  |  |  |  | PrivateKeyEncrypti on |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | The error message returned because the private key is encrypted. |  |
-|  |  |  |  |  |  | PrivateKeyEncrypti |  |  |  |  |  |  |  |  |  | Key has |  |  | 40 |  |  |
-|  |  |  |  |  | on |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Encrypted . |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The same |  |  |  |  | The error message returned because the same request is being processed. Try again later. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The same |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | r |  | equest is being |  |  | The error mes |  |
-|  |  |  |  |  |  | ProcessingSameRequ |  |  |  |  |  | ameRequ |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | p |  |  |  | 400 |  |  |
-|  |  |  |  |  | est |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Please try |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | later. |  |  |  |  |  |  |
-|  |  |  |  |  | ServerCertificateI |  |  |  |  |  |  |  |  |  | Specified |  |  |  |  | The error message returned because the specified certificate is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Specified |  |  |  |  |  |
-|  |  |  |  |  |  | ServerCert |  |  |  |  | ificateI |  |  |  | ServerCer |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | tificate | 404 | Th be |  |
-|  |  |  |  |  | d.NotFound |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Id does not |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | exist. |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request has |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The request has |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | failed due to a |  |  |  |  |  |  |
-|  |  |  |  |  |  | ServiceUnavailable |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | temporary |  |  |  |  | The error messag |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 503 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | failure of the |  |  |  |  | becau |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | server. |  |  |  |  |  |  |
-|  |  |  |  |  | ServiceUnavailable |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The error message returned because the specified name already exists. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |
-|  |  |  |  |  |  | Servic |  |  |  | eUnavailable |  |  |  |  | loadbalancer |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 503 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 5 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | name has been |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | used. |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | RegionId that is |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | mandatory for |   |   |   |   | because the RegionId parameter |   |
+|   |   |   |   |   |   | MissingParameter |   |   |   |   |   |   |   |   |   |   |   |   | 400 | because the RegionId par |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing this |   |   |   |   | is not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | is not spe |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | request is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | supplied. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The combination |   |   |   |   | The error message returned because a required parameter is not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The combination |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | of some |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The |   |
+|   |   |   |   |   |   | MissingParameter |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameters |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | violates the |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | spec. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | parameter |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | OwnerId,OwnerAcco |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | unt that is |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   | MissingParameter |   |   |   |   |   |   |   |   | mandatory for |   |   |   | 403 | because OwnerAccount and |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | OwnerId are not specified. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | processing this |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | request is not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | supplied. |   |   |   |   |   |   |
+|   |   |   |   |   | PrivateKeyEncrypti on |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | The error message returned because the private key is encrypted. |   |
+|   |   |   |   |   |   | PrivateKeyEncrypti |   |   |   |   |   |   |   |   |   | Key has |   |   | 40 |   |   |
+|   |   |   |   |   | on |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Encrypted . |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The same |   |   |   |   | The error message returned because the same request is being processed. Try again later. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The same |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | r |   | equest is being |   |   | The error mes |   |
+|   |   |   |   |   |   | ProcessingSameRequ |   |   |   |   |   | ameRequ |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | p |   |   |   | 400 |   |   |
+|   |   |   |   |   | est |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Please try |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | later. |   |   |   |   |   |   |
+|   |   |   |   |   | ServerCertificateI |   |   |   |   |   |   |   |   |   | Specified |   |   |   |   | The error message returned because the specified certificate is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Specified |   |   |   |   |   |
+|   |   |   |   |   |   | ServerCert |   |   |   |   | ificateI |   |   |   | ServerCer |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | tificate | 404 | Th be |   |
+|   |   |   |   |   | d.NotFound |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Id does not |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | exist. |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request has |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The request has |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | failed due to a |   |   |   |   |   |   |
+|   |   |   |   |   |   | ServiceUnavailable |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | temporary |   |   |   |   | The error messag |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 503 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | failure of the |   |   |   |   | becau |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | server. |   |   |   |   |   |   |
+|   |   |   |   |   | ServiceUnavailable |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The error message returned because the specified name already exists. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |
+|   |   |   |   |   |   | Servic |   |   |   | eUnavailable |   |   |   |   | loadbalancer |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 503 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 5 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | name has been |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | used. |   |   |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Hybrid type |  |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Hybrid type |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Hybrid type |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | loadbalancer |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | TcpNotSupportForHy |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | does |  |  | n't support |  |  | The error message because you canno |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  | bridLb |  |  |  |  |  |  |  |  |  |  |  | TCP type |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | listener. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The total |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The total |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | number of input |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | real servers |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | TooManyBackendServ |  |  |  |  |  |  |  |  |  |  | e |  | xceeds max |  |  |  | The error message because you canno |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  | beca |  |
-|  |  |  |  |  |  |  |  | ers |  |  |  |  |  |  |  |  |  |  |  | supported |  |  |  |  |  | 20 b |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | number: |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 20. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | TooManyBackendServ |  |  |  |  |  |  |  |  |  |  |  | The backend |  |  |  |  |  | The error message returned because the number of backend servers exceeds the limit. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The backend |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | TooManyB |  |  |  |  |  | ackendServ |  |  |  |  | s |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | erver parameter |  | 400 |  | The e becau |  |
-|  |  |  |  |  |  |  |  | ers |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | has too many |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | entries. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | UnsupportedOperati on |  |  |  |  |  |  |  |  |  |  |  | The |  |  |  |  |  | The error message returned because the specified type of SLB instance does not support the operation. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The |  |  |  |  | The error message |  |
-|  |  |  |  |  |  |  |  |  | UnsupportedOpera |  |  |  |  |  |  |  |  | ti |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Loadbalancer |  |  | 400 |  | because the |  |
-|  |  |  |  |  |  |  |  | on |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | doesn't support |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | this function. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | UnsupportedOperati |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  | The error message returned because you cannot perform the operation. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  | The erro |  |
-|  |  |  |  |  |  |  |  |  | UnsupportedOperati |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  | ortedOperati |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  | on |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | supported. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | port has been |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | assigned one |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | type of |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  | UnsupportedOperati |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | protocal, and |  |  |  |  | because the protocol of the |  |
-|  |  |  |  |  |  |  |  | ononfixedprotocalpor |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | specified port does not support t |  |
-|  |  |  |  |  |  |  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | operation. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | protocal doesn't |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | support this |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | operation. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | UnsupportedParamet |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  |  | The error message returned because a specified parameter is invalid. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The input |  |  |  |  | The erro |  |
-|  |  |  |  |  |  |  |  |  | UnsupportedParamet |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | dParamet |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |  |
-|  |  |  |  |  |  |  |  | er |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | unsupported. |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | VipNotMatchRspool |  |  |  |  |  |  |  |  |  |  |  | The vip |  |  |  |  |  | The error message returned because the protocol type of the listener and the protocol type of the backend server do not match. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The vip |  |  |  |  | The error me |  |
-|  |  |  |  |  |  |  |  |  | VipNotMatchR |  |  |  |  |  |  |  | spool |  |  | protocol is not |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  | b |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | match with |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Rspool. |  |  |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Hybrid type |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | loadbalancer |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | TcpNotSupportForHy |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | does |   |   | n't support |   |   | The error message because you canno |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   | bridLb |   |   |   |   |   |   |   |   |   |   |   | TCP type |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | listener. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The total |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The total |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | number of input |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | real servers |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | TooManyBackendServ |   |   |   |   |   |   |   |   |   |   | e |   | xceeds max |   |   |   | The error message because you canno |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   | beca |   |
+|   |   |   |   |   |   |   |   | ers |   |   |   |   |   |   |   |   |   |   |   | supported |   |   |   |   |   | 20 b |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | number: |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 20. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | TooManyBackendServ |   |   |   |   |   |   |   |   |   |   |   | The backend |   |   |   |   |   | The error message returned because the number of backend servers exceeds the limit. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The backend |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | TooManyB |   |   |   |   |   | ackendServ |   |   |   |   | s |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | erver parameter |   | 400 |   | The e becau |   |
+|   |   |   |   |   |   |   |   | ers |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | has too many |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | entries. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | UnsupportedOperati on |   |   |   |   |   |   |   |   |   |   |   | The |   |   |   |   |   | The error message returned because the specified type of SLB instance does not support the operation. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The |   |   |   |   | The error message |   |
+|   |   |   |   |   |   |   |   |   | UnsupportedOpera |   |   |   |   |   |   |   |   | ti |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Loadbalancer |   |   | 400 |   | because the |   |
+|   |   |   |   |   |   |   |   | on |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | doesn't support |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | this function. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | UnsupportedOperati |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   | The error message returned because you cannot perform the operation. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   | The erro |   |
+|   |   |   |   |   |   |   |   |   | UnsupportedOperati |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   | ortedOperati |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   | on |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | supported. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | port has been |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | assigned one |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | type of |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   | UnsupportedOperati |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | protocal, and |   |   |   |   | because the protocol of the |   |
+|   |   |   |   |   |   |   |   | ononfixedprotocalpor |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | specified port does not support t |   |
+|   |   |   |   |   |   |   |   | t |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | operation. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | protocal doesn't |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | support this |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | operation. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | UnsupportedParamet |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   |   | The error message returned because a specified parameter is invalid. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The input |   |   |   |   | The erro |   |
+|   |   |   |   |   |   |   |   |   | UnsupportedParamet |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | dParamet |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |   |
+|   |   |   |   |   |   |   |   | er |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | unsupported. |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | VipNotMatchRspool |   |   |   |   |   |   |   |   |   |   |   | The vip |   |   |   |   |   | The error message returned because the protocol type of the listener and the protocol type of the backend server do not match. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The vip |   |   |   |   | The error me |   |
+|   |   |   |   |   |   |   |   |   | VipNotMatchR |   |   |   |   |   |   |   | spool |   |   | protocol is not |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   | b |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | match with |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Rspool. |   |   |   |   |   |   |   |
 
-Server Load Balancer
-
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The total |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The total |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The total |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | number of input |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | listeners |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | VipTooManyListener |  |  |  |  |  |  |  | exceeds max |  |  | The error message because you cann |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 | beca |  |
-|  |  |  |  |  |  |  | s |  |  |  |  |  |  |  | supported |  |  |  | 50 li |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | number: |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 50. |  |  |  |  |  |
-|  |  |  |  |  |  |  | InvalidParameter |  |  |  |  |  |  |  | The specified |  |  |  | The error message returned because the specified resource does not exist. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  | The erro |  |
-|  |  |  |  |  |  |  |  | Invali |  |  |  | dParameter |  |  | resource does |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | not exist. |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | loadbalancer is |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | ServiceUnavailable |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | configuring, |  |  |  | The error messa because the spe |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 503 | b |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | please retry |  |  |  | b |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | later. |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Obtain Ip Fail, |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Obtain Ip Fail, |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | please make sure |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The error message returned |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | the ECS exists |  |  |  | because the system fails to |  |
-|  |  |  |  |  |  |  |  | ServiceUnavailable |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | and the status |  |  | 503 | the IP add |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | is |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | running. |  |  |  |  |  |
-|  |  |  |  |  |  |  | ServiceUnavailable |  |  |  |  |  |  |  | The specified |  |  |  | The error message returned because the specified region does not support VPCs. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  | The er |  |
-|  |  |  |  |  |  |  |  | ServiceUnavailable |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  | eUnavailable |  |  | region not |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 503 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | support VPC. |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  |  |  | The error message returned because the specified VPC is deleted. |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | The specified |  | The error messa |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | vpc cloud |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  | InvalidParameter | InvalidParameter |  |  |  | dParameter |  |  |  |  |  | 400 |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | instance has |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | deleted. |  |  |  |  |  |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The total |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | number of input |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | listeners |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | VipTooManyListener |   |   |   |   |   |   |   | exceeds max |   |   | The error message because you cann |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 | beca |   |
+|   |   |   |   |   |   |   | s |   |   |   |   |   |   |   | supported |   |   |   | 50 li |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | number: |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 50. |   |   |   |   |   |
+|   |   |   |   |   |   |   | InvalidParameter |   |   |   |   |   |   |   | The specified |   |   |   | The error message returned because the specified resource does not exist. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   | The erro |   |
+|   |   |   |   |   |   |   |   | Invali |   |   |   | dParameter |   |   | resource does |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | not exist. |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | loadbalancer is |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | ServiceUnavailable |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | configuring, |   |   |   | The error messa because the spe |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 503 | b |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | please retry |   |   |   | b |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | later. |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Obtain Ip Fail, |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | Obtain Ip Fail, |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | please make sure |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The error message returned |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | the ECS exists |   |   |   | because the system fails to |   |
+|   |   |   |   |   |   |   |   | ServiceUnavailable |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | and the status |   |   | 503 | the IP add |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | is |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | running. |   |   |   |   |   |
+|   |   |   |   |   |   |   | ServiceUnavailable |   |   |   |   |   |   |   | The specified |   |   |   | The error message returned because the specified region does not support VPCs. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   | The er |   |
+|   |   |   |   |   |   |   |   | ServiceUnavailable |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   | eUnavailable |   |   | region not |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 503 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | support VPC. |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   |   |   | The error message returned because the specified VPC is deleted. |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | The specified |   | The error messa |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | vpc cloud |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   | InvalidParameter | InvalidParameter |   |   |   | dParameter |   |   |   |   |   | 400 |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | instance has |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | deleted. |   |   |   |   |   |
 
-Server Load Balancer
+## 8 Appendix
 
-| Parameter | Type | Requ ired | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
-| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+### 8.1 STS overview
 
-Server Load Balancer
-
-## Appendix
-
-### STS overview
-
-#### What is STS?
+#### 8.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -8939,7 +9210,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. You do not need to rotate STS tokens when they expire. You can attach policies to STS tokens to create fine-grained permissions on cloud resources based on your business requirements.
 
-#### AssumeRole
+#### 8.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
@@ -8947,8 +9218,15 @@ Obtains a Security Token Service (STS) token to assume a Resource Access Managem
 
 | Parameter | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
+| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
+| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+
+| Parameter | Type | Requ ired | Example | Description |
+|---|---|---|---|---|
 | RoleSessionNa me | String | Yes | alice | The custom name of the role session. Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the API caller. For example, you can specify a username. You can specify RoleSessionName to identify API callers that assume the same RAM role in ActionTrail logs. This allows you to track the users that perform the operations. The value must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores ( ). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | The policy that specifies the permissions of the returned STS token. This allows you to implement more fine-grained access control. Limits: The policy must be 1 to 1,024 characters in length. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8959,11 +9237,7 @@ Obtains a Security Token Service (STS) token to assume a Resource Access Managem
 | SecurityToken | String | ******** | The STS token. |
 | Expiration | String | 2015-04- 09T11:52:19Z | The expiration time. |
 
-Server Load Balancer
-
-**Response parameters**
-
-|  | Developer Guide·Appe | ndix |  | Server Load Balance | r |
+|   | Developer Guide·Appe | ndix |   | Server Load Balance | r |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8996,8 +9270,6 @@ package com.aliyuns.test; import com.alibaba.fastjson.JSONObject; import com.ali
 <yourAccessKeyID>", "<yourAccessKeySecret>");
         HttpClientConfig clientConfig = HttpClientConfig.getDefault();
 ```
-
-Server Load Balancer
 
 ```java
         clientConfig.setIgnoreSSLCerts(true);
@@ -9035,10 +9307,9 @@ ases, endpoint is in the following format: sts-vpc.${global:region}.${global:int
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Sample code**
 
@@ -9048,10 +9319,8 @@ In this example, the `DescribeZones` operation is called to query the zones of E
 package com.aliyuns.test; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType;
 ```
 
-Server Load Balancer
-
 ```java
-import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class DescribeZonesDemo {
     public static void main(String[] args) {
         // Replace "<yourRegionID>" with the actual region ID.
         // Replace "<yourStsAccesskey>" and "<yourStsAccessKeySecret>" with the
@@ -9088,10 +9357,11 @@ ng step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -9102,12 +9372,8 @@ ng step.
 | 400 | InvalidParameter.Polic yGrammar | The parameter Policy has not passed grammar check. | The error message returned because the syntax of the specified policy is invalid. |
 | 400 | InvalidParameter.Polic ySize | The size of Policy must be smaller than 1024 bytes. | The error message returned because the length of the specified policy string exceeds the upper limit. The policy string can be up to 1,024 characters in length. |
 
-Server Load Balancer
-
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | NoPermission | You are not authorized to do this action. You should be authorized by RAM. | The error message returned because the STS token does not have the required permissions. |
 | 404 | EntityNotExist.Role | The specified Role not exists. | The error message returned because the specified RAM role does not exist. |
 | 500 | InternalError | STS Server Internal Error happened. | The error message returned because an internal server error has occurred. |
-
-Server Load Balancer

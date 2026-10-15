@@ -3,24 +3,139 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 113
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "4cacca7347e7f1f8_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Operations and "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%C2%A0for%C2%A0Geo-disaster%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Geo-disaster Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Overview
+  - 1.1 Purpose
+  - 1.2 Requirements
+  - 1.3 Usage notes
+- 2 Architecture
+  - 2.1 Component architecture
+  - 2.2 Server roles
+- 3 Common O&M operations
+  - 3.1 Log in to a container
+  - 3.2 Log in to the ASR-DR metadatabase
+- 4 ASR-DR O&M
+  - 4.1 Manage logs
+    - 4.1.1 View ASR-DR logs
+    - 4.1.2 Modify the default log configurations
+  - 4.2 Stop ASR-DR nodes
+  - 4.3 Replace the JAR package
+- 5 FAQ
+  - 5.1 ApsaraDB RDS
+    - 5.1.1 How do I add databases and tables to ApsaraDB RDS instances?
+    - 5.1.2 How do I manually switch workloads between primary and secondary ApsaraDB RDS instances?
+    - 5.1.3 How do I manually resume data synchronization?
+  - 5.2 DNS
+    - 5.2.1 What do I do if the "rrSet inconsistent" error message appears in DNS logs?
+    - 5.2.2 What do I do if the "not found record" error message appears in DNS logs?
+    - 5.2.3 What do I do if the "not found zone" error message appears in DNS logs?
+  - 5.3 DTS
+    - 5.3.1 How do I view DTS logs?
+    - 5.3.2 What do I do if a data synchronization task fails to be created?
+      - 5.3.2.1 What do I do if the "cluster info is null.The input domain and region is invalid" error message appears in DTS logs?
+      - 5.3.2.2 What do I do if the "Specified access key is not found" error message appears in DTS logs?
+      - 5.3.2.3 What do I do if the "InvalidAppId.NotFound" error message appears in DTS logs?
+      - 5.3.2.4 What do I do if the "ram authorized" error message appears in DTS logs?
+      - 5.3.2.5 What do I do if the "Data truncation: Data too long for column 'open_api_objects'" error message appears in DTS logs?
+    - 5.3.3 What do I do if a precheck fails?
+      - 5.3.3.1 What do I do if an error message indicating inconsistent topology appears?
+      - 5.3.3.2 What do I do if the "CHECK_ERROR_SRC_USER_PSW" error message appears?
+      - 5.3.3.3 What do I do if the "CHECK_ERROR_DEST_USER_PSW" error message appears?
+    - 5.3.4 What do I do if the incremental data service is abnormal?
+      - 5.3.4.1 What do I do if the incremental data service fails?
+    - 5.3.5 What do I do if data synchronization is abnormal?
+      - 5.3.5.1 What do I do if the "store delay xxx second(s)" error message appears?
+      - 5.3.5.2 What do I do if an error message indicating that DReader fails to connect to DStore appears?
+    - 5.3.6 What do I do if a DTS synchronization task is not automatically resumed after network recovery?
+    - 5.3.7 How do I prevent binary log loss due to an extended interruption between the primary and secondary databases?
+  - 5.4 OSS
+    - 5.4.1 How do I manually restore data synchronization between OSS buckets?
+    - 5.4.2 What do I do if OSS buckets fail to be protected?
+  - 5.5 MaxCompute
+    - 5.5.1 Why am I unable to find MaxCompute projects when I configure a synchronization entity in ASR-DR?
+  - 5.6 ApsaraMQ
+    - 5.6.1 How do I view the message details of primary and secondary ApsaraMQ instances?
+    - 5.6.2 How do I reset a consumer offset by running a command?
+- 6 FAQ about data consistency verification for products that support DR
+  - 6.1 Perform full data verification and synchronization between RDS and PolarDB-X databases
+  - 6.2 Verify Tablestore data consistency
+  - 6.3 Verify MaxCompute data consistency
+- 7 Command references
+  - 7.1 Use CLISH commands
+  - 7.2 Commands
+  - 7.3 Synchronization entities
+    - 7.3.1 skip-entity
+    - 7.3.2 suspend-entity
+    - 7.3.3 stepover-entity
+    - 7.3.4 reprotect-entity
+    - 7.3.5 redo-entity
+    - 7.3.6 force-switch
+  - 7.4 Cloud Center
+    - 7.4.1 del-cloud-instance
+    - 7.4.2 del-cloud-center
+  - 7.5 Protection groups
+    - 7.5.1 create-empty-pg
+    - 7.5.2 show-pg-sync-entity
+    - 7.5.3 delete-pg-shell
+    - 7.5.4 move-sync-entity
+  - 7.6 Disaster recovery plans
+    - 7.6.1 plan-query
+    - 7.6.2 plan-query-ex
+    - 7.6.3 plan-force-delete
+  - 7.7 VPC
+    - 7.7.1 vpc-register-app
+    - 7.7.2 vpc-show-registered-app
+    - 7.7.3 vpc-remove-registered-app
+    - 7.7.4 vpc-grant-access
+    - 7.7.5 vpc-show-grant-access
+    - 7.7.6 vpc-cancel-grant-access
+  - 7.8 Configurations
+    - 7.8.1 param-add-param
+    - 7.8.2 param-modify-param
+    - 7.8.3 param-query-param
+    - 7.8.4 param-refresh-param
+    - 7.8.5 param-modify-params
+    - 7.8.6 param-query-params
+  - 7.9 Alerts
+    - 7.9.1 alarm-create
+    - 7.9.2 alarm-query
+    - 7.9.3 send-alarm-msg
+  - 7.10 Alert rules
+    - 7.10.1 rule-create
+    - 7.10.2 rule-query
+    - 7.10.3 rule-switch
+    - 7.10.4 rule-update
+    - 7.10.5 rule-delete
+  - 7.11 Monitored metrics
+    - 7.11.1 monitor-item-query
+- 8 Appendix
+  - 8.1 Look up the Internet domain and intranet domain names
+  - 8.2 Look up the DNS address
+  - 8.3 Configure DNS forwarding
+  - 8.4 Configure DTS parameters
+  - 8.5 Configure dedicated lines
+    - 8.5.1 AddDCInterConnection
+    - 8.5.2 AddExternalConnection
+
 w
 
-## Overview
+## 1 Overview
 
 This topic describes the purpose of, requirements on, and usage notes for performing O&M operations on ASR for Geo-disaster Recovery (ASR-DR). This topic also describes how to seek help.
 
-### Purpose
+### 1.1 Purpose
 
 This guide aims to help O&M engineers perform preventive maintenance on ASR for Geo-disaster Recovery (ASR-DR) to ensure the stability of the system. O&M engineers can follow the instructions in this guide to handle the system issues that are identified during maintenance. If O&M engineers encounter system issues that are not covered in this guide, they can contact Apsara Stack technical support.
 
-### Requirements
+### 1.2 Requirements
 
 O&M engineers must possess IT skills, including the knowledge of computer networks, computer operations, and troubleshooting. O&M engineers must pass the related training and learn the knowledge for ASR for Geo-disaster Recovery (ASR-DR). The required knowledge includes the usage and maintenance of the tools for all modules.
 
@@ -28,7 +143,7 @@ O&M engineers must possess IT skills, including the knowledge of computer networ
 
 During the maintenance, O&M engineers must comply with operation procedures to ensure personal safety and system security. No part of user data may be copied or disseminated in any form or by any means without prior written consent from users.
 
-### Usage notes
+### 1.3 Usage notes
 
 To ensure system stability and prevent unexpected events, O&M engineers must comply with the following guidelines:
 
@@ -48,13 +163,13 @@ O&M engineers must take measures to ensure safety based on device manuals when t
 
 O&M engineers can contact Apsara Stack technical support for help during the maintenance. ure
 
-## Architecture
+## 2 Architecture
 
-### Component architecture
+### 2.1 Component architecture
 
 This topic describes the internal and external components on which ASR for Geo-disaster Recovery (ASR-DR) depends.
 
-### Server roles
+### 2.2 Server roles
 
 This topic describes the server roles that are used by different services of ASR for Geo-disaster Recovery (ASR-DR). This helps O&M engineers identify faults.
 
@@ -72,9 +187,9 @@ This topic describes the server roles that are used by different services of ASR
 
 O&M operations
 
-## Common O&M operations
+## 3 Common O&M operations
 
-### Log in to a container
+### 3.1 Log in to a container
 
 This topic describes how to log in to the Apsara Stack Resilience for Geo-disaster Recovery (ASR- DR) container. The procedure for logging in to other containers is similar to that in this topic. You need to only obtain the information about the corresponding service and server role.
 
@@ -110,7 +225,7 @@ docker ps
 docker exec -it <Container ID> /bin/bash.
 ```
 
-### Log in to the ASR-DR
+### 3.2 Log in to the ASR-DR metadatabase
 
 **metadatabase**
 
@@ -133,11 +248,11 @@ mysql -h <host> -P<port> -u<user> -p<password> <dbname>
 
 O&M
 
-## ASR-DR O&M
+## 4 ASR-DR O&M
 
-### Manage logs
+### 4.1 Manage logs
 
-#### View ASR-DR logs
+#### 4.1.1 View ASR-DR logs
 
 You can view detailed error messages in the logs of Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR).
 1. Log on to the ASR-DR container. For more information, see Log in to a container.
@@ -180,7 +295,7 @@ specific threshold, you can run scheduled tasks to clear the logs that you no lo
 Add the following CRON expression to clear the logs that have been stored for more than sev en days at 01:00 every day: 0 1 * * * find /home/admin/logs/ -mtime +7 -type f -name "*.log*" -exec rm -f {} \;
 ```
 
-#### Modify the default log configurations
+#### 4.1.2 Modify the default log configurations
 
 You can configure the level, output mode, and retention period of logs in the logback file. You can also specify whether to generate logs.
 
@@ -249,7 +364,7 @@ exit
 docker restart <Container ID>
 ```
 
-### Stop ASR-DR nodes
+### 4.2 Stop ASR-DR nodes
 
 Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) is deployed in a three-node cluster. Frontend requests are distributed to a random node by using a load balancer. As a result, the troubleshooting process is complex because you need to troubleshoot issues on three ASR-DR nodes. Therefore, we recommend that you stop two ASR-DR nodes during troubleshooting. This way, the logs are stored in a single-node ASR-DR container.
 
@@ -354,7 +469,7 @@ exit
 docker restart <Container ID>
 ```
 
-### Replace the JAR package
+### 4.3 Replace the JAR package
 
 If an error occurs, you can replace the original JAR package with a new JAR package after the bugs are fixed in code. This way, the error can be resolved.
 
@@ -411,11 +526,11 @@ exit
 docker restart <Container ID>
 ```
 
-## FAQ
+## 5 FAQ
 
-### ApsaraDB RDS
+### 5.1 ApsaraDB RDS
 
-#### How do I add databases and tables to
+#### 5.1.1 How do I add databases and tables to ApsaraDB RDS instances?
 
 **ApsaraDB RDS instances?**
 
@@ -508,7 +623,7 @@ After you add a table to the primary ApsaraDB RDS instance, you need to create a
 
 After a table is added, ASR-DR adds the table to the objects to be synchronized as scheduled. DTS adds the table to the objects to be synchronized. In this case, you do not need to modify the ASR-DR configurations.
 
-#### How do I manually switch workloads
+#### 5.1.2 How do I manually switch workloads between primary and secondary ApsaraDB RDS instances?
 
 **between primary and secondary ApsaraDB RDS**
 
@@ -528,7 +643,7 @@ at the secondary site. i. Log in to the Apsara Uni-manager Management Console fr
 vii. Click **OK**.
 2. Check whether data can be written to the ApsaraDB RDS instance at the secondary site.
 
-#### How do I manually resume data
+#### 5.1.3 How do I manually resume data synchronization?
 
 **synchronization?**
 
@@ -545,9 +660,9 @@ task to synchronize data from the primary ApsaraDB RDS instance to the secondary
 topic in DTS User Guide.
 4. Manually check whether the synchronization task is run as expected and data is synchronized.
 
-### DNS
+### 5.2 DNS
 
-#### What do I do if the "rrSet inconsistent"
+#### 5.2.1 What do I do if the "rrSet inconsistent" error message appears in DNS logs?
 
 **error message appears in DNS logs?**
 
@@ -572,7 +687,7 @@ ensure that the record values are consistent with those of the primary site. For
 3. Log in to the Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) console from the
 secondary site. On the **Protection Group Details** page, find the DNS instance, click the icon, and then click **Retry**. The protection group enters the **Protected** state.
 
-#### What do I do if the "not found record"
+#### 5.2.2 What do I do if the "not found record" error message appears in DNS logs?
 
 **error message appears in DNS logs?**
 
@@ -602,7 +717,7 @@ The record values of the primary and secondary sites must be consistent.
 4. Log in to the Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) console from the
 secondary site. On the **Protection Group Details** page, find the DNS instance, click the icon in the Actions column, and then click **Retry**. The protection group enters the **Protecting** state.
 
-#### What do I do if the "not found zone" error
+#### 5.2.3 What do I do if the "not found zone" error message appears in DNS logs?
 
 **message appears in DNS logs?**
 
@@ -627,9 +742,9 @@ The domain name is unavailable at the primary or secondary site. cloudType: the 
 4. Log in to the Apsara Stack Resilience for Geo-disaster Recovery (ASR-DR) console from the
 secondary site. On the **Protection Group Details** page, find the DNS instance, click the icon in the Actions column, and then click **Retry**. The protection group enters the **Protecting** state.
 
-### DTS
+### 5.3 DTS
 
-#### How do I view DTS logs?
+#### 5.3.1 How do I view DTS logs?
 
 To identify the errors related to disaster recovery when you use Data Transmission Service (DTS), you need to view the logs of the master, portal, and node components.
 
@@ -690,11 +805,11 @@ ssh <IP address of the node>
 cd /cloud/app/dts-dts/DtsNode#/dts_node/current/run/<taskId>
 ```
 
-#### What do I do if a data synchronization
+#### 5.3.2 What do I do if a data synchronization task fails to be created?
 
 **task fails to be created?**
 
-##### What do I do if the "cluster info is null.The
+##### 5.3.2.1 What do I do if the "cluster info is null.The input domain and region is invalid" error message appears in DTS logs?
 
 **input domain and region is invalid" error message**
 
@@ -737,7 +852,7 @@ correct. For example, check whether underscores (_) and hyphens (-) are correctl
 select * from region_pattern;
 ```
 
-##### What do I do if the "Specified access key is
+##### 5.3.2.2 What do I do if the "Specified access key is not found" error message appears in DTS logs?
 
 **not found" error message appears in DTS logs?**
 
@@ -789,7 +904,7 @@ ii. In the project list, enter baseServiceAll in the search field, find the clus
 **Cluster Details** in the **Actions** column.
 iii. On the Services tab of the cluster details page, find the **baseService-umm-ak** service and click its name. iv. In the Components section of the service details page, click **UmmInit#**. On the Instances tab of the Information of Component UmmInit# section, find the VM and choose **Actions** > **Restart** in the **Actions** column.
 
-##### What do I do if the "InvalidAppId.NotFound"
+##### 5.3.2.3 What do I do if the "InvalidAppId.NotFound" error message appears in DTS logs?
 
 **error message appears in DTS logs?**
 
@@ -849,7 +964,7 @@ mysql -h <host> -P<port> -u<user> -p<password> <dbname>
 dts_mapping_pool tables.
 6. Restart the portal, master, node, cm, and DrcSv4mysql services of DTS.
 
-##### What do I do if the "ram authorized" error
+##### 5.3.2.4 What do I do if the "ram authorized" error message appears in DTS logs?
 
 **message appears in DTS logs?**
 
@@ -870,7 +985,7 @@ The service-linked role for DTS is not created in the corresponding organization
 2. On the Service-linked Roles page, select `Data Transmission Service` from the Service Name
 drop-down list. Check whether the service-linked role for DTS is created in the corresponding organization. If the service-linked role for **DTS** does not exist in the corresponding organization, create the service-linked role in the corresponding organization. For more information, see ASR-DR User G uide. If the service-linked role for DTS exists, contact O&M engineers for technical support.
 
-##### What do I do if the "Data truncation: Data too
+##### 5.3.2.5 What do I do if the "Data truncation: Data too long for column 'open_api_objects'" error message appears in DTS logs?
 
 **long for column 'open_api_objects'" error message**
 
@@ -905,9 +1020,9 @@ mysql -h <host> -P<port> -u<user> -p<password> <dbname>
 ALTER TABLE migration_job_param MODIFY open_api_objects MEDIUMTEXT ; ALTER TABLE migration_job MODIFY RESERVED MEDIUMTEXT ;
 ```
 
-#### What do I do if a precheck fails?
+#### 5.3.3 What do I do if a precheck fails?
 
-##### What do I do if an error message indicating
+##### 5.3.3.1 What do I do if an error message indicating inconsistent topology appears?
 
 **inconsistent topology appears?**
 
@@ -928,7 +1043,7 @@ When you precheck a synchronization task in the DTS O&M console, the precheck fa
 check and click Disable in the Actions column.
 6. On the **Basic Information** tab, click **Restart** next to the Status parameter.
 
-##### What do I do if the
+##### 5.3.3.2 What do I do if the "CHECK_ERROR_SRC_USER_PSW" error message appears?
 
 **"CHECK_ERROR_SRC_USER_PSW" error message**
 
@@ -955,7 +1070,7 @@ cp /cloud/app/dts-dts/DtsNode#/dts_node/current/jar/console.jar /cloud/app/dts-d
 destPsw parameters that you obtained in the previous step to check whether the network is connected. If the network connection fails, go to the next step.
 4. Restart the portal, master, node, cm, and DrcSv4mysql services of DTS.
 
-##### What do I do if the
+##### 5.3.3.3 What do I do if the "CHECK_ERROR_DEST_USER_PSW" error message appears?
 
 **"CHECK_ERROR_DEST_USER_PSW" error message**
 
@@ -975,11 +1090,11 @@ The account or password used to log on to the database is incorrect. The CIDR bl
 
 Manually add the CIDR blocks of DTS servers to the whitelists of the source and destination databases. For more information, see the **Configure a whitelist** topic in ApsaraDB for RDS User Guide
 
-#### What do I do if the incremental data
+#### 5.3.4 What do I do if the incremental data service is abnormal?
 
 **service is abnormal?**
 
-##### What do I do if the incremental data service
+##### 5.3.4.1 What do I do if the incremental data service fails?
 
 **fails?**
 
@@ -999,11 +1114,11 @@ information, see View master logs.
 2. If the topic_group field is deleted according to the logs, restart the incremental data service in the
 DTS O&M console. i. Log on to the DTS O&M console. In the task list, find the task and click its name. ii. In the **Incremental Data Service** section of the task details page, click **Details**. iii. On the Incremental Data Service page, click **Restart (Rebuild)** next to the Status parameter.
 
-#### What do I do if data synchronization is
+#### 5.3.5 What do I do if data synchronization is abnormal?
 
 **abnormal?**
 
-##### What do I do if the "store delay xxx
+##### 5.3.5.1 What do I do if the "store delay xxx second(s)" error message appears?
 
 **second(s)" error message appears?**
 
@@ -1017,7 +1132,7 @@ The `store delay xxx second(s)` error message is reported during the synchroniza
 
 No data is written to the source database.
 
-##### What do I do if an error message indicating
+##### 5.3.5.2 What do I do if an error message indicating that DReader fails to connect to DStore appears?
 
 **that DReader fails to connect to DStore appears?**
 
@@ -1039,7 +1154,7 @@ The password of the source database is changed. However, the password of the sou
 4. In the dialog box that appears, enter a password that contains at least three characters and click
 **OK**.
 
-#### What do I do if a DTS synchronization task
+#### 5.3.6 What do I do if a DTS synchronization task is not automatically resumed after network recovery?
 
 **is not automatically resumed after network**
 
@@ -1066,7 +1181,7 @@ Recovery (ASR-DR) console and reprotect the synchronization entity in the corres
 
 If the network is interrupted for more than 18 hours, the binary logs may be lost. In this case, you need to create another synchronization task.
 
-#### How do I prevent binary log loss due to an
+#### 5.3.7 How do I prevent binary log loss due to an extended interruption between the primary and secondary databases?
 
 **extended interruption between the primary and**
 
@@ -1090,9 +1205,9 @@ Instance List page, find the instance that you want to manage and click its name
 backup policy dialog box, configure the **Local Retention Period** parameter.
 6. Click **Submit**.
 
-### OSS
+### 5.4 OSS
 
-#### How do I manually restore data
+#### 5.4.1 How do I manually restore data synchronization between OSS buckets?
 
 **synchronization between OSS buckets?**
 
@@ -1123,7 +1238,7 @@ iii. Click **OK** to save your settings. Wait about 3 minutes for the synchroniz
 **Running** state.
 4. Check whether the data in the primary and secondary buckets is consistent.
 
-#### What do I do if OSS buckets fail to be
+#### 5.4.2 What do I do if OSS buckets fail to be protected?
 
 **protected?**
 
@@ -1145,9 +1260,9 @@ V3.10 hotfix fixes the issues related to the acceleration operation of OSS. i. L
 4. If the chiji version meets the requirement, check the logs of the acceleration operation. If success
 is displayed in the logs but the 200 error code is returned, contact the OSS team for technical support.
 
-### MaxCompute
+### 5.5 MaxCompute
 
-#### Why am I unable to find MaxCompute
+#### 5.5.1 Why am I unable to find MaxCompute projects when I configure a synchronization entity in ASR-DR?
 
 **projects when I configure a synchronization**
 
@@ -1170,9 +1285,9 @@ For more information, see DataWorks User Guide.
 2. Configure the names of the primary and secondary MaxCompute projects and accounts that are
 used to run tasks to ensure consistency. For more information, see MaxCompute User Guide.
 
-### ApsaraMQ
+### 5.6 ApsaraMQ
 
-#### How do I view the message details of
+#### 5.6.1 How do I view the message details of primary and secondary ApsaraMQ instances?
 
 **primary and secondary ApsaraMQ instances?**
 
@@ -1206,7 +1321,7 @@ The following table describes the parameters of the primary ApsaraMQ instance.
 | LastTime | The time when messages were last consumed. |
 | Diff Total | The total number of unconsumed messages. |
 
-#### How do I reset a consumer offset by
+#### 5.6.2 How do I reset a consumer offset by running a command?
 
 **running a command?**
 
@@ -1232,7 +1347,7 @@ sh rmq/bin/mqadmin resetOffsetByTime -g <Instance ID>%<groupId> -f true -s now -
 
 ut data consistency verification f or products that support DR
 
-## FAQ about data consistency
+## 6 FAQ about data consistency verification for products that support DR
 
 **verification for products that**
 
@@ -1240,7 +1355,7 @@ ut data consistency verification f or products that support DR
 
 This topic describes the solutions to data loss and inconsistencies caused by failures in the failover process.
 
-### Perform full data verification
+### 6.1 Perform full data verification and synchronization between RDS and PolarDB-X databases
 
 **and synchronization between RDS**
 
@@ -1319,7 +1434,7 @@ ut data consistency verification f or products that support DR
 | Query current inconsistencies | Host on which DTS runs/log directory of the verification program/fullcheck.log | If the verification progress is slow and the inconsistency results are not reported, you can search for WARN in this log. The log records the primary keys of the differing records, which can be used to manually compare the source and destination databases. |
 | Query specific running records and error information | Host on which DTS runs/log directory of the verification program/fullcheck.log | If you want to view the execution details of the corresponding SQL statements, add the-g parameter to the command line. All executed SQL statements are printed in the log. |
 
-### Verify Tablestore data
+### 6.2 Verify Tablestore data consistency
 
 **consistency**
 
@@ -1400,7 +1515,7 @@ icon to execute the script. You can view the number of data entries in the Table
 6. Perform the preceding steps in the secondary data center to check whether the number of data
 entries is consistent between the secondary and primary data centers.
 
-### Verify MaxCompute data
+### 6.3 Verify MaxCompute data consistency
 
 **consistency**
 
@@ -1546,9 +1661,9 @@ ut data consistency verification f or products that support DR
 
 d references
 
-## Command references
+## 7 Command references
 
-### Use CLISH commands
+### 7.1 Use CLISH commands
 
 When the ASR for Geo-disaster Recovery system encounters issues and the ASR for Geo-disaster Recovery console is inaccessible, you can use CLISH commands to perform background operations.
 
@@ -1565,11 +1680,9 @@ cd /alidata/bin/ java -jar clish-3.0.0.jar
 
 3. Enter the commands that you want to run.
 
-### Commands
+### 7.2 Commands
 
 This topic describes ASR for Geo-disaster Recovery O&M commands.
-
-**Synchronization entities**
 
 | Parameter | Description |
 |---|---|
@@ -1580,16 +1693,12 @@ This topic describes ASR for Geo-disaster Recovery O&M commands.
 | redo-entity | Performs a retry on a synchronization entity. |
 | force-switch | Performs a forced switchover for a synchronization entity. |
 
-**Cloud Center**
-
 d references
 
 | Parameter | Description |
 |---|---|
 | del-cloud-instance | Removes the association between a user and a cloud instance. |
 | del-cloud-center | Deletes a cloud center. |
-
-**Protection groups**
 
 | Parameter | Description |
 |---|---|
@@ -1598,15 +1707,11 @@ d references
 | delete-pg-shell | Deletes a protection group |
 | move-sync-entity | Relocates a synchronization instance to a specified protection group. |
 
-**Disaster recovery plans**
-
 | Parameter | Description |
 |---|---|
 | plan-query | Queries the details of a disaster recovery plan. |
 | plan-query-ex | Queries the details of a disaster recovery plan task. |
 | plan-force-delete | Forcibly deletes a disaster recovery plan, including plans that are running. |
-
-**VPC**
 
 | Parameter | Description |
 |---|---|
@@ -1635,8 +1740,6 @@ d references
 |---|---|
 | adb-force-start-sync | Forcibly starts a synchronization link. |
 
-**Configurations**
-
 | Parameter | Description |
 |---|---|
 | param-add-param | Adds configurations. |
@@ -1646,8 +1749,6 @@ d references
 | param-modify-params | Modifies the configurations of a service. |
 | param-query-params | Queries the configurations of a service. |
 
-**Alerts**
-
 d references
 
 | Parameter | Description |
@@ -1655,8 +1756,6 @@ d references
 | alarm-create | Creates an alert. |
 | alarm-query | Queries alert information. |
 | send-alarm-msg | Sends alerts. |
-
-**Alert rules**
 
 | Parameter | Description |
 |---|---|
@@ -1666,15 +1765,13 @@ d references
 | rule-update | Modifies an alert rule. |
 | rule-delete | Deletes an alert rule. |
 
-**Monitored metrics**
-
 | Parameter | Description |
 |---|---|
 | monitor-item-query | Queries monitored metrics. |
 
-### Synchronization entities
+### 7.3 Synchronization entities
 
-#### skip-entity
+#### 7.3.1 skip-entity
 
 You can use the skip-entity command to skip a synchronization entity in the current plan execution.
 
@@ -1698,7 +1795,7 @@ d references
 skip-entity -eid 5e81a414-4d88-4de3-9921-f1ef51f******
 ```
 
-#### suspend-entity
+#### 7.3.2 suspend-entity
 
 You can use the suspend-entity command to suspend a synchronization entity.
 
@@ -1720,7 +1817,7 @@ suspend-entity [-eid] string
 suspend-entity -eid 45eadd00-68a4-462d-85fb-c81bb******
 ```
 
-#### stepover-entity
+#### 7.3.3 stepover-entity
 
 You can use the stepover-entity command to skip a synchronization entity in the current step of the plan execution.
 
@@ -1744,7 +1841,7 @@ stepover-entity -eid 45eadd00-68a4-462d-85fb-c81bb******
 
 d references
 
-#### reprotect-entity
+#### 7.3.4 reprotect-entity
 
 You can use the reprotect-entity to perform reprotection for a synchronization entity.
 
@@ -1766,7 +1863,7 @@ reprotect-entity [-eid] string
 reprotect-entity -eid 45eadd00-68a4-462d-85fb-c81bbd******
 ```
 
-#### redo-entity
+#### 7.3.5 redo-entity
 
 You can use the redo-entity command to perform a retry on a synchronization entity.
 
@@ -1788,7 +1885,7 @@ redo-entity [-eid] string
 redo-entity -eid 45eadd00-68a4-462d-85fb-c81bbd******
 ```
 
-#### force-switch
+#### 7.3.6 force-switch
 
 You can use the force-switch command to perform a forced switchover for a synchronization entity.
 
@@ -1812,9 +1909,9 @@ d references
 force-switch -sid 45eadd00-68a4-462d-85fb-c81bb******
 ```
 
-### Cloud Center
+### 7.4 Cloud Center
 
-#### del-cloud-instance
+#### 7.4.1 del-cloud-instance
 
 You can use the del-cloud-instance command to remove the association between a user and a cloud instance.
 
@@ -1837,7 +1934,7 @@ del-cloud-instance [-uid] string [-cid] string
 del-cloud-instance -uid 5003 -cid bc982df6-f193-4aab-a6e2-b8b240******
 ```
 
-#### del-cloud-center
+#### 7.4.2 del-cloud-center
 
 You can use the del-cloud-center command to delete a cloud center.
 
@@ -1861,9 +1958,9 @@ d references
 del-cloud-center -cid e6671a7c-26af-4737-b930-1b37a5******
 ```
 
-### Protection groups
+### 7.5 Protection groups
 
-#### create-empty-pg
+#### 7.5.1 create-empty-pg
 
 You can use the create-empty-pg command to create an empty protection group.
 
@@ -1895,7 +1992,7 @@ create-empty-pg -pname pgClish -morgid 30 -borgid 3 -mcid d132c3b0-4299-4d0a-996
 
 d references
 
-#### show-pg-sync-entity
+#### 7.5.2 show-pg-sync-entity
 
 You can use the show-pg-sync-entity command to view the synchronization entities contained in the specified protection group.
 
@@ -1917,7 +2014,7 @@ show-pg-sync-entity [-pgId] string
 show-pg-sync-entity -pgId 0f0cc4dc-c95f-47cb-b8b4-1a72e2******
 ```
 
-#### delete-pg-shell
+#### 7.5.3 delete-pg-shell
 
 You can use the delete-pg-shell command to delete a protection group without deleting the associated synchronization instances. The synchronization instances become orphaned.
 
@@ -1939,7 +2036,7 @@ delete-pg-shell [-pgId] string
 delete-pg-shell -pgId cb973344-3a7d-49f5-8517-6245bd******
 ```
 
-#### move-sync-entity
+#### 7.5.4 move-sync-entity
 
 You can use the move-sync-entity command to migrate a synchronization entity to a protection group.
 
@@ -1965,9 +2062,9 @@ d references
 move-sync-entity -sid 5e81a414-4d88-4de3-9921-f1ef51f***** -pgId 472481ee-717c-41bc-b3b8-1926 31f***** -p 3
 ```
 
-### Disaster recovery plans
+### 7.6 Disaster recovery plans
 
-#### plan-query
+#### 7.6.1 plan-query
 
 You can use the plan-query command to query the details of a disaster recovery plan.
 
@@ -1985,7 +2082,7 @@ You can use the plan-query command to query the details of a disaster recovery p
 
 **plan-query -pid 375c09d5-e803-4770-a3ec-fa4358**
 
-#### plan-query-ex
+#### 7.6.2 plan-query-ex
 
 You can use the plan-query-ex command to query the execution details of a disaster recovery plan.
 
@@ -2003,7 +2100,7 @@ You can use the plan-query-ex command to query the execution details of a disast
 
 **plan-query-ex -pid 375c09d5-e803-4770-a3ec-b37fa4**
 
-#### plan-force-delete
+#### 7.6.3 plan-force-delete
 
 d references You can use the plan-force-delete command to forcibly delete a disaster recovery plan regardless of the running status.
 
@@ -2025,9 +2122,9 @@ plan-force-delete [-pid] string
 plan-force-delete -pid f67e0b29-519a-433d-bf8f-b38fb4******
 ```
 
-### VPC
+### 7.7 VPC
 
-#### vpc-register-app
+#### 7.7.1 vpc-register-app
 
 To enable ASR for Geo-disaster Recovery to access a Virtual Private Cloud (VPC) instance, you can use the vpc-register-app command to register ASR for Geo-disaster Recovery with the VPC instance.
 
@@ -2051,7 +2148,7 @@ vpc-register-app [-c] string [r] string [-ips] strings
 vpc-register-app -c ff28e461-fbec-449e-8d33-94d7f0****** -r cn-******-***-d01 -ips []
 ```
 
-#### vpc-show-registered-app
+#### 7.7.2 vpc-show-registered-app
 
 d references You can use the vpc-show-registered-app command to query information about applications registered with a Virtual Private Cloud (VPC) instance.
 
@@ -2074,7 +2171,7 @@ vpc-show-registered-app [-c] string [-r] string
 vpc-show-registered-app -c ff28e461-fbec-449e-8d33-94d7f0****** -r cn-*****-***-d01
 ```
 
-#### vpc-remove-registered-app
+#### 7.7.3 vpc-remove-registered-app
 
 You can use the vpc-remove-registered-app command to unregister an application from a Virtual Private Cloud (VPC) instance.
 
@@ -2097,7 +2194,7 @@ vpc-remove-registered-app [-c] string [-r] string
 vpc-remove-registered-app -c ff28e461-fbec-449e-8d33-94d7f0****** -r cn-*****-***-d01
 ```
 
-#### vpc-grant-access
+#### 7.7.4 vpc-grant-access
 
 You can use the vpc-grant-access command to grant access permissions on a Virtual Private Cloud (VPC) instance.
 
@@ -2125,7 +2222,7 @@ d references
 vpc-grant-access -v vpc-7qc0ujuxfw838m9n****** -i rm-7qcv3h8q497****** -p 3306 -r cn-*****-** *-d01 -c a37eb466-cc43-4347-9e96-5685dbc*****
 ```
 
-#### vpc-show-grant-access
+#### 7.7.5 vpc-show-grant-access
 
 You can use the vpc-show-grant-access command to query the authorized list of a Virtual Private Cloud (VPC) instance.
 
@@ -2150,7 +2247,7 @@ vpc-show-grant-access -c a37eb466-cc43-4347-9e96-5685dbc1**** -i rm-7qcv3h8q497*
 ****-***-d01
 ```
 
-#### vpc-cancel-grant-access
+#### 7.7.6 vpc-cancel-grant-access
 
 d references You can use the vpc-show-grant-access command to revoke the access of a protected instance to a Virtual Private Cloud (VPC) instance.
 
@@ -2176,9 +2273,9 @@ vpc-cancel-grant-access [-c] string [-v] string [-i] string [-p] string [-r] str
 vpc-cancel-grant-access -c a37eb466-cc43-4347-9e96-5685dbc1**** -v vpc-7qc0ujuxfw838m9n****** -i rm-7qcv3h8q497****** -p 3306 -r cn-*****-***-d01
 ```
 
-### Configurations
+### 7.8 Configurations
 
-#### param-add-param
+#### 7.8.1 param-add-param
 
 You can use the param-add-param command to add configurations for a service.
 
@@ -2204,7 +2301,7 @@ d references
 param-add-param -pdn OSS -pn timeout -pv 10000
 ```
 
-#### param-modify-param
+#### 7.8.2 param-modify-param
 
 You can use the param-modify-param command to modify the configurations of a service.
 
@@ -2228,7 +2325,7 @@ param-modify-param [-pdn] string [-pn] string [-pv] string
 param-modify-param -pdn OSS -pn timeout -pv 60000
 ```
 
-#### param-query-param
+#### 7.8.3 param-query-param
 
 You can use the param-query-param command to query the configurations of a service.
 
@@ -2253,7 +2350,7 @@ param-query-param -pdn OSS -pn timeout
 
 d references
 
-#### param-refresh-param
+#### 7.8.4 param-refresh-param
 
 You can use the param-refresh-param command to refresh the configurations of a service.
 
@@ -2276,7 +2373,7 @@ param-refresh-param [-pdn] string [-pn] string
 param-refresh-param -pdn OSS -pn timeout
 ```
 
-#### param-modify-params
+#### 7.8.5 param-modify-params
 
 You can use the param-query-params command to modify the configurations of a product.
 
@@ -2301,7 +2398,7 @@ param-modify-params [-pj] string
 param-modify-params -pj '[{"product":"oss","params": {"apiRetryCount":"5","apiRetryDelay":"40000"}}]'
 ```
 
-#### param-query-params
+#### 7.8.6 param-query-params
 
 d references You can use the param-query-params command to query all configurations of a service.
 
@@ -2323,9 +2420,9 @@ param-query-params [-pdn] string
 param-query-params -pdn OSS
 ```
 
-### Alerts
+### 7.9 Alerts
 
-#### alarm-create
+#### 7.9.1 alarm-create
 
 You can use the alarm-create command to create an alert.
 
@@ -2347,7 +2444,7 @@ You can use the alarm-create command to create an alert.
 
 **b989-e946ede\"] -c test**
 
-#### alarm-query
+#### 7.9.2 alarm-query
 
 You can use the alarm-query command to query alert information.
 
@@ -2379,7 +2476,7 @@ d references
 
 **b7998d5**
 
-#### send-alarm-msg
+#### 7.9.3 send-alarm-msg
 
 You can use the send-alarm-msg command to send alerts to alert contacts.
 
@@ -2413,9 +2510,9 @@ d references
 
 **[\"2638888\"]**
 
-### Alert rules
+### 7.10 Alert rules
 
-#### rule-create
+#### 7.10.1 rule-create
 
 You can use the rule-create command to create an alert rule.
 
@@ -2452,7 +2549,7 @@ d references
 
 **[\"ExampleUser\"] --notifyType [\"ANS_EMAIL\"]**
 
-#### rule-query
+#### 7.10.2 rule-query
 
 You can use the rule-query command to query an alert rule.
 
@@ -2479,7 +2576,7 @@ You can use the rule-query command to query an alert rule.
 
 **6ca60a24-2d3d-4221-b5d3-b79982c4**
 
-#### rule-switch
+#### 7.10.3 rule-switch
 
 You can use the rule-switch command to enable or disable an alert rule.
 
@@ -2500,7 +2597,7 @@ d references
 
 **rule-switch -rid 72b079c4-ce56-45cb--71b94f7e6f9c -s STOPPED**
 
-#### rule-update
+#### 7.10.4 rule-update
 
 You can use the rule-update command to update an alert rule.
 
@@ -2536,7 +2633,7 @@ d references
 
 **[\"ANS_EMAIL\"] -r 76df66ad-ecdb-4b35-ac50-931e886 -u 123456789**
 
-#### rule-delete
+#### 7.10.5 rule-delete
 
 You can use the rule-delete command to delete an alert rule.
 
@@ -2555,29 +2652,23 @@ You can use the rule-delete command to delete an alert rule.
 
 **rule-delete -r 9c8bdc83-3a32-4ae0--e8b7b1c31124 -u 123456789**
 
-### Monitored metrics
+### 7.11 Monitored metrics
 
-#### monitor-item-query
+#### 7.11.1 monitor-item-query
 
 You can use the monitor-item-query command to query the monitored metrics.
 
 **Syntax**
 
-**monitor-item-query**
-
 **Examples**
-
-**monitor-item-query**
 
 x
 
-## Appendix
+## 8 Appendix
 
-### Look up the Internet domain and
+### 8.1 Look up the Internet domain and intranet domain names
 
 **intranet domain names**
-
-Look up the Internet domain and intranet domain names
 
 **Procedure**
 
@@ -2592,7 +2683,7 @@ results, find the cluster that you want to manage and click **Cluster Details** 
 6. Click the **kv.conf** file and click **Show Content**.
 7. Obtain the Internet domain and intranet domain names from the **kv.conf** file.
 
-### Look up the DNS address
+### 8.2 Look up the DNS address
 
 This topic describes how to look up the Domain Name System (DNS) address.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -2612,7 +2703,7 @@ which is the same as the ServerIP value shown on the DNS management interface.
 
 The first two IP addresses in the internetIps field are the source IPs used by the DNS service to forward requests. In most cases, two IPs are bound to the bindServerRole containers.
 
-### Configure DNS forwarding
+### 8.3 Configure DNS forwarding
 
 When you set up a primary-secondary disaster recovery system between two clouds, you must configure Domain Name System (DNS) forwarding at the primary and secondary sites. This helps make sure that DNS queries can be smoothly forwarded across the system. This topic describes how to configure DNS forwarding.
 
@@ -2717,7 +2808,7 @@ iii. Log in to the Apsara Uni-manager Management console. In the top navigation 
 
 iv. On the **Global Domain Names** page, click the **Global Forwarding Configurations** tab. v. The tianji cluster is rolled and the dns_zone.conf.jj2 file is fixed.
 
-### Configure DTS parameters
+### 8.4 Configure DTS parameters
 
 x If you configure a primary/secondary disaster recovery solution between two clouds, you must configure Data Transmission Service (DTS) for database products. This topic describes how to configure DTS.
 
@@ -2777,7 +2868,7 @@ select * from region_pattern where pattern_expression = '^Region ID'\G select * 
 
 x
 
-### Configure dedicated lines
+### 8.5 Configure dedicated lines
 
 When you deploy ASR for Geo-disaster Recovery, you must configure dedicated lines. Otherwise, no data is available on the line chart on the homepage. To configure dedicated lines, perform the following steps: x
 1. Download the scriptsto your computer and decompress the scripts
@@ -2797,7 +2888,7 @@ Import DCI dedicated line data to the Connections/DCInterConnections.json file i
 5. Execute the python importConnections2db.py script.
 x
 
-#### AddDCInterConnection
+#### 8.5.1 AddDCInterConnection
 
 **Description**
 
@@ -2917,7 +3008,7 @@ x
 | 400 | Existing | The data already exists. |
 | 400 | NotExisting | The data does not exist. |
 
-#### AddExternalConnection
+#### 8.5.2 AddExternalConnection
 
 **Description**
 

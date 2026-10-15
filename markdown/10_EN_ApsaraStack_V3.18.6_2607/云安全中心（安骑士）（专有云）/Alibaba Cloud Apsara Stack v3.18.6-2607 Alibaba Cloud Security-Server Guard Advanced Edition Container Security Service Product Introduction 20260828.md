@@ -3,14 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Gu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 28
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Product Introduction 20260828.pdf"
+source_pdf: "8b82b7a32ffa97ab_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Contain"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Container%20Security%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Container Security Service Product Introduction 20260828
 
-## What is CSS?
+## Table of Contents
+
+- 1 What is CSS?
+- 2 Features
+- 3 Service architecture
+- 4 Features
+  - 4.1 Asset center
+  - 4.2 CI/CD security
+  - 4.3 Container Runtime Protection
+  - 4.4 Log retrieval
+  - 4.5 Feature Settings
+
+## 1 What is CSS?
 
 **Pioneer of cloud security**
 
@@ -50,7 +62,7 @@ In the microservices architecture, the traditional security solution of managing
 
 API API API API Microservice Microservice Kubernetes Resources (PaaS) Volumes Network Workloader Setting
 
-## Features
+## 2 Features
 
 This topic describes the features supported by Container Security and provides their descriptions.
 
@@ -107,7 +119,7 @@ This topic describes the features supported by Container Security and provides t
 
 re
 
-## Service architecture
+## 3 Service architecture
 
 The security control mode of Apsara Stack Security Container Security Service (CSS) adopts a C/S architecture based on the cloud-native environment, enabling multi-dimensional monitoring at the operating system layer, application layer, and environment layer. At the same time, all resource-intensive security detection capabilities are deployed on the server side, while the client is responsible only for feature collection and risk mitigation, fundamentally reducing CSS resource consumption. You can interact with CSS in browser/server mode and can log in to the CSS console over HTTPS. CSS supports mainstream browsers. In the CSS console, you can query risk data in the cloud in real time and configure security policies to handle security risks based on your business requirements.
 
@@ -295,9 +307,9 @@ The multi-region architecture of CSS follows the rules of independent regions. G
 
 The following list describes the features of CSS that are supported on platforms using chips offered by chip companies in China: Capabilities of CSS are 100% consistent between Apsara Stack using x86 CPUs and selfmanaged platforms using x86 Hygon CPUs. From Apsara Stack V3.18.3, CSS can be deployed on platforms using ARM-based Phytium and Kunpeng CPUs. However, some blocking features that rely on plug-ins, such as container firewall, container file protection, and container active defense, are not supported.
 
-## Features
+## 4 Features
 
-### Asset center
+### 4.1 Asset center
 
 **Container network topology**
 
@@ -311,13 +323,13 @@ Kubernetes uses different resource isolation solutions based on the actual deplo
 
 Using risky images causes security risks to the containers created based on them. The asset management feature of CSS provides image-based risk tracing and protection capabilities, with a management scope covering from the image to the whole Kubernetes cluster. Image: the basic image information and the threat information such as system vulnerabilities, application vulnerabilities, baseline risks, and viruses and trojans.
 
-### CI/CD security
+### 4.2 CI/CD security
 
 **Container image scan**
 
 The container image scan feature can detect and identify high-risk system vulnerabilities, application vulnerabilities, malicious samples, configuration risks, and sensitive data in images. Vulnerabilities may exist in the basic system software, middleware, web applications, and databases that are in your images. The vulnerabilities include mining programs and backdoor programs. Containers that run based on vulnerable images pose threats to your assets. This feature allows you to check whether image vulnerabilities and malicious samples exist in your vulnerable assets, and provides suggestions on vulnerability fixing. This feature provides end-to-end vulnerability management capabilities and allows you to fix image vulnerabilities in a convenient manner. Supported operating systems CentOS 5, 6, and 7 and Red Hat Enterprise Linux (RHEL) 5, 6, and 7 Ubuntu 12.04, 14.04, 16.04, 18.04, and 18.10 Alpine 2.3 to 2.7 and 3.1 to 3.12 Oracle Linux 5, 6, 7, and 8 Amazon Linux AMI and 2 Debian 6, 7, 8, 9, and 10 SUSE Linux Enterprise Server (SLES) 5, 6, 7, 8, and 9, SLES 10 SP4, SLES 11 P3, SLES 12 SP2, and SLES 12 SP5 Fedora Linux 2X and 3X openSUSE 10.0, Leap 15.2, and Leap 42.3 Supported detection capabilities Scan images for system vulnerabilities Scan images for application vulnerabilities Scan images for baseline risks Scan images for malicious samples
 
-### Container Runtime Protection
+### 4.3 Container Runtime Protection
 
 **Vulnerability Management**
 
@@ -481,7 +493,7 @@ In standard container environments, which exclude secure containers, containers 
 
 Container Image Signing lets you enable trusted signing of container images. This feature ensures that only your approved images can be deployed, which prevents unauthorized and unsigned images from running and fundamentally improves asset security.
 
-### Log retrieval
+### 4.4 Log retrieval
 
 **Quick retrieval**
 
@@ -491,7 +503,7 @@ You can query logs for process snapshots, network connectivity, and process star
 
 Process snapshot: Process runtime information on a host at a point in time. Network connectivity: Logs of outbound connections initiated by a host. Process startup: Information about processes starting on a host.
 
-### Feature Settings
+### 4.5 Feature Settings
 
 **Feature Overview**
 

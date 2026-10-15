@@ -3,16 +3,31 @@ title: "Cloud Security Network Detection and Response Operations and Maintenance
 product_version: "V3.18.6"
 doc_version: "20260317"
 pdf_pages: 19
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Operations and Maintenance Guide 20260317.pdf"
+source_pdf: "134f6d302cd2a02e_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Operations and Main"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Network%20Detection%20and%20Response%20Operations%20and%20Maintenance%20Guide%2020260317.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Security Network Detection and Response Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to the Apsara Infrastructure Management console
+- 2 Service status check
+  - 2.1 Basic inspection
+  - 2.2 Advanced inspection
+- 3 Common operations and maintenance
+  - 3.1 Restart the beaver_drv process
+  - 3.2 View NDR logs in SLS
+  - 3.3 Access databases
+  - 3.4 View the NIC types and status
+  - 3.5 Use packet capture tools
+  - 3.6 Replay packets
+  - 3.7 Query information about a server
+
 cture Management console
 
-## Log on to the Apsara
+## 1 Log on to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -34,11 +49,11 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Platforms > Apsara Infrastructure Management Framework**.
 
-## Service status check
+## 2 Service status check
 
 This topic describes how to check the service status of Network Detection Response (NDR).
 
-### Basic inspection
+### 2.1 Basic inspection
 
 The purpose of a basic inspection is to check the service status of Network Detection and Response (NDR). This topic describes how to perform a basic inspection.
 1. Log in to the Apsara Infrastructure Management console.
@@ -51,7 +66,7 @@ column.
 6. On the Services tab, enter **yundun-beaver-advance** in the **Service** search box. Then,
 check whether the service status is normal.
 
-### Advanced inspection
+### 2.2 Advanced inspection
 
 The purpose of an advanced inspection is to check the service status and features of Network Detection and Response (NDR). This topic describes how to perform an advanced inspection.
 1. Log in to the Apsara Infrastructure Management console.
@@ -85,11 +100,11 @@ Run the `tail -f /dev/shm/banff-<year>-<month>.log` command. Replace <year> with
 6. View the status of all NDR processes.
 Run the python /opt/beaver/bin/scripts/check_beaver_process.py command. If the client not exist process and server not exist process parameters have no values, all NDR processes are normal.
 
-## Common operations and
+## 3 Common operations and maintenance
 
 **maintenance**
 
-### Restart the beaver_drv
+### 3.1 Restart the beaver_drv process
 
 **process**
 
@@ -99,7 +114,7 @@ This topic describes how to restart the beaver_drv process.
 3. Run the following command to restart the NDR process:
 Run the `/home/admin/beaver_drv/bin/beaver_drv.sh stop` command five times, and then wait until the process automatically starts.
 
-### View NDR logs in SLS
+### 3.2 View NDR logs in SLS
 
 This topic describes how to log in to Simple Log Service (SLS) to view Network Detection and Response (NDR) logs.
 
@@ -165,7 +180,7 @@ information, see **Security management > Account security > PCM > AccessKey pair
 |---|---|---|
 | ali-beaver-reset-log | ndr reset log _ _ | Stores the blocking logs at Layer 4 and Layer 7. |
 
-### Access databases
+### 3.3 Access databases
 
 This topic describes how to access the three databases on which a Network Detection and Response (NDR) server depends from the NDR server.
 1. Log in to the two physical servers of NDR.
@@ -175,7 +190,7 @@ This topic describes how to access the three databases on which a Network Detect
 /opt/beaver/bin/tools/mysql_jifei_ctl
 ```
 
-### View the NIC types and status
+### 3.4 View the NIC types and status
 
 This topic describes how to view the network interface controller (NIC) types, check whether a business NIC is enabled, and view the link status of NICs on a server of Network Detection and Response (NDR).
 1. Log in to the two physical servers of Network Detection and Response (NDR).
@@ -209,7 +224,7 @@ Check the values in the `link` column. If a value in the link column is `down` ,
 
 You can use the preceding script to view the information about the peer device and port that are connected to the NDR server.
 
-### Use packet capture tools
+### 3.5 Use packet capture tools
 
 This topic describes the built-in packet capture tools of Network Detection and Response (NDR) that are used for troubleshooting.
 1. Log in to the two physical servers of NDR.
@@ -256,7 +271,7 @@ rx|tx|drop|kernel|pre_routing|local_in|post_routing|pre_routing6|local_in6|post_
 
 The results of CapTool can be displayed on the screen or stored to packet capture (PCAP) files. However, you cannot distinguish traffic among tenants.
 
-### Replay packets
+### 3.6 Replay packets
 
 This topic describes how to use DPDK to replay packets. This way, you can test the performance of Network Detection and Response (NDR) features.
 1. Log in to the two physical servers of NDR.
@@ -269,7 +284,7 @@ This topic describes how to use DPDK to replay packets. This way, you can test t
 eplay_loops> <Interval> Userage ./pkt_repaly <cap file> <speed(Kpps)> <time(Second), 0 means nolimit> <replay_l oops, 0:replay persist, other replay n times> <Interval time(us) for frame,0 means noli mit>
 ```
 
-### Query information about a
+### 3.7 Query information about a server
 
 **server**
 

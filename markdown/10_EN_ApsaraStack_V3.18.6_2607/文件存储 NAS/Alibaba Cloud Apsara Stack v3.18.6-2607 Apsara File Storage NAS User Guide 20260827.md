@@ -3,18 +3,51 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS User Gui
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 68
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS User Guide 20260827.pdf"
+source_pdf: "a46a15d3aee9df1f_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS User Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS User Guide 20260827
 
-## What is NAS?
+## Table of Contents
+
+- 1 What is NAS?
+- 2 Usage notes
+- 3 Quick start
+  - 3.1 Log on to the NAS console
+  - 3.2 Create a file system
+  - 3.3 Create a permission group and add rules
+  - 3.4 Add a mount point
+  - 3.5 Mount an NFS file system
+  - 3.6 Mount an SMB file system
+- 4 File systems
+  - 4.1 View the details of a file system
+  - 4.2 Delete a file system
+  - 4.3 Scale up a file system
+- 5 Mount targets
+  - 5.1 View mount targets
+  - 5.2 Enable or disable a mount target
+  - 5.3 Delete a mount target
+  - 5.4 Modify the permission group of a mount target
+- 6 Permission groups
+  - 6.1 View permission groups
+  - 6.2 Delete a permission group
+  - 6.3 Manage permission group rules
+- 7 Manage quotas
+- 8 Manage unified namespaces
+- 9 Lifecycle management
+- 10 Directory-level ACLs that grant the read and write access
+  - 10.1 Overview
+  - 10.2 Features
+  - 10.3 Use POSIX ACLs to control access
+  - 10.4 Use NFSv4 ACLs to control access
+
+## 1 What is NAS?
 
 File Storage NAS (NAS) is a cloud service that provides file storage solutions for compute nodes. The compute nodes include Elastic Compute Service (ECS) instances and Container Service for Kubernetes (ACK) clusters. NAS provides standard file access protocols. You can use the distributed file storage solution that provides shared access, scalability, high reliability, and high performance without the need to modify the configurations of the applications. You can mount a NAS file system on multiple compute nodes at a time. This reduces a large number of costs in data transmission and synchronization. NAS is extremely elastic and extensible. The performance of an NAS cluster linearly increases with the size of the cluster. A single NAS cluster supports hundreds of storage nodes and can store tens of petabytes of data. You can perform the following operations: Create a NAS file system and mount target. Create a permission group for the file system and add rules to the permission group. This allows access from specific IP addresses or CIDR blocks to the file system. This also allows you to grant different levels of access permissions to the IP addresses or CIDR blocks. Mount the file system to compute nodes, such as ECS instances and ACK clusters. NAS allows you to access the file system by using the Network File System (NFS) and Server Message Block (SMB) protocols. You can also call POSIX-based APIs to access the file system. Manage file systems, mount targets, and permission groups in the NAS console. Call NAS API operations to manage file systems.
 
-## Usage notes
+## 2 Usage notes
 
 Before you use File Storage NAS (NAS), take note of the following limits.
 
@@ -46,9 +79,9 @@ NAS supports the SMB 2.1 protocol and later versions. NAS also supports operatin
 
 Before you delete a NAS file system, you must unmount the file system from the mount target on the compute node. Then, delete the mount target and the file system.
 
-## Quick start
+## 3 Quick start
 
-### Log on to the NAS console
+### 3.1 Log on to the NAS console
 
 This topic describes how to log on to the File Storage NAS console.
 
@@ -76,7 +109,7 @@ operations based on your login scenario: You log on to the Apsara Uni-manager Ma
 **MFA** > **Manage MFA** in Apsara Uni-manager Operations Console User Guide.
 5. In the top navigation bar, click **Products**. In the **Storage** section, click **File Storage NAS**.
 
-### Create a file system
+### 3.2 Create a file system
 
 This topic describes how to create a file system in the File Storage NAS (NAS) console.
 
@@ -110,7 +143,7 @@ After you complete the configuration, the configuration information is displayed
 information, see the **Quota management** topic in User Guide - Apsara Uni-manager Mana gement Console.
 5. After you configure the preceding parameters, click **Confirm Order**.
 
-### Create a permission group and
+### 3.3 Create a permission group and add rules
 
 **add rules**
 
@@ -181,7 +214,7 @@ and click **Open**.
 5. In the **Create Rules** dialog box, view or modify the rules. After you confirm the rules, select
 the rules to add and click **Submit**.
 
-### Add a mount point
+### 3.4 Add a mount point
 
 In File Storage NAS (NAS), you must use a mount point to mount file systems to compute nodes (ECS instances or containers). This topic describes how to add a mount point.
 
@@ -227,7 +260,7 @@ If you want to add a Classic Network-type mount point, configure the following p
 
 7. Click **OK** to add the mount point.
 
-### Mount an NFS file system
+### 3.5 Mount an NFS file system
 
 Before you mount a file system, you must create the file system and a mount target for the file system. Then, you can use the mount target to mount the file system on compute nodes. The compute nodes include Elastic Compute Service (ECS) instances and Container Service for Kubernetes (ACK) clusters. This topic describes how to mount a Network File System (NFS) file system.
 
@@ -287,7 +320,7 @@ If the output that is similar to the following information appears, the mount is
 4. After the SMB file system is mounted, you can read data from and write data to the NAS file
 systems on the ECS instance. You can access the file system the same way you access a local directory. The following figure shows an example.
 
-### Mount an SMB file system
+### 3.6 Mount an SMB file system
 
 Before you mount a file system, you must create the file system and a mount target for the file system. Then, you can use the mount target to mount the file system on compute nodes such as Elastic Compute Service (ECS) instances. This topic describes how to mount a Server Message Block (SMB) file system.
 
@@ -330,9 +363,9 @@ If the output that is similar to the following information appears, the mount is
 4. After the SMB file system is mounted, you can read data from and write data to the NAS file
 systems on the ECS instance.
 
-## File systems
+## 4 File systems
 
-### View the details of a file
+### 4.1 View the details of a file system
 
 **system**
 
@@ -355,7 +388,7 @@ is displayed. You can manage the mount targets and view the clients on which the
 **Quota Management**: In this section, the quota status of each directory in the file
 system is displayed. You can create, modify, and delete quotas for each directory.
 
-### Delete a file system
+### 4.2 Delete a file system
 
 This topic describes how to delete a file system in the File Storage NAS console.
 
@@ -374,7 +407,7 @@ The number of mount targets is 0. For more information about how to view the num
 Before you can delete a file system, you must remove all mount targets from the file system. Proceed with caution when you delete a file system. After a file system is deleted, the data on the file system cannot be restored. Make sure that all data is backed up.
 4. In the **Delete File System** dialog box, click **OK** to complete the deletion.
 
-### Scale up a file system
+### 4.3 Scale up a file system
 
 If the used space of an File Storage NAS file system reaches the specified capacity, data can no longer be written to the file system. To ensure the availability of the NAS service, we recommend that you scale up the file system before the used space reaches the specified capacity. This topic describes how to scale up a file system in the NAS console.
 
@@ -395,9 +428,9 @@ A file system can be scaled up but cannot be scaled down. . A Capacity NAS file 
 **Capacity** field.
 5. Click **OK**.
 
-## Mount targets
+## 5 Mount targets
 
-### View mount targets
+### 5.1 View mount targets
 
 This topic describes how to view mount targets in the File Storage NAS console.
 
@@ -413,7 +446,7 @@ The following operations are completed: Create a file system of application mana
 4. In the left-side navigation pane, click **Mounting Targets**. On the **Mounting Target** tab,
 view the mount targets of the file system.
 
-### Enable or disable a mount
+### 5.2 Enable or disable a mount target
 
 **target**
 
@@ -434,7 +467,7 @@ that you want to disable or enable, you can perform the following operations: To
 To enable the mount target, click **Enable**. In the Enable Mount Target dialog box, click
 **OK** to allow access to the mount target from clients.
 
-### Delete a mount target
+### 5.3 Delete a mount target
 
 This topic describes how to delete a mount target in the File Storage NAS console.
 
@@ -455,7 +488,7 @@ A file system is unmounted from the compute node such as an ECS instance and ACK
 Proceed with caution when you delete a mount target. After you delete a mount target, you cannot restore the mount target.
 6. In the Delete Permission Group message, click **OK**.
 
-### Modify the permission group
+### 5.4 Modify the permission group of a mount target
 
 **of a mount target**
 
@@ -474,9 +507,9 @@ The following operations are completed: Create a file system of application mana
 5. Find the mount target that you want to modify and click **Modify Permission Group**.
 6. In the **Modify Permission Group** dialog box, change the permission group and click **OK**.
 
-## Permission groups
+## 6 Permission groups
 
-### View permission groups
+### 6.1 View permission groups
 
 This topic describes how to view permission groups in the File Storage console.
 
@@ -489,7 +522,7 @@ A permission group is created. For information about how to detach a tag policy 
 1. Log in to the File Storage NAS console.
 2. Choose **File System > Permission Group** and view the permission groups.
 
-### Delete a permission group
+### 6.2 Delete a permission group
 
 This topic describes how to delete a permission group in the File Storage NAS console.
 
@@ -505,7 +538,7 @@ A permission group is created. For more information, see Create a permission gro
 Permission groups in use cannot be deleted. Before you can delete a permission group, you must remove the permission group from the linked mount target.
 4. In the Delete Permission Group dialog box, click **OK**.
 
-### Manage permission group
+### 6.3 Manage permission group rules
 
 **rules**
 
@@ -526,7 +559,7 @@ View all rules for the permission group. Modify a rule. Find the target rule and
 Delete a rule. Find the target rule and click **Delete**. In the Delete Rule dialog box, click
 **OK**.
 
-## Manage quotas
+## 7 Manage quotas
 
 File Storage NAS (NAS) provides the quota management feature to help you view and manage directory quotas. This topic describes how to create directory quotas, assign quotas to users, delete a quota that is assigned to a user, and edit a quota that is assigned to a user.
 
@@ -547,7 +580,7 @@ To prevent potential security risks, we recommend that you evaluate and test res
 
 **Limits**
 
-File systems Only NFS file systems are supported. Quotas For a single file system, you can configure quotas for a maximum of 500 directories. The maximum directory depth is eight levels. For example, the depth of the root directory / is zero level. The depth of the /workspace directory is one level. The depth of the /workspace/dir1 directory is two levels.
+Only NFS file systems are supported. Quotas For a single file system, you can configure quotas for a maximum of 500 directories. The maximum directory depth is eight levels. For example, the depth of the root directory / is zero level. The depth of the /workspace directory is one level. The depth of the /workspace/dir1 directory is two levels.
 
 **Create a directory quota**
 
@@ -596,7 +629,7 @@ In the list of quotas, find the quota that you want to delete and click **Delete
 
 In the list of quotas, find the quota that you want to modify, and click **Edit** in the Actions column. You can modify the quota type, capacity limit, and file limit of the quota. The Capacity Limit and File Limit parameters are available only for restrictive quotas. You must modify at least one of the two parameters. spaces
 
-## Manage unified
+## 8 Manage unified namespaces
 
 **namespaces**
 
@@ -638,7 +671,7 @@ In Region 2, you can create a mount target that resides in skvpc2 for the specif
 5. Create an Elastic Compute Service (ECS) instance.
 For example, if you select skvpc2 when you create an ECS instance, you can mount file systems on the ECS instance without the need to establish a VPC connection. The following figure shows an example. spaces In most cases, each ECS instance uses an independent VPC. You do not need to establish connections between VPCs that are used by mount targets of namespaces in two different regions. However, you must establish connections between the VPC that is used by mount targets of the namespace and the VPC that is used by the ECS instance. nt
 
-## Lifecycle management
+## 9 Lifecycle management
 
 File Storage NAS (NAS) provides the lifecycle management feature. By configuring a lifecycle policy, you can dump cold data to Object Storage Service (OSS). In the NAS console, you can create, view, and modify lifecycle policies. You can also query the usage of General-purpose NAS storage and IA storage.
 
@@ -682,13 +715,13 @@ On the **Lifecycle Management** page, you can modify the lifecycle policy. You c
 4. Query the usage of the General-purpose NAS storage and IA storage.
 nt In the left-side navigation pane, click **File Systems**. You can query the usage of Generalpurpose NAS storage and IA storage within the file system for which you have configured the lifecycle policy. hat grant the read and write acce ss
 
-## Directory-level ACLs that
+## 10 Directory-level ACLs that grant the read and write access
 
 **grant the read and write**
 
 **access**
 
-### Overview
+### 10.1 Overview
 
 File Storage NAS supports NFSv4 access control lists (ACLs) and Portable Operating System Interface for UNIX (POSIX) ACLs. This topic introduces POSIX ACLs and NFSv4 ACLs and describes the usage notes for these ACLs. Access control and user management are important for enterprise users who need to share files among different users and groups by using a shared file system. To control access to different files and directories, you can grant users and groups different types of access. NAS provides Network File System (NFS) ACLs to allow you to meet specific requirements. An ACL consists of one or more access control entries (ACEs) that each grant a user or group one or more permissions to access a file or directory. The NFSv3 protocol implements access control by using the file mode creation mask (umask). The POSIX ACL feature is an extension to this permission model. You can grant permissions to specific users and groups in addition to the owner, group, and other classes. In a file system, a directory or file can inherit the permissions from its parent directory. For more information, see acl(5) - Linux man page. The NFSv4 ACL feature is an extension to the NFSv4 protocol. Compared with POSIX ACLs, NFSv4 ACLs provide finer-grained access control. For more information, see nfs4_acl(5) - Linux man page. You can use the NFSv3 protocol to mount a file system to which NFSv4 ACLs are applied. After the file system is mounted, the NFSv4 ACLs are converted into POSIX ACLs. You can also use the NFSv4 protocol to mount a file system to which POSIX ACLs are applied. After the file system is mounted, the POSIX ACLs are converted into NFSv4 ACLs. However, NFSv4 ACLs and POSIX ACLs are not fully compatible. The interaction between ACLs and the umask is not in an ideal state. NFSv3 file systems do not support locks. Therefore, if you use NFS ACLs, we recommend that you use the NFSv4 protocol to mount file systems and configure only NFS ACLs for the file systems. We also recommend that you do not use the umask or POSIX ACLs along with NFSv4 ACLs. For more information, see Features.
 
@@ -700,7 +733,7 @@ We recommend that you use the default method that allows a subdirectory or file 
 
 We recommend that you use UIDs or GIDs such as UID 1001 to configure ACLs. We recommend that you do not configure the umask along with NFSv4 ACLs. The `nfs4_setfacl` command provides multiple options such as the -a, -x, and -m options to add, remove, and modify ACEs. We recommend that you run the `nfs4_setfacl -e` `<file>` command to edit an ACL in an editor. NAS NFSv4 ACLs support Allow ACEs rather than Deny ACEs. All users have the permissions that are granted to everyone. Therefore, we recommend that you grant the least permissions to everyone. If everyone has more permissions than an ACE, a security vulnerability may exist. NFSv4 ACLs support fine-grained permissions. In most cases, permission control based on fine-grained write permissions is unnecessary. For example, if a user has the write-data (w) access to a file but does not have the append-data (a) access, an error may occur when the user writes data to the file. The same issue occurs for a directory. To prevent unexpected permission errors, we recommend that you specify a capital W when you run the `nfs4_setfacl` command to configure an ACL. The `nfs4_setfacl` command specifies full write access. For a file, W is expanded to wadT. For a directory, W is expanded to wadTD. We recommend that you use the default method that allows a subdirectory or a file to inherit the ACL from the parent directory. Then, you do not need to configure another ACL when you create a file or subdirectory in the parent directory. A file system scans all ACEs each time it performs a permission check. To ensure optimal performance, we recommend that you retain a minimum number of ACEs. If redundant ACLs exist, the performance of the file system degrades. Proceed with caution when you configure ACLs by using the recursive method ( `nfs4_setfacl -R` ). A large amount of metadata is generated when you apply an ACL recursively to a directory that contains a large number of files and subdirectories. This may negatively affect your business. hat grant the read and write acce ss Before you configure ACLs, we recommend that you manage groups and the corresponding permissions. For example, you can add a user to one or more groups. To add, remove, or change permissions for a user, you can move the user to a group that has the required permissions. You need to modify the ACL of the group only if the group structure changes. We recommend that you configure ACLs for groups rather than individual users. This is a simple and time-saving method to implement access control.
 
-### Features
+### 10.2 Features
 
 This topic describes the features of NFSv4 access control lists (ACLs) and POSIX ACLs.
 
@@ -1029,7 +1062,7 @@ A::OWNER@:rw A::GROUP@:rw A::EVERYONE@:rw
 
 Conversions between NFSv4 ACLs and POSIX ACLs are not supported. POSIX ACLs do not support deny ACEs. If deny ACEs are included in an NFSv4 ACL, you cannot convert the ACL to a POSIX ACL.
 
-### Use POSIX ACLs to control
+### 10.3 Use POSIX ACLs to control access
 
 **access**
 
@@ -1168,7 +1201,7 @@ getfacl: dir0/file: Permission denied
 
 hat grant the read and write acce ss
 
-### Use NFSv4 ACLs to control
+### 10.4 Use NFSv4 ACLs to control access
 
 **access**
 

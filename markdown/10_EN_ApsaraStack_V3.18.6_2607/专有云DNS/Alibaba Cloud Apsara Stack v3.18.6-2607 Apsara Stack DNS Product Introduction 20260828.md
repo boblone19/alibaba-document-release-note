@@ -3,16 +3,24 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Product Introdu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Product Introduction 20260828.pdf"
+source_pdf: "f9d920da9734d196_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Product Introduction 20260828
 
-## Apsara Stack DNS
+## Table of Contents
 
-### Overview
+- 1 Apsara Stack DNS
+  - 1.1 Overview
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 Apsara Stack DNS
+
+### 1.1 Overview
 
 Apsara Stack DNS is a service that is encapsulated based on the DNS protocol and runs on Apsara Stack to resolve domain names over internal networks, such as virtual private clouds (VPCs), networks of self-managed data centers, and the classic network. You can configure rules and policies to map domain names to IP addresses. Apsara Stack DNS then distributes the DNS requests from clients to cloud resources, self-managed business applications, business systems on your internal networks, or the service resources of Internet service providers (ISPs).
 
@@ -61,7 +69,7 @@ DNS forwarding uses two DNS servers to provide DNS resolution services. The loca
 
 If DNS queries for authoritative domain names are not resolved by the local DNS server, they are forwarded to another DNS server for resolution.
 
-### Benefits
+### 1.2 Benefits
 
 Apsara Stack DNS is a key network service that controls data traffic for Apsara Stack. This service resolves domain names, balances and schedules server loads, and connects Apsara Stack with self-managed data centers. Apsara Stack DNS provides a complete suite of solutions to deploy a cloud environment, achieve high availability and disaster recovery for data centers, and balance server loads to secure your IT services. You can perform the following operations by using Apsara Stack DNS in enterprise intranets: Access other Elastic Compute Service (ECS) instances deployed in the current virtual private cloud (VPC). Access other cloud service instances on Apsara Stack. Access the custom business systems of your enterprise. Access services over the Internet. Use the global server load balancing (GSLB) feature to implement multi-active solutions and disaster recovery, such as local active-active disaster recovery, active zoneredundancy, remote active-active disaster recovery, active geo-redundancy, and geodisaster recovery. Connect to Apsara Stack DNS with your own DNS servers over a leased line.
 
@@ -93,7 +101,7 @@ You can access DNS and any other cloud services on the Apsara Uni-manager Manage
 
 Apsara Stack DNS provides API operations so that you can integrate it with other systems.
 
-### Scenarios
+### 1.3 Scenarios
 
 Apsara Stack DNS is a key network service that controls data traffic for Apsara Stack. This service resolves domain names, balances and schedules server loads, and connects Apsara Stack with self-managed data centers and Alibaba Cloud. Apsara Stack DNS provides a complete suite of solutions to deploy a cloud environment, achieve high availability and disaster recovery for data centers, and balance server loads to secure your IT services.
 
@@ -173,7 +181,7 @@ You can develop your own PaaS or SaaS services on Apsara Stack and expose these 
 
 You can use Apsara Stack DNS to access a deployed PaaS or SaaS service from within or outside the cloud and switch the access traffic of internal services from backend service cluster A (primary data center) to backend service cluster B (secondary data center) in a disaster recovery scenario.
 
-### Features
+### 1.4 Features
 
 Apsara Stack DNS provides the DNS resolution and Global Server Load Balancer (GSLB) services in VPCs, networks of self-managed data centers, and the classic network.
 

@@ -3,18 +3,33 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore User Guide"
 product_version: "V3.16.2"
 doc_version: "20220905"
 pdf_pages: 33
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore User Guide 20220905.pdf"
+source_pdf: "e6821062f6439180_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore User Guide 20220905.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Tablestore%20User%20Guide%2020220905.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore User Guide
 
-## Terms
+## Table of Contents
+
+- 1 Terms
+- 2 Limits
+- 3 Quick start
+  - 3.1 Log on to the Tablestore console
+  - 3.2 Create instances
+  - 3.3 Create data tables
+  - 3.4 Read and write data in the console
+  - 3.5 Bind a VPC to a Tablestore instance
+  - 3.6 Use Tunnel Service
+- 4 Global secondary index
+  - 4.1 Usage notes
+  - 4.2 Scenarios
+
+## 1 Terms
 
 This topic describes several basic terms used in Tablestore, including data model, max versions, time to live (TTL), max version offset, primary key and attribute, read/write throughput, region, instance, endpoint, and Serial ATA (SATA). data model A data model that consists of tables, rows, primary keys, and attribute columns in Tablestore. The following figure shows an example of a data model. max versions A data table attribute that indicates the maximum number of data versions that can be stored in each attribute column of a data table. If the number of versions in an attribute column exceeds the max versions value, the earliest version is asynchronously deleted. TTL A data table attribute that indicates the validity period of data in seconds. To save space and reduce costs for data storage, Tablestore deletes any data that exceeds its TTL. max version offset A data table attribute that describes the maximum allowable difference between the version to be written and the current time in seconds. To prevent the writing of unexpected data, a server checks the versions of attribute columns when the server processes writing requests. If the specified version is earlier than the current writing time minus the max version offset value or later than or equal to the current writing time plus the max version offset value, data fails to be written to the row. The valid version range of an attribute column: [max{Dat a writ t en t ime - Max version of f set , Dat a writ t en t ime - T T L value}, Dat a writ t en t ime + Max version of f set ). Data written time is the number of seconds that have elapsed since 00:00:00, 1 January 1970. Versions of the attribute columns are written in milliseconds. A version of an attribute column must fall within the valid version range after the version number is converted to seconds (divide by 1,000). primary key and attribute A primary key is the unique identifier of each row in a table. A primary key consists of one to four primary key columns. When you create a table, you must define a primary key. You must specify the name, data type, and sequence of each primary key column. The data type of primary key columns can be only STRING, INTEGER, or BINARY. The size of a STRING or BINARY primary key column cannot exceed 1 KB. An attribute is the attribute data stored in a row. You can create an unlimited number of attribute columns for each row. read/write throughput A Tablestore attribute that is measured by read/write capacity units (CUs). region An Apsara Stack physical data center. Tablestore is deployed across multiple Apsara Stack regions. Select a region that suits your business requirements. instance A logical entity that is used to manage tables in Tablestore. Instances correspond to databases in traditional relational databases. An instance is the basic unit of the Tablestore resource management system. Tablestore allows you to control access and meter resources by instance. endpoint The connection URL for each instance. You must specify an endpoint before you perform any operations on Tablestore tables and data. SATA A disk that is based on serial connections and provides stronger error-correcting capabilities. Serial ATA aims to improve the reliability of data during transmission.
 
-## Limits
+## 2 Limits
 
 This topic describes the usage limits of Tablestore. The following table describes the limits on the usage of Tablestore. A part of limits indicate the maximum values that can be used rather than the suggested values. You can tailor table schemas and row sizes to improve performance.
 
@@ -48,9 +63,9 @@ This topic describes the usage limits of Tablestore. The following table describ
 | Data returned by one GetRange request | 5,000 rows or 4 MB | The amount of data returned by a request cannot exceed 5,000 rows or 4 MB. When either of the limits is exceeded, data that exceeds the limits is truncated at the row-level. The data primary key information in the next row is returned. |
 | The data size of an HTTP request body | 5 MB | None. |
 
-## Quick start
+## 3 Quick start
 
-### Log on to the Tablestore console
+### 3.1 Log on to the Tablestore console
 
 This topic shows how to log on to the Tablestore console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -62,7 +77,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the navigation pane, choose Product s > St orage > T ablest ore.
 
-### Create instances
+### 3.2 Create instances
 
 An instance is a logical entity in Tablestore and is used to manage tables. An instance is the basic unit of resource management in Tablestore. Tablestore controls access requests from applications and collects statistics about the resources that are used by applications at the instance level. This topic describes how to create an instance. Procedure
 1. Log on to the Tablestore console.
@@ -84,7 +99,7 @@ parameters.
 5. In the message that appears, click Back t o Console.
 On the Overview tab, you can view the created instance. You can perform the following operations on the instance: Click the name of the instance or click Manage Inst ance in the Actions column of the instance. On the Inst ance Management page, you can click different tabs to perform different operations. On the Inst ance Det ails tab, you can view access URLs of the instance and basic information about the instance, create data tables, and perform operations on and manage data tables. On the Inst ance Monit oring tab, you can view the monitoring metrics of different categories or operation types in the specified time range. Categories include service monitoring overview, queries per second (QPS), number of rows, and traffic statistics. On the Net work Management tab, you can bind or unbind virtual private clouds (VPCs) and view the list of VPCs. Click Release in the Act ions column to release the instance. Not ice Before you release an instance, make sure that all data tables in the instance are deleted, and VPCs are unbound from the instance. To prevent conflicts, make sure that the name of the instance that you want to create is different from the name of the instance that is being released.
 
-### Create data tables
+### 3.3 Create data tables
 
 This topic describes how to create a data table in the Tablestore console. Procedure
 1. Log on to the Tablestore console.
@@ -119,7 +134,7 @@ If you need to create a secondary index, perform the following operations: i. Tu
 7. Click OK.
 After a data table is created, you can view the data table in the T ables section. If the data table that you created is not displayed in the list of data tables, click the icon to refresh the list of data tables. After a data table is created, you can perform the following operations on the table: Click the name of the table or click an action in the Actions column of the table, click a tab on the Manage T able page that appears, and then perform specific operations. On the Basic Inf ormat ion tab, you can view the basic information, advanced features, primary key columns, predefined columns, and Stream information about the data table. On the Query Dat a tab, you can insert or update data, query data, view data details, and delete multiple rows of data at a time. On the Indexes tab, you can create secondary indexes, view details of the indexes, query data, and delete indexes. On the T unnels tab, you can enable the Stream feature, create a tunnel, show the list of channels, and delete a tunnel. On the Monit oring Indicat ors tab, you can view the monitoring metrics of different categories or operation types for a table or an index within a specified time range. Categories include service monitoring overview, average access latency, queries per second (QPS), number of rows, and traffic statistics. Click the icon in the Actions column of the table and choose Delet e from the shortcut menu. Click OK in the Delete Table dialog box. Not ice If you delete a data table, the table and the data in the table are permanently deleted from Tablestore and cannot be restored. Exercise caution when you perform this operation.
 
-### Read and write data in the
+### 3.4 Read and write data in the console
 
 console After a data table is created, you can use the Tablestore console to perform read and write operations on the data in the data table. Write data
 1. Log on to the Tablestore console.
@@ -170,7 +185,7 @@ click the Query Dat a tab. You can also click Query in the Actions column of the
 4. On the Query Dat a tab, select the row of data that you want to delete. Click Delet e.
 5. In the Delet e message, click OK.
 
-### Bind a VPC to a Tablestore
+### 3.5 Bind a VPC to a Tablestore instance
 
 instance After you bind a VPC to a Tablestore instance, you can access the Tablestore instance from the ECS instances in the VPC in the same region. Prerequisites A VPC that is within the same region as the Tablestore instance is created. After the VPC is created, create an ECS instance in the VPC. Procedure
 1. Log on to the Tablestore console.
@@ -183,7 +198,7 @@ The name of a VPC can contain only letters and digits and must start with a lett
 6. Click OK.
 After the VPC is bound to the instance, you can view the information of the VPC in the VPC List on the Net work Management tab. You can use the VPC address to access the Tablestore instance from the ECS instances in the VPC. After you bind a VPC, you can perform the following operations: Click VPC Inst ance List in the Actions column to view the VPC instances list, which contains the instance name, instance VPC name, and VPC domain name. Click Unbind in the Actions column to unbind the VPC from the instance. After the VPC is unbound, the ECS instance in the VPC can no longer access the Tablestore instance by using the VPC address. To access the Tablestore instance from the ECS instance, you must bind the VPC to the Tablestore instance again.
 
-### Use Tunnel Service
+### 3.6 Use Tunnel Service
 
 After the Stream feature is enabled, you can create tunnels for the data table to consume historical and incremental data in the data table. Background information Tunnel Service is built on the Tablestore API to provide tunnels that are used to consume data in full, incremental, and differential modes. You can create full, incremental, and differential tunnels and consume data that is stored in distributed manner through these tunnels in real time. Enable Stream After the Stream feature is enabled, the system periodically deletes expired Stream operation logs that have been stored longer than the specified period.
 1. Log on to the Table Store console.
@@ -251,9 +266,9 @@ consumption for the tunnel.
 
 `}`
 
-## Global secondary index
+## 4 Global secondary index
 
-### Usage notes
+### 4.1 Usage notes
 
 This topic describes the terms, limits, and precautions for global secondary indexes. Terms
 
@@ -268,7 +283,7 @@ This topic describes the terms, limits, and precautions for global secondary ind
 
 Limits The index table names must be unique in an instance. You can create a maximum of five index tables for a base table. If the limit is reached, the index table fails to be created. You can create a maximum of 20 predefined columns for a base table. If the limit is reached, the base table fails to be created. An index table can contain a maximum of four indexed columns, which are random combinations of the primary keys and predefined columns of the base table. If the limit is reached, the index table fails to be created. An index table can contain a maximum of eight attribute columns. If the limit is reached, the index table fails to be created. You can set the data type of an indexed column to STRING, INTEGER, or BINARY. The limits on index columns are the same as those on primary key columns of the base table. If an index table contains multiple columns, the size limit on the columns is the same as that on primary key columns of the base table. If you specify a column of the STRING or BINARY type as an attribute column of an index table, the limits on attribute columns are the same as those on attribute columns of the base table. You cannot create an index table on a table that has the time to live (TTL) parameter configured. If you want to create index tables on a table that has the TTL parameter configured, use DingTalk to contact technical support. You cannot create an index table from a base table that has the max versions parameter configured. If a base table has the max versions parameter configured, index tables fail to be created from the base table. You cannot configure the max versions parameter for a base table that is associated with an index table. You cannot customize versions when you write data to a base table that is associated with an index table. Otherwise, the data fails to be written to the base table. You cannot use the Stream feature in an index table. An indexed base table cannot contain repeated rows that have the same primary key during the same batch write operation. Otherwise, the data fails to be written to the base table. Usage notes Tablestore automatically adds all primary key columns of the base table to the index table. When you scan an index table, you must specify the range of primary key columns. The range can be anywhere from negative infinity to positive infinity. For example, a base table contains the primary key columns PK0 and PK1 and a predefined column Defined0. When you create an index for the Defined0 column, Tablestore generates an index table that has the primary key columns Defined0, PK0, and PK1. When you create an index for the Defined0 and PK1 columns, Tablestore generates an index table that has the primary key columns Defined0, PK1, and PK0. When you create an index for the PK1 column, Tablestore generates an index table that has the primary key columns PK1 and PK0. When you create an index table, you need only to specify the column that you want to index. Tablestore adds the other primary key columns of the central table to the index table. For example, a base table contains the primary key columns PK0 and PK1 and a predefined column Defined0. When you create an index for the Defined0 column, Tablestore generates the index table that has the primary key columns Defined0, PK0, and PK1. When you create an index for the PK1 column, Tablestore generates the index table that has the primary key columns PK1 and PK0. You can specify predefined columns as attribute columns in the base table. When you specify a predefined column of the base table as an attribute column of the index table, you can search this index table instead of the base table for the column value. However, this increases storage costs. Otherwise, you must query the base table based on the index table. You can choose between these methods. We recommend that you do not specify a column whose values are date or time as the first primary key column of an index table because it may slow down index table updates. We recommend that you hash columns related to the time or date and create indexes for the hashed columns. If you have similar requirements, use DingTalk to contact technical support. We recommend that you do not define a column of low cardinality or a column that contains enumerated values as the first primary key column of an index table. For example, the gender column restricts the horizontal scalability of the index table and leads to poor write performance.
 
-### Scenarios
+### 4.2 Scenarios
 
 Global secondary index allows you to create an index table based on a specified column. Data in the generated index is sorted by the specified index column. All data written to the base table is synchronized to the index asynchronously. If you only write data to a base table and query index tables created on the table, the query performance can be improved in most scenarios. This topic describes how to use a global secondary index to query phone records. For example, the following table contains a number of phone records.
 
@@ -291,13 +306,13 @@ Global secondary index allows you to create an index table based on a specified 
 | Duration , | and | BaseStationNumber |
 | nts the call recipient . Duration rep presents the base station number . |   |   |
 
-When you end a phone call, information about the call is written to this table. You can create global secondary indexes for different query scenarios. For example, you can create global secondary indexes whose primary key is `CalledNumber` or `BaseStationNumber` . Assume that you have the following query requirements: You want to query the rows where the value of CellNumber is `234567` . Tablestore uses a global ordering model, which sorts all rows by primary key and provides the `getRa` `nge` operation to perform sequential scans. When you use `getRange` to scan the base table for
+When you end a phone call, information about the call is written to this table. You can create global secondary indexes for different query scenarios. For example, you can create global secondary indexes whose primary key is `CalledNumber` or `BaseStationNumber` . Assume that you have the following query requirements: You want to query the rows where the value of CellNumber is `234567` . Tablestore uses a global ordering model, which sorts all rows by primary key and provides the `getRa` `nge` operation to perform sequential scans. When you use `getRange` to scan the base table for this example, you need only to set the minimum and maximum values of PK0 to `234567` , and set
 
 | 234567 |   | , and |
 |---|---|---|
 | 1 to | INT MAX _ |   |
 
-this example, you need only to set the minimum and maximum values of PK0 to `234567` , and set the minimum value of PK1 (call start time) to `0` and the maximum value of PK1 to `INT_MAX` .
+the minimum value of PK1 (call start time) to `0` and the maximum value of PK1 to `INT_MAX` .
 
 ```java
 private static void getRangeFromMainTable(SyncClient client, long cellNumber)

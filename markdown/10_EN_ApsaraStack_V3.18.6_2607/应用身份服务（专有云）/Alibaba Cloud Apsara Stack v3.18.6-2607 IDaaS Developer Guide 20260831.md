@@ -3,16 +3,252 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831"
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 555
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831.pdf"
+source_pdf: "b40a08747a2b961d_Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20IDaaS%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Developer Guide 20260831
 
-## API Reference
+## Table of Contents
 
-### API overview
+- 1 API Reference
+  - 1.1 API overview
+  - 1.2 Endpoints
+  - 1.3 Authorization information
+  - 1.4 API catalog
+    - 1.4.1 Instances
+      - 1.4.1.1 UpdateApsaraEiamInstanceDescription
+      - 1.4.1.2 DeleteApsaraEiamInstance
+      - 1.4.1.3 CreateApsaraEiamInstance
+      - 1.4.1.4 UpdateApsaraEiamInstanceQuota
+      - 1.4.1.5 ListApsaraEiamInstances
+      - 1.4.1.6 GetInstanceLicense
+    - 1.4.2 Applications
+      - 1.4.2.1 Basics
+        - 1.4.2.1.1 CreateApplication
+        - 1.4.2.1.2 DeleteApplication
+        - 1.4.2.1.3 UpdateApplicationDescription
+        - 1.4.2.1.4 EnableApplication
+        - 1.4.2.1.5 DisableApplication
+        - 1.4.2.1.6 GetApplication
+        - 1.4.2.1.7 ListApplications
+        - 1.4.2.1.8 ListApplicationsForNetworkZone
+        - 1.4.2.1.9 ListApplicationsForGroup
+        - 1.4.2.1.10 GetApplicationTemplate
+        - 1.4.2.1.11 UpdateApplicationInfo
+        - 1.4.2.1.12 ListApplicationsForNetworkAccessEndpoint
+      - 1.4.2.2 SSO
+        - 1.4.2.2.1 EnableApplicationSso
+        - 1.4.2.2.2 DisableApplicationSso
+        - 1.4.2.2.3 SetApplicationSsoConfig
+        - 1.4.2.2.4 GetApplicationSsoConfig
+      - 1.4.2.3 Application authorization
+        - 1.4.2.3.1 AuthorizeApplicationToUsers
+        - 1.4.2.3.2 AuthorizeApplicationToOrganizationalUnits
+        - 1.4.2.3.3 AuthorizeApplicationToGroups
+        - 1.4.2.3.4 RevokeApplicationFromUsers
+        - 1.4.2.3.5 RevokeApplicationFromOrganizationalUnits
+        - 1.4.2.3.6 RevokeApplicationFromGroups
+        - 1.4.2.3.7 UpdateApplicationAuthorizationType
+        - 1.4.2.3.8 ListUsersForApplication
+        - 1.4.2.3.9 ListOrganizationalUnitsForApplication
+        - 1.4.2.3.10 ListGroupsForApplication
+        - 1.4.2.3.11 ListApplicationsForOrganizationalUnit
+        - 1.4.2.3.12 ListApplicationsForUser
+      - 1.4.2.4 Client keys
+        - 1.4.2.4.1 CreateApplicationClientSecret
+        - 1.4.2.4.2 DeleteApplicationClientSecret
+        - 1.4.2.4.3 DisableApplicationClientSecret
+        - 1.4.2.4.4 EnableApplicationClientSecret
+        - 1.4.2.4.5 ListApplicationClientSecrets
+        - 1.4.2.4.6 ObtainApplicationClientSecret
+        - 1.4.2.4.7 UpdateApplicationClientSecretExpirationTime
+      - 1.4.2.5 Application tokens
+        - 1.4.2.5.1 CreateApplicationToken
+        - 1.4.2.5.2 EnableApplicationToken
+        - 1.4.2.5.3 DisableApplicationToken
+        - 1.4.2.5.4 UpdateApplicationTokenExpirationTime
+        - 1.4.2.5.5 ListApplicationTokens
+        - 1.4.2.5.6 ObtainApplicationToken
+        - 1.4.2.5.7 DeleteApplicationToken
+      - 1.4.2.6 Application accounts
+        - 1.4.2.6.1 AddApplicationAccountToUser
+        - 1.4.2.6.2 ListApplicationAccounts
+        - 1.4.2.6.3 ListApplicationAccountsForUser
+        - 1.4.2.6.4 RemoveApplicationAccountFromUser
+      - 1.4.2.7 Open API operations
+        - 1.4.2.7.1 EnableApplicationApiInvoke
+        - 1.4.2.7.2 DisableApplicationApiInvoke
+        - 1.4.2.7.3 SetApplicationGrantScope
+        - 1.4.2.7.4 GetApplicationGrantScope
+      - 1.4.2.8 Application account synchronization
+        - 1.4.2.8.1 DisableApplicationProvisioning
+        - 1.4.2.8.2 EnableApplicationProvisioning
+        - 1.4.2.8.3 SetApplicationProvisioningConfig
+        - 1.4.2.8.4 SetApplicationProvisioningScope
+        - 1.4.2.8.5 GetApplicationProvisioningScope
+        - 1.4.2.8.6 GetApplicationProvisioningConfig
+    - 1.4.3 Account management
+      - 1.4.3.1 CreateUser
+      - 1.4.3.2 UpdateUser
+      - 1.4.3.3 DeleteUser
+      - 1.4.3.4 AddUserToOrganizationalUnits
+      - 1.4.3.5 RemoveUserFromOrganizationalUnits
+      - 1.4.3.6 UpdateUserPassword
+      - 1.4.3.7 UpdateUserDescription
+      - 1.4.3.8 DisableUser
+      - 1.4.3.9 EnableUser
+      - 1.4.3.10 UnlockUser
+      - 1.4.3.11 SetUserPrimaryOrganizationalUnit
+      - 1.4.3.12 GetUser
+      - 1.4.3.13 ListUsers
+    - 1.4.4 Organization management
+      - 1.4.4.1 CreateOrganizationalUnit
+      - 1.4.4.2 Deletes an EIAM organization
+      - 1.4.4.3 UpdateOrganizationalUnit
+      - 1.4.4.4 DeleteOrganizationalUnitChildren
+      - 1.4.4.5 UpdateOrganizationalUnitParentId
+      - 1.4.4.6 UpdateOrganizationalUnitDescription
+      - 1.4.4.7 Query the information about the root EIAM organization in IDaaS
+      - 1.4.4.8 Queries the information about an EIAM organization.
+      - 1.4.4.9 Query information about EIAM organizations in a list
+      - 1.4.4.10 ListOrganizationalUnitParents
+    - 1.4.5 account group management
+      - 1.4.5.1 Create an EIAM account group in IDaaS
+      - 1.4.5.2 AddUsersToGroup
+      - 1.4.5.3 DeleteGroup
+      - 1.4.5.4 RemoveUsersFromGroup
+      - 1.4.5.5 UpdateGroup
+      - 1.4.5.6 UpdateGroupDescription
+      - 1.4.5.7 GetGroup
+      - 1.4.5.8 ListGroups
+      - 1.4.5.9 ListUsersForGroup
+      - 1.4.5.10 ListGroupsForUser
+    - 1.4.6 IdP management
+      - 1.4.6.1 Create an identity provider
+      - 1.4.6.2 Delete an IdP
+      - 1.4.6.3 UpdateIdentityProvider
+      - 1.4.6.4 Obtain an IdP
+      - 1.4.6.5 ListIdentityProviders
+      - 1.4.6.6 Disable data push from an IdP
+      - 1.4.6.7 Enable synchronization from an IdP
+      - 1.4.6.8 SetIdentityProviderUdPullConfiguration
+      - 1.4.6.9 Query the pulling configurations of an IdP
+    - 1.4.7 Password policies
+      - 1.4.7.1 SetForgetPasswordConfiguration
+      - 1.4.7.2 SetPasswordInitializationConfiguration
+      - 1.4.7.3 SetPasswordExpirationConfiguration
+      - 1.4.7.4 SetPasswordHistoryConfiguration
+      - 1.4.7.5 SetPasswordComplexityConfiguration
+      - 1.4.7.6 Queries the forgot password policy of an EIAM instance
+      - 1.4.7.7 Queries the password initialization configurations of an EIAM) instance
+      - 1.4.7.8 GetPasswordHistoryConfiguration
+      - 1.4.7.9 Queries the password expiration policy of an EIAM instance.
+      - 1.4.7.10 Query the password complexity policy of an EIAM instance of IDaaS
+    - 1.4.8 Synchronization
+      - 1.4.8.1 ListSynchronizationJobs
+      - 1.4.8.2 Runs a synchronization task
+      - 1.4.8.3 GetSynchronizationJob
+    - 1.4.9 Endpoints
+      - 1.4.9.1 CreateNetworkAccessEndpoint
+      - 1.4.9.2 DeleteNetworkAccessEndpoint
+      - 1.4.9.3 UpdateNetworkAccessEndpointName
+      - 1.4.9.4 Query the regions that support network endpoints of IDaaS
+      - 1.4.9.5 ListNetworkAccessEndpointAvailableZones
+      - 1.4.9.6 GetNetworkAccessEndpoint
+      - 1.4.9.7 ListNetworkAccessEndpoints
+      - 1.4.9.8 ListNetworkAccessPaths
+      - 1.4.9.9 Query the VPCs within a user account when creating a network endpoint
+      - 1.4.9.10 ListVSwitches
+      - 1.4.9.11 ListNetworkInterfaces
+      - 1.4.9.12 ListNatGateways
+      - 1.4.9.13 CheckServiceLinkedRoleExistence
+      - 1.4.9.14 CreateServiceLinkedRole
+    - 1.4.10 Brand
+      - 1.4.10.1 CreateBrand
+      - 1.4.10.2 UpdateBrand
+    - 1.4.11 Network zones
+      - 1.4.11.1 Create a network zone
+      - 1.4.11.2 DeleteNetworkZone
+      - 1.4.11.3 UpdateNetworkZone
+      - 1.4.11.4 Update the description of a network zone object
+      - 1.4.11.5 ListNetworkZones
+      - 1.4.11.6 GetNetworkZone
+    - 1.4.12 Others
+      - 1.4.12.1 DisableIdentityProviderAuthn
+      - 1.4.12.2 EnableIdentityProviderAuthn
+      - 1.4.12.3 ListApplicationSupportedProvisionProtocolTypes
+      - 1.4.12.4 Delete a brand
+      - 1.4.12.5 Disables a brand
+      - 1.4.12.6 EnableBrand
+      - 1.4.12.7 GetBrand
+      - 1.4.12.8 GetLoginRedirectApplicationForBrand
+      - 1.4.12.9 Query a list of brands
+      - 1.4.12.10 SetLoginRedirectApplicationForBrand
+      - 1.4.12.11 Changes the brand associated with a domain name
+  - 1.5 Release notes
+- 2 API Reference
+  - 2.1 List of operations by function
+  - 2.2 Endpoints
+  - 2.3 API operations
+    - 2.3.1 OIDC API
+      - 2.3.1.1 GenerateToken
+      - 2.3.1.2 GetUserInfo
+      - 2.3.1.3 RevokeToken
+    - 2.3.2 API operations related to authorization scope
+      - 2.3.2.1 GetApplicationProvisioningScope
+    - 2.3.3 Organization management
+      - 2.3.3.1 CreateOrganizationalUnit
+      - 2.3.3.2 PatchOrganizationalUnit
+      - 2.3.3.3 GetOrganizationalUnit
+      - 2.3.3.4 DeleteOrganizationalUnit
+      - 2.3.3.5 ListOrganizationalUnits
+      - 2.3.3.6 ListOrganizationalUnitParentIds
+      - 2.3.3.7 GetOrganizationalUnitIdByExternalId
+    - 2.3.4 Account management
+      - 2.3.4.1 CreateUser
+      - 2.3.4.2 PatchUser
+      - 2.3.4.3 GetUser
+      - 2.3.4.4 UpdateUserPassword - Update the password of an EIAM account
+      - 2.3.4.5 DeleteUser
+      - 2.3.4.6 ListUsers
+      - 2.3.4.7 EnableUser
+      - 2.3.4.8 DisableUser
+      - 2.3.4.9 GetUserIdByEmail
+      - 2.3.4.10 GetUserIdByPhoneNumber
+      - 2.3.4.11 GetUserIdByUserExternalId
+      - 2.3.4.12 GetUserIdByUsername
+      - 2.3.4.13 SetUserPrimaryOrganizationalUnit - Set the primary organization for an EIAM account
+      - 2.3.4.14 AddUserToOrganizationalUnits - Add an EIAM account to multiple EIAM organizations
+      - 2.3.4.15 RemoveUserFromOrganizationalUnits - Remove an EIAM account from multiple organizations
+      - 2.3.4.16 ListGroupsForUser - List the groups for an EIAM account
+    - 2.3.5 API operations related to account group management
+      - 2.3.5.1 GetGroup
+      - 2.3.5.2 CreateGroup
+      - 2.3.5.3 PatchGroup
+      - 2.3.5.4 DeleteGroup
+      - 2.3.5.5 ListGroups
+      - 2.3.5.6 AddUsersToGroup
+      - 2.3.5.7 RemoveUsersFromGroup
+      - 2.3.5.8 ListUsersForGroup
+- 3 API change records
+- 4 Integrate with self-managed applications
+  - 4.1 Connect to IDaaS for SSO
+    - 4.1.1 Implement SSO for custom applications
+    - 4.1.2 Connect self-developed Java applications that use the Spring Boot framework to IDaaS for SSO
+  - 4.2 Connect to IDaaS for account synchronization
+    - 4.2.1 Overview
+    - 4.2.2 Address book events
+    - 4.2.3 Connect Java applications to IDaaS for account synchronization
+    - 4.2.4 SCIM 2.0 operations supported by EIAM
+  - 4.3 Application development API reference
+    - 4.3.1 API operations for application development
+  - 4.4 Open source code
+
+## 1 API Reference
+
+### 1.1 API overview
 
 You can use Apsara Stack SDKs to call the API operations of IDentity as a Service (IDaaS), as shown in the following example:
 
@@ -101,8 +337,6 @@ Param, queryParam, bodyParam);
             System.out.println("ErrorMessage=" + e.getErrMsg());
             System.out.println("ResponseId=" + e.getRequestId());
 ```
-
-1. List of operations by function
 
 **1.1 Instance management**
 
@@ -326,8 +560,6 @@ Param, queryParam, bodyParam);
 | 5 | ListNetworkZones | ListNetworkZones | Queries a list of network zones. |
 | 6 | GetNetworkZone | GetNetworkZone | Queries a network zone. |
 
-**1.12 Others**
-
 | No. | API operation | Related topic | Description |
 |---|---|---|---|
 | 1 | DisableIdentityProviderAuth n | DisableIdentityProviderAut hn | Disables the IdP authentication feature. |
@@ -344,13 +576,13 @@ Param, queryParam, bodyParam);
 | 10 | SetLoginRedirectApplication ForBrand | SetLoginRedirectApplicatio nForBrand | Configures the application to which users are redirected after login for a brand. |
 | 11 | UpdateDomainBrand | UpdateDomainBrand | Modifies the brand associated with a domain name. |
 
-### Endpoints
+### 1.2 Endpoints
 
 IDentity as a Service (IDaaS) provides OpenAPI operations. Business applications can manage IDaaS resources by calling the API operations. IDaaS endpoints are in the following format: api-idaas-biz.${global_region}.${internet_domain} To obtain the value of global_region and internet_domain, log in to the Apsara Uni-manager Management Console. In the top navigation bar, choose **Security > Identity and O&M**
 **Security > IDaaS**. On the IDaaS page, find the required instance and click Console in the
 Actions column. On the Quick Start page, view the **URL** in the upper-right corner. In the following example: The value of global_region is cn-ece-entity121-d01. The value of internet_domain is cloud.ece-group-121.com.
 
-### Authorization information
+### 1.3 Authorization information
 
 Resource Access Management (RAM) is a service provided by Apsara Stack to manage user identities and resource access permissions. RAM allows you to grant minimum permissions to RAM users without the need to share the AccessKey pair of your Apsara Stack tenant account. RAM uses policies to define permissions. This topic describes the elements such as Action, Resource, and Condition that are defined by IDentity as a Service (IDaaS). You can use the elements to create policies in RAM. The code (RamCode) that is used in RAM to indicate IDaaS is eiam. You can grant permissions on IDaaS at the resource level.
 
@@ -2335,11 +2567,11 @@ IDaaS does not define service-specific condition keys. For information about com
 
 You can create a custom policy and attach the policy to a RAM user, RAM user group, or RAM role. For more information, see the following topics: Create a custom policy Grant permissions to a RAM user Grant permissions to a RAM user group Grant permissions to a RAM role
 
-### API catalog
+### 1.4 API catalog
 
-#### Instances
+#### 1.4.1 Instances
 
-##### UpdateApsaraEiamInstanceDescription
+##### 1.4.1.1 UpdateApsaraEiamInstanceDescription
 
 Modifies the description of an instance.
 
@@ -2375,7 +2607,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### DeleteApsaraEiamInstance
+##### 1.4.1.2 DeleteApsaraEiamInstance
 
 Deletes an instance
 
@@ -2410,7 +2642,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### CreateApsaraEiamInstance
+##### 1.4.1.3 CreateApsaraEiamInstance
 
 Creates an instance.
 
@@ -2450,7 +2682,7 @@ Sample success responses `JSON` format
  "InstanceId":"idaas_ue2jvisn35ea5lmthk267xxxxx"
 ```
 
-##### UpdateApsaraEiamInstanceQuota
+##### 1.4.1.4 UpdateApsaraEiamInstanceQuota
 
 Changes the instance specifications.
 
@@ -2488,7 +2720,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### ListApsaraEiamInstances
+##### 1.4.1.5 ListApsaraEiamInstances
 
 Queries a list of Employee Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
 
@@ -2594,7 +2826,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### GetInstanceLicense
+##### 1.4.1.6 GetInstanceLicense
 
 Queries the valid license of an Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) instance.
 
@@ -2663,11 +2895,11 @@ Sample success responses `JSON` format
   "Edition":"free"
 ```
 
-#### Applications
+#### 1.4.2 Applications
 
-##### Basics
+##### 1.4.2.1 Basics
 
-###### CreateApplication
+###### 1.4.2.1.1 CreateApplication
 
 Creates an application on an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -2713,7 +2945,7 @@ Sample responses `JSON` format
  "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2xxxx"
 ```
 
-###### DeleteApplication
+###### 1.4.2.1.2 DeleteApplication
 
 Deletes an Employee Identity and Access Management (EIAM) application of Identity as a Service (IDaaS).
 
@@ -2749,7 +2981,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### UpdateApplicationDescription
+###### 1.4.2.1.3 UpdateApplicationDescription
 
 Modifies the description of an Employee Identity and Access Management (EIAM) application of Identity as a Service (IDaaS).
 
@@ -2786,7 +3018,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### EnableApplication
+###### 1.4.2.1.4 EnableApplication
 
 Enables an Employee Identity and Access Management (EIAM) application.
 
@@ -2822,7 +3054,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### DisableApplication
+###### 1.4.2.1.5 DisableApplication
 
 Disables an enabled application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). All features of an IDaaS EIAM application cannot be used if you disable the application.
 
@@ -2858,7 +3090,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### GetApplication
+###### 1.4.2.1.6 GetApplication
 
 Queries the detailed information about an Employee Identity and Access Management (EIAM) application.
 
@@ -2942,7 +3174,7 @@ Sample success responses `JSON` format
   "AuthorizationType":"authorize_required"
 ```
 
-###### ListApplications
+###### 1.4.2.1.7 ListApplications
 
 Queries the information about one or more Employee Identity and Access Management (EIAM) applications by page.
 
@@ -3022,7 +3254,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### ListApplicationsForNetworkZone
+###### 1.4.2.1.8 ListApplicationsForNetworkZone
 
 Queries a list of applications associated with a network zone.
 
@@ -3088,7 +3320,7 @@ Sample success responses `JSON` format
  "MaxResults":10
 ```
 
-###### ListApplicationsForGroup
+###### 1.4.2.1.9 ListApplicationsForGroup
 
 Queries a list of applications that an Enterprise Identity Access Management (EIAM) group can access.
 
@@ -3142,7 +3374,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### GetApplicationTemplate
+###### 1.4.2.1.10 GetApplicationTemplate
 
 Queries the information about an application template in Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM).
 
@@ -3222,7 +3454,7 @@ tps-xxx-xxx.png",
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### UpdateApplicationInfo
+###### 1.4.2.1.11 UpdateApplicationInfo
 
 Modifies the basic information of an Employee Identity and Access Management (EIAM) application.
 
@@ -3319,9 +3551,9 @@ Sample responses `JSON` format
 
 `]`
 
-##### SSO
+##### 1.4.2.2 SSO
 
-###### EnableApplicationSso
+###### 1.4.2.2.1 EnableApplicationSso
 
 Enables the single sign-on (SSO) feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -3357,7 +3589,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### DisableApplicationSso
+###### 1.4.2.2.2 DisableApplicationSso
 
 Disables the single sign-on (SSO) feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). This way, employees cannot log in to the application by using SSO.
 
@@ -3393,7 +3625,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### SetApplicationSsoConfig
+###### 1.4.2.2.3 SetApplicationSsoConfig
 
 Configures the single sign-on (SSO) attributes of an Enterprise Identity Access Management (EIAM) application.
 
@@ -3490,7 +3722,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### GetApplicationSsoConfig
+###### 1.4.2.2.4 GetApplicationSsoConfig
 
 Queries the single sign-on (SSO) configuration attributes of an application in Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM)).
 
@@ -3670,9 +3902,9 @@ Sample success responses `JSON` format
    "GrantTypes":""
 ```
 
-##### Application authorization
+##### 1.4.2.3 Application authorization
 
-###### AuthorizeApplicationToUsers
+###### 1.4.2.3.1 AuthorizeApplicationToUsers
 
 Grants the permissions to access an application to multiple accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) at a time.
 
@@ -3748,7 +3980,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### AuthorizeApplicationToGroups
+###### 1.4.2.3.3 AuthorizeApplicationToGroups
 
 Grants the permissions to access an application to multiple account groups in Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM) at a time.
 
@@ -3785,7 +4017,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### RevokeApplicationFromUsers
+###### 1.4.2.3.4 RevokeApplicationFromUsers
 
 Revokes the access permissions on an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
 
@@ -3867,7 +4099,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### RevokeApplicationFromGroups
+###### 1.4.2.3.6 RevokeApplicationFromGroups
 
 Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM).
 
@@ -3904,7 +4136,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### UpdateApplicationAuthorizationType
+###### 1.4.2.3.7 UpdateApplicationAuthorizationType
 
 Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
 
@@ -3941,7 +4173,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### ListUsersForApplication
+###### 1.4.2.3.8 ListUsersForApplication
 
 Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
 
@@ -3988,7 +4220,7 @@ Sample responses `JSON` format
 
 `]`
 
-###### ListOrganizationalUnitsForApplication
+###### 1.4.2.3.9 ListOrganizationalUnitsForApplication
 
 Queries the organizations that are allowed to access an Enterprise Identity Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
 
@@ -4038,7 +4270,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### ListGroupsForApplication
+###### 1.4.2.3.10 ListGroupsForApplication
 
 Queries the account groups that are granted permissions to access an application and displays the results by page. The IDs of the account groups are returned. To query the detailed information about the account groups, call the GetGroup operation.
 
@@ -4085,7 +4317,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### ListApplicationsForOrganizationalUnit
+###### 1.4.2.3.11 ListApplicationsForOrganizationalUnit
 
 Queries the applications that an Enterprise Identity Access Management (EIAM) organization can access. The return result includes the IDs of the applications. To query the detailed information about the applications, call the GetApplication operation.
 
@@ -4139,7 +4371,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### ListApplicationsForUser
+###### 1.4.2.3.12 ListApplicationsForUser
 
 Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
 
@@ -4197,9 +4429,9 @@ Sample responses `JSON` format
 
 `]`
 
-##### Client keys
+##### 1.4.2.4 Client keys
 
-###### CreateApplicationClientSecret
+###### 1.4.2.4.1 CreateApplicationClientSecret
 
 Creates a client key for an Enterprise Identity Access Management (EIAM) application. An EIAM application can have at most two client keys.
 
@@ -4243,7 +4475,7 @@ Sample success responses `JSON` format
   "ClientId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
 
-###### DeleteApplicationClientSecret
+###### 1.4.2.4.2 DeleteApplicationClientSecret
 
 Deletes a client key for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM)).
 
@@ -4280,7 +4512,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### DisableApplicationClientSecret
+###### 1.4.2.4.3 DisableApplicationClientSecret
 
 Disables a client key of an Enterprise Identity Access Management (EIAM) application.
 
@@ -4317,7 +4549,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### EnableApplicationClientSecret
+###### 1.4.2.4.4 EnableApplicationClientSecret
 
 Enables a client key for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -4354,7 +4586,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### ListApplicationClientSecrets
+###### 1.4.2.4.5 ListApplicationClientSecrets
 
 Queries all client keys of an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). The returned key secrets are masked. To obtain unmasked key secrets, call the ObtainApplicationClientSecret operation.
 
@@ -4415,7 +4647,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### ObtainApplicationClientSecret
+###### 1.4.2.4.6 ObtainApplicationClientSecret
 
 Queries a client key of an Enterprise Identity Access Management (EIAM) application. The returned key is masked. To query the unmasked key, call the ListApplicationClientSecrets operation.
 
@@ -4512,9 +4744,9 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Application tokens
+##### 1.4.2.5 Application tokens
 
-###### CreateApplicationToken
+###### 1.4.2.5.1 CreateApplicationToken
 
 Creates an application token.
 
@@ -4565,7 +4797,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### EnableApplicationToken
+###### 1.4.2.5.2 EnableApplicationToken
 
 Enables an application token.
 
@@ -4602,7 +4834,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### DisableApplicationToken
+###### 1.4.2.5.3 DisableApplicationToken
 
 Disables an application token.
 
@@ -4639,7 +4871,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### UpdateApplicationTokenExpirationTime
+###### 1.4.2.5.4 UpdateApplicationTokenExpirationTime
 
 Updates the expiration time of an application token.
 
@@ -4677,7 +4909,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### ListApplicationTokens
+###### 1.4.2.5.5 ListApplicationTokens
 
 Queries a list of application tokens.
 
@@ -4749,7 +4981,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### ObtainApplicationToken
+###### 1.4.2.5.6 ObtainApplicationToken
 
 Queries an application token.
 
@@ -4806,7 +5038,7 @@ Sample success responses `JSON` format
   "ExpirationTime":1735610950000
 ```
 
-###### DeleteApplicationToken
+###### 1.4.2.5.7 DeleteApplicationToken
 
 Deletes an application token.
 
@@ -4843,9 +5075,9 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Application accounts
+##### 1.4.2.6 Application accounts
 
-###### AddApplicationAccountToUser
+###### 1.4.2.6.1 AddApplicationAccountToUser
 
 Adds an application account for an EIAM application.
 
@@ -4885,7 +5117,7 @@ Sample success responses `JSON` format
  "ApplicationAccountId":"aac_m6z7awz5kresi2ezgajsbkxxxx"
 ```
 
-###### ListApplicationAccounts
+###### 1.4.2.6.2 ListApplicationAccounts
 
 Queries a list of application accounts that belong to an Employee Identity and Access Management (EIAM) application by page.
 
@@ -4960,7 +5192,7 @@ Sample responses `JSON` format
 
 `]`
 
-###### ListApplicationAccountsForUser
+###### 1.4.2.6.3 ListApplicationAccountsForUser
 
 Queries all application accounts of a user for an Enterprise Identity Access Management (EIAM) application.
 
@@ -5034,7 +5266,7 @@ Sample success responses `JSON` format
 
 `]`
 
-###### RemoveApplicationAccountFromUser
+###### 1.4.2.6.4 RemoveApplicationAccountFromUser
 
 Deletes the application account of an employee under the current application.
 
@@ -5078,9 +5310,9 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Open API operations
+##### 1.4.2.7 Open API operations
 
-###### EnableApplicationApiInvoke
+###### 1.4.2.7.1 EnableApplicationApiInvoke
 
 Enables the Developer API feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5116,7 +5348,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### DisableApplicationApiInvoke
+###### 1.4.2.7.2 DisableApplicationApiInvoke
 
 Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
 
@@ -5152,7 +5384,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### SetApplicationGrantScope
+###### 1.4.2.7.3 SetApplicationGrantScope
 
 Configures the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
 
@@ -5193,7 +5425,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### GetApplicationGrantScope
+###### 1.4.2.7.4 GetApplicationGrantScope
 
 Queries the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
 
@@ -5234,9 +5466,9 @@ Sample success responses `JSON` format
 [\"urn:alibaba:idaas:scope:user:read_all\",\"urn:alibaba:idaas:scope:user:manageall\"]"
 ```
 
-##### Application account synchronization
+##### 1.4.2.8 Application account synchronization
 
-###### DisableApplicationProvisioning
+###### 1.4.2.8.1 DisableApplicationProvisioning
 
 Disables the account synchronization feature for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5272,7 +5504,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### EnableApplicationProvisioning
+###### 1.4.2.8.2 EnableApplicationProvisioning
 
 Enables the account synchronization feature for an Employee Identity and Access Management (EIAM) application.
 
@@ -5308,7 +5540,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### SetApplicationProvisioningConfig
+###### 1.4.2.8.3 SetApplicationProvisioningConfig
 
 Configures the account synchronization feature for an Enterprise Identity Access Management (EIAM) application.
 
@@ -5373,7 +5605,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### SetApplicationProvisioningScope
+###### 1.4.2.8.4 SetApplicationProvisioningScope
 
 Configures the account synchronization scope of an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). This scope is the same as the scope within which developers can call the Developer API operations to query and manage accounts.
 
@@ -5414,7 +5646,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-###### GetApplicationProvisioningScope
+###### 1.4.2.8.5 GetApplicationProvisioningScope
 
 Queries the account synchronization scope of an Employee Identity and Access Management (EIAM) application. This scope also specifies the accounts that Developer API can query and manage.
 
@@ -5463,7 +5695,7 @@ Sample success responses `JSON` format
   "OrganizationalUnitIds":""
 ```
 
-###### GetApplicationProvisioningConfig
+###### 1.4.2.8.6 GetApplicationProvisioningConfig
 
 Queries the configuration of the account synchronization feature for an application in Identityas-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5583,9 +5815,9 @@ hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtz
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-#### Account management
+#### 1.4.3 Account management
 
-##### CreateUser
+##### 1.4.3.1 CreateUser
 
 Creates an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) for an IDaaS EIAM instance.
 
@@ -5646,7 +5878,7 @@ Sample success responses `JSON` format
  "UserId":"user_d6sbsuumeta4h66ec3il7yxxxx"
 ```
 
-##### UpdateUser
+##### 1.4.3.2 UpdateUser
 
 Updates the basic information about an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -5693,7 +5925,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### DeleteUser
+##### 1.4.3.3 DeleteUser
 
 Deletes an Enterprise Identity Access Management (EIAM) account. If you delete an EIAM account, the information related to the account is cleared.
 
@@ -5729,7 +5961,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### AddUserToOrganizationalUnits
+##### 1.4.3.4 AddUserToOrganizationalUnits
 
 Adds an Enterprise Identity Access Management (EIAM) account to multiple Identity as a Service (IDaaS) EIAM organizations. If the account already exists in an organization, a success response is returned.
 
@@ -5766,7 +5998,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### RemoveUserFromOrganizationalUnits
+##### 1.4.3.5 RemoveUserFromOrganizationalUnits
 
 Removes an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) from multiple IDaaS EIAM organizations. You cannot remove an account from a primary organization.
 
@@ -5803,7 +6035,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateUserPassword
+##### 1.4.3.6 UpdateUserPassword
 
 Changes the password of an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The password must meet the complexity rules in the IDaaS console.
 
@@ -5845,7 +6077,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateUserDescription
+##### 1.4.3.7 UpdateUserDescription
 
 Modifies the description of an Enterprise Identity Access Management (EIAM) account.
 
@@ -5885,7 +6117,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### DisableUser
+##### 1.4.3.8 DisableUser
 
 Disables an Enterprise Identity Access Management (EIAM) account. If the account is already disabled, a success response is returned.
 
@@ -5921,7 +6153,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### EnableUser
+##### 1.4.3.9 EnableUser
 
 Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
 
@@ -5961,7 +6193,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UnlockUser
+##### 1.4.3.10 UnlockUser
 
 Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
 
@@ -6001,7 +6233,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### SetUserPrimaryOrganizationalUnit
+##### 1.4.3.11 SetUserPrimaryOrganizationalUnit
 
 Configures the primary organization to which an Employee Identity and Access Management (EIAM) account belongs. The account is removed from its original primary organization and added to the new primary organization.
 
@@ -6044,7 +6276,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### GetUser
+##### 1.4.3.12 GetUser
 
 Queries the detailed information about an Enterprise Identity Access Management (EIAM) account.
 
@@ -6186,7 +6418,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### ListUsers
+##### 1.4.3.13 ListUsers
 
 Queries the details of accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) by page.
 
@@ -6305,9 +6537,9 @@ Sample success responses `JSON` format
 
 `]`
 
-#### Organization management
+#### 1.4.4 Organization management
 
-##### CreateOrganizationalUnit
+##### 1.4.4.1 CreateOrganizationalUnit
 
 Creates an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) within a specific organization.
 
@@ -6348,7 +6580,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Deletes an EIAM organization
+##### 1.4.4.2 Deletes an EIAM organization
 
 Deletes an Employee Identity and Access Management (EIAM) organization in Identity as a Service (IDaaS). If the organization contains EIAM accounts or child organizations, the delete operation fails.
 
@@ -6384,7 +6616,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateOrganizationalUnit
+##### 1.4.4.3 UpdateOrganizationalUnit
 
 Updates the basic information about an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). By default, if you do not specify the request parameters, the organization is not modified.
 
@@ -6424,7 +6656,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### DeleteOrganizationalUnitChildren
+##### 1.4.4.4 DeleteOrganizationalUnitChildren
 
 Deletes information about an Employee Identity and Access Management (EIAM) organization and forcefully deletes all accounts and sub-organizations in the organization.
 
@@ -6460,7 +6692,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateOrganizationalUnitParentId
+##### 1.4.4.5 UpdateOrganizationalUnitParentId
 
 Updates the parent organization ID of an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). In this case, the organization is moved from a parent node to a new node.
 
@@ -6497,7 +6729,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateOrganizationalUnitDescription
+##### 1.4.4.6 UpdateOrganizationalUnitDescription
 
 Modifies the description of an Employee Identity and Access Management (EIAM) organization.
 
@@ -6534,7 +6766,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Query the information about the root EIAM
+##### 1.4.4.7 Query the information about the root EIAM organization in IDaaS
 
 **organization in IDaaS**
 
@@ -6600,7 +6832,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Queries the information about an EIAM
+##### 1.4.4.8 Queries the information about an EIAM organization.
 
 **organization.**
 
@@ -6679,7 +6911,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Query information about EIAM
+##### 1.4.4.9 Query information about EIAM organizations in a list
 
 **organizations in a list**
 
@@ -6757,7 +6989,7 @@ Sample success responses
 
 `]`
 
-##### ListOrganizationalUnitParents
+##### 1.4.4.10 ListOrganizationalUnitParents
 
 Queries a list of all parent organizations of an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). The results are sorted in descending order based on the level of the parent organizations of the IDaaS EIAM organization.
 
@@ -6801,9 +7033,9 @@ Sample success responses `JSON` format
 
 `]`
 
-#### account group management
+#### 1.4.5 account group management
 
-##### Create an EIAM account group in IDaaS
+##### 1.4.5.1 Create an EIAM account group in IDaaS
 
 Creates an Employee Identity and Access Management (EIAM) account group in Identity as a Service (IDaaS).
 
@@ -6847,7 +7079,7 @@ Sample success responses
  "GroupId":"group_d6sbsuumeta4h66ec3il7yxxxx"
 ```
 
-##### AddUsersToGroup
+##### 1.4.5.2 AddUsersToGroup
 
 Adds Employee Identity and Access Management (EIAM) accounts of Identity as a Service (IDaaS) to an EIAM account group.
 
@@ -6890,7 +7122,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### DeleteGroup
+##### 1.4.5.3 DeleteGroup
 
 Deletes the information of an account group in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -6926,7 +7158,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### RemoveUsersFromGroup
+##### 1.4.5.4 RemoveUsersFromGroup
 
 Removes multiple accounts in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) from an IDaaS EIAM account group.
 
@@ -6967,7 +7199,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateGroup
+##### 1.4.5.5 UpdateGroup
 
 Updates the information about an account group in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). If the information is empty, the account group is not updated by default.
 
@@ -7003,7 +7235,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateGroupDescription
+##### 1.4.5.6 UpdateGroupDescription
 
 Updates the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account group.
 
@@ -7040,7 +7272,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### GetGroup
+##### 1.4.5.7 GetGroup
 
 Queries the details of an account group in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -7104,7 +7336,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### ListGroups
+##### 1.4.5.8 ListGroups
 
 Queries a list of account groups in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM)).
 
@@ -7175,7 +7407,7 @@ Sample success responses `JSON` format
 
 `]`
 
-##### ListUsersForGroup
+##### 1.4.5.9 ListUsersForGroup
 
 Queries a list of accounts that belong to an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 
@@ -7229,7 +7461,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### ListGroupsForUser
+##### 1.4.5.10 ListGroupsForUser
 
 Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
 
@@ -7280,9 +7512,9 @@ Sample responses `JSON` format
 
 `]`
 
-#### IdP management
+#### 1.4.6 IdP management
 
-##### Create an identity provider
+##### 1.4.6.1 Create an identity provider
 
 Creates an identity provider (IdP).
 
@@ -7423,7 +7655,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Delete an IdP
+##### 1.4.6.2 Delete an IdP
 
 Deletes an identity provider (IdP).
 
@@ -7458,7 +7690,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateIdentityProvider
+##### 1.4.6.3 UpdateIdentityProvider
 
 Updates the basic configuration of an IdP.
 
@@ -7538,7 +7770,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Obtain an IdP
+##### 1.4.6.4 Obtain an IdP
 
 Obtains an identity provider (IdP).
 
@@ -7832,7 +8064,7 @@ Sample success responses
   "IdentityProviderExternalId":"idp_xxxx"
 ```
 
-##### ListIdentityProviders
+##### 1.4.6.5 ListIdentityProviders
 
 Queries the list of identity providers (IdPs).
 
@@ -7926,7 +8158,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### Disable data push from an IdP
+##### 1.4.6.6 Disable data push from an IdP
 
 Disable data push from an identity provider (IdP).
 
@@ -7961,7 +8193,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Enable synchronization from an IdP
+##### 1.4.6.7 Enable synchronization from an IdP
 
 This topic describes how to enable synchronization from an identity provider (IdP).
 
@@ -7997,7 +8229,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### SetIdentityProviderUdPullConfiguration
+##### 1.4.6.8 SetIdentityProviderUdPullConfiguration
 
 Modifies the inbound synchronization configuration for an identity provider (IdP).
 
@@ -8062,7 +8294,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Query the pulling configurations of an IdP
+##### 1.4.6.9 Query the pulling configurations of an IdP
 
 Queries the pulling configurations of an identity provider (IdP).
 
@@ -8167,9 +8399,9 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-#### Password policies
+#### 1.4.7 Password policies
 
-##### SetForgetPasswordConfiguration
+##### 1.4.7.1 SetForgetPasswordConfiguration
 
 Configures a forgot password policy for an Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) instance.
 
@@ -8206,7 +8438,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### SetPasswordInitializationConfiguration
+##### 1.4.7.2 SetPasswordInitializationConfiguration
 
 Configures a password initialization policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8245,7 +8477,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### SetPasswordExpirationConfiguration
+##### 1.4.7.3 SetPasswordExpirationConfiguration
 
 Configures a password expiration policy for an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8294,7 +8526,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### SetPasswordHistoryConfiguration
+##### 1.4.7.4 SetPasswordHistoryConfiguration
 
 Configures a password history policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8329,7 +8561,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### SetPasswordComplexityConfiguration
+##### 1.4.7.5 SetPasswordComplexityConfiguration
 
 Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8364,7 +8596,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Queries the forgot password policy of an
+##### 1.4.7.6 Queries the forgot password policy of an EIAM instance
 
 **EIAM instance**
 
@@ -8416,7 +8648,7 @@ Sample success responses `JSON` format
   "EnableSms":true
 ```
 
-##### Queries the password initialization
+##### 1.4.7.7 Queries the password initialization configurations of an EIAM) instance
 
 **configurations of an EIAM) instance**
 
@@ -8463,7 +8695,7 @@ Sample success responses `JSON` format
   "PasswordInitializationStatus":"enabled"
 ```
 
-##### GetPasswordHistoryConfiguration
+##### 1.4.7.8 GetPasswordHistoryConfiguration
 
 Queries the password history configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 
@@ -8505,7 +8737,7 @@ Sample responses `JSON` format
   "PasswordHistoryMaxRetention":3
 ```
 
-##### Queries the password expiration policy of
+##### 1.4.7.9 Queries the password expiration policy of an EIAM instance.
 
 **an EIAM instance.**
 
@@ -8577,7 +8809,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Query the password complexity policy of
+##### 1.4.7.10 Query the password complexity policy of an EIAM instance of IDaaS
 
 **an EIAM instance of IDaaS**
 
@@ -8628,9 +8860,9 @@ Sample success responses
   "PasswordMinLength":3
 ```
 
-#### Synchronization
+#### 1.4.8 Synchronization
 
-##### ListSynchronizationJobs
+##### 1.4.8.1 ListSynchronizationJobs
 
 Queries a list of synchronization tasks.
 
@@ -9154,7 +9386,7 @@ Sample success responses `JSON` format
 
 `]`
 
-##### Runs a synchronization task
+##### 1.4.8.2 Runs a synchronization task
 
 Runs a synchronization task. A new synchronization task will be created and immediately executed.
 
@@ -9206,7 +9438,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### GetSynchronizationJob
+##### 1.4.8.3 GetSynchronizationJob
 
 Obtains the information about a single synchronization job.
 
@@ -9869,9 +10101,9 @@ Sample success responses `JSON` format
 </SynchronizationJob>
 ```
 
-#### Endpoints
+#### 1.4.9 Endpoints
 
-##### CreateNetworkAccessEndpoint
+##### 1.4.9.1 CreateNetworkAccessEndpoint
 
 Creates a dedicated endpoint.
 
@@ -9913,7 +10145,7 @@ Sample responses `JSON` format
  "NetworkAccessEndpointId":"nae_examplexxxx"
 ```
 
-##### DeleteNetworkAccessEndpoint
+##### 1.4.9.2 DeleteNetworkAccessEndpoint
 
 Deletes a dedicated endpoint.
 
@@ -9949,7 +10181,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateNetworkAccessEndpointName
+##### 1.4.9.3 UpdateNetworkAccessEndpointName
 
 Changes the name of a dedicate network endpoint.
 
@@ -9984,7 +10216,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Query the regions that support network
+##### 1.4.9.4 Query the regions that support network endpoints of IDaaS
 
 **endpoints of IDaaS**
 
@@ -10033,7 +10265,7 @@ Sample success responses
 
 `]`
 
-##### ListNetworkAccessEndpointAvailableZones
+##### 1.4.9.5 ListNetworkAccessEndpointAvailableZones
 
 Queries the zones that support dedicated endpoints in the specified region of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 
@@ -10076,7 +10308,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### GetNetworkAccessEndpoint
+##### 1.4.9.6 GetNetworkAccessEndpoint
 
 Queries the information about a network endpoint.
 
@@ -10143,7 +10375,7 @@ Sample responses `JSON` format
   "EgressPublicIpAddresses":""
 ```
 
-##### ListNetworkAccessEndpoints
+##### 1.4.9.7 ListNetworkAccessEndpoints
 
 Queries the network endpoints of an IDaaS EIAM instance.
 
@@ -10223,7 +10455,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### ListNetworkAccessPaths
+##### 1.4.9.8 ListNetworkAccessPaths
 
 Queries the access paths of a dedicated endpoint.
 
@@ -10287,7 +10519,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### Query the VPCs within a user account
+##### 1.4.9.9 Query the VPCs within a user account when creating a network endpoint
 
 **when creating a network endpoint**
 
@@ -10344,7 +10576,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### ListVSwitches
+##### 1.4.9.10 ListVSwitches
 
 Queries a list of vSwitches in a virtual private cloud (VPC) when a network access endpoint is created.
 
@@ -10401,7 +10633,7 @@ Sample success responses `JSON` format
 
 `]`
 
-##### ListNetworkInterfaces
+##### 1.4.9.11 ListNetworkInterfaces
 
 Queries a list of elastic network interfaces (ENIs) associated with network endpoints.
 
@@ -10477,7 +10709,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### ListNatGateways
+##### 1.4.9.12 ListNatGateways
 
 Queries the outbound public IP addresses of a dedicated endpoint.
 
@@ -10557,7 +10789,7 @@ Sample responses `JSON` format
 
 `]`
 
-##### CheckServiceLinkedRoleExistence
+##### 1.4.9.13 CheckServiceLinkedRoleExistence
 
 Checks whether a service-linked role exists.
 
@@ -10593,7 +10825,7 @@ Sample responses `JSON` format
  "Exists":true
 ```
 
-##### CreateServiceLinkedRole
+##### 1.4.9.14 CreateServiceLinkedRole
 
 Creates a service-linked role.
 
@@ -10627,9 +10859,9 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-#### Brand
+#### 1.4.10 Brand
 
-##### CreateBrand
+##### 1.4.10.1 CreateBrand
 
 Creates a brand.
 
@@ -10667,7 +10899,7 @@ Sample responses `JSON` format
  "BrandId":"brand_xxxx"
 ```
 
-##### UpdateBrand
+##### 1.4.10.2 UpdateBrand
 
 Modifies a brand.
 
@@ -10704,9 +10936,9 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-#### Network zones
+#### 1.4.11 Network zones
 
-##### Create a network zone
+##### 1.4.11.1 Create a network zone
 
 Creates a network zone.
 
@@ -10749,7 +10981,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### DeleteNetworkZone
+##### 1.4.11.2 DeleteNetworkZone
 
 Deletes a network zone.
 
@@ -10785,7 +11017,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### UpdateNetworkZone
+##### 1.4.11.3 UpdateNetworkZone
 
 Modifies a network zone.
 
@@ -10832,7 +11064,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Update the description of a network zone
+##### 1.4.11.4 Update the description of a network zone object
 
 **object**
 
@@ -10873,7 +11105,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### ListNetworkZones
+##### 1.4.11.5 ListNetworkZones
 
 Queries a list of network zones.
 
@@ -10947,7 +11179,7 @@ Sample responses `JSON` format
  "NextToken":"NTxxxexample"
 ```
 
-##### GetNetworkZone
+##### 1.4.11.6 GetNetworkZone
 
 Queries a network zone.
 
@@ -11004,9 +11236,9 @@ Sample success responses `JSON` format
   "Ipv4Cidrs":""
 ```
 
-#### Others
+#### 1.4.12 Others
 
-##### DisableIdentityProviderAuthn
+##### 1.4.12.1 DisableIdentityProviderAuthn
 
 Disables the identity provider authentication feature.
 
@@ -11045,7 +11277,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### EnableIdentityProviderAuthn
+##### 1.4.12.2 EnableIdentityProviderAuthn
 
 Enables authentication.
 
@@ -11138,7 +11370,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Delete a brand
+##### 1.4.12.4 Delete a brand
 
 Deletes a brand.
 
@@ -11175,7 +11407,7 @@ Sample success responses
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Disables a brand
+##### 1.4.12.5 Disables a brand
 
 Disables a brand.
 
@@ -11211,7 +11443,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### EnableBrand
+##### 1.4.12.6 EnableBrand
 
 Enables a brand.
 
@@ -11247,7 +11479,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### GetBrand
+##### 1.4.12.7 GetBrand
 
 Queries the detailed information about a brand.
 
@@ -11306,7 +11538,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### GetLoginRedirectApplicationForBrand
+##### 1.4.12.8 GetLoginRedirectApplicationForBrand
 
 Configures redirection to an application after Single Sign-On (SSO) for a brand.
 
@@ -11355,7 +11587,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Query a list of brands
+##### 1.4.12.9 Query a list of brands
 
 Queries a list of brands
 
@@ -11422,7 +11654,7 @@ Sample success responses
 
 `]`
 
-##### SetLoginRedirectApplicationForBrand
+##### 1.4.12.10 SetLoginRedirectApplicationForBrand
 
 Configures the application to which users are redirected after login for a brand.
 
@@ -11459,7 +11691,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-##### Changes the brand associated with a
+##### 1.4.12.11 Changes the brand associated with a domain name
 
 **domain name**
 
@@ -11498,12 +11730,11 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-### Release notes
+### 1.5 Release notes
 
 **Update date: October 23, 2025**
 
 Release description: The first time Identity as a Service (IDaaS) released on Apsara Stack. All API operations of IDaaS are available.
-1. List of operations by function
 
 **1.1. Instances**
 
@@ -11761,9 +11992,9 @@ Release description: The first time Identity as a Service (IDaaS) released on Ap
 | 10 | SetLoginRedirectApplication ForBrand | SetLoginRedirectApplicatio nForBrand | Configures the application to which users are redirected after login for a brand. |
 | 11 | UpdateDomainBrand | UpdateDomainBrand | Modifies the brand associated with a domain name. |
 
-## API Reference
+## 2 API Reference
 
-### List of operations by function
+### 2.1 List of operations by function
 
 The API operations of this product ( `EIAM DeveloperAPI/2022-02-25` ) use the resourceoriented architecture (ROA) style signature. For more information about signature details, see Request syntax and signature method. We offer SDKs in various popular programming languages, so that developers can call API operations in a plug-and-play manner, without delving into the technical details. If the SDKs provided cannot fully meet your requirements, you have the option to build your own SDK that is adapted to the signature mechanism. The process of creating custom signatures is complicated and may take approximately five days to complete. We recommend that you join the DingTalk group (ID: 78410016550) for assistance. Before you call an API operation, you must make sure that an Alibaba Cloud account is created and an AccessKey pair is created for the account. This way, you can call the API operation by using client tools such as SDKs and the CLI. For more information, see Obtain an AccessKey pair.
 
@@ -11834,17 +12065,17 @@ The API operations of this product ( `EIAM DeveloperAPI/2022-02-25` ) use the re
 | RemoveUsersFromGroup | RemoveUsersFromGroup | Removes multiple EIAM accounts from an EIAM group. If the accounts no longer belong to the group, the removal succeeds by default. |
 | ListUsersForGroup | ListUsersForGroup | Queries a list of accounts in an EIAM group. |
 
-### Endpoints
+### 2.2 Endpoints
 
 IDentity as a Service (IDaaS) provides developer API operations and allows network connectivity between a user virtual private cloud (VPC) and IDaaS. IDaaS endpoints are in the following format: developerapi-idaas-${global_region}.${internet_domain} To obtain the value of global_region and internet_domain, log in to the Apsara Uni-manager Management Console. In the top navigation bar, choose **Security > Identity and O&M**
 **Security > IDaaS**. On the IDaaS page, find the required instance and click Console in the
 Actions column. On the Quick Start page, view the **URL** in the upper-right corner. In the following example: The value of global_region is cn-ece-entity121-d01. The value of internet_domain is cloud.ece-group-121.com.
 
-### API operations
+### 2.3 API operations
 
-#### OIDC API
+#### 2.3.1 OIDC API
 
-##### GenerateToken
+##### 2.3.1.1 GenerateToken
 
 Generates an access token for an application in a specific IDentity as a Service Enterprise Identity Access Management (IDaaS EIAM) instance.
 
@@ -11902,7 +12133,7 @@ Sample success responses `JSON` format
   "id_token": "xxxxx"
 ```
 
-##### GetUserInfo
+##### 2.3.1.2 GetUserInfo
 
 Queries the information of a user based on the user token. Debug
 
@@ -11956,7 +12187,7 @@ For a list of error codes, see Service error codes.
 | 404 | application not found _ _ | Application id not found: app mkv7rgt4d7i4u7z _ qtzev2mxxxx | The application is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### RevokeToken
+##### 2.3.1.3 RevokeToken
 
 Revokes an access token or refresh token. Debug
 
@@ -12007,11 +12238,11 @@ For a list of error codes, see Service error codes.
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
-#### API operations related to authorization
+#### 2.3.2 API operations related to authorization scope
 
 **scope**
 
-##### GetApplicationProvisioningScope
+##### 2.3.2.1 GetApplicationProvisioningScope
 
 Queries the synchronization scope of an application in an instance.
 
@@ -12089,9 +12320,9 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:read all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-#### Organization management
+#### 2.3.3 Organization management
 
-##### CreateOrganizationalUnit
+##### 2.3.3.1 CreateOrganizationalUnit
 
 Creates an organization. Debug
 
@@ -12157,7 +12388,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ manage all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### PatchOrganizationalUnit
+##### 2.3.3.2 PatchOrganizationalUnit
 
 Updates the information about an organization in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -12223,7 +12454,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ manage all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### GetOrganizationalUnit
+##### 2.3.3.3 GetOrganizationalUnit
 
 Queries the information about an organization. Debug
 
@@ -12304,7 +12535,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ read all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### DeleteOrganizationalUnit
+##### 2.3.3.4 DeleteOrganizationalUnit
 
 Deletes an organization. Debug
 
@@ -12358,7 +12589,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ manage all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### ListOrganizationalUnits
+##### 2.3.3.5 ListOrganizationalUnits
 
 Queries a list of organizations in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) by page.
 
@@ -12462,7 +12693,7 @@ For a list of error codes, see Service error codes.
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 |---|---|---|---|
 
-##### ListOrganizationalUnitParentIds
+##### 2.3.3.6 ListOrganizationalUnitParentIds
 
 Queries the information of all the parent organizational units of an organizational unit. Debug
 
@@ -12527,7 +12758,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:organizational unit: _ read all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### GetOrganizationalUnitIdByExternalId
+##### 2.3.3.7 GetOrganizationalUnitIdByExternalId
 
 Obtains the ID of an organization based on the external ID. Debug
 
@@ -12582,9 +12813,9 @@ For a list of error codes, see Service error codes.
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
-#### Account management
+#### 2.3.4 Account management
 
-##### CreateUser
+##### 2.3.4.1 CreateUser
 
 Creates an Employee Identity and Access Management (EIAM) account in an organization. Debug
 
@@ -12693,7 +12924,7 @@ For a list of error codes, see Service error codes.
 | 400 | InvalidParameter.Desc ription | The specified parameter:Description is invalid. | The description of the account has exceeded the maximum length. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### PatchUser
+##### 2.3.4.2 PatchUser
 
 Modifies an Employee Identity and Access Management (EIAM) account.
 
@@ -12780,7 +13011,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### GetUser
+##### 2.3.4.3 GetUser
 
 Queries the details of an Employee Identity and Access Management (EIAM) account. Debug
 
@@ -12938,7 +13169,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:read all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### UpdateUserPassword - Update the
+##### 2.3.4.4 UpdateUserPassword - Update the password of an EIAM account
 
 **password of an EIAM account**
 
@@ -12972,7 +13203,7 @@ This API operation does not return any parameters.
 
 Successful response example `JSON` format `{}`
 
-##### DeleteUser
+##### 2.3.4.5 DeleteUser
 
 Deletes an Employee Identity and Access Management (EIAM) account. Debug
 
@@ -13026,7 +13257,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ | The API authorization information is not specified. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### ListUsers
+##### 2.3.4.6 ListUsers
 
 Queries the information about Employee Identity and Access Management (EIAM) accounts by page. Debug
 
@@ -13148,7 +13379,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:read all] _ | The API authorization information is required. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### EnableUser
+##### 2.3.4.7 EnableUser
 
 Enables an Employee Identity and Access Management (EIAM) account. Debug
 
@@ -13202,7 +13433,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ |   |
 | 500 | Internal Server Error | Internal Server Error |   |
 
-##### DisableUser
+##### 2.3.4.8 DisableUser
 
 Disables an Enterprise Identity Access Management (EIAM) account.
 
@@ -13256,7 +13487,7 @@ For a list of error codes, see Service error codes.
 | 403 | permission denied _ | Require scopes: [urn:alibaba:idaas:sco pe:user:manager all] _ |   |
 | 500 | Internal Server Error | Internal Server Error |   |
 
-##### GetUserIdByEmail
+##### 2.3.4.9 GetUserIdByEmail
 
 Queries the ID of an Employee Identity and Access Management (EIAM) account by email address. Debug
 
@@ -13328,7 +13559,7 @@ For a list of error codes, see Service error codes.
 | 400 | ResourceNotFound.Us erId | The specified UserId resource: %s not found. | The account ID is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### GetUserIdByPhoneNumber
+##### 2.3.4.10 GetUserIdByPhoneNumber
 
 Queries the ID of an Enterprise Identity Access Management (EIAM) account based on the mobile number. Debug
 
@@ -13397,7 +13628,7 @@ For a list of error codes, see Service error codes.
 | 400 | ResourceNotFound.Us erId | The specified UserId resource: %s not found. | The account ID is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### GetUserIdByUserExternalId
+##### 2.3.4.11 GetUserIdByUserExternalId
 
 Queries the ID of an Employee Identity and Access Management (EIAM) account by external ID. Debug
 
@@ -13470,7 +13701,7 @@ For a list of error codes, see Service error codes.
 | 400 | ResourceNotFound.Us erId | The specified UserId resource: %s not found. | The account ID is not found. |
 | 500 | Internal Server Error | Internal Server Error | An internal server error occurred. |
 
-##### GetUserIdByUsername
+##### 2.3.4.12 GetUserIdByUsername
 
 Queries the ID of an account in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) based on the username. Debug
 
@@ -13517,7 +13748,7 @@ For a list of error codes, see Service error codes.
 |---|---|---|
 | 2023-10-24 | The internal configurations of the operation are modified. You can still call the operation as expected. | View change details |
 
-##### SetUserPrimaryOrganizationalUnit - Set
+##### 2.3.4.13 SetUserPrimaryOrganizationalUnit - Set the primary organization for an EIAM account
 
 **the primary organization for an EIAM account**
 
@@ -13553,7 +13784,7 @@ This operation has no response parameters.
 
 Sample success response `JSON` format `{}`
 
-##### AddUserToOrganizationalUnits - Add an
+##### 2.3.4.14 AddUserToOrganizationalUnits - Add an EIAM account to multiple EIAM organizations
 
 **EIAM account to multiple EIAM organizations**
 
@@ -13588,7 +13819,7 @@ This operation does not return any response parameters.
 
 Sample success response `JSON` format `{}`
 
-##### RemoveUserFromOrganizationalUnits -
+##### 2.3.4.15 RemoveUserFromOrganizationalUnits - Remove an EIAM account from multiple organizations
 
 **Remove an EIAM account from multiple**
 
@@ -13627,7 +13858,7 @@ This operation does not return any parameters.
 
 Sample response `JSON` format `{}`
 
-##### ListGroupsForUser - List the groups for
+##### 2.3.4.16 ListGroupsForUser - List the groups for an EIAM account
 
 **an EIAM account**
 
@@ -13689,11 +13920,11 @@ Successful response `JSON` format
   "maxResults": 20
 ```
 
-#### API operations related to account
+#### 2.3.5 API operations related to account group management
 
 **group management**
 
-##### GetGroup
+##### 2.3.5.1 GetGroup
 
 Queries the details of a group. Debug
 
@@ -13752,7 +13983,7 @@ Sample responses `JSON` format
 
 For a list of error codes, see Service error codes.
 
-##### CreateGroup
+##### 2.3.5.2 CreateGroup
 
 Creates a group in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM). Debug
 
@@ -13798,7 +14029,7 @@ Sample success responses `JSON` format
 
 For a list of error codes, see Service error codes.
 
-##### PatchGroup
+##### 2.3.5.3 PatchGroup
 
 Modifies an Employee Identity and Access Management (EIAM) group. Debug
 
@@ -13839,7 +14070,7 @@ Sample responses `JSON` format `{}`
 
 For a list of error codes, see Service error codes.
 
-##### DeleteGroup
+##### 2.3.5.4 DeleteGroup
 
 Deletes a group. Debug
 
@@ -13875,7 +14106,7 @@ Sample success responses `JSON` format `{}`
 
 For a list of error codes, see Service error codes.
 
-##### ListGroups
+##### 2.3.5.5 ListGroups
 
 Queries the information of Enterprise Identity Access Management (EIAM) groups by page. Debug
 
@@ -13952,7 +14183,7 @@ Sample success responses `JSON` format
 
 For a list of error codes, see Service error codes.
 
-##### AddUsersToGroup
+##### 2.3.5.6 AddUsersToGroup
 
 Adds multiple Enterprise Identity Access Management (EIAM) accounts to an EIAM group. If the accounts already belong to the specified group, no update is performed. Debug
 
@@ -13994,7 +14225,7 @@ Sample success responses `JSON` format `{}`
 
 For a list of error codes, see Service error codes.
 
-##### RemoveUsersFromGroup
+##### 2.3.5.7 RemoveUsersFromGroup
 
 Removes multiple Enterprise Identity Access Management (EIAM) accounts from an EIAM group. If the accounts no longer belong to the group, the removal succeeds by default. Debug
 
@@ -14033,7 +14264,7 @@ Sample success responses `JSON` format `{}`
 
 For a list of error codes, see Service error codes.
 
-##### ListUsersForGroup
+##### 2.3.5.8 ListUsersForGroup
 
 Queries accounts in an Employee Identity and Access Management (EIAM) group. Debug
 
@@ -14093,7 +14324,7 @@ Sample success responses `JSON` format
 
 For a list of error codes, see Service error codes. records
 
-## API change records
+## 3 API change records
 
 **Change time: 2023-10-24**
 
@@ -14159,13 +14390,13 @@ records
 
 elf-managed applications
 
-## Integrate with self-
+## 4 Integrate with self-managed applications
 
 **managed applications**
 
-### Connect to IDaaS for SSO
+### 4.1 Connect to IDaaS for SSO
 
-#### Implement SSO for custom applications
+#### 4.1.1 Implement SSO for custom applications
 
 This topic describes how to use the Open ID Connect (OIDC) authorization code mode to connect a custom application to the single sign-on (SSO) service of Identity as a Service (IDaaS). This helps developers easily implement SSO for applications, and improves user experience and management efficiency.
 
@@ -14501,7 +14732,7 @@ For more information, see the "Client secret rotation" section in **User Guide (
 
 RFC6749 - The OAuth 2.0 Authorization Framework RFC6750 - The OAuth 2.0 Authorization Framework: Bearer Token Usage RFC7009 - OAuth 2.0 Token Revocation RFC7515 - JSON Web Signature (JWS) RFC7517 - JSON Web Key (JWK) RFC7518 - JSON Web Algorithms (JWA) RFC7519 - JSON Web Token (JWT) RFC7636 - Proof Key for Code Exchange by OAuth Public Clients RFC8252 - OAuth 2.0 for Native Apps RFC8628 - OAuth 2.0 Device Authorization Grant OpenID Connect Core 1.0 OpenID Connect Discovery 1.0
 
-#### Connect self-developed Java
+#### 4.1.2 Connect self-developed Java applications that use the Spring Boot framework to IDaaS for SSO
 
 **applications that use the Spring Boot**
 
@@ -14617,11 +14848,11 @@ If you use other proxy services or software, you need to check the configuration
 
 https://datatracker.ietf.org/doc/html/rfc7239 https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/ https://docs.spring.io/springboot/docs/current/reference/html/howto.html#howto.webserver.use-behind-a-proxy-server
 
-### Connect to IDaaS for account
+### 4.2 Connect to IDaaS for account synchronization
 
 #### synchronization
 
-#### Overview
+#### 4.2.1 Overview
 
 This topic provides an overview of the development reference for Alibaba Cloud Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM), covering the core features, scenarios, and access guide, to help developers quickly integrate unified identity management and single sign-on (SSO) capabilities.
 
@@ -14824,7 +15055,7 @@ Sample error responses
      "error_description": "The JWS token is invalid."
 ```
 
-#### Address book events
+#### 4.2.2 Address book events
 
 This topic describes the event callback mechanism of Alibaba Cloud Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM), and provides developers with a complete solution for synchronizing address book events of IDaaS to applications. By understanding the classification and processing procedure of event parameters, developers can achieve efficient system integration. elf-managed applications
 
@@ -15219,7 +15450,7 @@ Parameters
 | -memberId | String | The unique identifier of the user. |
 | -memberName | String | The display name of the user. |
 
-#### Connect Java applications to IDaaS for
+#### 4.2.3 Connect Java applications to IDaaS for account synchronization
 
 **account synchronization**
 
@@ -15398,7 +15629,7 @@ AlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT, new String[]{"d
     return new String(receiverJwe.getPlaintextBytes(), StandardCharsets.UTF_8);
 ```
 
-#### SCIM 2.0 operations supported by EIAM
+#### 4.2.4 SCIM 2.0 operations supported by EIAM
 
 This topic describes System for Cross-domain Identity Management (SCIM) 2.0 operations that are supported by Employee Identity and Access Management (EIAM). This topic also describes the scope and limits of SCIM 2.0 operations. The operations described in this topic are required only if you want to synchronize data from your self-managed application to EIAM by using SCIM.
 
@@ -17206,13 +17437,13 @@ curl {BaseUrl}/Groups/<groupId> --header 'Authorization: Bearer <BearerToken>' -
 HTTP/1.1 204
 ```
 
-### Application development API
+### 4.3 Application development API reference
 
 **reference**
 
 elf-managed applications
 
-#### API operations for application
+#### 4.3.1 API operations for application development
 
 **development**
 
@@ -17255,7 +17486,7 @@ elf-managed applications
 |   | Query organizations | Queries organization information: GetOrganizationalUnit Queries organizations: ListOrganizationalUnits Queries parent IDs of an organization: ListOrganizationalUnitParentIds | urn:alibaba:idaas :scope:organizati onal unit:read all _ _ |
 | Synchronizatio n scope | Query the synchronization scope | Queries the synchronization scope: GetApplicationProvisioningScope | - |
 
-### Open source code
+### 4.4 Open source code
 
 This topic describes the open source components, frameworks, and tools required or referenced during development on Identity as a Service (IDaaS) to help developers learn about the technologies behind IDaaS, the compliance requirements, and the potential limits of open source protocols.
 

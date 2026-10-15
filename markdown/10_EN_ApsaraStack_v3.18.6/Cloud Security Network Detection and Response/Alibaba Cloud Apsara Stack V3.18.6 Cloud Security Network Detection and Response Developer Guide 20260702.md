@@ -2,18 +2,206 @@
 title: "Cloud Security Network Detection and Response Developer Guide 20260702"
 product_version: "V3.18.6"
 pdf_pages: 457
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Developer Guide 20260702.pdf"
+source_pdf: "c47e6c942d0c1cc2_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Network Detection and Response Developer Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Network%20Detection%20and%20Response%20Developer%20Guide%2020260702.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Security Network Detection and Response Developer Guide 20260702
 
-Cloud Security Network Detectio n and Response
+## Table of Contents
 
-## Quick Start
+- 1 Quick Start
+  - 1.1 Using the development documentation
+  - 1.2 API call flow
+- 2 Preparations
+  - 2.1 Obtain the information and the endpoint of an API operation
+  - 2.2 Log on to the developer portal console
+  - 2.3 Obtain an AccessKey
+  - 2.4 Obtain an AccessKey pair assigned by STS
+- 3 Make API requests
+  - 3.1 Request structure
+  - 3.2 Request signatures
+  - 3.3 Common parameters
+  - 3.4 Response structure
+- 4 Sample calls
+  - 4.1 Java SDK call examples
+    - 4.1.1 User guide
+      - 4.1.1.1 Install the Java SDK
+      - 4.1.1.2 Make calls using CommonRequest
+  - 4.2 Python SDK call examples
+    - 4.2.1 User guide
+      - 4.2.1.1 Install the Python SDK
+      - 4.2.1.2 Make calls using CommonRequest
+  - 4.3 Go SDK call examples
+    - 4.3.1 User guide
+      - 4.3.1.1 Install the Go SDK core package
+      - 4.3.1.2 Make calls using CommonRequest
+- 5 API documentation
+  - 5.1 Traffic trend
+    - 5.1.1 DescribeNtaTrafficTrend
+    - 5.1.2 DescribeNtaTrafficTopInfo
+  - 5.2 Network traffic analysis
+    - 5.2.1 DescribeNtaTrafficListByIp
+    - 5.2.2 DescribeVpcInfoByUid
+    - 5.2.3 DescribeNtaTrafficStatisticsByUid
+    - 5.2.4 DescribeSessionByApp
+    - 5.2.5 DescribeNtaTrafficListByApp
+    - 5.2.6 DescribeIncAppInfo
+    - 5.2.7 DescribeEcsByIp
+    - 5.2.8 DescribeAssetByIp
+    - 5.2.9 DescribeNtaAppTrend
+    - 5.2.10 DescribeSessionByIp
+  - 5.3 Log retrieval
+    - 5.3.1 DescribeHitLogColumns
+    - 5.3.2 DescribeSearchTemplate
+    - 5.3.3 UpdateVisibleLogFields
+    - 5.3.4 ExportHitlogs
+    - 5.3.5 DescribeGivenFieldStatistics
+    - 5.3.6 DescribeHitLogColumnsData
+    - 5.3.7 DescribeHitStatistics
+    - 5.3.8 DescribeLogFieldIntroduction
+    - 5.3.9 DescribeHitDetailList
+    - 5.3.10 DescribeLogFields
+    - 5.3.11 DescribeLogType
+    - 5.3.12 DelSearchTemplate
+    - 5.3.13 AddSearchTemplate
+  - 5.4 Attacker profile
+    - 5.4.1 DescribeAggAttackProcess
+    - 5.4.2 ExportAggAttackEventMergePcap
+    - 5.4.3 DescribeAttackEventRecords
+    - 5.4.4 DescribeAggAttackEventList
+    - 5.4.5 DescribeAggAttackEventMergePcapCount
+    - 5.4.6 ExportAttackEventPcap
+    - 5.4.7 DescribeExportMergePcapTaskByUuid
+  - 5.5 Threat detection
+    - 5.5.1 Threat detection
+      - 5.5.1.1 AddCustomTag
+      - 5.5.1.2 ExportAttackRecordsPcap
+      - 5.5.1.3 DescribeAggAttackTopIPRecords
+      - 5.5.1.4 DescribeDeptInfo
+      - 5.5.1.5 AddIDSWhiteRule
+      - 5.5.1.6 DescribeExportTaskByUuid
+      - 5.5.1.7 DeleteIDSWhiteRules
+      - 5.5.1.8 DescribeAggAttackTopStatistics
+      - 5.5.1.9 DescribeAttackRecordList
+      - 5.5.1.10 DescribeThreatSrcIPInfo
+      - 5.5.1.11 ModifyCustomAttackLogFields
+      - 5.5.1.12 DescribeAggAttackPPS
+      - 5.5.1.13 AddAttackDisposal
+      - 5.5.1.14 DescribeCustomAttackLogFields
+      - 5.5.1.15 TagAttackRecodes
+      - 5.5.1.16 DescribeAggAttackVulLevel
+      - 5.5.1.17 DescribeAggAttackType
+      - 5.5.1.18 DescribeAggAttackRecords
+      - 5.5.1.19 DescribeAttackRecord
+      - 5.5.1.20 DescribeIDSWhiteRules
+      - 5.5.1.21 DescribeCustomTags
+      - 5.5.1.22 ExportAggAttackRecords
+      - 5.5.1.23 DescribeAggAttackEventDetail
+      - 5.5.1.24 DescribeIDSRuleInfo
+    - 5.5.2 Block logs
+      - 5.5.2.1 DescribeAggResetData
+      - 5.5.2.2 DescribeAggResetTopIPRecordsData
+      - 5.5.2.3 ExportAggResetRecords
+      - 5.5.2.4 DescribeAggResetPPS
+      - 5.5.2.5 DescribeAggResetTopIPRecords
+      - 5.5.2.6 DescribeAggResetRecords
+      - 5.5.2.7 DescribeAggResetDayCount
+      - 5.5.2.8 DescribeAggResetRecordsData
+  - 5.6 Behavior Analysis
+    - 5.6.1 DNS Behavior Analysis
+      - 5.6.1.1 GetBhaAggDnsTunnelRule
+      - 5.6.1.2 GetBhaDnsWhiteList
+      - 5.6.1.3 GetBhaDnsTunnelAggTopHost
+      - 5.6.1.4 AddBhaDnsWhiteList
+      - 5.6.1.5 ExportBhaAggDnsRecords
+      - 5.6.1.6 GetBhaAggDnsRecords
+      - 5.6.1.7 GetBhaAggDnsRecordsDetail
+      - 5.6.1.8 UpdateBhaAggDnsTunnelRule
+      - 5.6.1.9 DeleteBhaDnsWhiteList
+      - 5.6.1.10 GetBhaAggAttackDnsHost
+      - 5.6.1.11 GetBhaDgaAggTopHost
+    - 5.6.2 Encrypted traffic analysis
+      - 5.6.2.1 AddBhaEncryptWhiteList
+      - 5.6.2.2 GetBhaTLsTopApp
+      - 5.6.2.3 DeleteBhaEncryptWhiteList
+      - 5.6.2.4 GetBhaTLsTopDstIP
+      - 5.6.2.5 GetBhaEncryptWhiteList
+      - 5.6.2.6 GetBhaAggTlsRecordsDetail
+      - 5.6.2.7 GetBhaTLsTopSrcIP
+      - 5.6.2.8 GetBhaAggTlsRecords
+      - 5.6.2.9 GetBhaTLsTopTools
+      - 5.6.2.10 ExportBhaAggTlsRecords
+  - 5.7 Policy configuration
+    - 5.7.1 Network-layer policy
+      - 5.7.1.1 ModL4RuleAction
+      - 5.7.1.2 ModifySafetySwitch
+      - 5.7.1.3 AddL4Rule
+      - 5.7.1.4 ModifyL4Rule
+      - 5.7.1.5 ImportSrcIpFile
+      - 5.7.1.6 DelL4Rule
+      - 5.7.1.7 ImportL4Rules
+      - 5.7.1.8 DescribeOssInfo
+      - 5.7.1.9 DescribeSafetySwitchStatus
+      - 5.7.1.10 SwitchL4RuleStatus
+      - 5.7.1.11 ExportL4Rules
+      - 5.7.1.12 DescribeL4Rule
+    - 5.7.2 Application layer policies
+      - 5.7.2.1 AddL7Rule
+      - 5.7.2.2 ModifyL7Rule
+      - 5.7.2.3 DescribeL7Rule
+      - 5.7.2.4 DelL7Rule
+      - 5.7.2.5 SwitchL7RuleStatus
+      - 5.7.2.6 ExportL7Rules
+      - 5.7.2.7 GetWafRules
+      - 5.7.2.8 DescribeAllHttpFields
+      - 5.7.2.9 UpdateWafRuleAction
+    - 5.7.3 Port scan spoofing policy
+      - 5.7.3.1 DescribePortScanProtectRules
+      - 5.7.3.2 UpdatePortScanProtectRule
+      - 5.7.3.3 DeletePortScanProtectRule
+      - 5.7.3.4 SwitchPortProtectRuleStatus
+      - 5.7.3.5 DescribeAssetsAddressAndPorts
+      - 5.7.3.6 AddPortScanProtectRule
+      - 5.7.3.7 DescribeAssetsAddressTypes
+    - 5.7.4 Manage address books
+      - 5.7.4.1 ModifyAddressGroup
+      - 5.7.4.2 DelAddressGroup
+      - 5.7.4.3 AddAddressGroup
+      - 5.7.4.4 GetAllAddressGroupName
+      - 5.7.4.5 DescribeAddressGroup
+    - 5.7.5 Intrusion detection rules
+      - 5.7.5.1 DescribeIdsRulesList
+      - 5.7.5.2 UpdateSingleIdsDefaultStatus
+      - 5.7.5.3 AddCustomIdsRule
+      - 5.7.5.4 DeleteIdsRule
+      - 5.7.5.5 UpdateIdsDefaultStatus
+      - 5.7.5.6 UpdateIdsRule
+    - 5.7.6 IP address pools for internal network assets
+      - 5.7.6.1 ModifyIpSegment
+      - 5.7.6.2 CreateIpSegment
+      - 5.7.6.3 DescribeRegionName
+      - 5.7.6.4 DescribeIpSegment
+      - 5.7.6.5 DeleteIpSegment
+      - 5.7.6.6 CheckIpSegment
+  - 5.8 Download task management
+    - 5.8.1 DescribeDownloadTasks
+    - 5.8.2 DescribeDownloadModules
+    - 5.8.3 DeleteDownloadTaskByUuid
+  - 5.9 One-click block
+    - 5.9.1 AddToBlackList
+    - 5.9.2 AddToWhiteList
+    - 5.9.3 DelFromBlackList
+    - 5.9.4 DelFromWhiteList
+    - 5.9.5 DescribeBlackList
+    - 5.9.6 DescribeWhiteList
+- 6 API common parameters
+- 7 Error codes
 
-### Using the development
+## 1 Quick Start
+
+### 1.1 Using the development documentation
 
 **documentation**
 
@@ -36,17 +224,15 @@ Obtain the product documentation that you need from the Apsara Stack Documentati
 4. In the navigation pane on the left, select the product.
 5. In the document area, click **view details** or **download PDF**.
 
-### API call flow
+### 1.2 API call flow
 
 Apsara Stack supports API calls through a POP gateway, providing an experience consistent with the public cloud. Starting with Enterprise Edition V3.16.0, Apsara Stack APIs use a POP gateway for calls by default. This topic describes how to call Apsara Stack APIs through a POP gateway.
 
-| Obtain API information. Obtain an AccessKey or an STS AccessKey. Obtain common header parameters. |  |
-|---|---|
-| Obtain the Endpoint for Apsara Uni- manager Management Console. Obtain the SDK package for Apsara Uni-manager Management Console. Call the API. |  |
-
-Cloud Security Network Detectio n and Response
-
 **Flowchart**
+
+| Obtain API information. Obtain an AccessKey or an STS AccessKey. Obtain common header parameters. |   |
+|---|---|
+| Obtain the Endpoint for Apsara Uni- manager Management Console. Obtain the SDK package for Apsara Uni-manager Management Console. Call the API. |   |
 
 Make prep Make the ca
 
@@ -60,7 +246,7 @@ For more information, see Get an AccessKey or Get an STS AccessKey.
 You can use a personal AccessKey or an STS AccessKey to call the APIs of Apsara Unimanager Management Console and other cloud products.
 2. Obtain the RegionID.
 3. Obtain the organization ID and resource group ID.
-You can obtain the organization ID by calling an API. For more information, see the GetOrga nizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You can obtain the resource group ID by calling an API. For more information, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Gui de. Cloud Security Network Detectio n and Response
+You can obtain the organization ID by calling an API. For more information, see the GetOrga nizationList chapter in the Apsara Uni-manager Management Console Developer Guide. You can obtain the resource group ID by calling an API. For more information, see the ListResourceGroup chapter in the Apsara Uni-manager Management Console Developer Gui de.
 
 **Note**
 
@@ -69,11 +255,10 @@ When you call an API, add the organization ID `<x-acs-organizationid>` and the r
 Review the developer guide for the target cloud product to understand its features and usage. For more information about how to obtain and use the developer guide, see Developer documentation instructions.
 5. Obtain the cloud product Endpoint.
 6. Obtain the cloud product SDK and call the cloud product API.
-Cloud Security Network Detectio n and Response
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and
+### 2.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -94,9 +279,9 @@ navigation bar.
 5. Select an API version from the **Version** drop-down list.
 6. In the API operation list, view all API operations of the current version.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
-on the Parameter tab. Cloud Security Network Detectio n and Response
+on the Parameter tab.
 
-### Log on to the developer portal
+### 2.2 Log on to the developer portal console
 
 **console**
 
@@ -126,16 +311,7 @@ For more information, see the **"Attach and enable a virtual MFA device"** topic
 5. In the menu bar at the top of the page, choose **Products > Application Services >**
 **Developer Portal**.
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The region. For example, cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in Apsara Uni-manager Management Console. To obtain the ID, see the Apsara Uni-manager Management Console Development Guide document about GetOrganizationList. |
-| x-acs-resourcegroupid | The ID of the resource group in Apsara Uni- manager Management Console. To obtain the ID, see the Apsara Uni-manager Management Console Development Guide document about ListResourceGroup. |
-| x-acs-instanceid | The ID of the instance for the operation. For example, you can find the instance ID of an ECS instance in the ECS instance list. |
-
-Cloud Security Network Detectio n and Response
-
-### Obtain an AccessKey
+### 2.3 Obtain an AccessKey
 
 An AccessKey supports two authorization modes: Resource Access Management (RAM) and Security Token Service (STS). When you make a call, you can use an AccessKey from either mode. This topic describes how to obtain an AccessKey that uses RAM authorization.
 
@@ -147,13 +323,19 @@ An AccessKey consists of an AccessKey ID and an AccessKey secret. It uses symmet
 
 A personal account AccessKey has restricted permissions and is managed by the Apsara Uni-manager Management Console permission system. In contrast, an organization AccessKey has broader permissions. Administrators must ensure the security of any operation that uses an organization AccessKey.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The region. For example, cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in Apsara Uni-manager Management Console. To obtain the ID, see the Apsara Uni-manager Management Console Development Guide document about GetOrganizationList. |
+| x-acs-resourcegroupid | The ID of the resource group in Apsara Uni- manager Management Console. To obtain the ID, see the Apsara Uni-manager Management Console Development Guide document about ListResourceGroup. |
+| x-acs-instanceid | The ID of the instance for the operation. For example, you can find the instance ID of an ECS instance in the ECS instance list. |
+
 **Obtain a personal account AccessKey**
 
 Follow these steps to obtain a personal account AccessKey:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the page, click your profile picture, and then click **Personal**
 **Information**.
-Cloud Security Network Detectio n and Response
 3. In the **Alibaba Cloud AccessKey** section, view the AccessKey information for your
 personal account.
 
@@ -172,7 +354,7 @@ Follow these steps to obtain an organization AccessKey:
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization AccessKey information.
 
-### Obtain an AccessKey pair
+### 2.4 Obtain an AccessKey pair assigned by STS
 
 **assigned by STS**
 
@@ -189,13 +371,12 @@ Apsara Stack STS allows you to manage temporary credentials for your Apsara Stac
 **Information**.
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
 2. Obtain the AccessKey pair assigned by STS.
-Cloud Security Network Detectio n and Response
 
 **Note**
 
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who makes API calls. Example: username. You can identify the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value is 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the ARN of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS. Cloud Security Network Detectio n and Response
+You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who makes API calls. Example: username. You can identify the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value is 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the ARN of your RAM role. "sts.aliyuns.com": Replace it with the actual endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize the instance.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the
@@ -215,7 +396,12 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpo
 int is sts-vpc.${global:region}.${global:internet-domain}.
@@ -239,17 +425,21 @@ e that is obtained in the preceding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The
-following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS): Cloud Security Network Detectio n and Response
+following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your AccessKey ID. <yourStsAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID. Cloud Security Network Detectio n and Response
+You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. Variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your AccessKey ID. <yourStsAccessKeySecret>: Replace it with your AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -288,32 +478,28 @@ STS. The STS token is obtained in the preceding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-|  | Endpoint |  | : The endpoin |
-|---|---|---|---|
-| [RegionId].example.com |  |  |  |
-|  | Action | : the name of t |  |
+`}` `}` sts
 
-Cloud Security Network Detectio sts n and Response
+## 3 Make API requests
 
-## Make API requests
+### 3.1 Request structure
 
-### Request structure
-
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests.
-
-**Description**
-
-You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
 ```
 
-where: For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `Parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
+where:
+
+|   | Endpoint |   | : The endpoin |
+|---|---|---|---|
+| [RegionId].example.com |   |   |   |
+|   | Action | : the name of t |   |
+
+`Endpoint` : The endpoint of the Network Traffic Monitoring System API is `secspy.` `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `Parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
 
 ```
 https://secspy.[RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-test&For mat=JSON&SecureTransport=true&SignatureMethod=HMAC- SHA1&SignatureNonce=15215528852396&SignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2019- 12-02Txxxxxxx&Version=2019-08-05&Signature=xxxx%xxxx%3D
@@ -325,6 +511,20 @@ API requests are presented in the following easy-to-read format in this document
 https://secspy.[RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Version=2019-08-05 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2019-12-02T12:00:00Z
 ```
 
+sts
+
+### 3.2 Request signatures
+
+Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
+
+**Authorization**
+
+To ensure the security of your account, we recommend that you use a Resource Access Management (RAM) user to call API operations. Before you use a RAM user to call an API operation, you must grant the RAM user the required permissions by creating a policy and attaching the policy to the RAM user.
+
+**Signature**
+
+You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. When you manually make an API request, you must use the AccessKey secret to calculate an HMAC value based on the encoded and sorted request string. The HMAC value is the signature. For more information, see the definition in RFC 2104. This section uses the raw access parameters in the following table to describe how to create an operation signature.
+
 | Parameter | Description |
 |---|---|
 | Endpoint | http://secspy.[RegionId].example.com/? |
@@ -332,15 +532,6 @@ https://secspy.[RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Ver
 | Common parameters except Signature | &Timestamp=2019-12-01T12:46:24Z &Format=JSON &AccessKeyId=<yourAccessKeyId> &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2019-08-05 &SignatureVersion=1.0 |
 | AccessKey secret | <yourAccessKeySecret> |
 
-Cloud Security Network Detectio n and Response sts
-
-### Request signatures
-
-Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
-
-**Authorization**
-
-To ensure the security of your account, we recommend that you use a Resource Access Management (RAM) user to call API operations. Before you use a RAM user to call an API operation, you must grant the RAM user the required permissions by creating a policy and attaching the policy to the RAM user. You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. When you manually make an API request, you must use the AccessKey secret to calculate an HMAC value based on the encoded and sorted request string. The HMAC value is the signature. For more information, see the definition in RFC 2104. This section uses the raw access parameters in the following table to describe how to create an operation signature.
 1. Create a canonicalized query string by arranging the request parameters.
 
 **Important**
@@ -349,16 +540,7 @@ The request parameters include operation-specific parameters and all common requ
 
 **Note**
 
-If you use the GET method to send a request,these parameters are connected by ampersands (&) and included in the request URL. The first request parameter follows a question mark (?).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Version | String | Yes | The version number of the API. The value is in the format of YYYY-MM-DD. Set the value to 2019-08-05. |
-| AccessKeyId | String | Yes | The AccessKey ID provided to you by Alibaba Cloud. |
-| Signature | String | Yes | The signature string of the current request. |
-| SignatureMethod | String | Yes | The encryption method of the signature string. Set the value to HMAC-SHA1. |
-
-Cloud Security Network Detectio sts n and Response ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and their values with equal signs (=). iv. Sort the parameters in the order specified in the Sort parameters step and connect them with ampersands (&) to produce a canonicalized query string.
+If you use the GET method to send a request,these parameters are connected by ampersands (&) and included in the request URL. The first request parameter follows a question mark (?). sts ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and their values with equal signs (=). iv. Sort the parameters in the order specified in the Sort parameters step and connect them with ampersands (&) to produce a canonicalized query string.
 2. Create a string-to-sign from the encoded canonicalized query string.
 
 ```
@@ -378,9 +560,18 @@ LEW8N4y7Uasop******
 
 5. Add the signature string to the request as the Signature parameter.
 
-### Common parameters
+### 3.3 Common parameters
 
 Common request parameters must be included in all Apsara Stack Security API requests, such as the API version number and authentication information.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Version | String | Yes | The version number of the API. The value is in the format of YYYY-MM-DD. Set the value to 2019-08-05. |
+| AccessKeyId | String | Yes | The AccessKey ID provided to you by Alibaba Cloud. |
+| Signature | String | Yes | The signature string of the current request. |
+| SignatureMethod | String | Yes | The encryption method of the signature string. Set the value to HMAC-SHA1. |
+
+sts
 
 | Timestamp | String | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. For example, use 2019-12- 01T12:00:00Z to indicate 12:00:00, December 1, 2019 in UTC+8. |
 |---|---|---|---|
@@ -389,9 +580,7 @@ Common request parameters must be included in all Apsara Stack Security API requ
 | ResourceOwnerA ccount | String | No | The Alibaba Cloud account to which the resource you want to access belongs. |
 | Format | String | No | The response format. Valid values: JSON or XML. Note Default value: XML. |
 
-Cloud Security Network Detectio n and Response sts
-
-### Response structure
+### 3.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -407,19 +596,21 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 **Sample responses (JSON format)**
 
+`{`
+
 ```json
-{ "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */ }
+"RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
-Cloud Security Network Detectio n and Response
+`}`
 
-## Sample calls
+## 4 Sample calls
 
-### Java SDK call examples
+### 4.1 Java SDK call examples
 
-#### User guide
+#### 4.1.1 User guide
 
-##### Install the Java SDK
+##### 4.1.1.1 Install the Java SDK
 
 This topic describes how to install and use the Alibaba Cloud Security Java SDK. The Apsara Stack Java SDK supports JDK 1.8 and later. You can install the Apsara Stack Java SDK by adding a Maven dependency or by downloading the Alibaba Cloud SDK. To use the Alibaba Cloud Security SDK, you must install the Alibaba Cloud Java SDK core library. Use version 4.5.17 or later of the core library. When you install the Alibaba Cloud Java SDK core library, add the following dependency to your pom.xml file. For the exact SDK version number, see Alibaba Cloud SDK.
 
@@ -431,7 +622,7 @@ This topic describes how to install and use the Alibaba Cloud Security Java SDK.
 </dependency>
 ```
 
-##### Make calls using CommonRequest
+##### 4.1.1.2 Make calls using CommonRequest
 
 To use the POP Java SDK to call a product API, you must know whether the product uses RPC or ROA calls.
 
@@ -446,7 +637,7 @@ Do not download the SDK from the SDK Center for use with Apsara Stack. The publi
 
 **Use CommonRequest**
 
-Alibaba Cloud product APIs use two styles: RPC and RESTful. The method for making a CommonRequest call differs for each style. APIs that include an `Action` parameter are typically RPC style, while APIs that include a `PathPattern` parameter are RESTful style. All APIs within a product usually use the same style, and each API supports only one style. If you provide the wrong identifier, you might call a different API or receive an `ApiNotFound` error message. Cloud Security Network Detectio n and Response To make a CommonRequest call, you need the following parameter values. You can find these values in the API documentation for each product in the Documentation Center or Documentation Center. For some products, you can also find API parameter information in the OpenAPI Developer Portal. Endpoint: The product's endpoint. API version (version): The API version number in YYYY-MM-DD format. API information: The name of the API to call. If the API is RPC style, such as most Alibaba Cloud Security (Sas) APIs, obtain the `Action` parameter. Use `request.ApiName = "<Action>"` to specify the API name. If the API is RESTful style, such as Container Service, obtain the `PathPattern` parameter. Use `request.PathPattern = "<PathPattern>"` to specify the RESTful path.
+Alibaba Cloud product APIs use two styles: RPC and RESTful. The method for making a CommonRequest call differs for each style. APIs that include an `Action` parameter are typically RPC style, while APIs that include a `PathPattern` parameter are RESTful style. All APIs within a product usually use the same style, and each API supports only one style. If you provide the wrong identifier, you might call a different API or receive an `ApiNotFound` error message. To make a CommonRequest call, you need the following parameter values. You can find these values in the API documentation for each product in the Documentation Center or Documentation Center. For some products, you can also find API parameter information in the OpenAPI Developer Portal. Endpoint: The product's endpoint. API version (version): The API version number in YYYY-MM-DD format. API information: The name of the API to call. If the API is RPC style, such as most Alibaba Cloud Security (Sas) APIs, obtain the `Action` parameter. Use `request.ApiName = "<Action>"` to specify the API name. If the API is RESTful style, such as Container Service, obtain the `PathPattern` parameter. Use `request.PathPattern = "<PathPattern>"` to specify the RESTful path.
 
 **Example: Call an RPC-style API**
 
@@ -477,14 +668,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Example: Call a RESTful (ROA)-style API**
 
-Cloud Security Network Detectio n and Response The following code shows how to use CommonRequest to call the Container Service API to list all cluster instances.
+The following code shows how to use CommonRequest to call the Container Service API to list all cluster instances.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -513,18 +703,17 @@ variable.
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### Python SDK call examples
+`}` `}` `}`
 
-#### User guide
+### 4.2 Python SDK call examples
 
-##### Install the Python SDK
+#### 4.2.1 User guide
 
-This document describes how to install and call the Python SDK. The Apsara Stack Python SDK supports Python 2.6.x, 2.7.x, and 3.x or later. You can use pip to install the SDK. Cloud Security Network Detectio n and Response
+##### 4.2.1.1 Install the Python SDK
+
+This document describes how to install and call the Python SDK. The Apsara Stack Python SDK supports Python 2.6.x, 2.7.x, and 3.x or later. You can use pip to install the SDK.
 
 **Note**
 
@@ -540,7 +729,7 @@ For Python 3.x, run the following command to install the Alibaba Cloud Python SD
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Make calls using CommonRequest
+##### 4.2.1.2 Make calls using CommonRequest
 
 This topic describes how to make calls using CommonRequest.
 
@@ -560,7 +749,7 @@ Alibaba Cloud product APIs use either the RPC or RESTful style. The method for m
 
 **Example: Call an RPC-style API**
 
-The following code shows how to use CommonRequest to call an RPC-style API: Cloud Security Network Detectio n and Response
+The following code shows how to use CommonRequest to call an RPC-style API:
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>') // The actual endpoint of the product. request.set_version('<API-version>') // The version of the API. request.set_action_name('<your-action>')// The name of the API.
@@ -580,11 +769,11 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 uri_pattern='/clusters') response = client.do_action_with_exception(request)
 ```
 
-### Go SDK call examples
+### 4.3 Go SDK call examples
 
-#### User guide
+#### 4.3.1 User guide
 
-##### Install the Go SDK core package
+##### 4.3.1.1 Install the Go SDK core package
 
 This document describes how to install the Go SDK core package. The Alibaba Cloud SDK for Go supports Go 1.10.x and later versions. You can run the following command to install the core package.
 
@@ -592,13 +781,11 @@ This document describes how to install the Go SDK core package. The Alibaba Clou
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Make calls using CommonRequest
+##### 4.3.1.2 Make calls using CommonRequest
 
 This topic describes how to make calls using CommonRequest.
 
 **Prerequisites**
-
-Cloud Security Network Detectio n and Response
 
 **q**
 
@@ -608,20 +795,24 @@ choose **API Integration** > **SDK Examples**.
 
 **Important**
 
-Do not download SDKs from SDK Center for use with Apsara Stack. Public cloud SDKs might not support Apsara Stack APIs, which can lead to compatibility issues. Alibaba Cloud product APIs use either the RPC or RESTful style. The method for making a CommonRequest call differs for each style. APIs that include an `Action` parameter are typically RPC-style. APIs that include a `PathPattern` parameter are RESTful-style. Within a product, all APIs usually share the same style. Each API supports only one style. If you pass an incorrect identifier, you might call the wrong API or receive an `ApiNotFound` error message. To make a CommonRequest call, obtain the values for the following parameters. You can find these values in the API documentation for each product in the Documentation Center or Documentation Center. For some products, this information is also available in the OpenAPI Developer Portal. Endpoint: The endpoint for the product. Version: The version number of the API, in YYYY-MM-DD format. API information: The name of the API to call. If the API is RPC-style, which is used for most Alibaba Cloud product APIs such as Sas, obtain the Action parameter. Use `request.ApiName = "<Action>"` to specify the API name. If the API is RESTful-style, such as for Container Service, obtain the PathPattern parameter. Use `request.PathPattern = "<PathPattern>"` to specify the RESTful path.
+Do not download SDKs from SDK Center for use with Apsara Stack. Public cloud SDKs might not support Apsara Stack APIs, which can lead to compatibility issues.
+
+**Using CommonRequest**
+
+Alibaba Cloud product APIs use either the RPC or RESTful style. The method for making a CommonRequest call differs for each style. APIs that include an `Action` parameter are typically RPC-style. APIs that include a `PathPattern` parameter are RESTful-style. Within a product, all APIs usually share the same style. Each API supports only one style. If you pass an incorrect identifier, you might call the wrong API or receive an `ApiNotFound` error message. To make a CommonRequest call, obtain the values for the following parameters. You can find these values in the API documentation for each product in the Documentation Center or Documentation Center. For some products, this information is also available in the OpenAPI Developer Portal. Endpoint: The endpoint for the product. Version: The version number of the API, in YYYY-MM-DD format. API information: The name of the API to call. If the API is RPC-style, which is used for most Alibaba Cloud product APIs such as Sas, obtain the Action parameter. Use `request.ApiName = "<Action>"` to specify the API name. If the API is RESTful-style, such as for Container Service, obtain the PathPattern parameter. Use `request.PathPattern = "<PathPattern>"` to specify the RESTful path.
 
 **Example: Use an RPC-style API**
 
-The following code shows how to call an RPC-style API using CommonRequest: Cloud Security Network Detectio n and Response
+The following code shows how to call an RPC-style API using CommonRequest:
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -629,7 +820,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "<your-endpoint>"// The actual endpoint of the product.
     request.Version = "<API-version>"// The version of the API.
@@ -639,23 +834,28 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Example: Call a RESTful (ROA)-style API**
 
 The following code shows how to use CommonRequest to call the Container Service API to retrieve all cluster instances:
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -663,7 +863,11 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Domain = "cs.aliyuncs.com"
     request.Version = "2015-12-15"
@@ -672,36 +876,31 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeNtaTraffic Trend | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+`}`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
-| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
-| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
-| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
+```
+    fmt.Print(response.GetHttpContentString())
+```
 
-Cloud Security Network Detectio n and Response ion
+`}`
 
-## API documentation
+## 5 API documentation
 
 This is the API reference content
 
-### Traffic trend
+### 5.1 Traffic trend
 
-#### DescribeNtaTrafficTrend
+#### 5.1.1 DescribeNtaTrafficTrend
 
 Queries the network traffic trend.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeNtaTraffic Trend | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -713,7 +912,15 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| i | Developer Gui on | de·API d | ocumentat |  | Cloud | Security Network Detecti n and Respons | o e |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
+| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
+| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
+
+| i | Developer Gui on | de·API d | ocumentat |   | Cloud | Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -723,9 +930,11 @@ This operation does not have operation-specific request headers and uses only co
 | NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -InBps | Integer | 10 | The inbound bytes per second (BPS). |
 | -Time | Integer | 1525833105 | The point in time of the query. |
 | -OutBps | Integer | 10 | The outbound BPS. |
@@ -737,14 +946,14 @@ This operation does not have operation-specific request headers and uses only co
 | AvgInBps | Integer | 10 | The average inbound BPS. |
 | AvgOutBps | Integer | 10 | The average outbound BPS. |
 
-**Response parameters**
-
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Module | String | ndr*** | The name of the module. |
+
+**Examples**
 
 Sample requests
 
@@ -754,20 +963,28 @@ https://[Endpoint]/?Action=DescribeNtaTrafficTrend&RegionId=cnhangzhou&Lang=zh&A
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "OutPps":10,
             "OutBps":10,
             "InBps":10,
             "InPps":10,
             "Time":1525833105
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "MaxInBps":100,
@@ -775,23 +992,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "AvgInBps":10,
     "AvgOutBps":10,
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeNtaTraffic TopInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeNtaTrafficTrendResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <InBps>10</InBps>
@@ -805,13 +1011,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <AvgInBps>10</AvgInBps>
     <AvgOutBps>10</AvgOutBps>
     <Module>ndr***</Module>
+</DescribeNtaTrafficTrendResponse>
 ```
 
-#### DescribeNtaTrafficTopInfo
+#### 5.1.2 DescribeNtaTrafficTopInfo
 
 Queries the top N resources that have the largest amount of traffic.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeNtaTraffic TopInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -825,6 +1036,10 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 | Sort | Strin g | Query | No | total bytes _ | The sorting method. Valid values: in bytes, _ out bytes, total bytes, _ _ in packets, out packets, _ _ and session count. _ |
 | DataType | Strin g | Query | No | in dst ip _ _ | The data type. Valid values of the inbound traffic: in dst ip, _ _ in top app, and _ _ in top session. Valid _ _ values of the outbound traffic: out src ip, _ _ out top app, _ _ out top session. _ _ |
@@ -834,16 +1049,14 @@ This operation does not have operation-specific request headers and uses only co
 | NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DataList | Array |  |  |
-| -DataValue | String | 95 | The percentage of total traffic attributed to the top N resources. |
-
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DataList | Array |   |   |
+| -DataValue | String | 95 | The percentage of total traffic attributed to the top N resources. |
+
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -856,6 +1069,8 @@ Cloud Security Network Detectio n and Response ion
 | DataType | String | in dst ip _ _ | The statistical dimension. |
 | Module | String | ndr*** | The name of the module. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -864,39 +1079,38 @@ https://[Endpoint]/?Action=DescribeNtaTrafficTopInfo&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "DataValue":"95",
             "TotalBytes":100,
             "SessionCount":100,
             "DataName":"1.1.1.1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "DataCount":10,
     "DataType":"in_dst_ip",
     "Module":"ndr***"
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeNtaTraffic ListByIp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeNtaTrafficTopInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <DataValue>95</DataValue>
@@ -907,15 +1121,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <DataCount>10</DataCount>
     <DataType>in_dst_ip</DataType>
     <Module>ndr***</Module>
+</DescribeNtaTrafficTopInfoResponse>
 ```
 
-### Network traffic analysis
+### 5.2 Network traffic analysis
 
-#### DescribeNtaTrafficListByIp
+#### 5.2.1 DescribeNtaTrafficListByIp
 
 Queries network traffic information by IP address.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeNtaTraffic ListByIp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -926,6 +1145,10 @@ You can call this operation up to 200 times per second per account. You can call
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -941,15 +1164,15 @@ This operation does not have operation-specific request headers and uses only co
 | NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
 | Sort | Strin g | Query | No | total bytes _ | The sorting method. Valid values: total bytes, _ session count, _ sip count, and _ dip count. _ |
 
-Cloud Security Network Detectio ion n and Response
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -QueryIp | String | 1.1.1.1 | The IP address. |
 | -IpLoc | String | Beijing | The geographical location. |
 | -TrafficBps | String | 100 | The amount of traffic. Unit: BPS. |
@@ -962,20 +1185,18 @@ Cloud Security Network Detectio ion n and Response
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | Module | String | ndr*** | The name of the module. |
-| PageInfo | Struct |  |  |
+| PageInfo | Struct |   |   |
 | -PageSize | Integer | 10 | The number of entries per page. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -CurrentPage | Integer | 1 | The page number. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
+
+**Examples**
 
 Sample requests
 
@@ -985,11 +1206,20 @@ https://[Endpoint]/?Action=DescribeNtaTrafficListByIp&RegionId=cnhangzhou&Lang=z
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "IpLoc":"Beijing",
             "VisitIpCount":"100",
             "EndTime":1525833105,
@@ -999,10 +1229,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "TrafficBps":"100",
             "PortCount":"100",
             "SessionCount":"100"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":100,
@@ -1010,24 +1239,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
-    "Module":"ndr***"
-}
 ```
 
-`XML` format
+`},`
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeVpcInfoBy Uid | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```json
+    "Module":"ndr***"
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeNtaTrafficListByIpResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <QueryIp>1.1.1.1</QueryIp>
@@ -1047,13 +1270,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>100</TotalCount>
     </PageInfo>
     <Module>ndr***</Module>
+</DescribeNtaTrafficListByIpResponse>
 ```
 
-#### DescribeVpcInfoByUid
+#### 5.2.2 DescribeVpcInfoByUid
 
 Queries virtual private cloud (VPC) information by user ID.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeVpcInfoBy Uid | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -1067,29 +1295,32 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | CurrentPa ge | Strin g | Query | No | 1 | The page number. |
 | PageSize | Strin g | Query | No | 10 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -VpcId | String | vpc-test**** | The VPC ID. |
 | -VpcName | String | vpc-test**** | The name of the VPC. |
 | -AliUid | String | 1234567890 | The user ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
-| PageInfo | Struct |  |  |
+| PageInfo | Struct |   |   |
 | -PageSize | Integer | 10 | The number of entries per page. |
 | -CurrentPage | Integer | 1 | The page number. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
-Cloud Security Network Detectio ion n and Response
+**Examples**
 
-**Response parameters**
-
-Sample requests Cloud Security Network Detectio n and Response ion
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeVpcInfoByUid&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&CurrentPage=1&PageSize=10
@@ -1097,33 +1328,44 @@ https://[Endpoint]/?Action=DescribeVpcInfoByUid&RegionId=cnhangzhou&Lang=zh&AliU
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "VpcId":"vpc-test****",
             "VpcName":"vpc-test****",
             "AliUid":"1234567890"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
-    "Module":"ndr***"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+    "Module":"ndr***"
+```
+
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeVpcInfoByUidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <VpcId>vpc-test****</VpcId>
@@ -1136,9 +1378,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>100</TotalCount>
     </PageInfo>
     <Module>ndr***</Module>
+</DescribeVpcInfoByUidResponse>
 ```
 
-#### DescribeNtaTrafficStatisticsByUid
+#### 5.2.3 DescribeNtaTrafficStatisticsByUid
 
 Queries network traffic statistics by user ID.
 
@@ -1147,18 +1390,6 @@ Queries network traffic statistics by user ID.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DescribeNtaTraffic StatisticsByUid | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
-| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
-| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
-| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
-| NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
-| VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
-
-Cloud Security Network Detectio ion n and Response
 
 **Throttling**
 
@@ -1169,6 +1400,16 @@ You can call this operation up to 100 times per second per account. You can call
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
+| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
+| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
+| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+| NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
+| VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
 **Response parameters**
 
@@ -1182,7 +1423,9 @@ This operation does not have operation-specific request headers and uses only co
 | AttackCount | Integer | 100 | The number of attacks. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeNtaTrafficStatisticsByUid&RegionId=cnhangzhou&Lang=zh&Direction=in&StartTime=1525833105&EndTime=1525833105&AliUid=1234567890&N Type=isw&VpcId=vpc-test****
@@ -1190,8 +1433,13 @@ https://[Endpoint]/?Action=DescribeNtaTrafficStatisticsByUid&RegionId=cnhangzhou
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "SipCount":100,
     "DipCount":100,
@@ -1199,24 +1447,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "SessionCount":100,
     "AttackCount":100,
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeSessionB yApp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml <DescribeNtaTrafficStatisticsByUidResponse>
+Content-Type:application/xml <DescribeNtaTrafficStatisticsByUidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <SipCount>100</SipCount>
     <DipCount>100</DipCount>
@@ -1227,11 +1463,15 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeNtaTrafficStatisticsByUidR
 </DescribeNtaTrafficStatisticsByUidResponse>
 ```
 
-#### DescribeSessionByApp
+#### 5.2.4 DescribeSessionByApp
 
 Queries the session information about an application.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeSessionB yApp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -1242,6 +1482,11 @@ You can call this operation up to 100 times per second per account. You can call
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1258,13 +1503,11 @@ This operation does not have operation-specific request headers and uses only co
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -StartTime | Integer | 1525833105 | The start time of the session. |
 | -SrcIp | String | 1.1.1.1 | The source IP address. |
 | -Loction | String | Beijing | The geographical location of the source IP address. |
@@ -1276,16 +1519,14 @@ Cloud Security Network Detectio n and Response ion
 | -PktCount | Integer | 10 | The number of session packets. |
 | -TrafficBps | Integer | 10 | The amount of traffic. |
 | -Duration | Integer | 10 | The duration of the session. Unit: seconds. |
-| -AttackType | String |  | The attack type. No data is returned. |
+| -AttackType | String |   | The attack type. No data is returned. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | Module | String | ndr*** | The name of the module. |
-| PageInfo | Struct |  |  |
+| PageInfo | Struct |   |   |
 | -PageSize | Integer | 10 | The number of entries per page. |
 
-Cloud Security Network Detectio ion n and Response
-
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1293,7 +1534,9 @@ Cloud Security Network Detectio ion n and Response
 | -CurrentPage | Integer | 1 | The page number. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
-n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeSessionByApp&RegionId=cnhangzhou&Lang=zh&Direction=in&StartTime=1525833105&EndTime=1525833105&AliUid=1234567890&A =HTTP&NetType=isw&Sort=total_packet_bytes&CurrentPage=1&PageSize=10&SrcPort=65534&DstPort 080&VpcId=vpc-test****&Lang=zh
@@ -1301,11 +1544,20 @@ https://[Endpoint]/?Action=DescribeSessionByApp&RegionId=cnhangzhou&Lang=zh&Dire
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "App":"HTTP",
             "SrcPort":80,
             "StartTime":1525833105,
@@ -1318,10 +1570,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "DstPort":80,
             "TrafficBps":10,
             "SrcIp":"1.1.1.1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":100,
@@ -1329,21 +1580,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
-    "Module":"ndr***"
-}
 ```
 
-`XML` format
+`},`
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeNtaTraffic ListByApp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```json
+    "Module":"ndr***"
+```
 
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeSessionByAppResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <StartTime>1525833105</StartTime>
@@ -1366,13 +1614,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>100</TotalCount>
     </PageInfo>
     <Module>ndr***</Module>
+</DescribeSessionByAppResponse>
 ```
 
-#### DescribeNtaTrafficListByApp
+#### 5.2.5 DescribeNtaTrafficListByApp
 
 Queries network traffic statistics by application.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeNtaTraffic ListByApp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -1398,13 +1651,11 @@ This operation does not have operation-specific request headers and uses only co
 | PageSize | Strin g | Query | No | 10 | The number of entries per page. |
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -App | String | HTTP | The name of the application. |
 | -Proto | String | 3234 | The agreement number. |
 | -SipCount | String | 100 | The number of source IP addresses. |
@@ -1416,24 +1667,35 @@ Cloud Security Network Detectio n and Response ion
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | Module | String | ndr*** | The name of the module. |
-| PageInfo | Struct |  |  |
+| PageInfo | Struct |   |   |
 | -PageSize | Integer | 10 | The number of entries per page. |
 | -CurrentPage | Integer | 1 | The page number. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeNtaTrafficListByApp&RegionId=cnhangzhou&Lang=zh&Direction=in&StartTime=1525833105&EndTime=1525833105&AliUid=1234567890&A =HTTP&NetType=isw&Sort=total_bytes&CurrentPage=1&PageSize=10&VpcId=vpc-test****
 ```
 
-Cloud Security Network Detectio n and Response ion Sample success responses `JSON` format
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "App":"HTTP",
             "Proto":"3234",
             "EndTime":1525833105,
@@ -1442,10 +1704,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "StartTime":1525833105,
             "TrafficBps":"100",
             "SessionCount":"100"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":100,
@@ -1453,24 +1714,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
-    "Module":"ndr***"
-}
 ```
 
-`XML` format
+`},`
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeIncAppInf o | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```json
+    "Module":"ndr***"
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeNtaTrafficListByAppResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <App>HTTP</App>
@@ -1489,13 +1744,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>100</TotalCount>
     </PageInfo>
     <Module>ndr***</Module>
+</DescribeNtaTrafficListByAppResponse>
 ```
 
-#### DescribeIncAppInfo
+#### 5.2.6 DescribeIncAppInfo
 
 Queries the information about new applications.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeIncAppInf o | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -1509,6 +1769,9 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 | StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
@@ -1517,6 +1780,8 @@ This operation does not have operation-specific request headers and uses only co
 | NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -1524,17 +1789,9 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | String | 1234567890 | The user ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeEcsByIp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=DescribeIncAppInfo&RegionId=cnhangzhou&Lang=zh&Direction=in&StartTime=1525833105&EndTime=1525833105&AliUid=1234567890&N Type=isw&VpcId=vpc-test****
@@ -1542,30 +1799,39 @@ https://[Endpoint]/?Action=DescribeIncAppInfo&RegionId=cnhangzhou&Lang=zh&Direct
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "IncCount":3,
     "AliUid":"1234567890",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeIncAppInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <IncCount>3</IncCount>
     <AliUid>1234567890</AliUid>
     <Module>ndr***</Module>
+</DescribeIncAppInfoResponse>
 ```
 
-#### DescribeEcsByIp
+#### 5.2.7 DescribeEcsByIp
 
 Queries the Elastic Compute Service (ECS) asset information by IP address.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeEcsByIp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -1589,6 +1855,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageSize | Strin g | Query | No | 10 | The number of entries per page. |
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DataList | Array | ... | The response parameters. |
@@ -1596,11 +1864,7 @@ This operation does not have operation-specific request headers and uses only co
 | -InstanceId | String | i-test*** | The ECS instance ID. |
 | - InstanceName | String | test linux 9 0 x86 _ _ _ _ 64 20G ***** _ _ _ | The name of the ECS instance. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1617,19 +1881,30 @@ Cloud Security Network Detectio n and Response ion
 | -CurrentPage | Integer | 1 | The page number. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeEcsByIp&RegionId=cnhangzhou&Lang=zh&QueryIp=1.1.1.1&StartTime=1525833105&EndTime=1525833105&AliUid=123456789 NetType=isw&CurrentPage=1&PageSize=10&VpcId=vpc-test****
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "InstanceName":"test_linux_9_0_x86_64_20G_*****",
             "Uuid":"f819af20-c094-4a48-98e1-********",
             "PrivateIp":"192.167.*.*",
@@ -1637,10 +1912,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "InstanceStatus":"Running",
             "CreateTime":"test",
             "DeptName":"test"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":100,
@@ -1648,15 +1922,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
-    "Module":"ndr***"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+    "Module":"ndr***"
+```
+
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeEcsByIpResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <PrivateIp>192.167.*.*</PrivateIp>
@@ -1674,27 +1951,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>100</TotalCount>
     </PageInfo>
     <Module>ndr***</Module>
+</DescribeEcsByIpResponse>
 ```
 
-#### DescribeAssetByIp
+#### 5.2.8 DescribeAssetByIp
+
+Queries asset information by IP address.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DescribeAssetByIp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| QueryIp | Strin g | Query | No | 1.1.1.1 | The IP address. |
-| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
-| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
-| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
-| NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
-| VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
-
-Cloud Security Network Detectio ion n and Response Queries asset information by IP address.
-
-**Authorization information**
 
 **Throttling**
 
@@ -1705,6 +1973,16 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| QueryIp | Strin g | Query | No | 1.1.1.1 | The IP address. |
+| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
+| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
+| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+| NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
+| VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
 **Response parameters**
 
@@ -1720,7 +1998,9 @@ This operation does not have operation-specific request headers and uses only co
 | BandWidth | Integer | 10 | The bandwidth. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAssetByIp&RegionId=cnhangzhou&Lang=zh&QueryIp=1.1.1.1&StartTime=1525833105&EndTime=1525833105&AliUid=123456789 NetType=isw&VpcId=vpc-test****
@@ -1728,14 +2008,13 @@ https://[Endpoint]/?Action=DescribeAssetByIp&RegionId=cnhangzhou&Lang=zh&QueryIp
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeNtaAppTr end | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Type":"ecs",
     "InstanceId":"i-test***",
@@ -1745,13 +2024,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Status":"in_use",
     "BandWidth":10,
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetByIpResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Type>ecs</Type>
     <InstanceId>i-test***</InstanceId>
@@ -1761,13 +2039,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Status>in_use</Status>
     <BandWidth>10</BandWidth>
     <Module>ndr***</Module>
+</DescribeAssetByIpResponse>
 ```
 
-#### DescribeNtaAppTrend
+#### 5.2.9 DescribeNtaAppTrend
 
 Queries the traffic trend of an application.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeNtaAppTr end | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -1776,6 +2059,8 @@ You can call this operation up to 100 times per second per account. You can call
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1788,18 +2073,14 @@ This operation does not have operation-specific request headers and uses only co
 | NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -InBps | Integer | 10 | The inbound bytes per second (BPS). |
 | -Time | Integer | 1525833105 | The point in time of the query. |
 | -OutBps | Integer | 10 | The outbound BPS. |
-
-Cloud Security Network Detectio n and Response ion
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1812,28 +2093,38 @@ Cloud Security Network Detectio n and Response ion
 | AvgOutBps | Integer | 10 | The average outbound BPS. |
 | Module | String | ndr*** | The name of the module. |
 
-ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeNtaAppTrend&RegionId=cnhangzhou&Lang=zh&Direction=in&StartTime=1525833105&EndTime=1525833105&App=HTTP&AliUid=123 67890&NetType=isw&VpcId=vpc-test****
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "OutPps":10,
             "OutBps":10,
             "InBps":10,
             "InPps":10,
             "Time":1525833105
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "MaxInBps":100,
@@ -1841,13 +2132,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "AvgInBps":10,
     "AvgOutBps":10,
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeNtaAppTrendResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <InBps>10</InBps>
@@ -1861,9 +2151,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <AvgInBps>10</AvgInBps>
     <AvgOutBps>10</AvgOutBps>
     <Module>ndr***</Module>
+</DescribeNtaAppTrendResponse>
 ```
 
-#### DescribeSessionByIp
+#### 5.2.10 DescribeSessionByIp
 
 Queries the session information by IP address.
 
@@ -1872,19 +2163,6 @@ Queries the session information by IP address.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DescribeSessionB yIp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
-| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
-| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
-| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
-| SrcIp | Strin g | Query | No | 1.1.1.1 | The source IP address. |
-| DstIp | Strin g | Query | No | 1.1.1.1 | The destination IP address. |
-| NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
-
-Cloud Security Network Detectio ion n and Response
 
 **Throttling**
 
@@ -1898,6 +2176,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
+| StartTime | Strin g | Query | No | 1525833105 | The beginning of the time range to query. |
+| EndTime | Strin g | Query | No | 1525833105 | The end of the time range to query. |
+| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+| SrcIp | Strin g | Query | No | 1.1.1.1 | The source IP address. |
+| DstIp | Strin g | Query | No | 1.1.1.1 | The destination IP address. |
+| NetType | Strin g | Query | No | isw | The network type. Valid values: isw and csw. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Sort | Strin g | Query | No | total packet bytes _ _ | The sorting method. Valid values: total packet bytes and _ _ total packet count. _ _ |
 | App | Strin g | Query | No | HTTP | The name of the application. |
 | CurrentPa ge | Strin g | Query | No | 1 | The page number. |
@@ -1907,18 +2196,16 @@ This operation does not have operation-specific request headers and uses only co
 | VpcId | Strin g | Query | No | vpc-test**** | The virtual private cloud (VPC) ID. This parameter is required when NetType is set to csw. |
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -StartTime | Integer | 1525833105 | The start time of the session. |
 | -SrcIp | String | 1.1.1.1 | The source IP address. |
 | -Loction | String | Beijing | The geographical location of the source IP address. |
 
-n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1931,16 +2218,18 @@ n and Response ion
 | -PktCount | Integer | 10 | The number of session packets. |
 | -TrafficBps | Integer | 10 | The amount of traffic. |
 | -Duration | Integer | 10 | The duration of the session. Unit: seconds. |
-| -AttackType | String |  | The attack type. No data is returned. |
+| -AttackType | String |   | The attack type. No data is returned. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | Module | String | ndr*** | The name of the module. |
-| PageInfo | Struct |  |  |
+| PageInfo | Struct |   |   |
 | -PageSize | Integer | 10 | The number of entries per page. |
 | -CurrentPage | Integer | 1 | The page number. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
-Sample requests Cloud Security Network Detectio n and Response ion
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeSessionByIp&RegionId=cnhangzhou&Lang=zh&Direction=in&StartTime=1525833105&EndTime=1525833105&AliUid=1234567890&S Ip=1.1.1.1&DstIp=1.1.1.1&NetType=isw&Sort=total_packet_bytes&App=HTTP&CurrentPage=1&PageS e=10&SrcPort=65534&DstPort=8080&VpcId=vpc-test****&Lang=zh
@@ -1948,11 +2237,20 @@ https://[Endpoint]/?Action=DescribeSessionByIp&RegionId=cnhangzhou&Lang=zh&Direc
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "App":"HTTP",
             "SrcPort":80,
             "StartTime":1525833105,
@@ -1965,10 +2263,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "DstPort":80,
             "TrafficBps":10,
             "SrcIp":"1.1.1.1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":100,
@@ -1976,21 +2273,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
-    "Module":"ndr***"
-}
 ```
 
-`XML` format
+`},`
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeHitLogCol umns | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```json
+    "Module":"ndr***"
+```
 
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeSessionByIpResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <StartTime>1525833105</StartTime>
@@ -2013,15 +2307,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>100</TotalCount>
     </PageInfo>
     <Module>ndr***</Module>
+</DescribeSessionByIpResponse>
 ```
 
-### Log retrieval
+### 5.3 Log retrieval
 
-#### DescribeHitLogColumns
+#### 5.3.1 DescribeHitLogColumns
 
 Queries log data to be displayed in column charts.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeHitLogCol umns | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -2032,6 +2331,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+**q**
+
+**p**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2044,24 +2347,18 @@ This operation does not have operation-specific request headers and uses only co
 | Interval | Long | Query | No | 5000 | The interval. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -StartTime | Integer | 1706668721 | The beginning of the time range to query. |
 | -EndTime | Integer | 1706668721 | The end of the time range to query. |
 | -Count | Integer | 1000 | The number of entries returned. |
 | -Interval | Integer | 5000 | The interval. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**q**
-
-**p**
-
-**Response parameters**
-
-| Developer Guide·A | PI documentat |  | Cloud Security Network Detecti |
+| Developer Guide·A | PI documentat |   | Cloud Security Network Detecti |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2070,7 +2367,9 @@ Cloud Security Network Detectio n and Response ion
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The task ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
-ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeHitLogColumns&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&IndexType=ndr_reset_log&Query=src_ip:10.x.x.x&StartTime 706668721&EndTime=1706668721&Interval=5000&DeptAliUid=1234567890
@@ -2078,41 +2377,33 @@ https://[Endpoint]/?Action=DescribeHitLogColumns&RegionId=cnhangzhou&Lang=zh&Ali
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "EndTime":1706668721,
             "StartTime":1706668721,
             "Count":1000,
             "Interval":5000
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeSearchTe mplate | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeHitLogColumnsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
@@ -2123,13 +2414,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <Count>1000</Count>
         <Interval>5000</Interval>
     </DataList>
+</DescribeHitLogColumnsResponse>
 ```
 
-#### DescribeSearchTemplate
+#### 5.3.2 DescribeSearchTemplate
 
 Queries the information about a template.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeSearchTe mplate | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -2143,15 +2439,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Long | Query | No | 123456789 | The user ID. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. |
 | PageNo | Integ er | Query | No | 1 | The page number. |
 | Filter | Strin g | Query | No | src ip:10.x.x.x _ | The query condition that contains keywords to perform queries on TemName and Query. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -TemID | Integer | 1 | The template ID. |
 | -AliUid | Long | 123456789 | The user ID. |
 | -TemName | String | test tem _ | The name of the template. |
@@ -2161,13 +2463,9 @@ This operation does not have operation-specific request headers and uses only co
 | -EndTime | Integer | 1706668721 | The end of the time range to query. |
 | -RangeFlag | Integer | 100000 | The interval. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| module | String |  |  |
+| module | String |   |   |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
-
-| n | Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io | t n |
+| n | Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io | t n |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2175,6 +2473,8 @@ Cloud Security Network Detectio ion n and Response
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | PageSize | Integer | 10 | The number of entries per page. |
 | CurrentPage | Integer | 1 | The page number. |
+
+**Examples**
 
 Sample requests
 
@@ -2184,15 +2484,24 @@ https://[Endpoint]/?Action=DescribeSearchTemplate&RegionId=cnhangzhou&Lang=zh&Al
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "module":"",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Query":"src_ip:10.x.x.x",
             "EndTime":1706668721,
             "RangeFlag":100000,
@@ -2201,28 +2510,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "StartTime":1706668721,
             "TemName":"test_tem",
             "AliUid":123456789
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:UpdateVisibleLogF ields | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeSearchTemplateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <module></module>
     <TotalCount>100</TotalCount>
@@ -2238,13 +2531,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <EndTime>1706668721</EndTime>
         <RangeFlag>100000</RangeFlag>
     </DataList>
+</DescribeSearchTemplateResponse>
 ```
 
-#### UpdateVisibleLogFields
+#### 5.3.3 UpdateVisibleLogFields
 
 Displays or hides a field.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:UpdateVisibleLogF ields | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -2258,19 +2556,22 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | IndexType | Strin g | Query | No | ndr reset log _ _ | The log type. |
 | FieldNam e | Strin g | Query | No | src ip _ | The name of the field. |
 | Display | Integ er | Query | No | 0 | Indicates whether to display the field. A value of 0 indicates that the field is hidden. A value of 1 indicates that the field is displayed. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2280,18 +2581,45 @@ https://[Endpoint]/?Action=UpdateVisibleLogFields&RegionId=cnhangzhou&Lang=zh&In
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "Module":"ndr***"
-}
+```
+Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "Module":"ndr***"
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <UpdateVisibleLogFieldsResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <Module>ndr***</Module>
+</UpdateVisibleLogFieldsResponse>
+```
+
+#### 5.3.4 ExportHitlogs
+
+Exports specific logs.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:ExportHitlogs | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2301,31 +2629,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Query | Strin g | Query | No | src ip:10.x.x.x _ | The query condition. |
 | StartTime | Strin g | Query | No | 1706668721 | The beginning of the time range to query. |
 
-Cloud Security Network Detectio ion n and Response
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <Module>ndr***</Module>
-```
-
-#### ExportHitlogs
-
-Exports specific logs.
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-| Cloud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| Cloud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -2335,13 +2639,15 @@ This operation does not have operation-specific request headers and uses only co
 | Sort | Strin g | Query | No | [{'session time': _ {'order':'desc'}}, {'source ip: _ {'order':'asc'}}] | The sorting method. By default, logs are sorted by session time in _ descending order. To sort logs by other fields, modify the JSON string to include those fields in the same format. |
 | Size | Integ er | Query | No | 100 | The number of rows in the exported file. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2349,39 +2655,39 @@ Sample requests
 https://[Endpoint]/?Action=ExportHitlogs&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&IndexType=ndr_reset_log&Query=src_ip:10.x.x.x&StartTime 706668721&EndTime=1706668721&Filter=0&Sort=[{'session_time':{'order':'desc'}},{'source_ ip:{'order':'asc'}}]&Size=100
 ```
 
-Sample success responses
+Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeGivenFiel dStatistics | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response `JSON` format
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportHitlogsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
+</ExportHitlogsResponse>
 ```
 
-#### DescribeGivenFieldStatistics
+#### 5.3.5 DescribeGivenFieldStatistics
 
 Queries the statistics on a specific field.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeGivenFiel dStatistics | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -2392,6 +2698,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2404,24 +2713,20 @@ This operation does not have operation-specific request headers and uses only co
 | FieldNam e | Strin g | Query | No | src ip _ | The name of the field. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Type | String | 1 | The category of the field. |
 | -Count | String | 1000 | The number of entries returned. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
-Cloud Security Network Detectio n and Response ion
+**Examples**
 
-**Response parameters**
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeHitLogCol umnsData | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response Sample requests
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeGivenFieldStatistics&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&IndexType=ndr_reset_log&Query=src_ip:10.x.x.x&StartTime 706668721&EndTime=1706668721&FieldName=src_ip&DeptAliUid=1234567890
@@ -2429,28 +2734,30 @@ https://[Endpoint]/?Action=DescribeGivenFieldStatistics&RegionId=cnhangzhou&Lang
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Type":"1",
             "Count":"1000"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeGivenFieldStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -2458,15 +2765,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <Type>1</Type>
         <Count>1000</Count>
     </DataList>
+</DescribeGivenFieldStatisticsResponse>
 ```
 
-#### DescribeHitLogColumnsData
+#### 5.3.6 DescribeHitLogColumnsData
 
 Queries logs to display data in column charts.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeHitLogCol umnsData | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2475,27 +2795,19 @@ Queries logs to display data in column charts.
 | TaskUUID | Strin g | Query | No | cfa13285-5330-402e- xxx-5075c12c6aa8 | The task UUID. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The task UUID. |
 | TaskStatus | Integer | 1 | The status of the task. A value of 0 indicates that the query is not complete and needs to be performed again. A value of 1 indicates that the query is complete. |
-| HitLogData | Struct |  |  |
-| -DataList | Array |  |  |
+| HitLogData | Struct |   |   |
+| -DataList | Array |   |   |
 | --StartTime | Integer | 1706668721 | The beginning of the time range to query. |
 
-Cloud Security Network Detectio n and Response ion You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2505,6 +2817,8 @@ This operation does not have operation-specific request headers and uses only co
 | --Interval | Integer | 5000 | The interval. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2513,44 +2827,40 @@ https://[Endpoint]/?Action=DescribeHitLogColumnsData&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8",
     "TaskStatus":1,
     "HitLogData":{
         "DataList":[
-            {
+```
+
+`{`
+
+```json
                 "EndTime":1706668721,
                 "StartTime":1706668721,
                 "Count":1000,
                 "Interval":5000
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "TotalCount":100
-    }
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeHitStatisti cs | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeHitLogColumnsDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
@@ -2564,13 +2874,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <Interval>5000</Interval>
         </DataList>
     </HitLogData>
+</DescribeHitLogColumnsDataResponse>
 ```
 
-#### DescribeHitStatistics
+#### 5.3.7 DescribeHitStatistics
 
 Queries hit logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeHitStatisti cs | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -2581,6 +2896,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2591,9 +2910,11 @@ This operation does not have operation-specific request headers and uses only co
 | EndTime | Long | Query | No | 1706668721 | The end of the time range to query. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| IndexList | Array |  |  |
+| IndexList | Array |   |   |
 | -IndexName | String | ndr reset log _ _ | The name of the index that contains data. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
@@ -2602,11 +2923,9 @@ This operation does not have operation-specific request headers and uses only co
 | EndTime | Long | 1706668721 | The end of the time range to query. |
 | Interval | Long | 5000 | The interval. |
 
-Cloud Security Network Detectio ion n and Response
+**Examples**
 
-**Response parameters**
-
-Sample requests Cloud Security Network Detectio n and Response ion
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeHitStatistics&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&IndexType=ndr_reset_log&Query=src_ip:10.x.x.x&StartTime 706668721&EndTime=1706668721&DeptAliUid=1234567890
@@ -2614,8 +2933,13 @@ https://[Endpoint]/?Action=DescribeHitStatistics&RegionId=cnhangzhou&Lang=zh&Ali
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TotalCount":100,
@@ -2623,21 +2947,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "EndTime":1706668721,
     "Interval":5000,
     "IndexList":[
-        {
+```
+
+`{`
+
+```json
             "IndexName":"ndr_reset_log"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeHitStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -2647,9 +2968,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <IndexList>
         <IndexName>ndr_reset_log</IndexName>
     </IndexList>
+</DescribeHitStatisticsResponse>
 ```
 
-#### DescribeLogFieldIntroduction
+#### 5.3.8 DescribeLogFieldIntroduction
 
 Queries the field description of Elasticsearch logs.
 
@@ -2658,24 +2980,6 @@ Queries the field description of Elasticsearch logs.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DescribeLogFieldI ntroduction | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| SecureEvents | Array |  |  |
-| -FieldList | Array |  |  |
-| --FieldName | String | src ip _ | The name of the field. |
-| --FieldNameEn | String | src ip _ | The name of the field in English. |
-| --FieldNameZh | String | src ip _ | The name of the field in Chinese. |
-| --FieldDesc | String | test | The description of the field. |
-| --FieldDescEn | String | test | The description of the field in English. |
-| --FieldType | String | text | The data type of the field. |
-| -IndexName | String | ndr attack log _ _ | The name of the index. |
-
-Cloud Security Network Detectio ion n and Response
 
 **Throttling**
 
@@ -2687,14 +2991,30 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
 **Response parameters**
 
-| loud Security Net and Response | work Detectio |  | Developer Guide·API documenta io |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| SecureEvents | Array |   |   |
+| -FieldList | Array |   |   |
+| --FieldName | String | src ip _ | The name of the field. |
+| --FieldNameEn | String | src ip _ | The name of the field in English. |
+| --FieldNameZh | String | src ip _ | The name of the field in Chinese. |
+| --FieldDesc | String | test | The description of the field. |
+| --FieldDescEn | String | test | The description of the field in English. |
+| --FieldType | String | text | The data type of the field. |
+| -IndexName | String | ndr attack log _ _ | The name of the index. |
+
+| loud Security Net and Response | work Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -Ttl | Integer | 10 | The time-to-live (TTL) of data. |
-| TrafficLogs | Array |  |  |
-| -FieldList | Array |  |  |
+| TrafficLogs | Array |   |   |
+| -FieldList | Array |   |   |
 | --FieldName | String | src ip _ | The name of the field. |
 | --FieldNameEn | String | src ip _ | The name of the field in English. |
 | --FieldNameZh | String | src ip _ | The name of the field in Chinese. |
@@ -2706,79 +3026,76 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeLogFieldIntroduction&RegionId=cn-hangzhou&Lang=zh
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "SecureEvents":[
-        {
+```
+
+`{`
+
+```json
             "IndexName":"ndr_attack_log",
             "Ttl":10,
             "FieldList":[
-                {
+```
+
+`{`
+
+```json
                     "FieldDescEn":"test",
                     "FieldNameEn":"src_ip",
                     "FieldNameZh":"src_ip",
                     "FieldName":"src_ip",
                     "FieldDesc":"test",
                     "FieldType":"text"
-                }
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
     "TrafficLogs":[
-        {
+```
+
+`{`
+
+```json
             "IndexName":"ndr_attack_log",
             "Ttl":10,
             "FieldList":[
-                {
+```
+
+`{`
+
+```json
                     "FieldDescEn":"test",
                     "FieldNameEn":"src_ip",
                     "FieldNameZh":"src_ip",
                     "FieldName":"src_ip",
                     "FieldDesc":"test",
                     "FieldType":"text"
-                }
 ```
 
-]
-
-```
-        }
-```
-
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeHitDetailL ist | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `]` `}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeLogFieldIntroductionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <SecureEvents>
@@ -2805,13 +3122,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <FieldType>text</FieldType>
         </FieldList>
     </TrafficLogs>
+</DescribeLogFieldIntroductionResponse>
 ```
 
-#### DescribeHitDetailList
+#### 5.3.9 DescribeHitDetailList
 
 Queries the details of rule hit results.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeHitDetailL ist | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -2820,6 +3142,8 @@ You can call this operation up to 100 times per second per account. You can call
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2834,18 +3158,14 @@ This operation does not have operation-specific request headers and uses only co
 | Sort | Strin g | Query | No | [{session time: _ {order:desc}}, {source ip: _ {order:asc}}] | The sorting method. By default, logs are sorted by session time in _ descending order. To sort logs by other fields, modify the JSON string to include those fields in the same format. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DataList | Array |  |  |
-| -Index | String | ndr reset log _ _ | The name of the index that is used as the data source. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Request parameters**
-
 **Response parameters**
 
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DataList | Array |   |   |
+| -Index | String | ndr reset log _ _ | The name of the index that is used as the data source. |
+
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -Display | Map | {src ip:10.x.x.x,dst _ ip:10.x.x.x} _ | The data source of display fields. |
@@ -2857,6 +3177,8 @@ Cloud Security Network Detectio ion n and Response
 | PageSize | Integer | 10 | The number of entries per page. |
 | CurrentPage | Integer | 1 | The page number. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2865,38 +3187,34 @@ https://[Endpoint]/?Action=DescribeHitDetailList&RegionId=cnhangzhou&Lang=zh&Ali
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeLogFields | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Index":"ndr_reset_log",
             "Mapping":"{test:test}",
             "Original":"{src_ip:10.x.x.x,dst_ip:10.x.x.x,dst_port:80}",
             "Display":"{src_ip:10.x.x.x,dst_ip:10.x.x.x}"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeHitDetailListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -2908,38 +3226,22 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <Original>{src_ip:10.x.x.x,dst_ip:10.x.x.x,dst_port:80}</Original>
         <Mapping>{test:test}</Mapping>
     </DataList>
+</DescribeHitDetailListResponse>
 ```
 
-#### DescribeLogFields
+#### 5.3.10 DescribeLogFields
 
 Queries the fields that are displayed and hidden in logs.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeLogFields | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
 
-You can call this operation up to 10 times per second per account.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| IndexType | Strin g | Query | No | ndr reset log _ _ | The log type. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DisplayList | Array |  |  |
-| -FieldName | String | src ip _ | The name of the field. |
-| -FiledNameZh | String | src ip _ | The name of the field in Chinese. |
-| -FiledNameEn | String | src ip _ | The name of the field in English. |
-| -FiledType | String | text | The data type of the field. |
-| -FiledDesc | String | test | The description of the field. |
-| -FiledDescEn | String | test | The description of the field in English. |
-| -FiledsNo | Integer | 10 | The sequence number of the field. |
-| NoDisplayList | Array |  |  |
-| -FieldName | String | src ip _ | The name of the field. |
-| -FiledNameZh | String | src ip _ | The name of the field in Chinese. |
-
-Cloud Security Network Detectio n and Response ion You can call this operation up to 100 times per second.
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
 
@@ -2947,9 +3249,28 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| IndexType | Strin g | Query | No | ndr reset log _ _ | The log type. |
+
 **Response parameters**
 
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DisplayList | Array |   |   |
+| -FieldName | String | src ip _ | The name of the field. |
+| -FiledNameZh | String | src ip _ | The name of the field in Chinese. |
+| -FiledNameEn | String | src ip _ | The name of the field in English. |
+| -FiledType | String | text | The data type of the field. |
+| -FiledDesc | String | test | The description of the field. |
+| -FiledDescEn | String | test | The description of the field in English. |
+| -FiledsNo | Integer | 10 | The sequence number of the field. |
+| NoDisplayList | Array |   |   |
+| -FieldName | String | src ip _ | The name of the field. |
+| -FiledNameZh | String | src ip _ | The name of the field in Chinese. |
+
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2963,21 +3284,32 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeLogFields&RegionId=cnhangzhou&Lang=zh&IndexType=ndr_reset_log
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TotalCount":100,
     "DisplayList":[
-        {
+```
+
+`{`
+
+```json
             "FiledNameZh":"src_ip",
             "FiledDesc":"test",
             "FiledsNo":10,
@@ -2985,14 +3317,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "FiledDescEn":"test",
             "FiledNameEn":"src_ip",
             "FieldName":"src_ip"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "NoDisplayList":[
-        {
+```
+
+`{`
+
+```json
             "FiledNameZh":"src_ip",
             "FiledDesc":"test",
             "FiledsNo":10,
@@ -3000,25 +3335,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "FiledDescEn":"test",
             "FiledNameEn":"src_ip",
             "FieldName":"src_ip"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeLogType | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeLogFieldsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>100</TotalCount>
@@ -3040,13 +3362,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <FiledDescEn>test</FiledDescEn>
         <FiledsNo>10</FiledsNo>
     </NoDisplayList>
+</DescribeLogFieldsResponse>
 ```
 
-#### DescribeLogType
+#### 5.3.11 DescribeLogType
 
 Queries the types of Elasticsearch logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeLogType | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3062,31 +3389,29 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| SecureEventLi st | Array |  |  |
-| -IndexType | String | TrafficLog | The index type. A value of SecureEvent indicates the index of security event logs. A value of TrafficLog indicates the index of full traffic logs. |
-| -IndexName | String | ndr attack log _ _ | The name of the index. |
-| -IndexNameEn | String | ndr attack log _ _ | The name of the index in English. |
-| -IndexDesc | String | test | The description of the index. |
-| -IndexCycle | String | day | The indexing cycle. Valid values: no, day, mon, and year. |
-| TrafficLogList | Array |  |  |
-| -IndexType | String | TrafficLog | The index type. A value of SecureEvent indicates the index of security event logs. A value of TrafficLog indicates the index of full traffic logs. |
-| -IndexName | String | ndr attack log _ _ | The name of the index. |
-| -IndexNameEn | String | ndr attack log _ _ | The name of the index in English. |
-| -IndexDesc | String | test | The description of the index. |
-| -IndexCycle | String | day | The indexing cycle. Valid values: no, day, mon, and year. |
-
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
-| Developer Guide·A | PI documentat |  | Cloud Security Network Detecti |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| SecureEventLi st | Array |   |   |
+| -IndexType | String | TrafficLog | The index type. A value of SecureEvent indicates the index of security event logs. A value of TrafficLog indicates the index of full traffic logs. |
+| -IndexName | String | ndr attack log _ _ | The name of the index. |
+| -IndexNameEn | String | ndr attack log _ _ | The name of the index in English. |
+| -IndexDesc | String | test | The description of the index. |
+| -IndexCycle | String | day | The indexing cycle. Valid values: no, day, mon, and year. |
+| TrafficLogList | Array |   |   |
+| -IndexType | String | TrafficLog | The index type. A value of SecureEvent indicates the index of security event logs. A value of TrafficLog indicates the index of full traffic logs. |
+| -IndexName | String | ndr attack log _ _ | The name of the index. |
+| -IndexNameEn | String | ndr attack log _ _ | The name of the index in English. |
+| -IndexDesc | String | test | The description of the index. |
+| -IndexCycle | String | day | The indexing cycle. Valid values: no, day, mon, and year. |
+
+| Developer Guide·A | PI documentat |   | Cloud Security Network Detecti |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| BehaviorAnaly sisList | Array |  |  |
+| BehaviorAnaly sisList | Array |   |   |
 | -IndexType | String | TrafficLog | The index type. A value of SecureEvent indicates the index of security event logs. A value of TrafficLog indicates the index of full traffic logs. |
 | -IndexName | String | ndr attack log _ _ | The name of the index. |
 | -IndexNameEn | String | ndr attack log _ _ | The name of the index in English. |
@@ -3095,69 +3420,74 @@ Cloud Security Network Detectio n and Response ion
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeLogType&RegionId=cn-hangzhou&Lang=zh
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "SecureEventList":[
-        {
+```
+
+`{`
+
+```json
             "IndexName":"ndr_attack_log",
             "IndexNameEn":"ndr_attack_log",
             "IndexCycle":"day",
             "IndexDesc":"test",
             "IndexType":"TrafficLog"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TrafficLogList":[
-        {
-            "IndexName":"ndr_attack_log",
-            "IndexNameEn":"ndr_attack_log",
-            "IndexCycle":"day",
-            "IndexDesc":"test",
-            "IndexType":"TrafficLog"
-        }
 ```
 
-`],`
+`{`
 
 ```json
-        {
             "IndexName":"ndr_attack_log",
             "IndexNameEn":"ndr_attack_log",
             "IndexCycle":"day",
             "IndexDesc":"test",
             "IndexType":"TrafficLog"
-        }
 ```
 
-]
+`}` `],`
 
+```json
+    "BehaviorAnalysisList":[
 ```
-}
+
+`{`
+
+```json
+            "IndexName":"ndr_attack_log",
+            "IndexNameEn":"ndr_attack_log",
+            "IndexCycle":"day",
+            "IndexDesc":"test",
+            "IndexType":"TrafficLog"
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DelSearchTemplat e | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeLogTypeResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <SecureEventList>
@@ -3174,18 +3504,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <IndexDesc>test</IndexDesc>
         <IndexCycle>day</IndexCycle>
     </TrafficLogList>
+    <BehaviorAnalysisList>
         <IndexType>TrafficLog</IndexType>
         <IndexName>ndr_attack_log</IndexName>
         <IndexNameEn>ndr_attack_log</IndexNameEn>
         <IndexDesc>test</IndexDesc>
         <IndexCycle>day</IndexCycle>
+    </BehaviorAnalysisList>
+</DescribeLogTypeResponse>
 ```
 
-#### DelSearchTemplate
+#### 5.3.12 DelSearchTemplate
 
 Deletes a log retrieval template.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DelSearchTemplat e | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3203,14 +3540,14 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 | TemID | Integ er | Query | No | 1024,1025 | The template IDs. You can delete multiple template IDs at a time. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3220,39 +3557,35 @@ https://[Endpoint]/?Action=DelSearchTemplate&RegionId=cnhangzhou&Lang=zh&AliUid=
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddSearchTempla te | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-| LogType | Strin g | Query | No | ndr attack log _ _ | The type of the log that you want to query. |
-| Query | Strin g | Query | No | dest ip:1.1.1.1 _ | The query statement. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DelSearchTemplateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</DelSearchTemplateResponse>
 ```
 
-#### AddSearchTemplate
+#### 5.3.13 AddSearchTemplate
 
 Creates a log retrieval template.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddSearchTempla te | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3263,6 +3596,13 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+| LogType | Strin g | Query | No | ndr attack log _ _ | The type of the log that you want to query. |
+| Query | Strin g | Query | No | dest ip:1.1.1.1 _ | The query statement. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3272,14 +3612,14 @@ This operation does not have operation-specific request headers and uses only co
 | rangeFlag | Integ er | Query | No | 1 | The flag for the frontend. You can leave this parameter empty. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3289,40 +3629,37 @@ https://[Endpoint]/?Action=AddSearchTemplate&RegionId=cnhangzhou&Lang=zh&AliUid=
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kProcess | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-| StartTime | Long | Query | No | 1707118672 | The beginning of the time range to query. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddSearchTemplateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</AddSearchTemplateResponse>
 ```
 
-### Attacker profile
+### 5.4 Attacker profile
 
-#### DescribeAggAttackProcess
+#### 5.4.1 DescribeAggAttackProcess
 
 Queries a list of attack processes.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kProcess | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3333,6 +3670,12 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+| StartTime | Long | Query | No | 1707118672 | The beginning of the time range to query. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3345,16 +3688,14 @@ This operation does not have operation-specific request headers and uses only co
 | PageNo | Integ er | Query | No | 1 | The page number. |
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| AttackProcess List | Array |  |  |
-| -StartTime | Long | 1707118672 | The beginning of the time range to query. |
-
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| AttackProcess List | Array |   |   |
+| -StartTime | Long | 1707118672 | The beginning of the time range to query. |
+
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3377,7 +3718,7 @@ Cloud Security Network Detectio n and Response ion
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3389,16 +3730,23 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackProcess&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&StartTime=1707118672&EndTime=1707118672&AttackResult=0 ulLevel=1&SrcIP=1.1.1.1&DeptAliUid=1234567890&PageSize=10&PageNo=1&LinkType=0
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
@@ -3406,7 +3754,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "FirstAttackTime":1707118672,
     "FirstAttackedIP":"2.2.2.2",
     "AttackProcessList":[
-        {
+```
+
+`{`
+
+```json
             "AttackTryCount":10,
             "DstDomin":"www.test.com",
             "EndTime":1707118672,
@@ -3422,28 +3774,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "DstIP":"2.2.2.2",
             "RelatedEcs":"...",
             "AttackSuccessCount":10
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ExportAggAttackE ventMergePcap | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackProcessResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -3470,13 +3814,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackProcessResponse>
 ```
 
-#### ExportAggAttackEventMergePcap
+#### 5.4.2 ExportAggAttackEventMergePcap
 
 Exports the packet capture file of attacks.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ExportAggAttackE ventMergePcap | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3485,6 +3834,8 @@ You can call this operation up to 10 times per second per account. You can call 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3498,25 +3849,17 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Long | Query | No | 123456789 | The user ID. |
 | Module | Strin g | Query | No | dispatch rule _ | The name of the module. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAttackEv entRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
 
 ```
 https://[Endpoint]/?Action=ExportAggAttackEventMergePcap&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&SrcIP=10.x.x.x&SrcPort=80&Direct n=1&Size=100&AliUid=123456789&Module=dispatch_rule
@@ -3524,28 +3867,37 @@ https://[Endpoint]/?Action=ExportAggAttackEventMergePcap&RegionId=cnhangzhou&Lan
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportAggAttackEventMergePcapResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
+</ExportAggAttackEventMergePcapResponse>
 ```
 
-#### DescribeAttackEventRecords
+#### 5.4.3 DescribeAttackEventRecords
 
 Queries the attack event records of an attacker.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAttackEv entRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3571,18 +3923,18 @@ This operation does not have operation-specific request headers and uses only co
 | PageNo | Strin g | Query | No | 1 | The page number. |
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-| loud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| loud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -SessionTime | Long | 1707118672 | The session time. |
 | -SrcIP | String | 1.1.1.1 | The source IP address. |
 | -AttackerIP | String | 1.1.1.1 | The IP address of the attacker. |
@@ -3596,9 +3948,7 @@ Cloud Security Network Detectio ion n and Response
 | -RuleType | String | Web attack | The type of the rule. |
 | -RuleNote | String | Web attack | The description of the rule. |
 
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3616,11 +3966,11 @@ Cloud Security Network Detectio ion n and Response
 | -LinkType | String | 0 | The product on which the attack is detected. A value of 0 indicates ISW. A value of 1 indicates CSW. A value of 2 indicates LSW. A value of 3 indicates ENI. |
 | - DstRelatedECS | Map | ... | The associated Elastic Compute Service (ECS) instance. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| TotalCount | Integer |  |  |
-| PageSize | Integer |  |  |
-| CurrentPage | Integer |  |  |
+| TotalCount | Integer |   |   |
+| PageSize | Integer |   |   |
+| CurrentPage | Integer |   |   |
 
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3629,22 +3979,33 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAttackEventRecords&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&StartTime=1707118672&EndTime=1707118672&AttackResult=0 ulLevel=1&SrcIP=1.1.1.1&Sort=10&PageSize=10&PageNo=1&DeptAliUid=1234567890&LinkType=0
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":"",
     "PageSize":"",
     "CurrentPage":"",
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "DstRelatedECS":"...",
             "EndTime":1707118672,
             "LocationEn":"beijing",
@@ -3669,28 +4030,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "LocationZh":"北京",
             "LinkType":"0",
             "VulLevel":"1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kEventList | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAttackEventRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount></TotalCount>
     <PageSize></PageSize>
@@ -3724,15 +4077,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAttackEventRecordsResponse>
 ```
 
-#### DescribeAggAttackEventList
+#### 5.4.4 DescribeAggAttackEventList
 
 Queries a list of attack events.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kEventList | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3745,14 +4111,6 @@ Queries a list of attack events.
 | SrcIP | Strin g | Query | No | 1.1.1.1 | The source IP address of the attack. |
 | Sort | Strin g | Query | No | 10 | The sorting method. A value of 1 indicates sorting by score. A value of 2 indicates sorting by time. |
 
-Cloud Security Network Detectio ion n and Response You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. |
@@ -3760,9 +4118,11 @@ This operation does not have operation-specific request headers and uses only co
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -SrcIP | String | 1.1.1.1 | The source IP address. |
 | -AttackerIP | String | 1.1.1.1 | The IP address of the attacker. |
 | -LocationZh | String | 北京 | The geographical location in Chinese. |
@@ -3771,10 +4131,6 @@ This operation does not have operation-specific request headers and uses only co
 | -StartTime | Long | 1707118672 | The start time of the attack. |
 | -EndTime | Long | 1707118672 | The end time of the attack. |
 | -ScanTool | String | Nmap | The scanner. |
-
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3787,8 +4143,8 @@ Cloud Security Network Detectio n and Response ion
 | -VulMidCount | Integer | 10 | The number of medium-risk attacks. |
 | -VulLowCount | Integer | 10 | The number of low-risk attacks. |
 | -SortScore | Long | 110 | The score for sorting. |
-| -RuleInfo | Map |  | The hit rule. This parameter is discontinued. |
-| -DstAddrInfo | Map |  | The destination IP address. This parameter is discontinued. |
+| -RuleInfo | Map |   | The hit rule. This parameter is discontinued. |
+| -DstAddrInfo | Map |   | The destination IP address. This parameter is discontinued. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | PageSize | Integer | 10 | The number of entries per page. |
@@ -3796,12 +4152,12 @@ Cloud Security Network Detectio n and Response ion
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 
-ion n and Response
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+**Examples**
 
 Sample requests
 
@@ -3811,14 +4167,23 @@ https://[Endpoint]/?Action=DescribeAggAttackEventList&RegionId=cnhangzhou&Lang=z
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "VulMidCount":10,
             "AttackTryCount":10,
             "AttackTimes":100,
@@ -3838,26 +4203,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "AttackSuccessCount":10,
             "RuleInfo":"",
             "SortScore":110
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kEventMergePcapCount | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackEventListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -3886,6 +4245,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackEventListResponse>
 ```
 
 **5.4.5.**
@@ -3896,9 +4256,19 @@ Queries the number of attack evidence packets.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kEventMergePcapCount | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
 
-You can call this operation up to 10 times per second per account.
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3910,27 +4280,17 @@ You can call this operation up to 10 times per second per account.
 | Direction | Integ er | Query | No | 1 | The traffic direction. A value of 1 indicates inbound traffic. A value of 2 indicates outbound traffic. |
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 | TotalCount | String | 10 | The number of attack packets. |
 
-Cloud Security Network Detectio n and Response ion You can call this operation up to 100 times per second.
+**Examples**
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ExportAttackEvent Pcap | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response Sample requests
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackEventMergePcapCount&RegionId=cn-hangzhou&La ng=zh&StartTime=1707118672&EndTime=1707118672&SrcIP=1.1.1.1&SrcPort=8080&Direction=1&AliU =1234567890
@@ -3938,29 +4298,37 @@ https://[Endpoint]/?Action=DescribeAggAttackEventMergePcapCount&RegionId=cn-hang
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TotalCount":"10"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggAttackEventMergePcapCountResponse>
+Content-Type:application/xml <DescribeAggAttackEventMergePcapCountResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TotalCount>10</TotalCount>
 </DescribeAggAttackEventMergePcapCountResponse>
 ```
 
-#### ExportAttackEventPcap
+#### 5.4.6 ExportAttackEventPcap
 
 Exports the packet capture file of attack logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ExportAttackEvent Pcap | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -3969,6 +4337,8 @@ You can call this operation up to 10 times per second per account. You can call 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3981,11 +4351,7 @@ This operation does not have operation-specific request headers and uses only co
 | SrcIP | Strin g | Query | No | 10.x.x.x | The source IP address. |
 | SrcPort | Strin g | Query | No | 80 | The source port. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Request parameters**
-
-| Developer Gui on | de·API d | ocumentat |  | Cloud | Security Network Detecti n and Respons |
+| Developer Gui on | de·API d | ocumentat |   | Cloud | Security Network Detecti n and Respons |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -3995,6 +4361,8 @@ Cloud Security Network Detectio n and Response ion
 | AttackTyp e | Strin g | Query | No | xss | The attack type. |
 | RuleID | Strin g | Query | No | 65535 | The rule ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4003,7 +4371,7 @@ Cloud Security Network Detectio n and Response ion
 | PcapUrl | String | https://xxx.com | The download URL of the file. |
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4013,41 +4381,41 @@ https://[Endpoint]/?Action=ExportAttackEventPcap&RegionId=cnhangzhou&Lang=zh&Ali
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeExportMe rgePcapTaskByUuid | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "PcapName":"test.cap",
     "PcapUrl":"https://xxx.com",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportAttackEventPcapResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <PcapName>test.cap</PcapName>
     <PcapUrl>https://xxx.com</PcapUrl>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
+</ExportAttackEventPcapResponse>
 ```
 
-#### DescribeExportMergePcapTaskByUuid
+#### 5.4.7 DescribeExportMergePcapTaskByUuid
 
 Asynchronously queries the information about a download task for the aggregated packet capture file.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeExportMe rgePcapTaskByUuid | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4061,8 +4429,13 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | TaskUUID | Strin g | Query | No | d5b969bf-cd21-4dd0- 84ff-******* | The download task UUID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4072,9 +4445,7 @@ This operation does not have operation-specific request headers and uses only co
 | TaskStatus | Integer | 1 | The status of the download task. A value of 0 indicates that the task is in progress. A value of 1 indicates that the task is successful. |
 | FileUrl | String | https://test.com | The download URL of the file. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4084,26 +4455,24 @@ https://[Endpoint]/?Action=DescribeExportMergePcapTaskByUuid&RegionId=cnhangzhou
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddCustomTag | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "TaskUUID":"d5b969bf-cd21-4dd0-84ff-*******",
     "TaskStatus":1,
     "FileUrl":"https://test.com"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml <DescribeExportMergePcapTaskByUuidResponse>
+Content-Type:application/xml <DescribeExportMergePcapTaskByUuidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <TaskUUID>d5b969bf-cd21-4dd0-84ff-*******</TaskUUID>
@@ -4112,15 +4481,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeExportMergePcapTaskByUuidR
 </DescribeExportMergePcapTaskByUuidResponse>
 ```
 
-### Threat detection
+### 5.5 Threat detection
 
-#### Threat detection
+#### 5.5.1 Threat detection
 
-##### AddCustomTag
+##### 5.5.1.1 AddCustomTag
 
 Adds a custom tag based on threat detection logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddCustomTag | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4138,6 +4511,8 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 | Tag | Strin g | Query | No | test | The tag that you want to add. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4145,9 +4520,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4157,40 +4530,39 @@ https://[Endpoint]/?Action=AddCustomTag&RegionId=cnhangzhou&Lang=zh&AliUid=12345
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ExportAttackRecor dsPcap | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| StartTime | Long | Query | No | 1706668721 | The beginning of the time range to query. |
-| EndTime | Long | Query | No | 1706668721 | The end of the time range to query. |
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddCustomTagResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</AddCustomTagResponse>
 ```
 
-##### ExportAttackRecordsPcap
+##### 5.5.1.2 ExportAttackRecordsPcap
 
 Downloads the packet capture file of attack logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ExportAttackRecor dsPcap | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4202,7 +4574,13 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API d | ocumentat |  | Cloud | Security Network Detecti |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| StartTime | Long | Query | No | 1706668721 | The beginning of the time range to query. |
+| EndTime | Long | Query | No | 1706668721 | The end of the time range to query. |
+
+| Developer Gui | de·API d | ocumentat |   | Cloud | Security Network Detecti |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -4216,21 +4594,23 @@ This operation does not have operation-specific request headers and uses only co
 | Origin | Integ er | Query | No | 1 | The source of the rule. A value of 0 indicates Intrusion detection system (IDS). A value of 1 indicates web IDS. |
 | DstPort | Integ er | Query | No | 80 | The destination port. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | PcapName | String | test.cap | The name of the file. |
 | PcapUrl | String | https://xxx.com | The download URL of the file. |
 
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
 | Module | String | ndr*** | The name of the module. |
+
+**Examples**
 
 Sample requests
 
@@ -4240,28 +4620,33 @@ https://[Endpoint]/?Action=ExportAttackRecordsPcap&RegionId=cnhangzhou&Lang=zh&S
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PcapName":"test.cap",
     "PcapUrl":"https://xxx.com",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportAttackRecordsPcapResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PcapName>test.cap</PcapName>
     <PcapUrl>https://xxx.com</PcapUrl>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
     <Module>ndr***</Module>
+</ExportAttackRecordsPcapResponse>
 ```
 
-##### DescribeAggAttackTopIPRecords
+##### 5.5.1.3 DescribeAggAttackTopIPRecords
 
 Queries the top five IP addresses from which most attacks are launched.
 
@@ -4270,6 +4655,16 @@ Queries the top five IP addresses from which most attacks are launched.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DescribeAggAttac kTopIPRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4282,19 +4677,7 @@ Queries the top five IP addresses from which most attacks are launched.
 | HTTPCode | Integ er | Query | No | 200 | The HTTP status code. |
 | XFF | Strin g | Query | No | 2.2.2.2 | The X-Forwarded-For (XFF) header. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-| loud Security | Network | Detectio |  | Devel | oper Guide·API documenta |
+| loud Security | Network | Detectio |   | Devel | oper Guide·API documenta |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -4314,16 +4697,14 @@ This operation does not have operation-specific request headers and uses only co
 | ProtectSta tus | Strin g | Query | No | 0 | The protection status. A value of 0 indicates that the attack is not handled. A value of 1 indicates that the attack is blocked. A value of 2 indicates that the IP address is added to the whitelist. A value of 3 indicates that the attack is ignored. |
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -IP | String | 1.1.1.1 | The IP address. |
 | -Count | Integer | 100 | The number of attacks. |
-| -Type | String |  | The attack type. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+| -Type | String |   | The attack type. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4334,7 +4715,9 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackTopIPRecords&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&AliU =1234567890&HTTPCode=200&XFF=2.2.2.2&Host=2.2.2.2&AttackResult=0&RuleID=12323&Origin=0&Ru Type=Web attack&VulLevel=1&DepAliUid=1234567890&Label=test&IPType=1&ProtectStatus=0&LinkType=0
@@ -4342,40 +4725,39 @@ https://[Endpoint]/?Action=DescribeAggAttackTopIPRecords&RegionId=cnhangzhou&Lan
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "TimeOut":false,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Type":"",
             "IP":"1.1.1.1",
             "Count":100
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeDeptInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackTopIPRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <TimeOut>false</TimeOut>
@@ -4387,13 +4769,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackTopIPRecordsResponse>
 ```
 
-##### DescribeDeptInfo
+##### 5.5.1.4 DescribeDeptInfo
 
 Queries a list of departments.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeDeptInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4407,11 +4794,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -DeptName | String | test | The name of the department. |
 | -AliUid | Long | 1234567890 | The department ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -4419,9 +4812,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4431,35 +4822,36 @@ https://[Endpoint]/?Action=DescribeDeptInfo&RegionId=cnhangzhou&Lang=zh&AliUid=1
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddIDSWhiteRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "DataList":[
-        {
-            "DeptName":"test",
-            "AliUid":1234567890
-        }
+```
+Content-Type:application/json
 ```
 
-`],`
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "DataList":[
+```
+
+`{`
+
+```json
+            "DeptName":"test",
+            "AliUid":1234567890
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeDeptInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <DeptName>test</DeptName>
@@ -4468,13 +4860,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeDeptInfoResponse>
 ```
 
-##### AddIDSWhiteRule
+##### 5.5.1.5 AddIDSWhiteRule
 
 You can call the AddIDSWhiteRule operation to add a threat detection whitelist to ignore alert logs for known threats.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddIDSWhiteRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4483,6 +4880,8 @@ Single user call frequency: 10 queries per second (QPS). API call frequency: 100
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4497,24 +4896,22 @@ This operation uses only common request headers. For more information, see Commo
 | AliUid | Long | Query | No | 1234567890 | The UID of the user. |
 | User | Strin g | Query | No | user | The user who performs the operation. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues. |
 | Success | Boolean | true | Indicates whether the request was successful. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+**Examples**
 
 Sample request
 
@@ -4524,26 +4921,31 @@ https://[Endpoint]/?Action=AddIDSWhiteRule&RegionId=cnhangzhou&Lang=zh&IPList=1.
 
 Sample response `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddIDSWhiteRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</AddIDSWhiteRuleResponse>
 ```
 
-##### DescribeExportTaskByUuid
+##### 5.5.1.6 DescribeExportTaskByUuid
 
 Asynchronously queries the information about an exported file download task.
 
@@ -4553,10 +4955,22 @@ Asynchronously queries the information about an exported file download task.
 |---|---|---|
 | yundun- cloudfirewall:DescribeExportTas kByUuid | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | TaskUUID | Strin g | Query | No | d5b969bf-cd21-4dd0- 84ff-******* | The download task UUID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4566,7 +4980,51 @@ Asynchronously queries the information about an exported file download task.
 | TaskStatus | Integer | 1 | The status of the download task. A value of 0 indicates that the task is in progress. A value of 1 indicates that the task is successful. |
 | FileUrl | String | https://test.com | The download URL of the file. |
 
-Cloud Security Network Detectio n and Response ion
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=DescribeExportTaskByUuid&RegionId=cnhangzhou&Lang=zh&TaskUUID=d5b969bf-cd21-4dd0-84ff-*******
+```
+
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "Module":"ndr***",
+    "TaskUUID":"d5b969bf-cd21-4dd0-84ff-*******",
+    "TaskStatus":1,
+    "FileUrl":"https://test.com"
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <DescribeExportTaskByUuidResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <Module>ndr***</Module>
+    <TaskUUID>d5b969bf-cd21-4dd0-84ff-*******</TaskUUID>
+    <TaskStatus>1</TaskStatus>
+    <FileUrl>https://test.com</FileUrl>
+</DescribeExportTaskByUuidResponse>
+```
+
+##### 5.5.1.7 DeleteIDSWhiteRules
+
+Removes rules from the whitelist for threat detection.
+
+**Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DeleteIDSWhiteRu les | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4578,58 +5036,13 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-**Response parameters**
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DeleteIDSWhiteRu les | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response Sample requests
-
-```
-https://[Endpoint]/?Action=DescribeExportTaskByUuid&RegionId=cnhangzhou&Lang=zh&TaskUUID=d5b969bf-cd21-4dd0-84ff-*******
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "Module":"ndr***",
-    "TaskUUID":"d5b969bf-cd21-4dd0-84ff-*******",
-    "TaskStatus":1,
-    "FileUrl":"https://test.com"
-}
-```
-
-`XML` format
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <Module>ndr***</Module>
-    <TaskUUID>d5b969bf-cd21-4dd0-84ff-*******</TaskUUID>
-    <TaskStatus>1</TaskStatus>
-    <FileUrl>https://test.com</FileUrl>
-```
-
-##### DeleteIDSWhiteRules
-
-Removes rules from the whitelist for threat detection.
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | User | Strin g | Query | No | user | The user. |
 | RuleIDList | Strin g | Query | No | 1024,1025 | The IDs of the rules that you want to remove. You can remove multiple rules at a time. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4638,11 +5051,7 @@ You can call this operation up to 10 times per second per account. You can call 
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4652,39 +5061,39 @@ https://[Endpoint]/?Action=DeleteIDSWhiteRules&RegionId=cnhangzhou&Lang=zh&User=
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kTopStatistics | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteIDSWhiteRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DeleteIDSWhiteRulesResponse>
 ```
 
-##### DescribeAggAttackTopStatistics
+##### 5.5.1.8 DescribeAggAttackTopStatistics
 
 Queries the statistics on the top five attackers that launch the most attacks.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kTopStatistics | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4695,6 +5104,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4708,29 +5120,29 @@ This operation does not have operation-specific request headers and uses only co
 | DeptAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AttackDomain Statistics | Array |  |  |
+| AttackDomain Statistics | Array |   |   |
 | -AttackDomain | String | www.test.com | The domain name that is attacked. |
 | -AttackTimes | Integer | 10 | The number of attacks. |
-| AttackIPStatisti cs | Array |  |  |
+| AttackIPStatisti cs | Array |   |   |
 | -AttackIP | String | 1.1.1.1 | The IP address. |
 | -AttackTimes | Integer | 10 | The number of attacks. |
 | -AttackIPType | String | 1 | The type of the service to which the IP address belongs. A value of 0 indicates others. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates Elastic Compute Service (ECS). |
-| AttackResultSt atistics | Array |  |  |
+| AttackResultSt atistics | Array |   |   |
 | -AttackResult | String | 0 | The attack result. A value of 0 indicates that the attacker attempted an attack. A value of 1 indicates that the attack is successful. A value of -1 indicates that the attack has failed. |
 | -AttackTimes | Integer | 10 | The number of attacks. |
-| VulLevelStatist ics | Array |  |  |
+| VulLevelStatist ics | Array |   |   |
 | -VulLevel | String | 1 | The threat level. A value of 1 indicates low risk. A value of 2 indicates medium risk. A value of 3 indicates high risk. |
 | -AttackTimes | Integer | 10 | The number of attacks. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackTopStatistics&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&StartTime=1707118672&EndTime=1707118672&AttackResult=0 ulLevel=1&SrcIP=1.1.1.1&DeptAliUid=1234567890&LinkType=0
@@ -4738,67 +5150,69 @@ https://[Endpoint]/?Action=DescribeAggAttackTopStatistics&RegionId=cnhangzhou&La
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "AttackDomainStatistics":[
-        {
-            "AttackTimes":10,
-            "AttackDomain":"www.test.com"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "AttackTimes":10,
+            "AttackDomain":"www.test.com"
+```
+
+`}` `],`
 
 ```json
     "AttackIPStatistics":[
-        {
+```
+
+`{`
+
+```json
             "AttackTimes":10,
             "AttackIPType":"1",
             "AttackIP":"1.1.1.1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "AttackResultStatistics":[
-        {
-            "AttackTimes":10,
-            "AttackResult":"0"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "AttackTimes":10,
+            "AttackResult":"0"
+```
+
+`}` `],`
 
 ```json
     "VulLevelStatistics":[
-        {
+```
+
+`{`
+
+```json
             "AttackTimes":10,
             "VulLevel":"1"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAttackRe cordList | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackTopStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <AttackDomainStatistics>
@@ -4818,13 +5232,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <VulLevel>1</VulLevel>
         <AttackTimes>10</AttackTimes>
     </VulLevelStatistics>
+</DescribeAggAttackTopStatisticsResponse>
 ```
 
-##### DescribeAttackRecordList
+##### 5.5.1.9 DescribeAttackRecordList
 
 Queries the attack log details for threat detection.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAttackRe cordList | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -4835,6 +5254,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4851,17 +5273,17 @@ This operation does not have operation-specific request headers and uses only co
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
 | Origin | Integ er | Query | No | 0 | The source of the rule. A value of 0 indicates Intrusion detection system (IDS). A value of 1 indicates web IDS. |
 
-Cloud Security Network Detectio n and Response ion
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | DstPort | Integ er | Query | No | 8080 | The destination port. |
 | Host | Strin g | Query | No | 1.1.1.1 | The HOST header. |
 | Count | Integ er | Query | No | 10 | The number of entries returned. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -SrcIP | String | 1.1.1.1 | The source IP address. |
 | -DstIP | String | 1.1.1.1 | The destination IP address. |
 | -SessionTime | Long | 1707118672 | The session time. |
@@ -4874,11 +5296,7 @@ Cloud Security Network Detectio n and Response ion
 | -XFF | String | 2.2.2.2 | The X-Forwarded-For (XFF) header. |
 | -RuleID | Long | 12323 | The hit rule ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
-
-| C n | loud Security Net and Response | work Detectio |  | Developer Guide·API documenta io | t n |
+| C n | loud Security Net and Response | work Detectio |   | Developer Guide·API documenta io | t n |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4898,7 +5316,7 @@ Cloud Security Network Detectio ion n and Response
 | -LinkType | String | 0 | The product on which the attack is detected. A value of 0 indicates Inter- connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 | -RelatedEcs | Map | ... | The associated Elastic Compute Service (ECS) instance. |
 
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4911,22 +5329,33 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAttackRecordList&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&StartTime=1707118672&EndTime=1707118672&DstIP= 1.1.1&SrcIP=1.1.1.1&AliUid=1234567890&HTTPCode=200&AttackResult=0&RuleID=12323&Origin=0&D Port=8080&Host=1.1.1.1&Count=10
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Origin":"0",
             "Department":"test",
             "AttackResult":"0",
@@ -4952,28 +5381,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "LinkType":"0",
             "RequsetLength":100,
             "IPVersion":"4"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeThreatSrc IPInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAttackRecordListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -5008,20 +5429,35 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAttackRecordListResponse>
 ```
 
-##### DescribeThreatSrcIPInfo
+##### 5.5.1.10 DescribeThreatSrcIPInfo
 
 Queries the information about a threat intelligence source.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeThreatSrc IPInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | SrcIP | Strin g | Query | No | 10.x.x.x | The IP address of the threat intelligence source. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5033,23 +5469,15 @@ Queries the information about a threat intelligence source.
 | SyncTime | Long | 1706668721 | The synchronization time. |
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 
-Cloud Security Network Detectio n and Response ion You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+**Examples**
 
 Sample requests
 
@@ -5059,8 +5487,13 @@ https://[Endpoint]/?Action=DescribeThreatSrcIPInfo&RegionId=cnhangzhou&Lang=zh&S
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Source":"10.x.x.x",
     "VulLevel":1,
@@ -5070,13 +5503,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeThreatSrcIPInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Source>10.x.x.x</Source>
     <VulLevel>1</VulLevel>
@@ -5086,13 +5518,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeThreatSrcIPInfoResponse>
 ```
 
-##### ModifyCustomAttackLogFields
+##### 5.5.1.11 ModifyCustomAttackLogFields
+
+Modifies the fields that you want to display in attack logs.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:ModifyCustomAtta ckLogFields | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5100,26 +5547,14 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | AliUid | Long | Query | No | 123456789 | The user ID. |
 | CustomFie lds | Strin g | Query | No | {'StartTime':true, 'RuleName':true} | Specifies whether to display the custom fields. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion Modifies the fields that you want to display in attack logs.
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5127,35 +5562,37 @@ Sample requests
 https://[Endpoint]/?Action=ModifyCustomAttackLogFields&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&CustomFields={'StartTime':true, 'RuleName':true}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kPPS | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response Sample success responses `JSON` format
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModifyCustomAttackLogFieldsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</ModifyCustomAttackLogFieldsResponse>
 ```
 
-##### DescribeAggAttackPPS
+##### 5.5.1.12 DescribeAggAttackPPS
 
 Queries the trend of packets per second (PPS) of attacks.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kPPS | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -5166,6 +5603,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5182,8 +5622,6 @@ This operation does not have operation-specific request headers and uses only co
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
 | Origin | Strin g | Query | No | 0 | The source of the rule. A value of 0 indicates Intrusion detection system (IDS). A value of 1 indicates web IDS. |
 
-Cloud Security Network Detectio n and Response ion
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RuleType | Strin g | Query | No | Web attack | The type of the rule. |
@@ -5194,13 +5632,11 @@ Cloud Security Network Detectio n and Response ion
 | ProtectSta tus | Strin g | Query | No | 0 | The protection status. A value of 0 indicates that the attack is not handled. A value of 1 indicates that the attack is blocked. A value of 2 indicates that the IP address is added to the whitelist. A value of 3 indicates that the attack is ignored. |
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
 
-Cloud Security Network Detectio ion n and Response
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Date | String | 2024-02-06 00:00:00 | The date. |
 | -PPS | Integer | 100 | The number of attacks. |
 | -Time | Long | 1707148800 | The timestamp. |
@@ -5211,7 +5647,9 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackPPS&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&AliU =1234567890&HTTPCode=200&XFF=2.2.2.2&Host=2.2.2.2&AttackResult=0&RuleID=12323&Origin=0&Ru Type=Web attack&VulLevel=1&DepAliUid=1234567890&Label=test&IPType=test&ProtectStatus=0&LinkType=0
@@ -5219,38 +5657,39 @@ https://[Endpoint]/?Action=DescribeAggAttackPPS&RegionId=cnhangzhou&Lang=zh&Star
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddAttackDisposal | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "TimeOut":false,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "PPS":100,
             "Time":1707148800,
             "Date":"2024-02-06 00:00:00"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackPPSResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <TimeOut>false</TimeOut>
@@ -5262,17 +5701,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackPPSResponse>
 ```
 
-##### AddAttackDisposal
+##### 5.5.1.13 AddAttackDisposal
 
 Updates the protection status based on threat detection logs.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddAttackDisposal | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
 
-You can call this operation up to 10 times per second per account.
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5287,14 +5737,6 @@ You can call this operation up to 10 times per second per account.
 | Host | Strin g | Query | No | 1.1.1.1 | The HOST header. |
 | AttackRes ult | Strin g | Query | No | 0 | The attack result. A value of 0 indicates that the attacker attempted an attack. A value of 1 indicates that the attack is successful. A value of -1 indicates that the attack has failed. |
 
-Cloud Security Network Detectio n and Response ion You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RuleID | Integ er | Query | No | 1024 | The hit rule ID. |
@@ -5305,8 +5747,6 @@ This operation does not have operation-specific request headers and uses only co
 | Label | Strin g | Query | No | test | The label. |
 | IPType | Strin g | Query | No | 2 | The type of the asset. A value of 0 indicates others. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates Elastic Compute Service (ECS). A value of 5 indicates domain. |
 
-Cloud Security Network Detectio ion n and Response
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProtectSta tus | Strin g | Query | No | 0 | The protection status. A value of 0 indicates that the attack is not handled. A value of 1 indicates that the attack is blocked. A value of 2 indicates that the IP address is added to the whitelist. A value of 3 indicates that the attack is ignored. |
@@ -5315,25 +5755,19 @@ Cloud Security Network Detectio ion n and Response
 | Payload | Strin g | Query | No | POST / HTTP/1.1\r Host:1.1.1.1 | The payload. |
 | GroupMd5 | Strin g | Query | No | 818e990abdf5967841df 467dd5098*** | The grouping MD5 hash value. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
-| Error | String |  |  |
+| Error | String |   |   |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeCustomAt tackLogFields | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=AddAttackDisposal&RegionId=cnhangzhou&Lang=zh&StartTime=1704252277&EndTime=1704252277&DstIP=1.1.1.1&SrcIP=2.2.2.2&AliU =1234567890&HTTPCode=404&XFF=1.1.1.1&Host=1.1.1.1&AttackResult=0&RuleID=1024&Origin=0&Rul ype=Code execution&VulLevel=1&DepAliUid=1234567890&Label=test&IPType=2&ProtectStatus=0&DealStatus= User=user&Payload=POST / HTTP/1.1\rHost:1.1.1.1&GroupMd5=818e990abdf5967841df467dd5098***
@@ -5341,48 +5775,45 @@ https://[Endpoint]/?Action=AddAttackDisposal&RegionId=cnhangzhou&Lang=zh&StartTi
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "Error":"",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddAttackDisposalResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <Error></Error>
     <HttpStatusCode>200</HttpStatusCode>
+</AddAttackDisposalResponse>
 ```
 
-##### DescribeCustomAttackLogFields
+##### 5.5.1.14 DescribeCustomAttackLogFields
 
 Queries the custom display fields in attack logs of threat detection.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeCustomAt tackLogFields | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ShowFields | Normal | ['AttackTime','Rule Name','SrcIP' ...] | The display fields. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-
-Cloud Security Network Detectio n and Response ion
 
 **Request headers**
 
@@ -5390,7 +5821,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ShowFields | Normal | ['AttackTime','Rule Name','SrcIP' ...] | The display fields. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -5400,40 +5843,37 @@ https://[Endpoint]/?Action=DescribeCustomAttackLogFields&RegionId=cnhangzhou&Lan
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "ShowFields":"['AttackTime','RuleName','SrcIP' ...]"
-}
+```
+Content-Type:application/json
 ```
 
-`XML` format
+`{`
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:TagAttackRecodes | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "ShowFields":"['AttackTime','RuleName','SrcIP' ...]"
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 123456789 | The user ID. |
-| Tag | Strin g | Query | No | test tag _ | The tag that you want to add. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeCustomAttackLogFieldsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ShowFields>
         <ShowFields>['AttackTime','RuleName','SrcIP' ...]</ShowFields>
     </ShowFields>
+</DescribeCustomAttackLogFieldsResponse>
 ```
 
-##### TagAttackRecodes
+##### 5.5.1.15 TagAttackRecodes
 
 Adds a tag to specific attack log entries.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:TagAttackRecodes | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -5447,7 +5887,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 123456789 | The user ID. |
+| Tag | Strin g | Query | No | test tag _ | The tag that you want to add. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | FilterParas | Strin g | Query | No | {AliUid:123456789,SrcIP :10.x.x.x} | A JSON string that contains conditions to filter log entries. The filter conditions can contain the following parameters: AliUid, StartTime, EndTime, SrcIP, DstIP, DstPort, AttackResult, RuleID, Origin, and Tags. You can specify multiple tags in Tags. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5456,9 +5904,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5468,39 +5914,39 @@ https://[Endpoint]/?Action=TagAttackRecodes&RegionId=cnhangzhou&Lang=zh&AliUid=1
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kVulLevel | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TagAttackRecodesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</TagAttackRecodesResponse>
 ```
 
-##### DescribeAggAttackVulLevel
+##### 5.5.1.16 DescribeAggAttackVulLevel
 
 Queries the statistics on threat levels.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kVulLevel | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -5511,6 +5957,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5527,8 +5976,6 @@ This operation does not have operation-specific request headers and uses only co
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
 | Origin | Strin g | Query | No | 0 | The source of the rule. A value of 0 indicates Intrusion detection system (IDS). A value of 1 indicates web IDS. |
 
-Cloud Security Network Detectio n and Response ion
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RuleType | Strin g | Query | No | Web attack | The type of the rule. |
@@ -5538,8 +5985,6 @@ Cloud Security Network Detectio n and Response ion
 | IPType | Strin g | Query | No | 1 | The type of the service to which the IP address belongs. A value of 0 indicates others. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates Elastic Compute Service (ECS). |
 | ProtectSta tus | Strin g | Query | No | 0 | The protection status. A value of 0 indicates that the attack is not handled. A value of 1 indicates that the attack is blocked. A value of 2 indicates that the IP address is added to the whitelist. A value of 3 indicates that the attack is ignored. |
 | LinkType | Strin g | Query | No | 0 | The product on which the attack is detected. A value of 0 indicates Inter-connection Switch (ISW). A value of 1 indicates Customer Access Switch (CSW). A value of 2 indicates LVS Switch (LSW). A value of 3 indicates Elastic Network Interface (ENI). |
-
-Cloud Security Network Detectio ion n and Response
 
 **Response parameters**
 
@@ -5555,7 +6000,9 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackVulLevel&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&AliU =1234567890&HTTPCode=200&XFF=2.2.2.2&Host=2.2.2.2&AttackResult=0&RuleID=12323&Origin=0&Ru Type=Web attack&VulLevel=1&DepAliUid=1234567890&Label=test&IPType=1&ProtectStatus=0&LinkType=0
@@ -5563,14 +6010,13 @@ https://[Endpoint]/?Action=DescribeAggAttackVulLevel&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kType | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TimeOut":false,
     "TotalCount":100,
@@ -5580,13 +6026,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackVulLevelResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TimeOut>false</TimeOut>
     <TotalCount>100</TotalCount>
@@ -5596,13 +6041,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackVulLevelResponse>
 ```
 
-##### DescribeAggAttackType
+##### 5.5.1.17 DescribeAggAttackType
 
 Retrieves statistics on threat detection attack types.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kType | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -5611,6 +6061,8 @@ The throttling limit for a single user is 10 queries per second (QPS). The throt
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5626,10 +6078,6 @@ This operation uses common request headers. No special request headers are requi
 | AttackRes ult | Strin g | Query | No | 0 | The result of the attack. Valid values: `0` (attempt), `1` (success), and `-1` (failure). |
 | RuleID | Long | Query | No | 12323 | The ID of the rule that was hit. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Request parameters**
-
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Origin | Strin g | Query | No | 0 | The source of the rule. Valid values: `0` (Intrusion Detection System (IDS)) and `1` (Web Intrusion Detection System (WEBIDS)). |
@@ -5640,15 +6088,15 @@ Cloud Security Network Detectio n and Response ion
 | IPType | Strin g | Query | No | 1 | The type of the IP address. Valid values: `0` (Other), `1` (Web Application Firewall (WAF)), `2` (Server Load Balancer (SLB)), `3` (Elastic IP Address (EIP)), and `4` (Elastic Compute Service (ECS)). |
 | ProtectSta tus | Strin g | Query | No | 0 | The protection status. Valid values: `0` (Not processed), `1` (Blocked), `2` (Whitelisted), and `3` (Ignored). |
 
-Cloud Security Network Detectio ion n and Response
-
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LinkType | Strin g | Query | No | 0 | The detection location. Valid values: `0` (Inter- connection Switch (ISW)), `1` (Customer Switch (CSW)), `2` (LVS Switch (LSW)), and `3` (Elastic Network Interface (ENI)). |
 
+**Returned data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -RuleType | String | Web attack | The type of the rule. |
 | -Count | Integer | 100 | The number of attacks. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues. |
@@ -5658,9 +6106,7 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP response code for the request. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Returned data**
+**Examples**
 
 Sample request
 
@@ -5668,37 +6114,40 @@ Sample request
 https://[Endpoint]/?Action=DescribeAggAttackType&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&AliU =1234567890&HTTPCode=200&XFF=2.2.2.2&Host=2.2.2.2&AttackResult=0&RuleID=12323&Origin=0&Ru Type=Web%20attack&VulLevel=1&DepAliUid=1234567890&Label=test&IPType=1&ProtectStatus=0&Lin ype=0
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+Sample response `JSON` format
 
-Cloud Security Network Detectio ion n and Response Sample response `JSON` format
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "TimeOut":false,
     "DataList":[
-        {
-            "RuleType":"Web attack",
-            "Count":100
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "RuleType":"Web attack",
+            "Count":100
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackTypeResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <TimeOut>false</TimeOut>
@@ -5709,13 +6158,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackTypeResponse>
 ```
 
-##### DescribeAggAttackRecords
+##### 5.5.1.18 DescribeAggAttackRecords
 
 You can call the DescribeAggAttackRecords operation to query a list of threat detection attacks.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+The call frequency for a single user is limited to 10 queries per second (QPS). The API call frequency is limited to 100 QPS.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5730,19 +6194,7 @@ You can call the DescribeAggAttackRecords operation to query a list of threat de
 | Host | Strin g | Query | No | 2.2.2.2 | The Host field. |
 | AttackRes ult | Strin g | Query | No | 0 | The result of the attack. 0 indicates an attempt. 1 indicates a success. -1 indicates a failure. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Throttling**
-
-The call frequency for a single user is limited to 10 queries per second (QPS). The API call frequency is limited to 100 QPS.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see the common request parameters document.
-
-**Request parameters**
-
-| i | Developer Gui on | de·API d | ocumentat |  | Cloud | Security Network Detecti n and Respons | o e |
+| i | Developer Gui on | de·API d | ocumentat |   | Cloud | Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
@@ -5762,9 +6214,11 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|---|---|
 | LinkType | Strin g | Query | No | 0 | The detection location. 0 indicates Inter- connection Switch (ISW). 1 indicates Customer Switch (CSW). 2 indicates LVS Switch (LSW). 3 indicates Elastic Network Interface (ENI). |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -SrcIP | String | 1.1.1.1 | The source IP address. |
 | -DstIP | String | 1.1.1.1 | The destination IP address. |
 | -DestPort | String | 80 | The destination port. |
@@ -5776,10 +6230,6 @@ This operation uses common request headers. No special request headers are requi
 | -Payload | String | GET /aaa.jsp? test=JavaSCript:ale rt(123) HTTP/1.1*** | The payload. |
 | -VulLevel | String | 1 | The threat level. 1 indicates low risk. 2 indicates medium risk. 3 indicates high risk. |
 | -HTTPCode | String | 200 | The HTTP response code. |
-
-Cloud Security Network Detectio n and Response ion
-
-**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5799,9 +6249,7 @@ Cloud Security Network Detectio n and Response ion
 | TotalCount | Integer | 100 | The total number of entries. |
 | CurrentPage | Integer | 1 | The page number. |
 
-Cloud Security Network Detectio ion n and Response
-
-| n | Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io | t n |
+| n | Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io | t n |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5811,23 +6259,34 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP response code of the request. |
 
+**Examples**
+
 Sample request
 
 ```
 https://[Endpoint]/?Action=DescribeAggAttackRecords&RegionId=cnhangzhou&Lang=en&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&AliU =1234567890&HTTPCode=200&XFF=2.2.2.2&Host=2.2.2.2&AttackResult=0&RuleID=12323&Origin=0&Ru Type=Web%20attack&VulLevel=1&DepAliUid=1234567890&Label=test&IPType=test&PageSize=10&Curr tPage=1&ProtectStatus=0&LinkType=0
 ```
 
-Sample successful response `JSON` format Cloud Security Network Detectio ion n and Response
+Sample successful response `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TimeOut":false,
     "TotalCount":100,
     "CurrentPage":1,
     "PageSize":10,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Origin":"0",
             "Intell":false,
             "EndTime":1707118672,
@@ -5850,28 +6309,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "RuleName":"Web attack",
             "Tags":"test",
             "VulLevel":"1"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAttackRe cord | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TimeOut>false</TimeOut>
     <TotalCount>100</TotalCount>
@@ -5904,15 +6355,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackRecordsResponse>
 ```
 
-##### DescribeAttackRecord
+##### 5.5.1.19 DescribeAttackRecord
 
 You can call the DescribeAttackRecord operation to query a single threat detection attack record.
 
 **Authorization**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAttackRe cord | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
+
+Per user: 10 queries per second (QPS). Per API operation: 100 QPS.
+
+**Request header**
+
+This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5927,17 +6391,11 @@ You can call the DescribeAttackRecord operation to query a single threat detecti
 | RuleID | Long | Query | No | 12323 | The ID of the rule that was hit. |
 | Origin | Integ er | Query | No | 0 | The source of the rule. Valid values: `0` for Intrusion Detection System (IDS) and `1` for Web IDS. |
 
-Cloud Security Network Detectio ion n and Response Per user: 10 queries per second (QPS). Per API operation: 100 QPS.
-
-**Request header**
-
-This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | DstPort | Integ er | Query | No | 8080 | The destination port. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5956,11 +6414,7 @@ This operation uses common request headers. Special request headers are not requ
 | MatchData | String | GET /aaa.jsp? test=JavaSCript:ale rt(123) HTTP/1.1*** | The payload. |
 | RequsetData | String | GET /aaa.jsp? test=JavaSCript:ale rt(123) HTTP/1.1*** | The request data. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A | PI documentat |  | Cloud Security Network Detecti |
+| Developer Guide·A | PI documentat |   | Cloud Security Network Detecti |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5980,7 +6434,9 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The module name. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code of the response. |
 
-Request example Cloud Security Network Detectio n and Response ion
+**Examples**
+
+Request example
 
 ```
 https://[Endpoint]/?Action=DescribeAttackRecord&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&AliU =1234567890&HTTPCode=200&AttackResult=0&RuleID=12323&Origin=0&DstPort=8080&Host=test.com& F=1.1.1.1
@@ -5988,8 +6444,13 @@ https://[Endpoint]/?Action=DescribeAttackRecord&RegionId=cnhangzhou&Lang=zh&Star
 
 Response example `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "SrcIP":"1.1.1.1",
     "DstIP":"1.1.1.1",
@@ -6018,19 +6479,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeIDSWhite Rules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAttackRecordResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <SrcIP>1.1.1.1</SrcIP>
     <DstIP>1.1.1.1</DstIP>
@@ -6059,19 +6513,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAttackRecordResponse>
 ```
 
-##### DescribeIDSWhiteRules
+##### 5.5.1.20 DescribeIDSWhiteRules
 
 Call the DescribeIDSWhiteRules operation to query the rules in the Intrusion Detection System (IDS) whitelist.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeIDSWhite Rules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
 The throttling limit for a single user is 10 queries per second (QPS). The throttling limit for this operation is 100 QPS.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see the Common parameters document.
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6081,9 +6544,11 @@ The throttling limit for a single user is 10 queries per second (QPS). The throt
 | Query | Strin g | Query | No | 10.x.x.x | The keyword for a fuzzy query. Supports fuzzy queries by rule ID and IP address. |
 | AliUid | Strin g | Query | No | 123456789 | The user ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -IpVersion | Integer | 4 | The IP version number. |
 | -IP | String | 10.x.x.x | The IP address. |
 | -StartTime | Long | 1706668721 | The start time. This is a UNIX timestamp. |
@@ -6092,13 +6557,7 @@ The throttling limit for a single user is 10 queries per second (QPS). The throt
 | -DstIP | String | 10.x.x.x | The destination IP address. |
 | -RuleNote | String | test | The description of the rule. |
 
-Cloud Security Network Detectio n and Response ion This operation uses only common request headers. For more information, see the Common parameters document.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6113,22 +6572,33 @@ Cloud Security Network Detectio n and Response ion This operation uses only comm
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code of the response. |
 
+**Examples**
+
 Request example
 
 ```
 https://[Endpoint]/?Action=DescribeIDSWhiteRules&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&Query=10.x.x.x&AliUid=123456789
 ```
 
-Response example `JSON` format Cloud Security Network Detectio n and Response ion
+Response example `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "EndTime":1706668721,
             "IpVersion":4,
             "IP":"10.x.x.x",
@@ -6138,22 +6608,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "DstIP":"10.x.x.x",
             "PayLoad":"test",
             "DeptName":"yundun"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeIDSWhiteRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -6172,31 +6640,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeIDSWhiteRulesResponse>
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeCustomT ags | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language of the response. Valid values: `zh` for Chinese and `en` for English. This parameter is optional. |
-| AliUid | Long | Query | No | 1234567890 | The user ID (UID). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Tags | Normal | ['tag1','tag2','tag3' ...] | A list of tags. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. This ID is generated by Alibaba Cloud and is unique for each request. It can be used to troubleshoot issues. |
-| Success | Boolean | true | Indicates whether the HTTP request was successful. |
-| Module | String | ndr*** | The name of the module. |
-
-Cloud Security Network Detectio ion n and Response
-
-##### DescribeCustomTags
+##### 5.5.1.21 DescribeCustomTags
 
 Call the DescribeCustomTags operation to query custom tags for threat detection.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeCustomT ags | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6208,14 +6663,28 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language of the response. Valid values: `zh` for Chinese and `en` for English. This parameter is optional. |
+| AliUid | Long | Query | No | 1234567890 | The user ID (UID). |
+
 **Response parameters**
 
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Tags | Normal | ['tag1','tag2','tag3' ...] | A list of tags. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. This ID is generated by Alibaba Cloud and is unique for each request. It can be used to troubleshoot issues. |
+| Success | Boolean | true | Indicates whether the HTTP request was successful. |
+| Module | String | ndr*** | The name of the module. |
+
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | The HTTP status code of the response. |
+
+**Examples**
 
 Sample request
 
@@ -6225,20 +6694,24 @@ https://[Endpoint]/?Action=DescribeCustomTags&RegionId=cnhangzhou&Lang=zh&AliUid
 
 Sample successful response `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Tags":"['tag1','tag2','tag3' ...]",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeCustomTagsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Tags>
         <Tags>['tag1','tag2','tag3' ...]</Tags>
@@ -6246,9 +6719,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeCustomTagsResponse>
 ```
 
-##### ExportAggAttackRecords
+##### 5.5.1.22 ExportAggAttackRecords
 
 You can call the ExportAggAttackRecords and ExportAggResetRecords APIs to export aggregated attack logs.
 
@@ -6257,6 +6731,16 @@ You can call the ExportAggAttackRecords and ExportAggResetRecords APIs to export
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:ExportAggAttackR ecords | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+Throttling limit for a single user: 10 queries per second (QPS). Throttling limit for this operation: 100 QPS.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6269,18 +6753,6 @@ You can call the ExportAggAttackRecords and ExportAggResetRecords APIs to export
 | HTTPCode | Integ er | Query | No | 200 | The HTTP response code. |
 | XFF | Strin g | Query | No | 2.2.2.2 | The value of the X- Forwarded-For header. |
 | Host | Strin g | Query | No | xxx.com | The domain name. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Throttling**
-
-Throttling limit for a single user: 10 queries per second (QPS). Throttling limit for this operation: 100 QPS.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common parameters.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6295,15 +6767,13 @@ This operation uses only common request headers. For more information, see Commo
 | ProtectSta tus | Strin g | Query | No | 1 | The protection status. Valid values: `0`: unhandled, `1`: blocked, `2`: whitelisted, `3`: ignored. |
 | LinkType | Strin g | Query | No | tcp | The network connectivity type. |
 
+**Return Data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Return Data**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6315,6 +6785,8 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code of the response. |
 
+**Examples**
+
 Request example
 
 ```
@@ -6323,8 +6795,13 @@ https://[Endpoint]/?Action=ExportAggAttackRecords&RegionId=cnhangzhou&Lang=zh&St
 
 Response examples `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ExportFileName":"test.cap",
     "ExportFileUrl":"https://xxx.com",
@@ -6332,25 +6809,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggAttac kEventDetail | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language of the response. Set the value to zh for Chinese or en for English. This parameter is optional. |
-| AliUid | Long | Query | No | 1234567890 | The UID of the user. |
-| StartTime | Long | Query | No | 1707118672 | The start of the time range to query. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportAggAttackRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.cap</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -6358,13 +6822,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</ExportAggAttackRecordsResponse>
 ```
 
-##### DescribeAggAttackEventDetail
+##### 5.5.1.23 DescribeAggAttackEventDetail
 
 You can call the DescribeAggAttackEventDetail operation to query the basic information about an attacker profile.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggAttac kEventDetail | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6376,7 +6845,13 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
-| Developer Gui | de·API d | ocumentat |  | Cloud | Security Network Detecti |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language of the response. Set the value to zh for Chinese or en for English. This parameter is optional. |
+| AliUid | Long | Query | No | 1234567890 | The UID of the user. |
+| StartTime | Long | Query | No | 1707118672 | The start of the time range to query. |
+
+| Developer Gui | de·API d | ocumentat |   | Cloud | Security Network Detecti |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -6388,6 +6863,8 @@ This operation uses only common request headers. For more information, see Commo
 | DeptAliUid | Strin g | Query | No | 1234567890 | The UID of the department. |
 | LinkType | Strin g | Query | No | 0 | The detection location. `0` indicates ISW. `1` indicates CSW. `2` indicates LSW. `3` indicates ENI. |
 
+**Returned data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues. |
@@ -6396,11 +6873,7 @@ This operation uses only common request headers. For more information, see Commo
 | LocationZh | String | Beijing | Geographic location in China. |
 | LocationEn | String | beijing | Geographic location in English. |
 
-ion n and Response
-
-**Returned data**
-
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6414,6 +6887,8 @@ ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code of the response. |
 
+**Examples**
+
 Request example
 
 ```
@@ -6422,14 +6897,13 @@ https://[Endpoint]/?Action=DescribeAggAttackEventDetail&RegionId=cnhangzhou&Lang
 
 Response example `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeIDSRuleIn fo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "SrcIP":"1.1.1.1",
     "AttackerIP":"1.1.1.1",
@@ -6443,13 +6917,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggAttackEventDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <SrcIP>1.1.1.1</SrcIP>
     <AttackerIP>1.1.1.1</AttackerIP>
@@ -6463,30 +6936,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggAttackEventDetailResponse>
 ```
 
-##### DescribeIDSRuleInfo
+##### 5.5.1.24 DescribeIDSRuleInfo
 
 Call the DescribeIDSRuleInfo operation to query the details of an intrusion detection rule.
 
 **Authorization**
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | en | The language of the response. Valid values: `zh` for Chinese and `en` for English. This parameter is optional. |
-| RuleID | Long | Query | No | 100 | The ID of the rule. |
-| Origin | Integ er | Query | No | 1 | The source of the rule. Valid values: `0` for Intrusion Detection System (IDS) and `1` for Web Application Firewall (WAF). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The unique ID of the request. To contact Alibaba Cloud Support, provide this ID. |
-| ReleaseTime | String | 1706668721 | Publication timestamp. |
-| RuleName | String | test | The name of the rule. |
-| RuleType | String | webshell | The type of the rule. |
-| VulLevel | Integer | 1 | The threat level. Valid values: `1` (low), `2` (medium), and `3` (high). |
-| RuleDesc | String | test | The description of the rule. |
-
-Cloud Security Network Detectio n and Response ion
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeIDSRuleIn fo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6498,7 +6959,22 @@ This operation uses common request headers and has no special request headers. F
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | en | The language of the response. Valid values: `zh` for Chinese and `en` for English. This parameter is optional. |
+| RuleID | Long | Query | No | 100 | The ID of the rule. |
+| Origin | Integ er | Query | No | 1 | The source of the rule. Valid values: `0` for Intrusion Detection System (IDS) and `1` for Web Application Firewall (WAF). |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The unique ID of the request. To contact Alibaba Cloud Support, provide this ID. |
+| ReleaseTime | String | 1706668721 | Publication timestamp. |
+| RuleName | String | test | The name of the rule. |
+| RuleType | String | webshell | The type of the rule. |
+| VulLevel | Integer | 1 | The threat level. Valid values: `1` (low), `2` (medium), and `3` (high). |
+| RuleDesc | String | test | The description of the rule. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6509,7 +6985,9 @@ This operation uses common request headers and has no special request headers. F
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code returned for the request. |
 
-Cloud Security Network Detectio ion n and Response Request example
+**Examples**
+
+Request example
 
 ```
 https://[Endpoint]/?Action=DescribeIDSRuleInfo&RegionId=cnhangzhou&Lang=en&RuleID=100&Origin=1
@@ -6517,8 +6995,13 @@ https://[Endpoint]/?Action=DescribeIDSRuleInfo&RegionId=cnhangzhou&Lang=en&RuleI
 
 Response examples `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ReleaseTime":"1706668721",
     "RuleName":"test",
@@ -6531,20 +7014,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggReset Data | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeIDSRuleInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ReleaseTime>1706668721</ReleaseTime>
     <RuleName>test</RuleName>
@@ -6557,15 +7032,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeIDSRuleInfoResponse>
 ```
 
-#### Block logs
+#### 5.5.2 Block logs
 
-##### DescribeAggResetData
+##### 5.5.2.1 DescribeAggResetData
 
 Queries the number of attacks by day based on blocked traffic logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggReset Data | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6579,9 +7059,14 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | TaskUUID | Strin g | Query | No | F0A8A039-930D-5EC1- 97C8-************ | The asynchronous task UUID. |
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6591,22 +7076,20 @@ This operation does not have operation-specific request headers and uses only co
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
-| ResetLogData | Struct |  |  |
-| -DataList | Array |  |  |
+| ResetLogData | Struct |   |   |
+| -DataList | Array |   |   |
 | --Date | String | ... | The log date. This parameter is discontinued. |
 | --Count | Integer | 100 | The number of attacks. |
 | --Time | Long | 1707148800 | The timestamp. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 |---|---|---|---|
+
+**Examples**
 
 Sample requests
 
@@ -6616,45 +7099,46 @@ https://[Endpoint]/?Action=DescribeAggResetData&RegionId=cnhangzhou&Lang=zh&Task
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TaskStatus":1,
     "ResetLogData":{
         "DataList":[
-            {
+```
+
+`{`
+
+```json
                 "Time":1707148800,
                 "Count":100,
                 "Date":"..."
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "TotalCount":100
-    },
+```
+
+`},`
+
+```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggReset TopIPRecordsData | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggResetDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -6669,13 +7153,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggResetDataResponse>
 ```
 
-##### DescribeAggResetTopIPRecordsData
+##### 5.5.2.2 DescribeAggResetTopIPRecordsData
 
 Asynchronously queries the top five IP addresses based on the blocked traffic logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggReset TopIPRecordsData | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6689,8 +7178,14 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | TaskUUID | Strin g | Query | No | F0A8A039-930D-5EC1- 97C8-************ | The asynchronous task UUID. |
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6700,15 +7195,13 @@ This operation does not have operation-specific request headers and uses only co
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
-| ResetLogData | Struct |  |  |
-| -DataList | Array |  |  |
+| ResetLogData | Struct |   |   |
+| -DataList | Array |   |   |
 | --IP | String | 1.1.1.1 | The IP address. |
 | --Count | Integer | 100 | The number of attacks. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6716,36 +7209,47 @@ Sample requests
 https://[Endpoint]/?Action=DescribeAggResetTopIPRecordsData&RegionId=cnhangzhou&Lang=zh&TaskUUID=F0A8A039-930D-5EC1-97C8-************&AliUid=1234567890
 ```
 
-Cloud Security Network Detectio ion n and Response Sample success responses `JSON` format
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TaskStatus":1,
     "ResetLogData":{
         "DataList":[
-            {
-                "IP":"1.1.1.1",
-                "Count":100
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "IP":"1.1.1.1",
+                "Count":100
+```
+
+`}` `],`
 
 ```json
         "TotalCount":100
-    },
+```
+
+`},`
+
+```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggResetTopIPRecordsDataResponse>
+Content-Type:application/xml <DescribeAggResetTopIPRecordsDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -6762,7 +7266,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeAggResetTopIPRecordsDataRe
 </DescribeAggResetTopIPRecordsDataResponse>
 ```
 
-##### ExportAggResetRecords
+##### 5.5.2.3 ExportAggResetRecords
 
 Exports aggregated blocking logs.
 
@@ -6771,6 +7275,16 @@ Exports aggregated blocking logs.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:ExportAggResetRe cords | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6783,21 +7297,11 @@ Exports aggregated blocking logs.
 | AliUid | Strin g | Query | No | 123456789 | The user ID. |
 | RuleID | Long | Query | No | 65535 | The rule ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Size | Integ er | Query | No | 100000 | The number of logs to be exported. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6809,9 +7313,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6821,14 +7323,13 @@ https://[Endpoint]/?Action=ExportAggResetRecords&RegionId=cnhangzhou&Lang=zh&Sta
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggReset PPS | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ExportFileName":"test.cap",
     "ExportFileUrl":"https://xxx.com",
@@ -6836,13 +7337,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportAggResetRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.cap</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -6850,13 +7350,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</ExportAggResetRecordsResponse>
 ```
 
-##### DescribeAggResetPPS
+##### 5.5.2.4 DescribeAggResetPPS
 
 Queries the packet rate based on blocked traffic logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggReset PPS | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6879,18 +7384,16 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
-| -Date | String |  | The log date. This parameter is discontinued. |
+| DataList | Array |   |   |
+| -Date | String |   | The log date. This parameter is discontinued. |
 | -Count | Integer | 100 | The number of attacks. |
 | -Time | Long | 1707148800 | The log timestamp. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
-
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6902,6 +7405,8 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -6910,42 +7415,39 @@ https://[Endpoint]/?Action=DescribeAggResetPPS&RegionId=cnhangzhou&Lang=zh&Start
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Time":1707148800,
             "Count":100,
             "Date":""
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggReset TopIPRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggResetPPSResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TotalCount>100</TotalCount>
@@ -6957,13 +7459,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggResetPPSResponse>
 ```
 
-##### DescribeAggResetTopIPRecords
+##### 5.5.2.5 DescribeAggResetTopIPRecords
 
 Queries the top five IP addresses based on blocked traffic logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggReset TopIPRecords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -6974,6 +7481,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6986,27 +7497,27 @@ This operation does not have operation-specific request headers and uses only co
 | IPType | Strin g | Query | No | 1 | The type of the service to which the IP address belongs. A value of 0 indicates others. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates Elastic Compute Service (ECS). |
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TaskUUID | String | F0A8A039-930D- 5EC1-97C8- ************ | The UUID of the asynchronous query task. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | TaskStatus | Integer | 1 | The status of the asynchronous query task. A value of 0 indicates that the task is in progress. A value of 1 indicates that the task is complete. |
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
-| ResetLogData | Struct |  |  |
-| -DataList | Array |  |  |
+| ResetLogData | Struct |   |   |
+| -DataList | Array |   |   |
 | --IP | String | 1.1.1.1 | The IP address. |
 | --Count | Integer | 100 | The number of attacks. |
 | -TotalCount | Integer | 100 | The total number of entries returned. |
+
+**Examples**
 
 Sample requests
 
@@ -7014,36 +7525,47 @@ Sample requests
 https://[Endpoint]/?Action=DescribeAggResetTopIPRecords&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&Acti Type=pass&AliUid=1234567890&IPType=test&RuleID=12323
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TaskStatus":1,
     "ResetLogData":{
         "DataList":[
-            {
-                "IP":"1.1.1.1",
-                "Count":100
-            }
 ```
 
-`],`
+`{`
+
+```json
+                "IP":"1.1.1.1",
+                "Count":100
+```
+
+`}` `],`
 
 ```json
         "TotalCount":100
-    },
+```
+
+`},`
+
+```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggResetTopIPRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -7057,9 +7579,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggResetTopIPRecordsResponse>
 ```
 
-##### DescribeAggResetRecords
+##### 5.5.2.6 DescribeAggResetRecords
 
 Queries the logs of blocked traffic.
 
@@ -7068,18 +7591,6 @@ Queries the logs of blocked traffic.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DescribeAggReset Records | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| CurrentPa ge | Strin g | Query | No | 1 | The page number. |
-| PageSize | Strin g | Query | No | 10 | The number of entries per page. |
-| StartTime | Long | Query | No | 1707118672 | The beginning of the time range to query. |
-| EndTime | Long | Query | No | 1707118672 | The end of the time range to query. |
-| DstIP | Strin g | Query | No | 1.1.1.1 | The destination IP address. |
-| SrcIP | Strin g | Query | No | 1.1.1.1 | The source IP address. |
-
-Cloud Security Network Detectio ion n and Response
 
 **Throttling**
 
@@ -7093,9 +7604,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| CurrentPa ge | Strin g | Query | No | 1 | The page number. |
+| PageSize | Strin g | Query | No | 10 | The number of entries per page. |
+| StartTime | Long | Query | No | 1707118672 | The beginning of the time range to query. |
+| EndTime | Long | Query | No | 1707118672 | The end of the time range to query. |
+| DstIP | Strin g | Query | No | 1.1.1.1 | The destination IP address. |
+| SrcIP | Strin g | Query | No | 1.1.1.1 | The source IP address. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | ActionTyp e | Strin g | Query | No | pass | The protection type. A value of pass indicates that access is allowed. A value of alert indicates that access is observed. A value of drop indicates that access is blocked. |
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7105,17 +7628,13 @@ This operation does not have operation-specific request headers and uses only co
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
-| ResetLogData | Struct |  |  |
-| -DataList | Array |  |  |
+| ResetLogData | Struct |   |   |
+| -DataList | Array |   |   |
 | --SrcIP | String | 1.1.1.1 | The source IP address. |
 | --DstIP | String | 1.1.1.1 | The destination IP address. |
 | --DstPort | String | 80 | The destination port. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
@@ -7133,7 +7652,9 @@ Cloud Security Network Detectio n and Response ion
 | -PageSize | Integer | 10 | The number of entries per page. |
 | -CurrentPage | Integer | 1 | The page number. |
 
-Sample requests Cloud Security Network Detectio n and Response ion
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggResetRecords&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&StartTime=1707118672&EndTime=1707118672&DstIP= 1.1.1&SrcIP=1.1.1.1&ActionType=pass&AliUid=1234567890&RuleID=12323
@@ -7141,14 +7662,23 @@ https://[Endpoint]/?Action=DescribeAggResetRecords&RegionId=cnhangzhou&Lang=zh&C
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TaskStatus":1,
     "ResetLogData":{
         "DataList":[
-            {
+```
+
+`{`
+
+```json
                 "Origin":100,
                 "ActionType":"pass",
                 "CreateTime":"2024-02-06T12:46:36+08:00",
@@ -7161,32 +7691,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
                 "IsGlobal":false,
                 "RuleName":"test",
                 "AliUid":1234567890
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
+```
+
+`},`
+
+```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggReset DayCount | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggResetRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -7212,13 +7738,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggResetRecordsResponse>
 ```
 
-##### DescribeAggResetDayCount
+##### 5.5.2.7 DescribeAggResetDayCount
 
 Asynchronously queries the number of attacks by day based on blocked traffic logs.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggReset DayCount | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -7227,6 +7758,8 @@ You can call this operation up to 10 times per second per account. You can call 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7239,17 +7772,13 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | RuleID | Long | Query | No | 12323 | The hit rule ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
-| -Date | String |  | The log date. This parameter is discontinued. |
+| DataList | Array |   |   |
+| -Date | String |   | The log date. This parameter is discontinued. |
 | -Count | Integer | 100 | The number of attacks. |
-
-Cloud Security Network Detectio n and Response ion
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7261,7 +7790,9 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggResetDayCount&RegionId=cnhangzhou&Lang=zh&StartTime=1707118672&EndTime=1707118672&DstIP=1.1.1.1&SrcIP=1.1.1.1&Acti Type=pass&AliUid=1234567890&RuleID=12323
@@ -7269,40 +7800,39 @@ https://[Endpoint]/?Action=DescribeAggResetDayCount&RegionId=cnhangzhou&Lang=zh&
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Time":1707148800,
             "Count":100,
             "Date":""
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAggReset RecordsData | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggResetDayCountResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TotalCount>100</TotalCount>
@@ -7314,13 +7844,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggResetDayCountResponse>
 ```
 
-##### DescribeAggResetRecordsData
+##### 5.5.2.8 DescribeAggResetRecordsData
 
 Asynchronously queries the logs of blocked traffic.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAggReset RecordsData | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -7334,8 +7869,14 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | TaskUUID | Strin g | Query | No | F0A8A039-930D-5EC1- 97C8-************ | The UUID of the asynchronous query task. |
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7345,16 +7886,12 @@ This operation does not have operation-specific request headers and uses only co
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
-| ResetLogData | Struct |  |  |
-| -DataList | Array |  |  |
+| ResetLogData | Struct |   |   |
+| -DataList | Array |   |   |
 | --SrcIP | String | 1.1.1.1 | The source IP address. |
 | --DstIP | String | 1.1.1.1 | The destination IP address. |
 | --DstPort | String | 80 | The destination port. |
 | --CreateTime | String | 2024-02- 06T12:46:36+08:0 0 | The time when the record was logged. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7370,22 +7907,33 @@ Cloud Security Network Detectio ion n and Response
 | -PageSize | Integer | 10 | The number of entries per page. |
 | -CurrentPage | Integer | 1 | The page number. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAggResetRecordsData&RegionId=cnhangzhou&Lang=zh&TaskUUID=F0A8A039-930D-5EC1-97C8-************&AliUid=1234567890
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TaskUUID":"F0A8A039-930D-5EC1-97C8-************",
     "TaskStatus":1,
     "ResetLogData":{
         "DataList":[
-            {
+```
+
+`{`
+
+```json
                 "Origin":100,
                 "ActionType":"pass",
                 "CreateTime":"2024-02-06T12:46:36+08:00",
@@ -7398,32 +7946,28 @@ HTTP/1.1 200 OK Content-Type:application/json {
                 "IsGlobal":false,
                 "RuleName":"test",
                 "AliUid":1234567890
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "TotalCount":100,
         "PageSize":10,
         "CurrentPage":1
-    },
+```
+
+`},`
+
+```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaAggDnsTu nnelRule | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAggResetRecordsDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TaskUUID>F0A8A039-930D-5EC1-97C8-************</TaskUUID>
     <TaskStatus>1</TaskStatus>
@@ -7449,25 +7993,38 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAggResetRecordsDataResponse>
 ```
 
-### Behavior Analysis
+### 5.6 Behavior Analysis
 
-#### DNS Behavior Analysis
+#### 5.6.1 DNS Behavior Analysis
 
-##### GetBhaAggDnsTunnelRule
+##### 5.6.1.1 GetBhaAggDnsTunnelRule
 
 Queries the information about the rule for detecting DNS tunneling attacks.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaAggDnsTu nnelRule | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7479,15 +8036,7 @@ You can call this operation up to 10 times per second per account. You can call 
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7497,14 +8046,13 @@ https://[Endpoint]/?Action=GetBhaAggDnsTunnelRule&RegionId=cn-hangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaDnsWhiteLi st | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "RangeTime":100,
     "Length":10,
@@ -7512,13 +8060,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaAggDnsTunnelRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RangeTime>100</RangeTime>
     <Length>10</Length>
@@ -7526,13 +8073,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaAggDnsTunnelRuleResponse>
 ```
 
-##### GetBhaDnsWhiteList
+##### 5.6.1.2 GetBhaDnsWhiteList
 
 Queries the whitelist for DNS behavior analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaDnsWhiteLi st | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -7550,9 +8102,11 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Strin g | Query | No | 123456789 | The user ID. |
 | Domain | Strin g | Query | No | xxx.com | The domain name. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Domain | String | xxx.com | The domain name. |
 | -AliUid | String | 123456789 | The user ID. |
 | -CreatTime | String | 2020-12-31 16:30:36 | The time when the DNS behavior was logged. |
@@ -7561,9 +8115,7 @@ This operation does not have operation-specific request headers and uses only co
 | TotalCount | Integer | 100 | The total number of entries returned. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7573,36 +8125,37 @@ https://[Endpoint]/?Action=GetBhaDnsWhiteList&RegionId=cnhangzhou&Lang=zh&AliUid
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaDnsTunnel AggTopHost | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "CreatTime":"2020-12-31 16:30:36",
             "Id":"10",
             "Domain":"xxx.com",
             "AliUid":"123456789"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaDnsWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -7612,19 +8165,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <Id>10</Id>
     </DataList>
     <Module>ndr***</Module>
+</GetBhaDnsWhiteListResponse>
 ```
 
-##### GetBhaDnsTunnelAggTopHost
+##### 5.6.1.3 GetBhaDnsTunnelAggTopHost
 
 Queries the statistics on domain names involved in DNS tunneling attacks.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaDnsTunnel AggTopHost | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7636,19 +8198,15 @@ You can call this operation up to 10 times per second per account. You can call 
 | Domain | Strin g | Query | No | xxx.com | The domain name. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Domain | String | xxx.com | The domain name. |
 | -Count | Integer | 100 | The number of detected DNS tunneling attacks associated with the domain name. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
-
-Cloud Security Network Detectio ion n and Response This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7656,7 +8214,9 @@ Cloud Security Network Detectio ion n and Response This operation does not have 
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaDnsTunnelAggTopHost&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&AliUid=123456789&SrcIP=10.x.x.x& main=xxx.com&DepAliUid=1234567890
@@ -7664,40 +8224,37 @@ https://[Endpoint]/?Action=GetBhaDnsTunnelAggTopHost&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Count":100,
-            "Domain":"xxx.com"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Count":100,
+            "Domain":"xxx.com"
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddBhaDnsWhiteL ist | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaDnsTunnelAggTopHostResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -7707,13 +8264,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaDnsTunnelAggTopHostResponse>
 ```
 
-##### AddBhaDnsWhiteList
+##### 5.6.1.4 AddBhaDnsWhiteList
 
 Adds a domain name to the whitelist for DNS behavior analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddBhaDnsWhiteL ist | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -7727,17 +8289,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | Domain | Strin g | Query | No | test.com | The domain name. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7747,28 +8313,45 @@ https://[Endpoint]/?Action=AddBhaDnsWhiteList&RegionId=cnhangzhou&Lang=zh&AliUid
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddBhaDnsWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</AddBhaDnsWhiteListResponse>
 ```
 
-##### ExportBhaAggDnsRecords
+##### 5.6.1.5 ExportBhaAggDnsRecords
 
 Exports aggregated attack logs for DNS behavior analysis.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:ExportBhaAggDns Records | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7780,20 +8363,6 @@ Exports aggregated attack logs for DNS behavior analysis.
 | Domain | Strin g | Query | No | xxx.com | The domain name. |
 | AttackTyp e | Strin g | Query | No | http | The attack type. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
 
 **Response parameters**
 
@@ -7807,7 +8376,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=ExportBhaAggDnsRecords&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&AliUid=123456789&SrcIP=10.x.x.x& main=xxx.com&AttackType=http&DepAliUid=1234567890
@@ -7815,8 +8386,13 @@ https://[Endpoint]/?Action=ExportBhaAggDnsRecords&RegionId=cnhangzhou&Lang=zh&St
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ExportFileName":"test.csv",
     "ExportFileUrl":"https://xxx.com",
@@ -7824,25 +8400,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaAggDnsRe cords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| CurrentPa ge | Integ er | Query | No | 1 | The page number. |
-| PageSize | Integ er | Query | No | 10 | The number of entries per page. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportBhaAggDnsRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.csv</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -7850,13 +8413,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</ExportBhaAggDnsRecordsResponse>
 ```
 
-##### GetBhaAggDnsRecords
+##### 5.6.1.6 GetBhaAggDnsRecords
 
 Queries the aggregated attack logs for DNS behavior analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaAggDnsRe cords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -7868,7 +8436,13 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| loud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| CurrentPa ge | Integ er | Query | No | 1 | The page number. |
+| PageSize | Integ er | Query | No | 10 | The number of entries per page. |
+
+| loud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -7881,9 +8455,11 @@ This operation does not have operation-specific request headers and uses only co
 | AttackTyp e | Strin g | Query | No | http | The attack type. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -LastTime | String | 2020-12-31 16:30:36 | The time when the request was last initiated. |
 | -SrcIp | String | 10.x.x.x | The source IP address. |
 | -Department | String | test | The department. |
@@ -7891,8 +8467,6 @@ This operation does not have operation-specific request headers and uses only co
 | -AttackType | String | http | The attack type. |
 | -Count | Integer | 10 | The number of times that the DNS behavior was detected. |
 | -CreateTime | String | 2020-12-31 16:30:36 | The time when the DNS behavior was logged. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7904,22 +8478,33 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaAggDnsRecords&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&StartTime=1706668721&EndTime=1706668721&AliUid 23456789&SrcIP=10.x.x.x&Domain=xxx.com&AttackType=http&DepAliUid=1234567890
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Department":"test",
             "CreateTime":"2020-12-31 16:30:36",
             "AttackType":"http",
@@ -7927,22 +8512,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Domain":"xxx.com",
             "SrcIp":"10.x.x.x",
             "LastTime":"2020-12-31 16:30:36"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaAggDnsRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -7959,15 +8542,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaAggDnsRecordsResponse>
 ```
 
-##### GetBhaAggDnsRecordsDetail
+##### 5.6.1.7 GetBhaAggDnsRecordsDetail
 
 Queries the attack log details for DNS behavior analysis.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:GetBhaAggDnsRe cordsDetail | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7981,23 +8577,11 @@ Queries the attack log details for DNS behavior analysis.
 | Domain | Strin g | Query | No | xxx.com | The domain name. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Id | String | 1 | The ID. |
 | -SrcIp | String | 10.x.x.x | The source IP address. |
 | -Department | String | test | The department. |
@@ -8013,9 +8597,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -8023,16 +8605,25 @@ Sample requests
 https://[Endpoint]/?Action=GetBhaAggDnsRecordsDetail&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&StartTime=1706668721&EndTime=1706668721&AliUid 23456789&SrcIP=10.x.x.x&Domain=xxx.com&DepAliUid=1234567890
 ```
 
-Cloud Security Network Detectio ion n and Response Sample success responses `JSON` format
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Department":"test",
             "CreateTime":"2020-12-31 16:30:36",
             "AttackType":"http",
@@ -8040,22 +8631,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Count":10,
             "Domain":"xxx.com",
             "SrcIp":"10.x.x.x"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaAggDnsRecordsDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -8072,31 +8661,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaAggDnsRecordsDetailResponse>
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:UpdateBhaAggDns TunnelRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| RangeTim e | Integ er | Query | Yes | 100 | The time range. Unit: minutes. |
-| Length | Integ er | Query | Yes | 10 | The total length of the DNS domain name. Unit: character. |
-| Count | Integ er | Query | Yes | 10 | The number of requests. |
-
-| Parameter | Type | Examples | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Module | String | ndr*** | The name of the module. |
-
-Cloud Security Network Detectio n and Response ion
-
-##### UpdateBhaAggDnsTunnelRule
+##### 5.6.1.8 UpdateBhaAggDnsTunnelRule
 
 Modifies the rule for detecting DNS tunneling attacks.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:UpdateBhaAggDns TunnelRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8108,17 +8684,27 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| RangeTim e | Integ er | Query | Yes | 100 | The time range. Unit: minutes. |
+| Length | Integ er | Query | Yes | 10 | The total length of the DNS domain name. Unit: character. |
+| Count | Integ er | Query | Yes | 10 | The number of requests. |
+
 **Response parameters**
 
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Parameter | Type | Examples | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Module | String | ndr*** | The name of the module. |
+
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 | Parameter | Type | Examples | Description |
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DeleteBhaDnsWhit eList | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+**Examples**
 
 Sample requests
 
@@ -8128,43 +8714,39 @@ https://[Endpoint]/?Action=UpdateBhaAggDnsTunnelRule&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***",
     "Success":true,
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <UpdateBhaAggDnsTunnelRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
     <Success>true</Success>
     <HttpStatusCode>200</HttpStatusCode>
+</UpdateBhaAggDnsTunnelRuleResponse>
 ```
 
-##### DeleteBhaDnsWhiteList
+##### 5.6.1.9 DeleteBhaDnsWhiteList
 
 Removes a domain name from the whitelist for DNS behavior analysis.
 
 **Authorization information**
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
-| Domain | Strin g | Query | No | test.com | The domain name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Module | String | ndr*** | The name of the module. |
-
-Cloud Security Network Detectio n and Response ion
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DeleteBhaDnsWhit eList | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8176,7 +8758,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Strin g | Query | No | 1234567890 | The user ID. |
+| Domain | Strin g | Query | No | test.com | The domain name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Module | String | ndr*** | The name of the module. |
+
+**Examples**
 
 Sample requests
 
@@ -8186,36 +8781,35 @@ https://[Endpoint]/?Action=DeleteBhaDnsWhiteList&RegionId=cnhangzhou&Lang=zh&Ali
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaAggAttack DnsHost | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteBhaDnsWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</DeleteBhaDnsWhiteListResponse>
 ```
 
-##### GetBhaAggAttackDnsHost
+##### 5.6.1.10 GetBhaAggAttackDnsHost
 
 Queries the trend of suspicious domain name resolutions.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaAggAttack DnsHost | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8226,6 +8820,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8237,9 +8835,11 @@ This operation does not have operation-specific request headers and uses only co
 | AttackTyp e | Strin g | Query | No | http | The attack type. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Date | String | 2020-12-31 16:30:36 | The date. |
 | -Time | Integer | 1706668721 | The timestamp. |
 | -Count | Integer | 10 | The number of suspicious domain names. |
@@ -8248,16 +8848,14 @@ This operation does not have operation-specific request headers and uses only co
 | Success | Boolean | true | Indicates whether the HTTP request was successful. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+**Examples**
 
 Sample requests
 
@@ -8267,31 +8865,38 @@ https://[Endpoint]/?Action=GetBhaAggAttackDnsHost&RegionId=cnhangzhou&Lang=zh&St
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Time":1706668721,
             "Count":10,
             "Date":"2020-12-31 16:30:36"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaAggAttackDnsHostResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8302,11 +8907,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaAggAttackDnsHostResponse>
 ```
+
+##### 5.6.1.11 GetBhaDgaAggTopHost
+
+Queries the statistics on domain names generated by Domain Generation Algorithm (DGA) in DNS behavior analysis.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:GetBhaDgaAggTo pHost | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8318,29 +8940,11 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | Domain | Strin g | Query | No | xxx.com | The domain name. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-##### GetBhaDgaAggTopHost
-
-Queries the statistics on domain names generated by Domain Generation Algorithm (DGA) in DNS behavior analysis.
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Domain | String | xxx.com | The domain name. |
 | -Count | Integer | 100 | The number of times that the domain name was detected. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -8349,7 +8953,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaDgaAggTopHost&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&AliUid=123456789&SrcIP=10.x.x.x& main=xxx.com&DepAliUid=1234567890
@@ -8357,38 +8963,37 @@ https://[Endpoint]/?Action=GetBhaDgaAggTopHost&RegionId=cnhangzhou&Lang=zh&Start
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Count":100,
-            "Domain":"xxx.com"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Count":100,
+            "Domain":"xxx.com"
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddBhaEncryptWh iteList | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaDgaAggTopHostResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8398,15 +9003,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaDgaAggTopHostResponse>
 ```
 
-#### Encrypted traffic analysis
+#### 5.6.2 Encrypted traffic analysis
 
-##### AddBhaEncryptWhiteList
+##### 5.6.2.1 AddBhaEncryptWhiteList
 
 Adds an IP address to the whitelist of encrypted traffic analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddBhaEncryptWh iteList | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8420,17 +9030,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | Ip | Strin g | Query | Yes | 1.1.1.1 | The IP address. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -8440,28 +9054,45 @@ https://[Endpoint]/?Action=AddBhaEncryptWhiteList&RegionId=cnhangzhou&Lang=zh&Al
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddBhaEncryptWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</AddBhaEncryptWhiteListResponse>
 ```
 
-##### GetBhaTLsTopApp
+##### 5.6.2.2 GetBhaTLsTopApp
 
 Queries the statistics on encrypted traffic types by using TLS.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:GetBhaTLsTopApp | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8474,25 +9105,11 @@ Queries the statistics on encrypted traffic types by using TLS.
 | AttackTool s | Strin g | Query | No | Burpsuite | The attack tools. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -AppName | String | DNS | The name of the top application. |
 | -Count | Integer | 100 | The number of attacks. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -8501,7 +9118,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaTLsTopApp&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&AliUid=123456789&SrcIP=10.x.x.x& tIP=10.x.x.x&AttackTools=Burpsuite&DepAliUid=1234567890
@@ -8509,38 +9128,37 @@ https://[Endpoint]/?Action=GetBhaTLsTopApp&RegionId=cnhangzhou&Lang=zh&StartTime
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Count":100,
-            "AppName":"DNS"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Count":100,
+            "AppName":"DNS"
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DeleteBhaEncrypt WhiteList | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaTLsTopAppResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8550,13 +9168,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaTLsTopAppResponse>
 ```
 
-##### DeleteBhaEncryptWhiteList
+##### 5.6.2.3 DeleteBhaEncryptWhiteList
 
 Remove an IP address from the whitelist for encrypted traffic analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DeleteBhaEncrypt WhiteList | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8570,17 +9193,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Strin g | Query | No | 1234567890 | The user ID. |
 | Ip | Strin g | Query | Yes | 1.1.1.1 | The IP address. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -8590,28 +9217,45 @@ https://[Endpoint]/?Action=DeleteBhaEncryptWhiteList&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteBhaEncryptWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</DeleteBhaEncryptWhiteListResponse>
 ```
 
-##### GetBhaTLsTopDstIP
+##### 5.6.2.4 GetBhaTLsTopDstIP
 
 Queries the top destination IP addresses based on encrypted traffic analysis.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:GetBhaTLsTopDstI P | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8624,25 +9268,11 @@ Queries the top destination IP addresses based on encrypted traffic analysis.
 | AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Ip | String | 10.x.x.x | The top attacked IP address. |
 | -Count | Integer | 100 | The number of attacks. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -8651,7 +9281,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaTLsTopDstIP&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&AliUid=123456789&SrcIP=10.x.x.x& tIP=10.x.x.x&AttackTools=Burpsuite&DepAliUid=1234567890
@@ -8659,38 +9291,37 @@ https://[Endpoint]/?Action=GetBhaTLsTopDstIP&RegionId=cnhangzhou&Lang=zh&StartTi
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Ip":"10.x.x.x",
-            "Count":100
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Ip":"10.x.x.x",
+            "Count":100
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaEncryptWh iteList | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaTLsTopDstIPResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8700,13 +9331,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaTLsTopDstIPResponse>
 ```
 
-##### GetBhaEncryptWhiteList
+##### 5.6.2.5 GetBhaEncryptWhiteList
 
 Queries the whitelist for encrypted traffic analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaEncryptWh iteList | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8720,12 +9356,18 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Strin g | Query | No | 123456789 | The user ID. |
 | Ip | Strin g | Query | No | 10.x.x.x | The IP address. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Ip | String | 10.x.x.x | The IP address. |
 | -AliUid | String | 123456789 | The user ID. |
 | -CreatTime | String | 2020-12-31 16:30:36 | The time when the IP address was added to the whitelist. |
@@ -8736,9 +9378,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -8746,40 +9386,41 @@ Sample requests
 https://[Endpoint]/?Action=GetBhaEncryptWhiteList&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&Ip=10.x.x.x
 ```
 
-Sample success responses
+Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaAggTlsRec ordsDetail | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion `JSON` format
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "CreatTime":"2020-12-31 16:30:36",
             "Ip":"10.x.x.x",
             "Id":"10",
             "AliUid":"123456789"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaEncryptWhiteListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -8791,15 +9432,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaEncryptWhiteListResponse>
 ```
 
-##### GetBhaAggTlsRecordsDetail
+##### 5.6.2.6 GetBhaAggTlsRecordsDetail
 
 Queries the attack log details for encrypted traffic analysis.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaAggTlsRec ordsDetail | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8814,21 +9468,13 @@ Queries the attack log details for encrypted traffic analysis.
 | AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DataList | Array |  |  |
-
-Cloud Security Network Detectio ion n and Response You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 **Response parameters**
 
-| C n | loud Security Net and Response | work Detectio |  | Developer Guide·API documenta io | t n |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DataList | Array |   |   |
+
+| C n | loud Security Net and Response | work Detectio |   | Developer Guide·API documenta io | t n |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -8850,7 +9496,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Sample requests Cloud Security Network Detectio ion n and Response
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaAggTlsRecordsDetail&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&StartTime=1706668721&EndTime=1706668721&AliUid 23456789&SrcIP=10.x.x.x&DstIP=10.x.x.x&AttackTools=Burpsuite&DepAliUid=1234567890
@@ -8858,14 +9506,23 @@ https://[Endpoint]/?Action=GetBhaAggTlsRecordsDetail&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Department":"test",
             "AttackTools":"Burpsuite",
             "CreateTime":"2020-12-31 16:30:36",
@@ -8875,31 +9532,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Protocol":"http",
             "SrcIp":"10.x.x.x",
             "LastTime":"2020-12-31 16:30:36"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaTLsTopSrcI P | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaAggTlsRecordsDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -8918,13 +9564,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaAggTlsRecordsDetailResponse>
 ```
 
-##### GetBhaTLsTopSrcIP
+##### 5.6.2.7 GetBhaTLsTopSrcIP
 
 Queries the top source IP addresses based on encrypted traffic analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaTLsTopSrcI P | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -8935,6 +9586,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -8947,17 +9601,15 @@ This operation does not have operation-specific request headers and uses only co
 | AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Ip | String | 10.x.x.x | The source IP address that launches the most attacks. |
 | -Count | Integer | 100 | The number of attacks. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8965,7 +9617,9 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaTLsTopSrcIP&RegionId=cnhangzhou&Lang=zh&StartTime=1706668721&EndTime=1706668721&AliUid=123456789&SrcIP=10.x.x.x& tIP=10.x.x.x&AttackTools=Burpsuite&DepAliUid=1234567890
@@ -8973,40 +9627,37 @@ https://[Endpoint]/?Action=GetBhaTLsTopSrcIP&RegionId=cnhangzhou&Lang=zh&StartTi
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Ip":"10.x.x.x",
-            "Count":100
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Ip":"10.x.x.x",
+            "Count":100
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaAggTlsRec ords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaTLsTopSrcIPResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -9016,13 +9667,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaTLsTopSrcIPResponse>
 ```
 
-##### GetBhaAggTlsRecords
+##### 5.6.2.8 GetBhaAggTlsRecords
 
 Queries the aggregated attack logs for encrypted traffic analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaAggTlsRec ords | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9033,6 +9689,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9046,9 +9706,11 @@ This operation does not have operation-specific request headers and uses only co
 | AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -SrcIp | String | 10.x.x.x | The source IP address. |
 | -DstIp | String | 10.x.x.x | The destination IP address. |
 | -DstPort | String | 8080 | The destination port. |
@@ -9056,11 +9718,7 @@ This operation does not have operation-specific request headers and uses only co
 | -AttackTools | String | Burpsuite | The attack tool. |
 | -Count | Integer | 20 | The number of times that the request was detected. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -CreateTime | String | 2020-12-31 16:30:36 | The time when the request was logged. |
@@ -9074,22 +9732,33 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=GetBhaAggTlsRecords&RegionId=cnhangzhou&Lang=zh&CurrentPage=1&PageSize=10&StartTime=1706668721&EndTime=1706668721&AliUid 23456789&SrcIP=10.x.x.x&DstIP=10.x.x.x&AttackTools=Burpsuite&DepAliUid=1234567890
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Department":"test",
             "AttackTools":"Burpsuite",
             "CreateTime":"2020-12-31 16:30:36",
@@ -9099,22 +9768,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Protocol":"http",
             "SrcIp":"10.x.x.x",
             "LastTime":"2020-12-31 16:30:36"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaAggTlsRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -9133,29 +9800,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaAggTlsRecordsResponse>
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetBhaTLsTopTool s | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| StartTime | Long | Query | Yes | 1706668721 | The beginning of the time range to query. |
-| EndTime | Long | Query | Yes | 1706668721 | The end of the time range to query. |
-| AliUid | Strin g | Query | No | 123456789 | The user ID. |
-| SrcIP | Strin g | Query | No | 10.x.x.x | The source IP address. |
-| DstIP | Strin g | Query | No | 10.x.x.x | The destination IP address. |
-| AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
-
-Cloud Security Network Detectio ion n and Response
-
-##### GetBhaTLsTopTools
+##### 5.6.2.9 GetBhaTLsTopTools
 
 Queries the information about top attack tools.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetBhaTLsTopTool s | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9169,11 +9825,23 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| StartTime | Long | Query | Yes | 1706668721 | The beginning of the time range to query. |
+| EndTime | Long | Query | Yes | 1706668721 | The end of the time range to query. |
+| AliUid | Strin g | Query | No | 123456789 | The user ID. |
+| SrcIP | Strin g | Query | No | 10.x.x.x | The source IP address. |
+| DstIP | Strin g | Query | No | 10.x.x.x | The destination IP address. |
+| AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -AppName | String | Burpsuite | The name of the attack tool. |
 | -Count | Integer | 100 | The number of attacks. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -9182,9 +9850,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -9194,36 +9860,37 @@ https://[Endpoint]/?Action=GetBhaTLsTopTools&RegionId=cnhangzhou&Lang=zh&StartTi
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ExportBhaAggTlsR ecords | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Count":100,
-            "AppName":"Burpsuite"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Count":100,
+            "AppName":"Burpsuite"
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetBhaTLsTopToolsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -9233,19 +9900,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetBhaTLsTopToolsResponse>
 ```
 
-##### ExportBhaAggTlsRecords
+##### 5.6.2.10 ExportBhaAggTlsRecords
 
 Exports aggregated attack logs for encrypted traffic analysis.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ExportBhaAggTlsR ecords | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9260,18 +9936,14 @@ You can call this operation up to 10 times per second per account. You can call 
 | AttackTool s | Strin g | Query | No | Burpsuite | The attack tool. |
 | DepAliUid | Strin g | Query | No | 1234567890 | The department ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | ExportFileNam e | String | test.csv | The name of the file. |
 
-Cloud Security Network Detectio n and Response ion This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9282,6 +9954,8 @@ Cloud Security Network Detectio n and Response ion This operation does not have 
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -9290,8 +9964,13 @@ https://[Endpoint]/?Action=ExportBhaAggTlsRecords&RegionId=cnhangzhou&Lang=zh&Cu
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ExportFileName":"test.csv",
     "ExportFileUrl":"https://xxx.com",
@@ -9299,23 +9978,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ModL4RuleAction | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportBhaAggTlsRecordsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.csv</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
@@ -9323,17 +9991,22 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</ExportBhaAggTlsRecordsResponse>
 ```
 
-### Policy configuration
+### 5.7 Policy configuration
 
-#### Network-layer policy
+#### 5.7.1 Network-layer policy
 
-##### ModL4RuleAction
+##### 5.7.1.1 ModL4RuleAction
 
 Modifies the action for network-layer rules.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ModL4RuleAction | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9344,6 +10017,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9353,14 +10030,14 @@ This operation does not have operation-specific request headers and uses only co
 | ActionTyp e | Strin g | Query | No | pass | The action. A value of pass indicates that access is allowed. A value of alert indicates that access is only logged. A value of drop indicates that access is blocked. |
 | User | Strin g | Query | No | admin | The username. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -9370,36 +10047,35 @@ https://[Endpoint]/?Action=ModL4RuleAction&RegionId=cnhangzhou&Lang=zh&AliUid=12
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ModifySafetySwitc h | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModL4RuleActionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</ModL4RuleActionResponse>
 ```
 
-##### ModifySafetySwitch
+##### 5.7.1.2 ModifySafetySwitch
 
 Modifies the status of a security feature.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ModifySafetySwitc h | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9413,19 +10089,23 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Long | Query | No | 123456789 | The user ID. |
 | SwitchTyp e | Strin g | Query | No | ids | The security feature that you want to modify. A value of black indicates the feature of blocking multiple IP addresses at a time. A value of ids indicates Intrusion Detection System (IDS). A value of threat indicates threat intelligence. A value of waf indicates Web Application Firewall (WAF). |
 | SwitchStat us | Strin g | Query | No | on | The status of the security feature. A value of on indicates that the feature is enabled. A value of off indicates that the feature is disabled. |
 | User | Strin g | Query | No | admin | The username. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -9435,36 +10115,35 @@ https://[Endpoint]/?Action=ModifySafetySwitch&RegionId=cnhangzhou&Lang=zh&AliUid
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddL4Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModifySafetySwitchResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</ModifySafetySwitchResponse>
 ```
 
-##### AddL4Rule
+##### 5.7.1.3 AddL4Rule
 
 Creates a network-layer rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddL4Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9475,6 +10154,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9491,9 +10174,7 @@ This operation does not have operation-specific request headers and uses only co
 | EndTime | Strin g | Query | No | 1943432341 | The time when the rule expires. |
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-| loud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| loud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -9505,6 +10186,8 @@ Cloud Security Network Detectio ion n and Response
 | AddressFil eObjList | Strin g | Query | No | ... | The file objects to be uploaded. |
 | User | Strin g | Query | No | user | The user. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -9512,15 +10195,9 @@ Cloud Security Network Detectio ion n and Response
 | RuleUuid | String | cfa13285-5330- xxx-xxx- 5075c12c6aa8 | The rule UUID. |
 | Module | String | ndr*** | The name of the module. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ModifyL4Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=AddL4Rule&RegionId=cnhangzhou&Lang=zh&RuleName=test&RuleDescription=test&Direction=in&ActionType=alert&SourceA ressCidrList=10.82.0.10/32,10.82.0.10/23,10.82.0.10/16&SourceAddressGroupUuidList=cfa1328 5330-402e-980c-********,cfa13285-5330-402e-980c-
@@ -9532,36 +10209,49 @@ pe=src_ip&AddressCidrList=127.85.10.10;10.25.0.0/16;10.126.11.26:8888;10.126.11.
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "RuleId":100,
     "RuleUuid":"cfa13285-5330-xxx-xxx-5075c12c6aa8",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddL4RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RuleId>100</RuleId>
     <RuleUuid>cfa13285-5330-xxx-xxx-5075c12c6aa8</RuleUuid>
     <Module>ndr***</Module>
+</AddL4RuleResponse>
 ```
 
-##### ModifyL4Rule
+##### 5.7.1.4 ModifyL4Rule
 
 Modifies a network-layer rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ModifyL4Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9575,10 +10265,6 @@ You can call this operation up to 10 times per second per account. You can call 
 | DestAddre ssCidrList | Strin g | Query | No | 10.82.x.10/32,10.82.x.10 /23,10.82.x.10/16 | The destination IP addresses. |
 | DestAddre ssGroupU uidList | Strin g | Query | No | cfa13285-5330-xxx-xxx- 5075c12c6aa8 | The destination IP address books. |
 
-Cloud Security Network Detectio n and Response ion This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SwitchStat us | Strin g | Query | No | online | The status of the rule. A value online indicates that the rule is enabled. A value of offline indicates that the rule is configured but disabled. |
@@ -9591,9 +10277,7 @@ Cloud Security Network Detectio n and Response ion This operation does not have 
 | AddressFil eUrlList | Strin g | Query | No | fileUrl1,fileUrl2 | The file routes. |
 | AddressFil eObjList | Strin g | Query | No | fileObj1,fileObj2 | The file objects. |
 
-Cloud Security Network Detectio ion n and Response
-
-| Cloud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| Cloud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -9601,12 +10285,14 @@ Cloud Security Network Detectio ion n and Response
 | RuleUuid | Strin g | Query | No | cfa13285-5330-xxx-xxx- 5075c12c6aa8,cfa13285 -5330-xxx-xxx- 5075c12c6aa8 | The rule UUIDs. Separate multiple values with commas (,). |
 | User | Strin g | Query | No | admin | The username. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -9616,37 +10302,35 @@ https://[Endpoint]/?Action=ModifyL4Rule&RegionId=cnhangzhou&Lang=zh&RuleName=bot
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ImportSrcIpFile | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 123456789 | The user ID. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModifyL4RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</ModifyL4RuleResponse>
 ```
 
-##### ImportSrcIpFile
+##### 5.7.1.5 ImportSrcIpFile
 
 Imports a script file.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ImportSrcIpFile | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9660,8 +10344,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 123456789 | The user ID. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | ModuleNa me | Strin g | Query | No | RuleConfig | The name of the module. Different modules are accessed from different URLs. A value of RuleConfig indicates the policy configuration module. A value of AddressBook indicates the address book management module. |
 | FileName | Strin g | Query | No | test | The name of the file to be uploaded. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9675,17 +10366,9 @@ This operation does not have operation-specific request headers and uses only co
 | Authorization | String | Authorization information | The authorization information. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun-cloudfirewall:DelL4Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=ImportSrcIpFile&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&ModuleName=RuleConfig&FileName=test
@@ -9693,8 +10376,13 @@ https://[Endpoint]/?Action=ImportSrcIpFile&RegionId=cnhangzhou&Lang=zh&AliUid=12
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Host":"https://xxx.com",
     "AccessId":"xxxyyyzzz",
@@ -9704,13 +10392,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Signature":"Signature information",
     "Authorization":"Authorization information",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ImportSrcIpFileResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Host>https://xxx.com</Host>
     <AccessId>xxxyyyzzz</AccessId>
@@ -9720,78 +10407,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Signature>Signature information</Signature>
     <Authorization>Authorization information</Authorization>
     <Module>ndr***</Module>
+</ImportSrcIpFileResponse>
 ```
 
-##### DelL4Rule
+##### 5.7.1.6 DelL4Rule
 
 Deletes one or more network-layer rules.
 
 **Authorization information**
 
-**Throttling**
-
-You can call this operation up to 10 times per second per account.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-| RuleUuidL ist | Strin g | Query | No | 13285-5330-402e-980c- 5075c12c6xx8,13285- 5330-402e-980c- 5075c12c6yy8 | The UUIDs of the rules that you want to delete. You can delete multiple rules at a time. |
-| User | Strin g | Query | No | user | The user. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Module | String | ndr*** | The name of the module. |
-
-Cloud Security Network Detectio n and Response ion You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-Sample requests
-
-```
-https://[Endpoint]/?Action=DelL4Rule&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&RuleUuidList=13285-5330-402e-980c- 5075c12c6xx8,13285-5330-402e-980c-5075c12c6yy8&User=user
-```
-
-Sample success responses `JSON` format
-
 | Operation | Access level | Resource type |
 |---|---|---|
-| yundun- cloudfirewall:ImportL4Rules | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "Module":"ndr***"
-}
-```
-
-`XML` format
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <Module>ndr***</Module>
-```
-
-##### ImportL4Rules
-
-Imports network-layer rules.
-
-**Authorization information**
+| yundun-cloudfirewall:DelL4Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9802,6 +10429,74 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+| RuleUuidL ist | Strin g | Query | No | 13285-5330-402e-980c- 5075c12c6xx8,13285- 5330-402e-980c- 5075c12c6yy8 | The UUIDs of the rules that you want to delete. You can delete multiple rules at a time. |
+| User | Strin g | Query | No | user | The user. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Module | String | ndr*** | The name of the module. |
+
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=DelL4Rule&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&RuleUuidList=13285-5330-402e-980c- 5075c12c6xx8,13285-5330-402e-980c-5075c12c6yy8&User=user
+```
+
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "Module":"ndr***"
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <DelL4RuleResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <Module>ndr***</Module>
+</DelL4RuleResponse>
+```
+
+##### 5.7.1.7 ImportL4Rules
+
+Imports network-layer rules.
+
+**Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ImportL4Rules | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9812,6 +10507,8 @@ This operation does not have operation-specific request headers and uses only co
 | Object | Strin g | Query | No | xxx | The key used to upload the file. |
 | User | Strin g | Query | No | admin | The username. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -9819,9 +10516,7 @@ This operation does not have operation-specific request headers and uses only co
 | TemplateUrl | String | https://xxx.com | The download URL of the file. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -9831,31 +10526,29 @@ https://[Endpoint]/?Action=ImportL4Rules&RegionId=cnhangzhou&Lang=zh&AliUid=1234
 
 Sample success responses `JSON` format
 
-|  | HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "TemplateName":"test.csv", "TemplateUrl":"https://xxx.com", "Module":"ndr***" } |  |
+|   | HTTP/1.1 200 OK Content-Type:application/json { "RequestId":"F0A8A039-930D-5EC1-97C8-************", "TemplateName":"test.csv", "TemplateUrl":"https://xxx.com", "Module":"ndr***" } |   |
 |---|---|---|
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeOssInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response `XML` format
+`XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ImportL4RulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TemplateName>test.csv</TemplateName>
     <TemplateUrl>https://xxx.com</TemplateUrl>
     <Module>ndr***</Module>
+</ImportL4RulesResponse>
 ```
 
-##### DescribeOssInfo
+##### 5.7.1.8 DescribeOssInfo
 
 Queries Object Storage Service (OSS) information.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeOssInfo | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9869,10 +10562,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | AliUid | Long | Query | No | 123456789 | The user ID. |
 | ModuleNa me | Strin g | Query | No | RuleConfig | The name of the module. Different modules are accessed from different URLs. A value of RuleConfig indicates the policy configuration module. A value of AddressBook indicates the address book management module. |
 | FileName | Strin g | Query | No | test | The name of the file that you want to upload. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9884,11 +10582,7 @@ This operation does not have operation-specific request headers and uses only co
 | Policy | String | Policy information | The information about the policy. |
 | Signature | String | Signature information | The signature used for verification. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A | PI documentat |  | Cloud Security Network Detecti |
+| Developer Guide·A | PI documentat |   | Cloud Security Network Detecti |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -9897,7 +10591,9 @@ Cloud Security Network Detectio n and Response ion
 | SignedURL | String | https://xxx.com | The authentication path. |
 | Module | String | ndr*** | The name of the module. |
 
-ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeOssInfo&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&ModuleName=RuleConfig&FileName=test
@@ -9905,8 +10601,13 @@ https://[Endpoint]/?Action=DescribeOssInfo&RegionId=cnhangzhou&Lang=zh&AliUid=12
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Host":"https://xxx.com",
     "AccessId":"xxxyyyzzz",
@@ -9917,23 +10618,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Authorization":"Authorization information",
     "SignedURL":"https://xxx.com",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeSafetySwi tchStatus | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeOssInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Host>https://xxx.com</Host>
     <AccessId>xxxyyyzzz</AccessId>
@@ -9944,13 +10634,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Authorization>Authorization information</Authorization>
     <SignedURL>https://xxx.com</SignedURL>
     <Module>ndr***</Module>
+</DescribeOssInfoResponse>
 ```
 
-##### DescribeSafetySwitchStatus
+##### 5.7.1.9 DescribeSafetySwitchStatus
 
 Queries the status of a security feature.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeSafetySwi tchStatus | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -9964,19 +10659,23 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Long | Query | No | 123456789 | The user ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -SwitchType | String | black | The security feature whose status you want to query. A value of black indicates the feature of blocking multiple IP addresses at a time. A value of ids indicates Intrusion Detection System (IDS). A value of threat indicates threat intelligence. A value of waf indicates Web Application Firewall (WAF). |
 | -SwitchStatus | String | on | The status of the security feature. A value of on indicates that the feature is enabled. A value of off indicates that the feature is disabled. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -9986,46 +10685,52 @@ https://[Endpoint]/?Action=DescribeSafetySwitchStatus&RegionId=cnhangzhou&Lang=z
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:SwitchL4RuleStatu s | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "DataList":[
-        {
-            "SwitchType":"black",
-            "SwitchStatus":"on"
-        }
+```
+Content-Type:application/json
 ```
 
-`],`
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "DataList":[
+```
+
+`{`
+
+```json
+            "SwitchType":"black",
+            "SwitchStatus":"on"
+```
+
+`}` `],`
 
 ```json
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeSafetySwitchStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <DataList>
         <SwitchType>black</SwitchType>
         <SwitchStatus>on</SwitchStatus>
     </DataList>
     <Module>ndr***</Module>
+</DescribeSafetySwitchStatusResponse>
 ```
 
-##### SwitchL4RuleStatus
+##### 5.7.1.10 SwitchL4RuleStatus
 
 Modifies the status of a network-layer rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:SwitchL4RuleStatu s | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -10045,14 +10750,14 @@ This operation does not have operation-specific request headers and uses only co
 | RuleUuidL ist | Strin g | Query | No | cfa13285-5330-xxx-xxx- 5075c12c6aa8,cfa13285 -5330-xxx-xxx- 5075c12c6aa8 | The rule UUIDs. Separate multiple values with commas (,). |
 | SwitchStat us | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published and takes effect. A value of offline indicates that the rule is unpublished and does not take effect. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -10062,36 +10767,35 @@ https://[Endpoint]/?Action=SwitchL4RuleStatus&RegionId=cnhangzhou&Lang=zh&User=u
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ExportL4Rules | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <SwitchL4RuleStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</SwitchL4RuleStatusResponse>
 ```
 
-##### ExportL4Rules
+##### 5.7.1.11 ExportL4Rules
 
 Exports network-layer rules.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ExportL4Rules | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -10105,9 +10809,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Long | Query | No | 123456789 | The user ID. |
 | ExportTyp e | Strin g | Query | No | batch | The export type. A value of batch indicates that rules are exported in batches. A value of total indicates that all rules are exported. If you set ExportType to batch, you must specify RuleUuidList. |
 | RuleUuidL ist | Strin g | Query | No | cfa13285-5330-402e- xxx- 5075c12c6aa8,cfa13285 -5330-402e-xxx- 5075c12c6aa8 | The rule UUIDs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10117,9 +10827,7 @@ This operation does not have operation-specific request headers and uses only co
 | TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -10129,41 +10837,41 @@ https://[Endpoint]/?Action=ExportL4Rules&RegionId=cnhangzhou&Lang=zh&AliUid=1234
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeL4Rule | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ExportFileName":"test.csv",
     "ExportFileUrl":"https://xxx.com",
     "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ExportL4RulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ExportFileName>test.csv</ExportFileName>
     <ExportFileUrl>https://xxx.com</ExportFileUrl>
     <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
     <Module>ndr***</Module>
+</ExportL4RulesResponse>
 ```
 
-##### DescribeL4Rule
+##### 5.7.1.12 DescribeL4Rule
 
 Queries the information about a network-layer rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeL4Rule | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -10174,6 +10882,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -10186,24 +10897,20 @@ This operation does not have operation-specific request headers and uses only co
 | Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 | Query | Strin g | Query | No | 10.x.x.x | The conditions for fuzzy search. |
 
-Cloud Security Network Detectio ion n and Response
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | QueryTim eType | Integ er | Query | No | 1 | The type of the query time. A value of 1 indicates to query rules created before the specified point in time. A value of 2 indicates to query rules created at the specified point in time. A value of 3 indicates to query rules created after the specified point in time. A value of 4 indicates to query rules created within the specified time range. A value of 5 indicates to query rules that expire before the specified point in time. A value of 6 indicates to query rules that expire at the specified point in time. A value of 7 indicates to query rules that expire after the specified point in time. A value of 8 indicates to query rules that expire within the specified time range. |
 | QueryStar tTime | Long | Query | No | 1706668721 | The beginning of the time range to query. |
 | QueryEnd Time | Long | Query | No | 1706668721 | The end of the time range to query. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DataList | Array |  |  |
-| - AddressFileGr oupList | Array |  |  |
-
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DataList | Array |   |   |
+| - AddressFileGr oupList | Array |   |   |
+
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10238,9 +10945,7 @@ Cloud Security Network Detectio n and Response ion
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
-Cloud Security Network Detectio n and Response ion
-
-| i | Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons | o e |
+| i | Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons | o e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10251,22 +10956,33 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeL4Rule&RegionId=cnhangzhou&Lang=zh&RuleName=bot_scanner_block&AliUid=123456789&CurrentPage=1&PageSize=10&Ac onType=pass&Direction=in&Query=10.x.x.x&QueryTimeType=1&QueryStartTime=1706668721&QueryEn ime=1706668721
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "RuleDescription":"test",
             "ActionType":"pass",
             "AddressCidrList":"10.82.x.10/32,10.82.x.10/23,10.82.x.10/16",
@@ -10283,14 +10999,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "HitTimes":1706668721,
             "DestAddressCidrList":"10.82.x.10/32,10.82.x.10/23,10.82.x.10/16",
             "AddressFileGroupList":[
-                {
+```
+
+`{`
+
+```json
                     "FileNameUrl":"https://xxx.com",
                     "AddresGroupUuid":"cfa13285-5330-xxx-xxx-5075c12c6aa8",
                     "FileName":"test"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "DeptName":"yundun",
@@ -10299,22 +11018,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "RuleName":"test",
             "SwitchStatus":"online",
             "AliUid":123456789
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeL4RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -10351,30 +11068,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeL4RuleResponse>
 ```
 
-#### Application layer policies
+#### 5.7.2 Application layer policies
 
-##### AddL7Rule
+##### 5.7.2.1 AddL7Rule
 
 Creates an application-layer rule.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:AddL7Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-| RuleName | Strin g | Query | No | test | The name of the rule. |
-| RuleDescr iption | Strin g | Query | No | test | The description of the rule. |
-| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
-| ActionTyp e | Strin g | Query | No | alert | The action. A value of pass indicates that access is allowed. A value of alert indicates that access is observed. A value of drop indicates that access is blocked. |
-
-Cloud Security Network Detectio n and Response ion
-
-**Authorization information**
 
 **Throttling**
 
@@ -10388,11 +11095,22 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+| RuleName | Strin g | Query | No | test | The name of the rule. |
+| RuleDescr iption | Strin g | Query | No | test | The description of the rule. |
+| Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
+| ActionTyp e | Strin g | Query | No | alert | The action. A value of pass indicates that access is allowed. A value of alert indicates that access is observed. A value of drop indicates that access is blocked. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | SwitchStat us | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is enabled. A value of offline indicates that the rule is disabled. |
 | StartTime | Long | Query | No | 1943432341 | The time when the rule takes effect. |
 | EndTime | Long | Query | No | 1943432341 | The time when the rule expires. |
 | Matchs | Strin g | Query | No | W3siaGVhZGVyX25hbW UiOiJIb3N0IiwiY29udGVu dCI6WyIxLjEuMS4xIl0sI m5vY2FzZSI6MCwibWF0 Y2hfdHlwZSI6ImZ1enp5I iwieF9wb3NpdGlvbiI6MH 1d | The content of the rule. The value is similar to the Base64-encoded value of [{'header name':'Host',' _ content': ['1.1.1.1'],'nocase':0,'ma tch type':'fuzzy','x positi _ _ on':0}]. |
 | User | Strin g | Query | No | user | The user. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10403,15 +11121,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response
+**Examples**
 
-**Response parameters**
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ModifyL7Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion Sample requests
+Sample requests
 
 ```
 https://[Endpoint]/?Action=AddL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&RuleName=test&RuleDescription=test&Direction=in&Action pe=alert&SwitchStatus=online&StartTime=1943432341&EndTime=1943432341&Matchs=W3siaGVhZGVyX hbWUiOiJIb3N0IiwiY29udGVudCI6WyIxLjEuMS4xIl0sIm5vY2FzZSI6MCwibWF0Y2hfdHlwZSI6ImZ1enp5Iiwi 9wb3NpdGlvbiI6MH1d&User=user
@@ -10419,38 +11131,53 @@ https://[Endpoint]/?Action=AddL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=12345678
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "RuleId":100,
     "RuleUuid":"cfa13285-5330-xxx-xxx-5075c12c6aa8",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RuleId>100</RuleId>
     <RuleUuid>cfa13285-5330-xxx-xxx-5075c12c6aa8</RuleUuid>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</AddL7RuleResponse>
 ```
 
-##### ModifyL7Rule
+##### 5.7.2.2 ModifyL7Rule
 
 Modifies an application-layer rule.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ModifyL7Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -10462,14 +11189,6 @@ You can call this operation up to 10 times per second per account. You can call 
 | Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 | ActionTyp e | Strin g | Query | No | pass | The action. A value of pass indicates that access is allowed. A value of alert indicates that access is only logged. A value of drop indicates that access is blocked. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SwitchStat us | Strin g | Query | No | online | The status of the rule. A value of init indicates that the rule does not take effect immediately after it is created. The rule takes effect after further modifications or manual activation. A value of online indicates that the rule takes effect immediately after it is published. |
@@ -10478,6 +11197,8 @@ This operation does not have operation-specific request headers and uses only co
 | Matchs | Strin g | Query | No | Matching rule content | The matching rule. |
 | User | Strin g | Query | No | admin | The username. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -10485,17 +11206,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeL7Rule | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=ModifyL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&RuleUuid=cfa13285-5330-xxx-xxx- 5075c12c6aa8&RuleName=bot_scanner_block&RuleDescription=test&Direction=in&ActionType=pass witchStatus=online&StartTime=1706668721&EndTime=1706668721&Matchs=Matching rule content &User=admin
@@ -10503,30 +11216,39 @@ https://[Endpoint]/?Action=ModifyL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=12345
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModifyL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</ModifyL7RuleResponse>
 ```
 
-##### DescribeL7Rule
+##### 5.7.2.3 DescribeL7Rule
 
 Queries the information about an application-layer rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeL7Rule | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -10535,6 +11257,8 @@ You can call this operation up to 10 times per second per account. You can call 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -10547,10 +11271,6 @@ This operation does not have operation-specific request headers and uses only co
 | Direction | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 | Query | Strin g | Query | No | 10.x.x.x | The query string. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | QueryTim eType | Integ er | Query | No | 1 | The type of the query time. A value of 1 indicates to query rules created before the specified point in time. A value of 2 indicates to query rules created at the specified point in time. A value of 3 indicates to query rules created after the specified point in time. A value of 4 indicates to query rules created within the specified time range. A value of 5 indicates to query rules that expire before the specified point in time. A value of 6 indicates to query rules that expire at the specified point in time. A value of 7 indicates to query rules that expire after the specified point in time. A value of 8 indicates to query rules that expire within the specified time range. |
@@ -10559,15 +11279,15 @@ Cloud Security Network Detectio n and Response ion
 | WhiteRule ID | Long | Query | No | 13282 | The whitelist rule ID. |
 | BlackRuleI D | Long | Query | No | 13282 | The blacklist rule ID. |
 
-Cloud Security Network Detectio ion n and Response
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -MatchsDesc | Normal | The URL contains a.com and the host address is 1.1.1.1 | The matching item in the rule that is used to monitor HTTP requests. |
 | - MatchsDescEn | Normal | url contain a.com,host equal 1.1.1.1 | The matching item in the rule that is used to monitor HTTP requests. This parameter is intended for users outside the Chinese mainland. |
-| -matchs | Array |  |  |
-| --Content | Normal |  |  |
+| -matchs | Array |   |   |
+| --Content | Normal |   |   |
 | --HeaderName | String | x-forward-for | The name of the HTTP header. This value is case-insensitive. |
 | --MatchType | String | strict | The rule matching mode. A value of strict indicates that the HTTP header must exactly match that of the rule. A value of fuzzy indicates that the HTTP header must contain that of the rule. A value of notexist indicates that the specified HTTP header must be excluded from the request. |
 | --NoCase | Integer | 1 | The case sensitivity. A value of 1 indicates case-insensitive. A value of 0 indicates case-sensitive. |
@@ -10575,11 +11295,7 @@ Cloud Security Network Detectio ion n and Response
 | -- TcpOptionKind | Integer | 28 | The decimal value of the TCP Options field. |
 | -RuleId | Integer | 13282 | The rule ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A | PI documentat |  | Cloud Security Network Detecti |
+| Developer Guide·A | PI documentat |   | Cloud Security Network Detecti |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -10599,8 +11315,6 @@ Cloud Security Network Detectio n and Response ion
 | -CreateTime | String | 2018-05-14 14:50:54 | The time when the rule was created. |
 | -StartTime | Long | 1706668721 | The time when the rule takes effect. |
 
-ion n and Response
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -EndTime | Long | 1706668721 | The time when the rule expires. |
@@ -10614,37 +11328,51 @@ ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeL7Rule&RegionId=cnhangzhou&Lang=zh&RuleStatus=online&AliUid=123456789&CurrentPage=1&PageSize=10&ActionType= ss&Direction=in&Query=10.x.x.x&QueryTimeType=1&QueryStartTime=1706668721&QueryEndTime=170 68721&WhiteRuleID=13282&BlackRuleID=13282
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "RuleDescription":"test",
             "MatchsDescEn":"url contain a.com,host equal 1.1.1.1",
             "ActionType":"pass",
             "OfflineTime":"2018-05-14 14:50:54",
             "matchs":[
-                {
+```
+
+`{`
+
+```json
                     "XPosition":1,
                     "MatchType":"strict",
                     "HeaderName":"x-forward-for",
                     "TcpOptionKind":28,
                     "NoCase":1
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "EndTime":1706668721,
@@ -10663,22 +11391,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "RuleName":"test",
             "SwitchStatus":"online",
             "AliUid":123456789
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -10722,32 +11448,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeL7RuleResponse>
 ```
 
-##### DelL7Rule
+##### 5.7.2.4 DelL7Rule
 
 Deletes one or more application-layer rules.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun-cloudfirewall:DelL7Rule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-| RuleUuidL ist | Strin g | Query | No | 13285-5330-402e-980c- 5075c12c6xx8,13285- 5330-402e-980c- 5075c12c6yy8 | The UUIDs of the rules that you want to delete. You can delete multiple rules at a time. |
-| User | Strin g | Query | No | user | The user. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Success | Boolean | true | Indicates whether the HTTP request was successful. |
-| Module | String | ndr*** | The name of the module. |
-
-Cloud Security Network Detectio ion n and Response
-
-**Authorization information**
 
 **Throttling**
 
@@ -10759,18 +11471,29 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+| RuleUuidL ist | Strin g | Query | No | 13285-5330-402e-980c- 5075c12c6xx8,13285- 5330-402e-980c- 5075c12c6yy8 | The UUIDs of the rules that you want to delete. You can delete multiple rules at a time. |
+| User | Strin g | Query | No | user | The user. |
+
 **Response parameters**
 
-| n | Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io | t n |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Success | Boolean | true | Indicates whether the HTTP request was successful. |
+| Module | String | ndr*** | The name of the module. |
+
+| n | Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io | t n |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:SwitchL7RuleStatu s | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+**Examples**
 
 Sample requests
 
@@ -10780,189 +11503,39 @@ https://[Endpoint]/?Action=DelL7Rule&RegionId=cnhangzhou&Lang=zh&AliUid=12345678
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DelL7RuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DelL7RuleResponse>
 ```
 
-##### SwitchL7RuleStatus
+##### 5.7.2.5 SwitchL7RuleStatus
 
 Modifies the status of one ore more application-layer rules.
 
 **Authorization information**
 
-**Throttling**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 123456789 | The user ID. |
-| RuleUuidL ist | Strin g | Query | No | cfa13285-5330-xxx-xxx- 5075c12c6aa8,cfa13285 -5330-xxx-xxx- 5075c12c6aa8 | The rule UUIDs. Separate multiple UUIDs with commas (,). |
-| SwitchStat us | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published and takes effect. A value of offline indicates that the rule is unpublished and does not take effect. |
-| User | Strin g | Query | No | admin | The username. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Success | Boolean | true | Indicates whether the HTTP request was successful. |
-| Module | String | ndr*** | The name of the module. |
-| HttpStatusCod e | Integer | 200 | The HTTP status code. |
-
-Cloud Security Network Detectio ion n and Response You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
-|---|---|---|---|
-| Parameter | Type | Example | Description |
-
 | Operation | Access level | Resource type |
 |---|---|---|
-| yundun- cloudfirewall:ExportL7Rules | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Sample requests
-
-```
-https://[Endpoint]/?Action=SwitchL7RuleStatus&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&RuleUuidList=cfa13285-5330-xxx-xxx- 5075c12c6aa8,cfa13285-5330-xxx-xxx-5075c12c6aa8&SwitchStatus=online&User=admin
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "Success":true,
-    "Module":"ndr***",
-    "HttpStatusCode":200
-}
-```
-
-`XML` format
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <Success>true</Success>
-    <Module>ndr***</Module>
-    <HttpStatusCode>200</HttpStatusCode>
-```
-
-##### ExportL7Rules
-
-Exports application-layer rules.
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 123456789 | The user ID. |
-| ExportTyp e | Strin g | Query | No | batch | The export type. A value of batch indicates that rules are exported in batches. A value of total indicates that all rules are exported. If you set ExportType to batch, you must specify RuleUuidList. |
-| RuleUuidL ist | Strin g | Query | No | cfa13285-5330-402e- xxx- 5075c12c6aa8,cfa13285 -5330-402e-xxx- 5075c12c6aa8 | The rule UUIDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| ExportFileNam e | String | test.csv | The name of the file to which rules are exported. |
-| ExportFileUrl | String | https://xxx.com | The download URL of the file. |
-| TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
-
-Cloud Security Network Detectio ion n and Response You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
-|---|---|---|---|
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Success | Boolean | true | Indicates whether the HTTP request was successful. |
-| Module | String | ndr*** | The name of the module. |
-| HttpStatusCod e | Integer | 200 | The HTTP status code. |
-
-Sample requests
-
-```
-https://[Endpoint]/?Action=ExportL7Rules&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&ExportType=batch&RuleUuidList=cfa13285-5330-402e-xxx- 5075c12c6aa8,cfa13285-5330-402e-xxx-5075c12c6aa8
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "ExportFileName":"test.csv",
-    "ExportFileUrl":"https://xxx.com",
-    "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8",
-    "Success":true,
-    "Module":"ndr***",
-    "HttpStatusCode":200
-}
-```
-
-`XML` format
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <ExportFileName>test.csv</ExportFileName>
-    <ExportFileUrl>https://xxx.com</ExportFileUrl>
-    <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
-    <Success>true</Success>
-    <Module>ndr***</Module>
-    <HttpStatusCode>200</HttpStatusCode>
-```
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetWafRules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| PageSize | Integ er | Query | No | 10 | The number of entries per page. |
-| CurrentPa ge | Integ er | Query | No | 1 | The page number. |
-| RuleStatu s | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published. A value of offline indicates that the rule is unpublished. |
-| RuleId | Strin g | Query | No | 100 | The rule ID. |
-| IpBlockSta tus | Strin g | Query | No | disable | Specifies whether the rule is enabled. Valid values: enable and disable. |
-
-Cloud Security Network Detectio ion n and Response
-
-##### GetWafRules
-
-Queries the information about Web Application Firewall (WAF) rules.
-
-**Authorization information**
+| yundun- cloudfirewall:SwitchL7RuleStatu s | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -10973,6 +11546,175 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 123456789 | The user ID. |
+| RuleUuidL ist | Strin g | Query | No | cfa13285-5330-xxx-xxx- 5075c12c6aa8,cfa13285 -5330-xxx-xxx- 5075c12c6aa8 | The rule UUIDs. Separate multiple UUIDs with commas (,). |
+| SwitchStat us | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published and takes effect. A value of offline indicates that the rule is unpublished and does not take effect. |
+| User | Strin g | Query | No | admin | The username. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Success | Boolean | true | Indicates whether the HTTP request was successful. |
+| Module | String | ndr*** | The name of the module. |
+| HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
+|---|---|---|---|
+| Parameter | Type | Example | Description |
+
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=SwitchL7RuleStatus&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&RuleUuidList=cfa13285-5330-xxx-xxx- 5075c12c6aa8,cfa13285-5330-xxx-xxx-5075c12c6aa8&SwitchStatus=online&User=admin
+```
+
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "Success":true,
+    "Module":"ndr***",
+    "HttpStatusCode":200
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <SwitchL7RuleStatusResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <Success>true</Success>
+    <Module>ndr***</Module>
+    <HttpStatusCode>200</HttpStatusCode>
+</SwitchL7RuleStatusResponse>
+```
+
+##### 5.7.2.6 ExportL7Rules
+
+Exports application-layer rules.
+
+**Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ExportL7Rules | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 123456789 | The user ID. |
+| ExportTyp e | Strin g | Query | No | batch | The export type. A value of batch indicates that rules are exported in batches. A value of total indicates that all rules are exported. If you set ExportType to batch, you must specify RuleUuidList. |
+| RuleUuidL ist | Strin g | Query | No | cfa13285-5330-402e- xxx- 5075c12c6aa8,cfa13285 -5330-402e-xxx- 5075c12c6aa8 | The rule UUIDs. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| ExportFileNam e | String | test.csv | The name of the file to which rules are exported. |
+| ExportFileUrl | String | https://xxx.com | The download URL of the file. |
+| TaskUUID | String | cfa13285-5330- 402e-xxx- 5075c12c6aa8 | The export task ID. |
+
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
+|---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Success | Boolean | true | Indicates whether the HTTP request was successful. |
+| Module | String | ndr*** | The name of the module. |
+| HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=ExportL7Rules&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&ExportType=batch&RuleUuidList=cfa13285-5330-402e-xxx- 5075c12c6aa8,cfa13285-5330-402e-xxx-5075c12c6aa8
+```
+
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "ExportFileName":"test.csv",
+    "ExportFileUrl":"https://xxx.com",
+    "TaskUUID":"cfa13285-5330-402e-xxx-5075c12c6aa8",
+    "Success":true,
+    "Module":"ndr***",
+    "HttpStatusCode":200
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <ExportL7RulesResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <ExportFileName>test.csv</ExportFileName>
+    <ExportFileUrl>https://xxx.com</ExportFileUrl>
+    <TaskUUID>cfa13285-5330-402e-xxx-5075c12c6aa8</TaskUUID>
+    <Success>true</Success>
+    <Module>ndr***</Module>
+    <HttpStatusCode>200</HttpStatusCode>
+</ExportL7RulesResponse>
+```
+
+##### 5.7.2.7 GetWafRules
+
+Queries the information about Web Application Firewall (WAF) rules.
+
+**Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetWafRules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| PageSize | Integ er | Query | No | 10 | The number of entries per page. |
+| CurrentPa ge | Integ er | Query | No | 1 | The page number. |
+| RuleStatu s | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published. A value of offline indicates that the rule is unpublished. |
+| RuleId | Strin g | Query | No | 100 | The rule ID. |
+| IpBlockSta tus | Strin g | Query | No | disable | Specifies whether the rule is enabled. Valid values: enable and disable. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -10984,17 +11726,15 @@ This operation does not have operation-specific request headers and uses only co
 | AppType | Strin g | Query | No | Application type | The type of the application. |
 | VulLevel | Strin g | Query | No | mid | The threat level. A value of low indicates low risk. A value of mid indicates medium risk. A value of high indicates high risk. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -ID | Integer | 10 | The sequence number of the rule. |
 | -RuleId | String | 100 | The rule ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A | PI documentat |  | Cloud Security Network Detecti |
+| Developer Guide·A | PI documentat |   | Cloud Security Network Detecti |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11014,7 +11754,7 @@ Cloud Security Network Detectio n and Response ion
 | - TimeoutTempl atName | String | test | The name of the timeout template. |
 | -UpdateTime | String | 2020-12-31 16:30:36 | The time when the rule was updated. |
 
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11027,22 +11767,33 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=GetWafRules&RegionId=cnhangzhou&Lang=zh&PageSize=10&CurrentPage=1&RuleStatus=online&RuleId=100&IpBlockStatus=dis le&ActionType=pass&RuleName=test&ProtectType=Protection type&CveID=cve&RuleActionType=enableDrop&AppType=Application type&VulLevel=mid
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "CurrentPage":1,
     "PageSize":10,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "RuleActionType":"pass",
             "Action":"pass",
             "HitCount":100,
@@ -11059,28 +11810,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "RuleName":"test",
             "HitIntervalSec":10,
             "VulLevel":"mid"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAllHttpFie lds | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetWafRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <CurrentPage>1</CurrentPage>
@@ -11106,13 +11849,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetWafRulesResponse>
 ```
 
-##### DescribeAllHttpFields
+##### 5.7.2.8 DescribeAllHttpFields
 
 Queries the matching fields of application-layer rules.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAllHttpFie lds | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11122,9 +11870,13 @@ You can call this operation up to 10 times per second per account. You can call 
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11134,11 +11886,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -11148,14 +11896,13 @@ https://[Endpoint]/?Action=DescribeAllHttpFields&RegionId=cn-hangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:UpdateWafRuleAct ion | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "HttpFileds":[
         "Method",
@@ -11172,13 +11919,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAllHttpFieldsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <HttpFileds>
         <string>['Method', 'URL', 'Host', 'X-Forwarded-For', 'Cookie', 'User-Agent']</s
@@ -11187,96 +11933,18 @@ tring>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAllHttpFieldsResponse>
 ```
 
-##### UpdateWafRuleAction
+##### 5.7.2.9 UpdateWafRuleAction
 
 Modifies the action for Web Application Firewall (WAF) rules.
 
 **Authorization information**
 
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| RuleId | Strin g | Query | No | 100 | The rule ID. |
-| ActionTyp e | Strin g | Query | No | pass | The action. A value of pass indicates that access is allowed. A value of alert indicates that access is only logged. A value of drop indicates that access is blocked. |
-| RuleStatu s | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published and takes effect. A value of offline indicates that the rule is unpublished and does not take effect. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Success | Boolean | true | Indicates whether the HTTP request was successful. |
-| Module | String | ndr*** | The name of the module. |
-
-Cloud Security Network Detectio ion n and Response This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Cloud Security Ne | twork Detectio |  | Developer Guide·API documenta |
-|---|---|---|---|
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| HttpStatusCod e | Integer | 200 | The HTTP status code. |
-
 | Operation | Access level | Resource type |
 |---|---|---|
-| yundun- cloudfirewall:DescribePortScan ProtectRules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-n and Response ion Sample requests
-
-```
-https://[Endpoint]/?Action=UpdateWafRuleAction&RegionId=cnhangzhou&Lang=zh&RuleId=100&ActionType=pass&RuleStatus=online
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "Success":true,
-    "Module":"ndr***",
-    "HttpStatusCode":200
-}
-```
-
-`XML` format
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <Success>true</Success>
-    <Module>ndr***</Module>
-    <HttpStatusCode>200</HttpStatusCode>
-```
-
-#### Port scan spoofing policy
-
-##### DescribePortScanProtectRules
-
-Queries a protection rule for port scanning.
-
-**Authorization information**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 123456789 | The user ID. |
-| DeptAliUid | Long | Query | No | 1234567890 | The department ID. |
-| AddressTy pe | Integ er | Query | No | 1 | The type of the address to which the rule applies. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates custom. By default, all types of addresses are queried if this parameter is not specified. |
-| AssetType | Strin g | Query | No | WAF | The type of the asset. |
-| Address | Strin g | Query | No | 10.x.x.x | The IP address. |
-| Query | Strin g | Query | No | 80 | The keyword used for fuzzy search. You can enter an IP address, a port number, or the rule ID. |
-
-Cloud Security Network Detectio ion n and Response
+| yundun- cloudfirewall:UpdateWafRuleAct ion | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11290,12 +11958,102 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| PageSize | Integ er | Query | No | 10 | The number of entries per page. |
-| PageNo | Integ er | Query | No | 1 | The page number. |
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| RuleId | Strin g | Query | No | 100 | The rule ID. |
+| ActionTyp e | Strin g | Query | No | pass | The action. A value of pass indicates that access is allowed. A value of alert indicates that access is only logged. A value of drop indicates that access is blocked. |
+| RuleStatu s | Strin g | Query | No | online | The status of the rule. A value of online indicates that the rule is published and takes effect. A value of offline indicates that the rule is unpublished and does not take effect. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Success | Boolean | true | Indicates whether the HTTP request was successful. |
+| Module | String | ndr*** | The name of the module. |
+
+| Cloud Security Ne | twork Detectio |   | Developer Guide·API documenta |
+|---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| HttpStatusCod e | Integer | 200 | The HTTP status code. |
+
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=UpdateWafRuleAction&RegionId=cnhangzhou&Lang=zh&RuleId=100&ActionType=pass&RuleStatus=online
+```
+
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "Success":true,
+    "Module":"ndr***",
+    "HttpStatusCode":200
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <UpdateWafRuleActionResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <Success>true</Success>
+    <Module>ndr***</Module>
+    <HttpStatusCode>200</HttpStatusCode>
+</UpdateWafRuleActionResponse>
+```
+
+#### 5.7.3 Port scan spoofing policy
+
+##### 5.7.3.1 DescribePortScanProtectRules
+
+Queries a protection rule for port scanning.
+
+**Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribePortScan ProtectRules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 123456789 | The user ID. |
+| DeptAliUid | Long | Query | No | 1234567890 | The department ID. |
+| AddressTy pe | Integ er | Query | No | 1 | The type of the address to which the rule applies. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates custom. By default, all types of addresses are queried if this parameter is not specified. |
+| AssetType | Strin g | Query | No | WAF | The type of the asset. |
+| Address | Strin g | Query | No | 10.x.x.x | The IP address. |
+| Query | Strin g | Query | No | 80 | The keyword used for fuzzy search. You can enter an IP address, a port number, or the rule ID. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PageSize | Integ er | Query | No | 10 | The number of entries per page. |
+| PageNo | Integ er | Query | No | 1 | The page number. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DataList | Array |   |   |
 | -RuleID | Integer | 1 | The rule ID. |
 | -AliUid | Long | 123456789 | The user ID. |
 | -Dept | String | yundun | The name of the department. |
@@ -11306,11 +12064,7 @@ This operation does not have operation-specific request headers and uses only co
 | -EnableStatus | Integer | 1 | Indicates whether the rule is enabled. A value of 0 indicates that the rule is disabled. A value of 1 indicates that the rule is enabled. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -11322,22 +12076,33 @@ Cloud Security Network Detectio n and Response ion
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribePortScanProtectRules&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&DeptAliUid=1234567890&AddressType=1&AssetType=WAF&Addre =10.x.x.x&Query=80&PageSize=10&PageNo=1
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "ProtectPorts":"8080",
             "Address":"10.x.x.x",
             "Dept":"yundun",
@@ -11346,22 +12111,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "AddressType":"1",
             "AliUid":123456789,
             "ProtectMode":0
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribePortScanProtectRulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -11379,13 +12142,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribePortScanProtectRulesResponse>
 ```
 
-##### UpdatePortScanProtectRule
+##### 5.7.3.2 UpdatePortScanProtectRule
+
+Modifies a protection rule for port scanning.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:UpdatePortScanPr otectRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11395,21 +12173,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | AddressTy pe | Integ er | Query | No | 1 | The type of the address to which the rule applies. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates custom. If you use a global role, you can set AddressType to 1, 2, 3, or 4. If you use a tenant role, you can set AddressType to 2 or 3. |
 | AssetType | Strin g | Query | No | slb | The type of the asset. |
 
-Cloud Security Network Detectio ion n and Response Modifies a protection rule for port scanning.
-
-**Authorization information**
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-| Cloud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| Cloud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -11419,6 +12183,8 @@ This operation does not have operation-specific request headers and uses only co
 | ProtectMo de | Integ er | Query | No | 0 | The protection mode. A value of 0 indicates that the system only generates alerts but does not block attacks. A value of 1 indicates that the system blocks attacks. |
 | RuleID | Integ er | Query | No | 100 | The rule ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -11426,13 +12192,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-**Response parameters**
+**Examples**
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DeletePortScanPro tectRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response Sample requests
+Sample requests
 
 ```
 https://[Endpoint]/?Action=UpdatePortScanProtectRule&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&DeptAliUid=1234567890&AddressType=1&AssetType=slb&Addre =10.x.x.x&ProtectPorts=1-65535&ProtectMode=0&RuleID=100
@@ -11440,30 +12202,39 @@ https://[Endpoint]/?Action=UpdatePortScanProtectRule&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <UpdatePortScanProtectRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</UpdatePortScanProtectRuleResponse>
 ```
 
-##### DeletePortScanProtectRule
+##### 5.7.3.3 DeletePortScanProtectRule
 
 Removes protection rules from the whitelist for port scanning.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DeletePortScanPro tectRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11471,11 +12242,17 @@ You can call this operation up to 10 times per second per account. You can call 
 
 **Request headers**
 
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | RuleIdList | Strin g | Query | No | 1024,1025 | The IDs of the rules that you want to remove. You can remove multiple rules at a time. |
 | User | Strin g | Query | No | user | The user. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11484,11 +12261,7 @@ You can call this operation up to 10 times per second per account. You can call 
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -11498,39 +12271,39 @@ https://[Endpoint]/?Action=DeletePortScanProtectRule&RegionId=cnhangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:SwitchPortProtect RuleStatus | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeletePortScanProtectRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DeletePortScanProtectRuleResponse>
 ```
 
-##### SwitchPortProtectRuleStatus
+##### 5.7.3.4 SwitchPortProtectRuleStatus
 
 Modifies the status of a protection rule for port scanning.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:SwitchPortProtect RuleStatus | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11544,10 +12317,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | RuleIdList | Strin g | Query | No | 1001,1002,1003 | The one or more IDs of the rules whose status you want to modify. |
 | EnableSta tus | Integ er | Query | No | 0 | The status of the rule. A value of 0 indicates that the rule is disabled. A value of 1 indicates that the rule is enabled. |
 | User | Strin g | Query | No | admin | The username. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11556,9 +12334,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -11568,39 +12344,39 @@ https://[Endpoint]/?Action=SwitchPortProtectRuleStatus&RegionId=cnhangzhou&Lang=
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAssetsAd dressAndPorts | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <SwitchPortProtectRuleStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</SwitchPortProtectRuleStatusResponse>
 ```
 
-##### DescribeAssetsAddressAndPorts
+##### 5.7.3.5 DescribeAssetsAddressAndPorts
 
 Queries the IP address and listener port of an asset.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAssetsAd dressAndPorts | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11614,15 +12390,20 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 | DeptAliUid | Long | Query | No | 1234567890 | The department ID. |
 | AddressTy pe | Integ er | Query | No | EIP | The address type. This parameter is discontinued. |
 | AssetType | Strin g | Query | No | EIP | The type of the asset. Valid values include EIP, SLB, and WAF. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -Address | String | 1.1.1.1 | The IP address of the asset. |
 | -Ports | String | 80,8080 | The listener port of the asset. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -11631,11 +12412,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
+**Examples**
 
-**Response parameters**
-
-Cloud Security Network Detectio ion n and Response Sample requests
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAssetsAddressAndPorts&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&DeptAliUid=1234567890&AddressType=EIP&AssetType=EIP
@@ -11643,30 +12422,37 @@ https://[Endpoint]/?Action=DescribeAssetsAddressAndPorts&RegionId=cnhangzhou&Lan
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "Address":"1.1.1.1",
-            "Ports":"80,8080"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "Address":"1.1.1.1",
+            "Ports":"80,8080"
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetsAddressAndPortsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -11676,9 +12462,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAssetsAddressAndPortsResponse>
 ```
 
-##### AddPortScanProtectRule
+##### 5.7.3.6 AddPortScanProtectRule
 
 Creates a protection rule for port proofing.
 
@@ -11687,6 +12474,16 @@ Creates a protection rule for port proofing.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:AddPortScanProte ctRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11697,19 +12494,7 @@ Creates a protection rule for port proofing.
 | AddressTy pe | Integ er | Query | No | 3 | The address type. This parameter is used in Apsara Stack versions earlier than V3.18. A value of 1 indicates Web Application Firewall (WAF). A value of 2 indicates Server Load Balancer (SLB). A value of 3 indicates Elastic IP Address (EIP). A value of 4 indicates custom. |
 | AssetType | Strin g | Query | No | EIP | The type of the asset. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-| Developer Gui on | de·API d | ocumentat |  | Cloud | Security Network Detecti n and Respons |
+| Developer Gui on | de·API d | ocumentat |   | Cloud | Security Network Detecti n and Respons |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -11718,6 +12503,8 @@ This operation does not have operation-specific request headers and uses only co
 | ProtectPor ts | Strin g | Query | No | 80,90 | The port whitelist. You can specify multiple ports and separate them with commas (,). You can also specify a port range, such as 80-90. |
 | ProtectMo de | Integ er | Query | No | 0 | The protection mode. A value of 0 indicates observing. A value of 1 indicates protection. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -11725,7 +12512,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -11735,39 +12522,39 @@ https://[Endpoint]/?Action=AddPortScanProtectRule&RegionId=cnhangzhou&Lang=zh&Us
 
 Sample success responses `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAssetsAd dressTypes | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddPortScanProtectRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</AddPortScanProtectRuleResponse>
 ```
 
-##### DescribeAssetsAddressTypes
+##### 5.7.3.7 DescribeAssetsAddressTypes
 
 You can call the DescribeAssetsAddressTypes operation to query the types of assets.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAssetsAd dressTypes | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11781,9 +12568,14 @@ This operation uses common request headers. No special request headers are requi
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language of the response. Valid values: zh for Chinese and en for English. This parameter is optional. |
 | AliUid | Long | Query | No | 1234567890 | The UID of the user. |
 | DeptAliUid | Long | Query | No | 1234567890 | The UID of the department. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -11793,9 +12585,7 @@ This operation uses common request headers. No special request headers are requi
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code of the response. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response data**
+**Examples**
 
 Request example
 
@@ -11805,14 +12595,13 @@ https://[Endpoint]/?Action=DescribeAssetsAddressTypes&RegionId=cnhangzhou&Lang=z
 
 Successful response example `JSON` format
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ModifyAddressGro up | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Types":[
         "EIP",
@@ -11826,13 +12615,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetsAddressTypesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Types>
         <Types>['EIP','WAF', 'Public SLB']</Types>
@@ -11840,21 +12628,30 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeAssetsAddressTypesResponse>
 ```
 
-#### Manage address books
+#### 5.7.4 Manage address books
 
-##### ModifyAddressGroup
+##### 5.7.4.1 ModifyAddressGroup
 
 Modifies an address book.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ModifyAddressGro up | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -11866,10 +12663,6 @@ You can call this operation up to 10 times per second per account. You can call 
 | Descriptio n | Strin g | Query | No | test | The description of the address book. |
 | AddressLi st | Strin g | Query | No | 10.82.x.10/32,10.82.x.10 /23,10.82.x.10/16 | The IP addresses. |
 
-Cloud Security Network Detectio ion n and Response This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | AddressTy pe | Strin g | Query | No | mdi | Indicates how the IP addresses are specified. A value of fileImport indicates that the IP addresses are specified by importing a file. A value of mdi indicates that the IP addresses are manually specified. If you set the parameter to fileImport, FileUrl and FileName are required. If you set the parameter to mdi, AddressList is required. |
@@ -11879,22 +12672,16 @@ Cloud Security Network Detectio ion n and Response This operation does not have 
 | FileObj | Strin g | Query | No | test obj _ | The file object. |
 | User | Strin g | Query | No | admin | The username. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DelAddressGroup | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=ModifyAddressGroup&RegionId=cnhangzhou&Lang=zh&AliUid=123456789&GroupName=GroupName&GroupType=ip&ActionType=pass&Descri ion=test&AddressList=10.82.x.10/32,10.82.x.10/23,10.82.x.10/16&AddressType=mdi&FileUrl=ht ://xxx.com&FileName=test&AddressGroupUuid=cfa13285-5330-xxx-xxx- 5075c12c6aa8&FileObj=test_obj&User=admin
@@ -11902,26 +12689,35 @@ https://[Endpoint]/?Action=ModifyAddressGroup&RegionId=cnhangzhou&Lang=zh&AliUid
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModifyAddressGroupResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</ModifyAddressGroupResponse>
 ```
 
-##### DelAddressGroup
+##### 5.7.4.2 DelAddressGroup
 
 Deletes one or more address books.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DelAddressGroup | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -11940,14 +12736,14 @@ This operation does not have operation-specific request headers and uses only co
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 | AddressGr oupUuidLi st | Strin g | Query | No | 13285-5330-402e-980c- 5075c12c6xx8,13285- 5330-402e-980c- 5075c12c6yy8 | The UUIDs of the address books that you want to delete. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Module | String | ndr*** | The name of the module. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -11957,39 +12753,35 @@ https://[Endpoint]/?Action=DelAddressGroup&RegionId=cnhangzhou&Lang=zh&User=user
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddAddressGroup | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| AliUid | Long | Query | No | 1234567890 | The user ID. |
-| GroupNa me | Strin g | Query | No | test | The name of the address book. |
-| GroupTyp e | Strin g | Query | No | ip | The type of the address book. Default value: ip. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DelAddressGroupResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Module>ndr***</Module>
+</DelAddressGroupResponse>
 ```
 
-##### AddAddressGroup
+##### 5.7.4.3 AddAddressGroup
 
 Creates an address book.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddAddressGroup | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12000,6 +12792,13 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| AliUid | Long | Query | No | 1234567890 | The user ID. |
+| GroupNa me | Strin g | Query | No | test | The name of the address book. |
+| GroupTyp e | Strin g | Query | No | ip | The type of the address book. Default value: ip. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -12012,15 +12811,13 @@ This operation does not have operation-specific request headers and uses only co
 | FileObj | Strin g | Query | No | test object.csv _ | The file that is stored in Object Storage Service (OSS) as an object. This parameter is required if AddressType is set to fileImport. |
 | User | Strin g | Query | No | test | The user. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -12030,6 +12827,8 @@ Cloud Security Network Detectio n and Response ion
 | Error | String | error | The error message. |
 | HttpStatusCod e | Integer | 404 | The error code. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -12038,50 +12837,41 @@ https://[Endpoint]/?Action=AddAddressGroup&RegionId=cnhangzhou&Lang=zh&AliUid=12
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"dispatch_rule",
     "Error":"error",
     "HttpStatusCode":404
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddAddressGroupResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <Module>dispatch_rule</Module>
     <Error>error</Error>
     <HttpStatusCode>404</HttpStatusCode>
+</AddAddressGroupResponse>
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:GetAllAddressGro upName | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| GroupTyp e | Strin g | Query | No | ip | The type of the address book. |
-| AliUid | Strin g | Query | No | 123456789 | The user ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DataList | Array |  |  |
-| - AddressGroup Uuid | String | cfa13285-5330- xxx-xxx- 5075c12c6aa8 | The address book UUID. |
-| -GroupName | String | GroupName | The name of the address book. |
-
-Cloud Security Network Detectio n and Response ion
-
-##### GetAllAddressGroupName
+##### 5.7.4.4 GetAllAddressGroupName
 
 Queries the information about all address books.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:GetAllAddressGro upName | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12093,7 +12883,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| GroupTyp e | Strin g | Query | No | ip | The type of the address book. |
+| AliUid | Strin g | Query | No | 123456789 | The user ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DataList | Array |   |   |
+| - AddressGroup Uuid | String | cfa13285-5330- xxx-xxx- 5075c12c6aa8 | The address book UUID. |
+| -GroupName | String | GroupName | The name of the address book. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -12103,7 +12905,9 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=GetAllAddressGroupName&RegionId=cnhangzhou&Lang=zh&GroupType=ip&AliUid=123456789
@@ -12111,40 +12915,37 @@ https://[Endpoint]/?Action=GetAllAddressGroupName&RegionId=cnhangzhou&Lang=zh&Gr
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "DataList":[
-        {
-            "GroupName":"GroupName",
-            "AddressGroupUuid":"cfa13285-5330-xxx-xxx-5075c12c6aa8"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "GroupName":"GroupName",
+            "AddressGroupUuid":"cfa13285-5330-xxx-xxx-5075c12c6aa8"
+```
+
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeAddressG roup | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetAllAddressGroupNameResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <DataList>
@@ -12154,13 +12955,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</GetAllAddressGroupNameResponse>
 ```
 
-##### DescribeAddressGroup
+##### 5.7.4.5 DescribeAddressGroup
 
 Queries a list of address books.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeAddressG roup | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12171,6 +12977,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -12181,9 +12991,11 @@ This operation does not have operation-specific request headers and uses only co
 | CurrentPa ge | Integ er | Query | No | 1 | The page number. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AddressGroup s | Array |  |  |
+| AddressGroup s | Array |   |   |
 | -GroupName | String | test | The name of the address book. |
 | -Description | String | test | The description of the address book. |
 | -AddressList | String | 223.5.5.0/24,1.1.1. 1/32 | The IP addresses. |
@@ -12192,11 +13004,7 @@ This operation does not have operation-specific request headers and uses only co
 | -GroupType | String | ip | The type of the address book. Default value: ip. |
 | -AliUid | Long | 1234567890 | The user ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -12212,22 +13020,33 @@ Cloud Security Network Detectio ion n and Response
 | CurrentPage | Integer | 1 | The page number. |
 | Module | String | ndr*** | The name of the module. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeAddressGroup&RegionId=cnhangzhou&Lang=zh&AliUid=1234567890&ActionType=none&GroupType=ip&Query=test&CurrentPage=1& geSize=10
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio ion n and Response
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "AddressGroups":[
-        {
+```
+
+`{`
+
+```json
             "GroupName":"test",
             "FileUrl":"https//:bucket.oss.test.com",
             "Description":"test",
@@ -12240,26 +13059,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "AddressType":"mdi",
             "AddressGroupUuid":"cfa13285-5330-402e-980c-5075c12c6aa8",
             "AliUid":1234567890
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Module":"ndr***"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeIdsRulesLi st | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAddressGroupResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -12279,15 +13090,20 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <DeptName>test</DeptName>
     </AddressGroups>
     <Module>ndr***</Module>
+</DescribeAddressGroupResponse>
 ```
 
-#### Intrusion detection rules
+#### 5.7.5 Intrusion detection rules
 
-##### DescribeIdsRulesList
+##### 5.7.5.1 DescribeIdsRulesList
 
 Queries a list of Intrusion Detection System (IDS) rules.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeIdsRulesLi st | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12309,23 +13125,19 @@ This operation does not have operation-specific request headers and uses only co
 | DefaultSta tus | Repe atList | Query | No | 1 | The status of the rule. A value of 0 indicates that the rule is disabled. A value of 1 indicates that the rule is enabled. |
 | VulLevel | Repe atList | Query | No | Risk level | The risk level. |
 
-Cloud Security Network Detectio ion n and Response
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | AttackTyp e | Repe atList | Query | No | 1 | The attack type. A value of 1 indicates abnormal connections. A value of 2 indicates command executions. A value of 3 indicates brute-force attacks. A value of 4 indicates scanning attacks. A value of 5 indicates other attacks. A value of 6 indicates information leaks. A value of 7 indicates distributed denial of service attacks. A value of 8 indicates overflow attacks. A value of 9 indicates web attacks. A value of 10 indicates Webshell attacks. A value of 11 indicates viruses and worms. A value of 12 indicates mining behaviors. A value of 13 indicates reverse shells. A value of 14 indicates abnormal links. |
 | DefaultMo de | Repe atList | Query | No | 0 | The default action. A value of 0 indicates that access is allowed. A value of 1 indicates that an alert is sent. A value of 2 indicates that access is blocked. A value of 4 indicates that access is logged. A value of 5 indicates that access is observed or blocked. |
 | RuleDirect ion | Repe atList | Query | No | in | The traffic direction. Valid values: in and out. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Rules | Array |  |  |
-
-Cloud Security Network Detectio n and Response ion
-
 **Response parameters**
 
-| on |  |  | n and Respons |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Rules | Array |   |   |
+
+| on |   |   | n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -12344,7 +13156,7 @@ Cloud Security Network Detectio n and Response ion
 | -AttackType | Integer | 1 | The attack type. A value of 1 indicates abnormal connections. A value of 2 indicates command executions. A value of 3 indicates brute-force attacks. A value of 4 indicates scanning attacks. A value of 5 indicates other attacks. A value of 6 indicates information leaks. A value of 7 indicates distributed denial of service attacks. A value of 8 indicates overflow attacks. A value of 9 indicates web attacks. A value of 10 indicates Webshell attacks. A value of 11 indicates viruses and worms. A value of 12 indicates mining behaviors. A value of 13 indicates reverse shells. A value of 14 indicates abnormal links. |
 | -RuleUuid | String | Rule UUID | The rule UUID. |
 
-| loud Security Net and Response | work Detectio |  | Developer Guide·API documenta io |
+| loud Security Net and Response | work Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -CreateTime | String | 1706668721 | The time when the rule was created. |
@@ -12364,7 +13176,7 @@ Cloud Security Network Detectio n and Response ion
 | -RuleDirection | String | in | The traffic direction. Valid values: in and out. |
 | -RuleOwner | String | Rule creator | The user who created the rule. |
 
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -12372,21 +13184,32 @@ Cloud Security Network Detectio n and Response ion
 | PageSize | Integer | 10 | The number of entries per page. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeIdsRulesList&RegionId=cnhangzhou&Lang=zh&PageNo=1&PageSize=10&OtherRule=Rule name&RuleEngine.1=basicRule&DefaultStatus.1=1&VulLevel.1=Risk level&AttackType.1=1&DefaultMode.1=0&RuleDirection.1=in
 ```
 
-Sample success responses `JSON` format Cloud Security Network Detectio n and Response ion
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageNo":1,
     "PageSize":10,
     "Rules":[
-        {
+```
+
+`{`
+
+```json
             "RuleSource":"Rule data source",
             "Description":"Rule description",
             "ReferenceEn":"Association information in English",
@@ -12416,26 +13239,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "InvadeDetect":"Protection type",
             "AttackApp":"Attack target",
             "DefaultMode":0
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "TotalCount":100
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:UpdateSingleIdsD efaultStatus | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeIdsRulesListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PageNo>1</PageNo>
     <PageSize>10</PageSize>
@@ -12471,29 +13286,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <RuleOwner>Rule creator</RuleOwner>
     </Rules>
     <TotalCount>100</TotalCount>
+</DescribeIdsRulesListResponse>
 ```
 
-##### UpdateSingleIdsDefaultStatus
+##### 5.7.5.2 UpdateSingleIdsDefaultStatus
 
 You can call the UpdateSingleIdsDefaultStatus operation to update the default status of an Intrusion Detection System (IDS) rule.
 
 **Authorization information**
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language of the response. Valid values: zh (Chinese) and en (English). |
-| RuleEngin e | Strin g | Query | No | basicRule | The rules engine. Valid values: basicRule (Basic Policies) and patchRule (virtual patches). |
-| RuleUuid | Strin g | Query | No | RuleUuid | The UUID of the rule. |
-| DefaultSta tus | Long | Query | No | 1 | The status of the rule. Valid values: 0 (disable) and 1 (enable). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
-| Code | Integer | 200 | The HTTP status code. |
-| Module | String | ndr*** | The name of the module. |
-| Message | String | success | The response message. |
-
-Cloud Security Network Detectio n and Response ion
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:UpdateSingleIdsD efaultStatus | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12505,7 +13309,23 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language of the response. Valid values: zh (Chinese) and en (English). |
+| RuleEngin e | Strin g | Query | No | basicRule | The rules engine. Valid values: basicRule (Basic Policies) and patchRule (virtual patches). |
+| RuleUuid | Strin g | Query | No | RuleUuid | The UUID of the rule. |
+| DefaultSta tus | Long | Query | No | 1 | The status of the rule. Valid values: 0 (disable) and 1 (enable). |
+
 **Data**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+| Code | Integer | 200 | The HTTP status code. |
+| Module | String | ndr*** | The name of the module. |
+| Message | String | success | The response message. |
+
+**Examples**
 
 Request example
 
@@ -12513,39 +13333,41 @@ Request example
 https://[Endpoint]/?Action=UpdateSingleIdsDefaultStatus&RegionId=cnhangzhou&Lang=zh&RuleEngine=basicRule&RuleUuid=RuleUuid&DefaultStatus=1
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:AddCustomIdsRul e | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
+Sample responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio ion n and Response Sample responses `JSON` format
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Code":200,
     "Module":"ndr***",
     "Message":"success"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <UpdateSingleIdsDefaultStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
     <Message>success</Message>
+</UpdateSingleIdsDefaultStatusResponse>
 ```
 
-##### AddCustomIdsRule
+##### 5.7.5.3 AddCustomIdsRule
 
 Creates a custom Intrusion Detection System (IDS) rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:AddCustomIdsRul e | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12556,6 +13378,9 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -12570,8 +13395,6 @@ This operation does not have operation-specific request headers and uses only co
 | Descriptio nEn | Strin g | Query | No | Rule description in English | The description of the rule in English. |
 | RuleOwne r | Strin g | Query | No | Rule creator | The user who created the rule. |
 
-Cloud Security Network Detectio n and Response ion
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | AttackTyp e | Long | Query | No | 1 | The attack type. A value of 1 indicates abnormal connections. A value of 2 indicates command executions. A value of 3 indicates brute-force attacks. A value of 4 indicates scanning attacks. A value of 5 indicates other attacks. A value of 6 indicates information leaks. A value of 7 indicates distributed denial of service attacks. A value of 8 indicates overflow attacks. A value of 9 indicates web attacks. A value of 10 indicates Webshell attacks. A value of 11 indicates viruses and worms. A value of 12 indicates mining behaviors. A value of 13 indicates reverse shells. A value of 14 indicates abnormal links. |
@@ -12581,9 +13404,7 @@ Cloud Security Network Detectio n and Response ion
 | Reference | Strin g | Query | No | Association information | The association information. |
 | Reference En | Strin g | Query | No | Association information in English | The association information in English. |
 
-Cloud Security Network Detectio ion n and Response
-
-| loud Security | Network | Detectio |  | Devel | oper Guide·API documenta |
+| loud Security | Network | Detectio |   | Devel | oper Guide·API documenta |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -12598,22 +13419,22 @@ Cloud Security Network Detectio ion n and Response
 | DefaultSta tus | Long | Query | No | 1 | The status of the rule. A value of 0 indicates that the rule is disabled. A value of 1 indicates that the rule is enabled. |
 | RuleDirect ion | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Code | Integer | 200 | The HTTP status code. |
 
-n and Response ion
-
-**Response parameters**
-
-| Developer Guide·A on | PI documentat |  | Cloud Security Network Detecti n and Respons |
+| Developer Guide·A on | PI documentat |   | Cloud Security Network Detecti n and Respons |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Module | String | ndr*** | The name of the module. |
 | Message | String | success | The returned message. |
+
+**Examples**
 
 Sample requests
 
@@ -12623,26 +13444,31 @@ https://[Endpoint]/?Action=AddCustomIdsRule&RegionId=cnhangzhou&Lang=zh&RuleEngi
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Code":200,
     "Module":"ndr***",
     "Message":"success"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <AddCustomIdsRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
     <Message>success</Message>
+</AddCustomIdsRuleResponse>
 ```
 
-##### DeleteIdsRule
+##### 5.7.5.4 DeleteIdsRule
 
 Deletes an Intrusion Detection System (IDS) rule.
 
@@ -12651,21 +13477,6 @@ Deletes an Intrusion Detection System (IDS) rule.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- cloudfirewall:DeleteIdsRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| RuleUuid | Strin g | Query | No | Rule UUID | The rule UUID. |
-| RuleEngin e | Strin g | Query | No | basicRule | The rule engine. A value of basicRule indicates a basic rule. A value of patchRule indicates a virtual rule. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Code | Integer | 200 | The HTTP status code. |
-| Module | String | ndr*** | The name of the module. |
-| Message | String | success | The returned message. |
-
-Cloud Security Network Detectio n and Response ion
 
 **Throttling**
 
@@ -12677,15 +13488,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| RuleUuid | Strin g | Query | No | Rule UUID | The rule UUID. |
+| RuleEngin e | Strin g | Query | No | basicRule | The rule engine. A value of basicRule indicates a basic rule. A value of patchRule indicates a virtual rule. |
+
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Code | Integer | 200 | The HTTP status code. |
+| Module | String | ndr*** | The name of the module. |
+| Message | String | success | The returned message. |
+
+**Examples**
+
 Sample requests
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:UpdateIdsDefaultS tatus | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio ion n and Response
 
 ```
 https://[Endpoint]/?Action=DeleteIdsRule&RegionId=cn-hangzhou&Lang=zh&RuleUuid=Rule UUI D&RuleEngine=basicRule
@@ -12693,30 +13513,39 @@ https://[Endpoint]/?Action=DeleteIdsRule&RegionId=cn-hangzhou&Lang=zh&RuleUuid=R
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Code":200,
     "Module":"ndr***",
     "Message":"success"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteIdsRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
     <Message>success</Message>
+</DeleteIdsRuleResponse>
 ```
 
-##### UpdateIdsDefaultStatus
+##### 5.7.5.5 UpdateIdsDefaultStatus
 
 Modifies the default status of Intrusion Detection System (IDS) rules.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:UpdateIdsDefaultS tatus | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12733,6 +13562,8 @@ This operation does not have operation-specific request headers and uses only co
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | RuleUuidL ist | Repe atList | Query | No | Uuid1,Uuid2 | The rule UUIDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
@@ -12740,9 +13571,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | Message | String | success | The returned message. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -12752,43 +13581,39 @@ https://[Endpoint]/?Action=UpdateIdsDefaultStatus&RegionId=cnhangzhou&Lang=zh&Ru
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Code":200,
     "Module":"ndr***",
     "Message":"success"
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:UpdateIdsRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| RuleEngin e | Strin g | Query | No | basicRule | The rule engine. A value of basicRule indicates a basic rule. A value of patchRule indicates a virtual rule. |
-| RuleConte nt | Strin g | Query | No | Rule content | The content of the rule. |
-| RuleMode | Long | Query | No | Rule mode | The mode of the rule. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <UpdateIdsDefaultStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
     <Message>success</Message>
+</UpdateIdsDefaultStatusResponse>
 ```
 
-##### UpdateIdsRule
+##### 5.7.5.6 UpdateIdsRule
 
 Updates an Intrusion Detection System (IDS) rule.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:UpdateIdsRule | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12800,7 +13625,14 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| loud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| RuleEngin e | Strin g | Query | No | basicRule | The rule engine. A value of basicRule indicates a basic rule. A value of patchRule indicates a virtual rule. |
+| RuleConte nt | Strin g | Query | No | Rule content | The content of the rule. |
+| RuleMode | Long | Query | No | Rule mode | The mode of the rule. |
+
+| loud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -12815,7 +13647,7 @@ This operation does not have operation-specific request headers and uses only co
 | InvadeDet ect | Long | Query | No | Protection type | The protection type. |
 | EventDeta il | Strin g | Query | No | Event details | The event details. |
 
-| Developer Gui on | de·API d | ocumentat |  | Cloud | Security Network Detecti n and Respons |
+| Developer Gui on | de·API d | ocumentat |   | Cloud | Security Network Detecti n and Respons |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -12833,13 +13665,15 @@ This operation does not have operation-specific request headers and uses only co
 | DefaultSta tus | Long | Query | No | 1 | The status of the rule. A value of 0 indicates that the rule is disabled. A value of 1 indicates that the rule is enabled. |
 | RuleDirect ion | Strin g | Query | No | in | The traffic direction. Valid values: in and out. |
 
-| Cloud Security and Respon | Network se | Detectio |  | Devel | oper Guide·API documenta io |
+| Cloud Security and Respon | Network se | Detectio |   | Devel | oper Guide·API documenta io |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RuleUuid | Strin g | Query | No | Rule UUID | The rule UUID. |
 | VulId | Strin g | Query | No | Rule actual ID | The actual ID of the rule. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -12848,7 +13682,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | Message | String | success | The returned message. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -12858,42 +13692,43 @@ https://[Endpoint]/?Action=UpdateIdsRule&RegionId=cnhangzhou&Lang=zh&RuleEngine=
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Code":200,
     "Module":"ndr***",
     "Message":"success"
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:ModifyIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <UpdateIdsRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Code>200</Code>
     <Module>ndr***</Module>
     <Message>success</Message>
+</UpdateIdsRuleResponse>
 ```
 
-#### IP address pools for internal network
+#### 5.7.6 IP address pools for internal network assets
 
 **assets**
 
-##### ModifyIpSegment
+##### 5.7.6.1 ModifyIpSegment
 
 Modifies a CIDR block for traffic collection.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:ModifyIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -12907,17 +13742,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | IpSegmen tName | Strin g | Query | No | 1.1.1.0/24 | The CIDR block. |
 | IpId | Strin g | Query | No | 1024 | The policy ID. |
 | InfoName | Strin g | Query | No | region-test | The region to which the CIDR block belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -12927,20 +13766,25 @@ https://[Endpoint]/?Action=ModifyIpSegment&RegionId=cnhangzhou&Lang=zh&IpSegment
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <ModifyIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</ModifyIpSegmentResponse>
 ```
 
-##### CreateIpSegment
+##### 5.7.6.2 CreateIpSegment
 
 Adds a CIDR block for traffic collection.
 
@@ -12950,6 +13794,16 @@ Adds a CIDR block for traffic collection.
 |---|---|---|
 | yundun- cloudfirewall:CreateIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
@@ -12957,23 +13811,13 @@ Adds a CIDR block for traffic collection.
 | IpSegmen tName | Strin g | Query | No | 1.1.1.0/24 | The CIDR block. |
 | InfoName | Strin g | Query | No | region-test | The region to which the CIDR block belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Throttling**
-
-You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -12981,34 +13825,35 @@ Sample requests
 https://[Endpoint]/?Action=CreateIpSegment&RegionId=cnhangzhou&Lang=zh&InfoType=distribution&IpSegmentName=1.1.1.0/24&InfoName=region-test
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeRegionNa me | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+Sample success responses `JSON` format
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+```
+Content-Type:application/json
+```
 
-Cloud Security Network Detectio n and Response ion Sample success responses `JSON` format
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <CreateIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</CreateIpSegmentResponse>
 ```
 
-##### DescribeRegionName
+##### 5.7.6.3 DescribeRegionName
 
 Queries the information about a region.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeRegionNa me | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -13020,18 +13865,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| RegionNameLi st | Array |  |  |
+| RegionNameLi st | Array |   |   |
 | -Code | String | region-test | The code of the region. |
 | -CodeName | String | region-test | The name of the region. |
 | -CodeType | String | distribution | The code type. Default value: distribution. |
 | -Description | String | distribution | The code type. Default value: distribution. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -13041,40 +13890,30 @@ https://[Endpoint]/?Action=DescribeRegionName&RegionId=cn-hangzhou&Lang=zh
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "RegionNameList":[
-        {
+```
+
+`{`
+
+```json
             "CodeName":"region-test",
             "Description":"distribution",
             "CodeType":"distribution",
             "Code":"region-test"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeIpSegmen t | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| IpSegmen t | Strin g | Query | No | 1.1.1.0/24 | The CIDR block. |
-| Distributio n | Strin g | Query | No | region-test | The region to which the CIDR block belongs. |
-
-Cloud Security Network Detectio n and Response ion
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRegionNameResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <RegionNameList>
         <Code>region-test</Code>
@@ -13082,13 +13921,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <CodeType>distribution</CodeType>
         <Description>distribution</Description>
     </RegionNameList>
+</DescribeRegionNameResponse>
 ```
 
-##### DescribeIpSegment
+##### 5.7.6.4 DescribeIpSegment
 
 Queries the configurations of a CIDR block for traffic collection.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeIpSegmen t | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -13100,7 +13944,13 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui on | de·API d | ocumentat |  | Cloud | Security Network Detecti n and Respons |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| IpSegmen t | Strin g | Query | No | 1.1.1.0/24 | The CIDR block. |
+| Distributio n | Strin g | Query | No | region-test | The region to which the CIDR block belongs. |
+
+| Developer Gui on | de·API d | ocumentat |   | Cloud | Security Network Detecti n and Respons |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -13109,9 +13959,11 @@ This operation does not have operation-specific request headers and uses only co
 | CurrentPa ge | Strin g | Query | No | 1 | The page number. |
 | PageSize | Strin g | Query | No | 10 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| IpSegmentList | Array |  |  |
+| IpSegmentList | Array |   |   |
 | -Id | Integer | 1024 | The policy ID. |
 | -GmtCreate | String | 2024-01- 03T10:38:41Z | The time when the CIDR block for traffic collection was created. |
 | -GmtModified | String | 2024-01- 03T10:38:41Z | The time when the CIDR block for traffic collection was modified. |
@@ -13123,15 +13975,15 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageSize | Integer | 10 | The number of entries per page. |
 | CurrentPage | Integer | 1 | The page number. |
+
+**Examples**
 
 Sample requests
 
@@ -13141,14 +13993,23 @@ https://[Endpoint]/?Action=DescribeIpSegment&RegionId=cnhangzhou&Lang=zh&IpSegme
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "IpSegmentList":[
-        {
+```
+
+`{`
+
+```json
             "IpExpressions":"1.1.1.0/24",
             "GmtCreate":"2024-01-03T10:38:41Z",
             "IpType":"ipv4",
@@ -13157,29 +14018,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Id":1024,
             "InfoName":"region-test",
             "InfoType":"distribution"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DeleteIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -13194,13 +14038,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <IpType>ipv4</IpType>
         <RegionName>region-test</RegionName>
     </IpSegmentList>
+</DescribeIpSegmentResponse>
 ```
 
-##### DeleteIpSegment
+##### 5.7.6.5 DeleteIpSegment
 
 Deletes a CIDR block for traffic collection.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DeleteIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -13214,19 +14063,19 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | IpId | Strin g | Query | No | 1024 | The policy ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:CheckIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -13236,86 +14085,33 @@ https://[Endpoint]/?Action=DeleteIpSegment&RegionId=cn-hangzhou&Lang=zh&IpId=102
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteIpSegmentResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</DeleteIpSegmentResponse>
 ```
 
-##### CheckIpSegment
+##### 5.7.6.6 CheckIpSegment
 
 Checks the policy of a CIDR block for traffic collection.
 
 **Authorization information**
 
-**Throttling**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-| IpSegmen tName | Strin g | Query | No | 1.1.1.0/24 | The CIDR block. |
-| InfoName | Strin g | Query | No | region-test | The region to which the CIDR block belongs. |
-| InfoType | Strin g | Query | No | distribution | The type of the CIDR block information. Default value: distribution. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-
-Cloud Security Network Detectio ion n and Response You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-Sample requests
-
-```
-https://[Endpoint]/?Action=CheckIpSegment&RegionId=cnhangzhou&Lang=zh&IpSegmentName=1.1.1.0/24&InfoName=region-test&InfoType=distribution
-```
-
-Sample success responses `JSON` format
-
 | Operation | Access level | Resource type |
 |---|---|---|
-| yundun- cloudfirewall:DescribeDownload Tasks | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio n and Response ion
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
-```
-
-`XML` format
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-```
-
-### Download task management
-
-#### DescribeDownloadTasks
-
-Queries a list of download tasks.
-
-**Authorization information**
+| yundun- cloudfirewall:CheckIpSegment | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -13329,14 +14125,83 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+| IpSegmen tName | Strin g | Query | No | 1.1.1.0/24 | The CIDR block. |
+| InfoName | Strin g | Query | No | region-test | The region to which the CIDR block belongs. |
+| InfoType | Strin g | Query | No | distribution | The type of the CIDR block information. Default value: distribution. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
+
+Sample requests
+
+```
+https://[Endpoint]/?Action=CheckIpSegment&RegionId=cnhangzhou&Lang=zh&IpSegmentName=1.1.1.0/24&InfoName=region-test&InfoType=distribution
+```
+
+Sample success responses `JSON` format
+
+```
+Content-Type:application/json
+```
+
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <CheckIpSegmentResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</CheckIpSegmentResponse>
+```
+
+### 5.8 Download task management
+
+#### 5.8.1 DescribeDownloadTasks
+
+Queries a list of download tasks.
+
+**Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeDownload Tasks | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
+
+**Throttling**
+
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
 | Module | Strin g | Query | No | Threat detection | The name of the module. |
 | PageNo | Strin g | Query | No | 1 | The page number. |
 | PageSize | Strin g | Query | No | 10 | The number of entries per page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DataList | Array |  |  |
+| DataList | Array |   |   |
 | -StartTime | Long | 1707118672 | The beginning of the time range to query. |
 | -EndTime | Long | 1707118672 | The end of the time range to query. |
 | -TaskUUID | String | d5b969bf-cd21- 4dd0-84ff- 8e57c95ef*** | The task UUID. |
@@ -13348,11 +14213,7 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The total number of entries returned. |
 
-Cloud Security Network Detectio ion n and Response
-
-**Response parameters**
-
-| Cloud Security Ne and Response | twork Detectio |  | Developer Guide·API documenta io |
+| Cloud Security Ne and Response | twork Detectio |   | Developer Guide·API documenta io |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -13363,6 +14224,8 @@ Cloud Security Network Detectio ion n and Response
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -13371,14 +14234,23 @@ https://[Endpoint]/?Action=DescribeDownloadTasks&RegionId=cnhangzhou&Lang=zh&Ali
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "TotalCount":100,
     "PageSize":10,
     "CurrentPage":1,
     "DataList":[
-        {
+```
+
+`{`
+
+```json
             "Status":1,
             "SignUrl":"https://test.com",
             "EndTime":1707118672,
@@ -13387,29 +14259,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "TaskUUID":"d5b969bf-cd21-4dd0-84ff-8e57c95ef***",
             "Process":100,
             "Module":"ndr***"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DescribeDownload Modules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Cloud Security Network Detectio ion n and Response `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeDownloadTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <TotalCount>100</TotalCount>
     <PageSize>10</PageSize>
@@ -13427,13 +14290,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeDownloadTasksResponse>
 ```
 
-#### DescribeDownloadModules
+#### 5.8.2 DescribeDownloadModules
 
 Queries a list of download and management modules.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DescribeDownload Modules | Read | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -13447,8 +14315,13 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
 | AliUid | Long | Query | No | 1234567890 | The user ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -13458,9 +14331,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -13470,28 +14341,24 @@ https://[Endpoint]/?Action=DescribeDownloadModules&RegionId=cnhangzhou&Lang=zh&A
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Modules":"['Log Query','Attacker Profile' ...]",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- cloudfirewall:DeleteDownloadT askByUuid | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
-
-Cloud Security Network Detectio ion n and Response `XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeDownloadModulesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Modules>
         <string>['Log Query','Attacker Profile' ...]</string>
@@ -13499,13 +14366,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <Success>true</Success>
     <Module>ndr***</Module>
     <HttpStatusCode>200</HttpStatusCode>
+</DescribeDownloadModulesResponse>
 ```
 
-#### DeleteDownloadTaskByUuid
+#### 5.8.3 DeleteDownloadTaskByUuid
 
 Deletes a download task.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- cloudfirewall:DeleteDownloadT askByUuid | Write | acs:yundun-cloudfirewall:*: {#accountId}:* |
 
 **Throttling**
 
@@ -13519,8 +14391,14 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| Lang | Strin g | Query | No | zh | The language. Valid values: zh and en. You can leave this parameter empty if it is not required for your business. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | User | Strin g | Query | No | user | The user. |
 | TaskUUID | Strin g | Query | No | F0A8A039-930D-5EC1- 97C8-************ | The task UUID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -13529,9 +14407,7 @@ This operation does not have operation-specific request headers and uses only co
 | Module | String | ndr*** | The name of the module. |
 | HttpStatusCod e | Integer | 200 | The HTTP status code. |
 
-Cloud Security Network Detectio n and Response ion
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -13541,16 +14417,37 @@ https://[Endpoint]/?Action=DeleteDownloadTaskByUuid&RegionId=cnhangzhou&Lang=zh&
 
 Sample success responses `JSON` format
 
+```
+Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "Module":"ndr***",
     "HttpStatusCode":200
-}
 ```
 
-`XML` format
+`}` `XML` format
+
+```xml
+Content-Type:application/xml <DeleteDownloadTaskByUuidResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+    <Success>true</Success>
+    <Module>ndr***</Module>
+    <HttpStatusCode>200</HttpStatusCode>
+</DeleteDownloadTaskByUuidResponse>
+```
+
+### 5.9 One-click block
+
+#### 5.9.1 AddToBlackList
+
+Adds the source IP address of an attack to the blacklist.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13561,46 +14458,53 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DstPortEnd | String | No | 8081 | The end of the destination port range of an attack. Valid values: 0 to 65535. If you set this parameter to 0, all ports are specified. |
 | LiveTime | String | Yes | 5 | The validity period of the blacklist. Unit: minutes. Valid values: 1 to 10080. If you leave this parameter unspecified, the default value 5 is used. |
 
-Cloud Security Network Detectio ion n and Response
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-    <Success>true</Success>
-    <Module>ndr***</Module>
-    <HttpStatusCode>200</HttpStatusCode>
-```
-
-### One-click block
-
-#### AddToBlackList
-
-Adds the source IP address of an attack to the blacklist.
-
-**Request parameters**
-
 | Filter | String | No | inbound | The direction of the attack traffic that can be blocked by the blacklist. This parameter is available only for the blacklist. Valid values: inbound: blocks traffic destined for data centers in which Apsara Stack is deployed. This is the default value. outbound: blocks traffic sent from data centers in which Apsara Stack is deployed. |
 |---|---|---|---|---|
 | AliUid | String | No | 123456**** | The Apsara Stack tenant account. |
 | IpType | String | No | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 | Note | String | No | Add the IP address to the blacklist. | The additional description. |
 
+All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
-Cloud Security Network Detectio n and Response ion All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &DstPort=8080 &LiveTime=5 &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddToBlackList &SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &DstPort=8080 &LiveTime=5 &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
+
+```xml
+<code>200</code> <success>true</requestId>
+```
+
+`JSON` format `{`
+
+```json
+  "code": 200,
+  "success": "true"
+```
+
+`}`
+
+**Error codes**
+
+For a list of error codes, see Error codes.
+
+#### 5.9.2 AddToWhiteList
+
+Adds the source IP address of an attack to the whitelist.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13612,46 +14516,25 @@ Sample success responses
 | LiveTime | String | No | 5 | The validity period of the whitelist. Unit: minutes. Valid values: 1 to 10080. If you leave this parameter unspecified, the default value 5 is used. |
 | AliUid | String | Yes | 123456**** | The Apsara Stack tenant account. |
 
-Cloud Security Network Detectio ion n and Response `XML` format
-
-```xml
-<code>200</code> <success>true</requestId>
-```
-
-`JSON` format
-
-```json
-{
-  "code": 200,
-  "success": "true"
-}
-```
-
-For a list of error codes, see Error codes.
-
-#### AddToWhiteList
-
-Adds the source IP address of an attack to the whitelist.
-
-**Request parameters**
-
 | IpType | String | Yes | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 |---|---|---|---|---|
 | Note | String | Yes | Add the IP address to the whitelist. | The additional description. |
+
+All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
-Cloud Security Network Detectio n and Response ion All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &AliUid=123456**** &IpType=4 &Note=Add the IP address to the whitelist. &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddToWhiteList &SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &AliUid=123456**** &IpType=4 &Note=Add the IP address to the whitelist. &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -13660,14 +14543,24 @@ Sample success responses `XML` format
 <code>200</code> <success>true</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "code": 200,
   "success": "true"
-}
 ```
+
+`}`
+
+**Error codes**
+
+For a list of error codes, see Error codes.
+
+#### 5.9.3 DelFromBlackList
+
+Removes the source IP address of an attack from the blacklist.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13680,30 +14573,24 @@ Sample success responses `XML` format
 | Filter | String | No | outbound | The direction of the attack traffic that can be blocked by the blacklist. This parameter is available only for the blacklist. Valid values: inbound: blocks traffic destined for data centers in which Apsara Stack is deployed. This is the default value. outbound: blocks traffic sent from data centers in which Apsara Stack is deployed. |
 | AliUid | String | Yes | 123456**** | The Apsara Stack tenant account. |
 
-Cloud Security Network Detectio ion n and Response For a list of error codes, see Error codes.
-
-#### DelFromBlackList
-
-Removes the source IP address of an attack from the blacklist.
-
-**Request parameters**
-
 | IpType | String | No | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 |---|---|---|---|---|
+
+All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 
-Cloud Security Network Detectio n and Response ion All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &AliUid=123456**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=DelFromBlackList &SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &AliUid=123456**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -13712,18 +14599,24 @@ Sample success responses `XML` format
 <code>200</code> <success>true</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "code": 200,
   "success": "true"
-}
 ```
+
+`}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### DelFromWhiteList
+#### 5.9.4 DelFromWhiteList
+
+Removes the source IP address of an attack from the whitelist.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13736,31 +14629,23 @@ For a list of error codes, see Error codes.
 | AliUid | String | Yes | 123456**** | The Apsara Stack tenant account. |
 | IpType | String | No | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| code | String | 200 | The status code returned for the request. |
-
-Cloud Security Network Detectio ion n and Response Removes the source IP address of an attack from the whitelist.
-
-**Request parameters**
-
 All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
 
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| code | String | 200 | The status code returned for the request. |
+
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
 |---|---|---|---|
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeBlack List | The operation that you want to perform. Set the value to DescribeBlackList. |
-| SrcIp | String | No | 183.100.XX.X X | The source IP address of an attack. |
-| DstIp | String | No | 120.223.XX.X X | The destination IP address of an attack. |
+**Examples**
 
-Cloud Security Network Detectio n and Response ion Sample requests
+Sample requests
 
 ```
-&SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &AliUid=123456**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=DelFromWhiteList &SrcIp=183.100.XX.XX &DstIp=120.223.XX.XX &AliUid=123456**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -13769,22 +14654,30 @@ Sample success responses `XML` format
 <code>200</code> <success>true</requestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "code": 200,
   "success": "true"
-}
 ```
+
+`}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### DescribeBlackList
+#### 5.9.5 DescribeBlackList
 
 Queries the details of the blacklist.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeBlack List | The operation that you want to perform. Set the value to DescribeBlackList. |
+| SrcIp | String | No | 183.100.XX.X X | The source IP address of an attack. |
+| DstIp | String | No | 120.223.XX.X X | The destination IP address of an attack. |
 
 | DstPort | String | No | 8080 | The start of the destination port range of an attack. Valid values: 0 to 65535. If you set this parameter to 0, all ports are specified. |
 |---|---|---|---|---|
@@ -13793,21 +14686,21 @@ Queries the details of the blacklist.
 | AliUid | String | Yes | 123456**** | The Apsara Stack tenant account. |
 | IpType | String | No | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 
+All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | String | 200 | The status code returned for the request. |
 | success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
-| data | Object |  | The returned data. |
-| └DataList | Array |  | The details of the entry returned. |
+| data | Object |   | The returned data. |
+| └DataList | Array |   | The details of the entry returned. |
 | └└SrcIp | String | 183.100.XX.XX | The source IP address of an attack. |
 | └└DstIp | String | 120.223.XX.XX | The destination IP address of an attack. |
 | └└DstPort | Number | 8080 | The start of the destination port range of an attack. |
 | └└DstPortEnd | Number | 8081 | The end of the destination port range of an attack. |
 | └└LiveTime | String | 5 | The validity period of the blacklist. Default value: 5. Unit: minutes. |
-
-Cloud Security Network Detectio ion n and Response All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
-
-**Response parameters**
 
 | └└HitTimes | String | 10000 | The number of attacks. |
 |---|---|---|---|
@@ -13819,13 +14712,15 @@ Cloud Security Network Detectio ion n and Response All Alibaba Cloud API operati
 | └Count | Number | 5 | The number of entries returned. |
 | └Module | String | dispatch rule _ | The name of the process for this request. Default value: dispatch rule. _ |
 
-Cloud Security Network Detectio n and Response ion Sample requests
+**Examples**
+
+Sample requests
 
 ```
-&AliUid=123456**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeBlackList &AliUid=123456**** &<Common request parameters>
 ```
 
-Sample success responses `XML` format Cloud Security Network Detectio ion n and Response
+Sample success responses `XML` format
 
 ```xml
 <code>200</code> <success>true</success> <data>
@@ -13847,15 +14742,18 @@ Sample success responses `XML` format Cloud Security Network Detectio ion n and 
 </data>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "code": "200",
   "success": "true",
   "data": {
     "DataList": [
-      {
+```
+
+`{`
+
+```json
         "SrcIp": "183.100.XX.XX",
         "DstIp": "120.223.XX.XX",
         "DstPort": 8080,
@@ -13867,21 +14765,26 @@ Sample success responses `XML` format Cloud Security Network Detectio ion n and 
         "StartTime": "1630996231000",
         "EndTime": "1630996411000",
         "IpType": "4"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Count": 1,
     "Module": "dispatch_rule"
-  }
-}
 ```
+
+`}` `}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### DescribeWhiteList
+#### 5.9.6 DescribeWhiteList
+
+Queries the details of the whitelist.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -13894,21 +14797,17 @@ For a list of error codes, see Error codes.
 | AliUid | String | Yes | 123456**** | The Apsara Stack tenant account. |
 | IpType | String | No | 4 | The type of the IP addresses. Valid values: 4: IPv4 addresses. This is the default value. 6: IPv6 addresses. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| code | String | 200 | The status code returned for the request. |
-| success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
-| data | Object |  | The returned data. |
-
-Cloud Security Network Detectio n and Response ion Queries the details of the whitelist.
-
-**Request parameters**
-
 All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see Common parameters. For more information about sample requests, see the "Examples" section of this topic.
 
 **Response parameters**
 
-| └DataList | Array |  | The details of the entry returned. |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| code | String | 200 | The status code returned for the request. |
+| success | String | true | Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed. |
+| data | Object |   | The returned data. |
+
+| └DataList | Array |   | The details of the entry returned. |
 |---|---|---|---|
 | └└SrcIp | String | 183.100.XX.XX | The source IP address of an attack. |
 | └└DstIp | String | 120.223.XX.XX | The destination IP address of an attack. |
@@ -13924,13 +14823,15 @@ All Alibaba Cloud API operations must include common request parameters. For mor
 | └Count | Number | 5 | The number of entries returned. |
 | └Module | String | dispatch rule _ | The name of the process for this request. Default value: dispatch rule. _ |
 
-Cloud Security Network Detectio ion n and Response Sample requests
+**Examples**
+
+Sample requests
 
 ```
-&AliUid=123456**** &<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeWhiteList &AliUid=123456**** &<Common request parameters>
 ```
 
-Sample success responses Cloud Security Network Detectio n and Response ion `XML` format
+Sample success responses `XML` format
 
 ```xml
 <code>200</code> <success>true</success> <data>
@@ -13952,15 +14853,18 @@ Sample success responses Cloud Security Network Detectio n and Response ion `XML
 </data>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "code": "200",
   "success": "true",
   "data": {
     "DataList": [
-      {
+```
+
+`{`
+
+```json
         "SrcIp": "183.100.XX.XX",
         "DstIp": "120.223.XX.XX",
         "DstPort": 8080,
@@ -13972,19 +14876,26 @@ Sample success responses Cloud Security Network Detectio n and Response ion `XML
         "StartTime": "1630996231000",
         "EndTime": "1630996411000",
         "IpType": "4"
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "Count": 1,
     "Module": "dispatch_rule"
-  }
-}
 ```
 
-For a list of error codes, see Error codes.
+`}` `}`
+
+**Error codes**
+
+For a list of error codes, see Error codes. rameters
+
+## 6 API common parameters
+
+**Common request parameters**
+
+Include common request parameters in every API call. Table 1. Common request parameters
 
 | Name | Type | Requi red | Description |
 |---|---|---|---|
@@ -13995,22 +14906,18 @@ For a list of error codes, see Error codes.
 | RegionId | Strin g | Yes | The ID of the region where the service is deployed. |
 | Product | Strin g | Yes | The name of the product that corresponds to the API. Valid values: Auditprivate: Alibaba Cloud Security basic component. yundunnextsoc: Security Center (SOC). Sas: Threat Detection Service. aegis: Server Guard. yundun-css: Container Security. secspy: Network Traffic Detection and Response. Ddosprivate: DDoS traffic scrubbing. hsm-private: Cloud Hardware Security Module (HSM). Cloudfw: Cloud Firewall. Sddp: Sensitive Data Discovery and Protection. semawaf: Web Application Firewall. soar: Security Center (SOC) - Orchestration Response. |
 
-Cloud Security Network Detectio n and Response
-
-## API common parameters
-
-**Common request parameters**
-
-Include common request parameters in every API call. Table 1. Common request parameters
+rameters
 
 | EndpointPre | Strin g | Yes | The domain name prefix that corresponds to the API. Valid values: auditprivate: Alibaba Cloud Security basic component. yundunnextsoc-pop: Security Center (SOC). tds: Threat Detection Service. aegis: Server Guard. yundun-css: Container Security. secspy-share: Network Traffic Detection and Response. ddosprivate: DDoS traffic scrubbing. hsmprivate: Cloud Hardware Security Module (HSM). cloudfw: Cloud Firewall. sddp-api: Sensitive Data Discovery and Protection. semawaf: Web Application Firewall. soar: Security Center (SOC) - Orchestration Response. |
 |---|---|---|---|
 
-Cloud Security Network Detectio n and Response
-
 **Common response parameters**
 
 API responses use a standard format. The HTTP status code indicates the result of the call: A 2xx HTTP status code indicates that the call was successful. A 4xx or 5xx HTTP status code indicates that the call failed. Successful calls return data in JSON format. A unique RequestId is returned for every API call, regardless of the outcome.
+
+## 7 Error codes
+
+This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -14026,12 +14933,6 @@ API responses use a standard format. The HTTP status code indicates the result o
 | yd.error.all.ConsoleSystemError 1011 _ | The regionId parameter is not specified. | The error message returned because the RegionId parameter is not specified. Check the parameter. |
 | yd.error.all.ConsoleSystemError 1012 _ | The format of the specified regionId parameter is invalid. | The error message returned because the format of the specified RegionId parameter is invalid. Check the parameter. |
 
-Cloud Security Network Detectio n and Response
-
-## Error codes
-
-This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
-
 | yd.error.all.ConsoleSystemError 1013 _ | The parameter is not specified. | The error message returned because the parameter is not specified. Check the parameter and try again. |
 |---|---|---|
 | yd.error.all.ConsoleSystemError 1014 _ | The format of the specified parameter is invalid. | The error message returned because the format of the specified parameter is invalid. Check the parameter and try again. |
@@ -14044,11 +14945,11 @@ This topic describes the error codes returned for operations in Apsara Stack Sec
 | yd.error.all.ServerError | A server error occurred. | The error message returned because a server error occurred. Try again later or contact Alibaba Cloud technical support. |
 | yd.error.all.UnkownError | An unknown error occurred. | The error message returned because an unknown error occurred. Try again later or contact Alibaba Cloud technical support. |
 
+Table 2. Error codes specific to Threat Detection Service
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.sas.1 | The specified field does not exist in the metadata. | The error message returned because the field you queried does not exist in the metadata. Check the request and try again. |
-
-Cloud Security Network Detectio n and Response Table 2. Error codes specific to Threat Detection Service
 
 | yd.error.sas.2 | An error occurred while invoking the task engine. Try again. | The error message returned because the system failed to invoke the task engine. Try again later. |
 |---|---|---|
@@ -14065,10 +14966,10 @@ Cloud Security Network Detectio n and Response Table 2. Error codes specific to 
 | yd.error.sas.500 | A system error occurred. | The error message returned because a system error occurred. Contact Alibaba Cloud technical support. |
 | yd.error.sas.501 | The feature is not available in the current version. | The error message returned because the version you used does not support this feature. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.sas.502 | You are not authorized to access the server. | The error message returned because you are not authorized to manage the server. |
 |---|---|---|
+
+Table 3. Error codes specific to Anti-DDoS Service
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -14083,8 +14984,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.ddos.IP SEGMENT REP _ _ EAT | One CIDR block cannot be used in different regions. Enter another CIDR block. | The error message returned because the specified CIDR block is invalid. Check the CIDR block specified in the request parameter. |
 | yd.error.ddos.IP SEGMENT ALR _ _ EADY | The specified CIDR block already exists. | The error message returned because the specified CIDR block is in use. Check the CIDR block specified in the request parameter. |
 
-Cloud Security Network Detectio n and Response Table 3. Error codes specific to Anti-DDoS Service
-
 | yd.error.ddos.IP SEGMENT MAS _ _ K LENGTH ERR _ _ | The mask can contain a maximum of 24 bits. | The error message returned because the mask contains more than 24 bits. Check the mask of the CIDR block specified in the request parameter. |
 |---|---|---|
 | yd.error.ddos.QUERY REGION L _ _ IST ERR _ | An error occurred while obtaining the region list. | The error message returned because the system failed to obtain the region list. Try again later. |
@@ -14097,8 +14996,6 @@ Cloud Security Network Detectio n and Response Table 3. Error codes specific to 
 | yd.error.ddos.QUERY BEAVER _ _ URL ERR _ | An error occurred while obtaining the URL of Network Detection and Response. | The error message returned because the system failed to obtain the URL of Network Detection and Response. Check the network connection to Network Detection and Response and try again. |
 | yd.error.ddos.SET VALVE INVA _ _ LID | The threshold validation failed. Check the thresholds and enter correct values. | The error message returned because the threshold verification failed. Check the thresholds and try again. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.ddos.VALVE DEFAULT _ _ ALREADY | The specified request is invalid. You cannot add the default threshold. | The error message returned because the system failed to add the default threshold. The default threshold can only be modified. |
 |---|---|---|
 | yd.error.ddos.NOT BELONG BE _ _ AVER IP SEGMENT _ _ | Check whether the specified CIDR block belongs to the internal network of Network Detection and Response. | The error message returned because the CIDR block you entered does not belong to the internal network of Network Detection and Response. Check the CIDR block. |
@@ -14107,9 +15004,13 @@ Cloud Security Network Detectio n and Response
 | yd.error.ddos.IS OPENED _ | Enabled. | The error message returned because the specified switch has been turned on. |
 | yd.error.ddos.IS CLOSED _ | Disabled. | The error message returned because the specified switch has been turned off. |
 
+Table 4. Error codes specific to Server Guard
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.aqs.REQUEST FAILED _ | Request failed. Try again later. | The error message returned because the request failed. Try again later. |
+
+Table 7. Error codes specific to Cloud Firewall
 
 | Error code | Error message |
 |---|---|
@@ -14121,8 +15022,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360104 | The specified application is invalid. Try again. |
 | yd.error.code.-360105 | An error occurred while obtaining the logs. |
 | yd.error.code.-360106 | An error occurred while obtaining the logs. |
-
-Cloud Security Network Detectio n and Response
 
 | yd.error.code.-360107 | The specified UID is invalid.Try again. |
 |---|---|
@@ -14151,8 +15050,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360130 | The specified ECS instance is unavailable. |
 | yd.error.code.-360131 | An unknown error occurred. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.code.-360132 | An error occurred while searching the route table. |
 |---|---|
 | yd.error.code.-360133 | The ID of the firewall is invalid. |
@@ -14177,8 +15074,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360152 | The endpoint is invalid. |
 | yd.error.code.-360153 | The endpoint is invalid. |
 | yd.error.code.-360154 | A timeout error occurred while creating the endpoint. |
-
-Cloud Security Network Detectio n and Response
 
 | yd.error.code.-360155 | A timeout error occurred while deleting the endpoint. |
 |---|---|
@@ -14208,8 +15103,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360179 | An error occurred while calling the operation. |
 | yd.error.code.-360180 | The number of VPCs that are attached to the CEN instance is insufficient. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.code.-360181 | The firewall of the CEN instance is overwritten. You do not need to create a firewall. |
 |---|---|
 | yd.error.code.-360182 | The security group does not exist. |
@@ -14235,8 +15128,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360202 | The specified network instance ID is invalid. |
 | yd.error.code.-360203 | The specified VPC does not exist. |
 | yd.error.code.-360204 | A timeout error occurred while creating a VPC. |
-
-Cloud Security Network Detectio n and Response
 
 | yd.error.code.-360205 | A timeout error occurred while creating a VPC. |
 |---|---|
@@ -14265,8 +15156,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360309 | An error occurred while updating the information about the cluster. |
 | yd.error.code.-360310 | An error occurred while updating the Express Connect circuit. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.code.-360311 | An error occurred while inserting the VLAN. |
 |---|---|
 | yd.error.code.-360312 | An error occurred while querying the IP address pool. |
@@ -14291,8 +15180,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-360407 | An error occurred while updating the attributes of the VBR. |
 | yd.error.code.-360408 | An error occurred while querying the VBR. |
 | yd.error.code.-360409 | An error occurred while creating the RI. |
-
-Cloud Security Network Detectio n and Response
 
 | yd.error.code.-360410 | An error occurred while updating the attributes of the RI. |
 |---|---|
@@ -14320,8 +15207,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-193201 | The specified parameters are insufficient. |
 | yd.error.code.-193202 | The specified parameter value is invalid. |
 | yd.error.code.-193203 | The specified time is invalid. |
-
-Cloud Security Network Detectio n and Response
 
 | yd.error.code.-193204 | The parameter is invalid. |
 |---|---|
@@ -14352,8 +15237,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-200106 | The IP address in the address book is invalid. Check the parameter and enter another value. |
 | yd.error.code.-200107 | The address book already exists. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.code.-200108 | An error occurred. Try again. |
 |---|---|
 | yd.error.code.-200109 | The address book is in use and cannot be deleted. |
@@ -14380,8 +15263,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-200130 | The number of address books exceeds the upper limit. |
 | yd.error.code.-200200 | A backend error occurred. |
 | yd.error.code.-200201 | A backend error occurred. |
-
-Cloud Security Network Detectio n and Response
 
 | yd.error.code.-200202 | A backend error occurred. |
 |---|---|
@@ -14414,8 +15295,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-210400 | An error occurred. Try again. |
 | yd.error.code.200 | Success |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.code.-230100 | The request method is invalid. |
 |---|---|
 | yd.error.code.-230101 | Authentication failed. |
@@ -14445,8 +15324,6 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-230125 | The submitted information is invalid. |
 | yd.error.code.-230126 | The rule is not changed. You do not need to publish the rule. |
 
-Cloud Security Network Detectio n and Response
-
 | yd.error.code.-230127 | The security group ID is invalid. |
 |---|---|
 | yd.error.code.-230128 | The IP address in the rule is invalid. |
@@ -14464,16 +15341,14 @@ Cloud Security Network Detectio n and Response
 | yd.error.code.-230302 | A backend error occurred. |
 | yd.error.code.-230400 | An unknown error occurred. |
 
+**Error codes specific to Network Detection and Response**
+
 | Error code | Error message | Description |
 |---|---|---|
 | ErrorNeedLogin.-210204 | need login (You are not logged on.) | The error message returned because you are not logged on. Log on first. |
 | ErrorAuthentication.-210101 | authentication error (An authentication error occurred.) | The error message returned because an authentication error occurred. Use a RAM role that has the required permissions. |
 | ErrorParametersAliUid.-210902 | invalid AliUid (The value of the AliUid parameter is invalid.) | The error message returned because the value of the AliUid parameter is invalid. Specify a valid value. |
 | ErrorParametersIpType.-210920 | invalid para ip type (The value of the ipType parameter is invalid.) | The error message returned because the value of the ipType parameter is invalid. Specify a valid value. |
-
-Cloud Security Network Detectio n and Response
-
-**Error codes specific to Network Detection and Response**
 
 | ErrorParametersSrcIP.-210919 | invalid para src ip (The value of the SrcIP parameter is invalid.) | The error message returned because the value of the SrcIP parameter is invalid. Specify a valid value. |
 |---|---|---|
@@ -14489,13 +15364,9 @@ Cloud Security Network Detectio n and Response
 | ErrorSourceAddressGroup.- 210304 | get source address in address group failed (Failed to obtain source addresses from the address group.) | The error message returned because the system failed to obtain source addresses from the address group. |
 | ErrorSourceAddressRange.- 210306 | source address range error, must be like \"192.168.XX.XX/192.168.XX.X X\" (The source address range is invalid. Example: \"192.168.XX.XX/192.168.XX.X X\") | The error message returned because the source address range is invalid. Specify the value in the \"192.168.XX.XX/192.168.XX.X X\" format. |
 
-Cloud Security Network Detectio n and Response
-
 | ErrorDestAddressGroup.- 210305 | get dest address in address group failed (Failed to obtain destination addresses from the address group.) | The error message returned because the system failed to obtain destination addresses from the address group. |
 |---|---|---|
 | ErrorNoBeaverRules.-210226 | no beaver rules for online (The specified Network Detection and Response rule does not exist.) | The error message returned because the specified Network Detection and Response rule does not exist. |
 | ErrorDBUpdate.-210121 | internal error: sql update (An internal error occurred while executing the UPDATE statement.) | The error message returned because an internal error occurred while executing the UPDATE statement. |
 | ErrorDBDelete.-210123 | internal error: sql delete (An internal error occurred while executing the DELETE statement.) | The error message returned because an internal error occurred while executing the DELETE statement. |
 | ErrorMarshalJSON.-210125 | internal error: marshal json (An internal error occurred while marshaling JSON data.) | The error message returned because an internal error occurred while marshaling JSON data. |
-
-Cloud Security Network Detectio n and Response

@@ -3,22 +3,52 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 64
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Developer Guide 20260828.pdf"
+source_pdf: "53ea718a5ce0bec6_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Developer Guide 20260828
 
+## Table of Contents
+
+- 1 Common action attributes
+- 2 Atom actions
+  - 2.1 API actions
+    - 2.1.1 ACS::ExecuteAPI
+    - 2.1.2 ACS::WaitFor
+    - 2.1.3 ACS::CheckFor
+    - 2.1.4 List of supported cloud products
+  - 2.2 Trigger actions
+  - 2.3 Control actions
+    - 2.3.1 ACS::Approve
+    - 2.3.2 ACS::Choice
+    - 2.3.3 ACS::Notify
+    - 2.3.4 ACS::Sleep
+  - 2.4 Embedding actions
+    - 2.4.1 Embedding actions
+- 3 Cloud product actions
+  - 3.1 ECS actions
+  - 3.2 DingTalk actions
+- 4 Executions
+  - 4.1 Overview
+  - 4.2 Execute a template in automatic execution mode
+  - 4.3 Execute a template in manual execution mode
+  - 4.4 View the details of an execution
+  - 4.5 Cancel an execution
+  - 4.6 Delete an execution
+  - 4.7 View the logs of an execution
+  - 4.8 Status transition diagram
+
 n attributes
 
-## Common action attributes
+## 1 Common action attributes
 
 An action is the minimum O&M unit that defines a specific operation.
 
 **Action types**
 
-Actions can be divided into the following types: Atom actions API actions Trigger actions Control actions Embedding actions Cloud product actions Elastic Compute Service (ECS) actions ApsaraDB RDS actions DingTalk actions
+Actions can be divided into the following types: Elastic Compute Service (ECS) actions ApsaraDB RDS actions
 
 **Name format**
 
@@ -357,11 +387,11 @@ Required. The type of the output item, such as `String` or `List` .
 
 n attributes Required. The value of the output item returned after the template is executed. You can specify the value of the ValueSelector attribute in the template by using a jQuery selector, such as .Instances or .Instances.Instance[].Status.
 
-## Atom actions
+## 2 Atom actions
 
-### API actions
+### 2.1 API actions
 
-#### ACS::ExecuteAPI
+#### 2.1.1 ACS::ExecuteAPI
 
 **Description**
 
@@ -723,7 +753,7 @@ stJo
 
 `]`
 
-#### ACS::WaitFor
+#### 2.1.2 ACS::WaitFor
 
 **Description**
 
@@ -858,7 +888,7 @@ JSON format
 
 `]`
 
-#### ACS::CheckFor
+#### 2.1.3 ACS::CheckFor
 
 **Features**
 
@@ -1048,7 +1078,7 @@ JSON format
 aue: {{ceateSapsot.Sapsotd}}
 ```
 
-#### List of supported cloud products
+#### 2.1.4 List of supported cloud products
 
 If you need to perform API actions on other cloud products, join the DingTalk group 23330931. We will offer help as soon as possible. The following table lists the cloud products that support API actions. The cloud products are sorted in alphabetical order.
 
@@ -1110,11 +1140,11 @@ If you need to perform API actions on other cloud products, join the DingTalk gr
 | ROS | Resource Orchestration | v20190910 | October 2019 |
 | DDOSBGP | DDoS Protection Suite | v20180720 | October 2019 |
 
-### Trigger actions
+### 2.2 Trigger actions
 
-### Control actions
+### 2.3 Control actions
 
-#### ACS::Approve
+#### 2.3.1 ACS::Approve
 
 **Features**
 
@@ -1399,7 +1429,7 @@ approve are {{getInstance.instanceNames}}, sent by {{ACS::RegionId}} oos {{ACS::
       "Value": "{{ getInstance.instanceIds }}"
 ```
 
-#### ACS::Choice
+#### 2.3.2 ACS::Choice
 
 **Description**
 
@@ -1532,7 +1562,7 @@ Outputs:
     Value: '{{ getInstance.instanceIds }}'
 ```
 
-#### ACS::Notify
+#### 2.3.3 ACS::Notify
 
 **Description**
 
@@ -1746,7 +1776,7 @@ https://help.aliyun.com/document_detail/63440.html",
 
 `]`
 
-#### ACS::Sleep
+#### 2.3.4 ACS::Sleep
 
 **Features**
 
@@ -1779,9 +1809,9 @@ JSON format (For more information, see the parameter description for the YAML fo
 
 The ISO 8601 standard is used to define the waiting duration. The duration ranges from 1 minute to 4 hours. The value is not case-sensitive. Examples: 1M or 1m: indicates 1 minute in the contracted form. 1H or 1h: indicates 1 hour in the contracted form. 1H2M: indicates 1 hour and 2 minutes in the contracted form. PT1H2M: indicates 1 hour and 2 minutes in the standard form.
 
-### Embedding actions
+### 2.4 Embedding actions
 
-#### Embedding actions
+#### 2.4.1 Embedding actions
 
 **Features**
 
@@ -1979,9 +2009,9 @@ JSON format
 
 actions
 
-## Cloud product actions
+## 3 Cloud product actions
 
-### ECS actions
+### 3.1 ECS actions
 
 This topic describes the Elastic Compute Service (ECS) actions specific to various scenarios, including their usage, involved API operations, parameters, outputs, and sample code. You can use the ACS::Template action to call the cloud product actions. For more information, see ACS::Template.
 
@@ -2053,7 +2083,7 @@ actions
 |---|---|---|---|---|---|
 | ACS::ECS::Ins tallLogtail | You can use this action to install Logtail. | DescribeInsta nces CreateComm and InvokeComm and DescribeInvoc ations DescribeInvoc ationResults DeleteComm and | instanceId: String logTailUser DefinedId: String OOSAssum eRole: String | exitCode: String invocationR esult: String | YAML |
 
-### DingTalk actions
+### 3.2 DingTalk actions
 
 This topic describes the DingTalk actions, including their usage, parameters, outputs, and sample code. You can use the ACS::Template action to call the cloud product actions. For more information, see ACS::Template.
 
@@ -2067,9 +2097,9 @@ actions
 |---|---|---|---|---|
 | ACS::Approve::Di ngTalkWebhook | You can use this action to send notifications to DingTalk through webhooks for approval. The execution remains in the Waiting status until the execution is approved or rejected. The execution continues if it is approved. Otherwise, the execution ends. | webhook: String msgtype: String text: JSON link: JSON markdown: JSON at: JSON | - | YAML |
 
-## Executions
+## 4 Executions
 
-### Overview
+### 4.1 Overview
 
 Operation Orchestration Service (OOS) allows you to execute a public or custom template in multiple execution modes.
 
@@ -2081,7 +2111,7 @@ Automatic: We recommend that you execute a template in this mode in the test env
 
 Require confirmation for high-risk tasks: For irrevocable O&M operations, such as deleting an ECS instance, you must manually confirm the operations. We recommend that you give priority to this mode when you execute a new template. Skip confirmation for high-risk tasks: If you are familiar with all the tasks orchestrated by a template, you can select this mode to skip the confirmation.
 
-### Execute a template in
+### 4.2 Execute a template in automatic execution mode
 
 **automatic execution mode**
 
@@ -2097,7 +2127,7 @@ select the public template that you want to execute and click **Create Execution
 7. On the Task Execution Management page, find the execution that you created and click
 **Details** in the Actions column to view the execution details.
 
-### Execute a template in manual
+### 4.3 Execute a template in manual execution mode
 
 **execution mode**
 
@@ -2116,7 +2146,7 @@ select the public template that you want to execute and click **Create Execution
 0. Click **OK**.
 1. Click **Log**. View the run logs of the task being debugged.
 
-### View the details of an
+### 4.4 View the details of an execution
 
 **execution**
 
@@ -2129,7 +2159,7 @@ click **Details** in the Actions column.
 figure.
 5. In the **execution result** section, click a task node to view the details of the task.
 
-### Cancel an execution
+### 4.5 Cancel an execution
 
 Operation Orchestration Service (OOS) allows you to cancel an execution.
 1. Log on to the **Apsara Stack OOS console**.
@@ -2138,7 +2168,7 @@ appears, find the execution that you want to manage and click Details in the Act
 3. In the upper-right corner of the Basic Information section, click **cancel execution**.
 4. In the cancel execution message, click **OK**.
 
-### Delete an execution
+### 4.6 Delete an execution
 
 Operation Orchestration Service (OOS) allows you to delete an execution in a final state. If the execution that you want to delete is in a non-final state, such as Waiting or Running, you must cancel the execution before you delete it.
 1. Log on to the **Apsara Stack OOS console**.
@@ -2147,7 +2177,7 @@ Operation Orchestration Service (OOS) allows you to delete an execution in a fin
 clickDeletein the Actions column.
 4. In the delete execution message, click **OK**.
 
-### View the logs of an execution
+### 4.7 View the logs of an execution
 
 You can view the logs of an execution to better understand the execution process. The logs can help you identify and troubleshoot issues.
 
@@ -2161,7 +2191,7 @@ appears, find the execution that you want to manage and click **Details** in the
 3. On the page that appears, click the **Log** tab in the output section to view the logs of the
 execution.
 
-### Status transition diagram
+### 4.8 Status transition diagram
 
 **Status transition diagram**
 

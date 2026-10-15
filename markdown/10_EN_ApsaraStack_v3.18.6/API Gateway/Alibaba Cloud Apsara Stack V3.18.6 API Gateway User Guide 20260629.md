@@ -2,20 +2,103 @@
 title: "API Gateway User Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 196
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 API Gateway User Guide 20260629.pdf"
+source_pdf: "00f8ee6c0c51d7e4_Alibaba Cloud Apsara Stack V3.18.6 API Gateway User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20API%20Gateway%20User%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # API Gateway User Guide 20260629
 
-## Product introduction
+## Table of Contents
 
-### What is API Gateway
+- 1 Product introduction
+  - 1.1 What is API Gateway
+- 2 Log on to the API Gateway console
+- 3 Log on to the O&M console of ASR for Geo-disaster Recovery
+- 4 Getting started
+  - 4.1 Use routes to access EDAS applications
+  - 4.2 Use routes to access applications in an ACK cluster
+- 5 Instance management
+  - 5.1 Instance list
+    - 5.1.1 Configure security group rules
+    - 5.1.2 Gateway instances (EDAS deployment architecture)
+    - 5.1.3 Gateway instance (Kubernetes deployment architecture)
+    - 5.1.4 Gateway instances (custom deployment architecture)
+  - 5.2 Shared instances
+  - 5.3 Import management
+  - 5.4 Service publication
+    - 5.4.1 Route groups
+    - 5.4.2 Route management
+    - 5.4.3 Plugin management
+      - 5.4.3.1 Plug-in marketplace
+      - 5.4.3.2 Global plug-ins
+      - 5.4.3.3 Develop custom plugins
+    - 5.4.4 Signature management
+  - 5.5 Service invocation
+    - 5.5.1 Consumers
+    - 5.5.2 API debugging
+    - 5.5.3 Authorization audit
+  - 5.6 Service management
+    - 5.6.1 Source management
+    - 5.6.2 Service list
+  - 5.7 Cascade management
+    - 5.7.1 Source routes
+    - 5.7.2 Source consumers
+    - 5.7.3 Source signatures
+    - 5.7.4 Cascade routes
+    - 5.7.5 Cascade consumers
+    - 5.7.6 Cascade signatures
+  - 5.8 Policy management
+    - 5.8.1 Create a policy
+    - 5.8.2 Policy lifecycle management
+    - 5.8.3 Policy types
+      - 5.8.3.1 Authentication policy
+        - 5.8.3.1.1 API KEY authentication
+        - 5.8.3.1.2 BASIC authentication
+        - 5.8.3.1.3 JWT authentication
+        - 5.8.3.1.4 OAuth 2.0 authentication
+        - 5.8.3.1.5 Custom authentication
+        - 5.8.3.1.6 API Gateway application authentication
+        - 5.8.3.1.7 CSB authentication
+      - 5.8.3.2 Throttling policies
+      - 5.8.3.3 Timeout policy
+      - 5.8.3.4 Circuit breaker policy
+      - 5.8.3.5 Mock policy
+      - 5.8.3.6 Signature Scheme
+      - 5.8.3.7 Cross-domain policies
+      - 5.8.3.8 Cache policy
+      - 5.8.3.9 IP blacklist and whitelist policy
+      - 5.8.3.10 Request tracing policy
+      - 5.8.3.11 ACL access control policy
+      - 5.8.3.12 HSF protocol mapping policy
+  - 5.9 Certificate management
+  - 5.10 Domain name management
+  - 5.11 Disaster recovery management
+    - 5.11.1 Disaster recovery groups
+    - 5.11.2 Disaster recovery services
+    - 5.11.3 Disaster recovery routes
+    - 5.11.4 Disaster recovery consumers
+    - 5.11.5 Disaster recovery policies
+- 6 Kubernetes cluster management
+- 7 Cascade management
+  - 7.1 Overview
+  - 7.2 Cascade gateways
+  - 7.3 Cascade links
+- 8 Disaster recovery management
+  - 8.1 Disaster recovery gateways
+- 9 Protocol conversion
+- 10 Interface center
+- 11 Gateway logs
+- 12 Best practices
+  - 12.1 Zone-disaster recovery
 
-API Gateway is a stable, reliable, and scalable platform for service integration, API hosting, and service publication. It lets you quickly integrate new and legacy business systems and expose their services as standard APIs. API Gateway helps you manage APIs of any scale and improves development and collaboration efficiency. You can also use the microservice gateway to securely publish and share your mature business services. API Gateway provides the following features: Service integration: Connect to services using a registry for service discovery or by specifying a fixed address. API management: Manage the full lifecycle of your service APIs, including creation, editing, maintenance, testing, and unpublishing. Gateway routing: Configure gateway routes to expose services to client applications. Plugin management: Use various system plugins for features such as redirection, request header modification, retries, and parameter-based routing. Traffic shaping: Control traffic by limiting the number of incoming requests to protect your services from traffic spikes. Gateway logs: You can use the log explorer to query request logs. Each log entry shows the call time, request method, request URI, source IP, return code, duration, and request and response data. Authentication and authorization: Authenticate clients and authorize their access to APIs. Supported client authentication methods include Basic and JWT.
+## 1 Product introduction
 
-## Log on to the API Gateway
+### 1.1 What is API Gateway
+
+API Gateway is a stable, reliable, and scalable platform for service integration, API hosting, and service publication. It lets you quickly integrate new and legacy business systems and expose their services as standard APIs. API Gateway helps you manage APIs of any scale and improves development and collaboration efficiency. You can also use the microservice gateway to securely publish and share your mature business services. API Gateway provides the following features: Service integration: Connect to services using a registry for service discovery or by specifying a fixed address. API management: Manage the full lifecycle of your service APIs, including creation, editing, maintenance, testing, and unpublishing. Gateway routing: Configure gateway routes to expose services to client applications. Plugin management: Use various system plugins for features such as redirection, request header modification, retries, and parameter-based routing. Traffic shaping: Control traffic by limiting the number of incoming requests to protect your services from traffic spikes. Gateway logs: You can use the log explorer to query request logs. Each log entry shows the call time, request method, request URI, source IP, return code, duration, and request and response data. Authentication and authorization: Authenticate clients and authorize their access to APIs. Supported client authentication methods include Basic and JWT. eway console
+
+## 2 Log on to the API Gateway console
 
 **console**
 
@@ -28,15 +111,8 @@ The URL of the Apsara Uni-manager Management Console is obtained from the deploy
 **Procedure**
 
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
-press the Enter key.
-
-**Note**
-
-You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
+press the Enter key. eway console You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click **Browser certificate installation** in the upper-right corner to open the browser certificate installation guide.
 2. Enter your username and password.
-
-**Note**
-
 Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
@@ -50,16 +126,13 @@ a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA d
 
 **You have enabled MFA and bound an MFA device:**
 
-Enter the 6-digit MFA verification code and click **Authenticate**.
-
-**Note**
-
-For more information about how to enable MFA and bind an MFA device, see the
+Enter the 6-digit MFA verification code and click **Authenticate**. For more information about how to enable MFA and bind an MFA device, see the
 **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, choose **Product > Middleware > Application Integration > API**
 **Gateway** to open the **API Gateway 2.0** console.
+nsole of ASR for Geo-disaster Rec overy
 
-## Log on to the O&M console
+## 3 Log on to the O&M console of ASR for Geo-disaster Recovery
 
 **of ASR for Geo-disaster**
 
@@ -75,15 +148,8 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 
 1. Open your browser.
 2. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console.
-Press the ENTER key.
-
-**Note**
-
-You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
+Press the ENTER key. nsole of ASR for Geo-disaster Rec overy You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported.
 3. Enter your username and password.
-
-**Note**
-
 Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @
 # $ %
 The password is 10 to 20 characters in length.
@@ -91,17 +157,13 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Disaster Recovery Management > ASR for Geo-disaster Recovery**.
 
-## Getting started
+## 4 Getting started
 
-### Use routes to access EDAS
+### 4.1 Use routes to access EDAS applications
 
 **applications**
 
-This topic describes how to call gateways. API Gateway exposes backend microservices for external calls. The backend microservices are developed with Spring Cloud and registered by using Nacos.
-
-**Note**
-
-Data resources on this platform are isolated by instances. Note that an instance is an abstract concept and does not refer to a specific node. An instance can have a single node or multiple nodes. In this example, an instance with a single node is used.
+This topic describes how to call gateways. API Gateway exposes backend microservices for external calls. The backend microservices are developed with Spring Cloud and registered by using Nacos. Data resources on this platform are isolated by instances. Note that an instance is an abstract concept and does not refer to a specific node. An instance can have a single node or multiple nodes. In this example, an instance with a single node is used.
 
 **Prerequisites**
 
@@ -112,9 +174,6 @@ The edas-demo application that contains an access path is created in the Enterpr
 1. Log in to the API Gateway console and create a gateway instance.
 On the Gateway instance page, click **Create an instance** to access the Create API Gateway Instance page. Select a region, configure the basic and network settings, and click
 **Submit**. After the instance is created, you can view the instance on the Instance List page.
-
-**Note**
-
 For more information about the parameter settings, see Create an instance. The following figure shows an example of creating an instance based on the EDAS deployment architecture. The selected cluster in **EDAS Configuration** must be in the same VPC as the edas-demo application in the Prerequisites section.
 2. Log in to the EDAS console and configure a Server Load Balancer (SLB) instance for the
 application. On the Application Details page, click **Add** next to **Server Load Balancer (Private)** in the
@@ -125,29 +184,18 @@ and **Container Port** to 80, and then click **OK**.
 
 In this example, creating a service source is optional. Go to the instance created in Create a gateway instance. Choose **Service > Source Management**, and click **Create Source**. Specify **Source Type**, **Source Name**, and **Address of Registration Centre**, and click
 **Confirm**. You can view the created sources in the source list.
-
-**Note**
-
 For more information about the parameter settings, see Create a source.
 
 **Create a service**
 
-Go to the instance created in Create a gateway instance. Choose **Service > Service List**, and click **Create Service**. Specify the required parameters, and click **Submission**. You can view the created service in the service list.
-
-**Note**
-
-For more information about the parameter settings, see Create a service. The following example shows how to create a service named edas-demo-service. In **Node**, set **Host name/IP** and **Port** to the IP address and port number of the edas-demo application specified in Prerequisites.
+Go to the instance created in Create a gateway instance. Choose **Service > Service List**, and click **Create Service**. Specify the required parameters, and click **Submission**. You can view the created service in the service list. For more information about the parameter settings, see Create a service. The following example shows how to create a service named edas-demo-service. In **Node**, set **Host name/IP** and **Port** to the IP address and port number of the edas-demo application specified in Prerequisites.
 
 **Create a route**
 
 After you register a service on the platform, you need to expose the service through a gateway. In this case, you need to create a route for the service on the gateway. Users can visit Gateway address+Route path+Interface path to access the service. Go to the instance created in Create a gateway instance. Choose **Open Services > Route**
 **Management**, and click **Create Route**. Specify **Route Name**, **Route Path**, and **Backend**
 **Services**, specify the route match conditions, and click **Confirm**. You can view the created
-route in the route list. The route supports exact match, placeholder match, and regular expression match.
-
-**Note**
-
-For more information about the parameter settings, see Create a route. In the following figure, a route named edas-demo-route is created. **Route Path** is set to `/demo/**` (regular expression match). The route is associated with the backend service edas-demo-service that has been created in Create a service. **Route Intercepting Series** must be enabled and set to 1. Leave other parameters as default. You can use `http://Gateway IP:PORT/ demo /echo/hello` to access the `/echo/hello` interface of the edas-demo-service. In the preceding example, exact route match can also be used. Specifically, **Route Path** is set to `/demo/echo/{str}` .
+route in the route list. The route supports exact match, placeholder match, and regular expression match. For more information about the parameter settings, see Create a route. In the following figure, a route named edas-demo-route is created. **Route Path** is set to `/demo/**` (regular expression match). The route is associated with the backend service edas-demo-service that has been created in Create a service. **Route Intercepting Series** must be enabled and set to 1. Leave other parameters as default. You can use `http://Gateway IP:PORT/ demo /echo/hello` to access the `/echo/hello` interface of the edas-demo-service. In the preceding example, exact route match can also be used. Specifically, **Route Path** is set to `/demo/echo/{str}` .
 
 **Test the connectivity**
 
@@ -157,13 +205,9 @@ Use SLB to call the gateway. Example: `curl http://Gateway IP address: PORT/ dem
 /echo/hello .
 ```
 
-Use API debugging for quick access. Click **Debugging** in the **Operation** column of the route created in the Create a route step, specify `/demo /echo/hello` as the access path, and click **Send**. The call is successful.
+Use API debugging for quick access. Click **Debugging** in the **Operation** column of the route created in the Create a route step, specify `/demo /echo/hello` as the access path, and click **Send**. The call is successful. API debugging is only used for testing. The connectivity of the actual gateway is subject to SLB calls.
 
-**Note**
-
-API debugging is only used for testing. The connectivity of the actual gateway is subject to SLB calls.
-
-### Use routes to access
+### 4.2 Use routes to access applications in an ACK cluster
 
 **applications in an ACK cluster**
 
@@ -182,11 +226,7 @@ A Kubernetes cluster is created in the ACK console. For more information, see **
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, click **Import K8s Cluster**.
 4. In the **Import to K8s cluster** panel, specify the parameters as shown in the following
-figure and click **Determine**.
-
-**Note**
-
-For more information about the parameter settings, see Import a cluster.
+figure and click **Determine**. For more information about the parameter settings, see Import a cluster.
 
 **Step 2: Create a gateway instance**
 
@@ -194,9 +234,6 @@ For more information about the parameter settings, see Import a cluster.
 2. Click **Create an instance**.
 3. Configure the parameters as shown in the following figure and click **Submit**.
 **Kubernetes Cluster**: Select the imported cluster.
-
-**Note**
-
 For more information about the parameter settings, see Gateway instance (Kubernetes deployment architecture).
 
 **Step 3: Obtain the IP address and port number**
@@ -214,9 +251,6 @@ kubectl get svc -n higress-system
 3. Configure the parameters as shown in the following figure and click **Submission**.
 Enter the IP address and port number obtained in the previous step in **Host name/IP** and
 **Port**, respectively.
-
-**Note**
-
 For more information about the parameter settings, see Create a service.
 
 **Step 5: Create a route**
@@ -224,27 +258,20 @@ For more information about the parameter settings, see Create a service.
 1. In the left-side navigation pane, choose **Open Services > Routing Management**.
 2. On the **Route Management** page, click **Create Route**.
 3. Configure the parameters as shown in the following figure and click **Confirm**.
-Specify the service you created in the previous step as **Backend Services**.
-
-**Note**
-
-For more information about the parameter settings, see Create a route.
+Specify the service you created in the previous step as **Backend Services**. For more information about the parameter settings, see Create a route.
 
 **Step 6: Verify the results**
 
 1. On the **Route Management** page, find the new route and click **Debugging** in the
 **Operation** column. The **API debugging** page is displayed.
 2. Configure the parameters as shown in the following figure and click **Send**.
+For more information, see API debugging.
 
-**Note**
+## 5 Instance management
 
-For more information, see API debugging. t
+### 5.1 Instance list
 
-## Instance management
-
-### Instance list
-
-#### Configure security group rules
+#### 5.1.1 Configure security group rules
 
 If API Gateway and a backend service are in the same Virtual Private Cloud (VPC), they can communicate. However, because they are usually in different security groups, you must configure security group rules to grant API Gateway the required access permissions.
 
@@ -252,14 +279,14 @@ If API Gateway and a backend service are in the same Virtual Private Cloud (VPC)
 
 A security group is a virtual firewall that controls the inbound and outbound traffic of Elastic Compute Service (ECS) instances and elastic network interfaces (ENIs). This feature enhances the security of ECS instances. Security groups provide stateful inspection and packet filtering. You can use security group attributes and rules to create security domains in the cloud. For more information, see the **Elastic Compute Service User Guide > Security Group**
 **Overview** topic.
-API Gateway supports two deployment architectures: EDAS deployment and custom deployment. In an EDAS deployment architecture, API Gateway instances must be associated with a Container Service for Kubernetes (ACK) cluster. The gateway instance uses the VPC, vSwitch, and security group of the node pool in the ACK cluster. In a custom deployment architecture, API Gateway instances are deployed in the tenant's ACK cluster or EDAS environment. You must ensure that the security groups allow access between the nodes where the instances are deployed and the backend services. The nodes for API Gateway and the backend service are typically in different security groups. You must grant API Gateway access permissions for the required port range in the security group of the backend service. t
+API Gateway supports two deployment architectures: EDAS deployment and custom deployment. In an EDAS deployment architecture, API Gateway instances must be associated with a Container Service for Kubernetes (ACK) cluster. The gateway instance uses the VPC, vSwitch, and security group of the node pool in the ACK cluster. In a custom deployment architecture, API Gateway instances are deployed in the tenant's ACK cluster or EDAS environment. You must ensure that the security groups allow access between the nodes where the instances are deployed and the backend services. The nodes for API Gateway and the backend service are typically in different security groups. You must grant API Gateway access permissions for the required port range in the security group of the backend service.
 
 **Procedure**
 
 1. Obtain the CIDR block of the node where the gateway instance is located.
 i. Log on to the Container Service for Kubernetes console. In the navigation pane on the left, choose **Clusters**. ii. On the **Cluster List** page, click the name of the target cluster. Then, in the navigation pane on the left, choose **Node Management > Node Pools**. Click the name of the node pool. iii. On the **Node Pool** page, find the **Node vSwitch** ID in the **Node Configurations** section.
 2. Obtain the CIDR block of the vSwitch.
-i. Log on to the Virtual Private Cloud (VPC) console. In the navigation pane on the left, choose **vSwitches**. ii. On the **vSwitches** page, find the vSwitch that you obtained in Step 1 and click its ID. t iii. On the **Basic Information** tab, the value of **IPv4 CIDR Block** is the CIDR block of the vSwitch.
+i. Log on to the Virtual Private Cloud (VPC) console. In the navigation pane on the left, choose **vSwitches**. ii. On the **vSwitches** page, find the vSwitch that you obtained in Step 1 and click its ID. iii. On the **Basic Information** tab, the value of **IPv4 CIDR Block** is the CIDR block of the vSwitch.
 3. Obtain the security group of the node where the target service is located.
 Upstream services associated with API Gateway are typically deployed in containers or on ECS instances. Obtain the security group ID as follows:
 
@@ -269,7 +296,10 @@ i. Log on to the Container Service for Kubernetes console. In the navigation pan
 
 **ECS deployment**
 
-i. Log on to the Elastic Compute Service (ECS) console. ii. In the navigation pane on the left, choose **Instances & Images > Instances**. Click the ID of the ECS instance where the target service is deployed.
+i. Log on to the Elastic Compute Service (ECS) console. ii. In the navigation pane on the left, choose **Instances & Images > Instances**. Click the ID of the ECS instance where the target service is deployed. iii. On the **Instance Details** page, click the **Security Groups** tab to obtain the security group ID.
+4. Add a security group rule.
+i. Log on to the ECS console. ii. In the navigation pane on the left, choose **Network & Security > Security Groups**. Click the ID of the security group that you obtained in Step 3 for the node where the target service is located. iii. Click the **Security Group Rules** tab. In the **Inbound** section, click **Add Security Group**
+**Rule**. Configure the following parameters and then click **OK**.
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -277,11 +307,6 @@ i. Log on to the Elastic Compute Service (ECS) console. ii. In the navigation pa
 | Priority | Enter the priority of the security group rule. | 1 |
 | Authorization Type | Select IPv4 CIDR Block Access. | IPv4 CIDR Block Access |
 | Authorization Object | Enter the CIDR block of the gateway instance's node from Step 1. | 172.16.0.2/24 |
-
-t iii. On the **Instance Details** page, click the **Security Groups** tab to obtain the security group ID.
-4. Add a security group rule.
-i. Log on to the ECS console. ii. In the navigation pane on the left, choose **Network & Security > Security Groups**. Click the ID of the security group that you obtained in Step 3 for the node where the target service is located. iii. Click the **Security Group Rules** tab. In the **Inbound** section, click **Add Security Group**
-**Rule**. Configure the following parameters and then click **OK**.
 
 **FAQ**
 
@@ -295,12 +320,6 @@ For example, the service might be deployed on Node A, but the security group rul
 2. Check if the target node is associated with multiple security groups.
 If so, add the rule to each security group.
 
-| Parameter | Description |
-|---|---|
-| Instance Name | The name must be 2 to 80 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores ( ), and hyphens (-). _ |
-
-t
-
 **The security group is authorized, and the gateway could access**
 
 **the service before. Why has it suddenly stopped working?**
@@ -311,7 +330,7 @@ You can use the `curl` command from another node in the same security group to c
 2. Confirm whether the port exposed by your published service has changed.
 For example, the port was 8080, and you authorized only port 8080 in the security group rule. If you later change the port to 8081, you must update the port in the security group rule. To avoid this issue, you can specify a wider port range, such as 1-65535, when you configure the security group rule.
 
-#### Gateway instances (EDAS deployment
+#### 5.1.2 Gateway instances (EDAS deployment architecture)
 
 **architecture)**
 
@@ -326,6 +345,10 @@ Your organization has enabled **Cloud Resource Access Authorization**.
 3. Click **Create Instance**.
 4. Enter the configuration information and click **Submit** to create the gateway instance.
 
+| Parameter | Description |
+|---|---|
+| Instance Name | The name must be 2 to 80 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores ( ), and hyphens (-). _ |
+
 | Number Of Instance Nodes | The number of nodes for the instance. Valid values: 1 to 100. |
 |---|---|
 | Instance Type | The instance types provided by the platform. |
@@ -333,14 +356,15 @@ Your organization has enabled **Cloud Resource Access Authorization**.
 | Deployment Architecture | Select EDAS. |
 | EDAS Configuration | You can add multiple configurations. The selected cluster must be in the same VPC as the backend service. The values in the Microservices Namespace, Cluster, and Kubernetes Namespace drop-down lists are sourced from existing data in Enterprise Distributed Application Service (EDAS). Prepare them in advance as needed. |
 
-t
 5. You can view the new gateway instance on the instance list page.
-
-**Note**
 
 **Instance status transitions:**
 
-Starting: The status of an instance immediately after it is created. Running: An instance enters the Running state after it starts and reports its information to the control plane. Abnormal: If the instance fails to report within the timeout period, the status changes to Abnormal. The overview page displays basic information, a gateway overview, and endpoint information for the instance.
+Starting: The status of an instance immediately after it is created. Running: An instance enters the Running state after it starts and reports its information to the control plane. Abnormal: If the instance fails to report within the timeout period, the status changes to Abnormal.
+
+**Instance overview**
+
+The overview page displays basic information, a gateway overview, and endpoint information for the instance.
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
@@ -350,7 +374,6 @@ instance ID or click **Details** in the **Operation** column.
 On the **Basic Information** tab:
 **Gateway Overview**: Displays the **Total Routes**, **Number of Consumers**, **Total**
 **Services**, and **Total Policies**.
-t
 **Basic Information**: Displays the **Instance ID**, **Instance Name**, **Status**, **Deployment**
 **Architecture**, **Namespace**, **Creation Time**, **Modification Time**, **Engine Type**,
 **Engine Version**, and **EDAS Configuration**. Click **View** next to **EDAS Configuration**
@@ -386,7 +409,7 @@ EDAS console.
 more information, see the **Scale Applications** section in **Enterprise Distributed**
 **Application Service EDAS User Guide**.
 
-#### Gateway instance (Kubernetes
+#### 5.1.3 Gateway instance (Kubernetes deployment architecture)
 
 **deployment architecture)**
 
@@ -395,13 +418,7 @@ This topic describes how to create and manage an API Gateway instance in a Kuber
 **Prerequisites**
 
 **Cloud Resource Access Authorization** is enabled for the current organization.
-
-| Parameter | Description |
-|---|---|
-| Organization | Select the organization to which the API Gateway instance belongs. Important After you create the instance, you cannot change the organization for the instance. |
-| Resource Set | Select the resource set for the gateway instance. You can select the default resource set or an existing one. Note You can use resource sets to categorize and manage the resources of your Alibaba Cloud account. This way, you can manage permissions, deploy resources, and monitor resources by group, without needing to handle individual resources separately. Important After you create the instance, you cannot change the resource set for the instance. |
-
-t A Kubernetes cluster is imported. For more information, see Import a cluster.
+A Kubernetes cluster is imported. For more information, see Import a cluster.
 
 **Create an instance**
 
@@ -409,6 +426,11 @@ t A Kubernetes cluster is imported. For more information, see Import a cluster.
 2. In the left-side navigation pane, choose **API Gateway > Instance List**.
 3. On the page that appears, click **Create an instance**.
 4. Configure the parameters described in the following table and click **Submit**.
+
+| Parameter | Description |
+|---|---|
+| Organization | Select the organization to which the API Gateway instance belongs. Important After you create the instance, you cannot change the organization for the instance. |
+| Resource Set | Select the resource set for the gateway instance. You can select the default resource set or an existing one. Note You can use resource sets to categorize and manage the resources of your Alibaba Cloud account. This way, you can manage permissions, deploy resources, and monitor resources by group, without needing to handle individual resources separately. Important After you create the instance, you cannot change the resource set for the instance. |
 
 | Region | Select the region to which the API Gateway instance belongs. Important After you create the instance, you cannot change the region for the instance. |
 |---|---|
@@ -421,10 +443,7 @@ t A Kubernetes cluster is imported. For more information, see Import a cluster.
 | Simple Log Service | If you select Use Simple Log Service, Simple Log Service (SLS) is activated and log shipping is enabled to help you analyze logs and visualize data on dashboards. |
 | Monitoring Plugin | If you select Prometheus Monitoring, the API Gateway instances are monitored on Prometheus. |
 
-t
 5. Click **OK**. The API Gateway instance is listed on the Gateway instance page.
-
-**Note**
 
 **Instance status transitions:**
 
@@ -432,9 +451,12 @@ t
 **In operation**: After the instance starts up and reports its status, the control
 plane receives the information and changes the instance state to In operation.
 **Abnormal**: If the instance fails to report its status within the expected timeout
-period, its state transitions to Abnormal. On the Overview page, you can view the basic information, gateway overview, and endpoint information about the instance.
+period, its state transitions to Abnormal.
+
+**Instance overview**
+
+On the Overview page, you can view the basic information, gateway overview, and endpoint information about the instance.
 1. Log in to the API Gateway console.
-t
 2. In the left-side navigation pane, choose **API Gateway > Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
@@ -481,14 +503,6 @@ the instance changes to **Shutdown**.
 **Restart an instance**
 
 If you need to continue using a gateway instance, you can restart it.
-
-| Parameter | Description |
-|---|---|
-| Instance Name | The name must be 2 to 80 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores ( ), and hyphens (-). _ |
-| Number Of Instance Nodes | The number of nodes for the instance. The value can be from 1 to 100. |
-| Instance Type | The instance types provided by the platform. |
-
-t
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List**.
 3. On the Gateway instance page, find the instance that you want to manage, click the
@@ -496,7 +510,7 @@ icon in the **Operation** column, and then select **Restart**.
 4. In the message that appears, click **OK**. In the instance list, the value in the **Instance**
 **Status** column for the instance changes to **Running**.
 
-#### Gateway instances (custom
+#### 5.1.4 Gateway instances (custom deployment architecture)
 
 **deployment architecture)**
 
@@ -511,15 +525,18 @@ Your organization must have **Cloud Resource Access Authorization** enabled.
 3. Click **Create Instance**.
 4. Enter the configuration information and click **Submit** to create the gateway instance.
 
+| Parameter | Description |
+|---|---|
+| Instance Name | The name must be 2 to 80 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores ( ), and hyphens (-). _ |
+| Number Of Instance Nodes | The number of nodes for the instance. The value can be from 1 to 100. |
+| Instance Type | The instance types provided by the platform. |
+
 | Gateway Type | Select API Gateway. |
 |---|---|
 | Deployment Architecture | Select Custom. |
 
-t
 5. In the instance list, you can find the created gateway instance, which has a status of **To be**
 **Deployed**.
-
-**Note**
 
 **Instance status transitions:**
 
@@ -538,6 +555,9 @@ kubectl apply -f deployment.yaml kubectl apply -f service.yaml
 ```
 
 For an ECS deployment, you need an ECS instance with network access to the console service. You must configure the environment variables for JDK 8. Then, copy the commands from the **ECS Deployment** tab that you viewed in the previous step and run them.
+
+**Instance overview**
+
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
@@ -549,7 +569,6 @@ and **Endpoints** of the instance. On the **Basic Information** tab, you can vie
 **Basic Information**: This section displays the **Instance ID**, **Instance Name**, **Status**,
 **Deployment Architecture**, **Namespace**, **Creation Time**, **Modification Time**,
 **Engine Version**, and **Engine Type** of the gateway instance.
-t
 **Custom Deployment Information**: This section displays the **Deployment**, **Service**,
 **Get JAR Package**, and **Deployment Command** information for the gateway instance.
 On the **Endpoints** tab, you can view the **Type**, **Network Type**, **ServiceName**, **External**
@@ -570,9 +589,6 @@ icon in the **Actions** column, and select **Edit**.
 3. Find the target instance, click the
 icon in the **Actions** column, and select **Unregister**.
 4. In the **Notice** dialog box, click **OK**.
-
-**Note**
-
 This operation only deletes the instance data from the database. It does not delete the running instance. You must manually delete the instance from Kubernetes or ECS.
 5. Delete the instance.
 For a Kubernetes deployment, run the following commands to delete the instance.
@@ -595,18 +611,19 @@ ps -ef | grep cop-broker kill -9 {Process ID}
 icon in the **Actions** column, and select **Force**
 **Logoff**.
 4. In the **Notice** dialog box, click **OK**.
+This operation deletes the instance record and its data from the database.
 
-**Note**
-
-This operation deletes the instance record and its data from the database. t
-
-### Shared instances
+### 5.2 Shared instances
 
 On the Shared Instance List, you can view and manage all available shared API Gateway instances in the current organization.
 
 **Background information**
 
-A shared instance is an API Gateway instance that is pre-created and pre-configured by the system or an administrator. It can be shared by multiple organization units, such as departments and project teams. The superior organization can view the resources of the subordinate organization. Resources are isolated among subordinate organizations. In most cases, shared instances are deployed in public networks and support HA, high performance, and access control among multiple tenants. Shared instances are maintained by the platform. You do not need to create or maintain the underlying infrastructure. On the Overview page, you can view the basic information, gateway overview, and endpoint of the shared instance.
+A shared instance is an API Gateway instance that is pre-created and pre-configured by the system or an administrator. It can be shared by multiple organization units, such as departments and project teams. The superior organization can view the resources of the subordinate organization. Resources are isolated among subordinate organizations. In most cases, shared instances are deployed in public networks and support HA, high performance, and access control among multiple tenants. Shared instances are maintained by the platform. You do not need to create or maintain the underlying infrastructure.
+
+**Overview of shared instances**
+
+On the Overview page, you can view the basic information, gateway overview, and endpoint of the shared instance.
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Shared Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
@@ -636,7 +653,6 @@ icon in the **Operation** column, and then select **Edit**.
 
 After a shared instance is deregistered, the instance and its data are deleted. Proceed with caution.
 1. Log in to the API Gateway console.
-t
 2. In the left-side navigation pane, choose **API Gateway > Shared Instance List**.
 3. Find the shared instance that you want to deregister, click the
 icon in the **Operation** column, and then select **Write-off** or **Force Logoff**.
@@ -662,7 +678,7 @@ icon in the **Operation** column, and then select **Restart**.
 4. In the message that appears, click **Determine**. In the instance list, the status in the
 **Instance Status** column changes to **In operation**.
 
-### Import management
+### 5.3 Import management
 
 API Gateway supports smooth migration of API definitions, group configurations, and authorization rules from the original API Gateway 1.0 to shared API Gateway instances. This reduces upgrade costs and ensures business continuity.
 
@@ -690,32 +706,25 @@ instance ID or click **Details** in the **Operation** column.
 | Enable group header | If the parameter is enabled, the request header x-apig-group-id:{groupId} is added as a routing condition when requests are forwarded. |
 | Designated group | Enter group IDs. Separate multiple groups with commas (,). Note If this parameter is left empty, all groups are imported. Otherwise, the data is filtered by specified group IDs. |
 
-t
-
 **View the details of an import task**
 
-t
 1. (Optional) On the **Data Import Management** page, you can search for an import task by
 **Task ID**, **Status**, or **Current stage**.
 2. In the task list, you can view **Task ID**, **Region**, **Current stage**, **Status**, **Message**,
 **Creation time**, and **Update time**.
 3. Click the task ID or click **Details** in the **Operation** column to view more information,
-including **Basic Information**, **Statistics**, and **Detailed information**. t
+including **Basic Information**, **Statistics**, and **Detailed information**.
 
 **Roll back data**
 
-If data import fails, you can cancel the task.
-
-**Note**
-
-The rollback operation rolls back full data in the download link.
+If data import fails, you can cancel the task. The rollback operation rolls back full data in the download link.
 1. In the import task list, find the task that you want to roll back and click **Rollback** in the
 **Operation** column.
 2. In the message that appears, click **Confirm**.
 
-### Service publication
+### 5.4 Service publication
 
-#### Route groups
+#### 5.4.1 Route groups
 
 The service provides a default group and allows you to create custom groups. This topic describes how to create and manage route groups.
 
@@ -738,7 +747,8 @@ instance ID or click **Details** in the **Operation** column.
 | Default domain as a routing condition | If you enable this feature, the system automatically allocates a domain name to the route group. |
 | Associated Domain Name | The domain names in the drop-down list are the associated names configured on the Domain Name Management page. |
 
-t
+**Search for route groups**
+
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
@@ -761,16 +771,7 @@ group ID or name. Then, view the information in the **Basic information** and **
 **Basic information**: View the **group ID**, **group name**, **default domain name**,
 **BasePath**, and **description**.
 **Associated Domain Name**: View and manage the domain names associated with the
-route group.
-
-| Parameter | Description |
-|---|---|
-
-t
-
-**Note**
-
-In the **Associate Domain Name** section, you can click **Add** to associate a domain name with the route group.
+route group. In the **Associate Domain Name** section, you can click **Add** to associate a domain name with the route group.
 
 **Modify a route group**
 
@@ -796,7 +797,7 @@ instance ID or click **Details** in the **Operation** column.
 **Delete** in the **Operation** column.
 6. In the **Alert** message, click **Determine**.
 
-#### Route management
+#### 5.4.2 Route management
 
 After you create a service, you can create routes for the service in the route management module. Routes are used to receive requests from external users and then forward the requests to backend services.
 
@@ -811,6 +812,9 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Routing** page, click **Create Route**.
 6. Configure the following parameters and click **Determine**.
 
+| Parameter | Description |
+|---|---|
+
 | Routing Grouping | The route group to which the route belongs. |
 |---|---|
 | Route Name | The name of the route, which cannot exceed 128 characters in length. |
@@ -824,14 +828,11 @@ instance ID or click **Details** in the **Operation** column.
 | Associated Domain Name | The domain name to be associated with the route group. |
 | Domain Name | The backend service domain name to be associated with the route. |
 
-t
-
 **View the details of a route**
 
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Open Services > Routing Management**.
@@ -841,24 +842,14 @@ configuration of the route. On the **Routing Details** tab, you can view the det
 **information**, **Associated Services**, **Associated Domain Name**, and **Enabled Status**.
 Click the **Policy Configuration** tab to manage the policies bound to the route. Click **Add**
 **Policy** to bind a policy to the route. For more information, see Policy management.
+In the route list, you can also click **Policy Configuration** in the **Operation** column of the target route to go to the **Policy Configuration** tab. Click the **Plugin configuration** tab to add plug-ins or manage the plug-ins of the route. Add a plug-in: Click **AddPlugin**, select a plug-in, configure the corresponding parameters as requested, and then click **Determine**. The configuration varies depending on the plug-in that you select. The actual parameters displayed on the page prevail. If no plug-in meets the requirements, you can add custom plug-ins. For more information, see Plugin management. Enable or disable a plug-in: Click **Enable** or **Disable** in the **Operation** column of the plug-in. In the **Alert** message, click **Determine**. Modify a plug-in: Click **Edit** in the **Operation** column of the plug-in, modify the parameters, and then click **Determine**. Remove a plug-in: Click **Delete** in the **Operation** column of the plug-in. In the **Alert** message, click **Determine**. View the details of a plug-in: Click the name of the plug-in to view the details on the page that appears. Click the **Interface Center** tab to view the details of the interfaces associated with the current route. For more information, see Interface center. In the route list, you can also click **Interface Center** in the **Operation** column of a route to go to the **Interface Center** tab.
 
-**Note**
-
-In the route list, you can also click **Policy Configuration** in the **Operation** column of the target route to go to the **Policy Configuration** tab. Click the **Plugin configuration** tab to add plug-ins or manage the plug-ins of the route. Add a plug-in: Click **AddPlugin**, select a plug-in, configure the corresponding parameters as requested, and then click **Determine**.
-
-**Note**
-
-The configuration varies depending on the plug-in that you select. The actual parameters displayed on the page prevail. If no plug-in meets the requirements, you can add custom plug-ins. For more information, see Plugin management. Enable or disable a plug-in: Click **Enable** or **Disable** in the **Operation** column of the plug-in. In the **Alert** message, click **Determine**. Modify a plug-in: Click **Edit** in the **Operation** column of the plug-in, modify the parameters, and then click **Determine**. Remove a plug-in: Click **Delete** in the **Operation** column of the plug-in. In the **Alert** message, click **Determine**. View the details of a plug-in: Click the name of the plug-in to view the details on the page that appears. Click the **Interface Center** tab to view the details of the interfaces associated with the current route. For more information, see Interface center.
-
-**Note**
-
-In the route list, you can also click **Interface Center** in the **Operation** column of a route to go to the **Interface Center** tab.
+**Generate source routes**
 
 **Important**
 
 Before you create a source route, you need to create a cascade link. For more information, see Cascade links.
 1. Log in to the API Gateway console.
-t
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
@@ -867,9 +858,6 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Routing Management** page, click **Source route generation** in the **Operation**
 column of a route.
 6. In the dialog box that appears, specify **Cascade link** and click **Determine**.
-
-**Note**
-
 After you complete the configuration, you can choose **Cascade > Source Routing** to view the generated source route. For more information, see Source routing.
 
 **Enable or disable a route**
@@ -905,7 +893,6 @@ icon in the **Operation** column of a route and click **Edit** to go to the **Ed
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Open Services > Routing Management**.
@@ -924,9 +911,6 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Open Services > Routing Management**.
 5. On the **Routing Management** page, select the routes that you want to delete and click
 **Batch Delete**.
-
-**Note**
-
 Make sure that the routes you select are not associated with capabilities or released APIs. Otherwise, you fail to delete the routes. A maximum of 100 routes can be deleted at a time. If you select more than 100 routes, the batch delete operation fails.
 6. In the **Alert** message, click **OK**.
 
@@ -944,11 +928,13 @@ instance ID or click **Details** in the **Operation** column.
 6. Configure the parameters and click **Send Request**. For more information, see API
 debugging.
 
-#### Plugin management
+#### 5.4.3 Plugin management
 
-##### Plug-in marketplace
+##### 5.4.3.1 Plug-in marketplace
 
-t The **plug-in marketplace** displays all plug-ins of the current gateway instance. You can use these plug-ins to implement different features, such as request or response rewriting and filtering and parameter mapping. Plug-ins are classified into two categories: built-in plug-ins and custom plug-ins. A built-in plug-in is provided by this service for all gateway instances. You can view its applicable scenarios and use methods on the Plugin Details page. Custom plug-ins are programmed by users. If the built-in plug-ins do not meet your requirements, you can write a custom plug-in. The following section describes how to write a custom plug-in.
+**Plug-in overview**
+
+The **plug-in marketplace** displays all plug-ins of the current gateway instance. You can use these plug-ins to implement different features, such as request or response rewriting and filtering and parameter mapping. Plug-ins are classified into two categories: built-in plug-ins and custom plug-ins. A built-in plug-in is provided by this service for all gateway instances. You can view its applicable scenarios and use methods on the Plugin Details page. Custom plug-ins are programmed by users. If the built-in plug-ins do not meet your requirements, you can write a custom plug-in. The following section describes how to write a custom plug-in.
 
 **View plug-in details**
 
@@ -971,15 +957,6 @@ fields are required.
 
 This service supports custom plug-ins. You can write code and package it as a custom plug-in to add it to a gateway. First, you need to follow the instructions of the custom plug-in, write the code and package it into a JAR package, and then upload the JAR package to a storage system that is accessible to the gateway instance, such as Object Storage Service (OSS). Then, you can obtain a download URL of the JAR package. For more information, see Develop custom plugins.
 1. Log in to the API Gateway console.
-
-| Parameter | Description |
-|---|---|
-| Plugin name | Enter a name for the plug-in. |
-| Download Address | Enter a URL that is accessible to the gateway instance, which downloads the plug-in to the on-premises device and stores the plug-in in the memory. If the gateway instance cannot access the URL, the plug-in cannot take effect. |
-| Plugin description | Enter a description for the plug-in. |
-| Configuration Fields | The fields must be the same as those written in the custom plug- in code. Otherwise, the fields cannot take effect. |
-
-t
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
@@ -988,6 +965,14 @@ instance ID or click **Details** in the **Operation** column.
 **market**.
 5. On the **Plugin market** page, click **Create a plug-in**.
 6. Configure the parameters and click **Determine**.
+
+| Parameter | Description |
+|---|---|
+| Plugin name | Enter a name for the plug-in. |
+| Download Address | Enter a URL that is accessible to the gateway instance, which downloads the plug-in to the on-premises device and stores the plug-in in the memory. If the gateway instance cannot access the URL, the plug-in cannot take effect. |
+| Plugin description | Enter a description for the plug-in. |
+| Configuration Fields | The fields must be the same as those written in the custom plug- in code. Otherwise, the fields cannot take effect. |
+
 After the plug-in is created, the plug-in is displayed on the Plugin market page. Then, you can configure the plug-in as a global plug-in or a routing plug-in.
 
 **Modify a custom plug-in**
@@ -1009,11 +994,6 @@ You can delete custom plug-ins that are not in use, including global plug-ins an
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-
-| Parameter | Description |
-|---|---|
-
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Open Services > Plugin Management > Plugin**
@@ -1034,7 +1014,7 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Plugin market** page, move the pointer over the
 icon of the plug-in card and select **Add global plugins**. For more information, see Global plug-ins.
 
-##### Global plug-ins
+##### 5.4.3.2 Global plug-ins
 
 The Global Plugin page displays all global plug-ins in the current gateway. After a global plugin is enabled, it takes effect on all routes of the current gateway.
 
@@ -1050,17 +1030,15 @@ instance ID or click **Details** in the **Operation** column.
 **Plugin**.
 5. On the **Global Plugin** page, click **Add global plugins**.
 6. In the **Add global plugins** panel, configure the parameters and click **Determine**.
-
-**Note**
-
 By default, a global plug-in is disabled after it is added. For more information about how to enable a global plug-in, see Modify the status of a global plug-in.
+
+| Parameter | Description |
+|---|---|
 
 | Plugin name | Select the global plug-in that you want to add from the plug-in marketplace. |
 |---|---|
 | Execution Priority | Requests may be processed by multiple plug-ins when they pass through a gateway. The order in which the plug-ins process requests is determined based on the priorities of the plug-ins. A smaller number indicates a higher priority. Valid values: 1 to 10000. Default value: 1000. |
 | Configuration | Specify all plug-in parameters. |
-
-t
 
 **View the details of a global plug-in**
 
@@ -1098,12 +1076,8 @@ the **Operation** column. After you enable the plug-in, you can click **Disable*
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Open Services > Plugin Management > Global**
 **Plugin**.
-t
 5. On the **Global Plugin** page, find the plug-in that you want to modify, click **Edit** in the
 **Operation** column, modify the parameters, and then click **Determine**.
-
-**Note**
-
 You can modify only the **Execution Priority** and **Configuration** settings of the global plug-in.
 
 **Remove a global plug-in**
@@ -1120,7 +1094,7 @@ the **Operation** column.
 6. In the **Alert** message, click **Determine**. If the plug-in is enabled, after you remove the
 plug-in, it no longer takes effect.
 
-##### Develop custom plugins
+##### 5.4.3.3 Develop custom plugins
 
 This topic describes how to develop custom plugins using the custom-plugin-demo template.
 
@@ -1140,7 +1114,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <relativePath/> <!-- lookup parent from repository -->
 ```
 
-`</` `t>` t
+`</` `t>`
 
 ```xml
   </parent>
@@ -1198,8 +1172,6 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
 </plugins>
 ```
 
-t
-
 ```
     </plugins>
   </build>
@@ -1224,16 +1196,22 @@ package com.example.customplugindemo.filter; import org.springframework.cloud.ga
     private static final String REQUEST_TIME_BEGIN = "requestTimeBegin";
 ```
 
-t
-
-```java
+```
     public RequestTimeGatewayFilterFactory() {
         super(Config.class);
-    }
+```
+
+`}`
+
+```java
     @Override
     public List<String> shortcutFieldOrder() {
         return Collections.singletonList(HEADER_KEY);
-    }
+```
+
+`}`
+
+```java
     @Override
     public GatewayFilter apply(Config config) {
         return new GatewayFilter() {
@@ -1248,27 +1226,29 @@ System.currentTimeMillis());
                             if (startTime != null) {
                                 long requestTime = System.currentTimeMillis() -
 startTime; exchange.getResponse().getHeaders().add(config.getHeader(), requestTime + "ms");
-                            }
-                        })
-                );
-            }
-        };
-    }
+```
+
+`}` `})` ); `}` }; `}`
+
+```java
     public static class Config {
         private String header;
         public String getHeader() {
             return header;
-        }
+```
+
+`}`
+
+```
         public void setHeader(String header) {
             this.header = header;
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Packaging**
 
-The custom plugin project uses the assembly plugin to package dependencies into the JAR file. As shown in the pom.xml file above, the assembly configuration file is located at src/main/assembly/assembly.xml. t
+The custom plugin project uses the assembly plugin to package dependencies into the JAR file. As shown in the pom.xml file above, the assembly configuration file is located at src/main/assembly/assembly.xml.
 
 ```xml
 <assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -1298,20 +1278,13 @@ After you package the file, upload it to an object storage system. This allows t
 2. In the navigation pane on the left, click **Bucket List**.
 3. On the **Bucket List** page, click the name of your bucket.
 4. Click the **Object Mannagement** tab and then click **Upload Object** . Upload the JAR
-package that you generated in the previous step. t
+package that you generated in the previous step. Set the file permission to public to obtain a permanent URL for the file. The URL must not contain special characters, such as the percent sign (%). This prevents parsing errors after the gateway downloads the JAR package.
 
-**Note**
+#### 5.4.4 Signature management
 
-Set the file permission to public to obtain a permanent URL for the file. The URL must not contain special characters, such as the percent sign (%). This prevents parsing errors after the gateway downloads the JAR package.
+**Overview**
 
-#### Signature management
-
-The current signature management module provides the following features:
-
-| Parameter | Description |
-|---|---|
-
-t Request anti-tampering: If the request information used for signature calculation is modified, the original signature becomes invalid and cannot pass signature verification. Signature timeliness: The request information used for signature calculation is valid only within a certain period of time. When the request information is expired, the signature cannot pass signature verification even if the request and signature information are correct. After API request signing is enabled, a client interacts with an API gateway based on the following procedure:
+The current signature management module provides the following features: Request anti-tampering: If the request information used for signature calculation is modified, the original signature becomes invalid and cannot pass signature verification. Signature timeliness: The request information used for signature calculation is valid only within a certain period of time. When the request information is expired, the signature cannot pass signature verification even if the request and signature information are correct. After API request signing is enabled, a client interacts with an API gateway based on the following procedure:
 
 **Enable API request signing**
 
@@ -1328,11 +1301,13 @@ instance ID or click **Details** in the **Operation** column.
 5. Click **Create Signature**.
 6. Configure the following parameters and click **Determine**.
 
+| Parameter | Description |
+|---|---|
+
 | Scheme Name | Enter a name for the signature plan, which is unique within shared instance. |
 |---|---|
 | Signature Algorithm | The algorithm used for request information perturbation and digest generation. Valid values: HMAC-SHA1, HMAC-SHA256, and HMAC-SM3. |
 
-t
 7. On the **Signature Management** page, you can view the signature plan that you create.
 
 **Configure a signature plan for a route**
@@ -1349,9 +1324,6 @@ and **Signature Strategy**, and then click **Determine**.
 7. On the Policy Configuration tab, click the ID of the signature policy to view the signature
 information, including **Signature Algorithm**, **Signature Key**, and **Signature Scheme**
 **Status**.
-
-**Note**
-
 After you configure a signature plan for a route, the signature plan can be used for API request signature calculation. You can configure multiple signature plans for a route. A client only needs to initiate requests that carry any of the specified signatures.
 
 **Enable or disable a signature plan**
@@ -1365,10 +1337,6 @@ instance ID or click **Details** in the **Operation** column.
 5. Select the signature plan that you want to manage and click **Enable** or **Disable** in the
 Operation column.
 6. In the message that appears, click **Determine**.
-t
-
-**Note**
-
 By default, the signature plan is enabled after it is created. If the SecretKey used in a signature plan is disclosed or the signature algorithm has vulnerabilities, the signature plan is no longer secure. Attackers can forge request information and exploit the signature plan to generate a signature to launch attacks. In this case, you need to disable the signature plan in a timely manner to minimize the loss. After the signature plan is disabled, requests that carry the signature can no longer pass signature verification.
 
 **Modify a signature plan**
@@ -1392,9 +1360,6 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Open Services > Signature Management**.
 5. Select the signature plan that you want to delete and click **Delete** in the Operation column.
 6. In the message that appears, click **Determine**.
-
-**Note**
-
 You can delete a signature plan only if the signature plan is disabled or not associated with any routes.
 
 **Disable API request signing**
@@ -1408,7 +1373,15 @@ instance ID or click **Details** in the **Operation** column.
 5. Select the route for which you want to disable API request signing and click **Policy**
 **Configuration** in the **Operation** column.
 6. Select the target signature policy and click **Disable** in the **Operation** column. In the **Alert**
-message, click **Determine**.
+message, click **Determine**. After you disable API request signing for a route, the signatures of requests that match the route are no longer verified until you enable this feature for the route again.
+
+**Integrate API request signing**
+
+After you enable API request signing for a route, requests that match the route must carry the specified signature to pass signature verification. To meet this goal, you must integrate API request signing with the client that initiates requests to add the signature to requests.
+
+**Integration logic**
+
+The request headers must carry the following signature information.
 
 | Field | Signature information | Description | Example |
 |---|---|---|---|
@@ -1418,19 +1391,11 @@ message, click **Determine**.
 | x-csb-sig-white-list | Request header whitelist | The keys of headers used for signature calculation, which are separated by semicolons (;) and sorted in ASCII ascending order. | x-csb-sig-expire;x-csb- sig-scheme;x-csb-sig- timestamp |
 | x-csb-sig | Signature | The signature generated based on the request information. | UiWshZ6PNWUGIpmm Qm2gnkHkGm5UIdkC7 sx23DTDDKs= |
 
-t
+Directly specify the preceding information except the signature. Calculate the signature based on the following procedure: Request information formatting. Request information perturbation. Digest generation based on the perturbation result. Digest encoding by using Base64. After encoding, the signature is generated.
 
-**Note**
+**Request information formatting**
 
-After you disable API request signing for a route, the signatures of requests that match the route are no longer verified until you enable this feature for the route again.
-
-**Integrate API request signing**
-
-After you enable API request signing for a route, requests that match the route must carry the specified signature to pass signature verification. To meet this goal, you must integrate API request signing with the client that initiates requests to add the signature to requests.
-
-**Integration logic**
-
-The request headers must carry the following signature information. Directly specify the preceding information except the signature. Calculate the signature based on the following procedure: Request information formatting. Request information perturbation.
+The following table lists the information used for signature calculation.
 
 | Parameter | Request information | Formatting |
 |---|---|---|
@@ -1441,26 +1406,21 @@ The request headers must carry the following signature information. Directly spe
 | query | Request parameters | Sort the request parameters in lexicographical ascending order and separate multiple KV pairs with ampersands (&). |
 | body | Request body | When mediatype is application/json, use the MD5 algorithm to obtain a binary array based on the JSON string and encode the array with Base64. When mediatype is application/x-www-form- urlencoded, include it in the query. When mediatype is set to other values, this parameter is left empty. |
 
-t Digest generation based on the perturbation result. Digest encoding by using Base64. After encoding, the signature is generated.
-
-**Request information formatting**
-
-The following table lists the information used for signature calculation. After you obtain the preceding information, sort the information based on the following format:
+After you obtain the preceding information, sort the information based on the following format:
 
 ```
 HttpMethod + '\n' + HeaderWhiteList +'\n' + header +'\n' + path + '\n' + query + '\n' + body
 ```
 
-t Sample request:
+Sample request:
 
 ```json
 curl --location --request POST 'localhost:80/test/echo' \ --header 'User-Agent: apifox/1.0.0 (https://www.apifox.cn)' \ --header 'Content-Type: application/json' \ --data-raw '{
     "id":1,
     "msg":"test"
-}'
 ```
 
-After the request is signed:
+`}'` After the request is signed:
 
 ```
 POST x-csb-sig-expire;x-csb-sig-scheme;x-csb-sig-timestamp 60000 fwj_test 1654571140853 /test/echo ewww8tc903GK8is3nD2jTA==
@@ -1477,7 +1437,7 @@ Perform the following steps to complete integration:
 2. Calculate the signature and return a signature calculation result object.
 Format the request information. Obtain the signature plan. Calculate the signature.
 3. Add the signature calculation result object to the request information.
-The code is as follows: t
+The code is as follows:
 
 ```java
 public abstract class AbstractApiSigFacade<T> {
@@ -1492,9 +1452,9 @@ public abstract class AbstractApiSigFacade<T> {
         //Add the signature calculation result object to the request information.
         T extSigReq = extReq(t,sigResDTO);
         return extSigReq;
-    }
-}
 ```
+
+`}` `}`
 
 **Encapsulation of information related to signature calculation,**
 
@@ -1507,19 +1467,17 @@ public abstract class AbstractApiSigFacade<T> {
     private Map<String,List<String>> header;
     private Map<String,List<String>> query;
     private SigCountBodyDTO body;
-}
 ```
 
-Signature calculation - request body
+`}` Signature calculation - request body
 
 ```java
 @Data public class SigCountBodyDTO {
     private String value;
     private String mediaType;
-}
 ```
 
-Signature information formatting class t
+`}` Signature information formatting class
 
 ```java
 @Data public class SigFormatMsgCmd {
@@ -1529,35 +1487,37 @@ Signature information formatting class t
     private Map<String,List<String>> query;
     private SigCountBodyDTO body;
     private String sigScheme;//The name of the signature plan.
-}
 ```
 
-Signature plan
+`}` Signature plan
 
 ```java
 @Data public class SigSchemeDTO {
     private String sigAlg;
     private String secretKey;
     private String sigSchemeName;
-}
 ```
 
-MediaType enumeration class
+`}` MediaType enumeration class
 
 ```java
 public class MediaTypeConstant {
     private MediaTypeConstant(){}
     public static final String APPLICATION_JSON = "application/json";
     public static final String APPLICATION_FORM_URLENCODED = "application/x-www-form-ur
-lencoded"; }
+lencoded";
 ```
 
-Enumeration information related to the signature information
+`}` Enumeration information related to the signature information
 
 ```java
 public class SigHeaderConstants {
     private SigHeaderConstants() {
-    }
+```
+
+`}`
+
+```
     public static final String HEADER_KEY_SIGN = "x-csb-sig";
     public static final String HEADER_KEY_SIGN_TIMESTAMP = "x-csb-sig-timestamp";
     public static final String HEADER_KEY_WHITE_LIST = "x-csb-sig-white-list";
@@ -1566,18 +1526,23 @@ public class SigHeaderConstants {
     public static final String DEFAULT_HEADER_WHITE_LIST = "x-csb-sig-expire;x-csb-sig-
 scheme;x-csb-sig-timestamp";
     public static final Long DEFAULT_SIG_EXPIRE = 60000L;
-}
 ```
 
-t Interface for querying the signature plan information
+`}` Interface for querying the signature plan information
 
 ```
 public interface ISigSchemeOneQryExe {
     SigSchemeDTO execute(BaseSigSchemeOneQry qry);
-} public interface ISigFormatMsgCmdExe {
-    SigFormatDTO execute(SigFormatMsgCmd sigFormatMsgCmd);
-}
 ```
+
+`}`
+
+```
+public interface ISigFormatMsgCmdExe {
+    SigFormatDTO execute(SigFormatMsgCmd sigFormatMsgCmd);
+```
+
+`}`
 
 **Calculate the signature and return the signature calculation**
 
@@ -1601,11 +1566,9 @@ public class SigSchemeOneQryExe implements ISigSchemeOneQryExe{
         sigSchemeDTO.setSigAlg("HmacSHA256");
         sigSchemeDTO.setSecretKey("4112e422-28dc-4918-9758-c4f510bd4638");
         return sigSchemeDTO;
-    }
-}
 ```
 
-Calculate the signature
+`}` `}` Calculate the signature
 
 ```java
 @AllArgsConstructor public class SigCountCmdExe {
@@ -1622,9 +1585,7 @@ Calculate the signature
         sigFormatMsgCmd.setPath(cmd.getPath());
 ```
 
-t
-
-```java
+```
         sigFormatMsgCmd.setHeader(cmd.getHeader());
         sigFormatMsgCmd.setQuery(cmd.getQuery());
         sigFormatMsgCmd.setBody(cmd.getBody());
@@ -1638,7 +1599,11 @@ sigSchemeDTO.getSecretKey());
         sigResDTO.setTimestamp(sigFormatDTO.getTimestamp());
         sigResDTO.setHeaderWhiteList(sigFormatDTO.getHeaderWhiteList());
         return sigResDTO;
-    }
+```
+
+`}`
+
+```java
     private  String createSign(
             String signType,
             String formateMsg,
@@ -1656,13 +1621,15 @@ SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8),signType);
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }
-        return null;
-    }
-}
 ```
 
-Format the request information
+`}`
+
+```
+        return null;
+```
+
+`}` `}` Format the request information
 
 ```java
 public class SigFormatMsgCmdExe implements ISigFormatMsgCmdExe{
@@ -1678,9 +1645,9 @@ public class SigFormatMsgCmdExe implements ISigFormatMsgCmdExe{
 headers.get(SigHeaderConstants.HEADERKEYSIGNTIMESTAMP).get(0);
 ```
 
-t _ _ _
+`_` `_` `_`
 
-```java
+```
         //Obtain the expiration time.
         String expire = headers.get(SigHeaderConstants.HEADER_KEY_EXPIRE).get(0);
         String formateMsg = formateMsg(cmd.getMethod(), headerWhiteList, headers, cmd.g
@@ -1690,7 +1657,11 @@ etPath(), query, body);
         sigFormatDTO.setTimestamp(timestamp);
         sigFormatDTO.setHeaderWhiteList(headerWhiteList);
         return sigFormatDTO;
-    }
+```
+
+`}`
+
+```
     public  String formateMsg(
             String method,
             String headerWhiteList,
@@ -1706,7 +1677,11 @@ etPath(), query, body);
                 .append(getQueryStr(query)).append('\n')
                 .append(body)
                 .toString();
-    }
+```
+
+`}`
+
+```java
     private Map<String, List<String>> getQuery(SigFormatMsgCmd cmd) {
         Map<String, List<String>> query = cmd.getQuery();
         SigCountBodyDTO body = cmd.getBody() == null ?  new SigCountBodyDTO() :
@@ -1717,10 +1692,17 @@ cmd.getBody();
             for (String mapStr : mapStrs) {
                 String[] map = mapStr.split("=");
                 query.put(map[0], Arrays.asList(map[1]));
-            }
-        }
+```
+
+`}` `}`
+
+```
         return query;
-    }
+```
+
+`}`
+
+```
     /**
      * If MediaType is application/json, use the MD5 algorithm to obtain the digest bas
 ed on the JSON string.
@@ -1737,8 +1719,6 @@ ed on the JSON string.
 MediaTypeConstant.APPLICATION_JSON.equals(cmd.getBody().getMediaType())) {
 ```
 
-t
-
 ```
             String bodyStr = cmd.getBody().getValue();
             if(StringUtils.isNotBlank(bodyStr)){
@@ -1748,11 +1728,17 @@ t
 Base64.encodeBase64String(md5.digest(bodyStr.getBytes(StandardCharsets.UTF_8)));
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
-                }
-            }
-        }
+```
+
+`}` `}` `}`
+
+```
         return "";
-    }
+```
+
+`}`
+
+```
     /**
      * Obtain the values of request header keys used for signature calculation.
      * The default is x-csb-sig-expire;x-csb-sig-scheme;x-csb-sig-timestamp.
@@ -1779,12 +1765,23 @@ headerOrigin.get(SigHeaderConstants.HEADER_KEY_WHITE_LIST);
                 treeSet.add(SigHeaderConstants.HEADER_KEY_SIG_SCHEME_ID);
                 for (String key : keys) {
                     treeSet.add(key.toLowerCase(Locale.ROOT));
-                }
+```
+
+`}`
+
+```
                 headerWhiteList = treeSet.stream().collect(Collectors.joining(";"));
-            }
-        }
+```
+
+`}` `}`
+
+```
         return headerWhiteList;
-    }
+```
+
+`}`
+
+```
     /**
      * Add headers.
      * If the timestamp and expiration time are not specified, the default values are u
@@ -1802,25 +1799,39 @@ headerWhiteList) {
         Map<String, List<String>> headerOrigin = new HashMap<>(cmd.getHeader());
 ```
 
-t
-
 ```
         //Add a timestamp.
         if(!headerOrigin.containsKey(SigHeaderConstants.HEADER_KEY_SIGN_TIMESTAMP)){
             String timeStamp = String.valueOf(System.currentTimeMillis());
 headerOrigin.put(SigHeaderConstants.HEADER_KEY_SIGN_TIMESTAMP,Arrays.asList(timeStamp));
-        }
+```
+
+`}`
+
+```
         //Add the expiration time.
         if(!headerOrigin.containsKey(SigHeaderConstants.HEADER_KEY_EXPIRE)){
 headerOrigin.put(SigHeaderConstants.HEADER_KEY_EXPIRE,Arrays.asList(String.valueOf(SigHea rConstants.DEFAULT_SIG_EXPIRE)));
-        }
+```
+
+`}`
+
+```
         //Add a signature plan.
         if (!headerOrigin.containsKey(SigHeaderConstants.HEADER_KEY_SIG_SCHEME_ID)){
 headerOrigin.put(SigHeaderConstants.HEADER_KEY_SIG_SCHEME_ID,Arrays.asList(cmd.getSigSche ()));
-        }
+```
+
+`}`
+
+```
 headerOrigin.put(SigHeaderConstants.HEADER_KEY_WHITE_LIST,Arrays.asList(headerWhiteList))
         return headerOrigin;
-    }
+```
+
+`}`
+
+```
     /**
      * Obtain the header values based on the request header whitelist and convert them
 to a string.
@@ -1835,7 +1846,11 @@ to a string.
 
 ```java
     private String getHeaderStr(Map<String,List<String>> header,String headerWhiteList)
-{
+```
+
+`{`
+
+```
         String[] whiteList = headerWhiteList.split(";");
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < whiteList.length-1; i++){
@@ -1843,19 +1858,25 @@ to a string.
             String str = value == null ?  "" :
 value.stream().collect(Collectors.joining(","));
             sb.append(str).append('\n');
-        }
+```
+
+`}`
+
+```
         List<String> value = header.get(whiteList[whiteList.length-1]);
         String str = value == null ?  "" :
 value.stream().collect(Collectors.joining(","));
         sb.append(str);
         return sb.toString();
-    }
+```
+
+`}`
+
+```
     /**
      * Format the request parameters.
 *Usetheformatofpath?k1 1&k2
 ```
-
-t
 
 ```
      * Use the format of path?k1=v1&k2=v2.
@@ -1881,9 +1902,9 @@ rs.
                     .append(v);
         });
         return sb.length() == 0 ?  "" : sb.substring(1);
-    }
-}
 ```
+
+`}` `}`
 
 **Create a signature information object based on the request**
 
@@ -1892,10 +1913,19 @@ rs.
 ApacheHttpClient is used in this example.
 
 ```java
-public class ApacheHttpClientApiSigFacade extends AbstractApiSigFacade<HttpRequestBase> {
+public class ApacheHttpClientApiSigFacade extends AbstractApiSigFacade<HttpRequestBase>
+```
+
+`{`
+
+```
     public ApacheHttpClientApiSigFacade(SigCountCmdExe sigCountCmdExe) {
         super(sigCountCmdExe);
-    }
+```
+
+`}`
+
+```java
     @Override
     protected SigCountCmd convertToSigCountCmd(HttpRequestBase req) {
         SigCountCmd sigCountCmd = new SigCountCmd();
@@ -1906,16 +1936,22 @@ public class ApacheHttpClientApiSigFacade extends AbstractApiSigFacade<HttpReque
         if (req instanceof HttpEntityEnclosingRequestBase){
             sigCountCmd.setBody(getBody(((HttpEntityEnclosingRequestBase)
 req).getEntity()));
-        }
+```
+
+`}`
+
+```
         return sigCountCmd;
-    }
+```
+
+`}`
+
+```
     /**
      * Obtain the request body from the request information.
      * The current version supports only application/json yu.
 *@paramentit
 ```
-
-t
 
 ```
      * @param entity
@@ -1929,7 +1965,11 @@ t
         SigCountBodyDTO sigCountBodyDTO = new SigCountBodyDTO();
         if (entity == null){
             return sigCountBodyDTO;
-        }
+```
+
+`}`
+
+```
         String mediaType = entity.getContentType().getValue();
         if (MediaTypeConstant.APPLICATION_JSON.equals(mediaType) ||
 MediaTypeConstant.APPLICATION_FORM_URLENCODED.equals(mediaType)){
@@ -1941,10 +1981,17 @@ InputStreamReader(entity.getContent()))){
                 sigCountBodyDTO.setValue(body);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        }
+```
+
+`}` `}`
+
+```
         return sigCountBodyDTO;
-    }
+```
+
+`}`
+
+```
     /**
      * Obtain the query from the request information.
      * @param qryStr
@@ -1964,10 +2011,17 @@ InputStreamReader(entity.getContent()))){
                 List<String> v = q.length > 1 ?  Arrays.asList(q[1]) :
 Collections.emptyList();
                 query.put(k, v);
-            }
-        }
+```
+
+`}` `}`
+
+```
         return query;
-    }
+```
+
+`}`
+
+```
     /**
      * Obtain the header information from the request information.
      * @param headers
@@ -1981,15 +2035,21 @@ Collections.emptyList();
         Map<String,List<String>> map = new HashMap<>();
         for (Header header : headers) {
             map.put(header.getName(),Arrays.asList(header.getValue()));
-        }
+```
+
+`}`
+
+```
 returnmap;
 ```
 
-t
-
 ```
         return map;
-    }
+```
+
+`}`
+
+```
     /**
      * Add the signature calculation result to the request information.
      * @param req
@@ -2008,9 +2068,9 @@ t
         req.setHeader(SigHeaderConstants.HEADER_KEY_SIGN,ext.getSig());
 req.setHeader(SigHeaderConstants.HEADER_KEY_WHITE_LIST,ext.getHeaderWhiteList());
         return req;
-    }
-}
 ```
+
+`}` `}`
 
 **Test**
 
@@ -2044,12 +2104,16 @@ ApacheHttpClientApiSigFacade(sigCountCmdExe);
         HttpResponse response = client.execute(get);
 ```
 
-t p p p g
+`p` `p` `p` `g`
 
 ```java
         System.out.println(response.getStatusLine());
         System.out.println(EntityUtils.toString(response.getEntity(), Charsets.UTF_8));
-    }
+```
+
+`}`
+
+```java
     @Test
     public void post_json() throws IOException {
         //Create a policy class to query the signature plan.
@@ -2084,7 +2148,11 @@ ApacheHttpClientApiSigFacade(sigCountCmdExe);
         HttpResponse response = client.execute(post);
         System.out.println(response.getStatusLine());
         System.out.println(EntityUtils.toString(response.getEntity(), Charsets.UTF_8));
-    }
+```
+
+`}`
+
+```
     @Test
     public void post_urlencoded() throws IOException {
         //Create a policy class to query the signature plan.
@@ -2094,11 +2162,6 @@ ApacheHttpClientApiSigFacade(sigCountCmdExe);
         //Create a policy class to calculate the signature.
         SigCountCmdExe sigCountCmdExe = new SigCountCmdExe(sigSchemeOneQryExe,
 ```
-
-| Parameter | Description |
-|---|---|
-
-t
 
 ```java
 sigFormatMsgCmdExe);
@@ -2125,13 +2188,13 @@ ApacheHttpClientApiSigFacade(sigCountCmdExe);
         HttpResponse response = client.execute(post);
         System.out.println(response.getStatusLine());
         System.out.println(EntityUtils.toString(response.getEntity(), Charsets.UTF_8));
-    }
-}
 ```
 
-### Service invocation
+`}` `}`
 
-#### Consumers
+### 5.5 Service invocation
+
+#### 5.5.1 Consumers
 
 A consumer is a client. When a service API is available to a third party, the third party can call the API as a client.
 
@@ -2146,14 +2209,15 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Consumer** page, click **Create Consumer**.
 6. Configure the parameters and click **Determine**.
 
+| Parameter | Description |
+|---|---|
+
 | Name | Enter a name for the consumer. |
 |---|---|
 | Description | Enter a description for the consumer. |
 | Authentication Method | Valid values: API KEY, BASIC, JWT, OAuth2.0, API gateway application, and CSB authentication. For more information, see Authentication policy. |
 | Token | You can use the random value generated by the system and click Refresh to generate a new random value. |
 | Consumer Grouping | Add the consumer to a consumer group as needed. |
-
-t
 
 **Configure an authentication method for the consumer**
 
@@ -2168,9 +2232,6 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Consumer** page, find the consumer that you want to modify and click **Edit** in the
 **Operation** column.
 6. Change the **authentication method** and configure the corresponding parameters.
-
-**Note**
-
 In a microservices architecture, multiple services may accept requests from external clients. In most cases, you need to process requests in the gateway and use the gateway as a check point for access from external services to internal services and authenticate access requests from external users. The following authentication methods are supported: API KEY, BASIC, JWT, OAuth2.0, API gateway application, and CSB authentication.
 **JSON Web Token (JWT)** is a highly lightweight specification that ensures secure
 and reliable information exchange between users and servers. During the authentication process, the client obtains a JWT. Set a minimum valid period for JWTs.
@@ -2182,7 +2243,6 @@ username and password in plaintext to the server for authentication. In most cas
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Invocation > Consumer**.
@@ -2212,14 +2272,10 @@ perform the following operations:
 a. On the **Consumer Authorization** tab, click **Associated Routing**. b. In the **Associated Routing** dialog box, select one or more routes and click
 **Determine**.
 **Revoke permissions**: You can disallow the consumer from accessing the APIs.
-a. On the **Consumer Authorization** tab, click **Stop authorization** in the **Operation** column. b. In the **Alert** message, click **Determine**. After the permissions are revoked, the status in the **Authorization Status** column changes to **Unauthorized**.
-
-**Note**
-
-To enable the permissions for the consumer, click **Open authorization** in the
+a. On the **Consumer Authorization** tab, click **Stop authorization** in the **Operation** column. b. In the **Alert** message, click **Determine**. After the permissions are revoked, the status in the **Authorization Status** column changes to **Unauthorized**. To enable the permissions for the consumer, click **Open authorization** in the
 **Operation** column.
 **Disassociated a route from the consumer** : After you disassociate a route from the
-consumer, the consumer no longer has permissions on the APIs. a. On the **Consumer Authorization** tab, click **Delete** in the **Operation** column. t b. In the **Alert** message, click **OK**.
+consumer, the consumer no longer has permissions on the APIs. a. On the **Consumer Authorization** tab, click **Delete** in the **Operation** column. b. In the **Alert** message, click **OK**.
 
 **Modify a consumer**
 
@@ -2244,6 +2300,9 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Consumer** page, find the consumer that you want to delete and click **Delete** in the
 **Operation** column.
 6. In the **Alert** message, click **Determine**.
+
+**Delete multiple consumers at the same time**
+
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
@@ -2253,18 +2312,15 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Consumer** page, select the consumers that you want to delete and click **Batch**
 **Delete**.
 6. In the message that appears, click **Determine**.
-
-**Note**
-
 You can delete at most 100 consumers at the same time. The operation fails if more than 100 consumers are specified.
 
-#### API debugging
+#### 5.5.2 API debugging
 
 API debugging can be used for quick and simple online testing of gateways. This topic describes how to debug an API operation.
 
 **Online testing**
 
-t After you create a gateway instance and add related services and routes, you can use API debugging to perform a simple and quick online test.
+After you create a gateway instance and add related services and routes, you can use API debugging to perform a simple and quick online test.
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
@@ -2273,9 +2329,12 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Invocation > API debugging**.
 5. On the **API debugging** page, enter an API operation and click **Send**.
 
-#### Authorization audit
+#### 5.5.3 Authorization audit
 
 The authorization audit feature records all application authorization and authorization modification operations in logs for archiving. This topic describes the authorization audit feature.
+
+**View authorization audit logs**
+
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
@@ -2285,25 +2344,15 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Authorized audit** page, you can view records of authorization operations and filter
 records by **name**, **consumer ID**, and **route name**.
 
-### Service management
+### 5.6 Service management
 
-#### Source management
+#### 5.6.1 Source management
+
+**Overview**
 
 API Gateway supports the following types of sources: **Nacos, microservices namespace,**
 **Eureka**, and **database**.
-
-| Parameter | Description |
-|---|---|
-| Source Type | Select NACOS. |
-| Source Name | Enter a source name that does not exceed 128 characters in length based on the use scenario. |
-| Source Description | Enter the description of the source. |
-
-| Parameter | Description |
-|---|---|
-| Address of Registration Centre | Enter node addresses and separate them with commas (,). Example: 127.0.0.1:8848. |
-| Authentication Method | Valid values: Exemption from Authentication, Alibaba Cloud authentication, and Simple Authentication. |
-
-t Before you create a service, you need to first create a source by specifying the information of the service source. This enables API Gateway to retrieve instance and service information from the specified source and manage service instances that belong to the source.
+Before you create a service, you need to first create a source by specifying the information of the service source. This enables API Gateway to retrieve instance and service information from the specified source and manage service instances that belong to the source.
 
 **Create a source**
 
@@ -2314,26 +2363,42 @@ t Before you create a service, you need to first create a source by specifying t
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Source Management**.
 5. On the Source Management page, click **Create Source**. In the **Create Source** panel,
-configure the parameters.
-
-**Note**
-
-For more information about how to create different types of sources, see Create a Nacos source, Create a microservice space source, Create an Eureka source, and Create a database source.
+configure the parameters. For more information about how to create different types of sources, see Create a Nacos source, Create a microservice space source, Create an Eureka source, and Create a database source.
 
 **Create a Nacos source**
 
 1. In the **Create Source** panel, configure **Basic information**.
+
+| Parameter | Description |
+|---|---|
+| Source Type | Select NACOS. |
+| Source Name | Enter a source name that does not exceed 128 characters in length based on the use scenario. |
+| Source Description | Enter the description of the source. |
+
 2. In the **Create Source** panel, configure **Registration Center**.
+
+| Parameter | Description |
+|---|---|
+| Address of Registration Centre | Enter node addresses and separate them with commas (,). Example: 127.0.0.1:8848. |
+| Authentication Method | Valid values: Exemption from Authentication, Alibaba Cloud authentication, and Simple Authentication. |
 
 | AccessKey/SecretKey | When Authentication Method is set to Alibaba Cloud authentication, you need to specify your AccessKey pair. For more information about how to obtain the AccessKey pair, see the AccessKey pairs of a personal account topic in Apsara Uni- manager Management Console User Guide. |
 |---|---|
 | User Name and Password | When Authentication Method is set to Simple Authentication, you need to specify the username and password. Example: nacos and nacos. |
+
+3. Click **Determine**.
+
+**Create a microservices namespace source**
+
+1. In the **Create Source** panel, configure **Basic information**.
 
 | Parameter | Description |
 |---|---|
 | Source Type | Select Microservice space. |
 | Source Name | Enter a source name that does not exceed 128 characters in length based on the use scenario. |
 | Source Description | Enter the description of the source. |
+
+2. In the **Create Source** panel, configure **Registration Center**.
 
 | Parameter | Description |
 |---|---|
@@ -2343,17 +2408,16 @@ For more information about how to create different types of sources, see Create 
 | Connection mode | Valid values: Address Server and Direct connection. |
 | Address Server Address | When Connection mode is set to Address Server, you need to enter a node IP address. |
 
-t
-3. Click **Determine**.
-
-**Create a microservices namespace source**
-
-1. In the **Create Source** panel, configure **Basic information**.
-2. In the **Create Source** panel, configure **Registration Center**.
-
 | Address Server Port | When Connection mode is set to Address Server, you need to enter the node port 8080. |
 |---|---|
 | Address of Registration Centre | When Connection mode is set to Direct connection, view the endpoint on the Configurations page of Microservice Configurations in the EDAS console. |
+
+3. Click **Determine**.
+API Gateway allows you to access microservices deployed in EDAS.
+
+**Create an Eureka source**
+
+1. In the **Create Source** panel, configure **Basic information**.
 
 | Parameter | Description |
 |---|---|
@@ -2361,22 +2425,6 @@ t
 | Source Name | Enter a source name that does not exceed 128 characters in length based on the use scenario. |
 | Source Description | Enter the description of the source. |
 
-| Parameter | Description |
-|---|---|
-| Source Type | Select Database. |
-| Source Name | Enter a source name that does not exceed 128 characters in length based on the use scenario. |
-| Source Description | Enter the description of the source. |
-
-t
-3. Click **Determine**.
-
-**Note**
-
-API Gateway allows you to access microservices deployed in EDAS.
-
-**Create an Eureka source**
-
-1. In the **Create Source** panel, configure **Basic information**.
 2. In the **Create Source** panel, configure **Registration Center**.
 Set **Address of Registration Centre** to a node IP address. Make sure that the IP address is valid.
 3. Click **Determine**.
@@ -2384,6 +2432,13 @@ Set **Address of Registration Centre** to a node IP address. Make sure that the 
 **Create a database source**
 
 1. In the **Create Source** panel, configure **Basic information**.
+
+| Parameter | Description |
+|---|---|
+| Source Type | Select Database. |
+| Source Name | Enter a source name that does not exceed 128 characters in length based on the use scenario. |
+| Source Description | Enter the description of the source. |
+
 2. In the **Create Source** panel, configure **Registration Center**.
 
 | Parameter | Description |
@@ -2396,7 +2451,6 @@ Set **Address of Registration Centre** to a node IP address. Make sure that the 
 | Maximum number of idle connections | Up to 1,000 idle connections are supported. |
 | Connection Idle Time (seconds) | The maximum connection idle time is 1,000 seconds. |
 
-t
 3. Click **Determine**.
 
 **Modify a source**
@@ -2409,16 +2463,12 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Source Management**.
 5. In the source list, click **Edit** in the **Operation** column of the target source.
 6. Modify the parameters and click **Determine**.
-
-**Note**
-
 API Gateway allows you to modify the configuration of sources to meet different business requirements. To ensure the stability of the downstream services of sources, API Gateway does not allow you to modify sources that are associated with downstream services.
 
 **View the details of a source**
 
 After you create a source, you can view the details of the source.
 1. Log in to the API Gateway console.
-t
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
@@ -2438,11 +2488,7 @@ information and registry center information of the source.
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Source Management**.
 5. On the Source Management page, click **Delete** in the **Operation** column of the target
-source. In the message that appears, click **Determine**.
-
-**Note**
-
-To ensure the stability of the downstream services of sources, API Gateway does not allow you to modify sources that are associated with downstream services.
+source. In the message that appears, click **Determine**. To ensure the stability of the downstream services of sources, API Gateway does not allow you to modify sources that are associated with downstream services.
 
 **Delete multiple sources at a time**
 
@@ -2454,16 +2500,23 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Source Management**.
 5. On the Source Management page, select the sources that you want to delete and click
 **Batch Delete** below the list. In the message that appears, click **Determine**.
-
-**Note**
-
 If any of the selected sources is associated with downstream services, the batch delete operation fails. You can delete up to 100 sources at a time. If you select more than 100 sources, the batch delete operation fails.
 
-#### Service list
+#### 5.6.2 Service list
 
 **Create a service**
 
 1. Log in to the API Gateway console.
+2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
+**Shared Instance List**.
+3. On the **Gateway instance** page, find the instance that you want to view and click the
+instance ID or click **Details** in the **Operation** column.
+4. In the left-side navigation pane, choose **Service Management > Service List**.
+5. On the **Service List** page, click **Create Service**.
+6. Configure the parameters and then click **Submission**.
+For more information about the parameters in the **Basic information** section, see Protocol conversion. The **Health Check** section is displayed only when you set **Service Type** to **RPC**
+**service** and **Upstream Type** to **Fixed node**, or when you set **Service Type** to
+**VPC**.
 
 | Parameter | Description |
 |---|---|
@@ -2474,33 +2527,9 @@ If any of the selected sources is associated with downstream services, the batch
 | Health Node Check Interval (s) | The interval at which health checks are performed on healthy nodes. For example, a value of 10 indicates that health checks are performed on healthy nodes every 10 seconds. |
 | Unhealthy node check interval (s) | The interval at which health checks are performed on unhealthy nodes. For example, a value of 5 indicates that health checks are performed on unhealthy nodes every 5 seconds. |
 
-t
-2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
-**Shared Instance List**.
-3. On the **Gateway instance** page, find the instance that you want to view and click the
-instance ID or click **Details** in the **Operation** column.
-4. In the left-side navigation pane, choose **Service Management > Service List**.
-5. On the **Service List** page, click **Create Service**.
-6. Configure the parameters and then click **Submission**.
-
-**Note**
-
-For more information about the parameters in the **Basic information** section, see Protocol conversion. The **Health Check** section is displayed only when you set **Service Type** to **RPC**
-**service** and **Upstream Type** to **Fixed node**, or when you set **Service Type** to
-**VPC**.
-
 | Check Threshold to Health Status | The number of consecutive times that an unhealthy node passes health checks before it is declared healthy. For example, a value of 3 indicates that an unhealthy node must pass three consecutive health checks before it is declared healthy. |
 |---|---|
 | Check Threshold to Unhealthy State | The number of consecutive times that a healthy node fails health checks before it is declared unhealthy. For example, a value of 3 indicates that a healthy node must fail three consecutive health checks before it is declared unhealthy. |
-
-| Parameter | Description |
-|---|---|
-| Name | You do not need to specify this parameter. The service name is automatically set to the name in the corresponding source. |
-| Description | The description of the service. |
-
-t
-
-**Note**
 
 Service types include **Fixed node** and **Service Discovery**. Before you select the
 **Service Discovery** type, you must create a service source. For more information, see
@@ -2517,6 +2546,11 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Service List** page, click **Import Service**.
 6. Configure the parameters and then click **Submission**.
 
+| Parameter | Description |
+|---|---|
+| Name | You do not need to specify this parameter. The service name is automatically set to the name in the corresponding source. |
+| Description | The description of the service. |
+
 | Upstream Type | Service Discovery is specified by default. You do not need to specify this parameter. |
 |---|---|
 | Load balancing algorithm | Valid values: Polling and Random. |
@@ -2526,8 +2560,6 @@ instance ID or click **Details** in the **Operation** column.
 | Service not imported | The services that exist in the source. You can select the services to be imported. |
 | Imported Services | You can select services in the Service not imported section and click Import to add the services to the Imported Services section. |
 | Protocol Type | Valid values: HTTP, HTTPS, and Dubbo. |
-
-t
 
 **Modify a service**
 
@@ -2540,9 +2572,6 @@ instance ID or click **Details** in the **Operation** column.
 5. On the Service List page, find the service that you want to manage and click **Edit** in the
 **Operation** column.
 6. Modify the parameter settings and click **Submission**.
-
-**Note**
-
 The service configuration may change as the upstream type is modified. Therefore, you may need to modify the service by adjusting the parameters associated with the new upstream type.
 
 **View a service**
@@ -2550,7 +2579,6 @@ The service configuration may change as the upstream type is modified. Therefore
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Service List**.
@@ -2567,15 +2595,7 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Service List**.
 5. In the service list, find the service that you want to view and click its name to go to the
 **Service Details** page. You can view the basic information and other configurations of the
-service. On the **Service Details** tab, you can view the service details.
-
-**Note**
-
-In the **Basic information** section, click **Modification** to modify the description of the service. In the **Service Node** section, click the icon in the **Flow Ratio** column to modify the traffic ratio. Nodes with a 0% traffic ratio can be undeployed, and only undeployed nodes can be deleted. On the **Strategy configuration** tab, you can manage policies that are attached to the service. You can click **AddStrategy** to attach a policy to the service. For more information, see Policy management.
-
-**Note**
-
-On the Service List page, you can click **Strategy configuration** in the **Operation** column to go to the **Strategy configuration** tab. On the **Associated MCP** tab, you can view the information about the MCP server associated with the service, including **MCP Server Name**, **Service Type**, **Description**, and **Creation Time**.
+service. On the **Service Details** tab, you can view the service details. In the **Basic information** section, click **Modification** to modify the description of the service. In the **Service Node** section, click the icon in the **Flow Ratio** column to modify the traffic ratio. Nodes with a 0% traffic ratio can be undeployed, and only undeployed nodes can be deleted. On the **Strategy configuration** tab, you can manage policies that are attached to the service. You can click **AddStrategy** to attach a policy to the service. For more information, see Policy management. On the Service List page, you can click **Strategy configuration** in the **Operation** column to go to the **Strategy configuration** tab. On the **Associated MCP** tab, you can view the information about the MCP server associated with the service, including **MCP Server Name**, **Service Type**, **Description**, and **Creation Time**.
 
 **Delete a service**
 
@@ -2586,12 +2606,8 @@ After a service is added to the gateway, you can delete the service.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Service List**.
-t
 5. On the Service List page, find the service that you want to manage and click **Delete** in the
 **Operation** column.
-
-**Note**
-
 The selected service must not be associated with a route. Otherwise, the service fails to be deleted.
 6. In the message that appears, click **Determine**.
 
@@ -2606,14 +2622,11 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Service Management > Service List**.
 5. On the Service List page, select the services that you want to delete and click **Batch**
 **Delete**. In the message that appears, click **Determine**.
-
-**Note**
-
 The selected services must not be associated with any route. Otherwise, the services fail to be deleted. You can delete at most 100 services in a batch. The deletion fails if more than 100 services are selected.
 
-### Cascade management
+### 5.7 Cascade management
 
-#### Source routes
+#### 5.7.1 Source routes
 
 This topic describes how to create and manage source routes. For more information about the cascade feature and relevant terms, see Overview.
 
@@ -2631,6 +2644,12 @@ Users in Network B can access backend services in Network A through the cascade 
 
 The following operations must be performed in the console of the source gateway.
 1. Log in to the API Gateway console.
+2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
+**Shared Instance List**.
+3. On the **Gateway instance** page, find the instance that you want to view and click the
+instance ID or click **Details** in the **Operation** column.
+4. In the left-side navigation pane, choose **Cascade Management > Source Routing**.
+5. Click **Create Source Route**, configure the parameters, and then click **Determine**.
 
 | Parameter | Description |
 |---|---|
@@ -2642,14 +2661,6 @@ The following operations must be performed in the console of the source gateway.
 | Backend Services | Specify backend services in the same way you specify backend services for a regular route. For more information, see Create a service or Import a service in the Service list topic. |
 | Cascade link | Select a cascade link, which is the cascade gateway to which the source route is synchronized. For more information about how to create a cascade link, see the "Create a cascade link" section in the Cascade links topic. |
 
-t
-2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
-**Shared Instance List**.
-3. On the **Gateway instance** page, find the instance that you want to view and click the
-instance ID or click **Details** in the **Operation** column.
-4. In the left-side navigation pane, choose **Cascade Management > Source Routing**.
-5. Click **Create Source Route**, configure the parameters, and then click **Determine**.
-
 **Considerations after you create a source route**
 
 You can view the status of cascade route synchronization on the source route details page.
@@ -2657,11 +2668,7 @@ You can view the status of cascade route synchronization on the source route det
 **Failed to create** indicates that the system failed to create the route. You can check the
 log to locate the cause. If the synchronization failure persists, modify the target cascade gateway in the **Cascading**
 **Gateway** list. Click **Test Connection** and check whether you can connect to the console of
-the cascade gateway. If the connection failed, troubleshoot the failure based on the error message. If the connection is created, modify the source route and try again. If the connection is created but "Synchronization failed" is still prompted, contact the developer to troubleshoot the issue. After you confirm that both the source route and the cascade route are functioning as expected, check whether the route can be used to forward requests as expected. t
-
-**Note**
-
-To distinguish from regular routes, the `**API gateway_cascade:true**` header match rule is added for both the source route and cascade route. Therefore, when you initiate a request, make sure that the request carries the header so that the request can match the corresponding route.
+the cascade gateway. If the connection failed, troubleshoot the failure based on the error message. If the connection is created, modify the source route and try again. If the connection is created but "Synchronization failed" is still prompted, contact the developer to troubleshoot the issue. After you confirm that both the source route and the cascade route are functioning as expected, check whether the route can be used to forward requests as expected. To distinguish from regular routes, the `**API gateway_cascade:true**` header match rule is added for both the source route and cascade route. Therefore, when you initiate a request, make sure that the request carries the header so that the request can match the corresponding route.
 
 **View the details of a source route**
 
@@ -2675,24 +2682,13 @@ instance ID or click **Details** in the **Operation** column.
 **Source Route Details** page and view the details and configuration of the source route.
 On the **Routing Details** tab, you can view the details of the source route, including
 **Basic information**, **Associated Services**, and **Cascade link**.
-On the **Policy Configuration** tab, you can manage the policies that are bound to the current source route. Click **Add Policy** to bind a policy to the source route.
-
-**Note**
-
-In the source route list, click **Policy Configuration** in the **Operation** column of the target source route to go to the **Policy Configuration** tab. The **Create Policy** page displays the available policies and labels these policies with "Support synchronization" or "Synchronization is not supported". "Support synchronization" means that the policy will be synchronized to the cascade route after the policy is created. Synchronization is not supported" means that the policy will not be synchronized to the cascade route after the policy is created. The other policy configurations are the same as creating a policy for a regular route. On the **Plugin Configuration** tab, you can add plug-ins for the current source route and manage the plug-ins of the source route. Add a plug-in: Click **Add a routing plugin**, select a plug-in, specify **Execution**
+On the **Policy Configuration** tab, you can manage the policies that are bound to the current source route. Click **Add Policy** to bind a policy to the source route. In the source route list, click **Policy Configuration** in the **Operation** column of the target source route to go to the **Policy Configuration** tab. The **Create Policy** page displays the available policies and labels these policies with "Support synchronization" or "Synchronization is not supported". "Support synchronization" means that the policy will be synchronized to the cascade route after the policy is created. Synchronization is not supported" means that the policy will not be synchronized to the cascade route after the policy is created. The other policy configurations are the same as creating a policy for a regular route. On the **Plugin Configuration** tab, you can add plug-ins for the current source route and manage the plug-ins of the source route. Add a plug-in: Click **Add a routing plugin**, select a plug-in, specify **Execution**
 **Priority**, and then click **Determine**.
-
-**Note**
-
 The plug-in configuration may vary depending on the plug-in you add. The actual parameters displayed in the console prevail. If no plug-in meets the requirements, you can add custom plug-ins. For more information, see Plugin management. Plug-ins added to a source route are not synchronized to the corresponding cascade route. This means that the plug-ins take effect only on requests that match the source route. Enable or disable a plug-in: Click **Enable** or **Disable** in the **Operation** column. In the
 **Alert** message, click **Determine**.
-t Modify a plug-in: Click **Edit** in the **Operation** column of the target plug-in, modify the parameters, and click **Determine**. Remove a plug-in: Click **Delete** in the **Operation** column of the target plug-in. In the
+Modify a plug-in: Click **Edit** in the **Operation** column of the target plug-in, modify the parameters, and click **Determine**. Remove a plug-in: Click **Delete** in the **Operation** column of the target plug-in. In the
 **Alert** message, click **Determine**.
-View the details of a plug-in: Click the name of the plug-in. In the panel that appears, you can view the plug-in details. On the **Interface Center** tab, you can view the details of interfaces associated with the source route. For more information, see Interface center.
-
-**Note**
-
-In the source route list, click **Interface Center** in the **Operation** column of the target source route to go to the **Interface Center** tab.
+View the details of a plug-in: Click the name of the plug-in. In the panel that appears, you can view the plug-in details. On the **Interface Center** tab, you can view the details of interfaces associated with the source route. For more information, see Interface center. In the source route list, click **Interface Center** in the **Operation** column of the target source route to go to the **Interface Center** tab.
 
 **Perform source route debugging**
 
@@ -2728,21 +2724,11 @@ icon in the **Operation** column, and click **Edit**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Cascade Management > Source Routing**.
-
-| Parameter | Description |
-|---|---|
-| Name | The name of the source consumer. |
-| Description | The description of the source consumer. |
-| Authentication Method | Valid values: API KEY, BASIC, and JWT. For more information, see Authentication policy. |
-| Token | You can use a random value generated by the platform and click Refresh to change the random value. |
-| Source Consumer Group | The group to which the source consumer belongs. |
-
-t
 5. On the **Source Routing** page, select the source route you want to delete, click the
 icon in the **Operation** column, and click **Delete**.
 6. In the **Alert** message, click **Determine**.
 
-#### Source consumers
+#### 5.7.2 Source consumers
 
 This topic describes how to create and manage source consumers. For more information about the cascade feature and relevant terms, see Overview.
 
@@ -2766,10 +2752,16 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Source consumer** page, click **Create Source Consumer**.
 6. Configure the parameters and click **Determine**.
 
+| Parameter | Description |
+|---|---|
+| Name | The name of the source consumer. |
+| Description | The description of the source consumer. |
+| Authentication Method | Valid values: API KEY, BASIC, and JWT. For more information, see Authentication policy. |
+| Token | You can use a random value generated by the platform and click Refresh to change the random value. |
+| Source Consumer Group | The group to which the source consumer belongs. |
+
 | Cascade link | Select a cascade link to synchronize the source consumer to the selected cascade gateway. For more information about how to create a cascade link, see the "Create a cascade link" section in the Cascade links topic. |
 |---|---|
-
-t
 
 **Source Consumer Authentication**
 
@@ -2783,9 +2775,6 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Source consumer** page, find the target source consumer and click **Update**
 **Certification** in the **Operation** column.
 6. Select a different **authentication method** and configure the parameters.
-
-**Note**
-
 In a microservices architecture, multiple services will receive requests from external clients. In most cases, a gateway is needed to process these requests, which serves as a controller node between external and internal services. The gateway also needs to verify the identities of external users that send the requests. The following authentication methods are supported: API key, BASIC, JWT, OAuth2.0, API gateway application, and CBS.
 **JSON Web Token** (JWT): a lightweight specification that ensures secure and
 reliable information transfer between users and servers. Users need to obtain a JWT to pass identity verification. The retention period of a JWT must not exceed its validity period.
@@ -2803,7 +2792,7 @@ instance ID or click **Details** in the **Operation** column.
 5. Optional. On the **Source consumer** page, you can search for source consumers by **name**,
 **ID**, and **authentication method**.
 6. Click the ID of the target source consumer to view its details.
-On the **Basic configuration** tab, you can view the basic information, authentication information, group, and cascade link of the source consumer. t
+On the **Basic configuration** tab, you can view the basic information, authentication information, group, and cascade link of the source consumer.
 **Basic information**: You can view **Source Consumer ID**, **Source Consumer Name**,
 **Source Consumer Description**, and **Source Consumer Status**.
 **Source Consumer Authentication**: You can view the authentication method and
@@ -2830,11 +2819,7 @@ to access certain APIs. a. On the **Source Consumer Authorization** tab, click *
 **Suspend authorization**: You can temporarily suspend the authorization that allows the
 source consumer to access certain APIs. a. On the **Source Consumer Authorization** tab, click **Stop authorization** in the
 **Operation** column of the source consumer.
-b. In the **Alert** message, click **Determine**. The **Authorization Status** column then changes to **Unauthorized**.
-
-**Note**
-
-After you stop authorization, you can click **Open Authorization** in the **Operation** column of the source consumer to allow the source consumer to access the APIs again.
+b. In the **Alert** message, click **Determine**. The **Authorization Status** column then changes to **Unauthorized**. After you stop authorization, you can click **Open Authorization** in the **Operation** column of the source consumer to allow the source consumer to access the APIs again.
 **Revoke permissions**: You can revoke the permissions of the source consumer on
 certain APIs. a. On the **Source Consumer Authentication** tab, click **Delete** in the **Operation** column of the source consumer. b. In the **Alert** message, click **Determine**.
 
@@ -2843,7 +2828,6 @@ certain APIs. a. On the **Source Consumer Authentication** tab, click **Delete**
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Cascade Management > Source consumer**.
@@ -2874,13 +2858,9 @@ You can disable source consumers that are not in use.
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Cascade Management > Source consumer**.
 5. On the **Source consumer** page, find the source consumer that you want to disable and
-click **Deactivate** in the **Operation** column.
+click **Deactivate** in the **Operation** column. To use a disabled source consumer, click **Enable** in the **Operation** column of the source consumer.
 
-**Note**
-
-To use a disabled source consumer, click **Enable** in the **Operation** column of the source consumer.
-
-#### Source signatures
+#### 5.7.3 Source signatures
 
 This topic describes how to create and manage source signatures. For more information about the cascade feature and relevant terms, see Overview.
 
@@ -2890,14 +2870,6 @@ This topic describes how to create and manage source signatures. For more inform
 
 For example, after you create a **source signature** named test in the source gateway, a
 **cascade signature** named cascade-test is automatically created in the cascade gateway.
-
-| Parameter | Description |
-|---|---|
-| Scheme Name | Enter a name. |
-| Signature Algorithm | Valid values: HMAC-SHA256, HMAC-SHA1, and HMAC-SM3. |
-| Cascade link | Select a cascade link to synchronize the source signature to the selected cascade gateway. For more information about how to create a cascade link, see the "Create a cascade link" section in the Cascade links topic. |
-
-t
 
 **Procedure**
 
@@ -2911,6 +2883,12 @@ The following operations must be performed in the console of the source gateway.
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Cascade Management > Source Signature**.
 5. Click **Create Source Signature**, configure the parameters, and then click **Determine**.
+
+| Parameter | Description |
+|---|---|
+| Scheme Name | Enter a name. |
+| Signature Algorithm | Valid values: HMAC-SHA256, HMAC-SHA1, and HMAC-SM3. |
+| Cascade link | Select a cascade link to synchronize the source signature to the selected cascade gateway. For more information about how to create a cascade link, see the "Create a cascade link" section in the Cascade links topic. |
 
 **View the details of a source signature**
 
@@ -2934,7 +2912,7 @@ synchronization time, and status of the cascade link associated with the source 
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
 3. On the **Gateway instance** page, find the instance that you want to view and click the
-instance ID or click **Details** in the **Operation** column. t
+instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Cascade Management > Source Signature**.
 5. On the **Source Signature** page, find the source signature that you want to manage and
 click **Disable** or **Enable** in the **Operation** column.
@@ -2965,7 +2943,7 @@ click **Edit** in the **Operation** column.
 6. In the dialog box that appears, modify the name of the source signature and click
 **Determine**.
 
-#### Cascade routes
+#### 5.7.4 Cascade routes
 
 This topic describes how to manage cascade routes. For more information about the cascade feature and relevant terms, see Overview.
 
@@ -2984,7 +2962,6 @@ The following operations must be performed in the console of the cascade gateway
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Cascade Management > Cascade routing**.
-t
 5. Optional. On the **Cascade routing** page, you can search for cascade routes by **route ID** or
 **route name**.
 6. In the cascade route list, you can view the ID, name, path, associated service, and creation
@@ -2993,7 +2970,7 @@ time of the cascade routes. Click the ID of the cascade route that you want to m
 **configuration**, and **interface center** of the cascade route.
 Click **Interface Center** in the **Operation** column to go to the **Interface Center** tab. On this tab, you can view the API configurations of the cascade route. Click **Debugging** in the **Operation** column to go to the **API debugging** page. For more information, see API debugging.
 
-#### Cascade consumers
+#### 5.7.5 Cascade consumers
 
 This topic describes how to view cascade consumers. For more information about the cascade feature and related terms, see Overview.
 
@@ -3017,7 +2994,7 @@ instance ID or click **Details** in the **Operation** column.
 6. In the cascade consumer list, you can view the ID, name, status, authentication method,
 creation time, and update time of each cascade consumer. Click the ID of a cascade consumer to view the basic configuration and authorization information of the cascade consumer.
 
-#### Cascade signatures
+#### 5.7.6 Cascade signatures
 
 This topic describes how to view cascade signatures. For more information about the cascade feature and relevant terms, see Overview.
 
@@ -3029,7 +3006,7 @@ A source signature is created in the source gateway.
 
 **Important**
 
-t The following operations must be performed in the console of the cascade gateway.
+The following operations must be performed in the console of the cascade gateway.
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
@@ -3044,15 +3021,19 @@ status, and creation time of each cascade signature. You can click the ID of a c
 **Algorithm**, **Signature Key**, **Creation Time**, **Update time**, and **Signature Scheme**
 **Status**.
 
-### Policy management
+### 5.8 Policy management
 
-#### Create a policy
+#### 5.8.1 Create a policy
 
 Policies can be attached to objects and combinations of objects. For example, you can attach a traffic throttling policy to consumers, routes, or services. This facilitates API policy configuration in API Gateway.
 
 **Background information**
 
-API Gateway supports a variety of policies, such as IP address blacklists and whitelists, traffic throttling policies, and mock policies. API Gateway supports the following four objects: In API Gateway, only one type of policy can be attached to the same object or combination of objects. For example, only one traffic throttling policy can be attached to the same route. This topic describes several methods of creating policies and the use scenarios of each method. You can choose a method based on your business requirements. The primary method supports all types of policies, and you can use this method based on your business requirements. By default, **Scope of action** is set to **Global**. You can switch to **Local** if your business requires. The quick methods support only certain types of policies. By default, **Scope of action** is set to **Local**.
+API Gateway supports a variety of policies, such as IP address blacklists and whitelists, traffic throttling policies, and mock policies. API Gateway supports the following four objects: Instance Route Service Consumer In API Gateway, only one type of policy can be attached to the same object or combination of objects. For example, only one traffic throttling policy can be attached to the same route.
+
+**Create a policy**
+
+This topic describes several methods of creating policies and the use scenarios of each method. You can choose a method based on your business requirements. The primary method supports all types of policies, and you can use this method based on your business requirements. By default, **Scope of action** is set to **Global**. You can switch to **Local** if your business requires. The quick methods support only certain types of policies. By default, **Scope of action** is set to **Local**.
 
 **Primary method**
 
@@ -3060,14 +3041,6 @@ We recommend that you use this method if you want to view all policy types.
 
 **Procedure**
 
-| Parameter | Description |
-|---|---|
-| Basic information |  |
-| Name | Enter a name for the policy. |
-| Scope of action | Global: By default, the policy is applied to the entire instance. Local: Enter the object or combination of objects to which you want to attach the policy. The available objects vary with the policy type. If you specify a combination of objects, the relationship between these objects is AND. For example, if a local policy is attached to a combination of route and consumer, the policy is executed only when a request that carries the consumer token and matches the route. For more information about objects, see Background information. |
-| Policy (policy-specific) | Each policy has unique attributes. For example, you must specify information such as the authentication method for an authentication policy and the throttling threshold type for a throttling policy. For more information about how to configure the unique attributes of each policy, see Policy types. |
-
-t
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
@@ -3076,9 +3049,6 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, click **Routing Management**. On the Policy Configuration
 tab, click **Add Strategy**.
 5. On the Create Policy page, click the type of policy that you want to create.
-
-**Note**
-
 The primary method supports all types of policies, including **Authentication Policy**,
 **Flow Control Policy**, **Timeout Policy**, **Circuit Breaker Policy**, **MOCK Policy**,
 **Signature Policy**, **Cross-domain Policy**, **Caching policy**, **IP Blacklist and**
@@ -3090,22 +3060,25 @@ The primary method supports all types of policies, including **Authentication Po
 
 When you create a policy, you must specify the basic information about the policy and the unique attributes of the policy.
 
+| Parameter | Description |
+|---|---|
+| Basic information |   |
+| Name | Enter a name for the policy. |
+| Scope of action | Global: By default, the policy is applied to the entire instance. Local: Enter the object or combination of objects to which you want to attach the policy. The available objects vary with the policy type. If you specify a combination of objects, the relationship between these objects is AND. For example, if a local policy is attached to a combination of route and consumer, the policy is executed only when a request that carries the consumer token and matches the route. For more information about objects, see Background information. |
+| Policy (policy-specific) | Each policy has unique attributes. For example, you must specify information such as the authentication method for an authentication policy and the throttling threshold type for a throttling policy. For more information about how to configure the unique attributes of each policy, see Policy types. |
+
 **Quick method 1**
 
 We recommend that you use this method if you want to create a policy for a route or a combination of objects that contain a route.
 
 **Procedure**
 
-t
 1. In the left-side navigation pane, choose **Open Services > Routing packet**.
 2. On the **Strategy** page, view all routes and click the **Policy Configuration** tab.
 Method 1: Click the route ID. The **Routing Details** tab appears. Click the **Policy**
 **Configuration** tab.
 Method 2: Find the route and click **Configure Policy** in the **Operation**.
 3. On the **Policy Configuration** tab, click **Add Strategy** to go to the **Create Policy** page.
-
-**Note**
-
 This method supports only the following types of policies: **Authentication Policy**,
 **Flow Control Policy**, **Timeout Policy**, **Circuit Breaker Policy**, **MOCK Policy**,
 **Signature Policy**, **Cross-domain Policy**, **Caching Policy**, **IP Blacklist and**
@@ -3125,9 +3098,6 @@ Method 1: Click the service ID or name. The **Service Details** tab appears. Cli
 **Strategy configuration** tab.
 Method 2: Find the service and click **Strategy configuration** in the **Operation** column.
 3. On the **Strategy configuration** tab, click **Add Strategy** to go to the **Create Policy** page.
-
-**Note**
-
 This method supports only the following types of policies: **Authentication Policy**,
 **Flow Control Policy**, **Circuit Breaker Policy**, **MOCK Policy**, **Cross-domain Policy**,
 **Caching Policy**, **IP Blacklist and Blacklist Policy** , **Request Tracking Policy**, and
@@ -3143,15 +3113,11 @@ We recommend that you use this method if you want to create a policy for a consu
 2. Click the consumer ID or name. On the **Consumer Details** page, click the **Strategy**
 **configuration** tab.
 3. On the **Strategy configuration** tab, click **Add Strategy** to go to the **Create Policy** page.
-t
-
-**Note**
-
 This method supports only the following types of policies: **Flow Control Policy**,
 **Circuit Breaker Policy**, **MOCK Policy**, **Caching Policy**, and **IP Blacklist and**
 **Whitelist Policy**.
 
-#### Policy lifecycle management
+#### 5.8.2 Policy lifecycle management
 
 This topic describes how to view the configuration of a policy, change the status of a policy, modify the configuration of a policy, and delete a policy.
 
@@ -3194,6 +3160,25 @@ instance ID or click **Details** in the **Operation** column.
 **Delete a policy**
 
 1. Log in to the API Gateway console.
+2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
+**Shared Instance List**.
+3. On the **Gateway instance** page, find the instance that you want to view and click the
+instance ID or click **Details** in the **Operation** column.
+4. In the left-side navigation pane, click **Policy Management**.
+5. Find the policy that you want to delete and click **Delete** in the **Operation** column.
+6. In the **Alert** message, click **Determine**.
+
+#### 5.8.3 Policy types
+
+##### 5.8.3.1 Authentication policy
+
+###### 5.8.3.1.1 API KEY authentication
+
+API Gateway authentication policies support API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway application, and CSB authentication. This topic describes the API KEY authentication policy.
+
+**Configure an API KEY authentication policy**
+
+On the page for creating an authentication policy, set **Authentication Method** to **API KEY**. The system provides default values that you can use.
 
 | Parameter | Description |
 |---|---|
@@ -3206,50 +3191,35 @@ instance ID or click **Details** in the **Operation** column.
 | Name | Use the default value provided by the system. |
 | Remove Authentication Parameter | If you enable this option, the gateway removes the API KEY authentication parameter from the request after authentication is complete. |
 
-t
-2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
-**Shared Instance List**.
-3. On the **Gateway instance** page, find the instance that you want to view and click the
-instance ID or click **Details** in the **Operation** column.
-4. In the left-side navigation pane, click **Policy Management**.
-5. Find the policy that you want to delete and click **Delete** in the **Operation** column.
-6. In the **Alert** message, click **Determine**.
-
-#### Policy types
-
-##### Authentication policy
-
-###### API KEY authentication
-
-API Gateway authentication policies support API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway application, and CSB authentication. This topic describes the API KEY authentication policy. On the page for creating an authentication policy, set **Authentication Method** to **API KEY**. The system provides default values that you can use.
-
 | Skip Authentication For OPTIONS Requests | If you enable this option, API KEY authentication is not performed for OPTIONS requests. |
 |---|---|
 
-t
-
 **Configure an API KEY consumer**
 
-Configure a corresponding API KEY consumer to set the value for the API KEY.
-
-**Note**
-
-The procedure for configuring an API KEY source consumer is similar to configuring an API KEY consumer.
+Configure a corresponding API KEY consumer to set the value for the API KEY. The procedure for configuring an API KEY source consumer is similar to configuring an API KEY consumer.
 1. On the **Consumers** page, click **Create Consumer**.
 2. On the **Create Consumer** page, set **Authentication Method** to **API KEY** and enter a
 parameter value. You can use the default random value that is generated by the system.
 3. After the consumer is created, the list of consumers is displayed. In the **Operation** column,
 click **Authorization**.
 4. On the **Consumer Authorization** tab, clickBind **Route**. In theBind **Route** dialog box that
-appears, select a **Route** and click **OK** to attach the route. Make sure that you have created an Ingress and associated it with a backend service. For more information, see Create an Ingress. After you complete the configurations, you can perform a simple test.
+appears, select a **Route** and click **OK** to attach the route. Make sure that you have created an Ingress and associated it with a backend service. For more information, see Create an Ingress.
+
+**Debug**
+
+After you complete the configurations, you can perform a simple test.
 1. On the **Route Management** page, find the Ingress that is associated with the consumer. In
 the **Operation** column, click **Debug**.
 2. On the **API Debugging** interface, enter the URI of the request, select a **Consumer**, and
-click **Send**. In the **Actual Request** section, you can see that the API KEY is passed in the headers when the request is sent. t Otherwise, the call fails. The following figure shows a failed authentication.
+click **Send**. In the **Actual Request** section, you can see that the API KEY is passed in the headers when the request is sent. Otherwise, the call fails. The following figure shows a failed authentication.
 
-###### BASIC authentication
+###### 5.8.3.1.2 BASIC authentication
 
 API Gateway authentication policies support various authentication methods, such as API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes the BASIC authentication policy.
+
+**Configure a BASIC authentication policy**
+
+When you create an authentication policy, set **Authentication Method** to **BASIC**. The system provides default values that you can use.
 
 | Parameter | Description |
 |---|---|
@@ -3260,27 +3230,25 @@ API Gateway authentication policies support various authentication methods, such
 | Authentication Method | Set this parameter to BASIC. |
 | Token Location | Specifies the invocation credential. You can select the default system fields, Authorization or Cookie, or specify a custom field name. Regardless of the field name, you must place the field in the request header when you initiate a call. |
 
-t When you create an authentication policy, set **Authentication Method** to **BASIC**. The system provides default values that you can use.
-
 **Configure a BASIC consumer**
 
-You can configure a BASIC consumer to set request values for BASIC authentication. The platform automatically generates an invocation credential for the consumer during this process.
-
-**Note**
-
-Configuring a BASIC source consumer is similar to configuring a BASIC consumer.
+You can configure a BASIC consumer to set request values for BASIC authentication. The platform automatically generates an invocation credential for the consumer during this process. Configuring a BASIC source consumer is similar to configuring a BASIC consumer.
 1. On the **Consumers** page, click **Create Consumer**.
 2. On the **Create Consumer** page, set **Authentication Method** to **BASIC**, and then enter
 the **Account** and **Password**. You can use the random value that the system automatically generates for the account.
 3. After the consumer is created, you are redirected to the **Consumer List** page. In the
 **Operations** column, click **Grant**.
 4. On the **Consumer Authorization** tab, click Bind Route. In the Bind Route dialog box that
-appears, select an **Ingress** and click **OK** to attach the Ingress. Make sure that you have created a route and associated it with a backend service. For more information, see Create a route. After you complete the configuration, you can perform a simple test. t
+appears, select an **Ingress** and click **OK** to attach the Ingress. Make sure that you have created a route and associated it with a backend service. For more information, see Create a route.
+
+**Debug**
+
+After you complete the configuration, you can perform a simple test.
 1. On the Ingress management page, find the Ingress that is associated with the consumer. In
 the **Operations** column, click **Debug**.
 2. On the API Debugging interface, enter the URI of the request, select a **Consumer**, and click
 **Send**.
-In the **Actual Request** section, you can see that the token is passed in `header > Authorization` when the request is sent. Otherwise, the call fails. The following figure shows a failed authentication. t
+In the **Actual Request** section, you can see that the token is passed in `header > Authorization` when the request is sent. Otherwise, the call fails. The following figure shows a failed authentication.
 
 **Additional information**
 
@@ -3288,11 +3256,6 @@ In the **Actual Request** section, you can see that the token is passed in `head
 
 In practice, the caller can obtain a token in the following ways:
 1. Copy the token that is automatically generated by the platform.
-
-| Parameter | Description |
-|---|---|
-
-t
 2. Generate a token on your own. The following code provides an example. In the code, `Key`
 is the account and `Password` is the password.
 
@@ -3300,12 +3263,20 @@ is the account and `Password` is the password.
 public static String createBasic(String key, String password){
         StringBuilder str = new StringBuilder(key).append(":").append(password);
         return  EncryptUtil.encryptBASE64(str.toString());
-    }
 ```
 
-###### JWT authentication
+`}`
 
-API Gateway supports authentication policies with the following methods: API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway application, and CSB authentication. This topic describes the JWT authentication policy. On the Create Authentication Policy page, set **Authentication Method** to **JWT**. The remaining parameters are populated with default values.
+###### 5.8.3.1.3 JWT authentication
+
+API Gateway supports authentication policies with the following methods: API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway application, and CSB authentication. This topic describes the JWT authentication policy.
+
+**Configure a JWT authentication policy**
+
+On the Create Authentication Policy page, set **Authentication Method** to **JWT**. The remaining parameters are populated with default values.
+
+| Parameter | Description |
+|---|---|
 
 | Name | The name of the policy. You can customize the name. |
 |---|---|
@@ -3315,25 +3286,19 @@ API Gateway supports authentication policies with the following methods: API KEY
 | Authentication Method | Set this parameter to JWT. |
 | Token Location | Specifies the call credential. You can select the default Authorization or Cookie field, or define a custom field name. Note that regardless of the name, the field must be placed in the request header for every call. |
 
+**Configure a JWT consumer**
+
+You can configure a JWT consumer to specify request values. The platform automatically generates a credential for the consumer. The procedure for configuring a JWT source consumer is similar to configuring a JWT consumer.
+1. On the **Consumers** page, click **Create Consumer**.
+2. On the **Create Consumer** page, set the **Authentication Method** to **JWT** and enter a **Key**
+and a **Secret**. You can use the default system-generated random value as the secret. You can also set the **Validity Period** to long-term (365 days) or short-term.
+
 | Parameter | Description |
 |---|---|
 | Name | The name of the consumer. You can customize the name. The name can be up to 15 characters long. |
 | Description | The description of the consumer. The description can be 0 to 50 characters in length. |
 | Authentication Method | Set this parameter to JWT. |
 | key | You can use the random value that is automatically generated by the system. |
-
-t
-
-**Configure a JWT consumer**
-
-You can configure a JWT consumer to specify request values. The platform automatically generates a credential for the consumer.
-
-**Note**
-
-The procedure for configuring a JWT source consumer is similar to configuring a JWT consumer.
-1. On the **Consumers** page, click **Create Consumer**.
-2. On the **Create Consumer** page, set the **Authentication Method** to **JWT** and enter a **Key**
-and a **Secret**. You can use the default system-generated random value as the secret. You can also set the **Validity Period** to long-term (365 days) or short-term.
 
 | Key | You can use the random value that is automatically generated by the system. |
 |---|---|
@@ -3342,15 +3307,18 @@ and a **Secret**. You can use the default system-generated random value as the s
 | Sub | The sub (subject) claim of the JWT. This is the entity that the token is about. Make sure the value of the sub field in the JWT payload matches the value configured here. If this parameter is not set or is empty, its value defaults to the value of the Issuer parameter. For example: example-app. If this parameter is not set or is empty, its value is the same as the Issuer value. |
 | JWTS | The JWT public key in JSON format. |
 
-t
 3. After the consumer is created, you are redirected to the **Consumer List**. In the **Actions**
 column, click **Grant**.
 4. On the **Consumer Authorization** tab, click **Associate Route**. In the **Associate Route**
-dialog box, select a **Route** and click **OK** to attach the route. Before you perform this step, you must create a route and associate it with a backend service. For more information, see Create a route. After you complete the configuration, you can perform a simple test.
+dialog box, select a **Route** and click **OK** to attach the route. Before you perform this step, you must create a route and associate it with a backend service. For more information, see Create a route.
+
+**Debug**
+
+After you complete the configuration, you can perform a simple test.
 1. On the Route Management page, find the route associated with the consumer and click
 **Debug** in the **Actions** column.
 2. On the API Debugging interface, you can enter the URI of the request, select a **Consumer**,
-and click **Send**. t In the **Actual Request** section, you can see the token in the Authorization field of the header. Otherwise, the call fails due to an authentication failure, as shown in the following figure. t
+and click **Send**. In the **Actual Request** section, you can see the token in the Authorization field of the header. Otherwise, the call fails due to an authentication failure, as shown in the following figure.
 
 **Additional information**
 
@@ -3360,13 +3328,6 @@ In a real-world scenario, the caller can obtain a token in the following ways:
 1. Copy the token that is automatically generated by the platform.
 2. Generate a token. The following sample code shows how to generate a token. In the code,
 uniqueKey is the key registered on the platform, payload is the payload, ttlMillis is the token validity period in milliseconds (ms), and secretKey is the secret. The signature algorithm is HS256, which is the only algorithm that the platform supports.
-
-| Configuration item | Description |
-|---|---|
-| Name | The name of the policy. You can customize the name. |
-| Scope of action | Refer to the description of Scope of action in Create a policy. The supported scopes are Global and Local. When you select Local, onlyBind route Bind Service, and a combination of these two realm objects are supported. |
-
-t
 
 ```
 public static String createJWT(String uniqueKey, JwtPayload payload, Long ttlMillis,S tring secretKey) {
@@ -3386,12 +3347,15 @@ the secret key used for signing
         long expMillis = nowMillis + ttlMillis;
         Date expDate = new Date(expMillis);
         builder.setExpiration(expDate); // The expiration time
-    }
-    return builder.compact();
-}
 ```
 
-For information about the related dependencies, see the following code.
+`}`
+
+```
+    return builder.compact();
+```
+
+`}` For information about the related dependencies, see the following code.
 
 ```xml
 <dependency>
@@ -3401,15 +3365,31 @@ For information about the related dependencies, see the following code.
 </dependency>
 ```
 
-###### OAuth 2.0 authentication
+###### 5.8.3.1.4 OAuth 2.0 authentication
 
-API Gateway supports several authentication policies, such as API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes the OAuth 2.0 authentication policy. On the Create Authentication Policy page, set **Authentication Method** to **OAuth2.0**. You can use the default values.
+API Gateway supports several authentication policies, such as API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes the OAuth 2.0 authentication policy.
+
+**Configure the OAuth 2.0 authentication policy**
+
+On the Create Authentication Policy page, set **Authentication Method** to **OAuth2.0**. You can use the default values.
+
+| Configuration item | Description |
+|---|---|
+| Name | The name of the policy. You can customize the name. |
+| Scope of action | Refer to the description of Scope of action in Create a policy. The supported scopes are Global and Local. When you select Local, onlyBind route Bind Service, and a combination of these two realm objects are supported. |
 
 | Bind route | This parameter is displayed when you set Scope of action to Local. |
 |---|---|
 | BindService | This parameter is displayed when you set Scope of action to Local. |
 | Authentication Method | Set this parameter to OAuth2.0. |
 | Token Location | The location of the access credential. The OAuth 2.0 authentication policy currently supports only Authorization. |
+
+**Configure an OAuth 2.0 consumer**
+
+You can configure an OAuth 2.0 consumer to set the request values for OAuth 2.0. The platform automatically generates an access credential for the consumer.
+1. On the **Consumers** page, click **Create Consumer**.
+2. On the **Create Consumer** page, set **Authentication Method** to **OAuth2.0** and specify
+the other parameter values.
 
 | Parameter | Description |
 |---|---|
@@ -3423,20 +3403,10 @@ API Gateway supports several authentication policies, such as API KEY, BASIC, JW
 | Client ID | The client ID, for example, oauth2-client-test. |
 | Client Secret | The client secret, for example, oauth2-client-secret. |
 
-t
-
-**Configure an OAuth 2.0 consumer**
-
-You can configure an OAuth 2.0 consumer to set the request values for OAuth 2.0. The platform automatically generates an access credential for the consumer.
-1. On the **Consumers** page, click **Create Consumer**.
-2. On the **Create Consumer** page, set **Authentication Method** to **OAuth2.0** and specify
-the other parameter values.
-
 | Redirect Uris | Separate multiple URLs with commas (,), for example, https://10.4.xx.xx/xx,https://10.5.xx.xx/xx. |
 |---|---|
 | PKCE | Specifies whether to enable Proof Key for Code Exchange (PKCE). For better security, enable this feature. For more information, see the OAuth 2.0 standard definition. |
 
-t
 3. After the consumer is created, you are redirected to the **Consumer List**. In the **Actions**
 column, click **Grant**.
 4. On the **Consumer Authorization** tab, click **Associate Ingress**. In the **Associate Ingress**
@@ -3460,9 +3430,7 @@ The first step of the authorization code grant type is to request an authorizati
 curl -k -v https://${BROKER_IP}:8443/oauth2/authorize\? client_id\=${CLIENT_ID}\&redirect_uri\=http://127.0.0.1:8080/authorized\&response_type\=c e\&scope\=${SCOPE}
 ```
 
-**Note**
-
-Port 8443 accepts only HTTPS requests. You must set a certificate for the gateway. For more information, see Certificate Management. Replace all parameters with the values from your OAuth 2.0 consumer configuration. The scope parameter must be a subset of the Scopes parameter that you set on the configuration page. Replace ${BROKER_IP}, ${CLIENT_ID}, and ${SCOPE} with their actual values. In compliance with the OAuth 2.0 specification, a successful response includes the authorization code in the Location header. The following code shows a sample response: t
+Port 8443 accepts only HTTPS requests. You must set a certificate for the gateway. For more information, see Certificate Management. Replace all parameters with the values from your OAuth 2.0 consumer configuration. The scope parameter must be a subset of the Scopes parameter that you set on the configuration page. Replace ${BROKER_IP}, ${CLIENT_ID}, and ${SCOPE} with their actual values. In compliance with the OAuth 2.0 specification, a successful response includes the authorization code in the Location header. The following code shows a sample response:
 
 ```
 * TLSv1.2 (OUT), TLS handshake, Client hello (1):
@@ -3490,26 +3458,24 @@ client_id=oauth&redirect_uri=http://127.0.0.1:8080/authorized&response_type=code
 > Accept: */*
 ```
 
->
+`>`
 
 ```
 < HTTP/1.1 200 OK < X-Content-Type-Options: nosniff < X-XSS-Protection: 1; mode=block < Cache-Control: no-cache, no-store, max-age=0, must-revalidate < Pragma: no-cache < Expires: 0 < X-Frame-Options: DENY < Location: http://127.0.0.1:8080/authorized? code=0BEfTlh6egB2QBe2_IRQFkkzRdy37p9dpB7s0kO6vsxwZ3dZCrqDoyYOnqxWEfyIADLRpsuFbazGZxp1lLWB Ny_GzNRQOmdLaCYMB2E4oo6YHHW4L_JEaKuVnPSo8k < Content-Length: 0 < Date: Wed, 19 Apr 2023 06:46:18 GMT
 ```
 
-<
+`<`
 
 ```
 * Connection #0 to host 47.108.XX.XX left intact
 * Closing connection 0
 ```
 
-**Note**
-
 The returned code is valid for 5 minutes. After it expires, you must request a new one.
 
 **Request a token**
 
-Use the authorization code from the Location header in the response to construct a request for an access token. The following command shows an example. t
+Use the authorization code from the Location header in the response to construct a request for an access token. The following command shows an example.
 
 ```bash
 curl -k https://${BROKER_IP}:8443/oauth2/token -H "Authorization: Basic ${TOKEN}" -X PO ST \
@@ -3519,8 +3485,6 @@ curl -k https://${BROKER_IP}:8443/oauth2/token -H "Authorization: Basic ${TOKEN}
   --data "code=${CODE}" \
   --data "redirect_uri=http://127.0.0.1:8080/authorized"
 ```
-
-**Note**
 
 The Basic value for the Authorization header is the Base64-encoded value of ClientId:ClientSecret from your OAuth 2.0 consumer configuration. In this example, the Base64-encoded value of oauth2:oauth2 is b2F1dGgyOm9hdXRoMg==. You can use an online tool such as Base64 Encode and Decode to obtain the value. Replace ${BROKER_IP}, ${CLIENT_ID}, ${CLIENT_SECRET}, ${CLIENT_SECRET}, and ${TOKEN} with their actual values. A successful request for a token returns a response similar to the following. The value of the
 **access_token** field is the access credential.
@@ -3537,26 +3501,20 @@ curl -k https://${BROKER_IP}:8443/oauth2/token -H "Authorization: Basic ${TOKEN}
  --data "refresh_token=${REFRESH_TOKEN}"
 ```
 
-**Note**
-
 The refresh_token is included in the response from the request in the "Request a token" section. Before you send the request, replace the refresh_token and other variables enclosed in ${} with their actual values.
 
 **PKCE feature**
 
 **Introduction to PKCE**
 
-t PKCE stands for Proof Key for Code Exchange. It was published in 2015 as an extension to the OAuth 2.0 core protocol. It can be used with existing grant types, such as Authorization Code + PKCE, which is a best practice. PKCE was originally created for mobile and native applications to mitigate authorization code interception attacks for public clients. The latest OAuth 2.1 specification recommends that all clients, not just public clients, use PKCE. The specification also removes the Implicit and Password grant types. Clients that previously used these grant types can now use the Authorization Code grant type with PKCE. PKCE works by having the client create a proof that it sends to the authorization server. The server uses this proof to authenticate the client and issues the access token to the legitimate client, not a malicious one.
+PKCE stands for Proof Key for Code Exchange. It was published in 2015 as an extension to the OAuth 2.0 core protocol. It can be used with existing grant types, such as Authorization Code + PKCE, which is a best practice. PKCE was originally created for mobile and native applications to mitigate authorization code interception attacks for public clients. The latest OAuth 2.1 specification recommends that all clients, not just public clients, use PKCE. The specification also removes the Implicit and Password grant types. Clients that previously used these grant types can now use the Authorization Code grant type with PKCE. PKCE works by having the client create a proof that it sends to the authorization server. The server uses this proof to authenticate the client and issues the access token to the legitimate client, not a malicious one.
 
 **Use PKCE**
 
 1. On the **Consumers** page, click **Edit** in the **Actions** column.
 2. On the **Edit Consumer** page, enable PKCE.
 3. Generate a verifier and a challenge
-t The verifier and challenge are typically generated by a program. For this demo, you can use the manual generation feature provided by a tool website.
-
-**Note**
-
-Click **Generate Code Verifier** and then **Generate Code Challenge** to generate the corresponding **Code Challenge**.
+The verifier and challenge are typically generated by a program. For this demo, you can use the manual generation feature provided by a tool website. Click **Generate Code Verifier** and then **Generate Code Challenge** to generate the corresponding **Code Challenge**.
 
 **Request an authorization code**
 
@@ -3589,6 +3547,14 @@ Use the following request with the access token to make a service call and verif
 curl -k -H "Authorization: Bearer ${ACCESS_TOKEN}" ${BROKER_IP}:${BROKER_PORT}/httpbin/get
 ```
 
+###### 5.8.3.1.5 Custom authentication
+
+API Gateway supports several authentication policy methods, such as API key, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes custom authentication policies.
+
+**Configure a custom authentication policy**
+
+A custom authentication server can be integrated with any server that provides authentication and authorization services. This demo uses Keycloak as the third-party authentication and authorization server. After you obtain the address of the third-party authentication server, configure the custom authentication settings for the route :
+
 | Parameter | Description | Example |
 |---|---|---|
 | Name | A custom name for the policy. | test |
@@ -3597,12 +3563,6 @@ curl -k -H "Authorization: Bearer ${ACCESS_TOKEN}" ${BROKER_IP}:${BROKER_PORT}/h
 | BIndService | This parameter is displayed when you set Scope of action to Local. | - |
 | Authentication Method | Select Custom Authentication. | Custom authentication |
 | Token Location | The invocation credential. You can use the default fields Authorization or Cookie, or specify a custom field name. The field must be placed in the request header when you make a call, regardless of the field name. | Manually enter token |
-
-t
-
-###### Custom authentication
-
-API Gateway supports several authentication policy methods, such as API key, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes custom authentication policies. A custom authentication server can be integrated with any server that provides authentication and authorization services. This demo uses Keycloak as the third-party authentication and authorization server. After you obtain the address of the third-party authentication server, configure the custom authentication settings for the route :
 
 | Allowed header in the authentication request | If the headers specified here are present in the client request, they are added to the authentication request. The Host, Method, Path, and Content- Length headers are added by default. | Authorization |
 |---|---|---|
@@ -3615,11 +3575,9 @@ API Gateway supports several authentication policy methods, such as API key, BAS
 | Authentication Assertion | The key in the response body that indicates a successful verification. | ResponseBody, active |
 | Assertion Field Value | The value of the assertion field that indicates a successful verification. | true |
 
-|  |  | /realms/myrealm/protocol/openid- |
+|   |   | /realms/myrealm/protocol/openid- |
 |---|---|---|
-| rvice. The API path must be a prefix | connect/token/introspect |  |
-
-t
+| rvice. The API path must be a prefix | connect/token/introspect |   |
 
 **Obtain a token**
 
@@ -3628,15 +3586,6 @@ Obtain a token based on the type of your authentication and authorization server
 **Make a call**
 
 Run the following command to make a service call based on the configured custom authentication rule. Replace `${ACCESS_TOKEN}` with the access token obtained in the previous step. Replace other variables enclosed in `${}` with their actual values.
-
-| Parameter | Description |
-|---|---|
-| Name | The name of the policy. This is user-defined. |
-| Scope of action | For more information, see the Scope of action section in Create a policy. This parameter supports Global and Local. If you selectLocal only Bind route, Bind Service, and a combination of these two realm objects are supported. |
-| Bind route | This parameter is displayed when you setScope of action to Local. |
-| BindService | This parameter is displayed when you set Scope of action toL ocal. |
-
-t
 
 ```bash
 curl -k -X POST \
@@ -3648,7 +3597,7 @@ ${BROKER_IP}:${BROKER_PORT}/httpbin/post
 
 If the authentication is successful, the service returns the following result:
 
-###### API Gateway application authentication
+###### 5.8.3.1.6 API Gateway application authentication
 
 API Gateway supports authentication policies such as API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway application, and CSB authentication. This topic describes the API Gateway application authentication policy.
 
@@ -3657,9 +3606,24 @@ API Gateway supports authentication policies such as API KEY, BASIC, JWT, OAuth 
 The API Gateway application authentication policy is compatible with the authentication method used in the original API Gateway. This policy is intended for use only when you migrate from the original API Gateway to the current gateway. On the Create Authentication Policy page, set **Authentication Method** to **API Gateway**
 **Application**. The system provides the required parameter values.
 
+| Parameter | Description |
+|---|---|
+| Name | The name of the policy. This is user-defined. |
+| Scope of action | For more information, see the Scope of action section in Create a policy. This parameter supports Global and Local. If you selectLocal only Bind route, Bind Service, and a combination of these two realm objects are supported. |
+| Bind route | This parameter is displayed when you setScope of action to Local. |
+| BindService | This parameter is displayed when you set Scope of action toL ocal. |
+
 | Authentication Method | Select API Gateway Application. |
 |---|---|
 | AppCode Authentication | You can select one of three options: Disable AppCode Authentication, Allow AppCode Authentication (Header), or Allow AppCode Authentication (Header&Query). The meanings of these options are the same as in the original API Gateway. |
+
+**Configure API Gateway application consumers**
+
+To use API Gateway application authentication, you must configure the corresponding consumers and set their parameter values.
+1. On the **Consumers** page, click **Create Consumer**.
+2. On the **Create Consumer** page, set **Authentication Method** to **API Gateway**
+**Application** and enter the parameter values. You can use the default random values that
+the system generates.
 
 | Parameter | Description |
 |---|---|
@@ -3667,24 +3631,23 @@ The API Gateway application authentication policy is compatible with the authent
 | App Secret | Enter the application key. |
 | App Code | Enter the application code. |
 
-| Parameter | Description |
-|---|---|
-| Name | A custom name for the policy. |
-
-t To use API Gateway application authentication, you must configure the corresponding consumers and set their parameter values.
-1. On the **Consumers** page, click **Create Consumer**.
-2. On the **Create Consumer** page, set **Authentication Method** to **API Gateway**
-**Application** and enter the parameter values. You can use the default random values that
-the system generates.
 3. After the consumer is created, you are redirected to the consumer list. Click **Authorization**
 in the **Actions** column.
 4. On the **Consumer Authorization** tab, click **Associate Route**. In the **Associate Route**
 dialog box, select a **Route** and click **OK** to associate the route. You must first create an ingress and associate it with a backend service. For more information, see Create an ingress.
 
-###### CSB authentication
+###### 5.8.3.1.7 CSB authentication
 
-API Gateway authentication policies support several authentication methods, such as API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes the CSB authentication policy. On the Create Authentication Policy page, set **Authentication Method** to **CSB**
+API Gateway authentication policies support several authentication methods, such as API KEY, BASIC, JWT, OAuth 2.0, custom authentication, API Gateway applications, and CSB authentication. This topic describes the CSB authentication policy.
+
+**Configure a CSB authentication policy**
+
+On the Create Authentication Policy page, set **Authentication Method** to **CSB**
 **Authentication** and configure the parameters.
+
+| Parameter | Description |
+|---|---|
+| Name | A custom name for the policy. |
 
 | Scope of action | Refer to Applicable Scope in Create a policy. The supported scopes are Global and Local. If you select Local, the policy applies only to Attach Ingress, Attach Service, and a combination of these two realm objects. |
 |---|---|
@@ -3692,12 +3655,9 @@ API Gateway authentication policies support several authentication methods, such
 | BindService | This parameter appears when you set Applicable Scope to Specific Realm. |
 | Authentication Method | Set this to CSB Authentication. |
 
-| Parameter | Description |
-|---|---|
-| Name | The name of the policy. This is user-defined. |
-| Scope of action | See Scope of action in Create a policy. The supported scopes are Global and Local. If you select Local, a combination of Bind Route, Bind Service, Bind Consumer, and any realm objects is supported. |
+**Configure CSB authentication consumers**
 
-t You can configure consumers to set request values for the API Gateway application.
+You can configure consumers to set request values for the API Gateway application.
 1. On the **Consumers** page, click **Create Consumer**.
 2. On the **Create Consumer** page, set **Authentication Method** to **CSB Authentication**. An
 AppSecret is generated by default.
@@ -3706,13 +3666,18 @@ column, click **Grant**.
 4. On the **Consumer Authorization** tab, click **Associate Ingress**. In the **Associate Ingress**
 dialog box, select an **Ingress** and click **OK** to attach the Ingress. You must first create a route and associate it with a backend service. For more information, see Create a route.
 
-##### Throttling policies
+##### 5.8.3.2 Throttling policies
 
 This topic describes how to configure throttling policies.
 
 **Configure a throttling policy**
 
 You can use throttling policies to limit the rate of requests. To create a throttling policy, specify the configuration items on the creation page. When you enable throttling for the Client IP or Remote Host properties, the gateway throttles all requests based on their source IP address or host. For other properties, such as Header, URL parameter, or Cookie, you can specify matching parameters. In this case, only requests that meet the specified conditions are throttled.
+
+| Parameter | Description |
+|---|---|
+| Name | The name of the policy. This is user-defined. |
+| Scope of action | See Scope of action in Create a policy. The supported scopes are Global and Local. If you select Local, a combination of Bind Route, Bind Service, Bind Consumer, and any realm objects is supported. |
 
 | Request Property Matching | When enabled, you can configure the following Parameter Properties: Client IP: When enabled, throttles all client IP addresses. Remote Host: When enabled, throttles all client hosts. Header: When enabled, throttles requests based on matching request header parameters. The Match Pattern can be Exact, Regex, or Substring. URL Parameter: When enabled, throttles requests based on matching URL parameters. The Match Pattern can be Exact, Regex, or Substring. Cookie: When enabled, throttles requests based on matching Cookie parameters. The Match Pattern can be Exact, Regex, or Substring. |
 |---|---|
@@ -3722,8 +3687,6 @@ You can use throttling policies to limit the rate of requests. To create a throt
 | Timeout Period | This parameter is displayed when you set Throttling Mode to Uniform Queuing. Requests are queued. If a request waits in the queue for too long, it fails. |
 | Burst Traffic | This parameter is displayed when you set Throttling Mode to Fast Queuing. It specifies the maximum traffic allowed during a burst. Requests that exceed this limit are rejected. |
 | Thread Count | The limit on the number of concurrent threads at any given moment. |
-
-t
 
 **Throttling policy examples**
 
@@ -3739,7 +3702,7 @@ Match pattern: Exact match Header name: X-Forwarded-For Match string: 192.168.0.
 
 **Example 2: Regex match**
 
-t Match pattern: Regex match Header name: X-Forwarded-For Match string: ^(192.168.).* This throttles requests where the X-Forwarded-For request header starts with 192.168.
+Match pattern: Regex match Header name: X-Forwarded-For Match string: ^(192.168.).* This throttles requests where the X-Forwarded-For request header starts with 192.168.
 
 **Example 3: Substring match**
 
@@ -3771,34 +3734,44 @@ Match pattern: Exact match Cookie name: session_id Value: 123 This throttles req
 
 **Example 2: Regex match**
 
+Match pattern: Regex match Cookie name: session_id Value: ^1.* This throttles requests where the value of the session_id cookie starts with 1.
+
+**Example 3: Substring match**
+
+Match pattern: Substring match Cookie name: session_id Value: 123 This throttles requests where the value of the session_id cookie contains the substring 123.
+
+##### 5.8.3.3 Timeout policy
+
+**Configure a timeout policy**
+
+On the Create Timeout Policy page, specify the parameters for the policy.
+
 | Parameter | Description |
 |---|---|
 | Name | A custom name for the policy. |
 | Scope of action | For more information, see Scope of action in Create a policy. Global and local scopes are supported. When you select Local, a combination of Attach Route, Attach Service, Attach Consumer, and any realm objects is supported. |
 | Timeout | The timeout for connecting to the backend. The default is 20 s. |
 
+##### 5.8.3.4 Circuit breaker policy
+
+**Configure a circuit breaker policy**
+
+On the Create Circuit Breaker Policy page, set the parameters and create the policy.
+
 | Parameter | Description |
 |---|---|
 | Name | A custom name for the policy. |
 | Scope of action | For more information, see Scope of action in Create a policy. The scope can be Global or Local. If you select Local, a combination of Attach Route, Attach Service, Attach Consumer, and any realm objects is supported. |
 
-t Match pattern: Regex match Cookie name: session_id Value: ^1.* This throttles requests where the value of the session_id cookie starts with 1.
-
-**Example 3: Substring match**
-
-Match pattern: Substring match Cookie name: session_id Value: 123 This throttles requests where the value of the session_id cookie contains the substring 123.
-
-##### Timeout policy
-
-On the Create Timeout Policy page, specify the parameters for the policy.
-
-##### Circuit breaker policy
-
-On the Create Circuit Breaker Policy page, set the parameters and create the policy.
-
 | Fault Conditions | Backend Response Time: The response time for a request to a route. Ratio Threshold: The ratio of requests that meet the fault condition. The value must be greater than 0 and less than 1. Judgment time window:: The time window for counting successful circuit breaker assertions. Breaker Duration: The duration for which the circuit breaker remains open. Minimum Requests: The system checks for faults only after the number of requests reaches this minimum value. |
 |---|---|
 | Degradation Policy | Default: The platform provides a default degradation policy. Mock: If you configure Mock, you can set the Response Code, Response Header, and Response Body. When the circuit breaker is triggered, the system returns the configured mock response. |
+
+##### 5.8.3.5 Mock policy
+
+**Configure a mock policy**
+
+After you enable a mock policy, the gateway no longer sends requests to the backend. Instead, it returns mock information directly to the client. On the Create Mock Policy page, set the parameters and then create the policy.
 
 | Parameter | Description |
 |---|---|
@@ -3806,25 +3779,27 @@ On the Create Circuit Breaker Policy page, set the parameters and create the pol
 | Applicable Scope | For more information, see the Applicable Scope section in Create a policy. Both global and local scopes are supported. When you select Local, you can use a combination of Attach Route, Attach Service, Attach Consumer, and any realm objects. |
 | Mock Policy | You can set the Response Code, Response Header, and Response Body. When circuit breaking is triggered, the system returns a response based on the mock configuration. |
 
-| Parameter | Description |
-|---|---|
-
-t
-
-##### Mock policy
-
-After you enable a mock policy, the gateway no longer sends requests to the backend. Instead, it returns mock information directly to the client. On the Create Mock Policy page, set the parameters and then create the policy.
-
-##### Signature Scheme
+##### 5.8.3.6 Signature Scheme
 
 **Configure a signing policy**
 
 On the Create Signing Policy page, you can specify the configuration items to create the policy.
 
+| Parameter | Description |
+|---|---|
+
 | Name | A custom name for the policy. |
 |---|---|
 | Scope of action | For more information, see the Scope of actionparameter in Create a policy. The scope can be global or realm-specific. If you select Local, you can attach the policy to a combination of Route, Services, Consumers, and any realm objects. |
 | Signature Scheme | Select a signing scheme. For more information, see Signing management. |
+
+##### 5.8.3.7 Cross-domain policies
+
+Cross-domain policies allow you to dynamically configure cross-domain capabilities for connected services. This feature supports Cross-Origin Resource Sharing (CORS) and JSON with Padding (JSONP).
+
+**Configure a cross-domain policy**
+
+On the Create Cross-domain Policy page, specify the configuration items to create the policy.
 
 | Parameter | Description |
 |---|---|
@@ -3835,23 +3810,11 @@ On the Create Signing Policy page, you can specify the configuration items to cr
 | Request Type | This parameter is displayed when you set Cross-domain Type to CORS. Supported methods: GET, POST, PUT, DELETE, HEAD, PATCH, and OPTIONS. |
 | Pass Cookie | This parameter is displayed when you set Cross-domain Type to CORS. You can select Allow or Forbid. If the source is set to all (by entering *), you cannot pass cookies. |
 
-t
-
-##### Cross-domain policies
-
-Cross-domain policies allow you to dynamically configure cross-domain capabilities for connected services. This feature supports Cross-Origin Resource Sharing (CORS) and JSON with Padding (JSONP).
-
-**Configure a cross-domain policy**
-
-On the Create Cross-domain Policy page, specify the configuration items to create the policy.
-
 | Expose-Headers | This parameter is displayed when you set Cross-domain Type to CORS. During cross-origin access, the getResponseHeader() method of the XMLHttpRequest object can only access basic response headers, such as Cache-Control, Content-Language, Content-Length, Content- Type, Expires, Last-Modified, and Pragma. To access other headers, configure Expose-Headers. For example, to get the x-csb-caching response header, add x-csb-caching. |
 |---|---|
 | Allow-Headers | This parameter is displayed when you set Cross-domain Type to CORS. Specifies the request headers that are allowed in the request. To allow all request headers, enter *. |
 | Pre-Check Cache Time | This parameter is displayed when you set Cross-domain Type to CORS. The browser caches the information from a successful preflight request. Modifying this configuration does not purge the browser cache. Configure this parameter with care. |
 | Callback function name | This parameter is displayed when you set Cross-domain Type to JSONP. This name corresponds to the parameter carried in the request. Note: The callback function name cannot be the same as any backend API parameter names. |
-
-t
 
 **Cross-domain policy examples**
 
@@ -3869,15 +3832,7 @@ Scenario: You need to restrict the request headers that the frontend can send to
 
 **Allow the frontend to get custom response headers**
 
-Scenario: The frontend needs to access a response header that is not one of the default headers allowed by CORS (Cache-Control, Content-Language, Content-Length, Content-Type, Expires, Last-Modified, or Pragma).
-
-| Parameter | Description |
-|---|---|
-| Name | A custom name for the policy. |
-| Scope of action | For more information, see the Scope of action section in Create a policy. The scope can be global or local. If you selectL ocal, you can attach the policy to an Ingress, a Service, a Consumer, or any combination of these three realms. |
-| Cache Policy | Configure the policy as needed. For more information, see Cache policy configuration examples. |
-
-t Configuration: In the Expose-Headers field, add the response headers that you want to expose. If you have multiple headers, separate them with commas (,).
+Scenario: The frontend needs to access a response header that is not one of the default headers allowed by CORS (Cache-Control, Content-Language, Content-Length, Content-Type, Expires, Last-Modified, or Pragma). Configuration: In the Expose-Headers field, add the response headers that you want to expose. If you have multiple headers, separate them with commas (,).
 
 **Configure the preflight cache duration**
 
@@ -3892,17 +3847,25 @@ For example, the direct request URL for a backend API is: http://test.com/hello?
 Use JSONP if you only use GET AJAX requests and need to support older browsers, such as **IE**
 **<= 9, Opera < 12**, or **Firefox < 3.5**. Otherwise, use CORS.
 
-##### Cache policy
+##### 5.8.3.8 Cache policy
 
-A response cache policy caches response information for specific APIs. Matching requests can then retrieve the response directly from the cache. This reduces the processing load on your service. Responses are cached based on the request method, path, headers, and query parameters. Different parameter values result in separate cached responses.
+A response cache policy caches response information for specific APIs. Matching requests can then retrieve the response directly from the cache. This reduces the processing load on your service.
 
-**Disable cache control**
+**Configure a cache policy**
+
+Responses are cached based on the request method, path, headers, and query parameters. Different parameter values result in separate cached responses.
 
 | Parameter | Description |
 |---|---|
 | Name | A custom name for the policy. |
+| Scope of action | For more information, see the Scope of action section in Create a policy. The scope can be global or local. If you selectL ocal, you can attach the policy to an Ingress, a Service, a Consumer, or any combination of these three realms. |
+| Cache Policy | Configure the policy as needed. For more information, see Cache policy configuration examples. |
 
-t To add a response cache for an API in Service A, the direct request URL is:
+**Cache policy configuration examples**
+
+**Disable cache control**
+
+To add a response cache for an API in Service A, the direct request URL is:
 
 ```
 GET http://testA.com/hello?id=1&msg=1
@@ -3922,17 +3885,27 @@ You can use `cache-control` to specify how the cache is used. After you enable *
 curl --request GET 'http://domain/cache/hello' --header 'cache-control: no-store' curl --request GET 'http://domain/cache/hello' --header 'cache-control: max-age=300'
 ```
 
-##### IP blacklist and whitelist policy
+##### 5.8.3.9 IP blacklist and whitelist policy
 
-You can configure blacklists and whitelists to restrict access to this route based on IP addresses. The IP blacklist and whitelist feature supports both standard IP addresses and IP addresses in Classless Inter-Domain Routing (CIDR) format. After you enter an IP address, you can set the policy to allow or deny access from that IP address.
+**Configure an IP blacklist and whitelist policy**
 
-**Note**
+You can configure blacklists and whitelists to restrict access to this route based on IP addresses. The IP blacklist and whitelist feature supports both standard IP addresses and IP addresses in Classless Inter-Domain Routing (CIDR) format. After you enter an IP address, you can set the policy to allow or deny access from that IP address. Deny policies have a higher priority than allow policies. API Gateway first checks if a request matches any deny rule. If a match is found, the request is denied immediately. If no deny rule matches, API Gateway checks for a match with an allow rule. If a match is found, the request is allowed. If a request does not match any configured IP blacklist or whitelist rules, it is denied. On the Create IP Blacklist and Whitelist Policy page, you can specify the parameters to create the policy.
 
-Deny policies have a higher priority than allow policies. API Gateway first checks if a request matches any deny rule. If a match is found, the request is denied immediately. If no deny rule matches, API Gateway checks for a match with an allow rule. If a match is found, the request is allowed. If a request does not match any configured IP blacklist or whitelist rules, it is denied. On the Create IP Blacklist and Whitelist Policy page, you can specify the parameters to create the policy.
+| Parameter | Description |
+|---|---|
+| Name | A custom name for the policy. |
 
 | Scope of action | See Scope of action in Create a policy. You can select a Global or Local scope. If you select Local, you can select Attach Route, Attach Service, Attach Consumer, or any combination of these three realm objects. |
 |---|---|
 | IP Blacklist And Whitelist Policy | Supports IP Addresses or CIDR Blocks. |
+
+##### 5.8.3.10 Request tracing policy
+
+Request tracing adds a request ID to requests forwarded to a backend service. You can read this ID from the response header returned by the gateway. This requires enabling the option to pass the ID downstream.
+
+**Configure a request tracing policy**
+
+On the Create Request Tracing Policy page, you can set the parameters for the policy.
 
 | Parameter | Description |
 |---|---|
@@ -3941,23 +3914,25 @@ Deny policies have a higher priority than allow policies. API Gateway first chec
 | Pass To Downstream | Specifies whether the gateway echoes the request ID in the response header. If you enable this option, the request ID is added to the request header. Because the request is configured to be passed downstream, the response header will also include the request ID header. |
 | Request Header Name | The name of the HTTP header that contains the request ID. |
 
+##### 5.8.3.11 ACL access control policy
+
+**Configure an ACL access control policy**
+
+You can configure an Access Control List (ACL) policy to specify which consumer groups can access this route. If a consumer belongs to a group that matches a configured ACL rule, the gateway grants access. Note that deny rules have a higher priority than allow rules. On the policy creation page, complete the configuration and create the policy.
+
 | Parameter | Description |
 |---|---|
 | Name | A custom name for the policy. |
 
-t
-
-##### Request tracing policy
-
-Request tracing adds a request ID to requests forwarded to a backend service. You can read this ID from the response header returned by the gateway. This requires enabling the option to pass the ID downstream. On the Create Request Tracing Policy page, you can set the parameters for the policy.
-
-##### ACL access control policy
-
-You can configure an Access Control List (ACL) policy to specify which consumer groups can access this route. If a consumer belongs to a group that matches a configured ACL rule, the gateway grants access. Note that deny rules have a higher priority than allow rules. On the policy creation page, complete the configuration and create the policy.
-
 | Scope of action | For more information, see theScope of action section in Create a policy. The scope can be global or local. If you select Local, you can attach the policy only to a Route, a Service, or a combination of both realm objects. |
 |---|---|
 | ACL Access Control Policy | You can configure multiple rules. Set each rule to Deny or Allow. |
+
+##### 5.8.3.12 HSF protocol mapping policy
+
+**Configure an HSF protocol mapping policy**
+
+On the HSF protocol mapping policy page, specify the configuration items to create a policy.
 
 | Parameter | Description |
 |---|---|
@@ -3965,12 +3940,6 @@ You can configure an Access Control List (ACL) policy to specify which consumer 
 | Scope of action | For more information, see the Scope of action section in Create a policy. Global and local scopes are supported. If you select Local, only Bind Route, Bind Service, and a combination of these two realm objects are supported. |
 | HSF Method Name | The method name of the target upstream service. |
 | Request Parameters | Parameter Name: The name of the parameter that corresponds to the upstream service method. Parameter Type: The type of the parameter that is defined in the upstream service method. Parameter Position: The order of the parameter in the upstream service method definition. The sequence starts from 1. |
-
-t
-
-##### HSF protocol mapping policy
-
-On the HSF protocol mapping policy page, specify the configuration items to create a policy.
 
 **Example of an HSF protocol mapping policy configuration**
 
@@ -3987,20 +3956,11 @@ String sayHiAndSendMoney2(String name, Money[] moneyList);
 **Parameter Type**: Reference data type, java.lang.String
 **Parameter Position**: body
 **Request Parameter** 2:
-
-| Parameter | Description |
-|---|---|
-| Certificate Name | Enter the name of the certificate, which cannot exceed 15 characters in length. |
-| Certificate Type | Valid values: Server Certificate and CA Certificate. |
-| Certificate File | Enter the content of the certificate file into the text box, or click Upload Certificate to read content from the certificate file. |
-| Certificate Key | Enter the content of the key file into the text box, or click Upload Key to read content from the key file. Note This parameter is available only when Certificate Type is set to Server Certificate. |
-
-t
 **Parameter Name**: moneyList
 **Parameter Type**: Basic type, array
 **Parameter Position**: body
 
-### Certificate management
+### 5.9 Certificate management
 
 The certificate management feature allows you to upload certificates to an API gateway. After you upload certificates, when a user accesses the API gateway over HTTPS, the gateway will return the certificate corresponding to the requested domain name to the user in order to complete TLS handshake. In addition, the certificate management feature also allows you to update, delete, and view certificates in order to manage the entire lifecycle of certificates.
 
@@ -4015,13 +3975,19 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Certificate** page, click **Create Certificate**, configure the parameters, and click
 **Determine**.
 
+| Parameter | Description |
+|---|---|
+| Certificate Name | Enter the name of the certificate, which cannot exceed 15 characters in length. |
+| Certificate Type | Valid values: Server Certificate and CA Certificate. |
+| Certificate File | Enter the content of the certificate file into the text box, or click Upload Certificate to read content from the certificate file. |
+| Certificate Key | Enter the content of the key file into the text box, or click Upload Key to read content from the key file. Note This parameter is available only when Certificate Type is set to Server Certificate. |
+
 **View the details of a certificate**
 
 After you upload a certificate, you can view the details of the certificate.
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **API Gateway > Instance List** or **API Gateway >**
 **Shared Instance List**.
-t
 3. On the **Gateway instance** page, find the instance that you want to view and click the
 instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, click **Certificate Management**.
@@ -4055,20 +4021,11 @@ instance ID or click **Details** in the **Operation** column.
 
 **Access the gateway**
 
-After you upload a certificate, use the domain name that is associated with the certificate and other domain names to access the gateway. t The result indicates that the gateway returns the corresponding certificate and the TLS handshake is complete only when you use the domain name associated with the certificate to access the gateway. =
+After you upload a certificate, use the domain name that is associated with the certificate and other domain names to access the gateway. The result indicates that the gateway returns the corresponding certificate and the TLS handshake is complete only when you use the domain name associated with the certificate to access the gateway. =
 
-### Domain name management
+### 5.10 Domain name management
 
-| Parameter | Description |
-|---|---|
-| Domain Name | Enter a domain name. |
-| Agreement | Valid values: HTTPS and HTTP. |
-| Server Certificate | Note This parameter is available only when Agreement is set to HTTPS. Select a server certificate. If no server certificate is available, create one. For more information, see Certificate management. |
-| Enable two-way authentication | Specify whether to enable or disable two-way authentication. |
-| CA Certificate | Note This parameter is available only after you enable two- way authentication. Select a CA certificate. For more information about how to create a CA certificate, see Certificate management. |
-| Add request header fields to get client certificate holder (Subject) information | Note This parameter is available only after you enable two- way authentication. Select or unselect this option based on your business requirements. If you select this option, the system automatically adds custom request headers based on the CA certificate. |
-
-t The domain name management module allows you to add different domain names and associate a route with domain names. This way, only requests sent to the associated domain names are forwarded based on the corresponding route.
+The domain name management module allows you to add different domain names and associate a route with domain names. This way, only requests sent to the associated domain names are forwarded based on the corresponding route.
 
 **Add a domain name**
 
@@ -4081,10 +4038,17 @@ instance ID or click **Details** in the **Operation** column.
 5. On the **Domain Name Management** page, click **Associated Domain Name**, configure
 the parameters, and click **Determine**.
 
+| Parameter | Description |
+|---|---|
+| Domain Name | Enter a domain name. |
+| Agreement | Valid values: HTTPS and HTTP. |
+| Server Certificate | Note This parameter is available only when Agreement is set to HTTPS. Select a server certificate. If no server certificate is available, create one. For more information, see Certificate management. |
+| Enable two-way authentication | Specify whether to enable or disable two-way authentication. |
+| CA Certificate | Note This parameter is available only after you enable two- way authentication. Select a CA certificate. For more information about how to create a CA certificate, see Certificate management. |
+| Add request header fields to get client certificate holder (Subject) information | Note This parameter is available only after you enable two- way authentication. Select or unselect this option based on your business requirements. If you select this option, the system automatically adds custom request headers based on the CA certificate. |
+
 | Add a Request Header Field to Get Client Certificate Issuer (Issuer) Information | Note This parameter is available only after you enable two- way authentication. Select or unselect this option based on your business requirements. If you select this option, the system automatically adds custom request headers based on the CA certificate. |
 |---|---|
-
-t
 
 **Modify a domain name**
 
@@ -4124,7 +4088,7 @@ instance ID or click **Details** in the **Operation** column.
 **Basic information**: You can view **Domain Name**, **Agreement**, **Creation time**, and
 **Update time**.
 **Associated Routing**: You can view routes and services associated with the domain
-name and their creation time. t
+name and their creation time.
 
 **Associate a domain name with a route**
 
@@ -4143,11 +4107,11 @@ associate the route with a domain name.
 
 After you associate a route with a domain name, the API gateway uses the route to forward requests when you access the associated domain name. The Host header of requests carries the associated domain name. If you access a different domain name, the API gateway cannot locate the corresponding route.
 
-### Disaster recovery
+### 5.11 Disaster recovery management
 
 **management**
 
-#### Disaster recovery groups
+#### 5.11.1 Disaster recovery groups
 
 Disaster recovery groups are applicable to high availability (HA) solutions and disaster recovery solutions that ensure service continuity in the event of a fault. This topic describes how to create and manage disaster recovery groups.
 
@@ -4157,7 +4121,7 @@ The local gateway is connected to the peer gateway. For more information, see Di
 
 **Important**
 
-t The following operations must be performed on the local gateway.
+The following operations must be performed on the local gateway.
 
 **Create a disaster recovery group**
 
@@ -4168,17 +4132,13 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Disaster Recovery > Routing Group**.
 5. On the **Disaster Recovery Group** page, click **Create a disaster recovery group**.
 6. On the **Create a routing Group** page, configure the parameters and click **Submission**.
-For more information, see Create a disaster recovery group.
-
-**Note**
-
-After the disaster recovery group is created, a corresponding record is generated in the disaster recovery group list of the peer gateway. You can only view the disaster recovery group of the peer gateway. Other operations are not supported.
+For more information, see Create a disaster recovery group. After the disaster recovery group is created, a corresponding record is generated in the disaster recovery group list of the peer gateway. You can only view the disaster recovery group of the peer gateway. Other operations are not supported.
 
 **What to do next**
 
 After you create a disaster recovery group, you can view the details of the group, modify the configuration of the group, and delete the group and on the **Disaster Recovery Group** page. For more information, see Route groups.
 
-#### Disaster recovery services
+#### 5.11.2 Disaster recovery services
 
 On the Disaster Recovery Services page, you can create and manage service instances that support disaster recovery capabilities to implement high availability (HA) deployment across regions. This topic describes how to create and manage disaster recovery services.
 
@@ -4198,17 +4158,13 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Disaster Recovery > Services**.
 5. On the **Disaster Recovery Services** page, click **Create a disaster recovery service**.
 6. On the **Create Service** page, configure the parameters and click **Determine**. For more
-information, see Create a service. t
-
-**Note**
-
-After the disaster recovery service is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery service of the peer gateway. Other operations are not supported.
+information, see Create a service. After the disaster recovery service is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery service of the peer gateway. Other operations are not supported.
 
 **What to do next**
 
 After you create a disaster recovery service, you can view the details of the service, modify the configuration of the service, and delete the service on the **Disaster Recovery Services** page. For more information, see Service list.
 
-#### Disaster recovery routes
+#### 5.11.3 Disaster recovery routes
 
 On the **Disaster Recovery Routing** page, you can configure a request routing rule that implements disaster recovery by scheduling traffic across regions for high availability (HA).
 
@@ -4228,17 +4184,13 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Disaster Recovery > Routing**.
 5. On the **Disaster Recovery Routing** page, click **Create disaster recovery routing**.
 6. On the **Create Route** page, configure the parameters and click **Determine**. For more
-information, see the "Create a route" section in the Route management topic.
-
-**Note**
-
-After the disaster recovery route is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery route of the peer gateway. Other operations are not supported.
+information, see the "Create a route" section in the Route management topic. After the disaster recovery route is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery route of the peer gateway. Other operations are not supported.
 
 **What to do next**
 
-After you create a disaster recovery route, you can view the details of the route, modify the configuration of the route, and delete the route on the **Disaster Recovery Routing** page. For more information, see Route management. t
+After you create a disaster recovery route, you can view the details of the route, modify the configuration of the route, and delete the route on the **Disaster Recovery Routing** page. For more information, see Route management.
 
-#### Disaster recovery consumers
+#### 5.11.4 Disaster recovery consumers
 
 On the **Disaster Recovery Consumer** page, you can manage client applications (consumers) that access the disaster recovery system. This ensures that these applications can still call services in scenarios such as primary/secondary switchover and cross-region deployment.
 
@@ -4260,23 +4212,19 @@ instance ID or click **Details** in the **Operation** column.
 **consumer**.
 6. On the **Create a disaster recovery consumer** page, configure the parameters and click
 **Determine**. For more information, see the "Create a consumer" section in the Consumers
-topic.
-
-**Note**
-
-After the disaster recovery consumer is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery consumer of the peer gateway. Other operations are not supported.
+topic. After the disaster recovery consumer is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery consumer of the peer gateway. Other operations are not supported.
 
 **What to do next**
 
 After you create a disaster recovery consumer, you can view the details of the consumer and modify the configuration and group of the consumer on the **Disaster Recovery Consumer** page. For more information, see Consumers.
 
-#### Disaster recovery policies
+#### 5.11.5 Disaster recovery policies
 
 On the **Strategy Management** page, you can create and manage different types of disaster recovery policies to implement fine-grained control over traffic scheduling, failovers, and permissions.
 
 **Prerequisites**
 
-The local gateway is connected to the peer gateway. For more information, see Disaster recovery gateways. t
+The local gateway is connected to the peer gateway. For more information, see Disaster recovery gateways.
 
 **Create a disaster recovery policy**
 
@@ -4290,25 +4238,15 @@ instance ID or click **Details** in the **Operation** column.
 4. In the left-side navigation pane, choose **Disaster Recovery > Strategy Management**.
 5. On the **Strategy Management** page, click **Create Policy**.
 6. On the **Create Policy** page, configure the parameters and click **Determine**. For more
-information, see Create a policy.
-
-**Note**
-
-After the disaster recovery policy is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery policies of the peer gateway. Other operations are not supported.
+information, see Create a policy. After the disaster recovery policy is created, a corresponding record is generated in the disaster recovery list of the peer gateway. You can only view the disaster recovery policies of the peer gateway. Other operations are not supported.
 
 **What to do next**
 
 After you create a disaster recovery policy, you can view the details of the policy, change the status of the policy, modify the configuration of the policy, and delete the policy on the
 **Strategy Management** page. For more information, see Policy lifecycle management.
+anagement
 
-| Parameter | Description |
-|---|---|
-| Name | Specify a custom name for the cluster. |
-| Cluster Type | Select Self-built Kubernetes or Container Service. |
-| Container service cluster ID | Note This parameter is displayed only if Cluster Type is set to Container Service. Enter the ID of the cluster to be imported. You can view the cluster ID on the Clusters page in the ACK console. |
-| Container Service Cluster Name | Note This parameter is displayed only if Cluster Type is set to Container Service. Enter the name of the cluster to be imported. You can view the cluster name on the Clusters page in the ACK console. |
-
-## Kubernetes cluster
+## 6 Kubernetes cluster management
 
 **management**
 
@@ -4321,14 +4259,21 @@ A Kubernetes cluster is created or the kubeconfig file of a self-managed Kuberne
 
 **Import the cluster**
 
-**Note**
-
 Currently, only Kubernetes clusters are supported.
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, click **Cluster Management**.
 3. On the **Cluster Management** page, click **Import K8s Cluster**.
 4. In the **Import to K8s Cluster** panel, specify the parameters, click **Test connection** to
 check the configuration, and then click **OK**.
+
+| Parameter | Description |
+|---|---|
+| Name | Specify a custom name for the cluster. |
+| Cluster Type | Select Self-built Kubernetes or Container Service. |
+| Container service cluster ID | Note This parameter is displayed only if Cluster Type is set to Container Service. Enter the ID of the cluster to be imported. You can view the cluster ID on the Clusters page in the ACK console. |
+| Container Service Cluster Name | Note This parameter is displayed only if Cluster Type is set to Container Service. Enter the name of the cluster to be imported. You can view the cluster name on the Clusters page in the ACK console. |
+
+anagement
 
 | SLB Type | Select Internet or Internal Network. |
 |---|---|
@@ -4341,11 +4286,10 @@ check the configuration, and then click **OK**.
 3. On the **Cluster Management** page, find the cluster that you want to remove and click
 **Remove** in the **Operation** column.
 4. In the **Remove this K8s cluster** message, click **OK**.
-t
 
-## Cascade management
+## 7 Cascade management
 
-### Overview
+### 7.1 Overview
 
 The cascade feature is an important capability of API Gateway. It connects the routing and services between multiple API Gateways. This connection allows users of one API Gateway to call services managed by another API Gateway.
 
@@ -4355,7 +4299,7 @@ The cascade feature connects routing and services between two network partitions
 
 **Terms**
 
-The preceding diagram illustrates the main concepts and workflow of the cascade feature. The basic concepts are described as follows: Source gateway: The gateway in the network where the backend service is located. For example, in the diagram, a backend service in Network A is exposed to users in Network B. In this case, the API Gateway in Network A is the source gateway. t Cascade gateway: The gateway in the network where the users who call the backend service are located. For example, in the diagram, users in Network B want to call the backend service in Network A. In this case, the API Gateway in Network B is the cascade gateway. Source gateway console: The console for the source gateway. In this console, you can create, modify, or delete entities such as routes, consumers, and signatures. These operations are then synced to the cascade gateway. The source gateway console can be considered the "operator". Cascade gateway console: The console for the cascade gateway. This console receives requests from the source gateway console to create entities, such as routes and consumers, and then creates the corresponding cascade entities. The cascade gateway console can be considered the "receiver" because it only accepts and executes commands from the source gateway console. Prerequisites: All API Gateway instances must be version 2.5.1 or later. The source gateway console must be able to access the cascade gateway console over the network. The cascade gateway must be able to access the source gateway over the network. To use the cascade feature, perform the following steps:
+The preceding diagram illustrates the main concepts and workflow of the cascade feature. The basic concepts are described as follows: Source gateway: The gateway in the network where the backend service is located. For example, in the diagram, a backend service in Network A is exposed to users in Network B. In this case, the API Gateway in Network A is the source gateway. Cascade gateway: The gateway in the network where the users who call the backend service are located. For example, in the diagram, users in Network B want to call the backend service in Network A. In this case, the API Gateway in Network B is the cascade gateway. Source gateway console: The console for the source gateway. In this console, you can create, modify, or delete entities such as routes, consumers, and signatures. These operations are then synced to the cascade gateway. The source gateway console can be considered the "operator". Cascade gateway console: The console for the cascade gateway. This console receives requests from the source gateway console to create entities, such as routes and consumers, and then creates the corresponding cascade entities. The cascade gateway console can be considered the "receiver" because it only accepts and executes commands from the source gateway console. Prerequisites: All API Gateway instances must be version 2.5.1 or later. The source gateway console must be able to access the cascade gateway console over the network. The cascade gateway must be able to access the source gateway over the network. To use the cascade feature, perform the following steps:
 1. Import the cascade gateway. In the source gateway console, import the cascade gateway
 and provide its basic information. After the import is complete, you can monitor the status of the cascade gateway from the source gateway console.
 2. Create a cascade link. In the source gateway console, create a cascade link. A cascade link
@@ -4367,7 +4311,7 @@ specify the cascade link. A corresponding cascade consumer is then automatically
 2. Create a source signature. In the source gateway console, create a source signature and
 specify the cascade link. A corresponding cascade signature is then automatically created in the cascade gateway. Note: When you create a signature policy for the source route, you can only attach a source signature that uses the same cascade link.
 
-### Cascade gateways
+### 7.2 Cascade gateways
 
 This topic describes how to import, view, and delete cascade gateways. It also provides answers to frequently asked questions.
 
@@ -4375,6 +4319,9 @@ This topic describes how to import, view, and delete cascade gateways. It also p
 
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **Cascade Management > Cascading Gateway**.
+3. Click **Import Cascade Gateway**, enter the required parameters, and click **OK**. If the
+gateway type is **External Gateway**, after you configure the parameters, you can click
+**Test Connection** to verify the settings.
 
 | Parameter | Description |
 |---|---|
@@ -4386,10 +4333,8 @@ This topic describes how to import, view, and delete cascade gateways. It also p
 | Console AccessKey | This parameter appears when you set Gateway Type to External Gateway. To obtain the AccessKey, see the Apsara Uni-manager Management Console User Guide > Personal AccessKey section. |
 | Console SecretKey | This parameter appears when you set Gateway Type to External Gateway. To obtain the SecretKey, see the Apsara Uni-manager Management Console User Guide > Personal AccessKey section. |
 
-t
-3. Click **Import Cascade Gateway**, enter the required parameters, and click **OK**. If the
-gateway type is **External Gateway**, after you configure the parameters, you can click
-**Test Connection** to verify the settings.
+**View cascade gateways**
+
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **Cascade Management > Cascading Gateway**.
 3. On the **Cascade Gateways** page, you can view all imported cascade gateways. You can
@@ -4399,7 +4344,6 @@ column to view its details.
 
 **Delete a cascade gateway**
 
-t
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **Cascade Management > Cascading Gateway**.
 3. Find the cascade gateway that you want to delete and click **Delete** in the **Actions** column.
@@ -4427,13 +4371,16 @@ An OpenAPI-related error indicates that the AccessKey or SecretKey is incorrect.
 2. Confirm that you entered the credential correctly. For example, make sure that no
 characters are missing and no extra spaces are added during a copy-and-paste operation.
 
-### Cascade links
+### 7.3 Cascade links
 
 This topic describes how to create, view, edit, and delete cascade links.
 
 **Create a cascade link**
 
 You must create cascade links in the source gateway console.
+1. Log in to the API Gateway console.
+2. In the left-side navigation pane, choose **Cascade Management > Cascade link**.
+3. Click Create a cascading link, enter the parameters, and then click **OK**.
 
 | Parameter | Description |
 |---|---|
@@ -4442,10 +4389,8 @@ You must create cascade links in the source gateway console.
 | Source Gateway Access Address | The cascade gateway uses this endpoint to access the source gateway. |
 | Cascading Gateway | Select an imported gateway. For more information, see Import cascade gateways. |
 
-t
-1. Log in to the API Gateway console.
-2. In the left-side navigation pane, choose **Cascade Management > Cascade link**.
-3. Click Create a cascading link, enter the parameters, and then click **OK**.
+**View cascade links**
+
 1. Log in to the API Gateway console.
 2. In the left-side navigation pane, choose **Cascade Management > Cascade link**.
 3. On the **Cascade Links** page, you can view all existing cascade links. You can filter the
@@ -4466,26 +4411,19 @@ details.
 2. In the left-side navigation pane, choose **Cascade Management > Cascade link**.
 3. Find the cascade link that you want to delete. In the **Actions** column, click **Delete**.
 4. In the **Prompt** dialog box, click **OK**.
+nagement
 
-| Parameter | Description |
-|---|---|
-| Cloud Name | The name of the cloud center. You can customize the name for easy identification. The name must be 4 to 20 bytes in length, and can contain letters, digits, hyphens (-), underscores ( ), and periods (.). _ |
-| Cloud Edition | Select Enterprise Edition. |
-| Cloud Managemen t | Select ASR for Geo-disaster Recovery. |
-
-## Disaster recovery
+## 8 Disaster recovery management
 
 **management**
 
-### Disaster recovery gateways
+### 8.1 Disaster recovery gateways
 
 Two API Gateway instances deployed in different regions, such as China (Hangzhou) and China (Shanghai), can be paired to form a disaster recovery group. If the primary gateway fails, the system automatically switches traffic to the secondary gateway to ensure service continuity.
 
 **Procedure**
 
 **Step 1: Configure cloud information**
-
-**Note**
 
 When you log in to the Apsara Stack Resilience (ASR) for Geo-disaster Recovery console from the Apsara Uni-manager Operations Console for the first time, you must configure the secondary cloud. To configure the secondary cloud, go to the Cloud Information Management page. On the Cloud Information Management page, click **Edit** in the
 **Current Cloud** section. You can also find the secondary cloud in the All Clouds section
@@ -4496,16 +4434,17 @@ Operations Console.
 3. On the Cloud Information Management page, click **Add Cloud**. In the Add Cloud dialog box,
 configure the parameters. The following table describes the parameters.
 
+| Parameter | Description |
+|---|---|
+| Cloud Name | The name of the cloud center. You can customize the name for easy identification. The name must be 4 to 20 bytes in length, and can contain letters, digits, hyphens (-), underscores ( ), and periods (.). _ |
+| Cloud Edition | Select Enterprise Edition. |
+| Cloud Managemen t | Select ASR for Geo-disaster Recovery. |
+
+nagement
+
 | Managemen t API Endpoint | Specify the value of Manage API Access Point of the peer cloud on the Cloud Information Management page of the ASR for Geo-disaster Recovery console. |
 |---|---|
 | AccessKey ID and AccessKey Secret | Enter the AccessKey ID and AccessKey secret of the operations administrator account on the peer cloud. For more information, see Obtain the AccessKey pair of a personal account. |
-
-| Parameter | Description |
-|---|---|
-| Disaster Recovery Interconnection Name | The name of the disaster recovery interconnection. |
-| Description | The description of the disaster recovery interconnection. |
-| Regions with Disaster Recovery Interconnections Configured | The regions to be interconnected for disaster recovery. Specify at least two regions. |
-| Services with Disaster Recovery Interconnections Configured | The cloud services for disaster recovery interconnection. The system automatically identifies the cloud services that support disaster recovery in the specified interconnected regions. Use the default value. |
 
 4. Click **Verify**. After the verification is passed, click **OK**.
 5. Configure cloud services.
@@ -4522,11 +4461,18 @@ choose **General > Disaster Recovery Interconnection Management**.
 2. On the Disaster Recovery Interconnection Management page, click **Add Disaster**
 **Recovery Interconnection**. In the dialog box that appears, configure the following
 parameters.
+
+| Parameter | Description |
+|---|---|
+| Disaster Recovery Interconnection Name | The name of the disaster recovery interconnection. |
+| Description | The description of the disaster recovery interconnection. |
+| Regions with Disaster Recovery Interconnections Configured | The regions to be interconnected for disaster recovery. Specify at least two regions. |
+| Services with Disaster Recovery Interconnections Configured | The cloud services for disaster recovery interconnection. The system automatically identifies the cloud services that support disaster recovery in the specified interconnected regions. Use the default value. |
+
+nagement
 3. Click **Submit**.
 
 **Step 3: Create a cloud instance**
-
-**Note**
 
 If you log in to the ASR-DR: Geo-Disaster Recovery Management Platform for the first time, you must create a cloud instance. Otherwise, you can skip this step.
 1. Log in to the Apsara Uni-manager Management Console as an administrator.
@@ -4536,65 +4482,42 @@ If you log in to the ASR-DR: Geo-Disaster Recovery Management Platform for the f
 **Management**.
 4. In the **Current Instance** section, click **Edit**.
 5. In the dialog box that appears, specify Tenant Account AccessKey Pair and Tenant Account
-AccessKey Secret, and click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization.
-
-**Note**
-
-Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the primary cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
+AccessKey Secret, and click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the primary cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 6. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
-personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account.
-
-**Note**
-
-Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the primary cloud in the **User ************** and **User ****************** fields.
+personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the primary cloud in the **User ************** and **User ****************** fields.
 7. In the **All Instances** section, click **Add Instance**, select the cloud instance that you want
 to add, and then click **Next**.
 8. In the dialog box that appears, select options from the **Organizations** and **Resource Set**
-drop-down lists, specify Tenant Account AccessKey Pair and Tenant Account AccessKey Secret, and then click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization.
-
-**Note**
-
-Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the peer cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
+drop-down lists, specify Tenant Account AccessKey Pair and Tenant Account AccessKey Secret, and then click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the peer cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 9. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
-personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account.
-
-| Parameter |  | Description |
-|---|---|---|
-| Disaster Recovery Relationship Name |  | A custom name for the disaster recovery relationship. The name must be 5 to 29 characters in length. |
-| Description |  | A description of the disaster recovery relationship. |
-|  | Cloud Instance | The cloud instance where the ASR-DR platform that you are logged on to is located. Keep the default value. |
-|  | Region | The region where the ASR-DR platform that you are logged on to is located. Keep the default value. |
-
-**Note**
-
-Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User ************** and **User ****************** fields.
+personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. nagement Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User ************** and **User ****************** fields.
 0. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
-instance.
-
-**Note**
-
-The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+instance. The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Step 4: Create a disaster recovery relationship**
-
-**Note**
 
 If you log in to the ASR-DR: Geo-Disaster Recovery Management Platform for the first time, you must create a disaster recovery relationship. Otherwise, you can skip this step.
 1. Log in to the ASR-DR: Geo-Disaster Recovery Management Platform. In the left-side
 navigation pane, choose **System Management** > **Disaster Recovery Relationship**
 **Management**.
 2. On the **DR Relationship Management** page, click **Add DR Relationship**.
-
-**Note**
-
 In multiple regions within a disaster recovery relationship, only one production region exists. All regions except the production region are secondary regions.
 
-| Current Region Configurati on |  |  |
+| Parameter |   | Description |
 |---|---|---|
-|  | Regional Role | Select whether the current region is a production region or a secondary region. Production Region: The region where the primary data center is located in the ASR-DR system. Secondary Region: A backup site or data center that ensures business continuity and data recovery when a disaster or failure occurs in the primary production environment. Note For DR relationships other than Hybrid Disaster Recovery, configure the current region as a secondary region. |
+| Disaster Recovery Relationship Name |   | A custom name for the disaster recovery relationship. The name must be 5 to 29 characters in length. |
+| Description |   | A description of the disaster recovery relationship. |
+|   | Cloud Instance | The cloud instance where the ASR-DR platform that you are logged on to is located. Keep the default value. |
+|   | Region | The region where the ASR-DR platform that you are logged on to is located. Keep the default value. |
+
+nagement
+
+| Current Region Configurati on |   |   |
+|---|---|---|
+|   | Regional Role | Select whether the current region is a production region or a secondary region. Production Region: The region where the primary data center is located in the ASR-DR system. Secondary Region: A backup site or data center that ensures business continuity and data recovery when a disaster or failure occurs in the primary production environment. Note For DR relationships other than Hybrid Disaster Recovery, configure the current region as a secondary region. |
 | Disaster Recovery Region Configurati on | Cloud Instance | Select a cloud instance. In a DR relationship, a cloud instance can be added multiple times, but each instance must be in a different region. This enables cross-region DR. |
-|  | Region | Select the region to which the cloud instance belongs. |
-|  | Regional Role | Select Production Region or Secondary Region. This role must be different from the Regional Role of the Current Region Configuration. |
+|   | Region | Select the region to which the cloud instance belongs. |
+|   | Regional Role | Select Production Region or Secondary Region. This role must be different from the Regional Role of the Current Region Configuration. |
 
 3. Click **OK**.
 
@@ -4604,19 +4527,21 @@ In multiple regions within a disaster recovery relationship, only one production
 navigation pane, choose **DR for Business** > **Protection Groups**.
 2. On the Protection Groups page, click **Create**.
 3. On the **Create Protection Group** page, configure the parameters that are described in
-the following table.
+the following table. nagement
 
 | Section | Parameter | Description |
 |---|---|---|
 | Basic Configurations Note This section displays the basic information about the disaster recovery region. | Organizations | The organization to which the protection group data belongs. |
-|  | Resource Set | The resource set to which the instance for disaster recovery belongs. |
-|  | Disaster Recovery Relationship | The disaster recovery relationship to which the protection group belongs. |
+|   | Resource Set | The resource set to which the instance for disaster recovery belongs. |
+|   | Disaster Recovery Relationship | The disaster recovery relationship to which the protection group belongs. |
 | Protection Group Information | Name | The name of the protection group. You can specify a custom name. The name must be 4 to 40 characters in length and can contain only letters, digits, hyphens (-), underscores ( ), and _ periods (.). |
-|  | Synchronization Direction | The switchover direction. If services are provided by the instances at the primary site, select Forward. If services are provided by the instances at the secondary site, select Backward. Note The synchronization direction for the protection group changes based on the completion of switchovers and switchbacks. After switchovers are complete, Forward changes to Backward. After switchbacks are complete, Backward changes to Forward. |
-|  | Protection Group Mode | Primary/Secondary: In primary/secondary mode, the primary site provides services. The secondary site replicates data from the primary site in real time, but does not provide services. When the primary site fails, services are failed over to the secondary site. Active-active: In active-active mode, both the primary and secondary sites provide services. Note You can create a protection group in active-active mode only after you purchase a corresponding license. |
-| Document Version: 2026 | 0629 15 |  |
+|   | Synchronization Direction | The switchover direction. If services are provided by the instances at the primary site, select Forward. If services are provided by the instances at the secondary site, select Backward. Note The synchronization direction for the protection group changes based on the completion of switchovers and switchbacks. After switchovers are complete, Forward changes to Backward. After switchbacks are complete, Backward changes to Forward. |
+|   | Protection Group Mode | Primary/Secondary: In primary/secondary mode, the primary site provides services. The secondary site replicates data from the primary site in real time, but does not provide services. When the primary site fails, services are failed over to the secondary site. Active-active: In active-active mode, both the primary and secondary sites provide services. Note You can create a protection group in active-active mode only after you purchase a corresponding license. |
+| Document Version: 2026 | 0629 15 |   |
 
-|  | Description | The description of the protection group. You can customize the description for easy identification. |
+nagement
+
+|   | Description | The description of the protection group. You can customize the description for easy identification. |
 |---|---|---|
 
 4. Click **Submit**. On the **Protection Groups** page, find the protection group that you created,
@@ -4661,27 +4586,32 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 4. In the organization list, click the name of the level-1 organization whose AccessKey pair you
 want to obtain.
 5. On the right side of the page, click **Manage AccessKey Pairs**.
+nagement
 6. In the dialog box that appears, view the AccessKey pair of the organization.
+
+## 9 Protocol conversion
+
+API Gateway provides the following protocol conversion capabilities.
 
 | Servic e type | Servic e disco very meth od | HTTP- to- Dubb o | HTTP- to- gRPC | HTTP- to- WebS ervice | HTTP- to- HTTP | HTTP- to- HTTP S | HTTP- to- HSF | HTTP- to- JDBC | HTTP/ HTTP S-to- HTTP |
 |---|---|---|---|---|---|---|---|---|---|
 | RPC servic e | Servic e discov ery | Suppo rted | Not suppor ted | Not suppor ted | Suppo rted | Suppo rted | Suppo rted | Not suppor ted | Not suppor ted |
-|  | Fixed nodes | Suppo rted | Suppo rted | Suppo rted | Suppo rted | Suppo rted | Suppo rted | Not suppor ted | Not suppor ted |
+|   | Fixed nodes | Suppo rted | Suppo rted | Suppo rted | Suppo rted | Suppo rted | Suppo rted | Not suppor ted | Not suppor ted |
 | Datab ase | Fixed nodes | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Suppo rted | Not suppor ted |
 | Virtua l Privat e Cloud (VPC) servic e | Fixed nodes | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Not suppor ted | Suppo rted |
 
-| Parameter | Description |
-|---|---|
-| Name | Required. The globally unique name of the service within the scope of a gateway instance. |
+The HTTP-to-Dubbo and HTTP-to-HTTP protocol conversion supports both fixed nodes and service discovery, whereas the HTTP-to-gRPC and HTTP-to-WebService protocol conversion supports only fixed nodes.
 
-## Protocol conversion
-
-API Gateway provides the following protocol conversion capabilities. The HTTP-to-Dubbo and HTTP-to-HTTP protocol conversion supports both fixed nodes and service discovery, whereas the HTTP-to-gRPC and HTTP-to-WebService protocol conversion supports only fixed nodes.
+**HTTP-to-Dubbo protocol conversion**
 
 **Create a service**
 
 Find the API Gateway instance that you want to manage and go to the gateway details page. In the left-side navigation pane, choose **Service Management > Service List**. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to
 **Dubbo** and specify other parameters to create the service.
+
+| Parameter | Description |
+|---|---|
+| Name | Required. The globally unique name of the service within the scope of a gateway instance. |
 
 | Description | The description of the service. |
 |---|---|
@@ -4698,36 +4628,32 @@ Find the API Gateway instance that you want to manage and go to the gateway deta
 
 **Call a service**
 
-The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-Dubbo protocol conversion are supported only in the POST request body. The following sample code shows the required parameter format.
+The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-Dubbo protocol conversion are supported only in the POST request body. The following sample code shows the required parameter format. `{`
 
-| Parameter | Description |
-|---|---|
-
-```json
-{
+```
   "Type of Parameter 1": Parameter 1,
   "Type of Parameter 2": Parameter 2,
   ...
   "Type of Parameter n": Parameter n,
-}
 ```
 
-This section demonstrates the service call of the following Dubbo API operation:
+`}` This section demonstrates the service call of the following Dubbo API operation:
 
 ```
  String sayHello(List<People> name, String first);
 ```
 
-The following example shows how to call the operation. The first parameter of the operation is a list of the java.util.List type whose element type is a custom Person class, which has a name attribute of the String type and an age attribute of the Integer type. The second parameter is of the java.lang.String type. The following figure shows how to call the operation.
+The following example shows how to call the operation. The first parameter of the operation is a list of the java.util.List type whose element type is a custom Person class, which has a name attribute of the String type and an age attribute of the Integer type. The second parameter is of the java.lang.String type. The following figure shows how to call the operation. You must specify multiple parameters in the same order as those defined in the API operation.
 
-**Note**
-
-You must specify multiple parameters in the same order as those defined in the API operation.
+**HTTP-to-gRPC protocol conversion**
 
 **Create a service**
 
 Find the API Gateway instance that you want to manage and go to the gateway details page. In the left-side navigation pane, choose **Service Management > Service List**. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to
 **gRPC** and specify other parameters to create the service.
+
+| Parameter | Description |
+|---|---|
 
 | Name | Required. The globally unique name of the service within the scope of a gateway instance. |
 |---|---|
@@ -4741,7 +4667,7 @@ Find the API Gateway instance that you want to manage and go to the gateway deta
 
 **Call a service**
 
-The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-gRPC protocol conversion are supported only in the POST request body. The following sample code shows the required parameter format. [
+The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-gRPC protocol conversion are supported only in the POST request body. The following sample code shows the required parameter format. `[`
 
 ```
     JSON object for Parameter 1,
@@ -4750,29 +4676,33 @@ The process of creating a route that involves protocol conversion is identical t
     JSON object for Parameter n,
 ```
 
-] This section demonstrates the service call of the following gRPC API operation:
+`]` This section demonstrates the service call of the following gRPC API operation:
 
 ```java
-package hello; service HelloService{ rpc SayHello(HelloRequest) returns (HelloResponse){} } message HelloRequest{ string name = 1; }
+package hello; service HelloService{ rpc SayHello(HelloRequest) returns (HelloResponse){}
 ```
 
-The following example shows how to call this operation. This operation has only one parameter whose element type is HelloRequest, which has a name attribute of the String type. The following figure shows how to call this operation:
+`}`
 
-**Note**
+```
+message HelloRequest{ string name = 1;
+```
 
-You must specify multiple parameters in the same order as those defined in the API operation.
-
-| Parameter | Description |
-|---|---|
+`}` The following example shows how to call this operation. This operation has only one parameter whose element type is HelloRequest, which has a name attribute of the String type. The following figure shows how to call this operation: You must specify multiple parameters in the same order as those defined in the API operation.
 
 **Limits**
 
 Currently, HTTP-to-gRPC protocol conversion in the current version supports only Javabased gRPC services. In addition, the reflection parameter query feature must be enabled for gRPC services. HTTP-to-gRPC protocol conversion in this version supports only upstream gRPC services of the fixed node type.
 
+**HTTP-to-WebService protocol conversion**
+
 **Create a service**
 
 Find the API Gateway instance that you want to manage and go to the gateway details page. In the left-side navigation pane, choose **Service Management > Service List**. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to
 **WebService** and specify other parameters to create the service.
+
+| Parameter | Description |
+|---|---|
 
 | Name | Required. The globally unique name of the service within the scope of a gateway instance. |
 |---|---|
@@ -4785,7 +4715,7 @@ Find the API Gateway instance that you want to manage and go to the gateway deta
 
 **Call a service**
 
-The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-WebService protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format. [
+The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-WebService protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format. `[`
 
 ```
     JSON object for Parameter 1,
@@ -4794,23 +4724,24 @@ The process of creating a route that involves protocol conversion is identical t
     JSON object for Parameter n
 ```
 
-] This section demonstrates the service call of the following WebService API operation:
+`]` This section demonstrates the service call of the following WebService API operation:
 
 ```
  String sayHello3(Person person, String name);
 ```
 
-The following example shows how to call the operation. The first parameter of this operation is an object of the custom Person class, which has a name attribute of the String type and an age attribute of the Integer type. The second parameter is of the java.lang.String type. The following figure shows how to call the operation.
-
-**Note**
-
-You must specify multiple parameters in the same order as those defined in the API operation.
+The following example shows how to call the operation. The first parameter of this operation is an object of the custom Person class, which has a name attribute of the String type and an age attribute of the Integer type. The second parameter is of the java.lang.String type. The following figure shows how to call the operation. You must specify multiple parameters in the same order as those defined in the API operation.
 
 **Limits**
 
 Currently, HTTP-to-WebService protocol conversion in this version supports only upstream WebService services of the fixed node type. Only WebService services whose bindType is Document-Literal (Wrapper or Unwrapper) are supported. Supported parameter types include Java primitive data types, List, Set, and custom object types. Parameters of the Map type are not supported. If you use parameters of the Map type, we recommend that you convert the data type to List or another supported type.
 
+**HTTP-to-HTTP protocol conversion**
+
 **Create a service**
+
+Find the API Gateway instance that you want to manage and go to the gateway details page. In the left-side navigation pane, choose **Service Management > Service List**. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to
+**HTTP** and specify other parameters to create the service.
 
 | Parameter | Description |
 |---|---|
@@ -4824,9 +4755,6 @@ Currently, HTTP-to-WebService protocol conversion in this version supports only 
 | Load balancing algorithm | Required. The load balancing algorithm used by the gateway to call the backend service. Valid values when Upstream Type is set to Service Discovery: Polling and Random. Valid values when Upstream Type is set to Fixed node: Weighted Polling and Weighted random. |
 | Protocol Type | Required. The protocol type of the upstream service. Select HTTP. |
 
-Find the API Gateway instance that you want to manage and go to the gateway details page. In the left-side navigation pane, choose **Service Management > Service List**. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to
-**HTTP** and specify other parameters to create the service.
-
 **Call a service**
 
 The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. The gateway supports various parameter-passing methods for HTTP-to-HTTP protocol conversion. For example, parameters can be appended to the route (URL path) for GET requests and carried in the POST request body. The parameter organization follows the same conventions as standard RESTful API operations.
@@ -4835,17 +4763,19 @@ The process of creating a route that involves protocol conversion is identical t
  public String c(String name);
 ```
 
-| Parameter | Description |
-|---|---|
-| Name | Required. The globally unique name of the service within the scope of a gateway instance. |
-| Description | The description of the service. |
-
 The following figure shows how to call the operation. The only parameter of this operation is of the java.lang.String type.
+
+**HTTP-to-HTTPS protocol conversion**
 
 **Create a service**
 
 Find the API Gateway instance that you want to manage and go to the gateway details page. In the left-side navigation pane, choose **Service Management > Service List**. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to
 **HTTPS** and specify other parameters to create the service.
+
+| Parameter | Description |
+|---|---|
+| Name | Required. The globally unique name of the service within the scope of a gateway instance. |
+| Description | The description of the service. |
 
 | Service Type | Required. The type of the backend service for which protocol conversion is required. Select RPC service. |
 |---|---|
@@ -4860,18 +4790,14 @@ Find the API Gateway instance that you want to manage and go to the gateway deta
 
 The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. The gateway supports various parameter-passing methods for HTTP-to-HTTPS protocol conversion. For example, parameters can be appended to the route (URL path) for GET requests and carried in the POST request body. The parameter organization follows the same conventions as standard RESTful API operations. In this example, the HTTPS service provided by the GET method in httpbin.org is tested. The following figure shows how to call the service.
 
-**Create a service**
+**HTTP-to-HSF protocol conversion**
 
-**Note**
+**Create a service**
 
 You can select an upstream type based on whether the application is registered with a registry. HTTP-to-HSF protocol conversion features similar configurations for the upstream types of Fixed node and Service Discovery. The following section describes how to create a service when the upstream type is Service Discovery for HTTP-to-HSF protocol conversion. The operations are similar when the upstream type is Fixed node. Before you create a service, you must create a source. Find the gateway instance that you want to manage and go to the instance details page. In the left-side navigation pane, choose
 **Service Management > Source Management**. On the page that appears, click **Create**
 **Source**. The source of an HSF service must be the HSF registry in EDAS. Then, specify the ID
-of the namespace in EDAS where the service resides.
-
-**Note**
-
-HSF service discovery supports only the HSF registry in EDAS. After the source is created, choose **Service Management > Service List** in the left-side navigation pane. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to **HFS** and specify other parameters to create the service.
+of the namespace in EDAS where the service resides. HSF service discovery supports only the HSF registry in EDAS. After the source is created, choose **Service Management > Service List** in the left-side navigation pane. On the Service List page, click **Create Service**. On the Create Service page, set **Protocol Type** to **HFS** and specify other parameters to create the service.
 
 | Parameter | Description |
 |---|---|
@@ -4890,38 +4816,28 @@ HSF service discovery supports only the HSF registry in EDAS. After the source i
 
 **Call a service**
 
-The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-HSF protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format.
+The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-HSF protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format. `{`
 
-| Parameter | Description |
-|---|---|
-| Name | Required. The globally unique name of the service within the scope of a gateway instance. |
-| Description | The description of the service. |
-| Service Type | Required. The type of the backend service for which protocol conversion is required. Select Database. |
-
-```json
-{
+```
   "Type of Parameter 1": Parameter 1,
   "Type of Parameter 2": Parameter 2,
   ....
   "Type of Parameter n": Parameter n,
-}
 ```
 
-This section demonstrates the service call of the following HSF API operation:
+`}` This section demonstrates the service call of the following HSF API operation:
 
 ```
  String sayHello(List<People> name, String first);
 ```
 
-The following example shows how to call the operation. The first parameter of the operation is a list of the java.util.List type whose element type is a custom Person class, which has a name attribute of the String type and an age attribute of the Integer type. The second parameter is of the java.lang.String type. The following figure shows how to call the operation.
-
-**Note**
-
-You must specify multiple parameters in the same order as those defined in the API operation. The following figure shows how to access a gateway pod to call the operation.
+The following example shows how to call the operation. The first parameter of the operation is a list of the java.util.List type whose element type is a custom Person class, which has a name attribute of the String type and an age attribute of the Integer type. The second parameter is of the java.lang.String type. The following figure shows how to call the operation. You must specify multiple parameters in the same order as those defined in the API operation. The following figure shows how to access a gateway pod to call the operation.
 
 ```bash
 curl --request POST 'http://127.0.0.1:80/default/sayHello' -d '{"java.util.List":[{"nam e":"james","age":33}],"java.lang.String":"mike"}'
 ```
+
+**HTTP-to-JDBC protocol conversion**
 
 **Create a service**
 
@@ -4929,6 +4845,12 @@ Before you create a service, you must create a source. Find the gateway instance
 **Service Management > Source Management**. On the page that appears, click **Create**
 **Source**. To implement HTTP-to-JDBC protocol conversion, you must select a database source.
 Currently, mainstream database types MySQL and PostgreSQL are supported. After the source is created, choose **Service Management > Service List** in the left-side navigation pane. On the Service List page, click **Create Service**. On the Create Service page, set **Service Type** to **Database** and specify other parameters to create the service.
+
+| Parameter | Description |
+|---|---|
+| Name | Required. The globally unique name of the service within the scope of a gateway instance. |
+| Description | The description of the service. |
+| Service Type | Required. The type of the backend service for which protocol conversion is required. Select Database. |
 
 | Source | The service source to which the backend service belongs. Valid value: Database. |
 |---|---|
@@ -4956,68 +4878,75 @@ values for the call request. The **__csbRecordError** field is provided for cust
 
 **Call a service**
 
-The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-JDBC protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format.
+The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP-to-JDBC protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format. `{`
 
-```json
-{
+```
   "Name of Parameter 1": Parameter 1,
   "Name of Parameter 2": Parameter 2,
   ....
   "Name of Parameter n": Parameter n,
-}
 ```
 
-Initiate a request based on the JDBC service created in the preceding section. The following sample code shows the request structure and response format.
+`}` Initiate a request based on the JDBC service created in the preceding section. The following sample code shows the request structure and response format. The offset and limit parameters are optional and can be used to implement paginated queries. If you set the requireTotalCount parameter to true, the number of all results that meet the conditions is returned. If you set the requireTotalCount parameter to false, the number of results that meet the conditions is not returned.
 
-**Note**
+```bash
+curl --request POST 'http://127.0.0.1:80/postgresql-route' -d '
+```
 
-The offset and limit parameters are optional and can be used to implement paginated queries. If you set the requireTotalCount parameter to true, the number of all results that meet the conditions is returned. If you set the requireTotalCount parameter to false, the number of results that meet the conditions is not returned.
-
-| Parameter | Description |
-|---|---|
+`{`
 
 ```json
-curl --request POST 'http://127.0.0.1:80/postgresql-route' -d ' {
     "queryValues": {
         "no1": 0,
         "no2": 3
-    },
+```
+
+`},`
+
+```json
     "requireTotalCount": true,
     "offset": 0,
     "limit": 10
-}'
 ```
 
-Returned result:
+`}'` Returned result: `{`
 
 ```json
-{
   "count": 2,
   "result": [
-    {
+```
+
+`{`
+
+```json
       "customerId": 1,
       "email": "john@example.com",
       "name": "John Smith"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "customerId": 2,
       "email": "mary@example.com",
       "name": "Mary Johnson"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "resultCode": 200,
   "resultMsg": "SUCCESS",
   "totalCount": 99995
-}
 ```
+
+`}`
 
 **Limits**
 
 Currently, only MySQL and PostgreSQL databases are supported. Currently, only query operations on databases are supported. You cannot perform add, delete, and modify operations on databases. When you create a service, SQL statements must conform to MyBatis syntax.
+
+**HTTP/HTTPS-to-HTTP protocol conversion**
 
 **Create a service**
 
@@ -5025,6 +4954,9 @@ Before you create a service, you must create a source. Find the gateway instance
 **Service Management > Source Management**. On the page that appears, click **Create**
 **Source**.
 After the source is created, choose **Service Management > Service List** in the left-side navigation pane. On the Service List page, click **Create Service**. On the Create Service page, set **Service Type** to **VPC Service** and specify other parameters to create the service.
+
+| Parameter | Description |
+|---|---|
 
 | Name | Required. The globally unique name of the service within the scope of a gateway instance. |
 |---|---|
@@ -5037,7 +4969,7 @@ After the source is created, choose **Service Management > Service List** in the
 
 **Call a service**
 
-The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP/HTTPS-to-HTTP protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format. [
+The process of creating a route that involves protocol conversion is identical to that of creating a regular route that does not involve protocol conversion. No separate demonstration is provided for protocol conversion scenarios. For more information, see the route creation instructions. Currently, parameters for HTTP/HTTPS-to-HTTP protocol conversion can be carried only in the POST request body. The following sample code shows the required parameter format. `[`
 
 ```
     JSON object for Parameter 1,
@@ -5046,36 +4978,29 @@ The process of creating a route that involves protocol conversion is identical t
     JSON object for Parameter n
 ```
 
-] This section demonstrates the service call of the following HTTP/HTTPS API operation:
+`]` This section demonstrates the service call of the following HTTP/HTTPS API operation:
 
 ```java
-package hello; service HelloService{ http SayHello(HelloRequest) returns (HelloResponse){} } message HelloRequest{ string name = 1; }
+package hello; service HelloService{ http SayHello(HelloRequest) returns (HelloResponse){}
 ```
 
-This operation has only one parameter whose element type is HelloRequest, which has a name attribute of the String type. The following figure shows how to call this operation:
+`}`
 
-**Note**
+```
+message HelloRequest{ string name = 1;
+```
 
-You must specify multiple parameters in the same order as those defined in the API operation.
+`}` This operation has only one parameter whose element type is HelloRequest, which has a name attribute of the String type. The following figure shows how to call this operation: You must specify multiple parameters in the same order as those defined in the API operation.
 
 **Limits**
 
 Only shared instances are supported.
 
-| Parameter | Description |
-|---|---|
-| Interface Name | Enter an interface name that does not exceed 50 characters in length. |
-| Interface Description | Enter the description for the interface. |
-| Interface request method | The HTTP method of requests sent to the gateway. |
-| Back-end request method | The HTTP method of requests sent by the gateway to backend services. |
-
-## Interface center
+## 10 Interface center
 
 The interface center provides descriptions of interfaces that belong to a specific route. These interfaces can generate inspection items used to inspect interfaces. The interface details are also included in the portal interface details.
 
 **Create an interface and configure parameter mapping**
-
-**Note**
 
 You can add interface information in the GUI, including the path, request parameters, and returned data. A shared gateway can perform parameter verification and mapping only on requests sent by upstream services that use the Http2Http and Http2Https protocols. A shared gateway can perform only parameter verification on requests sent by upstream services that use the Http2Dubbo and Http2GRpc protocols.
 1. Log in to the API Gateway console.
@@ -5089,6 +5014,13 @@ column.
 6. On the **Interface Center** tab, click **Create** to go to the **Create Interface** page.
 7. On the **Create Interface** page, configure the following parameters and click **Publish**
 **Interface**.
+
+| Parameter | Description |
+|---|---|
+| Interface Name | Enter an interface name that does not exceed 50 characters in length. |
+| Interface Description | Enter the description for the interface. |
+| Interface request method | The HTTP method of requests sent to the gateway. |
+| Back-end request method | The HTTP method of requests sent by the gateway to backend services. |
 
 | Content-type | This parameter is available only when Back- end request method is set to PUT or POST. You can select Pass-through client ContentType header, Custom, or Gateway Default. |
 |---|---|
@@ -5128,9 +5060,6 @@ instance ID or click **Details** in the **Operation** column.
 column.
 6. Click **Import**, specify **routePath**, enter a Swagger URL, specify **Release Notes**, and click
 **Determine**.
-
-**Note**
-
 After you disable **Import and Publish**, an interface release operation is not synchronized to the portal, and the interface is not displayed in the portal.
 
 **View interfaces**
@@ -5200,40 +5129,47 @@ The URL of the request sent to the gateway is as follows:
  /httpbin/anything?a=hello world&b=2
 ```
 
-The backend interface parameters are as follows:
+The backend interface parameters are as follows: `{`
 
 ```json
-{
   "a": "String",
   "b": "Integer"
-}
 ```
 
-The following figure shows the interface configuration on the gateway. For parameters that are mapped to jsonBody, the gateway creates a virtual root node. You need to specify the names of the backend parameters in a layered structure based on the root node.
+`}` The following figure shows the interface configuration on the gateway. For parameters that are mapped to jsonBody, the gateway creates a virtual root node. You need to specify the names of the backend parameters in a layered structure based on the root node. `{`
 
 ```json
-{
   "obj1": {
     "item1": "String",
     "item2": "String"
-  }
-}
 ```
+
+`}` `}`
 
 **Example 2: Map complex JSON objects**
 
 The parameters received by the backend services are as follows:
 
+```
+POST /api/createApi HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-POST /api/createApi HTTP/1.1 Content-Type: application/json {
   "obj": {
     "item1": "String",
     "item2": "List<String>",
-  },
+```
+
+`},`
+
+```json
   "str": "String",
   "array": "List<Integer>"
-}
 ```
+
+`}` The request parameters received by the gateway are included in Query.
 
 | Parameter | Type | Whether the parameter is mapped to a backend parameter | Required |
 |---|---|---|---|
@@ -5242,7 +5178,11 @@ POST /api/createApi HTTP/1.1 Content-Type: application/json {
 | queryStr2 | String | root.str | No |
 | queryArray2 | List<Integer> | root.array | No |
 
-The request parameters received by the gateway are included in Query. The following figures show the interface configuration on the gateway. After you use postman to initiate a request, the expected result is returned.
+The following figures show the interface configuration on the gateway. After you use postman to initiate a request, the expected result is returned.
+
+**Example 3: Verify parameters**
+
+The request parameters received by the gateway are included in Query.
 
 | Parameter | Type | Required | Verification rule |
 |---|---|---|---|
@@ -5250,9 +5190,7 @@ The request parameters received by the gateway are included in Query. The follow
 | queryInt | Int | Yes | Valid values: 0 to 100. |
 | queryArray | List<String> | Yes | Maximum length: 3. |
 
-**Example 3: Verify parameters**
-
-The request parameters received by the gateway are included in Query. The following figures show the interface configuration in the interface center. Use postman to initiate a request.
+The following figures show the interface configuration in the interface center. Use postman to initiate a request.
 
 **Invalid request 1: the String parameter is invalid**
 
@@ -5260,11 +5198,7 @@ The request parameters received by the gateway are included in Query. The follow
 
 **Invalid request 3: invalid number**
 
-| Log name | Description |
-|---|---|
-| access.log | Gateway request log. This log is enabled by default and records every request. |
-
-## Gateway logs
+## 11 Gateway logs
 
 This topic describes how to configure log collection for a gateway, the log classifications, and provides examples and details for the major log files.
 
@@ -5276,19 +5210,16 @@ When a gateway is deployed using EDAS, you can collect logs in Simple Log Servic
 
 The collected logs are classified as follows:
 
+| Log name | Description |
+|---|---|
+| access.log | Gateway request log. This log is enabled by default and records every request. |
+
 | request.log | Gateway request body and response body log. This log is disabled by default. It records the request body and response body for every request. This log is disabled by default for performance reasons. If you enable it, gateway performance degrades sharply because it unpacks all requests and responses. Note Note the difference between access.log and request.log. The access.log file records only the URI information for each request and does not read the message body. The request.log file is used to troubleshoot business issues and records the specific message body. |
 |---|---|
 | config.log | Gateway configuration push log. Each time a push is received from the configuration center, the configuration content is printed. This helps troubleshoot configuration push issues. |
 | schedule.log | Scheduled task run log. This file is used exclusively to record scheduled task logs to prevent them from interfering with other log outputs. |
 | remoting.log | Connection log. This log records the establishment and disconnection of persistent connections between the gateway and backend services. It is used to troubleshoot network issues. |
 | debug.log | Gateway business log. All other business information is output to this log. |
-
-| No. | Description | SLS field |
-|---|---|---|
-| 1 | Gateway access start time | startTime |
-| 2 | Request ID | requestId |
-| 3 | Requested service name | serviceName |
-| 4 | Gateway instance ID | gwInstanceId |
 
 **access.log**
 
@@ -5299,6 +5230,13 @@ Log example:
 ```
 
 Details:
+
+| No. | Description | SLS field |
+|---|---|---|
+| 1 | Gateway access start time | startTime |
+| 2 | Request ID | requestId |
+| 3 | Requested service name | serviceName |
+| 4 | Gateway instance ID | gwInstanceId |
 
 | 5 | Consumer ID | appId |
 |---|---|---|
@@ -5326,12 +5264,6 @@ Details:
 | 25 | Gateway invocation round trip time | platformRt |
 | 26 | Custom log items | customLogItems |
 
-| No. | Description | SLS field |
-|---|---|---|
-| 1 | Corresponds to the requestId in access.log | request id _ |
-| 2 | Request body | request body _ |
-| 3 | Response body | response body _ |
-
 **request.log**
 
 Log example:
@@ -5340,24 +5272,24 @@ Log example:
 [request] 2022-11-02 17:32:14.858 [INFO ] [reactor-http-kqueue-10] requestLog - {"reque stId":"7b1fe671-7ad7-4638-9863-3f9e1c4733da", "request_body":"request_body", "response_body":"response_body"}
 ```
 
-Details: To ensure performance, request.log is disabled by default. You can enable it by configuring the following environment variable.
+Details:
+
+| No. | Description | SLS field |
+|---|---|---|
+| 1 | Corresponds to the requestId in access.log | request id _ |
+| 2 | Request body | request body _ |
+| 3 | Response body | response body _ |
+
+To ensure performance, request.log is disabled by default. You can enable it by configuring the following environment variable.
 
 ```
 env:
   PRINT_REQUEST_INFO: true
 ```
 
-| Parameter | Description |
-|---|---|
-| Instance Name | The name of the instance. The name must be 2 to 80 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores ( ), and hyphens (-). _ |
-| Number Of Instance Nodes | The number of nodes for the instance. The value can be from 1 to 100. |
-| Specification | The instance types provided by the platform. |
-| Gateway Type | Select API Gateway. |
-| Deployment Architecture | Select EDAS. |
+## 12 Best practices
 
-## Best practices
-
-### Zone-disaster recovery
+### 12.1 Zone-disaster recovery
 
 This topic describes how to enable zone-disaster recovery when you create an API Gateway 2.0 instance. API Gateway 2.0 supports multi-cluster deployments. To enable zone-disaster recovery, you can deploy a single API Gateway 2.0 instance to multiple Kubernetes (K8s) clusters when you create the instance.
 
@@ -5369,6 +5301,14 @@ This topic describes how to enable zone-disaster recovery when you create an API
 4. Enter the configuration information. Set **Deployment Architecture** to **EDAS**. In the **EDAS**
 **Configuration** section, associate your existing K8s clusters. Click **Submit** to create the
 gateway instance. The following table describes some of the parameters.
+
+| Parameter | Description |
+|---|---|
+| Instance Name | The name of the instance. The name must be 2 to 80 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores ( ), and hyphens (-). _ |
+| Number Of Instance Nodes | The number of nodes for the instance. The value can be from 1 to 100. |
+| Specification | The instance types provided by the platform. |
+| Gateway Type | Select API Gateway. |
+| Deployment Architecture | Select EDAS. |
 
 | EDAS Configuration | Associate your existing K8s clusters. Keep the Microservices Namespace consistent. The Kubernetes Namespace can be configured as needed. The selected clusters must be in the same VPC as the backend service. |
 |---|---|

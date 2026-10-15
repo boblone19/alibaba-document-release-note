@@ -3,14 +3,104 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 137
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer User Guide 20260828.pdf"
+source_pdf: "ab77f7bb79538766_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer User Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20Application%20Load%20Balancer%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Application Load Balancer User Guide 20260828
 
-## Log in to the ALB console
+## Table of Contents
+
+- 1 Log in to the ALB console
+- 2 Quick start
+  - 2.1 Overview
+  - 2.2 Preparations
+  - 2.3 Create an ALB instance
+  - 2.4 Configure listeners and backend services
+  - 2.5 Release an ALB instance
+- 3 ALB
+  - 3.1 Instance management
+    - 3.1.1 Instance overview
+    - 3.1.2 Create an ALB instance
+    - 3.1.3 Manage ALB instances
+      - 3.1.3.1 Modify the name of an ALB instance
+      - 3.1.3.2 Modify deletion protection
+      - 3.1.3.3 Configure modification protection
+      - 3.1.3.4 Release an instance
+    - 3.1.4 Modify the configurations of ALB instances
+    - 3.1.5 Change the network type of an ALB instance
+    - 3.1.6 View the list of ALB instances
+    - 3.1.7 View the details of an ALB instance
+    - 3.1.8 Listeners
+      - 3.1.8.1 Listener overview
+      - 3.1.8.2 Add listeners
+        - 3.1.8.2.1 Add an HTTP listener
+        - 3.1.8.2.2 Add an HTTPS listener
+        - 3.1.8.2.3 Add a QUIC listener
+      - 3.1.8.3 Manage listeners
+        - 3.1.8.3.1 Modify the name of a listener
+        - 3.1.8.3.2 Configure access control
+          - 3.1.8.3.2.1 Enable access control
+          - 3.1.8.3.2.2 Modify access control
+          - 3.1.8.3.2.3 Disable access control
+        - 3.1.8.3.3 Start or stop a listener
+        - 3.1.8.3.4 Modify listeners
+        - 3.1.8.3.5 Change a server group
+        - 3.1.8.3.6 Delete a listener
+      - 3.1.8.4 Modify a TLS security policy
+      - 3.1.8.5 View the list of listeners
+      - 3.1.8.6 View the details of a listener
+      - 3.1.8.7 Manage certificates for listeners
+        - 3.1.8.7.1 Add additional certificates
+        - 3.1.8.7.2 Replace the default certificate of a listener
+        - 3.1.8.7.3 Enable or disable mutual authentication
+      - 3.1.8.8 Manage forwarding rules for a listener
+        - 3.1.8.8.1 Create inbound forwarding rules
+        - 3.1.8.8.2 Create outbound forwarding rules
+    - 3.1.9 Monitoring
+  - 3.2 Certificate management
+    - 3.2.1 Certificate overview
+    - 3.2.2 Certificate requirements
+    - 3.2.3 Manage server certificates
+    - 3.2.4 Manage CA certificates
+  - 3.3 Server group
+    - 3.3.1 Create a server group
+    - 3.3.2 Manage server groups
+      - 3.3.2.1 Modify the name of a server group
+      - 3.3.2.2 Modify a server group
+      - 3.3.2.3 Delete a server group
+    - 3.3.3 View the list of server groups
+    - 3.3.4 View the details of a server group
+    - 3.3.5 Backend servers
+      - 3.3.5.1 Add backend servers
+      - 3.3.5.2 Modify the configuration of a backend server
+      - 3.3.5.3 Remove a backend server
+  - 3.4 Health checks
+    - 3.4.1 Health check overview
+    - 3.4.2 Create a health check
+    - 3.4.3 Modify the name of a health check
+    - 3.4.4 Modify a health check
+    - 3.4.5 Delete a health check
+  - 3.5 Access control
+    - 3.5.1 Access control overview
+    - 3.5.2 Create an ACL
+    - 3.5.3 Modify the name of an ACL
+    - 3.5.4 Delete an ACL
+    - 3.5.5 Manage ACLs
+  - 3.6 Security policies
+    - 3.6.1 Creates a custom security policy
+    - 3.6.2 Modify the name of a custom security policy
+    - 3.6.3 Delete a custom security policy
+  - 3.7 Operation logs
+- 4 Tag management
+  - 4.1 Tag overview
+  - 4.2 Edit tags
+  - 4.3 Add tags to multiple ALB instances at a time
+  - 4.4 Remove tags from multiple ALB instances at a time
+  - 4.5 Search for instances by tag
+
+## 1 Log in to the ALB console
 
 This topic describes how to navigate to the Application Load Balancer (ALB) console after you log in to the Apsara Uni-manager Management Console by using Google Chrome.
 
@@ -37,19 +127,13 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, click **Products > Network > Server Load Balancer (SLB)**.
 
-## Quick start
+## 2 Quick start
 
-### Overview
+### 2.1 Overview
 
-This topic describes how to create an Application Load Balancer (ALB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances. Before you create an ALB instance, you must determine the configurations of the ALB instance, such as the region, type, and specifications. For more information, see Preparations. This topic includes the following operations:
-1. Create an ALB Instance
-Create an ALB instance. An ALB instance is an entity that provides load balancing services.
-2. Configure listeners and backend services
-After you create an ALB instance, you must add listeners and backend services to the ALB instance.
-3. Release an ALB instance
-If you no longer need the ALB instance, you can release it.
+This topic describes how to create an Application Load Balancer (ALB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances. Before you create an ALB instance, you must determine the configurations of the ALB instance, such as the region, type, and specifications. For more information, see Preparations. This topic includes the following operations: Create an ALB instance. An ALB instance is an entity that provides load balancing services. After you create an ALB instance, you must add listeners and backend services to the ALB instance. If you no longer need the ALB instance, you can release it.
 
-### Preparations
+### 2.2 Preparations
 
 Before you create an Application Load Balancer (ALB) instance, you must determine the configurations of the ALB instance, such as the listener type and network type.
 
@@ -88,7 +172,7 @@ Before you use ALB, you must create ECS instances that function as backend serve
 net.ipv4.conf.default.rp_filter = 0 net.ipv4.conf.all.rp_filter = 0 net.ipv4.conf.eth0.rp_filter = 0
 ```
 
-### Create an ALB instance
+### 2.3 Create an ALB instance
 
 An Application Load Balancer (ALB) instance is an entity that provides load balancing services.
 1. Log on to the Application Load Balancer (ALB) console.
@@ -120,7 +204,7 @@ If a service is created on the Service Management page and **Application Load Ba
 **(ALB)** is displayed in the **Cloud resources** column of the service, confirm the
 parameters and click **Confirm Order**. If no service whose **Cloud resources** value is **Application Load Balancer (ALB)** exists on the Service Management page, confirm the parameters and click **Submit**.
 
-### Configure listeners and
+### 2.4 Configure listeners and backend services
 
 **backend services**
 
@@ -298,7 +382,7 @@ In the **Review Configuration** step, confirm the configurations, and then click
 
 Enter the IP address of the ALB instance in the address bar of a browser to test the load balancing performance of the ALB instance. Figure 1: ECS01 Figure 2: ECS02
 
-### Release an ALB instance
+### 2.5 Release an ALB instance
 
 This topic describes how to release an Application Load Balancer (ALB) instance. The backend Elastic Compute Service (ECS) instances are not deleted or affected after you release an ALB instance. Before you release an ALB instance, you must disable deletion protection.
 1. Log on to the Application Load Balancer (ALB) console.
@@ -309,11 +393,11 @@ This topic describes how to release an Application Load Balancer (ALB) instance.
 **Actions** column.
 5. In the **Release Instance** message, click **OK**.
 
-## ALB
+## 3 ALB
 
-### Instance management
+### 3.1 Instance management
 
-#### Instance overview
+#### 3.1.1 Instance overview
 
 Application Load Balancer (ALB) is developed for Layer 7 load balancing over HTTP, HTTPS, and QUIC and provides advanced routing features.
 
@@ -350,7 +434,7 @@ Apsara Stack provides Internet-facing and internal-facing ALB instances. You can
 
 The available specifications vary based on the actual scenario. The preceding table is for reference only.
 
-#### Create an ALB instance
+#### 3.1.2 Create an ALB instance
 
 An Application Load Balancer (ALB) instance is an entity that provides load balancing services. ALB provides powerful Layer 7 processing capabilities and can increase the service capacity of your applications by distributing network traffic across different backend servers. This topic describes how to create an ALB instance.
 1. Log on to the Application Load Balancer (ALB) console.
@@ -384,9 +468,9 @@ If a service is created on the Service Management page and **Application Load Ba
 **(ALB)** is displayed in the **Cloud resources** column of the service, confirm the
 parameters and click **Confirm Order**. If no service whose **Cloud resources** value is **Application Load Balancer (ALB)** exists on the Service Management page, confirm the parameters and click **Submit**.
 
-#### Manage ALB instances
+#### 3.1.3 Manage ALB instances
 
-##### Modify the name of an ALB instance
+##### 3.1.3.1 Modify the name of an ALB instance
 
 You can modify the name of an Application Load Balancer (ALB) instance. Before you modify the name of an ALB instance, you must disable modification protection for the instance.
 
@@ -404,7 +488,7 @@ b. In the **Basic Information** section of the **Instance Details** tab on the *
 5. In the **Modify Name** dialog box, modify the **Name** parameter and click **OK**.
 The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 
-##### Modify deletion protection
+##### 3.1.3.2 Modify deletion protection
 
 After an Application Load Balancer (ALB) instance is created, you can modify deletion protection for the instance. After deletion protection is enabled for an instance, the instance cannot be released.
 
@@ -421,7 +505,7 @@ On the **Instance Management** page, find the instance that you want to manage a
 b. In the **Basic Information** section of the **Instance Details** tab on the **Details** page, turn on or turn off the switch below **Deletion Protection**.
 5. In the **Modify Deletion Protection** message, click **OK**.
 
-##### Configure modification protection
+##### 3.1.3.3 Configure modification protection
 
 After an Application Load Balancer (ALB) instance is created, you can configure the modification protection feature for the instance. After the modification protection feature is enabled, you cannot modify the instance name, create listeners, change the configurations, or change the network type.
 
@@ -438,7 +522,7 @@ On the **Instance Management** page, find the instance that you want to manage a
 b. In the **Basic Information** section of the **Instance Details** tab on the **Details** page, turn on or turn off the switch below **Configuration Read-only Mode**.
 5. In the **Configuration Read-only Mode** message, click **OK**.
 
-##### Release an instance
+##### 3.1.3.4 Release an instance
 
 You can release Application Load Balancer (ALB) instances based on your business requirements. After an ALB instance is released, the configurations and data of the ALB instance are deleted and cannot be restored.
 
@@ -453,7 +537,7 @@ An ALB instance is created. For more information, see Create an ALB instance. De
 **Actions** column.
 5. In the **Release Instance** message, click **OK**.
 
-#### Modify the configurations of ALB
+#### 3.1.4 Modify the configurations of ALB instances
 
 **instances**
 
@@ -477,7 +561,7 @@ performance requirements. The performance metrics vary with instance specificati
 **(ALB)** is displayed in the **Cloud resources** column of the service, confirm the
 parameters and click **Confirm Order**. If no service whose **Cloud resources** value is **Application Load Balancer (ALB)** exists on the Service Management page, confirm the parameters and click **Submit**.
 
-#### Change the network type of an ALB
+#### 3.1.5 Change the network type of an ALB instance
 
 **instance**
 
@@ -518,7 +602,7 @@ resides. You can click **Create IPv6 Gateway** to create an IPv6 gateway.
 **Change the network type from Internet to Internal Network** : Internet
 bandwidth is disabled for the IPv6 gateway. c. Click **OK**.
 
-#### View the list of ALB instances
+#### 3.1.6 View the list of ALB instances
 
 **Prerequisites**
 
@@ -537,7 +621,7 @@ Click the icon in the upper-right corner to show or hide items in the ALB instan
 5. Optional. On the **Instance Management** page, you can add tags to ALB instances for
 easier management. For more information, see Tag management.
 
-#### View the details of an ALB instance
+#### 3.1.7 View the details of an ALB instance
 
 Application Load Balancer (ALB) allows you to view the details of an ALB instance.
 
@@ -563,9 +647,9 @@ and **Local IP**. Click the ID below **VPC** to view the details of the VPC in w
 **Internet**), and **VIP**.
 Click the instance ID in the **vSwitch** column to view the details of the vSwitch to which the ALB instance belongs. Click the IP address in the **EIP** column to view the details of the elastic IP address (EIP) assigned to the ALB instance. Click the **Listener** tab to view and manage the listener protocols and listeners of the ALB instance. For more information, see Listeners. Click the **Monitoring** tab to view the monitoring data of the ALB instance. For more information, see Monitoring. Click the **Operation Logs** tab to view the operation logs of the ALB instance. For more information, see Operation logs.
 
-#### Listeners
+#### 3.1.8 Listeners
 
-##### Listener overview
+##### 3.1.8.1 Listener overview
 
 After you create an Application Load Balancer (ALB) instance, you must configure listeners for the instance. Listeners listen for connection requests and forward the requests to backend servers based on the forwarding rules specified in scheduling algorithms. Before you configure listeners for an ALB instance, you must disable modification protection for the instance.
 
@@ -579,11 +663,11 @@ ALB provides HTTP, HTTPS, or Quick UDP Internet Connections (QUIC) listeners. Yo
 | HTTPS | HTTPS encrypts data transmission to prevent unauthorized access. Centralized certificate management service is provided. You can upload certificates to ALB. Then, data decryption is offloaded from backend servers to ALB. | HTTPS is applicable to applications that require encrypted data transmission. |
 | QUIC | QUIC is a low-latency transport protocol based on UDP. QUIC implements different congestion control algorithms without the need for OS and kernel support. | QUIC can improve network quality, optimize video stuttering, accelerate content delivery for video and audio services, and ensure secure data transmission. |
 
-##### Add listeners
+##### 3.1.8.2 Add listeners
 
 A listener is the smallest configurable unit of Application Load Balancer (ALB). Listeners listen for requests over the protocols and ports that you configure. For example, you can configure a listener of ALB to process HTTP requests on port 80. You must add at least one listener to each ALB instance before the ALB instance can distribute network traffic. By default, you can add up to 50 listeners to each ALB instance to distribute network traffic for different workloads.
 
-###### Add an HTTP listener
+###### 3.1.8.2.1 Add an HTTP listener
 
 HTTP is ideal for applications that need to identify data content, such as web applications and mobile games. You can add HTTP listeners to forward HTTP requests.
 
@@ -643,7 +727,7 @@ Click **Advanced Filter**. You can enter **Server Group ID** or **Server Group N
 
 In the **Review Configuration** step, confirm the configurations, and then click **Submit**. The configurations of an HTTP listener include **Basic Configurations**, **Add HTTP Header**, and **Server Group**.
 
-###### Add an HTTPS listener
+###### 3.1.8.2.2 Add an HTTPS listener
 
 This topic describes how to add an HTTPS listener to an Application Load Balancer (ALB) instance. HTTPS is intended for applications that require encrypted data transmission. You can add an HTTPS listener to forward HTTPS requests.
 
@@ -728,7 +812,7 @@ Click **Advanced Filter**. You can enter **Server Group ID** or **Server Group N
 In the **Review Configuration** step, confirm the configurations, and then click **Submit**. The configurations of the HTTP listener include **Basic Configurations**, **Add HTTP Header**,
 **Configure SSL Certificate**, and **Server Group**.
 
-###### Add a QUIC listener
+###### 3.1.8.2.3 Add a QUIC listener
 
 Quick UDP Internet Connection (QUIC) can improve network quality, optimize video stuttering, accelerate content delivery for video and audio services, and ensure secure data transmission. You can add QUIC listeners to forward QUIC requests.
 
@@ -789,11 +873,11 @@ Click **Advanced Filter**. You can enter **Server Group ID** or **Server Group N
 In the **Review Configuration** step, confirm the configurations, and then click **Submit**. The configurations of the QUIC listener include **Basic Configurations**, **Add HTTP Header**,
 **Configure SSL Certificate**, and **Server Group**.
 
-##### Manage listeners
+##### 3.1.8.3 Manage listeners
 
 This topic describes how to modify, enable, disable, and delete a listener, and change the server group associated with a listener.
 
-###### Modify the name of a listener
+###### 3.1.8.3.1 Modify the name of a listener
 
 **Prerequisites**
 
@@ -813,11 +897,11 @@ icon to the right of the listener name in the **Listener ID/Name** column.
 6. In the **Modify Name** dialog box, modify the **Name** parameter and click **OK**.
 The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 
-###### Configure access control
+###### 3.1.8.3.2 Configure access control
 
 You can configure access control for each listener of an Application Load Balancer (ALB) instance.
 
-###### Enable access control
+###### 3.1.8.3.2.1 Enable access control
 
 You can configure whitelists or blacklists for different listeners.
 
@@ -845,7 +929,7 @@ In the listener list, find the target listener and click **Enable** in the **Acc
 | ACL Type | Select an access control mode. Valid values: Whitelist: Only requests from the IP addresses or CIDR blocks in the specified ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Blacklist: Requests from the IP addresses or CIDR blocks in the specified ACL are blocked. Blacklists apply to scenarios in which you want to block requests from specific IP addresses. |
 | ACL | Select an ACL. You can select multiple ACLs. ACL information includes ACL ID/Name, Status, and Created At. Click Advanced Filter. You can specify ACL ID or ACL Name to search for ACLs. |
 
-###### Modify access control
+###### 3.1.8.3.2.2 Modify access control
 
 **Prerequisites**
 
@@ -871,7 +955,7 @@ In the listener list, find the target listener and click **Modify** in the **Acc
 | ACL Type | Select an access control mode. Valid values: Whitelist: Only requests from the IP addresses or CIDR blocks in the specified ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Blacklist: Requests from the IP addresses or CIDR blocks in the specified ACL are blocked. Blacklists apply to scenarios in which you want to block requests from specific IP addresses. |
 | ACL | Select an ACL. You can select multiple ACLs. ACL information includes ACL ID/Name, Status, and Created At. Click Advanced Filter. You can specify ACL ID or ACL Name to search for ACLs. |
 
-###### Disable access control
+###### 3.1.8.3.2.3 Disable access control
 
 This topic describes how to disable access control for a listener.
 
@@ -892,7 +976,7 @@ b. On the **Details** page, click the **Listener** tab.
 then click **OK**. In the listener list, find the target listener and click **Disable** in the **Access Control** column. On the listener details page: a. In the listener list, find the target listener and click its ID in the **Listener ID/Name** column, or click **View Details** in the **Actions** column. b. In the **Access Control** section of the **Listener Details** tab on the **Listener** page, click
 **Disable** next to **Access Control**.
 
-###### Start or stop a listener
+###### 3.1.8.3.3 Start or stop a listener
 
 You can change the running status of a listener by starting or stopping the listener. When a listener is in the Enabling or Disabling state, the listener cannot be modified or removed.
 
@@ -912,7 +996,7 @@ b. On the **Details** page, click the **Listener** tab.
 5. In the listener list, find the target listener and click **Enable**/**Disable** in the **Actions** column.
 6. In the message that appears, click **OK**.
 
-###### Modify listeners
+###### 3.1.8.3.4 Modify listeners
 
 **Prerequisites**
 
@@ -930,7 +1014,7 @@ On the listener details page: In the listener list, find the target listener and
 5. On the **ALB Configuration Wizard** page, follow the on-screen instructions to modify the
 listener. For more information about the parameters, see Add listeners. The protocol and port of a listener cannot be modified. To modify them, create another listener.
 
-###### Change a server group
+###### 3.1.8.3.5 Change a server group
 
 **Prerequisites**
 
@@ -956,7 +1040,7 @@ The information about a server group includes **Server Group ID/Name**, **Type**
 **Protocol**, and **Servers**.
 Click **Advanced Filter**. You can enter **Server Group ID** or **Server Group Name** to search for server groups. Click the number in the **Servers** column. In the **Server Group Instance** dialog box, you can view the backend servers that are added to the server group. For backend servers in a server group of the IP address type, you can view the following information: **IP Address**, **Status**, **Port**, **Weight**, and **Description**. You can enter IP addresses to filter backend servers. Separate multiple IP addresses with commas (,). You can enter up to 40 IP addresses.**IP Address** For backend servers in a server group of the server type, you can view the following information: **Instance ID,****IP**, **Zone,****Status**, **Port**, **Weight**, and **Description**. You can enter server IDs to filter servers. Separate multiple server IDs with commas (,). You can enter up to 40 server IDs.**Server ID** Click an ID in the **Instance ID** column to view the details of the ECS instance.
 
-###### Delete a listener
+###### 3.1.8.3.6 Delete a listener
 
 After you create a listener, you can delete the listener based on your business requirements.
 
@@ -976,7 +1060,7 @@ b. On the **Details** page, click the **Listener** tab.
 5. In the listener list, find the target listener, and in the **Actions** column, click **... > Delete**.
 6. In the **Delete Listener** message, click **OK**.
 
-##### Modify a TLS security policy
+##### 3.1.8.4 Modify a TLS security policy
 
 This topic describes how to change the TLS security policies for HTTP listeners.
 
@@ -1003,7 +1087,7 @@ click **OK**.
 | TLS Security Policy | Select a TLS security policy based on the setting ofT LS Security Policy Type. System policy information includes Security Policy ID, TLS Protocol, and Cipher Suite. For more information about common system policies, see System TLS security policies. Custom policy information includes Security Policy ID/Name, TLS Protocol, and Cipher Suite. Click Advanced Filter. You can specify Security Policy ID or Security Policy Name to search for security policies. |
 |---|---|
 
-##### View the list of listeners
+##### 3.1.8.5 View the list of listeners
 
 **Prerequisites**
 
@@ -1029,7 +1113,7 @@ Click an ID in the **Server Group** column to view the details of the server gro
 **Servers**. In the **Server Group Instance** dialog box, you can view the backend servers
 that are added to the server group. For backend servers in a server group of the IP address type, you can view the following information: **IP Address**, **Status**, **Port**, **Weight**, and **Description**. You can enter IP addresses to filter backend servers. Separate multiple IP addresses with commas (,). You can enter up to 40 IP addresses.**IP Address** For backend servers in a server group of the server type, you can view the following information: **Instance ID,****IP**, **Zone,****Status**, **Port**, **Weight**, and **Description**. You can enter server IDs to filter servers. Separate multiple server IDs with commas (,). You can enter up to 40 server IDs.**Server ID** Click an ID in the **Instance ID** column to view the details of the ECS instance. Click the data in the **Health Check Status** column. In the **Server Health Check Status** dialog box, you can view the health check details of the servers under the listener. The health check status is updated with a latency of one to two minutes.
 
-##### View the details of a listener
+##### 3.1.8.6 View the details of a listener
 
 **Prerequisites**
 
@@ -1063,9 +1147,9 @@ Click **View/Modify Backend Server** in the upper-right corner to view or manage
 **Description**.
 You can enter server IDs to filter servers. Separate multiple server IDs with commas (,). You can enter up to 40 server IDs.**Server ID** Click an ID in the **Instance ID** column to view the details of the ECS instance. On the **Listener Certificate** tab (available only for **HTTPS** and **QUIC** listeners), you can view and manage the additional certificates of the listener. For more information, see Manage certificates for listeners. On the **Forwarding Rules** tab, you can view and manage the forwarding rules for the listener. For more information, see Manage forwarding rules for a listener.
 
-##### Manage certificates for listeners
+##### 3.1.8.7 Manage certificates for listeners
 
-###### Add additional certificates
+###### 3.1.8.7.1 Add additional certificates
 
 If you want to access multiple domain names or add multiple server certificates, you can add additional certificates to an HTTPS listener after you configure the HTTP listener.
 
@@ -1092,7 +1176,7 @@ i. Click the **Server Certificate** tab. ii. Click **Add Additional Certificate*
 
 i. Click the **CA Certificate** tab. ii. Click **Add Additional Certificate**. iii. In the **Select Certificate** dialog box, select the CA **Certificate** that you want to add and click **OK**. Certificate information includes **Certificate ID/Name**, **Algorithm**, **User**, **Created At**, and **Expired At**. Click **Advanced Filter**. You can specify **Certificate ID** or **Certificate Name** to search for certificates.
 
-###### Replace the default certificate of a
+###### 3.1.8.7.2 Replace the default certificate of a listener
 
 **listener**
 
@@ -1123,7 +1207,7 @@ i. Click the **CA Certificate** tab. ii. On the Server Certificate tab, find the
 **Actions** column.
 iii. In the **Select Certificate** dialog box, select the CA **Certificate** that you want to add and click **OK**. Certificate information includes **Certificate ID/Name**, **Algorithm**, **User**, **Created At**, and **Expired At**. Click **Advanced Filter**. You can specify **Certificate ID** or **Certificate Name** to search for certificates.
 
-###### Enable or disable mutual authentication
+###### 3.1.8.7.3 Enable or disable mutual authentication
 
 Mutual authentication improves the security of business-critical services. This topic describes how to configure mutual authentication on an HTTPS listener of an Application Load Balancer (ALB) instance.
 
@@ -1150,7 +1234,7 @@ In the **Enable Mutual Authentication** dialog box, select the desired CA **Cert
 
 In the message that appears, click **OK**.
 
-##### Manage forwarding rules for a listener
+##### 3.1.8.8 Manage forwarding rules for a listener
 
 This topic describes how to manage forwarding rules for listeners of an Application Load Balancer (ALB) instance. You can configure forwarding rules for listeners of an ALB instance to forward client requests to backend servers in one or more server groups and forward responses to clients.
 
@@ -1176,7 +1260,7 @@ default inbound forwarding rule. The forwarding condition is set to `-` , which 
 
 Exact match: The requested content must be the same as the specified content. Wildcard match: The requested content must match the wildcard pattern of the specified content. Regex matching: The requested content and the specified content are matched based on a regular expression.
 
-###### Create inbound forwarding rules
+###### 3.1.8.8.1 Create inbound forwarding rules
 
 **Prerequisites**
 
@@ -1338,7 +1422,7 @@ i. Click **Modify** in the upper-right corner of a custom forwarding rule sectio
 
 i. Click **Delete** in the upper-right corner of a custom forwarding rule section. ii. In the **Delete Rule** message, click **OK**.
 
-###### Create outbound forwarding rules
+###### 3.1.8.8.2 Create outbound forwarding rules
 
 **Prerequisites**
 
@@ -1448,7 +1532,7 @@ i. Click **Modify** in the upper-right corner of a custom forwarding rule sectio
 
 i. Click **Delete** in the upper-right corner of a custom forwarding rule section. ii. In the **Delete Rule** message, click **OK**.
 
-#### Monitoring
+#### 3.1.9 Monitoring
 
 You can view the monitoring data of an Application Load Balancer (ALB) instance in Cloud Monitor.
 
@@ -1502,9 +1586,9 @@ selected time range. Click **View more** in the upper-right corner. The **Cloud 
 | Number of healthy backend servers | counts | statusup | instanceId | The number of healthy backend servers for the ALB instance. |
 | Number of unhealthy backend servers | counts | statusdown | instanceId | The number of unhealthy backend servers for the ALB instance. |
 
-### Certificate management
+### 3.2 Certificate management
 
-#### Certificate overview
+#### 3.2.1 Certificate overview
 
 To create an HTTPS listener, you must configure an SSL certificate for identity authentication to secure data transmission.
 
@@ -1517,7 +1601,7 @@ To create an HTTPS listener, you must configure an SSL certificate for identity 
 
 Since the process of uploading, loading, and verifying a new certificate takes some time, an instance that uses HTTPS also requires a certain amount of time to apply the new certificate. The typical activation time is 1 to 3 minutes. If you want to access multiple domain names or add multiple server certificates, you can add additional certificates to the HTTPS listener. For more information, see Add an additional certificate.
 
-#### Certificate requirements
+#### 3.2.2 Certificate requirements
 
 Application Load Balancer (ALB) supports only NGINX certificates. Before you upload a certificate, make sure that the certificate content, certificate chain, and private key meet the corresponding format requirements.
 
@@ -1573,7 +1657,7 @@ The following section provides a sample EC private key:
 5HcMHFxRPtGLv22T62e5KqN1W3uN9Hplgg== -----END EC PRIVATE KEY-----
 ```
 
-#### Manage server certificates
+#### 3.2.3 Manage server certificates
 
 This topic explains how to upload and manage server certificates.
 
@@ -1643,7 +1727,7 @@ A certificate associated with a listener cannot be deleted.
 certificate and click **Delete** in the **Actions** column.
 2. In the confirmation dialog box, click **OK**.
 
-#### Manage CA certificates
+#### 3.2.4 Manage CA certificates
 
 This topic describes how to upload and manage CA certificates.
 
@@ -1696,11 +1780,11 @@ You cannot delete a certificate if it is associated with a listener.
 1. On the **CA Certificate** tab of the **Certificate Management** page, find the target
 certificate and click **Delete** in the **Actions** column. 2.
 
-### Server group
+### 3.3 Server group
 
 Backend servers can be organized into logical groups (also known as server groups) to which requests are distributed. Each server group contains one or more backend servers that process requests distributed by Application Load Balancer (ALB). Server groups of ALB are independent of ALB. You can associate a server group with different ALB instances. By default, you can specify up to 100 backend servers in each server group. ALB supports multiple types of backend servers, such as Elastic Compute Service (ECS) instances, elastic network interfaces (ENIs), and IP addresses.
 
-#### Create a server group
+#### 3.3.1 Create a server group
 
 If you associate a server group with a listener, the listener distributes requests only to backend servers in the server group. This topic describes how to create a server group.
 1. Log on to the Application Load Balancer (ALB) console.
@@ -1768,9 +1852,9 @@ If you associate a server group with a listener, the listener distributes reques
 
 6. Click **Submit**.
 
-#### Manage server groups
+#### 3.3.2 Manage server groups
 
-##### Modify the name of a server group
+##### 3.3.2.1 Modify the name of a server group
 
 **Prerequisites**
 
@@ -1784,7 +1868,7 @@ icon to the right of the server group name in the **Server Group ID/Name** colum
 5. In the dialog box that appears, modify the **Name** parameter and click **OK**.
 The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 
-##### Modify a server group
+##### 3.3.2.2 Modify a server group
 
 **Prerequisites**
 
@@ -1800,7 +1884,7 @@ b. On the **Details** page, click **Modify** in the upper-right corner.
 5. On the **Modify Server Group Attributes** page or in the **Modify** dialog box, modify the
 configurations of the server group and click **Submit**. For more information about the parameters, see Create a server group. The server group type, VPC, and backend protocol cannot be modified. To modify these parameters, create another server group.
 
-##### Delete a server group
+##### 3.3.2.3 Delete a server group
 
 **Prerequisites**
 
@@ -1813,7 +1897,7 @@ A server group is created. For more information, see Create a server group.
 column.
 5. In the **Delete Server Group** message, click **OK**.
 
-#### View the list of server groups
+#### 3.3.3 View the list of server groups
 
 **Prerequisites**
 
@@ -1829,7 +1913,7 @@ You can filter server groups by keyword, **Server Group ID**, **Server Group Nam
 5. Optional. On the **Server Group** page, you can add tags to server groups for easier
 management. For more information, see Tag management.
 
-#### View the details of a server group
+#### 3.3.4 View the details of a server group
 
 **Prerequisites**
 
@@ -1860,9 +1944,9 @@ Start is enabled.
 **Interval**, **Response Timeout Period**, **Health Threshold**, and **Unhealth Threshold**
 after health check is enabled. On the **Backend Server** tab, you can view and manage the backend servers in the server group. For more information, see Backend servers.
 
-#### Backend servers
+#### 3.3.5 Backend servers
 
-##### Add backend servers
+##### 3.3.5.1 Add backend servers
 
 After you create a server group, you must add one or more backend servers to the server group based on the server group type. This way, the specified backend servers can receive requests distributed by Application Load Balancer (ALB). You can add backend servers of the server type and those of the IP address type.
 
@@ -1906,7 +1990,7 @@ The value must be 2 to 256 characters in length and can contain letters. It cann
 7. Optional. On the **Backend Server** tab, you can view the list of backend servers that have
 been added. For backend servers in a server group of the IP address type, you can view the following information: **IP Address**, **Status**, **Port**, **Weight**, and **Description**. You can enter IP addresses to filter backend servers. Separate multiple IP addresses with commas (,). You can enter up to 40 IP addresses.**IP Address** For backend servers in a server group of the server type, you can view the following information: **Instance ID,****IP**, **Zone,****Status**, **Port**, **Weight**, and **Description**. You can enter server IDs to filter servers. Separate multiple server IDs with commas (,). You can enter up to 40 server IDs.**Server ID** Click an ID in the **Instance ID** column to view the details of the ECS instance.
 
-##### Modify the configuration of a backend
+##### 3.3.5.2 Modify the configuration of a backend server
 
 **server**
 
@@ -1939,7 +2023,7 @@ a. Find the backend server that you want to manage, and click the icon in the
 **Description** column.
 b. In the **Modify Description** dialog box, modify the value of the **Description** parameter and click **OK**. The value must be 2 to 256 characters in length and can contain letters. It cannot start with http:// or https://.
 
-##### Remove a backend server
+##### 3.3.5.3 Remove a backend server
 
 You can remove a backend server from a server group based on your business requirements. After the server is removed, the server no longer processes client requests.
 
@@ -1957,9 +2041,9 @@ A backend server is added. For more information, see Add backend servers.
 column.
 7. In the **Remove Server** message, click **OK**.
 
-### Health checks
+### 3.4 Health checks
 
-#### Health check overview
+#### 3.4.1 Health check overview
 
 Application Load Balancer (ALB) uses health checks to test the availability of backend servers. The health check feature improves overall service availability and reduces the impacts of backend server failures.
 
@@ -2009,7 +2093,7 @@ Time window for health check failures = Response timeout period × Unhealthy thr
 
 You can specify a domain name for HTTP health checks. This setting is optional. Some application servers must verify the host field in requests before the application servers can accept the requests. In this case, the request header must carry the host field. If a domain name is specified in health check configurations, ALB adds this domain name to the host field when ALB forwards a health check request to an application server. If no domain name is specified, ALB does not include the host field in the request. As a result, the request is rejected by the application server and the health check fails. If your application server verifies the host field in requests, you must specify a domain name in health check configurations to ensure that the health check feature works as expected.
 
-#### Create a health check
+#### 3.4.2 Create a health check
 
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
@@ -2054,7 +2138,7 @@ You can filter health checks by keyword, **Health Check ID**, **Health Check Nam
 7. Optional. On the **Health Check** page, you can add tags to health checks for easier
 management. For more information, see Tag management.
 
-#### Modify the name of a health check
+#### 3.4.3 Modify the name of a health check
 
 **Prerequisites**
 
@@ -2068,7 +2152,7 @@ icon to the right of the health check name in the **Health Check ID/Name** colum
 5. In the **Modify Name** dialog box, modify the **Name** parameter and click **OK**.
 The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 
-#### Modify a health check
+#### 3.4.4 Modify a health check
 
 **Prerequisites**
 
@@ -2082,7 +2166,7 @@ column.
 5. In the **Modify** dialog box, modify the parameter settings and click **Submit**.
 For more information about the parameters, see Create a health check.
 
-#### Delete a health check
+#### 3.4.5 Delete a health check
 
 **Prerequisites**
 
@@ -2095,9 +2179,9 @@ A health check is created. For more information, see Create a health check.
 column.
 5. In the **Delete Health Check** message, click **OK**.
 
-### Access control
+### 3.5 Access control
 
-#### Access control overview
+#### 3.5.1 Access control overview
 
 If you want to implement fine-grained access control for Application Load Balancer (ALB), you can enable the access control feature for ALB listeners and configure inbound rules that allow or deny access. This way, you can manage request forwarding and ensure the security and efficiency of network services.
 
@@ -2109,7 +2193,7 @@ You can set whitelists or blacklists for different listeners. Whitelist: Only re
 
 The following figure shows how to configure an ACL for a listener.
 
-#### Create an ACL
+#### 3.5.2 Create an ACL
 
 1. Log on to the Application Load Balancer (ALB) console.
 2. In the top menu bar, select the region of the ALB instance.
@@ -2131,7 +2215,7 @@ You can filter ACLs by keyword, **ACL ID**, **ACL Name**, **Tag**, and **Creator
 7. Optional. On the **Access Control** page, you can add tags to ACLs for easier management.
 For more information, see Tag management.
 
-#### Modify the name of an ACL
+#### 3.5.3 Modify the name of an ACL
 
 **Prerequisites**
 
@@ -2145,7 +2229,7 @@ icon to the right of the ACL name in the **ACL ID/Name** column.
 5. In the **Modify Name** dialog box, modify the **Name** parameter and click **OK**.
 The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 
-#### Delete an ACL
+#### 3.5.4 Delete an ACL
 
 **Prerequisites**
 
@@ -2158,7 +2242,7 @@ An access control list (ACL) is created. For more information, see Create an ACL
 **Actions** column.
 5. In the **Delete ACL** message, click **OK**.
 
-#### Manage ACLs
+#### 3.5.5 Manage ACLs
 
 After you create an access control list (ACL), you can add entries to the ACL. ACL entries specify the source IP addresses or CIDR blocks from which requests are sent to your ALB instance. You can add multiple IP addresses or CIDR blocks to each ACL.
 
@@ -2186,7 +2270,7 @@ Click **Add Entry** to add an additional entry. Click the icon in the **Actions*
 
 a. In the entry list, find the target entry and click **Delete** in the **Actions** column. b. In the **Delete Entry** message, click **OK**.
 
-### Security policies
+### 3.6 Security policies
 
 This topic describes how to configure a custom TLS security policy for Application Load Balancer (ALB). In most cases, websites or applications deployed on Alibaba Cloud use HTTPS to encrypt data transmission. ALB provides some commonly used TLS security policies to enhance the security of services that use HTTPS. ALB also allows you to configure custom TLS security policies. For example, you can specify the TLS versions that you want to use, or disable certain TLS cipher suites.
 
@@ -2208,7 +2292,7 @@ A TLS security policy consists of TLS versions and cipher suites. A later versio
 | tls cipher policy 1 2 s _ _ _ _ _ trict with 1 3 _ _ _ | TLSv1.2 TLSv1.3 | TLS AES 128 GCM SHA256 _ _ _ _ TLS AES 256 GCM SHA384 _ _ _ _ TLS CHACHA20 POLY1305 SHA256 _ _ _ TLS AES 128 CCM SHA256 _ _ _ _ TLS AES 128 CCM 8 SHA256 _ _ _ _ _ ECDHE-ECDSA-AES128-GCM-SHA256 ECDHE-ECDSA-AES256-GCM-SHA384 ECDHE-ECDSA-AES128-SHA256 ECDHE-ECDSA-AES256-SHA384 ECDHE-RSA-AES128-GCM-SHA256 ECDHE-RSA-AES256-GCM-SHA384 ECDHE-RSA-AES128-SHA256 ECDHE-RSA-AES256-SHA384 ECDHE-ECDSA-AES128-SHA ECDHE-ECDSA-AES256-SHA ECDHE-RSA-AES128-SHA ECDHE-RSA-AES256-SHA |
 |---|---|---|
 
-#### Creates a custom security policy
+#### 3.6.1 Creates a custom security policy
 
 ALB provides some commonly used TLS security policies to enhance the security of services that use HTTPS. ALB also allows you to configure custom TLS security policies. For example, you can specify the TLS versions that you want to use, or disable certain TLS cipher suites.
 
@@ -2252,7 +2336,7 @@ Click the icon in the upper-right corner to show or hide items in the security p
 7. Optional. On the **Security Policy** page, you can add tags to security policies for easier
 management. For more information, see Tag management.
 
-#### Modify the name of a custom security
+#### 3.6.2 Modify the name of a custom security policy
 
 **policy**
 
@@ -2268,7 +2352,7 @@ click the icon to the right of the security policy name in the **Security Policy
 5. In the **Modify Name** dialog box, modify the **Name** parameter and click **OK**.
 The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 
-#### Delete a custom security policy
+#### 3.6.3 Delete a custom security policy
 
 **Prerequisites**
 
@@ -2281,7 +2365,7 @@ A custom security policy is created. For more information, see Create a custom s
 **Actions** column.
 5. In the **Delete Security Policy** message, click **OK**.
 
-### Operation logs
+### 3.7 Operation logs
 
 Application Load Balancer (ALB) allows you to view the operation logs of an ALB instance, which record the instance status, operation sources, operation time, and API call details. You can analyze and trace historical operations based on the operation logs.
 1. Log on to the Application Load Balancer (ALB) console.
@@ -2327,9 +2411,9 @@ Operation logs are retained for seven days. To adjust the retention period, modi
 Find the operation event that you want to view and click **Operation Details** in the
 **Operation** column to view the operation details.
 
-## Tag management
+## 4 Tag management
 
-### Tag overview
+### 4.1 Tag overview
 
 Application Load Balancer (ALB) provides the tag management feature. You can use tags to mark and classify ALB resources. This way, you can search for and manage the resources by tag.
 
@@ -2337,7 +2421,7 @@ Application Load Balancer (ALB) provides the tag management feature. You can use
 
 As the number of instances increases, it becomes more difficult to manage instances. You can use tags to group instances to help you search for and filter instances. Tags are used to mark instances. Each tag consists of a key and a value. Tags have the following limits: ALB instances, certificate management, server groups, health checks, access control, and security policies support tag management. You can modify the key and value of a tag or remove a tag from a resource. If you delete an instance, all tags added to the instance are deleted. This operation does not affect the tags added to other instances. The key of each tag added to the same instance must be unique. If you add a tag that uses the same key as an existing tag, the new tag overwrites the existing tag. You can modify the key and value of a tag or remove a tag from a resource. If you delete an instance, all tags added to the instance are deleted. This operation does not affect the tags added to other instances. You can add up to 20 tags to an instance. This quota cannot be increased. Tags cannot exist as an independent resource. If you create a tag, it must be added to an instance.
 
-### Edit tags
+### 4.2 Edit tags
 
 Application Load Balancer (ALB) allows you to edit tags. You can add, modify, and delete tags for an instance. This topic describes how to edit tags for an ALB instance. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
 1. Log on to the Application Load Balancer (ALB) console.
@@ -2358,7 +2442,7 @@ move the pointer over the icon in the **Tag** column, and then click the icon in
 You can click **Add** to add multiple tags. You must specify the Tag Key and Tag Value parameters.Specify the tag key and the tag value. You can add up to 20 tags. System tags do not count toward the tag quantity limit. You can click the icon next to a tag to delete the tag.
 6. In the **Edited** message, confirm the tag information and click **Close**.
 
-### Add tags to multiple ALB
+### 4.3 Add tags to multiple ALB instances at a time
 
 **instances at a time**
 
@@ -2379,7 +2463,7 @@ and click **Batch Add Tags** in the lower-left corner.
 You can click **Add** to add multiple tags. You must specify the Tag Key and Tag Value parameters.Specify the tag key and the tag value. You can add up to 20 tags. System tags do not count toward the tag quantity limit. You can click the icon next to a tag to delete the tag.
 6. In the **Edited** message, confirm the tag information and click **Close**.
 
-### Remove tags from multiple
+### 4.4 Remove tags from multiple ALB instances at a time
 
 **ALB instances at a time**
 
@@ -2394,7 +2478,7 @@ and click **Batch Remove Tags** below the instance list.
 the **Tags to Remove** section and click **OK**. Batch removal is performed based on tag keys. When you select a tag, all tags that have the same tag key are selected.
 6. In the **Edited** message, check the tag removal information and click **Close**.
 
-### Search for instances by tag
+### 4.5 Search for instances by tag
 
 After you add tags to Application Load Balancer (ALB) resources, you can quickly search for the resources by tag. This topic describes how to search for ALB instances by tag. The operation methods for other ALB-related resource instances are similar to those for ALB instances.
 1. Log on to the Application Load Balancer (ALB) console.

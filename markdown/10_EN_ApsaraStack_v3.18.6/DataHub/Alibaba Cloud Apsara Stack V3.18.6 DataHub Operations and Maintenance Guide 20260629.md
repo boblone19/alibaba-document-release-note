@@ -3,16 +3,90 @@ title: "DataHub Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 95
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 DataHub Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "769198cf64305492_Alibaba Cloud Apsara Stack V3.18.6 DataHub Operations and Maintenance Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataHub%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # DataHub Operations and Maintenance Guide
 
-## Commands and tools
+## Table of Contents
 
-### Service: Basic concepts and
+- 1 Commands and tools
+  - 1.1 Service: Basic concepts and common operations
+  - 1.2 Common O&M commands for the Apsara Distributed Operating System
+  - 1.3 Common O&M commands for Apsara Distributed File System
+  - 1.4 Common O&M commands for task scheduling system
+  - 1.5 Xstream_tool
+  - 1.6 View performance statistics in the DataHub console
+  - 1.7 Apsara Big Data Manager
+- 2 Routine maintenance
+  - 2.1 DataHub Cluster Power Outage Recovery
+  - 2.2 Shut down anomalous chunkserver hosts
+  - 2.3 Shut down a DataHub cluster
+  - 2.4 Replace a pangu_cs disk
+- 3 O&M by using Apsara Big Data Manager
+  - 3.1 Log on to Apsara Bigdata Manager
+  - 3.2 Monitoring
+    - 3.2.1 Health Score
+    - 3.2.2 Reports
+  - 3.3 Operations and maintenance
+    - 3.3.1 DataHub O&M features and access
+    - 3.3.2 Business O&M
+      - 3.3.2.1 Topics
+      - 3.3.2.2 DataHub Business Projects
+      - 3.3.2.3 DataHub service hot spot analysis
+      - 3.3.2.4 DataHub service archiving latency
+    - 3.3.3 Service O&M
+      - 3.3.3.1 Manage Control Service O&M
+      - 3.3.3.2 Service O&M for Job Scheduler
+        - 3.3.3.2.1 DataHub Fuxi Service O&M Entry
+        - 3.3.3.2.2 Overview of DataHub Fuxi Service
+        - 3.3.3.2.3 DataHub Fuxi server roles
+        - 3.3.3.2.4 DataHub Fuxi Service Compute Node
+      - 3.3.3.3 Service O&M for Apsara Distributed File System
+        - 3.3.3.3.1 DataHub Pangu Service O&M Entry
+        - 3.3.3.3.2 DataHub Pangu service overview
+        - 3.3.3.3.3 DataHub Pangu service roles
+        - 3.3.3.3.4 DataHub Pangu Service Storage Node
+        - 3.3.3.3.5 Clear the Pangu recycle bin
+        - 3.3.3.3.6 Enable and disable automatic data balancing for Pangu
+        - 3.3.3.3.7 Perform a checkpoint on a Pangu Master
+        - 3.3.3.3.8 Switch the Pangu Master
+    - 3.3.4 Cluster O&M
+      - 3.3.4.1 DataHub Cluster O&M Entry
+      - 3.3.4.2 DataHub cluster overview
+      - 3.3.4.3 DataHub cluster health
+      - 3.3.4.4 DataHub cluster machine list
+      - 3.3.4.5 Scale out DataHub nodes
+      - 3.3.4.6 Scale in DataHub nodes
+      - 3.3.4.7 Perform a reverse lookup for a DataHub RequestId
+    - 3.3.5 Host O&M
+      - 3.3.5.1 Host O&M entry
+      - 3.3.5.2 DataHub Host Overview
+      - 3.3.5.3 DataHub host service
+  - 3.4 Management
+    - 3.4.1 Overview
+    - 3.4.2 Jobs
+      - 3.4.2.1 Overview
+      - 3.4.2.2 Jobs
+        - 3.4.2.2.1 Manually execute a job
+        - 3.4.2.2.2 Enable and disable scheduled jobs
+        - 3.4.2.2.3 View job execution history
+    - 3.4.3 Health management
+      - 3.4.3.1 Monitoring Configuration
+      - 3.4.3.2 Inspection management
+    - 3.4.4 Operation audit
+- 4 DataHub in-depth inspection
+- 5 FAQ and solutions
+- 6 Appendix
+  - 6.1 Installation environment
+  - 6.2 Deployment directories and services
+  - 6.3 Error codes
+
+## 1 Commands and tools
+
+### 1.1 Service: Basic concepts and common operations
 
 **common operations**
 
@@ -45,7 +119,7 @@ r wwl $<WorkItemName>
 
 As shown in the following figure:
 
-### Common O&M commands for
+### 1.2 Common O&M commands for the Apsara Distributed Operating System
 
 **the Apsara Distributed Operating**
 
@@ -89,7 +163,7 @@ tj_show -r datahub-frontend.Frontend#
 tj_show -r datahub-webconsole.WebConsole#
 ```
 
-### Common O&M commands for
+### 1.3 Common O&M commands for Apsara Distributed File System
 
 **Apsara Distributed File System**
 
@@ -154,7 +228,7 @@ c. After maintenance is complete, add the chunkserver back to the cluster.
 puadmin cs -stat tcp://x.x.x.x:10260 --set=normal
 ```
 
-### Common O&M commands for
+### 1.4 Common O&M commands for task scheduling system
 
 **task scheduling system**
 
@@ -210,7 +284,7 @@ r tfrl
 
 Run the command without parameters to view other options.
 
-### Xstream_tool
+### 1.5 Xstream_tool
 
 O&M engineers can use Xstream_tool to perform O&M operations from the command line. Before running specific commands, log on to the command-line interface as follows.
 
@@ -283,7 +357,7 @@ Figure 4. Check the status of all shards for the current topic This helps you qu
 
 Xstream_tool is an admin tool for DataHub. Except for the commands demonstrated above, do not run other commands unless necessary. If your work requires additional commands, contact second-line O&M engineers first.
 
-### View performance statistics in
+### 1.6 View performance statistics in the DataHub console
 
 **the DataHub console**
 
@@ -295,13 +369,13 @@ click **View** in the Actions column.
 3. On the topic details page that appears, click the **Metric Statistics** tab to view the charts
 that display the performance statistics of this topic.
 
-### Apsara Big Data Manager
+### 1.7 Apsara Big Data Manager
 
 Apsara Big Data Manager (ABM) supports O&M on big data services from the perspectives of business, services, clusters, and hosts. You can also update big data services, customize alert configurations, and view the O&M history in the ABM console. On-site Apsara Stack engineers can use ABM to easily manage big data services by performing operations, such as viewing runtime metrics, modifying runtime configurations, and viewing alerts. For more information about how to log in to the ABM console and perform O&M operations on DataHub in the ABM console, see **O&M by using Apsara Big Data Manager** .
 
-## Routine maintenance
+## 2 Routine maintenance
 
-### DataHub Cluster Power
+### 2.1 DataHub Cluster Power Outage Recovery
 
 **Outage Recovery**
 
@@ -321,7 +395,7 @@ If the lost files are DataHub data files, inform the user to rebuild the topic. 
 4. After completing the repair, wait for the cluster in Apsara Infrastructure Management to
 reach the desired state. If the cluster does not reach the desired state, contact a Tier 2 O&M engineer for assistance.
 
-### Shut down anomalous
+### 2.2 Shut down anomalous chunkserver hosts
 
 **chunkserver hosts**
 
@@ -410,7 +484,7 @@ curl "http://127.0.0.1:7070/api/v5/SetMachineAction?hostname=m1&action_name=rma"
 5. Log on to the Apsara Infrastructure Management console and check whether the cluster is
 at desired state.
 
-### Shut down a DataHub cluster
+### 2.3 Shut down a DataHub cluster
 
 **Prerequisites**
 
@@ -448,7 +522,7 @@ ii. On the webconsole host, run the following command as an administrator to mak
 pssh -h tubo.list -i "/apsara/cloud/tool/tianji/apsarad status"
 ```
 
-### Replace a pangu_cs disk
+### 2.4 Replace a pangu_cs disk
 
 **Prerequisites**
 
@@ -510,11 +584,11 @@ puadmin lscs -m
 
 You can also log on to the machine to confirm that a chunks directory has been created under the drive letter. For example, in the `/apsarapangu/disk5/chunks/` path, the `chunks/` directory exists and chunks have been written to it.
 
-## O&M by using Apsara Big
+## 3 O&M by using Apsara Big Data Manager
 
 **Data Manager**
 
-### Log on to Apsara Bigdata
+### 3.1 Log on to Apsara Bigdata Manager
 
 **Manager**
 
@@ -543,9 +617,9 @@ top menu bar.
 6. Select **Big Data O&M > General Big Data O&M · Apsara Bigdata Manager** , and the
 Dashboard page of Apsara Bigdata Manager opens automatically.
 
-### Monitoring
+### 3.2 Monitoring
 
-#### Health Score
+#### 3.2.1 Health Score
 
 The Health Score page displays metrics for big data products and alerts at different severity levels. It also provides details and lets you recheck after fixing issues.
 1. Log on to Apsara Bigdata Manager.
@@ -555,7 +629,7 @@ icon in the upper-left corner. Then select **DataHub**.
 4. On the **Health Score** tab, you can view the health check information.
 The Health Score page displays metrics, metric sources, severity levels, and metric details. Filter the list as needed.
 
-#### Reports
+#### 3.2.2 Reports
 
 Reports display inspection results for big data products.
 1. Log on to Apsara Bigdata Manager.
@@ -565,9 +639,9 @@ icon in the upper-left corner. Then select **DataHub**.
 4. On the **Reports** tab, you can view report information.
 The Reports page displays the report ID, report name, product name, template name, instance type, and creation information. You can also view details.
 
-### Operations and maintenance
+### 3.3 Operations and maintenance
 
-#### DataHub O&M features and access
+#### 3.3.1 DataHub O&M features and access
 
 This topic describes the DataHub operations and maintenance (O&M) features supported by Apsara Bigdata Manager and how to access the O&M page.
 
@@ -613,9 +687,9 @@ icon in the upper-left corner. Then select **DataHub**.
 The **O&M** page includes four modules: **Business O&M**, **Service O&M**, **Cluster O&M**, and
 **Host O&M**.
 
-#### Business O&M
+#### 3.3.2 Business O&M
 
-##### Topics
+##### 3.3.2.1 Topics
 
 The topic list displays the name, project, number of shards, storage, read traffic, write traffic, and creation time of each topic.
 
@@ -641,7 +715,7 @@ On the Schema tab, you can view the data type and name of each field.
 
 When you view the topic information, you may find that the DataHub instance has abnormal traffic or its cluster resources are nearly full. In this case, you need to temporarily disable data read/write for abnormal topics and low-priority topics. When abnormal Meta requests increase, you also need to temporarily disable requests related to abnormal topics to ensure cluster stability. In this case, you can click **Disable** in the Actions column. In the dialog box that appears, specify the topic that you want to disable. After you disable a topic, all requests for the topic trigger errors, including read and write requests. After the issue is solved, you can click **Enable** in the Actions column to enable the topic. After the topic is enabled, you can use the topic again. You can view the information in the Status column to check whether a topic is disabled or enabled. The **off** status indicates that the topic is disabled, and the **on** status indicates that the topic is enabled.
 
-##### DataHub Business Projects
+##### 3.3.2.2 DataHub Business Projects
 
 A business project displays its name, author, log sources, read traffic, write traffic, storage usage, and creation time.
 
@@ -660,7 +734,7 @@ On the **Projects List** page, click the name of the project you want to view. T
 On the **Projects List** page, click the name of the project you want to view. Then, go to the
 **Log Sources** tab to view the log sources for that project.
 
-##### DataHub service hot spot analysis
+##### 3.3.2.3 DataHub service hot spot analysis
 
 Service hot spot analysis displays the shard hot spot distribution across nodes in the cluster.
 
@@ -676,7 +750,7 @@ On the **Hot Spot Analysis** page, click **SHARD Count** to refresh the hot spot
 
 A normal cluster displays at least four rows of data because the minimum cluster size is four servers. At least two rows show a **qps** value other than N/A. This is because at least two of the four servers have the Frontend role and report a **qps** value. A server that shows N/A for this value either has only the Chunkserver role, is not co-located with a Frontend role, or is abnormal.
 
-##### DataHub service archiving latency
+##### 3.3.2.4 DataHub service archiving latency
 
 Archiving latency indicates the delay during data archiving.
 
@@ -692,9 +766,9 @@ You can search and sort the list by keyword. Click the **Topic Name** of an arch
 **DataConnector** tab, you can find detailed archiving information to help you troubleshoot
 issues.
 
-#### Service O&M
+#### 3.3.3 Service O&M
 
-##### Manage Control Service O&M
+##### 3.3.3.1 Manage Control Service O&M
 
 The Control Service Overview page outlines the operational status of the control service, including a service summary, service status, and resource usage trends.
 
@@ -707,9 +781,9 @@ icon. Then select the **DataHub** product.
 4. In the left navigation pane of the **Service O&M** page, select **Control Service**. The
 **Overview** page is displayed by default.
 
-##### Service O&M for Job Scheduler
+##### 3.3.3.2 Service O&M for Job Scheduler
 
-###### DataHub Fuxi Service O&M Entry
+###### 3.3.3.2.1 DataHub Fuxi Service O&M Entry
 
 This section describes how to access the DataHub Fuxi service O&M page in Apsara Bigdata Manager.
 1. Log on to Apsara Bigdata Manager.
@@ -719,7 +793,7 @@ icon, then select the **DataHub** product.
 4. On the **Service O&M** page, in the left navigation pane, click **Fuxi Service**. Then, on the
 right, select a cluster to open the **Overview** page for that cluster's Fuxi service.
 
-###### Overview of DataHub Fuxi Service
+###### 3.3.3.2.2 Overview of DataHub Fuxi Service
 
 The overview interface displays key operational metrics for the Fuxi Service, including Service Summary, Service Status, Saturation – Resource Allocation, CPU Usage Trend Graph, Memory Usage Trend Graph, and Compute Node Resource Overview.
 
@@ -749,14 +823,14 @@ Over time, different colored curves display the CPU and memory usage trends for 
 
 This section summarizes compute node resource information for the Fuxi Service, including node online rate, total number of compute nodes, number of online nodes, and number of blacklisted nodes.
 
-###### DataHub Fuxi server roles
+###### 3.3.3.2.3 DataHub Fuxi server roles
 
 The Fuxi server roles page displays information about Fuxi server roles, such as the server role name, host, IP address, server role status, and host status.
 1. In the navigation pane on the left of the **O&M** interface, click **Fuxi Service**.
 2. Select a cluster on the right, and then click **Server Roles** to open the server roles page for
 the Fuxi service. The server roles page displays information about Fuxi server roles, such as the server role name, host, IP address, server role status, and host status.
 
-###### DataHub Fuxi Service Compute Node
+###### 3.3.3.2.4 DataHub Fuxi Service Compute Node
 
 You can view the details of compute nodes on the ComputeNodes tab for Job Scheduler, including the total CPU, idle CPU, total memory, and idle memory of each compute node. You can also check whether a node is added to the blacklist and whether it is active. You can also add compute nodes to or remove compute nodes from the blacklist or read-only list on the ComputeNodes tab.
 
@@ -779,11 +853,11 @@ submitted.
 
 The value of the **Hostname** parameter is automatically filled. You do not need to specify a value for this parameter. You can check whether a compute node is added to the **blacklist** in the **compute node** list after the configuration is complete.
 
-##### Service O&M for Apsara Distributed File
+##### 3.3.3.3 Service O&M for Apsara Distributed File System
 
 **System**
 
-###### DataHub Pangu Service O&M Entry
+###### 3.3.3.3.1 DataHub Pangu Service O&M Entry
 
 This section describes how to access the DataHub Pangu Service O&M page in Apsara Bigdata Manager.
 1. Log on to Apsara Bigdata Manager.
@@ -793,7 +867,7 @@ icon, then select the **DataHub** product.
 4. On the **Service O&M** page, click **Pangu Service** in the left navigation pane. Then, on the
 right, select a cluster to access the **Overview** page for that cluster's Pangu Service.
 
-###### DataHub Pangu service overview
+###### 3.3.3.3.2 DataHub Pangu service overview
 
 On the Overview tab, the key information about the operations of Apsara Distributed File System is displayed. You can view the summary of services, service role status, statistics on storage usage, statistics on storage nodes, and the trend charts of storage usage and the number of files.
 
@@ -823,7 +897,7 @@ In the Physical storage capacity and Document change trend sections, the trend c
 
 In the Storage Node Overview section, the information about the storage nodes of Apsara Distributed File System is displayed. You can view the numbers of data nodes, normal nodes, disks, and normal disks. You can also view the percentages of faulty nodes and faulty disks.
 
-###### DataHub Pangu service roles
+###### 3.3.3.3.3 DataHub Pangu service roles
 
 The Pangu service roles page displays information about each Pangu service role, including the service role name, host, IP address, service role status, and host status.
 
@@ -837,7 +911,7 @@ interface for Pangu Service. You can view Pangu service role information, includ
 
 You can filter and sort by column to view information more conveniently. . For instructions on switching the Pangu Master or executing a Checkpoint on the Pangu Master, see Switch the Pangu Master and Execute a Checkpoint on the Pangu Master.
 
-###### DataHub Pangu Service Storage Node
+###### 3.3.3.3.4 DataHub Pangu Service Storage Node
 
 This topic describes how to view the storage overview and storage node information of Apsara Distributed File System, and how to set the status of storage nodes and data disks.
 
@@ -868,7 +942,7 @@ The values of the **Volume** and **Hostname** parameters are automatically fille
 3. After you configure the parameter, click **Execute**. A message appears, indicating that the
 operation was submitted.
 
-###### Clear the Pangu recycle bin
+###### 3.3.3.3.5 Clear the Pangu recycle bin
 
 Apsara Big Data Manager (ABM) allows you to clear the recycle bin of Apsara Distributed File System to release storage space.
 
@@ -892,7 +966,7 @@ cause of the failure.
 To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
 **Details**, and **Runtime Parameters**.
 
-###### Enable and disable automatic data
+###### 3.3.3.3.6 Enable and disable automatic data balancing for Pangu
 
 **balancing for Pangu**
 
@@ -945,7 +1019,7 @@ click **View Details** to identify the cause of the failure.
 To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
 **Details**, and **Runtime Parameters**.
 
-###### Perform a checkpoint on a Pangu Master
+###### 3.3.3.3.7 Perform a checkpoint on a Pangu Master
 
 Apsara Bigdata Manager lets you perform checkpoint operations for DataHub on the Apsara Distributed File System. A checkpoint saves data from memory to a disk. If the Apsara Distributed File System fails, you can use the checkpoint to quickly recover data to its prefailure state and ensure data consistency.
 
@@ -969,7 +1043,7 @@ the failure.
 To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
 **Details**, and **Runtime Parameters**.
 
-###### Switch the Pangu Master
+###### 3.3.3.3.8 Switch the Pangu Master
 
 Apsara Bigdata Manager enables you to perform a primary/secondary switchover for machines in the Master group of a Pangu distributed file system. After the switchover, the current primary machine becomes secondary, and the target secondary machine becomes primary.
 
@@ -1004,9 +1078,9 @@ Click **Actions**, and then click **History** after **Master Execution Switch** 
 To analyze the cause of the task failure, review the **Parameter Settings**, **Machine**
 **Details**, and **Runtime Parameters**.
 
-#### Cluster O&M
+#### 3.3.4 Cluster O&M
 
-##### DataHub Cluster O&M Entry
+##### 3.3.4.1 DataHub Cluster O&M Entry
 
 This section describes how to access the DataHub cluster Operations and Maintenance (O&M) page in Apsara Bigdata Manager.
 1. Log on to Apsara Bigdata Manager.
@@ -1014,7 +1088,7 @@ This section describes how to access the DataHub cluster Operations and Maintena
 icon, then select **DataHub**.
 3. On the DataHub page, click **O&M** at the top, then select **Cluster O&M**.
 
-##### DataHub cluster overview
+##### 3.3.4.2 DataHub cluster overview
 
 The cluster overview summarizes key cluster metrics and health check results. It shows machine status, service status, operational health, operational health history, and trend graphs for CPU, disk, memory, load, and package usage.
 
@@ -1060,7 +1134,7 @@ The PACKAGE chart shows the trend lines of the numbers of dropped packets, error
 
 The LOAD chart shows the trend lines of the average loads for every 1 minute, every 5 minutes, and every 15 minutes for the cluster over time in different colors. In the upper-right corner of the chart, click the icon to zoom in on the chart. You can specify the start time and end time in the upper-right corner of the enlarged chart to view the average loads for every 1 minute, every 5 minutes, and every 15 minutes for the cluster within the specified period of time.
 
-##### DataHub cluster health
+##### 3.3.4.3 DataHub cluster health
 
 The cluster health interface shows all health checks for the cluster, the details of each check, and the status of each check on its host. The details include solutions for alerts. You can also log on to hosts directly and manually run health checks.
 
@@ -1097,7 +1171,7 @@ After handling an alert, you can go to the cluster **Health** tab and click **Op
 **Check Again** next to the target host to run a real-time check and determine if the alert is
 resolved.
 
-##### DataHub cluster machine list
+##### 3.3.4.4 DataHub cluster machine list
 
 The Machine List page displays information about all machines in the current cluster, including the hostname, IP address, role, type, and the entry point for scaling.
 
@@ -1105,7 +1179,7 @@ The Machine List page displays information about all machines in the current clu
 
 On the **Cluster O&M** page, click the **Machine List** tab to open the **Machine List** page. To view more detailed information about a machine, click its **Hostname** to go to the Host Overview page.
 
-##### Scale out DataHub nodes
+##### 3.3.4.5 Scale out DataHub nodes
 
 This topic describes how to scale out physical hosts for a DataHub cluster in Apsara Bigdata Manager. Scaling out adds physical hosts from the Default cluster in Apsara Infrastructure Management to the DataHub cluster. Physical hosts in a DataHub cluster include CS machines and frontend machines.
 
@@ -1161,7 +1235,7 @@ more information, see Troubleshoot a failed task.
 Use the information in the **Parameter Settings**, **Machine Details**, and **Runtime**
 **Parameter** sections to determine why the step failed.
 
-##### Scale in DataHub nodes
+##### 3.3.4.6 Scale in DataHub nodes
 
 This topic describes how to scale in physical hosts in a DataHub cluster using Apsara Bigdata Manager. Scaling in removes physical hosts from a DataHub cluster and moves them to the Default cluster in Apsara Infrastructure Management. Physical hosts in a DataHub cluster include cs machines and frontend machines.
 
@@ -1198,7 +1272,7 @@ operations.
 Use information such as **Parameter Settings**, **Machine Details**, and **Runtime**
 **Parameters** to identify why the operation step failed.
 
-##### Perform a reverse lookup for a DataHub
+##### 3.3.4.7 Perform a reverse lookup for a DataHub RequestId
 
 **RequestId**
 
@@ -1210,9 +1284,9 @@ the **Request ID**.
 4. Check the status of the reverse lookup task.
 Click **Operation History** to view the execution history of the **Reverse Lookup RequestId** task. A **RUNNING** status indicates that the task is in progress. A **SUCCESS** status indicates that the task completed successfully. A **FAILED** status indicates that the task failed. If a task fails, click **Details** to view the execution record. You can find the cause of the failure under **Parameter Settings**, **Machine Details**, and **Runtime Parameters**. If the task is successful, click **Details** to view the execution record. On the success page, click **View Details** in the **Operations** column. The execution result appears in the lower-right corner and includes the task occurrence time and the host IP address.
 
-#### Host O&M
+#### 3.3.5 Host O&M
 
-##### Host O&M entry
+##### 3.3.5.1 Host O&M entry
 
 This topic describes how to go to the host O&M page for DataHub in the ABM console.
 1. Log on to the ABM console.
@@ -1222,7 +1296,7 @@ in the upper-left corner and select **DataHub**.
 4. On the **Hosts** page, select a host in the left-side navigation pane. The **Overview** page for
 the host appears.
 
-##### DataHub Host Overview
+##### 3.3.5.2 DataHub Host Overview
 
 The host overview provides a summary of operational information for each host in the DataHub cluster, including current machine details, service role status, and usage trend graphs for CPU, DISK, LOAD, MEMORY, and PACKAGE.
 
@@ -1258,7 +1332,7 @@ The MEMORY chart shows the trend lines of the memory usage, total memory size, u
 
 The PACKAGE chart shows the trend lines of the numbers of dropped packets, error packets, received packets, and sent packets for the host over time in different colors. These trend lines reflect the data transmission status of the host. In the upper-right corner of the chart, click the icon to zoom in on the chart. You can specify the start time and end time in the upper-right corner of the enlarged chart to view the data transmission status of the host in the specified period.
 
-##### DataHub host service
+##### 3.3.5.3 DataHub host service
 
 The Service Roles page shows the service instances that are running on a host and their corresponding roles.
 
@@ -1268,15 +1342,15 @@ The Service Roles page shows the service instances that are running on a host an
 2. Click the **Service Roles** tab to view details for the selected host, including its cluster,
 service instances, and their roles.
 
-### Management
+### 3.4 Management
 
-#### Overview
+#### 3.4.1 Overview
 
 The management module is the configuration and software management center of Apsara Big Data Manager (ABM). It is an important functional module that supports and customizes O&M items for services. The management module provides the following features: Job Services: allows you to run jobs to perform O&M operations on big data services. Health Management: allows you to create health check items and apply them to service hosts. Process Services: allows you to view pending and completed manual tasks, view process information including flowcharts and XML definitions, and view the information about process instances in different states, such as Running, Complete, Exception, and Terminated. Operational Audit: allows you to view the job execution records and other service O&M operations in ABM. Data Log Management: allows you to collect logs from Logstores of databases such as MySQL, PolarDB, and PolarDB-X, as well as data logs of DataWorks, DataHub, and Hologres. The collected data logs are stored in a specified sls-pub Project, which are used to address issues of inconsistent and insufficiently accessible data logs, audit logs, and data metrics across databases and big data services.
 
-#### Jobs
+#### 3.4.2 Jobs
 
-##### Overview
+##### 3.4.2.1 Overview
 
 This topic describes the concepts of jobs in DataHub and outlines the job interface.
 
@@ -1298,9 +1372,9 @@ The **Execute** page includes the following functional modules:
 | Scheduled jobs | Enable or disable, view, and execute scheduled jobs, and view their execution history. Search for, copy, export, and delete jobs. |
 | Execution history | View the historical execution records of jobs, such as standard and scheduled jobs. Search for records, view details, and preview records. |
 
-##### Jobs
+##### 3.4.2.2 Jobs
 
-###### Manually execute a job
+###### 3.4.2.2.1 Manually execute a job
 
 After you create a standard job, you can manually execute it to perform O&M operations on the product. You can also manually execute scheduled jobs.
 
@@ -1326,7 +1400,7 @@ After you confirm the execution, an execution record is automatically generated 
 9. On the job execution interface, click **Start** at the top to start the job.
 If you exit the job execution interface without performing any operations, you can find the execution record on the **Execution History** page. Click **Details** in the **Actions** column to open the job execution interface again.
 
-###### Enable and disable scheduled jobs
+###### 3.4.2.2.2 Enable and disable scheduled jobs
 
 Scheduled jobs are disabled by default. You must enable a job for it to run. If a job is no longer needed, you can disable it.
 
@@ -1342,7 +1416,7 @@ icon in the upper-left corner and select DataHub.
 6. On the **Scheduled Jobs** page, enable or disable a scheduled job:
 To enable a disabled job: Click **Enable** next to the job. After you enable the job, the **Status** changes to **Enabled**, and the **Enable** button changes to **Disable**. To disable an enabled job: Click **Disable** next to the job. After you disable the job, the **Status** changes to **Disabled**, and the **Disable** button changes to **Enable**.
 
-###### View job execution history
+###### 3.4.2.2.3 View job execution history
 
 DataHub lets you view the execution history for a specific job or for all jobs. This helps you monitor job and plan execution.
 
@@ -1403,9 +1477,9 @@ Available operations depend on the status of the history record:
 |---|---|---|
 |   | Cancel execution | Click Cancel at the top to cancel the execution. |
 
-#### Health management
+#### 3.4.3 Health management
 
-##### Monitoring Configuration
+##### 3.4.3.1 Monitoring Configuration
 
 Apsara Bigdata Manager provides comprehensive scheduling and monitoring capabilities for each product. These capabilities detect product failures and generate alerts to help you identify and resolve issues quickly.
 
@@ -1505,7 +1579,7 @@ interface displays a success message.
 3. Click **Delete** next to the monitoring item. In the dialog box that appears, click **OK**. The
 interface displays a success message.
 
-##### Inspection management
+##### 3.4.3.2 Inspection management
 
 The inspection management feature in Apsara Bigdata Manager enables you to configure inspection scenarios, inspection items, and scenario groups for each product as needed.
 
@@ -1585,7 +1659,7 @@ After the inspection item is created, you can **Edit** or **Delete** it.
 After the scenario group is created, you can perform operations such as **Edit**, **Manage**
 **Scenario**, and view **Run History**.
 
-#### Operation audit
+#### 3.4.4 Operation audit
 
 The operation audit feature lists the history of operations and maintenance (O&M) activities for the current product on the **O&M** interface of Apsara Bigdata Manager. You can view the details of each operation for future review and fault localization.
 
@@ -1622,7 +1696,7 @@ following operations as needed.
 7. To download the execution log for an O&M operation, click **Download Execution Details**
 at the top of the page to save the log to your local machine.
 
-## DataHub in-depth
+## 4 DataHub in-depth inspection
 
 **inspection**
 
@@ -1948,7 +2022,7 @@ Check whether data consumption from subscribed topics on the business side meets
 
 Normal: The consumption checkpoint is the same as or a few seconds earlier than the latest data time of the shard. This indicates that data is normally consumed without latency. No error is displayed on the topic subscription page. Abnormal: The consumption checkpoint is several minutes, tens of minutes, several hours, or even several days earlier than the latest data time of the shard. This indicates that data consumption is interrupted or the consumption checkpoint is reset. Errors are displayed on the topic subscription page. The inspection results of the preceding example show that the consumption checkpoint of the subscribed topic is October 27, 2021. This indicates a latency in data consumption. You must report the issue to the customer on the business side for processing. Alternatively, errors are displayed on the topic subscription page. In this case, take a screenshot promptly and submit a ticket to DataHub technical support.
 
-## FAQ and solutions
+## 5 FAQ and solutions
 
 This topic describes common issues and their solutions in the current version.
 
@@ -1999,13 +2073,13 @@ locate the **datahub_frontend.endpoint** value under **Service Registration** fo
 
 Cause: First, retry the operation. If the retry also fails, an internal service issue may exist. If this error appears in Galaxy logs with an old timestamp, it was likely a temporary issue and can be ignored. Solution: Search the logs to identify the root cause of the exception and resolve it as described below. If you cannot resolve the issue, provide a screenshot of the error log to the developers for troubleshooting. A DataHub exception usually includes a RequestId. The RequestId is a unique identifier generated by DataHubServer and contains the time the exception occurred. To investigate the error, search for this RequestId in the log files within the `logs` directory of DataHubServer. If many requests fail, go to the `logs` directory of DataHubServer and search for **ERROR**level entries in the `datahub.log` file.
 
-## Appendix
+## 6 Appendix
 
-### Installation environment
+### 6.1 Installation environment
 
 Operation system: AliOS5U7-x86-64 Template: Bigdata
 
-### Deployment directories and
+### 6.2 Deployment directories and services
 
 **services**
 
@@ -2032,7 +2106,7 @@ Table 2. Deployment directories and corresponding services
 | Smoke | /home/admin/datahub smoke _ | service-datahub-frontend |
 | Frontend | /home/admin/datahub fronten _ d server _ | service-datahub-frontend |
 
-### Error codes
+### 6.3 Error codes
 
 Table 1. Error codes
 

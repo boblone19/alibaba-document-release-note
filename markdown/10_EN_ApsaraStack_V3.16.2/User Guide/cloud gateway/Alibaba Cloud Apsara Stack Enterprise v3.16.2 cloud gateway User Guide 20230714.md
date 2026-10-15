@@ -3,18 +3,37 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 cloud gateway User Guide 2
 product_version: "V3.16.2"
 doc_version: "20230714"
 pdf_pages: 21
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 cloud gateway User Guide 20230714.pdf"
+source_pdf: "d9b45be3306157e5_Alibaba Cloud Apsara Stack Enterprise v3.16.2 cloud gateway User Guide 20230714.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230718/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20cloud%20gateway%20User%20Guide%2020230714.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 cloud gateway User Guide 20230714
 
-## What is CGW?
+## Table of Contents
+
+- 1 What is CGW?
+- 2 Log on to the Apsara Uni-manager Management Console
+- 3 Connect a bare metal instance to a VPC
+- 4 ONSP
+  - 4.1 Overview
+  - 4.2 Service cluster deployment
+    - 4.2.1 Preparations
+    - 4.2.2 Create and manage resource accounts
+    - 4.2.3 Create a custom ECS image
+    - 4.2.4 Deploy and activate a service cluster
+  - 4.3 Open network service
+    - 4.3.1 Grant permissions to an account
+    - 4.3.2 Route network traffic to a service cluster
+    - 4.3.3 Create a network service instance
+    - 4.3.4 View service monitoring data
+    - 4.3.5 Configure resource sharing
+
+## 1 What is CGW?
 
 Cloud Gateway (CGW) provides scenario-specific network access services to help enterprises efficiently build hybrid clouds and migrate workloads to clouds. -manager Management Console
 
-## Log on to the Apsara Uni-
+## 2 Log on to the Apsara Uni-manager Management Console
 
 manager Management Console This topic describes how to log on to the Apsara Uni-manager Management Console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
@@ -25,7 +44,7 @@ Obtain the username and password that you can use to log on to the console from 
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations in
 the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. For more information, see the Bind a virt ual MFA device t o enable MFA topic in Apsara Uni-manager Operat ions Console User Guide. stance to a VPC
 
-## Connect a bare metal
+## 3 Connect a bare metal instance to a VPC
 
 instance to a VPC After you create a vSwitch that is exclusive for bare metal instances in a virtual private cloud (VPC), you can submit an application to request Apsara Stack to connect the bare metal instance to the VPC. After your application is approved, the bare metal instance can access the VPC.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -36,19 +55,19 @@ Basic Information: Set the Origination and Resource Set parameters. Region: Sele
 5. Use Bare Metal Management Service to connect the bare metal instance to the VPC.
 i. In the top-navigation bar, choose Product s > Ot hers > Int elligent Operat ions Syst em. ii. In the left-side navigation pane, choose Bare Met al Management Service > Applicat ion Groups. T hen, set Group T ype to Instance. If the Instance group type does not exist, create one first. iii. Select the bare metal instance that you want to add to the application group, and click View Det ails in the Actions column. iv. On the Group Det ails page, click Apply f or Bare Met al Inst ance in t he Machines sect ion. Set the network type to VPC, and specify the organization, resource set, VPC, and VPC subnet. After your application is approved, the bare metal instance can access the VPC. Import ant To avoid potential risks, Bare Metal Management Service does not support bare metal instances that use classic networks.
 
-## ONSP
+## 4 ONSP
 
 This document introduces Open Network Service Platform (ONSP) and describes how to deploy a service cluster on ONSP.
 
-### Overview
+### 4.1 Overview
 
 Open Network Service Platform (ONSP) can automatically deploy virtual network devices in a dedicated virtual private cloud (VPC) in a standard and modelized manner. This solution can centrally manage virtual network appliances and reduce deployment costs. ONSP supports standard access, quick deployment, and efficient O&M for network elements, which improve the user experience of ecological network services for enterprises. Centralized deployment: Third-party virtual network elements are deployed in an exclusive VPC as clusters. The network elements can be managed in the same VPC. Private connections: Service traffic is forwarded to third-party network elements through elastic network interfaces (ENIs). Fault isolation: Active/active clusters and active/standby clusters are supported. If an error is detected in a cluster, network traffic bypasses the cluster and switches to a functioning cluster. Data center disaster recovery: Disaster recovery across data centers is supported for virtual network service clusters. If an error arises in the data center or a virtual network service cluster, network traffic is automatically switched to the secondary cluster. To find a list of services and service providers supported by ONSP, navigate to the Apsara St ack Part ners > Syst em Int egrat ion/Compat ibilit y > Net work Devices tab at the bottom of Alibaba Cloud Apsara Stack and check the devices whose device type is Sof t ware. Console operations are classified into cluster deployment and network management: Service cluster deployment: Deploy clusters on ONSP. The steps include: make preparations, create and configure resource accounts, create custom Elastic Compute Service (ECS) images, and deploy and activate a cluster. Manage ONSP resources: The steps include: grant permissions to accounts, route service traffic, create a network service instance, configure service monitoring, and manage resource sharing settings.
 
-### Service cluster deployment
+### 4.2 Service cluster deployment
 
 This document describes how to deploy a service cluster.
 
-#### Preparations
+#### 4.2.1 Preparations
 
 Before you deploy a service cluster, you need to plan a network architecture, confirm the status of dependency services, and obtain service metadata. Network architecture: plan an overall network architecture based on the type of network service to deploy and the method to use the network service. Status of dependency services: Check the status of other services on which Open Network Service Platform (ONSP) relies. Before you start the deployment, check the service edition and cluster status in Apsara Infrastructure Management. You can proceed only when the service edition is correct and the clusters are in the ready state.
 
@@ -60,7 +79,7 @@ Before you deploy a service cluster, you need to plan a network architecture, co
 
 Service metadata: Service metadata includes the original image file, configuration file, user guide, and O&M guide. To obtain the original image file, contact Apsara Stack technical support. Then, Apsara Stack technical support logs on to Image Center to search for the image based on the image information that you provide, and applies for the image. After the application is approved, a download URL is generated. You can use the Wget utility to download the image from the URL.
 
-#### Create and manage resource accounts
+#### 4.2.2 Create and manage resource accounts
 
 All service clusters on Open Network Service Platform (ONSP) must belong to the same resource account. Therefore, you must first create and configure a resource account. The service account owns the service clusters and relevant resources. Therefore, we recommend that you assign the resource account to the organization of the IT department.
 1. Log on to the Apsara Uni-manager Management Console, and create and manage an organization,
@@ -84,7 +103,7 @@ Before you create and manage an open network service in Hybrid Cloud Application
 
 5. Click Import .
 
-#### Create a custom ECS image
+#### 4.2.3 Create a custom ECS image
 
 After you obtain the original image file of the open network service from Apsara Stack technical support, you can call the CreateImage API operation to create a custom image. The image can be used to create service clusters.
 1. Obtain the image from Apsara Stack Image Center.
@@ -94,7 +113,7 @@ onp-openapi service is deployed.
 3. Call the CreateImage API operation to create an image. For more information, see CreateImage in ECS
 Developer Guide.
 
-#### Deploy and activate a service cluster
+#### 4.2.4 Deploy and activate a service cluster
 
 This topic describes how to import the configuration file of a network service to Hybrid Cloud Application Center based on business requirements and network architectures. You also need to deploy and activate a service cluster to enable it to provide network services. Import service configurations Log on to Hybrid Cloud Application Center and import the configurations of the open network service.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -125,11 +144,11 @@ Services category, and then click the card of the service that you want to deplo
 3. Click Deploy to start the deployment. You can click View Det ails to go to the details page of the
 cluster. You can also view the cluster on the My Applicat ions page. What to do next To delete a service cluster, click Delet e Clust er on the right side of the Details section. Warning Deleting a service cluster may result in service disruptions. Proceed with caution. You must delete all routing entries that point to the service cluster before you can delete the cluster. To scale out a service cluster, click Scale out Clust er on the right side of the Details section. To create a redundant cluster, click Creat e Redundant Clust er in the upper-right corner of the application details page. Import ant The redundant cluster must be deployed in a different zone than the primary cluster. If an error arises in the primary cluster, network traffic is automatically switched to the redundant cluster. Activate the cluster After you deploy a service cluster, you must activate the cluster before you can use it. Contact technical support and provide the network service that you want to deploy and the information about the ECS instance that you want to use. Then, a license file is issued to you. Go to the network service page to activate the service cluster.
 
-### Open network service
+### 4.3 Open network service
 
 This document describes how to work with an open network service.
 
-#### Grant permissions to an account
+#### 4.3.1 Grant permissions to an account
 
 The first time a cloud account uses an open network service, you need to grant the required permissions to the cloud account to allow Cloud Gateway (CGW) to manage elastic network interfaces (ENIs) for virtual private clouds (VPCs). Prerequisites The cloud account is imported as a resource account, and it is the first time the cloud account uses the open network service.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -137,7 +156,7 @@ The first time a cloud account uses an open network service, you need to grant t
 3. In the left-side navigation pane, click My Applicat ions.
 4. In the Let t er of Applicat ion message, click Aut horize.
 
-#### Route network traffic to a service cluster
+#### 4.3.2 Route network traffic to a service cluster
 
 This topic describes how to route network traffic to an open network service cluster. Create a virtual private cloud (VPC) and a vSwitch Create a VPC and a vSwitch based on your business plan.
 1. Log on to the VPC console to create a VPC. For more information, see Manage VPCs in VPC User Guide.
@@ -206,11 +225,11 @@ To enable zone-disaster recovery, assign a public IP address to each of the prim
 2. Click Submit . After you submit the configurations, the details about the public IP address are
 displayed in the public IP address list.
 
-#### Create a network service instance
+#### 4.3.3 Create a network service instance
 
 This topic describes how to create a network service instance, such as a Server Load Balancer (SLB) instance or a firewall security policy. For more information, see LB-F5-BIGIPVE Configuration Guide and FW-Hillstone-CloudEdge Configuration Guide. If an issue persists, navigate to the Applicat ions > Hybrid Cloud Applicat ion Cent er > App St ore > Open Net work Services page, find the network service, view the contact information about technical support, and then request technical support.
 
-#### View service monitoring data
+#### 4.3.4 View service monitoring data
 
 This topic describes how to view service monitoring data.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -220,7 +239,7 @@ This topic describes how to view service monitoring data.
 5. Click Det ails to view the monitoring data of network traffic that flows through the ENIs associated
 with the service port.
 
-#### Configure resource sharing
+#### 4.3.5 Configure resource sharing
 
 This topic describes how to configure resource sharing so that you can share an application with another user to allow the user to create endpoints and manage traffic routing. Import ant Recipient accounts do not have permissions on cluster network management. Therefore, the recipient accounts need to contact the creator of the open network service after they create endpoints. The creator needs to log on to the ECS instances in the cluster to configure networks for the cluster. Then, the cluster can receive network traffic.
 1. Log on to the Apsara Uni-manager Management Console.

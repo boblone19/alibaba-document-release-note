@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Produc
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 20
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831.pdf"
+source_pdf: "a8e3391c51657c7f_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1%20DTS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Transmission%20Service%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Transmission Service Product Introduction 20260831
 
-## What is DTS?
+## Table of Contents
+
+- 1 What is DTS?
+  - 1.1 Overview
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 What is DTS?
 
 Data Transmission Service (DTS) is a data service that is provided by Alibaba Cloud. DTS supports data transmission between various types of data sources, such as relational databases and big data systems. Compared with traditional data migration or synchronization tools, DTS provides diverse features and high performance, security, reliability, and ease of use. DTS helps you simplify data transmission and focus on your application development.
 
-### Overview
+### 1.1 Overview
 
 This topic provides an overview of the features of Data Transmission Service (DTS), such as data synchronization, data migration, and change tracking.
 
@@ -59,7 +67,7 @@ DTS provides the ETL feature. When you configure a data migration or synchroniza
 
 DTS uses the data reading module, data loading module, data verification feature, and resumable transmission feature to ensure data consistency between the source and destination databases.
 
-### Benefits
+### 1.2 Benefits
 
 Compared with third-party data migration or synchronization tools, Data Transmission Service (DTS) supports diverse data transmission scenarios and ensures high performance, security, and reliability. DTS allows you to create and manage tasks with high efficiency.
 
@@ -83,7 +91,7 @@ DTS provides a 24 × 7 mechanism for validating data accuracy in some instances 
 
 The DTS console is a GUI that provides a wizard-like process to assist you in creating tasks for various scenarios. To facilitate task management, the DTS console displays task information such as status, progress, and performance. DTS supports resumable transmission and monitors task status on a regular basis. If DTS detects a network failure or system error, DTS automatically fixes the failure or error and restarts the task. If the failure or error persists, you can manually troubleshoot and restart the task in the DTS console.
 
-### Scenarios
+### 1.3 Scenarios
 
 Data Transmission Service (DTS) is applicable to scenarios such as interruption-free data migration, accelerated access to global services, geo-disaster recovery, and active georedundancy.
 
@@ -121,7 +129,7 @@ You can use the change tracking feature of DTS to decouple different types of bu
 
 A single database instance may not have sufficient resources to deal with a large number of read requests. To scale out the read capability and relieve the pressure on the database instance, you can use the real-time data synchronization feature of DTS to create read-only instances and distribute read requests across these read-only instances.
 
-### Features
+### 1.4 Features
 
 This topic describes the features of Alibaba Cloud Data Transmission Service (DTS) to help you quickly understand the product capabilities.
 

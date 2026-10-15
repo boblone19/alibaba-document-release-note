@@ -2,30 +2,81 @@
 title: "ApsaraStack Parallel File System Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 59
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraStack Parallel File System Developer Guide 20260701.pdf"
+source_pdf: "772d55a50fa4decc_Alibaba Cloud Apsara Stack V3.18.6 ApsaraStack Parallel File System Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%AB%98%E6%80%A7%E8%83%BD%E5%B9%B6%E8%A1%8C%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8APFS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraStack%20Parallel%20File%20System%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraStack Parallel File System Developer Guide 20260701
 
-| Obtain the region ID. Obtain the organization ID. Obtain the AccessKey ID and AccessKey secret of your account. Refer to the API reference. Obtain the endpoint of |  |
+## Table of Contents
+
+- 1 Usage notes
+- 2 Getting Started
+  - 2.1 Call an API operation
+- 3 Preparations
+  - 3.1 Obtain an AccessKey pair
+  - 3.2 Obtain access credentials assigned by STS
+  - 3.3 Obtain the information about region ID and endpoint
+  - 3.4 Use POP gateway to call Apsara Stack API operations
+- 4 Use Apsara Stack SDK for Java
+  - 4.1 Get started with Apsara Stack SDK for Java
+  - 4.2 Use the SDK
+    - 4.2.1 Install Apsara Stack SDK for Java
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Configure connection requests
+    - 4.2.4 Use CommonRequest to call API operations
+    - 4.2.5 Handle errors
+- 5 Use Apsara Stack SDK for Python
+  - 5.1 Get started with Apsara Stack SDK for Python
+  - 5.2 Use the SDK
+    - 5.2.1 Install Apsara Stack SDK for Python
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Configure HTTPS requests
+    - 5.2.4 Use CommonRequest to call API operations
+    - 5.2.5 Handle errors
+- 6 Use Apsara Stack SDK for Go
+  - 6.1 Get started with Apsara Stack SDK for Go
+  - 6.2 Use the SDK
+    - 6.2.1 Install the core package of Apsara Stack SDK for Go
+    - 6.2.2 Configure authentication credentials
+    - 6.2.3 Use CommonRequest to call API operations
+    - 6.2.4 Handle errors
+- 7 API Reference
+  - 7.1 Call API operations
+    - 7.1.1 Overview
+    - 7.1.2 Request structure
+    - 7.1.3 API authorization
+    - 7.1.4 Responses
+  - 7.2 RAM authentication
+  - 7.3 Common parameters
+  - 7.4 File system
+    - 7.4.1 CreateFileSystem
+    - 7.4.2 DeleteFileSystem
+    - 7.4.3 DescribeFileSystems
+    - 7.4.4 ModifyFileSystem
+    - 7.4.5 DescribeZones
+    - 7.4.6 DescribeImportJobs
+    - 7.4.7 DeleteImportJob
+    - 7.4.8 CreateImportJob
+    - 7.4.9 CreateBackupPlan
+    - 7.4.10 ControlReplicaTask
+    - 7.4.11 ControlImportJob
+
+## 1 Usage notes
+
+If you call an API operation to use a feature of ApsaraStack Parallel File System (APFS), you must specify a service name and an API version. The service name and API version vary depending on the feature that you want to use. To use a file system feature of APFS, call the corresponding API operation by using the Portable OpenAPI Proxy (POP) SDK. When you use the POP SDK to call the corresponding API operation, specify EFS as the service name and 2017-06-26 as the API version. The following figure shows how to use the POP SDK to call an API operation.
+
+| Obtain the region ID. Obtain the organization ID. Obtain the AccessKey ID and AccessKey secret of your account. Refer to the API reference. Obtain the endpoint of |   |
 |---|---|
 | AP | FS. |
-| Obtain the POP SDK and call the API operation. |  |
+| Obtain the POP SDK and call the API operation. |   |
 
-## Usage notes
+Make pre Make API c
 
-If you call an API operation to use a feature of ApsaraStack Parallel File System (APFS), you must specify a service name and an API version. The service name and API version vary depending on the feature that you want to use. To use a file system feature of APFS, call the corresponding API operation by using the Portable OpenAPI Proxy (POP) SDK. When you use the POP SDK to call the corresponding API operation, specify EFS as the service name and 2017-06-26 as the API version. The following figure shows how to use the POP SDK to call an API operation. Make pre Make API c
+## 2 Getting Started
 
-| Obtain the region ID. Obtain the organization ID. Obtain the AccessKey ID and AccessKey secret of your account. Refer to the API reference. Obtain the endpoint of |  |
-|---|---|
-| AP | FS. |
-| Obtain the POP SDK and call the API operation. |  |
-
-## Getting Started
-
-### Call an API operation
+### 2.1 Call an API operation
 
 You can use the Portable OpenAPI Proxy (POP) gateway or Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. As of Apsara Stack Enterprise V3.16.0, the POP gateway is used by default to ensure that user experience is the same as that in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -34,6 +85,11 @@ You can use the Portable OpenAPI Proxy (POP) gateway or Apsara Stack API (ASAPI)
 You can still call API operations using the ASAPI gateway if you are using an earlier version of Apsara Stack Enterprise.
 
 **Flowchart**
+
+| Obtain the region ID. Obtain the organization ID. Obtain the AccessKey ID and AccessKey secret of your account. Refer to the API reference. Obtain the endpoint of |   |
+|---|---|
+| AP | FS. |
+| Obtain the POP SDK and call the API operation. |   |
 
 Make pre Make API c
 
@@ -59,15 +115,9 @@ Obtain the developer guide of the Apsara Stack service that you want to use. You
 For more information about how to obtain an Endpoint, see Obtain RegionID and Endpoint information.
 6. Obtain the SDK of the Apsara Stack service and call an API operation.
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The region ID. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
+## 3 Preparations
 
-## Preparations
-
-### Obtain an AccessKey pair
+### 3.1 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you call an API operation. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -78,6 +128,12 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 **Warning**
 
 The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is authorized by an administrator. This ensures security.
+
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The region ID. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
 
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For example, you can use the ID of an Elastic Compute Service (ECS) instance obtained from the ECS instance list. |
 |---|---|
@@ -105,7 +161,7 @@ AccessKey pair you want to obtain.
 5. Click **Manage AccessKey Pairs** on the right side of the page.
 6. You can view the AccessKey pair of the organization in the message that appears.
 
-### Obtain access credentials
+### 3.2 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -127,7 +183,7 @@ iii. On the page that appears, click **View Current Role Policy**. In the **View
 
 Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the name of the current session. <yourRoleArn>: Replace this variable with the ARN of your RAM role. <sts.aliyuns.com>: Replace this variable with the STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with your
@@ -147,7 +203,12 @@ region ID, AccessKey ID, and AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the actual endpoint of STS. The endpoint of STS i
 s in the sts-vpc.${global:region}.${global:internet-domain} format.
@@ -171,18 +232,22 @@ eceding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the access credential assigned by STS to call an operation of a service.
 
 **Note**
 
 Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code.
 
-### Obtain the information about
+### 3.3 Obtain the information about region ID and endpoint
 
 **region ID and endpoint**
 
@@ -208,7 +273,7 @@ icon in the **Service Registration** column.
 5. In the **Registration Variables** message, the value of the **efs.openapi-pub.endpoint**
 parameter is the endpoint of the APFS file system.
 
-### Use POP gateway to call
+### 3.4 Use POP gateway to call Apsara Stack API operations
 
 **Apsara Stack API operations**
 
@@ -216,7 +281,11 @@ Before you use the Portable OpenAPI Proxy (POP) gateway and Apsara Stack SDK for
 
 **Prerequisites**
 
-Apsara Stack recommends that you use CommonRequest to make API calls. You can download V1.0 of the SDK from the SDK Center. The following sample code shows how to call an RPC API operation. This example calls the DescribeFileSystems operation of EFS. The API version used is 2017-06-26. Sample code:
+Apsara Stack recommends that you use CommonRequest to make API calls. You can download V1.0 of the SDK from the SDK Center.
+
+**Use CommonRequest to call API operations**
+
+The following sample code shows how to call an RPC API operation. This example calls the DescribeFileSystems operation of EFS. The API version used is 2017-06-26. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -286,10 +355,9 @@ d the SecurityToken field.
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
@@ -299,13 +367,15 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-## Use Apsara Stack SDK for
+ck SDK for Java
+
+## 4 Use Apsara Stack SDK for Java
 
 **Java**
 
 This topic describes how to obtain and use Apsara Stack SDK for Java to call API operations.
 
-### Get started with Apsara Stack
+### 4.1 Get started with Apsara Stack SDK for Java
 
 **SDK for Java**
 
@@ -313,16 +383,24 @@ This topic describes how to obtain and use Apsara Stack SDK for Java to call API
 
 **Prerequisites**
 
-An Apsara Stack tenant account that has the required permissions and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain an AccessKey pair. The endpoint of the corresponding service is obtained. The service varies based on the feature that you want to use. For more information, see Obtain the information and endpoint of an API operation. Java Development Kit (JDK) 1.8 or later is installed before you can use Apsara Stack SDK for Java. If you use Apache Maven to manage a Java project, you need to only import the JAR file of Apsara Stack SDK for Java to the pom.xml file of the project. To use an SDK of a service, you must install the SDK core library and the SDK. We recommend that you use V4.5.17 or later of the SDK core library. For more information, see Install Apsara Stack SDK for Java. To use Apsara Stack SDK for Java, perform the following steps:
+An Apsara Stack tenant account that has the required permissions and an AccessKey pair is obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain an AccessKey pair. The endpoint of the corresponding service is obtained. The service varies based on the feature that you want to use. For more information, see Obtain the information and endpoint of an API operation. Java Development Kit (JDK) 1.8 or later is installed before you can use Apsara Stack SDK for Java.
+
+**Install Apsara Stack SDK for Java**
+
+If you use Apache Maven to manage a Java project, you need to only import the JAR file of Apsara Stack SDK for Java to the pom.xml file of the project. To use an SDK of a service, you must install the SDK core library and the SDK. We recommend that you use V4.5.17 or later of the SDK core library. For more information, see Install Apsara Stack SDK for Java.
+
+**Use Apsara Stack SDK for Java**
+
+To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initiate it.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and handle the response or exception.
 
-### Use the SDK
+### 4.2 Use the SDK
 
-#### Install Apsara Stack SDK for Java
+#### 4.2.1 Install Apsara Stack SDK for Java
 
-This topic describes how to install and use Apsara Stack SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 and later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. To use the features of ApsaraStack Parallel File System (APFS), you must install the core library of Apsara Stack SDK for Java. We recommend that you install the core library of version 4.5.17 or later.
+This topic describes how to install and use Apsara Stack SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 and later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. To use the features of ApsaraStack Parallel File System (APFS), you must install the core library of Apsara Stack SDK for Java. We recommend that you install the core library of version 4.5.17 or later. ck SDK for Java
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -332,7 +410,7 @@ This topic describes how to install and use Apsara Stack SDK for Java. Apsara St
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
@@ -351,9 +429,9 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the variables in the preceding sample code with actual values. Remove the angle brackets (<>) from the final code.
 
-#### Configure connection requests
+#### 4.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. ck SDK for Java
 
 **Note**
 
@@ -363,7 +441,7 @@ Replace the variables in the following sample code with actual values. Remove th
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // Optional. Specify a read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // Optional. Specify a connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // Optional. Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // Optional. Specify the maximum number of requests. The supported data type is INTEGER
 ```
 
-.
+`.`
 
 ```
 clientConfig.setMaxRequests(<maxRequests>); // Optional. Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** Optional. Specify whether to configure a proxy based on your business requirements. Sample code: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -381,20 +459,26 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace the variable
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.4 Use CommonRequest to call API operations
 
 **operations**
 
-If you want to call an API operation without an SDK or if the request and response of an API operation that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operation. You can use CommonRequest to call all API operations.
-
-| You must obtain the value of the | Action |  |
-|---|---|---|
-| request.setSysAction("<Action>") |  |  |
-|  |  | forma |
+If you want to call an API operation without an SDK or if the request and response of an API operation that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call the API operation. You can use CommonRequest to call all API operations. ck SDK for Java
 
 **Benefits**
 
-CommonRequest provides the following benefits: Lightweight: You only need to download the core package. You do not need to download and install SDKs of Apsara Stack services. Easy to use: You can call the newly released API operations of an Apsara Stack service without the need to update the SDK for the service. Fast iteration. If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from Elastic Compute Service (ECS) API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references of a specific service. Action: the name of the API operation that you want to call. For example, if you want to use `CommonRequest` to call the `RunInstances` operation, you must specify the API operation in the `request.setSysAction("RunInstances")` format.
+CommonRequest provides the following benefits: Lightweight: You only need to download the core package. You do not need to download and install SDKs of Apsara Stack services. Easy to use: You can call the newly released API operations of an Apsara Stack service without the need to update the SDK for the service. Fast iteration.
+
+**Use CommonRequest to call API operations**
+
+If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from Elastic Compute Service (ECS) API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references of a specific service. Action: the name of the API operation that you want to call.
+
+| You must obtain the value of the | Action |   |
+|---|---|---|
+| request.setSysAction("<Action>") |   |   |
+|   |   | forma |
+
+You must obtain the value of the `Action` parameter and specify the API operation in the For example, if you want to use `CommonRequest` to call the `RunInstances` operation, you must specify the API operation in the `request.setSysAction("RunInstances")` format.
 
 **Example: Call an RPC API operation**
 
@@ -407,6 +491,8 @@ Replace the variables in the following sample code with actual values. Remove th
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; importcomaliyuncsIAcsClient;
 ```
+
+ck SDK for Java
 
 ```java
 import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -465,7 +551,7 @@ all a remote procedure call (RPC) API operation, you must specify the SecurityTo
         request.putQueryParameter("SecurityToken", "<yourSecurityToken>");
 ```
 
-q p y y , y y
+ck SDK for Java `q` `p` `y` `y` `,` `y` `y`
 
 ```
         Replace the variable with your security token.
@@ -483,12 +569,11 @@ q p y y , y y
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### Handle errors
+`}` `}` `}`
+
+#### 4.2.5 Handle errors
 
 If an error occurs on the server or SDK when you use the Apsara Stack SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Apsara Stack SDK for Java. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -516,14 +601,15 @@ to request technical support.
     // For example, you can display the exception information.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-## Use Apsara Stack SDK for
+`}` ck SDK for Python
+
+## 5 Use Apsara Stack SDK for Python
 
 **Python**
 
-### Get started with Apsara Stack
+### 5.1 Get started with Apsara Stack SDK for Python
 
 **SDK for Python**
 
@@ -547,21 +633,23 @@ If you use Python 3.x, run the following command to install the core library of 
 pip3 install aliyun-python-sdk-core-v3
 ```
 
+**Use Apsara Stack SDK for Python**
+
 To use Apsara Stack SDK for Python, perform the following steps:
 1. Create a client instance. When you create the client instance, you must obtain the region
 ID, AccessKey ID, and AccessKey secret.
 2. Create an API request and configure required parameters.
 3. Initiate the API request and handle the response or exception.
 
-### Use the SDK
+### 5.2 Use the SDK
 
-#### Install Apsara Stack SDK for Python
+#### 5.2.1 Install Apsara Stack SDK for Python
 
 This topic describes how to install and use Apsara Stack SDK for Python.
 
 **Background information**
 
-Alibaba Cloud Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, and 3.x and later. You can install the Apsara Stack SDK for Python by using pip.
+ck SDK for Python Alibaba Cloud Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, and 3.x and later. You can install the Apsara Stack SDK for Python by using pip.
 
 **Note**
 
@@ -581,7 +669,7 @@ If you use Python 3.x, run the following command to install the core library of 
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Python supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
@@ -593,9 +681,9 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 from aliyunsdkcore import client clt = client.AcsClient(access_key, acces_secret, region_id)
 ```
 
-#### Configure HTTPS requests
+#### 5.2.3 Configure HTTPS requests
 
-Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol.
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol. ck SDK for Python
 
 **Note**
 
@@ -627,7 +715,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Use CommonRequest to call API
+#### 5.2.4 Use CommonRequest to call API operations
 
 **operations**
 
@@ -635,13 +723,17 @@ If you want to call an ApsaraStack Parallel File System (APFS) API operation wit
 
 **Benefits**
 
-CommonRequest provides the following benefits: Lightweight: You only need to download the core package. You do not need to download and install SDKs of Apsara Stack services. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast in iteration.
+CommonRequest provides the following benefits: Lightweight: You only need to download the core package. You do not need to download and install SDKs of Apsara Stack services. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast in iteration. ck SDK for Python
 
-|  | Action |
+**Use CommonRequest to call API operations**
+
+If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references of a specific service. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references of a specific service. Action: the name of the API operation that you want to call.
+
+|   | Action |
 |---|---|
-| request.set action name('Action') _ _ |  |
+| request.set action name('Action') _ _ |   |
 
-If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references of a specific service. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references of a specific service. Action: the name of the API operation that you want to call. For example, if you want to use `CommonRequest` to call the `RunInstances` operation, you must specify the API operation in the `request.set_action_name('RunInstances')` format.
+You must obtain the value of the `Action` parameter and specify the API operation in the For example, if you want to use `CommonRequest` to call the `RunInstances` operation, you must specify the API operation in the `request.set_action_name('RunInstances')` format.
 
 **Example: Call an RPC API operation**
 
@@ -649,7 +741,7 @@ The following sample code provides an example on how to call the DescribeFileSys
 
 **Note**
 
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <Endpoint>: Replace this variable with the endpoint of the current service.
+Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <Endpoint>: Replace this variable with the endpoint of the current service. ck SDK for Python
 
 ```python
 #!/usr/bin/env python
@@ -689,9 +781,9 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding = 'utf-8'))
 ```
 
-#### Handle errors
+#### 5.2.5 Handle errors
 
-If an error occurs on the server or SDK when you use the Apsara Stack SDK for Python, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Apsara Stack SDK for Python. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
+ck SDK for Python If an error occurs on the server or SDK when you use the Apsara Stack SDK for Python, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the Apsara Stack SDK for Python. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
 ```
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
@@ -710,11 +802,13 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-## Use Apsara Stack SDK for
+ck SDK for Go
+
+## 6 Use Apsara Stack SDK for Go
 
 **Go**
 
-### Get started with Apsara Stack
+### 6.1 Get started with Apsara Stack SDK for Go
 
 **SDK for Go**
 
@@ -724,7 +818,7 @@ Apsara Stack SDK for Go allows you to access services without complex coding. Th
 
 An Apsara Stack tenant account that has the required permissions and an AccessKey pair are obtained. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain an AccessKey pair. The endpoint of the corresponding service is obtained. The service varies based on the feature that you want to use. For more information, see Obtain the information and endpoint of an API operation.
 
-#### Install the core package of Apsara Stack SDK for Go
+**Install the core package of Apsara Stack SDK for Go**
 
 Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -732,14 +826,16 @@ Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following 
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
+**Use Apsara Stack SDK for Go**
+
 To use Apsara Stack SDK for Go, perform the following steps:
 1. Initialize a client instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
 
-### Use the SDK
+### 6.2 Use the SDK
 
-#### Install the core package of Apsara
+#### 6.2.1 Install the core package of Apsara Stack SDK for Go
 
 **Stack SDK for Go**
 
@@ -749,9 +845,9 @@ This topic describes how to install the core package of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 6.2.2 Configure authentication credentials
 
-When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Go supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
+ck SDK for Go When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Go supports authentication by using AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access ApsaraStack Parallel File System (APFS), you must specify the AccessKey pair when you initialize the client.
 
 **Note**
 
@@ -766,7 +862,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
         "<yourAccessKeySecret>") // Replace the variable with your AccessKey secret.
 ```
 
-#### Use CommonRequest to call API
+#### 6.2.3 Use CommonRequest to call API operations
 
 **operations**
 
@@ -774,13 +870,17 @@ If you want to call an API operation without an SDK or if the request and respon
 
 **Benefits**
 
-CommonRequest provides the following benefits: Lightweight: You only need to download the core package. You do not need to download and install SDKs of Apsara Stack services. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast in iteration. If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from ECS API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the common request parameters in the API references of cloud services. Operation information: the name of the API operation that you want to call.
+CommonRequest provides the following benefits: Lightweight: You only need to download the core package. You do not need to download and install SDKs of Apsara Stack services. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast in iteration.
 
-|  | Action |
+**Use CommonRequest to call API operations**
+
+If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from ECS API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the common request parameters in the API references of cloud services. Operation information: the name of the API operation that you want to call. ck SDK for Go
+
+|   | Action |
 |---|---|
-| request.setSysAction("<Action>") |  |
+| request.setSysAction("<Action>") |   |
 
-For example, if you want to use `CommonRequest` to call the `RunInstances` operation, you must specify the API operation in the `request.setSysAction("RunInstances")` format.
+You must obtain the value of the `Action` parameter and specify the API operation in the For example, if you want to use `CommonRequest` to call the `RunInstances` operation, you must specify the API operation in the `request.setSysAction("RunInstances")` format.
 
 **Example: Call an RPC API operation**
 
@@ -788,16 +888,16 @@ The following sample code provides an example on how to call the DescribeDisks o
 
 **Note**
 
-Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <Endpoint>: Replace this variable with the endpoint of the current service.
+Replace the variables in the following sample code with actual values. Remove the angle brackets (<>) from the final code. The following section describes the variables: <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourSecurityToken>: Replace this variable with your security token. <yourResourceGroupID>: Replace this variable with your resource set ID. <yourOrganizationID>: Replace this variable with your organization ID. <yourInstanceID>: Replace this variable with your instance ID. <Endpoint>: Replace this variable with the endpoint of the current service. ck SDK for Go
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -807,7 +907,11 @@ func main() {
         "<yourAccessKeySecret>") // Replace the variable with your AccessKey secret.
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<endpoint>" // Specify the endpoint of the service. Replace the v
@@ -816,6 +920,7 @@ ariable with the endpoint of the current service.
     request.Version = "2017-06-26"
     // This is a remote procedure call (RPC) API operation. Therefore, the ApiName para
 meter must be set to specify the operation.
+    request.ApiName = "DescribeFileSystems"
     // Specify service-related parameters.
     request.QueryParams["PageNumber"] = "1"
     request.QueryParams["PageSize"] = "30"
@@ -847,12 +952,17 @@ e instance ID. If you want to modify, delete, or view the details of a specific 
      response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-#### Handle errors
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ck SDK for Go
+
+#### 6.2.4 Handle errors
 
 When you use Apsara Stack SDK for Go, a `ClientError` or a `ServerError` is returned if an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a manner similar to standard Go errors.
 
@@ -864,8 +974,9 @@ You can use the following code to handle errors:
 response,err := ecsClient.DescribeDisks(request) if err != nil {
     // Obtain the error information.
    err.Error()
-}
 ```
+
+`}`
 
 **ClientError**
 
@@ -876,7 +987,7 @@ After you send a request, if an error occurs on the SDK side and cannot be autom
 If you use a specific error struct, you must add the error package github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors by using the following code:
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" // Replace ecs with the n
 ame of the actual service.
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
@@ -885,7 +996,7 @@ ame of the actual service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeDisks(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -895,18 +1006,20 @@ response, err := ecsClient.DescribeDisks(request) if clientError, ok := err.(*er
     clientError.Message()
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
-}
 ```
+
+`}`
 
 **ServerError**
 
-If the server returns an error response, the SDK wraps the response into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the error response. The following sample code shows how to determine and obtain the error message in a `ServerError` and `Response` returned by ECS SDK for Go:
+ck SDK for Go If the server returns an error response, the SDK wraps the response into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from the error response. The following sample code shows how to determine and obtain the error message in a `ServerError` and `Response` returned by ECS SDK for Go:
 
 **Note**
 
 If you use a specific error struct, you must add the error package `github.com/aliyun/alibaba-cloud-sdk-go/sdk/errors` by using the following code:
 
-```
+```java
+import (
     "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs" // Replace ecs with the n
 ame of the actual service.
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
@@ -915,7 +1028,7 @@ ame of the actual service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := ecsClient.DescribeDisks(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -925,21 +1038,21 @@ response, err := ecsClient.DescribeDisks(request) if serverError, ok := err.(*er
     serverError.Message()
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
-}
 ```
 
-| Type | Action name |
-|---|---|
+`}`
 
-## API Reference
+## 7 API Reference
 
-### Call API operations
+### 7.1 Call API operations
 
-#### Overview
+#### 7.1.1 Overview
 
 To call an API operation, you can send an HTTP GET request to the endpoint of the ApsaraStack Parallel File System (APFS) server. You must specify the relevant request parameters in the request based on the operation description. Then, the system returns the processing result of the request. All requests and responses are UTF-8 encoded.
 
-#### Request structure
+#### 7.1.2 Request structure
+
+**Endpoint**
 
 For more information about how to obtain the endpoint of an Apsara Stack service, see Obtain the information and endpoint of an API operation.
 
@@ -959,18 +1072,21 @@ In each request, you must set the Action parameter to specify the operation that
 
 All requests and responses are UTF-8 encoded.
 
-#### API authorization
+#### 7.1.3 API authorization
 
 To ensure the security of your Apsara Stack tenant account, we recommend that you use a Resource Access Management (RAM) user to call API operations. In the RAM console, you can authorize a RAM user to call the following operations on an ApsaraStack Parallel File System (APFS) resource.
+
+| Type | Action name |
+|---|---|
 
 | File system | CreateFileSystem DeleteFileSystem DescribeFileSystems ModifyFileSystem DescribeZones |
 |---|---|
 
-#### Responses
+#### 7.1.4 Responses
 
 API responses use the HTTP response format. A 2xx status code indicates a successful call, and a 4xx or 5xx status code indicates a failed call.
 
-### RAM authentication
+### 7.2 RAM authentication
 
 When you call API operations to access resources within an Apsara Stack tenant account as a Resource Access Management (RAM) user, the system checks whether the RAM user is granted the required permissions.
 
@@ -982,7 +1098,7 @@ You can use your Apsara Stack tenant account or a RAM user account to manage you
 
 The permissions that APFS checks vary based on the resources that are requested by the API operation and the syntax of the API operation.
 
-### Common parameters
+### 7.3 Common parameters
 
 Common parameters include common request parameters, common request headers, and common response parameters.
 
@@ -999,13 +1115,13 @@ Common request parameters must be included in all ApsaraStack Parallel File Syst
 | RegionId | String | Yes | The ID of the region where the service is accessed. |
 | Product | String | Yes | The name of the service to which the API operation belongs. Valid value: EFS. |
 
+**Common request headers**
+
 | Name | Description |
 |---|---|
 | x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information, see the Obtain an organization ID section of the Obtain the values of common request headers topic. |
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information, see the Obtain a resource set ID section of the Obtain the values of common request headers topic. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For more information, see the Obtain an instance ID section of the Obtain the values of common request headers topic. |
-
-**Common request headers**
 
 **Note**
 
@@ -1015,6 +1131,16 @@ the request header to specify the ID of the instance and the IDs of the organiza
 
 **Common response parameters**
 
+Responses are returned in the unified format for API requests. The following HTTP status codes indicate different request statuses: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates that the call failed. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the call is successful.
+
+### 7.4 File system
+
+#### 7.4.1 CreateFileSystem
+
+You can call the CreateFileSystem operation to create a file system in ApsaraStack Parallel File System (APFS).
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateFileSyste m | The operation that you want to perform. If you use a custom HTTP URL or HTTPS URL to make an API request, you must specify the Action parameter. Valid value: CreateFileSystem. |
@@ -1022,16 +1148,6 @@ the request header to specify the ID of the instance and the IDs of the organiza
 | ZoneId | String | No | cn-qingdao- env38- amtest11001-a | The ID of the zone in which you want to create the file system. This parameter is required. |
 | FileSystemType | String | Yes | efs | The type of the file system. Only efs is supported. |
 | Capacity | Long | Yes | 20480 | The capacity of the file system. Unit: GiB. The value of this parameter must be greater than 1024 and a multiple of 1024. |
-
-Responses are returned in the unified format for API requests. The following HTTP status codes indicate different request statuses: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates that the call failed. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the call is successful.
-
-### File system
-
-#### CreateFileSystem
-
-You can call the CreateFileSystem operation to create a file system in ApsaraStack Parallel File System (APFS).
-
-**Request parameters**
 
 | StorageType | String | Yes | parastor advanc _ e 300 _ | The specification of the file system. The specification corresponds to fscd is fsSpec. Only parastor advance 300, which _ _ indicates a performance APFS file system, is supported. |
 |---|---|---|---|---|
@@ -1041,13 +1157,25 @@ You can call the CreateFileSystem operation to create a file system in ApsaraSta
 | EncryptType | String | Yes | 0 | 0 indicates that the file system is unencrypted, while 1 indicates that the file system is encrypted. Encryption is not supported in Apsara Stack scenarios. |
 | Description | String | No | - | The description information, which is a string. The following requirements must be met: 1. The description must be 2 to 128 characters in length. 2. The description must start with a letter and cannot start with http:// or https://. 3. The description can contain letters, digits, colons (:), underscores ( ), and hyphens (-). _ |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
-
 **Examples**
+
+Sample success responses
+
+```json
+{"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"efs-01b06fa3"}
+```
+
+#### 7.4.2 DeleteFileSystem
+
+You can call the DeleteFileSystem operation to delete a file system from ApsaraStack Parallel File System (APFS).
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1056,31 +1184,25 @@ You can call the CreateFileSystem operation to create a file system in ApsaraSta
 | ZoneId | String | No | cn-qingdao- env38- amtest11001-a | The zone ID of the file system. This parameter is required. |
 | FileSystemId | String | Yes | efs-0156ec1d | The ID of the file system. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-```json
-{"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"efs-01b06fa3"}
-```
-
-#### DeleteFileSystem
-
-You can call the DeleteFileSystem operation to delete a file system from ApsaraStack Parallel File System (APFS).
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
+Sample success responses
+
 ```json
 {"RequestId":"7EA4C27A-7EB5-47FD-89DE-EB274970CF87","FileSystemId":"efs-01b06fa3"}
 ```
 
-#### DescribeFileSystems
+#### 7.4.3 DescribeFileSystems
 
 You can call the DescribeFileSystems operation to query a created file system in ApsaraStack Parallel File System (APFS).
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1089,30 +1211,35 @@ You can call the DescribeFileSystems operation to query a created file system in
 | ZoneId | String | No | cn-qingdao- env38- amtest11001-a | The zone ID of the file system. This parameter is required. |
 | FileSystemId | String | No | efs-0156ec1d | The ID of the file system. |
 | Description | String | No | - | The description of the file system. |
-| FileSystemType | String | Yes | efs |  |
+| FileSystemType | String | Yes | efs |   |
 | PageSize | Integer | No | 10 (default) | The number of entries returned per page. |
 | PageNumber | Integer | No | 1 (default) | The number of the page to return. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | FileSystemId | String | efs-0156ec1d | The ID of the file system. |
 
-**Request parameters**
-
-**Response parameters**
-
 | Status | String | Running | The status of the file system. An APFS file system can be in one of the following statuses: Pending: The file system is being initialized. Running: The file system is running. Deleting: The file system is being deleted. Extending: The file system is being scaled up. Shrinking: The file system is being scaled down. Starting: The file system is being started. Stopping: The file system is being stopped. Stopped: The file system is stopped. |
 |---|---|---|---|
 | MeteredSize | Integer | 1000 | The used capacity of the file system. Unit: GiB. |
 | Capacity | Integer | 1000 | The total capacity of the file system. Unit: GiB. |
-| MountTarget | String |  | The information about the mount target. |
-| MountTargetDomain | String |  | The name of the mount target. |
+| MountTarget | String |   | The information about the mount target. |
+| MountTargetDomain | String |   | The name of the mount target. |
 
 **Examples**
 
+Sample success responses `{`
+
 ```json
-{
-            {
+    "FileSystems": {
+        "FileSystem": [
+```
+
+`{`
+
+```json
                 "Status": "Running",
                 "Description": "efs",
                 "StorageType": "performance",
@@ -1124,18 +1251,16 @@ You can call the DescribeFileSystems operation to query a created file system in
                     "SupportedFeature": [
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "MountTargets": {
                     "MountTarget": [
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "MeteredSize": 0,
                 "QuotaSize": 40960,
                 "EncryptType": 0,
@@ -1144,29 +1269,27 @@ You can call the DescribeFileSystems operation to query a created file system in
                     "Package": [
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "FileSystemType": "efs",
                 "FileSystemId": "efs-0156ec1d",
                 "RegionId": "cn-wulan-env38-d01",
                 "VolumeSize": 40960
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "TotalCount": 1,
     "RequestId": "4306B744-C87D-45C7-8083-64C4E153F46C",
     "PageSize": 10,
     "PageNumber": 1
-}
 ```
 
-#### ModifyFileSystem
+`}`
+
+#### 7.4.4 ModifyFileSystem
 
 You can call the ModifyFileSystem operation to modify a file system in ApsaraStack Parallel File System (APFS). Note that each time you call this operation, you can modify only the
 **Capacity** or **Description** parameter.
@@ -1182,26 +1305,35 @@ You can call the ModifyFileSystem operation to modify a file system in ApsaraSta
 | Description | String | No | - | The description of the file system. |
 | Capacity | Long | No | 20480 | The capacity of the file system. Unit: GiB. The value of this parameter must be greater than 1024 and a multiple of 1024. Only scale-up of the file system is supported. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
-
 **Examples**
 
+Sample success responses `{`
+
 ```json
-{
     "RequestId": "7EA4C27A-7EB5-47FD-89DE-EB274970CF87",
-}
+    "FileSystemId": "efs-01b06fa3"
 ```
 
-#### DescribeZones
+`}`
+
+#### 7.4.5 DescribeZones
+
+You can call the DescribeZones operation to query the information about ApsaraStack Parallel File System (APFS) clusters in the current region.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeZones | The operation that you want to perform. If you use a custom HTTP URL or HTTPS URL to make an API request, you must specify the Action parameter. Valid value: DescribeZones. |
-| FileSystemType | String | Yes | efs |  |
+| FileSystemType | String | Yes | efs |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1210,61 +1342,41 @@ You can call the ModifyFileSystem operation to modify a file system in ApsaraSta
 | ClusterId | String | EfsStorageCluster- A-20250401-03ee | The ID of the Apsara Infrastructure Management cluster. |
 | StorageType | String | efs | The supported file system specification. |
 
-You can call the DescribeZones operation to query the information about ApsaraStack Parallel File System (APFS) clusters in the current region.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| JobId | Strin g | Query | No | job-123456 | The job ID. |
-| FileSyste mId | Strin g | Query | No | fs-123456 | The file system ID. |
-| Status | Strin g | Query | No | Running | The status of the job. |
-| PageSize | Integ er | Query | No | 10 | The number of entries to return per page. Default value: 10 Valid values: 1 to 100 |
+Sample success responses `{`
 
 ```json
-{
     "RequestId": "2400D634-8E18-4E9E-B516-39081731B09A",
     "Zones": {
         "Zone": [
-            {
+```
+
+`{`
+
+```json
                 "ZoneId": "cn-wulan-env38-amtest38001-a",
                 "Clusters": {
                     "Cluster": [
-                        {
+```
+
+`{`
+
+```json
                             "ClusterId": "EfsStorageCluster-A-20250401-03ee",
                             "InstanceTypes": {
                                 "InstanceType": [
-                                    {
+```
+
+`{`
+
+```json
                                         "StorageType": "parastor_advance_300"
-                                    }
 ```
 
-]
+`}` `]` `}` `}` `]` `}` `}` `]` `}` `}`
 
-```
-                            }
-                        }
-```
-
-]
-
-```
-                }
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-#### DescribeImportJobs
+#### 7.4.6 DescribeImportJobs
 
 Retrieves a list of import jobs.
 
@@ -1276,7 +1388,16 @@ This operation uses only common request headers. For more information, see commo
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| JobId | Strin g | Query | No | job-123456 | The job ID. |
+| FileSyste mId | Strin g | Query | No | fs-123456 | The file system ID. |
+| Status | Strin g | Query | No | Running | The status of the job. |
+| PageSize | Integ er | Query | No | 10 | The number of entries to return per page. Default value: 10 Valid values: 1 to 100 |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | PageNum ber | Integ er | Query | No | 1 | The page number. Default: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1294,8 +1415,6 @@ This operation uses only common request headers. For more information, see commo
 | -OssPath | String | /test/abc | The OSS path. |
 | - StorageLocatio n | String | NULL | The storage location. This parameter is reserved. |
 | -ReplicaSize | Long | 1024000 | The backup size, in bytes. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1327,10 +1446,19 @@ http(s)://[Endpoint]/?Action=DescribeImportJobs &<common request parameters>
 
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "ImportJobs":[
-  {
+```
+
+`{`
+
+```json
    "FileSystemPath":"",
    "Description":"",
    "CompletedTime":"",
@@ -1357,33 +1485,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "UpdatedTime":"",
    "ErrorMessage":"",
    "ReplicaSize":""
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "TotalCount":100,
  "RequestId":"1234567890ABCDEF",
  "PageSize":10,
  "PageNumber":1
-}
 ```
 
-Deletes an import job.
+`}`
 
-#### DeleteImportJob
+#### 7.4.7 DeleteImportJob
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| JobId | Strin g | Query | Yes | job-1234567890abcdef | The import job ID. |
-| DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. The default value is false . |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 12345678-1234- 1234-1234- 1234567890ab | The request ID. |
-
-Before deleting an import job, ensure it is complete or no longer needed to prevent accidental data loss.
+Deletes an import job. Before deleting an import job, ensure it is complete or no longer needed to prevent accidental data loss.
 
 **Request headers**
 
@@ -1391,28 +1508,53 @@ This operation uses only common request headers. For more information, see commo
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| JobId | Strin g | Query | Yes | job-1234567890abcdef | The import job ID. |
+| DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. The default value is false . |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 12345678-1234- 1234-1234- 1234567890ab | The request ID. |
 
 **Examples**
 
 Request example
 
 ```
-&JobId=job-1234567890abcdef &<CommonRequestParameters>
+http(s)://[Endpoint]/?Action=DeleteImportJob &JobId=job-1234567890abcdef &<CommonRequestParameters>
 ```
 
 Response example
 
-```json
+```
  JSON
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"12345678-1234-1234-1234-1234567890ab"
-}
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### CreateImportJob
+`{`
 
-Creates an import job to transfer files from OSS to a file system. Before calling this operation, ensure that you have activated the required services and obtained the necessary permissions.
+```json
+ "RequestId":"12345678-1234-1234-1234-1234567890ab"
+```
+
+`}`
+
+#### 7.4.8 CreateImportJob
+
+Creates an import job to transfer files from OSS to a file system.
+
+**Usage notes**
+
+Before calling this operation, ensure that you have activated the required services and obtained the necessary permissions. The `FileSystemId` , `FileSystemPath` , `OssBucket` , and `OssPath` parameters are required. This operation supports both HTTP and HTTPS. We recommend using HTTPS for secure data transmission.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common Parameters.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1424,54 +1566,43 @@ Creates an import job to transfer files from OSS to a file system. Before callin
 | ExcludePa ths | Strin g | Query | No | /tmp,/logs,/cache | A list of paths to exclude from the import job. The import job does not import files and subdirectories in these paths. |
 | FileNameP attern | Strin g | Query | No | *.log,*.tmp,*.bak | A pattern that specifies which files to import. The import job imports only files with names that match this pattern. |
 
-The `FileSystemId` , `FileSystemPath` , `OssBucket` , and `OssPath` parameters are required. This operation supports both HTTP and HTTPS. We recommend using HTTPS for secure data transmission.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common Parameters.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. If set to true , the system checks the request parameters but does not create the import job. Default value: false . |
 | JobName | Strin g | Query | No | testjob | The name of the import job. |
 | Descriptio n | Strin g | Query | No | TestDescription | The description of the import job. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | uniqueRequestId | The unique request ID. Use this ID to track the request. |
 | JobId | String | job-xxxxxxxx | The unique ID of the created import job. |
-
-**Response parameters**
 
 **Examples**
 
 Request example
 
 ```
-&OssBucket=my-bucket &OssPath=/oss/path
+http(s)://[Endpoint]/?Action=CreateImportJob &FileSystemId=fs-xxxxxxxx &FileSystemPath=/mnt/data &OssBucket=my-bucket &OssPath=/oss/path
 ```
 
-& Response example `JSON` format
+`&` Response example `JSON` format
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PlanName | Strin g | Query | Yes | MyBackupPlan | The name of the backup plan. |
-| SourceFile SystemId | Strin g | Query | Yes | efs-12345678 | The ID of the source file system. |
-| SourcePat h | Strin g | Query | Yes | /source/path | The source path. |
-| ScheduleE xpression | Strin g | Query | Yes | 0 0 * * * | Specifies when to run the backup task. The minimum interval is one day. |
-| Migration Speed | Strin g | Query | No | LOW | The migration speed limit. Valid values: LOW MEDIUM HIGH |
-| TargetSto rageLocati on | Strin g | Query | No | oss-bucket-name/oss- path | The target storage location. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"uniqueRequestId",
  "JobId":"job-xxxxxxxx"
-}
 ```
 
-#### CreateBackupPlan
+`}`
+
+#### 7.4.9 CreateBackupPlan
 
 Creates a backup plan. This operation creates a backup plan in APFS. Ensure that all required parameters are specified and meet the data type requirements.
 
@@ -1483,6 +1614,15 @@ This operation uses only common request headers. For more information, see commo
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| PlanName | Strin g | Query | Yes | MyBackupPlan | The name of the backup plan. |
+| SourceFile SystemId | Strin g | Query | Yes | efs-12345678 | The ID of the source file system. |
+| SourcePat h | Strin g | Query | Yes | /source/path | The source path. |
+| ScheduleE xpression | Strin g | Query | Yes | 0 0 * * * | Specifies when to run the backup task. The minimum interval is one day. |
+| Migration Speed | Strin g | Query | No | LOW | The migration speed limit. Valid values: LOW MEDIUM HIGH |
+| TargetSto rageLocati on | Strin g | Query | No | oss-bucket-name/oss- path | The target storage location. |
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | ExcludePa ths | Strin g | Query | No | /tmp,/logs,/cache | A comma-separated list of paths to exclude from the backup. The backup process skips files and subdirectories within these paths. |
 | FileNameP attern | Strin g | Query | No | *.log,*.tmp,*.bak | A comma-separated list of file name patterns. Only files that match a pattern are backed up. |
 | FileSizeTh reshold | Strin g | Query | No | 1G,100G | The file size threshold. Format: A number followed by a unit. You can specify a single value or a range of two values separated by a comma. Supported units (case-insensitive): B (bytes), K (KB), M (MB), G (GB), and T (TB). Single value: Backs up only files greater than or equal to the specified size. For example, 1G backs up files 1 GB or larger. Range: min,max . The minimum value must be strictly less than the maximum value. |
@@ -1491,48 +1631,44 @@ This operation uses only common request headers. For more information, see commo
 |---|---|---|---|---|---|
 | FileOperat ionTimeTh reshold | Strin g | Query | No | 1h,1d | The file modification time threshold. Format: A number followed by a unit. You can specify a single value or a range of two values separated by a comma. Supported units: ms (milliseconds), s (seconds), m (minutes), h (hours), d (days), w (weeks), M (months, based on 30 days), and y (years, based on 365 days). Single value: Backs up only files last modified at least the specified duration ago. For example, 3d backs up files last modified three or more days ago (file age ≥ 3 days). Range: min,max . Backs up only files last modified within the specified duration range. For example, 1d,5d backs up files last modified between one and five days ago. Constraints: The m (minute) and M (month) units are case- sensitive. A range must consist of exactly two values. In a range, the minimum value must be less than the maximum value. The numeric part must be an integer. Decimals are not supported. |
 
-| Parame | Typ | Locati | Require |  |  |
+| Parame | Typ | Locati | Require |   |   |
 |---|---|---|---|---|---|
 | ter | e | on | d | Example | Description The maximum OSS |
 | MaxCapac ityGB | Integ er | Query | No | 5120 | capacity in GiB for all copies created by the backup plan. Default value: 1024. |
 | Descriptio n | Strin g | Query | No | TestDescription | The description of the backup plan. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. A dry run checks parameter validity and permissions without creating the backup plan. Default value: false. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1234567890abcdef | The request ID. |
 | PlanId | String | bp-12345678 | The unique ID of the backup plan. |
-
-**Response parameters**
 
 **Examples**
 
 Request example
 
 ```
-&PlanName=MyBackupPlan &SourcePath=/source/path &ScheduleExpression=‘0 0 * * *’ &<common request parameters>
+http(s)://[Endpoint]/?Action=CreateBackupPlan &PlanName=MyBackupPlan &SourceFileSystemId=fs-12345678 &SourcePath=/source/path &ScheduleExpression=‘0 0 * * *’ &<common request parameters>
 ```
 
 Successful response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"1234567890abcdef",
- "PlanId":"bp-12345678"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-| Parame ter name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ReplicaId | Strin g | Query | Yes | replica-12345 | The ID of the replica to manage. |
-| Operation | Strin g | Query | Yes | CANCEL | The operation to perform on the replica. Currently, only CANCEL is supported. |
-| DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. The default value is false . |
+`{`
 
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 1234567890abcdef | The unique ID of the request. |
+```json
+ "RequestId":"1234567890abcdef",
+ "PlanId":"bp-12345678"
+```
 
-#### ControlReplicaTask
+`}`
+
+#### 7.4.10 ControlReplicaTask
 
 Performs an operation on a replica task, such as canceling the task. Use the `ReplicaId` and `Operation` parameters to perform a specific operation on a replica task.
 
@@ -1542,7 +1678,17 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parame ter name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ReplicaId | Strin g | Query | Yes | replica-12345 | The ID of the replica to manage. |
+| Operation | Strin g | Query | Yes | CANCEL | The operation to perform on the replica. Currently, only CANCEL is supported. |
+| DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. The default value is false . |
+
 **Response data**
+
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 1234567890abcdef | The unique ID of the request. |
 
 **Examples**
 
@@ -1554,25 +1700,25 @@ http(s)://[Endpoint]/?Action=ControlReplicaTask &ReplicaId=replica-12345 &Operat
 
 Response example `JSON` format
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| JobId | Strin g | Query | Yes | JOB-1234567890 | The ID of the import job to cancel. |
-| Operation | Strin g | Query | Yes | CANCEL | The type of operation to perform. Currently, only the cancel operation ( CANCEL ) is supported. CANCEL |
-| DryRun | Boole an | Query | No | false | Whether to perform a dry run. The default value is false . |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 1234567890ABCD EF | The unique request ID used to track the request. |
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"1234567890abcdef"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### ControlImportJob
+`{`
 
-Cancels an import job. To perform a cancel operation, set the `Operation` parameter to `CANCEL` . The optional `DryRun` parameter lets you check if the API call can succeed without being executed.
+```json
+ "RequestId":"1234567890abcdef"
+```
+
+`}`
+
+#### 7.4.11 ControlImportJob
+
+Cancels an import job.
+
+**Usage notes**
+
+To perform a cancel operation, set the `Operation` parameter to `CANCEL` . The optional `DryRun` parameter lets you check if the API call can succeed without being executed.
 
 **Request headers**
 
@@ -1580,20 +1726,36 @@ This operation uses only common request headers. For more information, refer to 
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| JobId | Strin g | Query | Yes | JOB-1234567890 | The ID of the import job to cancel. |
+| Operation | Strin g | Query | Yes | CANCEL | The type of operation to perform. Currently, only the cancel operation ( CANCEL ) is supported. CANCEL |
+| DryRun | Boole an | Query | No | false | Whether to perform a dry run. The default value is false . |
+
 **Response data**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 1234567890ABCD EF | The unique request ID used to track the request. |
 
 **Examples**
 
 Request example
 
 ```
-&JobId=JOB-1234567890 &Operation=CANCEL &<common request parameters>
+http(s)://[Endpoint]/?Action=ControlImportJob &JobId=JOB-1234567890 &Operation=CANCEL &<common request parameters>
 ```
 
 Successful response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"1234567890ABCDEF"
-}
 ```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"1234567890ABCDEF"
+```
+
+`}`

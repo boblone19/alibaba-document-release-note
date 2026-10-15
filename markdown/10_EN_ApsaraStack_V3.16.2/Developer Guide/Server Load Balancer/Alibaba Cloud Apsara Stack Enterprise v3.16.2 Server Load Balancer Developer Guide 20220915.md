@@ -3,16 +3,141 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Load Balancer Devel
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 283
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Load Balancer Developer Guide 20220915.pdf"
+source_pdf: "7f52a119f994b871_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Load Balancer Developer Guide 20220915.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Load%20Balancer%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Load Balancer Developer Guide
 
-## Getting Started
+## Table of Contents
 
-### Apsara Stack documentation
+- 1 Getting Started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Call an API operation
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View information about an API operation
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain STS credentials
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain the endpoint of the SLB API
+  - 2.7 Obtain the SLB SDK
+- 3 Call examples for SDK for Java
+  - 3.1 Quick start
+  - 3.2 Work with SLB SDK for Java
+    - 3.2.1 Install SLB SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Call SLB SDK for Java
+    - 3.2.4 Handle errors
+- 4 Use SLB SDK for Python to make API calls
+  - 4.1 Quick start
+  - 4.2 Work with SLB SDK for Python
+    - 4.2.1 Install SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Call SLB SDK for Python
+    - 4.2.5 Troubleshooting
+- 5 Use SLB SDK for Go to make API calls
+  - 5.1 Quick start
+  - 5.2 Work with SLB SDK for Go
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Call SLB SDK for Go
+    - 5.2.4 Troubleshooting
+- 6 API Reference
+  - 6.1 Make API requests
+  - 6.2 RAM authentication
+  - 6.3 Common parameters
+  - 6.4 SLB instance
+    - 6.4.1 CreateLoadBalancer
+    - 6.4.2 DeleteLoadBalancer
+    - 6.4.3 ModifyLoadBalancerInstanceSpec
+    - 6.4.4 ModifyLoadBalancerInternetSpec
+    - 6.4.5 SetLoadBalancerName
+    - 6.4.6 SetLoadBalancerStatus
+    - 6.4.7 DescribeLoadBalancerAttribute
+    - 6.4.8 DescribeLoadBalancers
+    - 6.4.9 DescribeRegions
+    - 6.4.10 DescribeZones
+  - 6.5 Listeners
+    - 6.5.1 TCP listeners
+      - 6.5.1.1 CreateLoadBalancerTCPListener
+      - 6.5.1.2 SetLoadBalancerTCPListenerAttribute
+      - 6.5.1.3 DescribeLoadBalancerTCPListenerAttribute
+    - 6.5.2 UDP listeners
+      - 6.5.2.1 CreateLoadBalancerUDPListener
+      - 6.5.2.2 SetLoadBalancerUDPListenerAttribute
+      - 6.5.2.3 DescribeLoadBalancerUDPListenerAttribute
+    - 6.5.3 HTTP listeners
+      - 6.5.3.1 CreateLoadBalancerHTTPListener
+      - 6.5.3.2 SetLoadBalancerHTTPListenerAttribute
+      - 6.5.3.3 DescribeLoadBalancerHTTPListenerAttribute
+    - 6.5.4 HTTPS listeners
+      - 6.5.4.1 CreateLoadBalancerHTTPSListener
+      - 6.5.4.2 SetLoadBalancerHTTPSListenerAttribute
+      - 6.5.4.3 DescribeLoadBalancerHTTPSListenerAttribute
+      - 6.5.4.4 DescribeHealthStatus
+    - 6.5.5 Access control
+      - 6.5.5.1 SetListenerAccessControlStatus
+      - 6.5.5.2 DescribeListenerAccessControlAttribute
+      - 6.5.5.3 AddListenerWhiteListItem
+      - 6.5.5.4 RemoveListenerWhiteListItem
+      - 6.5.5.5 CreateAccessControlList
+      - 6.5.5.6 DeleteAccessControlList
+      - 6.5.5.7 DescribeAccessControlLists
+      - 6.5.5.8 DescribeAccessControlListAttribute
+      - 6.5.5.9 SetAccessControlListAttribute
+      - 6.5.5.10 AddAccessControlListEntry
+      - 6.5.5.11 RemoveAccessControlListEntry
+    - 6.5.6 DeleteLoadBalancerListener
+    - 6.5.7 StopLoadBalancerListener
+    - 6.5.8 StartLoadBalancerListener
+  - 6.6 Server certificates
+    - 6.6.1 UploadServerCertificate
+    - 6.6.2 DeleteServerCertificate
+    - 6.6.3 DescribeServerCertificates
+    - 6.6.4 SetServerCertificateName
+    - 6.6.5 UploadCACertificate
+    - 6.6.6 DeleteCACertificate
+    - 6.6.7 DescribeCACertificates
+    - 6.6.8 SetCACertificateName
+  - 6.7 Backend servers
+    - 6.7.1 AddBackendServers
+    - 6.7.2 RemoveBackendServers
+    - 6.7.3 SetBackendServers
+  - 6.8 vServer groups
+    - 6.8.1 CreateVServerGroup
+    - 6.8.2 SetVServerGroupAttribute
+    - 6.8.3 AddVServerGroupBackendServers
+    - 6.8.4 RemoveVServerGroupBackendServers
+    - 6.8.5 ModifyVServerGroupBackendServers
+    - 6.8.6 DeleteVServerGroup
+    - 6.8.7 DescribeVServerGroups
+    - 6.8.8 DescribeVServerGroupAttribute
+  - 6.9 Primary/secondary server groups
+    - 6.9.1 CreateMasterSlaveServerGroup
+    - 6.9.2 DeleteMasterSlaveServerGroup
+    - 6.9.3 DescribeMasterSlaveServerGroups
+    - 6.9.4 DescribeMasterSlaveServerGroupAttribute
+  - 6.10 Tags
+    - 6.10.1 AddTags
+    - 6.10.2 DescribeTags
+    - 6.10.3 RemoveTags
+  - 6.11 Error codes
+- 7 Appendix
+  - 7.1 Call the ASAPI gateway
+  - 7.2 Use ASAPI to make API calls
+    - 7.2.1 Obtain an endpoint of ASAPI
+    - 7.2.2 Obtain the endpoint of the ASAPI
+    - 7.2.3 Obtain Apsara Stack SDKs
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting Started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to view the references of an Apsara Stack service when you call Apsara Stack API. Workflow The following figure shows how to find your desired information in the Apsara Stack documentation. Prerequisites The Apsara Stack version is obtained from O&M personnel or an operations administrator. Procedure You can go to the Apsara Stack documentation center to view the documentation of an Apsara Stack service.
 1. Go to the Apsara Stack documentation center.
@@ -21,7 +146,7 @@ This topic describes how to view the references of an Apsara Stack service when 
 4. In the left-side navigation pane, select the Apsara Stack service.
 5. In the upper-right corner of the documentation section, click View Det ails or Download PDF.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same user experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway. Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, and Obtain ASAPI SDK. Procedure
 1. Obtain AccessKey credentials.
@@ -35,9 +160,9 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 5. Obtain the endpoint of the cloud service.
 6. Obtain an SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar of your browser
@@ -49,7 +174,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 in the following scenarios: This is your first time logging on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View information about an API
+### 2.2 View information about an API operation
 
 operation This topic describes how to view information about an API operation. The information includes service names, API operation names, and API versions. The information is required when you use an SDK to call API operations. Context The API operations on the API Directory page are for reference only. For information about how to call API operations, see the developer guide of the corresponding cloud service. If the information on the API Directory page is different from that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
 1. Log on to the API Tool console.
@@ -58,7 +183,7 @@ operation This topic describes how to view information about an API operation. T
 keyword of an operation name in the search box, and then click Search.
 4. View and record the service name, API operation name, and API version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You only need to provide one type of AccessKey credential for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -82,7 +207,7 @@ to obtain.
 5. Click Management AccessKey on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain STS credentials
+### 2.4 Obtain STS credentials
 
 This topic describes how to use Security Token Service (STS) credentials to make API calls. Background information Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. You can use STS credentials to make API calls. To call Apsara Stack APIs, you must obtain an AccessKey ID, an AccessKey secret, and a security token assigned by STS. For more information, see STS. Procedure
 1. Obtain the `Resource Access Management (RAM) role` .
@@ -193,7 +318,7 @@ skey>", "<yourStsAccessSecret>");
 
 `}` `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common header parameters
 
 header parameters You must set header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the values of some response parameters after you call API operations. Header parameters
 
@@ -224,7 +349,7 @@ Response parameters The following response parameters are returned by default wh
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of the SLB
+### 2.6 Obtain the endpoint of the SLB API
 
 API This topic describes how to obtain the endpoint of the Server Load Balancer (SLB) API. Background information To use the POP gateway to call Apsara Stack API (ASAPI) operations, you must obtain a service endpoint. You can obtain a service endpoint from Apsara Stack onsite O&M engineers. You can also perform the following operations to obtain the endpoint: Procedure
 1. Log on to Apsara Infrastructure Management.
@@ -236,7 +361,7 @@ icon next to Service and search for `SLB` .
 5. Find the `slb-yaochi` service, right-click the Service Regist rat ion column, and then select Show
 More from the shortcut menu. On the Det ails page, view the slb.openapi.endpoint value, which is the `endpoint` .
 
-### Obtain the SLB SDK
+### 2.7 Obtain the SLB SDK
 
 When you call API operations of a cloud service in Apsara Stack by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK. This topic describes how to obtain Alibaba Cloud SDK. Background information To use Server Load Balancer (SLB) features, you must install both the SLB SDK and the Alibaba Cloud core library. For example, to use SLB SDK for Java, you must download `aliyun-java-sdk-sl` and
 
@@ -246,9 +371,9 @@ When you call API operations of a cloud service in Apsara Stack by using the Por
 
 The SLB SDK encapsulates the API released on May 15, 2014. The SDK identifies callers based on their AccessKey pairs and provides features such as automatic signing to allow you to create and manage resources by calling API operations. Alibaba Cloud SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. We recommend that you use the SDK core library that is provided on the Alibaba Cloud website. The SDK core library is ideal for all cloud services and is compatible with Apsara Stack. Instructions Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Quick start
+### 3.1 Quick start
 
 This topic describes how to obtain and use the Server Load Balancer (SLB) SDK for Java. Prerequisites An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. For more information about how to obtain the endpoint of the SLB API, see Obtain the endpoint of the SLB API. Java Development Kit (JDK) 1.8 or later is installed. SDKs for Java provided by Alibaba Cloudrequire JDK 1.8or later. Install Alibaba Cloud SDK for Java If you use Apache Maven to manage a Java project, import the JAR file to the pom.xml file of the project. To use the SLB SDK, you must install the SDK core library and the SLB SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, the SLB SDK uses version 3.3.8. Procedure To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
@@ -336,9 +461,9 @@ rinted.
 
 `}` `}` `}`
 
-### Work with SLB SDK for Java
+### 3.2 Work with SLB SDK for Java
 
-#### Install SLB SDK for Java
+#### 3.2.1 Install SLB SDK for Java
 
 This topic describes how to install Server Load Balancer (SLB) SDK for Java and how to use the SDK to make API calls. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. SDK for Java Before you start, you must install the core library of Apsara Stack SDK for Java and SLB SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use the SDK for Java 3.3.9. To use SLB SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Apsara Stack SDK.
 
@@ -357,7 +482,7 @@ This topic describes how to install Server Load Balancer (SLB) SDK for Java and 
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Not e Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -370,7 +495,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Not e Replace the preceding variables with your actual information. Remove the angle brackets (<>) when you specify the parameters.
 
-#### Call SLB SDK for Java
+#### 3.2.3 Call SLB SDK for Java
 
 This topic describes how to call SLB SDK for Java. SDK for Java Procedure
 1. Create an AcsClient.
@@ -392,7 +517,7 @@ DescribeLoadBalancersRequest request = new DescribeLoadBalancersRequest(); // Se
 DescribeLoadBalancersResponse response = client.getAcsResponse(request); System.out.println(JSON.toJSONString(response));
 ```
 
-#### Handle errors
+#### 3.2.4 Handle errors
 
 SDK for Java Server Load Balancer (SLB) SDK for Java returns error codes and messages when errors occur on the server side or the SDK side. You do not need to handle the errors returned by the SDK. You need to only handle the errors on the server side. `ServerException` indicates a server error. `ClientException` indicates an error returned by the SDK. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -423,11 +548,11 @@ try {
 
 `}` thon to make API calls
 
-## Use SLB SDK for Python to
+## 4 Use SLB SDK for Python to make API calls
 
 make API calls
 
-### Quick start
+### 4.1 Quick start
 
 This topic describes how to obtain and use Server Load Balancer (SLB) SDK for Python. Prerequisites An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. For more information, see Obtain an AccessKey pair. The endpoint of the SLB API is obtained. For more information, see Obtain the endpoint of the SLB API. Install SLB SDK for Python
 1. Install the SDK core library.
@@ -477,9 +602,9 @@ thon to make API calls
 print(str(response, encoding='utf-8'))
 ```
 
-### Work with SLB SDK for Python
+### 4.2 Work with SLB SDK for Python
 
-#### Install SDK for Python
+#### 4.2.1 Install SDK for Python
 
 This topic describes how to install and use Server Load Balancer (SLB) SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip. Not e To use the SDK of an Apsara Stack service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use SLB SDK for Python, you must install the SDK core library for Python and SLB SDK for Python. If you use Python 2.x, run the following command to install the core library:
 
@@ -505,7 +630,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-slb==3.3.8
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. thon to make API calls If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Not ice Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -513,7 +638,7 @@ When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 SDK for Python allows you to send API requests by using HTTP and HTTPS. You can specify a protocol (HTTP or HTTPS) for a specific request, or set a global default protocol. Not e The default protocol of the service takes precedence over the global default protocol. Add OpenSSL support OpenSSL support in Python is required for sending HTTPS requests by using SDK for Python. To use Alibaba Cloud SDK for Python to send requests over HTTPS, you need to add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later. Run the `python -c "import ssl"` command to check whether your Python environment supports OpenSSL. If the error message `ImportError: No module named ssl` does not appear, OpenSSL is supported. If OpenSSL is not supported, run the following command to install it:
 
@@ -535,7 +660,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Call SLB SDK for Python
+#### 4.2.4 Call SLB SDK for Python
 
 This topic describes how to call Server Load Balancer (SLB) SDK for Python. thon to make API calls Procedure
 1. Import SLB SDK for Python.
@@ -565,7 +690,7 @@ response = client.do_action_with_exception(request) // Print the required return
 print(str(response, encoding='utf-8'))
 ```
 
-#### Troubleshooting
+#### 4.2.5 Troubleshooting
 
 thon to make API calls The Python SDK returns error messages when errors occur on the server side or the SDK side. These errors contain detailed error information, including the error code and the error message. You do not need to handle the errors returned by the SDK. You only need to handle server errors based on the error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -588,11 +713,11 @@ except ServerException as e:
 
 to make API calls
 
-## Use SLB SDK for Go to make
+## 5 Use SLB SDK for Go to make API calls
 
 API calls
 
-### Quick start
+### 5.1 Quick start
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Server Load Balancer (SLB) SDK for Go. Prerequisites An Apsara Stack tenant account and an AccessKey pair, which consists of an AccessKey ID and an AccessKey secret, are obtained. For more information about how to obtain an AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. The endpoint of the SLB API is obtained. For more information, see Obtain the endpoint of the SLB API. Install the core package of Apsara Stack SDK for Go Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -798,9 +923,9 @@ to make API calls `s.`
 request.Scheme = "HTTPS"
 ```
 
-### Work with SLB SDK for Go
+### 5.2 Work with SLB SDK for Go
 
-#### Install the core package of SDK for Go
+#### 5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -808,7 +933,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -818,7 +943,7 @@ client, err := slb.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>",
 
 to make API calls Not e In the preceding code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Call SLB SDK for Go
+#### 5.2.3 Call SLB SDK for Go
 
 This topic describes how to call Server Load Balancer (SLB) SDK for Go.
 1. Import SLB SDK for Go.
@@ -997,7 +1122,7 @@ request := slb.CreateDescribeLoadBalancersRequest()
 response, err := client.DescribeLoadBalancers(request)
 ```
 
-#### Troubleshooting
+#### 5.2.4 Troubleshooting
 
 When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned if an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. Troubleshooting to make API calls You can use the following code to handle errors:
 
@@ -1056,9 +1181,9 @@ response, err := client.DescribeLoadBalancers(request) if serverError, ok := err
 
 `}`
 
-## API Reference
+## 6 API Reference
 
-### Make API requests
+### 6.1 Make API requests
 
 To call a Server Load Balancer (SLB) API operation, you must send an HTTP GET request to the endpoint of the SLB API. You must add the request parameters that correspond to the API operation being called. After you call the API operation, the system returns a response. The request and response are encoded in UTF-8. Request syntax SLB API operations use the RPC protocol. You can call SLB API operations by sending HTTP GET requests. The request syntax is:
 
@@ -1104,7 +1229,7 @@ CT9X0VtwR86fNWSnsc6v8YG****E=
 http://slb.example.com/?Action=DescribeLoadBalancers &TimeStamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2014-05-15 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.2 RAM authentication
 
 Before calling an SLB API as a RAM user, you must use an Alibaba Cloud account to create an authorization policy to assign permissions to the RAM user. In the authorization policy, you must use an Alibaba Cloud Resource Name (ARN) as the unique identifier of the resource. Available SLB resources The following table describes the ARN format for different types of SLB resources.
 
@@ -1251,7 +1376,7 @@ $regionid/accoutid/servercertificateId is the resource ID. `*` indicates the cor
 | ModifyVServerGroupBackendServers | rid |   |   |
 |   | acs:ecs:$regionid:$accountid:instance/$instanceid |   |   |
 
-### Common parameters
+### 6.3 Common parameters
 
 Common request parameters Common request parameters are request parameters that you must use when you call any API. Common request parameters
 
@@ -1294,9 +1419,9 @@ JSON format `{`
 
 `}`
 
-### SLB instance
+### 6.4 SLB instance
 
-#### CreateLoadBalancer
+#### 6.4.1 CreateLoadBalancer
 
 Creates a Server Load Balancer (SLB) instance. Before you call this operation, take note of the following items: Before you create an SLB instance, call the DescribeAvailableResource operation to query the resources available for purchase in the zone where you want to create the SLB instance. You are charged for the SLB instances that you create. For more information, see Create an SLB instance. If you do not set LoadBalancerSpec, a shared-resource SLB instance is created. We recommend that you set the LoadBalancerSpec parameter to specify the specification of the SLB instance. Request parameters
 
@@ -1372,7 +1497,7 @@ Sample success responses `XML` format
 {"LoadBalancerName":"abc", "VpcId":"vpc-25dvzy9*****", "Address":"42.250.**.**", "RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710", "NetworkType":"classic", "AddressIPVersion":"ipv4", "VSwitchId":"vsw-255ecr***", "LoadBalancerId":"lb-hddhfjg*******"}
 ```
 
-#### DeleteLoadBalancer
+#### 6.4.2 DeleteLoadBalancer
 
 Deletes a pay-as-you-go Server Load Balancer (SLB) instance. Not e After you delete an SLB instance, the listeners configured for the SLB instance and the tags added to the SLB instance are deleted. Request parameters
 
@@ -1430,7 +1555,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyLoadBalancerInstanceSpec
+#### 6.4.3 ModifyLoadBalancerInstanceSpec
 
 Modifies the specification of a Server Load Balancer (SLB) instance. Request parameters
 
@@ -1472,7 +1597,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### ModifyLoadBalancerInternetSpec
+#### 6.4.4 ModifyLoadBalancerInternetSpec
 
 Modifies the billing method of an Internet-facing Server Load Balancer (SLB) instance. You can modify the billing method of an Internet-facing SLB instance in the following ways: Change the bandwidth limit of a pay-by-bandwidth SLB instance. The new bandwidth limit immediately takes effect. Change the billing method of an SLB instance from pay-by-data-transfer to pay-by-bandwidth. The new billing method takes effect at 00:00 the following day. Change the billing method of an SLB instance from pay-by-bandwidth to pay-by-data-transfer. The new billing method takes effect at 00:00 the following day. Request parameters
 
@@ -1513,7 +1638,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SetLoadBalancerName
+#### 6.4.5 SetLoadBalancerName
 
 Modifies the name of a Server Load Balancer (SLB) instance. Request parameters
 
@@ -1551,7 +1676,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SetLoadBalancerStatus
+#### 6.4.6 SetLoadBalancerStatus
 
 Sets the state of a Server Load Balancer (SLB) instance. Request parameters
 
@@ -1594,7 +1719,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeLoadBalancerAttribute
+#### 6.4.7 DescribeLoadBalancerAttribute
 
 Queries detailed information about a specified Server Load Balancer (SLB) instance. Request parameters
 
@@ -1778,7 +1903,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeLoadBalancers
+#### 6.4.8 DescribeLoadBalancers
 
 Queries Server Load Balancer (SLB) instances. Request parameters
 
@@ -1915,7 +2040,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeRegions
+#### 6.4.9 DescribeRegions
 
 Queries regions. Request parameters
 
@@ -1975,7 +2100,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidParameter | Illegal parameter, query.namespace is not auth. | The error message returned because you are unauthorized to perform the operation. Acquire the permissions and try again. |
 
-#### DescribeZones
+#### 6.4.10 DescribeZones
 
 Queries zones in a specified region. Request parameters
 
@@ -2247,11 +2372,11 @@ Id"
 |---|---|---|---|
 | 400 | InvalidParameter | Illegal parameter, query.namespace is not auth. | The error message returned because you are unauthorized to perform the operation. Request the permissions and try again. |
 
-### Listeners
+### 6.5 Listeners
 
-#### TCP listeners
+#### 6.5.1 TCP listeners
 
-##### CreateLoadBalancerTCPListener
+##### 6.5.1.1 CreateLoadBalancerTCPListener
 
 Creates a TCP listener. Not e Newly created listeners are in the Stopped state. After a listener is created, you can call the `StartLoadBalancerListener` operation to enable the listener to forward traffic. Request parameters
 
@@ -2325,7 +2450,7 @@ Error codes
 |---|---|---|---|
 | 400 | Abs.VServerGroupId AndMasterSlaveServ erGroupId.MissMatch | The parameters VServerGroupId or MasterSlaveServerGroupId miss match. | The error message returned because the VServerGroupId parameter or the MasterSlaveServerGroupId parameter does not match. |
 
-##### SetLoadBalancerTCPListenerAttribute
+##### 6.5.1.2 SetLoadBalancerTCPListenerAttribute
 
 Modifes the configurations of a TCP listener. Request parameters
 
@@ -2399,7 +2524,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeLoadBalancerTCPListenerAttribute
+##### 6.5.1.3 DescribeLoadBalancerTCPListenerAttribute
 
 Queries the configurations of a TCP listener. Request parameters
 
@@ -2511,9 +2636,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### UDP listeners
+#### 6.5.2 UDP listeners
 
-##### CreateLoadBalancerUDPListener
+##### 6.5.2.1 CreateLoadBalancerUDPListener
 
 Creates a UDP listener. Not e You cannot view the source IP addresses of network traffic if you create UDP listeners for a Server Load Balancer (SLB) instance that is deployed in a classic network. In addition, newly created listeners are in the st opped state. After a listener is created, you must call the StartLoadBalancerListener operation to enable the listener. This way, the listener can forward network traffic. Request parameters
 
@@ -2580,7 +2705,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | Abs.VServerGroupId AndMasterSlaveServ erGroupId.MissMatch | The parameters VServerGroupId or MasterSlaveServerGroupId miss match. | The error message returned because the VServerGroupId parameter or the MasterSlaveServerGroupId parameter does not match. |
 
-##### SetLoadBalancerUDPListenerAttribute
+##### 6.5.2.2 SetLoadBalancerUDPListenerAttribute
 
 Modifies the configurations of a UDP listener. Request parameters
 
@@ -2649,7 +2774,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeLoadBalancerUDPListenerAttribute
+##### 6.5.2.3 DescribeLoadBalancerUDPListenerAttribute
 
 Queries the configurations of a UDP listener. Request parameters
 
@@ -2742,9 +2867,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### HTTP listeners
+#### 6.5.3 HTTP listeners
 
-##### CreateLoadBalancerHTTPListener
+##### 6.5.3.1 CreateLoadBalancerHTTPListener
 
 Creates an HTTP listener. Not e Newly created listeners are in the st opped state. After a listener is created, you can call the `StartLoadBalancerListener` operation to enable the listener to forward traffic. Request parameters
 
@@ -2859,7 +2984,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### SetLoadBalancerHTTPListenerAttribute
+##### 6.5.3.2 SetLoadBalancerHTTPListenerAttribute
 
 Modifies the configurations of an HTTP listener. Request parameters
 
@@ -2956,7 +3081,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeLoadBalancerHTTPListenerAttribute
+##### 6.5.3.3 DescribeLoadBalancerHTTPListenerAttribute
 
 Queries the configurations of an HTTP listener. Request parameters
 
@@ -3060,9 +3185,9 @@ Sample success responses `XML` format
 n","StickySession":"on","ForwardPort":"80","AclStatus":"off","HealthyThreshold":"4","XForwa rdedFor":"on","HealthCheckDomain":"www.example.com","AclType":"white","XForwardedFor_proto" :"on"}
 ```
 
-#### HTTPS listeners
+#### 6.5.4 HTTPS listeners
 
-##### CreateLoadBalancerHTTPSListener
+##### 6.5.4.1 CreateLoadBalancerHTTPSListener
 
 Creates an HTTPS listener. Not e Newly created listeners are in the stopped state. After a listener is created, call the `StartLoadBalancerListener` operation to enable the listener to forward network traffic. Request parameters
 
@@ -3242,7 +3367,7 @@ Sample responses `XML` format
 | 400 | ListenerNotSupport Rule | You cannot create a rule for the specified listener. | The error message returned because the specified listener does not allow you to create forwarding rules. |
 | 400 | Mismatch.SlbSpecTy peAndListenerProto col | The SlbSpecType and ListenerProtocol are mismatched. | The error message returned because the specified instance type and listener type do not match. |
 
-##### SetLoadBalancerHTTPSListenerAttribute
+##### 6.5.4.2 SetLoadBalancerHTTPSListenerAttribute
 
 Modifies the configurations of an HTTPS listener. Request parameters
 
@@ -3347,7 +3472,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeLoadBalancerHTTPSListenerAttribute
+##### 6.5.4.3 DescribeLoadBalancerHTTPSListenerAttribute
 
 Queries the configurations of an HTTPS listener. Request parameters
 
@@ -3484,7 +3609,7 @@ cateId>
 
 `}`
 
-##### DescribeHealthStatus
+##### 6.5.4.4 DescribeHealthStatus
 
 Queries the health status of backend servers. Request parameters
 
@@ -3574,9 +3699,9 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### Access control
+#### 6.5.5 Access control
 
-##### SetListenerAccessControlStatus
+##### 6.5.5.1 SetListenerAccessControlStatus
 
 Enables or disables the whitelist of a specified listener. Request parameters
 
@@ -3618,7 +3743,7 @@ Sample success responses `XML` format
 {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"}
 ```
 
-##### DescribeListenerAccessControlAttribute
+##### 6.5.5.2 DescribeListenerAccessControlAttribute
 
 Queries the whitelist configurations of a listener. Request parameters
 
@@ -3662,7 +3787,7 @@ Sample success responses `XML` format
 {"AccessControlStatus":"open_white_list", "RequestId":"365F4154-92F6-4AE4-92F8-7FF34B540710", "SourceItems":"192.168.0.1"}
 ```
 
-##### AddListenerWhiteListItem
+##### 6.5.5.3 AddListenerWhiteListItem
 
 Adds IP addresses to the whitelist of a listener. Request parameters
 
@@ -3703,7 +3828,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-##### RemoveListenerWhiteListItem
+##### 6.5.5.4 RemoveListenerWhiteListItem
 
 Removes IP addresses from the whitelist of a listener. Request parameters
 
@@ -3743,7 +3868,7 @@ Sample success responses `XML` format
 {"RequestId":" CEF72CEB-54B6-4AE8-B225-F876FF7BA984"}
 ```
 
-##### CreateAccessControlList
+##### 6.5.5.5 CreateAccessControlList
 
 Creates an access control list (ACL). You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits: Each Apsara Stack tenant account can create at most 50 ACLs in a region. The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL is 50. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is 300. The maximum number of ACLs that can be associated with a listener is 50. Request parameters
 
@@ -3792,7 +3917,7 @@ Error codes
 | 400 | InvalidResourceGrou pId.NotFound | The specified ResourceGroupId is not found. | The error message returned because the specified resource group does not exist. |
 | 400 | ResourceInConfigurin g.Acl | The specified resource is configuring, please try again later. | The error message returned because the specified ACL is being configured. Try again later. |
 
-##### DeleteAccessControlList
+##### 6.5.5.6 DeleteAccessControlList
 
 Deletes an access control list (ACL). You can delete an ACL only if it is not associated with a listener. Request parameters
 
@@ -3837,7 +3962,7 @@ Sample responses `XML` format
 |---|---|---|---|
 | 400 | OperationFailed.AclB indedWithVip | The ACL has binded with vip. | The error message returned because the ACL is associated with a listener and the operation failed. |
 
-##### DescribeAccessControlLists
+##### 6.5.5.7 DescribeAccessControlLists
 
 Queries network access control lists (ACLs). Request parameters
 
@@ -3929,7 +4054,7 @@ Sample responses `XML` format
 |---|---|---|---|
 | 400 | InvalidResourceGrou pId.NotFound | The specified ResourceGroupId is not found. | The error message returned because the specified resource group does not exist. |
 
-##### DescribeAccessControlListAttribute
+##### 6.5.5.8 DescribeAccessControlListAttribute
 
 Queries the configurations of a network access control list (ACL). Request parameters
 
@@ -3994,7 +4119,7 @@ Sample responses `XML` format
 clEntrys":{"AclEntry":[{"AclEntryComment":"Network ACL entry","AclEntryIP":"192.168.0.1"}]} ,"ResourceGroupId":"rg-******************","RequestId":"C9906A1D-86F7-4C9C-A369-54DA42EF206 A","AddressIPVersion":"ipv4","AclId":"acl-bp1l0kk4gxce43kzet04s","RelatedListeners":{"Relat edListener":[{"ListenerPort":"443","AclType":"white","LoadBalancerId":"lb-bp13jaf5qli5xmgl1 miup","Protocol":"https"}]},"AclName":"doctest"}{"A
 ```
 
-##### SetAccessControlListAttribute
+##### 6.5.5.9 SetAccessControlListAttribute
 
 Changes the name of a network access control list (ACL). Request parameters
 
@@ -4037,7 +4162,7 @@ Sample responses `XML` format
 
 `}`
 
-##### AddAccessControlListEntry
+##### 6.5.5.10 AddAccessControlListEntry
 
 Adds IP addresses to an access control list (ACL). Each ACL can contain one or more IP addresses or CIDR blocks. The limits on ACLs are: The maximum number of IP addresses that an Apsara Stack tenant account can add to an ACL in each call is 50. The maximum number of IP addresses or CIDR blocks that can be added to an ACL is 300. Request parameters
 
@@ -4085,7 +4210,7 @@ Sample responses `XML` format
 | 503 | ServiceUnavailable | Service is unavailable now. | The error message returned because the service is unavailable. |
 | 400 | AclEntryExceedLimit | The maximum number of ACL entries is exceeded. | The error message returned because the number of specified IP addresses or CIDR blocks exceeds the upper limit. |
 
-##### RemoveAccessControlListEntry
+##### 6.5.5.11 RemoveAccessControlListEntry
 
 Removes IP addresses from an access control list (ACL). Request parameters
 
@@ -4124,7 +4249,7 @@ Sample responses `XML` format
 
 `}`
 
-#### DeleteLoadBalancerListener
+#### 6.5.6 DeleteLoadBalancerListener
 
 Deletes a listener. Not e You can delete only listeners that are in the st opped or running state. Request parameters
 
@@ -4165,7 +4290,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StopLoadBalancerListener
+#### 6.5.7 StopLoadBalancerListener
 
 Disables a listener. When you call this operation, take note of the following items: If the operation is successful, the listener switches to the Stopped state. You cannot perform the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state. Not e After a listener is disabled, it stops forwarding requests to the associated backend servers. This may cause service interruptions. Proceed with caution. Request parameters
 
@@ -4207,7 +4332,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StartLoadBalancerListener
+#### 6.5.8 StartLoadBalancerListener
 
 Enables a listener. When you call this operation, take note of the following items: You can call the operation only when the listener is in the Stopped state. If the operation is successful, the state of the listener changes to Starting. You cannot call the operation when the Server Load Balancer (SLB) instance to which the listener belongs is in the Locked state. Request parameters
 
@@ -4246,9 +4371,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Server certificates
+### 6.6 Server certificates
 
-#### UploadServerCertificate
+#### 6.6.1 UploadServerCertificate
 
 Uploads a server certificate. You can upload only one server certificate and its private key in each request. The request is successful only when the server certificate and its private key are both uploaded. If the server certificate or its private key is not uploaded, the request fails. After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your account are returned. Request parameters
 
@@ -4323,7 +4448,7 @@ teId> </UploadServerCertificateResponse>
 
 `}` `}`
 
-#### DeleteServerCertificate
+#### 6.6.2 DeleteServerCertificate
 
 Deletes a server certificate. Not e You cannot delete a server certificate that is in use. Request parameters
 
@@ -4366,7 +4491,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeServerCertificates
+#### 6.6.3 DescribeServerCertificates
 
 Queries server certificates in a specified region. Not e For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned. Request parameters
 
@@ -4501,7 +4626,7 @@ f:0d",
 
 `}` `]` `}` `}` `}`
 
-#### SetServerCertificateName
+#### 6.6.4 SetServerCertificateName
 
 Sets the name of a server certificate. Request parameters
 
@@ -4541,7 +4666,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### UploadCACertificate
+#### 6.6.5 UploadCACertificate
 
 Uploads a CA certificate. You can upload only one CA certificate in each call. After a CA certificate is uploaded, the ID, name, and fingerprint of the certificate are returned. Request parameters
 
@@ -4596,7 +4721,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DeleteCACertificate
+#### 6.6.6 DeleteCACertificate
 
 Deletes a CA certificate. Not e You cannot delete a CA certificate that is in use. Request parameters
 
@@ -4638,7 +4763,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeCACertificates
+#### 6.6.7 DescribeCACertificates
 
 Queries CA certificates. Not e For security reasons, only fingerprints and names of the CA certificates are returned, the content of the CA certificates is not returned. Request parameters
 
@@ -4697,7 +4822,7 @@ Sample success responses `XML` format
 
 `}` `}` `}`
 
-#### SetCACertificateName
+#### 6.6.8 SetCACertificateName
 
 Sets the name of a CA certificate. Request parameters
 
@@ -4741,9 +4866,9 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### Backend servers
+### 6.7 Backend servers
 
-#### AddBackendServers
+#### 6.7.1 AddBackendServers
 
 Adds backend servers. Not e If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned. Request parameters
 
@@ -4853,7 +4978,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### RemoveBackendServers
+#### 6.7.2 RemoveBackendServers
 
 Removes backend servers. Not e If the backend server that you want to remove does not belong to the specified Server Load Balancer (SLB) instance, the request fails. However, the system does not report an error. Request parameters
 
@@ -4937,7 +5062,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}` `}`
 
-#### SetBackendServers
+#### 6.7.3 SetBackendServers
 
 Sets the weights of backend servers. Request parameters
 
@@ -5039,9 +5164,9 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}` `}`
 
-### vServer groups
+### 6.8 vServer groups
 
-#### CreateVServerGroup
+#### 6.8.1 CreateVServerGroup
 
 Creates a vServer group and adds backend servers to the vServer group. Request parameters
 
@@ -5143,7 +5268,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### SetVServerGroupAttribute
+#### 6.8.2 SetVServerGroupAttribute
 
 Modifies the configurations of a vServer group. You can call the operation to modify only configurations such as the weight and port of a backend server. If you want to modify backend servers in a specified vServer group, call the `ModifyVServerGroupBack` `endServers` operation. If you want to add backend servers, call the `AddVServerGroupBackendServers` operation. Request parameters
 
@@ -5243,7 +5368,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### AddVServerGroupBackendServers
+#### 6.8.3 AddVServerGroupBackendServers
 
 Adds backend servers to a specified vServer group. Request parameters
 
@@ -5332,7 +5457,7 @@ Sample success responses `XML` format
 
 `]` `}`
 
-#### RemoveVServerGroupBackendServers
+#### 6.8.4 RemoveVServerGroupBackendServers
 
 Removes a backend server from a specified vServer group. Not e If one or more backend servers specified by BackendServers do not exist in the vServer group, the backend servers are ignored and no error message is returned. Request parameters
 
@@ -5406,7 +5531,7 @@ Sample success responses `XML` format
 
 `}` `}` `}` `}`
 
-#### ModifyVServerGroupBackendServers
+#### 6.8.5 ModifyVServerGroupBackendServers
 
 Replaces backend servers in a specified vServer group. You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the `SetVServerGroupAttribute` operation. Request parameters
 
@@ -5513,7 +5638,7 @@ Sample success responses `XML` format
 
 `}` `}` `}`
 
-#### DeleteVServerGroup
+#### 6.8.6 DeleteVServerGroup
 
 Deletes a vServer group. Request parameters
 
@@ -5554,7 +5679,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeVServerGroups
+#### 6.8.7 DescribeVServerGroups
 
 Queries the vServer groups of a Server Load Balancer (SLB) instance. Request parameters
 
@@ -5688,7 +5813,7 @@ oupName>
 
 `}`
 
-#### DescribeVServerGroupAttribute
+#### 6.8.8 DescribeVServerGroupAttribute
 
 Queries detailed information about a vServer group. Request parameters
 
@@ -5751,9 +5876,9 @@ Sample success responses `XML` format
 {"VServerGroupId":"rsp-cige6*****","RequestId":"9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C","VSer verGroupName":"Group1","BackendServers":[{"ServerType":"ecs","Type":"ecs","ServerId":"vm-23 3","Description":"vServerGroupDescription.","VpcId":"vpc-**","Port":"90","ServerIp":"192.16 8.*.*","Weight":"100"}]}
 ```
 
-### Primary/secondary server groups
+### 6.9 Primary/secondary server groups
 
-#### CreateMasterSlaveServerGroup
+#### 6.9.1 CreateMasterSlaveServerGroup
 
 Creates a primary/secondary server group. A primary/secondary server group contains only two Elastic Compute Service (ECS) instances. One of the ECS instances serves as the primary server. The other ECS instance serves as the secondary server. Request parameters
 
@@ -5895,7 +6020,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | RealServerPortNotSu pport | Real server port not support. | The error message returned because the specified port of the backend server is invalid. |
 
-#### DeleteMasterSlaveServerGroup
+#### 6.9.2 DeleteMasterSlaveServerGroup
 
 Deletes a specified primary/secondary server group. Request parameters
 
@@ -5933,7 +6058,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeMasterSlaveServerGroups
+#### 6.9.3 DescribeMasterSlaveServerGroups
 
 Queries backend servers in a primary/secondary server group. Request parameters
 
@@ -5999,7 +6124,7 @@ Sample success responses `XML` format
 
 `}` `}` `}` `]` `}` `}`
 
-#### DescribeMasterSlaveServerGroupAttribute
+#### 6.9.4 DescribeMasterSlaveServerGroupAttribute
 
 Queries detailed information about a primary/secondary server group. Request parameters
 
@@ -6087,9 +6212,9 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}` `}`
 
-### Tags
+### 6.10 Tags
 
-#### AddTags
+#### 6.10.1 AddTags
 
 Adds tags to a Server Load Balancer (SLB) instance. When you call this operation, take note of the following items: You can add at most 10 tags to an SLB instance. You can specify at most five tags in each request. All tags and keys added to an SLB instance must be unique. If you add a tag that has the same key as an existing tag but with a different value, the new tag overwrites the existing tag. Request parameters
 
@@ -6134,7 +6259,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeTags
+#### 6.10.2 DescribeTags
 
 Queries a list of tags. When you call this operation, take note of the following items: You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions. If the logical relationship among the specified conditions is `AND` , only tags that match all of the specified conditions are returned. If the Tagkey parameter is specified and the Tagvalue parameter is not specified, all tags that contain the specified tag key are returned. If you have specified the Tagvalue parameter in a request, you must also specify the Tagkey parameter in this request. If you specify both the Tagkey and Tagvalue parameters, tags with the specified key-value pair are returned. Request parameters
 
@@ -6210,7 +6335,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### RemoveTags
+#### 6.10.3 RemoveTags
 
 Removes tags from a Server Load Balancer (SLB) instance. Request parameters
 
@@ -6253,7 +6378,7 @@ Sample success responses `XML` format
 { "RequestId": "365F4154-92F6-4AE4-92F8-7FF34B540710" }
 ```
 
-### Error codes
+### 6.11 Error codes
 
 |   | Error code |   |   |   | Error message |   |   | HTTP status code | Description |
 |---|---|---|---|---|---|---|---|---|---|
@@ -6872,9 +6997,9 @@ Sample success responses `XML` format
 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | instance has |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | deleted. |   |   |   |   |
 
-## Appendix
+## 7 Appendix
 
-### Call the ASAPI gateway
+### 7.1 Call the ASAPI gateway
 
 You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to the relevant references. Procedure
 1. Obtain ASAPI SDK.
@@ -6934,9 +7059,9 @@ erFeature.PrettyFormat));
 
 `}`
 
-### Use ASAPI to make API calls
+### 7.2 Use ASAPI to make API calls
 
-#### Obtain an endpoint of ASAPI
+#### 7.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -7008,7 +7133,7 @@ name.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
 file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Obtain the endpoint of the ASAPI
+#### 7.2.2 Obtain the endpoint of the ASAPI
 
 This topic describes three methods that can be used to generate an endpoint for the Apsara Stack API (ASAPI).
 1. Log on to the OPS1 server.
@@ -7025,7 +7150,7 @@ kubectl get ingress -n ascm |grep asapiserver
 https://<domain>/asapi/v3
 ```
 
-#### Obtain Apsara Stack SDKs
+#### 7.2.3 Obtain Apsara Stack SDKs
 
 Apsara Stack API is a unified portal provided by Apsara Stack. You can use Apsara Stack API to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -7064,13 +7189,13 @@ Apsara Stack SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-#### What is STS?
+#### 7.3.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. You do not need to rotate STS tokens when they expire. You can attach policies to STS tokens to create fine-grained permissions on cloud resources based on your business requirements.
 
-#### AssumeRole
+#### 7.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

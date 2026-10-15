@@ -3,16 +3,64 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Develope
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 114
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Developer Guide 20260828.pdf"
+source_pdf: "b7776037a9cbdbbe_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Log on to the Developer Portal
+- 1 Preparations
+  - 1.1 Log on to the Developer Portal console
+  - 1.2 Obtain an AccessKey pair
+- 2 Use POP to make API calls
+  - 2.1 Preparations
+  - 2.2 SDK for Java
+  - 2.3 SDK for Go
+  - 2.4 Python version
+- 3 API common parameters
+- 4 Cloud Firewall
+  - 4.1 Invocation method
+    - 4.1.1 Request structure
+    - 4.1.2 Request signatures
+    - 4.1.3 Common parameters
+    - 4.1.4 Response structure
+  - 4.2 Firewall switch
+    - 4.2.1 PutEnableFwSwitch
+    - 4.2.2 PutDisableFwSwitch
+    - 4.2.3 PutEnableAllFwSwitch
+    - 4.2.4 PutDisableAllFwSwitch
+    - 4.2.5 UpdateResourceDetails
+    - 4.2.6 PutEnableAllResourceFwSwitch
+    - 4.2.7 PutDisableAllResourceFwSwitch
+  - 4.3 VPC firewalls
+    - 4.3.1 CreateVpcFirewallControlPolicy
+    - 4.3.2 DescribeVpcFirewallControlPolicy
+    - 4.3.3 ModifyVpcFirewallControlPolicy
+    - 4.3.4 ModifyVpcFirewallControlPolicyPosition
+    - 4.3.5 DeleteVpcFirewallControlPolicy
+    - 4.3.6 DescribeVpcFirewallPolicyPriorUsed
+    - 4.3.7 DescribeVpcFirewallAclGroupList
+    - 4.3.8 ResetVpcFirewallRuleHitCount
+  - 4.4 Access control
+    - 4.4.1 DescribePolicyPriorUsed
+    - 4.4.2 ModifyControlPolicyPosition
+    - 4.4.3 DescribeControlPolicy
+    - 4.4.4 AddControlPolicy
+    - 4.4.5 DeleteControlPolicy
+    - 4.4.6 ModifyControlPolicy
+  - 4.5 Address books
+    - 4.5.1 AddAddressBook
+    - 4.5.2 DeleteAddressBook
+    - 4.5.3 ModifyAddressBook
+    - 4.5.4 DescribeAddressBook
+- 5 Error codes
+
+## 1 Preparations
+
+### 1.1 Log on to the Developer Portal console
 
 **console**
 
@@ -43,7 +91,7 @@ For more information about how to bind and enable an MFA device, see the **Bind 
 **Console User Guide**.
 5. In the top menu bar, choose **Products > Application Services > Developer Portal**.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair assigned by RAM.
 
@@ -89,9 +137,9 @@ To obtain the AccessKey pair of an organization, perform the following operation
 6. In the dialog box that appears, view the AccessKey information of the organization.
 e API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### Preparations
+### 2.1 Preparations
 
 You can use the POP gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations required before calling API operations.
 
@@ -136,7 +184,7 @@ In the **Registration Variable** dialog box that appears, view the apigateway.op
 For information about how to obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack API operations through the POP gateway, see the **Obtain common header parameters** section under
 **Preparations** in this guide.
 
-### SDK for Java
+### 2.2 SDK for Java
 
 Before you use point of presence (POP) SDK for Java to make API calls, you must first understand the remote procedure call (RPC) and resource-oriented architecture (ROA) styles.
 
@@ -302,7 +350,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 2.3 SDK for Go
 
 This topic describes how to work with the POP SDK for Go.
 
@@ -464,7 +512,7 @@ e API calls The HTTPSInsecure setting takes effect for the client only when you 
 // Configure HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true for t he client. isInsecure := client.GetHTTPSInsecure() // Query the HTTPSInsecure setting for the client.
 ```
 
-### Python version
+### 2.4 Python version
 
 This topic describes how to use POP Python SDK to call cloud product APIs.
 
@@ -602,7 +650,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)` rameters
 
-## API common parameters
+## 3 API common parameters
 
 **Common request parameters**
 
@@ -626,11 +674,11 @@ rameters
 
 Responses are returned in the HTTP response format: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-## Cloud Firewall
+## 4 Cloud Firewall
 
-### Invocation method
+### 4.1 Invocation method
 
-#### Request structure
+#### 4.1.1 Request structure
 
 Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
@@ -657,7 +705,7 @@ API requests are presented in the following easy-to-read format in this document
 https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Version=2020-07-01 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### Request signatures
+#### 4.1.2 Request signatures
 
 Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
 
@@ -702,7 +750,7 @@ LEW8N4y7Uasop******
 5. Add the signature string to the request as the Signature parameter. The result is the signed
 API request.
 
-#### Common parameters
+#### 4.1.3 Common parameters
 
 Common request parameters must be included in all Apsara Stack Security API requests, such as the API version number and authentication information.
 
@@ -720,7 +768,7 @@ Common request parameters must be included in all Apsara Stack Security API requ
 | ResourceOwnerA ccount | String | No | The owner account (the logon username) of the resource you want to access by using this API request. |
 | Format | String | No | The format of the response. Valid values: JSON and XML. Default value: XML. |
 
-#### Response structure
+#### 4.1.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -744,9 +792,9 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 `}`
 
-### Firewall switch
+### 4.2 Firewall switch
 
-#### PutEnableFwSwitch
+#### 4.2.1 PutEnableFwSwitch
 
 Enables a firewall for specific assets.
 
@@ -789,7 +837,7 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### PutDisableFwSwitch
+#### 4.2.2 PutDisableFwSwitch
 
 Turns off a firewall switch.
 
@@ -832,7 +880,7 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### PutEnableAllFwSwitch
+#### 4.2.3 PutEnableAllFwSwitch
 
 Enables all firewall switches.
 
@@ -871,7 +919,7 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### PutDisableAllFwSwitch
+#### 4.2.4 PutDisableAllFwSwitch
 
 Turns off all firewall switches.
 
@@ -910,7 +958,7 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### UpdateResourceDetails
+#### 4.2.5 UpdateResourceDetails
 
 Updates the details of a resource in Cloud Firewall.
 
@@ -963,7 +1011,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### PutEnableAllResourceFwSwitch
+#### 4.2.6 PutEnableAllResourceFwSwitch
 
 Enables or disables all resource switches for Cloud Firewall.
 
@@ -1010,7 +1058,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-#### PutDisableAllResourceFwSwitch
+#### 4.2.7 PutDisableAllResourceFwSwitch
 
 Disables protection for all resources in Cloud Firewall.
 
@@ -1054,9 +1102,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `}`
 
-### VPC firewalls
+### 4.3 VPC firewalls
 
-#### CreateVpcFirewallControlPolicy
+#### 4.3.1 CreateVpcFirewallControlPolicy
 
 Creates an access control policy to a specific policy group for a VPC firewall.
 
@@ -1127,7 +1175,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpcFirewallControlPolicy
+#### 4.3.2 DescribeVpcFirewallControlPolicy
 
 Queries the information of the access control policies for a specific VPC firewall.
 
@@ -1279,7 +1327,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### ModifyVpcFirewallControlPolicy
+#### 4.3.3 ModifyVpcFirewallControlPolicy
 
 Modifies the configuration of an access control policy in a specific policy group for a VPC firewall.
 
@@ -1349,7 +1397,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### ModifyVpcFirewallControlPolicyPosition
+#### 4.3.4 ModifyVpcFirewallControlPolicyPosition
 
 Modifies the priority of an access control policy in a specific policy group for a VPC firewall.
 
@@ -1397,7 +1445,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DeleteVpcFirewallControlPolicy
+#### 4.3.5 DeleteVpcFirewallControlPolicy
 
 Deletes an access control policy from a specific policy group for a VPC firewall.
 
@@ -1450,7 +1498,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpcFirewallPolicyPriorUsed
+#### 4.3.6 DescribeVpcFirewallPolicyPriorUsed
 
 Queries the priority range of the access control policies in a specific policy group for a VPC firewall.
 
@@ -1504,7 +1552,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpcFirewallAclGroupList
+#### 4.3.7 DescribeVpcFirewallAclGroupList
 
 Queries information about all access control policy groups for a VPC firewall.
 
@@ -1562,7 +1610,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### ResetVpcFirewallRuleHitCount
+#### 4.3.8 ResetVpcFirewallRuleHitCount
 
 Resets the count on hits of an access control policy in a specific policy group for a VPC firewall.
 
@@ -1608,9 +1656,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### Access control
+### 4.4 Access control
 
-#### DescribePolicyPriorUsed
+#### 4.4.1 DescribePolicyPriorUsed
 
 Queries the priority range of access control policies that match specific query conditions.
 
@@ -1653,7 +1701,7 @@ Sample success responses `XML` format
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****","Start":"1","End":"150"}
 ```
 
-#### ModifyControlPolicyPosition
+#### 4.4.2 ModifyControlPolicyPosition
 
 Modifies the priority of an access control policy.
 
@@ -1696,7 +1744,7 @@ Sample success responses `XML` format
 {"RequestId":"850A84D6-0DE4-4797-A1E8-00090125****"}
 ```
 
-#### DescribeControlPolicy
+#### 4.4.3 DescribeControlPolicy
 
 Queries information about all access control policies.
 
@@ -1856,7 +1904,7 @@ Sample success responses `XML` format
 
 `}` `]` `}`
 
-#### AddControlPolicy
+#### 4.4.4 AddControlPolicy
 
 Creates an access control policy.
 
@@ -1923,7 +1971,7 @@ Sample success responses `XML` format
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****","AclUuid":"00281255-d220-4db1-8f4fc4df221a****"}
 ```
 
-#### DeleteControlPolicy
+#### 4.4.5 DeleteControlPolicy
 
 Deletes an access control policy.
 
@@ -1969,7 +2017,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyControlPolicy
+#### 4.4.6 ModifyControlPolicy
 
 Modifies the configurations of an access control policy.
 
@@ -2036,9 +2084,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### Address books
+### 4.5 Address books
 
-#### AddAddressBook
+#### 4.5.1 AddAddressBook
 
 Creates an address book for access control. Supported address book types include IP address books, ECS tag-based address books, port address books, and domain name address books.
 
@@ -2089,7 +2137,7 @@ Sample success responses `XML` format
 {"GroupUuid":"f04ac7ce-628b-4cb7-be61-310222b7****","RequestId":"CBF1E9B7-D6A0-4E9E-AD3 E-2B47E6C2****"}
 ```
 
-#### DeleteAddressBook
+#### 4.5.2 DeleteAddressBook
 
 Deletes an address book for access control.
 
@@ -2128,7 +2176,7 @@ Sample success responses `XML` format
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****"}
 ```
 
-#### ModifyAddressBook
+#### 4.5.3 ModifyAddressBook
 
 Modifies an address book for access control.
 
@@ -2176,7 +2224,7 @@ Sample success responses `XML` format
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****"}
 ```
 
-#### DescribeAddressBook
+#### 4.5.4 DescribeAddressBook
 
 Queries the details of an address book for access control.
 
@@ -2296,7 +2344,7 @@ Sample success responses `XML` format
 
 `}` `]` `}`
 
-## Error codes
+## 5 Error codes
 
 This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 

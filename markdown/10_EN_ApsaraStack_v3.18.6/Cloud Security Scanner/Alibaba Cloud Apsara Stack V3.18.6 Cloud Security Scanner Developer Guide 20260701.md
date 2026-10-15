@@ -2,16 +2,125 @@
 title: "Cloud Security Scanner Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 233
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner Developer Guide 20260701.pdf"
+source_pdf: "ca8d4b4a75b5cf54_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%EF%BC%88%E9%BB%98%E5%AE%89%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Scanner%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Security Scanner Developer Guide 20260701
 
-## Getting started
+## Table of Contents
 
-### Obtain the developer guide
+- 1 Getting started
+  - 1.1 Obtain the developer guide
+  - 1.2 Call an API operation
+- 2 Before you begin
+  - 2.1 Log on to OpenAPI Explorer
+  - 2.2 Obtain API information
+  - 2.3 Obtain an access credential assigned by RAM
+  - 2.4 Obtain an access credential assigned by STS
+  - 2.5 Obtain an endpoint
+- 3 Call examples
+  - 3.1 SDK for Python
+    - 3.1.1 Getting started
+    - 3.1.2 User guide
+      - 3.1.2.1 Install Apsara Stack SDK for Python
+      - 3.1.2.2 Use CommonRequest to call API operations
+  - 3.2 SDK for Go
+    - 3.2.1 Getting started
+    - 3.2.2 User guide
+      - 3.2.2.1 Install the core library of Apsara Stack SDK for Go
+      - 3.2.2.2 Use CommonRequest to call API operations
+- 4 Common parameters
+- 5 Cloud Security Scanner
+  - 5.1 Templates
+    - 5.1.1 TemplateAssetDetectionAdd
+    - 5.1.2 TemplateListGetByType
+    - 5.1.3 TemplateRiskScanAdd
+    - 5.1.4 TemplateAssetDetectionDetail
+    - 5.1.5 GetAssetImportTaskInfo
+    - 5.1.6 GetRiskScanTaskTemplate
+    - 5.1.7 TemplateDelete
+    - 5.1.8 TemplateList
+    - 5.1.9 TemplateRiskScanDetail
+    - 5.1.10 TemplateWebMonitorConf
+    - 5.1.11 BasicRiskOption
+    - 5.1.12 GetCommonVulnItemList
+  - 5.2 Tasks
+    - 5.2.1 BatchStartTasks
+    - 5.2.2 TaskAssetScanCreate
+    - 5.2.3 TaskList
+    - 5.2.4 BatchStopTasks
+    - 5.2.5 BatchDeleteTasks
+    - 5.2.6 TaskProcessV2
+    - 5.2.7 TaskStart
+    - 5.2.8 TaskStop
+    - 5.2.9 BatchSuspendTasks
+    - 5.2.10 TaskProcess
+    - 5.2.11 TaskRestart
+    - 5.2.12 TaskDelete
+    - 5.2.13 TaskRiskScanDetail
+    - 5.2.14 GetAssetScanTaskInfo
+    - 5.2.15 TaskAssetImportDetail
+    - 5.2.16 TaskAssetScanDetail
+    - 5.2.17 TaskAssetImportChildDetail
+    - 5.2.18 CycleTaskAssetStats
+    - 5.2.19 TaskAssetScanCycleRunning
+    - 5.2.20 TaskAssetImport
+    - 5.2.21 TaskRiskScanCreate
+    - 5.2.22 TaskAssetImportDetailExists
+    - 5.2.23 TaskQueueTaskDetail
+    - 5.2.24 TaskAssetImportBaseInfo
+    - 5.2.25 TaskRiskScanCycleRunning
+    - 5.2.26 GetAssetRiskScanTaskInfo
+    - 5.2.27 BatchRestartTasks
+    - 5.2.28 TaskQueueTaskList
+    - 5.2.29 TaskQueueTaskInfo
+    - 5.2.30 TaskStatusStats
+    - 5.2.31 TaskQueueTaskListDetail
+    - 5.2.32 TaskRunTypeStats
+    - 5.2.33 TaskQueueTaskCount
+    - 5.2.34 SuspendStatus
+- 6 Vulnerability Scan V2
+  - 6.1 Asset API
+    - 6.1.1 Host assets
+      - 6.1.1.1 DescribeHostAssetList
+    - 6.1.2 Website assets
+      - 6.1.2.1 DescribeWebsiteAssetList
+    - 6.1.3 Domain name assets
+      - 6.1.3.1 DescribeDomainAssetList
+    - 6.1.4 DeleteAsset
+  - 6.2 Task API
+    - 6.2.1 Asset import task
+      - 6.2.1.1 CreateAssetImportTask
+      - 6.2.1.2 DescribeAssetImportTask
+      - 6.2.1.3 DescribeAssetImportTaskResult
+    - 6.2.2 Asset scan
+      - 6.2.2.1 CreateAssetScanTask
+      - 6.2.2.2 DescribeAssetScanTask
+    - 6.2.3 Risk scanning
+      - 6.2.3.1 CreateRiskScanTask
+      - 6.2.3.2 DescribeRiskScanTask
+      - 6.2.3.3 DescribeRiskScanTaskResult
+    - 6.2.4 DescribeTaskList
+    - 6.2.5 StartTask
+    - 6.2.6 StopTask
+    - 6.2.7 SuspendTask
+    - 6.2.8 DeleteTask
+  - 6.3 Risk API
+    - 6.3.1 Security vulnerability
+      - 6.3.1.1 DescribeRiskList
+    - 6.3.2 Public access
+      - 6.3.2.1 DescribeBaselineRiskList
+    - 6.3.3 Compliance vulnerability
+      - 6.3.3.1 DescribeComplianceRiskList
+- 7 Security audit
+  - 7.1 GetData
+  - 7.2 LouauditCleanData
+
+## 1 Getting started
+
+### 1.1 Obtain the developer guide
 
 This topic describes how to find the required developer guide when you call an API operation of an Apsara Stack service.
 
@@ -34,7 +143,7 @@ edition that you use.
 want to view.
 5. Find the developer guide and click **View Details** or **Download PDF**.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Apsara Stack allows you to call API operations by using the POP gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud Public Cloud, API operations in Apsara Stack V3.16.0 and later are called by using the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -60,9 +169,9 @@ To learn the features of API operations and how to call the API operations, obta
 5. Obtain the endpoint of the cloud service.
 6. Obtain the cloud service SDK and call an API operation.
 
-## Before you begin
+## 2 Before you begin
 
-### Log on to OpenAPI Explorer
+### 2.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -90,7 +199,7 @@ For more information, see **Bind a virtual MFA device to enable MFA** in **Apsar
 **Uni-manager Management Console User Guide**.
 5. In the top navigation bar, choose **Products > Development Tools > OpenAPI Explorer**.
 
-### Obtain API information
+### 2.2 Obtain API information
 
 To call an API operation by using an SDK, you must first obtain information about the API operation, including the service code, operation name, and API version.
 
@@ -107,7 +216,7 @@ The API information on the debugging page in the Apsara Uni-manager Management C
 4. In the left-side navigation pane, select the cloud service that you want to manage. In the
 API operation list, you can view all API operations of the current version. If multiple API versions exist, you can select the required API version from the **Version** drop-down list.
 
-### Obtain an access credential
+### 2.3 Obtain an access credential assigned by RAM
 
 **assigned by RAM**
 
@@ -117,16 +226,16 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must configure the headers in the following table. Otherwise, an error that indicates insufficient permissions may occur.
 
+**Warning**
+
+The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
+
 | Header | Description |
 |---|---|
 | x-acs-regionid | The region ID. Example: cn-hangzhou-*. |
 | x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For example, you can use the ID of an Elastic Compute Service (ECS) instance obtained from the ECS instance list. |
-
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -150,7 +259,7 @@ want to obtain.
 5. On the right side of the page, click **Manage AccessKey Pairs**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an access credential
+### 2.4 Obtain an access credential assigned by STS
 
 **assigned by STS**
 
@@ -192,7 +301,7 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace sts.aliyuns.com with the actual endpoint of STS. The format of an STS
 endpoint is sts-vpc.${global:region}.${global:internet-domain}.
@@ -216,9 +325,7 @@ evious step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
     return null;
-}
 ```
 
 3. Use the access credential assigned by STS to call an API operation of a service. The
@@ -265,11 +372,9 @@ ned in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### Obtain an endpoint
+### 2.5 Obtain an endpoint
 
 This topic describes how to obtain the endpoint of an Apsara Stack Security service.
 
@@ -295,11 +400,11 @@ and enter yundunsoc.pop.endpoint in the search box to obtain the endpoint of the
 ${EndpointPre}.${global:region}.${global:internet-domain}
 ```
 
-## Call examples
+## 3 Call examples
 
-### SDK for Python
+### 3.1 SDK for Python
 
-#### Getting started
+#### 3.1.1 Getting started
 
 This topic describes how to obtain and use Apsara Stack SDK for Python.
 
@@ -321,6 +426,8 @@ If you use Python 3.x, run the following command to install the core library of 
 pip3 install aliyun-python-sdk-core-v3
 ```
 
+**Use Apsara Stack SDK for Python**
+
 To use Apsara Stack SDK for Python, perform the following steps:
 1. Create a client instance.
 Before you create a client instance, you must obtain a region ID, an AccessKey ID, and an AccessKey secret.
@@ -332,19 +439,19 @@ Before you create a client instance, you must obtain a region ID, an AccessKey I
 Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <your_region_id>: Replace this variable with the region ID. <your_access_key_id>: Replace this variable with your AccessKey ID. <your_access_key_secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace the value of this parameter with the version of the API. <your-action>: Replace this variable with the name of the API operation.
 
 ```bash
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>')// The endpoint of the service. request.set_version('<API-version>')// The version of the API. request.set_action_name('<your-action>')// The name of the API operation.
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>')// The endpoint of the service. request.set_version('<API-version>')// The version of the API. request.set_action_name('<your-action>')// The name of the API operation.
 # or:
 # request =
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### User guide
+#### 3.1.2 User guide
 
-##### Install Apsara Stack SDK for Python
+##### 3.1.2.1 Install Apsara Stack SDK for Python
 
 This topic describes how to install and use Apsara Stack SDK for Python.
 
-##### Use CommonRequest to call API operations
+##### 3.1.2.2 Use CommonRequest to call API operations
 
 **Benefits**
 
@@ -354,6 +461,9 @@ and install SDKs of Apsara Stack services.
 2. Easy to use: You can call the newly released API operations of an Apsara Stack service
 without the need to update the SDK for the service.
 3. Fast iteration.
+
+**Use CommonRequest**
+
 Apsara Stack services provide remote procedure call (RPC) and RESTful APIs. The request method of CommonRequest varies based on the style of the API that you want to call. In most cases, an API uses the RPC style if the API operations include the Action parameter. An API uses the RESTful style if the API operations include the PathPattern parameter. All API operations of a service use the same API style. The API of each service supports only one style. If you pass an invalid identifier, another API operation may be called, or the `ApiNotFound` error is returned. If you want to send a CommonRequest request, you must obtain the values of the following parameters. For more information, see Common parameters. Endpoint: the endpoint of the service. Version: the version of the API. The version is in the YYYY-MM-DD format. Operation information: the name of the API operation that you want to call. The APIs of most Apsara Stack services, such as Threat Detection Service, are RPC APIs. If you want to call an RPC API operation, you must obtain the value of the Action parameter, and then specify the value in the `request.ApiName = "<Action>"` format. If you want to call a RESTful API operation of a service, such as Container Service for Kubernetes (ACK), you must obtain the value of the PathPattern parameter, and then specify the RESTful path in the `request.PathPattern = "<PathPattern>"` format.
 
 **Example: Call an RPC API operation**
@@ -367,9 +477,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### SDK for Go
+### 3.2 SDK for Go
 
-#### Getting started
+#### 3.2.1 Getting started
 
 Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go.
 
@@ -377,13 +487,15 @@ Apsara Stack SDK for Go allows you to access services without complex coding. Th
 
 An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained before you can use Apsara Stack SDK for Go. You can view and obtain your AccessKey pair in the Apsara Unimanager Management Console. For more information, see Obtain an access credential assigned by RAM. The endpoint of the service is obtained. For more information, see Obtain an endpoint.
 
-##### Install the core library of Apsara Stack SDK for Go
+**Install the core library of Apsara Stack SDK for Go**
 
 Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core library:
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
+
+**Use Apsara Stack SDK for Go**
 
 To use Apsara Stack SDK for Go, perform the following steps:
 1. Initialize a client instance.
@@ -395,22 +507,20 @@ To use Apsara Stack SDK for Go, perform the following steps:
 Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <your_region_id>: Replace this variable with the region ID. <your_access_key_id>: Replace this variable with your AccessKey ID. <your_access_key_secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
 
 ```java
-package main "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
+package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err) fmt.Print(response.GetHttpContentString())
 ```
 
-#### User guide
+#### 3.2.2 User guide
 
-##### Install the core library of Apsara Stack SDK
+##### 3.2.2.1 Install the core library of Apsara Stack SDK for Go
 
 **for Go**
 
@@ -420,7 +530,7 @@ This topic describes how to install the core library of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Use CommonRequest to call API operations
+##### 3.2.2.2 Use CommonRequest to call API operations
 
 **Benefits**
 
@@ -430,6 +540,9 @@ and install SDKs of Apsara Stack services.
 2. Easy to use: You can call the newly released API operations of an Apsara Stack service
 without the need to update the SDK for the service.
 3. Fast iteration.
+
+**Use CommonRequest**
+
 Apsara Stack services provide remote procedure call (RPC) and RESTful APIs. The request method of CommonRequest varies based on the style of the API that you want to call. In most cases, an API uses the RPC style if the API operations include the Action parameter. An API uses the RESTful style if the API operations include the PathPattern parameter. All API operations of a service use the same API style. The API of each service supports only one style. If you pass an invalid identifier, another API operation may be called, or the `ApiNotFound` error is returned. If you want to send a CommonRequest request, you must obtain the values of the following parameters. For more information, see Common parameters. Endpoint: the endpoint of the service. Version: the version of the API. The version is in the YYYY-MM-DD format. Operation information: the name of the API operation that you want to call. The APIs of most Apsara Stack services, such as Threat Detection Service, are RPC APIs. If you want to call an RPC API operation, you must obtain the value of the Action parameter, and then specify the value in the `request.ApiName = "<Action>"` format. If you want to call a RESTful API operation of a service, such as Container Service for Kubernetes (ACK), you must obtain the value of the PathPattern parameter, and then specify the RESTful path in the `request.PathPattern = "<PathPattern>"` format.
 
 **Example: Call an RPC API operation**
@@ -437,13 +550,13 @@ Apsara Stack services provide remote procedure call (RPC) and RESTful APIs. The 
 The following sample code provides an example on how to use CommonRequest to call an API operation:
 
 ```java
-package main
+package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -451,7 +564,6 @@ func main() {
 your_access_key_secret}")
     if err != nil {
         panic(err)
-    }
     request := requests.NewCommonRequest()
     request.Domain = "<YOUR-ENDPOINT>"// The endpoint of the service.
     request.Version = "<API-version>"// The version of the API.
@@ -461,10 +573,14 @@ your_access_key_secret}")
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
+
+## 4 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all Apsara Stack Security API requests. Table 1. Common request parameters
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -474,12 +590,6 @@ your_access_key_secret}")
 | AccessKeySe cret | Strin g | Yes | The AccessKey secret that is provided by Apsara Stack. |
 | RegionId | Strin g | Yes | The region ID of the service. |
 
-## Common parameters
-
-**Common request parameters**
-
-Common request parameters must be included in all Apsara Stack Security API requests. Table 1. Common request parameters
-
 | Product | Strin g | Yes | The code of the service to which the API operation belongs. Valid values: Auditprivate: basic components of Apsara Stack Security. yundunnextsoc: Security Operations Center (SOC). Sas: Threat Detection Service. aegis: Server Guard. yundun-css: Container Protection. secspy: Network Detection and Response. Ddosprivate: Anti-DDoS Service. hsm-private: Cloud Hardware Security Module (HSM). Cloudfw: Cloud Firewall (CFW). Sddp: Sensitive Data Discovery and Protection (SDDP). semawaf: Web Application Firewall (WAF). soar: Security Orchestration and Automation Response (SOAR). |
 |---|---|---|---|
 | EndpointPre | Strin g | Yes | The prefix in the endpoint of the service to which the API operation belongs. Valid values: auditprivate: the prefix in the endpoint of basic components of Apsara Stack Security. yundunnextsoc-pop: the prefix in the endpoint of SOC. tds: the prefix in the endpoint of Threat Detection Service. aegis: the prefix in the endpoint of Server Guard. yundun-css: the prefix in the endpoint of Container Protection. secspy-share: the prefix in the endpoint of Network Detection and Response. ddosprivate: the prefix in the endpoint of Anti-DDoS Service. hsmprivate: the prefix in the endpoint of HSM. cloudfw: the prefix in the endpoint of CFW. sddp-api: the prefix in the endpoint of SDDP. semawaf: the prefix in the endpoint of WAF. soar: the prefix in the endpoint of SOAR. |
@@ -488,28 +598,19 @@ Common request parameters must be included in all Apsara Stack Security API requ
 
 Responses are returned in the unified format for API requests. The following HTTP status codes indicate the request status: 2xx: indicates that the request is successful. 4xx or 5xx: indicates that the request failed. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the request is successful.
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TemplateAssetDetectio nAdd | undefined | acs:yundun-scanner:*: {#accountId}:* |
+## 5 Cloud Security Scanner
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| alive port _ s | Strin g | Body | No |  | The ports to be scanned. |
-| baseline | Integ er | Body | No | 1 | The baseline ID. |
-| baseline r _ ule | Integ er | Body | No | 1 | The baseline rule. |
-| custom p _ ort | Strin g | Body | No |  | The additional ports. |
-| disable su _ bdomain _ api | Integ er | Body | No | 1 | Specifies whether to enable subdomain brute forcing. |
-| disable su _ bdomain _ dict | Integ er | Body | No | 1 | Specifies whether to enable subdomain brute forcing. |
+### 5.1 Templates
 
-## Cloud Security Scanner
-
-### Templates
-
-#### TemplateAssetDetectionAdd
+#### 5.1.1 TemplateAssetDetectionAdd
 
 Creates an asset scan template. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TemplateAssetDetectio nAdd | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -521,12 +622,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| loud Security | Scanner | Develope |  |  |  |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| alive port _ s | Strin g | Body | No |   | The ports to be scanned. |
+| baseline | Integ er | Body | No | 1 | The baseline ID. |
+| baseline r _ ule | Integ er | Body | No | 1 | The baseline rule. |
+| custom p _ ort | Strin g | Body | No |   | The additional ports. |
+| disable su _ bdomain _ api | Integ er | Body | No | 1 | Specifies whether to enable subdomain brute forcing. |
+| disable su _ bdomain _ dict | Integ er | Body | No | 1 | Specifies whether to enable subdomain brute forcing. |
+
+| loud Security | Scanner | Develope |   |   |   |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| exclude p _ orts | Strin g | Body | No |  | The excluded ports. |
+| exclude p _ orts | Strin g | Body | No |   | The excluded ports. |
 | icmp ech _ o | Integ er | Body | No | 1 | Specifies whether to enable ICMP echo scan. |
 | inherit att _ rs | Integ er | Body | No | 1 | Specifies whether to enable automatic synchronization of asset information. |
 | ip2domain | Integ er | Body | No | 1 | Specifies whether to enable reverse lookup of IP addresses. |
@@ -535,13 +645,13 @@ This operation does not have operation-specific request headers and uses only co
 | no status _ | Integ er | Body | No | 1 | Specifies whether to enable stateless scan. |
 | port area _ | Strin g | Body | No | ALL | The port range. |
 | retry time _ s | Integ er | Body | No | 1 | The maximum number of retries. |
-| scan spee _ d | Strin g | Body | No |  | The scan rate. |
+| scan spee _ d | Strin g | Body | No |   | The scan rate. |
 | sctp | Integ er | Body | No | 1 | Specifies whether to enable SCTP scan. |
-| spc ports _ | Strin g | Body | No |  |  |
+| spc ports _ | Strin g | Body | No |   |   |
 | sub doma _ in brute r _ _ ate | Integ er | Body | No | 1 | The subdomain brute forcing rate. |
 | sub doma _ in scan _ | Integ er | Body | No | 1 | Specifies whether to enable subdomain API query. |
 
-|  |  |  |  | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne |
+|   |   |   |   | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -549,15 +659,17 @@ This operation does not have operation-specific request headers and uses only co
 | tcp ack _ | Integ er | Body | No | 1 | Specifies whether to enable TCP ACK scan. |
 | tcp syn _ | Integ er | Body | No | 1 | Specifies whether to enable TCP SYN scan. |
 | udp | Integ er | Body | No | 1 | Specifies whether to enable UDP scan. |
-| vpc id _ | Strin g | Body | No |  | The virtual private cloud (VPC) ID. |
+| vpc id _ | Strin g | Body | No |   | The virtual private cloud (VPC) ID. |
 | wait time _ out | Integ er | Body | No | 1 | The timeout period. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | data | Integer | 1 | The template ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -568,40 +680,36 @@ https://[Endpoint]/?Action=TemplateAssetDetectionAdd&RegionId=cnhangzhou&alive_p
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
-}
 ```
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TemplateListGetByTyp e | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| template _ type | Integ er | Body | No | 1 | The template type. Valid values: 1: risk scan template. 4: availability monitoring template. 5: asset scan template. |
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateAssetDetectionAddResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TemplateAssetDetectionAddResponse>
 ```
 
 **Error codes**
 
-#### TemplateListGetByType
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.2 TemplateListGetByType
 
 Queries a list of templates by type. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TemplateListGetByTyp e | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -613,20 +721,26 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| data | Array |  |  |
-| -create tm _ | Integer |  | The time when the template was created. |
-| -creator | String |  | The user who created the template. |
-| -id | Integer |  | The template ID. |
-| -is default _ | Integer |  | Indicates whether the template is the default one. |
-| -name | String |  | The template name. |
-| -org full id _ _ | String |  | The full organization ID. |
-| -org id _ | String |  | The organization ID. |
-| -type | Integer |  | The template type. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| template _ type | Integ er | Body | No | 1 | The template type. Valid values: 1: risk scan template. 4: availability monitoring template. 5: asset scan template. |
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| data | Array |   |   |
+| -create tm _ | Integer |   | The time when the template was created. |
+| -creator | String |   | The user who created the template. |
+| -id | Integer |   | The template ID. |
+| -is default _ | Integer |   | Indicates whether the template is the default one. |
+| -name | String |   | The template name. |
+| -org full id _ _ | String |   | The full organization ID. |
+| -org id _ | String |   | The organization ID. |
+| -type | Integer |   | The template type. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -636,16 +750,10 @@ https://[Endpoint]/?Action=TemplateListGetByType&RegionId=cn-hangzhou&template_t
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "creator":"",
             "create_tm":"",
             "org_id":"",
@@ -654,19 +762,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "is_default":"",
             "type":"",
             "org_full_id":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateListGetByTypeResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <create_tm></create_tm>
@@ -678,34 +779,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <org_id></org_id>
         <type></type>
     </data>
+</TemplateListGetByTypeResponse>
 ```
 
 **Error codes**
 
-#### TemplateRiskScanAdd
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.3 TemplateRiskScanAdd
 
 Creates a risk scan template. This operation is supported by Cloud Security Scanner V3.1.0 and later.
+
+**Authorization information**
 
 | Action | Access level | Resource type |
 |---|---|---|
 | yundun- scanner:TemplateRiskScanAdd | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| advanced scan _ | Strin g | Body | No |  | The advanced scan configurations. |
-| basic sca _ n | Strin g | Body | No |  | The basic scan configurations. |
-| emergent scan _ | Strin g | Body | No |  | The emergency scan configurations. |
-| exclude p _ orts | Strin g | Body | No |  | The excluded ports. |
-| name | Strin g | Body | No | Full risk scan template | The template name. |
-| user agen _ t | Strin g | Body | No |  | The user agent string. |
-| vpc id _ | Strin g | Body | No |  | The virtual private cloud (VPC) ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| data | Integer | 1 | The template ID. |
-
-**Authorization information**
 
 **Traffic throttling**
 
@@ -717,16 +809,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| advanced scan _ | Strin g | Body | No |   | The advanced scan configurations. |
+| basic sca _ n | Strin g | Body | No |   | The basic scan configurations. |
+| emergent scan _ | Strin g | Body | No |   | The emergency scan configurations. |
+| exclude p _ orts | Strin g | Body | No |   | The excluded ports. |
+| name | Strin g | Body | No | Full risk scan template | The template name. |
+| user agen _ t | Strin g | Body | No |   | The user agent string. |
+| vpc id _ | Strin g | Body | No |   | The virtual private cloud (VPC) ID. |
+
 **Response parameters**
 
-| HTTP status code | Error code | Error message | Description |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| data | Integer | 1 | The template ID. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TemplateAssetDetectio nDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
+**Examples**
 
 Sample requests
 
@@ -737,44 +837,36 @@ https://[Endpoint]/?Action=TemplateRiskScanAdd&RegionId=cnhangzhou&advanced_scan
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateRiskScanAddResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TemplateRiskScanAddResponse>
 ```
 
 **Error codes**
 
-#### TemplateAssetDetectionDetail
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.4 TemplateAssetDetectionDetail
 
 Queries the details of an asset scan template. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The template ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| alive ports _ | String |  | The ports to be scanned. |
-| baseline id _ | Integer |  | The baseline ID. |
-| baseline name _ | String |  | The baseline name. |
-| baseline rule _ | Integer |  | The baseline rule. |
-| custom port _ | String |  | The additional ports. |
-| disable subdo _ main api _ | Integer |  | Indicates whether subdomain brute forcing is enabled. |
-| disable subdo _ main dict _ | Integer |  | Indicates whether subdomain brute forcing is enabled. |
-| exclude ports _ | String |  | The excluded ports. |
-| icmp echo _ | Integer |  | Indicates whether ICMP echo scan is enabled. |
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TemplateAssetDetectio nDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -786,36 +878,55 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The template ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| inherit attrs _ | Integer |  | Indicates whether automatic synchronization of asset information is enabled. |
-| ip2domain | Integer |  | Indicates whether reverse lookup of IP addresses is enabled. |
-| ip scan _ | Integer |  | Indicates whether automatic import of associated IP addresses is enabled. |
-| name | String |  | The template name. |
-| no status _ | Integer |  | Indicates whether stateless scan is enabled. |
-| opt | String |  | The options. |
-| port area _ | String |  | The port range. |
-| retry times _ | Integer |  | The maximum number of retries. |
-| scan speed _ | String |  | The scan rate. |
-| sctp | Integer |  | Indicates whether SCTP scan is enabled. |
-| sub domain b _ _ rute rate _ | Integer |  | The subdomain brute forcing rate. |
-| sub domain s _ _ can | Integer |  | Indicates whether subdomain API query is enabled. |
-| target type _ | String |  | The asset type. |
-| tcp ack _ | Integer |  | Indicates whether TCP ACK scan is enabled. |
-| tcp syn _ | Integer |  | Indicates whether TCP SYN scan is enabled. |
-| type | String |  | The exposure type. Valid values: port and service. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| alive ports _ | String |   | The ports to be scanned. |
+| baseline id _ | Integer |   | The baseline ID. |
+| baseline name _ | String |   | The baseline name. |
+| baseline rule _ | Integer |   | The baseline rule. |
+| custom port _ | String |   | The additional ports. |
+| disable subdo _ main api _ | Integer |   | Indicates whether subdomain brute forcing is enabled. |
+| disable subdo _ main dict _ | Integer |   | Indicates whether subdomain brute forcing is enabled. |
+| exclude ports _ | String |   | The excluded ports. |
+| icmp echo _ | Integer |   | Indicates whether ICMP echo scan is enabled. |
 
-|  |  |  | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| inherit attrs _ | Integer |   | Indicates whether automatic synchronization of asset information is enabled. |
+| ip2domain | Integer |   | Indicates whether reverse lookup of IP addresses is enabled. |
+| ip scan _ | Integer |   | Indicates whether automatic import of associated IP addresses is enabled. |
+| name | String |   | The template name. |
+| no status _ | Integer |   | Indicates whether stateless scan is enabled. |
+| opt | String |   | The options. |
+| port area _ | String |   | The port range. |
+| retry times _ | Integer |   | The maximum number of retries. |
+| scan speed _ | String |   | The scan rate. |
+| sctp | Integer |   | Indicates whether SCTP scan is enabled. |
+| sub domain b _ _ rute rate _ | Integer |   | The subdomain brute forcing rate. |
+| sub domain s _ _ can | Integer |   | Indicates whether subdomain API query is enabled. |
+| target type _ | String |   | The asset type. |
+| tcp ack _ | Integer |   | Indicates whether TCP ACK scan is enabled. |
+| tcp syn _ | Integer |   | Indicates whether TCP SYN scan is enabled. |
+| type | String |   | The exposure type. Valid values: port and service. |
+
+|   |   |   | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| udp | Integer |  | Indicates whether UDP scan is enabled. |
-| value | String |  | The exposed ports or services. |
-| vpc id _ | String |  | The virtual private cloud (VPC) ID. |
-| wait timeout _ | Integer |  | The timeout period. |
+| udp | Integer |   | Indicates whether UDP scan is enabled. |
+| value | String |   | The exposed ports or services. |
+| vpc id _ | String |   | The virtual private cloud (VPC) ID. |
+| wait timeout _ | Integer |   | The timeout period. |
+
+**Examples**
 
 Sample requests
 
@@ -826,7 +937,7 @@ https://[Endpoint]/?Action=TemplateAssetDetectionDetail&RegionId=cn-hangzhou&id=
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "alive_ports":"",
     "baseline_id":"",
@@ -857,18 +968,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "value":"",
     "vpc_id":"",
     "wait_timeout":""
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateAssetDetectionDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <alive_ports></alive_ports>
     <baseline_id></baseline_id>
@@ -899,11 +1004,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <value></value>
     <vpc_id></vpc_id>
     <wait_timeout></wait_timeout>
+</TemplateAssetDetectionDetailResponse>
 ```
 
 **Error codes**
 
-#### GetAssetImportTaskInfo
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.5 GetAssetImportTaskInfo
 
 Queries the information about an asset import task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
@@ -912,21 +1023,6 @@ Queries the information about an asset import task. This operation is supported 
 | Action | Access level | Resource type |
 |---|---|---|
 | yundun- scanner:GetAssetImportTaskInf o | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The task ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| asset list _ | String |  | The assets. Example: 1.1.1.1. |
-| tag names _ | String |  | The tags. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| group id _ | Integer | 1 | The group ID. |
-| screen shot _ | Integer | 1 | Indicates whether website screenshot is enabled. A value of 1 indicates that website screenshot is enabled. A value of 0 indicates that website screenshot is disabled. |
-| staff id _ | Integer | 1 | The user ID. |
-| task name _ | String | test | The task name. |
-| template id _ | Integer | 1 | The template ID. |
 
 **Traffic throttling**
 
@@ -938,12 +1034,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The task ID. |
+
 **Response parameters**
 
-| HTTP status code | Error code | Error message | Description |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| asset list _ | String |   | The assets. Example: 1.1.1.1. |
+| tag names _ | String |   | The tags. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| group id _ | Integer | 1 | The group ID. |
+| screen shot _ | Integer | 1 | Indicates whether website screenshot is enabled. A value of 1 indicates that website screenshot is enabled. A value of 0 indicates that website screenshot is disabled. |
+| staff id _ | Integer | 1 | The user ID. |
+| task name _ | String | test | The task name. |
+| template id _ | Integer | 1 | The template ID. |
+
+**Examples**
 
 Sample requests
 
@@ -954,20 +1062,19 @@ https://[Endpoint]/?Action=GetAssetImportTaskInfo&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "group_id":1,
     "screen_shot":1,
     "staff_id":1,
     "task_name":"test",
     "template_id":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetAssetImportTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <asset_list>
         <asset_list></asset_list>
@@ -980,33 +1087,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
     </tag_names>
     <task_name>test</task_name>
     <template_id>1</template_id>
+</GetAssetImportTaskInfoResponse>
 ```
 
 **Error codes**
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:GetRiskScanTaskTempl ate | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The template ID. |
-
-| Parameter | Type | Example | Description |
+| HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-| exclude ports _ | String |  | The excluded ports. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| advanced sca _ n | Map |  | The advanced scan configurations. |
-| basic scan _ | Map |  | The basic scan configurations. |
-| emergent sca _ n | Map |  | The emergency scan configurations. |
-| name | String | Asset scan template-test | The template name. |
-| user agent _ | String | xxx | The user agent string. |
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-#### GetRiskScanTaskTemplate
+#### 5.1.6 GetRiskScanTaskTemplate
 
 Queries the information about a risk scan template.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:GetRiskScanTaskTempl ate | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1018,12 +1117,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The template ID. |
+
 **Response parameters**
 
-| HTTP status code | Error code | Error message | Description |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| exclude ports _ | String |   | The excluded ports. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| advanced sca _ n | Map |   | The advanced scan configurations. |
+| basic scan _ | Map |   | The basic scan configurations. |
+| emergent sca _ n | Map |   | The emergency scan configurations. |
+| name | String | Asset scan template-test | The template name. |
+| user agent _ | String | xxx | The user agent string. |
+
+**Examples**
 
 Sample requests
 
@@ -1034,20 +1144,19 @@ https://[Endpoint]/?Action=GetRiskScanTaskTemplate&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "advanced_scan":"",
     "basic_scan":"",
     "emergent_scan":"",
     "name":"Asset scan template-test",
     "user_agent":"xxx"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetRiskScanTaskTemplateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <advanced_scan></advanced_scan>
     <basic_scan></basic_scan>
@@ -1055,29 +1164,27 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <exclude_ports>
         <exclude_port></exclude_port>
     </exclude_ports>
+    <name>Asset scan template-test</name>
     <user_agent>xxx</user_agent>
+</GetRiskScanTaskTemplateResponse>
 ```
 
 **Error codes**
 
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.7 TemplateDelete
+
 Deletes templates. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
-#### TemplateDelete
+**Authorization information**
 
 | Action | Access level | Resource type |
 |---|---|---|
 | yundun- scanner:TemplateDelete | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ids | Strin g | Body | No |  | The template IDs. Example: [85,86]. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
-
-**Authorization information**
 
 **Traffic throttling**
 
@@ -1089,7 +1196,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ids | Strin g | Body | No |   | The template IDs. Example: [85,86]. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| status | String |   | The request status. |
+
+**Examples**
 
 Sample requests
 
@@ -1100,41 +1218,36 @@ https://[Endpoint]/?Action=TemplateDelete&RegionId=cn-hangzhou&ids=
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TemplateList | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| end time _ | Strin g | Body | No | 2024-08-01 23:59:59 | The end of the time range to query. |
-| page | Integ er | Body | No | 1 | The page number. |
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateDeleteResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</TemplateDeleteResponse>
 ```
 
 **Error codes**
 
-#### TemplateList
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.8 TemplateList
 
 Queries a list of templates. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TemplateList | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1146,7 +1259,12 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| loud Security | Scanner | Develope |  |  |  |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| end time _ | Strin g | Body | No | 2024-08-01 23:59:59 | The end of the time range to query. |
+| page | Integ er | Body | No | 1 | The page number. |
+
+| loud Security | Scanner | Develope |   |   |   |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -1154,29 +1272,31 @@ This operation does not have operation-specific request headers and uses only co
 | page size _ | Integ er | Body | No | 10 | The number of entries per page. |
 | search | Strin g | Body | No | Template | The filter conditions. You can query templates by name in fuzzy match mode. |
 | start time _ | Strin g | Body | No | 2024-07-01 00:00:00 | The beginning of the time range to query. |
-| template _ types | Strin g | Body | No |  | The template type. Valid values: 1: risk scan template. 4: availability monitoring template. 5: asset scan template. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| results | Array |  |  |
-| -create tm _ | Integer |  | The time when the template was created. |
-| -creator | String |  | The user who created the template. |
-| -id | Integer |  | The template ID. |
-| -is default _ | Integer |  | Indicates whether the template is the default one. |
-| -name | String |  | The template name. |
-| -org full id _ _ | String |  | The full organization ID. |
-| -org id _ | String |  | The organization ID. |
-| -type | Integer |  | The template type. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| template _ types | Strin g | Body | No |   | The template type. Valid values: 1: risk scan template. 4: availability monitoring template. 5: asset scan template. |
 
 **Response parameters**
 
-|  |  |  | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| results | Array |   |   |
+| -create tm _ | Integer |   | The time when the template was created. |
+| -creator | String |   | The user who created the template. |
+| -id | Integer |   | The template ID. |
+| -is default _ | Integer |   | Indicates whether the template is the default one. |
+| -name | String |   | The template name. |
+| -org full id _ _ | String |   | The full organization ID. |
+| -org id _ | String |   | The organization ID. |
+| -type | Integer |   | The template type. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+|   |   |   | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| count | Integer |  | The total number of tasks. |
+| count | Integer |   | The total number of tasks. |
+
+**Examples**
 
 Sample requests
 
@@ -1187,11 +1307,10 @@ https://[Endpoint]/?Action=TemplateList&RegionId=cn-hangzhou&end_time=2024-08-01
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "creator":"",
             "create_tm":"",
             "org_id":"",
@@ -1200,28 +1319,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "is_default":"",
             "type":"",
             "org_full_id":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TemplateRiskScanDeta il | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -1234,15 +1337,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <org_id></org_id>
         <type></type>
     </results>
+</TemplateListResponse>
 ```
 
 **Error codes**
 
-#### TemplateRiskScanDetail
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.9 TemplateRiskScanDetail
 
 Queries the details of a risk scan template. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TemplateRiskScanDeta il | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1258,17 +1371,19 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | id | Integ er | Body | No | 1 | The template ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| exclude ports _ | String |  | The excluded ports. |
+| exclude ports _ | String |   | The excluded ports. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| advanced sca _ n | Map |  | The advanced scan configurations. |
-| basic scan _ | Map |  | The basic scan configurations. |
-| emergent sca _ n | Map |  | The emergency scan configurations. |
+| advanced sca _ n | Map |   | The advanced scan configurations. |
+| basic scan _ | Map |   | The basic scan configurations. |
+| emergent sca _ n | Map |   | The emergency scan configurations. |
 | name | String | Asset scan template-test | The template name. |
 | user agent _ | String | xxx | The user agent string. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1279,32 +1394,19 @@ https://[Endpoint]/?Action=TemplateRiskScanDetail&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "advanced_scan":"",
     "basic_scan":"",
     "emergent_scan":"",
     "name":"Asset scan template-test",
     "user_agent":"xxx"
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TemplateWebMonitorC onf | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateRiskScanDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <advanced_scan></advanced_scan>
     <basic_scan></basic_scan>
@@ -1312,16 +1414,27 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <exclude_ports>
         <exclude_port></exclude_port>
     </exclude_ports>
+    <name>Asset scan template-test</name>
     <user_agent>xxx</user_agent>
+</TemplateRiskScanDetailResponse>
 ```
 
 **Error codes**
 
-#### TemplateWebMonitorConf
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.10 TemplateWebMonitorConf
 
 Queries the web monitoring configurations. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TemplateWebMonitorC onf | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1335,12 +1448,17 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| default crawl _ _ depth | Integer |  | The default crawl depth. |
-| default monito _ r cycle _ | String |  | The default monitoring cycle. |
-| default url lim _ _ it | Integer |  | The default URL limit. |
-| monitor optio _ n | Map |  | The monitoring parameters. |
-| scan param _ | Map |  | The scan parameters. |
+| default crawl _ _ depth | Integer |   | The default crawl depth. |
+| default monito _ r cycle _ | String |   | The default monitoring cycle. |
+| default url lim _ _ it | Integer |   | The default URL limit. |
+| monitor optio _ n | Map |   | The monitoring parameters. |
+| scan param _ | Map |   | The scan parameters. |
+
+**Examples**
 
 Sample requests
 
@@ -1351,48 +1469,44 @@ https://[Endpoint]/?Action=TemplateWebMonitorConf&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "default_crawl_depth":"",
     "default_monitor_cycle":"",
     "default_url_limit":"",
     "monitor_option":"",
     "scan_param":""
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:BasicRiskOption | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| type | Integ er | Body | No |  | The type of risk scan. |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TemplateWebMonitorConfResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <default_crawl_depth></default_crawl_depth>
     <default_monitor_cycle></default_monitor_cycle>
     <default_url_limit></default_url_limit>
     <monitor_option></monitor_option>
     <scan_param></scan_param>
+</TemplateWebMonitorConfResponse>
 ```
 
 **Error codes**
 
-#### BasicRiskOption
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.1.11 BasicRiskOption
 
 Queries the basic risk scan items.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:BasicRiskOption | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1404,14 +1518,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| type | Integ er | Body | No |   | The type of risk scan. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Array |  |  |
-| -define | String |  | The definition of the scan item. |
-| -name | String |  | The name of the scan item. |
+| data | Array |   |   |
+| -define | String |   | The definition of the scan item. |
+| -name | String |   | The name of the scan item. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -1422,30 +1542,23 @@ https://[Endpoint]/?Action=BasicRiskOption&RegionId=cn-hangzhou&type=
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "define":"",
             "name":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BasicRiskOptionResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <define></define>
         <name></name>
     </data>
+</BasicRiskOptionResponse>
 ```
 
 **Error codes**
@@ -1453,28 +1566,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:GetCommonVulnItemLi st | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| general ty _ pe | Strin g | Body | No |  | The vulnerability type. |
-| page | Integ er | Body | No |  | The page number. |
-| page size _ | Integ er | Body | No |  | The number of entries per page. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| results | Array |  |  |
-| -module count _ | Integer |  | The number of modules. |
-
-#### GetCommonVulnItemList
+#### 5.1.12 GetCommonVulnItemList
 
 Queries a list of vulnerabilities.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:GetCommonVulnItemLi st | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1486,18 +1588,31 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| general ty _ pe | Strin g | Body | No |   | The vulnerability type. |
+| page | Integ er | Body | No |   | The page number. |
+| page size _ | Integ er | Body | No |   | The number of entries per page. |
+
 **Response parameters**
 
-|  |  |  | Cloud Security Scanner Develop |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| results | Array |   |   |
+| -module count _ | Integer |   | The number of modules. |
+
+|   |   |   | Cloud Security Scanner Develop |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| -name | String |  | The vulnerability name. |
-| -risk count _ | Integer |  | The number of risks. |
-| -status | Integer |  | The vulnerability status. |
+| -name | String |   | The vulnerability name. |
+| -risk count _ | Integer |   | The number of risks. |
+| -status | Integer |   | The vulnerability status. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The number of entries per page. |
+| count | Integer |   | The number of entries per page. |
+
+**Examples**
 
 Sample requests
 
@@ -1508,37 +1623,20 @@ https://[Endpoint]/?Action=GetCommonVulnItemList&RegionId=cnhangzhou&general_typ
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "risk_count":"",
             "module_count":"",
             "name":"",
             "status":""
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:BatchStartTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetCommonVulnItemListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -1547,17 +1645,27 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <risk_count></risk_count>
         <status></status>
     </results>
+</GetCommonVulnItemListResponse>
 ```
 
 **Error codes**
 
-### Tasks
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-#### BatchStartTasks
+### 5.2 Tasks
+
+#### 5.2.1 BatchStartTasks
 
 Starts multiple tasks at a time. This operation is supported by Cloud Security Scanner V3.2.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:BatchStartTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1574,28 +1682,30 @@ This operation does not have operation-specific request headers and uses only co
 | end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
 | page | Integ er | Body | No | 1 | The page number. |
 | page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-| parent ta _ sk id _ | Integ er | Body | No |  |  |
-| run types _ | Strin g | Body | No |  | The task execution mode. Valid values: cycle, once, and immediately. |
+| parent ta _ sk id _ | Integ er | Body | No |   |   |
+| run types _ | Strin g | Body | No |   | The task execution mode. Valid values: cycle, once, and immediately. |
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
 | start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
-| statuses | Strin g | Body | No |  | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
+| statuses | Strin g | Body | No |   | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
 | task id _ | Integ er | Body | No | 1 | The task ID. |
-| task ids _ | Strin g | Body | No |  | The task IDs. Example: [1,2,3]. |
-| task types _ | Strin g | Body | No |  | The task type. Valid values: assetImport, assetRisk, and assetScan. |
+| task ids _ | Strin g | Body | No |   | The task IDs. Example: [1,2,3]. |
+| task types _ | Strin g | Body | No |   | The task type. Valid values: assetImport, assetRisk, and assetScan. |
 | template | Integ er | Body | No | 1 | The template. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| data | Array |  |  |
 
 **Response parameters**
 
-| Guide·Cloud Sec | urity Scanner |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| data | Array |   |   |
+
+| Guide·Cloud Sec | urity Scanner |   |   |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -task id _ | Integer | 173 | The task ID. |
 | - task instance _ _ id | Integer | 208 | The task instance ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -1606,30 +1716,23 @@ https://[Endpoint]/?Action=BatchStartTasks&RegionId=cn-hangzhou&end_time=2020-01
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchStartTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</BatchStartTasksResponse>
 ```
 
 **Error codes**
@@ -1637,24 +1740,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetScanCreate | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| cycle | Strin g | Body | No | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
-| end tm _ | Strin g | Body | No | 24:00 | The time when the task ends. Example: 24:00. |
-| is immedi _ ately | Integ er | Body | No | 1 | Specifies whether to run the task immediately after it is created. |
-| month | Strin g | Body | No |  | The days of the month on which the task is run. Example: [1,2]. |
-
-#### TaskAssetScanCreate
+#### 5.2.2 TaskAssetScanCreate
 
 Creates an asset scan task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetScanCreate | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1668,30 +1764,30 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| cycle | Strin g | Body | No | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
+| end tm _ | Strin g | Body | No | 24:00 | The time when the task ends. Example: 24:00. |
+| is immedi _ ately | Integ er | Body | No | 1 | Specifies whether to run the task immediately after it is created. |
+| month | Strin g | Body | No |   | The days of the month on which the task is run. Example: [1,2]. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | screen sh _ ot | Integ er | Body | No | 1 | Specifies whether to enable website screenshot. Valid values: 1 and 0. |
 | spec cycl _ e | Integ er | Body | No | 1 | The interval at which the task is run. Unit: day. |
 | start tm _ | Strin g | Body | No | 2023-09-14 16:36:18 | The time when the task starts. Examples: 00:00 for a periodic task and 2023-09-14 16:36:18 for a one-time task. |
-| targets | Strin g | Body | No |  | The assets to be scanned. Example: ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]. |
+| targets | Strin g | Body | No |   | The assets to be scanned. Example: ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]. |
 | task nam _ e | Strin g | Body | No | Risk scan task-test | The task name. |
 | template i _ d | Integ er | Body | No | 1 | The template ID. |
 | vpc id _ | Strin g | Body | No | 1 | The virtual private cloud (VPC) ID. |
-| week | Strin g | Body | No |  | The days of the week on which the task is run. Example: [1,2]. |
+| week | Strin g | Body | No |   | The days of the week on which the task is run. Example: [1,2]. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | data | Integer | 1 | The task ID. |
 
-**Response parameters**
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TaskList | undefined | acs:yundun-scanner:*: {#accountId}:* |
+**Examples**
 
 Sample requests
 
@@ -1702,47 +1798,40 @@ https://[Endpoint]/?Action=TaskAssetScanCreate&RegionId=cnhangzhou&cycle=SPEC&en
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetScanCreateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TaskAssetScanCreateResponse>
 ```
 
 **Error codes**
 
-#### TaskList
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.3 TaskList
 
 Queries a list of tasks. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
 
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TaskList | undefined | acs:yundun-scanner:*: {#accountId}:* |
+
 **Traffic throttling**
 
-You can call this operation up to 10 times per second per account.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range to query. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-| parent ta _ sk id _ | Integ er | Body | No |  |  |
-| run types _ | Strin g | Body | No |  | The task execution mode. Valid values: cycle, once, and immediately. |
-| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
-| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
-| statuses | Strin g | Body | No |  | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
-| task id _ | Integ er | Body | No | 1 | The task ID. |
-| task ids _ | Strin g | Body | No |  | The task IDs. Example: [1,2,3]. |
-| task types _ | Strin g | Body | No |  | The task type. Valid values: assetImport, assetRisk, and assetScan. |
-
-You can call this operation up to 100 times per second.
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
 
@@ -1750,17 +1839,33 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-|  |  |  |  |  | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne | e r |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range to query. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+| parent ta _ sk id _ | Integ er | Body | No |   |   |
+| run types _ | Strin g | Body | No |   | The task execution mode. Valid values: cycle, once, and immediately. |
+| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
+| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range to query. |
+| statuses | Strin g | Body | No |   | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
+| task id _ | Integ er | Body | No | 1 | The task ID. |
+| task ids _ | Strin g | Body | No |   | The task IDs. Example: [1,2,3]. |
+| task types _ | Strin g | Body | No |   | The task type. Valid values: assetImport, assetRisk, and assetScan. |
+
+|   |   |   |   |   | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne | e r |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | template | Integ er | Body | No | 1 | The template ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
-| -asset info _ | String |  | The assets. Example: 1.1.1.1. |
+| results | Array |   |   |
+| -asset info _ | String |   | The assets. Example: 1.1.1.1. |
 | -creator | String | admin | The user who created the task. |
 | -cycle count _ | Integer | 10 | The number of cycles the task is run. |
 | -end time _ | Integer | 1620000000 | The time when the task ends. |
@@ -1773,9 +1878,7 @@ This operation does not have operation-specific request headers and uses only co
 | -status | String | INIT | The task status. Valid values: INIT, RUNNING, FINISH, and STOP. |
 | -sub type _ | Integer | 1 | The task subtype. |
 
-**Response parameters**
-
-| Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |  |  |
+| Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1787,6 +1890,8 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | count | Integer | 10 | The total number of tasks. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -1796,11 +1901,10 @@ https://[Endpoint]/?Action=TaskList&RegionId=cn-hangzhou&end_time=2020-01-01 00:
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":10,
     "results":[
-        {
             "cycle_count":10,
             "task_name":"Asset scan task-test",
             "creator":"admin",
@@ -1816,28 +1920,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "is_immediately":1,
             "task_type":6,
             "status":"INIT"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:BatchStopTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -1857,37 +1945,32 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <sub_type>1</sub_type>
         <task_cycle>0</task_cycle>
         <task_instance_id>123</task_instance_id>
+        <task_name>Asset scan task-test</task_name>
         <task_type>6</task_type>
     </results>
+</TaskListResponse>
 ```
 
 **Error codes**
 
-#### BatchStopTasks
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.4 BatchStopTasks
 
 Stops multiple tasks at a time. This operation is supported by Cloud Security Scanner V3.2.0 and later.
 
 **Authorization information**
 
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:BatchStopTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
+
 **Traffic throttling**
 
-You can call this operation up to 10 times per second per account.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-| parent ta _ sk id _ | Integ er | Body | No |  |  |
-| run types _ | Strin g | Body | No |  | The task execution mode. Valid values: cycle, once, and immediately. |
-| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
-| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
-| statuses | Strin g | Body | No |  | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
-| task id _ | Integ er | Body | No | 1 | The task ID. |
-| task ids _ | Strin g | Body | No |  | The task IDs. Example: [1,2,3]. |
-| task types _ | Strin g | Body | No |  | The task type. Valid values: assetImport, assetRisk, and assetScan. |
-
-You can call this operation up to 100 times per second.
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
 
@@ -1895,19 +1978,35 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| r | Cloud Security Guide·Cloud | Scanner Security | Develope Scanner |  |  |  |  |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+| parent ta _ sk id _ | Integ er | Body | No |   |   |
+| run types _ | Strin g | Body | No |   | The task execution mode. Valid values: cycle, once, and immediately. |
+| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
+| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
+| statuses | Strin g | Body | No |   | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
+| task id _ | Integ er | Body | No | 1 | The task ID. |
+| task ids _ | Strin g | Body | No |   | The task IDs. Example: [1,2,3]. |
+| task types _ | Strin g | Body | No |   | The task type. Valid values: assetImport, assetRisk, and assetScan. |
+
+| r | Cloud Security Guide·Cloud | Scanner Security | Develope Scanner |   |   |   |   |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | template | Integ er | Body | No | 1 | The template. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
+| status | String |   | The request status. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1918,18 +2017,18 @@ https://[Endpoint]/?Action=BatchStopTasks&RegionId=cn-hangzhou&end_time=2020-01-
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchStopTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</BatchStopTasksResponse>
 ```
 
 **Error codes**
@@ -1937,25 +2036,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:BatchDeleteTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-| parent ta _ sk id _ | Integ er | Body | No |  |  |
-| run types _ | Strin g | Body | No |  | The task execution mode. Valid values: cycle, once, and immediately. |
-
-#### BatchDeleteTasks
+#### 5.2.5 BatchDeleteTasks
 
 Deletes multiple tasks at a time. This operation is supported by Cloud Security Scanner V3.2.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:BatchDeleteTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -1969,20 +2060,30 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+| parent ta _ sk id _ | Integ er | Body | No |   |   |
+| run types _ | Strin g | Body | No |   | The task execution mode. Valid values: cycle, once, and immediately. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
 | start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
-| statuses | Strin g | Body | No |  | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
+| statuses | Strin g | Body | No |   | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
 | task id _ | Integ er | Body | No | 1 | The task ID. |
-| task ids _ | Strin g | Body | No |  | The task IDs. Example: [1,2,3]. |
-| task types _ | Strin g | Body | No |  | The task type. Valid values: assetImport, assetRisk, and assetScan. |
+| task ids _ | Strin g | Body | No |   | The task IDs. Example: [1,2,3]. |
+| task types _ | Strin g | Body | No |   | The task type. Valid values: assetImport, assetRisk, and assetScan. |
 | template | Integ er | Body | No | 1 | The template. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
+| status | String |   | The request status. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1990,39 +2091,39 @@ Sample requests
 https://[Endpoint]/?Action=BatchDeleteTasks&RegionId=cn-hangzhou&end_time=2020-01-01 00 :00:00&page=1&page_size=10&run_types=&search=1_1_1_1_1&start_time=2020-01-01 00:00:00&s tatuses=&task_id=1&task_ids=&task_types=&template=1
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TaskProcessV2 | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchDeleteTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</BatchDeleteTasksResponse>
 ```
 
 **Error codes**
 
-#### TaskProcessV2
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.6 TaskProcessV2
 
 Queries the task progress. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TaskProcessV2 | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2031,6 +2132,8 @@ You can call this operation up to 10 times per second per account. You can call 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2042,27 +2145,27 @@ This operation does not have operation-specific request headers and uses only co
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. |
 | task insta _ nce id _ | Integ er | Body | No | 1 | The task instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -insert tm _ | Integer | 1620000000 | The time when the task was created. |
 | -risk addr _ | String | http://1.1.1.1 | The address of the risk. |
 | -risk id _ | Integer | 1 | The ID of the risk. |
 | -risk level _ | String | LOW | The level of the risk. Valid values: LOW, MEDIUM, and HIGH. |
 | -risk name _ | String | xxx security vulnerability | The name of the risk. |
 
-**Request parameters**
-
-**Response parameters**
-
-|  |  |  | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
+|   |   |   | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -risk type _ | Integer | 3 | The risk type. Valid values: 2: security vulnerability. 3: compliance vulnerability. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The total number of tasks. |
+| count | Integer |   | The total number of tasks. |
+
+**Examples**
 
 Sample requests
 
@@ -2073,41 +2176,22 @@ https://[Endpoint]/?Action=TaskProcessV2&RegionId=cnhangzhou&all=True&insert_tm_
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "risk_addr":"http://1.1.1.1",
             "risk_level":"LOW",
             "risk_id":1,
             "risk_type":3,
             "insert_tm":1620000000,
-        }
+            "risk_name":"xxx security vulnerability"
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TaskStart | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskProcessV2Response>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2118,15 +2202,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <risk_name>xxx security vulnerability</risk_name>
         <risk_type>3</risk_type>
     </results>
+</TaskProcessV2Response>
 ```
 
 **Error codes**
 
-#### TaskStart
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.7 TaskStart
 
 Starts a task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TaskStart | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2140,16 +2234,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | id | Integ er | Body | No | 1 | The task ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -task id _ | Integer | 173 | The task ID. |
 | - task instance _ _ id | Integer | 208 | The task instance ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2160,52 +2259,41 @@ https://[Endpoint]/?Action=TaskStart&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TaskStop | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The task ID. |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskStartResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</TaskStartResponse>
 ```
 
 **Error codes**
 
-#### TaskStop
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.8 TaskStop
 
 Stops a task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TaskStop | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2217,17 +2305,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The task ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
+| status | String |   | The request status. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+**Examples**
 
 Sample requests
 
@@ -2238,23 +2327,28 @@ https://[Endpoint]/?Action=TaskStop&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskStopResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</TaskStopResponse>
 ```
 
 **Error codes**
 
-#### BatchSuspendTasks
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.9 BatchSuspendTasks
 
 Suspends multiple tasks at a time.
 
@@ -2263,18 +2357,6 @@ Suspends multiple tasks at a time.
 | Action | Access level | Resource type |
 |---|---|---|
 | yundun- scanner:BatchSuspendTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-| parent ta _ sk id _ | Integ er | Body | No |  |  |
-| run types _ | Strin g | Body | No |  | The task execution mode. Valid values: cycle, once, and immediately. |
-| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
-| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
-| statuses | Strin g | Body | No |  | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
-| task id _ | Integ er | Body | No | 1 | The task ID. |
 
 **Traffic throttling**
 
@@ -2286,21 +2368,35 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-|  |  |  |  | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+| parent ta _ sk id _ | Integ er | Body | No |   |   |
+| run types _ | Strin g | Body | No |   | The task execution mode. Valid values: cycle, once, and immediately. |
+| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
+| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
+| statuses | Strin g | Body | No |   | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
+| task id _ | Integ er | Body | No | 1 | The task ID. |
+
+|   |   |   |   | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| task ids _ | Strin g | Body | No |  | The task IDs. Example: [1,2,3]. |
-| task types _ | Strin g | Body | No |  | The task type. Valid values: assetImport, assetRisk, and assetScan. |
+| task ids _ | Strin g | Body | No |   | The task IDs. Example: [1,2,3]. |
+| task types _ | Strin g | Body | No |   | The task type. Valid values: assetImport, assetRisk, and assetScan. |
 | template | Integ er | Body | No | 1 | The template. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
+| status | String |   | The request status. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2311,40 +2407,36 @@ https://[Endpoint]/?Action=BatchSuspendTasks&RegionId=cn-hangzhou&end_time=2020-
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TaskProcess | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| all | Boole an | Body | No | True | Specifies whether to query all tasks. Valid values: True and False. |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchSuspendTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</BatchSuspendTasksResponse>
 ```
 
 **Error codes**
 
-#### TaskProcess
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.10 TaskProcess
 
 Queries the task progress. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TaskProcess | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2355,6 +2447,10 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| all | Boole an | Body | No | True | Specifies whether to query all tasks. Valid values: True and False. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2365,9 +2461,11 @@ This operation does not have operation-specific request headers and uses only co
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. |
 | task insta _ nce id _ | Integ er | Body | No | 1 | The task instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -asset id _ | Integer | 1 | The asset ID. |
 | -behavior | String | Checking website: … | The behavior. |
 | -id | Integer | 1 | The task ID. |
@@ -2376,14 +2474,14 @@ This operation does not have operation-specific request headers and uses only co
 | -risk id _ | Integer | 1 | The risk ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-**Response parameters**
-
-| r | Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |  |  |  |
+| r | Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |   |   |   |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| count | Integer |  | The number of entries per page. |
+| count | Integer |   | The number of entries per page. |
+
+**Examples**
 
 Sample requests
 
@@ -2394,30 +2492,22 @@ https://[Endpoint]/?Action=TaskProcess&RegionId=cnhangzhou&all=True&insert_tm_or
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "risk_id":1,
             "is_deleted":0,
             "insert_tm":1620000000,
             "asset_id":1,
             "id":1,
             "behavior":"Checking website: …"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskProcessResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2428,35 +2518,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_deleted>0</is_deleted>
         <risk_id>1</risk_id>
     </results>
+</TaskProcessResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:TaskRestart | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The task ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| data | Array |  |  |
-| -task id _ | Integer | 173 | The task ID. |
-| - task instance _ _ id | Integer | 208 | The task instance ID. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-
-**Error codes**
-
-#### TaskRestart
+#### 5.2.11 TaskRestart
 
 Restarts a task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:TaskRestart | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2468,12 +2548,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The task ID. |
+
 **Response parameters**
 
-| HTTP status code | Error code | Error message | Description |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| data | Array |   |   |
+| -task id _ | Integer | 173 | The task ID. |
+| - task instance _ _ id | Integer | 208 | The task instance ID. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -2484,35 +2572,33 @@ https://[Endpoint]/?Action=TaskRestart&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskRestartResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</TaskRestartResponse>
 ```
 
 **Error codes**
 
-#### TaskDelete
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.12 TaskDelete
 
 Deletes a task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
@@ -2521,15 +2607,6 @@ Deletes a task. This operation is supported by Cloud Security Scanner V3.1.0 and
 | Action | Access level | Resource type |
 |---|---|---|
 | yundun-scanner:TaskDelete | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The task ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
 
 **Traffic throttling**
 
@@ -2541,7 +2618,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The task ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| status | String |   | The request status. |
+
+**Examples**
 
 Sample requests
 
@@ -2552,43 +2640,36 @@ https://[Endpoint]/?Action=TaskDelete&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskRiskScanDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The task ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskDeleteResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</TaskDeleteResponse>
 ```
 
 **Error codes**
 
-#### TaskRiskScanDetail
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.13 TaskRiskScanDetail
 
 Queries the details of a risk scan task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskRiskScanDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2600,12 +2681,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The task ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| targets | Array |  |  |
-| -target | String |  | The scanned asset. |
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| targets | Array |   |   |
+| -target | String |   | The scanned asset. |
 | -type | String | ALL | The asset type. Valid values: ALL ASSET, _ ALL IP, and ALL WEBSITE. _ _ |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | cycle count _ | Integer | 10 | The number of cycles the task was run. |
@@ -2622,6 +2710,8 @@ This operation does not have operation-specific request headers and uses only co
 | template id _ | Integer | 1 | The template ID. |
 | template nam _ e | String | xx risk scan template | The template name. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2631,7 +2721,7 @@ https://[Endpoint]/?Action=TaskRiskScanDetail&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -2644,9 +2734,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "start_tm":1600000000,
     "status":"RUNNING",
     "targets":[
-        {
             "type":"ALL"
-        }
 ```
 
 `],`
@@ -2655,22 +2743,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "task_instance_id":1,
     "template_id":1,
     "template_name":"xx risk scan template"
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:GetAssetScanTaskInfo | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskRiskScanDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle_count>10</cycle_count>
     <finish_time>1600000000</finish_time>
@@ -2691,36 +2769,29 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <task_instance_id>1</task_instance_id>
     <template_id>1</template_id>
     <template_name>xx risk scan template</template_name>
+</TaskRiskScanDetailResponse>
 ```
 
 **Error codes**
 
-#### GetAssetScanTaskInfo
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.14 GetAssetScanTaskInfo
 
 Queries the information about an asset scan task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
 
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:GetAssetScanTaskInfo | undefined | acs:yundun-scanner:*: {#accountId}:* |
+
 **Traffic throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The task ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| month | Integer |  | The days of the month on which the task is run. Example: [1,2]. |
-| week | Integer |  | The days of the week on which the task is run. Example: [1,2]. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| cycle | String | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
-| end tm _ | String | 24:00 | The time when the task ends. Example: 24:00. |
-| is immediately _ | Integer | 1 | Indicates whether the task is run immediately after it is created. |
-| screen shot _ | Integer | 1 | Indicates whether website screenshot is enabled. Valid values: 1: enabled. 0: disabled. |
-| spec cycle _ | Integer | 1 | The interval at which the task is run. Unit: day. |
-| start tm _ | String | 2023-09-14 16:36:18 | The time when the task starts. Examples: 00:00 for a periodic task and 2023-09-14 16:36:18 for a one-time task. |
-| targets | Map |  | The scanned assets. |
 
 **Request headers**
 
@@ -2728,9 +2799,26 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The task ID. |
+
 **Response parameters**
 
-|  |  |  |  | Cloud Security Scanner Develop r Guide·Cloud Security Scanne | e r |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| month | Integer |   | The days of the month on which the task is run. Example: [1,2]. |
+| week | Integer |   | The days of the week on which the task is run. Example: [1,2]. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| cycle | String | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
+| end tm _ | String | 24:00 | The time when the task ends. Example: 24:00. |
+| is immediately _ | Integer | 1 | Indicates whether the task is run immediately after it is created. |
+| screen shot _ | Integer | 1 | Indicates whether website screenshot is enabled. Valid values: 1: enabled. 0: disabled. |
+| spec cycle _ | Integer | 1 | The interval at which the task is run. Unit: day. |
+| start tm _ | String | 2023-09-14 16:36:18 | The time when the task starts. Examples: 00:00 for a periodic task and 2023-09-14 16:36:18 for a one-time task. |
+| targets | Map |   | The scanned assets. |
+
+|   |   |   |   | Cloud Security Scanner Develop r Guide·Cloud Security Scanne | e r |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2738,6 +2826,8 @@ This operation does not have operation-specific request headers and uses only co
 | task name _ | String | test | The task name. |
 | task type _ | Integer | 6 | The task type. |
 | template id _ | Integer | 1 | The template ID. |
+
+**Examples**
 
 Sample requests
 
@@ -2748,7 +2838,7 @@ https://[Endpoint]/?Action=GetAssetScanTaskInfo&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":"SPEC",
     "end_tm":"24:00",
@@ -2760,22 +2850,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "task_name":"test",
     "task_type":6,
     "template_id":1
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetImportDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetAssetScanTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>SPEC</cycle>
     <end_tm>24:00</end_tm>
@@ -2793,21 +2873,35 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <week>
         <week></week>
     </week>
+</GetAssetScanTaskInfoResponse>
 ```
 
 **Error codes**
 
-#### TaskAssetImportDetail
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.15 TaskAssetImportDetail
 
 Queries the details of an asset import task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetImportDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2818,23 +2912,19 @@ You can call this operation up to 10 times per second per account. You can call 
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. |
 | task insta _ nce id _ | Integ er | Body | No | 1 | The task instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
-| -children | String |  | The subtask name. |
+| results | Array |   |   |
+| -children | String |   | The subtask name. |
 | -asset name _ | String | 1.1.1.1 | The asset name. |
 | -asset source _ | String | Host import | The asset source. |
 | -has childs _ | Integer | 0 | Indicates whether the asset is a child asset. A value of 1 indicates that the asset is a child asset. A value of 0 indicates that the asset is not a child asset. |
 | -id | Integer | 1 | The task ID. |
 | -insert tm _ | Integer | 1620000000 | The time when the task was created. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |  |  |
+| Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2843,7 +2933,9 @@ This operation does not have operation-specific request headers and uses only co
 | -is new _ | Integer | 1 | Indicates whether the asset is newly discovered. A value of 1 indicates that the asset is newly discovered. A value of 0 indicates that the asset is not newly discovered. |
 | - task instance _ _ id | Integer | 1 | The task instance ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The number of entries per page. |
+| count | Integer |   | The number of entries per page. |
+
+**Examples**
 
 Sample requests
 
@@ -2854,11 +2946,10 @@ https://[Endpoint]/?Action=TaskAssetImportDetail&RegionId=cnhangzhou&asset_type=
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -2867,28 +2958,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "has_childs":0,
             "insert_tm":1620000000,
             "id":1
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetScanDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -2904,15 +2979,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_new>1</is_new>
         <task_instance_id>1</task_instance_id>
     </results>
+</TaskAssetImportDetailResponse>
 ```
 
 **Error codes**
 
-#### TaskAssetScanDetail
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.16 TaskAssetScanDetail
 
 Queries the details of an asset scan task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetScanDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -2924,21 +3009,25 @@ This operation does not have operation-specific request headers and uses only co
 
 **Requestparameters**
 
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | id | Integ er | Body | No | 1 | The task ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| targets | Array |  |  |
-| -target | String |  | The scanned asset. |
+| targets | Array |   |   |
+| -target | String |   | The scanned asset. |
 | -type | String | ALL | The asset type. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | cycle count _ | Integer | 10 | The number of cycles the task was run. |
 | finish time _ | Integer | 1600000000 | The time when the task ended. |
 | host risk coun _ _ t | Integer | 10 | The number of host vulnerabilities. |
 | id | Integer | 1 | The asset ID. |
-| import count _ | Map |  | The number of imported assets. |
+| import count _ | Map |   | The number of imported assets. |
 | insert tm _ | Integer | 1600000000 | The time when the task was created. |
 | name | String | xx asset scan | The task name. |
 | process | String | 100% | The task progress. |
@@ -2946,11 +3035,7 @@ This operation does not have operation-specific request headers and uses only co
 | start tm _ | Integer | 1600000000 | The time when the task started. |
 | status | String | RUNNING | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
 
-**Request parameters**
-
-**Response parameters**
-
-|  |  |  | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
+|   |   |   | Cloud Security Scanner Develop r Guide·Cloud Security Scanne |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2958,6 +3043,8 @@ This operation does not have operation-specific request headers and uses only co
 | task instance _ _ id | Integer | 1 | The task instance ID. |
 | template id _ | Integer | 1 | The template ID. |
 | template nam _ e | String | xx asset scan template | The template name. |
+
+**Examples**
 
 Sample requests
 
@@ -2968,7 +3055,7 @@ https://[Endpoint]/?Action=TaskAssetScanDetail&RegionId=cn-hangzhou&id=1
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -2982,9 +3069,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "start_tm":1600000000,
     "status":"RUNNING",
     "targets":[
-        {
             "type":"ALL"
-        }
 ```
 
 `],`
@@ -2992,22 +3077,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
     "task_instance_id":1,
     "template_id":1,
-}
+    "template_name":"xx asset scan template"
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetImportChildD etail | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetScanDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle_count>10</cycle_count>
     <finish_time>1600000000</finish_time>
@@ -3015,6 +3091,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <id>1</id>
     <import_count></import_count>
     <insert_tm>1600000000</insert_tm>
+    <name>xx asset scan</name>
     <process>100%</process>
     <risk_count>10</risk_count>
     <start_tm>1600000000</start_tm>
@@ -3028,38 +3105,29 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <task_instance_id>1</task_instance_id>
     <template_id>1</template_id>
     <template_name>xx asset scan template</template_name>
+</TaskAssetScanDetailResponse>
 ```
 
 **Error codes**
 
-#### TaskAssetImportChildDetail
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.17 TaskAssetImportChildDetail
 
 Queries the details of an asset import subtask. This operation is supported by Cloud Security Scanner V3.1.0 later.
 
 **Authorization information**
 
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetImportChildD etail | undefined | acs:yundun-scanner:*: {#accountId}:* |
+
 **Traffic throttling**
 
-You can call this operation up to 10 times per second per account.
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| asset id _ | Integ er | Body | No | 1 | The asset ID. |
-| is new _ | Integ er | Body | No | 1 | Specifies whether the asset is newly discovered. Valid values: 1 and 0. |
-| task insta _ nce id _ | Integ er | Body | No | 1 | The task instance ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| data | Array |  |  |
-| -children | String |  | The subtask name. |
-| -asset name _ | String | 1.1.1.1 | The asset name. |
-| -asset source _ | String | Host import | The asset source. |
-| -has childs _ | Integer | 0 | Indicates whether the asset is a child asset. A value of 1 indicates that the asset is a child asset. A value of 0 indicates that the asset is not a child asset. |
-| -id | Integer | 1 | The task ID. |
-| -insert tm _ | Integer | 1620000000 | The time when the subtask was created. |
-| -is deleted _ | Boolean | False | Indicates whether the asset is deleted. Valid values: True and False. |
-
-You can call this operation up to 100 times per second.
+You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
 
@@ -3067,13 +3135,32 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| asset id _ | Integ er | Body | No | 1 | The asset ID. |
+| is new _ | Integ er | Body | No | 1 | Specifies whether the asset is newly discovered. Valid values: 1 and 0. |
+| task insta _ nce id _ | Integ er | Body | No | 1 | The task instance ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| data | Array |   |   |
+| -children | String |   | The subtask name. |
+| -asset name _ | String | 1.1.1.1 | The asset name. |
+| -asset source _ | String | Host import | The asset source. |
+| -has childs _ | Integer | 0 | Indicates whether the asset is a child asset. A value of 1 indicates that the asset is a child asset. A value of 0 indicates that the asset is not a child asset. |
+| -id | Integer | 1 | The task ID. |
+| -insert tm _ | Integer | 1620000000 | The time when the subtask was created. |
+| -is deleted _ | Boolean | False | Indicates whether the asset is deleted. Valid values: True and False. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -is new _ | Integer | 1 | Indicates whether the asset is newly discovered. A value of 1 indicates that the asset is newly discovered. A value of 0 indicates that the asset is not newly discovered. |
 | - task instance _ _ id | Integer | 1 | The task instance ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -3084,10 +3171,9 @@ https://[Endpoint]/?Action=TaskAssetImportChildDetail&RegionId=cnhangzhou&asset_
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
@@ -3096,28 +3182,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "has_childs":0,
             "insert_tm":1620000000,
             "id":1
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:CycleTaskAssetStats | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportChildDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <asset_name>1.1.1.1</asset_name>
@@ -3132,15 +3202,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_new>1</is_new>
         <task_instance_id>1</task_instance_id>
     </data>
+</TaskAssetImportChildDetailResponse>
 ```
 
 **Error codes**
 
-#### CycleTaskAssetStats
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.18 CycleTaskAssetStats
 
 Queries the statistics on periodic asset scan tasks. This operation is supported by Cloud Security Scanner V3.4.1 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:CycleTaskAssetStats | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3156,10 +3236,7 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+**Examples**
 
 Sample requests
 
@@ -3170,21 +3247,26 @@ https://[Endpoint]/?Action=CycleTaskAssetStats&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <CycleTaskAssetStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</CycleTaskAssetStatsResponse>
 ```
 
 **Error codes**
 
-#### TaskAssetScanCycleRunning
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.19 TaskAssetScanCycleRunning
 
 Queries whether periodic asset scan tasks exist. This operation is supported by Cloud Security Scanner V3.4.0 and later.
 
@@ -3193,10 +3275,6 @@ Queries whether periodic asset scan tasks exist. This operation is supported by 
 | Action | Access level | Resource type |
 |---|---|---|
 | yundun- scanner:TaskAssetScanCycleRu nning | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
 **Traffic throttling**
 
@@ -3207,6 +3285,12 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -3217,16 +3301,16 @@ https://[Endpoint]/?Action=TaskAssetScanCycleRunning&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetScanCycleRunningResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</TaskAssetScanCycleRunningResponse>
 ```
 
 **Error codes**
@@ -3234,26 +3318,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetImport | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| asset met _ adatas | Strin g | Body | No |  | The asset metadata. |
-| content m _ onitor | Integ er | Body | No |  |  |
-| customize asset list _ _ | Strin g | Body | No |  |  |
-| group id _ | Integ er | Body | No | 0 | The group ID. |
-| is immedi _ ately | Integ er | Body | No | 1 | Specifies whether to run the task immediately after it is created. |
-| is public _ _ asset | Integ er | Body | No |  | Specifies whether the assets are public network assets. |
-
-#### TaskAssetImport
+#### 5.2.20 TaskAssetImport
 
 Creates an asset import task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetImport | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3265,7 +3340,16 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-|  |  |  |  | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| asset met _ adatas | Strin g | Body | No |   | The asset metadata. |
+| content m _ onitor | Integ er | Body | No |   |   |
+| customize asset list _ _ | Strin g | Body | No |   |   |
+| group id _ | Integ er | Body | No | 0 | The group ID. |
+| is immedi _ ately | Integ er | Body | No | 1 | Specifies whether to run the task immediately after it is created. |
+| is public _ _ asset | Integ er | Body | No |   | Specifies whether the assets are public network assets. |
+
+|   |   |   |   | Cloud r Gu | Security Scanner Develop ide·Cloud Security Scanne |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -3275,12 +3359,12 @@ This operation does not have operation-specific request headers and uses only co
 | screen sh _ ot | Integ er | Body | No | 1 | Specifies whether to enable website screenshot. A value of 1 specifies enabling website screenshot. A value of 0 specifies disabling website screenshot. |
 | staff id _ | Integ er | Body | No | 1 | The user ID. |
 | start tm _ | Strin g | Body | No | 2020-01-01 00:00:00 | The time when the task starts. |
-| tag ids _ | Strin g | Body | No |  | The tag IDs. Example: [1,2,3]. |
-| targets | Strin g | Body | No |  | The assets to be imported. Example: ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]. |
+| tag ids _ | Strin g | Body | No |   | The tag IDs. Example: [1,2,3]. |
+| targets | Strin g | Body | No |   | The assets to be imported. Example: ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]. |
 | task nam _ e | Strin g | Body | No | Risk scan task-test | The task name. |
 | template i _ d | Integ er | Body | No | 1 | The template ID. |
 | vpc id _ | Strin g | Body | No | 1 | The virtual private cloud (VPC) ID. |
-| web moni _ tor | Integ er | Body | No |  |  |
+| web moni _ tor | Integ er | Body | No |   |   |
 
 **Response parameters**
 
@@ -3289,10 +3373,7 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | data | Integer | 1 | The task ID. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+**Examples**
 
 Sample requests
 
@@ -3303,40 +3384,36 @@ https://[Endpoint]/?Action=TaskAssetImport&RegionId=cnhangzhou&asset_metadatas=&
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TaskAssetImportResponse>
 ```
 
 **Error codes**
 
-#### TaskRiskScanCreate
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskRiskScanCreate | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| cycle | Strin g | Body | No | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
-| end tm _ | Strin g | Body | No | 24:00 | The time when the task ends. Example: 24:00. |
-| is immedi _ ately | Integ er | Body | No | 1 | Specifies whether to run the task immediately after it is created. |
-| month | Strin g | Body | No |  | The days of the month on which the task is run. Example: [1,2]. |
-| scan spee _ d | Strin g | Body | No |  | The scan rate. This parameter is no longer used. |
-| spec cycl _ e | Integ er | Body | No | 1 | The interval at which the task is run. Unit: day. |
+#### 5.2.21 TaskRiskScanCreate
 
 Creates a risk scan task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskRiskScanCreate | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3350,19 +3427,30 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| cycle | Strin g | Body | No | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
+| end tm _ | Strin g | Body | No | 24:00 | The time when the task ends. Example: 24:00. |
+| is immedi _ ately | Integ er | Body | No | 1 | Specifies whether to run the task immediately after it is created. |
+| month | Strin g | Body | No |   | The days of the month on which the task is run. Example: [1,2]. |
+| scan spee _ d | Strin g | Body | No |   | The scan rate. This parameter is no longer used. |
+| spec cycl _ e | Integ er | Body | No | 1 | The interval at which the task is run. Unit: day. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | start tm _ | Strin g | Body | No | 2023-09-14 16:36:18 | The time when the task starts. Examples: 00:00 for a periodic task and 2023-09-14 16:36:18 for a one-time task. |
-| targets | Strin g | Body | No |  | The assets to be scanned. Example: ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]. |
+| targets | Strin g | Body | No |   | The assets to be scanned. Example: ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ ALL DOMAIN: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] DOMAIN: [1,2,3]. |
 | task nam _ e | Strin g | Body | No | Risk scan task-test | The task name. |
 | template i _ d | Integ er | Body | No | 1 | The template ID. |
 | vpc id _ | Strin g | Body | No | 1 | The virtual private cloud (VPC) ID. |
-| week | Strin g | Body | No |  | The days of the week on which the task is run. Example: [1,2]. |
+| week | Strin g | Body | No |   | The days of the week on which the task is run. Example: [1,2]. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | data | Integer | 1 | The task ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3372,37 +3460,37 @@ https://[Endpoint]/?Action=TaskRiskScanCreate&RegionId=cnhangzhou&cycle=SPEC&end
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetImportDetail Exists | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskRiskScanCreateResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>1</data>
+</TaskRiskScanCreateResponse>
 ```
 
 **Error codes**
 
-#### TaskAssetImportDetailExists
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.22 TaskAssetImportDetailExists
 
 Queries a list of assets that already exist from the results of an asset import task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetImportDetail Exists | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3422,9 +3510,11 @@ This operation does not have operation-specific request headers and uses only co
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. |
 | task insta _ nce id _ | Integ er | Body | No | 1 | The task instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -asset name _ | String | 1.1.1.1 | The asset name. |
 | -asset source _ | String | Host import | The asset source. |
 | -id | Integer | 1 | The asset ID. |
@@ -3432,16 +3522,11 @@ This operation does not have operation-specific request headers and uses only co
 | -is deleted _ | Boolean | False | Indicates whether the asset is deleted. Valid values: True and False. |
 | -is new _ | Integer | 1 | Indicates whether the asset is newly discovered. Valid values: 1: newly discovered. 0: not newly discovered. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The number of entries per page. |
+| count | Integer |   | The number of entries per page. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
 
 ```
 https://[Endpoint]/?Action=TaskAssetImportDetailExists&RegionId=cnhangzhou&asset_type=IP&page=1&page_size=10&search=1_1_1_1_1&task_instance_id=1
@@ -3450,30 +3535,22 @@ https://[Endpoint]/?Action=TaskAssetImportDetailExists&RegionId=cnhangzhou&asset
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "is_deleted":false,
             "asset_name":"1.1.1.1",
             "is_new":1,
             "asset_source":"Host import",
             "insert_tm":1620000000,
             "id":1
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportDetailExistsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -3484,28 +3561,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <is_deleted>False</is_deleted>
         <is_new>1</is_new>
     </results>
+</TaskAssetImportDetailExistsResponse>
 ```
 
 **Error codes**
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskQueueTaskDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Strin g | Body | No | 207 1 1 11 0 _ _ _ _ | The subtask ID. |
-
-| Parameter | Type | Example | Description |
+| HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| result | Map |  | The task details. |
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-#### TaskQueueTaskDetail
+#### 5.2.23 TaskQueueTaskDetail
 
 Queries the details of a task.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskQueueTaskDetail | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3517,7 +3591,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Strin g | Body | No | 207 1 1 11 0 _ _ _ _ | The subtask ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| result | Map |   | The task details. |
+
+**Examples**
 
 Sample requests
 
@@ -3527,37 +3612,37 @@ https://[Endpoint]/?Action=TaskQueueTaskDetail&RegionId=cn-hangzhou&id=207_1_1_1
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskAssetImportBaseIn fo | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "result":""
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskQueueTaskDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <result></result>
+</TaskQueueTaskDetailResponse>
 ```
 
 **Error codes**
 
-#### TaskAssetImportBaseInfo
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.24 TaskAssetImportBaseInfo
 
 Queries the basic information about an asset import task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskAssetImportBaseIn fo | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3573,21 +3658,21 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | task insta _ nce id _ | Integ er | Body | No | 85 | The task instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | cycle count _ | Integer | 10 | The task cycle. |
 | finish time _ | Integer | 1600000000 | The time when the task ended. |
 | id | Integer | 1 | The task ID. |
-| import count _ | Map |  | The number of imported assets. |
+| import count _ | Map |   | The number of imported assets. |
 | import mode _ | String | MANUAL IMPORT _ | The import method. Valid values: MANUAL IMPORT and EXCEL IMPORT. _ _ |
-| import res _ | Map |  | The imported data. |
+| import res _ | Map |   | The imported data. |
 | insert tm _ | Integer | 1600000000 | The time when the task was created. |
 | is immediately _ | Integer | 1 | Indicates whether the task was run immediately after it was created. A value of 1 indicates that the task was run immediately after it was created. A value of 0 indicates that the task was not run immediately after it was created. |
 | is public asset _ _ | Integer | 1 | Indicates whether the imported assets are public network assets. A value of 1 indicates that the assets are public network assets. A value of 0 indicates that the assets are not public network assets. |
 | network type _ | Integer | 1 | The network type. This parameter is no longer used. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3596,14 +3681,16 @@ This operation does not have operation-specific request headers and uses only co
 | screen shot _ | Integer | 1 | Indicates whether website screenshot is enabled. |
 | start time _ | Integer | 1600000000 | The time when the task started. |
 | status | String | INIT | The task status. Valid values: INIT, RUNNING, FINISH, and STOP. |
-| target | Map |  | The imported assets. This parameter is no longer used. |
+| target | Map |   | The imported assets. This parameter is no longer used. |
 | task instance _ _ id | Integer | 1 | The task instance ID. |
 | task name _ | String | Asset scan task- test | The task name. |
 | template id _ | Integer | 1 | The template ID. |
 | template nam _ e | String | Asset scan template-test | The template name. |
 | username | String | admin | The username. |
-| view detail _ | Map |  | The task details. A map or download link may be returned based on the import method. |
+| view detail _ | Map |   | The task details. A map or download link may be returned based on the import method. |
 | vpc id _ | String | 1 | The virtual private cloud (VPC) ID. |
+
+**Examples**
 
 Sample requests
 
@@ -3614,7 +3701,7 @@ https://[Endpoint]/?Action=TaskAssetImportBaseInfo&RegionId=cnhangzhou&task_inst
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle_count":10,
     "finish_time":1600000000,
@@ -3639,22 +3726,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "username":"admin",
     "view_detail":"",
     "vpc_id":"1"
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskRiskScanCycleRun ning | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskAssetImportBaseInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle_count>10</cycle_count>
     <finish_time>1600000000</finish_time>
@@ -3673,29 +3750,31 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <status>INIT</status>
     <target></target>
     <task_instance_id>1</task_instance_id>
+    <task_name>Asset scan task-test</task_name>
     <template_id>1</template_id>
     <template_name>Asset scan template-test</template_name>
     <username>admin</username>
     <view_detail></view_detail>
     <vpc_id>1</vpc_id>
+</TaskAssetImportBaseInfoResponse>
 ```
 
 **Error codes**
 
-#### TaskRiskScanCycleRunning
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.25 TaskRiskScanCycleRunning
 
 Queries whether a risk scan task is running. This operation is supported by Cloud Security Scanner V3.4.0 and later.
 
 **Authorization information**
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskRiskScanCycleRun ning | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3707,6 +3786,12 @@ This operation does not have operation-specific request headers and uses only co
 
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
+
 Sample requests
 
 ```
@@ -3716,41 +3801,34 @@ https://[Endpoint]/?Action=TaskRiskScanCycleRunning&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskRiskScanCycleRunningResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</TaskRiskScanCycleRunningResponse>
 ```
 
 **Error codes**
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:GetAssetRiskScanTaskI nfo | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| id | Integ er | Body | No | 1 | The asset ID. |
-
-| Parameter | Type | Example | Description |
+| HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-| month | Integer |  | The days of the month on which the task is run. Example: [1,2]. |
-| week | Integer |  | The days of the week on which the task is run. Example: [1,2]. |
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| cycle | String | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
-| end tm _ | String | 24:00 | The time when the task ends. Example: 24:00. |
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-#### GetAssetRiskScanTaskInfo
+#### 5.2.26 GetAssetRiskScanTaskInfo
 
 Queries the information about an asset scan task or a risk scan task. This operation is supported by Cloud Security Scanner V3.1.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:GetAssetRiskScanTaskI nfo | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3762,18 +3840,32 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| id | Integ er | Body | No | 1 | The asset ID. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+| month | Integer |   | The days of the month on which the task is run. Example: [1,2]. |
+| week | Integer |   | The days of the week on which the task is run. Example: [1,2]. |
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| cycle | String | SPEC | The type of task cycle. Valid values: SPEC, MONTH, and WEEK. |
+| end tm _ | String | 24:00 | The time when the task ends. Example: 24:00. |
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 | is immediately _ | Integer | 1 | Indicates whether the task is run immediately after it is created. |
-| scan speed _ | String |  | The scan speed. This parameter is no longer used. |
+| scan speed _ | String |   | The scan speed. This parameter is no longer used. |
 | spec cycle _ | Integer | 1 | The interval at which the task is run. Unit: day. |
 | start tm _ | String | 2023-09-14 16:36:18 | The time when the task starts. Examples: 00:00 for a periodic task and 2023-09-14 16:36:18 for a one-time task. |
-| targets | Map |  | The assets that are scanned. The value is in the JSON format. Example: {'ALL IP':0,'ALL WEBSITE':0,'ALL ASSET':0 _ _ _ ,'IP':[1],'WEBSITE':[1],'GROUP':[1]}. You can specify only one type of asset in the request. In the values of this parameter, an array indicates the asset IDs, 0 indicates selected, and 1 indicates not selected. |
+| targets | Map |   | The assets that are scanned. The value is in the JSON format. Example: {'ALL IP':0,'ALL WEBSITE':0,'ALL ASSET':0 _ _ _ ,'IP':[1],'WEBSITE':[1],'GROUP':[1]}. You can specify only one type of asset in the request. In the values of this parameter, an array indicates the asset IDs, 0 indicates selected, and 1 indicates not selected. |
 | task name _ | String | test | The task name. |
 | task type _ | Integer | 6 | The task type. |
 | template id _ | Integer | 1 | The template ID. |
+
+**Examples**
 
 Sample requests
 
@@ -3783,13 +3875,8 @@ https://[Endpoint]/?Action=GetAssetRiskScanTaskInfo&RegionId=cn-hangzhou&id=1
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":"SPEC",
     "end_tm":"24:00",
@@ -3801,13 +3888,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "task_name":"test",
     "task_type":6,
     "template_id":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetAssetRiskScanTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>SPEC</cycle>
     <end_tm>24:00</end_tm>
@@ -3825,29 +3911,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <week>
         <week></week>
     </week>
+</GetAssetRiskScanTaskInfoResponse>
 ```
 
 **Error codes**
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:BatchRestartTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-| parent ta _ sk id _ | Integ er | Body | No |  |  |
-| run types _ | Strin g | Body | No |  | The task execution mode. Valid values: cycle, once, and immediately. |
-| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
-| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
-
-#### BatchRestartTasks
+#### 5.2.27 BatchRestartTasks
 
 Restarts multiple tasks at a time. This operation is supported by Cloud Security Scanner V3.2.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:BatchRestartTasks | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3859,25 +3941,37 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-|  |  |  |  | Cloud | Security Scanner Develop |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| end time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The end of the time range. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+| parent ta _ sk id _ | Integ er | Body | No |   |   |
+| run types _ | Strin g | Body | No |   | The task execution mode. Valid values: cycle, once, and immediately. |
+| search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks by task ID, task name, and asset address. |
+| start time _ | Strin g | Body | No | 2020-01-01 00:00:00 | The beginning of the time range. |
+
+|   |   |   |   | Cloud | Security Scanner Develop |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| statuses | Strin g | Body | No |  | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
+| statuses | Strin g | Body | No |   | The task status. Valid values: RUNNING, INIT, FINISH, and STOP. |
 | task id _ | Integ er | Body | No | 1 | The task ID. |
-| task ids _ | Strin g | Body | No |  | The task IDs. Example: [1,2,3]. |
-| task types _ | Strin g | Body | No |  | The task type. Valid values: assetImport, assetRisk, and assetScan. |
+| task ids _ | Strin g | Body | No |   | The task IDs. Example: [1,2,3]. |
+| task types _ | Strin g | Body | No |   | The task type. Valid values: assetImport, assetRisk, and assetScan. |
 | template | Integ er | Body | No | 1 | The template. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -task id _ | Integer | 173 | The task ID. |
 | - task instance _ _ id | Integer | 208 | The task instance ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3887,49 +3981,42 @@ https://[Endpoint]/?Action=BatchRestartTasks&RegionId=cn-hangzhou&end_time=2020-
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskQueueTaskList | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "task_instance_id":208,
             "task_id":173
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <BatchRestartTasksResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <task_id>173</task_id>
         <task_instance_id>208</task_instance_id>
     </data>
+</BatchRestartTasksResponse>
 ```
 
 **Error codes**
 
-#### TaskQueueTaskList
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.28 TaskQueueTaskList
 
 Queries a list of tasks.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskQueueTaskList | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -3937,26 +4024,28 @@ You can call this operation up to 10 times per second per account. You can call 
 
 **Request headers**
 
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | page | Integ er | Body | No | 1 | The page number. |
 | page size _ | Integ er | Body | No | 10 | The number of entries per page. |
 | search | Strin g | Body | No | 1 1 1 1 1 _ _ _ _ | The filter conditions. You can filter tasks only by subtask ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -group id _ | Integer | 0 | The device group ID. |
 | -id | String | 0 11 0 _ _ | The queue name. |
 | -list type _ | String | asset list _ | The queue type. Valid values: asset list _ and vuln list. _ |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The total number of tasks. |
+| count | Integer |   | The total number of tasks. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3966,37 +4055,20 @@ https://[Endpoint]/?Action=TaskQueueTaskList&RegionId=cnhangzhou&page=1&page_siz
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskQueueTaskInfo | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "list_type":"asset_list",
             "group_id":0,
             "id":"0_11_0"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskQueueTaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4004,34 +4076,27 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <id>0_11_0</id>
         <list_type>asset_list</list_type>
     </results>
+</TaskQueueTaskListResponse>
 ```
 
 **Error codes**
 
-#### TaskQueueTaskInfo
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.29 TaskQueueTaskInfo
 
 Queries the information about the tasks in queues.
 
 **Authorization information**
 
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskQueueTaskInfo | undefined | acs:yundun-scanner:*: {#accountId}:* |
+
 **Traffic throttling**
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| mode | Integ er | Body | No | 1 | The task status. Valid values: 0: waiting. 1: running. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| results | Array |  |  |
-| -insert tm _ | Integer | 1722477664 | The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
-| - task instance _ _ id | Integer | 206 | The task instance ID. |
-| -task name _ | String | dd | The task name. |
-| -task pri _ | String | high | The task priority. Valid values: emergent, high, mid, and low. |
-| -task run num _ _ | Integer | 1 | The number of tasks that are running. |
-| -task type _ | String | asset monitor task _ _ | The task type. |
-| - task wait num _ _ | Integer | 2 | The number of pending tasks. |
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
@@ -4041,16 +4106,35 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| mode | Integ er | Body | No | 1 | The task status. Valid values: 0: waiting. 1: running. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+
 **Response parameters**
 
-| r | Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |  |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| results | Array |   |   |
+| -insert tm _ | Integer | 1722477664 | The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
+| - task instance _ _ id | Integer | 206 | The task instance ID. |
+| -task name _ | String | dd | The task name. |
+| -task pri _ | String | high | The task priority. Valid values: emergent, high, mid, and low. |
+| -task run num _ _ | Integer | 1 | The number of tasks that are running. |
+| -task type _ | String | asset monitor task _ _ | The task type. |
+| - task wait num _ _ | Integer | 2 | The number of pending tasks. |
+
+| r | Cloud Security Sca Guide·Cloud Sec | nner Develope urity Scanner |   |   |   |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -username | String | admin | The name of the user. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The total number of tasks. |
+| count | Integer |   | The total number of tasks. |
+
+**Examples**
 
 Sample requests
 
@@ -4061,11 +4145,10 @@ https://[Endpoint]/?Action=TaskQueueTaskInfo&RegionId=cnhangzhou&mode=1&page=1&p
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "task_name":"dd",
             "task_wait_num":2,
             "task_instance_id":206,
@@ -4074,28 +4157,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "task_run_num":1,
             "task_pri":"high",
             "username":"admin"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskStatusStats | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskQueueTaskInfoResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4108,15 +4175,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <task_wait_num>2</task_wait_num>
         <username>admin</username>
     </results>
+</TaskQueueTaskInfoResponse>
 ```
 
 **Error codes**
 
-#### TaskStatusStats
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.30 TaskStatusStats
 
 Queries the statistics on task status. This operation is supported by Cloud Security Scanner V3.4.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskStatusStats | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -4130,10 +4207,12 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | Array |  |  |
+| data | Array |   |   |
 | -count | Integer | 10 | The number of tasks. |
 | -status | String | RUNNING | The task status. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -4144,30 +4223,23 @@ https://[Endpoint]/?Action=TaskStatusStats&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":[
-        {
             "count":10,
             "status":"RUNNING"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskStatusStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <count>10</count>
         <status>RUNNING</status>
     </data>
+</TaskStatusStatsResponse>
 ```
 
 **Error codes**
@@ -4175,28 +4247,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskQueueTaskListDet ail | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| list name _ | Strin g | Body | No | 0 11 0 _ _ | The queue name. |
-| page | Integ er | Body | No | 1 | The page number. |
-| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| results | Array |  |  |
-| -id | String | 208 1 1 11 0 _ _ _ _ | The task ID. |
-
-#### TaskQueueTaskListDetail
+#### 5.2.31 TaskQueueTaskListDetail
 
 Queries the details of the tasks in queues.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskQueueTaskListDet ail | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -4208,9 +4269,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| list name _ | Strin g | Body | No | 0 11 0 _ _ | The queue name. |
+| page | Integ er | Body | No | 1 | The page number. |
+| page size _ | Integ er | Body | No | 10 | The number of entries per page. |
+
 **Response parameters**
 
-| Cloud Security Sca | nner Develope |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| results | Array |   |   |
+| -id | String | 208 1 1 11 0 _ _ _ _ | The task ID. |
+
+| Cloud Security Sca | nner Develope |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4220,7 +4292,9 @@ This operation does not have operation-specific request headers and uses only co
 | -task level _ | String | high | The task priority. Valid values: emergent, high, mid, and low. |
 | -user name _ | String | admin | The username. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| count | Integer |  | The total number of tasks. |
+| count | Integer |   | The total number of tasks. |
+
+**Examples**
 
 Sample requests
 
@@ -4231,41 +4305,21 @@ https://[Endpoint]/?Action=TaskQueueTaskListDetail&RegionId=cnhangzhou&list_name
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":"",
     "results":[
-        {
             "list_type":"asset_monitor_task",
             "user_name":"admin",
             "name":"dd",
             "id":"208_1_1_11_0",
             "task_level":"high"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskRunTypeStats | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskQueueTaskListDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count></count>
     <results>
@@ -4275,15 +4329,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <task_level>high</task_level>
         <user_name>admin</user_name>
     </results>
+</TaskQueueTaskListDetailResponse>
 ```
 
 **Error codes**
 
-#### TaskRunTypeStats
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.32 TaskRunTypeStats
 
 Queries the statistics on task execution modes. This operation is supported by Cloud Security Scanner V3.4.0 and later.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskRunTypeStats | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -4297,10 +4361,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | cycle | Integer | 10 | The number of tasks that are periodically run. |
 | immediately | Integer | 10 | The number of tasks that are run immediately after they are created. |
 | once | Integer | 10 | The number of tasks that are run at the specified time. |
+
+**Examples**
 
 Sample requests
 
@@ -4311,22 +4380,22 @@ https://[Endpoint]/?Action=TaskRunTypeStats&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "cycle":10,
     "immediately":10,
     "once":10
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskRunTypeStatsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <cycle>10</cycle>
     <immediately>10</immediately>
     <once>10</once>
+</TaskRunTypeStatsResponse>
 ```
 
 **Error codes**
@@ -4334,24 +4403,17 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:TaskQueueTaskCount | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| await | Integer | 7 | The number of pending tasks. |
-| run | Integer | 2 | The number of tasks that are running. |
-| task queue _ | Integer | 1 | The number of task queues. |
-
-#### TaskQueueTaskCount
+#### 5.2.33 TaskQueueTaskCount
 
 Queries the statistics on tasks.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:TaskQueueTaskCount | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -4362,6 +4424,15 @@ You can call this operation up to 10 times per second per account. You can call 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| await | Integer | 7 | The number of pending tasks. |
+| run | Integer | 2 | The number of tasks that are running. |
+| task queue _ | Integer | 1 | The number of task queues. |
+
+**Examples**
 
 Sample requests
 
@@ -4371,41 +4442,41 @@ https://[Endpoint]/?Action=TaskQueueTaskCount&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:SuspendStatus | undefined | acs:yundun-scanner:*: {#accountId}:* |
-
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "await":7,
     "run":2,
     "task_queue":1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <TaskQueueTaskCountResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <await>7</await>
     <run>2</run>
     <task_queue>1</task_queue>
+</TaskQueueTaskCountResponse>
 ```
 
 **Error codes**
 
-#### SuspendStatus
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+#### 5.2.34 SuspendStatus
 
 Queries the task status.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:SuspendStatus | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -4415,17 +4486,14 @@ You can call this operation up to 10 times per second per account. You can call 
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| data | String |  | The task status. |
+| data | String |   | The task status. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4436,45 +4504,42 @@ https://[Endpoint]/?Action=SuspendStatus&RegionId=cn-hangzhou
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "data":""
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <SuspendStatusResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data></data>
+</SuspendStatusResponse>
 ```
 
 **Error codes**
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeHostAssetList | Read | acs:yundun-scanner:: {#accountId}: |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
 
-| Parameter | Type | Locatio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| vpc id _ | String | body | No | vpc- l0miygn8aj171l811 5eg1 | The VPC ID. |
-| group ids _ | String | body | No | [1, 2] | The asset group IDs. |
-| staff ids _ | String | body | No | [1, 2] | The asset owner IDs. |
-| tag ids _ | String | body | No | [11, 22] | The IDs of the asset tags. |
-| is alive _ | Boolean | body | No | true | Specifies whether to query only for assets that are online. |
+## 6 Vulnerability Scan V2
 
-## Vulnerability Scan V2
+### 6.1 Asset API
 
-### Asset API
+#### 6.1.1 Host assets
 
-#### Host assets
-
-##### DescribeHostAssetList
+##### 6.1.1.1 DescribeHostAssetList
 
 Retrieves a list of host assets.
 
 **Authorization**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeHostAssetList | Read | acs:yundun-scanner:: {#accountId}: |
 
 **Rate limit**
 
@@ -4485,6 +4550,14 @@ Single-user rate limit: 10 queries per second (QPS). API rate limit: 100 QPS.
 This operation uses common request headers and has no special request headers. For more information, see common parameters.
 
 **Request parameters**
+
+| Parameter | Type | Locatio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| vpc id _ | String | body | No | vpc- l0miygn8aj171l811 5eg1 | The VPC ID. |
+| group ids _ | String | body | No | [1, 2] | The asset group IDs. |
+| staff ids _ | String | body | No | [1, 2] | The asset owner IDs. |
+| tag ids _ | String | body | No | [11, 22] | The IDs of the asset tags. |
+| is alive _ | Boolean | body | No | true | Specifies whether to query only for assets that are online. |
 
 | asset source _ | String | body | No | ["AUTO", "MANUAL"] | The source of the assets. MANUAL : manually added. AUTO : automatically discovered. |
 |---|---|---|---|---|---|
@@ -4500,9 +4573,9 @@ This operation uses common request headers and has no special request headers. F
 | page | Integer | body | No | 1 | The page number. |
 | page size _ | Integer | body | No | 20 | The page size. Default value: 20. |
 
-|  | UPDATED |
+|   | UPDATED |
 |---|---|
-| SAME |  |
+| SAME |   |
 
 | risk levels _ | String | body | No | ["HIGH","MIDDLE"] | The risk levels of the assets. HIGH : High risk MIDDLE : Medium risk LOW : Low risk HEALTH : Secure |
 |---|---|---|---|---|---|
@@ -4510,17 +4583,17 @@ This operation uses common request headers and has no special request headers. F
 | update tm e _ _ nd | String | body | No | 2024-02-04 00:00:00 | The end of the asset update time range. |
 | update tm st _ _ art | String | body | No | 2024-01-04 00:00:00 | The beginning of the asset update time range. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The ID of the request, which is a unique identifier generated by Alibaba Cloud. You can use this ID to troubleshoot issues. |
 | count | Integer | 10 | The total number of entries returned. |
-| results | Array |  | The list of host assets. |
+| results | Array |   | The list of host assets. |
 | results[].vpc id _ | String | vpc- l0miygn8aj171l8115eg 1 | The VPC ID. |
 | results[].asset id _ | Integer | 123 | The asset ID. |
 | results[].group id _ | Integer | 1 | The asset group ID. |
 | results[].asset name _ | String | 192.168.100.100 | The asset name. |
-
-**Response parameters**
 
 | results[].group name _ | String | this is a group name | The asset group name. |
 |---|---|---|---|
@@ -4534,7 +4607,7 @@ This operation uses common request headers and has no special request headers. F
 | results[].risk count _ | Integer | 100 | The number of security vulnerabilities. |
 | results[].compliance ri _ sk count _ | Integer | 100 | The number of compliance vulnerabilities. |
 | results[].remark | String | this is a reremark | The remark. |
-| results[].cdn | String |  | Information about the CDN. |
+| results[].cdn | String |   | Information about the CDN. |
 | results[].finger print _ | Array | [{}] | The asset fingerprint. |
 | results[].asset tags _ | Array | [{"tag id": 11, _ "tag name": "EIP"}] _ | The asset tags. |
 | results[].asset tags[].t _ ag id _ | Integer | 11 | The asset tag ID. |
@@ -4549,10 +4622,12 @@ This operation uses common request headers and has no special request headers. F
 | results[].scan tm _ | Integer | 1774428275 | The timestamp of the last scan. Unit: seconds. |
 | results[].update tm _ | Integer | 1774428275 | The timestamp of the last update. Unit: seconds. |
 
+**Examples**
+
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -4579,7 +4654,7 @@ POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Conte
     "MANUAL"
 ```
 
-] `],`
+`]` `],`
 
 ```json
   "changings": [
@@ -4645,17 +4720,15 @@ POST https://[Endpoint]/?Action=DescribeHostAssetList&RegionId=cn-hangzhou Conte
   "search": "",
   "update_tm_end": "2024-02-04 00:00:00",
   "update_tm_start": "2024-01-04 00:00:00"
-}
 ```
 
 Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -4673,17 +4746,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "remark": "this is a reremark",
       "cdn": "",
       "finger_print": [
-        {}
 ```
 
-`],`
+`{}` `],`
 
 ```json
       "asset_tags": [
-        {
           "tag_id": 11,
           "tag_name": "EIP"
-        }
 ```
 
 `],`
@@ -4701,22 +4771,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "scan_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeHostAssetListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -4757,31 +4817,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeHostAssetListResponse>
 ```
 
 **Error codes**
 
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+
 | 500 | 101 | server-side passthrough | An internal error occurred. This error is passed through from a backend service. |
 |---|---|---|---|
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeWebsiteAssetL ist | Read | acs:yundun-scanner:: {#accountId}: |
+#### 6.1.2 Website assets
 
-| Parameter | Type | Locatio n | Require d | Example | Description |
-|---|---|---|---|---|---|
-| vpc id _ | String | body | No | vpc- l0miygn8aj171l811 5eg1 | The ID of the VPC. |
-| group ids _ | String | body | No | [1, 2] | The ID of the asset group. This parameter is a JSON array of integers. |
-| staff ids _ | String | body | No | [1, 2] | The ID of the asset owner. This parameter is a JSON array of integers. |
-| tag ids _ | String | body | No | [11, 22] | The ID of the asset tag. This parameter is a JSON array of integers. |
-
-#### Website assets
-
-##### DescribeWebsiteAssetList
+##### 6.1.2.1 DescribeWebsiteAssetList
 
 Retrieves a list of your website assets.
 
 **Authorization information**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeWebsiteAssetL ist | Read | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -4792,6 +4849,13 @@ The request rate for a single user is limited to 10 queries per second (QPS). Th
 This operation uses only common request headers. For more information, see Common request parameters.
 
 **Request parameters**
+
+| Parameter | Type | Locatio n | Require d | Example | Description |
+|---|---|---|---|---|---|
+| vpc id _ | String | body | No | vpc- l0miygn8aj171l811 5eg1 | The ID of the VPC. |
+| group ids _ | String | body | No | [1, 2] | The ID of the asset group. This parameter is a JSON array of integers. |
+| staff ids _ | String | body | No | [1, 2] | The ID of the asset owner. This parameter is a JSON array of integers. |
+| tag ids _ | String | body | No | [11, 22] | The ID of the asset tag. This parameter is a JSON array of integers. |
 
 | website type _ | String | body | No | ["IP", "DOMAIN"] | The website type. This parameter is a JSON array of strings. Valid values: DOMAIN : Domain- based websites. IP : IP-based websites. |
 |---|---|---|---|---|---|
@@ -4812,15 +4876,15 @@ This operation uses only common request headers. For more information, see Commo
 | update tm end _ _ | String | body | No | 2024-02-04 00:00:00 | The end of the time range for filtering by asset update time. The time is in the yyyy-MM-dd HH:mm:ss format. |
 | update tm start _ _ | String | body | No | 2024-01-04 00:00:00 | The start of the time range for filtering by asset update time. The time is in the yyyy-MM-dd HH:mm:ss format. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Response parameters**
 
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID generated for the request. This ID is used for troubleshooting. |
 |---|---|---|---|
 | count | Integer | 10 | The total number of entries returned. |
-| results | Array |  | The list of website assets. |
+| results | Array |   | The list of website assets. |
 | results[].vpc id _ | String | vpc- l0miygn8aj171l8115eg 1 | The ID of the VPC. |
 | results[].asset id _ | Integer | 123 | The asset ID. |
 | results[].group id _ | Integer | 1 | The group ID. |
@@ -4838,7 +4902,7 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | results[].compliance ri _ sk count _ | Integer | 100 | The number of compliance vulnerabilities. |
 | results[].title | String | this is a title | The website title. |
-| results[].custom title _ | String |  | The custom title. |
+| results[].custom title _ | String |   | The custom title. |
 | results[].remark | String | this is a remark | The remark. |
 | results[].waf | Boolean | true | Indicates whether the website is protected by a WAF. |
 | results[].finger print _ | Array | [{}] | The asset fingerprint information. |
@@ -4847,7 +4911,7 @@ This operation uses only common request headers. For more information, see Commo
 | results[].asset tags[].t _ ag name _ | String | EIP | The tag name. |
 | results[].staff | Object | {} | The information of the asset owner. |
 | results[].asset source _ | String | System Discovered | The source of the asset. |
-| results[].screenshot | String |  | The website screenshot, encoded in Base64. |
+| results[].screenshot | String |   | The website screenshot, encoded in Base64. |
 | results[].status code _ | Integer | 200 | The HTTP status code of the website. |
 
 | results[].insert tm _ | Integer | 1774428275 | The time the asset was imported. This value is a timestamp. |
@@ -4855,10 +4919,12 @@ This operation uses only common request headers. For more information, see Commo
 | results[].scan tm _ | Integer | 1774428275 | The scan time. This value is a timestamp. |
 | results[].update tm _ | Integer | 1774428275 | The time the asset was last updated. This value is a timestamp. |
 
+**Examples**
+
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -4935,17 +5001,15 @@ POST https://[Endpoint]/?Action=DescribeWebsiteAssetList&RegionId=cn-hangzhou Co
 ```json
   "update_tm_end": "2024-02-04 00:00:00",
   "update_tm_start": "2024-01-04 00:00:00"
-}
 ```
 
 Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -4965,17 +5029,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "remark": "this is a reremark",
       "waf": true,
       "finger_print": [
-        {}
 ```
 
-`],`
+`{}` `],`
 
 ```json
       "asset_tags": [
-        {
           "tag_id": 11,
           "tag_name": "EIP"
-        }
 ```
 
 `],`
@@ -4988,22 +5049,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "scan_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeWebsiteAssetListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -5044,32 +5095,28 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeWebsiteAssetListResponse>
 ```
 
 **Error codes**
 
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+
 | 500 | 101 | An internal server error occurred. | The server encountered an internal error and could not complete your request. |
 |---|---|---|---|
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeDomainAssetL ist | undefined | acs:yundun-scanner:: {#accountId}: |
+#### 6.1.3 Domain name assets
 
-| Parameter | Type | In | Required | Example | Description |
-|---|---|---|---|---|---|
-| vpc id _ | String | body | No | vpc- l0miygn8aj17 1l8115eg1 | The ID of the VPC. |
-| group ids _ | String | body | No | [1, 2] | An array of asset group IDs. |
-| staff ids _ | String | body | No | [1, 2] | An array of staff IDs. |
-| tag ids _ | String | body | No | [11, 22] | An array of asset tag IDs. |
-| is alive _ | Boolean | body | No | true | Specifies whether the asset is alive. |
-
-#### Domain name assets
-
-##### DescribeDomainAssetList
+##### 6.1.3.1 DescribeDomainAssetList
 
 Queries a list of domain assets.
 
 **Authorization**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeDomainAssetL ist | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -5081,45 +5128,53 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
-| parse status _ | String | body | No | ["FAILED", "SUCCESS"] | The domain resolution status. Valid values: FAILED : The resolution failed. SUCCESS : The resolution succeeded. |  |  |
+| Parameter | Type | In | Required | Example | Description |
+|---|---|---|---|---|---|
+| vpc id _ | String | body | No | vpc- l0miygn8aj17 1l8115eg1 | The ID of the VPC. |
+| group ids _ | String | body | No | [1, 2] | An array of asset group IDs. |
+| staff ids _ | String | body | No | [1, 2] | An array of staff IDs. |
+| tag ids _ | String | body | No | [11, 22] | An array of asset tag IDs. |
+| is alive _ | Boolean | body | No | true | Specifies whether the asset is alive. |
+
+| parse status _ | String | body | No | ["FAILED", "SUCCESS"] | The domain resolution status. Valid values: FAILED : The resolution failed. SUCCESS : The resolution succeeded. |   |   |
 |---|---|---|---|---|---|---|---|
-| asset source _ | String | body | No | ["AUTO", "MANUAL"] | The asset source. Valid values: MANUAL : The asset was manually added. AUTO : The asset was automatically discovered. |  |  |
-| changings | String | body | No | ["NEW", "UPDATED"] | The type of asset change. Valid values: NEW : The asset is newly discovered. UPDATED : The asset has been updated. SAME : The asset has not changed. OFFLINE : The asset is offline. |  |  |
-| insert tm en _ _ d | String | body | No | 2024-02-04 00:00:00 | The end of the creation time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |  |  |
-|  |  |  |  |  |  | yyyy-MM-dd |  |
-| insert tm sta _ _ rt | String | body | No | 2024-01-04 00:00:00 | The start of the creation time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |  |  |
-|  |  |  |  |  |  | yyyy-MM-dd |  |
-| is cdn _ | Boolean | body | No | true | Specifies whether a CDN is used for the domain asset. |  |  |
-| is wildcard _ | Boolean | body | No | true | Specifies whether the asset is a wildcard domain. |  |  |
-| page | Integer | body | No | 1 | The page number. |  |  |
+| asset source _ | String | body | No | ["AUTO", "MANUAL"] | The asset source. Valid values: MANUAL : The asset was manually added. AUTO : The asset was automatically discovered. |   |   |
+| changings | String | body | No | ["NEW", "UPDATED"] | The type of asset change. Valid values: NEW : The asset is newly discovered. UPDATED : The asset has been updated. SAME : The asset has not changed. OFFLINE : The asset is offline. |   |   |
+| insert tm en _ _ d | String | body | No | 2024-02-04 00:00:00 | The end of the creation time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |   |   |
+|   |   |   |   |   |   | yyyy-MM-dd |   |
+| insert tm sta _ _ rt | String | body | No | 2024-01-04 00:00:00 | The start of the creation time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |   |   |
+|   |   |   |   |   |   | yyyy-MM-dd |   |
+| is cdn _ | Boolean | body | No | true | Specifies whether a CDN is used for the domain asset. |   |   |
+| is wildcard _ | Boolean | body | No | true | Specifies whether the asset is a wildcard domain. |   |   |
+| page | Integer | body | No | 1 | The page number. |   |   |
 
-|  | HH:mm:ss |
+|   | HH:mm:ss |
 |---|---|
 
-|  | HH:mm:ss |
+|   | HH:mm:ss |
 |---|---|
 
-| page size _ | Integer | body | No | 20 | The number of entries per page. |  |
+| page size _ | Integer | body | No | 20 | The number of entries per page. |   |
 |---|---|---|---|---|---|---|
-| risk levels _ | String | body | No | ["HIGH", "MIDDLE"] | An array of risk levels. Valid values: HIGH MIDDLE LOW HEALTH |  |
-| search | String | body | No | baidu.com | A keyword for a fuzzy search by domain name or IP address. |  |
-| update tm e _ _ nd | String | body | No | 2024-02-04 00:00:00 | The end of the update time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |  |
-| update tm st _ _ art | String | body | No | 2024-01-04 00:00:00 | The start of the update time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |  |
+| risk levels _ | String | body | No | ["HIGH", "MIDDLE"] | An array of risk levels. Valid values: HIGH MIDDLE LOW HEALTH |   |
+| search | String | body | No | baidu.com | A keyword for a fuzzy search by domain name or IP address. |   |
+| update tm e _ _ nd | String | body | No | 2024-02-04 00:00:00 | The end of the update time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |   |
+| update tm st _ _ art | String | body | No | 2024-01-04 00:00:00 | The start of the update time range. Specify the time in the yyyy-MM-dd HH:mm:ss format. |   |
 
-|  | HH:mm:ss |
+|   | HH:mm:ss |
 |---|---|
 
-|  | HH:mm:ss |
+|   | HH:mm:ss |
 |---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. This unique identifier is generated by Alibaba Cloud and can be used to troubleshoot issues. |
 | count | Integer | 10 | The total count of domain assets that match the filter conditions. |
-| results | Array |  | An array of domain asset objects. |
+| results | Array |   | An array of domain asset objects. |
 | results[].vpc id _ | String | vpc- l0miygn8aj171l8115eg 1 | The ID of the VPC. |
-
-**Response parameters**
 
 | results[].asset id _ | Integer | 123 | The asset ID. |
 |---|---|---|---|
@@ -5133,7 +5188,7 @@ This operation uses only common request headers. For more information, see Commo
 | results[].is alive _ | Integer | 1 | The liveness status. A value of 1 indicates that the asset is alive. A value of 0 indicates that it is not. |
 | results[].hostname | String | 192.168.100.100 | The hostname. |
 | results[].remark | String | This is a remark. | Remarks for the asset. |
-| results[].parsed | String |  | The domain resolution status. |
+| results[].parsed | String |   | The domain resolution status. |
 | results[].parse err _ | String | Domain resolution timed out. | The reason for a domain resolution failure. |
 | results[].cdn | String | Alibaba Cloud | The CDN provider. |
 | results[].asset tags _ | Array | [{"tag id": 11, _ "tag name": "EIP"}] _ | An array of asset tag objects. |
@@ -5160,10 +5215,12 @@ This operation uses only common request headers. For more information, see Commo
 | results[].scan tm _ | Integer | 1774428275 | The time when the asset was last scanned. This value is a Unix timestamp. |
 | results[].update tm _ | Integer | 1774428275 | The time when the asset was last updated. This value is a Unix timestamp. |
 
+**Examples**
+
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "vpc-l0miygn8aj171l8115eg1",
   "group_ids": [
 ```
@@ -5226,20 +5283,18 @@ POST https://[Endpoint]/?Action=DescribeDomainAssetList&RegionId=cn-hangzhou Con
   "search": "",
   "update_tm_end": "2024-02-04 00:00:00",
   "update_tm_start": "2024-01-04 00:00:00"
-}
 ```
 
 Sample responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
 ```
 
 ```json
   "count": 10,
   "results": [
-    {
       "vpc_id": "vpc-l0miygn8aj171l8115eg1",
       "asset_id": 123,
       "group_id": 1,
@@ -5256,10 +5311,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "parse_err": "Domain resolution timed out.",
       "cdn": "Alibaba Cloud",
       "asset_tags": [
-        {
           "tag_id": 11,
           "tag_name": "EIP"
-        }
 ```
 
 `],`
@@ -5267,24 +5320,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```json
       "staff": {},
       "domain_parsed": [
-        {
           "id": 123,
           "ip": "192.168.131.100",
           "insert_tm": 1774428275,
           "update_tm": 1774428275
-        }
 ```
 
 `],`
 
 ```json
       "parsed_history": [
-        {
           "id": 123,
           "ip": "192.168.131.100",
           "insert_tm": 1774428275,
           "update_tm": 1774428275
-        }
 ```
 
 `],`
@@ -5295,23 +5344,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "scan_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
+`]` `XML` format
 
 ```
-}
-```
-
-`XML` format
-
-```
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml
 ```
 
 ```xml
-Cotet ype:app cato/
+Cotet ype:app cato/ <DescribeDomainAssetListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -5361,31 +5403,24 @@ Cotet ype:app cato/
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeDomainAssetListResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 101 | Internal server error. | An internal server error occurred. The error is passed from a backend service. |
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:DeleteAsset | Not specified | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| add white _ | Integer | body | No | 1 | Whether to add the asset to the whitelist. |
-| ids | Array | body | No | [123, 456] | A list of asset IDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-**Error codes**
-
-#### DeleteAsset
+#### 6.1.4 DeleteAsset
 
 Deletes one or more assets.
 
 **Authorization**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:DeleteAsset | Not specified | acs:yundun-scanner:: {#accountId}: |
 
 **Rate limiting**
 
@@ -5397,69 +5432,64 @@ This operation uses common request headers. For more information, see Common Req
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| add white _ | Integer | body | No | 1 | Whether to add the asset to the whitelist. |
+| ids | Array | body | No | [123, 456] | A list of asset IDs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique request ID generated by Alibaba Cloud. Use this ID to troubleshoot issues. |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | server-side passthrough | server-side passthrough |
+**Examples**
 
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DeleteAsset&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DeleteAsset&RegionId=cn-hangzhou Content-Type: application/json
   "add_white": 1,
   "ids": [
     123,
 ```
 
-]
-
-```
-}
-```
-
-Successful response example `JSON` format
+`]` Successful response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteAssetResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</DeleteAssetResponse>
 ```
 
 **Error codes**
 
-### Task API
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | server-side passthrough | server-side passthrough |
 
-| Actions | Access Level | Resource Type |
-|---|---|---|
-| yundun- scanner:CreateAssetImportTask | undefined | acs:yundun-scanner:: {#accountId}: |
+### 6.2 Task API
 
-| Parameter | Type | In | Required | Example | Description |
-|---|---|---|---|---|---|
-| vpc id _ | String | body | No | vpc 1 _ | The VPC ID. |
-| template id _ | Integer | body | No | 1 | The template ID. |
-| group id _ | Integer | body | No | 0 | The asset group ID. A value of 0 indicates the default group. |
-| staff id _ | Integer | body | No | 1 | The owner ID. |
-| tag ids _ | String | body | No | [1, 2, 3] | A list of tag IDs. |
-| task name _ | String | body | Yes | Risk-Scan- Task-Test | The task name. |
+#### 6.2.1 Asset import task
 
-#### Asset import task
-
-##### CreateAssetImportTask
+##### 6.2.1.1 CreateAssetImportTask
 
 Creates an asset import task.
 
 **Authorization**
+
+| Actions | Access Level | Resource Type |
+|---|---|---|
+| yundun- scanner:CreateAssetImportTask | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -5470,6 +5500,15 @@ Calls from a single user are limited to 10 queries per second (QPS). Calls to th
 This operation uses only common request headers. For more information, see Common request parameters.
 
 **Request parameters**
+
+| Parameter | Type | In | Required | Example | Description |
+|---|---|---|---|---|---|
+| vpc id _ | String | body | No | vpc 1 _ | The VPC ID. |
+| template id _ | Integer | body | No | 1 | The template ID. |
+| group id _ | Integer | body | No | 0 | The asset group ID. A value of 0 indicates the default group. |
+| staff id _ | Integer | body | No | 1 | The owner ID. |
+| tag ids _ | String | body | No | [1, 2, 3] | A list of tag IDs. |
+| task name _ | String | body | Yes | Risk-Scan- Task-Test | The task name. |
 
 | network type _ | Integer | body | No | 1 | Specifies the network type. Valid values include: - 1 : public network - 2 : private network |
 |---|---|---|---|---|---|
@@ -5482,17 +5521,19 @@ This operation uses only common request headers. For more information, see Commo
 | screen shot _ | Integer | body | No | 1 | Specifies whether to enable website screenshots. Valid values include: - 1 : Enable - 0 : Disable |
 | start tm _ | String | body | No | 2020-01-01 00:00:00 | The time when the task is scheduled to start. The value must be in the 'YYYY-MM-DD hh:mm:ss' format. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID generated by Alibaba Cloud for this request. Use this ID to troubleshoot issues. |
 | task instance id _ _ | Integer | 1 | The task instance ID. |
 
-**Response parameters**
+**Examples**
 
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "1",
   "template_id": 1,
   "group_id": 0,
@@ -5508,13 +5549,11 @@ POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Conte
   "is_immediately": 1,
   "is_public_asset": 1,
   "asset_metadatas": [
-    {
       "hostName": "xxlsk",
       "ip": "1.1.1.1",
       "instanceId": "xxx_ss",
       "instanceName": "xxx_ss",
       "osType": "linux"
-    }
 ```
 
 `],`
@@ -5523,50 +5562,40 @@ POST https://[Endpoint]/?Action=CreateAssetImportTask&RegionId=cn-hangzhou Conte
   "not_alive_report": 1,
   "screen_shot": 1,
   "start_tm": "2020-01-01 00:00:00"
-}
 ```
 
 Successful response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_instance_id": 1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <CreateAssetImportTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_instance_id>1</task_instance_id>
+</CreateAssetImportTaskResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 101 | Internal service error | An internal server error occurred while processing the request. |
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeAssetImportTa sk | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| task instance _ id _ | Integer | Body | No | 1 | The task instance ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID generated for the request. Use this ID to troubleshoot issues. |
-| vpc id _ | String | 1 | The VPC ID. |
-
-**Error codes**
-
-##### DescribeAssetImportTask
+##### 6.2.1.2 DescribeAssetImportTask
 
 Retrieves the details of an asset import task.
 
 **Permissions**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeAssetImportTa sk | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -5578,7 +5607,16 @@ This operation uses only common request headers. For more information, see commo
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| task instance _ id _ | Integer | Body | No | 1 | The task instance ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID generated for the request. Use this ID to troubleshoot issues. |
+| vpc id _ | String | 1 | The VPC ID. |
 
 | id | Integer | 1 | The task ID. |
 |---|---|---|---|
@@ -5601,18 +5639,19 @@ This operation uses only common request headers. For more information, see commo
 | insert tm _ | Integer | 1774428275 | The task creation time. |
 | start time _ | Integer | 1774428275 | The task start time. |
 
+**Examples**
+
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DescribeAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeAssetImportTask&RegionId=cn-hangzhou Content-Type: application/json
   "task_instance_id": 1
-}
 ```
 
 Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "vpc_id": "1",
   "id": 1,
@@ -5632,13 +5671,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "finish_time": 1774428275,
   "insert_tm": 1774428275,
   "start_time": 1774428275
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetImportTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <vpc_id>1</vpc_id>
     <id>1</id>
@@ -5658,28 +5696,24 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <finish_time>1774428275</finish_time>
     <insert_tm>1774428275</insert_tm>
     <start_time>1774428275</start_time>
+</DescribeAssetImportTaskResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 101 | Server Passthrough | A pass-through error message from the server. |
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeAssetImportTa skResult | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| task instance _ id _ | Integer | body | No | 1 | The task instance ID. |
-| asset type _ | String | body | No | IP | The asset type. Valid values: IP WEBSITE DOMAIN |
-
-**Error codes**
-
-##### DescribeAssetImportTaskResult
+##### 6.2.1.3 DescribeAssetImportTaskResult
 
 Returns a list of results for an asset import task.
 
 **Authorization information**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeAssetImportTa skResult | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -5691,50 +5725,55 @@ This operation uses common request headers and has no special request headers. F
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| task instance _ id _ | Integer | body | No | 1 | The task instance ID. |
+| asset type _ | String | body | No | IP | The asset type. Valid values: IP WEBSITE DOMAIN |
+
 | is new _ | Integer | body | No | 1 | Specifies whether the asset is newly discovered. 1 : Yes 0 : No |
 |---|---|---|---|---|---|
 | page | Integer | body | No | 1 | The page number. |
 | page size _ | Integer | body | No | 10 | The page size. |
 | search | String | body | No | 1.1.1.1 | The search keyword. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
 | count | Integer | 100 | The total number of entries returned. |
-| results | Array |  | The list of results. |
+| results | Array |   | The list of results. |
 | results[].id | Integer | 1 | The ID of the entry. |
 | results[].task instance _ id _ | Integer | 1 | The task instance ID. |
 | results[].asset name _ | String | 1.1.1.1 | The asset name. |
 | results[].is new _ | Integer | 1 | Indicates whether the asset is newly discovered. 1 : Yes 0 : No |
-
-**Response parameters**
 
 | results[].is deleted _ | Boolean | false | Indicates whether the asset is deleted. true : Yes false : No |
 |---|---|---|---|
 | results[].asset source _ | String | Host Import | The asset source. |
 | results[].insert tm _ | Integer | 1774428275 | The time when the entry was created. This value is a UNIX timestamp. |
 
+**Examples**
+
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DescribeAssetImportTaskResult&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeAssetImportTaskResult&RegionId=cn-hangzhou Content-Type: application/json
   "task_instance_id": 1,
   "asset_type": "IP",
   "is_new": 1,
   "page": 1,
   "page_size": 10,
   "search": "1.1.1.1"
-}
 ```
 
 Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 100,
   "results": [
-    {
       "id": 1,
       "task_instance_id": 1,
       "asset_name": "1.1.1.1",
@@ -5742,27 +5781,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "is_deleted": false,
       "asset_source": "Host Import",
       "insert_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | server-side pass- through | A server-side pass- through error occurred. |
-
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:CreateAssetScanTask | N/A | acs:yundun-scanner:: {#accountId}: |
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetImportTaskResultResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>100</count>
     <results>
@@ -5776,17 +5800,26 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <insert_tm>1774428275</insert_tm>
         </item>
     </results>
+</DescribeAssetImportTaskResultResponse>
 ```
 
 **Error codes**
 
-#### Asset scan
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | server-side pass- through | A server-side pass- through error occurred. |
 
-##### CreateAssetScanTask
+#### 6.2.2 Asset scan
+
+##### 6.2.2.1 CreateAssetScanTask
 
 Creates an asset scan task.
 
 **Permissions**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:CreateAssetScanTask | N/A | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -5794,87 +5827,76 @@ Rate limit for a single user: 10 queries per second (QPS). Rate limit for this A
 
 **Request headers**
 
+This operation uses only common request headers. For more information, see Common request headers.
+
+**Request parameters**
+
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | vpc id _ | String | body | No | 1 | The ID of the VPC. |
 | template id _ | Integer | body | No | 1 | The template ID. |
 | task name _ | String | body | Yes | Risk-Scan- Task-Test | The task name. |
-| targets | String | body | No |  | The scan targets, specified as a JSON-formatted string. You can scan all assets of a certain type ( ALL IP , _ ALL WEBSITE , _ ALL ASSET , _ ALL DOMAIN ) by setting _ the value to 1 , or scan specific asset groups by ID ( GROUP ). To scan specific IP assets by ID, use the IP key. To scan specific website or domain assets by ID, use the WEBSITE and DOMAIN keys. |
+| targets | String | body | No |   | The scan targets, specified as a JSON-formatted string. You can scan all assets of a certain type ( ALL IP , _ ALL WEBSITE , _ ALL ASSET , _ ALL DOMAIN ) by setting _ the value to 1 , or scan specific asset groups by ID ( GROUP ). To scan specific IP assets by ID, use the IP key. To scan specific website or domain assets by ID, use the WEBSITE and DOMAIN keys. |
 | screen shot _ | Integer | body | No | 1 | Specifies whether to capture website screenshots. Set the value to 1 to capture a website screenshot. Set the value to 0 not to capture a website screenshot. |
 
-|  | WEBSITE |
+|   | WEBSITE |
 |---|---|
-| DOMAIN |  |
+| DOMAIN |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-This operation uses only common request headers. For more information, see Common request headers.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
 |---|---|---|---|
 | task id _ | Integer | 1 | The ID of the created asset scan task. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | internal service error | The request failed due to an internal server error. |
+**Examples**
 
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=CreateAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=CreateAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "1",
   "template_id": 1,
   "task_name": "Risk-Scan-Task-Test",
   "targets": "",
   "screen_shot": 1
-}
 ```
 
 Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_id": 1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <CreateAssetScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_id>1</task_id>
+</CreateAssetScanTaskResponse>
 ```
 
 **Error codes**
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeAssetScanTas k | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| id | Integer | body | No | 1 | The ID of the asset scan task. |
-
-| Parameter | Type | Example | Description |
+| HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. Use this ID to troubleshoot issues. |
-| id | Integer | 1 | The asset scan task ID. |
-| task instance id _ _ | Integer | 1 | The task instance ID. |
-| template id _ | Integer | 1 | The template ID. |
-| name | String | Example asset scan | The asset scan task name. |
+| 500 | 101 | internal service error | The request failed due to an internal server error. |
 
-##### DescribeAssetScanTask
+##### 6.2.2.2 DescribeAssetScanTask
 
 Retrieves the details of a specified asset scan task.
 
 **Authorization**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeAssetScanTas k | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -5886,7 +5908,19 @@ This operation uses only common request parameters. For more information, see co
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| id | Integer | body | No | 1 | The ID of the asset scan task. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. Use this ID to troubleshoot issues. |
+| id | Integer | 1 | The asset scan task ID. |
+| task instance id _ _ | Integer | 1 | The task instance ID. |
+| template id _ | Integer | 1 | The template ID. |
+| name | String | Example asset scan | The asset scan task name. |
 
 | template name _ | String | Example asset scan template | The task template name. |
 |---|---|---|---|
@@ -5900,18 +5934,19 @@ This operation uses only common request parameters. For more information, see co
 | insert tm _ | Integer | 1774428275 | The UNIX timestamp when the task was created. |
 | start tm _ | Integer | 1774428275 | The UNIX timestamp when the task started. |
 
+**Examples**
+
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DescribeAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeAssetScanTask&RegionId=cn-hangzhou Content-Type: application/json
   "id": 1
-}
 ```
 
 Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "id": 1,
   "task_instance_id": 1,
@@ -5920,18 +5955,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "template_name": "Example asset scan template",
   "status": "RUNNING",
   "targets": [
-    {
       "type": "ALL",
       "target": [
 ```
 
-`""` ]
-
-```
-    }
-```
-
-`],`
+`""` `]` `],`
 
 ```json
   "cycle_count": 10,
@@ -5939,25 +5967,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "finish_time": 1774428275,
   "insert_tm": 1774428275,
   "start_tm": 1774428275
-}
 ```
 
 `XML` format
 
-| HTTP code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | Server-side Pass- through | An internal server error occurred. |
-
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:CreateRiskScanTask | undefined | acs:yundun-scanner:: {#accountId}: |
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeAssetScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <id>1</id>
     <task_instance_id>1</task_instance_id>
     <template_id>1</template_id>
+    <name>Example asset scan</name>
     <template_name>Example asset scan template</template_name>
     <status>RUNNING</status>
     <targets>
@@ -5973,35 +5993,30 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <finish_time>1774428275</finish_time>
     <insert_tm>1774428275</insert_tm>
     <start_tm>1774428275</start_tm>
+</DescribeAssetScanTaskResponse>
 ```
 
 **Error codes**
 
-#### Risk scanning
+| HTTP code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | Server-side Pass- through | An internal server error occurred. |
 
-##### CreateRiskScanTask
+#### 6.2.3 Risk scanning
+
+##### 6.2.3.1 CreateRiskScanTask
 
 Creates a risk scan task.
 
 **Authorization**
 
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:CreateRiskScanTask | undefined | acs:yundun-scanner:: {#accountId}: |
+
 **Throttling**
 
-The request rate for a single user is limited to 10 queries per second (QPS).
-
-| Parameter | Type | Locatio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| template id _ | Integer | body | No | 1 | The template ID. |
-| vpc ids _ | String | body | No | ["vpc 1", _ "vpc 2"] _ | The VPC IDs. |
-| task name _ | String | body | Yes | risk-scan-task- test | The task name. |
-| targets | String | body | No |  | The scan targets. ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | A unique identifier for the request. You can use this ID to troubleshoot issues. |
-| task id _ | Integer | 1 |  |
-
-The request rate for this API is limited to 100 queries per second (QPS).
+The request rate for a single user is limited to 10 queries per second (QPS). The request rate for this API is limited to 100 queries per second (QPS).
 
 **Request headers**
 
@@ -6009,19 +6024,26 @@ This operation has no special request headers. For more information, see common 
 
 **Request parameters**
 
+| Parameter | Type | Locatio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| template id _ | Integer | body | No | 1 | The template ID. |
+| vpc ids _ | String | body | No | ["vpc 1", _ "vpc 2"] _ | The VPC IDs. |
+| task name _ | String | body | Yes | risk-scan-task- test | The task name. |
+| targets | String | body | No |   | The scan targets. ALL IP: 0/1 _ ALL WEBSITE: 0/1 _ ALL ASSET: 0/1 _ GROUP: [1,2,3] IP: [1,2,3] WEBSITE: [1,2,3] |
+
 **Response data**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | A unique identifier for the request. You can use this ID to troubleshoot issues. |
+| task id _ | Integer | 1 |   |
+
+**Examples**
 
 Request example
 
-| HTTP code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | server-side passthrough | server-side passthrough |
-
-| Operation | Access level | Resource type |
-|---|---|---|
-
 ```json
-POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json
   "template_id": 1,
   "vpc_ids": [
     "vpc_1",
@@ -6033,49 +6055,42 @@ POST https://[Endpoint]/?Action=CreateRiskScanTask&RegionId=cn-hangzhou Content-
 ```json
   "task_name": "risk-scan-task-test",
   "targets": ""
-}
 ```
 
 Successful response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "task_id": 1
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <CreateRiskScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <task_id>1</task_id>
+</CreateRiskScanTaskResponse>
 ```
 
 **Error codes**
 
-##### DescribeRiskScanTask
+| HTTP code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | server-side passthrough | server-side passthrough |
+
+##### 6.2.3.2 DescribeRiskScanTask
 
 Retrieves the details of a specific risk scan task.
 
 **Authorization**
 
-| yundun- scanner:DescribeRiskScanTask | undefined | acs:yundun-scanner:: {#accountId}: |
+| Operation | Access level | Resource type |
 |---|---|---|
 
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| id | Integer | body | No | 1 | The ID of the risk scan task. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID of the request, generated by Alibaba Cloud. This ID is required for troubleshooting. |
-| id | Integer | 1 | The ID of the risk scan task. |
-| task instance id _ _ | Integer | 1 | The ID of the task instance. |
-| template id _ | Integer | 1 | The ID of the template. |
-| name | String | xx risk scan | The name of the task. |
-| template name _ | String | xx risk scan template | The name of the task template. |
+| yundun- scanner:DescribeRiskScanTask | undefined | acs:yundun-scanner:: {#accountId}: |
+|---|---|---|
 
 **Throttling**
 
@@ -6087,7 +6102,20 @@ This operation uses only common request headers. For more information, see commo
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| id | Integer | body | No | 1 | The ID of the risk scan task. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID of the request, generated by Alibaba Cloud. This ID is required for troubleshooting. |
+| id | Integer | 1 | The ID of the risk scan task. |
+| task instance id _ _ | Integer | 1 | The ID of the task instance. |
+| template id _ | Integer | 1 | The ID of the template. |
+| name | String | xx risk scan | The name of the task. |
+| template name _ | String | xx risk scan template | The name of the task template. |
 
 | status | String | RUNNING | The status of the task. A value of INIT indicates that the task is initializing. |
 |---|---|---|---|
@@ -6099,18 +6127,19 @@ This operation uses only common request headers. For more information, see commo
 | insert tm _ | Integer | 1774428275 | The creation time of the task. This value is a Unix timestamp. |
 | start tm _ | Integer | 1774428275 | The start time of the task. This value is a Unix timestamp. |
 
+**Examples**
+
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeRiskScanTask&RegionId=cn-hangzhou Content-Type: application/json
   "id": 1
-}
 ```
 
 Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "id": 1,
   "task_instance_id": 1,
@@ -6119,31 +6148,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "template_name": "xx risk scan template",
   "status": "RUNNING",
   "targets": [
-    {
       "type": "ALL",
       "target": [
 ```
 
-`""` ]
-
-```
-    }
-```
-
-`],`
+`""` `]` `],`
 
 ```json
   "cycle_count": 10,
   "finish_time": 1774428275,
   "insert_tm": 1774428275,
   "start_tm": 1774428275
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRiskScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <id>1</id>
     <task_instance_id>1</task_instance_id>
@@ -6163,29 +6184,24 @@ HTTP/1.1 200 OK Content-Type:application/xml
     <finish_time>1774428275</finish_time>
     <insert_tm>1774428275</insert_tm>
     <start_tm>1774428275</start_tm>
+</DescribeRiskScanTaskResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 101 | server passthrough | The error message is passed through from an upstream server. |
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeRiskScanTask Result | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | In | Required | Example | Description |
-|---|---|---|---|---|---|
-| task instance _ id _ | Integer | body | No | 1 | The task instance ID. |
-| risk type _ | Integer | body | No | 2 | The risk type. Valid values: 2: security vulnerability 3: compliance vulnerability |
-| page | Integer | body | No | 1 | The page number. |
-
-**Error codes**
-
-##### DescribeRiskScanTaskResult
+##### 6.2.3.3 DescribeRiskScanTaskResult
 
 Retrieves the results of a risk scan task.
 
 **Permissions**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeRiskScanTask Result | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -6197,73 +6213,64 @@ This operation uses only common request headers. For more information, see commo
 
 **Request parameters**
 
+| Parameter | Type | In | Required | Example | Description |
+|---|---|---|---|---|---|
+| task instance _ id _ | Integer | body | No | 1 | The task instance ID. |
+| risk type _ | Integer | body | No | 2 | The risk type. Valid values: 2: security vulnerability 3: compliance vulnerability |
+| page | Integer | body | No | 1 | The page number. |
+
 | page size _ | Integer | body | No | 10 | The number of entries to return on each page. |
 |---|---|---|---|---|---|
 | search | String | body | No | 1 1 1 1 1 _ _ _ _ | The search query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID of the request, generated by Alibaba Cloud. This ID is required for troubleshooting. |
 | count | Integer | 100 | The total number of entries. |
-| results | Array |  | The scan results. |
+| results | Array |   | The scan results. |
 | results[].risk id _ | Integer | 1 | The risk ID. |
 | results[].risk name _ | String | Example security vulnerability | The risk name. |
 | results[].risk type _ | Integer | 3 | The risk type. Valid values: 2: security vulnerability 3: compliance vulnerability |
 | results[].risk level _ | String | LOW | The risk level. Valid values: HIGH: High MIDDLE: Medium LOW: Low |
 | results[].risk addr _ | String | http://1.1.1.1 | The risk address, such as a URL. |
 
-**Response parameters**
-
 | results[].insert tm _ | Integer | 1774428275 | The time the record was inserted, in Unix timestamp format. |
 |---|---|---|---|
+
+**Examples**
 
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeRiskScanTaskResult&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeRiskScanTaskResult&RegionId=cn-hangzhou Content-Type: application/json
   "task_instance_id": 1,
   "risk_type": 2,
   "page": 1,
   "page_size": 10,
   "search": "1_1_1_1_1"
-}
 ```
 
 Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 100,
   "results": [
-    {
       "risk_id": 1,
       "risk_name": "Example security vulnerability",
       "risk_type": 3,
       "risk_level": "LOW",
       "risk_addr": "http://1.1.1.1",
       "insert_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | Server Passthrough | An internal server error occurred. |
-
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeTaskList | undefined | acs:yundun-scanner:: {#accountId}: |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRiskScanTaskResultResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>100</count>
     <results>
@@ -6276,15 +6283,24 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <insert_tm>1774428275</insert_tm>
         </item>
     </results>
+</DescribeRiskScanTaskResultResponse>
 ```
 
 **Error codes**
 
-#### DescribeTaskList
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | Server Passthrough | An internal server error occurred. |
+
+#### 6.2.4 DescribeTaskList
 
 Retrieves a list of tasks.
 
 **Authorization**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeTaskList | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -6310,19 +6326,19 @@ This operation uses only common request headers. For more information, see Commo
 | start time _ | String | body | No | 2020-01- 01 00:00:00 | The start time. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID of the request. Provide this ID when you submit a ticket for troubleshooting. |
 | count | Integer | 10 | The total number of tasks returned. |
-| results | Array |  | An array of task objects. |
+| results | Array |   | An array of task objects. |
 | results[].id | Integer | 1 | The task ID. |
 | results[].task instance _ id _ | Integer | 123 | The task instance ID. |
 | results[].task name _ | String | Asset Scan Task-Test | The task name. |
 | results[].task type _ | Integer | 6 | The task type. |
 | results[].status | String | INIT | The task status. RUNNING : Running INIT : Initializing FINISH : Finished STOP : Stopped |
 | results[].is immediatel _ y | Integer | 1 | Indicates if the task was set to run immediately. 1 : Yes 0 : No |
-
-**Response parameters**
 
 | results[].is public asse _ _ t | Integer | 1 | Indicates if the task targets a public asset. 1 : Yes 0 : No |
 |---|---|---|---|
@@ -6332,10 +6348,12 @@ This operation uses only common request headers. For more information, see Commo
 | results[].end time _ | Integer | 1774428275 | The task end time, in a UNIX timestamp. |
 | results[].insert tm _ | Integer | 1774428275 | The time when the task record was inserted into the database, in a UNIX timestamp. |
 
+**Examples**
+
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Type: application/json
   "template_id": 1,
   "page": 1,
   "page_size": 10,
@@ -6354,6 +6372,7 @@ POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Ty
   "task_types": [
     "assetImport",
     "assetRisk",
+    "assetScan"
 ```
 
 `],`
@@ -6361,18 +6380,16 @@ POST https://[Endpoint]/?Action=DescribeTaskList&RegionId=cn-hangzhou Content-Ty
 ```json
   "end_time": "2020-01-01 00:00:00",
   "start_time": "2020-01-01 00:00:00"
-}
 ```
 
 Response example
 
 ```json
  JSON
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
       "id": 1,
       "task_instance_id": 123,
       "task_name": "Asset Scan Task-Test",
@@ -6385,21 +6402,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "start_time": 1774428275,
       "end_time": 1774428275,
       "insert_tm": 1774428275
-    }
 ```
 
-]
+`]`
 
 ```xml
-}
  XML
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeTaskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
         <item>
             <id>1</id>
             <task_instance_id>123</task_instance_id>
+            <task_name>Asset Scan Task-Test</task_name>
             <task_type>6</task_type>
             <status>INIT</status>
             <is_immediately>1</is_immediately>
@@ -6411,32 +6427,24 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <insert_tm>1774428275</insert_tm>
         </item>
     </results>
+</DescribeTaskListResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 101 | server passthrough | A server passthrough error occurred. |
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:StartTask | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| task ids _ | Array | body | No | [1, 2, 3] | An array of task IDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID of the request. Use this ID for troubleshooting. |
-| data | Array | [{"task instance id": _ _ 208, "task id": 173}] _ | An array containing an object for each started task instance. |
-
-**Error codes**
-
-#### StartTask
+#### 6.2.5 StartTask
 
 Starts one or more tasks.
 
 **Authorization**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:StartTask | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -6448,47 +6456,44 @@ This operation uses only common request headers. For details, see common request
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| task ids _ | Array | body | No | [1, 2, 3] | An array of task IDs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique ID of the request. Use this ID for troubleshooting. |
+| data | Array | [{"task instance id": _ _ 208, "task id": 173}] _ | An array containing an object for each started task instance. |
 
 | data[].task instance id _ _ | Integer | 208 | The task instance ID. |
 |---|---|---|---|
 | data[].task id _ | Integer | 173 | The task ID. |
 
+**Examples**
+
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=StartTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=StartTask&RegionId=cn-hangzhou Content-Type: application/json
   "task_ids": [
 ```
 
-`1,` `2,` ]
-
-```
-}
-```
-
-Sample success response `JSON` format
+`1,` `2,` `]` Sample success response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "data": [
-    {
       "task_instance_id": 208,
       "task_id": 173
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <StartTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <data>
         <item>
@@ -6496,31 +6501,24 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <task_id>173</task_id>
         </item>
     </data>
+</StartTaskResponse>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 101 | server-side pass- through | An internal server error occurred. |
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:StopTask | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Position | Required | Example | Description |
-|---|---|---|---|---|---|
-| task ids _ | String | body | No | [1, 2, 3] | The IDs of the tasks to stop. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique identifier for the request, generated by Alibaba Cloud for troubleshooting purposes. |
-
-**Error codes**
-
-#### StopTask
+#### 6.2.6 StopTask
 
 Stops a task.
 
 **Permissions**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:StopTask | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -6532,65 +6530,60 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parameter | Type | Position | Required | Example | Description |
+|---|---|---|---|---|---|
+| task ids _ | String | body | No | [1, 2, 3] | The IDs of the tasks to stop. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique identifier for the request, generated by Alibaba Cloud for troubleshooting purposes. |
 
 | status | String | OK | The status of the operation. A value of OK indicates that the request was successful. |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | server-side passthrough | An error from a dependent service was passed through. |
+**Examples**
 
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=StopTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=StopTask&RegionId=cn-hangzhou Content-Type: application/json
   "task_ids": [
 ```
 
-`1,` `2,` ]
-
-```
-}
-```
-
-Sample responses `JSON` format
+`1,` `2,` `]` Sample responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <StopTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
+</StopTaskResponse>
 ```
 
 **Error codes**
 
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:SuspendTask | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| task ids _ | String | body | No | [1, 2, 3] | The IDs of the tasks to suspend. |
-
-| Parameter | Type | Example | Description |
+| HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique request ID. Provide this ID to Alibaba Cloud when troubleshooting issues. |
-| status | String | OK | The request status. |
+| 500 | 101 | server-side passthrough | An error from a dependent service was passed through. |
 
-#### SuspendTask
+#### 6.2.7 SuspendTask
 
 Suspends a task.
 
 **Authorization**
+
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:SuspendTask | undefined | acs:yundun-scanner:: {#accountId}: |
 
 **Throttling**
 
@@ -6602,64 +6595,60 @@ This operation uses only common request headers. For more information, see commo
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| task ids _ | String | body | No | [1, 2, 3] | The IDs of the tasks to suspend. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The unique request ID. Provide this ID to Alibaba Cloud when troubleshooting issues. |
+| status | String | OK | The request status. |
+
+**Examples**
 
 Request example
 
-| Http code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | server-side pass- through | server-side pass- through |
-
-| Actions | Access level | Resource type |
-|---|---|---|
-
 ```json
-POST https://[Endpoint]/?Action=SuspendTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=SuspendTask&RegionId=cn-hangzhou Content-Type: application/json
   "task_ids": [
 ```
 
-`1,` `2,` ]
-
-```
-}
-```
-
-Successful response example `JSON` format
+`1,` `2,` `]` Successful response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <SuspendTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
+</SuspendTaskResponse>
 ```
 
 **Error codes**
 
-#### DeleteTask
+| Http code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | server-side pass- through | server-side pass- through |
+
+#### 6.2.8 DeleteTask
 
 Deletes one or more tasks.
 
 **Permissions**
 
-| yundun-scanner:DeleteTask | undefined | acs:yundun-scanner:: {#accountId}: |
+| Actions | Access level | Resource type |
 |---|---|---|
 
-| Parameter | Type | Location | Required | Example | Description |
-|---|---|---|---|---|---|
-| task ids _ | String | body | No | [1, 2, 3] | The IDs of the tasks to delete. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | Alibaba Cloud generates this ID to help you troubleshoot issues. |
-| status | String | OK | The status of the request. A value of OK indicates the request was successful. |
+| yundun-scanner:DeleteTask | undefined | acs:yundun-scanner:: {#accountId}: |
+|---|---|---|
 
 **Throttling**
 
@@ -6671,61 +6660,72 @@ This operation uses only common request headers. For more information, see commo
 
 **Request parameters**
 
+| Parameter | Type | Location | Required | Example | Description |
+|---|---|---|---|---|---|
+| task ids _ | String | body | No | [1, 2, 3] | The IDs of the tasks to delete. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | Alibaba Cloud generates this ID to help you troubleshoot issues. |
+| status | String | OK | The status of the request. A value of OK indicates the request was successful. |
+
+**Examples**
 
 Request example
 
 ```json
-POST https://[Endpoint]/?Action=DeleteTask&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DeleteTask&RegionId=cn-hangzhou Content-Type: application/json
   "task_ids": [
 ```
 
-`1,` `2,` ]
-
-```
-}
-```
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | Server-side pass- through | This indicates a server-side pass- through error. |
-
-| Actions | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:DescribeRiskList | undefined | acs:yundun-scanner:: {#accountId}: |
-
-Successful response example `JSON` format
+`1,` `2,` `]` Successful response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "status": "OK"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DeleteTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status>OK</status>
+</DeleteTaskResponse>
 ```
 
 **Error codes**
 
-### Risk API
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | Server-side pass- through | This indicates a server-side pass- through error. |
 
-#### Security vulnerability
+### 6.3 Risk API
 
-##### DescribeRiskList
+#### 6.3.1 Security vulnerability
+
+##### 6.3.1.1 DescribeRiskList
 
 Retrieves a list of security vulnerabilities.
 
 **Authorization**
 
+| Actions | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:DescribeRiskList | undefined | acs:yundun-scanner:: {#accountId}: |
+
 **Rate limits**
 
 The rate limit for a single user is 10 queries per second (QPS). The rate limit for this API is 100 QPS.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | In | Req uire d | Example | Description |
 |---|---|---|---|---|---|
@@ -6738,43 +6738,39 @@ The rate limit for a single user is 10 queries per second (QPS). The rate limit 
 | detect status _ | String | body | No | ["SUCCESS", "FAILED", "DETECTING"] | The detection statuses, formatted as a JSON array of strings. Valid values: SUCCESS : The detection was successful. FAILED : The detection failed. DETECTING : The detection is in progress. |
 | source | String | body | No | ["1", "2"] | The risk sources, formatted as a JSON array of strings. |
 
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-| insert tm end _ _ | String | body | No | 2021-01-04 00:00:00 | The end of the discovery time range. The format is YYYY- MM-DD hh:mm:ss . |  |  |
+| insert tm end _ _ | String | body | No | 2021-01-04 00:00:00 | The end of the discovery time range. The format is YYYY- MM-DD hh:mm:ss . |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | YYYY- |  |
-| insert tm start _ _ | String | body | No | 2021-01-04 00:00:00 | The beginning of the discovery time range. The format is YYYY-MM-DD hh:mm:ss . |  |  |
-| page | Integer | body | No | 1 | The page number. |  |  |
-| page size _ | Integer | body | No | 10 | The number of entries per page. |  |  |
-| process | String | body | No | ["NEW", "CONFIRMED", "IGNORED"] | The processing statuses of the security vulnerability, formatted as a JSON array of strings. Valid values: NEW : The vulnerability is not triaged. CONFIRMED : The vulnerability is confirmed. IGNORED : The vulnerability is ignored. |  |  |
-| risk levels _ | String | body | No | ["LOW", "MIDDLE", "HIGH"] | The risk levels of the security vulnerability, formatted as a JSON array of strings. Valid values: HIGH : High MIDDLE : Medium LOW : Low |  |  |
-| search | String | body | No | CVE-2021- 44228 | A keyword for a fuzzy search. You can search by risk name or vulnerability SN. |  |  |
-| update tm end _ _ | String | body | No | 2021-01-04 00:00:00 | The end of the time range for the last update. The format is YYYY-MM-DD hh:mm:ss . |  |  |
-| update tm start _ _ | String | body | No | 2021-01-04 00:00:00 | The beginning of the time range for the last update. The format is YYYY-MM-DD hh:mm:ss . |  |  |
+|   |   |   |   |   |   | YYYY- |   |
+| insert tm start _ _ | String | body | No | 2021-01-04 00:00:00 | The beginning of the discovery time range. The format is YYYY-MM-DD hh:mm:ss . |   |   |
+| page | Integer | body | No | 1 | The page number. |   |   |
+| page size _ | Integer | body | No | 10 | The number of entries per page. |   |   |
+| process | String | body | No | ["NEW", "CONFIRMED", "IGNORED"] | The processing statuses of the security vulnerability, formatted as a JSON array of strings. Valid values: NEW : The vulnerability is not triaged. CONFIRMED : The vulnerability is confirmed. IGNORED : The vulnerability is ignored. |   |   |
+| risk levels _ | String | body | No | ["LOW", "MIDDLE", "HIGH"] | The risk levels of the security vulnerability, formatted as a JSON array of strings. Valid values: HIGH : High MIDDLE : Medium LOW : Low |   |   |
+| search | String | body | No | CVE-2021- 44228 | A keyword for a fuzzy search. You can search by risk name or vulnerability SN. |   |   |
+| update tm end _ _ | String | body | No | 2021-01-04 00:00:00 | The end of the time range for the last update. The format is YYYY-MM-DD hh:mm:ss . |   |   |
+| update tm start _ _ | String | body | No | 2021-01-04 00:00:00 | The beginning of the time range for the last update. The format is YYYY-MM-DD hh:mm:ss . |   |   |
 
-|  | MM-DD hh:mm:ss |
+|   | MM-DD hh:mm:ss |
 |---|---|
 
-|  |  | YYYY-MM-DD |  |
+|   |   | YYYY-MM-DD |   |
 |---|---|---|---|
-|  | hh:mm:ss |  |  |
+|   | hh:mm:ss |   |   |
 
-|  |  | YYYY-MM-DD |  |
+|   |   | YYYY-MM-DD |   |
 |---|---|---|---|
-|  | hh:mm:ss |  |  |
+|   | hh:mm:ss |   |   |
 
 | vuln types _ | String | body | No | [1, 2] | The vulnerability types, formatted as a JSON array of integers. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues. |
 | count | Integer | 10 | The total number of matching entries. |
-| results | Array |  | An array of security vulnerabilities. |
+| results | Array |   | An array of security vulnerabilities. |
 | results[].risk id _ | Integer | 1 | The ID of the risk. |
 | results[].asset id _ | Integer | 1 | The ID of the asset. |
 | results[].vuln id _ | Integer | 1 | The ID of the vulnerability. |
@@ -6786,9 +6782,7 @@ This operation uses only common request headers. For more information, see Commo
 | results[].detect status _ | String | SUCCESS | The detection status. |
 | results[].risk process _ | String | NEW | The processing status of the risk. |
 
-**Response parameters**
-
-| loud Security Scanner D Guide·Vulnerability Scan | evelope V2 |  |  |
+| loud Security Scanner D Guide·Vulnerability Scan | evelope V2 |   |   |
 |---|---|---|---|
 
 | results[].source | String | AUTO | The source of the risk. |
@@ -6803,10 +6797,12 @@ This operation uses only common request headers. For more information, see Commo
 | results[].last detect t _ _ m | Integer | 1774428275 | The time of the last detection, as a UNIX timestamp. |
 | results[].update tm _ | Integer | 1774428275 | The time of the last update, as a UNIX timestamp. |
 
+**Examples**
+
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "public_network_asset",
   "asset_id": 1,
   "group_ids": [
@@ -6873,20 +6869,13 @@ POST https://[Endpoint]/?Action=DescribeRiskList&RegionId=cn-hangzhou Content-Ty
   "vuln_types": [
 ```
 
-`1,` ]
-
-```
-}
-```
-
-Sample success response Response in `JSON` format
+`1,` `]` Sample success response Response in `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
       "risk_id": 1,
       "asset_id": 1,
       "vuln_id": 1,
@@ -6907,23 +6896,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "insert_tm": 1774428275,
       "last_detect_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-Response in `XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | server-side pass- through | An internal error occurred. The response includes the original error message from the backend service. |
+`]` Response in `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeRiskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -6950,13 +6928,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeRiskListResponse>
 ```
 
 **Error codes**
 
-#### Public access
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | server-side pass- through | An internal error occurred. The response includes the original error message from the backend service. |
 
-##### DescribeBaselineRiskList
+#### 6.3.2 Public access
+
+##### 6.3.2.1 DescribeBaselineRiskList
 
 Retrieves a list of baseline risks.
 
@@ -6965,19 +6948,6 @@ Retrieves a list of baseline risks.
 | Actions | Access level | Resource type |
 |---|---|---|
 | yundun- scanner:DescribeBaselineRiskLi st | undefined | acs:yundun-scanner:: {#accountId}: |
-
-| Parameter | Type | Locatio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| vpc id _ | String | body | No | public networ _ k asset _ | The VPC ID. |
-| group ids _ | String | body | No | [1, 2] | The asset group ID. |
-| staff ids _ | String | body | No | [1, 2] | The owner ID. |
-| tag ids _ | String | body | No | [1, 2] | The tag ID. |
-| status | String | body | No | REPAIRED | The remediation status. Valid values: REPAIRED (Repaired) and UNREPAIRED (Unrepaired). |
-| detect status _ | String | body | No | ["SUCCESS", "FAILED", "DETECTING"] | The detection status. Valid values: SUCCESS (Success), FAILED (Failed), and DETECTING (Detecting). |
-
-|  | SUCCESS |
-|---|---|
-| FAILED |  |
 
 **Rate limiting**
 
@@ -6989,30 +6959,43 @@ This operation uses only common request headers. For more information, refer to 
 
 **Request parameters**
 
-| insert tm end _ _ | String | body | No | 2021-01-04 00:00:00 | The end of the time range in which the risk was recorded. The time is in the YYYY-MM-DD hh:mm:ss format. |  |
+| Parameter | Type | Locatio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| vpc id _ | String | body | No | public networ _ k asset _ | The VPC ID. |
+| group ids _ | String | body | No | [1, 2] | The asset group ID. |
+| staff ids _ | String | body | No | [1, 2] | The owner ID. |
+| tag ids _ | String | body | No | [1, 2] | The tag ID. |
+| status | String | body | No | REPAIRED | The remediation status. Valid values: REPAIRED (Repaired) and UNREPAIRED (Unrepaired). |
+| detect status _ | String | body | No | ["SUCCESS", "FAILED", "DETECTING"] | The detection status. Valid values: SUCCESS (Success), FAILED (Failed), and DETECTING (Detecting). |
+
+|   | SUCCESS |
+|---|---|
+| FAILED |   |
+
+| insert tm end _ _ | String | body | No | 2021-01-04 00:00:00 | The end of the time range in which the risk was recorded. The time is in the YYYY-MM-DD hh:mm:ss format. |   |
 |---|---|---|---|---|---|---|
-| insert tm star _ _ t | String | body | No | 2021-01-04 00:00:00 | The beginning of the time range in which the risk was recorded. The time is in the YYYY-MM-DD hh:mm:ss format. |  |
-| page | Integer | body | No | 1 | The page number. |  |
-| page size _ | Integer | body | No | 10 | The page size. |  |
-| process | String | body | No | ["NEW", "CONFIRMED", "IGNORED"] | The confirmation status. Valid values: NEW (Unconfirmed), CONFIRMED (Confirmed), and IGNORED (Ignored). |  |
-| risk levels _ | String | body | No | ["LOW", "MIDDLE", "HIGH"] | The risk level. Valid values: HIGH (High), MIDDLE (Medium), and LOW (Low). |  |
-| search | String | body | No | CVE-2021- 44228 | The keyword for a fuzzy search, such as a risk name or CVE number. |  |
-| update tm en _ _ d | String | body | No | 2021-01-04 00:00:00 | The end of the time range in which the risk was last updated. The time is in the YYYY-MM-DD hh:mm:ss format. |  |
-| update tm st _ _ art | String | body | No | 2021-01-04 00:00:00 | The beginning of the time range in which the risk was last updated. The time is in the YYYY-MM- DD hh:mm:ss format. |  |
+| insert tm star _ _ t | String | body | No | 2021-01-04 00:00:00 | The beginning of the time range in which the risk was recorded. The time is in the YYYY-MM-DD hh:mm:ss format. |   |
+| page | Integer | body | No | 1 | The page number. |   |
+| page size _ | Integer | body | No | 10 | The page size. |   |
+| process | String | body | No | ["NEW", "CONFIRMED", "IGNORED"] | The confirmation status. Valid values: NEW (Unconfirmed), CONFIRMED (Confirmed), and IGNORED (Ignored). |   |
+| risk levels _ | String | body | No | ["LOW", "MIDDLE", "HIGH"] | The risk level. Valid values: HIGH (High), MIDDLE (Medium), and LOW (Low). |   |
+| search | String | body | No | CVE-2021- 44228 | The keyword for a fuzzy search, such as a risk name or CVE number. |   |
+| update tm en _ _ d | String | body | No | 2021-01-04 00:00:00 | The end of the time range in which the risk was last updated. The time is in the YYYY-MM-DD hh:mm:ss format. |   |
+| update tm st _ _ art | String | body | No | 2021-01-04 00:00:00 | The beginning of the time range in which the risk was last updated. The time is in the YYYY-MM- DD hh:mm:ss format. |   |
 
-|  |  | YYYY-MM-DD |  |
+|   |   | YYYY-MM-DD |   |
 |---|---|---|---|
-|  | hh:mm:ss |  |  |
+|   | hh:mm:ss |   |   |
 
-|  |  | YYYY-MM-DD |  |
+|   |   | YYYY-MM-DD |   |
 |---|---|---|---|
-|  | hh:mm:ss |  |  |
+|   | hh:mm:ss |   |   |
 
-|  |  | YYYY-MM-DD |  |
+|   |   | YYYY-MM-DD |   |
 |---|---|---|---|
-|  | hh:mm:ss |  |  |
+|   | hh:mm:ss |   |   |
 
-|  | DD hh:mm:ss |
+|   | DD hh:mm:ss |
 |---|---|
 
 **Response parameters**
@@ -7021,7 +7004,7 @@ This operation uses only common request headers. For more information, refer to 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The ID of the request. Provide this request ID for troubleshooting. |
 | count | Integer | 10 | The total number of entries. |
-| results | Array |  | The list of baseline risks. |
+| results | Array |   | The list of baseline risks. |
 | results[].risk id _ | Integer | 1 | The ID of the risk. |
 | results[].asset id _ | Integer | 1 | The ID of the asset. |
 | results[].rule id _ | Integer | 1 | The ID of the rule. |
@@ -7041,10 +7024,12 @@ This operation uses only common request headers. For more information, refer to 
 | results[].insert tm _ | Integer | 1774428275 | The time when the risk was recorded. This value is a Unix timestamp. |
 | results[].update tm _ | Integer | 1774428275 | The time when the risk was last updated. This value is a Unix timestamp. |
 
+**Examples**
+
 Example request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "public_network_asset",
   "group_ids": [
 ```
@@ -7099,17 +7084,15 @@ POST https://[Endpoint]/?Action=DescribeBaselineRiskList&RegionId=cn-hangzhou Co
   "search": "CVE-2021-44228",
   "update_tm_end": "2021-01-04 00:00:00",
   "update_tm_start": "2021-01-04 00:00:00"
-}
 ```
 
 Example of a successful response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
       "risk_id": 1,
       "asset_id": 1,
       "rule_id": 1,
@@ -7126,26 +7109,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "vuln_addr": "192.168.0.1:443",
       "insert_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | Internal service error. | The server encountered an internal error. Try the request again later. |
-
-| Action | Access level | Resource type |
-|---|---|---|
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeBaselineRiskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -7168,20 +7137,38 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeBaselineRiskListResponse>
 ```
 
 **Error codes**
 
-#### Compliance vulnerability
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | Internal service error. | The server encountered an internal error. Try the request again later. |
 
-##### DescribeComplianceRiskList
+#### 6.3.3 Compliance vulnerability
+
+##### 6.3.3.1 DescribeComplianceRiskList
 
 Describes a list of compliance vulnerabilities.
 
 **Permissions**
 
+| Action | Access level | Resource type |
+|---|---|---|
+
 | yundun- scanner:DescribeComplianceRis kList | undefined | acs:yundun-scanner:: {#accountId}: |
 |---|---|---|
+
+**Throttling**
+
+Rate limit for a single user: 10 QPS. API rate limit: 100 QPS.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common Request Parameters.
+
+**Request parameters**
 
 | Parameter | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -7195,51 +7182,41 @@ Describes a list of compliance vulnerabilities.
 | detect status _ | String | body | No | ["SUCCESS", "FAILED", "DETECTING" ] | The detection status. Valid values: SUCCESS , FAILED , DETECTING |
 | source | String | body | No | ["1", "2"] | The source. |
 
-**Throttling**
-
-Rate limit for a single user: 10 QPS. API rate limit: 100 QPS.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common Request Parameters.
-
-**Request parameters**
-
-| attack compl _ exity | String | body | No | HIGH |  | The attack complexity. Valid values: HIGH : High LOW : Low |  |  |
+| attack compl _ exity | String | body | No | HIGH |   | The attack complexity. Valid values: HIGH : High LOW : Low |   |   |
 |---|---|---|---|---|---|---|---|---|
-| privileges re _ quired | String | body | No | LOW |  | The privileges required. Valid values: HIGH : High LOW : Low NONE : None |  |  |
-| availability i _ mpact | String | body | No | HIGH |  | The availability impact. Valid values: HIGH : High LOW : Low NONE : None |  |  |
-| exploitability | String | body | No | ["UNPROOFE D", "POC", "EXP"] |  | The exploitability. Valid values: UNPROOFED : The vulnerability is unproven. POC : A proof-of- concept (PoC) exploit is available. EXP : An exploit is publicly available. |  |  |
-| insert tm en _ _ d | String | body | No | 2021-01-04 00:00:00 |  | The discovery end time. The format is YYYY-MM- DD hh:mm:ss . |  |  |
-|  |  |  |  |  |  |  | YYYY-MM- |  |
-|  |  |  |  |  | :00 | DD hh:mm:ss |  |  |
-| insert tm sta _ _ rt | String | body | No | 2021-01-04 00:00:00 |  | The discovery start time. The format is YYYY-MM- DD hh:mm:ss . |  |  |
-|  |  |  |  |  |  |  | YYYY-MM- |  |
-|  |  |  |  |  | :00 | DD hh:mm:ss |  |  |
-| page | Integer | body | No | 1 |  | The page number. |  |  |
-| page size _ | Integer | body | No | 10 |  | The page size. |  |  |
-| ports | String | body | No | [80, 443] |  | The port numbers. |  |  |
+| privileges re _ quired | String | body | No | LOW |   | The privileges required. Valid values: HIGH : High LOW : Low NONE : None |   |   |
+| availability i _ mpact | String | body | No | HIGH |   | The availability impact. Valid values: HIGH : High LOW : Low NONE : None |   |   |
+| exploitability | String | body | No | ["UNPROOFE D", "POC", "EXP"] |   | The exploitability. Valid values: UNPROOFED : The vulnerability is unproven. POC : A proof-of- concept (PoC) exploit is available. EXP : An exploit is publicly available. |   |   |
+| insert tm en _ _ d | String | body | No | 2021-01-04 00:00:00 |   | The discovery end time. The format is YYYY-MM- DD hh:mm:ss . |   |   |
+|   |   |   |   |   |   |   | YYYY-MM- |   |
+|   |   |   |   |   | :00 | DD hh:mm:ss |   |   |
+| insert tm sta _ _ rt | String | body | No | 2021-01-04 00:00:00 |   | The discovery start time. The format is YYYY-MM- DD hh:mm:ss . |   |   |
+|   |   |   |   |   |   |   | YYYY-MM- |   |
+|   |   |   |   |   | :00 | DD hh:mm:ss |   |   |
+| page | Integer | body | No | 1 |   | The page number. |   |   |
+| page size _ | Integer | body | No | 10 |   | The page size. |   |   |
+| ports | String | body | No | [80, 443] |   | The port numbers. |   |   |
 
-| process | String | body | No | ["NEW", "CONFIRMED ", "IGNORED"] |  | The handling status. Valid values: NEW : Unconfirmed, CONFIRMED : Confirmed, IGNORED : Ignored. |  |  |
+| process | String | body | No | ["NEW", "CONFIRMED ", "IGNORED"] |   | The handling status. Valid values: NEW : Unconfirmed, CONFIRMED : Confirmed, IGNORED : Ignored. |   |   |
 |---|---|---|---|---|---|---|---|---|
-| risk levels _ | String | body | No | ["LOW", "MIDDLE", "HIGH"] |  | The risk levels. Valid values: HIGH : High MIDDLE : Medium LOW : Low |  |  |
-| search | String | body | No | CVE-2021- 44228 |  | A search keyword, such as a CVE ID. |  |  |
-| update tm e _ _ nd | String | body | No | 2021-01-04 00:00:00 |  | The update end time. The format is YYYY-MM-DD hh:mm:ss . |  |  |
-|  |  |  |  |  |  |  | YYYY-MM-DD |  |
-|  |  |  |  |  | :00:00 | hh:mm:ss |  |  |
-| update tm st _ _ art | String | body | No | 2021-01-04 00:00:00 |  | The update start time. The format is YYYY-MM-DD hh:mm:ss . |  |  |
-|  |  |  |  |  |  |  | YYYY-MM-DD |  |
-|  |  |  |  |  | :00:00 | hh:mm:ss |  |  |
+| risk levels _ | String | body | No | ["LOW", "MIDDLE", "HIGH"] |   | The risk levels. Valid values: HIGH : High MIDDLE : Medium LOW : Low |   |   |
+| search | String | body | No | CVE-2021- 44228 |   | A search keyword, such as a CVE ID. |   |   |
+| update tm e _ _ nd | String | body | No | 2021-01-04 00:00:00 |   | The update end time. The format is YYYY-MM-DD hh:mm:ss . |   |   |
+|   |   |   |   |   |   |   | YYYY-MM-DD |   |
+|   |   |   |   |   | :00:00 | hh:mm:ss |   |   |
+| update tm st _ _ art | String | body | No | 2021-01-04 00:00:00 |   | The update start time. The format is YYYY-MM-DD hh:mm:ss . |   |   |
+|   |   |   |   |   |   |   | YYYY-MM-DD |   |
+|   |   |   |   |   | :00:00 | hh:mm:ss |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
 | count | Integer | 10 | The total number of entries returned. |
-| results | Array |  | An array that contains the details of each compliance vulnerability. |
+| results | Array |   | An array that contains the details of each compliance vulnerability. |
 | results[].risk id _ | Integer | 1 | The risk ID. |
 | results[].asset id _ | Integer | 1 | The asset ID. |
-
-**Response parameters**
 
 | results[].risk name _ | String | foo | The name of the risk. |
 |---|---|---|---|
@@ -7267,14 +7244,16 @@ This operation uses only common request headers. For more information, see Commo
 | results[].insert tm _ | Integer | 1774428275 | The discovery time, as a Unix timestamp. |
 | results[].update tm _ | Integer | 1774428275 | The time of the last update, as a Unix timestamp. |
 
-| UNPROOFED |  |
+| UNPROOFED |   |
 |---|---|
-| POC |  |
+| POC |   |
+
+**Examples**
 
 Sample request
 
 ```json
-POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou Content-Type: application/json {
+POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou Content-Type: application/json
   "vpc_id": "public_network_asset",
   "asset_id": 1,
   "host_asset_id": 1,
@@ -7301,7 +7280,7 @@ POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou 
     "SUCCESS",
 ```
 
-,
+`,`
 
 ```
     "FAILED",
@@ -7363,17 +7342,15 @@ POST https://[Endpoint]/?Action=DescribeComplianceRiskList&RegionId=cn-hangzhou 
   "search": "CVE-2021-44228",
   "update_tm_end": "2021-01-04 00:00:00",
   "update_tm_start": "2021-01-04 00:00:00"
-}
 ```
 
 Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
   "RequestId": "F0A8A039-930D-5EC1-97C8-************",
   "count": 10,
   "results": [
-    {
       "risk_id": 1,
       "asset_id": 1,
       "risk_name": "foo",
@@ -7406,23 +7383,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
       "ignore_comment": "xxx",
       "insert_tm": 1774428275,
       "update_tm": 1774428275
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 101 | Internal server error. | An internal server error occurred. Try again later. If the issue persists, submit a ticket. |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <DescribeComplianceRiskListResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>10</count>
     <results>
@@ -7457,28 +7423,26 @@ HTTP/1.1 200 OK Content-Type:application/xml
             <update_tm>1774428275</update_tm>
         </item>
     </results>
+</DescribeComplianceRiskListResponse>
 ```
 
 **Error codes**
 
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun-scanner:GetData | undefined | acs:yundun-scanner:*: {#accountId}:* |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 101 | Internal server error. | An internal server error occurred. Try again later. If the issue persists, submit a ticket. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| company i _ d | Integ er | Body | No | 0 | The tenant ID. |
-| csv | Integ er | Body | No | 1 | Specifies whether to export the report. A value of 1 specifies exporting the report. A value of 0 specifies not exporting the report. |
-| end | Strin g | Body | No | 1722478948 | The end of the time range to query. |
-| module | Strin g | Body | No | OTHER | The module to which the logs belong. |
+## 7 Security audit
 
-## Security audit
-
-### GetData
+### 7.1 GetData
 
 Queries a list of audit logs.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun-scanner:GetData | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -7490,15 +7454,24 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| company i _ d | Integ er | Body | No | 0 | The tenant ID. |
+| csv | Integ er | Body | No | 1 | Specifies whether to export the report. A value of 1 specifies exporting the report. A value of 0 specifies not exporting the report. |
+| end | Strin g | Body | No | 1722478948 | The end of the time range to query. |
+| module | Strin g | Body | No | OTHER | The module to which the logs belong. |
+
 | page | Integ er | Body | No | 1 | The page number. |
 |---|---|---|---|---|---|
 | page size _ | Integ er | Body | No | 10 | The number of entries per page. |
 | search | Strin g | Body | No | 192.168.30.67 | The filter conditions. You can filter logs by username, IP address, and event. |
 | start | Strin g | Body | No | 1722478944 | The beginning of the time range to query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| results | Array |  |  |
+| results | Array |   |   |
 | -audit event _ | String | Import assets | The log event. |
 | -event attr _ | String | [rp] import | The log property. |
 | -event result _ | String | SUCCESS | The event result. Valid values: SUCCESS and FAILED. |
@@ -7509,14 +7482,14 @@ This operation does not have operation-specific request headers and uses only co
 | -module | String | ASSET | The log module. Valid values: ASSET, RISK, REPORT, CONFIG, and OTHER. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-**Response parameters**
-
-|  |  |  | Cloud Security Scanner Develop r Guide·Security audi |
+|   |   |   | Cloud Security Scanner Develop r Guide·Security audi |
 |---|---|---|---|
 
 | count | Integer | 150 | The number of entries per page. |
 |---|---|---|---|
 | path | String | http://oss.xxxx.xxx x/xxx/xx | The download path. |
+
+**Examples**
 
 Sample requests
 
@@ -7527,12 +7500,11 @@ https://[Endpoint]/?Action=GetData&RegionId=cnhangzhou&company_id=0&csv=1&end=17
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "count":150,
     "path":"http://oss.xxxx.xxxx/xxx/xx",
     "results":[
-        {
             "audit_event":"Import assets",
             "event_attr":"[rp] import",
             "module":"ASSET",
@@ -7541,28 +7513,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "insert_tm":1722478948,
             "id":1947,
             "login_ip":"192.168.102.18"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
-
-| Action | Access level | Resource type |
-|---|---|---|
-| yundun- scanner:LouauditCleanData | undefined | acs:yundun-scanner:*: {#accountId}:* |
+`]` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <GetDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <count>150</count>
     <path>http://oss.xxxx.xxxx/xxx/xx</path>
@@ -7576,15 +7532,25 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <login_username>aliens</login_username>
         <module>ASSET</module>
     </results>
+</GetDataResponse>
 ```
 
 **Error codes**
 
-### LouauditCleanData
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | 100 | MissingParameter1001API | 1001API is required. |
+| 500 |   | InternalError | An unknown error occurred. |
+
+### 7.2 LouauditCleanData
 
 Clears audit logs.
 
 **Authorization information**
+
+| Action | Access level | Resource type |
+|---|---|---|
+| yundun- scanner:LouauditCleanData | undefined | acs:yundun-scanner:*: {#accountId}:* |
 
 **Traffic throttling**
 
@@ -7594,18 +7560,20 @@ You can call this operation up to 10 times per second per account. You can call 
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
+**Request parameters**
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | keep time _ | Integ er | Body | No | 1722478948 | The retention period. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| status | String |  | The request status. |
+| status | String |   | The request status. |
 
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7616,18 +7584,18 @@ https://[Endpoint]/?Action=LouauditCleanData&RegionId=cn-hangzhou&keep_time=1722
 Sample success responses `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "status":""
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+Content-Type:application/xml <LouauditCleanDataResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <status></status>
+</LouauditCleanDataResponse>
 ```
 
 **Error codes**
@@ -7635,4 +7603,4 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | 100 | MissingParameter1001API | 1001API is required. |
-| 500 |  | InternalError | An unknown error occurred. |
+| 500 |   | InternalError | An unknown error occurred. |

@@ -3,22 +3,37 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Appli
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 32
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "8d4642f5a6f325cb_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Operat"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Physical machine-based WAF O&M in Apsara Infrastructure Management
+  - 1.1 Log in to the Apsara Infrastructure Management console
+  - 1.2 Check the service status
+    - 1.2.1 Basic inspection
+    - 1.2.2 Advanced inspection
+- 2 Physical machine-based WAF O&M in Cloud Shield Operations Center
+  - 2.1 Log on to Cloud Shield Operations Center
+  - 2.2 Global system settings
+  - 2.3 Configure global custom rules
+  - 2.4 Metrics
+    - 2.4.1 Introduction to WAF metrics
+    - 2.4.2 View metrics
+
 O&M in Apsara Infrastructure Ma nagement
 
-## Physical machine-based
+## 1 Physical machine-based WAF O&M in Apsara Infrastructure Management
 
 **WAF O&M in Apsara**
 
 **Infrastructure Management**
 
-### Log in to the Apsara
+### 1.1 Log in to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -51,9 +66,9 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Apsara Infrastructure Management**.
 
-### Check the service status
+### 1.2 Check the service status
 
-#### Basic inspection
+#### 1.2.1 Basic inspection
 
 The basic inspection of Web Application Firewall (WAF) checks whether a service runs as expected.
 
@@ -67,7 +82,7 @@ The basic inspection of Web Application Firewall (WAF) checks whether a service 
 5. On the **Services** tab, enter **yundun-semawaf** in the **Service** search box to check whether
 the service status is normal.
 
-#### Advanced inspection
+#### 1.2.2 Advanced inspection
 
 The advanced inspection of Web Application Firewall (WAF) checks the system status and service status.
 
@@ -91,13 +106,13 @@ i. View system logs. Run the dmesg -T |tail -30 command to check for exception l
 
 In the WAF installation directory /home/safeline, perform the following operations. i. Run the `cd /home/safeline` command to open the installation directory. ii. Check the minion service. a. Run the `systemctl status minion` command to check the execution time and the status of the minion service. b. Run the `tail -100 logs/minion/minion.log` command to check for exception logs. O&M in Apsara Infrastructure Ma nagement iii. Check the mgt-api service. a. Run the `docker logs --tail 50 mgt-api` command to check for exception logs. b. Run the `docker exec -it mgt-api supervisorctl status` command to check whether the service runs as expected and whether **uptime** is normal. c. Run the `tail -50 logs/management/gunicorn.log` command to check for exception logs. d. Run the `tail -50 logs/management/daphne.log` command to check for exception logs. e. Run the `tail -50 logs/management/scheduler.log` command to check for exception logs. f. Run the `tail -50 logs/management/dramatiq.log` command to check for exception logs. iv. Check the redis service. Run the `docker logs --tail 50 mgt-redis` command to check for exception logs. v. Check the detector service. a. Run the `docker logs --tail 50 detector-srv` command to check for exception logs. b. Run the `tail -50 logs/detector/snserver.log` command to check for exception logs. c. Run the curl 127.0.0.1:8001/stat | grep num command to check whether the service responds and whether the status of the real-time request processing data is normal. For example, check whether the value of the **req_num_total** parameter is normal. The req_num_total parameter indicates the number of requests that are processed within the previous 5 seconds. vi. Check the tengine service. a. Run the `docker logs --tail 50 tengine` command to check for exception logs. b. Run the `tail -50 logs/nginx/error.log` command to check for exception logs. vii. Check the mario service. a. Run the `docker logs --tail 50 mario` command to check for exception logs. b. Run the `tail -50 logs/mario/mario.log` command to check for exception logs. c. Run the `curl 127.0.0.1:3335/api/v1/state` command to check whether the service responds and whether the status of the real-time request processing data is normal. For example, check whether the **num_pending** parameter remains at a high value of nearly 10,000 or whether the value of the **num_processed_last_10s** parameter is normal. The num_processed_last_10s parameter indicates the number of requests that are processed within the previous 10 seconds.
 
-## Physical machine-based
+## 2 Physical machine-based WAF O&M in Cloud Shield Operations Center
 
 **WAF O&M in Cloud Shield**
 
 **Operations Center**
 
-### Log on to Cloud Shield
+### 2.1 Log on to Cloud Shield Operations Center
 
 **Operations Center**
 
@@ -131,7 +146,7 @@ The password is 10 to 20 characters in length.
 
 You can view information on the pages of **Cloud Shield Operations Center**.
 
-### Global system settings
+### 2.2 Global system settings
 
 You can configure global system settings to enable or disable the Web Application Firewall (WAF) global protection engine, specify an internal-facing Server Load Balancer (SLB) instance as the downstream service, and configure shared virtual IP addresses. This topic describes how to configure global system settings.
 
@@ -161,7 +176,7 @@ You can configure global system settings to enable or disable the Web Applicatio
 |---|---|---|
 | Maximum number of listening ports | Specify the maximum number of listening ports. | Click the icon to the right of this parameter to specify the maximum number of listening ports. |
 
-### Configure global custom rules
+### 2.3 Configure global custom rules
 
 You can create global custom rules in Web Application Firewall (WAF) based on your business requirements and network environment to monitor the status of WAF. This topic describes how to create and manage global custom rules.
 
@@ -191,9 +206,9 @@ and then click **OK**.
 
 After the global custom rule is added, you can perform the following operations on the rule in the rule list. Specify **Mode**, **Severity**, and **Status** above the list to filter global custom rules. Find the rule that you want to manage and click **Edit** in the **Actions** column of the rule to modify the rule. Select multiple rules, click **More operations** above the list, and then select Enable Rule, Disable Rule, or Delete Rule to enable, disable, or delete the rules at a time.
 
-### Metrics
+### 2.4 Metrics
 
-#### Introduction to WAF metrics
+#### 2.4.1 Introduction to WAF metrics
 
 This topic describes the common metrics for Web Application Firewall (WAF).
 
@@ -369,7 +384,7 @@ After you log in to Apsara Uni-manager Operations Console, choose **Monitor&Aler
 
 causes traffic
 
-#### View metrics
+#### 2.4.2 View metrics
 
 forwardin g error. To avoid This topic describes how to view the metrics of Web Application Firewall (WAF). this issue, do
 

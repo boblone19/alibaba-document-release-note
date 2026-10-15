@@ -3,14 +3,36 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Oper
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 26
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide 20260901.pdf"
+source_pdf: "9d4261c30de1b284_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20AI%20Studio%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek AI Studio Operations and Maintenance Guide 20260901
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Software architecture
+- 3 Log overview
+- 4 AI Studio OPS platform
+  - 4.1 Log on to AI Studio OPS
+  - 4.2 Check Resource Availability
+    - 4.2.1 Check resource pool availability
+    - 4.2.2 Check resource group availability
+  - 4.3 Toolbox
+    - 4.3.1 Kubectl
+    - 4.3.2 Enter chip models
+    - 4.3.3 Edit features
+    - 4.3.4 Import assets
+  - 4.4 System settings
+- 5 Metric details
+  - 5.1 Monitoring metrics
+    - 5.1.1 Task monitoring metrics
+    - 5.1.2 Pod monitoring metrics
+    - 5.1.3 Gateway monitoring metrics
+
+## 1 Overview
 
 This topic describes the purpose, requirements, and precautions for AI Studio operations and maintenance (O&M). It also explains how to get help.
 
@@ -34,7 +56,7 @@ Follow these guidelines to ensure system stability and prevent accidents: Layere
 
 For assistance during system maintenance, contact Alibaba Cloud Technical Support. architecture
 
-## Software architecture
+## 2 Software architecture
 
 This topic describes the system architecture of AI Studio, its core feature modules, and service dependencies. The following figure shows the system architecture of AI Studio, which consists of three layers and storage-related service dependencies.
 
@@ -69,7 +91,7 @@ The heterogeneous computing power layer centrally manages various heterogeneous 
 
 ew
 
-## Log overview
+## 3 Log overview
 
 AI Studio consists of multiple service components. The logs for each component are described in the following table.
 
@@ -80,9 +102,9 @@ AI Studio consists of multiple service components. The logs for each component a
 |   |   | resource-asset | AI resource asset management module Manages resource pools, resource quotas, runtime images, and code builds Collects access and error logs for resource pools, resource quotas, image registries, and code builds |
 |   |   | gateway | Gateway module Handles interactions between the AI Studio platform and clusters Collects access and error logs for the Gateway, and logs for task status changes |
 
-## AI Studio OPS platform
+## 4 AI Studio OPS platform
 
-### Log on to AI Studio OPS
+### 4.1 Log on to AI Studio OPS
 
 This topic describes how to log on to AI Studio OPS from the Apsara Uni-manager Operations Console.
 
@@ -93,9 +115,9 @@ The endpoint of the Apsara Uni-manager Operations Console and the username and p
 i. Open your browser. ii. In the address bar, enter the endpoint of the Apsara Uni-manager Operations Console. Press the ENTER key. You can click the current language in the upper-right corner to switch to another language. Simplified Chinese and English are supported. iii. Enter your username and password. Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to unlock the account. The first time that you log on to the Apsara Uni-manager Operations Console, change the password for your username as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length. iv. Click **Agree to Private Policy and Log On** .
 2. In the top menu bar, choose **Product O&M > AI & Machine Learning > AI Studio OPS**.
 
-### Check Resource Availability
+### 4.2 Check Resource Availability
 
-#### Check resource pool availability
+#### 4.2.1 Check resource pool availability
 
 This topic describes how to check the availability of an AI resource pool and add features.
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
@@ -115,7 +137,7 @@ You can perform the following operations on the details page.
 |---|---|
 | Diagnose feature check items | Full diagnosis i. Click Full Diagnosis. ii. In the pop-up dialog box, click OK. iii. After the diagnosis is complete, you can view the diagnosis status and the diagnostic report for all check items. iv. Click View Diagnostic Report to download the diagnostic report to your local computer. Single diagnosis i. Click Feature Diagnosis in the Actions column. ii. In the pop-up dialog box, click OK. iii. After the diagnosis is complete, you can view the diagnosis status and the diagnostic report for each check item. iv. Click View Diagnostic Report to download the diagnostic report to your local computer. |
 
-#### Check resource group availability
+#### 4.2.2 Check resource group availability
 
 This topic describes how to check the availability of a resource group and add features.
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
@@ -138,9 +160,9 @@ You can perform the following operations on the details page.
 |---|---|
 | Modify features | 1. Click Modify in the Actions column. 2. Reselect a basic status feature. 3. Click OK. |
 
-### Toolbox
+### 4.3 Toolbox
 
-#### Kubectl
+#### 4.3.1 Kubectl
 
 This section describes how to query pods in a resource pool using commands.
 1. You can log on to the AI Studio OPS console. For more information, see Log on to AI Studio
@@ -150,7 +172,7 @@ OPS.
 Supported commands are get and describe.
 4. Click **Confirm**.
 
-#### Enter chip models
+#### 4.3.2 Enter chip models
 
 This topic describes how to manually enter chip models.
 
@@ -191,7 +213,7 @@ After entering a chip model, you can perform the following operations. You canno
 | Edit a chip model | 1. Click Modify in the Actions column. 2. Modify the English and Chinese names of the chip manufacturer, and then click OK. |
 | Delete a chip model | 1. Click Remove in the Actions column. 2. In the pop-up dialog box, click OK. |
 
-#### Edit features
+#### 4.3.3 Edit features
 
 This topic describes how to edit manually entered features.
 
@@ -214,7 +236,7 @@ After entering a feature, you can also perform the following operations. You can
 | Edit a feature | 1. Click Modify in the Actions column. 2. Modify the step information and the feature target status. 3. Click OK. |
 | Delete a feature | 1. Click Remove in the Actions column. 2. In the pop-up dialog box, click OK. |
 
-#### Import assets
+#### 4.3.4 Import assets
 
 This topic describes how to import assets on the interface.
 
@@ -252,7 +274,7 @@ The parameters are as follows: --path: The path of the exported package. If mult
 7. Click **Initiate Upload Task**.
 8. Enter the task description and click **OK**.
 
-### System settings
+### 4.4 System settings
 
 The system isolates the AI Studio training and inference task list by creator and allows you to configure the switch.
 1. Log in to the AI Studio OPS console. For more information, see Log on to AI Studio OPS.
@@ -279,13 +301,13 @@ After you turn on the quantization suite switch, the system displays quantizatio
 4. Click **Submit**.
 ails
 
-## Metric details
+## 5 Metric details
 
-### Monitoring metrics
+### 5.1 Monitoring metrics
 
 This topic describes the monitoring metrics for various resources, how to view them, and their descriptions.
 
-#### Task monitoring metrics
+#### 5.1.1 Task monitoring metrics
 
 This section describes task monitoring metrics, including how to view them and their descriptions. The system collects metrics every 60 seconds. When a resource type supports multiple container groups, the metrics support both the task and container group dimensions.
 1. Log on to the AI Studio console.
@@ -324,7 +346,7 @@ ails
 | KV cache utilization | The percentage of used KV cache capacity relative to the total available capacity in the inference service. The KV cache is a GPU memory area that stores key-value attention caches during LLM inference. Its utilization directly reflects the GPU memory pressure and concurrent processing capability of the current service. | % |
 | Task queue length | The number of inference requests that are waiting for scheduling. The service has received these requests but has not yet added them to an inference batch for computation. | Requests |
 
-#### Pod monitoring metrics
+#### 5.1.2 Pod monitoring metrics
 
 This topic describes the pod monitoring metrics, explains how to view them, and provides a description of each metric. Metrics are collected every 60 seconds. If a resource type supports multiple pods, metrics are available at both the task and pod dimensions. ails
 1. Log on to the AI Studio console.
@@ -357,7 +379,7 @@ ails
 | Pod NPU accelerator memory usage | The amount of dedicated NPU accelerator memory that the pod currently uses. | MiB |
 | Pod NPU accelerator memory utilization | The percentage of used NPU accelerator memory compared to the total available NPU accelerator memory for the pod. | % |
 
-#### Gateway monitoring metrics
+#### 5.1.3 Gateway monitoring metrics
 
 This topic describes the metrics for gateway monitoring. It also explains how to view these metrics and what they represent.
 1. Log on to the AI Studio console.

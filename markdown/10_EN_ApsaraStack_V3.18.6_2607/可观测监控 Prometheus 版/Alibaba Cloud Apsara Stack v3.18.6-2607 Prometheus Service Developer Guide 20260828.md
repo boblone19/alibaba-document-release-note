@@ -3,14 +3,24 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Developer Gui
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 24
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Developer Guide 20260828.pdf"
+source_pdf: "2761ad7194b934b0_Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Prometheus%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Developer Guide 20260828
 
-## Download SDKs
+## Table of Contents
+
+- 1 Download SDKs
+- 2 Request examples
+- 3 Obtain API parameters
+- 4 API reference
+  - 4.1 ListDashboards
+  - 4.2 SearchAlertContact
+  - 4.3 SearchAlertContactGroup
+
+## 1 Download SDKs
 
 Prometheus Monitoring provides SDKs for Java, TypeScript, Go, PHP, Python, and C#. This topic describes the methods to download them.
 
@@ -25,7 +35,7 @@ Prometheus Monitoring provides SDKs for Java, TypeScript, Go, PHP, Python, and C
 
 les
 
-## Request examples
+## 2 Request examples
 
 This topic provides examples of how to call the ListDashboards API operation to access Prometheus Monitoring. The examples demonstrate how to send HTTP POST requests to retrieve data using different programming languages, such as Java and Python.
 
@@ -283,7 +293,7 @@ AlibabaCloud.SDK.ARMS20190808.Models.ListDashboardsRequest();
 
 meters
 
-## Obtain API parameters
+## 3 Obtain API parameters
 
 This topic describes how to obtain the parameters required to access the Prometheus monitoring developer API. These parameters allow you to quickly access the Platform Open Protocol (POP) API for Prometheus monitoring.
 
@@ -302,9 +312,9 @@ Contact technical support to obtain the RegionId for the current environment.
 **Information**.
 3. In the Alibaba Cloud **AccessKey** section, find the AccessKey information for your account.
 
-## API reference
+## 4 API reference
 
-### ListDashboards
+### 4.1 ListDashboards
 
 Call the ListDashboards operation to retrieve a list of Grafana dashboards for a cluster.
 
@@ -419,7 +429,7 @@ orgId=3**&amp;refresh=60s",
     "RequestId": "2A0CEDF1-06FE-44AC-8E21-21A5BE65****"
 ```
 
-### SearchAlertContact
+### 4.2 SearchAlertContact
 
 You can call the SearchAlertContact operation to query alert contacts.
 
@@ -521,7 +531,7 @@ access_token=91f2f6****",
     "RequestId": "21E85B16-75A6-429A-9F65-8AAC9A54****"
 ```
 
-### SearchAlertContactGroup
+### 4.3 SearchAlertContactGroup
 
 You can call the SearchAlertContactGroup operation to query alert contact groups.
 

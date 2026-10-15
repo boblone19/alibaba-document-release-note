@@ -2,26 +2,103 @@
 title: "ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 159
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260629.pdf"
+source_pdf: "12f8b3b576725a5b_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20PolarDB%20User%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260629
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User eSQL (Compatible with Oracle)?
+## Table of Contents
 
-## What is PolarDB for
+- 1 What is PolarDB for PostgreSQL (Compatible with Oracle)?
+- 2 Limits on PolarDB
+- 3 Instance types
+- 4 Log on to the ApsaraDB RDS console
+- 5 Quick Start
+  - 5.1 Procedure
+  - 5.2 Create an instance
+  - 5.3 Configure an IP address whitelist
+  - 5.4 Create a database and an account
+  - 5.5 Connect to an instance
+- 6 Instances
+  - 6.1 Create an instance
+  - 6.2 Restart an instance
+  - 6.3 Set a maintenance window
+  - 6.4 Configure primary/secondary switchover
+  - 6.5 Release an instance
+  - 6.6 Read-only instance
+    - 6.6.1 Overview
+    - 6.6.2 Create a read-only instance
+    - 6.6.3 View details of read-only instances
+  - 6.7 Change the specifications of an instance
+  - 6.8 Set instance parameters
+  - 6.9 Manage tags
+- 7 Database connection
+  - 7.1 Connect to an instance
+  - 7.2 Use DMS to log on to a PolarDB instance
+  - 7.3 Change the network type of an instance
+  - 7.4 Configure the hybrid access solution for an instance
+  - 7.5 View and modify the internal endpoint and port number
+- 8 Accounts
+  - 8.1 Create an account
+  - 8.2 Reset the password of an account
+  - 8.3 Lock or unlock an account
+  - 8.4 Delete an account
+- 9 Databases
+  - 9.1 Create a database
+  - 9.2 Delete a database
+- 10 Monitoring and alerts
+  - 10.1 View monitoring data
+  - 10.2 Configure an alert rule
+- 11 Data security
+  - 11.1 Configure an IP address whitelist
+  - 11.2 Configure SQL audit
+  - 11.3 Configure SSL encryption
+  - 11.4 Configure TDE
+- 12 Backup and recovery
+  - 12.1 Back up a PolarDB instance
+  - 12.2 Download backup files
+  - 12.3 Data restoration
+- 13 Manage logs
+- 14 CloudDBA
+  - 14.1 Introduction to CloudDBA
+  - 14.2 Session Manager
+  - 14.3 Real-time performance
+  - 14.4 Storage analysis
+  - 14.5 Slow query logs
+- 15 Extensions
+- 16 PolarDB driver
+  - 16.1 Download the driver
+  - 16.2 RDS PolarDB JDBC
+  - 16.3 RDS PolarDB .NET
+  - 16.4 RDS PolarDB ODBC
+  - 16.5 PolarDB OCI
+  - 16.6 PolarDB PHP
+- 17 Compatibility for Oracle
+- 18 Management functions
+
+eSQL (Compatible with Oracle)?
+
+## 1 What is PolarDB for PostgreSQL (Compatible with Oracle)?
 
 **PostgreSQL (Compatible with**
 
 **Oracle)?**
 
-This topic outlines the cloud-native database PolarDB for PostgreSQL (Compatible with Oracle). PolarDB for PostgreSQL (Compatible with Oracle) is a stable, secure, and scalable enterprisegrade cloud-native relational database. It is based on the open-source PostgreSQL database and provides enhancements in performance, application solutions, and compatibility. This lets you run Oracle applications directly. You can run various enterprise applications on PolarDB to implement stable and cost-effective services. PolarDB for PostgreSQL (Compatible with Oracle) supports deployment on hybrid x86 and ARM clusters or on hybrid HYGON and Intel clusters. It provides features such as account management, resource monitoring, backup and recovery, and security control. These features are continuously enhanced.
+This topic outlines the cloud-native database PolarDB for PostgreSQL (Compatible with Oracle).
+
+**PolarDB for PostgreSQL (Compatible with Oracle)**
+
+PolarDB for PostgreSQL (Compatible with Oracle) is a stable, secure, and scalable enterprisegrade cloud-native relational database. It is based on the open-source PostgreSQL database and provides enhancements in performance, application solutions, and compatibility. This lets you run Oracle applications directly. You can run various enterprise applications on PolarDB to implement stable and cost-effective services. PolarDB for PostgreSQL (Compatible with Oracle) supports deployment on hybrid x86 and ARM clusters or on hybrid HYGON and Intel clusters. It provides features such as account management, resource monitoring, backup and recovery, and security control. These features are continuously enhanced.
 
 **Architecture diagram**
 
 The following figure shows the service architecture of a dual-node cluster that uses local disks. High availability Primary node Secondary node Copy Data Log Data Log Local Local disk disk
+
+## 2 Limits on PolarDB
+
+Before you use PolarDB, you must understand its limits and take the necessary precautions. The following table describes the limits on PolarDB.
 
 | Operation | Limits |
 |---|---|
@@ -29,26 +106,17 @@ The following figure shows the service architecture of a dual-node cluster that 
 | Database replication | The system automatically builds HA databases based on PolarDB streaming replication without user input. Secondary PolarDB instances are hidden and cannot be accessed. |
 | Instance restart | You can restart an instance in the console or by calling API operations. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+## 3 Instance types
 
-## Limits on PolarDB
+This topic describes the instance types of PolarDB. Different instance types deliver different performance.
 
-Before you use PolarDB, you must understand its limits and take the necessary precautions. The following table describes the limits on PolarDB.
+**Instance types**
 
 | Instance type | Feature | Applicable scenario |
 |---|---|---|
 | Dedicated | A dedicated cluster occupies all allocated compute resources such as CPUs. The cluster does not share compute resources with other instances that run on the same server. This improves the reliability and stability of the instance. | Scenarios in which databases are the key component of business systems that require high reliability, such as finance, e-commerce, public service, and medium- or large-scale Internet services. |
 | Shared | Idle compute resources such as CPUs are shared among instances that run on the same server. Resource sharing allows you to deploy a large number of instances at low costs. | Scenarios in which cost-effectiveness is prioritized. |
 | Dedicated host | The maximum dedicated specification is that all resources of a physical host are exclusive to the dedicated specification. | The maximum stability and isolation are provided. Instances of this type are applicable to scenarios in which databases are the key component of business systems, such as finance, e- commerce, public service, and medium- or large-scale Internet services. |
-
-| Edition | Databas e version | Instance family | Code of instance type | CPU and memory | Maximu m connecti ons | Maximu m IOPS | Storage capacity |
-|---|---|---|---|---|---|---|---|
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-## Instance types
-
-This topic describes the instance types of PolarDB. Different instance types deliver different performance.
 
 **PolarDB (High-availability Edition)**
 
@@ -57,67 +125,62 @@ This topic describes the instance types of PolarDB. Different instance types del
 For PolarDB, different database versions are supported for different compatibility types. If the **compatibility type** is **PostgreSQL**, only **database version****14** is supported. If the
 **compatibility type** is **Oracle**, **database versions****14** and **11.2** are supported.
 
-|  |  | Dedicate d | polardb.x 4.mediu m.2 | 2 CPU cores and 8 GB of memory | 3,300 | 10,000 | 20 GB- 3000 GB (Step size: 5 GB) |
-|---|---|---|---|---|---|---|---|
-|  |  |  | polardb.x 8.mediu m.2 | 2 CPU cores and 16 GB of memory | 3,300 | 15,000 |  |
-|  |  |  | polardb.x 4.large.2 | 4 CPU cores and 16 GB of memory | 3,300 | 20,000 |  |
-|  |  |  | polardb.x 8.large.2 | 4 CPU cores and 32 GB of memory | 3,300 | 30,000 |  |
-|  |  |  | polardb.x 4.xlarge. 2 | 8 CPU cores and 32 GB of memory | 3,300 | 40,000 |  |
-|  |  |  | polardb.x 8.xlarge. 2 | 8 CPU cores and 64 GB of memory | 12,100 | 60,000 |  |
-|  |  |  | polardb.x 4.2xlarge .2 | 16 CPU cores and 64 GB of memory | 12,100 | 80,000 |  |
-|  |  |  | polardb.x 8.2xlarge .2 | 16 CPU cores and 128 GB of memory | 12,100 | 120,000 |  |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-|  | 14 |  |  |  |  |  |  |
-|---|---|---|---|---|---|---|---|
-|  |  |  | polardb.x 4.4xlarge .2 | 32 CPU cores and 128 GB of memory | 12,800 | 160,000 | 20 GB- 6000 GB (Step size: 5 GB) |
-|  |  |  | polardb.x 8.4xlarge .2 | 32 CPU cores and 256 GB of memory | 25,600 | 240,000 |  |
-|  |  |  | polardb.x 4.8xlarge .2 | 64 CPU cores and 256 GB of memory | 25,600 | 320,000 |  |
-|  |  |  | polardb.x 8.8xlarge .2 | 64 CPU cores and 512 GB of memory | 12,100 | 240,000 |  |
-|  |  |  | polardb.g 4.mediu m.2 | 2 CPU cores and 8 GB of memory | 400 | 10,000 | 20 GB- 3000 GB (Step size: 5 GB) |
-|  |  |  | polardb.g 2.large.2 | 4 CPU cores and 8 GB of memory | 800 | 20,000 |  |
-|  |  |  | polardb.g 4.large.2 | 4 CPU cores and 16 GB of memory | 2,500 | 20,000 |  |
-|  |  |  | polardb.g 2.xlarge. 2 | 8 CPU cores and 16 GB of memory | 1,600 | 40,000 |  |
-|  |  |  | polardb.g 4.xlarge. 2 | 8 CPU cores and 32 GB of memory | 5,000 | 40,000 |  |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-| High- availab ility Edition Read- only instanc e |  | Shared |  |  |  |  |  |
-|---|---|---|---|---|---|---|---|
-|  |  |  | polardb.g 2.2xlarge .2 | 16 CPU cores and 32 GB of memory | 3,200 | 80,000 |  |
-|  |  |  | polardb.g 4.2xlarge .2 | 16 CPU cores and 64 GB of memory | 10,000 | 80,000 |  |
-|  |  |  | polardb.g 2.4xlarge .2 | 32 CPU cores and 64 GB of memory | 6,400 | 160,000 |  |
-|  |  |  |  |  |  |  | 20 GB- 6000 GB (Step size: 5 GB) |
-|  |  |  | polardb.g 4.4xlarge .2 | 32 CPU cores and 128 GB of memory | 12,800 | 160,000 |  |
-|  |  |  | polardb.g 8.4xlarge .2 | 32 CPU cores and 256 GB of memory | 25,600 | 240,000 |  |
-|  |  | Dedicate d host | polardb.x 8.12xlarg e.2 | 88 CPU cores and 710 GB of memory | 12,100 | 450,000 |  |
-|  |  |  | polardb.x 4.mediu m.2 | 2 CPU cores and 8 GB of memory | 3,300 | 10,000 |  |
-|  |  |  | polardb.x 8.mediu m.2 | 2 CPU cores and 16 GB of memory | 3,300 | 15,000 |  |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-|  |  |  | polardb.x 4.large.2 | 4 CPU cores and 16 GB of memory | 3,300 | 20,000 |  |
-|---|---|---|---|---|---|---|---|
-|  | 14 and 11.2 | Dedicate d |  |  |  |  | 20 GB- 3000 GB (Step size: 5 GB) |
-|  |  |  | polardb.x 8.large.2 | 4 CPU cores and 32 GB of memory | 3,300 | 30,000 |  |
-|  |  |  | polardb.x 4.xlarge. 2 | 8 CPU cores and 32 GB of memory | 3,300 | 40,000 |  |
-|  |  |  | polardb.x 8.xlarge. 2 | 8 CPU cores and 64 GB of memory | 12,100 | 60,000 |  |
-|  |  |  | polardb.x 4.2xlarge .2 | 16 CPU cores and 64 GB of memory | 12,100 | 80,000 |  |
-|  |  |  | polardb.x 8.2xlarge .2 | 16 CPU cores and 128 GB of memory | 12,100 | 120,000 |  |
-|  |  |  | polardb.x 4.4xlarge .2 | 32 CPU cores and 128 GB of memory | 12,800 | 160,000 | 20 GB- 6000 GB (Step size: 5 GB) |
-|  |  |  | polardb.x 8.4xlarge .2 | 32 CPU cores and 256 GB of memory | 25,600 | 240,000 |  |
-|  |  |  | polardb.x 8.8xlarge .2 | 64 CPU cores and 512 GB of memory | 12,100 | 240,000 |  |
-| > Document | Version: 202 | 60629 |  |  |  |  | 1 |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-|  |  | Dedicate d host | polardb.x 8.12xlarg e.2 | 88 CPU cores and 710 GB of memory | 12,100 | 450,000 |  |
+| Edition | Databas e version | Instance family | Code of instance type | CPU and memory | Maximu m connecti ons | Maximu m IOPS | Storage capacity |
 |---|---|---|---|---|---|---|---|
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+|   |   | Dedicate d | polardb.x 4.mediu m.2 | 2 CPU cores and 8 GB of memory | 3,300 | 10,000 | 20 GB- 3000 GB (Step size: 5 GB) |
+|---|---|---|---|---|---|---|---|
+|   |   |   | polardb.x 8.mediu m.2 | 2 CPU cores and 16 GB of memory | 3,300 | 15,000 |   |
+|   |   |   | polardb.x 4.large.2 | 4 CPU cores and 16 GB of memory | 3,300 | 20,000 |   |
+|   |   |   | polardb.x 8.large.2 | 4 CPU cores and 32 GB of memory | 3,300 | 30,000 |   |
+|   |   |   | polardb.x 4.xlarge. 2 | 8 CPU cores and 32 GB of memory | 3,300 | 40,000 |   |
+|   |   |   | polardb.x 8.xlarge. 2 | 8 CPU cores and 64 GB of memory | 12,100 | 60,000 |   |
+|   |   |   | polardb.x 4.2xlarge .2 | 16 CPU cores and 64 GB of memory | 12,100 | 80,000 |   |
+|   |   |   | polardb.x 8.2xlarge .2 | 16 CPU cores and 128 GB of memory | 12,100 | 120,000 |   |
 
-## Log on to the ApsaraDB
+|   | 14 |   |   |   |   |   |   |
+|---|---|---|---|---|---|---|---|
+|   |   |   | polardb.x 4.4xlarge .2 | 32 CPU cores and 128 GB of memory | 12,800 | 160,000 | 20 GB- 6000 GB (Step size: 5 GB) |
+|   |   |   | polardb.x 8.4xlarge .2 | 32 CPU cores and 256 GB of memory | 25,600 | 240,000 |   |
+|   |   |   | polardb.x 4.8xlarge .2 | 64 CPU cores and 256 GB of memory | 25,600 | 320,000 |   |
+|   |   |   | polardb.x 8.8xlarge .2 | 64 CPU cores and 512 GB of memory | 12,100 | 240,000 |   |
+|   |   |   | polardb.g 4.mediu m.2 | 2 CPU cores and 8 GB of memory | 400 | 10,000 | 20 GB- 3000 GB (Step size: 5 GB) |
+|   |   |   | polardb.g 2.large.2 | 4 CPU cores and 8 GB of memory | 800 | 20,000 |   |
+|   |   |   | polardb.g 4.large.2 | 4 CPU cores and 16 GB of memory | 2,500 | 20,000 |   |
+|   |   |   | polardb.g 2.xlarge. 2 | 8 CPU cores and 16 GB of memory | 1,600 | 40,000 |   |
+|   |   |   | polardb.g 4.xlarge. 2 | 8 CPU cores and 32 GB of memory | 5,000 | 40,000 |   |
+
+| High- availab ility Edition Read- only instanc e |   | Shared |   |   |   |   |   |
+|---|---|---|---|---|---|---|---|
+|   |   |   | polardb.g 2.2xlarge .2 | 16 CPU cores and 32 GB of memory | 3,200 | 80,000 |   |
+|   |   |   | polardb.g 4.2xlarge .2 | 16 CPU cores and 64 GB of memory | 10,000 | 80,000 |   |
+|   |   |   | polardb.g 2.4xlarge .2 | 32 CPU cores and 64 GB of memory | 6,400 | 160,000 |   |
+|   |   |   |   |   |   |   | 20 GB- 6000 GB (Step size: 5 GB) |
+|   |   |   | polardb.g 4.4xlarge .2 | 32 CPU cores and 128 GB of memory | 12,800 | 160,000 |   |
+|   |   |   | polardb.g 8.4xlarge .2 | 32 CPU cores and 256 GB of memory | 25,600 | 240,000 |   |
+|   |   | Dedicate d host | polardb.x 8.12xlarg e.2 | 88 CPU cores and 710 GB of memory | 12,100 | 450,000 |   |
+|   |   |   | polardb.x 4.mediu m.2 | 2 CPU cores and 8 GB of memory | 3,300 | 10,000 |   |
+|   |   |   | polardb.x 8.mediu m.2 | 2 CPU cores and 16 GB of memory | 3,300 | 15,000 |   |
+
+|   |   |   | polardb.x 4.large.2 | 4 CPU cores and 16 GB of memory | 3,300 | 20,000 |   |
+|---|---|---|---|---|---|---|---|
+|   | 14 and 11.2 | Dedicate d |   |   |   |   | 20 GB- 3000 GB (Step size: 5 GB) |
+|   |   |   | polardb.x 8.large.2 | 4 CPU cores and 32 GB of memory | 3,300 | 30,000 |   |
+|   |   |   | polardb.x 4.xlarge. 2 | 8 CPU cores and 32 GB of memory | 3,300 | 40,000 |   |
+|   |   |   | polardb.x 8.xlarge. 2 | 8 CPU cores and 64 GB of memory | 12,100 | 60,000 |   |
+|   |   |   | polardb.x 4.2xlarge .2 | 16 CPU cores and 64 GB of memory | 12,100 | 80,000 |   |
+|   |   |   | polardb.x 8.2xlarge .2 | 16 CPU cores and 128 GB of memory | 12,100 | 120,000 |   |
+|   |   |   | polardb.x 4.4xlarge .2 | 32 CPU cores and 128 GB of memory | 12,800 | 160,000 | 20 GB- 6000 GB (Step size: 5 GB) |
+|   |   |   | polardb.x 8.4xlarge .2 | 32 CPU cores and 256 GB of memory | 25,600 | 240,000 |   |
+|   |   |   | polardb.x 8.8xlarge .2 | 64 CPU cores and 512 GB of memory | 12,100 | 240,000 |   |
+| > Document | Version: 202 | 60629 |   |   |   |   | 1 |
+
+|   |   | Dedicate d host | polardb.x 8.12xlarg e.2 | 88 CPU cores and 710 GB of memory | 12,100 | 450,000 |   |
+|---|---|---|---|---|---|---|---|
+
+DS console
+
+## 4 Log on to the ApsaraDB RDS console
 
 **RDS console**
 
@@ -126,6 +189,9 @@ This topic describes how to log on to the ApsaraDB RDS console.
 **Prerequisites**
 
 Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome.
+
+**Procedure**
+
 1. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator.
 
@@ -141,11 +207,10 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
-## Quick Start
+## 5 Quick Start
 
-### Procedure
+### 5.1 Procedure
 
 ApsaraDB RDS quick start covers the following operations: creating an instance, configuring a whitelist, creating a database, creating an account, and connecting to the instance.
 
@@ -153,57 +218,55 @@ ApsaraDB RDS quick start covers the following operations: creating an instance, 
 
 If you are using ApsaraDB RDS for the first time, you can start with Limits on PolarDB. The following figure shows the operations that you must perform before you use a PolarDB instance.
 
-### Create an instance
+### 5.2 Create an instance
 
 This topic describes how to create a PolarDB instance in the console.
 
-| Section | Paramete r | Description |
-|---|---|---|
-| Basic configura tion | Organizat ion | The organization to which the instance belongs. |
-|  | Resource Set | The resource set to which the instance belongs. |
-| Area | Geograph y | The region in which you want to create the instance. Services in different regions cannot communicate over an internal network. After the instance is created, the region cannot be changed. |
-|  | Deploym ent Scenario | Specifies whether to deploy the primary and secondary instances in separate zones. Valid values: Multi-AZ deployment and Single-AZ deployment. If you select Multi-AZ deployment, you must configure the Secondary Node Availability Zone parameter. |
-|  | Primary Node Availabili ty Zone | The zone in which the primary instance is deployed. |
-|  | Secondar y Node Availabili ty Zone | The zone in which the secondary instance is deployed. This parameter is available only when you set the Deployment Scenario parameter to Multi-AZ deployment. Note If you select the same zone for both the primary and secondary instances, the deployment is equivalent to single-zone deployment. |
-|  | Database Type | The database engine of the instance. Select POLARDB. |
+**Procedure**
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 1. Log on to the ApsaraDB for RDS console.
 2. On the **Instances** page, click **Create Instance** in the upper-right corner.
 3. Configure the following parameters.
 
-| ide·Quick Star |  |  |
+| Section | Paramete r | Description |
 |---|---|---|
-| Specificat ion Configura tion |  |  |
-|  | Chip Architect ure | The chip architecture of the host on which the instance is deployed. Note If you do not have permissions to select an option, contact the operations administrator to grant such permissions to your account. |
-|  | Compatib ility | The type of the database engine. PostgreSQL Oracle Syntax Compatibility |
-|  | Database Version | The version of the database. Valid values: 14 Note If you set the Compatibility parameter to PostgreSQL, you can select only 14. 11.2 or 14 Note If you set the Compatibility parameter to Oracle Syntax Compatibility, you can select 11.2 or 14. |
-|  | Series | The edition of the instance. Valid values: High-availability Edition Read-only instance |
-|  | Storage Type | The storage type of the instance. Select Local SSD. |
-|  | Open TDE | Specifies whether to enable the Transparent Data Encryption (TDE) feature. Note You cannot disable the TDE feature after it is enabled. |
+| Basic configura tion | Organizat ion | The organization to which the instance belongs. |
+|   | Resource Set | The resource set to which the instance belongs. |
+| Area | Geograph y | The region in which you want to create the instance. Services in different regions cannot communicate over an internal network. After the instance is created, the region cannot be changed. |
+|   | Deploym ent Scenario | Specifies whether to deploy the primary and secondary instances in separate zones. Valid values: Multi-AZ deployment and Single-AZ deployment. If you select Multi-AZ deployment, you must configure the Secondary Node Availability Zone parameter. |
+|   | Primary Node Availabili ty Zone | The zone in which the primary instance is deployed. |
+|   | Secondar y Node Availabili ty Zone | The zone in which the secondary instance is deployed. This parameter is available only when you set the Deployment Scenario parameter to Multi-AZ deployment. Note If you select the same zone for both the primary and secondary instances, the deployment is equivalent to single-zone deployment. |
+|   | Database Type | The database engine of the instance. Select POLARDB. |
 
-|  | Encryptio n Algorithm | The encryption algorithm. Default value: aes-256. Valid values: aes-256 sm4 Note This parameter is required if you enable the TDE feature. After the instance is created, the value of this parameter cannot be changed. |
+| ide·Quick Star |   |   |
 |---|---|---|
-|  | Instance specificat ions | The specifications of the instance. The maximum number of connections and the maximum IOPS vary based on the memory size. The actual specifications are displayed in the console. |
-|  | Storage space | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the instance. |
+| Specificat ion Configura tion |   |   |
+|   | Chip Architect ure | The chip architecture of the host on which the instance is deployed. Note If you do not have permissions to select an option, contact the operations administrator to grant such permissions to your account. |
+|   | Compatib ility | The type of the database engine. PostgreSQL Oracle Syntax Compatibility |
+|   | Database Version | The version of the database. Valid values: 14 Note If you set the Compatibility parameter to PostgreSQL, you can select only 14. 11.2 or 14 Note If you set the Compatibility parameter to Oracle Syntax Compatibility, you can select 11.2 or 14. |
+|   | Series | The edition of the instance. Valid values: High-availability Edition Read-only instance |
+|   | Storage Type | The storage type of the instance. Select Local SSD. |
+|   | Open TDE | Specifies whether to enable the Transparent Data Encryption (TDE) feature. Note You cannot disable the TDE feature after it is enabled. |
+
+|   | Encryptio n Algorithm | The encryption algorithm. Default value: aes-256. Valid values: aes-256 sm4 Note This parameter is required if you enable the TDE feature. After the instance is created, the value of this parameter cannot be changed. |
+|---|---|---|
+|   | Instance specificat ions | The specifications of the instance. The maximum number of connections and the maximum IOPS vary based on the memory size. The actual specifications are displayed in the console. |
+|   | Storage space | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the instance. |
 | Network | Network Connecti on Type | The connection type of the instance. Valid values: Public network connection: Instances of this connection type can be connected over the Internet. Intranet connection: Instances of this connection type can be connected over an internal network. Note After the instance is created, the value of this parameter cannot be changed. Proceed with caution. |
-|  | Network Type | The network type of the instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service can be blocked only by the security group or whitelist of the service. Proprietary Network: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. For security purposes, we recommend that you select the VPC network type. |
-|  | VPC | The VPC in which you want to create the instance. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | Network Type | The network type of the instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service can be blocked only by the security group or whitelist of the service. Proprietary Network: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. For security purposes, we recommend that you select the VPC network type. |
+|   | VPC | The VPC in which you want to create the instance. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-|  | VSwitch | The zone in which the vSwitch is located. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | VSwitch | The zone in which the vSwitch is located. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
 |---|---|---|
-|  | VSwitch | The vSwitch to which the instance is connected. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
-|  | IP whitelists | The IP addresses that are allowed to connect to the instance. |
-|  | Create Quantity | The number of instances that you want to create. Default value: 1. |
-| Instance Settings |  |  |
-|  | Instance name | The name of the instance. The name must be 2 to 64 characters in length. The name must start with a letter. The name can contain letters, digits, and the following special characters: -: _ The name cannot start with http:// or https://. |
+|   | VSwitch | The vSwitch to which the instance is connected. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | IP whitelists | The IP addresses that are allowed to connect to the instance. |
+|   | Create Quantity | The number of instances that you want to create. Default value: 1. |
+| Instance Settings |   |   |
+|   | Instance name | The name of the instance. The name must be 2 to 64 characters in length. The name must start with a letter. The name can contain letters, digits, and the following special characters: -: _ The name cannot start with http:// or https://. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 4. Click **Confirm Order**.
 
-### Configure an IP address
+### 5.3 Configure an IP address whitelist
 
 **whitelist**
 
@@ -215,13 +278,10 @@ Whitelists make your PolarDB instance more secure and do not interrupt the opera
 
 **Note**
 
-The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance. Configure an ECS security group: Add an ECS security group for the PolarDB instance to
+The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance. Configure an ECS security group: Add an ECS security group for the PolarDB instance to allow ECS instances in the group to connect to the PolarDB instance.
 
-| Parameter | Description |
-|---|---|
-| Database Account | The username of the account must be 2 to 16 characters in length. It can contain lowercase letters, digits, and underscores ( ). _ It must start with a lowercase letter and end with a lowercase letter or a digit. |
+**Procedure**
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User allow ECS instances in the group to connect to the PolarDB instance.
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -235,11 +295,15 @@ You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your PolarDB instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Apsara Stack account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
-### Create a database and an
+### 5.4 Create a database and an account
 
 **account**
 
-Before you start to use PolarDB, you must create a database and an account for a PolarDB instance. This topic describes how to create a database and an account on a PolarDB instance. You can create privileged and standard accounts on a PolarDB instance. The following section describes how to create a privileged account.
+Before you start to use PolarDB, you must create a database and an account for a PolarDB instance. This topic describes how to create a database and an account on a PolarDB instance.
+
+**Create an account**
+
+You can create privileged and standard accounts on a PolarDB instance. The following section describes how to create a privileged account.
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -247,17 +311,14 @@ Before you start to use PolarDB, you must create a database and an account for a
 4. In the left-side navigation pane, click **Accounts**.
 5. Click **Create Privileged Account** and configure the following parameters.
 
+| Parameter | Description |
+|---|---|
+| Database Account | The username of the account must be 2 to 16 characters in length. It can contain lowercase letters, digits, and underscores ( ). _ It must start with a lowercase letter and end with a lowercase letter or a digit. |
+
 | Password | The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters: ! @ # $ % ^ & * ( ) + - = _ |
 |---|---|
 | Re-enter Password | Enter the same password again. |
 
-| Parameter | Description |
-|---|---|
-| Database Account | The username of the account must be 2 to 16 characters in length. It can contain lowercase letters, digits, and underscores ( ). _ It must start with a lowercase letter and end with a lowercase letter or a digit. |
-| Password | The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: ! @ # $ % ^ & * ( ) + - _ = |
-| Re-enter Password | Enter the same password again. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 6. Click **Create**.
 
 **Create a privileged account**
@@ -268,7 +329,17 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 **Information** page.
 4. In the left-side navigation pane, click **Accounts**.
 5. Click **Create Privileged Account** and configure the following parameters.
+
+| Parameter | Description |
+|---|---|
+| Database Account | The username of the account must be 2 to 16 characters in length. It can contain lowercase letters, digits, and underscores ( ). _ It must start with a lowercase letter and end with a lowercase letter or a digit. |
+| Password | The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: ! @ # $ % ^ & * ( ) + - _ = |
+| Re-enter Password | Enter the same password again. |
+
 6. Click **OK**.
+
+**Create a database and a standard account**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -286,7 +357,6 @@ correct, specify the **Database Account** and **Database password** parameters.
 | Database Account | The username of the database account. |
 | Database password | The password of the database account. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 6. Click **Login**. If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
@@ -294,7 +364,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 If a message prompts you that the connection fails, the problem may be caused by an improperly configured whitelist. Reconfigure the whitelist in the console. For information about how to connect to a host, see Configure an IP address whitelist.
 7. The **SQLConsole** page appears after you log on to the instance. Execute a statement in the
-following format to create a database: ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+following format to create a database:
 
 ```
 CREATE DATABASE name
@@ -345,28 +415,21 @@ create user test2 password '123456';
 
 0. Click **Execute**.
 
-### Connect to an instance
+### 5.5 Connect to an instance
 
 This topic describes how to use Data Management (DMS) or the pgAdmin 4 client to connect to an ApsaraDB RDS instance.
 
 **Background information**
 
-You can log on to DMS from the ApsaraDB RDS console and then connect to an ApsaraDB RDS instance.
-
-| Parameter | Description |
-|---|---|
-| Host name/address | The internal endpoint of the ApsaraDB RDS instance. For more information about how to view the internal endpoint, see View and modify the internal endpoint and port number. |
-| Port | The internal port number that is used to connect to the ApsaraDB RDS instance. For more information about how to view the internal port number, see View and modify the internal endpoint and port number. |
-| Username | The name of the privileged account for the ApsaraDB RDS instance. For more information about how to create an privileged account, see Create a database and an account. |
-| Password | The password of the privileged account. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User Data Management (DMS) is a data management service that integrates data, schema, and server management, access security, BI charts, data trends, data tracking, and performance optimization. DMS can be used to manage relational and non-relational databases, such as MySQL, SQL Server, and PostgreSQL. It can also be used to manage Linux servers. You can also use a database client to connect to an ApsaraDB RDS instance. ApsaraDB RDS is fully compatible with PolarDB. You can connect to PolarDB instances in the similar manner as you would connect to an open source PolarDB database. In this topic, the pgAdmin 4 client is used to connect to an ApsaraDB RDS instance.
+You can log on to DMS from the ApsaraDB RDS console and then connect to an ApsaraDB RDS instance. Data Management (DMS) is a data management service that integrates data, schema, and server management, access security, BI charts, data trends, data tracking, and performance optimization. DMS can be used to manage relational and non-relational databases, such as MySQL, SQL Server, and PostgreSQL. It can also be used to manage Linux servers. You can also use a database client to connect to an ApsaraDB RDS instance. ApsaraDB RDS is fully compatible with PolarDB. You can connect to PolarDB instances in the similar manner as you would connect to an open source PolarDB database. In this topic, the pgAdmin 4 client is used to connect to an ApsaraDB RDS instance.
 
 **Use DMS to connect to an ApsaraDB RDS instance**
 
 For more information about how to use DMS to connect to an ApsaraDB RDS instance, see Use DMS to log on to a PolarDB instance.
 
 **Use the pgAdmin 4 client to connect to an ApsaraDB RDS**
+
+**instance**
 
 1. Add the IP address of the pgAdmin client to an IP address whitelist of the ApsaraDB RDS
 instance. For more information about how to configure a whitelist, see Configure an IP address whitelist.
@@ -380,6 +443,14 @@ For information about how to download the pgAdmin 4 client, visit pgAdmin 4 (Win
 shown in the following figure.
 5. Click the **Connection** tab and enter the information of the instance, as shown in the
 following figure.
+
+| Parameter | Description |
+|---|---|
+| Host name/address | The internal endpoint of the ApsaraDB RDS instance. For more information about how to view the internal endpoint, see View and modify the internal endpoint and port number. |
+| Port | The internal port number that is used to connect to the ApsaraDB RDS instance. For more information about how to view the internal port number, see View and modify the internal endpoint and port number. |
+| Username | The name of the privileged account for the ApsaraDB RDS instance. For more information about how to create an privileged account, see Create a database and an account. |
+| Password | The password of the privileged account. |
+
 6. Click **Save**.
 7. If the connection information is correct, choose **Servers > Server Name > Databases >**
 **postgres**. If the following page appears, the connection is established.
@@ -388,62 +459,63 @@ following figure.
 
 The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
-| Section | Configura tion | Description |
-|---|---|---|
-| Basic configura tion | Organizat ion | The organization to which the instance belongs. |
-|  | Resource Set | The resource set to which the instance belongs. |
-| Area | Geograph y | The region in which you want to create the instance. Services in different regions cannot communicate over an internal network. After the instance is created, the region cannot be changed. |
-|  | Deploym ent Scenario | Specifies whether to deploy the primary and secondary instances in separate zones. Valid values: Multi-AZ deployment and Single-AZ deployment. If you select Multi-AZ deployment, you must configure the Secondary Node Availability Zone parameter. |
-|  | Primary Node Availabili ty Zone | The zone in which the primary instance is deployed. |
-|  | Secondar y Node Availabili ty Zone | The zone in which the secondary instance is deployed. This parameter is available only when you set the Deployment Scenario parameter to Multi-AZ deployment. Note If you select the same zone for both the primary and secondary instances, the deployment is equivalent to single-zone deployment. |
-|  | Database Type | The database engine of the instance. Select POLARDB. |
+## 6 Instances
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-## Instances
-
-### Create an instance
+### 6.1 Create an instance
 
 This topic describes how to create a PolarDB instance in the console.
+
+**Procedure**
+
 1. Log on to the ApsaraDB for RDS console.
 2. On the **Instances** page, click **Create Instance** in the upper-right corner.
 3. Configure the following parameters.
 
-| saraDB for RD | ApsaraDB RDS for PolarDB User S Guide·Instance |  |
+| Section | Configura tion | Description |
 |---|---|---|
-| Specificat ion Configura tion |  |  |
-|  | Chip Architect ure | The chip architecture of the host on which the instance is deployed. Note If you do not have permissions to select an option, contact the operations administrator to grant such permissions to your account. |
-|  | Compatib ility | You can select a database engine type. PostgreSQL Oracle Syntax Compatibility |
-|  | Database Version | The version of the database. Valid values: 14 Note If you set the Compatibility parameter to PostgreSQL, you can select only 14. 11.2 or 14 Note If you set the Compatibility parameter to Oracle Syntax Compatibility, you can select 11.2 or 14. |
-|  | Series | The edition of the instance. Valid values: High-availability Edition Read-only instance |
-|  | Storage Type | The storage type of the instance. Select Local SSD. |
-|  | Open TDE | Specifies whether to enable the Transparent Data Encryption (TDE) feature. Note You cannot disable the TDE feature after it is enabled. |
+| Basic configura tion | Organizat ion | The organization to which the instance belongs. |
+|   | Resource Set | The resource set to which the instance belongs. |
+| Area | Geograph y | The region in which you want to create the instance. Services in different regions cannot communicate over an internal network. After the instance is created, the region cannot be changed. |
+|   | Deploym ent Scenario | Specifies whether to deploy the primary and secondary instances in separate zones. Valid values: Multi-AZ deployment and Single-AZ deployment. If you select Multi-AZ deployment, you must configure the Secondary Node Availability Zone parameter. |
+|   | Primary Node Availabili ty Zone | The zone in which the primary instance is deployed. |
+|   | Secondar y Node Availabili ty Zone | The zone in which the secondary instance is deployed. This parameter is available only when you set the Deployment Scenario parameter to Multi-AZ deployment. Note If you select the same zone for both the primary and secondary instances, the deployment is equivalent to single-zone deployment. |
+|   | Database Type | The database engine of the instance. Select POLARDB. |
 
-|  | Encryptio n Algorithm | The encryption algorithm. Default value: aes-256. Valid values: aes-256 sm4 Note This parameter is required if you enable the TDE feature. An instance cannot be modified after it is created. |
+| saraDB for RD | ApsaraDB RDS for PolarDB User S Guide·Instance |   |
 |---|---|---|
-|  | Instance specificat ions | The specifications of the instance. The maximum number of connections and the maximum IOPS vary based on the memory size. The actual specifications are displayed in the console. You can click AI-powered Instance Type Recommendation and enter your scenario in Apsara Assistant to get the best instance type recommendation that balances cost and performance. |
-|  | Storage space | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the instance. |
-|  | Network Connecti on Type | RDS provides the following two types of endpoints: Public network connection: Instances of this connection type can be connected over the Internet. Intranet connection: Instances of this connection type can be connected over an internal network. Note After the instance is created, the value of this parameter cannot be changed. Proceed with caution. |
-|  | Network Type | The network type of the instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service can be blocked only by the security group or whitelist of the service. Proprietary Network: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. For security purposes, we recommend that you select the VPC network type. |
-|  | VPC | Select your VPC. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
-| Network |  |  |
+| Specificat ion Configura tion |   |   |
+|   | Chip Architect ure | The chip architecture of the host on which the instance is deployed. Note If you do not have permissions to select an option, contact the operations administrator to grant such permissions to your account. |
+|   | Compatib ility | You can select a database engine type. PostgreSQL Oracle Syntax Compatibility |
+|   | Database Version | The version of the database. Valid values: 14 Note If you set the Compatibility parameter to PostgreSQL, you can select only 14. 11.2 or 14 Note If you set the Compatibility parameter to Oracle Syntax Compatibility, you can select 11.2 or 14. |
+|   | Series | The edition of the instance. Valid values: High-availability Edition Read-only instance |
+|   | Storage Type | The storage type of the instance. Select Local SSD. |
+|   | Open TDE | Specifies whether to enable the Transparent Data Encryption (TDE) feature. Note You cannot disable the TDE feature after it is enabled. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-|  | VSwitch | The zone in which the vSwitch is located. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | Encryptio n Algorithm | The encryption algorithm. Default value: aes-256. Valid values: aes-256 sm4 Note This parameter is required if you enable the TDE feature. An instance cannot be modified after it is created. |
 |---|---|---|
-|  | VSwitch | You can select the vSwitch in the VPC. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
-|  | IP whitelists | The IP addresses that are allowed to connect to the instance. |
-|  | Create Quantity | The number of instances that you want to create. Default value: 1. |
-| Instance Settings |  |  |
-|  | Instance name | The name of the instance. The name must be 2 to 64 characters in length. The name must start with a letter. The name can contain letters, digits, and the following special characters: -: _ The name cannot start with http:// or https://. |
+|   | Instance specificat ions | The specifications of the instance. The maximum number of connections and the maximum IOPS vary based on the memory size. The actual specifications are displayed in the console. You can click AI-powered Instance Type Recommendation and enter your scenario in Apsara Assistant to get the best instance type recommendation that balances cost and performance. |
+|   | Storage space | The maximum amount of storage that is provisioned to store data files, system files, binary log files, and transaction files in the instance. |
+|   | Network Connecti on Type | RDS provides the following two types of endpoints: Public network connection: Instances of this connection type can be connected over the Internet. Intranet connection: Instances of this connection type can be connected over an internal network. Note After the instance is created, the value of this parameter cannot be changed. Proceed with caution. |
+|   | Network Type | The network type of the instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service can be blocked only by the security group or whitelist of the service. Proprietary Network: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can customize route tables, CIDR blocks, and gateways in a VPC. For security purposes, we recommend that you select the VPC network type. |
+|   | VPC | Select your VPC. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+| Network |   |   |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+|   | VSwitch | The zone in which the vSwitch is located. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|---|---|---|
+|   | VSwitch | You can select the vSwitch in the VPC. Note When Network Type is set to Proprietary Network, you must specify this parameter. |
+|   | IP whitelists | The IP addresses that are allowed to connect to the instance. |
+|   | Create Quantity | The number of instances that you want to create. Default value: 1. |
+| Instance Settings |   |   |
+|   | Instance name | The name of the instance. The name must be 2 to 64 characters in length. The name must start with a letter. The name can contain letters, digits, and the following special characters: -: _ The name cannot start with http:// or https://. |
+
 4. Click **Confirm Order**.
 
-### Restart an instance
+### 6.2 Restart an instance
 
 This topic describes how to manually restart an ApsaraDB RDS instance. This applies if the number of connections exceeds a specific threshold or if an instance has performance issues.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -454,11 +526,13 @@ This topic describes how to manually restart an ApsaraDB RDS instance. This appl
 
 When you restart an instance, a network interruption occurs. We recommend that you make appropriate arrangements for your workloads and make sure that your applications are configured with automatic reconnection policies.
 5. In the message that appears, click **Confirm**.
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
-### Set a maintenance window
+### 6.3 Set a maintenance window
 
 This topic describes how to set a maintenance window for an ApsaraDB RDS instance. To ensure the stability of ApsaraDB RDS instances, the backend system performs maintenance of the instances at irregular intervals. The default maintenance window is from 02:00 to 06:00. You can set the maintenance window to the off-peak period of your business to avoid impact on business.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -471,7 +545,7 @@ This topic describes how to set a maintenance window for an ApsaraDB RDS instanc
 
 The maintenance window is in UTC+8. Before the maintenance starts, ApsaraDB RDS sends text messages and emails to the contacts that are associated with your Apsara Stack account. To ensure the stability of the maintenance process, the instance changes to the Maintaining Instance state before the maintenance window. When the instance is in this state, access to data in the database and query operations such as performance monitoring are not affected. However, apart from account and database management and IP address whitelist configuration, modification operations such as upgrade, downgrade, and restart are temporarily unavailable. During the maintenance window, one or two network interruptions may occur. Make sure that you configure automatic reconnection policies for your applications to avoid service disruptions.
 
-### Configure primary/secondary
+### 6.4 Configure primary/secondary switchover
 
 **switchover**
 
@@ -483,7 +557,10 @@ Data is synchronized in real time between the primary and secondary instances. Y
 
 **Note**
 
-During a switchover, a network interruption may occur. Make sure that your applications are configured with automatic reconnection policies. ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+During a switchover, a network interruption may occur. Make sure that your applications are configured with automatic reconnection policies.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -496,9 +573,12 @@ During a switchover, a network interruption may occur. Make sure that your appli
 
 During the switchover, operations such as managing databases and accounts and changing network types cannot be performed. Therefore, we recommend that you select Switch Within Maintenance Window. For more information about how to set a maintenance window, see Set a maintenance window.
 
-### Release an instance
+### 6.5 Release an instance
 
 This topic describes how to manually release a PolarDB instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. In the **Actions** column corresponding to the instance, click **More** and select **Release**
@@ -509,13 +589,13 @@ This topic describes how to manually release a PolarDB instance.
 After an instance is released, the instance data is immediately deleted. We recommend that you back up the data and download the backup file before you release an instance. For more information, see Back up a PolarDB instance and Download backup files.
 4. In the message that appears, click **Confirm**.
 
-### Read-only instance
+### 6.6 Read-only instance
 
-#### Overview
+#### 6.6.1 Overview
 
-PolarDB allows you to create read-only instances. In scenarios where PolarDB has a small number of write requests but a large number of read requests, you can create read-only instances to distribute database access loads away from the primary instance. This topic describes the features and limits of read-only instances. If a large number of read requests overwhelm the primary instance, your business may be interrupted. In this case, you can create one or more read-only instances to offload read requests from the primary instance. This scales the read capability of your database system and increases the throughput of your application. ApsaraDB RDS for PolarDB User ApsaraDB for RDS Each read-only instance works in a single-node architecture, where no instances are provided as backups. Data updates of the primary instance are automatically synchronized to all readonly instances immediately after the primary instance completes operations. Read-only instances reside within the same region as the primary instance, but possibly in different zones. The following figure shows the topology of read-only instances. Read-only instances have the following features: Specifications of a read-only instance can be different from those of the primary instance and can be changed at any time, which facilitates elastic scaling. Read-only instances do not require account or database maintenance. Account and database information is synchronized with the primary instance. The whitelists of read-only instances can be configured independently. System performance monitoring is provided. PolarDB provides a variety of optimization recommendations, such as storage engine check, primary key check, large table check, and check for excessive indexes and missing indexes. You can optimize your databases based on the optimization recommendations and specific applications.
+PolarDB allows you to create read-only instances. In scenarios where PolarDB has a small number of write requests but a large number of read requests, you can create read-only instances to distribute database access loads away from the primary instance. This topic describes the features and limits of read-only instances. If a large number of read requests overwhelm the primary instance, your business may be interrupted. In this case, you can create one or more read-only instances to offload read requests from the primary instance. This scales the read capability of your database system and increases the throughput of your application. Each read-only instance works in a single-node architecture, where no instances are provided as backups. Data updates of the primary instance are automatically synchronized to all readonly instances immediately after the primary instance completes operations. Read-only instances reside within the same region as the primary instance, but possibly in different zones. The following figure shows the topology of read-only instances. Read-only instances have the following features: Specifications of a read-only instance can be different from those of the primary instance and can be changed at any time, which facilitates elastic scaling. Read-only instances do not require account or database maintenance. Account and database information is synchronized with the primary instance. The whitelists of read-only instances can be configured independently. System performance monitoring is provided. PolarDB provides a variety of optimization recommendations, such as storage engine check, primary key check, large table check, and check for excessive indexes and missing indexes. You can optimize your databases based on the optimization recommendations and specific applications.
 
-#### Create a read-only instance
+#### 6.6.2 Create a read-only instance
 
 This topic describes how to create a read-only instance, which you can use to handle large numbers of read requests.
 
@@ -523,38 +603,40 @@ This topic describes how to create a read-only instance, which you can use to ha
 
 You can create up to five read-only instances. Backup settings and temporary backup are not supported. Instance restoration is not supported. Data migration to read-only instances is not supported. Database creation and deletion are not supported. Account creation, deletion, authorization, and password changes are not supported. After a read-only instance is created, you cannot restore data by directly overwriting the primary instance with a backup set.
 
-| Item | Parameter | Description |
-|---|---|---|
-| Area | Region | The region in which you want to create the read- only instance. |
-| Specifications | Database Engine | The database engine of the read-only instance, which is the same as that of the primary instance and cannot be changed. |
-|  | Engine Version | The version of the database engine, which is the same as that of the primary instance and cannot be changed. |
-|  | Edition | Set the value to Read-only. |
-|  | Instance Specifications | The instance type of the read-only instance. The instance type of the read-only instance can be different from that of the primary instance, and can be changed at any time. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
-|  | Storage Capacity | The storage capacity of the read-only instance. To ensure sufficient I/O throughput for data synchronization, we recommend that you select at least the same instance type and storage capacity as the primary instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
-| Network | Network Type | The network type of the read-only instance. This must be the same as that of the primary instance and cannot be changed. |
-|  | VPC | The VPC in which you want to create the read- only instance. This parameter is required when Network Type is set to VPC. |
-|  | vSwitch | The vSwitch in the VPC. This parameter is required when Network Type is set to VPC. |
+**Procedure**
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the **Distributed by Instance Role** section on the right side of the **Basic Information**
 page, click **Create Read-only Instance**.
 4. On the **Create Read-only RDS Instance** page, configure the read-only instance
 parameters.
+
+| Item | Parameter | Description |
+|---|---|---|
+| Area | Region | The region in which you want to create the read- only instance. |
+| Specifications | Database Engine | The database engine of the read-only instance, which is the same as that of the primary instance and cannot be changed. |
+|   | Engine Version | The version of the database engine, which is the same as that of the primary instance and cannot be changed. |
+|   | Edition | Set the value to Read-only. |
+|   | Instance Specifications | The instance type of the read-only instance. The instance type of the read-only instance can be different from that of the primary instance, and can be changed at any time. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
+|   | Storage Capacity | The storage capacity of the read-only instance. To ensure sufficient I/O throughput for data synchronization, we recommend that you select at least the same instance type and storage capacity as the primary instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
+| Network | Network Type | The network type of the read-only instance. This must be the same as that of the primary instance and cannot be changed. |
+|   | VPC | The VPC in which you want to create the read- only instance. This parameter is required when Network Type is set to VPC. |
+|   | vSwitch | The vSwitch in the VPC. This parameter is required when Network Type is set to VPC. |
+
 5. After you configure the preceding parameters, click **Submit**.
 
-#### View details of read-only instances
+#### 6.6.3 View details of read-only instances
 
 This topic describes how to view details of read-only instances. You can go to the Basic Information page of a read-only instance from the Instances page or from the read-only instance list of the primary instance. Read-only instances are managed in the same manner as primary instances. The Basic Information page shows the management operations that can be performed.
 
 **View details of a read-only instance from the Instances page**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, click the ID of a read-only instance. The **Basic Information** page
 appears. In the instance list, **Instance Role** of read-only instances is displayed as **Read-only**
 **Instance**, as shown in View a read-only instance.
+Figure 1. View a read-only instance
 
 **View details of a read-only instance from the Basic Information**
 
@@ -568,11 +650,14 @@ displayed.
 4. Click the ID of the read-only instance to go to the Basic Information page of the read-only
 instance.
 
-### Change the specifications of
+### 6.7 Change the specifications of an instance
 
 **an instance**
 
 This topic describes how to change the instance type and storage space of a PolarDB instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -585,13 +670,11 @@ This topic describes how to change the instance type and storage space of a Pola
 While you change specifications of an instance, a network interruption of about 30 seconds may occur, and most of the operations related to databases, accounts, and network operations cannot be performed. We recommend that you make appropriate arrangements for you workloads before you change specifications.
 5. Change specifications based on your business requirements and click **Submit**.
 
-### Set instance parameters
+### 6.8 Set instance parameters
 
 You can use the console to view and modify the values of some parameters and view the parameter modification history.
 
 **Modify parameter values**
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 **yp**
 
@@ -619,16 +702,6 @@ Select **Show Modified Parameters Only** to view the modified parameters. iv. In
 
 If a parameter modification requires an instance restart to take effect, the system prompts you to restart the instance. We recommend that you perform this operation during off-peak hours and make sure that your application has a reconnection mechanism. You can click **Cancel** to discard the modifications before they are submitted.
 
-| Parameter | Maj or vers ion | Def ault valu e | Value range | Res tart req uire d | Description |
-|---|---|---|---|---|---|
-| archive mod _ e | 14, 11.2 | on | [alway s\|on\|of f] | Yes | ARCHIVELOG mode. In addition to off which disables the mode, two other modes are available: on and always. During normal operations, these two modes are identical. However, when set to always, the WAL archiving process remains enabled even during archive recovery or in standby mode. In always mode, all files restored from the archive or transferred via streaming replication are archived again. |
-| auto explain. _ log analyze _ | 14, 11.2 | off | [on\|off ] | No | Controls whether to log the execution plan and analysis information of a query. If you enable this parameter, detailed performance data is provided, but this increases overhead. |
-| auto explain. _ log buffers _ | 14, 11.2 | off | [on\|off ] | No | Controls whether to log buffer usage during query execution. If you enable this parameter, you can analyze query performance issues and check whether performance is degraded due to insufficient buffers. |
-| auto explain. _ log format _ | 14, 11.2 | text | [text\|x ml\|jso n\|yaml ] | No | Specifies the output format of the query plan logs generated by the auto-explain module. The valid values typically include text (default, plain text format) and json (structured JSON format). This parameter controls the readability or machine parsability of the logs. |
-| auto explain. _ log min dura _ _ tion | 14, 11.2 | -1 | [-1- 21474 83647 ] | No | Sets the minimum running time threshold for a query in milliseconds. Queries that exceed this threshold are logged. The default value is -1, which indicates that no queries are logged. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 **View parameter modification history**
 
 1. Log in to the ApsaraDB RDS console.
@@ -641,6 +714,14 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 **Parameter descriptions**
 
+| Parameter | Maj or vers ion | Def ault valu e | Value range | Res tart req uire d | Description |
+|---|---|---|---|---|---|
+| archive mod _ e | 14, 11.2 | on | [alway s\|on\|of f] | Yes | ARCHIVELOG mode. In addition to off which disables the mode, two other modes are available: on and always. During normal operations, these two modes are identical. However, when set to always, the WAL archiving process remains enabled even during archive recovery or in standby mode. In always mode, all files restored from the archive or transferred via streaming replication are archived again. |
+| auto explain. _ log analyze _ | 14, 11.2 | off | [on\|off ] | No | Controls whether to log the execution plan and analysis information of a query. If you enable this parameter, detailed performance data is provided, but this increases overhead. |
+| auto explain. _ log buffers _ | 14, 11.2 | off | [on\|off ] | No | Controls whether to log buffer usage during query execution. If you enable this parameter, you can analyze query performance issues and check whether performance is degraded due to insufficient buffers. |
+| auto explain. _ log format _ | 14, 11.2 | text | [text\|x ml\|jso n\|yaml ] | No | Specifies the output format of the query plan logs generated by the auto-explain module. The valid values typically include text (default, plain text format) and json (structured JSON format). This parameter controls the readability or machine parsability of the logs. |
+| auto explain. _ log min dura _ _ tion | 14, 11.2 | -1 | [-1- 21474 83647 ] | No | Sets the minimum running time threshold for a query in milliseconds. Queries that exceed this threshold are logged. The default value is -1, which indicates that no queries are logged. |
+
 | auto explain. _ log nested s _ _ tatements | 14, 11.2 | off | [on\|off ] | No | Controls whether to log the execution plans of nested SQL statements, such as statements in functions or subtransactions. If you set this parameter to on, the execution plans of these statements are also logged, which helps you perform in-depth analysis of performance issues. |
 |---|---|---|---|---|---|
 | auto explain. _ log timing _ | 14, 11.2 | on | [on\|off ] | No | Controls whether to include timing information for each query step in the output of auto-explain. If you set this parameter to on, the running time is recorded. If you set it to off, timing information is not recorded. The default value is typically on. |
@@ -651,8 +732,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | autovacuum _ vacuum cost _ delay _ | 14, 11.2 | 0 | [-1- 100] | No | Defines the time interval in milliseconds that the autovacuum process pauses after each cleanup operation. This is used to control the impact of cleanup on system performance. |
 | autovacuum _ vacuum cost _ limit _ | 14, 11.2 | 100 00 | [-1- 10000 ] | No | Sets the cost limit for a single autovacuum operation. This is used to balance the impact of cleanup tasks on system performance. |
 | checkpoint c _ ompletion ta _ rget | 11.2 | 0.9 | [0.0- 1.0] | No | Controls the completion target for checkpoint write operations. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 | checkpoint ti _ meout | 11.2 | 300 | [1- 86400 ] | No | The maximum time between automatic WAL checkpoints. If you specify a value without a unit, the unit is seconds. |
 |---|---|---|---|---|---|
@@ -666,8 +745,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | default with _ _ rowids | 11.2 | on | [on\|off ] | No | Specifies whether to create new tables that support ROWID (OID with an index) by default. |
 | enable partit _ ionwise aggr _ egate | 14, 11.2 | on | [on\|off ] | No | Controls whether to enable partition-wise aggregate operations. If you set this parameter to on, PostgreSQL attempts to perform aggregation on each partition of a partitioned table separately, which may improve query performance. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | enable partit _ ionwise join _ | 14, 11.2 | on | [on\|off ] | No | Controls whether to enable partition-wise join optimization. If you set this parameter to on, PostgreSQL attempts to perform more efficient join operations on partitioned tables to improve query performance. |
 |---|---|---|---|---|---|
 | extra float d _ _ igits | 14, 11.2 | 0 | [-15-3] | No | Controls the number of extra precision digits displayed for floating-point number types, such as float4 and float8. A negative value reduces precision, and a positive value increases precision. This affects the display format of floating-point numbers. |
@@ -679,8 +756,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | log connecti _ ons | 14, 11.2 | off | [on\|off ] | No | Controls whether to log client connection and disconnection events in the PostgreSQL log file. |
 | log disconne _ ctions | 14, 11.2 | off | [on\|off ] | No | Controls whether the PostgreSQL database logs client disconnection information. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 | log min dura _ _ tion stateme _ nt | 14, 11.2 | 1 4: 1 0 0 0 1 1. 2: 5 0 0 0 | [-1- 21474 83647 ] | No | Logs SQL statements whose running time exceeds the specified number of milliseconds. This is used to identify slow queries. A value of 0 logs all statements, and -1 logs none. |
 |---|---|---|---|---|---|
 | log stateme _ nt | 14, 11.2 | ddl | [none\| ddl\|m od\|all] | No | Controls which SQL statements are logged by PostgreSQL. You can set this parameter to one of the following values: none: No SQL statements are logged. ddl: Only data definition language (DDL) statements are logged, such as CREATE, ALTER, and DROP. mod: All data modification statements, such as INSERT, UPDATE, and DELETE, and DDL statements are logged. all: All SQL statements are logged. |
@@ -688,8 +763,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | log timezone _ | 14, 11.2 | 1 4: U T C 1 1. 2: P R C | ^'(((U TC)(-) {0,1} (\d\|[1- 9]\d\|1( [0-5... | No | Sets the time zone used in PostgreSQL log records to standardize the display of log times. The default value is typically the system time zone. |
 | max parallel _ maintenanc _ e workers _ | 11.2 | 2 | [0- 1024] | No | Sets the maximum number of parallel processes for each maintenance operation. |
 | max parallel _ workers _ | 11.2 | 8 | [0- 512] | No | Sets the maximum number of workers that the system can support for parallel operations. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 | max parallel _ workers per _ _ gather _ | 11.2 | 2 | [0- 512] | No | Sets the maximum number of parallel processes for each executor node. |
 |---|---|---|---|---|---|
@@ -704,8 +777,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | polar comp _ _ custom plan _ tries _ | 11.2 | 5 | [-1- 100] | No | Sets the maximum number of custom plans that the planner considers. |
 | polar comp _ _ dynatune | 11.2 | 0 | [0- 100] | Yes | Sets the PolarDB utilization percentage. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 | polar comp _ _ dynatune pr _ ofile | 11.2 | oltp | [oltp\|r eporti ng\|mix ed] | Yes | Sets the workload mode for dynatune. |
 |---|---|---|---|---|---|
 | polar comp _ _ enable pruni _ ng | 1.2 | off | [on\|off ] | No | Enables the early exclusion feature of the planner for partitioned tables. |
@@ -718,8 +789,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | polar enable _ inline cte _ _ | 11.2 | on | [on\|off ] | No | Specifies whether to allow the planner to inline common table expressions (CTEs). |
 | polar enable _ cic on parti _ _ _ tioned | 14 | on | [on\|off ] | No | Controls whether to enable Constraint Exclusion on partitioned tables. If you set this parameter to on, the optimizer automatically skips unnecessary partition scans based on partition constraints, which improves query performance. If you set it to off, this feature is disabled. The default value is typically on. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | polar enable _ convert or t _ _ _ o union all _ _ | 14 | off | [on\|off ] | No | Controls whether to optimize OR conditions in SQL queries by converting them to the UNION ALL format. Enabling this feature can improve query performance in specific scenarios but may increase the complexity of the query plan. on: Enables the conversion. off: Disables the conversion. This is the default value. |
 |---|---|---|---|---|---|
 | polar enable _ create table _ _ as bulk ins _ _ _ ert | 14 | on | [on\|off ] | No | Specifies whether to enable the optimization feature for bulk inserts using the CREATE TABLE AS statement. |
@@ -729,8 +798,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | polar failove _ r slot mode _ _ | 11.2 | sync | [sync\| async\| off] | No | None. |
 | polar idle in _ _ twophase ti _ _ meout | 11.2 | 0 | [0- 21474 83647 ] | No | Sets the maximum allowed idle time in the non- transactional execution phase of a two-phase commit protocol (2PC) transaction. |
 | polar mini fl _ _ ogindex loca _ l buffers _ | 11.2 | 204 80 | [8- 10737 41823 ] | No | Sets the number of local buffers for the mini flashback log index for each flashback table operation. Each buffer is 8 KB in size. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 | polar mini xl _ _ ogindex loca _ l buffers _ | 11.2 | 102 40 | [8- 10737 41823 ] | No | Sets the number of local buffers for the mini WAL log index for each flashback table operation. Each buffer is 16 KB in size. |
 |---|---|---|---|---|---|
@@ -745,8 +812,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | polar px ena _ _ ble cte shar _ _ ed scan _ | 14 | on | [on\|off ] | No | Controls whether to enable shared scan optimization for common table expressions (CTEs) to improve query performance. |
 | polar px ena _ _ ble explain _ _ all stat _ | 14 | off | [on\|off ] | No | If you enable this parameter, the EXPLAIN command displays statistics for all nodes. This is used to analyze and optimize query plans. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | polar px ena _ _ ble join pref _ _ etch inner _ | 14 | on | [on\|off ] | No | Controls whether to enable the inner table prefetch feature in parallel join operations to optimize query performance. |
 |---|---|---|---|---|---|
 | polar px ena _ _ ble left inde _ _ x nestloop j _ _ oin | 14, 11.2 | 1 4: of f 1 1. 2: on | [on\|off ] | No | Controls whether to enable the Left Index Nestloop Join optimization strategy. If you set this parameter to on, this optimization method is allowed to improve query performance. If you set it to off, this feature is disabled. |
@@ -759,8 +824,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | polar px ena _ _ ble result ha _ _ sh filter _ | 14 | on | [on\|off ] | No | Controls whether to enable the result hash filtering feature to optimize query execution performance. |
 | polar px ena _ _ ble spi read _ _ _ all namespa _ ces | 14 | off | [on\|off ] | No | Specifies whether to allow reading data from all namespaces through the SPI interface. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 | polar px ena _ _ ble subquery _ | 14 | on | [on\|off ] | No | Controls whether to enable parallel execution optimization for subqueries. If you set this parameter to on, subqueries are processed in parallel to improve performance. If you set it to off, this feature is disabled. |
 |---|---|---|---|---|---|
 | polar px ena _ _ ble tableless _ scan _ | 14 | off | [on\|off ] | No | Specifies whether to enable the tableless scan feature to optimize query performance. |
@@ -768,8 +831,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | polar px ign _ _ ore function _ | 14, 11.2 | '157 4,15 75,1 576, 176 5,30 78,4 032' | ^'[1- 9]\d*(, [1- 9]\d*)* ?'$ | No | Controls whether to ignore the execution of certain functions. This is typically used in debugging or optimization scenarios. |
 | polar px inte _ _ rconnect tra _ nsmit timeo _ ut | 14 | 360 0 | [1- 7200] | No | Sets the timeout for communication transmission between PolarDB PX nodes. This controls the maximum waiting time for data transmission. |
 | polar px ma _ _ x slices _ | 14 | 50 | [0- 21474 83647 ] | No | Controls the maximum number of slices in a parallel query. This affects the granularity and resource allocation of parallel execution. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 | polar px opti _ _ mizer bitma _ pscan factor _ | 14, 11.2 | 1.0 | 14: [0- 999 999 999 999. 0] 11.2 : [0.0 - 214 748 364 7.0] | No | Adjusts the cost factor for bitmap scans in the PolarDB parallel query optimizer. This affects the selection priority of bitmap scans in the query plan. A larger value makes the optimizer more likely to choose other scan methods. |
 |---|---|---|---|---|---|
@@ -780,8 +841,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | polar px opti _ _ mizer enable _ dynamictabl _ escan | 14 | on | [on\|off ] | No | Specifies whether to enable the dynamic table scan optimizer feature. |
 | polar px opti _ _ mizer enable _ groupagg _ | 14 | on | [on\|off ] | No | Controls whether to enable the Group Aggregate feature in the PolarDB parallel execution optimizer. If you set this parameter to on, group aggregation operations are executed in parallel to improve performance. If you set it to off, this feature is disabled. The default value is typically on. |
 | polar px opti _ _ mizer enable _ hashagg _ | 14 | on | [on\|off ] | No | Controls whether to enable the hash-based aggregation optimization strategy. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 | polar px opti _ _ mizer enable _ hashjoin _ | 14 | on | [on\|off ] | No | Controls whether to enable the hash join optimizer. If you set this parameter to on, the optimizer is allowed to use the hash join algorithm. If you set it to off, hash join optimization is disabled. |
 |---|---|---|---|---|---|
@@ -794,8 +853,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | polar px opti _ _ mizer enable _ motion gat _ _ her | 14 | on | [on\|off ] | No | Specifies whether to enable the Motion Gather operation in the optimizer to optimize data transmission in distributed queries. |
 | polar px opti _ _ mizer enable _ motion redi _ _ stribute | 14 | on | [on\|off ] | No | Enables or disables the optimizer's data redistribution optimization feature. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | polar px opti _ _ mizer enable _ nestloopjoin _ | 14 | on | [on\|off ] | No | Controls the enabling or disabling of the NestLoop Join optimizer in the PolarDB for PostgreSQL kernel. |
 |---|---|---|---|---|---|
 | polar px opti _ _ mizer enable _ partition sel _ _ ection | 14 | on | [on\|off ] | No | Controls whether to enable the partition selection optimization feature for partitioned tables. |
@@ -805,15 +862,11 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | polar px opti _ _ mizer enable _ sort _ | 14 | on | [on\|off ] | No | Specifies whether to enable the sorting feature in the optimizer. |
 | polar px opti _ _ mizer indexo _ nlyscan fact _ or | 14, 11.2 | 1.0 | 14: [0- 999 999 999 999. 0] 11.2 : [0.0 - 214 748 364 7.0] | No | Controls the optimizer's preference for Index- Only Scans when evaluating index scan costs. A higher value makes the optimizer more likely to choose an index scan. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 | polar px opti _ _ mizer indexs _ can factor _ | 14, 11.2 | 1.0 | 14: [0- 999 999 999 999. 0] 11.2 : [0.0 - 214 748 364 7.0] | No | An optimizer parameter that controls the cost of index scans. It is used to adjust the priority of index scans in the query plan. A larger value increases the cost of index scans, which may cause the optimizer to prefer other scan methods. |
 |---|---|---|---|---|---|
 | polar px opti _ _ mizer nestlo _ op factor _ | 14, 11.2 | 102 4.0 | 14: [0- 999 999 999 999. 0] 11.2 : [0.0 - 214 748 364 7.0] | No | Controls the cost factor for nested loop joins. This affects the optimizer's preference for nested loop joins. A higher value makes the optimizer more likely to choose other join methods. |
 | polar px opti _ _ mizer remov _ e superfluou _ s order _ | 14 | on | [on\|off ] | No | Controls whether the optimizer removes superfluous sort operations to improve query performance. |
 | polar px opti _ _ mizer share _ _ indexscan fa _ ctor | 14, 11.2 | 1.0 | 14: [0- 999 999 999 999. 0] 11.2 : [0.0 - 214 748 364 7.0] | No | Controls the cost factor in shared index scans for the parallel query optimizer. This affects the optimizer's choice of index scan method. A larger value makes the optimizer less likely to use shared index scans. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 | polar px opti _ _ mizer share _ _ tablescan fa _ ctor | 14, 11.2 | 1.0 | 14: [0- 999 999 999 999. 0] 11.2 : [0.0 - 214 748 364 7.0] | No | Controls the optimization factor for table scan sharing in parallel queries. This affects the allocation strategy for table scans during parallel execution. A larger value favors shared scans, while a smaller value favors independent scans. |
 |---|---|---|---|---|---|
@@ -822,29 +875,21 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | polar px wai _ _ t lock timeo _ _ ut | 14 | 180 000 0 | [0- 21474 83647 ] | No | Sets the timeout for waiting for locks in PolarDB parallel execution (PX). The unit is milliseconds. A lock wait timeout error is triggered after the timeout to avoid prolonged blocking. |
 | postgres fdw _ .polar conne _ ction check _ | 11.2 | off | [on\|off ] | No | Specifies whether to enable RDS connection checking. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 | shared prelo _ ad libraries _ | 14 | 'pola r vfs _ ,pola r wo _ rker, pg s _ tat s _ tate men ts,au th d _ e lay,a uto _ expl ain,z hpar ser, plugi n de _ bug ger, pola r m _ o nitor prel _ oad, pg p _ ath man ' | ^'(pol ar vfs, _ polar _ worker ) (,\w+) *'$ | Yes | Specifies a list of shared libraries to preload when the PostgreSQL instance starts. These libraries typically contain extensions or plugins. Separate multiple library names with commas. After you set this parameter, the related features take effect for the entire database cluster. Note Changing this parameter requires a restart of the PostgreSQL service. |
 |---|---|---|---|---|---|
 | ssl min prot _ _ ocol version _ | 14 | TLSv 1.2 | [TLSv1 \|TLSv1 .1\|TLS v1.2\|T LSv1.3 ] | No | Specifies the minimum version of the TLS protocol that PostgreSQL allows when establishing an SSL-VPN connection with a client. |
 | statement ti _ meout | 14, 11.2 | 0 | ^(0\| [1- 9]\d{3 ,8}\|1\ d{9}\| 20000 00000 )... | No | Sets the maximum time that a single database query is allowed to run. The query is forcibly terminated if it exceeds this time. The unit is milliseconds. The default value is 0, which means no limit. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | synchronous commit _ | 14 | off | [local\|r emote write\| _ remot e appl _ y\|on... | No | Controls whether a transaction commit waits for the Write-Ahead Logging (WAL) records to be synchronized to the disk or a synchronous standby server. This ensures data durability and consistency. The valid values include the following: on: Ensures that each commit waits for the WAL records to be written to storage. off: Does not wait for WAL records to be written. This may cause the loss of some committed transactions. local: Waits only for the local WAL write to complete. remote write: Waits for at least one _ synchronous standby server to receive the WAL records. remote apply: Waits for at least one _ synchronous standby server to apply the WAL records. |
 |---|---|---|---|---|---|
 | temp file lim _ _ it | 14, 11.2 | 1 4: 1 0 0 G B 1 1. 2: 5 2 4 2 8 8 0 0 0 | 14: [-1- 214 748 364 7] 11.2 : [- 1- 104 857 600 0] | No | Controls the maximum size of temporary files that a single query can create. If you specify a value without a unit, the unit is kilobytes. If the limit is exceeded, the query is canceled. A value of -1 indicates no limit. This parameter is used to prevent temporary files from exhausting disk space. |
-|  |  |  | ^'(((U TC)(-) {0,1} (\d\|[1- 9]\d\|1( [0- 5]\d\|6[ 0- 7])))\| ((GMT) (-) {0,1} (\d\|[1- 9]\d\|1( [0- 5]\d\|6[ 0- 7])))\|C ST6CD |  |  |
+|   |   |   | ^'(((U TC)(-) {0,1} (\d\|[1- 9]\d\|1( [0- 5]\d\|6[ 0- 7])))\| ((GMT) (-) {0,1} (\d\|[1- 9]\d\|1( [0- 5]\d\|6[ 0- 7])))\|C ST6CD |   |   |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-|  |  |  | T\|Pola nd\|Kw ajalein \|MST\| NZ\|Uni |  |  |
+|   |   |   | T\|Pola nd\|Kw ajalein \|MST\| NZ\|Uni |   |   |
 |---|---|---|---|---|---|
 | timezone | 14, 11.2 | 1 4: U T C 1 1. 2: P R C | versal\| Libya\| Turkey \|EST5 EDT\|G reenwi ch\|NZ- CHAT\| MET\|P ortuga l\|GMT- 0\|CET\| Eire\|P ST8PD T\|Jama ica\|GM T\|Zulu \|Japan\| ROC\|G B- Eire\|R OK\|Na vajo\|Si ngapo re\|posi xrules\| GB\|ES T\|GMT 0\|Hon gkong\| PRC\|Ir an\|MS T7MD T\|WET \|W- SU\|UC T\|Cub a\|Egyp t\|EET\|I srael\| UTC\|H ST\|Icel and)'$ | No | Sets the time zone for the database, which affects the display and storage of timestamps. The default value is typically the system time zone. |
 | track commi _ t timestamp _ | 14, 11.2 | off | [on\|off ] | Yes | Specifies whether to record the commit timestamp of transactions. If you enable this parameter, you can query the commit time of transactions, but this increases storage overhead. The default value is off. |
 | vacuum defe _ r cleanup ag _ _ e | 14, 11.2 | 0 | [0- 10000 00] | No | Specifies the number of transactions by which the cleanup of dead tuples is deferred in a VACUUM operation. This is used to reduce cleanup conflicts caused by concurrent transactions. The value can be 0 or a positive integer. The default value is 0, which means immediate cleanup. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 | wal level _ | 14, 11.2 | logic al | [mini mal\|re plica\|l ogical] | Yes | Controls the level of information written to the Write-Ahead Logging (WAL) log. This determines the availability of replication and recovery features. Common values include minimal (least information), replica (supports replication), and logical (supports logical decoding). |
 |---|---|---|---|---|---|
@@ -856,15 +901,13 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | zdb.ignore vi _ sibility | 11.2 | off | [on\|off ] | No | Specifies whether queries should adhere to visibility rules. |
 | zdb.log level _ | 11.2 | deb ug1 | [debu g5\|de bug4\| debug 3\|deb ug2\|d ebug1 \|info\|n otice\| warnin g\|log] | No | The ZomboDB log level. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-### Manage tags
+### 6.9 Manage tags
 
 If you have a large number of instances, you can create multiple tags and add the tags to the instances. Then, you can query instances by tag. This topic describes how to manage tags.
 
 **Usage notes**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS A tag consists of a key-value pair. Each key must be unique for an Alibaba Cloud account in a region. This limit does not apply to the values of keys. You can add up to 20 tags to an instance. If a tag is removed from an instance and is not added to other instances, the tag is automatically deleted.
+A tag consists of a key-value pair. Each key must be unique for an Alibaba Cloud account in a region. This limit does not apply to the values of keys. You can add up to 20 tags to an instance. If a tag is removed from an instance and is not added to other instances, the tag is automatically deleted.
 
 **Add tags**
 
@@ -895,16 +938,9 @@ icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, click the
 icon to the right of the tag and click **OK**.
 
-| Parameter | Description |
-|---|---|
-| Host name/address | The internal endpoint of the ApsaraDB RDS instance. For more information about how to view the internal endpoint, see View and modify the internal endpoint and port number. |
-| Port | The internal port number that is used to connect to the ApsaraDB RDS instance. For more information about how to view the internal port number, see View and modify the internal endpoint and port number. |
+## 7 Database connection
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-## Database connection
-
-### Connect to an instance
+### 7.1 Connect to an instance
 
 This topic describes how to use Data Management (DMS) or the pgAdmin 4 client to connect to an ApsaraDB RDS instance.
 
@@ -917,6 +953,8 @@ You can log on to DMS from the ApsaraDB RDS console and then connect to an Apsar
 For more information about how to use DMS to connect to an ApsaraDB RDS instance, see Use DMS to log on to a PolarDB instance.
 
 **Use the pgAdmin 4 client to connect to an ApsaraDB RDS**
+
+**instance**
 
 1. Add the IP address of the pgAdmin client to an IP address whitelist of the ApsaraDB RDS
 instance. For more information about how to configure a whitelist, see Configure an IP address whitelist.
@@ -931,11 +969,15 @@ shown in the following figure.
 5. Click the **Connection** tab and enter the information of the instance, as shown in the
 following figure.
 
+| Parameter | Description |
+|---|---|
+| Host name/address | The internal endpoint of the ApsaraDB RDS instance. For more information about how to view the internal endpoint, see View and modify the internal endpoint and port number. |
+| Port | The internal port number that is used to connect to the ApsaraDB RDS instance. For more information about how to view the internal port number, see View and modify the internal endpoint and port number. |
+
 | Username | The name of the privileged account for the ApsaraDB RDS instance. For more information about how to create an privileged account, see Create a database and an account. |
 |---|---|
 | Password | The password of the privileged account. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 6. Click **Save**.
 7. If the connection information is correct, choose **Servers > Server Name > Databases >**
 **postgres**. If the following page appears, the connection is established.
@@ -944,7 +986,7 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
-### Use DMS to log on to a
+### 7.2 Use DMS to log on to a PolarDB instance
 
 **PolarDB instance**
 
@@ -953,6 +995,9 @@ This topic describes how to use Data Management (DMS) to log on to a PolarDB ins
 **Prerequisites**
 
 The IP address whitelist is configured. For more information about how to configure an IP address whitelist, see Configure an IP address whitelist.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -970,7 +1015,6 @@ The IP address whitelist is configured. For more information about how to config
 | Database account | The account of the database to be connected. |
 | Database password | The password of the account used to connect to the database. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 6. Click **Login**.
 
 **Note**
@@ -978,7 +1022,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-### Change the network type of
+### 7.3 Change the network type of an instance
 
 **an instance**
 
@@ -986,7 +1030,7 @@ This topic describes how to switch a PolarDB instance between the classic networ
 
 **Background information**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS Classic network: PolarDB instances in the classic network are not isolated. To block unauthorized access to these instances, you must configure IP address whitelists or security groups. VPC: Each VPC is an isolated virtual network. We recommend that you select the VPC type because it is more secure than the classic network. You can configure route tables, CIDR blocks, and gateways in a VPC. You can also connect your data center to a VPC by using Express Connect circuits or virtual private networks (VPNs). The data center and the VPC comprise a virtual data center. You can use the virtual data center to migrate your workloads to the cloud with no downtime.
+Classic network: PolarDB instances in the classic network are not isolated. To block unauthorized access to these instances, you must configure IP address whitelists or security groups. VPC: Each VPC is an isolated virtual network. We recommend that you select the VPC type because it is more secure than the classic network. You can configure route tables, CIDR blocks, and gateways in a VPC. You can also connect your data center to a VPC by using Express Connect circuits or virtual private networks (VPNs). The data center and the VPC comprise a virtual data center. You can use the virtual data center to migrate your workloads to the cloud with no downtime.
 
 **Change the network type from VPC to classic network**
 
@@ -1015,7 +1059,7 @@ PolarDB instance by using the internal endpoint.
 4. In the left-side navigation pane, click **Database Connection**.
 5. In the upper-right corner of the Database Connection section, click **Switch to VPC**.
 6. In the Switch to VPC dialog box, select a VPC and a vSwitch and specify whether to retain
-the classic network endpoint. ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+the classic network endpoint.
 
 **Note**
 
@@ -1033,9 +1077,9 @@ whitelist of the VPC network type on the PolarDB instance. This way, the ECS ins
 
 **Note**
 
-If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed. ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed.
 
-### Configure the hybrid access
+### 7.4 Configure the hybrid access solution for an instance
 
 **solution for an instance**
 
@@ -1047,13 +1091,19 @@ The PolarDB instance resides in the classic network. Available VPCs and vSwitche
 
 **Background information**
 
-When you migrate your PolarDB instance from the classic network to a VPC, the internal classic network endpoint of the instance changes to the internal VPC endpoint. In this case, the endpoint remains unchanged, but the IP address that is bound to the endpoint changes. This change causes a transient connection that lasts 30 seconds or less, and Elastic Compute Service (ECS) instances located in the classic network can no longer connect to your PolarDB instance over an internal network. To facilitate a smooth migration, PolarDB provides the hybrid access solution. Hybrid access indicates that your PolarDB instance can be connected by both ECS instances in the classic network and ECS instances in VPCs. If you use the hybrid access solution, PolarDB retains the internal classic network endpoint and generates an internal VPC endpoint. This prevents transient connections when you migrate your PolarDB instance from the classic network to a VPC. For security and performance purposes, we recommend that you use only the internal VPC endpoint. You must specify a validity period for the hybrid access solution. When the hybrid access solution expires, PolarDB releases the internal classic network endpoint and applications are unable to use the endpoint to connect to your PolarDB instance. You must add the internal VPC endpoint to your applications before the hybrid access solution expires. This ensures a smooth migration and prevents interruptions to your workloads. For example, assume that a company uses the hybrid access solution to migrate its PolarDB instance from the classic network to a VPC. During the validity period of the hybrid access solution, some applications use the internal VPC endpoint to connect to the PolarDB instance, whereas the others continue to use the internal classic network endpoint to connect to the instance. When all applications of the company can use the internal VPC endpoint to connect to the instance, the internal classic network endpoint can be released. The following figure demonstrates the scenario. ApsaraDB for RDS ApsaraDB RDS for PolarDB User During the validity period of the hybrid access solution, your PolarDB instance has the following limits: The network type of the PolarDB instance cannot be changed to classic network. The PolarDB instance cannot be migrated to another zone.
+When you migrate your PolarDB instance from the classic network to a VPC, the internal classic network endpoint of the instance changes to the internal VPC endpoint. In this case, the endpoint remains unchanged, but the IP address that is bound to the endpoint changes. This change causes a transient connection that lasts 30 seconds or less, and Elastic Compute Service (ECS) instances located in the classic network can no longer connect to your PolarDB instance over an internal network. To facilitate a smooth migration, PolarDB provides the hybrid access solution. Hybrid access indicates that your PolarDB instance can be connected by both ECS instances in the classic network and ECS instances in VPCs. If you use the hybrid access solution, PolarDB retains the internal classic network endpoint and generates an internal VPC endpoint. This prevents transient connections when you migrate your PolarDB instance from the classic network to a VPC. For security and performance purposes, we recommend that you use only the internal VPC endpoint. You must specify a validity period for the hybrid access solution. When the hybrid access solution expires, PolarDB releases the internal classic network endpoint and applications are unable to use the endpoint to connect to your PolarDB instance. You must add the internal VPC endpoint to your applications before the hybrid access solution expires. This ensures a smooth migration and prevents interruptions to your workloads. For example, assume that a company uses the hybrid access solution to migrate its PolarDB instance from the classic network to a VPC. During the validity period of the hybrid access solution, some applications use the internal VPC endpoint to connect to the PolarDB instance, whereas the others continue to use the internal classic network endpoint to connect to the instance. When all applications of the company can use the internal VPC endpoint to connect to the instance, the internal classic network endpoint can be released. The following figure demonstrates the scenario.
+
+**Limits**
+
+During the validity period of the hybrid access solution, your PolarDB instance has the following limits: The network type of the PolarDB instance cannot be changed to classic network. The PolarDB instance cannot be migrated to another zone.
 
 **Change the network type from classic network to VPC**
 
 For more information, see Change the network type from classic network to VPC.
 
 **Change the expiration date of the internal classic network**
+
+**endpoint**
 
 During the validity period of the hybrid access solution, you can change the expiration date of the classic network endpoint based on your business requirements. The expiration date is immediately recalculated starting from the day when you make the change. For example, the classic network endpoint is configured to expire on August 18, 2017. On August 15, 2017, you extend the validity period of the classic network endpoint by 14 days. In this case, PolarDB releases the classic network endpoint on August 29, 2017. To change the expiration date, perform the following operations:
 1. Log in to the ApsaraDB RDS console.
@@ -1064,11 +1114,11 @@ During the validity period of the hybrid access solution, you can change the exp
 5. On the **Instance Connection** tab, click **Change Expiration Time**.
 6. In the **Change Expiration Time** dialog box, select an expiration date and click **OK**.
 
-### View and modify the internal
+### 7.5 View and modify the internal endpoint and port number
 
 **endpoint and port number**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS You must use the internal endpoint and port number to access a PolarDB instance. This topic describes how to view and change the internal endpoints and port numbers of a PolarDB instance in the console.
+You must use the internal endpoint and port number to access a PolarDB instance. This topic describes how to view and change the internal endpoints and port numbers of a PolarDB instance in the console.
 
 **View the internal endpoint and port number**
 
@@ -1082,6 +1132,9 @@ numbers.
 **Note**
 
 The endpoints and port numbers are displayed only after you configure an IP address whitelist or security group for the PolarDB instance.
+
+**Modify the internal endpoint and port number**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1093,22 +1146,15 @@ The endpoints and port numbers are displayed only after you configure an IP addr
 
 **Note**
 
-The prefix of an endpoint must be 8 to 64 characters in length and can contain only letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be within the range of 1000 to 5999. ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+The prefix of an endpoint must be 8 to 64 characters in length and can contain only letters, digits, and hyphens (-). It must start with a lowercase letter. The port number must be within the range of 1000 to 5999.
 
 **FAQ**
 
 Q: Do I need to modify the endpoint or port number in my application after I modify the endpoint or port number of an instance? A: Yes, you must modify the endpoint or port number in the application after you have modified them. Otherwise, the application cannot connect to databases of the instance. Q: Does the modification of the endpoint take effect immediately? Do I need to restart the instance? A: No, you do not need to restart the instance. The modification takes effect immediately.
 
-| Account type | Description |
-|---|---|
-| Privileged account | You can create and manage privileged accounts in the ApsaraDB RDS console or by calling API operations. You can create multiple privileged accounts for each instance. The privileged accounts of an instance have the permissions to manage all standard accounts and databases that are created on the instance. A privileged account allows you to manage more permissions in a fine-grained manner based on your business requirements. For example, you can grant each standard account the permissions to query specific tables. A privileged account has the permissions to disconnect all standard accounts of the instance on which the privileged account is created. |
-| Standard account | You can create and manage standard accounts in the ApsaraDB RDS console, by calling API operations, or by using SQL statements. You can create multiple standard accounts for each instance. You must grant the permissions on specific databases to standard accounts. A standard account does not have the permissions to create, manage, or disconnect other accounts of the instance on which the standard account is created. |
+## 8 Accounts
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-## Accounts
-
-### Create an account
+### 8.1 Create an account
 
 Before you start to use PolarDB, you must create an account for a PolarDB instance. This topic describes how to create an account on a PolarDB instance.
 
@@ -1116,19 +1162,14 @@ Before you start to use PolarDB, you must create an account for a PolarDB instan
 
 You can create privileged and standard database accounts in PolarDB. The following table describes the account types.
 
+| Account type | Description |
+|---|---|
+| Privileged account | You can create and manage privileged accounts in the ApsaraDB RDS console or by calling API operations. You can create multiple privileged accounts for each instance. The privileged accounts of an instance have the permissions to manage all standard accounts and databases that are created on the instance. A privileged account allows you to manage more permissions in a fine-grained manner based on your business requirements. For example, you can grant each standard account the permissions to query specific tables. A privileged account has the permissions to disconnect all standard accounts of the instance on which the privileged account is created. |
+| Standard account | You can create and manage standard accounts in the ApsaraDB RDS console, by calling API operations, or by using SQL statements. You can create multiple standard accounts for each instance. You must grant the permissions on specific databases to standard accounts. A standard account does not have the permissions to create, manage, or disconnect other accounts of the instance on which the standard account is created. |
+
 **Usage notes**
 
 You can create multiple privileged accounts and standard accounts in the ApsaraDB RDS console. You can also create and manage standard accounts by using SQL statements. Before you can migrate data from an on-premises database to a PolarDB instance, you must create a database and an account on the PolarDB instance. Make sure that the created database has the same properties as the on-premises database. In addition, make sure that the created account has the same permissions on the created database as the account that is authorized to manage the on-premises database. We recommend that you follow the principle of least privilege (PoLP) and grant the read and write permissions to accounts based on your business requirements. You can create multiple databases accounts and grant each account only the permissions to access the data of specified databases. This way, you can implement fine-grained permission management. If an account does not need to write data to a database, we recommend that you grant only the read permissions on the database to the account. For security purposes, we recommend that you specify strong passwords for the accounts and change the passwords on a regular basis.
-
-| Parameter | Description |
-|---|---|
-| Database Account | The username of the account must be 2 to 16 characters in length. The username can contain lowercase letters, digits, and underscores ( ). _ The username must start with a letter and end with a letter or a digit. |
-| Account Type | PolarDB supports two types of accounts: privileged accounts and standard accounts. A privileged account has all operation permissions on all databases. Standard accounts have all operation permissions only on their authorized databases. Note The permitted operations include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER. |
-| New Password | The password is 8 to 32 characters in length. The password contains three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) + - _ = |
-| Confirm Password | Enter the password of the account again. |
-| Description | Optional. You can enter description to make the account easier to identify. The description can be up to 256 characters in length. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 **Create a privileged account or a standard account**
 
@@ -1138,13 +1179,25 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 **Information** page.
 4. In the left-side navigation pane, click **Accounts**.
 5. On the Accounts page, click Create Account and configure the following parameters.
+
+| Parameter | Description |
+|---|---|
+| Database Account | The username of the account must be 2 to 16 characters in length. The username can contain lowercase letters, digits, and underscores ( ). _ The username must start with a letter and end with a letter or a digit. |
+| Account Type | PolarDB supports two types of accounts: privileged accounts and standard accounts. A privileged account has all operation permissions on all databases. Standard accounts have all operation permissions only on their authorized databases. Note The permitted operations include SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, and TRIGGER. |
+| New Password | The password is 8 to 32 characters in length. The password contains three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) + - _ = |
+| Confirm Password | Enter the password of the account again. |
+| Description | Optional. You can enter description to make the account easier to identify. The description can be up to 256 characters in length. |
+
 6. Click **OK**.
 
-### Reset the password of an
+### 8.2 Reset the password of an account
 
 **account**
 
-This topic describes how to use the ApsaraDB RDS console to reset the password of your account if you forget the password. ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+This topic describes how to use the ApsaraDB RDS console to reset the password of your account if you forget the password.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1157,9 +1210,12 @@ This topic describes how to use the ApsaraDB RDS console to reset the password o
 
 The password must meet the following requirements: It can be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: !@#$%^&*()_+-=
 
-### Lock or unlock an account
+### 8.3 Lock or unlock an account
 
 This topic describes how to lock or unlock an account on a PolarDB cluster.
+
+**Lock or unlock an account**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
@@ -1172,15 +1228,17 @@ to go to the **Basic Information** page.
 
 Wait a few minutes. When the **Status** column displays **Locking**, the account is locked. If you want to use the account again, click **Unlock** in the **Actions** column.
 
-### Delete an account
+### 8.4 Delete an account
 
 You can delete a database account in the console.
 
 **Prerequisites**
 
 You can use the console to delete privileged and standard accounts that are no longer used.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 2. On the **Instances** page, find the target instance.
 3. Click the instance ID or click **Manage** in the Actions column corresponding to the instance
 to go to the **Basic Information** page.
@@ -1192,21 +1250,18 @@ to go to the **Basic Information** page.
 
 Accounts in the **Processing** state cannot be deleted.
 
-| Parameter | Description |
-|---|---|
-| Database type | The engine of the database. By default, the engine of the database to be connected is displayed. |
+## 9 Databases
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-## Databases
-
-### Create a database
+### 9.1 Create a database
 
 Before you start to use PolarDB, you must create a database on a PolarDB instance. This topic describes how to create a database on a PolarDB instance.
 
 **Prerequisites**
 
 A PolarDB instance is created. For more information, see Create an instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1216,13 +1271,16 @@ A PolarDB instance is created. For more information, see Create an instance.
 **Instance Area**, and **Connection string address**. If the information is correct, enter
 **Database account** and **Database password**, as shown in the following figure.
 
+| Parameter | Description |
+|---|---|
+| Database type | The engine of the database. By default, the engine of the database to be connected is displayed. |
+
 | Instance Area | The region where the instance is deployed. By default, the region of the current instance is displayed. |
 |---|---|
 | Connection string address | The endpoint of the instance. By default, the endpoint of the current instance is displayed. |
 | Database account | The account of the database to be connected. |
 | Database password | The password of the account used to connect to the database. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 6. Click **Login**. If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
@@ -1251,9 +1309,12 @@ create database test;
 
 8. Click **Execute**.
 
-### Delete a database
+### 9.2 Delete a database
 
 This topic describes how to delete a database in the PolarDB instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1271,7 +1332,6 @@ This topic describes how to delete a database in the PolarDB instance.
 | Database account | The account of the database to be connected. |
 | Database password | The password of the account used to connect to the database. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 6. Click **Login**. If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
@@ -1287,6 +1347,22 @@ drop database <database name>;
 
 8. Click **execute**.
 
+## 10 Monitoring and alerts
+
+### 10.1 View monitoring data
+
+PolarDB provides a wide range of performance metrics. This topic describes how to view resource monitoring data in the ApsaraDB RDS console.
+
+**Procedure**
+
+1. Log in to the ApsaraDB RDS console.
+2. On the **Instance List** page, find the instance that you want to manage.
+3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
+**Information** page.
+4. In the navigation pane on the left, click **Monitoring and Alerts**.
+5. On the **Monitoring** tab, select the time range to query the corresponding monitoring data.
+The following table lists the specific metrics.
+
 | Metric | Description |
 |---|---|
 | Memory usage | The memory usage of the instance. |
@@ -1300,36 +1376,18 @@ drop database <database name>;
 | TPS | The number of transactions per second (TPS) processed by the instance. |
 | Duration of the longest current transaction | The duration of the longest-running current transaction on the instance. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-## Monitoring and alerts
-
-### View monitoring data
-
-PolarDB provides a wide range of performance metrics. This topic describes how to view resource monitoring data in the ApsaraDB RDS console.
-1. Log in to the ApsaraDB RDS console.
-2. On the **Instance List** page, find the instance that you want to manage.
-3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
-**Information** page.
-4. In the navigation pane on the left, click **Monitoring and Alerts**.
-5. On the **Monitoring** tab, select the time range to query the corresponding monitoring data.
-The following table lists the specific metrics.
-
 | Latency | The latency in primary node sending, secondary node replay, and logical replication for the instance. |
 |---|---|
 | Slow SQL statements | Information about slow SQL statements on the instance. |
 | Long-running transactions | The number of long-running transactions on the instance. |
 | Two-phase long-running transactions | The number of two-phase long-running transactions on the instance. |
 
-| Parameter | Description |
-|---|---|
-| Cloud product selection | Select ApsaraDB RDS or ApsaraDB RDS (New). Note ApsaraDB RDS supports the MySQL, SQL Server, PolarDB for Oracle, and PostgreSQL engines, uses the acs rds dashboard namespace for _ _ monitoring data, and provides collection periods that range from 60 to 300 seconds. ApsaraDB RDS (New) supports only the MySQL, PolarDB for Oracle, and PostgreSQL engines, uses the acs rds dashboard _ _ namespace for monitoring data, and provides a more stable collection period of 60 seconds. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-### Configure an alert rule
+### 10.2 Configure an alert rule
 
 This topic describes how to create alert rules in the ApsaraDB RDS console. This allows you to identify and handle exceptions at the earliest opportunity.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. In the left-side navigation pane, click **Instance List**. On the Instance List page, find the
 instance that you want to manage and click the ID of the instance or click **Management** in the **Operation** column to go to the **Basic Information** page.
@@ -1338,6 +1396,10 @@ instance that you want to manage and click the ID of the instance or click **Man
 5. On the **Alert Rule** page, click **Create an alert rule**.
 6. In the **Create an alert rule** panel, configure the following parameters and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| Cloud product selection | Select ApsaraDB RDS or ApsaraDB RDS (New). Note ApsaraDB RDS supports the MySQL, SQL Server, PolarDB for Oracle, and PostgreSQL engines, uses the acs rds dashboard namespace for _ _ monitoring data, and provides collection periods that range from 60 to 300 seconds. ApsaraDB RDS (New) supports only the MySQL, PolarDB for Oracle, and PostgreSQL engines, uses the acs rds dashboard _ _ namespace for monitoring data, and provides a more stable collection period of 60 seconds. |
+
 | Resource scope | The resources to which the alert rule applies. Valid values: Instance dimension: Select one or more instances in the resource set of the current organization. Resource set dimension: Select a resource set in the current organization and region. Apply grouping dimensions: Select an application group in the current organization and region. All resources: The alert rule applies to all resources of the specified cloud service. |
 |---|---|
 | Resource Selection | The resources to be associated with the alert rule. Select one or more resources based on the selected resource scope. |
@@ -1345,18 +1407,14 @@ instance that you want to manage and click the ID of the instance or click **Man
 | Silence channel period | The mute period after which Cloud Monitor resends an alert notification before the alert is cleared. Valid values: 5 minutes, 15 minutes, 30 minutes, 1 hour, 3 hours, 6 hours, 12 hours, and 24 hours. An alert is triggered if the conditions of an alert rule are met. Cloud Monitor does not resend an alert notification when the alert is triggered within the mute period. If the alert is not cleared after the mute period ends, Cloud Monitor resends alert notifications. For example, if you set the Silence channel period parameter to 12 hours, Cloud Monitor resends alert notifications only if the alert still persists after 12 hours. |
 | Effective time | The period during which the alert rule takes effect Cloud Monitor checks whether the monitoring data triggers the alert rule only during the effective period. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 | Alarm callback | The callback URL to which Cloud Monitor sends alert notifications by using the POST request method. Note Cloud Monitor sends HTTP POST requests to push alert notifications to the specified URL. Only HTTP URLs are supported. IP addresses are not supported. |
 |---|---|
 | No data processing method | Specify how Cloud Monitor acts when no alert is triggered. Valid values: No processing: Cloud Monitor does not perform any operations when no alert is triggered. Send no data alarm: Cloud Monitor sends the corresponding notifications to contacts when no alert is triggered. |
 | Alarm contact | The alert contacts or alert contact groups to which Cloud Monitor sends alert notifications. By default, the value of this parameter is a dummy user used to test whether the alert rule is effective. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+## 11 Data security
 
-## Data security
-
-### Configure an IP address
+### 11.1 Configure an IP address whitelist
 
 **whitelist**
 
@@ -1369,6 +1427,9 @@ Whitelists make your PolarDB instance more secure and do not interrupt the opera
 **Note**
 
 The default IP address whitelist contains only the IP address 127.0.0.1. This indicates that no devices are allowed to access the PolarDB instance. Configure an ECS security group: Add an ECS security group for the PolarDB instance to allow ECS instances in the group to connect to the PolarDB instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1382,13 +1443,13 @@ You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your PolarDB instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Apsara Stack account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
-### Configure SQL audit
+### 11.2 Configure SQL audit
 
 This topic describes how to configure the SQL audit feature to audit SQL executions and check the details. SQL audit does not affect instance performance.
 
 **Precautions**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS The SQL Audit feature does not affect instance performance. SQL audit logs are retained for 30 days. Log files exported from the SQL Audit feature are retained for two days. The system automatically deletes files that are retained for longer than two days. The SQL Audit feature is disabled by default. You must manually enable this feature. You cannot view logs that were generated before the SQL Audit feature was enabled.
+The SQL Audit feature does not affect instance performance. SQL audit logs are retained for 30 days. Log files exported from the SQL Audit feature are retained for two days. The system automatically deletes files that are retained for longer than two days. The SQL Audit feature is disabled by default. You must manually enable this feature. You cannot view logs that were generated before the SQL Audit feature was enabled.
 
 **Enable SQL audit**
 
@@ -1425,7 +1486,6 @@ When you disable the SQL Audit feature, all SQL audit records, including histori
 
 By default, audit logs are stored in SLS-inner. You can switch the storage location to an accessible SLS-PUB project.
 1. Log on to the ApsaraDB RDS console.
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 2. In the navigation pane on the left, click **Instance List**. Click the ID of the target instance or
 click **Manage** in the **Actions** column of the instance. The **Basic Information** page appears.
 3. In the left-side menu bar, click **Data Security**.
@@ -1436,7 +1496,7 @@ click **Manage** in the **Actions** column of the instance. The **Basic Informat
 
 This action cannot be undone. Proceed with caution.
 
-### Configure SSL encryption
+### 11.3 Configure SSL encryption
 
 This topic describes how to enhance endpoint security. You can enable Secure Sockets Layer (SSL) encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required application services. SSL is used at the transport layer to encrypt network connections and enhance the security and integrity of communication data. However, SSL increases the response time.
 
@@ -1455,7 +1515,7 @@ An SSL certificate is valid for one year. You must Update the validity period of
 6. In the **Configure SSL** dialog box, select the endpoint for which you want to enable SSL
 encryption and click **OK**.
 7. After the state of SSL encryption is displayed as **Enabled**, click **Download CA Certificate**.
-The downloaded file is a package that contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: used to import CA certificates to other operating systems or applications. JKS file: the Java truststore file. The password is apsaradb. It is used to import the CA certificate chain to Java programs. ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+The downloaded file is a package that contains the following files: P7B file: contains the server CA certificate that can be imported into a Windows operating system. PEM file: used to import CA certificates to other operating systems or applications. JKS file: the Java truststore file. The password is apsaradb. It is used to import the CA certificate chain to Java programs.
 
 **Note**
 
@@ -1501,12 +1561,11 @@ If you disable SSL encryption, the ApsaraDB RDS instance restarts. We recommend 
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
 **Information** page.
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 4. In the left-side navigation pane, click **Data Security**.
 5. On the page that appears, click the **SSL Encryption** tab. Turn off **SSL Encryption**.
 6. In the **Configure SSL** message, click **OK**.
 
-### Configure TDE
+### 11.4 Configure TDE
 
 PolarDB provides the Transparent Data Encryption (TDE) feature. TDE encrypts and decrypts data files in real time. It encrypts data files when they are written to disks, and decrypts data files when they are loaded to the memory from disks. TDE does not increase the size of data files. You can use TDE without the need to make changes to applications.
 
@@ -1517,6 +1576,9 @@ TDE performs data-at-rest encryption at the database layer. This prevents potent
 **Precautions**
 
 You cannot disable TDE after it is enabled. You can enable TDE only when you create an instance. In I/O bound workload scenarios, TDE may affect database performance after it is enabled. If you use an existing custom key for encryption, take note of the following items: If you disable a key, set a key deletion plan, or delete the key materials, the key becomes unavailable. After you revoke the key that is authorized for a PolarDB instance, the instance becomes unavailable after it is restarted. You must use an Apsara Stack tenant account or an account that has the AliyunSTSAssumeRoleAccess permission.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instances** page, click **Create Instance** in the upper-right corner.
 3. On the **Create Instance** page, set **Enable TDE** to Yes.
@@ -1532,23 +1594,12 @@ For more information about how to create an instance, see Create an instance.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
 **Information** page.
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 4. In the left-side navigation pane, click **Data Security**.
 5. On the page that appears, click the **TDE** tab. View **TDE Status**.
 
-| Database engine | Data backup | Log backup |
-|---|---|---|
-| PolarDB | Supports full physical backup. | Write-ahead logs (WALs) are compressed and uploaded immediately after they are generated. Each log takes up 16 MB of storage space. On-premises logs are deleted within 24 hours. |
+## 12 Backup and recovery
 
-| Paramete r | Description |
-|---|---|
-| Data Retention Period | The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-## Backup and recovery
-
-### Back up a PolarDB instance
+### 12.1 Back up a PolarDB instance
 
 This topic describes how to back up a PolarDB instance. You can configure a backup policy that is used to automatically back up your PolarDB instance. If you do not configure a backup policy, the default backup policy is used. You can also manually back up your PolarDB instance.
 
@@ -1558,7 +1609,13 @@ Do not perform data definition language (DDL) operations during a backup. If you
 
 **Backup description**
 
+| Database engine | Data backup | Log backup |
+|---|---|---|
+| PolarDB | Supports full physical backup. | Write-ahead logs (WALs) are compressed and uploaded immediately after they are generated. Each log takes up 16 MB of storage space. On-premises logs are deleted within 24 hours. |
+
 **Configure a backup policy to automatically back up your**
+
+**PolarDB instance**
 
 ApsaraDB RDS automatically backs up your instance based on the specified backup policy.
 1. Log in to the ApsaraDB RDS console.
@@ -1570,13 +1627,15 @@ ApsaraDB RDS automatically backs up your instance based on the specified backup 
 6. In the dialog box that appears, configure the following parameters and click **OK**. The
 following table lists the parameters.
 
+| Paramete r | Description |
+|---|---|
+| Data Retention Period | The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7. |
+
 | Backup Cycle | The cycle to create backups. You can select one or more days of the week. Note To ensure data security, we recommend that you back up your PolarDB instance at least twice a week. |
 |---|---|
 | Backup Time | The period of time for which you want to back up data. Unit: hours. |
 | Log backup | Specifies whether to enable the log backup feature. Important If you disable this feature, all log backup files are deleted and your instance cannot be restored to previous points in time |
 | Log Retention Period | The number of days for which you want to retain log backup files. Valid values: 7 to 730. Default value: 7. The log retention period must be less than or equal to the data retention period. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 **Manually back up your PolarDB instance**
 
@@ -1604,16 +1663,14 @@ You cannot download backup files to your computer.
 1. Q: Can I disable data backup for a PolarDB instance?
 A: No, you cannot disable the data backup feature of your PolarDB instance. However, you can reduce the backup frequency to at least twice a week. The data retention period must be within the range of 7 to 730 days.
 2. Q: Can I disable log backup for a PolarDB instance?
-A: Yes, you can disable the log backup feature of your PolarDB instance. You can log on to the ApsaraDB RDS console and navigate to the Backup Settings tab to disable the log backup feature of your instance. RDS lets you download unencrypted data backups and log backups. You can archive these files or use them to restore data to a local database.
+A: Yes, you can disable the log backup feature of your PolarDB instance. You can log on to the ApsaraDB RDS console and navigate to the Backup Settings tab to disable the log backup feature of your instance.
 
-### Download backup files
+### 12.2 Download backup files
 
-| Download method | Description |
-|---|---|
-| Download button | Downloads the backup file directly using your browser. |
-| Download address | Copies the download address. Use this address to download the backup file with other tools. |
+RDS lets you download unencrypted data backups and log backups. You can archive these files or use them to restore data to a local database.
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1630,6 +1687,11 @@ For a data backup, click the **Data Backups** tab. For a log backup, click the *
 If you are restoring data, select the data backup file that is closest in time to the desired recovery point. If you use a log backup to restore data to a local database, note the following: The instance ID of the log backup must match the instance ID of the data backup. The start time of the log backup must be after the timestamp of the data backup and before the desired recovery point.
 7. In the dialog box that appears, select a download method.
 
+| Download method | Description |
+|---|---|
+| Download button | Downloads the backup file directly using your browser. |
+| Download address | Copies the download address. Use this address to download the backup file with other tools. |
+
 **Note**
 
 To download the file on a Linux system, run the following command:
@@ -1640,16 +1702,7 @@ wget -c '<Backup file download URL>' -O <File name>
 
 The -c option enables resumable downloads. The -O option saves the downloaded file with the specified name. We recommend that you use the original file name from the URL. If the URL contains multiple parameters, enclose the URL in single quotation marks (') to prevent download failures.
 
-| Category | Configura tion | Description |
-|---|---|---|
-| Region | Region | The region where the instance resides. |
-| Database Restorati on | Restorati on Method | By Time Point: You can restore data to any point in time within the log backup retention period. To view or change the log backup retention period, see Backup data. By Backup Set Note The By Time Point option is available only if log backup is enabled. |
-|  | Restorati on Time | Select a point in time to restore the database. This parameter is available when you set Restoration Method to By Time Point. |
-|  | Backup Set | Select a backup set for the database. This parameter is available when you set Restoration Method to By Backup Set. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-### Data restoration
+### 12.3 Data restoration
 
 Restoring data for PolarDB creates a clone instance. The clone instance is an exact copy of the primary instance, including its data and settings.
 
@@ -1669,30 +1722,31 @@ The source instance must meet the following requirements: The instance status is
 6. In the **Restore** dialog box, click **OK**.
 7. Set the following parameters:
 
+| Category | Configura tion | Description |
+|---|---|---|
+| Region | Region | The region where the instance resides. |
+| Database Restorati on | Restorati on Method | By Time Point: You can restore data to any point in time within the log backup retention period. To view or change the log backup retention period, see Backup data. By Backup Set Note The By Time Point option is available only if log backup is enabled. |
+|   | Restorati on Time | Select a point in time to restore the database. This parameter is available when you set Restoration Method to By Time Point. |
+|   | Backup Set | Select a backup set for the database. This parameter is available when you set Restoration Method to By Backup Set. |
+
 | Specificat ion Configura tion | Instance Name | The name of the instance. |
 |---|---|---|
-|  | Database Type | The type of the database. This is fixed to POLARDB. |
-|  | Database Version | The version of the database. This is fixed to the database version of the current instance. |
-|  | Series | The series of the instance. |
-|  | Storage Class | The storage class of the instance. The available options are displayed in the console. |
-|  | Instance Type | The type of the instance. Different memory sizes correspond to different maximum connections and input/output operations per second (IOPS). The available options are displayed in the console. For more information, see Instance types. |
-|  | Storage Space | Storage space includes space for data, system files, binary logging (binlog) files, and transaction files. You can select a storage space from 20 GB to 3,000 GB in 5 GB increments. |
+|   | Database Type | The type of the database. This is fixed to POLARDB. |
+|   | Database Version | The version of the database. This is fixed to the database version of the current instance. |
+|   | Series | The series of the instance. |
+|   | Storage Class | The storage class of the instance. The available options are displayed in the console. |
+|   | Instance Type | The type of the instance. Different memory sizes correspond to different maximum connections and input/output operations per second (IOPS). The available options are displayed in the console. For more information, see Instance types. |
+|   | Storage Space | Storage space includes space for data, system files, binary logging (binlog) files, and transaction files. You can select a storage space from 20 GB to 3,000 GB in 5 GB increments. |
 | Network Type | Network Type | The instance supports the following network types: Classic Network: Alibaba Cloud services in a classic network are not isolated from each other. You can only use security groups or whitelists of the services to block unauthorized access. Virtual Private Cloud (VPC): A VPC helps you build an isolated network environment on Alibaba Cloud. You can customize the route tables, IP address ranges, and gateways in the VPC. Select VPC for better security. Note If you select Virtual Private Cloud, select a VPC and a VSwitch. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 8. Click **Submit** and wait for the restoration to complete.
 
-| Query Items | Description |
-|---|---|
-| Error Logs | Records the database running errors that occurred over the last 30 days. |
-| Slow Query Logs | Records SQL statements within the last 30 days that took longer than 1 second to execute. Duplicated SQL statements are removed. |
-| Primary/Secondary Switching Logs | Records logs for primary and secondary instance switches. |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-## Manage logs
+## 13 Manage logs
 
 The primary/secondary switching logs of a PolarDB instance can be used for troubleshooting. This topic describes how to manage logs of a PolarDB instance.
+
+**Procedure**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1700,11 +1754,16 @@ The primary/secondary switching logs of a PolarDB instance can be used for troub
 4. In the navigation pane on the left, click **Logs**.
 5. On the **Log Management** page, click the **Error Logs**, **Slow Query Logs**, or
 **Primary/Secondary Switching Logs** tab, select a time range, and then click **Query**.
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
-## CloudDBA
+| Query Items | Description |
+|---|---|
+| Error Logs | Records the database running errors that occurred over the last 30 days. |
+| Slow Query Logs | Records SQL statements within the last 30 days that took longer than 1 second to execute. Duplicated SQL statements are removed. |
+| Primary/Secondary Switching Logs | Records logs for primary and secondary instance switches. |
 
-### Introduction to CloudDBA
+## 14 CloudDBA
+
+### 14.1 Introduction to CloudDBA
 
 CloudDBA is a cloud service for database self-detection, self-repair, self-optimization, selfmaintenance, and self-security based on machine learning and expertise. CloudDBA helps you ensure stable, secure, and efficient databases without worrying about the management complexity and service failures caused by manual operations.
 
@@ -1712,9 +1771,12 @@ CloudDBA is a cloud service for database self-detection, self-repair, self-optim
 
 In PolarDB, CloudDBA provides the following features: View statistics for sessions, and analyze and optimize SQL statements. View real-time performance information for an instance. View storage overviews, trends, anomalies, tablespaces, and data spaces. Slow SQL statements View slow log trends and statistics.
 
-### Session Manager
+### 14.2 Session Manager
 
 CloudDBA provides the Session Manager feature for RDS instances. You can use this feature to view and manage sessions of a target instance.
+
+**Go to the Session Manager page**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1727,12 +1789,14 @@ CloudDBA provides the Session Manager feature for RDS instances. You can use thi
 For more information, see the "Instance Session" chapter in the **Database Autonomy**
 **Service (DAS) > User Guide**.
 
-### Real-time performance
+### 14.3 Real-time performance
 
 CloudDBA provides a real-time performance feature for ApsaraDB RDS. This feature lets you view the performance of an instance in real time.
+
+**Go to the real-time performance page**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
 **Information** page.
 4. In the navigation pane on the left, click **CloudDBA > Quick Diagnostics**.
@@ -1743,13 +1807,16 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 For more information, see the "Real-time performance" topic in the **Database**
 **Autonomy Service (DAS) > User Guide**.
 
-### Storage analysis
+### 14.4 Storage analysis
 
 CloudDBA provides the storage analysis feature for ApsaraDB RDS. This feature helps you promptly detect storage anomalies in your database to maintain its stability.
 
 **Background information**
 
 The storage analysis feature shows the storage overview and available days of storage for a database instance. It also shows the storage usage, storage fragmentation, and anomaly diagnosis for specific tables.
+
+**Go to the storage analysis page**
+
 1. Log in to the ApsaraDB RDS console.
 2. On the **Instance List** page, find the instance that you want to manage.
 3. Click the instance ID or click **Management** in the Operation column to go to the **Basic**
@@ -1762,9 +1829,12 @@ The storage analysis feature shows the storage overview and available days of st
 For more information, see the Storage Analysis chapter in the **Database Autonomy**
 **Service (DAS) > User Guide**.
 
-### Slow query logs
+### 14.5 Slow query logs
 
 In PolarDB, CloudDBA provides the slow query logs feature. This feature allows you to view the trends and execution details of slow queries and obtain optimization suggestions for your PolarDB instance.
+
+**Procedure**
+
 1. Log on to the ApsaraDB RDS console.
 2. On the **Instances** page, find the instance that you want to manage.
 3. In the left-side navigation pane, choose **CloudDBA > Slow Query Logs**.
@@ -1773,6 +1843,20 @@ In PolarDB, CloudDBA provides the slow query logs feature. This feature allows y
 
 For more information, see Slow query logs in **Database Autonomy**
 **Service User Guide**.
+
+## 15 Extensions
+
+This topic describes the extensions and extension versions supported by PolarDB.
+
+**Supported extensions and extension versions**
+
+**Note**
+
+This topic lists the extensions and their versions that are supported by different PolarDB kernel versions. This information helps you quickly determine which extensions are supported by your instance. For more information about supported extensions, you can run the following command in your database.
+
+```
+SELECT * FROM pg_available_extensions;
+```
 
 | Plugin name | PostgreSQ L 14 | PostgreSQ L 11 | Description |
 |---|---|---|---|
@@ -1785,20 +1869,6 @@ For more information, see Slow query logs in **Database Autonomy**
 | citext | 1.6 | 1.5 | Provides a case-insensitive string type. |
 | cube | 1.5 | 1.4 | Provides a data type to represent multidimensional cubes. |
 | dblink | 1.2 | 1.2 | Manages tables across databases. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
-## Extensions
-
-This topic describes the extensions and extension versions supported by PolarDB.
-
-**Note**
-
-This topic lists the extensions and their versions that are supported by different PolarDB kernel versions. This information helps you quickly determine which extensions are supported by your instance. For more information about supported extensions, you can run the following command in your database.
-
-```
-SELECT * FROM pg_available_extensions;
-```
 
 | decoderbufs | 0.1.0 | 0.1.0 | Outputs data compatible with the Debezium platform based on the Protocol Buffers protocol. |
 |---|---|---|---|
@@ -1816,8 +1886,6 @@ SELECT * FROM pg_available_extensions;
 | ganos networkin _ g | 7.4 | 6.8 | Provides computation and analysis features for spatial geometry network types. |
 | ganos pointcloud _ | 7.4 | 6.8 | Provides storage, computation, and analysis features for point clouds. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | ganos pointcloud _ geometry _ | 7.4 | 6.8 | Provides storage, computation, and analysis features for point clouds. |
 |---|---|---|---|
 | ganos raster _ | 7.4 | 6.8 | Provides storage, computation, and analysis features for spatial raster data. |
@@ -1834,8 +1902,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | isn | 1.2 | 1.2 | Validates input against a hard-coded prefix list and is also used to join numbers on output. |
 | ltree | 1.2 | 1.1 | Represents labels for data stored in a hierarchical tree-like structure. |
 | mysql fdw _ | 1.2 | 1.1 | Reads data from and writes data to MySQL databases. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 | oss fdw _ | 1.1 | 1.1 | Reads data from and writes data to OSS. |
 |---|---|---|---|
@@ -1855,8 +1921,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | pg sphere _ | 1 | 1 | Provides spherical data types, functions, operators, and indexes for PostgreSQL. |
 | pg stat kcache _ _ | 2.2.1 | 2.2.1 | Collects statistics on system read and write operations. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | pg stat statemen _ _ ts | 1.9.2 | 1.6 | Provides a method to track execution statistics for all SQL statements that are executed by a server. |
 |---|---|---|---|
 | pg trgm _ | 1.6 | 1.4 | Provides functions and operators to determine the similarity of alphanumeric text, and index operator classes to support fast searches for similar strings. |
@@ -1873,8 +1937,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | plv8 | - | 2.3.15 | A trusted JavaScript language extension. |
 | postgis | 3.3.7 | 3.3.4 | A PostGIS extension for spatial geographic information. |
 | postgis sfcgal _ | 3.3.7 | 3.3.4 | A PostGIS SFCGAL extension for spatial geographic information. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 | postgis tiger geo _ _ coder | 3.3.7 | 3.3.4 | A PostGIS extension for spatial geographic information related to TIGER data. |
 |---|---|---|---|
@@ -1893,8 +1955,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 | tsm system time _ _ | 1 | 1 | Provides the SYSTEM TIME table sampling _ method. |
 | unaccent | 1.1 | 1.1 | A text search dictionary that removes accents (diacritical marks) from lexemes. |
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 | uuid-ossp | 1.1 | 1.1 | Provides functions to generate universally unique identifiers (UUIDs) using one of several standard algorithms. |
 |---|---|---|---|
 | varbitx | 1.1 | 1.1 | Supports various BIT operations. |
@@ -1903,11 +1963,9 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 | zhparser | 1 | 1 | Provides full-text search for Chinese. |
 | zombodb | - | 4 | Provides powerful text indexing and analysis features. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+## 16 PolarDB driver
 
-## PolarDB driver
-
-### Download the driver
+### 16.1 Download the driver
 
 This topic provides links for downloading the drivers that allow your applications to connect to PolarDB instances. You can download and install a driver in this topic. The driver allows your application to access a PolarDB instance.
 
@@ -1915,7 +1973,7 @@ This topic provides links for downloading the drivers that allow your applicatio
 
 JDBC: PolarDB-O-JDBC.zip For more information about how to use the PolarDB Java Database Connectivity (JDBC) driver to connect to a PolarDB instance, see RDS PolarDB JDBC. .NET: polardb_oracle_.net.zip For more information about how to use the PolarDB .NET driver to connect to a PolarDB instance, see RDS PolarDB .NET. OCI: polardb_oracle_oci.tar For more information about how to use the Oracle Call Interface (OCI) driver to connect to a PolarDB instance, see RDS PolarDB OCI. ODBC: polardb_oracle_odbc_for_x86_64.tar.gz polardb_oracle_odbc_for_arm_64.tar.gz polardb_oracle_odbc_for_win_64.7z polardb_oracle_odbc_for_win_32.7z For more information about how to use the Open Database Connectivity (ODBC) driver to connect to a PolarDB instance, see RDS PolarDB OCI. PolarTools: Download the package for PolarTools. Decompress the package and install PolarTools.
 
-### RDS PolarDB JDBC
+### 16.2 RDS PolarDB JDBC
 
 This topic describes how to use the PolarDB Java Database Connectivity (JDBC) driver to connect Java applications to PolarDB clusters.
 
@@ -1925,16 +1983,18 @@ An account is created for a PolarDB cluster. For more information, see Create a 
 
 **Usage notes**
 
-| polardb-jdbc16.jar | JAR file. For Java 7, d |
-|---|---|
-|  | polardb-jdbc18.jar |
-| Java 8, download the |  |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User JDBC is a Java API that is used to connect Java applications to databases. PolarDB JDBC is developed based on open source PostgreSQL JDBC. PolarDB JDBC uses PostgreSQL protocols for LAN communications. PolarDB JDBC allows Java applications to connect to databases by using standard and database-independent Java code. The JDBC driver uses version 3.0 of the PostgreSQL protocol. JDBC V4.0 is compatible with Java 6. JDBC V4.1 is compatible with Java 7. JDBC V4.2 is compatible with Java 8.
+JDBC is a Java API that is used to connect Java applications to databases. PolarDB JDBC is developed based on open source PostgreSQL JDBC. PolarDB JDBC uses PostgreSQL protocols for LAN communications. PolarDB JDBC allows Java applications to connect to databases by using standard and database-independent Java code. The JDBC driver uses version 3.0 of the PostgreSQL protocol. JDBC V4.0 is compatible with Java 6. JDBC V4.1 is compatible with Java 7. JDBC V4.2 is compatible with Java 8.
 
 **Download the package of the JDBC driver**
 
-Download the JDBC driver Alibaba Cloud provides three versions of the JDBC driver. Select the version based on the Java
+Download the JDBC driver Alibaba Cloud provides three versions of the JDBC driver. Select the version based on the Java Development Kit (JDK) version that is used by your application. For Java 6, download the
+
+| polardb-jdbc16.jar | JAR file. For Java 7, d |
+|---|---|
+|   | polardb-jdbc18.jar |
+| Java 8, download the |   |
+
+`polardb-jdbc16.jar` JAR file. For Java 7, download the `polardb-jdbc17.jar` JAR file. For
 
 **Configure the JDBC driver**
 
@@ -1984,7 +2044,7 @@ Examples:
 1.2 -Dpackaging=jar -Dfile=/usr/local/polardb/share/java/polardb-jdbc18.jar
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS Add the following dependency to the pom.xml file of your project:
+Add the following dependency to the pom.xml file of your project:
 
 ```xml
 <dependency>
@@ -2012,7 +2072,7 @@ If your project uses Hibernate to connect to a PolarDB database, specify the dri
 
 Only Hibernate 3.6 and later versions support PostgresPlusDialect.
 
-```xml
+```
 <property name="connection.driver_class">com.aliyun.polardb.Driver</property> <property name="connection.url">jdbc:polardb://pc-
 ***.o.polardb.rds.aliyuncs.com:1521/polardb_test</property>
 <property name="dialect">org.hibernate.dialect.PostgresPlusDialect</property>
@@ -2032,7 +2092,7 @@ Druid versions earlier than 1.1.24 are not adapted to PolarDB. Therefore, you mu
 
 **Adapt to Activiti**
 
-If your application uses the Activiti framework for business process management (BPM), the following error message may appear when you initialize PolarDB data sources. ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+If your application uses the Activiti framework for business process management (BPM), the following error message may appear when you initialize PolarDB data sources.
 
 ```
 couldn't deduct database type from database product name 'POLARDB Database Compatible w ith Oracle'
@@ -2044,18 +2104,20 @@ The reason is that Activiti provides built-in mappings between database versions
 package com.aliyun.polardb; import org.activiti.engine.ProcessEngine; import org.activiti.spring.SpringProcessEngineConfiguration; public class PolarDBSpringProcessEngineConfiguration extends SpringProcessEngineConfiguration {
     public PolarDBSpringProcessEngineConfiguration() {
         super();
-    }
+```
+
+`}`
+
+```java
     @Override
     public ProcessEngine buildProcessEngine() {
         setDatabaseType(DATABASE_TYPE_POSTGRES);
         return super.buildProcessEngine();
-    }
-}
 ```
 
-Save the `SpringProcessEngineConfiguration` child class in your project and use the child class in the configuration file to load configurations. Then, initialize the engine. Example:
+`}` `}` Save the `SpringProcessEngineConfiguration` child class in your project and use the child class in the configuration file to load configurations. Then, initialize the engine. Example:
 
-```xml
+```
 <bean id="processEngineConfiguration" class="com.aliyun.polardb.PolarDBSpringProcessEngineConfiguration">
       <property name="dataSource" ref="dataSource"/>
       <property name="transactionManager" ref="transactionManager"/>
@@ -2077,8 +2139,6 @@ Class.forName("com.aliyun.polardb.Driver");
 ```java
 package com.aliyun.polardb; import java.sql.Connection; import java.sql.Driver; import java.sql.DriverManager; importjavasqlResultSet;
 ```
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```java
 import java.sql.ResultSet; import java.sql.SQLException; import java.sql.Statement; import java.util.Properties; /**
@@ -2127,7 +2187,11 @@ public class PolarDBJdbcDemo {
       while (resultSet.next()) {
         System.out.println("id:" + resultSet.getInt(1));
         System.out.println("name:" + resultSet.getString(2));
-      }
+```
+
+`}`
+
+```
     } catch (Exception e) {
       e.printStackTrace();
       throw e;
@@ -2141,51 +2205,48 @@ public class PolarDBJdbcDemo {
           connect.close();
 ```
 
-|  | Paramete r |  | Description |  | Configuration |
-|---|---|---|---|---|---|
-|  | URL prefix |  | jdbc:polardb:// |  | The prefix of the URL. All the prefixes of the PolarDB instance URLs are jdbc:polardb://. |
-|  | Endpoint |  | pc- |  | The endpoint of the PolarDB cluster. For more information about how to view the endpoint, see View or apply for an endpoint in PolarDB User Guide. |
-|  |  |  |  | pc- | The endpoin |
-|  |  |  | ***.o.polardb.rds.aliyu |  |  |
-|  |  |  |  |  | inform |
-|  |  |  | ncs.com |  |  |
-|  | Port |  | 1521 |  | The port of the PolarDB cluster. Default value: 1521. |
-|  | Database |  | polardb test _ |  | The name of the database to which you want to connect. |
-|  | The username. |  | test |  | The username that is used to connect to the PolarDB cluster. |
-|  | Password |  | Pw123456 |  | The password for the username of the PolarDB cluster. |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 ```
       } catch (SQLException e) {
         e.printStackTrace();
         throw e;
-      }
-    }
-  }
+```
+
+`}` `}` `}`
+
+```
   public static void main(String[] args) throws Exception {
     PolarDBJdbcDemo demo = new PolarDBJdbcDemo();
     demo.run();
-  }
-}
 ```
 
-In JDBC, a database is typically represented by a URL. The following code provides an example:
+`}` `}` In JDBC, a database is typically represented by a URL. The following code provides an example:
 
 ```
 jdbc:polardb://pc-***.o.polardb.rds.aliyuncs.com:1521/polardb_test? user=test&password=Pw123456
 ```
 
-Before you run a query on a database, you must create a `Statement` , `PreparedStatment` , or `CallableStatement` object. In the preceding example, a `Statement` object is created. In the following sample code, a `PreparedStatment` object is created: ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+|   | Paramete r |   | Description |   | Configuration |
+|---|---|---|---|---|---|
+|   | URL prefix |   | jdbc:polardb:// |   | The prefix of the URL. All the prefixes of the PolarDB instance URLs are jdbc:polardb://. |
+|   | Endpoint |   | pc- |   | The endpoint of the PolarDB cluster. For more information about how to view the endpoint, see View or apply for an endpoint in PolarDB User Guide. |
+|   |   |   |   | pc- | The endpoin |
+|   |   |   | ***.o.polardb.rds.aliyu |   |   |
+|   |   |   |   |   | inform |
+|   |   |   | ncs.com |   |   |
+|   | Port |   | 1521 |   | The port of the PolarDB cluster. Default value: 1521. |
+|   | Database |   | polardb test _ |   | The name of the database to which you want to connect. |
+|   | The username. |   | test |   | The username that is used to connect to the PolarDB cluster. |
+|   | Password |   | Pw123456 |   | The password for the username of the PolarDB cluster. |
+
+Before you run a query on a database, you must create a `Statement` , `PreparedStatment` , or `CallableStatement` object. In the preceding example, a `Statement` object is created. In the following sample code, a `PreparedStatment` object is created:
 
 ```java
 PreparedStatement st = conn.prepareStatement("select id, name from foo where id > ?"); st.setInt(1, 10); resultSet = st.executeQuery(); while (resultSet.next()) {
     System.out.println("id:" + resultSet.getInt(1));
     System.out.println("name:" + resultSet.getString(2));
-}
 ```
 
-The following code provides an example on how to use `CallableStatement` to process a stored procedure:
+`}` The following code provides an example on how to use `CallableStatement` to process a stored procedure:
 
 ```java
 String sql = "{?=call getName (?, ?, ?)}"; CallableStatement stmt = conn.prepareCall(sql); stmt.registerOutParameter(1, java.sql.Types.INTEGER); //Bind IN parameter first, then bind OUT parameter int id = 100; stmt.setInt(2, id); // This would set ID as 102 stmt.registerOutParameter(3, java.sql.Types.VARCHAR); stmt.registerOutParameter(4, java.sql.Types.INTEGER); //Use execute method to run stored procedure. stmt.execute(); //Retrieve name with getXXX method String name = stmt.getString(3); Integer msgId = stmt.getInt(4); Integer result = stmt.getInt(1); System.out.println("Name with ID:" + id + " is " + name + ", and messegeID is " + msgId + ", and return is " + result);
@@ -2213,9 +2274,9 @@ Begin
 End;
 ```
 
-### RDS PolarDB .NET
+### 16.3 RDS PolarDB .NET
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User This topic describes how to use the ADO.NET Data Provider for PolarDB (PolarDB .NET) driver to connect C# applications to a PolarDB instance.
+This topic describes how to use the ADO.NET Data Provider for PolarDB (PolarDB .NET) driver to connect C# applications to a PolarDB instance.
 
 **Prerequisites**
 
@@ -2223,7 +2284,11 @@ An account is created for a PolarDB instance. For more information, see Create a
 
 **Background information**
 
-PolarDB .NET is a driver that allows you to use applications in programming languages such as C#, Visual Basic, and F# to connect to PolarDB databases. The PolarDB .NET driver is compatible with Entity Framework Core and Entity Framework 6.x. You can use PolarDB .NET in conjunction with Entity Framework to develop applications in an efficient manner. The current driver uses the PostgreSQL 3.0 protocol and is compatible with .NETFramework 4.x and .NET Core 2.x. Entity Framework is an object-relational mapping (ORM) framework that is widely adopted in the .NET platform. Entity Framework and Language-Integrated Query (LINQ) technologies provide a quick method for you to develop backend C# applications. The PolarDB .NET driver provides the .dll files of Entity Framework 5 (EF5) and Entity Framework 6 (EF6), and the .dll files are applicable to PolarDB. This helps you use Entity Framework. For more information about Entity Framework, visit the official website of Entity Framework.
+PolarDB .NET is a driver that allows you to use applications in programming languages such as C#, Visual Basic, and F# to connect to PolarDB databases. The PolarDB .NET driver is compatible with Entity Framework Core and Entity Framework 6.x. You can use PolarDB .NET in conjunction with Entity Framework to develop applications in an efficient manner. The current driver uses the PostgreSQL 3.0 protocol and is compatible with .NETFramework 4.x and .NET Core 2.x.
+
+**Entity Framework overview**
+
+Entity Framework is an object-relational mapping (ORM) framework that is widely adopted in the .NET platform. Entity Framework and Language-Integrated Query (LINQ) technologies provide a quick method for you to develop backend C# applications. The PolarDB .NET driver provides the .dll files of Entity Framework 5 (EF5) and Entity Framework 6 (EF6), and the .dll files are applicable to PolarDB. This helps you use Entity Framework. For more information about Entity Framework, visit the official website of Entity Framework.
 
 **Install the PolarDB .NET driver**
 
@@ -2250,6 +2315,8 @@ icKeyToken=5d8b90d52f46fda7">
 </Project>
 ```
 
+**Sample procedure**
+
 The Samples directory contains the polardb-sample.sql file and multiple sample project files. The following procedure shows how to run these sample projects.
 1. Connect to your database. For more information, see Connect to an instance.
 2. Run the following command to create a project named `sampledb` .
@@ -2258,7 +2325,6 @@ The Samples directory contains the polardb-sample.sql file and multiple sample p
 CREATE DATABASE sampledb;
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 3. Import the databases, tables, data, and functions that are required for testing to database
 
 ```
@@ -2279,7 +2345,7 @@ using System; using System.Data; using POLARDB.POLARDBClient;
  * This class provides a simple way to perform DML operation in POLARDB
 ```
 
-*
+`*`
 
 ```
  * @revision 1.0
@@ -2288,22 +2354,43 @@ using System; using System.Data; using POLARDB.POLARDBClient;
 `*/`
 
 ```
-namespace POLARDBClientTest {
+namespace POLARDBClientTest
+```
+
+`{`
+
+```
     class SAMPLE_TEST
-    {
+```
+
+`{`
+
+```
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             POLARDBConnection conn = new
 POLARDBConnection("Server=localhost;Port=5432;User Id=polaruser;Password=password;Database=sampledb");
             try
-            {
+```
+
+`{`
+
+```
                 conn.Open();
                 //Simple select statement using POLARDBCommand object
                 POLARDBCommand POLARDBSeletCommand = new POLARDBCommand("SELECT
 EMPNO,ENAME,JOB,MGR,HIREDATE FROM EMP",conn);
                 POLARDBDataReader SelectResult =  POLARDBSeletCommand.ExecuteReader();
                 while (SelectResult.Read())
-                {
+```
+
+`{`
+
+```
                     Console.WriteLine("Emp No" + " " + SelectResult.GetInt32(0));
                     Console.WriteLine("Emp Name" + " " + SelectResult.GetString(1));
                     if (SelectResult.IsDBNull(2) == false)
@@ -2320,13 +2407,11 @@ SelectResult.GetDateTime(4));
                     else
                         Console.WriteLine("Hire Date" + " null");
                     Console.WriteLine("---------------------------------");
-}
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+`}` `}`
 
 ```
-                }
                 //Insert statement using POLARDBCommand Object
                 SelectResult.Close();
                 POLARDBCommand POLARDBInsertCommand = new POLARDBCommand("INSERT INTO
@@ -2343,8 +2428,13 @@ EMP WHERE EMPNO < 100",conn);
                 POLARDBDeletCommand.CommandType= CommandType.Text;
                 POLARDBDeletCommand.ExecuteScalar();
                 Console.WriteLine("Record deleted");
+                //procedure call example
                 try
-                {
+```
+
+`{`
+
+```
                     POLARDBCommand callable_command = new
 POLARDBCommand("emp_query(:p_deptno,:p_empno,:p_ename,:p_job,:p_hiredate,:p_sal)", co nn);
                     callable_command.CommandType = CommandType.StoredProcedure;
@@ -2369,14 +2459,17 @@ RDBTypes.POLARDBDbType.Numeric,200,"p_sal",ParameterDirection.Output,false ,2,2,
                         Console.WriteLine("RESULT["+i+"]="+
 Convert.ToString(callable_command.Parameters[i].Value));
                     result.Close();
-                }
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`}`
 
 ```
                 catch(POLARDBException exp)
-                {
+```
+
+`{`
+
+```
                     if(exp.ErrorCode.Equals("01403"))
                         Console.WriteLine("No data found");
                     else if(exp.ErrorCode.Equals("01422"))
@@ -2386,10 +2479,18 @@ ry");
                         Console.WriteLine("There was an error Calling the procedure. \
 nRoot Cause:\n");
                     Console.WriteLine(exp.Message.ToString());
-                }
+```
+
+`}`
+
+```
                 //Prepared statement
                 string updateQuery  = "update emp set ename = :Name where empno = :ID"
+```
+
 ;
+
+```
                 POLARDBCommand Prepared_command = new POLARDBCommand(updateQuery,
 conn);
                 Prepared_command.CommandType = CommandType.Text;
@@ -2402,19 +2503,33 @@ pes.POLARDBDbType.Text));
                 Prepared_command.Parameters[1].Value = "Mark";
                 Prepared_command.ExecuteNonQuery();
                 Console.WriteLine("Record Updated...");
-            }
-            catch(POLARDBException exp)
-            {
-                Console.WriteLine(exp.ToString() );
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-    }
-}
 ```
+
+`}`
+
+```
+            catch(POLARDBException exp)
+```
+
+`{`
+
+```
+                Console.WriteLine(exp.ToString() );
+```
+
+`}`
+
+```
+            finally
+```
+
+`{`
+
+```
+                conn.Close();
+```
+
+`}` `}` `}` `}`
 
 **Connection string parameters**
 
@@ -2428,6 +2543,8 @@ Applications must provide connection strings to connect to databases. The connec
 | Username | polaruser | The username of the account in the PolarDB instance. |
 | Password | password | The password of the account. |
 
+Other parameters.
+
 | Parameter | Description |
 |---|---|
 | application name _ | The name of the application. |
@@ -2435,21 +2552,22 @@ Applications must provide connection strings to connect to databases. The connec
 | client encoding _ | The client code. |
 | timezone | The time zone of the session. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User Other parameters.
-
-### RDS PolarDB ODBC
+### 16.4 RDS PolarDB ODBC
 
 This topic describes how to use the Open Database Connectivity (ODBC) driver to connect a Unix or Windows application to a PolarDB-O instance.
 
 **Prerequisites**
 
-An account is created in PolarDB. For information about how to create accounts in PolarDB, see Create a database and an account. The Windows system is Windows 7 or later and Windows 7 Service Pack 1 is installed. For a UNIX or Linux OS, make sure that the following tools are installed: Libtool 1.5.10 or later unixODBC-devel libpq For 32-bit x86 UNIX or Linux, download PolarDB-ODBC_Linux_X86_32.tar.gz. For 64-bit x86 UNIX or Linux, download PolarDB-ODBC_Linux_X86_64.tar.gz. For 64-bit ARM UNIX or Linux, download PolarDB-ODBC_Linux_arm_64.tar.gz. For 64-bit x86 Windows, download PolarDB-ODBC_Windows_x86_64.7z. For 32-bit x86 Windows, download PolarDB-ODBC_Windows_x86_32.7z.
+An account is created in PolarDB. For information about how to create accounts in PolarDB, see Create a database and an account. The Windows system is Windows 7 or later and Windows 7 Service Pack 1 is installed. For a UNIX or Linux OS, make sure that the following tools are installed: Libtool 1.5.10 or later unixODBC-devel libpq
+
+**Download the driver**
+
+For 32-bit x86 UNIX or Linux, download PolarDB-ODBC_Linux_X86_32.tar.gz. For 64-bit x86 UNIX or Linux, download PolarDB-ODBC_Linux_X86_64.tar.gz. For 64-bit ARM UNIX or Linux, download PolarDB-ODBC_Linux_arm_64.tar.gz. For 64-bit x86 Windows, download PolarDB-ODBC_Windows_x86_64.7z. For 32-bit x86 Windows, download PolarDB-ODBC_Windows_x86_32.7z.
 
 **Download and install the ODBC driver**
 
 1. Download the ODBC driver.
 2. Install the ODBC driver.
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 **Note**
 
@@ -2488,7 +2606,6 @@ version of your OS. For more information, see Download the driver.
 | User Name | The account of the database. |
 | Password | The password of the account. |
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 6. Click **Save**.
 
 **Install the ODBC driver in Unix or Linux**
@@ -2516,12 +2633,6 @@ yum install -y libtool
 ```
 
 2. Install unixODBC-devel on the Linux server.
-
-| Compile the sample test. The following test files are generated: | Test1 | and | Test2 | . |
-|---|---|---|---|---|
-| make |  |  |  |  |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```bash
 yum install -y unixODBC-devel
@@ -2564,8 +2675,11 @@ The following example shows how to run the `Test1` and `Test2` files.
 cd samples
 ```
 
+| Compile the sample test. The following test files are generated: | Test1 | and | Test2 | . |
+|---|---|---|---|---|
+| make |   |   |   |   |
+
 3. Run `Test1` and `Test2` .
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
 ./Test1
@@ -2579,7 +2693,12 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 `Test1` contains an example in which add, delete, update, and query operations are performed. `Test2` contains an example in which cursors and output parameters are used. The following sample code is only a snippet of the source code. To view the complete source code, check the `Test1` and `Test2` files in the `samples` folder of the ODBC driver package. Sample code of Test1:
 
 ```
-... int main(int argc, char* argv[]) {
+... int main(int argc, char* argv[])
+```
+
+`{`
+
+```
     /*Initialization*/
     RETCODE rCode;
     HENV *hEnv = (HENV*)malloc(sizeof(HENV));
@@ -2592,7 +2711,11 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
     ExecuteInsertStatement(&hStmt,(UCHAR*) "INSERT INTO EMP(EMPNO,ENAME) VALUES((SELECT
 COUNT(EMPNO) FROM EMP),'JACKSON')");
     ExecuteUpdate(&hStmt,(UCHAR*) "UPDATE EMP SET ENAME='ODBC Test' WHERE EMPNO < 100")
+```
+
 ;
+
+```
     ExecuteDeletStatement(&hStmt,(UCHAR*) "DELETE FROM EMP WHERE EMPNO<100");
     ExecuteSimple_Select(&hStmt,(UCHAR*) "SELECT EMPNO,ENAME,JOB,MGR,HIREDATE FROM EMP
 where empno = 7369");
@@ -2603,13 +2726,17 @@ where empno = 7369");
     free(hDBC);
     free(hStmt);
     return 0;
-}
 ```
 
-Sample code for Test2: ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`}` Sample code for Test2:
 
 ```
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+```
+
+`{`
+
+```
     /*Definition*/
     RETCODE rCode;
     SQLUSMALLINT a;
@@ -2643,18 +2770,24 @@ SQL_C_CHAR,SQL_REFCURSOR,0, 31,
     /*execute*/
     rc = SQLExecute((*hStmt));
     if(rc == SQL_SUCCESS || rc == SQL_SUCCESS_WITH_INFO)
-    {
+```
+
+`{`
+
+```
         printf("\nstrName _________ = %s\n",strName);
         printf("\nstrName 1_________ = %s\n",strName1);
-    }
+```
+
+`}`
+
+```
     printf("\n First Cursor as OUT Parameter \n")   ;
 ```
 
+### 16.5 PolarDB OCI
+
 This topic describes how to use the PolarDB Oracle Call Interface (OCI) driver to connect to PolarDB.
-
-### PolarDB OCI
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 **Prerequisites**
 
@@ -2662,7 +2795,15 @@ An account is created on a PolarDB cluster. For more information, see Create a d
 
 **Background information**
 
-PolarDB OCI is the native C language interface to databases of PolarDB. You can use PolarDB OCI to build other language-specific interfaces, including PolarDB Java Database Connectivity (JDBC), PolarDB .Net, and PolarDB Open Database Connectivity (ODBC). It allows you to execute query statements and make SQL function calls for PolarDB databases. The current driver version is PostgreSQL 3.0. polardb_oracle_oci.tar Decompress the driver package and import the driver files to environment variables. This allows you to find the correct location of the driver when you compile a demo. You can use the following methods to manually import the driver files to the environment variables in Linux and Windows: Linux i. Copy the libpolaroci.so.10.2, libiconv.so.2, and libpq.so.5.11 files to the /usr/lib directory. ii. Create a symbolic link.
+PolarDB OCI is the native C language interface to databases of PolarDB. You can use PolarDB OCI to build other language-specific interfaces, including PolarDB Java Database Connectivity (JDBC), PolarDB .Net, and PolarDB Open Database Connectivity (ODBC). It allows you to execute query statements and make SQL function calls for PolarDB databases. The current driver version is PostgreSQL 3.0.
+
+**Download the PolarDB OCI driver**
+
+polardb_oracle_oci.tar
+
+**Install the PolarDB OCI driver**
+
+Decompress the driver package and import the driver files to environment variables. This allows you to find the correct location of the driver when you compile a demo. You can use the following methods to manually import the driver files to the environment variables in Linux and Windows: Linux i. Copy the libpolaroci.so.10.2, libiconv.so.2, and libpq.so.5.11 files to the /usr/lib directory. ii. Create a symbolic link.
 
 ```
 ln -s /usr/lib/libpolaroci.so.10.2 /usr/lib/libpolaroci.so ln -s /usr/lib/libiconv.so.2 /usr/lib/libiconv.so ln -s /usr/lib/libpq.so.5.11 /usr/lib/libpq.so ln -s /usr/lib/libpq.so.5.11 /usr/lib/libpq.so.5
@@ -2676,7 +2817,7 @@ export LD_LIBRARY_PATH= /usr/lib
 
 **Note**
 
-If the libiconv.so files already exist in your system, you can directly use these files. You can also follow the instructions in the libiconv documentation to download, compile, and install libiconv, and then use the compiled .so files. In Linux, the libiconv.so files provided by the PolarDB OCI driver are for reference only. Windows i. Configure environment variables. Most IDEs in Windows is capable of importing the paths of linked files. In this topic, Visual Studio 2019 is used to illustrate how to import the paths of linked files, as shown in the following figure. ApsaraDB RDS for PolarDB User ApsaraDB for RDS ii. On the properties tab of the project, add additional library directories. Then, add the .dll files in the driver directory to **Additional Library Directories**.
+If the libiconv.so files already exist in your system, you can directly use these files. You can also follow the instructions in the libiconv documentation to download, compile, and install libiconv, and then use the compiled .so files. In Linux, the libiconv.so files provided by the PolarDB OCI driver are for reference only. Windows i. Configure environment variables. Most IDEs in Windows is capable of importing the paths of linked files. In this topic, Visual Studio 2019 is used to illustrate how to import the paths of linked files, as shown in the following figure. ii. On the properties tab of the project, add additional library directories. Then, add the .dll files in the driver directory to **Additional Library Directories**.
 
 **Write code**
 
@@ -2706,8 +2847,6 @@ The following code example shows how to write code. The demo `polardb_demo` in t
 #define DATE_LANG "American"
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 ```
 sword ConvertStringToDATE( char *datep, char *formatp, dvoid *datepp ); /* A Custom Routine to handle errors, */ /* this demonstrates the Error/ Exception Handling in OCI */ void check_oci_error (dvoid * errhp, sword status);
 ```
@@ -2725,7 +2864,7 @@ sword ConvertStringToDATE( char *datep, char *formatp, dvoid *datepp ); /* A Cus
          OCIEnv **);
 /* logon to the database and begin user-session */ void logon (OCISvcCtx **, OCIServer **, OCISession **, OCIError **,
        OCIEnv **, text *, text *, text *);
-/* Create required table(s) */ void create_table (OCISvcCtx *, OCIError *, OCIEnv *); /* prepare data for our examples */ void prepare_data (OCISvcCtx *, OCIError *, OCIEnv *); /* create procedures/functions to demonstrate in the example */ void create_stored_procs (OCISvcCtx *, OCIError *, OCIEnv *); /* select and print data by iterating through resultSet */ void select_print_data (OCISvcCtx *, OCIError *, OCIEnv *); /* demonstrate calling stored procedures and retrieving values */ /* proc1 demonstrates IN OUT */ void call_stored_proc1 (OCISvcCtx *, OCIError *, OCIEnv *); /* proc2 demonstrates OUT */ void call_stored_proc2 (OCISvcCtx *, OCIError *, OCIEnv *); /* drop required table(s) */ void drop_table (OCISvcCtx *, OCIError *, OCIEnv *); void drop_stored_procs (OCISvcCtx *, OCIError *, OCIEnv *); /* clean-up main handles before exit */ void cleanup (OCISvcCtx **, OCIServer **, OCISession **, OCIError **, OCIEnv **);
+/* Create required table(s) */ void create_table (OCISvcCtx *, OCIError *, OCIEnv *); /* prepare data for our examples */ void prepare_data (OCISvcCtx *, OCIError *, OCIEnv *); /* create procedures/functions to demonstrate in the example */ void create_stored_procs (OCISvcCtx *, OCIError *, OCIEnv *); /* select and print data by iterating through resultSet */ void select_print_data (OCISvcCtx *, OCIError *, OCIEnv *); /* demonstrate calling stored procedures and retrieving values */ /* proc1 demonstrates IN OUT */ void call_stored_proc1 (OCISvcCtx *, OCIError *, OCIEnv *); /* proc2 demonstrates OUT */ void call_stored_proc2 (OCISvcCtx *, OCIError *, OCIEnv *); /* drop required table(s) */ void drop_table (OCISvcCtx *, OCIError *, OCIEnv *); /* drop stored procedures and functions */ void drop_stored_procs (OCISvcCtx *, OCIError *, OCIEnv *); /* clean-up main handles before exit */ void cleanup (OCISvcCtx **, OCIServer **, OCISession **, OCIError **, OCIEnv **);
 ```
 
 `/*`
@@ -2734,13 +2873,13 @@ sword ConvertStringToDATE( char *datep, char *formatp, dvoid *datepp ); /* A Cus
  * <<<<<<<<<<<<<<<<<<<<<<<<< END OF FUNCTION PROTOYPES<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
-`*/` ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`*/`
 
 ```
-/* <<<<<<<<<< Global Variables */ ub4 init_mode = OCI_DEFAULT; ub4 auth_mode = OCI_CRED_RDBMS; /* <<<<<<<<<< End Global Variables */ int main (void) {
+/* <<<<<<<<<< Global Variables */ ub4 init_mode = OCI_DEFAULT; ub4 auth_mode = OCI_CRED_RDBMS; /* <<<<<<<<<< End Global Variables */ int main (void)
 ```
 
-`/*`
+`{` `/*`
 
 ```
    * Declare Handles, a typical OCI program would need atleast
@@ -2806,7 +2945,7 @@ sword ConvertStringToDATE( char *datep, char *formatp, dvoid *datepp ); /* A Cus
   initHandles (&svchp, &srvhp, &authp, &errhp, &envhp);
 ```
 
-`/*` ApsaraDB for RDS ApsaraDB RDS for PolarDB User `/*`
+`/*` `/*`
 
 ```
    * logon to the database
@@ -2842,7 +2981,13 @@ sword ConvertStringToDATE( char *datep, char *formatp, dvoid *datepp ); /* A Cus
   prepare_data (svchp, errhp, envhp);
 ```
 
-`/*` `*/`
+`/*`
+
+```
+   * create stored procedures & functions
+```
+
+`*/`
 
 ```
   create_stored_procs (svchp, errhp, envhp);
@@ -2919,21 +3064,41 @@ sword ConvertStringToDATE( char *datep, char *formatp, dvoid *datepp ); /* A Cus
 ```
   cleanup (&svchp, &srvhp, &authp, &errhp, &envhp);
   return 0;
-} /* A Custom Routine to handle errors, */
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`}`
 
 ```
-/* this demonstrates the Error/ Exception Handling in OCI */ void check_oci_error (dvoid * errhp, sword status) {
+/* A Custom Routine to handle errors, */
+```
+
+```
+/* this demonstrates the Error/ Exception Handling in OCI */ void check_oci_error (dvoid * errhp, sword status)
+```
+
+`{`
+
+```
   text errbuf[512];
   sb4 errcode;
   if (status == OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       return;
-    }
+```
+
+`}`
+
+```
   switch (status)
-    {
+```
+
+`{`
+
+```
     case OCI_SUCCESS_WITH_INFO:
       printf ("OCI_SUCCESS_WITH_INFO:\n");
       OCIErrorGet (errhp, (ub4) 1, (text *) 0, &errcode,
@@ -2963,10 +3128,9 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
       break;
     default:
       break;
-    }
 ```
 
-`/*`
+`}` `/*`
 
 ```
    * exit app
@@ -2976,17 +3140,19 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
   exit((int)status);
-} /* Initialize & Allocate required handles */ void initHandles (OCISvcCtx ** svchp, OCIServer ** srvhp, OCISession ** authp,
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+`}`
+
+```
+/* Initialize & Allocate required handles */ void initHandles (OCISvcCtx ** svchp, OCIServer ** srvhp, OCISession ** authp,
+```
 
 ```
          OCIError ** errhp, OCIEnv ** envhp)
-{
 ```
 
-`/*`
+`{` `/*`
 
 ```
    * Now Starts the Section where we have to initialize & Allocate
@@ -2996,7 +3162,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
    * following steps
 ```
 
-*
+`*`
 
 ```
    * 1. Initialize the OCI (OCIInitialize()) 2. Initialize the
@@ -3005,7 +3171,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
    * Allocate Session Handle 6. Initialize & Allocate Server Handle
 ```
 
-*
+`*`
 
 ```
    * As per the new versions of OCI , instead of using OCIInitialize()
@@ -3026,13 +3192,16 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
              (dvoid * (*)(dvoid *, size_t)) 0,
              (dvoid * (*)(dvoid *, dvoid *, size_t)) 0,
              (void (*)(dvoid *, dvoid *)) 0) != OCI_SUCCESS)
-    {
-      printf ("ERROR: failed to initialize OCI\n");
-      exit (1);
-    }
 ```
 
-`/*`
+`{`
+
+```
+      printf ("ERROR: failed to initialize OCI\n");
+      exit (1);
+```
+
+`}` `/*`
 
 ```
    * Initialize Enviroment.
@@ -3080,7 +3249,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
    * Initialize & Allocate Session Handle
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS `*/`
+`*/`
 
 ```
   HANDLE_ERROR (*errhp,
@@ -3100,26 +3269,30 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS `*/`
   HANDLE_ERROR (*errhp,
         OCIHandleAlloc (*envhp, (dvoid **) & (*srvhp),
                 OCI_HTYPE_SERVER, (size_t) 0, (dvoid **) 0));
-} void logon (OCISvcCtx ** svchp, OCIServer ** srvhp, OCISession ** authp,
-       OCIError ** errhp, OCIEnv ** envhp, text * username, text * passwd,
-       text * server)
-{
 ```
 
-`/*`
+`}`
+
+```
+void logon (OCISvcCtx ** svchp, OCIServer ** srvhp, OCISession ** authp,
+       OCIError ** errhp, OCIEnv ** envhp, text * username, text * passwd,
+       text * server)
+```
+
+`{` `/*`
 
 ```
    * Now Starts our Logon to the Database Server which includes two
    * steps
 ```
 
-*
+`*`
 
 ```
    * 1. Attaching to the Server 2. Starting or Begining of the Session
 ```
 
-*
+`*`
 
 ```
    * This is the complex logon. The easy ways to logon is to avoid
@@ -3164,8 +3337,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS `*/`
         OCIAttrSet (*svchp, OCI_HTYPE_SVCCTX,
                 (dvoid *) (*srvhp), (ub4) 0, OCI_ATTR_SERVER,
 ```
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
                 *errhp));
@@ -3227,7 +3398,17 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
         OCIAttrSet (*svchp, OCI_HTYPE_SVCCTX,
                 (dvoid *) (*authp), (ub4) 0,
                 OCI_ATTR_SESSION, *errhp));
-} /* Create table(s) required for this example */ void create_table (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+```
+
+`}`
+
+```
+/* Create table(s) required for this example */ void create_table (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   OCIStmt *stmhp;
   text *create_statement =
     (text *)"CREATE TABLE OCISPEC \n (ENAME VARCHAR2(20)\n, MGR NUMBER\n, HIREDATE DATE
@@ -3241,7 +3422,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
    * Initialize & Allocate Statement Handle
 ```
 
-`*/` ApsaraDB RDS for PolarDB User ApsaraDB for RDS `*/`
+`*/` `*/`
 
 ```
   HANDLE_ERROR (errhp,
@@ -3276,19 +3457,45 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN CREATING TABLE(S)\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Table(s) Successfully created\n");
       printf ("********************************************\n");
-    }
+```
+
+`}`
+
+```
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp, OCI_HTYPE_STMT));
-} /* prepare data for our examples */ void prepare_data (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+```
+
+`}`
+
+```
+/* prepare data for our examples */ void prepare_data (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   OCIStmt *stmhp;
   text *insstmt =
     (text *)
@@ -3302,8 +3509,6 @@ imestamp))";
   char *ename[3] = { "SMITH", "ALLEN", "KING" };
   sword mgr[] = { 7886, 7110, 7221 };
 ```
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
   char *date_buffer[3] = { "02-AUG-07", "02-APR-07", "02-MAR-07" };
@@ -3352,10 +3557,9 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
   for (i = 0; i < 3; i++)
-    {
 ```
 
-`/*`
+`{` `/*`
 
 ```
        * Bind Variable for ENAME
@@ -3405,7 +3609,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
                    OCIDEFAULT));
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS _ `/*`
+`_` `/*`
 
 ```
        * Execute the statement and insert data
@@ -3416,22 +3620,34 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS _ `/*`
 ```
       if ((status = OCIStmtExecute (svchp, stmhp, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN INSERTING DATA\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
-    }
+```
+
+`}` `}`
+
+```
   OCITransCommit (svchp, errhp, (ub4) 0);
   printf ("********************************************\n");
   printf
     ("MileStone : Data Sucessfully inserted \n & Committed via Transaction\n");
   printf ("********************************************\n");
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp, OCI_HTYPE_STMT));
-} /* Create Stored procedures and functions to be used in this example */ void create_stored_procs (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
 ```
 
-`/*`
+`}`
+
+```
+/* Create Stored procedures and functions to be used in this example */ void create_stored_procs (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{` `/*`
 
 ```
    * This function created 2 stored procedures and one stored function
@@ -3459,8 +3675,6 @@ har2,eout1 OUT varchar2)\nis\nbegin\ninsert into ocispec(mgr,ename) values (7991
     (text *)"CREATE OR REPLACE FUNCTION f1\nRETURN VARCHAR2\nis\nv_Sysdate
 DATE;\nv_charSysdate VARCHAR2(20);\nbegin\nSELECT TO_CHAR(SYSDATE, 'dd-mon-yyyy') into v_charSysdate FROM DUAL;\n return(v_charSysdate);\nend;";
 ```
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
   ub4 status = OCI_SUCCESS;
@@ -3521,20 +3735,31 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN CREATING PROCEDURE 1\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Sample Procedure 1 Successfully created\n");
       printf ("********************************************\n");
-    }
 ```
 
-`/*` ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`}` `/*`
 
 ```
    * Execute the Create Statement Sample Procedure2
@@ -3545,20 +3770,31 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp2, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN CREATING PROCEDURE 2\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Sample Procedure 2 Successfully created\n");
       printf ("********************************************\n");
-    }
 ```
 
-`/*`
+`}` `/*`
 
 ```
    * Execute the Create Statement Sample Procedure3
@@ -3569,21 +3805,47 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp3, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN CREATING PROCEDURE 3\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Sample Procedure 3 Successfully created\n");
       printf ("********************************************\n");
-    }
+```
+
+`}`
+
+```
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp, OCI_HTYPE_STMT));
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp2, OCI_HTYPE_STMT));
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp3, OCI_HTYPE_STMT));
-} /* select and print data by iterating through resultSet */ void select_print_data (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+```
+
+`}`
+
+```
+/* select and print data by iterating through resultSet */ void select_print_data (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   /* Statement */
   OCIStmt *stmhp;
   /* Define */
@@ -3593,8 +3855,6 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
   /* Buffer for mgr */
 sordmgrbffer
 ```
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
   sword mgr_buffer;
@@ -3643,7 +3903,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
    * following steps
 ```
 
-*
+`*`
 
 ```
    * 1. Initialize and Allocate the Statement Handle 2. Prepare the
@@ -3652,7 +3912,7 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
    * and Print values
 ```
 
-* `*/`
+`*` `*/`
 
 ```
 memset( ename_buffer, 0, sizeof(ename_buffer) ); memset( hire_date, 0, sizeof(hire_date) );
@@ -3683,8 +3943,6 @@ memset( ename_buffer, 0, sizeof(ename_buffer) ); memset( hire_date, 0, sizeof(hi
 ```
 HANDLEERROR(errhp,
 ```
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
   HANDLE_ERROR (errhp,
@@ -3768,30 +4026,40 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
   if (status == OCI_NO_DATA)
-    {
 ```
 
-`/*`
+`{` `/*`
 
 ```
        * indicates didn't fetch anything (as we're not array
        * fetching)
 ```
 
-`*/` ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+`*/`
 
 ```
       fetched = 0;
-    }
-  else
-    {
-      HANDLE_ERROR (errhp, status);
-    }
-  if (fetched)
-    {
 ```
 
-`/*`
+`}`
+
+```
+  else
+```
+
+`{`
+
+```
+      HANDLE_ERROR (errhp, status);
+```
+
+`}`
+
+```
+  if (fetched)
+```
+
+`{` `/*`
 
 ```
        * print string
@@ -3818,18 +4086,29 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
       if (null_ind_mgr == -1)
     printf ("mgr -> [NULL]\n");
       else
-    {
+```
+
+`{`
+
+```
       printf ("mgr -> [%d]\n", mgr_buffer);
-    }
+```
+
+`}`
+
+```
       if (null_ind_hiredate == -1)
     printf ("hiredate -> [NULL]\n");
       else
-    {
-      printf ("hiredate -> [%s]\n",hire_date );
-    }
 ```
 
-`/*`
+`{`
+
+```
+      printf ("hiredate -> [%s]\n",hire_date );
+```
+
+`}` `/*`
 
 ```
        * loop through the resultset one by one through
@@ -3846,14 +4125,17 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
       while (1)
-    {
+```
+
+`{`
+
+```
       status = OCIStmtFetch (stmhp, errhp,
                  rows, OCI_FETCH_NEXT, OCI_DEFAULT);
       if (status == OCI_NO_DATA)
-        {
 ```
 
-`/*`
+`{` `/*`
 
 ```
            * indicates couldn't fetch anything
@@ -3863,19 +4145,21 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
           break;
-        }
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`}`
 
 ```
       else
-        {
-          HANDLE_ERROR (errhp, status);
-        }
 ```
 
-`/*`
+`{`
+
+```
+          HANDLE_ERROR (errhp, status);
+```
+
+`}` `/*`
 
 ```
        * print string
@@ -3902,12 +4186,15 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
       if (null_ind_mgr == -1)
         printf ("mgr -> [NULL]\n");
       else
-        {
-        printf ("mgr -> [%d]\n", mgr_buffer);
-        }
 ```
 
-`/*`
+`{`
+
+```
+        printf ("mgr -> [%d]\n", mgr_buffer);
+```
+
+`}` `/*`
 
 ```
        * print date after converting to text
@@ -3919,13 +4206,29 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
       if (null_ind_hiredate == -1)
         printf ("hiredate -> [NULL]\n");
       else
-        {
+```
+
+`{`
+
+```
           printf ("hiredate -> [%s]\n", hire_date);
-        }
-    }
-    }
+```
+
+`}` `}` `}`
+
+```
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp, OCI_HTYPE_STMT));
-} void call_stored_proc1 (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+```
+
+`}`
+
+```
+void call_stored_proc1 (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   OCIStmt *p_sql;
   OCIBind *p_Bind1 = (OCIBind *) 0;
   OCIBind *p_Bind2 = (OCIBind *) 0;
@@ -3944,8 +4247,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
   sword field1 = 3;
   text *mySql = (text *) "Begin StoredProcedureSample1(:MGR, :ENAME); END";
 ```
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
   memset( field2, 0, sizeof(field2) );
@@ -3992,12 +4293,20 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
   printf (" length ---> %d\n", strlen (field2));
   printf (" value ---> %s\n", field2);
   HANDLE_ERROR (errhp, OCIHandleFree (p_sql, OCI_HTYPE_STMT));
-} void call_stored_proc2 (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+```
+
+`}`
+
+```
+void call_stored_proc2 (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   OCIStmt *p_sql;
 OCIBid* Bid1 (OCIBid*)0
 ```
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
   OCIBind *p_Bind1 = (OCIBind *) 0;
@@ -4051,8 +4360,6 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 HANDLEERROR(errhp
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 ```
   HANDLE_ERROR (errhp,
         OCIStmtExecute (svchp, p_sql, errhp, (ub4) 1, (ub4) 0,
@@ -4063,7 +4370,17 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
   printf (" length ---> %d\n", strlen (field3));
   printf (" value ---> %s\n", field3);
   HANDLE_ERROR (errhp, OCIHandleFree (p_sql, OCI_HTYPE_STMT));
-} /* drop table(s) required for this example */ void drop_table (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+```
+
+`}`
+
+```
+/* drop table(s) required for this example */ void drop_table (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   OCIStmt *stmhp;
   text *statement = (text *)"DROP TABLE OCISPEC";
   ub4 status = OCI_SUCCESS;
@@ -4109,25 +4426,45 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN DROPING TABLE(S)\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Table(s) Successfully Dropped\n");
       printf ("********************************************\n");
-    }
+```
+
+`}`
+
+```
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp, OCI_HTYPE_STMT));
-}
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+`}` `}`
 
 ```
-} void drop_stored_procs (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp) {
+void drop_stored_procs (OCISvcCtx * svchp, OCIError * errhp, OCIEnv * envhp)
+```
+
+`{`
+
+```
   OCIStmt *stmhp;
   OCIStmt *stmhp2;
   OCIStmt *stmhp3;
@@ -4193,25 +4530,34 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 ```
   if ((status = OCIStmtExecute (svchp, stmhp, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN DROPPING PROCEDURE 1\n");
       HANDLE_ERROR (errhp, status);
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 ```
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Sample Procedure 1 Successfully dropped\n");
       printf ("********************************************\n");
-    }
 ```
 
-`/*`
+`}` `/*`
 
 ```
    * Execute the Create Statement Sample Procedure2
@@ -4222,20 +4568,31 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp2, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN DROPPING PROCEDURE 2\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Sample Procedure 2 Successfully dropped\n");
       printf ("********************************************\n");
-    }
 ```
 
-`/*`
+`}` `/*`
 
 ```
    * Execute the Create Statement Sample Procedure3
@@ -4246,41 +4603,46 @@ ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 ```
   if ((status = OCIStmtExecute (svchp, stmhp3, errhp,
                    (ub4) 1, (ub4) 0, NULL, NULL, OCI_DEFAULT)) < OCI_SUCCESS)
-    {
+```
+
+`{`
+
+```
       printf ("FAILURE IN DROPPING PROCEDURE 3\n");
       HANDLE_ERROR (errhp, status);
       return;
-    }
+```
+
+`}`
+
+```
   else
-    {
+```
+
+`{`
+
+```
       printf ("********************************************\n");
       printf ("MileStone : Sample Procedure 3 Successfully dropped\n");
       printf ("********************************************\n");
-    }
+```
+
+`}`
+
+```
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp, OCI_HTYPE_STMT));
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp2, OCI_HTYPE_STMT));
   HANDLE_ERROR (errhp, OCIHandleFree (stmhp3, OCI_HTYPE_STMT));
-} /* Clean your mess up */ void cleanup (OCISvcCtx ** svchp, OCIServer ** srvhp, OCISession ** authp,
+```
+
+`}`
+
+```
+/* Clean your mess up */ void cleanup (OCISvcCtx ** svchp, OCIServer ** srvhp, OCISession ** authp,
      OCIError ** errhp, OCIEnv ** envhp)
 ```
 
-| Parameter | Example | Description |
-|---|---|---|
-| text *username | (text *) "postgres" | The username of the PolarDB instance. |
-| text *passwd | (text *) "" | The password for the username of the PolarDB instance. |
-| text *server | (text *) "//localhost:5432" | The endpoint and port of the PolarDB instance. |
-
-|  |  | (text *) |  |
-|---|---|---|---|
-|  | "//localhost:5432" |  |  |
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
-```
-{
-```
-
-`/*`
+`{` `/*`
 
 ```
    * log off
@@ -4331,10 +4693,19 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS
   /* free environment handle */
   *envhp = 0;
   printf ("free'd all handles\n");
-}
 ```
 
-In the preceding code example, you must replace the following parameters with the connection information of your PolarDB instance.
+`}` In the preceding code example, you must replace the following parameters with the connection information of your PolarDB instance.
+
+| Parameter | Example | Description |
+|---|---|---|
+| text *username | (text *) "postgres" | The username of the PolarDB instance. |
+| text *passwd | (text *) "" | The password for the username of the PolarDB instance. |
+| text *server | (text *) "//localhost:5432" | The endpoint and port of the PolarDB instance. |
+
+|   |   | (text *) |   |
+|---|---|---|---|
+|   | "//localhost:5432" |   |   |
 
 **Note**
 
@@ -4342,7 +4713,7 @@ For more information about the Oracle native OCI driver, visit OCI: Introduction
 
 **Compile code**
 
-Linux ApsaraDB for RDS ApsaraDB RDS for PolarDB User i. Modify the Makefile file to dynamically link to the path where the polaroci.so file is located. The following content is an example of the Makefile file:
+Linux i. Modify the Makefile file to dynamically link to the path where the polaroci.so file is located. The following content is an example of the Makefile file:
 
 ```bash
 # ============================================================================
@@ -4351,7 +4722,7 @@ Linux ApsaraDB for RDS ApsaraDB RDS for PolarDB User i. Modify the Makefile file
 # Makefile to build C testcases for OCILib
 ```
 
-#
+`#`
 
 ```
 CC=gcc CFLAGS=-Wall -g -I$(ORACLE_HOME)/ -L $(POLARDBOCI_LIB) -lpolardboci -lpq -liconv SAMPLES = polardb_demo all: $(SAMPLES) %:%.o
@@ -4370,7 +4741,7 @@ Windows Visual Studio is used in the example. i. Add the path of the oracle oci 
 **General > Attachment Include Directories**.
 ii. Add the paths of polardboci.dll and polardboci.lib in the driver directory to **Linker >**
 **General > Additional Library Directories**.
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS iii. Enter polardboci.lib in **Linker > Input > Additional Dependencies**. ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+iii. Enter polardboci.lib in **Linker > Input > Additional Dependencies**.
 
 **Examples**
 
@@ -4425,8 +4796,6 @@ MileStone : Table(s) Successfully Dropped
 ********************************************
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 ```
 MileStone : Sample Procedure 1 Successfully dropped
 ********************************************
@@ -4439,7 +4808,7 @@ MileStone : Sample Procedure 3 Successfully dropped
 logged off detached form server free'd all handles
 ```
 
-### PolarDB PHP
+### 16.6 PolarDB PHP
 
 This topic describes how to connect a PHP client to a PolarDB cluster.
 
@@ -4471,7 +4840,7 @@ C:\windows\system32\ directory. Note: php5.3.5 is used in this example, and the 
 
 1. Install the `php-pgsql.x86_64` driver.
 
-```bash
+```python
 sudo yum install php-pgsql.x86_64
 ```
 
@@ -4486,19 +4855,6 @@ vim /etc/php.ini
 ```
 extension=php_pgsql.so
 ```
-
-| Parameter | Example | Description |
-|---|---|---|
-| host | "host=xxxxxx" | The endpoint of the PolarDB cluster. For more information about how to view the endpoint, see View or apply for an endpoint in PolarDB User Guide. |
-| port | "port=1521" | The port of the PolarDB cluster. |
-| dbname | "dbname=xxxx" | The name of the database to be connected. |
-| credentials | "user=xxx password=xxxx" | The username and password used to log on to the PolarDB cluster. |
-
-|  |  | "user=xxx |
-|---|---|---|
-| s | password=xxxx" |  |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 **Connect to PolarDB**
 
@@ -4515,7 +4871,11 @@ After you prepare the environment in Windows or Linux, you can run a PHP script 
   echo "Error : Unable to open database\n";
  } else {
   echo "Opened database successfully\n";
- }
+```
+
+`}`
+
+```
  $sql =<<<EOF
   select * from pg_roles;
 EOF;
@@ -4524,15 +4884,32 @@ EOF;
   echo pg_last_error($db);
  } else {
   echo "Records created successfully\n";
- }
+```
+
+`}`
+
+```
  $results = pg_fetch_all($ret);
  print_r($results);
  pg_close($db);
 ```
 
-?> In the preceding sample code, the connection information of PolarDB consists of parameters, such as `host` , `port` , `dbname` , and `credentials` , as shown in the following table. For more information about PHP APIs, see PHP documentation. ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+?> In the preceding sample code, the connection information of PolarDB consists of parameters, such as `host` , `port` , `dbname` , and `credentials` , as shown in the following table.
 
-## Compatibility for Oracle
+| Parameter | Example | Description |
+|---|---|---|
+| host | "host=xxxxxx" | The endpoint of the PolarDB cluster. For more information about how to view the endpoint, see View or apply for an endpoint in PolarDB User Guide. |
+| port | "port=1521" | The port of the PolarDB cluster. |
+| dbname | "dbname=xxxx" | The name of the database to be connected. |
+| credentials | "user=xxx password=xxxx" | The username and password used to log on to the PolarDB cluster. |
+
+|   |   | "user=xxx |
+|---|---|---|
+| s | password=xxxx" |   |
+
+For more information about PHP APIs, see PHP documentation.
+
+## 17 Compatibility for Oracle
 
 In this topic, examples are used to help you understand terms and concepts in PolarDB, so that you can smoothly migrate data from Oracle to PolarDB databases and efficiently use the databases for development. The operations described in this topic are based on a model that demonstrates the basic PolarDB operations, such as database creation, table creation, and user management. The following figure shows the data model: To simulate an environment similar to Oracle, the following example creates a database named orcl_polardb, a role named scott in the orcl_polardb database, and a schema named scott.
 
@@ -4562,16 +4939,6 @@ Connect to the `orcl_polardb` database:
 CREATE ROLE scott LOGIN PASSWORD 'scott123';
 ```
 
-|  |  | Note If scott is not added to the myuser role before you execute ALTER SCHEMA scott OWNER TO scott , the following permission error is displayed: ERROR:must be member of role "scott" For security reasons, remove scott from the myuser user after the statement is executed. This improves security. |
-|---|---|---|
-|  |  | OWNER TO scott |
-
-| ALTER SCHEMA scott |  |  |
-|---|---|---|
-|  | ERROR:must be member |  |
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 **CREATE SCHEMA**
 
 Create a schema:
@@ -4598,6 +4965,14 @@ Remove scott from the myuser role:
 REVOKE scott FROM myuser;
 ```
 
+|   |   | Note If scott is not added to the myuser role before you execute ALTER SCHEMA scott OWNER TO scott , the following permission error is displayed: ERROR:must be member of role "scott" For security reasons, remove scott from the myuser user after the statement is executed. This improves security. |
+|---|---|---|
+|   |   | OWNER TO scott |
+
+| ALTER SCHEMA scott |   |   |
+|---|---|---|
+|   | ERROR:must be member |   |
+
 **Connect to the orcl_polardb database**
 
 **Note**
@@ -4610,14 +4985,17 @@ The following operations must be performed by using the scott account. Otherwise
 
 **CREATE TABLE**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 ```
 CREATE TABLE dept (
    deptno          NUMBER(2) NOT NULL CONSTRAINT dept_pk PRIMARY KEY,
    dname           VARCHAR2(14) CONSTRAINT dept_dname_uq UNIQUE,
    lock            VARCHAR2(13)
-); CREATE TABLE emp (
+```
+
+);
+
+```
+CREATE TABLE emp (
   empno           NUMBER(4) NOT NULL CONSTRAINT emp_pk PRIMARY KEY,
   ename           VARCHAR2(10),
   job             VARCHAR2(9),
@@ -4627,7 +5005,12 @@ CREATE TABLE dept (
   comm            NUMBER(7,2),
   deptno          NUMBER(2) CONSTRAINT emp_ref_dept_fk
                   REFERENCES dept(deptno)
-); CREATE TABLE jobhist (
+```
+
+);
+
+```
+CREATE TABLE jobhist (
   empno           NUMBER(4) NOT NULL,
   startdate       DATE NOT NULL,
   enddate         DATE,
@@ -4642,8 +5025,9 @@ CREATE TABLE dept (
   CONSTRAINT jobhist_ref_dept_fk FOREIGN KEY (deptno)
       REFERENCES dept (deptno) ON DELETE SET NULL,
   CONSTRAINT jobhist_date_chk CHECK (startdate <= enddate)
-);
 ```
+
+);
 
 **CREATE OR REPLACE VIEW**
 
@@ -4660,16 +5044,26 @@ CREATE SEQUENCE next_empno START WITH 8000 INCREMENT BY 1;
 
 **INSERT INTO**
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+```
+INSERT INTO dept VALUES (10,'ACCOUNTING','NEW YORK'); INSERT INTO dept VALUES (20,'RESEARCH','DALLAS'); INSERT INTO dept VALUES (30,'SALES','CHICAGO'); INSERT INTO dept VALUES (40,'OPERATIONS','BOSTON'); INSERT INTO emp VALUES (7369,'SMITH','CLERK',7902,'17-DEC-80',800,NULL,20); INSERT INTO emp VALUES (7499,'ALLEN','SALESMAN',7698,'20-FEB-81',1600,300,30); INSERT INTO emp VALUES (7521,'WARD','SALESMAN',7698,'22-FEB-81',1250,500,30); INSERT INTO emp VALUES (7566,'JONES','MANAGER',7839,'02-APR-81',2975,NULL,20); INSERT INTO emp VALUES (7654,'MARTIN','SALESMAN',7698,'28-SEP-81',1250,1400,30); INSERT INTO emp VALUES (7698,'BLAKE','MANAGER',7839,'01-MAY-81',2850,NULL,30); INSERT INTO emp VALUES (7782,'CLARK','MANAGER',7839,'09-JUN-81',2450,NULL,10); INSERT INTO emp VALUES (7788,'SCOTT','ANALYST',7566,'19-APR-87',3000,NULL,20); INSERT INTO emp VALUES (7839,'KING','PRESIDENT',NULL,'17-NOV-81',5000,NULL,10); INSERT INTO emp VALUES (7844,'TURNER','SALESMAN',7698,'08-SEP-81',1500,0,30); INSERT INTO emp VALUES (7876,'ADAMS','CLERK',7788,'23-MAY-87',1100,NULL,20); INSERT INTO emp VALUES (7900,'JAMES','CLERK',7698,'03-DEC-81',950,NULL,30); INSERT INTO emp VALUES (7902,'FORD','ANALYST',7566,'03-DEC-81',3000,NULL,20); INSERT INTO emp VALUES (7934,'MILLER','CLERK',7782,'23-JAN-82',1300,NULL,10); INSERT INTO jobhist VALUES (7369,'17-DEC-80',NULL,'CLERK',800,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7499,'20-FEB-81',NULL,'SALESMAN',1600,300,30,'New Hire'); INSERT INTO jobhist VALUES (7521,'22-FEB-81',NULL,'SALESMAN',1250,500,30,'New Hire'); INSERT INTO jobhist VALUES (7566,'02-APR-81',NULL,'MANAGER',2975,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7654,'28-SEP-81',NULL,'SALESMAN',1250,1400,30,'New Hire'); INSERT INTO jobhist VALUES (7698,'01-MAY-81',NULL,'MANAGER',2850,NULL,30,'New Hire'); INSERT INTO jobhist VALUES (7782,'09-JUN-81',NULL,'MANAGER',2450,NULL,10,'New Hire'); INSERT INTO jobhist VALUES (7788,'19-APR-87','12-APR-88','CLERK',1000,NULL,20,'New Hire '); INSERT INTO jobhist VALUES (7788,'13-APR-88','04-MAY-89','CLERK',1040,NULL,20,'Raise'); INSERT INTO jobhist VALUES (7788,'05-MAY-90',NULL,'ANALYST',3000,NULL,20,'Promoted to A nalyst'); INSERT INTO jobhist VALUES (7839,'17-NOV-81',NULL,'PRESIDENT',5000,NULL,10,'New Hire'); INSERT INTO jobhist VALUES (7844,'08-SEP-81',NULL,'SALESMAN',1500,0,30,'New Hire'); INSERT INTO jobhist VALUES (7876,'23-MAY-87',NULL,'CLERK',1100,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7900,'03-DEC-81','14-JAN-83','CLERK',950,NULL,10,'New Hire'
+```
+
+);
 
 ```
-INSERT INTO dept VALUES (10,'ACCOUNTING','NEW YORK'); INSERT INTO dept VALUES (20,'RESEARCH','DALLAS'); INSERT INTO dept VALUES (30,'SALES','CHICAGO'); INSERT INTO dept VALUES (40,'OPERATIONS','BOSTON'); INSERT INTO emp VALUES (7369,'SMITH','CLERK',7902,'17-DEC-80',800,NULL,20); INSERT INTO emp VALUES (7499,'ALLEN','SALESMAN',7698,'20-FEB-81',1600,300,30); INSERT INTO emp VALUES (7521,'WARD','SALESMAN',7698,'22-FEB-81',1250,500,30); INSERT INTO emp VALUES (7566,'JONES','MANAGER',7839,'02-APR-81',2975,NULL,20); INSERT INTO emp VALUES (7654,'MARTIN','SALESMAN',7698,'28-SEP-81',1250,1400,30); INSERT INTO emp VALUES (7698,'BLAKE','MANAGER',7839,'01-MAY-81',2850,NULL,30); INSERT INTO emp VALUES (7782,'CLARK','MANAGER',7839,'09-JUN-81',2450,NULL,10); INSERT INTO emp VALUES (7788,'SCOTT','ANALYST',7566,'19-APR-87',3000,NULL,20); INSERT INTO emp VALUES (7839,'KING','PRESIDENT',NULL,'17-NOV-81',5000,NULL,10); INSERT INTO emp VALUES (7844,'TURNER','SALESMAN',7698,'08-SEP-81',1500,0,30); INSERT INTO emp VALUES (7876,'ADAMS','CLERK',7788,'23-MAY-87',1100,NULL,20); INSERT INTO emp VALUES (7900,'JAMES','CLERK',7698,'03-DEC-81',950,NULL,30); INSERT INTO emp VALUES (7902,'FORD','ANALYST',7566,'03-DEC-81',3000,NULL,20); INSERT INTO emp VALUES (7934,'MILLER','CLERK',7782,'23-JAN-82',1300,NULL,10); INSERT INTO jobhist VALUES (7369,'17-DEC-80',NULL,'CLERK',800,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7499,'20-FEB-81',NULL,'SALESMAN',1600,300,30,'New Hire'); INSERT INTO jobhist VALUES (7521,'22-FEB-81',NULL,'SALESMAN',1250,500,30,'New Hire'); INSERT INTO jobhist VALUES (7566,'02-APR-81',NULL,'MANAGER',2975,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7654,'28-SEP-81',NULL,'SALESMAN',1250,1400,30,'New Hire'); INSERT INTO jobhist VALUES (7698,'01-MAY-81',NULL,'MANAGER',2850,NULL,30,'New Hire'); INSERT INTO jobhist VALUES (7782,'09-JUN-81',NULL,'MANAGER',2450,NULL,10,'New Hire'); INSERT INTO jobhist VALUES (7788,'19-APR-87','12-APR-88','CLERK',1000,NULL,20,'New Hire '); INSERT INTO jobhist VALUES (7788,'13-APR-88','04-MAY-89','CLERK',1040,NULL,20,'Raise'); INSERT INTO jobhist VALUES (7788,'05-MAY-90',NULL,'ANALYST',3000,NULL,20,'Promoted to A nalyst'); INSERT INTO jobhist VALUES (7839,'17-NOV-81',NULL,'PRESIDENT',5000,NULL,10,'New Hire'); INSERT INTO jobhist VALUES (7844,'08-SEP-81',NULL,'SALESMAN',1500,0,30,'New Hire'); INSERT INTO jobhist VALUES (7876,'23-MAY-87',NULL,'CLERK',1100,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7900,'03-DEC-81','14-JAN-83','CLERK',950,NULL,10,'New Hire' ); INSERT INTO jobhist VALUES (7900,'15-JAN-83',NULL,'CLERK',950,NULL,30,'Changed to Dept 30'); INSERT INTO jobhist VALUES (7902,'03-DEC-81',NULL,'ANALYST',3000,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7934,'23-JAN-82',NULL,'CLERK',1300,NULL,10,'New Hire');
+INSERT INTO jobhist VALUES (7900,'15-JAN-83',NULL,'CLERK',950,NULL,30,'Changed to Dept 30'); INSERT INTO jobhist VALUES (7902,'03-DEC-81',NULL,'ANALYST',3000,NULL,20,'New Hire'); INSERT INTO jobhist VALUES (7934,'23-JAN-82',NULL,'CLERK',1300,NULL,10,'New Hire');
 ```
 
 **ANALYZE**
 
 ```
 ANALYZE dept; ANALYZE emp; ANALYZE jobhist;
+```
+
+**CREATE PROCEDURE**
+
+```
+CREATE OR REPLACE PROCEDURE list_emp
 ```
 
 `IS`
@@ -4679,8 +5073,6 @@ ANALYZE dept; ANALYZE emp; ANALYZE jobhist;
   v_ename         VARCHAR2(10);
 CURSORempcurIS
 ```
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
   CURSOR emp_cur IS
@@ -4707,10 +5099,11 @@ END;
 `--`
 
 ```
+CREATE OR REPLACE PROCEDURE select_emp (
   p_empno         IN  NUMBER
 ```
 
-) `IS`
+`)` `IS`
 
 ```
   v_ename         emp.ename%TYPE;
@@ -4746,12 +5139,13 @@ END;
 `--`
 
 ```
--- department number and employee number or name. Returns -- employee number and name as IN OUT parameters and job, -- hire date, and salary as OUT parameters.
+-- Procedure that queries the 'emp' table based on -- department number and employee number or name. Returns -- employee number and name as IN OUT parameters and job, -- hire date, and salary as OUT parameters.
 ```
 
-`--` ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+`--`
 
 ```
+CREATE OR REPLACE PROCEDURE emp_query (
   p_deptno        IN     NUMBER,
   p_empno         IN OUT NUMBER,
   p_ename         IN OUT VARCHAR2,
@@ -4760,7 +5154,7 @@ END;
   p_sal           OUT    NUMBER
 ```
 
-) `IS`
+`)` `IS`
 
 ```
 BEGIN
@@ -4779,7 +5173,13 @@ END;
 -- Procedure to call 'emp_query_caller' with IN and IN OUT -- parameters. Displays the results received from IN OUT and -- OUT parameters.
 ```
 
-`--` `IS`
+`--`
+
+```
+CREATE OR REPLACE PROCEDURE emp_query_caller
+```
+
+`IS`
 
 ```
   v_deptno        NUMBER(2);
@@ -4815,8 +5215,6 @@ CREATE OR REPLACE FUNCTION emp_comp (
   p_comm          NUMBER
 )RETURNNUMBER
 ```
-
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
 
 ```
 ) RETURN NUMBER
@@ -4901,8 +5299,6 @@ BEGIN
 EXCEPTION WHENOTHERSTHEN
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
-
 ```
   WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('The following is SQLERRM:');
@@ -4964,8 +5360,6 @@ END;
 
 **CREATE RULE**
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS
-
 ```
 CREATE OR REPLACE RULE salesemp_i AS ON INSERT TO salesemp DO INSTEAD
   INSERT INTO emp VALUES (NEW.empno, NEW.ename, 'SALESMAN', 7698,
@@ -4981,8 +5375,6 @@ CREATE OR REPLACE RULE salesemp_d AS ON DELETE TO salesemp DO INSTEAD DELETE FRO
 ```
 
 **CREATE TRIGGER**
-
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
 
 ```
 CREATE OR REPLACE TRIGGER user_audit_trig
@@ -5034,7 +5426,7 @@ Statement-level triggers are used in the same way as standard tables. Setting `p
 SET polar_compatible_oracle_trigger = off;
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS Example:
+Example:
 
 ```
 create trigger t before insert or update or delete on parted
@@ -5070,6 +5462,7 @@ CREATE OR REPLACE PACKAGE emp_admin
       p_empno         NUMBER,
       p_raise         NUMBER
   ) RETURN NUMBER;
+  PROCEDURE hire_emp (
       p_empno         NUMBER,
       p_ename         VARCHAR2,
       p_job           VARCHAR2,
@@ -5078,13 +5471,20 @@ CREATE OR REPLACE PACKAGE emp_admin
       p_comm          NUMBER,
       p_mgr           NUMBER,
       p_deptno        NUMBER
-  );
-      p_empno         NUMBER
-  );
-END emp_admin;
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+);
+
+```
+  PROCEDURE fire_emp (
+      p_empno         NUMBER
+```
+
+);
+
+```
+END emp_admin;
+```
 
 **CREATE PACKAGE BODY**
 
@@ -5175,9 +5575,10 @@ CREATE OR REPLACE PACKAGE BODY emp_admin
   --  Procedure that inserts a new employee record into the 'emp' table.
 ```
 
-ApsaraDB RDS for PolarDB User ApsaraDB for RDS `--`
+`--`
 
 ```
+  PROCEDURE hire_emp (
       p_empno         NUMBER,
       p_ename         VARCHAR2,
       p_job           VARCHAR2,
@@ -5188,7 +5589,7 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS `--`
       p_deptno        NUMBER
 ```
 
-) `AS`
+`)` `AS`
 
 ```
   BEGIN
@@ -5208,10 +5609,11 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS `--`
 `--`
 
 ```
+  PROCEDURE fire_emp (
       p_empno         NUMBER
 ```
 
-) `AS`
+`)` `AS`
 
 ```
   BEGIN
@@ -5220,11 +5622,13 @@ ApsaraDB RDS for PolarDB User ApsaraDB for RDS `--`
 END;
 ```
 
-ApsaraDB for RDS ApsaraDB RDS for PolarDB User
+## 18 Management functions
 
-## Management functions
+You cannot use superuser accounts to manage database objects of PolarDB. Therefore, PolarDB provides management functions to help you use the various features. This topic describes how to use the management functions.
 
-You cannot use superuser accounts to manage database objects of PolarDB. Therefore, PolarDB provides management functions to help you use the various features. This topic describes how to use the management functions. You must use the root account of PolarDB to run management functions. The root account is a management account specified when an instance is created and has the CREATEDB, CREATEROLE, and LOGIN permissions. rds_manage_extension This function allows you to manage plug-ins. You can use this function to create and delete plug-ins supported by PolarDB. ApsaraDB RDS for PolarDB User ApsaraDB for RDS
+**Rules of management functions**
+
+You must use the root account of PolarDB to run management functions. The root account is a management account specified when an instance is created and has the CREATEDB, CREATEROLE, and LOGIN permissions. rds_manage_extension This function allows you to manage plug-ins. You can use this function to create and delete plug-ins supported by PolarDB.
 
 ```
 rds_manage_extension(operation text, pname text, schema text default NULL,logging boo l default false)
@@ -5273,7 +5677,7 @@ rds_manage_extension(operation text, pname text, schema text default NULL,loggin
       select rds_manage_extension('drop','dblink');
 ```
 
-rds_pg_stat_activity() This function returns the information of all connected sessions, which is similar to the pg_stat_activity view. rds_pg_stat_statements() This function encapsulates the pg_stat_statements view. You can use this function to view slow SQL statements within your permissions. ApsaraDB for RDS ApsaraDB RDS for PolarDB User Performance analysis functions The functions allow you to analyze the real-time performance of PolarDB instances and are similar to Automatic Workload Repository (AWR) of Oracle.
+rds_pg_stat_activity() This function returns the information of all connected sessions, which is similar to the pg_stat_activity view. rds_pg_stat_statements() This function encapsulates the pg_stat_statements view. You can use this function to view slow SQL statements within your permissions. Performance analysis functions The functions allow you to analyze the real-time performance of PolarDB instances and are similar to Automatic Workload Repository (AWR) of Oracle.
 
 ```
   1. rds_truncsnap()

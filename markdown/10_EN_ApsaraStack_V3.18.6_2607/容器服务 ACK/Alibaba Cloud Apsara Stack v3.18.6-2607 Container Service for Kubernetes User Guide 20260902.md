@@ -3,25 +3,276 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 779
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes User Guide 20260902.pdf"
+source_pdf: "a419095de1b6d667_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%20ACK/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Service%20for%20Kubernetes%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Service for Kubernetes User Guide 20260902
 
+## Table of Contents
+
+- 1 Product Announcements
+  - 1.1 ACK release notes
+    - 1.1.1 Lifecycle of ACK clusters
+    - 1.1.2 Release notes for Kubernetes 1.34
+    - 1.1.3 Release notes for Kubernetes 1.32
+    - 1.1.4 Release notes for Kubernetes 1.30
+    - 1.1.5 Kubernetes 1.28 release notes
+    - 1.1.6 Kubernetes 1.26 release notes
+    - 1.1.7 Kubernetes 1.24 release notes
+    - 1.1.8 ACK support for Kubernetes 1.22
+    - 1.1.9 Container Service support for Kubernetes 1.20
+    - 1.1.10 Container Service support for Kubernetes 1.18
+  - 1.2. [CVE] CVE vulnerability fixes
+    - 1.2.1 Vulnerability fixed: CVE-2021-1056 in NVIDIA GPU drivers
+- 2 Release notes
+- 3 What is Container Service?
+- 4 Planning and preparation
+- 5 Limits
+- 6 Security instructions
+- 7 Kubernetes clusters
+  - 7.1 Quick start
+    - 7.1.1 Use ACK clusters
+    - 7.1.2 Log on to the ACK console
+    - 7.1.3 Create a Kubernetes cluster
+    - 7.1.4 Deploy a Deployment
+    - 7.1.5 Use Apsara Copilot
+  - 7.2 Authorizations
+    - 7.2.1 Grant RBAC permissions to RAM users or RAM roles
+    - 7.2.2 Configure permissions for the RAM role attached to cluster worker nodes
+    - 7.2.3 Use RRSA to authorize different pods to access different cloud services
+    - 7.2.4 Assume a role to access the ACK console
+    - 7.2.5 Permissions of master RAM roles and worker RAM roles
+  - 7.3 Clusters
+    - 7.3.1 Create an ACK cluster
+    - 7.3.2 Create an ACK cluster by using a custom image
+    - 7.3.3 View log files of a cluster
+    - 7.3.4 View cluster information
+    - 7.3.5 Enable Secret encryption for an ACK cluster
+    - 7.3.6 Connect to an ACK cluster by using kubectl
+    - 7.3.7 Connect to a master node by using SSH
+    - 7.3.8 Perform O&M operations on master nodes
+    - 7.3.9 Revoke the kubeconfig file of a cluster
+    - 7.3.10 Update the Kubernetes version of a cluster
+    - 7.3.11 Scale out an ACK cluster
+    - 7.3.12 Renew a certificate
+    - 7.3.13 Renew the etcd certificates in an ACK dedicated cluster
+    - 7.3.14 Delete a cluster
+    - 7.3.15 View cluster overview
+    - 7.3.16 Control plane configuration
+    - 7.3.17 Maintain a cluster
+  - 7.4 Scheduling configuration
+    - 7.4.1 Binpack
+    - 7.4.2 Load-aware scheduling
+    - 7.4.3 Rescheduling
+    - 7.4.4 QoS-aware scheduling
+  - 7.5 Nodes
+    - 7.5.1 Node pools
+      - 7.5.1.1 Create a node pool
+      - 7.5.1.2 View a node pool
+      - 7.5.1.3 Edit a node pool
+      - 7.5.1.4 Scale out a node pool
+      - 7.5.1.5 Delete a node pool
+      - 7.5.1.6 Schedule an application pod to a specific node pool
+      - 7.5.1.7 Customize the kubelet parameters of a node pool
+      - 7.5.1.8 Upgrade a node pool
+      - 7.5.1.9 Best practices for associating deployment sets with node pools
+      - 7.5.1.10 Enable node auto repair
+    - 7.5.2 Nodes
+      - 7.5.2.1 Add existing nodes
+      - 7.5.2.2 View nodes
+      - 7.5.2.3 Manage node labels
+      - 7.5.2.4 Set node schedulability
+      - 7.5.2.5 Drain nodes
+      - 7.5.2.6 Remove a node
+      - 7.5.2.7 View node resource usage
+    - 7.5.3 Hybrid cloud node pools
+      - 7.5.3.1 Create and manage hybrid node pools
+      - 7.5.3.2 Work with Terway Hybrid
+  - 7.6 Storage
+    - 7.6.1 Overview
+    - 7.6.2 Mount disk volumes
+    - 7.6.3 Mount a statically provisioned NAS volume
+    - 7.6.4 Use dynamic NAS volumes
+    - 7.6.5 Mount a statically provisioned OSS volume
+    - 7.6.6 Mount a dynamically provisioned OSS volume
+    - 7.6.7 Create a PVC
+    - 7.6.8 Use a PVC to mount a volume
+    - 7.6.9 Use volume snapshots that are created from disks
+    - 7.6.10 Best practice for throttling block storage devices
+  - 7.7 Security
+    - 7.7.1 Container security: policy rule library
+    - 7.7.2 Policy management in the ACK console
+    - 7.7.3 Call API operations to conduct policy governance
+    - 7.7.4 Use the inspection feature to detect security risks in the workloads of an ACK cluster
+    - 7.7.5 Use cluster auditing
+    - 7.7.6 MLPS Security Hardening
+  - 7.8 Network management
+    - 7.8.1 Network overview
+    - 7.8.2 Plan the network of a Container Service cluster
+    - 7.8.3 Set access control for pods
+    - 7.8.4 Set bandwidth limits for pods
+    - 7.8.5 Work with Terway
+    - 7.8.6 Configure a static IP address, a separate vSwitch, and a separate security group for each pod
+    - 7.8.7 Configure a fixed IP address range for pods
+    - 7.8.8 Modify pod vSwitches
+    - 7.8.9 Attach an independent public EIP to a pod
+    - 7.8.10 Service management
+      - 7.8.10.1 Considerations for configuring a LoadBalancer Service
+      - 7.8.10.2 Use annotations to configure load balancing
+      - 7.8.10.3 Use the CCM to deploy services across clusters
+    - 7.8.11 Configure NodeLocal DNSCache
+    - 7.8.12 Use the Gateway API to access Services
+    - 7.8.13 Network policies
+      - 7.8.13.1 Create a network policy
+      - 7.8.13.2 Manage a network policy
+      - 7.8.13.3 Use a network policy
+  - 7.9 Namespaces
+    - 7.9.1 Create a namespace
+    - 7.9.2 Configure resource quotas and limits
+    - 7.9.3 Modify a namespace
+    - 7.9.4 Delete a namespace
+  - 7.10 Application management
+    - 7.10.1 Workloads
+      - 7.10.1.1 Create a stateless workload (Deployment)
+      - 7.10.1.2 Create a StatefulSet
+      - 7.10.1.3 Create a DaemonSet
+      - 7.10.1.4 Create a Job
+      - 7.10.1.5 Create a CronJob
+      - 7.10.1.6 View pods
+      - 7.10.1.7 Manage pods
+      - 7.10.1.8 Manage custom resources
+    - 7.10.2 Create a Service
+    - 7.10.3 View a Service
+    - 7.10.4 Update a Service
+    - 7.10.5 Delete a Service
+    - 7.10.6 Use a trigger to redeploy an application
+    - 7.10.7 Use kritis-validation-hook to automatically verify the signatures of Container Registry Standard Edition images
+    - 7.10.8 Use kritis-validation-hook to automatically verify the signatures of Container Registry Advanced Edition images
+    - 7.10.9 Schedule pods to specific nodes
+    - 7.10.10 Simplify application deployment by using Helm
+  - 7.11 Agent Sandbox
+    - 7.11.1 ACK Agent Sandbox
+    - 7.11.2 Quick start
+      - 7.11.2.1 Create an Agent Sandbox
+    - 7.11.3 Lifecycle management
+      - 7.11.3.1 Hibernate and wake up an Agent Sandbox
+      - 7.11.3.2 Clone an Agent Sandbox with Checkpoint
+    - 7.11.4 Network configuration
+      - 7.11.4.1 Manage agent network access with TrafficPolicy
+  - 7.12 Components
+    - 7.12.1 Component overview
+    - 7.12.2 Manage components
+    - 7.12.3 Introduction
+      - 7.12.3.1 gatekeeper
+      - 7.12.3.2 policy-template-controller
+      - 7.12.3.3 logtail-ds
+      - 7.12.3.4 security-inspector
+      - 7.12.3.5 ack-koordinator
+      - 7.12.3.6 Cloud Controller Manager
+      - 7.12.3.7 ack-sysom-monitor
+      - 7.12.3.8 aliyun-acr-acceleration-suite
+      - 7.12.3.9 kritis-validation-hook
+      - 7.12.3.10 ack-fluid
+      - 7.12.3.11 RoleBasedGroup
+      - 7.12.3.12 API Gateway Ingress Controller
+        - 7.12.3.12.1 Overview
+        - 7.12.3.12.2 Manage the API Gateway Ingress Controller component
+      - 7.12.3.13 Higress Ingress Controller
+      - 7.12.3.14 Poseidon
+      - 7.12.3.15 ack-kruise-agent-sandbox
+      - 7.12.3.16 AHPA
+      - 7.12.3.17 AI profiling
+  - 7.13 SLB and Ingress
+    - 7.13.1 Overview
+    - 7.13.2 Use SLB to access Services
+    - 7.13.3 Configure Ingress monitoring
+    - 7.13.4 Ingresses
+    - 7.13.5 Configure an NGINX Ingress to use a public IPv6 address
+    - 7.13.6 Compatibility of NGINX Ingress annotations in Higress
+    - 7.13.7 Migrate NGINX to Higress
+    - 7.13.8 Enable Nginx ingress configuration check
+    - 7.13.9 Ingress configurations
+    - 7.13.10 Create an Ingress with the console
+    - 7.13.11 Update an Ingress
+    - 7.13.12 Delete an Ingress
+  - 7.14 Config maps and secrets
+    - 7.14.1 Create a ConfigMap
+    - 7.14.2 Use a ConfigMap in a pod
+    - 7.14.3 Update a ConfigMap
+    - 7.14.4 Delete a ConfigMap
+    - 7.14.5 Create a secret
+    - 7.14.6 Modify a Secret
+    - 7.14.7 Delete a Secret
+  - 7.15 Log management
+    - 7.15.1 Use SLS to collect log data from containers
+    - 7.15.2 Configure Log4jAppender for Kubernetes and Log Service
+  - 7.16 Monitoring management
+    - 7.16.1 Enable Managed Service for Prometheus
+  - 7.17 Alert configurations
+  - 7.18 Resource profiling
+    - 7.18.1 Enable resource profiling
+    - 7.18.2 View resource profiles
+    - 7.18.3 Change resource configurations
+  - 7.19 GPU
+    - 7.19.1 Create an ACK dedicated cluster with GPU-accelerated nodes
+    - 7.19.2 Upgrade the NVIDIA driver on a GPU node
+    - 7.19.3 Enable GPU sharing
+    - 7.19.4 Work with GPU sharing
+    - 7.19.5 GPU scheduling for Kubernetes clusters with GPU-accelerated nodes
+    - 7.19.6 Enable Auto Scaling based on GPU metrics
+    - 7.19.7 Use labels to schedule pods to GPU-accelerated nodes
+    - 7.19.8 Manually upgrade the kernel of a GPU node in a cluster
+    - 7.19.9 Configure RAM role authorization for ack-ai-installer
+    - 7.19.10 Specify an NVIDIA driver version
+  - 7.20 Scheduling
+    - 7.20.1 CPU scheduling
+      - 7.20.1.1 CPU Burst
+    - 7.20.2 Fine grained scheduling
+      - 7.20.2.1 CPU Suppress
+      - 7.20.2.2 CPU QoS
+      - 7.20.2.3 Memory QoS for containers
+      - 7.20.2.4 Resource isolation based on the L3 cache and MBA
+      - 7.20.2.5 Dynamically modify the resource parameters of a pod
+  - 7.21 KServe
+    - 7.21.1 Overview
+    - 7.21.2 Install ack-kserve
+    - 7.21.3 Deploy a vLLM model as an inference service
+    - 7.21.4 Implement a canary release for an inference service
+    - 7.21.5 Configure an auto scaling policy for a service by using KServe
+  - 7.22 Auto scaling
+    - 7.22.1 Auto scaling of nodes
+    - 7.22.2 Horizontal pod autoscaling
+    - 7.22.3 Horizontal pod autoscaling based on Managed Service for Prometheus metrics
+    - 7.22.4 Use ack-autoscaling-placeholder to scale pods within seconds
+  - 7.23 Backup center
+    - 7.23.1 Overview
+    - 7.23.2 Back up and restore applications in an ACK cluster
+    - 7.23.3 Migrate applications across clusters in the same region
+    - 7.23.4 FAQ about the backup center
+  - 7.24 Marketplace
+    - 7.24.1 Orchestration templates
+      - 7.24.1.1 Create an orchestration template
+      - 7.24.1.2 Update an orchestration template
+      - 7.24.1.3 Save an orchestration template as a new one
+      - 7.24.1.4 Download an orchestration template
+      - 7.24.1.5 Delete an orchestration template
+    - 7.24.2 App Catalog
+  - 7.25 Releases
+    - 7.25.1 Use OpenKruise to deploy cloud-native applications
+  - 7.26 Use the Kubernetes event center
+  - 7.27 ACK@Edge overview
+
 nts
 
-## Product Announcements
+## 1 Product Announcements
 
-### ACK release notes
+### 1.1 ACK release notes
 
-#### Lifecycle of ACK clusters
+#### 1.1.1 Lifecycle of ACK clusters
 
 Container Service for Kubernetes (ACK) clusters are the commercial offering provided by Alibaba Cloud. This topic describes the supported Kubernetes versions, including the release and support information, the lifecycle, and the support policy.
-
-**Lifecycle of ACK clusters**
-
 **Maintenance mode**:
 After an ACK cluster version enters maintenance mode, new features are no longer developed for the version. Only vulnerability fixes, security patches, and ticket support are provided. You can continue to use patches that have already been released.
 **End of life (EOL)**: After an ACK cluster version reaches EOL, cluster creation for the version is no longer
@@ -47,7 +298,7 @@ Cluster release The latest even-numbered Kubernetes version is released along wi
 
 As shown in the figure above, the Kubernetes versions supported by ACK follow the semantic versioning scheme in the `x.y.z-aliyun.n` format. `x.y.z` represents the community Kubernetes version. `x` is the major version, `y` is the minor version, and `z` is the patch version. `n` is the ACK patch version.
 
-#### Release notes for Kubernetes 1.34
+#### 1.1.2 Release notes for Kubernetes 1.34
 
 Container Service for Kubernetes (ACK) strictly complies with the Certified Kubernetes Conformance Program. This topic describes the updates in Kubernetes 1.34, including update notes, major changes, and feature updates.
 
@@ -99,11 +350,9 @@ The `ExternalServiceAccountTokenSigner` feature gate has graduated to Beta. This
 
 For more information about the release notes for Kubernetes 1.34, see CHANGELOG-1.34 and Kubernetes v1.34: Of Wind & Will (O' WaW).
 
-#### Release notes for Kubernetes 1.32
+#### 1.1.3 Release notes for Kubernetes 1.32
 
 nts Container Service for Kubernetes (ACK) is a certified Kubernetes offering. This topic describes the main changes in ACK for Kubernetes versions 1.32 and 1.31, including upgrade notes, major changes, new features, deprecated features and APIs, and feature gates.
-
-**Release notes for Kubernetes 1.32**
 
 **Component versions**
 
@@ -181,7 +430,7 @@ The built-in CephFS volume plugin ( `kubernetes.io/cephfs` ) is removed. Use the
 
 For the complete change log for Kubernetes 1.32, see CHANGELOG-1.32 and Kubernetes v1.32: Penelope. For the complete change log for Kubernetes 1.31, see CHANGELOG-1.31 and Kubernetes v1.31: Elli.
 
-#### Release notes for Kubernetes 1.30
+#### 1.1.4 Release notes for Kubernetes 1.30
 
 Container Service for Kubernetes (ACK) strictly abides by the terms of the Certified Kubernetes Conformance Program. This topic describes the updates in Kubernetes 1.30, including update notes, major changes, new features, deprecated features and APIs, and feature gates.
 
@@ -260,7 +509,7 @@ The `spec.limited.assuredConcurrencyShares` field of PriorityLevelConfiguration 
 
 For more information about the feature gates supported by Kubernetes, feature gate versions, and features, see Feature Gates. Feature gates have the following stages: Alpha: By default, the feature is disabled. Beta: By default, the feature is enabled. GA: By default, the feature is enabled and cannot be disabled, and the corresponding feature gateway is no longer needed.
 
-#### Kubernetes 1.28 release notes
+#### 1.1.5 Kubernetes 1.28 release notes
 
 Container Service for Kubernetes (ACK) strictly abides by the terms of the Certified Kubernetes Conformance Program. This topic describes the updates in Kubernetes 1.28, including update notes, major changes, new features, deprecated features and APIs, and feature gates.
 
@@ -369,7 +618,7 @@ When the `NodeOutOfServiceVolumeDetach` feature gate adds the `node.kubernetes.i
  ServiceIPStaticSubrange , and  EndpointSliceTerminatingCondition .
 ```
 
-#### Kubernetes 1.26 release notes
+#### 1.1.6 Kubernetes 1.26 release notes
 
 **Version updates**
 
@@ -518,7 +767,7 @@ nts
 | /etc/systemd/system/kubelet.service | 600 |
 | /etc/systemd/system/kubelet.service.d/10-kubeadm.conf | 600 |
 
-#### Kubernetes 1.24 release notes
+#### 1.1.7 Kubernetes 1.24 release notes
 
 Alibaba Container Service for Kubernetes (ACK) strictly abides by the terms of the Certified Kubernetes Conformance Program. This topic lists the changes that ACS has made to support Kubernetes 1.24.
 
@@ -742,7 +991,7 @@ nts
 
 CHANGELOG-1.23 CHANGELOG-1.24 Kubernetes Removals and Deprecations In 1.24 Updated: Dockershim Removal FAQ
 
-#### ACK support for Kubernetes 1.22
+#### 1.1.8 ACK support for Kubernetes 1.22
 
 Container Service for Kubernetes (ACK) strictly conforms to the terms of the Certified Kubernetes Conformance Program. This topic describes the changes that ACS has made to support Kubernetes 1.22.
 
@@ -875,7 +1124,7 @@ nts
 
 CHANGELOG-1.21.md CHANGELOG-1.22.md
 
-#### Container Service support for Kubernetes 1.20
+#### 1.1.9 Container Service support for Kubernetes 1.20
 
 Container Service for Kubernetes (ACK) strictly conforms to the terms of the Certified Kubernetes Conformance Program. This topic lists the changes that Container Service has made to support Kubernetes 1.20.
 
@@ -918,7 +1167,7 @@ Observability. Metrics are collected to monitor request operations and watch ope
 
 CHANGELOG-1.20.md CHANGELOG-1.19.md
 
-#### Container Service support for Kubernetes
+#### 1.1.10 Container Service support for Kubernetes 1.18
 
 **1.18**
 
@@ -955,7 +1204,7 @@ In Kubernetes 1.18.8, Container Service enables the following feature in the kub
 
 ### 1.2. [CVE] CVE vulnerability fixes
 
-#### Vulnerability fixed: CVE-2021-1056 in NVIDIA
+#### 1.2.1 Vulnerability fixed: CVE-2021-1056 in NVIDIA GPU drivers
 
 **GPU drivers**
 
@@ -1019,7 +1268,7 @@ When you upgrade the NVIDIA driver for a node, the node must be restarted. This 
 
 For more information about how to upgrade the NVIDIA driver, see Upgrade the NVIDIA driver on a GPU node. If your NVIDIA driver belongs to the R390 branch, upgrade it to version 390.141. If your NVIDIA driver belongs to the R418 branch, upgrade it to version 418.181.07. If your NVIDIA driver belongs to the R450 branch, upgrade it to version 450.102.04. If your NVIDIA driver belongs to the R460 branch, upgrade it to version 460.32.03.
 
-## Release notes
+## 2 Release notes
 
 Learn about the latest updates for ACK.
 
@@ -1266,11 +1515,11 @@ None.
 
 vice?
 
-## What is Container Service?
+## 3 What is Container Service?
 
 Container Service provides high-performance, scalable, and enterprise-class management service for Kubernetes containerized applications throughout the application lifecycle. Container Service simplifies the deployment and scaling operations on Kubernetes clusters. Integrated with services such as virtualization, storage, network, and security, Container Service aims to provide the optimal cloud environment for Kubernetes containerized applications. Alibaba Cloud is a Kubernetes Certified Service Provider (KCSP). As one of the first services to participate in the Certified Kubernetes Conformance Program, Container Service provides you with professional support and services. tion
 
-## Planning and preparation
+## 4 Planning and preparation
 
 Before you start using Container Service, you need to create cloud resources such as VPC networks, VSwitches, disks, and OSS buckets based on your application requirements. Before you create a Kubernetes cluster, make the following preparations:
 **Create a VPC network** (optional)
@@ -1278,22 +1527,22 @@ To create a cluster in an existing VPC network, you must create the VPC network 
 **Create a volume** (optional)
 To create a stateful application with network storage, you must create disks or OSS buckets in advance.
 
-## Limits
+## 5 Limits
 
 | Limit | Description |
 |---|---|
 | Cluster | The total number of vCores provided by all Kubernetes cluster nodes on Apsara Stack cannot exceed the upper limit allowed by the purchased licenses. If you want to increase the upper limit, you must purchase new licenses. In multi-region deployment scenarios, if the central region is updated but a general region is not, clusters that run earlier Kubernetes versions cannot be created or scaled in the general region. After you create a cluster, you cannot perform the following operations on the cluster: Change the virtual private cloud (VPC) in which the cluster resides. Change the cluster type. For example, change an ACK dedicated cluster to an ACK edge cluster. Change the container network plug-in. Change the CIDR block of Services or pods. Change the volume plug-in. Migrate applications across namespaces. |
 | Elastic Compute Service (ECS) instance | When you create clusters, expand clusters, or perform auto scaling for clusters, you may fail to create nodes due to ECS instance quota limits allowed by the purchased licenses. When you create a cluster, you must use ECS instances that provide at least 2 vCores and 4 GiB of memory. |
 
-## Security instructions
+## 6 Security instructions
 
 To ensure that the volume, network, monitoring, and logging components in a cluster run as expected, Container Service for Kubernetes (ACK) attaches Resource Access Management (RAM) policies that provide only the minimum permissions required by the components to the master RAM role and worker RAM role. After the RAM policies are attached to the master RAM role and worker RAM role, applications in the cluster can retrieve the metadata of an Elastic Compute Service (ECS) instance to obtain the RAM permissions that are granted to the node that runs on the ECS instance. For more information about RAM policies, see Permissions of master RAM roles and worker RAM roles. Attackers can intrude into a pod and gain access to the RAM resources of the organization by retrieving the metadata of the ECS instance. This results in severe privilege escalation issues. To prevent the preceding issues, use the following methods to limit applications in the cluster from accessing the ECS metadata server: Do not deploy applications on privileged master nodes. When you build application images, add iptables rules to limit applications from accessing ECS metadata on the ECS metadata server (100.100.100.200/32).
 
-## Kubernetes clusters
+## 7 Kubernetes clusters
 
-### Quick start
+### 7.1 Quick start
 
-#### Use ACK clusters
+#### 7.1.1 Use ACK clusters
 
 This topic describes the procedure for using Container Service for Kubernetes (ACK) clusters. The following diagram shows the procedure.
 
@@ -1323,7 +1572,7 @@ Click the account switch icon on DesktopAssistant to switch logon accounts. Clic
 
 By default, DesktopAssistant is displayed in the lower-right corner of the pages in the ACK console. You can drag it to a desired position.
 
-#### Log on to the ACK console
+#### 7.1.2 Log on to the ACK console
 
 This topic describes how to log on to the Container Service for Kubernetes (ACK) console.
 
@@ -1352,7 +1601,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 5. On the **Container Service** page, select an organization and a region. Then, click **Access with**
 **Authorized Role** or **Access as Administrator** to log on to the ACK console.
 
-#### Create a Kubernetes cluster
+#### 7.1.3 Create a Kubernetes cluster
 
 This topic describes how to create a Container Service for Kubernetes (ACK) dedicated cluster and an ACK Edge cluster in the ACK console.
 
@@ -1441,7 +1690,7 @@ After the cluster is created, you can view the cluster on the **Clusters** page.
 
 Data disks in node pools support custom mount directories. You can format the data disks in your node pool and mount to a specified directory on your operating system. The following limits apply to the mount directory: Do not mount data disks to the following business-critical directories on the operating system: / /etc /var/run /run /boot Do not mount data disks to the following directories or their subdirectories used by the system and the container runtime: /usr /bin /sbin /lib /lib64 /ostree /sysroot /proc /sys /dev /var/lib/kubelet /var/lib/docker /var/lib/containerd /var/lib/container Multiple data disks cannot be mounted to the same directory. The mount directory must be an absolute path that starts with a forward slash ( `/` ). The mount directory cannot contain carriage returns (the \r escape character in C) or line feeds (the \n escape character in C), and cannot end with a backslash ( \ ).
 
-#### Deploy a Deployment
+#### 7.1.4 Deploy a Deployment
 
 You can deploy a stateless application by using a Deployment. A Deployment can be created by using an image, an orchestration template, or kubectl commands. This topic describes how to create a stateless NGINX application by using an image, an orchestration template, and kubectl commands.
 
@@ -1828,7 +2077,7 @@ For more information, see Step 3: Configure advanced settings.
 9. In the left-side navigation pane of the Cluster Information page, choose **Workloads > Deployments**.
 On the **Deployments** page, check the status of the application. If the application is running as normal, it indicates that the image is successfully pulled by using the Secret that you configured.
 
-#### Use Apsara Copilot
+#### 7.1.5 Use Apsara Copilot
 
 This topic provides an overview of the core features and usage of Apsara Copilot in Container Service for Kubernetes (ACK). Apsara Copilot helps you to use AI capabilities to enhance efficiency in cluster management, application deployment, and troubleshooting.
 
@@ -1901,9 +2150,9 @@ The select-to-define feature is enabled. To enable this feature, click the icon 
 icon.
 2. View the answer automatically provided by Apsara Copilot.
 
-### Authorizations
+### 7.2 Authorizations
 
-#### Grant RBAC permissions to RAM users or RAM
+#### 7.2.1 Grant RBAC permissions to RAM users or RAM roles
 
 **roles**
 
@@ -1989,7 +2238,7 @@ rules:
   - '*'
 ```
 
-#### Configure permissions for the RAM role
+#### 7.2.2 Configure permissions for the RAM role attached to cluster worker nodes
 
 **attached to cluster worker nodes**
 
@@ -2056,7 +2305,7 @@ The following table describes some of the parameters.
 5. After you complete the configuration, click **Initiate Call** on the **Parameter Name** tab.
 If a status code of **200** appears on the **Call Result** tab, the API call is successful. This adds the configured permissions to the worker RAM role of the cluster.
 
-#### Use RRSA to authorize different pods to access
+#### 7.2.3 Use RRSA to authorize different pods to access different cloud services
 
 **different cloud services**
 
@@ -2093,11 +2342,7 @@ and obtain the STS token that is used to assume a RAM role.
 
 To enable the application to perform these operations, you must first create an OIDC identity provider and allow the service account used by the pod to assume the specified RAM role. The OIDC token in the OIDC token file is a temporary token. We recommend that you configure the application to read the latest token from the OIDC token file. The cluster renews the token in the OIDC token file before the token expires.
 4. The application in the pod uses the obtained STS token to assume the specified RAM role and then calls
-the API operations of the relevant cloud service.
-
-**Limits**
-
-RRSA is available only for ACK clusters that run Kubernetes 1.22 and later. RRSA depends on the token volume projection feature. By default, this feature is enabled for clusters that run Kubernetes 1.22 and later. Tokens are generally mounted to pods as statically provisioned volumes. After the token volume projection feature is enabled, the tokens are managed by kubelet in a more flexible manner. This reduces the risk of token leakage due to pod attacks.
+the API operations of the relevant cloud service. RRSA is available only for ACK clusters that run Kubernetes 1.22 and later. RRSA depends on the token volume projection feature. By default, this feature is enabled for clusters that run Kubernetes 1.22 and later. Tokens are generally mounted to pods as statically provisioned volumes. After the token volume projection feature is enabled, the tokens are managed by kubelet in a more flexible manner. This reduces the risk of token leakage due to pod attacks.
 
 **Enable RRSA**
 
@@ -2318,13 +2563,9 @@ kubectl exec oss-static-744dc7c5b-lshmf -- ls /data
 Expected output: The preceding figure shows that the two pods can share the tmpfile file.
 3. Log on to the OSS console and check that the tmpfile file exists.
 
-#### Assume a role to access the ACK console
+#### 7.2.4 Assume a role to access the ACK console
 
-This topic describes how to assume a role to access the Container Service for Kubernetes (ACK) console and how to grant role-based access control (RBAC) permissions.
-
-**Assume a role to access the ACK console**
-
-You can assume roles to access the ACK console to implement security auditing and access control in a finegrained manner. To assume a role to access the ACK console, perform the following steps:
+This topic describes how to assume a role to access the Container Service for Kubernetes (ACK) console and how to grant role-based access control (RBAC) permissions. You can assume roles to access the ACK console to implement security auditing and access control in a finegrained manner. To assume a role to access the ACK console, perform the following steps:
 1. Create a custom role. For more information, see **EnterpriseRole management** in **Apsara Uni-**
 **manager Management Console User Guide**.
 You can also assume a role predefined in the Apsara Uni-manager Management Console to access the ACK console.
@@ -2366,7 +2607,7 @@ tab. On the **RAM Roles** tab, you can view the role information about the curre
 After you complete authorization, click **Next Step**. If the **Submit Authorization** wizard page displays
 **The authorization is complete.**, the authorization is successful.
 
-#### Permissions of master RAM roles and worker
+#### 7.2.5 Permissions of master RAM roles and worker RAM roles
 
 **RAM roles**
 
@@ -3150,9 +3391,9 @@ This topic describes the permissions of the Resource Access Management (RAM) rol
 |   | cs:DescribeTemplateAttribute | Queries the details of an orchestration template by template ID |
 | EventBridge | eventbridge:PutEvents | Publishes one or more events. |
 
-### Clusters
+### 7.3 Clusters
 
-#### Create an ACK cluster
+#### 7.3.1 Create an ACK cluster
 
 This topic describes how to create a Container Service for Kubernetes (ACK) dedicated cluster and an ACK Edge cluster in the ACK console.
 
@@ -3241,7 +3482,7 @@ After the cluster is created, you can view the cluster on the **Clusters** page.
 
 Data disks in node pools support custom mount directories. You can format the data disks in your node pool and mount to a specified directory on your operating system. The following limits apply to the mount directory: Do not mount data disks to the following business-critical directories on the operating system: / /etc /var/run /run /boot Do not mount data disks to the following directories or their subdirectories used by the system and the container runtime: /usr /bin /sbin /lib /lib64 /ostree /sysroot /proc /sys /dev /var/lib/kubelet /var/lib/docker /var/lib/containerd /var/lib/container Multiple data disks cannot be mounted to the same directory. The mount directory must be an absolute path that starts with a forward slash ( `/` ). The mount directory cannot contain carriage returns (the \r escape character in C) or line feeds (the \n escape character in C), and cannot end with a backslash ( \ ).
 
-#### Create an ACK cluster by using a custom
+#### 7.3.2 Create an ACK cluster by using a custom image
 
 **image**
 
@@ -3264,7 +3505,7 @@ advanced parameters. Click **Select** to the right side of **Custom Image**. In 
 5. In the **Confirm** dialog box, verify that all check items are passed, read and select the terms of service and
 disclaimer, and then click **OK** to deploy the cluster. After the cluster is created, you can find the cluster on the **Clusters** page in the ACK console.
 
-#### View log files of a cluster
+#### 7.3.3 View log files of a cluster
 
 You can view the operation log of a cluster in the Container Service console.
 
@@ -3274,7 +3515,7 @@ You can view the operation log of a cluster in the Container Service console.
 2. In the left-side navigation pane, click **Clusters**.
 3. Find the cluster that you want to manage and click **View Logs** in the Actions column.
 
-#### View cluster information
+#### 7.3.4 View cluster information
 
 You can view information about Container Service for Kubernetes (ACK) clusters on the cluster information page, including the cluster overview, basic information, connection information, relevant cluster resources, and cluster logs. This topic describes how to view cluster information and introduces the information displayed on each tab.
 
@@ -3293,7 +3534,7 @@ column of the cluster. Click a tab to view the corresponding information.
 | Cluster Resources | You can view all Apsara Stack services and resources used by the cluster, including Resource Orchestration Service (ROS), virtual private cloud (VPC), security group, master RAM role, worker RAM role, Simple Log Service (SLS), pod vSwitch, and Server Load Balancer (SLB) instance. Important The resources are managed by ACK. Do not delete or modify the resources in case your cluster and the applications in the cluster cannot work as expected. |
 | Cluster Logs | You can view the logs of the ACK cluster. |
 
-#### Enable Secret encryption for an ACK cluster
+#### 7.3.5 Enable Secret encryption for an ACK cluster
 
 This topic describes how to configure Secret encryption for a Container Service for Kubernetes (ACK) cluster by using a customer master key (CMK) managed by Key Management Service (KMS).
 
@@ -3324,7 +3565,7 @@ You can turn off **Secret Encryption** to disable Secret encryption.
 
 This operation will cause the API server to restart. You can enable or disable this feature by using only accounts that are granted the cluster O&M or administrator permissions. We recommend that you perform this operation during off-peak hours.
 
-#### Connect to an ACK cluster by using kubectl
+#### 7.3.6 Connect to an ACK cluster by using kubectl
 
 You can use the Kubernetes command-line tool kubectl to connect to a Container Service for Kubernetes (ACK) cluster from your local computer.
 
@@ -3348,7 +3589,7 @@ mkdir $HOME/.kube scp root@<master-public-ip>:/etc/kubernetes/kube.conf $HOME/.k
 
 You can find the value of `master-public-ip` on the cluster details page. i. Log on to the ACK console. In the left-side navigation pane, click **Clusters**. ii. On the **Clusters** page, click the name of the cluster that you want to manage to go to the details page of the cluster. iii. Click **Connection Information**, and then click the **SSH** tab to view the connection information about the cluster.
 
-#### Connect to a master node by using SSH
+#### 7.3.7 Connect to a master node by using SSH
 
 You can access a master node in a cluster by using an SSH client.
 
@@ -3370,7 +3611,7 @@ If you have a leased line that connects to the cluster network over the Internet
 ssh root@ssh_ip #ssh_ip specifies the IP address of the master node for SS H connection.
 ```
 
-#### Perform O&M operations on master nodes
+#### 7.3.8 Perform O&M operations on master nodes
 
 You can add master nodes to and remove master nodes from a Container Service for Kubernetes (ACK) cluster in the ACK console.
 
@@ -3404,7 +3645,7 @@ details page. In the left-side navigation pane, choose **Node****>****Node**.
 3. On the Node page, find the node that you want to manage and choose **More****>****Remove** in the **Actions**
 column.
 
-#### Revoke the kubeconfig file of a cluster
+#### 7.3.9 Revoke the kubeconfig file of a cluster
 
 In multi-tenant scenarios, Container Service issues kubeconfig files to users that are assigned different roles. The kubeconfig files are used to connect to clusters. If an employee leaves the company or a kubeconfig file is suspected to be leaked, you can revoke the kubeconfig file to ensure cluster security. This topic describes how to revoke a kubeconfig file in the Container Service console.
 
@@ -3422,7 +3663,7 @@ After a kubeconfig file is revoked, you cannot use the kubeconfig file to connec
 5. In the message that appears, click **OK**.
 The kubeconfig file that is used by the current account to connect to the cluster is revoked. The system then automatically assigns the account a new kubeconfig file.
 
-#### Update the Kubernetes version of a cluster
+#### 7.3.10 Update the Kubernetes version of a cluster
 
 Outdated cluster versions may have security and stability issues. To ensure business continuity, Container Service for Kubernetes (ACK) uses in-place updates to update ACK clusters. You can update the Kubernetes version of an ACK cluster in the ACK console, or update the control plane and node pools of the cluster separately. This topic describes the usage notes before and after an update and the procedure for updating an ACK cluster.
 
@@ -3430,7 +3671,7 @@ Outdated cluster versions may have security and stability issues. To ensure busi
 
 **Kubernetes versions**
 
-You can update an ACK cluster from a major version only to the next major version. For example, to update the Kubernetes version of an ACK cluster from 1.24 to 1.28, you need to first update the cluster to 1.26 and then update it to 1.28. To view the Kubernetes version of an ACK cluster, log in to the ACK console and check the **Version** column of the cluster on the **Clusters** page. Before you update to a Kubernetes version, read the following release notes for the corresponding Kubernetes version to learn the version details and deprecated APIs. This helps you avoid compatibility issues caused by feature updates in new Kubernetes versions. Kubernetes 1.34 release notes Kubernetes 1.32 release notes Kubernetes 1.30 release notes Kubernetes 1.28 release notes Kubernetes 1.26 release notes Kubernetes 1.24 release notes Kubernetes 1.22 release notes Kubernetes 1.20 release notes Kubernetes 1.18 release notes
+You can update an ACK cluster from a major version only to the next major version. For example, to update the Kubernetes version of an ACK cluster from 1.24 to 1.28, you need to first update the cluster to 1.26 and then update it to 1.28. To view the Kubernetes version of an ACK cluster, log in to the ACK console and check the **Version** column of the cluster on the **Clusters** page. Before you update to a Kubernetes version, read the following release notes for the corresponding Kubernetes version to learn the version details and deprecated APIs. This helps you avoid compatibility issues caused by feature updates in new Kubernetes versions. Kubernetes 1.34 release notes Kubernetes 1.32 release notes Kubernetes 1.30 release notes Kubernetes 1.22 release notes Kubernetes 1.20 release notes Kubernetes 1.18 release notes
 
 **Note**
 
@@ -3508,8 +3749,6 @@ After you pause the update, the cluster remains in an intermediate state. Do not
 If errors occur during the update, ACK pauses the update. The cause of failure is displayed in the lower part of the page. You can follow the suggestions on how to fix the error. Do not modify the resources in the kube-upgrade namespace during the update unless an error occurs. After the update is complete, you can go to the Clusters page and check the Kubernetes version of your cluster to verify that the control plane components are updated. You can also choose **Notes** > **Nodes** in the left-side navigation pane to view the Kubernetes version of the nodes.
 
 **Update only the control plane**
-
-**Limits**
 
 Only ACK clusters whose Kubernetes versions are 1.18 or later allow you to update only the control plane.
 
@@ -3609,7 +3848,7 @@ the etcd and container runtime on each master node in sequence.
 
 ACK updates the nodes in your cluster in batches. The batch update policy specifies the following rules: ACK updates node pools one after one. The nodes in a node pool are updated in batches. The first batch includes one node. The number of nodes increases based on the powers of two in subsequent batches. The batch update policy still applies after you resume a paused update. You can specify the maximum batch size on the Node Pool Upgrade page. We recommend that you set the maximum batch size to 10. For more information, see Upgrade a node pool.
 
-#### Scale out an ACK cluster
+#### 7.3.11 Scale out an ACK cluster
 
 This topic describes how to add worker nodes to a Container Service for Kubernetes (ACK) cluster in the ACK console.
 
@@ -3669,7 +3908,7 @@ In this example, the number of worker nodes in the cluster is increased from thr
 
 After the cluster is scaled out, choose **Node > Node** in the left-side navigation pane of the cluster details page. On the Node page, you can find that the number of worker nodes is increased from 3 to 5.
 
-#### Renew a certificate
+#### 7.3.12 Renew a certificate
 
 This topic describes how to renew a Kubernetes cluster certificate in the console.
 
@@ -3694,7 +3933,7 @@ The **Update Certificate** button will be displayed two months before your clust
 
 On the **Update Certificate** page, the following message appears: **The certificate has been updated** . On the **Clusters** page, the **Update Certificate** button disappears.
 
-#### Renew the etcd certificates in an ACK
+#### 7.3.13 Renew the etcd certificates in an ACK dedicated cluster
 
 **dedicated cluster**
 
@@ -3764,7 +4003,7 @@ When the system is running the script, the system creates backups for the client
 
 In the following scenarios, renew certificates by following the steps in Method 2: Manually renew etcd certificates. The etcd certificates are expired. You need to renew etcd certificates but you cannot access the API server of your cluster. The etcd certificates cannot be renewed by deploying a new template. The etcd certificates cannot be renewed in the ACK console.
 
-#### Delete a cluster
+#### 7.3.14 Delete a cluster
 
 You can delete clusters that you no longer need in the Container Service for Kubernetes (ACK) console.
 
@@ -3785,7 +4024,7 @@ You cannot delete the cluster if the `ACKBlockClusterDeletion` policy is configu
 If you manually add resources to other resources that were created by Resource Orchestration Service (ROS), ROS cannot delete these manually added resources. For example, if you add a VSwitch to a Virtual Private Cloud (VPC) that was created by ROS, ROS cannot delete the VPC. This causes the cluster deletion to fail. ACK provides a force delete feature. If a cluster deletion fails, you can use this feature to forcibly delete the cluster and its associated ROS resource stack. However, the force delete operation does not automatically release manually created resources. You must release them manually. When a cluster deletion fails, an error message appears. For a cluster that failed to delete, choose **More > Delete** in the Actions column. In the dialog box that appears, you can view the resources that could not be deleted. Select the **Force Delete** checkbox and click
 **OK** to delete the cluster and its ROS resource stack.
 
-#### View cluster overview
+#### 7.3.15 View cluster overview
 
 The Container Service console provides a cluster overview page. This page displays the information such as application status, component status, and resource monitoring status. This allows you to check the health status of your cluster at your convenience.
 
@@ -3803,7 +4042,7 @@ the normal state.
 **Monitoring**: displays CPU and memory monitoring charts. CPU usage is measured in cores or millicores
 and accurate to three decimal places. A millicore is one thousandth of a core. Memory usage is measured in GiB and accurate to three decimal places. For more information, see Meaning of CPU and Meaning of memory.
 
-#### Control plane configuration
+#### 7.3.16 Control plane configuration
 
 On the **Control Plane Configuration** page, you can customize the runtime parameters for core components, such as API Server and Kube Controller Manager, of the Kubernetes control plane to optimize cluster performance, stability, and security.
 
@@ -3870,7 +4109,7 @@ the cluster details page. In the left-side navigation pane, choose **Cluster Con
 | kubeAPIQPS | The QPS limit for controller access to kube-apiserver. Default value: 100. If the value is too large, the API server load is increased. If the value is too small, the controller response speed is affected. | 100 |
 | kubeAPIBurst | The upper limit of the burst traffic for controller access to kube- apiserver. Default value: 200. If the value is too large, the API server may be overloaded. If the value is too small, the response speed of the control plane may be limited. | 200 |
 
-#### Maintain a cluster
+#### 7.3.17 Maintain a cluster
 
 This topic explains how to maintain a cluster.
 
@@ -3903,7 +4142,7 @@ in the Actions column, and then select **stop**
 
 The cluster status changes to **running**.
 
-### Scheduling configuration
+### 7.4 Scheduling configuration
 
 In a Kubernetes cluster, the scheduler component named kube-scheduler assigns pods to the most suitable nodes based on the resource plan to ensure the high availability of applications and improve cluster resource utilization. Container Service for Kubernetes (ACK) provides flexible and various scheduling policies for different workloads, including Binpack scheduling, load-aware scheduling, descheduling, and quality of service (QoS)-aware scheduling. The following table describes the scheduling configuration permissions of different roles.
 
@@ -3913,7 +4152,7 @@ In a Kubernetes cluster, the scheduler component named kube-scheduler assigns po
 | Cluster O&M personnel | Read/Write |
 | Cluster developer/restricted user | Read-only |
 
-#### Binpack
+#### 7.4.1 Binpack
 
 Binpack scheduling is an intelligent scheduling mechanism that optimizes the utilization of cluster resources. When Binpack scheduling is enabled, the Kubernetes scheduler preferentially schedules pods to nodes with higher resource usage. This packs active nodes more densely, minimizes idle resource fragmentation, and improves overall resource density. This topic describes how to enable and disable Binpack scheduling.
 
@@ -3963,7 +4202,7 @@ After Binpack scheduling is disabled, the default scheduling policy is restored.
 1. On the **Binpack** tab, click **Disable**.
 2. In the message that appears, read the tips and click **OK**.
 
-#### Load-aware scheduling
+#### 7.4.2 Load-aware scheduling
 
 Load-aware scheduling combines resource profiling with Prometheus metrics to dynamically rank nodes based on their actual load (collected by Koordinator) and automatically prevent scheduling to nodes that exceed predefined thresholds. This policy discards the traditional "request-based scheduling" model and instead makes decisions based on real-time resource utilization. It prioritizes scheduling pods to low-load nodes to achieve more precise load balancing. This topic describes how to enable and disable load-aware scheduling.
 
@@ -4003,7 +4242,7 @@ perform other operations on the cluster.
 1. On the **Load-Aware Scheduling** tab, click **Disable**.
 2. In the message that appears, read the information and click **OK**.
 
-#### Rescheduling
+#### 7.4.3 Rescheduling
 
 Rescheduling involves moving improperly scheduled Pods from one node to another to address situations like imbalanced cluster resource usage, high node load, or new scheduling policy requirements. Enabling rescheduling helps optimize cluster resource usage and improve application service quality.
 
@@ -4057,7 +4296,7 @@ cannot perform other operations on the cluster.
 1. On the **Rescheduling** tab, in the **Hotspot Descheduling Configuration** section, click **Disable**.
 2. Read the information in the dialog box carefully, and then click **OK**.
 
-#### QoS-aware scheduling
+#### 7.4.4 QoS-aware scheduling
 
 This topic describes how to configure QoS-aware scheduling, including CPU Burst, hybrid deployment of latency-sensitive (LS) and BE workloads, dynamic overcommitment, and topology-aware scheduling.
 
@@ -4067,11 +4306,7 @@ Quality of Service (QoS)-based scheduling and resource management capabilities a
 
 **Prerequisites**
 
-A Container Service for Kubernetes (ACK) cluster is created and its Kubernetes version is later than 1.32.
-
-**Limits**
-
-Node pools that have sandboxed container enabled do not support QoS-aware scheduling.
+A Container Service for Kubernetes (ACK) cluster is created and its Kubernetes version is later than 1.32. Node pools that have sandboxed container enabled do not support QoS-aware scheduling.
 
 **Procedure**
 
@@ -4117,11 +4352,11 @@ In the **QoS Scheduling** panel, click the **YAML Create** tab, configure the pa
 |
 vi. After the configuration is submitted, the **Cluster Status** changes to **Updating**. In this case, you cannot perform other operations on the cluster.
 
-### Nodes
+### 7.5 Nodes
 
-#### Node pools
+#### 7.5.1 Node pools
 
-##### Create a node pool
+##### 7.5.1.1 Create a node pool
 
 You can use a node pool to manage a group of nodes in your cluster. This allows you to apply uniform configurations, such as labels and taints, to all nodes in the pool. This topic describes how to create a node pool.
 
@@ -4212,7 +4447,7 @@ After the node pool becomes active, you can perform the following operations fro
 | Upgrade | Upgrades the node pool's kubelet, operating system, or container runtime. | Upgrade a node pool |
 | Kubelet configuration | Customize Kubelet parameters at the node pool level to adjust node behavior. | Customize Kubelet parameters for a node pool |
 
-##### View a node pool
+##### 7.5.1.2 View a node pool
 
 You can view the basic information, node information, and scaling events of a node pool in the Container Service for Kubernetes (ACK) console.
 
@@ -4232,7 +4467,7 @@ View the cluster information, node pool information, and node configuration. If 
 
 You can click a hyperlink in blue on the tab to modify the corresponding item. View all nodes in the node pool on the Nodes tab. In the node list, select the nodes that you want to manage and click **Remove Node** to remove one or more nodes. Click the **Scaling Activities** tab to view the latest scaling events of the node pool.
 
-##### Edit a node pool
+##### 7.5.1.3 Edit a node pool
 
 This topic describes how to edit node pool configurations, such as vSwitches, instance types, system disks, and auto scaling settings, in the Container Service for Kubernetes (ACK) console.
 
@@ -4312,7 +4547,7 @@ icon next to the name of the target node pool, modify the node pool name, and th
 6. Click **Submit**. The node pool's **Status** changes to **Updating** while the changes are applied. Once the
 update is complete, the **Status** changes to **Active**.
 
-##### Scale out a node pool
+##### 7.5.1.4 Scale out a node pool
 
 Container Service for Kubernetes (ACK) allows you to create node pools and manage nodes in a cluster by node pool. For example, you can centrally manage the labels and taints of the nodes in a node pool. This topic describes how to scale out a node pool in the ACK console.
 
@@ -4342,7 +4577,7 @@ On the **Node Pools** page, if the **status** of the node pool is **Scaling**, t
 
 Click **Details** in the Actions column for the node pool. On the **Node** tab, you can check the nodes that are added to the node pool.
 
-##### Delete a node pool
+##### 7.5.1.5 Delete a node pool
 
 This topic describes how to delete a node pool in a Container Service for Kubernetes (ACK) cluster to reduce resource waste.
 
@@ -4355,7 +4590,7 @@ pane of the cluster details page, choose **Nodes > Node Pools**.
 column.
 4. Confirm the information in the message that appears and click **OK**.
 
-##### Schedule an application pod to a specific node pool
+##### 7.5.1.6 Schedule an application pod to a specific node pool
 
 Label is an important concept of Kubernetes. Services, Deployments, and pods are associated with each other by **labels**. You can configure pod scheduling policies based on node labels. This allows you to schedule pods to nodes that have specific labels. This topic describes how to schedule an application pod to a specific node pool.
 
@@ -4462,7 +4697,7 @@ node that has the pod: nginx label.
 
 In the preceding example, all application pods are scheduled to the xxx.xxx.0.74 node. This node has the pod: nignx label.
 
-##### Customize the kubelet parameters of a node pool
+##### 7.5.1.7 Customize the kubelet parameters of a node pool
 
 If the default kubelet configuration cannot meet your business requirements, you can customize the kubelet parameters for all nodes in a node pool. For example, you can customize the kubelet parameters when you want to modify resource reservations to adjust the resource usage, customize the pod eviction thresholds to resolve the resource shortage issue, and adjust the topology management policy to improve system performance.
 
@@ -4557,7 +4792,7 @@ In addition, do not modify the customizable kubelet parameters by modifying the 
 
 Using the CLI to customize kubelet parameters may pose severe stability risks. You are liable for the validity and compatibility of the content in the userdata file. If you use invalid configurations or deprecated configurations, the nodes may become unavailable.
 
-##### Upgrade a node pool
+##### 7.5.1.8 Upgrade a node pool
 
 This topic describes how to upgrade a node pool's kubelet, operating system (OS), or container runtime, in any combination, without affecting data disks.
 
@@ -4641,7 +4876,7 @@ When the system disk is replaced, its ID changes. However, the cloud disk type, 
 
 The Docker directory may contain your own files in addition to those managed by the Kubernetes cluster such as containers, images, and logs. If you no longer need these files, manually delete the Docker directory from the data disk after you switch the container runtime.
 
-##### Best practices for associating deployment sets
+##### 7.5.1.9 Best practices for associating deployment sets with node pools
 
 **with node pools**
 
@@ -4649,11 +4884,7 @@ Deployment sets are policies used to control the distribution of Elastic Compute
 
 **Prerequisites**
 
-A deployment set is created. For more information, see **Deployment sets** > **Create a deployment set** in **ECS User Guide**. The ECS quota of the deployment set is sufficient and sufficient ECS instances of the specified instance type are available. By default, each deployment set can contain up to 20 ECS instances in each zone.
-
-**Limits**
-
-You can associate only one deployment set with each node pool. You cannot add ECS instances on dedicated hosts to deployment sets. You cannot manually add nodes to or remove nodes from deployment sets. You can change the number of nodes in a deployment set by scaling the node pool that is associated with the deployment set. For more information, see Scale out a node pool. After the deployment set feature is enabled, you can create at most 20 ECS instances in each zone. The maximum number of ECS instances that you can create in an Apsara Stack region is calculated as **20 ×**
+A deployment set is created. For more information, see **Deployment sets** > **Create a deployment set** in **ECS User Guide**. The ECS quota of the deployment set is sufficient and sufficient ECS instances of the specified instance type are available. By default, each deployment set can contain up to 20 ECS instances in each zone. You can associate only one deployment set with each node pool. You cannot add ECS instances on dedicated hosts to deployment sets. You cannot manually add nodes to or remove nodes from deployment sets. You can change the number of nodes in a deployment set by scaling the node pool that is associated with the deployment set. For more information, see Scale out a node pool. After the deployment set feature is enabled, you can create at most 20 ECS instances in each zone. The maximum number of ECS instances that you can create in an Apsara Stack region is calculated as **20 ×**
 **Number of zones**. The number of zones depends on the vSwitches that are specified for the associated
 node pool.
 
@@ -4797,7 +5028,7 @@ kubectl apply -f nginx.yaml
 3. View the pod scheduling information.
 i. Log on to the ACK console. In the left-side navigation pane, click **Clusters**. ii. On the **Clusters** page, find the cluster that you want to manage and click its name to go to the cluster details page. In the left-side navigation pane, choose **Workloads > Deployments**. iii. On the **Deployments** page, click the name of the Deployment that you want to manage. On the **Pods** tab of the Deployment details page, view the pod information. If the four pods are evenly distributed across zones and nodes, the pod scheduling policy works as expected.
 
-##### Enable node auto repair
+##### 7.5.1.10 Enable node auto repair
 
 You can enable the node auto repair feature for a node pool. Then, Container Service for Kubernetes (ACK) automatically monitors the status of nodes and automatically executes auto repair tasks when nodes do not work as expected. This simplifies node O&M. Due to the complexity of faults, the auto repair task cannot fix all issues. Therefore, you must manually fix specific complex issues.
 
@@ -4855,19 +5086,15 @@ operations: i. ACK automatically marks the faulty node as unschedulable. ii. ACK
 
 The node is in the Repairing state while the auto repair task is running. If the node exception is fixed after the auto repair task is complete, the state of the node changes to Normal. If the node exception persists after the repair task is complete, the state of the node changes to Recover Failed. If a node fails to be repaired, the auto repair task is no longer triggered for the node. In this case, auto repair can be triggered for the node only after the node recovers from the exception.
 
-#### Nodes
+#### 7.5.2 Nodes
 
-##### Add existing nodes
+##### 7.5.2.1 Add existing nodes
 
 You can add existing Elastic Compute Service (ECS) instances as worker nodes to a Kubernetes cluster in the Container Service for Kubernetes (ACK) console. This topic describes how to add nodes automatically and manually.
 
 **Prerequisites**
 
-A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. The ECS instances that you want to add are in the security group that is automatically created for the Kubernetes cluster. For more information, see Add an ECS instance to a security group in the Security groups chapter of the **ECS User Guide**.
-
-**Limits**
-
-Make sure that your cluster has a sufficient node quota. The Elastic Compute Service instances that you want to add must be in the same region and Virtual Private Cloud (VPC) as the cluster. You can add only ECS instances that belong to the same account as the cluster.
+A Kubernetes cluster is created. For more information, see Create a Kubernetes cluster. The ECS instances that you want to add are in the security group that is automatically created for the Kubernetes cluster. For more information, see Add an ECS instance to a security group in the Security groups chapter of the **ECS User Guide**. Make sure that your cluster has a sufficient node quota. The Elastic Compute Service instances that you want to add must be in the same region and Virtual Private Cloud (VPC) as the cluster. You can add only ECS instances that belong to the same account as the cluster.
 
 **Limits on adding instances**
 
@@ -4962,7 +5189,7 @@ command that you copied in Step 8 and click **Execute** to run the script. Wait 
 3. On the node pool details page, click the **Node Management** tab.
 You can view information about the added node on this tab.
 
-##### View nodes
+##### 7.5.2.2 View nodes
 
 You can view the nodes of a Container Service for Kubernetes (ACK) cluster by using the ACK console or kubectl.
 
@@ -5001,7 +5228,7 @@ cluster.
 6. View the node information.
 View the node name, IP address, instance ID, node pool to which the node belongs, resources allocated to pods, resource capacity, and container runtime. Choose **More > Details** in the **Actions** column to view the labels, annotations, taints, and pods of the node.
 
-##### Manage node labels
+##### 7.5.2.3 Manage node labels
 
 You can manage node labels in the Container Service console. You can add a label to multiple nodes at a time, filter nodes by label, and delete labels. You can use labels to schedule nodes. For more information, see Set node schedulability.
 
@@ -5030,7 +5257,7 @@ On the Labels tab, you can find that the selected nodes have the same label.
 6. Select a node, find the label that you want to delete, and then click the
 icon. In the message that appears, click **Confirm**. After the label is deleted, it is removed from the Labels column.
 
-##### Set node schedulability
+##### 7.5.2.4 Set node schedulability
 
 You can mark a node as schedulable or unschedulable in the Container Service for Kubernetes (ACK) console. This allows you to optimize the distribution of the loads on each node. This topic describes how to set node schedulability.
 
@@ -5055,13 +5282,9 @@ The status of the specified node is changed to Unschedulable.
 
 Pods are not scheduled to the node when you deploy new applications.
 
-##### Drain nodes
+##### 7.5.2.5 Drain nodes
 
-Node draining can safely evict all migratable pods on a node and prevent new pods from being scheduled to the node. This topic describes how to configure node draining.
-
-**Limits**
-
-A cluster with only one edge node or worker node does not support the drain operation. Pods that are controlled by DaemonSets are not evicted from the node.
+Node draining can safely evict all migratable pods on a node and prevent new pods from being scheduled to the node. This topic describes how to configure node draining. A cluster with only one edge node or worker node does not support the drain operation. Pods that are controlled by DaemonSets are not evicted from the node.
 
 **Procedure**
 
@@ -5085,7 +5308,7 @@ value of 0 indicates that no timeout period is specified.
 
 This operation may interrupt your workloads. We recommend that you perform this operation during off-peak hours. If you set the value to Unschedulable, the selected nodes are marked as SchedulingDisabled. Existing pods on the selected nodes can continue to provide services, but newly created pods are no longer scheduled to the nodes. After a node is drained, the existing pods on the node will be evicted, except for the pods controlled by DaemonSets, and the node will be marked as SchedulingDisabled. Newly created pods are no longer scheduled to the node.
 
-##### Remove a node
+##### 7.5.2.6 Remove a node
 
 To restart or release an Elastic Compute Service (ECS) node in a cluster, you must first remove the node from the cluster. This topic describes how to remove a node.
 
@@ -5130,7 +5353,7 @@ Select **Drain the Node** to migrate the pods on the node to other nodes. If you
 Select this option to release only pay-as-you-go ECS instances. Subscription ECS instances are automatically released after the subscription expires. If you do not select **Release ECS Instance**, you are still billed for the ECS instance where the node is deployed.
 8. In the **Remove Node** message, click **OK**.
 
-##### View node resource usage
+##### 7.5.2.7 View node resource usage
 
 You can view the resource usage of the nodes in a cluster in the Container Service console.
 
@@ -5151,9 +5374,9 @@ column. You can view the request rate and usage rate of CPU and memory resources
 
 You can adjust the workload of a node based on the resource usage. For more information, see Set node schedulability. When the request or usage rate of a node reaches 100%, pods are not scheduled to the node.
 
-#### Hybrid cloud node pools
+#### 7.5.3 Hybrid cloud node pools
 
-##### Create and manage hybrid node pools
+##### 7.5.3.1 Create and manage hybrid node pools
 
 This approach allows you to unify management of your cloud and on-premises resources, enabling elastic scheduling and cost optimization while leveraging your existing IT assets.
 
@@ -5229,7 +5452,7 @@ iii. Log on to the BMS instance and run the script on the node to add it to the 
 1. On the **Node Pools** page, in the **Actions** column of the target node pool, click **Remove Node**.
 2. In the dialog box, review the information, optionally select the **Drain Node** checkbox, and click **OK**.
 
-##### Work with Terway Hybrid
+##### 7.5.3.2 Work with Terway Hybrid
 
 When hybrid cloud node pools are connected to on-premises data centers, the complex network topology and cross-domain routing requirements exceed the capabilities of conventional container network plug-ins. Terway Hybrid, a network plug-in specifically designed for hybrid cloud node pools, ensures seamless network connectivity between pods (on-premises or in the cloud) within the cluster.
 
@@ -5295,9 +5518,9 @@ pane, click **Add-ons**.
 6. On the **Add-ons** page, find the **terway-hybrid** component and click **Install**.
 When you install the **terway-hybrid** data plane component, you do not need to configure parameters. Subsequently added hybrid cloud nodes will automatically have the Terway Hybrid plug-in installed.
 
-### Storage
+### 7.6 Storage
 
-#### Overview
+#### 7.6.1 Overview
 
 You can create disk volumes and Object Storage Service (OSS) volumes in the Container Service for Kubernetes (ACK) console to enable data persistence for stateful applications. Both statically provisioned volumes and dynamically provisioned volumes are supported. The following table describes the types of volumes that are supported by different storage services of Apsara Stack.
 
@@ -5307,7 +5530,7 @@ You can create disk volumes and Object Storage Service (OSS) volumes in the Cont
 | File Storage NAS (NAS) | You can mount a statically provisioned NAS volume by using a PV and a PVC. | Supported |
 | OSS | You can mount a statically provisioned OSS volume by using a PV and a PVC | Supported |
 
-#### Mount disk volumes
+#### 7.6.2 Mount disk volumes
 
 You can mount disks as volumes. Container Service allows you to mount disks as persistent volumes (PVs) in Kubernetes clusters. Disks can be mounted to Kubernetes clusters as the following volume types: Statically provisioned disk volumes You can use statically provisioned disk volumes in the following ways: Mount disks as volumes Mount disk volumes by creating a PV and a persistent volume claim (PVC) Dynamically provisioned disk volumes
 
@@ -5443,7 +5666,6 @@ provisioner: alicloud/disk parameters:
 ```
 
 Required parameters: provisioner: Set this parameter to alicloud/disk. This indicates that the Provisioner plug-in is used to create the StorageClass. type: Specify the disk type. Valid values: cloud, cloud_efficiency, cloud_ssd, and available. If you set this parameter to available, the system attempts to create a disk in the following order: ultra disk, standard SSD, and basic disk. The system stops trying until a disk is created. regionid: Specify the region of the disk. zoneid: Specify the zone of the disk.
-2. **Create a PVC**
 
 ```
 kind: PersistentVolumeClaim apiVersion: v1 metadata:
@@ -5522,7 +5744,7 @@ spec:
           storage: 10Gi
 ```
 
-#### Mount a statically provisioned NAS volume
+#### 7.6.3 Mount a statically provisioned NAS volume
 
 File Storage NAS (NAS) is a distributed file system that supports shared access, elastic scaling, high reliability, and high performance. This topic describes how to mount a statically provisioned NAS volume. This topic also describes how to enable persistent storage and shared storage by using a statically provisioned NAS volume.
 
@@ -5853,7 +6075,7 @@ nas
 
 When you create a file in the /data path of one pod, you can also find the file in the /data path of the other pod. This indicates that data in the NAS file system is shared by the two pods.
 
-#### Use dynamic NAS volumes
+#### 7.6.4 Use dynamic NAS volumes
 
 NAS volumes are ideal for scenarios such as big data analytics, data sharing, web applications, and log persistence. Instead of using static volumes, you can dynamically provision storage by creating a persistent volume claim (PVC) and configuring a StorageClass. The system then automatically provisions a persistent volume for you, eliminating the need to manually create and configure storage resources. You can mount dynamic NAS volumes using either the subpath or filesystem method.
 
@@ -6394,7 +6616,7 @@ nas
 
 The file created in the /data directory of one pod also exists in the /data directory of the other pod. This confirms that both pods share the same NAS volume.
 
-#### Mount a statically provisioned OSS volume
+#### 7.6.5 Mount a statically provisioned OSS volume
 
 Object Storage Service (OSS) volumes can be mounted to multiple pods. OSS is suitable for data that is frequently read but does not require high disk IOPS, such as configuration files, videos, and images. You can use RAM Roles for Service Accounts (RRSA) authentication or AccessKey pair authentication to mount statically provisioned OSS volumes to your applications.
 
@@ -6707,7 +6929,7 @@ spec:
 
 `livenessProbe` : Configure health checks. `mountPath` : the path where the OSS bucket is mounted in the container. `claimName` : the name of the PVC that the application uses.
 
-#### Mount a dynamically provisioned OSS volume
+#### 7.6.6 Mount a dynamically provisioned OSS volume
 
 Object Storage Service (OSS) volumes can be mounted to multiple pods. OSS is suitable for data that is frequently read but does not require high disk IOPS, such as configuration files, videos, and images. In addition to static provisioning, you can use dynamic provisioning to configure the system to automatically reserve persistent volumes (PVs) based on persistent volume claims (PVCs) and StorageClasses. You can use RAM Roles for Service Accounts (RRSA) authentication or AccessKey pair authentication to mount dynamically provisioned OSS volumes to your applications.
 
@@ -6988,7 +7210,7 @@ kubectl get pod -lapp=nginx -w
 
 The pod enters the Running state after a period of time.
 
-#### Create a PVC
+#### 7.6.7 Create a PVC
 
 This topic describes how to create a persistent volume claim (PVC).
 
@@ -7021,7 +7243,7 @@ If you cannot find available PVs, click **Persistent Volumes** in the left-side 
 name of the PV.
 7. Return to the Persistent Volume Claims page, where you can find the created PVC.
 
-#### Use a PVC to mount a volume
+#### 7.6.8 Use a PVC to mount a volume
 
 You can use persistent volume claims (PVCs) to mount volumes for applications.
 
@@ -7049,7 +7271,7 @@ are redirected to the details page of the test-nginx application.
 1. On the details page of the pod, click the **Volumes** tab. You can find that the pod is associated with the
 pvc-disk PVC.
 
-#### Use volume snapshots that are created from
+#### 7.6.9 Use volume snapshots that are created from disks
 
 **disks**
 
@@ -7411,15 +7633,11 @@ lost+found test
 
 The output shows that the same application data is returned. This indicates that the application data is restored.
 
-#### Best practice for throttling block storage
+#### 7.6.10 Best practice for throttling block storage devices
 
 **devices**
 
-Open source Kubernetes does not support throttling of block storage devices. Container Service for Kubernetes (ACK) allows you to throttle a block storage device that is mounted to a pod, such as a cloud disk or a local disk that is virtualized by using Logical Volume Manager (LVM). This helps you more efficiently manage and allocate storage resources, ensures system performance and stability, and reduces costs. This topic describes how to throttle a cloud disk that is mounted as a block storage device.
-
-**Limits**
-
-The OS used by the host must be Alibaba Cloud Linux 2 or later. The Kubernetes version of your ACK cluster must be 1.20 or later. The version of the Container Storage Interface (CSI) plug-in used by your cluster must be 1.22 or later.
+Open source Kubernetes does not support throttling of block storage devices. Container Service for Kubernetes (ACK) allows you to throttle a block storage device that is mounted to a pod, such as a cloud disk or a local disk that is virtualized by using Logical Volume Manager (LVM). This helps you more efficiently manage and allocate storage resources, ensures system performance and stability, and reduces costs. This topic describes how to throttle a cloud disk that is mounted as a block storage device. The OS used by the host must be Alibaba Cloud Linux 2 or later. The Kubernetes version of your ACK cluster must be 1.20 or later. The version of the Container Storage Interface (CSI) plug-in used by your cluster must be 1.22 or later.
 
 **Parameters**
 
@@ -7673,9 +7891,9 @@ writeBPS:
 /sys/fs/cgroup/blkio/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffortpod{pod_uid}.slice/blkio.throttle.write_bps_device
 ```
 
-### Security
+### 7.7 Security
 
-#### Container security: policy rule library
+#### 7.7.1 Container security: policy rule library
 
 The Container Service policy management feature includes a variety of built-in rulesets. This topic describes the rule templates in the container security policy ruleset.
 
@@ -9953,7 +10171,7 @@ spec:
       path: /data
 ```
 
-#### Policy management in the ACK console
+#### 7.7.2 Policy management in the ACK console
 
 To meet compliance requirements and enhance cluster security, enable the policy management feature. This ACK feature provides a rich, built-in policy rule library. In the ACK console, you can enable or customize security policies for container applications to ensure that Pod deployments and updates are secure and compliant.
 
@@ -9962,11 +10180,7 @@ To meet compliance requirements and enhance cluster security, enable the policy 
 An ACK dedicated cluster whose Kubernetes version is 1.18.8 or later is created. For more information, see Create a Kubernetes cluster. If you use a RAM user to perform policy governance operations, make sure that the RAM user is granted the following permissions. For more information, see **Unified Cloud Management Platform** > **Apsara**
 **Uni-manager Management Console User Guide** > **RAM** > **RAM roles** > **Grant permissions to a**
 **RAM role**.
-cs:DescribePolicies: queries a list of policies. cs:DescribePoliceDetails: queries information about a policy. cs:DescribePolicyGovernanceInCluster: queries information about policies in a cluster. cs:DescribePolicyInstances: queries a list of policy instances that are deployed in a cluster. cs:DescribePolicyInstancesStatus: queries information about policy instances in a cluster. cs:DeployPolicyInstance: deploys a policy instance in a cluster. cs:DeletePolicyInstance: deletes a policy instance in a cluster. cs:ModifyPolicyInstance: modifies a policy instance in a cluster.
-
-**Limits**
-
-Only ACK dedicated clusters whose Kubernetes versions are 1.18.8 or later support policy governance. ACK edge clusters do not support policy governance. The policy governance feature can be applied only to Linux nodes. Custom policies are not supported. All policies in the security policy module are predefined security policies provided by ACK. For more information, see Container security: policy rule library. You can install the gatekeeper component only from the **Add-ons** page in the ACK console. If the gatekeeper component is already installed in your cluster by using other methods, uninstall the component and then reinstall it from the **Add-ons** page. For more information about how to install the gatekeeper component, see Manage components. For more information about the gatekeeper component, see gatekeeper.
+cs:DescribePolicies: queries a list of policies. cs:DescribePoliceDetails: queries information about a policy. cs:DescribePolicyGovernanceInCluster: queries information about policies in a cluster. cs:DescribePolicyInstances: queries a list of policy instances that are deployed in a cluster. cs:DescribePolicyInstancesStatus: queries information about policy instances in a cluster. cs:DeployPolicyInstance: deploys a policy instance in a cluster. cs:DeletePolicyInstance: deletes a policy instance in a cluster. cs:ModifyPolicyInstance: modifies a policy instance in a cluster. Only ACK dedicated clusters whose Kubernetes versions are 1.18.8 or later support policy governance. ACK edge clusters do not support policy governance. The policy governance feature can be applied only to Linux nodes. Custom policies are not supported. All policies in the security policy module are predefined security policies provided by ACK. For more information, see Container security: policy rule library. You can install the gatekeeper component only from the **Add-ons** page in the ACK console. If the gatekeeper component is already installed in your cluster by using other methods, uninstall the component and then reinstall it from the **Add-ons** page. For more information about how to install the gatekeeper component, see Manage components. For more information about the gatekeeper component, see gatekeeper.
 
 **Step 1: Install or upgrade policy components**
 
@@ -10017,7 +10231,7 @@ To remove all instances of a policy, click **Delete** in the **Actions** column.
 
 The configuration check feature scans your cluster for security risks in workload configurations. For more information, see Use configuration check to inspect cluster workloads.
 
-#### Call API operations to conduct policy
+#### 7.7.3 Call API operations to conduct policy governance
 
 **governance**
 
@@ -10028,11 +10242,7 @@ You can use Alibaba Cloud SDK to call API operations to conduct policy governanc
 An ACK dedicated cluster whose Kubernetes version is 1.18.8 or later is created. For more information, see Create a Kubernetes cluster. If you use a RAM user to perform policy governance operations, make sure that the RAM user is granted the following permissions. For more information, see **Unified Cloud Management Platform** > **Apsara**
 **Uni-manager Management Console User Guide** > **RAM** > **RAM roles** > **Grant permissions to a**
 **RAM role**.
-cs:DescribePolicies: queries a list of policies. cs:DescribePoliceDetails: queries information about a policy. cs:DescribePolicyGovernanceInCluster: queries information about policies in a cluster. cs:DescribePolicyInstances: queries a list of policy instances that are deployed in a cluster. cs:DescribePolicyInstancesStatus: queries information about policy instances in a cluster. cs:DeployPolicyInstance: deploys a policy instance in a cluster. cs:DeletePolicyInstance: deletes a policy instance in a cluster. cs:ModifyPolicyInstance: modifies a policy instance in a cluster.
-
-**Limits**
-
-Only ACK dedicated clusters whose Kubernetes versions are 1.18.8 or later support policy governance. ACK edge clusters do not support policy governance. The policy governance feature can be applied only to Linux nodes. Custom policies are not supported. All policies in the security policy module are predefined security policies provided by ACK. For more information, see Container security: policy rule library. You can install the gatekeeper component only from the **Add-ons** page in the ACK console. If the gatekeeper component is already installed in your cluster by using other methods, uninstall the component and then reinstall it from the **Add-ons** page. For more information about how to install the gatekeeper component, see Manage components. For more information about the gatekeeper component, see gatekeeper.
+cs:DescribePolicies: queries a list of policies. cs:DescribePoliceDetails: queries information about a policy. cs:DescribePolicyGovernanceInCluster: queries information about policies in a cluster. cs:DescribePolicyInstances: queries a list of policy instances that are deployed in a cluster. cs:DescribePolicyInstancesStatus: queries information about policy instances in a cluster. cs:DeployPolicyInstance: deploys a policy instance in a cluster. cs:DeletePolicyInstance: deletes a policy instance in a cluster. cs:ModifyPolicyInstance: modifies a policy instance in a cluster. Only ACK dedicated clusters whose Kubernetes versions are 1.18.8 or later support policy governance. ACK edge clusters do not support policy governance. The policy governance feature can be applied only to Linux nodes. Custom policies are not supported. All policies in the security policy module are predefined security policies provided by ACK. For more information, see Container security: policy rule library. You can install the gatekeeper component only from the **Add-ons** page in the ACK console. If the gatekeeper component is already installed in your cluster by using other methods, uninstall the component and then reinstall it from the **Add-ons** page. For more information about how to install the gatekeeper component, see Manage components. For more information about the gatekeeper component, see gatekeeper.
 
 **Step 1: Install the policy governance components**
 
@@ -10060,7 +10270,7 @@ The following table describes the API operations related to policy governance. F
 | DescribePolicyInstancesStatus | Queries information about a policy instance in an ACK cluster. |
 | DescribePolicyGovernanceInCluster | Queries information about policies in an ACK cluster. |
 
-#### Use the inspection feature to detect security
+#### 7.7.4 Use the inspection feature to detect security risks in the workloads of an ACK cluster
 
 **risks in the workloads of an ACK cluster**
 
@@ -10203,7 +10413,7 @@ The following table describes the inspection items.
 
 For more information about the introduction and release notes of the security-inspector component, see security-inspector. Configure a Security Context for a Pod or Container Configure Liveness, Readiness and Startup Probes
 
-#### Use cluster auditing
+#### 7.7.5 Use cluster auditing
 
 The API server generates audit logs to record Kubernetes API requests and responses. Container Service for Kubernetes (ACK) allows cluster administrators to analyze the audit logs of the API server to audit operations performed on resources by different users. This enables cluster administrators to trace the history of cluster operations and troubleshoot cluster exceptions, which greatly simplifies cluster security O&M.
 
@@ -10216,11 +10426,7 @@ choose **Security > Cluster Auditing**. If you have not enabled the cluster log 
 
 **Step 2: View audit log reports**
 
-ACK provides three built-in audit log reports, which provide an overview of the audit center, an overview of resource operations, and a detailed list of resource operations. On the **Cluster Auditing** page, you can filter audit events by namespace or RAM user and view the following content in reports. You can also click the icon in the upper-right part of a chart to perform other operations. For example, you can view the chart in full-screen mode or preview query statements.
-
-**Overview**
-
-This report displays all events in the current ACK cluster and detailed information about important events, such as RAM user operations, Internet access, command executions, resource deletion, and Secret access.
+ACK provides three built-in audit log reports, which provide an overview of the audit center, an overview of resource operations, and a detailed list of resource operations. On the **Cluster Auditing** page, you can filter audit events by namespace or RAM user and view the following content in reports. You can also click the icon in the upper-right part of a chart to perform other operations. For example, you can view the chart in full-screen mode or preview query statements. This report displays all events in the current ACK cluster and detailed information about important events, such as RAM user operations, Internet access, command executions, resource deletion, and Secret access.
 
 **Operations Overview**
 
@@ -10401,7 +10607,7 @@ After you log on to a master node, you can view the configuration file of the AP
 | --audit-policy-file | The path of the audit policy file. Default value: /etc/kubernetes/audit- policy.yml . |   |   |
 |   |   | /etc/kubernetes/audit- |   |
 
-#### MLPS Security Hardening
+#### 7.7.6 MLPS Security Hardening
 
 This topic describes the level-3 standards of Multi-Level Protection Scheme (MLPS) 2.0 that are used to enhance the security of Alibaba Cloud Linux used in Container Service for Kubernetes (ACK). This topic also describes how to enable MLPS Security Hardening for ACK clusters and how to configure a baseline check policy.
 
@@ -10451,7 +10657,7 @@ The security of Alibaba Cloud Linux images must be enhanced based on the level-3
 
 **Enable MLPS Security Hardening for Alibaba Cloud Linux**
 
-You can select **Reinforcement based on classified protection** to enable MLPS Security Hardening when you create an ACK cluster. ACK automatically enhances the security of the operating system to meet the compliance requirements in the level-3 standards of MLPS 2.0 based on Information security technology - Baseline for classified protection of cybersecurity (GB/T 22239-2019). For more information, see Create an ACK cluster. MLPS Security Hardening
+You can select **Reinforcement based on classified protection** to enable MLPS Security Hardening when you create an ACK cluster. ACK automatically enhances the security of the operating system to meet the compliance requirements in the level-3 standards of MLPS 2.0 based on Information security technology - Baseline for classified protection of cybersecurity (GB/T 22239-2019). For more information, see Create an ACK cluster.
 
 **Important**
 
@@ -10485,9 +10691,9 @@ newly purchased servers belong to the **Default** asset group. To apply this pol
 7. After the baseline check is complete, click the name of a baseline on the **Baseline Check** page to view
 the baseline check result.
 
-### Network management
+### 7.8 Network management
 
-#### Network overview
+#### 7.8.1 Network overview
 
 Container Service for Kubernetes (ACK) provides stable and high-performance container networks by integrating the Kubernetes network model, Virtual Private Cloud (VPC), and Server Load Balancer (SLB). This topic describes the terms that are related to ACK cluster networking and Alibaba Cloud network infrastructure. The terms include Container Network Interface (CNI), Service, Ingress, and DNS Service Discovery (DNS-SD). Understanding these terms helps you optimize application deployment models and network access.
 
@@ -10549,7 +10755,7 @@ A vRouter is the hub of a VPC. A vRouter serves as a gateway between a VPC and o
 
 After you connect ECS instances to an SLB instance, SLB uses virtual IP addresses (VIPs) to virtualize the ECS instances into an application service pool. The application service pool features high performance and high availability. Client requests are distributed across the ECS instances based on forwarding rules. SLB checks the health status of the ECS instances and automatically removes unhealthy ECS instances from the pool to eliminate single points of failure (SPOFs). This improves the availability of your applications. You can also use SLB to protect applications against distributed denial of service (DDoS) attacks. SLB consists of the following components: SLB instances. An SLB instance is a running entity of the SLB service that receives and distributes traffic to backend servers. To get started with SLB, you must create an SLB instance and add at least one listener and two ECS instances to the SLB instance. Listeners. Listeners are used to listen for client requests and forward them to backend servers. A listener also performs health checks on backend servers. Backend servers. Backend servers are ECS instances that are added to an SLB instance. Inbound requests are distributed to backend servers. You can add ECS instances to a server pool one by one, or add multiple ECS instances to a vServer group or a primary/secondary server group at a time.
 
-#### Plan the network of a Container Service
+#### 7.8.2 Plan the network of a Container Service cluster
 
 **cluster**
 
@@ -10633,7 +10839,7 @@ All IP addresses in the destination CIDR block of VPC 2 can be considered in use
 
 If a VPC is connected to a data center, packets of specific CIDR blocks are routed to the data center. In this case, the pod CIDR block of a cluster in the VPC cannot overlap with these CIDR blocks. To access pods in the VPC from the data center, you must configure a route in the data center to enable VBR-to-VPC peering connection.
 
-#### Set access control for pods
+#### 7.8.3 Set access control for pods
 
 This topic describes how to use network policies to control access between pods.
 
@@ -10711,7 +10917,7 @@ kubectl apply -f client.yaml kubectl apply -f client-label.yaml
 
 You can see that only the pod with the required label can access the server.
 
-#### Set bandwidth limits for pods
+#### 7.8.4 Set bandwidth limits for pods
 
 This topic describes how to limit the bandwidth of inbound and outbound traffic that flows through a pod.
 
@@ -10785,7 +10991,7 @@ kubectl apply -f client-deploy.yaml
 kubectl exec -it client sh
 ```
 
-#### Work with Terway
+#### 7.8.5 Work with Terway
 
 Terway is an open source Container Network Interface (CNI) plug-in developed by Apsara Stack. Terway works with Virtual Private Cloud (VPC) and allows you to use standard Kubernetes network policies to regulate how containers communicate with each other. You can use Terway to enable internal communication within a Kubernetes cluster. This topic describes how to use Terway.
 
@@ -10898,7 +11104,7 @@ An ACK cluster is used as an example to show how to set up networks for a cluste
 **Pod vSwitch**: the pod vSwitch that you created in Step 1: Plan CIDR blocks.
 **Service CIDR**: the Service SIDR block. Use the default value.
 
-#### Configure a static IP address, a separate
+#### 7.8.6 Configure a static IP address, a separate vSwitch, and a separate security group for each pod
 
 **vSwitch, and a separate security group for each pod**
 
@@ -10906,11 +11112,7 @@ The Terway Trunk elastic network interface (ENI) feature lets you specify a stat
 
 **Background information**
 
-Trunk ENIs are new virtual network interfaces. Trunk ENIs support all features provided by ENIs. In addition, when the maximum number of ENIs that you can use is reached and you want to use additional ENIs, you can associate these ENIs with a Trunk ENI. Each of these ENIs can be separately allocated to a pod. After you enable the Terway Trunk ENI feature for a cluster, you can customize the configuration of specific pods to use the additional ENIs that are associated with a Trunk ENI in exclusive mode and set the other pods to share the original ENIs. The pod custom configurations feature is optional. By default, all pods use IP addresses allocated from shared ENIs. To allow a pod to use custom configurations, you must first create a claim to enable the custom pod configurations feature for the pod. After you enable custom pod configurations, the terway-controlplane component is deployed in the cluster. The following figure shows how the component works.
-
-**Limits**
-
-Only ACK dedicated clusters support this feature. To use the Trunk feature of the Terway plugin, you must select an instance type that supports Trunk. A supported instance type has the `EniTrunkSupported=true` parameter in its response. For more information about supported instance types, see **Elastic Compute Service Developer Guide > API**
+Trunk ENIs are new virtual network interfaces. Trunk ENIs support all features provided by ENIs. In addition, when the maximum number of ENIs that you can use is reached and you want to use additional ENIs, you can associate these ENIs with a Trunk ENI. Each of these ENIs can be separately allocated to a pod. After you enable the Terway Trunk ENI feature for a cluster, you can customize the configuration of specific pods to use the additional ENIs that are associated with a Trunk ENI in exclusive mode and set the other pods to share the original ENIs. The pod custom configurations feature is optional. By default, all pods use IP addresses allocated from shared ENIs. To allow a pod to use custom configurations, you must first create a claim to enable the custom pod configurations feature for the pod. After you enable custom pod configurations, the terway-controlplane component is deployed in the cluster. The following figure shows how the component works. Only ACK dedicated clusters support this feature. To use the Trunk feature of the Terway plugin, you must select an instance type that supports Trunk. A supported instance type has the `EniTrunkSupported=true` parameter in its response. For more information about supported instance types, see **Elastic Compute Service Developer Guide > API**
 **Reference > ECS API Reference > Instances > DescribeInstanceTypes**.
 The number of pods that can be created on a node is limited. For more information, see Maximum number of pods supported by a node. Pod security group rules do not apply to traffic between pods on the same node or between a node and its pods. To enforce such restrictions, you must configure a network policy. For more information, see Create a network policy. This feature cannot be disabled after it is enabled.
 
@@ -11146,7 +11348,7 @@ status:
 2. Make sure that the pod labels match only the labels in the desired PodNetworking.
 3. A fixed IP policy does not apply to pods created by controllers other than StatefulSets.
 
-#### Configure a fixed IP address range for pods
+#### 7.8.7 Configure a fixed IP address range for pods
 
 You can use IP Pool and PodNetworking to assign fixed IP addresses from a specified CIDR block to pods of different workloads. This enables more fine-grained network isolation and security management.
 
@@ -11156,11 +11358,7 @@ In enterprise containerization scenarios, you often need to use different IP add
 **IP Pool**: Defines a subnet within a specified vSwitch that serves as a dedicated IP resource pool for a
 specific type of pod.
 **PodNetworking**: Associates pods that have matching labels with the corresponding IP Pool. This ensures
-that pods are assigned IP addresses from that IP Pool and use the associated network resources, such as vSwitches and security groups.
-
-**Limits**
-
-Only ACK dedicated clusters support this feature. To use the Terway Trunk ENI feature, you need to purchase Elastic Compute Service (ECS) instances that support Trunk ENIs. If the `EniTrunkSupported=true` parameter is returned after you call the ECS API to query an instance type, the instance type supports Trunk ENIs. For more information about how to call the ECS API to query instance types, see **Developer Guide > API Reference > ECS API Reference >**
+that pods are assigned IP addresses from that IP Pool and use the associated network resources, such as vSwitches and security groups. Only ACK dedicated clusters support this feature. To use the Terway Trunk ENI feature, you need to purchase Elastic Compute Service (ECS) instances that support Trunk ENIs. If the `EniTrunkSupported=true` parameter is returned after you call the ECS API to query an instance type, the instance type supports Trunk ENIs. For more information about how to call the ECS API to query instance types, see **Developer Guide > API Reference > ECS API Reference >**
 **Instances > DescribeInstanceTypes in the ECS documentation**.
 The number of pods that can be created on a node is limited. For more information, see Maximum number of pods supported by a node. Pod security group rules do not apply to the traffic between pods on the same node and the traffic between pods and the host. If you want to apply pod security group rules in these scenarios, you can configure a network policy. For more information, see Create a network policy. The vSwitch specified in the IP Pool must be created separately. It cannot conflict with the cluster's vSwitch or the default pod vSwitch. Otherwise, IP address conflicts may occur in the IP Pool and prevent pods from being created.
 
@@ -11417,13 +11615,9 @@ In an ACK cluster, a series of checks are performed to ensure that the CIDRs of 
 1. Release the conflicting IP address.
 2. Adjust the CIDR of the IP Pool to avoid the occupied IP addresses.
 
-#### Modify pod vSwitches
+#### 7.8.8 Modify pod vSwitches
 
-In a Terway network, you must scale out a virtual switch (vSwitch) if it runs out of IP addresses or to add a new vSwitch for a pod CIDR block. This topic describes how to add a vSwitch to increase the number of available IP addresses for an ACK cluster.
-
-**Limits**
-
-Make sure that the vSwitch you add is in the same zone as the node. If the node's zone is not in the vSwitch list, the vSwitch of the primary network interface card is used by default. You cannot modify the vSwitch configuration for existing elastic network interfaces (ENIs). After you modify the pod vSwitch, you must add new nodes to use the new configuration.
+In a Terway network, you must scale out a virtual switch (vSwitch) if it runs out of IP addresses or to add a new vSwitch for a pod CIDR block. This topic describes how to add a vSwitch to increase the number of available IP addresses for an ACK cluster. Make sure that the vSwitch you add is in the same zone as the node. If the node's zone is not in the vSwitch list, the vSwitch of the primary network interface card is used by default. You cannot modify the vSwitch configuration for existing elastic network interfaces (ENIs). After you modify the pod vSwitch, you must add new nodes to use the new configuration.
 
 **Symptoms of insufficient vSwitch IP resources**
 
@@ -11551,17 +11745,13 @@ configure a vSwitch only when you create an ENI. If an ENI already exists, pod I
 **Solution**: You can create new nodes or rotate old nodes to ensure that the configuration file takes effect on
 the new nodes.
 
-#### Attach an independent public EIP to a pod
+#### 7.8.9 Attach an independent public EIP to a pod
 
 In most cases, pods in Kubernetes clusters use private IP addresses. However, in some scenarios, you may want to assign an exclusive public IP address to a pod. This allows the pod to communicate with external networks independently of other pods. You can use the Alibaba Cloud ack-extend-network-controller component to directly associate an Elastic IP Address (EIP) with a specific pod, which provides the pod with an independent public egress.
 
 **Prerequisites**
 
-You have created a Kubernetes cluster for which the **Network Plugin** is **Terway**. For more information, see Create a Kubernetes cluster. For more information about the Terway network mode, see Use the Terway network plugin.
-
-**Limits**
-
-Before you use an EIP, you should understand what an EIP is. For more information, see **Elastic IP**
+You have created a Kubernetes cluster for which the **Network Plugin** is **Terway**. For more information, see Create a Kubernetes cluster. For more information about the Terway network mode, see Use the Terway network plugin. Before you use an EIP, you should understand what an EIP is. For more information, see **Elastic IP**
 **Address > Virtual Private Cloud VPC User Guide**.
 This feature is supported only for ECS nodes.
 
@@ -11941,9 +12131,9 @@ This issue is usually caused by access control rules. Check the following access
 Node security group: After an EIP is attached to a pod, traffic through the EIP is also subject to the security group rules of the node that hosts the pod. In the node's security group, ensure that inbound and outbound traffic from the client's IP address is allowed and that the pod's service port is open. For more information, see **Add a Security Group Rule > Security Groups > Elastic Compute Service User**
 **Guide**.
 
-#### Service management
+#### 7.8.10 Service management
 
-##### Considerations for configuring a LoadBalancer
+##### 7.8.10.1 Considerations for configuring a LoadBalancer Service
 
 **Service**
 
@@ -11995,7 +12185,7 @@ configurations that you update in the SLB console may be overwritten.
 
 If the SLB instance is created and managed by the CCM, we recommend that you do not modify the configuration of the SLB instance in the SLB console. Otherwise, the CCM may overwrite the configuration and the Service may become unavailable.
 
-##### Use annotations to configure load balancing
+##### 7.8.10.2 Use annotations to configure load balancing
 
 You can add annotations to the YAML file of a Service to configure load balancing. This topic describes how to use annotations to configure load balancing. You can configure Server Load Balancer (SLB) instances, listeners, and backend server groups.
 
@@ -12852,7 +13042,7 @@ when the SLB instance is reused. Set weights for Services to enable WRR When a r
 | service.beta.kuber netes.io/alibaba- cloud- loadbalancer- vgroup-port | string | Reuses an existing vServer group. This annotation takes effect only when the existing SLB instance is reused. Separate multiple ports and vServer groups with commas (,). | None | CCM 2.0.1 and later |
 | service.beta.kuber netes.io/alibaba- cloud- loadbalancer- weight | string | Specifies the weight of a Service when an SLB instance is shared by multiple Services. This annotation takes effect only when an existing vServer group is reused. | None | CCM 2.0.1 and later |
 
-##### Use the CCM to deploy services across clusters
+##### 7.8.10.3 Use the CCM to deploy services across clusters
 
 The cloud controller manager (CCM) is a key system component of Container Service for Kubernetes (ACK). You can use the CCM to associate nodes in your cluster and Elastic Compute Service (ECS) instances outside your cluster with a Server Load Balancer (SLB) instance. This prevents business interruptions during service migrations. You can use the CCM to distribute traffic to multiple Kubernetes clusters. Data backup and disaster recovery are also supported to ensure high availability of your services. In this topic, three typical scenarios are used to describe how to use the CCM to deploy services across clusters.
 
@@ -13059,7 +13249,7 @@ kubectl apply -f service-b.yaml
 
 After the configuration is completed, go to the **Edit vServer Group** page of the SLB instance in the SLB console. You can view the nodes of Cluster A and also nodes of Cluster B. The weight of each node is automatically configured based on the `service.beta.kubernetes.io/alibaba-cloud-loadbalancer-weight` annotation. Application scaling results are automatically synchronized to the vServer groups of the SLB instance.
 
-#### Configure NodeLocal DNSCache
+#### 7.8.11 Configure NodeLocal DNSCache
 
 Container Service for Kubernetes (ACK) allows you to deploy NodeLocal DNSCache to improve the stability and performance of service discovery. NodeLocal DNSCache runs a DNS caching agent as a DaemonSet on cluster nodes to improve the efficiency of DNS resolution for ACK clusters. This topic describes how to deploy and configure NodeLocal DNSCache for an application in an ACK cluster.
 
@@ -13069,11 +13259,7 @@ An ACK dedicated cluster is created. A kubectl client is connected to the cluste
 
 **Usage notes**
 
-NodeLocal DNSCache supports only ACK dedicated clusters. It does not support ACK edge clusters. If your cluster uses Terway, the version of the terway-eniip component must be v1.0.10.301 or later. If your cluster runs Terway in inclusive ENI mode based on IPVLAN, you need to modify the Terway configuration before installing NodeLocal DNSCache. For more information about how to update terwayeniip, see Manage components. For more information about how to modify the Terway configuration, see Modify the Terway configuration. NodeLocal DNSCache serves as a transparent caching proxy for CoreDNS and does not provide plug-ins such as hosts or rewrite. If you want to enable these plug-ins, modify the CoreDNS configuration. For more information, see CoreDNS configuration. You need to modify the CoreDNS configuration before using NodeLocal DNSCache. Otherwise, CoreDNS fails to resolve external domain names. For more information, see Configure the default protocol for the Forward plug-in and upstream DNS servers of VPC.
-
-**Introduction**
-
-ACK NodeLocal DNSCache (ack-node-local-dns) is a local DNS caching solution developed based on the open source NodeLocal DNSCache project. This solution consists of a DNS caching agent that runs as a DaemonSet and an admission controller that runs as a Deployment to dynamically inject DNSConfig. For more information about the caching policies of NodeLocal DNSCache, see DNS resolution policies and caching policies.
+NodeLocal DNSCache supports only ACK dedicated clusters. It does not support ACK edge clusters. If your cluster uses Terway, the version of the terway-eniip component must be v1.0.10.301 or later. If your cluster runs Terway in inclusive ENI mode based on IPVLAN, you need to modify the Terway configuration before installing NodeLocal DNSCache. For more information about how to update terwayeniip, see Manage components. For more information about how to modify the Terway configuration, see Modify the Terway configuration. NodeLocal DNSCache serves as a transparent caching proxy for CoreDNS and does not provide plug-ins such as hosts or rewrite. If you want to enable these plug-ins, modify the CoreDNS configuration. For more information, see CoreDNS configuration. You need to modify the CoreDNS configuration before using NodeLocal DNSCache. Otherwise, CoreDNS fails to resolve external domain names. For more information, see Configure the default protocol for the Forward plug-in and upstream DNS servers of VPC. ACK NodeLocal DNSCache (ack-node-local-dns) is a local DNS caching solution developed based on the open source NodeLocal DNSCache project. This solution consists of a DNS caching agent that runs as a DaemonSet and an admission controller that runs as a Deployment to dynamically inject DNSConfig. For more information about the caching policies of NodeLocal DNSCache, see DNS resolution policies and caching policies.
 
 | Module | Description |
 |---|---|
@@ -13413,7 +13599,7 @@ forward . /etc/resolv.conf {
 
 `}`
 
-#### Use the Gateway API to access Services
+#### 7.8.12 Use the Gateway API to access Services
 
 The Gateway API is a collection of resources that model Service networking in Kubernetes. These resources are intended for modeling Service networking through expressive, extensible, and role-oriented interfaces. This topic describes how to use the Gateway API to access Services.
 
@@ -13853,11 +14039,11 @@ openssl s_client -servername example.com -connect <EXTERNAL-IP>:443
 
 The output displays `CN = example.com` , which indicates that the TLS certificate is configured.
 
-#### Network policies
+#### 7.8.13 Network policies
 
 You can use network policies provided by Container Service for Kubernetes (ACK) to implement policy-based access control. If you want to control network traffic to specific applications based on IP addresses or ports, you can configure network policies.
 
-##### Create a network policy
+##### 7.8.13.1 Create a network policy
 
 This topic describes how to create a network policy for a Container Service for Kubernetes (ACK) cluster in the ACK console.
 
@@ -13884,7 +14070,7 @@ details page. In the left-side pane, choose **Network > Network Policies**.
 
 4. Click **Next**. Then, click **OK**.
 
-##### Manage a network policy
+##### 7.8.13.2 Manage a network policy
 
 This topic describes how to manage network policies for clusters in the Container Service for Kubernetes (ACK) console. You can view the details of a network policy, modify a network policy, modify the YAML content of a network policy, and delete a network policy.
 
@@ -13938,7 +14124,7 @@ the cluster details page. In the left-side navigation pane, choose **Network > N
 column.
 4. Read and confirm the message that appears, and then click **OK**.
 
-##### Use a network policy
+##### 7.8.13.3 Use a network policy
 
 This topic provides an example on how to use a network policy in Container Service for Kubernetes (ACK)
 
@@ -14004,9 +14190,9 @@ nc -vz -w 1 www.aliyunc.com 443 nc -vz -w 1 10.xx.xx.xx:<Port> # Specify the int
 
 Expected output: The output shows that the pod can access the internal network but not the Internet.
 
-### Namespaces
+### 7.9 Namespaces
 
-#### Create a namespace
+#### 7.9.1 Create a namespace
 
 You can create a namespace in the Container Service console.
 
@@ -14036,7 +14222,7 @@ Table 1. Create a namespace
 7. Click **OK**.
 You can find the namespace that you created on the Namespace page.
 
-#### Configure resource quotas and limits
+#### 7.9.2 Configure resource quotas and limits
 
 You can configure resource quotas and limits for a namespace in the Container Service for Kubernetes console.
 
@@ -14071,7 +14257,7 @@ NAME AGE limitrange/limits 8m NAME AGE resourcequota/quota 8m
 Name: limits Namespace: test Type Resource Min Max Default Request Default Limit Max Limit/Request Ratio ---- -------- --- --- --------------- ------------- ----------------------- Container cpu - - 100m 500m - Container memory - - 256Mi 512Mi - Name: quota Namespace: test Resource Used Hard -------- ---- ---configmaps 0 100 limits.cpu 0 2 limits.memory 0 4Gi persistentvolumeclaims 0 50 pods 0 50 requests.storage 0 1Ti secrets 1 10 services 0 20 services.loadbalancers 0 5
 ```
 
-#### Modify a namespace
+#### 7.9.3 Modify a namespace
 
 You can modify an existing namespace.
 
@@ -14095,7 +14281,7 @@ label. For example, you can change the key-value pair of the label to `env:test-
 7. Click **OK**.
 You can find that the labels of the namespace on the Namespace page are updated.
 
-#### Delete a namespace
+#### 7.9.4 Delete a namespace
 
 You can delete namespaces that are no longer in use.
 
@@ -14119,11 +14305,11 @@ When you delete a namespace, all resource objects under the namespace are delete
 6. In the message that appears, click **Confirm**.
 Return to the Namespace page. You can find that the namespace is deleted. Resource objects in the namespace are also deleted.
 
-### Application management
+### 7.10 Application management
 
-#### Workloads
+#### 7.10.1 Workloads
 
-##### Create a stateless workload (Deployment)
+##### 7.10.1.1 Create a stateless workload (Deployment)
 
 You can deploy a stateless application by using a Deployment. A Deployment can be created by using an image, an orchestration template, or kubectl commands. This topic describes how to create a stateless NGINX application by using an image, an orchestration template, and kubectl commands.
 
@@ -14515,7 +14701,7 @@ For more information, see Step 3: Configure advanced settings.
 9. In the left-side navigation pane of the cluster details page, choose **Workloads > Deployments**.
 On the **Deployments** page, check the status of the application. If the application is running as normal, it indicates that the image is successfully pulled by using the Secret that you configured.
 
-##### Create a StatefulSet
+##### 7.10.1.2 Create a StatefulSet
 
 This topic describes how to create a stateful NGINX application in the Container Service for Kubernetes (ACK) console and demonstrates the features of a StatefulSet.
 
@@ -14748,7 +14934,7 @@ Expected output:
 statefulset
 ```
 
-##### Create a DaemonSet
+##### 7.10.1.3 Create a DaemonSet
 
 A DaemonSet ensures that each node runs a copy of a pod. You can use a DaemonSet to run a log collection daemon, a monitoring daemon, or a system management application on each node. This topic describes how to create a DaemonSet for a Container Service cluster.
 
@@ -14846,7 +15032,7 @@ After you create a DaemonSet, you can perform the following operations: On the D
 **YAML** in the **Actions** column to view the YAML file of the DaemonSet.
 On the DaemonSets page, find the DaemonSet that you want to manage and choose **More > Delete** in the **Actions** column to delete the DaemonSet.
 
-##### Create a Job
+##### 7.10.1.4 Create a Job
 
 You can create Jobs in the Container Service for Kubernetes (ACK) console. This topic describes how to create a busybox Job and demonstrates the features of a Job.
 
@@ -14924,7 +15110,7 @@ application. Scale: On the Job details page, click **Scale** to change the numbe
 **Template** the YAML file.
 Refresh: On the Job details page, click **Refresh** to refresh the Job.
 
-##### Create a CronJob
+##### 7.10.1.5 Create a CronJob
 
 CronJobs are used to create periodic and recurring tasks. For example, you can create CronJobs to perform backup operations or send emails. Jobs are used to process short-lived, one-off tasks. A CronJob creates one or more Jobs based on a specific schedule. This topic describes how to create a CronJob.
 
@@ -15016,7 +15202,7 @@ After a CronJob is created, you can perform the following operations:
 
 On the **CronJobs** page, you can select multiple CronJobs and delete them in a batch. In the **Actions** column of the CronJob, click **Details** to view its basic information, such as the job list, events, and logs. In the **Actions** column of the CronJob, choose **More > View in YAML**, **More > Stop**, or **More > Delete** to view the YAML file, stop the task, or delete the task.
 
-##### View pods
+##### 7.10.1.6 View pods
 
 You can view pods in the Container Service for Kubernetes (ACK) console.
 
@@ -15036,11 +15222,9 @@ in the Actions column.
 
 You can update or delete pods on the Pods page. We recommend that you use Deployments to manage pods that are created by Deployments. On the details page of the pod, you can view the detailed information about the pod.
 
-##### Manage pods
+##### 7.10.1.7 Manage pods
 
 Pods are the smallest deployable units in Kubernetes. A pod runs an instance of an independent application in Kubernetes. Each pod contains one or more containers that are tightly coupled. You can modify, view, access, delete, and export pods and manually scale the number of pods for an application in the Container Service for Kubernetes (ACK) console.
-
-**View pods**
 
 **View detailed pod information**
 
@@ -15129,7 +15313,7 @@ exported to an EXCEL file.
 
 After the download is complete, you can view the pod records on the on-premises machine.
 
-##### Manage custom resources
+##### 7.10.1.8 Manage custom resources
 
 Container Service for Kubernetes (ACK) clusters allow you to extend the Kubernetes API by adding custom resources. You can use custom resource definitions (CRDs) to define custom resources. You can view the API groups in an ACK cluster and the types of resources in each API group. You can also manage these resources. This topic describes how to create, view, modify, and delete custom resources.
 
@@ -15172,7 +15356,7 @@ view.
 | CRD | 1. On the Custom Resources page, click the CRDs tab. Then, click Delete in the Actions column of the CRD that you want to delete. 2. In the Confirm message, click OK. |
 | Resource object | 1. On the Custom Resources page, click the Resource Objects tab. 2. On the Resource Objects tab, click the name of an API group in the left-side pane and click the resource object that you want to delete. 3. On the Resource Objects tab, click Delete in the Actions of the resource object. 4. In the Confirm message, click OK. |
 
-#### Create a Service
+#### 7.10.2 Create a Service
 
 You can create a Service for your application in the Container Service for Kubernetes (ACK) console to provide access to the application. In Kubernetes, a Service is an abstraction that defines a logical set of pods and a policy that is used to access the pods. This pattern is known as a microservice. A label selector determines whether the set of pods can be accessed by the Service. Each pod in an ACK cluster has its own IP address. However, pods are frequently created and deleted. Therefore, if you directly expose pods to external access, high availability is not ensured. Services decouple the frontend from the backend. The frontend clients do not need to be aware of which backend pods are used. This provides a loosely-coupled microservice architecture. For more information, see Service.
 
@@ -15234,7 +15418,7 @@ Click **Details** to view the basic information and application information abou
 
 On the **Services** page, you can also select multiple Services and delete the selected Services at a time.
 
-#### View a Service
+#### 7.10.3 View a Service
 
 You can view details about a Service in the Container Service console.
 
@@ -15252,7 +15436,7 @@ Each pod in Kubernetes clusters has its own IP address. However, pods are freque
 **Details** in the Actions column.
 On the details page, you can view detailed information about the Service.
 
-#### Update a Service
+#### 7.10.4 Update a Service
 
 You can update a Service in the Container Service console. This topic describes how to update a Service.
 
@@ -15267,7 +15451,7 @@ You can update a Service in the Container Service console. This topic describes 
 6. In the **Update Service** dialog box, modify the configurations and click **Update**.
 In the Service list, find the Service that you updated and click **Details** in the Actions column to view configuration changes. In this example, the labels of the Service are modified.
 
-#### Delete a Service
+#### 7.10.5 Delete a Service
 
 This topic describes how to delete a Service.
 
@@ -15290,7 +15474,7 @@ in the Actions column.
 
 On the **Services** page, you can also select multiple Services and delete the selected Services at a time.
 
-#### Use a trigger to redeploy an application
+#### 7.10.6 Use a trigger to redeploy an application
 
 You can create a trigger and use it to redeploy an application. This topic describes how to use a trigger.
 
@@ -15325,7 +15509,7 @@ You can run triggers by sending GET or POST requests from an external system. Fo
  curl https://cs.console.aliyun.com/hook/trigger?token=xxxxxxx
 ```
 
-#### Use kritis-validation-hook to automatically
+#### 7.10.7 Use kritis-validation-hook to automatically verify the signatures of Container Registry Standard Edition images
 
 **verify the signatures of Container Registry Standard**
 
@@ -15405,7 +15589,7 @@ kubectl -n default run test-not-signed --image=registry.acs.example/kritis-test/
 
 When you create a resource after signature verification is enabled, you must specify the image by using the digest of the image, such as @sha256:<hash>.
 
-#### Use kritis-validation-hook to automatically
+#### 7.10.8 Use kritis-validation-hook to automatically verify the signatures of Container Registry Advanced Edition images
 
 **verify the signatures of Container Registry Advanced**
 
@@ -15515,7 +15699,7 @@ To accept requests to deploy signed images, run the following commands:
 kubectl -n default create deployment is-signed --image=kritis-demo***.cnhongkong.cr.aliyuncs.com/kritisdemo***/alpine@sha256:ddba4d27a7ffc3f86dd6c2f92041af252a1f23a8e742c90e6e1297bfa1bc0c45 -- sleep 10 deployment.apps/is-signed created
 ```
 
-#### Schedule pods to specific nodes
+#### 7.10.9 Schedule pods to specific nodes
 
 You can add labels to nodes and schedule pods to the nodes with specified labels. This topic describes how to schedule a pod to a node with specified labels. You can add labels to nodes and then configure `nodeSelector` to schedule pods to nodes with specified labels. For more information about how nodeSelector works, see nodeselector. To meet business requirements, you may want to deploy a controller service on a master node, or deploy services on nodes that use standard SSDs. You can use the following method to schedule pods to nodes with specified labels.
 
@@ -15577,7 +15761,7 @@ added in Step 1.
  status: {}
 ```
 
-#### Simplify application deployment by using
+#### 7.10.10 Simplify application deployment by using Helm
 
 **Helm**
 
@@ -15632,9 +15816,9 @@ For more information about Helm commands, see the Helm documentation.
 
 Helm has a large and growing community. Many software providers, such as Bitnami, offer high-quality charts. You can discover more charts at `https://kubeapps.com/` .
 
-### Agent Sandbox
+### 7.11 Agent Sandbox
 
-#### ACK Agent Sandbox
+#### 7.11.1 ACK Agent Sandbox
 
 ACK Agent Sandbox is a sandboxed compute service for production-grade AI agents. It integrates fully with the Kubernetes ecosystem to provide a secure and isolated runtime environment that supports large-scale elastic scheduling and state persistence.
 
@@ -15705,9 +15889,9 @@ Enables rapid development and deployment of personal assistant and `digital empl
 
 Your `ACK cluster` must be version 1.32 or later. The `ack-agent-sandbox-controller` and `ack-sandbox-` `manager` components must be installed. When you create a Sandbox from a `snapshot` , ensure that the image used to create the `snapshot` is the same as the image specified in the Sandbox YAML configuration. The number of concurrent Sandboxes in a single cluster is limited by the size of your node resource pool. Plan your `warm pool` capacity based on your expected peak workload.
 
-#### Quick start
+#### 7.11.2 Quick start
 
-##### Create an Agent Sandbox
+##### 7.11.2.1 Create an Agent Sandbox
 
 This topic describes how to create an Agent Sandbox in an ACK cluster. Learn how to create a pre-warmed pool, claim an Agent Sandbox, and delete a sandbox.
 
@@ -15803,9 +15987,9 @@ To delete a sandbox instance, run the following command.
 ME> with the name of the custom resource. kubectl -n <NAMESPACE> delete sandbox <RESOURCE_NAME>
 ```
 
-#### Lifecycle management
+#### 7.11.3 Lifecycle management
 
-##### Hibernate and wake up an Agent Sandbox
+##### 7.11.3.1 Hibernate and wake up an Agent Sandbox
 
 When running large-scale AI agent tasks, you can reduce costs of idle compute resources by using kubectl to modify the `spec` field of the Agent Sandbox Custom Resource (CR). This lets you hibernate sandbox instances on demand and wake them up without context loss, improving cluster resource utilization.
 
@@ -15872,7 +16056,7 @@ CPU. Any in-flight requests time out and fail. After the instance wakes up, it d
 
 Custom Resources
 
-##### Clone an Agent Sandbox with Checkpoint
+##### 7.11.3.2 Clone an Agent Sandbox with Checkpoint
 
 When developing complex AI agents, you may need to save the running state of a sandbox environment to quickly reuse it. You can create a snapshot of a running container using the E2B SDK or a Checkpoint Custom Resource (CR). This method ensures file system consistency and reduces environment initialization costs.
 
@@ -15992,9 +16176,9 @@ testfile: CHECKPOINT_STATE_TEST counter: 221
 
 Custom Resources
 
-#### Network configuration
+#### 7.11.4 Network configuration
 
-##### Manage agent network access with TrafficPolicy
+##### 7.11.4.1 Manage agent network access with TrafficPolicy
 
 TrafficPolicy controls network access for agent applications in an ACK cluster. It implements priority-based, multi-level network policies that use criteria such as CIDR, Service, and FQDN for fine-grained control of inbound and outbound traffic to and from Pods.
 
@@ -16077,8 +16261,6 @@ Your cluster must be version 1.24 or later. This feature supports only IPv4 rule
 i. Log in to the Container Service for Kubernetes (ACK) console. ii. In the left navigation pane, select **Clusters**. iii. On the **cluster list** page, click the name of your target cluster, and then in the left navigation pane, click **component management**. iv. On the **Add-ons** page, check the version of the Poseidon component and verify that the TrafficPolicy feature is enabled. To use the L4 ports feature, the component version must be v0.7.3 or later. This feature does not support hot updates for ACS pods and applies only to new instances. To use the workload selection feature, the component version must be v0.7.6 or later. This feature does not support hot updates for ACS pods and applies only to new instances.
 
 **Configuration examples**
-
-**Quick start**
 
 This example shows how to configure a basic network policy for an agent application, allowing it to access the DNS service and the public network.
 
@@ -17150,9 +17332,9 @@ var (
 
 `)`
 
-### Components
+### 7.12 Components
 
-#### Component overview
+#### 7.12.1 Component overview
 
 Container Service for Kubernetes (ACK) offers various components that you can deploy, upgrade, or uninstall to meet your business requirements. This topic provides an overview of the components available for dedicated clusters and ACK Edge clusters.
 
@@ -17222,7 +17404,7 @@ extend your cluster's functionality.
 | metrics-server | Provides container resource metrics for the cluster autoscaler. |
 | yurt-app-manager | Manages edge units. |
 
-#### Manage components
+#### 7.12.2 Manage components
 
 This topic describes how to install, update, and uninstall components.
 
@@ -17248,15 +17430,11 @@ When you install the aliyun-acr-credential-helper, autoscaler, csi-provisioner, 
 | Uninstall a component | On the card of the target component, click Uninstall. In the dialog box that appears, click OK. If the Install button is displayed in the card, the component is successfully uninstalled. |
 | View the component YAML | On the card of the target component, choose > View YAML. In the View YAML dialog box, view the information in the relevant fields, and then click Close. |
 
-#### Introduction
+#### 7.12.3 Introduction
 
-##### gatekeeper
+##### 7.12.3.1 gatekeeper
 
-The gatekeeper component facilitates the management and enforcement of policies executed by Open Policy Agent (OPA) in Kubernetes clusters. This allows you to manage the labels of namespaces. This topic describes the features and usage notes of gatekeeper.
-
-**Introduction**
-
-OPA is an open source policy engine that is commonly used to implement policies in stacks in a standardized and context-aware manner. You can use the gatekeeper component to manage and enforce OPA policies, and manage the labels of namespaces in Container Service for Kubernetes (ACK) clusters. For more information about OPA, see Open Policy Agent. For more information about how to install the gatekeeper component, see Manage components. The following figure shows the architecture of gatekeeper.
+The gatekeeper component facilitates the management and enforcement of policies executed by Open Policy Agent (OPA) in Kubernetes clusters. This allows you to manage the labels of namespaces. This topic describes the features and usage notes of gatekeeper. OPA is an open source policy engine that is commonly used to implement policies in stacks in a standardized and context-aware manner. You can use the gatekeeper component to manage and enforce OPA policies, and manage the labels of namespaces in Container Service for Kubernetes (ACK) clusters. For more information about OPA, see Open Policy Agent. For more information about how to install the gatekeeper component, see Manage components. The following figure shows the architecture of gatekeeper.
 
 **Usage notes**
 
@@ -17367,25 +17545,17 @@ pod/test-deny created
 
 The namespace is not subject to the constraint. Therefore, the creation succeeds. The created pod does not have the `name=test-gatekeeper` label. The preceding steps show that gatekeeper can be used to limit the creation of pods in a specific namespace.
 
-##### policy-template-controller
+##### 7.12.3.2 policy-template-controller
 
-policy-template-controller is a key component that is used to manage pod security policies. This topic describes the features and usage notes for policy-template-controller.
-
-**Introduction**
-
-The policy-template-controller component is a Kubernetes controller that is used to manage pod security policies based on clusters and policy instances that are created from policy templates.
+policy-template-controller is a key component that is used to manage pod security policies. This topic describes the features and usage notes for policy-template-controller. The policy-template-controller component is a Kubernetes controller that is used to manage pod security policies based on clusters and policy instances that are created from policy templates.
 
 **Usage notes**
 
 For more information about the usage notes for policy-template-controller, see Use Policy governance through APIs.
 
-##### logtail-ds
+##### 7.12.3.3 logtail-ds
 
-The logtail-ds component is provided by Log Service to collect container logs from Kubernetes clusters. This topic introduces logtail-ds and describes the usage notes and release notes for the component.
-
-**Introduction**
-
-The logtail-ds component enables high-performance log collection with low resource overheads. By default, the component is installed in the kube-system namespace. When you install logtail-ds, the system automatically performs the following operations: Creates a CustomResourceDefinition (CRD) named AliyunLogConfigs, which is used to register CRDs with the Kubernetes system. Creates a Deployment named alibaba-log-controller, which is used to manage CRDs. Installs Logtail as a DaemonSet that is used to collect log data. The logtail-ds component supports the following features. For more information about log collection, see
+The logtail-ds component is provided by Log Service to collect container logs from Kubernetes clusters. This topic introduces logtail-ds and describes the usage notes and release notes for the component. The logtail-ds component enables high-performance log collection with low resource overheads. By default, the component is installed in the kube-system namespace. When you install logtail-ds, the system automatically performs the following operations: Creates a CustomResourceDefinition (CRD) named AliyunLogConfigs, which is used to register CRDs with the Kubernetes system. Creates a Deployment named alibaba-log-controller, which is used to manage CRDs. Installs Logtail as a DaemonSet that is used to collect log data. The logtail-ds component supports the following features. For more information about log collection, see
 **Data Collection** > **Logtail collection** in the **Log Service User Guide**.
 Dynamically filters the logs of the specified containers. Collects multiple types of log data, such as stdout, files, and syslog. Supports multiple log parsing methods and configuration methods.
 
@@ -17393,13 +17563,9 @@ Dynamically filters the logs of the specified containers. Collects multiple type
 
 For more information about the usage notes of logtail-ds, see Use SLS to collect log data from containers.
 
-##### security-inspector
+##### 7.12.3.4 security-inspector
 
-The security-inspector component is a key component for performing security inspections. This topic describes the features and usage notes of security-inspector.
-
-**Introduction**
-
-You can use security-inspector to scan workload configurations based on multiple dimensions. This helps you better understand the security risks of your workloads. The following figure shows the architecture of the security-inspector component.
+The security-inspector component is a key component for performing security inspections. This topic describes the features and usage notes of security-inspector. You can use security-inspector to scan workload configurations based on multiple dimensions. This helps you better understand the security risks of your workloads. The following figure shows the architecture of the security-inspector component.
 
 **Usage notes**
 
@@ -17409,15 +17575,9 @@ The security-inspector component allows you to configure security inspections. s
 
 Polaris is an open source project that is used to identify security risks of workload configurations in a Kubernetes cluster. For more information, see Polaris. The security-inspector component scans workload configurations based on multiple dimensions and generates inspection reports that include information about health checks, images, networks, resources, and security. This allows you to better understand the security risks of your applications in real time and reinforce your system based on the suggestions that are provided by security-inspector. For more information, see Use the configuration inspection feature to check workloads.
 
-##### ack-koordinator
+##### 7.12.3.5 ack-koordinator
 
-ack-koordinator (ack-slo-manager) is used to support service level objective (SLO)-aware workload scheduling in Container Service for Kubernetes (ACK). This component improves resource utilization and ensures the performance of your applications. This topic introduces ack-koordinator and describes the limits and usage notes for the component.
-
-**Limits**
-
-ack-koordinator supports only ACK dedicated clusters whose Kubernetes version is later than 1.18.0. ack-koordinator supports only Helm V3.0 or later.
-
-**Introduction**
+ack-koordinator (ack-slo-manager) is used to support service level objective (SLO)-aware workload scheduling in Container Service for Kubernetes (ACK). This component improves resource utilization and ensures the performance of your applications. This topic introduces ack-koordinator and describes the limits and usage notes for the component. ack-koordinator supports only ACK dedicated clusters whose Kubernetes version is later than 1.18.0. ack-koordinator supports only Helm V3.0 or later.
 
 **Milestones**
 
@@ -17425,15 +17585,11 @@ ack-koordinator is related to the open source project Koordinator. Koordinator i
 
 **Architecture**
 
-ack-koordinator consists of a control plane (Koordinator Manager) and a DaemonSet component (Koordlet): Koordinator Manager: Koordinator Manager is deployed as a Deployment and runs on a primary pod and a secondary pod to ensure high availability. Koordlet: Koordlet is deployed as a DaemonSet and used to support node-level fine-grained scheduling and QoS for containers. K8s APIServer Koordinator Protocol Extensions Manager (CRD, extend-res) Koordlet Kubelet Node-level Resource QoS for Containers Data Fine- Reporting grained Scheduling LS LS BE BE Pod Pod Pod Pod
+ack-koordinator consists of a control plane (Koordinator Manager) and a DaemonSet component (Koordlet): Koordinator Manager: Koordinator Manager is deployed as a Deployment and runs on a primary pod and a secondary pod to ensure high availability. Koordlet: Koordlet is deployed as a DaemonSet and used to support node-level fine-grained scheduling and QoS for containers. K8s APIServer Koordinator Protocol Extensions Manager (CRD, extend-res) Koordlet Kubelet Node-level Resource QoS for Containers Data Fine- Reporting grained LS LS BE BE Pod Pod Pod Pod
 
 **Versioning**
 
-In ack-koordinator v1.1.1-ack.1 and later, the version number uses the **x.y.z-ackn** format. `x.y.z` : indicates the corresponding open source Koordinator version. This means that ack-koordinator supports all features provided by this open source version. `ackn` : indicates feature enhancement and optimization based on the open source Koordinator version.
-
-**Overview**
-
-The ack-koordinator component supports the features of the corresponding versions of open source Koordinator. When you install and configure the ack-koordinator component, only basic feature gates are enabled by default. To use the advanced features supported by open source Koordinator, you must manually enable the corresponding feature gates for ack-koordinator. For more information about the advanced features supported by open source Koordinator, see Koordinator official documentation.
+In ack-koordinator v1.1.1-ack.1 and later, the version number uses the **x.y.z-ackn** format. `x.y.z` : indicates the corresponding open source Koordinator version. This means that ack-koordinator supports all features provided by this open source version. `ackn` : indicates feature enhancement and optimization based on the open source Koordinator version. The ack-koordinator component supports the features of the corresponding versions of open source Koordinator. When you install and configure the ack-koordinator component, only basic feature gates are enabled by default. To use the advanced features supported by open source Koordinator, you must manually enable the corresponding feature gates for ack-koordinator. For more information about the advanced features supported by open source Koordinator, see Koordinator official documentation.
 
 | Type | References | Whether the feature is the same as that of the open source Koordinator version |
 |---|---|---|
@@ -17498,25 +17654,17 @@ The Managed Service for Prometheus component is not installed in the cluster. Fo
 
 Update Helm to V3.0 or later.
 
-##### Cloud Controller Manager
+##### 7.12.3.6 Cloud Controller Manager
 
-The cloud controller manager (CCM) provides features to manage load balancing for cross-node communication. This topic introduces the CCM and provides usage notes for the component.
-
-**Introduction**
-
-The CCM allows you to integrate Kubernetes with Alibaba Cloud services, such as Server Load Balancer (SLB) and Virtual Private Cloud (VPC). The CCM provides the following features: Manage SLB instances If you set `Type=LoadBalancer` for a Service, the CCM automatically creates an SLB instance for the Service, and configures listeners and backend server groups. When the endpoints of the Service change or the cluster nodes change, the CCM automatically updates the vServer groups of the SLB instance. Enable cross-node communication If Flannel is used as the network plug-in of a Kubernetes cluster, the CCM can enable network connections between containers and nodes. This allows you to implement cross-node communication. The CCM adds the pod CIDR block to the route table of the VPC where the cluster is deployed. This enables cross-node communication. This feature is ready for use after the CCM is installed.
+The cloud controller manager (CCM) provides features to manage load balancing for cross-node communication. This topic introduces the CCM and provides usage notes for the component. The CCM allows you to integrate Kubernetes with Alibaba Cloud services, such as Server Load Balancer (SLB) and Virtual Private Cloud (VPC). The CCM provides the following features: Manage SLB instances If you set `Type=LoadBalancer` for a Service, the CCM automatically creates an SLB instance for the Service, and configures listeners and backend server groups. When the endpoints of the Service change or the cluster nodes change, the CCM automatically updates the vServer groups of the SLB instance. Enable cross-node communication If Flannel is used as the network plug-in of a Kubernetes cluster, the CCM can enable network connections between containers and nodes. This allows you to implement cross-node communication. The CCM adds the pod CIDR block to the route table of the VPC where the cluster is deployed. This enables cross-node communication. This feature is ready for use after the CCM is installed.
 
 **Usage notes**
 
 The CCM automatically creates SLB instances for Services, and configures listeners and backend server groups. For more information, see Considerations for configuring a LoadBalancer type Service. The CCM allows you to add annotations to Service configurations to customize load balancing. For more information, see Use annotations to configure load balancing.
 
-##### ack-sysom-monitor
+##### 7.12.3.7 ack-sysom-monitor
 
-ack-sysom-monitor is an operating system kernel-level container monitoring component provided by Container Service for Kubernetes (ACK) for ACK clusters. This topic describes the features and usage notes of ack-sysom-monitor.
-
-**Overview**
-
-ack-sysom-monitor uses the extended Berkeley Packet Filter (eBPF) technology to collect node and container metrics and enhance metrics at the kernel level. In addition to system metrics, ack-sysom-monitor also provides enhanced metrics and supports pod kernel-level monitoring and node kernel-level monitoring to help you identify common issues, including system jitters, delays, resource leaks, and pod memory exceptions.
+ack-sysom-monitor is an operating system kernel-level container monitoring component provided by Container Service for Kubernetes (ACK) for ACK clusters. This topic describes the features and usage notes of ack-sysom-monitor. ack-sysom-monitor uses the extended Berkeley Packet Filter (eBPF) technology to collect node and container metrics and enhance metrics at the kernel level. In addition to system metrics, ack-sysom-monitor also provides enhanced metrics and supports pod kernel-level monitoring and node kernel-level monitoring to help you identify common issues, including system jitters, delays, resource leaks, and pod memory exceptions.
 
 **Usage notes**
 
@@ -17540,13 +17688,9 @@ details page. In the left-side navigation pane, choose **Operations > Add-ons**.
 card and click **Uninstall**.
 4. In the message that appears, click **OK**.
 
-##### aliyun-acr-acceleration-suite
+##### 7.12.3.8 aliyun-acr-acceleration-suite
 
-This topic describes how to use aliyun-acr-acceleration-suite to enable image acceleration.
-
-**Overview**
-
-When you create a container by using an image, the system typically downloads and decompresses full image data. This increases the container startup time. aliyun-acr-acceleration-suite provides the image acceleration feature that allows the system to download and decompress only the resources required for container startup without the need to download the full image package. This accelerates application deployment and enables on-demand image loading.
+This topic describes how to use aliyun-acr-acceleration-suite to enable image acceleration. When you create a container by using an image, the system typically downloads and decompresses full image data. This increases the container startup time. aliyun-acr-acceleration-suite provides the image acceleration feature that allows the system to download and decompress only the resources required for container startup without the need to download the full image package. This accelerates application deployment and enables on-demand image loading.
 
 **Usage notes**
 
@@ -17644,7 +17788,7 @@ Add the image acceleration label to the namespace. Add the image acceleration la
 **Actions** column.
 f. In the **Label** section of the **Edit Namespace** dialog box, set the **Variable Key** parameter to `k8s.aliyun.com/image-accelerate-mode` and the **Variable Value** parameter to `on-demand` , and click **OK**.
 
-##### kritis-validation-hook
+##### 7.12.3.9 kritis-validation-hook
 
 kritis-validation-hook is a key component that is used to verify the signatures of container images. You can use signature verification to ensure that only images signed by trusted authorities are deployed in your cluster. This reduces the risk of malicious code execution. This topic provides examples on how kritisvalidation-hook is used to verify signatures.
 
@@ -17667,7 +17811,7 @@ component and install it.
 
 For more information about how to enable automatic signature verification for container images, see Use kritis-validation-hook to automatically verify the signatures of Container Registry Advanced Edition images.
 
-##### ack-fluid
+##### 7.12.3.10 ack-fluid
 
 ack-fluid is a distributed dataset orchestrator and data accelerator provided by Container Service for Kubernetes (ACK) for Kubernetes environments.
 
@@ -17929,7 +18073,7 @@ Run the following command to delete the dataset and DadiRuntime instance:
 kubectl delete dataset hadoop
 ```
 
-##### RoleBasedGroup
+##### 7.12.3.11 RoleBasedGroup
 
 RoleBasedGroup is an API for orchestrating multi-role collaborative distributed workload services. It focuses on addressing common deployment patterns for AI/ML inference workloads. This topic describes the features and usage notes of the rbgs component.
 
@@ -18286,9 +18430,9 @@ d mystical creatures, lies a long-forgotten city—Eloria. It was once a symbol 
 
 `}'`
 
-##### API Gateway Ingress Controller
+##### 7.12.3.12 API Gateway Ingress Controller
 
-###### Overview
+###### 7.12.3.12.1 Overview
 
 API Gateway Ingress Controller is an enterprise-grade service built on the open source Higress gateway. It is compatible with NGINX Ingress and is designed for API management and microservices scenarios.
 
@@ -18301,8 +18445,6 @@ In a Kubernetes cluster, an Ingress serves as an access point that exposes servi
 The API Gateway Ingress Controller component is developed based on Cloud-native Gateway and provides a more powerful method to manage Ingress traffic. This component is compatible with NGINX Ingress gateways and more than 50 annotations defined in NGINX Ingress gateways. It is suitable for more than 90% of scenarios of NGINX Ingress gateways. This component supports canary releases of multiple service versions at the same time and provides flexible service governance capabilities and comprehensive security protection. It can meet requirements for traffic governance in scenarios in which a large number of cloudnative distributed applications are used. While maintaining compatibility with annotations defined in NGINX Ingress gateways, API Gateway Ingress Controller introduces additional annotations to enhance traffic governance and security protection capabilities. After you deploy API Gateway Ingress Controller in your cluster, it listens to ApigConfig resources and dynamically manages the lifecycles, global parameter settings, and listening items of Ingress resources for cloud-native gateways. Cloud-native gateways are used to listen to Ingress resources in a Kubernetes cluster and convert the listened Ingress resources into the required traffic governance configurations. This way, cluster services are externally exposed.
 
 **Working principles of API Gateway Ingress Controller**
-
-**Components**
 
 API Gateway Ingress Controller: API Gateway Ingress Controller is not a network data plane, but is a control plane that manages cloudnative gateways and their configurations. API Gateway Ingress Controller does not process any service requests. It works as a traffic bypass to manage cloud-native gateways that process service traffic. You need to manage the API Gateway Ingress Controller component in your cluster, use the ApigConfig CRDs provided by this component to manage cloud-native gateways based on annotations, and configure Ingress resource listening items for the gateways. Cloud-native gateway: Cloud-native gateways are created by the API Gateway Ingress Controller component based on ApigConfig CRDs that you configured. A cloud-native gateway consists of a control plane and a data plane. Control plane: listens to resources such as Ingresses, Ingress classes, and services in an associated ACK cluster. The resource configurations are internally parsed and then sent to the data plane of the gateway in real time. Data plane: implements traffic governance. The data plane processes external requests based on the governance rules that are sent from the control plane, and routes the requests to the destination backend services.
 
@@ -18325,7 +18467,7 @@ API Gateway Ingress Controller listens to the ApigConfig resources created in yo
 | Traffi | c Forwarding |
 |---|---|
 
-###### Manage the API Gateway Ingress Controller
+###### 7.12.3.12.2 Manage the API Gateway Ingress Controller component
 
 **component**
 
@@ -18383,7 +18525,7 @@ pane, click **Add-ons**.
 Gateway Ingress Controller card.
 5. In the message that appears, click **OK**.
 
-##### Higress Ingress Controller
+##### 7.12.3.13 Higress Ingress Controller
 
 This topic describes the features and usage notes of the Higress Ingress Controller component.
 
@@ -18499,13 +18641,9 @@ curl -H "Host: hello.example.com" http://<External endpoint>
 
 Replace <External endpoint> with the external endpoints of the preceding services in sequence.
 
-##### Poseidon
+##### 7.12.3.14 Poseidon
 
-Poseidon is an ACK-developed container NetworkPolicy plugin that supports standard Kubernetes NetworkPolicy features. This topic describes the Poseidon component and its usage.
-
-**Overview**
-
-As an ACK-developed plugin, Poseidon supports standard Kubernetes NetworkPolicy specifications.
+Poseidon is an ACK-developed container NetworkPolicy plugin that supports standard Kubernetes NetworkPolicy features. This topic describes the Poseidon component and its usage. As an ACK-developed plugin, Poseidon supports standard Kubernetes NetworkPolicy specifications.
 
 **Usage**
 
@@ -18588,13 +18726,9 @@ resource "alicloud_cs_kubernetes_addon" "poseidon" {
 
 `})` `}`
 
-##### ack-kruise-agent-sandbox
+##### 7.12.3.15 ack-kruise-agent-sandbox
 
-This topic describes the features and usage of the ack-kruise-agent-sandbox component.
-
-**Introduction**
-
-ack-kruise-agent-sandbox is a dedicated agent for the OpenKruise project in ACK environments. It manages and schedules container workloads that run in a security sandbox.
+This topic describes the features and usage of the ack-kruise-agent-sandbox component. ack-kruise-agent-sandbox is a dedicated agent for the OpenKruise project in ACK environments. It manages and schedules container workloads that run in a security sandbox.
 
 **Key features**
 
@@ -18625,19 +18759,15 @@ When you create a cluster, selecting the **Enable Sandbox-container** checkbox a
 **AgentSandbox Suite** checkbox, which automatically installs the ack-kruise-agent-sandbox component. For
 detailed instructions on how to create a cluster, see Create a Kubernetes cluster.
 
-##### AHPA
+##### 7.12.3.16 AHPA
 
-Container Service for Kubernetes (ACK) supports the Advanced Horizontal Pod Autoscaler (AHPA) to manage auto scaling for your applications. For applications with cyclical workloads, AHPA uses elasticity prediction to perform resource warm-up, which helps prevent elastic scaling lag. You can install the AHPA component to use its predictive capabilities. This topic describes the components and usage of AHPA.
-
-**Components**
-
-AHPA mitigates elastic scaling lag by predicting the required number of pods based on historical application metrics. AHPA combines proactive and passive prediction to adjust the number of pods in real time. It also includes a fallback protection strategy, which allows you to set minimum and maximum pod counts for specific time ranges as a scaling guardrail.
+Container Service for Kubernetes (ACK) supports the Advanced Horizontal Pod Autoscaler (AHPA) to manage auto scaling for your applications. For applications with cyclical workloads, AHPA uses elasticity prediction to perform resource warm-up, which helps prevent elastic scaling lag. You can install the AHPA component to use its predictive capabilities. This topic describes the components and usage of AHPA. AHPA mitigates elastic scaling lag by predicting the required number of pods based on historical application metrics. AHPA combines proactive and passive prediction to adjust the number of pods in real time. It also includes a fallback protection strategy, which allows you to set minimum and maximum pod counts for specific time ranges as a scaling guardrail.
 
 **How it works**
 
 Auto scaling helps you save costs, improve service stability, and reduce operational overhead. The AHPA architecture follows these principles: Stability: Scales your application while maintaining service stability. Reduced operational overhead: The AHPA Autoscaler offers a simpler configuration than a standard HPA. The following figure shows the architecture of AHPA. resource metrics custom metrics external metrics MQ CPU/Memory QPS/RT Length Smarter algorithms scaling metrics Scaling methods Knative/HPA/ Deployment pod pod pod pod pod pod Rich metrics: AHPA supports various metrics, including resource metrics such as CPU and memory, custom metrics such as QPS and RT, and external metrics. Stability guarantee: The AHPA scaling logic combines proactive resource warm-up and passive scaling with fallback protection to ensure resource stability. Proactive prediction: Uses machine learning algorithms from DAMO Academy to predict the required number of pods for the next 24 hours based on historical metrics. This approach is ideal for applications with cyclical workloads. Passive prediction: Calculates the required number of pods based on real-time application metrics. This helps your application handle sudden traffic spikes. Fallback protection: Allows you to configure the minimum and maximum number of pods for different time ranges. Multiple scaling methods: AHPA can manage auto scaling for various resources, including Knative services, HPA objects, and Deployments. Knative: Addresses cold start issues for serverless applications by scaling based on concurrency, QPS, and RT. HPA: Simplifies HPA policy configuration, making auto scaling easier to adopt, and resolves cold start issues common in standard HPA. Deployment: Directly scales the pods within a Deployment.
 
-##### AI profiling
+##### 7.12.3.17 AI profiling
 
 AI Profiling is an advanced analysis tool for performance observability, diagnostics, and optimization across the full lifecycle of AI applications. It provides an end-to-end solution for developers and operations teams by tracing cross-layer call traces in the software stack of AI models during training and inference, including the Python stack, Torch layer, video memory, CUDA runtime, and GPU kernel functions. AI Profiling combines this trace data with fine-grained, operator-level performance metrics, such as FLOPs, time spent on computation, communication, and video memory, idle time, and overall resource consumption.
 
@@ -18660,13 +18790,13 @@ overhead during collection ranges from 5% to 40%.
 
 Use AI Profiling to diagnose common performance issues and find recommended solutions. Diagnose failures that occur after you deploy your AI application. Investigate why your AI application is running slower than expected. Identify performance bottlenecks on your server, such as an operator that is taking too long to execute.
 
-### SLB and Ingress
+### 7.13 SLB and Ingress
 
-#### Overview
+#### 7.13.1 Overview
 
 Container Service allows you to flexibly manage load balancing and customize load balancing policies for Kubernetes clusters. Kubernetes clusters provide you with a variety of methods to access containerized applications. They also allow you to use SLB or Ingress to access internal services and implement load balancing.
 
-#### Use SLB to access Services
+#### 7.13.2 Use SLB to access Services
 
 You can access a Service by using Server Load Balancer (SLB).
 
@@ -18781,7 +18911,7 @@ Annotations are case-sensitive. Table 1. SLB annotations
 | service.beta.kubernetes.io/alicloud- loadbalancer-health-check-timeout | For more information, see the CreateLoadBalancerTCPListener chapter of SLB Developers Guide. | N/A |
 |---|---|---|
 
-#### Configure Ingress monitoring
+#### 7.13.3 Configure Ingress monitoring
 
 You can enable the virtual host traffic status (VTS) dashboard to view Ingress monitoring data.
 
@@ -18830,7 +18960,7 @@ root@master # kubectl port-forward nginx-ingress-controller-79877595c8-78gq8 -n 
 
 4. Visit `http://localhost:18080/nginx_status` to access the VTS dashboard.
 
-#### Ingresses
+#### 7.13.4 Ingresses
 
 Kubernetes clusters support Ingress rules. You can define Ingress rules to meet your needs for load balancing. In Kubernetes clusters, an Ingress is a set of routing rules that authorize external access to Services in clusters. You can use an Ingress to enable Layer 7 load balancing. You can configure an Ingress with URLs, Server Load Balancing (SLB) instances, SSL connections, and name-based virtual hosts to expose Services to external access.
 
@@ -19035,7 +19165,7 @@ spec:
 
 An Ingress that routes Layer 7 traffic to the `http-svc` Service is created.
 
-#### Configure an NGINX Ingress to use a public
+#### 7.13.5 Configure an NGINX Ingress to use a public IPv6 address
 
 **IPv6 address**
 
@@ -19129,7 +19259,7 @@ NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE nginx-ingress-lb-v6 LoadBalancer 19
 
 The value in the `EXTERNAL-IP` column is the external endpoint of the Service. If a value is displayed in the `EXTERNAL-IP` column, the IPv6 SLB instance is created.
 
-#### Compatibility of NGINX Ingress annotations
+#### 7.13.6 Compatibility of NGINX Ingress annotations in Higress
 
 **in Higress**
 
@@ -19596,7 +19726,7 @@ features. The Envoy architecture is ignored during migration.
 |---|---|---|---|---|---|
 | 1 | nginx.ing ress.kub ernetes.i o/http2- push- preload |   | Enable HTTP/2 Server Push to preload resource s. | - | HTTP/2 Server Push has been abandoned by mainstream browsers (Chrome 106 + removed), and the performance optimization effect is not obvious, directly ignored. |
 
-#### Migrate NGINX to Higress
+#### 7.13.7 Migrate NGINX to Higress
 
 This topic describes how to migrate a Higress from NGINX and how to configure it.
 
@@ -20294,17 +20424,13 @@ spec:
     secretName: api-tls-secret
 ```
 
-#### Enable Nginx ingress configuration check
+#### 7.13.8 Enable Nginx ingress configuration check
 
 The Nginx ingress controller provides a configuration check feature to prevent crashes caused by invalid syntax. This topic describes how to enable this feature.
 
 **Prerequisites**
 
-You have created a Kubernetes cluster.
-
-**Limits**
-
-Only component versions 1.13.9 and 1.14.5 are supported.
+You have created a Kubernetes cluster. Only component versions 1.13.9 and 1.14.5 are supported.
 
 **Procedure**
 
@@ -20326,7 +20452,7 @@ Only component versions 1.13.9 and 1.14.5 are supported.
 
 After you enable the configuration check, you cannot create ingress objects with syntax errors.
 
-#### Ingress configurations
+#### 7.13.9 Ingress configurations
 
 Container Service provides Ingress controller components. Integrated with Apsara Server Load Balancer, these components provide Kubernetes clusters with flexible and reliable Ingress service. An Ingress orchestration template is provided below. When you configure an Ingress through the console, you need to configure annotations and may need to create dependencies. For more information, see Create an Ingress with the console, Ingresses, and Kubernetes Ingress. You can also create ConfigMaps to configure Ingresses. For more information, see https://kubernetes.github.io/ingress-nginx/user-guide/nginxconfiguration/configmap/.
 
@@ -20394,7 +20520,7 @@ You can use a Secret that contains a TLS private key and certificate to encrypt 
 
 You can add labels to the Ingress.
 
-#### Create an Ingress with the console
+#### 7.13.10 Create an Ingress with the console
 
 The Alibaba Cloud Container Service console includes Ingress management, allowing you to quickly create an Ingress and build a flexible, reliable traffic access layer.
 
@@ -20621,7 +20747,7 @@ On the **Ingresses** page, you can perform the following actions on an Ingress f
 
 On the **Ingresses** page, you can also select multiple **Ingresses** and delete them at once.
 
-#### Update an Ingress
+#### 7.13.11 Update an Ingress
 
 You can update Ingresses in the Container Service console.
 
@@ -20640,7 +20766,7 @@ A Kubernetes cluster is created and an Ingress controller is running as normal i
 6. In the dialog box that appears, modify the parameters and click **Update**. In this example, `foo.bar.com`
 is changed to `test.bar.com` . On the Ingresses page, you can verify that the Ingress rule has changed.
 
-#### Delete an Ingress
+#### 7.13.12 Delete an Ingress
 
 This topic describes how to delete an Ingress.
 
@@ -20662,9 +20788,9 @@ choose **More > Delete** in the Actions column.
 
 On the **Ingresses** page, you can also select multiple Ingresses and delete the selected Ingresses at a time.
 
-### Config maps and secrets
+### 7.14 Config maps and secrets
 
-#### Create a ConfigMap
+#### 7.14.1 Create a ConfigMap
 
 In the Container Service for Kubernetes (ACK) console, you can create a ConfigMap on the ConfigMap page or by using a template.
 
@@ -20704,17 +20830,9 @@ Create a ConfigMap from a template
 
 After the deployment is completed, you can find the ConfigMap named aliyun-config on the ConfigMap page.
 
-#### Use a ConfigMap in a pod
+#### 7.14.2 Use a ConfigMap in a pod
 
-This topic describes how to use a ConfigMap in a pod. You can use a ConfigMap in a pod in the following scenarios: Use a ConfigMap to define environment variables for a pod. Use a ConfigMap to set command line parameters. Use a ConfigMap in a volume. For more information, see Configure a pod to use a ConfigMap.
-
-**Limits**
-
-To use a ConfigMap in a pod, make sure that the ConfigMap and the pod are in the same cluster and namespace.
-
-**Create a ConfigMap**
-
-In this example, a ConfigMap named special_config is created. This ConfigMap consists of two key-value pairs: `SPECIAL_LEVEL: very` and `SPECIAL_TYPE: charm` . You can use the following YAML template to create the ConfigMap:
+This topic describes how to use a ConfigMap in a pod. You can use a ConfigMap in a pod in the following scenarios: Use a ConfigMap to define environment variables for a pod. Use a ConfigMap to set command line parameters. Use a ConfigMap in a volume. For more information, see Configure a pod to use a ConfigMap. To use a ConfigMap in a pod, make sure that the ConfigMap and the pod are in the same cluster and namespace. In this example, a ConfigMap named special_config is created. This ConfigMap consists of two key-value pairs: `SPECIAL_LEVEL: very` and `SPECIAL_TYPE: charm` . You can use the following YAML template to create the ConfigMap:
 
 ```
 apiVersion: v1 kind: ConfigMap metadata:
@@ -20838,7 +20956,7 @@ After you run the pod, the following output is returned:
 SPECIAL_TYPE SPECIAL_LEVEL
 ```
 
-#### Update a ConfigMap
+#### 7.14.3 Update a ConfigMap
 
 You can use multiple methods to update a ConfigMap.
 
@@ -20856,7 +20974,7 @@ If you update a ConfigMap, the applications that use the ConfigMap are affected.
 click **Edit** in the Actions column.
 6. In the dialog box that appears, modify the configurations and click **OK**.
 
-#### Delete a ConfigMap
+#### 7.14.4 Delete a ConfigMap
 
 You can use multiple methods to delete a ConfigMap.
 
@@ -20874,7 +20992,7 @@ If you delete a ConfigMap, the applications that use this ConfigMap are affected
 click **Delete** in the **Actions** column.
 6. In the message that appears, click **OK**.
 
-#### Create a secret
+#### 7.14.5 Create a secret
 
 You can create secrets for your applications to use.
 
@@ -20911,7 +21029,7 @@ If you enter a secret as plaintext, select **Encode Data Values Using Base64** .
 
 You are redirected to the Secrets page, where the new secret is displayed in the list.
 
-#### Modify a Secret
+#### 7.14.6 Modify a Secret
 
 This topic describes how to modify a Secret in the Container Service console.
 
@@ -20929,7 +21047,7 @@ A Kubernetes cluster is created. A Secret is created. For more information, see 
 the Actions column.
 6. In the dialog box that appears, modify the Secret and click **OK**.
 
-#### Delete a Secret
+#### 7.14.7 Delete a Secret
 
 This topic describes how to delete a Secret in the Container Service console.
 
@@ -20953,9 +21071,9 @@ Do not delete Secrets that are generated when the cluster is created.
 **Delete** in the **Actions** column.
 6. In the message that appears, click **OK**.
 
-### Log management
+### 7.15 Log management
 
-#### Use SLS to collect log data from containers
+#### 7.15.1 Use SLS to collect log data from containers
 
 Container Service for Kubernetes (ACK) is integrated with Simple Log Service (SLS). When you create an ACK cluster, you can enable SLS to collect log data from containers, including standard output (stdout) and text files.
 
@@ -21438,7 +21556,7 @@ find that custom tags are appended to the collected log data. After SLS is enabl
 4. On the **Log Center** page, click the **Application Logs** tab and select the required Logstore to view the
 logs of containers.
 
-#### Configure Log4jAppender for Kubernetes and
+#### 7.15.2 Configure Log4jAppender for Kubernetes and Log Service
 
 **Log Service**
 
@@ -21532,17 +21650,15 @@ curl http://${K8S_SERVICE_IP}:8080/login?name=bruce
 4. View the log in Log Service
 i. In the **Projects** list, click your Log Service project. ii. Click the icon to the right side of the k8s-logstore Logstore and select **Search & Analysis** to view the log of the Kubernetes cluster.
 
-### Monitoring management
+### 7.16 Monitoring management
 
-#### Enable Managed Service for Prometheus
+#### 7.16.1 Enable Managed Service for Prometheus
 
 After you enable Managed Service for Prometheus, you can view dashboards and performance metrics that are preset for Container Service for Kubernetes (ACK). This topic describes how to enable Managed Service for Prometheus for ACK clusters, how to configure alert rules in Managed Service for Prometheus, and how to customize monitoring metrics and use Grafana to display monitoring metrics.
 
 **Background information**
 
 Managed Service for Prometheus can be used to monitor a wide variety of components and provide various out-of-the-box dashboards. Managed Service for Prometheus is integrated with the open source Prometheus ecosystem. Managed Service for Prometheus is a comprehensive, ready-to-use monitoring service. You do not need to be concerned about managing the underlying services, such as data storage, data presentation, and system O&M.
-
-**Enable Managed Service for Prometheus**
 
 **Enable Managed Service for Prometheus when you create a cluster**
 
@@ -21834,7 +21950,7 @@ Run the following commands to delete the related Roles and RoleBindings:
 kubectl delete Role arms-pilot-prom-spec-ns-k8s kubectl delete Role arms-pilot-prom-spec-ns-k8s -n kube-system kubectl delete RoleBinding arms-pilot-prom-spec-ns-k8s kubectl delete RoleBinding arms-pilot-prom-spec-ns-k8s -n kube-system
 ```
 
-### Alert configurations
+### 7.17 Alert configurations
 
 The alert center provides alert notifications for anomalies and abnormal metrics in ACK clusters.
 
@@ -22068,14 +22184,11 @@ Alert rule set for abnormal cluster network events
 |---|---|---|---|---|---|
 | Terway fails to allocate an IP address | An anomalous activity where the Terway network resource of the cluster fails to allocate an IP address. | Simple Log Service | event | terway-alloc- ip-err | sls.app.ack.ter way.alloc ip fai _ _ l |
 
-### Resource profiling
+### 7.18 Resource profiling
 
-#### Enable resource profiling
+#### 7.18.1 Enable resource profiling
 
 The resource profiling feature intelligently analyzes the CPU and memory usage of workloads to provide precise resource configuration recommendations. It helps reduce cluster costs and improve efficiency while ensuring business stability. It can be flexibly enabled for all workloads or a custom-defined scope.
-
-**Enable resource profiling**
-
 1. Log in to the Container Service for Kubernetes (ACK) console. In the left-side navigation pane, click
 **Clusters**.
 2. On the **Clusters** page, click the name of the desired cluster. In the left-side navigation pane of the cluster
@@ -22107,12 +22220,9 @@ In global configuration mode, resource profiling is enabled for all workloads ex
 | CPU Redundancy Rate | If the deviation between the recommended CPU specification and the original CPU request exceeds the specified redundancy rate, the system suggests a downgrade for the CPU configuration. Unit: %. | 30 |
 | Memory Redundancy Rate | If the deviation between the recommended memory specification and the original memory request exceeds the specified redundancy rate, the system suggests a downgrade for the memory configuration. Unit: %. | 30 |
 
-#### View resource profiles
+#### 7.18.2 View resource profiles
 
 The resource profile feature analyzes historical usage data to provide clear recommendations for scaling up, scaling down, or maintaining the CPU and memory configurations for your workloads. You can query, filter, and view detailed profiles and YAML information to fine-tune resource utilization.
-
-**View resource profiles**
-
 1. Log on to the Container Service for Kubernetes (ACK) console. In the left-side navigation pane, choose
 **clusters**.
 2. On the **clusters** page, click the name of your target cluster. Then, in the left-side navigation pane, choose
@@ -22156,7 +22266,7 @@ In the Profile details section, you can view information such as **Resource curv
 **modification**.
 On the resource profile details page, click **YAML** in the upper-right corner to view the YAML file.
 
-#### Change resource configurations
+#### 7.18.3 Change resource configurations
 
 Based on intelligent recommendations from resource profiling, the resource configuration change feature enables one-click autofill or manual adjustment of CPU and memory requests and limits for workloads, achieving precise and efficient resource optimization while ensuring business stability.
 
@@ -22184,9 +22294,9 @@ The system automatically sets Target Required Resources and Target Limit Resourc
 | Target Required Resources | You can change the CPU request and memory request based on the recommendations provided by ACK. |
 | Target Limit Resources | You can change the CPU limit and memory limit based on the recommendations provided by ACK. |
 
-### GPU
+### 7.19 GPU
 
-#### Create an ACK dedicated cluster with GPU-
+#### 7.19.1 Create an ACK dedicated cluster with GPU-accelerated nodes
 
 **accelerated nodes**
 
@@ -22284,7 +22394,7 @@ described in the following table.
 6. In the **Confirm** dialog box, verify that all check items are passed, read and select the terms of service and
 disclaimer, and then click **OK** to deploy the cluster. After the cluster is created, you can view the cluster on the **Clusters** page.
 
-#### Upgrade the NVIDIA driver on a GPU node
+#### 7.19.2 Upgrade the NVIDIA driver on a GPU node
 
 This topic describes how to upgrade the NVIDIA driver on a GPU node when workloads are deployed on the node and when no workload is deployed on the node.
 
@@ -22433,7 +22543,7 @@ Replace node-name with the target node name.
 kubectl exec -n kube-system -t nvidia-device-plugin-node-name nvidia-smi
 ```
 
-#### Enable GPU sharing
+#### 7.19.3 Enable GPU sharing
 
 This topic describes how to enable GPU sharing.
 
@@ -22598,7 +22708,7 @@ Expected output:
 NAME IPADDRESS GPU0(Allocated/Total) GPU Memory(GiB) cn-wulan-env230-d01.192.168.3.XXXX 192.168.3.XXXX 0/8 0/8 ---------------------------------------------------------------------- Allocated/Total GPU Memory In Cluster: 0/8 (0%)
 ```
 
-#### Work with GPU sharing
+#### 7.19.4 Work with GPU sharing
 
 This topic describes how to use the GPU sharing feature to request GPU memory for an application.
 
@@ -22711,7 +22821,7 @@ kubectl exec -ti tensorflow-mnist-l5k9v -- cuda_malloc -size=4096
 
 The output in Step 5 indicates that node cn-wulan-env230-d01.192.168.3.XXX is equipped with a GPU. The GPU can provide 7 GiB of memory. Only 3 GiB of memory is allocated to the job. The following result is returned. The output indicates that the application fails because the requested amount of memory exceeds the amount of memory allocated to the pod, which is 3 GiB.
 
-#### GPU scheduling for Kubernetes clusters with
+#### 7.19.5 GPU scheduling for Kubernetes clusters with GPU-accelerated nodes
 
 **GPU-accelerated nodes**
 
@@ -22727,11 +22837,7 @@ ACK clusters use ROS to deploy applications. Before you create an ACK cluster, y
 
 **Background Information**
 
-Starting from V1.8, Kubernetes adds support for the following hardware acceleration devices using device plug-ins: NVIDIA GPUs, InfiniBand devices, and field-programmable gate arrays (FPGAs). GPU solutions provided by the Kubernetes community will be deprecated in V1.10 and removed from the master code in V1.11. ACK lets you deploy GPU-accelerated nodes in Kubernetes clusters to run compute-intensive tasks such as machine learning tasks and image processing tasks. You can deploy applications and enable auto scaling for applications without the need to install NVIDIA drivers or Compute Unified Device Architecture (CUDA). When ACK creates a cluster, ACK performs the following operations: Creates Elastic Compute Service (ECS) instances, configures a public key to enable SSH logon from master nodes to other nodes, and configures the cluster using CloudInit. Creates a security group to allow access to the virtual private cloud (VPC) where the cluster resides over Internet Control Message Protocol (ICMP). If you do not specify an existing VPC for the cluster, ACK creates a VPC and a vSwitch for the cluster and creates SNAT entries for the vSwitch. Adds route entries to the route table of the VPC. Creates a NAT gateway and an elastic IP address (EIP). Creates an internal-facing Server Load Balancer (SLB) instance and opens port 6443. Creates an Internet-facing SLB instance and opens ports 6443, 8443, and 22. If you enable SSH logon over the Internet, ACK opens port 22. If you do not enable SSH logon over the Internet, ACK does not open port 22.
-
-**Limits**
-
-ACK clusters support only VPCs. By default, each Alibaba Cloud account has specific quotas on cloud resources that can be created. You cannot create clusters if the quota is reached. Check the quota of your account before you create a cluster. If you want to increase the quota, contact the ACK technical support team. By default, you can create at most five clusters across all regions with each account. Each cluster can contain at most 40 nodes. If you want to create more clusters or nodes, contact the ACK technical support team.
+Starting from V1.8, Kubernetes adds support for the following hardware acceleration devices using device plug-ins: NVIDIA GPUs, InfiniBand devices, and field-programmable gate arrays (FPGAs). GPU solutions provided by the Kubernetes community will be deprecated in V1.10 and removed from the master code in V1.11. ACK lets you deploy GPU-accelerated nodes in Kubernetes clusters to run compute-intensive tasks such as machine learning tasks and image processing tasks. You can deploy applications and enable auto scaling for applications without the need to install NVIDIA drivers or Compute Unified Device Architecture (CUDA). When ACK creates a cluster, ACK performs the following operations: Creates Elastic Compute Service (ECS) instances, configures a public key to enable SSH logon from master nodes to other nodes, and configures the cluster using CloudInit. Creates a security group to allow access to the virtual private cloud (VPC) where the cluster resides over Internet Control Message Protocol (ICMP). If you do not specify an existing VPC for the cluster, ACK creates a VPC and a vSwitch for the cluster and creates SNAT entries for the vSwitch. Adds route entries to the route table of the VPC. Creates a NAT gateway and an elastic IP address (EIP). Creates an internal-facing Server Load Balancer (SLB) instance and opens port 6443. Creates an Internet-facing SLB instance and opens ports 6443, 8443, and 22. If you enable SSH logon over the Internet, ACK opens port 22. If you do not enable SSH logon over the Internet, ACK does not open port 22. ACK clusters support only VPCs. By default, each Alibaba Cloud account has specific quotas on cloud resources that can be created. You cannot create clusters if the quota is reached. Check the quota of your account before you create a cluster. If you want to increase the quota, contact the ACK technical support team. By default, you can create at most five clusters across all regions with each account. Each cluster can contain at most 40 nodes. If you want to create more clusters or nodes, contact the ACK technical support team.
 
 **Note**
 
@@ -22827,7 +22933,7 @@ from tensorflow.python.client import device_lib def get_available_devices():
 print(get_available_devices())
 ```
 
-#### Enable Auto Scaling based on GPU metrics
+#### 7.19.6 Enable Auto Scaling based on GPU metrics
 
 Container Service for Kubernetes (ACK) provides the Auto Scaling feature based on custom metrics. ACK can work with Managed Service for Prometheus to implement Auto Scaling based on GPU metrics. This topic describes how to deploy Managed Service for Prometheus to monitor applications. This topic also provides examples on how to view GPU metrics that are collected by Managed Service for Prometheus and enable Auto Scaling of pods based on GPU metrics.
 
@@ -23287,7 +23393,7 @@ NAME READY STATUS RESTARTS AGE bert-intent-detection-7b486f6bf-f**** 1/1 Running
 
 The output shows that the number of pods is 1. This indicates that the pods are scaled in.
 
-#### Use labels to schedule pods to GPU-
+#### 7.19.7 Use labels to schedule pods to GPU-accelerated nodes
 
 **accelerated nodes**
 
@@ -23376,7 +23482,7 @@ spec:
 
 In the left-side navigation pane of the details page, choose **Workloads > Pods**. On the Pods page, select the namespace to view pods created in the namespace. On the Pods page, you can find that the pods in the preceding examples are scheduled to the desired nodes. This means that labels can be used to schedule pods to GPU-accelerated nodes.
 
-#### Manually upgrade the kernel of a GPU node
+#### 7.19.8 Manually upgrade the kernel of a GPU node in a cluster
 
 **in a cluster**
 
@@ -23493,7 +23599,7 @@ kubectl exec -n kube-system -t nvidia-device-plugin-cn-beijing.i-2ze19qyi8votgjz
 +-----------------------------------------------------------------------------+
 ```
 
-#### Configure RAM role authorization for ack-ai-
+#### 7.19.9 Configure RAM role authorization for ack-ai-installer
 
 **installer**
 
@@ -23561,7 +23667,7 @@ The following table describes some of the parameters.
 5. After you complete the configuration, click **Initiate Call** in the lower-part of the **Parameter** tab.
 If **200** is displayed on the **Call Result** tab, the call is successful. The permissions are granted to the worker RAM role of the cluster.
 
-#### Specify an NVIDIA driver version
+#### 7.19.10 Specify an NVIDIA driver version
 
 This topic describes how to specify an NVIDIA driver version for GPU-accelerated nodes.
 
@@ -23662,21 +23768,17 @@ Sun Feb 7 04:09:01 2021 +-------------------------------------------------------
 
 The output shows that the NVIDIA driver version is `470.161.03` . This indicates that the specified NVIDIA driver is installed.
 
-### Scheduling
+### 7.20 Scheduling
 
-#### CPU scheduling
+#### 7.20.1 CPU scheduling
 
-##### CPU Burst
+##### 7.20.1.1 CPU Burst
 
 CPU Burst is a service level objective (SLO)-aware resource scheduling feature provided by Container Service for Kubernetes (ACK). You can use CPU Burst to improve the performance of latency-sensitive applications. CPU scheduling for a container may be throttled by the kernel due to the CPU limit, which downgrades the performance of the application. The ack-koordinator component automatically detects CPU throttling events and adjusts the CPU limit to a proper value. This greatly improves the performance of latency-sensitive applications. This topic introduces CPU Burst. This topic also describes how to use CPU Burst and how to verify the performance improvement.
 
 **Prerequisites**
 
-An ACK dedicated cluster is created. For more information, see Create an ACK cluster. ack-koordinator is installed. For more information, see ack-koordinator.
-
-**Limits**
-
-The following table describes the versions of the system components that are required for enabling CPU Burst.
+An ACK dedicated cluster is created. For more information, see Create an ACK cluster. ack-koordinator is installed. For more information, see ack-koordinator. The following table describes the versions of the system components that are required for enabling CPU Burst.
 
 | Component | Required version |
 |---|---|
@@ -23871,9 +23973,9 @@ The following tables show metrics before and after CPU Burst is enabled for Alib
 
 The preceding metrics indicate the following information: After CPU Burst is enabled, the P99 latency is greatly reduced. After CPU Burst is enabled, CPU throttling is stopped and the average pod CPU utilization remains approximately at the same value.
 
-#### Fine grained scheduling
+#### 7.20.2 Fine grained scheduling
 
-##### CPU Suppress
+##### 7.20.2.1 CPU Suppress
 
 The ack-koordinator component provides the CPU Suppress feature. You can use this feature to limit the CPU usage of BestEffort (BE) pods on a node. This topic describes how to use the CPU Suppress feature provided by ack-koordinator.
 
@@ -23972,7 +24074,7 @@ data:
 |---|---|---|
 | nt |   |   |
 
-##### CPU QoS
+##### 7.20.2.2 CPU QoS
 
 Kubernetes lets you deploy multiple types of containerized applications on the same host. This causes applications with different priorities to compete for CPU resources. As a result, the performance of the applications with high priorities cannot be guaranteed. The ack-koordinator component lets you use quality of service (QoS) classes to guarantee CPU resources for applications with high priorities. This topic describes how to configure the CPU QoS feature for pods.
 
@@ -23982,11 +24084,7 @@ To make full use of computing resources, workloads of different priorities are u
 
 **Prerequisites**
 
-A Container Service for Kubernetes (ACK) dedicated cluster is created. For more information, see Create an ACK cluster. ack-koordinator is installed. For more information, see ack-koordinator.
-
-**Limits**
-
-The following table describes the version requirements for the system components.
+A Container Service for Kubernetes (ACK) dedicated cluster is created. For more information, see Create an ACK cluster. ack-koordinator is installed. For more information, see ack-koordinator. The following table describes the version requirements for the system components.
 
 | Component | Required version |
 |---|---|
@@ -24152,7 +24250,7 @@ Expected output:
 
 The output shows that the priority of the LS pod is high and the priority of the BE pod is low. CPU resources are preferably scheduled to the LS pod to ensure the service quality.
 
-##### Memory QoS for containers
+##### 7.20.2.3 Memory QoS for containers
 
 ack-koordinator provides memory Quality of Service (QoS) for containers. This feature improves the runtime memory performance of applications and ensures the fair allocation of memory resources. This topic describes how to use the container memory QoS feature.
 
@@ -24162,11 +24260,7 @@ Containers have two main constraints when using memory: Container memory limit: 
 
 **Prerequisites**
 
-An ACK dedicated cluster is created. For more information, see Create an ACK cluster. ack-koordinator is installed. For more information, see ack-koordinator.
-
-**Limits**
-
-The following table lists the required component versions.
+An ACK dedicated cluster is created. For more information, see Create an ACK cluster. ack-koordinator is installed. For more information, see ack-koordinator. The following table lists the required component versions.
 
 | Component | Version requirement |
 |---|---|
@@ -24510,7 +24604,7 @@ The following table shows the metric data when the ACK container memory QoS feat
 
 The comparison data shows that in a memory overcommitment scenario, enabling container memory QoS reduces the latency of the Redis application by 7.9% and increases its throughput by 8.7%. This indicates an improvement in both latency and throughput.
 
-##### Resource isolation based on the L3 cache and
+##### 7.20.2.4 Resource isolation based on the L3 cache and MBA
 
 **MBA**
 
@@ -24680,7 +24774,7 @@ data:
 |   | nt |   |   |   |   |
 |   | mbaPercent |   | Int | 0~100 | The percentage of the memory bandwidth that can be used by the workloads of the corresponding QoS class. Unit: %. You must set the value to a multiple of 10. The default values for the workloads of the LS class and BE class are both 100 . |
 
-##### Dynamically modify the resource parameters of a
+##### 7.20.2.5 Dynamically modify the resource parameters of a pod
 
 **pod**
 
@@ -25031,9 +25125,9 @@ The output shows that the IOPS limit of the disk is `1048576` bit/s.
 4. View the monitoring data of the node.
 The figures show that the disk IOPS limit is changed to the value that is specified in the `device_write_bps` parameter of the YAML file that you created in Step 3. The pod is not restarted after you submit the change.
 
-### KServe
+### 7.21 KServe
 
-#### Overview
+#### 7.21.1 Overview
 
 KServe is an open source cloud-native model service platform designed to simplify the process of deploying and running machine learning models on Kubernetes. KServe supports multiple machine learning frameworks and provides the auto scaling feature. KServe allows you to deploy models by using simple YAML configuration files and declarative APIs. This way, you can easily configure and manage model services.
 
@@ -25045,24 +25139,24 @@ KServe provides a series of CustomResourceDefinitions (CRDs) to manage and deliv
 |---|---|---|
 |   | fer quest |   |
 
-Queue Queue Queue Queue Proxy Proxy Proxy Proxy Model Server Model Server /mnt/models /mnt/models Preprocess Preprocess Predict Predict PostProcess PostProcess Storage Storage Initializer Initializer Transformer Pod 1 Transformer Pod 2 Predictor Pod 1 Predictor Pod 2 KPA/HPA scale between KPA/HPA scale between min/max replicas min/max replicas Deployment Storage Initializer
+Queue Queue Queue Queue Proxy Proxy Proxy Proxy Model Server Model Server /mnt/models /mnt/models Preprocess Preprocess Predict Predict PostProcess PostProcess Initializer Initializer Transformer Pod 1 Transformer Pod 2 Predictor Pod 1 Predictor Pod 2 KPA/HPA scale between KPA/HPA scale between min/max replicas min/max replicas Deployment Storage Initializer
 
 | Raw Deplo | yment |
 |---|---|
 
-KServe Controller S3 Knative Model
+Controller S3 Knative Model
 
 | Serverless |   |
 |---|---|
 |   | InferenceService |
 
-GCS Revision Storage Azure HTTP/HTTPS PVC Knative Service
+GCS Revision Azure HTTP/HTTPS PVC Knative Service
 
 **Deployment modes**
 
-You can deploy KServe by using Raw Deployment. Raw Deployment is the simplest deployment mode of KServe that depends on only cert-manager and gateways. This deployment mode supports features such as auto scaling, Prometheus monitoring, Canary Rollouts with specific gateways, and GPU auto scaling. For more information, see the following topics: Deploy a vLLM model as an inference service Implement a canary release for an inference service Configure an Auto Scaling policy for a service by using KServe
+You can deploy KServe by using Raw Deployment. Raw Deployment is the simplest deployment mode of KServe that depends on only cert-manager and gateways. This deployment mode supports features such as auto scaling, Prometheus monitoring, Canary Rollouts with specific gateways, and GPU auto scaling. For more information, see the following topics: Configure an Auto Scaling policy for a service by using KServe
 
-#### Install ack-kserve
+#### 7.21.2 Install ack-kserve
 
 KServe is an open source cloud-native model service platform designed to simplify the process of deploying and running machine learning models on Kubernetes. KServe supports multiple machine learning frameworks and provides the auto scaling feature. KServe allows you to deploy models by using simple YAML configuration files and declarative APIs. This way, you can easily configure and manage model services. This topic describes how to deploy and manage the ack-kserve component in an ACK cluster and provides a solution to a common issue.
 
@@ -25174,7 +25268,7 @@ NAME READY STATUS RESTARTS AGE cert-manager-7f4bb44d5b-jrrfn 1/1 Running 0 23h c
 
 If all pods are in the Ready state, you can uninstall the ack-kserve component and then reinstall it based on the preceding instructions.
 
-#### Deploy a vLLM model as an inference service
+#### 7.21.3 Deploy a vLLM model as an inference service
 
 Vectorized Large Language Model (vLLM) is a high-performance large language model (LLM) inference library that supports multiple model formats and acceleration of backend Services. vLLM is suitable for deploying an inference service based on an LLM. This topic describes how to deploy a vLLM model as an inference service. In this example, a Qwen-7B-Chat-Int8 model that uses NVIDIA V100 GPUs is used.
 
@@ -25341,7 +25435,7 @@ Before you delete the inference service, make sure that you no longer require th
 arena serve delete qwen
 ```
 
-#### Implement a canary release for an inference
+#### 7.21.4 Implement a canary release for an inference service
 
 **service**
 
@@ -25754,7 +25848,7 @@ kubectl delete svc model-v2-svc
 
 After the preceding commands are run, the old version of the inference service is deleted, which is a required step for updating the inference service from the old version to the new version.
 
-#### Configure an auto scaling policy for a service
+#### 7.21.5 Configure an auto scaling policy for a service by using KServe
 
 **by using KServe**
 
@@ -26114,9 +26208,9 @@ Events: <none>
 
 The preceding output indicates that an automatic scaling policy is configured for the `qwen-cronhpa` custom resource definition (CRD). Based on the policy, the number of pods in the Deployment named `qwen-cronhpa-predictor` is automatically adjusted at a specific point in time every day to meet the preset scaling requirements.
 
-### Auto scaling
+### 7.22 Auto scaling
 
-#### Auto scaling of nodes
+#### 7.22.1 Auto scaling of nodes
 
 Container Service for Kubernetes (ACK) provides the auto scaling component to automatically scale the number of nodes. Regular instances and GPU-accelerated instances can be automatically added to or removed from an ACK cluster to meet your business requirements. This feature supports multiple scaling modes, various instance types, and instances that are deployed across zones. This feature is applicable to various scenarios.
 
@@ -26192,7 +26286,7 @@ i. In the left-side navigation pane of the ACK console, choose **Applications > 
 
 Why does the auto scaling component fail to add nodes after a scale-out activity is triggered? Check whether the following situations exist: The instance types in the scaling group cannot fulfill the resource requests of pods. By default, system components are installed for each node. Therefore, the requested pod resources must be less than the resource capacity of the instance type. The RAM role does not have the permissions to manage the ACK cluster. You must complete authorization for each cluster that is involved in the scale-out activity. The cluster cannot connect to the Internet. The auto scaling component must call Alibaba Cloud API operations. Therefore, the nodes must have access to the Internet. Why does the auto scaling component fail to remove nodes after a scale-in activity is triggered? Check whether the following situations exist: The requested resource threshold of each pod is higher than the configured scale-in threshold. Pods that belong to the kube-system namespace are running on the node. A scheduling policy forces the pods to run on the current node. In this case, the pods cannot be scheduled to other nodes. PodDisruptionBudget is set for the pods on the node and the minimum value of PodDisruptionBudget is reached. For more information, see kubernetes/autoscaler. How does the system select a scaling group for a scaling activity? When pods cannot be scheduled to nodes, the auto scaling component simulates the scheduling of the pods based on the configurations of scaling groups. The configurations include labels, taints, and instance specifications. If a scaling group meets the requirements, this scaling group is selected for the scale-out activity. If more than one scaling group meets the requirements, the system selects the scaling group that has the fewest idle resources after simulation.
 
-#### Horizontal pod autoscaling
+#### 7.22.2 Horizontal pod autoscaling
 
 You can create an application that has Horizontal Pod Autoscaling (HPA) enabled in the Container Service console. HPA can automatically scale container resources for your application. You can also use a YAML file to describe HPA settings.
 
@@ -26342,7 +26436,7 @@ Normal SuccessfulRescale 39s horizontal-pod-autoscaler New size: 1; reason: All 
 
 `t` If the CPU utilization of the NGINX application pod exceeds 50% as specified in the HPA settings, the Horizontal Pod Autoscaler automatically adds pods. If the CPU utilization of the NGINX application pod drops below 50%, the Horizontal Pod Autoscaler automatically removes pods.
 
-#### Horizontal pod autoscaling based on
+#### 7.22.3 Horizontal pod autoscaling based on Managed Service for Prometheus metrics
 
 **Managed Service for Prometheus metrics**
 
@@ -26930,7 +27024,7 @@ that appears, view **HTTP API URL (Grafana Read URL)**.
 3. In the left-side navigation pane of the Managed Service for Prometheus console, click **Settings**. Then,
 click the **Configure** tab and view **HTTP API URL (Grafana Read URL)**. We recommend that you call the Managed Service for Prometheus API over an internal network. You can call the API over the Internet if no internal network is available.
 
-#### Use ack-autoscaling-placeholder to scale
+#### 7.22.4 Use ack-autoscaling-placeholder to scale pods within seconds
 
 **pods within seconds**
 
@@ -27122,9 +27216,9 @@ Substep e. A PriorityClass that grants a higher priority than other pods is crea
 state, a scale-out activity is triggered in the cluster because auto scaling is enabled for the cluster. After the scale-out activity is complete, a pod whose IP address is **192.168.1.12** and **Instance Status** is
 **Running** appears. The placeholder pod reenters the Running state.
 
-### Backup center
+### 7.23 Backup center
 
-#### Overview
+#### 7.23.1 Overview
 
 The backup center of Container Service for Kubernetes (ACK) provides an end-to-end solution for backing up, restoring, and migrating stateful and stateless applications. The backup center also provides disaster recovery and application migration capabilities for stateful applications deployed in hybrid cloud and multicluster environments. For example, you can use the backup center to periodically back up the data and applications in an ACK cluster, restore them from backups at a time, and migrate them across zones. This topic describes how the backup center works, billing rules, and use scenarios.
 
@@ -27144,7 +27238,7 @@ When you back up NAS, OSS, or local disk volumes, the backup center uses ASR-BR 
 
 **migration of applications across clusters in the same region**
 
-Backup Center Region A Region A
+Region A Region A
 
 | ACK Cluster Application Resources (YSAeMrvLic)e ConfigMap StatefulSet ...... Storage (PV) Alibaba Cloud Disk (EBS) Local Disk, NAS, OSS... | Application Backup Application Restoration OSS PV Backup PV Restoration Snapshot Convert Dynamically StorageClass Provisioned Volu ASR-BR | ACK Cluster Application Resources (YSAeMrvLic)e ConfigMap StatefulSet ...... Storage (PV) Alibaba Cloud Disk (EBS) CNFS... me |
 |---|---|---|
@@ -27154,8 +27248,6 @@ The backup center can back up and restore applications and data within ACK clust
 **Scenario 2: Application disaster recovery (resource YAML file backup and**
 
 **restoration)**
-
-Backup Center
 
 | Kubernetes Cluster Application Resources (YAML) Ap Service ConfigMap StatefulSet ...... Storage (PV) Disk OSS/NAS | ACK Cluster Application plication Backup Application Resources Restoration (YSAeMrvLic)e ConfigMap OSS StatefulSet ...... EBS Storage (PV) Disconnected Disk OSS/NAS before Restoration OSS/NAS |
 |---|---|
@@ -27179,7 +27271,7 @@ Applications can share data stored in shared volumes, such as NAS and OSS. There
 | Application backup | Backup of metadata of applications, services, and configurations. |
 | Data protection | Backup of volume resources and associated underlying storage data. |
 
-#### Back up and restore applications in an ACK
+#### 7.23.2 Back up and restore applications in an ACK cluster
 
 **cluster**
 
@@ -27296,7 +27388,7 @@ accessed as expected. i. In the left-side pane of the restore cluster, choose **
 
 On the **Restore records** tab of the **Application backup** page, if **Complete** is displayed in the **Status** column of a restoration record, the restoration task is successful. You can click **Copy creation** in the **Operation** column of a restoration record to create a restoration task from the restoration record. You can click **View Yaml** in the **Operation** column of a restoration record to view the underlying resource definition files of the restoration record. You can click **Delete** in the **Operation** column of a restoration record to delete the restoration record. You can also select multiple restoration records and click **Batch deletion** to delete the restoration records at a time.
 
-#### Migrate applications across clusters in the
+#### 7.23.3 Migrate applications across clusters in the same region
 
 **same region**
 
@@ -27388,7 +27480,7 @@ md5sum /data/mock_data-1
 # Sample output: a3cf0096xxxxxxx948a
 ```
 
-#### FAQ about the backup center
+#### 7.23.4 FAQ about the backup center
 
 This topic describes frequently asked questions (FAQ) about the backup center.
 
@@ -27472,11 +27564,11 @@ If you want to change multiple image repositories and versions, add case2, case3
 
 The changes take effect on all restoration tasks in the cluster. We recommend that you configure finegrained modifications based on the preceding annotations. For example, configure image changes within a single repository. If the ConfigMap is no longer required, delete it.
 
-### Marketplace
+### 7.24 Marketplace
 
-#### Orchestration templates
+#### 7.24.1 Orchestration templates
 
-##### Create an orchestration template
+##### 7.24.1.1 Create an orchestration template
 
 This topic describes how to use multiple methods to create orchestration templates through the Container Service console.
 
@@ -27505,7 +27597,7 @@ You can modify the template based on your requirements.
 
 On the **My Templates** tab, you can select an orchestration template and click **Create Application** to quickly create an application.
 
-##### Update an orchestration template
+##### 7.24.1.2 Update an orchestration template
 
 This topic describes how to edit and update an orchestration template.
 
@@ -27523,7 +27615,7 @@ page appears. You can view existing templates on the **My Templates** tab.
 5. In the dialog box that appears, edit the name, description, and template content, and click **Save**.
 6. Go to the **Templates** page. You can view the template that you have updated on the **My Templates** tab.
 
-##### Save an orchestration template as a new one
+##### 7.24.1.3 Save an orchestration template as a new one
 
 This topic describes how to save an orchestration template as a new one.
 
@@ -27541,7 +27633,7 @@ page appears. You can view existing templates on the **My Templates** tab.
 5. In the dialog box that appears, enter the template name and click **OK**.
 6. Go to the **Templates** page. The newly saved template is displayed on the **My Templates** tab.
 
-##### Download an orchestration template
+##### 7.24.1.4 Download an orchestration template
 
 This topic describes how to download an orchestration template.
 
@@ -27558,7 +27650,7 @@ page appears. You can view existing templates on the **My Templates** tab.
 4. On the template details page, click **Download** in the upper-right corner to download the template as a
 YAML file.
 
-##### Delete an orchestration template
+##### 7.24.1.5 Delete an orchestration template
 
 **Prerequisites**
 
@@ -27573,13 +27665,9 @@ page appears. You can view existing templates on the **My Templates** tab.
 4. On the template details page, click **Delete** in the upper-right corner.
 5. In the dialog box that appears, click **OK**.
 
-#### App Catalog
+#### 7.24.2 App Catalog
 
-App Marketplace provided by Container Service for Kubernetes (ACK) is integrated with Helm to provide Helm-related features, such as a web interface and Alibaba Cloud repositories. This topic introduces App Marketplace of ACK and describes how to create and modify Helm charts in the ACK console.
-
-**Overview**
-
-The App Marketplace includes the App Catalog. The App Catalog contains charts that are adapted and custom-developed by ACK based on open source software. These charts include the images, dependencies, and resource definitions required to run an application. The App Catalog provides information about each chart, such as an introduction, installation steps, parameter settings, and notes. You can use Helm to deploy and manage charts in the App Catalog. For more information, see Use Helm to simplify application deployment.
+App Marketplace provided by Container Service for Kubernetes (ACK) is integrated with Helm to provide Helm-related features, such as a web interface and Alibaba Cloud repositories. This topic introduces App Marketplace of ACK and describes how to create and modify Helm charts in the ACK console. The App Marketplace includes the App Catalog. The App Catalog contains charts that are adapted and custom-developed by ACK based on open source software. These charts include the images, dependencies, and resource definitions required to run an application. The App Catalog provides information about each chart, such as an introduction, installation steps, parameter settings, and notes. You can use Helm to deploy and manage charts in the App Catalog. For more information, see Use Helm to simplify application deployment.
 
 **Create a Helm chart**
 
@@ -27597,9 +27685,9 @@ the left of the cluster details page, choose **Applications > Helm**.
 
 Some charts in App Catalog are developed based on open source versions to better fit ACK. Alibaba Cloud provides technical support for these charts in App Catalog. However, Alibaba Cloud does not provide compensation or reimbursement for damages that are caused by the defects of the open source charts that you use. You must update the charts installed in your cluster and fix the issues iin open source charts.
 
-### Releases
+### 7.25 Releases
 
-#### Use OpenKruise to deploy cloud-native
+#### 7.25.1 Use OpenKruise to deploy cloud-native applications
 
 **applications**
 
@@ -27846,7 +27934,7 @@ The following table describes the parameters in the output.
 | READY | status.readyReplicas | The total number of available pods. |
 | TOTAL | status.replicas | The total number of pods. |
 
-### Use the Kubernetes event center
+### 7.26 Use the Kubernetes event center
 
 You can use Kubernetes event centers to store and query events, and configure alert rules. This topic describes how to enable and view the Kubernetes event center.
 
@@ -27900,13 +27988,9 @@ Replace the CLUSTER_ID with the cluster ID that you obtained in Step 1.
 5. On the **Kubernetes Event Center V1.2** page, you can view the trends of WARNING events and ERROR
 events.
 
-### ACK@Edge overview
+### 7.27 ACK@Edge overview
 
-ACK@Edge is released for commercial use. ACK@Edge is a cloud-managed solution that is provided by Container Service to coordinate cloud and edge computing. This topic describes the background and features of edge Kubernetes clusters.
-
-**Overview**
-
-With the rapid growth of smart devices connected to the Internet and the advent of 5G and IoT, computing and storage services provided by traditional cloud computing platforms can no longer satisfy the needs of edge devices for time-efficient computing, larger storage capacity, and enhanced computing capacity. Edge Kubernetes clusters are intended for bringing cloud computing to edges (clients). Edge Kubernetes clusters can be created, managed, and maintained in the Container Service console. This is the trend of cloud computing. An edge Kubernetes cluster is a standard, secure, and highly-available Kubernetes cluster deployed in the cloud. This type of cluster is integrated with features of Alibaba Cloud, such as virtualization, storage, networking, and security. This simplifies the management and maintenance of clusters and allows you to focus on your business development. ACK@Edge provides the following features: Allows you to build a cloud-native infrastructure for edge computing with a few clicks. Allows you to quickly connect edge computing resources to the cloud. These resources include IoT gateway devices, terminals, Content Delivery Network (CDN) resources, and data centers. Applies to diverse scenarios, such as edge intelligence, intelligent buildings, intelligent factories, audio and video live streaming, online education, and CDN. Edge Kubernetes clusters support features such as node autonomy, cell-based management, and native APIs for the management and maintenance of resources at the edge side. To use these features, you do not need to rewrite the logic of your services. This provides a native and centralized method for application lifecycle management and resource scheduling in edge computing scenarios.
+ACK@Edge is released for commercial use. ACK@Edge is a cloud-managed solution that is provided by Container Service to coordinate cloud and edge computing. This topic describes the background and features of edge Kubernetes clusters. With the rapid growth of smart devices connected to the Internet and the advent of 5G and IoT, computing and storage services provided by traditional cloud computing platforms can no longer satisfy the needs of edge devices for time-efficient computing, larger storage capacity, and enhanced computing capacity. Edge Kubernetes clusters are intended for bringing cloud computing to edges (clients). Edge Kubernetes clusters can be created, managed, and maintained in the Container Service console. This is the trend of cloud computing. An edge Kubernetes cluster is a standard, secure, and highly-available Kubernetes cluster deployed in the cloud. This type of cluster is integrated with features of Alibaba Cloud, such as virtualization, storage, networking, and security. This simplifies the management and maintenance of clusters and allows you to focus on your business development. ACK@Edge provides the following features: Allows you to build a cloud-native infrastructure for edge computing with a few clicks. Allows you to quickly connect edge computing resources to the cloud. These resources include IoT gateway devices, terminals, Content Delivery Network (CDN) resources, and data centers. Applies to diverse scenarios, such as edge intelligence, intelligent buildings, intelligent factories, audio and video live streaming, online education, and CDN. Edge Kubernetes clusters support features such as node autonomy, cell-based management, and native APIs for the management and maintenance of resources at the edge side. To use these features, you do not need to rewrite the logic of your services. This provides a native and centralized method for application lifecycle management and resource scheduling in edge computing scenarios.
 
 **Features**
 

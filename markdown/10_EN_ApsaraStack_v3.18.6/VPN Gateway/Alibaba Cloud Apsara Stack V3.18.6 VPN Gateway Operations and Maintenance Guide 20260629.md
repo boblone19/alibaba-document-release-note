@@ -3,14 +3,19 @@ title: "VPN Gateway Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 VPN Gateway Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "c4779e2ca7aee991_Alibaba Cloud Apsara Stack V3.18.6 VPN Gateway Operations and Maintenance Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/VPN%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20VPN%20Gateway%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # VPN Gateway Operations and Maintenance Guide
 
-## VPN inspection
+## Table of Contents
+
+- 1 VPN inspection
+  - 1.1 Network inspection
+
+## 1 VPN inspection
 
 You can use the network inspection feature to configure and view VPN metrics. When alerts are reported, you can process and recover the metrics based on the phenomena and impacts.
 
@@ -22,7 +27,7 @@ You can use the **network inspection** feature to perform the following operatio
 
 For more information about VPN metrics and alert plans, see Inspection guide.
 
-### Network inspection
+### 1.1 Network inspection
 
 The network inspection feature allows you to schedule network inspection tasks on a regular basis and convert inspection results into inspection events or alerts.
 

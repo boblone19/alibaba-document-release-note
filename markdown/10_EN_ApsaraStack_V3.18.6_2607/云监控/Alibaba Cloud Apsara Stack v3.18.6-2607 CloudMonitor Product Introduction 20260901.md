@@ -3,14 +3,22 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Product Introductio
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 19
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Product Introduction 20260901.pdf"
+source_pdf: "831a64832f697126_Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Product Introduction 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%91%E6%8E%A7/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20CloudMonitor%20Product%20Introduction%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 CloudMonitor Product Introduction 20260901
 
-## Cloud Monitor
+## Table of Contents
+
+- 1 Cloud Monitor
+  - 1.1 Functions and features
+  - 1.2 Service architecture
+  - 1.3 Benefits
+  - 1.4 Common scenarios
+
+## 1 Cloud Monitor
 
 This topic describes the overview of Cloud Monitor (CMS) and the features provided by CMS.
 
@@ -20,7 +28,7 @@ CMS provides an out-of-the-box, all-in-one, and enterprise-class monitoring solu
 
 **Features**
 
-### Functions and features
+### 1.1 Functions and features
 
 This topic describes the functions and features of Apsara Stack Cloud Monitor (CMS).
 
@@ -91,11 +99,11 @@ This topic describes the functions and features of Apsara Stack Cloud Monitor (C
 |   | Custom Event | CMS provides an API for reporting custom events. You can collect and report the exception events that occur in your business to CMS. You can also configure alert rules for custom events to receive alert notifications. Event Monitoring: CMS provides an SDK demo to show you how to report custom events using the SDK. The custom event distribution chart displays the distribution of custom events that are reported over a period of time. The custom events list displays the custom events that are reported over a period of time. Event alert rules: You can report cloud product events to CMS over HTTP and create alert rules for those events. You can also modify, disable, enable, and delete event alert rules. Event Alarm History: You can view the alerts generated based on event-triggered alert rules. You can search for alerts based on the IDs or names of alert rules. |
 |---|---|---|
 
-### Service architecture
+### 1.2 Service architecture
 
 This topic describes the architecture of Cloud Monitor (CMS). CMS has the following modules: alert center, cloud service monitoring, visualized analysis, alert service, monitoring governance, and access center. The following figure shows the architecture. Description: Alert center: In the entire monitoring business architecture, the alert center acts as a unified alerting platform for tenant-side operations. It provides features such as alert overview, alert list, alert settings, alert notifications, and alert suppression. Cloud resource monitoring: You can monitor the instances of cloud services based on various metrics. CMS allows you to view details about the metrics of cloud services in the console. Visualized analysis: You can customize dashboards across organizations and resource sets. CMS provides dashboards for cloud services such as Object Storage Service (OSS), ApsaraDB RDS, and ApsaraDB for Redis. The dashboards help you analyze hot and abnormal instances. You can also track data changes and consume data based on reports. Alert service: You can configure alert rules that are triggered by metrics and system events for cloud service instances. CMS provides single-metric rules, multi-metric rules, alert templates, and proactive alerting. Monitoring governance: CMS provides metric validity check, alert validity check, data reporting check, Elastic Compute Service (ECS) collection plug-in, metric namespace, and lifecycle management. Access center: CMS provides custom data integration for logs, metrics, and events.
 
-### Benefits
+### 1.3 Benefits
 
 This topic describes the benefits of Cloud Monitor (CMS).
 
@@ -111,7 +119,7 @@ CMS allows you to monitor distributed resources in a unified manner. Hybrid Clou
 
 CMS responds quickly when problems are identified. CMS supports multiple alert notification methods, auto scaling, integration with other cloud services, and integration with third-party systems. CMS provides multiple and flexible methods to meet the demands of problem notification, coordinated handling, and system integration.
 
-### Common scenarios
+### 1.4 Common scenarios
 
 This topic describes the application scenarios of Cloud Monitor (CMS).
 

@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AI
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Product Introduction 20260828.pdf"
+source_pdf: "84fb617d9efe4be0_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Product Introduction 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Operation%20Apsara%20AIOps%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Operation Apsara AIOps Product Introduction 20260828
 
-## Intelligent O&M Assistant
+## Table of Contents
+
+- 1 Intelligent O&M Assistant
+- 2 Product details
+- 3 Product value
+- 4 Use cases
+- 5 Functions and features
+
+## 1 Intelligent O&M Assistant
 
 This chapter introduces the Intelligent O&M Assistant. The Intelligent O&M Assistant is the entry point for intelligent Operations and Maintenance (O&M) upgrades on the Apsara Stack platform. It provides platform O&M engineers with capabilities such as O&M Q&A, environment information queries, content matching and recommendation, predictive optimization suggestions, inference, analysis, summarization, and code and visualization generation. The assistant also serves as a foundation for customer-facing intelligent O&M. It provides out-of-the-box capabilities that integrate the platform's Toolbox, knowledge base, and MCP Server to facilitate the engineering and deployment of O&M agents on-premises.
 
-## Product details
+## 2 Product details
 
 frontend comprises intelligent Q&A and a suite of O&M agents, while O&M LLM management
 
@@ -50,7 +58,7 @@ Corpus tasks: The corpus system provides a unified entry for managing corpus tas
 
 Model management: This feature displays built-in models and allows the configuration of external inference services, enabling unified management and flexible scaling of model services.
 
-## Product value
+## 3 Product value
 
 This topic explains the value of Apsara Cloud Intelligence. Apsara Cloud Intelligence delivers a one-stop, intelligent operations and maintenance (O&M) solution by deeply integrating a proprietary large model trained for Apsara Stack with platform O&M scenarios. This helps O&M teams increase efficiency, lower incident rates, and build industry influence through industry collaboration and award recognition.
 
@@ -62,7 +70,7 @@ Enhanced intelligent O&M capabilities: Apsara Cloud Intelligence is built on a k
 
 Award submissions: Organizations can use the backend capabilities of Apsara Cloud Intelligence to consolidate and build upon their private operations and maintenance knowledge. By integrating with their existing OA and O&M systems, they can create diverse application scenarios for the large model. This allows them to compete for relevant industry awards and recognition, such as an 'Intelligent O&M Technology Innovation Award' or an 'Industry Development Award' in sectors like finance, securities, or energy. Industry collaboration: By partnering with industry organizations, such as the China Academy of Information and Communications Technology (CAICT), renowned universities, or financial technology institutions, organizations can engage in joint research and projects to collectively advance industry standards and best practices for large models in operations and maintenance. These collaborations enhance their brand awareness and influence.
 
-## Use cases
+## 4 Use cases
 
 This topic introduces the typical use cases of Cloud Intelligence Assistant.
 
@@ -94,7 +102,7 @@ The assistant automatically generates analytical dashboards based on O&M data to
 
 Cloud Intelligence Assistant provides a standard development platform with built-in capabilities, such as a platform toolkit and the MCP Server, to help you quickly build custom O&M intelligent agents for your enterprise.
 
-## Functions and features
+## 5 Functions and features
 
 This topic describes the typical functions and features of Apsara AIOPS.
 

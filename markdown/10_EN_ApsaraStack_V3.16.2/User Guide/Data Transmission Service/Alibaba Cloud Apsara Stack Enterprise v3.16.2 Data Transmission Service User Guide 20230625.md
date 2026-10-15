@@ -3,18 +3,116 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Transmission Service 
 product_version: "V3.16.2"
 doc_version: "20230625"
 pdf_pages: 325
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Transmission Service User Guide 20230625.pdf"
+source_pdf: "e94036088c500d30_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Transmission Service User Guide 20230625.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230609/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Data%20Transmission%20Service%20User%20Guide%2020230625.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Data Transmission Service User Guide 20230625
 
-## What is DTS?
+## Table of Contents
+
+- 1 What is DTS?
+- 2 Log on to the DTS console
+- 3 Data migration
+  - 3.1 Supported databases and migration types
+  - 3.2 Create a data migration instance
+  - 3.3 Configure data migration tasks
+    - 3.3.1 Migrate data from a self-managed MySQL database to an ApsaraDB RDS for MySQL instance
+    - 3.3.2 Migrate data from a self-managed MySQL database to a PolarDB-X instance
+    - 3.3.3 Migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Oracle database
+    - 3.3.4 Migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Kafka cluster
+    - 3.3.5 Migrate data from a self-managed SQL Server database to an ApsaraDB RDS for SQL Server instance
+    - 3.3.6 Migrate data between self-managed Oracle databases
+    - 3.3.7 Migrate data from a self-managed Oracle database to an ApsaraDB RDS for MySQL instance
+    - 3.3.8 Migrate data from a self-managed Oracle database to a PolarDB for Oracle cluster
+    - 3.3.9 Migrate data from a self-managed Oracle database to a PolarDB-X instance
+    - 3.3.10 Migrate data from a self-managed Oracle database to an AnalyticDB for PostgreSQL instance
+    - 3.3.11 Migrate data from a self-managed Oracle database to a self-managed PostgreSQL database
+    - 3.3.12 Migrate data between ApsaraDB RDS for PostgreSQL instances
+    - 3.3.13 Migrate data between PolarDB for Oracle clusters
+    - 3.3.14 Migrate data from a PolarDB for Oracle cluster to a self-managed Oracle database
+    - 3.3.15 Migrate data from a PolarDB for Oracle cluster to a self-managed Kafka cluster
+    - 3.3.16 Migrate data between self-managed Redis databases
+    - 3.3.17 Migrate data between self-managed MongoDB databases
+    - 3.3.18 Migrate data from a MaxCompute project to a MySQL database
+    - 3.3.19 Migrate data from a PolarDB-X 2.0 instance
+      - 3.3.19.1 Migrate data between PolarDB-X 2.0 instances
+      - 3.3.19.2 Migrate data from a PolarDB-X 2.0 instance to a MySQL instance
+      - 3.3.19.3 Migrate data from a PolarDB-X 2.0 instance to a Message Queue for Apache Kafka instance
+      - 3.3.19.4 Migrate data from a PolarDB-X 2.0 instance to an AnalyticDB for PostgreSQL instance
+  - 3.4 Manage data migration tasks
+    - 3.4.1 Object name mapping
+    - 3.4.2 Specify an SQL condition to filter data
+    - 3.4.3 Troubleshoot a failed data migration task
+  - 3.5 Precheck items
+    - 3.5.1 Source database connectivity
+    - 3.5.2 Destination database connectivity
+    - 3.5.3 Binary logging configurations of the source database
+    - 3.5.4 Integrity of the FOREIGN KEY constraints
+    - 3.5.5 Existence of FEDERATED tables
+    - 3.5.6 Permissions
+    - 3.5.7 Object name conflict
+    - 3.5.8 Schema existence
+    - 3.5.9 Value of server_id in the source database
+    - 3.5.10 Source database version
+  - 3.6 Data type mappings between heterogeneous databases
+- 4 Data synchronization
+  - 4.1 Supported database types, initial synchronization types, and synchronization topologies
+  - 4.2 Create a data synchronization instance
+  - 4.3 Synchronization topologies
+  - 4.4 Configure data synchronization tasks
+    - 4.4.1 Configure between ApsaraDB RDS for MySQL instances
+    - 4.4.2 Synchronize data from an ApsaraDB RDS for MySQL instance to a MaxCompute project
+    - 4.4.3 Synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for MySQL cluster
+    - 4.4.4 Synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for PostgreSQL instance
+    - 4.4.5 Synchronize data from a self-managed PostgreSQL database to an AnalyticDB for PostgreSQL instance
+    - 4.4.6 Synchronize data between PolarDB-X instances
+    - 4.4.7 Synchronize data from a PolarDB-X instance to an AnalyticDB for MySQL cluster
+    - 4.4.8 Synchronize data from a PolarDB-X instance to a DataHub project
+    - 4.4.9 Synchronize data from a self-managed Db2 for LUW database to an AnalyticDB for PostgreSQL instance
+    - 4.4.10 Synchronize data from a self-managed Oracle database to a DataHub project
+    - 4.4.11 Synchronize data between ApsaraDB for Redis instances
+    - 4.4.12 Configure two-way data synchronization between RDS instances
+      - 4.4.12.1 Overview
+      - 4.4.12.2 Supported synchronization statements
+      - 4.4.12.3 Detect and resolve conflicts
+      - 4.4.12.4 Synchronization restrictions
+      - 4.4.12.5 Configure two-way data synchronization between ApsaraDB RDS for MySQL instances across regions
+    - 4.4.13 Synchronize data between PolarDB-X 2.0 instances
+  - 4.5 Manage data synchronization instances
+    - 4.5.1 Specify the name of an object in the destination instance
+    - 4.5.2 Use SQL conditions to filter data
+    - 4.5.3 Add objects to a data synchronization task
+    - 4.5.4 Remove objects from a data synchronization task
+    - 4.5.5 Troubleshoot precheck failures
+  - 4.6 Best practices for data synchronization from PolarDB-X instances
+    - 4.6.1 Limits and usage notes for synchronizing data between PolarDB-X instances
+    - 4.6.2 Solutions of data synchronization from a PolarDB-X instance
+- 5 Change tracking
+  - 5.1 Overview
+  - 5.2 Create a change tracking instance
+  - 5.3 Configure change tracking tasks
+    - 5.3.1 Track data changes from an ApsaraDB RDS for MySQL instance
+    - 5.3.2 Track data changes from a PolarDB-X instance
+    - 5.3.3 Track data changes from a self-managed Oracle database
+  - 5.4 Manage change tracking tasks
+    - 5.4.1 Modify the consumption checkpoint
+    - 5.4.2 Modify the objects for change tracking
+    - 5.4.3 Create a consumer group
+    - 5.4.4 Manage consumer groups
+  - 5.5 Use the SDK to consume tracked data
+    - 5.5.1 Methods provided by SDK
+    - 5.5.2 Quick start
+    - 5.5.3 Parse tracked SQL statements
+    - 5.5.4 Run the SDK demo code
+  - 5.6 Use a Kafka client to consume tracked data
+
+## 1 What is DTS?
 
 Data Transmission Service (DTS) is a data service that is provided by Alibaba Cloud. DTS supports data transmission between various types of data sources, such as relational databases and big data systems. Compared with traditional data migration or synchronization tools, DTS provides diverse features and high performance, security, reliability, and ease of use. DTS helps you simplify data transmission and focus on your application development. le
 
-## Log on to the DTS console
+## 2 Log on to the DTS console
 
 This topic describes how to log on to the Data Transmission Service (DTS) console. Google Chrome is used in this example. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
@@ -25,9 +123,9 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 4. In the top navigation bar, choose Product s > Dat a T ransmission Service.
 5. Select an organizat ion and region, and then click DT S.
 
-## Data migration
+## 3 Data migration
 
-### Supported databases and
+### 3.1 Supported databases and migration types
 
 migration types You can use Data Transmission Service (DTS) to migrate data between homogeneous data sources or between heterogeneous data sources. This feature is suitable for the following scenarios: data migration to Alibaba Cloud, data migration between instances within Alibaba Cloud, and database splitting and scale-out. This topic describes the database types, database versions, and migration types that are supported by data migration.
 
@@ -65,7 +163,7 @@ migration types You can use Data Transmission Service (DTS) to migrate data betw
 | MaxCompute All versions | Self-managed MySQL database Version 5.1, 5.5, 5.6, 5.7, or 8.0 ApsaraDB RDS for MySQL All versions | Schema migration Full data migration |
 | PolarDB-X 2.0 | PolarDB-X 2.0 Not e Make sure that the PolarDB-X 2.0 instances are compatible with MySQL V5.7. AnalyticDB for PostgreSQL | Schema migration Full data migration Incremental data migration |
 
-### Create a data migration instance
+### 3.2 Create a data migration instance
 
 Before you configure a task to migrate data, you must create a data migration instance. This topic describes how to create a data migration instance in the Data Transmission Service (DTS) console. Procedure
 1. Log on to the DTS console. For more information, see Log on to the DTS console.
@@ -75,9 +173,9 @@ Before you configure a task to migrate data, you must create a data migration in
 migration instances that you want to create. In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
 5. Click Purchase Inst ance.
 
-### Configure data migration tasks
+### 3.3 Configure data migration tasks
 
-#### Migrate data from a self-managed MySQL
+#### 3.3.1 Migrate data from a self-managed MySQL database to an ApsaraDB RDS for MySQL instance
 
 database to an ApsaraDB RDS for MySQL instance This topic describes how to migrate data from a self-managed MySQL database to an ApsaraDB RDS for MySQL instance by using Data Transmission Service (DTS). DTS supports schema migration, full data migration, and incremental data migration. You can select all the supported migration types to ensure service continuity. Prerequisites The engine version of the self-managed MySQL database is 5.1, 5.5, 5.6, 5.7, or 8.0. To ensure compatibility, the version of the destination ApsaraDB RDS for MySQL database must be the same as or later than the version of the source self-managed MySQL database. The available storage space of the destination ApsaraDB RDS for MySQL database is larger than the total size of the data in the self-managed MySQL database. Limits
 
@@ -143,7 +241,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the message T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed MySQL
+#### 3.3.2 Migrate data from a self-managed MySQL database to a PolarDB-X instance
 
 database to a PolarDB-X instance This topic describes how to migrate data from a self-managed MySQL database to a PolarDB-X instance by using Data Transmission Service (DTS). PolarDB-X is formerly known as Distributed Relational Database Service (DRDS). Prerequisites The engine version of the self-managed MySQL database is 5.1, 5.5, 5.6, 5.7, or 8.0. The available storage space of the PolarDB-X instance is larger than the total size of the data in the self-managed MySQL database. Limits
 
@@ -221,7 +319,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 9. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from an ApsaraDB RDS for
+#### 3.3.3 Migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Oracle database
 
 MySQL instance to a self-managed Oracle database This topic describes how to migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Oracle database by using Data Transmission Service (DTS). DTS supports full data migration and incremental data migration. You can select the two migration types to ensure service continuity of the source ApsaraDB RDS for MySQL instance during data migration. Limits
 
@@ -281,7 +379,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 9. Click Next to start the migration task.
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from an ApsaraDB RDS for
+#### 3.3.4 Migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Kafka cluster
 
 MySQL instance to a self-managed Kafka cluster Kafka is a distributed message queue service that supports high throughput and high scalability. Kafka is widely used for big data analytics such as log collection, monitoring data aggregation, streaming processing, and online and offline analysis. Kafka is an essential service for the big data ecosystem. You can migrate data from a self-managed MySQL database or an ApsaraDB RDS for MySQL instance to a self-managed Kafka cluster by using Data Transmission Service (DTS). The data migration feature allows you to extend message processing capabilities. This topic describes how to migrate data from an ApsaraDB RDS for MySQL instance to a self-managed Kafka cluster by using DTS. Prerequisites The destination Kafka cluster is created and the Kafka version is 0.10 to 2.0. Limits
 
@@ -350,7 +448,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed SQL
+#### 3.3.5 Migrate data from a self-managed SQL Server database to an ApsaraDB RDS for SQL Server instance
 
 Server database to an ApsaraDB RDS for SQL Server instance This topic describes how to migrate incremental data from a self-managed SQL Server database to an ApsaraDB RDS for SQL Server instance by using Data Transmission Service (DTS). DTS supports schema migration, full data migration, and incremental data migration. You can select all the supported migration types to ensure service continuity. Prerequisites The version of the self-managed SQL Server database is 2005, 2008, 2008 R2, 2012, 2014, 2016, or 2017. DTS does not support SQL Server clusters or SQL Server AlwaysOn availability groups (AOAGs). If the version of the source database is 2005, incremental data migration is not supported. To ensure compatibility, the version of the destination instance must be the same as or later than the version of the source instance. The tables to be migrated from the self-managed SQL Server database have primary keys or UNIQUE NOT NULL indexes. Limits
 
@@ -469,7 +567,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data between self-managed
+#### 3.3.6 Migrate data between self-managed Oracle databases
 
 Oracle databases This topic describes how to migrate data between self-managed Oracle databases by using Data Transmission Service (DTS). DTS supports schema migration, full data migration, and incremental data migration. You can select all the supported migration types to ensure service continuity. Prerequisites A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The engine version of the source Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. To ensure compatibility, the version of the destination Oracle database must be the same as or later than the version of the source Oracle database. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the source Oracle database. For more information, see Supplemental Logging. The source Oracle database is running in ARCHIVELOG mode. Archived log files are accessible and a suitable retention period is set for archived log files. For more information, see Managing Archived Redo Log Files. The available storage space of the destination Oracle database is larger than the total size of the data in the source Oracle database. Limits
 
@@ -554,7 +652,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed Oracle
+#### 3.3.7 Migrate data from a self-managed Oracle database to an ApsaraDB RDS for MySQL instance
 
 database to an ApsaraDB RDS for MySQL instance This topic describes how to migrate data from a self-managed Oracle database to an ApsaraDB RDS for MySQL instance by using Data Transmission Service (DTS). DTS supports schema migration, full data migration, and incremental data migration. When you migrate data from a self-managed Oracle database, you can select all the supported migration types to ensure service continuity. Prerequisites A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The self-managed Oracle database runs in ARCHIVELOG mode. Archived log files of the Oracle database are accessible, and an appropriate retention period is specified for the archived log files. For more information, see Managing Archived Redo Log Files. Limits
 
@@ -613,7 +711,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed Oracle
+#### 3.3.8 Migrate data from a self-managed Oracle database to a PolarDB for Oracle cluster
 
 database to a PolarDB for Oracle cluster This topic describes how to migrate data from a self-managed Oracle database to a PolarDB for Oracle cluster by using Data Transmission Service (DTS). DTS supports schema migration, full data migration, and incremental data migration. You can select all of the supported migration types to ensure service continuity. Prerequisites A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The self-managed Oracle database runs in ARCHIVELOG mode. Archived log files of the Oracle database are accessible, and an appropriate retention period is specified for the archived log files. For more information, see Managing Archived Redo Log Files. Limits
 
@@ -674,7 +772,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed Oracle
+#### 3.3.9 Migrate data from a self-managed Oracle database to a PolarDB-X instance
 
 database to a PolarDB-X instance This topic describes how to migrate data from a self-managed Oracle database to a PolarDB-X instance by using Data Transmission Service (DTS). DTS allows you to ensure service continuity when you perform full data migration and incremental data migration. Prerequisites A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The self-managed Oracle database runs in ARCHIVELOG mode. Archived log files of the Oracle database are accessible, and an appropriate retention period is specified for the archived log files. For more information, see Managing Archived Redo Log Files. Limits
 
@@ -731,7 +829,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 9. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed Oracle
+#### 3.3.10 Migrate data from a self-managed Oracle database to an AnalyticDB for PostgreSQL instance
 
 database to an AnalyticDB for PostgreSQL instance This topic describes how to migrate data from a self-managed Oracle database to an AnalyticDB for PostgreSQL instance by using Data Transmission Service (DTS). The data migration feature allows you to transfer and analyze data with ease. Prerequisites A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The self-managed Oracle database runs in ARCHIVELOG mode. Archived log files of the Oracle database are accessible, and an appropriate retention period is specified for the archived log files. For more information, see Managing Archived Redo Log Files. Limits
 
@@ -804,7 +902,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a self-managed Oracle
+#### 3.3.11 Migrate data from a self-managed Oracle database to a self-managed PostgreSQL database
 
 database to a self-managed PostgreSQL database This topic describes how to migrate data from a self-managed Oracle database to a self-managed PostgreSQL database by using Data Transmission Service (DTS). Schema migration, full data migration, and incremental data migration ensure service continuity when you perform data migration. Prerequisites A license is purchased for your extension plan of DTS Advanced Edition. The license ensures that a self-managed Oracle database can be used as the source database for data migration. The version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The self-managed Oracle database runs in ARCHIVELOG mode. Archived log files of the Oracle database are accessible, and an appropriate retention period is specified for the archived log files. For more information, see Managing Archived Redo Log Files. Limits
 
@@ -876,7 +974,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data between ApsaraDB RDS for
+#### 3.3.12 Migrate data between ApsaraDB RDS for PostgreSQL instances
 
 PostgreSQL instances This topic describes how to migrate data between ApsaraDB RDS for PostgreSQL instances by using Data Transmission Service (DTS). DTS supports schema migration, full data migration, and incremental data migration. You can select all of the supported migration types to ensure service continuity. Prerequisites The network type of both the source and destination ApsaraDB RDS for PostgreSQL instances is Virtual Private Cloud (VPC). Limits
 
@@ -975,7 +1073,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 7. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data between PolarDB for Oracle
+#### 3.3.13 Migrate data between PolarDB for Oracle clusters
 
 clusters This topic describes how to migrate data between PolarDB for Oracle clusters by using Data Transmission Service (DTS). Prerequisites The tables to be migrated from the source PolarDB for Oracle cluster contain primary keys or UNIQUE NOT NULL indexes. Limits
 
@@ -1051,7 +1149,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 7. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a PolarDB for Oracle
+#### 3.3.14 Migrate data from a PolarDB for Oracle cluster to a self-managed Oracle database
 
 cluster to a self-managed Oracle database This topic describes how to migrate data from a PolarDB for Oracle cluster to a self-managed Oracle database by using Data Transmission Service (DTS). Prerequisites The destination Oracle database is created. The schema of the Oracle database is the same as the schema of the source database in the PolarDB for Oracle cluster. This is because DTS does not support schema migration from a PolarDB for Oracle cluster to a self-managed Oracle database. Limits
 
@@ -1119,7 +1217,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 7. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a PolarDB for Oracle
+#### 3.3.15 Migrate data from a PolarDB for Oracle cluster to a self-managed Kafka cluster
 
 cluster to a self-managed Kafka cluster Kafka is a distributed message queue service that supports high throughput and high scalability. Kafka is widely used for big data analytics such as log collection, monitoring data aggregation, streaming processing, and online and offline analysis. Kafka is an essential service for the big data ecosystem. This topic describes how to migrate data from a PolarDB for Oracle cluster to a self-managed Kafka cluster by using Data Transmission Service (DTS). The data synchronization feature allows you to extend message processing capabilities. Prerequisites The tables to be migrated from the source PolarDB for Oracle cluster contain primary keys or UNIQUE NOT NULL indexes. Limits
 
@@ -1176,7 +1274,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 7. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data between self-managed
+#### 3.3.16 Migrate data between self-managed Redis databases
 
 Redis databases This topic describes how to migrate data between self-managed Redis databases by using Data Transmission Service (DTS). Prerequisites The version of the source Redis database is 2.8, 3.0, 3.2, 4.0, or 5.0. The source Redis database uses the standalone architecture rather than the cluster architecture. The `PSYNC` or `SYNC` command can be executed on the source Redis database. Limits
 
@@ -1261,7 +1359,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 9. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data between self-managed
+#### 3.3.17 Migrate data between self-managed MongoDB databases
 
 MongoDB databases This topic describes how to migrate data between self-managed MongoDB databases by using Data Transmission Service (DTS). Prerequisites The version of the source MongoDB database is 3.0, 3.2, 3.4, 3.6, 4.0, or 4.2. Limits
 
@@ -1356,7 +1454,7 @@ Import ant Before you can start the data migration task, DTS performs a precheck
 8. After the task passes the precheck, click Next .
 If Incremental Data Migration is not selected, wait until the migration task is completed. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until T he migrat ion t ask is not delayed appears and manually stop the task.
 
-#### Migrate data from a MaxCompute project
+#### 3.3.18 Migrate data from a MaxCompute project to a MySQL database
 
 to a MySQL database This topic describes how to migrate data from a MaxCompute project to a MySQL database by using Data Transmission Service (DTS). In this example, an ApsaraDB RDS for MySQL instance is used as the destination instance. Usage notes DTS uses read and write resources of the source and destination databases during full data migration. This may increase the loads of the database servers. If the database performance is unfavorable, the specification is low, or the data volume is large, database services may become unavailable. For example, DTS occupies a large amount of read and write resources in the following cases: a large number of slow SQL queries are performed on the source database, the tables have no primary keys, or a deadlock occurs in the destination database. Before you migrate data, evaluate the impact of data migration on the performance of the source and destination databases. We recommend that you migrate data during off-peak hours. For example, you can migrate data when the CPU utilization of the source and destination databases is less than 30%. DTS automatically creates a database in the destination ApsaraDB RDS for MySQL instance. However, if the name of the source database is invalid, you must manually create a database in the destination instance before you configure the data migration task. For more information about ApsaraDB RDS for MySQL instances and how to create a database in an ApsaraDB RDS for MySQL instance, see the "Create a database" topic in the documentation of ApsaraDB RDS for MySQL. To ensure data consistency, we recommend that you do not write data to the source MaxCompute project during full data migration. If a data migration task fails, DTS automatically resumes the task. Before you switch your workloads to the destination instance, stop or release the data migration task. Otherwise, the data in the source database overwrites the data in the destination instance after the task is resumed. MaxCompute does not support the PRIMARY KEY constraint. If network errors occur, DTS retries the data migration task. In this case, duplicate data records may be migrated to the destination tables that do not have primary keys. DTS cannot migrate incremental data from a MaxCompute project to an ApsaraDB RDS for MySQL instance. To ensure data consistency, we recommend that you do not write data to the source MaxCompute project during data migration. Supported destination database types You can use DTS to migrate data to the following types of MySQL databases: Self-managed database hosted on Elastic Compute Service (ECS) Self-managed database connected over Express Connect, VPN Gateway, or Smart Access Gateway Self-managed database connected over Database Gateway In this topic, an ApsaraDB RDS f or MySQL inst ance is used to describe how to configure a data migration task. You can also follow the procedure to configure data migration tasks for other types of MySQL databases. Migration types
 
@@ -1407,11 +1505,11 @@ project are granted to the migration account.
 Import ant Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, click the icon next to each failed item to view details. After you troubleshoot the issues based on the causes, run a precheck again.
 3. After the task passes the precheck, click Next .
 
-#### Migrate data from a PolarDB-X 2.0
+#### 3.3.19 Migrate data from a PolarDB-X 2.0 instance
 
 instance
 
-##### Migrate data between PolarDB-X 2.0 instances
+##### 3.3.19.1 Migrate data between PolarDB-X 2.0 instances
 
 This topic describes how to migrate data between PolarDB-X 2.0 instances by using Data Transmission Service (DTS). Prerequisites The source and destination PolarDB-X 2.0 instances are created and compatible with MySQL 5.7. The available storage space of the destination PolarDB-X 2.0 instance is larger than the total size of the data in the source PolarDB-X 2.0 instance. Limits
 
@@ -1510,7 +1608,7 @@ Before you can start the data migration task, DTS performs a precheck. You can s
 6. After the success rat e becomes 100%, the data migration task starts to run.
 You can view the progress of the task on the Data Migration page.
 
-##### Migrate data from a PolarDB-X 2.0 instance to a
+##### 3.3.19.2 Migrate data from a PolarDB-X 2.0 instance to a MySQL instance
 
 MySQL instance This topic describes how to migrate data from a PolarDB-X 2.0 instance to a MySQL instance by using Data Transmission Service (DTS). In this topic, an ApsaraDB RDS for MySQL instance is used as an example. Prerequisites The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. The available storage space of the destination ApsaraDB RDS for MySQL instance is larger than the total size of data in the source PolarDB-X 2.0 instance. Limits
 
@@ -1624,7 +1722,7 @@ Before you can start the data migration task, DTS performs a precheck. You can s
 6. After the value of Success Rat e becomes 100%, the data migration task starts to run.
 You can view the progress of the task on the Data Migration page.
 
-##### Migrate data from a PolarDB-X 2.0 instance to a
+##### 3.3.19.3 Migrate data from a PolarDB-X 2.0 instance to a Message Queue for Apache Kafka instance
 
 Message Queue for Apache Kafka instance This topic describes how to migrate data from a PolarDB-X 2.0 instance to a Message Queue for Apache Kafka instance by using Data Transmission Service (DTS). Message Queue for Apache Kafka provides extended capabilities to process messages. Prerequisites A PolarDB-X 2.0 instance is created. In the destination Message Queue for Apache Kafka instance, a topic is created to receive the migrated data. The available storage space of the destination Message Queue for Apache Kafka instance is larger than the total size of data in the source PolarDB-X 2.0 instance. Limits
 
@@ -1754,7 +1852,7 @@ Advanced Settings
 Before you can start the data migration task, DTS performs a precheck. You can start the data migration task only after the task passes the precheck. If the task fails to pass the precheck, you can click the det ails icon next to each failed item to view details. Troubleshoot the issues based on the causes and run a precheck again.
 6. Wait until the Success Rat e becomes 100%. Then, the data migration task starts.
 
-##### Migrate data from a PolarDB-X 2.0 instance to
+##### 3.3.19.4 Migrate data from a PolarDB-X 2.0 instance to an AnalyticDB for PostgreSQL instance
 
 an AnalyticDB for PostgreSQL instance This topic describes how to migrate data from a PolarDB-X 2.0 instance to an AnalyticDB for PostgreSQL instance by using Data Transmission Service (DTS). Prerequisites The source PolarDB-X 2.0 instance is created and compatible with MySQL 5.7. The destination AnalyticDB for PostgreSQL instance is created. For more information, see Create an AnalyticDB for PostgreSQL instance. Limits
 
@@ -1846,9 +1944,9 @@ Before you can start the data migration task, DTS performs a precheck. You can s
 6. After the success rat e becomes 100%, the data migration task starts to run.
 You can view the progress of the task on the Data Migration page.
 
-### Manage data migration tasks
+### 3.4 Manage data migration tasks
 
-#### Object name mapping
+#### 3.4.1 Object name mapping
 
 Data Transmission Service (DTS) provides the object name mapping feature. You can use this feature to change the names of one or more objects that are migrated to the destination instance. This topic describes how to use the object name mapping feature when you configure a data migration task. Limits You can use the object name mapping feature only when a data migration task is configured and the current step is Conf igure Migrat ion T ypes and Object s. Do not use the object name mapping feature after a data migration task is started. Otherwise, data may fail to be migrated. Procedure
 1. In the Conf igure Migrat ion T ypes and Object s step, move the required objects to the Select ed
@@ -1858,7 +1956,7 @@ Database name mapping In the Edit Dat abase Name dialog box that appears, enter 
 3. Click OK.
 4. Configure other parameters that are required for the data migration task.
 
-#### Specify an SQL condition to filter data
+#### 3.4.2 Specify an SQL condition to filter data
 
 This topic describes how to specify an SQL condition to filter the data of a specific table when you configure a data migration task. The SQL condition takes effect only within the table that you select. DTS migrates only the data that meets the SQL condition to the destination database. This feature is applicable to scenarios such as regular data migration and table partitioning. Limits An SQL condition applies only to full data migration. If you select increment al dat a migrat ion as the migration type, the SQL condition does not filter incremental data. Specify an SQL condition You can specify an SQL condition in the Conf igure Migrat ion T ypes and Object s step when you configure a data migration task. To filter the data of a specific table by using an SQL condition, you must select the table as the object that you want to migrate. You cannot select a database as the object. To specify an SQL condition, perform the following steps. Procedure
 1. In the Conf igure Migrat ion T ypes and Object s step, move the pointer over a table in the
@@ -1866,7 +1964,7 @@ Select ed section. The Edit button appears, as shown in Edit button. Edit button
 2. Click Edit . The Edit Table dialog box appears.
 Modif y an SQL condit ion The SQL conditions in DTS are the same as the standard SQL WHERE conditions for databases. You can use SQL conditions to perform operations and run basic functions. Enter an SQL condition in the text box. For example, you can enter id>1000 to migrate the records whose IDs are greater than 1,000 to the destination instance, as shown in Modify an SQL condition. Modify an SQL condition After the SQL condition is specified, click OK.
 
-#### Troubleshoot a failed data migration task
+#### 3.4.3 Troubleshoot a failed data migration task
 
 This topic describes how to troubleshoot a failed data migration task. You can use this feature if your data migration task is in the Migrat ion Failed state during schema migration or full data migration. Troubleshoot a failed task during schema migration DTS supports data migration between heterogeneous data sources. However, if you migrate data of unsupported types to the destination instance during schema migration, the task may fail.
 1. Log on to the DTS console.
@@ -1882,9 +1980,9 @@ DTS allows you to troubleshoot a task that fails during full data migration due 
 4. In the dialog box that appears, troubleshoot the issue based on the failure cause.
 5. Click Rest art T ask.
 
-### Precheck items
+### 3.5 Precheck items
 
-#### Source database connectivity
+#### 3.5.1 Source database connectivity
 
 Data Transmission Service (DTS) checks whether DTS servers can connect to the source database for migration. DTS creates a connection to the source database by using the Java Database Connectivity (JDBC) protocol. If the connection fails, the data migration task fails to pass the connectivity check. The following table describes the possible reasons for a connectivity precheck failure of the source database.
 
@@ -1894,7 +1992,7 @@ Data Transmission Service (DTS) checks whether DTS servers can connect to the so
 | Ping | 1. The network of the service to which the database instance belongs is unavailable. 2. The IP address of the destination database is incorrect. | 1. Check whether the network is available. 2. Check and correct the IP address of the destination database. |
 | Telnet | 1. The DTS servers are not allowed to access the destination database. 2. The port number of the destination database is incorrect. | 1. Allow access to the destination database from the public CIDR blocks of the DTS servers. For example, disable the firewall of the service to which the destination database belongs or add the public CIDR blocks of the DTS servers to the whitelist of the destination database. 2. Check and correct the port number of the destination database. |
 
-#### Destination database connectivity
+#### 3.5.2 Destination database connectivity
 
 This check item checks whether the Data Transmission Service (DTS) servers can connect to the destination database for migration. DTS creates a connection to the destination database by using the Java Database Connectivity (JDBC) protocol. If the connection fails, the check item fails. The following table describes the possible reasons for a connectivity precheck failure of the destination database.
 
@@ -1904,35 +2002,35 @@ This check item checks whether the Data Transmission Service (DTS) servers can c
 | Ping | 1. The network of the service to which the database instance belongs is unavailable. 2. The IP address of the destination database is incorrect. | 1. Check whether the network is available. 2. Check and correct the IP address of the destination database. |
 | Telnet | 1. The DTS servers are not allowed to access the destination database. 2. The port number of the destination database is incorrect. | 1. Allow access to the destination database from the public CIDR blocks of the DTS servers. For example, disable the firewall of the service to which the destination database belongs or add the public CIDR blocks of the DTS servers to the whitelist of the destination database. 2. Check and correct the port number of the destination database. |
 
-#### Binary logging configurations of the source
+#### 3.5.3 Binary logging configurations of the source database
 
 database Whether binary logging is enabled in the source database This item is checked only when you migrate incremental data between MySQL databases. DTS checks whether binary logging is enabled in the source database. If binary logging is disabled in the source database, the check result is Failed. Troubleshooting: Run the `log_bin=mysql_bin` command to modify the configuration file of the source database. Restart the source database and run a precheck again. Binary log format of the source database This item is checked only when you migrate incremental data between MySQL databases. DTS checks whether the binary log format is set to ROW in the source database. If the binary log format is not set to ROW in the source database, the check result is Failed. Troubleshooting: Run the `set global binlog_format=ROW` command in the source database and run a precheck again. We recommend that you restart the MySQL process. Otherwise, data loss may occur because sessions will continue to be written in a non-ROW mode. Binary log files in the source database This item is checked only when you migrate incremental data between MySQL databases. DTS checks whether specific binary log files are removed from the source database. If binary log files in the source database are incomplete, the check result is Failed. Troubleshooting: Run the `PURGE BINARY LOGS TO 'The name of the first binary log file that is` `not deleted'` command in the source database and run a precheck again. To find the binary log files that are removed from the source database, click the info icon next to the failed item. In the View Det ails dialog box, the names of deleted binary log files are displayed. Parameter binlog_row_image of the source database This item is checked only when you migrate incremental data between MySQL databases. DTS checks whether the value of the binlog_row_image parameter in the source database is set to FULL. This parameter indicates whether the full image is recorded. If the full image is not recorded in binary log files of the source database, the check result is Failed. Troubleshooting: Run the `set global binlog_row_image=FULL` command in the source database and run a precheck again.
 
-#### Integrity of the FOREIGN KEY constraints
+#### 3.5.4 Integrity of the FOREIGN KEY constraints
 
 DTS checks whether the parent table on which a child table depends is included in the selected objects. The precheck allows DTS to protect the integrity of the FOREIGN KEY constraints. If the parent table on which a child table depends is not included in the selected objects, the check result is Failed. Troubleshooting: Do not migrate the child tables that cause the check failure. To do this, remove these child tables from the selected objects and run a precheck again. Migrate the parent tables rather than the child tables. To do this, add the parent tables to the selected objects and run a precheck again. Delete the foreign key dependencies between the parent and child tables in the source database and run a precheck again.
 
-#### Existence of FEDERATED tables
+#### 3.5.5 Existence of FEDERATED tables
 
 This item is checked only when you migrate incremental data between MySQL databases. DTS checks whether the source database contains storage engines that are not supported by incremental data migration. Incremental data migration does not support the FEDERATED and MRG_MyISAM storage engines. If t he FEDERAT ED st orage engine is used by specif ic t ables in t he source dat abase, the check result is Failed. If t he MRG_MyISAM st orage engine is used by specif ic t ables in t he source dat abase, the check result is Failed. Solution: Remove the tables that use the FEDERATED or MRG_MyISAM storage engine from the selected objects. Then, create a separate migration task to perform schema migration and full data migration for these tables.
 
-#### Permissions
+#### 3.5.6 Permissions
 
 Source database permissions DTS checks whether the account of the source database has the required permissions to perform data migration. For information about the permissions that are required by each type of database, see the topics about how to configure data migration tasks. Destination database permissions DTS checks whether the account of the destination database has the required permissions to perform data migration. For information about the permissions that are required by each type of database, see the topics about how to configure data migration tasks.
 
-#### Object name conflict
+#### 3.5.7 Object name conflict
 
 DTS checks whether the destination database contains objects that have the same names as the objects to be migrated. If the destination database contains objects that have the same names as the objects to be migrated, the check result is Failed. This causes migration failure. If the check result is Failed, an error message is displayed indicating that an object in the destination database has the same name as an object to be migrated. Troubleshooting: Use the object name mapping feature to map the conflicting object name to an object with a different name in the destination database. In the destination database, delete or rename the object that has the same name as the object to be migrated. Remove the conflicting object from the objects to be migrated.
 
-#### Schema existence
+#### 3.5.8 Schema existence
 
 This check item checks whether the database to be migrated exists in the destination instance. If the database does not exist in the destination instance, Data Transmission Service (DTS) automatically creates one. However, the check fails if DTS cannot automatically create the database in the following scenarios: The name of the database to be migrated contains characters other than lowercase letters, digits, underscores (_), and hyphens (-). Cause of failure: The name of the source database is invalid. Troubleshooting: On the Databases page of the RDS console, create a database that meets requirements, and grant the migration account the read and write permissions on the new database. Use the database name mapping feature of DTS to map the source database to the new database. Then, perform a precheck again. The character set of the database to be migrated is not UTF-8, GBK, Latin1, or UTF-8MB4. Cause of failure: The character set of the source database is not supported. Troubleshooting: On the Databases page of the RDS console, create a database that meets requirements, and grant the migration account the read and write permissions on the new database. If the new database and the database to be migrated have different names, you can use the database name mapping feature of DTS to map the database to be migrated to the new database. Then, perform a precheck again. The migration account of the destination database has no read and write permissions on the database to be migrated. Cause of failure: You are not authorized to perform operations on the source database. Troubleshooting: On the Accounts tab of the Databases page in the RDS console, grant the migration account the read and write permissions on the database to be migrated. Then, perform a precheck again.
 
-#### Value of server_id in the source database
+#### 3.5.9 Value of server_id in the source database
 
 This item is checked only when you migrate incremental data between MySQL databases. DTS checks whether the value of server-id in the source database is set to an integer greater than 1. If the check result is Failed, run the `set global server_id='An integer greater than 1'` command in the source database and perform a precheck again.
 
-#### Source database version
+#### 3.5.10 Source database version
 
 DTS checks whether the version of the source database is supported. The table Source database types and versions lists the source database versions that are supported by DTS. Source database types and versions
 
@@ -1942,7 +2040,7 @@ DTS checks whether the version of the source database is supported. The table So
 
 If the check result is Failed, you must upgrade or downgrade the source database to a supported version before you perform a precheck again.
 
-### Data type mappings between
+### 3.6 Data type mappings between heterogeneous databases
 
 heterogeneous databases Heterogeneous databases support different data types. During schema migration, Data Transmission Service (DTS) converts the data types of the source database into those of the destination database. This topic describes the data type mappings in detail to help you evaluate the impact of data migration on your business. Migrate data from an ApsaraDB RDS for MySQL instance or a selfmanaged MySQL database The following table describes the data type mappings between MySQL and heterogeneous databases. The source instance can be a PolarDB for MySQL cluster, an ApsaraDB RDS for MySQL instance, or a selfmanaged MySQL database. The destination instance can be an AnalyticDB for MySQL cluster or an AnalyticDB for PostgreSQL instance. If the value range of the data to be migrated from the source instance exceeds the range supported by DTS, the accuracy of the data migrated to the destination instance decreases.
 
@@ -2046,9 +2144,9 @@ Migrate data from an Oracle database The following table describes the data type
 
 Destination instance: MySQL or PolarDB-X If a field of the CHAR data type in the source database is greater than 255 bytes in length, DTS converts this field to the VARCHAR(n) data type in the destination database. MySQL does not support the following Oracle data types: BFILE, INTERVAL YEAR TO MONTH, and INTERVAL DAY TO SECOND. Therefore, DTS does not convert these data types during schema migration. If a table to be migrated contains these data types, schema migration fails. You must make sure that the columns of these data types are excluded from the objects to be migrated. The TIMESTAMP data type of MySQL databases does not contain the time zone information. However, the TIMESTAMP WITH TIME ZONE and TIMESTAMP WITH LOCAL TIME ZONE data types in Oracle databases provide the time zone information. Therefore, DTS converts the values of the latter two data types to UTC time in the destination database. Destination instance: AnalyticDB for PostgreSQL If an Oracle data type is not supported by AnalyticDB for PostgreSQL, DTS converts the data type to BYTEA. If the conversion fails, DTS sets the field value to NULL.
 
-## Data synchronization
+## 4 Data synchronization
 
-### Supported database types, initial
+### 4.1 Supported database types, initial synchronization types, and synchronization topologies
 
 synchronization types, and
 
@@ -2076,7 +2174,7 @@ You can use Data Transmission Service (DTS) to synchronize data between various 
 | Self-managed Oracle database in a RAC or non-RAC architecture Version 9i, 10g, 11g, 12c, 18c, or 19c | DataHub All versions | Initial schema synchronization | One-way synchronizatio n |
 | ApsaraDB for Redis Version 4.0 or 5.0 | ApsaraDB for Redis Version 4.0 or 5.0 | Initial schema synchronization Initial full data synchronization | One-way synchronizatio n Two-way synchronizatio n |
 
-### Create a data synchronization
+### 4.2 Create a data synchronization instance
 
 instance Before you configure a task to synchronize data, you must create a data synchronization instance. This topic describes how to create a data synchronization instance in the Data Transmission Service (DTS) console. Procedure
 1. Log on to the DTS console. For more information, see Log on to the DTS console.
@@ -2096,7 +2194,7 @@ instance Before you configure a task to synchronize data, you must create a data
 In this panel, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
 5. Click Creat e.
 
-### Synchronization topologies
+### 4.3 Synchronization topologies
 
 The data synchronization feature supports multiple types of synchronization topologies. You can plan your data synchronization instances based on your business requirements. This topic describes the synchronization topologies that are supported by Data Transmission Service (DTS) and how to use these topologies. One-way synchronization To ensure data consistency for one-way synchronization, we recommend that you perform only read operations on the objects in the destination instance. Do not perform write operations on the objects.
 
@@ -2116,11 +2214,11 @@ Two-way synchronization DTS supports two-way synchronization only between two My
 |---|---|---|
 | Two-way one- to-one synchronizatio n |   | To ensure data consistency, make sure that data records with the same primary key, business primary key, or unique key are updated on only one of the source and destination instances. |
 
-### Configure data synchronization
+### 4.4 Configure data synchronization tasks
 
 tasks
 
-#### Configure between ApsaraDB RDS for
+#### 4.4.1 Configure between ApsaraDB RDS for MySQL instances
 
 MySQL instances This topic describes how to configure one-way data synchronization between ApsaraDB RDS for MySQL instances by using Data Transmission Service (DTS). Prerequisites The source and destination ApsaraDB RDS for MySQL instances are created. Limits
 
@@ -2194,7 +2292,7 @@ You can start the data synchronization task only after the task passes the prech
 9. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial synchronization.
 
-#### Synchronize data from an ApsaraDB RDS
+#### 4.4.2 Synchronize data from an ApsaraDB RDS for MySQL instance to a MaxCompute project
 
 for MySQL instance to a MaxCompute project This topic describes how to synchronize real-time data from an ApsaraDB RDS for MySQL instance to a MaxCompute project by using Data Transmission Service (DTS). This facilitates real-time data analysis. Features DTS supports real-time data synchronization from an ApsaraDB RDS for MySQL instance to a MaxCompute project within the same Alibaba Cloud account. DTS supports RDS instances that can be accessed over the classic network or a virtual private cloud (VPC). Objects to be synchronized You can select only tables as the objects to be synchronized. Synchronization process The synchronization process consists of two stages:
 1. Initial full data synchronization.
@@ -2317,7 +2415,7 @@ select 0 as record_id, 'I' as operation_flag, 'Y' as after_flag, base.id, base.n
 
 You can also use DataWorks to add full data merging nodes before you perform further computing and analysis. After full data is merged, downstream computing and analysis nodes can be automatically triggered. You can set an interval for periodic offline data analysis. After that, you have configured the task for synchronizing data from an ApsaraDB RDS for MySQL instance to a MaxCompute project in real time and merged the full data of tables.
 
-#### Synchronize data from an ApsaraDB RDS
+#### 4.4.3 Synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for MySQL cluster
 
 for MySQL instance to an AnalyticDB for MySQL cluster AnalyticDB for MySQL is a real-time online analytical processing (OLAP) service that is developed by Alibaba Cloud for online data analysis with high concurrency. This topic describes how to synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for MySQL cluster by using Data Transmission Service (DTS). After you synchronize data, you can use AnalyticDB for MySQL to build internal business intelligence (BI) systems, interactive query systems, and real-time report systems. Prerequisites The tables that you want to synchronize from the ApsaraDB RDS for MySQL instance contain primary keys. The destination AnalyticDB for MySQL cluster has sufficient storage space. Limits
 
@@ -2450,7 +2548,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 9. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial synchronization.
 
-#### Synchronize data from an ApsaraDB RDS
+#### 4.4.4 Synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for PostgreSQL instance
 
 for MySQL instance to an AnalyticDB for PostgreSQL instance This topic describes how to synchronize data from an ApsaraDB RDS for MySQL instance to an AnalyticDB for PostgreSQL instance by using Data Transmission Service (DTS). The data synchronization feature allows you to transfer and analyze data with ease. Prerequisites The tables that you want to synchronize from the source database contain primary keys. The destination AnalyticDB for PostgreSQL instance is created. Limits
 
@@ -2523,7 +2621,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 8. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial synchronization.
 
-#### Synchronize data from a self-managed
+#### 4.4.5 Synchronize data from a self-managed PostgreSQL database to an AnalyticDB for PostgreSQL instance
 
 PostgreSQL database to an AnalyticDB for PostgreSQL instance This topic describes how to synchronize data from a self-managed PostgreSQL database to an AnalyticDB for PostgreSQL instance by using Data Transmission Service (DTS). The data synchronization feature provided by DTS allows you to transfer and analyze data with ease. Prerequisites The source self-managed PostgreSQL database and the destination AnalyticDB for PostgreSQL instance are created. The available storage space of the AnalyticDB for PostgreSQL instance is larger than the total size of the data in the self-managed PostgreSQL database. Limits
 
@@ -2597,7 +2695,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 8. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial full data synchronization.
 
-#### Synchronize data between PolarDB-X
+#### 4.4.6 Synchronize data between PolarDB-X instances
 
 instances PolarDB-X is formerly known as Distributed Relational Database Service (DRDS). It is compatible with the MySQL protocol and syntax, and supports automatic sharding, online smooth scaling, auto scaling, and transparent read/write splitting. This topic describes how to synchronize data between PolarDB-X instances by using Data Transmission Service (DTS). Prerequisites The tables to be synchronized contain primary keys. Limits Warning For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X instance, see Limits and usage notes for synchronizing data between PolarDB-X instances.
 
@@ -2656,7 +2754,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 9. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial synchronization.
 
-#### Synchronize data from a PolarDB-X
+#### 4.4.7 Synchronize data from a PolarDB-X instance to an AnalyticDB for MySQL cluster
 
 instance to an AnalyticDB for MySQL cluster This topic describes how to synchronize data from a PolarDB-X instance to an AnalyticDB for MySQL cluster by using Data Transmission Service (DTS). Limits Warning For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X instance, see Limits and usage notes for synchronizing data between PolarDB-X instances.
 
@@ -2776,7 +2874,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 9. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial synchronization.
 
-#### Synchronize data from a PolarDB-X
+#### 4.4.8 Synchronize data from a PolarDB-X instance to a DataHub project
 
 instance to a DataHub project This topic describes how to synchronize data from a PolarDB-X instance to a DataHub project by using Data Transmission Service (DTS). After you synchronize data, you can use big data services such as Realtime Compute to analyze data in real time. Prerequisites A DataHub project is created to receive the synchronized data. Limits Warning For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X instance, see Limits and usage notes for synchronizing data between PolarDB-X instances.
 
@@ -2831,7 +2929,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 7. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial synchronization.
 
-#### Synchronize data from a self-managed Db2
+#### 4.4.9 Synchronize data from a self-managed Db2 for LUW database to an AnalyticDB for PostgreSQL instance
 
 for LUW database to an AnalyticDB for PostgreSQL instance This topic describes how to synchronize data from a self-managed Db2 for LUW database to an AnalyticDB for PostgreSQL instance by using Data Transmission Service (DTS). The data synchronization feature provided by DTS allows you to transfer and analyze data with ease. Prerequisites The source self-managed Db2 for LUW database and the destination AnalyticDB for PostgreSQL instance are created. The available storage space of the AnalyticDB for PostgreSQL instance is larger than the total size of the data in the self-managed Db2 for LUW database. Limits
 
@@ -2902,7 +3000,7 @@ the lower-right corner of the page. Before you can start the data synchronizatio
 9. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 Then, DTS performs initial full data synchronization. If the task is running and a data record is written to the source table, the data record is automatically synchronized to the destination table.
 
-#### Synchronize data from a self-managed
+#### 4.4.10 Synchronize data from a self-managed Oracle database to a DataHub project
 
 Oracle database to a DataHub project DataHub is a real-time data distribution platform that is designed to process streaming data. You can publish and subscribe to streaming data in DataHub and distribute the data to other platforms. DataHub allows you to analyze and use streaming data with ease. This topic describes how to synchronize data from a self-managed Oracle database to a DataHub project by using Data Transmission Service (DTS). After you synchronize data, you can use big data services such as Realtime Compute for Apache Flink to analyze the data in real time. Prerequisites The engine version of the self-managed Oracle database is 9i, 10g, 11g, 12c, 18c, or 19c. The self-managed Oracle database is running in ARCHIVELOG mode. Archived log files are accessible, and a suitable retention period is set for archived log files. For more information, see Managing Archived Redo Log Files. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The destination DataHub project is created. For more information, see Create a project in DataHub Us er Guide. Limits
 
@@ -3058,7 +3156,7 @@ Synchronizing state. You can view the status of the data synchronization task on
 
 Additional information about the dts_before_flag and dts_after_flag fields The values of the `dts_before_flag` and `dts_after_flag` fields in an incremental log entry vary with different operation types: INSERT operation For an INSERT operation, the column values are the newly inserted record values (post-update values). The value of the `dts_before_flag` field is N, and the value of the `dts_after_flag` field is Y. UPDATE operation DTS generates two incremental log entries for an UPDATE operation. The two incremental log entries have the same values for the `dts_record_id` , `dts_operation_flag` , and `dts_utc_timestamp` fields. The first log entry records the pre-update values. Therefore, the value of the `dts_before_flag` field is Y, and the value of the `dts_after_flag` field is N. The second log entry records the postupdate values. Therefore, the value of the `dts_before_flag` field is N, and the value of the `dts_` `after_flag` field is Y. DELETE operation For a DELETE operation, the column values are the deleted record values (pre-update values). The value of the `dts_before_flag` field is Y, and the value of the `dts_after_flag` field is N.
 
-#### Synchronize data between ApsaraDB for
+#### 4.4.11 Synchronize data between ApsaraDB for Redis instances
 
 Redis instances You can use Data Transmission Service (DTS) to perform one-way or two-way data synchronization between ApsaraDB for Redis instances. This feature is applicable to scenarios such as resource migration or resource merging and business architecture adjustment. Prerequisites If the source ApsaraDB for Redis instance is a Community Edition instance, the engine version is 4.0 or 5.0. If the source ApsaraDB for Redis instance is an Enhanced Edition (Tair) instance, the engine version is 5.0. The engine version of the destination ApsaraDB for Redis instance can be 4.0 or 5.0. The engine version of the destination ApsaraDB for Redis instance must be the same as or later than that of the source ApsaraDB for Redis instance. Before you synchronize data between two ApsaraDB for Redis instances that use different engine versions, check the compatibility of the two versions. The source ApsaraDB for Redis instance is deployed in a virtual private cloud (VPC). SSL encryption is disabled for the source ApsaraDB for Redis instance. The available storage space of the destination ApsaraDB for Redis instance is larger than the total size of the data in the source ApsaraDB for Redis instance. ApsaraDB for Redis Enhanced Edition (Tair) is integrated with more Redis modules than ApsaraDB for Redis Community Edition. To ensure compatibility between the source and destination instances, if the source instance is an Enhanced Edition (Tair) instance, the destination instance must be an Enhanced Edition (Tair) instance. Limits
 
@@ -3153,27 +3251,27 @@ Advanced Set t ings
 5. In the lower part of the page, click Next : Precheck and St art T ask.
 Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click View Det ails next to each failed item to view details. After you troubleshoot the issues based on the causes, run a precheck again. After the success rate becomes 100%, the data synchronization task starts to run. You can view the progress of the task on the Data Synchronization page.
 
-#### Configure two-way data synchronization
+#### 4.4.12 Configure two-way data synchronization between RDS instances
 
 between RDS instances
 
-##### Overview
+##### 4.4.12.1 Overview
 
 DTS supports two-way real-time data synchronization between RDS instances on any two clouds. This section describes how to use DTS to create a two-way synchronization task between two ApsaraDB RDS for MySQL instances for active geo-redundancy, geo-disaster recovery, and other scenarios.
 
-##### Supported synchronization statements
+##### 4.4.12.2 Supported synchronization statements
 
 Two-way synchronization between ApsaraDB RDS for MySQL instances supports all DML updates (including INSERT, UPDATE, and DELETE) and the following DDL updates: ALTER TABLE, ALTER VIEW, ALTER FUNCTION, and ALTER PROCEDURE CREATE DATABASE, CREATE SCHEMA, CREATE INDEX, CREATE TABLE, CREATE PROCEDURE, CREATE FUNCTION, CREATE TRIGGER, CREATE VIEW, and CREATE EVENT DROP FUNCTION, DROP EVENT, DROP INDEX, DROP PROCEDURE, DROP TABLE, DROP TRIGGER, and DROP VIEW RENAME TABLE and TRUNCATE TABLE To ensure the stability of a two-way synchronization channel, you can synchronize DDL updates on the same table in only one direction. For example, for two-way synchronization, you must enable DDL synchronization in either the At o-B or B-t o-A direction. If DDL synchronization is configured in one direction, it is not supported in the reverse direction. You can only perform DML synchronization.
 
-##### Detect and resolve conflicts
+##### 4.4.12.3 Detect and resolve conflicts
 
 To ensure data consistency, for two-way synchronized instances, make sure that records with the same primary key, business primary key, or unique key are updated only on one of the instances. If you unexpectedly update a record with the same primary key, business primary key, or unique key on both instances that are two-way synchronized, a synchronization conflict occurs. To maximize the stability of two-way synchronized instances, DTS supports detecting and resolving data conflicts. Considerations During two-way synchronization, the system time of the source and destination instances may not be the same. Additionally, synchronization delays may occur. For these reasons, DTS cannot guarantee that its conflict detection mechanism can completely prevent data conflicts. You must refactor certain business logic to ensure that records of the same primary key, business primary key, or unique key are updated only on one of the instances that are two-way synchronized. Supported conflict types Currently, DTS supports detecting the following conflict types: Uniqueness conflicts caused by INSERT operations A uniqueness conflict occurs when the synchronization of an inserted row violates the unique constraint. For example, if two instances in two-way synchronization insert a record with the same primary key value at almost the same time, one of the inserted records fails to be synchronized because a record with the same primary key value already exists in the destination instance. Inconsistent records caused by UPDATE operations Update conflicts occur in the following scenarios: The records to be updated do not exist in the destination instance. If the records to be updated do not exist, DTS automatically changes the UPDATE operation to the INSERT operation and inserts these records to the destination instance. In this case, duplicate unique key values may occur. The primary keys or unique keys of the records to be updated conflict with each other. A DELETE operation is made on non-existent records A delete conflict occurs when the records to be deleted do not exist in the destination instance. In this case, DTS automatically ignores the DELETE operation regardless of the conflict resolution policy that you have configured. Supported conflict resolution policies For the preceding synchronization conflicts, DTS provides the following resolution policies. You can select a conflict resolution policy as required when configuring two-way synchronization. TaskFailed: The synchronization task reports an error and automatically exits the process in case of a conflict. When the synchronization encounters a conflict of the preceding types, the synchronization task reports an error and automatically exits the process. The task enters a failed state and you must manually resolve the conflict. This method is the default conflict resolution policy. Ignore: The records in the destination instance are used in case of a conflict. When the synchronization encounters a conflict of the preceding types, the synchronization task skips the current synchronization statement and continues the process. The records in the destination instance are used. Overwrite: The conflict records in the destination instance are overwritten in case of a conflict. When the synchronization encounters a conflict of the preceding types, the conflict records in the destination instance are overwritten.
 
-##### Synchronization restrictions
+##### 4.4.12.4 Synchronization restrictions
 
 This section describes the restrictions in cross-cloud data synchronization using DTS. Restrictions in data sources Currently, only ApsaraDB RDS for MySQL instances support two-way synchronization. Other heterogeneous data sources do not support two-way synchronization. The destination instance cannot be an RDS instance that runs in standard access mode and has only a public network address. Restrictions in synchronization architecture Currently, DTS only supports two-way synchronization between two ApsaraDB RDS for MySQL instances. Two-way synchronization between more than two instances is not supported. Feature restrictions Incompatible with triggers When you synchronize an entire database and the database contains a trigger that updates the synchronization table, the synchronized data may be inconsistent. For example, the object to be synchronized is database A that contains table a and table b. Table a has a trigger that inserts a row to table b after the row is inserted to table a. In this case, if an INSERT operation is performed on table a in the source instance during synchronization, the data in table b is inconsistent between the source and destination instances. To resolve this problem, you must delete the trigger in the destination instance, so that the data in table b is only synchronized from the source instance. Restrictions in the RENAME TABLE operation The RENAME TABLE operation may result in inconsistent synchronization data. For example, if the object to be synchronized only includes table a and the rename a t o b command is executed in the source instance during synchronization, subsequent operations to the renamed table b are not synchronized to the destination database. To solve this problem, you can synchronize the entire database where table a and table b are stored. Restrictions in DDL synchronization direction To ensure the stability of a two-way synchronization channel, you can synchronize DDL updates on the same table in only one direction. For example, in A-to-B and B-to-A synchronization, you can implement DDL synchronization in either the A-t o-B or B-t o-A direction. If DDL synchronization is configured in one direction, it is not supported in the reverse direction.
 
-##### Configure two-way data synchronization
+##### 4.4.12.5 Configure two-way data synchronization between ApsaraDB RDS for MySQL instances across regions
 
 between ApsaraDB RDS for MySQL instances across regions This topic describes how to configure two-way data synchronization between ApsaraDB RDS for MySQL instances across regions by using Data Transmission Service (DTS). Prerequisites Basic plans for cross-cloud data synchronization and two-way data synchronization are purchased. The source and destination ApsaraDB RDS for MySQL instances are created. Limits
 
@@ -3270,7 +3368,7 @@ Advanced set t ings
 1. After the data synchronization task in the forward direction is initialized, you can configure the data
 synchronization task in the reverse direction. For more information about how to configure the task, see Steps 5 to 10.
 
-#### Synchronize data between PolarDB-X 2.0
+#### 4.4.13 Synchronize data between PolarDB-X 2.0 instances
 
 instances This topic describes how to synchronize data between PolarDB-X 2.0 instances by using Data Transmission Service (DTS). Prerequisites The source and destination PolarDB-X 2.0 instances are created and compatible with MySQL 5.7. The available storage space of the destination PolarDB-X 2.0 instance is larger than the total size of the data in the source PolarDB-X 2.0 instance. Limits
 
@@ -3362,11 +3460,11 @@ Advanced set t ings
 5. In the lower part of the page, click Next : Precheck and St art T ask.
 Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, you can click the det ails icon next to each failed item to view details. You can troubleshoot the issues based on the causes and run a precheck again. After the value of Success Rat e becomes 100%, the data synchronization task starts to run. You can view the progress of the task on the Data Synchronization page.
 
-### Manage data synchronization
+### 4.5 Manage data synchronization instances
 
 instances
 
-#### Specify the name of an object in the
+#### 4.5.1 Specify the name of an object in the destination instance
 
 destination instance After an object, such as a database or table, is synchronized from the source instance to the destination instance, the name of the object remains unchanged. You can use the object name mapping feature provided by DTS to specify a different name for the object in the destination instance. Notes You can perform this operation only when a data synchronization task is configured and the current process is Select Object s t o Synchronize. Do not perform this operation after the data synchronization task is started. Otherwise, the synchronization may fail. Procedure
 1. On the Select Object s t o Synchronize page, move the required objects to the Select ed section,
@@ -3376,7 +3474,7 @@ Database name mapping In the Edit Dat abase Name dialog box that appears, enter 
 3. Click OK.
 4. Configure other parameters that are required for the data synchronization task.
 
-#### Use SQL conditions to filter data
+#### 4.5.2 Use SQL conditions to filter data
 
 When you select the objects to be synchronized in a data synchronization task, you can specify SQL conditions to filter data. Only the data that meets the specified conditions is synchronized to the destination database. This feature is applicable to scenarios such as regular data synchronization and table partitioning. Prerequisites A data synchronization task is being configured. The current step is Select Object s t o Synchronize. For more information about how to create and configure a data synchronization task, see configuration examples in Data Transmission Service (DTS) documentation. Limits You can filter the fields only in the current table. Cross-table filtering is not supported. If the source database is a self-managed PostgreSQL database or an ApsaraDB RDS for PostgreSQL instance, filter conditions do not take effect on incremental data. Procedure
 1. In the Select Object s t o Synchronize step, move the required objects to the Select ed section,
@@ -3398,7 +3496,7 @@ If the syntax is valid, the Inf ormat ion message shows that t he validat ion is
 4. Click OK.
 5. Configure other parameters that are required for the data synchronization task.
 
-#### Add objects to a data synchronization task
+#### 4.5.3 Add objects to a data synchronization task
 
 When a data synchronization task is running, you can add objects to the task or remove objects from the task. This topic describes how to add objects to a data synchronization task in the DTS console. Limits You can modify the required objects only when the data synchronization task is in the Synchronizing or Synchronizat ion Failed state. Start time of data synchronization The time when DTS synchronizes data of new objects depends on whether initial synchronization is specified for the data synchronization task. If initial synchronization is specified, DTS synchronizes schemas and historical data, and then synchronizes incremental data. If initial synchronization is not specified, DTS synchronizes data after incremental data is generated on the source instance. Procedure
 1. Log on to the DTS console.
@@ -3406,11 +3504,11 @@ When a data synchronization task is running, you can add objects to the task or 
 3. Find the data synchronization task and choose More > Modif y Object s t o Synchronize in the
 Actions column.
 4. On the Select Object s t o Synchronize tab, add objects based on your needs, as shown in Add
-objects to a data synchronization task. Add objects to a data synchronization task
+objects to a data synchronization task.
 5. Click Precheck.
 After the task passes the precheck, the objects are added to the data synchronization task. After the objects are added, if initial synchronization is specified for the data synchronization task, the task status changes from Synchronizing to Synchronizing (T he init ial synchronizat ion of t he new object s is being perf ormed.). You can click View More to view the initial synchronization progress of the new objects. After the initial synchronization on the new objects is complete, the task status returns to Synchronizing.
 
-#### Remove objects from a data
+#### 4.5.4 Remove objects from a data synchronization task
 
 synchronization task When a data synchronization task is running, you can add objects to the task or remove objects from the task. This topic describes how to remove objects from a data synchronization task in the DTS console. Limits You can modify the objects only when a data synchronization task is in the incremental data synchronization phase and not in the Modifying Objects state. Procedure
 1. Log on to the DTS console.
@@ -3421,15 +3519,15 @@ the Actions column. For instances that failed to run, choose
 4. On the Select Object s t o Synchronize tab, remove objects based on your needs.
 5. Click Precheck to run a precheck.
 
-#### Troubleshoot precheck failures
+#### 4.5.5 Troubleshoot precheck failures
 
 Before Data Transmission Service (DTS) runs a data synchronization task, DTS performs a precheck. This topic describes the precheck items and how to troubleshoot precheck failures. Source database connectivity DTS checks whether DTS servers can connect to the source RDS instance. DTS creates a connection to the source RDS instance by using the JDBC protocol. If the connection fails, the task fails to pass the precheck. Cause of failure DTS does not support data synchronization between RDS instances in the region where the source instance resides. The database account or password of the source instance is invalid. Solution Submit a ticket and contact Alibaba Cloud technical support. Destination database connectivity DTS checks whether DTS servers can connect to the destination RDS instance. DTS creates a connection to the destination RDS instance by using the JDBC protocol. If the connection fails, the task fails to pass the precheck. Cause of failure DTS does not support data synchronization between RDS instances in the region where the destination instance resides. The database account or password of the destination instance is invalid. Solution Submit a ticket and contact Alibaba Cloud technical support. Source database version DTS checks whether: i. The database version of the source RDS instance is supported by the data synchronization feature. ii. The database version of the destination RDS instance is the same as the database version of the source RDS instance. Cause of failure The database version of the source RDS instance is earlier than the supported database versions. The data synchronization feature supports the following database versions: MySQL 5.1, 5.5, 5.6, and 5.7. The database version of the destination RDS instance is earlier than the database version of the source RDS instance. Solution If the database version of the source RDS instance is earlier than the supported database versions, upgrade the source RDS instance to MySQL 5.6 or 5.7 in the RDS console. Then, create a data synchronization task again. If the database version of the destination RDS instance is earlier than the database version of the source RDS instance, upgrade the destination RDS instance to MySQL 5.6 or 5.7 in the RDS console. Then, create a data synchronization task again. Database existence DTS checks whether the destination database already exists in the destination instance. If the destination database does not exist in the destination instance, DTS automatically creates a database. However, DTS fails to create the database and reports a failure under the following circumstances: The database name contains characters other than lowercase letters, digits, underscores (_), and hyphens (-). The character set of the database is not UTF-8, GBK, Latin1, or UTF-8MB4. The account of the destination database does not have the read and write permissions on the source database. If the data source is an RDS instance, the task passes the precheck. Source database permissions DTS checks whether the account of the source database has the required permissions. If the account does not have the required permissions, the task fails to pass the precheck. If the source database is an RDS instance, the task passes the precheck. Destination database permissions DTS checks whether the account of the destination database has the required permissions. If the account does not have the required permissions, the task fails to pass the precheck. Cause of failure DTS fails to create a database account in the destination RDS instance. DTS fails to grant the read/write permissions to the database account of the destination RDS instance. Solution Submit a ticket and contact Alibaba Cloud technical support. Object name conflict DTS checks object names only if you select initial synchronization for a data synchronization task. DTS checks whether an object that you want to synchronize has the same name as an object in the destination RDS instance. Cause of failure If an object in the destination RDS instance has the same name as the object that you want to synchronize, the task fails to pass the precheck. Solution Remove the conflicting object from the destination database. Then, create a data synchronization task again. Select both Initial Schema Synchronization and Initial Full Data Synchronization. Value of server_id in the source database DTS checks whether the value of the server_id parameter in the source database is set to an integer that is greater than or equal to 2. If the data source is an RDS instance, the task passes the precheck. Whether binary logging is enabled for the source database DTS checks whether the binary logging feature is enabled for the source database. If the binary logging feature is disabled for the source database, the task fails to pass the precheck. If the data source is an RDS instance, the task passes the precheck. Whether the binlog format is ROW in the source database DTS checks whether the binary log format of the source database is set to ROW. If the binary log format of the source database is not set to ROW, the task fails to pass the precheck. If the data source is an RDS instance, the task passes the precheck. Integrity of the FOREIGN KEY constraints DTS checks whether the parent tables and child tables that have referential relationships with each other are all included in the required objects. The precheck allows DTS to protect the integrity of the FOREIGN KEY constraints. Cause of failure One or more child tables are included in the required objects. However, the parent tables that are referenced by the child tables are not included in the required objects. This impairs the integrity of the FOREIGN KEY constraints. Solution The following solutions are available: Create a data synchronization task again and do not synchronize the child tables that fail to pass the precheck. Create a data synchronization task again and add the parent tables to the required objects. Remove the FOREIGN KEY constraints from the child tables that fail to pass the precheck. Then, create a data synchronization task again. Storage engine DTS checks whether the required objects use the storage engines that are not supported by the data synchronization feature, such as FEDERATED, MRG_MyISAM, and TokuDB. Cause of failure If the storage engine of a source table is FEDERATED, MRG_MyISAM, or TokuDB, the task fails to pass the precheck. Solution Change the unsupported storage engine to InnoDB and create a data synchronization task again. Character set DTS checks whether the required objects use the character sets that are not supported by the data synchronization feature, such as the UCS-2 character set. Cause of failure If the character sets used by the required objects are not supported by the data synchronization feature, the task fails to pass the precheck. Solution Change the unsupported character sets to UTF-8, GBK, or Latin1. Then, create a data synchronization task again. Complicated topologies DTS checks whether the topology that you specify for the source and destination RDS instances is supported. Cause of failure The source RDS instance in the current task is being used as the destination instance of another task. The destination RDS instance in the current task is being used as the source or destination instance of another task. The objects that you want to synchronize in the current task are being synchronized by an existing task. The two tasks have the same source and destination RDS instances. Solution If the task that you want to create has the same source and destination RDS instances as an existing task, you can add the required objects to the existing task. You do not need to create another task to synchronize these objects. If the task that you want to create conflicts with an existing task, wait until the existing task is completed before you create a data synchronization task again. Format of the MySQL database password DTS checks whether the format of the password that is used to access the source database is no longer valid. If the data source is an RDS instance, the task passes the precheck.
 
-### Best practices for data
+### 4.6 Best practices for data synchronization from PolarDB-X instances
 
 synchronization from PolarDB-X instances
 
-#### Limits and usage notes for synchronizing
+#### 4.6.1 Limits and usage notes for synchronizing data between PolarDB-X instances
 
 data between PolarDB-X instances PolarDB-X does not provide binary logs. To ensure data quality, we recommend that you take note of the limits when you perform business design, business development, and O&M changes. Overview Limits on the business design Limits on the database architecture Limits on O&M changes Potential risks on data quality Suggestions to ensure data quality Limits on the business design All tables must have primary keys. Otherwise, data inconsistency may occur in data synchronization because the destination database may contain duplicate data records. We recommend that you do not use the global secondary indexes (GSIs) of PolarDB-X because they are updated asynchronously. If you use GSIs, DTS can ensure only eventual consistency of data. The databases that you want to synchronize cannot be deployed in mixed mode. The mixed mode refers to a mode in which both the unit mode and the copy mode are used). In unit mode, users perform read and write operations in their respective unit nodes. Two-way synchronization is implemented between the databases in each unit node and those in the central node. In copy mode, users write data to the databases in the central node. The data is then synchronized to the databases in each unit node. If you configure two-way synchronization between PolarDB-X instances and use underlying MySQL databases, fields of the FLOAT or DOUBLE type are not supported in business tables. If the business tables have fields of the FLOAT or DOUBLE type, convert the field type to DECIMAL. If you configure one-way synchronization between PolarDB-X instances, fields of the FLOAT or DOUBLE type are supported in business tables. DTS does not allow you to synchronize objects such as stored procedures, triggers, functions, views, and events in data synchronization between PolarDB-X instances. DTS does not support initial schema synchronization between PolarDB-X instances. You must manually create objects such as databases and tables in the destination database. Make sure that the available storage capacities in PolarDB-X instances are sufficient for business expansion. If the version of the MySQL databases attached to a PolarDB-X instance is 5.7 or 8.0, you cannot configure a change tracking task for the PolarDB-X instance. Instead, you must configure a change tracking task for each MySQL database attached to the PolarDB-X instance. Limits on the database architecture An ApsaraDB RDS for MySQL instance that is attached to a PolarDB-X instance cannot be attached to another PolarDB-X instance. The ApsaraDB RDS for MySQL instances attached to the source PolarDB-X instance must have the same specifications as those attached to the destination PolarDB-X instance. For example, if the source PolarDB-X instance has four ApsaraDB RDS for MySQL instances, the destination PolarDB-X instance must have four ApsaraDB RDS for MySQL instances whose specifications are the same as those in the source PolarDB-X instance. The sharding rule of the source PolarDB-X instance must be the same as that of the destination PolarDB-X instance. Otherwise, no data synchronization task can be created. You can synchronize only business tables between Polar-X instances. You cannot synchronize metadata tables or system tables between PolarDB-X instances. Limits on O&M changes
 
@@ -3460,7 +3558,7 @@ data between PolarDB-X instances PolarDB-X does not provide binary logs. To ensu
 
 If data latency occurs between the primary and secondary databases of the source instance, the data written to the primary database is not updated to the secondary database in a timely manner. In this case, if you perform a primary/secondary switchover in the source instance, DTS uses the secondary database of the source instance as the source database for data synchronization. As a result, the data that is not updated to the secondary database is lost. If the DTS task is resumed from a network failure after you perform a switchover, DTS attempts to synchronize the data generated before the failure occurs. This mechanism prevents data loss in the destination database. In this case, if the destination tables do not have primary keys, data will be inconsistent between the source and destination databases. If the destination tables have primary keys, data may not be consistent when DTS implements the retry mechanism, but data will remain consistent after the retry ends. The data synchronization task may be delayed due to network failures and DDL operations. The data synchronization task may be delayed or interrupted due to changes to the source database, unfavorable performance of the destination database, and schema inconsistency. Alibaba Cloud cannot solve the preceding issues. You must recreate a DTS task or adjust the source and destination databases. Suggestions to ensure data quality You must perform all DDL operations with caution. All DDL operations must be confirmed by the technical engineers to comply with the preceding limits. Do not directly perform DDL operations in your program code.
 
-#### Solutions of data synchronization from a
+#### 4.6.2 Solutions of data synchronization from a PolarDB-X instance
 
 PolarDB-X instance Data Transmission Service (DTS) supports data synchronization from a source PolarDB-X instance to a destination instance. However, if more than two ApsaraDB RDS for MySQL instances are attached to the source PolarDB-X instance, we recommend that you do not directly configure a data synchronization task for the source PolarDB-X instance. If you do so, you may encounter a performance bottleneck or stability risks. This may affect your business. To ensure good performance and high stability of data synchronization, we recommend that you configure a data synchronization task for each ApsaraDB RDS for MySQL instance attached to the source PolarDB-X instance. Prerequisites You have read the Limits and usage notes for synchronizing data between PolarDB-X instances topic and understood the relevant conventions and usage notes. Synchronization solutions
 
@@ -3496,13 +3594,13 @@ However, in a few cases, you can synchronize DDL operations during data synchron
 | You use Solution 2 and select entire databases as the objects to be synchronized. | You can only add tables to the objects. To do this, you must add tables in the destination database, and then perform the same operations in the source database. You cannot add or remove columns. Warning If you add a column to the database of the source PolarDB-X instance, some physical tables at the underlying layer may contain the column, whereas some physical tables do not contain the column. When DTS executes the assembled SQL statement, DTS may fail to find the column or lose the data in the column. |
 | You use Solution 2 and do not select entire databases as the objects to be synchronized. | You can only add tables to the objects. To do this, perform the following steps: i. Add tables to the objects that you select for the data synchronization task. ii. Add tables in the destination database, and then perform the same operations in the source database. You cannot add or remove columns. |
 
-## Change tracking
+## 5 Change tracking
 
-### Overview
+### 5.1 Overview
 
 You can use Data Transmission Service (DTS) to track data changes from ApsaraDB RDS for MySQL instances in real time. This feature applies to the following scenarios: lightweight cache updates, business decoupling, asynchronous data processing, and synchronization of extract, transform, and load (ETL) operations. Supported databases User-created MySQL databases or ApsaraDB RDS for MySQL PolarDB-X (formerly known as DRDS) User-created Oracle database Objects for change tracking The objects for change tracking include tables and databases. In change tracking, data changes include data manipulation language (DML) operations and data definition language (DDL) operations. When you configure change tracking, you must select operation types. Change tracking tasks A change tracking task is the basic unit of change tracking and data consumption. To track data changes from an RDS instance, you must create a change tracking task in the DTS console for the RDS instance. The change tracking task pulls data changes from the RDS instance in real time and locally stores the data changes. You can use the DTS SDK to consume the tracked data. You can also create, manage, or delete change tracking tasks in the DTS console.
 
-### Create a change tracking
+### 5.2 Create a change tracking instance
 
 instance Before you configure a task to track data changes, you must create a change tracking instance. This topic describes how to create a change tracking instance in the Data Transmission Service (DTS) console. Procedure
 1. Log on to the DTS console. For more information, see Log on to the DTS console.
@@ -3512,9 +3610,9 @@ instance Before you configure a task to track data changes, you must create a ch
 instances that you want to create. In the Create DTS Instances dialog box, you can view the total number of instances, the number of existing instances, and the number of instances that can be created.
 5. Click Creat e.
 
-### Configure change tracking tasks
+### 5.3 Configure change tracking tasks
 
-#### Track data changes from an ApsaraDB RDS
+#### 5.3.1 Track data changes from an ApsaraDB RDS for MySQL instance
 
 for MySQL instance Data Transmission Service (DTS) allows you to track data changes from databases in real time. You can use the change tracking feature in the following scenarios: lightweight cache updates, business decoupling, asynchronous data processing, and synchronization of extract, transform, and load (ETL) operations. This topic describes how to track data changes from an ApsaraDB RDS for MySQL instance. Prerequisites The database version of the source instance is MySQL 5.6, 5.7, or 8.0. Limits
 
@@ -3561,7 +3659,7 @@ Before you can start the change tracking task, DTS performs a precheck. You can 
 7. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 After the change tracking task is configured, DTS performs initial change tracking, which takes about 1 minute. After the initial change tracking is complete, you can consume the tracked data. What's next Previous change tracking feature: Run the SDK demo code New change tracking feature: Use a Kafka client to consume tracked data
 
-#### Track data changes from a PolarDB-X
+#### 5.3.2 Track data changes from a PolarDB-X instance
 
 instance Data Transmission Service (DTS) allows you to track data changes from databases in real time. You can use the change tracking feature in the following scenarios: lightweight cache updates, business decoupling, asynchronous data processing, and synchronization of extract, transform, and load (ETL) operations. This topic describes how to track data changes from a PolarDB-X instance by using DTS. Limits Warning For more information about the limits of which you need to take note when you use DTS to synchronize data from a PolarDB-X instance, see Limits and usage notes for synchronizing data between PolarDB-X instances.
 
@@ -3601,7 +3699,7 @@ Before you can start the change tracking task, DTS performs a precheck. You can 
 7. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
 After the change tracking task is configured, DTS performs initial change tracking, which takes about 1 minute. After the initial change tracking is complete, you can consume the tracked data.
 
-#### Track data changes from a self-managed
+#### 5.3.3 Track data changes from a self-managed Oracle database
 
 Oracle database Data Transmission Service (DTS) allows you to track data changes from databases in real time. You can use the change tracking feature in the following scenarios: lightweight cache updates, business decoupling, asynchronous data processing, and synchronization of extract, transform, and load (ETL) operations. This topic describes how to track data changes from a self-managed Oracle database. Prerequisites The engine version of the self-managed Oracle database is 9i, 10g, or 11g. Real Application Cluster (RAC) instances are not supported. Supplemental logging, including SUPPLEMENTAL_LOG_DATA_PK and SUPPLEMENTAL_LOG_DATA_UI, is enabled for the self-managed Oracle database. For more information, see Supplemental Logging. The self-managed Oracle database is running in ARCHIVELOG mode. Archived log files are accessible, and a suitable retention period is set for archived log files. For more information, see Managing Archived Redo Log Files. Limits
 
@@ -3651,11 +3749,11 @@ Act ions column.
 6. In the lower-right corner of the page, click Save and Precheck.
 Before you can start the change tracking task, DTS performs a precheck. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click the icon next to each failed item to view details. After you troubleshoot the issues based on the causes, run a precheck again.
 7. Close the Precheck dialog box after the following message is displayed: T he precheck is passed.
-After the change tracking task is configured, DTS performs initial change tracking, which takes about 1 minute. After the initial change tracking is complete, you can consume the tracked data. What's next Use a Kafka client to consume tracked data
+After the change tracking task is configured, DTS performs initial change tracking, which takes about 1 minute. After the initial change tracking is complete, you can consume the tracked data. What's next
 
-### Manage change tracking tasks
+### 5.4 Manage change tracking tasks
 
-#### Modify the consumption checkpoint
+#### 5.4.1 Modify the consumption checkpoint
 
 During data consumption, you can modify the consumption checkpoint of a change tracking task based on your business requirements. After you modify the consumption checkpoint, the downstream SDK client will consume the data that is generated after the specified time. Prerequisites A change tracking task is created. For more information, see Track data changes from an ApsaraDB RDS for MySQL instance, Track data changes from a PolarDB-X instance or Track data changes from a selfmanaged Oracle database. Procedure
 1. Stop all downstream SDK consumption processes.
@@ -3670,7 +3768,7 @@ The selected time range must be within the time range of the tracked data. For m
 7. Restart the downstream SDK consumption processes.
 The downstream SDK client tracks data changes from the new consumption checkpoint.
 
-#### Modify the objects for change tracking
+#### 5.4.2 Modify the objects for change tracking
 
 DTS allows you to add or remove the objects for change tracking in the consumption process. This topic describes how to modify the objects for change tracking. Procedure
 1. Log on to the DTS console.
@@ -3681,7 +3779,7 @@ Add the objects for change tracking In the Required Object s section, select one
 5. In the lower-right corner of the page, click Save and Precheck.
 Before you can start the change tracking task, DTS performs a precheck. You can start the change tracking task only after the task passes the precheck. If the task fails to pass the precheck, click the icon next to each failed item to view details. After you troubleshoot the issues based on the causes, run a precheck again.
 
-#### Create a consumer group
+#### 5.4.3 Create a consumer group
 
 You can manage consumer groups of a change tracking task in the DTS console. This topic describes how to create a consumer group. Prerequisites A change tracking task is created. For more information, see Track data changes from a user-created MySQL database or an ApsaraDB RDS for MySQL instance (new version) or Track data changes from a PolarDB-X instance. Note You can create multiple consumer groups (up to 20) in a change tracking instance to repeatedly consume data. A consumer group consumes each message only once, and only one consumer can consume data. Procedure
 1. Log on to the DTS console.
@@ -3706,9 +3804,9 @@ You can manage consumer groups of a change tracking task in the DTS console. Thi
 
 7. Click Creat e.
 
-#### Manage consumer groups
+#### 5.4.4 Manage consumer groups
 
-You can manage consumer groups of a change tracking task in the DTS console. This topic describes how to modify the password of a consumer group and how to delete a consumer group. Prerequisites Create a consumer group Procedure
+You can manage consumer groups of a change tracking task in the DTS console. This topic describes how to modify the password of a consumer group and how to delete a consumer group. Prerequisites Procedure
 1. Log on to the DTS console.
 2. In the left-side navigation pane, click Change T racking.
 3. On the Change Tracking page, find the change tracking task for which you want to add a consumer
@@ -3717,11 +3815,11 @@ group and click the task ID.
 5. Modify the password of a consumer group or delete a consumer group.
 Modify the password of a consumer group i. On the Consume Dat a page, find the target consumer group and click Modif y Password in the Act ions column. ii. In the Modif y Password dialog box that appears, enter the old password and new password, and enter the new password again in the Conf irm Password field. A password must contain two or more of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length. iii. Click Modif y. Delete a consumer group After a consumer group is deleted, the data in the group will be cleared and cannot be recovered. We recommend that you use caution when performing this operation. i. On the Consume Dat a page, find the target consumer group and click Delet e in the Act ions column. ii. In the Delet e Consumer Group message that appears, click OK.
 
-### Use the SDK to consume tracked
+### 5.5 Use the SDK to consume tracked data
 
 data
 
-#### Methods provided by SDK
+#### 5.5.1 Methods provided by SDK
 
 You can use the SDK demo code that is provided by DTS to consume tracked data. This topic describes the methods that are available for the SDK classes. Methods of the RegionContex class
 
@@ -3824,7 +3922,7 @@ Methods of the Field class
 | ByteString getValue() | Queries the value of the field. The return type is ByteString. If the field is not specified, the method returns NULL . |
 | Boolean isPrimary() | Checks whether the field is a primary key column. The return value is True or False. |
 
-#### Quick start
+#### 5.5.2 Quick start
 
 This section describes how to use the DTS Java SDK to perform some basic operations. Initialize a RegionContext object A RegionContext object stores the settings of authentication credentials and network access mode. The following code shows how to initialize a RegionContext object.
 
@@ -3899,7 +3997,7 @@ import java.util.List; import com.aliyun.drc.clusterclient.ClusterClient; import
 
 `}` The askForGUID() method sets the ID of the change tracking instance. You can obtain the ID of the change tracking instance from the DTS console. After the ID of the change tracking instance is specified in the askForGUID() method, the SDK retrieves incremental data from this instance. Before you can start a ClusterClient object, you must add a Listener class to the ClusterClient object. When the ClusterClient object pulls incremental data from the change tracking instance, it also calls the notify() method of the Listener class to consume data.
 
-#### Parse tracked SQL statements
+#### 5.5.3 Parse tracked SQL statements
 
 You can use the DTS SDK to track data changes. DTS records the tracked data changes in a custom format. This topic describes how to parse various types of SQL statements. Parse a DDL statement If a data definition language (DDL) operation is performed in the source database, the operation type of the data record is DDL. The DDL statement is stored in the value of the first column. You can use the following sample code to parse the DDL statement:
 
@@ -4087,7 +4185,7 @@ StringBuilder sql_string = new StringBuilder(); Record.Type type = record.getOpt
 
 `}`
 
-#### Run the SDK demo code
+#### 5.5.4 Run the SDK demo code
 
 This topic describes how to run the SDK demo code that is provided by the Data Transmission Service (DTS) console.
 1. Create an AccessKey.
@@ -4097,7 +4195,7 @@ The development environment supported by the DTS SDK for Java is J2SE Developmen
 3. Run the SDK demo code.
 DTS provides the SDK demo code. You can copy the demo code by using the View Sample Code feature in the DTS console. In the following example, the SDK demo code is run in an Eclipse project. i. Create a class named MainClass in the src directory of the Eclipse project. ii. Open the generated Java file MainClass and delete the code template. iii. Paste the demo code into the MainClass file. iv. Modify the AccessKey ID, the AccessKey secret, and the ID of the change tracking instance in the demo code. The following figure shows the sample code. Sample code Replace the marked parts in the preceding sample code with the AccessKey ID, the AccessKey secret, and the ID of the change tracking instance of your account. Log on to the DTS console to obtain the ID of the change tracking instance. In the left-side navigation pane, click Change T racking to go to the Change Tracking Tasks page. On the page that appears, find the instance that you want to manage and click the ID of the instance in the ID/Name column. v. In Eclipse, right-click the demo file and choose Run As > Java Applicat ion to run the demo code.
 
-### Use a Kafka client to consume
+### 5.6 Use a Kafka client to consume tracked data
 
 tracked data This topic describes how to use the demo code of a Kafka client to consume tracked data. The change tracking feature of the new version allows you to consume tracked data by using a Kafka client from V0.11 to V1.1. Prerequisites A change tracking task is created. For more information, see Track data changes from an ApsaraDB RDS for MySQL instance, Track data changes from a PolarDB-X instance or Track data changes from a self-managed Oracle database. One or more consumer groups are created. For more information, see Create a consumer group. Precautions If you enable auto commit when you use the change tracking feature, some data may be committed before it is consumed. This results in data loss. We recommend that you manually commit data. If data fails to be committed due to a fault, you can restart the client to continue consuming data from the last recorded consumer offset. However, duplicate data may be generated during this period. You must manually filter out the duplicate data. Data is serialized and stored in the Avro format. For more information, see Record.avsc. If the client that you use is not a Kafka client, you must parse the tracked data based on the Avro schema. Regarding the `offsetFotTimes` interface, the search unit of DTS is seconds, and the search unit of native Kafka is milliseconds. Download and run the demo code of the Kafka client Click here to download the demo code of the Kafka client. Download and run the demo code of the Kafka client
 

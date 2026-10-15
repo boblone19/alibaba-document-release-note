@@ -3,14 +3,47 @@ title: "Static Data Masking and Watermarking Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 22
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Static Data Masking and Watermarking Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "dfe2babde18a78f3_Alibaba Cloud Apsara Stack V3.18.6 Static Data Masking and Watermarking Operations and Maintenance G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E6%95%B0%E6%8D%AE%E9%9D%99%E6%80%81%E8%84%B1%E6%95%8F%E4%B8%8E%E6%B0%B4%E5%8D%B0/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Static%20Data%20Masking%20and%20Watermarking%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Static Data Masking and Watermarking Operations and Maintenance Guide
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+- 2 Routine Inspections
+  - 2.1 Log on to the Apsara Uni-manager Management Console
+  - 2.2 View the status of an instance
+  - 2.3 View profile
+  - 2.4 View tasks
+- 3 Metric details
+- 4 Core alert handling
+- 5 Apsara Stack Security ECS logon (products deployed under yundun_vpc)
+- 6 FAQ
+  - 6.1 Failed to create or upgrade the Apsara Stack Security console
+  - 6.2 faq-about-data-sources
+    - 6.2.1 Failed to test the connection to the data source.
+    - 6.2.2 File source creation failed
+    - 6.2.3 Remote file source test connection failed
+    - 6.2.4 Case: Test connection error socket read timeout
+  - 6.3 Discover Task Issues
+    - 6.3.1 Failed to find that the task has tables.
+    - 6.3.2 Inaccurate results found
+    - 6.3.3 Found task stuck
+    - 6.3.4 Case: When you create a discovery task, fewer tables are seen in the schema than in the source database.
+  - 6.4 Desensitization task issues
+    - 6.4.1 Field desensitization exception
+    - 6.4.2 Data warehousing exceptions
+    - 6.4.3 Extremely slow desensitization performance
+    - 6.4.4 The desensitization task fails to include tables.
+    - 6.4.5 Table initialization failed
+    - 6.4.6 Object migration failed
+    - 6.4.7 The desensitization task is stuck.
+    - 6.4.8 Case: an error is reported when a field that is not desensitized is stored. The field length is too long.
+
+## 1 O&M overview
 
 **Purpose**
 
@@ -24,9 +57,9 @@ O&M personnel must have IT industry skills, including computer network knowledge
 
 During maintenance operations, O&M personnel must abide by operation regulations to ensure personal safety and system safety. User data must be kept strictly confidential and must not be copied or disseminated without written consent from users.
 
-## Routine Inspections
+## 2 Routine Inspections
 
-### Log on to the Apsara Uni-
+### 2.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -55,7 +88,7 @@ operations in the following scenarios: It is the first time that you log on to t
 For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 
-### View the status of an instance
+### 2.2 View the status of an instance
 
 **Procedure**
 
@@ -70,7 +103,7 @@ For more information, see the **Bind a virtual MFA device to enable**
 
 If the following two types of situations are found in the status view, you must immediately start the troubleshooting process to avoid the problem from expanding: The status is marked as **Exception**. The status is displayed as **Updating** for a long time. If the upgrade is not completed for more than two hours, the status is abnormal.
 
-### View profile
+### 2.3 View profile
 
 **Overview**
 
@@ -84,7 +117,7 @@ The full operation of the de-identified and watermark modules is controlled at t
 3. Find the instance that you want to view and click **Details** in the **Actions** column.
 4. View the **overview** of the instance.
 
-### View tasks
+### 2.4 View tasks
 
 **Overview**
 
@@ -100,7 +133,7 @@ To view the task status and results, you must cover the following six types of t
 **Privacy Protection**, and **Column Encryption** tabs, you can view the running status of the
 task.
 
-## Metric details
+## 3 Metric details
 
 **View the monitoring dashboard of a CMS**
 
@@ -113,11 +146,11 @@ Static data desensitization and watermark products have been connected to the CM
 4. Click the target instance to view the monitoring data of the product.
 Operations and maintenance personnel can directly view the following core information through the CMS platform to achieve comprehensive control of the product running status. Instance Usage: includes the number of enabled instances, the distribution of workloads on each instance, and the usage frequency. You can accurately grasp the instance running saturation. Instance status: synchronously displays information such as whether each instance is running normally and whether there are abnormal alerts. This information is complementary to the status check on the white screen page. Resource usage: monitors the CPU, memory, and disk space usage of the instance in real time to warn of potential risks such as insufficient resources.
 
-## Core alert handling
+## 4 Core alert handling
 
 The core alerts for static database de-information and watermarking systems include alerts for CPU, memory, and disk usage overruns. If this type of alert occurs, you should log on to the corresponding instance quickly to view the trigger factors. If necessary, contact Alibaba Cloud technical support. CS logon (products deployed und er yundun_vpc)
 
-## Apsara Stack Security ECS
+## 5 Apsara Stack Security ECS logon (products deployed under yundun_vpc)
 
 **logon (products deployed**
 
@@ -219,11 +252,11 @@ java -Dfile.encoding=utf-8 -jar yundun-csm-client-1.0.1.jar $(echo $(env | grep 
 java -Dfile.encoding=utf-8 -jar yundun-csm-client-1.0.1.jar $(echo $(env | grep csm_ima ge_secretKey) |awk -F '=' '{print $2}') Password/decryptPassword '{"password":"xxxxxx"}'
 ```
 
-## FAQ
+## 6 FAQ
 
 **This topic describes how to troubleshoot common issues.**
 
-### Failed to create or upgrade
+### 6.1 Failed to create or upgrade the Apsara Stack Security console
 
 **the Apsara Stack Security console**
 
@@ -245,25 +278,25 @@ failure (such as configuration errors, missing dependencies, and insufficient pe
 
 To view log details, you must log on to the ECS instance corresponding to the cloudnative product in advance. Before you perform this operation, make sure that you have the logon permission on the corresponding instance and record the operation to avoid affecting other business operations.
 
-### faq-about-data-sources
+### 6.2 faq-about-data-sources
 
-#### Failed to test the connection to the
+#### 6.2.1 Failed to test the connection to the data source.
 
 **data source.**
 
 Check whether the database connection information configured by the static equipment is correct, and find the customer to confirm whether the database connection information provided by the customer is correct. Check whether the network from the static detachment device to the database server is unblocked. For example, go to the background of the desensitization system and run the ping and nc commands. Check whether the database version is supported, whether the database itself is normal, and whether there are logon restrictions. You can use other devices to configure the IP address of the static product, and then use a third-party client tool to try to connect to the database through jdbc.
 
-#### File source creation failed
+#### 6.2.2 File source creation failed
 
 Check whether the `/dbfw_dc` has enough remaining disk space. Check `/` if there is enough remaining disk space.
 
-#### Remote file source test connection
+#### 6.2.3 Remote file source test connection failed
 
 **failed**
 
 check whether the ftp connection information, especially the path information, is correct. check whether the network from the static detachment device to the ftp server is smooth. for example, go to the background of the desensitization system and run the ping and nc commands to verify. check whether the ftp device service is normal. you can use another device to log on to the ftp service through a third-party tool.
 
-#### Case: Test connection error socket
+#### 6.2.4 Case: Test connection error socket read timeout
 
 **read timeout**
 
@@ -279,9 +312,9 @@ The connected database is Oracle's rac, and the connection IP provided by the cu
 
 The connection is successful after the customer re-provides the IP address.
 
-### Discover Task Issues
+### 6.3 Discover Task Issues
 
-#### Failed to find that the task has tables.
+#### 6.3.1 Failed to find that the task has tables.
 
 View the error message in the discovery task log
 
@@ -291,15 +324,15 @@ View the error message in the discovery task log
 
 Check whether the database user permissions are sufficient. Check whether the database service is normal. You can directly connect to the database to perform the select operation for verification.
 
-#### Inaccurate results found
+#### 6.3.2 Inaccurate results found
 
 View the discovery rule hit ratio in the discovery task log `/dbfw_bkup/tasklog/DISCOVER_TASK_*.log` , and then check the confirmation ratio setting of the discovery rule on the foreground page. Front page to view data samples. Use the database client tool to directly view the source database data.
 
-#### Found task stuck
+#### 6.3.3 Found task stuck
 
 Review the discovery task log `/dbfw_bkup/tasklog/DISCOVER_TASK_*.log` to determine which stage or table the card is in. If you find that the task is stuck in a table, connect to the source database to check whether the table status is normal, whether the table is locked, and whether the query can be normal. obtain the jstack information of the java process, obtain the jstack information again in a few minutes, and send the jstack information twice to alibaba cloud technical support students.
 
-#### Case: When you create a discovery
+#### 6.3.4 Case: When you create a discovery task, fewer tables are seen in the schema than in the source database.
 
 **task, fewer tables are seen in the schema**
 
@@ -317,41 +350,41 @@ After checking, the other 12 tables are temporary tables. Temporary tables are n
 
 The product mechanism can be explained directly to the customer. You can use the `select temporary,count(*) from user_tables group by temporary` statement to query whether a table is a temporary table in the source database, as shown in the following figure. A temporary table with the value of Y is a temporary table, and a temporary table with the value of N is not a temporary table. When you create a discovery task, you can only view tables with the temporary attribute of N.
 
-### Desensitization task issues
+### 6.4 Desensitization task issues
 
-#### Field desensitization exception
+#### 6.4.1 Field desensitization exception
 
 View the error message in the log `/dbfw_bkup/tasklog/MASK_TASK_*.log` of the desensitization task. Obtain the error data in the log and perform desensitization verification on the Desensitization Algorithm page. Directly connect to the source database to see if there is a dirty data. Check whether the desensitization algorithm and parameter configurations are correct.
 
-#### Data warehousing exceptions
+#### 6.4.2 Data warehousing exceptions
 
 View the error message in the log `/dbfw_bkup/tasklog/MASK_TASK_*.log` of the desensitization task. Check whether the source and destination databases have the same table structure. Check whether there is an overlength or violation of the primary and foreign key constraints and unique constraints. Check whether the space of the destination database is full. Check whether the database service of the destination database is normal.
 
-#### Extremely slow desensitization
+#### 6.4.3 Extremely slow desensitization performance
 
 **performance**
 
 Check whether a large number of desensitization exceptions are detected. Check the resource usage of the static system for high pressure. Check whether the resource usage of the source and destination databases is under high pressure.
 
-#### The desensitization task fails to include
+#### 6.4.4 The desensitization task fails to include tables.
 
 **tables.**
 
 View the error message in the log `/dbfw_bkup/tasklog/MASK_TASK_*.log` of the desensitization task. Check whether the services of the source and destination databases are normal, and whether errors are reported at the time when the de-sensitive task fails. Check whether the failed tables are normal in the source database and whether the corresponding schema exists in the destination database.
 
-#### Table initialization failed
+#### 6.4.5 Table initialization failed
 
 View the error message in the log `/dbfw_bkup/tasklog/MASK_TASK_*.log` of the desensitization task. Check whether the destination database has a table name occupied by an object with the same name. Check whether the desensitized table is associated with a primary foreign key and the associated table is not in the desensitization task. check whether the ddl table in the background database privicy_table_info is correct. check whether the ddl table can be executed normally in the target database.
 
-#### Object migration failed
+#### 6.4.6 Object migration failed
 
 View the error message in the log `/dbfw_bkup/tasklog/MASK_TASK_*.log` of the desensitization task. check whether the ddl of the object in the background library table_object is correct. you can use the ddl in the target library to verify whether the object can be executed properly.
 
-#### The desensitization task is stuck.
+#### 6.4.7 The desensitization task is stuck.
 
 View the de-identification task log `/dbfw_bkup/tasklog/MASK_TASK_*.log` to determine which stage or table the card is stuck in. If you find that the desensitization task is stuck in a table, connect the source and destination databases to check whether the table status is normal, whether the table is locked, and whether the query can be normal. obtain the jstack information of the java process, obtain the jstack information again in a few minutes, and send the jstack information twice to alibaba cloud technical support students.
 
-#### Case: an error is reported when a field
+#### 6.4.8 Case: an error is reported when a field that is not desensitized is stored. The field length is too long.
 
 **that is not desensitized is stored. The field**
 

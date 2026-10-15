@@ -3,16 +3,99 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Manag
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 127
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service Developer Guide 20260831.pdf"
+source_pdf: "3078a7831513106e_Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service Developer Guid"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Key%20Management%20Service%20Key%20Management%20Service%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service Developer Guide 20260831
 
-## Preparations
+## Table of Contents
 
-### Log on to the API Tool console
+- 1 Preparations
+  - 1.1 Log on to the API Tool console
+  - 1.2 Obtain API information
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain access credentials assigned by STS
+  - 1.5 Obtain the values of common header parameters
+  - 1.6 Obtain KMS SDKs
+- 2 Call example of KMS SDK for Java
+  - 2.1 Use SDK
+    - 2.1.1 Install KMS SDK for Java
+    - 2.1.2 Configure authentication credentials
+    - 2.1.3 Configure connection requests
+    - 2.1.4 Call KMS SDK for Java
+    - 2.1.5 Error handling
+    - 2.1.6 Use CommonRequest to call API operations
+- 3 Call example of KMS SDK for Python
+  - 3.1 Use SDK
+    - 3.1.1 Install KMS SDK for Python
+    - 3.1.2 Configure authentication credentials
+    - 3.1.3 Set HTTPS requests
+    - 3.1.4 Call KMS SDK for Python
+    - 3.1.5 Error handling
+    - 3.1.6 Use CommonRequest to call API operations
+- 4 Call example of KMS SDK for Go
+  - 4.1 Use SDK
+    - 4.1.1 Install Go SDK
+    - 4.1.2 Configure authentication credentials
+    - 4.1.3 Call KMS SDK for Go
+    - 4.1.4 Error handling
+    - 4.1.5 Use CommonRequest to call API operations
+- 5 API reference
+  - 5.1 KMS API reference
+    - 5.1.1 Call methods
+      - 5.1.1.1 Request syntax
+      - 5.1.1.2 Common parameters
+      - 5.1.1.3 Signature method
+      - 5.1.1.4 Responses
+    - 5.1.2 List of operations by function
+      - 5.1.2.1 Tag
+        - 5.1.2.1.1 TagResource
+        - 5.1.2.1.2 ListResourceTags
+        - 5.1.2.1.3 UntagResource
+      - 5.1.2.2 Keys
+        - 5.1.2.2.1 GenerateAndExportDataKey
+        - 5.1.2.2.2 ExportDataKey
+        - 5.1.2.2.3 CreateKey
+        - 5.1.2.2.4 GetParametersForImport
+        - 5.1.2.2.5 ImportKeyMaterial
+        - 5.1.2.2.6 EnableKey
+        - 5.1.2.2.7 DisableKey
+        - 5.1.2.2.8 ScheduleKeyDeletion
+        - 5.1.2.2.9 DeleteKeyMaterial
+        - 5.1.2.2.10 DescribeKey
+        - 5.1.2.2.11 UpdateKeyDescription
+        - 5.1.2.2.12 ListKeys
+        - 5.1.2.2.13 CancelKeyDeletion
+        - 5.1.2.2.14 ReEncrypt
+        - 5.1.2.2.15 Encrypt
+        - 5.1.2.2.16 GenerateDataKey
+        - 5.1.2.2.17 GenerateDataKeyWithoutPlaintext
+        - 5.1.2.2.18 Decrypt
+        - 5.1.2.2.19 CreateAlias
+        - 5.1.2.2.20 UpdateAlias
+        - 5.1.2.2.21 DeleteAlias
+        - 5.1.2.2.22 ListAliases
+        - 5.1.2.2.23 ListAliasesByKeyId
+        - 5.1.2.2.24 DescribeRegions
+        - 5.1.2.2.25 CreateKeyVersion
+        - 5.1.2.2.26 DescribeKeyVersion
+        - 5.1.2.2.27 ListKeyVersions
+        - 5.1.2.2.28 UpdateRotationPolicy
+        - 5.1.2.2.29 AsymmetricDecrypt
+        - 5.1.2.2.30 AsymmetricEncrypt
+        - 5.1.2.2.31 AsymmetricSign
+        - 5.1.2.2.32 AsymmetricVerify
+        - 5.1.2.2.33 GetPublicKey
+- 6 Appendixes
+  - 6.1 STS overview
+    - 6.1.1 What is STS?
+    - 6.1.2 AssumeRole
+
+## 1 Preparations
+
+### 1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -32,7 +115,7 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### Obtain API information
+### 1.2 Obtain API information
 
 To call API operations by using an SDK, you must obtain information that includes service names, API operation names, and API versions.
 
@@ -48,7 +131,7 @@ The API operations on the API Directory page are for reference only. For informa
 the keyword of an API operation name to search for the API operation.
 4. View and record the service name, API operation name, and API version.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 An AccessKey pair that consists of an AccessKey ID and an AccessKey secret is used to implement symmetric encryption and verify the identity of a request sender. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -77,7 +160,7 @@ click User Information.
 3. In the AccessKey Pair section, view your AccessKey pair.
 The AccessKey pair provides full access to cloud resources within your Apsara Stack tenant account. You must keep the AccessKey pair confidential.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -184,7 +267,7 @@ D and AccessKey secret assigned by STS.
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain the values of common
+### 1.5 Obtain the values of common header parameters
 
 **header parameters**
 
@@ -227,7 +310,7 @@ The following table describes the additional response parameters that are return
 | Department | The ID of an organization. |
 |---|---|
 
-### Obtain KMS SDKs
+### 1.6 Obtain KMS SDKs
 
 When you call API operations in Apsara Stack by using POP gateways, you must use the SDKs of Key Management Service (KMS). This topic describes how to obtain KMS SDKs.
 
@@ -239,13 +322,13 @@ When you call API operations in Apsara Stack by using POP gateways, you must use
 
 DK for Java
 
-## Call example of KMS SDK
+## 2 Call example of KMS SDK for Java
 
 **for Java**
 
-### Use SDK
+### 2.1 Use SDK
 
-#### Install KMS SDK for Java
+#### 2.1.1 Install KMS SDK for Java
 
 Before you install KMS SDK for Java, you must obtain KMS SDK for Java and add Maven dependencies.
 
@@ -269,7 +352,7 @@ When you install KMS SDK for Java, you must add the following dependencies to th
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 2.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure authentication credentials. Key Management Service (KMS) SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information, see **Obtain an AccessKey pair**. If you want to use your AccessKey pair to access KMS, you must configure the AccessKey pair as an access credential when you create a client. DK for Java
 
@@ -286,7 +369,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 In the preceding sample code, replace the variables with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 2.1.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. DK for Java
 
@@ -312,7 +395,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Call KMS SDK for Java
+#### 2.1.4 Call KMS SDK for Java
 
 This topic describes how to call KMS SDK for Java.
 
@@ -356,7 +439,7 @@ If an exception occurs or you need to obtain the original HTTP response, call `d
 HttpResponse response = client.doAction(request);
 ```
 
-#### Error handling
+#### 2.1.5 Error handling
 
 When you use KMS SDK for Java, errors may occur. If an error occurs on the server, the SDK returns a `ServerException` error response. If an error occurs on a client instance, the SDK returns a `ClientException` error response. An error response is composed of an error code and an error message. In most cases, you do not need to handle client errors. You need to only handle server errors. If you want to handle client errors, you can refer to the following sample code:
 
@@ -378,7 +461,7 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-#### Use CommonRequest to call API
+#### 2.1.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -455,13 +538,13 @@ u must add the SecurityToken field in request parameters.
 
 DK for Python
 
-## Call example of KMS SDK
+## 3 Call example of KMS SDK for Python
 
 **for Python**
 
-### Use SDK
+### 3.1 Use SDK
 
-#### Install KMS SDK for Python
+#### 3.1.1 Install KMS SDK for Python
 
 This topic describes how to install KMS SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, 3.x, and later. You can use pip to install Apsara Stack SDK for Python.
 1. Install the core library of Apsara Stack SDK for Python.
@@ -490,7 +573,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-kms
 ```
 
-#### Configure authentication credentials
+#### 3.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an authorized account for authentication. This topic describes how to configure authentication credentials. Key Management Service (KMS) SDK for Python supports authentication based on an AccessKey pair. For more information, see **Obtain an AccessKey pair**. If you want to use your AccessKey pair to access KMS, you must configure the AccessKey pair as an access credential when you create a client.
 
@@ -502,7 +585,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 from aliyunsdkcore import client clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 3.1.3 Set HTTPS requests
 
 DK for Python The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set.
 
@@ -538,7 +621,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Call KMS SDK for Python
+#### 3.1.4 Call KMS SDK for Python
 
 This topic describes how to call KMS SDK for Python.
 
@@ -569,7 +652,7 @@ request = EncryptRequest.EncryptRequest() request.set_accept_format('json') requ
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Error handling
+#### 3.1.5 Error handling
 
 When you use KMS SDK for Python, errors may occur. If an error occurs on the server, the SDK returns a `ServerException` error response. If an error occurs on a client instance, the SDK returns a `ClientException` error response. An error response is composed of an error code and an error message. In most cases, you do not need to handle client errors. You need to only handle server errors. If you want to handle client errors, you can refer to the following sample code:
 
@@ -585,7 +668,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 3.1.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -630,19 +713,19 @@ request.add_header("x-acs-regionid", "<yourRegionID>") response = client.do_acti
 
 DK for Go
 
-## Call example of KMS SDK
+## 4 Call example of KMS SDK for Go
 
 **for Go**
 
-### Use SDK
+### 4.1 Use SDK
 
-#### Install Go SDK
+#### 4.1.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 4.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Key Management Service (KMS) SDK for Go supports authentication by using an AccessKey pair. For more information, see **Obtain an AccessKey pair**. If you want to use your AccessKey pair to access KMS, you must configure the AccessKey pair as an access credential when you initialize a client instance.
 
@@ -666,7 +749,7 @@ secret.
 
 In the preceding sample code, replace the variables with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Call KMS SDK for Go
+#### 4.1.3 Call KMS SDK for Go
 
 This topic describes how to call KMS SDK for Go.
 
@@ -703,7 +786,7 @@ request := kms.CreateEncryptRequest() request.KeyId = ""
 response, err := kmsClient.Encrypt(request)
 ```
 
-#### Error handling
+#### 4.1.4 Error handling
 
 |   |   |   | ClientError |
 |---|---|---|---|
@@ -766,7 +849,7 @@ package main import (
 
 `)`
 
-#### Use CommonRequest to call API
+#### 4.1.5 Use CommonRequest to call API operations
 
 **operations**
 
@@ -842,13 +925,13 @@ cify the organization ID.
 
 DK for Go
 
-## API reference
+## 5 API reference
 
-### KMS API reference
+### 5.1 KMS API reference
 
-#### Call methods
+#### 5.1.1 Call methods
 
-##### Request syntax
+##### 5.1.1.1 Request syntax
 
 This topic describes the endpoint, communication protocols, HTTPS request methods, and request parameters of the Key Management Service (KMS) API.
 
@@ -872,7 +955,7 @@ Each request must specify the operation to be performed. For example, to create 
 
 All requests and responses are UTF-8 encoded.
 
-##### Common parameters
+##### 5.1.1.2 Common parameters
 
 Common request parameters must be included in all KMS API requests.
 
@@ -919,7 +1002,7 @@ JSON format `{`
     /*Return result data*/
 ```
 
-##### Signature method
+##### 5.1.1.3 Signature method
 
 You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. If you use HTTPS to send an API request, you must include the signature in the request.
 
@@ -999,7 +1082,7 @@ If the AccessKey ID is testid and the AccessKey secret is testsecret, the key th
 https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey &SignatureVersion=1.0 &Format=json &Version=2016-01-20 &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &Timestamp=2016-03-28T03:13:08Z &Signature=41wk2SSX1GJh7fwnc5eqOfiJPF****
 ```
 
-##### Responses
+##### 5.1.1.4 Responses
 
 API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Sample responses in API Reference are formatted in a way that is easier for you to read. The actual responses are not formatted with line breaks or indentation.
 
@@ -1083,11 +1166,11 @@ s request is not supplied.",
 | Rejetced.PendingDeletion | The request was rejected because the key state is PendingDeletion | 409 |
 | Rejected.PendingImport | The request was rejected because the key state is PendingImport | 409 |
 
-#### List of operations by function
+#### 5.1.2 List of operations by function
 
-##### Tag
+##### 5.1.2.1 Tag
 
-###### TagResource
+###### 5.1.2.1.1 TagResource
 
 Adds tags to a customer master key (CMK). A CMK can have more than one tag. Each tag consists of a key and a value. You can add up to 10 tags for a CMK. Request format: `KeyId="string"&Tags=[{ "TagKey": "string","TagValue": "string"} ]`
 
@@ -1131,7 +1214,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ListResourceTags
+###### 5.1.2.1.2 ListResourceTags
 
 Queries the tags of a customer master key (CMK). Request format: KeyId="string"
 
@@ -1201,7 +1284,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### UntagResource
+###### 5.1.2.1.3 UntagResource
 
 Deletes the specified tags of a customer master key (CMK). Request format: `KeyId="string"&TagKeys=["tagkey1","tagkey2"]`
 
@@ -1245,9 +1328,9 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-##### Keys
+##### 5.1.2.2 Keys
 
-###### GenerateAndExportDataKey
+###### 5.1.2.2.1 GenerateAndExportDataKey
 
 Generates a data key and uses a public key and a customer master key (CMK) to protect the data key.
 
@@ -1315,7 +1398,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ExportDataKey
+###### 5.1.2.2.2 ExportDataKey
 
 Decrypts the ciphertext specified by CiphertextBlob and uses a public key to protect the output.
 
@@ -1374,7 +1457,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### CreateKey
+###### 5.1.2.2.3 CreateKey
 
 Creates a customer master key (CMK). A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys. These data keys are used to encrypt large amounts of data and less than 6 KB of data. Asymmetric CMKs cannot be used to generate data keys. The following table lists the CMK types and operations supported by symmetric and asymmetric CMKs.
 
@@ -1505,7 +1588,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### GetParametersForImport
+###### 5.1.2.2.4 GetParametersForImport
 
 Obtains the parameters that you use to import key material for a customer master key (CMK). The returned parameters can be used to call the ImportKeyMaterial operation. You can import key material only for CMKs whose Origin parameter is EXTERNAL. The call returns the public key that is used to encrypt key material, the token that is used to import key material, and the expiration time of the token. The public key is encoded in Base64. The token is valid for 24 hours. The public key and token that are returned by the call can be used only for CMKs that are specified in this call. The public key and token that are returned by the same call must be used together. The algorithm that is used to encrypt key material must be the one that is specified in the call. The public key and token that are returned by each call must be unique. You must specify the type of public key and the encryption algorithm that are used to encrypt key material. The following table lists the types of public keys and encryption algorithms.
 
@@ -1571,7 +1654,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ImportKeyMaterial
+###### 5.1.2.2.5 ImportKeyMaterial
 
 Imports key material. When you call the CreateKey operation to create a customer master key (CMK), you can set Origin to EXTERNAL to use external key material. You can call this operation to import key material for a CMK whose Origin is set to EXTERNAL. If you use a CMK whose type is Aliyun_AES_256, the key material that you import must be a 256-bit key. If you use a CMK whose type is Aliyun_SM4, the key material that you import must be a 128-bit key. You can set the expiration time of the key material. You can also set the expiration time to never expire. You can always reimport the same key material and reset the expiration time. After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material is imported again. The same key material can be imported to different CMKs. The data or data key that is encrypted by using one CMK cannot be decrypted by using another CMK.
 
@@ -1623,7 +1706,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### EnableKey
+###### 5.1.2.2.6 EnableKey
 
 Enables a specified customer master key (CMK). If a CMK is enabled, the CMK can be used for encryption and decryption.
 
@@ -1668,7 +1751,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### DisableKey
+###### 5.1.2.2.7 DisableKey
 
 Disables a specified customer master key (CMK). If a CMK is disabled, the CMK cannot be used for encryption and decryption. The ciphertext encrypted by using this CMK cannot be decrypted until you re-enable the CMK.
 
@@ -1713,7 +1796,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ScheduleKeyDeletion
+###### 5.1.2.2.8 ScheduleKeyDeletion
 
 Deletes a specified customer master key (CMK). During the scheduled deletion time, the CMK is in the PendingDeletion state and cannot be used to encrypt data, decrypt data, or generate data keys. After a CMK is deleted, it cannot be recovered, and the data and the ciphertext data keys encrypted by using this CMK cannot be decrypted. Therefore, to prevent you from deleting CMKs by mistake, KMS allows you only to schedule key deletion tasks. You cannot immediately delete CMKs. If you want to delete a CMK, you can call the DisableKey operation to disable the CMK. When you call this operation, you must specify a waiting period of 7 to 30 days. The waiting period starts from the time when you submit the request.
 
@@ -1762,7 +1845,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### DeleteKeyMaterial
+###### 5.1.2.2.9 DeleteKeyMaterial
 
 Deletes the key material that you imported. This operation does not delete the customer master key (CMK) that is created by using the key material. If the CMK is in the PendingDeletion state, the state of the CMK and the scheduled deletion time do not change after you call this operation. If the CMK is not in the PendingDeletion state, the state of the CMK changes to PendingImport after you call this operation. After you delete the key material, you can import only the same key material to KMS.
 
@@ -1805,7 +1888,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### DescribeKey
+###### 5.1.2.2.10 DescribeKey
 
 Queries the information about a specified customer master key (CMK).
 
@@ -1912,7 +1995,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### UpdateKeyDescription
+###### 5.1.2.2.11 UpdateKeyDescription
 
 Updates the description of a specified CMK. This operation replaces the Description of the CMK with the value that you specify. For more information about the Description of the CMK, see DescribeKey. You can add or update the description of a CMK by using this operation.
 
@@ -1956,7 +2039,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ListKeys
+###### 5.1.2.2.12 ListKeys
 
 Queries all customer master keys (CMKs) of the current Alibaba Cloud account in the current region.
 
@@ -2053,7 +2136,7 @@ aa5b627****</KeyArn>
 
 For a list of error codes, visit the Common error codes.
 
-###### CancelKeyDeletion
+###### 5.1.2.2.13 CancelKeyDeletion
 
 Cancels the deletion of a CMK. When the deletion of a CMK is canceled, the CMK returns to the Enabled state.
 
@@ -2096,7 +2179,7 @@ Sample success responses `XML` format
 "RequestId": "3da5b8cc-8107-40ac-a170-793cd181d7b7"
 ```
 
-###### ReEncrypt
+###### 5.1.2.2.14 ReEncrypt
 
 Re-encrypts ciphertext. When you call this operation, Key Management Service (KMS) decrypts the ciphertext, uses a different key to re-encrypt the generated plaintext or data key, and then returns the new ciphertext. You can call this operation in the following scenarios: After a key that is used to encrypt your data is rotated, you can call this operation to use the latest key version to re-encrypt the data. The key that is used to encrypt your data remains unchanged, but the encryption context is changed. In this scenario, you can call this operation to re-encrypt the data. You can call this operation to use a key in KMS to re-encrypt data or a data key that is previously encrypted by using a different key. To call the ReEncrypt operation, you must have the following permissions: The kms:ReEncryptFrom permission on the source key The kms:ReEncryptTo permission on the destination key For simplicity, you can specify kms:ReEncrypt* to allow both of the preceding permissions.
 
@@ -2169,7 +2252,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Service error codes.
 
-###### Encrypt
+###### 5.1.2.2.15 Encrypt
 
 Encrypts plaintext by using a symmetric customer master key (CMK). KMS uses the primary version of a specified CMK to encrypt data. Only data of 6 KB or less can be encrypted. For example, you can call this operation to encrypt RSA keys, database logon passwords, or other sensitive information. When you migrate encrypted data across regions, you can call this operation in the destination region to encrypt the plaintext data key that is used to encrypt the migrated data in the source region. This way, the ciphertext data key is generated in the destination region. You can also call the Decrypt operation to decrypt the data key.
 
@@ -2225,7 +2308,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### GenerateDataKey
+###### 5.1.2.2.16 GenerateDataKey
 
 Generates a random data key. You can use the data key to locally encrypt data. This operation creates a random data key, encrypts the data key by using the specified customer master key (CMK), and returns the plaintext data key and the ciphertext data key. You can use the plaintext data key to locally encrypt data without using KMS. When you store the encrypted data, you also need to store the ciphertext data key. You can obtain the plaintext data key by querying the value of the Plaintext parameter in the response and obtain the ciphertext data key by querying the value of the CiphertextBlob parameter in the response. The CMK that you specify in the request of this operation is used only to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key. Therefore, you need to store the ciphertext data key in persistent storage. We recommend that you perform the following steps to locally encrypt data: Call the GenerateDataKey operation. Use the plaintext data key that you obtain to locally encrypt data without using KMS. Then, delete the plaintext data key from memory. Store the encrypted data along with the ciphertext data key that you obtain. We recommend that you perform the following steps to locally decrypt data: Call the Decrypt operation to decrypt the locally stored ciphertext data key. The plaintext data key is then returned. Use the plaintext data key to locally decrypt data without using KMS. Then, delete the plaintext data key from memory.
 
@@ -2289,7 +2372,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### GenerateDataKeyWithoutPlaintext
+###### 5.1.2.2.17 GenerateDataKeyWithoutPlaintext
 
 Generates a random data key, which can be used to locally encrypt data. This operation creates a random data key, encrypts the data key by using a specific symmetric customer master key (CMK), and then returns the ciphertext data key. This operation serves the same purpose as the GenerateDataKey operation. The only difference is that this operation does not return the plaintext data key. The CMK that you specify in the request of this operation is used only to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key. This operation is suitable for the scenario where you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the Decrypt operation to decrypt the ciphertext data key. This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module of the system creates different partitions and generates different data keys for each partition. This module is not involved in data production and consumption after it completes the initialization of the control plane. This module is the key provider. When a module on the control plane produces and consumes data, the module obtains the ciphertext data key for each partition. After the module decrypts the ciphertext data key, the module uses the plaintext data key to encrypt or decrypt data and then deletes the plaintext data key from memory. In such a system, the key provider does not need to obtain the plaintext data key. It needs only to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They need only to have the permissions to call the Decrypt operation.
 
@@ -2346,9 +2429,9 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### Decrypt
+###### 5.1.2.2.18 Decrypt
 
-Decrypts the ciphertext that is specified by the CiphertextBlob parameter. You can call this operation to decrypt the ciphertext that is generated by using the following operations: GenerateDataKey Encrypt GenerateDataKeyWithoutPlaintext
+Decrypts the ciphertext that is specified by the CiphertextBlob parameter. You can call this operation to decrypt the ciphertext that is generated by using the following operations:
 
 **Request parameters**
 
@@ -2401,7 +2484,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### CreateAlias
+###### 5.1.2.2.19 CreateAlias
 
 Creates an alias for a customer master key (CMK). Each alias can represent only one CMK. The aliases of CMKs in the same region must be unique.
 
@@ -2449,7 +2532,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### UpdateAlias
+###### 5.1.2.2.20 UpdateAlias
 
 Binds an existing alias to a different customer master key (CMK) ID.
 
@@ -2500,7 +2583,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### DeleteAlias
+###### 5.1.2.2.21 DeleteAlias
 
 Deletes an alias.
 
@@ -2543,7 +2626,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ListAliases
+###### 5.1.2.2.22 ListAliases
 
 Queries all aliases in the current region for the current account.
 
@@ -2630,7 +2713,7 @@ hangzhou:123456:alias/ExampleAlias1"
 
 For a list of error codes, visit the Common error codes.
 
-###### ListAliasesByKeyId
+###### 5.1.2.2.23 ListAliasesByKeyId
 
 Queries all aliases that are bound to a specified customer master key (CMK).
 
@@ -2718,7 +2801,7 @@ hangzhou:123456:alias/ExampleAlias1"
 
 For a list of error codes, visit the Common error codes.
 
-###### DescribeRegions
+###### 5.1.2.2.24 DescribeRegions
 
 Queries available regions for the current Alibaba Cloud account.
 
@@ -2792,7 +2875,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### CreateKeyVersion
+###### 5.1.2.2.25 CreateKeyVersion
 
 Creates a version for a customer master key (CMK). This operation is supported only for asymmetric CMKs. The CMKs must be enabled. The minimum interval at which a CMK version is created is seven days. If you call this operation within seven days after the last CMK version is created, the error code Rejected.UnsupportedOperation is returned. The creation date of the last CMK version is specified by the LastRotationDate parameter. Each user can hold up to 50 asymmetric CMK versions in each region.
 
@@ -2855,7 +2938,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### DescribeKeyVersion
+###### 5.1.2.2.26 DescribeKeyVersion
 
 Queries detailed information about a specified CMK version.
 
@@ -2914,7 +2997,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### ListKeyVersions
+###### 5.1.2.2.27 ListKeyVersions
 
 Queries all versions of a specified CMK.
 
@@ -3027,7 +3110,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### UpdateRotationPolicy
+###### 5.1.2.2.28 UpdateRotationPolicy
 
 Updates a key rotation policy. When automatic key rotation is enabled, KMS automatically creates a new key version after the preset rotation period arrives. In addition, KMS sets the new key version as the primary key version. An automatic rotation policy cannot be defined in the following scenarios: The specified customer master key (CMK) is an asymmetric key. The specified CMK is a key that KMS manages for another Alibaba Cloud service. The specified CMK is a bring your own key (BYOK) that is imported into KMS. The specified CMK is not in the Enabled state.
 
@@ -3074,7 +3157,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### AsymmetricDecrypt
+###### 5.1.2.2.29 AsymmetricDecrypt
 
 Decrypts data by using an asymmetric key. This operation is supported only for asymmetric keys for which the Usage parameter is set to ENCRYPT/DECRYPT. The following table lists the supported asymmetric encryption algorithms.
 
@@ -3141,7 +3224,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### AsymmetricEncrypt
+###### 5.1.2.2.30 AsymmetricEncrypt
 
 Encrypts data by using asymmetric keys. This operation is supported only for asymmetric keys for which the Usage parameter is set to ENCRYPT/DECRYPT. The following table lists the supported encryption algorithms.
 
@@ -3205,7 +3288,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### AsymmetricSign
+###### 5.1.2.2.31 AsymmetricSign
 
 Signs data by using asymmetric keys. This operation is supported only for asymmetric keys for which the Usage parameter is set to SIGN/VERIFY. The following table lists the supported signature algorithms.
 
@@ -3275,7 +3358,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### AsymmetricVerify
+###### 5.1.2.2.32 AsymmetricVerify
 
 Verifies signatures by using asymmetric keys. This operation is supported only for asymmetric keys for which the Usage parameter is set to SIGN/VERIFY. The following table lists the supported signature algorithms.
 
@@ -3345,7 +3428,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the Common error codes.
 
-###### GetPublicKey
+###### 5.1.2.2.33 GetPublicKey
 
 Queries the public key of an asymmetric key pair. You can locally use the public key to encrypt data and verify signatures.
 
@@ -3404,11 +3487,11 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl8FS40RYCB2IWt6VZdDS MLoUu/UYLr3l62I
 
 For a list of error codes, visit the Common error codes.
 
-## Appendixes
+## 6 Appendixes
 
-### STS overview
+### 6.1 STS overview
 
-#### What is STS?
+#### 6.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -3420,7 +3503,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 6.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

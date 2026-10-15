@@ -3,16 +3,80 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS De
 product_version: "V3.16.2"
 doc_version: "20221228"
 pdf_pages: 95
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228.pdf"
+source_pdf: "a1c92bd8586d6963_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/20230602/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Apsara%20File%20Storage%20NAS%20Developer%20Guide%2020221228.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara File Storage NAS Developer Guide 20221228
 
-## Preparations
+## Table of Contents
 
-### Log on to the API Tool console
+- 1 Preparations
+  - 1.1 Log on to the API Tool console
+  - 1.2 View the information about API operations
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain an STS AccessKey 3-tuple
+  - 1.5 Obtain the values of common header parameters
+  - 1.6 Obtain the endpoint of NAS
+  - 1.7 Obtain NAS SDKs
+- 2 Call examples for SDK for Java
+  - 2.1 Quick start
+  - 2.2 Use SDK
+    - 2.2.1 Install NAS SDK for Java
+    - 2.2.2 Configure authentication credentials
+    - 2.2.3 Configure connection requests
+    - 2.2.4 Initiate a request
+    - 2.2.5 Handle errors
+    - 2.2.6 Use CommonRequest to call API operations
+- 3 Call examples for SDK for Python
+  - 3.1 Quick start
+  - 3.2 Use SDK
+    - 3.2.1 Install the SDK for Python
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Set HTTPS requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 API Reference
+  - 4.1 List of operations by function
+  - 4.2 Make API requests
+    - 4.2.1 Common parameters
+    - 4.2.2 Request structure
+  - 4.3 Region
+    - 4.3.1 DescribeRegions
+  - 4.4 NAS instance
+    - 4.4.1 CreateFileSystem
+    - 4.4.2 DeleteFileSystem
+    - 4.4.3 ModifyFileSystem
+    - 4.4.4 DescribeFileSystems
+  - 4.5 Mount point
+    - 4.5.1 CreateMountTarget
+    - 4.5.2 DeleteMountTarget
+    - 4.5.3 DescribeMountTargets
+    - 4.5.4 ModifyMountTarget
+  - 4.6 Permission group
+    - 4.6.1 CreateAccessGroup
+    - 4.6.2 DeleteAccessGroup
+    - 4.6.3 ModifyAccessGroup
+    - 4.6.4 DescribeAccessGroups
+    - 4.6.5 CreateAccessRule
+    - 4.6.6 DeleteAccessRule
+    - 4.6.7 ModifyAccessRule
+    - 4.6.8 DescribeAccessRules
+  - 4.7 Appendix: Error codes
+- 5 Appendixes
+  - 5.1 Use the ASAPI gateway to call API operations
+  - 5.2 Use the ASAPI gateway to make API calls
+    - 5.2.1 Obtain an endpoint of ASAPI
+    - 5.2.2 Obtain Apsara Stack SDKs
+  - 5.3 STS overview
+    - 5.3.1 What is STS?
+    - 5.3.2 AssumeRole
+
+## 1 Preparations
+
+### 1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -39,7 +103,7 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### View the information about API
+### 1.2 View the information about API operations
 
 **operations**
 
@@ -58,7 +122,7 @@ enter a keyword of an API operation name in the search box, and then click Searc
 4. View and record the service name, API operation name, and API version of the API operation
 that you want to call.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair.
 
@@ -100,7 +164,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 1.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations.
 
@@ -126,7 +190,7 @@ code provides an example on how to call the DescribeRegions operation of Apsara 
 
 In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code. public static void main(String[] args) { // Replace "<yourRegionID>" with the actual region ID. // Replace "<yourStsAccessKeyID>" and "<yourStsAccessKeySecret>" with the AccessKey ID and AccessK ey secret of the 3-tuple obtained in the preceding step. DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "<yourStsAccesskey>", "<yourStsAcc essSecret>"); HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true); clientConfig.setProtocolType(ProtocolType.HTTPS); profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); CommonRequest request = new CommonRequest(); request.setSysDomain("nas.aliyuns.com"); request.setSysProduct("NAS"); request.setSysAction("DescribeRegions"); request.setSysVersion("2017-06-26"); request.setSysMethod(MethodType.POST); request.setHttpContentType(FormatType.FORM); // Replace "<yourRegionID>" with the actual region ID. request.putHeadParameter("x-acs-regionid", "<yourRegionID>"); // Replace "<yourStsToken>" with the security token of the 3-tuple obtained in the preceding step. request.putQueryParameter("SecurityToken", "<yourStsToken>"); // Optional. Replace "<yourResourceGroupID>" with the actual resource set ID. // request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>"); // Required. Replace "<yourOrganizationID>" with the actual organization ID. request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>"); try { CommonResponse response = client.getCommonResponse(request); System.out.println(response.getData()); } catch (ServerException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } catch (ClientException e) { System.out.println(e.getErrCode()); System.out.println(e.getErrMsg()); } }
 
-### Obtain the values of common
+### 1.5 Obtain the values of common header parameters
 
 **header parameters**
 
@@ -176,7 +240,7 @@ The following table describes the additional response parameters returned by def
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of NAS
+### 1.6 Obtain the endpoint of NAS
 
 This topic describes how to obtain the endpoint of Apsara File Storage NAS.
 
@@ -203,7 +267,7 @@ icon next to **Service** and search for
 **More**.
 On the **Details** page, view the **nas.openapi.endpoint** value, which is the endpoint .
 
-### Obtain NAS SDKs
+### 1.7 Obtain NAS SDKs
 
 When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain Apsara File Storage NAS SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can obtain the SDKs from Apsara Stack SDKs based on your business requirements.
 
@@ -218,9 +282,9 @@ We recommend that you use an SDK for Java or Python. If you use SDKs in other pr
 
 SDK for Java
 
-## Call examples for SDK for Java
+## 2 Call examples for SDK for Java
 
-### Quick start
+### 2.1 Quick start
 
 This topic describes how to obtain and use Apsara File Storage NAS SDK for Java.
 
@@ -247,13 +311,13 @@ To use NAS SDK for Java, perform the following steps:
 
 In the following sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code. import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsRequest; import com.aliyuncs.nas.model.v20170626.DescribeFileSystemsResponse; public class Main { public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>" // Replace the parameter with the region ID SDK for Java <yourRegionID>, // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. // Specify the endpoint of the service. Replace the variables with the actual values. profile.addEndpoint("<yourRegionID>", "<Product>", "<Endpoint>"); // Configure the request parameters. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setIgnoreSSLCerts(true);// Ignore the certificate. clientConfig.setReadTimeoutMillis(<readTimeout>);// Optional. Specify the read timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>);// Optional. Specify the connection ti meout period. Unit: milliseconds. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);// Optional. Specify the maximum num ber of requests for each host. clientConfig.setMaxRequests(<maxRequests>);// Optional. Specify the maximum number of requests. clientConfig.setProtocolType(ProtocolType.HTTP); // Optional. Specify the request protocol. Default v alue: HTTP. /* Optional. Specify the IP address and port of the proxy. clientConfig.setHttpProxy("http://192.168.XX.XX:33XX"); or clientConfig.setHttpsProxy("https://192.168.XX.XX:33XX"); */ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); // Create an API request and configure the parameters. DescribeFileSystemsRequest request = new DescribeFileSystemsRequest(); // Business parameters. request.setPageSize(10); request.setPageNumber(1); // The header parameters that are used for resource isolation. Replace the values with your actual or ganization ID and resource set ID. request.putHeadParameter("x-acs-organizationid", "1"); request.putHeadParameter("x-acs-resourcegroupid", "11"); // Initiate the request and handle the response or exceptions. DescribeFileSystemsResponse response; try { response = client.getAcsResponse(request); for (DescribeFileSystemsResponse.FileSystem fileSystem:rsp.getFileSystems()) { System.out.println(fileSystem.getFileSystemId()); } } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { e.printStackTrace(); } } }
 
-### Use SDK
+### 2.2 Use SDK
 
-#### Install NAS SDK for Java
+#### 2.2.1 Install NAS SDK for Java
 
 SDK for Java This topic describes how to install NAS SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, see Alibaba Cloud SDKs. To use a NAS SDK, you must install the core library of Apsara Stack SDK for Java and NAS SDK for Java. We recommend that you use the core library V4.5.17 or later, and use NAS SDK for Java V2.0.2. To use NAS SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDKs. <!-- Alibaba Cloud SDK for Java --> <dependency> <groupId>com.aliyun</groupId> <artifactId>aliyun-java-sdk-core</artifactId> <version>4.5.17</version> </dependency> <!-- NAS Java SDK --> <dependency> <groupId>com.aliyun</groupId> <artifactId>aliyun-java-sdk-nas</artifactId> <version>2.0.2</version> </dependency>
 
-#### Configure authentication credentials
+#### 2.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
@@ -265,7 +329,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 
 In the preceding sample code, replace the variables with the actual values. Delete the angle brackets <> in the final code.
 
-#### Configure connection requests
+#### 2.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
@@ -273,7 +337,7 @@ This topic describes how to configure a connection request by using the HttpClie
 
 You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy. SDK for Java // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported da ta type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following c ode is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>"); Or clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.168.XX.XX:33XX with the actual IP address and port of the proxy. */ profile.setHttpClientConfig(clientConfig);
 
-#### Initiate a request
+#### 2.2.4 Initiate a request
 
 This topic describes how to use the SDK for Java to initiate a request.
 
@@ -286,7 +350,7 @@ Name the request in the ${apiName}Request format. Replace ${apiName} with the na
 3. Initiate the request and handle the response.
 SDK for Java try { DescribeFileSystemsResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response)); } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { System.out.println("ErrCode:" + e.getErrCode()); System.out.println("ErrMsg:" + e.getErrMsg()); System.out.println("RequestId:" + e.getRequestId()); } In normal cases, all returned fields are deserialized into the response. You can call response.get XXX() to obtain the values of the response fields. instanceStatus = response.getStatus(); However, if an exception occurs or you need to obtain the original HTTP response, call doAction () to obtain the original response. HttpResponse response = client.doAction(request);
 
-#### Handle errors
+#### 2.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Java, the SDK returns an error response. The error response contains an error code and an error message. Among the errors returned by the SDK for Java, you do not need to handle the SDK errors, but must solve the server errors.
 
@@ -296,7 +360,7 @@ If the server or SDK encounters an error when you use the SDK for Java, the SDK 
 
 ServerException indicates a server error. ClientException indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message: com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found. If you want to handle the SDK errors returned by the SDK, refer to the following example to write your code: SDK for Java try { FooResponse response = client.getAcsResponse(request); // Handle the response. }catch (ServerException e){ // You can add your error handling logic here. // For example, display the error message. System.out.println("ErrorCode=" + e.getErrCode()); System.out.println("ErrorMessage=" + e.getErrMsg()); // If you are unable to fix the error, submit a ticket and provide RequestId to Alibaba Cloud technical supp ort personnel. System.out.println("ResponseId=" + e.getRequestId()); }catch (ClientException e){ // You can add your error handling logic here. // For example, display the error message. System.out.println("ErrorCode=" + e.getErrCode()); System.out.println("ErrorMessage=" + e.getErrMsg()); }
 
-#### Use CommonRequest to call API operations
+#### 2.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations.
 
@@ -316,11 +380,11 @@ This example shows how to call the DescribeFileSystems operation to query file s
 
 In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. You need to configure the following variables: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy. import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; class DescribeFileSystems { public static void main(String[] args) { // Create and initialize a DefaultAcsClient instance. DefaultProfile profile = DefaultProfile.getProfile( "<yourRegionID>", // Replace the parameter with the region ID. "<yourAccessKeyID>", // Replace the parameter with your AccessKey ID. "<yourAccessKeySecret>"); // Replace the parameter with your AccessKey secret. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); clientConfig.setProtocolType(ProtocolType.HTTP); /** Optional. Configure the HTTP proxy based on your business requirements. Format: clientConfig.setHttpProxy("http://192.168.XX.XX:33XX"); Specify the IP address and port of the proxy. */ profile.setHttpClientConfig(clientConfig); IAcsClient client = new DefaultAcsClient(profile); // Create an API request and configure the parameters. CommonRequest request = new CommonRequest(); // Specify the endpoint of the service. request.setSysDomain("nas.cn-hangzhou.com"); request.setSysProduct("NAS"); request.setSysVersion("2017-06-26"); SDK for Java q y ( ) request.setSysAction("DescribeFileSystems"); request.putQueryParameter("PageNumber", "1"); request.putQueryParameter("PageSize", "10"); request.putHeadParameter("x-acs-resourcegroupid", "<yourResourceGroupID>");// Optional. Specify th e resource set ID. request.putHeadParameter("x-acs-organizationid", "<yourOrganizationID>");// Required. Specify the o rganization ID. request.putHeadParameter("x-acs-caller-sdk-source","ApiTestDemo");// Required. Specify the source o f the API call. request.putHeadParameter("x-acs-regionid", "<yourRegionID>");// Optional. Specify the region ID. If yo u use Apsara Stack Enterprise V3.15.0 or earlier, this parameter is required. request.putHeadParameter("x-acs-instanceid", "<yourInstanceID>");// Optional Specify the instance ID . If you need to delete, modify, or query an instance, this parameter is required. /** When you use an STS AccessKey 3-tuple to call an API operation, you must add the SecurityToken field i n the request parameters. Format: request.putQueryParameter("SecurityToken", "<yourSecurityToken>"); Specify your security token. */ try { CommonResponse response = client.getCommonResponse(request); System.out.println(response.getData()); } catch (ServerException e) { e.printStackTrace(); } catch (ClientException e) { System.out.println("ErrCode:" + e.getErrCode()); System.out.println("ErrMsg:" + e.getErrMsg()); System.out.println("RequestId:" + e.getRequestId()); } } } SDK for Python
 
-## Call examples for SDK for
+## 3 Call examples for SDK for Python
 
 **Python**
 
-### Quick start
+### 3.1 Quick start
 
 This topic describes how to obtain and use Apsara File Storage NAS SDK for Python.
 
@@ -357,9 +421,9 @@ request = DescribeFileSystemsRequest.DescribeFileSystemsRequest() request.set_ac
 # get response
 response = clt.do_action_with_exception(request) print(response)
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install the SDK for Python
+#### 3.2.1 Install the SDK for Python
 
 This topic describes how to install Alibaba Cloud SDK for Python and Apsara File Storage NAS SDK for Python.
 1. Install Alibaba Cloud SDK for Python.
@@ -371,7 +435,7 @@ To use the SDK of an Apsara Stack service, you must install the core library of 
 2. Install NAS SDK for Python.
 If you use Python 2.x, run the following command to install NAS SDK for Python: pip install aliyun-python-sdk-nas If you use Python 3.x, run the following command to install NAS SDK for Python: SDK for Python pip3 install aliyun-python-sdk-nas
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. NAS SDK for Python supports authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -379,7 +443,7 @@ When you use an Apsara Stack SDK to access Apsara Stack services, you must provi
 
 Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. clt = client.AcsClient(access_key, access_secret, region_id)
 
-#### Set HTTPS requests
+#### 3.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
@@ -402,7 +466,7 @@ SDK for Python
 The following sample code provides an example on how to set a global default protocol: import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("https")
 # Create a request and call client.do_action_with_exception() to send the request.
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use Apsara File Storage NAS SDK for Python to initiate a request.
 
@@ -417,7 +481,7 @@ request = DescribeFileSystemsRequest.DescribeFileSystemsRequest() request.set_ac
 4. Initiate the request and handle the response.
 response = clt.do_action_with_exception(request) print(response)
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Python, the SDK returns an error response. The error response contains an error code and an error message. Among the errors returned by the SDK for Python, you do not need to handle the SDK errors, but must solve the server errors.
 
@@ -430,7 +494,7 @@ ServerException indicates a server error. ClientException indicates an SDK error
 # For example, display the error message.
 print e.get_http_status() print e.get_error_code() print e.get_error_msg()
 
-#### Use CommonRequest to call API operations
+#### 3.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations.
 
@@ -480,9 +544,9 @@ uired.
 # request.add_header("x-acs-instanceid", "<yourInstanceID>")
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 
-## API Reference
+## 4 API Reference
 
-### List of operations by function
+### 4.1 List of operations by function
 
 APIs lists the APIs provided by NAS. APIs
 
@@ -509,9 +573,9 @@ APIs lists the APIs provided by NAS. APIs
 | 16 | Permission group | DescribeAccessRules | Returns the description of a permission rule. |
 | 17 | Permission group | ModifyAccessRule | Modifies the attributes of a permission rule. |
 
-### Make API requests
+### 4.2 Make API requests
 
-#### Common parameters
+#### 4.2.1 Common parameters
 
 **Common request parameters**
 
@@ -554,7 +618,7 @@ Whenever you send an API request, a GUID that is included in the **RequestId** p
 
 XML format <? xml version="1.0" encoding="UTF-8"? > <An API name+Response> <! --Returned RequestId--> <RequestId> 6D9F62C5-BF52-447C-AA34-C77F7AFCCC12</RequestId> <! --Response parameters--> </An API name+Response> JSON format { "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Response parameters*/ }
 
-#### Request structure
+#### 4.2.2 Request structure
 
 **Endpoints**
 
@@ -576,9 +640,9 @@ You must specify the required operation for the Action parameter of each request
 
 Requests or responses are all encoded by UTF-8 .
 
-### Region
+### 4.3 Region
 
-#### DescribeRegions
+#### 4.3.1 DescribeRegions
 
 Queries available regions.
 
@@ -618,9 +682,9 @@ Queries available regions.
 
 Sample requests http(s)://[Endpoint]/? Action=DescribeRegions &<Common request parameters> Sample success responses XML format <TotalCount>4</TotalCount> <PageSize>2</PageSize> <RequestId>A70BEE5D-76D3-49FB-B58F-1F398211****</RequestId> <PageNumber>1</PageNumber> <Regions> <RegionId>cn-hangzhou</RegionId> <RegionEndpoint>nas.cn-hangzhou.aliyuncs.com</RegionEndpoint> <LocalName>East China 1</LocalName> </Regions> JSON format { "TotalCount": 4, "PageSize": 2, "RequestId": "A70BEE5D-76D3-49FB-B58F-1F398211****", "PageNumber": 1, "Regions": { "RegionId": "cn-hangzhou", "RegionEndpoint": "nas.cn-hangzhou.aliyuncs.com", "LocalName": "East China 1" } }
 
-### NAS instance
+### 4.4 NAS instance
 
-#### CreateFileSystem
+#### 4.4.1 CreateFileSystem
 
 Creates a file system.
 
@@ -650,7 +714,7 @@ Creates a file system.
 
 Sample requests http(s)://[Endpoint]/?Action=CreateFileSystem &ProtocolType=NFS &StorageType=Performance &<Common request parameters> Sample success responses XML format <RequestId>98696EF0-1607-4E9D-B01D-F20930B6****</RequestId> <FileSystemId>1ca404****</FileSystemId> JSON format { "RequestId": "98696EF0-1607-4E9D-B01D-F20930B6****", "FileSystemId": "1ca404****" }
 
-#### DeleteFileSystem
+#### 4.4.2 DeleteFileSystem
 
 Deletes a file system. Before you delete a file system, you must remove all the mount targets from the file system. After the file system is deleted, the data on the file system cannot be restored. Proceed with caution.
 
@@ -671,7 +735,7 @@ Deletes a file system. Before you delete a file system, you must remove all the 
 
 Sample requests http(s)://[Endpoint]/? Action=DeleteFileSystem &FileSystemId=1ca404**** &<Common request parameters> Sample success responses XML format <RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId> JSON format { "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****" }
 
-#### ModifyFileSystem
+#### 4.4.3 ModifyFileSystem
 
 Modifies the details of a file system.
 
@@ -697,7 +761,7 @@ Modifies the details of a file system.
 
 Sample requests http(s)://[Endpoint]/? Action=ModifyFileSystem &FileSystemId=1ca404**** &<Common request parameters> Sample success responses XML format <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId> JSON format { "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****" }
 
-#### DescribeFileSystems
+#### 4.4.4 DescribeFileSystems
 
 Queries the information of file systems.
 
@@ -779,9 +843,9 @@ Queries the information of file systems.
 
 Sample requests http(s)://[Endpoint]/? Action=DescribeFileSystems &<Common request parameters> Sample success responses XML format <FileSystems> <Status>Pending</Status> <StorageType>Performance</StorageType> <Description>This can be the description of the created file system. </Description> <ZoneId>cn-hangzhou-b</ZoneId> <MeteredIASize>1000</MeteredIASize> <CreateTime>2017-05-27T15:43:06CST</CreateTime> <QuotaSize>100</QuotaSize> <MeteredSize>1611661312</MeteredSize> <EncryptType>1</EncryptType> <ChargeType>PayAsYouGo</ChargeType> <ProtocolType>NFS</ProtocolType> <Bandwidth>150</Bandwidth> <FileSystemType>all</FileSystemType> <ExpiredTime>1572174830000</ExpiredTime> <FileSystemId>109c04****</FileSystemId> <RegionId>cn-hangzhou</RegionId> <VolumeSize>1000</VolumeSize> </FileSystems> <FileSystems> <MountTargets> <Status>active</Status> <VswId>vsw-bp1omfzsszekkvaxn****</VswId> <VpcId>vpc-bp1sevsgtqvk5gxbl****</VpcId> <MountTargetDomain>109c042666-w****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain> <NetworkType>vpc</NetworkType> <AccessGroupName>test-001</AccessGroupName> </MountTargets> <Packages> <StartTime>2019-12-05T01:40:56Z</StartTime> <PackageId>naspackage-0be9c4b624-37****</PackageId> <Size>107374182400</Size> <ExpiredTime>2020-01-05T16:00:00Z</ExpiredTime> <PackageType>hybrid</PackageType> </Packages> </FileSystems> <FileSystems> <SupportedFeatures>Lifecycle</SupportedFeatures> </FileSystems> <FileSystems> <Ldap> <SearchBase>dc=example</SearchBase> <URI>ldap://ldap.example.example</URI> <BindDN>cn=alibaba,dc=com</BindDN> </Ldap> </FileSystems> <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>035B3A3A-E514-4B41-B906-5D906CFB****</RequestId> <PageNumber>1</PageNumber> JSON format { { "FileSystems": [ { "Status": "Pending", "StorageType": "Performance", "Description": "This can be the description of the created file system.", "ZoneId": "cn-hangzhou-b", "MeteredIASize": 1000, "CreateTime": "2017-05-27T15:43:06CST", "QuotaSize": 100, "MeteredSize": 1611661312, "EncryptType": 1, "ChargeType": "PayAsYouGo", "ProtocolType": "NFS", "Bandwidth": 150, "FileSystemType": "all", "ExpiredTime": 1572174830000, "FileSystemId": "109c04****", "RegionId": "cn-hangzhou", "VolumeSize": 1000 }, { "MountTargets": { "Status": "active", "VswId": "vsw-bp1omfzsszekkvaxn****", "VpcId": "vpc-bp1sevsgtqvk5gxbl****", "MountTargetDomain": "109c042666-w****.cn-hangzhou.nas.aliyuncs.com", "NetworkType": "vpc", "AccessGroupName": "test-001" }, "Packages": { "StartTime": "2019-12-05T01:40:56Z", "PackageId": "naspackage-0be9c4b624-37****", "Size": 107374182400, "ExpiredTime": "2020-01-05T16:00:00Z", "PackageType": "hybrid" } }, { "SupportedFeatures": "Lifecycle" }, { "Ldap": { "SearchBase": "dc=example", "URI": "ldap://ldap.example.example", "BindDN": "cn=alibaba,dc=com" } } ], "TotalCount": 1, "PageSize": 1, "RequestId": "035B3A3A-E514-4B41-B906-5D906CFB****", "PageNumber": 1 }
 
-### Mount point
+### 4.5 Mount point
 
-#### CreateMountTarget
+#### 4.5.1 CreateMountTarget
 
 Creates a mount target.
 
@@ -808,7 +872,7 @@ Creates a mount target.
 
 Sample requests http(s)://[Endpoint]/? Action=CreateMountTarget &AccessGroupName=classic-test &FileSystemId=174494**** &NetworkType=VPC &<Common request parameters> Sample success responses XML format <RequestId>70EACC9C-D07A-4A34-ADA4-77506C42****</RequestId> <MountTargetDomain>174494b666-x****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain> JSON format { "RequestId": "70EACC9C-D07A-4A34-ADA4-77506C42****", "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com" }
 
-#### DeleteMountTarget
+#### 4.5.2 DeleteMountTarget
 
 Deletes a mount target. After you delete a mount target, the mount target cannot be restored. Proceed with caution.
 
@@ -833,7 +897,7 @@ Deletes a mount target. After you delete a mount target, the mount target cannot
 
 Sample requests http(s)://[Endpoint]/? Action=DeleteMountTarget &FileSystemId=174494**** &MountTargetDomain=174494b666-x****.cn-hangzhou.nas.aliyuncs.com &<Common request parameters> Sample success responses XML format <RequestId>5BC5CB97-9F28-42FE-84A4-0CD0DF42****</RequestId> JSON format { "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****" }
 
-#### DescribeMountTargets
+#### 4.5.3 DescribeMountTargets
 
 Queries the information of mount targets.
 
@@ -871,7 +935,7 @@ Queries the information of mount targets.
 
 Sample requests http(s)://[Endpoint]/? Action=DescribeMountTargets &FileSystemId=1ca404**** &<Common request parameters> Sample success responses XML format <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>3BAB90FD-B4A0-48DA-9F09-2B963510A0EF</RequestId> <PageNumber>1</PageNumber> <MountTargets> <Status>Active</Status> <VswId>vsw-2zevmwkwyztjuoffg****</VswId> <VpcId>vpc-2zesj9afh3y518k9o****</VpcId> <MountTargetDomain>1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com</MountTargetDomain> <AccessGroup>DEFAULT_VPC_GROUP_NAME</AccessGroup> <NetworkType>Vpc</NetworkType> </MountTargets> JSON format { "TotalCount": 1, "PageSize": 1, "RequestId": "3BAB90FD-B4A0-48DA-9F09-2B963510A0EF", "PageNumber": 1, "MountTargets": { "Status": "Active", "VswId": "vsw-2zevmwkwyztjuoffg****", "VpcId": "vpc-2zesj9afh3y518k9o****", "MountTargetDomain": "1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com", "AccessGroup": "DEFAULT_VPC_GROUP_NAME", "NetworkType": "Vpc" } }
 
-#### ModifyMountTarget
+#### 4.5.4 ModifyMountTarget
 
 Modifies a mount target.
 
@@ -901,9 +965,9 @@ Modifies a mount target.
 
 Sample requests http(s)://[Endpoint]/? Action=ModifyMountTarget &FileSystemId=1ca404**** &MountTargetDomain=1ca404a666-w****.cn-hangzhou.nas.aliyuncs.com &<Common request parameters> Sample success responses XML format <RequestId>FF387D95-34C4-4879-B65A-99D1FA1****</RequestId> JSON format { "RequestId": "FF387D95-34C4-4879-B65A-99D1FA1****" }
 
-### Permission group
+### 4.6 Permission group
 
-#### CreateAccessGroup
+#### 4.6.1 CreateAccessGroup
 
 Creates a permission group.
 
@@ -931,7 +995,7 @@ Creates a permission group.
 
 Sample requests http(s)://[Endpoint]/? Action=CreateAccessGroup &AccessGroupName=classic-test &AccessGroupType=Classic &<Common request parameters> Sample success responses XML format <RequestId>55C5FFD6-BF99-41BD-9C66-FFF39189****</RequestId> <AccessGroupName>classic-test</AccessGroupName> JSON format { "RequestId": "55C5FFD6-BF99-41BD-9C66-FFF39189****", "AccessGroupName": "classic-test" }
 
-#### DeleteAccessGroup
+#### 4.6.2 DeleteAccessGroup
 
 Deletes a permission group. Default permission groups include DEFAULT_VPC_GROUP_NAME and DEFAULT_CLASSIC_GROUP_NAME. You cannot delete the default permission groups.
 
@@ -953,7 +1017,7 @@ Deletes a permission group. Default permission groups include DEFAULT_VPC_GROUP_
 
 Sample requests http(s)://[Endpoint]/? Action=DeleteAccessGroup &AccessGroupName=classic-test &<Common request parameters> Sample success responses XML format <RequestId>9E15E394-38A6-457A-A62A-D9797C9A****</RequestId> JSON format { "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****" }
 
-#### ModifyAccessGroup
+#### 4.6.3 ModifyAccessGroup
 
 Modifies a permission group.
 
@@ -979,7 +1043,7 @@ Modifies a permission group.
 
 Sample requests http(s)://[Endpoint]/? Action=ModifyAccessGroup &AccessGroupName=classic-test &<Common request parameters> Sample success responses XML format <RequestId>ED2AE737-9D50-4CA4-B0DA-31BD610C****</RequestId> JSON format { "RequestId": "ED2AE737-9D50-4CA4-B0DA-31BD610C****" }
 
-#### DescribeAccessGroups
+#### 4.6.4 DescribeAccessGroups
 
 Queries the information of permission groups.
 
@@ -1021,7 +1085,7 @@ Queries the information of permission groups.
 
 Sample requests http(s)://[Endpoint]/? Action=DescribeAccessGroups &<Common request parameters> Sample success responses XML format <AccessGroups> <RuleCount>0</RuleCount> <AccessGroupType>Classic</AccessGroupType> <Description>This is a classic test access group~</Description> <MountTargetCount>0</MountTargetCount> <AccessGroupName>classic-test</AccessGroupName> </AccessGroups> <TotalCount>2</TotalCount> <PageSize>2</PageSize> <RequestId>2514F97E-FFF0-4A1F-BF04-729CEAC64B6F</RequestId> <PageNumber>1</PageNumber> <ResourceOwnerId>258456</ResourceOwnerId> JSON format { "AccessGroups": { "RuleCount": 0, "AccessGroupType": "Classic", "Description": "This is a classic test access group~", "MountTargetCount": 0, "AccessGroupName": "classic-test" }, "TotalCount": 2, "PageSize": 2, "RequestId": "2514F97E-FFF0-4A1F-BF04-729CEAC64B6F", "PageNumber": 1, "ResourceOwnerId": 258456 }
 
-#### CreateAccessRule
+#### 4.6.5 CreateAccessRule
 
 Creates a rule for a permission group.
 
@@ -1054,7 +1118,7 @@ Creates a rule for a permission group.
 
 Sample requests http(s)://[Endpoint]/? Action=CreateAccessRule &AccessGroupName=classic-test &SourceCidrIp=10.0. *. */** &<Common request parameters> Sample success responses XML format <RequestId>A323836B-5BC6-45A6-8048-60675C23****</RequestId> <AccessRuleId>1</AccessRuleId> JSON format { "RequestId": "A323836B-5BC6-45A6-8048-60675C23****", "AccessRuleId": 1 }
 
-#### DeleteAccessRule
+#### 4.6.6 DeleteAccessRule
 
 Deletes a rule from a permission group.
 
@@ -1083,7 +1147,7 @@ Deletes a rule from a permission group.
 
 Sample requests http(s)://[Endpoint]/? Action=DeleteAccessRule &AccessGroupName=classic-test &AccessRuleId=1 &<Common request parameters> Sample success responses XML format <RequestId>5B4511A7-C99E-4071-AA8C-32E2529D****</RequestId> JSON format { "RequestId": "5B4511A7-C99E-4071-AA8C-32E2529D****" }
 
-#### ModifyAccessRule
+#### 4.6.7 ModifyAccessRule
 
 Modifies a rule in a permission group.
 
@@ -1113,7 +1177,7 @@ Modifies a rule in a permission group.
 
 Sample requests http(s)://[Endpoint]/? Action=ModifyAccessRule &AccessGroupName=classic-test &AccessRuleId=1 &<Common request parameters> Sample success responses XML format <RequestId>6299428C-3861-435D-AE54-9B330A00****</RequestId> JSON format { "RequestId": "6299428C-3861-435D-AE54-9B330A00****" }
 
-#### DescribeAccessRules
+#### 4.6.8 DescribeAccessRules
 
 Queries the information about rules.
 
@@ -1154,7 +1218,7 @@ Queries the information about rules.
 
 Sample requests http(s)://[Endpoint]/? Action=DescribeAccessRules &AccessGroupName=classic-test &<Common request parameters> Sample success responses XML format <TotalCount>1</TotalCount> <PageSize>1</PageSize> <RequestId>86D89E82-4297-4343-8E1E-A2495B35CC70</RequestId> <PageNumber>1</PageNumber> <AccessRules> <RWAccess>RDWR</RWAccess> <AccessRuleId>1</AccessRuleId> <UserAccess>no_squash</UserAccess> <Priority>1</Priority> <SourceCidrIp>10.0. *. */**</SourceCidrIp> </AccessRules> JSON format { "TotalCount": 1, "PageSize": 1, "RequestId": "86D89E82-4297-4343-8E1E-A2495B35CC70", "PageNumber": 1, "AccessRules": { "RWAccess": "RDWR", "AccessRuleId": 1, "UserAccess": "no_squash", "Priority": 1, "SourceCidrIp": "10.0. *. */**" } }
 
-### Appendix: Error codes
+### 4.7 Appendix: Error codes
 
 An error code consists of four components, as listed in Error codes. Error codes
 
@@ -1228,9 +1292,9 @@ An error code consists of four components, as listed in Error codes. Error codes
 
 XML format <? xml version="1.0" encoding="UTF-8"? > <Error> <RequestId>B71B4C68-6C6B-4D4B-AD70-8951BD7D188E</RequestId> <HostId>nas.regionid.example.com</HostId> <Code>InvalidFileSystem.NotFound</Code> <Message>The specified NAS instance does not exist.</Message> </Error> JSON format { "RequestId": "B71B4C68-6C6B-4D4B-AD70-8951BD7D188E", "HostId": " nas.regionid.example.com ", "Code": "InvalidFileSystem.NotFound", "Message": "The specified NAS instance does not exist." }
 
-## Appendixes
+## 5 Appendixes
 
-### Use the ASAPI gateway to call API
+### 5.1 Use the ASAPI gateway to call API operations
 
 **operations**
 
@@ -1260,11 +1324,11 @@ Obtain the developer guide of the Apsara Stack service that you want to use. You
 7. Use ASAPI SDK to call API operations.
 After you complete the preceding steps, you can use the ASAPI SDK to call API operations. For more information about how to use SDKs for different languages, see the relevant topics. The following example shows how to call the DescribeInstances operation of Elastic Compute Service (ECS) by using SDK for Java: public static void main(String[] args) { ASClient client = new ASClient(); // Specify the caller. The caller is recorded in logs. client.setSdkSource("autoTest"); // Set request parameters. Map<String, Object> parameters = new HashMap<String, Object>();; parameters.put("Product", "Ecs");// Specify the POP code, which is the same as the POP code in the corr esponding API directory. parameters.put("Action", "DescribeInstances"); // Specify the name of the API operation. Use the same l etter case as the corresponding API directory. parameters.put("Version", "2014-05-26"); // Specify the API version. // Specify the region ID that you obtained. parameters.put("RegionId", "xxx"); // Specify your AccessKey ID and AccessKey secret. parameters.put("AccessKeyId", "xxx"); parameters.put("AccessKeySecret", "xxx"); // Add the parameters based on the API reference. Take note that the parameters are case-sensitive. parameters.put("PageNumber",1); parameters.put("PageSize",10); Map<String,String> headers=new HashMap<>(); // Specify the organization ID in the Apsara Uni-manager Management Console. headers.put("x-acs-organizationid","3"); // Specify the resource set ID in the Apsara Uni-manager Management Console. //headers.put("x-acs-resourcegroupid", "<your-resourcegroupid>"); // Specify the endpoint of ASAPI. String endpoint="https://public.asapi.xxx.xxx/asapi/v3"; // Initiate the request. String result = client.doPost(endpoint,headers, parameters); // Display the results. System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFo rmat)); }
 
-### Use the ASAPI gateway to make API
+### 5.2 Use the ASAPI gateway to make API calls
 
 **calls**
 
-#### Obtain an endpoint of ASAPI
+#### 5.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint.
 
@@ -1355,7 +1419,7 @@ domain value.
 
 ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Obtain Apsara Stack SDKs
+#### 5.2.2 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls.
 
@@ -1404,9 +1468,9 @@ Apsara Stack SDK for Python
 
 You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 5.3 STS overview
 
-#### What is STS?
+#### 5.3.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -1418,7 +1482,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 5.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

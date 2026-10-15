@@ -3,14 +3,53 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 118
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Zone-disaster Recovery Developer Guide 20260828.pdf"
+source_pdf: "a66b62da87e98a2c_Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Zone-disaster Recovery Devel"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%81%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20apsara%20stack%20resilience%20ASR%20for%20Zone-disaster%20Recovery%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 apsara stack resilience ASR for Zone-disaster Recovery Developer Guide 20260828
 
-## API call flow
+## Table of Contents
+
+- 1 API call flow
+- 2 Preparations
+  - 2.1 Obtain an AccessKey
+  - 2.2 Obtain API information and its endpoint
+  - 2.3 Calling private cloud APIs through a POP gateway
+    - 2.3.1 Python version
+    - 2.3.2 Java version
+    - 2.3.3 SDK overview
+- 3 Error code information
+- 4 API reference
+  - 4.1 Protection group
+    - 4.1.1 ListProtectionGroup
+    - 4.1.2 ListProtectionGroupStatistics
+    - 4.1.3 ListProtectionGroupStatus
+    - 4.1.4 GetProtectionGroup
+    - 4.1.5 CheckProductInstance
+    - 4.1.6 GetZoneInfo
+  - 4.2 Drill plans
+    - 4.2.1 ListProcesses
+    - 4.2.2 ListDrillProcesses
+    - 4.2.3 CloseProcess
+    - 4.2.4 CreateDrillProcess
+    - 4.2.5 GetProcessTrace
+    - 4.2.6 ExecuteProcess
+    - 4.2.7 CreateNextProcess
+    - 4.2.8 GetInstanceStatus
+    - 4.2.9 GetProcessEntry
+    - 4.2.10 CreateDisasterRecoveryProcess
+    - 4.2.11 CreateHdrReverse
+    - 4.2.12 GetDrillPlan
+    - 4.2.13 ListDrillPlan
+    - 4.2.14 GetProcessCheck
+    - 4.2.15 GetPrevProcess
+    - 4.2.16 GetProcessDetail
+    - 4.2.17 SwitchInstance
+    - 4.2.18 SetProcessSwitchStep
+
+## 1 API call flow
 
 Apsara Stack lets you call APIs of the Zone-Disaster Recovery Management Platform (ASR) through the POP Gateway.
 
@@ -30,9 +69,9 @@ information and its endpoint.
 Apsara Stack APIs using POP Gateway.
 5. Call an API operation for ASR.
 
-## Preparations
+## 2 Preparations
 
-### Obtain an AccessKey
+### 2.1 Obtain an AccessKey
 
 This topic describes how to obtain an AccessKey ID and an AccessKey secret.
 
@@ -79,7 +118,7 @@ Personal account AccessKeys are restricted by the permission system of the Apsar
 5. Click**Manage AccessKey**.
 6. In the dialog box that appears, you can view the organization AccessKey information.
 
-### Obtain API information and its
+### 2.2 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -98,13 +137,13 @@ Before you begin, you need the following information for the API operation: the 
 7. Select the **Service List** tab. Click the bcmc service name to open its details page.
 8. Obtain the value of asr.pop.open.endpoint and save it.
 
-### Calling private cloud APIs
+### 2.3 Calling private cloud APIs through a POP gateway
 
 **through a POP gateway**
 
 This topic describes how to call private cloud APIs through a Product Open Platform (POP) gateway.
 
-#### Python version
+#### 2.3.1 Python version
 
 **Prerequisites**
 
@@ -303,7 +342,7 @@ except Exception as e:
    logging.error(e)
 ```
 
-#### Java version
+#### 2.3.2 Java version
 
 **Prerequisites**
 
@@ -439,7 +478,7 @@ except Exception as e:
     logging.error(e)
 ```
 
-#### SDK overview
+#### 2.3.3 SDK overview
 
 **Overview**
 
@@ -489,7 +528,7 @@ The current SDK supports the following APIs.
 
 Some APIs from previous versions are now deprecated or obsolete. This topic describes these deprecated and obsolete APIs. Deprecated APIs are marked as such in your Integrated Development Environment (IDE). The API reference still describes how to call them. Deprecated APIs are typically not supported in future Apsara Stack versions. Most obsolete APIs do not have an alternative and are not described in the API reference. However, a few obsolete APIs have alternatives with similar features. IDEA marks deprecated APIs to help developers identify them. Do not use these APIs for new projects. mation
 
-## Error code information
+## 3 Error code information
 
 This topic describes the common error codes and error messages that occur when you call API operations. When you call ASR API operations, you might encounter two types of errors: software development kit (SDK) call exceptions and backend service execution exceptions. If a request to a POP API operation fails, the system returns an error message. This type of error is usually caused by an improper API call. You can adjust the request parameters based on the error message. The following table describes common POP SDK exceptions.
 
@@ -533,13 +572,13 @@ mation
 | false | switchInstanceError | switch instance error! | An error occurred during the instance switchover operation. Check the status of the target instance. |
 | false | createHdrReverseError | Create hdr reverse error! | The reverse switchover of the HDR protection group failed. Check the synchronization status. |
 
-## API reference
+## 4 API reference
 
 This is the API reference content.
 
-### Protection group
+### 4.1 Protection group
 
-#### ListProtectionGroup
+#### 4.1.1 ListProtectionGroup
 
 This operation lists protection groups. The response contains creation information, instance information, and the current status of each group.
 
@@ -662,7 +701,7 @@ POST /api/pop/v1/listProtectionGroup HTTP/1.1
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListProtectionGroupStatistics
+#### 4.1.2 ListProtectionGroupStatistics
 
 This operation queries overview information for a protection group, including the number of switches, involved products, instances, and the time of the last drill.
 
@@ -817,7 +856,7 @@ Sample success response `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListProtectionGroupStatus
+#### 4.1.3 ListProtectionGroupStatus
 
 This operation lists the status of protection groups to check whether they are in a normal state.
 
@@ -909,7 +948,7 @@ Example of a successful response `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetProtectionGroup
+#### 4.1.4 GetProtectionGroup
 
 Retrieves the details of a protection group, including the products and instances that the group contains.
 
@@ -1067,7 +1106,7 @@ Response example `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>30</Cost> <Success>true</Success>
 ```
 
-#### CheckProductInstance
+#### 4.1.5 CheckProductInstance
 
 You can call this operation to check the status of a product instance and determine whether it supports a disaster recovery switchover. API description
 
@@ -1178,7 +1217,7 @@ Successful response example `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetZoneInfo
+#### 4.1.6 GetZoneInfo
 
 Retrieves information about the zones that are available when you create a recovery plan.
 
@@ -1253,9 +1292,9 @@ Successful response example `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-### Drill plans
+### 4.2 Drill plans
 
-#### ListProcesses
+#### 4.2.1 ListProcesses
 
 You can call this operation to list the steps in a recovery drill process and view details such as the process type, execution mode, and current status. API description
 
@@ -1397,7 +1436,7 @@ POST /api/pop/v1/listProcesses HTTP/1.1
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListDrillProcesses
+#### 4.2.2 ListDrillProcesses
 
 This operation lists drill processes. The information returned includes the process type, execution mode, and current status. API details
 
@@ -1533,7 +1572,7 @@ POST /api/pop/v1/listDrillProcesses HTTP/1.1
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>1000</Cost> <Success>true</Success>
 ```
 
-#### CloseProcess
+#### 4.2.3 CloseProcess
 
 Call this operation to shut down a flow. You can shut down a flow after a recovery drill for a protection group is complete or shut it down early if an exception occurs.
 
@@ -1633,7 +1672,7 @@ Sample successful response `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateDrillProcess
+#### 4.2.4 CreateDrillProcess
 
 This operation creates a drill process for a drill plan. After the process starts, you can perform a switchover of the protection group.
 
@@ -1729,7 +1768,7 @@ Response example `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetProcessTrace
+#### 4.2.5 GetProcessTrace
 
 You can call this operation to retrieve flow logs. It is primarily used to obtain the switchover logs for a protection group.
 
@@ -1837,7 +1876,7 @@ Sample successful response `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ExecuteProcess
+#### 4.2.6 ExecuteProcess
 
 Call this API to start a switchover flow that executes the steps for switchovers and failbacks within a protection group. API description
 
@@ -1909,9 +1948,9 @@ Response example `JSON` format `{`
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateNextProcess
+#### 4.2.7 CreateNextProcess
 
-You can call this operation to move a drill flow to the next step. API reference
+You can call this operation to move a drill flow to the next step.
 
 **Prerequisites**
 
@@ -2001,7 +2040,7 @@ Sample response `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetInstanceStatus
+#### 4.2.8 GetInstanceStatus
 
 You can call this operation to retrieve the status of an instance in a protection group. The status includes information such as the location of the primary node and the Recovery Point Objective (RPO). API description
 
@@ -2218,7 +2257,7 @@ true<br/> }",
   <Success>true</Success>
 ```
 
-#### GetProcessEntry
+#### 4.2.9 GetProcessEntry
 
 This operation retrieves information about the steps in a drill process, including the instance status, action status, and process steps. API description
 
@@ -2451,7 +2490,7 @@ RECOVERY_CHECK</ShowAction>
    <Success>true</Success>
 ```
 
-#### CreateDisasterRecoveryProcess
+#### 4.2.10 CreateDisasterRecoveryProcess
 
 Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario.
 
@@ -2547,7 +2586,7 @@ Sample successful response `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateHdrReverse
+#### 4.2.11 CreateHdrReverse
 
 Switches an HDR protection group.
 
@@ -2620,7 +2659,7 @@ Sample response `JSON` format `{`
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetDrillPlan
+#### 4.2.12 GetDrillPlan
 
 Call this operation to retrieve the details of a drill plan. The details include the products, instances, and zones that are included in the plan.
 
@@ -2801,7 +2840,7 @@ Response example `JSON` format `{`
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListDrillPlan
+#### 4.2.13 ListDrillPlan
 
 This operation lists drill plans. You can query for a plan by its name. The response includes details about each plan, such as its execution mode and the zone where the drill is performed.
 
@@ -2969,7 +3008,7 @@ POST /api/pop/v1/listDrillPlan HTTP/1.1
 </Data> <Message>success</Message> <PageNumber>1</PageNumber> <PageSize>10</PageSize> <RequestId>AB3E6FFC-6467-4804-832C-E05E7C14D7A8</RequestId> <Success>true</Success> <TotalCount>3</TotalCount>
 ```
 
-#### GetProcessCheck
+#### 4.2.14 GetProcessCheck
 
 You can call this operation to retrieve the check result of a flow execution. This check verifies the instance status before a switch. The result includes information such as synchronization latency, primary node location, and whether a drill action is involved.
 
@@ -3337,7 +3376,7 @@ Successful response example `JSON` format `{`
 </Data> <Message>success</Message> <RequestId>4F19DE7F-67E5-4F6C-AA06-75CBB5DC7C65</RequestId> <Success>true</Success>
 ```
 
-#### GetPrevProcess
+#### 4.2.15 GetPrevProcess
 
 This operation retrieves the status of the previous process in a recovery drill plan. It obtains information about the previous step but does not change the status of the process.
 
@@ -3624,7 +3663,7 @@ Successful response example `JSON` format `{`
 </Data> <Message>success</Message> <RequestId>DC9C8651-9890-423E-8056-8E81F0B95FEE</RequestId> <Success>true</Success>
 ```
 
-#### GetProcessDetail
+#### 4.2.16 GetProcessDetail
 
 Call this operation to retrieve the details of a flow. The details include the products and instances involved in the recovery plan, the switch direction, the current execution step, and the status of the preceding action.
 
@@ -4002,7 +4041,7 @@ C16CF72D81C2</TraceId>
 </Data> <Message>success</Message> <RequestId>FD418663-E79E-4196-AB7A-36922FC2D572</RequestId> <Success>true</Success>
 ```
 
-#### SwitchInstance
+#### 4.2.17 SwitchInstance
 
 You can call this operation to retry a switch to a disaster recovery instance for a protection group. The operation performs an instance switch or switchback based on the scenario in the drill plan.
 
@@ -4074,7 +4113,7 @@ Successful response example `JSON` format `{`
 <Path>/xx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### SetProcessSwitchStep
+#### 4.2.18 SetProcessSwitchStep
 
 This API is used to skip a failed batch and proceed to the next one during a manual batch switchover for a protection group.
 

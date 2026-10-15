@@ -2,16 +2,24 @@
 title: "DataHub Product Introduction 20260306"
 product_version: "V3.18.6"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 DataHub Product Introduction 20260306.pdf"
+source_pdf: "4858143d0950359b_Alibaba Cloud Apsara Stack V3.18.6 DataHub Product Introduction 20260306.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataHub%20Product%20Introduction%2020260306.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # DataHub Product Introduction 20260306
 
-## DataHub
+## Table of Contents
 
-### Features
+- 1 DataHub
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 DataHub
+
+### 1.1 Features
 
 DataHub collects, stores, and processes streaming data from mobile devices, applications, website services, and sensors. You can use your own applications or Apsara Stack Realtime Compute to process streaming data in DataHub, such as real-time website access logs, application logs, and events. The processed data is updated in real time and delivered to you in the form of alerts and statistics (visualized as graphs or tables).
 
@@ -31,7 +39,7 @@ Data in DataHub is automatically synchronized to other Alibaba Cloud services. Y
 
 DataHub can scale flexibly to increase or decrease the number of shards in a cluster. This allows you to handle traffic surges or save resource costs based on actual business conditions. For example, if the topic has insufficient throughput to cope with the surge in service load during the Double 11 Shopping Festival, you can use the SplitShard operation to increase the number of shards to a maximum of 256 shards in response to the traffic spike. This expands the throughput capacity up to 256 MB/s. When traffic returns to normal after the Double 11 Shopping Festival and you no longer require high throughput capacity, you can use the MergeShard operation to merge every two shards into one.
 
-### Benefits
+### 1.2 Benefits
 
 Built on the Apsara system of Alibaba Cloud, DataHub features elastic scalability, high availability, high throughput, and low latency.
 
@@ -59,7 +67,7 @@ The throughput of each topic can be increased or decreased dynamically, with the
 
 DataHub provides enterprise-level security mechanisms and tenant-level isolation. It supports multiple authentication and authorization methods. For example, you can configure an allowlist or grant permissions by using Resource Access Management (RAM).
 
-### Scenarios
+### 1.3 Scenarios
 
 As a fully managed real-time data streaming service platform of Alibaba Cloud, DataHub is deeply integrated with core products such as MaxCompute, Realtime Compute for Apache Flink, and E-MapReduce (EMR). It provides an end-to-end solution for enterprises, covering real-time data collection, cleaning, and transformation, as well as multi-dimensional analysis. It helps build an efficient and flexible one-stop data processing system.
 
@@ -73,43 +81,43 @@ DataHub provides several types of data collection tools for you to write your da
 
 **Data streaming**
 
-| Category | Feature | Description |
-|---|---|---|
-| System-related | Horizontal scaling | Supports online, horizontal, and dynamic scale-in and scale- out. |
-|  | Quota management of a single Elastic Compute Service (ECS) instance | Supports single-ECS instance quota management. The number of shards per ECS instance can be configured. The QPS, RPS, and throughput limits for each shard can be configured. |
-|  | Throttling policy | Supports various types of throttling policies. |
-|  | Distributed resource scheduling | Supports distributed resource scheduling and the fully service-oriented platform. |
-|  | Multiple data replicas | Supports multiple data replicas and tolerates single-node failures. |
-|  | Multi-cluster disaster recovery | Supports the multi-cluster disaster recovery feature. |
-|  | Online hot upgrade | Supports the online hot upgrade. |
-|  | Data lifecycle configuration | Supports configuration of data lifecycles. |
-|  | Millisecond- level read and write latencies | Supports millisecond-level read and write latencies. |
-
 You can write applications to subscribe to data in DataHub, process the data in real time, and then output the processed data. You can also use another application to process the streaming data output from the previous application to form a directed acyclic graph (DAG)-based data processing procedure.
 
 **Data archiving**
 
 You only need to create a DataHub connector and configure relevant parameters to archive streaming data to MaxCompute on a regular basis.
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the features of DataHub.
 
+| Category | Feature | Description |
+|---|---|---|
+| System-related | Horizontal scaling | Supports online, horizontal, and dynamic scale-in and scale- out. |
+|   | Quota management of a single Elastic Compute Service (ECS) instance | Supports single-ECS instance quota management. The number of shards per ECS instance can be configured. The QPS, RPS, and throughput limits for each shard can be configured. |
+|   | Throttling policy | Supports various types of throttling policies. |
+|   | Distributed resource scheduling | Supports distributed resource scheduling and the fully service-oriented platform. |
+|   | Multiple data replicas | Supports multiple data replicas and tolerates single-node failures. |
+|   | Multi-cluster disaster recovery | Supports the multi-cluster disaster recovery feature. |
+|   | Online hot upgrade | Supports the online hot upgrade. |
+|   | Data lifecycle configuration | Supports configuration of data lifecycles. |
+|   | Millisecond- level read and write latencies | Supports millisecond-level read and write latencies. |
+
 | Function-related | Data import by using various open source plug-ins | Supports data import by using various open source plug-ins, such as Fluentd, Logstash, and Oracle GoldenGate (OGG). |
 |---|---|---|
-|  | SDKs for multiple languages | Supports SDKs for multiple languages, such as C++, Java, Python, and Go. |
-|  | Structured and unstructured data storage | Supports structured TUPLE and unstructured BLOB storage modes. |
-|  | Multi-tenancy | Supports multi-tenancy. |
-|  | Multi- subscription | Supports multi-subscription offsets and storage of subscription offsets. |
-|  | Synchronization of various types of data sources | Supports synchronization of various types of data sources. MaxCompute is natively supported. |
-|  | Publishing and subscription | Supports the publishing and subscription features for common streaming data. |
-|  | Various data write modes | Supports various data write modes, such as Hash and PartitionKey. |
-|  | Function computing at the backend | Supports function computing at the backend. |
-|  | Permission management | Supports the Alibaba Cloud account system and the RAM user system and multi-tenant isolation at the topic granularity. |
+|   | SDKs for multiple languages | Supports SDKs for multiple languages, such as C++, Java, Python, and Go. |
+|   | Structured and unstructured data storage | Supports structured TUPLE and unstructured BLOB storage modes. |
+|   | Multi-tenancy | Supports multi-tenancy. |
+|   | Multi- subscription | Supports multi-subscription offsets and storage of subscription offsets. |
+|   | Synchronization of various types of data sources | Supports synchronization of various types of data sources. MaxCompute is natively supported. |
+|   | Publishing and subscription | Supports the publishing and subscription features for common streaming data. |
+|   | Various data write modes | Supports various data write modes, such as Hash and PartitionKey. |
+|   | Function computing at the backend | Supports function computing at the backend. |
+|   | Permission management | Supports the Alibaba Cloud account system and the RAM user system and multi-tenant isolation at the topic granularity. |
 | Visualized management- related | Visualized management | Supports visualized permission management. |
-|  | Web console management | Supports management in the web console, such as log management, subscription, and creation and deletion of synchronization offsets. |
-|  | Visualized log management | Supports visualized log management for different log types, such as logs for creating and deleting synchronization offsets. |
+|   | Web console management | Supports management in the web console, such as log management, subscription, and creation and deletion of synchronization offsets. |
+|   | Visualized log management | Supports visualized log management for different log types, such as logs for creating and deleting synchronization offsets. |
 
-|  | Visualized O&M | Supports visualized O&M, such as log storage capacity scale-ins and scale-outs. |
+|   | Visualized O&M | Supports visualized O&M, such as log storage capacity scale-ins and scale-outs. |
 |---|---|---|
-|  | Visualized dashboard monitoring | Supports visualized dashboard monitoring, such as the display of real-time traffic and other parameters. |
+|   | Visualized dashboard monitoring | Supports visualized dashboard monitoring, such as the display of real-time traffic and other parameters. |

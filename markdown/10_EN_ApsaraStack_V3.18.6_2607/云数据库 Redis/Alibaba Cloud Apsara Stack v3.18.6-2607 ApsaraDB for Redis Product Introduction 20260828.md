@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Product Intro
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 17
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Product Introduction 20260828.pdf"
+source_pdf: "7110e9f650a57c19_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20Redis%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Product Introduction 20260828
 
+## Table of Contents
+
+- 1 Product Details
+- 2 Benefits
+- 3 Common scenarios
+- 4 Functions and features
+
 ails
 
-## Product Details
+## 1 Product Details
 
 Tair (Redis OSS-compatible) supports various architectures and provides persistent data storage, high availability, scalability, and intelligent O&M.
 
@@ -80,7 +87,7 @@ Tair provides a web-based visualization management console. The console provides
 
 Tair (Redis OSS-compatible) is continuously optimized at the kernel level to fix security vulnerabilities and improve service stability. You can use the minor version upgrade feature in the console to upgrade the kernel to the latest version with a single click.
 
-## Benefits
+## 2 Benefits
 
 Tair (Redis OSS-compatible) provides features such as ultra-high performance, elastic scaling, resource isolation, high data security, high availability, and ease of use.
 
@@ -116,7 +123,7 @@ Supports data access permission management. Permissions include logon permission
 
 Supports multi-tenant scheduling across multiple clusters and resource pools. enarios
 
-## Common scenarios
+## 3 Common scenarios
 
 Tair (Redis OSS-compatible) is ideal for use in industries such as gaming, live streaming, and e-commerce.
 
@@ -160,7 +167,7 @@ An online shopping system is likely to be overwhelmed by user traffic during lar
 
 enarios A Tair (Redis OSS-compatible) instance can be used to count the inventory, and an ApsaraDB RDS instance can be used to store item quantity statistics. This way, the Tair (Redis OSScompatible) instance reads quantity statistics, and the ApsaraDB RDS instance stores quantity statistics. The Tair (Redis OSS-compatible) instance is deployed on a physical server, and the system provides high data storage capacity based on high-performance SSDs.
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the functions and features of Alibaba CloudTair (Redis OSS-compatible) to help you quickly understand its capabilities.
 

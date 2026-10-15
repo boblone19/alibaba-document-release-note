@@ -3,14 +3,22 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Product Int
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 21
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Product Introduction 20260828.pdf"
+source_pdf: "1b5c1348e0c186c9_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer Product Introduction 20260828
 
-## What is SLB?
+## Table of Contents
+
+- 1 What is SLB?
+  - 1.1 Service details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 What is SLB?
 
 This topic provides an overview of Server Load Balancer (SLB). SLB distributes inbound network traffic across multiple Elastic Compute Service (ECS) instances that function as backend servers based on forwarding rules. You can use SLB to improve the responsiveness and availability of your applications.
 
@@ -26,7 +34,7 @@ SLB consists of three components: SLB instances An SLB instance is a running SLB
 
 High availability SLB is designed with full redundancy that prevents SPOFs and supports zone-disaster recovery. SLB can be scaled based on application loads and can provide continuous services during traffic fluctuations. High scalability You can increase or decrease the number of backend servers to adjust the load balancing capability of your applications. High cost efficiency SLB can save 60% of load balancing costs compared with traditional hardware solutions. Outstanding security You can integrate SLB with Apsara Stack Security to defend your applications against DDoS attacks of up to 5 Gbit/s. High concurrency An SLB cluster supports hundreds of millions of concurrent connections. A single SLB instance supports tens of millions of concurrent connections.
 
-### Service details
+### 1.1 Service details
 
 The Server Load Balancer (SLB) service consists of SLB instances, listeners, and backend servers.
 
@@ -42,7 +50,7 @@ A listener is used to check client requests and forward the requests to one or m
 
 Backend servers are ECS instances that are added to an SLB instance to receive requests. You can add individual ECS instances to the default server group of an SLB instance. You can also add multiple ECS instances to vServer groups or primary/secondary server groups.
 
-### Benefits
+### 1.2 Benefits
 
 Server Load Balancer provides high availability, scalability, low cost, security, and high concurrency. This topic describes the high availability benefits of Server Load Balancer for single SLB instances, multiple SLB instances, and backend ECS instances.
 
@@ -69,7 +77,7 @@ Server Load Balancer costs less than traditional hardware load balancers. This p
 
 A cluster can support tens of millions of concurrent connections. A single instance can support millions of concurrent connections.
 
-### Scenarios
+### 1.3 Scenarios
 
 Server Load Balancer (SLB) is suitable for scenarios where you want to handle large volumes of traffic, scale applications, eliminate single points of failure (SPOFs), and implement crosszone or cross-region disaster recovery.
 
@@ -95,7 +103,7 @@ To provide more stable and reliable load balancing services, SLB supports cross-
 
 You can deploy SLB instances in different regions and add the ECS instances of different zones within each of these regions to the SLB instance in the same region. You can use Alibaba Cloud DNS to resolve domain names to the service addresses of SLB instances in different regions for global load balancing. When a region becomes unavailable, you can temporarily stop DNS resolution in the region without affecting traffic to your applications.
 
-### Features
+### 1.4 Features
 
 This topic describes the features of Alibaba Cloud Server Load Balancer (SLB). SLB supports Layer 4 and Layer 7 load balancing. It provides health checks, session persistence, and domain forwarding to ensure high availability for backend services.
 

@@ -3,14 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a se
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Product Introduction 20260828.pdf"
+source_pdf: "66b4b0a28e372f68_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Product Introduction 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%A3%B8%E6%9C%BA%E7%AE%A1%E7%90%86%20BMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20Data%20Center%20as%20a%20service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack Data Center as a service Product Introduction 20260828
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Benefits
+- 3 Common scenarios
+- 4 Functions and features
+
+## 1 Overview
 
 Bare Metal Service (BMS) is a cloud service that provides physical servers to tenants on demand and in a flexible manner through a cloud platform. It is typically used to supply computing resources to services such as core databases, key application systems, and highperformance computing. BMS implements management through the unified O&M interface of Apsara Stack. It directly manages physical servers at the node level, including adding or deleting physical servers, managing power supply, and deploying systems. After servers are installed and related preparations are made, the administrator can deploy multiple bare metal devices at a time through the UI. After the deployment is complete, these devices can be used to create bare metal instances. BMS supports custom installation of operating systems such as AliOS and CentOS on the x86 architecture, as well as full lifecycle management of bare metal instances. The following figure shows the architecture of BMS. ASO ASCM OPSGW ASAPI
 
@@ -26,11 +33,11 @@ Bare Metal Service (BMS) is a cloud service that provides physical servers to te
 |   | Access to Other Services within Cloud RDS DNS OSS VIP POP VPC ... |
 |---|---|
 
-## Benefits
+## 2 Benefits
 
 Bare Metal Service (BMS) is a complete set of general-purpose solutions that provide dedicated physical servers for core applications to ensure their high performance and stability. In simple terms, BMS can be regarded as a process of installing operating systems on bare metal servers, obtaining their configurations, and managing bare metal instances throughout their lifecycles, such as starting, stopping, and restarting them. The entire process only requires that the managed servers are powered on and connected to the network. BMS provides users with high-performance computing clusters and a solution for applications that are not suitable for virtualization. It extends and enhances Aliclone capabilities and leverages shared-pool management. This way, BMS reaches the traditional IT applications of enterprises, improves the data migration efficiency, and helps customers seamlessly migrate their businesses to the cloud. enarios
 
-## Common scenarios
+## 3 Common scenarios
 
 Businesses and government agencies have diverse needs for IT infrastructure. In key scenarios such as high-performance computing, security compliance, and resource isolation, Bare Metal Service (BMS) is an ideal choice for supporting core business systems. This topic describes the typical use scenarios of BMS.
 
@@ -58,7 +65,7 @@ Government and enterprise customers often own a large number of purchased physic
 
 enarios Traditional enterprise customers often operate a large number of existing virtualized or thirdparty cloud platforms, such as VMware and OpenStack. Due to performance and compatibility issues arising from nested virtualization, such platform software is usually unsuitable for running in virtual machines. In contrast, BMS effectively supports the platform applications and facilitates the integration of existing cloud applications with existing full-stack cloud services. BMS provides these platforms with independent physical resources that can be directly deployed on bare metal servers. This avoids the overlay of virtualization layers and ensures their high-performance operation and functional integrity. BMS is widely used in sectors such as finance, energy, and manufacturing. It helps customers protect their existing investments, integrate new and existing cloud systems, and establish a converged, elastic, and scalable full-stack cloud architecture. nd features
 
-## Functions and features
+## 4 Functions and features
 
 Bare Metal Service (BMS) consists of two service modules: the Bare Metal Instances module and the Managed Instances module. BMS helps you manage physical bare metal servers.
 

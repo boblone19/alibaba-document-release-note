@@ -3,16 +3,114 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Appli
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 214
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Developer Guide 20260828.pdf"
+source_pdf: "0a06f421d337689a_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Develo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Log in to OpenAPI Explorer
+- 1 Preparations
+  - 1.1 Log in to OpenAPI Explorer
+  - 1.2 View the information about an operation
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain access credentials assigned by STS
+  - 1.5 Obtain an endpoint
+- 2 Common parameters
+- 3 Call examples
+  - 3.1 Call examples for SDK for Java
+    - 3.1.1 Use SDK
+      - 3.1.1.1 Install SDK for Java
+      - 3.1.1.2 Use CommonRequest to call API operations
+  - 3.2 Call examples for SDK for Python
+    - 3.2.1 Use SDK
+      - 3.2.1.1 Install SDK for Python
+      - 3.2.1.2 Use CommonRequest to call API operations
+  - 3.3 Call examples for SDK for Go
+    - 3.3.1 Use SDK
+      - 3.3.1.1 Install the core package of SDK for Go
+      - 3.3.1.2 Use CommonRequest to call API operations
+- 4 Web Application Firewall
+  - 4.1 Invocation method
+    - 4.1.1 Request structure
+    - 4.1.2 Request signatures
+    - 4.1.3 Common parameters
+    - 4.1.4 Response structure
+  - 4.2 Website protection
+    - 4.2.1 DescribeWebsite
+    - 4.2.2 CreateWebsite
+    - 4.2.3 EditWebsite
+    - 4.2.4 ToggleWebsite
+    - 4.2.5 QueryAsyncTaskStatus
+    - 4.2.6 QueryAsyncTaskStatus
+    - 4.2.7 UploadResponsePage
+    - 4.2.8 DescribeInvalidWebsite
+    - 4.2.9 DeleteInvalidWebsite
+    - 4.2.10 DescribeInternetVip
+    - 4.2.11 CreateInternetVip
+    - 4.2.12 DeleteInternetVip
+    - 4.2.13 DescribeVpc
+    - 4.2.14 DescribeVSwitch
+    - 4.2.15 DescribeVpcVip
+    - 4.2.16 CreateVpcVip
+    - 4.2.17 DeleteVpcVip
+    - 4.2.18 DescribeEcs
+    - 4.2.19 DescribeSlb
+  - 4.3 HTTP flood protection rules
+    - 4.3.1 DescribeCCRuleTemplate
+    - 4.3.2 CreateCCRuleTemplate
+    - 4.3.3 EditCCRuleTemplate
+    - 4.3.4 ToggleCCRuleTemplate
+    - 4.3.5 DeleteCCRuleTemplate
+    - 4.3.6 ClearCCRestrictionList
+    - 4.3.7 DescribeCCWhitelist
+    - 4.3.8 CreateCCWhitelist
+    - 4.3.9 DeleteCCWhitelist
+  - 4.4 Custom rules
+    - 4.4.1 DescribePolicyRule
+    - 4.4.2 CreatePolicyRule
+    - 4.4.3 EditPolicyRule
+    - 4.4.4 TogglePolicyRule
+    - 4.4.5 DeletePolicyRule
+    - 4.4.6 EditPolicyRulePriority
+    - 4.4.7 GenerateFalsePositiveRuleCorrection
+    - 4.4.8 CreateDetectionModuleRule
+    - 4.4.9 EditDetectionModuleRule
+    - 4.4.10 EditPolicyRuleWebsiteBinding
+    - 4.4.11 DeletePolicyRuleWebsiteBinding
+  - 4.5 Protection policies
+    - 4.5.1 DescribePolicyGroup
+    - 4.5.2 CreatePolicyGroup
+    - 4.5.3 EditPolicyGroup
+    - 4.5.4 DeletePolicyGroup
+  - 4.6 Protection logs
+    - 4.6.1 QueryAsyncTaskStatus
+    - 4.6.2 QueryAttackDetectionLog
+    - 4.6.3 QueryAttackDetectionDetailLog
+    - 4.6.4 QueryAuditLog
+    - 4.6.5 QueryCCRuleExecutionLog
+    - 4.6.6 QueryFullAccessLog
+    - 4.6.7 QueryFullAccessDetailLog
+    - 4.6.8 QueryPerformanceStatistics
+  - 4.7 SSL certificate management
+    - 4.7.1 DescribeSSLCert
+    - 4.7.2 UploadSSLCert
+    - 4.7.3 EditSSLCert
+    - 4.7.4 DeleteSSLCert
+  - 4.8 System information
+    - 4.8.1 DescribeMetrics
+    - 4.8.2 DescribeNodeStatus
+    - 4.8.3 DescribeRealTimeAccess
+    - 4.8.4 DescribeAttackDetectionAggregation
+    - 4.8.5 DescribeAttackDetectionAggregationConfig
+    - 4.8.6 ToggleAttackDetectionAggregation
+- 5 Error codes
+
+## 1 Preparations
+
+### 1.1 Log in to OpenAPI Explorer
 
 You can log in to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -40,7 +138,7 @@ For more information, see **Bind a virtual MFA device to enable MFA** in **Apsar
 **Uni-manager Management Console User Guide**.
 5. In the top navigation bar, choose **Products > Development Tools > OpenAPI Explorer**.
 
-### View the information about an
+### 1.2 View the information about an operation
 
 **operation**
 
@@ -58,7 +156,7 @@ The operations on the API Directory page are for reference only. For information
 keyword of an operation name in the search box, and then click Search.
 4. View and record the service name, operation name, and API version.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -100,7 +198,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -228,7 +326,7 @@ obtained in the preceding step.
 
 `}` `}`
 
-### Obtain an endpoint
+### 1.5 Obtain an endpoint
 
 This topic describes how to obtain the endpoint of an Apsara Stack Security service.
 
@@ -275,7 +373,7 @@ iv. Right-click the value of the **Result** parameter of the O&M domain, managem
 
 eters
 
-## Common parameters
+## 2 Common parameters
 
 **Common request parameters**
 
@@ -299,13 +397,13 @@ eters
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-## Call examples
+## 3 Call examples
 
-### Call examples for SDK for Java
+### 3.1 Call examples for SDK for Java
 
-#### Use SDK
+#### 3.1.1 Use SDK
 
-##### Install SDK for Java
+##### 3.1.1.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -317,7 +415,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest to call API operations
+##### 3.1.1.2 Use CommonRequest to call API operations
 
 **Note**
 
@@ -369,13 +467,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-### Call examples for SDK for
+### 3.2 Call examples for SDK for Python
 
 **Python**
 
-#### Use SDK
+#### 3.2.1 Use SDK
 
-##### Install SDK for Python
+##### 3.2.1.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -393,7 +491,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest to call API operations
+##### 3.2.1.2 Use CommonRequest to call API operations
 
 **Note**
 
@@ -423,11 +521,11 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 action_name='your-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### Call examples for SDK for Go
+### 3.3 Call examples for SDK for Go
 
-#### Use SDK
+#### 3.3.1 Use SDK
 
-##### Install the core package of SDK for Go
+##### 3.3.1.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -435,7 +533,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Use CommonRequest to call API operations
+##### 3.3.1.2 Use CommonRequest to call API operations
 
 **Note**
 
@@ -497,11 +595,11 @@ your_access_key_secret}")
 
 `}`
 
-## Web Application Firewall
+## 4 Web Application Firewall
 
-### Invocation method
+### 4.1 Invocation method
 
-#### Request structure
+#### 4.1.1 Request structure
 
 Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
@@ -528,7 +626,7 @@ API requests are presented in the following easy-to-read format in this document
 https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Version=2020-07-01 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### Request signatures
+#### 4.1.2 Request signatures
 
 Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
 
@@ -573,7 +671,7 @@ LEW8N4y7Uasop******
 5. Add the signature string to the request as the Signature parameter. The result is the signed
 API request.
 
-#### Common parameters
+#### 4.1.3 Common parameters
 
 Common request parameters must be included in all Apsara Stack Security API requests, such as the API version number and authentication information.
 
@@ -591,7 +689,7 @@ Common request parameters must be included in all Apsara Stack Security API requ
 | ResourceOwnerA ccount | String | No | The owner account (the logon username) of the resource you want to access by using this API request. |
 | Format | String | No | The format of the response. Valid values: JSON and XML. Default value: XML. |
 
-#### Response structure
+#### 4.1.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -615,9 +713,9 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 `}`
 
-### Website protection
+### 4.2 Website protection
 
-#### DescribeWebsite
+#### 4.2.1 DescribeWebsite
 
 Queries the information about the websites that are protected by WAF.
 
@@ -676,7 +774,7 @@ pe\": \"off\"}, \"policy_rules\": [], \"health_check_status\": \"\", \"backend_c
 
 For a list of error codes, see Error codes.
 
-#### CreateWebsite
+#### 4.2.2 CreateWebsite
 
 Adds a website.
 
@@ -778,7 +876,7 @@ configurations\"]",
 
 For a list of error codes, see Error codes.
 
-#### EditWebsite
+#### 4.2.3 EditWebsite
 
 Modifies the information about a specific website.
 
@@ -888,7 +986,7 @@ configurations\"]",
 
 For a list of error codes, see Error codes.
 
-#### ToggleWebsite
+#### 4.2.4 ToggleWebsite
 
 Enables or disables WAF protection for a specific website.
 
@@ -958,7 +1056,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### QueryAsyncTaskStatus
+#### 4.2.5 QueryAsyncTaskStatus
 
 Queries the status of an asynchronous task.
 
@@ -1017,7 +1115,7 @@ configuration generation"]</TaskList>
 
 For a list of error codes, see Error codes.
 
-#### QueryAsyncTaskStatus
+#### 4.2.6 QueryAsyncTaskStatus
 
 Queries the status of an asynchronous task.
 
@@ -1086,7 +1184,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### UploadResponsePage
+#### 4.2.7 UploadResponsePage
 
 Uploads a response page file.
 
@@ -1136,7 +1234,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeInvalidWebsite
+#### 4.2.8 DescribeInvalidWebsite
 
 Queries the information about the invalid websites that are discovered by the upgrade detection feature.
 
@@ -1190,7 +1288,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DeleteInvalidWebsite
+#### 4.2.9 DeleteInvalidWebsite
 
 Deletes a specific invalid website. If you use Apsara Stack Enterprise V3.12.0 or upgrade Apsara Stack Enterprise to a later version, WAF performs validity checks and measures invalid websites.
 
@@ -1241,7 +1339,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeInternetVip
+#### 4.2.10 DescribeInternetVip
 
 Queries the information about the virtual IP addresses (VIPs) on the Internet.
 
@@ -1292,7 +1390,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### CreateInternetVip
+#### 4.2.11 CreateInternetVip
 
 Creates a virtual IP address (VIP) on the Internet.
 
@@ -1343,7 +1441,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DeleteInternetVip
+#### 4.2.12 DeleteInternetVip
 
 Deletes a virtual IP address (VIP) on the Internet.
 
@@ -1392,7 +1490,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpc
+#### 4.2.13 DescribeVpc
 
 Queries the information about virtual private clouds (VPCs).
 
@@ -1443,7 +1541,7 @@ _vpc****\", \"desc\": \"\", \"cidr\": \"172.16.XX.XX/16\"}]"
 
 For a list of error codes, see Error codes.
 
-#### DescribeVSwitch
+#### 4.2.14 DescribeVSwitch
 
 Queries the information about the vSwitches in a specific virtual private cloud (VPC).
 
@@ -1495,7 +1593,7 @@ nceName\": \"zyp004\", \"vpcId\": \"vpc-tx9evaxvf65gt95gb****\", \"cidrBlock\": 
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpcVip
+#### 4.2.15 DescribeVpcVip
 
 Queries the information about the virtual IP addresses (VIPs) in a specific virtual private cloud (VPC).
 
@@ -1544,7 +1642,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### CreateVpcVip
+#### 4.2.16 CreateVpcVip
 
 Creates a virtual IP address (VIP) in a specific virtual private cloud (VPC).
 
@@ -1594,7 +1692,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DeleteVpcVip
+#### 4.2.17 DeleteVpcVip
 
 Deletes a virtual IP address (VIP) in a specific virtual private cloud (VPC).
 
@@ -1644,7 +1742,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeEcs
+#### 4.2.18 DescribeEcs
 
 Queries the information about the Elastic Compute Service (ECS) instances in a specific virtual private cloud (VPC).
 
@@ -1696,7 +1794,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeSlb
+#### 4.2.19 DescribeSlb
 
 Queries the information about the Server Load Balancer (SLB) instances in a specific virtual private cloud (VPC).
 
@@ -1749,9 +1847,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### HTTP flood protection rules
+### 4.3 HTTP flood protection rules
 
-#### DescribeCCRuleTemplate
+#### 4.3.1 DescribeCCRuleTemplate
 
 Queries the information about HTTP flood protection rules.
 
@@ -1803,7 +1901,7 @@ s_enabled\": true, \"match_method\": {\"target_type\": \"CIDR\", \"period\": nul
 
 For a list of error codes, see Error codes.
 
-#### CreateCCRuleTemplate
+#### 4.3.2 CreateCCRuleTemplate
 
 Creates an HTTP flood protection rule.
 
@@ -1887,7 +1985,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### EditCCRuleTemplate
+#### 4.3.3 EditCCRuleTemplate
 
 Modifies a specific HTTP flood protection rule.
 
@@ -1972,7 +2070,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### ToggleCCRuleTemplate
+#### 4.3.4 ToggleCCRuleTemplate
 
 Enables or disables a specific HTTP flood protection rule.
 
@@ -2042,7 +2140,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### DeleteCCRuleTemplate
+#### 4.3.5 DeleteCCRuleTemplate
 
 Deletes a specific HTTP flood protection rule.
 
@@ -2111,7 +2209,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### ClearCCRestrictionList
+#### 4.3.6 ClearCCRestrictionList
 
 Removes the restricted users in a specific HTTP flood protection rule.
 
@@ -2178,7 +2276,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### DescribeCCWhitelist
+#### 4.3.7 DescribeCCWhitelist
 
 Queries the information about HTTP flood protection whitelists.
 
@@ -2229,7 +2327,7 @@ t_ip_group": null, "comment": "", "create_time": "1594627457"}], "total": 1}</Re
 
 For a list of error codes, see Error codes.
 
-#### CreateCCWhitelist
+#### 4.3.8 CreateCCWhitelist
 
 Creates an HTTP flood protection whitelist.
 
@@ -2305,7 +2403,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### DeleteCCWhitelist
+#### 4.3.9 DeleteCCWhitelist
 
 Deletes a specific HTTP flood protection whitelist.
 
@@ -2374,9 +2472,9 @@ configurations\"]",
 
 For a list of error codes, see Error codes.
 
-### Custom rules
+### 4.4 Custom rules
 
-#### DescribePolicyRule
+#### 4.4.1 DescribePolicyRule
 
 Queries the information about custom rules.
 
@@ -2434,7 +2532,7 @@ target\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"decoded_path\"
 
 For a list of error codes, see Error codes.
 
-#### CreatePolicyRule
+#### 4.4.2 CreatePolicyRule
 
 Creates a custom rule to deny, allow, or monitor requests.
 
@@ -2629,7 +2727,7 @@ target\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"urlpath\": \"a
 
 For a list of error codes, see Error codes.
 
-#### EditPolicyRule
+#### 4.4.3 EditPolicyRule
 
 Modifies a specific custom rule.
 
@@ -2718,7 +2816,7 @@ target\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"urlpath\": \"a
 
 For a list of error codes, see Error codes.
 
-#### TogglePolicyRule
+#### 4.4.4 TogglePolicyRule
 
 Enables or disables a specific custom rule.
 
@@ -2788,7 +2886,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### DeletePolicyRule
+#### 4.4.5 DeletePolicyRule
 
 Deletes a specific custom rule.
 
@@ -2857,7 +2955,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### EditPolicyRulePriority
+#### 4.4.6 EditPolicyRulePriority
 
 Modifies the priorities of custom rules for a specific website. The rules in PolicyRuleIdList are prioritized in descending order.
 
@@ -2928,7 +3026,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### GenerateFalsePositiveRuleCorrection
+#### 4.4.7 GenerateFalsePositiveRuleCorrection
 
 Generates correction rules based on false positives.
 
@@ -2988,7 +3086,7 @@ _addr\": \"139.162.XX.XX\"}, \"action\": \"allow\", \"comment\": \"Clear false p
 
 For a list of error codes, see Error codes.
 
-#### CreateDetectionModuleRule
+#### 4.4.8 CreateDetectionModuleRule
 
 Creates a rule for detection module control.
 
@@ -3095,7 +3193,7 @@ get\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"urlpath\": \"1234
 
 For a list of error codes, see Error codes.
 
-#### EditDetectionModuleRule
+#### 4.4.9 EditDetectionModuleRule
 
 Modifies a specific rule for detection module control.
 
@@ -3182,7 +3280,7 @@ get\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"urlpath\": \"1234
 
 For a list of error codes, see Error codes.
 
-#### EditPolicyRuleWebsiteBinding
+#### 4.4.10 EditPolicyRuleWebsiteBinding
 
 Modifies the binding relationship between a specific website and its custom rules.
 
@@ -3255,7 +3353,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### DeletePolicyRuleWebsiteBinding
+#### 4.4.11 DeletePolicyRuleWebsiteBinding
 
 Deletes the binding relationship between a specific website and specific custom rules.
 
@@ -3325,9 +3423,9 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-### Protection policies
+### 4.5 Protection policies
 
-#### DescribePolicyGroup
+#### 4.5.1 DescribePolicyGroup
 
 Queries the information about protection policies.
 
@@ -3404,7 +3502,7 @@ ow_risk_enable_log\": 1, \"high_risk_enable_log\": 1, \"low_risk_action\": \"con
 
 For a list of error codes, see Error codes.
 
-#### CreatePolicyGroup
+#### 4.5.2 CreatePolicyGroup
 
 Creates a protection policy.
 
@@ -3474,7 +3572,7 @@ ect_java_vuln", "detect_php168", "detect_wordpress", "detect_directory_traversal
 
 For a list of error codes, see Error codes.
 
-#### EditPolicyGroup
+#### 4.5.3 EditPolicyGroup
 
 Modifies a specific protection policy.
 
@@ -3576,7 +3674,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### DeletePolicyGroup
+#### 4.5.4 DeletePolicyGroup
 
 Deletes a specific protection policy.
 
@@ -3625,9 +3723,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### Protection logs
+### 4.6 Protection logs
 
-#### QueryAsyncTaskStatus
+#### 4.6.1 QueryAsyncTaskStatus
 
 Queries the status of an asynchronous task.
 
@@ -3696,7 +3794,7 @@ configuration generation\"]",
 
 For a list of error codes, see Error codes.
 
-#### QueryAttackDetectionLog
+#### 4.6.2 QueryAttackDetectionLog
 
 Queries attack detection logs.
 
@@ -3770,7 +3868,7 @@ sk \", \"action\": {\"value\": 1, \"translation\": \"Block\"}, \"protocol\": \"h
 
 For a list of error codes, see Error codes.
 
-#### QueryAttackDetectionDetailLog
+#### 4.6.3 QueryAttackDetectionDetailLog
 
 Queries the details of a specific attack detection log.
 
@@ -3822,7 +3920,7 @@ sk\", \"action\": {\"value\": 1, \"translation\": \"Block\"}, \"protocol\": \"ht
 
 For a list of error codes, see Error codes.
 
-#### QueryAuditLog
+#### 4.6.4 QueryAuditLog
 
 Queries system operations logs.
 
@@ -3875,7 +3973,7 @@ ment': '', 'target_type': 'Session', 'target_list': ['1313'], 'target_group_list
 
 For a list of error codes, see Error codes.
 
-#### QueryCCRuleExecutionLog
+#### 4.6.5 QueryCCRuleExecutionLog
 
 Queries the logs on the execution of HTTP flood protection rules.
 
@@ -3931,7 +4029,7 @@ acl_rule_template_version\": \"39\", \"timestamp\": \"1594610400\", \"count\": \
 
 For a list of error codes, see Error codes.
 
-#### QueryFullAccessLog
+#### 4.6.6 QueryFullAccessLog
 
 Queries full access logs.
 
@@ -3993,7 +4091,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### QueryFullAccessDetailLog
+#### 4.6.7 QueryFullAccessDetailLog
 
 Queries the details of a specific full access log.
 
@@ -4045,7 +4143,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### QueryPerformanceStatistics
+#### 4.6.8 QueryPerformanceStatistics
 
 Queries the historical performance data of a specific node.
 
@@ -4098,9 +4196,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### SSL certificate management
+### 4.7 SSL certificate management
 
-#### DescribeSSLCert
+#### 4.7.1 DescribeSSLCert
 
 Queries the information about SSL certificates.
 
@@ -4152,7 +4250,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### UploadSSLCert
+#### 4.7.2 UploadSSLCert
 
 Uploads an SSL certificate.
 
@@ -4207,7 +4305,7 @@ test-cert-1\", \"signature\": \"ec23ec040764d0cc078879582a375c2c\", \"info\": {\
 
 For a list of error codes, see Error codes.
 
-#### EditSSLCert
+#### 4.7.3 EditSSLCert
 
 Modifies the name of a specific SSL certificate.
 
@@ -4260,7 +4358,7 @@ test-cert-1\", \"signature\": \"ec23ec040764d0cc078879582a375c2c\", \"info\": {\
 
 For a list of error codes, see Error codes.
 
-#### DeleteSSLCert
+#### 4.7.4 DeleteSSLCert
 
 Deletes a specific SSL certificate.
 
@@ -4309,9 +4407,9 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-### System information
+### 4.8 System information
 
-#### DescribeMetrics
+#### 4.8.1 DescribeMetrics
 
 Queries the monitoring metrics of physical WAF nodes.
 
@@ -4360,7 +4458,7 @@ watermark\": 0.05619211156645502, \"throughput_read\": 368475, \"throughput_writ
 
 For a list of error codes, see Error codes.
 
-#### DescribeNodeStatus
+#### 4.8.2 DescribeNodeStatus
 
 Queries the status information about physical WAF nodes.
 
@@ -4436,7 +4534,7 @@ _be d\},\ og_aggegate_co g\:{\ eatbeat_eso\: 8,\d atabase_version\": 20, \"versi
 
 For a list of error codes, see Error codes.
 
-#### DescribeRealTimeAccess
+#### 4.8.3 DescribeRealTimeAccess
 
 Queries the monitoring information about access status.
 
@@ -4490,7 +4588,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeAttackDetectionAggregation
+#### 4.8.4 DescribeAttackDetectionAggregation
 
 Queries the statistics on attack detection aggregation.
 
@@ -4588,7 +4686,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### ToggleAttackDetectionAggregation
+#### 4.8.6 ToggleAttackDetectionAggregation
 
 Enables or disables the attack detection aggregation feature.
 
@@ -4637,7 +4735,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-## Error codes
+## 5 Error codes
 
 This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 

@@ -3,18 +3,67 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide"
 product_version: "V3.16.2"
 doc_version: "20250421"
 pdf_pages: 205
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide 20250421.pdf"
+source_pdf: "5508daed61bcf25a_Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide 20250421.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%91%E6%8E%A7CMS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20CloudMonitor%20User%20Guide%2020250421.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 CloudMonitor User Guide
 
-## CloudMonitor
+## Table of Contents
+
+- 1 CloudMonitor
+- 2 Overview
+- 3 Custom dashboards
+- 4 Host monitoring
+  - 4.1 Install the CloudMonitor agent
+  - 4.2 Monitor processes
+- 5 Cloud service monitoring
+  - 5.1 Metrics
+  - 5.2 View the monitoring data
+  - 5.3 View alert rules
+- 6 Kubernetes container monitoring
+- 7 Alert service
+  - 7.1 Alert history
+  - 7.2 Alert rules
+    - 7.2.1 Create an alert rule
+    - 7.2.2 Manage alert rules
+    - 7.2.3 Notification methods supported by CloudMonitor
+  - 7.3 Alert templates
+    - 7.3.1 Create an alert template
+    - 7.3.2 Manage alert templates
+  - 7.4 Use the initiative alerting feature
+- 8 Statistical analysis
+  - 8.1 Sort monitoring data
+  - 8.2 Data subscription
+- 9 Event monitoring
+  - 9.1 System events
+    - 9.1.1 System events of cloud services
+    - 9.1.2 View system events
+    - 9.1.3 Create a system event-triggered alert rule
+    - 9.1.4 Manage system event-triggered alert rules
+- 10 Application group
+  - 10.1 Create an application group
+  - 10.2 Manage application groups
+  - 10.3 Availability monitoring
+    - 10.3.1 Create an availability monitoring task
+    - 10.3.2 Manage availability monitoring tasks
+    - 10.3.3 Status codes
+- 11 Download a report
+- 12 Namespaces
+  - 12.1 Time series metrics
+  - 12.2 System events
+    - 12.2.1 Event monitoring metrics of cloud services
+    - 12.2.2 View system event metrics
+- 13 Business monitoring
+  - 13.1 Monitor SLS logs
+- 14 Availability monitoring
+
+## 1 CloudMonitor
 
 CloudMonitor provides an out-of-the-box one-stop enterprise-grade monitoring solution for you to monitor resources on Apsara Stack Enterprise Edition. CloudMonitor supports cloud service monitoring, host monitoring, alert service, statistical analysis, event monitoring, application groups, and report download. You can use CloudMonitor to collect data on monitoring metrics of various cloud services, such as Elastic Compute Service (ECS), Server Load Balancer (SLB), Object Storage Service (OSS), and Log Service. The metrics include event metrics and custom metrics. CloudMonitor helps you implement multidimensional and efficient monitoring. You can improve system service availability and reduce the operations and maintenance (O&M) costs of IT infrastructure.
 
-## Overview
+## 2 Overview
 
 **Monitoring overview**
 
@@ -50,7 +99,7 @@ detection information.
 | Detection details | If an anomaly is detected, click View Details and Governance Guidelines to the right of the detection item. In the DETECTION DETAILS panel, you can view information, such as the detection mechanism, detection range, and governance objects. Indicator Validity Detection ECS host plug-in status check: Checks whether all plug-ins of Elastic Compute Service (ECS) instances are running. No data alarm rule detection: Checks whether no-data alert is enabled for at least one instance of a cloud service in the current resource set and organization to monitor the metric data existence for all metrics of the cloud service. No data indicator detection: Checks whether all metrics of monitored cloud services have data and the data can be queried. Alarm Validity Detection Continuous alarm rule detection: Checks whether an alert rule has been in the alerting state within the previous 24 hours. Alarm Validity Test: Checks whether the callback URL of an alert rule fails to be queried within the previous 24 hours. Invalid alarm rule detection: Checks whether cloud service resources have invalid alert rules. Cloud product alarm coverage detection: Checks whether no alert rules are configured for cloud service resources. Note By default, if the initiative alerting feature is enabled for all instances of a cloud service in the level-1 organization, all instances of the cloud service are configured with alert rules. If the alert rules of a cloud service take effect only for a specific resource set, all instances of the cloud service in the specified resource set within the current Apsara Stack account are configured with the alert rules. If at least one metric of a resource instance is configured with an alert rule, the resource instance is configured with the alert rule. |
 |---|---|
 
-## Custom dashboards
+## 3 Custom dashboards
 
 You can create custom dashboards for data visualization based on your business requirements to monitor, analyze, and display key metrics. This helps you understand and manage data in an intuitive and efficient manner.
 
@@ -206,7 +255,7 @@ i. On the **Custom Dashboard** page, find the dashboard that you want to delete 
 
 i. On the **Custom Dashboard** page, select the check boxes before the names of the dashboards that you want to delete. ii. Click **Batch deletion** in the lower-left corner of the page. iii. In the message that appears, click **OK**.
 
-## Host monitoring
+## 4 Host monitoring
 
 After the CloudMonitor agent is installed on your Elastic Compute Service (ECS) instances, CloudMonitor can collect various monitoring data of metrics about the operating system that the ECS instances run. You can configure alert rules for the metrics to reduce monitoring costs. The following table describes features of host monitoring.
 
@@ -217,7 +266,7 @@ After the CloudMonitor agent is installed on your Elastic Compute Service (ECS) 
 | Business-specific process monitoring | Host monitoring collects the CPU utilization, memory usage, and the number of opened files for active processes. This helps you monitor the resource usage of your ECS instances. For more information, see Monitor processes. |
 | Flexible alerting | Host monitoring allows you to manage ECS instances across regions and configure alert rules by application group. This reduces the costs of monitoring management. |
 
-### Install the CloudMonitor agent
+### 4.1 Install the CloudMonitor agent
 
 You can install the CloudMonitor agent on Elastic Compute Service (ECS) instances to collect the monitoring data of operating systems.
 
@@ -255,7 +304,7 @@ If the CloudMonitor agent fails to be installed, click the icon in the Agent Sta
 **Cause**, **Installation History Details**, **Installation Status**, and **Installed Agent**
 **Output**.
 
-### Monitor processes
+### 4.2 Monitor processes
 
 CloudMonitor provides the process monitoring feature to help you collect information about the active processes of Elastic Compute Service (ECS) instances during a period of time. You can collect the following information: CPU utilization, memory usage, and the number of opened files. If you add a process keyword, you can obtain the number of processes that match the keyword.
 
@@ -315,11 +364,11 @@ requirements. If multiple processes run on the ECS instance and the number of pr
 information about how to configure parameters in an alert rule, see Create an alert rule.
 6. Click **Confirm**.
 
-## Cloud service monitoring
+## 5 Cloud service monitoring
 
 CloudMonitor automatically retrieves the resources of cloud services that belong to the current Apsara Stack account. You can view the monitoring charts of each cloud service to understand the status of resources. You can also configure alert rules to monitor resources. If an alert is triggered based on an alert rule, CloudMonitor sends an alert notification. This way, you can understand the status of your resources at the earliest opportunity. For more information about the cloud services that are supported by CloudMonitor, see Metrics.
 
-### Metrics
+### 5.1 Metrics
 
 This topic describes the metrics supported by each service. CloudMonitor checks the availability of services based on their metrics. You can configure alert rules and notification policies for these metrics to monitor the status and performance of service instances. CloudMonitor can monitor the resources of other Apsara Stack services. The following tables describe the metrics supported by each service.
 
@@ -1896,7 +1945,7 @@ Set the **Namespace** parameter to **acs_k8s**. Set the **Period** parameter to 
 | deployment.network.r x errors rate _ _ | Bytes/s | deployment.network.rx err _ ors rate _ | userId, cluster, namespace, type, and app | The rate at which receive errors occur in the network of the Deployment. |
 | deployment.network.t x errors rate _ _ | Bytes/s | deployment.network.tx err _ ors rate _ | userId, cluster, namespace, type, and app | The rate at which send errors occur in the network of the Deployment. |
 
-### View the monitoring data
+### 5.2 View the monitoring data
 
 On the monitoring page of a cloud service, you can view the status of resources and the metrics.
 
@@ -1910,7 +1959,7 @@ want to view.
 5. On the monitoring page of the cloud service, click **Monitoring Charts** in the **Actions**
 column of a resource. On the page that appears, you can view the monitoring charts of the resource. You can view the monitoring data of the last 30 days at most.
 
-### View alert rules
+### 5.3 View alert rules
 
 On the monitoring page of a cloud service, you can view all alert rules of the cloud service in the current resource set and organization.
 
@@ -1927,7 +1976,7 @@ column of the alert rule. In the **Alert Rules/Alert Logs/Faulty Instances** pan
 **rule details**, **alert history**, and **faulty resources**.
 monitoring
 
-## Kubernetes container
+## 6 Kubernetes container monitoring
 
 **monitoring**
 
@@ -1953,11 +2002,11 @@ On the **Monitoring chart** tab, view the monitoring charts of metrics related t
 **Description**, and **Notification Contact**.
 monitoring On the **Kubernetes container monitoring** page, you can also find the cluster that you want to manage and click **Alarm Rules** in the **Operation** column to go to the **Alarm Rules** tab. On the **Alarm Rules** tab, you can click **Create Alert Rule** to create an alert rule. For more information, see Create an alert rule. On the **Alarm Rules** tab, you can find the alert rule that you want to manage and click a button in the Actions column to manage the alert rule. For more information, see Manage alert rules.
 
-## Alert service
+## 7 Alert service
 
 You can manage alert rules, alert history, and alert templates in the Alert Service module of CloudMonitor. You can configure alert rules to specify how CloudMonitor checks monitoring data. If monitoring data triggers the alert rules, CloudMonitor sends alert notifications. When an alert is generated, CloudMonitor records the alert information in the alert history. You can review and analyze the alert history to troubleshoot issues and make predictions. Alert templates simplify the process of creating and maintaining alert rules when you need to manage a large number of cloud resources. This helps you monitor cloud services more efficiently.
 
-### Alert history
+### 7.1 Alert history
 
 You can specify filter conditions such as the cloud service, instance, and alert level to view the alert history. You can also export and download the alert history to your on-premises machine for data analysis.
 
@@ -1979,11 +2028,11 @@ the operations that you can perform.
 | Create a report export task and download a report on the alert history | i. On the Alert History page, click the icon in the upper- right corner. ii. In the Export Tasks dialog box, configure the Time selection and Task Name parameters and click OK. iii. In the left-side navigation pane, click Export Report. On the Report Export page, click the Alert History tab. iv. On the Alert History tab, find the export task that you created and click Download Report Task in the Operation column. v. In the Download Report Task message, click OK. Note The downloaded report is in the .xlsx format. You can find the downloaded report in the default download directory of your browser. |
 |---|---|
 
-### Alert rules
+### 7.2 Alert rules
 
 You can configure alert rules for host monitoring metrics and instances in cloud service monitoring. You can apply an alert rule to all resources, an application group, or an instance. Alert Service sends alert notifications to contacts by using emails, DingTalk messages, and webhook URLs.
 
-#### Create an alert rule
+#### 7.2.1 Create an alert rule
 
 You can create alert rules for cloud services that are connected to CloudMonitor, such as Elastic Compute Service (ECS). If the threshold that is specified in an alert rule is reached or exceeded, an alert is triggered and an alert notification is sent to the related contacts.
 
@@ -2031,7 +2080,7 @@ the parameters in an alert rule.
 
 Create an alert rule named example to monitor the CPU utilization of ECS instances. When the CPU utilization is equal to or greater than 70% three times within five intervals, an alert of the Critical level is generated. The following figure shows the parameter settings in the rule description.
 
-#### Manage alert rules
+#### 7.2.2 Manage alert rules
 
 You can modify, disable, enable, and delete alert rules on the **Alert Rules** page in CloudMonitor.
 
@@ -2057,7 +2106,7 @@ required operations. The following table describes the operations that you can p
 | Delete one or more alert rules | Delete a single alert rule a. Find the alert rule that you want to delete, click the icon in the Actions column, and then click Delete. b. In the Delete Alert Rule message, click OK. Delete multiple alert rules at a time a. Select the alert rules that you want to delete and clickD elete in the lower-left corner of the alert rule list. b. In the Delete Alert Rule message, click OK. |
 | Export and download an alert rule report | i. On the Alert Rules page, click the icon in the upper-right corner. ii. In the Export task dialog box, specify the task name. iii. Click OK. iv. In the left-side navigation pane, click Export Report. On the Report Export page, click the Alarm Rules tab. v. On the Alert Rules tab, find the report that you want to manage and click Download Report Task in the Operation column. vi. In the Download Report Task message, click OK. |
 
-#### Notification methods supported by
+#### 7.2.3 Notification methods supported by CloudMonitor
 
 ## CloudMonitor
 
@@ -2425,9 +2474,9 @@ After you configure an alert callback, you can contact technical support to trou
 
 By default, CloudMonitor receives alert notifications in the Apsara Uni-manager Operations Console. CloudMonitor can use the Apsara Uni-manager Operations Console to send alert notifications. To obtain more information, contact technical support.
 
-### Alert templates
+### 7.3 Alert templates
 
-#### Create an alert template
+#### 7.3.1 Create an alert template
 
 If you want to monitor a large number of resources, you can use the alert template feature. This feature helps you save multiple alert rules on the metrics of various cloud services as a template. You can create or modify alert rules by using alert templates. This prevents repeated workloads of configuring each alert rule.
 
@@ -2465,7 +2514,7 @@ the alert rule.
 
 7. After you add rules for each cloud service, click **Confirm**.
 
-#### Manage alert templates
+#### 7.3.2 Manage alert templates
 
 On the Alarm Template page, you can modify, clone, export, delete, and apply alert templates.
 
@@ -2495,7 +2544,7 @@ operations. The following table describes the operations that you can perform on
 | Create a report export task and download a report on alert templates | i. On the Alarm Template page, click the icon in the upper-right corner. ii. In the Export Tasks dialog box, set the Task Name parameter . iii. Click OK. iv. In the left-side navigation pane, click Export Report. On the Report Export page, click the Alarm Template tab. v. On the Alarm Template tab, find the report that you want to download and click Download Report Task in the Operation column. vi. In the Download Report Task message, click OK. Note The report is in the .xlsx format. You can find the downloaded report in the default download directory of your browser. |
 |---|---|
 
-### Use the initiative alerting
+### 7.4 Use the initiative alerting feature
 
 **feature**
 
@@ -2527,11 +2576,11 @@ The initiative alerting feature can be enabled or disabled for a specific cloud 
 | Modify an alert rule | i. Click the icon before the name of the cloud service for which the initiative alerting feature is enabled. ii. Perform the following operations to modify a single alert rule or modify multiple alert rules at a time: Modify a single alert rule a. Find the alert rule that you want to modify and clickE dit in the Operation column. b. In the Modify alarm rules panel, modify the alert rule based on your business requirements. c. Click Confirm. Modify multiple alert rules at a time a. Select the alert rules that you want to modify. b. Click Batch Edit below the rule list. c. In the Batch Edit dialog box, configure the parameters, including Channel Silence Period, Effective time, Alarm callback, No data processing method, and Alarm Contact Group. d. Click Confirm. |
 | Delete an alert rule | i. Click the icon before the name of the cloud service for which the initiative alerting feature is enabled. ii. Find the alert rule that you want to delete and clickD elete in the Operation column. Important After the alert rule is deleted, the corresponding alert rule on theA lert Rules page is deleted. The deletion cannot be rolled back. Proceed with caution. |
 
-## Statistical analysis
+## 8 Statistical analysis
 
 You can use CloudMonitor to analyze the monitoring data of all supported cloud services in a specified organization.
 
-### Sort monitoring data
+### 8.1 Sort monitoring data
 
 You can use CloudMonitor to sort and analyze the monitoring data of supported cloud services in a specific organization.
 
@@ -2556,7 +2605,7 @@ minimum, or maximum value of the specified metric of instances.
 **Analysis** page. On the **Product Data Analysis** page, configure custom settings to export
 a report.
 
-### Data subscription
+### 8.2 Data subscription
 
 By creating a data subscription task, you can view the data in the current level-1 organization.
 
@@ -2619,13 +2668,13 @@ task.
 5. On the page of the project, click the name of the **Logstore** obtained in **Step 1** to view the
 subscribed data.
 
-## Event monitoring
+## 9 Event monitoring
 
 The Event Monitoring module provides a unified portal for you to query and manage system events of CloudMonitor, Hybrid Disaster Recovery, and Elastic Compute Service. You can view the status of the cloud services and receive alert notifications. This helps you troubleshoot business exceptions at the earliest opportunity.
 
-### System events
+### 9.1 System events
 
-#### System events of cloud services
+#### 9.1.1 System events of cloud services
 
 This topic describes the cloud services that are supported by CloudMonitor and their system events. For more information about the event metrics, see Event monitoring metrics of cloud services.
 
@@ -2688,7 +2737,7 @@ This topic describes the cloud services that are supported by CloudMonitor and t
 |---|---|
 | PolarDB-X 1.0 | Instance:HighPhysicalConnectionPoolUsage Instance:CriticalPhysicalConnectionPoolUsage |
 
-#### View system events
+#### 9.1.2 View system events
 
 CloudMonitor provides the event monitoring feature to help you query and analyze system events that are generated for various cloud services. The feature allows you to track the use of cloud services.
 
@@ -2709,7 +2758,7 @@ The x-axis indicates the time, and the y-axis indicates the number of events. Mo
 6. In the **System events** section, view the event information. Find the event that you want to
 view and click **Details** in the **Operation** column. In the **System events detail** panel, you can view the event details in the **JSON** format.
 
-#### Create a system event-triggered alert
+#### 9.1.3 Create a system event-triggered alert rule
 
 **rule**
 
@@ -2736,7 +2785,7 @@ table describes the parameters.
 
 6. Click **OK**.
 
-#### Manage system event-triggered alert
+#### 9.1.4 Manage system event-triggered alert rules
 
 **rules**
 
@@ -2761,11 +2810,11 @@ required operations. The following table describes supported operations.
 | View the records of system event- triggered alerts | After an event-triggered alert rule is created or enabled, CloudMonitor records the information about alerts that are generated based on the alert rule. i. Click the Event Alarm history tab. ii. Optional. Enter a rule ID or rule name and select a time range. The information about the alert rule is displayed: Product, Rule Name, Instance Name, Event Name, Event Level, and Alert Time. |
 |---|---|
 
-## Application group
+## 10 Application group
 
 Application groups allow you to manage Elastic Compute Service (ECS) instances by group based on your business requirements. You can use an application group to manage businessspecific ECS instances in a centralized manner. You can manage the alert rules and view monitoring data of different application groups. This greatly simplifies management complexity and improves efficiency.
 
-### Create an application group
+### 10.1 Create an application group
 
 The application group feature allows you to manage resources from different cloud services and regions by group. You can use application groups to manage business-specific alert rules and view business-specific monitoring data to improve O&M efficiency.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -2789,7 +2838,7 @@ following table.
 
 6. Click **OK**.
 
-### Manage application groups
+### 10.2 Manage application groups
 
 You can modify or delete application groups on the Application Groups page in CloudMonitor.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -2808,9 +2857,9 @@ page, manage the application groups. The following table describes supported ope
 | Delete an application group | Note If you delete an application group, all alert rules and event- triggered alerts of the application group are deleted. The instances in the application group are automatically migrated back to the pool that contains all instances. i. Optional. In the top navigation bar, select an organization in which you want to manage application groups. On the Application Groups page, enter an application group name or ID, and then click Search to search for the application group. ii. On the Application Groups page, delete one or more application groups. Delete a single application group i. Find the application group that you want to delete, click the icon in the application group card, and then click Delete Group. ii. In the Delete Group message, click OK. Delete multiple application groups at a time i. Select the application groups that you want to delete and click Delete in the lower-left corner of the application group list. ii. In the Delete Group message, click OK. |
 |---|---|
 
-### Availability monitoring
+### 10.3 Availability monitoring
 
-#### Create an availability monitoring task
+#### 10.3.1 Create an availability monitoring task
 
 CloudMonitor provides the availability monitoring feature to help you check whether a local service or cloud server responds as expected. You can specify the path and port for the local service or cloud server. If the local service or cloud server times out or returns an error code, CloudMonitor sends an alert notification. This way, you can troubleshoot the issue at the earliest opportunity.
 
@@ -2851,7 +2900,7 @@ configure the parameters. The following table describes the parameters.
 |---|---|---|
 |   | Effective time | The period during which the alert rule is effective. CloudMonitor sends alert notifications within the effective period and only records alerts beyond the effective period. Note You can click Advanced Configuration to configure this parameter for the alert rule. |
 
-#### Manage availability monitoring tasks
+#### 10.3.2 Manage availability monitoring tasks
 
 You can modify, disable, enable, and delete availability monitoring tasks on the **Availability**
 **Monitoring** tab of an instance in CloudMonitor.
@@ -2872,7 +2921,7 @@ manage. On the page that appears, click the **Availability Monitoring** tab in t
 |---|---|
 | Delete one or more availability monitoring tasks | Delete a single availability monitoring task i. Find the availability monitoring task that you want to delete and click Delete in the Operation column. ii. In the Delete message, click OK. Delete multiple availability monitoring tasks at a time i. Select the availability monitoring tasks that you want to delete and click Batch Delete in the lower-left corner of the task list. ii. In the Delete message, click OK. |
 
-#### Status codes
+#### 10.3.3 Status codes
 
 If an error occurs when you use the availability monitoring feature of CloudMonitor to check the availability of a specified path or port, the corresponding status code is returned. The following table describes status codes.
 
@@ -2883,7 +2932,7 @@ If an error occurs when you use the availability monitoring feature of CloudMoni
 | Telnet | 630 | The status code returned because the connection times out. If CloudMonitor does not receive a response within 5 seconds after CloudMonitor sends a Telnet request, CloudMonitor determines that the connection times out. |
 |   | 631 | The status code returned because the monitoring fails. |
 
-## Download a report
+## 11 Download a report
 
 You can export reports of the alert history, alert rules, and alert templates, and then download the reports to your local device.
 
@@ -2904,13 +2953,13 @@ describes the operations that you can perform on reports.
 | Download a report | i. Click the Alarm History, Alarm Rules, or Alarm Template tab. ii. Optional. Filter reports by report status. iii. Find the report that you want to download and clickD ownload Report Task in the Operation column. iv. In the Download Report Task message, click OK. |
 | Delete a report task | i. Click the Alarm History, Alarm Rules, or Alarm Template tab. ii. Optional. Filter reports by report status. iii. Find the report task that you want to delete and clickD elete Report Task in the Operation column. iv. In the Delete Report Task message, click OK. |
 
-## Namespaces
+## 12 Namespaces
 
 **Important**
 
 To use the namespace feature, you must install Apsara Stack V3.16.2r-cms-SP013.
 
-### Time series metrics
+### 12.1 Time series metrics
 
 The Time Series Metrics tab on the Namespace page provides a centralized platform for you to query cloud service metrics. This allows you to query the information about each cloud service metric, such as the definition and calculation method.
 
@@ -2957,9 +3006,9 @@ VIRTUAL_SQL and SQL nodes, configure the Instance ID, Aggregate Value, and Selec
 | Monitoring Chart | A monitoring chart is generated based on the specified instance ID, aggregate value, and time range. You can view the trend of metric data on the monitoring chart. |
 |---|---|
 
-### System events
+### 12.2 System events
 
-#### Event monitoring metrics of cloud
+#### 12.2.1 Event monitoring metrics of cloud services
 
 **services**
 
@@ -3147,7 +3196,7 @@ This topic describes the event monitoring metrics of cloud services. The informa
 | Instance:HighPhysical ConnectionPoolUsage | PolarDB -X 1.0 | The usage of the physical connection pool is high. | WARN | Normal | StatusNotif ication |
 | Instance:CriticalPhysic alConnectionPoolUsag e | PolarDB -X 1.0 | The usage of the physical connection pool exceeds the alert threshold. | CRITICAL | Normal | StatusNotif ication |
 
-#### View system event metrics
+#### 12.2.2 View system event metrics
 
 The System Event tab on the Namespace page provides a centralized platform for you to query the system event metrics of cloud services. This allows you to query the information about each system event metric, including the level, status, and type of the metric.
 
@@ -3164,9 +3213,9 @@ The system event metrics on the System Event tab are the same as those that are 
 5. In the left-side **Alibaba Cloud Services** section, click a cloud service. Then, the system
 event metrics of the cloud service are displayed in the right-side section.
 
-## Business monitoring
+## 13 Business monitoring
 
-### Monitor SLS logs
+### 13.1 Monitor SLS logs
 
 You can monitor the logs in Simple Log Service (SLS) to monitor keywords in logs and detect potential issues at the earliest opportunity. This improves system stability and O&M efficiency.
 
@@ -3240,7 +3289,7 @@ in the **Operation** column.
 2. In the **Delete monitoring items** message, click **OK**.
 g
 
-## Availability monitoring
+## 14 Availability monitoring
 
 CloudMonitor provides the availability monitoring feature to help you check whether a local service or cloud server responds as expected. You can specify the path and port for the local service or cloud server. If the local service or cloud server times out or returns an error code, CloudMonitor sends an alert notification. This way, you can troubleshoot the issue at the earliest opportunity. Availability monitoring allows you to use Elastic Compute Service (ECS) instances as the monitoring nodes.
 

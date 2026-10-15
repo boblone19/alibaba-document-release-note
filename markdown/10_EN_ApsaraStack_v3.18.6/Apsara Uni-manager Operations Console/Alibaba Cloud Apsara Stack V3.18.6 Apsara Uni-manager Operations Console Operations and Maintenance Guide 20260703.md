@@ -3,14 +3,38 @@ title: "Apsara Uni-manager Operations Console Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260703"
 pdf_pages: 25
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Operations and Maintenance Guide 20260703.pdf"
+source_pdf: "64c07b90c7d37eab_Alibaba Cloud Apsara Stack V3.18.6 Apsara Uni-manager Operations Console Operations and Maintenance "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%B8%93%E6%9C%89%E4%BA%91%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0ASO/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Uni-manager%20Operations%20Console%20Operations%20and%20Maintenance%20Guide%2020260703.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Uni-manager Operations Console Operations and Maintenance Guide
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Architecture
+  - 2.1 System architecture
+  - 2.2 Component architecture
+- 3 Alert handling
+- 4 Security maintenance
+  - 4.1 Account password maintenance
+  - 4.2 Log audit
+- 5 Troubleshooting
+  - 5.1 Establish a fault response mechanism
+  - 5.2 Troubleshooting owners
+  - 5.3 Troubleshooting
+  - 5.4 Troubleshooting
+    - 5.4.1 The domain name cannot be accessed after the Apsara Uni-manager O&M console is deployed.
+    - 5.4.2 No alert data is displayed in the Apsara Uni-manager O&M console.
+    - 5.4.3 The following message is displayed when you log on to the Apsara Uni-manager O&M console: The user has been removed.
+    - 5.4.4 A user fails to log on to the SRE Technical Assurance Platform and error 403 is returned
+- 6 High-risk operations
+- 7 Appendixes
+  - 7.1 Common Maintenance Commands
+  - 7.2 Common HTTP status codes
+
+## 1 Overview
 
 This topic describes the purposes, requirements, precautions, and technical support for the Apsara Uni-manager Operations Console.
 
@@ -34,13 +58,13 @@ To ensure a stable system and avoid unexpected events, you must comply with the 
 
 You can contact Alibaba Cloud technical support for help.
 
-## Architecture
+## 2 Architecture
 
-### System architecture
+### 2.1 System architecture
 
 The Apsara Uni-manager Operations Console provides unified O&M capabilities for Apsara Stack products. The following figure shows the system architecture of the Apsara Uni-manager Operations Console. Figure 2. Apsara Uni-manager Operations Console system architecture The Apsara Uni-manager Operations Console comprises the following modules: Console: The user interface layer. This module provides an interactive user interface. Rest API: The console and system capabilities modules interact with each other by using the Rest API module. System capabilities: Resource management: allows you to view and manage Apsara Stack resources in product, network, and data center dimensions. Unified alerting: provides a unified alert export and alert outbound configuration capabilities for Apsara Stack platforms. O&M capabilities: provides vertical O&M capabilities such as network, cloud products, storage, and tasks, as well as horizontal security O&M capabilities. System management: Provides system administration capabilities such as security policies, offline backup, log clearing, system configuration, and personal configuration. Inventory management: allows you to view product inventories and provides usage threshold alerting capabilities for various products. The Apsara Uni-manager Operations Console also provides APIs for secondary development by third parties. You can select optional remote O&M capabilities.
 
-### Component architecture
+### 2.2 Component architecture
 
 This topic describes the components of the Apsara Uni-manager Operations Console and their features. The following figure shows the component architecture of the Apsara Uni-manager Operations Console. The following table describes the features of the components in the Apsara Uni-manager Operations Console.
 
@@ -70,15 +94,15 @@ This topic describes the components of the Apsara Uni-manager Operations Console
 | aso-opr | asopr# | Manage physical server passwords, physical server channels, and tasks. |
 | aso-slalink | pgmon# | For Storage Operations Center |
 
-## Alert handling
+## 3 Alert handling
 
 In the Apsara Uni-manager Operations console, choose **Monitor&Alert > Alert**
 **Management** to view the alert information in the Apsara Uni-manager Operations console.
 For more information about how to handle alerts, see Alerts.
 
-## Security maintenance
+## 4 Security maintenance
 
-### Account password
+### 4.1 Account password maintenance
 
 **maintenance**
 
@@ -86,7 +110,7 @@ This topic describes how to maintain accounts and passwords in the Apsara Uni-ma
 **Information**. On the left side of the page, click **Change Password** to change the account
 password of the current user. On the **Account Policies** tab of the **Security Management** > **RAM** > **Security Policies** page, set **Validity Period**.
 
-### Log audit
+### 4.2 Log audit
 
 This topic describes the audit methods, log file paths, and log query methods for component logs. After entering the container, find the log file in the following table and view the log details.
 
@@ -106,25 +130,25 @@ This topic describes the audit methods, log file paths, and log query methods fo
 |   | /logs/asooperator- logger/access trace.log _ | asopr container access logs |
 |   | /logs/asooperator- logger/call trace.log _ | logs of calling other services related to the asopr container business |
 
-## Troubleshooting
+## 5 Troubleshooting
 
-### Establish a fault response
+### 5.1 Establish a fault response mechanism
 
 **mechanism**
 
 The maintenance team should establish a sound fault emergency response mechanism to ensure that in the event of a fault or security incident, it can quickly locate and efficiently handle it, minimize the business interruption time, and restore the normal operation of the system in a timely manner.
 
-### Troubleshooting owners
+### 5.2 Troubleshooting owners
 
 When monitoring alerts occur on the Apsara Uni-manager Operations Console, onsite O&M personnel must first troubleshoot the issues based on the alerts. If onsite O&M personnel cannot solve the issues, contact Apsara Stack technical support engineers.
 
-### Troubleshooting
+### 5.3 Troubleshooting
 
 This topic describes troubleshooting in the Apsara Uni-manager Operations Console. After a system fault is discovered during routine maintenance, O&M personnel can use the O&M feature and system logs in the Apsara Uni-manager Operations Console to view the detailed information of the fault, analyze the causes, and solve the fault. If the faults cannot be fixed, O&M personnel can collect the related information, such as system information and fault symptoms, and contact Apsara Stack engineers for technical support. This way, O&M personnel can fix the faults based on the instructions of the engineers. After the fault is rectified, verify the solution, review the troubleshooting method, and make improvements.
 
-### Troubleshooting
+### 5.4 Troubleshooting
 
-#### The domain name cannot be accessed
+#### 5.4.1 The domain name cannot be accessed after the Apsara Uni-manager O&M console is deployed.
 
 **after the Apsara Uni-manager O&M console is**
 
@@ -151,7 +175,7 @@ the command is the IP address of the container where the pod is located. Check w
 
 If the results show that requests sent to access the pod are timed out or denied, contact the technical support of the Apsara Uni-manager Operations Console. If requests sent to access the pod are not timed out or denied, contact the technical support of Apsara Infrastructure Management.
 
-#### No alert data is displayed in the Apsara
+#### 5.4.2 No alert data is displayed in the Apsara Uni-manager O&M console.
 
 **Uni-manager O&M console.**
 
@@ -161,7 +185,7 @@ This topic describes how to handle the no-alert data in the Apsara Uni-manager O
 
 Check whether alert data exists in the portal of the basic O&M platform of the apsara system. Yes: Contact the technical support engineer of the Apsara Uni-manager Operations Console. No: Contact TianjiMon technical support engineers.
 
-#### The following message is displayed
+#### 5.4.3 The following message is displayed when you log on to the Apsara Uni-manager O&M console: The user has been removed.
 
 **when you log on to the Apsara Uni-manager**
 
@@ -187,7 +211,7 @@ day:
 Update user set validity_date="2026-06-30 15:23:23" where name="test";
 ```
 
-#### A user fails to log on to the SRE
+#### 5.4.4 A user fails to log on to the SRE Technical Assurance Platform and error 403 is returned
 
 **Technical Assurance Platform and error 403**
 
@@ -205,7 +229,7 @@ Technical Assurance Platform and click **Edit** in the **Actions** column.
 5. In the **Edit Role** dialog box, modify the information, grant the tongque_administrator
 permission to the role, and then click **OK**.
 
-## High-risk operations
+## 6 High-risk operations
 
 This topic describes the high-risk operations in the Apsara Uni-manager Operations Console to help you prevent risks that may arise. The operations in the following table are considered high-risk operations in the Apsara Unimanager Operations Console. The high-risk operations may cause great impacts on business stability. If you want to perform a high-risk operation described in the following table, we recommend that you perform it in the maintenance window. In addition, we recommend that you read and understand the impacts of the high-risk operations before you perform the operations.
 
@@ -267,9 +291,9 @@ This topic describes the high-risk operations in the Apsara Uni-manager Operatio
 |---|---|---|---|
 | Avatar- Personal Informatio n | In the Accesskey section, disable or delete the AK/SK. | As a result, callers who use this AK/SK to call OpenAPI may become unavailable. | If you disable an AccessKey pair, you can enable it again. If you delete an AccessKey pair, the AccessKey pair cannot be restored. In this case, replace the deleted AccessKey pair in the code of the services or applications with a new one. |
 
-## Appendixes
+## 7 Appendixes
 
-### Common Maintenance
+### 7.1 Common Maintenance Commands
 
 **Commands**
 
@@ -405,7 +429,7 @@ View memory information
 cat /proc/meminfo
 ```
 
-### Common HTTP status codes
+### 7.2 Common HTTP status codes
 
 This topic describes the common HTTP status codes and their types in the Apsara Unimanager Operations Console.
 

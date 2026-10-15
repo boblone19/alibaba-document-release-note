@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Product In
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 17
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Product Introduction 20260828.pdf"
+source_pdf: "fef33325b7998aad_Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C%20VPC/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Virtual%20Private%20Cloud%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Product Introduction 20260828
 
-## Virtual private cloud
+## Table of Contents
+
+- 1 Virtual private cloud
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Features
+  - 1.4 Use scenarios
+
+## 1 Virtual private cloud
 
 A virtual private cloud (VPC) is a private network in the cloud. A VPC provides network services for resources in the cloud. Different VPCs are logically isolated from each other. You have full control over your VPC. For example, you can specify CIDR blocks, and configure route tables and gateways for your VPC. In your VPCs, you can use Alibaba Cloud resources, such as Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, and Server Load Balancer (SLB) instances.
 
-### Features
+### 1.1 Features
 
 Virtual private clouds (VPCs) are private networks deployed on Apsara Stack. VPCs are logically isolated from each other. You can manage your VPCs and Apsara Stack resources in your VPCs.
 
@@ -45,7 +53,7 @@ Network ACLs allow you to implement access control for a VPC. You can create net
 
 Apsara Stack provides multiple connection methods. You can connect a VPC to the Internet, a data center, or another VPC. Connect a VPC to the Internet You can connect a VPC to the Internet by associating elastic IP addresses (EIPs) with resources in the VPC or configuring NAT gateways. This way, resources in the VPC can communicate with the Internet. Connect a VPC to another VPC You can establish high-performance and secure connections between VPCs by creating a pair of router interfaces. Connect a VPC to a data center You can connect a VPC to a data center through Express Connect circuits. This allows you to smoothly migrate on-premises applications to the cloud.
 
-### Benefits
+### 1.2 Benefits
 
 This topic describes the benefits of virtual private clouds (VPCs). VPCs are secure, reliable, flexible, easy to use, and scalable.
 
@@ -65,7 +73,7 @@ You can easily create and manage VPCs in the VPC console. When you create a VPC,
 
 You can create different subnets in a VPC to deploy different services. Additionally, you can connect a VPC to a data center or another VPC to extend the network architecture.
 
-### Features
+### 1.3 Features
 
 This topic describes the features of Alibaba Cloud Virtual Private Cloud (VPC). A VPC provides an isolated, customizable virtual network environment that lets you flexibly manage and securely isolate your network resources. VPC supports a wide range of networking capabilities, including network segmentation, Elastic IP addresses (EIPs), subnetting, and gateway configuration. These features help ensure high availability for your backend services and secure network communications.
 
@@ -224,7 +232,7 @@ This topic describes the features of Alibaba Cloud Virtual Private Cloud (VPC). 
 |   |   | Integrate AVS with the Tianji monitoring platform to monitor networks. |
 |   | NAT monitoring | Monitor inbound and outbound bandwidth, and bandwidth utilization for your NAT Gateway. |
 
-### Use scenarios
+### 1.4 Use scenarios
 
 Virtual private clouds (VPCs) are virtual networks that are isolated from each other. VPCs support flexible configurations to meet the requirements of different scenarios.
 

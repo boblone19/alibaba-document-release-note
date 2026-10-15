@@ -3,16 +3,93 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Gui
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 126
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828.pdf"
+source_pdf: "20a2e5139b21aa67_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20Redis/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20Redis%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for Redis Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Developer documentation
+- 1 Getting started
+  - 1.1 Developer documentation usage instructions
+  - 1.2 API call process
+- 2 Preparations
+  - 2.1 Obtain the information and the endpoint of an API operation
+  - 2.2 Obtain an AccessKey pair
+  - 2.3 Obtain the values of common request headers
+  - 2.4 Obtain access credentials assigned by STS
+- 3 Use POP to make API calls
+  - 3.1 Preparations
+  - 3.2 SDK for Java
+  - 3.3 SDK for Go
+  - 3.4 SDK for Python
+- 4 API reference
+  - 4.1 API overview
+  - 4.2 Request structure
+  - 4.3 Common parameters
+  - 4.4 Responses
+  - 4.5 Request signatures
+  - 4.6 RAM-based authorization
+    - 4.6.1 Grant resource permissions to a RAM user
+    - 4.6.2 Authorized resource types in RAM
+    - 4.6.3 Operation permissions granted to a RAM user
+    - 4.6.4 API authentication rules
+  - 4.7 Manage the lifecycle
+    - 4.7.1 CreateInstance
+    - 4.7.2 DeleteInstance
+    - 4.7.3 ModifyInstanceSpec
+  - 4.8 Manage instances
+    - 4.8.1 RestartInstance
+    - 4.8.2 FlushExpireKeys
+    - 4.8.3 DescribeLogicInstanceTopology
+    - 4.8.4 DescribeEngineVersion
+    - 4.8.5 DescribeInstanceAttribute
+    - 4.8.6 DescribeInstances
+    - 4.8.7 DescribeRegions
+    - 4.8.8 DescribeSecurityIps
+    - 4.8.9 DescribeCpuTypes
+    - 4.8.10 DescribeZones
+    - 4.8.11 FlushInstance
+    - 4.8.12 ModifyInstanceAttribute
+    - 4.8.13 ModifyInstanceMaintainTime
+    - 4.8.14 ModifyInstanceNetExpireTime
+    - 4.8.15 ModifySecurityIps
+    - 4.8.16 SwitchNetwork
+    - 4.8.17 SwitchInstanceHA
+  - 4.9 Data encryption
+    - 4.9.1 DescribeEncryptionKey
+    - 4.9.2 DescribeInstanceTDEStatus
+    - 4.9.3 CheckCloudResourceAuthorized
+  - 4.10 Account management
+    - 4.10.1 DescribeUserInfo
+    - 4.10.2 CreateAccount
+  - 4.11 Network security
+    - 4.11.1 DescribeInstanceSSL
+  - 4.12 Connection management
+    - 4.12.1 DescribeIntranetAttribute
+    - 4.12.2 ModifyInstanceVpcAuthMode
+    - 4.12.3 AllocateInstancePublicConnection
+  - 4.13 Backup and recovery
+    - 4.13.1 CreateBackup
+    - 4.13.2 ModifyBackupPolicy
+    - 4.13.3 DescribeBackupPolicy
+    - 4.13.4 DescribeBackups
+    - 4.13.5 RestoreInstance
+  - 4.14 Manage monitoring
+    - 4.14.1 DescribeMonitorItems
+    - 4.14.2 DescribeHistoryMonitorValues
+  - 4.15 Manage parameters
+    - 4.15.1 DescribeInstanceConfig
+    - 4.15.2 ModifyInstanceConfig
+  - 4.16 Appendixes
+    - 4.16.1 Usage rules for reserved instances
+    - 4.16.2 Instance configurations
+
+## 1 Getting started
+
+### 1.1 Developer documentation usage instructions
 
 **usage instructions**
 
@@ -36,7 +113,7 @@ Stack version.
 4. In the left-side navigation pane, select the target product name.
 5. In the target documentation area, click **View details** or **Download PDF**.
 
-### API call process
+### 1.2 API call process
 
 This topic describes the API call process and provides reference documentation.
 
@@ -63,9 +140,9 @@ Review the development guide for your target cloud product to understand its API
 5. Obtain the cloud product endpoint.
 6. Obtain the cloud product SDK and call the cloud product API.
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and
+### 2.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -88,7 +165,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 2.2 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -136,7 +213,7 @@ want to obtain AccessKey pairs.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 2.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -199,7 +276,7 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The ID of an organization. |
 
-### Obtain access credentials
+### 2.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -277,9 +354,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
 
 e API calls
 
-## Use POP to make API calls
+## 3 Use POP to make API calls
 
-### Preparations
+### 3.1 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations before you use the POP gateway to call API operations.
 
@@ -321,7 +398,7 @@ In the **Registration Variables** message, obtain the endpoint from the value of
 
 You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain the values of common request headers.
 
-### SDK for Java
+### 3.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -480,7 +557,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 3.3 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -636,7 +713,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-### SDK for Python
+### 3.4 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -772,9 +849,9 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-## API reference
+## 4 API reference
 
-### API overview
+### 4.1 API overview
 
 Table 1. Instance lifecycle management API operations
 
@@ -823,7 +900,7 @@ Table 5. Parameter management API operations
 | DescribeInstanceConfig | Queries parameters of a specified instance. |
 | ModifyInstanceConfig | Changes parameters of a specified instance. |
 
-### Request structure
+### 4.2 Request structure
 
 **Endpoint**
 
@@ -849,7 +926,7 @@ Each request must specify the operation to perform by using the Action parameter
 
 The system encodes all requests and responses using the UTF-8 character set.
 
-### Common parameters
+### 4.3 Common parameters
 
 Common request parameters must be included in all API requests.
 
@@ -886,7 +963,7 @@ Each time you call an API operation, the system returns a globally unique ID (Re
 <? xml version="1.0" encoding="utf-8"? > <!-The root of the response--> <Operation name+Response> <!—The returned request tag--> <RequestId>4C4fdsf38-3910-447D-87AD-AC078932216</RequestId> <!—The returned result--> </Operation name+Response>
 ```
 
-### Responses
+### 4.4 Responses
 
 After you call an API operation, KVStore for Redis returns data in the same format. In the
 
@@ -928,7 +1005,7 @@ JSON format `{`
 "RequestId": "7463B73D-35CC-4D19-A010-6B8D65D242EF", "HostId": " r-kvstore.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
 ```
 
-### Request signatures
+### 4.5 Request signatures
 
 KVStore for Redis authenticates each access request. You need to include a signature when you submit an HTTP or HTTPS request. KVStore for Redis authenticates the request sender identity by using symmetric encryption based on an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. An AccessKey ID and an AccessKey secret are issued to you by Alibaba Cloud. You can apply for and manage them on the Alibaba Cloud website. The AccessKey ID is used to verify the identity of the user. The AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to obtain the AccessKey pair, see Obtain an AccessKey pair.
 
@@ -999,9 +1076,9 @@ http://r-kvstore.example.com/?Timestamp=2013-06- 01T10%3A33%3A56Z&Format=XML&Acc
 SHA1&RegionId=region1&SignatureNonce=NwDAxvLU6tFE0DVb&SignatureVersion=1.0&Version=2015- 01-01&Signature=BIPOMlxxxxxxxxxxxxxxxxxxu8LXBeZtLQkJTw6iFvw1E%3D
 ```
 
-### RAM-based authorization
+### 4.6 RAM-based authorization
 
-#### Grant resource permissions to a RAM
+#### 4.6.1 Grant resource permissions to a RAM user
 
 **user**
 
@@ -1011,7 +1088,7 @@ The instances that you create by using your Alibaba Cloud account are the resour
 
 Ignore this topic if you do not use Resource Access Management (RAM).
 
-#### Authorized resource types in RAM
+#### 4.6.2 Authorized resource types in RAM
 
 KVStore for Redis only supports RAM authorization for Redis instances. The following table lists the description of resources when you use RAM to authorize access permissions to these resources.
 
@@ -1021,13 +1098,13 @@ KVStore for Redis only supports RAM authorization for Redis instances. The follo
 
 All $regionids must be the ID of a region or an asterisk ( `*` ). All $instanceids must be the ID of an instance or an asterisk ( `*` ). Similarly, $account-id is the numerical ID of your Apsara Stack tenant account, which can be replaced by an asterisk ( `*` ).
 
-#### Operation permissions granted to a
+#### 4.6.3 Operation permissions granted to a RAM user
 
 **RAM user**
 
-You are authorized to call the following API operations to manage the specified resource as a Resource Access Management (RAM) user: CreateInstance DeleteInstance ModifyInstanceSpec RenewInstance RenewMultiInstance TransformToPrePaid ModifyInstanceAttribute FlushInstance DescribeInstances DescribeInstanceAttribute ModifyInstanceMaintainTime ModifySecurityIps SwitchNetwork ModifyInstanceNetExpireTime CreateBackup ModifyBackupPolicy DescribeBackupPolicy DescribeBackups RestoreInstance DescribeHistoryMonitorValues DescribeInstanceConfig ModifyInstanceConfig
+You are authorized to call the following API operations to manage the specified resource as a Resource Access Management (RAM) user: RenewInstance RenewMultiInstance TransformToPrePaid
 
-#### API authentication rules
+#### 4.6.4 API authentication rules
 
 When you use API operations to access resources as a Resource Access Management (RAM) user, the system queries the RAM service and checks whether the RAM user is granted the required permissions. Each API operation determines the resources for permission check according to the involved resources and the semantics of the API operation. The following table lists the authentication rules corresponding to different API operations.Table 1. Authentication rules
 
@@ -1058,9 +1135,9 @@ When you use API operations to access resources as a Resource Access Management 
 | DescribeInstanceConfig | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 | ModifyInstanceConfig | acs:kvstore:$regionid:$accountid:instance/$insta nceid |
 
-### Manage the lifecycle
+### 4.7 Manage the lifecycle
 
-#### CreateInstance
+#### 4.7.1 CreateInstance
 
 Call the CreateInstance operation to create a Redis instance.
 
@@ -1135,7 +1212,7 @@ JSON format: `{`
 "InstanceId":"r-n8r8c5119d2e****", "InstanceName":"testdb"
 ```
 
-#### DeleteInstance
+#### 4.7.2 DeleteInstance
 
 Deletes a specified instance. The instance must be in the **running** state.
 
@@ -1175,7 +1252,7 @@ JSON format `{`
     "RequestId": "5D622714-AEDD-4609-9167-F5DDD3D190D2"
 ```
 
-#### ModifyInstanceSpec
+#### 4.7.3 ModifyInstanceSpec
 
 Changes the specifications of a Tair (Redis OSS-compatible) instance.
 
@@ -1225,9 +1302,9 @@ JSON format `{`
     "OrderId": "20722623431****"
 ```
 
-### Manage instances
+### 4.8 Manage instances
 
-#### RestartInstance
+#### 4.8.1 RestartInstance
 
 Restarts a Redis instance that is running.
 
@@ -1279,7 +1356,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "InstanceId":"r-bp1zxszhcgatnx****"
 ```
 
-#### FlushExpireKeys
+#### 4.8.2 FlushExpireKeys
 
 Deletes the expired keys from a Redis instance.
 
@@ -1328,7 +1405,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "InstanceId":"r-bp1zxszhcgatnx****"
 ```
 
-#### DescribeLogicInstanceTopology
+#### 4.8.3 DescribeLogicInstanceTopology
 
 Queries the logical topology of a Redis instance.
 
@@ -1405,7 +1482,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Connection":"320000"
 ```
 
-#### DescribeEngineVersion
+#### 4.8.4 DescribeEngineVersion
 
 Queries the major version and minor version of a Redis instance, including the release notes for the minor version.
 
@@ -1460,7 +1537,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "EnableUpgradeMajorVersion":true
 ```
 
-#### DescribeInstanceAttribute
+#### 4.8.5 DescribeInstanceAttribute
 
 Queries detailed information about a KVStore for Redis instance.
 
@@ -1662,7 +1739,7 @@ entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,
  "RequestId": "D67A69DF-C1FC-4B01-B239-B17888CCFD2A"
 ```
 
-#### DescribeInstances
+#### 4.8.6 DescribeInstances
 
 Queries information about one or more KVStore for Redis instances.
 
@@ -1791,7 +1868,7 @@ mple.com",
     "RequestId" : "969D0A1D-C91A-4837-9F70-49785DF9BDCE"
 ```
 
-#### DescribeRegions
+#### 4.8.7 DescribeRegions
 
 Queries the regions where KVStore for Redis instances can be created.
 
@@ -1881,7 +1958,7 @@ n-hangzhou-b,cn-hangzhou-d,cn-hangzhou-e,cn-hangzhou-MAZ6(b,f),cn-hangzhou-f,cn-
     "RequestId": "AD425AD3-CC7B-4EE2-A5CB-2F61BA73****"
 ```
 
-#### DescribeSecurityIps
+#### 4.8.8 DescribeSecurityIps
 
 Call the DescribeSecurityIps operation to query the IP address whitelist of a Redis instance.
 
@@ -1971,7 +2048,7 @@ JSON format: `{`
     "RequestId": "EFC9161F-15E3-4A6E-8A99-C09916D1****"
 ```
 
-#### DescribeCpuTypes
+#### 4.8.9 DescribeCpuTypes
 
 Queries the CPU types supported by a ApsaraDB ApsaraDB for Redis instance.
 
@@ -2033,7 +2110,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 `]`
 
-#### DescribeZones
+#### 4.8.10 DescribeZones
 
 Queries the zones that support Redis in a specific region.
 
@@ -2085,7 +2162,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "IsRds":true
 ```
 
-#### FlushInstance
+#### 4.8.11 FlushInstance
 
 Deletes the data of a KVStore for Redis instance. Deleted data cannot be recovered.
 
@@ -2125,7 +2202,7 @@ JSON format `{`
   "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E7"
 ```
 
-#### ModifyInstanceAttribute
+#### 4.8.12 ModifyInstanceAttribute
 
 Modifies the attributes of a KVStore for Redis instance such as the name or password.
 
@@ -2169,7 +2246,7 @@ JSON format `{`
 "RequestId" : "E3B35BEA-9EB0-402C-88CF-C46CCCC1EE59"
 ```
 
-#### ModifyInstanceMaintainTime
+#### 4.8.13 ModifyInstanceMaintainTime
 
 Modifies the maintenance window of a KVStore for Redis instance. Alibaba Cloud maintains the KVStore for Redis instance in the specified maintenance window.
 
@@ -2213,7 +2290,7 @@ JSON format `{`
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B3E76"
 ```
 
-#### ModifyInstanceNetExpireTime
+#### 4.8.14 ModifyInstanceNetExpireTime
 
 Extends the retention period of the classic network endpoint of a KVStore for Redis instance. You can call this operation after you change the network type of the KVStore for Redis instance from classic network to VPC with the classic network endpoint retained.
 
@@ -2257,7 +2334,7 @@ JSON format `{`
     "RequestId": "9C4AF387-1EA3-4C84-8013-3F6B973EDDF5",
 ```
 
-#### ModifySecurityIps
+#### 4.8.15 ModifySecurityIps
 
 Call ModifySecurityIps to configure the IP allowlist for a Redis instance.
 
@@ -2304,7 +2381,7 @@ JSON format: `{`
     "RequestId" : "AAAF99B1-69ED-4E80-8CD5-272C09E4****"
 ```
 
-#### SwitchNetwork
+#### 4.8.16 SwitchNetwork
 
 Changes the network type of a KVStore for Redis instance from classic network to VPC.
 
@@ -2353,7 +2430,7 @@ JSON format `{`
     "requestId": "F0997EE8-F4C2-4503-9168-85177ED78C70"
 ```
 
-#### SwitchInstanceHA
+#### 4.8.17 SwitchInstanceHA
 
 Perform a primary /secondary switchover (that is, switch the node role), which can be used in disaster recovery drills and multi-zone scenarios to connect to the nearest application.
 
@@ -2409,9 +2486,9 @@ Sample success responses
 <RequestId>5D622714-AEDD-4609-9167-F5DDD3D1****</RequestId>
 ```
 
-### Data encryption
+### 4.9 Data encryption
 
-#### DescribeEncryptionKey
+#### 4.9.1 DescribeEncryptionKey
 
 Queries the detailed information about a custom key used for transparent data encryption (TDE) in a KVStore for Redis instance.
 
@@ -2471,7 +2548,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "DeleteDate":"2021-09-24T18:22:03Z"
 ```
 
-#### DescribeInstanceTDEStatus
+#### 4.9.2 DescribeInstanceTDEStatus
 
 Queries whether transparent data encryption (TDE) is enabled for a KVStore for Redis instance.
 
@@ -2513,7 +2590,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"5D622714-AEDD-4609-9167-F5DDD3D1****"
 ```
 
-#### CheckCloudResourceAuthorized
+#### 4.9.3 CheckCloudResourceAuthorized
 
 Queries whether a KVStore for Redis instance is authorized to use Key Management Service (KMS).
 
@@ -2560,9 +2637,9 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"A501A191-BD70-5E50-98A9-C2A486A82****"
 ```
 
-### Account management
+### 4.10 Account management
 
-#### DescribeUserInfo
+#### 4.10.1 DescribeUserInfo
 
 Queries user information.
 
@@ -2614,7 +2691,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "KVSBought":29
 ```
 
-#### CreateAccount
+#### 4.10.2 CreateAccount
 
 Creates an account that has specific permissions in a KVStore for Redis instance.
 
@@ -2683,9 +2760,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidAccountNam e.Forbid | InvalidAccountName.Forbid | Specified AccountName is a keyword. |
 | 403 | AccountLimitExcee ded | AccountLimitExceeded | Exceeding the allowed amount of account. |
 
-### Network security
+### 4.11 Network security
 
-#### DescribeInstanceSSL
+#### 4.11.1 DescribeInstanceSSL
 
 Queries whether TLS (SSL) encryption is enabled for a KVStore for Redis instance.
 
@@ -2740,9 +2817,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 403 | IncorrectCharacter Type | IncorrectCharacterType | Current DB instance CharacterType does not support this operation. |
 | 403 | IncorrectEngineVer sion | IncorrectEngineVersion | Current engine version does not support operations. |
 
-### Connection management
+### 4.12 Connection management
 
-#### DescribeIntranetAttribute
+#### 4.12.1 DescribeIntranetAttribute
 
 Queries the internal bandwidth of a KVStore for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
 
@@ -2789,7 +2866,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "ExpireTime":"0"
 ```
 
-#### ModifyInstanceVpcAuthMode
+#### 4.12.2 ModifyInstanceVpcAuthMode
 
 Enables or disables password-free access over Virtual Private Cloud (VPC) for a KVStore for Redis instance. Password-free access allows you to connect to databases more conveniently while ensuring security.
 
@@ -2836,7 +2913,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "RequestId":"ABAF95F6-35C1-4177-AF3A-70969EBD****"
 ```
 
-#### AllocateInstancePublicConnection
+#### 4.12.3 AllocateInstancePublicConnection
 
 Call the AllocateInstancePublicConnection operation to allocate a public endpoint for a Redis instance.
 
@@ -2891,9 +2968,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | NetTypeExists | NetTypeExists | Specified net type already existed. |
 | 400 | InvalidConnectionS tring.Format | InvalidConnectionString.Forma t | Specified connection string is not valid. |
 
-### Backup and recovery
+### 4.13 Backup and recovery
 
-#### CreateBackup
+#### 4.13.1 CreateBackup
 
 Backs up a KVStore for Redis instance.
 
@@ -2937,7 +3014,7 @@ JSON format `{`
     "BackupJobID": "1162****"
 ```
 
-#### ModifyBackupPolicy
+#### 4.13.2 ModifyBackupPolicy
 
 Modifies the backup policy of a KVStore for Redis instance.
 
@@ -2983,7 +3060,7 @@ JSON format `{`
     "RequestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
 
-#### DescribeBackupPolicy
+#### 4.13.3 DescribeBackupPolicy
 
 Queries the backup policy of a KVStore for Redis instance. The backup policy includes information such as the backup cycle and the backup time.
 
@@ -3034,7 +3111,7 @@ JSON format `{`
  "BackupRetentionPeriod": "7"
 ```
 
-#### DescribeBackups
+#### 4.13.4 DescribeBackups
 
 Queries the backup files of a KVStore for Redis instance.
 
@@ -3151,7 +3228,7 @@ hangzhou.aliyuncs.com/********",
 
 `]`
 
-#### RestoreInstance
+#### 4.13.5 RestoreInstance
 
 Restores the data of a KVStore for Redis instance from a backup file to the instance. If you use the operation together with the data flashback feature, you can restore data of a specified key to a specified point in time that is accurate to the second.
 
@@ -3192,9 +3269,9 @@ JSON format `{`
     "RequestId": "8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
 
-### Manage monitoring
+### 4.14 Manage monitoring
 
-#### DescribeMonitorItems
+#### 4.14.1 DescribeMonitorItems
 
 Queries the metrics of a KVStore for Redis instance.
 
@@ -3270,7 +3347,7 @@ JSON format `{`
     "RequestId" : "B906A893-58A3-4644-AC2D-A2C9B08706C1"
 ```
 
-#### DescribeHistoryMonitorValues
+#### 4.14.2 DescribeHistoryMonitorValues
 
 Queries the monitoring history of a KVStore for Redis instance.
 
@@ -3325,9 +3402,9 @@ JSON format `{`
     "RequestId": "689E8093-3094-4DC2-A2A2-30D40097****"
 ```
 
-### Manage parameters
+### 4.15 Manage parameters
 
-#### DescribeInstanceConfig
+#### 4.15.1 DescribeInstanceConfig
 
 Queries the configuration parameters of a KVStore for Redis instance.
 
@@ -3371,7 +3448,7 @@ JSON format `{`
 cmds\":\"SET,GET\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplistentries\":512,\"slowlog-log-slower-than\":\"1000\",\"notify-keyspaceevents\":\"$\",\"zset-max-ziplist-entries\":128,\"list-max-ziplistentries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-int set-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabledcommands\":\"flushall\"}"
 ```
 
-#### ModifyInstanceConfig
+#### 4.15.2 ModifyInstanceConfig
 
 Modifies configuration parameters of a KVStore for Redis instance.
 
@@ -3414,9 +3491,9 @@ JSON format `{`
   "requestId":"8D0C0AFC-E9CD-47A4-8395-5C31BF9B****"
 ```
 
-### Appendixes
+### 4.16 Appendixes
 
-#### Usage rules for reserved instances
+#### 4.16.1 Usage rules for reserved instances
 
 A reserved instance is a discount plan that provides savings on your Alibaba Cloud usage. A reserved instance does not directly provide resources and must be applied to pay-as-you-go resources to provide discounts. Even if you do not have eligible pay-as-you-go instances after you purchase a reserved instance, you are charged for the reserved instance. To maximize the benefits of reserved instances and reduce operational costs, you must be familiar with the usage rules (offset rules) of reserved instances. This topic describes the rules and provides examples of how reserved instances are matched to pay-as-you-go instances.
 
@@ -3553,7 +3630,7 @@ Reserved instances can offset the fees of pay-as-you-go computing resources. SCU
 
 共享预留实例券前您需要先开通企业账号中心功能，并邀请企业其他成员账号加入，形成企业的账号组织关系。开通企业账号中心的详细操作请参考什么是企业账号中心。 如果您已经开通企业账号中心功能，您可以通过手动共享和自动共享两种方式开通预留实例券多账号共享： 手动共享：指定具体的资产ID进行共享，可以选择共享到特定账号或组织节点，此设置仅对该资产ID有效。 自动共享：根据资产类型设定自动共享规则，新创建的资产会按照规则自动共享到指定范围。 详细操作指引请参见权益资产共享。
 
-#### Instance configurations
+#### 4.16.2 Instance configurations
 
 Table 1. KVStore for Redis instance configurations
 

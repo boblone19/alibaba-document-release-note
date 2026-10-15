@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Resource Orchestration Service O
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 7
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Resource Orchestration Service Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "fdf35a43dee76f64_Alibaba Cloud Apsara Stack v3.18.6-2607 Resource Orchestration Service Operations and Maintenance Gu"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B5%84%E6%BA%90%E7%BC%96%E6%8E%92/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Resource%20Orchestration%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Resource Orchestration Service Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 ROS component O&M
+  - 1.1 API Server
+  - 1.2 Engine Server
+  - 1.3 RabbitMQ clusters
+  - 1.4 Notify Server
+
 Operations and Maintenance Gui Resource Orchestration Service
 
-## ROS component O&M
+## 1 ROS component O&M
 
-### API Server
+### 1.1 API Server
 
 The API Server is used to receive ROS requests, send requests to RabbitMQ clusters, and send the responses returned by the Engine Server to callers. The API Server is used to connect the frontend and backend services. Components The Engine Server and API Server share three servers, all of which are attached to a special Server Load Balancer (SLB) instance. O&M methods The storage path of the API Server information is /home/admin/ros-server/bin/. Basic operations of the API Server: `#/usr/local/ros-python/bin/python/home/admin/ros-`
 
@@ -24,7 +32,7 @@ service/bin/ros-api{stop|status|--daemon}
 
 `stop` : stops the API Server. `status` : queries the status of the API Server. `--daemon` : starts the API Server in daemon mode. Health criteria Intrinsic availability: The CPU usage and system memory are within the normal range. The API Server is running normally. Associated component availability: ROS is available.
 
-### Engine Server
+### 1.2 Engine Server
 
 The Engine Server is used to process stack requests. It shares the three servers with the API Server. O&M methods The storage path of the API Server information is /home/admin/ros-server/bin/. Basic operation of the Engine Server: `/usr/local/ros-python/bin/python`
 
@@ -34,7 +42,7 @@ The Engine Server is used to process stack requests. It shares the three servers
 
 `stop` : stops the Engine Server. `status` : queries the status of the Engine Server. `--daemon` : starts the Engine Server in daemon mode. Health criteria Intrinsic availability: The CPU usage and system memory are within the normal range. The Engine Server is running normally. Associated component availability: ROS is available.
 
-### RabbitMQ clusters
+### 1.3 RabbitMQ clusters
 
 RabbitMQ clusters are used to receive requests from the API Sever and responses from the Engine Server. Components RabbitMQ clusters are composed of nodes. Operations and Maintenance Gui Resource Orchestration Service RabbitMQ clusters are used for messaging. Nodes in the clusters use disks for nonpersistent storage. Messages are written into the queues that correspond to the nodes. Nodes in a cluster can communicate with each other. Typically, to ensure data accuracy, the minimum number of working nodes is set to [Total number of nodes/2] rounded up. If data of nodes are inconsistent, the secondary nodes synchronize queue messages from the primary nodes. O&M methods The storage path of the RabbitMQ information is /opt/rabbitmq-server/. Common RabbitMQ commands are as follows:
 
@@ -57,6 +65,6 @@ RabbitMQ clusters are used to receive requests from the API Sever and responses 
 
 Typically, there are two virtual hosts. One is displayed as a forward slash (/), and the other is named based on the region where it resides. Health criteria Intrinsic availability: The CPU usage and system memory are within the normal range. RabbitMQ is running normally, which indicates that clusters have no partitions, queues are properly processed, and messages are properly consumed. Associated component availability: ROS is available.
 
-### Notify Server
+### 1.4 Notify Server
 
 The Notify Server is the proxy server for ECS instances that reside in a VPC. It sends the execution status and information of operations on ECS instances to ROS. Components Operations and Maintenance Gui Resource Orchestration Service The Notify Server consists of three servers, all of which are attached to a special SLB instance. O&M methods For example, the virtual IP address of the SLB instance is 10.152.XX.XX. You can run curl `http://10.152.XX.XX:80/health-check` to check whether the Notify Server is running. Health criteria Intrinsic availability: The CPU usage and system memory are within the normal range. Associated component availability: ROS is available.

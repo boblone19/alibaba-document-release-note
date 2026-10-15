@@ -3,18 +3,246 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Rock
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 186
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20260828.pdf"
+source_pdf: "c75b61a745b2e510_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20RocketMQ%20v5.0%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue RocketMQ v5.0 Developer Guide 20260828
 
-Prerequisites
+## Table of Contents
 
-## Prerequisites
+- 1 Prerequisites
+  - 1.1 Obtain API information and its endpoint
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain common header parameters
+  - 1.4 Obtain STS access credentials
+- 2 Calling private cloud APIs through a POP gateway
+  - 2.1 Overview
+  - 2.2 Preparations
+  - 2.3 SDK for Java
+- 3 API reference
+  - 3.1 RocketMQ v5.0_API
+    - 3.1.1 Overview
+      - 3.1.1.1 Intended audience and scenarios
+      - 3.1.1.2 Scenarios and limits
+      - 3.1.1.3 Basic principles
+    - 3.1.2 Common parameters
+      - 3.1.2.1 Common parameter settings
+      - 3.1.2.2 Common response parameters
+    - 3.1.3 Common terms
+      - 3.1.3.1 Account security
+        - 3.1.3.1.1 AccessKey
+        - 3.1.3.1.2 SecretKey
+      - 3.1.3.2 Resource management
+        - 3.1.3.2.1 Topic
+        - 3.1.3.2.2 Group ID (GID)
+    - 3.1.4 Error codes
+    - 3.1.5 API reference
+      - 3.1.5.1 Instance management
+        - 3.1.5.1.1 ConsoleInstanceList
+        - 3.1.5.1.2 ConsoleClusterCreate
+        - 3.1.5.1.3 ConsoleClusterSpecList
+        - 3.1.5.1.4 ConsoleClusterStatus
+        - 3.1.5.1.5 ConsoleInstanceStatistics
+        - 3.1.5.1.6 ConsoleInstanceUpdate
+        - 3.1.5.1.7 ConsoleInstanceBaseInfo
+      - 3.1.5.2 Topic management
+        - 3.1.5.2.1 ConsoleTopicDelete
+        - 3.1.5.2.2 ConsoleTopicListInPage
+        - 3.1.5.2.3 ConsoleTopicStatus
+        - 3.1.5.2.4 ConsoleTopicUpdateInfo
+        - 3.1.5.2.5 ConsoleTopicUpdate
+        - 3.1.5.2.6 ConsoleTopicSubDetail
+        - 3.1.5.2.7 ConsoleTopicListNames
+        - 3.1.5.2.8 ConsoleTopicList
+        - 3.1.5.2.9 ConsoleTopicGet
+        - 3.1.5.2.10 ConsoleTopicCreate
+        - 3.1.5.2.11 ConsoleGroupListTopicsByGroupId
+      - 3.1.5.3 Group management
+        - 3.1.5.3.1 ConsoleGroupListInPage
+        - 3.1.5.3.2 ConsoleGroupUpdateInfo
+        - 3.1.5.3.3 ConsoleGroupListGroupIds
+        - 3.1.5.3.4 ConsoleGroupList
+        - 3.1.5.3.5 ConsoleGroupDelete
+        - 3.1.5.3.6 ConsoleGroupCreate
+      - 3.1.5.4 Message management
+        - 3.1.5.4.1 ConsoleMessageGetByPagedDLQ
+        - 3.1.5.4.2 ConsoleMessageResendByIdInDLQ
+        - 3.1.5.4.3 ConsoleMessageDownload
+        - 3.1.5.4.4 ConsoleMessageDownloadAllInDLQ
+        - 3.1.5.4.5 ConsoleMessageSend
+        - 3.1.5.4.6 ConsoleMessageTrace
+        - 3.1.5.4.7 ConsoleMessagePush
+        - 3.1.5.4.8 ConsoleMessageGetByPagedTopic
+        - 3.1.5.4.9 ConsoleMessageGetByKey
+        - 3.1.5.4.10 ConsoleMessageGetByIdInDLQ
+        - 3.1.5.4.11 ConsoleMessageGetById
+        - 3.1.5.4.12 ConsoleMessageDownloadBodyInDLQ
+      - 3.1.5.5 Trace management
+        - 3.1.5.5.1 ConsoleTraceDeleteTraceQueryTask
+        - 3.1.5.5.2 ConsoleTraceGetPubTraceByQueryId
+        - 3.1.5.5.3 ConsoleTraceQueryByMsgId
+        - 3.1.5.5.4 ConsoleTraceQueryByMsgTopic
+        - 3.1.5.5.5 ConsoleTraceQueryByMsgKey
+        - 3.1.5.5.6 ConsoleTraceListByUserIdInPage
+        - 3.1.5.5.7 ConsoleTraceGetTraceMapByQueryId
+      - 3.1.5.6 Consumer management
+        - 3.1.5.6.1 ConsoleConsumerGetConnection
+        - 3.1.5.6.2 ConsoleConsumerProgress
+        - 3.1.5.6.3 ConsoleGroupConsumerUpdate
+        - 3.1.5.6.4 ConsoleConsumerAccumulate
+        - 3.1.5.6.5 ConsoleConsumerTimespan
+        - 3.1.5.6.6 ConsoleGroupSubDetail
+        - 3.1.5.6.7 ConsoleConsumerStatus
+        - 3.1.5.6.8 ConsoleConsumerResetOffset
+        - 3.1.5.6.9 ConsoleConsumerJstackInfo
+      - 3.1.5.7 Cluster management
+        - 3.1.5.7.1 ConsoleClusterGetCapacity
+        - 3.1.5.7.2 ConsoleClusterList
+      - 3.1.5.8 Region management
+        - 3.1.5.8.1 ConsoleRegionList
+        - 3.1.5.8.2 ConsoleMetaData
+        - 3.1.5.8.3 ConsoleCommonRegionData
+      - 3.1.5.9 Connect instance management
+        - 3.1.5.9.1 ConsoleConnectCreate
+        - 3.1.5.9.2 ConsoleConnectList
+      - 3.1.5.10 Router task management
+        - 3.1.5.10.1 ConsoleStopCloudRouterTask
+        - 3.1.5.10.2 ConsoleStartCloudRouterTask
+        - 3.1.5.10.3 ConsoleQueryCloudRouterTask
+        - 3.1.5.10.4 ConsoleQueryStatsCloudRouterTask
+        - 3.1.5.10.5 ConsoleQueryItemsCloudRouterTask
+        - 3.1.5.10.6 ConsoleListInPageCloudRouterTask
+        - 3.1.5.10.7 ConsoleDeleteCloudRouterTask
+        - 3.1.5.10.8 ConsoleCreateCloudRouterTask
+      - 3.1.5.11 CloudInfo management
+        - 3.1.5.11.1 ConsoleUpdateCloudInfo
+        - 3.1.5.11.2 ConsoleQueryCloudInfo
+        - 3.1.5.11.3 ConsoleDeleteCloudInfo
+        - 3.1.5.11.4 ConsoleCreateCloudInfo
+- 4 SDK reference
+  - 4.1 RocketMQ v5.0_SDK
+    - 4.1.1 Overview
+    - 4.1.2 Message model
+    - 4.1.3 Transport protocol and character encoding
+    - 4.1.4 Common classes and methods
+      - 4.1.4.1 PropertyKeyConst
+      - 4.1.4.2 ONSFactory
+        - 4.1.4.2.1 createConsumer
+        - 4.1.4.2.2 createBatchConsumer
+        - 4.1.4.2.3 createOrderedConsumer
+        - 4.1.4.2.4 createOrderProducer
+        - 4.1.4.2.5 createProducer
+        - 4.1.4.2.6 createTransactionProducer
+      - 4.1.4.3 Message
+        - 4.1.4.3.1 Overview
+        - 4.1.4.3.2 Default message construction
+        - 4.1.4.3.3 Message construction by using parameters (1)
+        - 4.1.4.3.4 Message construction by using parameters (2)
+        - 4.1.4.3.5 putUserProperties
+        - 4.1.4.3.6 getUserProperties
+        - 4.1.4.3.7 getTopic
+        - 4.1.4.3.8 setTopic
+        - 4.1.4.3.9 getTag
+        - 4.1.4.3.10 setTag
+        - 4.1.4.3.11 getKey
+        - 4.1.4.3.12 setKey
+        - 4.1.4.3.13 getMsgID
+        - 4.1.4.3.14 setMsgID
+        - 4.1.4.3.15 getReconsumeTimes
+        - 4.1.4.3.16 setReconsumeTimes
+        - 4.1.4.3.17 getBornTimestamp
+        - 4.1.4.3.18 setBornTimestamp
+        - 4.1.4.3.19 getBornHost
+        - 4.1.4.3.20 setBornHost
+        - 4.1.4.3.21 getStartDeliverTime
+        - 4.1.4.3.22 setStartDeliverTime
+        - 4.1.4.3.23 getShardingKey
+        - 4.1.4.3.24 setShardingKey
+      - 4.1.4.4 ONSClientException
+        - 4.1.4.4.1 Default ONSClientException construction
+        - 4.1.4.4.2 ONSClientException construction by using parameters (1)
+        - 4.1.4.4.3 ONSClientException construction by using parameters (2)
+        - 4.1.4.4.4 ONSClientException construction by using parameters (3)
+      - 4.1.4.5 Message sending
+        - 4.1.4.5.1 Overview
+        - 4.1.4.5.2 SendResult
+          - 4.1.4.5.2.1 Default SendResult construction
+          - 4.1.4.5.2.2 getMessageId
+          - 4.1.4.5.2.3 getTopic
+          - 4.1.4.5.2.4 toString
+        - 4.1.4.5.3 Producer
+          - 4.1.4.5.3.1 Overview
+          - 4.1.4.5.3.2 send
+          - 4.1.4.5.3.3 sendOneway
+          - 4.1.4.5.3.4 sendAsync
+          - 4.1.4.5.3.5 isStarted
+          - 4.1.4.5.3.6 isClosed
+          - 4.1.4.5.3.7 start
+          - 4.1.4.5.3.8 shutdown
+        - 4.1.4.5.4 TransactionProducer
+          - 4.1.4.5.4.1 send
+          - 4.1.4.5.4.2 isStarted
+          - 4.1.4.5.4.3 isClosed
+          - 4.1.4.5.4.4 start
+          - 4.1.4.5.4.5 shutdown
+          - 4.1.4.5.4.6 LocalTransactionExecuter
+          - 4.1.4.5.4.7 TransactionStatus
+        - 4.1.4.5.5 OrderProducer
+          - 4.1.4.5.5.1 send
+          - 4.1.4.5.5.2 isStarted
+          - 4.1.4.5.5.3 isClosed
+          - 4.1.4.5.5.4 start
+          - 4.1.4.5.5.5 shutdown
+      - 4.1.4.6 Message subscription
+        - 4.1.4.6.1 Overview
+        - 4.1.4.6.2 Consumer
+          - 4.1.4.6.2.1 Overview
+          - 4.1.4.6.2.2 subscribe
+          - 4.1.4.6.2.3 unsubscribe
+          - 4.1.4.6.2.4 isStarted
+          - 4.1.4.6.2.5 isClosed
+          - 4.1.4.6.2.6 start
+          - 4.1.4.6.2.7 shutdown
+        - 4.1.4.6.3 MessageListener
+          - 4.1.4.6.3.1 Overview
+          - 4.1.4.6.3.2 consume
+        - 4.1.4.6.4 Action
+          - 4.1.4.6.4.1 Overview
+          - 4.1.4.6.4.2 valueOf
+          - 4.1.4.6.4.3 values
+        - 4.1.4.6.5 PropertyValueConst
+        - 4.1.4.6.6 OrderConsumer
+          - 4.1.4.6.6.1 Overview
+          - 4.1.4.6.6.2 subscribe
+          - 4.1.4.6.6.3 unsubscribe
+          - 4.1.4.6.6.4 isStarted
+          - 4.1.4.6.6.5 isClosed
+          - 4.1.4.6.6.6 start
+          - 4.1.4.6.6.7 shutdown
+        - 4.1.4.6.7 MessageOrderListener
+          - 4.1.4.6.7.1 Overview
+          - 4.1.4.6.7.2 consume
+        - 4.1.4.6.8 OrderAction
+          - 4.1.4.6.8.1 Overview
+          - 4.1.4.6.8.2 valueOf
+          - 4.1.4.6.8.3 values
+        - 4.1.4.6.9 BatchConsumer
+          - 4.1.4.6.9.1 Overview
+          - 4.1.4.6.9.2 subscribe
+          - 4.1.4.6.9.3 unsubscribe
+          - 4.1.4.6.9.4 isStarted
+          - 4.1.4.6.9.5 isClosed
+          - 4.1.4.6.9.6 start
+          - 4.1.4.6.9.7 shutdown
+        - 4.1.4.6.10 BatchMessageListener
+          - 4.1.4.6.10.1 Overview
+          - 4.1.4.6.10.2 consume
 
-### Obtain API information and its
+## 1 Prerequisites
+
+### 1.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -35,9 +263,9 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 6. The page displays a list of all API operations for the current version.
 7. Click a desired API operation. In the list of parameters, find the POP Endpoint information.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
-Prerequisites You can use an AccessKey pair to authenticate API calls. AccessKey pairs support two authorization modes: Resource Access Management (RAM) and Security Token Service (STS). This topic describes how to obtain a RAM-authorized AccessKey pair.
+You can use an AccessKey pair to authenticate API calls. AccessKey pairs support two authorization modes: Resource Access Management (RAM) and Security Token Service (STS). This topic describes how to obtain a RAM-authorized AccessKey pair.
 
 **Background information**
 
@@ -56,7 +284,7 @@ A personal account AccessKey is a restricted key managed by the permission syste
 
 **Obtain the AccessKey pair of a personal account**
 
-Prerequisites To obtain the AccessKey pair of a personal account, perform the following steps:
+To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner, click your profile picture, and then click **User Information**.
 3. In the **AccessKey** section, you can view the AccessKey information for your account.
@@ -76,7 +304,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. Click the **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain common header
+### 1.3 Obtain common header parameters
 
 **parameters**
 
@@ -94,7 +322,6 @@ When you call an API, you must provide multiple header parameters. This topic de
 
 Call an API operation to obtain an organization ID. You can use the API debugging feature in the Apsara Uni-manager Management Console to obtain the ID.
 1. Log in to the Apsara Uni-manager Management Console as an administrator.
-Prerequisites
 2. In the top navigation bar, click **Products** and choose **Developer Tools** > **API & SDK** >
 **OpenAPI Explorer**.
 3. On the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging** in the top
@@ -134,14 +361,12 @@ When you call an API operation to query a list of resource instances for a cloud
 |---|---|
 | ResourceGroupName | The name of the resource group. |
 
-Prerequisites
-
 | ResourceGroup | The ID of the resource group. |
 |---|---|
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain STS access credentials
+### 1.4 Obtain STS access credentials
 
 This topic describes how to use Security Token Service (STS) to call product APIs in Apsara Stack.
 
@@ -156,7 +381,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the upper-right c
 **Information**.
 iii. Click **View Current Role Policy**. In the **Current Role Policy** dialog box, you can view the `RAM Role` .
 2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ),
-and Security Token Service token ( `stsToken` ) by assuming the RAM role. Prerequisites
+and Security Token Service token ( `stsToken` ) by assuming the RAM role.
 
 ```
 public static void main(String[] args) {
@@ -194,7 +419,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
 
 `}`
 3. Use the STS credentials to call cloud product APIs. The following example shows how to
-initialize the credential client. Prerequisites
+initialize the credential client.
 
 ```java
 import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Config; // The following example shows how to initialize a credential client using an STS tok en. // This example does not include the procedure for obtaining an STS token. public class DemoStsTest {
@@ -217,11 +442,11 @@ evant API documentation.
 
 `}` `}` Calling private cloud APIs throug h a POP gateway
 
-## Calling private cloud APIs
+## 2 Calling private cloud APIs through a POP gateway
 
 **through a POP gateway**
 
-### Overview
+### 2.1 Overview
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic provides an overview.
 
@@ -336,7 +561,7 @@ Calling private cloud APIs throug h a POP gateway
 | ConsoleTopicUpdate | 3.18.6 |
 | ConsoleTopicUpdateInfo | 3.18.6 |
 
-### Preparations
+### 2.2 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way that you call them in the Alibaba Cloud public cloud. This topic describes the required preparations.
 
@@ -378,7 +603,7 @@ This value is the `Endpoint` .
 
 Calling API operations using the POP gateway requires common parameters, such as organization ID, resource set ID, Region ID, and instance ID. For more information, see Obtain common header parameters.
 
-### SDK for Java
+### 2.3 SDK for Java
 
 This topic provides examples of how to use the Premium software development kit (SDK) to call APIs over the POP gateway.
 
@@ -575,30 +800,30 @@ catch (Exception e) {
 
 `}`
 
-## API reference
+## 3 API reference
 
-### RocketMQ v5.0_API
+### 3.1 RocketMQ v5.0_API
 
-#### Overview
+#### 3.1.1 Overview
 
-##### Intended audience and scenarios
+##### 3.1.1.1 Intended audience and scenarios
 
 provides you with API operations to help you manage resources. Different from the SDKs for production, API operations are used to manage the resources of , such as topics and group IDs. API operations are intended for those who: Are familiar with the main features of the console. Require a management and control tool similar to the console and have a need for custom management and control features.
 
-##### Scenarios and limits
+##### 3.1.1.2 Scenarios and limits
 
 1. Due to the implementation principles of API operations, the caller must be able to access
 the domain name of the console. Otherwise, the call may fail.
 2. The underlying layer of API operations is based on HTTP, with average performance and
 efficiency. Therefore, API operations are applicable only to management and control scenarios. Do not use them in large-volume, high-concurrency production scenarios.
 
-##### Basic principles
+##### 3.1.1.3 Basic principles
 
 The underlying layer of API operations provides services based on HTTP. Each time you call an API operation, you send an HTTP request from the HTTP client to the backend service of ApsaraMQ for RocketMQ for execution. You can encapsulate parameters in an HTTP request and send the request to call an API operation. The execution results are returned in a response. The request and response are encoded in UTF-8. The service endpoint in the HTTP request is the domain name of the ApsaraMQ for RocketMQ console.
 
-#### Common parameters
+#### 3.1.2 Common parameters
 
-##### Common parameter settings
+##### 3.1.2.1 Common parameter settings
 
 When a client calls the Open API over HTTPS, all API requests must include common parameters for the server to perform permission verification. The following table lists the common parameters.
 
@@ -646,7 +871,7 @@ Assume that the final result is eqweq+adwe23****=. When you use curl, replace "+
 https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Key_1=Value_1&Key_3=Value_3&_signature= eqweq%2Badwe23****%3D
 ```
 
-##### Common response parameters
+##### 3.1.2.2 Common response parameters
 
 The HTTP client sends an HTTP request to the backend service of ApsaraMQ for RocketMQ. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format: `{`
 
@@ -666,29 +891,29 @@ The HTTP client sends an HTTP request to the backend service of ApsaraMQ for Roc
 
 `}` Response parameters: code: the HTTP status code. A value of 200 indicates that the call is successful. Other values indicate that the call fails. currentPage: the page number of the returned page if the request is a paged query. dynamicMessage: the error message. message: the processing result. pageSize: the number of entries returned per page if the request is a paged query. success: indicates whether the call is successful. data: the returned service data. The value is also a JSON string. If the return results of the current request contain service data, you must reverse parse the content in the JSON format. RequestId: the unique ID of the request. The value is a string.
 
-#### Common terms
+#### 3.1.3 Common terms
 
-##### Account security
+##### 3.1.3.1 Account security
 
-###### AccessKey
+###### 3.1.3.1.1 AccessKey
 
 The AccessKey ID of the account that you use to access Alibaba Cloud services. You can obtain your AccessKey ID from the console. When you call an API operation, the AccessKey ID is included in the API request and sent to the backend service of ApsaraMQ for RocketMQ for identity authentication. You can call ApsaraMQ for RocketMQ API operations to manage resources only within your account.
 
-###### SecretKey
+###### 3.1.3.1.2 SecretKey
 
 The AccessKey secret of the account that you use to access Alibaba Cloud services. You can obtain your AccessKey secret from the console. When you call an API operation, the AccessKey secret is included in the API request and used to calculate the signature string of the API request. The backend service of ApsaraMQ for RocketMQ uses the AccessKey secret to verify the signature string of the API request for authentication.
 
-##### Resource management
+##### 3.1.3.2 Resource management
 
-###### Topic
+###### 3.1.3.2.1 Topic
 
 A classifier that is used to classify messages. Messages in are stored by topic. Topics are among the most important resources in . In , topics are globally unique.
 
-###### Group ID (GID)
+###### 3.1.3.2.2 Group ID (GID)
 
 The ID of a group. A group consists of producers or consumers that produce or consume messages of the same type and publish or subscribe to messages based on the same logic. If group IDs for consumers or existing consumer IDs are created by a RAM user, both the RAM user and the Apsara Stack tenant account to which the RAM user belongs have permissions on these resources. If group IDs for consumers or existing consumer IDs are created by an Apsara Stack tenant account, only the Apsara Stack tenant account has permissions on these resources. Its RAM users have no permissions on these resources.
 
-#### Error codes
+#### 3.1.4 Error codes
 
 If an API operation of is successfully called, HTTP status code 200 is returned to the client. If the call fails, error codes and descriptions are returned. You can find solutions based on the error codes that are described in the following table.
 
@@ -716,11 +941,11 @@ If an API operation of is successfully called, HTTP status code 200 is returned 
 | EMPOWER EXIST ERROR _ _ | The specified authorization already exists. | Check the request parameters and try again or query the authorization first. |
 | EMPOWER OWNER CHECK ER _ _ _ ROR | The current user is not the owner of the authorized topic. | Check the ownership of the resource. |
 
-#### API reference
+#### 3.1.5 API reference
 
-##### Instance management
+##### 3.1.5.1 Instance management
 
-###### ConsoleInstanceList
+###### 3.1.5.1.1 ConsoleInstanceList
 
 Queries the list of instances. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -762,7 +987,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleClusterCreate
+###### 3.1.5.1.2 ConsoleClusterCreate
 
 Creates an ApsaraMQ for RocketMQ instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -817,7 +1042,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleClusterSpecList
+###### 3.1.5.1.3 ConsoleClusterSpecList
 
 Queries cluster specification information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -859,7 +1084,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleClusterStatus
+###### 3.1.5.1.4 ConsoleClusterStatus
 
 Queries the pod status of an ApsaraMQ for RocketMQ V5.0 instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -902,7 +1127,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleInstanceStatistics
+###### 3.1.5.1.5 ConsoleInstanceStatistics
 
 Queries instance statistics. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -943,7 +1168,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleInstanceUpdate
+###### 3.1.5.1.6 ConsoleInstanceUpdate
 
 Updates instance information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -989,7 +1214,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleInstanceBaseInfo
+###### 3.1.5.1.7 ConsoleInstanceBaseInfo
 
 Queries instance details. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1029,9 +1254,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Topic management
+##### 3.1.5.2 Topic management
 
-###### ConsoleTopicDelete
+###### 3.1.5.2.1 ConsoleTopicDelete
 
 Deletes a topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1071,7 +1296,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicListInPage
+###### 3.1.5.2.2 ConsoleTopicListInPage
 
 Queries the information about topics by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1120,7 +1345,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicStatus
+###### 3.1.5.2.3 ConsoleTopicStatus
 
 Queries queue-level statistics for a specified topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1164,7 +1389,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicUpdateInfo
+###### 3.1.5.2.4 ConsoleTopicUpdateInfo
 
 Updates topic information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1209,7 +1434,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicUpdate
+###### 3.1.5.2.5 ConsoleTopicUpdate
 
 Updates topic information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1255,7 +1480,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicSubDetail
+###### 3.1.5.2.6 ConsoleTopicSubDetail
 
 Queries subscriber information under a topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1298,7 +1523,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicListNames
+###### 3.1.5.2.7 ConsoleTopicListNames
 
 Retrieves a collection of topic names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1340,7 +1565,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicList
+###### 3.1.5.2.8 ConsoleTopicList
 
 Queries the topic list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1384,7 +1609,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicGet
+###### 3.1.5.2.9 ConsoleTopicGet
 
 Queries the topic list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1426,7 +1651,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTopicCreate
+###### 3.1.5.2.10 ConsoleTopicCreate
 
 Creates a topic. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1470,7 +1695,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupListTopicsByGroupId
+###### 3.1.5.2.11 ConsoleGroupListTopicsByGroupId
 
 Queries the list of topics to which a consumer group subscribes. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1513,9 +1738,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Group management
+##### 3.1.5.3 Group management
 
-###### ConsoleGroupListInPage
+###### 3.1.5.3.1 ConsoleGroupListInPage
 
 Queries subscription group information by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1563,7 +1788,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupUpdateInfo
+###### 3.1.5.3.2 ConsoleGroupUpdateInfo
 
 Updates the consumer group information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1606,7 +1831,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupListGroupIds
+###### 3.1.5.3.3 ConsoleGroupListGroupIds
 
 Queries group IDs. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1650,7 +1875,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupList
+###### 3.1.5.3.4 ConsoleGroupList
 
 Queries the consumer group list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1695,7 +1920,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupDelete
+###### 3.1.5.3.5 ConsoleGroupDelete
 
 Deletes a consumer group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1739,7 +1964,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupCreate
+###### 3.1.5.3.6 ConsoleGroupCreate
 
 Creates a consumer group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1785,9 +2010,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Message management
+##### 3.1.5.4 Message management
 
-###### ConsoleMessageGetByPagedDLQ
+###### 3.1.5.4.1 ConsoleMessageGetByPagedDLQ
 
 Queries dead-letter messages by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1818,7 +2043,7 @@ Queries dead-letter messages by page. This operation does not have operation-spe
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleMessageResendByIdInDLQ
+###### 3.1.5.4.2 ConsoleMessageResendByIdInDLQ
 
 Resends dead-letter messages. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1842,7 +2067,7 @@ Resends dead-letter messages. This operation does not have operation-specific re
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleMessageDownload
+###### 3.1.5.4.3 ConsoleMessageDownload
 
 Downloads a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1880,7 +2105,7 @@ Downloads a message. This operation does not have operation-specific request hea
 
 `}`
 
-###### ConsoleMessageDownloadAllInDLQ
+###### 3.1.5.4.4 ConsoleMessageDownloadAllInDLQ
 
 Downloads messages from the dead-letter queue. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1926,7 +2151,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageSend
+###### 3.1.5.4.5 ConsoleMessageSend
 
 Sends a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -1971,7 +2196,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageTrace
+###### 3.1.5.4.6 ConsoleMessageTrace
 
 Queries message traces. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2018,7 +2243,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessagePush
+###### 3.1.5.4.7 ConsoleMessagePush
 
 Pushes a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2065,7 +2290,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageGetByPagedTopic
+###### 3.1.5.4.8 ConsoleMessageGetByPagedTopic
 
 Queries messages by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2114,7 +2339,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageGetByKey
+###### 3.1.5.4.9 ConsoleMessageGetByKey
 
 Queries messages by message key. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2160,7 +2385,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageGetByIdInDLQ
+###### 3.1.5.4.10 ConsoleMessageGetByIdInDLQ
 
 Queries messages from the dead-letter queue by message ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2206,7 +2431,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageGetById
+###### 3.1.5.4.11 ConsoleMessageGetById
 
 Queries a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2250,7 +2475,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMessageDownloadBodyInDLQ
+###### 3.1.5.4.12 ConsoleMessageDownloadBodyInDLQ
 
 Downloads messages from the dead-letter queue. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2296,9 +2521,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Trace management
+##### 3.1.5.5 Trace management
 
-###### ConsoleTraceDeleteTraceQueryTask
+###### 3.1.5.5.1 ConsoleTraceDeleteTraceQueryTask
 
 Deletes a trace query task. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2318,7 +2543,7 @@ Deletes a trace query task. This operation does not have operation-specific requ
 | Message | String | success | The returned message. |
 | Data | String | {} | The returned data. |
 
-###### ConsoleTraceGetPubTraceByQueryId
+###### 3.1.5.5.2 ConsoleTraceGetPubTraceByQueryId
 
 Queries the trace of a message. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2340,7 +2565,7 @@ Queries the trace of a message. This operation does not have operation-specific 
 | Message | String | success | The returned message. |
 | Data | String | {} | The returned data. |
 
-###### ConsoleTraceQueryByMsgId
+###### 3.1.5.5.3 ConsoleTraceQueryByMsgId
 
 Queries message traces. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2384,7 +2609,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTraceQueryByMsgTopic
+###### 3.1.5.5.4 ConsoleTraceQueryByMsgTopic
 
 Queries message traces by topic name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2431,7 +2656,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTraceQueryByMsgKey
+###### 3.1.5.5.5 ConsoleTraceQueryByMsgKey
 
 Queries message traces by message key. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2479,7 +2704,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTraceListByUserIdInPage
+###### 3.1.5.5.6 ConsoleTraceListByUserIdInPage
 
 Queries trace information within the user permissions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2525,7 +2750,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleTraceGetTraceMapByQueryId
+###### 3.1.5.5.7 ConsoleTraceGetTraceMapByQueryId
 
 Queries the complete trace link based on a single query ID. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2566,9 +2791,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Consumer management
+##### 3.1.5.6 Consumer management
 
-###### ConsoleConsumerGetConnection
+###### 3.1.5.6.1 ConsoleConsumerGetConnection
 
 Queries online consumer information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2612,7 +2837,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleConsumerProgress
+###### 3.1.5.6.2 ConsoleConsumerProgress
 
 Views the consumption progress of consumers. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2658,7 +2883,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupConsumerUpdate
+###### 3.1.5.6.3 ConsoleGroupConsumerUpdate
 
 Updates the consumer information in a subscription group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2703,7 +2928,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleConsumerAccumulate
+###### 3.1.5.6.4 ConsoleConsumerAccumulate
 
 Queries the consumption progress. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2727,7 +2952,7 @@ Queries the consumption progress. This operation does not have operation-specifi
 | Data | String | {} | The response data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleConsumerTimespan
+###### 3.1.5.6.5 ConsoleConsumerTimespan
 
 Views the consumption progress. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2773,7 +2998,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleGroupSubDetail
+###### 3.1.5.6.6 ConsoleGroupSubDetail
 
 Queries consumer subscription details. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2818,7 +3043,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleConsumerStatus
+###### 3.1.5.6.7 ConsoleConsumerStatus
 
 Queries the consumption status of consumers. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2865,7 +3090,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleConsumerResetOffset
+###### 3.1.5.6.8 ConsoleConsumerResetOffset
 
 Resets consumer offsets. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2910,7 +3135,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleConsumerJstackInfo
+###### 3.1.5.6.9 ConsoleConsumerJstackInfo
 
 Queries the stack information about a consumer. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2957,9 +3182,9 @@ Successful response example `JSON` format `{`
 
 `}`
 
-##### Cluster management
+##### 3.1.5.7 Cluster management
 
-###### ConsoleClusterGetCapacity
+###### 3.1.5.7.1 ConsoleClusterGetCapacity
 
 Queries the cluster capacity. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -2980,7 +3205,7 @@ Queries the cluster capacity. This operation does not have operation-specific re
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleClusterList
+###### 3.1.5.7.2 ConsoleClusterList
 
 Queries a list of clusters. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3020,9 +3245,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Region management
+##### 3.1.5.8 Region management
 
-###### ConsoleRegionList
+###### 3.1.5.8.1 ConsoleRegionList
 
 Queries regions. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3059,7 +3284,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleMetaData
+###### 3.1.5.8.2 ConsoleMetaData
 
 Queries metadata information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3099,7 +3324,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleCommonRegionData
+###### 3.1.5.8.3 ConsoleCommonRegionData
 
 Queries the region parameter. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3138,9 +3363,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Connect instance management
+##### 3.1.5.9 Connect instance management
 
-###### ConsoleConnectCreate
+###### 3.1.5.9.1 ConsoleConnectCreate
 
 Creates a connect instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3182,7 +3407,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-###### ConsoleConnectList
+###### 3.1.5.9.2 ConsoleConnectList
 
 Queries the connect instance list. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3222,9 +3447,9 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-##### Router task management
+##### 3.1.5.10 Router task management
 
-###### ConsoleStopCloudRouterTask
+###### 3.1.5.10.1 ConsoleStopCloudRouterTask
 
 Stops a cloud router task in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3246,7 +3471,7 @@ Stops a cloud router task in the console. This operation does not have operation
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleStartCloudRouterTask
+###### 3.1.5.10.2 ConsoleStartCloudRouterTask
 
 Starts a cloud router task. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3268,7 +3493,7 @@ Starts a cloud router task. This operation does not have operation-specific requ
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleQueryCloudRouterTask
+###### 3.1.5.10.3 ConsoleQueryCloudRouterTask
 
 Queries cloud router tasks in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3291,7 +3516,7 @@ Queries cloud router tasks in the console. This operation does not have operatio
 | Data | String | {} | The response data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleQueryStatsCloudRouterTask
+###### 3.1.5.10.4 ConsoleQueryStatsCloudRouterTask
 
 Queries cloud router statistics. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3316,7 +3541,7 @@ Queries cloud router statistics. This operation does not have operation-specific
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleQueryItemsCloudRouterTask
+###### 3.1.5.10.5 ConsoleQueryItemsCloudRouterTask
 
 Queries configuration items related to the cloud router. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3343,7 +3568,7 @@ Queries configuration items related to the cloud router. This operation does not
 |---|---|---|---|
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleListInPageCloudRouterTask
+###### 3.1.5.10.6 ConsoleListInPageCloudRouterTask
 
 Queries cloud routers by page. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3368,7 +3593,7 @@ Queries cloud routers by page. This operation does not have operation-specific r
 | Data | String | {} | The response data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleDeleteCloudRouterTask
+###### 3.1.5.10.7 ConsoleDeleteCloudRouterTask
 
 Deletes a cloud router. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3390,7 +3615,7 @@ Deletes a cloud router. This operation does not have operation-specific request 
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleCreateCloudRouterTask
+###### 3.1.5.10.8 ConsoleCreateCloudRouterTask
 
 Creates an asynchronous task for cloud router operations in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3433,9 +3658,9 @@ Creates an asynchronous task for cloud router operations in the console. This op
 | Data | String | {} | The response data. |
 | Total | Long | 1 | The total number of entries. |
 
-##### CloudInfo management
+##### 3.1.5.11 CloudInfo management
 
-###### ConsoleUpdateCloudInfo
+###### 3.1.5.11.1 ConsoleUpdateCloudInfo
 
 Updates the cloud service configuration or status information in the console. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3465,7 +3690,7 @@ Updates the cloud service configuration or status information in the console. Th
 | Data | String | {} | The response data. |
 |---|---|---|---|
 
-###### ConsoleQueryCloudInfo
+###### 3.1.5.11.2 ConsoleQueryCloudInfo
 
 Queries information related to the cloud platform for console operations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3490,7 +3715,7 @@ Queries information related to the cloud platform for console operations. This o
 | Data | String | {} | The returned data. |
 | Total | Long | 1 | The total number of entries. |
 
-###### ConsoleDeleteCloudInfo
+###### 3.1.5.11.3 ConsoleDeleteCloudInfo
 
 Deletes cloud platform-related information. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3511,7 +3736,7 @@ Deletes cloud platform-related information. This operation does not have operati
 | Message | String | success | The additional information. |
 | Data | String | {} | The returned data. |
 
-###### ConsoleCreateCloudInfo
+###### 3.1.5.11.4 ConsoleCreateCloudInfo
 
 Generates cloud service configuration information entered in the console for cloud resource creation. This operation does not have operation-specific request headers and uses only common request headers. For more information, see Common request parameters.
 
@@ -3541,21 +3766,19 @@ Generates cloud service configuration information entered in the console for clo
 | Message | String | success | The response message. |
 | Data | String | {} | The response data. |
 
-SDK reference
+## 4 SDK reference
 
-## SDK reference
+### 4.1 RocketMQ v5.0_SDK
 
-### RocketMQ v5.0_SDK
-
-#### Overview
+#### 4.1.1 Overview
 
 is an important component of distributed systems. This service supports asynchronous communication for application decoupling and peak-load shifting, and provides high performance, high availability, high scalability, and eventual consistency. This document describes how to manage a message queuing service between RocketMQ applications and the message queuing server during data transmission. This document provides the specifications that the service complies with and the common API operations that are used to manage the service. This document is suitable for scenarios in which messages are transmitted over the TCP protocol by using SDK for Java.
 
-#### Message model
+#### 4.1.2 Message model
 
 supports the publish-subscribe model. A producer can publish a message to a broker, and multiple consumers can subscribe to a topic on the broker. The following figure shows the messaging model. Figure 1. Publish-subscribe model
 
-#### Transport protocol and character
+#### 4.1.3 Transport protocol and character encoding
 
 **encoding**
 
@@ -3563,15 +3786,15 @@ The underlying layer of SDKs provides services based on the TCP protocol. User r
 
 **Transport layer encryption**
 
-SDK reference instances support Transport Layer Security (TLS) 1.2 and later. You can configure parameters in an SDK to determine whether to use encrypted transport layer links.
+instances support Transport Layer Security (TLS) 1.2 and later. You can configure parameters in an SDK to determine whether to use encrypted transport layer links.
 **Configuration method**: When you start the client program, set the JVM attributes to
 determine whether to use the encrypted transport layer link. The startup command is **java -**
 **Dtls.enable=true**. By default, TLS links are disabled. If you set the value to true, encrypted
 transport layer links are enabled.
 
-#### Common classes and methods
+#### 4.1.4 Common classes and methods
 
-##### PropertyKeyConst
+##### 4.1.4.1 PropertyKeyConst
 
 The following table lists the main fields of this class.
 
@@ -3586,8 +3809,6 @@ The following table lists the main fields of this class.
 | ConsumeThreadNums | String | 64 | The number of consumer threads. |
 | MaxReconsumeTimes | String | 16 | The maximum number of delivery retries that can be performed when a message fails to be consumed. |
 
-SDK reference
-
 | ConsumeTimeout | String | 15 | The timeout period for consuming each message. If the time for consuming a message exceeds the specified timeout period, the message fails to be consumed and is redelivered after a retry interval. Configure an appropriate value for each type of application. Unit: minute. |
 |---|---|---|---|
 | ConsumeMessageBatc hMaxSize | String | 1 | The maximum number of messages that can be consumed in each batch. The actual number of consumed messages in a batch can be smaller than the value of this parameter. The value must be an integer from 1 to 32. The default value is 1. |
@@ -3595,16 +3816,14 @@ SDK reference
 | shardingKey | String | - | The partition key that is used to determine the partitions to which ordered messages are distributed. |
 | suspendTimeMillis | String | 3000 | The retry interval for ordered messages that fail to be consumed. Unit: milliseconds. |
 
-##### ONSFactory
+##### 4.1.4.2 ONSFactory
 
-###### createConsumer
+###### 4.1.4.2.1 createConsumer
 
 Syntax: static Consumer createConsumer(Properties properties) Description: You can call this operation to create a consumer instance that consumes multiple types of messages in . These message types include normal messages, scheduled messages, delayed messages, and transactional messages. Request parameter
 
 | Parameter | Type | Description |
 |---|---|---|
-
-SDK reference
 
 | properties | Properties | For more information, see the description of PropertyKeyConst. Required properties: PropertyKeyConst.NAMESRV ADDR, _ PropertyKeyConst.ConsumerId, PropertyKeyConst.AccessKey, and PropertyKeyConst.SecretKey. Optional properties: PropertyKeyConst.ConsumeThreadNums and PropertyKeyConst.ConsumeTimeout. |
 |---|---|---|
@@ -3615,7 +3834,7 @@ Response parameter
 |---|---|
 | Consumer | The consumer instance that consumes multiple types of messages in. These message types include normal messages, scheduled messages, 、 分布式事务消息, and delayed messages. |
 
-###### createBatchConsumer
+###### 4.1.4.2.2 createBatchConsumer
 
 Syntax: static BatchConsumer createBatchConsumer(Properties properties) Description: You can call this operation to create consumer instances in in batches. Request parameters:
 
@@ -3629,9 +3848,7 @@ Response:
 |---|---|
 | BatchConsumer | BatchConsumer |
 
-SDK reference
-
-###### createOrderedConsumer
+###### 4.1.4.2.3 createOrderedConsumer
 
 Syntax: static OrderConsumer createOrderedConsumer(Properties properties) Description: You can call this operation to create a consumer instance for consuming ordered messages in . Request parameters:
 
@@ -3645,7 +3862,7 @@ Response:
 |---|---|
 | OrderConsumer | The consumer instance of ordered messages in . |
 
-###### createOrderProducer
+###### 4.1.4.2.4 createOrderProducer
 
 Syntax: static OrderProducer createOrderProducer(Properties properties) Description: You can call this operation to create a producer instance for sending ordered messages in . Request parameters:
 
@@ -3653,13 +3870,13 @@ Syntax: static OrderProducer createOrderProducer(Properties properties) Descript
 |---|---|---|
 | properties | Properties | For more information, see the description of PropertyKeyConst. Required properties: PropertyKeyConst.NAMESRV ADDR, _ PropertyKeyConst.GROUP ID, PropertyKeyConst.AccessKey, _ PropertyKeyConst.SecretKey, and PropertyKeyConst.ShardingKey Optional properties: PropertyKeyConst.SendMsgTimeoutMillis |
 
-SDK reference Response:
+Response:
 
 | Type | Description |
 |---|---|
 | OrderProducer | The producer instance of ordered messages in . |
 
-###### createProducer
+###### 4.1.4.2.5 createProducer
 
 Syntax: static Producer createProducer(Properties properties) Description: You can call this operation to create a producer instance that publishes normal messages, scheduled messages, and delayed messages in . Request parameter
 
@@ -3673,14 +3890,12 @@ Response:
 |---|---|
 | Producer | The producer instance that publishes normal messages, scheduled messages, and delayed messages in . |
 
-###### createTransactionProducer
+###### 4.1.4.2.6 createTransactionProducer
 
 Syntax: static TransactionProducer createTransactionProducer(Properties properties, LocalTransactionChecker checker) Description: You can call this operation to create a producer instance for sending distributed transactional messages in . Request parameters:
 
 | Parameter | Type | Description |
 |---|---|---|
-
-SDK reference
 
 | properties | Properties | For more information, see the description of PropertyKeyConst. Required properties: PropertyKeyConst.NAMESRV ADDR, _ PropertyKeyConst.GROUP ID, _ PropertyKeyConst.AccessKey, and PropertyKeyConst.SecretKey. Optional properties: PropertyKeyConst.SendMsgTimeoutMillis and PropertyKeyConst.CheckImmunityTimeInSeconds. |
 |---|---|---|
@@ -3692,17 +3907,17 @@ Response:
 |---|---|
 | TransactionProducer | The producer instance of distributed transactional messages in . |
 
-##### Message
+##### 4.1.4.3 Message
 
-###### Overview
+###### 4.1.4.3.1 Overview
 
 It is a message that you want to send. A valid message must contain the topic, body, optional tags, and message key. Note: The length of the custom key-value pair for a message is not constrained, but all custom key-value pairs cannot exceed 32,767 bytes after they are serialized.
 
-###### Default message construction
+###### 4.1.4.3.2 Default message construction
 
 Syntax: Message() Description: You can call this operation to create a message by using the default constructor. Request parameters: none
 
-###### Message construction by using
+###### 4.1.4.3.3 Message construction by using parameters (1)
 
 **parameters (1)**
 
@@ -3711,15 +3926,13 @@ Syntax: public Message(String topic, String tag, String key, byte body) Descript
 | Parameter | Type | Description |
 |---|---|---|
 
-SDK reference
-
 | topic | String | The topic of the message. It cannot exceed 255 characters in length. The message topic can contain uppercase letters (A-Z), lowercase letters (a-z), digits (0- 9), hyphens (-), and underscores ( ). _ |
 |---|---|---|
 | tag | String | The message tag, which must be a valid identifier. The tag must be as short as possible and easy to understand. |
 | key | String | The key of the message. |
 | body | byte | The message body. It cannot exceed 4 MB by default, including message attributes that cannot exceed 8 KB. For more information about the message body, see the cluster deployment documentation. |
 
-###### Message construction by using
+###### 4.1.4.3.4 Message construction by using parameters (2)
 
 **parameters (2)**
 
@@ -3731,7 +3944,7 @@ Syntax: public Message(String topic, String tags, byte body) Description: You ca
 | tags | String | The message tag, which must be a valid identifier. The tag must be as short as possible and easy to understand. |
 | body | byte | The message body. It cannot exceed 4 MB by default, including message attributes that cannot exceed 8 KB. For more information about the message body, see the cluster deployment documentation. |
 
-###### putUserProperties
+###### 4.1.4.3.5 putUserProperties
 
 Syntax: public void putUserProperties(String key, String value) Description: You can call this operation to add a custom property key-value pair that can be obtained when the message is consumed. Request parameters:
 
@@ -3742,9 +3955,9 @@ Syntax: public void putUserProperties(String key, String value) Description: You
 
 Response: none
 
-###### getUserProperties
+###### 4.1.4.3.6 getUserProperties
 
-SDK reference Syntax: public String getUserProperties(String key) Description: You can call this operation to obtain the custom property value. Request parameters:
+Syntax: public String getUserProperties(String key) Description: You can call this operation to obtain the custom property value. Request parameters:
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3756,7 +3969,7 @@ Response:
 |---|---|
 | String | The custom property value. |
 
-###### getTopic
+###### 4.1.4.3.7 getTopic
 
 Syntax: public String getTopic() Description: You can call this operation to obtain the topic of the messages. Request parameters: none Response:
 
@@ -3764,7 +3977,7 @@ Syntax: public String getTopic() Description: You can call this operation to obt
 |---|---|
 | String | The topic of the messages. |
 
-###### setTopic
+###### 4.1.4.3.8 setTopic
 
 Syntax: public void setTopic(String topic) Description: You can call this operation to set the topic of the messages. Request parameters:
 
@@ -3774,7 +3987,7 @@ Syntax: public void setTopic(String topic) Description: You can call this operat
 
 Response: none
 
-###### getTag
+###### 4.1.4.3.9 getTag
 
 Syntax: public String getTag() Description: You can call this operation to obtain the message tag. Request parameters: none Response:
 
@@ -3782,9 +3995,9 @@ Syntax: public String getTag() Description: You can call this operation to obtai
 |---|---|
 | String | The tag of the message. |
 
-###### setTag
+###### 4.1.4.3.10 setTag
 
-Syntax: public void setTag(String tag) SDK reference Sy a pubc o dse ag(S gag) Description: You can call this operation to set the message tag. Request parameters:
+Syntax: public void setTag(String tag) Sy a pubc o dse ag(S gag) Description: You can call this operation to set the message tag. Request parameters:
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3792,7 +4005,7 @@ Syntax: public void setTag(String tag) SDK reference Sy a pubc o dse ag(S gag) D
 
 Response: none
 
-###### getKey
+###### 4.1.4.3.11 getKey
 
 Description: You can call this operation to obtain the message key. Syntax: public String getKey() Request parameters: none Response:
 
@@ -3800,7 +4013,7 @@ Description: You can call this operation to obtain the message key. Syntax: publ
 |---|---|
 | String | The key of the message. |
 
-###### setKey
+###### 4.1.4.3.12 setKey
 
 Syntax: public void setKey(String key) Description: You can call this operation to set the message key. Request parameters:
 
@@ -3810,7 +4023,7 @@ Syntax: public void setKey(String key) Description: You can call this operation 
 
 Response: none
 
-###### getMsgID
+###### 4.1.4.3.13 getMsgID
 
 Syntax: public String getMsgID() Description: You can call this operation to obtain the message ID. Request parameters: none Response:
 
@@ -3818,21 +4031,19 @@ Syntax: public String getMsgID() Description: You can call this operation to obt
 |---|---|
 | String | The ID of the message. |
 
-###### setMsgID
+###### 4.1.4.3.14 setMsgID
 
 Syntax: public void setMsgID(String msgid) Description: You can call this operation to set the message ID. Request parameters:
 
 | Parameter | Type | Description |
 |---|---|---|
 
-SDK reference
-
 | msgid | String | The ID of the message. |
 |---|---|---|
 
 Response: none
 
-###### getReconsumeTimes
+###### 4.1.4.3.15 getReconsumeTimes
 
 Syntax: public int getReconsumeTimes() Description: You can call this operation to obtain the number of retries after a message has failed to be consumed. Request parameters: none Response:
 
@@ -3840,7 +4051,7 @@ Syntax: public int getReconsumeTimes() Description: You can call this operation 
 |---|---|
 | String | The number of retries. |
 
-###### setReconsumeTimes
+###### 4.1.4.3.16 setReconsumeTimes
 
 Syntax: public void setReconsumeTimes(int value) Description: You can call this operation to set the number of retries to consume a message. Request parameters:
 
@@ -3850,7 +4061,7 @@ Syntax: public void setReconsumeTimes(int value) Description: You can call this 
 
 Response: none
 
-###### getBornTimestamp
+###### 4.1.4.3.17 getBornTimestamp
 
 Syntax: public long getBornTimestamp() Description: You can call this operation to obtain the message production time. Request parameters: none Response:
 
@@ -3858,7 +4069,7 @@ Syntax: public long getBornTimestamp() Description: You can call this operation 
 |---|---|
 | String | The production time of the message. |
 
-###### setBornTimestamp
+###### 4.1.4.3.18 setBornTimestamp
 
 Syntax: public void setBornTimestamp(long value) Description: You can call this operation to set the message production time. Request parameters:
 
@@ -3866,9 +4077,9 @@ Syntax: public void setBornTimestamp(long value) Description: You can call this 
 |---|---|---|
 | value | long | The production time of the message. |
 
-SDK reference Response: none
+Response: none
 
-###### getBornHost
+###### 4.1.4.3.19 getBornHost
 
 Syntax: public String getBornHost() Description: You can call this operation to retrieve the message production host. Request parameters: none Response:
 
@@ -3876,7 +4087,7 @@ Syntax: public String getBornHost() Description: You can call this operation to 
 |---|---|
 | String | The host that produced the message. |
 
-###### setBornHost
+###### 4.1.4.3.20 setBornHost
 
 Syntax: public void setBornHost(String value) Description: You can call this operation to set the message production host. Request parameters:
 
@@ -3886,7 +4097,7 @@ Syntax: public void setBornHost(String value) Description: You can call this ope
 
 Response: none
 
-###### getStartDeliverTime
+###### 4.1.4.3.21 getStartDeliverTime
 
 Syntax: public long getStartDeliverTime() Description: You can call this operation to obtain the start time for delivering scheduled messages. Request parameters: none Response:
 
@@ -3894,7 +4105,7 @@ Syntax: public long getStartDeliverTime() Description: You can call this operati
 |---|---|
 | String | The start time for delivering scheduled messages. |
 
-###### setStartDeliverTime
+###### 4.1.4.3.22 setStartDeliverTime
 
 Syntax: public void setStartDeliverTime(long value) Description: You can call this operation to set the delivery time (absolute time) of scheduled messages with a maximum latency of 40 days. Request parameters:
 
@@ -3902,9 +4113,9 @@ Syntax: public void setStartDeliverTime(long value) Description: You can call th
 |---|---|---|
 | value | long | The start time for delivering scheduled messages. |
 
-SDK reference Response: none
+Response: none
 
-###### getShardingKey
+###### 4.1.4.3.23 getShardingKey
 
 Syntax: public long getShardingKey() Description: You can call this operation to obtain the sharding key for ordered messages. Request parameters: none Response:
 
@@ -3912,7 +4123,7 @@ Syntax: public long getShardingKey() Description: You can call this operation to
 |---|---|
 | String | The sharding key for ordered messages. |
 
-###### setShardingKey
+###### 4.1.4.3.24 setShardingKey
 
 Syntax: public void setShardingKey(String value) Description: You can call this operation to set the sharding key for ordered messages. Request parameters:
 
@@ -3922,13 +4133,13 @@ Syntax: public void setShardingKey(String value) Description: You can call this 
 
 Response: none
 
-##### ONSClientException
+##### 4.1.4.4 ONSClientException
 
-###### Default ONSClientException construction
+###### 4.1.4.4.1 Default ONSClientException construction
 
 Syntax: public ONSClientException() Description: Uses the default exception constructor to construct ONSClientException. Request parameters: none
 
-###### ONSClientException construction by
+###### 4.1.4.4.2 ONSClientException construction by using parameters (1)
 
 **using parameters (1)**
 
@@ -3938,9 +4149,7 @@ Syntax: public ONSClientException(String message) Description: Uses the exceptio
 |---|---|---|
 | message | String | The exception information that needs to be exposed. |
 
-SDK reference
-
-###### ONSClientException construction by
+###### 4.1.4.4.3 ONSClientException construction by using parameters (2)
 
 **using parameters (2)**
 
@@ -3950,7 +4159,7 @@ Syntax: public ONSClientException(Throwable cause) Description: Uses the excepti
 |---|---|---|
 | message | String | The exception information that needs to be exposed. |
 
-###### ONSClientException construction by
+###### 4.1.4.4.4 ONSClientException construction by using parameters (3)
 
 **using parameters (3)**
 
@@ -3961,19 +4170,19 @@ Syntax: public ONSClientException(String message, Throwable cause) Description: 
 | message | String | The exception information that needs to be exposed. |
 | cause | Throwable | The exception information that needs to be exposed. |
 
-##### Message sending
+##### 4.1.4.5 Message sending
 
-###### Overview
+###### 4.1.4.5.1 Overview
 
-This topic describes the methods for sending various types of messages in ApsaraMQ for RocketMQ. The following figure shows the methods and parameters for different message types. SDK reference Figure 1. Methods and parameters for publishing messages
+This topic describes the methods for sending various types of messages in ApsaraMQ for RocketMQ. The following figure shows the methods and parameters for different message types. Figure 1. Methods and parameters for publishing messages
 
-###### SendResult
+###### 4.1.4.5.2 SendResult
 
-###### Default SendResult construction
+###### 4.1.4.5.2.1 Default SendResult construction
 
 Syntax: public SendResult() Description: Uses the default constructor to create a message sending result object. Request parameters: none
 
-###### getMessageId
+###### 4.1.4.5.2.2 getMessageId
 
 Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none
 
@@ -3981,7 +4190,7 @@ Syntax: public long getMessageId() Description: Queries the ID of a message that
 |---|---|
 | String | The ID of the sent message. |
 
-###### getTopic
+###### 4.1.4.5.2.3 getTopic
 
 Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none
 
@@ -3989,21 +4198,21 @@ Syntax: public String getTopic() Description: Queries the topic to which a messa
 |---|---|
 | String | The topic of the sent message. |
 
-###### toString
+###### 4.1.4.5.2.4 toString
 
-Syntax: public String toString() SDK reference Description: Serializes a message sending result. Request parameters: none
+Syntax: public String toString() Description: Serializes a message sending result. Request parameters: none
 
 | Type | Description |
 |---|---|
 | String | The serialized string of the message sending result. |
 
-###### Producer
+###### 4.1.4.5.3 Producer
 
-###### Overview
+###### 4.1.4.5.3.1 Overview
 
 You can use a producer instance to send regular messages, scheduled messages, or delayed messages. Thread security: All implementation classes of a producer instance are thread-secure. Multiple threads can be used to send messages concurrently. A producer instance can send messages under multiple topics. In normal cases, a producer instance is efficient enough to complete all the message sending tasks by using relevant methods. No more instances need to be created. Regular messages can be sent in reliable synchronous, reliable asynchronous, or one-way mode.
 
-###### send
+###### 4.1.4.5.3.2 send
 
 Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown.
 
@@ -4015,21 +4224,19 @@ Syntax: public SendResult send(Message message) Description: Sends a regular mes
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
-###### sendOneway
+###### 4.1.4.5.3.3 sendOneway
 
 Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker.
 
 | Parameter | Type | Description |
 |---|---|---|
 
-SDK reference
-
 | message | Message | The message that you want to send. |
 |---|---|---|
 
 Response parameters: none
 
-###### sendAsync
+###### 4.1.4.5.3.4 sendAsync
 
 Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode.
 
@@ -4040,7 +4247,7 @@ Syntax: public void sendAsync(Message message, SendCallback sendCallback) Descri
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.4.5.3.5 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -4048,7 +4255,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.4.5.3.6 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -4056,17 +4263,17 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.4.5.3.7 start
 
-Syntax: public void start() Description: Enables a producer instance to send messages. Request parameters: none SDK reference Response parameters: none
+Syntax: public void start() Description: Enables a producer instance to send messages. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.4.5.3.8 shutdown
 
 Syntax: public void shutdown() Description: Disables a producer instance from sending messages. Request parameters: none Response parameters: none
 
-###### TransactionProducer
+###### 4.1.4.5.4 TransactionProducer
 
-###### send
+###### 4.1.4.5.4.1 send
 
 Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2.
 
@@ -4080,19 +4287,17 @@ Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Obje
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
-###### isStarted
+###### 4.1.4.5.4.2 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
 | Type | Description |
 |---|---|
 
-SDK reference
-
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 |---|---|
 
-###### isClosed
+###### 4.1.4.5.4.3 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -4100,15 +4305,15 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.4.5.4.4 start
 
 Syntax: public void start() Description: Enables a producer instance to send transactional messages. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.4.5.4.5 shutdown
 
 Syntax: public void shutdown() Description: Disables a producer instance from sending transactional messages. Request parameters: none Response parameters: none
 
-###### LocalTransactionExecuter
+###### 4.1.4.5.4.6 LocalTransactionExecuter
 
 execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications.
 
@@ -4124,7 +4329,7 @@ execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: 
 | baba Cloud Message Queue | RocketMQ v5.0 Developer Guide SDK referenc |
 |---|---|
 
-###### TransactionStatus
+###### 4.1.4.5.4.7 TransactionStatus
 
 The status of a distributed transaction half message includes transaction commit, transaction rollback, and unknown status. Enumeration:
 
@@ -4134,9 +4339,9 @@ The status of a distributed transaction half message includes transaction commit
 | RollbackTransaction | The transaction is rolled back. The corresponding transactional message will be deleted and will not be delivered to consumers. |
 | Unknow | The transaction is in the unknown status. Generally, this value is used when you cannot determine whether the transaction has succeeded or failed. The server periodically checks the transactions that are in the unknown status. |
 
-###### OrderProducer
+###### 4.1.4.5.5 OrderProducer
 
-###### send
+###### 4.1.4.5.5.1 send
 
 Syntax: SendResult send(Message message, String shardingKey) Description: Send ordered messages. Parameters:
 
@@ -4151,9 +4356,7 @@ Response parameter:
 |---|---|
 | SendResult | The sending result. It includes the message ID, message topic, and other information. |
 
-SDK reference
-
-###### isStarted
+###### 4.1.4.5.5.2 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -4161,7 +4364,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.4.5.5.3 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -4169,27 +4372,27 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.4.5.5.4 start
 
 Syntax: public void start() Description: Enable a producer instance to send ordered messages. Parameters: None Returns: None
 
-###### shutdown
+###### 4.1.4.5.5.5 shutdown
 
 Syntax: public void shutdown() Description: Disable a producer instance for ordered messages sending. Parameters: None Returns: None
 
-##### Message subscription
+##### 4.1.4.6 Message subscription
 
-###### Overview
+###### 4.1.4.6.1 Overview
 
-This topic describes the methods for subscribing to various types of messages in ApsaraMQ for RocketMQ. The following figure shows the methods and parameters for different message types. SDK reference Figure 1. Methods and parameters for subscribing to messages
+This topic describes the methods for subscribing to various types of messages in ApsaraMQ for RocketMQ. The following figure shows the methods and parameters for different message types. Figure 1. Methods and parameters for subscribing to messages
 
-###### Consumer
+###### 4.1.4.6.2 Consumer
 
-###### Overview
+###### 4.1.4.6.2.1 Overview
 
 You can use a consumer instance to subscribe to regular messages, transactional messages, scheduled messages, or delayed messages.
 
-###### subscribe
+###### 4.1.4.6.2.2 subscribe
 
 Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages.
 
@@ -4201,9 +4404,9 @@ Syntax: public void subscribe(String topic, String subExpression, MessageListene
 
 Response parameters: none
 
-###### unsubscribe
+###### 4.1.4.6.2.3 unsubscribe
 
-Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic. SDK reference
+Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4211,7 +4414,7 @@ Syntax: void unsubscribe(String topic) Description: Cancels the subscription to 
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.4.6.2.4 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -4219,7 +4422,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.4.6.2.5 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -4227,21 +4430,21 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.4.6.2.6 start
 
 Syntax: public void start() Description: Enables a consumer instance. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.4.6.2.7 shutdown
 
 Syntax: public void shutdown() Description: Disables a consumer instance. Request parameters: none Response parameters: none
 
-###### MessageListener
+###### 4.1.4.6.3 MessageListener
 
-###### Overview
+###### 4.1.4.6.3.1 Overview
 
-A consumer registers a message listener to subscribe to messages. SDK reference Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
+A consumer registers a message listener to subscribe to messages. Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
 
-###### consume
+###### 4.1.4.6.3.2 consume
 
 Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
 
@@ -4254,9 +4457,9 @@ Syntax: Action consume(Message message, ConsumeContext context) Description: Con
 |---|---|
 | Action | The result of the consumption. Consumption failed: An exception is thrown or Action.ReconsumeLater is returned. Action.ReconsumeLater indicates null. Consumption succeeded: Action.CommitMessage is returned. |
 
-###### Action
+###### 4.1.4.6.4 Action
 
-###### Overview
+###### 4.1.4.6.4.1 Overview
 
 The result of the consumption that is returned for a message. Enumeration
 
@@ -4265,9 +4468,9 @@ The result of the consumption that is returned for a message. Enumeration
 | CommitMessage | String | The message is consumed. The consumer continues to consume the next message. |
 | ReconsumeLater | String | The consumer failed to consume the message. The consumer requests the RocketMQ broker to redeliver the failed message later and continues to consume another message. |
 
-###### valueOf
+###### 4.1.4.6.4.2 valueOf
 
-Syntax: public static Action valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed. SDK reference
+Syntax: public static Action valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4284,7 +4487,7 @@ Exceptions
 | IllegalArgumentException | This exception is thrown because the enumerated type does not have an enumerated constant with the specified name. |
 | NullPointerException | This exception is thrown because the value of the request parameter is null. |
 
-###### values
+###### 4.1.4.6.4.3 values
 
 Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
 
@@ -4292,7 +4495,7 @@ Syntax: public static Action[] values() Description: Returns an array of constan
 |---|---|
 | Action[] | The array of constants in the declared order of constants of the enumerated type that is returned. |
 
-###### PropertyValueConst
+###### 4.1.4.6.5 PropertyValueConst
 
 The constant that specifies the consumption mode. Enumeration
 
@@ -4301,13 +4504,13 @@ The constant that specifies the consumption mode. Enumeration
 | BROADCASTING | String | The broadcasting consumption mode. |
 | CLUSTERING | String | The clustering consumption mode. |
 
-###### OrderConsumer
+###### 4.1.4.6.6 OrderConsumer
 
-###### Overview
+###### 4.1.4.6.6.1 Overview
 
-You can use a consumer instance of ordered messages to subscribe to messages in first in, first out (FIFO) order. SDK reference
+You can use a consumer instance of ordered messages to subscribe to messages in first in, first out (FIFO) order.
 
-###### subscribe
+###### 4.1.4.6.6.2 subscribe
 
 Syntax: void subscribe(String topic, String subExpression, MessageOrderListener listener) Description: Subscribes to ordered messages. Parameters:
 
@@ -4319,7 +4522,7 @@ Syntax: void subscribe(String topic, String subExpression, MessageOrderListener 
 
 Response parameters: none
 
-###### unsubscribe
+###### 4.1.4.6.6.3 unsubscribe
 
 Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
 
@@ -4329,7 +4532,7 @@ Syntax: void unsubscribe(String topic) Description: Cancels the subscription to 
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.4.6.6.4 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -4337,29 +4540,29 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.4.6.6.5 isClosed
 
-Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. SDK reference Request parameters: none
+Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
 | Type | Description |
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.4.6.6.6 start
 
 Syntax: public void start() Description: Enables a consumer instance. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.4.6.6.7 shutdown
 
 Syntax: public void shutdown() Description: Disables a consumer instance. Request parameters: none Response parameters: none
 
-###### MessageOrderListener
+###### 4.1.4.6.7 MessageOrderListener
 
-###### Overview
+###### 4.1.4.6.7.1 Overview
 
 A consumer registers an ordered message listener to subscribe to ordered messages. Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
 
-###### consume
+###### 4.1.4.6.7.2 consume
 
 Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
 
@@ -4371,14 +4574,12 @@ Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Descri
 | Parameter | Description |
 |---|---|
 
-SDK reference
-
 | OrderAction | The result of the consumption. Consumption failed: An exception is thrown or Action.Suspend is returned. Action.Suspend indicates null. Consumption succeeded: Action.Success is returned. |
 |---|---|
 
-###### OrderAction
+###### 4.1.4.6.8 OrderAction
 
-###### Overview
+###### 4.1.4.6.8.1 Overview
 
 The result of the consumption that is returned for an ordered message. Enumeration
 
@@ -4387,7 +4588,7 @@ The result of the consumption that is returned for an ordered message. Enumerati
 | Success | String | The message is consumed. The consumer continues to consume the next message. |
 | Suspend | String | The consumer failed to consume the message. The current queue is suspended. |
 
-###### valueOf
+###### 4.1.4.6.8.2 valueOf
 
 Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
 
@@ -4406,21 +4607,21 @@ Exceptions
 | IllegalArgumentException | This exception is thrown because the enumerated type does not have an enumerated constant with the specified name. |
 | NullPointerException | This exception is thrown because the value of the request parameter is null. |
 
-###### values
+###### 4.1.4.6.8.3 values
 
-Syntax:publicstaticOrderAction[]values() SDK reference Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
+Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
 
 | Parameter | Description |
 |---|---|
 | OrderAction[] | The array of constants in the declared order of constants of the enumerated type that is returned. |
 
-###### BatchConsumer
+###### 4.1.4.6.9 BatchConsumer
 
-###### Overview
+###### 4.1.4.6.9.1 Overview
 
 You can use a batch consumer instance to subscribe to multiple messages at a time.
 
-###### subscribe
+###### 4.1.4.6.9.2 subscribe
 
 Syntax: void subscribe(String topic, String subExpression, BatchMessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages. Parameters:
 
@@ -4432,7 +4633,7 @@ Syntax: void subscribe(String topic, String subExpression, BatchMessageListener 
 
 Response parameters: none
 
-###### unsubscribe
+###### 4.1.4.6.9.3 unsubscribe
 
 Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
 
@@ -4440,9 +4641,9 @@ Syntax: void unsubscribe(String topic) Description: Cancels the subscription to 
 |---|---|---|
 | topic | String | The topic of the messages. |
 
-Response parameters: none SDK reference
+Response parameters: none
 
-###### isStarted
+###### 4.1.4.6.9.4 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -4450,7 +4651,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.4.6.9.5 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -4458,23 +4659,23 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.4.6.9.6 start
 
 Syntax: public void start() Description: Enables a consumer instance. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.4.6.9.7 shutdown
 
 Syntax: public void shutdown() Description: Disables a consumer instance. Request parameters: none Response parameters: none
 
-###### BatchMessageListener
+###### 4.1.4.6.10 BatchMessageListener
 
-###### Overview
+###### 4.1.4.6.10.1 Overview
 
 A consumer registers a batch message listener to consume multiple messages at a time. Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
 
-###### consume
+###### 4.1.4.6.10.2 consume
 
-SDK reference Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
+Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
 
 | Parameter | Type | Description |
 |---|---|---|

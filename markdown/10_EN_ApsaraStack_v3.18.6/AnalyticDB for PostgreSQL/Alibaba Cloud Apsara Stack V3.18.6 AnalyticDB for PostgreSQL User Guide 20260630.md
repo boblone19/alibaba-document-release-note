@@ -2,25 +2,129 @@
 title: "AnalyticDB for PostgreSQL User Guide 20260630"
 product_version: "V3.18.6"
 pdf_pages: 258
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL User Guide 20260630.pdf"
+source_pdf: "c2a0dfafc99eaf5f_Alibaba Cloud Apsara Stack V3.18.6 AnalyticDB for PostgreSQL User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%20AnalyticDB%20PostgreSQL%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20AnalyticDB%20for%20PostgreSQL%20User%20Guide%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # AnalyticDB for PostgreSQL User Guide 20260630
 
-AnalyticDB for PostgreSQL User G reSQL?
+## Table of Contents
 
-## What is AnalyticDB for
+- 1 What is AnalyticDB for PostgreSQL?
+- 2 Instance specifications
+- 3 Quick start
+  - 3.1 Log in to the AnalyticDB for PostgreSQL console
+  - 3.2 Create an instance
+  - 3.3 Configure a whitelist
+  - 3.4 Create a database account
+  - 3.5 Obtain client tools
+  - 3.6 Connect to a database
+- 4 Instances
+  - 4.1 Reset the password of an account
+  - 4.2 Manage the endpoints of an instance
+  - 4.3 Change the specifications of an instance
+  - 4.4 Restart an instance
+  - 4.5 Release an instance
+  - 4.6 Configure SQL audit
+  - 4.7 SSL encryption
+  - 4.8 Update the minor engine version
+  - 4.9 Label
+  - 4.10 Set instance parameters
+  - 4.11 Import data
+    - 4.11.1 Import data from or export data to OSS in parallel
+    - 4.11.2 Import data from MySQL
+    - 4.11.3 Import data from PostgreSQL
+    - 4.11.4 Use the COPY statement to import data
+- 5 Databases
+  - 5.1 Overview
+  - 5.2 Create a database
+  - 5.3 Create a distribution key
+  - 5.4 Construct data
+  - 5.5 Query data
+  - 5.6 Manage extensions
+  - 5.7 Manage users and permissions
+  - 5.8 Manage real-time materialized views
+  - 5.9 Manage JSON data
+  - 5.10 Use HyperLogLog
+  - 5.11 Use the CREATE LIBRARY statement
+  - 5.12 Create and use a PL/Java UDF
+- 6 Table
+  - 6.1 Create a table
+  - 6.2 Principles and scenarios of row store, column store, heap tables, and AO tables
+  - 6.3 Enable the column store and compression features
+  - 6.4 Add a field to a column-oriented table and set the default value
+  - 6.5 Configure table partitions
+  - 6.6 Configure the sort key
+- 7 Vector analysis
+  - 7.1 Overview
+  - 7.2 Usage of the vector search engine
+    - 7.2.1 Enable or disable vector search engine optimization
+    - 7.2.2 Access vector databases
+      - 7.2.2.1 Use SQL statements to access vector databases
+      - 7.2.2.2 Use API operations to access vector databases
+        - 7.2.2.2.1 Java
+        - 7.2.2.2.3 Python 3
+    - 7.2.3 Create a vector table
+    - 7.2.4 Create a vector index
+    - 7.2.5 Import vector data
+    - 7.2.6 Perform vector search
+    - 7.2.7 Use the FLOAT2 data type to compress vector storage
+  - 7.3 Use AnalyticDB for PostgreSQL sparse vectors
+  - 7.4 Use pgvector-compatible vector search
+  - 7.5 Use hybrid search
+  - 7.6 Performance tests for vector analysis
+  - 7.7 Case: Build an image-based search system
+  - 7.8 Case: Build a text semantic retrieval system
+- 8 Backup and restoration
+  - 8.1 Feature overview
+  - 8.2 Back up data
+  - 8.3 Restore data
+- 9 Performance monitoring
+  - 9.1 Monitoring and alerting
+    - 9.1.1 View instance monitoring information
+    - 9.1.2 View node monitoring information
+  - 9.2 Monitoring and alerting
+  - 9.3 Diagnostics and optimization
+    - 9.3.1 Instance status overview
+    - 9.3.2 Use the O&M Assistant feature
+    - 9.3.3 Query analysis
+    - 9.3.4 Lock diagnostics
+- 10 Cloud Monitor
+  - 10.1 View performance metrics
+  - 10.2 Alert history
+  - 10.3 Alert rules
+    - 10.3.1 Create an alert rule
+    - 10.3.2 Manage alert rules
+- 11 Best practices
+  - 11.1 Configure memory and load parameters
+- 12 Appendix
+  - 12.1 Authorize a tenant organization to access SLB
+
+reSQL?
+
+## 1 What is AnalyticDB for PostgreSQL?
 
 **PostgreSQL?**
 
 AnalyticDB for PostgreSQL is a distributed cloud database service that uses multiple compute nodes to provide massively parallel processing (MPP) data warehousing. AnalyticDB for PostgreSQL is developed based on the open source Greenplum database project and enhanced by Alibaba Cloud. This service has the following features: Compatible with Greenplum and all tools that support Greenplum. Supports Object Storage Service (OSS), JSON, and HyperLogLog, which is a probabilistic algorithm for cardinality estimation. Supports SQL:2003-compliant syntax and Online Analytical Processing (OLAP) aggregate functions to provide flexible hybrid analysis. Supports both row store and column store to enhance analytics performance. Supports data compression to reduce storage costs. Provides online scaling and performance monitoring to enable database administrators (DBAs), developers, and data analysts to focus on improving enterprise productivity and creating core business value instead of managing and maintaining large numbers of MPP clusters.
 
+## 2 Instance specifications
+
+This topic describes the instance specifications supported by AnalyticDB for PostgreSQL.
+
+**Differences between integrated storage mode and reserved**
+
+**storage mode and their use scenarios**
+
 | Mode | Recommended scenario |
 |---|---|
 | Integrated storage mode | Scenarios that have small business scale, simple architecture, development and testing tasks, and fixed-ratio workloads but require high performance. |
 | Reserved storage mode | Scenarios that have large data volumes and require elastic resources, production data warehouses, cost optimization, and long-term operation. |
+
+**Integrated storage mode**
+
+**Instance specifications for engine version 4.3**
 
 | Type | Specificatio n | Number of nodes | Memory size | CPU | Storage capacity |
 |---|---|---|---|---|---|
@@ -30,20 +134,10 @@ AnalyticDB for PostgreSQL is a distributed cloud database service that uses mult
 | 4x4SX SSD | gpdb.group.s egsd4cx4SX | ["2","4","6","8 ","12","24","3 2"] | 128 GB | 16 Core | 2560G |
 | 4x4S3X SSD | gpdb.group.s egsd4cx4S3X | ["2","4","6","8 ","12","24","3 2"] | 128 GB | 16 Core | 3840G |
 
-|  |  |  |  | > Document V | ersion: 2026063 |
+**Instance specifications for engine version 6.0**
+
+|   |   |   |   | > Document V | ersion: 2026063 |
 |---|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
-
-## Instance specifications
-
-This topic describes the instance specifications supported by AnalyticDB for PostgreSQL.
-
-**Differences between integrated storage mode and reserved**
-
-**storage mode and their use scenarios**
-
-**Integrated storage mode**
 
 | Type | Specificatio n | Number of nodes | Memory size | CPU | Storage capacity |
 |---|---|---|---|---|---|
@@ -54,20 +148,20 @@ This topic describes the instance specifications supported by AnalyticDB for Pos
 | 8cx2SX SSD | gpdb.group.s egsd8cx2SX | ["2","4","6","8 ","12","16","2 4","32"] | 128 GB | 16 Core | 2560G |
 | 8cx2S3X SSD | gpdb.group.s egsd8cx2S3X | ["2","4","6","8 ","12","16","2 4","32"] | 128 GB | 16 Core | 3840G |
 
+**Reserved storage mode**
+
+**Engine version 6.0**
+
 | Type | Specification | CPU | Memory size | Storage capacity |
 |---|---|---|---|---|
 | 2 Cores, 16 GB (Low Concurrency) | 2C16G | 2 Core | 16 GB | 160G |
 | 4 Cores, 32 GB (Medium Concurrency) | 4C32G | 4 Core | 32 GB | 160G |
 | 8 Cores, 64 GB (High Concurrency) | 8C64G | 8 Core | 64 GB | 640G |
 
-AnalyticDB for PostgreSQL User G
-
-**Reserved storage mode**
-
-**Engine version 6.0**
-
 | 16 Cores, 128 GB (Ultra-High Concurrency) | 16C128G | 16 Core | 128 GB | 1280G |
 |---|---|---|---|---|
+
+**Engine version 6.0 vector**
 
 | Type | Specification | CPU | Memory size | Storage capacity |
 |---|---|---|---|---|
@@ -76,15 +170,9 @@ AnalyticDB for PostgreSQL User G
 | 32 Cores, 256 GB (Ultra-high Concurrency) | 32C256G | 32 Core | 256 GB | 2560G |
 | 64 Cores, 512 GB (Ultra-high Concurrency) | 64C512G | 64 Core | 512 GB | 5120 GB |
 
-AnalyticDB for PostgreSQL User G
+## 3 Quick start
 
-**Engine version 6.0 vector**
-
-AnalyticDB for PostgreSQL User G
-
-## Quick start
-
-### Log in to the AnalyticDB for
+### 3.1 Log in to the AnalyticDB for PostgreSQL console
 
 **PostgreSQL console**
 
@@ -125,22 +213,10 @@ Enter the 6-digit MFA verification code and click **Authenticate**.
 
 For more information about how to enable MFA and bind an MFA device, see the
 **Manage MFA** topic in Apsara Uni-manager Management Console User Guide.
-
-| Section | Parameter | Description |
-|---|---|---|
-| Area | Organization | The organization to which the instance belongs. |
-|  | Resource Set | The resource set to which the instance belongs. |
-|  | Region | The region in which the AnalyticDB for PostgreSQL instance resides. Note If you want to access the AnalyticDB for PostgreSQL instance from an Elastic Compute Service (ECS) instance over a virtual private cloud (VPC), you must create the instance within the same region and zone as the ECS instance. |
-|  | Primary Zone | The primary zone of the AnalyticDB for PostgreSQL instance. |
-|  | Deployment Method | Select Single-zone Deployment or Multi-zone Deployment. |
-|  | Secondary Zone | The secondary zone of the AnalyticDB for PostgreSQL instance. Note This parameter is displayed only when Deployment Method is set to Multi-AZ deployment. |
-|  | Instance Resource Type | The resource type of the instance. Select Storage Included or Reserved Storage Mode. |
-
-AnalyticDB for PostgreSQL User G
 5. In the top navigation bar, click **Products** and choose **Database Services > AnalyticDB**
 **for PostgreSQL**.
 
-### Create an instance
+### 3.2 Create an instance
 
 This topic describes how to create an AnalyticDB for PostgreSQL instance in the console. Before you perform other operations, you must first create an AnalyticDB for PostgreSQL instance.
 1. Log in to the AnalyticDB for PostgreSQL console.
@@ -148,43 +224,45 @@ This topic describes how to create an AnalyticDB for PostgreSQL instance in the 
 3. On the **Create AnalyticDB for PostgreSQL Instance** page, configure the parameters.
 The following table describes the parameters.
 
-|  | AnalyticDB for PostgreSQL User uide·Quick star |  |
+| Section | Parameter | Description |
 |---|---|---|
-| Basic Settings |  |  |
-|  | Chip Architecture | The chip architecture of the instance. |
-|  | Engine Version | The engine version of the instance. Note Versions 4.3 and 6.0 are displayed only when the Instance Resource Type parameter is set to Storage Included. Versions 6.0 and 6.0 Vector Edition are displayed only when the Instance Resource Type parameter is set to Reserved Storage Mode. |
-|  | Master Nodes | The number of master nodes. The value is automatically set to 1. After you create an instance, you can add more master nodes to the instance. For more information, see Change the specifications of an instance. Note This parameter is displayed only when the Instance resource type parameter is set to Reserved Storage Mode. |
-|  | Compute Group Specifications | The specifications of each compute group. The storage space and compute capability of a compute group vary based on the specified specifications. |
-|  | Compute Groups | The number of compute groups. Instance performance increases with the number of compute groups. Note This parameter is supported only when the Instance resource type is set to Storage Included. |
+| Area | Organization | The organization to which the instance belongs. |
+|   | Resource Set | The resource set to which the instance belongs. |
+|   | Region | The region in which the AnalyticDB for PostgreSQL instance resides. Note If you want to access the AnalyticDB for PostgreSQL instance from an Elastic Compute Service (ECS) instance over a virtual private cloud (VPC), you must create the instance within the same region and zone as the ECS instance. |
+|   | Primary Zone | The primary zone of the AnalyticDB for PostgreSQL instance. |
+|   | Deployment Method | Select Single-zone Deployment or Multi-zone Deployment. |
+|   | Secondary Zone | The secondary zone of the AnalyticDB for PostgreSQL instance. Note This parameter is displayed only when Deployment Method is set to Multi-AZ deployment. |
+|   | Instance Resource Type | The resource type of the instance. Select Storage Included or Reserved Storage Mode. |
 
-|  | Compute Nodes | The number of compute nodes. The instance performance increases with the number of compute nodes. Valid values: 2 to 640. Note This parameter is available only when Instance Resource Type is set to Reserved Storage Mode. |
+|   | AnalyticDB for PostgreSQL User uide·Quick star |   |
 |---|---|---|
-|  | Compute Node Capacity | The capacity of the compute nodes. The capacity is determined by the compute node specifications and cannot be modified. The CPU cores, memory size, and storage capacity are in a ratio of 1:8:80. For example, if the compute node specifications are 2 cores and 16 GB, the storage capacity is 160 GB. Note This parameter is available only when the Instance resource type parameter is set to Reserved Storage Mode. |
-|  | Storage Type | The storage type of the instance. The value is automatically set to Local SSD. Note This parameter is supported only when the Instance resource type is set to Reserved Storage Mode. |
-|  | Network Type | The network type of the AnalyticDB for PostgreSQL instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service is blocked only by using security groups or whitelists. VPC: A VPC helps you build an isolated network environment on Apsara Stack. You can specify custom route tables, CIDR blocks, and gateways within a VPC. For security purposes, we recommend that you select the VPC network type. You can create a VPC in advance, or change the network type to VPC after the instance is created. |
+| Basic Settings |   |   |
+|   | Chip Architecture | The chip architecture of the instance. |
+|   | Engine Version | The engine version of the instance. Note Versions 4.3 and 6.0 are displayed only when the Instance Resource Type parameter is set to Storage Included. Versions 6.0 and 6.0 Vector Edition are displayed only when the Instance Resource Type parameter is set to Reserved Storage Mode. |
+|   | Master Nodes | The number of master nodes. The value is automatically set to 1. After you create an instance, you can add more master nodes to the instance. For more information, see Change the specifications of an instance. Note This parameter is displayed only when the Instance resource type parameter is set to Reserved Storage Mode. |
+|   | Compute Group Specifications | The specifications of each compute group. The storage space and compute capability of a compute group vary based on the specified specifications. |
+|   | Compute Groups | The number of compute groups. Instance performance increases with the number of compute groups. Note This parameter is supported only when the Instance resource type is set to Storage Included. |
 
-AnalyticDB for PostgreSQL User G
-
-|  | IP Type | IPv4: assigns an IPv4 address to the instance. This option is suitable for IPv4 networks. IPv4/IPv6 Dual-Stack: assigns IPv4 and IPv6 addresses to the instance. This option is suitable for hybrid networks in which both IPv4 and IPv6 clients need to access the instance. If you select this option, you must configure an IPv6 address whitelist to limit the IPv6 addresses that can access the instance. Note To configure this parameter, you must turn on the IPv6 display switch first. For more information, see the "Turn on the IPv6 display switch" topic in O&M Guide. If the system prompts that you are not authorized, see Authorize a tenant organization to access SLB. |
+|   | Compute Nodes | The number of compute nodes. The instance performance increases with the number of compute nodes. Valid values: 2 to 640. Note This parameter is available only when Instance Resource Type is set to Reserved Storage Mode. |
 |---|---|---|
-| Network |  |  |
-|  | VPC | The VPC in which the AnalyticDB for PostgreSQL instance resides. Note This parameter is available only when Network Type is set to VPC. |
-|  | vSwitch | The vSwitch of the AnalyticDB for PostgreSQL instance. Note This parameter is available only when Network Type is set to VPC. |
-|  | Secondary Zone vSwitch | The secondary zone vSwitch of the AnalyticDB for PostgreSQL instance. Note This parameter is displayed only when Deployment Method is set to Multi-zone Deployment and Network Type is set to VPC. |
-|  | IPv4 Whitelist | Add IPv4 addresses that are allowed to access the AnalyticDB for PostgreSQL instance. Note We recommend that you use private CIDR blocks defined in RFC 1918 for the VPC, such as 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16. |
+|   | Compute Node Capacity | The capacity of the compute nodes. The capacity is determined by the compute node specifications and cannot be modified. The CPU cores, memory size, and storage capacity are in a ratio of 1:8:80. For example, if the compute node specifications are 2 cores and 16 GB, the storage capacity is 160 GB. Note This parameter is available only when the Instance resource type parameter is set to Reserved Storage Mode. |
+|   | Storage Type | The storage type of the instance. The value is automatically set to Local SSD. Note This parameter is supported only when the Instance resource type is set to Reserved Storage Mode. |
+|   | Network Type | The network type of the AnalyticDB for PostgreSQL instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service is blocked only by using security groups or whitelists. VPC: A VPC helps you build an isolated network environment on Apsara Stack. You can specify custom route tables, CIDR blocks, and gateways within a VPC. For security purposes, we recommend that you select the VPC network type. You can create a VPC in advance, or change the network type to VPC after the instance is created. |
 
-AnalyticDB for PostgreSQL User G
+|   | IP Type | IPv4: assigns an IPv4 address to the instance. This option is suitable for IPv4 networks. IPv4/IPv6 Dual-Stack: assigns IPv4 and IPv6 addresses to the instance. This option is suitable for hybrid networks in which both IPv4 and IPv6 clients need to access the instance. If you select this option, you must configure an IPv6 address whitelist to limit the IPv6 addresses that can access the instance. Note To configure this parameter, you must turn on the IPv6 display switch first. For more information, see the "Turn on the IPv6 display switch" topic in O&M Guide. If the system prompts that you are not authorized, see Authorize a tenant organization to access SLB. |
+|---|---|---|
+| Network |   |   |
+|   | VPC | The VPC in which the AnalyticDB for PostgreSQL instance resides. Note This parameter is available only when Network Type is set to VPC. |
+|   | vSwitch | The vSwitch of the AnalyticDB for PostgreSQL instance. Note This parameter is available only when Network Type is set to VPC. |
+|   | Secondary Zone vSwitch | The secondary zone vSwitch of the AnalyticDB for PostgreSQL instance. Note This parameter is displayed only when Deployment Method is set to Multi-zone Deployment and Network Type is set to VPC. |
+|   | IPv4 Whitelist | Add IPv4 addresses that are allowed to access the AnalyticDB for PostgreSQL instance. Note We recommend that you use private CIDR blocks defined in RFC 1918 for the VPC, such as 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16. |
 
-|  | IPv6 Whitelist | Add IPv6 addresses that are allowed to access the AnalyticDB for PostgreSQL instance. Note Take note of the following requirements when you add addresses to the IPv6 whitelist: An IPv6 address consists of eight segments of hexadecimal numbers separated by colons (:). Each segment consists of four characters. Example: 2001:0db8:0000:0000:0000:0000:0000:0001. Shorthand notation is supported, such as 2001:db8::1. Consecutive zero segments can be replaced by "::" only once. The prefix length must be specified, which is an integer from 0 to 128, following a forward slash (/). Example: 2001:db8::/32. fc00::/7 is a unique local address similar to IPv4 CIDR blocks starting with 192.168. It can be used only for private networks. We recommend that you use this address. ::/0 specifies all IPv6 addresses. We recommend that you do not use it in production environments. fe80::/10 is a link-local address similar to IPv4 addresses starting with 169.254. It is used for automatic configuration and direct communication of devices in LANs. We recommend that you do not use it. |
+|   | IPv6 Whitelist | Add IPv6 addresses that are allowed to access the AnalyticDB for PostgreSQL instance. Note Take note of the following requirements when you add addresses to the IPv6 whitelist: An IPv6 address consists of eight segments of hexadecimal numbers separated by colons (:). Each segment consists of four characters. Example: 2001:0db8:0000:0000:0000:0000:0000:0001. Shorthand notation is supported, such as 2001:db8::1. Consecutive zero segments can be replaced by "::" only once. The prefix length must be specified, which is an integer from 0 to 128, following a forward slash (/). Example: 2001:db8::/32. fc00::/7 is a unique local address similar to IPv4 CIDR blocks starting with 192.168. It can be used only for private networks. We recommend that you use this address. ::/0 specifies all IPv6 addresses. We recommend that you do not use it in production environments. fe80::/10 is a link-local address similar to IPv4 addresses starting with 169.254. It is used for automatic configuration and direct communication of devices in LANs. We recommend that you do not use it. |
 |---|---|---|
 
-| Parameter | Description |
-|---|---|
-
-AnalyticDB for PostgreSQL User G
 4. After you complete the configuration, click **Confirm Order**.
 
-### Configure a whitelist
+### 3.3 Configure a whitelist
 
 To ensure the security and stability of a database, you must add IP addresses or CIDR blocks that are allowed to access the database to a whitelist.
 1. Log in to the AnalyticDB for PostgreSQL console.
@@ -196,18 +274,19 @@ To ensure the security and stability of a database, you must add IP addresses or
 
 a. Click **Add a whitelist Group**. b. In the **New name adding list groups (up to 50 groups supported)** panel, configure the parameters.
 
+| Parameter | Description |
+|---|---|
+
 | Group name | The group name must be 2 to 32 characters in length. It can contain lowercase letters, digits, and underscores ( ) and must start _ with a lowercase letter and end with a lowercase letter or a digit. |
 |---|---|
 | Type | You can select IPv4 or IPv6. |
 | Whitelist within a group | Take note of the following requirements when you add IP addresses to the whitelist: Separate multiple IP addresses with commas (,). A maximum of 1,000 unique IP addresses can be added. You can specify IP addresses in the following formats: IPv4: 10.23.12.24 (specific IPv4 address) or 10.23.12.24/24 (CIDR block with a prefix length ranging from 1 to 32). IPv6: 2001:db8::1 (specific IPv6 address) or 2001:db8::/32 (CIDR block with a prefix length ranging from 1 to 128). Note If you enter a CIDR block whose prefix length is 0, such as 0.0.0.0/0 or ::/0, all IP addresses are allowed to access the instance. This poses a high security risk. Proceed with caution. Examples Allow a single IPv6 address: 2001:db8:85a3::8a2e:370:7334 Allow an IPv6 CIDR block: 240e:390:a100::/44 Allow all IP addresses (high risk): ::/0 or 0.0.0.0/0 |
 | Import file (.txt) | You can import IP addresses in batches. |
 
-AnalyticDB for PostgreSQL User G
-
 | Load the private IP addresses of ECS instances | a. Click Import ECS Internal IP Address. b. Select IP addresses based on your business requirements. Note To find the Elastic Compute Service (ECS) instance to which a specific IP address is assigned, you can move the pointer over the IP address. Then, the system displays the ID and name of the ECS instance to which the IP address is assigned. |
 |---|---|
 
-AnalyticDB for PostgreSQL User G c. Click **OK**.
+c. Click **OK**.
 
 **Modify IP addresses in a whitelist**
 
@@ -228,15 +307,9 @@ The default whitelist group cannot be deleted. a. Find the whitelist group that 
 
 We recommend that you maintain your whitelists on a regular basis to ensure the security of AnalyticDB for PostgreSQL.
 
-### Create a database account
+### 3.4 Create a database account
 
-| Parameter | Description |
-|---|---|
-| Account | The name of the privileged account. The name can contain lowercase letters, digits, and underscores ( ). _ The name must start with a lowercase letter and end with a lowercase letter or a digit. The name cannot start with gp. The name must be 2 to 16 characters in length. |
-| New Password | The password of the privileged account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) + - = _ The password must be 8 to 32 characters in length. |
-| Confirm Password | Enter the password of the account again. |
-
-AnalyticDB for PostgreSQL User G This topic describes how to create a database account for an AnalyticDB for PostgreSQL instance.
+This topic describes how to create a database account for an AnalyticDB for PostgreSQL instance.
 
 **Background information**
 
@@ -254,8 +327,14 @@ Before you use databases in an AnalyticDB for PostgreSQL instance, you must crea
 3. In the left-side navigation pane, click **Account Management**.
 4. Click **Create Account**.
 5. In the **Create Account** panel, configure the parameters described in the following table.
+
+| Parameter | Description |
+|---|---|
+| Account | The name of the privileged account. The name can contain lowercase letters, digits, and underscores ( ). _ The name must start with a lowercase letter and end with a lowercase letter or a digit. The name cannot start with gp. The name must be 2 to 16 characters in length. |
+| New Password | The password of the privileged account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) + - = _ The password must be 8 to 32 characters in length. |
+| Confirm Password | Enter the password of the account again. |
+
 6. Click **OK**.
-AnalyticDB for PostgreSQL User G
 
 **Important**
 
@@ -289,7 +368,7 @@ Example:
 CREATE role test1 WITH LOGIN ENCRYPTED PASSWORD '111111';
 ```
 
-### Obtain client tools
+### 3.5 Obtain client tools
 
 The interface protocol of AnalyticDB for PostgreSQL is compatible with Greenplum Community Edition and PostgreSQL 8.2. You can use the Greenplum or PostgreSQL client to connect to AnalyticDB for PostgreSQL.
 
@@ -311,7 +390,7 @@ For Red Hat Enterprise Linux (RHEL) 6, RHEL 7, CentOS 6, and CentOS 7, download 
 
 For other Linux systems, perform the following operations to compile the client tools:
 1. Obtain the source code by using one of the following methods:
-Obtain the code from the git directory. You must first install the git tool. AnalyticDB for PostgreSQL User G
+Obtain the code from the git directory. You must first install the git tool.
 
 ```
 git clone https://github.com/greenplum-db/gpdb.git cd gpdb git checkout 5d870156
@@ -326,7 +405,7 @@ wget https://github.com/greenplumdb/gpdb/archive/5d87015609abd330c68a5402c1267fc
 2. Use GCC or other compilers to compile the code.
 
 ```
-make -j32 make install
+./configure make -j32 make install
 ```
 
 3. Obtain the psql and pg_dump tools from the following paths:
@@ -336,7 +415,7 @@ psql: /usr/local/pgsql/bin/psql pg_dump: /usr/local/pgsql/bin/pg_dump
 
 For Windows and other systems, go to the Pivotal website to download HybridDB Client.
 
-### Connect to a database
+### 3.6 Connect to a database
 
 Greenplum Database and AnalyticDB for PostgreSQL are both developed based on PostgreSQL 8.2 and fully compatible with its message protocol. AnalyticDB for PostgreSQL users can use tools that support the PostgreSQL 8.2 message protocol, such as libpq, Java Database Connectivity (JDBC), Open Database Connectivity (ODBC), and psycopg2.
 
@@ -350,7 +429,7 @@ Apsara Stack is an isolated environment. To access Apsara Stack, you must prepar
 
 **DMS**
 
-Data Management (DMS) allows you to manage relational databases such as MySQL, SQL Server, PostgreSQL, PPAS, and Petadata, online transaction processing (OLTP) databases such as PolarDB-X, online analytical processing (OLAP) databases such as AnalyticDB and Data Lake Analytics (DLA), and NoSQL databases such as MongoDB and Redis. DMS offers an integrated solution to manage data, schemas, and servers. You can also use DMS to authorize users, audit security, view BI charts and data trends, track data, and optimize performance. This section describes how to use DMS to connect to an AnalyticDB PostgreSQL instance. AnalyticDB for PostgreSQL User G
+Data Management (DMS) allows you to manage relational databases such as MySQL, SQL Server, PostgreSQL, PPAS, and Petadata, online transaction processing (OLTP) databases such as PolarDB-X, online analytical processing (OLAP) databases such as AnalyticDB and Data Lake Analytics (DLA), and NoSQL databases such as MongoDB and Redis. DMS offers an integrated solution to manage data, schemas, and servers. You can also use DMS to authorize users, audit security, view BI charts and data trends, track data, and optimize performance. This section describes how to use DMS to connect to an AnalyticDB PostgreSQL instance.
 1. Log on to the Log in to the AnalyticDB for PostgreSQL console.
 2. **Optional:**Create an AnalyticDB PostgreSQL instance. For more information, see Create an
 instance. If an AnalyticDB PostgreSQL instance has already been created, skip this step.
@@ -388,7 +467,7 @@ References For more information about the Greenplum psql usage, see psql. Analyt
 
 **JDBC**
 
-Download the official JDBC of PostgreSQL. Then, add it to the environment variables. Sample code: AnalyticDB for PostgreSQL User G
+Download the official JDBC of PostgreSQL. Then, add it to the environment variables. Sample code:
 
 ```java
 import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.SQLException; import java.sql.Statement; public class gp_conn {
@@ -423,19 +502,24 @@ DriverManager.getConnection("jdbc:postgresql://mygpdbpub.gpdb.rds.aliyuncs.com:3
                 System.out.print(rs.getString(10));
                 System.out.print(" | ");
                 System.out.println(rs.getString(11));
-            }
+```
+
+`}`
+
+```
             rs.close();
             st.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-AnalyticDB for PostgreSQL User G Python uses psycopg2 to connect to Greenplum and PostgreSQL. Perform the following operations:
+`}` `}` `}`
+
+**Python**
+
+Python uses psycopg2 to connect to Greenplum and PostgreSQL. Perform the following operations:
 1. Install psycopg2. Use one of the following methods to install psycopg2 in CentOS:
 Method 1: Run the following command:
 
@@ -451,7 +535,7 @@ pip install psycopg2
 
 Method 3: Run the following source code:
 
-```bash
+```python
 yum install -y postgresql-devel* wget http://initd.org/psycopg/tarballs/PSYCOPG-2-6/psycopg2-2.6.tar.gz tar xf psycopg2-2.6.tar.gz cd psycopg2-2.6 python setup.py build sudo python setup.py install
 ```
 
@@ -484,7 +568,7 @@ libpq is the C language interface to AnalyticDB for PostgreSQL. You can use the 
 
 **ODBC**
 
-AnalyticDB for PostgreSQL User G PostgreSQL ODBC is an open source version based on the GNU Lesser General Public License (LGPL) protocol. You can download it from the PostgreSQL website.
+PostgreSQL ODBC is an open source version based on the GNU Lesser General Public License (LGPL) protocol. You can download it from the PostgreSQL website.
 1. Install the driver.
 
 ```bash
@@ -522,12 +606,14 @@ corresponding connection information:
 echo "select count(*) from pg_class" | isql mygpdb
 ```
 
-The following information is returned if the connectivity test passes: AnalyticDB for PostgreSQL User G
+The following information is returned if the connectivity test passes:
 
 ```
 +---------------------------------------+
 | Connected!                            |
 |                                       |
+| sql-statement                         |
+| help [tablename]                      |
 | quit                                  |
 |                                       |
 +---------------------------------------+
@@ -542,7 +628,9 @@ SELECT count(*) FROM pg_class;
 The following information is returned if the database runs normally:
 
 ```
-+---------------------+ +---------------------+
++---------------------+
+| count               |
++---------------------+
 | 388                 |
 +---------------------+ SQLRowCount returns 1 1 rows fetched
 ```
@@ -552,11 +640,11 @@ For more information, see PostgreSQL ODBC driver and psqlODBC HOWTO - C#.
 
 **References**
 
-Pivotal Greenplum official documentation PostgreSQL psqlODBC Compiling psqlODBC on Unix Download ODBC connectors Download JDBC connectors The PostgreSQL JDBC Interface AnalyticDB for PostgreSQL User G
+Pivotal Greenplum official documentation PostgreSQL psqlODBC Compiling psqlODBC on Unix Download ODBC connectors Download JDBC connectors The PostgreSQL JDBC Interface
 
-## Instances
+## 4 Instances
 
-### Reset the password of an
+### 4.1 Reset the password of an account
 
 **account**
 
@@ -574,7 +662,7 @@ To ensure data security, we recommend that you change your password on a regular
 The password must meet the following requirements: The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - = The password is 8 to 32 characters in length.
 6. Click **OK**.
 
-### Manage the endpoints of an
+### 4.2 Manage the endpoints of an instance
 
 **instance**
 
@@ -594,7 +682,6 @@ instance.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, click **Database Connection**.
 4. Click **Apply for Public Endpoint** to the right of **Public Endpoint**.
-AnalyticDB for PostgreSQL User G
 
 **Release a public endpoint**
 
@@ -617,7 +704,7 @@ column.
 After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 5. Click **OK**.
 
-### Change the specifications of
+### 4.3 Change the specifications of an instance
 
 **an instance**
 
@@ -643,7 +730,6 @@ Change the specifications of the coordinator node:
 **Specifications** in the **Actions** column.
 3. Select a new value for **Master Nodes**.
 4. Click **Submit**.
-AnalyticDB for PostgreSQL User G
 
 **Warning**
 
@@ -658,7 +744,7 @@ When the specifications of coordinator nodes are being changed, DDL operations m
 
 When the specifications of compute nodes are being changed, no data can be read from or written to the instance. Perform the specification change operation during an appropriate period of time.
 
-### Restart an instance
+### 4.4 Restart an instance
 
 When the number of connections of an instance reaches the upper limit or the instance has performance issues, you can restart the instance.
 
@@ -674,7 +760,7 @@ The restart process takes about 3 to 30 minutes. During the restart period, the 
 
 The database service may be interrupted when you restart an instance. Proceed with caution.
 
-### Release an instance
+### 4.5 Release an instance
 
 This topic describes how to manually release an AnalyticDB for PostgreSQL instance.
 
@@ -687,9 +773,9 @@ This topic describes how to manually release an AnalyticDB for PostgreSQL instan
 
 **Warning**
 
-After an instance is released, all of its data is deleted. Back up your data before you release an instance. AnalyticDB for PostgreSQL User G
+After an instance is released, all of its data is deleted. Back up your data before you release an instance.
 
-### Configure SQL audit
+### 4.6 Configure SQL audit
 
 AnalyticDB for PostgreSQL allows you to use the SQL audit feature to view SQL details and audit SQL queries on a regular basis. The SQL audit feature does not affect instance performance.
 
@@ -720,20 +806,22 @@ execution duration, time range, database user, source IP address, execution stat
 
 You can click the icon to export SQL information from the current page.
 
-### SSL encryption
+### 4.7 SSL encryption
 
 To enhance data transmission security, you can enable SSL encryption for your instances. SSL encryption can encrypt network connections at the transport layer. This improves data security and ensures data integrity.
 
 **Precautions**
 
 SSL encryption is supported only for instances in **reserved storage mode**.
+
+**Enable SSL encryption**
+
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Data Security > Whitelist Settings**.
 4. Click the **SSL** tab.
 5. On the **SSL** tab, turn on **SSL Encryption**.
 6. In the **Enable SSL Encryption** message, click **OK**.
-AnalyticDB for PostgreSQL User G
 
 **Note**
 
@@ -751,6 +839,9 @@ If you modify the status of SSL encryption, your instance restarts. We recommend
 **Note**
 
 If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
+
+**Disable SSL encryption**
+
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Data Security > Whitelist Settings**.
@@ -762,7 +853,7 @@ If you modify the status of SSL encryption, your instance restarts. We recommend
 
 If you modify the status of SSL encryption, your instance restarts. We recommend that you perform this operation during off-peak hours.
 
-### Update the minor engine
+### 4.8 Update the minor engine version
 
 **version**
 
@@ -778,7 +869,6 @@ When you update the minor engine version of an instance, the instance restarts a
 2. Find the instance that you want to manage and click the instance ID.
 3. In the upper-right corner of the **Basic Information** page, click **Upgrade Minor Version**.
 4. In the **Upgrade Minor Version** message, click **OK**.
-AnalyticDB for PostgreSQL User G
 
 **Note**
 
@@ -788,7 +878,7 @@ complete, the instance enters the **Running** state. Otherwise, the instance rem
 **Upgrading version** state.
 Before the update, the system checks the minor engine version of your instance. If the latest minor version is used, the system skips the update and restart operations.
 
-### Label
+### 4.9 Label
 
 This topic describes how to create and delete tags.
 
@@ -819,9 +909,9 @@ You can unbind a maximum of 20 tags at a time. If a tag is unbound from an insta
 column.
 3. In the **Edit Tag** dialog box, delete the tag group and click **OK**.
 
-### Set instance parameters
+### 4.10 Set instance parameters
 
-You can view and modify the values of some parameters in the console, and query parameter AnalyticDB for PostgreSQL User G modification records.
+You can view and modify the values of some parameters in the console, and query parameter modification records.
 
 **Modify parameter values**
 
@@ -845,19 +935,13 @@ appears.
 4. Click the **Change History** tab.
 5. Select a time range to query the modification records, then click **Query**.
 
-### Import data
+### 4.11 Import data
 
-#### Import data from or export data to
+#### 4.11.1 Import data from or export data to OSS in parallel
 
 **OSS in parallel**
 
-AnalyticDB for PostgreSQL allows you to import data from or export data to Object Storage Service (OSS) tables in parallel by using the OSS external table feature (also called gpossext). AnalyticDB for PostgreSQL also supports GZIP compression for OSS external tables to reduce the file size and storage costs. gpossext can read from and write to TEXT and CSV files, even when they are compressed in GZIP packages.
-
-|  | WITH (APPENDONLY=true, ORIENTATION=column, |
-|---|---|
-| COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOCKSIZE=1048576) |  |
-
-AnalyticDB for PostgreSQL User G To use an OSS external table, you must first create an OSS external table plug-in in AnalyticDB for PostgreSQL. You must create a plug-in for each database that you need to access. To create the plug-in, execute the CREATE EXTENSION IF NOT EXISTS oss_ext; statement. To delete the plug-in, execute the DROP EXTENSION IF EXISTS oss_ext; statement. i. Distribute data evenly into multiple files in OSS. We recommend that you set the number of OSS files to an integer that is the multiple of the number of compute nodes in AnalyticDB for PostgreSQL. ii. Create a READABLE external table in AnalyticDB for PostgreSQL. iii. Execute the following statement to import data in parallel:
+AnalyticDB for PostgreSQL allows you to import data from or export data to Object Storage Service (OSS) tables in parallel by using the OSS external table feature (also called gpossext). AnalyticDB for PostgreSQL also supports GZIP compression for OSS external tables to reduce the file size and storage costs. gpossext can read from and write to TEXT and CSV files, even when they are compressed in GZIP packages. Create an OSS external table plug-in (oss_ext) To use an OSS external table, you must first create an OSS external table plug-in in AnalyticDB for PostgreSQL. You must create a plug-in for each database that you need to access. To create the plug-in, execute the CREATE EXTENSION IF NOT EXISTS oss_ext; statement. To delete the plug-in, execute the DROP EXTENSION IF EXISTS oss_ext; statement. Import data in parallel i. Distribute data evenly into multiple files in OSS. We recommend that you set the number of OSS files to an integer that is the multiple of the number of compute nodes in AnalyticDB for PostgreSQL. ii. Create a READABLE external table in AnalyticDB for PostgreSQL. iii. Execute the following statement to import data in parallel:
 
 ```
 INSERT INTO <Destination table> SELECT * FROM <External table>
@@ -865,18 +949,26 @@ INSERT INTO <Destination table> SELECT * FROM <External table>
 
 **Note**
 
-The data import performance depends on the OSS performance and resources of AnalyticDB for PostgreSQL instances, such as CPU, I/O, memory, and network resources. To ensure the best import performance, we recommend that you use To ensure the best import performance, we recommend that you configure OSS and AnalyticDB for PostgreSQL within the same region. Export data in parallel i. Create a WRITABLE external table in AnalyticDB for PostgreSQL. ii. Execute the following statement to export data to OSS in parallel:
+The data import performance depends on the OSS performance and resources of AnalyticDB for PostgreSQL instances, such as CPU, I/O, memory, and network resources. To ensure the best import performance, we recommend that you use column store and compression when you create a table. For example, you can
+
+|   | WITH (APPENDONLY=true, ORIENTATION=column, |
+|---|---|
+| COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOCKSIZE=1048576) |   |
+
+see CREATE TABLE. To ensure the best import performance, we recommend that you configure OSS and AnalyticDB for PostgreSQL within the same region. Export data in parallel i. Create a WRITABLE external table in AnalyticDB for PostgreSQL. ii. Execute the following statement to export data to OSS in parallel:
 
 ```
 INSERT INTO <External table> SELECT * FROM <Source table>
 ```
 
+Create OSS external tables
+
 **Note**
 
-The syntax to create and use external tables is the same as that of Greenplum Database, except for the syntax of location-related parameters. AnalyticDB for PostgreSQL User G
+The syntax to create and use external tables is the same as that of Greenplum Database, except for the syntax of location-related parameters.
 
 ```
-LOCATION ('ossprotocol') FORMAT 'TEXT'
+CREATE [READABLE] EXTERNAL TABLE tablename ( columnname datatype [, ...] | LIKE othertable ) LOCATION ('ossprotocol') FORMAT 'TEXT'
             [( [HEADER]
                [DELIMITER [AS] 'delimiter' | 'OFF']
                [NULL [AS] 'null string']
@@ -894,7 +986,7 @@ LOCATION ('ossprotocol') FORMAT 'TEXT'
                [FILL MISSING FIELDS] )]
 [ ENCODING 'encoding' ] [ [LOG ERRORS [INTO error_table]] SEGMENT REJECT LIMIT count
        [ROWS | PERCENT] ]
-LOCATION ('ossprotocol') FORMAT 'TEXT'
+CREATE WRITABLE EXTERNAL TABLE table_name ( column_name data_type [, ...] | LIKE other_table ) LOCATION ('ossprotocol') FORMAT 'TEXT'
                [( [DELIMITER [AS] 'delimiter']
                [NULL [AS] 'null string']
                [ESCAPE [AS] 'escape' | 'OFF'] )]
@@ -916,6 +1008,10 @@ rue|false] ossprotocol:
 rue|false]
 ```
 
+**Parameters**
+
+Table 1. Common parameters
+
 | Parameter | Description |
 |---|---|
 | Protocol and endpoint | This parameter is in the protocol name://oss endpoint _ format. The protocol name is oss. oss endpoint is the domain _ name that is used to access OSS in a region. Note You can access the database from a Virtual Private Cloud (VPC) host by using an internal endpoint that contains "internal" in the name to avoid generating public traffic. |
@@ -924,27 +1020,33 @@ rue|false]
 | bucket | The bucket where the data file is located. You must use OSS to create the bucket before you import data. |
 | prefix | The prefix of the path name corresponding to the data file. Prefixes are directly matched and cannot be controlled by regular expressions. The prefix, filepath, and dir parameters are mutually exclusive. Only one of the parameters can be specified at a time. If you create a READABLE external table for data import, all OSS files that contain the specified prefix are imported. If you set prefix to test/filename, the following files are imported: test/filename test/filenamexxx test/filename/aa test/filenameyyy/aa test/filenameyyy/bb/aa If you set prefix to test/filename/, only the following file out of the preceding files is imported: test/filename/aa If you create a WRITABLE external table for data export, each exported file has a unique name based on this parameter. Note One or more files can be exported for each compute node. The names of exported files are in the prefix tablename uuid.x format. uuid indicates a _ _ timestamp in microseconds as an int64 value. x indicates the node ID. You can use an external table for multiple export operations. Each export operation is assigned a uuid value. The files exported during each operation share a uuid value. |
 
-AnalyticDB for PostgreSQL User G
-
 | dir | The virtual folder path in OSS. The prefix, filepath, and dir parameters are mutually exclusive. Only one of the parameters can be specified at a time. A folder path must end with a forward slash (/). Example: test/mydir/ . If you use this parameter when you create an external table for data import, all files in the specified virtual directory (except for its subdirectories and contained files) are imported. The dir parameter is different from the filepath parameter and does not require you to specify the names of files in a directory. If you use this parameter when you create an external table for data export, all data is exported as multiple files within the specified directory. The names of exported files are in the filename.x format, where x indicates a number. The values of x may not be consecutive. |
 |---|---|
 | filepath | The file name that contains a path in OSS. The prefix, filepath, and dir parameters are mutually exclusive. Only one of the parameters can be specified at a time. You can specify only the filepath parameter when you create a READABLE external table for data import. The file name includes the file path, but not the bucket name. The file name that is specified for data import must be in the filename or filename.x format. The values of x must be consecutive numbers that start from 1. For example, if filepath is set to filename and OSS contains the following files, the imported files include filename, filename.1, and filename.2, but not filename.4 because filename.3 does not exist. filename filename.1 filename.2 filename.4 |
+
+Table 2. Import mode parameters
 
 | Parameter | Description |
 |---|---|
 | async | Specifies whether to enable asynchronous data import. By default, asynchronous data import is enabled. You can set async to false or f to disable asynchronous data import. You can enable the worker thread to load data from OSS to accelerate the import performance. By default, asynchronous data import is used. Asynchronous data import consumes more hardware resources than normal data import. |
 
-AnalyticDB for PostgreSQL User G
-
 | compressiontype | The compression format of the imported files. Default value: none. Valid values: none: The import files are not compressed. gzip: The imported files are compressed in the GZIP format. Only the GZIP format is supported. |
 |---|---|
 | compressionlevel | The compression level of the files that are written to OSS. Valid values: 1 to 9. Default value: 6. |
+
+Table 3. Export mode parameters
 
 | Parameter | Description |
 |---|---|
 | oss flush block size _ _ _ | The size of each data block that is written to OSS. Valid values: 1 to 128. Default value: 32. Unit: MB. |
 | oss file max size _ _ _ | The maximum size for each file that is written to OSS. If the limit is exceeded, subsequent data is written to another file. Valid values: 8 to 4000. Default value: 1024. Unit: MB. |
 | num parallel worker _ _ | The number of parallel compression threads for data that is written to OSS. Valid values: 1 to 8. Default value: 3. |
+
+For data export, take note of the following items: WRITABLE is the keyword of the external table for data export. You must specify this keyword when you create an external table. Only the prefix and dir parameters are supported for data export. The filepath parameter is not supported. You can use the DISTRIBUTED BY clause to write data from compute nodes to OSS based on the specified distribution keys.
+
+**Other common parameters**
+
+The following table describes the fault-tolerance parameters that can be used for data import and export. Table 4. Fault-tolerance parameters
 
 | Parameter | Description |
 |---|---|
@@ -953,17 +1055,14 @@ AnalyticDB for PostgreSQL User G
 | oss speed limit _ _ | The minimum rate tolerated. Default value: 1024 bit/s (1 Kbit/s). |
 | oss speed time _ _ | The maximum amount of time tolerated. Default value: 15. Unit: seconds. |
 
-AnalyticDB for PostgreSQL User G For data export, take note of the following items: WRITABLE is the keyword of the external table for data export. You must specify this keyword when you create an external table. Only the prefix and dir parameters are supported for data export. The filepath parameter is not supported. You can use the DISTRIBUTED BY clause to write data from compute nodes to OSS based on the specified distribution keys.
-
-**Other common parameters**
-
-The following table describes the fault-tolerance parameters that can be used for data import and export. When the default values are used for the preceding parameters, a timeout occurs if the transmission rate is lower than 1 Kbit/s for 15 consecutive seconds. For more information, see Error handling in the C-SDK part of **Object Storage Service Developer Guide**. The other parameters are compatible with the external table syntax of Greenplum Database. For more information about the syntax, see CREATE EXTERNAL TABLE. The following parameters are included: AnalyticDB for PostgreSQL User G FORMAT: the supported file format, such as TEXT and CSV. ENCODING: the data encoding format of a file, such as UTF-8. LOG ERRORS refers to improperly imported data that can be ignored and is instead written to error_table. You can also use the count parameter to specify the error reporting threshold.
+When the default values are used for the preceding parameters, a timeout occurs if the transmission rate is lower than 1 Kbit/s for 15 consecutive seconds. For more information, see Error handling in the C-SDK part of **Object Storage Service Developer Guide**. The other parameters are compatible with the external table syntax of Greenplum Database. For more information about the syntax, see CREATE EXTERNAL TABLE. The following parameters are included: FORMAT: the supported file format, such as TEXT and CSV. ENCODING: the data encoding format of a file, such as UTF-8. LOG ERRORS refers to improperly imported data that can be ignored and is instead written to error_table. You can also use the count parameter to specify the error reporting threshold.
 
 **Examples**
 
 1. Create an OSS external table named ossexample to import data.
 
 ```
+CREATE READABLE EXTERNAL TABLE ossexample
         (date text, time text, open float, high float,
         low float, volume int)
         location('oss://oss-cn-hangzhou.aliyuncs.com
@@ -972,6 +1071,7 @@ The following table describes the fault-tolerance parameters that can be used fo
         FORMAT 'csv' (QUOTE '''' DELIMITER E'\t')
         ENCODING 'utf8'
         LOG ERRORS INTO my_error_rows SEGMENT REJECT LIMIT 5;
+CREATE READABLE EXTERNAL TABLE ossexample
         (date text, time text, open float, high float,
         low float, volume int)
         location('oss://oss-cn-hangzhou.aliyuncs.com
@@ -979,6 +1079,7 @@ The following table describes the fault-tolerance parameters that can be used fo
         key=XXX bucket=testbucket')
         FORMAT 'csv'
         LOG ERRORS SEGMENT REJECT LIMIT 5;
+CREATE READABLE EXTERNAL TABLE ossexample
         (date text, time text, open float, high float,
         low float, volume int)
         location('oss://oss-cn-hangzhou.aliyuncs.com
@@ -991,12 +1092,14 @@ The following table describes the fault-tolerance parameters that can be used fo
 2. Create an OSS external table to which data is exported.
 
 ```
+CREATE WRITABLE EXTERNAL TABLE ossexample_exp
         (date text, time text, open float, high float,
         low float, volume int)
         location('oss://oss-cn-hangzhou.aliyuncs.com
         prefix=osstest/exp/outfromhdb id=XXX
         key=XXX bucket=testbucket') FORMAT 'csv'
         DISTRIBUTED BY (date);
+CREATE WRITABLE EXTERNAL TABLE ossexample_exp
         (date text, time text, open float, high float,
         low float, volume int)
         location('oss://oss-cn-hangzhou.aliyuncs.com
@@ -1006,9 +1109,9 @@ The following table describes the fault-tolerance parameters that can be used fo
 ```
 
 3. Create a heap table named example to which you want to import data.
-AnalyticDB for PostgreSQL User G
 
 ```
+CREATE TABLE example
         (date text, time text, open float,
          high float, low float, volume int)
          DISTRIBUTED BY (date);
@@ -1058,7 +1161,11 @@ The following execution plan shows that each compute node directly exports data 
 
 **TEXT and CSV format description**
 
-The following parameters specify the formats of files read from and written to OSS. You can specify the parameters in the external DDL parameters. \n: the line feed for TEXT and CSV files. DELIMITER: the delimiter of columns. If the DELIMITER parameter is specified, the QUOTE parameter must also be specified. Recommended column delimiters include commas (,), vertical bars (|), and special characters such as \t.
+The following parameters specify the formats of files read from and written to OSS. You can specify the parameters in the external DDL parameters. \n: the line feed for TEXT and CSV files. DELIMITER: the delimiter of columns. If the DELIMITER parameter is specified, the QUOTE parameter must also be specified. Recommended column delimiters include commas (,), vertical bars (|), and special characters such as \t. QUOTE: encloses user data that contains special characters by column. Strings that contain special characters must be enclosed by QUOTE to differentiate user data from control characters. To optimize the efficiency, it is unnecessary to enclose data such as integers in QUOTE characters. QUOTE characters cannot be the same as those specified by DELIMITER. The default value of QUOTE is a pair of double quotation marks (""). User data that contains QUOTE characters must also contain ESCAPE characters to differentiate user data from machine code. ESCAPE: the escape character. Place an escape character before a special character that needs to be escaped to indicate that it is not a special character. If ESCAPE is not specified, the default value is the same as QUOTE. You can also use other characters such as backslashes (\) as ESCAPE characters, which is used by MySQL.
+
+**Default control characters for TEXT and CSV files**
+
+Table 5. The following table describes the default control characters for TEXT and CSV files.
 
 | Control character | TEXT | CSV |
 |---|---|---|
@@ -1067,6 +1174,14 @@ The following parameters specify the formats of files read from and written to O
 | ESCAPE | N/A | Same as QUOTE |
 | NULL | Backslash plus N (\N) | Empty string without quotation marks |
 
+**Note**
+
+All control characters must be single-byte characters.
+
+**SDK troubleshooting**
+
+The following Error log information table lists the error logs generated when an error occurs during the import or export process. Table 6. Error log information
+
 | Keyword | Description |
 |---|---|
 | code | The HTTP status code of the error request. |
@@ -1074,28 +1189,13 @@ The following parameters specify the formats of files read from and written to O
 | error msg _ | The error message returned by OSS. |
 | req id _ | The UUID used to identify the request. If you require assistance in solving a problem, you can submit a ticket that contains the req id value of the failed request. _ |
 
-AnalyticDB for PostgreSQL User G QUOTE: encloses user data that contains special characters by column. Strings that contain special characters must be enclosed by QUOTE to differentiate user data from control characters. To optimize the efficiency, it is unnecessary to enclose data such as integers in QUOTE characters. QUOTE characters cannot be the same as those specified by DELIMITER. The default value of QUOTE is a pair of double quotation marks (""). User data that contains QUOTE characters must also contain ESCAPE characters to differentiate user data from machine code. ESCAPE: the escape character. Place an escape character before a special character that needs to be escaped to indicate that it is not a special character. If ESCAPE is not specified, the default value is the same as QUOTE. You can also use other characters such as backslashes (\) as ESCAPE characters, which is used by MySQL.
-
-**Default control characters for TEXT and CSV files**
-
-Table 5. The following table describes the default control characters for TEXT and CSV files.
-
-**Note**
-
-All control characters must be single-byte characters.
-
-**SDK troubleshooting**
-
-The following Error log information table lists the error logs generated when an error occurs during the import or export process. You can handle timeout-related errors by using parameters related to oss_ext.
-
-| Parameter | Description |
-|---|---|
-
-AnalyticDB for PostgreSQL User G
+You can handle timeout-related errors by using parameters related to oss_ext.
 
 **References**
 
-#### Import data from MySQL
+CREATE EXTERNAL TABLE CREATE TABLE
+
+#### 4.11.2 Import data from MySQL
 
 You can use the mysql2pgsql tool to migrate tables from MySQL to AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, or Postgres Plus Advanced Server (PPAS).
 
@@ -1132,14 +1232,17 @@ You must have the write permissions on the destination table.
 ./mysql2pgsql -l <tables_list_file> -d -n -j <number of threads> -s <schema of target able>
 ```
 
+Table 1. Parameters
+
+| Parameter | Description |
+|---|---|
+
 | -l | Optional. This parameter is used to specify a text file that contains tables to be synchronized. If you do not specify this parameter, all the tables in the database that is specified in the configuration file are synchronized. <tables list file> specifies the name of a file that contains a collection of _ _ tables to be synchronized and conditions for table queries. You can specify the file content in the following format: table1 : select * from table big where column1 < '2016-08-05' _ table2 : table3 table4: select column1, column2 from tableX where column1 != 10 table5: select * from table big where column1 >= '2016-08-05' _ |
 |---|---|
 | -d | Optional. This parameter indicates the table creation DDL statement that creates the destination table but does not synchronize data. |
 | -n | Optional. This parameter must be used together with -d to specify that the table partitioning definition is not included in the DDL statement. |
 | -j | Optional. This parameter is used to specify the number of threads that are used for data synchronization. If you do not specify this parameter, five concurrent threads are used. |
 | -s | Optional. This parameter is used to specify the schema of the destination table. Only a single schema can be specified at a time by the command. If you do not specify this parameter, the data is imported to the table under the public schema. |
-
-AnalyticDB for PostgreSQL User G
 
 **Typical usage**
 
@@ -1161,6 +1264,9 @@ distribution key information added.
 ```
 
 This command migrates the data from all MySQL tables in the database that is specified in the configuration file to the destination database. By default, five concurrent threads are used to read and import data from involved tables.
+
+**Partial table migration**
+
 1. Create a file named tab_list.txt and enter the following content:
 `t1`
 
@@ -1175,9 +1281,9 @@ only data that meets the c1 > 138888 condition is migrated.
  ./mysql2pgsql -l tab_list.txt
 ```
 
-#### Import data from PostgreSQL
+#### 4.11.3 Import data from PostgreSQL
 
-AnalyticDB for PostgreSQL User G You can use the pgsql2pgsql tool to migrate tables across AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, and Postgres Plus Advanced Server (PPAS).
+You can use the pgsql2pgsql tool to migrate tables across AnalyticDB for PostgreSQL, Greenplum Database, PostgreSQL, and Postgres Plus Advanced Server (PPAS).
 
 **Background information**
 
@@ -1216,7 +1322,6 @@ You must have the write permissions on the destination table.
 
 If you want to synchronize incremental data, you must have the permissions to create replication slots in the source database. PostgreSQL 9.4 and later support logic flow replication. Therefore, source databases of these versions support incremental data migration. A kernel supports logic flow replication only after you configure the following parameters: wal_level = logical max_wal_senders = 6 max_replication_slots = 6
 2. Use pgsql2pgsql to perform full database migration.
-AnalyticDB for PostgreSQL User G
 
 ```
  ./pgsql2pgsql
@@ -1226,7 +1331,7 @@ By default, the migration program migrates the table data of all users from the 
 3. View the status information.
 You can view the status information in a single migration process by connecting to the selfmanaged database. The status information is stored in the db_sync_status table and includes the start and end time of full data migration, the start time of incremental data migration, and the status of incremental data synchronization.
 
-#### Use the COPY statement to import
+#### 4.11.4 Use the COPY statement to import data
 
 **data**
 
@@ -1238,9 +1343,10 @@ Large amounts of data cannot be written in parallel because the \copy command wr
 
 **Procedure**
 
-Execute the following COPY statement to import data: AnalyticDB for PostgreSQL User G
+Execute the following COPY statement to import data:
 
 ```
+\COPY table [(column [, ...])] FROM {'file' | STDIN}
      [ [WITH]
        [OIDS]
        [HEADER]
@@ -1251,6 +1357,7 @@ Execute the following COPY statement to import data: AnalyticDB for PostgreSQL U
        [CSV [QUOTE [ AS ] 'quote']
             [FORCE NOT NULL column [, ...]]
        [FILL MISSING FIELDS]
+       [[LOG ERRORS [INTO error_table] [KEEP]
        SEGMENT REJECT LIMIT count [ROWS | PERCENT] ]
 \COPY {table [(column [, ...])] | (query)} TO {'file' | STDOUT}
       [ [WITH]
@@ -1264,11 +1371,9 @@ Execute the following COPY statement to import data: AnalyticDB for PostgreSQL U
       [IGNORE EXTERNAL PARTITIONS ]
 ```
 
-AnalyticDB for PostgreSQL User G
+## 5 Databases
 
-## Databases
-
-### Overview
+### 5.1 Overview
 
 Basically, you can use AnalyticDB for PostgreSQL in the same manner as you use Greenplum Database. They have the same schemas, supported data types, and user permission requirements. Except for specific operations that are exclusive to Greenplum Database such as those on distribution keys and append-optimized (AO) tables, all operations are the same as those of the open source PostgreSQL.
 
@@ -1276,7 +1381,7 @@ Basically, you can use AnalyticDB for PostgreSQL in the same manner as you use G
 
 Pivotal Greenplum official documentation GP 4.3 Best Practice Greenplum数据分布黄金法则
 
-### Create a database
+### 5.2 Create a database
 
 After you connect to an AnalyticDB for PostgreSQL instance, you can execute SQL statements to create databases. As in PostgreSQL, you can execute SQL statements to create databases in AnalyticDB for PostgreSQL. For example, after the **psql** client is used to connect to AnalyticDB for PostgreSQL, execute the following statement:
 
@@ -1296,7 +1401,7 @@ The following information is returned:
 You are now connected to database "mygpdb" as user "mygpdb".
 ```
 
-### Create a distribution key
+### 5.3 Create a distribution key
 
 AnalyticDB for PostgreSQL is a distributed database service where data is distributed across all the data nodes. You must create distribution keys to distribute data in AnalyticDB for PostgreSQL. Distribution keys are vital to query performance. Distribution keys are used to ensure even data distribution. Appropriate selection of keys can significantly improve query performance.
 
@@ -1308,13 +1413,13 @@ In AnalyticDB for PostgreSQL, the data of a table can be distributed across all 
 CREATE TABLE vtbl(id serial, key integer, value text, shape cuboid, location geometry, comment text) DISTRIBUTED BY (key);
 ```
 
-AnalyticDB for PostgreSQL User G If you do not specify a distribution key in the DISTRIBUTED BY clause, AnalyticDB for PostgreSQL distributes data by id field by using the round-robin algorithm.
+If you do not specify a distribution key in the DISTRIBUTED BY clause, AnalyticDB for PostgreSQL distributes data by id field by using the round-robin algorithm.
 
 **Rules for selecting a distribution key**
 
 Select evenly distributed columns or multiple columns to prevent data skew. Select fields that are commonly used for connection operations, especially for highly concurrent statements. Select conditional columns that feature high concurrency queries and high filterability. Do not use random distribution.
 
-### Construct data
+### 5.4 Construct data
 
 In some test scenarios, you must construct data to fill the database.
 1. Create a function that generates random strings.
@@ -1354,13 +1459,11 @@ INSERT INTO tbl(KEY, COMMENT, locate)
      AS t;
 ```
 
-### Query data
+### 5.5 Query data
 
 This topic describes the query statements and how to view the query plans.
 
 **Sample query statement**
-
-AnalyticDB for PostgreSQL User G
 
 ```
 SELECT * FROM tbl WHERE key = 751;
@@ -1394,7 +1497,7 @@ The following information is returned:
   Optimizer status: legacy query optimizer
 ```
 
-### Manage extensions
+### 5.6 Manage extensions
 
 You can use extensions to expand database features. AnalyticDB for PostgreSQL enables you to manage extensions.
 
@@ -1409,8 +1512,6 @@ Execute the following statements to create an extension:
 ```
 CREATE EXTENSION <extension name>; CREATE SCHEMA <schema name>; CREATE EXTENSION IF NOT EXISTS <extension name> WITH SCHEMA <schema name>;
 ```
-
-AnalyticDB for PostgreSQL User G
 
 **Note**
 
@@ -1432,11 +1533,15 @@ DROP EXTENSION <extension name>; DROP EXTENSION IF EXISTS <extension name> CASCA
 
 If an object depends on an extension that you want to delete, you must add the CASCADE keyword to delete the object.
 
-### Manage users and
+### 5.7 Manage users and permissions
 
 **permissions**
 
-This topic describes how to manage users and permissions in AnalyticDB for PostgreSQL. The system prompts you to specify an initial username and password when you create an instance. This initial user is the root user. After the instance is created, you can use the root user to connect to a database. The system also creates superusers such as aurora and replicator for internal management. You can run the \du+ command to view the information of all the users after you connect to the database by using the client tool of PostgreSQL or Greenplum. Sample output:
+This topic describes how to manage users and permissions in AnalyticDB for PostgreSQL.
+
+**Manage users**
+
+The system prompts you to specify an initial username and password when you create an instance. This initial user is the root user. After the instance is created, you can use the root user to connect to a database. The system also creates superusers such as aurora and replicator for internal management. You can run the \du+ command to view the information of all the users after you connect to the database by using the client tool of PostgreSQL or Greenplum. Sample output:
 
 ```
                                 List of roles
@@ -1446,7 +1551,7 @@ This topic describes how to manage users and permissions in AnalyticDB for Postg
  ...
 ```
 
-AnalyticDB for PostgreSQL does not provide superuser permissions but offers a similar role RDS_SUPERUSER. This is consistent with the permission system of ApsaraDB RDS for PostgreSQL. The root user, such as root_user in the preceding sample output, has the permissions of the RDS_SUPERUSER role. This permission attribute can be identified only by viewing the user description. The root user has the following permissions: Create databases and users and perform operations such as LOGIN, excluding the SUPERUSER permissions. View and modify the data tables of other users and perform operations such as SELECT, UPDATE, DELETE, and changing owners. AnalyticDB for PostgreSQL User G View the connection information of other users, cancel their SQL statements, and kill their connections. Create and delete plug-ins. Create other users with RDS_SUPERUSER permissions. Example:
+AnalyticDB for PostgreSQL does not provide superuser permissions but offers a similar role RDS_SUPERUSER. This is consistent with the permission system of ApsaraDB RDS for PostgreSQL. The root user, such as root_user in the preceding sample output, has the permissions of the RDS_SUPERUSER role. This permission attribute can be identified only by viewing the user description. The root user has the following permissions: Create databases and users and perform operations such as LOGIN, excluding the SUPERUSER permissions. View and modify the data tables of other users and perform operations such as SELECT, UPDATE, DELETE, and changing owners. View the connection information of other users, cancel their SQL statements, and kill their connections. Create and delete plug-ins. Create other users with RDS_SUPERUSER permissions. Example:
 
 ```
 CRATE ROLE root_user2 RDS_SUPERUSER LOGIN PASSWORD 'xyz' ;
@@ -1460,7 +1565,7 @@ You can manage permissions at the database, schema, and table levels. For exampl
 GRANT SELECT ON TABLE t1 TO normal_user1; REVOKE UPDATE ON TABLE t1 FROM normal_user1; REVOKE DELETE ON TABLE t1 FROM normal_user1;
 ```
 
-### Manage real-time materialized
+### 5.8 Manage real-time materialized views
 
 **views**
 
@@ -1472,15 +1577,19 @@ In this mode, the write performance of base tables may be reduced. We recommend 
 
 **Statement-level refresh**
 
-When a statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure data consistency. Such statements include INSERT, COPY, UPDATE, and DELETE. Real-time materialized views are updated based on the following logic: The database engine first updates base tables, and then updates their materialized views. If base tables fail to be updated, no data changes are made to their materialized views. If materialized views fail to be updated, no data changes are made to their base tables and an error is returned for the executed statement. For an explicit transaction that starts with the BEGIN TRANSACTION statement and ends with the COMMIT statement, after base tables are updated, data changes are also made to their materialized views in this transaction. If AnalyticDB for PostgreSQL uses the default READ COMMITTED isolation level, updates of materialized views are invisible to other transactions before this transaction is committed. If this transaction is rolled back, base tables and their materialized views are also rolled AnalyticDB for PostgreSQL User G back.
+When a statement is executed on a base table, real-time materialized views created on this base table are updated in real time to ensure data consistency. Such statements include INSERT, COPY, UPDATE, and DELETE. Real-time materialized views are updated based on the following logic: The database engine first updates base tables, and then updates their materialized views. If base tables fail to be updated, no data changes are made to their materialized views. If materialized views fail to be updated, no data changes are made to their base tables and an error is returned for the executed statement. For an explicit transaction that starts with the BEGIN TRANSACTION statement and ends with the COMMIT statement, after base tables are updated, data changes are also made to their materialized views in this transaction. If AnalyticDB for PostgreSQL uses the default READ COMMITTED isolation level, updates of materialized views are invisible to other transactions before this transaction is committed. If this transaction is rolled back, base tables and their materialized views are also rolled back.
 
 **Limits**
 
-AnalyticDB for PostgreSQL imposes the following limits on the query statements that are used to create real-time materialized views: If a query statement contains JOIN operations, only INNER JOIN can be used to join tables. OUTER JOIN or SELF JOIN is not supported. Query statements can contain most filtering and projection operations. Only the following aggregate operations are supported in a query statement: COUNT, SUM, AVG, MAX, and MIN. The HAVING clause is not supported. Complex statements such as those that contain subqueries and common table expressions (CTEs) are not supported. After you create a real-time materialized view on a base table, DDL statements that you execute on the base table are subject to the following limits: When you execute the TRUNCATE statement on the base table, the real-time materialized view is not synchronously updated. You must manually refresh the real-time materialized view or create another materialized view. You must specify the CASCADE option to execute the DROP TABLE statement on the base table. ALTER TABLE statements on the base table cannot be used to delete or modify fields referenced by the materialized view. Real-time materialized views are subject to the following limits: Real-time materialized views are supported for standard and partitioned heap tables, but not for append-optimized (AO) tables. We recommend that you use real-time materialized views in the following scenarios: The number of rows or columns in the query results is much smaller than that of the base tables. For example, the query statement may contain a WHERE clause that effectively narrows down the results or may contain an aggregate function that consolidates multiple values into a single value. Large amounts of computations are required to obtain the query results of the following operations: Semi-structured data analysis Aggregate operations that take a long time to complete Base tables are not frequently changed. Real-time materialized views can be used in all scenarios where materialized views are suitable. Compared with non-real-time materialized views, real-time materialized views are highly consistent with their base tables. When a base table changes, its real-time materialized views synchronously change with minimal performance cost. However, when you use non-real-time materialized views, you must manually update them each time their base tables change. Therefore, when large amounts of data are changed on a base table or a streaming update is performed, real-time materialized views have great advantages over non-real-time materialized views.
+AnalyticDB for PostgreSQL imposes the following limits on the query statements that are used to create real-time materialized views: If a query statement contains JOIN operations, only INNER JOIN can be used to join tables. OUTER JOIN or SELF JOIN is not supported. Query statements can contain most filtering and projection operations. Only the following aggregate operations are supported in a query statement: COUNT, SUM, AVG, MAX, and MIN. The HAVING clause is not supported. Complex statements such as those that contain subqueries and common table expressions (CTEs) are not supported. After you create a real-time materialized view on a base table, DDL statements that you execute on the base table are subject to the following limits: When you execute the TRUNCATE statement on the base table, the real-time materialized view is not synchronously updated. You must manually refresh the real-time materialized view or create another materialized view. You must specify the CASCADE option to execute the DROP TABLE statement on the base table. ALTER TABLE statements on the base table cannot be used to delete or modify fields referenced by the materialized view. Real-time materialized views are subject to the following limits: Real-time materialized views are supported for standard and partitioned heap tables, but not for append-optimized (AO) tables.
+
+**Scenarios**
+
+We recommend that you use real-time materialized views in the following scenarios: The number of rows or columns in the query results is much smaller than that of the base tables. For example, the query statement may contain a WHERE clause that effectively narrows down the results or may contain an aggregate function that consolidates multiple values into a single value. Large amounts of computations are required to obtain the query results of the following operations: Semi-structured data analysis Aggregate operations that take a long time to complete Base tables are not frequently changed. Real-time materialized views can be used in all scenarios where materialized views are suitable. Compared with non-real-time materialized views, real-time materialized views are highly consistent with their base tables. When a base table changes, its real-time materialized views synchronously change with minimal performance cost. However, when you use non-real-time materialized views, you must manually update them each time their base tables change. Therefore, when large amounts of data are changed on a base table or a streaming update is performed, real-time materialized views have great advantages over non-real-time materialized views.
 
 **Disadvantages of real-time materialized views**
 
-Real-time materialized views are similar to indexes maintained in real time. They can significantly optimize query performance but also reduce write performance. AnalyticDB for PostgreSQL User G When you create a real-time materialized view that contains only a single table, the write performance of the related database is reduced because the data in the materialized view must be synchronously updated. The write latency can be up to three times longer compared with writing data to the base table but not updating the materialized view. We recommend that you do not create more than five real-time materialized views on the same base table. Batch data writes help reduce the maintenance overhead of real-time materialized views. When you execute COPY or INSERT statements, we recommend that you increase the number of batch processed rows within a single statement. This significantly reduces the maintenance overhead of real-time materialized views. When the query statement used to create a real-time materialized view contains a JOIN clause to join two tables, you must optimize the write performance of the real-time materialized view. If you do not have relevant experience or encounter low performance when you test the execution, we recommend that you use a real-time materialized view that contains only a single table. The following suggestions are available in scenarios where two tables are joined: Use the join key of each base table as their respective distribution keys. Create an index for the join key of each base table.
+Real-time materialized views are similar to indexes maintained in real time. They can significantly optimize query performance but also reduce write performance. When you create a real-time materialized view that contains only a single table, the write performance of the related database is reduced because the data in the materialized view must be synchronously updated. The write latency can be up to three times longer compared with writing data to the base table but not updating the materialized view. We recommend that you do not create more than five real-time materialized views on the same base table. Batch data writes help reduce the maintenance overhead of real-time materialized views. When you execute COPY or INSERT statements, we recommend that you increase the number of batch processed rows within a single statement. This significantly reduces the maintenance overhead of real-time materialized views. When the query statement used to create a real-time materialized view contains a JOIN clause to join two tables, you must optimize the write performance of the real-time materialized view. If you do not have relevant experience or encounter low performance when you test the execution, we recommend that you use a real-time materialized view that contains only a single table. The following suggestions are available in scenarios where two tables are joined: Use the join key of each base table as their respective distribution keys. Create an index for the join key of each base table.
 
 **Create or delete a real-time materialized view**
 
@@ -1522,7 +1631,7 @@ INSERT INTO test VALUES (1, 30), (2, 40), (3, 50), (4, 60);
 SELECT * FROM test;
 ```
 
-The following information is returned: AnalyticDB for PostgreSQL User G
+The following information is returned:
 
 ```
  a | b
@@ -1550,7 +1659,7 @@ The following information is returned, which indicates that the materialized vie
 (2 rows)
 ```
 
-### Manage JSON data
+### 5.9 Manage JSON data
 
 JSON has become a basic data type in the Internet and IoT fields. For more information about JSON, visit JSON official website. PostgreSQL provides full support for JSON. AnalyticDB for PostgreSQL is optimized by Alibaba Cloud to support the JSON type based on the PostgreSQL syntax.
 
@@ -1585,7 +1694,7 @@ ERROR: type "json" does not exist LINE 1: SELECT '""'::json;
 
 **JSON conversion in the database**
 
-AnalyticDB for PostgreSQL User G Database operations include reading and writing. The written data is typically converted from the string type to the JSON type. The contents of a string must meet the JSON standard, such as strings, digits, arrays, and objects. Example:
+Database operations include reading and writing. The written data is typically converted from the string type to the JSON type. The contents of a string must meet the JSON standard, such as strings, digits, arrays, and objects. Example:
 
 **String**
 
@@ -1620,7 +1729,7 @@ ERROR: invalid input syntax for type json LINE 1: SELECT '{hijson:1024}'::json;
 DETAIL: Token "hijson" is invalid. CONTEXT: JSON data, line 1: {hijson...
 ```
 
-In the preceding example, `hijson` must be enclosed in double quotation marks ( " ) because JSON requires the KEY value to be a string. A syntax error is returned when `{hijson:1024}` is entered. Apart from explicit type conversion, database records can also be converted to JSON. Typically, JSON is not used for a string or a digit, but an object that contains one or more keyvalue pairs. AnalyticDB for PostgreSQL can support most JSON scenarios after data is converted from the string type to the object type. Example:
+In the preceding example, `hijson` must be enclosed in double quotation marks ( `"` ) because JSON requires the KEY value to be a string. A syntax error is returned when `{hijson:1024}` is entered. Apart from explicit type conversion, database records can also be converted to JSON. Typically, JSON is not used for a string or a digit, but an object that contains one or more keyvalue pairs. AnalyticDB for PostgreSQL can support most JSON scenarios after data is converted from the string type to the object type. Example:
 
 ```
 SELECT row_to_json(row('{"a":"a"}', 'b'));
@@ -1635,7 +1744,7 @@ The following information is returned:
 (1 row) SELECT row_to_json(row('{"a":"a"}'::json, 'b'));
 ```
 
-The following information is returned: AnalyticDB for PostgreSQL User G
+The following information is returned:
 
 ```json
         row_to_json
@@ -1696,8 +1805,6 @@ The following information is returned:
    1e100
   (1 row)
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```
 SELECT '{"f":1e100}'::json;
@@ -1770,7 +1877,7 @@ The following information is returned:
 SELECT '{"f":"1e100"}'::json -> 'f';
 ```
 
-The following information is returned: AnalyticDB for PostgreSQL User G
+The following information is returned:
 
 ```
  ?column?
@@ -1836,16 +1943,14 @@ data types | Type ------------+---------------------------+------------------+--
  pgcatalog | arraytojson             | json             | anyarray
 ```
 
-AnalyticDB for PostgreSQL User G
-
 ```
 pg_
 ```
 
-g| `y_` `_j`
-|j
+`g`| `y_` `_j`
+|`j`
 |
-y y
+`y` `y`
 
 ```
 | normal
@@ -1904,7 +2009,7 @@ json, use_json_as_text boolean | normal
 SELECT array_to_json('{{1,5},{99,100}}'::int[]);
 ```
 
-AnalyticDB for PostgreSQL User G The following information is returned:
+The following information is returned:
 
 ```
   array_to_json
@@ -1954,7 +2059,7 @@ The following information is returned:
 (4 rows) SELECT json_array_elements('[1,true,[1,[2,3]],null,{"f1":1,"f2":[7,8,9]},false]');
 ```
 
-The following information is returned: AnalyticDB for PostgreSQL User G
+The following information is returned:
 
 ```json
   json_array_elements
@@ -2009,7 +2114,7 @@ The following information is returned:
 (1 row)
 ```
 
-Insert data into the table. AnalyticDB for PostgreSQL User G
+Insert data into the table.
 
 ```
 INSERT INTO tj(ary, obj, num) VALUES('{2,5}'::int[], '{"obj":2}', 5);
@@ -2030,6 +2135,8 @@ The following information is returned:
  {"f1":2,"f2":[2,5],"f3":{"obj":2},"f4":5}
 (2 rows)
 ```
+
+**Join multiple tables**
 
 Create a table and insert data into the table.
 
@@ -2069,12 +2176,18 @@ The following information is returned:
 
 **Use the JSON function index**
 
-Create a table and insert data into the table. AnalyticDB for PostgreSQL User G
+Create a table and insert data into the table.
 
 ```
+CREATE TEMP TABLE test_json (
        json_type text,
        obj json
-); INSERT INTO test_json VALUES('aa', '{"f2":{"f3":1},"f4":{"f5":99,"f6":"foo"}}'); INSERT INTO test_json VALUES('cc', '{"f7":{"f3":1},"f8":{"f5":99,"f6":"foo"}}');
+```
+
+);
+
+```
+INSERT INTO test_json VALUES('aa', '{"f2":{"f3":1},"f4":{"f5":99,"f6":"foo"}}'); INSERT INTO test_json VALUES('cc', '{"f7":{"f3":1},"f8":{"f5":99,"f6":"foo"}}');
 ```
 
 Query information from the table.
@@ -2115,7 +2228,7 @@ The following information is returned:
 
 **Note**
 
-JSON data cannot be used as the distribution key and does not support JSON aggregate functions. The following example demonstrates how to use Python to access the database: AnalyticDB for PostgreSQL User G
+JSON data cannot be used as the distribution key and does not support JSON aggregate functions. The following example demonstrates how to use Python to access the database:
 
 ```java
 #! /bin/env python
@@ -2146,7 +2259,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Use HyperLogLog
+### 5.10 Use HyperLogLog
 
 AnalyticDB for PostgreSQL is highly optimized by Alibaba Cloud. It has the features of Greenplum Database and supports HyperLogLog. AnalyticDB for PostgreSQL is suited for industries such as Internet advertising and estimation analysis that require quick estimation of business metrics such as page views (PVs) and unique visitors (UVs).
 
@@ -2174,7 +2287,7 @@ SELET 1::hll_hashval;
 
 **Basic operators**
 
-AnalyticDB for PostgreSQL User G The hll type supports =, !=, <>, ||, and #.
+The hll type supports =, !=, <>, ||, and #.
 
 ```
 SELECT hll_add_agg(1::hll_hashval) = hll_add_agg(2::hll_hashval); SELECT hll_add_agg(1::hll_hashval) || hll_add_agg(2::hll_hashval); SELECT #hll_add_agg(1::hll_hashval);
@@ -2247,14 +2360,6 @@ The following information is returned:
 (1 row)
 ```
 
-| Parameter | Description |
-|---|---|
-| library name _ | The name of the library that you want to install. If the library that you want to install has the same name as an existing library, you must delete the existing library before you install the new one. |
-| LANGUAGE [JAVA] | The programming language that you want to use. Only PL/Java is supported. |
-| oss location _ | The location of the package. You can specify the Object Storage Service (OSS) bucket and object names. Only one object can be specified and the specified object cannot be a compressed file. Sample format: oss://oss endpoint filepath= _ [folder/[folder/]...]/file name id=userossid _ key=userosskey bucket=ossbucket |
-
-AnalyticDB for PostgreSQL User G
-
 ```
 select #userids from access_date where acc_date=current_date-1;
 ```
@@ -2277,7 +2382,7 @@ The following information is returned:
 (1 row)
 ```
 
-### Use the CREATE LIBRARY
+### 5.11 Use the CREATE LIBRARY statement
 
 **statement**
 
@@ -2289,12 +2394,18 @@ AnalyticDB for PostgreSQL introduces the CREATE LIBRARY and DROP LIBRARY stateme
 CREATE LIBRARY library_name LANGUAGE [JAVA] FROM oss_location OWNER ownername CREATE LIBRARY library_name LANGUAGE [JAVA] VALUES file_content_hex OWNER ownername DROP LIBRARY library_name
 ```
 
+Table 1. Parameters
+
+| Parameter | Description |
+|---|---|
+| library name _ | The name of the library that you want to install. If the library that you want to install has the same name as an existing library, you must delete the existing library before you install the new one. |
+| LANGUAGE [JAVA] | The programming language that you want to use. Only PL/Java is supported. |
+| oss location _ | The location of the package. You can specify the Object Storage Service (OSS) bucket and object names. Only one object can be specified and the specified object cannot be a compressed file. Sample format: oss://oss endpoint filepath= _ [folder/[folder/]...]/file name id=userossid _ key=userosskey bucket=ossbucket |
+
 | file content hex _ _ | The content of the file. The byte stream is in hexadecimal notation. For example, 73656c6563742031 indicates the hexadecimal byte stream of "select 1". You can use this syntax to import packages without the need to use OSS. |
 |---|---|
 | ownername | The user. |
 | DROP LIBRARY | Deletes a library. |
-
-AnalyticDB for PostgreSQL User G
 
 **Examples**
 
@@ -2322,7 +2433,7 @@ Example 4: View installed libraries.
 select name, lanname from pg_library;
 ```
 
-### Create and use a PL/Java UDF
+### 5.12 Create and use a PL/Java UDF
 
 AnalyticDB for PostgreSQL allows you to compile and upload JAR software packages that are written in PL/Java language, and use these JAR packages to create user-defined functions (UDFs). AnalyticDB for PostgreSQL supports PL/Java 1.5.0 and JVM 1.8. This topic describes how to create a PL/Java UDF. For more information about PL/Java examples, see PL/Java code. For more information about the compiling method, see PL/Java documentation.
 
@@ -2336,25 +2447,36 @@ create extension pljava;
 ```
 
 2. Compile the UDF based on your business requirements. For example, you can use the
-following code to compile the Test.java file: AnalyticDB for PostgreSQL User G
+following code to compile the Test.java file:
 
 ```java
 public class Test
- {
+```
+
+`{`
+
+```
      public static String substring(String text, int beginIndex,
                int endIndex)
-             {
+```
+
+`{`
+
+```
                      try {
                          Process process = null;
                          process = Runtime.getRuntime().exec("echo Test running");
                      } catch (Exception e) {
                         return "" + e;
-                     }
-                     return text.substring(beginIndex, endIndex);
-             }
- }
 ```
 
+`}`
+
+```
+                     return text.substring(beginIndex, endIndex);
+```
+
+`}` `}`
 3. Compile the manifest.txt file:
 
 ```
@@ -2400,11 +2522,9 @@ t.substring' language java;
  select java_substring(a, 1, 5) from temp;
 ```
 
-AnalyticDB for PostgreSQL User G
+## 6 Table
 
-## Table
-
-### Create a table
+### 6.1 Create a table
 
 You can create tables within your databases.
 
@@ -2418,18 +2538,22 @@ CREATE [[GLOBAL | LOCAL] {TEMPORARY | TEMP}] TABLE table_name ( [ { column_named
 [ ENCODING ( storage_directive [,...] ) ]
 ```
 
-]
+`]`
 
 ```
+   | table_constraint
+   | LIKE other_table [{INCLUDING | EXCLUDING}
                       {DEFAULTS | CONSTRAINTS}] ...}
    [, ... ] ]
 ```
 
-)
+`)`
 
 ```
+   [ INHERITS ( parent_table [, ... ] ) ]
    [ WITH ( storage_parameter=value [, ... ] )
    [ ON COMMIT {PRESERVE ROWS | DELETE ROWS | DROP} ]
+   [ TABLESPACE tablespace ]
    [ DISTRIBUTED BY (column, [ ... ] ) | DISTRIBUTED RANDOMLY ]
    [ PARTITION BY partition_type (column)
        [ SUBPARTITION BY partition_type (column) ]
@@ -2444,20 +2568,22 @@ CREATE [[GLOBAL | LOCAL] {TEMPORARY | TEMP}] TABLE table_name ( [ { column_named
          ) ]
 ```
 
-) Definition of the **column_constraint** clause:
+`)` Definition of the **column_constraint** clause:
 
 ```
 [CONSTRAINT constraint_name]
    NOT NULL | NULL
+   | UNIQUE [USING INDEX TABLESPACE tablespace]
             [WITH ( FILLFACTOR = value )]
    | PRIMARY KEY [USING INDEX TABLESPACE tablespace]
                  [WITH ( FILLFACTOR = value )]
    | CHECK ( expression )
+   | REFERENCES table_name [ ( column_name [, ... ] ) ]
             [ key_match_type ]
             [ key_action ]
 ```
 
-AnalyticDB for PostgreSQL User G Definition of the **storage_directive** clause of columns:
+Definition of the **storage_directive** clause of columns:
 
 ```
    COMPRESSTYPE={ZLIB | QUICKLZ | RLE_TYPE | NONE}
@@ -2483,11 +2609,14 @@ Definition of the **table_constraint** clause:
 ```
    [CONSTRAINT constraint_name]
    UNIQUE ( column_name [, ... ] )
+          [USING INDEX TABLESPACE tablespace]
           [WITH ( FILLFACTOR=value )]
    | PRIMARY KEY ( column_name [, ... ] )
+                 [USING INDEX TABLESPACE tablespace]
                  [WITH ( FILLFACTOR=value )]
    | CHECK ( expression )
    | FOREIGN KEY ( column_name [, ... ] )
+            REFERENCES table_name [ ( column_name [, ... ] ) ]
             [ key_match_type ]
             [ key_action ]
             [ key_checking_mode ]
@@ -2512,7 +2641,7 @@ Valid values of **key_action**:
   | SET DEFAULT
 ```
 
-Valid values of **key_checking_mode**: AnalyticDB for PostgreSQL User G
+Valid values of **key_checking_mode**:
 
 ```
     DEFERRABLE
@@ -2546,7 +2675,7 @@ Definition of the **partition_element** clause:
   | [PARTITION name]
      END ([datatype] 'end_value') [INCLUSIVE | EXCLUSIVE]
      [ EVERY ([datatype] [number | INTERVAL] 'interval_value') ]
-[ WITH ( partition_storage_parameter=value [, ... ] ) ]
+[ WITH ( partition_storage_parameter=value [, ... ] ) ] [ TABLESPACE tablespace ]
 ```
 
 Definition of the **subpartition_spec** or **template_spec** clause:
@@ -2567,23 +2696,10 @@ Definition of the **subpartition_element** clause:
   | [SUBPARTITION name]
      END ([datatype] 'end_value') [INCLUSIVE | EXCLUSIVE]
      [ EVERY ([datatype] [number | INTERVAL] 'interval_value') ]
-[ WITH ( partition_storage_parameter=value [, ... ] ) ]
+[ WITH ( partition_storage_parameter=value [, ... ] ) ] [ TABLESPACE tablespace ]
 ```
 
 Definition of the **storage_parameter** clause:
-
-| Parameter | Description |
-|---|---|
-| TABLE NAME _ | The name of the table that you want to create. |
-| column name _ | The name of a column that you want to create in the table. |
-| data type _ | The data type of the column. For columns that contain textual data, set the data type toV ARCHAR or TEXT. We recommend that you do not use theC HAR type. |
-| DEFAULT default expr _ | Specifies a default value for the column. The system assigns this default value to all columns that do not have a value. The default value can be a variable-free expression. Subqueries or cross-references to other columns in the table are not allowed. The data type of the default expression must match the data type of the column. If a column does not have a default value, this parameter is left empty. |
-| ENCODING storage directive _ | Specifies the compression type and block size for the column data. This clause is valid only for append-optimized, column-oriented tables. Column compression settings are inherited from the table level to the partition level and then to the sub-partition level. The lowest-level settings have the highest priority. |
-| INHERITS | Configures all columns in the new table to automatically inherit a parent table. You can use INHERITS to create a persistent relationship between the new child table and its parent table. Schema modifications to the parent table are applied to the child table as well. When the parent table is also scanned, the data of the child table is scanned as well. |
-| LIKE other table _ | Specifies a table from which the new table automatically copies all column names, data types, NOT NULL constraints, and distribution policies. Storage properties such as append-optimized or partition structure are not copied. Unlike INHERITS, the new table is completely decoupled from the original table after the new table is created. |
-| CONSTRAINT constraint name _ | Configures a column or table constraint. If a constraint is violated, the constraint name is displayed in the error message. Constraint names can be used to communicate helpful information to client applications.Constraint names that contain spaces must be enclosed by double quotation marks (''). |
-
-AnalyticDB for PostgreSQL User G
 
 ```
    APPENDONLY={TRUE|FALSE}
@@ -2596,7 +2712,20 @@ AnalyticDB for PostgreSQL User G
    OIDS[=TRUE|FALSE]
 ```
 
-The Table creation parameters table describes the key parameters for creating a table.
+**Parameters**
+
+The Table creation parameters table describes the key parameters for creating a table. Table 1. Table creation parameters
+
+| Parameter | Description |
+|---|---|
+| TABLE NAME _ | The name of the table that you want to create. |
+| column name _ | The name of a column that you want to create in the table. |
+| data type _ | The data type of the column. For columns that contain textual data, set the data type toV ARCHAR or TEXT. We recommend that you do not use theC HAR type. |
+| DEFAULT default expr _ | Specifies a default value for the column. The system assigns this default value to all columns that do not have a value. The default value can be a variable-free expression. Subqueries or cross-references to other columns in the table are not allowed. The data type of the default expression must match the data type of the column. If a column does not have a default value, this parameter is left empty. |
+| ENCODING storage directive _ | Specifies the compression type and block size for the column data. This clause is valid only for append-optimized, column-oriented tables. Column compression settings are inherited from the table level to the partition level and then to the sub-partition level. The lowest-level settings have the highest priority. |
+| INHERITS | Configures all columns in the new table to automatically inherit a parent table. You can use INHERITS to create a persistent relationship between the new child table and its parent table. Schema modifications to the parent table are applied to the child table as well. When the parent table is also scanned, the data of the child table is scanned as well. |
+| LIKE other table _ | Specifies a table from which the new table automatically copies all column names, data types, NOT NULL constraints, and distribution policies. Storage properties such as append-optimized or partition structure are not copied. Unlike INHERITS, the new table is completely decoupled from the original table after the new table is created. |
+| CONSTRAINT constraint name _ | Configures a column or table constraint. If a constraint is violated, the constraint name is displayed in the error message. Constraint names can be used to communicate helpful information to client applications.Constraint names that contain spaces must be enclosed by double quotation marks (''). |
 
 | WITH ( storage option=value ) _ | Configures storage options for the table or its indexes. |
 |---|---|
@@ -2607,20 +2736,24 @@ The Table creation parameters table describes the key parameters for creating a 
 | SUBPARTITION BY | Configures a multi-level partition table. |
 | SUBPARTITION TEMPLATE | Specifies a sub-partition template to create sub-partitions (lower-level child tables). This ensures that all parent partitions have the same sub-partition structure. |
 
-AnalyticDB for PostgreSQL User G
-
 **Examples**
 
-Create a table and configure a distribution key. By default, a primary key is used as a distribution key in AnalyticDB for PostgreSQL. AnalyticDB for PostgreSQL User G
+Create a table and configure a distribution key. By default, a primary key is used as a distribution key in AnalyticDB for PostgreSQL.
 
 ```
-code char(5) CONSTRAINT firstkey PRIMARY KEY, title varchar(40) NOT NULL, did integer NOT NULL, date_prod date, kind varchar(10), len interval hour to minute ); did integer PRIMARY KEY DEFAULT nextval('serial'), name varchar(40) NOT NULL CHECK (name <> '') );
+CREATE TABLE films ( code char(5) CONSTRAINT firstkey PRIMARY KEY, title varchar(40) NOT NULL, did integer NOT NULL, date_prod date, kind varchar(10), len interval hour to minute
 ```
 
-Create a compressed table and configure a distribution key.
+);
 
 ```
-WITH (appendonly=true, compresslevel=5) DISTRIBUTED BY (txn_id);
+CREATE TABLE distributors ( did integer PRIMARY KEY DEFAULT nextval('serial'), name varchar(40) NOT NULL CHECK (name <> '')
+```
+
+); Create a compressed table and configure a distribution key.
+
+```
+CREATE TABLE sales (txn_id int, qty int, date date) WITH (appendonly=true, compresslevel=5) DISTRIBUTED BY (txn_id);
 ```
 
 Use sub-partition templates of each level and the default partition to create a three-level partition table.
@@ -2641,13 +2774,17 @@ CREATE TABLE sales (id int, year int, month int, day int, region text) DISTRIBUT
   DEFAULT PARTITION outlying_years);
 ```
 
-### Principles and scenarios of
+### 6.2 Principles and scenarios of row store, column store, heap tables, and AO tables
 
 **row store, column store, heap**
 
 **tables, and AO tables**
 
 AnalyticDB for PostgreSQL supports row store, column store, heap tables, and appendoptimized (AO) tables. This topic describes their principles and scenarios.
+
+**Row store and column store**
+
+Table 1. Comparison
 
 | Dimension | Row store | Column store |
 |---|---|---|
@@ -2657,13 +2794,23 @@ AnalyticDB for PostgreSQL supports row store, column store, heap tables, and app
 | Vector computing and JIT architecture | Not suitable. Not suitable for batch computing. | Suitable. More efficient when you access and collect statistics of a batch of data. |
 | Scenarios | If you need to perform a large number of update and delete operations due to online transaction processing (OLTP) requirements such as when you query table details where multiple columns are returned, you can use row store. You can use partition tables if you have complex requirements. For example, if you want to partition data based on time, you can use row store to query the details of recent data and use column store to obtain more statistics from historical data. | You can use column store if you need data statistics because of online analytical processing (OLAP) requirements. If you want a higher compression ratio, you can use column store. |
 
-AnalyticDB for PostgreSQL User G
+**Heap tables**
 
-**Row store and column store**
+A heap table is heap storage. All changes to the heap table generate redo logs that can be used to restore data by point in time. However, heap tables cannot implement logical incremental backup because all data blocks in the tables can be changed and it is inconvenient to record the position by using heap storage. Commit and redo logs are used to ensure reliability when transactions are finished. You can also implement redundancy by using secondary nodes through redo logs.
 
-A heap table is heap storage. All changes to the heap table generate redo logs that can be used to restore data by point in time. However, heap tables cannot implement logical incremental backup because all data blocks in the tables can be changed and it is inconvenient to record the position by using heap storage. Commit and redo logs are used to ensure reliability when transactions are finished. You can also implement redundancy by using secondary nodes through redo logs. AnalyticDB for PostgreSQL User G AO tables are used to append data for storage. When you delete the updated data, you can use another bitmap file to mark the row that you want to delete and then use the offset of the bit to determine whether the row was deleted. When the transaction is finished, you must call the fsync() function to record the offset of the data block that performs the last write operation. Even if the data block contains only a single record, a new data block is appended for the next transaction. The data block is synchronized to the secondary node for data redundancy. AO tables are not suitable for small transactions because the fsync() function is called at the end of each transaction. This data block is not reused even if space is left. AO tables are suitable for OLAP scenarios, batch data writing, high compression ratio, and logical backup that supports incremental backup. During backup, you need only to record the offset from the backup and the bitmap deletion mark for each full backup. When multiple small transactions are handled, use a heap table. When you need to restore data by point in time, use a heap table. When you want to use column store, use an AO table. When data is written in batches, use an AO table.
+**AO tables**
 
-### Enable the column store and
+AO tables are used to append data for storage. When you delete the updated data, you can use another bitmap file to mark the row that you want to delete and then use the offset of the bit to determine whether the row was deleted. When the transaction is finished, you must call the fsync() function to record the offset of the data block that performs the last write operation. Even if the data block contains only a single record, a new data block is appended for the next transaction. The data block is synchronized to the secondary node for data redundancy. AO tables are not suitable for small transactions because the fsync() function is called at the end of each transaction. This data block is not reused even if space is left. AO tables are suitable for OLAP scenarios, batch data writing, high compression ratio, and logical backup that supports incremental backup. During backup, you need only to record the offset from the backup and the bitmap deletion mark for each full backup.
+
+**Use scenarios of heap tables**
+
+When multiple small transactions are handled, use a heap table. When you need to restore data by point in time, use a heap table.
+
+**Use scenarios of AO tables**
+
+When you want to use column store, use an AO table. When data is written in batches, use an AO table.
+
+### 6.3 Enable the column store and compression features
 
 **compression features**
 
@@ -2677,13 +2824,13 @@ with (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, B
 
 AnalyticDB for PostgreSQL supports only zlib and RLE_TYPE compression algorithms. If you specify the quicklz algorithm, it is automatically converted to zlib.
 
-### Add a field to a column-
+### 6.4 Add a field to a column-oriented table and set the default value
 
 **oriented table and set the default**
 
 **value**
 
-AnalyticDB for PostgreSQL User G This topic describes how to add a field to a column-oriented table and set the default value for the field, and how to use the ANALYZE statement to view the impact of updated data on the size of the column-oriented table.
+This topic describes how to add a field to a column-oriented table and set the default value for the field, and how to use the ANALYZE statement to view the impact of updated data on the size of the column-oriented table.
 
 **Background information**
 
@@ -2733,8 +2880,6 @@ The following information is returned:
  88 MB
 (1 row)
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```
 SELECT pg_size_pretty(pg_relation_size('tbl3'));
@@ -2807,11 +2952,6 @@ The following information is returned:
 
 The following information is returned:
 
-| ALTER TABLE DROP PARTITION | sta |
-|---|---|
-
-AnalyticDB for PostgreSQL User G
-
 ```
  pg_size_pretty
 ----------------
@@ -2830,17 +2970,28 @@ The following information is returned:
 
 When you add fields to the AO tables, the number of entries in the existing tables prevails. Even if all the entries are deleted, new fields are added to the original data.
 
-### Configure table partitions
+### 6.5 Configure table partitions
 
-For fact tables and large-sized tables in a database, we recommend that you configure table partitions. data to a new data partition. AnalyticDB for PostgreSQL supports range partitioning, list partitioning, and composite partitioning. Range partitioning supports only the numeric or datetime data types of fields. The following example shows how to use range partitioning in a table:
+For fact tables and large-sized tables in a database, we recommend that you configure table partitions.
+
+**Configure table partitions**
+
+You can use the table partitioning feature to add and remove data based on table partitions
+
+| ALTER TABLE DROP PARTITION | sta |
+|---|---|
+
+the data in a partition, and use the `ALTER TABLE EXCHANGE PARTITION` statement to import data to a new data partition. AnalyticDB for PostgreSQL supports range partitioning, list partitioning, and composite partitioning. Range partitioning supports only the numeric or datetime data types of fields. The following example shows how to use range partitioning in a table:
 
 ```
-L_ORDERKEY BIGINT NOT NULL, L_PARTKEY BIGINT NOT NULL, L_SUPPKEY BIGINT NOT NULL, L_LINENUMBER INTEGER, L_QUANTITY FLOAT8, L_EXTENDEDPRICE FLOAT8, L_DISCOUNT FLOAT8, L_TAX FLOAT8, L_RETURNFLAG CHAR(1), L_LINESTATUS CHAR(1), L_SHIPDATE DATE, L_COMMITDATE DATE, L_RECEIPTDATE DATE, L_SHIPINSTRUCT CHAR(25), L_SHIPMODE CHAR(10), L_COMMENT VARCHAR(44) ) WITH (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOC KSIZE=1048576, OIDS=false) DISTRIBUTED BY (l_orderkey) PARTITION BY RANGE (L_SHIPDATE) (START (date '1992-01-01') INCLUSIVE END (date '2000-01 -01') EXCLUSIVE EVERY (INTERVAL '1 month' ));
+CREATE TABLE LINEITEM ( L_ORDERKEY BIGINT NOT NULL, L_PARTKEY BIGINT NOT NULL, L_SUPPKEY BIGINT NOT NULL, L_LINENUMBER INTEGER, L_QUANTITY FLOAT8, L_EXTENDEDPRICE FLOAT8, L_DISCOUNT FLOAT8, L_TAX FLOAT8, L_RETURNFLAG CHAR(1), L_LINESTATUS CHAR(1), L_SHIPDATE DATE, L_COMMITDATE DATE, L_RECEIPTDATE DATE, L_SHIPINSTRUCT CHAR(25), L_SHIPMODE CHAR(10), L_COMMENT VARCHAR(44) ) WITH (APPENDONLY=true, ORIENTATION=column, COMPRESSTYPE=zlib, COMPRESSLEVEL=5, BLOC KSIZE=1048576, OIDS=false) DISTRIBUTED BY (l_orderkey) PARTITION BY RANGE (L_SHIPDATE) (START (date '1992-01-01') INCLUSIVE END (date '2000-01 -01') EXCLUSIVE EVERY (INTERVAL '1 month' ));
 ```
 
-AnalyticDB for PostgreSQL User G The purpose of partitioning is to minimize the amount of data to be scanned during a query. Therefore, partitions must be associated with the query conditions. Principle 1: Select the fields that are related to the query conditions to configure partitions and reduce the amount of data to be scanned. Principle 2: If multiple query conditions exist, configure sub-partitions to further reduce the amount of data to be scanned.
+**Principles of table partitioning**
 
-### Configure the sort key
+The purpose of partitioning is to minimize the amount of data to be scanned during a query. Therefore, partitions must be associated with the query conditions. Principle 1: Select the fields that are related to the query conditions to configure partitions and reduce the amount of data to be scanned. Principle 2: If multiple query conditions exist, configure sub-partitions to further reduce the amount of data to be scanned.
+
+### 6.6 Configure the sort key
 
 A sort key is an attribute of a table. Data on disks is stored in the order of the sort key.
 
@@ -2848,23 +2999,29 @@ A sort key is an attribute of a table. Data on disks is stored in the order of t
 
 Sort keys have two major advantages: Speed up and optimize column-store operations. The min and max meta information the system collects seldom overlaps with each other, which features good filterability. Eliminate the need to perform ORDER BY and GROUP BY operations. The data directly read from the disk is ordered as required by the sorting conditions.
 
-```
-Syntax: CREATE [[GLOBAL | LOCAL] {TEMPORARY | TEMP}] TABLE table_name ( [ { column_name data_type [ DEFAULT default_expr ] [column_constraint [ ... ] [ ENCODING ( storage_directive [,...] ) ]
-```
-
-]
+**Create a table**
 
 ```
+Command: CREATE TABLE Description: define a new table Syntax: CREATE [[GLOBAL | LOCAL] {TEMPORARY | TEMP}] TABLE table_name ( [ { column_name data_type [ DEFAULT default_expr ] [column_constraint [ ... ] [ ENCODING ( storage_directive [,...] ) ]
+```
+
+`]`
+
+```
+   | table_constraint
+   | LIKE other_table [{INCLUDING | EXCLUDING}
                       {DEFAULTS | CONSTRAINTS}] ...}
    [, ... ] ]
    [column_reference_storage_directive [, ] ]
 ```
 
-)
+`)`
 
 ```
+   [ INHERITS ( parent_table [, ... ] ) ]
    [ WITH ( storage_parameter=value [, ... ] )
    [ ON COMMIT {PRESERVE ROWS | DELETE ROWS | DROP} ]
+   [ TABLESPACE tablespace ]
    [ DISTRIBUTED BY (column, [ ... ] ) | DISTRIBUTED RANDOMLY ]
    [ SORTKEY (column, [ ... ] )]
    [ PARTITION BY partition_type (column)
@@ -2880,12 +3037,18 @@ Syntax: CREATE [[GLOBAL | LOCAL] {TEMPORARY | TEMP}] TABLE table_name ( [ { colu
          ) ]
 ```
 
-) AnalyticDB for PostgreSQL User G
+`)`
 
 **Examples:**
 
 ```
 create table test(date text, time text, open float, high float, low float, volume int) with(APPENDONLY=true,ORIENTATION=column) sortkey (volume);
+```
+
+**Sort the table**
+
+```
+VACUUM SORT ONLY [tablename]
 ```
 
 **Modify the sort key**
@@ -2902,11 +3065,13 @@ Examples:
 alter table test set sortkey (high,low);
 ```
 
-AnalyticDB for PostgreSQL User G
+## 7 Vector analysis
 
-## Vector analysis
+AnalyticDB for PostgreSQL provides vector analysis to help you implement approximate search and analysis of unstructured data. This topic describes the capabilities and benefits of vector analysis.
 
-AnalyticDB for PostgreSQL provides vector analysis to help you implement approximate search and analysis of unstructured data. This topic describes the capabilities and benefits of vector analysis. In real-world scenarios, most data is presented in the form of unstructured data, such as images, audio, videos, and text. Unstructured data exponentially grows with the emergence of applications in fields such as smart cities, short videos, personalized product recommendation, and visual product search. To process unstructured data, AI technologies are used to extract features from the unstructured data, convert the features into feature vectors, and then analyze and retrieve the feature vectors. The databases that can store, analyze, and retrieve feature vectors are called vector databases. Vector databases use the vector index technology to quickly retrieve feature vectors. In most cases, vector indexes are used for approximate nearest neighbor search (ANNS). The purpose of vector indexes is to search for the nearest neighbor data and return the most accurate results to improve search efficiency. Compared with traditional databases, vector databases implement highly efficient data search with an acceptable compromise in accuracy. Two methods are available to apply ANNS vector indexes to the production environment: Build a **dedicated vector database** that provides the ANNS vector index service to help create vector indexes and retrieve data. Integrate ANNS vector indexes into traditional structured databases to build a **database**
+**Introduction to vector databases**
+
+In real-world scenarios, most data is presented in the form of unstructured data, such as images, audio, videos, and text. Unstructured data exponentially grows with the emergence of applications in fields such as smart cities, short videos, personalized product recommendation, and visual product search. To process unstructured data, AI technologies are used to extract features from the unstructured data, convert the features into feature vectors, and then analyze and retrieve the feature vectors. The databases that can store, analyze, and retrieve feature vectors are called vector databases. Vector databases use the vector index technology to quickly retrieve feature vectors. In most cases, vector indexes are used for approximate nearest neighbor search (ANNS). The purpose of vector indexes is to search for the nearest neighbor data and return the most accurate results to improve search efficiency. Compared with traditional databases, vector databases implement highly efficient data search with an acceptable compromise in accuracy. Two methods are available to apply ANNS vector indexes to the production environment: Build a **dedicated vector database** that provides the ANNS vector index service to help create vector indexes and retrieve data. Integrate ANNS vector indexes into traditional structured databases to build a **database**
 **management system (DBMS) that provides the vector search capability**.
 AnalyticDB for PostgreSQL vector databases are a type of DBMS that integrates the in-house
 **FastANN** vector engine. AnalyticDB for PostgreSQL vector databases also provide end-to-end
@@ -2914,15 +3079,23 @@ database capabilities such as ease of use, transaction processing, high availabi
 
 **How it works**
 
-To implement vector analysis, vector databases use AI algorithms to extract features from unstructured data and then use feature vectors to identify the unstructured data. The distance between vectors is used to measure the similarity between unstructured data. AnalyticDB for PostgreSQL uses a massively parallel processing (MPP) architecture to implement vector search and analysis. You can use SQL statements to retrieve unstructured data and perform correlation analysis of structured and unstructured data. You can use AnalyticDB for PostgreSQL vector analysis in the following intelligent application scenarios: Reverse image search. You can search for images that are similar to a specified image. Video search. You can search for video images that are similar to a specified video image. Voiceprint search. You can search for audio files that are similar to a specified audio file based on voiceprint recognition. Recommendation system. Suitable features can be recommended based on user characteristics. Text search. You can search for texts that are similar to a specified text based on semantics. Q&A chatbots that are built in combination with large language models. AnalyticDB for PostgreSQL User G File deduplication. You can remove duplicate files based on the fingerprint of a specified file.
+To implement vector analysis, vector databases use AI algorithms to extract features from unstructured data and then use feature vectors to identify the unstructured data. The distance between vectors is used to measure the similarity between unstructured data. AnalyticDB for PostgreSQL uses a massively parallel processing (MPP) architecture to implement vector search and analysis. You can use SQL statements to retrieve unstructured data and perform correlation analysis of structured and unstructured data.
+
+**Scenarios**
+
+You can use AnalyticDB for PostgreSQL vector analysis in the following intelligent application scenarios: Reverse image search. You can search for images that are similar to a specified image. Video search. You can search for video images that are similar to a specified video image. Voiceprint search. You can search for audio files that are similar to a specified audio file based on voiceprint recognition. Recommendation system. Suitable features can be recommended based on user characteristics. Text search. You can search for texts that are similar to a specified text based on semantics. Q&A chatbots that are built in combination with large language models. File deduplication. You can remove duplicate files based on the fingerprint of a specified file.
 
 **Benefits**
 
 AnalyticDB for PostgreSQL vector databases use the in-house FastANN vector engine to provide the vector analysis capability. Vector analysis is widely used in various fields such as Alibaba Group data mid-end, e-commerce, new retail, Alibaba Cloud City Brain, and Tongyi Qianwen Q&A service. Compared with other vector databases, AnalyticDB for PostgreSQL vector databases provide the following advantages: Hybrid analysis of structured and unstructured data AnalyticDB for PostgreSQL vector databases use the capabilities of traditional databases to implement hybrid analysis of structured, semi-structured, and unstructured data and utilize structured and semi-structured indexing capabilities in an efficient manner. Two-way retrieval based on vector search and full-text search AnalyticDB for PostgreSQL vector databases support vector indexes and full-text indexes, and can use vector search and full-text search to implement two-way retrieval. This significantly improves the retrieval accuracy of vector data. Real-time data update and query AnalyticDB for PostgreSQL vector databases support streaming import and real-time building of vector data. Ease of use AnalyticDB for PostgreSQL vector databases are easy to use after you create an instance and support standard SQL syntax. This significantly simplifies the development process. Cost-effectiveness AnalyticDB for PostgreSQL vector databases can compress FP32 data to the FP16 format. This reduces storage costs by 50%. AnalyticDB for PostgreSQL vector databases also build vector indexes on the segmented paging storage, and can utilize the cache-based swapping mechanism based on the shared buffer of PostgreSQL. This way, AnalyticDB for PostgreSQL can store vector indexes that exceed the available memory size.
 
-### Overview
+### 7.1 Overview
 
-AnalyticDB for PostgreSQL provides vector analysis to help you implement approximate search and analysis of unstructured data. This topic describes the capabilities and benefits of vector analysis. In real-world scenarios, most data is presented in the form of unstructured data, such as images, audio, videos, and text. Unstructured data exponentially grows with the emergence of applications in fields such as smart cities, short videos, personalized product recommendation, and visual product search. To process unstructured data, AI technologies are used to extract features from the unstructured data, convert the features into feature vectors, and then analyze and retrieve the feature vectors. The databases that can store, analyze, and retrieve feature vectors are called vector databases. Vector databases use the vector index technology to quickly retrieve feature vectors. In most cases, vector indexes are used for approximate nearest neighbor search (ANNS). The purpose of vector indexes is to search for the nearest neighbor data and return the most accurate results to improve search efficiency. Compared with traditional databases, vector databases implement highly efficient data search with an acceptable compromise in accuracy. Two methods are available to apply ANNS vector indexes to the production environment: AnalyticDB for PostgreSQL User G Build a **dedicated vector database** that provides the ANNS vector index service to help create vector indexes and retrieve data. Integrate ANNS vector indexes into traditional structured databases to build a **database**
+AnalyticDB for PostgreSQL provides vector analysis to help you implement approximate search and analysis of unstructured data. This topic describes the capabilities and benefits of vector analysis.
+
+**Introduction to vector databases**
+
+In real-world scenarios, most data is presented in the form of unstructured data, such as images, audio, videos, and text. Unstructured data exponentially grows with the emergence of applications in fields such as smart cities, short videos, personalized product recommendation, and visual product search. To process unstructured data, AI technologies are used to extract features from the unstructured data, convert the features into feature vectors, and then analyze and retrieve the feature vectors. The databases that can store, analyze, and retrieve feature vectors are called vector databases. Vector databases use the vector index technology to quickly retrieve feature vectors. In most cases, vector indexes are used for approximate nearest neighbor search (ANNS). The purpose of vector indexes is to search for the nearest neighbor data and return the most accurate results to improve search efficiency. Compared with traditional databases, vector databases implement highly efficient data search with an acceptable compromise in accuracy. Two methods are available to apply ANNS vector indexes to the production environment: Build a **dedicated vector database** that provides the ANNS vector index service to help create vector indexes and retrieve data. Integrate ANNS vector indexes into traditional structured databases to build a **database**
 **management system (DBMS) that provides the vector search capability**.
 AnalyticDB for PostgreSQL vector databases are a type of DBMS that integrates the in-house
 **FastANN** vector engine. AnalyticDB for PostgreSQL vector databases also provide end-to-end
@@ -2930,21 +3103,29 @@ database capabilities such as ease of use, transaction processing, high availabi
 
 **How it works**
 
-To implement vector analysis, vector databases use AI algorithms to extract features from unstructured data and then use feature vectors to identify the unstructured data. The distance between vectors is used to measure the similarity between unstructured data. AnalyticDB for PostgreSQL uses a massively parallel processing (MPP) architecture to implement vector search and analysis. You can use SQL statements to retrieve unstructured data and perform correlation analysis of structured and unstructured data. You can use AnalyticDB for PostgreSQL vector analysis in the following intelligent application scenarios: Reverse image search. You can search for images that are similar to a specified image. Video search. You can search for video images that are similar to a specified video image. Voiceprint search. You can search for audio files that are similar to a specified audio file based on voiceprint recognition. Recommendation system. Suitable features can be recommended based on user characteristics. Text search. You can search for texts that are similar to a specified text based on semantics. Q&A chatbots that are built in combination with large language models. File deduplication. You can remove duplicate files based on the fingerprint of a specified file.
+To implement vector analysis, vector databases use AI algorithms to extract features from unstructured data and then use feature vectors to identify the unstructured data. The distance between vectors is used to measure the similarity between unstructured data. AnalyticDB for PostgreSQL uses a massively parallel processing (MPP) architecture to implement vector search and analysis. You can use SQL statements to retrieve unstructured data and perform correlation analysis of structured and unstructured data.
+
+**Scenarios**
+
+You can use AnalyticDB for PostgreSQL vector analysis in the following intelligent application scenarios: Reverse image search. You can search for images that are similar to a specified image. Video search. You can search for video images that are similar to a specified video image. Voiceprint search. You can search for audio files that are similar to a specified audio file based on voiceprint recognition. Recommendation system. Suitable features can be recommended based on user characteristics. Text search. You can search for texts that are similar to a specified text based on semantics. Q&A chatbots that are built in combination with large language models. File deduplication. You can remove duplicate files based on the fingerprint of a specified file.
 
 **Benefits**
 
-AnalyticDB for PostgreSQL vector databases use the in-house FastANN vector engine to provide the vector analysis capability. Vector analysis is widely used in various fields such as Alibaba Group data mid-end, e-commerce, new retail, Alibaba Cloud City Brain, and Tongyi Qianwen Q&A service. Compared with other vector databases, AnalyticDB for PostgreSQL vector databases provide the following advantages: Hybrid analysis of structured and unstructured data AnalyticDB for PostgreSQL vector databases use the capabilities of traditional databases to implement hybrid analysis of structured, semi-structured, and unstructured data and utilize structured and semi-structured indexing capabilities in an efficient manner. Two-way retrieval based on vector search and full-text search AnalyticDB for PostgreSQL vector databases support vector indexes and full-text indexes, and can use vector search and full-text search to implement two-way retrieval. This significantly improves the retrieval accuracy of vector data. Real-time data update and query AnalyticDB for PostgreSQL User G AnalyticDB for PostgreSQL vector databases support streaming import and real-time building of vector data. Ease of use AnalyticDB for PostgreSQL vector databases are easy to use after you create an instance and support standard SQL syntax. This significantly simplifies the development process. Cost-effectiveness AnalyticDB for PostgreSQL vector databases can compress FP32 data to the FP16 format. This reduces storage costs by 50%. AnalyticDB for PostgreSQL vector databases also build vector indexes on the segmented paging storage, and can utilize the cache-based swapping mechanism based on the shared buffer of PostgreSQL. This way, AnalyticDB for PostgreSQL can store vector indexes that exceed the available memory size.
+AnalyticDB for PostgreSQL vector databases use the in-house FastANN vector engine to provide the vector analysis capability. Vector analysis is widely used in various fields such as Alibaba Group data mid-end, e-commerce, new retail, Alibaba Cloud City Brain, and Tongyi Qianwen Q&A service. Compared with other vector databases, AnalyticDB for PostgreSQL vector databases provide the following advantages: Hybrid analysis of structured and unstructured data AnalyticDB for PostgreSQL vector databases use the capabilities of traditional databases to implement hybrid analysis of structured, semi-structured, and unstructured data and utilize structured and semi-structured indexing capabilities in an efficient manner. Two-way retrieval based on vector search and full-text search AnalyticDB for PostgreSQL vector databases support vector indexes and full-text indexes, and can use vector search and full-text search to implement two-way retrieval. This significantly improves the retrieval accuracy of vector data. Real-time data update and query AnalyticDB for PostgreSQL vector databases support streaming import and real-time building of vector data. Ease of use AnalyticDB for PostgreSQL vector databases are easy to use after you create an instance and support standard SQL syntax. This significantly simplifies the development process. Cost-effectiveness AnalyticDB for PostgreSQL vector databases can compress FP32 data to the FP16 format. This reduces storage costs by 50%. AnalyticDB for PostgreSQL vector databases also build vector indexes on the segmented paging storage, and can utilize the cache-based swapping mechanism based on the shared buffer of PostgreSQL. This way, AnalyticDB for PostgreSQL can store vector indexes that exceed the available memory size.
 
-### Usage of the vector search
+### 7.2 Usage of the vector search engine
 
 **engine**
 
-#### Enable or disable vector search engine
+#### 7.2.1 Enable or disable vector search engine optimization
 
 **optimization**
 
-AnalyticDB for PostgreSQL performs significant engine parameter optimization for vector database scenarios. To use vector search engine optimization, you must enable the feature in the console. This topic describes how to enable or disable vector search engine optimization. In vector analysis scenarios such as AI-generated content (AIGC) and vector search, we recommend that you enable vector search engine optimization. In mainstream analysis, data warehousing, and real-time data warehousing scenarios, we recommend that you disable vector search engine optimization.
+AnalyticDB for PostgreSQL performs significant engine parameter optimization for vector database scenarios. To use vector search engine optimization, you must enable the feature in the console. This topic describes how to enable or disable vector search engine optimization.
+
+**Scenarios**
+
+In vector analysis scenarios such as AI-generated content (AIGC) and vector search, we recommend that you enable vector search engine optimization. In mainstream analysis, data warehousing, and real-time data warehousing scenarios, we recommend that you disable vector search engine optimization.
 
 **Prerequisites**
 
@@ -2956,7 +3137,7 @@ Vector search engine optimization consumes large amounts of memory resources of 
 
 **Warning**
 
-After you enable or disable vector search engine optimization, your instance restarts. During the restart, your instance is unavailable. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance. AnalyticDB for PostgreSQL User G
+After you enable or disable vector search engine optimization, your instance restarts. During the restart, your instance is unavailable. We recommend that you perform this operation during off-peak hours and make sure that your application can automatically reconnect to the instance.
 
 **Procedure**
 
@@ -2969,15 +3150,15 @@ After you enable or disable vector search engine optimization, your instance res
 To disable vector search engine optimization, click **Disable Optimization** next to **Vector**
 **Search Engine Optimization**.
 
-#### Access vector databases
+#### 7.2.2 Access vector databases
 
-##### Use SQL statements to access vector
+##### 7.2.2.1 Use SQL statements to access vector databases
 
 ## databases
 
 After you enable the vector search engine optimization feature, you can use SQL statements to access AnalyticDB for PostgreSQL vector databases. This topic describes how to use Java, Python, and C code to access vector databases.
 
-###### Java
+**Java**
 
 You can use the Java Database Connectivity (JDBC) driver of PostgreSQL or Greenplum to connect to AnalyticDB for PostgreSQL vector databases. For more information, see JDBC. Make sure that the PostgreSQL JDBC driver is available. If you use Maven, you can add the following dependencies to the pom.xml file:
 
@@ -2989,7 +3170,7 @@ You can use the Java Database Connectivity (JDBC) driver of PostgreSQL or Greenp
 </dependency>
 ```
 
-The following sample code provides an example on how to use Java code to access vector databases: AnalyticDB for PostgreSQL User G
+The following sample code provides an example on how to use Java code to access vector databases:
 
 ```java
 import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.Statement; public class GreenplumSample {
@@ -3013,17 +3194,22 @@ import java.sql.Connection; import java.sql.DriverManager; import java.sql.Resul
 string type.
                 String resultColumn = rs.getString(1);
                 System.out.println(resultColumn);
-            }
+```
+
+`}`
+
+```
             // Disable resources.
             rs.close();
             st.close();
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
+
+**Python**
 
 You can use psycopg2 to connect to AnalyticDB for PostgreSQL vector databases and Python code to import and query vector data. For more information, see Python. The following sample code provides an example on how to use Python code to access vector databases:
 
@@ -3037,16 +3223,15 @@ connection_pool = psycopg2.pool.SimpleConnectionPool(
 password='yourpassword',
 ```
 
-AnalyticDB for PostgreSQL User G
-
 ```
+    password
 your_password,
     host='your_host',
     port='your_port',
     database='your_database'
 ```
 
-)
+`)`
 
 ```python
 # Check whether the connection is alive.
@@ -3085,13 +3270,11 @@ def execute_query(query):
     return result
 # Examples
 # Query data.
-result = execute_query(select_query) if result:
+select_query = "SELECT * FROM your_table" result = execute_query(select_query) if result:
     print(result)
 # Insert data.
 insert_query = "INSERT INTO your_table (column1, column2) VALUES ('value1', 'value2')" execute_query(insert_query)
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```bash
 # Update data.
@@ -3122,7 +3305,11 @@ sword=yourpassword";
         fprintf(stderr, "Connection failed: %s", PQerrorMessage(conn));
         PQfinish(conn);
         exit(1);
-    }
+```
+
+`}`
+
+```
     // Execute a query statement.
     res = PQexec(conn, "SELECT * FROM yourtablename LIMIT 10");
     // Check whether a correct result set is returned.
@@ -3132,38 +3319,49 @@ PQerrorMessage(conn));
         PQclear(res);
         PQfinish(conn);
         exit(1);
-    }
+```
+
+`}`
+
+```
     // Obtain the number of fields.
     nFields = PQnfields(res);
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```
     // Display each row of data.
     for (i = 0; i < PQntuples(res); i++) {
         for (j = 0; j < nFields; j++) {
             printf("%s = %s", PQfname(res, j), PQgetvalue(res, i, j));
-        }
+```
+
+`}`
+
+```
         printf("\n");
-    }
+```
+
+`}`
+
+```
     // Clear data.
     PQclear(res);
     // Close the connection.
     PQfinish(conn);
     return 0;
-}
 ```
+
+`}`
 
 **References**
 
 For information about how to use other language code to access AnalyticDB for PostgreSQL vector databases, see Use pgvector-compatible vector search.
 
-##### Use API operations to access vector
+##### 7.2.2.2 Use API operations to access vector databases
 
 ## databases
 
-###### Java
+###### 7.2.2.2.1 Java
 
 The AnalyticDB for PostgreSQL API encapsulates the vector-related DDL and DML operations of AnalyticDB for PostgreSQL. You can use API operations to manage vector data. This topic describes how to use API operations to import and query vector data by calling an SDK.
 
@@ -3181,7 +3379,7 @@ An AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode is created. F
 
 **Initialize the vector database**
 
-AnalyticDB for PostgreSQL User G Before you use vector search, you must initialize the knowledgebase database and the fulltext search feature. The following sample code provides an example on how to 调用call an API operation:
+Before you use vector search, you must initialize the knowledgebase database and the fulltext search feature. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
 InitVectorDatabaseRequest request = new InitVectorDatabaseRequest(); request.setDBInstanceId("gp-bp1c62r3l489****"); request.setManagerAccount("myaccount"); request.setManagerAccountPassword("myaccount_password"); request.setRegionId("ap-southeast-1"); InitVectorDatabaseResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response));
@@ -3205,7 +3403,7 @@ SELECT schema_name FROM information_schema.schemata;
 
 **Create a collection**
 
-Collections are used to store vector data and are separated by namespaces. The following sample code provides an example on how to 调用call an API operation: AnalyticDB for PostgreSQL User G
+Collections are used to store vector data and are separated by namespaces. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
 Map<String,String> metadata = new HashMap<>(); metadata.put("title", "text"); metadata.put("link", "text"); metadata.put("content", "text"); metadata.put("pv", "int"); List<String> fullTextRetrievalFields = Arrays.asList("title", "content"); CreateCollectionRequest request = new CreateCollectionRequest(); request.setDBInstanceId("gp-bp1c62r3l489****"); request.setManagerAccount("myaccount"); request.setManagerAccountPassword("myaccount_password"); request.setNamespace("vector_test"); request.setCollection("document"); request.setDimension(10L); request.setFullTextRetrievalFields(StringUtils.join(fullTextRetrievalFields, ",")); request.setMetadata(new Gson().toJson(metadata)); request.setParser("zh_ch"); request.setRegionId("ap-southeast-1"); CreateCollectionResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response));
@@ -3219,7 +3417,7 @@ SELECT tablename FROM pg_tables WHERE schemaname='vector_test';
 
 **Upload vector data**
 
-Upload the prepared embedding vector data to the corresponding collection. The following sample code provides an example on how to 调用call an API operation: AnalyticDB for PostgreSQL User G
+Upload the prepared embedding vector data to the corresponding collection. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
 UpsertCollectionDataRequest request = new UpsertCollectionDataRequest(); request.setDBInstanceId("gp-bp1c62r3l489****"); request.setCollection("document"); request.setNamespace("vector_test"); request.setNamespacePassword("vector_test_password"); request.setRegionId("ap-southeast-1"); List<UpsertCollectionDataRequest.UpsertCollectionDataRequestRows> rows = new ArrayList< >(); UpsertCollectionDataRequest.UpsertCollectionDataRequestRows row = new UpsertCollectionDataRequest.UpsertCollectionDataRequestRows(); row.setId("0CB55798-ECF5-4064-B81E-FE35B19E01A6"); row.setVector(Arrays.asList(0.2894745251078251,0.5364747050266715,0.1276845661831275,0.22 8871956822372,0.7009319238651552,0.40267406135256123,0.8873626696379067,0.124852595577493 0.9115507046412368,0.2450859133174706)); Map<String, String> rowsMetadata = new HashMap<>(); rowsMetadata.put("title", "Test document"); rowsMetadata.put("content","Test content"); rowsMetadata.put("link","http://127.0.0.1/document1"); rowsMetadata.put("pv","1000"); row.setMetadata(rowsMetadata); rows.add(row); request.setRows(rows); UpsertCollectionDataResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response));
@@ -3239,20 +3437,27 @@ Use the prepared vectors or full-text search fields to retrieve vector data. The
 QueryCollectionDataRequest request = new QueryCollectionDataRequest(); request.setDBInstanceId("gp-bp1c62r3l489****"); request.setCollection("document"); request.setNamespace("vector_test"); request.setNamespacePassword("vector_test_password"); request.setContent("Test"); request.setFilter("pv > 10"); request.setTopK(10L); request.setVector(Arrays.asList(0.7152607422256894,0.5524872066437732,0.1168505269851303, 704130971473022,0.4118874999967596,0.2451574619214022,0.18193414783144812,0.3050522957905 1,0.24846180714868163,0.0549715380856951)); request.setRegionId("ap-southeast-1"); QueryCollectionDataResponse response = client.getAcsResponse(request); System.out.println(new Gson().toJson(response));
 ```
 
-AnalyticDB for PostgreSQL User G Sample result:
+Sample result: `{`
 
 ```json
-{
   "Matches": {
     "match": [
-      {
+```
+
+`{`
+
+```json
         "Id": "0CB55798-ECF5-4064-B81E-FE35B19E01A6",
         "Metadata": {
           "title":"Test document",
           "content":"Test content",
           "link":"http://127.0.0.1/document1",
           "pv":"1000"
-        },
+```
+
+`},`
+
+```json
         "Values": [
            0.2894745251078251,
            0.5364747050266715,
@@ -3266,26 +3471,20 @@ AnalyticDB for PostgreSQL User G Sample result:
            0.2450859133174706
 ```
 
-]
-
-```
-      }
-```
-
-]
+`]` `}` `]` `},`
 
 ```json
-  },
   "RequestId": "ABB39CC3-4488-4857-905D-2E4A051D0521",
   "Status": "success"
-}
 ```
+
+`}`
 
 **References**
 
 向量检索
 
-###### Go
+###### 7.2.2.2.2 Go
 
 The AnalyticDB for PostgreSQL API encapsulates the vector-related DDL and DML operations of AnalyticDB for PostgreSQL. You can use API operations to manage vector data. This topic describes how to use API operations to import and query vector data by calling Alibaba Cloud SDK for Go.
 
@@ -3295,7 +3494,6 @@ An instance that uses elastic storage mode has been created. Vector search engin
 
 **Procedure**
 
-AnalyticDB for PostgreSQL User G
 1. Initialize the vector database.
 2. Create a namespace.
 3. Create a collection.
@@ -3304,10 +3502,10 @@ AnalyticDB for PostgreSQL User G
 
 **Initialize the vector database**
 
-Before you use vector search, you must initialize the knowledgebase database and the fulltext search feature. The following sample code provides an example on how to 调用call an API operation: AnalyticDB for PostgreSQL User G
+Before you use vector search, you must initialize the knowledgebase database and the fulltext search feature. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
-package main
+package main import (
  "fmt"
  "os"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
@@ -3315,7 +3513,7 @@ package main
  gpdb "github.com/aliyun/alibaba-cloud-sdk-go/services/gpdb"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -3335,7 +3533,11 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
     client, err := gpdb.NewClientWithOptions("cn-qingdao", config, credential)
  if err != nil {
   panic(err)
- }
+```
+
+`}`
+
+```
  request := gpdb.CreateInitVectorDatabaseRequest()
  request.Scheme = "https"
  request.DBInstanceId = "gp-bp1c62r3l489****"
@@ -3345,19 +3547,22 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  response, err := client.InitVectorDatabase(request)
  if err != nil {
   fmt.Print(err.Error())
- }
- fmt.Printf("response is %#v\n", response)
-}
 ```
 
-For information about the relevant parameters, see InitVectorDatabase.
+`}`
+
+```
+ fmt.Printf("response is %#v\n", response)
+```
+
+`}` For information about the relevant parameters, see InitVectorDatabase.
 
 **Create a namespace**
 
-Namespaces are used to separate schemas. Before you use vectors, you must create at least one namespace or use the public namespace. AnalyticDB for PostgreSQL User G The following sample code provides an example on how to 调用call an API operation:
+Namespaces are used to separate schemas. Before you use vectors, you must create at least one namespace or use the public namespace. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
-package main
+package main import (
  "fmt"
  "os"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
@@ -3365,7 +3570,7 @@ package main
  gpdb "github.com/aliyun/alibaba-cloud-sdk-go/services/gpdb"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -3385,7 +3590,11 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
     client, err := gpdb.NewClientWithOptions("cn-qingdao", config, credential)
  if err != nil {
   panic(err)
- }
+```
+
+`}`
+
+```
  request := gpdb.CreateCreateNamespaceRequest()
  request.Scheme = "https"
  request.DBInstanceId = "gp-bp1c62r3l489****"
@@ -3397,12 +3606,15 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  response, err := client.CreateNamespace(request)
  if err != nil {
   fmt.Print(err.Error())
- }
- fmt.Printf("response is %#v\n", response)
-}
 ```
 
-For information about the relevant parameters, see CreateNamespace. AnalyticDB for PostgreSQL User G After you create a namespace, you can query the corresponding schema in the knowledgebase database of the instance.
+`}`
+
+```
+ fmt.Printf("response is %#v\n", response)
+```
+
+`}` For information about the relevant parameters, see CreateNamespace. After you create a namespace, you can query the corresponding schema in the knowledgebase database of the instance.
 
 ```
 SELECT schema_name FROM information_schema.schemata;
@@ -3413,7 +3625,7 @@ SELECT schema_name FROM information_schema.schemata;
 Collections are used to store vector data and are separated by namespaces. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
-package main
+package main import (
  "fmt"
  "os"
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
@@ -3422,7 +3634,7 @@ package main
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -3442,7 +3654,11 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  client, err := gpdb.NewClientWithOptions("cn-qingdao", config, credential)
  if err != nil {
   panic(err)
- }
+```
+
+`}`
+
+```
  request := gpdb.CreateCreateCollectionRequest()
  request.Scheme = "https"
  request.DBInstanceId = "gp-bp1c62r3l489****"
@@ -3454,8 +3670,6 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  request.Dimension = requests.NewInteger(10)
 ```
 
-AnalyticDB for PostgreSQL User G
-
 ```
  request.FullTextRetrievalFields = ","
  request.Parser = "zh_ch"
@@ -3464,12 +3678,15 @@ AnalyticDB for PostgreSQL User G
  response, err := client.CreateCollection(request)
  if err != nil {
   fmt.Print(err.Error())
- }
- fmt.Printf("response is %#v\n", response)
-}
 ```
 
-After you create a collection, you can query the corresponding table in the knowledgebase database of the instance.
+`}`
+
+```
+ fmt.Printf("response is %#v\n", response)
+```
+
+`}` After you create a collection, you can query the corresponding table in the knowledgebase database of the instance.
 
 ```
 SELECT tablename FROM pg_tables WHERE schemaname='vector_test';
@@ -3480,7 +3697,7 @@ SELECT tablename FROM pg_tables WHERE schemaname='vector_test';
 Upload the prepared embedding vector data to the corresponding collection. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
-package main
+package main import (
  "fmt"
  "os"
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
@@ -3489,7 +3706,7 @@ package main
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -3509,10 +3726,9 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  client, err := gpdb.NewClientWithOptions("cn-qingdao", config, credential)
  if err != nil {
   panic(err)
- }
 ```
 
-AnalyticDB for PostgreSQL User G
+`}`
 
 ```
  request := gpdb.CreateUpsertCollectionDataRequest()
@@ -3523,27 +3739,41 @@ AnalyticDB for PostgreSQL User G
  request.Namespace = "vector_test"
  request.NamespacePassword = "vector_test_password"
  request.Rows = &[]gpdb.UpsertCollectionDataRows{
-  {
+```
+
+`{`
+
+```
    Id: "0CB55798-ECF5-4064-B81E-FE35B19E01A6",
    Metadata: gpdb.UpsertCollectionDataRowsMetadata{
     Pv: "1000",
     Link: "http://127.X.X.1/document1",
     Content: "Test content",
     Title: "Test document",
-   },
+```
+
+`},`
+
+```
    Vector: &
 []number{requests.NewInteger(0.2894745251078251),requests.NewInteger(0.5364747050266715), quests.NewInteger(0.1276845661831275)},
-  },
- }
+```
+
+`},` `}`
+
+```
  response, err := client.UpsertCollectionData(request)
  if err != nil {
   fmt.Print(err.Error())
- }
- fmt.Printf("response is %#v\n", response)
-}
 ```
 
-For information about the relevant parameters, see UpsertCollectionData. After you upload vector data, you can query the data in the knowledgebase database of the instance.
+`}`
+
+```
+ fmt.Printf("response is %#v\n", response)
+```
+
+`}` For information about the relevant parameters, see UpsertCollectionData. After you upload vector data, you can query the data in the knowledgebase database of the instance.
 
 ```
 SELECT * FROM vector_test.document;
@@ -3554,7 +3784,7 @@ SELECT * FROM vector_test.document;
 Use the prepared vectors or full-text search fields to retrieve vector data. The following sample code provides an example on how to 调用call an API operation:
 
 ```java
-package main
+package main import (
  "fmt"
  "os"
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
@@ -3562,13 +3792,11 @@ package main
  gpdb "github.com/aliyun/alibaba-cloud-sdk-go/services/gpdb"
 ```
 
-AnalyticDB for PostgreSQL User G
-
 ```
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -3588,7 +3816,11 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  client, err := gpdb.NewClientWithOptions("cn-qingdao", config, credential)
  if err != nil {
   panic(err)
- }
+```
+
+`}`
+
+```
  request := gpdb.CreateQueryCollectionDataRequest()
  request.Scheme = "https"
  request.DBInstanceId = "gp-bp1c62r3l489****"
@@ -3604,15 +3836,17 @@ credentials.NewStsTokenCredential(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"), os.G
  response, err := client.QueryCollectionData(request)
  if err != nil {
   fmt.Print(err.Error())
- }
- fmt.Printf("response is %#v\n", response)
-}
 ```
 
-Sample result: AnalyticDB for PostgreSQL User G
+`}`
+
+```
+ fmt.Printf("response is %#v\n", response)
+```
+
+`}` Sample result: `{`
 
 ```json
-{
     "Matches": {
         "match": [{
             "Id": "0CB55798-ECF5-4064-B81E-FE35B19E01A6",
@@ -3621,17 +3855,25 @@ Sample result: AnalyticDB for PostgreSQL User G
                 "content": "Test content",
                 "link": "http://127.X.X.1/document1",
                 "pv": "1000"
-            },
-            "Values": [0.2894745251078251, 0.5364747050266715, 0.1276845661831275,
-0.22528871956822372, 0.7009319238651552, 0.40267406135256123, 0.8873626696379067, 0.124 8525955774931, 0.9115507046412368, 0.2450859133174706]
-        }]
-    },
-    "RequestId": "ABB39CC3-4488-4857-905D-2E4A051D0521",
-    "Status": "success"
-}
 ```
 
-###### Python 3
+`},`
+
+```json
+            "Values": [0.2894745251078251, 0.5364747050266715, 0.1276845661831275,
+0.22528871956822372, 0.7009319238651552, 0.40267406135256123, 0.8873626696379067, 0.124 8525955774931, 0.9115507046412368, 0.2450859133174706]
+```
+
+`}]` `},`
+
+```json
+    "RequestId": "ABB39CC3-4488-4857-905D-2E4A051D0521",
+    "Status": "success"
+```
+
+`}`
+
+###### 7.2.2.2.3 Python 3
 
 The AnalyticDB for PostgreSQL API encapsulates the vector-related DDL and DML operations of AnalyticDB for PostgreSQL. You can use API operations to manage vector data. This topic describes how to use API operations to import and query vector data by calling AnalyticDB for PostgreSQL SDK for Python 3.
 
@@ -3657,11 +3899,11 @@ If you do not specify an SDK version, the latest version of AnalyticDB for Postg
 pip install alibabacloud_gpdb20160503 pip install alibabacloud_tea_openapi
 ```
 
-|  | alibabacloud gpdb20160503 _ |
-|---|---|
-| alibabacloud tea openapi _ _ |  |
+You can install a specific version of AnalyticDB for PostgreSQL SDK for Python 3. In this
 
-AnalyticDB for PostgreSQL User G
+|   | alibabacloud gpdb20160503 _ |
+|---|---|
+| alibabacloud tea openapi _ _ |   |
 
 ```
 pip install alibabacloud_gpdb20160503==3.5.0 pip install alibabacloud_tea_openapi==0.3.8
@@ -3678,7 +3920,7 @@ from alibabacloud_tea_openapi import models as open_api_models from alibabacloud
         access_key_secret=ALIBABA_CLOUD_ACCESS_KEY_SECRET
 ```
 
-)
+`)`
 
 ```
     config.region_id = ADBPG_INSTANCE_REGION
@@ -3689,7 +3931,7 @@ Environment variables: ALIBABA_ACCESS_KEY_ID: the AccessKey ID that is used to a
 
 **Initialize the vector database**
 
-Before you use vector search, you must initialize the knowledgebase database and the fulltext search feature. The following sample code provides an example on how to call an API operation: AnalyticDB for PostgreSQL User G
+Before you use vector search, you must initialize the knowledgebase database and the fulltext search feature. The following sample code provides an example on how to call an API operation:
 
 ```python
 from alibabacloud_gpdb20160503 import models as gpdb_20160503_models def init_vector_database(account, account_password):
@@ -3700,7 +3942,7 @@ from alibabacloud_gpdb20160503 import models as gpdb_20160503_models def init_ve
         manager_account_password=account_password
 ```
 
-)
+`)`
 
 ```python
     response = get_client().init_vector_database(request)
@@ -3732,7 +3974,7 @@ def create_namespace(account, account_password, namespace, namespace_password):
         namespace_password=namespace_password
 ```
 
-)
+`)`
 
 ```python
     response = get_client().create_namespace(request)
@@ -3747,7 +3989,7 @@ def create_namespace(account, account_password, namespace, namespace_password):
 # }
 ```
 
-AnalyticDB for PostgreSQL User G For information about the relevant parameters, see CreateNamespace. After you create a namespace, you can query the corresponding schema in the knowledgebase database of the instance.
+For information about the relevant parameters, see CreateNamespace. After you create a namespace, you can query the corresponding schema in the knowledgebase database of the instance.
 
 ```
 SELECT schema_name FROM information_schema.schemata;
@@ -3755,7 +3997,7 @@ SELECT schema_name FROM information_schema.schemata;
 
 **Create a collection**
 
-Collections are used to store vector data and are separated by namespaces. The following sample code provides an example on how to call an API operation: AnalyticDB for PostgreSQL User G
+Collections are used to store vector data and are separated by namespaces. The following sample code provides an example on how to call an API operation:
 
 ```python
 def create_collection(account,
@@ -3788,7 +4030,7 @@ def create_collection(account,
         external_storage=external_storage
 ```
 
-)
+`)`
 
 ```python
     response = get_client().create_collection(request)
@@ -3815,8 +4057,6 @@ After you create a collection, you can query the corresponding table in the know
 SELECT tablename FROM pg_tables WHERE schemaname='vector_test';
 ```
 
-AnalyticDB for PostgreSQL User G
-
 **Upload vector data**
 
 Upload the prepared embedding vector data to the corresponding collection. The following sample code provides an example on how to call an API operation:
@@ -3835,7 +4075,7 @@ def upsert_collection_data(namespace,
         rows=rows,
 ```
 
-)
+`)`
 
 ```json
     response = get_client().upsert_collection_data(request)
@@ -3848,7 +4088,11 @@ def upsert_collection_data(namespace,
             "page": 1,
             "content": "Test content",
             "title": "Test document"
-        },
+```
+
+`},`
+
+```
         vector=[0.2894745251078251, 0.5364747050266715, 0.14858841010401188,
 0.42140750105351877,
                 0.5780346820809248, 0.1145475372279496, 0.04329004329004329, 0.432467964
@@ -3875,7 +4119,7 @@ SELECT * FROM vector_test.document;
 
 **Retrieve vector data**
 
-Use the prepared vectors or full-text search fields to retrieve vector data. The following sample code provides an example on how to call an API operation: AnalyticDB for PostgreSQL User G
+Use the prepared vectors or full-text search fields to retrieve vector data. The following sample code provides an example on how to call an API operation:
 
 ```python
 from typing import List def query_collection_data(namespace,
@@ -3901,7 +4145,7 @@ from typing import List def query_collection_data(namespace,
         vector=vector,
 ```
 
-)
+`)`
 
 ```python
     response = get_client().query_collection_data(request)
@@ -3916,7 +4160,7 @@ vector=vector)
 8-ECF5-4064-B81E-FE35B19E01A6', 'Metadata': {'source': 1, 'page': '1', 'title': 'Test d ocument', 'content': 'Test content'}, 'Score': 0.7208109110736349, 'Values': {'value': [0.28947452, 0.5364747, 0.1485884, 0.4214075, 0.5780347, 0.114547536, 0.043290045, 0.7] }}]}, 'RequestId': '709E2C82-FE25-1722-9DBB-00AD0F85ABBB', 'Status': 'success'}
 ```
 
-#### Create a vector table
+#### 7.2.3 Create a vector table
 
 This topic describes how to create a vector table. The used syntax is fully compatible with SQL:1999 and partially compatible with SQL:2003.
 
@@ -3926,10 +4170,15 @@ Vector search engine optimization is enabled. For more information, see Enable o
 
 **Syntax**
 
-AnalyticDB for PostgreSQL User G The syntax for creating a vector table is the same as the syntax for creating a heap table in AnalyticDB for PostgreSQL. The vector column (VECTORTYPE) in the table is represented by an array and supports the following types: `SMALLINT[]` , `FLOAT2[]` , and `REAL(FLOAT4)[]` . A table supports multiple vector columns.
+The syntax for creating a vector table is the same as the syntax for creating a heap table in AnalyticDB for PostgreSQL. The vector column (VECTORTYPE) in the table is represented by an array and supports the following types: `SMALLINT[]` , `FLOAT2[]` , and `REAL(FLOAT4)[]` . A table supports multiple vector columns.
 
 ```
-(
+CREATE TABLE [TABLE_NAME]
+```
+
+`(`
+
+```
     C1 DATATYPE,
     C2 DATATYPE,
     ......,
@@ -3943,6 +4192,7 @@ AnalyticDB for PostgreSQL User G The syntax for creating a vector table is the s
 Create a heap table named `FACE_TABLE` . `C1` is the primary key column, and `C2` is the vector column.
 
 ```
+CREATE TABLE FACE_TABLE (
     C1 INT,
     C2 REAL[] NOT NULL,
     C3 TIMESTAMP NOT NULL,
@@ -3951,7 +4201,7 @@ Create a heap table named `FACE_TABLE` . `C1` is the primary key column, and `C2
 ) DISTRIBUTED BY (C1);
 ```
 
-#### Create a vector index
+#### 7.2.4 Create a vector index
 
 In search scenarios that involve large amounts of data or require fast data access, such as database query optimization, machine learning, data mining, image and video search, and spatial data query, you can create vector indexes to accelerate vector search. This way, you can accelerate data analysis, optimize search jobs, and improve the query performance and response efficiency of the system.
 
@@ -3961,15 +4211,8 @@ AnalyticDB for PostgreSQL vector databases use the FastANN vector search engine 
 
 **Syntax**
 
-| Vector index parameter | Requi red | Description | Defa ult | Value range |
-|---|---|---|---|---|
-| DIM | Yes | The number of vector dimensions. This parameter is used to check vectors when vectors are inserted. If the number of vector dimensions does not match, the system displays an error message. | 0 | [1, 8192] |
-|  |  | The distance or similarity measurement. Valid values: L2: uses the squared Euclidean distance function to create indexes. This measurement is suitable for image similarity search scenarios. Formula: |  |  |
-
-AnalyticDB for PostgreSQL User G
-
 ```
-CREATE INDEX [INDEX_NAME] USING ANN(COLUMN_NAME) WITH (DIM=<DIMENSION>,
+CREATE INDEX [INDEX_NAME] ON [SCHEMA_NAME].[TABLE_NAME] USING ANN(COLUMN_NAME) WITH (DIM=<DIMENSION>,
       DISTANCEMEASURE=<MEASURE>,
       HNSW_M=<M>,
       HNSW_EF_CONSTRUCTION=<EF_CONSTURCTION>,
@@ -3981,12 +4224,15 @@ CREATE INDEX [INDEX_NAME] USING ANN(COLUMN_NAME) WITH (DIM=<DIMENSION>,
 
 Parameters: INDEX_NAME: the name of the index. SCHEMA_NAME: the name of the schema or namespace. TABLE_NAME: the name of the table. COLUMN_NAME: the name of the vector index column. The following table describes other vector index parameters.
 
-|  |  | IP: uses the negative inner product distance function to create indexes. This measurement is used to replace cosine similarity after vector normalization. Formula: |  |  |
+| Vector index parameter | Requi red | Description | Defa ult | Value range |
+|---|---|---|---|---|
+| DIM | Yes | The number of vector dimensions. This parameter is used to check vectors when vectors are inserted. If the number of vector dimensions does not match, the system displays an error message. | 0 | [1, 8192] |
+|   |   | The distance or similarity measurement. Valid values: L2: uses the squared Euclidean distance function to create indexes. This measurement is suitable for image similarity search scenarios. Formula: |   |   |
+
+|   |   | IP: uses the negative inner product distance function to create indexes. This measurement is used to replace cosine similarity after vector normalization. Formula: |   |   |
 |---|---|---|---|---|
 | DISTANCEMEASURE | No | COSINE: uses the cosine distance function to create indexes. This measurement is suitable for text similarity search scenarios. Formula: Note If you set the DISTANCEMEASURE parameter to IP or COSINE, make sure that the minor version of the AnalyticDB for PostgreSQL instance is 6.3.10.18 or later. For information about how to view and update the minor version, see Update the minor version of an instance. To achieve the best performance, we recommend that you store the normalized vector data in databases and use the inner product distance measurement to create indexes. When you use the inner product distance measure to create indexes, you can also query the Euclidean distance and cosine similarity. For more information, see Perform vector search. For information about user- defined functions (UDFs) for vector search, see the "References" section of this topic. | L2 | (L2, IP, COSINE) |
-| Document Version: 2026 | 0630 |  |  | 11 |
-
-AnalyticDB for PostgreSQL User G
+| Document Version: 2026 | 0630 |   |   | 11 |
 
 | HNSW M _ | No | The maximum number of neighbors for the HNSW algorithm. | 32 | [10, 1000] |
 |---|---|---|---|---|
@@ -3995,10 +4241,12 @@ AnalyticDB for PostgreSQL User G
 | PQ SEGMENTS _ | No | The number of segments that are used in the K-means clustering algorithm after you enable the PQ feature. This parameter takes effect only if you set the PQ ENABLE parameter to 1. _ If the DIM parameter divided by eight is an integer, you do not need to specify this parameter. Otherwise, you must specify this parameter. The value of the PQ SEGMENTS _ parameter must be greater than 0. The DIM parameter divided by the PQ SEGMENTS parameter must be _ an integer. | 0 | [1, 256] |
 | PQ CENTERS _ | No | The number of centroids that are used in the K-means clustering algorithm after you enable the PQ feature. This parameter takes effect only if you set the PQ ENABLE parameter to 1. _ | 2048 | [256, 8192] |
 
-AnalyticDB for PostgreSQL User G
-
 | EXTERNAL STORAGE _ | No | Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the DELETE and UPDATE operations. 1: uses the memory mapping technology to create indexes. This method supports marked deletions of indexes and allows you to perform a small number of DELETE and UPDATE operations for AnalyticDB for PostgreSQL instances of V6.6.2.3 or later. | 0 | [0, 1] |
 |---|---|---|---|---|
+
+**Example**
+
+In this example, a text knowledge base is used. An article in the knowledge base is split into chunks, converted into embedding vectors, and then stored in a database. The following table describes the fields that are contained in a table named chunks.
 
 | Field | Data type | Description |
 |---|---|---|
@@ -4008,14 +4256,10 @@ AnalyticDB for PostgreSQL User G
 | url | VARCHAR(1024) | The URL of the article to which the text chunk belongs. |
 | feature | REAL[] | The embedding vector of the text chunk. |
 
-AnalyticDB for PostgreSQL User G
-
-**Example**
-
-In this example, a text knowledge base is used. An article in the knowledge base is split into chunks, converted into embedding vectors, and then stored in a database. The following table describes the fields that are contained in a table named chunks.
 1. Create a table to store vectors.
 
 ```
+CREATE TABLE chunks (
     id SERIAL PRIMARY KEY,
     chunk VARCHAR(1024),
     intime TIMESTAMP,
@@ -4031,11 +4275,6 @@ achieve higher performance.
 ALTER TABLE chunks ALTER COLUMN feature SET STORAGE PLAIN;
 ```
 
-|  | You must specify an operator class or define a default operator class |
-|---|---|
-| for the data type |  |
-
-AnalyticDB for PostgreSQL User G
 3. Create a vector index for the vector column.
 
 ```
@@ -4044,7 +4283,14 @@ AnalyticDB for PostgreSQL User G
 
 **Note**
 
-You can create multiple vector columns in each vector table and multiple vector indexes on each vector column. To avoid invalid indexes, you must create vector indexes based on your business requirements. The vector search methods must match the vector indexes that are created by using the corresponding distance measurements. For example, the `<->` operator works with the vector index created by using the Euclidean distance, the `<#>` operator works with the vector index created by using the inner product distance, and the `<=>` operator works with the vector index created by using the cosine similarity. If the operators do not work with the corresponding vector indexes, the vector search method is downgraded to exact search (bruteforce search). Use the `ANN` access method that is provided by the FastANN vector search extension. If you enable the **vector search engine optimization** feature for an AnalyticDB for PostgreSQL instance, the FastANN vector search extension is automatically created in the AnalyticDB for PostgreSQL instance. In this case, enable the feature and try again. For more information, see Enable or disable vector search engine optimization.
+You can create multiple vector columns in each vector table and multiple vector indexes on each vector column. To avoid invalid indexes, you must create vector indexes based on your business requirements. The vector search methods must match the vector indexes that are created by using the corresponding distance measurements. For example, the `<->` operator works with the vector index created by using the Euclidean distance, the `<#>` operator works with the vector index created by using the inner product distance, and the `<=>` operator works with the vector index created by using the cosine similarity. If the operators do not work with the corresponding vector indexes, the vector search method is downgraded to exact search (bruteforce search). Use the `ANN` access method that is provided by the FastANN vector search extension. If you enable the **vector search engine optimization** feature for an AnalyticDB for PostgreSQL instance, the FastANN vector search extension is automatically created in the AnalyticDB for PostgreSQL instance.
+
+|   | You must specify an operator class or define a default operator class |
+|---|---|
+| for the data type |   |
+
+**optimization** feature is not enabled for the AnalyticDB for PostgreSQL instance.
+In this case, enable the feature and try again. For more information, see Enable or disable vector search engine optimization.
 4. Create an index for structured data columns to accelerate hybrid search.
 
 ```
@@ -4054,11 +4300,6 @@ CREATE INDEX ON chunks(intime);
 **Index creation modes**
 
 You can create vector indexes in one of the following modes: Streaming mode Create an empty table and then create a vector index for the table. This way, the streaming index is created in real time when you import vector data. This mode is suitable for realtime vector search scenarios. However, you cannot quickly import vector data in this mode. Asynchronous mode Create an empty table, import vector data to the table, and then create a vector index for the imported vector data. This mode is suitable for scenarios in which you want to import large amounts of vector data.
-
-| > Document Version | : 20260630 |  |  | 116 |
-|---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
 
 **Note**
 
@@ -4084,62 +4325,53 @@ If other services are running on the AnalyticDB for PostgreSQL instance, you can
 
 Supported vector functions
 
+| > Document Version | : 20260630 |   |   | 116 |
+|---|---|---|---|---|
+
 | Purpose | Vector function | Data type of the return value | Description | Supported data type |
 |---|---|---|---|---|
-|  | l2 distance _ | DOUBLE PRECISION | Calculates the rooted Euclidean distance between two vectors. This function is used to measure the distance between two vectors and suitable for image similarity search scenarios. Important For AnalyticDB for PostgreSQL instances of V6.3.10.17 or earlier, the l2 distance _ function calculates the squared Euclidean distance. For AnalyticDB for PostgreSQL instances of V6.3.10.18 or later, the l2 distance _ function calculates the rooted Euclidean distance. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | l2 distance _ | DOUBLE PRECISION | Calculates the rooted Euclidean distance between two vectors. This function is used to measure the distance between two vectors and suitable for image similarity search scenarios. Important For AnalyticDB for PostgreSQL instances of V6.3.10.17 or earlier, the l2 distance _ function calculates the squared Euclidean distance. For AnalyticDB for PostgreSQL instances of V6.3.10.18 or later, the l2 distance _ function calculates the rooted Euclidean distance. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
-AnalyticDB for PostgreSQL User G
-
-|  | inner product dis _ _ tance | DOUBLE PRECISION | Calculates the inner product distance between two vectors, which is equivalent to cosine similarity after vector normalization. This function is used to replace cosine similarity after vector normalization. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | inner product dis _ _ tance | DOUBLE PRECISION | Calculates the inner product distance between two vectors, which is equivalent to cosine similarity after vector normalization. This function is used to replace cosine similarity after vector normalization. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 |---|---|---|---|---|
-|  | cosine similarity _ | DOUBLE PRECISION | Calculates the cosine similarity between two vectors. This function is used to measure the similarity between two vectors based on the direction regardless of the actual length of the vectors. Valid values of the cosine similarity: -1 to 1. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-| Calculation |  |  |  |  |
-|  | dp distance _ | DOUBLE PRECISION | Calculates the dot product distance, which is the same as the inner product distance. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | cosine similarity _ | DOUBLE PRECISION | Calculates the cosine similarity between two vectors. This function is used to measure the similarity between two vectors based on the direction regardless of the actual length of the vectors. Valid values of the cosine similarity: -1 to 1. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+| Calculation |   |   |   |   |
+|   | dp distance _ | DOUBLE PRECISION | Calculates the dot product distance, which is the same as the inner product distance. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
-AnalyticDB for PostgreSQL User G
-
-|  | hm distance _ | INTEGER | Calculates the Hamming distance, which is the number of bit positions at which the corresponding bits in the two binary strings are different. | INT[] |
+|   | hm distance _ | INTEGER | Calculates the Hamming distance, which is the number of bit positions at which the corresponding bits in the two binary strings are different. | INT[] |
 |---|---|---|---|---|
-|  | vector add _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the sum of two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-|  | vector sub _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the difference between two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-|  | vector mul _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the product of two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-|  | vector div _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the quotient of two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-|  | vector sum _ | INT or DOUBLE PRECISION | Calculates the sum of all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
-|  | vector min _ | INT or DOUBLE PRECISION | Calculate the minimum value among all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
+|   | vector add _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the sum of two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | vector sub _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the difference between two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | vector mul _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the product of two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | vector div _ | SMALLINT[], FLOAT2[], or FLOAT4[] | Calculates the quotient of two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | vector sum _ | INT or DOUBLE PRECISION | Calculates the sum of all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
+|   | vector min _ | INT or DOUBLE PRECISION | Calculate the minimum value among all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
 
-AnalyticDB for PostgreSQL User G
-
-|  | vector max _ | INT or DOUBLE PRECISION | Calculates the maximum value among all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
+|   | vector max _ | INT or DOUBLE PRECISION | Calculates the maximum value among all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
 |---|---|---|---|---|
-|  | vector avg _ | INT or DOUBLE PRECISION | Calculates the average value of all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
-|  | vector norm _ | DOUBLE PRECISION | Calculates the norm of a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
-|  | vector angle _ | DOUBLE PRECISION | Calculates the angle between two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-|  | l2 squared dista _ _ nce | DOUBLE PRECISION | Sorts vectors based on the squared Euclidean distance. This function requires fewer calculations than the sorting method based on the rooted Euclidean distance. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | vector avg _ | INT or DOUBLE PRECISION | Calculates the average value of all elements in a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
+|   | vector norm _ | DOUBLE PRECISION | Calculates the norm of a vector array. | SMALLINT[], INT[], FLOAT2[], FLOAT4[], REAL[], and FLOAT8[] |
+|   | vector angle _ | DOUBLE PRECISION | Calculates the angle between two vector arrays. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | l2 squared dista _ _ nce | DOUBLE PRECISION | Sorts vectors based on the squared Euclidean distance. This function requires fewer calculations than the sorting method based on the rooted Euclidean distance. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
-AnalyticDB for PostgreSQL User G
-
-| Sorting |  |  |  |  |
+| Sorting |   |   |   |   |
 |---|---|---|---|---|
-|  | negative inner p _ _ roduct distance _ | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors based on the inner product distance in descending order. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-|  | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors based on the cosine similarity in descending order. Valid values of the cosine distance: 0 to 2. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-
-AnalyticDB for PostgreSQL User G
+|   | negative inner p _ _ roduct distance _ | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors based on the inner product distance in descending order. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
+|   | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors based on the cosine similarity in descending order. Valid values of the cosine distance: 0 to 2. Formula: | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
 **Important**
 
 Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector functions: vector_add, vector_sub, vector_mul, vector_div, vector_sum, vector_min, vector_max, vector_avg, vector_norm, and vector_angle. For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. Examples of vector functions:
-
-| Vector operator | Calculation | Sorting | Supported data type |
-|---|---|---|---|
-| <-> | Calculates the squared Euclidean distance between two vectors. The result is equivalent to the result of the l2 squared distance _ _ function. | Sorts vectors based on the squared Euclidean distance in ascending order. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
-
-AnalyticDB for PostgreSQL User G
 
 ```
 -- Euclidean distance SELECT l2_distance(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Inner product distance SELECT inner_product_distance(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Cosine similarity SELECT cosine_similarity(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Dot product distance SELECT dp_distance(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Hamming distance SELECT hm_distance(array[1,0,1,0]::int[], array[0,1,0,1]::int[]); -- Sum of two vector arrays SELECT vector_add(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Difference between two vector arrays SELECT vector_sub(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Product of two vector arrays SELECT vector_mul(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Quotient of two vector arrays SELECT vector_div(array[1,1,1,1]::real[], array[2,2,2,2]::real[]); -- Sum of all elements in a vector array SELECT vector_sum(array[1,1,1,1]::real[]); -- Minimum value among all elements in a vector array SELECT vector_min(array[1,1,1,1]::real[]); -- Maximum value among all elements in a vector array SELECT vector_max(array[1,1,1,1]::real[]); -- Average value of all elements in a vector array SELECT vector_avg(array[1,1,1,1]::real[]); -- Norm of a vector array SELECT vector_norm(array[1,1,1,1]::real[]); -- Angle between two vector arrays SELECT vector_angle(array[1,1,1,1]::real[], array[2,2,2,2]::real[]);
 ```
 
 Supported vector operators
+
+| Vector operator | Calculation | Sorting | Supported data type |
+|---|---|---|---|
+| <-> | Calculates the squared Euclidean distance between two vectors. The result is equivalent to the result of the l2 squared distance _ _ function. | Sorts vectors based on the squared Euclidean distance in ascending order. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
 | <#> | Calculates the negative inner product distance between two vectors. The result is equivalent to the result of the negative inner produc _ _ t distance function. _ | Sorts vectors based on the dot product distance in descending order. | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 |---|---|---|---|
@@ -4149,17 +4381,15 @@ Supported vector operators
 | * | Calculates the product of two vectors. | None | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 | / | Calculates the quotient of two vectors. | None | SMALLINT[], FLOAT2[], FLOAT4[], and REAL[] |
 
-AnalyticDB for PostgreSQL User G
-
 **Important**
 
-Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector operators: + , - , * , and / . For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. Examples of vector operators: AnalyticDB for PostgreSQL User G
+Only AnalyticDB for PostgreSQL instances of V6.6.1.0 or later support the following vector operators: `+` , `-` , `*` , and `/` . For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. Examples of vector operators:
 
 ```
 -- Euclidean distance SELECT array[1,1,1,1]::real[] <-> array[2,2,2,2]::real[] AS score; -- Inner product distance SELECT array[1,1,1,1]::real[] <#> array[2,2,2,2]::real[] AS score; -- Cosine distance SELECT array[1,1,1,1]::real[] <=> array[2,2,2,2]::real[] AS score; -- Sum of two vectors SELECT array[1,1,1,1]::real[] + array[2,2,2,2]::real[] AS value; -- Difference between two vectors SELECT array[1,1,1,1]::real[] - array[2,2,2,2]::real[] AS value; -- Product of two vectors SELECT array[1,1,1,1]::real[] * array[2,2,2,2]::real[] AS value; -- Quotient of two vectors SELECT array[1,1,1,1]::real[] / array[2,2,2,2]::real[] AS value;
 ```
 
-#### Import vector data
+#### 7.2.5 Import vector data
 
 AnalyticDB for PostgreSQL uses standard SQL for all vector write operations. Use INSERT for small batches during development or incremental ingestion, and COPY for bulk loading large datasets.
 
@@ -4185,9 +4415,9 @@ COPY chunks (id, content, created_at, source, embedding) FROM '/path/to/data.csv
 
 Query vector data
 
-#### Perform vector search
+#### 7.2.6 Perform vector search
 
-AnalyticDB for PostgreSQL User G AnalyticDB for PostgreSQL provides the exact search method that compares the distance or similarity between all vectors and the approximate index search method that uses Hierarchical Navigable Small World (HNSW) indexes. The approximate index search method returns results faster than the exact search method.
+AnalyticDB for PostgreSQL provides the exact search method that compares the distance or similarity between all vectors and the approximate index search method that uses Hierarchical Navigable Small World (HNSW) indexes. The approximate index search method returns results faster than the exact search method.
 
 **Exact search**
 
@@ -4200,13 +4430,13 @@ SELECT ID, l2_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) as scor
 Inner product distance
 
 ```
-SELECT ID, inner_product_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) a negative_inner_product_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) LIM IT <TOPK>;
+SELECT ID, inner_product_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) a s score FROM <TABLE_NAME> ORDER BY negative_inner_product_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) LIM IT <TOPK>;
 ```
 
 Cosine similarity
 
 ```
-SELECT ID, cosine_similarity(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) as sco cosine_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) LIMIT <TOPK>;
+SELECT ID, cosine_similarity(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) as sco re FROM <TABLE_NAME> ORDER BY cosine_distance(<VECTOR_COLUMN_NAME>, array[1,2,3...N]::float4[]) LIMIT <TOPK>;
 ```
 
 Parameters: score: the Euclidean distance, inner product distance, or cosine similarity. Vectors are sorted by Euclidean distance in ascending order, or by inner product distance or cosine similarity in descending order. <VECTOR_COLUMN_NAME>: the name of the vector column. <TABLE_NAME>: the name of the vector table. <TOPK>: the number of top result sets.
@@ -4217,7 +4447,7 @@ The approximate index search method uses HNSW indexes to search data. This metho
 
 **Syntax**
 
-You can perform approximate index search based on the Euclidean distance, inner product distance, or cosine similarity. AnalyticDB for PostgreSQL User G
+You can perform approximate index search based on the Euclidean distance, inner product distance, or cosine similarity.
 
 **Note**
 
@@ -4253,7 +4483,7 @@ SELECT id, chunk, intime, url FROM chunks ORDER BY
 LIMIT 100;
 ```
 
-AnalyticDB for PostgreSQL User G You can execute an **EXPLAIN** statement to check the execution plan of the query. In the following sample execution plan, `Ann Index Scan` indicates that a vector index is used.
+You can execute an **EXPLAIN** statement to check the execution plan of the query. In the following sample execution plan, `Ann Index Scan` indicates that a vector index is used.
 
 ```
 QUERY PLAN -------------------------------------------------
@@ -4283,15 +4513,16 @@ LIMIT 100;
 This section describes SQL optimization for vector search. After you create a vector table, you can create multiple vector indexes for a vector column based on your business requirements. The SQL statement and the involved index must match. For example, the `<->` operator can work with only indexes that are created by using the Euclidean distance, the `<#>` operator can work with only indexes that are created by using the inner product distance, and the `<=>` operator can work with only indexes that are created by using the cosine similarity.
 
 ```
+CREATE TABLE test_table (
     id serial primary key,
     feature real[]
 ) distributed by (id); CREATE INDEX idx_test_table_feature_l2 ON test_table USING ann(feature) WITH (dim=768, distancemeasure=l2, hnsw_m=64, pq_enable=1); CREATE INDEX idx_test_table_feature_ip ON test_table USING ann(feature) WITH (dim=768, distancemeasure=ip, hnsw_m=64, pq_enable=1); CREATE INDEX idx_test_table_feature_cosine ON test_table USING ann(feature) WITH (dim=7 68, distancemeasure=cosine, hnsw_m=64, pq_enable=1);
 ```
 
-If you do not want to return the score value of the vector distance, you can execute the following SQL statements to query vector data: AnalyticDB for PostgreSQL User G
+If you do not want to return the score value of the vector distance, you can execute the following SQL statements to query vector data:
 
 ```
--- Search vector data based on the Euclidean distance. SELECT id ORDER BY feature <-> array[1,2,3 ... 768]::real[] LIMIT topk; -- Search vector data based on the inner product distance. SELECT id ORDER BY feature <#> array[1,2,3 ... 768]::real[] LIMIT topk; -- Search vector data based on the cosine similarity. SELECT id ORDER BY feature <=> array[1,2,3 ... 768]::real[] LIMIT topk;
+-- Search vector data based on the Euclidean distance. SELECT id FROM test_table ORDER BY feature <-> array[1,2,3 ... 768]::real[] LIMIT topk; -- Search vector data based on the inner product distance. SELECT id FROM test_table ORDER BY feature <#> array[1,2,3 ... 768]::real[] LIMIT topk; -- Search vector data based on the cosine similarity. SELECT id FROM test_table ORDER BY feature <=> array[1,2,3 ... 768]::real[] LIMIT topk;
 ```
 
 If you want to return the score value of the vector distance, you can use the sort result of the vector index to calculate the actual score value of the vector distance. This avoids a complete vector distance calculation process and reduces the amount of time required for calculation. Sample statements:
@@ -4299,16 +4530,37 @@ If you want to return the score value of the vector distance, you can use the so
 ```
 -- Search vector data based on the Euclidean distance. SELECT t.id as id, sqrt(t.score) as score FROM
   (SELECT id, feature <-> array[1,2,3 ... 768]::real[] as score
+   FROM test_table
    ORDER BY score LIMIT topk) t;
 -- Search vector data based on the inner product distance. SELECT t.id as id, (-1 * t.score) as score FROM
   (SELECT id, feature <#> array[1,2,3 ... 768]::real[] as score
+   FROM test_table
    ORDER BY score LIMIT topk) t;
 -- Search vector data based on the cosine similarity. SELECT t.id as id, (1.0 - t.score) as score FROM
   (SELECT id, feature <=> array[1,2,3 ... 768]::real[] as score
+   FROM test_table
    ORDER BY score LIMIT topk) t;
 ```
 
 If you want to return results that are filtered based on a score range, you can execute the following SQL statements to query vector data. The statements use the sort result of the vector index to calculate the final score value of the vector distance. This reduces the amount of time required for calculation.
+
+```
+-- Search vector data based on the Euclidean distance. SELECT t.id as id, sqrt(t.score) as score FROM
+  (SELECT id, feature <-> array[1,2,3 ... 768]::real[] as score
+   FROM test_table
+   ORDER BY score LIMIT topk) t
+WHERE score < 100; -- Search vector data based on the inner product distance. SELECT t.id as id, (-1 * t.score) as score FROM
+  (SELECT id, feature <#> array[1,2,3 ... 768]::real[] as score
+   FROM test_table
+   ORDER BY score LIMIT topk) t
+WHERE score > 10; -- Search vector data based on the cosine similarity. SELECT t.id as id, (1.0 - t.score) as score FROM
+  (SELECT id, feature <=> array[1,2,3 ... 768]::real[] as score
+   FROM test_table
+   ORDER BY score LIMIT topk) t
+WHERE score > 0.5;
+```
+
+**Engine parameters related to vector search**
 
 | Engine parameter | Description | Defaul t value | Valid value |
 |---|---|---|---|
@@ -4317,34 +4569,9 @@ If you want to return results that are filtered based on a score range, you can 
 | fastann.hnsw max scan p _ _ _ oints | The maximum number of scan points when HNSW indexes are used for vector search. You can use this parameter to quickly end the search and test the recall rate. | 6000 | [1, 6000000] |
 | fastann.hnsw ef search _ _ | The size of search candidate sets when HNSW indexes are used for vector search. You can use this parameter to test the recall rate. | 400 | [10, 10000] |
 
-AnalyticDB for PostgreSQL User G
-
-```
--- Search vector data based on the Euclidean distance. SELECT t.id as id, sqrt(t.score) as score FROM
-  (SELECT id, feature <-> array[1,2,3 ... 768]::real[] as score
-   ORDER BY score LIMIT topk) t
-WHERE score < 100; -- Search vector data based on the inner product distance. SELECT t.id as id, (-1 * t.score) as score FROM
-  (SELECT id, feature <#> array[1,2,3 ... 768]::real[] as score
-   ORDER BY score LIMIT topk) t
-WHERE score > 10; -- Search vector data based on the cosine similarity. SELECT t.id as id, (1.0 - t.score) as score FROM
-  (SELECT id, feature <=> array[1,2,3 ... 768]::real[] as score
-   ORDER BY score LIMIT topk) t
-WHERE score > 0.5;
-```
-
-**Engine parameters related to vector search**
-
 You can configure the preceding parameters for sessions.
 
-| Field | Width |
-|---|---|
-| Sign bit | 1 bit |
-| Exponent | 5 bits |
-| Significand | 11 bits (10 explicitly stored) |
-
-AnalyticDB for PostgreSQL User G
-
-#### Use the FLOAT2 data type to compress
+#### 7.2.7 Use the FLOAT2 data type to compress vector storage
 
 **vector storage**
 
@@ -4356,16 +4583,15 @@ FLOAT2 implements the IEEE 754 binary16 (half-precision) format. Each value occu
 
 **Format layout**
 
+| Field | Width |
+|---|---|
+| Sign bit | 1 bit |
+| Exponent | 5 bits |
+| Significand | 11 bits (10 explicitly stored) |
+
 The 10-bit significand provides approximately 3.311 decimal digits of precision (log10(2¹¹) ≈ 3.311).
 
 **Representative values**
-
-| Algorithm | Throughput |
-|---|---|
-| C program (software) | 1 element at a time |
-| AVX + SSE2 (hardware) | 4 elements at a time |
-
-AnalyticDB for PostgreSQL User G
 
 ```
 0 01111 0000000000 = 1 0 01111 0000000001 = 1 + 2⁻¹⁰ = 1.0009765625 (smallest number greater than 1) 1 10000 0000000000 = -2 0 11110 1111111111 = 65504 (max half precision) 0 00001 0000000000 = 2⁻¹⁴ ≈ 6.10352 × 10⁻⁵ (smallest positive normal) 0 00000 1111111111 = 2⁻¹⁴ - 2⁻²⁴ ≈ 6.09756 × 10⁻⁵ (greatest subnormal) 0 00000 0000000001 = 2⁻²⁴ ≈ 5.96046 × 10⁻⁸ (smallest positive subnormal) 0 00000 0000000000 = 0 1 00000 0000000000 = -0 0 11111 0000000000 = infinity 1 11111 0000000000 = -infinity 0 01101 0101010101 = 0.333251953125 ≈ 1/3
@@ -4379,7 +4605,14 @@ The system converts between FLOAT2 and FLOAT4 by shifting bits and adjusting the
 1. Shift the sign bit left by 16 bits.
 2. Add 112 to the exponent base (15 to 127), then shift the exponent left by 13 bits.
 3. Shift the significand left by 13 bits.
-The inverse operations apply when converting from FLOAT4 to FLOAT2. Two conversion algorithms are available: Hardware-accelerated conversion requires Advanced Vector Extensions (AVX) and Streaming SIMD Extensions 2 (SSE2) on the host machine. Because vector search uses index traversal rather than full scans, only a small number of entries are converted per query.
+The inverse operations apply when converting from FLOAT4 to FLOAT2. Two conversion algorithms are available:
+
+| Algorithm | Throughput |
+|---|---|
+| C program (software) | 1 element at a time |
+| AVX + SSE2 (hardware) | 4 elements at a time |
+
+Hardware-accelerated conversion requires Advanced Vector Extensions (AVX) and Streaming SIMD Extensions 2 (SSE2) on the host machine. Because vector search uses index traversal rather than full scans, only a small number of entries are converted per query.
 
 **Precision and value range**
 
@@ -4392,15 +4625,20 @@ Unnormalized vectors can produce distances that exceed the FLOAT2 value range, l
 
 **Storage savings**
 
-Each FLOAT2 vector element occupies 2 bytes, compared to 4 bytes for FLOAT4. A table with 10,000 rows of 1,024-dimensional vectors illustrates the difference: AnalyticDB for PostgreSQL User G
+Each FLOAT2 vector element occupies 2 bytes, compared to 4 bytes for FLOAT4. A table with 10,000 rows of 1,024-dimensional vectors illustrates the difference:
 
 ```
-CREATE TABLE TAB1(A FLOAT4[]); CREATE TABLE TAB2(A FLOAT2[]); -- Insert 10,000 rows of 1,024-dimensional vectors INSERT INTO TAB1 SELECT GEN_RAND_F2_ARR(1, 1024) FROM GENERATE_SERIES(1, 10000); INSERT INTO TAB2 SELECT GEN_RAND_F2_ARR(1, 1024) FROM GENERATE_SERIES(1, 10000); -- Check sizes SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('tab1')); -- Result: 45 MB SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('tab2')); -- Result: 21 MB
+-- Create comparison tables CREATE TABLE TAB1(A FLOAT4[]); CREATE TABLE TAB2(A FLOAT2[]); -- Insert 10,000 rows of 1,024-dimensional vectors INSERT INTO TAB1 SELECT GEN_RAND_F2_ARR(1, 1024) FROM GENERATE_SERIES(1, 10000); INSERT INTO TAB2 SELECT GEN_RAND_F2_ARR(1, 1024) FROM GENERATE_SERIES(1, 10000); -- Check sizes SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('tab1')); -- Result: 45 MB SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('tab2')); -- Result: 21 MB
 ```
 
-The FLOAT2 table uses 21 MB — roughly half the 45 MB used by the FLOAT4 table. FLOAT2 is an internal data type. The system handles type conversions and operators automatically.
+The FLOAT2 table uses 21 MB — roughly half the 45 MB used by the FLOAT4 table.
+
+**Create a table with FLOAT2 vectors**
+
+FLOAT2 is an internal data type. The system handles type conversions and operators automatically.
 
 ```
+CREATE TABLE [TABLE_NAME] (
     C1 INT,
     C2 FLOAT2[],
     C3 VARCHAR(20),
@@ -4412,6 +4650,7 @@ The `C2` column stores FLOAT2 vectors.
 **Example:** Create a table named `FACE_TABLE` with a FLOAT2 vector column.
 
 ```
+CREATE TABLE FACE_TABLE (
     C1 INT PRIMARY KEY,
     C2 FLOAT2[],
     C3 VARCHAR(20)
@@ -4422,20 +4661,18 @@ The `C2` column stores FLOAT2 vectors.
 
 Insert FLOAT2 arrays using any of the following methods. The system automatically converts REAL and FLOAT4 arrays to FLOAT2.
 
-| Function | Description |
-|---|---|
-| array f16 to f32(arr) _ _ _ | Converts a FLOAT2 array to FLOAT4 |
-| array f32 to f16(arr) _ _ _ | Converts a FLOAT4 array to FLOAT2 |
+```
+-- Explicit FLOAT2 array INSERT INTO FACE_TABLE (C1, C2, C3)
+    VALUES (1, ARRAY[1.3, 2.4, 5.6]::FLOAT2[], 'name1');
+-- REAL array (auto-converted to FLOAT2) INSERT INTO FACE_TABLE (c1, c2, c3)
+    VALUES (2, ARRAY[3.4, 6.1, 7.6]::REAL[], 'name2');
+-- FLOAT4 array (auto-converted to FLOAT2) INSERT INTO FACE_TABLE (c1, c2, c3)
+    VALUES (3, ARRAY[9.5, 1.2, 0.6]::FLOAT4[], 'name3');
+```
 
-AnalyticDB for PostgreSQL User G
+**Query data**
 
 ```
--- Explicit FLOAT2 array
-    VALUES (1, ARRAY[1.3, 2.4, 5.6]::FLOAT2[], 'name1');
--- REAL array (auto-converted to FLOAT2)
-    VALUES (2, ARRAY[3.4, 6.1, 7.6]::REAL[], 'name2');
--- FLOAT4 array (auto-converted to FLOAT2)
-    VALUES (3, ARRAY[9.5, 1.2, 0.6]::FLOAT4[], 'name3');
 SELECT * FROM FACE_TABLE;
 ```
 
@@ -4452,6 +4689,12 @@ Expected output:
 **Conversion functions**
 
 Use `array_f16_to_f32` and `array_f32_to_f16` to convert between FLOAT2 and FLOAT4 arrays.
+
+| Function | Description |
+|---|---|
+| array f16 to f32(arr) _ _ _ | Converts a FLOAT2 array to FLOAT4 |
+| array f32 to f16(arr) _ _ _ | Converts a FLOAT4 array to FLOAT2 |
+
 **Performance benchmark** — 10,000 rows x 1,024 dimensions on a machine with AVX and
 SSE2:
 
@@ -4461,17 +4704,23 @@ SSE2:
 
 **Distance calculation**
 
-Use `L2_DISTANCE` to calculate Euclidean distance between FLOAT2 vectors. Mixed FLOAT2 and FLOAT4 operands are supported. AnalyticDB for PostgreSQL User G
+Use `L2_DISTANCE` to calculate Euclidean distance between FLOAT2 vectors. Mixed FLOAT2 and FLOAT4 operands are supported.
 
 ```
 -- FLOAT2 vs FLOAT2 SELECT L2_DISTANCE(
     ARRAY[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]::FLOAT2[],
     ARRAY[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]::FLOAT2[]
-); -- FLOAT4 vs FLOAT2 (mixed) SELECT L2_DISTANCE(
+```
+
+);
+
+```
+-- FLOAT4 vs FLOAT2 (mixed) SELECT L2_DISTANCE(
     ARRAY[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]::FLOAT4[],
     ARRAY[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]::FLOAT2[]
-);
 ```
+
+);
 
 **Use case: facial recognition**
 
@@ -4479,6 +4728,7 @@ Security systems store captured facial data daily and search for matches based o
 1. Create a table to store facial data.
 
 ```
+CREATE TABLE FACE_TABLE (
     C1 INT PRIMARY KEY,  -- Face ID
     C2 FLOAT2[],         -- Face vector
     C3 VARCHAR(20)       -- Face name
@@ -4488,30 +4738,37 @@ Security systems store captured facial data daily and search for matches based o
 2. Create an Approximate Nearest Neighbor (ANN) index on the vector column.
 
 ```
-USING ANN(C2) WITH(dim=10);
+CREATE INDEX FACE_TABLE_IDX ON FACE_TABLE USING ANN(C2) WITH(dim=10);
 ```
 
 3. Insert facial data.
 
 ```
+INSERT INTO FACE_TABLE (C1, C2, C3)
     VALUES (1, ARRAY[1.3, 2.4, 5.6]::FLOAT2[], 'name1');
+INSERT INTO FACE_TABLE (c1, c2, c3)
     VALUES (2, ARRAY[3.4, 6.1, 7.6]::REAL[], 'name2');
+INSERT INTO FACE_TABLE (c1, c2, c3)
     VALUES (3, ARRAY[9.5, 1.2, 0.6]::FLOAT4[], 'name3');
 ```
 
 4. Run a vector search using the `<->` distance operator.
 
 ```
-SELECT * ORDER BY C1 <-> ARRAY[2.81574,9.84361,8.07218]::FLOAT2[] LIMIT 10;
+SELECT * FROM FACE_TABLE ORDER BY C1 <-> ARRAY[2.81574,9.84361,8.07218]::FLOAT2[] LIMIT 10;
 ```
 
-`ARRAY[2.81574,9.84361,8.07218]::FLOAT2[]` is the query face vector. The database returns the closest matches from the table. AnalyticDB for PostgreSQL User G
+`ARRAY[2.81574,9.84361,8.07218]::FLOAT2[]` is the query face vector. The database returns the closest matches from the table.
 
-### Use AnalyticDB for
+### 7.3 Use AnalyticDB for PostgreSQL sparse vectors
 
 **PostgreSQL sparse vectors**
 
-If you want to store vectors whose most elements are zero in an efficient manner, you can create a sparse vector table instead of a dense vector table, to reduce storage space. This topic describes how to use sparse vectors in an AnalyticDB for PostgreSQL vector database. You can create a sparse vector table, create a sparse vector index, use sparse vectors to perform search, and use sparse and dense vectors to perform hybrid search. In most cases, vectors are classified into dense vectors and sparse vectors in vector databases. A sparse vector contains a large number of zero values. Among tens of thousands of dimensions, only few dimensions have non-zero values. When you use sparse vectors to perform search, each sparse vector represents a document, in which each dimension specifies a keyword in a dictionary or vocabulary and each dimension value specifies the importance of a keyword in the document. If the sparse vectors are generated by using the BM25 algorithm, the dimension values contain the number of keyword matches, keyword occurrence frequency, and other text relevance factors. In machine learning and natural language processing (NLP) technologies, storing vector data by using ordinary arrays or lists results in wasted storage space. In this case, sparse vectors are introduced to efficiently store and process vector data. In most cases, you can use sparse vectors to specify text, images, or other types of data. The data structure of sparse vectors can significantly reduce storage usage and computing resource usage for storing and processing high-dimensional data. The following figure shows the difference between dense vectors and sparse vectors.
+If you want to store vectors whose most elements are zero in an efficient manner, you can create a sparse vector table instead of a dense vector table, to reduce storage space. This topic describes how to use sparse vectors in an AnalyticDB for PostgreSQL vector database. You can create a sparse vector table, create a sparse vector index, use sparse vectors to perform search, and use sparse and dense vectors to perform hybrid search.
+
+**Overview**
+
+In most cases, vectors are classified into dense vectors and sparse vectors in vector databases. A sparse vector contains a large number of zero values. Among tens of thousands of dimensions, only few dimensions have non-zero values. When you use sparse vectors to perform search, each sparse vector represents a document, in which each dimension specifies a keyword in a dictionary or vocabulary and each dimension value specifies the importance of a keyword in the document. If the sparse vectors are generated by using the BM25 algorithm, the dimension values contain the number of keyword matches, keyword occurrence frequency, and other text relevance factors. In machine learning and natural language processing (NLP) technologies, storing vector data by using ordinary arrays or lists results in wasted storage space. In this case, sparse vectors are introduced to efficiently store and process vector data. In most cases, you can use sparse vectors to specify text, images, or other types of data. The data structure of sparse vectors can significantly reduce storage usage and computing resource usage for storing and processing high-dimensional data. The following figure shows the difference between dense vectors and sparse vectors.
 
 **Prerequisites**
 
@@ -4519,12 +4776,17 @@ An AnalyticDB for PostgreSQL instance of V6.6.2.3 or later is created. For more 
 
 **Use sparse vectors**
 
-AnalyticDB for PostgreSQL User G
+**Create a sparse vector table**
 
 **Syntax**
 
 ```
-(
+CREATE TABLE <SparseVectorTable>
+```
+
+`(`
+
+```
     id int PRIMARY KEY,
     description text,
     ...,
@@ -4541,7 +4803,7 @@ SparseVectorTable: the name of the sparse vector table. sparse_vector: the name 
 Create a sparse vector table named svector_test.
 
 ```
--- Create a table that contains a sparse vector column.
+-- Create a table that contains a sparse vector column. CREATE TABLE <svector_test>(
     id bigint,
     type int,
     tag varchar(10),
@@ -4558,7 +4820,7 @@ PLAIN mode: PostgreSQL uses The Oversized-Attribute Storage Technique (TOAST) to
 
 **Syntax**
 
-Sparse vector indexes support only the inner product distance metric. Sparse vector indexes do not support the product quantization (PQ) feature or the memory mapping technology. Syntax: AnalyticDB for PostgreSQL User G
+Sparse vector indexes support only the inner product distance metric. Sparse vector indexes do not support the product quantization (PQ) feature or the memory mapping technology. Syntax:
 
 ```
 CREATE INDEX <idx_sparse_vector> ON MyTable USING vector_index (sparse_vector_column); WITH (DISTANCEMEASURE=IP,
@@ -4602,10 +4864,10 @@ AnalyticDB for PostgreSQL allows you to use the SVECTOR type to represent sparse
 
 **Parameters:**
 
-indices:[2, 6, 9] specifies that the dimension numbers of non-zero values in the sparse vector are 2, 6, and 9. values:[1.1, 2.2, 3.3] specifies that the non-zero values in the sparse vector are 1.1, 2.2, and 3.3. In an AnalyticDB for PostgreSQL vector database, you can use ::svector to convert a string into the SVECTOR type. Sample statement: AnalyticDB for PostgreSQL User G
+indices:[2, 6, 9] specifies that the dimension numbers of non-zero values in the sparse vector are 2, 6, and 9. values:[1.1, 2.2, 3.3] specifies that the non-zero values in the sparse vector are 1.1, 2.2, and 3.3. In an AnalyticDB for PostgreSQL vector database, you can use ::svector to convert a string into the SVECTOR type. Sample statement:
 
 ```json
-postgres=# SELECT '{"indices":[2, 6, 9], "values":[1.1, 2.2, 3.3]}'::svector; -------------------------------------------- {"indices":[2,6,9],"values":[1.1,2.2,3.3]} (1 ROW)
+postgres=# SELECT '{"indices":[2, 6, 9], "values":[1.1, 2.2, 3.3]}'::svector; svector -------------------------------------------- {"indices":[2,6,9],"values":[1.1,2.2,3.3]} (1 ROW)
 ```
 
 **Import sparse vector data**
@@ -4640,7 +4902,7 @@ SELECT id, inner_product(<sparse_vector>, '{"indices":[1,2,..], "values": [1.1,2
 
 **Parameters:**
 
-sparse_vector: the name of the sparse vector column. SparseVectorTable: the name of the sparse vector table. topk: the top k elements from the result set that you want to obtain. AnalyticDB for PostgreSQL User G
+sparse_vector: the name of the sparse vector column. SparseVectorTable: the name of the sparse vector table. topk: the top k elements from the result set that you want to obtain.
 
 **Example**
 
@@ -4672,7 +4934,7 @@ You can use the fastann.sparse_hnsw_max_scan_points and fastann.sparse_hnsw_ef_s
 Create a table named HYBRID_SEARCH_TEST that contains dense and sparse vectors to perform hybrid search. Sample statements for creating the table:
 
 ```
--- Create a table for hybrid search.
+-- Create a table for hybrid search. CREATE TABLE IF NOT EXISTS HYBRID_SEARCH_TEST (
    id integer PRIMARY key,
    corpus text,
    filter integer,
@@ -4683,11 +4945,6 @@ Create a table named HYBRID_SEARCH_TEST that contains dense and sparse vectors t
 
 Sample statements for creating indexes:
 
-| Engine parameter related to sparse vector search | Description | Default value | Valid value |
-|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
-
 ```
 -- Create a structured index. CREATE INDEX ON hybrid_search_test(FILTER); -- Create a dense vector index. CREATE INDEX ON hybrid_search_test USING ANN(dense_vector) WITH(DISTANCEMEASURE=IP, DIM =1024, HNSW_M=64, HNSW_EF_CONSTRUCTION=600, EXTERNAL_STORAGE=1); -- Create a sparse vector index. CREATE INDEX ON hybrid_search_test USING ANN(sparse_vector) WITH(DISTANCEMEASURE=IP, HN SW_M=64, HNSW_EF_CONSTRUCTION=600);
 ```
@@ -4695,22 +4952,27 @@ AnalyticDB for PostgreSQL User G
 Sample statements for performing dense vector search, sparse vector search, and hybrid search:
 
 ```
--- Dense vector search + filter SELECT id, corpus FROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY dense_vector <#> ARRAY[1,2,3,...,1024]::float4[] LIMIT 100 ; -- Sparse vector search + filter SELECT id, corpus FROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY sparse_vector <#> '{"indices":[1,2,..], "values":[1.1,2.2. ..]}'::svector LIMIT 100; -- Hybrid search + filter WITH combined AS ( (SELECT id, corpus, inner_product_distance(dense_vector, ARRAY[1,2,3,...,1024]::float4[]) AS dist1, sparse_vector <#> '{"indices":[1,2,..], "val ues":[1.1,2.2...]}'::svector AS dist2 FROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY dist2 LIMIT 100)
+-- Dense vector search + filter SELECT id, corpus FROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY dense_vector <#> ARRAY[1,2,3,...,1024]::float4[] LIMIT 100
+```
+
+;
+
+```
+-- Sparse vector search + filter SELECT id, corpus FROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY sparse_vector <#> '{"indices":[1,2,..], "values":[1.1,2.2. ..]}'::svector LIMIT 100; -- Hybrid search + filter WITH combined AS ( (SELECT id, corpus, inner_product_distance(dense_vector, ARRAY[1,2,3,...,1024]::float4[]) AS dist1, sparse_vector <#> '{"indices":[1,2,..], "val ues":[1.1,2.2...]}'::svector AS dist2 FROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY dist2 LIMIT 100)
   UNION ALL
 (SELECT id, corpus, inner_product(sparse_vector, '{"indices":[1,2,..], "values":[1.1,2. 2...]}'::svector) AS dist1, dense_vector <#> ARRAY[1,2,3,...,1024]::float4[] AS dist2 F ROM hybrid_search_test WHERE FILTER IN (0, 100, 200, 300, 400, 500, 600, 700, 800, 900) ORDER BY dist2 LIMIT 100 ) ) SELECT DISTINCT first_value(id) OVER (PARTITION BY id) AS id, first_value(corpus) OV ER (PARTITION BY id) AS corpus, MAX(dist1 - dist2) OVER (PARTITION BY id) AS dist FROM combined ORDER BY dist DESC LIMIT 100;
 ```
 
+**Appendixes**
+
 **Engine parameters related to sparse vector search**
+
+| Engine parameter related to sparse vector search | Description | Default value | Valid value |
+|---|---|---|---|
 
 | fastann.sparse hnsw _ _ max scan points _ _ | The maximum number of scan points when you use HNSW indexes to perform sparse vector search. This parameter terminates search in advance. You can use this parameter to test the recall rate. | 8000 | [1, 8000000] |
 |---|---|---|---|
 | fastann.sparse hnsw e _ _ f search _ | The size of search candidate sets when you use HNSW indexes to perform sparse vector search. You can use this parameter to test the recall rate. | 400 | [10, 10000] |
-
-| Purpose | Vector function | Data type of the return value | Description | Supported data type |
-|---|---|---|---|---|
-|  | l2 distance _ | DOUBLE PRECISION | Calculates the rooted Euclidean distance between two sparse vectors. This function is used to measure the distance between two sparse vectors. | SVECTOR |
-
-AnalyticDB for PostgreSQL User G
 
 **Note**
 
@@ -4718,38 +4980,36 @@ You can configure the preceding parameters for sessions.
 
 **Supported vector functions for sparse vectors**
 
+| Purpose | Vector function | Data type of the return value | Description | Supported data type |
+|---|---|---|---|---|
+|   | l2 distance _ | DOUBLE PRECISION | Calculates the rooted Euclidean distance between two sparse vectors. This function is used to measure the distance between two sparse vectors. | SVECTOR |
+
 | Calculation | inner product _ | DOUBLE PRECISION | Calculates the inner product distance between two vectors, which is equivalent to cosine similarity after vector normalization. This function is used to replace cosine similarity after vector normalization. | SVECTOR |
 |---|---|---|---|---|
-|  | dp distance _ | DOUBLE PRECISION | Calculates the dot product distance, which is the same as the inner product distance. | SVECTOR |
-|  | cosine similarity _ | DOUBLE PRECISION | Calculates the cosine similarity between two sparse vectors. This function is used to measure the similarity between two sparse vectors based on the direction regardless of the actual length of the sparse vectors. Valid values of the cosine similarity: -1 to 1. | SVECTOR |
-|  | svector add _ | SVECTOR | Calculates the sum of two sparse vectors. | SVECTOR |
-|  | svector sub _ | SVECTOR | Calculates the difference between two sparse vectors. | SVECTOR |
-|  | svector mul _ | SVECTOR | Calculates the product of two sparse vectors. | SVECTOR |
+|   | dp distance _ | DOUBLE PRECISION | Calculates the dot product distance, which is the same as the inner product distance. | SVECTOR |
+|   | cosine similarity _ | DOUBLE PRECISION | Calculates the cosine similarity between two sparse vectors. This function is used to measure the similarity between two sparse vectors based on the direction regardless of the actual length of the sparse vectors. Valid values of the cosine similarity: -1 to 1. | SVECTOR |
+|   | svector add _ | SVECTOR | Calculates the sum of two sparse vectors. | SVECTOR |
+|   | svector sub _ | SVECTOR | Calculates the difference between two sparse vectors. | SVECTOR |
+|   | svector mul _ | SVECTOR | Calculates the product of two sparse vectors. | SVECTOR |
 
-AnalyticDB for PostgreSQL User G
-
-|  | svector norm _ | DOUBLE PRECISION | Calculates the norm of a sparse vector. | SVECTOR |
+|   | svector norm _ | DOUBLE PRECISION | Calculates the norm of a sparse vector. | SVECTOR |
 |---|---|---|---|---|
-|  | svector angle _ | DOUBLE PRECISION | Calculates the angle between two sparse vectors. | SVECTOR |
+|   | svector angle _ | DOUBLE PRECISION | Calculates the angle between two sparse vectors. | SVECTOR |
 | Sorting | l2 squared dista _ _ nce | DOUBLE PRECISION | Sorts vectors based on the squared Euclidean distance. This function requires fewer calculation than the sorting method based on the rooted Euclidean distance. | SVECTOR |
-|  | negative inner p _ _ roduct | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors in descending order based on the inner product distance. | SVECTOR |
-|  | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors in descending order based on the cosine similarity. Valid values of the cosine distance: 0 to 2. | SVECTOR |
-
-AnalyticDB for PostgreSQL User G
+|   | negative inner p _ _ roduct | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors in descending order based on the inner product distance. | SVECTOR |
+|   | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors in descending order based on the cosine similarity. Valid values of the cosine distance: 0 to 2. | SVECTOR |
 
 **Examples of vector functions**
-
-| Operator | Calculation | Sorting | Supported data type |
-|---|---|---|---|
-| <-> | Calculates the squared Euclidean distance between two vectors. The result is equivalent to the result of the l2 squared distance _ _ function. | None | SVECTOR |
-
-AnalyticDB for PostgreSQL User G
 
 ```json
 -- Euclidean distance SELECT l2_distance('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{"ind ices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector); -- Inner product distance SELECT inner_product('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{"i ndices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector); -- Cosine similarity SELECT l2_distance('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{"ind ices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector); -- Vector sum SELECT svector_add('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{"ind ices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector); -- Vector subtraction SELECT svector_sub('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{"ind ices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector); -- Vector multiplication SELECT svector_mul('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{"ind ices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector); -- Squared Euclidean distance SELECT l2_squared_distance('{"indices":[1,2,3,4,5,6], "values": [1,2,3,4,5,6]}'::svector, '{"indices":[1,2,3,4,5,6], "values": [2,3,4,5,6,7]}'::svector); -- Negative inner product distance SELECT negative_inner_product('{"indices":[1,2,3,4,5,6], "values": [1,2,3,4,5,6]}'::svector, '{"indices":[1,2,3,4,5,6], "values": [2,3,4,5,6,7]}'::svector); -- Cosine distance SELECT cosine_distance('{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector, '{ "indices":[1,2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector);
 ```
 
 **Supported vector operators for sparse vectors**
+
+| Operator | Calculation | Sorting | Supported data type |
+|---|---|---|---|
+| <-> | Calculates the squared Euclidean distance between two vectors. The result is equivalent to the result of the l2 squared distance _ _ function. | None | SVECTOR |
 
 | <#> | Calculates the negative inner product distance between two vectors. The result is equivalent to the result of the negative inner produc _ _ t function. | Sorts vectors in descending order based on the dot product distance. | SVECTOR |
 |---|---|---|---|
@@ -4758,17 +5018,13 @@ AnalyticDB for PostgreSQL User G
 | - | Calculates the difference between two sparse vectors. | None | SVECTOR |
 | * | Calculates the product of two sparse vectors. | None | SVECTOR |
 
-AnalyticDB for PostgreSQL User G
-
 **Examples of vector operators**
 
 ```
 -- Squared Euclidean distance SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector <-> '{"indices":[1, 2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS score; -- Negative inner product distance SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector <#> '{"indices":[1, 2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS score; -- Cosine distance SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector <=> '{"indices":[1, 2,3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS score; -- Sum of two vectors SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector + '{"indices":[1,2, 3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS value; -- Difference between two vectors SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector + '{"indices":[1,2, 3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS value; -- Product of two vectors SELECT '{"indices":[1,2,3,4,5,6], "values":[1,2,3,4,5,6]}'::svector * '{"indices":[1,2, 3,4,5,6], "values":[2,3,4,5,6,7]}'::svector AS value;
 ```
 
-AnalyticDB for PostgreSQL User G
-
-### Use pgvector-compatible
+### 7.4 Use pgvector-compatible vector search
 
 **vector search**
 
@@ -4776,14 +5032,25 @@ pgvector is an open source PostgreSQL extension for vector similarity search. Yo
 
 **Prerequisites**
 
-Before you use pgvector-compatible vector search, make sure that the following requirements are met: The minor version of an AnalyticDB for PostgreSQL V6.0 instance is 6.6.1.0 or later. For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. The vector search engine optimization feature is enabled for the AnalyticDB for PostgreSQL V6.0 instance. For more information, see Enable or disable vector search engine optimization. AnalyticDB for PostgreSQL vector databases are fully compatible with the read and write operations of vector tables that use the pgvector extension to perform vector search. You need to only modify the SQL syntax for creating indexes. If your business uses the pgvector extension to perform vector search, you can seamlessly migrate your business to AnalyticDB for PostgreSQL vector databases after slightly modifying business code. Compared with the vector search method based on the pgvector extension, the pgvector-compatible vector search method of AnalyticDB for PostgreSQL vector databases provides the following advantages: AnalyticDB for PostgreSQL vector databases are fully compatible with the SQL syntax of the pgvector extension and can reuse pgvector-supported language clients. The pgvector extension is used on standalone PostgreSQL databases, whereas AnalyticDB for PostgreSQL vector databases use a distributed architecture to process more vector data. AnalyticDB for PostgreSQL vector databases use the FastANN vector search engine that is developed in-house by Alibaba Cloud to provide better performance than the pgvector extension. For more information, see Performance tests for vector analysis. AnalyticDB for PostgreSQL vector databases can use execution plans and operators to perform hybrid search, whereas the pgvector extension does not support hybrid search. The pgvector extension can use only partitions to perform simple search. AnalyticDB for PostgreSQL vector databases use the FLOAT2 type to compress vector tables and provide the product quantization (PQ) feature to compress vector indexes. As a result, AnalyticDB for PostgreSQL vector databases require lower storage costs than the pgvector extension. You can create a pgvector-compatible vector table by using the same syntax for creating ordinary vector tables in AnalyticDB for PostgreSQL. You need to only change the vector columns from the array type, such as `SMALLINT[]` , `FLOAT2[]` , or `FLOAT4[]` , to the VECTOR type that is supported by the pgvector extension. Each pgvector-compatible vector table supports multiple vector columns.
+Before you use pgvector-compatible vector search, make sure that the following requirements are met: The minor version of an AnalyticDB for PostgreSQL V6.0 instance is 6.6.1.0 or later. For information about how to view the minor version of an AnalyticDB for PostgreSQL instance, see View the minor version of an instance. The vector search engine optimization feature is enabled for the AnalyticDB for PostgreSQL V6.0 instance. For more information, see Enable or disable vector search engine optimization.
+
+**pgvector-compatible vector search**
+
+AnalyticDB for PostgreSQL vector databases are fully compatible with the read and write operations of vector tables that use the pgvector extension to perform vector search. You need to only modify the SQL syntax for creating indexes. If your business uses the pgvector extension to perform vector search, you can seamlessly migrate your business to AnalyticDB for PostgreSQL vector databases after slightly modifying business code. Compared with the vector search method based on the pgvector extension, the pgvector-compatible vector search method of AnalyticDB for PostgreSQL vector databases provides the following advantages: AnalyticDB for PostgreSQL vector databases are fully compatible with the SQL syntax of the pgvector extension and can reuse pgvector-supported language clients. The pgvector extension is used on standalone PostgreSQL databases, whereas AnalyticDB for PostgreSQL vector databases use a distributed architecture to process more vector data. AnalyticDB for PostgreSQL vector databases use the FastANN vector search engine that is developed in-house by Alibaba Cloud to provide better performance than the pgvector extension. For more information, see Performance tests for vector analysis. AnalyticDB for PostgreSQL vector databases can use execution plans and operators to perform hybrid search, whereas the pgvector extension does not support hybrid search. The pgvector extension can use only partitions to perform simple search. AnalyticDB for PostgreSQL vector databases use the FLOAT2 type to compress vector tables and provide the product quantization (PQ) feature to compress vector indexes. As a result, AnalyticDB for PostgreSQL vector databases require lower storage costs than the pgvector extension.
+
+**Create a vector table**
+
+You can create a pgvector-compatible vector table by using the same syntax for creating ordinary vector tables in AnalyticDB for PostgreSQL. You need to only change the vector columns from the array type, such as `SMALLINT[]` , `FLOAT2[]` , or `FLOAT4[]` , to the VECTOR type that is supported by the pgvector extension. Each pgvector-compatible vector table supports multiple vector columns.
 
 **Syntax**
 
-AnalyticDB for PostgreSQL User G
+```
+CREATE TABLE [TABLE_NAME]
+```
+
+`(`
 
 ```
-(
     C1 DATATYPE,
     C2 DATATYPE,
     ......,
@@ -4799,6 +5066,7 @@ The CN parameter specifies the vector columns, which are of the VECTOR type. The
 Create a vector table named FACE_TABLE. Specify C1 as the primary key, and C2 and C3 as the vector columns.
 
 ```
+CREATE TABLE FACE_TABLE (
     C1 INT,
     C2 VECTOR(512) NOT NULL,
     C3 VECTOR(1536) NOT NULL,
@@ -4808,12 +5076,14 @@ Create a vector table named FACE_TABLE. Specify C1 as the primary key, and C2 an
 ) DISTRIBUTED BY (C1);
 ```
 
+**Create a vector index**
+
 You can create a vector index for a pgvector-compatible vector table in AnalyticDB for PostgreSQL by using the syntax of the FastANN vector search engine, which is different from the syntax of the pgvector extension.
 
 **Syntax**
 
 ```
-CREATE INDEX [INDEX_NAME] USING ANN(COLUMN_NAME) WITH (DIM=<DIMENSION>,
+CREATE INDEX [INDEX_NAME] ON [SCHEMA_NAME].[TABLE_NAME] USING ANN(COLUMN_NAME) WITH (DIM=<DIMENSION>,
       DISTANCEMEASURE=<MEASURE>,
       HNSW_M=<M>,
       HNSW_EF_CONSTRUCTION=<EF_CONSTURCTION>,
@@ -4827,17 +5097,23 @@ The VECTOR type that is supported by the pgvector extension already contains the
 
 **Example**
 
-Create vector indexes for the FACE_TABLE vector table. AnalyticDB for PostgreSQL User G
+Create vector indexes for the FACE_TABLE vector table.
 
 ```
 -- Create three types of vector indexes on the C2 column. CREATE INDEX idx_c2_l2 ON FACE_TABLE USING ann(C2) WITH (distancemeasure=l2, hnsw_m=64, pq_enable=1); CREATE INDEX idx_c2_ip ON FACE_TABLE USING ann(C2) WITH (distancemeasure=ip, hnsw_m=64, pq_enable=1); CREATE INDEX idx_c2_cosine ON FACE_TABLE USING ann(C2) WITH (distancemeasure=cosine, hn sw_m=64, pq_enable=1); -- Create three types of vector indexes on the C3 column. CREATE INDEX idx_c3_l2 ON FACE_TABLE USING ann(C3) WITH (distancemeasure=l2, hnsw_m=64, pq_enable=1); CREATE INDEX idx_c3_ip ON FACE_TABLE USING ann(C3) WITH (distancemeasure=ip, hnsw_m=64, pq_enable=1); CREATE INDEX idx_c3_cosine ON FACE_TABLE USING ann(C3) WITH (distancemeasure=cosine, hn sw_m=64, pq_enable=1);
 ```
 
-In this example, multiple vector indexes are created on multiple vector columns. To prevent invalid indexes, you must create vector indexes based on your business requirements. You can import vector data to a pgvector-compatible vector table by using the same syntax of the pgvector extension. For example, execute the following INSERT statement to insert data into the FACE_TABLE table:
+In this example, multiple vector indexes are created on multiple vector columns. To prevent invalid indexes, you must create vector indexes based on your business requirements.
+
+**Import vector data**
+
+You can import vector data to a pgvector-compatible vector table by using the same syntax of the pgvector extension. For example, execute the following INSERT statement to insert data into the FACE_TABLE table:
 
 ```
-values (1, '[1,2,3 ... 512]', '[1,2,3 ... 1536]', '2023-12-29 00:00:00', 'aaa.bbb.ccc/face1.jpg');
+INSERT INTO FACE_TABLE values (1, '[1,2,3 ... 512]', '[1,2,3 ... 1536]', '2023-12-29 00:00:00', 'aaa.bbb.ccc/face1.jpg');
 ```
+
+**Vector search**
 
 You can perform vector search on a pgvector-compatible vector table by using the same syntax of the pgvector extension. The engine parameters related to the recall rate of vector search are the same as the parameters of AnalyticDB for PostgreSQL vector databases. For more information, see Perform vector search. For example, execute the following statements to perform vector search on the FACE_TABLE table:
 
@@ -4845,7 +5121,7 @@ You can perform vector search on a pgvector-compatible vector table by using the
 -- Perform exact search based on the Euclidean distance. SELECT C1 FROM FACE_TABLE ORDER BY vector_l2_squared_distance(C2, '[1,2,3 ... 512]') LI MIT 10; -- Perform exact search based on the inner product distance. SELECT C1 FROM FACE_TABLE ORDER BY vector_negative_inner_product(C2, '[1,2,3 ... 512]') LIMIT 10; -- Perform exact search based on the cosine similarity. SELECT C1 FROM FACE_TABLE ORDER BY cosine_distance(C2, '[1,2,3 ... 512]') LIMIT 10; -- Perform approximate index search based on the Euclidean distance. SELECT C1 FROM FACE_TABLE ORDER BY C2 <-> '[1,2,3 ... 512]' LIMIT 10; -- Perform approximate index search based on the inner product distance. SELECT C1 FROM FACE_TABLE ORDER BY C2 <#> '[1,2,3 ... 512]' LIMIT 10; -- Perform approximate index search based on the cosine similarity. SELECT C1 FROM FACE_TABLE ORDER BY C2 <=> '[1,2,3 ... 512]' LIMIT 10;
 ```
 
-AnalyticDB for PostgreSQL User G You created vector indexes based on the Euclidean distance, inner product distance, and cosine similarity on the C2 column of the FACE_TABLE table. You can use the approximate index search method to match the vector indexes. When you use the approximate index search method, make sure that the `<->` , `<#>` , and `<=>` operators work with the vector indexes that are created by using the corresponding distance metric. If the operators do not work with the vector indexes, the approximate index search is downgraded to exact search.
+You created vector indexes based on the Euclidean distance, inner product distance, and cosine similarity on the C2 column of the FACE_TABLE table. You can use the approximate index search method to match the vector indexes. When you use the approximate index search method, make sure that the `<->` , `<#>` , and `<=>` operators work with the vector indexes that are created by using the corresponding distance metric. If the operators do not work with the vector indexes, the approximate index search is downgraded to exact search.
 
 **SQL optimization for vector search**
 
@@ -4854,33 +5130,42 @@ If you want to return the score value of the vector distance, you can execute th
 ```
 -- Search vector data based on the Euclidean distance. SELECT t.C1 as C1, sqrt(t.score) as score FROM
   (SELECT C1, C2 <-> '[1,2,3 ... 512]' as score
+   FROM FACE_TABLE
    ORDER BY score LIMIT topk) t;
 -- Search vector data based on the inner product distance. SELECT t.C1 as C1, (-1 * t.score) as score FROM
   (SELECT C1, C2 <#> '[1,2,3 ... 512]' as score
+   FROM FACE_TABLE
    ORDER BY score LIMIT topk) t;
 -- Search vector data based on the cosine similarity. SELECT t.C1 as C1, (1.0 - t.score) as score FROM
   (SELECT C1, C2 <=> '[1,2,3 ... 512]' as score
+   FROM FACE_TABLE
    ORDER BY score LIMIT topk) t;
 ```
 
-In the vector search results, the score value indicates the squared Euclidean distance, inner product distance, or cosine similarity. If you want to return results that are filtered based on a score range, you can execute the following statements to improve performance. To reduce the amount of time required for calculation, use the sort result of the vector index to calculate the final score value of the vector distance. Sample statements: AnalyticDB for PostgreSQL User G
+In the vector search results, the score value indicates the squared Euclidean distance, inner product distance, or cosine similarity. If you want to return results that are filtered based on a score range, you can execute the following statements to improve performance. To reduce the amount of time required for calculation, use the sort result of the vector index to calculate the final score value of the vector distance. Sample statements:
 
 ```
 -- Search vector data based on the Euclidean distance. SELECT t.C1 as C1, sqrt(t.score) as score FROM
   (SELECT C1, C2 <-> '[1,2,3 ... 512]' as score
+   FROM FACE_TABLE
    ORDER BY score LIMIT topk) t
 WHERE score < 100; -- Search vector data based on the inner product distance. SELECT t.C1 as C1, (-1 * t.score) as score FROM
   (SELECT C1, C2 <#> '[1,2,3 ... 512]' as score
+   FROM FACE_TABLE
    ORDER BY score LIMIT topk) t
 WHERE score > 10; -- Search vector data based on the cosine similarity. SELECT t.C1 as id, (1.0 - t.score) as score FROM
   (SELECT C1, C2 <=> '[1,2,3 ... 512]' as score
+   FROM FACE_TABLE
    ORDER BY score LIMIT topk) t
 WHERE score > 0.5;
 ```
 
+**Hybrid search**
+
 You can perform hybrid search on a pgvector-compatible vector table by using the same syntax for performing hybrid search on ordinary vector tables in AnalyticDB for PostgreSQL. For more information, see Use hybrid search. For example, execute the following statement to perform hybrid search on the FACE_TABLE table:
 
 ```
+SELECT C1 FROM FACE_TABLE WHERE
   C4 > '2023-10-01 00:00:00' AND C4 < '2024-01-01 00:00:00'
 ORDER BY
   C2 <-> '[1,2,3 ... 512]'
@@ -4889,7 +5174,7 @@ LIMIT 10;
 
 **Adaptation of the open source code repository**
 
-This section describes how to adapt the business application code that uses the pgvector extension to AnalyticDB for PostgreSQL vector databases by performing a simple modification. In this example, an open source large language model (LLM) application development platform named Dify is used. The adaptation involves the following modifications: Comment out the installation of the pgvector extension. AnalyticDB for PostgreSQL vector databases are compatible with the read and write operations of vector tables that use the pgvector extension, but do not use the pgvector extension. You do not need to install the pgvector extension on AnalyticDB for PostgreSQL vector databases. When you create AnalyticDB for PostgreSQL vector databases, the FastANN vector search engine is automatically installed. You need to only comment out the installation of the pgvector extension. Sample code: AnalyticDB for PostgreSQL User G
+This section describes how to adapt the business application code that uses the pgvector extension to AnalyticDB for PostgreSQL vector databases by performing a simple modification. In this example, an open source large language model (LLM) application development platform named Dify is used. The adaptation involves the following modifications: Comment out the installation of the pgvector extension. AnalyticDB for PostgreSQL vector databases are compatible with the read and write operations of vector tables that use the pgvector extension, but do not use the pgvector extension. You do not need to install the pgvector extension on AnalyticDB for PostgreSQL vector databases. When you create AnalyticDB for PostgreSQL vector databases, the FastANN vector search engine is automatically installed. You need to only comment out the installation of the pgvector extension. Sample code:
 
 ```python
 # The code is stored in the api/core/rag/datasource/vdb/pgvector/pgvector.py path.
@@ -4914,12 +5199,14 @@ Modify the method that is used to create vector tables. AnalyticDB for PostgreSQ
 
 ```bash
 # The code is stored in the api/core/rag/datasource/vdb/pgvector/pgvector.py path.
+SQL_CREATE_TABLE = """ CREATE TABLE IF NOT EXISTS {table_name} (
     id uuid PRIMARY KEY,
     text text NOT NULL,
     meta jsonb NOT NULL,
     embedding vector({dimension}) NOT NULL
 ) USING heap; """
 # Change the preceding table creation statement to the following statement:
+SQL_CREATE_TABLE = """ CREATE TABLE IF NOT EXISTS {table_name} (
     id uuid PRIMARY KEY,
     text text NOT NULL,
     meta jsonb NOT NULL,
@@ -4928,17 +5215,6 @@ Modify the method that is used to create vector tables. AnalyticDB for PostgreSQ
 ```
 
 Modify the method that is used to create vector indexes. AnalyticDB for PostgreSQL vector databases use the FastANN vector search engine to implement vector search, but do not use the pgvector extension. The syntax that is used to create vector indexes in AnalyticDB for PostgreSQL, especially the index keyword, is different from the syntax that is used in the pgvector extension. You must use the syntax of AnalyticDB for PostgreSQL vector databases to create indexes. Sample code:
-
-| Programming language | URL of the client library code |
-|---|---|
-| C | pgvector-C |
-| C++ | pgvector-cpp |
-| Go | pgvector-go |
-| Java, Kotlin, Groovy, and Scala | pgvector-java |
-| PHP | pgvector-php |
-| Python | pgvector-python |
-
-AnalyticDB for PostgreSQL User G
 
 ```python
 # The code is stored in the api/core/rag/datasource/vdb/pgvector/pgvector.py path.
@@ -4962,47 +5238,56 @@ file#indexing
         redis_client.set(collection_exist_cache_key, 1, ex=3600)
 ```
 
+**Appendixes**
+
 **Language clients that are supported by the pgvector extension**
+
+| Programming language | URL of the client library code |
+|---|---|
+| C | pgvector-C |
+| C++ | pgvector-cpp |
+| Go | pgvector-go |
+| Java, Kotlin, Groovy, and Scala | pgvector-java |
+| PHP | pgvector-php |
+| Python | pgvector-python |
 
 | Rust | pgvector-rust |
 |---|---|
 
-| Purpose | Vector function | Data type of the return value | Description | Supported data type |
-|---|---|---|---|---|
-| Calculation | l2 distance _ | DOUBLE PRECISION | Calculates the rooted Euclidean distance between two vectors. This function is used to measure the distance between two vectors. | VECTOR |
-|  | inner product _ | DOUBLE PRECISION | Calculates the inner product distance between two vectors, which is equivalent to cosine similarity after vector normalization. This function is used to replace cosine similarity after vector normalization. | VECTOR |
-|  | cosine similarity _ | DOUBLE PRECISION | Calculates the cosine similarity between two vectors. This function is used to measure the similarity between two vectors based on the direction regardless of the actual length of the vectors. Valid values of the cosine similarity: -1 to 1. | VECTOR |
-
-AnalyticDB for PostgreSQL User G You can use multiple language clients that are supported by the pgvector extension to access AnalyticDB for PostgreSQL vector databases. You need to only modify the SQL statements related to vector indexes.
+You can use multiple language clients that are supported by the pgvector extension to access AnalyticDB for PostgreSQL vector databases. You need to only modify the SQL statements related to vector indexes.
 
 **Supported vector functions**
 
-|  | vector dims _ | INTEGER | Calculates the dimensions of a vector. | VECTOR |
+| Purpose | Vector function | Data type of the return value | Description | Supported data type |
 |---|---|---|---|---|
-|  | vector norm _ | DOUBLE PRECISION | Calculates the norm of a vector. | VECTOR |
-|  | vector add _ | VECTOR | Calculates the sum of two vectors. | VECTOR |
-|  | vector sub _ | VECTOR | Calculates the difference between two vectors. | VECTOR |
-|  | vector mul _ | VECTOR | Calculates the product of two vectors. | VECTOR |
-|  | vector angle _ | DOUBLE PRECISION | Calculates the angle between two vectors. | VECTOR |
-|  | vector l2 squared dis _ _ _ tance | DOUBLE PRECISION | Sorts vectors based on the squared Euclidean distance. This function requires fewer calculation than the sorting method based on the rooted Euclidean distance. | VECTOR |
-| Sorting |  |  |  |  |
-|  | vector negative inner _ _ product _ | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors based on the inner product distance in descending order. | VECTOR |
+| Calculation | l2 distance _ | DOUBLE PRECISION | Calculates the rooted Euclidean distance between two vectors. This function is used to measure the distance between two vectors. | VECTOR |
+|   | inner product _ | DOUBLE PRECISION | Calculates the inner product distance between two vectors, which is equivalent to cosine similarity after vector normalization. This function is used to replace cosine similarity after vector normalization. | VECTOR |
+|   | cosine similarity _ | DOUBLE PRECISION | Calculates the cosine similarity between two vectors. This function is used to measure the similarity between two vectors based on the direction regardless of the actual length of the vectors. Valid values of the cosine similarity: -1 to 1. | VECTOR |
 
-AnalyticDB for PostgreSQL User G
+|   | vector dims _ | INTEGER | Calculates the dimensions of a vector. | VECTOR |
+|---|---|---|---|---|
+|   | vector norm _ | DOUBLE PRECISION | Calculates the norm of a vector. | VECTOR |
+|   | vector add _ | VECTOR | Calculates the sum of two vectors. | VECTOR |
+|   | vector sub _ | VECTOR | Calculates the difference between two vectors. | VECTOR |
+|   | vector mul _ | VECTOR | Calculates the product of two vectors. | VECTOR |
+|   | vector angle _ | DOUBLE PRECISION | Calculates the angle between two vectors. | VECTOR |
+|   | vector l2 squared dis _ _ _ tance | DOUBLE PRECISION | Sorts vectors based on the squared Euclidean distance. This function requires fewer calculation than the sorting method based on the rooted Euclidean distance. | VECTOR |
+| Sorting |   |   |   |   |
+|   | vector negative inner _ _ product _ | DOUBLE PRECISION | Sorts vectors based on the negative inner product distance. This function is used to sort vectors based on the inner product distance in descending order. | VECTOR |
 
-|  | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors based on the cosine similarity in descending order. Valid values of the cosine distance: 0 to 2. | VECTOR |
+|   | cosine distance _ | DOUBLE PRECISION | Sorts vectors based on the cosine distance. This function is used to sort vectors based on the cosine similarity in descending order. Valid values of the cosine distance: 0 to 2. | VECTOR |
 |---|---|---|---|---|
 
-| Operator | Calculation | Sorting | Supported data type |
-|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G For information about the vector distance formulas, see Create a vector index. Examples of vector functions:
+For information about the vector distance formulas, see Create a vector index. Examples of vector functions:
 
 ```
 -- Euclidean distance SELECT l2_distance('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Inner product distance SELECT inner_product('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Cosine similarity SELECT cosine_similarity('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Vector dimensions SELECT vector_dims('[1,1,1,1]'::vector); -- Vector norm SELECT vector_norm('[1,1,1,1]'::vector); -- Vector sum SELECT vector_add('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Vector subtraction SELECT vector_sub('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Vector multiplication SELECT vector_mul('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Vector angle SELECT vector_angle('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Squared Euclidean distance SELECT vector_l2_squared_distance('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Negative inner product distance SELECT vector_negative_inner_product('[1,1,1,1]'::vector, '[2,2,2,2]'::vector); -- Cosine distance SELECT cosine_distance('[1,1,1,1]'::vector, '[2,2,2,2]'::vector);
 ```
 
 **Supported vector operators**
+
+| Operator | Calculation | Sorting | Supported data type |
+|---|---|---|---|
 
 | <-> | Calculates the squared Euclidean distance between two vectors. The result is equivalent to the result of the l2 squared distance _ _ function. | Sorts vectors based on the squared Euclidean distance in ascending order. | VECTOR |
 |---|---|---|---|
@@ -5012,28 +5297,38 @@ AnalyticDB for PostgreSQL User G For information about the vector distance formu
 | - | Calculates the difference between two vectors. | None | VECTOR |
 | * | Calculates the product of two vectors. | None | VECTOR |
 
-AnalyticDB for PostgreSQL User G Examples of vector operators: AnalyticDB for PostgreSQL User G
+Examples of vector operators:
 
 ```
 -- Squared Euclidean distance SELECT '[1,1,1,1]'::vector <-> '[2,2,2,2]'::vector AS score; -- Negative inner product distance SELECT '[1,1,1,1]'::vector <#> '[2,2,2,2]'::vector AS score; -- Cosine distance SELECT '[1,1,1,1]'::vector <=> '[2,2,2,2]'::vector AS score; -- Sum SELECT '[1,1,1,1]'::vector + '[2,2,2,2]'::vector AS value; -- Subtraction SELECT '[1,1,1,1]'::vector - '[2,2,2,2]'::vector AS value; -- Multiplication SELECT '[1,1,1,1]'::vector * '[2,2,2,2]'::vector AS value;
 ```
 
-### Use hybrid search
+### 7.5 Use hybrid search
 
-If you want to search for structured and unstructured data at the same time, you can use the hybrid search feature of AnalyticDB for PostgreSQL vector databases. Hybrid search supports structured field filtering, semi-structured field filtering, and two-way retrieval based on vector search and full-text search. Approximate nearest neighbor search (ANNS) vector indexes can handle only unstructured data search. In actual production environments, you may be required to search structured and unstructured data at the same time. For example, you want to query whether specific persons appear in a specific area within a specific time range. The time range and area range may be structured data, and human faces may be stored as unstructured data. To meet these requirements, AnalyticDB for PostgreSQL provides the hybrid search feature for structured and unstructured data. Most hybrid search solutions in the industry store structured data in database systems and unstructured data in vector search systems. Search results from the two types of systems are intersected to find the common matches. Then, the intersected results are aggregated to obtain the final result. This method extracts amplified results (quantity = amplification factor × top K) from vector search systems and then uses structured indexes to filter the results. However, structured indexes may filter out a large number of results, failing to meet the requirements for retrieving the top K results. The following section describes how hybrid search works by using structured and unstructured fields.
+If you want to search for structured and unstructured data at the same time, you can use the hybrid search feature of AnalyticDB for PostgreSQL vector databases. Hybrid search supports structured field filtering, semi-structured field filtering, and two-way retrieval based on vector search and full-text search.
+
+**Overview**
+
+Approximate nearest neighbor search (ANNS) vector indexes can handle only unstructured data search. In actual production environments, you may be required to search structured and unstructured data at the same time. For example, you want to query whether specific persons appear in a specific area within a specific time range. The time range and area range may be structured data, and human faces may be stored as unstructured data. To meet these requirements, AnalyticDB for PostgreSQL provides the hybrid search feature for structured and unstructured data. Most hybrid search solutions in the industry store structured data in database systems and unstructured data in vector search systems. Search results from the two types of systems are intersected to find the common matches. Then, the intersected results are aggregated to obtain the final result. This method extracts amplified results (quantity = amplification factor × top K) from vector search systems and then uses structured indexes to filter the results. However, structured indexes may filter out a large number of results, failing to meet the requirements for retrieving the top K results. The following section describes how hybrid search works by using structured and unstructured fields.
 
 **How hybrid search works**
 
-AnalyticDB for PostgreSQL integrates the FastANN vector search engine into databases as an index extension and allows you to perform vector search by using structured and semistructured indexes at the same time. You can use the ranked-biased overlap (RBO) cost estimation rules of the optimizer to generate different execution plans to search for structured and unstructured data at the same time. The following example shows how hybrid search works: Assume that you want to search for the top 100 items that have the highest similarity to a specified image, fall within a price range of USD 100 to USD 200, and were put on sale within the last month. AnalyticDB for PostgreSQL User G Sample statements to create a table and indexes:
+AnalyticDB for PostgreSQL integrates the FastANN vector search engine into databases as an index extension and allows you to perform vector search by using structured and semistructured indexes at the same time. You can use the ranked-biased overlap (RBO) cost estimation rules of the optimizer to generate different execution plans to search for structured and unstructured data at the same time. The following example shows how hybrid search works: Assume that you want to search for the top 100 items that have the highest similarity to a specified image, fall within a price range of USD 100 to USD 200, and were put on sale within the last month. Sample statements to create a table and indexes:
 
 ```
+CREATE TABLE products (
     id serial primary key,
     name varchar(256),
     price real,
     inTime timestamp,
     url varchar(256),
     feature real[]
-); -- Set the storage mode of the vector column to PLAIN. ALTER TABLE products ALTER COLUMN feature SET STORAGE PLAIN; -- Create a B-tree index for structured columns. CREATE INDEX ON products(price, intime); -- Create a vector index for the vector column. CREATE INDEX ON products USING ann(feature) WITH (dim=512); -- Collect statistics to generate an optimal execution plan for hybrid search. ANALYZE products;
+```
+
+);
+
+```
+-- Set the storage mode of the vector column to PLAIN. ALTER TABLE products ALTER COLUMN feature SET STORAGE PLAIN; -- Create a B-tree index for structured columns. CREATE INDEX ON products(price, intime); -- Create a vector index for the vector column. CREATE INDEX ON products USING ann(feature) WITH (dim=512); -- Collect statistics to generate an optimal execution plan for hybrid search. ANALYZE products;
 ```
 
 Sample statement to perform hybrid search:
@@ -5051,7 +5346,7 @@ AnalyticDB for PostgreSQL can generate three categories of execution plans based
 
 **Category 1: Brute-force query**
 
-The system obtains all rows that meet the structured conditions, sorts the rows by vector distance, and then displays 100 rows of data that have the smallest distance. This execution plan provides a recall rate of 100% but returns query results at a low speed, especially when large amounts of data are queried or a large number of rows meet the structured conditions. Sample execution plan: AnalyticDB for PostgreSQL User G
+The system obtains all rows that meet the structured conditions, sorts the rows by vector distance, and then displays 100 rows of data that have the smallest distance. This execution plan provides a recall rate of 100% but returns query results at a low speed, especially when large amounts of data are queried or a large number of rows meet the structured conditions. Sample execution plan:
 
 ```
                                        QUERY PLAN
@@ -5087,7 +5382,7 @@ The system uses a vector index to query N rows of data that have the highest sim
 
 **Category 3: Hybrid search that combines vector search and structured filtering**
 
-This execution plan combines the advantages of the preceding two execution plans. It uses indexes to query data and prevents the possibility of fewer data results. If a structured condition column is indexed and the index type supports bitmaps, this execution plan can use other indexes to generate bitmaps. This accelerates hybrid search. Sample execution plan: AnalyticDB for PostgreSQL User G
+This execution plan combines the advantages of the preceding two execution plans. It uses indexes to query data and prevents the possibility of fewer data results. If a structured condition column is indexed and the index type supports bitmaps, this execution plan can use other indexes to generate bitmaps. This accelerates hybrid search. Sample execution plan:
 
 ```
                                        QUERY PLAN
@@ -5125,10 +5420,10 @@ Assume that a securities company has a database named **stock_analysis_chunks** 
 | url | varchar(1024) | The URL of the article to which the text chunk belongs. |
 | feature | real[] | The embedding vector of the text block. |
 
-AnalyticDB for PostgreSQL User G
 1. Create a text database table named **stock_analysis_chunks**.
 
 ```
+CREATE TABLE stock_analysis_chunks (
     id serial primary key,
     chunk varchar(1024),
     release_time timestamp,
@@ -5164,7 +5459,7 @@ ANALYZE stock_analysis_chunks;
 ```
 
 6. Perform hybrid search.
-AnalyticDB for PostgreSQL User G To query the stock analysis articles that were released within the last month and contain specific text content, execute the following statement:
+To query the stock analysis articles that were released within the last month and contain specific text content, execute the following statement:
 
 ```
 SELECT id, url, cosine_similarity(feature, array[1.0, 2.0, ..., 1536.0]::real[]) as s core FROM stock_analysis_chunks WHERE release_time >= '2023-07-18 00:00:00' AND release_time <= '2023-08-18 00:00:00' AND stock_id_list @> ARRAY['BABA', 'AAPL', 'MSFT', 'AMZN'] ORDER BY feature <=> array[1.0, 2.0, ..., 1536.0]::real[] LIMIT 10;
@@ -5176,7 +5471,7 @@ Two-way retrieval allows you to retrieve data by using vector search and full-te
 1. Create a table.
 
 ```
--- vector: the vector column. to_tsvector: the full-text tokenizer column.
+-- vector: the vector column. to_tsvector: the full-text tokenizer column. CREATE TABLE IF NOT EXISTS documents(
                 id TEXT,
                 docname TEXT,
                 title TEXT,
@@ -5204,12 +5499,12 @@ CREATE INDEX ON documents USING gin(to_tsvector);
 ```
 
 5. Create a dependency function.
-AnalyticDB for PostgreSQL User G
 
 ```
 CREATE OR REPLACE FUNCTION public.to_tsquery_from_text(txt text, lang regconfig DEFAU LT 'english'::regconfig)
  RETURNS tsquery
  LANGUAGE sql
+ IMMUTABLE STRICT
 AS $function$ SELECT to_tsquery(lang, COALESCE(string_agg(split_part(word, ':', 1), '
 | '), '')) FROM (SELECT unnest(string_to_array(to_tsvector(lang, txt)::text, ' ')) AS
 word) AS words_only;$function$
@@ -5219,7 +5514,11 @@ word) AS words_only;$function$
 
 ```
  WITH combined AS (
-   (
+```
+
+`(`
+
+```
      SELECT
         id,
         docname,
@@ -5232,11 +5531,15 @@ word) AS words_only;$function$
      LIMIT 10
 ```
 
-)
+`)`
 
 ```
    UNION ALL
-   (
+```
+
+`(`
+
+```
      SELECT
         id,
         docname,
@@ -5251,7 +5554,7 @@ imilarity,
      LIMIT 10
 ```
 
-) )
+`)` `)`
 
 ```
 SELECT id, docname, title, text, MAX(similarity) as similarity,
@@ -5263,19 +5566,7 @@ SELECT id, docname, title, text, MAX(similarity) as similarity,
 
 In the `UNION` clause, the first part uses vector search to retrieve 10 rows of data and the second part uses full-text search to retrieve 10 rows of data. Then, the data results are deduplicated based on the `id` column. Finally, the preceding two-way retrieval statement returns 20 or fewer rows of data.
 
-| Engine version | Node specifications of High- performance Edition | Number of compute nodes | Storage capacity of compute nodes | Storage type of compute nodes |
-|---|---|---|---|---|
-| v6.6.1.0 | 16C64G | 4 | 1000 GB | PL1 Enterprise SSD (ESSD) |
-|  | 8C32G |  |  |  |
-|  | 4C16G |  |  |  |
-
-| CPU | Memory | Disk storage |
-|---|---|---|
-| 16 cores | 32 GB | 2 TB |
-
-AnalyticDB for PostgreSQL User G
-
-### Performance tests for vector
+### 7.6 Performance tests for vector analysis
 
 **analysis**
 
@@ -5287,7 +5578,17 @@ To prevent errors caused by network fluctuations, make sure that an AnalyticDB f
 
 **AnalyticDB for PostgreSQL specifications**
 
+| Engine version | Node specifications of High- performance Edition | Number of compute nodes | Storage capacity of compute nodes | Storage type of compute nodes |
+|---|---|---|---|---|
+| v6.6.1.0 | 16C64G | 4 | 1000 GB | PL1 Enterprise SSD (ESSD) |
+|   | 8C32G |   |   |   |
+|   | 4C16G |   |   |   |
+
 **ECS specifications**
+
+| CPU | Memory | Disk storage |
+|---|---|---|
+| 16 cores | 32 GB | 2 TB |
 
 **Preparations**
 
@@ -5306,6 +5607,14 @@ pip install -r requirements.txt
 on Linux.
 5. Run the following command to build a test image:
 
+```
+python install.py --proc 4 --algorithm adbpg
+```
+
+**Prepare a test dataset**
+
+Download a dataset and store the dataset in the data directory of the ann-benchmarks project.
+
 | Dataset | Numbe r of dimensi ons | Number of samples | Metric function | Dataset parameter | Download link |
 |---|---|---|---|---|---|
 | GIST | 960 | 1,000,000 | L2 similarity | gist-960-euclidean | GIST |
@@ -5316,27 +5625,11 @@ on Linux.
 | Dbpedia | 1536 | 1,000,000 | Cosine similarity | dbpedia-openai-1000k- angular | Dbpedia |
 | Glove | 200 | 1,180,000 | Cosine similarity | glove-200-angular | Glove |
 
-AnalyticDB for PostgreSQL User G
-
-```
-python install.py --proc 4 --algorithm adbpg
-```
-
-**Prepare a test dataset**
-
-Download a dataset and store the dataset in the data directory of the ann-benchmarks project.
-
 **Test procedure**
 
 **Step 1: Configure the connection information of the test tool**
 
 Enter configuration information in the `ann_benchmarks/algorithms/adbpg/module.py` file of the test tool.
-
-| Parameter | Description |
-|---|---|
-| M | The M parameter that is used to create a Hierarchical Navigable Small World (HNSW) index. Greater values indicate longer construction time and higher construction precision. |
-
-AnalyticDB for PostgreSQL User G
 
 ```bash
 # The internal endpoint of the AnalyticDB for PostgreSQL instance.
@@ -5381,16 +5674,22 @@ float:
 
 `arg_groups` : the parameters related to index creation. For information about how to create a vector index, see Create a vector index.
 
-| efConstruction | The parameter that is used to determine the search quality. |  |  |
-|---|---|---|---|
-| parallel build _ | The parallelism that is used to create the index. In most cases, set this parameter to the number of CPU cores of compute nodes. |  |  |
-| external storage _ | The policy that is used to cache indexes. Valid values: 1: mmap. 0: shared buffer. _ |  |  |
-| pq enable _ | Specifies whether to enable the product quantization (PQ) feature. Valid values: 1: yes. 0: no. |  |  |
-| pq segments _ | The number of compute nodes that are used for PQ. In most cases, set this parameter to the number of dimensions divided by 8 . |  |  |
-|  |  | number of dimensions |  |
-
-|  | divided by 8 |
+| Parameter | Description |
 |---|---|
+| M | The M parameter that is used to create a Hierarchical Navigable Small World (HNSW) index. Greater values indicate longer construction time and higher construction precision. |
+
+| efConstruction | The parameter that is used to determine the search quality. |   |   |
+|---|---|---|---|
+| parallel build _ | The parallelism that is used to create the index. In most cases, set this parameter to the number of CPU cores of compute nodes. |   |   |
+| external storage _ | The policy that is used to cache indexes. Valid values: 1: mmap. 0: shared buffer. _ |   |   |
+| pq enable _ | Specifies whether to enable the product quantization (PQ) feature. Valid values: 1: yes. 0: no. |   |   |
+| pq segments _ | The number of compute nodes that are used for PQ. In most cases, set this parameter to the number of dimensions divided by 8 . |   |   |
+|   |   | number of dimensions |   |
+
+|   | divided by 8 |
+|---|---|
+
+`query_args` : the search-related parameters.
 
 | Parameter | Description |
 |---|---|
@@ -5399,7 +5698,7 @@ float:
 | pq amp _ | The PQ amplification factor. If you do not enable the PQ feature, this parameter does not take effect. |
 | parallel | The number of concurrent queries. This parameter takes effect only in batch mode. |
 
-AnalyticDB for PostgreSQL User G `query_args` : the search-related parameters. During the test, you can modify the preceding parameters to ensure a 95% recall rate. AnalyticDB for PostgreSQL provides the following reference configurations for the preceding test datasets. You can select the parameter configuration for a specific test dataset.
+During the test, you can modify the preceding parameters to ensure a 95% recall rate. AnalyticDB for PostgreSQL provides the following reference configurations for the preceding test datasets. You can select the parameter configuration for a specific test dataset.
 
 ```bash
 # for sift 128 10m
@@ -5411,8 +5710,6 @@ float:
     docker_tag: ann-benchmarks-adbpg
 module:annbenchmarksalgorithmsadbpg
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```bash
     module: ann_benchmarks.algorithms.adbpg
@@ -5450,19 +5747,19 @@ float:
 , {ef_search: 400, max_scan_points: 2000, pq_amp: 10, parallel: 5}, {ef_search: 400, ma x_scan_points: 2000, pq_amp: 10, parallel: 10}, {ef_search: 400, max_scan_points: 2000, pq_amp: 10, parallel: 15}, {ef_search: 400, max_scan_points: 2000, pq_amp: 10, parallel : 20}, {ef_search: 400, max_scan_points: 2000, pq_amp: 10, parallel: 25}, {ef_search: 4 00, maxscanpoints: 2000, pqamp: 10, parallel: 30}, {efsearch: 400, maxscanpoints:
 ```
 
-AnalyticDB for PostgreSQL User G , _ `_p`
+`,` `_` `_p`
 
 ```
 ,pq_
 ```
 
-p ,p
+`p` `,``p`
 
 ```
 },{
 ```
 
-_ , _ `_p`
+`_` `,` `_` `_p`
 
 ```bash
 2000, pq_amp: 10, parallel: 50}]]
@@ -5499,8 +5796,6 @@ float:
       wopq_sb:
 ```
 
-AnalyticDB for PostgreSQL User G
-
 ```bash
         arg_groups: [{M: 64, efConstruction: 600, parallel_build: 16, external_storage:
 0, pq_enable: 0, pq_segments: 12}]
@@ -5533,8 +5828,6 @@ float:
 , {ef_search: 400, max_scan_points: 1800, pq_amp: 10, parallel: 5}, {ef_search: 400, ma x_scan_points: 1800, pq_amp: 10, parallel: 10}, {ef_search: 400, max_scan_points: 1800, pq_amp: 10, parallel: 15}, {ef_search: 400, max_scan_points: 1800, pq_amp: 10, parallel : 20}, {ef_search: 400, max_scan_points: 1800, pq_amp: 10, parallel: 25}, {ef_search: 4 00, max_scan_points: 1800, pq_amp: 10, parallel: 30}, {ef_search: 400, max_scan_points: 1800, pq_amp: 10, parallel: 50}]]
 # for glove 200
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```bash
 float:
@@ -5576,13 +5869,13 @@ float:
 1, pq_enable: 1, pq_segments: 96}] [[{f
 ```
 
-h i
+`h` `i`
 
 ```
-lll 1}
+lll
 ```
 
-AnalyticDB for PostgreSQL User G
+`1}`
 
 ```bash
         query_args: [[ {ef_search: 400, max_scan_points: 600, pq_amp: 10, parallel: 1},
@@ -5618,8 +5911,6 @@ float:
         query_args: [[ {ef_search: 400, max_scan_points: 425, pq_amp: 10, parallel: 1},
 {ef_search: 400, max_scan_points: 425, pq_amp: 10, parallel: 5}, {ef_search: 400, max_s canpoints:425 pqamp:10 parallel:10} {efsearch:400 maxscanpoints:425 pqa
 ```
-
-AnalyticDB for PostgreSQL User G
 
 ```
 can_points: 425, pq_amp: 10, parallel: 10}, {ef_search: 400, max_scan_points: 425, pq_a mp: 10, parallel: 15}, {ef_search: 400, max_scan_points: 425, pq_amp: 10, parallel: 20} , {ef_search: 400, max_scan_points: 425, pq_amp: 10, parallel: 25}, {ef_search: 400, ma x_scan_points: 425, pq_amp: 10, parallel: 30}, {ef_search: 400, max_scan_points: 425, p q_amp: 10, parallel: 50}]]
@@ -5663,13 +5954,7 @@ After you obtain a recall rate that meets your business requirements, you can pe
 nohup python run.py --algorithm adbpg --dataset <Dataset> --runs 1 --timeout 990000 -batch > annbenchmark_deep.log 2>&1 &
 ```
 
-| Index creation mode | Description | Applicable scenario |
-|---|---|---|
-| PQ + mmap | Uses the mmap policy to cache and persistently store vector indexes and the PQ method to compress vector codes and accelerate vector computing. | Scenarios that involve more than 500,000 data entries and do not require data updates or deletes. |
-| PQ + shared buffer _ | Uses the shared buffer policy of _ PostgreSQL to cache vector indexes and the PQ method to compress vector codes and accelerate vector computing. | Scenarios that involve more than 500,000 data entries and require data updates and deletes. |
-| noPQ + shared buffer _ | Uses the shared buffer policy of _ PostgreSQL to cache vector indexes, and does not use the PQ method to compress vector codes and accelerate vector computing. | Scenarios that involve fewer than 500,000 data entries. |
-
-AnalyticDB for PostgreSQL User G After the test is complete, open the `annbenchmark_deep.log` file to check the queries per second (QPS), average response time (RT), and P99 RT parameters based on different concurrency conditions.
+After the test is complete, open the `annbenchmark_deep.log` file to check the queries per second (QPS), average response time (RT), and P99 RT parameters based on different concurrency conditions.
 
 ```
 2023-12-20 17:31:39,297 - INFO - query using 25 parallel worker 0 cost 9.50 s, qps 315.92, mean rt 0.00317, p99 rt 0.00951 2023-12-20 17:31:49,097 - INFO - QPS: 7653.155 2023-12-20 17:31:49,113 - INFO - query using 30 parallel worker 0 cost 13.87 s, qps 216.36, mean rt 0.00462, p99 rt 0.04298 2023-12-20 17:32:03,260 - INFO - QPS: 6361.819 2023-12-20 17:32:03,281 - INFO - query using 50 parallel worker 0 cost 20.78 s, qps 144.36, mean rt 0.00693, p99 rt 0.02735 2023-12-20 17:32:24,385 - INFO - QPS: 7107.920
@@ -5678,6 +5963,12 @@ AnalyticDB for PostgreSQL User G After the test is complete, open the `annbenchm
 **Test results**
 
 This section describes the performance test results of different datasets based on different AnalyticDB for PostgreSQL vector database configurations. In the performance tests, the recall rate is set to 95% and the top 10 search results are obtained. The following table describes the index creation modes.
+
+| Index creation mode | Description | Applicable scenario |
+|---|---|---|
+| PQ + mmap | Uses the mmap policy to cache and persistently store vector indexes and the PQ method to compress vector codes and accelerate vector computing. | Scenarios that involve more than 500,000 data entries and do not require data updates or deletes. |
+| PQ + shared buffer _ | Uses the shared buffer policy of _ PostgreSQL to cache vector indexes and the PQ method to compress vector codes and accelerate vector computing. | Scenarios that involve more than 500,000 data entries and require data updates and deletes. |
+| noPQ + shared buffer _ | Uses the shared buffer policy of _ PostgreSQL to cache vector indexes, and does not use the PQ method to compress vector codes and accelerate vector computing. | Scenarios that involve fewer than 500,000 data entries. |
 
 **Instance specifications: 16 cores and 64 GB memory × 4**
 
@@ -5698,25 +5989,13 @@ Search parameters: `ef_search: 400, max_scan_points: 2000, pq_amp: 10` The follo
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 261 | 1 | 242 | 3 | 4 |
-|  | 5 | 1068 | 4 | 6 |
-|  | 10 | 1673 | 5 | 7 |
-|  | 15 | 2158 | 6 | 7 |
-|  | 20 | 2492 | 7 | 13 |
-|  | 25 | 2405 | 9 | 19 |
-|  | 30 | 2423 | 11 | 24 |
-|  | 50 | 2453 | 19 | 43 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 505 | 1 | 161 | 5 | 7 |
-|  | 5 | 771 | 5 | 8 |
-|  | 10 | 1111 | 8 | 10 |
-|  | 15 | 1380 | 10 | 12 |
-|  | 20 | 1395 | 13 | 23 |
-|  | 25 | 1422 | 16 | 31 |
-| 75 | > Document Version: 2026063 |  |  |  |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 1068 | 4 | 6 |
+|   | 10 | 1673 | 5 | 7 |
+|   | 15 | 2158 | 6 | 7 |
+|   | 20 | 2492 | 7 | 13 |
+|   | 25 | 2405 | 9 | 19 |
+|   | 30 | 2423 | 11 | 24 |
+|   | 50 | 2453 | 19 | 43 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -5728,25 +6007,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 120
 
 Search parameters: `ef_search: 400, max_scan_points: 2000, pq_amp: 10` The following table describes the test results.
 
-|  | 30 | 1412 | 20 | 39 |
-|---|---|---|---|---|
-|  | 50 | 1450 | 34 | 70 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 1102 | 1 | 130 | 7 | 10 |
-|  | 5 | 425 | 11 | 14 |
-|  | 10 | 678 | 14 | 16 |
-|  | 15 | 901 | 16 | 19 |
-|  | 20 | 963 | 20 | 31 |
-|  | 25 | 979 | 24 | 38 |
-|  | 30 | 978 | 30 | 48 |
-|  | 50 | 969 | 51 | 98 |
+| 505 | 1 | 161 | 5 | 7 |
+|   | 5 | 771 | 5 | 8 |
+|   | 10 | 1111 | 8 | 10 |
+|   | 15 | 1380 | 10 | 12 |
+|   | 20 | 1395 | 13 | 23 |
+|   | 25 | 1422 | 16 | 31 |
+| 75 | > Document Version: 2026063 |   |   |   |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 30 | 1412 | 20 | 39 |
 |---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
+|   | 50 | 1450 | 34 | 70 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -5757,6 +6030,17 @@ external_storage: 0, pq_enable: 0
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 2000` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 1102 | 1 | 130 | 7 | 10 |
+|   | 5 | 425 | 11 | 14 |
+|   | 10 | 678 | 14 | 16 |
+|   | 15 | 901 | 16 | 19 |
+|   | 20 | 963 | 20 | 31 |
+|   | 25 | 979 | 24 | 38 |
+|   | 30 | 978 | 30 | 48 |
+|   | 50 | 969 | 51 | 98 |
 
 **Dataset: Deep1B cosine (96 × 10,000,000)**
 
@@ -5770,28 +6054,18 @@ external_storage: 1, pq_enable: 1, pq_segments: 12
 
 Search parameters: `ef_search: 400, max_scan_points: 1200, pq_amp: 10` The following table describes the test results.
 
-| 1515 | 1 | 451 | 2 | 2 |
-|---|---|---|---|---|
-|  | 5 | 2279 | 2 | 3 |
-|  | 10 | 4059 | 2 | 5 |
-|  | 15 | 6274 | 2 | 5 |
-|  | 20 | 8198 | 2 | 5 |
-|  | 25 | 8347 | 3 | 6 |
-|  | 30 | 8411 | 3 | 8 |
-|  | 50 | 8178 | 6 | 22 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 2824 | 1 | 361 | 2 | 3 |
-|  | 5 | 1439 | 3 | 4 |
-|  | 10 | 2261 | 4 | 5 |
-|  | 15 | 2958 | 5 | 6 |
-|  | 20 | 3164 | 6 | 11 |
-|  | 25 | 3168 | 7 | 15 |
-|  | 30 | 3170 | 9 | 19 |
-| 77 | > Document Version: 2026063 |  |  |  |
 
-AnalyticDB for PostgreSQL User G
+| 1515 | 1 | 451 | 2 | 2 |
+|---|---|---|---|---|
+|   | 5 | 2279 | 2 | 3 |
+|   | 10 | 4059 | 2 | 5 |
+|   | 15 | 6274 | 2 | 5 |
+|   | 20 | 8198 | 2 | 5 |
+|   | 25 | 8347 | 3 | 6 |
+|   | 30 | 8411 | 3 | 8 |
+|   | 50 | 8178 | 6 | 22 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -5803,26 +6077,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 12
 
 Search parameters: `ef_search: 400, max_scan_points: 1200, pq_amp: 10` The following table describes the test results.
 
-|  | 50 | 3156 | 15 | 36 |
-|---|---|---|---|---|
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 3141 | 1 | 423 | 2 | 2 |
-|  | 5 | 1240 | 3 | 4 |
-|  | 10 | 2453 | 4 | 4 |
-|  | 15 | 3144 | 4 | 6 |
-|  | 20 | 3322 | 6 | 11 |
-|  | 25 | 3332 | 7 | 15 |
-|  | 30 | 3350 | 8 | 19 |
-|  | 50 | 3347 | 14 | 35 |
+| 2824 | 1 | 361 | 2 | 3 |
+|   | 5 | 1439 | 3 | 4 |
+|   | 10 | 2261 | 4 | 5 |
+|   | 15 | 2958 | 5 | 6 |
+|   | 20 | 3164 | 6 | 11 |
+|   | 25 | 3168 | 7 | 15 |
+|   | 30 | 3170 | 9 | 19 |
+| 77 | > Document Version: 2026063 |   |   |   |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 50 | 3156 | 15 | 36 |
 |---|---|---|---|---|
-|  | 1 | 441 | 2 | 6 |
-|  | 5 | 2222 | 2 | 6 |
-
-AnalyticDB for PostgreSQL User G
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -5833,6 +6100,17 @@ external_storage: 0, pq_enable: 0
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 1200`
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 3141 | 1 | 423 | 2 | 2 |
+|   | 5 | 1240 | 3 | 4 |
+|   | 10 | 2453 | 4 | 4 |
+|   | 15 | 3144 | 4 | 6 |
+|   | 20 | 3322 | 6 | 11 |
+|   | 25 | 3332 | 7 | 15 |
+|   | 30 | 3350 | 8 | 19 |
+|   | 50 | 3347 | 14 | 35 |
 
 **Dataset: SIFT L2 (128 × 100,000,000)**
 
@@ -5846,26 +6124,20 @@ external_storage: 1, pq_enable: 1, pq_segments: 16
 
 Search parameters: `ef_search: 400, max_scan_points: 2100, pq_amp: 10` The following table describes the test results.
 
-| nalyticDB for Postgr ide·Vector analysis | eSQL User G |  |  |  |
-|---|---|---|---|---|
-| 8805 |  |  |  |  |
-|  | 10 | 3528 | 2 | 7 |
-|  | 15 | 4679 | 3 | 8 |
-|  | 20 | 5358 | 3 | 9 |
-|  | 25 | 5426 | 4 | 10 |
-|  | 30 | 5527 | 5 | 15 |
-|  | 50 | 5904 | 8 | 30 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 14763 | 1 | 282 | 3 | 4 |
-|  | 5 | 1180 | 4 | 5 |
-|  | 10 | 1769 | 5 | 7 |
-|  | 15 | 2298 | 6 | 8 |
-|  | 20 | 2438 | 8 | 14 |
-|  | 25 | 2510 | 9 | 18 |
-|  | 30 | 2472 | 12 | 22 |
-|  | 50 | 2467 | 20 | 42 |
+|   | 1 | 441 | 2 | 6 |
+|   | 5 | 2222 | 2 | 6 |
+
+| nalyticDB for Postgr ide·Vector analysis | eSQL User G |   |   |   |
+|---|---|---|---|---|
+| 8805 |   |   |   |   |
+|   | 10 | 3528 | 2 | 7 |
+|   | 15 | 4679 | 3 | 8 |
+|   | 20 | 5358 | 3 | 9 |
+|   | 25 | 5426 | 4 | 10 |
+|   | 30 | 5527 | 5 | 15 |
+|   | 50 | 5904 | 8 | 30 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -5877,34 +6149,39 @@ external_storage: 0, pq_enable: 1, pq_segments: 16
 
 Search parameters: `ef_search: 400, max_scan_points: 2100, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 14763 | 1 | 282 | 3 | 4 |
+|   | 5 | 1180 | 4 | 5 |
+|   | 10 | 1769 | 5 | 7 |
+|   | 15 | 2298 | 6 | 8 |
+|   | 20 | 2438 | 8 | 14 |
+|   | 25 | 2510 | 9 | 18 |
+|   | 30 | 2472 | 12 | 22 |
+|   | 50 | 2467 | 20 | 42 |
+
 **Dataset: GloVe cosine (200 × 1,180,000)**
 
 **Index creation mode: PQ + mmap**
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 378 | 1 | 174 | 5 | 8 |
-|  | 5 | 905 | 5 | 7 |
-|  | 10 | 1431 | 6 | 9 |
-|  | 15 | 1891 | 7 | 9 |
-|  | 20 | 1921 | 10 | 21 |
-|  | 25 | 1880 | 13 | 26 |
-|  | 30 | 1862 | 15 | 32 |
-|  | 50 | 1998 | 24 | 50 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-|  | 1 | 83 | 11 | 14 |
-|  | 5 | 351 | 14 | 20 |
-|  | 10 | 495 | 20 | 25 |
-
-AnalyticDB for PostgreSQL User G Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 16,`
+Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 16,`
 
 ```
 external_storage: 1, pq_enable: 1, pq_segments: 25
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 378 | 1 | 174 | 5 | 8 |
+|   | 5 | 905 | 5 | 7 |
+|   | 10 | 1431 | 6 | 9 |
+|   | 15 | 1891 | 7 | 9 |
+|   | 20 | 1921 | 10 | 21 |
+|   | 25 | 1880 | 13 | 26 |
+|   | 30 | 1862 | 15 | 32 |
+|   | 50 | 1998 | 24 | 50 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -5916,26 +6193,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
 
-| 715 |  |  |  |  |
-|---|---|---|---|---|
-|  | 15 | 635 | 23 | 29 |
-|  | 20 | 628 | 31 | 50 |
-|  | 25 | 613 | 40 | 67 |
-|  | 30 | 605 | 49 | 83 |
-|  | 50 | 576 | 86 | 151 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 891 | 1 | 52 | 18 | 24 |
-|  | 5 | 233 | 21 | 30 |
-|  | 10 | 335 | 29 | 45 |
-|  | 15 | 430 | 34 | 48 |
-|  | 20 | 437 | 45 | 77 |
-|  | 25 | 426 | 58 | 101 |
-|  | 30 | 416 | 71 | 124 |
-|  | 50 | 405 | 123 | 215 |
+|   | 1 | 83 | 11 | 14 |
+|   | 5 | 351 | 14 | 20 |
+|   | 10 | 495 | 20 | 25 |
 
-AnalyticDB for PostgreSQL User G
+| 715 |   |   |   |   |
+|---|---|---|---|---|
+|   | 15 | 635 | 23 | 29 |
+|   | 20 | 628 | 31 | 50 |
+|   | 25 | 613 | 40 | 67 |
+|   | 30 | 605 | 49 | 83 |
+|   | 50 | 576 | 86 | 151 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -5947,35 +6217,39 @@ external_storage: 0, pq_enable: 0, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 891 | 1 | 52 | 18 | 24 |
+|   | 5 | 233 | 21 | 30 |
+|   | 10 | 335 | 29 | 45 |
+|   | 15 | 430 | 34 | 48 |
+|   | 20 | 437 | 45 | 77 |
+|   | 25 | 426 | 58 | 101 |
+|   | 30 | 416 | 71 | 124 |
+|   | 50 | 405 | 123 | 215 |
+
 **Dataset: Cohere L2 (768 × 1,000,000)**
 
 **Index creation mode: PQ + mmap**
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 285 | 1 | 317 | 2 | 3 |
-|  | 5 | 1450 | 2 | 4 |
-|  | 10 | 2177 | 4 | 5 |
-|  | 15 | 2812 | 4 | 6 |
-|  | 20 | 3275 | 5 | 9 |
-|  | 25 | 3485 | 6 | 14 |
-|  | 30 | 3657 | 7 | 18 |
-|  | 50 | 3619 | 13 | 35 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-|  | 1 | 223 | 4 | 4 |
-|  | 5 | 996 | 4 | 6 |
-|  | 10 | 1548 | 6 | 7 |
-|  | 15 | 2006 | 7 | 8 |
-
-AnalyticDB for PostgreSQL User G Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 16,`
+Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 16,`
 
 ```
 external_storage: 1, pq_enable: 1, pq_segments: 96
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 285 | 1 | 317 | 2 | 3 |
+|   | 5 | 1450 | 2 | 4 |
+|   | 10 | 2177 | 4 | 5 |
+|   | 15 | 2812 | 4 | 6 |
+|   | 20 | 3275 | 5 | 9 |
+|   | 25 | 3485 | 6 | 14 |
+|   | 30 | 3657 | 7 | 18 |
+|   | 50 | 3619 | 13 | 35 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -5987,25 +6261,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 96
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
 
-| 518 |  |  |  |  |
-|---|---|---|---|---|
-|  | 20 | 2141 | 8 | 15 |
-|  | 25 | 2081 | 11 | 22 |
-|  | 30 | 2160 | 13 | 27 |
-|  | 50 | 2039 | 24 | 51 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 701 | 1 | 357 | 2 | 3 |
-|  | 5 | 641 | 7 | 9 |
-|  | 10 | 1019 | 9 | 10 |
-|  | 15 | 1330 | 10 | 13 |
-|  | 20 | 1431 | 13 | 20 |
-|  | 25 | 1437 | 16 | 26 |
-|  | 30 | 1449 | 20 | 33 |
-|  | 50 | 1445 | 34 | 66 |
+|   | 1 | 223 | 4 | 4 |
+|   | 5 | 996 | 4 | 6 |
+|   | 10 | 1548 | 6 | 7 |
+|   | 15 | 2006 | 7 | 8 |
 
-AnalyticDB for PostgreSQL User G
+| 518 |   |   |   |   |
+|---|---|---|---|---|
+|   | 20 | 2141 | 8 | 15 |
+|   | 25 | 2081 | 11 | 22 |
+|   | 30 | 2160 | 13 | 27 |
+|   | 50 | 2039 | 24 | 51 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6016,6 +6284,17 @@ external_storage: 0, pq_enable: 0, pq_segments: 96
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 701 | 1 | 357 | 2 | 3 |
+|   | 5 | 641 | 7 | 9 |
+|   | 10 | 1019 | 9 | 10 |
+|   | 15 | 1330 | 10 | 13 |
+|   | 20 | 1431 | 13 | 20 |
+|   | 25 | 1437 | 16 | 26 |
+|   | 30 | 1449 | 20 | 33 |
+|   | 50 | 1445 | 34 | 66 |
 
 **Dataset: Dbpedia cosine (1,536 × 1,000,000)**
 
@@ -6032,25 +6311,13 @@ Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The follow
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 1120 | 1 | 122 | 7 | 8 |
-|  | 5 | 548 | 8 | 14 |
-|  | 10 | 727 | 12 | 16 |
-|  | 15 | 940 | 15 | 16 |
-|  | 20 | 1011 | 18 | 30 |
-|  | 25 | 1022 | 23 | 38 |
-|  | 30 | 1019 | 28 | 50 |
-|  | 50 | 1022 | 47 | 93 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 1642 | 1 | 110 | 8 | 9 |
-|  | 5 | 512 | 9 | 16 |
-|  | 10 | 666 | 14 | 18 |
-|  | 15 | 830 | 17 | 18 |
-|  | 20 | 911 | 21 | 32 |
-|  | 25 | 919 | 26 | 41 |
-| > Document Version | : 20260630 18 |  |  |  |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 548 | 8 | 14 |
+|   | 10 | 727 | 12 | 16 |
+|   | 15 | 940 | 15 | 16 |
+|   | 20 | 1011 | 18 | 30 |
+|   | 25 | 1022 | 23 | 38 |
+|   | 30 | 1019 | 28 | 50 |
+|   | 50 | 1022 | 47 | 93 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6062,22 +6329,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 192
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
 
-|  | 30 | 922 | 31 | 52 |
-|---|---|---|---|---|
-|  | 50 | 915 | 53 | 97 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 1130 | 1 | 308 | 2 | 6 |
-|  | 5 | 575 | 7 | 9 |
-|  | 10 | 939 | 10 | 11 |
-|  | 15 | 1197 | 11 | 13 |
-|  | 20 | 1295 | 14 | 22 |
-|  | 25 | 1323 | 17 | 28 |
-|  | 30 | 1328 | 21 | 36 |
-|  | 50 | 1315 | 37 | 68 |
+| 1642 | 1 | 110 | 8 | 9 |
+|   | 5 | 512 | 9 | 16 |
+|   | 10 | 666 | 14 | 18 |
+|   | 15 | 830 | 17 | 18 |
+|   | 20 | 911 | 21 | 32 |
+|   | 25 | 919 | 26 | 41 |
+| > Document Version | : 20260630 18 |   |   |   |
 
-AnalyticDB for PostgreSQL User G
+|   | 30 | 922 | 31 | 52 |
+|---|---|---|---|---|
+|   | 50 | 915 | 53 | 97 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6088,6 +6352,17 @@ external_storage: 0, pq_enable: 0, pq_segments: 192
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 1130 | 1 | 308 | 2 | 6 |
+|   | 5 | 575 | 7 | 9 |
+|   | 10 | 939 | 10 | 11 |
+|   | 15 | 1197 | 11 | 13 |
+|   | 20 | 1295 | 14 | 22 |
+|   | 25 | 1323 | 17 | 28 |
+|   | 30 | 1328 | 21 | 36 |
+|   | 50 | 1315 | 37 | 68 |
 
 **Instance specifications: 8 cores and 32 GB memory × 4**
 
@@ -6108,25 +6383,13 @@ Search parameters: `ef_search: 400, max_scan_points: 2000, pq_amp: 10` The follo
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 681 | 1 | 252 | 3 | 5 |
-|  | 5 | 868 | 5 | 7 |
-|  | 10 | 1312 | 7 | 11 |
-|  | 15 | 1305 | 11 | 22 |
-|  | 20 | 1343 | 14 | 30 |
-|  | 25 | 1323 | 18 | 37 |
-|  | 30 | 1352 | 21 | 47 |
-|  | 50 | 1305 | 37 | 70 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 1349 | 1 | 123 | 7 | 10 |
-|  | 5 | 423 | 11 | 13 |
-|  | 10 | 582 | 16 | 27 |
-|  | 15 | 611 | 24 | 44 |
-|  | 20 | 603 | 32 | 59 |
-|  | 25 | 605 | 40 | 76 |
-| > Document Version | : 20260630 18 |  |  |  |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 868 | 5 | 7 |
+|   | 10 | 1312 | 7 | 11 |
+|   | 15 | 1305 | 11 | 22 |
+|   | 20 | 1343 | 14 | 30 |
+|   | 25 | 1323 | 18 | 37 |
+|   | 30 | 1352 | 21 | 47 |
+|   | 50 | 1305 | 37 | 70 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6138,25 +6401,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 120
 
 Search parameters: `ef_search: 400, max_scan_points: 2000, pq_amp: 10` The following table describes the test results.
 
-|  | 30 | 596 | 49 | 99 |
-|---|---|---|---|---|
-|  | 50 | 594 | 83 | 151 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 2158 | 1 | 92 | 10 | 11 |
-|  | 5 | 365 | 13 | 15 |
-|  | 10 | 532 | 18 | 28 |
-|  | 15 | 546 | 26 | 44 |
-|  | 20 | 558 | 35 | 63 |
-|  | 25 | 554 | 44 | 78 |
-|  | 30 | 556 | 53 | 94 |
-|  | 50 | 543 | 91 | 170 |
+| 1349 | 1 | 123 | 7 | 10 |
+|   | 5 | 423 | 11 | 13 |
+|   | 10 | 582 | 16 | 27 |
+|   | 15 | 611 | 24 | 44 |
+|   | 20 | 603 | 32 | 59 |
+|   | 25 | 605 | 40 | 76 |
+| > Document Version | : 20260630 18 |   |   |   |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 30 | 596 | 49 | 99 |
 |---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
+|   | 50 | 594 | 83 | 151 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6167,6 +6424,17 @@ external_storage: 0, pq_enable: 0
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 2000` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 2158 | 1 | 92 | 10 | 11 |
+|   | 5 | 365 | 13 | 15 |
+|   | 10 | 532 | 18 | 28 |
+|   | 15 | 546 | 26 | 44 |
+|   | 20 | 558 | 35 | 63 |
+|   | 25 | 554 | 44 | 78 |
+|   | 30 | 556 | 53 | 94 |
+|   | 50 | 543 | 91 | 170 |
 
 **Dataset: Deep1B cosine (96 × 10,000,000)**
 
@@ -6180,28 +6448,18 @@ external_storage: 1, pq_enable: 1, pq_segments: 12
 
 Search parameters: `ef_search: 400, max_scan_points: 1200, pq_amp: 10` The following table describes the test results.
 
-| 2781 | 1 | 559 | 1 | 2 |
-|---|---|---|---|---|
-|  | 5 | 2340 | 2 | 3 |
-|  | 10 | 3973 | 2 | 4 |
-|  | 15 | 4087 | 3 | 8 |
-|  | 20 | 3705 | 5 | 18 |
-|  | 25 | 3966 | 6 | 18 |
-|  | 30 | 4083 | 7 | 20 |
-|  | 50 | 4163 | 11 | 39 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 5658 | 1 | 333 | 2 | 3 |
-|  | 5 | 1196 | 4 | 5 |
-|  | 10 | 1685 | 5 | 11 |
-|  | 15 | 1740 | 8 | 18 |
-|  | 20 | 1745 | 11 | 25 |
-|  | 25 | 1754 | 14 | 30 |
-|  | 30 | 1755 | 17 | 38 |
-| > Document Version | : 20260630 18 |  |  |  |
 
-AnalyticDB for PostgreSQL User G
+| 2781 | 1 | 559 | 1 | 2 |
+|---|---|---|---|---|
+|   | 5 | 2340 | 2 | 3 |
+|   | 10 | 3973 | 2 | 4 |
+|   | 15 | 4087 | 3 | 8 |
+|   | 20 | 3705 | 5 | 18 |
+|   | 25 | 3966 | 6 | 18 |
+|   | 30 | 4083 | 7 | 20 |
+|   | 50 | 4163 | 11 | 39 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6213,25 +6471,19 @@ external_storage: 0, pq_enable: 1, pq_segments: 12
 
 Search parameters: `ef_search: 400, max_scan_points: 1200, pq_amp: 10` The following table describes the test results.
 
-|  | 50 | 1733 | 28 | 64 |
-|---|---|---|---|---|
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 6456 | 1 | 354 | 2 | 3 |
-|  | 5 | 1292 | 3 | 4 |
-|  | 10 | 1758 | 5 | 11 |
-|  | 15 | 1779 | 8 | 18 |
-|  | 20 | 1767 | 11 | 26 |
-|  | 25 | 1778 | 13 | 33 |
-|  | 30 | 1768 | 16 | 40 |
-|  | 50 | 1770 | 28 | 64 |
+| 5658 | 1 | 333 | 2 | 3 |
+|   | 5 | 1196 | 4 | 5 |
+|   | 10 | 1685 | 5 | 11 |
+|   | 15 | 1740 | 8 | 18 |
+|   | 20 | 1745 | 11 | 25 |
+|   | 25 | 1754 | 14 | 30 |
+|   | 30 | 1755 | 17 | 38 |
+| > Document Version | : 20260630 18 |   |   |   |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 50 | 1733 | 28 | 64 |
 |---|---|---|---|---|
-|  | 1 | 523 | 1 | 2 |
-
-AnalyticDB for PostgreSQL User G
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6242,6 +6494,17 @@ external_storage: 0, pq_enable: 0
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 1200` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 6456 | 1 | 354 | 2 | 3 |
+|   | 5 | 1292 | 3 | 4 |
+|   | 10 | 1758 | 5 | 11 |
+|   | 15 | 1779 | 8 | 18 |
+|   | 20 | 1767 | 11 | 26 |
+|   | 25 | 1778 | 13 | 33 |
+|   | 30 | 1768 | 16 | 40 |
+|   | 50 | 1770 | 28 | 64 |
 
 **Dataset: SIFT L2 (128 × 10,000,000)**
 
@@ -6255,27 +6518,20 @@ external_storage: 1, pq_enable: 1, pq_segments: 16
 
 Search parameters: `ef_search: 400, max_scan_points: 1000, pq_amp: 10` The following table describes the test results.
 
-|  | AnalyticDB for PostgreSQL User uide·Vector analysi |  |  |  |
-|---|---|---|---|---|
-| 1613 |  |  |  |  |
-|  | 5 | 2568 | 1 | 3 |
-|  | 10 | 4500 | 2 | 4 |
-|  | 15 | 5174 | 2 | 6 |
-|  | 20 | 5045 | 3 | 11 |
-|  | 25 | 4846 | 5 | 16 |
-|  | 30 | 4873 | 6 | 23 |
-|  | 50 | 4445 | 11 | 32 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 4023 | 1 | 345 | 2 | 3 |
-|  | 5 | 1169 | 4 | 5 |
-|  | 10 | 1601 | 6 | 12 |
-|  | 15 | 1632 | 9 | 21 |
-|  | 20 | 1630 | 12 | 27 |
-|  | 25 | 1604 | 15 | 33 |
-|  | 30 | 1579 | 18 | 45 |
-|  | 50 | 1536 | 32 | 53 |
+|   | 1 | 523 | 1 | 2 |
+
+|   | AnalyticDB for PostgreSQL User uide·Vector analysi |   |   |   |
+|---|---|---|---|---|
+| 1613 |   |   |   |   |
+|   | 5 | 2568 | 1 | 3 |
+|   | 10 | 4500 | 2 | 4 |
+|   | 15 | 5174 | 2 | 6 |
+|   | 20 | 5045 | 3 | 11 |
+|   | 25 | 4846 | 5 | 16 |
+|   | 30 | 4873 | 6 | 23 |
+|   | 50 | 4445 | 11 | 32 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6289,21 +6545,14 @@ Search parameters: `ef_search: 400, max_scan_points: 1000, pq_amp: 10` The follo
 
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 5164 | 1 | 371 | 2 | 3 |
-|  | 5 | 1238 | 3 | 5 |
-|  | 10 | 1605 | 6 | 12 |
-|  | 15 | 1615 | 9 | 20 |
-|  | 20 | 1531 | 12 | 31 |
-|  | 25 | 1585 | 15 | 36 |
-|  | 30 | 1531 | 19 | 45 |
-|  | 50 | 1517 | 32 | 71 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-|  | 1 | 150 | 6 | 7 |
-|  | 5 | 638 | 7 | 9 |
-
-AnalyticDB for PostgreSQL User G
+| 4023 | 1 | 345 | 2 | 3 |
+|   | 5 | 1169 | 4 | 5 |
+|   | 10 | 1601 | 6 | 12 |
+|   | 15 | 1632 | 9 | 21 |
+|   | 20 | 1630 | 12 | 27 |
+|   | 25 | 1604 | 15 | 33 |
+|   | 30 | 1579 | 18 | 45 |
+|   | 50 | 1536 | 32 | 53 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6314,6 +6563,17 @@ external_storage: 0, pq_enable: 0
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 1000, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 5164 | 1 | 371 | 2 | 3 |
+|   | 5 | 1238 | 3 | 5 |
+|   | 10 | 1605 | 6 | 12 |
+|   | 15 | 1615 | 9 | 20 |
+|   | 20 | 1531 | 12 | 31 |
+|   | 25 | 1585 | 15 | 36 |
+|   | 30 | 1531 | 19 | 45 |
+|   | 50 | 1517 | 32 | 71 |
 
 **Dataset: GloVe cosine (200 × 1,180,000)**
 
@@ -6327,25 +6587,19 @@ external_storage: 1, pq_enable: 1, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
 
-| 884 |  |  |  |  |
-|---|---|---|---|---|
-|  | 10 | 894 | 11 | 20 |
-|  | 15 | 898 | 16 | 31 |
-|  | 20 | 890 | 22 | 45 |
-|  | 25 | 894 | 27 | 54 |
-|  | 30 | 877 | 34 | 66 |
-|  | 50 | 874 | 57 | 110 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 1537 | 1 | 75 | 13 | 16 |
-|  | 5 | 250 | 19 | 25 |
-|  | 10 | 321 | 30 | 51 |
-|  | 15 | 310 | 48 | 83 |
-|  | 20 | 301 | 66 | 115 |
-|  | 25 | 289 | 86 | 153 |
-|  | 30 | 274 | 109 | 192 |
-|  | 50 | 252 | 197 | 346 |
+|   | 1 | 150 | 6 | 7 |
+|   | 5 | 638 | 7 | 9 |
+
+| 884 |   |   |   |   |
+|---|---|---|---|---|
+|   | 10 | 894 | 11 | 20 |
+|   | 15 | 898 | 16 | 31 |
+|   | 20 | 890 | 22 | 45 |
+|   | 25 | 894 | 27 | 54 |
+|   | 30 | 877 | 34 | 66 |
+|   | 50 | 874 | 57 | 110 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6357,32 +6611,37 @@ external_storage: 0, pq_enable: 1, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 1537 | 1 | 75 | 13 | 16 |
+|   | 5 | 250 | 19 | 25 |
+|   | 10 | 321 | 30 | 51 |
+|   | 15 | 310 | 48 | 83 |
+|   | 20 | 301 | 66 | 115 |
+|   | 25 | 289 | 86 | 153 |
+|   | 30 | 274 | 109 | 192 |
+|   | 50 | 252 | 197 | 346 |
+
 **Index creation mode: noPQ + shared_buffer**
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 1804 | 1 | 41 | 23 | 34 |
-|  | 5 | 164 | 30 | 47 |
-|  | 10 | 216 | 46 | 82 |
-|  | 15 | 211 | 70 | 123 |
-|  | 20 | 209 | 95 | 168 |
-|  | 25 | 209 | 119 | 207 |
-|  | 30 | 207 | 144 | 254 |
-|  | 50 | 200 | 248 | 434 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-|  | 1 | 323 | 2 | 3 |
-|  | 5 | 1153 | 3 | 5 |
-|  | 10 | 1767 | 5 | 9 |
-
-AnalyticDB for PostgreSQL User G Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 8,`
+Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 8,`
 
 ```
 external_storage: 0, pq_enable: 0, pq_segments: 25
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 1804 | 1 | 41 | 23 | 34 |
+|   | 5 | 164 | 30 | 47 |
+|   | 10 | 216 | 46 | 82 |
+|   | 15 | 211 | 70 | 123 |
+|   | 20 | 209 | 95 | 168 |
+|   | 25 | 209 | 119 | 207 |
+|   | 30 | 207 | 144 | 254 |
+|   | 50 | 200 | 248 | 434 |
 
 **Dataset: Cohere L2 (768 × 1,000,000)**
 
@@ -6396,27 +6655,19 @@ external_storage: 1, pq_enable: 1, pq_segments: 96
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
 
-| 688 |  |  |  |  |
-|---|---|---|---|---|
-|  | 15 | 1801 | 7 | 16 |
-|  | 20 | 1921 | 9 | 22 |
-|  | 25 | 1886 | 12 | 33 |
-|  | 30 | 1820 | 16 | 38 |
-|  | 50 | 1900 | 25 | 72 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 1224 | 1 | 198 | 5 | 7 |
-|  | 5 | 561 | 8 | 10 |
-|  | 10 | 838 | 11 | 19 |
-|  | 15 | 819 | 17 | 33 |
-|  | 20 | 835 | 23 | 42 |
-|  | 25 | 839 | 29 | 52 |
-|  | 30 | 835 | 35 | 68 |
-|  | 50 | 834 | 59 | 107 |
+|   | 1 | 323 | 2 | 3 |
+|   | 5 | 1153 | 3 | 5 |
+|   | 10 | 1767 | 5 | 9 |
 
-| M: 64, efConstruction: 600, parallel build: 8, external storage: 0, pq enable: 0, _ _ _ |  |
-|---|---|
+| 688 |   |   |   |   |
+|---|---|---|---|---|
+|   | 15 | 1801 | 7 | 16 |
+|   | 20 | 1921 | 9 | 22 |
+|   | 25 | 1886 | 12 | 33 |
+|   | 30 | 1820 | 16 | 38 |
+|   | 50 | 1900 | 25 | 72 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6428,29 +6679,36 @@ external_storage: 0, pq_enable: 1, pq_segments: 96
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 1224 | 1 | 198 | 5 | 7 |
+|   | 5 | 561 | 8 | 10 |
+|   | 10 | 838 | 11 | 19 |
+|   | 15 | 819 | 17 | 33 |
+|   | 20 | 835 | 23 | 42 |
+|   | 25 | 839 | 29 | 52 |
+|   | 30 | 835 | 35 | 68 |
+|   | 50 | 834 | 59 | 107 |
+
 **Index creation mode: noPQ + shared_buffer**
 
 Index creation parameters:
 
+| M: 64, efConstruction: 600, parallel build: 8, external storage: 0, pq enable: 0, _ _ _ |   |
+|---|---|
+
+Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
+
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 1411 | 1 | 130 | 7 | 8 |
-|  | 5 | 532 | 8 | 10 |
-|  | 10 | 777 | 12 | 20 |
-|  | 15 | 795 | 18 | 32 |
-|  | 20 | 798 | 24 | 46 |
-|  | 25 | 810 | 30 | 57 |
-|  | 30 | 812 | 36 | 67 |
-|  | 50 | 815 | 61 | 108 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 2214 | 1 | 125 | 7 | 9 |
-|  | 5 | 374 | 12 | 15 |
-|  | 10 | 506 | 18 | 30 |
-|  | 15 | 504 | 28 | 51 |
-
-AnalyticDB for PostgreSQL User G Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
+|   | 5 | 532 | 8 | 10 |
+|   | 10 | 777 | 12 | 20 |
+|   | 15 | 795 | 18 | 32 |
+|   | 20 | 798 | 24 | 46 |
+|   | 25 | 810 | 30 | 57 |
+|   | 30 | 812 | 36 | 67 |
+|   | 50 | 815 | 61 | 108 |
 
 **Dataset: Dbpedia cosine (1,536 × 1,000,000)**
 
@@ -6464,24 +6722,18 @@ external_storage: 1, pq_enable: 1, pq_segments: 192
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
 
-|  | 20 | 509 | 38 | 69 |
-|---|---|---|---|---|
-|  | 25 | 500 | 49 | 90 |
-|  | 30 | 507 | 58 | 104 |
-|  | 50 | 509 | 97 | 169 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 7651 | 1 | 87 | 10 | 12 |
-|  | 5 | 314 | 14 | 18 |
-|  | 10 | 443 | 21 | 33 |
-|  | 15 | 448 | 32 | 53 |
-|  | 20 | 445 | 44 | 76 |
-|  | 25 | 444 | 55 | 99 |
-|  | 30 | 447 | 66 | 119 |
-|  | 50 | 450 | 110 | 192 |
+| 2214 | 1 | 125 | 7 | 9 |
+|   | 5 | 374 | 12 | 15 |
+|   | 10 | 506 | 18 | 30 |
+|   | 15 | 504 | 28 | 51 |
 
-AnalyticDB for PostgreSQL User G
+|   | 20 | 509 | 38 | 69 |
+|---|---|---|---|---|
+|   | 25 | 500 | 49 | 90 |
+|   | 30 | 507 | 58 | 104 |
+|   | 50 | 509 | 97 | 169 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6492,6 +6744,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 192
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 7651 | 1 | 87 | 10 | 12 |
+|   | 5 | 314 | 14 | 18 |
+|   | 10 | 443 | 21 | 33 |
+|   | 15 | 448 | 32 | 53 |
+|   | 20 | 445 | 44 | 76 |
+|   | 25 | 444 | 55 | 99 |
+|   | 30 | 447 | 66 | 119 |
+|   | 50 | 450 | 110 | 192 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6506,22 +6769,13 @@ Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The follow
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 2206 | 1 | 128 | 7 | 8 |
-|  | 5 | 484 | 9 | 11 |
-|  | 10 | 729 | 12 | 19 |
-|  | 15 | 748 | 19 | 34 |
-|  | 20 | 782 | 24 | 44 |
-|  | 25 | 783 | 31 | 57 |
-|  | 30 | 794 | 37 | 65 |
-|  | 50 | 787 | 62 | 122 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 2014 | 1 | 237 | 3 | 5 |
-|  | 5 | 630 | 7 | 13 |
-|  | 10 | 645 | 15 | 27 |
-|  | 15 | 650 | 22 | 44 |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 484 | 9 | 11 |
+|   | 10 | 729 | 12 | 19 |
+|   | 15 | 748 | 19 | 34 |
+|   | 20 | 782 | 24 | 44 |
+|   | 25 | 783 | 31 | 57 |
+|   | 30 | 794 | 37 | 65 |
+|   | 50 | 787 | 62 | 122 |
 
 **Instance specifications: 4 cores and 16 GB memory × 4**
 
@@ -6539,24 +6793,18 @@ external_storage: 0, pq_enable: 1, pq_segments: 120
 
 Search parameters: `ef_search: 400, max_scan_points: 2000, pq_amp: 10` The following table describes the test results.
 
-|  | 20 | 642 | 30 | 57 |
-|---|---|---|---|---|
-|  | 25 | 634 | 39 | 70 |
-|  | 30 | 622 | 47 | 98 |
-|  | 50 | 621 | 79 | 147 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 2934 | 1 | 119 | 7 | 11 |
-|  | 5 | 275 | 17 | 29 |
-|  | 10 | 292 | 33 | 60 |
-|  | 15 | 282 | 52 | 93 |
-|  | 20 | 286 | 69 | 121 |
-|  | 25 | 284 | 87 | 154 |
-|  | 30 | 280 | 106 | 188 |
-|  | 50 | 276 | 180 | 328 |
+| 2014 | 1 | 237 | 3 | 5 |
+|   | 5 | 630 | 7 | 13 |
+|   | 10 | 645 | 15 | 27 |
+|   | 15 | 650 | 22 | 44 |
 
-AnalyticDB for PostgreSQL User G
+|   | 20 | 642 | 30 | 57 |
+|---|---|---|---|---|
+|   | 25 | 634 | 39 | 70 |
+|   | 30 | 622 | 47 | 98 |
+|   | 50 | 621 | 79 | 147 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6567,6 +6815,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 120
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 2000, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 2934 | 1 | 119 | 7 | 11 |
+|   | 5 | 275 | 17 | 29 |
+|   | 10 | 292 | 33 | 60 |
+|   | 15 | 282 | 52 | 93 |
+|   | 20 | 286 | 69 | 121 |
+|   | 25 | 284 | 87 | 154 |
+|   | 30 | 280 | 106 | 188 |
+|   | 50 | 276 | 180 | 328 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6581,23 +6840,13 @@ Search parameters: `ef_search: 400, max_scan_points: 2000` The following table d
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 4468 | 1 | 87 | 11 | 13 |
-|  | 5 | 244 | 20 | 32 |
-|  | 10 | 263 | 37 | 64 |
-|  | 15 | 261 | 57 | 100 |
-|  | 20 | 269 | 73 | 130 |
-|  | 25 | 268 | 92 | 163 |
-|  | 30 | 267 | 111 | 196 |
-|  | 50 | 266 | 188 | 327 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 6696 | 1 | 520 | 1 | 2 |
-|  | 5 | 1679 | 2 | 5 |
-|  | 10 | 1832 | 5 | 12 |
-|  | 15 | 1908 | 7 | 18 |
-|  | 20 | 1899 | 10 | 28 |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 244 | 20 | 32 |
+|   | 10 | 263 | 37 | 64 |
+|   | 15 | 261 | 57 | 100 |
+|   | 20 | 269 | 73 | 130 |
+|   | 25 | 268 | 92 | 163 |
+|   | 30 | 267 | 111 | 196 |
+|   | 50 | 266 | 188 | 327 |
 
 **Dataset: Deep1B cosine (96 × 10,000,000)**
 
@@ -6611,23 +6860,18 @@ external_storage: 1, pq_enable: 1, pq_segments: 12
 
 Search parameters: `ef_search: 400, max_scan_points: 1200, pq_amp: 10` The following table describes the test results.
 
-|  | 25 | 1920 | 12 | 33 |
-|---|---|---|---|---|
-|  | 30 | 1910 | 15 | 39 |
-|  | 50 | 1904 | 26 | 66 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 11677 | 1 | 302 | 3 | 4 |
-|  | 5 | 814 | 6 | 11 |
-|  | 10 | 858 | 11 | 23 |
-|  | 15 | 870 | 17 | 34 |
-|  | 20 | 870 | 22 | 48 |
-|  | 25 | 864 | 28 | 57 |
-|  | 30 | 866 | 34 | 70 |
-|  | 50 | 848 | 58 | 119 |
+| 6696 | 1 | 520 | 1 | 2 |
+|   | 5 | 1679 | 2 | 5 |
+|   | 10 | 1832 | 5 | 12 |
+|   | 15 | 1908 | 7 | 18 |
+|   | 20 | 1899 | 10 | 28 |
 
-AnalyticDB for PostgreSQL User G
+|   | 25 | 1920 | 12 | 33 |
+|---|---|---|---|---|
+|   | 30 | 1910 | 15 | 39 |
+|   | 50 | 1904 | 26 | 66 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6638,6 +6882,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 12
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 1200, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 11677 | 1 | 302 | 3 | 4 |
+|   | 5 | 814 | 6 | 11 |
+|   | 10 | 858 | 11 | 23 |
+|   | 15 | 870 | 17 | 34 |
+|   | 20 | 870 | 22 | 48 |
+|   | 25 | 864 | 28 | 57 |
+|   | 30 | 866 | 34 | 70 |
+|   | 50 | 848 | 58 | 119 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6652,23 +6907,13 @@ Search parameters: `ef_search: 400, max_scan_points: 1200` The following table d
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 14657 | 1 | 301 | 3 | 4 |
-|  | 5 | 821 | 6 | 11 |
-|  | 10 | 885 | 11 | 22 |
-|  | 15 | 890 | 16 | 34 |
-|  | 20 | 898 | 22 | 45 |
-|  | 25 | 896 | 27 | 56 |
-|  | 30 | 891 | 33 | 67 |
-|  | 50 | 885 | 56 | 112 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 3004 | 1 | 577 | 1 | 2 |
-|  | 5 | 1846 | 2 | 5 |
-|  | 10 | 2085 | 4 | 12 |
-|  | 15 | 2523 | 5 | 14 |
-|  | 20 | 2599 | 7 | 18 |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 821 | 6 | 11 |
+|   | 10 | 885 | 11 | 22 |
+|   | 15 | 890 | 16 | 34 |
+|   | 20 | 898 | 22 | 45 |
+|   | 25 | 896 | 27 | 56 |
+|   | 30 | 891 | 33 | 67 |
+|   | 50 | 885 | 56 | 112 |
 
 **Dataset: SIFT L2 (128 × 10,000,000)**
 
@@ -6682,23 +6927,18 @@ external_storage: 1, pq_enable: 1, pq_segments: 16
 
 Search parameters: `ef_search: 400, max_scan_points: 1000, pq_amp: 10` The following table describes the test results.
 
-|  | 25 | 2573 | 9 | 24 |
-|---|---|---|---|---|
-|  | 30 | 2349 | 12 | 35 |
-|  | 50 | 2437 | 20 | 53 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 6409 | 1 | 356 | 2 | 3 |
-|  | 5 | 966 | 5 | 10 |
-|  | 10 | 1025 | 9 | 19 |
-|  | 15 | 974 | 15 | 32 |
-|  | 20 | 1041 | 19 | 39 |
-|  | 25 | 1032 | 24 | 49 |
-|  | 30 | 981 | 30 | 69 |
-|  | 50 | 987 | 50 | 104 |
+| 3004 | 1 | 577 | 1 | 2 |
+|   | 5 | 1846 | 2 | 5 |
+|   | 10 | 2085 | 4 | 12 |
+|   | 15 | 2523 | 5 | 14 |
+|   | 20 | 2599 | 7 | 18 |
 
-AnalyticDB for PostgreSQL User G
+|   | 25 | 2573 | 9 | 24 |
+|---|---|---|---|---|
+|   | 30 | 2349 | 12 | 35 |
+|   | 50 | 2437 | 20 | 53 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6709,6 +6949,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 16
 ```
 
 Search parameters: `ef_search: 400, max_scan_points: 1000, pq_amp: 10` The following table describes the test results.
+
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 6409 | 1 | 356 | 2 | 3 |
+|   | 5 | 966 | 5 | 10 |
+|   | 10 | 1025 | 9 | 19 |
+|   | 15 | 974 | 15 | 32 |
+|   | 20 | 1041 | 19 | 39 |
+|   | 25 | 1032 | 24 | 49 |
+|   | 30 | 981 | 30 | 69 |
+|   | 50 | 987 | 50 | 104 |
 
 **Index creation mode: noPQ + shared_buffer**
 
@@ -6723,23 +6974,13 @@ Search parameters: `ef_search: 400, max_scan_points: 1000, pq_amp: 10` The follo
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
 | 9058 | 1 | 365 | 2 | 4 |
-|  | 5 | 960 | 5 | 10 |
-|  | 10 | 938 | 10 | 21 |
-|  | 15 | 961 | 15 | 32 |
-|  | 20 | 1034 | 19 | 40 |
-|  | 25 | 1005 | 24 | 52 |
-|  | 30 | 1013 | 29 | 59 |
-|  | 50 | 986 | 52 | 101 |
-
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
-|---|---|---|---|---|
-| 1810 | 1 | 127 | 7 | 11 |
-|  | 5 | 340 | 14 | 26 |
-|  | 10 | 341 | 29 | 54 |
-|  | 15 | 343 | 43 | 83 |
-|  | 20 | 340 | 58 | 109 |
-
-AnalyticDB for PostgreSQL User G
+|   | 5 | 960 | 5 | 10 |
+|   | 10 | 938 | 10 | 21 |
+|   | 15 | 961 | 15 | 32 |
+|   | 20 | 1034 | 19 | 40 |
+|   | 25 | 1005 | 24 | 52 |
+|   | 30 | 1013 | 29 | 59 |
+|   | 50 | 986 | 52 | 101 |
 
 **Dataset: GloVe cosine (200 × 1,180,000)**
 
@@ -6753,26 +6994,18 @@ external_storage: 1, pq_enable: 1, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10`
 
-|  | 25 | 341 | 73 | 141 |
-|---|---|---|---|---|
-|  | 30 | 342 | 87 | 165 |
-|  | 50 | 343 | 145 | 265 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 3234 | 1 | 72 | 13 | 19 |
-|  | 5 | 167 | 29 | 52 |
-|  | 10 | 158 | 62 | 115 |
-|  | 15 | 172 | 82 | 167 |
-|  | 20 | 147 | 135 | 237 |
-|  | 25 | 143 | 174 | 306 |
-|  | 30 | 140 | 213 | 374 |
-|  | 50 | 128 | 390 | 663 |
+| 1810 | 1 | 127 | 7 | 11 |
+|   | 5 | 340 | 14 | 26 |
+|   | 10 | 341 | 29 | 54 |
+|   | 15 | 343 | 43 | 83 |
+|   | 20 | 340 | 58 | 109 |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 25 | 341 | 73 | 141 |
 |---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
+|   | 30 | 342 | 87 | 165 |
+|   | 50 | 343 | 145 | 265 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6784,6 +7017,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 3234 | 1 | 72 | 13 | 19 |
+|   | 5 | 167 | 29 | 52 |
+|   | 10 | 158 | 62 | 115 |
+|   | 15 | 172 | 82 | 167 |
+|   | 20 | 147 | 135 | 237 |
+|   | 25 | 143 | 174 | 306 |
+|   | 30 | 140 | 213 | 374 |
+|   | 50 | 128 | 390 | 663 |
+
 **Index creation mode: noPQ + shared_buffer**
 
 Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 4,`
@@ -6794,27 +7038,18 @@ external_storage: 0, pq_enable: 0, pq_segments: 25
 
 Search parameters: `ef_search: 400, max_scan_points: 30000, pq_amp: 10` The following table describes the test results.
 
-| 3571 | 1 | 40 | 24 | 35 |
-|---|---|---|---|---|
-|  | 5 | 104 | 47 | 87 |
-|  | 10 | 98 | 101 | 186 |
-|  | 15 | 95 | 156 | 279 |
-|  | 20 | 96 | 210 | 368 |
-|  | 25 | 96 | 260 | 458 |
-|  | 30 | 96 | 310 | 544 |
-|  | 50 | 96 | 542 | 933 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 1603 | 1 | 208 | 4 | 7 |
-|  | 5 | 504 | 9 | 17 |
-|  | 10 | 543 | 17 | 32 |
-|  | 15 | 543 | 27 | 50 |
-|  | 20 | 522 | 37 | 76 |
-|  | 25 | 540 | 45 | 83 |
-| 05 | > Document Version: 2026063 |  |  |  |
 
-AnalyticDB for PostgreSQL User G
+| 3571 | 1 | 40 | 24 | 35 |
+|---|---|---|---|---|
+|   | 5 | 104 | 47 | 87 |
+|   | 10 | 98 | 101 | 186 |
+|   | 15 | 95 | 156 | 279 |
+|   | 20 | 96 | 210 | 368 |
+|   | 25 | 96 | 260 | 458 |
+|   | 30 | 96 | 310 | 544 |
+|   | 50 | 96 | 542 | 933 |
 
 **Dataset: Cohere L2 (768 × 1,000,000)**
 
@@ -6828,25 +7063,19 @@ external_storage: 1, pq_enable: 1, pq_segments: 96
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
 
-|  | 30 | 542 | 54 | 97 |
-|---|---|---|---|---|
-|  | 50 | 535 | 92 | 166 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 3679 | 1 | 199 | 4 | 6 |
-|  | 5 | 501 | 9 | 18 |
-|  | 10 | 578 | 16 | 31 |
-|  | 15 | 555 | 26 | 52 |
-|  | 20 | 548 | 35 | 73 |
-|  | 25 | 555 | 44 | 85 |
-|  | 30 | 559 | 53 | 97 |
-|  | 50 | 555 | 89 | 163 |
+| 1603 | 1 | 208 | 4 | 7 |
+|   | 5 | 504 | 9 | 17 |
+|   | 10 | 543 | 17 | 32 |
+|   | 15 | 543 | 27 | 50 |
+|   | 20 | 522 | 37 | 76 |
+|   | 25 | 540 | 45 | 83 |
+| 05 | > Document Version: 2026063 |   |   |   |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 30 | 542 | 54 | 97 |
 |---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
+|   | 50 | 535 | 92 | 166 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6858,6 +7087,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 96
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 3679 | 1 | 199 | 4 | 6 |
+|   | 5 | 501 | 9 | 18 |
+|   | 10 | 578 | 16 | 31 |
+|   | 15 | 555 | 26 | 52 |
+|   | 20 | 548 | 35 | 73 |
+|   | 25 | 555 | 44 | 85 |
+|   | 30 | 559 | 53 | 97 |
+|   | 50 | 555 | 89 | 163 |
+
 **Index creation mode: noPQ + shared_buffer**
 
 Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 4,`
@@ -6868,27 +7108,18 @@ external_storage: 0, pq_enable: 0, pq_segments: 96
 
 Search parameters: `ef_search: 400, max_scan_points: 600, pq_amp: 10` The following table describes the test results.
 
-| 2768 | 1 | 131 | 7 | 9 |
-|---|---|---|---|---|
-|  | 5 | 369 | 13 | 21 |
-|  | 10 | 406 | 24 | 43 |
-|  | 15 | 410 | 36 | 65 |
-|  | 20 | 413 | 48 | 84 |
-|  | 25 | 408 | 60 | 107 |
-|  | 30 | 408 | 73 | 136 |
-|  | 50 | 409 | 121 | 213 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 4700 | 1 | 111 | 8 | 14 |
-|  | 5 | 249 | 19 | 31 |
-|  | 10 | 230 | 42 | 77 |
-|  | 15 | 240 | 61 | 104 |
-|  | 20 | 236 | 83 | 150 |
-|  | 25 | 241 | 102 | 173 |
-| 07 | > Document Version: 2026063 |  |  |  |
 
-AnalyticDB for PostgreSQL User G
+| 2768 | 1 | 131 | 7 | 9 |
+|---|---|---|---|---|
+|   | 5 | 369 | 13 | 21 |
+|   | 10 | 406 | 24 | 43 |
+|   | 15 | 410 | 36 | 65 |
+|   | 20 | 413 | 48 | 84 |
+|   | 25 | 408 | 60 | 107 |
+|   | 30 | 408 | 73 | 136 |
+|   | 50 | 409 | 121 | 213 |
 
 **Dataset: Dbpedia cosine (1,536 × 1,000,000)**
 
@@ -6902,25 +7133,19 @@ external_storage: 1, pq_enable: 1, pq_segments: 192
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
 
-|  | 30 | 238 | 124 | 214 |
-|---|---|---|---|---|
-|  | 50 | 239 | 208 | 376 |
-
 | Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
 |---|---|---|---|---|
-| 15958 | 1 | 101 | 9 | 14 |
-|  | 5 | 209 | 22 | 36 |
-|  | 10 | 217 | 45 | 77 |
-|  | 15 | 210 | 70 | 127 |
-|  | 20 | 211 | 93 | 168 |
-|  | 25 | 216 | 114 | 191 |
-|  | 30 | 215 | 138 | 244 |
-|  | 50 | 214 | 232 | 411 |
+| 4700 | 1 | 111 | 8 | 14 |
+|   | 5 | 249 | 19 | 31 |
+|   | 10 | 230 | 42 | 77 |
+|   | 15 | 240 | 61 | 104 |
+|   | 20 | 236 | 83 | 150 |
+|   | 25 | 241 | 102 | 173 |
+| 07 | > Document Version: 2026063 |   |   |   |
 
-| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|   | 30 | 238 | 124 | 214 |
 |---|---|---|---|---|
-
-AnalyticDB for PostgreSQL User G
+|   | 50 | 239 | 208 | 376 |
 
 **Index creation mode: PQ + shared_buffer**
 
@@ -6932,6 +7157,17 @@ external_storage: 0, pq_enable: 1, pq_segments: 192
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+| 15958 | 1 | 101 | 9 | 14 |
+|   | 5 | 209 | 22 | 36 |
+|   | 10 | 217 | 45 | 77 |
+|   | 15 | 210 | 70 | 127 |
+|   | 20 | 211 | 93 | 168 |
+|   | 25 | 216 | 114 | 191 |
+|   | 30 | 215 | 138 | 244 |
+|   | 50 | 214 | 232 | 411 |
+
 **Index creation mode: noPQ + shared_buffer**
 
 Index creation parameters: `M: 64, efConstruction: 600, parallel_build: 4,`
@@ -6942,19 +7178,20 @@ external_storage: 0, pq_enable: 0, pq_segments: 192
 
 Search parameters: `ef_search: 400, max_scan_points: 425, pq_amp: 10` The following table describes the test results.
 
+| Index creation time (s) | Query concurrency | QPS | Average RT (ms) | P99 RT (ms) |
+|---|---|---|---|---|
+
 | 4541 | 1 | 230 | 3 | 8 |
 |---|---|---|---|---|
-|  | 5 | 383 | 12 | 19 |
-|  | 10 | 393 | 24 | 43 |
-|  | 15 | 389 | 37 | 66 |
-|  | 20 | 386 | 51 | 89 |
-|  | 25 | 381 | 64 | 115 |
-|  | 30 | 385 | 77 | 138 |
-|  | 50 | 389 | 127 | 229 |
+|   | 5 | 383 | 12 | 19 |
+|   | 10 | 393 | 24 | 43 |
+|   | 15 | 389 | 37 | 66 |
+|   | 20 | 386 | 51 | 89 |
+|   | 25 | 381 | 64 | 115 |
+|   | 30 | 385 | 77 | 138 |
+|   | 50 | 389 | 127 | 229 |
 
-AnalyticDB for PostgreSQL User G
-
-### Case: Build an image-based
+### 7.7 Case: Build an image-based search system
 
 **search system**
 
@@ -6962,7 +7199,11 @@ This topic describes how to use an AnalyticDB for PostgreSQL vector database to 
 
 **Background information**
 
-Image-based search is commonly used in our life. If you want a beautiful dress or a pair of favorite sneakers shown on TV, you can take an image and then upload the image to Taobao to quickly find the product. If you want to know the name of a movie, you can paste a screenshot of the movie in the image search box of a search engine. Image-based search allows you to quickly find images of a person from a large number of human images. In addition to the image-based search feature that is provided by search engines, you can use the vector retrieval feature that is provided by AnalyticDB for PostgreSQL vector databases to build an image-based search system based on SQL syntax. Image-based search is also called reverse image search. It is a content-based image retrieval technique. The image-based search system can return records that are the closest in content to the image to be queried from large numbers of images. For example, if you provide an image that contains a product, the image-based search system returns images that contain a major object the same to or similar to the product. If you provide an image that contains a human face, the image-based search system returns images that share similar facial features with the human face. Image-based search relies on two core modules: Feature extraction module: extracts visual features from the source image to obtain a highdimensional feature vector. The closer the feature vector of an image is to the feature vector of the source image, the more similar the image is to the source image. AnalyticDB for PostgreSQL User G Vector retrieval module: finds and returns the k records that are the closest to the query vector from large numbers of feature vectors.
+Image-based search is commonly used in our life. If you want a beautiful dress or a pair of favorite sneakers shown on TV, you can take an image and then upload the image to Taobao to quickly find the product. If you want to know the name of a movie, you can paste a screenshot of the movie in the image search box of a search engine. Image-based search allows you to quickly find images of a person from a large number of human images. In addition to the image-based search feature that is provided by search engines, you can use the vector retrieval feature that is provided by AnalyticDB for PostgreSQL vector databases to build an image-based search system based on SQL syntax.
+
+**Overview of image-based search**
+
+Image-based search is also called reverse image search. It is a content-based image retrieval technique. The image-based search system can return records that are the closest in content to the image to be queried from large numbers of images. For example, if you provide an image that contains a product, the image-based search system returns images that contain a major object the same to or similar to the product. If you provide an image that contains a human face, the image-based search system returns images that share similar facial features with the human face. Image-based search relies on two core modules: Feature extraction module: extracts visual features from the source image to obtain a highdimensional feature vector. The closer the feature vector of an image is to the feature vector of the source image, the more similar the image is to the source image. Vector retrieval module: finds and returns the k records that are the closest to the query vector from large numbers of feature vectors.
 
 **Image feature extraction**
 
@@ -6974,6 +7215,8 @@ Vector retrieval is also called nearest neighbor search (NNS). It finds and retu
 
 **Use an AnalyticDB for PostgreSQL vector database to search by**
 
+**image**
+
 **Step 1: Extract feature vectors**
 
 In this example, the following tools are used: Programming language: Python 3.8. Deep learning framework: Pytorch. Dataset: CIFAR100. The dataset consists of 100 categories, each containing 600 images. Network: pre-trained SqueezeNet. SqueezeNet is lightweight and produces feature vectors of 1,000 dimensions.
@@ -6982,7 +7225,6 @@ In this example, the following tools are used: Programming language: Python 3.8.
 
 We recommend that you use Jupyter Notebook to run the following code.
 1. Create a Python environment.
-AnalyticDB for PostgreSQL User G
 
 ```bash
 # We recommend that you use Anaconda to create a Python environment.
@@ -7000,7 +7242,7 @@ import torch import torchvision from torchvision.transforms import (
     Normalize
 ```
 
-)
+`)`
 
 ```
 preprocess = Compose([
@@ -7015,11 +7257,11 @@ preprocess = Compose([
 ```json
 DATA_DIRECTORY = "/Users/XXX/Desktop/vector/CIFAR" datasets = {
     "CIFAR100": torchvision.datasets.CIFAR100(DATA_DIRECTORY, transform=preprocess, d
-ownload=True) }
+ownload=True)
 ```
 
+`}`
 3. (Optional) Query the downloaded dataset.
-AnalyticDB for PostgreSQL User G
 
 ```java
 import numpy as np import matplotlib.pyplot as plt from mpl_toolkits.axes_grid1 import ImageGrid def show_images_from_full_dataset(dset, num_rows, num_cols, indices):
@@ -7033,12 +7275,13 @@ import numpy as np import matplotlib.pyplot as plt from mpl_toolkits.axes_grid1 
         axes_pad=0.3)
     for ax, im_array, label in zip(grid, im_arrays, labels):
         ax.imshow(im_array)
+        ax.set_title(label)
         ax.axis("off")
 dataset = datasets["CIFAR100"] show_images_from_full_dataset(dataset, 4, 8, [i for i in range(0, 32)])
 ```
 
 4. Use the Squeezenet1_1 model to generate feature vectors of all images in batches and
-store them in a feature vector file. In this example, `/Users/XXX/Desktop/vector/features/CIFAR100/features` is the path of the feature vector file. AnalyticDB for PostgreSQL User G
+store them in a feature vector file. In this example, `/Users/XXX/Desktop/vector/features/CIFAR100/features` is the path of the feature vector file.
 
 ```python
 # Prepare data.
@@ -7049,9 +7292,12 @@ model = torchvision.models.squeezenet1_1(pretrained=True).eval()
 features_file_path = "/Users/XXX/Desktop/vector/features/CIFAR100/features" feature_file = open(features_file_path, 'w') img_id = 0 for batch_number, batch in enumerate(dataloader):
     with torch.no_grad():
         batch_imgs = batch[0]  # 0: images
+        batch_labels = batch[1]  # 1: labels
         vector_values = model(batch_imgs).tolist()
         for i in range(len(vector_values)):
             img_label = dataset.classes[batch_labels[i].item()]
+            # print(img_label)
+            feature_file.write(str(img_id) + "|" + img_label + "|")
             vector_value = vector_values[i]
             assert len(vector_value) == 1000
             for j in range(len(vector_value)):
@@ -7085,13 +7331,12 @@ The feature vectors of an image are displayed in the following format:
 
 **database and query the data**
 
-AnalyticDB for PostgreSQL User G
 1. Create a table and then create a vector index in the table. In this example, the psycopg2cffi
 library of Python is used to connect to the vector database.
 
 **Important**
 
-If you want to enable the vector feature for your database, 提交工单 submit a ticket. AnalyticDB for PostgreSQL User G
+If you want to enable the vector feature for your database, 提交工单 submit a ticket.
 
 ```java
 import os import psycopg2cffi
@@ -7109,11 +7354,12 @@ connection = psycopg2cffi.connect(
     password=os.environ.get("PGPASSWORD", "adbpg_test")
 ```
 
-)
+`)`
 
 ```bash
 cursor = connection.cursor()
 # Specify an SQL statement to create a table.
+create_table_sql = """ CREATE TABLE IF NOT EXISTS public.image_search (
     id INTEGER NOT NULL,
     class TEXT,
     image_vector REAL[],
@@ -7122,18 +7368,17 @@ cursor = connection.cursor()
 # Specify an SQL statement to change the storage format of the vector column to PLAIN
 ```
 
-.
+`.`
 
 ```bash
 alter_vector_storage_sql = """ ALTER TABLE public.image_search ALTER COLUMN image_vector SET STORAGE PLAIN; """
 # Specify an SQL statement to create a vector index.
 create_indexes_sql = """ CREATE INDEX ON public.image_search USING ann (image_vector) WITH (dim = '1000', hnsw _m = '100', pq_enable='0'); """
 # Execute the preceding SQL statements.
-cursor.execute(alter_vector_storage_sql) cursor.execute(create_indexes_sql) connection.commit()
+cursor.execute(create_table_sql) cursor.execute(alter_vector_storage_sql) cursor.execute(create_indexes_sql) connection.commit()
 ```
 
 2. Import the feature vectors of the images that are contained in the dataset to the table.
-AnalyticDB for PostgreSQL User G
 
 ```java
 import io
@@ -7151,7 +7396,7 @@ modified_lines = io.StringIO(''.join(list(process_file(features_file_path)))) cu
 ```
 
 3. Search for images based on the feature vector of an image contained in the feature vector
-file. In this example, the image whose ID is 4999 is used. AnalyticDB for PostgreSQL User G
+file. In this example, the image whose ID is 4999 is used.
 
 ```python
 def query_analyticdb(collection_name, vector_name, query_embedding, top_k=20):
@@ -7173,7 +7418,7 @@ milarity
         password=os.environ.get("PGPASSWORD", "adbpg_test")
 ```
 
-)
+`)`
 
 ```python
     cursor = connection.cursor()
@@ -7201,7 +7446,6 @@ results = query_analyticdb("image_search", "image_vector", query_vector)
 
 The following figure shows the image whose ID is 4999.
 4. Display the images corresponding to the query results.
-AnalyticDB for PostgreSQL User G
 
 **Note**
 
@@ -7218,11 +7462,11 @@ show_images_from_full_dataset(dataset, 4, 5, indices)
 
 The following figures show the returned images.
 
-### Case: Build a text semantic
+### 7.8 Case: Build a text semantic retrieval system
 
 **retrieval system**
 
-AnalyticDB for PostgreSQL User G AnalyticDB for PostgreSQL's vector database lets you build a text semantic retrieval system that finds documents by meaning rather than exact keyword matches. This tutorial walks through a complete example: vectorizing a 10,000-entry text corpus, indexing it in AnalyticDB for PostgreSQL, and running semantic similarity queries against it. By the end, you will have: Vectorized a real-world text corpus using a sentence embedding model Stored vectors and created an approximate nearest neighbor (ANN) index in AnalyticDB for Queried the database to retrieve the most semantically similar texts This tutorial creates a table ( `public.articles` ) and an index in your database. Clean-up code is provided at the end to drop them when you are done.
+AnalyticDB for PostgreSQL's vector database lets you build a text semantic retrieval system that finds documents by meaning rather than exact keyword matches. This tutorial walks through a complete example: vectorizing a 10,000-entry text corpus, indexing it in AnalyticDB for PostgreSQL, and running semantic similarity queries against it. By the end, you will have: Vectorized a real-world text corpus using a sentence embedding model Stored vectors and created an approximate nearest neighbor (ANN) index in AnalyticDB for PostgreSQL Queried the database to retrieve the most semantically similar texts This tutorial creates a table ( `public.articles` ) and an index in your database. Clean-up code is provided at the end to drop them when you are done.
 
 **How it works**
 
@@ -7238,13 +7482,14 @@ At query time, the same ML model converts the query text into a vector. Analytic
 
 **Prerequisites**
 
-Before you begin, ensure that you have: An AnalyticDB for PostgreSQL instance with connection credentials (host, port, database name, username, and password) Conda installed for managing Python environments AnalyticDB for PostgreSQL User G Internet access to download the Quora dataset from Hugging Face
+Before you begin, ensure that you have: An AnalyticDB for PostgreSQL instance with connection credentials (host, port, database name, username, and password) Conda installed for managing Python environments Internet access to download the Quora dataset from Hugging Face
 
 **Step 1: Set up the Python environment**
 
 Create a dedicated Conda environment with Python 3.8 and install all required packages.
 
 ```bash
+# Create a Python 3.8 virtual environment
 conda create -n adbpg_text_env python=3.8
 # Activate the environment
 conda activate adbpg_text_env
@@ -7275,12 +7520,15 @@ Each entry has two fields: `questions` — contains `id` (serial numbers) and `t
      {'id': [1, 2],
       'text': ['What is the step by step guide to invest in share market in india?', 'W
 hat is the step by step guide to invest in share market?']
-     },
- 'is_duplicate': False
-}
 ```
 
-AnalyticDB for PostgreSQL User G
+`},`
+
+```json
+ 'is_duplicate': False
+```
+
+`}`
 
 **Extract feature vectors**
 
@@ -7318,14 +7566,14 @@ oling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_m
   (2): Normalize()
 ```
 
-) The model truncates input text beyond 256 tokens and produces 384-dimensional vectors.
+`)` The model truncates input text beyond 256 tokens and produces 384-dimensional vectors.
 3. Encode each sentence and save the results to a CSV file.
-AnalyticDB for PostgreSQL User G
 
 ```java
 import pandas as pd vectors = [] for sentence in sentences:
     vector = model.encode(sentence)
     # Format vectors as '{0.04067..., ..., -0.01296...}' for import into AnalyticDB f
+or PostgreSQL
     vector_str = "{" + ", ".join(str(x) for x in vector.tolist()) + "}"
     vectors.append(vector_str)
 # Generate sequential IDs
@@ -7339,6 +7587,8 @@ The output CSV ( `sentences_vectors.csv` ) has three columns: `ID` , `Sentences`
 ```
  Vectors .
 ```
+
+**Step 3: Create a table and vector index**
 
 1. Connect to the database and verify the connection.
 
@@ -7358,7 +7608,7 @@ connection = psycopg2.connect(
     password=os.environ.get("PGPASSWORD", "password")
 ```
 
-)
+`)`
 
 ```python
 cursor = connection.cursor() cursor.execute("SELECT 1;") result = cursor.fetchone() if result == (1,):
@@ -7370,17 +7620,15 @@ else:
 2. Create the table and vector index. The index parameters control retrieval quality and build
 cost:
 
-| Parameter | Value | Description |  |  |
+| Parameter | Value | Description |   |   |
 |---|---|---|---|---|
-| dim | 384 | Must match the model's output dimension. all-MiniLM-L6- v2 produces 384-dimensional vectors. |  |  |
-|  |  |  | all-MiniLM-L6- |  |
-| hnsw m _ | 100 | Number of connections per node in the HNSW graph. Higher values improve recall but increase memory usage and index build time. |  |  |
-| pq enable _ | 0 | Disables product quantization. Set to 1 to compress vectors and reduce memory at the cost of some recall accuracy. |  |  |
+| dim | 384 | Must match the model's output dimension. all-MiniLM-L6- v2 produces 384-dimensional vectors. |   |   |
+|   |   |   | all-MiniLM-L6- |   |
+| hnsw m _ | 100 | Number of connections per node in the HNSW graph. Higher values improve recall but increase memory usage and index build time. |   |   |
+| pq enable _ | 0 | Disables product quantization. Set to 1 to compress vectors and reduce memory at the cost of some recall accuracy. |   |   |
 
-|  | v2 |
+|   | v2 |
 |---|---|
-
-AnalyticDB for PostgreSQL User G
 
 ```bash
 # Create the articles table with a REAL[] vector column
@@ -7391,17 +7639,17 @@ AnalyticDB for PostgreSQL User G
 
 ```bash
 # which is required for ANN index scans to work correctly.
+create_table_sql = ''' CREATE TABLE IF NOT EXISTS public.articles (
     id INTEGER NOT NULL,
     sentence TEXT,
     vector REAL[],
     PRIMARY KEY(id)
 ) DISTRIBUTED BY(id); ALTER TABLE public.articles ALTER COLUMN vector SET STORAGE PLAIN; '''
 # Create an ANN vector index on the vector column
-create_indexes_sql = ''' CREATE INDEX ON public.articles USING ann (vector) WITH (dim = '384', hnsw_m = '100', pq_enable='0'); ''' cursor.execute(create_indexes_sql) connection.commit()
+create_indexes_sql = ''' CREATE INDEX ON public.articles USING ann (vector) WITH (dim = '384', hnsw_m = '100', pq_enable='0'); ''' cursor.execute(create_table_sql) cursor.execute(create_indexes_sql) connection.commit()
 ```
 
 3. Import data from the CSV file.
-AnalyticDB for PostgreSQL User G
 
 ```java
 import io
@@ -7416,7 +7664,7 @@ copy_command = ''' COPY public.articles (id, sentence, vector) FROM STDIN WITH (
 
 **Step 4: Query similar texts**
 
-With data loaded, use the vector engine to retrieve the texts most semantically similar to a query. The `query_analyticdb` function below encodes a query string, then runs a SQL query using: `dp_distance(vector_col, query_vector)` — computes the dot-product distance between vectors (higher score = more similar) `<->` operator — used in the `ORDER BY` clause to rank results by vector distance AnalyticDB for PostgreSQL User G
+With data loaded, use the vector engine to retrieve the texts most semantically similar to a query. The `query_analyticdb` function below encodes a query string, then runs a SQL query using: `dp_distance(vector_col, query_vector)` — computes the dot-product distance between vectors (higher score = more similar) `<->` operator — used in the `ORDER BY` clause to rank results by vector distance
 
 ```python
 def query_analyticdb(collection_name, query, query_embedding, top_k=20):
@@ -7436,7 +7684,7 @@ milarity
         password=os.environ.get("PGPASSWORD", "password")
 ```
 
-)
+`)`
 
 ```python
     cursor = connection.cursor()
@@ -7470,17 +7718,15 @@ You can continue to select other texts that you want to query. After you query t
 
 **Clean up**
 
-AnalyticDB for PostgreSQL User G After testing, drop the table and index to release resources.
+After testing, drop the table and index to release resources.
 
 ```
-drop_table_sql = '''DROP TABLE public.articles;''' connection.commit() connection.close()
+drop_table_sql = '''DROP TABLE public.articles;''' cursor.execute(drop_table_sql) connection.commit() connection.close()
 ```
 
-AnalyticDB for PostgreSQL User G
+## 8 Backup and restoration
 
-## Backup and restoration
-
-### Feature overview
+### 8.1 Feature overview
 
 AnalyticDB for PostgreSQL provides periodic base backups and log backups to protect against data loss.
 
@@ -7490,13 +7736,17 @@ AnalyticDB for PostgreSQL uses base backups and log backups to restore an instan
 **Base backup**: backs up all database data. A base backup compresses a snapshot of all
 instance data and stores the snapshot to offline storage media. The base backup does not block your read and write operations. The operation logs generated during the base backup are also backed up to ensure the integrity of the base backup.
 **Log backup** (also called incremental backup): backs up log files generated from an
-instance and stores them to offline storage media. Log files record the DML and DDL operations that are performed on databases. AnalyticDB for PostgreSQL uses a full base backup and continuous log backups to restore data at a specific point in time to a new instance and ensure data security. After the base backup data is restored, all nodes execute the data change statements recorded in the log backup files in sequence until the point in time for restoration. The point in time ensures consistency among all nodes when the data restoration of each node is complete. The backup and restoration feature can be used in the following scenarios: Instance data is lost for reasons such as accidental changes. The source instance data is corrupted or unavailable. An instance needs to be cloned with the same data. The instance specifications except for the number of nodes need to be changed.
+instance and stores them to offline storage media. Log files record the DML and DDL operations that are performed on databases. AnalyticDB for PostgreSQL uses a full base backup and continuous log backups to restore data at a specific point in time to a new instance and ensure data security. After the base backup data is restored, all nodes execute the data change statements recorded in the log backup files in sequence until the point in time for restoration. The point in time ensures consistency among all nodes when the data restoration of each node is complete.
+
+**Scenarios**
+
+The backup and restoration feature can be used in the following scenarios: Instance data is lost for reasons such as accidental changes. The source instance data is corrupted or unavailable. An instance needs to be cloned with the same data. The instance specifications except for the number of nodes need to be changed.
 
 **Limits**
 
 Data can be restored from the source instance only when the source instance has at least one backup set in the successful state. The backup and restoration feature is supported only for instances in reserved storage mode.
 
-### Back up data
+### 8.2 Back up data
 
 This topic describes how to view backup data and modify backup settings in AnalyticDB for PostgreSQL.
 
@@ -7507,6 +7757,9 @@ This topic describes how to view backup data and modify backup settings in Analy
 3. In the left-side navigation pane, click **Backup and Restoration**.
 4. On the **Backup and Restoration** page, click the **Backup Settings** tab to view backup
 settings.
+5. To modify the backup settings, click **Modify Backup Settings**.
+6. In the **Backup Settings** panel, configure the parameters. The following table describes the
+parameters.
 
 | Parameter | Description |
 |---|---|
@@ -7516,10 +7769,6 @@ settings.
 | Restore Point Settings | Specifies whether to enable point-in-time restore. If this feature is disabled, data cannot be restored by point in time. |
 | Restore Point Frequency | The frequency at which you want to perform point-in-time restore. Valid values: Hourly Every 2 Hours Every 4 Hours Every 8 Hours |
 
-AnalyticDB for PostgreSQL User G
-5. To modify the backup settings, click **Modify Backup Settings**.
-6. In the **Backup Settings** panel, configure the parameters. The following table describes the
-parameters.
 7. Click **OK**.
 
 **View base backup sets**
@@ -7539,14 +7788,6 @@ which you can restore instance data to ensure data consistency among databases.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, click **Backup and Restoration**.
 4. On the **Backup and Restoration** page, click the **Restore Points** tab.
-
-| Setting | Parameter | Description |
-|---|---|---|
-| Area | Organization | The organization to which the destination instance belongs. You do not need to modify the parameter value. |
-|  | Resource Set | The resource set to which the destination instance belongs. You do not need to modify the parameter value. |
-| 9 | > Document Version: 2026063 |  |
-
-AnalyticDB for PostgreSQL User G
 5. On the **Restore Points** tab, view restore points in time.
 A restore point in time indicates the point in time to which you can restore instance data. The name and timestamp of each restore point in time are displayed on this tab, as shown in the preceding figure. You can restore instance data to a restore point in time.
 
@@ -7559,7 +7800,7 @@ A restore point in time indicates the point in time to which you can restore ins
 5. On the **Log Backup** tab, view log backups.
 Log files record all data changes to databases. You can restore an instance to a previous state by using its corresponding log files. All log files are stored in OSS.
 
-### Restore data
+### 8.3 Restore data
 
 This topic describes how to restore backup data to a new instance in AnalyticDB for PostgreSQL.
 
@@ -7577,36 +7818,40 @@ restore data and click **Restore** in the **Actions** column.
 5. On the **AnalyticDB for PostgreSQL Clone** page, configure the parameters. The following
 table describes the parameters.
 
-| ea |  |  |
+| Setting | Parameter | Description |
 |---|---|---|
-|  | Region | The region in which the destination AnalyticDB for PostgreSQL instance resides. You do not need to modify the parameter value. |
-|  | Zone name | The zone of the destination AnalyticDB for PostgreSQL instance. |
+| Area | Organization | The organization to which the destination instance belongs. You do not need to modify the parameter value. |
+|   | Resource Set | The resource set to which the destination instance belongs. You do not need to modify the parameter value. |
+| 9 | > Document Version: 2026063 |   |
+
+| ea |   |   |
+|---|---|---|
+|   | Region | The region in which the destination AnalyticDB for PostgreSQL instance resides. You do not need to modify the parameter value. |
+|   | Zone name | The zone of the destination AnalyticDB for PostgreSQL instance. |
 | Instance information | Source Instance | The source instance whose data you want to restore. |
-|  | Source Type | The mode that is used to restore data. It is automatically set to Backup Set. |
-|  | Backup Set | The point in time to which you want to restore data. |
+|   | Source Type | The mode that is used to restore data. It is automatically set to Backup Set. |
+|   | Backup Set | The point in time to which you want to restore data. |
 | Basic Settings | Instance Resource Type | The resource type of the destination instance. It is automatically set to the resource type of the source instance. |
-|  | Chip Architecture | The chip architecture of the host on which the destination instance is deployed. You do not need to modify the parameter value. |
-|  | Master Nodes | The number of master nodes. It is automatically set to 1. After you create an instance, you can add more master nodes to the instance. For more information, see Change the specifications of an instance. |
-|  | Compute Group Specifications | Specifications for each compute group. The storage space and compute capability of a compute group vary based on the specified specifications. |
-|  | Compute Nodes | The number of compute nodes. It is automatically set to the number of compute nodes of the source instance. |
-|  | Compute Node Capacity | The capacity of compute nodes. It is related to the compute node specifications and cannot be modified. The CPU cores, memory size, and storage capacity are in a ratio of 1:8:80. For example, if the compute node specifications are 2 cores and 16 GB of memory, the storage capacity is 160 GB. |
-|  | Storage Medium | The storage type of the destination instance. It is automatically set to Local SSD. |
+|   | Chip Architecture | The chip architecture of the host on which the destination instance is deployed. You do not need to modify the parameter value. |
+|   | Master Nodes | The number of master nodes. It is automatically set to 1. After you create an instance, you can add more master nodes to the instance. For more information, see Change the specifications of an instance. |
+|   | Compute Group Specifications | Specifications for each compute group. The storage space and compute capability of a compute group vary based on the specified specifications. |
+|   | Compute Nodes | The number of compute nodes. It is automatically set to the number of compute nodes of the source instance. |
+|   | Compute Node Capacity | The capacity of compute nodes. It is related to the compute node specifications and cannot be modified. The CPU cores, memory size, and storage capacity are in a ratio of 1:8:80. For example, if the compute node specifications are 2 cores and 16 GB of memory, the storage capacity is 160 GB. |
+|   | Storage Medium | The storage type of the destination instance. It is automatically set to Local SSD. |
 | Network | Network Type | The network type of the destination AnalyticDB for PostgreSQL instance. Valid values: Classic Network: Cloud services in the classic network are not isolated. Unauthorized access to a cloud service is blocked only by using security groups or whitelists. VPC ID: A virtual private cloud (VPC) helps you build an isolated network environment on Apsara Stack. You can specify custom route tables, CIDR blocks, and gateways within a VPC. We recommend that you select VPC for improved security. You can create a VPC in advance, or change the network type to VPC after the instance is created. |
 
-|  | VPC | The VPC in which the destination AnalyticDB for PostgreSQL instance resides. Note This parameter is available only when Network Type is set to VPC ID. |
+|   | VPC | The VPC in which the destination AnalyticDB for PostgreSQL instance resides. Note This parameter is available only when Network Type is set to VPC ID. |
 |---|---|---|
-|  | vSwitch | The vSwitch of the destination AnalyticDB for PostgreSQL instance. Note This parameter is available only when Network Type is set to VPC ID. |
-|  | IP Address Whitelist | The IP addresses that are allowed to access the destination AnalyticDB for PostgreSQL instance. |
+|   | vSwitch | The vSwitch of the destination AnalyticDB for PostgreSQL instance. Note This parameter is available only when Network Type is set to VPC ID. |
+|   | IP Address Whitelist | The IP addresses that are allowed to access the destination AnalyticDB for PostgreSQL instance. |
 
-AnalyticDB for PostgreSQL User G
 6. Click **Submit**.
-AnalyticDB for PostgreSQL User G
 
-## Performance monitoring
+## 9 Performance monitoring
 
-### Monitoring and alerting
+### 9.1 Monitoring and alerting
 
-#### View instance monitoring information
+#### 9.1.1 View instance monitoring information
 
 This topic describes how to view the instance monitoring information about an AnalyticDB for PostgreSQL instance.
 
@@ -7619,7 +7864,11 @@ The instance monitoring feature is supported only for instances in reserved stor
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Monitoring and Alerts > Instance Monitoring**.
-The **Instance Monitoring** page consists of the following sections: Displays the status information about the instance, including the **Status**, **Instance**
+The **Instance Monitoring** page consists of the following sections:
+
+**Instance Status section**
+
+Displays the status information about the instance, including the **Status**, **Instance**
 **Storage Status**, **Instance Health Status**, **Instance Storage Usage**, **Instance**
 **Connection Status**, **Maximum Coordinator Node Storage Usage**, and **Maximum**
 **Compute Node Storage Usage** parameters.
@@ -7643,7 +7892,7 @@ Displays the performance and load information about the instance in the **Coordi
 
 The interval between the start time and the end time cannot exceed seven days.
 
-#### View node monitoring information
+#### 9.1.2 View node monitoring information
 
 This topic describes how to view the node monitoring information about an AnalyticDB for PostgreSQL instance.
 
@@ -7653,7 +7902,6 @@ The instance monitoring feature is supported only for instances in reserved stor
 
 **Procedure**
 
-AnalyticDB for PostgreSQL User G
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click the instance ID.
 3. In the left-side navigation pane, choose **Monitoring and Alerts > Node Monitoring**.
@@ -7676,7 +7924,7 @@ You can set Time Range to Recent 1 Hour, Recent 6 Hours, Recent 1 Day, Recent 7 
 
 The interval between the start time and the end time of the custom time range cannot exceed seven days.
 
-### Monitoring and alerting
+### 9.2 Monitoring and alerting
 
 AnalyticDB for PostgreSQL provides the monitoring and alerting feature to help you view the running status of instances.
 
@@ -7697,17 +7945,11 @@ options are available for **Time Range**:
 **1 Hour**: You can view metrics within the last hour.
 **1 Day**: You can view metrics within the last day.
 **Custom time range**: You can view metrics within a custom time range. The time range
+cannot be longer than seven days.
 
-| Section | Metric | Description |
-|---|---|---|
-| Connection Status | Connection Status of Coordinator Node | The connection status of coordinator nodes. The following colors indicate different states: Red: The node connection usage is greater than or equal to 95%. Yellow: The node connection usage is greater than or equal to 90% and less than 95%. Green: The node connection usage is less than 90%. Note The connection usage of coordinator nodes is the highest connection usage among all coordinator nodes. |
-|  | Connection Status of Compute Node | The connection status of compute nodes. The following colors indicate different states: Red: The node connection usage is greater than or equal to 95%. Yellow: The node connection usage is greater than or equal to 90% and less than 95%. Green: The node connection usage is less than 90%. Note The connection usage of compute nodes is the highest connection usage among all compute nodes. |
+### 9.3 Diagnostics and optimization
 
-AnalyticDB for PostgreSQL User G cannot be longer than seven days.
-
-### Diagnostics and optimization
-
-#### Instance status overview
+#### 9.3.1 Instance status overview
 
 AnalyticDB for PostgreSQL provides an Overview page for the diagnostics and optimization feature. You can view the connection status, cluster status, and storage status of an instance on this page.
 
@@ -7722,34 +7964,29 @@ The instance monitoring feature is supported only for instances in reserved stor
 3. In the left-side navigation pane, choose **Diagnostics and Optimization > Overview**.
 On the left side of the **Overview** page, the status information is listed. On the right side of the page, metrics of the instance are displayed in line charts. Status information
 
+| Section | Metric | Description |
+|---|---|---|
+| Connection Status | Connection Status of Coordinator Node | The connection status of coordinator nodes. The following colors indicate different states: Red: The node connection usage is greater than or equal to 95%. Yellow: The node connection usage is greater than or equal to 90% and less than 95%. Green: The node connection usage is less than 90%. Note The connection usage of coordinator nodes is the highest connection usage among all coordinator nodes. |
+|   | Connection Status of Compute Node | The connection status of compute nodes. The following colors indicate different states: Red: The node connection usage is greater than or equal to 95%. Yellow: The node connection usage is greater than or equal to 90% and less than 95%. Green: The node connection usage is less than 90%. Note The connection usage of compute nodes is the highest connection usage among all compute nodes. |
+
 | Cluster Status | Running Status | The status of the instance. |
 |---|---|---|
-|  | Instance Health Status | The health status of the instance. The following colors indicate different states: Red: One or more coordinator nodes or compute nodes are unavailable. Green: All nodes are available. |
-|  | Instance Connection Status | The connection status of the instance. The following colors indicate different states: Red: The instance connection usage is greater than or equal to 95%. Yellow: The instance connection usage is greater than 90% and less than or equal to 95%. Green: The instance connection usage is less than or equal to 90%. Note The instance connection usage is the highest connection usage among all coordinator and compute nodes. |
-|  | Coordinator Node Status | The health status of coordinator nodes. The following colors indicate different states: Red: Both the primary and standby coordinator nodes are unavailable. Yellow: The primary or standby coordinator node is unavailable. Green: Both the primary and standby coordinator nodes are available. |
-|  | Compute Node Status | The health status of compute nodes. The following colors indicate different states: Red: All compute nodes are unavailable. Yellow: At least half of all compute nodes are unavailable. Green: All compute nodes are available. |
+|   | Instance Health Status | The health status of the instance. The following colors indicate different states: Red: One or more coordinator nodes or compute nodes are unavailable. Green: All nodes are available. |
+|   | Instance Connection Status | The connection status of the instance. The following colors indicate different states: Red: The instance connection usage is greater than or equal to 95%. Yellow: The instance connection usage is greater than 90% and less than or equal to 95%. Green: The instance connection usage is less than or equal to 90%. Note The instance connection usage is the highest connection usage among all coordinator and compute nodes. |
+|   | Coordinator Node Status | The health status of coordinator nodes. The following colors indicate different states: Red: Both the primary and standby coordinator nodes are unavailable. Yellow: The primary or standby coordinator node is unavailable. Green: Both the primary and standby coordinator nodes are available. |
+|   | Compute Node Status | The health status of compute nodes. The following colors indicate different states: Red: All compute nodes are unavailable. Yellow: At least half of all compute nodes are unavailable. Green: All compute nodes are available. |
 | Storage Status | Instance Storage Status | The storage status of the instance. The following colors indicate different states: Red: The instance storage usage is greater than or equal to 90%. In this case, the instance is locked. Yellow: The instance storage usage is greater than or equal to 70% and less than 90%. Green: The instance storage usage is less than 70%. |
-|  | Maximum Storage Usage of Coordinator Node | The maximum storage usage of coordinator nodes. Unit: %. |
-|  | > Document Version: 2026063 |  |
+|   | Maximum Storage Usage of Coordinator Node | The maximum storage usage of coordinator nodes. Unit: %. |
+|   | > Document Version: 2026063 |   |
 
-AnalyticDB for PostgreSQL User G
-
-|  | Maximum Storage Usage of Compute Node | The maximum storage usage of compute nodes. Unit: %. |
+|   | Maximum Storage Usage of Compute Node | The maximum storage usage of compute nodes. Unit: %. |
 |---|---|---|
 
-| Parameter | Description |
-|---|---|
-| Database Name | The name of the database. |
-| Schema Name | The name of the schema. |
-| Table Name | The name of the partitioned table. |
-| Table Type | The storage type of the table, such as heap table or append- optimized (AO) table. |
-| Expected Table Size | The expected size of the table. Unit: bytes. The expected table size is the size thatA nalyticDB for PostgreSQL calculates without bloat. |
-
-AnalyticDB for PostgreSQL User G Line charts The following metrics are displayed in line charts: **SQL**, **Connections**, **Instance**
+Line charts The following metrics are displayed in line charts: **SQL**, **Connections**, **Instance**
 **Storage Usage (%)**, **Coordinator Nodes**, and **Compute Nodes**. You can move the
 pointer over each line chart to view the details.
 
-#### Use the O&M Assistant feature
+#### 9.3.2 Use the O&M Assistant feature
 
 AnalyticDB for PostgreSQL provides an O&M Assistant page for the diagnostics and optimization feature. You can view data bloat, data skew, and index statistics on this page.
 
@@ -7772,11 +8009,25 @@ The **O&M Assistant** page consists of three tabs: **Data Bloat**, **Data Skew**
 
 The Data Bloat tab lists tables that are larger than 1 GB in size.
 
+| Parameter | Description |
+|---|---|
+| Database Name | The name of the database. |
+| Schema Name | The name of the schema. |
+| Table Name | The name of the partitioned table. |
+| Table Type | The storage type of the table, such as heap table or append- optimized (AO) table. |
+| Expected Table Size | The expected size of the table. Unit: bytes. The expected table size is the size thatA nalyticDB for PostgreSQL calculates without bloat. |
+
 | Actual Table Size | The actual size of the table. Unit: bytes. |
 |---|---|
 | Bloat Table Size | The bloat size of the table. It indicates the amount of space that can be released. Unit: bytes. |
 | Bloat Coefficient | The coefficient of data bloat. It is calculated by using the following formula: Bloat coefficient = Number of dead rows/Number of active rows. Note UPDATE and DELETE operations may cause dead rows because AnalyticDB for PostgreSQL uses the multiversion concurrency control (MVCC) policy. |
 | Last Diagnosed At | The time when the most recent DELETE, INSERT, or UPDATE operation was performed on the table. |
+
+**Data Skew tab**
+
+**Note**
+
+The Data Skew tab lists tables that are larger than 1 GB in size.
 
 | Parameter | Description |
 |---|---|
@@ -7787,17 +8038,15 @@ The Data Bloat tab lists tables that are larger than 1 GB in size.
 | Table Size | The size of the table. |
 | Skew Ratio | The skew ratio of the table, which is written as a percentage. A greater value indicates more severe data skew. A less value indicates less impact on query performance. A value of 0 indicates that no data skew exists. The skew ratio can be calculated by using the following formula: Skew ratio = 1 - (Average table size among all nodes/Maximum table size among all nodes). |
 
-AnalyticDB for PostgreSQL User G
-
-**Data Skew tab**
-
-**Note**
-
-The Data Skew tab lists tables that are larger than 1 GB in size.
-
 | Distribution Key | The distribution key of the table. |
 |---|---|
 | Last Diagnosed At | The time when the most recent DELETE, INSERT, or UPDATE operation was performed on the table. |
+
+**Index Statistics tab**
+
+**Note**
+
+The Index Statistics tab displays indexes that are larger than 100 MB in size.
 
 | Parameter | Description |
 |---|---|
@@ -7810,15 +8059,7 @@ The Data Skew tab lists tables that are larger than 1 GB in size.
 | Index Name | The name of the index. |
 | Last Diagnosed At | The time when the most recent DELETE, INSERT, or UPDATE operation was performed on the table. |
 
-AnalyticDB for PostgreSQL User G
-
-**Index Statistics tab**
-
-**Note**
-
-The Index Statistics tab displays indexes that are larger than 100 MB in size.
-
-#### Query analysis
+#### 9.3.3 Query analysis
 
 AnalyticDB for PostgreSQL provides the query analysis feature. You can view SQL execution plans and statistics for query analysis and optimization. This topic describes how to use the query analysis feature.
 
@@ -7830,19 +8071,6 @@ The instance monitoring feature is supported only for instances in reserved stor
 
 1. Log in to the AnalyticDB for PostgreSQL console.
 2. Find the instance that you want to manage and click the instance ID.
-
-| Parameter | Description |
-|---|---|
-| SQL Statement | The SQL statement of the query. |
-| Start Time | The start time of the query. |
-| Query ID | The unique ID of the query. |
-| Session ID | The session ID of the query. |
-| Database | The name of the database that you want to query. |
-| Status | The state of the query. Valid values: Completed Running |
-| Duration | The total amount of time consumed for the query. Unit: seconds. |
-| Username | The user who executes the query. |
-
-AnalyticDB for PostgreSQL User G
 3. In the left-side navigation pane, choose **Diagnostics and Optimization > Query**
 **Analysis**.
 4. In the upper-right corner of the page, select a database, a filter condition, and a time range
@@ -7858,7 +8086,20 @@ Each color block in the swimlane diagram indicates a query execution process. Yo
 Each row of information in the query list indicates a query execution process. The information about query execution is displayed in the list. You can click **Diagnose** in the
 **Actions** column to go to the **Query Properties** page. For more information about the
 **Query Properties** page, see the "Query Properties page" section of this topic.
-The following table describes the information that is contained in the SQL query list. You can click **Download** to download the information to your computer.
+The following table describes the information that is contained in the SQL query list.
+
+| Parameter | Description |
+|---|---|
+| SQL Statement | The SQL statement of the query. |
+| Start Time | The start time of the query. |
+| Query ID | The unique ID of the query. |
+| Session ID | The session ID of the query. |
+| Database | The name of the database that you want to query. |
+| Status | The state of the query. Valid values: Completed Running |
+| Duration | The total amount of time consumed for the query. Unit: seconds. |
+| Username | The user who executes the query. |
+
+You can click **Download** to download the information to your computer.
 
 **Query Properties page**
 
@@ -7872,6 +8113,10 @@ The **Query Statement** tab provides the SQL query statement.
 **Execution Plan Text tab**
 
 The **Execution Plan Text** tab provides the execution plan that is obtained from the EXPLAIN statement.
+
+**Execution Plan Tree tab**
+
+The **Execution Plan Tree** tab provides a tree chart to show the execution plan. The execution plan tree is displayed on the left side, and the operator execution statistics are displayed on the right side. You can click each operator card in the tree to view statistics of the operator. By default, the line below each operator card shows the execution duration proportion of the operator among all operators, and all operators are listed in the upper-right corner of the tab as sorted by execution duration. You can also sort operators by memory usage, amount of disk read data, disk read duration, amount of transmitted data, or data transmission duration and calculate the total sum of proportions. The following table describes the operator execution statistics.
 
 | Parameter | Description |
 |---|---|
@@ -7887,26 +8132,7 @@ The **Execution Plan Text** tab provides the execution plan that is obtained fro
 | Amount of Transmitted Data | The total amount of data transmitted between Motion operators. |
 | Data Transmission Duration | The amount of time consumed to transmit data between Motion operators. |
 
-AnalyticDB for PostgreSQL User G
-
-**Execution Plan Tree tab**
-
-The **Execution Plan Tree** tab provides a tree chart to show the execution plan. The execution plan tree is displayed on the left side, and the operator execution statistics are displayed on the right side. You can click each operator card in the tree to view statistics of the operator. By default, the line below each operator card shows the execution duration proportion of the operator among all operators, and all operators are listed in the upper-right corner of the tab as sorted by execution duration. You can also sort operators by memory usage, amount of disk read data, disk read duration, amount of transmitted data, or data transmission duration and calculate the total sum of proportions. The following table describes the operator execution statistics.
-
-| Parameter | Description |
-|---|---|
-| SQL | The SQL text of the query statement. |
-| Start Time | The start time of the query statement. |
-| Process ID | The ID of the process that uniquely identifies the query statement. |
-| Session ID | The ID of the session that contains the query statement. |
-| Database | The database on which the query statement is executed. |
-| Status | The state of the query statement. |
-| Wait Duration | The waiting duration of the query statement. |
-| Username | The database account that executes the query statement. |
-
-AnalyticDB for PostgreSQL User G
-
-#### Lock diagnostics
+#### 9.3.4 Lock diagnostics
 
 When a query runs for an extended period without returning results, it may be waiting for a lock to be released. The lock diagnostics feature helps you quickly identify and analyze lock contention within your database.
 
@@ -7923,9 +8149,20 @@ The lock diagnostics feature is currently available only for instances in storag
 5. On the **Lock Diagnostics** page, you can filter lock diagnostic information by **Keyword**,
 **Username**, **Database**, **Filter Condition**, and **Query Time**.
 The lock diagnostics list displays the following information:
+
+| Parameter | Description |
+|---|---|
+| SQL | The SQL text of the query statement. |
+| Start Time | The start time of the query statement. |
+| Process ID | The ID of the process that uniquely identifies the query statement. |
+| Session ID | The ID of the session that contains the query statement. |
+| Database | The database on which the query statement is executed. |
+| Status | The state of the query statement. |
+| Wait Duration | The waiting duration of the query statement. |
+| Username | The database account that executes the query statement. |
+
 6. Click **Diagnose** in the **Operation** column of the target diagnostic information to view **Lock**
 **Wait Properties** and **Lock Diagnostic Details**.
-AnalyticDB for PostgreSQL User G
 **Lock Wait Properties**: This section displays the **Process ID**, **Username**, **Database**,
 **Start Time**, **Wait Duration**, and **Status**.
 **Lock Diagnostic Details**: This is the core of the analysis. It identifies both the blocked
@@ -7954,15 +8191,9 @@ Terminate a query Use this method if the blocking session is already idle or if 
 SELECT pg_terminate_backend(<Process ID>);
 ```
 
-| Task | Procedure |
-|---|---|
-| View alert history | In the Alert History list, view the Product Name, Affected Instance, Time, Rule Name, Status, Level, and Notification Recipient. Click the rule name to view the details of the alert rule. Note By default, you can query alert history data from the last 2 days. |
+## 10 Cloud Monitor
 
-AnalyticDB for PostgreSQL User G
-
-## Cloud Monitor
-
-### View performance metrics
+### 10.1 View performance metrics
 
 PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
 
@@ -7982,7 +8213,7 @@ and **read-only instances**. View performance metrics
 3. In the **time granularity** drop-down list, select **1 Minute** or **1 Hour** (default value) as the
 data collection interval.
 
-### Alert history
+### 10.2 Alert history
 
 After an alert is triggered, you can view its history. You can also export and download the alert history for local data analytics.
 
@@ -7996,19 +8227,16 @@ After an alert is triggered, you can view its history. You can also export and d
 **Level**, and time.
 5. On the Alert History page, you can perform the following tasks.
 
+| Task | Procedure |
+|---|---|
+| View alert history | In the Alert History list, view the Product Name, Affected Instance, Time, Rule Name, Status, Level, and Notification Recipient. Click the rule name to view the details of the alert rule. Note By default, you can query alert history data from the last 2 days. |
+
 | Export alert history | i. On the Alert History page, click in the upper-right corner. ii. In the Export Task dialog box, set Time Range and Task Name. Then, click OK. |
 |---|---|
 
-| Parameter | Description |
-|---|---|
-| Cloud Service Selection | This is set by default and does not need to be selected. |
-| Resource Scope | The scope of resources associated with the alert rule. The following types are supported. The available scope types may vary by cloud service. Instance: Select one or more target instances from the resource set of the current organization. Resource Set: Select a target resource set in the current organization and region. Application Group: Select an application group in the current organization and region. All Resources: This option is not supported by default. |
+### 10.3 Alert rules
 
-AnalyticDB for PostgreSQL User G
-
-### Alert rules
-
-#### Create an alert rule
+#### 10.3.1 Create an alert rule
 
 Create an alert rule that triggers alerts for a cloud service based on specified metric thresholds and promptly notifies relevant users.
 
@@ -8029,6 +8257,11 @@ The minimum alert detection frequency is once per minute.
 4. Above the list, click **Create Alert Rule**.
 5. In the **Create Alert Rule** panel, set the parameters as needed.
 
+| Parameter | Description |
+|---|---|
+| Cloud Service Selection | This is set by default and does not need to be selected. |
+| Resource Scope | The scope of resources associated with the alert rule. The following types are supported. The available scope types may vary by cloud service. Instance: Select one or more target instances from the resource set of the current organization. Resource Set: Select a target resource set in the current organization and region. Application Group: Select an application group in the current organization and region. All Resources: This option is not supported by default. |
+
 | Resource Selection | Based on the selected Resource Scope, select a specific resource instance, resource set, or application group. |
 |---|---|
 | Alert Rule Description | The main body of the alert rule. The rule is triggered when monitoring data meets the alert conditions. To set the rule description: i. Click Create Alert Rule. ii. In the Create Alert Rule panel, set the Rule Name, Metric Dimension, Monitoring Metric, Threshold, AndAlert Level. Note The Metric Dimension parameter is displayed only when Resource Scope is set to Instance. iii. Click Confirm. |
@@ -8038,8 +8271,9 @@ The minimum alert detection frequency is once per minute.
 | No Data Handling Method | The method for handling alerts when there is no monitoring data. Do Nothing Send No-data Alert |
 | Alert Contact | Select the user group or user to whom alert messages are sent. The default alert contact group for an Alibaba Cloud account is an empty group. You can use it to test the validity of an alert rule. |
 
-AnalyticDB for PostgreSQL User G
 6. Click **OK**.
+
+**Rule description parameters**
 
 | Parameter | Description |
 |---|---|
@@ -8048,21 +8282,11 @@ AnalyticDB for PostgreSQL User G
 | Metric Dimension | Refers to dimensions other than the instance ID. This parameter is displayed only when Resource Scope is set to Instance. |
 | Threshold And Alert Level (unit: %) | The alert levels are Critical, Warning, and Info. The aggregation method for monitoring data can be Average, Minimum, or Maximum. You can set the monitoring data epoch to 1 Consecutive Epoch, 5 Consecutive Epochs, 10 Consecutive Epochs, 15 Consecutive Epochs, 30 Consecutive Epochs, or 60 Consecutive Epochs. The comparison operator between the actual monitoring data and the alert threshold. Supported operators include “>”, “ >=”, “<”, “<= ”, “=”, “!=”, “Day-on-day Increase”, “Day-on-day Decrease”, “Period-on-period Increase”, “period-on-period Decrease”, “increase From Last Period”, and “decrease From Last Period”. You can also set a threshold and the number of times it must be met to trigger an alert. |
 
-AnalyticDB for PostgreSQL User G
-
-**Rule description parameters**
-
 **Example configuration**
 
 This example creates an alert rule named "example" for an Elastic Compute Service (ECS) instance to monitor its CPU utilization. The rule triggers a Critical alert if the maximum CPU utilization is greater than or equal to 70% for three occurrences within five detection periods. The following figure shows the rule description configuration for this scenario.
 
-| Task | Procedure |
-|---|---|
-| View alert rule details | In the Operation column of the target alert rule, click Details to view the rule details on the Alert Rule/Alert History/Faulty Resources panel. |
-
-AnalyticDB for PostgreSQL User G
-
-#### Manage alert rules
+#### 10.3.2 Manage alert rules
 
 From the list of alert rules, you can modify, enable, disable, and delete rules.
 
@@ -8074,23 +8298,23 @@ From the list of alert rules, you can modify, enable, disable, and delete rules.
 **Alert Rules**.
 4. Find the desired alert rule and perform the required operation.
 
+| Task | Procedure |
+|---|---|
+| View alert rule details | In the Operation column of the target alert rule, click Details to view the rule details on the Alert Rule/Alert History/Faulty Resources panel. |
+
 | Check rule validity | In the Validity column of the target alert rule, click Click To Inspect. The inspection result is displayed in the Validity column. Note If the inspection result is abnormal, click Detection Result. In the panel that appears, view the results for Alert Rule Execution Anomaly Detection, Alert Rule Load Detection, Invalid Alert Rule Detection, and Alert Rule Callback Detection. Click Re-detect to check the rule validity again. |
 |---|---|
 | View rule execution records | In the Rule Execution Record column of the target alert rule, click View Rule Execution Record. On the Alert Rule Execution Record panel, filter the execution records by time range. |
 | Modify an alert rule | i. In the Operation column of the target alert rule, click Edit. ii. On the Modify Alert Rule panel, modify the alert rule. For more information about the configuration parameters, see Create an alert rule. iii. After you finish the modification, click OK. |
 | Disable an alert rule | Disable alert rules when you manually stop a cloud product for maintenance or an upgrade. This prevents unnecessary alert notifications. Note Before disabling an alert rule, make sure that its Status is Normal. Disable a single rule a. In the Operation column of the target alert rule, click the icon, and then click Disable. b. In the Disable Alert Rule dialog box, click OK. Disable rules in a batch a. Select the check boxes next to the target alert rules, and then click Disable in the lower-left corner of the list. b. In the Disable Alert Rule dialog box, click OK. |
 
-AnalyticDB for PostgreSQL User G
-
 | Enable an alert rule | After you finish the maintenance or upgrade of a cloud product, re-enable the disabled alert rules. Note Before enabling an alert rule, make sure that its Status is Disabled. Enable a single rule a. In the Operation column of the target alert rule, click Enable. b. In the Enable Alert Rule dialog box, click OK. Enable rules in a batch a. Select the check boxes next to the target alert rules, and then click Enable in the lower-left corner of the list. b. In the Enable Alert Rule dialog box, click OK. |
 |---|---|
 | Delete an alert rule | Delete a single rule a. In the Operation column of the target alert rule, click the icon, and then click Delete. b. In the Delete Alert Rule dialog box, click OK. Delete rules in a batch a. Select the check boxes next to the target alert rules, and then click Delete in the lower-left corner of the list. b. In the Delete Alert Rule dialog box, click OK. |
 
-AnalyticDB for PostgreSQL User G AnalyticDB for PostgreSQL User G
+## 11 Best practices
 
-## Best practices
-
-### Configure memory and load
+### 11.1 Configure memory and load parameters
 
 **parameters**
 
@@ -8123,15 +8347,7 @@ compute nodes instead of 16 on a host that has 128 GB of memory to allow each co
 5. Set the gp_vmem_protect_limit parameter to limit the maximum VMEM that can be used by
 a single compute node. The memory size of a single host and the number of compute nodes deployed on the host determine the maximum memory size that a single compute node can use on average.
 6. For SQL statements that have unpredictable memory usage, you can set the
-statement_mem parameter in the session to limit the memory usage of a single SQL
-
-| Parameter | Description |
-|---|---|
-| huge page | Do not configure the huge page parameter of the system.A nalyticDB for PostgreSQL does not support the latest version of PostgreSQL and therefore does not support the huge page feature. The huge page parameter locks a part of the allocated memory. Database nodes are not able to use this part of the memory. |
-| vm.overcommit memory _ | If you use the swap space, set this parameter to 2. If you do not use the swap space, set this parameter to 0. Valid values: 0: The requested memory space cannot exceed the difference between the total memory and the resident set size (RSS). An error is returned only when the memory space has been exceeded. 1: Most processes use the malloc() function to request memory, but do not use all of the requested memory. When this parameter is set to 1, the memory requested by the malloc() function is allocated in all circumstances unless the memory is not sufficient. 2: The swap space is also considered when the system calculates the memory space that can be requested. You can request a large amount of memory even if the swap space is triggered. |
-| overcommit ratio _ | The larger the value is, the more memory the process can request. However, less space is reserved for the operating system. For more information about the formula that is used to calculate the memory parameters, see the "Examples to calculate the memory parameters" section of this topic. When this parameter is set to 2, the memory that can be requested cannot exceed swap + memory × overcommit ratio. _ |
-
-AnalyticDB for PostgreSQL User G statement. This prevents a single SQL statement from consuming all available memory.
+statement_mem parameter in the session to limit the memory usage of a single SQL statement. This prevents a single SQL statement from consuming all available memory.
 7. Set the statement_mem parameter at the database level to apply the parameter to all the
 sessions in the database.
 8. Use the resource queue of AnalyticDB for PostgreSQL to limit the maximum memory usage
@@ -8139,7 +8355,15 @@ of the resource group. Add database users to the resource group to limit the tot
 
 **Configure memory-related parameters**
 
-You can properly configure the operating system, database parameters, and resource queue to reduce the probability of OOM. When you calculate the average memory usage of a single compute node on a single host, you must consider both the primary and secondary compute nodes. If the cluster encounters a host failure, the system switches the service from primary compute nodes to the corresponding secondary compute nodes. At this time, the number of compute nodes on the host is greater than usual. Therefore, you must consider the amount of resources occupied by the secondary compute nodes during failover. The following tables describe how to configure parameters for the operating system kernel and database to avoid OOM. The following Operating system kernel parameters table describes the parameter configuration of the operating system kernel. The following Database parameters table describes the parameter configuration of the database.
+You can properly configure the operating system, database parameters, and resource queue to reduce the probability of OOM. When you calculate the average memory usage of a single compute node on a single host, you must consider both the primary and secondary compute nodes. If the cluster encounters a host failure, the system switches the service from primary compute nodes to the corresponding secondary compute nodes. At this time, the number of compute nodes on the host is greater than usual. Therefore, you must consider the amount of resources occupied by the secondary compute nodes during failover. The following tables describe how to configure parameters for the operating system kernel and database to avoid OOM. The following Operating system kernel parameters table describes the parameter configuration of the operating system kernel. Table 1. Operating system kernel parameters
+
+| Parameter | Description |
+|---|---|
+| huge page | Do not configure the huge page parameter of the system.A nalyticDB for PostgreSQL does not support the latest version of PostgreSQL and therefore does not support the huge page feature. The huge page parameter locks a part of the allocated memory. Database nodes are not able to use this part of the memory. |
+| vm.overcommit memory _ | If you use the swap space, set this parameter to 2. If you do not use the swap space, set this parameter to 0. Valid values: 0: The requested memory space cannot exceed the difference between the total memory and the resident set size (RSS). An error is returned only when the memory space has been exceeded. 1: Most processes use the malloc() function to request memory, but do not use all of the requested memory. When this parameter is set to 1, the memory requested by the malloc() function is allocated in all circumstances unless the memory is not sufficient. 2: The swap space is also considered when the system calculates the memory space that can be requested. You can request a large amount of memory even if the swap space is triggered. |
+| overcommit ratio _ | The larger the value is, the more memory the process can request. However, less space is reserved for the operating system. For more information about the formula that is used to calculate the memory parameters, see the "Examples to calculate the memory parameters" section of this topic. When this parameter is set to 2, the memory that can be requested cannot exceed swap + memory × overcommit ratio. _ |
+
+The following Database parameters table describes the parameter configuration of the database. Table 2. Database parameters
 
 | Parameter | Description |
 |---|---|
@@ -8147,13 +8371,9 @@ You can properly configure the operating system, database parameters, and resour
 | runaway detector activatio _ _ n percent _ | Default value: 90. Unit: %. When the amount of memory used by a compute node exceeds runaway detector activation percent × _ _ _ gp vmem protect limit/100, the query is terminated to prevent OOM. _ _ _ The query remains stopped until the memory usage reaches a value lower than runaway detector activation percent × _ _ _ gp vmem protect limit/100. _ _ _ You can use the gp toolkit.session level memory consumption view to _ _ _ _ observe the memory usage of each session and runaway information. |
 | statement mem _ | The maximum amount of memory that a single SQL statement can request. When the maximum memory is exceeded, spill files are created. Default value: 125. Unit: MB. We recommend that you set this parameter based on the following formula: (gp vmem protect limit * 0.9) / _ _ _ max expected concurrent queries _ _ _ Note You can specify the statement mem parameter in a _ session. If few concurrent queries exist and if the session needs to execute a query that requires a large amount of memory, you must specify this parameter in the session. The statement mem parameter is suitable for limiting _ memory usage in low concurrency scenarios. If you use statement mem to limit the memory for high concurrency _ scenarios, each query is allocated with a very small amount of memory. As a result, the performance of a small number of queries with high memory requirements in high concurrency scenarios is affected. We recommend that you use the resource queue to limit the maximum memory usage in high concurrency scenarios. |
 
-AnalyticDB for PostgreSQL User G
-
 | gp workfile limit files per q _ _ _ _ _ uery | The maximum number of spill files that can be created by each query. When the amount of memory requested by the query exceeds the statement mem limit, spill files (also known as work files) are created. _ Spill files are similar to the swap space of the operating system. When the number of spill files used exceeds the limit, the query is terminated. The default value is 0, which indicates that an unlimited number of spill files can be created. |
 |---|---|
 | gp workfile compress algori _ _ _ thm | The compression algorithm for spill files. Valid values: NONE and ZLIB. This parameter can optimize storage space or I/O by sacrificing CPU performance. You can set this parameter when the disk space is insufficient or when the spill files encounter a write bottleneck. |
-
-AnalyticDB for PostgreSQL User G
 
 **Examples to calculate the memory parameters**
 
@@ -8186,12 +8406,6 @@ Set vm.overcommit_ratio to 98.
 3. Calculate the gp_vmem_protect_limit parameter by dividing gp_vmem by
 maximum_acting_primary_segments. The maximum_acting_primary_segments parameter indicates the number of primary compute nodes to be run on each host after one host fails.
 
-| Parameter | Description |
-|---|---|
-| ACTIVE STATEMENTS _ | The number of SQL statements that can be concurrently executed (in the active state). A value of -1 indicates that an unlimited number of SQL statements can be concurrently executed. |
-
-AnalyticDB for PostgreSQL User G
-
 ```
 gp_vmem_protect_limit calculation gp_vmem_protect_limit = gp_vmem / maximum_acting_primary_segments
                       = 176 / 11
@@ -8217,7 +8431,11 @@ Command: CREATE RESOURCE QUEUE Description: create a new resource queue for work
         [ MEMORY_LIMIT='memory_units' ]
 ```
 
-The Resource queue creation parameters table describes the parameters for creating the resource queue.
+The Resource queue creation parameters table describes the parameters for creating the resource queue. Table 3. Resource queue creation parameters
+
+| Parameter | Description |
+|---|---|
+| ACTIVE STATEMENTS _ | The number of SQL statements that can be concurrently executed (in the active state). A value of -1 indicates that an unlimited number of SQL statements can be concurrently executed. |
 
 | MEMORY LIMIT _ 'memory units kB, MB or _ GB' | The maximum memory usage allowed by all SQL statements in the resource queue. A value of -1 indicates unlimited memory usage. However, it is easy to trigger OOM errors because it is limited by the database or system parameters mentioned in the preceding sections. The memory usage of SQL statements is limited by resource queues and parameters. When the gp resqueue memory policy parameter is set to none, the _ _ _ limit is the same as that in versions of Greenplum Database earlier than 4.1. When the gp resqueue memory policy parameter is set to auto and _ _ _ you have specified the statement mem parameter for a session or at _ the database level, the allowed memory of a single query exceeds the MEMORY LIMIT value of the resource queue. _ Example: SET statement mem='2GB'; _ SELECT * FROM my big table WHERE column='value' ORDER BY _ _ id; RESET statement mem; _ The system parameter max statement mem can limit the maximum _ _ memory usage at the compute node level. The memory requested by a single query cannot exceed max statement mem. _ _ You can modify the statement mem parameter at the session level, but _ do not modify the max statement mem parameter. We recommend _ _ that you specify max statement mem in the following formula: _ _ (seghost physical memory) / _ _ (average number concurrent queries) _ _ _ When the gp resqueue memory policy parameter is set to eager free, _ _ _ _ the database allocates the memory by stage. For example, if a query requests 1 GB of memory in total but needs only 100 MB during each stage, the database allocates 100 MB of memory to the query. You can use eager free to reduce the possibility of insufficient memory for the _ query. |
 |---|---|
@@ -8225,19 +8443,10 @@ The Resource queue creation parameters table describes the parameters for creati
 | COST OVERCOMMIT _ boolean | Specifies whether the limit of max cost can be exceeded while the system _ is idle. A value of TRUE indicates that the limit can be exceeded. |
 | MIN COST float _ | When the resources requested exceed the limit, the queries are queued. However, if the cost of a query is less than the min cost value, the query _ can be executed without being queued. |
 
-AnalyticDB for PostgreSQL User G
-
 | PRIORITY= {MIN\|LOW\|MEDIUM\|HIGH \|MAX} | The priority of the current resource queue. When resources are insufficient, CPU resources are allocated to the resource queue that has a higher priority. The SQL statements in the resource queue that has a higher priority can obtain CPU resources first. We recommend that you allocate users that initiate queries with high real-time requirements to resource queues that have higher priorities. This parameter is similar to the time slice policy that is used in CPU resource groups in a Linux cgroup to schedule real-time and common tasks. |
 |---|---|
 
-| Parameter | Description |
-|---|---|
-| gp resqueue memory policy _ _ _ | The memory management policy of the resource queue. |
-| gp resqueue priority _ _ | Specifies whether to enable query prioritization. Valid values: ON: enables query prioritization. OFF: disables query prioritization. If query prioritization is disabled, the existing priority settings are not evaluated. |
-| gp resqueue priority cpucores _ _ _ per segment _ _ | The number of CPU cores allocated to each compute node. For example, if an 8-core host is configured with two primary compute nodes, you can set the parameter to 4. If no other nodes exist on the primary node, set the parameter to 8. When the CPU is preempted, the SQL statements that are executed in a higher-priority resource group are allocated with CPU resources first. |
-| gp resqueue priority sweeper _ _ _ interval _ | The interval at which CPU utilization is recalculated for all active statements. The share value is calculated when the SQL statement is executed. You can calculate the share value based on the priority and gp resqueue priority cpucores per segment. _ _ _ _ _ The smaller the interval and the more frequent the calculation, the better the results achieved by the priority settings and the larger the overhead. |
-
-AnalyticDB for PostgreSQL User G Example of modifying resource queue limits:
+Example of modifying resource queue limits:
 
 ```
 ALTER RESOURCE QUEUE myqueue WITH (MAX_COST=-1.0, MIN_COST= -1.0);
@@ -8249,7 +8458,16 @@ Example of putting a user in a resource queue:
 ALTER ROLE sammy RESOURCE QUEUE poweruser;
 ```
 
-Tips for configuring resource queues: We recommend that you create a resource queue for each user. The default resource queue of AnalyticDB for PostgreSQL is pg_default. If no queue is created, all users are assigned to pg_default. This operation is not recommended. We recommend that you create a resource queue for each user. Typically, a database user corresponds to a business operation. Different database users may correspond to different business operations or users, such as business users, analysts, developers, and DBAs. AnalyticDB for PostgreSQL User G We recommend that you do not use superusers to execute queries. Queries initiated by superusers are limited only by the preceding parameters and not by the resource queue. If you want to use resource queues to limit the use of resources, we recommend that you do not use superusers to execute queries. ACTIVE_STATEMENTS indicates the SQL statements that can be concurrently executed within a resource queue. When the cost of a query is lower than the minimum cost specified by min_cost, the query can be executed without being queued. You can specify the MEMORY_LIMIT parameter to set the allowed maximum memory usage of all the SQL statements in a resource queue. The statement_mem parameter has a higher priority that can break through the limit of resource queues.
+Table 4. Resource queue parameters
+
+| Parameter | Description |
+|---|---|
+| gp resqueue memory policy _ _ _ | The memory management policy of the resource queue. |
+| gp resqueue priority _ _ | Specifies whether to enable query prioritization. Valid values: ON: enables query prioritization. OFF: disables query prioritization. If query prioritization is disabled, the existing priority settings are not evaluated. |
+| gp resqueue priority cpucores _ _ _ per segment _ _ | The number of CPU cores allocated to each compute node. For example, if an 8-core host is configured with two primary compute nodes, you can set the parameter to 4. If no other nodes exist on the primary node, set the parameter to 8. When the CPU is preempted, the SQL statements that are executed in a higher-priority resource group are allocated with CPU resources first. |
+| gp resqueue priority sweeper _ _ _ interval _ | The interval at which CPU utilization is recalculated for all active statements. The share value is calculated when the SQL statement is executed. You can calculate the share value based on the priority and gp resqueue priority cpucores per segment. _ _ _ _ _ The smaller the interval and the more frequent the calculation, the better the results achieved by the priority settings and the larger the overhead. |
+
+Tips for configuring resource queues: We recommend that you create a resource queue for each user. The default resource queue of AnalyticDB for PostgreSQL is pg_default. If no queue is created, all users are assigned to pg_default. This operation is not recommended. We recommend that you create a resource queue for each user. Typically, a database user corresponds to a business operation. Different database users may correspond to different business operations or users, such as business users, analysts, developers, and DBAs. We recommend that you do not use superusers to execute queries. Queries initiated by superusers are limited only by the preceding parameters and not by the resource queue. If you want to use resource queues to limit the use of resources, we recommend that you do not use superusers to execute queries. ACTIVE_STATEMENTS indicates the SQL statements that can be concurrently executed within a resource queue. When the cost of a query is lower than the minimum cost specified by min_cost, the query can be executed without being queued. You can specify the MEMORY_LIMIT parameter to set the allowed maximum memory usage of all the SQL statements in a resource queue. The statement_mem parameter has a higher priority that can break through the limit of resource queues.
 
 **Note**
 
@@ -8259,11 +8477,9 @@ The memory of all resource queues cannot exceed gp_vmem_protect_limit. You can d
 gp_toolkit.gp_resq_activity gp_toolkit.gp_resq_activity_by_queue gp_toolkit.gp_resq_priority_backend gp_toolkit.gp_resq_priority_statement gp_toolkit.gp_resq_role gp_toolkit.gp_resqueue_status
 ```
 
-AnalyticDB for PostgreSQL User G
+## 12 Appendix
 
-## Appendix
-
-### Authorize a tenant
+### 12.1 Authorize a tenant organization to access SLB
 
 **organization to access SLB**
 

@@ -3,16 +3,113 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 VPN Gateway Developer Guid
 product_version: "V3.16.2"
 doc_version: "20220913"
 pdf_pages: 103
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 VPN Gateway Developer Guide 20220913.pdf"
+source_pdf: "0cacde80a3bdd093_Alibaba Cloud Apsara Stack Enterprise v3.16.2 VPN Gateway Developer Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20VPN%20Gateway%20Developer%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 VPN Gateway Developer Guide
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development documentation
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Call an API operation
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 Obtain API information
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain the endpoint of VPN Gateway
+  - 2.7 Obtain a VPN Gateway SDK
+- 3 Call examples for SDK for Java
+  - 3.1 Getting started
+  - 3.2 Use SDK
+    - 3.2.1 Install VPC SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Troubleshooting
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples for SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use SDK
+    - 4.2.1 Install VPC SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call examples for SDK for Go
+  - 5.1 Quick start
+  - 5.2 Use SDK
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API reference
+  - 6.1 List of operations by function
+  - 6.2 Make API requests
+    - 6.2.1 Request syntax
+    - 6.2.2 API authorization
+    - 6.2.3 Request signatures
+    - 6.2.4 RAM authentication
+    - 6.2.5 Common parameters
+  - 6.3 VPN gateway
+    - 6.3.1 CreateVpnGateway
+    - 6.3.2 ModifyVpnGatewayAttribute
+    - 6.3.3 DescribeVpnGateways
+    - 6.3.4 DescribeVpnGateway
+    - 6.3.5 DeleteVpnGateway
+    - 6.3.6 DescribeRegions
+  - 6.4 Customer gateway
+    - 6.4.1 CreateCustomerGateway
+    - 6.4.2 ModifyCustomerGatewayAttribute
+    - 6.4.3 DescribeCustomerGateways
+    - 6.4.4 DescribeCustomerGateway
+    - 6.4.5 DeleteCustomerGateway
+  - 6.5 Routes for VPN gateways
+    - 6.5.1 CreateVpnRouteEntry
+    - 6.5.2 ModifyVpnRouteEntryWeight
+    - 6.5.3 DeleteVpnRouteEntry
+    - 6.5.4 DescribeVpnRouteEntries
+    - 6.5.5 PublishVpnRouteEntry
+    - 6.5.6 CreateVpnPbrRouteEntry
+    - 6.5.7 ModifyVpnPbrRouteEntryWeight
+    - 6.5.8 DeleteVpnPbrRouteEntry
+    - 6.5.9 DescribeVpnPbrRouteEntries
+  - 6.6 IPsec-VPN
+    - 6.6.1 CreateVpnConnection
+    - 6.6.2 ModifyVpnConnectionAttribute
+    - 6.6.3 DescribeVpnConnections
+    - 6.6.4 DescribeVpnConnection
+    - 6.6.5 DownloadVpnConnectionConfig
+    - 6.6.6 DeleteVpnConnection
+  - 6.7 SSL-VPN
+    - 6.7.1 CreateSslVpnServer
+    - 6.7.2 ModifySslVpnServer
+    - 6.7.3 DescribeSslVpnServers
+    - 6.7.4 DescribeVpnSslServerLogs
+    - 6.7.5 DeleteSslVpnServer
+    - 6.7.6 CreateSslVpnClientCert
+    - 6.7.7 ModifySslVpnClientCert
+    - 6.7.8 DescribeSslVpnClientCerts
+    - 6.7.9 DescribeSslVpnClientCert
+    - 6.7.10 DeleteSslVpnClientCert
+- 7 Appendixes
+  - 7.1 Use the ASAPI gateway to call API operations
+  - 7.2 Use the ASAPI gateway to make API calls
+    - 7.2.1 Obtain the endpoint of ASAPI
+    - 7.2.2 Obtain the ASAPI SDK
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Center page by using a browser.
@@ -21,7 +118,7 @@ This topic describes how to view the desired product development documentation w
 4. In the left-side navigation pane, select the name of the product that you want to view.
 5. In the upper-right corner of the product documentation section, click View Det ails or Download PDF.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Apsara Stack allows you to call API operations by using the point of presence (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provi Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, an Procedure
 1. Obtain AccessKey credentials.
@@ -41,9 +138,9 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 5. Obtain the cloud service endpoint.
 6. Obtain the cloud service SDK and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press Enter.
@@ -54,7 +151,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### Obtain API information
+### 2.2 Obtain API information
 
 To call API operations by using an SDK, you must first obtain information about the service name, API operation name, and API version. Context The information on the API Directory page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the API Directory page is different from that in the developer guide of a cloud service, the information in the developer guide prevails. Procedure
 1. Log on to the Apsara Uni-manager Management Console.
@@ -64,7 +161,7 @@ To call API operations by using an SDK, you must first obtain information about 
 then click Search.
 5. In the search result, you can view the cloud service name, API operat ion name, and API version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are provided by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is provided by RAM. Context An AccessKey ID and an AccessKey secret are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt the signature. AccessKey credentials can be provided by RAM or STS: An AccessKey pair that is provided by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is provided by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -87,7 +184,7 @@ Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret . Th
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS. Procedure
 1. Obtain the `RAM role` .
@@ -178,7 +275,7 @@ evious step.
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain the values of common header parameters
+### 2.5 Obtain the values of common header parameters
 
 You must set header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the return values of some parameters after you call API operations. Header parameters
 
@@ -209,7 +306,7 @@ The following response parameters are returned by default when you call API oper
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of VPN Gateway
+### 2.6 Obtain the endpoint of VPN Gateway
 
 This topic describes how to obtain the endpoint of VPN Gateway. Background information To use the POP gateway to call API operations in Apsara Stack, you must specify the endpoint of a cloud service. You can obtain an endpoint from onsite Apsara Stack O&M engineers. You can also perform the following operations to obtain an endpoint. Procedure
 1. Log on to the Apsara Infrastructure Management console.
@@ -221,7 +318,7 @@ icon next to Service and search for `VPC` .
 5. Find `vpc-yaochi` . Right-click the value in the Service Regist rat ion column and select Show More.
 In the Det ails dialog box, view the value of vpc-int ernal.openapi.endpoint . This value indicates the `endpoint` of VPN Gateway.
 
-### Obtain a VPN Gateway SDK
+### 2.7 Obtain a VPN Gateway SDK
 
 When you call API operations in Apsara Stack by using the point of presence (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain Apsara Stack SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. Background information To use VPN gateways, you must install a virtual private cloud (VPC) SDK and the Apsara Stack core library. For example, to use VPC SDK for Java, you must download
 
@@ -231,11 +328,11 @@ When you call API operations in Apsara Stack by using the point of presence (POP
 
 A VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies callers based on their AccessKey pairs and provides features such as automatic signing to allow you to create and manage resources by calling API operations. An Apsara Stack SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is applicable to all cloud services and is compatible with Apsara Stack. Obtain VPC SDKs The SDKs for Java, Python, and Go are provided. You can obtain the SDKs from Apsara Stack SDKs based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Getting started
+### 3.1 Getting started
 
-This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java. To use the features of VPN Gateway, you must use a VPC SDK. Prerequisites An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain an AccessKey pair. The endpoint of VPN Gateway is obtained. For more information, see Obtain the endpoint of VPN Gateway. SDKs for Java provided by Apsara Stack require Java Development Kit (JDK) 1.8 or later. Install VPC SDK for Java If you use Apache Maven to manage Java projects, you need to only import Maven files to the pom.xml file of the projects. To use a VPC SDK, you must install the SDK core library and the VPC SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, the VPC SDK uses version 3.2.0.
+This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java. To use the features of VPN Gateway, you must use a VPC SDK. Prerequisites An authorized account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain an AccessKey pair. The endpoint of VPN Gateway is obtained. For more information, see Obtain the endpoint of VPN Gateway. SDKs for Java provided by Apsara Stack require Java Development Kit (JDK) 1.8 or later. If you use Apache Maven to manage Java projects, you need to only import Maven files to the pom.xml file of the projects. To use a VPC SDK, you must install the SDK core library and the VPC SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, the VPC SDK uses version 3.2.0.
 
 ```xml
 <dependencies>
@@ -311,9 +408,9 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-### Use SDK
+### 3.2 Use SDK
 
-3.2.1. Install VPC SDK for Java This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. The features of VPN Gateway are implemented by using VPC SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading Apsara Stack SDK. To use the development tool kit for VPC, you must install the core library of Apsara Stack SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use Apsara Stack SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Apsara Stack SDK.
+This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. The features of VPN Gateway are implemented by using VPC SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading Apsara Stack SDK. To use the development tool kit for VPC, you must install the core library of Apsara Stack SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use Apsara Stack SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Apsara Stack SDK.
 
 ```xml
 <dependencies>
@@ -330,7 +427,7 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
 </dependencies>
 ```
 
-3.2.2. Configure authentication credentials SDK for Java When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara SDK for Java supports authentication through AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair as the access credential, you must configure your credential when you initialize the client. Not e Do not disclose code containing your AccessKey pair (for example, do not commit the code to public GitHub projects). Otherwise, your Apsara Stack tenant account may be compromised.
+SDK for Java When you use Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara SDK for Java supports authentication through AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair as the access credential, you must configure your credential when you initialize the client. Not e Do not disclose code containing your AccessKey pair (for example, do not commit the code to public GitHub projects). Otherwise, your Apsara Stack tenant account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -339,7 +436,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace with your AccessKey secret.
 ```
 
-Not e In the preceding sample code, replace the variable parameters with the actual information. Remove the brackets (<>) in the final code. 3.2.3. Configure connection requests This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+Not e In the preceding sample code, replace the variable parameters with the actual information. Remove the brackets (<>) in the final code. This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -357,7 +454,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-3.2.4. Initiate a request This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to initiate a request. Procedure
+This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to initiate a request. Procedure
 1. Create an AcsClient.
 
 ```
@@ -393,7 +490,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-3.2.5. Troubleshooting If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem:
+If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem:
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
@@ -420,7 +517,7 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-3.2.6. Use CommonRequest to call API operations If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Benefits Lightweight: You need to only download the core package. You do not need to download and install an SDK. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast iteration. Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the `YYYY-MM-DD` format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Action>")` . SDK for Java For example, if you want to call the DescribeCustomerGateway operation, you must use `request.setSysAction("DescribeCustomerGateway")` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code shows how to obtain information about a customer gateway by calling the DescribeCustomerGateway operation of VPN Gateway. Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Benefits Lightweight: You need to only download the core package. You do not need to download and install an SDK. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast iteration. Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the `YYYY-MM-DD` format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Action>")` . SDK for Java For example, if you want to call the DescribeCustomerGateway operation, you must use `request.setSysAction("DescribeCustomerGateway")` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code shows how to obtain information about a customer gateway by calling the DescribeCustomerGateway operation of VPN Gateway. Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType; public class Sample {
@@ -481,11 +578,11 @@ want to delete, modify, or query an instance.
 
 SDK for Python
 
-## Call examples for SDK for Python
+## 4 Call examples for SDK for Python
 
-### Getting started
+### 4.1 Getting started
 
-This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python. To use the features of VPN Gateway, you must use a VPC SDK. Prerequisites An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. For more information, see Obtain an AccessKey pair. The endpoint of VPN Gateway is obtained. For more information, see Obtain the endpoint of VPN Gateway. Install VPC SDK for Python
+This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python. To use the features of VPN Gateway, you must use a VPC SDK. Prerequisites An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. For more information, see Obtain an AccessKey pair. The endpoint of VPN Gateway is obtained. For more information, see Obtain the endpoint of VPN Gateway.
 1. Install the SDK core library.
 If you use Python 2.x, run the following command:
 
@@ -534,9 +631,9 @@ request = DescribeCustomerGatewaysRequest.DescribeCustomerGatewaysRequest() requ
 response = clt.do_action_with_exception(request) print response # If you use Python 3.x, the default value is print (response).
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-4.2.1. Install VPC SDK for Python This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. To use the features of VPN Gateway, you must use a VPC SDK. SDKs for Python of Apsara Stack support Python 2.6.x, 2.7.x, 3.x, and later versions. You can install an SDK for Python by using pip. Not e To use the SDK of a cloud service, you must install the SDK core library for Python. For example, if you want to use VPC SDK for Python, you must install the SDK core library for Python and VPC SDK for Python. If you use Python 2.x, run the following command: SDK for Python
+This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. To use the features of VPN Gateway, you must use a VPC SDK. SDKs for Python of Apsara Stack support Python 2.6.x, 2.7.x, 3.x, and later versions. You can install an SDK for Python by using pip. Not e To use the SDK of a cloud service, you must install the SDK core library for Python. For example, if you want to use VPC SDK for Python, you must install the SDK core library for Python and VPC SDK for Python. If you use Python 2.x, run the following command: SDK for Python
 
 ```
 pip install aliyun-python-sdk-core
@@ -560,13 +657,13 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-vpc
 ```
 
-4.2.2. Configure authentication credentials When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. SDKs for Python support authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. SDKs for Python support authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-4.2.3. Set HTTPS requests Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. Not e The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. Add OpenSSL support The HTTPS protocol support of Apsara Stack SDK for Python is based on the OpenSSL support in Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later.
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. Not e The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. Add OpenSSL support The HTTPS protocol support of Apsara Stack SDK for Python is based on the OpenSSL support in Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later.
 
 | Run the | python -c "import ssl" | co |
 |---|---|---|
@@ -592,7 +689,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-4.2.4. Initiate a request This topic describes how to use VPC SDK for Python to initiate a request. To use the features of VPN Gateway, you must use a VPC SDK. Procedure
+This topic describes how to use VPC SDK for Python to initiate a request. To use the features of VPN Gateway, you must use a VPC SDK. Procedure
 1. Import the VPC SDK.
 
 ```python
@@ -618,7 +715,7 @@ request = DescribeCustomerGatewaysRequest.DescribeCustomerGatewaysRequest() requ
 response = clt.do_action_with_exception(request) print response
 ```
 
-4.2.5. Handle errors If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
+If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
 ```
 aliyunsdkcore.acs\_exception.exceptions.ServerException: HTTP Status: 404 Error:InvalidAccessKeyId.NotFound Specified access key is not found.
@@ -637,7 +734,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-4.2.6. Use CommonRequest to call API operations If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Benefits Lightweight: You need to only download the core package. You do not need to download and install an SDK. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast iteration. Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the `YYYY-MM-DD` format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and use `request.set_action_name('Action')` to specify the API operation. For example, if you want to call the DescribeCustomerGateways operation, you must use `request.set_action_name('DescribeCustomerGateways')` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code shows how to obtain information about customer gateways by calling the DescribeCustomerGateways operation of VPN Gateway: Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Python
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Benefits Lightweight: You need to only download the core package. You do not need to download and install an SDK. Easy to use: You can call the newly released API operations of a service without the need to update the SDK of the service. Fast iteration. Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the `YYYY-MM-DD` format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and use `request.set_action_name('Action')` to specify the API operation. For example, if you want to call the DescribeCustomerGateways operation, you must use `request.set_action_name('DescribeCustomerGateways')` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following code shows how to obtain information about customer gateways by calling the DescribeCustomerGateways operation of VPN Gateway: Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest Specify the AccessKey ID, AccessKey secret, and region ID. client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('Vpc') request.set_action_name('DescribeCustomerGateways') request.set_version('2016-04-28') request.set_domain('<vpc.aliyuncs.com>') #Specify the endpoint of the service.
@@ -670,9 +767,9 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 SDK for Go
 
-## Call examples for SDK for Go
+## 5 Call examples for SDK for Go
 
-### Quick start
+### 5.1 Quick start
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Go. To use the features of VPN Gateway, you must use VPC SDK. Prerequisites An Apsara Stack tenant account and an AccessKey pair, which consists of an AccessKey ID and an AccessKey secret, are obtained. For more information, see Obtain an AccessKey pair. The endpoint of VPN Gateway is obtained. For more information, see Obtain the endpoint of VPN Gateway. Install the core package of Alibaba Cloud SDK for Go Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -725,15 +822,15 @@ func main() {
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-5.2.1. Install the core package of SDK for Go This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
+This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-SDK for Go 5.2.2. Configure authentication credentials When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize a vpcClient instance for VPN Gateway.
+SDK for Go When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize a vpcClient instance for VPN Gateway.
 
 ```
 // Initialize a vpcClient instance. vpcClient, err := vpc.NewClientWithAccessKey(
@@ -742,7 +839,7 @@ SDK for Go 5.2.2. Configure authentication credentials When you use Alibaba Clou
         "<yourAccessKeySecret>")        // Replace the parameter with your AccessKey secret.
 ```
 
-Not e In the preceding code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. 5.2.3. Initiate a request This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. To use the features of VPN Gateway, you must use VPC SDK. The following example shows how to use VPC SDK for Go to initiate a request of VPN Gateway.
+Not e In the preceding code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. To use the features of VPN Gateway, you must use VPC SDK. The following example shows how to use VPC SDK for Go to initiate a request of VPN Gateway.
 1. Import VPC SDK for Go.
 
 ```java
@@ -773,7 +870,7 @@ request := vpc.CreateDescribeCustomerGatewaysRequest() request.InstanceId = ""
 response, err := vpcClient.DescribeCustomerGateways(request)
 ```
 
-5.2.4. Handle errors When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. Handle errors You can use the following code to handle errors:
+When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. You can use the following code to handle errors:
 
 ```
 response,err := vpcClient.DescribeCustomerGateways(request) if err != nil {
@@ -827,7 +924,7 @@ response, err := vpcClient.DescribeCustomerGateways(request) if serverError, ok 
     response.GetOriginHttpResponse()
 ```
 
-5.2.5. Use CommonRequest to call API operations If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following code shows how to obtain information about customer gateways by calling the DescribeCustomerGateways operation of VPN Gateway: Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ecs.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
+If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following code shows how to obtain information about customer gateways by calling the DescribeCustomerGateways operation of VPN Gateway: Not e In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <ecs.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
 
 ```java
 package main import (
@@ -882,9 +979,9 @@ y, delete, or query an instance.
     fmt.Print(response.GetHttpContentString())
 ```
 
-## API reference
+## 6 API reference
 
-### List of operations by function
+### 6.1 List of operations by function
 
 The following tables list API operations that are available for use in VPN Gateway. VPN gateways
 
@@ -921,8 +1018,6 @@ VPN gateway routes
 | DeleteVpnRouteEntry | Deletes a destination-based route entry of a VPN gateway. |
 | DeleteVpnPbrRouteEntry | Deletes a policy-based route entry of a VPN gateway. |
 
-IPsec-VPN
-
 | API | Description |
 |---|---|
 | CreateVpnConnection | Creates an IPsec-VPN connection. |
@@ -931,8 +1026,6 @@ IPsec-VPN
 | DescribeVpnConnection | Queries detailed information about an IPsec-VPN connection. |
 | DownloadVpnConnectionConfig | Downloads the configuration of an IPsec-VPN connection. |
 | DeleteVpnConnection | Deletes a specified IPsec-VPN connection. |
-
-SSL-VPN
 
 | API | Description |
 |---|---|
@@ -950,9 +1043,9 @@ SSL-VPN
 | DescribeSslVpnClientCert | Queries detailed information about an SSL-VPN client certificate. |
 | DeleteSslVpnClientCert | Deletes an SSL-VPN client certificate. |
 
-### Make API requests
+### 6.2 Make API requests
 
-6.2.1. Request syntax To call a VPN Gateway API operation, you must send an HTTP GET request to the endpoint of the VPN Gateway API. Before you send a request, you must specify the request parameters for the operation. A response is returned for each request. Requests and responses are encoded in UTF-8. VPN Gateway API operations use the RPC protocol. You can call VPN Gateway API operations by sending HTTP GET requests. The following request syntax is used:
+To call a VPN Gateway API operation, you must send an HTTP GET request to the endpoint of the VPN Gateway API. Before you send a request, you must specify the request parameters for the operation. A response is returned for each request. Requests and responses are encoded in UTF-8. VPN Gateway API operations use the RPC protocol. You can call VPN Gateway API operations by sending HTTP GET requests. The following request syntax is used:
 
 ```
 http://Endpoint/?Action=xx&Parameters
@@ -970,7 +1063,7 @@ Action: the operation that you want to call. For example, you can call DescribeV
 https://vpc.example.com/?Action=DescribeVpnGateways &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-6.2.2. API authorization To ensure the security of your account, we recommend that you call API operations as a Resource Access Management (RAM) user. Before you call the VPN Gateway API as a RAM user, you must create a RAM user and grant the RAM user the required permissions. For more information about VPN resources and API operations that you can authorize a RAM user to use, see RAM authentication. 6.2.3. Request signatures You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. VPN Gateway implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Alibaba Cloud accounts and RAM users that is similar to a pair of username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. You must add the signature to an RPC API request in the following format:
+To ensure the security of your account, we recommend that you call API operations as a Resource Access Management (RAM) user. Before you call the VPN Gateway API as a RAM user, you must create a RAM user and grant the RAM user the required permissions. For more information about VPN resources and API operations that you can authorize a RAM user to use, see RAM authentication. You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. VPN Gateway implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Alibaba Cloud accounts and RAM users that is similar to a pair of username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. You must add the signature to an RPC API request in the following format:
 
 | https://endpoint/?SignatureVersion=1.0&SignatureMethod=HMAC-SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf |   |   |   |   |
 |---|---|---|---|---|
@@ -1001,7 +1094,7 @@ GET&%2F&AccessKeyId%3Dtestid&Action%3DDescribeVpnGateways&Format%3DXML&Signature
 http://vpc.example.com/?Action=DescribeVpnGateways &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-6.2.4. RAM authentication Before you call the VPN Gateway API as a RAM user, you must use an Apsara Stack tenant account to create a permission policy to assign permissions to the RAM user. In the permission policy, you must use an Alibaba Cloud Resource Name (ARN) to specify the resource that you want this RAM user to access. Resources types of VPN Gateway that can be authorized The following table lists the VPN Gateway resources that can be authorized and the ARNs of these resources.
+Before you call the VPN Gateway API as a RAM user, you must use an Apsara Stack tenant account to create a permission policy to assign permissions to the RAM user. In the permission policy, you must use an Alibaba Cloud Resource Name (ARN) to specify the resource that you want this RAM user to access. Resources types of VPN Gateway that can be authorized The following table lists the VPN Gateway resources that can be authorized and the ARNs of these resources.
 
 | Resource type | ARN |
 |---|---|
@@ -1043,7 +1136,7 @@ $regionid`/`accoutid`/`vrouterid are the IDs of specific resources. `*` represen
 | ModifyVpnConnectionAttribute | acs:vpc:$regionid:$accountid:vpnconnection/$vpnconnectionid |
 | DownloadVpnConnectionConfig | acs:vpc:$regionid:$accountid:vpnconnection/$vpnconnectionid |
 
-6.2.5. Common parameters Common parameters include common request parameters and common response parameters. Common request parameters Common request parameters must be included in all virtual private cloud (VPC) API requests. The following table describes the common request parameters.
+Common parameters include common request parameters and common response parameters. Common request parameters Common request parameters must be included in all virtual private cloud (VPC) API requests. The following table describes the common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1070,9 +1163,9 @@ Common response parameters API responses use the HTTP response format where a 2x
     /*Returned data*/
 ```
 
-### VPN gateway
+### 6.3 VPN gateway
 
-6.3.1. CreateVpnGateway Creates a VPN gateway.
+Creates a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1104,7 +1197,7 @@ http(s)://vpc.example.com/?Action=CreateVpnGateway &Bandwidth=5 &RegionId=cn-qin
 |---|---|
 | { "CreateVpnGatewayResponse":{ "Name":"myVpn", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B457" } } |   |
 
-6.3.2. ModifyVpnGatewayAttribute Modifies the name and description of a VPN gateway.
+Modifies the name and description of a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1150,7 +1243,7 @@ https://vpc.example.com/?Action=ModifyVpnGatewayAttribute &VpnGatewayId=vpn-bp1q
 |---|---|
 | { "Name":"aaa", "Status":"active", "VpnGatewayId":"vpn-bp1q8bgx4xnkm2ogj****", "Spec":"5M", "RequestId":"BA56EAF8-E3A9-4BE6-8511-8F03512153E2", "IntranetIp":"172.XX.XX.104", "CreateTime":1492753580000, "InternetIp":"116.XX.XX.69", "EndTime":1495382400000, "VSwitchId":"vsw-bp1y9ovl1cu9ou4tv****", "VpcId":"vpc-bp1ub1yt9cvakoelj****" } |   |
 
-6.3.3. DescribeVpnGateways Queries VPN gateways.
+Queries VPN gateways.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1217,7 +1310,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateways
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. Apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.3.4. DescribeVpnGateway Queries the details of a specified VPN gateway.
+Queries the details of a specified VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1269,7 +1362,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnGatewayInstanceId.NotFo und | The specified vpn gateway instance id does not exist. | The error message returned because the specified VPN gateway does not exist. Check whether the configuration of the VPN gateway is valid. |
 
-6.3.5. DeleteVpnGateway Deletes a specified VPN gateway. Not e You cannot delete a VPN gateway that is associated with an IPsec-VPN connection.
+Deletes a specified VPN gateway. Not e You cannot delete a VPN gateway that is associated with an IPsec-VPN connection.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1306,7 +1399,7 @@ http(s)://[Endpoint]/?Action=DeleteVpnGateway &VpnGatewayId=vpn-bp1q8bgx4xnkm2og
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.Configuring | The specified VPN gateway is being configured. | The error message returned because the VPN gateway is being configured. |
 
-6.3.6. DescribeRegions Queries the most recent region list.
+Queries the most recent region list.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1335,9 +1428,9 @@ http(s)://[Endpoint]/?Action=DescribeRegions
 |---|---|
 | { "RequestId": "611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F", "Regions": { "RegionId": "cn-qingdao-env17-d01", "RegionEndpoint": "vpc.aliyuncs.com", "LocalName": "China (Qingdao)" } } |   |
 
-### Customer gateway
+### 6.4 Customer gateway
 
-6.4.1. CreateCustomerGateway Creates a customer gateway.
+Creates a customer gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1385,7 +1478,7 @@ http(s)://[Endpoint]/?Action=CreateCustomerGateway &IpAddress=116.XX.XX.222
 | 400 | InvalidDescription | The description is not valid | The error message returned because the description format of the specified parameter is invalid. |
 | 400 | Resource.QuotaFull | The quota of resource is full | The error message returned because the resource quota is reached. |
 
-6.4.2. ModifyCustomerGatewayAttribute Modifies the name and description of a customer gateway.
+Modifies the name and description of a customer gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1431,7 +1524,7 @@ http(s)://[Endpoint]/?Action=ModifyCustomerGatewayAttribute &CustomerGatewayId=v
 | 400 | InvalidName | The name is not valid | The error message returned because the format of the name is invalid. |
 | 400 | InvalidDescription | The description is not valid | The error message returned because the format of the description is invalid. |
 
-6.4.3. DescribeCustomerGateways Queries customer gateways in a specified region.
+Queries customer gateways in a specified region.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1486,7 +1579,7 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateways
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. Acquire the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. Acquire the required permissions and try again. |
 
-6.4.4. DescribeCustomerGateway Queries details of a specified customer gateway.
+Queries details of a specified customer gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1521,7 +1614,7 @@ http(s)://[Endpoint]/?Action=DescribeCustomerGateway &CustomerGatewayId=vpn-bp1q
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 404 | InvalidCustomerGatewayInstanceId. NotFound | The specified customer gateway instance id does not exist. | The error message returned because the specified customer gateway does not exist. Check whether the ID of the customer gateway is valid. |
 
-6.4.5. DeleteCustomerGateway Deletes a specified customer gateway.
+Deletes a specified customer gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1552,9 +1645,9 @@ http(s)://[Endpoint]/?Action=DeleteCustomerGateway &CustomerGatewayId=vpn-bp1q8b
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidCustomerGatewayInstanceId. NotFound | The specified customer gateway instance id does not exist. | The error message returned because the specified instance ID does not exist. |
 
-### Routes for VPN gateways
+### 6.5 Routes for VPN gateways
 
-6.5.1. CreateVpnRouteEntry Creates a destination-based route on a VPN gateway.
+Creates a destination-based route on a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1606,7 +1699,7 @@ http(s)://[Endpoint]/?Action=CreateVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.2. ModifyVpnRouteEntryWeight Modifies the weight of a destination-based route for a VPN gateway.
+Modifies the weight of a destination-based route for a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1645,7 +1738,7 @@ http(s)://[Endpoint]/?Action=ModifyVpnRouteEntryWeight &NewWeight=100 &NextHop=v
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.3. DeleteVpnRouteEntry Deletes a destination-based route from a VPN gateway.
+Deletes a destination-based route from a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1695,7 +1788,7 @@ http(s)://[Endpoint]/?Action=DeleteVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd*
 |---|---|---|---|
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.4. DescribeVpnRouteEntries Queries destination-based routes of a VPN gateway.
+Queries destination-based routes of a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1737,7 +1830,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnRouteEntries &VpnGatewayId=vpn-bp1a3kqji
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.5.5. PublishVpnRouteEntry Advertises a route of a VPN gateway to the route table of the associated virtual private cloud (VPC).
+Advertises a route of a VPN gateway to the route table of the associated virtual private cloud (VPC).
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1781,7 +1874,7 @@ http(s)://[Endpoint]/?Action=PublishVpnRouteEntry &NextHop=vco-bp15oes1py4i66rmd
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.6. CreateVpnPbrRouteEntry Creates a policy-based route for a VPN gateway.
+Creates a policy-based route for a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1843,7 +1936,7 @@ http(s)://[Endpoint]/?Action=CreateVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 |---|---|---|---|
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.7. ModifyVpnPbrRouteEntryWeight Modifies the weight of a policy-based route of a VPN gateway.
+Modifies the weight of a policy-based route of a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1885,7 +1978,7 @@ http(s)://[Endpoint]/?Action=ModifyVpnPbrRouteEntryWeight &NewWeight=100 &NextHo
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.8. DeleteVpnPbrRouteEntry Deletes a policy-based route from a VPN gateway.
+Deletes a policy-based route from a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1927,7 +2020,7 @@ http(s)://[Endpoint]/?Action=DeleteVpnPbrRouteEntry &NextHop=vco-bp15oes1py4i66r
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.5.9. DescribeVpnPbrRouteEntries Queries policy-based routes of a VPN gateway.
+Queries policy-based routes of a VPN gateway.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -1986,9 +2079,9 @@ http(s)://[Endpoint]/?Action=DescribeVpnPbrRouteEntries &VpnGatewayId=vpn-bp1a3k
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-### IPsec-VPN
+### 6.6 IPsec-VPN
 
-6.6.1. CreateVpnConnection Creates an IPsec-VPN connection.
+Creates an IPsec-VPN connection.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2045,7 +2138,7 @@ http(s)://[Endpoint]/?Action=CreateVpnConnection &CustomerGatewayId=vpn-bp1q8bgx
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.6.2. ModifyVpnConnectionAttribute Modifies the configuration of an IPsec-VPN connection.
+Modifies the configuration of an IPsec-VPN connection.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2160,7 +2253,7 @@ http(s)://[Endpoint]/?Action=ModifyVpnConnectionAttribute &VpnConnectionId=vco-b
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-6.6.3. DescribeVpnConnections Queries one or more IPsec-VPN connections.
+Queries one or more IPsec-VPN connections.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2279,7 +2372,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnections
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.6.4. DescribeVpnConnection Queries the details of an IPsec-VPN connection.
+Queries the details of an IPsec-VPN connection.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2384,7 +2477,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnConnection &VpnConnectionId=vco-bp1bbi27
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnConnectionInstanceId.Not Found | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec-VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 
-6.6.5. DownloadVpnConnectionConfig Queries the configuration of an IPsec-VPN connection.
+Queries the configuration of an IPsec-VPN connection.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2465,7 +2558,7 @@ http(s)://[Endpoint]/?Action=DownloadVpnConnectionConfig &VpnConnectionId=vco-bp
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 404 | InvalidVpnConnectionInstanceId.Not Found | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec-VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 
-6.6.6. DeleteVpnConnection Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted.
+Deletes a specified IPsec-VPN connection. Not e After an IPsec-VPN connection between a virtual private cloud (VPC) and a data center is deleted, the communication between the VPC and data center is interrupted.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2500,9 +2593,9 @@ http(s)://[Endpoint]/?Action=DeleteVpnConnection &VpnConnectionId=vco-bp1bbi27ho
 | 404 | InvalidVpnConnectionInstanceId.Not Found | The specified vpn connection instance id does not exist. | The error message returned because the specified IPsec-VPN connection does not exist. Check whether the ID of the IPsec-VPN connection is valid. |
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 
-### SSL-VPN
+### 6.7 SSL-VPN
 
-6.7.1. CreateSslVpnServer Creates an SSL-VPN server.
+Creates an SSL-VPN server.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2553,7 +2646,7 @@ http(s)://[Endpoint]/?Action=CreateSslVpnServer &ClientIpPool=192.168.1.0/24 &Lo
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.7.2. ModifySslVpnServer Modifies the configuration of an SSL-VPN server.
+Modifies the configuration of an SSL-VPN server.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2613,7 +2706,7 @@ http(s)://[Endpoint]/?Action=ModifySslVpnServer &SslVpnServerId=vss-bp18q7hzj6la
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.7.3. DescribeSslVpnServers Queries one or more SSL-VPN servers.
+Queries one or more SSL-VPN servers.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2674,7 +2767,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnServers
 |---|---|---|---|
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.7.4. DescribeVpnSslServerLogs Queries the logs of an SSL-VPN server.
+Queries the logs of an SSL-VPN server.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2713,7 +2806,7 @@ http(s)://[Endpoint]/?Action=DescribeVpnSslServerLogs &VpnSslServerId=vss-bp155e
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.7.5. DeleteSslVpnServer Deletes an SSL-VPN server.
+Deletes an SSL-VPN server.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2745,7 +2838,7 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnServer &SslVpnServerId=vss-bp18q7hzj6la
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 
-6.7.6. CreateSslVpnClientCert Creates an SSL-VPN client certificate.
+Creates an SSL-VPN client certificate.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2782,7 +2875,7 @@ http(s)://[Endpoint]/?Action=CreateSslVpnClientCert &SslVpnServerId=vss-m5et0q3i
 | 400 | VpnGateway.FinancialLocked | The specified service is financial locked. | The error message returned because the service is suspended due to overdue payments. Top up your account first. |
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-6.7.7. ModifySslVpnClientCert Modifies the name of an SSL-VPN client certificate.
+Modifies the name of an SSL-VPN client certificate.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2819,7 +2912,7 @@ http(s)://[Endpoint]/?Action=ModifySslVpnClientCert &SslVpnClientCertId=vsc-bp1n
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 400 | InvalidName | The name is not valid | The error message returned because the specified name is in an invalid format. |
 
-6.7.8. DescribeSslVpnClientCerts Queries one or more SSL-VPN client certificates.
+Queries one or more SSL-VPN client certificates.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2891,7 +2984,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCerts
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.7.9. DescribeSslVpnClientCert Queries a specified SSL-VPN client certificate.
+Queries a specified SSL-VPN client certificate.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2945,7 +3038,7 @@ http(s)://[Endpoint]/?Action=DescribeSslVpnClientCert &SslVpnClientCertId=vsc-bp
 | 403 | Forbbiden.SubUser | User not authorized to operate on the specified resource as your account is created by another user. | The error message returned because you are unauthorized to perform this operation on the specified resource. You can apply for the required permissions and try again. |
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 
-6.7.10. DeleteSslVpnClientCert Deletes an SSL-VPN client certificate.
+Deletes an SSL-VPN client certificate.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2976,9 +3069,9 @@ http(s)://[Endpoint]/?Action=DeleteSslVpnClientCert &SslVpnClientCertId=vsc-bp1n
 | 403 | Forbidden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. To acquire the required permissions, submit a ticket. |
 | 400 | VpnGateway.Configuring | The specified service is configuring. | The error message returned because the operation is not allowed when the specified service is being configured. Try again later. |
 
-## Appendixes
+## 7 Appendixes
 
-### Use the ASAPI gateway to call API operations
+### 7.1 Use the ASAPI gateway to call API operations
 
 You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Procedure
 1. Obtain the ASAPI SDK.
@@ -3027,9 +3120,9 @@ rectory.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
 
-### Use the ASAPI gateway to make API calls
+### 7.2 Use the ASAPI gateway to make API calls
 
-7.2.1. Obtain the endpoint of ASAPI This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI). This topic also describes how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
+This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI). This topic also describes how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management Console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, click Product s. iii. Choose Plat f orms > Apsara Inf rast ruct ure Management Framework.
 2. In the left-side navigation pane, click Report s.
@@ -3100,7 +3193,7 @@ Not e Obtain the username and password that are used to log on to the Apsara Uni
 |---|---|---|
 | ${global:intranet-domain} |   |   |
 
-Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e Do not include ${global:} in the endpoint of ASAPI that you want to use. 7.2.2. Obtain the ASAPI SDK Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
+Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e Do not include ${global:} in the endpoint of ASAPI that you want to use. Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
 
 | greopId | artifactId | version |
 |---|---|---|
@@ -3133,9 +3226,9 @@ ASAPI SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-7.3.1. What is STS? Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization. 7.3.2. AssumeRole Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
+Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization. Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
 | Paramet er | T ype | Required | Example | Descript ion |
 |---|---|---|---|---|

@@ -2,18 +2,134 @@
 title: "NFV Cloud Firewall Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 178
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 NFV Cloud Firewall Developer Guide 20260701.pdf"
+source_pdf: "f428ea656062a274_Alibaba Cloud Apsara Stack V3.18.6 NFV Cloud Firewall Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-NFV%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20NFV%20Cloud%20Firewall%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # NFV Cloud Firewall Developer Guide 20260701
 
-NFV Cloud Firewall Developer Gui
+## Table of Contents
 
-## Getting started
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 API call process
+- 2 Preparations
+  - 2.1 Obtain the information and endpoint of an API opeation
+  - 2.2 Obtain an AccessKey pair
+  - 2.3 Obtain an STS AccessKey pair
+  - 2.4 Get common header parameters
+- 3 Use POP to make API calls
+  - 3.1 Prerequisites for API calls
+  - 3.2 Java edition
+  - 3.3 Python version
+  - 3.4 Go edition
+- 4 NFV Cloud Firewall API list
+  - 4.1 CIDR block management
+    - 4.1.1 CreateCidr
+    - 4.1.2 CreateVpcIpv6Cidr
+    - 4.1.3 DeleteCidr
+    - 4.1.4 ListCidrs
+    - 4.1.5 ListCidrsAll
+    - 4.1.6 ListVpcIpv6IspOptions
+  - 4.2 NFV Cloud Firewall Cluster
+    - 4.2.1 BypassCluster
+    - 4.2.2 BypassClusterRecover
+    - 4.2.3 CreateCluster
+    - 4.2.4 CreateDisasterCluster
+    - 4.2.5 DeleteCluster
+    - 4.2.6 GetAllRegionsInfo
+    - 4.2.7 GetAsynTaskResult
+    - 4.2.8 GetBypassInfo
+    - 4.2.9 GetGateWay
+    - 4.2.10 ListApps
+    - 4.2.11 ListClusterDetail
+    - 4.2.12 ListClusterMonitors
+    - 4.2.13 ListClusterResources
+    - 4.2.14 ListClusters
+    - 4.2.15 ListClustersByApp
+    - 4.2.16 ListEcsInstanceTypes
+    - 4.2.17 ListVfwSpecOptions
+    - 4.2.18 ModifyClusterInfo
+    - 4.2.19 QueryMemberDetail
+  - 4.3 Dedicated hosts
+    - 4.3.1 CreateDdhCluster
+    - 4.3.2 CreateDdhHost
+    - 4.3.3 DeleteDdhCluster
+    - 4.3.4 DeleteDdhHost
+    - 4.3.5 ListDdhApps
+    - 4.3.6 ListDdhClusters
+    - 4.3.7 ListDdhClustersByClsIds
+    - 4.3.8 ListDdhEcsType
+    - 4.3.9 ListDdhHosts
+    - 4.3.10 ListDdhHostType
+    - 4.3.11 ListZones
+    - 4.3.12 ModifyDdhClusterInfo
+    - 4.3.13 ModifyDdhHostInfo
+  - 4.4 Endpoint
+    - 4.4.1 CreateForwardingPolicy
+    - 4.4.2 DeleteForwardingPolicy
+    - 4.4.3 EnableForwardingPolicyByEcs
+    - 4.4.4 ListForwardingPolicies
+    - 4.4.5 ListForwardingPolicyOptions
+    - 4.4.6 ListSlaveEnis
+    - 4.4.7 UpdateForwardingPolicy
+  - 4.5 Cross-organization resource authorization
+    - 4.5.1 AddSharingUser
+    - 4.5.2 CreateOrgAuthorization
+    - 4.5.3 DeleteOrgAuthorization
+    - 4.5.4 DeleteSharingUser
+    - 4.5.5 DescribeOrgAuthorization
+    - 4.5.6 GetAuthorization
+    - 4.5.7 GrantAuthorize
+    - 4.5.8 ListSharingUserLocal
+    - 4.5.9 ListVpcResource
+    - 4.5.10 UpdateOrgAuthorization
+  - 4.6 Manage images
+    - 4.6.1 ListImages
+  - 4.7 License
+    - 4.7.1 GetVfwQuota
+  - 4.8 Access Control
+    - 4.8.1 CheckRamRoleExists
+  - 4.9 Asynchronous task
+    - 4.9.1 GetAsynTaskDetail
+  - 4.10 Tunnel Management
+    - 4.10.1 CreateClassicTunnel
+    - 4.10.2 CreateVpcTunnel
+    - 4.10.3 DeleteClassicTunnel
+    - 4.10.4 DeleteVpcTunnel
+    - 4.10.5 GetVncPwd
+    - 4.10.6 GetVncUrl
+    - 4.10.7 ListClassicTunnels
+    - 4.10.8 ListVpcTunnels
+  - 4.11 Firewall interface
+    - 4.11.1 ListVfwInterfaces
+    - 4.11.2 PublishVfwInterfaces
+    - 4.11.3 UnPublishVfwInterfaces
+  - 4.12 Firewall routing
+    - 4.12.1 CreateVfwRoutes
+    - 4.12.2 DelVfwRoutes
+    - 4.12.3 GetVfwRouteConfigStatus
+    - 4.12.4 ListVfwRouteEntries
+    - 4.12.5 ListVfwRouteOptions
+    - 4.12.6 PublishVfwRoutes
+    - 4.12.7 UnPublishVfwRoutes
+  - 4.13 VPC routing
+    - 4.13.1 BatchPublishRoutes
+    - 4.13.2 BatchUnPublishRoutes
+    - 4.13.3 CreateRouteEntry
+    - 4.13.4 DeleteRouteEntry
+    - 4.13.5 GetRouteConfigStatus
+    - 4.13.6 ListRouteEntries
+    - 4.13.7 ListRouteEntryOptions
+    - 4.13.8 ModifyRouteEntry
+    - 4.13.9 ModifyRoutePolicyName
+    - 4.13.10 PublishRoutes
+    - 4.13.11 UnPublishRoutes
 
-### Usage notes on development
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -21,7 +137,11 @@ This topic describes how to view the desired product development documentation w
 
 **Procedure**
 
-You can follow the procedure described in the following figure to view the desired development documentation. The Apsara Stack version is obtained from an O&M personnel or operations administrator.
+You can follow the procedure described in the following figure to view the desired development documentation.
+
+**Prerequisites**
+
+The Apsara Stack version is obtained from an O&M personnel or operations administrator.
 
 **Procedure**
 
@@ -34,9 +154,9 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-### API call process
+### 1.2 API call process
 
-NFV Cloud Firewall Developer Gui Alibaba Cloud Apsara Stack supports calling Apsara Stack APIs through the POP gateway. To provide you with an experience consistent with the public cloud, starting from Enterprise Edition V3.16.0, Apsara Stack APIs uses the POP gateway by default. This topic describes the process of calling Apsara Stack APIs through the POP gateway.
+Alibaba Cloud Apsara Stack supports calling Apsara Stack APIs through the POP gateway. To provide you with an experience consistent with the public cloud, starting from Enterprise Edition V3.16.0, Apsara Stack APIs uses the POP gateway by default. This topic describes the process of calling Apsara Stack APIs through the POP gateway.
 
 **Flowchart**
 
@@ -53,32 +173,29 @@ We recommend that you use a personal AccessKey or STS AccessKey to call APIs of 
 3. Obtain common header parameters.
 Obtain parameters required for API calls, such as the region ID, organization ID, and resource set ID. For more information, see Get common header parameters. You must obtain the organization ID through API calls. For more information, see the "Get OrganizationList" section in the Apsara Uni-manager Management Console Developer Gui de. You must obtain the resource set ID through API calls. For more information, see the "List ResourceGroup" section in the Apsara Uni-manager Management Console Developer Guid e.
 
-| When you call an API, add the organization ID |  |  | <x-acs-organizationid> | and the |
+**Note**
+
+| When you call an API, add the organization ID |   |   | <x-acs-organizationid> | and the |
 |---|---|---|---|---|
-| resource set ID | <x-acs-resourcegroupid>, | in the request headers to specify the |  |  |
-| organization and resource set to which the resource belongs. This implements isolated |  |  |  |  |
-| queries for instance resources. |  |  |  |  |
+| resource set ID | <x-acs-resourcegroupid>, | in the request headers to specify the |   |   |
+| organization and resource set to which the resource belongs. This implements isolated |   |   |   |   |
+| queries for instance resources. |   |   |   |   |
 
 | If you do not specify the organization ID | <x-acs-organizationid> | , the system |
 |---|---|---|
-| defaults to the organization to which the current user belongs. |  |  |
+| defaults to the organization to which the current user belongs. |   |   |
 
 | If you do not specify the resource set ID | <x-acs-resourcegroupid> | , it defaults to |
 |---|---|---|
-| empty. If you specify a resource set, you must also specify the organization ID. |  |  |
-
-NFV Cloud Firewall Developer Gui
-
-**Note**
+| empty. If you specify a resource set, you must also specify the organization ID. |   |   |
 
 4. Obtain the endpoint of the cloud service. For more information, see Obtain the information
 and endpoint of an API opeation or Prerequisites for API calls.
 5. Call the API of the cloud service.
-NFV Cloud Firewall Developer Gui
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and
+### 2.1 Obtain the information and endpoint of an API opeation
 
 **endpoint of an API opeation**
 
@@ -100,13 +217,17 @@ The API information on the OpenAPI Explorer page of the Apsara Uni-manager Manag
 7. Click the API operation that you want to call and obtain the POP endpoint information on the
 Parameter tab.
 
-### Obtain an AccessKey pair
+### 2.2 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
 **Background information**
 
-An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair.
+An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient.
+
+**Warning**
+
+The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
 | Parameter | Description |
 |---|---|
@@ -115,12 +236,6 @@ An AccessKey pair is used to verify the identity of request senders. An AccessKe
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. For example, you can obtain the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
 
-NFV Cloud Firewall Developer Gui The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient.
-
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
-
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following operations:
@@ -128,7 +243,6 @@ To obtain the AccessKey pair of a personal account, perform the following operat
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
-NFV Cloud Firewall Developer Gui
 
 **Note**
 
@@ -145,7 +259,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey pair
+### 2.3 Obtain an STS AccessKey pair
 
 This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations.
 
@@ -160,13 +274,12 @@ Apsara Stack STS allows you to manage temporary access credentials for your Apsa
 **Information**.
 iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your RAM role.
 2. Obtain the access credentials assigned by STS.
-NFV Cloud Firewall Developer Gui
 
 **Note**
 
-You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the variable parameters: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the actual session name. This name is user-defined and is usually set to the identity of the user who calls the API, for example, username. In the operations performed by the same RAM role, the actual operator can be distinguished according to different `RoleSessionName` to implement user-level access audit. The name must be 2 to 64 characters in length, and can contain letters, digits, periods (.), at(@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with your actual RAM role. "sts.aliyuns.com" : Replace it with the actual STS endpoint. NFV Cloud Firewall Developer Gui
+You must replace the variables in the following code with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the variable parameters: <yourRegionID>: Replace this variable with the actual region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourRoleSessionName>: Replace this variable with the actual session name. This name is user-defined and is usually set to the identity of the user who calls the API, for example, username. In the operations performed by the same RAM role, the actual operator can be distinguished according to different `RoleSessionName` to implement user-level access audit. The name must be 2 to 64 characters in length, and can contain letters, digits, periods (.), at(@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with your actual RAM role. "sts.aliyuns.com" : Replace it with the actual STS endpoint.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Replace the region ID, AccessKey ID, and AccessKey secret.
@@ -185,7 +298,12 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual STS endpoint. The general format is
 sts-vpc.${global:region}.${global:internet-domain}.
@@ -210,17 +328,21 @@ am Role ARN obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a service. The
-following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS): NFV Cloud Firewall Developer Gui
+following sample code provides an example on how to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
-Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following section describes the variable parameters: <yourRegionID>: Replace this variable with the actual region ID. <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS. <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS. <yourStsToken>: Replace this variable with the security token assigned by STS. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID. NFV Cloud Firewall Developer Gui
+Replace the variables in the following sample code with actual values. Delete the angle brackets (<>) from the final code. The following section describes the variable parameters: <yourRegionID>: Replace this variable with the actual region ID. <yourStsAccesskeyID>: Replace this variable with the AccessKey ID assigned by STS. <yourStsAccessKeySecret>: Replace this variable with the AccessKey secret assigned by STS. <yourStsToken>: Replace this variable with the security token assigned by STS. <yourResourceGroupID>: Replace this variable with the actual resource set ID. <yourOrganizationID>: Replace this variable with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -259,11 +381,11 @@ btained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### Get common header
+`}` `}`
+
+### 2.4 Get common header parameters
 
 **parameters**
 
@@ -290,15 +412,13 @@ You must specify the values for these common request parameters in the code to c
 | x-acs-role-uuid | The role UUID you operate. For more information about how to obtain this parameter, see Obtain a role UUID. |
 | x-acs-instanceid | The instance ID of the instance resource you operate. For more information about how to obtain this parameter, see Obtain an instance ID. |
 
-| Note For common request parameters, you can pass either an ID (1, 2, 3...) or a UUID (org-xxx, rs-xxx, ar-xxx...) for an organization, resource set, and role in . If you pass both an ID and a UUID, the UUID takes precedence. However, if the specified UUID does not exist, an error will be returned. When you call a cloud service API, you must add the organization ID () x-acs- organizationid ) or UUID ( x-acs-organization-uuid ) in the request headers. Otherwise, the call will fail due to insufficient permissions. When you call a cloud service API, we recommend that you add the resource set ID ( x-acs-resourcegroupid ) or UUID ( x-acs-resourcegroup-uuid ) in the header headers to specify the organization and resource set to which the resources belongs. This enables isolated queries of instance resources. If neither is specified, the system will use the default resource set of the organization to which the current user belongs. |  |  |
+| Note For common request parameters, you can pass either an ID (1, 2, 3...) or a UUID (org-xxx, rs-xxx, ar-xxx...) for an organization, resource set, and role in . If you pass both an ID and a UUID, the UUID takes precedence. However, if the specified UUID does not exist, an error will be returned. When you call a cloud service API, you must add the organization ID () x-acs- organizationid ) or UUID ( x-acs-organization-uuid ) in the request headers. Otherwise, the call will fail due to insufficient permissions. When you call a cloud service API, we recommend that you add the resource set ID ( x-acs-resourcegroupid ) or UUID ( x-acs-resourcegroup-uuid ) in the header headers to specify the organization and resource set to which the resources belongs. This enables isolated queries of instance resources. If neither is specified, the system will use the default resource set of the organization to which the current user belongs. |   |   |
 |---|---|---|
-|  | ) x-acs- |  |
-
-NFV Cloud Firewall Developer Gui
+|   | ) x-acs- |   |
 
 **Obtain a region ID**
 
-NFV Cloud Firewall Developer Gui You can view the region ID of a resource in the Apsara Uni-manager Management Console.
+You can view the region ID of a resource in the Apsara Uni-manager Management Console.
 1. Log in to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resource**s > **Regions**.
@@ -338,12 +458,6 @@ You must call an API operation to obtain the ID of a resource set. You can obtai
 button, select **Platform** > **Apsara Uni-manager**, and select **2019-05-10** from the **Version** drop-down list.
 5. Enter `ListResourceGroup` in the text box to debug the API online. After the call succeeds,
 view the value of **id** in **Call Result**. The value is the resource set ID.
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-
-NFV Cloud Firewall Developer Gui
 
 **Obtain a resource set UUID**
 
@@ -386,22 +500,26 @@ You can obtain the instance ID from the cloud service instance list in the Apsar
 
 The following table describes the common response parameters that are returned by default when you call API operations to query the instances of cloud services.
 
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+
 | ResourceGroup | The ID of the resource set. |
 |---|---|
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-NFV Cloud Firewall Developer Gui NFV Cloud Firewall Developer Gui
+## 3 Use POP to make API calls
 
-## Use POP to make API calls
-
-### Prerequisites for API calls
+### 3.1 Prerequisites for API calls
 
 Like Alibaba Cloud Public Cloud, Alibaba Cloud Apsara Stack allows you to call APIs through the Public Open Platform (POP) gateway. This topic describes the preparations you must make before calling the APIs.
 
 **Background information**
 
 To ensure that Apsara Stack provides the same user experience as Public Cloud and offers you a more convenient and consistent experience, we recommend that you call Apsara Stack APIs through the POP gateway.
+
+**Obtain the endpoint of a cloud service**
 
 **Use OpenAPI Explorer**
 
@@ -421,23 +539,27 @@ from the parameter names.
 2. In the top navigation bar, choose **Platform Operation** > **Apsara Infrastructure**
 **Management** > **Resource Management**. The **Product & Cluster O&M** page appears.
 3. On the **Product & Cluster O&M** page, enter **yundun-cfw-vfw** in the Product |
-`Cluster` search box, find the yundun-cfw-vfw**** cluster, and then click **Cluster**
+`Cluster` search box**,** find the yundun-cfw-vfw**** cluster, and then click **Cluster**
 **Details** in the **Actions** column.
 4. On the **Services** tab, search for the **yundun-cfw**-*** service, and then click **Details** in the
 **Actions** column of the target service.
 5. On the service details page, go to the **Components** section, click the `yundun-vfwctl-app`
-component, and then select the **Resources** tab in the Information of Component yundunvfwctl-app section.
+component**,** and then select the **Resources** tab in the Information of Component yundunvfwctl-app section.
 6. Search for the resource named `vfwctl-cloudfw-pop-endpoint` , show the information in the
 **Resource Application Parameters** column, and then view the value of **domain**, which is
 the endpoint of NFV.
 
 **Obtain common parameters**
 
-To obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack APIs through the POP gateway, see the Get common header parameters section in Preparations of this manual. NFV Cloud Firewall Developer Gui
+To obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack APIs through the POP gateway, see the Get common header parameters section in Preparations of this manual.
 
-### Java edition
+### 3.2 Java edition
 
-This topic describes how to call NFV Cloud Firewall API operations by using CommonRequest. We recommend that you use CommonRequest to call API operations in Apsara Stack. You can go to the **Service** > **Developer Tools** > **APIs and Tools** > **OpenAPI Explorer** console, choose **API Integration** >**SDK Example** to view the recommended SDK version and sample code.
+This topic describes how to call NFV Cloud Firewall API operations by using CommonRequest.
+
+**Prerequisites**
+
+We recommend that you use CommonRequest to call API operations in Apsara Stack. You can go to the **Service** > **Developer Tools** > **APIs and Tools** > **OpenAPI Explorer** console, choose **API Integration** >**SDK Example** to view the recommended SDK version and sample code.
 
 **Background information**
 
@@ -448,7 +570,7 @@ You can call API operations by using Remote Procedure Call (RPC) or Resource-Ori
 The following example shows how to call the ListCidrs operation of Cloudvfw by using RPC. The API version is 2025-04-01. Sample code:
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class ListCidrs {
     public static void main(String[] args) {
         // Create a DefaultAcsClient instance and initialize it.
         DefaultProfile profile = DefaultProfile.getProfile("<your-regionid>", "
@@ -471,8 +593,6 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         // Set the API version.
         request.setSysVersion("2025-04-01");
 ```
-
-NFV Cloud Firewall Developer Gui
 
 ```java
         // Set LocationProduct.
@@ -506,18 +626,13 @@ rprise Edition.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-The following example shows how to call the ListCidrs operation of Cloudvfw by using ROA. The API version is 2025-04-01. Sample call:
+`}` `}` `}` The following example shows how to call the ListCidrs operation of Cloudvfw by using ROA. The API version is 2025-04-01. Sample call:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; pblicclassGetNamespaceList{
 ```
-
-NFV Cloud Firewall Developer Gui
 
 ```java
 public class GetNamespaceList {
@@ -569,8 +684,6 @@ s-security-token in the header.
 CommonResponseresponse=clientgetCommonResponse(request);
 ```
 
-NFV Cloud Firewall Developer Gui
-
 ```java
             CommonResponse response  client.getCommonResponse(request);
             System.out.println(response.getData());
@@ -580,10 +693,9 @@ NFV Cloud Firewall Developer Gui
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
@@ -593,9 +705,13 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Python version
+### 3.3 Python version
 
-This topic describes how to use CommonRequest to call the NFV Cloud Firewall API. We recommend that you use CommonRequest to call API operations in Apsara Stack. You can go to the **Service** > **Developer Tools** > **APIs and Tools** > **OpenAPI Explorer** console, choose **API Integration** >**SDK Example** to view the recommended SDK version and sample code.
+This topic describes how to use CommonRequest to call the NFV Cloud Firewall API.
+
+**Prerequisites**
+
+We recommend that you use CommonRequest to call API operations in Apsara Stack. You can go to the **Service** > **Developer Tools** > **APIs and Tools** > **OpenAPI Explorer** console, choose **API Integration** >**SDK Example** to view the recommended SDK version and sample code.
 
 **Background information**
 
@@ -609,9 +725,7 @@ Example interface information for RPC calls: product (Cloudvfw), API (ListCidrs)
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
 ```
 
-NFV Cloud Firewall Developer Gui
-
-```python
+```bash
 # Create an AcsClient instance
 client = AcsClient(
     "<AccessKey ID>",
@@ -619,7 +733,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set the timeout period
     verify=False, # Ignore certificate or specify verify='<certificate location>'
+```
+
 );
+
+```python
 # Use with HTTPS
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -630,9 +748,9 @@ def describe_api_groups():
     # When you use STS AccessKey pairs to call RPC APIs, add the SecurityToken paramete
 ```
 
-r
+`r`
 
-```python
+```bash
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
 SecurityToken>"};
     params = {"PageSize":"10","PageNumber":"1"};
@@ -649,9 +767,14 @@ on V3.15.0
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. Required for modification and deletion operations
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2025-04-01")
+    request.set_action_name("ListCidrs")
     request.set_endpoint("<CloudvfwEndpoint>")   // Replace Endpoint with the actual ad
 dress
     request.set_product("Cloudvfw")
@@ -664,7 +787,7 @@ if __name__ == '__main__':
     describeapigroups()
 ```
 
-NFV Cloud Firewall Developer Gui _ _
+`_` `_`
 
 **Configure proxy settings**
 
@@ -690,7 +813,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # The region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HTTPS client.do_action_with_exception(request)
@@ -708,11 +831,9 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Disable SSL certificate verification
 ```
 
-)
+`)`
 
 **Specify a CA certificate file**
-
-NFV Cloud Firewall Developer Gui
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -720,11 +841,15 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
  verify='./cacert.pem' # The certificate path
 ```
 
-)
+`)`
 
-### Go edition
+### 3.4 Go edition
 
-This topic describes how to use CommonRequest to call the NFV Cloud Firewall API and configure network and security parameters such as proxy and SSL verification. We recommend that you use CommonRequest to call API operations in Apsara Stack. You can go to the **Service** > **Developer Tools** > **APIs and Tools** > **OpenAPI Explorer** console, choose **API Integration** >**SDK Example** to view the recommended SDK version and sample code.
+This topic describes how to use CommonRequest to call the NFV Cloud Firewall API and configure network and security parameters such as proxy and SSL verification.
+
+**Prerequisites**
+
+We recommend that you use CommonRequest to call API operations in Apsara Stack. You can go to the **Service** > **Developer Tools** > **APIs and Tools** > **OpenAPI Explorer** console, choose **API Integration** >**SDK Example** to view the recommended SDK version and sample code.
 
 **Background information**
 
@@ -732,7 +857,7 @@ The system currently allows you to call APIs by using Remote Procedure Call (RPC
 
 **CommonRequest call example**
 
-Example interface information for an RPC call: Service (Cloudvfw), API (ListCidrs), Version (2025-04-01). The sample code is as follows: NFV Cloud Firewall Developer Gui
+Example interface information for an RPC call: Service (Cloudvfw), API (ListCidrs), Version (2025-04-01). The sample code is as follows:
 
 ```java
 package main import (
@@ -741,7 +866,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -749,7 +874,9 @@ func main() {
 cessKey Secret>")
     request := requests.NewCommonRequest()
     request.Method = "POST"
+    request.Domain = "<CloudvfwEndpoint>"
     request.Version = "2025-04-01"
+    request.ApiName = "ListCidrs"
     request.Product = "Cloudvfw"
     // When you use STS AccessKey pairs to call RPC operations, you must add the Securi
 tyToken parameter.
@@ -767,12 +894,15 @@ tyToken parameter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-Example interface information for a ROA call: Service (Cloudvfw), API (ListCidrs), Version (2025-04-01). The sample call is as follows: NFV Cloud Firewall Developer Gui
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` Example interface information for a ROA call: Service (Cloudvfw), API (ListCidrs), Version (2025-04-01). The sample call is as follows:
 
 ```java
 package main import (
@@ -782,7 +912,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -790,7 +920,9 @@ func main() {
 <yourAccessSecret>")
  request := requests.NewCommonRequest()
  request.Method = "GET"
+ request.Domain = "<CloudvfwEndpoint>"
  request.Version = "2025-04-01"
+ request.ApiName = "ListCidrs"
  request.Product = "Cloudvfw"
  request.PathPattern = "/yundun-cfw"
  // When you use STS AccessKey pairs to call ROA operations, you must add the x-acs-sec
@@ -809,37 +941,42 @@ urity-token header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Configure a proxy**
 
-You may need to configure a proxy when you call an instance. You can configure a proxy in one of the following ways: Configure a proxy by using environment variables. Use the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. The sample code is as follows: NFV Cloud Firewall Developer Gui
+You may need to configure a proxy when you call an instance. You can configure a proxy in one of the following ways: Configure a proxy by using environment variables. Use the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. The sample code is as follows:
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
-Configure a proxy on the client. The sample code is as follows:
+`}` Configure a proxy on the client. The sample code is as follows:
 
 ```
 // The proxy configured on the client takes precedence over the proxy configured by u sing environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure an HTTP proxy. client.GetHttpProxy() // Obtain the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure an HTTPS proxy. client.GetHttpsProxy() // Obtain the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the allowlist for the proxy
 ```
 
-.
+`.`
 
 ```
 client.GetNoProxy() // Obtain the allowlist for the proxy.
@@ -863,17 +1000,25 @@ When you use HTTPS to access OpenAPI, the SDK verifies the validity of SSL certi
 // Configure HTTPSInsecure for a request. This setting affects only the current request
 ```
 
-.
+`.`
 
 ```
 request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Obtain the HTTPSInsecure set ting for the request.
 ```
 
-If no setting is configured for a request, the setting configured on the client takes effect. NFV Cloud Firewall Developer Gui
+If no setting is configured for a request, the setting configured on the client takes effect.
 
 ```
 // Configure HTTPSInsecure on the client. This setting applies to all requests sent by the client. client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true on th e client. isInsecure := client.GetHTTPSInsecure() // Obtain the HTTPSInsecure settin g on the client.
 ```
+
+## 4 NFV Cloud Firewall API list
+
+### 4.1 CIDR block management
+
+#### 4.1.1 CreateCidr
+
+Creates a CIDR block. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -885,22 +1030,6 @@ If no setting is configured for a request, the setting configured on the client 
 | EnableIpv6 | Bool ean | Quer y | No | true | Indicates whether to enable IPv6. true: Enable IPv6. false: Disable IPv6. |
 | Ipv6Isp | Strin g | Quer y | No | BGP | The IPv6 Internet Service Provider (ISP). |
 
-NFV Cloud Firewall Developer Gui
-
-## NFV Cloud Firewall API list
-
-### CIDR block management
-
-#### CreateCidr
-
-Creates a CIDR block.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Ipv6CidrBl ock | Strin g | Quer y | No | 2401:b2c0::/56 | The IPv6 CIDR block. |
 |---|---|---|---|---|---|
 
@@ -908,6 +1037,10 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | CidrId | String | 12 | The index of the CIDR block. |
+
+#### 4.1.2 CreateVpcIpv6Cidr
+
+Allocates an IPv6 CIDR block to a virtual private cloud (VPC). This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -919,25 +1052,13 @@ This operation uses common request headers. For more information, see Common req
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### CreateVpcIpv6Cidr
-
-Allocates an IPv6 CIDR block to a virtual private cloud (VPC).
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 |---|---|---|---|
 | Ipv6CidrBlock | String | 2408:XXXX:0:a600: :/56 | The IPv6 CIDR block of the VPC. |
+
+#### 4.1.3 DeleteCidr
+
+Deletes configurations of a specified CIDR block. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -950,23 +1071,9 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.1.4 ListCidrs
 
-#### DeleteCidr
-
-Deletes configurations of a specified CIDR block.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListCidrs
-
-Lists the CIDR blocks in a specified virtual private cloud (VPC) or network range.
+Lists the CIDR blocks in a specified virtual private cloud (VPC) or network range. This operation uses common request headers and does not have operation-specific request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -983,16 +1090,6 @@ Lists the CIDR blocks in a specified virtual private cloud (VPC) or network rang
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
-
-NFV Cloud Firewall Developer Gui
-
-**Request headers**
-
-This operation uses common request headers and does not have operation-specific request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | TotalCount | Integer | 100 | The total number of entries. |
 |---|---|---|---|
@@ -1013,11 +1110,13 @@ This operation uses common request headers and does not have operation-specific 
 | --CidrStatus | String | success | The status of the CIDR block. |
 | --RefCount | Integer | 2 | The number of references. |
 
-NFV Cloud Firewall Developer Gui
-
 | -- ResourceGrou p | Integer | 2 | The ID of the resource set. |
 |---|---|---|---|
 | -- ResourceGrou pName | String | resource-test | The name of the resource set. |
+
+#### 4.1.5 ListCidrsAll
+
+Lists all configured CIDR blocks, including all CIDR blocks related to virtual private cloud (VPC), subnets, and custom routes. This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1030,20 +1129,6 @@ NFV Cloud Firewall Developer Gui
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListCidrsAll
-
-Lists all configured CIDR blocks, including all CIDR blocks related to virtual private cloud (VPC), subnets, and custom routes.
-
-**Request headers**
-
-This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | TotalCount | Integer | 100 | The total number of entries in the list. |
 |---|---|---|---|
@@ -1064,11 +1149,13 @@ This operation uses common request headers and does not require any special requ
 | --CidrStatus | String | success | The status of the CIDR block. |
 | --RefCount | Integer | 10 | The number of references. |
 
-NFV Cloud Firewall Developer Gui
-
 | -- ResourceGrou p | Integer | 123 | The ID of the resource set. |
 |---|---|---|---|
 | -- ResourceGrou pName | String | res test _ | The name of the resource set. |
+
+#### 4.1.6 ListVpcIpv6IspOptions
+
+Lists the Internet Service Provider (ISP) options supported by the virtual private cloud (VPC) IPv6 CIDR block. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1083,20 +1170,6 @@ NFV Cloud Firewall Developer Gui
 | -TotalCount | Integer | 100 | The total number of records. |
 | -PoolId | String | pool-xxx | The ID of the resource pool. |
 
-NFV Cloud Firewall Developer Gui
-
-#### ListVpcIpv6IspOptions
-
-Lists the Internet Service Provider (ISP) options supported by the virtual private cloud (VPC) IPv6 CIDR block.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -LockStatus | String | Success | The lock status. |
 |---|---|---|---|
 | - ServiceProvide r | String | BGP | The service provider. |
@@ -1107,23 +1180,15 @@ This operation uses common request headers. No special request headers are requi
 | - AvailableZoneI d | String | cn-neimeng- envxxx- amtest210001-a | The ID of the zone. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+### 4.2 NFV Cloud Firewall Cluster
+
+#### 4.2.1 BypassCluster
+
+Bypasses cluster routing and connects directly to backend service nodes. Use this for debugging, troubleshooting, or specific traffic direct-connect scenarios. This operation uses common request headers and has no special request headers. See the documentation for common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-### NFV Cloud Firewall Cluster
-
-#### BypassCluster
-
-Bypasses cluster routing and connects directly to backend service nodes. Use this for debugging, troubleshooting, or specific traffic direct-connect scenarios.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. See the documentation for common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default: zh (Chinese), en (English) |
 |---|---|---|---|---|---|
@@ -1138,22 +1203,12 @@ This operation uses common request headers and has no special request headers. S
 | BypassStatus | String | Normal | The bypass status. |
 | BypassProgres s | String | 100% | The bypass progress. |
 
+#### 4.2.2 BypassClusterRecover
+
+Bypasses the cluster recovery process and enters the normal service state directly. Use this operation during failover to skip time-consuming steps such as consistency check or data synchronization. This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### BypassClusterRecover
-
-Bypasses the cluster recovery process and enters the normal service state directly. Use this operation during failover to skip time-consuming steps such as consistency check or data synchronization.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 |---|---|---|---|---|---|
@@ -1169,19 +1224,9 @@ This operation uses only common request headers. For more information, see Commo
 | BypassStatus | String | success | The status. |
 | BypassProgres s | String | 100% | The bypass progress. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.2.3 CreateCluster
 
-**Response parameters**
-
-#### CreateCluster
-
-Creates a new cluster resource.
-
-**Request headers**
-
-This operation uses common request headers and does not have special request headers. For more information, see the documentation for common request parameters.
-
-**Request parameters**
+Creates a new cluster resource. This operation uses common request headers and does not have special request headers. For more information, see the documentation for common request parameters.
 
 | Paramete r | Typ e | Posi tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1199,8 +1244,6 @@ This operation uses common request headers and does not have special request hea
 | AppName | Strin g | Quer y | No | app-123 | The application name. |
 | ArchType | Strin g | Quer y | No | intel | The architecture type. |
 
-NFV Cloud Firewall Developer Gui
-
 | NetType | Strin g | Quer y | No | k25 | The network type. k10 k25 |
 |---|---|---|---|---|---|
 | IsDedicate dHost | Strin g | Quer y | No | true | Specifies whether to use a dedicated host. true false |
@@ -1216,8 +1259,6 @@ NFV Cloud Firewall Developer Gui
 | EcsImageI d | Strin g | Quer y | No | m-g0k00sbc0od***** | The ECS image ID. |
 | Consumed Cap | Integ er | Quer y | No | 10000 | The capacity consumed by the cluster, in Mbit/s. |
 
-NFV Cloud Firewall Developer Gui
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
@@ -1226,26 +1267,16 @@ NFV Cloud Firewall Developer Gui
 | TaskId | String | t-000000000001 | The task ID. |
 | VnfId | String | a5656cf9-8b23- 4cba-bcc6- 5365627***** | The Virtualized Network Function (VNF) ID. |
 
+#### 4.2.4 CreateDisasterCluster
+
+Createa a disaster recovery cluster to achieve high availability and disaster recovery capabilities across regions or zones. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | Aliuid | Strin g | Quer y | No | 123456789 | The ID of the level-1 organization. |
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the requester. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### CreateDisasterCluster
-
-Createa a disaster recovery cluster to achieve high availability and disaster recovery capabilities across regions or zones.
-
-**Request headers**
-
-This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | ResourceId | Strin g | Quer y | No | eas-r-asdasdasd**** | The ID of the resource. |
 |---|---|---|---|---|---|
@@ -1264,8 +1295,6 @@ This operation uses common request headers and does not have special request hea
 | DeployTyp e | Strin g | Quer y | No | Standalone;Active- Standby | The deployment type. |
 | VfwSpec | Strin g | Quer y | No | 12G | The capacity specification of virtual firewall. |
 
-NFV Cloud Firewall Developer Gui
-
 | EcsSpec | Strin g | Quer y | No | "ecs.ne8m-k25- c1m2.18xlarge | The Elastic Compute Service (ECS) instance specification. |
 |---|---|---|---|---|---|
 | EcsInstanc eType | Strin g | Quer y | No | ecs.g6.large | The ECS instance type. |
@@ -1283,13 +1312,9 @@ NFV Cloud Firewall Developer Gui
 | TaskId | String | t-000000000001 | The ID of the task. |
 | VnfId | String | a5656cf9-8b23- 4cba-bcc6- 5365627xxxxx | The ID of the Virtualized Network Function (VNF). |
 
-NFV Cloud Firewall Developer Gui
+#### 4.2.5 DeleteCluster
 
-**Response parameters**
-
-Deletes a specified cluster resource and its associated configurations and data.
-
-#### DeleteCluster
+Deletes a specified cluster resource and its associated configurations and data. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1304,23 +1329,9 @@ Deletes a specified cluster resource and its associated configurations and data.
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TaskId | String | t-000000000001 | The ID of the task. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.2.6 GetAllRegionsInfo
 
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetAllRegionsInfo
-
-Retrieves the list of geographic regions, typically including hierarchical data such as countries, provinces, and cities.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+Retrieves the list of geographic regions, typically including hierarchical data such as countries, provinces, and cities. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1339,17 +1350,9 @@ This operation uses common request headers. No special request headers are requi
 | -RegionName | String | region01 | The name of the region. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.2.7 GetAsynTaskResult
 
-**Request parameters**
-
-**Response parameters**
-
-#### GetAsynTaskResult
-
-Retrieves the execution result of an asynchronous task.
-
-**Request headers**
+Retrieves the execution result of an asynchronous task. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1368,12 +1371,6 @@ Retrieves the execution result of an asynchronous task.
 | UpdatedTime | String | 2020-01-01 12:00:00 | The time when the task was last updated. |
 | TaskStatus | String | success | The status of the task. |
 
-NFV Cloud Firewall Developer Gui This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | TaskLog | Struct | TaskLog | The log of the task. |
 |---|---|---|---|
 | -Subtasks | Struct | sub-tasks | The list of subtasks. |
@@ -1383,24 +1380,16 @@ NFV Cloud Firewall Developer Gui This operation uses common request headers. No 
 | ---Seq | String | 1 | The execution sequence. |
 | ---Name | String | eni delete _ | The name. |
 
+#### 4.2.8 GetBypassInfo
+
+Retrieves bypass information to query details such as the current bypass status, configuration, and operational parameters of a device or system. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default values: zh (Chinese) and en (English). |
 | Aliuid | Strin g | Quer y | No | 138537276426xxxx | The level-1 organization ID. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
-
-NFV Cloud Firewall Developer Gui
-
-#### GetBypassInfo
-
-Retrieves bypass information to query details such as the current bypass status, configuration, and operational parameters of a device or system.
-
-**Request headers**
-
-This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The cluster ID. |
 |---|---|---|---|---|---|
@@ -1411,26 +1400,16 @@ This operation uses common request headers only. No special request headers are 
 | BypassStatus | String | success | The bypass status. |
 | BypassProgres s | String | 100% | The bypass progress. |
 
+#### 4.2.9 GetGateWay
+
+Retrieves gateway information. This operation uses common request headers only. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | Aliuid | Strin g | Quer y | No | 123456789 | The level-1 organization ID. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### GetGateWay
-
-Retrieves gateway information.
-
-**Request headers**
-
-This operation uses common request headers only. For more information, see Common request parameters.
-
-**Request parameters**
 
 | VSwitchId | Strin g | Quer y | No | vsw-123 | The vSwitch ID. |
 |---|---|---|---|---|---|
@@ -1443,25 +1422,15 @@ This operation uses common request headers only. For more information, see Commo
 | GateWayIp | String | 192.168.1.1 | The gateway IP address. |
 | GatewayIpv6Ip | String | 2020:210:6:10::1 | The IPv6 address of the gateway. |
 
+#### 4.2.10 ListApps
+
+Lists applications that are installed or available in the system. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | AppName | Strin g | Quer y | No | liveApp**** | The name of the application. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ListApps
-
-Lists applications that are installed or available in the system.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | AppId | Strin g | Quer y | No | 2dfea044-479f-464a- b374-f14d32****** | The ID of the application. |
 |---|---|---|---|---|---|
@@ -1474,24 +1443,14 @@ This operation uses common request headers. For more information, see Common req
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The total number of records. |
 
+#### 4.2.11 ListClusterDetail
+
+Retrieves details of a specified cluster, including its configuration, status, nodes, and resources. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default: zh (Chinese), en (English). |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ListClusterDetail
-
-Retrieves details of a specified cluster, including its configuration, status, nodes, and resources.
-
-**Request headers**
-
-This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to whom the original calling process belongs. |
 |---|---|---|---|---|---|
@@ -1511,15 +1470,9 @@ This operation uses common request headers only. No special request headers are 
 | --ResSpec | String | standard | The resource specification. |
 | --ResRole | String | master | The resource role. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.2.12 ListClusterMonitors
 
-**Response parameters**
-
-#### ListClusterMonitors
-
-Lists the configuration information of cluster monitoring metrics.
-
-**Request headers**
+Lists the configuration information of cluster monitoring metrics. This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1538,17 +1491,15 @@ Lists the configuration information of cluster monitoring metrics.
 | -Monitor | Array | monitors | The list of monitoring information. |
 | --ResId | String | i-xxx | The resource ID. |
 
-NFV Cloud Firewall Developer Gui This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --Hostname | String | vfw-host-01 | The hostname. |
 |---|---|---|---|
 | --HaStatus | String | success | The status. |
 | -- ConfigSyncSta tus | String | success | The status. |
 | -- HealthCheckSt atus | String | success | The status. |
+
+#### 4.2.13 ListClusterResources
+
+Lists the overview information of all resources (such as pods, services, and deployments) in the cluster. This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1559,20 +1510,6 @@ NFV Cloud Firewall Developer Gui This operation uses only common request headers
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-#### ListClusterResources
-
-Lists the overview information of all resources (such as pods, services, and deployments) in the cluster.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 |---|---|---|---|
@@ -1594,8 +1531,6 @@ This operation uses common request headers and does not require special request 
 | --DdhId | String | dh-xxx | The ID of the dedicated host. |
 | --MgmtVs | String | vsw-xxx | The management vSwitch. |
 
-NFV Cloud Firewall Developer Gui
-
 | --MgmtIp | String | 192.168.1.100 | The management IP address. |
 |---|---|---|---|
 | --MgmtIpv6Ip | String | 2001:db8::1 | The management IPv6 address. |
@@ -1607,22 +1542,14 @@ NFV Cloud Firewall Developer Gui
 | --ServiceIpGw | String | 192.168.1.1 | The gateway for the service IP address. |
 | -- HealthyStatus | String | success | The health status. |
 
+#### 4.2.14 ListClusters
+
+Lists all clusters that the current user has permission to access. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Valid value: en (English). |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListClusters
-
-Lists all clusters that the current user has permission to access.
-
-**Request headers**
-
-This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | OriginCalle rUid | Strin g | Quer y | No | 1 | The unique identifier (UID) of the user to whom the original calling process belongs. |
 |---|---|---|---|---|---|
@@ -1642,10 +1569,6 @@ This operation uses common request headers and does not have special request hea
 | --ClusterId | String | ehpc-hz- FYUr32**** | The ID of the cluster. |
 | --ClusterName | String | test | The name of the cluster. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | --ClusterRole | String | master | The role of the cluster. |
 |---|---|---|---|
 | -- ConsumedCap | Integer | 100000 | The consumed capacity of the cluster, in Mbit/s. |
@@ -1664,8 +1587,6 @@ NFV Cloud Firewall Developer Gui
 | --NetType | String | 12G | The capacity specification of VFW. |
 | -AppId | String | 7171a6ca-d1cd- 4928-8642- 7d5cfe69**** | The ID of the application. |
 
-NFV Cloud Firewall Developer Gui
-
 | -AppName | String | ahas-demo | The name of the application. |
 |---|---|---|---|
 | -OwnerUid | String | 1019556 | The unique identifier (UID) of the resource owner. |
@@ -1674,31 +1595,33 @@ NFV Cloud Firewall Developer Gui
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The page size. |
 
+#### 4.2.15 ListClustersByApp
+
+Queries the list of clusters associated with an application by its name. API description
+
+**Prerequisites**
+
+<Prerequisites for using this API>
+
+**Notes**
+
+<Issues that customers must pay attention to when using this API>
+
+**Best practice**
+
+<Customer usage scenarios for this API> This API uses common request headers and has no special request headers. For more information, see the documentation on common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the requester. |
 | Lang | Strin g | Quer y | No | zh | The language in which messages are received. Default value: zh (Chinese). Other valid value: en (English) |
 
-NFV Cloud Firewall Developer Gui
-
-#### ListClustersByApp
-
-Queries the list of clusters associated with an application by its name. API description <Prerequisites for using this API> <Issues that customers must pay attention to when using this API>
-
-**Best practice**
-
-<Customer usage scenarios for this API>
-
-**Request headers**
-
-This API uses common request headers and has no special request headers. For more information, see the documentation on common request parameters.
-
-**Request parameters**
-
 | OriginCalle rUid | Strin g | Quer y | No | test123 | The UID of the caller. |
 |---|---|---|---|---|---|
 | ClusterId | Strin g | Quer y | No | cls-123 | The ID of the cluster. |
 | AppId | Strin g | Quer y | No | app-123 | The ID of the application. |
+
+**Response data**
 
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The POP request ID. |
 |---|---|---|---|
@@ -1714,10 +1637,6 @@ This API uses common request headers and has no special request headers. For mor
 | --ClusterName | String | cluster-test | The cluster name. |
 | --VpcId | String | vpc- 3yl4tktt621qgox*** ** | The virtual private cloud (VPC) ID. |
 | --VpcCidr | String | 10.0.0.0/8 | The VPC CIDR block. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response data**
 
 | --VpcIpv6Cidr | String | 2020:210:6:10::/61 | The VPC IPv6 CIDR block. |
 |---|---|---|---|
@@ -1737,9 +1656,7 @@ NFV Cloud Firewall Developer Gui
 | --ErrorReason | String | Insufficient resources | The reason for the error. |
 | --Aliuid | String | 138537276426xxx x | The level-1 organization ID. |
 
-NFV Cloud Firewall Developer Gui
-
-| NFV Cloud Firewal e·NFV Cloud Fire | l Developer Gui wall API list |  |  |
+| NFV Cloud Firewal e·NFV Cloud Fire | l Developer Gui wall API list |   |   |
 |---|---|---|---|
 
 | --ResourceId | String | 123 | The resource ID. |
@@ -1759,20 +1676,29 @@ NFV Cloud Firewall Developer Gui
 Sample requests
 
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=ListClustersByApp &Common request parameters
 ```
 
-Sample success responses `JSON` format NFV Cloud Firewall Developer Gui
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":"",
  "RequestId":"",
  "PageSize":"",
  "PageNumber":"",
  "Clusters":{
   "Cluster":[
-   {
+```
+
+`{`
+
+```json
     "DeployType":"",
     "DdhClusterId":"",
     "CreateTaskId":"",
@@ -1805,17 +1731,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "EcsImageId":"",
     "RegionId":"",
     "ClusterStatus":""
-   }
 ```
 
-]
-
-```
- }
-}
-```
-
-`XML` format NFV Cloud Firewall Developer Gui
+`}` `]` `}` `}` `XML` format
 
 ```xml
 <TotalCount /> <RequestId /> <PageSize /> <PageNumber /> <Clusters>
@@ -1856,15 +1774,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </Clusters>
 ```
 
-#### ListEcsInstanceTypes
+#### 4.2.16 ListEcsInstanceTypes
 
-Lists the available Elastic Compute Service (ECS) instance types on Alibaba Cloud.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
+Lists the available Elastic Compute Service (ECS) instance types on Alibaba Cloud. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1884,12 +1796,12 @@ This operation uses common request headers. For more information, see Common req
 | TotalCount | Integer | 100 | The total number of entries in the list. |
 | Vcpu | Integer | 2 | The number of vCPUs. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | Memory | String | 1024 | The memory size. |
 |---|---|---|---|
+
+#### 4.2.17 ListVfwSpecOptions
+
+Lists the available specifications for virtual firewalls, such as CPU, memory, and throughput. This operation uses common request headers. No special request headers apply. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1905,26 +1817,16 @@ NFV Cloud Firewall Developer Gui
 | --VfwSpec | List | 12G | The list of specifications. |
 | --NetType | String | vpc | The network type. |
 
-NFV Cloud Firewall Developer Gui
-
-#### ListVfwSpecOptions
-
-Lists the available specifications for virtual firewalls, such as CPU, memory, and throughput.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers apply. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --ArchType | String | amd64 | The architecture type. amd64 |
 |---|---|---|---|
 | -NetType | String | k25 | The network type. |
 | -Unit | String | Mbps | The unit. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The total number. |
+
+#### 4.2.18 ModifyClusterInfo
+
+Modifies basic cluster information, such as the cluster name and description. This operation uses common request headers only. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1933,18 +1835,6 @@ This operation uses common request headers. No special request headers apply. Fo
 | AppId | Strin g | Quer y | No | cls-xxx | The application ID. |
 | ClusterId | Strin g | Quer y | No | cls-xxx | The cluster ID. |
 | Field | Strin g | Quer y | No | name | The field to modify. |
-
-NFV Cloud Firewall Developer Gui
-
-#### ModifyClusterInfo
-
-Modifies basic cluster information, such as the cluster name and description.
-
-**Request headers**
-
-This operation uses common request headers only. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Value | Strin g | Quer y | No | test | The tag value. |
 |---|---|---|---|---|---|
@@ -1955,26 +1845,16 @@ This operation uses common request headers only. For more information, see Commo
 | Field | String | name | The modified field. |
 | Value | String | test | The tag value. |
 
+#### 4.2.19 QueryMemberDetail
+
+Queries details of a member. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
 | ClusterId | Strin g | Quer y | No | ehpc-hz-FYUr32**** | The ID of the cluster. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### QueryMemberDetail
-
-Queries details of a member.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | EcsId | Strin g | Quer y | No | ecs-adf86823****** | The ID of the Elastic Compute Service (ECS) instance. |
 |---|---|---|---|---|---|
@@ -1994,17 +1874,11 @@ This operation uses common request headers. For more information, see Common req
 | ServiceVs | String | vsw-xxx | The service vSwitch. |
 | ServiceIp | String | 192.168.1.1 | The service IP address. |
 
-NFV Cloud Firewall Developer Gui
+### 4.3 Dedicated hosts
 
-**Response parameters**
+#### 4.3.1 CreateDdhCluster
 
-### Dedicated hosts
-
-#### CreateDdhCluster
-
-Creates a dedicated host cluster.
-
-**Request headers**
+Creates a dedicated host cluster. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2019,16 +1893,14 @@ Creates a dedicated host cluster.
 | Descriptio n | Strin g | Quer y | No | testDescription | The description. |
 | ActionOnM aintenance | Strin g | Quer y | No | Stop | The action to perform during maintenance. |
 
-NFV Cloud Firewall Developer Gui This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | ClusterRecordI d | Integer | 1 | The ID of the host group. |
+
+#### 4.3.2 CreateDdhHost
+
+Creates a dedicated host. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2039,18 +1911,6 @@ NFV Cloud Firewall Developer Gui This operation uses common request headers. For
 | CallerUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 | DdhCluster Id | Strin g | Quer y | No | dc- bp12wlf6am0vz9v2**** | The ID of the dedicated host cluster. |
 
-NFV Cloud Firewall Developer Gui
-
-#### CreateDdhHost
-
-Creates a dedicated host.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | PkaliUid | Strin g | Quer y | No | 138537276426xxxx | The ID of the level-1 organization. |
 |---|---|---|---|---|---|
 | Descriptio n | Strin g | Quer y | No | testDescription | The description. |
@@ -2060,6 +1920,10 @@ This operation uses common request headers. For more information, see Common req
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | HostRecordId | String | 1 | The ID of the host record. |
 
+#### 4.3.3 DeleteDdhCluster
+
+Deletes a Dedicated Host (DDH) cluster. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
@@ -2067,23 +1931,13 @@ This operation uses common request headers. For more information, see Common req
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the organization caller. |
 | ClusterRec ordId | Integ er | Quer y | No | 123 | The ID of the host group. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DeleteDdhCluster
-
-Deletes a Dedicated Host (DDH) cluster.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+
+#### 4.3.4 DeleteDdhHost
+
+Deletes a dedicated host. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2096,25 +1950,9 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.3.5 ListDdhApps
 
-**Response parameters**
-
-#### DeleteDdhHost
-
-Deletes a dedicated host.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListDdhApps
-
-ListS applications deployed on Dedicated Host (DDH).
+ListS applications deployed on Dedicated Host (DDH). This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2133,21 +1971,15 @@ ListS applications deployed on Dedicated Host (DDH).
 | PageNumber | Integer | 10 | The page number. |
 | Apps | Struct | Apps | The information about Apps. |
 
-NFV Cloud Firewall Developer Gui
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -App | Array | App | The list of apps. |
 |---|---|---|---|
 | --AppId | String | app-**** | The ID of the application. |
 | --AppName | String | ahas-demo | The name of the application. |
 | --CreateTime | String | 2024-10-14 08:00:00 | The creation time. |
+
+#### 4.3.6 ListDdhClusters
+
+Lists dedicated host clusters. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2157,18 +1989,6 @@ This operation uses common request headers. For more information, see Common req
 | Id | Integ er | Quer y | No | 1 | The ID. |
 | ClusterRec ordId | Integ er | Quer y | No | 1 | The ID of the host group. |
 | DdhCluster Id | Strin g | Quer y | No | dc-xxx | The ID of the cluster. |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListDdhClusters
-
-Lists dedicated host clusters.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | DdhCluster Name | Strin g | Quer y | No | ddh-cluster-test | The name of the dedicated host cluster. |
 |---|---|---|---|---|---|
@@ -2189,10 +2009,6 @@ This operation uses common request headers. For more information, see Common req
 | --HostType | String | standard | The type. |
 | --ZoneId | String | cn-hangzhou-h | The ID of the zone. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | --ClusterId | String | ehpc-hz- FYUr32**** | The ID of the cluster. |
 |---|---|---|---|
 | --ClusterStatus | String | success | The status of the cluster. |
@@ -2206,20 +2022,12 @@ NFV Cloud Firewall Developer Gui
 | --- AvailableVcpu s | Integer | 5 | The number of available vCPUs. |
 | ---TotalVcpus | Integer | 12 | The total number of vCPUs. |
 
+#### 4.3.7 ListDdhClustersByClsIds
+
+Queries Dedicated Cluster (DDH) information by the cluster ID list. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-#### ListDdhClustersByClsIds
-
-Queries Dedicated Cluster (DDH) information by the cluster ID list.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 |---|---|---|---|---|---|
@@ -2239,10 +2047,6 @@ This operation uses common request headers. No special request headers are requi
 | --ClusterStatus | String | success | The status of the cluster. |
 | --Id | Integer | 123 | The role ID. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | -- ClusterRecordI d | Integer | id-xxx | The ID of the cluster record. |
 |---|---|---|---|
 | --Description | String | testDescription | The description of the metric. |
@@ -2253,22 +2057,14 @@ NFV Cloud Firewall Developer Gui
 | --- AvailableVcpu s | Integer | 100 | The number of available vCPUs. |
 | ---TotalVcpus | Integer | 100 | The total number of vCPUs. |
 
+#### 4.3.8 ListDdhEcsType
+
+Lists the Elastic Compute Service (ECS) instance types supported on Dedicated Host (DDH). This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListDdhEcsType
-
-Lists the Elastic Compute Service (ECS) instance types supported on Dedicated Host (DDH).
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | DdhHostTy pe | Strin g | Quer y | No | ddh.ecs.sn2.large | The type. |
 |---|---|---|---|---|---|
@@ -2283,33 +2079,30 @@ This operation uses common request headers. For more information, see Common req
 | EcsInstanceTy pes | Struct | { "EcsInstanceTypes ": { "EcsInstanceType": [ "ecs.g6.large", "ecs.c6.xlarge" ] } } | The list of ECS instance types. |
 | - EcsInstanceTy pe | List | { "EcsInstanceTypes ": { "EcsInstanceType": [ "ecs.g6.large", "ecs.c6.xlarge" ] } } | The list of ECS instance types. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 **Examples**
 
 `JSON` format
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
-| Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
 
-NFV Cloud Firewall Developer Gui
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":100,
  "EcsInstanceTypes":{
   "EcsInstanceType":"{  \"EcsInstanceTypes\": {    \"EcsInstanceType\": [
 \"ecs.g6.large\", \"ecs.c6.xlarge\" ] }}"
- },
- "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` format
 
 ```xml
 <TotalCount>100</TotalCount> <EcsInstanceTypes>
@@ -2320,24 +2113,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
       &quot;ecs.c6.xlarge&quot;
 ```
 
-]
+`]` `}`
 
 ```xml
-  }
 }</EcsInstanceType>
  </EcsInstanceTypes>
  <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 ```
 
-#### ListDdhHosts
+#### 4.3.9 ListDdhHosts
 
-Lists the details of a dedicated hosts.
+Lists the details of a dedicated hosts. This operation uses common request headers. For more information, see Common request parameters.
 
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
+| Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
 
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to whom the original calling process belongs. |
 |---|---|---|---|---|---|
@@ -2358,10 +2149,6 @@ This operation uses common request headers. For more information, see Common req
 | --HostType | String | standard | The type of the host. |
 | -- DdhHostName | String | dh-host-test | The name of the dedicated host. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | --HostStatus | String | success | The status of the host. |
 |---|---|---|---|
 | --ZoneId | String | cn-hangzhou-h | The ID of the zone. |
@@ -2376,20 +2163,12 @@ NFV Cloud Firewall Developer Gui
 | --- AvailableVcpu s | Integer | 20 | The number of remaining vCPUs. |
 | ---TotalVcpus | Integer | 20 | The total number of vCPUs. |
 
+#### 4.3.10 ListDdhHostType
+
+Lists the host types supported by Dedicated Host (DDH), including host models with different specifications, resource capacities, and applicable scenarios. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-#### ListDdhHostType
-
-Lists the host types supported by Dedicated Host (DDH), including host models with different specifications, resource capacities, and applicable scenarios.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 |---|---|---|---|---|---|
@@ -2404,22 +2183,12 @@ This operation uses common request headers. No special request headers are requi
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The number of entries in the list. |
 
+#### 4.3.11 ListZones
+
+Lists zone information. The system typically uses this operation in cloud services or distributed systems to retrieve a list of selectable geographical regions or fault domains. This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ListZones
-
-Lists zone information. The system typically uses this operation in cloud services or distributed systems to retrieve a list of selectable geographical regions or fault domains.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
-
-**Request parameters**
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 |---|---|---|---|---|---|
@@ -2436,22 +2205,12 @@ This operation uses common request headers and has no special request headers. F
 | --ZoneId | String | cn-hangzhou-h | The zone ID. |
 | --ZoneName | String | Hangzhou Zone H | The name of the zone. |
 
-| > Document V | ersion: 2 | 026070 | 1 |  | 9 |
+#### 4.3.12 ModifyDdhClusterInfo
+
+Modifies the information of a dedicated host cluster. This operation uses common request headers. For more information, see Common request parameters.
+
+| > Document V | ersion: 2 | 026070 | 1 |   | 9 |
 |---|---|---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ModifyDdhClusterInfo
-
-Modifies the information of a dedicated host cluster.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2469,22 +2228,9 @@ This operation uses common request headers. For more information, see Common req
 | Field | String | test-key | The name of the field. |
 | Value | String | test-value | The value of the field. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-| Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
-| OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
-| Id | Integ er | Quer y | No | 1 | The ID. |
-
-NFV Cloud Firewall Developer Gui
 
 ```
 http(s)://[Endpoint]/?Action=ModifyDdhClusterInfo &Common request parameters
@@ -2492,29 +2238,34 @@ http(s)://[Endpoint]/?Action=ModifyDdhClusterInfo &Common request parameters
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Field":"name",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Value":"test"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Field>name</Field> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Value>test</Value>
 ```
 
-#### ModifyDdhHostInfo
+#### 4.3.13 ModifyDdhHostInfo
 
-Modifies the attributes of a dedicated host, such as its name, description, or tags.
+Modifies the attributes of a dedicated host, such as its name, description, or tags. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
+| Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
+| OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
+| Id | Integ er | Quer y | No | 1 | The ID. |
 
 | Field | Strin g | Quer y | No | name | The name of the field to modify. |
 |---|---|---|---|---|---|
@@ -2528,25 +2279,15 @@ This operation uses common request headers. No special request headers are requi
 | Field | String | key-test | The modified field. |
 | Value | String | value-test | The new value of the field. |
 
+### 4.4 Endpoint
+
+#### 4.4.1 CreateForwardingPolicy
+
+Creates a forwarding policy to define the forwarding rules and behavior of network traffic. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-### Endpoint
-
-#### CreateForwardingPolicy
-
-Creates a forwarding policy to define the forwarding rules and behavior of network traffic.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -2562,15 +2303,15 @@ This operation uses common request headers and does not require special request 
 | IPv6Enable | Bool ean | Quer y | No | true | Indicates whether IPv6 forwarding is enabled. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 | ForwardingPoli cyId | String | task-123 | The ID of the forwarding rule. |
 | TaskId | String | t-000000000001 | The ID of the task. |
+
+#### 4.4.2 DeleteForwardingPolicy
+
+Deletes a specified forwarding rule. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2580,24 +2321,14 @@ NFV Cloud Firewall Developer Gui
 | Forwardin gPolicyId | Strin g | Quer y | No | task-xxx | The ID of the forwarding rule. |
 | Forwardin gPolicyNa me | Strin g | Quer y | No | fp-xxx | The name of the forwarding rule. |
 
-NFV Cloud Firewall Developer Gui
-
-#### DeleteForwardingPolicy
-
-Deletes a specified forwarding rule.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TaskId | String | task-xxx | The ID of the task. |
+
+#### 4.4.3 EnableForwardingPolicyByEcs
+
+EnableS the forwarding rule configured via the Elastic Compute Service (ECS) instance. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2608,21 +2339,13 @@ This operation uses common request headers. For more information, see Common req
 | EcsIds | Strin g | Quer y | No | i-g0k00ogwzee***** | The list of ECS instance IDs. |
 | Enabled | Strin g | Quer y | No | true | Indicates whether to enable IPv6. true: Enable. false: Disable. |
 
-NFV Cloud Firewall Developer Gui
-
-#### EnableForwardingPolicyByEcs
-
-EnableS the forwarding rule configured via the Elastic Compute Service (ECS) instance.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
+
+#### 4.4.4 ListForwardingPolicies
+
+Lists all forwarding rules configured in the current network environment. The list includes basic information such as rule name, match conditions, action type, and priority. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2633,20 +2356,6 @@ This operation uses common request headers. For more information, see Common req
 | ConfigStat us | Strin g | Quer y | No | success | The status. |
 | TaskId | Strin g | Quer y | No | task-123 | The ID of the task. |
 | VlanId | Strin g | Quer y | No | vlanId-***** | The ID of the virtual LAN. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ListForwardingPolicies
-
-Lists all forwarding rules configured in the current network environment. The list includes basic information such as rule name, match conditions, action type, and priority.
-
-**Request headers**
-
-This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | SrcVswitch Id | Strin g | Quer y | No | vsw-***** | The ID of the source vSwitch. |
 |---|---|---|---|---|---|
@@ -2664,10 +2373,6 @@ This operation uses common request headers only. No special request headers are 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
 
 | TotalCount | Integer | 100 | The total number. |
 |---|---|---|---|
@@ -2687,8 +2392,6 @@ NFV Cloud Firewall Developer Gui
 | -- ForwardingPoli cyId | String | police-xxx | The ID of the forwarding rule. |
 | --IpType | String | ipv4 | The IP address type. ipv6 ipv4 |
 
-NFV Cloud Firewall Developer Gui
-
 | --EniIp | String | 192.168.2.23 | The IP address of the endpoint network interface. |
 |---|---|---|---|
 | --EniIpv6Ip | String | 2001:db8:abcd:001 2::1 | The IPv6 address assigned to the ENI. |
@@ -2706,13 +2409,9 @@ NFV Cloud Firewall Developer Gui
 | ----ResId | String | resource-***** | The resource ID. |
 | ----VlanId | String | 2696 | The VLAN ID. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.4.5 ListForwardingPolicyOptions
 
-#### ListForwardingPolicyOptions
-
-Lists the optional parameters for forwarding rules, typically including pagination, filtering, and sorting options.
-
-**Request headers**
+Lists the optional parameters for forwarding rules, typically including pagination, filtering, and sorting options. This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2730,12 +2429,6 @@ Lists the optional parameters for forwarding rules, typically including paginati
 | Vpcs | Array | vpcs | The list of VPCs. |
 | -VSwitches | Array | VSwitches | The list of vSwitches. |
 
-NFV Cloud Firewall Developer Gui This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --VSwitchId | String | vsw- bp1e7clcw529l773 d**** | The ID of the vSwitch. |
 |---|---|---|---|
 | -- VSwitchName | String | vSwitch | The name of the vSwitch. |
@@ -2746,22 +2439,14 @@ NFV Cloud Firewall Developer Gui This operation uses common request headers and 
 | -VpcCidrBlock | String | 192.168.0.0/16 | The CIDR block of the VPC. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
+#### 4.4.6 ListSlaveEnis
+
+Lists all secondary Elastic Network Interfaces (ENIs) associated with the specified primary ENI. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListSlaveEnis
-
-Lists all secondary Elastic Network Interfaces (ENIs) associated with the specified primary ENI.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The unique identifier (UID) of the user to which the original calling process belongs. |
 |---|---|---|---|---|---|
@@ -2775,10 +2460,6 @@ This operation uses common request headers. For more information, see Common req
 | EndpointVswit chCidr | String | 192.168.0.0/24 | The CIDR block of the vSwitch. |
 | Reses | Struct | type Reses struct { // ← This is data.Reses struct Res []Res `xml:"Res" json:"Res"` // ← internal array} | The collection of resources. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | -Res | Array | type Res struct { ResId string `xml:"ResId" json:"ResId"` SlaveEniId string `xml:"SlaveEniId" json:"SlaveEniId"` VlanId string `xml:"VlanId" json:"VlanId"` ForwardingStatus string `xml:"ForwardingSt atus" json:"ForwardingSt atus"` } | The list of resources. |
 |---|---|---|---|
 | --ResId | String | i-xxx | The ID of the resource. |
@@ -2786,22 +2467,14 @@ NFV Cloud Firewall Developer Gui
 | --VlanId | String | 1678 | The VLAN ID. |
 | -- ForwardingSta tus | String | success | The status. |
 
+#### 4.4.7 UpdateForwardingPolicy
+
+Updates a forwarding rule to modify the configuration of an existing network traffic forwarding rule, such as match conditions, actions, priority, and other parameters. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-#### UpdateForwardingPolicy
-
-Updates a forwarding rule to modify the configuration of an existing network traffic forwarding rule, such as match conditions, actions, priority, and other parameters.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the requester. |
 |---|---|---|---|---|---|
@@ -2814,27 +2487,17 @@ This operation uses common request headers and does not require special request 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-### Cross-organization resource
+### 4.5 Cross-organization resource authorization
 
 **authorization**
 
-#### AddSharingUser
+#### 4.5.1 AddSharingUser
 
-Adds a shared user.
+Adds a shared user. This operation uses common request headers. For more information, see Common request parameters.
 
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -2850,19 +2513,9 @@ This operation uses common request headers. For more information, see Common req
 | SharingId | String | abc123xyz | The ID of the sharing. |
 | RequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.5.2 CreateOrgAuthorization
 
-**Response parameters**
-
-#### CreateOrgAuthorization
-
-Creates authorization information for an organization.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
+Creates authorization information for an organization. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2879,8 +2532,6 @@ This operation uses common request headers. For more information, see Common req
 | ResourceId List | Strin g | Quer y | No | vpc- ck6x7iyz5b6kn*****,vpc- ck6syestnzcuy***** | The list of resource IDs. |
 | ResourceN ame | Strin g | Quer y | No | test001 | The name of the resource. |
 
-NFV Cloud Firewall Developer Gui
-
 | ResourceIn foList | Strin g | Quer y | No | yundun e2e windows**** _ _ */vpc- ck6x7iyz5b6kntbpfrkia,yu ndune2e*****/vpc- ck6syestnzcuyw***** | The list of resource information. |
 |---|---|---|---|---|---|
 
@@ -2889,6 +2540,10 @@ NFV Cloud Firewall Developer Gui
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 | TaskId | String | t-0000000***** | The ID of the task. |
 
+#### 4.5.3 DeleteOrgAuthorization
+
+Deletes authorization information for an organization. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
@@ -2896,20 +2551,6 @@ NFV Cloud Firewall Developer Gui
 | Name | Strin g | Quer y | No | test | The name of the organization authorization. |
 | ID | Integ er | Quer y | No | 123 | The ID of the authorization. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DeleteOrgAuthorization
-
-Deletes authorization information for an organization.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | TargetOrgI D | Strin g | Quer y | No | 138537276***** | The UID of the target organization. |
 |---|---|---|---|---|---|
@@ -2922,24 +2563,14 @@ This operation uses common request headers. For more information, see Common req
 | ForwardingPoli cyId | String | fp-123 | The ID of the forwarding policy. |
 | TaskId | String | task-123 | The ID of the task. |
 
+#### 4.5.4 DeleteSharingUser
+
+Deletes a shared user. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DeleteSharingUser
-
-Deletes a shared user.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Id | Integ er | Quer y | No | 123 | The ID of the user. |
 |---|---|---|---|---|---|
@@ -2951,25 +2582,15 @@ This operation uses common request headers. For more information, see Common req
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+#### 4.5.5 DescribeOrgAuthorization
+
+Queries the authorization information of an organization. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 | Name | Strin g | Quer y | No | test | The name. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DescribeOrgAuthorization
-
-Queries the authorization information of an organization.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | AuthType | Strin g | Quer y | No | standard | The authentication type. |
 |---|---|---|---|---|---|
@@ -2989,10 +2610,6 @@ This operation uses common request headers. For more information, see Common req
 | OrgAuths | Array | OrgAuths | The list of OrgAuths information. |
 | -ID | String | e8605e05-4320- 4ef5-983d-***** | The ID. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | -Name | String | test | The name. |
 |---|---|---|---|
 | -TargetOrgID | String | 138537276***** | The UID of the target organization. |
@@ -3010,10 +2627,12 @@ NFV Cloud Firewall Developer Gui
 | TotalCount | Integer | 100 | The total number. |
 | PageNumber | Integer | 10 | The page number. |
 
-NFV Cloud Firewall Developer Gui
-
 | PageSize | Integer | 10 | The page size. |
 |---|---|---|---|
+
+#### 4.5.6 GetAuthorization
+
+Retrieves authorization information or access permissions. This operation uses common request headers only. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3028,24 +2647,14 @@ NFV Cloud Firewall Developer Gui
 | AsapiSuccess | Boolean | true | Indicates whether the ASAPI request succeeded. |
 | AsapiRequestI d | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the ASAPI request. |
 
-NFV Cloud Firewall Developer Gui
-
-#### GetAuthorization
-
-Retrieves authorization information or access permissions.
-
-**Request headers**
-
-This operation uses common request headers only. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | AuthResult | String | allow | The authorization result. |
 |---|---|---|---|
 | Code | String | 200 | The status code. A value of 200 indicates a successful call. |
 | Message | String | success | The message. |
+
+#### 4.5.7 GrantAuthorize
+
+Grants users or roles the permission to access specific resources or perform specific operations. This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3058,26 +2667,16 @@ This operation uses common request headers only. For more information, see Commo
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
-
-#### GrantAuthorize
-
-Grants users or roles the permission to access specific resources or perform specific operations.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | EagleEyeTrace Id | String | 0ad40c441762830 7082308977e0024 | The EagleEye trace ID. |
 |---|---|---|---|
 | AsapiSuccess | Boolean | true | Indicates whether the ASAPI request succeeded. |
 | AsapiRequestI d | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the ASAPI request. |
 | Code | String | 200 | The status code. |
 | Message | String | success | The additional message. |
+
+#### 4.5.8 ListSharingUserLocal
+
+Lists local shared users. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3086,18 +2685,6 @@ This operation uses common request headers and has no special request headers. F
 | AppId | Strin g | Quer y | No | 2dfea044-479f-464a- b374-f14d32****** | The ID of the application. |
 | AppName | Strin g | Quer y | No | test | The name of the application. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListSharingUserLocal
-
-Lists local shared users.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
 |---|---|---|---|---|---|
@@ -3119,16 +2706,16 @@ This operation uses common request headers and does not require special request 
 | -GmtCreate | String | 2025-01-01 10:00:00 | The creation time. |
 | -Status | String | success | The status. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | -OperateType | String | read | The operation type. |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The total number of records. |
 | PageNumber | Integer | 10 | The page number. |
 | PageSize | Integer | 10 | The page size. |
+
+#### 4.5.9 ListVpcResource
+
+Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Balancer, and RDS instances, within the specified virtual private cloud (VPC) and their associated information. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3137,18 +2724,6 @@ NFV Cloud Firewall Developer Gui
 | VpcName | Strin g | Quer y | No | vpc-123 | The name of the VPC. |
 | VpcId | Strin g | Quer y | No | vpc-4uftp58qt***** | The ID of the VPC. |
 | OrgId | Strin g | Quer y | No | 123 | The organization ID. |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListVpcResource
-
-Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Balancer, and RDS instances, within the specified virtual private cloud (VPC) and their associated information.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | ResourceG roup | Strin g | Quer y | No | Resources***** | The resource group. |
 |---|---|---|---|---|---|
@@ -3163,23 +2738,13 @@ This operation uses common request headers. No special request headers are requi
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 | TotalCount | Integer | 100 | The number of entries in the list. |
 
+#### 4.5.10 UpdateOrgAuthorization
+
+Updates authorization information for an organization. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### UpdateOrgAuthorization
-
-Updates authorization information for an organization.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -3197,13 +2762,15 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | ForwardingPoli cyId | String | fp-123 | The ID of the forwarding policy. |
 |---|---|---|---|
 | TaskId | String | task-123 | The ID of the task. |
+
+### 4.6 Manage images
+
+#### 4.6.1 ListImages
+
+Lists all available image information. This operation uses common request headers. No special request headers exist. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3217,22 +2784,6 @@ NFV Cloud Firewall Developer Gui
 |---|---|---|---|
 | Images | Array | Images | The list of image information. |
 
-NFV Cloud Firewall Developer Gui
-
-### Manage images
-
-#### ListImages
-
-Lists all available image information.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers exist. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -ImageName | String | testImageName | The image name. |
 |---|---|---|---|
 | -ImageId | String | image- 05cefd0be2exxxx | The image ID. |
@@ -3242,25 +2793,17 @@ This operation uses common request headers. No special request headers exist. Fo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The number of entries in the list. |
 
+### 4.7 License
+
+#### 4.7.1 GetVfwQuota
+
+Retrieves the quota information for a virtual firewall. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese) Other valid value: en (English) |
 | QuotaType Id | Integ er | Quer y | No | 4 | The organization ID. |
-
-NFV Cloud Firewall Developer Gui
-
-### License
-
-#### GetVfwQuota
-
-Retrieves the quota information for a virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3277,19 +2820,11 @@ This operation uses common request headers and does not require special request 
 | -Allocate | Float | 5.0 | The amount allocated to child organizations. |
 | -Used | Float | 1.0 | The used capacity. |
 
-NFV Cloud Firewall Developer Gui
+### 4.8 Access Control
 
-**Response parameters**
+#### 4.8.1 CheckRamRoleExists
 
-### Access Control
-
-#### CheckRamRoleExists
-
-Checks whether the specified Resource Access Management (RAM) role exists.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
+Checks whether the specified Resource Access Management (RAM) role exists. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3300,28 +2835,16 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+### 4.9 Asynchronous task
+
+#### 4.9.1 GetAsynTaskDetail
+
+Retrieves detailed information about an asynchronous task. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-**Request parameters**
-
-**Response parameters**
-
-### Asynchronous task
-
-#### GetAsynTaskDetail
-
-Retrieves detailed information about an asynchronous task.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | TaskStatus | Strin g | Quer y | No | success | The status of the task. |
 |---|---|---|---|---|---|
@@ -3340,10 +2863,6 @@ This operation uses common request headers and does not require special request 
 | -TaskId | String | t-000000000001 | The ID of the task. |
 | -ResourceId | String | i- 2zecnwitr2s7aca6* *** | The ID of the resource. |
 | - ResourceNam e | String | MyResource | The name of the resource. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
 
 | -CreatedTime | String | 2020-01-01 12:00:00 | The time when the task was created. |
 |---|---|---|---|
@@ -3364,7 +2883,11 @@ NFV Cloud Firewall Developer Gui
 | PageNumber | Integer | 10 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-NFV Cloud Firewall Developer Gui
+### 4.10 Tunnel Management
+
+#### 4.10.1 CreateClassicTunnel
+
+Creates a classic network tunnel to establish a secure and stable network connection in a classic network environment. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3378,21 +2901,9 @@ NFV Cloud Firewall Developer Gui
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.10.2 CreateVpcTunnel
 
-### Tunnel Management
-
-#### CreateClassicTunnel
-
-Creates a classic network tunnel to establish a secure and stable network connection in a classic network environment.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+Creates a virtual private cloud (VPC) tunnel to establish a secure and private network connection between different network environments, such as between an on-premises IDC and a VPC, or between VPCs across regions. This operation uses common request headers only. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3408,20 +2919,6 @@ This operation uses common request headers. No special request headers are requi
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 | Tunnels | Struct | tunnels | The tunnel information. |
 
-NFV Cloud Firewall Developer Gui
-
-#### CreateVpcTunnel
-
-Creates a virtual private cloud (VPC) tunnel to establish a secure and private network connection between different network environments, such as between an on-premises IDC and a VPC, or between VPCs across regions.
-
-**Request headers**
-
-This operation uses common request headers only. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -Tunnel | Array | tunnel | The list of tunnel information. |
 |---|---|---|---|
 | --VpcId | String | vpc- 3yl4tktt621qgo**** * | The ID of the VPC. |
@@ -3432,22 +2929,14 @@ This operation uses common request headers only. For more information, see Commo
 | --TunnelStatus | String | Success | The status of the tunnel. Valid values: Success: The tunnel is enabled. Failed: The tunnel is disabled. |
 | --Id | String | tunnel-xxx | The ID of the tunnel. |
 
+#### 4.10.3 DeleteClassicTunnel
+
+Deletes the classic network tunnel connection. This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid value: en (English). |
-
-NFV Cloud Firewall Developer Gui
-
-#### DeleteClassicTunnel
-
-Deletes the classic network tunnel connection.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Id | Strin g | Quer y | No | 1 | The ID of the tunnel. |
 |---|---|---|---|---|---|
@@ -3458,6 +2947,10 @@ This operation uses only common request headers. For more information, see Commo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | VncPwd | String | 123456 | The Virtual Network Computing (VNC) password. |
 
+#### 4.10.4 DeleteVpcTunnel
+
+DeleteS the specified virtual private cloud (VPC) tunnel connection. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
@@ -3465,25 +2958,13 @@ This operation uses only common request headers. For more information, see Commo
 | Id | Strin g | Quer y | No | tunnel-xxx | The ID of the tunnel. |
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DeleteVpcTunnel
-
-DeleteS the specified virtual private cloud (VPC) tunnel connection.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+
+#### 4.10.5 GetVncPwd
+
+Retrieves the password for Virtual Network Computing (VNC) remote desktop connection. This operation uses common request headers only. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3497,19 +2978,9 @@ This operation uses common request headers and does not require special request 
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | VncPwd | String | 123456 | The password for VNC remote desktop connection. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.10.6 GetVncUrl
 
-#### GetVncPwd
-
-Retrieves the password for Virtual Network Computing (VNC) remote desktop connection.
-
-**Request headers**
-
-This operation uses common request headers only. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+Queires the Virtual Network Computing (VNC) remote control connection string for a virtual machine or an instance. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3523,25 +2994,9 @@ This operation uses common request headers only. For more information, see Commo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | VncUrl | String | vnc://192.168.1.1:5 901 | The VNC URL. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.10.7 ListClassicTunnels
 
-#### GetVncUrl
-
-Queires the Virtual Network Computing (VNC) remote control connection string for a virtual machine or an instance.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListClassicTunnels
-
-Lists tunnel connection information for the classic network type.
-
-**Request headers**
+Lists tunnel connection information for the classic network type. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3559,17 +3014,15 @@ Lists tunnel connection information for the classic network type.
 | --VswitchId | String | vsw- bp1e7clcw529l773 d***** | The ID of the vSwitch. |
 | --ClassicIp | String | 192.168.1.100 | The IP address in the classic network. |
 
-NFV Cloud Firewall Developer Gui This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --WebAddress | String | 192.168.1.100 | The web access address. |
 |---|---|---|---|
 | --SshAddress | String | 192.168.1.101 | The SSH access address. |
 | --TunnelStatus | String | Success | The status of the tunnel. Success Failed |
 | --Id | String | tunnel-xxx | The ID of the tunnel. |
+
+#### 4.10.8 ListVpcTunnels
+
+Lists all VPN tunnel configurations under the specified virtual private cloud (VPC). This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3580,20 +3033,6 @@ NFV Cloud Firewall Developer Gui This operation uses common request headers. No 
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-#### ListVpcTunnels
-
-Lists all VPN tunnel configurations under the specified virtual private cloud (VPC).
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 |---|---|---|---|
@@ -3607,23 +3046,15 @@ This operation uses common request headers. No special request headers are requi
 | --TunnelStatus | String | failed | The status of the tunnel. |
 | --Id | String | tunnel-123 | The ID of the tunnel. |
 
+### 4.11 Firewall interface
+
+#### 4.11.1 ListVfwInterfaces
+
+Lists all network interface information associated with a virtual firewall. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-### Firewall interface
-
-#### ListVfwInterfaces
-
-Lists all network interface information associated with a virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -3640,8 +3071,6 @@ This operation uses common request headers and does not require special request 
 | Descriptio n | Strin g | Quer y | No | description-123 | The description. |
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
-
-NFV Cloud Firewall Developer Gui
 
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 |---|---|---|---|---|---|
@@ -3661,10 +3090,6 @@ NFV Cloud Firewall Developer Gui
 | - ForwardingPoli cyId | String | fp-xxx | The ID of the forwarding policy. |
 | -IpType | String | ipv4 | The IP type. ipv6 ipv4 |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | -EniId | String | eni-xxx | The ID of the ENI. |
 |---|---|---|---|
 | -EniIp | String | 192.168.1.1 | The IPv4 address of the ENI. |
@@ -3679,21 +3104,13 @@ NFV Cloud Firewall Developer Gui
 | PageSize | Integer | 10 | The page size. |
 | PageNumber | Integer | 10 | The page number. |
 
+#### 4.11.2 PublishVfwInterfaces
+
+Publishes the network interface configuration of a virtual firewall so that external systems or orchestrators can discover and manage it. This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-#### PublishVfwInterfaces
-
-Publishes the network interface configuration of a virtual firewall so that external systems or orchestrators can discover and manage it.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese) Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -3710,13 +3127,13 @@ This operation uses common request headers and has no special request headers. F
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
 | EcsIdList | Strin g | Quer y | No | i-g0k00ogwze***** | The list of Elastic Compute Service (ECS) IDs. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
+
+#### 4.11.3 UnPublishVfwInterfaces
+
+Revokes the configuration that publishes virtual firewall interfaces. This action removes published virtual firewall interfaces from the network service or cancels their external exposure. This operation uses common request headers only. No special request headers apply. For details, see the documentation for common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3727,18 +3144,6 @@ NFV Cloud Firewall Developer Gui
 | VlanId | Strin g | Quer y | No | 123 | The ID of the VLAN. |
 | IntfName | Strin g | Quer y | No | eth0 | The name of the network interface. |
 | EniIp | Strin g | Quer y | No | 192.168.2.23 | The IP address of the endpoint Elastic Network Interface (ENI). |
-
-NFV Cloud Firewall Developer Gui
-
-#### UnPublishVfwInterfaces
-
-Revokes the configuration that publishes virtual firewall interfaces. This action removes published virtual firewall interfaces from the network service or cancels their external exposure.
-
-**Request headers**
-
-This operation uses common request headers only. No special request headers apply. For details, see the documentation for common request parameters.
-
-**Request parameters**
 
 | EniIpv6Ip | Strin g | Quer y | No | 2001:db8:abcd:0012::1 | The IPv6 address of the ENI. |
 |---|---|---|---|---|---|
@@ -3752,25 +3157,15 @@ This operation uses common request headers only. No special request headers appl
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+### 4.12 Firewall routing
+
+#### 4.12.1 CreateVfwRoutes
+
+Creates routing rules for a virtual firewall. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-### Firewall routing
-
-#### CreateVfwRoutes
-
-Creates routing rules for a virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -3787,11 +3182,13 @@ This operation uses common request headers and does not have special request hea
 | RouteType | Strin g | Quer y | No | ipv4 | The type of the route. ipv6 ipv4 |
 | OriginCalle rUid | Strin g | Quer y | No | 123456 | The UID of the caller. |
 
-NFV Cloud Firewall Developer Gui
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
+
+#### 4.12.2 DelVfwRoutes
+
+Deletes route table entries of a virtual firewall. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3802,20 +3199,6 @@ NFV Cloud Firewall Developer Gui
 | VpcId | Strin g | Quer y | No | vpc-g0kugui5l1***** | The ID of the virtual private cloud (VPC). |
 | VpcName | Strin g | Quer y | No | test-name | The name of the VPC. |
 | VlanId | Strin g | Quer y | No | 123 | The VLAN ID. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DelVfwRoutes
-
-Deletes route table entries of a virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | IntfName | Strin g | Quer y | No | ethernet0/1 | The name of the network interface, which represents an Ethernet physical interface in the system. |
 |---|---|---|---|---|---|
@@ -3828,23 +3211,13 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
+#### 4.12.3 GetVfwRouteConfigStatus
+
+Retrieves the route configuration status of the virtual firewall. This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### GetVfwRouteConfigStatus
-
-Retrieves the route configuration status of the virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Valid value: en (English) |
 |---|---|---|---|---|---|
@@ -3856,24 +3229,14 @@ This operation uses common request headers and does not require any special requ
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | Status | String | success | The configuration status. |
 
+#### 4.12.4 ListVfwRouteEntries
+
+Lists route entries for a virtual firewall (VFW). This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 | Lang | Strin g | Quer y | No | zh | The language in which the system returns messages. Default value: zh (Chinese). Valid values: zh and en (English). |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ListVfwRouteEntries
-
-Lists route entries for a virtual firewall (VFW).
-
-**Request headers**
-
-This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | AppId | Strin g | Quer y | No | 2dfea044-479f-464a- b374-f14d32***** | The application ID. |
 |---|---|---|---|---|---|
@@ -3889,10 +3252,6 @@ This operation uses common request headers and does not have special request hea
 | PageNumb er | Integ er | Quer y | No | 10 | The page number. |
 | PageSize | Integ er | Quer y | No | 10 | The number of entries per page. |
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The unique identifier (UID) of the user to whom the original calling process belongs. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3912,11 +3271,13 @@ NFV Cloud Firewall Developer Gui
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 | TotalCount | Integer | 100 | The total number. |
 
-NFV Cloud Firewall Developer Gui
-
 | PageSize | Integer | 10 | The page size. |
 |---|---|---|---|
 | PageNumber | Integer | 10 | The page number. |
+
+#### 4.12.5 ListVfwRouteOptions
+
+Lists routing configuration options for a virtual firewall. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3931,20 +3292,6 @@ NFV Cloud Firewall Developer Gui
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-NFV Cloud Firewall Developer Gui
-
-#### ListVfwRouteOptions
-
-Lists routing configuration options for a virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | VfwRouteEntry OptionInfos | Array | VfwRouteEntryOpti onInfos | The collection of optional extended attributes for virtual firewall route entries. |
 |---|---|---|---|
 | -Interfaces | Array | Interfaces | The list of interfaces. |
@@ -3957,21 +3304,13 @@ This operation uses common request headers. No special request headers are requi
 | - VpcIpv6CidrBl ock | String | 2401:b2c0::/56 | The IPv6 CIDR block. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
+#### 4.12.6 PublishVfwRoutes
+
+Publishes the routing information of a virtual firewall to the network so that other devices can learn and forward traffic to subnets managed by the virtual firewall. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
-
-NFV Cloud Firewall Developer Gui
-
-#### PublishVfwRoutes
-
-Publishes the routing information of a virtual firewall to the network so that other devices can learn and forward traffic to subnets managed by the virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Other valid value: en (English) |
 |---|---|---|---|---|---|
@@ -3990,12 +3329,12 @@ This operation uses common request headers. For more information, see Common req
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 |---|---|---|---|
+
+#### 4.12.7 UnPublishVfwRoutes
+
+Revokes the publication of route entries for a virtual firewall. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4009,18 +3348,6 @@ NFV Cloud Firewall Developer Gui
 | IntfName | Strin g | Quer y | No | ethernet0/1 | The interface name. |
 | DstCidrBlo ck | Strin g | Quer y | No | 2020:210:2:d1::/64 | The destination CIDR block. |
 
-NFV Cloud Firewall Developer Gui
-
-#### UnPublishVfwRoutes
-
-Revokes the publication of route entries for a virtual firewall.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
 | NextHop | Strin g | Quer y | No | 192.XX.XX.1 | The next hop. |
 |---|---|---|---|---|---|
 | OriginCalle rUid | Strin g | Quer y | No | 12345 | The UID of the caller. |
@@ -4031,26 +3358,16 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 
+### 4.13 VPC routing
+
+#### 4.13.1 BatchPublishRoutes
+
+Publishes route configurations in batches. This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default value: zh (Chinese). Valid values: zh, en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-### VPC routing
-
-#### BatchPublishRoutes
-
-Publishes route configurations in batches.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | RouteGrou pIds | Repe atLis t | Quer y | Yes | rg-xxx | The list of route group IDs. |
 |---|---|---|---|---|---|
@@ -4067,17 +3384,9 @@ This operation uses only common request headers. For more information, see Commo
 | - PeerRequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the peer request. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.13.2 BatchUnPublishRoutes
 
-**Response parameters**
-
-#### BatchUnPublishRoutes
-
-Unpublishes specified route entries in batches.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
+Unpublishes specified route entries in batches. This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4095,14 +3404,12 @@ This operation uses common request headers. For more information, see Common req
 | -PeerTaskId | String | task-xxx | The peer task ID. |
 | - PeerRequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The peer request ID. |
 
-NFV Cloud Firewall Developer Gui
-
-**Request parameters**
-
-**Response parameters**
-
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 |---|---|---|---|
+
+#### 4.13.3 CreateRouteEntry
+
+Creates a route entry in the route table. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Paramete r | Typ e | Posi tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4114,18 +3421,6 @@ NFV Cloud Firewall Developer Gui
 | LocalAppN ame | Strin g | Quer y | No | app-name-xxx | The name of the local application. |
 | LocalRoute EntryNam e | Strin g | Quer y | No | test-name | The name. |
 | LocalVpcId | Strin g | Quer y | No | vpc-id-xxx | The ID of the local virtual private cloud (VPC). |
-
-NFV Cloud Firewall Developer Gui
-
-#### CreateRouteEntry
-
-Creates a route entry in the route table.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | LocalVpcN ame | Strin g | Quer y | No | vpc-name-xxx | The name of the VPC. |
 |---|---|---|---|---|---|
@@ -4141,8 +3436,6 @@ This operation uses common request headers. No special request headers are requi
 | LocalMast erEndNam e | Strin g | Quer y | No | test-name | The name. |
 | LocalSlave ClusterId | Strin g | Quer y | No | cls-xxx | The ID of the local secondary cluster. |
 | LocalSlave ClusterNa me | Strin g | Quer y | No | cls-xxx | The name of the local secondary node. |
-
-NFV Cloud Firewall Developer Gui
 
 | LocalSlave VnfId | Strin g | Quer y | No | a5656cf9-8b23-4cba- bcc6-5365627xxxxx | The ID of the local secondary VNF. |
 |---|---|---|---|---|---|
@@ -4160,8 +3453,6 @@ NFV Cloud Firewall Developer Gui
 | PeerDstCid rBlock | Strin g | Quer y | No | 10.0.0.0/16 | The destination CIDR block. |
 | PeerMaste rClusterId | Strin g | Quer y | No | cls-xxx | The ID of the peer primary cluster. |
 
-NFV Cloud Firewall Developer Gui
-
 | PeerMaste rClusterNa me | Strin g | Quer y | No | test-name | The name of the peer primary node. |
 |---|---|---|---|---|---|
 | PeerMaste rVnfId | Strin g | Quer y | No | a5656cf9-8b23-4cba- bcc6-5365627xxxxx | The ID of the peer primary VNF. |
@@ -4178,8 +3469,6 @@ NFV Cloud Firewall Developer Gui
 | AzoneId | Strin g | Quer y | No | cn-heyuan-b | The ID of the zone. |
 | Name | Strin g | Quer y | No | test-name | The name. |
 
-NFV Cloud Firewall Developer Gui
-
 | RouteType | Strin g | Quer y | No | standard | The type of the route. |
 |---|---|---|---|---|---|
 
@@ -4188,6 +3477,10 @@ NFV Cloud Firewall Developer Gui
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | RouteGroupId | String | rg-xxx | The ID of the route group. |
 
+#### 4.13.4 DeleteRouteEntry
+
+Deletes a route entry from the route table. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | Action | Strin g | Syst em | Yes | DeleteRouteEntry | The operation that you want to perform. Set the value to DeleteRouteEntry. |
@@ -4195,25 +3488,13 @@ NFV Cloud Firewall Developer Gui
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Valid values: zh (default) for Chinese and en for English |
 | RouteGrou pIds | Repe atLis t | Quer y | Yes | rg-xxx | The list of route group IDs. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### DeleteRouteEntry
-
-Deletes a route entry from the route table.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+
+#### 4.13.5 GetRouteConfigStatus
+
+Retrieves the route configuration status. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4227,19 +3508,9 @@ This operation uses common request headers. For more information, see Common req
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | Status | String | Success | The return status. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.13.6 ListRouteEntries
 
-#### GetRouteConfigStatus
-
-Retrieves the route configuration status.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+Lists route entries in a route table. This operation uses common request headers. For more information, see Common request parameters.
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 |---|---|---|---|---|---|
@@ -4253,18 +3524,6 @@ This operation uses common request headers. No special request headers are requi
 | RouteEntry Name | Strin g | Quer y | No | entry-name | The name of the route entry. |
 | Destinatio nCidrBlock | Strin g | Quer y | No | vpc-123 | The ID of the VPC. |
 | ProtectTyp e | Strin g | Quer y | No | standard | The protection type. |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListRouteEntries
-
-Lists route entries in a route table.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | RouteTabl eId | Strin g | Quer y | No | vtb- bp145q7glnuzdvzu2**** | The ID of the route table. |
 |---|---|---|---|---|---|
@@ -4281,8 +3540,6 @@ This operation uses common request headers. For more information, see Common req
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the caller. |
 | RouteGrou pId | Strin g | Quer y | No | 123 | The ID of the route group. |
 | Name | Strin g | Quer y | No | test | The name. |
-
-NFV Cloud Firewall Developer Gui
 
 **Response data**
 
@@ -4303,8 +3560,6 @@ NFV Cloud Firewall Developer Gui
 | -- LocalRouteEnt ryName | String | default-route | The local route entry name. |
 | --LocalVpcId | String | vpc-id-test | The local VPC ID. |
 
-NFV Cloud Firewall Developer Gui
-
 | -- LocalVpcName | String | vpc-test | The local VPC name. |
 |---|---|---|---|
 | -- LocalVSwitchId | String | vsw-123 | The local vSwitch ID. |
@@ -4318,8 +3573,6 @@ NFV Cloud Firewall Developer Gui
 | -- LocalMasterEn dId | String | eni-123 | The local primary endpoint ID. |
 | -- LocalMasterEn dName | String | eni-123 | The local primary endpoint name. |
 | -- LocalSlaveClus terId | String | cls-123 | The local secondary cluster ID. |
-
-NFV Cloud Firewall Developer Gui
 
 | -- LocalSlaveClus terName | String | cls-123 | The local secondary cluster name. |
 |---|---|---|---|
@@ -4336,8 +3589,6 @@ NFV Cloud Firewall Developer Gui
 | -- PeerVpcName | String | vpc-test | The peer VPC name. |
 | -- PeerVSwitchId | String | vsw-123 | The peer vSwitch ID. |
 
-NFV Cloud Firewall Developer Gui
-
 | -- PeerVSwitchN ame | String | vsw-test | The peer vSwitch name. |
 |---|---|---|---|
 | -- PeerVpcCidrLis t | String | 10.0.0.0/8 | The list of CIDR blocks of the peer VPC. |
@@ -4352,8 +3603,6 @@ NFV Cloud Firewall Developer Gui
 | -- PeerSlaveClust erName | String | cls-test | The peer secondary cluster name. |
 | -- PeerSlaveVnfI d | String | a5656cf9-8b23- 4cba-bcc6- 5365627xxxxx | The peer secondary VNF ID. |
 
-NFV Cloud Firewall Developer Gui
-
 | -- PeerSlaveEndI d | String | eni-123 | The peer secondary endpoint ID. |
 |---|---|---|---|
 | -- PeerSlaveEnd Name | String | end-test | The peer secondary endpoint name. |
@@ -4364,22 +3613,14 @@ NFV Cloud Firewall Developer Gui
 | --ResourceId | String | cn-neimeng- envxxx-d01 | The resource ID. |
 | --RouteType | String | standard | The route type. |
 
+#### 4.13.7 ListRouteEntryOptions
+
+Lists the query parameter options for route entries. These options typically include configurations for pagination, filtering, and sorting. This operation uses common request headers and does not require special request headers. For more information, see the documentation of common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
 | Lang | Strin g | Quer y | No | zh | The language in which to receive messages. Default value: zh (Chinese). Valid value: en (English) |
-
-NFV Cloud Firewall Developer Gui
-
-#### ListRouteEntryOptions
-
-Lists the query parameter options for route entries. These options typically include configurations for pagination, filtering, and sorting.
-
-**Request headers**
-
-This operation uses common request headers and does not require special request headers. For more information, see the documentation of common request parameters.
-
-**Request parameters**
 
 | OriginCalle rUid | Strin g | Quer y | No | 123 | The UID of the caller. |
 |---|---|---|---|---|---|
@@ -4399,10 +3640,6 @@ This operation uses common request headers and does not require special request 
 | -- ClusterEndpoi nts | Array | clusterendpoints | The list of accessible endpoint addresses for each control plane node in the Kubernetes cluster. |
 | ---Endpoints | Array | endpoints | Endpoints. |
 
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
 | ----EndpointId | String | ep- bp14sz7ftcwwjgrd m***** | The ID of the endpoint. |
 |---|---|---|---|
 | ---- EndpointName | String | test-123 | The name of the endpoint. |
@@ -4420,8 +3657,6 @@ NFV Cloud Firewall Developer Gui
 | ----ClusterId | String | ehpc-hz- FYUr32**** | The ID of the cluster. |
 | ---- ClusterName | String | my-cluster | The name of the cluster. |
 
-NFV Cloud Firewall Developer Gui
-
 | ----VnfId | String | a5656cf9-8b23- 4cba-bcc6- 5365627xxxxx | The ID of the VNF. |
 |---|---|---|---|
 | ---AppId | String | 7171a6ca-d1cd- 4928-8642- 7d5cfe69**** | The ID of the application. |
@@ -4436,15 +3671,9 @@ NFV Cloud Firewall Developer Gui
 | - VpcIpv6CidrBl ock | String | 2408:XXXX:0:6a::/5 6 | The IPv6 CIDR block. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-****** | The ID of the request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.13.8 ModifyRouteEntry
 
-#### ModifyRouteEntry
-
-Modifies the specified route entry in the route table.
-
-**Request headers**
-
-This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+Modifies the specified route entry in the route table. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
 
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address. |
 |---|---|---|---|---|---|
@@ -4461,10 +3690,6 @@ This operation uses common request headers and does not have special request hea
 | LocalRoute TableId | Strin g | Quer y | No | vtb-xxx | The ID of the local route table. |
 | LocalDstCi drBlock | Strin g | Quer y | No | 192.168.1.0/24 | The destination CIDR block. |
 
-NFV Cloud Firewall Developer Gui
-
-**Request parameters**
-
 | LocalMast erClusterId | Strin g | Quer y | No | cls-xxx | The ID of the local primary cluster. |
 |---|---|---|---|---|---|
 | LocalMast erClusterN ame | Strin g | Quer y | No | test-name | The name of the local primary cluster. |
@@ -4479,8 +3704,6 @@ NFV Cloud Firewall Developer Gui
 | PeerAppId | Strin g | Quer y | No | app-xxx | The ID of the peer application. |
 | PeerAppNa me | Strin g | Quer y | No | app-xxx | The name of the peer application. |
 | PeerRoute EntryId | Strin g | Quer y | No | re-xxx | The ID of the peer route entry. |
-
-NFV Cloud Firewall Developer Gui
 
 | PeerRoute EntryNam e | Strin g | Quer y | No | route-test | The name of the peer route entry. |
 |---|---|---|---|---|---|
@@ -4498,8 +3721,6 @@ NFV Cloud Firewall Developer Gui
 | PeerSlave ClusterNa me | Strin g | Quer y | No | cls-test | The name of the peer secondary cluster. |
 | PeerSlave VnfId | Strin g | Quer y | No | a5656cf9-8b23-4cba- bcc6-5365627xxxxx | The ID of the peer secondary VNF. |
 
-NFV Cloud Firewall Developer Gui
-
 | PeerSlaveE ndId | Strin g | Quer y | No | eni-xxx | The ID of the peer secondary endpoint. |
 |---|---|---|---|---|---|
 | PeerSlaveE ndName | Strin g | Quer y | No | test-name | The unique identifier name of the peer secondary node. |
@@ -4513,22 +3734,12 @@ NFV Cloud Firewall Developer Gui
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
+#### 4.13.9 ModifyRoutePolicyName
+
+Modifies the name of a routing policy. This operation uses common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### ModifyRoutePolicyName
-
-Modifies the name of a routing policy.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | SourceIp | Strin g | Quer y | No | 192.0.x.x | The source IP address. |
 |---|---|---|---|---|---|
@@ -4542,23 +3753,13 @@ This operation uses common request headers. For more information, see Common req
 | RouteGroupId | String | rg-xxx | The ID of the route group. |
 | Name | String | test | The name of the metric. |
 
+#### 4.13.10 PublishRoutes
+
+Publishes routing information to register a service's access path with the service gateway or registration center so that external requests route correctly to the corresponding service instance. This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | Strin g | Quer y | No | 219.133.XX.XX | The source IP address of the request. |
-
-NFV Cloud Firewall Developer Gui
-
-**Response parameters**
-
-#### PublishRoutes
-
-Publishes routing information to register a service's access path with the service gateway or registration center so that external requests route correctly to the corresponding service instance.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Lang | Strin g | Quer y | No | zh | The language type for receiving messages. Default: zh (Chinese), en (English) |
 |---|---|---|---|---|---|
@@ -4577,9 +3778,9 @@ This operation uses common request headers and has no special request headers. F
 | PeerRouteEntr yId | String | 1001 | The ID of the peer route entry. |
 | PeerRequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the peer request. |
 
-NFV Cloud Firewall Developer Gui
+#### 4.13.11 UnPublishRoutes
 
-**Response parameters**
+Unpublishes the specified routes so they no longer provide external services or are discoverable. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4595,21 +3796,5 @@ NFV Cloud Firewall Developer Gui
 | LocalRequestI d | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the local request. |
 | PeerTaskId | String | task-xxx | The ID of the peer task. |
 
-NFV Cloud Firewall Developer Gui
-
-#### UnPublishRoutes
-
-Unpublishes the specified routes so they no longer provide external services or are discoverable.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | PeerRequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the peer request. |
 |---|---|---|---|
-
-NFV Cloud Firewall Developer Gui

@@ -2,18 +2,26 @@
 title: "Elasticsearch Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 15
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch Product Introduction 20260629.pdf"
+source_pdf: "79928defcc1a3be3_Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%20Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elasticsearch%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Elasticsearch Product Introduction 20260629
 
-## Alibaba Cloud Elasticsearch
+## Table of Contents
+
+- 1 Alibaba Cloud Elasticsearch
+  - 1.1 Product details
+  - 1.2 Scenarios
+  - 1.3 Product value
+  - 1.4 Features
+
+## 1 Alibaba Cloud Elasticsearch
 
 Elasticsearch is a real-time, distributed search and analysis engine based on Lucene. It is a leading open source enterprise search engine available under the Apache license. It provides a distributed service that enables users to store, search, and analyze massive datasets quickly and in near real-time. Elasticsearch is often the core engine for applications that require complex query features and must handle high query volumes. An Elasticsearch cluster is a distributed system composed of multiple nodes. These nodes work together to store data and provide indexing and search capabilities across the entire cluster. To improve horizontal scaling, the system splits large indexes into multiple shards, which are then distributed among the nodes. Elasticsearch also creates replica shards on different nodes to back up data. This process increases high availability, distributes the search workload, and improves concurrent performance. Alibaba Cloud Elasticsearch provides a service that is 100% compatible with open source Elasticsearch. The service supports multiple versions of the open source ES kernel and includes targeted performance optimizations. Alibaba Cloud Elasticsearch also offers many proprietary technologies, such as plugins and features for Chinese tokenization, AISearch, query Quality of Service (QoS), cross-cluster replication, data compression, and aggregated writes. The service provides enterprise-grade capabilities, including zone-disaster recovery for high availability, snapshot backup and recovery, security authentication, visual cluster creation, plugin management, multi-tenancy, and Auto Scaling. In addition to Elasticsearch, Alibaba Cloud also fully supports OpenSearch. The default OpenSearch version provided is 3.1.0. OpenSearch, forked from Elasticsearch 7.10, is a continuously evolving project that aims to provide an open, extensible, and vendor-neutral platform for search and analysis. The Alibaba Cloud OpenSearch service is fully compatible with the open source OpenSearch ecosystem and supports core features such as Dashboards, SQL queries, Piped Processing Language (PPL), Index State Management, and asynchronous search. The service also integrates Alibaba Cloud's security systems, monitoring and alerts, automatic backups, and Auto Scaling capabilities. You can deploy either the Elasticsearch or OpenSearch engine to meet your business needs. This provides a unified, cloud-native management experience with an enterprise-grade Service-Level Agreement (SLA).
 
-### Product details
+### 1.1 Product details
 
 Alibaba Cloud Elasticsearch is fully compatible with open-source Elasticsearch and OpenSearch. It supports multiple versions of open-source Elasticsearch and OpenSearch version 3.1.0, featuring targeted kernel performance optimizations. Additionally, it offers multi-tenancy, permission and security management, auto scaling, third-party or custom plug-ins uploads, data backup, and cross-cluster index synchronization.
 
@@ -97,7 +105,7 @@ The aliyun-codec plug-in, developed by the Alibaba Cloud Elasticsearch team, com
 
 The system is compatible with both the Elasticsearch and OpenSearch ecosystems. Rich ecosystem components include Kibana, Dashboard, and Grafana.
 
-### Scenarios
+### 1.2 Scenarios
 
 Alibaba Cloud Elasticsearch can be used in many scenarios, including log analysis and fullstack observability, information retrieval, and data intelligence.
 
@@ -117,7 +125,7 @@ People use the mobile internet daily to query various types of information. For 
 
 With the rapid development of industries such as gaming, education, and retail, massive amounts of business data are generated in addition to the log and metric data from underlying systems. This data includes user behavior, driving routes, and transaction records. In a data-driven operational context, in-depth statistical analysis and mining of this business data are required to identify problems and opportunities for upper-layer services and to support business decisions. This process is how data is used to generate business value. Alibaba Cloud Elasticsearch provides structured query capabilities and supports complex filtering and aggregation functions. It can quickly and efficiently analyze data such as user behavior, properties, and tags to enable precise audience targeting. Additionally, Kibana can be used to perform statistical classification of business data and build comprehensive dashboards. As a result, massive datasets in scenarios such as e-commerce, mobile applications, and advertising media can be efficiently analyzed to uncover deep business value.
 
-### Product value
+### 1.3 Product value
 
 Alibaba Cloud Elasticsearch is a service that is 100% compatible with open source Elasticsearch. It supports multiple versions of open source Elasticsearch and includes a kernel optimized for high performance. The service extends the open source product with proprietary plugins for Chinese tokenization and vector search. It also provides enterprisegrade security authentication, visual tools for managing clusters and plugins, and pluginbased support for SQL queries and snapshot backups.
 
@@ -187,63 +195,65 @@ A targeted management and scheduling design optimizes the deployment structure. 
 
 **Opendistro ecosystem support**
 
-The service supports the open source Opendistro ecosystem. This provides capabilities for scenarios that are covered by the commercial X-Pack in open source Elasticsearch. These capabilities include but are not limited to the following: You can manage the lifecycle of indexes by integrating the Index State Management (ISM) plugin. You can use the Security plugin to enable Lightweight Directory Access Protocol (LDAP) capabilities. This topic provides an overview of the features of Alibaba Cloud Elasticsearch to help you quickly understand its capabilities.
+The service supports the open source Opendistro ecosystem. This provides capabilities for scenarios that are covered by the commercial X-Pack in open source Elasticsearch. These capabilities include but are not limited to the following: You can manage the lifecycle of indexes by integrating the Index State Management (ISM) plugin. You can use the Security plugin to enable Lightweight Directory Access Protocol (LDAP) capabilities.
 
-### Features
+### 1.4 Features
+
+This topic provides an overview of the features of Alibaba Cloud Elasticsearch to help you quickly understand its capabilities.
 
 | Level 1 feature | Level 2 feature | Level 3 feature | Feature description |
 |---|---|---|---|
 | Security | Security isolation | Network security | Establishes network boundaries based on hybrid cloud standards, allowing the registration of existing network egresses and providing fully isolated access to SRS for dedicated worker nodes. |
-|  | Security audit | Operation log audit | Logs all write operations performed on the Elasticsearch console. |
-|  | Data security | Data replica redundancy | Distributes primary and replica shards across different physical machines. |
-|  | Access control | Encrypted access | Secures data in transit by using Transport Layer Security (TLS) encryption for access links. |
-|  |  | IP allowlist | Controls access to your cluster by using an IP allowlist. |
-|  |  | Internet access | Supports internet access. |
+|   | Security audit | Operation log audit | Logs all write operations performed on the Elasticsearch console. |
+|   | Data security | Data replica redundancy | Distributes primary and replica shards across different physical machines. |
+|   | Access control | Encrypted access | Secures data in transit by using Transport Layer Security (TLS) encryption for access links. |
+|   |   | IP allowlist | Controls access to your cluster by using an IP allowlist. |
+|   |   | Internet access | Supports internet access. |
 | Storage | Data node storage | Solid State Drive (SSD) disk | Data nodes support storage on SSD disks. |
-|  |  | Hard Disk Drive (HDD) disk | Data nodes support storage on HDD disks. |
-|  | Dedicated master node storage | Logical Volume Manager (LVM) partition | Dedicated master nodes support LVM-partitioned disks. |
+|   |   | Hard Disk Drive (HDD) disk | Data nodes support storage on HDD disks. |
+|   | Dedicated master node storage | Logical Volume Manager (LVM) partition | Dedicated master nodes support LVM-partitioned disks. |
 
 | Disaster recovery and backup | Disaster recovery Note Currently, only Elasticsearch instances support disaster recovery capabilities. | Same-region dual-AZ disaster recovery | Supports dual-AZ disaster recovery deployments in the same region. |
 |---|---|---|---|
-|  |  | Same-region triple-AZ disaster recovery | Supports triple-AZ disaster recovery deployments in the same region. |
-|  |  | Geo-disaster recovery | Supports geo-disaster recovery across different regions. |
-|  | Backup | Data backup and restoration | Provides full and incremental backup and restoration features based on Object Storage Service (OSS). |
-|  | Data replication | Cross-cluster index synchronization | Supports cross-cluster data replication to help achieve business disaster recovery. |
+|   |   | Same-region triple-AZ disaster recovery | Supports triple-AZ disaster recovery deployments in the same region. |
+|   |   | Geo-disaster recovery | Supports geo-disaster recovery across different regions. |
+|   | Backup | Data backup and restoration | Provides full and incremental backup and restoration features based on Object Storage Service (OSS). |
+|   | Data replication | Cross-cluster index synchronization | Supports cross-cluster data replication to help achieve business disaster recovery. |
 | Management and control | Visualization tools | Kibana/Dashboards | Provides out-of-the-box visualization components. |
-|  |  | Visual management of index templates | Supports visual management of index templates in Kibana or Dashboards. |
-|  | Product console | Change operations | Allows you to perform change operations such as creating resources on the console. |
-|  | Brand management | White-labeling | Supports white-labeling, allowing you to hide logos and other brand-specific information. |
-|  | Node management | Anti-affinity | Supports anti-affinity policies during node creation to improve resilience. |
-|  | Dictionary management | Cold and hot updates for custom dictionaries | Supports both cold and hot updates for custom dictionaries. Hot updates do not require an instance restart. |
-| 2 | > Document Version: 2026062 |  |  |
+|   |   | Visual management of index templates | Supports visual management of index templates in Kibana or Dashboards. |
+|   | Product console | Change operations | Allows you to perform change operations such as creating resources on the console. |
+|   | Brand management | White-labeling | Supports white-labeling, allowing you to hide logos and other brand-specific information. |
+|   | Node management | Anti-affinity | Supports anti-affinity policies during node creation to improve resilience. |
+|   | Dictionary management | Cold and hot updates for custom dictionaries | Supports both cold and hot updates for custom dictionaries. Hot updates do not require an instance restart. |
+| 2 | > Document Version: 2026062 |   |   |
 
-|  | Parameter configuration | GUI-based parameter management | Supports GUI-based management of instance parameters on the console. |
+|   | Parameter configuration | GUI-based parameter management | Supports GUI-based management of instance parameters on the console. |
 |---|---|---|---|
-|  | Language analysis | aliws for Chinese word segmentation | Supports the Alibaba Cloud proprietary analysis-aliws plugin for Chinese word segmentation. |
-|  |  | analysis-ik plugin for Chinese word segmentation | This plugin provides a dictionary-based segmentation algorithm. This enhanced version of the open- source plugin supports dynamic loading of dictionary files from OSS and enables both cold and hot updates for IK dictionaries. |
-|  |  | analysis-kuromoji for Japanese word segmentation | Supports the analysis- kuromoji plugin for Japanese word segmentation. |
-|  |  | analysis-phonetic plugin for phonetic analysis | This plugin converts differently spelled words into identical phonetic representations, enabling matching of similarly pronounced words. |
-|  |  | analysis-smartcn for mixed Chinese-English analysis | This smart Chinese analysis plugin is primarily used for analyzing Chinese or mixed Chinese-English text, especially for segmenting simplified Chinese text. |
-|  |  | analysis-pinyin plugin for pinyin analysis | This plugin performs conversion between Chinese characters and pinyin, enabling keyword searches using either format. |
-|  | Multi-format document attachment processing | ingest-attachment plugin for processing attachments in multiple formats | This plugin indexes content from documents in various formats such as Word, Excel, PDF, and PPT. |
+|   | Language analysis | aliws for Chinese word segmentation | Supports the Alibaba Cloud proprietary analysis-aliws plugin for Chinese word segmentation. |
+|   |   | analysis-ik plugin for Chinese word segmentation | This plugin provides a dictionary-based segmentation algorithm. This enhanced version of the open- source plugin supports dynamic loading of dictionary files from OSS and enables both cold and hot updates for IK dictionaries. |
+|   |   | analysis-kuromoji for Japanese word segmentation | Supports the analysis- kuromoji plugin for Japanese word segmentation. |
+|   |   | analysis-phonetic plugin for phonetic analysis | This plugin converts differently spelled words into identical phonetic representations, enabling matching of similarly pronounced words. |
+|   |   | analysis-smartcn for mixed Chinese-English analysis | This smart Chinese analysis plugin is primarily used for analyzing Chinese or mixed Chinese-English text, especially for segmenting simplified Chinese text. |
+|   |   | analysis-pinyin plugin for pinyin analysis | This plugin performs conversion between Chinese characters and pinyin, enabling keyword searches using either format. |
+|   | Multi-format document attachment processing | ingest-attachment plugin for processing attachments in multiple formats | This plugin indexes content from documents in various formats such as Word, Excel, PDF, and PPT. |
 
-| Engine & plugins |  |  |  |
+| Engine & plugins |   |   |   |
 |---|---|---|---|
-|  | Index management | opendistro index man _ _ agement plugin for index management | This plugin automates index lifecycle management, performance optimization, and status monitoring. |
-|  | SQL support | SQL plugin | This plugin lets you query data in Elasticsearch by using standard SQL statements, just like querying a traditional database. |
-|  | Full-text search | Text search | Provides powerful full-text search, including exact matching, fuzzy queries, prefix/suffix matching, and custom tokenization logic. It handles the retrieval of both long and short texts and allows you to customize result ranking based on recall data. |
-|  | Vector search | Vector search | Combines powerful search features of Elasticsearch with vector similarity calculations, making it ideal for scenarios like recommendation systems, image retrieval, and natural language processing. |
-|  | Index compression | Proprietary aliyun- codec plugin for index compression | This plugin integrates multiple compression algorithms to significantly reduce index storage costs. |
-|  | Cross-cluster replication | Proprietary XDCR plugin for cross- cluster replication | This plugin synchronizes index data from one cluster to another. |
-|  | Cluster-wide throttling | Proprietary aliyun-qos plugin for cluster-wide throttling | This plugin enables throttling on key metrics such as read/write rate, concurrency, and individual requests. During peak loads, it can downgrade specific indexes to keep traffic within an appropriate range. |
-|  | Aggregated write | Proprietary faster-bulk plugin for aggregated write | This plugin improves write throughput by batching write requests based on size and time intervals. |
+|   | Index management | opendistro index man _ _ agement plugin for index management | This plugin automates index lifecycle management, performance optimization, and status monitoring. |
+|   | SQL support | SQL plugin | This plugin lets you query data in Elasticsearch by using standard SQL statements, just like querying a traditional database. |
+|   | Full-text search | Text search | Provides powerful full-text search, including exact matching, fuzzy queries, prefix/suffix matching, and custom tokenization logic. It handles the retrieval of both long and short texts and allows you to customize result ranking based on recall data. |
+|   | Vector search | Vector search | Combines powerful search features of Elasticsearch with vector similarity calculations, making it ideal for scenarios like recommendation systems, image retrieval, and natural language processing. |
+|   | Index compression | Proprietary aliyun- codec plugin for index compression | This plugin integrates multiple compression algorithms to significantly reduce index storage costs. |
+|   | Cross-cluster replication | Proprietary XDCR plugin for cross- cluster replication | This plugin synchronizes index data from one cluster to another. |
+|   | Cluster-wide throttling | Proprietary aliyun-qos plugin for cluster-wide throttling | This plugin enables throttling on key metrics such as read/write rate, concurrency, and individual requests. During peak loads, it can downgrade specific indexes to keep traffic within an appropriate range. |
+|   | Aggregated write | Proprietary faster-bulk plugin for aggregated write | This plugin improves write throughput by batching write requests based on size and time intervals. |
 
 | Networking | Service IP address | Dual-stack IP | The service virtual IP (VIP) supports IPv6/IPv4 dual-stack mode. |
 |---|---|---|---|
 | Monitoring and operations | Monitoring | Grafana | Allows you to create custom monitoring dashboards in Grafana. |
-|  |  | Kibana | Supports full observability and monitoring features through Kibana. |
-|  |  | Cluster resource monitoring | Displays the total and allocated resources for cluster nodes. |
-|  | Log management | GUI-based slow log search | Allows you to search slow logs through a GUI on the Log Center. |
-|  |  | GUI-based business log search | Allows you to search business logs through a GUI on the Log Center. |
-|  |  | GUI-based running log search | Allows you to search running logs through a GUI on the Log Center. |
+|   |   | Kibana | Supports full observability and monitoring features through Kibana. |
+|   |   | Cluster resource monitoring | Displays the total and allocated resources for cluster nodes. |
+|   | Log management | GUI-based slow log search | Allows you to search slow logs through a GUI on the Log Center. |
+|   |   | GUI-based business log search | Allows you to search business logs through a GUI on the Log Center. |
+|   |   | GUI-based running log search | Allows you to search running logs through a GUI on the Log Center. |
 | Multi- architecture support | Hybrid deployment across chips | Support for hybrid deployment of x86 and Arm architectures | Supports hybrid deployment of instances on multiple chip architectures, such as Intel, Hygon, and Kunpeng. |

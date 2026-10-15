@@ -3,16 +3,26 @@ title: "Server Guard Advanced Edition Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Server Guard Advanced Edition Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "991891e293443a91_Alibaba Cloud Apsara Stack V3.18.6 Server Guard Advanced Edition Operations and Maintenance Guide 20"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E5%AE%89%E9%AA%91%E5%A3%AB%E9%AB%98%E7%BA%A7%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Guard%20Advanced%20Edition%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Server Guard Advanced Edition Operations and Maintenance Guide
 
-## Check the service status
+## Table of Contents
 
-### Log on to the Apsara
+- 1 Check the service status
+  - 1.1 Log on to the Apsara Infrastructure Management console
+  - 1.2 Check the agent status
+  - 1.3 Check the status of Aegiserver
+  - 1.4 Check the Server Guard Update Service status
+  - 1.5 Check the Defender module status
+  - 1.6 Restart Server Guard
+
+## 1 Check the service status
+
+### 1.1 Log on to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -41,7 +51,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Products**
 **> Platforms > Apsara Infrastructure Management Framework**.
 
-### Check the agent status
+### 1.2 Check the agent status
 
 Check the Server Guard agent based on the information provided in this topic and and make sure that the agent is running as normal.
 
@@ -94,7 +104,7 @@ If the agent runs in a Windows operating system, the `AliYunDun` and
 Service and Alibaba Security Aegis Detect Service .
 ```
 
-### Check the status of Aegiserver
+### 1.3 Check the status of Aegiserver
 
 **Background information**
 
@@ -145,7 +155,7 @@ the server and client in /home/admin/aegiserver/logs/AEGIS_MESSAGE.log.
 **Offline logs**: View the logs about client disconnection caused by time-out in
 /home/admin/aegiserver/logs/AEGIS_OFFLINE_MESSAGE.log.
 
-### Check the Server Guard
+### 1.4 Check the Server Guard Update Service status
 
 **Update Service status**
 
@@ -179,7 +189,7 @@ To check the status of Server Guard Update Service, follow the following steps:
 
 If the response is "success", the service is normal.
 
-### Check the Defender module
+### 1.5 Check the Defender module status
 
 **status**
 
@@ -214,7 +224,7 @@ module of Server Guard.
 
 If the response is "success", the service is normal.
 
-### Restart Server Guard
+### 1.6 Restart Server Guard
 
 **Background information**
 

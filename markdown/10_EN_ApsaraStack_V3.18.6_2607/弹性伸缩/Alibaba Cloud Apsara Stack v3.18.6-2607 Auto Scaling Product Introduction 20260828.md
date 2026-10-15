@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Product Introductio
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Product Introduction 20260828.pdf"
+source_pdf: "60b5e03c477eddb7_Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Auto%20Scaling%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Product Introduction 20260828
 
-## Auto Scaling
+## Table of Contents
+
+- 1 Auto Scaling
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 Auto Scaling
 
 Auto Scaling is a service that automatically adjusts computing capacity (the number of ECS instances) as needed and policies. You can configure scaling policies to automatically increase the number of instances to ensure sufficient computing capacity when business demands grow, and automatically reduce the number of instances to save costs when business demands decrease. Auto Scaling is a free service that offers advantages such as automation, cost reduction, high availability (HA), flexible intelligence, and log recording. Auto Scaling helps you automatically adjust the number of instances and is suitable for applications with fluctuating business volumes along with applications with stable business volumes.
 
-### Product details
+### 1.1 Product details
 
 Auto Scaling is a management service that dynamically adjusts the number of computing resources (ECS) based on your actual business load. Auto Scaling automatically increases the number of ECS instances to ensure sufficient computing capacity when business demands grow, and automatically decreases the number of ECS instances to reduce costs when business demands decline. The core concepts of Auto Scaling are as follows:
 
@@ -42,7 +50,7 @@ and off-peak hours, you can create scheduled tasks to manage your business loads
 **Event-triggered task**: If your business loads do not have specific patterns or are
 unpredictable, scheduled tasks may not meet your business needs. Auto Scaling supports event-triggered tasks that dynamically scale resources based on specified monitoring metrics, providing more flexible ways to trigger scaling rules. During peak hours, Auto Scaling executes event-triggered tasks to add instances to scaling groups to alleviate business pressure. During off-peak hours, Auto Scaling executes event-triggered tasks to release instances from scaling groups to reduce production costs.
 
-### Benefits
+### 1.2 Benefits
 
 Compared with manually managing ECS instances, Auto Scaling effectively reduces infrastructure and operations and maintenance costs. Auto Scaling provides the following benefits: automation, cost-effectiveness, high availability, intelligence, and easy audit.
 
@@ -66,7 +74,7 @@ Auto Scaling supports various scaling modes, such as fixed-number mode, health m
 
 Auto Scaling logs the details of each scaling activity that is triggered. This facilitates troubleshooting. Auto Scaling also integrates with CloudMonitor. You can use CloudMonitor to monitor instances in scaling groups. You do not need to repeatedly check the status of multiple ECS instances. This helps you quickly understand the overall capacity of your business.
 
-### Scenarios
+### 1.3 Scenarios
 
 Auto Scaling is suitable for a wide range of applications, whether they have constantly fluctuating or stable workloads.
 
@@ -105,7 +113,7 @@ An internal management system for government services needs to operate 24/7, wit
 
 Using the **elastic self-healing** mechanism of the scaling group, the system regularly checks the running status of ECS instances. If abnormalities occur, it creates new instances to replace the abnormal ones in a timely manner, ensuring business stability.
 
-### Features
+### 1.4 Features
 
 | Feature |   | Description |
 |---|---|---|

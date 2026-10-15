@@ -3,14 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilo
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Product Introduction 20260828.pdf"
+source_pdf: "f0a58049bab3fd89_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Product Introduction 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Apsara%20Copilot%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Product Introduction 20260828
 
-## Product details
+## Table of Contents
+
+- 1 Product details
+- 2 Benefits
+- 3 Common scenarios
+- 4 Functions and features
+
+## 1 Product details
 
 This topic provides an overview of Apsara Copilot. Apsara Copilot serves as the intelligent entry point for the Apsara Uni-manager Management Console. Through natural language interactions, it delivers a one-stop cloud management experience for Apsara Stack administrators and users, covering resource management, operations analysis, and in-depth insights.
 
@@ -26,7 +33,7 @@ The operational permissions of Copilot digital workers derive directly from the 
 
 Apsara Copilot uses standardized protocols and APIs to deeply integrate its AI capabilities with enterprise on-premises knowledge bases and existing AI agents, building an open and collaborative intelligent system.
 
-## Benefits
+## 2 Benefits
 
 This topic describes the benefits of Apsara Assistant.
 
@@ -42,7 +49,7 @@ Apsara Assistant quickly understands user questions and fetches accurate informa
 
 Apsara Assistant creates a "Conversation as a Service" interaction model. This makes the cloud platform function more like an intelligent partner than a system of tools. It also lays the foundation for future autonomous and intelligent management.
 
-## Common scenarios
+## 3 Common scenarios
 
 This topic describes the common scenarios for Apsara Assistant.
 
@@ -78,7 +85,7 @@ code is tailored to specific developer scenarios.
 **One-click code debugging**: For the generated OpenAPI sample code, you can click the
 debug link to go directly to the online API debugging page in the developer portal and quickly test the code.
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the typical functions and features of Apsara Copilot.
 

@@ -3,16 +3,72 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Operations
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 126
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "b36e2fef2382485c_Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C%20VPC/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Virtual%20Private%20Cloud%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Dashboard
+  - 2.1 Overview
+  - 2.2 Network topology
+  - 2.3 Custom views
+- 3 Basic network
+  - 3.1 Network element management
+  - 3.2 Syslog
+- 4 Networking services
+  - 4.1 XGW O&M
+    - 4.1.1 XGW cluster management
+    - 4.1.2 XGW management
+    - 4.1.3 NAT gateway monitoring
+    - 4.1.4 Router interface instances
+  - 4.2 AVS O&M
+    - 4.2.1 AVS management
+  - 4.3 VPC O&M
+    - 4.3.1 Tiangong VPC
+    - 4.3.2 VPC workflows
+- 5 Network monitoring and alerting
+  - 5.1 Network event center
+  - 5.2 Network event configurations
+- 6 Intelligent diagnostics
+  - 6.1 Network inspection
+  - 6.2 Intelligent path analysis
+    - 6.2.1 Intelligent path analysis
+    - 6.2.2 Topology analysis
+  - 6.3 Network instance diagnostics
+  - 6.4 Container network diagnostics
+  - 6.5 Network health assessment
+  - 6.6 Optical transceiver module diagnostics
+  - 6.7 NOE ping
+  - 6.8 Network toolbox
+    - 6.8.1 Tools
+    - 6.8.2 Tool execution history
+- 7 Network resources
+  - 7.1 Network asset management
+  - 7.2 IP address pool management
+    - 7.2.1 IP address pool
+    - 7.2.2 Collection settings
+  - 7.3 Reverse access
+  - 7.4 Cloud instance management
+- 8 Network changes
+  - 8.1 Change plans
+    - 8.1.1 Change plan list
+    - 8.1.2 Plan execution history
+  - 8.2 Feature orchestration
+    - 8.2.1 IPv6 dashboard
+- 9 Platform management
+  - 9.1 Log management
+    - 9.1.1 Query logs
+  - 9.2 Metric management
+    - 9.2.1 TSDB clusters
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -39,9 +95,9 @@ ager Operations Console
 Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-## Dashboard
+## 2 Dashboard
 
-### Overview
+### 2.1 Overview
 
 The Overview page displays the key metrics of network services to help users keep track of the status of services and devices at the earliest opportunity.
 
@@ -85,7 +141,7 @@ by default. You can filter and display metrics in each region by specifying filt
 | Network Resources | EIP xgw eip bps (inbound and outbound) _ _ xgw eip pps (inbound and outbound) _ _ Reverse Access xgw ecs maping bps (inbound and outbound) _ _ _ xgw ecs mapping pps (inbound and outbound) _ _ _ xgw ecs mapping ratelimit drop pps (inbound and outbound) _ _ _ _ _ xgw ecs mapping drop pps (inbound and outbound) _ _ _ _ NATGW xgw snat session count _ _ _ xgw snat session drop cps _ _ _ _ xgw snat session ratelimit drop cps _ _ _ _ _ vlink xgw vlink bps (inbound and outbound) _ _ xgw vlink pps (inbound and outbound) _ _ Layer 4 VIP lvs listener connsPS/lvs realserver connsPS _ _ _ _ lvs listener dropConnPS/lvs realserver dropConnPS _ _ _ _ lvs listener connections 1m/lvs realserver connections 1m _ _ _ _ _ _ lvs listener PktsPS (inbound and _ _ outbound)/lvs realserver PktsPS (inbound and outbound) _ _ lvs listener BitsPS (inbound and _ _ outbound)/lvs realserver BitsPS (inbound and outbound) _ _ lvs listener DropPktsPS (inbound and _ _ outbound)/lvs realserver DropBitsPS (inbound and outbound) _ _ Layer 7 VIP proxy listener cps _ _ proxy listener qps _ _ proxy listener rt _ _ proxy listener conn concurrent _ _ _ vport avs vport tcp connecting flows num sum 1m _ _ _ _ _ _ _ avs vport tcp established flows num sum 1m _ _ _ _ _ _ _ avs vport pkts 1m (inbound and outbound) _ _ _ avs vport bytes 1m (inbound and outbound) _ _ _ avs vport drop pkts 1m (inbound and outbound) _ _ _ _ |
 |---|---|
 
-### Network topology
+### 2.2 Network topology
 
 On the Network Topology page, you can view the physical network topology.
 
@@ -106,7 +162,7 @@ Network devices displayed in different colors are in different states. Blue: A d
 5. View the network device information and interconnection link statuses.
 Click a network device icon. In the Network Device Information panel, view the device information in the **Basic device information** and **Alert List** sections. Click a connection between two network devices. In the Interconnection link status panel, view the link status details in the **Link information List** and **Alert List** sections.
 
-### Custom views
+### 2.3 Custom views
 
 The Apsara Uni-manager Operations Console allows you to create a custom view. After the view is created, you can configure the content and rules of the view to summarize and demonstrate the monitoring data and graph information based on your business requirements.
 
@@ -163,9 +219,9 @@ If you delete a view, all subviews of the view are also deleted. Proceed with ca
 2. In the upper-right corner of the view section, click **Delete View**.
 3. In the message that appears, click **OK**.
 
-## Basic network
+## 3 Basic network
 
-### Network element
+### 3.1 Network element management
 
 **management**
 
@@ -318,7 +374,7 @@ You can enter a device name in the search box to perform an exact search.
 **Consistency comparison**.
 Click **Refresh status** to update the comparison status. Click **Export result** to export the comparison results to your computer for viewing.
 
-### Syslog
+### 3.2 Syslog
 
 The Syslog module records and stores the logs generated by network hardware devices in the system based on dimensions such as time, log level, and module to facilitate subsequent analysis and management. This helps you identify and solve issues to improve the availability and stability of devices.
 
@@ -374,11 +430,11 @@ If you click **Reset**, the content in the Original Text field is cleared.
 3. In the Parsing Results section, view the parsed information, such as the description,
 hostname, and log level.
 
-## Networking services
+## 4 Networking services
 
-### XGW O&M
+### 4.1 XGW O&M
 
-#### XGW cluster management
+#### 4.1.1 XGW cluster management
 
 **Procedure**
 
@@ -397,11 +453,11 @@ and then select **Set backup zone**.
 The cluster that you select as the secondary zone must have the same architecture and reside in the same region as the current cluster. Click **Set backup zone**. Then, the system checks the data. After the data is checked, you can configure a secondary zone.
 6. Select a secondary zone from the Select backup zone drop-down list and click **OK**.
 
-#### XGW management
+#### 4.1.2 XGW management
 
 The XGW Management module allows you to manage VPC gateways and view the water level information of device nodes and service instances.
 
-#### NAT gateway monitoring
+#### 4.1.3 NAT gateway monitoring
 
 In scenarios such as multi-cloud geo-disaster recovery and hybrid cloud, you can query the monitoring data of a NAT gateway by tunnel ID.
 
@@ -431,7 +487,7 @@ You can move the pointer over a point in time in the chart to view the correspon
 |---|---|
 | RatelimitDropInc | The number of packets dropped due to the Inc throttling. |
 
-#### Router interface instances
+#### 4.1.4 Router interface instances
 
 This topic describes how to view the instances of a router interface and the O&M information about the instances.
 
@@ -456,9 +512,9 @@ If you select **VPC ID** from the drop-down list in the **Search Condition** sec
 **Operation** column. On the details page, view the detailed O&M information about the
 router interface instance. If usage data exists, the usage data is also displayed on the page.
 
-### AVS O&M
+### 4.2 AVS O&M
 
-#### AVS management
+#### 4.2.1 AVS management
 
 The Apsara virtual switch (AVS) management feature allows you to view the basic information and usage dashboard of AVSes.
 
@@ -595,9 +651,9 @@ The following table describes the metrics.
 |   | BandWidth | rx bytes avg _ _ | The number of bytes that are received per second. |
 |   |   | tx bytes avg _ _ | The number of bytes that are sent per second. |
 
-### VPC O&M
+### 4.3 VPC O&M
 
-#### Tiangong VPC
+#### 4.3.1 Tiangong VPC
 
 **Procedure**
 
@@ -632,7 +688,7 @@ Delete a vSwitch: Find a vSwitch that you want to delete and click **Delete** in
 
 After you delete a vSwitch, the vSwitch cannot be restored. Proceed with caution.
 
-#### VPC workflows
+#### 4.3.2 VPC workflows
 
 You can view and manage workflows in the VPC Business Foundation System.
 
@@ -659,11 +715,11 @@ column. On the **Workflow Details** page, you can view information about the pro
 6. (Optional) In the **Workflow List** area, find the target process task. In the **Actions** column,
 click **Stop** to end a running workflow or **Retry** to run the workflow again. ng
 
-## Network monitoring and
+## 5 Network monitoring and alerting
 
 **alerting**
 
-### Network event center
+### 5.1 Network event center
 
 This topic describes how to query all events in the network event center, including INSPECT, SYSLOG, and NOEPING events.
 
@@ -684,7 +740,7 @@ Click **Advanced Filter** to search for events based on a combination of **Time*
 **event details**. Details of RECOVER events are unavailable.
 The event details include **Event Information** and **Event content**. Content of VALUE events is not displayed. The event details vary based on the event type. The displayed information prevails. ng
 
-### Network event configurations
+### 5.2 Network event configurations
 
 This topic describes how to modify and manage event generation rules in the network event configuration center of Apsara Stack. You can create, import, clone, modify, and delete event generation rules.
 
@@ -775,9 +831,9 @@ Select the event generation rules that you want to delete and click **Delete** b
 
 On the Network Event Configurations page, click **Import Configurations** above the list. In the dialog box that appears, select a configuration file and click **Open** to import the file.
 
-## Intelligent diagnostics
+## 6 Intelligent diagnostics
 
-### Network inspection
+### 6.1 Network inspection
 
 This feature schedules recurring network inspection tasks and converts the results into inspection events or alarms.
 
@@ -951,9 +1007,9 @@ fields. Find the specific event and click **Details** in the **Actions** column 
 |   | tr-gobgp check | Performs a TR-GOBGP check. |
 |   | Inspection for stuck CENC workflows | Checks for stuck CENC workflows. Applicable to single-, dual-, and triple-AZ scenarios. |
 
-### Intelligent path analysis
+### 6.2 Intelligent path analysis
 
-#### Intelligent path analysis
+#### 6.2.1 Intelligent path analysis
 
 The intelligent path analysis and forwarding feature provides path diagnostics capabilities. You can use this feature to implement end-to-end path analysis by quickly establishing IP paths. This facilitates fault analysis and shortens the fault analysis time.
 
@@ -1006,7 +1062,7 @@ task are displayed if the analysis task is successful. You can view the analysis
 | View the details of an analysis task | 1. On the Intelligent Path Analysis page, select a time range to view the information about the intelligent path analysis tasks within the specified time range. 2. Find the analysis task that you want to view and clickD etails in the Operation column. You can view the analysis results, including the path analysis, diagnostic details, and analysis details of each packet. |
 | Terminate an analysis task | On the Intelligent Path Analysis page, find the analysis task that you want to terminate and click Terminate in the Operation column. Note You cannot terminate an analysis task that is in theC ompleted state. |
 
-#### Topology analysis
+#### 6.2.2 Topology analysis
 
 **Prerequisites**
 
@@ -1040,7 +1096,7 @@ The NetworkBaseServiceCluster cluster for BaseServiceAll is deployed and in the 
 
 Click any topology icon to view related content in the panel that appears. For a path node of the ECS type, you can go to the ECS console to view the instance details. For a path node of the NC type, you can click the **blue link** in the topology to view details. You can also go to the machine details page of the Apsara Infrastructure Management console to view details.
 
-### Network instance diagnostics
+### 6.3 Network instance diagnostics
 
 The network instance diagnostics feature allows you to analyze the status of network instances with a few clicks.
 
@@ -1072,7 +1128,7 @@ The **Instance details** section is displayed only when you select SLB in the pr
 Instance Diagnosis page to view historical diagnostic results of an instance: Specify a time range, find the diagnostic task that you want to view, and then click **Details** in the **Operation** column to go to the Network instance diagnosis results page. On this page, view the diagnostic results in the **Instance details**, **Instance topology**, and
 **Diagnosis details** sections.
 
-### Container network diagnostics
+### 6.4 Container network diagnostics
 
 This topic describes the automated intelligent diagnostics capabilities for container networks based on mutual accessibility.
 
@@ -1109,7 +1165,7 @@ in the lower part of the page.
 | View the details of a diagnostic task | 1. On the Container Network Diagnostics page, find the diagnostic task that you want to view and click Details in the Operation column. 2. On the Diagnose Container Network page, view the details of the diagnostic task, including the path analysis topology and diagnostic report. |
 | Terminate a diagnostic task | You can terminate a diagnostic task only when it is in the Running state. 1. On the Container Network Diagnostics page, find the diagnostic task that you want to terminate and click Terminate in the Operation column. 2. In the message that appears, click OK. |
 
-### Network health assessment
+### 6.5 Network health assessment
 
 The Network Health Assessment module evaluates and diagnoses the health status of each layer of the network based on the dimensions such as performance, capacity, function, and status. This module provides an overview of the network health status and detects issues and risks at all layers of the network in real time to ensure that the network runs as expected.
 
@@ -1174,7 +1230,7 @@ a. Find the abnormal event that you want to view and click **Details** in the Op
 **Clear** is displayed in the Operation column of an abnormal event only after you
 click **Confirm** in the Operation column of the abnormal event.
 
-### Optical transceiver module
+### 6.6 Optical transceiver module diagnostics
 
 **diagnostics**
 
@@ -1223,7 +1279,7 @@ Operation column. The **Optical Module Prediction Details** page appears. i. In 
 | Received power | The received power of an optical transceiver module refers to the power of the receiver to receive optical signals. The received power of the optical transceiver module affects the receiver sensitivity and transmission performance of the optical transceiver module. If the received power exceeds the specified range, issues such as signal transmission interruption, error increase, and transmission distance decrease may occur. In this case, you can monitor the received power to identify and resolve issues at the earliest opportunity. If the received power is higher than expected, you can decrease the transmit power or check the length of the jointed fiber. If the received power is lower than expected, you can increase the transmit power or check the quality of the jointed fiber. |
 |---|---|
 
-### NOE ping
+### 6.7 NOE ping
 
 NOE ping provides full-path probing for physical networks to help diagnose global network failures on the cloud platform. You can use it to troubleshoot packet loss within a single data center, monitor the quality of Data Center Interconnect (DCI) leased lines, and check network quality in edge availability zones (AZs) and across regions.
 
@@ -1269,9 +1325,9 @@ and then click **OK**.
 3. In the navigation pane on the left, choose **Intelligent Diagnosis** > **NOE ping**.
 4. On the **Inter-AZ Probing Results** tab, view the probing results.
 
-### Network toolbox
+### 6.8 Network toolbox
 
-#### Tools
+#### 6.8.1 Tools
 
 The Tools page displays a list of tools that are available in the network toolbox.
 
@@ -1331,7 +1387,7 @@ The parameters to be configured vary based on the tool.
 **Details** page. You can view the execution status of the workflow. For more information, see
 the "View the details of an execution" section of the Tool execution history topic.
 
-#### Tool execution history
+#### 6.8.2 Tool execution history
 
 The Tool Executions page displays the tool execution history.
 
@@ -1423,9 +1479,9 @@ Click the icon in the upper-right corner to download the execution log to your c
 | Cleaned | The workflow is deleted as residual data. | Closed |
 | Failed | An exception occurred during the workflow execution. | Closed |
 
-## Network resources
+## 7 Network resources
 
-### Network asset management
+### 7.1 Network asset management
 
 The Network Asset Management page displays network assets in virtual private clouds (VPCs). You can query a network asset by using a property such as Asset Type, IP Address, or Instance ID.
 
@@ -1452,9 +1508,9 @@ asset in a VPC by **Asset Type**, **IP Address**, **IP Address Version**, **Netw
 6. Find the network asset that you want to view and click **View Details** in the **Operation**
 column to view the details of the network asset.
 
-### IP address pool management
+### 7.2 IP address pool management
 
-#### IP address pool
+#### 7.2.1 IP address pool
 
 This feature provides a centralized view of all CIDR blocks declared by cloud services on the platform. You can perform standard O&M tasks, such as adding, expanding, querying, or deleting CIDR blocks to meet your operational requirements. The conflict check feature detects address conflicts when you expand CIDR blocks. It simultaneously checks if a CIDR block contains, or is contained by, another.
 
@@ -1508,7 +1564,7 @@ b. Click **Search** to find the target CIDR blocks. View the CIDR block list: Th
 **Role**, **Source Device**, **Associated Port**, and **Last Update**.
 View CIDR block details: In the **Actions** column of a target CIDR block, click **Details**. In the panel that appears, view the detailed information about the CIDR block. Delete a CIDR block To delete a CIDR block, click **Delete** in its **Actions** column. In the confirmation dialog box, click **OK**.
 
-#### Collection settings
+#### 7.2.2 Collection settings
 
 On the Collection Settings page, you can view the collection settings of the IP address pools of cloud services across the platform. You can also trigger a data update for a single IP address pool on this page.
 
@@ -1530,7 +1586,7 @@ address pool.
 6. Click **Single trigger** in the **Operation** column. In the message that appears, click **OK**.
 Then, the system displays the trigger result.
 
-### Reverse access
+### 7.3 Reverse access
 
 The reverse access feature implements active access from base cloud services to virtual private clouds (VPCs) by establishing NAT mappings.
 
@@ -1624,7 +1680,7 @@ corner.
 
 Before you delete a reverse access instance, you must delete all application servers and address pools that are associated with the instance. Otherwise, the instance cannot be deleted.
 
-### Cloud instance management
+### 7.4 Cloud instance management
 
 This topic describes how to manage the lifecycle of cloud instances, including creating instances, deleting instances, and querying instance status.
 
@@ -1731,13 +1787,13 @@ noe appears, existing resource management is performed. If all resources are man
 | Modify listeners | Note You cannot modify the listeners of instances whose Tunnel Type is DirectAnyTunnel. You cannot modify the listeners of instances whose status is Create Failed or Invalid. 1. Click Modify Listener in the Operation column of a cloud instance. 2. In the dialog box that appears, modify the listener parameters and click OK. For more information, see the Step 3: Create listeners section of this topic. 3. Optional. If you failed to modify the listeners and the instance is in the Update Failed state, click Edit RS to update the listener list again. |
 | Delete a cloud instance | 1. Click Delete in the Operation column of a cloud instance to delete the cloud instance. 2. In the message that appears, click OK. |
 
-## Network changes
+## 8 Network changes
 
 The network change feature simplifies the process of configuring switches in mainstream scenarios, such as expanding the RAMA CIDR blocks, expanding the CIDR blocks of kernelbased virtual machines (KVMs), expanding the virtual IP address (VIP) range of Server Load Balancer (SLB) instances, and expanding the access switch (ASW) CIDR blocks.
 
-### Change plans
+### 8.1 Change plans
 
-#### Change plan list
+#### 8.1.1 Change plan list
 
 The change plan list module displays all available change plans.
 
@@ -1833,7 +1889,7 @@ The parameters vary based on the change plan.
 6. After the change workflow is created, you are redirected to the **Execution Details** page.
 You can view the execution status of the workflow. For more information, see the View the details of an execution section in the Execution history topic.
 
-#### Plan execution history
+#### 8.1.2 Plan execution history
 
 This topic describes how to view the execution history of change plans on the Execution History page.
 
@@ -1925,9 +1981,9 @@ You can also click the icon in the upper-right corner to download the execution 
 | Cleaned | The workflow is deleted as residual data. | Closed |
 | Failed | An exception occurred during the workflow execution. | Closed |
 
-### Feature orchestration
+### 8.2 Feature orchestration
 
-#### IPv6 dashboard
+#### 8.2.1 IPv6 dashboard
 
 This topic describes how to view the IPv6 service capability and IPv6 status for cloud services on the Apsara Stack platform that use a baseline to request VIP resources.
 
@@ -1950,11 +2006,11 @@ In the **Actions** column for a target cluster, click **refresh cluster status**
 
 Before you enable IPv6, check for any service dependencies. You must enable IPv6 for these dependencies first. b. In the dialog box that appears, verify that IPv6 is enabled for all dependent services, and then click **OK**. c. You are redirected to the details page of the service orchestration execution record, which shows the progress of enabling IPv6 for the cluster. For more information, see the **Execution Record** chapter in the **O&M Services** section of the **Apsara Stack O&M Platform User Guide**.
 
-## Platform management
+## 9 Platform management
 
-### Log management
+### 9.1 Log management
 
-#### Query logs
+#### 9.1.1 Query logs
 
 This topic describes the log query feature. This feature allows you to query the logs of products and server roles by EagleEye ID. This helps you quickly troubleshoot issues.
 
@@ -1993,9 +2049,9 @@ logs displayed on the right side.
 
 You can filter logs by **Time Range** and **Keyword**. You can click **Export Logs** to export the logs to your on-premises machine.
 
-### Metric management
+### 9.2 Metric management
 
-#### TSDB clusters
+#### 9.2.1 TSDB clusters
 
 This topic describes how to query time series database (TSDB) clusters and view the details of stored time series metrics.
 

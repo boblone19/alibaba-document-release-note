@@ -3,14 +3,25 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Product Introduction
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Product Introduction 20260828.pdf"
+source_pdf: "730a9e021c787afd_Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20API%20Gateway%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Product Introduction 20260828
 
-## API Gateway
+## Table of Contents
+
+- 1 API Gateway
+  - 1.1 Product details
+  - 1.2 Product value
+  - 1.3 Features
+  - 1.4 Scenarios
+  - 1.5 Instance specifications
+  - 1.6 Usage limits
+  - 1.7 Key concepts
+
+## 1 API Gateway
 
 API Gateway is a core component of modern application architectures. It unifies the management of API and AI requests and coordinates interactions between systems. It builds a stable, highly extensible, enterprise-grade service platform by hosting standardized interfaces, integrating services, and exposing capabilities.
 
@@ -32,7 +43,7 @@ It connects to service registries, such as Nacos, Eureka, and K8s, in a microser
 
 It provides an Open Platform that uses unified management and authorization to expose its capabilities to external partners. This helps you build ecosystems with your partners.
 
-### Product details
+### 1.1 Product details
 
 This topic describes the key features of API Gateway.
 
@@ -50,7 +61,7 @@ This topic describes the key features of API Gateway.
 | Gateway cascading | Enables multiple gateways to work together. It connects routes and services across gateways, allowing users of one gateway to invoke services managed by another. | API Gateway User Guide > Gateway cascading |
 | Observability and analysis | Supports gateway instance monitoring, log search, log delivery, distributed tracing, and API monitoring. | API Gateway User Guide > Gateway Logs |
 
-### Product value
+### 1.2 Product value
 
 API Gateway is a lightweight and easy-to-use service that delivers high performance, stability, and reliability. It provides open, cross-protocol interconnection and one-stop service management.
 
@@ -78,7 +89,7 @@ API Gateway provides centralized control for exposing capabilities across platfo
 
 AI Gateway features a high-concurrency architecture, millisecond-level zero-downtime configuration updates, WebAssembly (WASM) hot plugins, and a comprehensive plugin ecosystem. It supports the Server-Sent Events (SSE) streaming protocol and includes resource optimization features to ensure the stability, extensibility, and ease of use of AI services. Enterprise-grade reliability: Built on a solid foundation for high-concurrency scenarios, it enables zero-downtime intelligent configuration updates. Flexible extensibility: It offers a comprehensive plugin ecosystem with an innovative hot plugin architecture that uses a WASM sandbox. Out-of-the-box security and usability: A standardized console and GUI-based configuration provide a high degree of automation for simplified deployments. Efficient stream processing engine: It supports end-to-end streaming protocols to improve resource utilization, reduce infrastructure costs, and achieve performance breakthroughs. For more information, see **AI Gateway Product Introduction > Product Value**.
 
-### Features
+### 1.3 Features
 
 This topic describes the features of API Gateway.
 
@@ -163,7 +174,7 @@ This topic describes the features of API Gateway.
 | Distributed tracing | Lets you enable distributed tracing to analyze the entire flow of a request through your system. |
 | API-level monitoring | Lets you view performance metrics and access statistics for specific REST APIs and their operations. |
 
-### Scenarios
+### 1.4 Scenarios
 
 This topic describes the core scenarios for API Gateway.
 
@@ -177,7 +188,7 @@ Ingress standard. It supports multiple backend services, such as microservices a
 **API full lifecycle management:** The gateway provides full lifecycle management for APIs,
 including design, development, publishing, and unpublishing. It also supports multienvironment management. This helps teams manage and publish APIs more efficiently and securely, which promotes rapid business iteration and innovation. Standardized development and improved efficiency: With API full lifecycle management, developers can use the API-first pattern for parallel development between the frontend and backend. This enables rapid system iteration. Fine-grained API management: Fine-grained API management prevents uncontrolled exposure in scenarios such as opening APIs to partners or integrating internal and external systems for collaboration. Multi-environment management: Multi-environment management keeps development, testing, pre-production, and production environments separate. This prevents development and testing activities from affecting the production environment. It also simplifies testing and validation at different stages.
 
-### Instance specifications
+### 1.5 Instance specifications
 
 This topic describes the instance specifications that API Gateway supports to help you select the appropriate one for your business.
 
@@ -192,7 +203,7 @@ The API Gateway instance specification types are as follows:
 | standard | 4 | 8 | 100 | 4000 |
 | large | 8 | 16 | 100 | 8000 |
 
-### Usage limits
+### 1.6 Usage limits
 
 API Gateway enforces several usage limits to ensure stable operation. Exceeding these limits can cause system errors.
 
@@ -204,7 +215,7 @@ API Gateway enforces several usage limits to ensure stable operation. Exceeding 
 | File transfer | Not recommended | File transfers, like large request bodies, are a primary cause of gateway OOM errors. We recommend using a dedicated file service and passing only the file URL through the gateway. |
 | Timeout | 10 seconds | You can adjust the request timeout, but exceeding the default value increases the risk of gateway OOM errors. |
 
-### Key concepts
+### 1.7 Key concepts
 
 This topic defines the key terms in API Gateway.
 

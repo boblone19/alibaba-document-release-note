@@ -3,16 +3,35 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime User Guide
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 73
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime User Guide 20260828.pdf"
+source_pdf: "97c40b8e6195bd2c_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20AgentRuntime%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek AgentRuntime User Guide 20260828
 
+## Table of Contents
+
+- 1 What is AgentRuntime?
+- 2 Getting started
+  - 2.1 Log in to the AgentRuntime console
+- 3 Agent management
+  - 3.1 Quickly create an agent
+  - 3.2 Create an agent via code
+  - 3.3 More operations
+- 4 Tool management
+  - 4.1 Create a system tool
+  - 4.2 Create a custom tool
+  - 4.3 More operations
+- 5 Resource management
+  - 5.1 Cluster management
+  - 5.2 Model management
+  - 5.3 Credential management
+  - 5.4 Image Source configuration management
+
 s AgentRuntime?
 
-## What is AgentRuntime?
+## 1 What is AgentRuntime?
 
 **AgentRuntime Platform** is a Platform-as-a-Service (PaaS) platform designed for enterprise-
 grade AI Agent applications and deployed within your private cloud environment. The platform addresses core challenges across the entire lifecycle of Agents in production environments, from code debugging and deployment to O&M. It provides unified **Agent**
@@ -106,9 +125,9 @@ s AgentRuntime?
 
 g started
 
-## Getting started
+## 2 Getting started
 
-### Log in to the AgentRuntime
+### 2.1 Log in to the AgentRuntime console
 
 **console**
 
@@ -151,9 +170,9 @@ Guide.
 5. In the top navigation bar, select **Products > Middleware > Microservices Tools and**
 **Platforms > Agent Runtime Service** to go to the AgentRuntime console.
 
-## Agent management
+## 3 Agent management
 
-### Quickly create an agent
+### 3.1 Quickly create an agent
 
 AgentRuntime is an all-in-one development and runtime platform for full lifecycle management of agents. If you are a first-time user or need to quickly validate an idea, we recommend that you choose this quick creation method. This allows you to configure your agent through a visual interface without writing any code, making it perfect for rapid prototyping.
 
@@ -197,13 +216,12 @@ items, and click **Start creating**.
 | Storage directory | For performance and data security governance, the storage directory path for the tool must strictly include the corresponding tool name. | tool-name |
 | In-container path | The path where OSS is mounted to the container. The application reads and writes persistent data through this path. | /workspace |
 
-### Create an agent via code
+### 3.2 Create an agent via code
 
 AgentRuntime is an all-in-one development and runtime platform for the full lifecycle management of agents. If you need to implement complex business logic or deeply integrate with existing systems, we recommend that you choose the code creation method. You can write agent logic in Python or JavaScript to meet more sophisticated business requirements.
 
 **Create an agent**
 
-1. Log in to the AgentRuntime console
 2. In the left-side navigation pane, click **Agent Management**.
 3. On the **Agent List** page, click **Create an Agent**.
 4. On the **Create an Agent** page, select the **Code creation** method, fill in the following
@@ -276,7 +294,7 @@ configuration items, and click **Start creating**.
 | Check interval (seconds) | The number of seconds between two consecutive health checks. Too short an interval increases tool load. We recommend 5 to 30 seconds. | 5 |
 | Check timeout (seconds) | The number of seconds that a single health check checks out. If exceeded, the check result is considered unhealthy. We recommend setting this value no greater than the check interval. | 3 |
 
-### More operations
+### 3.3 More operations
 
 This topic provides a comprehensive overview of the full lifecycle management and integration capabilities for agents in the AgentRuntime platform. It covers the complete operation process, from configuration and debugging to release, monitoring, and deletion.
 
@@ -515,9 +533,9 @@ i. Log in to the AgentRuntime console. ii. In the left-side navigation pane, cli
 
 i. Log in to the AgentRuntime console. ii. In the left-side navigation pane, click **Agent Management**. iii. On the **Agent List** page, click **Delete** in the **Operation** column for the target agent. In the **Delete this Agent?** dialog box, click **OK**.
 
-## Tool management
+## 4 Tool management
 
-### Create a system tool
+### 4.1 Create a system tool
 
 AgentRuntime provides a rich set of tools in its marketplace. You can deploy any tool with one click, quickly acquire and integrate high-quality tools. This helps greatly improve Agent development efficiency, and accelerate business implementation.
 
@@ -586,7 +604,7 @@ AgentRuntime provides a rich set of tools in its marketplace. You can deploy any
 | Log type | Select a log type. File Standard output | File |
 | Log path | Enter the log path according to the selected log type. File: Enter the log file path. Standard output: stdout. | /var/log/app.log |
 
-### Create a custom tool
+### 4.2 Create a custom tool
 
 This topic describes the complete configuration process for creating a custom tool, covering parameters such as basic information, resource configuration, access settings, environment variable, and advanced policy. You can flexibly deploy a tool service with capabilities such as browser automation. You can create a custom tool in one of the following ways: Create a custom tool by using the import tool: Import an existing tool by using the OpenAPI specification or the MCP protocol. Create a custom tool by using code: Create a custom tool by writing code.
 
@@ -732,7 +750,7 @@ click **Create**.
 | Check interval (seconds) | The number of seconds between two consecutive health checks. Too short an interval increases tool load. We recommend 5 to 30 seconds. | 5 |
 | Check timeout (seconds) | The number of seconds that a single health check times out. If exceeded, the check result is considered unhealthy. We recommend setting this value no greater than the check interval. | 3 |
 
-### More operations
+### 4.3 More operations
 
 This topic describes the full lifecycle management and integration capabilities of tools in the AgentRuntime platform. The platform supports features such as configuration viewing, version release, instance operations and maintenance, debugging, and observability monitoring to help developers efficiently build, deploy, and invoke various sandbox and external tool services required by agents.
 
@@ -855,9 +873,9 @@ Click a target API to view information such as **Occurance Time**, **Interface N
 **Application Name**, **Duration**, **Status**, and **TraceId**.
 rce management
 
-## Resource management
+## 5 Resource management
 
-### Cluster management
+### 5.1 Cluster management
 
 In the AgentRuntime system, a cluster serves as the underlying infrastructure that hosts and runs computing resources for Agents and their associated tools. It provides capabilities such as Kubernetes environments, computing power scheduling, network gateway, storage, and monitoring, supporting deployment, communication, scaling, and lifecycle management of agents.
 
@@ -1044,7 +1062,7 @@ point to different buckets or share the same bucket. Make sure that the configur
 **Specifications**, **Security level**, **Operating system**, **CPU type**, and **Status**.
 In the computing power pool list, select one or more target node names. Then, click **OK**.
 
-### Model management
+### 5.2 Model management
 
 The AgentRuntime system uses models as core providers of intelligent inference capabilities. By configuring the API endpoint, authentication information, and protocol type for models, they empower agents with AI capabilities such as text generation and conversational understanding, thus support the agent's decision-making and interaction functions.
 
@@ -1102,7 +1120,7 @@ configuration items and click **Update**. For details about configuration items,
 9. In the model list, click **Delete** in the **Operation** column. In the dialog box labeled **Delete**
 **this model?**, click **OK**.
 
-### Credential management
+### 5.3 Credential management
 
 To avoid hardcoding sensitive information such as keys and tokens in code or tools, AgentRuntime provides centralized credential management. You can securely store authentication information and reference it across multiple agents. This approach enhances security and greatly simplifies credential maintenance: update the credential once, and all references to it automatically synchronize.
 
@@ -1156,7 +1174,7 @@ credential details: **Credential ID**, **Credential name**, **Credential type**,
 0. In the credentials list, click **Delete** in the **Operation** column. In the dialog box that asks
 **Delete this credential?**, click **OK**.
 
-### Image Source configuration
+### 5.4 Image Source configuration management
 
 **management**
 

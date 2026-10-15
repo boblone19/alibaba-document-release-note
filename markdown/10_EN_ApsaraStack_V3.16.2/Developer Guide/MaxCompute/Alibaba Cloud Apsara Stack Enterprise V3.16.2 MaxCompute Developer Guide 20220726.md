@@ -3,16 +3,50 @@ title: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 MaxCompute Developer Guide
 product_version: "V3.16.2"
 doc_version: "20220726"
 pdf_pages: 34
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 MaxCompute Developer Guide 20220726.pdf"
+source_pdf: "fff6b2a8c351ed83_Alibaba Cloud Apsara Stack Enterprise V3.16.2 MaxCompute Developer Guide 20220726.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20MaxCompute%20Developer%20Guide%2020220726.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 MaxCompute Developer Guide
 
-## Java SDK
+## Table of Contents
 
-### SDK for Java
+- 1 Java SDK
+  - 1.1 SDK for Java
+  - 1.2 Prerequisites
+    - 1.2.1 Overview
+    - 1.2.2 Obtain an AccessKey pair
+      - 1.2.2.1 Log on to the Apsara Uni-manager Management Console
+      - 1.2.2.2 Obtain the AccessKey pair of an organization
+      - 1.2.2.3 Obtain the AccessKey pair of an Alibaba Cloud account
+    - 1.2.3 View the endpoint
+  - 1.3 Major APIs
+    - 1.3.1 AliyunAccount
+    - 1.3.2 Odps
+    - 1.3.3 Projects
+    - 1.3.4 Project
+    - 1.3.5 SQLTask
+    - 1.3.6 Instances
+    - 1.3.7 Instance
+    - 1.3.8 Tables
+    - 1.3.9 Table
+    - 1.3.10 Resources
+    - 1.3.11 Resource
+    - 1.3.12 Functions
+    - 1.3.13 Function
+    - 1.3.14 Spark Shell
+    - 1.3.15 Spark R
+    - 1.3.16 Spark SQL
+    - 1.3.17 Spark JDBC
+    - 1.3.18 Document APIs
+    - 1.3.19 Search APIs
+    - 1.3.20 CheckPermissionTest
+- 2 SDK for Python
+
+## 1 Java SDK
+
+### 1.1 SDK for Java
 
 This topic provides the overall information about the SDK packages provided by MaxCompute. It also provides a link for you to obtain complete API information. For complete API information, see ODPS SDK Core 0.32.5-public API. You can use Maven to configure the version of the SDK that you want to use. For example, to specify the version of odps-sdk-core that you want to use, add the following Maven dependency:
 
@@ -37,15 +71,15 @@ The following table describes the SDK packages provided by MaxCompute.
 
 You can visit the Maven repository to download these SDK packages. Not e If your MaxCompute version is earlier than V3.8.0, download the SDK packages of the 0.27.2-public version. If your MaxCompute version is a version from V3.8.0 to V3.11.0, download the SDK packages of the 0.30.8-public or 0.30.9-public version. If your MaxCompute version is V3.12.0 or later, download the SDK packages of the 0.36.2-public version.
 
-### Prerequisites
+### 1.2 Prerequisites
 
-#### Overview
+#### 1.2.1 Overview
 
 Before you use MaxCompute SDKs, you must prepare the required environment. Create an Alibaba Cloud account that is authorized to access MaxCompute and obtain an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. Obtain the endpoint of MaxCompute.
 
-#### Obtain an AccessKey pair
+#### 1.2.2 Obtain an AccessKey pair
 
-##### Log on to the Apsara Uni-manager Management
+##### 1.2.2.1 Log on to the Apsara Uni-manager Management Console
 
 Console This topic describes how to log on to the Apsara Uni-manager Management Console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
@@ -56,7 +90,7 @@ Obtain the username and password that you can use to log on to the console from 
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
 in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
 
-##### Obtain the AccessKey pair of an organization
+##### 1.2.2.2 Obtain the AccessKey pair of an organization
 
 This topic describes how to obtain the AccessKey pair of an organization. Prerequisites Only the operation administrators and level-1 organization administrators can obtain the AccessKey pair of an organization. Procedure
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
@@ -68,7 +102,7 @@ icon on the right of an organization.
 6. In the message that appears, view the AccessKey pair of the organization.
 Not e An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
 
-##### Obtain the AccessKey pair of an Alibaba Cloud
+##### 1.2.2.3 Obtain the AccessKey pair of an Alibaba Cloud account
 
 account To secure cloud resources, the system must verify the identity of visitors and ensure that they have the relevant permissions. You must obtain the AccessKey ID and AccessKey secret of your Alibaba Cloud account to access cloud resources. This topic describes how to obtain the AccessKey pair of an Alibaba Cloud account. Procedure
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
@@ -77,7 +111,7 @@ User Inf ormat ion.
 3. In the Apsara St ack AccessKey Pair section, you can view your AccessKey pair.
 Not e The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs allow you to access Apsara Stack resources with full permissions for your account. You must keep your AccessKey pair confidential.
 
-#### View the endpoint
+#### 1.2.3 View the endpoint
 
 This topic describes how to obtain the endpoint of MaxCompute in the Apsara Uni-manager Operations Console. Context The URL, username, and password that are required to log on to the Apsara Uni-manager Operations Console are obtained from the deployment personnel or administrators. The URL of the Apsara Uni-manager Operations Console is in the format of ops.asconsole.intranet-do main-id.com. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. Open your browser. In the address bar, enter the URL (ops.asconsole.intranet-domain-id.com).
@@ -100,13 +134,13 @@ curl -l "http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?c
 8. Find the endpoint of MaxCompute based on the service ID (odps-service-frontend) and key (odps_f
 rontend_server.endpoint) of MaxCompute.
 
-### Major APIs
+### 1.3 Major APIs
 
-#### AliyunAccount
+#### 1.3.1 AliyunAccount
 
 This topic describes the AliyunAccount API provided by SDK for Java. You can call this API to obtain your Alibaba Cloud account. The input parameters are accessId and accessKey. This API is also considered a class that is used to initialize MaxCompute. Not e accessId indicates the AccessKey ID that uniquely identifies an Alibaba Cloud account. accessKey indicates the AccessKey secret that is used to authenticate the identity of the account.
 
-#### Odps
+#### 1.3.2 Odps
 
 This topic describes the Odps API provided by SDK for Java. This API is also considered a class that is the entry point of MaxCompute SDK for Java. This class allows you to access all types of objects in MaxCompute, including projects, tables, resources, functions, and instances. You can pass this class into the AliyunAccount instance to construct a MaxCompute object. Sample code:
 
@@ -116,7 +150,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Projects
+#### 1.3.3 Projects
 
 This topic describes the Projects API provided by SDK for Java. This API is a collection of all projects in MaxCompute. Sample code:
 
@@ -124,11 +158,11 @@ This topic describes the Projects API provided by SDK for Java. This API is a co
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Project p = odps.projects().get("my_exists"); p.reload(); Map<String, String> properties = prj.getProperties(); ...
 ```
 
-#### Project
+#### 1.3.4 Project
 
 This topic describes the Project API provided by SDK for Java. This API provides descriptions of projects. You can call the Projects API to obtain the projects.
 
-#### SQLTask
+#### 1.3.5 SQLTask
 
 This topic describes the SQLTask API provided by SDK for Java. You can call this API to run and process SQL tasks. You can use SQLTask.run to run SQL tasks. SQLTask.run returns an instance, and obtains the running status and results of SQL tasks from the instance. Sample code:
 
@@ -144,7 +178,7 @@ Map<String, String> results = instance.getTaskResults(); Map<String, TaskStatus>
 
 `}` Not e To create a table, you must call the SQLTask API instead of the Table API. In this case, you must pass the CREATE TABLE statement into SQLTask.
 
-#### Instances
+#### 1.3.6 Instances
 
 This topic describes the Instances API provided by SDK for Java. This API is a collection of all instances in MaxCompute. Sample code:
 
@@ -154,7 +188,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Instance
+#### 1.3.7 Instance
 
 This topic describes the Instance API provided by SDK for Java. This API provides descriptions of instances. You can call the Instances API to obtain the instances. Sample code:
 
@@ -174,7 +208,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 ... TaskSummary summary = instance.getTaskSummary("instance name"); String s = summary.getSummaryText();
 ```
 
-#### Tables
+#### 1.3.8 Tables
 
 This topic describes the Tables API provided by SDK for Java. This API is a collection of tables in MaxCompute. Sample code:
 
@@ -184,7 +218,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Table
+#### 1.3.9 Table
 
 This topic describes the Table API provided by SDK for Java. This API provides descriptions of tables in MaxCompute. You can call the Tables API to obtain the tables. Sample code:
 
@@ -192,7 +226,7 @@ This topic describes the Table API provided by SDK for Java. This API provides d
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Table t = odps.tables().get("table name"); t.reload(); Partition part = t.getPartition(new PartitionSpec(tableSpec[1])); part.reload(); ...
 ```
 
-#### Resources
+#### 1.3.10 Resources
 
 This topic describes the Resources API provided by SDK for Java. This API is a collection of resources in MaxCompute. Sample code:
 
@@ -202,7 +236,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Resource
+#### 1.3.11 Resource
 
 This topic describes the Resource API provided by SDK for Java. This API provides descriptions of resources. You can call the Resources API to obtain the resources. Sample code:
 
@@ -234,7 +268,7 @@ The following sample code shows how to create a table resource:
 TableResource resource = new TableResource(tableName, tablePrj, partitionSpec); //resource.setName(INVALID_USER_TABLE); resource.setName("table_resource_name"); odps.resources().update(projectName, resource);
 ```
 
-#### Functions
+#### 1.3.12 Functions
 
 This topic describes the Functions API provided by SDK for Java. This API is a collection of functions in MaxCompute. Sample code:
 
@@ -244,7 +278,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Function
+#### 1.3.13 Function
 
 This topic describes the Function API provided by SDK for Java. This API provides descriptions of functions. You can call the Functions API to obtain the functions. Sample code:
 
@@ -264,7 +298,7 @@ String resources = "xxx:xxx"; String classType = "com.aliyun.odps.mapred.open.ex
 Function func = new Function(); func.setName(name); func.setClassType(classType); func.setResources(resourceList); odps.functions().create(projectName, func);
 ```
 
-#### Spark Shell
+#### 1.3.14 Spark Shell
 
 This topic describes the Spark Shell API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -278,7 +312,7 @@ Sample code:
 sc.parallelize(0 to 100, 2).collect sql("show tables").show sql("select * from spark_user_data").show(200,100)
 ```
 
-#### Spark R
+#### 1.3.15 Spark R
 
 This topic describes the Spark R API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -298,7 +332,7 @@ df <- as.DataFrame(faithful)
 head(select(df, df$eruptions)) head(select(df, "eruptions")) head(filter(df, df$waiting < 50)) results <- sql("FROM spark_user_data SELECT *") head(results)
 ```
 
-#### Spark SQL
+#### 1.3.16 Spark SQL
 
 This topic describes the Spark SQL API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -312,7 +346,7 @@ Sample code:
 show tables; select * from spark_user_data limit 3; quit;
 ```
 
-#### Spark JDBC
+#### 1.3.17 Spark JDBC
 
 This topic describes the Spark JDBC API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -326,15 +360,15 @@ Sample code:
 ! connect jdbc:hive2://localhost:10000/odps_smoke_test show tables; select * from mr_input limit 3; ! quit
 ```
 
-#### Document APIs
+#### 1.3.18 Document APIs
 
 This topic describes the Document APIs provided by SDK for Java. It is an open source API repository that is compatible with Elasticsearch on MaxCompute. For more information, see Document APIs.
 
-#### Search APIs
+#### 1.3.19 Search APIs
 
 This topic describes the Search APIs provided by SDK for Java. It is an open source API repository that is compatible with Elasticsearch on MaxCompute. For more information, see Search APIs.
 
-#### CheckPermissionTest
+#### 1.3.20 CheckPermissionTest
 
 This topic describes the CheckPermissionTest API provided by SDK for Java. You can call this API to check whether a specified user has the specified permission on a resource. Sample code:
 
@@ -347,7 +381,7 @@ Account account = new AliyunAccount("accessId", "accessKey"); Odps odps = new Od
 desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$t***@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
 ```
 
-## SDK for Python
+## 2 SDK for Python
 
 This topic describes how to use SDK for Python to create, view, and delete tables. PyODPS is MaxCompute SDK for Python. It provides easy-to-use Python programming interfaces. Similar to pandas, PyODPS provides fast, flexible, and expressive data structures. You can use the data processing feature of PyODPS, which is similar to that of pandas, by calling the DataFrame API provided by PyODPS. For more information, see aliyun-odps-python-sdk and PyODPS: ODPS Python SDK and data analysis framework. For more information about PyODPS, see the relevant description in MaxCompute User Guide. The following sections describe how to use SDK for Python to create, view, and delete tables. Install PyODPS PyODPS supports Python 2.6 and later (including Python 3.0). After you install pip in the system, you need only to run the `pip install pyodps` command. After you run this command, related dependencies of PyODPS are automatically installed. For more information, see the Inst allat ion guide section in MaxCompute User Guide. Perform initialization Use your Apsara Stack tenant account to initialize a MaxCompute entry object. Example:
 

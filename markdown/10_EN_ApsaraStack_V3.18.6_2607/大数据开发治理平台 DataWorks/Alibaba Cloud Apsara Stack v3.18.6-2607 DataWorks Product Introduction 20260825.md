@@ -3,18 +3,44 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Product Introduction 2
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 36
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Product Introduction 20260825.pdf"
+source_pdf: "1cb9b5c4346f4a23_Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%B2%BB%E7%90%86%E5%B9%B3%E5%8F%B0%20DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataWorks%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataWorks Product Introduction 20260825
 
-## DataWorks
+## Table of Contents
+
+- 1 DataWorks
+  - 1.1 What is DataWorks?
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+    - 1.4.1 Data integration
+    - 1.4.2 DataStudio
+    - 1.4.3 Operation Center
+    - 1.4.4 Data Map
+    - 1.4.5 Data quality
+    - 1.4.6 Security center
+    - 1.4.7 Data Protection Umbrella
+    - 1.4.8 Data Governance Center
+    - 1.4.9 Data assets
+    - 1.4.10 Data analysis
+    - 1.4.11 DataService Studio
+    - 1.4.12 Approval Center
+    - 1.4.13 Migration Assistant
+    - 1.4.14 Open Platform
+    - 1.4.15 Workspace Management
+    - 1.4.16 Tenant Management
+    - 1.4.17 DataWorks Copilot
+    - 1.4.18 Internationalization
+
+## 1 DataWorks
 
 DataWorks is an end-to-end big data development and governance platform that provides data warehousing, data lake, and data lakehouse solutions based on big data compute engines, such as MaxCompute, Hologres, and AnalyticDB. Since 2009, DataWorks has been summarizing and improving the big data development methodology of Alibaba Group to support data mid-end building. DataWorks collaborates with public service sectors, stateowned enterprises, customers in various industries, such as finance, retail, Internet, energy, and manufacturing, and the industrial sector to improve data application efficiency and facilitate the digital transformation of industries.
 
-### What is DataWorks?
+### 1.1 What is DataWorks?
 
 DataWorks has developed and accumulated hundreds of core capabilities for more than ten years. DataWorks provides data integration, data development, data governance, data security, and data analysis services. These services provide end-to-end data governance capabilities to help enterprises reduce data processing costs, increase data value, and unleash data productivity.
 
@@ -161,7 +187,7 @@ DataWorks uses Open Platform to open its data and capabilities to external appli
 
 Tenant Management provides the following features: workspace management, member management, resource scheduling, compute engine management, authorization management, and resource group management. This helps organization administrators to manage important resources in their organizations.
 
-### Benefits
+### 1.2 Benefits
 
 DataWorks provides various benefits, such as computing and processing of ultra-large-scale data, rapid integration of massive heterogeneous data sources, end-to-end data quality monitoring, and secure data sharing.
 
@@ -205,7 +231,7 @@ DataWorks interacts with API Gateway to make it easy for you to develop and publ
 
 DataWorks provides an encryption component that can be integrated into the data transfer process. When data is transferred from the owner to a user, the data transferred to the user is encrypted. DataWorks is equipped with the envelope encryption technology, which ensures that the provided ciphertext can be used only by authorized users. This ensures that data cannot be used after being transferred to a third party and enhances data security during data sharing.
 
-### Scenarios
+### 1.3 Scenarios
 
 DataWorks is widely used in various data scenarios, such as cloud data warehouses, business intelligence (BI) applications, and data-driven operations.
 
@@ -231,9 +257,9 @@ the table.
 
 Innovative business: supports data mining, data modeling, and real-time decision-making to help you use big data analytics results in your business system. Small and medium-sized enterprises: supports efficient processing and analysis of data to help enterprises make informed business decisions.
 
-### Features
+### 1.4 Features
 
-#### Data integration
+#### 1.4.1 Data integration
 
 Data Integration is a stable, efficient, and scalable data synchronization service. It is designed to migrate and synchronize data between various disparate data sources in complex network environments.
 
@@ -260,7 +286,7 @@ Data Integration is a stable, efficient, and scalable data synchronization servi
 |   | Data processing during real-time synchronization | This feature allows you to configure data filtering and string replacement during real-time synchronization. |
 |   | Task monitoring during real-time synchronization | This feature allows you to configure monitoring for a real-time synchronization node. You can receive alerts by DingTalk, SMS, or email. |
 
-#### DataStudio
+#### 1.4.2 DataStudio
 
 DataStudio is the data development platform in DataWorks. You can use DataStudio to build standardized and efficient data processing workflows. Key features include:
 
@@ -276,7 +302,7 @@ DataStudio is the data development platform in DataWorks. You can use DataStudio
 | Version management | Version management features include comparison, rollback, commits, reviews, and publishing. |
 |---|---|
 
-#### Operation Center
+#### 1.4.3 Operation Center
 
 The Operation Center includes Operation Dashboard, Real-time Task O&M, Scheduled Task O&M, Trigger-based Task O&M, Intelligent Monitoring, Engine O&M, Scheduling Settings, and Operation History.
 
@@ -303,7 +329,7 @@ The Operation Center includes Operation Dashboard, Real-time Task O&M, Scheduled
 |   | workspace parameters |   |   |
 | production environment |   |   |   |
 
-#### Data Map
+#### 1.4.4 Data Map
 
 Data Map is an enterprise data asset management module built on metadata. It provides features including global data search, detailed metadata viewing, data preview, data lineage, and data category management. Data Map helps you find, understand, and use your data. Key features include:
 
@@ -318,7 +344,7 @@ Data Map is an enterprise data asset management module built on metadata. It pro
 | Metadata Collection | This feature lets you centrally manage metadata from various systems and view it in Data Map. Key features include: Collects metadata from various data sources, including databases such as E-MapReduce, Hologres, Table Store (OTS), MySQL, Oracle, and SQL Server. Detects real-time metadata changes, such as table creation, modification, or deletion. |
 | Configuration Management | Supports Category Navigation Configuration, Project Management Configuration, and Other Configurations (such as security control). |
 
-#### Data quality
+#### 1.4.5 Data quality
 
 The data quality feature helps you detect changes in source data and identify dirty data generated during Extract, Transform, and Load (ETL) processes as early as possible. It automatically intercepts problematic tasks, preventing dirty data from propagating to downstream systems. This prevents the creation of unexpected data that could impact operations and business decisions. It also reduces the time and cost of troubleshooting and avoids resource waste from re-running jobs. Data quality supports quality checks on common big data storage systems, such as MaxCompute, Hologres, AnalyticDB for PostgreSQL, and AnalyticDB for MySQL. You can configure quality monitoring rules across multiple dimensions, including completeness, accuracy, validity, consistency, uniqueness, and timeliness. You can also associate quality monitoring rules with scheduling nodes. When an associated task is complete, the rules are triggered to validate the data, which helps you immediately detect data issues. You can set the severity of rules to control whether a task fails, which prevents the spread of dirty data and reduces the time and cost of data recovery. Its core features are as follows:
 
@@ -346,7 +372,7 @@ The data quality feature helps you detect changes in source data and identify di
 |---|---|
 | Configuration | Report template management The report template management page allows you to create report templates. You can add metrics from rule configurations and runs. The system automatically generates and sends reports based on a defined schedule, time, and subscriber list. Denoising management The denoising management feature allows you to suppress an alert and prevent task blocking for a specified period, even if a data quality rule check fails in the workspace. |
 
-#### Security center
+#### 1.4.6 Security center
 
 As the security portal for your cloud-based big data system, DataWorks Security Center provides features that span the entire data security lifecycle. It also offers best practices for security diagnostics to help you meet security standards. Key features include:
 
@@ -358,7 +384,7 @@ As the security portal for your cloud-based big data system, DataWorks Security 
 | data usage security | Secures data content and privacy in your DataWorks workspace by offering solutions to identified security issues. This helps you quickly establish a baseline security framework to protect data during and after its use. |
 | security policy | Enables entity transfers at the workspace level. Lets you view transfer logs. Lets you configure transfer rules. |
 
-#### Data Protection Umbrella
+#### 1.4.7 Data Protection Umbrella
 
 Data Protection Umbrella is a data security management product that includes data discovery, data masking, d****************, access control, risk identification, and data lineage. It helps you quickly identify sensitive data and apply security controls. Key features include:
 
@@ -374,7 +400,7 @@ Data Protection Umbrella is a data security management product that includes dat
 |---|---|
 | System settings | You can configure settings such as data discovery account, discovery scope, discovery content, permission control mode, and enable tagging. |
 
-#### Data Governance Center
+#### 1.4.8 Data Governance Center
 
 The Data Governance Center automatically discovers issues related to data storage, compute, code development, data quality, and security based on pre-configured governance plans. It uses a health score to quantify assessments and presents governance results through governance reports and leaderboards from global, workspace, and personal perspectives, helping you achieve your governance goals efficiently. The center also provides features such as business asset management, asset analysis, detailed task resource consumption, and cost estimation for a clear understanding of your resource usage. Its core functions are as follows:
 
@@ -390,7 +416,7 @@ The Data Governance Center automatically discovers issues related to data storag
 | Knowledge Base | Provides detailed descriptions, resolution methods, and important notes for each governance item and check item. |
 | Configuration management | Solution template The system provides built-in templates that include check items and governance items. You can use them after enabling a template. Check items are applied during processes like task publishing and submission to intercept problems and prevent the introduction of new governance issues. Governance items are used for post-hoc analysis to discover existing issues that require optimization. You can enable specific items as needed. Check item configuration The system generates an initial list of check items from the selected template. On this page, you can configure these items—for example, by enabling them globally or individually—to intercept problems during processes like task publishing and submission and prevent the introduction of new governance issues. Governance item configuration Governance items are initially generated based on the selected template. Here, you can enable or disable specific governance items. Cost configuration This feature lets you set custom resource unit prices, which automatically includes cost estimation statistics in governance effectiveness reports. This is used to estimate costs for compute and storage resources. Governance unit A governance unit consists of one or more workspaces. The most common practice is to group workspaces by business line. Governance units centrally aggregate statistics for all their included workspaces, such as the overall health score and governance item and check item events. In this section, you can create, edit, and delete governance units. |
 
-#### Data assets
+#### 1.4.9 Data assets
 
 DataWorks data asset management helps enterprises inventory their data assets and demonstrate the business value of the Data Middle Platform. It also allows business users to quickly find and use the data assets they need in a secure environment. Key features include:
 
@@ -402,7 +428,7 @@ DataWorks data asset management helps enterprises inventory their data assets an
 | Asset Consumption | Lets you visually query assets, such as models published from MaxCompute physical tables, and download the results. |
 | Management Center | Catalog Management: Lets administrators configure the global asset catalog. Asset Management: Lets administrators publish or unpublish ingested assets and add them to a catalog. Asset Space: Lets asset administrators specify other workspaces whose assets can be centrally managed in the current workspace. Asset Collection: Lets asset administrators configure asset ingestion policies. |
 
-#### Data analysis
+#### 1.4.10 Data analysis
 
 Data analysis provides three core functions: SQL query, spreadsheet, and system management. Designed to empower every user to become a data analyst, it provides streamlined tools for data analysts, product managers, and operations teams to quickly retrieve and use data for daily analysis. Key features include:
 
@@ -415,7 +441,7 @@ Data analysis provides three core functions: SQL query, spreadsheet, and system 
 | Spreadsheet | View lists of files you created and files shared with you. You can rename, transfer, clone, delete, and search your created files. Import data using options such as Import Local Data, Import Spreadsheet Data, and Manual Edit. Use standard spreadsheet operations, including font settings, alignment, number formats, row and column formatting, conditional formatting, cell styles, functions, filters, sorting, clearing, and searching. Convert field types to numeric or string. |
 | System management | Set the maximum number of records that a SQL query can return. Configure download and sharing features for spreadsheets. |
 
-#### DataService Studio
+#### 1.4.11 DataService Studio
 
 DataService Studio is a flexible, secure, stable, and cost-effective platform that allows you to create and publish APIs. DataService Studio serves as a bridge between databases and data applications, and provides comprehensive data processing and sharing capabilities for individuals, teams, and enterprises to help them manage APIs that belong to and do not belong to Alibaba Cloud in a centralized manner. For example, you can use DataService Studio to quickly generate APIs based on data tables. You can also register existing APIs with DataService Studio to publish and manage the APIs in a centralized manner. The following section describes the core features of DataService Studio.
 
@@ -433,7 +459,7 @@ versions of a resource and compare the parameters or SQL scripts of the two vers
 |---|---|
 | Massively parallel processing (MPP) data source enhancement package | Supported databases: ClickHouse and AnalyticDB for MySQL 3.0. |
 
-#### Approval Center
+#### 1.4.12 Approval Center
 
 Approval Center allows you to manage permissions on data and manage high-risk operations. You can also use Approval Center to specify the scope of requests and customize request processing procedures to meet your business requirements in different compliance scenarios. The following table describes the core features of Approval Center.
 
@@ -446,7 +472,7 @@ Approval Center allows you to manage permissions on data and manage high-risk op
 | Requests To Be Processed | Allows you to query permission requests that are pending your approval. |
 | Processing Records | Allows you to query the records of permission requests that are processed by you. |
 
-#### Migration Assistant
+#### 1.4.13 Migration Assistant
 
 Migration Assistant allows you to migrate tasks from open source scheduling engines to DataWorks and migrate development results from DataWorks. The following table describes the core features of Migration Assistant.
 
@@ -457,7 +483,7 @@ Migration Assistant allows you to migrate tasks from open source scheduling engi
 | DataWorks Migration | You can copy DataWorks development results in an efficient manner. The following types of objects are supported: auto triggered tasks, manually triggered tasks, resources, functions, and ad hoc queries. |
 | Advanced Features | Migration Assistant provides the object detection feature, which allows you to view the development results and cross-workspace dependencies in a workspace. Development results include tables, auto triggered tasks, resources, manually triggered tasks, data sources, objects in DataService Studio, functions, ad hoc queries, and components. |
 
-#### Open Platform
+#### 1.4.14 Open Platform
 
 DataWorks uses Open Platform to open its data and capabilities to external applications. Open Platform consists of the OpenAPI, OpenEvent, and Extensions modules. You can use the modules to quickly integrate your applications with DataWorks. This helps you manage data processing, data governance, and data O&M, and allows you to identify important changes in DataWorks and respond to the changes at the earliest opportunity. The following table describes the core features of Open Platform.
 
@@ -467,7 +493,7 @@ DataWorks uses Open Platform to open its data and capabilities to external appli
 | OpenEvent | DataWorks uses OpenEvent to open up event messages that are generated during the running of DataWorks. You can use Kafka to subscribe to events to monitor and respond to user operations and system processing operations on the DataWorks platform based on your business requirements. |
 | Extensions | DataWorks Extensions is a plug-in that you can use with OpenAPI and OpenEvent. You can register an extension to customize the processing logic for user operations in DataWorks and to implement behavior control such as blocking. |
 
-#### Workspace Management
+#### 1.4.15 Workspace Management
 
 A workspace is the basic unit for task development and member permission management in DataWorks. DataWorks supports workspaces in basic mode and standard mode. You can implement different levels of security control on production data by using workspaces in different modes. The following table describes the core features of Workspace Management.
 
@@ -483,7 +509,7 @@ A workspace is the basic unit for task development and member permission managem
 |   | MaxCompute Advanced Settings | Allows you to manage security authorization and add custom user roles for associated MaxCompute projects. |
 | Tenant Configurations | Extension | Displays the check items that are enabled in Data Governance Center and the extensions that are registered and published on the Extensions page of Open Platform. You can enable or disable a check item or configure an extension on this page to manage the check on and procedure of the related development and O&M operations. |
 
-#### Tenant Management
+#### 1.4.16 Tenant Management
 
 Tenant Management provides the following features: workspace management, member management, compute engine management, authorization management, and resource group management. This helps organization administrators manage important resources in their organizations. The following table describes the core features of Tenant Management.
 
@@ -497,7 +523,7 @@ Tenant Management provides the following features: workspace management, member 
 | Resource group management | A DataWorks resource group is a collection of computing resources that can be used by DataWorks services. DataWorks resource groups are a prerequisite to use DataWorks. The status of a resource group affects the status of related features. The quota of a resource group affects the efficiency of tasks or services. On the Exclusive Resource Group tab, you can create a resource group for scheduling or a resource group for Data Integration. On the Shared Resource Group tab, you can view the usage of the shared resource group for scheduling and the shared resource group for Data Integration. |
 |---|---|
 
-#### DataWorks Copilot
+#### 1.4.17 DataWorks Copilot
 
 DataWorks Copilot is a new generation of AI assistant integrated in DataWorks. You can use natural language to communicate with DataWorks Copilot or obtain immediate assistance on your operation pages. This greatly improves the efficiency of data development and analysis. The core capabilities of DataWorks Copilot are provided in two interactive modes to meet your needs in different scenarios: Copilot Chat (conversational AI): an all-round conversation window that is your "command center" for complex issue discussion, task planning, and automated process execution. Copilot AI in place (Immersive AI): a "personal assistant" that is seamlessly embedded in your daily operation pages, providing contextual, intelligent assistance in place when you need it most.
 
@@ -508,6 +534,6 @@ DataWorks Copilot is a new generation of AI assistant integrated in DataWorks. Y
 |---|---|
 | SQL editor | Provides enhanced features for the SQL editor, including SQL generation, SQL error correction, comment generation, and SQL rewrite. |
 
-#### Internationalization
+#### 1.4.18 Internationalization
 
 This topic describes the internationalization progress of DataWorks. The DataWorks console supports the following languages: simplified Chinese, traditional Chinese, and English. You can switch among the languages as needed.

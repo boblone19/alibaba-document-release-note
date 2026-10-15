@@ -3,22 +3,30 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 37
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "85c28a40ea11f1ef_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Operations and Maintenance G"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Operations and Maintenance Guide 20260828
 
-## Overview
+## Table of Contents
 
-This topic describes how to quickly create and execute an Operation Orchestration Service (OOS) template. To create and execute an OOS template, perform the following steps:
-1. Create a template
-For more information, see Create a template.
-2. Create an execution
-Create an execution based on the created template and start the execution. For more information, see Create an execution.
+- 1 Overview
+- 2 Create a template
+- 3 Create an execution
+- 4 Release multiple ECS instances at a time
+- 5 Configure a scheduled task to automatically restart ECS instances
+- 6 Use DingTalk to approve automated O&M tasks
+- 7 Perform a phased release based on commands
+- 8 Update an image by using OOS
+- 9 FAQ
 
-## Create a template
+## 1 Overview
+
+This topic describes how to quickly create and execute an Operation Orchestration Service (OOS) template. To create and execute an OOS template, perform the following steps: For more information, see Create a template. Create an execution based on the created template and start the execution. For more information, see Create an execution.
+
+## 2 Create a template
 
 This topic describes how to create a template to query the IDs of Elastic Compute Service (ECS) instances in the specified state, such as Running or Stopped, within the current account. The created template calls the DescribeInstances operation and automatically goes through the results to return the IDs of ECS instances in the specified state. If no more than 1,000 ECS instances are in the specified state, the IDs of all these ECS instances are returned. If more than 1,000 ECS instances are in the specified state, the IDs of the first 1,000 ECS instances in the specified state are returned. For more information, see Limits.
 
@@ -61,7 +69,7 @@ tasks to call other API operations.
 
 6. Click **Create Template**.
 
-## Create an execution
+## 3 Create an execution
 
 After you create a template, you can create an execution based on the template and start the execution.
 
@@ -91,7 +99,7 @@ If you set the execution mode to **Manual**, you must manually start the executi
 8. To view the execution details, click the execution ID or click **Details** in the **Actions** column.
 s at a time
 
-## Release multiple ECS
+## 4 Release multiple ECS instances at a time
 
 **instances at a time**
 
@@ -296,7 +304,7 @@ RamRole: '{{ OOSAssumeRole }}' Tasks:
 
 automatically restart ECS instanc es
 
-## Configure a scheduled task
+## 5 Configure a scheduled task to automatically restart ECS instances
 
 **to automatically restart ECS**
 
@@ -318,7 +326,7 @@ Executed Periodically.
 4. Select the ACS-ECS-BulkyRebootInstances template, and then configure the parameters to
 create an execution. mated O&M tasks
 
-## Use DingTalk to approve
+## 6 Use DingTalk to approve automated O&M tasks
 
 **automated O&M tasks**
 
@@ -506,7 +514,7 @@ parameters. In this example, **Custom Keywords** is selected for **Security Sett
 7. In the Add Robot dialog box, click **Copy** to copy the webhook URL.
 ed on commands
 
-## Perform a phased release
+## 7 Perform a phased release based on commands
 
 **based on commands**
 
@@ -560,7 +568,7 @@ ed on commands
 9. In the OK step, click **Create**.
 S
 
-## Update an image by using
+## 8 Update an image by using OOS
 
 **OOS**
 
@@ -772,7 +780,7 @@ The following table describes and compares various methods that Alibaba Cloud su
 | Create a custom image by using a snapshot Create a custom image by using an ECS instance | No other tool is required. | This method provides easy and convenient operations in the ECS console. | You need to manually create instances and snapshots. The procedure is complicated, error- prone, and inefficient. |
 | Create a custom image by using Packer | Packer must be installed. | Packer is an open source tool that is supported by various cloud service providers. | You need to install and maintain Packer. You need to write code. |
 
-## FAQ
+## 9 FAQ
 
 This topic provides answers to frequently asked questions about Operation Orchestration Service (OOS). Why is the following error message returned when I use OOS as a RAM user: User has no permission to do the action: (ListTemplates)? Why is the following error message returned when I use OOS as a RAM user: User has no permission to do the action: (PassRole)? Why is the following error message returned when I use a template: Assumes role failed. Code: EntityNotExist.Role, msg: The role not exists: acs:111111:role/OOSServiceRole? Why is the following error message returned when I use a template: Assumes role failed. Code: NoPermission, msg: You are not authorized to do this action. You should be authorized by RAM?
 

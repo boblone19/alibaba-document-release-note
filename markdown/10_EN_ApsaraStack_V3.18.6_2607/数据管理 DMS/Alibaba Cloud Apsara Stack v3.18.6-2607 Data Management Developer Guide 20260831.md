@@ -3,16 +3,222 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 447
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 20260831.pdf"
+source_pdf: "6b6c678348703384_Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%20DMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Data%20Management%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Data Management Developer Guide 20260831
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Call an API operation
+- 2 Preparations
+  - 2.1 Log on to OpenAPI Explorer
+  - 2.2 Obtain the information and the endpoint of an API operation
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the endpoint of DMS
+  - 2.6 Obtain an SDK installation package of DMS
+- 3 Call examples for SDK for Java
+  - 3.1 Getting started
+  - 3.2 Use SDK
+    - 3.2.1 Install DMS SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Troubleshooting
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples for SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use SDK
+    - 4.2.1 Install DMS SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call examples for SDK for Go
+  - 5.1 Get started with DMS SDK for Go
+  - 5.2 Use SDK
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API Reference
+  - 6.1 API overview
+  - 6.2 User management
+    - 6.2.1 RegisterUser
+    - 6.2.2 DisableUser
+    - 6.2.3 EnableUser
+    - 6.2.4 UpdateUser
+    - 6.2.5 DeleteUser
+    - 6.2.6 ListUsers
+    - 6.2.7 ListUserTenants
+    - 6.2.8 GetUserActiveTenant
+    - 6.2.9 GetUser
+  - 6.3 Instance management
+    - 6.3.1 ListServers
+    - 6.3.2 ListServerGroups
+    - 6.3.3 RegisterInstance
+    - 6.3.4 ListInstances
+    - 6.3.5 GetInstance
+    - 6.3.6 UpdateInstance
+    - 6.3.7 DeleteInstance
+  - 6.4 Operation logs
+    - 6.4.1 GetOpLog
+  - 6.5 Approval processes
+    - 6.5.1 ListWorkFlowTemplates
+    - 6.5.2 ListWorkFlowNodes
+  - 6.6 Metadata of databases and tables
+    - 6.6.1 SearchDatabase
+    - 6.6.2 SearchTable
+    - 6.6.3 ListDatabases
+    - 6.6.4 ListLogicDatabases
+    - 6.6.5 ListTables
+    - 6.6.6 ListLogicTables
+    - 6.6.7 ListColumns
+    - 6.6.8 ListIndexes
+    - 6.6.9 GetDatabase
+    - 6.6.10 GetLogicDatabase
+    - 6.6.11 GetMetaTableDetailInfo
+    - 6.6.12 GetTableDBTopology
+    - 6.6.13 GetMetaTableColumn
+    - 6.6.14 SyncDatabaseMeta
+    - 6.6.15 SyncInstanceMeta
+    - 6.6.16 GetPhysicalDatabase
+    - 6.6.17 GetTableTopology
+  - 6.7 Ticket operations
+    - 6.7.1 General
+      - 6.7.1.1 ApproveOrder
+      - 6.7.1.2 CloseOrder
+      - 6.7.1.3 GetApprovalDetail
+      - 6.7.1.4 GetOrderBaseInfo
+      - 6.7.1.5 ListOrders
+      - 6.7.1.6 SubmitOrderApproval
+      - 6.7.1.7 CreateOrder
+    - 6.7.2 Data changes
+      - 6.7.2.1 ExecuteDataCorrect
+      - 6.7.2.2 GetDataCorrectBackupFiles
+      - 6.7.2.3 GetDataCorrectOrderDetail
+      - 6.7.2.4 CreateFreeLockCorrectOrder
+      - 6.7.2.5 CreateDataCorrectOrder
+      - 6.7.2.6 GetDataCronClearTaskDetailList
+      - 6.7.2.7 GetDataCorrectTaskDetail
+      - 6.7.2.8 GetDataCorrectSQLFile
+      - 6.7.2.9 CreateDataCronClearOrder
+      - 6.7.2.10 CreateDataImportOrder
+    - 6.7.3 Schema design
+      - 6.7.3.1 CreatePublishGroupTask
+      - 6.7.3.2 ListDDLPublishRecords
+    - 6.7.4 Data export
+      - 6.7.4.1 ExecuteDataExport
+      - 6.7.4.2 GetDataExportDownloadURL
+      - 6.7.4.3 GetDataExportOrderDetail
+    - 6.7.5 Database and table synchronization
+      - 6.7.5.1 GetStructSyncOrderDetail
+      - 6.7.5.2 GetStructSyncExecSqlDetail
+      - 6.7.5.3 ExecuteStructSync
+      - 6.7.5.4 GetStructSyncJobAnalyzeResult
+      - 6.7.5.5 SubmitStructSyncOrderApproval
+      - 6.7.5.6 CreateStructSyncOrder
+      - 6.7.5.7 GetStructSyncJobDetail
+    - 6.7.6 SQL review
+      - 6.7.6.1 GetSQLReviewCheckResultStatus
+      - 6.7.6.2 CreateSQLReviewOrder
+      - 6.7.6.3 ListSQLReviewOriginSQL
+    - 6.7.7 File upload
+      - 6.7.7.1 CreateUploadOSSFileJob
+      - 6.7.7.2 GetUserUploadFileJob
+      - 6.7.7.3 CreateUploadFileJob
+    - 6.7.8 Permission application
+      - 6.7.8.1 GetOwnerApplyOrderDetail
+      - 6.7.8.2 GetPermApplyOrderDetail
+  - 6.8 SQL task management
+    - 6.8.1 ListDBTaskSQLJob
+    - 6.8.2 ListDBTaskSQLJobDetail
+  - 6.9 Permission management
+    - 6.9.1 RevokeUserPermission
+    - 6.9.2 ListDatabaseUserPermssions
+    - 6.9.3 SetOwners
+    - 6.9.4 ListUserPermissions
+    - 6.9.5 GrantUserPermission
+  - 6.10 Security management
+    - 6.10.1 ListSensitiveColumns
+    - 6.10.2 ListSensitiveColumnsDetail
+    - 6.10.3 ChangeColumnSecLevel
+    - 6.10.4 AddDesensitizationRule
+    - 6.10.5 ListDesensitizationRule
+    - 6.10.6 ModifyDesensitizationStrategy
+  - 6.11 Data query
+    - 6.11.1 ExecuteScript
+  - 6.12 Task orchestration
+    - 6.12.1 UpdateTaskFlowConstants
+    - 6.12.2 DeleteTaskFlow
+    - 6.12.3 OfflineTaskFlow
+    - 6.12.4 ListTaskFlow
+    - 6.12.5 GetTaskInstanceRelation
+    - 6.12.6 ListTaskFlowInstance
+    - 6.12.7 ListDAGVersions
+    - 6.12.8 ReDeployLhDagVersion
+    - 6.12.9 UpdateScenario
+    - 6.12.10 ResumeTaskFlowInstance
+    - 6.12.11 UpdateTaskContent
+    - 6.12.12 ListTaskFlowsByPage
+    - 6.12.13 ListScenarios
+    - 6.12.14 UpdateTaskConfig
+    - 6.12.15 ListTaskFlowConstants
+    - 6.12.16 BackFill
+    - 6.12.17 UpdateTaskTimeVariables
+    - 6.12.18 ListTaskFlowTimeVariables
+    - 6.12.19 UpdateTaskFlowTimeVariables
+    - 6.12.20 UpdateTaskFlowCooperators
+    - 6.12.21 CreateScenario
+    - 6.12.22 DeleteScenario
+    - 6.12.23 UpdateSLARules
+    - 6.12.24 GetRuleNumLimitOfSLA
+    - 6.12.25 GetIntervalLimitOfSLA
+    - 6.12.26 ListDefaultSLARules
+    - 6.12.27 ListTaskFlowCooperators
+    - 6.12.28 ListSLARules
+    - 6.12.29 GetTask
+    - 6.12.30 MoveTaskFlowToScenario
+    - 6.12.31 GetTaskFlowNotification
+    - 6.12.32 UpdateTaskName
+    - 6.12.33 UpdateTaskOutput
+    - 6.12.34 DeleteTaskFlowEdgesByCondition
+    - 6.12.35 ListTaskFlowEdgesByCondition
+    - 6.12.36 AddTaskFlowEdges
+    - 6.12.37 UpdateTaskFlowNameAndDesc
+    - 6.12.38 GetTaskFlowGraph
+    - 6.12.39 UpdateTaskFlowEdges
+    - 6.12.40 UpdateTaskFlowOwner
+    - 6.12.41 UpdateTaskFlowSchedule
+    - 6.12.42 UpdateTaskFlowRelations
+    - 6.12.43 UpdateTaskFlowNotification
+    - 6.12.44 ListTasksInTaskFlow
+    - 6.12.45 CreateTaskFlow
+    - 6.12.46 SuspendTaskFlowInstance
+    - 6.12.47 ReRunTaskFlowInstance
+    - 6.12.48 MakeTaskFlowInstanceSuccess
+    - 6.12.49 DeleteTask
+    - 6.12.50 PublishAndDeployTaskFlow
+    - 6.12.51 StopTaskFlowInstance
+    - 6.12.52 CreateTask
+  - 6.13 Logical databases and tables
+    - 6.13.1 GetDBTopology
+- 7 Appendixes
+  - 7.1 NodeType values
+  - 7.2 STS overview
+    - 7.2.1 What is STS?
+    - 7.2.2 Obtain an STS token
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -37,7 +243,7 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Alibaba Cloud Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Alibaba Cloud Apsara Stack provides the same experience as Alibaba Cloud public cloud, API operations in Apsara Stack are called by using the POP gateway by default in Apsara Stack Enterprise V3.16.0 and later. This topic describes how to call API operations in Apsara Stack by using the POP gateway.
 
@@ -66,9 +272,9 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 5. Obtain the endpoint of the cloud service.
 6. Obtain an SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to OpenAPI Explorer
+### 2.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -97,7 +303,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
-### Obtain the information and
+### 2.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -119,7 +325,7 @@ The API information on the debugging page of the Apsara Uni-manager Management C
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by RAM or STS. You can use one type of AccessKey credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -160,7 +366,7 @@ want to obtain.
 5. Click **Management Accesskey** on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 **tuple**
 
@@ -274,7 +480,7 @@ previous step.
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain the endpoint of DMS
+### 2.5 Obtain the endpoint of DMS
 
 This topic describes how to obtain the endpoint of Data Management (DMS).
 
@@ -295,7 +501,7 @@ down list and enter `dts-dtm` in the search box. icon to show
 the hidden content, and then click the content. In the **Registration Variables** message, obtain the endpoint from the value of
 **dms.openapi.endpoint**.
 
-### Obtain an SDK installation
+### 2.6 Obtain an SDK installation package of DMS
 
 **package of DMS**
 
@@ -311,11 +517,11 @@ To call API operations of DMS in Apsara Stack by using the POP gateway, you must
 
 We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. or SDK for Java
 
-## Call examples for SDK for
+## 3 Call examples for SDK for Java
 
 **Java**
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use Data Management (DMS) SDK for Java.
 
@@ -367,9 +573,9 @@ secretKey);
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install DMS SDK for Java
+#### 3.2.1 Install DMS SDK for Java
 
 This topic describes how to install and use DMS SDK for Java. Alibaba Cloud SDK for Java supports JDK 1.8 or later. You can install SDKs for Java by adding Maven dependencies or downloading Alibaba Cloud SDKs. or SDK for Java To use DMS SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and DMS SDK for Java. We recommend that you use the core library version 4.5.17 or later and use the SDK version 1.18.0. To use DMS SDK for Java, you must also add the following dependency to the pom.xml file. For information about the SDK version, see Obtain an SDK installation package of DMS.
 
@@ -385,7 +591,7 @@ This topic describes how to install and use DMS SDK for Java. Alibaba Cloud SDK 
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. DMS SDK for Java allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance.
 
@@ -404,7 +610,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. or SDK for Java You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
@@ -434,7 +640,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use DMS SDK for Java to initiate a request.
 
@@ -472,7 +678,7 @@ If an exception occurs or you need to obtain the original HTTP response, call `d
 HttpResponse response = client.doAction(request);
 ```
 
-#### Troubleshooting
+#### 3.2.5 Troubleshooting
 
 If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem:
 
@@ -501,7 +707,7 @@ try {
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-#### Use CommonRequest to call API
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -592,11 +798,11 @@ t add the SecurityToken field in the request parameters.
 
 or SDK for Python
 
-## Call examples for SDK for
+## 4 Call examples for SDK for Python
 
 **Python**
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain the Python SDK for Data Management (DMS) and start making API calls.
 
@@ -653,9 +859,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 print(str(response, encoding='utf-8'))
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install DMS SDK for Python
+#### 4.2.1 Install DMS SDK for Python
 
 This topic describes how to install and use DMS SDK for Python. Alibaba Cloud SDK for Python supports Python 2.6.x, Python 2.7.x, Python 3.x, and later versions. You can install Alibaba Cloud SDK for Python by using pip.
 
@@ -685,7 +891,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-dms-enterprise
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. DMS SDK for Python allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance.
 
@@ -697,7 +903,7 @@ Do not disclose any code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
@@ -731,7 +937,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use DMS SDK for Python to initiate a request.
 
@@ -763,7 +969,7 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding='utf-8')) response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. or SDK for Python Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -784,7 +990,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -848,11 +1054,11 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 or SDK for Go
 
-## Call examples for SDK for
+## 5 Call examples for SDK for Go
 
 **Go**
 
-### Get started with DMS SDK for
+### 5.1 Get started with DMS SDK for Go
 
 **Go**
 
@@ -908,15 +1114,15 @@ eyID>", "<yourAccessKeySecret>")
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. DMS SDK for Go allows you to complete the authentication process by using an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as credentials when you initialize a client instance.
 
@@ -941,7 +1147,7 @@ secret.
 
 In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use DMS SDK for Go to initiate a request. To use DMS SDK for Go to initiate a request, perform the following steps:
 1. Import DMS SDK for Go.
@@ -981,7 +1187,7 @@ request := dms_enterprise.CreateGetOpLogRequest() request.Scheme = "https" reque
 response, err := client.GetOpLog(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a similar way as standard Go errors. or SDK for Go
 
@@ -1054,7 +1260,7 @@ response, err := Client.DescribeInstances(request) if serverError, ok := err.(*e
     response.GetOriginHttpResponse()
 ```
 
-#### Use CommonRequest to call API
+#### 5.2.5 Use CommonRequest to call API operations
 
 **operations**
 
@@ -1133,9 +1339,9 @@ e instance ID. If you want to modify, delete, or query the details of an instanc
     fmt.Print(response.GetHttpContentString())
 ```
 
-## API Reference
+## 6 API Reference
 
-### API overview
+### 6.1 API overview
 
 Data Management (DMS) provides the following APIs.
 
@@ -1358,9 +1564,9 @@ Data Management (DMS) provides the following APIs.
 |---|---|
 | GetDBTopology | Obtain the topology information of a logical database and its corresponding physical database shards. |
 
-### User management
+### 6.2 User management
 
-#### RegisterUser
+#### 6.2.1 RegisterUser
 
 Registers a user for your enterprise. If you are a **Data Management (DMS) administrator**, you can call this operation to register a user for your enterprise. To view users that are assigned the DMS administrator role, perform the following operations: Log on to the DMS console. In the top navigation bar, choose O&M > Users. On the Users page, view the values in the UID/Role column.
 
@@ -1409,7 +1615,7 @@ Sample success responses `XML` format
     "Success": true
 ```
 
-#### DisableUser
+#### 6.2.2 DisableUser
 
 Disables an Apsara Stack tenant account. This operation is related to the disable user feature of Data Management (DMS). To use this feature, perform the following steps: Log on to the DMS console, choose System Management
 > User Management. The administrator of DMS Enterprise can call this operation to disable
@@ -1461,7 +1667,7 @@ Sample success responses `XML` format
     "Success":true
 ```
 
-#### EnableUser
+#### 6.2.3 EnableUser
 
 Enables a disabled Apsara Stack tenant account. This operation is related to the enable user feature of Data Management (DMS) Enterprise. To use this feature, perform the following steps: Log on to the DMS Enterprise console, choose System Management > User Management. The administrator of DMS Enterprise can call this operation to enable an Apsara Stack tenant account that is disabled in DMS Enterprise. After an Apsara Stack tenant account is enabled, you can use the account to log on to the DMS Enterprise console and perform the required operations.
 
@@ -1513,7 +1719,7 @@ Sample success responses `XML` format
     "Success": true
 ```
 
-#### UpdateUser
+#### 6.2.4 UpdateUser
 
 Updates the information of a user.
 
@@ -1563,7 +1769,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### DeleteUser
+#### 6.2.5 DeleteUser
 
 Deletes an Apsara Stack tenant account. This operation is related to the delete user feature of Data Management (DMS). To use this feature, perform the following steps: Log on to the DMS console, choose System Management
 > User Management. The administrator of DMS Enterprise can call this operation to delete an
@@ -1617,7 +1823,7 @@ Sample success responses `XML` format
     "Success":true
 ```
 
-#### ListUsers
+#### 6.2.6 ListUsers
 
 Queries the details about users.
 
@@ -1773,7 +1979,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListUserTenants
+#### 6.2.7 ListUserTenants
 
 Queries tenants.
 
@@ -1856,7 +2062,7 @@ Sample success responses `XML` format
 
 `]`
 
-#### GetUserActiveTenant
+#### 6.2.8 GetUserActiveTenant
 
 Queries the details about a tenant.
 
@@ -1916,7 +2122,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GetUser
+#### 6.2.9 GetUser
 
 Queries the details of a user.
 
@@ -2023,9 +2229,9 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-### Instance management
+### 6.3 Instance management
 
-#### ListServers
+#### 6.3.1 ListServers
 
 Queries, paginates, and filters Data Management (DMS) machines.
 
@@ -2123,7 +2329,7 @@ Sample success responses `JSON` format `{`
 </ServerList> <ErrorCode>UnknownError</ErrorCode> <ErrorMessage>UnknownError</ErrorMessage> <Success>true</Success>
 ```
 
-#### ListServerGroups
+#### 6.3.2 ListServerGroups
 
 Queries and filters machine clusters of Data Management (DMS).
 
@@ -2269,7 +2475,7 @@ Sample success responses `JSON` format `{`
 </ServerGroupList> <Success>true</Success>
 ```
 
-#### RegisterInstance
+#### 6.3.3 RegisterInstance
 
 Adds a database instance to your enterprise. The **administrator and database administrator (DBA)** of Data Management (DMS) Enterprise can call this operation to add database instances to DMS Enterprise. To check users who assume the administrator or DBA role, perform the following steps: Log on to the DMS Enterprise console and choose System Management > User Management.
 
@@ -2386,7 +2592,7 @@ nce in DMS Enterprise. request.set_InstanceAlias("Alias of the instance")
 instance. The user must first be added to DMS Enterprise by using the console or the re quired API operation. request.set_DbaUid(-1) request.set_SafeRule("Name of the security rule that is configured in DMS Enterprise") request.set_QueryTimeout(60) request.set_ExportTimeout(600) response = client.do_action_with_exception(request) print response
 ```
 
-#### ListInstances
+#### 6.3.4 ListInstances
 
 Queries the details about instances.
 
@@ -2472,7 +2678,7 @@ Sample success responses `XML` format
 
 `]`
 
-#### GetInstance
+#### 6.3.5 GetInstance
 
 Queries the details about an instance.
 
@@ -2595,7 +2801,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### UpdateInstance
+#### 6.3.6 UpdateInstance
 
 Updates the information about a database instance and checks the connectivity of the instance. Before you call this operation to update the information about an instance, we recommend that you call the GetInstance operation to obtain the complete information about the instance. Then, you can set the required parameters based on the information that you obtain.
 
@@ -2662,7 +2868,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### DeleteInstance
+#### 6.3.7 DeleteInstance
 
 Removes a database instance from Data Management (DMS) Enterprise. This operation only removes a database instance from the DMS Enterprise console. The database instance is not disabled.
 
@@ -2708,9 +2914,9 @@ Sample success responses `XML` format
 {"RequestId":"B4B07137-F6AE-4756-8474- 7F92BB6C4E04","ErrorCode":"UnknownError","ErrorMessage":"UnknownError","Success":"true"}
 ```
 
-### Operation logs
+### 6.4 Operation logs
 
-#### GetOpLog
+#### 6.4.1 GetOpLog
 
 Call the GetOpLog API to query a list of operation log details within a specified time range. Users with the **administrator** or **security administrator** role can call this API.
 
@@ -3180,9 +3386,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkdms_enterprise.request.
 request = GetOpLogRequest() request.set_Tid("Enter your enterprise tenant ID") request.set_StartTime("2018-11-20 00:00:00") request.set_EndTime("2018-11-23 00:00:00") request.set_PageNumber(1) request.set_PageSize(50) response = client.do_action_with_exception(request) print response
 ```
 
-### Approval processes
+### 6.5 Approval processes
 
-#### ListWorkFlowTemplates
+#### 6.5.1 ListWorkFlowTemplates
 
 Queries the details about approval templates.
 
@@ -3330,7 +3536,7 @@ s are reviewed by an administrator.",
 |   | "NodeType": "SYS", "NodeId": 3763, "TemplateId": 6243 } ] }, "TemplateName": "Admin", "Enabled": "Y", "IsSystem": 1, "TemplateId": 6243 }, { "Comment": "The system-defined approval workflow. Each request must be reviewed by the data owner, DBA, and admin in sequence.", "WorkflowNodes": { "WorkFlowNode": [ { "Comment": ">The system-defined node that is dynamically generated. The ow ner of the resources that you want to manage is required to review the related requests .", "NodeName": "Owner", "Position": 0, "NodeType": "SYS", "NodeId": 3762, "TemplateId": 6244 }, { "Comment": "The system-defined node that is dynamically generated. The DBA of the resources that you want to manage is required to review the related requests .", "NodeName": "DBA", "Position": 0, "NodeType": "SYS", "NodeId": 3761, "TemplateId": 6244 }, { "Comment": "The system-defined node that is dynamically generated. Request s are reviewed by an administrator.", "NodeName": "Admin", "Position": 0, "NodeType": "SYS", "NodeId": 3763, "TemplateId": 6244 } ] }, "TemplateName": "Owner-->DBA-->Admin", "Enabled": "Y", "IsSystem": 1, "TemplateId": 6244 } ] } } |   |
 |---|---|---|
 
-#### ListWorkFlowNodes
+#### 6.5.2 ListWorkFlowNodes
 
 Queries the details about approval nodes.
 
@@ -3417,11 +3623,11 @@ quests are reviewed by an administrator.",
   "Success": true
 ```
 
-### Metadata of databases and
+### 6.6 Metadata of databases and tables
 
 **tables**
 
-#### SearchDatabase
+#### 6.6.1 SearchDatabase
 
 Queries the details of databases.
 
@@ -3564,7 +3770,7 @@ database]",
   "Success": true
 ```
 
-#### SearchTable
+#### 6.6.2 SearchTable
 
 Queries the details about tables.
 
@@ -3704,7 +3910,7 @@ offline database]",
   "Success": true
 ```
 
-#### ListDatabases
+#### 6.6.3 ListDatabases
 
 Queries a list of databases in a database instance.
 
@@ -3831,7 +4037,7 @@ Sample success responses `XML` format
 
 `]`
 
-#### ListLogicDatabases
+#### 6.6.4 ListLogicDatabases
 
 Queries a list of logical databases.
 
@@ -3989,7 +4195,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListTables
+#### 6.6.5 ListTables
 
 Queries the details of tables in a database.
 
@@ -4167,7 +4373,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListLogicTables
+#### 6.6.6 ListLogicTables
 
 Queries the details of logical tables in a logical database.
 
@@ -4287,7 +4493,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListColumns
+#### 6.6.7 ListColumns
 
 Queries the columns in a table.
 
@@ -4460,7 +4666,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListIndexes
+#### 6.6.8 ListIndexes
 
 Queries a list of table indexes.
 
@@ -4538,7 +4744,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GetDatabase
+#### 6.6.9 GetDatabase
 
 Queries the details about a database.
 
@@ -4663,7 +4869,7 @@ rchName>
   "Success": true
 ```
 
-#### GetLogicDatabase
+#### 6.6.10 GetLogicDatabase
 
 Queries the details about a logical database.
 
@@ -4766,7 +4972,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GetMetaTableDetailInfo
+#### 6.6.11 GetMetaTableDetailInfo
 
 Queries the details of a table. These details include columns and indexes.
 
@@ -4935,7 +5141,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GetTableDBTopology
+#### 6.6.12 GetTableDBTopology
 
 Queries the topology of a table. This operation is available only for logical databases.
 
@@ -5106,7 +5312,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GetMetaTableColumn
+#### 6.6.13 GetMetaTableColumn
 
 Queries the details about columns in a table.
 
@@ -5199,7 +5405,7 @@ Sample success responses `XML` format
  "Success": "true"
 ```
 
-#### SyncDatabaseMeta
+#### 6.6.14 SyncDatabaseMeta
 
 Synchronizes the metadata of a database dictionary.
 
@@ -5243,7 +5449,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### SyncInstanceMeta
+#### 6.6.15 SyncInstanceMeta
 
 Synchronizes the metadata of all database dictionaries in an instance.
 
@@ -5287,7 +5493,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GetPhysicalDatabase
+#### 6.6.16 GetPhysicalDatabase
 
 Queries the information about a physical database.
 
@@ -5409,7 +5615,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-#### GetTableTopology
+#### 6.6.17 GetTableTopology
 
 Queries the topology of a table.
 
@@ -5526,11 +5732,11 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-### Ticket operations
+### 6.7 Ticket operations
 
-#### General
+#### 6.7.1 General
 
-##### ApproveOrder
+##### 6.7.1.1 ApproveOrder
 
 Reviews a ticket.
 
@@ -5577,7 +5783,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-##### CloseOrder
+##### 6.7.1.2 CloseOrder
 
 Closes a ticket.
 
@@ -5621,7 +5827,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-##### GetApprovalDetail
+##### 6.7.1.3 GetApprovalDetail
 
 Queries the approval details of a ticket.
 
@@ -5759,7 +5965,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-##### GetOrderBaseInfo
+##### 6.7.1.4 GetOrderBaseInfo
 
 Queries the basic information about a ticket.
 
@@ -5837,7 +6043,7 @@ Sample success responses `XML` format
 {"OrderBaseInfo":{"Comment":"test","CreateTime":"2019-10-10 00:00:00","LastModifyTime":"2019-10-10 00:00:00","OrderId":"12345","CommitterId":"1","PluginType":"DC_COMMON","StatusCode":"succ s","RelatedUserNickList": {"UserNicks":"a,b,c"},"StatusDesc":"success","WorkflowStatusDesc":"approved","WorkflowIns nceId":"1","Committer":"xxx","RelatedUserList": {"UserIds":"1,2,3"}},"RequestId":"7133DF67-5B25-460F-8285- C4CC93472C2F","ErrorCode":"UnknownError","ErrorMessage":"UnknownError","Success":"true"}
 ```
 
-##### ListOrders
+##### 6.7.1.5 ListOrders
 
 Queries a list of tickets.
 
@@ -6051,7 +6257,7 @@ supported.",
   "Success": true
 ```
 
-##### SubmitOrderApproval
+##### 6.7.1.6 SubmitOrderApproval
 
 Submits a ticket for approval.
 
@@ -6094,7 +6300,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-##### CreateOrder
+##### 6.7.1.7 CreateOrder
 
 Creates a ticket.
 
@@ -6234,9 +6440,9 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### Data changes
+#### 6.7.2 Data changes
 
-##### ExecuteDataCorrect
+##### 6.7.2.1 ExecuteDataCorrect
 
 Creates a ticket to modify data.
 
@@ -6284,7 +6490,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-##### GetDataCorrectBackupFiles
+##### 6.7.2.2 GetDataCorrectBackupFiles
 
 Queries the download URL of an attachment that includes the backup files of data changes.
 
@@ -6342,7 +6548,7 @@ Expires=1574382979&OSSAccessKeyId=wSa97B52GzF****&Signature=ykWSysajKcQjXjG0X4Ap
   "Success": true
 ```
 
-##### GetDataCorrectOrderDetail
+##### 6.7.2.3 GetDataCorrectOrderDetail
 
 Queries the details about a ticket that is used to modify data.
 
@@ -6495,7 +6701,7 @@ actual number of affected rows is subject to the SQL statement that is executed.
   "Success": true
 ```
 
-##### CreateFreeLockCorrectOrder
+##### 6.7.2.4 CreateFreeLockCorrectOrder
 
 Call the CreateFreeLockCorrectOrder API to create a lock-free change ticket in Data Management (DMS). Only instances in the security collaboration control mode can call this API.
 
@@ -6569,7 +6775,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "CreateOrderResult" : [ "134****" ]
 ```
 
-##### CreateDataCorrectOrder
+##### 6.7.2.5 CreateDataCorrectOrder
 
 Call the CreateDataCorrectOrder API to create a regular data change ticket in Data Management (DMS).
 
@@ -6645,7 +6851,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "CreateOrderResult" : [ "142****" ]
 ```
 
-##### GetDataCronClearTaskDetailList
+##### 6.7.2.6 GetDataCronClearTaskDetailList
 
 Queries the information about a historical data clearing task.
 
@@ -6720,7 +6926,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "TotalCount" : 1
 ```
 
-##### GetDataCorrectTaskDetail
+##### 6.7.2.7 GetDataCorrectTaskDetail
 
 Queries the information about a data change, lock-free data change, or data import task.
 
@@ -6785,7 +6991,7 @@ HTTP/1.1 200 OK Content-Type:application/json
     "CreateTime" : "2021-03-05 15:08:55"
 ```
 
-##### GetDataCorrectSQLFile
+##### 6.7.2.8 GetDataCorrectSQLFile
 
 Obtains the download URL for the SQL script attachment of a data change ticket. This operation is applicable to both data changes and data imports.
 
@@ -6842,7 +7048,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### CreateDataCronClearOrder
+##### 6.7.2.9 CreateDataCronClearOrder
 
 Creates a ticket for clearing historical data. This operation is available only for MySQL databases.
 
@@ -6917,7 +7123,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "CreateOrderResult" : [ 1341532 ]
 ```
 
-##### CreateDataImportOrder
+##### 6.7.2.10 CreateDataImportOrder
 
 Call the CreateDataImportOrder API to create a data import ticket in Data Management (DMS). For more information about this feature, see **Data Import**.
 
@@ -7000,9 +7206,9 @@ HTTP/1.1 200 OK Content-Type:application/json
   "CreateOrderResult" : [ "1****" ]
 ```
 
-#### Schema design
+#### 6.7.3 Schema design
 
-##### CreatePublishGroupTask
+##### 6.7.3.1 CreatePublishGroupTask
 
 Creates a ticket to modify the schema design of a database.
 
@@ -7053,7 +7259,7 @@ Sample success responses `XML` format
   "TaskId": 13424
 ```
 
-##### ListDDLPublishRecords
+##### 6.7.3.2 ListDDLPublishRecords
 
 Call the ListDDLPublishRecords API to obtain the release details of a schema design ticket.
 
@@ -7228,9 +7434,9 @@ _INCREMENT COMMENT 'Primary Key',\n\t`name` varchar(256) NOT NULL COMMENT 'Name'
   } ]
 ```
 
-#### Data export
+#### 6.7.4 Data export
 
-##### ExecuteDataExport
+##### 6.7.4.1 ExecuteDataExport
 
 Runs a ticket that is used to export data.
 
@@ -7276,7 +7482,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-##### GetDataExportDownloadURL
+##### 6.7.4.2 GetDataExportDownloadURL
 
 Queries the download URL of the file that includes export results for a data export ticket.
 
@@ -7341,7 +7547,7 @@ Expires=1574384313&OSSAccessKeyId=wSa97B52GzF****&Signature=HQQWBRSKiVV6cupugh1/
   "Success": true
 ```
 
-##### GetDataExportOrderDetail
+##### 6.7.4.3 GetDataExportOrderDetail
 
 Queries the details about a ticket that is used to export data.
 
@@ -7442,9 +7648,9 @@ odular database</Database>
   "Success": true
 ```
 
-#### Database and table synchronization
+#### 6.7.5 Database and table synchronization
 
-##### GetStructSyncOrderDetail
+##### 6.7.5.1 GetStructSyncOrderDetail
 
 Queries the information about a schema synchronization ticket.
 
@@ -7580,7 +7786,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### GetStructSyncExecSqlDetail
+##### 6.7.5.2 GetStructSyncExecSqlDetail
 
 Queries the SQL script for schema synchronization.
 
@@ -7675,7 +7881,7 @@ uxxxxxxxx.mysql.rds.aliyuncs.com:3306 ******/\n\n/* origin table[data_modify] ex
   "Success" : true
 ```
 
-##### ExecuteStructSync
+##### 6.7.5.3 ExecuteStructSync
 
 Runs a schema synchronization task. If the security rules of a database instance specify that a schema synchronization ticket must be approved before schema synchronization is performed, you must call the SubmitStructSyncOrderApproval operation to submit the ticket for approval.
 
@@ -7732,7 +7938,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### GetStructSyncJobAnalyzeResult
+##### 6.7.5.4 GetStructSyncJobAnalyzeResult
 
 Queries the analysis results of a schema synchronization task.
 
@@ -7867,7 +8073,7 @@ st */\n/* generate [data_modify] create table sql */\ncreate table `data_modify`
   "Success" : true
 ```
 
-##### SubmitStructSyncOrderApproval
+##### 6.7.5.5 SubmitStructSyncOrderApproval
 
 Submits a schema synchronization ticket for approval.
 
@@ -7923,7 +8129,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### CreateStructSyncOrder
+##### 6.7.5.6 CreateStructSyncOrder
 
 Creates a schema synchronization ticket.
 
@@ -7998,7 +8204,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### GetStructSyncJobDetail
+##### 6.7.5.7 GetStructSyncJobDetail
 
 Queries the information about a schema synchronization task.
 
@@ -8084,9 +8290,9 @@ emas of tables is generated.",
   "Success" : true
 ```
 
-#### SQL review
+#### 6.7.6 SQL review
 
-##### GetSQLReviewCheckResultStatus
+##### 6.7.6.1 GetSQLReviewCheckResultStatus
 
 Queries the results of an SQL review.
 
@@ -8194,7 +8400,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### CreateSQLReviewOrder
+##### 6.7.6.2 CreateSQLReviewOrder
 
 Creates an SQL review ticket.
 
@@ -8260,7 +8466,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "CreateOrderResult" : [ 1423532 ]
 ```
 
-##### ListSQLReviewOriginSQL
+##### 6.7.6.3 ListSQLReviewOriginSQL
 
 Queries the information about an SQL review ticket.
 
@@ -8367,9 +8573,9 @@ HTTP/1.1 200 OK Content-Type:application/json
   } ]
 ```
 
-#### File upload
+#### 6.7.7 File upload
 
-##### CreateUploadOSSFileJob
+##### 6.7.7.1 CreateUploadOSSFileJob
 
 Creates a task to upload a file from Object Storage Service (OSS).
 
@@ -8432,7 +8638,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### GetUserUploadFileJob
+##### 6.7.7.2 GetUserUploadFileJob
 
 Queries the information about a file upload task.
 
@@ -8531,7 +8737,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### CreateUploadFileJob
+##### 6.7.7.3 CreateUploadFileJob
 
 Creates a task to upload a file.
 
@@ -8590,9 +8796,9 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-#### Permission application
+#### 6.7.8 Permission application
 
-##### GetOwnerApplyOrderDetail
+##### 6.7.8.1 GetOwnerApplyOrderDetail
 
 Queries the information about a ticket that is used to apply for the owner permissions of a database, a table, or a database instance.
 
@@ -8696,7 +8902,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-##### GetPermApplyOrderDetail
+##### 6.7.8.2 GetPermApplyOrderDetail
 
 Queries the information about a ticket that is used to apply for permissions. You can call this operation to query the information about tickets that are used to apply for permissions on **databases**, **tables**, and **sensitive columns**.
 
@@ -8827,9 +9033,9 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-### SQL task management
+### 6.8 SQL task management
 
-#### ListDBTaskSQLJob
+#### 6.8.1 ListDBTaskSQLJob
 
 Queries a list of SQL tasks.
 
@@ -8928,7 +9134,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "TotalCount" : 1
 ```
 
-#### ListDBTaskSQLJobDetail
+#### 6.8.2 ListDBTaskSQLJobDetail
 
 Queries the information about an SQL task.
 
@@ -9034,9 +9240,9 @@ HTTP/1.1 200 OK Content-Type:application/json
   "TotalCount" : 1
 ```
 
-### Permission management
+### 6.9 Permission management
 
-#### RevokeUserPermission
+#### 6.9.1 RevokeUserPermission
 
 Revokes the permissions on a specified resource from a user.
 
@@ -9088,7 +9294,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListDatabaseUserPermssions
+#### 6.9.2 ListDatabaseUserPermssions
 
 Queries the permissions of users on a database.
 
@@ -9263,7 +9469,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### SetOwners
+#### 6.9.3 SetOwners
 
 Sets the owners of a database or a table.
 
@@ -9310,7 +9516,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListUserPermissions
+#### 6.9.4 ListUserPermissions
 
 Queries the permissions of a user on databases and tables.
 
@@ -9472,7 +9678,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### GrantUserPermission
+#### 6.9.5 GrantUserPermission
 
 Grants permissions on a database or a table to a user.
 
@@ -9524,9 +9730,9 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-### Security management
+### 6.10 Security management
 
-#### ListSensitiveColumns
+#### 6.10.1 ListSensitiveColumns
 
 Queries sensitive columns.
 
@@ -9682,7 +9888,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ListSensitiveColumnsDetail
+#### 6.10.2 ListSensitiveColumnsDetail
 
 Queries the details of sensitive fields.
 
@@ -9779,7 +9985,7 @@ Sample success responses `XML` format
   "Success": true
 ```
 
-#### ChangeColumnSecLevel
+#### 6.10.3 ChangeColumnSecLevel
 
 Modifies the sensitivity level of a column.
 
@@ -9840,7 +10046,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : false
 ```
 
-#### AddDesensitizationRule
+#### 6.10.4 AddDesensitizationRule
 
 Creates a data masking rule.
 
@@ -9901,7 +10107,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Success" : true
 ```
 
-#### ListDesensitizationRule
+#### 6.10.5 ListDesensitizationRule
 
 Queries a list of data masking rules.
 
@@ -10003,7 +10209,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   } ]
 ```
 
-#### ModifyDesensitizationStrategy
+#### 6.10.6 ModifyDesensitizationStrategy
 
 Modifies the data masking rule that is bound to a field.
 
@@ -10069,9 +10275,9 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Result" : true
 ```
 
-### Data query
+### 6.11 Data query
 
-#### ExecuteScript
+#### 6.11.1 ExecuteScript
 
 Executes SQL statements. This operation is available only for instances that are managed in the security collaboration mode.
 
@@ -10130,9 +10336,9 @@ Sample success responses `XML` format
 {"RequestId":"FE8EE2F1-4880-46BC-A704-5CF63EAF9A04","Results": [{"Message":"UnknownError","RowCount":"1","Success":"true"},{"ColumnNames":"[\"col1\", \"col2\"]","Rows":"[{\"col1\": \"value1\", \"col2\":\"value2\"}]"}],"ErrorCode":"UnknownError","ErrorMessage":"UnknownError","Succes :"true"}
 ```
 
-### Task orchestration
+### 6.12 Task orchestration
 
-#### UpdateTaskFlowConstants
+#### 6.12.1 UpdateTaskFlowConstants
 
 Updates the constants for a task flow.
 
@@ -10170,7 +10376,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### DeleteTaskFlow
+#### 6.12.2 DeleteTaskFlow
 
 Deletes a task flow.
 
@@ -10202,7 +10408,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### OfflineTaskFlow
+#### 6.12.3 OfflineTaskFlow
 
 Unpublishes a published task flow in Data Management (DMS).
 
@@ -10234,7 +10440,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ListTaskFlow
+#### 6.12.4 ListTaskFlow
 
 Queries a list of task flows.
 
@@ -10294,7 +10500,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### GetTaskInstanceRelation
+#### 6.12.5 GetTaskInstanceRelation
 
 Obtains the node information of a task flow instance.
 
@@ -10360,7 +10566,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### ListTaskFlowInstance
+#### 6.12.6 ListTaskFlowInstance
 
 Queries the instances of a task flow.
 
@@ -10437,7 +10643,7 @@ Sample success responses `JSON` format `{`
   "TotalCount": 1
 ```
 
-#### ListDAGVersions
+#### 6.12.7 ListDAGVersions
 
 Queries the published versions of a task flow.
 
@@ -10498,7 +10704,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### ReDeployLhDagVersion
+#### 6.12.8 ReDeployLhDagVersion
 
 Redeploys the published versions of a task flow.
 
@@ -10533,7 +10739,7 @@ Sample success responses `JSON` format `{`
   "DeployId": 15990
 ```
 
-#### UpdateScenario
+#### 6.12.9 UpdateScenario
 
 Updates the name and description of a business scenario for a task flow.
 
@@ -10570,7 +10776,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ResumeTaskFlowInstance
+#### 6.12.10 ResumeTaskFlowInstance
 
 Resumes a paused task flow instance.
 
@@ -10606,7 +10812,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskContent
+#### 6.12.11 UpdateTaskContent
 
 Updates the configurations of a task node in a task flow.
 
@@ -10645,7 +10851,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ListTaskFlowsByPage
+#### 6.12.12 ListTaskFlowsByPage
 
 Queries a list of task flows by page.
 
@@ -10717,7 +10923,7 @@ Sample success responses `JSON` format `{`
   "TotalCount": 24
 ```
 
-#### ListScenarios
+#### 6.12.13 ListScenarios
 
 Queries a list of business scenarios.
 
@@ -10768,7 +10974,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### UpdateTaskConfig
+#### 6.12.14 UpdateTaskConfig
 
 Updates the advanced configurations of a task node.
 
@@ -10812,7 +11018,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ListTaskFlowConstants
+#### 6.12.15 ListTaskFlowConstants
 
 Queries the constants for a task flow.
 
@@ -10859,7 +11065,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### BackFill
+#### 6.12.16 BackFill
 
 Call the BackFill API to backfill data for task orchestration.
 
@@ -10917,7 +11123,7 @@ Sample success responses `JSON` format `{`
   "NodeId": 0
 ```
 
-#### UpdateTaskTimeVariables
+#### 6.12.17 UpdateTaskTimeVariables
 
 Updates time variables for a task node.
 
@@ -10952,7 +11158,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ListTaskFlowTimeVariables
+#### 6.12.18 ListTaskFlowTimeVariables
 
 Queries the time variables for a task flow.
 
@@ -11001,7 +11207,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### UpdateTaskFlowTimeVariables
+#### 6.12.19 UpdateTaskFlowTimeVariables
 
 Updates the time variables for a task flow.
 
@@ -11071,7 +11277,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskFlowCooperators
+#### 6.12.20 UpdateTaskFlowCooperators
 
 Updates the IDs of the users that are involved in a task flow.
 
@@ -11107,7 +11313,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### CreateScenario
+#### 6.12.21 CreateScenario
 
 Creates a business scenario. You can group task flows by business scenario.
 
@@ -11142,7 +11348,7 @@ Sample success responses `JSON` format `{`
   "ScenarioId": 0
 ```
 
-#### DeleteScenario
+#### 6.12.22 DeleteScenario
 
 Deletes a business scenario.
 
@@ -11180,7 +11386,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateSLARules
+#### 6.12.23 UpdateSLARules
 
 Updates the timeout reminder for the service level agreement (SLA) rules of a task flow.
 
@@ -11224,7 +11430,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### GetRuleNumLimitOfSLA
+#### 6.12.24 GetRuleNumLimitOfSLA
 
 Queries the maximum number of custom service level agreement (SLA) rules for task orchestration for a task flow.
 
@@ -11260,7 +11466,7 @@ Sample success responses `JSON` format `{`
   "RuleNumLimit": 12
 ```
 
-#### GetIntervalLimitOfSLA
+#### 6.12.25 GetIntervalLimitOfSLA
 
 Queries the minimum scheduling cycle of a task flow specified in the service level agreement (SLA) rules of the task flow.
 
@@ -11298,7 +11504,7 @@ Sample success responses `JSON` format `{`
   "IntervalLimit": 59
 ```
 
-#### ListDefaultSLARules
+#### 6.12.26 ListDefaultSLARules
 
 Queries the default service level agreement (SLA) rules of a task flow.
 
@@ -11353,7 +11559,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### ListTaskFlowCooperators
+#### 6.12.27 ListTaskFlowCooperators
 
 Queries a list of users that are involved in a task flow.
 
@@ -11408,7 +11614,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### ListSLARules
+#### 6.12.28 ListSLARules
 
 Queries the custom service level agreement (SLA) rules of a task flow.
 
@@ -11463,7 +11669,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### GetTask
+#### 6.12.29 GetTask
 
 Queries the configurations of a task node based on the task node ID, including the time variables of the task node.
 
@@ -11556,7 +11762,7 @@ Sample success responses `JSON` format `{`
 {\\\"x\\\":0,\\\"y\\\":0,\\\"layoutType\\\":\\\"Horizontal\\\"}\", \"id\": 51***}"
 ```
 
-#### MoveTaskFlowToScenario
+#### 6.12.30 MoveTaskFlowToScenario
 
 Moves a task flow to a business scenario.
 
@@ -11591,7 +11797,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### GetTaskFlowNotification
+#### 6.12.31 GetTaskFlowNotification
 
 Queries the notification settings for a task flow.
 
@@ -11633,7 +11839,7 @@ Sample success responses `JSON` format `{`
     "DagNotificationSla": true
 ```
 
-#### UpdateTaskName
+#### 6.12.32 UpdateTaskName
 
 Updates the name of a task node.
 
@@ -11668,7 +11874,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskOutput
+#### 6.12.33 UpdateTaskOutput
 
 Updates the output variables for a task node.
 
@@ -11770,7 +11976,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### DeleteTaskFlowEdgesByCondition
+#### 6.12.34 DeleteTaskFlowEdgesByCondition
 
 Deletes task flow edges based on multiple conditions.
 
@@ -11811,7 +12017,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ListTaskFlowEdgesByCondition
+#### 6.12.35 ListTaskFlowEdgesByCondition
 
 Queries the edges in the directed acyclic graph (DAG) of a task flow based on multiple conditions.
 
@@ -11871,7 +12077,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### AddTaskFlowEdges
+#### 6.12.36 AddTaskFlowEdges
 
 Creates directed edges for the existing task nodes of a task flow.
 
@@ -11924,7 +12130,7 @@ Sample success responses `JSON` format `{`
 
 `]`
 
-#### UpdateTaskFlowNameAndDesc
+#### 6.12.37 UpdateTaskFlowNameAndDesc
 
 Updates the name and description of a task flow.
 
@@ -11960,7 +12166,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### GetTaskFlowGraph
+#### 6.12.38 GetTaskFlowGraph
 
 Queries the directed acyclic graph (DAG) of a task flow.
 
@@ -12061,7 +12267,7 @@ Sample success responses `JSON` format `{`
     "CanEdit": true
 ```
 
-#### UpdateTaskFlowEdges
+#### 6.12.39 UpdateTaskFlowEdges
 
 Updates the start and end nodes of multiple edges at a time for a task flow.
 
@@ -12107,7 +12313,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskFlowOwner
+#### 6.12.40 UpdateTaskFlowOwner
 
 Changes the owner of a task flow.
 
@@ -12146,7 +12352,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskFlowSchedule
+#### 6.12.41 UpdateTaskFlowSchedule
 
 Updatestheschedulingpropertiesforataskflow. Updates the scheduling properties for a task flow.
 
@@ -12292,7 +12498,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskFlowRelations
+#### 6.12.42 UpdateTaskFlowRelations
 
 Fully updates the edges of a task flow.
 
@@ -12335,7 +12541,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### UpdateTaskFlowNotification
+#### 6.12.43 UpdateTaskFlowNotification
 
 Updates the notification settings for a task flow.
 
@@ -12372,7 +12578,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ListTasksInTaskFlow
+#### 6.12.44 ListTasksInTaskFlow
 
 Queries the task nodes of a task flow.
 
@@ -12441,7 +12647,7 @@ ble extraction settings. { \"row\":0, // The rows. A value o f -1 specifies all 
 
 `]`
 
-#### CreateTaskFlow
+#### 6.12.45 CreateTaskFlow
 
 Creates a task flow.
 
@@ -12481,7 +12687,7 @@ Sample success responses `JSON` format `{`
   "DagId": 0
 ```
 
-#### SuspendTaskFlowInstance
+#### 6.12.46 SuspendTaskFlowInstance
 
 Suspends a task flow instance that is running.
 
@@ -12516,7 +12722,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### ReRunTaskFlowInstance
+#### 6.12.47 ReRunTaskFlowInstance
 
 Reruns a task flow instance.
 
@@ -12552,7 +12758,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### MakeTaskFlowInstanceSuccess
+#### 6.12.48 MakeTaskFlowInstanceSuccess
 
 Sets the state of a task flow to Successful.
 
@@ -12587,7 +12793,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### DeleteTask
+#### 6.12.49 DeleteTask
 
 Deletes a task node from a task flow.
 
@@ -12621,7 +12827,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### PublishAndDeployTaskFlow
+#### 6.12.50 PublishAndDeployTaskFlow
 
 Publishes and deploys a task flow.
 
@@ -12656,7 +12862,7 @@ Sample success responses `JSON` format `{`
   "DeployId": 0
 ```
 
-#### StopTaskFlowInstance
+#### 6.12.51 StopTaskFlowInstance
 
 Stops a task flow instance that is running.
 
@@ -12689,7 +12895,7 @@ Sample success responses `JSON` format `{`
   "Success": true
 ```
 
-#### CreateTask
+#### 6.12.52 CreateTask
 
 Call the CreateTask API to create a task in a task flow.
 
@@ -12868,9 +13074,9 @@ Sample success responses `JSON` format `{`
   "NodeId": 0
 ```
 
-### Logical databases and tables
+### 6.13 Logical databases and tables
 
-#### GetDBTopology
+#### 6.13.1 GetDBTopology
 
 Call the GetDBTopology API to retrieve the topology information of a logical database and its corresponding physical database shards.
 
@@ -12982,9 +13188,9 @@ HTTP/1.1 200 OK Content-Type:application/json
     } ]
 ```
 
-## Appendixes
+## 7 Appendixes
 
-### NodeType values
+### 7.1 NodeType values
 
 | Task node type | NodeType value |
 |---|---|
@@ -12998,9 +13204,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | SSH remote command | 45 |
 | Impala | 46 |
 
-### STS overview
+### 7.2 STS overview
 
-#### What is STS?
+#### 7.2.1 What is STS?
 
 STS allows you to manage temporary credentials to your Apsara Stack resources. RAM provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -13012,7 +13218,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### Obtain an STS token
+#### 7.2.2 Obtain an STS token
 
 You can call the AssumeRole operation to obtain a Security Token Service (STS) token. A Resource Access Management (RAM) user can use the STS token to assume a RAM role whose trusted entity is an Alibaba Cloud account.
 

@@ -3,20 +3,35 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center Us
 product_version: "V3.16.2"
 doc_version: "20240305"
 pdf_pages: 37
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide 20240305.pdf"
+source_pdf: "4048e1e71bea4567_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide 20240305.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Migration%20Center%20User%20Guide%2020240305.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center User Guide
 
-## What is SMC?
+## Table of Contents
+
+- 1 What is SMC?
+- 2 Getting started
+  - 2.1 Migration process
+  - 2.2 Log on to the SMC console
+  - 2.3 Before you begin
+    - 2.3.1 Prepare a source server
+    - 2.3.2 Preparations in the Apsara Uni-manager Operations Console
+  - 2.4 Step 1: Import the information about a migration source
+  - 2.5 Step 2: Create and start a migration job
+- 3 Use the Windows GUI version of the SMC client
+- 4 Migrate incremental data from a source server
+- 5 Migrate a server to an ECS instance
+
+## 1 What is SMC?
 
 Server Migration Center (SMC) is a server migration platform developed by Alibaba Cloud. SMC allows you to migrate one or more source servers to Apsara Stack. The source servers are called migration sources in SMC. The source servers can be servers of a variety of types, such as servers in data centers, VMs, and hosts on other cloud platforms. The core component of SMC is the SMC client. If you want to migrate a source server to Apsara Stack, configure and run the SMC client on the source server. The following figure shows how the SMC client works.
 
-## Getting started
+## 2 Getting started
 
-### Migration process
+### 2.1 Migration process
 
 Server Migration Center (SMC) allows you to migrate one or more servers at a time to Apsara Stack. Migration sources or source servers can be servers in self-managed data centers, VMs, third-party cloud servers, or servers of other types. This topic describes the migration process of SMC. When you use SMC to migrate a source server to Apsara Stack, you must complete relevant settings on the source server and in the SMC console. You must run the SMC client on the source server to import the information about the source server to the SMC console, and then create and run a migration job in the SMC console. Perform the following steps:
 1. Prepare for the migration.
@@ -25,7 +40,7 @@ i. Download and decompress an SMC client package. ii. Run the SMC client to impo
 3. Create and start a migration job.
 i. Create a migration job. ii. Start the migration job. iii. View the migration status and perform other operations. Before you use SMC, take note of the following items: Do not perform operations on the intermediate instance. During each migration, SMC creates a temporary intermediate instance named No_Delete_SMC_Transition_Instance in your organization. During the migration, do not stop, restart, or release the intermediate instance. Otherwise, the migration fails. After the migration is complete, SMC automatically releases the intermediate instance. The following information describes the data directories that are migrated: Windows servers: Only the data on the C drive is migrated as a partition of the system disk. Directories that are mounted to the C drive are also included. If you want to migrate data from other partitions such as the D drive, you must select and configure the data disk when you create a migration job. Linux servers: The data in all subdirectories in the root directory, including shared subdirectories in the root directory, is migrated as a partition of the system disk. If you want to migrate the data in other directories such as /disk1, you must select and configure the data disk when you create a migration job.
 
-### Log on to the SMC console
+### 2.2 Log on to the SMC console
 
 This topic describes how to log on to the Server Migration Center SMC console.
 
@@ -42,13 +57,13 @@ Obtain the username and password for logging on to the console from the administ
 3. Click **Log on**.
 4. In the left-side navigation pane, click **Tool Center > Server Migration Center**.
 
-### Before you begin
+### 2.3 Before you begin
 
-#### Prepare a source server
+#### 2.3.1 Prepare a source server
 
 This topic describes the preparations that you must make on a source server before you migrate the source server to Apsara Stack. Before the migration, you must make the following preparations on the source server: Make sure that the system time of the source server is the same as the actual time. Otherwise, the IllegalTimestamp error is reported during the migration. Make sure that the source server can access the endpoint of the Server Migration Center (SMC) service. To obtain the endpoint of SMC, perform the following steps: i. Log on to the SMC console. ii. In the upper-right corner, click **SMC Endpoint Address** to copy the endpoint of SMC.
 
-#### Preparations in the Apsara Uni-
+#### 2.3.2 Preparations in the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -233,7 +248,7 @@ If no AccessKey pair is created in your organization, click **Create AccessKey**
 
 Before you use SMC to migrate a source server, you must specify a VPC that can be accessed by the source server and a vSwitch. For details about how to create a Virtual Private Cloud and a switch, see **the Virtual Private Cloud User Guide**.
 
-### Step 1: Import the information
+### 2.4 Step 1: Import the information about a migration source
 
 **about a migration source**
 
@@ -241,7 +256,7 @@ Migration sources can be servers of a variety of types, such as servers in data 
 
 **Prerequisites**
 
-The preparations for the migration of the source server are made. For more information, see the following topics: Preparations on the source server Preparations in the Apsara Uni-manager Operations Console
+The preparations for the migration of the source server are made. For more information, see the following topics: Preparations on the source server
 
 **Background information**
 
@@ -321,7 +336,7 @@ If the Import Source Server [s-bxxxxxxxxxxxx] Successfully! message is returned,
 
 Do not close the client. Otherwise, the migration fails. If you import the information about the migration source for the first time, a record is automatically generated in the SMC console and the source migration is in the Online state. The default name of the source migration is in the <host name of the migration source + IP address of the migration source> format. The following figure shows an example. When you import the information about a migration source, SMC collects information about the source server, including the CPU, memory, CPU utilization, memory usage, and internal IP address. Click the ID of the migration source to view the information. The following figure shows the information. After the migration job is complete, you can create an ECS instance by using the information about the source server. After the information about the migration source is imported, create and start a migration job in the SMC console to migrate the source server. For more information, see Step 2: Create and start a migration task. If the message Error or Goto Aliyun Not Finished! appears, the information about the migration source failed to be imported. The following figure shows the error message. We recommend that you troubleshoot the issue, and run the client again.
 
-### Step 2: Create and start a
+### 2.5 Step 2: Create and start a migration job
 
 **migration job**
 
@@ -412,7 +427,7 @@ On the **Migration Jobs** page, wait until the migration job is complete. You ca
 **Compute Service**.
 c. In the left-side navigation pane, choose **Instances & Images > Images**. d. On the **Custom Image** tab, find and view the destination ECS image. If the state of the migration job changes to **InError**, the migration fails. In this case, you can perform the following steps: i. Find the migration job and click **View Logs** in the **Actions** column to view logs and fix errors. ii. After errors are fixed, click **Retry Migration Job** in the **Actions** column. The migration job resumes from the point at which it was stopped. version of the SMC client
 
-## Use the Windows GUI
+## 3 Use the Windows GUI version of the SMC client
 
 **version of the SMC client**
 
@@ -438,7 +453,7 @@ version of the SMC client
 
 data from a source server
 
-## Migrate incremental data
+## 4 Migrate incremental data from a source server
 
 **from a source server**
 
@@ -510,7 +525,7 @@ After you obtain the image generated for the last migration, you can perform the
 **Pending** state.
 i. On the **Migration Jobs** page, find the migration job and click the icon in the **Actions** column. ii. Select **Pause**. iii. In the **Pause Migration Job** dialog box, click **OK**. Delete an incremental migration job. i. On the **Migration Jobs** page, find the migration job and click the icon in the **Actions** column. ii. Select **Delete**. iii. In the **Delete Migration Job** dialog box, click **OK**. n ECS instance
 
-## Migrate a server to an ECS
+## 5 Migrate a server to an ECS instance
 
 **instance**
 

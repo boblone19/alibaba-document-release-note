@@ -3,16 +3,151 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 239
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828.pdf"
+source_pdf: "ff0cabb4146c216a_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Obtain the information and
+- 1 Preparations
+  - 1.1 Obtain the information and the endpoint of an API operation
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain common header parameters
+  - 1.4 Obtain access credentials assigned by STS
+- 2 Use POP to make API calls
+  - 2.1 Preparations
+  - 2.2 SDK for Java
+  - 2.3 SDK for Go
+  - 2.4 SDK for Python
+- 3 API Reference
+  - 3.1 Overview
+    - 3.1.1 Calling methods
+    - 3.1.2 Supported formats
+    - 3.1.3 Instructions
+    - 3.1.4 Time format
+  - 3.2 List of operations by function
+  - 3.3 Prerequisites
+    - 3.3.1 Obtain an AccessKey pair
+    - 3.3.2 Obtain an endpoint
+  - 3.4 SDK example
+    - 3.4.1 Create a client
+    - 3.4.2 Cloud API reference
+      - 3.4.2.1 TransferLeadership
+      - 3.4.2.2 DescribeDnsGtmAgents
+      - 3.4.2.3 DeletePrivateDefaultForwardZone
+      - 3.4.2.4 UpdatePrivateZoneRecord
+      - 3.4.2.5 AddGlobalLine
+      - 3.4.2.6 UpdateGlobalZoneRecord
+      - 3.4.2.7 DescribePrivateForwardZones
+      - 3.4.2.8 DeleteRecursorAcl
+      - 3.4.2.9 DeleteZoneVpc
+      - 3.4.2.10 DescribeNodes
+      - 3.4.2.11 AddPrivateDefaultForwardZone
+      - 3.4.2.12 FlushCache
+      - 3.4.2.13 DescribeDnsGtmAddressPools
+      - 3.4.2.14 DeleteDnsGtmAddressPool
+      - 3.4.2.15 UpdatePrivateDefaultForwardZoneRemark
+      - 3.4.2.16 AddGlobalZoneRecord
+      - 3.4.2.17 DeletePrivateForwardZone
+      - 3.4.2.18 DescribeGlobalForwardZones
+      - 3.4.2.19 DescribeResolveConf
+      - 3.4.2.20 DescribePrivateLines
+      - 3.4.2.21 UpdatePrivateLine
+      - 3.4.2.22 DescribeConflictPrivateZones
+      - 3.4.2.23 DeleteDnsGtmMonitor
+      - 3.4.2.24 DeletePrivateZone
+      - 3.4.2.25 DescribeDnsGtmMonitor
+      - 3.4.2.26 AddPrivateLine
+      - 3.4.2.27 DescribeDnsGtmAccessStrategies
+      - 3.4.2.28 UpdatePrivateForwardZone
+      - 3.4.2.29 AddGlobalForwardZone
+      - 3.4.2.30 DescribeConflictGlobalZones
+      - 3.4.2.31 UpdatePrivateZoneRecordRemark
+      - 3.4.2.32 UpdateDnsGtmInstance
+      - 3.4.2.33 AddDnsGtmAccessStrategy
+      - 3.4.2.34 UpdateDnsGtmInstanceRemark
+      - 3.4.2.35 SetGlobalDefaultForward
+      - 3.4.2.36 DescribePrivateDefaultForwardZones
+      - 3.4.2.37 DescribeGlobalZones
+      - 3.4.2.38 DescribeGlobalZoneRecords
+      - 3.4.2.39 UpdateGlobalLine
+      - 3.4.2.40 EnableRecursor
+      - 3.4.2.41 DescribeGlobalLines
+      - 3.4.2.42 DescribeMetrics
+      - 3.4.2.43 DescribeDNSServerAddrs
+      - 3.4.2.44 UpdateGlobalZoneRemark
+      - 3.4.2.45 DescribeGlobalDefaultForward
+      - 3.4.2.46 AddGlobalZone
+      - 3.4.2.47 UpdatePrivateZoneRemark
+      - 3.4.2.48 AddDnsGtmMonitor
+      - 3.4.2.49 UpdateDnsGtmAddressPool
+      - 3.4.2.50 UpdatePrivateLinePriority
+      - 3.4.2.51 DeleteDnsGtmInstance
+      - 3.4.2.52 UpdateGlobalLinePriority
+      - 3.4.2.53 AddDnsGtmInstance
+      - 3.4.2.54 DescribeCache
+      - 3.4.2.55 DescribeDnsGtmInstances
+      - 3.4.2.56 EnableEmergencyGroup
+      - 3.4.2.57 DisableEmergencyGroup
+      - 3.4.2.58 AddGlobalZone
+      - 3.4.2.59 UpdateRecursorAclRemark
+      - 3.4.2.60 UpdateGlobalForwardZone
+      - 3.4.2.61 AddPrivateZone
+      - 3.4.2.62 AddPrivateForwardZone
+      - 3.4.2.63 UpdateDnsGtmAccessStrategy
+      - 3.4.2.64 UpdateGlobalForwardZoneRemark
+      - 3.4.2.65 DeletePrivateLine
+      - 3.4.2.66 BindZoneVpc
+      - 3.4.2.67 DeleteDnsGtmAccessStrategy
+      - 3.4.2.68 DeleteGlobalForwardZone
+      - 3.4.2.69 UpdateGlobalZone
+      - 3.4.2.70 UpdateRecursorAcl
+      - 3.4.2.71 UpdateGlobalZoneRecordRemark
+      - 3.4.2.72 DescribeRecursorAcls
+      - 3.4.2.73 DescribePrivateZones
+      - 3.4.2.74 AddRecursorAcl
+      - 3.4.2.75 UpdateDnsGtmMonitor
+      - 3.4.2.76 DescribePrivateZoneRecords
+      - 3.4.2.77 DescribeGlobalZones
+      - 3.4.2.78 DescribeDnsGtmLogs
+      - 3.4.2.79 DeleteGlobalZone
+      - 3.4.2.80 UpdateNode
+      - 3.4.2.81 AddPrivateZoneRecord
+      - 3.4.2.82 AddDnsGtmAddressPool
+      - 3.4.2.83 UpdatePrivateForwardZoneRemark
+      - 3.4.2.84 BindForwardZoneVpc
+      - 3.4.2.85 DeleteForwardZoneVpc
+      - 3.4.2.86 UpdatePrivateDefaultForwardZone
+      - 3.4.2.87 DeleteGlobalLine
+      - 3.4.2.88 DeleteGlobalZoneRecord
+      - 3.4.2.89 DeletePrivateZoneRecord
+    - 3.4.3 Cross-cloud API reference
+      - 3.4.3.1 Query node management list: DescribeNodes
+      - 3.4.3.2 Modify the priority of a UniversalLine cross-cloud DNS line: UpdateUniversalLinePriority
+      - 3.4.3.3 Enable emergency group: EnableEmergencyGroup
+      - 3.4.3.4 Add UniversalZone global shared domain name: AddUniversalZone
+      - 3.4.3.5 Modify the remark of a cross-cloud shared domain DNS record: UpdateUniversalZoneRecordRemark
+      - 3.4.3.6 Disable emergency group: DisableEmergencyGroup
+      - 3.4.3.7 Modify the remark of a UniversalZone cross-cloud shared domain name: UpdateUniversalZoneRemark
+      - 3.4.3.8 Delete UniversalLine cross-cloud DNS line: DeleteUniversalLine
+      - 3.4.3.9 Modify UniversalLine cross-cloud resolution line: UpdateUniversalLine
+      - 3.4.3.10 Modify DNS records of cross-cloud shared domain names: UpdateUniversalZoneRecord
+      - 3.4.3.11 Modify a node: UpdateNode
+      - 3.4.3.12 Delete a cross-cloud shared domain name: DeleteUniversalZone
+      - 3.4.3.13 Switch a secondary node to the primary node: TransferLeadership
+      - 3.4.3.14 Query UniversalLine cross-cloud DNS line list: DescribeUniversalLines
+      - 3.4.3.15 Add UniversalLine cross-cloud DNS line: AddUniversalLine
+      - 3.4.3.16 Delete a UniversalZone DNS record: DeleteUniversalZoneRecord
+      - 3.4.3.17 Get UniversalZone record list: DescribeUniversalZoneRecords
+      - 3.4.3.18 Get UniversalZone list: DescribeUniversalZones
+      - 3.4.3.19 Add a UniversalZone DNS record: AddUniversalZoneRecord
+
+## 1 Preparations
+
+### 1.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -35,7 +170,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -84,7 +219,7 @@ To obtain the AccessKey pair of an organization, perform the following operation
 
 An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
-### Obtain common header
+### 1.3 Obtain common header parameters
 
 **parameters**
 
@@ -141,7 +276,7 @@ The following response parameters are returned by default when you call operatio
 | DepartmentName | The name of the organization. |
 | Department | The organization ID. |
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -219,9 +354,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
 
 e API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### Preparations
+### 2.1 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations before you use the POP gateway to call API operations.
 
@@ -263,7 +398,7 @@ In the **Registration Variables** message, obtain the endpoint from the value of
 
 You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain the values of common request headers.
 
-### SDK for Java
+### 2.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -418,7 +553,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 2.3 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -570,7 +705,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-### SDK for Python
+### 2.4 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -706,27 +841,27 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-## API Reference
+## 3 API Reference
 
-### Overview
+### 3.1 Overview
 
-#### Calling methods
+#### 3.1.1 Calling methods
 
 You can use a pair of AccessKey ID and AccessKey Secret to call API operations. You can use SDKs of different languages, or create a client based on the signature description provided by the POP gateway.
 
-#### Supported formats
+#### 3.1.2 Supported formats
 
 AccessKey ID and AccessKey Secret of an Apsara Stack tenant account Temporary AccessKey ID and AccessKey Secret of an Apsara Stack tenant account AccessKey ID and AccessKey Secret of a RAM user account Temporary AccessKey ID and AccessKey Secret of a RAM user account
 
-#### Instructions
+#### 3.1.3 Instructions
 
 The AccessKey ID is used to identify users. The AccessKey Secret is used to compute the request signature.
 
-#### Time format
+#### 3.1.4 Time format
 
 Unless otherwise specified, the time string is a UTC+0 time in the format of YYYY-MM- DDTHH:mm:ssZ. For example, 2018-01-16T09:00:01Z indicates 17:00:01 on January 16, 2018, in China Standard Time (UTC+8).
 
-### List of operations by function
+### 3.2 List of operations by function
 
 DNS V2.0 provides the following API operations.
 
@@ -739,9 +874,9 @@ DNS V2.0 provides the following API operations.
 | UpdateGlobalRrSet | Updates global RRSets |
 | RemarkGlobalRrSet | Configures descriptions for global RRSets |
 
-### Prerequisites
+### 3.3 Prerequisites
 
-#### Obtain an AccessKey pair
+#### 3.3.1 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -790,7 +925,7 @@ To obtain the AccessKey pair of an organization, perform the following operation
 
 An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
-#### Obtain an endpoint
+#### 3.3.2 Obtain an endpoint
 
 **Procedure**
 
@@ -808,9 +943,9 @@ a server to go to the console.
 
 endpoint of the current environment. The endpoint is the value corresponding to pop_out_endpoint (the string starting with "api.").
 
-### SDK example
+### 3.4 SDK example
 
-#### Create a client
+#### 3.4.1 Create a client
 
 You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a client.
 
@@ -851,9 +986,9 @@ cret}");
 4.    }
 ```
 
-#### Cloud API reference
+#### 3.4.2 Cloud API reference
 
-##### TransferLeadership
+##### 3.4.2.1 TransferLeadership
 
 Switches a secondary node to become the primary node. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -874,7 +1009,7 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### DescribeDnsGtmAgents
+##### 3.4.2.2 DescribeDnsGtmAgents
 
 Queries a list of probe nodes for checking the health of addresses in address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -932,7 +1067,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeletePrivateDefaultForwardZone
+##### 3.4.2.3 DeletePrivateDefaultForwardZone
 
 Deletes a tenant-specific default forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -953,7 +1088,7 @@ http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdatePrivateZoneRecord
+##### 3.4.2.4 UpdatePrivateZoneRecord
 
 Modifies a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -993,7 +1128,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
 ```
 
-##### AddGlobalLine
+##### 3.4.2.5 AddGlobalLine
 
 Creates a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1017,7 +1152,7 @@ http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateGlobalZoneRecord
+##### 3.4.2.6 UpdateGlobalZoneRecord
 
 Modifies a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1057,7 +1192,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribePrivateForwardZones
+##### 3.4.2.7 DescribePrivateForwardZones
 
 Queries a list of tenant-specific forwarding configurations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1159,7 +1294,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeleteRecursorAcl
+##### 3.4.2.8 DeleteRecursorAcl
 
 Deletes a recursive access control list (ACL) configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1183,7 +1318,7 @@ http(s)://[Endpoint]/?Action=DeleteRecursorAcl
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeleteZoneVpc
+##### 3.4.2.9 DeleteZoneVpc
 
 Disassociates one or more virtual private clouds (VPCs) from a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1209,7 +1344,7 @@ http(s)://[Endpoint]/?Action=DeleteZoneVpc
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### DescribeNodes
+##### 3.4.2.10 DescribeNodes
 
 Queries a list of nodes. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1279,7 +1414,7 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 </Data> <Code>error code </Code>
 ```
 
-##### AddPrivateDefaultForwardZone
+##### 3.4.2.11 AddPrivateDefaultForwardZone
 
 Creates a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1305,7 +1440,7 @@ http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### FlushCache
+##### 3.4.2.12 FlushCache
 
 Clears the DNS cache. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1328,7 +1463,7 @@ Clears the DNS cache. This operation does not have operation-specific request he
 http(s)://[Endpoint]/?Action=FlushCache <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
 ```
 
-##### DescribeDnsGtmAddressPools
+##### 3.4.2.13 DescribeDnsGtmAddressPools
 
 Queries a list of address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1419,7 +1554,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeleteDnsGtmAddressPool
+##### 3.4.2.14 DeleteDnsGtmAddressPool
 
 Deletes an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1473,7 +1608,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### AddGlobalZoneRecord
+##### 3.4.2.16 AddGlobalZoneRecord
 
 Creates a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1512,7 +1647,7 @@ http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeletePrivateForwardZone
+##### 3.4.2.17 DeletePrivateForwardZone
 
 Deletes a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1533,7 +1668,7 @@ http(s)://[Endpoint]/?Action=DeletePrivateForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeGlobalForwardZones
+##### 3.4.2.18 DescribeGlobalForwardZones
 
 Queries a list of global forwarding domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1634,7 +1769,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DescribeResolveConf
+##### 3.4.2.19 DescribeResolveConf
 
 Queries the global recursion configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1655,7 +1790,7 @@ http(s)://[Endpoint]/?Action=DescribeResolveConf
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <UpdateTime>1702460677</UpdateTime> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
-##### DescribePrivateLines
+##### 3.4.2.20 DescribePrivateLines
 
 Queries a list of a private lines. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1723,7 +1858,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateLines
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### UpdatePrivateLine
+##### 3.4.2.21 UpdatePrivateLine
 
 Modifies a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1754,7 +1889,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateLine
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeConflictPrivateZones
+##### 3.4.2.22 DescribeConflictPrivateZones
 
 Queries the domain names that conflict with a private domain name in a virtual private cloud (VPC). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1800,7 +1935,7 @@ http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DeleteDnsGtmMonitor
+##### 3.4.2.23 DeleteDnsGtmMonitor
 
 Deletes a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1821,7 +1956,7 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmMonitor
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeletePrivateZone
+##### 3.4.2.24 DeletePrivateZone
 
 Deletes a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1848,7 +1983,7 @@ http(s)://[Endpoint]/?Action=DeletePrivateZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeDnsGtmMonitor
+##### 3.4.2.25 DescribeDnsGtmMonitor
 
 Queries health check configurations for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1922,7 +2057,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### AddPrivateLine
+##### 3.4.2.26 AddPrivateLine
 
 Creates a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -1947,7 +2082,7 @@ http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeDnsGtmAccessStrategies
+##### 3.4.2.27 DescribeDnsGtmAccessStrategies
 
 Queries a list of access policies. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2059,7 +2194,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### UpdatePrivateForwardZone
+##### 3.4.2.28 UpdatePrivateForwardZone
 
 Modifies a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2090,7 +2225,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### AddGlobalForwardZone
+##### 3.4.2.29 AddGlobalForwardZone
 
 Creates a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2113,7 +2248,7 @@ http(s)://[Endpoint]/?Action=AddGlobalForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeConflictGlobalZones
+##### 3.4.2.30 DescribeConflictGlobalZones
 
 Queries domain names that conflict with a global domain name on Apsara Stack. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2155,7 +2290,7 @@ http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### UpdatePrivateZoneRecordRemark
+##### 3.4.2.31 UpdatePrivateZoneRecordRemark
 
 Modifies the description of a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2177,7 +2312,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateDnsGtmInstance
+##### 3.4.2.32 UpdateDnsGtmInstance
 
 Modifies the information about a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2205,7 +2340,7 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
 ```
 
-##### AddDnsGtmAccessStrategy
+##### 3.4.2.33 AddDnsGtmAccessStrategy
 
 Creates an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2239,7 +2374,7 @@ http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateDnsGtmInstanceRemark
+##### 3.4.2.34 UpdateDnsGtmInstanceRemark
 
 Modifies the description of a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2264,7 +2399,7 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### SetGlobalDefaultForward
+##### 3.4.2.35 SetGlobalDefaultForward
 
 Specifies a global default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2289,7 +2424,7 @@ Specifies a global default forwarding configuration. This operation does not hav
 http(s)://[Endpoint]/?Action=SetGlobalDefaultForward <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
 ```
 
-##### DescribePrivateDefaultForwardZones
+##### 3.4.2.36 DescribePrivateDefaultForwardZones
 
 Queries tenant-specific default forwarding configurations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2388,7 +2523,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DescribeGlobalZones
+##### 3.4.2.37 DescribeGlobalZones
 
 Queries a list of global internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2466,7 +2601,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribeGlobalZoneRecords
+##### 3.4.2.38 DescribeGlobalZoneRecords
 
 Queries DNS records for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2567,7 +2702,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### UpdateGlobalLine
+##### 3.4.2.39 UpdateGlobalLine
 
 Modifies a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2602,7 +2737,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalLine
 <RequestId /> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### EnableRecursor
+##### 3.4.2.40 EnableRecursor
 
 Specifies whether to enable recursion. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2623,7 +2758,7 @@ http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
 ```
 
-##### DescribeGlobalLines
+##### 3.4.2.41 DescribeGlobalLines
 
 Queries a list of global lines. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2690,7 +2825,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalLines
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DescribeMetrics
+##### 3.4.2.42 DescribeMetrics
 
 Queries the queries per second (QPS) data. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2731,7 +2866,7 @@ http(s)://[Endpoint]/?Action=DescribeMetrics
 </Data> <Code>error code </Code>
 ```
 
-##### DescribeDNSServerAddrs
+##### 3.4.2.43 DescribeDNSServerAddrs
 
 Queries a list of anycast IP addresses of the DNS service. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2758,7 +2893,7 @@ http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
  </Code>
 ```
 
-##### UpdateGlobalZoneRemark
+##### 3.4.2.44 UpdateGlobalZoneRemark
 
 Modifies the description of a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2783,7 +2918,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeGlobalDefaultForward
+##### 3.4.2.45 DescribeGlobalDefaultForward
 
 Queries the global default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2805,7 +2940,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <ForwardMode /> <Forwarders>[&quot;2.2.2.2&quot;,&quot;3.3.3.3&quot;]</Forwarders> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
-##### AddGlobalZone
+##### 3.4.2.46 AddGlobalZone
 
 Creates a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2832,7 +2967,7 @@ http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com.
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdatePrivateZoneRemark
+##### 3.4.2.47 UpdatePrivateZoneRemark
 
 Modifies the description of a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2857,7 +2992,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### AddDnsGtmMonitor
+##### 3.4.2.48 AddDnsGtmMonitor
 
 Creates a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2894,7 +3029,7 @@ http(s)://[Endpoint]/?Action=AddDnsGtmMonitor
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateDnsGtmAddressPool
+##### 3.4.2.49 UpdateDnsGtmAddressPool
 
 Modifies an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2925,7 +3060,7 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdatePrivateLinePriority
+##### 3.4.2.50 UpdatePrivateLinePriority
 
 Modifies the priority of a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2950,7 +3085,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeleteDnsGtmInstance
+##### 3.4.2.51 DeleteDnsGtmInstance
 
 Deletes a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2974,7 +3109,7 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateGlobalLinePriority
+##### 3.4.2.52 UpdateGlobalLinePriority
 
 Modifies the priority of a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -2999,7 +3134,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### AddDnsGtmInstance
+##### 3.4.2.53 AddDnsGtmInstance
 
 Creates a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3025,7 +3160,7 @@ http(s)://[Endpoint]/?Action=AddDnsGtmInstance
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
 ```
 
-##### DescribeCache
+##### 3.4.2.54 DescribeCache
 
 Queries the cached DNS records. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3092,7 +3227,7 @@ http(s)://[Endpoint]/?Action=DescribeCache
 </Data> <Code>error code</Code>
 ```
 
-##### DescribeDnsGtmInstances
+##### 3.4.2.55 DescribeDnsGtmInstances
 
 Queries a list of Global Traffic Manager (GTM) instances. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3166,7 +3301,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### EnableEmergencyGroup
+##### 3.4.2.56 EnableEmergencyGroup
 
 Enables an emergency group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3190,7 +3325,7 @@ Enables an emergency group. This operation does not have operation-specific requ
 http(s)://[Endpoint]/?Action=EnableEmergencyGroup <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
 ```
 
-##### DisableEmergencyGroup
+##### 3.4.2.57 DisableEmergencyGroup
 
 Disables an emergency group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3204,7 +3339,7 @@ Disables an emergency group. This operation does not have operation-specific req
 http(s)://[Endpoint]/?Action=DisableEmergencyGroup <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### AddGlobalZone
+##### 3.4.2.58 AddGlobalZone
 
 Creates a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3236,7 +3371,7 @@ http(s)://[Endpoint]/?Action=AddGlobalZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code> error code</Code>
 ```
 
-##### UpdateRecursorAclRemark
+##### 3.4.2.59 UpdateRecursorAclRemark
 
 Modifies the description of a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3261,7 +3396,7 @@ http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-##### UpdateGlobalForwardZone
+##### 3.4.2.60 UpdateGlobalForwardZone
 
 Modifies a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3289,7 +3424,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### AddPrivateZone
+##### 3.4.2.61 AddPrivateZone
 
 Creates a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3314,7 +3449,7 @@ http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### AddPrivateForwardZone
+##### 3.4.2.62 AddPrivateForwardZone
 
 Creates a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3338,7 +3473,7 @@ http(s)://[Endpoint]/?Action=AddPrivateForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdateDnsGtmAccessStrategy
+##### 3.4.2.63 UpdateDnsGtmAccessStrategy
 
 Modifies an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3376,7 +3511,7 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
-##### UpdateGlobalForwardZoneRemark
+##### 3.4.2.64 UpdateGlobalForwardZoneRemark
 
 Modifies the description of a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3404,7 +3539,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeletePrivateLine
+##### 3.4.2.65 DeletePrivateLine
 
 Deletes a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3428,7 +3563,7 @@ http(s)://[Endpoint]/?Action=DeletePrivateLine
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### BindZoneVpc
+##### 3.4.2.66 BindZoneVpc
 
 Associates a tenant-specific internal domain name with a virtual private cloud (VPC). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3454,7 +3589,7 @@ http(s)://[Endpoint]/?Action=BindZoneVpc
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### DeleteDnsGtmAccessStrategy
+##### 3.4.2.67 DeleteDnsGtmAccessStrategy
 
 Deletes an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3478,7 +3613,7 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeleteGlobalForwardZone
+##### 3.4.2.68 DeleteGlobalForwardZone
 
 Deletes a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3499,7 +3634,7 @@ http(s)://[Endpoint]/?Action=DeleteGlobalForwardZone &Id=56bab908-04e0-44ee-b126
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdateGlobalZone
+##### 3.4.2.69 UpdateGlobalZone
 
 Modifies a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3531,7 +3666,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZone &Id=56bab908-04e0-44ee-b126-1cbdbc
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdateRecursorAcl
+##### 3.4.2.70 UpdateRecursorAcl
 
 Modifies a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3558,7 +3693,7 @@ http(s)://[Endpoint]/?Action=UpdateRecursorAcl &Id=e8605e05-4320-4ef5-983d-c5dd4
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdateGlobalZoneRecordRemark
+##### 3.4.2.71 UpdateGlobalZoneRecordRemark
 
 Modifies the description of a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3580,7 +3715,7 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DescribeRecursorAcls
+##### 3.4.2.72 DescribeRecursorAcls
 
 Queries a list of recursive access control list (ACL) policies. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3643,7 +3778,7 @@ http(s)://[Endpoint]/?Action=DescribeRecursorAcls
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribePrivateZones
+##### 3.4.2.73 DescribePrivateZones
 
 Queries a list of tenant-specific internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3749,7 +3884,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateZones
  <Code>error code</Code>
 ```
 
-##### AddRecursorAcl
+##### 3.4.2.74 AddRecursorAcl
 
 Creates a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3779,7 +3914,7 @@ http(s)://[Endpoint]/?Action=AddRecursorAcl
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
-##### UpdateDnsGtmMonitor
+##### 3.4.2.75 UpdateDnsGtmMonitor
 
 Modifies a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3814,7 +3949,7 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DescribePrivateZoneRecords
+##### 3.4.2.76 DescribePrivateZoneRecords
 
 Queries a list of DNS records for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3917,7 +4052,7 @@ http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribeGlobalZones
+##### 3.4.2.77 DescribeGlobalZones
 
 Queries a list of global internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -3973,7 +4108,7 @@ http(s)://[Endpoint]/?Action=DescribeGlobalZones
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribeDnsGtmLogs
+##### 3.4.2.78 DescribeDnsGtmLogs
 
 Queries logs. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4026,7 +4161,7 @@ http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeleteGlobalZone
+##### 3.4.2.79 DeleteGlobalZone
 
 Deletes a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4047,7 +4182,7 @@ http(s)://[Endpoint]/?Action=DeleteGlobalZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-##### UpdateNode
+##### 3.4.2.80 UpdateNode
 
 Modifies the information about a node. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4074,7 +4209,7 @@ http(s)://[Endpoint]/?Action=UpdateNode
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### AddPrivateZoneRecord
+##### 3.4.2.81 AddPrivateZoneRecord
 
 Creates a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4115,7 +4250,7 @@ http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &Lba
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### AddDnsGtmAddressPool
+##### 3.4.2.82 AddDnsGtmAddressPool
 
 Creates an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4149,7 +4284,7 @@ http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrateg
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdatePrivateForwardZoneRemark
+##### 3.4.2.83 UpdatePrivateForwardZoneRemark
 
 Modifies the description of a tenant-specific forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4177,7 +4312,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-##### BindForwardZoneVpc
+##### 3.4.2.84 BindForwardZoneVpc
 
 Associates a tenant-specific forwarding domain name with one or more virtual private clouds (VPCs). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4206,7 +4341,7 @@ http(s)://[Endpoint]/?Action=BindForwardZoneVpc
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### DeleteForwardZoneVpc
+##### 3.4.2.85 DeleteForwardZoneVpc
 
 Disassociates one or more virtual private clouds (VPCs) from a tenant-specific forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4228,7 +4363,7 @@ Disassociates one or more virtual private clouds (VPCs) from a tenant-specific f
 http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env1-d01 &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### UpdatePrivateDefaultForwardZone
+##### 3.4.2.86 UpdatePrivateDefaultForwardZone
 
 Modifies a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4258,7 +4393,7 @@ http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeleteGlobalLine
+##### 3.4.2.87 DeleteGlobalLine
 
 Deletes a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4282,7 +4417,7 @@ http(s)://[Endpoint]/?Action=DeleteGlobalLine
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeleteGlobalZoneRecord
+##### 3.4.2.88 DeleteGlobalZoneRecord
 
 Deletes a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4303,7 +4438,7 @@ http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeletePrivateZoneRecord
+##### 3.4.2.89 DeletePrivateZoneRecord
 
 Delete a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
@@ -4327,9 +4462,9 @@ http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-#### Cross-cloud API reference
+#### 3.4.3 Cross-cloud API reference
 
-##### Query node management list:
+##### 3.4.3.1 Query node management list: DescribeNodes
 
 ##### DescribeNodes
 
@@ -4402,7 +4537,7 @@ http(s)://[Endpoint]/?Action=DescribeNodes
 </Data> <Code>error code </Code>
 ```
 
-##### Modify the priority of a UniversalLine
+##### 3.4.3.2 Modify the priority of a UniversalLine cross-cloud DNS line: UpdateUniversalLinePriority
 
 **cross-cloud DNS line: UpdateUniversalLinePriority**
 
@@ -4426,7 +4561,7 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Enable emergency group:
+##### 3.4.3.3 Enable emergency group: EnableEmergencyGroup
 
 ##### EnableEmergencyGroup
 
@@ -4458,7 +4593,7 @@ Sample success response
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
 
-##### Add UniversalZone global shared domain
+##### 3.4.3.4 Add UniversalZone global shared domain name: AddUniversalZone
 
 **name: AddUniversalZone**
 
@@ -4484,7 +4619,7 @@ http(s)://[Endpoint]/?Action=AddUniversalZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Modify the remark of a cross-cloud shared
+##### 3.4.3.5 Modify the remark of a cross-cloud shared domain DNS record: UpdateUniversalZoneRecordRemark
 
 **domain DNS record:**
 
@@ -4510,7 +4645,7 @@ http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Disable emergency group:
+##### 3.4.3.6 Disable emergency group: DisableEmergencyGroup
 
 ##### DisableEmergencyGroup
 
@@ -4530,7 +4665,7 @@ http(s)://[Endpoint]/?Action=DisableEmergencyGroup
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
 
-##### Modify the remark of a UniversalZone
+##### 3.4.3.7 Modify the remark of a UniversalZone cross-cloud shared domain name: UpdateUniversalZoneRemark
 
 **cross-cloud shared domain name:**
 
@@ -4555,7 +4690,7 @@ http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
 ```
 
-##### Delete UniversalLine cross-cloud DNS line:
+##### 3.4.3.8 Delete UniversalLine cross-cloud DNS line: DeleteUniversalLine
 
 **DeleteUniversalLine**
 
@@ -4581,7 +4716,7 @@ http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
-##### Modify UniversalLine cross-cloud
+##### 3.4.3.9 Modify UniversalLine cross-cloud resolution line: UpdateUniversalLine
 
 **resolution line: UpdateUniversalLine**
 
@@ -4608,7 +4743,7 @@ http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5d
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Modify DNS records of cross-cloud shared
+##### 3.4.3.10 Modify DNS records of cross-cloud shared domain names: UpdateUniversalZoneRecord
 
 **domain names: UpdateUniversalZoneRecord**
 
@@ -4649,7 +4784,7 @@ http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecord
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Modify a node: UpdateNode
+##### 3.4.3.11 Modify a node: UpdateNode
 
 You can call the UpdateNode operation to modify a node. The UpdateNode operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
@@ -4673,7 +4808,7 @@ http(s)://[Endpoint]/?Action=UpdateNode
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### Delete a cross-cloud shared domain
+##### 3.4.3.12 Delete a cross-cloud shared domain name: DeleteUniversalZone
 
 **name: DeleteUniversalZone**
 
@@ -4696,7 +4831,7 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZone
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Switch a secondary node to the primary
+##### 3.4.3.13 Switch a secondary node to the primary node: TransferLeadership
 
 **node: TransferLeadership**
 
@@ -4722,7 +4857,7 @@ http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### Query UniversalLine cross-cloud DNS line
+##### 3.4.3.14 Query UniversalLine cross-cloud DNS line list: DescribeUniversalLines
 
 **list: DescribeUniversalLines**
 
@@ -4784,7 +4919,7 @@ http(s)://[Endpoint]/?Action=DescribeUniversalLines
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### Add UniversalLine cross-cloud DNS line:
+##### 3.4.3.15 Add UniversalLine cross-cloud DNS line: AddUniversalLine
 
 **AddUniversalLine**
 
@@ -4810,7 +4945,7 @@ http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Delete a UniversalZone DNS record:
+##### 3.4.3.16 Delete a UniversalZone DNS record: DeleteUniversalZoneRecord
 
 **DeleteUniversalZoneRecord**
 
@@ -4835,7 +4970,7 @@ http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### Get UniversalZone record list:
+##### 3.4.3.17 Get UniversalZone record list: DescribeUniversalZoneRecords
 
 **DescribeUniversalZoneRecords**
 
@@ -4933,7 +5068,7 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-4
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### Get UniversalZone list:
+##### 3.4.3.18 Get UniversalZone list: DescribeUniversalZones
 
 **DescribeUniversalZones**
 
@@ -4994,7 +5129,7 @@ http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### Add a UniversalZone DNS record:
+##### 3.4.3.19 Add a UniversalZone DNS record: AddUniversalZoneRecord
 
 **AddUniversalZoneRecord**
 

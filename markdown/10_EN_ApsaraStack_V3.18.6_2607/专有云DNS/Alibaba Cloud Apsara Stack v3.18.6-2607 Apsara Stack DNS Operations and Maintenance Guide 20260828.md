@@ -3,16 +3,42 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Operations and 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 19
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "4aa25cfbfb4d4b06_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Operations and Maintenance Guide 20260828.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Classic Network
+  - 2.1 opsDNS management
+    - 2.1.1 opsDNS monitoring
+    - 2.1.2 opsDNS domain service
+  - 2.2 Tenant DNS management
+    - 2.2.1 Node management (in-cloud)
+    - 2.2.2 Node management (cross-cloud)
+- 3 Appendix
+  - 3.1 Introduction to Apsara Stack DNS
+  - 3.2 Maintenance
+    - 3.2.1 View operational logs
+    - 3.2.2 Enable and disable a service
+    - 3.2.3 Data backup
+  - 3.3 DNS API
+    - 3.3.1 Manage the API system
+    - 3.3.2 Troubleshooting
+  - 3.4 DNS system
+    - 3.4.1 Check whether a server role is normal
+    - 3.4.2 Troubleshooting
+    - 3.4.3 Errors and exceptions
+  - 3.5 Log analysis
+  - 3.6 View and process data
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -28,11 +54,11 @@ Press the ENTER key. You can click the current language in the upper-right corne
 ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-## Classic Network
+## 2 Classic Network
 
-### opsDNS management
+### 2.1 opsDNS management
 
-#### opsDNS monitoring
+#### 2.1.1 opsDNS monitoring
 
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Product Operation** > **Networking** > **Network**
@@ -42,7 +68,7 @@ ager Operations Console Obtain the username and password that are used to log on
 4. On the opsDNS Monitoring page, configure the **Cluster** and **Start/End Time** parameters.
 Then, you can view the trend charts of QPS and domain name resolution success rate of instances in the selected cluster within the specified time range. Move the pointer over a specific point of time to view the corresponding data.
 
-#### opsDNS domain service
+#### 2.1.2 opsDNS domain service
 
 This topic describes how to configure an opsDNS domain name service.
 
@@ -86,9 +112,9 @@ Create a DNS record: Click **Create DNS Record**. In the Create DNS Record dialo
 **Operation** column. In the dialog box that appears, confirm the information, enter
 **DELETE** in the field, and then click **OK**. After 0 to 5 minutes, the DNS record is deleted.
 
-### Tenant DNS management
+### 2.2 Tenant DNS management
 
-#### Node management (in-cloud)
+#### 2.2.1 Node management (in-cloud)
 
 The Node Management page displays the DNS servers within the cloud. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -105,7 +131,7 @@ that appears, turn on or off **Emergency Group**. If you turn on **Emergency Gro
 6. Return to the Node Management page.
 Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column. After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
 
-#### Node management (cross-cloud)
+#### 2.2.2 Node management (cross-cloud)
 
 The Node Management page displays the DNS servers across clouds. On this page, you can monitor the role and status of each node and check data consistency after synchronization.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -122,9 +148,9 @@ that appears, turn on or off **Emergency Group**. If you turn on **Emergency Gro
 6. Return to the Node Management page.
 Find a node that you want to manage and click **Description** in the **Actions** column. In the Add Description dialog box, configure the **Description** parameter. Find a node that you want to manage and click **Switch to Primary** in the **Actions** column. After you perform the preceding operation, the system sets the selected node as the new leader of the cluster for data synchronization.
 
-## Appendix
+## 3 Appendix
 
-### Introduction to Apsara Stack
+### 3.1 Introduction to Apsara Stack DNS
 
 **DNS**
 
@@ -142,13 +168,13 @@ The API system determines the business logic of all calls and manages all data a
 
 The DNS system consists of BIND and Agent. Agent receives and processes task information passed from the API system. Agent parses the tasks into commands, and then delivers the commands to the BIND system.
 
-### Maintenance
+### 3.2 Maintenance
 
-#### View operational logs
+#### 3.2.1 View operational logs
 
 During operations and maintenance, you can query and view logs that are stored at specific locations in different systems to troubleshoot errors. The operational logs of the API service are stored in the /home/admin/gdns/logs/ directory. You can query logs as needed. The operational logs of the Agent service are stored in the /var/log/dns/ directory of the DNS server. Each log contains log entries of a specific day. The operational logs of the BIND service are stored in the /var/named/chroot/var/log/ directory of the DNS server.
 
-#### Enable and disable a service
+#### 3.2.2 Enable and disable a service
 
 You can log on to the API server as an administrator and run the `/home/admin/gdns/bin/appctl.sh restart` command to restart the API service. We recommend that you run the command on one server at a time to ensure that another server can provide services. You can specify the **start**, **stop**, and **restart** parameters in the preceding command. Apsara Stack DNS provides services by using anycast IP addresses. You must run the
 
@@ -165,13 +191,13 @@ You can log on to the API server as an administrator and run the `/home/admin/gd
 
 You must run the `service named start` command to enable the DNS service before you run You can run the `/usr/local/AgentService/agent -s start` command to enable the Agent service. If you receive a message that indicates the PID file already exists, delete the `/var/dns/dns.pid` file and run the command again. You can run the `/usr/local/AgentService/agent -s stop` command to disable the Agent service.
 
-#### Data backup
+#### 3.2.3 Data backup
 
 If you need to back up data before updating the service, copy the /var/named/ and /etc/named/ directories to a backup location. When you need to restore your data, copy the backup data to the original directories. Do not trigger automatic update during a data restoration process. Otherwise, data inconsistency may occur.
 
-### DNS API
+### 3.3 DNS API
 
-#### Manage the API system
+#### 3.3.1 Manage the API system
 
 You can manage the API system in the Apsara Infrastructure Management Framework console. To log on to the server in which the API system resides, choose **Operations >**
 **Machine Operations** in the Apsara Infrastructure Management Framework console.
@@ -190,7 +216,7 @@ Figure 2. Cluster Operation and Maintenance Center v. On the **Cluster Operation
 3. Log on to the DNS API server. Run the `curl http://localhost/checkpreload.htm`
 command, and check whether the command output is "success". i. Log on to the Apsara Infrastructure Management Framework console. ii. In the top navigation bar, choose **Operations > Machine Operations**. iii. Click **Terminal** in the Actions column of a server to log on to the server. iv. Run the `curl http://localhost/checkpreload.htm` command on the server where the API service is deployed and check whether the command output is "success". Figure 4. Verify the server
 
-#### Troubleshooting
+#### 3.3.2 Troubleshooting
 
 1. View logs stored in /home/admin/gdns/logs/.
 2. Check whether the API service is running. If an error occurs when you call an API operation,
@@ -198,9 +224,9 @@ check the log to troubleshoot the error.
 3. If the API service is running, but its features do not function as expected, check the
 **application.log** file.
 
-### DNS system
+### 3.4 DNS system
 
-#### Check whether a server role is normal
+#### 3.4.1 Check whether a server role is normal
 
 1. In the Apsara Infrastructure Management Framework console, check whether the Apsara
 Stack DNS system is in its final state. i. Log on to the Apsara Infrastructure Management Framework console. ii. In the top navigation bar, choose **Tasks > Deployment Summary**. iii. On the **Deployment Summary** page, click **Deployment Details**. iv. On the **Deployment Details** page, find **dnsProduct**. v. Click **Details** in the **Deployment Progress** column to check whether the
@@ -213,7 +239,7 @@ Figure 2. Cluster Operation and Maintenance Center v. On the Cluster Operation a
 3. Log on to the DNS server, run the **python /bind/hello/check_health.py|echo $?**
 command, and check whether the command output is 0. i. Log on to the Apsara Infrastructure Management Framework console. ii. Choose **Operations > Machine Operations**. iii. Select a server and click **Terminal** to log on to the server. iv. Run the **python /bind/hello/check_health.py|echo $?** command on each server that is assigned with the **bindServerRole#** role and check whether the command output is 0. Figure 3. Verifying the server
 
-#### Troubleshooting
+#### 3.4.2 Troubleshooting
 
 1. Check the operational logs of the BIND service that are stored in the
 /var/named/chroot/var/log/ directory, and determine whether errors have occurred.
@@ -222,11 +248,11 @@ directory, and determine whether errors have occurred.
 3. Run the **named-checkconf** command to check whether errors have occurred in the
 configuration file.
 
-#### Errors and exceptions
+#### 3.4.3 Errors and exceptions
 
 Error: exit code 1 Run the health check script to view the cause of this error. Common causes include: The DNS service is not running. The Agent service is not running. The OSPF service is not running, or anycast and public IP addresses cannot be advertised because of a network information retrieval error. Failed to run the task.
 
-### Log analysis
+### 3.5 Log analysis
 
 **Query log entries by request ID**
 
@@ -237,7 +263,7 @@ system log.
 3. Retrieve the results of the current request from the log of `bindServerRole#` , and verify the
 results with information that is retrieved from multiple other systems.
 
-### View and process data
+### 3.6 View and process data
 
 **Background information**
 

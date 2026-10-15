@@ -3,16 +3,270 @@ title: "Cloud Defined Storage Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260630"
 pdf_pages: 327
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage Operations and Maintenance Guide 20260630.pdf"
+source_pdf: "2484b553e6842414_Alibaba Cloud Apsara Stack V3.18.6 Cloud Defined Storage Operations and Maintenance Guide 20260630.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Defined%20Storage%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Defined Storage Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Feature overview
+- 3 Permission configuration
+  - 3.1 Manage permissions on CDS-OPS
+  - 3.2 Manage permissions on HDR-OPS
+- 4 Service overview
+- 5 Storage management
+  - 5.1 Before you begin
+  - 5.2 Manage EBS clusters (CDS-EBS)
+    - 5.2.1 Overview of EBS clusters
+    - 5.2.2 Manage cluster details
+      - 5.2.2.1 View cluster overview
+      - 5.2.2.2 View capacity information
+      - 5.2.2.3 Monitor clusters
+        - 5.2.2.3.1 View cluster monitoring information
+        - 5.2.2.3.2 View the monitoring information of BlockServer nodes
+      - 5.2.2.4 Configure clusters
+        - 5.2.2.4.1 Configure the EC mode
+        - 5.2.2.4.2 Configure block rebalance
+        - 5.2.2.4.3 Configure Apsara Distributed File System
+      - 5.2.2.5 Manage services
+        - 5.2.2.5.1 Manage BlockMaster nodes
+        - 5.2.2.5.2 Manage BlockServer nodes
+        - 5.2.2.5.3 Manage snapshot servers
+        - 5.2.2.5.4 Manage Apsara Distributed File System
+      - 5.2.2.6 Manage hosts
+    - 5.2.3 View compute nodes
+    - 5.2.4 Manage storage sets
+    - 5.2.5 Manage disks
+    - 5.2.6 Create hot migration jobs to migrate cloud disks
+    - 5.2.7 Exception dashboard
+    - 5.2.8 Perform canary O&M
+    - 5.2.9 EBS HaiTu console
+      - 5.2.9.1 Log in to the HaiTu console
+      - 5.2.9.2 Homepage
+      - 5.2.9.3 Cluster management
+        - 5.2.9.3.1 View machines
+        - 5.2.9.3.2 View service status
+        - 5.2.9.3.3 View service templates
+        - 5.2.9.3.4 View performance data
+        - 5.2.9.3.5 Specify an EC for a cluster
+        - 5.2.9.3.6 Configure a cluster sales policy
+      - 5.2.9.4 Machine management
+      - 5.2.9.5 Disk management
+        - 5.2.9.5.1 Manage the disk list
+        - 5.2.9.5.2 View disk details
+      - 5.2.9.6 Monitoring and alerting
+        - 5.2.9.6.1 Manage monitoring and inspection
+          - 5.2.9.6.1.1 View metrics in a Distributed System Performance Monitor view
+          - 5.2.9.6.1.2 View metric inspections
+          - 5.2.9.6.1.3 Manage log inspections
+        - 5.2.9.6.2 View I/O hangs
+        - 5.2.9.6.3 View SLA metrics
+      - 5.2.9.7 Emergency diagnostics
+        - 5.2.9.7.1 Query logs
+        - 5.2.9.7.2 View disk performance data
+        - 5.2.9.7.3 Software O&M
+        - 5.2.9.7.4 Event Center
+      - 5.2.9.8 Basic O&M
+        - 5.2.9.8.1 Manage storage sets
+      - 5.2.9.9 Migration and replication O&M
+        - 5.2.9.9.1 Automatic migration
+        - 5.2.9.9.2 Auto decommissioning
+        - 5.2.9.9.3 Migration management
+        - 5.2.9.9.4 Asynchronous replication
+        - 5.2.9.9.5 O&M background
+          - 5.2.9.9.5.1 Manage resource information
+          - 5.2.9.9.5.2 Configure cross-cloud replication
+      - 5.2.9.10 Snapshot O&M
+        - 5.2.9.10.1 Query snapshot information
+        - 5.2.9.10.2 Manage snapshots
+        - 5.2.9.10.3 Manage OSS usage of snapshots
+  - 5.3 Manage EBS clusters (EBS-1.0)
+    - 5.3.1 Overview of EBS clusters
+    - 5.3.2 Manage cluster details
+      - 5.3.2.1 View cluster overview
+      - 5.3.2.2 View capacity information
+      - 5.3.2.3 Monitor clusters
+        - 5.3.2.3.1 View cluster monitoring information
+        - 5.3.2.3.2 View the monitoring information of RiverServer nodes
+      - 5.3.2.4 Manage services
+        - 5.3.2.4.1 View the information about RiverCluster nodes
+        - 5.3.2.4.2 View the information about RiverServer nodes
+        - 5.3.2.4.3 Manage PANGU
+      - 5.3.2.5 Manage hosts
+  - 5.4 Manage OSS clusters
+    - 5.4.1 Overview of OSS clusters
+    - 5.4.2 Manage cluster details
+      - 5.4.2.1 View cluster overview
+      - 5.4.2.2 View capacity information
+      - 5.4.2.3 Monitor clusters
+        - 5.4.2.3.1 View cluster monitoring information
+        - 5.4.2.3.2 Check the health status of a cluster
+        - 5.4.2.3.3 Run background tasks
+      - 5.4.2.4 Configure clusters
+        - 5.4.2.4.1 Modify KV configurations
+        - 5.4.2.4.2 Configure the EC mode
+        - 5.4.2.4.3 Configure a scheduled time for background tasks
+        - 5.4.2.4.4 Configure a global flag
+        - 5.4.2.4.5 Configure Apsara Distributed File System
+        - 5.4.2.4.6 Configure QoS settings
+      - 5.4.2.5 Manage services
+        - 5.4.2.5.1 Manage KV services
+        - 5.4.2.5.2 Manage access-layer services
+        - 5.4.2.5.3 Manage Apsara Distributed File System
+      - 5.4.2.6 Manage hosts
+    - 5.4.3 Manage buckets
+      - 5.4.3.1 Manage bucket information
+      - 5.4.3.2 Query bucket information
+      - 5.4.3.3 Configure QoS information
+    - 5.4.4 Manage synchronization configurations
+      - 5.4.4.1 Manage synchronization processes
+      - 5.4.4.2 Configure a cross-region synchronization process
+      - 5.4.4.3 Configure a cross-cloud synchronization process
+      - 5.4.4.4 View monitoring data of cluster synchronization
+    - 5.4.5 O&M robots
+      - 5.4.5.1 Manage O&M robots
+      - 5.4.5.2 View historical O&M tasks
+    - 5.4.6 OSS O&M console
+      - 5.4.6.1 Log in to the OSS O&M console
+      - 5.4.6.2 Cluster overview
+      - 5.4.6.3 User and bucket O&M
+        - 5.4.6.3.1 User data query
+          - 5.4.6.3.1.1 Basic bucket information
+          - 5.4.6.3.1.2 User data overview
+          - 5.4.6.3.1.3 Data monitoring
+        - 5.4.6.3.2 Bucket management
+        - 5.4.6.3.3 Disassociate a bucket from a VPC
+        - 5.4.6.3.4 QoS configurations
+      - 5.4.6.4 Cluster O&M
+        - 5.4.6.4.1 Cluster monitoring
+          - 5.4.6.4.1.1 Cluster overview
+          - 5.4.6.4.1.2 Inventory monitoring
+          - 5.4.6.4.1.3 Data monitoring
+          - 5.4.6.4.1.4 Resource usage rankings
+          - 5.4.6.4.1.5 Bucket statistics
+          - 5.4.6.4.1.6 Object statistics
+        - 5.4.6.4.2 Govern cluster usage
+        - 5.4.6.4.3 View the information about servers
+        - 5.4.6.4.4 Disk management
+        - 5.4.6.4.5 Network management
+          - 5.4.6.4.5.1 Domain name management
+          - 5.4.6.4.5.2 Manage virtual IP addresses
+        - 5.4.6.4.6 Cluster and bucket migration management
+      - 5.4.6.5 Service O&M of OSS
+        - 5.4.6.5.1 OCM list management
+        - 5.4.6.5.2 Query applications and manage versions and upgrades
+        - 5.4.6.5.3 Location query
+        - 5.4.6.5.4 Manage OSS global flags
+        - 5.4.6.5.5 Restart OSS services
+        - 5.4.6.5.6 OSS backend task management
+          - 5.4.6.5.6.1 Backend task monitoring
+          - 5.4.6.5.6.2 Backend task configurations
+        - 5.4.6.5.7 Synchronization management
+          - 5.4.6.5.7.1 Configure cross-cloud synchronization
+          - 5.4.6.5.7.2 Configure cross-region synchronization
+          - 5.4.6.5.7.3 Synchronization process management
+          - 5.4.6.5.7.4 DRS task distribution
+          - 5.4.6.5.7.5 Cluster synchronization monitoring
+      - 5.4.6.6 KV management
+        - 5.4.6.6.1 Manage KV CheckReady
+        - 5.4.6.6.2 KV master management
+        - 5.4.6.6.3 Manage KV servers
+        - 5.4.6.6.4 Restart KV services
+        - 5.4.6.6.5 Manage KV applications
+        - 5.4.6.6.6 KV partition management
+        - 5.4.6.6.7 Manage KM masters
+        - 5.4.6.6.8 KV global flag configurations
+        - 5.4.6.6.9 Manage EC
+      - 5.4.6.7 Intelligent O&M
+        - 5.4.6.7.1 Intelligent O&M history
+        - 5.4.6.7.2 Configurations
+      - 5.4.6.8 Log monitoring
+        - 5.4.6.8.1 Internal error (5XX) analysis
+        - 5.4.6.8.2 Backend log query
+        - 5.4.6.8.3 KV error code table
+      - 5.4.6.9 Monitoring center
+        - 5.4.6.9.1 Alert history
+        - 5.4.6.9.2 Alert configuration
+        - 5.4.6.9.3 Inspection configuration
+        - 5.4.6.9.4 Inspection history
+        - 5.4.6.9.5 One-click inspection
+      - 5.4.6.10 Background management
+        - 5.4.6.10.1 Workflows
+          - 5.4.6.10.1.1 Workflow overview
+          - 5.4.6.10.1.2 Workflow task
+          - 5.4.6.10.1.3 Batch workflow submission
+          - 5.4.6.10.1.4 Workflow instance
+          - 5.4.6.10.1.5 Workflow definition
+        - 5.4.6.10.2 White-screen Commands
+        - 5.4.6.10.3 DNA
+          - 5.4.6.10.3.1 Trigger management
+          - 5.4.6.10.3.2 Event center trigger history
+        - 5.4.6.10.4 Chiji domain name management
+        - 5.4.6.10.5 Audit logs
+  - 5.5 Manage log storage clusters
+    - 5.5.1 Overview of SLS clusters
+    - 5.5.2 Manage cluster details
+      - 5.5.2.1 View cluster overview
+      - 5.5.2.2 View capacity information
+      - 5.5.2.3 Configure clusters
+        - 5.5.2.3.1 Configure the EC mode
+        - 5.5.2.3.2 Configure Apsara Distributed File System
+      - 5.5.2.4 Manage PANGU
+      - 5.5.2.5 Manage hosts
+- 6 Monitoring center
+  - 6.1 View the custom dashboard
+  - 6.2 View resource monitoring data
+  - 6.3 View the monitoring data of storage metrics
+  - 6.4 Query service monitoring data
+- 7 Event Alerts
+  - 7.1 Alert overview
+  - 7.2 Handle alerts
+  - 7.3 View historical alerts
+- 8 Routine Inspection
+  - 8.1 Inspection center
+  - 8.2 SLA monitoring
+- 9 Intelligent O&M
+  - 9.1 Host O&M
+    - 9.1.1 View all workflows
+    - 9.1.2 Initiate a CDS Cluster Scale Up workflow
+    - 9.1.3 Initiate a CDS Cluster Scale Down workflow
+    - 9.1.4 Initiate a CDS Cluster Node Maintenance workflow
+    - 9.1.5 Initiate a CDSOSSZRS Cluster Three-zone Change workflow
+    - 9.1.6 Initiate a CDS Cluster Deployment Mode Switch workflow
+  - 9.2 Maintain disks
+    - 9.2.1 Maintain corrupted disks
+    - 9.2.2 Actively replace a hard disk
+    - 9.2.3 View hard disk maintenance history
+  - 9.3 Log Management
+    - 9.3.1 Collect log data
+    - 9.3.2 Query logs
+- 10 System Management
+  - 10.1 View plug-in information
+  - 10.2 View tasks
+  - 10.3 Query audit logs
+  - 10.4 System Cleanup
+    - 10.4.1 Manage cleanup configurations
+    - 10.4.2 Run cleanup tasks
+  - 10.5 Manage system configuration
+- 11 Data Service
+  - 11.1 Manage CSG instances
+  - 11.2 Use HDR-OPS
+    - 11.2.1 Before you begin
+    - 11.2.2 View site pair information
+    - 11.2.3 View alert information
+    - 11.2.4 View inspection tasks
+    - 11.2.5 Manage O&M tasks
+    - 11.2.6 Manage O&M configurations
+    - 11.2.7 Manage cloud sites
+    - 11.2.8 View the capacity of protected resources
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -30,7 +284,7 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 
-## Feature overview
+## 2 Feature overview
 
 CDS Ops is a unified operations and maintenance (O&M) platform for CDS products. It supports daily O&M for storage clusters and the services that run on them, including the object storage service, log storage service, and block storage service. This topic describes the features of CDS Ops. If you encounter any issues, contact Alibaba Cloud technical support.
 
@@ -151,9 +405,9 @@ Manage system plug-ins and service logs. The following table describes the featu
 | Manage Cloud Storage Gateway service | After you create and configure a Cloud Storage Gateway, you can view gateway information. You can also collect and download logs for file share (NFS or SMB) access to OSS and other related operations. |
 | HDR-OPS | HDR-OPS is a unified O&M tool for Hybrid Cloud Disaster Recovery (HDR). In data disaster recovery scenarios, you can perform O&M on HDR sites, including viewing site pair information, viewing alarm information, viewing inspection tasks, managing O&M tasks, managing cloud sites, and viewing protected resource capacity. |
 
-## Permission configuration
+## 3 Permission configuration
 
-### Manage permissions on CDS-
+### 3.1 Manage permissions on CDS-OPS
 
 **OPS**
 
@@ -193,7 +447,7 @@ You can add a user and assign a role for CDS-OPS to the user to control the perm
 | Email Address | The email address of the user. |
 | Allowed to Create AccessKey ID | Specifies whether to allow the user to create AccessKey pairs. By default, users are not allowed to create AccessKey pairs. |
 
-### Manage permissions on HDR-
+### 3.2 Manage permissions on HDR-OPS
 
 **OPS**
 
@@ -227,7 +481,7 @@ After you create a user and assign the role for HDR-OPS to the user, the user ca
 5. In the **Add User** dialog box, configure the user information and click **OK**.
 i. Configure the Username, Password, Confirm Password, Logon Policy, and Department parameters. To make it easy to identify the user, you can configure the Display name, Mobile phone, or Email address parameter based on your business requirements. ii. Select the role that you created from the Role drop-down list.
 
-## Service overview
+## 4 Service overview
 
 On the CDS-Overview page, you can view the overall information of Cloud Defined Storage (CDS), such as the total capacity usage, current alerts, used capacity distribution in different storage services, hardware resources, storage resources, and cluster status. This way, you can understand the overall information about CDS and promptly handle exceptions.
 1. Log on to the CDS-OPS console.
@@ -245,9 +499,9 @@ Overview information On the CDS-Overview page, you can view the overall informat
 
 Cluster status In the Cluster Status section, you can view the information about all clusters that are managed by CDS-OPS. The information includes the cluster name, cluster update time, cluster type such as CDS-EBS, CDS-EBS&CDS-OSS, OSS, CDS-OSS, or EBS-1.0, percentage of the used physical capacity, total physical capacity, and used physical capacity. Clusters can be sorted in ascending or descending order by cluster name, total capacity, or used capacity. By default, clusters are sorted in descending order by used capacity. You can sort clusters as required. You can perform the following operations to go to the Cluster O&M page on which you can manage and configure a storage cluster: Find the EBS-1.0, OSS 1.0, CDS-EBS, CDS-OSS, or CDS-SLS cluster that you want to manage and click **O&M**. Find the cluster in hybrid deployment of EBS and OSS that you want to manage, move the pointer over **O&M** and select **Elastic Block Storage** or **OSS**.
 
-## Storage management
+## 5 Storage management
 
-### Before you begin
+### 5.1 Before you begin
 
 Cluster management enables you to view, monitor, configure, manage, and maintain clusters for various storage services. Available features depend on the specific cluster.
 
@@ -268,11 +522,11 @@ The following table lists the cluster types supported by CDS Ops. The deployed s
 
 Only CDS clusters support co-deployment of CDS-OSS and CDS-EBS. Co-deployment is not supported for other services. CDS Ops does not support managing Pangu clusters in managed OSS clusters. Modifying cluster configurations, restarting servers or services, and deleting files are highrisk operations. Exercise caution when performing these operations. Contact Alibaba Cloud technical support to perform them.
 
-### Manage EBS clusters (CDS-
+### 5.2 Manage EBS clusters (CDS-EBS)
 
 **EBS)**
 
-#### Overview of EBS clusters
+#### 5.2.1 Overview of EBS clusters
 
 On the Cluster O&M page, you can view the capacity usage, I/O hangs, resource overview, and current alerts of Elastic Block Storage (EBS) clusters. You can also view a list of EBS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -303,9 +557,9 @@ Manage clusters In the **Clusters** section, you can view the information about 
 | Manage cluster details | Find the cluster that you want to manage and click its name to go to the Cluster Details page. On the Cluster Details page, view the attributes, overall information, capacity information, monitoring data, and hosts of the cluster. You can also configure the cluster and manage services for the cluster based on your business requirements. View cluster attributes View the attributes of the cluster, including the cluster name, storage medium, storage architecture, disaster recovery information, zone, total number of physical hosts, and total number of chunk servers. View cluster overview View the physical capacity usage, BlockMaster nodes, BlockServer nodes, number of cloud disks, number of snapshots, recent inspection items, and monitoring data of the cluster. For more information, see View cluster overview. View cluster capacity information View the physical capacity usage, distribution of used physical capacity, physical capacity usage trend, inventory capacity usage trend, and predicted physical capacity usage based on your business requirements. For more information, see View capacity information. View cluster monitoring data View the real-time monitoring data and historical monitoring data of the cluster and BlockServer nodes, such as the average latency, IOPS, and throughput within a specific time range. For more information, see View cluster monitoring information and View the monitoring information of BlockServer nodes. Configure the cluster Configure the erasure coding (EC) mode, block rebalance, and PANGU services for the cluster. For more information, see Configure the EC mode, Configure block rebalance, and Configure PANGU. Manage cluster services Manage the BlockMaster nodes, BlockServer nodes, snapshot servers, and PANGU services for the cluster. For more information, see Manage BlockMaster nodes, Manage BlockServer nodes, Manage snapshot servers, and Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 |---|---|
 
-#### Manage cluster details
+#### 5.2.2 Manage cluster details
 
-##### View cluster overview
+##### 5.2.2.1 View cluster overview
 
 On the Overview tab of an Elastic Block Storage (EBS) cluster, you can view the information about the cluster, such as the physical capacity usage, number of disks, number of snapshots, and inspection items. This way, you can understand the overall information about the cluster and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -315,9 +569,6 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
 You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
 4. On the **Overview** tab, view the overall information about the cluster.
-
-**Cluster overview**
-
 You can view the physical capacity usage, number and status of BlockMaster nodes, number and status of BlockServer nodes, number of disks, and number of snapshots. The following table describes the metrics.
 
 | Metric | Description |
@@ -347,7 +598,7 @@ You can specify a time range or click a time range to view the monitoring data w
 
 You can click the name of a metric to show or hide the monitoring data in a chart. For example, you can click Cloud Disk in the disk and snapshot trend chart to show only the relevant monitoring data. Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-##### View capacity information
+##### 5.2.2.2 View capacity information
 
 On the Capacity tab of an Elastic Block Storage (EBS) cluster, you can view the physical capacity usage, distribution of used physical capacity, physical capacity usage trend, and inventory capacity trend of the EBS cluster.
 
@@ -369,9 +620,9 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 |---|---|
 | Capacity Prediction | After the system collects the daily capacity data of storage services deployed in the CDS cluster for a specific period, the system predicts the capacity usage of the CDS cluster for the next week once a day. You can perform operations such as cluster scale-up or scale-down based on the predicted capacity usage. This prevents cluster failures that may be caused by exhausted storage capacity and ensures the security and stability of the cluster. Note The predicted capacity usage is for reference only. Perform operations based on the actual capacity usage. Capacity prediction depends on the accumulation of sufficient samples. If the capacity data in a cluster is insufficient, the system cannot predict the capacity usage. No prediction data is available for a newly deployed cluster. You can click the Capacity Prediction tab to view the predicted physical capacity usage. |
 
-##### Monitor clusters
+##### 5.2.2.3 Monitor clusters
 
-###### View cluster monitoring information
+###### 5.2.2.3.1 View cluster monitoring information
 
 You can view the real-time and historical monitoring data of an Elastic Block Storage (EBS) cluster to obtain the cluster resource usage. Historical monitoring data includes the read and write latency and total IOPS of the cluster in a specific time range.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -391,7 +642,7 @@ and view the historical monitoring data of the cluster. Real-time monitoring dat
 
 Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-###### View the monitoring information of
+###### 5.2.2.3.2 View the monitoring information of BlockServer nodes
 
 **BlockServer nodes**
 
@@ -415,9 +666,9 @@ a time range to view the historical monitoring data of the BlockServer node. Rea
 
 Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-##### Configure clusters
+##### 5.2.2.4 Configure clusters
 
-###### Configure the EC mode
+###### 5.2.2.4.1 Configure the EC mode
 
 By default, clusters use erasure coding (EC) to ensure the reliability and consistency of user data. EC helps improve storage reliability. Compared with triplicate storage, EC can provide higher data reliability at lower data redundancy levels.
 
@@ -461,7 +712,7 @@ Only lite clusters support data folding. Data folding in a cluster may be caused
 2. In the **Number Of Folded Chunks** section of the **EC Configurations** tab, select a time
 range to view the number of folded chunks within the selected time range.
 
-###### Configure block rebalance
+###### 5.2.2.4.2 Configure block rebalance
 
 By default, the block rebalance feature is enabled. If data is unevenly distributed because BlockServer nodes are added or stopped, the corresponding cluster automatically balances the number of segments on BlockServer nodes. This way, the resources of the cluster can be properly used.
 
@@ -477,7 +728,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 5. On the **Rebalance** tab, view the basic information and configurations of the block
 rebalance feature. Basic Information: This section displays the average number of segments on each BlockServer node and the variance in the number of segments on all BlockServer nodes. Configurations of block rebalance: You can enable or disable the block rebalance feature in this section. By default, this feature is enabled.
 
-###### Configure Apsara Distributed File System
+###### 5.2.2.4.3 Configure Apsara Distributed File System
 
 You can view and configure the replica traffic control, cluster recycle bin, and quotas based on your business requirements.
 
@@ -534,9 +785,9 @@ iii. Click **OK**.
 2. On the **Pangu Configuration** tab, click the **Quotas and QoS** tab to view the basic
 information, quotas, and quality of service (QoS) settings of the cluster. The basic information and QoS settings are displayed only for hybrid clusters of CDS- OSS and CDS-EBS. If the cluster is a CDS-EBS cluster, only the quota of the Elastic Block Storage (EBS) service is displayed. Basic Information: In this section, you can view the cluster type, QoS feature status, hard disk drive (HDD) VIOPS, SSD VIOPS, total storage usage, and total capacity of the SSD cache. Quota: In this section, you can view the current used capacity, capacity quota for cluster storage, and status of different services. QoS: In this section, you can view the proportions of different services on HDDs and SSDs.
 
-##### Manage services
+##### 5.2.2.5 Manage services
 
-###### Manage BlockMaster nodes
+###### 5.2.2.5.1 Manage BlockMaster nodes
 
 BlockMaster is a type of management node that can be used to perform multiple operations. For example, you can manage the metadata of disks, and generate the information about a block device when you create the virtual block device. BlockMaster nodes can distribute segments to different BlockServer nodes and schedule garbage collection (GC) threads based on the invalid data and fragment data reported by BlockServer nodes. Cloud Defined Storage (CDS)-OPS allows you to view the information about a BlockMaster node, such as the IP address and service location, check the server status, and obtain version information.
 1. Log on to the CDS-OPS console.
@@ -553,7 +804,7 @@ also perform operations on the BlockMaster nodes based on your business requirem
 | Query version information | You can use one of the following methods to obtain the version information about the server: Method 1: Click Obtain Version Information in the Actions column of the server. In the Obtain Version Information dialog box, view the server version information. Method 2: Click Obtain Version Information. In the Obtain Version Information dialog box, view the server version information. |
 | Check server status | Check the status of a server. Find the server that you want to view and clickC heck Status in the Actions column. |
 
-###### Manage BlockServer nodes
+###### 5.2.2.5.2 Manage BlockServer nodes
 
 BlockServer nodes can call the FlatLogFile API to manage the data files of segments that are stored in PANGU. This topic describes how to view the information about BlockServer nodes, such as the IP address, service location, and hard disk partition. You can also obtain version information.
 
@@ -569,7 +820,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 5. On the **Storage Service BlockServer** tab, view the information about BlockServer nodes
 and obtain the server version information as required. You can use one of the following methods to obtain the server version information: Method 1: Click **Obtain Version Information** in the **Actions** column of the server. In the **Obtain Version Information** dialog box, view the server version information. Method 2: Click **Obtain Version Information**. In the **Obtain Version Information** dialog box, view the server version information.
 
-###### Manage snapshot servers
+###### 5.2.2.5.3 Manage snapshot servers
 
 You can view the information about snapshot servers, such as the service address, task load, number of upload tasks, number of replication tasks, and number of download tasks. You can also obtain version information.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -583,7 +834,7 @@ service address (Service Location), status, task load (Load), number of upload t
 6. Click **Query Version Information** in the upper-left corner. In the **Query Version**
 **Information** dialog box, view the server version information.
 
-###### Manage Apsara Distributed File System
+###### 5.2.2.5.4 Manage Apsara Distributed File System
 
 This topic describes how to manage meta servers, chunk servers, and file information based on your business requirements. Manage meta servers Meta servers are used to maintain cluster metadata and instruct upper-layer services how to read and write data. You can manage a meta server to view the meta server information, switch the secondary meta server to the primary meta server, generate checkpoints for the meta server, and obtain the build information of the meta server.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -641,7 +892,7 @@ and perform operations based on your business requirements. The following table 
 | Clear the recycle bin Warning A system exception may occur if you modify a directory or a file. Proceed with caution. | Find the deleted/ directory and click Clear Recycle Bin in the Actions column to delete files from the recycle bin. Note The file recycling policy of the deleted/ directory is the same as the settings of the cluster recycle bin. |
 |---|---|
 
-##### Manage hosts
+##### 5.2.2.6 Manage hosts
 
 On the Host tab of a cluster, you can view the information about the hosts in the cluster and the details of each host, such as the capacity information, disks, server roles, cluster, and monitoring data.
 
@@ -718,7 +969,7 @@ information, see Initiate a CDS Cluster Node Maintenance workflow. Click the hos
 |---|---|---|
 | Total LBAs R _ _ ead | Total LBAs Read | The total number of sectors read by LBAs after a disk is powered on. This attribute is used to analyze the load pattern and read performance trends of a disk. |
 
-#### View compute nodes
+#### 5.2.3 View compute nodes
 
 Compute nodes are used to run computing tasks in a cluster. Cloud Defined Storage (CDS)- OPS allows you to view the information about compute nodes in clusters, Elastic Compute Service (ECS) instances on compute nodes, and disks associated with ECS instances. This way, you can understand the association among compute nodes, ECS instances, and disks, and quickly identify the compute nodes with abnormal TDC status.
 
@@ -739,7 +990,7 @@ i. Find a compute node and click **View ECS** in the **Actions** column. ii. On 
 | View the information about ECS instances on a compute node | View the ID, compute cluster name, hostname, and IP address of each ECS instance. |
 | View the information about disks associated with an ECS instance | View the information about disks associated with an ECS instance and manage disks. a. On the ECS Instances page, find an ECS instance and click Details in the Actions column. b. In the Cloud Disks panel, view the information about disks associated with the ECS instance. In the Cloud Disks panel, find a disk and click its device key in the Disk Device (deviceKey) column to view disk details and manage the disk. |
 
-#### Manage storage sets
+#### 5.2.4 Manage storage sets
 
 You can search for an Elastic Block Storage (EBS) storage set by cluster name or storage set ID, and then perform the following operations to manage the storage set: view the information about the storage set, view disks in the storage set, view capacity usage in each partition of the storage set, and modify the clusters in each partition of the storage set.
 
@@ -763,7 +1014,7 @@ the information in the storage set list and perform operations based on your bus
 |---|---|
 | View the information about disks in a storage set | If you specify a storage set when you create a disk or an Elastic Compute Service (ECS) instance, you can view the information about the disk and its relationship with the storage set. Find the storage set that you want to manage and clickD isk in the Actions column. On the Disk page, you can view the information about the disks in the storage set and manage the disks. For more information, see Manage disks. |
 
-#### Manage disks
+#### 5.2.5 Manage disks
 
 This topic describes how to view the information about the disks of all clusters, such as disk attributes and monitoring data.
 
@@ -813,7 +1064,7 @@ You can view the latency data only within the previous hour. If an exception occ
 
 I/O data is sampled based on the predefined ratio, which does not cover all I/O data. Therefore, partial I/O data is unavailable. The system can analyze abnormal I/O data or sampled I/O data. Abnormal I/O data: requests whose end-to-end latency exceeds the specified threshold in milliseconds. Sampled I/O data: requests sampled based on a fixed ratio. Find the I/O operation that you want to view, click the Plus sign (+) on the left side of the value in the Duration (us) column, and then view the latency of the I/O operation in different modules. Move the pointer over a module name to view the module details.
 
-#### Create hot migration jobs to migrate
+#### 5.2.6 Create hot migration jobs to migrate cloud disks
 
 **cloud disks**
 
@@ -848,7 +1099,7 @@ After you create hot migration jobs to migrate cloud disks, you can view the mig
 **Actions** column. In the **Close** message, click **OK**.
 Stop a hot migration job To stop a hot migration job in the Prepared, Created, Running, Verify, Verifying, or Verified state, find the hot migration job and click **Stop** in the **Actions** column. In the **Stop** message, click **OK**.
 
-#### Exception dashboard
+#### 5.2.7 Exception dashboard
 
 Based on the diagnostic topology views of compute clusters and storage clusters in the Elastic Block Storage (EBS) exception dashboard, O&M engineers can quickly identify unhealthy resources and promptly resolve issues by combining I/O hang details and exception details of the affected clusters.
 
@@ -896,7 +1147,7 @@ information.
 | View exception details of storage clusters | On the Storage Cluster tab, the system displays the exceptions of all unhealthy storage clusters, such as the number of unhealthy disks, unhealthy ECS instances, and all ECS instances. Perform operations as needed. View the exception details of a specified resource Select a storage cluster or a storage node to filter and view the exception details of the specified resource. View node details Find the resource that you want to view and clickN ode Details in the Actions column. In the Node Details panel, you can view the IP address, server role, unhealthy disk, and unhealthy VM of the unhealthy node. If no unhealthy nodes are detected, no information is displayed. View the performance chart Find the resource that you want to view and clickP erformance Monitoring in the Actions column. You can view the monitoring data on the Monitor tab of the cluster. |
 |---|---|
 
-#### Perform canary O&M
+#### 5.2.8 Perform canary O&M
 
 You can initiate canary O&M tasks to run a common O&M command on multiple hosts at a time. This simplifies O&M operations and minimizes the impact in case of a failure. You can stop running a command immediately if the exit code of the command result is not 0. You can also specify a speed and observation period for a canary O&M task. This way, the canary O&M task can run an O&M command at an appropriate speed on the specified hosts. During a canary O&M task, you can view the progress and results in real time.
 
@@ -931,9 +1182,9 @@ describes the parameters.
 5. Click **OK**. In the message that appears, click **OK**.
 After a canary O&M task is executed, you can perform the following operations: View execution records Click **Details** in the **Actions** column of the canary O&M task. In the **Execution Details** panel, you can view the execution details, command details, and progress of the canary O&M task. In the **Progress Details** section, click **View** in the **Execution Result Details** column to view the detailed execution result. Re-execute the canary O&M task Click **Execute Again** in the **Actions** column. In the **Execute Again** dialog box, modify the parameters such as Destination Machine and Execution Reason and then click **OK** to re-execute the task. Find the canary O&M tasks of a specific cluster After you specify a cluster and an execution state, the system displays the O&M tasks in the specified state of the cluster.
 
-#### EBS HaiTu console
+#### 5.2.9 EBS HaiTu console
 
-##### Log in to the HaiTu console
+##### 5.2.9.1 Log in to the HaiTu console
 
 This topic describes how to log in to the HaiTu console.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -941,7 +1192,7 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **CDS-OPS**.
 2. In the left-side navigation pane, choose **CDS-EBS > EBS-HaiTu** to go to the chart console.
 
-##### Homepage
+##### 5.2.9.2 Homepage
 
 On the homepage, O&M engineers can view all cluster information, NC information, disk information, storage cluster capacity usage, disk size trends, and physical capacity trends of Elastic Block Storage (EBS) resources.
 1. Log in to the HaiTu console.
@@ -982,7 +1233,7 @@ In the **Statistics Overview** section, select a cluster to view the disk size t
 |---|---|
 | Physical Capacity Trend | The trends of total physical capacity and used physical capacity of a specific cluster within the last 15 days. Total Physical Capacity: the maximum amount of space in the cluster for data writes. Used Physical Capacity: the used physical capacity that is reported by Apsara Distributed File System. |
 
-##### Cluster management
+##### 5.2.9.3 Cluster management
 
 On the Cluster Management page, O&M engineers can manage Elastic Block Storage (EBS) computing clusters, storage clusters, and control clusters. The features supported by a cluster vary based on the cluster type. The actual features that are available in the console shall prevail.
 1. Log in to the HaiTu console.
@@ -997,7 +1248,7 @@ On the Cluster Management page, O&M engineers can manage Elastic Block Storage (
 | View cluster details | Find the cluster that you want to view and clickV iew Details in the Operation column. On the details page of the cluster, you can view the cluster attributes, servers, service status, service template, and performance data, and configure ECs based on your business requirements. View cluster attributes: View the cluster attributes, such as the name, zone, cluster type, TianjiProject, and number of NCs. For a storage cluster, you can also view the storage type, availability, number of replicas, and capacity information. The capacity information includes the number of disks, physical capacity usage, and logical capacity usage. View machines: View the hosts in the cluster and the details of the hosts. View service status: This feature is supported only by CDS-EBS clusters. View the status of the BlockMaster and BlockServer services in the cluster. View service templates: View the deployment template and template version of each service in the cluster. View performance data: This feature is supported only by CDS-EBS clusters. View the performance data of the cluster and NCs. Configure a cluster EC: This feature is supported only by CDS-EBS clusters. By default, clusters use erasure coding (EC) to ensure the reliability and consistency of user data. You can modify the configuration type of the cluster EC based on your business requirements. |
 |---|---|
 
-###### View machines
+###### 5.2.9.3.1 View machines
 
 In the machine list, you can view hosts in a cluster and the host details. This helps O&M engineers fully understand the distribution of cluster resources and the status of the hosts, quickly identify issues, and efficiently perform maintenance operations.
 1. Log in to the HaiTu console.
@@ -1017,7 +1268,7 @@ The information may vary based on the cluster type. The information displayed in
 | Filter hosts that have a specified server role | Click the icon in the Server Role column, select one or more service roles, and then click OK. |
 | View physical disk information | Find the host that you want to view and clickd etail in the Physical Disk Information column. In the Disk Information dialog box, view the physical disks and disk information, including the disk ID, total capacity, used capacity, available capacity, and status. Important This feature is supported only by CDS-EBS storage clusters. |
 
-###### View service status
+###### 5.2.9.3.2 View service status
 
 This feature is supported only by CDS-EBS clusters. O&M engineers can view the status of the BlockMaster and BlockServer services to check the health status of the storage control plane and data plane, and detect service exceptions at the earliest opportunity.
 
@@ -1045,7 +1296,7 @@ In the **BlockMaster** section, view the IP address, service address, status, an
 
 In the **BlockServer** section, view the location, number of segments, read IOPS, write IOPS, read rate (Mbit/s), write rate (Mbit/s), read latency, write latency, and status of BlockServer.
 
-###### View service templates
+###### 5.2.9.3.3 View service templates
 
 O&M engineers can view service templates to quickly learn about the deployment template and version of each service in a cluster. This feature helps engineers obtain accurate information for version upgrade, configuration comparison, and standardized O&M.
 1. Log in to the HaiTu console.
@@ -1054,7 +1305,7 @@ O&M engineers can view service templates to quickly learn about the deployment t
 **Details** in the **Actions** column.
 4. Clear the **Service Templates** tab in the lower part of the page.
 
-###### View performance data
+###### 5.2.9.3.4 View performance data
 
 This feature is supported only by CDS-EBS clusters. O&M engineers can view the performance data of a cluster and NCs to learn about the resource usage of the cluster and BlockServer.
 1. Log in to the HaiTu console.
@@ -1083,7 +1334,7 @@ On the **NC Performance** tab, click an NC to view the IOPS, throughput, and lat
 | Throughput | The total throughput of data reads and writes in the BlockServer node. You can view the following monitoring data: Read: the throughput data reads. Write: the throughput data writes. |
 | Latency | The average read/write latency of the BlockServer node. You can view the following monitoring data: Read: the average latency of data reads. Write: the average latency of data writes. |
 
-###### Specify an EC for a cluster
+###### 5.2.9.3.5 Specify an EC for a cluster
 
 This feature is supported only by CDS-EBS clusters. By default, clusters use erasure coding (EC) to ensure the reliability and consistency of user data. EC helps improve storage reliability. Compared with triplicate storage, EC can provide higher data reliability at lower data redundancy levels.
 
@@ -1100,7 +1351,7 @@ After the EC mode is enabled for a cluster, you cannot disable this mode for the
 the **EC Configuration** section. All EC configurations supported by the cluster are displayed in the configuration type list. Select EC configurations based on your business requirements. After you select an EC type, the system obtains the number of data blocks and the number of parity blocks for this configuration. Some clusters do not support the Configuration Type parameter. The actual page shall prevail.
 5. Click **Save**.
 
-###### Configure a cluster sales policy
+###### 5.2.9.3.6 Configure a cluster sales policy
 
 | You can configure an appropriate overcommit ratio to reduce storage costs while |   |   |
 |---|---|---|
@@ -1135,7 +1386,7 @@ After you disable sales for a cluster, new disks are no longer scheduled to the 
 2. Click **Save**. In the message that appears, click **OK**.
 After the O&M operations are completed, turn on **Sales Switch** to allow purchases of the cluster. Then, new disks can be automatically scheduled to the cluster.
 
-##### Machine management
+##### 5.2.9.4 Machine management
 
 On the Machine Management page, O&M engineers can view the host information and host details in a cluster. This information allows O&M engineers to quickly understand the physical location, service role status, and key attributes of hosts in a cluster, and facilitates resource locating and troubleshooting.
 1. Log in to the HaiTu console.
@@ -1149,9 +1400,9 @@ By default, hosts in all clusters are displayed.
 | Search for hosts | Search for hosts by hostname, IP address, data center, room, server rack, or serial number (SN). |
 | View host details | Find the host that you want to view and clickD etails in the Actions column. On the details page of the host, view the basic information about the host and the status of the server role. View basic information about the host: In the Basic Information section, view the following host information: Name, IP Address, Cluster, TianjiProject, IDC, Machine Room, Rack, SN, and Status. View service role status: In the Service Role section, view the service roles and their states. |
 
-##### Disk management
+##### 5.2.9.5 Disk management
 
-###### Manage the disk list
+###### 5.2.9.5.1 Manage the disk list
 
 O&M engineers can manage disk information to obtain the key attributes, such as the disk ID, status, and capacity, and modify disk IOPS and BPS configurations to facilitate resource management and troubleshooting.
 1. Log in to the HaiTu console.
@@ -1167,7 +1418,7 @@ O&M engineers can manage disk information to obtain the key attributes, such as 
 | View disk details | Find the disk that you want to view and clickD etails in the Actions column. On the Block Device Information page, view sales, computing control, and storage control information about the disk, including the name, specification, ownership, and status of the disk. For more information, see View disk details. |
 | Configure a disk QoS policy | Important This feature is applicable only to O&M scenarios of CDS-EBS clusters. Exercise caution when you perform this operation. When you scale up a disk, change the configurations of a disk without stopping services, or replace the operating system installed on a disk, all Quality of Service (QoS) values of the disk are restored to the values that are automatically calculated by Elastic Compute Service (ECS). Modify the disk IOPS and BPS settings Procedure: i. Find the disk that you want to manage and clickS et Disk QoS in the Actions column. ii. In the Set Disk QoS dialog box, configure the New IOPS Value and New BPS Value parameters based on the maximum IOPS and BPS values that can be set for the disk. BPS indicates the number of bytes transferred per second. It represents the throughput, and the unit is MB/s. IOPS indicates the number of read and write operations processed per second. It represents the random access performance. Both values must be greater than 0. iii. Click OK. |
 
-###### View disk details
+###### 5.2.9.5.2 View disk details
 
 O&M engineers can fully understand disk sales, computing control, and storage control details, including the name, specification, ownership, and status. This helps O&M engineers implement unified resource management and efficient O&M.
 1. Log in to the HaiTu console.
@@ -1193,11 +1444,11 @@ The system displays the sales, computing control, and storage control informatio
 | Sto rag e Co ntr ol Inf or ma tio n | Volum eID: The volume ID. pangu path: _ the path of the volume in Apsara Distrib uted File System . | Storage Control Capacity: the capacity of records in the storage control system. Storage Type: the storage type of the disk. Valid values: io16 (standard performance disk), io15 (high performance disk), io8 (ultra disk), and io7(SSD). Shared Disk: Yes is displayed when the multi-attach feature is enabled for the disk. EC Progress: the erasure coding (EC) conversion progress of the disk. If you set the value to EC Desired State, the EC type of the disk is the same as that of the cluster. EC conversion is performed for existing disks only when the cluster EC type changes Overall Performance: includes the maximum IOPS and rate (in bit/s) of the disk. Baseline performance: includes the maximum read, write, and read/write IOPS and rate (in bit/s) of the disk. | Storage Cluster: the storage cluster to which the disk belongs. | Disk Status: the status of the disk that is managed by RiverMaster. Valuable values: created (created), deleting (in the RiverMaster recycle bin), and deleted (deleted by RiverMaster). Created At: the time when the disk was created. Updated At: the time when the data was updated. |
 |---|---|---|---|---|
 
-##### Monitoring and alerting
+##### 5.2.9.6 Monitoring and alerting
 
-###### Manage monitoring and inspection
+###### 5.2.9.6.1 Manage monitoring and inspection
 
-###### View metrics in a Distributed System
+###### 5.2.9.6.1.1 View metrics in a Distributed System Performance Monitor view
 
 **Performance Monitor view**
 
@@ -1221,7 +1472,7 @@ conditions.
 4. Click the
 icon to view the Distributed System Performance Monitor metrics of the selected cluster within the specified time period. Click the icon in the upper-right corner of a Distributed System Performance Monitor metric to view the Distributed System Performance Monitor map of the metric and the metric details of each machine.
 
-###### View metric inspections
+###### 5.2.9.6.1.2 View metric inspections
 
 O&M engineers can quickly locate anomalies based on inspection results, and implement automated monitoring and intelligent anomaly detection based on inspection configurations.
 
@@ -1245,7 +1496,7 @@ On the **Inspection Configuration** tab, view the list of inspection items, the 
 | View the details of inspection items | Click Details in the Operation column of an inspection item. On theM odify Indicator Collection Configuration page, view the details of the inspection item, such as the metric name, tag, detection algorithm, inspection item name, execution interval, inspection time interval, aggregation method, aggregation interval, and advanced settings. |
 | View the history of an inspection item | Find the inspection item that you want to view and clickH istory in the Operation column. In the Task Execution History dialog box, view the execution history of the inspection item, including the start time, end time, duration, status, and result. |
 
-###### Manage log inspections
+###### 5.2.9.6.1.3 Manage log inspections
 
 By default, automatic inspections on I/O hang event logs are forcibly enabled. O&M engineers can view the inspection configurations and inspection history, and can manually start inspections. This helps you detect I/O hangs at the earliest opportunity.
 1. Log in to the HaiTu console.
@@ -1267,7 +1518,7 @@ inspection tasks based on your business requirements.
 
 View event information about log inspections in Event Center. View I/O hang events.
 
-###### View I/O hangs
+###### 5.2.9.6.2 View I/O hangs
 
 O&M engineers can view the information about I/O hangs to quickly locate disks that contain I/O anomalies and perform troubleshooting.
 
@@ -1281,7 +1532,7 @@ By default, I/O hangs within the last day are displayed. You can sort and filter
 4. Click **Query**.
 Then, I/O hangs within the specified time range are displayed. Click **View** in the **Actions** column to view information about all I/O hangs on the disk within the specified time range.
 
-###### View SLA metrics
+###### 5.2.9.6.3 View SLA metrics
 
 The system monitors the key service level agreement (SLA) metrics of Cloud Defined Storage (CDS) in real time. It provides availability monitoring support for scenarios such as software update, configuration change, and service O&M. This allows you to identify system exceptions at the earliest opportunity and minimizes the impact of exceptions.
 
@@ -1315,9 +1566,9 @@ If the SLA system links encounter exceptions, the heartbeat check stops. In this
 2. In the **Historical Exceptions** panel, select a cluster and specify Time Range or Time Type.
 By default, historical SLA exceptions within the previous hour are displayed. You can also view historical SLA exceptions within at most the previous seven days.
 
-##### Emergency diagnostics
+##### 5.2.9.7 Emergency diagnostics
 
-###### Query logs
+###### 5.2.9.7.1 Query logs
 
 You can query logs of a specified time range based on the module, NC, and log path. You can quickly locate issues by analyzing the logs of a module where an exception occurs.
 
@@ -1332,7 +1583,7 @@ The system displays the log list.
 4. Download or view logs.
 To download logs to your on-premises machine, click **Download** in the **Actions** column. To view log details, click **View** in the **Actions** column. On the log details page, you can filter logs by log category and time range.
 
-###### View disk performance data
+###### 5.2.9.7.2 View disk performance data
 
 You can view the basic information, second-level monitoring data, and minute-level monitoring data of disks to understand the status of disks and analyze disks with I/O exceptions.
 1. Log in to the HaiTu console.
@@ -1354,7 +1605,7 @@ The system displays the basic information, second-level monitoring data, and min
 | View second-level monitoring data | On the Second-level Monitoring tab, select a time range and click Query Monitoring Data to view the average AWAIT latency, throughput (bit/s), IOPS, queue size, and block size of the disk. |
 | View minute-level monitoring data | On the Minute-level Monitoring tab, select a time range and click Query Monitoring Data to view the minute-level read/write latency, throughput, and read/write IOPS of the disk. Move the pointer over a trend chart to view the value at a specific point in time. |
 
-###### Software O&M
+###### 5.2.9.7.3 Software O&M
 
 The system provides built-in common O&M workflows to support on-demand execution and flexible management that can help you improve O&M efficiency.
 
@@ -1433,7 +1684,7 @@ Manage workflows of O&M operations based on your business requirements.
 | View workflow information | In the workflow list, view the name, module, description, status, and number of executions of an O&M operation. You can filter workflows by workflow name or description. |
 | Manage workflow details | Find the O&M operation that you want to manage and choose > View details in the Operation column. On the workflow details page, view the workflow information, number of executions, success rate, last execution time, workflow design, and execution history, and perform operations as needed. View execution details: On the Execution History page, click the execution ID of an execution record or click View details in the Operation column. On the execution details page, view the execution information, execution parameters, output details, execution progress, and execution details. Execute a workflow: Click Execute to execute a workflow. For more information, see Execute a single workflow. |
 
-###### Event Center
+###### 5.2.9.7.4 Event Center
 
 The Event Center displays events from all EBS clusters, including EBS-1.0 and CDS-EBS.
 1. Log in to the Haitu Console.
@@ -1449,9 +1700,9 @@ minutes for all clusters that contain EBS storage products. You can then act on 
 |---|---|
 | View event details | Click Details in the Actions column for an event. The Event Details panel displays the event ID, event level, event type, submitter IP address, occurrence time, and detailed data. |
 
-##### Basic O&M
+##### 5.2.9.8 Basic O&M
 
-###### Manage storage sets
+###### 5.2.9.8.1 Manage storage sets
 
 On the Storage Set page, you can search for an Elastic Block Storage (EBS) storage set by cluster ID or name, and then perform the following operations to manage the storage set: view the information about the storage set, view disks in the storage set, view capacity usage in each partition of the storage set, and modify the clusters in each partition of the storage set.
 
@@ -1506,9 +1757,9 @@ If you specify a storage set when you create a disk or an ECS instance, O&M engi
 **Disks** page, view the information about the disks in the storage set and manage the disks
 based on your business requirements.
 
-##### Migration and replication O&M
+##### 5.2.9.9 Migration and replication O&M
 
-###### Automatic migration
+###### 5.2.9.9.1 Automatic migration
 
 The automatic migration feature allows O&M engineers to migrate one or more disks between Elastic Block Storage (EBS) 1.0 clusters, between CDS-EBS clusters, or between EBS 1.0 and CDS-EBS clusters. This feature eliminates downtime during the entire migration process, ensures business continuity, and improves resource scheduling flexibility and O&M efficiency.
 
@@ -1604,7 +1855,7 @@ After you create a migration task, you can perform the following operations base
 | Query migration tasks | Search for migration tasks by source cluster, migration status, or creator. 1. Select the source cluster or migration status, or enter the creator. Available task states: Running, Stopped, and Done. 2. Click Query. |
 | Adjust display columns | Click Select Column and select or clear the column names in the dialog box to show or hide the columns. |
 
-###### Auto decommissioning
+###### 5.2.9.9.2 Auto decommissioning
 
 This feature allows O&M engineers to decommission clusters that do not need to be retained. During the decommissioning process, O&M engineers can automatically migrate data from the source cluster to the destination cluster. This ensures smooth data migration, efficient resource recovery, and data continuity, and also improves O&M efficiency.
 
@@ -1700,7 +1951,7 @@ about the disks in the Running, To Be Run, Complete, or Error state, the total n
 | Export a specified disk migration task | Select the task that you want to export and clickE xport as CSV. |
 | Export all migration tasks | Click Export All Tasks. |
 
-###### Migration management
+###### 5.2.9.9.3 Migration management
 
 O&M engineers can manage disk migration tasks during O&M, such as automatic migration, automatic decommissioning, and disk configuration change. This allows O&M engineers to track the real-time progress and execution status of each task in a visualized manner, and implements observation, tracking, and management during the migration process.
 1. Log in to the HaiTu console.
@@ -1766,7 +2017,7 @@ bpsVerify, mainTxns, and remainVerifySize metrics of the task.
 **View advanced information**: On the **Advanced Information** tab, view the advanced
 information about the migration process, including the source device address (srcDeviceUri), destination device address (destDeviceUri), source cluster name (srcClusterName), completion time (finishTime), and migration type (taskType).
 
-###### Asynchronous replication
+###### 5.2.9.9.4 Asynchronous replication
 
 The asynchronous replication feature allows O&M engineers to monitor the data synchronization status and exceptions of disk asynchronous replication and replication pairconsistent groups. This allows O&M engineers to manage disk disaster recovery in a visualized manner.
 
@@ -1859,9 +2110,9 @@ The following table describes the synchronization information of a replication p
 | syncStartAt | The time when the synchronization was started. |
 | syncStep | The stage of the synchronization process. |
 
-###### O&M background
+###### 5.2.9.9.5 O&M background
 
-###### Manage resource information
+###### 5.2.9.9.5.1 Manage resource information
 
 O&M engineers can comprehensively manage and optimize the configuration of resources based on the resource information of clusters, zones, and regions.
 
@@ -1915,7 +2166,7 @@ icon.
 | Modify region descriptions | i. Find the region that you want to modify and click the icon in the Remarks column. ii. In the Modify Remarks dialog box, enter a description. iii. Click OK. |
 |---|---|
 
-###### Configure cross-cloud replication
+###### 5.2.9.9.5.2 Configure cross-cloud replication
 
 Elastic Block Storage (EBS) supports cross-cloud data replication. The asynchronous replication technology is used to synchronize disk data from the primary cloud to other clouds. This feature implements disaster recovery and ensures business continuity in multicloud environments. This topic describes how to configure cross-cloud replication in the HaiTu console.
 
@@ -2056,9 +2307,9 @@ After you configure the destination cloud, you can perform the following operati
 | Instance ID, Region, and Zone | . |
 |---|---|
 
-##### Snapshot O&M
+##### 5.2.9.10 Snapshot O&M
 
-###### Query snapshot information
+###### 5.2.9.10.1 Query snapshot information
 
 O&M engineers can view snapshot information to fully understand the key attributes of a specified snapshot, such as the creation time, status, size, and associated disks. This facilitates evaluation of the snapshot availability and helps O&M engineers to make informed decisions on snapshot use, retention, and deletion.
 1. Log in to the HaiTu console.
@@ -2078,7 +2329,7 @@ region, and then click **Search**.
 | View disk ownership information | View the storage cluster information and sales information of the disk. The Disk Storage Cluster Information section displays the region, zone, cluster name, and path to Apsara Distributed File System (pangu path). _ The Mount Information section displays the Elastic Compute Service (ECS) VMs. |
 | View disks created from a snapshot | Select a time range to query information about disks that are created from the specified snapshot within the selected time range. To export the list of disks that are created from a specified snapshot, select the disks that you want to export and click Export. |
 
-###### Manage snapshots
+###### 5.2.9.10.2 Manage snapshots
 
 The snapshot list allows O&M engineers to view the snapshot creation status of each disk in the cluster, including the snapshot status and creation time. This helps O&M engineers quickly obtain available snapshots for disk data recovery in the event of data loss or anomalies.
 1. Log in to the HaiTu console.
@@ -2095,7 +2346,7 @@ The snapshot list allows O&M engineers to view the snapshot creation status of e
 | Sort or filter snapshots | Filters or sorts snapshots by snapshot creation time, snapshot modification time, snapshot ID, snapshot status, snapshot type, and snapshot progress. Filter snapshots: Click the icon next to the column name, enter a filter condition, and then click Search. Sort Snapshots: Click the icon next to a column name to sort snapshots in ascending or descending order, or cancel sorting by the specified column value. |
 | View snapshot details | Click the snapshot ID. On the Basic Snapshot Information tab, you can view the basic information, status, disk, and ownership of the snapshot. For more information, see Query snapshot information. |
 
-###### Manage OSS usage of snapshots
+###### 5.2.9.10.3 Manage OSS usage of snapshots
 
 O&M engineers can view the Object Storage Service (OSS) clusters and buckets used by snapshots to decide whether to delete snapshots in specific buckets. This helps O&M engineers reduce storage costs and improve resource utilization. By default, the zonedisaster recovery feature is enabled for snapshot buckets. You can modify the configurations as needed.
 
@@ -2117,9 +2368,9 @@ are stored, and configure zone-disaster recovery for the bucket.
 | Configure zone- disaster recovery for a snapshot bucket | Important In regions that do not support zone-disaster recovery for OSS, the zone-disaster recovery configurations do not take effect because OSS does not support zone-disaster recovery by default. After you modify the configuration of zone-disaster recovery, wait at least 2 minutes for the configuration to take effect. In regions that support zone-disaster recovery for OSS, zone-disaster recovery is configured for snapshot buckets by default. The snapshot data is automatically synchronized between the primary and secondary OSS buckets. If you manually disable zone-disaster recovery, the snapshots generated from the newly created disks will no longer synchronize data between the primary and secondary disks. Exercise caution based on your business requirements for snapshot data reliability. To disable zone-disaster recovery, perform the following steps: i. In the Bucket Details section, click Disable Zone-Disaster Recovery. ii. In the message that appears, click OK. To enable this feature again, click Enable Zone-Disaster Recovery and confirm the operation. Note After you enable zone-disaster recovery again, this feature takes effect only on the snapshots that are generated from the newly created disks. |
 |---|---|
 
-### Manage EBS clusters (EBS-1.0)
+### 5.3 Manage EBS clusters (EBS-1.0)
 
-#### Overview of EBS clusters
+#### 5.3.1 Overview of EBS clusters
 
 On the Cluster O&M page, you can view the capacity usage, I/O hangs, resource overview, and current alerts of Elastic Block Storage (EBS) clusters. You can also view a list of EBS clusters to understand the overall information about the clusters and handle exceptions promptly.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2146,9 +2397,9 @@ Cluster list In the **Clusters** section, you can view the information about all
 | Manage cluster details | Click the name of a cluster in the EBS 1.0 architecture. On theC luster Details page, view the attributes, overall information, capacity, and monitoring data of the cluster. You can also manage services and hosts as needed. View cluster attributes View the attributes of the cluster, such as the cluster name, cluster type, services deployed, capacity, zone, total number of physical hosts, total number of hard disks, and total number of chunk servers. View cluster overview View the physical capacity usage, RiverCluster nodes, RiverServer nodes, number of disks, number of snapshots, recent inspection items, and monitoring data of the cluster. For more information, see View cluster overview. View cluster capacity View the remaining capacity and physical capacity information about the cluster. For more information, see View capacity information. View cluster monitoring data View the real-time monitoring data and historical monitoring data of the cluster and RiverServer nodes, such as the average latency within a specific time range, IOPS, and throughput. For more information, see View cluster monitoring information and View the monitoring information of RiverServer nodes. Manage cluster services Manage the RiverCluster nodes, RiverServer nodes, and PANGU for the cluster. For more information, see View the information about RiverCluster nodes, View the information about RiverServer nodes, and Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations as required. For more information, see Manage hosts. |
 |---|---|
 
-#### Manage cluster details
+#### 5.3.2 Manage cluster details
 
-##### View cluster overview
+##### 5.3.2.1 View cluster overview
 
 On the Overview tab of an Elastic Block Storage (EBS) cluster, you can view the information about the cluster, such as the physical capacity usage, number of disks, number of snapshots, and inspection items. This way, you can understand the overall information about the cluster and handle exceptions at the earliest opportunity.
 
@@ -2161,9 +2412,6 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
 You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
 4. On the **Overview** tab, view the overall information about the cluster.
-
-**Cluster overview**
-
 You can view the physical capacity usage, used physical capacity, total physical capacity, number and status of primary servers, number and status of storage servers, number of disks, and number of snapshots. The following table describes the metrics.
 
 | Metric | Description |
@@ -2185,7 +2433,7 @@ time in the **Last Executed At** column. On the **Inspection History** page, vie
 
 You can specify a time range or click a time range to view the monitoring data of the EBS cluster within the specified time range in the disk and snapshot trend chart. You can query the monitoring data of the cluster only by day. The monitoring data of the current day is generated on the next day. You can click the name of a metric to show or hide the monitoring data in a chart. For example, you can click Disks in the disk and snapshot trend chart to hide the monitoring data of disks. Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-##### View capacity information
+##### 5.3.2.2 View capacity information
 
 On the Capacity tab of an Elastic Block Storage (EBS) cluster, you can view the inventory capacity usage and physical capacity usage of the cluster. Then, you can scale up or scale down the cluster based on the capacity usage of the cluster and business requirements.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2203,9 +2451,9 @@ cluster.
 | Physical Capacity Usage | You can view the used physical capacity, total physical capacity, and percentage of used physical capacity of the cluster. Total Physical Capacity: the maximum storage capacity of the cluster to which data can be written. Used Physical Capacity: the used physical capacity that is reported by PANGU. Note If the inventory capacity is sufficient and the physical capacity usage reaches 80%, no more disks can be created. If the remaining inventory capacity is less than the capacity of a disk to be created, the disk cannot be created. If the physical capacity usage reaches 95%, data writing is not allowed. After you move the pointer over the icon on the right side of a capacity metric, the system displays the description and calculation formulas of the capacity metric in the tooltip. |
 |---|---|
 
-##### Monitor clusters
+##### 5.3.2.3 Monitor clusters
 
-###### View cluster monitoring information
+###### 5.3.2.3.1 View cluster monitoring information
 
 You can view the historical monitoring data of an Elastic Block Storage (EBS) cluster to obtain the cluster resource usage. Historical monitoring data includes the read and write latency and total IOPS of the cluster in a specific time range.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2227,7 +2475,7 @@ cluster. Historical monitoring data includes the read and write latency, total I
 
 Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-###### View the monitoring information of
+###### 5.3.2.3.2 View the monitoring information of RiverServer nodes
 
 **RiverServer nodes**
 
@@ -2249,9 +2497,9 @@ historical monitoring data of the RiverServer node. Historical monitoring data i
 
 Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-##### Manage services
+##### 5.3.2.4 Manage services
 
-###### View the information about RiverCluster
+###### 5.3.2.4.1 View the information about RiverCluster nodes
 
 **nodes**
 
@@ -2264,7 +2512,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 4. On the **Service** tab, click **Primary Server RiverCluster**.
 5. On the **Primary Server RiverCluster** tab, view the information about RiverCluster nodes.
 
-###### View the information about RiverServer
+###### 5.3.2.4.2 View the information about RiverServer nodes
 
 **nodes**
 
@@ -2277,7 +2525,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 4. On the **Service** tab, click **Storage Server RiverServer**.
 5. On the **Storage Server RiverServer** tab, view the information about RiverServer nodes.
 
-###### Manage PANGU
+###### 5.3.2.4.3 Manage PANGU
 
 Cloud Defined Storage (CDS)-OPS allows you to perform O&M operations on PANGU clusters of Elastic Block Storage (EBS) 1.0, such as managing meta servers, chunk servers, and files. Manage meta servers Meta servers are used to maintain cluster metadata and instruct upper-layer services how to read and write data. You can manage a meta server to view the meta server information, switch the secondary meta server to the primary meta server, generate checkpoints for the meta server, and obtain the build information of the meta server.
 1. Log in to the CDS-OPS console.
@@ -2314,7 +2562,7 @@ and perform operations based on your business requirements. The following table 
 | View the quotas on a directory | Find a directory and click View Quota in the Actions column. You can view the quotas specified by the following parameters: EntryNumber, FileNumber, FileLogicalLength, and FilePhysicalLength. |
 | View file chunk information | Find the file that you want to manage and clickV iew Chunk Information in the Actions column. You can view the basic information and chunk information of the file. The basic information includes the file ID, file type, number of chunks, and application name. The chunk information includes the chunk ID, chunk status, and servers. |
 
-##### Manage hosts
+##### 5.3.2.5 Manage hosts
 
 On the Host tab of a cluster, you can view the information about the hosts in the cluster and the details of each host, such as the capacity information, disks, server roles, cluster, and monitoring data.
 
@@ -2353,9 +2601,9 @@ server roles, cluster, monitoring data, and logical resources. The following tab
 | View the monitoring data of the host | On the Monitor tab, select a time range to view the monitoring data of the host, including the CPU, memory, load, IOPS, Network Time Protocol (NTP), and traffic. In the Actions column of each metric, you can select Download Data to download the monitoring data to your computer, or select Save as Image to save the monitoring data as an image. |
 | View resource roles | On the Logical Resources tab, view the resource roles of the host. |
 
-### Manage OSS clusters
+### 5.4 Manage OSS clusters
 
-#### Overview of OSS clusters
+#### 5.4.1 Overview of OSS clusters
 
 On the Cluster O&M page, you can view the capacity usage, resource overview, and current alerts of Object Storage Service (OSS) clusters. You can also view a list of OSS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -2376,8 +2624,6 @@ You can view the capacity information, resource overview, and current alerts of 
 | Current Alerts | The numbers of alerts at different levels in all OSS clusters and the latest five alert records. You can click More or an alert level to view and handle the alerts on the Current Alert page. For more information, see Handle current alerts. |
 |---|---|
 
-**Manage OSS clusters**
-
 In the **Clusters** section, you can view the information about all the deployed OSS clusters that are managed by the CDS-OPS platform and perform operations based on your business requirements. The following table describes the operations that you can perform.
 
 | Operation | Description |
@@ -2391,9 +2637,9 @@ In the **Clusters** section, you can view the information about all the deployed
 |---|---|
 | Manage cluster details | Find the cluster that you want to manage and click its name to go to the Cluster Details page. On the Cluster Details page, view the attributes, overview, capacity information, and monitoring data of the cluster. You can also configure the cluster and manage services and hosts for the cluster based on your business requirements. View cluster attributes View the attributes of the cluster, such as the cluster name, storage medium, storage architecture, disaster recovery information, zone, total number of physical hosts, total number of chunk servers, and total number of meta servers. View cluster overview View the overall information about the cluster and the top 10 buckets in different ranking lists. For more information, see View cluster overview. View cluster capacity information View the logical capacity usage, physical capacity usage, distribution of used physical capacity, and physical capacity usage trend of the OSS cluster. For more information, see View capacity information. View cluster monitoring data View the cluster and third-party monitoring data, check the cluster health status, and run background tasks based on your business requirements. For more information, see View cluster monitoring information, Check the health status of a cluster, and Run background tasks. Configure the cluster Configure cluster settings, including the key-value (KV) configurations, erasure coding (EC) mode, background tasks, global flags, quality of service (QoS) policy, and PANGU services. For more information, see Modify KV configurations, Configure the EC mode, Configure a scheduled time for background tasks, Configure a global flag, Configure PANGU, and Configure QoS settings. Manage cluster services Manage KV services, frontend services, and PANGU services for the cluster. For more information, see Manage KV services, Manage access- layer services, and Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 
-#### Manage cluster details
+#### 5.4.2 Manage cluster details
 
-##### View cluster overview
+##### 5.4.2.1 View cluster overview
 
 On the Overview tab of an Object Storage Service (OSS) cluster, you can view the information about the cluster and the top 10 buckets in different ranking lists.
 
@@ -2406,7 +2652,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. In the **Clusters** section of the **Cluster O&M** page, click the cluster name.
 You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
 4. On the **Overview** tab, view the overall information about the cluster.
-You can also choose **More O&M Capabilities** > **Object Storage Service O&M** in the upper-right corner of the Cluster O&M page to go to the OSS O&M console. Cluster overview On the Overview tab, view the cluster information including the physical capacity usage, number of buckets, number of objects, and cluster monitoring information on the current day. The following table describes the metrics.
+You can also choose **More O&M Capabilities** > **Object Storage Service O&M** in the upper-right corner of the Cluster O&M page to go to the OSS O&M console. On the Overview tab, view the cluster information including the physical capacity usage, number of buckets, number of objects, and cluster monitoring information on the current day. The following table describes the metrics.
 
 | Metric | Description |
 |---|---|
@@ -2429,7 +2675,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 4. Click the **Bucket Rankings** tab and specify a time range to view the ranking lists of
 buckets in the cluster. Click a bucket name in a ranking list. On the Bucket Details page, view the bucket information, such as the bucket attributes and monitoring data.
 
-##### View capacity information
+##### 5.4.2.2 View capacity information
 
 You can view the logical capacity usage, physical capacity usage, distribution of used physical capacity, and physical capacity usage trend of an Object Storage Service (OSS) cluster as required.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2449,9 +2695,9 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 | Capacity Prediction | After the system collects the daily capacity data of storage services deployed in the CDS cluster for a specific period, the system predicts the capacity usage of the CDS cluster for the next week once a day. O&M staff can perform operations such as cluster scale-up or scale-down based on the predicted capacity usage. This prevents cluster failures that may be caused by exhausted storage capacity and ensures the security and stability of the cluster. Note The predicted capacity usage is for reference only. Perform operations based on the actual capacity usage. Capacity prediction depends on the accumulation of sufficient samples. If the capacity data in a cluster is insufficient, the system cannot predict the capacity. No prediction data is available for a newly deployed cluster. You can Click the Capacity Prediction tab to view the predicted physical capacity. |
 |---|---|
 
-##### Monitor clusters
+##### 5.4.2.3 Monitor clusters
 
-###### View cluster monitoring information
+###### 5.4.2.3.1 View cluster monitoring information
 
 You can view the monitoring data of an Object Storage Service (OSS) cluster within a specific time range to obtain the cluster status. The monitoring data includes the service level agreement (SLA), status of HTTP requests, storage capacity, queries per second (QPS), bandwidth statistics, and latency.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2471,7 +2717,7 @@ returned per 10 seconds or 1 hour/Number of valid requests × 100% .
 
 Requests for which the HTTP 503 error is returned are not included in the calculation because HTTP 503 errors are commonly caused by invalid request parameters. HTTP Status: the numbers of the returned 5XX, 403, 404, 499, 4XX_other, 2XX, and 3XX status codes and the percentage of the requests for which these codes are returned. Storage: the storage statistics of OSS buckets in the cluster. QPS: the numbers of different types of API requests. Bandwidth Statistics: the traffic statistics of OSS buckets in the cluster. Latency: the average latency and maximum latency of different types of API requests. Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-###### Check the health status of a cluster
+###### 5.4.2.3.2 Check the health status of a cluster
 
 Key-value (KV) engine is a KV storage layer to store KV pairs. This helps you manage large amounts of index information. You can view the status of KV engines by checking the health status of a cluster.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2483,7 +2729,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 5. On the **Health Check** tab, click **Analysis**.
 After the health status of the cluster is checked, you can view the information about the check, such as check items, check components, check results, and failure causes.
 
-###### Run background tasks
+###### 5.4.2.3.3 Run background tasks
 
 You can run background tasks based on your business requirements. For example, you can run Object Storage Service (OSS) lifecycle tasks and garbage collection (GC) tasks.
 
@@ -2501,9 +2747,9 @@ The system displays the background tasks that are run on the selected date. You 
 6. Run tasks as needed.
 Run a lifecycle task In the **Lifecycle** section, click **Run Now**. In the **Note** message, click **OK**. Run a GC task In the **Garbage Collection** section, click **Run Now**. In the **Note** message, click **OK**. After a task is complete, you can view the information about the task, such as the status and duration.
 
-##### Configure clusters
+##### 5.4.2.4 Configure clusters
 
-###### Modify KV configurations
+###### 5.4.2.4.1 Modify KV configurations
 
 You can modify the configurations of key-value (KV) Server nodes, such as monitoring data capacity. You can also enable or disable automatic partition splitting for key management (KM) Master nodes. In most cases, you can retain the default KV configurations. We recommend that you modify the KV configurations under the guidance of technical experts.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2517,7 +2763,7 @@ configurations. KV configurations are asynchronously modified with a specific la
 **Edit** in the **Actions** column. By default, automatic partition splitting is enabled. We
 recommend that you retain the default setting.
 
-###### Configure the EC mode
+###### 5.4.2.4.2 Configure the EC mode
 
 By default, clusters use erasure coding (EC) to ensure the reliability and consistency of data. EC helps improve storage reliability. Compared with triplicate storage, EC can implement high data reliability with lower data redundancy. This way, when the ECFoldChunks alert is triggered, you can view the number of folded chunks to measure the volume of folded data.
 
@@ -2553,7 +2799,7 @@ Data folding in a cluster may be caused by server-related hardware faults. We re
 2. In the **Number Of Folded Chunks** section on the **EC Configurations** tab, select a time
 range to view the number of folded chunks within the selected time range.
 
-###### Configure a scheduled time for
+###### 5.4.2.4.3 Configure a scheduled time for background tasks
 
 **background tasks**
 
@@ -2575,7 +2821,7 @@ The time is displayed in UTC. Take note of the differences between the UTC time 
 
 The time is displayed based on the standard time of your region.
 
-###### Configure a global flag
+###### 5.4.2.4.4 Configure a global flag
 
 You can configure the settings of each service in a cluster based on your business requirements. In most cases, you can use the default global flag configurations. If you need to configure a global flag, configure the settings under the guidance of technical experts.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2585,7 +2831,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
 4. On the **Configure** tab, click **GlobalFlag Management**.
 5. On the **GlobalFlag Management** tab, query or configure global flags by using one of the
-following methods: On the **Lite Edition** tab, query or configure a global flag based on the global flag name. Query a global flag based on the global flag name Select a global flag name from the Flag Name drop-down list. The configurations of the global flag on different servers are displayed in the right-side table, such as the service type, flag value, and server IP address. Configure a global flag Select a global flag name from the Flag Name drop-down list and configure the Flag parameter. Then, click **Submit** to change the value of the global flag. On the **Professional Edition** tab, configure the parameters that are described in the following table and click **Submit**.
+following methods: On the **Lite Edition** tab, query or configure a global flag based on the global flag name. Query a global flag based on the global flag name Select a global flag name from the Flag Name drop-down list. The configurations of the global flag on different servers are displayed in the right-side table, such as the service type, flag value, and server IP address. Select a global flag name from the Flag Name drop-down list and configure the Flag parameter. Then, click **Submit** to change the value of the global flag. On the **Professional Edition** tab, configure the parameters that are described in the following table and click **Submit**.
 
 | Parameter | Description |
 |---|---|
@@ -2596,7 +2842,7 @@ following methods: On the **Lite Edition** tab, query or configure a global flag
 | Flag | The value of the global flag. This parameter is displayed only if you set the Actions parameter to set. |
 | Remarks | The remarks of the global flag. This parameter is displayed only if you set the Actions parameter to set. |
 
-###### Configure Apsara Distributed File System
+###### 5.4.2.4.5 Configure Apsara Distributed File System
 
 You can view and configure the replica traffic control, cluster recycle bin, and quotas based on your business requirements. Configurereplicatrafficcontrol Configure replica traffic control You can configure the maximum and minimum replication speeds based on your business requirements to control data replica traffic. If you need to quickly replicate data, you can increase the maximum and minimum replication speeds. If you do not want the replication to consume a large amount of resources, you can reduce the maximum and minimum replication speeds.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2648,7 +2894,7 @@ iii. Click **OK**.
 2. On the **Pangu Configuration** tab, click the **Quotas and QoS** tab to view the basic
 information, quotas, and QoS of the cluster. The basic information and QoS are displayed only for CDS clusters with the hybrid deployment of Elastic Block Storage (EBS) and Object Storage Service (OSS). For CDS- OSS clusters, only the quota of the OSS service is displayed. Basic Information: In this section, you can view the cluster type, QoS feature status, HDD VIOPS, SSD VIOPS, total storage usage, and total capacity of the SSD cache. Quota: In this section, you can view the current used capacity, capacity quota for cluster storage, and status of different services. QoS: In this section, you can view the VIOPS proportions of different services on HDDs and SSDs.
 
-###### Configure QoS settings
+###### 5.4.2.4.6 Configure QoS settings
 
 By default, the read/write bandwidth and quality of service (QoS) of an Object Storage Service (OSS) cluster are not limited. If resource usage needs to be controlled due to system overload or business priority adjustment, you can configure QoS settings to modify the maximum read/write bandwidth and QPS of a cluster to ensure stable operation of key business.
 
@@ -2691,9 +2937,9 @@ i. Find the parameter that you want to modify and click **Edit** in the **Action
 
 If the difference between the specified value and the initial value exceeds the aforesaid limit, you can initiate the configuration task by selecting the check box for forced execution. iii. Click **OK**.
 
-##### Manage services
+##### 5.4.2.5 Manage services
 
-###### Manage KV services
+###### 5.4.2.5.1 Manage KV services
 
 In an index system, KV services have the following responsibilities: Key-value (KV) Master nodes can manage and schedule partitions. KV Server nodes can configure the indexes of partitions and store data. Key management (KM) Master nodes can schedule and distribute loads to balance the loads of each partition. KM Server nodes can run tasks. If you need to analyze an O&M issue, you can obtain the information about KV services such as KV Master and KV Server nodes or restart KV services for troubleshooting.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -2739,7 +2985,7 @@ Manage KM Server nodes On the **KMServer** tab, view the server information abou
 | Restart a service | Find the KM Server node that you want to manage and clickR estart in the Actions column to restart the service on the KM Server node. Warning Security risks may arise if you restart services. Proceed with caution. |
 |---|---|
 
-###### Manage access-layer services
+###### 5.4.2.5.2 Manage access-layer services
 
 After you analyze an error and determine that the error occurs in an access-layer service, you can restart the access-layer service, such as a service of TEngine, OssServer, or OssImageServer, to troubleshoot the error.
 
@@ -2764,7 +3010,7 @@ manage the corresponding access-layer services. Manage TEngine On the **TEngine*
 
 Manage OssImageServer On the **OssImageServer** tab, you can view the servers of OssImageServer and restart a service based on your business requirements. Find a server and click **Restart** in the **Actions** column to restart a service of OssImageServer.
 
-###### Manage Apsara Distributed File System
+###### 5.4.2.5.3 Manage Apsara Distributed File System
 
 You can manage meta servers, chunk servers, and file information based on your business requirements. Manage meta servers Meta servers are used to maintain cluster metadata and instruct upper-layer services how to read and write data. You can manage a meta server to view the meta server information, switch the secondary meta server to the primary meta server, generate checkpoints for the meta server, and obtain the build information of the meta server.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -2824,7 +3070,7 @@ and perform operations based on your business requirements. The following table 
 | Clear the recycle bin Warning A system exception may occur if you modify a directory or a file. Proceed with caution. | Find the deleted/ directory and click Clear Recycle Bin in the Actions column to delete files from the recycle bin. Note The file recycling policy of the deleted/ directory is the same as the settings of the cluster recycle bin. |
 |---|---|
 
-##### Manage hosts
+##### 5.4.2.6 Manage hosts
 
 On the Host tab of a cluster, you can view the information about hosts in the cluster and the details of each host, such as the capacity information, disks, server roles, cluster, and monitoring data.
 
@@ -2899,9 +3145,9 @@ information, see Initiate a CDS Cluster Node Maintenance workflow. Click the hos
 | Total LBAs W _ _ ritten | Total LBAs Written | The total number of sectors written by logical block addresses (LBAs) after a disk is powered on. This attribute is used to estimate the lifespan of a disk. |
 | Total LBAs R _ _ ead | Total LBAs Read | The total number of sectors read by LBAs after a disk is powered on. This attribute is used to analyze the load pattern and read performance trends of a disk. |
 
-#### Manage buckets
+#### 5.4.3 Manage buckets
 
-##### Manage bucket information
+##### 5.4.3.1 Manage bucket information
 
 On the Buckets page, you can view the information about buckets in a cluster or a location, manage bucket attributes, and view the monitoring data of buckets.
 
@@ -2944,7 +3190,7 @@ per 10 seconds or 1 hour/Number of valid requests × 100% .
 
 HTTP Status: the numbers of the returned 5XX, 403, 404, 499, 4XX_other, 2XX, and 3XX status codes and the percentage of the requests for which these codes are returned. Traffic: the traffic that is generated by the bucket. QPS: the numbers of different types of API requests. Latency: the average latency and maximum latency of different types of API requests. Storage Capacity: the storage capacity of the bucket. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image. View the source data of resource attributes Click the icon in the upper-right corner to view the source data of resource attributes, such as name, owner, and bucketStatus.
 
-##### Query bucket information
+##### 5.4.3.2 Query bucket information
 
 You can query buckets by Apsara Stack tenant account, user ID (UID), or bucket name. After you query a bucket, you can view the bucket details, manage the bucket, and delete the bucket.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -2968,7 +3214,7 @@ The system displays the basic information about the user and the buckets that be
 | Modify the number of buckets that can be created | Important Modifying the number of buckets that can be created is a high-risk operation. Proceed with caution. By default, a user can create a maximum of 100 buckets. You can adjust the maximum number of buckets that a user can create as required. a. Click Modify the number of buckets that can be created in the Actions column. b. In the Modify the number of buckets that can be created dialog box, specify the maximum number of buckets that can be created. Valid values: 100 to 10000. Select a value as required. c. Click Confirm. |
 | View the status change history of the user | View the change history of the user, such as the operator who modified the user status, the new status, and the reason. To view the change history, click View user status change history in the Actions column. |
 
-Manage buckets Buckets that meet the filter conditions are displayed in the bucket list. You can view bucket information and manage buckets as required.
+Buckets that meet the filter conditions are displayed in the bucket list. You can view bucket information and manage buckets as required.
 
 | Operation | Description |
 |---|---|
@@ -2980,7 +3226,7 @@ Manage buckets Buckets that meet the filter conditions are displayed in the buck
 |---|---|
 | Delete buckets | Important If you delete a bucket, all objects in the bucket are also deleted. Buckets and objects cannot be recovered after they are deleted. Proceed with caution. You can delete a bucket if you no longer use it. Find the bucket that you want to delete and clickD elete in the Actions column. In the Warning message, click Execute. |
 
-##### Configure QoS information
+##### 5.4.3.3 Configure QoS information
 
 This topic describes how to configure quality of service (QoS) information for users or buckets to limit the total upstream traffic, total downstream traffic, and total queries per second (QPS) of users or buckets. QoS configurations prevent a single user or bucket from occupying excessive network and system resources.
 
@@ -3018,9 +3264,9 @@ After a QoS rule is configured, you can manage the QoS rule based on your busine
 | Enable or disable a QoS rule | After a QoS rule is enabled, you can click Cancel in the Actions column of the QoS rule to disable it. After a QoS rule is disabled, you can clickE nable in the Actions column of the QoS rule to enable it. |
 | Quickly create a QoS rule | You can click Copy in the Actions column of a QoS rule to copy the information of the QoS rule and then quickly configure a QoS rule for other resources. |
 
-#### Manage synchronization configurations
+#### 5.4.4 Manage synchronization configurations
 
-##### Manage synchronization processes
+##### 5.4.4.1 Manage synchronization processes
 
 This topic describes how to manage the cross-region or cross-cloud synchronization processes in a source cluster in a centralized manner. For example, you can view the synchronization status, configure the quality of service (QoS) settings, and configure the number of subqueues.
 
@@ -3043,7 +3289,7 @@ The information about related synchronization processes in the cluster is displa
 | Configure the QoS settings of a synchronization process | Click Set up QOS in the Actions column of a synchronization process to configure parameters such as Execution type and Timing execution. |
 | Configure the number of subqueues | Click Set the number of subqueues in the Actions column of a synchronization process to configure the number of subqueues in the process. |
 
-##### Configure a cross-region synchronization
+##### 5.4.4.2 Configure a cross-region synchronization process
 
 **process**
 
@@ -3072,7 +3318,7 @@ In the Apsara Uni-manager Management Console, go to the OSS console to configure
 
 To manage a synchronization process, such as viewing the synchronization status and configuring quality of service (QoS) for the synchronization process, you can perform the operations on the **Synchronization Process Management** page. For more information, see Manage synchronization processes.
 
-##### Configure a cross-cloud synchronization
+##### 5.4.4.3 Configure a cross-cloud synchronization process
 
 **process**
 
@@ -3230,7 +3476,7 @@ In the Apsara Uni-manager Management Console, go to the OSS console to configure
 
 To manage a synchronization process, such as viewing the synchronization status and configuring quality of service (QoS) for the synchronization process, you can perform the operations on the **Synchronization Process Management** page. For more information, see Manage synchronization processes.
 
-##### View monitoring data of cluster
+##### 5.4.4.4 View monitoring data of cluster synchronization
 
 **synchronization**
 
@@ -3246,9 +3492,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **Cluster Synchronization Monitoring** page, select a time range and click **View**.
 The system displays the synchronization monitoring data of clusters in each region within the specified time range, including the number of errors of each type, the number of synchronized files, and the number of fragments.
 
-#### O&M robots
+#### 5.4.5 O&M robots
 
-##### Manage O&M robots
+##### 5.4.5.1 Manage O&M robots
 
 You can use O&M robots to perform automatic O&M tasks, such as intelligent analysis and diagnostics on faulty machines, intelligent analysis and diagnostics on hot issues, automatic repair of key-value (KV) CheckReady failures, emergency solutions for file damages, automatic adjustment of the KV recycle bin, and automatic write prohibition and recovery of Object Storage Service (OSS). O&M robots simplify O&M operations and improve O&M efficiency.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -3271,7 +3517,7 @@ By default, all O&M robots are enabled. If you need to disable an O&M robot, fin
 | OSS Automatic Write Prohibition and Recovery | After this O&M robot is enabled, if the write prohibition threshold is reached, the system automatically prohibits write operations to OSS. If the write recovery threshold is reached, the system automatically resumes write operations to OSS. You can find the O&M robot and click Edit in the Actions column to modify the thresholds. |
 | Automatic Adjustment of GC Partition Quantity | After this O&M robot is enabled, the system automatically adjusts the number of OSS garbage collection (GC) partitions based on the cluster size. |
 
-##### View historical O&M tasks
+##### 5.4.5.2 View historical O&M tasks
 
 On the O&M History tab, you can view the history of different types of O&M tasks that are automatically executed by O&M robots.
 1. Log on to the Cloud Defined Storage (CDS) O&M platform console.
@@ -3280,9 +3526,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. Click the **O&M History** tab, select an O&M task type and specify a time range.
 After you query an O&M task, you can view the name, batch sequence number, status, start time, and end time of the O&M task. The values in the **Status** column indicate the status of the O&M task. Valid values: SCHEDULABLE, RUNNING, PAUSED, HUMAN_PROCESSING, COMPLETED, FAILED, TIMEOUT, and TERMINATED. SCHEDULABLE indicates the O&M task is not running. RUNNING indicates the O&M task is running. PAUSED indicates the O&M task is paused. HUMAN_PROCESSING indicates the O&M task is paused and waiting to be processed. COMPLETED indicates the O&M task is complete. FAILED indicates the O&M task is failed. TIMEOUT indicates the O&M task times out. TERMINATED indicates the O&M task is terminated. You can click the plus icon before an O&M task to view the running information about the O&M task, such as the workflow ID, O&M result, and trigger type.
 
-#### OSS O&M console
+#### 5.4.6 OSS O&M console
 
-##### Log in to the OSS O&M console
+##### 5.4.6.1 Log in to the OSS O&M console
 
 After you log in to the Object Storage Service (OSS) O&M console, you can use, configure, and perform O&M operations on OSS. This topic describes how to log in to the OSS O&M console.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -3291,7 +3537,7 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 2. In the left-side navigation pane, choose **CDS-OSS > Cluster Operations and**
 **Maintenance**.
 
-##### Cluster overview
+##### 5.4.6.2 Cluster overview
 
 On the **Home** page, you can view metrics for all clusters, a specific cluster, or the top 10 buckets in the current region.
 1. Log on to the Data Cube console.
@@ -3331,11 +3577,11 @@ as follows: The first column shows the bucket name. Click a bucket name to open 
 **Basic Information** tab. For more information, see Bucket Basic Information.
 The second column shows the UID of the Alibaba Cloud account that owns the bucket. Click a UID to open the **User Data Query** page, where you can view the resource usage details for that user on the **User Data Overview** tab. For more information, see User Data Overview. The third column shows the metric's value, such as traffic volume or number of requests.
 
-##### User and bucket O&M
+##### 5.4.6.3 User and bucket O&M
 
-###### User data query
+###### 5.4.6.3.1 User data query
 
-###### Basic bucket information
+###### 5.4.6.3.1.1 Basic bucket information
 
 This topic describes how to query basic information about a bucket, such as the cluster deployment location, configurations, current capacity, and the number of objects stored in the bucket.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3352,7 +3598,7 @@ the name of the bucket whose information you want to query. Then, click **Query*
 | Feature | You can view the basic settings of the bucket, such as Simple Log Service, versioning, hotlink protection, and cross-origin resource sharing (CORS). |
 |---|---|
 
-###### User data overview
+###### 5.4.6.3.1.2 User data overview
 
 Object Storage Service (OSS) allows you to view the statistical data of a user, such as the resource usage and the attributes of resources. You can measure the total resource usage of all buckets owned by an Apsara Stack tenant account or UID on a specific day.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3362,7 +3608,7 @@ down list, and then enter the Apsara Stack tenant account or UID whose data you 
 4. Click **User Data Overview**. In the **Select Date** section, select a date and click **Query**.
 View the resource usage, including the total storage capacity, total inbound and outbound traffic volume, and total charged requests. On the **Storage Data** tab, view the bucket name, number of objects, total storage capacity, and storage class. On the **Traffic Data** tab, view the bucket name, region, QPS, Internet outbound and inbound traffic, inbound and outbound traffic of the internal network, CDN outbound traffic, and CDN inbound traffic.
 
-###### Data monitoring
+###### 5.4.6.3.1.3 Data monitoring
 
 This topic describes how to monitor Object Storage Service (OSS) data in the OSS O&M console.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3388,7 +3634,7 @@ describes the parameters.
 
 5. Click **Query**.
 
-###### Bucket management
+###### 5.4.6.3.2 Bucket management
 
 You can use the bucket management feature to manage your users and buckets. For example, you can modify the status of users, status of buckets, and access control lists (ACLs) of buckets. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3415,7 +3661,7 @@ In the **Bucket list information** section, you can manage your buckets. Click *
 
 If you delete a bucket, the bucket and all objects in the bucket are deleted. Deleted buckets and objects cannot be recovered. Exercise caution when you delete a bucket.
 
-###### Disassociate a bucket from a VPC
+###### 5.4.6.3.3 Disassociate a bucket from a VPC
 
 This topic describes how to disassociate an Object Storage Service (OSS) bucket from a virtual private cloud (VPC).
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3424,7 +3670,7 @@ This topic describes how to disassociate an Object Storage Service (OSS) bucket 
 3. In the **SearchBucket** field, enter the name of the bucket that you want to disassociate and
 click **View**. If the bucket is not associated with a VPC, the system prompts the corresponding message. If the bucket is associated with a VPC, you can disassociate the bucket from the VPC on this page.
 
-###### QoS configurations
+###### 5.4.6.3.4 QoS configurations
 
 You can modify the quality of service (QoS) configurations for users and buckets in the Object Storage Service (OSS) Operations and Maintenance System.
 
@@ -3476,11 +3722,11 @@ CPU, Select, and Mirror.
 Set the **Bucket** parameter to the name of the destination bucket or an asterisk (*). Configure other parameters in the same manner you configure QoS parameters for users.
 7. Click **OK**.
 
-##### Cluster O&M
+##### 5.4.6.4 Cluster O&M
 
-###### Cluster monitoring
+###### 5.4.6.4.1 Cluster monitoring
 
-###### Cluster overview
+###### 5.4.6.4.1.1 Cluster overview
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can view the running status of a cluster, such as data monitoring, bucket statistics, and object statistics. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3490,7 +3736,7 @@ In the Object Storage Service (OSS) Operations and Maintenance System, you can v
 5. On the **Cluster Overview** page, view information about a cluster such as the storage
 class, service-level agreement (SLA) this year, total requests with 5xx today, total requests today, total Internet inbound traffic today, and total internal network outbound traffic today.
 
-###### Inventory monitoring
+###### 5.4.6.4.1.2 Inventory monitoring
 
 You can monitor the following metrics: total capacity, unused capacity, used capacity, backup ratio, and storage usage. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3517,7 +3763,7 @@ Aside from basic cluster information such as the cluster name and the region, yo
 **has been merged but GC quantity has not been completed**. You can check disk
 space issues.
 
-###### Data monitoring
+###### 5.4.6.4.1.3 Data monitoring
 
 This topic describes how to view the metrics used to monitor data by cluster. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3541,7 +3787,7 @@ status codes and the percentage of the requests to which these codes are returne
 **Traffic**: the traffic generated by the bucket.
 **QPS**: the number of API requests sent to the bucket.
 
-###### Resource usage rankings
+###### 5.4.6.4.1.4 Resource usage rankings
 
 Resource usage ranked by clusters helps O&M engineers monitor and identify high-usage users.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3555,7 +3801,7 @@ Data resource rankings include the following dimensions: Total Requests, 5XX Req
 4. Click **Query** to view resource usage by report or trend.
 If you set the **Display Method** parameter to **Report**, you can select a bucket name on the Resource Usage Ranking tab to view the basic bucket information. You can also click a UID to view the user data overview. If you set the **Display Method** parameter to **Trend**, you can move the pointer over the trend line on the Resource Usage Ranking tab to view the value at the specified time.
 
-###### Bucket statistics
+###### 5.4.6.4.1.5 Bucket statistics
 
 This topic describes how to measure the number of buckets created in each cluster. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3568,7 +3814,7 @@ If you select **Report Statistics**, you must configure **Select Time Range**. I
 **30 Days**, **3 Months**, **6 Months**, or **1 Year** from the **Recently** drop-down list.
 6. Click **View**.
 
-###### Object statistics
+###### 5.4.6.4.1.6 Object statistics
 
 This topic describes how to measure the number of objects stored in each cluster and the trend of the number. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3581,7 +3827,7 @@ If you select **Current Overall Statistics**, the statistics that you query are 
 **30 Days**, **3 Months**, **6 Months**, or **1 Year** from the **Recently** drop-down list.
 6. Click **View**.
 
-###### Govern cluster usage
+###### 5.4.6.4.2 Govern cluster usage
 
 Based on the analysis reports of cluster usage, pending garbage collection (GC) data items, and historical data trends, O&M engineers can detect and handle abnormal usage at the earliest opportunity.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3597,7 +3843,7 @@ Based on the analysis reports of cluster usage, pending garbage collection (GC) 
 | Historical Data Display | Displays the historical curve of the amount of data to be GC, the historical curve of storage usage, and the OSS GC rate. Note Move the pointer over the curve of the historical data graph to view the data at the specific time. |
 |---|---|
 
-###### View the information about servers
+###### 5.4.6.4.3 View the information about servers
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can view the information about servers in a cluster. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3615,7 +3861,7 @@ Click **Monitoring and alarm** next to the required host. You can view informati
 
 Click **Machine information**. You can view the basic information of the host, such as the hostname, IP address, and SN. Click **Disk information**. The **Disk Management** page appears. You can view the status of the disk.
 
-###### Disk management
+###### 5.4.6.4.4 Disk management
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can view the disk usage of all servers in a cluster. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3625,9 +3871,9 @@ In the Object Storage Service (OSS) Operations and Maintenance System, you can v
 5. Select the required cluster from the **Specify a Cluster** drop-down list. Then, click Query.
 In the list of disks, the types, IDs, total capacity, and used storage space of the disks appear.
 
-###### Network management
+###### 5.4.6.4.5 Network management
 
-###### Domain name management
+###### 5.4.6.4.5.1 Domain name management
 
 By default, the system assigns a domain name and a virtual IP address (VIP) to each cluster. O&M administrators can use the domain name management feature to view the domain name and VIP of each cluster. When access to a cluster fails, the O&M administrators can locate the cause based on the domain name resolution information.
 
@@ -3644,7 +3890,7 @@ The VIP of an Object Storage Service (OSS) cluster dynamically changes and may c
 | View domain name information | In the list, you can view the following information: Region, Cluster, Usage, Mapped Domain Names, Resource Name, Consistent with Resolution Result, and Bound VIP. You can filter the domain name information by Region, Cluster, or Usage. You can click the icon next to a column to specify filter conditions. |
 | Resolve a domain name | When access to a cluster fails, you can resolve the domain name of the cluster (equivalent to running the dig command on the cluster) to locate the cause. Click Resolve Domain Name in the Actions column of the desired cluster. In the Resolve Domain Name message, view the domain name resolution result. |
 
-###### Manage virtual IP addresses
+###### 5.4.6.4.5.2 Manage virtual IP addresses
 
 By default, the system assigns and bounds a virtual IP address (VIP) to the cluster. You can use the VIP management feature to view the details of built-in VIPs. You can also view the details of Classic Load Balancer (CLB) instances, view the details of AnyTunnel load balancers, and switch the forwarding mode of load balancers. This allows you to manage the bandwidth and forwarding mode of clusters and troubleshoot issues in a more efficient manner.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3659,7 +3905,7 @@ By default, the system assigns and bounds a virtual IP address (VIP) to the clus
 | View Any Tunnel LB Details | View the basic information about the VIP whose loads are balanced over a virtual private cloud (VPC) network and the information about the mount servers. Find the VIP that you want to view and clickV iew Any Tunnel LB Details in the Actions column. In the View Details panel, view the details. |
 | Switch LB forwarding mode | Important The LB forwarding mode of all VIPs in a cluster must be consistent. This feature switches the forwarding mode of all VIPs in the cluster. The forwarding mode of load balancers of clusters can be Full Network Address Translation (FNAT) or Next Generation Load Balancing (NGLB). By default, the forwarding mode is FNAT. If a large number of requests are sent to access OSS buckets over VPCs, switch the forwarding mode to NGLB based on your business requirements. i. Click Switch VIP LB Forwarding Mode in the Actions column of the required VIP. ii. In the Switch VIP LB Forwarding Mode dialog box, select a VIP LB forwarding mode. iii. Click Switch. |
 
-###### Cluster and bucket migration
+###### 5.4.6.4.6 Cluster and bucket migration management
 
 **management**
 
@@ -3768,9 +4014,9 @@ The destination cluster (CDS-OSS) is used to store bucket data.
 
 The endpoint of the cluster of OSS 1.0 is retained. You can still use this endpoint to access the original data.
 
-##### Service O&M of OSS
+##### 5.4.6.5 Service O&M of OSS
 
-###### OCM list management
+###### 5.4.6.5.1 OCM list management
 
 This topic describes how to add users to the OSS Control Manager (OCM) list and manage the OCM list.
 
@@ -3797,7 +4043,7 @@ iii. In the **Workflow submission parameter confirmation** dialog box, set the e
 | Remove a special user | i. Use one of the following methods to initiate a workflow to remove a special user: Click Delete. In the Delete from List dialog box, enter a UID and click Delete. Find the user that you want to remove and clickD elete\ in the Actions column. ii. In the Workflow submission parameter confirmation dialog box, set the execution priority based on your emergency degree, confirm that the workflow parameters are correct, and then click Yes. The workflow is submitted. Click OK. On the Published Tasks tab, you can view the execution progress of the workflow. If the status in the Task Completion Status column changes to Successful, the operation is successful. |
 | Update the OCM list | Click Refresh to manually update the OCM list. |
 
-###### Query applications and manage versions
+###### 5.4.6.5.2 Query applications and manage versions and upgrades
 
 **and upgrades**
 
@@ -3834,7 +4080,7 @@ The system displays all applications in the cluster.
 | View the application set in a cluster | Find the application that you want to view and clickC luster Applications in the Actions column. In the Deployed Cluster Application Versions dialog box, view the details of the application version deployment set, including the region, application name, version, and TianTengID of the cluster. Click Details in the BuildInfo column to view the build information about the application. |
 | Perform a recheck | Find the application that you want to recheck and clickR echeck in the Actions column. After the recheck task is completed, you can query its inspection result on the current page. |
 
-###### Location query
+###### 5.4.6.5.3 Location query
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can query the location information of OSS. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3845,7 +4091,7 @@ Products page. Then, in the Storage Service section, click **OSS Operations and*
 **Service O&M - OSS > Location Query**.
 5. In the **Search for Location** search bar, enter the name of the location. Click **Query**.
 
-###### Manage OSS global flags
+###### 5.4.6.5.4 Manage OSS global flags
 
 You need to configure the parameters of each service in the Object Storage Service (OSS) cluster, such as the number of garbage collection (GC) partitions and GC threads. In most cases, you can use the default global flag configurations. If you need to configure a global flag, configure the settings under the guidance of technical experts.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -3884,7 +4130,7 @@ following table, and then click **Submit**. On the **Batch Workflow Submission**
 | Flag Value | Enter the value of the flag. This parameter is available only when you set the Action parameter to set. |
 | Remark | Enter the remarks of the flag. This parameter is available only when you set the Action parameter to set. |
 
-###### Restart OSS services
+###### 5.4.6.5.5 Restart OSS services
 
 You can restart key services, such as TEngine, OssServer, and ImageServer on the Object Storage Service (OSS) server to ensure the stability and availability of OSS.
 
@@ -3905,9 +4151,9 @@ parameters.
 
 4. Click **Restart**. In the **Restart Workflow** message, click **OK**.
 
-###### OSS backend task management
+###### 5.4.6.5.6 OSS backend task management
 
-###### Backend task monitoring
+###### 5.4.6.5.6.1 Backend task monitoring
 
 In the Object Storage Service (OSS) O&M console, you can view the status and execution details of key backend tasks, including lifecycle management tasks and garbage collection (GC) tasks. This helps you identify anomalies at the earliest opportunity and optimize O&M policies.
 
@@ -3939,7 +4185,7 @@ In the Object Storage Service (OSS) O&M console, you can view the status and exe
 | View GC rate monitoring information | In the GC Rate Monitoring section, select a cluster and a time range and click View to view the GC rate monitoring curve. Note Move the pointer over a trend chart to view the value at a specific point in time. |
 | Configure a GC task | Click Go to the Configuration Page to configure backend tasks. For more information, see Backend task configurations. |
 
-###### Backend task configurations
+###### 5.4.6.5.6.2 Backend task configurations
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can configure lifecycle rules and the time when garbage collector (GC) tasks are run. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -3951,9 +4197,9 @@ Products page. Then, in the Storage Service section, click **OSS Operations and*
 5. On the **Task Configuration** page, select the required cluster.
 You can perform the following operations in OSS: Click **Query** in the **Lifecycle Configurations** list. You can query the lifecycle configurations. Click Query in the **GC Configurations** list. You can query the GC task configurations. Click **Modify** in the **Lifecycle Configurations** list. You can modify lifecyle rule configurations. Click Modify in the **GC Configurations** list. You can configure the period during which GC tasks are run. Click **Run Lifecycle**. You can run lifecycle rules. Click **Run GC**. You can run GC tasks.
 
-###### Synchronization management
+###### 5.4.6.5.7 Synchronization management
 
-###### Configure cross-cloud synchronization
+###### 5.4.6.5.7.1 Configure cross-cloud synchronization
 
 To enable cross-cloud data replication between buckets, you need to configure a proxy user and a bucket in the destination cloud, enable the cross-cloud synchronization process, and then configure a cross-cloud replication task for the source bucket in the Apsara Uni-manager Management Console.
 
@@ -4121,7 +4367,7 @@ To manage synchronization processes, you can view its status and perform operati
 **Source and Destination** page. For more information, see Manage synchronization
 processes.
 
-###### Configure cross-region synchronization
+###### 5.4.6.5.7.2 Configure cross-region synchronization
 
 Before you enable cross-region data replication between buckets, you need to enable the cross-region synchronization feature. Then, log in to the Apsara Uni-manager Management Console and go to the Object Storage Service (OSS) console to configure cross-region replication for the buckets.
 
@@ -4149,7 +4395,7 @@ To manage synchronization processes, you can view its status and perform operati
 **Source and Destination** page. For more information, see Manage synchronization
 processes.
 
-###### Synchronization process management
+###### 5.4.6.5.7.3 Synchronization process management
 
 The source and destination module allows O&M administrators to centrally manage crossregion or cross-cloud synchronization processes in a source cluster. For example, they can view the synchronization status, configure quality of service (QoS) settings, and set the number of subqueues.
 
@@ -4170,7 +4416,7 @@ The information about related synchronization processes in the cluster is displa
 | Configure QoS settings for a synchronization process | Important This feature applies only to CDS-OSS clusters. i. Click Configure QoS in the Actions column of a synchronization process. ii. In the Configure QoS dialog box, configure the scheduleBandwidth and maxNewReplicateTaskQps parameters, specify whether to periodically execute the synchronization task and the execution type, and enter remarks. iii. Click Submit. iv. In the Workflow submission parameter confirmation dialog box, set the execution priority based on your emergency degree, confirm that the workflow parameters are correct, and then click Yes. The workflow is submitted. Click OK. On the Published Tasks tab, you can view the execution progress of the workflow. If the status in the Task Completion Status column changes to Successful, the operation is successful. |
 | Set the number of subqueues | Control the number of concurrent subqueues. i. Click Configure Subqueues in the Actions column of a synchronization process. ii. In the Configure Subqueues dialog box, set the number of subqueues. iii. Click OK. |
 
-###### DRS task distribution
+###### 5.4.6.5.7.4 DRS task distribution
 
 On the DRS Task Distribution Monitoring page, O&M engineers can view the distribution of synchronization tasks.
 
@@ -4183,7 +4429,7 @@ Cross-cloud synchronization or cross-region synchronization is configured. For m
 3. On the **DRS Task Distribution Monitoring** page, select the desired cluster to view the
 synchronization tasks in the cluster. In the synchronization task list, you can view workers, source location, destination location, number of historical synchronization tasks, and number of incremental synchronization tasks. The number of historical synchronization tasks refers to the number of historical synchronization tasks to be run when synchronization is enabled. The number of incremental synchronization tasks refers to the number of new synchronization tasks to be run after the historical synchronization tasks are completed.
 
-###### Cluster synchronization monitoring
+###### 5.4.6.5.7.5 Cluster synchronization monitoring
 
 O&M engineers can view the status of synchronization tasks between two clusters.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -4192,9 +4438,9 @@ O&M engineers can view the status of synchronization tasks between two clusters.
 3. On the **Double-Cluster Synchronization(Sync) Monitoring** page, select a time range
 and click **View**. The list displays the number of errors of each synchronization task type, the number of synchronized files, and the number of fragments.
 
-##### KV management
+##### 5.4.6.6 KV management
 
-###### Manage KV CheckReady
+###### 5.4.6.6.1 Manage KV CheckReady
 
 You can manage CheckReady for KV resources in the Object Storage Service (OSS) O&M console to check whether the CheckReady status is ready.
 1. Log in to the OSS O&M console.
@@ -4207,7 +4453,7 @@ and click **Execute CheckReady**, as shown in the following figure.
 5. The platform performs the CheckReady operation. The following figure shows the expected
 result.
 
-###### KV master management
+###### 5.4.6.6.2 KV master management
 
 O&M administrators can centrally manage KV masters. They can view machine version information and forcefully trigger a master to push plans. For clusters of Object Storage Service (OSS) 1.0, they can also perform O&M operations such as replacing KV masters, creating machine snapshots, and manually changing the leader.
 
@@ -4235,7 +4481,7 @@ Select a cluster and click **Confirm**. Perform the following operations.
 | Create snapshots for a machine | Important This operation applies only to clusters of OSS 1.0. 1. Click Create Snapshots in the Actions column of a machine. 2. In the Workflow submission parameter confirmation dialog box, set the execution priority based on your emergency degree, confirm that the workflow parameters are correct, and then click Yes. The workflow is submitted. Click OK. On the Published Tasks tab, you can view the execution progress of the workflow. If the status in the Task Completion Status column changes to Successful, the operation is successful. |
 | Switch to the leader role | Important This operation applies only to clusters of OSS 1.0. The state column displays the status of each machine in the master: Following or Leading. You can change a machine in the Following state to the Leading state. 1. To do this, click Switch to Leader in the Actions column of the machine. 2. In the Workflow submission parameter confirmation dialog box, set the execution priority based on your emergency degree, confirm that the workflow parameters are correct, and then click Yes. The workflow is submitted. Click OK. On the Published Tasks tab, you can view the execution progress of the workflow. If the status in the Task Completion Status column changes to Successful, the operation is successful. |
 
-###### Manage KV servers
+###### 5.4.6.6.3 Manage KV servers
 
 O&M engineers can perform fine-grained O&M operations on KV servers, including viewing the status of servers or clusters, adding servers to or removing servers from the blacklist, and viewing the version information. This ensures the stability and controllability of KV servers.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -4274,7 +4520,7 @@ operations as needed.
 | Remove servers from the blacklist | a. On the KV Server Blacklist tab, find the server that you want to remove and click Remove from Blacklist in the Actions column. To remove multiple servers from the blacklist at the same time, select the servers and click Remove from Blacklist in the upper-right corner. b. In the Remove from Blacklist message, click OK. iii. In the Workflow submission parameter confirmation dialog box, set the execution priority based on your emergency degree, confirm that the workflow parameters are correct, and then click Yes. The workflow is submitted. Click OK. On the Published Tasks tab, you can view the execution progress of the workflow. If the status in the Task Completion Status column changes to Successful, the operation is successful. |
 | Add KV servers to the blacklist | a. On the KV Server Blacklist tab, find the server that you want to add to the blacklist and click Add to Blacklist in the Actions column. To add multiple servers to the blacklist at the same time, select the servers and click Add to Blacklist in the upper-right corner. b. In the Add the server to the blacklist dialog box, select a reason and click OK. c. In the Workflow submission parameter confirmation dialog box, set the execution priority based on your emergency degree, confirm that the workflow parameters are correct, and then click Yes. The workflow is submitted. Click OK. On the Published Tasks tab, you can view the execution progress of the workflow. If the status in the Task Completion Status column changes to Successful, the operation is successful. |
 
-###### Restart KV services
+###### 5.4.6.6.4 Restart KV services
 
 If an error occurs in the KV service or application configuration changes are required, you can restart the specified KV service to ensure service stability.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -4293,7 +4539,7 @@ In the SubmitSuccessful message, click **OK**. You can view the workflow progres
 **Published Tasks** tab. If the status in the **Task Completion Status** column changes to
 **Successful**, the service is restarted.
 
-###### Manage KV applications
+###### 5.4.6.6.5 Manage KV applications
 
 O&M engineers can manage KV applications in the Object Storage Service (OSS) O&M console. You can view application information, partition details, and parameters to implement centralized O&M on KV applications.
 1. Log in to the OSS O&M console.
@@ -4308,7 +4554,7 @@ Perform operations on the KV application list as needed.
 | View the partition details of a KV application | Find the KV application that you want to manage and clickP artition Details in the Actions column. On the KV Partition Management page, you can view the total number and list of partitions. For more information, see Manage KV partitions. |
 | View KV application configurations | Find the KV application that you want to view and clickV iew Configurations in the Actions column. In the appConfigure dialog box, view the details of the app, such as AppName and DistributorType. |
 
-###### KV partition management
+###### 5.4.6.6.6 KV partition management
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can split and merge KV partitions. 1.
 2. In the top navigation bar, click **System Settings**.
@@ -4332,7 +4578,7 @@ c. Click **OK**. d. In the **OK** dialog box, click **Yes**. Merge a. Click **Me
 **Partitions to Merge**: The partitions to merge appear.
 c. Click **Confirm**. d. In the **OK** dialog box, click **Yes**.
 
-###### Manage KM masters
+###### 5.4.6.6.7 Manage KM masters
 
 O&M engineers can manage the automatic partition splitting feature, parameters, and scheduling history of KM masters in the Object Storage Service (OSS) O&M console.
 
@@ -4363,7 +4609,7 @@ The time range is unlimited. The time range selected in the console shall prevai
 2. Click **Query**.
 In the list, you can view the start time, application, type, result, and reason of a single scheduling task.
 
-###### KV global flag configurations
+###### 5.4.6.6.8 KV global flag configurations
 
 In the Object Storage Service (OSS) Operations and Maintenance System, you can query or modify the global flag configurations of KV or KM.
 
@@ -4408,7 +4654,7 @@ Change the global flag values of all servers a. In the **Modify** field, enter a
 **Scheduled Execution**: Set the time when the task is scheduled to execute.
 c. Click **Submit**. Change the global flag value of the specified server a. In the **server** field, enter the value of the required server. b. In the **Modify** field, enter the new global flag value. Then, click **Modify**. c. In the **Confirm** message, click **OK**.
 
-###### Manage EC
+###### 5.4.6.6.9 Manage EC
 
 By default, clusters use erasure coding (EC) to ensure the reliability and consistency of user data. EC helps improve storage reliability. Compared with triplicate storage, EC can provide higher data reliability at lower data redundancy levels.
 
@@ -4432,9 +4678,9 @@ The system automatically displays all available EC modes supported by the cluste
 5. Click **Configure**. In the **Submit a Workflow to Configure EC Stripe Width** dialog box,
 click **OK**. The workflow is submitted. Click **OK**. On the **Published Tasks** tab, you can view the execution progress of the workflow. If the status in the **Task Completion Status** column changes to **Successful**, the operation is successful.
 
-##### Intelligent O&M
+##### 5.4.6.7 Intelligent O&M
 
-###### Intelligent O&M history
+###### 5.4.6.7.1 Intelligent O&M history
 
 Engineers can manage the O&M history of robots to view causes, execution status, execution results, and detailed logs of each robot in a cluster. This improves the observability and efficiency of automated O&M.
 1. Log in to the Object Storage Service (OSS) O&M console.
@@ -4450,7 +4696,7 @@ Engineers can manage the O&M history of robots to view causes, execution status,
 | View O&M task results | Find the O&M task that you want to view and clickV iew Results in the Results column. In the Results panel, view the details, such as prechecks and O&M operations. |
 | View O&M task logs | Find the O&M task that you want to view and clickV iew Logs in the Logs column to view the details of the workflow instance. |
 
-###### Configurations
+###### 5.4.6.7.2 Configurations
 
 If the configurations of O&M robots cannot meet business requirements, O&M personnel can update the robot configurations, including enabling or disabling robots, configuring robot information, customizing robot configurations for clusters, and viewing the robot running history. This simplifies manual operations and improves O&M efficiency.
 
@@ -4496,9 +4742,9 @@ The following table describes the supported O&M robots.
 |---|---|
 | kvbakroot automatic down | If the Pangu water level is greater than the Pangu water level down threshold and the kvbakroot percentage is greater than or equal to the kvbakroot down threshold, a downgrade is triggered. Pangu water level down threshold: the threshold for downgrading the Pangu water level. Valid values: 0 to 100 kvbakroot down threshold: the threshold for downgrading kvbakroot. Valid values: 0 to 100 |
 
-##### Log monitoring
+##### 5.4.6.8 Log monitoring
 
-###### Internal error (5XX) analysis
+###### 5.4.6.8.1 Internal error (5XX) analysis
 
 By analyzing internal errors (5XX), O&M personnel can discover server exceptions in a timely manner, locate the cause of the failure, and improve system availability and response efficiency.
 
@@ -4551,7 +4797,7 @@ On the **Request Log** tab, select an application to view information such as th
 
 On the **Error Ranking**s tab, view the top information about buckets, operations, and IP addresses of frontend servers. In the **Bucket Error Top** section, click the name of a bucket or the total number of 5XX buckets to query backend logs. Click the UID to view user data overview.
 
-###### Backend log query
+###### 5.4.6.8.2 Backend log query
 
 The system can query backend logs by request ID, cluster (5XX), bucket, UID, application (5XX), and AccessLog. This helps O&M personnel quickly locate the root cause of exceptions.
 1. Log on to the Data Cube console.
@@ -4610,7 +4856,7 @@ ii. Click **View** to view the logs that match the search string. To download th
 
 i. Set the search condition to **Search by access log** and the request ID. ii. Click **View** to view the access log of the specified request.
 
-###### KV error code table
+###### 5.4.6.8.3 KV error code table
 
 The KV Error Code Table maps status codes to error codes, helping O&M personnel quickly identify fault types, improve diagnostic efficiency, and reduce troubleshooting time.
 1. Log on to the Data Cube console.
@@ -4618,9 +4864,9 @@ The KV Error Code Table maps status codes to error codes, helping O&M personnel 
 3. On the **KV Error Code Table** page, view the mapping between status codes and error
 codes.
 
-##### Monitoring center
+##### 5.4.6.9 Monitoring center
 
-###### Alert history
+###### 5.4.6.9.1 Alert history
 
 You can query the alert history of a task within a specific period of time in the Object Storage Service (OSS) O&M console. The aggregated alert information includes the alert object name, description, and severity level. This allows you to understand failure information and quickly handle exceptions.
 1. Log on to the OSS O&M console.
@@ -4631,7 +4877,7 @@ can also enter the alert rule name. After you configure the query conditions, yo
 You can also click **View Records** in the **O&M Records** column. In the **Intelligent O&M**
 **Records** panel, you can view the O&M records of the alert rule.
 
-###### Alert configuration
+###### 5.4.6.9.2 Alert configuration
 
 By default, the system has built-in alert rules. If the alert rules cannot meet your business requirements, O&M personnel can customize alert configurations, such as adjusting alert rules and editing notification information. This allows O&M personnel to flexibly adapt to business changes and improve monitoring accuracy and warning capabilities.
 
@@ -4736,7 +4982,7 @@ suggestions as needed.
 3. Click **Add**.
 After you add an alert item, you must configure an alert rule for the alert item to take effect and trigger an alert.
 
-###### Inspection configuration
+###### 5.4.6.9.3 Inspection configuration
 
 By default, the system provides built-in inspection tasks. You can start and stop inspection tasks based on your business requirements, view details, modify configurations, and delete inspection tasks. Operations and maintenance personnel can detect potential risks in a timely manner based on automated inspection, effectively improving the stability and operational security of the system.
 
@@ -4821,7 +5067,7 @@ In the task result list, you can view the task execution information and perform
 | View task logs | i. Find the task that you want to manage and clickV iew All or View Exceptions in the Actions column. ii. In the dialog box that appears, click Log in the Log column of the target machine to view the log of the target task. |
 | Manage monitoring tasks | Click the task ID or task name to go to theM anage Monitoring Tasks tab of the Task List page. |
 
-###### Inspection history
+###### 5.4.6.9.4 Inspection history
 
 View the inspection history for your tasks to monitor system health. This allows operators to quickly identify and address issues, prevent potential risks, and ensure service stability.
 1. Log on to the Data Cube console.
@@ -4840,7 +5086,7 @@ In the search results, you can view the execution results for each inspection ta
 |---|---|
 | Manage monitoring tasks | Click the task ID or task name to navigate to theT ask List tab to manage your monitoring tasks. |
 
-###### One-click inspection
+###### 5.4.6.9.5 One-click inspection
 
 The one-click inspection feature helps O&M personnel run routine checks. You can periodically trigger an inspection to quickly assess your cluster's health, identify potential issues, and ensure system stability.
 1. Log on to the Data Cube console.
@@ -4859,11 +5105,11 @@ After you trigger the inspection, view the inspection records and perform any ne
 |---|---|
 | Export inspection task summary and details | After you select an inspection record, click export on the right side of the page to save the inspection task summary and details to a local file. |
 
-##### Background management
+##### 5.4.6.10 Background management
 
-###### Workflows
+###### 5.4.6.10.1 Workflows
 
-###### Workflow overview
+###### 5.4.6.10.1.1 Workflow overview
 
 The system has built-in common workflows. O&M personnel can query, view steps, or submit. This allows them to quickly understand the task flow logic and efficiently initiate process execution. This improves O&M response speed and operation efficiency.
 1. Log on to the Data Cube console.
@@ -4886,7 +5132,7 @@ The workflow cannot be deleted.
 | View workflow steps | Click Step in the Actions column of the workflow to view the step information, including the step name, type, number of retries, and retry interval. |
 | Submit flow task | For a dynamic workflow, click Submit in the Actions column of the workflow to create a task for the workflow on the Create Task tab. For more information, see Workflow release orders. |
 
-###### Workflow task
+###### 5.4.6.10.1.2 Workflow task
 
 By viewing the task details of all workflows, creating new tasks, and browsing task statistics, O&M personnel can understand the execution status, flow logic, and overall trend of tasks, further understand workflow, identify bottlenecks, and optimize task orchestration and scheduling policies to improve automation efficiency and O&M management.
 1. Log on to the Data Cube console.
@@ -4955,7 +5201,7 @@ If you select **Operated Object(IP Address)**, you can view the execution status
 
 On the **Task Statistics** tab, you can view the number of pending and running tasks of different task types in each cluster, and the number of successful and failed tasks. You can also perform the following operations as needed: Click the icon in the **Running** column to view the task status and step name on the right side of the page. Click the number in the **Number** column to view the details of the workflow instance.
 
-###### Batch workflow submission
+###### 5.4.6.10.1.3 Batch workflow submission
 
 With the batch workflow submission feature, O&M personnel can submit the same workflow for multiple clusters in batches to implement centralized and large-scale execution of O&M tasks, significantly reduce repeated operations, accelerate task delivery, and improve O&M efficiency and consistency.
 1. Log on to the Data Cube console.
@@ -4999,7 +5245,7 @@ iv. Click **Submit preview**.
 urgency, confirm the workflow parameters, and then click **Confirm**. The system will initiate a batch workflow release order. The release form contains all the added subtasks and executes them according to the specified batch policy. The workflow is submitted. Click **OK**. On the **Published Tasks** tab, you can view the execution status of the workflow. If the status in the **Task Completion Status** column changes to
 **Successful**, the operation is successful.
 
-###### Workflow instance
+###### 5.4.6.10.1.4 Workflow instance
 
 By viewing the list of workflow instances, O&M personnel can manage workflow instances based on business requirements, such as repairing failed instances and removing abandoned instances, so as to properly allocate resources and improve the automation level of business.
 1. Log on to the Data Cube console.
@@ -5026,7 +5272,7 @@ After the workflow instance is queried, you can view the workflow instance ID, t
 | Refresh a workflow | Click Refresh to refresh the workflow information. |
 | Repair a workflow | Click Repair and confirm. |
 
-###### Workflow definition
+###### 5.4.6.10.1.5 Workflow definition
 
 A workflow definition outlines the activity steps and execution flow for various types of workflows. O&M personnel use these definitions to manage automated workflows.
 1. Log on to the Data Cube console.
@@ -5035,7 +5281,7 @@ A workflow definition outlines the activity steps and execution flow for various
 3. On the **Workflow List [Definition]** page, view the activity steps for each workflow
 category. For workflows with many steps, click **More** at the end of the list to view all steps.
 
-###### White-screen Commands
+###### 5.4.6.10.2 White-screen Commands
 
 The custom command feature provides built-in command templates for common tasks. These templates let you quickly run remote commands without manual entry, improving your operational efficiency and accuracy.
 1. Log on to the Data Cube console.
@@ -5048,9 +5294,9 @@ The custom command feature provides built-in command templates for common tasks.
 | Use a command template to run a command | i. Click Select Template Command, and in the Select Template Command panel, select the command to execute. Note Previously run or favorited commands are available on theM y Commands tab. ii. On the command details page, configure the execution environment and the command template. Note Click the icon in the upper-right corner of the page to favorite the command. Favorited commands are available in the Favorite Commands section on the My Commands tab. iii. Click Execute. iv. In the confirmation dialog box, verify the information and click OK. The command you just ran appears in the Recently Used Commands section on the My Commands tab. |
 | View execution history | i. On the Execution History tab, enter a keyword to search for commands and click Search, or select an execution status to filter commands. ii. In the command execution history list, view details and perform actions. To view the execution result, click Execution Result in the Actions column. To download the result, click Download Result in the Actions column. |
 
-###### DNA
+###### 5.4.6.10.3 DNA
 
-###### Trigger management
+###### 5.4.6.10.3.1 Trigger management
 
 By default, the system has built-in and enabled common triggers. When an event is detected, the system automatically triggers the event and submits the relevant workflow for processing. The trigger management feature allows O&M personnel to flexibly control the start and stop status of triggers, view configuration information, and query event execution history. This feature allows O&M personnel to manage automated tasks in a fine-grained manner and improves O&M efficiency.
 1. Log on to the Data Cube console.
@@ -5065,7 +5311,7 @@ After you search for a trigger, you can view the trigger information and perform
 | View event records | You can click a category or a name in the Event Type or Event Name column of a trigger to view the event records on the Find events page. |
 | Disable or enable a trigger | By default, a trigger is enabled. To disable a trigger, click the icon in the Actions column and click Yes. After you disable a trigger, click the icon in the Actions column and click Yes to enable the trigger. |
 
-###### Event center trigger history
+###### 5.4.6.10.3.2 Event center trigger history
 
 Viewing the trigger history in the event center allows O&M personnel to track the processing of events initiated by triggers. This helps them quickly pinpoint issues, meet audit, traceability, and compliance requirements, and ensure that automated O&M is secure and controllable.
 1. Log on to the Shuju Mofang console.
@@ -5076,7 +5322,7 @@ conditions, and filter by **Whether it has been completed** , **status**, or **t
 4. Click **Query**.
 The query results show information for each event, including the event name, processing target, processor, and status.
 
-###### Chiji domain name management
+###### 5.4.6.10.4 Chiji domain name management
 
 By managing the clusters bound to the domain name of the Red Kits, O&M personnel can precisely control the access targets of the front-end pages and interfaces of the Red Kits.
 1. Log on to the Data Cube console.
@@ -5086,7 +5332,7 @@ By managing the clusters bound to the domain name of the Red Kits, O&M personnel
 and VIPs that are bound to the domain name in the current region. To switch the cluster to which the domain name is bound, click **Switch domain binding** in the **operation** column, select the domain name and the VIP of the cluster, and then click
 **Confirm**.
 
-###### Audit logs
+###### 5.4.6.10.5 Audit logs
 
 By querying audit logs, O&M personnel can track and control platform operations, accurately locate the source of operations, and detect abnormal activities in a timely manner, effectively improving security audit and risk response capabilities.
 1. Log on to the Data Cube console.
@@ -5098,9 +5344,9 @@ conditions. The system supports filtering logs by operator, IP address, operatio
 5. Click **Query**.
 After the logs are queried, you can view the audit log details in the log list, including the operation log file location, operation name, source IP address, operator, and operation time.
 
-### Manage log storage clusters
+### 5.5 Manage log storage clusters
 
-#### Overview of SLS clusters
+#### 5.5.1 Overview of SLS clusters
 
 On the Cluster O&M page, you can view the capacity usage, resource overview, and current alerts of Simple Log Service (SLS) clusters. You can also view a list of SLS clusters to understand the overall information about the clusters and handle exceptions at the earliest opportunity.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -5130,9 +5376,9 @@ Manage clusters In the **Clusters** section, you can view the information about 
 | Manage cluster details | Find the cluster that you want to manage and click its name to go the Cluster Details page. On the Cluster Details page, view the attributes, overall information, capacity information, and hosts of the cluster. You can also configure the cluster and manage services for the cluster based on your business requirements. View cluster attributes View the attributes of the cluster, such as the cluster name, storage medium, storage architecture, disaster recovery information, zone, total number of physical hosts, total number of chunk servers, and total number of meta servers. View cluster overview On the Overview tab, view the top 10 logstores with the highest traffic in the cluster. For more information, see View cluster overview. View cluster capacity information On the Capacity tab, view the logical capacity usage, physical capacity usage, and physical capacity usage trends of the cluster. For more information, see View capacity information. Configure the cluster On the Configure tab, configure the erasure coding (EC) mode and PANGU services for the cluster. For more information, see Configure the EC mode and Configure PANGU. Manage cluster services On the Service tab, manage PANGU services for the cluster. For more information, see Manage PANGU. Manage cluster hosts On the Host tab, view the information about all hosts in the cluster and perform operations based on your business requirements. For more information, see Manage hosts. |
 |---|---|
 
-#### Manage cluster details
+#### 5.5.2 Manage cluster details
 
-##### View cluster overview
+##### 5.5.2.1 View cluster overview
 
 On the Overview tab, you can view the top 10 Logstores with the highest traffic in a Simple Log Service (SLS) cluster.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -5142,7 +5388,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 You can also select a cluster from the drop-down list in the upper-right corner of the Cluster O&M page.
 4. On the **Overview** tab, view the top 10 Logstores with the highest traffic in the cluster.
 
-##### View capacity information
+##### 5.5.2.2 View capacity information
 
 On the Capacity tab, you can view the logical capacity usage, physical capacity usage, and physical capacity usage trend of a Simple Log Service (SLS) cluster.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -5161,9 +5407,9 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 | Capacity Trend | You can click the Capacity Trend tab and specify a time range to view the total physical capacity and physical capacity usage trend. Note You can click Actions in the upper-right corner of a trend chart and select Download Data to download the monitoring data to your on-premises machine. You can also select Save as Image to save the monitoring data as an image. |
 | Capacity Prediction | After the system collects the daily capacity data of storage services deployed in the CDS cluster for a specific period, the system predicts the capacity usage of the CDS cluster for the next week once a day. O&M staff can perform operations such as cluster scale-up or scale-down based on the predicted capacity usage. This prevents cluster failures that may be caused by exhausted storage capacity and ensures the security and stability of the cluster. Note The predicted capacity usage is for reference only. Perform operations based on the actual capacity usage. Capacity prediction depends on the accumulation of sufficient samples. If the capacity data in a cluster is insufficient, the system cannot predict the capacity. No prediction data is available for a newly deployed cluster. You can click the Capacity Prediction tab to view the predicted physical capacity. |
 
-##### Configure clusters
+##### 5.5.2.3 Configure clusters
 
-###### Configure the EC mode
+###### 5.5.2.3.1 Configure the EC mode
 
 By default, clusters use erasure coding (EC) to ensure the reliability and consistency of user data. EC helps improve storage reliability. Compared with triplicate storage, EC can implement high data reliability with lower data redundancy.
 
@@ -5184,7 +5430,7 @@ You can also select a cluster from the drop-down list in the upper-right corner 
 type based on your business requirements. The EC types supported by the cluster are all displayed in the drop-down list. After you select an EC type, the system automatically calculates the value of the Replicas parameter based on the selected EC type. Some clusters do not support the Configuration Type parameter. The actual configurations prevail.
 6. Click **Save**.
 
-###### Configure Apsara Distributed File System
+###### 5.5.2.3.2 Configure Apsara Distributed File System
 
 You can view and configure the replica traffic control, cluster recycle bin, and quotas based on your business requirements.
 
@@ -5239,7 +5485,7 @@ iii. Click **OK**.
 2. Click the **Quotas and QoS** tab to view the cluster quota information.
 The quota information includes the consumed capacity, capacity quota on cluster storage, and quota status.
 
-##### Manage PANGU
+##### 5.5.2.4 Manage PANGU
 
 You can manage meta servers, chunk servers, and file information based on your business requirements. Manage meta servers Meta servers are used to maintain cluster metadata and instruct upper-layer services how to read and write data. You can view the information of a meta server, change the role of a secondary meta server to primary, generate checkpoints for the meta server, and obtain the build information of a meta server.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -5295,7 +5541,7 @@ and perform operations based on your business requirements. The following table 
 | Clear the recycle bin Warning A system exception may occur if you modify a directory or a file. Proceed with caution. | Find the deleted/ directory and click Clear Recycle Bin in the Actions column to delete files from the recycle bin. Note The file recycling policy of the deleted/ directory is the same as the settings of the cluster recycle bin. |
 |---|---|
 
-##### Manage hosts
+##### 5.5.2.5 Manage hosts
 
 On the Host tab of a cluster, you can view the information about the hosts in the cluster and the details of each host, such as the capacity information, disks, server roles, cluster, and monitoring data.
 
@@ -5370,9 +5616,9 @@ information, see Initiate a CDS Cluster Node Maintenance workflow. Click the nam
 | Total LBAs W _ _ ritten | Total LBAs Written | The total number of sectors written by logical block addresses (LBAs) after a disk is powered on. This attribute is used to estimate the lifespan of a disk. |
 | Total LBAs R _ _ ead | Total LBAs Read | The total number of sectors read by LBAs after a disk is powered on. This attribute is used to analyze the load pattern and read performance trends of a disk. |
 
-## Monitoring center
+## 6 Monitoring center
 
-### View the custom dashboard
+### 6.1 View the custom dashboard
 
 After you add the monitoring data of frequently used resources to the custom dashboard, you can view the detailed metrics of the resources on the Custom Dashboard page.
 
@@ -5385,7 +5631,7 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **Custom Dashboard** page, view or remove custom monitoring data.
 View monitoring data You can specify a time range to view the detailed metrics of resources within the specified time range. Remove monitoring data If you no longer need to view the monitoring charts of a resource, click **Remove** in the upper-right corner to remove the monitoring data of the resource from the custom dashboard.
 
-### View resource monitoring
+### 6.2 View resource monitoring data
 
 **data**
 
@@ -5407,7 +5653,7 @@ The IOPS data of hard disks does not include the hard disk performance data moun
 **Custom Dashboard** in the upper-right corner and select the metrics that you want to add.
 After the metrics of the resource are added to the custom dashboard, you can view the metrics on the Custom Dashboard page. For more information, see View the custom dashboard.
 
-### View the monitoring data of
+### 6.3 View the monitoring data of storage metrics
 
 **storage metrics**
 
@@ -5449,7 +5695,7 @@ right corner and select a group or metric. After the metric is added, you can vi
 
 Move the pointer over a trend chart to view the value at a specific point in time. In the **Actions** column of each metric, you can select **Download Data** to download the monitoring data to your computer, or select **Save as Image** to save the monitoring data as an image.
 
-### Query service monitoring data
+### 6.4 Query service monitoring data
 
 If an exception occurs in a module of a cluster, you can view the service metrics of the module to troubleshoot and identify issues.
 
@@ -5463,9 +5709,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. View the monitoring data of different services.
 The displayed tabs may vary based on the cluster type. View the monitoring data of Apsara Distributed File System On the **Pangu** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_MS_CPUUsage, which measures the CPU utilization of the master process, PG_CS_CPUUsage, which measures the CPU utilization of the chunkserver process, PG_CS_DiskCapacity, which measures the disk usage of the chunkserver process, and PG_CS_ReadWriteThroughput, which measures the throughput of read and write operations other than replication for the chunkserver process. View the monitoring data of OSS On the **OSS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include KV Add Latency, KV Query Latency, KV Read Amplication, and KV Write Amplication. View the monitoring data of EBS On the **EBS** tab, select a cluster, hosts, a time range, and metrics, and click **Query**. You can view the service metrics of the selected resources within the specified time range. The available metrics include PG_BM_MigrationMediumUsage, which measures the cluster usage, PG_BS_IoLatency, which measures the latency of BlockServer during each task, PG_BS_Throughput, which measures the read and write traffic processed by BlockServer per second, and PG_BS_Iops, which measures the number of I/O operations processed by BlockServer per second. You can find a chart and click **Actions** in the upper-right corner to download the data or save the data as an image.
 
-## Event Alerts
+## 7 Event Alerts
 
-### Alert overview
+### 7.1 Alert overview
 
 On the Alert Overview page, you can view the current alerts, alert statistics, and alert history.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -5483,7 +5729,7 @@ The current alerts include alerts for disassembled cluster and maintenance of un
 | Alert Statistics | In this section, alert statistics are displayed in charts by cluster or by module. The statistics include the total number of alerts at the current alert level. You can view the information for different alert levels. The most frequently triggered five alerts at the current alert level are displayed, including the alert name and frequently. |
 | Alert History | In this section, the most recent five alert records are displayed, including the alert name, module, cluster name, and alert time. You can click More in the upper-right corner of the section to view details of historical alerts on the Alert History page. |
 
-### Handle alerts
+### 7.2 Handle alerts
 
 Cloud Defined Storage (CDS)-OPS manages alerts generated by CDS clusters, clusters managed by CDS-OPS, and storage-related compute clusters. After alerts are triggered in the system, you can view the list of alerts and the details of each alert, including the alert name, module, cluster name, description, resource name, and alert time. We recommend that you handle alerts at the earliest opportunity by confirming or clearing the alerts.
 1. Log in to the CDS-OPS console.
@@ -5502,7 +5748,7 @@ status of a node is abnormal, you can click **Disk Maintenance** to fix the disk
 | Confirm an alert | After you receive an alert, you can confirm the alert to indicate that the alert is received and is being handled. Select the alert that you want to confirm and clickC onfirm Alert in the upper- left corner. After you confirm the alert, the value in the Confirmed column changes to Yes. |
 | Clear an alert | After you resolve the issue of an alert or determine that an alert can be ignored, you can manually clear the alert to indicate that the alert is handled. After you manually clear an alert, the alert is moved to the Alert History page. Select the alert that you want to clear and clickM anually Clear in the upper-left corner. |
 
-### View historical alerts
+### 7.3 View historical alerts
 
 Alerts that are automatically or manually cleared are displayed on the Alert History page. You can view the information about the alerts within the specified time range, including the alert name, module, cluster name, description, resource name, alert time, auto recovery status, and confirmation status.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -5526,9 +5772,9 @@ time range. The system displays the historical alerts at the specified alert lev
 | Confirmed | Indicates whether the alert is manually handled. Valid values: Yes: The alert is manually handled. No: The alert is not manually handled. |
 | Actions | The operations that you can perform on the alert. To view the details of an alert, such as the alert ID, alert cause, and relevant information, find the alert and click Details in the Actions column. If the system generates an alert that indicates the disk status of a node is abnormal, you can click Disk Maintenance to troubleshoot the faulty disk. |
 
-## Routine Inspection
+## 8 Routine Inspection
 
-### Inspection center
+### 8.1 Inspection center
 
 By default, the system uses built-in inspection items to regularly inspect clusters. On the Inspection Center page, you can view the information about the latest inspection results of different inspection items and manually run inspection tasks.
 
@@ -5551,7 +5797,7 @@ following table.
 | View the history of an inspection item | Find the inspection item that you want to view and click the time in the Last Executed At column. On the Inspection History page, the inspection history within the previous day is displayed. You can perform the following operations on the Inspection History page: View inspection history View the start time, completion time, statistics, status, and progress of the inspection item within the previous day. Note The number of times that different inspection items are inspected within a day varies based on the inspection schedules. Filter historical inspections Select a time range to filter historical inspections within the specified time range. View and export inspection results Click a number in the Statistics column. On the Inspection Results page, view and export the inspection results. |
 |---|---|
 
-### SLA monitoring
+### 8.2 SLA monitoring
 
 The system monitors the key service level agreement (SLA) metrics of Cloud Defined Storage (CDS) in real time. This provides availability monitoring guarantee for scenarios such as software update, configuration change, and service O&M. This allows you to detect system exceptions at the earliest opportunity, and minimizes the impact when exceptions occur.
 
@@ -5584,11 +5830,11 @@ If exceptions occur in SLA system links, the heartbeat check stops. In this case
 2. In the **Historical SLA Exceptions** panel, select a cluster name and specify a time range.
 By default, historical SLA exceptions in the previous hour are displayed. You can view historical SLA exceptions in the previous 30 days.
 
-## Intelligent O&M
+## 9 Intelligent O&M
 
-### Host O&M
+### 9.1 Host O&M
 
-#### View all workflows
+#### 9.1.1 View all workflows
 
 You can log in to the Cloud Defined Storage (CDS)-OPS console, go to the Host O&M page, and click the All Workflows tab to view detailed information about scale-up activities, scaledown activities, node maintenance, and switchovers of the CDS cluster deployment mode. You can also manage workflows based on your business requirements.
 
@@ -5613,7 +5859,7 @@ business requirements.
 |   | Resume a workflow: You may need to manually handle or stop a workflow due to exceptions. To resume a workflow, click Restore. Repair a workflow: Click the icon and click Repair to repair the workflow that encounters exceptions. Discard a workflow: If a workflow is not complete and you no longer need to execute the workflow, click the icon and click Discard to discard the workflow. Important You cannot restore a discarded workflow. Proceed with caution. |   |   |
 |   |   | Important You cannot restore a discarded workflow. Proceed with caution. |   |
 
-#### Initiate a CDS Cluster Scale Up
+#### 9.1.2 Initiate a CDS Cluster Scale Up workflow
 
 **workflow**
 
@@ -5646,7 +5892,7 @@ In the message that appears, click **Confirm**. The system starts to run the wor
 
 View workflow progress and manage workflows. For more information, see View all workflows.
 
-#### Initiate a CDS Cluster Scale Down
+#### 9.1.3 Initiate a CDS Cluster Scale Down workflow
 
 **workflow**
 
@@ -5676,7 +5922,7 @@ The system starts to run the workflow. The process takes some time.
 
 View workflow progress and manage workflows. For specific operations, see View all workflows.
 
-#### Initiate a CDS Cluster Node
+#### 9.1.4 Initiate a CDS Cluster Node Maintenance workflow
 
 **Maintenance workflow**
 
@@ -5702,7 +5948,7 @@ In the message that appears, click **Confirm**. The system starts to run the wor
 
 View workflow progress and manage workflows. For specific operations, see View all workflows.
 
-#### Initiate a CDSOSSZRS Cluster Three-
+#### 9.1.5 Initiate a CDSOSSZRS Cluster Three-zone Change workflow
 
 **zone Change workflow**
 
@@ -5755,7 +6001,7 @@ It takes a long period of time to run the workflow. If an issue occurs during th
 
 View workflow progress and manage workflows. For more information, see View all workflows. After you switch the working mode of the cluster from one-zone to three-zone, you can scale or maintain the three-zone cluster based on your business requirements. For more information, see Initiate a CDS Cluster Scale Up workflow, Initiate a cluster scale-in workflow, and Initiate a CDS Cluster Node Maintenance workflow.
 
-#### Initiate a CDS Cluster Deployment
+#### 9.1.6 Initiate a CDS Cluster Deployment Mode Switch workflow
 
 **Mode Switch workflow**
 
@@ -5792,9 +6038,9 @@ In the pop-up prompt, click **OK**. The system starts executing the workflow ste
 
 After the workflow is complete, check whether the deployment mode of the cluster is switched. View workflow progress and manage workflows. For more information, see View all workflows.
 
-### Maintain disks
+### 9.2 Maintain disks
 
-#### Maintain corrupted disks
+#### 9.2.1 Maintain corrupted disks
 
 When a hard disk drive (HDD) or Non-Volatile Memory Express (NVMe) SSD disk of a chunk server is corrupted, you can view the information about the corrupted disk in real time and initiate a disk replacement process and disk hot maintenance after the data of the corrupted disk is backed up. After the disk hot maintenance is complete, you can view the maintenance record in the maintenance history. Tablestore clusters, Cloud Parallel File Storage (CPFS) clusters, Elastic Block Storage (EBS)-1.0 clusters, and Object Storage Service (OSS)-1.0 clusters do not support the disk maintenance feature.
 
@@ -5853,7 +6099,7 @@ On the **Corrupted Disks** tab, you can perform more operations based on your bu
 
 After the disk replacement is complete, you can view the maintenance history of the disk on the **Disk Maintenance History** tab. For more information, see View disk maintenance history.
 
-#### Actively replace a hard disk
+#### 9.2.2 Actively replace a hard disk
 
 If a healthy hard disk needs to be replaced due to capacity upgrade, performance improvement, and regular maintenance, you can actively replace the disk. To replace a hard disk that is running properly, you must change the state of the hard disk to Error, and then replace the hard disk by using the process of maintaining corrupted hard disks.
 
@@ -5876,7 +6122,7 @@ For more information, see Maintain corrupted disks.
 After the hard disk is replaced, you can view the maintenance history of the disk on the **Disk**
 **Maintenance History** tab. For more information, see View hard disk maintenance history.
 
-#### View hard disk maintenance history
+#### 9.2.3 View hard disk maintenance history
 
 After you replace a hard disk, you can view the detailed hard disk maintenance history, including the cluster, chunk server, hard disk ID, hard disk mount type, and execution status.
 1. Log in to the Cloud Defined Storage (CDS)-OPS console.
@@ -5889,9 +6135,9 @@ perform operations as required. Search for hard disk maintenance records Search 
 **Actions** column. On the **Disk Hot Maintenance Details** page, view the detailed
 maintenance history and continue executing or stopping in-progress maintenance tasks as needed. The information displayed on the page of each step in the maintenance details is the snapshot information recorded during hard disk hot maintenance.
 
-### Log Management
+### 9.3 Log Management
 
-#### Collect log data
+#### 9.3.1 Collect log data
 
 After you identify abnormal services or modules based on an issue, you can manually collect their run logs to quickly identify and handle the issue.
 
@@ -5911,7 +6157,7 @@ Name parameters. After the log collection task is complete, you can view the log
 **Download** in the **Result File** column. A message indicating that the certificate is not
 secure may appear. Click Trust to download the logs. The downloaded log file is in the tar.gz format. Decompress the file and view the logs.
 
-#### Query logs
+#### 9.3.2 Query logs
 
 The system centrally stores and indexes logs of key services. You can query logs within a time range by service type, project, and storage service.
 
@@ -5945,9 +6191,9 @@ statement|Analytic statement format. Example: * | SELECT status, count(*) AS PV 
 4. Click **Query**.
 The system displays the log data that meets the conditions. Different types of logs have different formats. The actual log formats prevail.
 
-## System Management
+## 10 System Management
 
-### View plug-in information
+### 10.1 View plug-in information
 
 By default, the system automatically registers the deployed Apsara Stack data services, such as Cloud Storage Gateway (CSG), and Apsara Stack storage services, such as Simple Log Service (SLS). You can use the plug-in management feature to manage the registered Apsara Stack services.
 
@@ -5964,7 +6210,7 @@ The following plug-ins may be registered: cds-plugin-sgw, HDR-OPS, and sls-stora
 
 You can manage and maintain registered data services. For more information, see Data Service and Manage log storage clusters.
 
-### View tasks
+### 10.2 View tasks
 
 The system runs time-consuming tasks in an asynchronous manner. You can view the status of asynchronous tasks on the Tasks page.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -5974,7 +6220,7 @@ The system automatically obtains and displays the tasks of the previous day.
 3. On the **Tasks** page, select a time range to view the information about the tasks within the
 specified time range and perform operations based on your business requirements. View task information In the task list, you can view the information about tasks, including the name, description, status, update time, and creation time of each task. The value in the **Status** column of a task indicates the state of the task. Valid values: PROCESSING: The task is running. COMPLETED: The task is complete. FAILED: The task failed. CLEANING: The task failed and is being cleaned up. FAILED_CLEANUP_FAIL: The task failed and the cleanup also failed. Contact O&M engineers to handle the issue. Go to the page on which a task is triggered Find the task that you want to manage and click **Redirect** in the **Execution Location** column to go to the page on which the asynchronous task is triggered. View run logs If a task has exceptions, you can find the task and click **Execution Logs** in the **Actions** column to view the run logs that can help you identify the cause. View details Find the task that you want to manage and click **Details** in the **Actions** column to view the details of the task.
 
-### Query audit logs
+### 10.3 Query audit logs
 
 The audit logs record the modifications made by users to the system. During security maintenance, you can filter the audit logs by using different keywords to quickly locate and handle security issues in a timely manner.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -5984,9 +6230,9 @@ Each time you go to the **ActionTrail** page, the system automatically queries y
 3. On the **ActionTrail** page, select a time range and specify filter conditions.
 You can filter the logs by user, operation, object, and object attributes. After you find a log record, you can view the user, operation, object, and object attributes of the log record. Click the plus icon in front of a log record to view the detailed request and response information about the log record.
 
-### System Cleanup
+### 10.4 System Cleanup
 
-#### Manage cleanup configurations
+#### 10.4.1 Manage cleanup configurations
 
 By default, the feature of automatically triggering compression tasks and cleanup tasks is disabled. You can manually enable the feature based on your business requirements. After you enable the auto trigger feature, the system automatically compresses service logs or clears tasks when the storage space reaches the specified threshold. You can also modify the automatic cleanup configurations such as enabling or disabling the auto trigger feature, modifying the thresholds, or deleting log cleanup configurations.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -6019,7 +6265,7 @@ You can delete the log cleanup configurations of a service only after the servic
 **Confirm Deletion** message, click **OK**.
 If the log cleanup configurations of a service are deleted but the service is still running, the log cleanup configurations are displayed again when the service generates logs. If the service is stopped and does not generate logs, the log cleanup configurations are no longer displayed.
 
-#### Run cleanup tasks
+#### 10.4.2 Run cleanup tasks
 
 Task logs are stored on system disks. You can view the information about the task logs, such as the size, space usage, and compression status, based on the following aggregation dimensions: cluster, cluster and host, service, and service and component. You can compress or delete the logs based on your requirements to save storage on the system disks and improve the stability of system services.
 
@@ -6037,7 +6283,7 @@ that are generated before the selected date, and calculates the number of files 
 **Confirm** to start the compression task.
 To delete the logs, click **Start Cleanup**. In the message that appears, click **Confirm** to start the deletion task.
 
-### Manage system
+### 10.5 Manage system configuration
 
 **configuration**
 
@@ -6059,9 +6305,9 @@ is displayed in units such as TiB, GiB, and MiB.
 4. To display capacity in units such as TB, GB, and MB, turn on the **capacity unit switch**. The
 system automatically performs the unit conversion and updates the display. To restore the default capacity units, turn off the switch or clear your browser cache.
 
-## Data Service
+## 11 Data Service
 
-### Manage CSG instances
+### 11.1 Manage CSG instances
 
 After you create and configure a Cloud Storage Gateway (CSG) instance, you can view the gateway information and collect and download the gateway logs.
 
@@ -6074,9 +6320,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 3. On the **Storage Gateway Service** page, click the **Overview** tab. You can perform the
 following operations: View the gateway information You can view the information about all gateways in the current system, such as the ID, name, version, service IP address, Elastic Compute Service (ECS) instance ID, type, and status. Collect and download the gateway logs You can collect the logs of gateways only in the **Running** state. Click **Collect the logs** in the **Operation** column of the gateway whose logs you want to collect. You can collect the Object Storage Service (OSS) access logs that are generated by a Network File System (NFS) share or a Server Message Block (SMB) share, and the logs that are generated by sharing operations. After the logs are collected, wait for a period of time and click **Refresh** to refresh the gateway information. Click **Download log** in the **Operation** column to download the logs.
 
-### Use HDR-OPS
+### 11.2 Use HDR-OPS
 
-#### Before you begin
+#### 11.2.1 Before you begin
 
 HDR-OPS is a centralized O&M management tool for Hybrid Disaster Recovery (HDR). Before you use HDR-OPS, read the following information to understand the features of HDR and the related terms.
 
@@ -6098,7 +6344,7 @@ Hybrid Disaster Recovery (HDR) is a service that provides cloud-based disaster r
 | View cloud sites | By default, the system displays the HDR information of the current cloud. Before you establish a disaster recovery relationship between two clouds, you must configure the HDR information for the clouds, add the HDR information of the destination cloud to the cloud site list of the current cloud, and view and manage the HDR information. | Manage cloud sites |
 | Manage the capacity of protected resources | O&M engineers can view the capacity usage of protected resources to determine the actual resource needs and then scale out resources or clear unneeded resources. This ensures that the system has sufficient capacity for adding protected instances. | View the capacity of protected resources |
 
-#### View site pair information
+#### 11.2.2 View site pair information
 
 Hybrid Disaster Recovery (HDR)-OPS automatically obtains the disaster recovery site pairs created in the HDR console. You can view the site pairs that you create and the details about the site pairs in the site pair list. The details include the information about protection groups, infrastructure, and historical tasks.
 
@@ -6138,7 +6384,7 @@ information about the site pair and the information about protection groups, inf
 | View infrastructure information | Infrastructure information includes the network mapping information and security group mapping information. On the Network mapping page of the Infrastructure tab, view the network mapping information, such as the networks of the production site and the disaster recovery site and the mapping status. On the Security group mapping page of the Infrastructure tab, view the mapping information of security groups, such as the security groups at the production site and the disaster recovery sites and the mapping status. |
 | View historical task information | The system automatically generates historical tasks when you perform the following operations on the production group of the site pair: add or remove protected instances, start or stop replication, perform failover and failback, confirm failover and failback, and create or remove drill groups. On the Historical Tasks tab, view the details of all tasks that are run for the site pair, such as the parent task ID, task name, object name, and status. Click the plus icon in front of a task to view the information about the subtasks, such as the subtask ID, subtask name, object name, and status. |
 
-#### View alert information
+#### 11.2.3 View alert information
 
 The alerts that are managed by Hybrid Disaster Recovery (HDR)-OPS are triggered by the resources of HDR. When an alert is triggered, you can view the current alert information in the alert list. The alerts that are triggered by time series data are displayed in the alert history after they are automatically cleared. Event-triggered alerts are displayed in the alert history after they are manually handled. You can query historical alerts in a specified time range.
 
@@ -6158,13 +6404,9 @@ i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigatio
 
 **View current alerts**
 
-On the **Current alert** page, set the alert type, Alibaba Cloud account ID, and fault instance ID. The system displays the information about the current alerts that meet the specified conditions, such as the alert level, trigger reason, and occurrence time. After you receive a system alert, handle the alert based on the description of the trigger reason in a timely manner.
+On the **Current alert** page, set the alert type, Alibaba Cloud account ID, and fault instance ID. The system displays the information about the current alerts that meet the specified conditions, such as the alert level, trigger reason, and occurrence time. After you receive a system alert, handle the alert based on the description of the trigger reason in a timely manner. On the **Alarm history** page, set the time type and time range, fault instance ID, Alibaba Cloud account ID, and alert type. The system displays the information about the historical alerts that meet the specified conditions, such as the alert level, trigger reason, occurrence time, and recovery time.
 
-**View historical alerts**
-
-On the **Alarm history** page, set the time type and time range, fault instance ID, Alibaba Cloud account ID, and alert type. The system displays the information about the historical alerts that meet the specified conditions, such as the alert level, trigger reason, occurrence time, and recovery time.
-
-#### View inspection tasks
+#### 11.2.4 View inspection tasks
 
 Inspection tasks are created to check the virtual private cloud (VPC) availability, network availability, security group availability, and security group policy consistency of site pairs. In the inspection task list, you can view the overall information about historical inspection tasks and view the details of an inspection task. The system periodically runs inspection tasks. The system generates alerts if the system detects changes in computing, network, and storage information at the production site and the disaster recovery site.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -6173,7 +6415,7 @@ i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigatio
 3. On the **Inspection list** tab, specify the site pair ID, Alibaba Cloud account ID, and time
 range to search for inspection tasks that meet the specified conditions. Click the name of the desired inspection task. On the **Inspection details** page, view the execution details of the inspection task, such as the basic information and the inspection results of each inspection item. If the status of an inspection item is abnormal, handle the exception based on the fixing suggestions.
 
-#### Manage O&M tasks
+#### 11.2.5 Manage O&M tasks
 
 If operations cannot be performed on a protection group at the production site or the disaster recovery site due to data loss or corruption, you can use the Clear Protection Group feature to forcibly delete the protection group. If you want to perform an operation such as clearing a protection group, an O&M task of the operation is created and displayed in the O&M center. To prevent accidental operations, the system runs an O&M task only after the O&M task is confirmed by an O&M engineer. After an O&M task is run, the task execution status is displayed and the backup information about the O&M task is generated.
 1. Log on to the Cloud Defined Storage (CDS)-OPS console.
@@ -6190,7 +6432,7 @@ site pair ID, resource ID, ticket status, and time range to search for O&M tasks
 |---|---|
 | View the details of a site pair | Click the site pair ID of an O&M task. On the site pair details page, view the information about the site pair, including the information about the site pair, protection groups, infrastructure, and historical tasks. For more information, see View the details of a site pair. |
 
-#### Manage O&M configurations
+#### 11.2.6 Manage O&M configurations
 
 You can adjust the inspection interval and cross-cloud configuration switch status. You can view O&M configurations, modify common configuration items, and add or delete configuration items.
 
@@ -6215,7 +6457,7 @@ i. Log on to the Apsara Uni-manager Operations console. ii. In the top navigatio
 | Modify a configuration item | After a configuration item is created, you can modify the value or description of the configuration item. To modify a configuration item, perform the following steps: i. Click Edit in the Operation column. ii. Set the Value and Description parameters. iii. Click OK. |
 | Delete a configuration item | Note In most cases, you do not need to manually add or delete configuration items. You can delete a configuration item that is no longer required. To delete a configuration item, perform the following steps. i. Click Delete in the Operation column. ii. In the message that appears, click OK. |
 
-#### Manage cloud sites
+#### 11.2.7 Manage cloud sites
 
 By default, the system displays the Hybrid Disaster Recovery (HDR) information of the current cloud. Before you establish a disaster recovery relationships between two clouds, you need to configure the HDR information for the clouds, and add the HDR information of the destination cloud to the cloud site list of the current cloud, and then view and manage the HDR information.
 
@@ -6248,7 +6490,7 @@ After the HDR information of the current cloud and the destination cloud is conf
 Add a cross-cloud disaster recovery site pair in the HDR console. For more information, see "Cross-cloud Disaster Recovery" in "Disaster Recovery in the Cloud" under "HDR" of **CDS**
 **User Guide**.
 
-#### View the capacity of protected
+#### 11.2.8 View the capacity of protected resources
 
 **resources**
 

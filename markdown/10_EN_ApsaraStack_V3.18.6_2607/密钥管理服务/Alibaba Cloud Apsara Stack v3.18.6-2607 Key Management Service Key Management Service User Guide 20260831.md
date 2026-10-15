@@ -3,14 +3,47 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Manag
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 51
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service User Guide 20260831.pdf"
+source_pdf: "ea066775dc9dd523_Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Key%20Management%20Service%20Key%20Management%20Service%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Key Management Service Key Management Service User Guide 20260831
 
-## Usage notes
+## Table of Contents
+
+- 1 Usage notes
+- 2 Quick start
+  - 2.1 Log in to the Apsara Uni-manager Management Console
+  - 2.2 User roles and permissions
+- 3 Manage CMKs
+  - 3.1 Create a key
+  - 3.2 View and adjust the key quota
+  - 3.3 View the details of a CMK
+  - 3.4 Enable a CMK
+  - 3.5 Disable a CMK
+  - 3.6 Synchronize keys across regions
+  - 3.7 Schedule key deletion
+  - 3.8 Configure a rotation policy
+  - 3.9 Generate a data key
+  - 3.10 Generate a CSR
+- 4 Use RAM for access control
+- 5 Use aliases
+- 6 Customer master key
+- 7 Use symmetric keys
+  - 7.1 Symmetric encryption
+  - 7.2 EncryptionContext
+  - 7.3 Import and delete key material
+- 8 Use asymmetric keys
+  - 8.1 Asymmetric keys
+  - 8.2 Asymmetric data encryption and decryption
+  - 8.3 Asymmetric digital signature
+- 9 Rotate CMKs
+  - 9.1 Overview
+  - 9.2 Automatic key rotation
+  - 9.3 Manually rotate a master key
+
+## 1 Usage notes
 
 Before you log on to Apsara Stack Security Center, make sure that your computer meets the configuration requirements. For more information, see the Configuration requirements table of this topic. Table 1. Configuration requirements
 
@@ -19,9 +52,9 @@ Before you log on to Apsara Stack Security Center, make sure that your computer 
 | Browser | Internet Explorer: V11 or later Google Chrome (recommended): V42.0.0 or later Mozilla Firefox: V30 or later Safari: V9.0.2 or later |
 | Operating system | Windows XP Windows 7 or later macOS |
 
-## Quick start
+## 2 Quick start
 
-### Log in to the Apsara Uni-
+### 2.1 Log in to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -60,7 +93,7 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, enter the verification code, and then click **Confirm**. Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-### User roles and permissions
+### 2.2 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. Custom roles and default roles are supported. Before you log on to Apsara Stack Security Center, make sure that your account is assigned the required role. Table 1. Default roles in Apsara Stack Security
 
@@ -72,9 +105,9 @@ This topic describes the user roles involved in Apsara Stack Security. Custom ro
 If you do not have an account or a role, contact the administrator to create a user and assign a role to the user. For more information, see **Create a user** in **Apsara Uni-manager**
 **Management Console User Guide**.
 
-## Manage CMKs
+## 3 Manage CMKs
 
-### Create a key
+### 3.1 Create a key
 
 This topic describes how to create a customer master key, which you can use for encryption and decryption.
 
@@ -106,7 +139,7 @@ This topic describes how to create a customer master key, which you can use for 
 
 7. Click **Submit**.
 
-### View and adjust the key quota
+### 3.2 View and adjust the key quota
 
 This topic describes how to view and adjust the key quota.
 
@@ -132,7 +165,7 @@ This topic describes how to view and adjust the key quota.
 3. Change the quota to Not Configured based on on-screen instructions.
 After you modify the quota, the **Quota** section indicates that no quota data is available.
 
-### View the details of a CMK
+### 3.3 View the details of a CMK
 
 After you create a customer master key (CMK), you can view the details of the CMK, such as the key status, purpose, and creation time.
 
@@ -147,7 +180,7 @@ Actions column. In the CMK list, you can find a CMK and move the pointer over th
 5. In the **Key Details** section, view the details of the CMK, such as the status, purpose, and
 creation time.
 
-### Enable a CMK
+### 3.4 Enable a CMK
 
 This topic describes how to enable a customer master key (CMK) that is in the disabled state.
 
@@ -160,7 +193,7 @@ This topic describes how to enable a customer master key (CMK) that is in the di
 4. In the **Enable Key** message, click **OK**.
 After the CMK is enabled, the status of the CMK is changed from **Disabled** to **Enabled**.
 
-### Disable a CMK
+### 3.5 Disable a CMK
 
 This topic describes how to disable a customer master key (CMK).
 
@@ -177,7 +210,7 @@ If a CMK is disabled, the CMK cannot be used for encryption or decryption. The c
 4. In the **Disable Key** message, click **OK**.
 After the CMK is disabled, the status of the CMK is changed from **Enabled** to **Disabled**.
 
-### Synchronize keys across
+### 3.6 Synchronize keys across regions
 
 **regions**
 
@@ -225,7 +258,7 @@ change, and click its alias or choose **More > Key Details** in the **Actions** 
 4. On the **Regional** tab of the key details page, click **Change Primary Region**.
 5. In the **Change Primary Region** dialog box, select a region and click **OK**.
 
-### Schedule key deletion
+### 3.7 Schedule key deletion
 
 This topic describes how to schedule a customer master key for deletion by specifying a pending deletion period.
 
@@ -247,7 +280,7 @@ column, choose **More > Schedule Key Deletion**.
 
 The key status changes to **Pending Deletion**. Before the pending deletion period ends, you can cancel the scheduled deletion by choosing **More > Cancel Key Deletion**.
 
-### Configure a rotation policy
+### 3.8 Configure a rotation policy
 
 This topic describes how to configure a rotation policy of a customer master key (CMK).
 
@@ -262,7 +295,7 @@ Aliyun_AES_256, and choose More > **Key Details** in the **Actions** column.
 Disable: Disable automatic rotation for the CMK. 30 Days, 90 Days, 180 Days, and 365 Days: Select an automatic rotation interval. Customize: Allow you to specify a custom rotation interval.
 6. Click **OK**.
 
-### Generate a data key
+### 3.9 Generate a data key
 
 Data keys can be used to encrypt and decrypt on-premises data. This topic describes how to generate a data key.
 
@@ -297,7 +330,7 @@ parameters, and click **Submit**.
 
 After transfer protection is configured for the data key, you can view the ciphertext of the data key in the **Data key transfer protection result** dialog box.
 
-### Generate a CSR
+### 3.10 Generate a CSR
 
 To generate a certificate, you must submit a certificate signing request (CSR) to a certificate authority (CA). This topic describes how to generate a CSR.
 
@@ -313,7 +346,7 @@ The key type for asymmetric keys is RSA_2048, EC_P256, or EC_P256K.
 6. Click **Generate CSR**.
 7. Click **Download CSR File** to save the CSR file to your on-premises machine.
 
-## Use RAM for access control
+## 4 Use RAM for access control
 
 Key Management Service (KMS) integrates with Resource Access Management (RAM) to let you control who can access your KMS resources and what they can do. RAM users and RAM roles require explicit permission grants — Alibaba Cloud accounts have full access to their own resources by default. Apsara Stack tenant accounts have full operation permissions on their own resources. RAM users and roles are granted only operation permissions on specified resources.
 
@@ -463,7 +496,7 @@ A RAM policy that allows users to access all KMS resources `{`
 
 `]` `}` `}` `}` `]` `}`
 
-## Use aliases
+## 5 Use aliases
 
 Aliases are optional to customer master keys (CMKs). Aliases must be unique within a region for each Apsara Stack tenant account. An Alibaba Stack tenant account can use the same alias across regions. An alias can be associated with only one CMK in a region, but a CMK can be associated with multiple aliases.
 
@@ -635,7 +668,7 @@ If you query the aliases of a CMK, only the related aliases are returned. To all
 aliyun kms ListAliasesByKeyId --KeyId 127d2f84-ee5f-4f4d-9d41-dbc1aca2****
 ```
 
-## Customer master key
+## 6 Customer master key
 
 Key Management Service (KMS) is a core service that provides fully managed keys and protection capabilities. It lets you encrypt data and create digital signatures by using simple, cloud-native APIs.
 
@@ -658,9 +691,9 @@ Asymmetric keys can be used for data encryption and digital signatures. An asymm
 
 Typically, you are the owner of a customer master key in KMS. In this case, the Creator attribute of the key is your Alibaba Cloud account ID. When a cloud service integrates with KMS for server-side encryption, KMS allows the service to automatically manage an encryption key on your behalf. This simplifies data encryption and reduces the overhead of managing the key lifecycle and permissions. A key managed by a cloud service is called a service key. To help you identify them, the Creator attribute of a service key is set to the cloud service's code, and the key is assigned a special alias in the format `acs/<product_code>` . For example, a service key for Object Storage Service (OSS) has OSS as its Creator attribute and is assigned the alias acs/oss.
 
-## Use symmetric keys
+## 7 Use symmetric keys
 
-### Symmetric encryption
+### 7.1 Symmetric encryption
 
 Symmetric encryption is the most common method for data protection. Key Management Service (KMS) provides easy-to-use API operations to encrypt and decrypt data in the cloud. For details about API operations, see the **API Reference** chapter in the **Developer**
 **Guide**.
@@ -695,7 +728,7 @@ Symmetric customer master keys (CMKs) in KMS support multiple key versions and a
 
 To meet stricter security and compliance requirements, KMS supports bring your own key (BYOK). This feature lets you import your own keys to protect your data in the cloud.
 
-### EncryptionContext
+### 7.2 EncryptionContext
 
 EncryptionContext is a JSON string that may be used in KMS API operations, such as Encrypt, GenerateDataKey, and Decrypt.
 
@@ -725,7 +758,7 @@ EncryptionContext is a map or hash table in the string:string format. When Encry
 {"Key1":"Value1","Key2":"Value2"} is equivalent to {"Key2":"Value2","Key1":"Value1"}.
 ```
 
-### Import and delete key
+### 7.3 Import and delete key material
 
 **material**
 
@@ -928,9 +961,9 @@ expireTimestamp);
 
 `}` `}` `}`
 
-## Use asymmetric keys
+## 8 Use asymmetric keys
 
-### Asymmetric keys
+### 8.1 Asymmetric keys
 
 Compared to symmetric encryption, asymmetric keys are typically used between systems with different trust levels to generate and verify digital signatures or to encrypt and transmit sensitive information. You can create an asymmetric customer master key in KMS. An asymmetric key consists of a mathematically related public key and private key pair. The public key can be distributed to anyone, but the private key must be protected and restricted to trusted parties. KMS supports mainstream asymmetric key algorithms and provides robust security for data encryption and digital signatures.
 
@@ -979,7 +1012,7 @@ In most cases involving public key encryption and signature verification, you ca
 
 You can use a private key for data decryption or digital signatures only by calling the AsymmetricDecrypt and AsymmetricSign API operations provided by KMS.
 
-### Asymmetric data encryption
+### 8.2 Asymmetric data encryption and decryption
 
 **and decryption**
 
@@ -1090,7 +1123,7 @@ The command returns the original plaintext:
 this is plaintext
 ```
 
-### Asymmetric digital signature
+### 8.3 Asymmetric digital signature
 
 This topic demonstrates how to use the ALIYUN CLI with an asymmetric CMK to generate and verify a digital signature. You can also perform these operations by using the KMS SDK. An asymmetric signing scenario typically includes the following steps:
 1. The signer distributes the public key to the message receiver.
@@ -1317,9 +1350,9 @@ A successful verification returns the following output:
 Verified OK
 ```
 
-## Rotate CMKs
+## 9 Rotate CMKs
 
-### Overview
+### 9.1 Overview
 
 Keys are used to protect specific data. Therefore, the security of the data depends on the security of its keys. You can regularly rotate keys between key versions to improve key security and implement security policies and best practices for data protection.
 
@@ -1331,7 +1364,7 @@ You can regularly rotate keys to achieve the following goals: Reduce the amount 
 
 Regular key rotation facilitates compliance with various regulations, which include but are not limited to the following regulations: Payment Card Industry Data Security Standard (PCI DSS) Cryptography-related industrial standards issued by State Cryptography Administration, such as GM/T 0051-2016 Cryptography-related standards issued by NIST, such as NIST Publication 800-38D
 
-### Automatic key rotation
+### 9.2 Automatic key rotation
 
 This topic describes how to enable automatic rotation for a customer master key (CMK) in Key Management Service (KMS).
 
@@ -1381,7 +1414,7 @@ Only a CMK with a **KeyState** of Enabled can be rotated. Do not call UpdateRota
 
 The following key types do not support multiple versions: Service-managed keys: Keys that other cloud services create and manage in KMS on your behalf. They provide a basic layer of encryption for your data in those services. Bring your own key (BYOK): Keys that you import into KMS. For this type of CMK, the **Origin** property is External. KMS does not generate key material for you and cannot automatically initiate rotation. Therefore, these two key types do not support version-based rotation, either automatic or manual. For BYOK keys, this is because managing them is already complex. You are responsible for the key lifecycle, which requires an on-premises key management system, keeping information synchronized with KMS, and understanding that deleting key material in the cloud has no buffer period. Adding multiple versions would greatly increase this complexity and the risk of misconfigurations that could put your data at risk. Additionally, since each version could become unavailable at a different time, it would be difficult to guarantee the availability of both the CMK and the data it protects. For keys that do not support version-based rotation, see **Manually rotate CMKs** for an alternative solution.
 
-### Manually rotate a master key
+### 9.3 Manually rotate a master key
 
 If your key type does not support automatic rotation based on key versions, you can manually rotate a Customer Master Key (CMK) as needed. This method works for any CMK, regardless of its support for automatic rotation, and serves as a practical alternative in specific scenarios.
 

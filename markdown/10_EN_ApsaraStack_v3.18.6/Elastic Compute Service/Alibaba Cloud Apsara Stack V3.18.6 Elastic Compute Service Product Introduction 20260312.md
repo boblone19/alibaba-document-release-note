@@ -2,20 +2,26 @@
 title: "Elastic Compute Service Product Introduction 20260312"
 product_version: "V3.18.6"
 pdf_pages: 31
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Product Introduction 20260312.pdf"
+source_pdf: "bd6046f8e9b01ecb_Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Product Introduction 20260312.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20Compute%20Service%20Product%20Introduction%2020260312.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Elastic Compute Service Product Introduction 20260312
 
-Elastic Compute Service
+## Table of Contents
 
-## ECS
+- 1 ECS
+  - 1.1 ECS
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 ECS
 
 Elastic Compute Service (ECS) is an IaaS offering on Alibaba Cloud that provides highperformance, stable, reliable, and scalable compute capacity in the cloud. You can create as many or as few ECS instances as needed to respond to changes in the requirements or popularity of your workloads.
 
-### ECS
+### 1.1 ECS
 
 Elastic Compute Service (ECS) is a computing service that provides scalable processing capabilities. It is easier to manage and more user-friendly than physical servers. You can create or release ECS instances and resize disks on demand anytime. An ECS instance is a virtual computing environment that contains the basic components of computers such as the CPU, memory, and storage. Operations can be performed on ECS instances. Instances are core components of ECS. You can perform operations on instances in the ECS console. Other resources such as block storage devices, images, and snapshots can only be used after they are integrated into ECS instances.
 
@@ -33,7 +39,7 @@ On top of ECS Bare Metal Instance families, SCC instance families use CPU-based 
 
 **Block storage**
 
-Elastic Compute Service Block storage is a random block-level storage service that features low latency, high durability, and high reliability. Alibaba Cloud provides a variety of block storage devices, such as Elastic Block Storage (EBS) devices based on a distributed storage architecture and local storage located on the same physical machine that hosts the associated ECS instances.
+Block storage is a random block-level storage service that features low latency, high durability, and high reliability. Alibaba Cloud provides a variety of block storage devices, such as Elastic Block Storage (EBS) devices based on a distributed storage architecture and local storage located on the same physical machine that hosts the associated ECS instances.
 
 **EBS**
 
@@ -57,7 +63,7 @@ An image is a running environment template of ECS instances. An image includes a
 
 **Snapshots**
 
-A snapshot is a point-in-time backup of a disk. The snapshot service is typically applied to scenarios such as environment replication and disaster recovery and backup. Environment replication When you write and store data on a disk, you can create a snapshot for the disk and use the snapshot to create a disk. The new disk contains all data that was present on the original disk when the snapshot was created. Disaster recovery and backup Disks are a secure storage method that ensures no data is lost. If incorrect data is stored on a disk due to specific reasons (such as application errors or malicious read and write operations performed by hackers exploiting application vulnerabilities), you can create a snapshot for the disk on a regular basis to restore the disk to a desired state. Elastic Compute Service
+A snapshot is a point-in-time backup of a disk. The snapshot service is typically applied to scenarios such as environment replication and disaster recovery and backup. Environment replication When you write and store data on a disk, you can create a snapshot for the disk and use the snapshot to create a disk. The new disk contains all data that was present on the original disk when the snapshot was created. Disaster recovery and backup Disks are a secure storage method that ensures no data is lost. If incorrect data is stored on a disk due to specific reasons (such as application errors or malicious read and write operations performed by hackers exploiting application vulnerabilities), you can create a snapshot for the disk on a regular basis to restore the disk to a desired state.
 
 **Snapshot-consistent groups**
 
@@ -83,7 +89,7 @@ An elastic IP address (EIP) is a public IP address that you can purchase and use
 
 **ENIs**
 
-An elastic network interface (ENI) is a virtual network interface controller (NIC) that can be bound to an ECS instance. You can use ENIs to deploy high-availability clusters and perform low-cost failover and fine-grained network management. Elastic Compute Service
+An elastic network interface (ENI) is a virtual network interface controller (NIC) that can be bound to an ECS instance. You can use ENIs to deploy high-availability clusters and perform low-cost failover and fine-grained network management.
 
 **Security groups**
 
@@ -103,9 +109,9 @@ Cloud Assistant is a native automated O&M tool developed for ECS. It allows you 
 
 **Key pairs**
 
-Key pairs are a secure and convenient authentication method provided by Alibaba Cloud for ECS instance logons. A key pair consists of a public key and a private key. Only Linux instances support logon based on key pairs. A key pair is a pair of public and private keys that are generated based on an encryption algorithm. By default, 2048-bit RSA key pairs are used. If you want to log on to a Linux instance by using a key pair, you must first create the key pair. You can specify a key pair when you create an instance, or bind a key pair to an instance after the instance is created. Then, you can use the private key to connect to the instance. Elastic Compute Service
+Key pairs are a secure and convenient authentication method provided by Alibaba Cloud for ECS instance logons. A key pair consists of a public key and a private key. Only Linux instances support logon based on key pairs. A key pair is a pair of public and private keys that are generated based on an encryption algorithm. By default, 2048-bit RSA key pairs are used. If you want to log on to a Linux instance by using a key pair, you must first create the key pair. You can specify a key pair when you create an instance, or bind a key pair to an instance after the instance is created. Then, you can use the private key to connect to the instance.
 
-### Benefits
+### 1.2 Benefits
 
 Compared with data centers or traditional servers, Elastic Compute Service (ECS) is easy to use and offers scalable, secure, and reliable computing capacity.
 
@@ -135,7 +141,7 @@ Elasticity is a key benefit of cloud computing.
 
 **Vertical scaling**
 
-Vertical scaling is the process of changing the configurations of individual ECS instances. In a traditional data center, it is difficult to change the configurations of individual servers. However, in Apsara Stack, you can change the configurations of your ECS instances based on your business volume. Elastic Compute Service
+Vertical scaling is the process of changing the configurations of individual ECS instances. In a traditional data center, it is difficult to change the configurations of individual servers. However, in Apsara Stack, you can change the configurations of your ECS instances based on your business volume.
 
 **Horizontal scaling**
 
@@ -153,7 +159,7 @@ Cloud networks offer great flexibility. You can deploy on demand in Apsara Stack
 
 Apsara Stack provides an easy-to-use console for centralized management. You can use the console to perform operations on ECS instances and ECS-related services to create instances, activate related services, and modify the configurations of instances and services. Apsara Stack provides the following resources to help you use it easily: Diversified instance families such as shared instance families, dedicated instance families, and ECS Bare Metal Instance families. VPCs that serve various purposes. You can choose VPCs based on your needs and organization. Diversified storage types. Easy-to-use security group policies. Apsara Stack also lets you use images, deploy clusters, use custom tags, migrate virtual machines, and modify configurations.
 
-### Scenarios
+### 1.3 Scenarios
 
 ECS instances can be used either independently as simple web servers or with other Apsara Stack services such as OSS and CDN to provide advanced multimedia solutions. The following sections describe the typical application scenarios of ECS instances:
 
@@ -163,10 +169,7 @@ Initially, official websites for enterprises do not have high volumes of traffic
 
 **Multimedia and high-traffic applications or websites**
 
-| Feature | Description |
-|---|---|
-
-Elastic Compute Service When you use ECS instances together with OSS, you can store static images, videos, and downloaded packages in OSS to reduce storage costs. You can also use ECS in combination with CDN or SLB to shorten user response time, reduce bandwidth fees, and improve availability.
+When you use ECS instances together with OSS, you can store static images, videos, and downloaded packages in OSS to reduce storage costs. You can also use ECS in combination with CDN or SLB to shorten user response time, reduce bandwidth fees, and improve availability.
 
 **Applications or websites that have large traffic fluctuations**
 
@@ -176,100 +179,83 @@ Some applications and websites may encounter large fluctuations in traffic withi
 
 Databases with high I/O requirements are supported. High-configuration I/O optimized ECS instances can be used together with standard SSDs to support high I/O concurrency and higher data reliability. Alternatively, multiple low-configuration I/O optimized ECS instances can be used in combination with SLB to implement a high availability architecture.
 
-### Features
+### 1.4 Features
 
 **Instances**
 
-|  | SHENLONG + Intel | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Network-enhanced instance types Optimized for network-intensive scenarios and provide significantly higher network performance than other instance types of the same generation. Storage-enhanced instance types Optimized for storage-intensive scenarios and provide optimized Elastic Block Storage (EBS)- related capabilities, such as disk bandwidth and disk IOPS. Bare metal Provide robust compute, storage, and network capacities for business scenarios that require dedicated resources, security isolation, and high performance, such as containers, databases, core business of enterprises, and big data computing. Support shared block storage and the non-uniform memory access (NUMA) ON and NUMA OFF configurations. |
+| Feature | Description |
+|---|---|
+
+|   | SHENLONG + Intel | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Network-enhanced instance types Optimized for network-intensive scenarios and provide significantly higher network performance than other instance types of the same generation. Storage-enhanced instance types Optimized for storage-intensive scenarios and provide optimized Elastic Block Storage (EBS)- related capabilities, such as disk bandwidth and disk IOPS. Bare metal Provide robust compute, storage, and network capacities for business scenarios that require dedicated resources, security isolation, and high performance, such as containers, databases, core business of enterprises, and big data computing. Support shared block storage and the non-uniform memory access (NUMA) ON and NUMA OFF configurations. |
 |---|---|---|
 
-Elastic Compute Service
-
-|  | SHENLONG + Hygon | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:4, and 1:8. Storage-enhanced instance types Optimized for storage-intensive scenarios and provide optimized Elastic Block Storage (EBS)- related capabilities, such as disk bandwidth and disk IOPS. Bare metal Bare metal Provide robust compute, storage, and network capacities for business scenarios that require dedicated resources, security isolation, and high performance, such as containers, databases, core business of enterprises, and big data computing. |
+|   | SHENLONG + Hygon | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:4, and 1:8. Storage-enhanced instance types Optimized for storage-intensive scenarios and provide optimized Elastic Block Storage (EBS)- related capabilities, such as disk bandwidth and disk IOPS. Bare metal Bare metal Provide robust compute, storage, and network capacities for business scenarios that require dedicated resources, security isolation, and high performance, such as containers, databases, core business of enterprises, and big data computing. |
 |---|---|---|
 
-Elastic Compute Service
-
-|  | SHENLONG + GPUs | GPU-accelerated ECS Bare Metal Instance types Suitable for various deep learning training and development tasks, High-Performance Computing (HPC)-accelerated computing and simulation, image classification, autonomous driving, speech recognition, and other scenarios. Supported GPUs: A10, T4, and V100. Pass-through GPU-accelerated instance types Supported GPUs: A10 and T4. NVIDIA vGPU-accelerated instance types Provide high-performance CPUs, memory, and GPUs and are suitable for concurrent AI inference tasks, such as image recognition, speech recognition, and behavior identification. Suitable for compute-intensive graphics processing tasks that require high-performance 3D graphics virtualization capabilities, such as remote graphic design. Supported GPUs: T4 and A10. |
+|   | SHENLONG + GPUs | GPU-accelerated ECS Bare Metal Instance types Suitable for various deep learning training and development tasks, High-Performance Computing (HPC)-accelerated computing and simulation, image classification, autonomous driving, speech recognition, and other scenarios. Supported GPUs: A10, T4, and V100. Pass-through GPU-accelerated instance types Supported GPUs: A10 and T4. NVIDIA vGPU-accelerated instance types Provide high-performance CPUs, memory, and GPUs and are suitable for concurrent AI inference tasks, such as image recognition, speech recognition, and behavior identification. Suitable for compute-intensive graphics processing tasks that require high-performance 3D graphics virtualization capabilities, such as remote graphic design. Supported GPUs: T4 and A10. |
 |---|---|---|
-|  | SHENLONG + Local disks | Big data instance types (d series) Suitable for big data computing and storage scenarios that involve services such as Hadoop MapReduce, Hadoop Distributed File System (HDFS), Hive, and HBase, and search and log data processing scenarios in which solutions such as Elasticsearch and Kafka are used. CPU-to-memory ratio provided by certain instance types: 1:4. Instance types with local SSDs (i series) Suitable for online transaction processing (OLTP) and high-performance relational databases, NoSQL databases such as Cassandra and MongoDB, search scenarios in which solutions such as Elasticsearch is used, and E-MapReduce big data scenarios such as storage and compute decoupling. CPU-to-memory ratios: 1:4 and 1:8. |
-|  |  | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types |
+|   | SHENLONG + Local disks | Big data instance types (d series) Suitable for big data computing and storage scenarios that involve services such as Hadoop MapReduce, Hadoop Distributed File System (HDFS), Hive, and HBase, and search and log data processing scenarios in which solutions such as Elasticsearch and Kafka are used. CPU-to-memory ratio provided by certain instance types: 1:4. Instance types with local SSDs (i series) Suitable for online transaction processing (OLTP) and high-performance relational databases, NoSQL databases such as Cassandra and MongoDB, search scenarios in which solutions such as Elasticsearch is used, and E-MapReduce big data scenarios such as storage and compute decoupling. CPU-to-memory ratios: 1:4 and 1:8. |
+|   |   | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types |
 
-Elastic Compute Service
-
-| Instance type |  | Suitable for business scenarios that require high |
+| Instance type |   | Suitable for business scenarios that require high |
 |---|---|---|
-|  | Intel | performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Network-enhanced instance types Applicable scenarios: Network-intensive scenarios such as Network Functions Virtualization (NFV) or Software-defined Wide Area Network (SD-WAN), mobile Internet, live video commenting, and telecom data forwarding. Small and medium-sized database systems, caches, and search clusters. Enterprise applications of various types and sizes. Provide ultra-high packet forwarding rates. CPU-to-memory ratios: 1:2 and 1:4. Burstable instance types Provide baseline CPU performance with the ability to burst above the baseline by spending CPU credits. These instance types are suitable for business scenarios in which performance requirements are not high, such as web applications and small and medium-sized websites. Support only Proof of Concept (PoC). Security-enhanced instance types Provide enhanced data security protection based on technologies, such as trusted computing and confidential computing. Implement trusted boot based on TCM or TPM chips. During a trusted boot, all modules in the boot chain from the underlying server to the guest operating system are measured and verified. Applicable scenarios: Scenarios that involve sensitive information such as personal identity information, healthcare information, financial information, and intellectual property data. Scenarios in which confidential data is shared among multiple parties. Blockchains. Confidential machine learning. Scenarios that require high security and trust, such as services for financial organizations, public service sectors, and enterprises. Enterprise applications of various types and sizes. |
+|   | Intel | performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Network-enhanced instance types Applicable scenarios: Network-intensive scenarios such as Network Functions Virtualization (NFV) or Software-defined Wide Area Network (SD-WAN), mobile Internet, live video commenting, and telecom data forwarding. Small and medium-sized database systems, caches, and search clusters. Enterprise applications of various types and sizes. Provide ultra-high packet forwarding rates. CPU-to-memory ratios: 1:2 and 1:4. Burstable instance types Provide baseline CPU performance with the ability to burst above the baseline by spending CPU credits. These instance types are suitable for business scenarios in which performance requirements are not high, such as web applications and small and medium-sized websites. Support only Proof of Concept (PoC). Security-enhanced instance types Provide enhanced data security protection based on technologies, such as trusted computing and confidential computing. Implement trusted boot based on TCM or TPM chips. During a trusted boot, all modules in the boot chain from the underlying server to the guest operating system are measured and verified. Applicable scenarios: Scenarios that involve sensitive information such as personal identity information, healthcare information, financial information, and intellectual property data. Scenarios in which confidential data is shared among multiple parties. Blockchains. Confidential machine learning. Scenarios that require high security and trust, such as services for financial organizations, public service sectors, and enterprises. Enterprise applications of various types and sizes. |
 
-Elastic Compute Service
-
-|  | Hygon | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Network-enhanced instance types Optimized for network-intensive scenarios and provide significantly higher network performance than other instance types of the same generation. |
+|   | Hygon | Shared instance types Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Network-enhanced instance types Optimized for network-intensive scenarios and provide significantly higher network performance than other instance types of the same generation. |
 |---|---|---|
 
-Elastic Compute Service
-
-|  | ARM | Shared instance types (Kunpeng) Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types (Kunpeng) Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Shared instance types (Phytium) Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types (Phytium) Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. |
+|   | ARM | Shared instance types (Kunpeng) Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types (Kunpeng) Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Shared instance types (Phytium) Suitable for business scenarios where low performance is acceptable, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and comprehensive application services. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. Dedicated instance types (Phytium) Suitable for business scenarios that require high performance, such as frontend web servers, data analysis, batch processing, video encoding, high- performance scientific and engineering applications, and scenarios in which large numbers of packets are received and transmitted. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. |
 |---|---|---|
 
-Elastic Compute Service
-
-|  | GPU | Pass-through GPU-accelerated instance types Supported GPUs: V100, A10, T4, A2, A16, MLU370, DCU Z100L, K100, Enflame I20, Atlas300I Pro, and Atlas300T GPUs. vGPU-accelerated instance types Suitable for real-time rendering of cloud games and AR and VR applications, AI (deep learning and machine learning) inference, Internet services involving AI inference, and educational environments and modeling experiment environments of deep learning. Supported GPUs: T4 and A10. |
+|   | GPU | Pass-through GPU-accelerated instance types Supported GPUs: V100, A10, T4, A2, A16, MLU370, DCU Z100L, K100, Enflame I20, Atlas300I Pro, and Atlas300T GPUs. vGPU-accelerated instance types Suitable for real-time rendering of cloud games and AR and VR applications, AI (deep learning and machine learning) inference, Internet services involving AI inference, and educational environments and modeling experiment environments of deep learning. Supported GPUs: T4 and A10. |
 |---|---|---|
-|  | Local disks | Big data instance types (d series) Suitable for big data computing and storage scenarios that involve services such as Hadoop MapReduce, Hadoop Distributed File System (HDFS), Hive, and HBase, and search and log data processing scenarios in which solutions such as Elasticsearch and Kafka are used. Instance types with local SSDs (i series) Suitable for online transaction processing (OLTP) and high-performance relational databases, NoSQL databases such as Cassandra and MongoDB, search scenarios in which solutions such as Elasticsearch is used, and E-MapReduce big data scenarios such as storage and compute decoupling. |
+|   | Local disks | Big data instance types (d series) Suitable for big data computing and storage scenarios that involve services such as Hadoop MapReduce, Hadoop Distributed File System (HDFS), Hive, and HBase, and search and log data processing scenarios in which solutions such as Elasticsearch and Kafka are used. Instance types with local SSDs (i series) Suitable for online transaction processing (OLTP) and high-performance relational databases, NoSQL databases such as Cassandra and MongoDB, search scenarios in which solutions such as Elasticsearch is used, and E-MapReduce big data scenarios such as storage and compute decoupling. |
 | Instance type management | Support up to 512 GB of memory | Instance types can provide up to 512 GB of memory. |
-|  | Enable or disable instance types | You can enable or disable instance types in the Apsara Uni-manager Operations Console. |
-|  | Disable Hyper- Threading (HT) | You can disable HT for dedicated ECS clusters in the Apsara Uni-manager Operations Console to allow ECS instances to exclusively occupy physical CPU cores for better performance. |
-|  | View system logs and screenshots | ECS caches the system logs of instances at the time of the last startup, restart, or shutdown events, and lets you obtain the screenshots of your instances in real time. You can use these features to analyze and troubleshoot instance issues, such as unresponsive operating systems, abnormal restart, or instance connection failures. |
+|   | Enable or disable instance types | You can enable or disable instance types in the Apsara Uni-manager Operations Console. |
+|   | Disable Hyper- Threading (HT) | You can disable HT for dedicated ECS clusters in the Apsara Uni-manager Operations Console to allow ECS instances to exclusively occupy physical CPU cores for better performance. |
+|   | View system logs and screenshots | ECS caches the system logs of instances at the time of the last startup, restart, or shutdown events, and lets you obtain the screenshots of your instances in real time. You can use these features to analyze and troubleshoot instance issues, such as unresponsive operating systems, abnormal restart, or instance connection failures. |
 
-Elastic Compute Service
-
-|  |  |  |  | The format of a custom instance type is instance |  |  |
+|   |   |   |   | The format of a custom instance type is instance |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | instance |  |
-|  |  |  |  | family.c(number of CPU cores)m(memory |  |  |
-|  |  | Customize instance specifications and | nce |  |  |  |
-|  |  |  |  | size).customize.XXX |  |  |
-|  |  | performance to create custom instance types |  |  |  |  |
-|  |  | Anti-affinity visualization |  | You can check the affinity of deployment sets in the Apsara Uni-manager Management Console. If ECS instances breach the anti-affinity (strict dispersion) constraints, the deployment set is marked red and can be restored with a few clicks. |  |  |
-|  | Anti-affinity |  |  |  |  |  |
-|  |  | Anti-affinity scheduling and affinity scheduling |  | Constraint relationship monitoring and reporting are supported. When ECS instances are not distributed as expected, the system can detect the issue, record it, and notify the O&M administrator. O&M administrator can configure automatic hot or cold migration for ECS instances or manually migrate them to restore scheduling constraints. |  |  |
-|  |  | Anti-affinity correction |  | If anti-affinity does not take effect, you can perform hot- migration scheduling based on the pre-configured anti- affinity policy when physical resources become available. |  |  |
-|  | DDH | Dedicated host group |  | You can add dedicated hosts to dedicated host groups to simplify host management. |  |  |
-|  |  | Dedicated host |  | A dedicated host is a cloud host whose physical resources are reserved exclusively for a single tenant. ECS instances that are created on a dedicated host are physically isolated from ECS instances created on other dedicated hosts. |  |  |
-|  |  | Share dedicated hosts across level-1 accounts |  | The account to which dedicated hosts belong can share the hosts with other level-1 accounts. |  |  |
-|  |  | Classify ECS instances based on tags |  | You can classify ECS instances based on tags. |  |  |
-|  |  | View and modify CPU topologies |  | You can view and modify the CPU topologies of ECS instances to improve performance and parallelism and optimize resource allocation in various scenarios, such as virtualization environments, multi-threaded programming, and HPC. |  |  |
+|   |   |   |   |   | instance |   |
+|   |   |   |   | family.c(number of CPU cores)m(memory |   |   |
+|   |   | Customize instance specifications and | nce |   |   |   |
+|   |   |   |   | size).customize.XXX |   |   |
+|   |   | performance to create custom instance types |   |   |   |   |
+|   |   | Anti-affinity visualization |   | You can check the affinity of deployment sets in the Apsara Uni-manager Management Console. If ECS instances breach the anti-affinity (strict dispersion) constraints, the deployment set is marked red and can be restored with a few clicks. |   |   |
+|   | Anti-affinity |   |   |   |   |   |
+|   |   | Anti-affinity scheduling and affinity scheduling |   | Constraint relationship monitoring and reporting are supported. When ECS instances are not distributed as expected, the system can detect the issue, record it, and notify the O&M administrator. O&M administrator can configure automatic hot or cold migration for ECS instances or manually migrate them to restore scheduling constraints. |   |   |
+|   |   | Anti-affinity correction |   | If anti-affinity does not take effect, you can perform hot- migration scheduling based on the pre-configured anti- affinity policy when physical resources become available. |   |   |
+|   | DDH | Dedicated host group |   | You can add dedicated hosts to dedicated host groups to simplify host management. |   |   |
+|   |   | Dedicated host |   | A dedicated host is a cloud host whose physical resources are reserved exclusively for a single tenant. ECS instances that are created on a dedicated host are physically isolated from ECS instances created on other dedicated hosts. |   |   |
+|   |   | Share dedicated hosts across level-1 accounts |   | The account to which dedicated hosts belong can share the hosts with other level-1 accounts. |   |   |
+|   |   | Classify ECS instances based on tags |   | You can classify ECS instances based on tags. |   |   |
+|   |   | View and modify CPU topologies |   | You can view and modify the CPU topologies of ECS instances to improve performance and parallelism and optimize resource allocation in various scenarios, such as virtualization environments, multi-threaded programming, and HPC. |   |   |
 
-Elastic Compute Service
-
-|  | Perform hot upgrade for instance types | You can perform up to four consecutive hot configuration changes on a shared or dedicated instance to increase its memory size. This limit does not apply to the CPU specifications. If you attempt to perform the fifth consecutive change, it will fail with an error reported. In this case, you must restart the instance to reset the hot configuration change count. |
+|   | Perform hot upgrade for instance types | You can perform up to four consecutive hot configuration changes on a shared or dedicated instance to increase its memory size. This limit does not apply to the CPU specifications. If you attempt to perform the fifth consecutive change, it will fail with an error reported. In this case, you must restart the instance to reset the hot configuration change count. |
 |---|---|---|
-| Instance management |  |  |
-|  | Hot expansion (online resizing) of system disks and data disks | You can resize the system disk and data disks of an ECS instance online without restarting the instance. |
-|  | Online resizing of shared disks | You can resize shared disks online. |
-|  | Hot reconfiguration of I/O specifications for disks | Only disks that are based on Apsara Distributed File System 2.0 support configuration changes. The following online category changes are supported by disks: Change standard SSDs to ultra disks, premium performance disks, or standard performance disks online. Change ultra disks standard SSDs, premium performance disks, or standard performance disks online. Change premium performance disks to standard performance disks online. Change standard performance disks to premium performance disks online. |
-|  | Batch hot-upgrade of ECS instances | You can hot-upgrade multiple ECS instances to a specific instance type at a time. |
-|  | Online cloning of ECS instances | You can use a CloudOps Orchestration Service (OOS) template to clone ECS instances online. |
-|  | Batch clone ECS instances online | You can clone an ECS instance online to create multiple identical ECS instances. |
-|  | Offline cloning of ECS instances | You can use an OOS template to clone ECS instances offline. |
-|  | Mount CD-ROMs for system recovery | You can mount ISOs for system recovery. |
-
-Elastic Compute Service
+| Instance management |   |   |
+|   | Hot expansion (online resizing) of system disks and data disks | You can resize the system disk and data disks of an ECS instance online without restarting the instance. |
+|   | Online resizing of shared disks | You can resize shared disks online. |
+|   | Hot reconfiguration of I/O specifications for disks | Only disks that are based on Apsara Distributed File System 2.0 support configuration changes. The following online category changes are supported by disks: Change standard SSDs to ultra disks, premium performance disks, or standard performance disks online. Change ultra disks standard SSDs, premium performance disks, or standard performance disks online. Change premium performance disks to standard performance disks online. Change standard performance disks to premium performance disks online. |
+|   | Batch hot-upgrade of ECS instances | You can hot-upgrade multiple ECS instances to a specific instance type at a time. |
+|   | Online cloning of ECS instances | You can use a CloudOps Orchestration Service (OOS) template to clone ECS instances online. |
+|   | Batch clone ECS instances online | You can clone an ECS instance online to create multiple identical ECS instances. |
+|   | Offline cloning of ECS instances | You can use an OOS template to clone ECS instances offline. |
+|   | Mount CD-ROMs for system recovery | You can mount ISOs for system recovery. |
 
 | Recycle bin | Recycle ECS instances | The recycle bin protects ECS instances against accidental deletions to ensure business continuity and improve O&M and production security. Deleted ECS instances can be retained in the recycle bin for a specific period of time. You can restore them from the recycle bin at any time before their retention period ends. After the retention period ends, they are permanently deleted and cannot be restored. |
 |---|---|---|
-|  | Set the retention period | When ECS instances are moved to the recycle bin, they enter a retention period. |
-|  | Restore ECS instances | You can restore ECS instances within their retention period. |
-|  | Permanent deletion | You can permanently delete ECS instances that you no longer need from the recycle bin. |
+|   | Set the retention period | When ECS instances are moved to the recycle bin, they enter a retention period. |
+|   | Restore ECS instances | You can restore ECS instances within their retention period. |
+|   | Permanent deletion | You can permanently delete ECS instances that you no longer need from the recycle bin. |
+
+**Images**
 
 | Feature | Description |
 |---|---|
 | Anolis | Anolis OS 7.9 ANCK Anolis OS 7.9 ANCK (Level 3 of MLPS 2.0) Anolis OS 8.4 ANCK Anolis OS 8.4 ANCK (UEFI) Anolis OS 7.9 ANCK for Arm Anolis OS 7.9 ANCK for Arm (Level 3 of MLPS 2.0) Anolis OS 8.4 ANCK for Arm Anolis OS 8.6 ANCK for Arm (Level 3 of MLPS 2.0) Anolis OS 8.6 ANCK for Arm |
 | Alibaba Cloud Linux | Alibaba Cloud Linux2 Alibaba Cloud Linux3 |
-
-Elastic Compute Service
-
-**Images**
 
 | CentOS | CentOS 7.2 CentOS 7.3 CentOS 7.4 CentOS 7.5 CentOS 7.5 (SCC) CentOS 7.6 CentOS 7.7 CentOS 7.8 (Trusted) CentOS 7.9 CentOS 7.9 (SCC) CentOS 7.9 (UEFI) CentOS 7.9 for Arm |
 |---|---|
@@ -280,34 +266,32 @@ Elastic Compute Service
 | Ubuntu | Ubuntu 16.04 Ubuntu 18.04 Ubuntu 18.04 (UEFI) Ubuntu 22.04 Ubuntu 20.04 (UEFI) |
 | OpenSUSE | OpenSUSE 15.3 OpenSUSE 15.4 |
 
-Elastic Compute Service
-
-| SUSE Linux |  | SUSE Linux Enterprise Server 11 SP4 SUSE Linux Enterprise Server 12 SP4 SUSE Linux Enterprise Server 12 SP5 SUSE Linux Enterprise Server 15 SP2 |
+| SUSE Linux |   | SUSE Linux Enterprise Server 11 SP4 SUSE Linux Enterprise Server 12 SP4 SUSE Linux Enterprise Server 12 SP5 SUSE Linux Enterprise Server 15 SP2 |
 |---|---|---|
-| Windows Server |  | Windows Server Version 2004 Datacenter 64-bit (Simplified Chinese) Windows Server Version 2004 Datacenter 64-bit (English) Windows Server 2012 R2 Datacenter 64-bit (Simplified Chinese) Windows Server 2012 R2 Datacenter 64-bit (English) Windows Server 2016 Datacenter 64-bit (Simplified Chinese) Windows Server 2016 Datacenter 64-bit (English) Windows Server 2019 Datacenter 64-bit (Simplified Chinese) Windows Server 2019 Datacenter 64-bit (English) Windows Server 2022 Datacenter 64-bit (Simplified Chinese) Windows Server 2022 Datacenter 64-bit (English) |
-| Kylin |  | Kylin V10 SP1 0518 Kylin V10 SP1 (UEFI) Kylin V10 SP2 0524 Kylin V10 SP2 0524 (UEFI) Kylin V10 SP1 0518 for Arm Kylin V10 SP2 0524 for Arm |
-| UOS |  | UOS Server 20 1002a UOS Server 20 1040d UOS Server 20 1050d UOS Server 20 1050d (UEFI) UOS Server 20 1050a UOS Server 20 1002a for Arm UOS Server 20 1040d for Arm UOS Server 20 1050d for Arm UOS Server 20 1050a for Arm |
-| NFS |  | Founder High-Trust Server Operating System V4 |
-|  | Public images | The public images provided by Alibaba Cloud in Apsara Stack support almost all Windows Server operating systems and mainstream Linux operating systems. |
+| Windows Server |   | Windows Server Version 2004 Datacenter 64-bit (Simplified Chinese) Windows Server Version 2004 Datacenter 64-bit (English) Windows Server 2012 R2 Datacenter 64-bit (Simplified Chinese) Windows Server 2012 R2 Datacenter 64-bit (English) Windows Server 2016 Datacenter 64-bit (Simplified Chinese) Windows Server 2016 Datacenter 64-bit (English) Windows Server 2019 Datacenter 64-bit (Simplified Chinese) Windows Server 2019 Datacenter 64-bit (English) Windows Server 2022 Datacenter 64-bit (Simplified Chinese) Windows Server 2022 Datacenter 64-bit (English) |
+| Kylin |   | Kylin V10 SP1 0518 Kylin V10 SP1 (UEFI) Kylin V10 SP2 0524 Kylin V10 SP2 0524 (UEFI) Kylin V10 SP1 0518 for Arm Kylin V10 SP2 0524 for Arm |
+| UOS |   | UOS Server 20 1002a UOS Server 20 1040d UOS Server 20 1050d UOS Server 20 1050d (UEFI) UOS Server 20 1050a UOS Server 20 1002a for Arm UOS Server 20 1040d for Arm UOS Server 20 1050d for Arm UOS Server 20 1050a for Arm |
+| NFS |   | Founder High-Trust Server Operating System V4 |
+|   | Public images | The public images provided by Alibaba Cloud in Apsara Stack support almost all Windows Server operating systems and mainstream Linux operating systems. |
 
-Elastic Compute Service
-
-| roduct Intro |  |  |
+| roduct Intro |   |   |
 |---|---|---|
-| Image manage ment |  |  |
-|  | Enterprise public images | Enterprise public images are custom images globally shared by administrators in the Apsara Uni-manager Operations Console. Enterprise public images have the following characteristics: Enterprise public images appear in the list of globally shared images for each organization. Enterprise public images can be modified only by their sharers. |
-|  | Encrypt public images | You can encrypt public images using the SM2 and SM3 algorithms in the Apsara Uni-manager Operations Console for integrity protection. |
-|  | Encrypt custom images | You can create ECS instances from encrypted custom images to meet compliance requirements for data security. The system disks of the created instances are automatically encrypted. |
-|  | Support for UEFI boot mode | You can enable the Unified Extensible Firmware Interface (UEFI) boot mode for custom images. |
-|  | Custom Images | You can use custom images to create ECS instances with identical configurations. This eliminates the need to make repeated configurations. Custom images include images created based on ECS instances or snapshots and images imported from on-premises machines. |
-|  | Publish and deprecate images | You can deprecate public images in the Apsara Uni-manager Operations Console. After a public image is deprecated, the image can still be found based on its ID but is no longer included in the image list. You can publish deprecated public images. |
-|  | Import and export images | You can import and export images in multiple formats, including RAW, VHD, and QCOW2. After you upload an image from your computer to an Object Storage Service (OSS) bucket, you can import the image as a custom image to ECS. You can also export a custom image to an OSS bucket and then download the image to your computer. When you export a custom image, you cannot change its format. For example, you can export RAW-formatted custom images only in the RAW format. |
-|  | Share and unshare images | You can share a custom image with other organizations. The organizations can use the shared image to create ECS instances with identical environments. You can also unshare a shared image. |
-|  | Update images | You can update images for ECS instances by replacing the operating systems of the instances. |
+| Image manage ment |   |   |
+|   | Enterprise public images | Enterprise public images are custom images globally shared by administrators in the Apsara Uni-manager Operations Console. Enterprise public images have the following characteristics: Enterprise public images appear in the list of globally shared images for each organization. Enterprise public images can be modified only by their sharers. |
+|   | Encrypt public images | You can encrypt public images using the SM2 and SM3 algorithms in the Apsara Uni-manager Operations Console for integrity protection. |
+|   | Encrypt custom images | You can create ECS instances from encrypted custom images to meet compliance requirements for data security. The system disks of the created instances are automatically encrypted. |
+|   | Support for UEFI boot mode | You can enable the Unified Extensible Firmware Interface (UEFI) boot mode for custom images. |
+|   | Custom Images | You can use custom images to create ECS instances with identical configurations. This eliminates the need to make repeated configurations. Custom images include images created based on ECS instances or snapshots and images imported from on-premises machines. |
+|   | Publish and deprecate images | You can deprecate public images in the Apsara Uni-manager Operations Console. After a public image is deprecated, the image can still be found based on its ID but is no longer included in the image list. You can publish deprecated public images. |
+|   | Import and export images | You can import and export images in multiple formats, including RAW, VHD, and QCOW2. After you upload an image from your computer to an Object Storage Service (OSS) bucket, you can import the image as a custom image to ECS. You can also export a custom image to an OSS bucket and then download the image to your computer. When you export a custom image, you cannot change its format. For example, you can export RAW-formatted custom images only in the RAW format. |
+|   | Share and unshare images | You can share a custom image with other organizations. The organizations can use the shared image to create ECS instances with identical environments. You can also unshare a shared image. |
+|   | Update images | You can update images for ECS instances by replacing the operating systems of the instances. |
 
-|  | Disable the ISO feature | You can upload and mount ISOs in the Apsara Uni-manager Operations Console. After you mount an ISO to an ECS instance, you can start the instance from the ISO. You can unmount CD-ROMs from ECS instances in the Apsara Uni- manager Operations Console. |
+|   | Disable the ISO feature | You can upload and mount ISOs in the Apsara Uni-manager Operations Console. After you mount an ISO to an ECS instance, you can start the instance from the ISO. You can unmount CD-ROMs from ECS instances in the Apsara Uni- manager Operations Console. |
 |---|---|---|
-|  | Import images in the VMDK format | You can import images in the VMDK format in the Apsara Uni- manager Management Console. You can convert images from the VMDK format to the RAW format. You can create ECS instances from imported custom images. |
+|   | Import images in the VMDK format | You can import images in the VMDK format in the Apsara Uni- manager Management Console. You can convert images from the VMDK format to the RAW format. You can create ECS instances from imported custom images. |
+
+**Snapshots**
 
 | Feature | Description |
 |---|---|
@@ -317,10 +301,6 @@ Elastic Compute Service
 | Cross-instance snapshot- consistent group | You can create a snapshot-consistent group to simultaneously take snapshots for multiple cloud disks on one or more ECS instances. If a business system involves multiple cloud disks, you can create a snapshot-consistent group to ensure a consistent write order and crash consistency of business system data. |
 | View snapshot chain information | You can view the information about a snapshot chain. |
 | Share snapshots across tenants | You can share snapshots with other accounts. The accounts can use the shared snapshots to create cloud disks. |
-
-Elastic Compute Service
-
-**Snapshots**
 
 **Security groups**
 
@@ -338,69 +318,57 @@ Elastic Compute Service
 | Audit operation logs | You can view the operation logs of security groups. The operation logs include information about each operation performed on the security groups, such as the operation name, operator, execution status, operation source (console operation or API call), operation type, source IP address, and operation time. |
 | Audit security group logs | You can view the historical operations performed in the Apsara Uni- manager Operations Console, historical POP API calls, and historical Server Controller API calls for security groups. |
 
-Elastic Compute Service
-
 **Self-service and O&M platforms**
 
-| Feature |  | Description |
+| Feature |   | Description |
 |---|---|---|
 | Logon management | Workbench | You can log on to ECS instances using Workbench. |
-|  | SSH key pair-based logon | You can log on to ECS instances using SSH key pairs. |
-|  | Termination of Virtual Network Computing (VNC) logon sessions | When you delete or disable a VNC, the VNC logon session is closed. |
-|  | Create a non- administrator account | When you create an ECS instance, you can create a non- administrator account named ecs-user for the instance and specify a password for the account. |
+|   | SSH key pair-based logon | You can log on to ECS instances using SSH key pairs. |
+|   | Termination of Virtual Network Computing (VNC) logon sessions | When you delete or disable a VNC, the VNC logon session is closed. |
+|   | Create a non- administrator account | When you create an ECS instance, you can create a non- administrator account named ecs-user for the instance and specify a password for the account. |
 | Cloud Assistant | Create and run Cloud Assistant commands | You can run Cloud Assistant commands to perform routine tasks on ECS instances. The tasks include running automated O&M scripts, polling processes, resetting user passwords, installing or uninstalling software, updating applications, and installing patches. The Cloud Assistant commands can be batch or PowerShell commands for Windows instances and shell commands for Linux instances. You can specify custom parameters as variables in the Cloud Assistant commands. |
-|  | Upload files | You can upload files, such as configuration files and scripts, from on-premises machines to ECS instances. |
-|  | Cloud Assistant plug-ins | You can use Cloud Assistant plug-ins to make complex configurations by running simple commands. This improves O&M efficiency. |
+|   | Upload files | You can upload files, such as configuration files and scripts, from on-premises machines to ECS instances. |
+|   | Cloud Assistant plug-ins | You can use Cloud Assistant plug-ins to make complex configurations by running simple commands. This improves O&M efficiency. |
 | Super- resolution | Customize the CPU overcommit ratio | You can change the CPU overcommit ratio of a shared cluster or NC in the Apsara Uni-manager Operations Console. |
 | Compute AI Assistant | AI instance diagnosis | Intelligently diagnoses issues with running ECS instances and analyzes their possible causes. Provides troubleshooting steps and repair suggestions. |
-|  | Instance type recommendation | Provides best practice configuration suggestions and ECS instance type recommendations for migrating your different services to the cloud. |
-| > Document Vers | ion: 20260312 2 |  |
+|   | Instance type recommendation | Provides best practice configuration suggestions and ECS instance type recommendations for migrating your different services to the cloud. |
+| > Document Vers | ion: 20260312 2 |   |
 
-Elastic Compute Service
-
-|  | Intelligent resource query | You can enter a resource ID to automatically query the status and information of the resource and obtain information about its associated resources. |
+|   | Intelligent resource query | You can enter a resource ID to automatically query the status and information of the resource and obtain information about its associated resources. |
 |---|---|---|
 | O&M events | Off-peak migration events | If ECS instances are affected by updates, maintenance, or detected system failures, O&M submits an off-peak migration task. The task analyzes the off-peak business hours and informs users in advance of the impact on their instances and the planned execution time. This allows users to prepare before the event is executed to reduce business losses. |
 
-| Feature |  | Description |
-|---|---|---|
-|  | Hot migration time | With specific configurations, service interruptions caused by a hot migration task last up to 100 milliseconds. |
-|  | Uninterrupted persistent connections during the hot migration of ECS instances associated with Server Load Balancer (SLB) instances | Persistent connections are not interrupted when ECS instances that are associated as backend servers with SLB instances are being hot-migrated. |
-|  | Batch hot-migrate multiple ECS instances | You can create a batch migration task to batch migrate multiple ECS instances. To improve the success rate of batch migration tasks, we recommend that you select ECS instances of the same instance family. |
-|  | Delete host | You can create batch migration tasks to drain virtual machines in multiple hosts with one click. You can check whether all ECS instances are migrated from the specified hosts in real time. After the batch machine migration task is completed, you can view the task logs for the task details, including the source and destination NCs, whether all ECS instances are migrated from the source NCs, the migration duration, and the reason why ECS instances fail to be migrated from a source NC. |
-
-Elastic Compute Service
-
 **High availability (HA)**
 
-| Hot migration |  |  |
+| Feature |   | Description |
 |---|---|---|
-|  | Migrate all ECS instances from all hosts in a cluster | You can create a cluster migration task to drain VMs in a cluster. You can check whether all ECS instances are migrated from all hosts in the cluster in real time. After the cluster-level migration task is completed, you can view the task logs for the task details, including the source and destination NCs, whether all ECS instances are migrated from the source NCs, the migration duration, and the reason why ECS instances fail to be migrated from a source NC. |
-|  | Select and hot-migrate multiple ECS instances at a time | You can select multiple ECS instances in the ECS instance list for batch migration. |
-|  | Maximum migration rate for ECS instance hot migration tasks | You can specify a maximum migration rate for ECS instance hot migration tasks. |
-|  | Migrate all ECS instances from a host | You can create a machine migration, also known as host-level or computing server-level migration task, to migrate all ECS instances from a host to other hosts. Before you run the machine migration task, a pre- migration check can be performed to check resource availability. You can set the migration rate and concurrency level for the migration task. |
-|  | Cross-vendor hot migration of ECS instances with the same instruction set | You can hot-migrate ECS instances with the same instruction set across CPUs of different vendors and mask or hot-add instruction sets. |
-|  | In-batch, batch, and scheduled hot migration of ECS instances | When you create a batch migration task, you can enable in-batch migration and scheduled migration for the task. You can create a batch migration task to batch migrate multiple ECS instances. |
-|  | Pre-migration check | You can perform a precheck before migration to check the current traffic volume or whether the ECS instance memory refresh rate may cause migration failures. There-migration check lets you predict whether migration tasks will be successful and provides suggestions for specific limits, such as scaling up NCs, repairing faulty NCs, or performing migration during off- peak periods. |
+|   | Hot migration time | With specific configurations, service interruptions caused by a hot migration task last up to 100 milliseconds. |
+|   | Uninterrupted persistent connections during the hot migration of ECS instances associated with Server Load Balancer (SLB) instances | Persistent connections are not interrupted when ECS instances that are associated as backend servers with SLB instances are being hot-migrated. |
+|   | Batch hot-migrate multiple ECS instances | You can create a batch migration task to batch migrate multiple ECS instances. To improve the success rate of batch migration tasks, we recommend that you select ECS instances of the same instance family. |
+|   | Delete host | You can create batch migration tasks to drain virtual machines in multiple hosts with one click. You can check whether all ECS instances are migrated from the specified hosts in real time. After the batch machine migration task is completed, you can view the task logs for the task details, including the source and destination NCs, whether all ECS instances are migrated from the source NCs, the migration duration, and the reason why ECS instances fail to be migrated from a source NC. |
 
-Elastic Compute Service
-
-|  | Migration logs | You can view the logs of an ECS instance migration task, cluster-level migration task, machine migration task, or batch machine migration task for the task details, such as the task start time, the migration duration, and whether the task is successful. You can retain the logs permanently or as needed. |
+| Hot migration |   |   |
 |---|---|---|
-|  | View the progress of hot migration tasks | You can view the progress, dirty page rate, and migration rate of hot migration tasks. You can cancel hot migration tasks. |
+|   | Migrate all ECS instances from all hosts in a cluster | You can create a cluster migration task to drain VMs in a cluster. You can check whether all ECS instances are migrated from all hosts in the cluster in real time. After the cluster-level migration task is completed, you can view the task logs for the task details, including the source and destination NCs, whether all ECS instances are migrated from the source NCs, the migration duration, and the reason why ECS instances fail to be migrated from a source NC. |
+|   | Select and hot-migrate multiple ECS instances at a time | You can select multiple ECS instances in the ECS instance list for batch migration. |
+|   | Maximum migration rate for ECS instance hot migration tasks | You can specify a maximum migration rate for ECS instance hot migration tasks. |
+|   | Migrate all ECS instances from a host | You can create a machine migration, also known as host-level or computing server-level migration task, to migrate all ECS instances from a host to other hosts. Before you run the machine migration task, a pre- migration check can be performed to check resource availability. You can set the migration rate and concurrency level for the migration task. |
+|   | Cross-vendor hot migration of ECS instances with the same instruction set | You can hot-migrate ECS instances with the same instruction set across CPUs of different vendors and mask or hot-add instruction sets. |
+|   | In-batch, batch, and scheduled hot migration of ECS instances | When you create a batch migration task, you can enable in-batch migration and scheduled migration for the task. You can create a batch migration task to batch migrate multiple ECS instances. |
+|   | Pre-migration check | You can perform a precheck before migration to check the current traffic volume or whether the ECS instance memory refresh rate may cause migration failures. There-migration check lets you predict whether migration tasks will be successful and provides suggestions for specific limits, such as scaling up NCs, repairing faulty NCs, or performing migration during off- peak periods. |
+
+|   | Migration logs | You can view the logs of an ECS instance migration task, cluster-level migration task, machine migration task, or batch machine migration task for the task details, such as the task start time, the migration duration, and whether the task is successful. You can retain the logs permanently or as needed. |
+|---|---|---|
+|   | View the progress of hot migration tasks | You can view the progress, dirty page rate, and migration rate of hot migration tasks. You can cancel hot migration tasks. |
 | Cold migration | ECS instance downtime less than 90 seconds | The interval between when a host failure is detected and when ECS instances are failed over to a different host is less than 90 seconds. |
-|  | Host memory leaks | The failover capability is provided to achieve high availability in scenarios such as kernel crashes, system hangs, and NICs repeatedly going up and down. The ECS instance restart time is less than 60 seconds. |
-|  | VM GuestOS | The failover capability is provided to achieve high availability in scenarios such as VM GuestOS memory leaks, kernel crashes, system hangs, and NICs repeatedly going up and down. The ECS instance restart time is less than 60 seconds. |
-|  | Disable HA | You can disable the HA feature for ECS instances. |
-|  | Convergence and visualization of downtime events | You can export the details of physical machine events. The export file of non-downtime events includes the following fields: event ID, instance ID, instance name, affected physical machine IP address, cluster, tenant account ID, event type, affected GPUs, affected memory size, occurrence time, and virtual private cloud (VPC). The export file of downtime events includes the following fields in addition to the fields in the export file of non-downtime events: migration result, migration status, destination physical machine IP address, and source physical machine ID. |
-|  | ECS instance crash alert (Windows blue screen detection) | When ECS instance crashes are detected, alerts are generated. |
+|   | Host memory leaks | The failover capability is provided to achieve high availability in scenarios such as kernel crashes, system hangs, and NICs repeatedly going up and down. The ECS instance restart time is less than 60 seconds. |
+|   | VM GuestOS | The failover capability is provided to achieve high availability in scenarios such as VM GuestOS memory leaks, kernel crashes, system hangs, and NICs repeatedly going up and down. The ECS instance restart time is less than 60 seconds. |
+|   | Disable HA | You can disable the HA feature for ECS instances. |
+|   | Convergence and visualization of downtime events | You can export the details of physical machine events. The export file of non-downtime events includes the following fields: event ID, instance ID, instance name, affected physical machine IP address, cluster, tenant account ID, event type, affected GPUs, affected memory size, occurrence time, and virtual private cloud (VPC). The export file of downtime events includes the following fields in addition to the fields in the export file of non-downtime events: migration result, migration status, destination physical machine IP address, and source physical machine ID. |
+|   | ECS instance crash alert (Windows blue screen detection) | When ECS instance crashes are detected, alerts are generated. |
 
-Elastic Compute Service
-
-|  | Resource reservation for minimizing downtime | You can associate reserved CPU and memory resources with ECS instances on the relevant management page. When a host fails and triggers virtual machine HA, make sure that the computing clusters have sufficient idle resources. The system ensures that computing clusters have sufficient available resources to support virtual machine HA when a host failure occurs. You can also configure a dedicated failover host on the relevant management page, so that when a host failure triggers virtual machine HA, the HA service can be started using the dedicated failover host. |
+|   | Resource reservation for minimizing downtime | You can associate reserved CPU and memory resources with ECS instances on the relevant management page. When a host fails and triggers virtual machine HA, make sure that the computing clusters have sufficient idle resources. The system ensures that computing clusters have sufficient available resources to support virtual machine HA when a host failure occurs. You can also configure a dedicated failover host on the relevant management page, so that when a host failure triggers virtual machine HA, the HA service can be started using the dedicated failover host. |
 |---|---|---|
-|  | Failover triggered by out-of-memory (OOM) errors on ECS instances | When an OOM error is detected on an ECS instance, failover is performed. |
+|   | Failover triggered by out-of-memory (OOM) errors on ECS instances | When an OOM error is detected on an ECS instance, failover is performed. |
 | Hot standby disk for ECS instances equipped with local disks | Hot standby disk for ECS instances equipped with local disks | Hot standby disks are provided to replace damaged local disks on ECS instances. |
 | Repair of local disks on ECS instances | Repair of local disks on ECS instances | Local disks on ECS instances can be separately repaired. |
-
-Elastic Compute Service

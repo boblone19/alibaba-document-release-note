@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Appli
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Product Introduction 20260831.pdf"
+source_pdf: "e60265e13072ae3f_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Produc"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Web Application Firewall (WAF) Product Introduction 20260831
 
+## Table of Contents
+
+- 1 What is Web Application Firewall
+- 2 Functions and features
+- 3 Architecture
+- 4 Use scenarios
+
 Application Firewall
 
-## What is Web Application
+## 1 What is Web Application Firewall
 
 **Firewall**
 
@@ -26,7 +33,7 @@ It features an intelligent detection engine that covers OWASP security risks. In
 
 It supports flexible access control mechanisms and includes a built-in access control engine. The engine tracks client access behaviors based on the Source IP and session. You can restrict access behaviors from specific sources by configuring access frequency limits for specific domains and URLs, and by applying IP blocklist and allowlist policies.
 
-## Functions and features
+## 2 Functions and features
 
 Web Application Firewall prevents malicious application attacks and secures access for Internet users on mobile devices and PCs.
 
@@ -76,7 +83,7 @@ Web Application Firewall prevents malicious application attacks and secures acce
 |---|---|---|---|
 |   |   | Data desensitization | Support desensitization of sensitive data in HTTP request logs, including ID card numbers, birthdays, bank card numbers, passwords, and other user- defined sensitive data. |
 
-## Architecture
+## 3 Architecture
 
 Web Application Firewall (WAF) receives web access traffic and performs protocol parsing and in-depth decoding on the traffic. Then, WAF calls the semantic analysis, access control, and threat intelligence modules to analyze traffic and determines whether to allow or block traffic based on the predefined policies.
 
@@ -104,6 +111,6 @@ Traffic Parsing In-depth Decoding
 
 (HTTP/HTTPS) Traditionally, attacks are identified by matching rules that use regular expressions. However, the rules cannot cover all attack payloads that are based on programming languages. As a result, WAF cannot provide protection as expected. WAF adopts the intelligent semantic analysis algorithm to analyze web requests and responses to identify threats and attacks. The algorithm processes data through four stages: lexical analysis, syntax analysis, semantic analysis, and threat model matching. Semantic Threat Model Lexical Syntax Analysis Analysis Analysis Matching WAF provides built-in syntax compilers for common programming languages. WAF performs in-depth decoding on HTTP and HTTPS payloads, matches the required compiler based on the type of the identified programming language, and then matches the threat model to obtain a threat level. Next, WAF either allows or blocks the related access requests. Threat detection based on intelligent semantic analysis outperforms rule-based threat detection in terms of detection accuracy and false positive rates. os
 
-## Use scenarios
+## 4 Use scenarios
 
 Web Application Firewall (WAF) provides comprehensive web protection features for various types of websites, including public service, finance, insurance, e-commerce, Online to Offline (O2O), Internet Plus, and gaming websites. WAF can be used to prevent sensitive data leaks and improve data security. For example, you can prevent databases from data download or leaks caused by injection attacks and prevent unauthorized URL access and authorization bypass. For financial customers, WAF can be used to protect business systems in real time, such as portal websites, online business centers, and online customer service. For e-commerce customers, WAF can be used to identify web attacks and ensure website availability. The HTTP flood protection feature of WAF can be used to protect against abnormal access behavior during major events, such as promotion abuse. During critical periods, the Strict Protection policy in WAF can be used to enhance system security or create custom rules to proactively defend against zero-day vulnerabilities.

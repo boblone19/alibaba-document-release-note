@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Product 
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Product Introduction 20260827.pdf"
+source_pdf: "add512e9fa9dffcf_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Product Introduction 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20Product%20Introduction%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Product Introduction 20260827
 
-## File Storage NAS
+## Table of Contents
+
+- 1 File Storage NAS
+  - 1.1 Product Details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 File Storage NAS
 
 File Storage NAS (NAS) is a file storage service for compute nodes, such as Elastic Compute Service (ECS) instances and container services. NAS is a distributed file system that provides high performance, high reliability, scalability, and shared access. After you create a NAS file system and a mount target, you can mount the file system on compute nodes, such as ECS instances and container services, using the standard Network File System (NFS) and Server Message Block (SMB) protocols. You can also access the file system using standard Portable Operating System Interface (POSIX)-based APIs. Multiple compute nodes can simultaneously mount the same file system to share files and directories. NAS file systems support hybrid deployments of Hygon and Intel servers within a cluster.
 
-### Product Details
+### 1.1 Product Details
 
 File Storage NAS (NAS) provides scalable file systems and allows simultaneous access to a NAS file system from multiple Elastic Compute Service (ECS) instances. The storage capacity of a NAS file system automatically scales up or down when users create or delete files. NAS provides shared data sources for workloads and applications that run on multiple ECS instances or servers.
 
@@ -46,7 +54,7 @@ You can configure directory-level access control lists (ACLs) for a NAS file sys
 
 NAS supports the audit log feature. Logs record operations that are performed on file systems in real time. You can use the logs to analyze and troubleshoot issues.
 
-### Benefits
+### 1.2 Benefits
 
 File Storage NAS offers several advantages over traditional storage, including shared access, high reliability, elastic scaling, ease of use, and support for hybrid deployment.
 
@@ -70,7 +78,7 @@ NAS supports the Network File System (NFS) 3.0, NFS 4.0, Server Message Block (S
 
 NAS file systems can be deployed in a hybrid manner on Hygon servers and Intel servers in a cluster.
 
-### Scenarios
+### 1.3 Scenarios
 
 File Storage NAS (NAS) is used for several purposes, such as providing shared storage and high availability with Server Load Balancer (SLB), enabling file sharing within an enterprise, and performing data backup.
 
@@ -86,7 +94,7 @@ For example, the employees of an enterprise need to access the same datasets. An
 
 For example, you want to migrate your data from a data center to the cloud for backup. You want to use a standard interface to access the cloud storage service. You can back up your data in a NAS file system.
 
-### Features
+### 1.4 Features
 
 **Basic features**
 

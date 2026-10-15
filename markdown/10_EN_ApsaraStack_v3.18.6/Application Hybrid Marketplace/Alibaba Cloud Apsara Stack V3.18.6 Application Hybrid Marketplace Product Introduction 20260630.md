@@ -2,22 +2,28 @@
 title: "Application Hybrid Marketplace Product Introduction 20260630"
 product_version: "V3.18.6"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Application Hybrid Marketplace Product Introduction 20260630.pdf"
+source_pdf: "fe484276466e009c_Alibaba Cloud Apsara Stack V3.18.6 Application Hybrid Marketplace Product Introduction 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83AHM/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Hybrid%20Marketplace%20Product%20Introduction%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Application Hybrid Marketplace Product Introduction 20260630
 
-Application Hybrid Marketplace P
+## Table of Contents
 
-## Hybrid cloud application
+- 1 Hybrid cloud application center
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 Hybrid cloud application center
 
 **center**
 
 The Hybrid Cloud Application Center (Application Hybrid Marketplace, AHM) is the third product development and delivery pipeline alongside the Apsara Stack infrastructure Tianji and PaaS platform. It primarily supports the deployment of third-party ISV or Alibaba Cloud internal SaaS applications in Apsara Stack scenarios. AHM uses cloud platform tenant-side resources for application delivery, with the goal of expanding the Apsara Stack product ecosystem.
 
-### Product details
+### 1.1 Product details
 
 Application Center provides customers with convenient and fast application delivery and deployment methods.
 
@@ -37,14 +43,9 @@ Supports viewing application deployment task status and execution progress. When
 
 Supports creating Docker image repositories for clusters, providing different image services for different clusters. When deploying applications, the system reads the image repository configuration to obtain the image source.
 
-### Benefits
+### 1.2 Benefits
 
 Application Center integrates various services and resources into a complete solution through standard protocols and Infrastructure as Code (IaC) orchestration engines, enabling one-click deployment of this complete solution to customer Apsara Stack environments.
-
-| Feature | Description |
-|---|---|
-
-Application Hybrid Marketplace P
 
 **Access standards**
 
@@ -62,15 +63,18 @@ With the one-click product deployment mechanism, users can complete the delivery
 
 Application Center integrates infrastructure monitoring capabilities and supports automated O&M through custom policies. We are committed to creating a simplified operations management system that enables customers and service providers to quickly complete basic O&M actions on the Application Center platform.
 
-### Scenarios
+### 1.3 Scenarios
 
 Apsara Stack has been deployed in numerous enterprises. Enterprise customers increasingly want to make better use of this cloud platform and hope to introduce more high-quality cloud products (such as Alibaba Cloud and third-party ISV SaaS products) to meet more of their business requirements. Application Center supports the sales and deployment of Alibaba Cloud or third-party ISV applications in Apsara Stack scenarios, meeting customers' diverse product application needs in the Apsara Stack environment. Application Center is mainly used in the following scenarios: Third-party ISV suppliers join the Apsara Stack platform to publish various cloud products and applications Decoupling of base version dependencies, enabling rapid deployment of iterative Alibaba Cloud internal products and applications Cloud products and applications that need to be deployed on the tenant side to utilize comprehensive Apsara Stack product capabilities
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the features of Hybrid Cloud Application Center.
 
 **Application management**
+
+| Feature | Description |
+|---|---|
 
 | Application overview | You can view the status of applications, the statistics of resources used for application deployment (by CPU, memory, and disk), the distribution of resources for application deployment, and the alert status of resources (including critical, important, and medium) in real time. This allows you to quickly locate issues and optimize application resource management. |
 |---|---|
@@ -80,6 +84,8 @@ This topic describes the features of Hybrid Cloud Application Center.
 | Application deployment | The applications in the application store support multiple versions. You can select a specific version to deploy. You can use the trial feature to test application deployment with the minimal resources required by an application. The resource configuration and environment deployment for each application component can be completed using standard resources based on the standard environment requirements. |
 | Openness | You can create and update applications by calling API operations. |
 
+**My applications**
+
 | Feature | Description |
 |---|---|
 | Application instance deployment | After an application is deployed, you can view all the instances that have been purchased and instances that are in trial use. The instance information includes the list of cloud service instances on which the instance depends and detailed deployment logs. You can also view and delete the official application instances that have been deployed. |
@@ -87,12 +93,10 @@ This topic describes the features of Hybrid Cloud Application Center.
 | Application instance deletion | You can delete an application instance that is no longer in use. After you delete an instance, all resources used by the instance are released and the application data is automatically deleted. |
 | Container resource monitoring | You can monitor resource changes and container resource usage by using Sunfire and Prometheus for applications deployed based on containers. |
 
-Application Hybrid Marketplace P
-
-**My applications**
-
 | Application deployment task management | You can view the status and execution progress of an application deployment task. If a task fails during execution, you can manually retry or skip the related steps. |
 |---|---|
+
+**Plug-in center**
 
 | Feature | Description |
 |---|---|
@@ -100,13 +104,9 @@ Application Hybrid Marketplace P
 | My plug-ins | The system displays the basic information, plug-in information, and endpoints of deployed plug-ins. You can update, uninstall, disable, enable, and restart plug-ins. |
 | Shortcuts | You can use shortcuts for deployed plug-ins to quickly go to the plug-in management platform. |
 
+**System management**
+
 | Feature | Description |
 |---|---|
 | Image repository management | You can create Docker image repositories for clusters to provide different image services for different clusters. When you deploy an application, the system reads the configurations of the image repository to obtain images. |
 | Variable management | You can define global variables and cluster variables that take effect for specific clusters. You can generate keys for internal database calls in the deployment environment. |
-
-Application Hybrid Marketplace P
-
-**Plug-in center**
-
-**System management**

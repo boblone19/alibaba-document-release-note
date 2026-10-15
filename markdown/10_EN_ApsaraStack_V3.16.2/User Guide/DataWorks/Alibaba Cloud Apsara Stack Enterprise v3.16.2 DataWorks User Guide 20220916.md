@@ -3,16 +3,497 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 DataWorks User Guide"
 product_version: "V3.16.2"
 doc_version: "20220916"
 pdf_pages: 995
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 DataWorks User Guide 20220916.pdf"
+source_pdf: "28d3e3c95042bbdb_Alibaba Cloud Apsara Stack Enterprise v3.16.2 DataWorks User Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20DataWorks%20User%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 DataWorks User Guide
 
+## Table of Contents
+
+- 1 Create a synchronization node
+- 2 Quick Start
+  - 2.1 Overview
+  - 2.2 Create tables and import data
+  - 2.3 Create a workflow
+  - 2.4 Create a synchronization node
+  - 2.5 Configure recurrence and dependencies for a node
+  - 2.6 Run a node and troubleshoot errors
+- 3 Data Integration
+  - 3.1 Overview
+  - 3.2 Homepage
+  - 3.3 Connectivity testing
+  - 3.4 Authentication file management
+    - 3.4.1 Upload and reference an authentication file
+    - 3.4.2 Configure Kerberos authentication
+  - 3.5 Data sources
+    - 3.5.1 Supported data sources
+    - 3.5.2 Data source isolation
+    - 3.5.3 Sync data monitoring
+    - 3.5.4 Manage connection permissions
+    - 3.5.5 Configure a MySQL data source
+    - 3.5.6 Configure an SQL Server data source
+    - 3.5.7 Configure a PostgreSQL connection
+    - 3.5.8 Configure an Oracle connection
+    - 3.5.9 Configure a Dameng connection
+    - 3.5.10 Configure a DRDS connection
+    - 3.5.11 Configure a PolarDB connection
+    - 3.5.12 Configure a HybridDB for MySQL connection
+    - 3.5.13 Configure a HybridDB for PostgreSQL connection
+    - 3.5.14 Configure an ApsaraDB for OceanBase connection
+    - 3.5.15 Configure a MaxCompute connection
+    - 3.5.16 Configure a DataHub connection
+    - 3.5.17 Configure an AnalyticDB for MySQL connection
+    - 3.5.18 Configure a Vertica connection
+    - 3.5.19 Configure a GBase8a connection
+    - 3.5.20 Configure a Lightning connection
+    - 3.5.21 Configure an HBase data source
+    - 3.5.22 Configure a Hologres connection
+    - 3.5.23 Add a Hive data source
+    - 3.5.24 Configure an OSS connection
+    - 3.5.25 Add an HDFS data source
+    - 3.5.26 Configure an FTP connection
+    - 3.5.27 Configure a MongoDB connection
+    - 3.5.28 Configure a Memcache connection
+    - 3.5.29 Configure a Redis connection
+    - 3.5.30 Configure a Tablestore connection
+    - 3.5.31 Configure an Elasticsearch connection
+    - 3.5.32 Configure a LogHub connection
+    - 3.5.33 Add a ClickHouse data source
+  - 3.6 Configure data synchronization tasks
+    - 3.6.1 Configure a sync node by using the codeless UI
+    - 3.6.2 Configure a sync node by using the code editor
+    - 3.6.3 Configure the reader
+      - 3.6.3.1 Configure DRDS Reader
+      - 3.6.3.2 Configure HBase Reader
+      - 3.6.3.3 Configure HDFS Reader
+      - 3.6.3.4 Configure MaxCompute Reader
+      - 3.6.3.5 Configure MongoDB Reader
+      - 3.6.3.6 Configure Db2 Reader
+      - 3.6.3.7 Configure MySQL Reader
+      - 3.6.3.8 Configure Oracle Reader
+      - 3.6.3.9 Configure OSS Reader
+      - 3.6.3.10 Configure FTP Reader
+      - 3.6.3.11 Configure Tablestore Reader
+      - 3.6.3.12 Configure PostgreSQL Reader
+      - 3.6.3.13 Configure SQL Server Reader
+      - 3.6.3.14 Configure LogHub Reader
+      - 3.6.3.15 Configure Tablestore Reader-Internal
+      - 3.6.3.16 Configure OTSStream Reader
+      - 3.6.3.17 Configure RDBMS Reader
+      - 3.6.3.18 Configure Stream Reader
+      - 3.6.3.19 Configure Hive Reader
+      - 3.6.3.20 Configure Elasticsearch Reader
+      - 3.6.3.21 Configure Vertica Reader
+      - 3.6.3.22 Configure GBase Reader
+      - 3.6.3.23 KingbaseES Reader
+      - 3.6.3.24 SAP HANA Reader
+      - 3.6.3.25 ClickHouse Reader
+      - 3.6.3.26 TSDB Reader
+    - 3.6.4 Configure the writer
+      - 3.6.4.1 Configure AnalyticDB for MySQL 2.0 Writer
+      - 3.6.4.2 Configure DataHub Writer
+      - 3.6.4.3 Configure the DB2 writer
+      - 3.6.4.4 Configure DRDS Writer
+      - 3.6.4.5 Configure the FTP writer
+      - 3.6.4.6 Configure HBase Writer
+      - 3.6.4.7 Configure HBase11xsql Writer
+      - 3.6.4.8 Configure HDFS Writer
+      - 3.6.4.9 Configure MaxCompute Writer
+      - 3.6.4.10 Configure Memcache Writer
+      - 3.6.4.11 Configure MongoDB Writer
+      - 3.6.4.12 Configure MySQL Writer
+      - 3.6.4.13 Configure Oracle Writer
+      - 3.6.4.14 Configure OSS Writer
+      - 3.6.4.15 Configure PostgreSQL Writer
+      - 3.6.4.16 Configure Redis Writer
+      - 3.6.4.17 Configure SQL Server Writer
+      - 3.6.4.18 Configure Elasticsearch Writer
+      - 3.6.4.19 Configure LogHub Writer
+      - 3.6.4.20 Configure Open Search Writer
+      - 3.6.4.21 Configure Tablestore Writer
+      - 3.6.4.22 Configure RDBMS Writer
+      - 3.6.4.23 Configure Stream Writer
+      - 3.6.4.24 Configure Hive Writer
+      - 3.6.4.25 Configure Vertica Writer
+      - 3.6.4.26 Configure Gbase8a Writer
+      - 3.6.4.27 KingbaseES Writer
+      - 3.6.4.28 SAP HANA Writer
+      - 3.6.4.29 Configure ClickHouse Writer
+      - 3.6.4.30 Configure TSDB Writer
+    - 3.6.5 Optimize synchronization performance
+  - 3.7 Real-time synchronization
+    - 3.7.1 Overview
+    - 3.7.2 Plug-ins for data sources that support real-time synchronization
+    - 3.7.3 Create, configure, commit, and manage real-time synchronization nodes
+    - 3.7.4 Reader
+      - 3.7.4.1 MySQL binlogs
+      - 3.7.4.2 Oracle CDC
+      - 3.7.4.3 DataHub
+      - 3.7.4.4 LogHub
+      - 3.7.4.5 Kafka
+      - 3.7.4.6 Configure PolarDB Reader
+    - 3.7.5 Writer
+      - 3.7.5.1 Configure MaxCompute Writer
+      - 3.7.5.2 Configure Hologres Writer
+      - 3.7.5.3 DataHub
+      - 3.7.5.4 Kafka
+    - 3.7.6 Transform
+      - 3.7.6.1 Data filter
+      - 3.7.6.2 String replacement
+  - 3.8 Data synchronization solutions
+    - 3.8.1 Go to the Sync Solutions page
+    - 3.8.2 Synchronize data to Hologres in real time
+    - 3.8.3 Synchronize data to MaxCompute in real time
+  - 3.9 Resource groups
+    - 3.9.1 Overview
+    - 3.9.2 Shared resource groups
+    - 3.9.3 Create a custom resource group for Data Integration
+  - 3.10 Full-database migration
+    - 3.10.1 Overview
+    - 3.10.2 Migrate a MySQL database
+    - 3.10.3 Migrate Oracle databases
+- 4 Data Analytics
+  - 4.1 Solution
+  - 4.2 SQL coding guidelines and specifications
+  - 4.3 GUI elements
+    - 4.3.1 Overview
+    - 4.3.2 Perform batch operations
+    - 4.3.3 Workflow Parameters
+    - 4.3.4 Lineage
+    - 4.3.5 Versions
+    - 4.3.6 Code Structure
+  - 4.4 Business flows
+    - 4.4.1 Overview
+    - 4.4.2 Create and reference a node group
+  - 4.5 Node types
+    - 4.5.1 Data Integration
+      - 4.5.1.1 Create a batch sync node
+    - 4.5.2 MaxCompute
+      - 4.5.2.1 Create an ODPS SQL node
+      - 4.5.2.2 Create an SQL Snippet node
+      - 4.5.2.3 Create an ODPS Spark node
+      - 4.5.2.4 Create a PyODPS node
+      - 4.5.2.5 Create an ODPS Script node
+      - 4.5.2.6 Create an ODPS MR node
+      - 4.5.2.7 Create a MaxCompute table
+      - 4.5.2.8 Create, reference, and download resources
+      - 4.5.2.9 Register a UDF
+    - 4.5.3 EMR
+      - 4.5.3.1 Modes for associating an EMR cluster with a DataWorks workspace
+      - 4.5.3.2 Create an EMR MR node
+      - 4.5.3.3 Create an EMR Spark SQL node
+      - 4.5.3.4 Create an EMR Spark node
+      - 4.5.3.5 Create an EMR Hive node
+      - 4.5.3.6 Create and use an EMR Shell node
+      - 4.5.3.7 Create and use an EMR Spark Shell node
+      - 4.5.3.8 Create an EMR Impala node
+      - 4.5.3.9 Create and use an EMR Presto node
+      - 4.5.3.10 Create and use an EMR JAR resource
+      - 4.5.3.11 Create an EMR table
+      - 4.5.3.12 Create an EMR function
+      - 4.5.3.13 Create and use an EMR Spark Streaming node
+      - 4.5.3.14 Create and use an EMR Streaming SQL node
+    - 4.5.4 Hologres
+      - 4.5.4.1 Create a Hologres SQL node
+    - 4.5.5 AnalyticDB for PostgreSQL
+      - 4.5.5.1 Create an AnalyticDB for PostgreSQL node
+      - 4.5.5.2 Create an AnalyticDB for PostgreSQL table
+    - 4.5.6 AnalyticDB for MySQL
+      - 4.5.6.1 Create and use an AnalyticDB for MySQL node
+    - 4.5.7 Algorithm
+      - 4.5.7.1 Create a PAI node
+    - 4.5.8 General
+      - 4.5.8.1 Create a for-each node
+      - 4.5.8.2 Create a do-while node
+      - 4.5.8.3 Create a merge node
+      - 4.5.8.4 Create a branch node
+      - 4.5.8.5 Create an assignment node
+      - 4.5.8.6 Create a Shell node
+      - 4.5.8.7 Create a zero-load node
+      - 4.5.8.8 Create a cross-tenant collaboration node
+      - 4.5.8.9 Create a data analysis report node
+    - 4.5.9 Custom
+      - 4.5.9.1 Create a Hologres development node
+  - 4.6 Schedule
+    - 4.6.1 Basic properties
+    - 4.6.2 Scheduling parameters
+    - 4.6.3 Scheduling properties
+    - 4.6.4 Dependencies
+  - 4.7 Components
+    - 4.7.1 Create a script template
+    - 4.7.2 Use a script template
+  - 4.8 Custom node type
+    - 4.8.1 Overview
+    - 4.8.2 Create a custom wrapper
+    - 4.8.3 Create a custom node type
+  - 4.9 Manage configurations
+    - 4.9.1 Setup
+    - 4.9.2 Configuration center
+    - 4.9.3 Workspace settings
+    - 4.9.4 Template management
+    - 4.9.5 Folder management
+    - 4.9.6 Level management
+    - 4.9.7 Workspace backup and restore
+  - 4.10 Deploy
+    - 4.10.1 Deploy nodes
+    - 4.10.2 Overview of cross-workspace cloning
+    - 4.10.3 Clone nodes across workspaces
+  - 4.11 Create an ad hoc query node
+  - 4.12 View runtime logs
+  - 4.13 View tenant tables
+  - 4.14 Manage tables
+  - 4.15 View built-in functions
+  - 4.16 Manage deleted nodes
+  - 4.17 Create a manually triggered workflow
+  - 4.18 Editor keyboard shortcuts
+  - 4.19 Use E-MapReduce in DataWorks
+  - 4.20 Migrate nodes in DataStudio
+- 5 HoloStudio
+  - 5.1 Overview
+  - 5.2 Bind a Hologres database to the current workspace
+  - 5.3 SQL Console
+  - 5.4 PostgreSQL management
+    - 5.4.1 Manage databases
+    - 5.4.2 Manage tables
+    - 5.4.3 Manage foreign tables
+  - 5.5 Data analytics
+    - 5.5.1 Overview
+    - 5.5.2 Use the Interactive Analytics Development submodule
+    - 5.5.3 Create multiple foreign tables at a time
+    - 5.5.4 Import MaxCompute data
+    - 5.5.5 Upload local files
+  - 5.6 Hologres console
+    - 5.6.1 Overview
+    - 5.6.2 View the instance list
+    - 5.6.3 Manage instances
+    - 5.6.4 Manage users
+    - 5.6.5 Manage databases
+- 6 Realtime Analysis
+  - 6.1 Overview
+  - 6.2 SQL queries
+  - 6.3 Workbook
+    - 6.3.1 Create a workbook
+    - 6.3.2 Edit a workbook
+  - 6.4 Dimension tables
+    - 6.4.1 Create and manage dimension tables
+    - 6.4.2 Import data to a dimension table
+    - 6.4.3 Edit a dimension table
+    - 6.4.4 Share a dimension table
+  - 6.5 Report
+    - 6.5.1 Create a report
+    - 6.5.2 Edit a report
+- 7 Administration
+  - 7.1 Overview
+  - 7.2 Dashboard
+  - 7.3 Real-time node O&M
+    - 7.3.1 Manage real-time computing nodes
+    - 7.3.2 Manage real-time synchronization nodes
+  - 7.4 Auto triggered node O&M
+    - 7.4.1 Manage auto triggered nodes
+    - 7.4.2 Manage auto triggered node instances
+    - 7.4.3 Manage retroactive instances
+    - 7.4.4 Manage test instances
+  - 7.5 Manually triggered node O&M
+    - 7.5.1 Manage manually triggered nodes
+    - 7.5.2 Manage manually triggered node instances
+  - 7.6 MaxCompute engine O&M
+  - 7.7 Monitor
+    - 7.7.1 Overview
+    - 7.7.2 Feature description
+      - 7.7.2.1 Baseline alert and event alert
+      - 7.7.2.2 Custom alert trigger
+    - 7.7.3 Instructions
+      - 7.7.3.1 Baseline instances
+      - 7.7.3.2 Baselines
+      - 7.7.3.3 Events
+      - 7.7.3.4 Alert triggers
+      - 7.7.3.5 Alert information
+    - 7.7.4 FAQ
+- 8 Security Center
+  - 8.1 Overview
+  - 8.2 My Permissions
+  - 8.3 Authorizations
+  - 8.4 Approval Center
+  - 8.5 FAQ
+- 9 Security Center (new version)
+  - 9.1 Overview
+  - 9.2 Platform security diagnosis
+  - 9.3 Data access control
+- 10 Approval Center
+  - 10.1 Overview
+  - 10.2 Create and manage approval policies
+    - 10.2.1 Approval policies for MaxCompute data
+    - 10.2.2 Approval policies for data services
+  - 10.3 Process and view applications
+- 11 Data Quality
+  - 11.1 Overview
+  - 11.2 Features
+    - 11.2.1 Dashboard
+    - 11.2.2 My Subscriptions
+    - 11.2.3 Configure monitoring rules
+    - 11.2.4 View monitoring results
+    - 11.2.5 Report Template Management
+    - 11.2.6 Manage rule templates
+  - 11.3 User guide
+    - 11.3.1 Configure monitoring rules for MaxCompute
+    - 11.3.2 Configure monitoring rules for DataHub
+- 12 Data Map
+  - 12.1 Overview
+  - 12.2 Configure whitelists and category management permissions
+  - 12.3 View overall data
+  - 12.4 View and manage tables and data permissions
+  - 12.5 Manage categories of and permissions on MaxCompute tables
+  - 12.6 Table details
+    - 12.6.1 View the details of a table
+    - 12.6.2 Request permissions on tables
+    - 12.6.3 Add a table to favorites
+    - 12.6.4 Go to DataService Studio to create an API
+  - 12.7 Data discovery
+    - 12.7.1 Collect metadata from an EMR data source
+    - 12.7.2 Collect metadata from a Tablestore data source
+    - 12.7.3 Collect metadata from a MySQL data source
+    - 12.7.4 Collect metadata from an SQL Server data source
+    - 12.7.5 Collect metadata from a PostgreSQL data source
+    - 12.7.6 Collect metadata from an Oracle data source
+    - 12.7.7 Collect metadata from an AnalyticDB for PostgreSQL data source
+    - 12.7.8 Collect metadata from an AnalyticDB for MySQL 2.0 data source
+    - 12.7.9 Collect metadata from an AnalyticDB for MySQL 3.0 data source
+    - 12.7.10 Collect metadata from a Hologres data source
+    - 12.7.11 Collect metadata from a CDH Hive data source
+    - 12.7.12 Collect metadata from an HBase data source
+    - 12.7.13 Collect metadata from a Kudu data source
+  - 12.8 What do I do if no search results are returned when I query a newly created table in the Data Map service of DataWorks?
+- 13 Data Asset Management
+  - 13.1 Go to the Data Asset Management page
+  - 13.2 Asset manager
+  - 13.3 Asset user
+  - 13.4 Asset administrator
+  - 13.5 Manage authorizations
+  - 13.6 Perform cross-tenant authorization
+- 14 Organization management
+  - 14.1 Member management
+  - 14.2 Resource groups
+    - 14.2.1 About scheduling resources
+    - 14.2.2 Change the workspace of scheduling resources
+  - 14.3 Configure the compute engine
+- 15 Data Service
+  - 15.1 Overview
+  - 15.2 Terms
+  - 15.3 Manage tags
+  - 15.4 Manage business processes and objects under business processes
+    - 15.4.1 Manage business processes
+    - 15.4.2 Manage APIs
+    - 15.4.3 Manage functions
+    - 15.4.4 Manage workflows
+  - 15.5 Create an API
+    - 15.5.1 Configure connections
+    - 15.5.2 Create an API in the codeless UI
+    - 15.5.3 Create an API in the code editor
+    - 15.5.4 Use filters
+      - 15.5.4.1 Use prefilters
+      - 15.5.4.2 Use post filters
+  - 15.6 Register an API
+  - 15.7 Manage APIs
+  - 15.8 View API statistics
+    - 15.8.1 View the summary information about API statistics
+    - 15.8.2 View the details of API statistics
+  - 15.9 Test an API
+  - 15.10 Publish an API
+  - 15.11 Call an API
+  - 15.12 Service orchestration
+  - 15.13 Version management
+  - 15.14 FAQ
+  - 15.15 Appendix: DataService Studio error codes
+- 16 Stream Studio
+  - 16.1 Overview
+  - 16.2 Bind a Realtime Compute project
+  - 16.3 Create a real-time computing node
+  - 16.4 Get started with Stream Studio
+  - 16.5 Configure components
+    - 16.5.1 Source tables
+      - 16.5.1.1 Datahub
+      - 16.5.1.2 Log Service
+    - 16.5.2 Dimension tables
+      - 16.5.2.1 ApsaraDB RDS
+      - 16.5.2.2 Tablestore
+      - 16.5.2.3 MaxCompute
+    - 16.5.3 Data operators
+      - 16.5.3.1 Filter
+      - 16.5.3.2 GroupBy
+      - 16.5.3.3 Join
+      - 16.5.3.4 Select
+      - 16.5.3.5 UDTF
+      - 16.5.3.6 UnionAll
+      - 16.5.3.7 Dynamic column splitting
+      - 16.5.3.8 Static column splitting
+      - 16.5.3.9 Row splitting
+    - 16.5.4 Result tables
+      - 16.5.4.1 Datahub
+      - 16.5.4.2 Log Service
+      - 16.5.4.3 ApsaraDB RDS
+      - 16.5.4.4 Table Store
+      - 16.5.4.5 MaxCompute
+    - 16.5.5 FAQ
+- 17 Data Protection
+  - 17.1 Overview
+  - 17.2 Configure rules for defining sensitive data
+  - 17.3 View the distribution of sensitive data
+  - 17.4 View the information about data activities
+  - 17.5 View the data audited as risky
+  - 17.6 Track data
+  - 17.7 Manage a self-generated data recognition model
+  - 17.8 Manage the data security levels
+  - 17.9 Manage data that is incorrectly detected
+  - 17.10 Customize de-identification rules
+  - 17.11 Manage user groups
+  - 17.12 Automatically mark security levels for sensitive data
+  - 17.13 Mask the underlying data of a MaxCompute project
+- 18 App Studio
+  - 18.1 Overview
+  - 18.2 Get started with App Studio
+  - 18.3 Navigation pane
+    - 18.3.1 View and manage projects
+    - 18.3.2 View and manage templates
+  - 18.4 Project management
+  - 18.5 Code editing
+    - 18.5.1 Overview
+    - 18.5.2 Generate code snippets
+    - 18.5.3 Run UT
+    - 18.5.4 Find in Path
+  - 18.6 Debugging
+    - 18.6.1 Configuration and startup
+    - 18.6.2 Online debugging
+    - 18.6.3 Breakpoint types
+    - 18.6.4 Breakpoint operations
+    - 18.6.5 Terminal
+    - 18.6.6 Hot code replacement
+  - 18.7 WYSIWYG designer
+    - 18.7.1 Get started with the WYSIWYG designer
+    - 18.7.2 Code mode
+    - 18.7.3 DSL syntax
+    - 18.7.4 Global data flow
+    - 18.7.5 Save, preview, run, and hot code replacement
+    - 18.7.6 Navigation configuration
+- 19 Migration Assistant
+  - 19.1 Overview
+  - 19.2 Cloud tasks
+    - 19.2.1 Export tasks from open source engines
+    - 19.2.2 Import tasks of open source engines
+  - 19.3 Migrate data objects in DataWorks
+    - 19.3.1 Create and view export tasks
+    - 19.3.2 Create and view import tasks
+- 20 Workspace management
+  - 20.1 Configure a workspace
+  - 20.2 Workspace modes
+  - 20.3 Manage members and roles
+  - 20.4 Permission list
+  - 20.5 Manage connections
+
 node
 
-## Create a synchronization
+## 1 Create a synchronization node
 
 node This topic describes how to create a synchronization node to synchronize data from MaxCompute to MySQL. Background information You can use Data Integration to periodically synchronize the business data generated in a business system to a DataWorks workspace. You can create SQL nodes to compute the data and use Data Integration to periodically synchronize the computing results to your specified data source for further display or use. Add a data source Only the workspace administrator can add data sources. Members of other roles can only view data sources.
 1. Log on to the DataWorks console. On the DataStudio page, click the
@@ -71,9 +552,9 @@ node
 7. Preview and save the configuration.
 After the node is configured, you can scroll up and down to view the node configuration. After you confirm the settings, click the icon. Commit the synchronization node Return to the workflow after you save the synchronization node. Click the icon in the toolbar to commit the synchronization node to the scheduling system. The scheduling system automatically and periodically runs the node from the next day based on the properties configured for the node. What to do next You have learned how to create a synchronization node to synchronize data to a specific data source. You can proceed with the next tutorial. In the next tutorial, you will learn how to configure properties and dependencies for a synchronization node. For more information, see Configure recurrence and dependencies for a node.
 
-## Quick Start
+## 2 Quick Start
 
-### Overview
+### 2.1 Overview
 
 Quick Start guides you through a complete process of data analytics and O&M. Generally, you can complete the following data analytics and O&M operations in a workspace of DataWorks:
 1. Create tables and import data.
@@ -83,7 +564,7 @@ Quick Start guides you through a complete process of data analytics and O&M. Gen
 5. Run a node and troubleshoot errors.
 The following figure shows the basic process of data analytics and O&M.
 
-### Create tables and import data
+### 2.2 Create tables and import data
 
 This topic uses the bank_data and result_table sample tables to describe how to create tables and import data in the DataWorks console. The bank_data table stores business data, and the result_table table stores data analytics results. Create the bank_data table
 1. Log on to the DataWorks console.
@@ -177,9 +658,9 @@ dialog box that appears, select the on-premises file that you want to upload. Se
 5. Select a matching mode for the fields in the source file and destination table. In this example, By
 Locat ion is selected.
 6. Click Import Dat a.
-Data import methods Create a synchronization node This method is used to import data from various data sources, such as Relational Database Service (RDS), MySQL, SQL Server, PostgreSQL, MaxCompute, Open Cache Service (OCS), Distributed Relational Database Service (DRDS), Object Storage Service (OSS), Oracle, FTP, Dameng (DM), Hadoop Distributed File System (HDFS), and MongoDB. Upload an on-premises file This method is used to upload .txt and .csv files whose size does not exceed 10 MB. The destination object can be a partitioned table or a non-partitioned table. The partition key value cannot be in Chinese. Run Tunnel commands to upload a file This method is used to upload on-premises files and other resource files of any size. What to do next Now you have learned how to create tables and import data. You can proceed with the next tutorial. In the next tutorial, you will learn how to create a workflow and how to compute and analyze data in a workspace. For more information, see Create a workflow.
+Data import methods This method is used to import data from various data sources, such as Relational Database Service (RDS), MySQL, SQL Server, PostgreSQL, MaxCompute, Open Cache Service (OCS), Distributed Relational Database Service (DRDS), Object Storage Service (OSS), Oracle, FTP, Dameng (DM), Hadoop Distributed File System (HDFS), and MongoDB. Upload an on-premises file This method is used to upload .txt and .csv files whose size does not exceed 10 MB. The destination object can be a partitioned table or a non-partitioned table. The partition key value cannot be in Chinese. Run Tunnel commands to upload a file This method is used to upload on-premises files and other resource files of any size. What to do next Now you have learned how to create tables and import data. You can proceed with the next tutorial. In the next tutorial, you will learn how to create a workflow and how to compute and analyze data in a workspace. For more information, see Create a workflow.
 
-### Create a workflow
+### 2.3 Create a workflow
 
 This topic describes how to create a workflow, create nodes in the workflow, and configure the dependencies among the nodes. After you create a workflow, you can use the DataStudio service to compute and analyze data in the workspace. Prerequisites The bank_data table for storing business data and the result_table table for storing data analytics results are created in the workspace. Data is imported to the bank_data table. For more information, see Create tables and import data. Context The DataStudio service in DataWorks allows you to configure node dependencies by dragging lines between nodes in a workflow. You can process data and configure node dependencies based on the workflow. Create a workflow
 1. Log on to the DataWorks console.
@@ -226,7 +707,7 @@ code reviewer(Required) drop-down list, enter a description in the Change Descri
 3. Click Commit .
 Not ice Specif y code reviewer(Required) is optional. You cannot commit a special node for code review. For example, you cannot commit a combined node such as a resource node, do-while node, or for-each node for code review. If you specify a code reviewer, the system generates a code review ticket. If the forcible code review feature is disabled for the workspace, you do not need to commit your node for code review. If the forcible code review feature is enabled, you must commit your node for code review. You can deploy the node only after the specified reviewer approves the node code. What to do next Now you have learned how to create and commit a workflow. You can proceed with the next tutorial. In the next tutorial, you will learn how to create a synchronization node to export data to different types of data sources. For more information, see Create a sync node.
 
-### Create a synchronization node
+### 2.4 Create a synchronization node
 
 This topic describes how to create a synchronization node to synchronize data from MaxCompute to MySQL. Background information You can use Data Integration to periodically synchronize the business data generated in a business system to a DataWorks workspace. You can create SQL nodes to compute the data and use Data Integration to periodically synchronize the computing results to your specified data source for further display or use. Add a data source Only the workspace administrator can add data sources. Members of other roles can only view data sources.
 1. Log on to the DataWorks console. On the DataStudio page, click the
@@ -291,7 +772,7 @@ Fields in the source on the left have a one-to-one mapping with fields in the de
 7. Preview and save the configuration.
 After the node is configured, you can scroll up and down to view the node configuration. After you confirm the settings, click the icon. Commit the synchronization node Return to the workflow after you save the synchronization node. Click the icon in the toolbar to commit the synchronization node to the scheduling system. The scheduling system automatically and periodically runs the node from the next day based on the properties configured for the node. What to do next You have learned how to create a synchronization node to synchronize data to a specific data source. You can proceed with the next tutorial. In the next tutorial, you will learn how to configure properties and dependencies for a synchronization node. For more information, see Configure recurrence and dependencies for a node.
 
-### Configure recurrence and
+### 2.5 Configure recurrence and dependencies for a node
 
 dependencies for a node This topic describes how to configure recurrence and dependencies for a node in the DataWorks console. In this topic, the batch synchronization node write_result described in the "Create a synchronization node" topic is used, and the recurrence is set to weekly. DataWorks has a powerful scheduling engine to trigger nodes based on the recurrence and dependencies of the nodes. DataWorks guarantees that tens of millions of nodes run accurately and punctually per day based on directed acyclic graphs (DAGs). In the DataWorks console, you can set the recurrence to minutely, hourly, daily, weekly, or monthly. Configure recurrence for the batch synchronization node
 1. After the synchronization node write_result is created, double-click the node to configure it.
@@ -317,7 +798,7 @@ icon in the toolbar.
 2. Commit the node: Click the
 icon in the toolbar. In the Commit Node dialog box, enter your comments in the Change descript ion field and click OK. Not ice You can commit the node only after you set the Rerun and Parent Nodes parameters. A node must be committed to the scheduling system so that the scheduling system can automatically generate and run instances for the node. The scheduling system runs these instances at the specified time from the next day based on the recurrence settings. If you commit a node after 23:30, the scheduling system automatically generates and runs instances for the node from the third day. What to do next Now you have learned how to configure recurrence and dependencies for a synchronization node. You can proceed with the next tutorial. In the next tutorial, you will learn how to perform O&M operations on the committed node and troubleshoot errors based on the operational logs. For more information, see Run a node and troubleshoot errors.
 
-### Run a node and troubleshoot
+### 2.6 Run a node and troubleshoot errors
 
 errors This topic describes how to run and manage a node, and troubleshoot errors based on logs. In the preceding step of Configure scheduling properties and dependencies for a node, you have configured the synchronization node write_result to run at 02:00 every Tuesday. After you commit this node, you have to wait until the next day to view the automatic scheduling result of this node. DataWorks allows you to run nodes in the following modes: test run, data backfill, and periodic run. This helps you confirm the scheduled time of each node instance, dependencies among node instances, and whether generated data meets your expectation. Test run: Nodes are manually triggered. We recommend that you use this mode if you need to check the scheduled time and running of a single node. Data backfill: Nodes are manually triggered. We recommend that you use this mode if you need to check the scheduled time of multiple nodes and dependencies among them, or if you need to reperform data analysis and computing from a specific root node. Periodic run: Nodes are automatically triggered. After you commit a node, the scheduling system automatically generates and runs instances for the node from 00:00 the next day. When the scheduled time of each instance arrives, the scheduling system checks whether the ancestor instances of the instance have been run. If all the ancestor instances have been run, the scheduling system automatically triggers the instance without manual intervention. The scheduling system generates instances for manually triggered nodes and auto triggered nodes based on the same rules. The scheduling system generates an instance for each recurrence, which can occur by the day, hour, minute, month, or week. The scheduling system runs the instances generated for the specified dates only when the scheduled time arrives and generates run logs for the instances. The scheduling system does not run the instances generated for other dates. Instead, it directly changes the states of the instances to successful when the running conditions are met. In this case, the scheduling system does not generate run logs. Test run
 1. Log on to the DataWorks console.
@@ -352,17 +833,17 @@ click OK.
 4. On the Pat ch Dat a page, click the name of the generated data backfill instance to view the DAG
 of the instance. Right-click the instance in the DAG to view its dependencies and details, or manage this instance. For example, you can rerun this instance. In data backfill mode, the running of an instance depends on the instance generated for the previous day. For example, in the scenario in which you configure data backfill instances to run from September 15, 2017 to September 18, 2017, if the instance on September 15 fails to run, the instance on September 16 cannot be run. The synchronization node write_result is configured to run at 02:00 every Tuesday. Based on the instance generation rules described earlier in this topic, if the data timestamp, which is one day before the run date, is set to Monday for data backfill, the scheduling system runs the instance generated for the synchronization node write_result at 02:00 on Tuesday. If the data timestamp is not set to Monday for the data backfill, the scheduling system changes the state of the instance to successful at 02:00 on Tuesday with no run logs generated. Periodic run In periodic run mode, the scheduling system automatically triggers instances for all nodes based on the scheduling configuration. No menu item is provided for you to control the periodic run on the Operation Center page. You can view the instance information and run logs of a node, such as the synchronization node write_result, by using one of the following methods: On the Operat ion Cent er page, choose Cycle T ask Maint enance > Cycle Inst ance in the leftside navigation pane. On the page that appears, set parameters such as the data timestamp or run date to search for a specific instance of the node. Then, right-click the instance in the DAG to view the instance information and run logs. On the Cycle Inst ance page, click an instance of the node. The DAG of the instance appears. Right-click the instance in the DAG to view its dependencies and details, or manage this instance. For example, you can rerun this instance. If an ancestor node has not been run, its descendant nodes are not run either. If the initial state of an instance is pending, the scheduling system checks whether all its ancestor instances have been run when the scheduled time arrives. The instance can be triggered and run only after all its ancestor instances have been run and when the scheduled time arrives. If an instance is pending, check whether all its ancestor instances have been run and whether the scheduled time arrives.
 
-## Data Integration
+## 3 Data Integration
 
-### Overview
+### 3.1 Overview
 
 Data Integration is a stable, efficient, and scalable data synchronization service. It is designed to migrate and synchronize data between a wide range of heterogeneous data stores fast and stably in complex network environments. Limits Data Integration can synchronize structured, semi-structured, and unstructured data. Structured data stores include Relational Database Service (RDS) and Distributed Relational Database Service (DRDS). Unstructured data, such as Object Storage Service (OSS) objects and text files, must be capable of being converted to structured data. Data Integration can only synchronize data that can be abstracted to two-dimensional logical tables to MaxCompute. It cannot synchronize unstructured data that cannot be converted to structured data, such as MP3 files stored in OSS, to MaxCompute. Data Integration supports data synchronization and exchange in one region or between regions. Data can be transmitted between regions over the classic network, but the network connectivity is not guaranteed. If the transmission fails over the classic network, we recommend that you use an Internet connection. Data Integration supports only data synchronization but not data consumption. Batch data synchronization Data Integration can be used to synchronize large amounts of data. Data Integration facilitates data transmission between diverse structured and semi-structured data stores. It provides readers and writers for the supported data stores and defines a transmission channel between the source and destination data stores and datasets, based on simplified data types. Supported data stores Relational databases: MySQL, SQL Server, PostgreSQL, Oracle, Dameng, DRDS, PolarDB, HybridDB for MySQL, AnalyticDB for PostgreSQL, AnalyticDB for MySQL 2.0, and AnalyticDB for MySQL 3.0 Big data storage: MaxCompute, DataHub, and Data Lake Analytics (DLA) Semi-structured storage: OSS, Hadoop Distributed File System (HDFS), and FTP NoSQL: MongoDB, Memcache, Redis, and Tablestore Message queue: LogHub Graph compute engine: GraphCompute For more information, see Supported data sources. The connection configurations for data stores vary greatly. You can view the specific parameters that need to be set when you configure connections and sync nodes for data stores. Development modes of sync nodes You can develop sync nodes in one of the following modes: Codeless UI: Data Integration provides step-by-step instructions to help you configure a sync node. This mode is easy to use but provides only limited features. Code edit or: You can write a JSON script to create a sync node. This mode supports advanced features to facilitate flexible configuration. It is suitable for experienced users and increases the cost of learning. The code generated for a sync node on the codeless user interface (UI) can be converted to a script. This conversion is irreversible. Before you write code, you must configure a connection and create the destination table. Network types A data store can reside on the classic network or in a virtual private cloud (VPC). The user-created IDC network type has been planned and will be supported soon. Classic network: a network deployed by Alibaba Cloud, which is shared with other tenants. This network is easy to use. VPC: a network created on Alibaba Cloud, which is available to only one Apsara Stack account. You have full control over your VPC, including customizing the IP address range, dividing the VPC to multiple subnets, and configuring routing tables and gateways. A VPC is an isolated network for which you can customize a wide range of parameters, such as the IP address range, subnets, and gateways. Based on wide deployment of VPCs, Data Integration provides the feature to automatically detect the reverse proxy for some data stores, including ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, ApsaraDB RDS for SQL Server, PolarDB, DRDS, HybridDB for MySQL, AnalyticDB for PostgreSQL, and AnalyticDB for MySQL 3.0. By using this feature, you do not need to purchase an extra Elastic Compute Service (ECS) instance in your VPC to configure sync nodes for these data stores. Instead, Data Integration automatically uses this feature to provide network connectivity to these data stores. When you configure sync nodes for other Alibaba Cloud data stores in a VPC, such as PPAS, ApsaraDB for OceanBase, ApsaraDB for Redis, ApsaraDB for MongoDB, ApsaraDB for Memcache, Tablestore, and ApsaraDB for HBase, you must purchase an ECS instance in the same VPC. This ECS instance is used to access the data stores. User-created IDC network: an IDC network deployed by yourself, which is isolated from the Alibaba Cloud network. You can access data stores over the Internet. However, the access speed depends on the Internet bandwidth, and additional network access expenses are required. We recommend that you do not use Internet connections. Terms Concurrency Concurrency indicates the maximum number of concurrent threads to read data from or write data to data storage within a single sync node. Bandwidth throttling Bandwidth throttling indicates that a maximum transmission rate is specified for a sync node of Data Integration. Dirty data Dirty data indicates meaningless data and data that does not match the specified data type. For example, you want to write data of the VARCHAR type in the source table to an INT-type field in the destination table. A data conversion error occurs and the data cannot be written to the destination table. In this case, the data is dirty. Connection A connection in DataWorks is used for accessing a data store, which can be a database or a data warehouse. DataWorks supports various types of data stores, and supports data synchronization between data stores of different types.
 
-### Homepage
+### 3.2 Homepage
 
 The Data Integration homepage provides entries for you to create sync nodes, manage connections, maintain sync nodes, and view help documents. Log on to the DataWorks console, click in the upper-left corner, and choose All Product s > Dat a Aggregat ion > Dat a Int egrat ion. The homepage of Data Integration appears by default. On this page, you can perform the following operations: New T ask: Click here to go to the Dat a Analyt ics page, where you can create sync nodes. For more information, see Create a sync node. Connect ion: Click here to go to the Dat a Source page, where you can view created connections and add a connection or multiple connections at a time. Workbench: Click here to go to the Operat ion Cent er > Dashboard page, where you can view the running status of created nodes. For more information, see View the statistics on the Overview page.
 
-### Connectivity testing
+### 3.3 Connectivity testing
 
 This topic describes the FAQ about connectivity testing on connections. When configuring a security group for a connection hosted on an Elastic Compute Service (ECS) instance, add the IP address of the scheduling cluster to the inbound and outbound rules of the security group. If the security group is not properly configured, data synchronization fails due to a connection failure. To set a wide port range for a security group rule, call relevant API operations, instead of using the console. Common scenarios of connectivity test failures When a connection fails the connectivity test, check whether the region, network type, whitelist, database name, and username are properly configured for the connection. The following errors may occur during connectivity testing: The database password is incorrect. The network connection fails. A network error occurs during data synchronization. Check the log and determine which resource group is used. Check whether the resource group is a custom one. For a Relational Database Service (RDS) connection or a MongoDB connection, if a custom resource group is used, check whether its IP addresses are added to the whitelist of the connection. Check whether both the source and destination connections pass the connectivity test. For an RDS connection or a MongoDB connection, check whether all relevant IP addresses are added to the whitelist of the connection. If the IP address of a server is not added to the whitelist, the sync node fails when it runs on this server. However, the sync node succeeds when it runs on another server whose IP address is added to the whitelist. The result shows that a sync node is run but the log contains a disconnection error in port 8000. This issue occurs because a custom resource group is used and no inbound rule is configured for the corresponding IP address and port 8000 in the security group. To resolve the issue, add the IP address and port to the inbound rule of the security group and run the node again. Examples of connectivity test failures Example 1 Symptom A connection failed the connectivity test. The database connection failed. The following information is involved: Database URL: jdbc:mysql://xx.xx.xx.x:xxxx/t_uoer_bradef. Username: xxxx_test. Error message: Access denied for user 'xxxx_test'@'%' to database 'yyyy_demo'. Troubleshooting i. Check whether the configuration of the connection is correct. ii. Check whether the database password is correct, the whitelist is properly configured, and your account has the permission to access the database. You can grant the required permissions in the RDS console. Example 2 Symptom A connection failed the connectivity test. The following error message is returned:
 
@@ -372,9 +853,9 @@ error message: Timed out after 5000 ms while waiting for a server that matches R
 
 Troubleshooting Before testing the connectivity to a MongoDB connection that is not deployed in a Virtual Private Cloud (VPC), add relevant IP addresses to the whitelist of the connection.
 
-### Authentication file management
+### 3.4 Authentication file management
 
-#### Upload and reference an authentication
+#### 3.4.1 Upload and reference an authentication file
 
 file The Data Integration service of DataWorks supports third-party identity authentication mechanisms. Before you use an authentication mechanism to perform identity authentication, you must upload the required authentication files on the Authentication File Management page of the DataWorks console. Then, you must enable third-party identity authentication when you add a data source. This way, only trusted applications and services can access the data source. This topic describes how to upload and reference an authentication file. Context Third-party identity authentication mechanisms are used to perform strict identity authentication on users and services. These mechanisms prevent untrusted applications or services from accessing data and improve the stability of data access during data synchronization. The Authentication File Management page of the DataWorks console allows you to manage authentication files in a centralized manner. You can upload an authentication file and view the data sources that reference an authentication file on this page. Limits Only Kerberos authentication is supported. Other authentication mechanisms will be available in the future. For more information about Kerberos authentication, see Configure Kerberos authentication. Upload an authentication file Before you use an identity authentication mechanism, you must upload the required authentication files on the Authentication File Management page.
 1. Log on to the DataWorks console.
@@ -405,7 +886,7 @@ Reference an authentication file If you want to use third-party identity authent
 
 Other operations You can upload an authentication file and view the data sources that reference an uploaded authentication file on the Aut hent icat ion File Management page. You can also remove multiple authentication files at a time on this page.
 
-#### Configure Kerberos authentication
+#### 3.4.2 Configure Kerberos authentication
 
 The Data Integration service of DataWorks supports only Kerberos authentication. After you configure Kerberos authentication, identity authentication is performed only on trusted applications and services. This way, only the applications and services that pass the authentication can access data. This topic describes how Kerberos authentication works. Context Kerberos is a computer network security protocol for authentication. It enables users to obtain service tickets that can be used to access multiple services by providing identity authentication information only once to achieve single sign-on (SSO). Kerberos provides high security. When you use Kerberos, a shared key is created between each client and service. Clients communicate with services by using keys. This way, untrusted services or applications cannot access data. Limits Only CDH V6.X clusters support Kerberos authentication. CDH clusters of other versions or selfmanaged clusters for which Kerberos authentication tests are not performed may fail the authentication. The Kerberos authentication feature supports only HBase, HDFS, and Hive data sources. How Kerberos authentication works Kerberos is a third-party authentication protocol that is based on symmetric keys. Clients and services use Key Distribution Center (KDC) to perform identity authentication. KDC is a server program of Kerberos and can distribute Ticket Granting Tickets (TGT). The preceding figure shows the four stages that are contained during the Kerberos authentication on DataWorks.
 1. A client requests a TGT: When a client (principal) accesses a data source for which Kerberos
@@ -427,9 +908,9 @@ request from the client, the server authenticates the identity of the client. If
 | Hive | Add a Hive data source |
 | Kudu | Add a Kudu data source |
 
-### Data sources
+### 3.5 Data sources
 
-#### Supported data sources
+#### 3.5.1 Supported data sources
 
 Data Integration is a stable, efficient, and scalable data synchronization service. It provides transmission channels for offline and batch data in big data computing services of Alibaba Cloud such as MaxCompute, AnalyticDB for PostgreSQL, and Hologres. The following table describes the data source types and plug-ins that are supported by Data Integration.
 
@@ -468,11 +949,11 @@ Data Integration is a stable, efficient, and scalable data synchronization servi
 | Tablestore | Tablestore Reader | Tablestore Writer |
 | Vertica | Vertica Reader | Vertica Writer |
 
-#### Data source isolation
+#### 3.5.2 Data source isolation
 
 DataWorks provides the data source isolation feature for workspaces in standard mode. This way, data sources in the development environment can be isolated from data sources in the production environment. If a data source is configured in both the development and production environments, you can use the data source isolation feature to isolate the data source in the development environment from that in the production environment. Only workspaces in standard mode support the data source isolation feature. When you configure a synchronization node, the data source in the development environment is used. After you commit the synchronization node to the production environment for running, the data source in the production environment is used. To commit a synchronization node to the production environment for running, you must configure data sources in both the development and production environments. The data sources must have the same name in the development and production environments. The data source isolation feature has the following impacts on workspaces: Workspaces in basic mode: The features and configuration dialog boxes of data sources are the same as those before the data source isolation feature is added. Workspaces in standard mode: The Environment parameter is added to the configuration dialog boxes of data sources. Workspaces upgraded from the basic mode to the standard mode: When you upgrade the mode, you are prompted to upgrade data sources. After you upgrade the mode, the data sources in the development environment are isolated from those in the production environment.
 
-#### Sync data monitoring
+#### 3.5.3 Sync data monitoring
 
 The Sync Data Monitoring page displays the total number of sync node instances for different connections and the instance details based on the selected workspace and time range. The cut-off time of data to be displayed is 0 minutes 0 seconds of the current hour. For example, if the current time is 2019-04-04 10:10:00, the page displays the data generated before 2019-04-04 10:00:00.
 1. Log on to the DataWorks console and select a workspace.
@@ -481,7 +962,7 @@ go to the Dat a Int egrat ion page.
 3. In the left-side navigation pane, click Sync Dat a Monit oring. On the page that appears, view the
 total number of sync node instances for different connections and the instance details. View summary data by connection type The Source and Target sections display the summary data of source connections and that of destination connections, respectively. Take source connections as an example. If the Source section displays MaxCompute with the value 1, a sync node instance whose source connection is MaxCompute is run in the selected time range. View instance details The Sync Instances section displays the details of all sync node instances that are run in the selected time range. You can also perform the following operations: Click a node in the Node Name column to go to the node configuration page. Search for instances by condition, such as the ID, committer, node name, source connection type, and destination connection type. Sort search results based on the number of synchronized data entries or the size of synchronized data.
 
-#### Manage connection permissions
+#### 3.5.4 Manage connection permissions
 
 DataWorks allows you to share connections among workspaces by managing permissions on the connections. After connections are shared, you can view the shared connections in the target workspaces. This topic describes how to manage permissions on connections and view shared connections. Context The configurations of a connection include sensitive information such as the endpoint of the data store, username, and password. Common developers only need to reference the connection to access the data store. Disclosing too much sensitive information or allowing everyone to modify the configurations of the connection may cause security risks. If multiple users modify the configurations of a connection, the data store may fail to be connected. In this way, the nodes that reference the connection may fail. Data Integration provides strict permission control. Only connection creators can manage the permissions on connections. They can grant permissions on connections to a specified workspace or user. Go to the Data Source page
 1. Log on to the DataWorks console.
@@ -506,7 +987,7 @@ following table.
 6. Click OK.
 You can share connections across workspaces based on the following rules: Between workspaces in simple mode: If the source workspace is upgraded to the standard mode, connections in the production environment are shared. If the target workspace is upgraded to the standard mode, a connection is shared to both the development environment and production environment with the same content. From a workspace in simple mode to a workspace in standard mode: A connection is shared to both the development environment and production environment with the same content. Between workspaces in standard mode: Connections in the development environment and production environment are shared to the corresponding environment separately. From a workspace in standard mode to a workspace in simple mode: You can share connections in both the production environment and development environment. Only connections in the production environment or development environment exist in the target workspace. If you share a connection in both environments, the newly shared one overrides the existing one in the target workspace. If the target workspace is upgraded to the standard mode, the shared connection exists in both the development environment and production environment with the same content. View shared connections In the top navigation bar, select a workspace with connections shared from other workspaces from the drop-down list in the upper-left corner. The Dat a Source page of the selected workspace appears. On this page, you can view shared connections on the Normal and Has expired tabs. Normal t ab On the Normal tab, you can view the information about each connection, including the connection name, connection type, permission details, connection description, creation time, connection status, and the time when the data store was last connected. The permission information appears in the Det ails column of the target connection. A shared connection is named in the Name of the workspace that shares the connection.Connection name format. If the current user has the Editable permission on the connection, Modif y appears in the Actions column. Has expired t ab On the Has expired tab, you can view the connections for which your permissions have expired. In the Cancel part y column, you can view the member who revoked the permissions. In the Creat ed at column, you can view the time when the permissions were revoked. The information helps you locate the cause of connection failures.
 
-#### Configure a MySQL data source
+#### 3.5.5 Configure a MySQL data source
 
 DataWorks provides MySQL Reader and MySQL Writer for you to read data from and write data to MySQL data sources. You can use the codeless user interface (UI) or code editor to configure synchronization nodes for MySQL data sources. Procedure
 1. Go to the Dat a Source page.
@@ -555,7 +1036,7 @@ The following table describes the parameters that you must set if you add a MySQ
 6. After the data source passes the connectivity test, click Complet e.
 What's next You have learned how to configure a MySQL data source. You can proceed to subsequent tutorials. The subsequent tutorials describe how to configure MySQL Reader or MySQL Writer. For more information, see Configure the MySQL reader or Configure MySQL Writer.
 
-#### Configure an SQL Server data source
+#### 3.5.6 Configure an SQL Server data source
 
 DataWorks provides SQL Server Reader and SQL Server Writer for you to read data from and write data to SQL Server data sources. You can use the codeless user interface (UI) or code editor to configure synchronization nodes for SQL Server data sources. Procedure
 1. Go to the Dat a Source page.
@@ -605,7 +1086,7 @@ The following table describes the parameters that appear after you set Dat a sou
 6. After the data source passes the connectivity test, click Complet e.
 What's next You have learned how to configure an SQL Server data source. You can proceed to subsequent tutorials. The subsequent tutorials describe how to configure SQL Server Reader or SQL Server Writer. For more information, see Configure SQL Server Reader or Configure SQL Server Writer.
 
-#### Configure a PostgreSQL connection
+#### 3.5.7 Configure a PostgreSQL connection
 
 A PostgreSQL connection allows you to read data from and write data to PostgreSQL by using PostgreSQL Reader and Writer. You can configure sync nodes for PostgreSQL by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -652,7 +1133,7 @@ The following table describes the parameters that appear after you set the Conne
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an Oracle connection
+#### 3.5.8 Configure an Oracle connection
 
 An Oracle connection allows you to read data from and write data to Oracle by using Oracle Reader and Writer. You can configure sync nodes for Oracle by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -677,7 +1158,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Dameng connection
+#### 3.5.9 Configure a Dameng connection
 
 A Dameng connection allows you to read data from and write data to Dameng by using Dameng Reader and Writer. You can configure sync nodes for Dameng by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -702,7 +1183,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a DRDS connection
+#### 3.5.10 Configure a DRDS connection
 
 A DRDS connection allows you to read data from and write data to DRDS by using DRDS Reader and Writer. You can configure sync nodes for DRDS by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -743,7 +1224,7 @@ The following table describes the parameters that appear after you set the Conne
 6. After the data source passes the connectivity test, click Complet e.
 What's next Now you have learned how to configure a DRDS connection. You can proceed with the next tutorial. In the next tutorial, you will learn how to configure DRDS Reader and Writer. For more information, see Configure the DRDS reader.
 
-#### Configure a PolarDB connection
+#### 3.5.11 Configure a PolarDB connection
 
 A PolarDB connection allows you to read data from and write data to PolarDB by using PolarDB Reader and Writer. You can configure sync nodes for PolarDB by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -769,7 +1250,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a HybridDB for MySQL
+#### 3.5.12 Configure a HybridDB for MySQL connection
 
 connection A HybridDB for MySQL connection allows you to read data from and write data to HybridDB for MySQL by using HybridDB for MySQL Reader and Writer. You can configure sync nodes for HybridDB for MySQL by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -792,7 +1273,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a HybridDB for PostgreSQL
+#### 3.5.13 Configure a HybridDB for PostgreSQL connection
 
 connection A HybridDB for PostgreSQL connection allows you to read data from and write data to HybridDB for PostgreSQL by using HybridDB for PostgreSQL Reader and Writer. You can configure sync nodes for HybridDB for PostgreSQL by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -817,7 +1298,7 @@ section.
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an ApsaraDB for OceanBase
+#### 3.5.14 Configure an ApsaraDB for OceanBase connection
 
 connection An ApsaraDB for OceanBase connection allows you to read data from and write data to ApsaraDB for OceanBase by using ApsaraDB for OceanBase Reader and Writer. You can configure sync nodes for ApsaraDB for OceanBase by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -839,7 +1320,7 @@ Systems section.
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a MaxCompute connection
+#### 3.5.15 Configure a MaxCompute connection
 
 A MaxCompute connection allows you to read data from and write data to MaxCompute by using MaxCompute Reader and Writer. Context Procedure
 1. Go to the Dat a Source page.
@@ -862,7 +1343,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a DataHub connection
+#### 3.5.16 Configure a DataHub connection
 
 DataHub offers a comprehensive data import scheme to support fast computing for large amounts of data. Procedure
 1. Go to the Dat a Source page.
@@ -884,7 +1365,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an AnalyticDB for MySQL
+#### 3.5.17 Configure an AnalyticDB for MySQL connection
 
 connection An AnalyticDB for MySQL connection allows you to write data to AnalyticDB for MySQL by using AnalyticDB for MySQL Writer. You can configure sync nodes for AnalyticDB for MySQL by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -910,7 +1391,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Vertica connection
+#### 3.5.18 Configure a Vertica connection
 
 A Vertica connection allows you to read data from and write data to Vertica by using Vertica Reader and Writer. You can configure sync nodes for Vertica by using the UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -939,7 +1420,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a GBase8a connection
+#### 3.5.19 Configure a GBase8a connection
 
 A GBase8a connection allows you to read data from and write data to GBase8a by using GBase8a Reader and Writer. You can configure sync nodes for GBase8a by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -967,7 +1448,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Lightning connection
+#### 3.5.20 Configure a Lightning connection
 
 MaxCompute Lightning is an interactive query service that MaxCompute provides. MaxCompute Lightning complies with the PostgreSQL standards and syntax and allows you to use common tools and standard SQL to query and analyze data in MaxCompute projects. Procedure
 1. Go to the Dat a Source page.
@@ -1000,7 +1481,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an HBase data source
+#### 3.5.21 Configure an HBase data source
 
 DataWorks provides HBase Reader and HBase Writer for you to read data from and write data to HBase data sources. You can use the codeless user interface (UI) or code editor to configure synchronization nodes for HBase data sources. This topic describes how to configure an HBase data source. Procedure
 1. Go to the Dat a Source page.
@@ -1034,7 +1515,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Hologres connection
+#### 3.5.22 Configure a Hologres connection
 
 A Hologres connection allows you to read data from and write data to Hologres by using Hologres Reader and Writer. You can configure sync nodes for Hologres by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1057,7 +1538,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Add a Hive data source
+#### 3.5.23 Add a Hive data source
 
 This topic describes how to configure a Hive data source. A Hive data source allows you to read data from and write data to Hive. You can configure synchronization nodes by using the codeless user interface (UI) or code editor. Context Workspaces in standard mode support the data source isolation feature. You can add data sources separately for the development and production environments to isolate the data sources. This helps keep your data secure. For more information about the feature, see Connection isolation. If you use Object Storage Service (OSS) as the underlying storage, you must take note of the following items: The value of the defaultFS parameter must start with oss://. For example, the value can be `oss://IP:PORT` or `oss://nameservice`. You must configure the parameters that are required for connecting to OSS in the advanced parameters. The following sample code provides an example: `{`
 
@@ -1148,7 +1629,7 @@ The following table describes the parameters for adding a Hive data source in Bu
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an OSS connection
+#### 3.5.24 Configure an OSS connection
 
 Alibaba Cloud OSS is a secure and reliable service that allows you to store large amounts of objects. Procedure
 1. Go to the Dat a Source page.
@@ -1171,7 +1652,7 @@ Not ice When data in OSS is stored as CSV files, they must comply with the stand
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Add an HDFS data source
+#### 3.5.25 Add an HDFS data source
 
 This topic describes how to configure a Hadoop Distributed File System (HDFS) data source. A HDFS data source allows you to read data from and write data to HDFS. You can configure synchronization nodes by using the code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1232,7 +1713,7 @@ The following table describes the parameters for adding an HDFS data source in B
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an FTP connection
+#### 3.5.26 Configure an FTP connection
 
 An FTP connection allows you to read data from and write data to FTP by using FTP Reader and Writer. You can configure sync nodes for FTP by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1256,7 +1737,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a MongoDB connection
+#### 3.5.27 Configure a MongoDB connection
 
 MongoDB is a document-oriented database that is second only to Oracle and MySQL. A MongoDB connection allows you to read data from and write data to MongoDB by using MongoDB Reader and Writer. You can configure sync nodes for MongoDB by using the code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1297,7 +1778,7 @@ Connect ion Mode: Generally, the Internet is used to access the target database 
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Memcache connection
+#### 3.5.28 Configure a Memcache connection
 
 A Memcache connection allows you to write data to ApsaraDB for Memcache by using Memcache Writer. You can configure sync nodes for ApsaraDB for Memcache by using the code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1319,7 +1800,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Redis connection
+#### 3.5.29 Configure a Redis connection
 
 A Redis connection allows you to read data from and write data to Redis by using Redis Reader and Writer. You can configure sync nodes for Redis by using the code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1357,7 +1838,7 @@ The following table describes the parameters that appear after you set the Conne
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a Tablestore connection
+#### 3.5.30 Configure a Tablestore connection
 
 Tablestore is a NoSQL database service built on Apsara distributed operating system. It allows you to store and access large amounts of structured data in real time. Procedure
 1. Go to the Dat a Source page.
@@ -1382,7 +1863,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure an Elasticsearch connection
+#### 3.5.31 Configure an Elasticsearch connection
 
 An Elasticsearch connection allows you to read data from and write data to Elasticsearch by using Elasticsearch Reader and Writer. You can configure sync nodes for Elasticsearch by using the code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1409,7 +1890,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Configure a LogHub connection
+#### 3.5.32 Configure a LogHub connection
 
 A LogHub connection allows you to read data from and write data to LogHub by using LogHub Reader and Writer. You can configure sync nodes for LogHub by using the codeless UI or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1438,7 +1919,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-#### Add a ClickHouse data source
+#### 3.5.33 Add a ClickHouse data source
 
 This topic describes how to configure a ClickHouse data source. A ClickHouse data source allows you to read data from and write data to Hive. You can configure synchronization nodes by using the codeless user interface (UI) or code editor. Procedure
 1. Go to the Dat a Source page.
@@ -1461,11 +1942,11 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 5. Click T est connect ivit y.
 6. After the data source passes the connectivity test, click Complet e.
 
-### Configure data synchronization
+### 3.6 Configure data synchronization tasks
 
 tasks
 
-#### Configure a sync node by using the
+#### 3.6.1 Configure a sync node by using the codeless UI
 
 codeless UI This topic describes how to configure a sync node by using the codeless user interface (UI). To configure a sync node, follow these steps:
 1. Add connections.
@@ -1511,7 +1992,7 @@ Make sure that the data type of a source field is the same as or compatible with
 
 Configure the node properties This section describes how to use scheduling parameters for data filtering. On the sync node configuration tab, click the Propert ies tab in the right-side navigation pane. You can declare the scheduling parameters by using ${Variable name}. After a variable is declared, enter the initial value of the variable in the Arguments field. In this example, the initial value of the variable is identified by $[]. The content can be a time expression or a constant. For example, if you write ${today} in the code and enter today=$[yyyymmdd] in the Arguments field, the value of the time variable is the current date. For more information about how to add and subtract the date, see Parameter configuration. On the Properties tab, you can configure the properties of the sync node, such as the recurrence, scheduled time, and dependencies. Sync nodes have no ancestor nodes because their corresponding jobs are run before extract, transform, and load (ETL) jobs. We recommend that you specify the root node as their parent node. Use custom scheduling parameters To use custom scheduling parameters for the sync node, declare the following parameters in the code: bizdate: the timestamp of data to be used by the node. The value is one day before the running date of the node. cyctime: the time when the node is run, in the format of yyyymmddhhmiss. DataWorks provides the bizdate and cyctime parameters as default system parameters. After the sync node is configured, save and commit the node.
 
-#### Configure a sync node by using the code
+#### 3.6.2 Configure a sync node by using the code editor
 
 editor This topic describes how to configure a sync node by using the code editor. To configure a sync node, follow these steps:
 1. Add connections.
@@ -1645,9 +2126,9 @@ when a write operation is performed again after failure. Set the value to true t
 
 Configure the node properties This section describes how to use scheduling parameters for data filtering. On the sync node configuration tab, click the Propert ies tab in the right-side navigation pane. On the Properties tab, you can configure the properties of the sync node, such as the recurrence, scheduled time, and dependencies. Sync nodes have no ancestor nodes because their corresponding jobs are run before extract, transform, and load (ETL) jobs. We recommend that you specify the root node as their parent node. After the sync node is configured, save and commit the node.
 
-#### Configure the reader
+#### 3.6.3 Configure the reader
 
-##### Configure DRDS Reader
+##### 3.6.3.1 Configure DRDS Reader
 
 Distributed Relational Database Service (DRDS) Reader allows you to read data from DRDS. DRDS Reader connects to a remote DRDS database and runs a SELECT statement to select and read data from the database. Currently, DRDS Reader only supports MySQL engines. DRDS is a distributed MySQL database service that complies with MySQL protocols in most cases. Specifically, DRDS Reader connects to a remote DRDS database through Java Database Connectivity (JDBC), generates a SELECT statement based on your configurations, and then sends the statement to the database. The DRDS database runs the statement and returns the result. Then, DRDS Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. DRDS Reader generates the SELECT statement based on the table, column, and where parameters that you have configured, and sends the generated SELECT statement to the DRDS database. DRDS does not support all MySQL specifications, such as JOIN statements. DRDS Reader supports most DRDS data types. Make sure that your data types are supported. The following table lists the data types supported by DRDS Reader.
 
@@ -1798,7 +2279,7 @@ about how to configure other writers, see the corresponding topic.
 
 `}` `]` `}` `}` Additional instructions Consistency As a distributed database service, DRDS cannot provide a consistent view of multiple tables in multiple databases. Different from MySQL where data is synchronized in a single table of a single database, DRDS Reader cannot extract the snapshot of database and table shards at the same time slice. That is, DRDS Reader extracts different snapshots from different shards. As a result, this cannot guarantee strong consistency for data queries. Character encoding DRDS supports flexible encoding configurations. You can specify the encoding format for an instance, a field, a table, and a database. The configurations for the field, table, database, and instance are prioritized in descending order. We recommend that you use UTF-8 for a database. DRDS Reader uses JDBC, which can automatically convert the encoding of characters. Therefore, you do not need to specify the encoding format. If you specify the encoding format for a DRDS database but data is written to the DRDS database in a different encoding format, DRDS Reader cannot recognize this inconsistency and may export garbled characters. Incremental data synchronization DRDS Reader connects to a database through JDBC and uses a SELECT statement with a WHERE clause to read incremental data in the following ways: For data in batches, incremental add, update, and delete operations (including logically delete operations) are distinguished by timestamps. Specify the WHERE clause based on the timestamp. The timestamp must be later than the latest timestamp in the last synchronization. For streaming data, specify the WHERE clause based on the data record ID. The data record ID must be larger than the maximum ID involved in the last synchronization. If incremental data cannot be distinguished, DRDS Reader cannot perform incremental synchronization but can perform full synchronization only. Syntax validation DRDS Reader allows you to specify custom SELECT statements by using the querySql parameter but does not verify the syntax of the custom SELECT statements.
 
-##### Configure HBase Reader
+##### 3.6.3.2 Configure HBase Reader
 
 HBase Reader allows you to read data from HBase. HBase Reader connects to a remote HBase database through a Java client of HBase. Then, HBase Reader scans and reads data based on the specified rowkey range, assembles the data to abstract datasets in custom data types supported by Data Integration, and then passes the datasets to a writer. Data types The following table lists the data types supported by HBase Reader.
 
@@ -2039,7 +2520,7 @@ meter specifies the name of the column in the HBase table. The format must be co
 
 `}` `]` `}` `}`
 
-##### Configure HDFS Reader
+##### 3.6.3.3 Configure HDFS Reader
 
 HDFS Reader allows you to read data stored in a Hadoop Distributed File System (HDFS). HDFS Reader connects to an HDFS, reads data from files in the HDFS, converts the data into a format that is readable by Data Integration, and then sends the converted data to a writer. Examples: TextFile is the default storage format for creating Hive tables, without data compression. Essentially, a TextFile file is stored in HDFS as text. For Data Integration, the implementation of HDFS Reader is similar to that of OSS Reader. Optimized Row Columnar File (ORCFile) is an optimized RCFile format. It provides an efficient method for storing Hive data. HDFS Reader uses the OrcSerde class provided by Hive to read and parse ORCFile data. Considering that a complex network connection is required between the default resource group and HDFS, we recommend that you use a custom resource group to run sync nodes. Make sure that your custom resource group can access the NameNode and DataNode of HDFS through a network. By default, HDFS uses a network whitelist to guarantee data security. In this case, we recommend that you use a custom resource group to run HDFS sync nodes. If you configure an HDFS sync node in the code editor, the HDFS connection does not need to pass the connectivity test. In this case, you can temporarily ignore connectivity test errors. To synchronize data in Data Integration, you must log on as an administrator. Make sure that you have the permissions to read data from and write data to relevant HDFS files. Features Currently, HDFS Reader supports the following features: Supports the TextFile, ORCFile, RCFile, SequenceFile, CSV, and Parquet file formats. What is stored in each file must be a logical two-dimensional table. Reads data of various types as strings. Supports constants and column pruning. Supports recursive reading. Supports regular expressions that contain asterisks (*) and question marks (?). Compresses ORCFile files in SNAPPY or ZLIB format. Compresses SequenceFile files in LZO format. Reads multiple files concurrently. Compresses CSV files in GZIP, BZIP2, ZIP, LZO, LZO_DEFLATE, or SNAPPY format. Supports Hive 1.1.1 and Hadoop 2.7.1 (compatible with Apache JDK 1.6). HDFS Reader can work properly with Hadoop 2.5.0, Hadoop 2.6.0, and Hive 1.2.0 during testing. Currently, HDFS Reader cannot use concurrent threads to read a single file. Data types RCFile RCFile metadata is stored in databases managed by Hive, and in different formats depending on the data type. However, HDFS Reader cannot query metadata from such databases. If you want to synchronize a file of the RCFile format, you must specify the data type for each column. If the data type is BIGINT, DOUBLE, or FLOAT, specify the data type as BIGINT, DOUBLE, or FLOAT. If the data type is VARCHAR or CHAR, specify the data type as STRING. RCFile data types are automatically converted into the data types supported by Data Integration. The following table lists the supported data types.
 
@@ -2229,7 +2710,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `]` `}` `}`
 
-##### Configure MaxCompute Reader
+##### 3.6.3.4 Configure MaxCompute Reader
 
 This topic describes the data types and parameters supported by MaxCompute Reader and how to configure it by using the codeless UI and code editor. MaxCompute Reader can read data from a MaxCompute project by using the MaxCompute Tunnel service based on the source project, table, partition, and table fields that you have configured. MaxCompute Reader cannot read views. It can read only partitioned tables and non-partitioned tables. To allow MaxCompute Reader to read partitioned tables, you must specify the partition information. For example, set pt to 1 and ds to hangzhou for the t0 table. The partition information is not required for non-partitioned tables. Additionally, you can select some or all of the table fields, change the order in which the fields are arranged, or add constant fields and partition key columns. Note that partition key columns are not table fields. Data types The following table lists the data types supported by MaxCompute Reader.
 
@@ -2389,7 +2870,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure MongoDB Reader
+##### 3.6.3.5 Configure MongoDB Reader
 
 This topic describes the data types and parameters supported by MongoDB Reader and how to configure it by using the code editor. MongoDB Reader connects to a remote MongoDB database by using the Java client named MongoClient and reads data from the database. The latest version of MongoDB has improved the locking feature from database locks to document locks. By using the powerful functionalities of indexes in MongoDB, MongoDB Reader can efficiently read data from MongoDB databases. If you use ApsaraDB for MongoDB, the MongoDB database has a root account by default. For security concerns, Data Integration supports access to a MongoDB database only by using a MongoDB database account. When you add a MongoDB connection, do not use the root account for access. JavaScript syntax is not supported for queries. MongoDB Reader shards data in the MongoDB database based on specified rules, reads data from the database with multiple threads, and then converts the data to a format readable by Data Integration. Data types MongoDB Reader supports most MongoDB data types. Make sure that your data types are supported. The following table lists the data types supported by MongoDB Reader.
 
@@ -2628,7 +3109,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}` You cannot retrieve data elements from arrays.
 
-##### Configure Db2 Reader
+##### 3.6.3.6 Configure Db2 Reader
 
 This topic describes the data types and parameters supported by Db2 Reader and how to configure it by using the code editor. Db2 Reader allows you to read data from Db2. Db2 Reader connects to a remote Db2 database and runs a SELECT statement to select and read data from the database. Specifically, Db2 Reader connects to a remote Db2 database through Java Database Connectivity (JDBC), generates a SELECT statement based on your configurations, and then sends the statement to the database. The Db2 database runs the statement and returns the result. Then, Db2 Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. Db2 Reader generates the SELECT statement based on the table, column, and where parameters that you have configured, and sends the generated SELECT statement to the Db2 database. If you specify the querySql parameter, Db2 Reader directly sends the value of this parameter to the Db2 database. Db2 Reader supports most Db2 data types. Make sure that your data types are supported. The following table lists the data types supported by Db2 Reader.
 
@@ -2746,7 +3227,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `]` `}` `}` Additional instructions Data synchronization between primary and secondary databases A secondary Db2 database can be deployed for disaster recovery. The secondary database continuously synchronizes data from the primary database based on binlogs. Especially when network conditions are unfavorable, data latency between the primary and secondary databases is unavoidable, which can lead to data inconsistency. Concurrency control Db2 is a relational database management system (RDBMS), which supports strong consistency for data queries. A database snapshot is created before a sync node starts. Db2 Reader reads data from the database snapshot. Therefore, if new data is written to the database during data synchronization, Db2 Reader cannot obtain the new data. Data consistency cannot be guaranteed when you enable Db2 Reader to run concurrent threads on a single sync node. Db2 Reader shards the table based on the splitPk parameter and runs multiple concurrent threads to synchronize data. These concurrent threads belong to different transactions. They read data at different time points. This means that the concurrent threads observe different snapshots. Theoretically, the data inconsistency issue is unavoidable if a single sync node includes multiple threads. However, two workarounds are available: Do not enable concurrent threads on a single sync node. Essentially, do not specify the splitPk parameter. In this way, data consistency is guaranteed although data is synchronized at a low efficiency. Disable writers to make sure that the data is unchanged during data synchronization. For example, lock the table and disable data synchronization between primary and secondary databases. In this way, data is synchronized efficiently but your ongoing services may be interrupted. Character encoding Db2 Reader uses JDBC, which can automatically convert the encoding of characters. Therefore, you do not need to specify the encoding format. Incremental data synchronization Db2 Reader connects to a database through JDBC and uses a SELECT statement with a WHERE clause to read incremental data in the following ways: For data in batches, incremental add, update, and delete operations (including logically delete operations) are distinguished by timestamps. Specify the WHERE clause based on the timestamp. The timestamp must be later than the latest timestamp in the last synchronization. For streaming data, specify the WHERE clause based on the data record ID. The data record ID must be larger than the maximum ID involved in the last synchronization. If incremental data cannot be distinguished, Db2 Reader cannot perform incremental synchronization but can perform full synchronization only. Syntax validation Db2 Reader allows you to specify custom SELECT statements by using the querySql parameter but does not verify the syntax of the custom SELECT statements.
 
-##### Configure MySQL Reader
+##### 3.6.3.7 Configure MySQL Reader
 
 This topic describes the data types and parameters supported by MySQL Reader and how to configure it by using the codeless user interface (UI) and code editor. MySQL Reader connects to a remote MySQL database through Java Database Connectivity (JDBC), generates a SELECT statement based on your configurations, and then sends the statement to the database. The MySQL database runs the statement and returns the result. Then, MySQL Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. In short, MySQL Reader connects to a remote MySQL database and runs a SELECT statement to select and read data from the database. MySQL Reader can read tables and views. For table fields, you can specify all or some of the columns in sequence, adjust the column order, specify constant fields, and configure MySQL functions, such as now(). Data types The following table lists the data types supported by MySQL Reader.
 
@@ -2975,7 +3456,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `}` `}`
 
-##### Configure Oracle Reader
+##### 3.6.3.8 Configure Oracle Reader
 
 This topic describes the data types and parameters supported by Oracle Reader and how to configure it by using the codeless user interface (UI) and code editor. Oracle Reader allows you to read data from Oracle. Oracle Reader connects to a remote Oracle database and runs a SELECT statement to select and read data from the database. Specifically, Oracle Reader connects to a remote Oracle database through Java Database Connectivity (JDBC), generates a SELECT statement based on your configurations, and then sends the statement to the database. The Oracle database runs the statement and returns the result. Then, Oracle Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. Oracle Reader generates the SELECT statement based on the table, column, and where parameters that you have configured, and sends the generated SELECT statement to the Oracle database. If you specify the querySql parameter, Oracle Reader directly sends the value of this parameter to the Oracle database. Data types Oracle Reader supports most Oracle data types. Make sure that your data types are supported. The following table lists the data types supported by Oracle Reader.
 
@@ -3125,7 +3606,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `]` `}` `}` Additional instructions Data synchronization between primary and secondary databases A secondary Oracle database can be deployed for disaster recovery. The secondary database continuously synchronizes data from the primary database based on binlogs. Especially when network conditions are unfavorable, data latency between the primary and secondary databases is unavoidable, which can lead to data inconsistency. Concurrency control Oracle is a relational database management system (RDBMS), which supports strong consistency for data queries. A database snapshot is created before a sync node starts. Oracle Reader reads data from the database snapshot. Therefore, if new data is written to the database during data synchronization, Oracle Reader cannot obtain the new data. Data consistency cannot be guaranteed when you enable Oracle Reader to run concurrent threads on a single sync node. Oracle Reader shards the table based on the splitPk parameter and runs multiple concurrent threads to synchronize data. These concurrent threads belong to different transactions. They read data at different time points. This means that the concurrent threads observe different snapshots. Theoretically, the data inconsistency issue is unavoidable if a single sync node includes multiple threads. However, two workarounds are available: Do not enable concurrent threads on a single sync node. Essentially, do not specify the splitPk parameter. In this way, data consistency is guaranteed although data is synchronized at a low efficiency. Disable writers to make sure that the data is unchanged during data synchronization. For example, lock the table and disable data synchronization between primary and secondary databases. In this way, data is synchronized efficiently but your ongoing services may be interrupted. Character encoding Oracle Reader uses JDBC, which can automatically convert the encoding of characters. Therefore, you do not need to specify the encoding format. Incremental data synchronization Oracle Reader connects to a database through JDBC and uses a SELECT statement with a WHERE clause to read incremental data in the following ways: For data in batches, incremental add, update, and delete operations (including logically delete operations) are distinguished by timestamps. Specify the WHERE clause based on the timestamp. The timestamp must be later than the latest timestamp in the last synchronization. For streaming data, specify the WHERE clause based on the data record ID. The data record ID must be larger than the maximum ID involved in the last synchronization. If incremental data cannot be distinguished, Oracle Reader cannot perform incremental synchronization but can perform full synchronization only. Syntax validation Oracle Reader allows you to specify custom SELECT statements by using the querySql parameter but does not verify the syntax of the custom SELECT statements.
 
-##### Configure OSS Reader
+##### 3.6.3.9 Configure OSS Reader
 
 This topic describes the data types and parameters supported by OSS Reader and how to configure it by using the codeless UI and code editor. OSS Reader can read data stored in OSS. OSS Reader connects to OSS by using the official OSS Java SDK, reads data from OSS, converts the data into a format that is readable by Data Integration, and then sends the converted data to a writer. OSS stores unstructured data only. OSS Reader supports the following features: Reads TXT objects that store logical two-dimensional tables. OSS Reader can read only TXT objects. Reads data stored in formats similar to CSV with custom delimiters. Reads data of various types as strings and supports constants and column pruning. Supports recursive reading and object name-based filtering. Supports the following object compression formats: GZIP, BZIP2, and ZIP. You cannot compress multiple objects into one package. Reads multiple objects concurrently. OSS Reader does not support the following features: Uses concurrent threads to read an uncompressed object. Uses concurrent threads to read a compressed object. OSS Reader supports the following OSS data types: Bigint, Double, String, Datatime, and Boolean. Parameters
 
@@ -3304,7 +3785,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure FTP Reader
+##### 3.6.3.10 Configure FTP Reader
 
 This topic describes the data types and parameters supported by File Transfer Protocol (FTP) Reader and how to configure it by using the codeless user interface (UI) and code editor. FTP Reader allows you to read data from a remote FTP server. FTP Reader connects to an FTP server, reads data from the server, converts the data into a format that is readable by Data Integration, and then sends the converted data to a writer. FTP Reader can read only FTP files that store logical two-dimensional tables, for example, text information in CSV format. FTP servers store unstructured data only. Currently, FTP Reader supports the following features: Reads TXT files that store logical two-dimensional tables. FTP Reader can read only TXT files. Reads data stored in formats similar to CSV with custom delimiters. Reads data of various types as strings. Supports constants and column pruning. Supports recursive reading and file name-based filtering. Supports the following file compression formats: GZIP, BZIP2, ZIP, LZO, and LZO_DEFLATE. Reads multiple files concurrently. Currently, FTP Reader does not support the following features: Uses concurrent threads to read an uncompressed file. Uses concurrent threads to read a compressed file. The data types of remote FTP files are defined by FTP Reader.
 
@@ -3462,7 +3943,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `]` `}` `}` `}`
 
-##### Configure Tablestore Reader
+##### 3.6.3.11 Configure Tablestore Reader
 
 This topic describes the data types and parameters supported by Tablestore Reader and how to configure it by using the code editor. Tablestore Reader can read incremental data from Tablestore based on the specified range. Tablestore Reader can read incremental data in the following ways: Reads data from the entire table. Reads data based on the specified range. Reads data from the specified shard. Tablestore is a NoSQL database service that is built on the Apsara distributed operating system. The service allows you to store and access large volumes of structured data in real time. Tablestore organizes data into instances and tables. It uses data sharding and load balancing technologies to seamlessly expand the data scale. Tablestore Reader connects to the Tablestore server by using Tablestore SDK for Java and reads data from the server. Then, Tablestore Reader converts the data into a format that is readable to Data Integration based on the official data synchronization protocols, and sends the converted data to a writer. Tablestore Reader splits a synchronization node into multiple concurrent tasks based on the table range to synchronize data in a Tablestore table. Each Tablestore Reader thread runs a task. Tablestore Reader supports all Tablestore data types. The following table lists the data types.
 
@@ -3715,7 +4196,7 @@ false indicates that bandwidth throttling is disabled, and the value true indica
 
 `}` `]` `}` `}`
 
-##### Configure PostgreSQL Reader
+##### 3.6.3.12 Configure PostgreSQL Reader
 
 This topic describes the data types and parameters supported by PostgreSQL Reader and how to configure it by using the codeless UI and code editor. PostgreSQL Reader connects to a remote PostgreSQL database and runs a SELECT statement to select and read data from the database. ApsaraDB for Relational Database Service (RDS) provides the PostgreSQL storage engine. Specifically, PostgreSQL Reader connects to a remote PostgreSQL database through Java Database Connectivity (JDBC), generates a SELECT statement based on your configurations, and sends the statement to the database. The PostgreSQL database runs the statement and returns the result. Then, PostgreSQL Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. PostgreSQL Reader generates the SELECT statement based on the table, column, and where parameters that you have configured, and sends the generated SQL statement to the PostgreSQL database. If you specify the querySql parameter, PostgreSQL Reader directly sends the value of this parameter to the PostgreSQL database. Data types PostgreSQL Reader supports most PostgreSQL data types. Ensure that your data types are supported. The following table lists the data types supported by PostgreSQL Reader.
 
@@ -3876,7 +4357,7 @@ led. A value of true indicates that the bandwidth is throttled. The maximum tran
 
 `}` `]` `}` `}` Additional instructions Data synchronization between primary and secondary databases A secondary PostgreSQL database can be deployed for disaster recovery. The secondary database continuously synchronizes data from the primary database based on binlogs. Especially when network conditions are unfavorable, data latency between the primary and secondary databases is unavoidable, which can lead to data inconsistency. Concurrency control PostgreSQL is a relational database management system (RDBMS), which supports strong consistency for data queries. A database snapshot is created before a data synchronization node starts. PostgreSQL Reader reads data from the database snapshot. Therefore, if new data is written to the database during data synchronization, the reader cannot obtain the new data. Data consistency cannot be ensured when you enable PostgreSQL Reader to run concurrent threads on a single data synchronization node. PostgreSQL Reader shards the table based on the splitPk parameter and runs multiple concurrent threads to synchronize data. These concurrent threads belong to different transactions, and they read data at different times. This means that the concurrent threads observe different snapshots. Theoretically, the data inconsistency issue is unavoidable if a single data synchronization node includes multiple threads. However, two workarounds are available: Do not enable concurrent threads on a single data synchronization node. Essentially, do not specify the splitPk parameter. In this way, data consistency is ensured while data is synchronized at a low efficiency. Disable writers to ensure that the data is unchanged during data synchronization. For example, lock the table and disable data synchronization between primary and secondary databases. In this way, data is synchronized efficiently but your ongoing services can be interrupted. Character encoding A PostgreSQL database supports only EUC_CN and UTF-8 encoding formats for simplified Chinese characters. PostgreSQL Reader uses JDBC, which can automatically convert encoding of characters. Therefore, you do not need to specify the encoding. If data is written to the PostgreSQL database in an encoding format different from that specified by the PostgreSQL database, PostgreSQL Reader cannot recognize this inconsistency and may export garbled characters. Incremental data synchronization PostgreSQL Reader connects to a database through JDBC and uses `a SELECT statement with a WHE` `RE clause` to read incremental data in either of the following ways: For batch data, incremental add, update, and delete operations (including logical delete operations) are distinguished by timestamps. Specify the WHERE clause based on the timestamp. The timestamp must be later than the latest timestamp in the last synchronization. For streaming data, specify the WHERE clause based on the data record ID. The data record ID must be larger than the maximum ID involved in the last synchronization. If incremental data cannot be distinguished, PostgreSQL Reader cannot perform incremental synchronization but can perform full synchronization only. Syntax validation PostgreSQL Reader allows you to specify custom SELECT statements by using the querySql parameter but does not verify the syntax of the custom SELECT statements.
 
-##### Configure SQL Server Reader
+##### 3.6.3.13 Configure SQL Server Reader
 
 This topic describes the data types and parameters supported by SQL Server Reader and how to configure it by using the codeless user interface (UI) and code editor. SQL Server Reader connects to a remote SQL Server database and runs a SELECT statement to select and read data from the database. Specifically, SQL Server Reader connects to a remote SQL Server database through Java Database Connectivity (JDBC), generates a SELECT statement based on your configurations, and then sends the statement to the database. The SQL Server database runs the statement and returns the result. Then, SQL Server Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. SQL Server Reader generates the SELECT statement based on the table, column, and where parameters that you have configured, and sends the generated SELECT statement to the SQL Server database. If you specify the querySql parameter, SQL Server Reader directly sends the value of this parameter to the SQL Server database. SQL Server Reader supports most SQL Server data types. Make sure that your data types are supported. The following table lists the data types supported by SQL Server Reader.
 
@@ -4053,7 +4534,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `},` Additional instructions Data synchronization between primary and secondary databases A secondary SQL Server database can be deployed for disaster recovery. The secondary database continuously synchronizes data from the primary database based on binlogs. Especially when network conditions are unfavorable, data latency between the primary and secondary databases is unavoidable, which can lead to data inconsistency. Concurrency control SQL Server is a relational database management system (RDBMS), which supports strong consistency for data queries. A database snapshot is created before a sync node starts. SQL Server Reader reads data from the database snapshot. Therefore, if new data is written to the database during data synchronization, the reader cannot obtain the new data. Data consistency cannot be guaranteed when you enable SQL Server Reader to run concurrent threads on a single sync node. SQL Server Reader shards the table based on the splitPk parameter and runs multiple concurrent threads to synchronize data. These concurrent threads belong to different transactions. They read data at different time points. This means that the concurrent threads observe different snapshots. Theoretically, the data inconsistency issue is unavoidable if a single sync node includes multiple threads. However, two workarounds are available: Do not enable concurrent threads on a single sync node. Essentially, do not specify the splitPk parameter. In this way, data consistency is guaranteed although data is synchronized at a low efficiency. Disable writers to make sure that the data is unchanged during data synchronization. For example, lock the table and disable data synchronization between primary and secondary databases. In this way, data is synchronized efficiently but your ongoing services may be interrupted. Character encoding SQL Server Reader uses JDBC, which can automatically convert the encoding of characters. Therefore, you do not need to specify the encoding format. Incremental data synchronization SQL Server Reader connects to a database through JDBC and uses a SELECT statement with a WHERE clause to read incremental data in the following ways: For data in batches, incremental add, update, and delete operations (including logically delete operations) are distinguished by timestamps. Specify the WHERE clause based on the timestamp. The timestamp must be later than the latest timestamp in the last synchronization. For streaming data, specify the WHERE clause based on the data record ID. The data record ID must be larger than the maximum ID involved in the last synchronization. If incremental data cannot be distinguished, SQL Server Reader cannot perform incremental synchronization but can perform full synchronization only. Syntax validation SQL Server Reader allows you to specify custom SELECT statements by using the querySql parameter but does not verify the syntax of the custom SELECT statements.
 
-##### Configure LogHub Reader
+##### 3.6.3.14 Configure LogHub Reader
 
 This topic describes the data types and parameters supported by LogHub Reader and how to configure it by using the codeless UI and code editor. As an all-in-one real-time data logging service, Log Service provides features to collect, consume, deliver, query, and analyze log data. It can comprehensively improve the capabilities to process and analyze numerous logs. LogHub Reader consumes real-time log data in LogHub by using the Java SDK for Log Service, converts the data to a format that can be read by the Data Integration service, and sends the converted data to a writer. How it works LogHub Reader consumes real-time log data in LogHub by using the following version of the Java SDK for Log Service:
 
@@ -4216,7 +4697,7 @@ false indicates that the bandwidth is not throttled. A value of true indicates t
 
 `}` `]` `}` `}` If the metadata in JSON format is prefixed by tag, delete the tag prefix. For example, change `__tag__:__client_ip__` to `__client_ip__` .
 
-##### Configure Tablestore Reader-Internal
+##### 3.6.3.15 Configure Tablestore Reader-Internal
 
 This topic describes the data types and parameters supported by Tablestore Reader-Internal and how to configure it by using the code editor. Tablestore is a NoSQL database service built on the Apsara distributed operating system that allows you to store and access large amounts of structured data in real time. Tablestore organizes data into instances and tables. It can seamlessly expand the data scale by using data sharding and load balancing technologies. Tablestore Reader-Internal is used to export data for the Tablestore Internal model, whereas Tablestore Reader is used to export data for the Tablestore Public model. Tablestore Reader-Internal can export data in multi-version mode or normal mode: Multi-version mode: Tablestore stores multiple versions of column values, and this mode allows you to export data of multiple versions. Tablestore Reader-Internal converts a cell to a 4-tuple of a one-dimensional table: PrimaryKey (columns 1 to 4), ColumnName, Timestamp, and Value. This process is similar to that for the multiversion mode of HBase Reader. Each {PrimaryKey, ColumnName, Timestamp, Value} tuple is sent to a writer as four columns in Data Integration records. Normal mode: This mode allows you to export the latest version of each column in each row, which is the same as the normal mode of HBase Reader. For more information, see the normal mode of HBase Reader in Configure an HBase connection. Tablestore Reader-Internal connects to a Tablestore server by using the official Java SDK for Tablestore and reads data from the server. Tablestore Reader-Internal optimizes the read process by providing features such as performing retry attempts when a timeout or exception occurs. Tablestore Reader-Internal supports all Tablestore data types. The following table lists the data types supported by Tablestore Reader-Internal.
 
@@ -4506,7 +4987,7 @@ Configure Tablestore Reader-Internal by using the codeless UI The codeless UI is
 
 `}`
 
-##### Configure OTSStream Reader
+##### 3.6.3.16 Configure OTSStream Reader
 
 This topic describes the data types and parameters supported by OTSStream Reader and how to configure it by using the code editor. OTSStream Reader is mainly used to synchronize the incremental data of Tablestore. Incremental data can be considered as operation logs that include data and operation information. Unlike plug-ins used to synchronize full data, OTSStream Reader supports only the multi-version mode. When you use OTSStream Reader to synchronize incremental data, you cannot synchronize the data of specified columns, which is related to the principle of synchronizing incremental data. The following section describes the implementation process. Before you use OTSStream Reader, make sure that the Stream feature is enabled for your table. You can enable this feature when you create the table, or you can use the UpdateTable operation in the SDK to enable this feature. The following example describes how to enable the Stream feature:
 
@@ -4634,7 +5115,7 @@ false indicates that bandwidth throttling is disabled, and the value true indica
 
 `}` `]` `}` `}`
 
-##### Configure RDBMS Reader
+##### 3.6.3.17 Configure RDBMS Reader
 
 This topic describes the data types and parameters supported by RDBMS Reader and how to configure it by using the code editor. Background information RDBMS Reader allows you to read data from an RDBMS database. RDBMS Reader connects to a remote RDBMS database and runs a SELECT statement to select and read data from the database. RDBMS Reader can read data from databases such as Dameng, Db2, PPAS, and Sybase databases. If you need RDBMS Reader to read data from a common relational database, register the driver for the corresponding database type. RDBMS Reader connects to a remote RDBMS database by using JDBC, generates a SELECT statement based on your configurations, and then sends the statement to the database. The RDBMS database runs the statement and returns the result. Then, RDBMS Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. RDBMS Reader generates the SQL statement based on the table, column, and where parameters that you have configured, and sends the generated SQL statement to the RDBMS database. If you specify the querySql parameter, RDBMS Reader directly sends the value of this parameter to the RDBMS database. RDBMS Reader supports most data types of a common relational database, such as numbers and characters. Make sure that your data types are supported. Parameters
 
@@ -4772,7 +5253,7 @@ Configure RDBMS Reader by using the codeless UI The codeless UI is not supported
 
 `}`
 
-##### Configure Stream Reader
+##### 3.6.3.18 Configure Stream Reader
 
 This topic describes the data types and parameters supported by Stream Reader and how to configure it by using the code editor. Stream Reader automatically generates data from the memory. It is mainly used for performance testing for data synchronization and basic functional testing. The following table lists the data types supported by Stream Reader.
 
@@ -4904,7 +5385,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure Hive Reader
+##### 3.6.3.19 Configure Hive Reader
 
 Parameters
 
@@ -4984,7 +5465,7 @@ te.
 
 `}` `]` `}` `}`
 
-##### Configure Elasticsearch Reader
+##### 3.6.3.20 Configure Elasticsearch Reader
 
 This topic describes the working principles, features, and parameters of Elasticsearch Reader. Working principles Elasticsearch Reader reads data from Elasticsearch by slicing scroll queries. The slices are processed by multiple threads of a data synchronization node. Data types are converted based on the mapping configuration of Elasticsearch. Basic settings `{`
 
@@ -5112,7 +5593,7 @@ Additional settings:
 
 `}`
 
-##### Configure Vertica Reader
+##### 3.6.3.21 Configure Vertica Reader
 
 Vertica is a column-oriented database using the Massively Parallel Processing (MPP) architecture. Vertica Reader allows you to read data from Vertica. This topic describes how Vertica Reader works, the supported parameter, and how to configure it by using the code editor. How it works Vertica Reader connects to a remote Vertica database by using JDBC and executes a SELECT statement to select and read data from the database. Vertica Reader connects to a remote Vertica database by using JDBC, generates a SELECT statement based on your configurations, and then sends the statement to the database. The Vertica database executes the statement and returns the result. Then, Vertica Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and sends the datasets to a writer. Vertica Reader generates the SELECT statement based on the table, column, and where parameters that you have configured, and sends the generated SELECT statement to the Vertica database. If you specify the querySql parameter, Vertica Reader directly sends the value of this parameter to the Vertica database. Vertica Reader accesses a Vertica database by using the Vertica database driver. Confirm the compatibility between the driver version and your Vertica database. Vertica Reader uses the following version of the Vertica database driver:
 
@@ -5248,7 +5729,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `}` `}`
 
-##### Configure GBase Reader
+##### 3.6.3.22 Configure GBase Reader
 
 This topic describes how GBase Reader reads data and how to configure a sync node to read data from a GBase database. GBase Reader connects to a remote GBase database through the MySQL Java Database Connectivity (JDBC) Driver, generates SQL statements based on your configurations, and then reads data from the remote GBase database. Then, GBase Reader assembles the returned data to abstract datasets in custom data types supported by Data Integration, and passes the datasets to a writer. Parameters
 
@@ -5362,7 +5843,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `}` `]` `}` `}`
 
-##### KingbaseES Reader
+##### 3.6.3.23 KingbaseES Reader
 
 This topic describes the data types and parameters that are supported by KingbaseES Reader and how to configure KingbaseES Reader by using the codeless user interface (UI) and code editor. Before you create a Data Integration node, you can refer to this topic to familiarize yourself with the data types and parameters that you must configure for KingbaseES Reader to read data from data sources. Context KingbaseES Reader connects to a remote KingbaseES database by using Java Database Connectivity (JDBC), generates an SQL statement based on your configurations, and then sends the statement to the database. The system executes the statement on the database and returns data. Then, KingbaseES Reader assembles the returned data into abstract datasets of the data types supported by Data Integration and sends the datasets to a writer. Data types The following table lists the data types that are supported by KingbaseES Reader.
 
@@ -5559,7 +6040,7 @@ ue false indicates that bandwidth throttling is disabled, and the value true ind
 
 `}` `}` `}`
 
-##### SAP HANA Reader
+##### 3.6.3.24 SAP HANA Reader
 
 This topic describes the data types and parameters that are supported by SAP HANA Reader and how to configure SAP HANA Reader by using the codeless user interface (UI) and code editor. Before you create a Data Integration node, you can refer to this topic to familiarize yourself with the data types and parameters that you must configure for SAP HANA Reader to read data from data sources. Context SAP HANA Reader connects to a remote SAP HANA database by using Java Database Connectivity (JDBC), generates an SQL statement based on your configurations, and then sends the statement to the database. The system executes the statement on the database and returns data. Then, SAP HANA Reader assembles the returned data into abstract datasets of the data types supported by Data Integration and sends the datasets to a writer. Data types The following table lists the data types that are supported by SAP HANA Reader.
 
@@ -5768,7 +6249,7 @@ ue false indicates that bandwidth throttling is disabled, and the value true ind
 
 `}` `}` `}`
 
-##### ClickHouse Reader
+##### 3.6.3.25 ClickHouse Reader
 
 This topic describes the parameters that are supported by ClickHouse Reader and how to configure ClickHouse Reader by using the code editor. Limits ClickHouse Reader connects to an ApsaraDB for ClickHouse database by using Java Database Connectivity (JDBC) and can read data from a source table only by using JDBC Statement. ClickHouse Reader allows you to read data from the specified columns in an order different from that specified in the schema of the source table. You must make sure that the driver version is compatible with your ClickHouse database. ClickHouse Reader supports only the following version of the ClickHouse database driver:
 
@@ -5910,7 +6391,7 @@ lse indicates that bandwidth throttling is disabled, and a value of true indicat
 
 `}` `]` `}` `}`
 
-##### TSDB Reader
+##### 3.6.3.26 TSDB Reader
 
 TSDB Reader allows you to read data from Time Series Database (TSDB). You can synchronize data from TSDB in batch mode by using TSDB Reader. This topic describes the data types and parameters that are supported by TSDB Reader and how to configure TSDB Reader by using the code editor. Background information TSDB is a high-performance, cost-effective, stable, and reliable online time series database service. TSDB features high read and write performance and provides a high compression ratio for data storage. TSDB also enables the interpolation and aggregation of time series data. TSDB can monitor devices and business and send alerts in real time. It is widely used in Internet and IoT fields. TSDB Reader connects to a TSDB instance by sending an HTTP request and obtains data points by using the `/api/query` or `/api/mquery` HTTP API endpoint. TSDB Reader splits a synchronization node into multiple tasks based on time series and a specific time range. Limits DataWorks supports only batch synchronization of TSDB data by using the code editor. When TSDB Reader reads data, the specified start time and end time are automatically converted to on-the-hour time. For example, if you set the time range to [3:35, 4:55) on April 18, 2019, the time range of [3:35, 4:55) is converted to [3:00, 4:00). Usage notes To ensure that synchronization nodes can run as expected, you must change the memory size of the Java Virtual Machine (JVM) to an appropriate value in the following scenarios: If the amount of data that is reported for a metric within an hour is greater than a specific threshold, you must modify the value of the -j parameter to change the memory size of the JVM. If the data write speed of the downstream TSDB Writer is lower than the data read speed of TSDB Reader, a task backlog may occur. Therefore, you must change the memory size of the JVM to an appropriate value. For example, to extract data from an Alibaba Cloud TSDB database to an on-premises data source, you can run the following command in which the JVM memory size is specified: You can change the memory size of the JVM based on your requirements.
 
@@ -6859,9 +7340,9 @@ of false indicates that bandwidth throttling is disabled, and a value of true in
 
 `}` `]` `}` `}`
 
-#### Configure the writer
+#### 3.6.4 Configure the writer
 
-##### Configure AnalyticDB for MySQL 2.0 Writer
+##### 3.6.4.1 Configure AnalyticDB for MySQL 2.0 Writer
 
 This topic describes the data types and parameters supported by AnalyticDB for MySQL 2.0 Writer and how to configure it by using the codeless UI and code editor. Prerequisites Data Integration can import data to AnalyticDB for MySQL 2.0 in real time. This method requires you to create real-time tables, which are fact tables, in the destination AnalyticDB for MySQL 2.0 database in advance. In real-time import mode, data is imported efficiently and the process is simple. You must configure a connection before you configure AnalyticDB for MySQL 2.0 Writer. Data types The following table lists the data types supported by AnalyticDB for MySQL 2.0 Writer.
 
@@ -7010,7 +7491,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure DataHub Writer
+##### 3.6.4.2 Configure DataHub Writer
 
 This topic describes the data types and parameters supported by DataHub Writer and how to configure it by using the code editor. DataHub is a real-time data distribution platform designed to process streaming data. You can publish and subscribe applications to streaming data in DataHub and distribute the data to other platforms. This allows you to easily analyze streaming data and build applications based on the streaming data. Based on the Apsara system of Alibaba Cloud, DataHub features high availability, low latency, high scalability, and high throughput. Seamlessly integrated with Realtime Compute, DataHub allows you to easily use SQL to analyze streaming data. DataHub can also distribute streaming data to Alibaba Cloud services such as MaxCompute and OSS. Strings can only be UTF-8 encoded. The size of each string must not exceed 1 MB. Parameter configuration The source is connected to the destination through a single channel. Therefore, the channel type configured for the writer must be the same as that configured for the reader. Generally, channels are categorized into two types: memory andfile. The following configuration sets the channel type to file:
 
@@ -7110,7 +7591,7 @@ tled. The value true indicates that the bandwidth is throttled. The maximum tran
 
 `}` `]` `}` `}`
 
-##### Configure the DB2 writer
+##### 3.6.4.3 Configure the DB2 writer
 
 The DB2 writer enables writing data to tables stored on Db2 databases. To write data into a Db2 table, the DB2 writer connects to the remote Db2 database through JDBC, and runs `INSERT INTO` statements. Data is written into the Db2 table in batches. The DB2 writer is designed for ETL developers to import data from data warehouses to Db2 databases. It also serves as a data migration tool for database administrators and other users. The DB2 writer reads data from the channel, connects to a remote Db2 database through JDBC, and then runs `INSERT INTO` statements. The rows that violate the unique index constraint or primary key constraint cannot be written into the Db2 database. To improve performance, the DB2 writer makes
 
@@ -7224,7 +7705,7 @@ The value true means that the bandwidth is throttled. The maximum transmission r
 
 `}` `]` `}` `}`
 
-##### Configure DRDS Writer
+##### 3.6.4.4 Configure DRDS Writer
 
 This topic describes the data types and parameters supported by DRDS Writer and how to configure it by using the codeless UI and code editor. DRDS Writer allows you to write data to tables stored in DRDS databases. DRDS Writer connects to the proxy of a remote DRDS database by using JDBC, and executes a `REPLACE INTO` statement to write data to the DRDS database. To execute the `REPLACE INTO` statement, make sure that your table has the primary key or a unique index to avoid replicated data. You must configure a connection before you configure DRDS Writer. DRDS Writer is designed for ETL developers to import data from data warehouses to DRDS databases. DRDS Writer can also be used as a data migration tool by users such as DBAs. DRDS Writer obtains data from a Data Integration reader, and writes the data to the destination database by executing the `REPLACE INTO` statement. If no primary key conflict or unique index conflict occurs, the action is the same as that of the `INSERT INTO` statement. If a conflict occurs, original rows are replaced by new rows. DRDS Writer sends data to the DRDS proxy when the amount of buffered data reaches a specific threshold. The proxy determines whether to write the data to one or more tables and how to route the data when it is written to multiple tables. A sync node that uses DRDS Writer must have at least the permission to execute the REPLACE INTO statement. Whether other permissions are required depends on the SQL statements specified in the preSql and postSql parameters. Similar to MySQL Writer, DRDS Writer supports most MySQL data types. Make sure that your data types are supported. The following table lists the data types supported by DRDS Writer.
 
@@ -7362,7 +7843,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure the FTP writer
+##### 3.6.4.5 Configure the FTP writer
 
 The FTP writer allows you to write one or more files in CSV format into a remote FTP file. At the underlying level, this writer converts the data that is readable by the Data Integration service to CSV files, and writes these files into the remote FTP server using FTP network protocols. You must configure the data source before configuring the FTP writer. For more information, see Add FTP data sources. The FTP writer can only write data into FTP files that store logical two-dimensional tables, for example, text information in the CSV format. This writer enables you to convert data that is readable by the Data Integration service to FTP files. FTP files stores non-structured data. The advantages and disadvantages of the FTP writer are described as follows: Only supports text files and the schema in the text file must be a two-dimensional table. It does not support the blob type, such as video data. Supports CSV and text files with custom delimiters. Does not support text compression when data is written to the destination table. Supports multi-thread writing, with each thread performing write operations on a subfile. Currently, the FTP writer does not support the following two features: Concurrent writing for a single file. Providing varying data types. The FTP does not provide data types, and the FTP writer writes data of the string type into FTP files. Parameters
 
@@ -7486,7 +7967,7 @@ The value true means that the bandwidth is throttled. The maximum transmission r
 
 `}` `]` `}` `}`
 
-##### Configure HBase Writer
+##### 3.6.4.6 Configure HBase Writer
 
 This topic describes the features, data types, and parameters supported by HBase Writer and how to configure it by using the code editor. HBase Writer allows you to write data to HBase data stores. Specifically, HBase Writer connects to a remote HBase data store through the Java client of HBase. Then, HBase Writer uses the PUT method to write data to the HBase data store. Features HBase 0.94.x and 1.1.x are supported. If you use HBase 0.94.x, set the hbaseVersion parameter to 094x for the writer.
 
@@ -7677,7 +8158,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure HBase11xsql Writer
+##### 3.6.4.7 Configure HBase11xsql Writer
 
 This topic describes the features, data types, and parameters supported by HBase11xsql Writer and how to configure it by using the code editor. Background information HBase11xsql Writer allows you to write data in batches to HBase tables created by using Phoenix. Phoenix can encode the primary key to rowkey. If you directly use the HBase API to write data to an HBase table that is created by using Phoenix, you must manually convert data, which is troublesome and error-prone. HBase11xsql Writer allows you to write data to HBase tables that packs all values into a single cell per column family. HBase11xsql Writer connects to a remote HBase data store by using JDBC, and executes an UPSERT statement to write data to the HBase data store. Limits The column order specified in the writer must match that specified in the reader. When you configure the column order in the reader, you specify the order of columns in each row for the output data. When you configure the column order in the writer, you specify the expected order of columns for the input data. Example: Column order specified in the reader: c1, c2, c3, c4. Column order specified in the writer: x1, x2, x3, x4. In this case, the value of column c1 is assigned to column x1 in the writer. If the column order specified in the writer is x1, x2, x4, x3, the value of column c3 is assigned to column x4 and the value of column c4 is assigned to column x3. HBase11xsql Writer can write data only to HBase 1.x. HBase11xsql Writer can write data only to tables created by using Phoenix but not native HBase tables. HBase11xsql Writer cannot write data with timestamps. Features HBase11xsql Writer can write data of an indexed table and synchronously update all indexed tables. How it works HBase11xsql Writer connects to an HBase data store by using Phoenix, which is a JDBC driver, and executes an UPSERT statement to write data in batches to the destination table. Phoenix allows to synchronously update indexed tables when you write data. Parameters
 
@@ -7750,7 +8231,7 @@ the IP addresses from PEs."
 
 `}` `}` `}` FAQ Q: What is the proper number of concurrent threads? Can I increase the number of concurrent threads to speed up the synchronization? A: In the data import process, the default size of a JVM heap is 2 GB. Concurrent synchronization requires multiple threads. However, excessive threads sometimes cannot speed up the synchronization and may even deteriorate the performance because of frequent garbage collection (GC). We recommend that you set the number of concurrent threads within the range from 5 to 10. Q: What is the proper value for the batchSize parameter? A: The default value of the batchSize parameter is 256. You can set a proper value for the batchSize parameter based on the data volume of each row. Generally, the data volume of each write operation is 2 MB to 4 MB. You can set the value to the data volume of a write operation divided by the data volume of a row.
 
-##### Configure HDFS Writer
+##### 3.6.4.8 Configure HDFS Writer
 
 This topic describes the data types and parameters supported by HDFS Writer and how to configure it by using the code editor. HDFS Writer allows you to write text, ORC, or Parquet files to the specified directory in HDFS. In addition, you can associate the fields in the files with those in Hive tables. You must configure a connection before you configure HDFS Writer. How it works HDFS Writer writes files to HDFS in the following way:
 1. Creates a temporary directory that does not exist in HDFS based on the path parameter you
@@ -7925,7 +8406,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `]` `}` `}` `}`
 
-##### Configure MaxCompute Writer
+##### 3.6.4.9 Configure MaxCompute Writer
 
 This topic describes the data types and parameters supported by MaxCompute Writer and how to configure it by using the codeless UI and code editor. MaxCompute Writer is designed for developers to insert data to or update data in MaxCompute. MaxCompute Writer is suitable for importing data at the GB or TB level to MaxCompute. You must configure a connection before you configure MaxCompute Writer. Based on the specified information such as the source project, table, partition, and field, MaxCompute Writer writes data to MaxCompute by using Tunnel. Data types The following table lists the data types supported by MaxCompute Writer.
 
@@ -8080,15 +8561,15 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 |---|---|---|
 | pt=20150101, ty |   |   |
 
-parameter to a value that contains the third-level partition information, for example, `pt=20150101,`
+parameter to a value that contains the third-level partition information, for example, `pt=20150101,` `type=1, biz=2` . The data cannot be written if you set the partition parameter to `pt=20150101, ty`
 
 |   | type=1, biz=2 |   |   | . The dat |
 |---|---|---|---|---|
 | pe=1 |   | or | pt=20150101 |   |
 
-`type=1, biz=2` . The data cannot be written if you set the partition parameter to `pt=20150101, ty` Node rerunning To ensure the idempotence of write operations, set the `truncate` parameter to true. When a failed sync node is rerun due to a write failure, MaxCompute Writer deletes the data that has been written before it imports the source data again. This ensures that the same data is written for each rerun. If a sync node is interrupted due to other exceptions, the data cannot be rolled back and the node cannot be rerun automatically. You can ensure the idempotence of write operations and the data integrity By setting the truncate parameter to true. If the truncate parameter is set to true, all data of the specified partition or table is deleted before a rerun. Exercise caution when you set this parameter to true.
+Node rerunning To ensure the idempotence of write operations, set the `truncate` parameter to true. When a failed sync node is rerun due to a write failure, MaxCompute Writer deletes the data that has been written before it imports the source data again. This ensures that the same data is written for each rerun. If a sync node is interrupted due to other exceptions, the data cannot be rolled back and the node cannot be rerun automatically. You can ensure the idempotence of write operations and the data integrity By setting the truncate parameter to true. If the truncate parameter is set to true, all data of the specified partition or table is deleted before a rerun. Exercise caution when you set this parameter to true.
 
-##### Configure Memcache Writer
+##### 3.6.4.10 Configure Memcache Writer
 
 This topic describes the data types and parameters supported by Memcache Writer and how to configure it by using the code editor. ApsaraDB for Memcache is a distributed in-memory database service with high performance, reliability, and scalability. Based on the Apsara distributed operating system and high-performance storage technologies, ApsaraDB for Memcache provides a complete database solution with hot standby, fault recovery, business monitoring, and data migration features. ApsaraDB for Memcache is immediately available after an instance is created. It relieves the load on databases from dynamic websites and applications by caching data in the memory and therefore improves the response speed of websites and applications. Same as on-premises Memcached databases, ApsaraDB for Memcache databases are compatible with the Memcached protocol. ApsaraDB for Memcache databases can be directly used in your environments. The difference is that the data, hardware infrastructure, network security, and system maintenance services used by ApsaraDB for Memcache databases are all deployed in the cloud. These services are billed based on the pay-as-you-go billing method. Memcache Writer writes data to ApsaraDB for Memcache databases based on the Memcached protocol. Memcache Writer writes data only in text format. The method of converting data types varies based on the format of writing data. text: Memcache Writer uses the specified column delimiter to serialize source data to a string. binary: This format is not supported. Parameters
 
@@ -8175,7 +8656,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure MongoDB Writer
+##### 3.6.4.11 Configure MongoDB Writer
 
 This topic describes the data types and parameters supported by MongoDB Writer and how to configure it by using the code editor. MongoDB Writer connects to a remote MongoDB database by using the Java client named MongoClient and writes data to the database. The latest version of MongoDB has improved the locking feature from database locks to document locks. The powerful index functionalities of MongoDB enable MongoDB Writer to efficiently write data to MongoDB databases. If you want to update data, specify the primary key. You must configure a connection before you configure MongoDB Writer. If you use ApsaraDB for MongoDB, the MongoDB database has a root account by default. For security concerns, Data Integration only supports access to a MongoDB database by using a MongoDB database account. When you add a MongoDB connection, do not use the root account for access. MongoDB Writer obtains data from a Data Integration reader, and converts the data types to those supported by MongoDB. Data Integration does not support arrays. MongoDB supports arrays and the array index is useful. To use MongoDB arrays, you can convert strings to MongoDB arrays by configuring a parameter and write the arrays to a MongoDB database. Data types MongoDB Writer supports most MongoDB data types. Make sure that your data types are supported. The following table lists the data types supported by MongoDB Writer.
 
@@ -8346,7 +8827,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure MySQL Writer
+##### 3.6.4.12 Configure MySQL Writer
 
 This topic describes the data types and parameters supported by MySQL Writer and how to configure it by using the codeless UI and code editor. MySQL Writer allows you to write data to tables stored in MySQL databases. MySQL Writer connects to a remote MySQL database by using JDBC, and executes the `INSERT INTO` or `REPLACE INTO` statement to write data to the MySQL database. MySQL uses the InnoDB engine so that data is written to the database in batches. You must configure a connection before you configure MySQL Writer. MySQL Writer does not support MySQL 8.0 or later. MySQL Writer can be used as a data migration tool by users such as DBAs. MySQL Writer obtains data from a Data Integration reader, and writes the data to the destination database based on value of the writeMode parameter. A sync node that uses MySQL Writer must have at least the permission to execute the `INSERT INTO or REPLACE INTO` statement. Whether other permissions are required depends on the SQL statements specified in the preSql and postSql parameters when you configure the node. Data types MySQL Writer supports most MySQL data types. Make sure that your data types are supported. The following table lists the data types supported by MySQL Writer.
 
@@ -8496,7 +8977,7 @@ Configure MySQL Writer by using the code editor In the following code, a node is
 
 `}` `]` `}` `}`
 
-##### Configure Oracle Writer
+##### 3.6.4.13 Configure Oracle Writer
 
 This topic describes the data types and parameters supported by Oracle Writer and how to configure it by using the codeless UI and code editor. Oracle Writer allows you to write data to tables stored in primary Oracle databases. Oracle Writer connects to a remote Oracle database by using JDBC, and executes an `INSERT INTO` statement to write data to the Oracle database. You must configure a connection before you configure Oracle Writer. Oracle Writer is designed for ETL developers to import data from data warehouses to Oracle databases. Oracle Writer can also be used as a data migration tool by users such as DBAs. Oracle Writer obtains data from a Data Integration reader, connects to a remote Oracle database by using JDBC, and then executes an SQL statement to write data to the Oracle database. Data types Oracle Writer supports most Oracle data types. Make sure that your data types are supported. The following table lists the data types supported by Oracle Writer.
 
@@ -8650,7 +9131,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure OSS Writer
+##### 3.6.4.14 Configure OSS Writer
 
 This topic describes the data types and parameters supported by OSS Writer and how to configure it by using the codeless UI and code editor. OSS Writer allows you to write one or more CSV-like files to OSS. You must configure a connection before you configure OSS Writer. OSS Writer can write files that store logical two-dimensional tables, such as CSV files that store text data, to OSS. OSS Writer allows you to convert data obtained from a Data Integration reader to files and write the files to OSS. The OSS files store unstructured data only. OSS Writer supports the following features: Writes only files that store text data. The text data must be logical two-dimensional tables. Writes CSV-like files with custom delimiters. Uses concurrent threads to write files. Each thread writes a file. Supports file rotation. OSS Writer can write data to another file when the size of the current file exceeds a specific value. OSS Writer can also write data to another file when the number of rows in the current file exceeds a specific value. OSS Writer does not support the following features: Uses concurrent threads.to write a single file. Distinguishes between data types. OSS does not distinguish between data types. Therefore, OSS Writer writes all data as strings to files in OSS. The following table lists the data types supported by OSS Writer.
 
@@ -8807,7 +9288,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure PostgreSQL Writer
+##### 3.6.4.15 Configure PostgreSQL Writer
 
 This topic describes the data types and parameters supported by PostgreSQL Writer and how to configure it by using the codeless UI and code editor. PostgreSQL Writer allows you to write data to a PostgreSQL database. PostgreSQL Writer connects to a remote PostgreSQL database by using JDBC, and executes an SQL statement to write data to the PostgreSQL database. You must configure a connection before you configure PostgreSQL Writer. PostgreSQL Writer generates the SQL statement based on the table, column, and where parameters that you specified, and sends the generated SQL statement to the PostgreSQL database. If you specify the querySql parameter, PostgreSQL Writer directly sends the value of this parameter to the PostgreSQL database. Data types PostgreSQL Writer supports most PostgreSQL data types. Make sure that your data types are supported. The following table lists the data types supported by PostgreSQL Writer.
 
@@ -8962,7 +9443,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure Redis Writer
+##### 3.6.4.16 Configure Redis Writer
 
 Redis Writer is a writer that is developed based on the Data Integration framework. It can be used to import data from data stores such as data warehouses to Redis databases. Redis is a network-enabled key-value storage system that is either in-memory or permanent. It supports logs and delivers high performance. It can be used as a database, cache, and message broker. Redis supports diverse data types for values, including STRING, LIST, SET, ZSET (sorted set), and HASH. Redis Writer interacts with a Redis server by using Jedis. As a preferred Java client development kit provided by Redis, Jedis supports almost all the features of Redis. You must configure a connection before you configure Redis Writer. If you write values of the LIST type to Redis by using Redis Writer, the result of rerunning a sync node is not idempotent. If the data type of the values is LIST, you must manually clear the corresponding data on Redis when you rerun a sync node. Parameters
 
@@ -9109,7 +9590,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure SQL Server Writer
+##### 3.6.4.17 Configure SQL Server Writer
 
 This topic describes the data types and parameters supported by SQL Server Writer and how to configure it by using the codeless UI and code editor. SQL Server Writer allows you to write data to tables stored in primary SQL Server databases. SQL Server Writer connects to a remote SQL Server database by using JDBC, and executes an `INSERT INTO` statement to write data to the SQL Server database. Internally, data is submitted to the database in batches. SQL Server Writer is designed for ETL developers to import data from data warehouses to SQL Server databases. SQL Server Writer can also be used as a data migration tool by users such as DBAs. SQL Server Writer obtains data from a Data Integration reader, and generates the `INSERT INTO` statement. If a primary key conflict or unique index conflict occurs, data cannot be written to the conflicting rows. To improve performance, SQL Server Writer makes batch updates with the `PreparedStatement` method and sets `rewriteBatchedStatements` to true. In this way, SQL Server Writer buffers data, and submits a write request when the amount of data in the buffer reaches a specific threshold. Data can be written only to tables stored in the primary SQL Server database. A sync node that uses SQL Server Writer must have at least the permission to execute the INSERT INTO statement. Whether other permissions are required depends on the SQL statements specified in the preSql and postSql parameters when you configure the node. Data types SQL Server Writer supports most SQL Server data types. Make sure that your data types are supported. The following table lists the data types supported by SQL Server Writer.
 
@@ -9260,7 +9741,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure Elasticsearch Writer
+##### 3.6.4.18 Configure Elasticsearch Writer
 
 This topic describes the data types and parameters supported by Elasticsearch Writer and how to configure it by using the code editor. Elasticsearch is an open-source product that complies with the Apache open standards. It is the mainstream search engine for enterprise data. Elasticsearch is a Lucene-based data search and analysis tool that provides distributed services. The mappings between Elasticsearch core concepts and database core concepts are as follows:
 
@@ -9519,7 +10000,7 @@ Configure Elasticsearch Writer by using the code editor In the following code, a
 
 `}` Currently, Elasticsearch that is deployed in a Virtual Private Cloud (VPC) supports only custom resource groups. A sync node that is run on the default resource group may fail to connect to Elasticsearch.
 
-##### Configure LogHub Writer
+##### 3.6.4.19 Configure LogHub Writer
 
 This topic describes the data types and parameters supported by LogHub Writer and how to configure it by using the code editor. LogHub Writer allows you to transfer data from a Data Integration reader to LogHub through Log Service Java SDK. LogHub does not guarantee idempotence. Rerunning a node after the node fails may result in redundant data. LogHub Writer obtains data from a Data Integration reader and converts the data types supported by Data Integration to String. When the number of the data records reaches the value specified for the batchSize parameter, LogHub Writer sends the data records to LogHub at a time through Log Service Java SDK. LogHub Writer sends 1,024 data records at a time by default. The batchSize parameter can be set to 4096 at most. Data types The following table lists the data types supported by LogHub Writer.
 
@@ -9627,7 +10108,7 @@ of false indicates that the bandwidth is not throttled. A value of true indicate
 
 `}` `]` `}` `}`
 
-##### Configure Open Search Writer
+##### 3.6.4.20 Configure Open Search Writer
 
 This topic describes the data types and parameters supported by Open Search Writer and how to configure it by using the code editor. How it works Open Search Writer allows you to insert data to or update data in Open Search. Open Search Writer is designed for developers to import data to Open Search so that the data can be searched. Specifically, Open Search Writer uses the search API provided by Open Search to import data. Open Search V3 uses internal dependent databases, with POM of `com.aliyun.opensearch aliyun-sd`
 
@@ -9702,7 +10183,7 @@ Configure Open Search Writer by using the code editor In the following code, a n
 
 `}` `}` `}` `}`
 
-##### Configure Tablestore Writer
+##### 3.6.4.21 Configure Tablestore Writer
 
 This topic describes the data types and parameters supported by Tablestore Writer and how to configure it by using the code editor. Tablestore is a NoSQL database service that is built on the Apsara distributed operating system. The service allows you to store and access large volumes of structured data in real time. Tablestore organizes data into instances and tables. It uses data sharding and load balancing technologies to seamlessly expand the data scale. Tablestore Writer connects to the Tablestore server by using Tablestore SDK for Java and writes data to the server by using the SDK. Tablestore Writer greatly optimizes the write process, including retry after write timeouts, retry after exceptions, and batch submission. Tablestore Writer writes data to Tablestore in one of the following modes: PutRow: the PutRow API operation for Tablestore, which is used to insert data to a specified row. If this row does not exist, a new row is added. Otherwise, the original row is overwritten. UpdateRow: the UpdateRow API operation for Tablestore, which is used to update the data of a specified row. If this row does not exist, a new row is added. Otherwise, the values of the specified columns are added, modified, or removed as requested. Tablestore Writer supports all Tablestore data types. The following table lists the data types.
 
@@ -9858,7 +10339,7 @@ false indicates that bandwidth throttling is disabled, and the value true indica
 
 `}` `]` `}` `}`
 
-##### Configure RDBMS Writer
+##### 3.6.4.22 Configure RDBMS Writer
 
 This topic describes the data types and parameters supported by RDBMS Writer and how to configure it by using the code editor. RDBMS Writer allows you to write data to tables stored in primary relational database management system (RDBMS) databases. Specifically, RDBMS Writer obtains data from a Data Integration reader, connects to a remote RDBMS database through Java Database Connectivity (JDBC), and then runs an `INSERT INTO` statement to write data to the RDBMS database. RDBMS Writer is a common writer for relational databases. To enable RDBMS Writer to support a new relational database, register the driver for the relational database. RDBMS Writer is designed for extract-transform-load (ETL) developers to import data from data warehouses to RDBMS databases. RDBMS Writer can also be used as a data migration tool by users such as database administrators (DBAs). Data types RDBMS Writer supports most data types in relational databases, such as numbers and characters. Make sure that your data types are supported. Parameters
 
@@ -10052,7 +10533,7 @@ $tree
 `-- RDBMS Writer-0.0.1-SNAPSHOT.jar
 ```
 
-##### Configure Stream Writer
+##### 3.6.4.23 Configure Stream Writer
 
 This topic describes the data types and parameters supported by Stream Writer and how to configure it by using the code editor. Stream Writer allows you to display the data obtained from a Data Integration reader on the screen or discard the data. Stream Writer is mainly applicable to performance testing for data synchronization and basic functional testing. Parameters print Description: specifies whether to display the data obtained from the reader on the screen. Required: No Default value: true Configure Stream Writer by using the codeless UI Currently, the codeless user interface (UI) is not supported for Stream Writer. Configure Stream Writer by using the code editor In the following code, a node is configured to display the data obtained from a Data Integration reader on the screen. `{`
 
@@ -10120,7 +10601,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure Hive Writer
+##### 3.6.4.24 Configure Hive Writer
 
 Hive Writer allows you to write data to HDFS and load the data to Hive. This topic describes how Hive Writer works, its parameters, and how to configure it by using the codeless UI and code editor. Background information Hive is a Hadoop-based data warehouse tool that is used to process large amounts of structured logs. Hive maps structured data files to a table and allows you to execute SQL statements to query data in the table. Essentially, Hive converts Hive Query Language (HQL) or SQL statements to MapReduce programs. Hive stores processed data in HDFS. Hive uses MapReduce programs to analyze data at the underlying layer. Hive runs MapReduce programs on Yarn. How it works Hive Writer accesses a Hive metastore, parses the configuration to obtain the file storage path, file format, and column delimiter of the file to which data is written, and then writes data to the HDFS file. Hive Writer loads data in the HDFS file to the destination Hive table by using JDBC. The underlying logic of Hive Writer is the same as that of HDFS Writer. You can configure parameters of HDFS Writer in the parameters of Hive Writer. Data Integration transparently transmits the configured parameters to HDFS Writer. Parameters
 
@@ -10265,7 +10746,7 @@ ten.
 
 `}` `}` `}`
 
-##### Configure Vertica Writer
+##### 3.6.4.25 Configure Vertica Writer
 
 Vertica is a column-oriented database using the MPP architecture. Vertica Writer allows you to write data to tables stored in Vertica databases. This topic describes how Vertica Writer works, its parameters, and how to configure it by using the code editor. How it works Vertica Writer connects to a remote Vertica database by using JDBC, and executes an `INSERT INTO` statement to write data to the Vertica database. Internally, data is submitted to the Vertica database in batches. Vertica Writer is designed for ETL developers to import data from data warehouses to Vertica databases. Vertica Writer can also be used as a data migration tool by users such as DBAs. Vertica Writer obtains data from a Data Integration reader, and generates the INSERT INTO statement based on your configurations. `INSERT INTO` : If a primary key conflict or unique index conflict occurs, data cannot be written to the conflicting rows. Data can be written only to tables stored in the primary Vertica database. A sync node that uses Vertica Writer must have at least the permission to execute the `INSERT INTO` statement. Whether other permissions are required depends on the SQL statements specified in the preSql and postSql parameters when you configure the node. Vertica Writer does not support the writeMode parameter. Vertica Writer accesses a Vertica database by using the Vertica database driver. Confirm the compatibility between the driver version and your Vertica database. Vertica Writer uses the following version of the Vertica database driver:
 
@@ -10408,7 +10889,7 @@ f false indicates that the bandwidth is not throttled. A value of true indicates
 
 `}` `]` `}` `}`
 
-##### Configure Gbase8a Writer
+##### 3.6.4.26 Configure Gbase8a Writer
 
 This topic describes the implementation principle and parameter configurations of Gbase8a Writer. Gbase8a Writer allows you to write data to tables stored in Gbase8a databases. At the underlying implementation level, Gbase8a Writer connects to a remote Gbase8a database through the JDBC Driver and runs the relevant SQL statements to write data to the Gbase8a database. You must configure a connection before configuring Gbase8a Writer. Parameters
 
@@ -10513,7 +10994,7 @@ Configure Gbase8a Writer by using the codeless UI Currently, the codeless UI is 
 
 `}` `]` `}` `}`
 
-##### KingbaseES Writer
+##### 3.6.4.27 KingbaseES Writer
 
 This topic describes the parameters that are supported by KingbaseES Writer and how to configure KingbaseES Writer by using the codeless user interface (UI) and code editor. Context KingbaseES Writer writes data to tables stored in KingbaseES databases. KingbaseES Writer connects to a remote KingbaseES database by using Java Database Connectivity (JDBC) and executes the `INSERT` `INTO` or `REPLACE INTO` statement to write data to the database. KingbaseES uses the InnoDB engine so that data is written to the database in batches. KingbaseES Writer can also be used as a data migration tool by users such as database administrators. KingbaseES Writer obtains protocol data from a Data Integration reader, and writes the data to the destination database based on the value of the writeMode parameter. A synchronization node that uses kingbaseES Writer must have at least the permissions to execute the `INSERT INTO` or `REPLACE INTO` statement. Whether other permissions are required depends on the SQL statements that you specify in the preSql and postSql parameters when you configure the node. Parameters
 
@@ -10645,7 +11126,7 @@ the synchronization node is run.
 
 `}` `]` `}` `}`
 
-##### SAP HANA Writer
+##### 3.6.4.28 SAP HANA Writer
 
 This topic describes the parameters that are supported by SAP HANA Writer and how to configure SAP HANA Writer by using the codeless user interface (UI) and code editor. Context SAP HANA Writer writes data to tables stored in SAP HANA databases. SAP HANA Writer connects to a remote SAP HANA database by using Java Database Connectivity (JDBC) and executes the `INSERT` `INTO` or `REPLACE INTO` statement to write data to the SAP HANA database. SAP HANA uses the InnoDB engine so that data is written to the database in batches. SAP HANA Writer can also be used as a data migration tool by users such as database administrators. A synchronization node that uses SAP HANA Writer must have at least the permissions to execute the `INSERT INTO` or `REPLACE INTO` statement. Whether other permissions are required depends on the SQL statements that you specify in the preSql and postSql parameters when you configure the node. Parameters
 
@@ -10780,7 +11261,7 @@ false indicates that bandwidth throttling is disabled, and the value true indica
 
 `}` `]` `}` `}`
 
-##### Configure ClickHouse Writer
+##### 3.6.4.29 Configure ClickHouse Writer
 
 ClickHouse is an open source column-oriented database management system (DBMS) for online analytical processing (OLAP) of queries. This topic describes how ClickHouse Writer works, the parameters that are supported by ClickHouse Writer, and how to configure ClickHouse Writer by using the codeless user interface (UI) and code editor. Limits ClickHouse Writer connects to a ClickHouse database by using Java Database Connectivity (JDBC) and can write data to a destination table in the ClickHouse database only by using JDBC Statement. ClickHouse Writer allows you to specify the columns to which you want to write data. You can specify the columns in an order different from the order specified by the schema of the destination table. If ClickHouse Writer writes data in INSERT mode, we recommend that you throttle the transactions per second (TPS) to 1,000 to prevent high workloads on ClickHouse. After ClickHouse Writer writes all required data, ClickHouse Writer performs a single-process POST Flush operation to update the data records in the ClickHouse database. You must make sure that the driver version is compatible with your ClickHouse database. ClickHouse Writer supports only the following version of the ClickHouse database driver:
 
@@ -10931,7 +11412,7 @@ f false indicates that bandwidth throttling is disabled, and a value of true ind
 
 `}` `]` `}` `}`
 
-##### Configure TSDB Writer
+##### 3.6.4.30 Configure TSDB Writer
 
 TSDB Writer can write data points to Alibaba Cloud Time Series Database (TSDB) databases. This topic describes the data types and parameters that are supported by TSDB Writer and how to configure TSDB Writer by using the code editor. Background information TSDB is a high-performance, cost-effective, stable, and reliable online database service. TSDB features high read and write performance and provides a high compression ratio for data storage. TSDB also enables the interpolation and aggregation of time series data. TSDB can be used in various systems, such as IoT device monitoring systems, energy management systems (EMSs) for enterprises, security monitoring systems for production, and electricity consumption monitoring systems. You can write millions of data points to TSDB within seconds. TSDB provides the following features: high compression ratio, cost-effective data storage, downsampling, interpolation, multi-dimensional aggregation, and visualized query results. These features help you resolve issues that are caused by a large number of data collection points on devices and frequent data collection. The issues include high storage costs and low write and query efficiency. TSDB Writer connects to a TSDB instance by sending an HTTP request and writes data points by using the `/api/put` HTTP API operation. Limits DataWorks supports only batch synchronization of TSDB data by using the code editor. TSDB Writer supports TSDB V2.4.X and later. Data types TSDB Writer can convert internal data types supported by Data Integration to data types supported by TSDB databases. The following table describes the conversion relationships.
 
@@ -11068,7 +11549,7 @@ value: a random value from 1 to 100. interval: a collection interval of 10 secon
 | 2 | 284,953 | 33.70 |
 | 3 | 385,868 | 45.71 |
 
-#### Optimize synchronization performance
+#### 3.6.5 Optimize synchronization performance
 
 This topic describes how to maximize the synchronization speed by adjusting the concurrency configuration, the difference between nodes that are configured with bandwidth throttling and those that are not, and precautions for custom resource groups. Data Integration is a one-stop platform that supports real-time and offline data synchronization between any connections in any location and in any network environment. You can synchronize 10 TB of data between various types of cloud storage and local storage each day. DataWorks provides excellent data transmission performance and supports data exchanges between more than 400 pairs of disparate connections. These features allow you to focus on the key issues on constructing big data solutions. Factors affecting the speed of data synchronization The factors that affect the speed of data synchronization are listed as follows: Source Database performance: the performance of the CPU, memory module, SSD, network, and hard disk. Concurrency: A high concurrency results in a heavy database workload. Network: the bandwidth (throughput) and speed of the network. Generally, a database with better performance can support more concurrent nodes and a larger concurrency value can be set for sync nodes. Sync node Synchronization speed: whether an upper limit is set for the synchronization speed. Concurrency: a maximum number of concurrent threads to read data from the source and write data to destination data storage within a single sync node. Nodes that are waiting for resources. Bandwidth throttling: The bandwidth of a single thread is 1,048,576 bit/s. Timeout occurs when the business is sensitive to the network speed. We recommend that you set a smaller value. Whether to create an index for query statements. Destination Performance: the performance of the CPU, memory module, SSD, network, and hard disk. Load: Excessive load in the destination database affects the write efficiency within the sync nodes. Network: the bandwidth (throughput) and speed of the network. You need to monitor and optimize the performance, load, and network of the source and destination databases. The following describes the optimal settings of a sync node. Concurrency You can configure the concurrency for a node on the codeless user interface (UI). The following is an example of how to configure the concurrency in the code editor:
 
@@ -11099,21 +11580,21 @@ Bandwidth throttling By default, bandwidth throttling is disabled. In a sync nod
 2017-01-03 07:16:54 : State: 2(WAIT) | Total: 0R 0B | Speed: 0R/s 0B/s | Error: 0R 0B | Stage: 0.0%
 ```
 
-Solution The default resource group is not exclusively used by a single user. It is used by many projects concurrently, not just two or three nodes for a single user. If such resources are insufficient after you start to run a node, the node needs to wait for resources. In this case, the node is completed 800 seconds after you start running the node, but it only takes 10 seconds for the node to be executed. To improve the synchronization speed and reduce the waiting time, we recommend that you run sync nodes during off-peak hours. Typically, most sync nodes are run between 00:00 and 03:00. Scenario 2: Accelerate nodes that synchronize data from multiple source tables to the same destination table. Example To synchronize data from tables of multiple data stores to a table, you configure multiple sync nodes to run in sequence. However, the synchronization takes a long time. Solution To launch multiple concurrent nodes that write data to the same destination database, pay attention to the following points: Ensure that the destination database can support the execution of all the concurrent nodes. You can configure a sync node that synchronizes multiple source tables to the same destination table. Alternatively, you can configure multiple nodes to run concurrently in the same workflow. If resources are insufficient, you can configure sync nodes to run during off-peak hours. Scenario 3: If no index is added when the WHERE clause is used, a full table scan slows down the data synchronization. Example SQL statement:
+The default resource group is not exclusively used by a single user. It is used by many projects concurrently, not just two or three nodes for a single user. If such resources are insufficient after you start to run a node, the node needs to wait for resources. In this case, the node is completed 800 seconds after you start running the node, but it only takes 10 seconds for the node to be executed. To improve the synchronization speed and reduce the waiting time, we recommend that you run sync nodes during off-peak hours. Typically, most sync nodes are run between 00:00 and 03:00. Scenario 2: Accelerate nodes that synchronize data from multiple source tables to the same destination table. Example To synchronize data from tables of multiple data stores to a table, you configure multiple sync nodes to run in sequence. However, the synchronization takes a long time. To launch multiple concurrent nodes that write data to the same destination database, pay attention to the following points: Ensure that the destination database can support the execution of all the concurrent nodes. You can configure a sync node that synchronizes multiple source tables to the same destination table. Alternatively, you can configure multiple nodes to run concurrently in the same workflow. If resources are insufficient, you can configure sync nodes to run during off-peak hours. Scenario 3: If no index is added when the WHERE clause is used, a full table scan slows down the data synchronization. Example SQL statement:
 
 ```
 select bid,inviter,uid,createTime from `relatives` where createTime>='2016-10-23 00:00: 00'and reateTime<'2016-10-24 00:00:00';
 ```
 
-Assume that the sync node started to run the preceding statement at 2016-10-25 11:01:24 and started to return results from 2016-10-25 11:11:05. It took a long time to finish the sync node. Cause When the WHERE clause is used for a query, the createTime column is not indexed, resulting in a full table scan. Solution We recommend that you use an indexed column or add an index to the column that you want to scan if you use the WHERE clause.
+Assume that the sync node started to run the preceding statement at 2016-10-25 11:01:24 and started to return results from 2016-10-25 11:11:05. It took a long time to finish the sync node. Cause When the WHERE clause is used for a query, the createTime column is not indexed, resulting in a full table scan. We recommend that you use an indexed column or add an index to the column that you want to scan if you use the WHERE clause.
 
-### Real-time synchronization
+### 3.7 Real-time synchronization
 
-#### Overview
+#### 3.7.1 Overview
 
 This topic describes the information about the real-time synchronization feature, including the benefits and supported data sources. This topic also describes how to use the real-time synchronization feature. How it works The real-time synchronization feature allows you to synchronize data changes of a table or all tables in a source to a destination in real time. For example, after you insert, modify, or delete the data in a source database, the real-time synchronization feature synchronizes these changes to a destination database in real time. If you perform both real-time synchronization and full synchronization for historical data, all the data in your source database is synchronized to your destination database. This way, data in the destination is consistent with data in the source in real time. Benefits Diverse data sources Multiple types of data sources are supported. You can synchronize data from different types of data sources to different destinations. The feature will soon allow you to synchronize data from a single source to multiple destinations at the same time. Synchronization solutions You can configure a synchronization solution to synchronize the full data or incremental data from a database to MaxCompute or Hologres. The feature synchronizes full data first and then continuously synchronizes incremental data to the destination database based on the synchronization solution that you configure. Diverse synchronization methods You can synchronize data from table shards, a single table in a source, or multiple tables in a source, and configure different processing rules for messages about different DDL operations of tables. Data processing You can perform data filtering and string replacement on the data from a source and synchronize the processed data to a destination. Monitoring and alerting The feature monitors service latency, failovers, dirty data, heartbeats, and failures during synchronization. The system can send you alert notifications by email, phone call, or DingTalk message. Small impact on the source The feature is optimized to have a small impact on the source. Graphical development You can perform drag-and-drop operations instead of writing code to develop real-time synchronization nodes. The feature is easy to use for beginners. Supported data sources Source: MySQL Binlog, Kafka, DataHub, LogHub, and PolarDB Destination: MaxCompute, Hologres, Kafka, and DataHub Data processing: data filtering and string replacement How to use the real-time synchronization feature You can create real-time synchronization nodes or synchronization solutions. For more information about how to create a real-time synchronization node, see Create a real-time synchronization node. For more information about how to create a synchronization solution, see Go to the Sync Solutions page.
 
-#### Plug-ins for data sources that support
+#### 3.7.2 Plug-ins for data sources that support real-time synchronization
 
 ### real-time synchronization
 
@@ -11141,7 +11622,7 @@ You cannot run a real-time synchronization node on the node configuration tab. I
 | JVM paramet ers | The Java virtual machine (JVM) memory allocated for the real-time synchronization node. If this parameter is not specified, Data Integration automatically allocates JVM memory based on your node configurations. |
 | Dirt y Dat a Records Allowed | The maximum number of dirty data records allowed. If you set this parameter to 0, no dirty data records are allowed. If you do not specify this parameter, dirty data records are allowed by default. |
 
-#### Create, configure, commit, and manage
+#### 3.7.3 Create, configure, commit, and manage real-time synchronization nodes
 
 real-time synchronization nodes DataWorks allows you to synchronize data in real time. This topic describes how to create, configure, commit, and manage real-time synchronization nodes. Create a real-time synchronization node
 1. Log on to the DataWorks console.
@@ -11204,9 +11685,9 @@ c. Click OK. To stop a running node, perform the following steps: a. Find the no
 
 c. Click OK. To modify alert settings for a node, perform the following steps: a. Select the node whose alarm settings you want to modify and click Operat ion alarm in the lower part of the page. b. In the Operat ion alarm dialog box, specify Operat ion t ype and Alarm indicat ors. DataWorks automatically modifies all the rules for the selected alert types at a time. c. Click OK.
 
-#### Reader
+#### 3.7.4 Reader
 
-##### MySQL binlogs
+##### 3.7.4.1 MySQL binlogs
 
 The MySQL binlog reader reads data from the tables of MySQL databases in real time. The MySQL binlog reader reads data from the MySQL database in real time by using Canal, which parses incremental MySQL binlogs and subscribes to data changes. Parameters
 
@@ -11388,7 +11869,7 @@ Example In the following code, a node is configured to read data from a MySQL da
 
 `}` `]` `}`
 
-##### Oracle CDC
+##### 3.7.4.2 Oracle CDC
 
 StreamX uses Change Data Capture (CDC) to synchronize data of Oracle databases in real time. This synchronization mode uses triggers on the source database to capture change data. When the CDC synchronization mode is enabled, the performance of the database may be deteriorated. Before synchronizing data from an Oracle database, you need to perform a series of operations in the database. Take data synchronization between two Oracle tables as an example. Synchronize data from the source table named synctest.trade to the destination table named cdcuser.trade_target. The source and destination tables are created by using the CREATE TABLE statement. StreamX obtains changes of the incremental data and synchronizes the changed data to the destination table. The changed incremental data that StreamX reads includes the specific information about the action types. The UPDATE statements are divided into the before image and after image. The before image contains the data before the update. The after image contains the updated data. Procedure
 1. Create a table. You can also select an existing table.
@@ -11436,7 +11917,7 @@ Sync. Configure the reader. The reader currently supports four connection types 
 
 Configure the writer. The writer currently supports three connection types including MySQL, Oracle, and DataHub. Configure the corresponding connection before configuring the writer. Specify and map the fields in the source and destination.
 
-##### DataHub
+##### 3.7.4.3 DataHub
 
 The DataHub stream reader reads data from DataHub in real time by using the DataHub SDK. The reader keeps running after it is started and reads data from DataHub when DataHub stores new data. The DataHub stream reader has the following two features: Reads data in real time. Reads data concurrently based on the number of shards in DataHub. Parameters
 
@@ -11576,7 +12057,7 @@ Example In the following code, a node is configured to read data from DataHub an
 
 `}`
 
-##### LogHub
+##### 3.7.4.4 LogHub
 
 The LogHub stream reader reads data from LogHub in real time by using the LogHub SDK. The reader reads data from LogHub topics you specified in real time and supports shard merge and split. When shard merge or split is enabled, duplicate data records may exist. However, data missing is avoided. Parameters
 
@@ -11699,7 +12180,7 @@ Example In the following code, a node is configured to read data from LogHub and
 
 `}` `]` `}`
 
-##### Kafka
+##### 3.7.4.5 Kafka
 
 Configure an input node of the Kafka type Drag Kaf ka under Reader to the canvas. Click the node and then configure the node in the Node Set t ings dialog box that appears.
 
@@ -11732,7 +12213,7 @@ utomatically discovered by the system.
 
 `}` `}`
 
-##### Configure PolarDB Reader
+##### 3.7.4.6 Configure PolarDB Reader
 
 PolarDB Reader can read data only from PolarDB for MySQL databases. It cannot read data from PolarDB for PostgreSQL databases. Procedure
 1. Log on to the DataWorks console.
@@ -11754,9 +12235,9 @@ to the canvas on the right.
 7. Click the
 icon in the toolbar.
 
-#### Writer
+#### 3.7.5 Writer
 
-##### Configure MaxCompute Writer
+##### 3.7.5.1 Configure MaxCompute Writer
 
 MaxCompute offers a comprehensive data import solution to support fast computing for large amounts of data. Prerequisites A reader or conversion node is configured. Procedure
 1. Log on to the DataWorks console.
@@ -11788,7 +12269,7 @@ If you want to create a table, click One-Click t able creat ion next to Table. I
 7. Click the
 icon in the toolbar.
 
-##### Configure Hologres Writer
+##### 3.7.5.2 Configure Hologres Writer
 
 You can build a real-time data warehouse by using the real-time write capability of Hologres. Prerequisites A reader or conversion node is configured. Procedure
 1. Log on to the DataWorks console.
@@ -11819,7 +12300,7 @@ section to the canvas on the right. Then, draw a line to connect it to the confi
 7. Click the
 icon in the toolbar.
 
-##### DataHub
+##### 3.7.5.3 DataHub
 
 Currently, the writer supports the DataHub connection. You need to configure the corresponding connection before configuring the writer. DataHub is a platform designed to process streaming data. You can publish and subscribe applications to streaming data in DataHub and distribute the data to other platforms. This allows you to easily analyze streaming data and build applications based on the streaming data. DataHub Writer writes data to DataHub by using the DataHub SDK for Java. The SDK version is as follows:
 
@@ -11991,7 +12472,7 @@ Example `{`
 
 `}` `]` `}`
 
-##### Kafka
+##### 3.7.5.4 Kafka
 
 Create a real-time sync node
 1. Log on to the DataWorks console.
@@ -12034,9 +12515,9 @@ Take the following Kafka configuration script as an example.
 
 `}`
 
-#### Transform
+#### 3.7.6 Transform
 
-##### Data filter
+##### 3.7.6.1 Data filter
 
 The data filter plug-in is used to filter data. Parameters
 
@@ -12150,7 +12631,7 @@ Example `{`
 
 `]` `}`
 
-##### String replacement
+##### 3.7.6.2 String replacement
 
 The string replacement plug-in is used to replace the field values of the String type.
 
@@ -12162,9 +12643,9 @@ The string replacement plug-in is used to replace the field values of the String
 | New St ring | The string used to replace the original string. |
 | Case Sensit ive | Specifies whether the query of the original string is case-sensitive. |
 
-### Data synchronization solutions
+### 3.8 Data synchronization solutions
 
-#### Go to the Sync Solutions page
+#### 3.8.1 Go to the Sync Solutions page
 
 The Data Integration service of DataWorks allows you to create and configure a synchronization solution to synchronize data from a source to a destination in real time. You can use a synchronization solution to synchronize multiple tables at a time or synchronize both full and incremental data. If you want to synchronize both full and incremental data, you can synchronize the incremental data after the full data is synchronized. Procedure
 1. Log on to the DataWorks console.
@@ -12173,7 +12654,7 @@ icon in the upper-left corner and choose All Product s > Dat a Aggregat ion > Da
 3. In the left-side navigation pane, click Sync Solut ions. The Solut ion T ask list page appears.
 You can create synchronization solutions and view the details and statuses of the created synchronization solutions on this page. A synchronization solution has the following states: Not running: The synchronization solution is not run. You can click St art execut ion in the Operation column that corresponds to the synchronization solution to run the synchronization solution. You can click T ask conf igurat ion in the Operation column that corresponds to a synchronization solution in the Not running state to edit the synchronization solution. If you click Task configuration in the Operation column that corresponds to a synchronization solution in another state, you can only view the information about the synchronization solution. Running: The synchronization solution is running and cannot be terminated. You must wait until the synchronization solution is completed. Except ion: An error occurred during the running of the synchronization solution. You can click Execut ion det ails in the Operation column that corresponds to the synchronization solution to troubleshoot the error. Success: The synchronization solution is completed. You can click Execut ion det ails in the Operation column that corresponds to the synchronization solution to view the running results of the synchronization solution.
 
-#### Synchronize data to Hologres in real time
+#### 3.8.2 Synchronize data to Hologres in real time
 
 You can create and configure a data synchronization solution to synchronize data in a specified data source to Hologres in real time. This topic describes how to synchronize data to Hologres in real time. Procedure
 1. Go to the Solut ion T ask list page.
@@ -12207,7 +12688,7 @@ i. Specify T arget Hologres dat a source and Schema. Writ e Hologres policy is s
 8. On the Solut ion T ask list page, find the newly created synchronization solution and click St art
 execut ion in the Operation column. After the running of the synchronization solution is successful, you can perform the following operations on the synchronization solution: Click T ask conf igurat ion in the Operation column to view the information about or edit the synchronization solution. You can click T ask conf igurat ion in the Operation column that corresponds to the data synchronization solution in the Not running state to edit the data synchronization solution. If you click Task configuration in the Operation column of a synchronization solution in another state, you can only view information about the synchronization solution. Click Execut ion det ails in the Operation column to view the points in time at which the synchronization solution was started and ended and the status of each node. Click Delet e in the Operation column to delete the synchronization solution. In the Delet e message, click Conf irm. After you click Confirm, only the configuration record of the data synchronization solution is deleted. The generated synchronization nodes and tables are not affected.
 
-#### Synchronize data to MaxCompute in real
+#### 3.8.3 Synchronize data to MaxCompute in real time
 
 time You can create a synchronization solution to synchronize data from a specified data source to MaxCompute in real time. Procedure
 1. Go to the Solut ion T ask list page.
@@ -12243,13 +12724,13 @@ i. Select a data source from the T arget MaxComput e dat a source drop-down list
 8. On the Solut ion T ask list page, find the newly created synchronization solution and click St art
 execut ion in the Operation column. After the synchronization solution is run, you can perform the following operations on the synchronization solution: Click T ask conf igurat ion in the Operation column to view information about or configure the synchronization solution. You can configure a synchronization solution only when it is in the Not running state. If you click Task configuration in the Operation column of a synchronization solution that is in another state, you can only view information about the synchronization solution. Click Execut ion det ails in the Operation column to view the time at which the synchronization solution was started and ended and the status of each node. Click Delet e in the Operation column to delete the synchronization solution. In the Delet e message, click Conf irm. After you click Confirm, only the configuration record of the data synchronization solution is deleted. The generated synchronization nodes and tables are not affected.
 
-### Resource groups
+### 3.9 Resource groups
 
-#### Overview
+#### 3.9.1 Overview
 
 This topic introduces the definition of resource groups. It also describes how the connectivity and performance of resource groups affect data synchronization. Definition A resource group is a collection of computing resources on which synchronization nodes of Data Integration are run. In most cases, a resource group is one or more servers that consist of CPU, memory, and network resources. In the process of running a synchronization node, the resource group pulls data from the source and pushes the data to the destination. Connectivity and performance When you use resource groups, you must pay attention to their connectivity and performance. Connectivity To ensure that data can be synchronized, a resource group must be connected to the source and destination. Connectivity is the most important factor that affects data synchronization. Data Integration cannot build networks. Before you use Data Integration to synchronize data, you must make sure that the resource group is connected to the data sources. If the resource group is disconnected from the data sources, synchronization nodes cannot be run. Performance Synchronization nodes consume the CPU, memory, and network resources on the servers where the nodes are run. Insufficient resources may lead to various issues. For example, the nodes fail to be started, wait for resources for a long period of time after startup, transmit data at a low rate, or fail to generate data. To ensure the smooth running of synchronization nodes, you must allocate adequate resources for them.
 
-#### Shared resource groups
+#### 3.9.2 Shared resource groups
 
 Data Integration of DataWorks provides shared resource groups for you to create and run synchronization nodes. Shared resource groups for Data Integration are created and maintained by Data Integration. Shared resource groups compose a public resource pool. Nodes that use resources in the public resource pool may not be run as scheduled due to insufficient resources. We recommend that you prepare sufficient resources to ensure the efficient running of synchronization nodes.
 
@@ -12257,7 +12738,7 @@ Data Integration of DataWorks provides shared resource groups for you to create 
 |---|---|
 |   | llel nodes × 512 MB |
 
-#### Create a custom resource group for Data
+#### 3.9.3 Create a custom resource group for Data Integration
 
 Integration This topic describes how to create a custom resource group for Data Integration and select a resource group for Data Integration to run a batch synchronization node. Prerequisites An Elastic Compute Service (ECS) instance is available. Context If the shared resource groups of DataWorks do not support your data sources or you want to speed up data transmission, you can create custom resource groups to run your synchronization nodes. A workspace administrator can create or modify custom resource groups on the Cust om Resource Groups page of Data Integration. The admin permission is required to access some files on the ECS instance that hosts a custom resource group. For example, the admin permission is required to call shell or Structured Query Language (SQL) files on the ECS instance when you write a shell script for a node. Resource groups for scheduling are used to run nodes. These resource groups have limited resources and are not suitable for computing nodes. Therefore, we recommend that you do not create custom resource groups on the ECS instances of a resource group for scheduling. MaxCompute can process large amounts of data. We recommend that you use MaxCompute for big data computing. Custom resource groups for Data Integration are subject to the following limits: The difference between the time of the ECS instance where a custom resource group for Data Integration resides and the current Internet time must be within 2 minutes. Otherwise, service requests may time out, and nodes may fail to be run on the custom resource group for Data Integration. You can add only one custom resource group for Data Integration on an ECS instance. You can select only one network type for each custom resource group for Data Integration. Custom resource groups added on the Cust om Resource Groups page of Data Integration can run synchronization nodes created only in the current workspace. Custom resource groups for Data Integration that you added on the Custom Resource Groups page cannot run synchronization nodes in a manually triggered workflow. If the timeout error message `response code is not 200` exists in the log file of alisatasknode, the custom resource group for Data Integration was not accessible within the specific period in time. The ECS instance that hosts the custom resource group for Data Integration can continue to work if the exception persists for no more than 10 minutes. To find the exception details, view the heartbeat.log file in the `/home/admin/alisatasknode/logs` directory. Create a custom resource group for Data Integration
 1. Go to the Dat a Int egrat ion page.
@@ -12301,13 +12782,13 @@ on your business requirements.
 6. On the configuration tab of the node, click the
 icon in the top toolbar.
 
-### Full-database migration
+### 3.10 Full-database migration
 
-#### Overview
+#### 3.10.1 Overview
 
 This section describes the full-database migration feature in terms of its functions and limits. Full-database migration is an easy-to-use tool that helps you to improve cost-efficiency. It can quickly upload all the tables in a MySQL database to MaxCompute at a time, saving time that is spent on creating batch tasks for initial data migration to the cloud. For example, if a database contains 100 tables, you must configure 100 data synchronization tasks in a traditional way. With the full-database migration, you can upload all the tables at a time. However, an upload failure might occur due to the issues that involve the principles of designing database tables. Task generation rules After the configuration is completed, MaxCompute tables are created and data synchronization tasks are generated based on the selected tables to be synchronized. The table names, field names, and field types of the MaxCompute tables are generated according to the advanced settings. If no advanced settings are configured, the structure of MaxCompute tables is identical to that of MySQL tables. The partition of these tables is pt, and its format is yyyymmdd. The generated data synchronization tasks are daily scheduled tasks and run automatically on the early morning of the next day. The typical transmission rate is 1 Mbit/s, but it varies depending on the synchronization method and concurrency configurations. T o cust omize a dat a synchronizat ion t ask, locat e t he t ask by choosing clone_dat abase > Dat a Source Name > mysql2odps_t able name, and then specify its settings. We recommend that you perform smoke testing on a data synchronization task on the day when it is generated.T o perf orm smoke t est ing, choose Administ rat ion Cent er > T ask Management > project _et l_st art > Upload Dat abase > Dat a Source Name, find the synchronization task, right-click the task, and then test the task. Limits Full-database migration has the following limits due to the issues that involve the principles of designing database tables. Currently, only the full-database migration from a MySQL data source to MaxCompute is supported. We are working on support for full-database migration from a Hadoop or Hive data source to Oracle. Only the daily incremental and daily full upload modes are available. If you want to synchronize historical data at a time, this feature cannot meet your needs. We recommend that: You configure daily tasks instead of synchronizing historical data at a time. You trace the historical data with the provided retrospective data import feature. This eliminates the need to run temporary SQL tasks to split data after all the historical data is synchronized. To synchronize historical data at a time, configure a task on the task development page and click Run. Then, data is converted by using SQL statements. They are both one-time operations. If your daily incremental upload task uses a special business logic and cannot be identified by a date field, this feature cannot meet your needs. We provide the following suggestions: The incremental data upload can be achieved by using two methods: binlog provided by the DTS product and the date field for data changes provided by databases. Currently, Data Integration supports the second method. Therefore, your database must contain the date field for data changes. The system determines whether your data is changed on the same day as the business date by using this field. If yes, all the changed data is synchronized. To facilitate the incremental data uploading, we recommend that you include the gmt_create and gmt_modify fields when creating any database tables. Additionally, you can set the id field as the primary key to improve efficiency. Full-database migration supports batch upload and full upload modes. Batch upload is configured with time intervals. Currently, the connection pool protection feature for data sources is not supported, but will be available later. To prevent overloads on the database, the full-database migration feature provides the batch upload mode. This mode enables you to upload tables in batches at a specified time interval and prevents compromised service functionality. We provide the following suggestions: If you have master and slave databases, we recommend that you synchronize the data of the slave database. In a batch upload task, each table has a database connection with a maximum transmission rate of 1 Mbit/s. For example, if you run a synchronization task for 100 tables at a time, 100 database connections are established. We recommend that you specify proper concurrency settings based on your business needs. If you have special requirements for transmission efficiency, this feature cannot meet your needs. The maximum transmission of each generated tasks is 1 Mbit/s. Only the mapping of all table names, field names, and field types are supported. During the full-database migration process, MaxCompute tables are created automatically, where the partition field is pt, the field type is string, and the format is yyyymmdd. When you select tables for synchronization, all fields must be synchronized and none of these fields can be edited.
 
-#### Migrate a MySQL database
+#### 3.10.2 Migrate a MySQL database
 
 This topic describes how to migrate a MySQL database to MaxCompute. The database migration feature improves efficiency and reduces costs. It can quickly upload all tables in a MySQL database to MaxCompute. For more information, see Overview. Procedure
 1. Log on to the DataWorks console.
@@ -12340,7 +12821,7 @@ Select data upload in batches to protect the MySQL database from being overloade
 10. Find table a1 and click View Node to view the migration results.
 You have configured a node for migrating a MySQL connection named clone_database to MaxCompute. This node is run based on the specified schedule, daily by default. You can also create retroactive node instances to transmit historical data. The database migration feature of Dat a Int egrat ion significantly simplifies the initial configurations for migrating your data to the cloud and reduces data migration costs. You can view the migration success logs of table a1.
 
-#### Migrate Oracle databases
+#### 3.10.3 Migrate Oracle databases
 
 This topic describes how to migrate an Oracle database to MaxCompute. The database migration feature improves efficiency and reduces costs. It can quickly upload all tables in an Oracle database to MaxCompute. For more information, see Overview. Procedure
 1. Log on to the DataWorks console.
@@ -12366,9 +12847,9 @@ If a date column exists in your table, you can select incremental migration and 
 10. Find a related table and click View Node to view the node details.
 You have configured a node for migrating an Oracle connection named clone_databae to MaxCompute. This node is run based on the specified schedule, daily by default. You can also create retroactive node instances to transmit historical data. The database migration feature of Dat a Int egrat ion significantly simplifies the initial configurations for migrating your data to the cloud and reduces data migration costs.
 
-## Data Analytics
+## 4 Data Analytics
 
-### Solution
+### 4.1 Solution
 
 The data analytics mode of DataWorks is upgraded so that you can group multiple workflows in a solution of a workspace. Overview DataWorks upgrades the data analytics mode to organize various types of nodes based on the business category. You can organize workflows to analyze data by business. By using the data analytics mode that involves the workspace, solut ion, and workf low, DataWorks defines a new development process and improves user experience. A workspace is the basic organizational unit that manages the development and O&M permissions of users. The code of all nodes in a workspace can be collaboratively developed and managed by workspace members. A solution contains one or more workflows. It has the following advantages: A solution can contain multiple workflows. A workflow can be added to multiple solutions. All solutions in a workspace can be collaboratively developed and managed by workspace members. A workflow is an abstract entity of business that enables you to develop data analytics code from a business perspective. A workflow can be added to multiple solutions. It has the following advantages: Workflows facilitate business-oriented code development. Nodes in a workflow are organized by type. A hierarchical directory structure is supported. We recommend that you create a maximum of four levels of sub-directories. To create a sub-directory, right-click the target node type and select Creat e Folder. You can view and optimize each workflow from a business perspective. You can view each workflow on a dashboard to develop code with improved efficiency. You can deploy and manage each workflow as a whole. Develop a solution If you double-click a solution in the left-side navigation pane, the left-side navigation pane only displays workflows in the solution. This prevents the development process from being affected by the code that is not related to the current solution in the workspace. To develop a solution, perform the following steps:
 1. Log on to the DataWorks console.
@@ -12381,7 +12862,7 @@ dashboard that appears, you can view the selected workflows or modify the soluti
 5. Move the pointer over the solution name. The
 and icons appear. Click the icon. The Deploy page appears. You can view the nodes to be deployed in the current solution. This icon is available only when the workspace is in standard mode. Click the icon to go to the Cycle Inst ance page under Cycle T ask Maint enance in Operat ion Cent er. You can view recurring instances of all nodes in the current solution. In the left-side navigation pane, double-click the created solution. All the created workflows in the solution appear. You can click a workflow name to show the created nodes in it and perform operations on the nodes and the workflow. A workflow can be added to multiple solutions. After you develop a solution and add a workflow to the solution, other users can edit the workflow you referenced in their solutions for collaborative development.
 
-### SQL coding guidelines and
+### 4.2 SQL coding guidelines and specifications
 
 specifications This topic describes the basic guidelines and detailed specifications of SQL coding. SQL coding guidelines The SQL coding guidelines are as follows: Make sure that the code is comprehensive. Make sure that code lines are clear, neat, well-organized, and structured. Consider the optimal execution speed during SQL coding. Provide comments whenever necessary to enhance the readability of your code. The guidelines impose non-mandatory constraints on the coding behavior of developers. In practice, understandable deviations are allowed when developers obey general rules. Use lowercase letters for all keywords and reserved words. Keywords and reserved words include select, from, where, and, or, union, insert, delete, group, having, and count. In addition to keywords and reserved words, other code such as field names and table alias must be in lowercase. A unit of indentation contains four spaces. All indentations must be the integral multiple of an indentation unit. The code is aligned according to its hierarchy. The `select *` operation is prohibited. The column name must be specified for all operations. Matching opening and closing parentheses must be placed in the same column. SQL coding specifications The SQL coding specifications are as follows: Code header The code header contains information such as the subject, description, author, and date. Reserve a line for change log and a title line so that later users can add change records. Each line can contain a maximum of 80 characters. The template is as follows:
 
@@ -12391,9 +12872,9 @@ specifications This topic describes the basic guidelines and detailed specificat
 
 Field arrangement Use a line for each field that is selected for the SELECT statement. Separate the first field from SELECT by one indentation unit. Enter another field name in a separate line after two indentation units. Place the comma (,) between two fields right before the second field. Place the AS statement in the same line as the corresponding field. We recommend that you keep the AS statements of multiple fields in the same column. Clause arrangement for an INSERT statement Arrange the clauses of an INSERT statement in the same line. Clause arrangement for a SELECT statement The clauses such as FROM, WHERE, GROUP BY, HAVING, ORDER BY, JOIN, and UNION in a SELECT statement must be arranged according to the following requirements: Use a line for each clause. Make sure that the clauses are left aligned with the SELECT statement. Add two indentation units between the first word and the other code in a clause. Keep the logical operators such as AND and OR in a WHERE clause left aligned with WHERE. If the length of a clause name exceeds two indentation units such as ORDER BY and GROUP BY, add a space between the clause name and its content. Spacing before and after operators Keep one space before and one space after the arithmetic and logical operators and keep the operators in the same line, unless the clause contains more than 80 characters. CASE statement The CASE statement can be used to determine the value of a field in a SELECT statement. Rules for writing CASE statements are as follows: Place the WHEN clause in the same line as the CASE statement, with one indentation unit between them. Keep a WHEN clause in one line whenever possible. If the statement is long, line breaks can be made. A CASE statement must contain an ELSE clause. The ELSE clause must be aligned with the WHEN clause. Nested query Nested queries are often used in extract-transform-load (ETL) development of data warehouse systems. The following figure shows an example of a nested query. Table alias Once an alias is defined for a table in a SELECT statement, use the alias whenever you reference the table in the statement. Therefore, you must specify an alias for each table. We recommend that you define the table aliases with simple characters, such as a, b, c, and d in sequence, and avoid using keywords. In the nested query, levels 1 to 4 of SQL statements are named part, segment, unit, and detail, which are abbreviated as P, S, U, and D. You can also use a, b, c, and d to represent levels 1 to 4. To differentiate multiple clauses at the same level, add numbers such as 1, 2, 3, and 4 next to the letters. Add comments to the table aliases as needed. SQL comments Add a comment for each SQL statement. Use a separate line for the comment of each SQL statement and place the comment in front of the SQL statement. Place the comment of a field right after the field. Add comments for clauses that are difficult to understand. Add comments for important code. If a statement is long, we recommend that you add comments based on the purposes of each segment. The description for a constant or variable is required. The comment on the valid value range is optional.
 
-### GUI elements
+### 4.3 GUI elements
 
-#### Overview
+#### 4.3.1 Overview
 
 This topic describes the graphical user interface (GUI) elements on the DataStudio page and the configuration tab of an ODPS SQL node. Log on to the DataWorks console. The Dat a Analyt ics page appears. You can double-click a created node to perform operations on the node configuration tab. The following table describes the GUI elements.
 
@@ -12427,7 +12908,7 @@ This topic describes the graphical user interface (GUI) elements on the DataStud
 | 23 | Versions t ab | Click the tab to view the committed and deployed versions of the current node. |
 | 24 | Code St ruct ure t ab | Click the tab to view the code structure of the current node. If the code is excessively long, you can quickly find a code segment based on the key information in the structure. |
 
-#### Perform batch operations
+#### 4.3.2 Perform batch operations
 
 DataWorks allows you to perform operations on multiple nodes, resources, or functions at a time. For example, you can change owners. This topic describes how to perform batch operations. Procedure
 1. Log on to the DataWorks console. Go to the Dat aSt udio page. In the left-side navigation pane,
@@ -12435,7 +12916,7 @@ click the Bat ch Operat ion icon in the top toolbar.
 2. Modify multiple DataWorks objects at a time.
 i. On the Bat ch Operat ion-Dat a Development tab, you can perform operations on multiple nodes, resources, or functions at a time on the Node, Resources, or Funct ion tab. ii. You can filter data by conditions such as Node T ype and Workf low in the upper part of the tab. iii. If the search results are displayed on the tab, you can select multiple nodes, resources, or functions that you want to modify. iv. After that, click a button in the lower part to perform the operation on the selected objects as needed.
 
-#### Workflow Parameters
+#### 4.3.3 Workflow Parameters
 
 On the Workflow Parameters tab, you can assign a value to a variable or replace the value of a parameter for all nodes in the current workflow. This topic describes how to configure a workflow parameter by assuming that you want to replace the value of the ReplaceMe parameter with ReplaceMe123 in a manually triggered workflow. Limits In manually triggered workflows, ODPS SQL nodes, Shell nodes, and sync nodes support global parameters. The format for specifying a global parameter varies based on the node type. For example, a global workflow parameter is specified as x=y1. To configure the workflow parameter for an ODPS SQL node, double-click the target node and click the General tab in the right-side navigation pane. On the General tab, enter x=aaa in the Arguments field. When the node is run, x=aaa specified in the Arguments field is replaced with x=y1. You can use $x to reference the workflow parameter in the code. To configure the workflow parameter for a Shell node, double-click the target node and click the General tab in the right-side navigation pane. On the General tab, enter $x in the Arguments field. When the node is run, x=aaa specified in the Arguments field is replaced with y1. You can use $1 to reference the workflow parameter in the code. To configure the workflow parameter for a sync node, double-click the target node and click the General tab in the right-side navigation pane. On the General tab, enter -p"-Dx=aaa" in the Arguments field. When the node is run, x=aaa specified in the Arguments field is replaced with -p"- Dx=y1. You can use $x to reference the workflow parameter in the code. In auto triggered workflows, only ODPS SQL nodes support global parameters. Parameter names and values are case-sensitive. Configure a workflow parameter
 1. Log on to the DataWorks console.
@@ -12467,7 +12948,7 @@ p"ReplaceMe=abc" in the Argument s field. Make sure that you enter the parameter
 4. Click
 in the toolbar. Run the workflow to view the result On the configuration tab of the workflow, click in the toolbar. In the Warning dialog box, click Settings. In the Runt ime Paramet ers dialog box, set Arguments to ReplaceMe. The value of the workflow parameter is replaced when the workflow is run. You can use the following methods to view the value assigned to the workflow parameter for different types of nodes: Right-click the ODPS SQL node and select View Log. Then, you can view the value assigned to the workflow parameter for the ODPS SQL node. Right-click the Shell node and select View Log. Then, you can view the value assigned to the workflow parameter for the Shell node. Right-click the sync node and select View Log. Then, you can view the value assigned to the workflow parameter for the sync node. If you have not assigned a value to a workflow parameter on the Workf low Paramet ers tab for a manually triggered workflow, you must assign a value to the workflow parameter every time you run the workflow in the production environment.
 
-#### Lineage
+#### 4.3.4 Lineage
 
 The Lineage tab displays the relationships between a node and other nodes. You can view the node dependencies and the lineage parsed from the code of the node. Go to the Lineage tab
 1. Log on to the DataWorks console.
@@ -12501,7 +12982,7 @@ FROM (
 
 The following figure shows the lineage parsed from the preceding SQL statements. The results queried from the ods_log_info_d and ods_user_info_d tables are joined and then inserted into the dw_user_info_all_d table.
 
-#### Versions
+#### 4.3.5 Versions
 
 The Versions tab displays all committed and deployed versions of a node. You can view the historical versions and information about each version, including the user who committed the version, time when the version was committed, change type, status, and description. Only a committed node has the version information. Every time a node is committed, a version is generated and added to the Versions tab.
 1. Log on to the DataWorks console.
@@ -12524,7 +13005,7 @@ pane. In the Versions pane, view the committed and deployed versions of the curr
 | Act ions | The actions that you can perform on the version. Two actions are available: View Code and Roll Back. View Code: Click the button to view the code of the current version. Roll Back: Click the button to roll back the node from the current version to the required version. After you roll back a node, you must commit and deploy it again. |
 | Compare | Click the button to compare the code and properties between two selected versions. Click View Det ails. On the details page that appears, you can view the changes in code and properties. Not e You can only compare two versions and cannot compare one or more than two versions at a time. |
 
-#### Code Structure
+#### 4.3.6 Code Structure
 
 The Code Structure tab displays the SQL code structure parsed from the code of a node. The code structure helps you view and modify the code.
 1. Log on to the DataWorks console.
@@ -12558,9 +13039,9 @@ FROM (
 
 The following figure shows the code structure parsed from the preceding SQL statement. Move the pointer over a circle to view the description. Source t able: the table to be queried. Filt er: the condition for filtering the partitions in the table to be queried. First int ermediat e t able (view): the temporary table that stores the query results. Join: the operation for joining the query results. Second int ermediat e t able (view): the temporary table that stores the results of the JOIN operation. This temporary table can be stored for three days. After three days, this table is automatically deleted. Dest inat ion t able (insert ): the destination table to which the query results are inserted by using an INSERT OVERWRIT E statement.
 
-### Business flows
+### 4.4 Business flows
 
-#### Overview
+#### 4.4.1 Overview
 
 DataWorks organizes different types of nodes in a workflow by business category. This allows you to develop code by business. DataWorks provides you with a dashboard for different types of nodes in each workflow. DataWorks also provides tools for you to optimize and manage nodes in each workflow. This promotes easy and intelligent development and management. Workflow structure A workspace supports multiple types of compute engines and multiple workflows. A workflow is a collection of various types of nodes that are closely associated with each other. DataWorks automatically generates a DAG so that you can view the workflow. A workflow supports the following types of nodes: data integration, data analytics, table, resource, function, and algorithm. Each type of node has an independent folder. You can also create subfolders in each folder. To facilitate management, we recommend that you create a maximum of four levels of subfolders. If more than four subfolder levels are required, your workflow is too complex. We recommend that you split the workflow into two or more workflows and add the split workflows to one solution. Create a workflow
 1. Log on to the DataWorks console.
@@ -12569,7 +13050,7 @@ DataWorks organizes different types of nodes in a workflow by business category.
 4. In the Creat e Workf low dialog box, set Workf low Name and Descript ion.
 Not ice The name of the workflow, which cannot exceed 128 characters in length.
 5. Click Creat e.
-Workflow nodes A workflow consists of the following types of nodes: Dat a int egrat ion Click the target workflow and double-click Dat a Int egrat ion to view all data integration nodes of the workflow. MaxComput e The MaxCompute engine supports various data analytics nodes, such as ODPS SQL, SQL Snippet, ODPS Spark, PyODPS, ODPS Script, and ODPS MR nodes. You can also view and create tables, resources, and functions. Dat a analyt ics Right-click Data Analytics under MaxComput e in the target workflow and select Create to create a data analytics node of a specific type. T able Click the target workflow and choose Creat e > T able under MaxComput e to create a table. You can also view all the tables that are created in the current MaxCompute project. Resource Click the target workflow, choose Creat e > Resource under MaxComput e, and then click a specific resource type to create a resource. You can also view all the resources that are created in the current MaxCompute project. Funct ion Click the target workflow and choose Creat e > Funct ion under MaxComput e to create a function. You can also view all the functions that are created in the current MaxCompute project. EMR The E-MapReduce compute engine supports the following types of data analytics nodes: EMR Hive, EMR MR, EMR Spark, and EMR Spark SQL. You can also view and create E-MapReduce resources. The EMR folder is available only after you create an E-MapReduce compute engine on the Project Management page. Dat a analyt ics Click the target workflow, right-click Dat a Analyt ics under EMR, and then select Create to create a data analytics node of a specific type. Resource Click the target workflow, right-click Resource under EMR, and then select Create to create a resource of a specific type. You can also view all the resources that are created in the current E- MapReduce compute engine. Algorit hm Click the target workflow, right-click Algorit hm, and then choose Create > PAI Experiment to create a PAI Experiment node. You can also view all the PAI Experiment nodes that are created in the current workflow. General Click the target workflow, right-click General, and then select Create to create a node of a specific type. View all workflows On the Dat a Analyt ics tab, right-click Business Flow and select All Workf lows to view all workflows that are created in the current workspace. Click a workflow. The dashboard of the workflow appears. View the dashboard for each node type DataWorks provides a dashboard for each type of nodes in a workflow. On the dashboard, each node is presented by a card that offers operation and optimization suggestions, so that you can intelligently manage nodes. For example, the card of each data analytics node provides two indicators to show whether baselinebased monitoring and event notification are enabled for the node. This allows you to understand the status of each node. You can double-click a folder in a workflow to view the dashboard of the selected node type. Commit a workflow
+Workflow nodes A workflow consists of the following types of nodes: Dat a int egrat ion Click the target workflow and double-click Dat a Int egrat ion to view all data integration nodes of the workflow. MaxComput e The MaxCompute engine supports various data analytics nodes, such as ODPS SQL, SQL Snippet, ODPS Spark, PyODPS, ODPS Script, and ODPS MR nodes. You can also view and create tables, resources, and functions. Dat a analyt ics Right-click Data Analytics under MaxComput e in the target workflow and select Create to create a data analytics node of a specific type. T able Click the target workflow and choose Creat e > T able under MaxComput e to create a table. You can also view all the tables that are created in the current MaxCompute project. Resource Click the target workflow, choose Creat e > Resource under MaxComput e, and then click a specific resource type to create a resource. You can also view all the resources that are created in the current MaxCompute project. Funct ion Click the target workflow and choose Creat e > Funct ion under MaxComput e to create a function. You can also view all the functions that are created in the current MaxCompute project. The E-MapReduce compute engine supports the following types of data analytics nodes: EMR Hive, EMR MR, EMR Spark, and EMR Spark SQL. You can also view and create E-MapReduce resources. The EMR folder is available only after you create an E-MapReduce compute engine on the Project Management page. Dat a analyt ics Click the target workflow, right-click Dat a Analyt ics under EMR, and then select Create to create a data analytics node of a specific type. Resource Click the target workflow, right-click Resource under EMR, and then select Create to create a resource of a specific type. You can also view all the resources that are created in the current E- MapReduce compute engine. Algorit hm Click the target workflow, right-click Algorit hm, and then choose Create > PAI Experiment to create a PAI Experiment node. You can also view all the PAI Experiment nodes that are created in the current workflow. Click the target workflow, right-click General, and then select Create to create a node of a specific type. View all workflows On the Dat a Analyt ics tab, right-click Business Flow and select All Workf lows to view all workflows that are created in the current workspace. Click a workflow. The dashboard of the workflow appears. View the dashboard for each node type DataWorks provides a dashboard for each type of nodes in a workflow. On the dashboard, each node is presented by a card that offers operation and optimization suggestions, so that you can intelligently manage nodes. For example, the card of each data analytics node provides two indicators to show whether baselinebased monitoring and event notification are enabled for the node. This allows you to understand the status of each node. You can double-click a folder in a workflow to view the dashboard of the selected node type. Commit a workflow
 1. Go to the dashboard of a workflow and click
 in the toolbar.
 2. In the Commit dialog box, select the nodes to be committed, set Descript ion, and then select
@@ -12577,7 +13058,7 @@ Ignore I/O Inconsist ency Alert s.
 3. Click Commit .
 If a node has been committed but the node code is not modified, the node cannot be selected again. In this case, you can enter your comments on the node and click Commit . The property changes of the node are automatically committed.
 
-#### Create and reference a node group
+#### 4.4.2 Create and reference a node group
 
 This topic describes how to create and reference a node group. Context You can group several nodes that are frequently reused together as a node group. The configuration of each node remains unchanged after the nodes are added to a node group. Later, you can directly reference the node group to reuse these nodes. Create a node group
 1. Log on to the DataWorks console.
@@ -12597,11 +13078,11 @@ Then, you can view the created node group in the Node Group section.
 
 If the created node group contains a PAI Experiment node, create a PAI experiment in another workflow to reference the node group. If the created node group contains a branch node, add digits to the value in the Associat ed Node Out put parameter. Reference a node group You can directly drag a node group to another workflow to reference the node group in the workflow. The dependencies among the nodes in the node group remain unchanged. You can run the workflow or commit and deploy the workflow. Then, go to Operat ion Cent er to view the running result.
 
-### Node types
+### 4.5 Node types
 
-#### Data Integration
+#### 4.5.1 Data Integration
 
-##### Create a batch sync node
+##### 4.5.1.1 Create a batch sync node
 
 Batch sync nodes support various types of data stores, including MaxCompute, MySQL, DRDS, SQL Server, PostgreSQL, Oracle, MongoDB, Db2, Table Store, OSS, FTP, HBase, LogHub, HDFS, and Stream. Context When you enter a table name, a drop-down list appears, displaying all matched tables. Only exact match is supported. Therefore, you must enter a complete table name. Tables are labeled as unsupported if they are not supported by batch sync nodes. If you move the pointer over a table in the list, the details of the table appear, including the database, IP address, and owner of the table. After you select a table, the column information is automatically entered. You can add, move, and delete columns. Procedure
 1. Log on to the DataWorks console.
@@ -12617,9 +13098,9 @@ navigation pane. On the Properties tab, set parameters in the Schedule section. 
 Not ice You must set Rerun and Parent Nodes before you can commit the node. i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the batch sync node. For more information, see Publish nodes.
 8. Test the batch sync node. For more information, see Manage auto triggered nodes.
 
-#### MaxCompute
+#### 4.5.2 MaxCompute
 
-##### Create an ODPS SQL node
+##### 4.5.2.1 Create an ODPS SQL node
 
 Using the SQL-like syntax, ODPS SQL nodes can process terabytes of data in distributed processing scenarios that do not require real-time processing. Context Generally, it takes a long time from preparing to committing a job. You can use ODPS SQL nodes to process thousands to tens of thousands of transactions. ODPS SQL nodes are online analytical processing (OLAP) applications designed to deal with large amounts of data. Limits You cannot use SET statements, USE statements, or SQL alias statements independently in the code of an ODPS SQL node. They must be executed together with other SQL statements. For example, you can use a SET statement together with a CREATE TABLE statement.
 
@@ -12722,7 +13203,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 Not ice You must set Rerun and Parent Nodes before you can commit the node. i. Click in the toolbar. ii. In the Commit Node dialog box, ignore the alert on mismatch between the input and output that you set with those detected in code lineage analysis, enter your comments in the Descript ion field, and then select I conf irm t o proceed wit h t he commission. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the ODPS SQL node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create an SQL Snippet node
+##### 4.5.2.2 Create an SQL Snippet node
 
 SQL script templates are SQL templates that involve multiple input and output parameters. Each SQL script template involves one or more source tables. You can use an SQL script template to filter, join, or aggregate data in source tables. Context When a new version is released for a script template, you can decide whether to upgrade the version of the script template used in your nodes to the latest version. The script template upgrade mechanism allows developers to continuously upgrade script template versions. This mechanism enhances the process execution efficiency and optimizes the business performance. For example, User A uses V1.0 of a script template that belongs to User B. Then, User B releases V2.0 for the script template. User A receives a notification of the new version. After User A compares the code of the two versions, User A can decide whether to upgrade the script template to the latest version. To upgrade an SQL script template, click Updat e Code and check whether the parameter configuration of the SQL script template is valid in the new version. Set parameters for the SQL script template of the new version based on the version description. Then, save the node and commit it for deployment. Procedure
 1. Log on to the DataWorks console.
@@ -12741,7 +13222,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 Not ice You can commit the node only after you specify the Rerun and Parent Nodes parameters. i. Click the icon in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iii. Click OK. In a workspace in standard mode, you must click Publish in the upper-right corner after you commit the node. For more information, see Publish nodes.
 9. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create an ODPS Spark node
+##### 4.5.2.3 Create an ODPS Spark node
 
 DataWorks supports ODPS Spark nodes. This topic uses the JAR resource type as an example to describe how to create and configure an ODPS Spark node. Create and upload a resource
 1. Log on to the DataWorks console.
@@ -12783,7 +13264,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 Not ice You can commit the node only after you specify the Rerun and Parent Nodes parameters. i. Click the icon in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iii. Click OK. In a workspace in standard mode, you must click Publish in the upper-right corner after you commit the node. For more information, see Publish nodes.
 7. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create a PyODPS node
+##### 4.5.2.4 Create a PyODPS node
 
 DataWorks supports PyODPS nodes, which are integrated with the Python SDK of MaxCompute. You can edit Python code in PyODPS nodes of DataWorks to process data in MaxCompute. Context You can also use the Python SDK of MaxCompute to process data in MaxCompute. The Python version of PyODPS nodes is 2.7. Each PyODPS node can process a maximum of 50 MB data and can occupy a maximum of 1 GB memory. Otherwise, DataWorks terminates the PyODPS node. Avoid writing too much data processing code for a PyODPS node. PyODPS nodes are designed to use the Python SDK of MaxCompute. If you want to run pure Python code, you can create a Shell node to run the Python scripts uploaded to DataWorks. Create a PyODPS node
 1. Log on to the DataWorks console.
@@ -12837,7 +13318,7 @@ Not ice You can commit the node only after you specify the Rerun and Parent Node
 8. Test the node. For more information, see Manage auto triggered nodes.
 Built-in modules for PyODPS nodes A PyODPS node contains the following built-in modules: setuptools cython psutil pytz dateutil requests pyDes numpy pandas scipy scikit_learn greenlet six Other built-in modules in Python 2.7, such as smtplib
 
-##### Create an ODPS Script node
+##### 4.5.2.5 Create an ODPS Script node
 
 You can create an ODPS Script node to develop an SQL script by using the SQL engine provided by MaxCompute V2.0. Context The ODPS Script node allows DataWorks to compile the SQL script as a whole, instead of compiling the SQL statements in the script one by one. In this way, the SQL script is committed and run as a whole. This guarantees that an execution plan is only queued and executed once, making full use of MaxCompute computing resources. Create an ODPS Script node
 1. Log on to the DataWorks console.
@@ -12899,7 +13380,7 @@ create table if not exists dest(key string , value bigint) partitioned by (d str
 
 Scenarios of ODPS Script nodes You can use an ODPS Script node to rewrite a single statement with nested subqueries, or a script that must be split into multiple statements due to its complexity. Data from different data stores may be prepared at different time points, and the time difference may be large. For example, the data from one data store can be prepared at 01:00, whereas that from another data store can be prepared at 07:00. In this case, table variables are not suitable for connecting statements. You can use an ODPS Script node to combine the statements to a script.
 
-##### Create an ODPS MR node
+##### 4.5.2.6 Create an ODPS MR node
 
 MaxCompute supports the MapReduce API. You can create and commit ODPS MR nodes that call the Java API operations of MapReduce to develop MapReduce programs for processing data in MaxCompute. Context Before you create ODPS MR nodes, you must upload, commit, and then deploy required resources. Create a resource
 1. Log on to the DataWorks console.
@@ -12946,7 +13427,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 Not ice You can commit the node only after you specify the Rerun and Parent Nodes parameters. i. Click the icon in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iii. Click OK. In a workspace in standard mode, you must click Publish in the upper-right corner after you commit the node. For more information, see Publish nodes.
 7. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create a MaxCompute table
+##### 4.5.2.7 Create a MaxCompute table
 
 This topic describes how to create a MaxCompute table. Procedure
 1. Log on to the DataWorks console.
@@ -13024,7 +13505,7 @@ sequence. If you are using a workspace in basic mode, you only need to click Com
 
 What's next After the table is created, you can query the table data and modify or delete the table. For more information, see Manage tables.
 
-##### Create, reference, and download resources
+##### 4.5.2.8 Create, reference, and download resources
 
 This topic describes how to create, reference, and download JAR and Python resources. Context If your code or function requires resource files such as.jar files, you can upload resources to your workspace and reference them. If the existing built-in functions do not meet your requirements, DataWorks allows you to create userdefined functions (UDFs) and customize processing logic. You can upload the required JAR packages to your workspace so that you can reference them when you create UDFs. You can view built-in functions on the Built -In Funct ions tab. For more information, see View builtin functions. You can view the UDFs that you have committed or deployed on the MaxComput e Funct ions tab. The resources that you can upload to MaxCompute include text files, MaxCompute tables, Python code, and compressed packages in the .zip, .tgz, .tar.gz, .tar, and .jar formats. You can read or use these resources when you run UDFs or MapReduce. MaxCompute provides API operations for you to read and use resources. The following types of MaxCompute resources are available: Pyt hon: the Python code you have written. You can use Python code to register Python UDFs. JAR: the compiled Java JAR packages. Archive: the compressed files that can be identified by the file name extension. Supported file types include .zip, .tgz, .tar.gz, .tar, and .jar. File: files in the .zip, .so, or .jar format. JAR resources and f ile resources have the following differences: To create a JAR resource, write Java code in the offline Java environment, compress the code to a JAR package, and upload the package as a JAR resource to DataWorks. To create a file resource that is smaller than or equal to 500 KB in size, you can create and edit it in the DataWorks console. To create a file resource that is larger than 500 KB in size, select Large File (more t han 500 KB) and click Upload to upload the file. Each resource file to be uploaded in the DataWorks console cannot exceed 30 MB. Create a JAR resource
 1. Log on to the DataWorks console.
@@ -13052,7 +13533,7 @@ v. Click in the toolbar.
 2. Register a UDF.
 i. On the Dat a Analyt ics tab, move the pointer over and choose MaxComput e > Funct ion. Alternatively, you can click a workflow in the Business Flow section, right-click MaxComput e, and then choose Creat e > Funct ion. ii. In the Creat e Funct ion dialog box, set Funct ion Name and Locat ion. iii. Click Commit . iv. In the Regist er Funct ion section of the configuration tab that appears, enter the class name and the name of the Python resource that has been created, and then click in the toolbar. In this example, the class name is `ipint.ipint` . v. Check whether the ipint function is valid and meets your expectation. For example, you can create an ODPS SQL node to test the ipint function by running an SQL statement. Reference and download resources For more information about how to reference resources for functions, see Register a UDF. For more information about how to reference resources for nodes, see Create an ODPS MR node. To download a resource, double-click Resource under the target workflow. In the resource list that appears, move the pointer over the required resource and click Download.
 
-##### Register a UDF
+##### 4.5.2.9 Register a UDF
 
 DataWorks allows you to develop UDFs in Python and Java. This topic describes how to register a UDF. Prerequisites Before you register a UDF, you must upload the related resource. Procedure
 1. Log on to the DataWorks console.
@@ -13081,9 +13562,9 @@ in the toolbar.
 6. Commit the function.
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK.
 
-#### EMR
+#### 4.5.3 EMR
 
-##### Modes for associating an EMR cluster with a
+##### 4.5.3.1 Modes for associating an EMR cluster with a DataWorks workspace
 
 DataWorks workspace After you associate an EMR cluster with a DataWorks workspace, you can create nodes such as EMR Hive, EMR MR, EMR Presto, and EMR Spark SQL nodes based on an EMR compute engine and configure EMR workflows. You can also schedule the nodes and manage metadata. This improves your data output. DataWorks provides two modes for you to associate an EMR cluster with a workspace: Short cut mode and Securit y mode. The two modes can meet the security requirements of various enterprises. If you associate an EMR cluster with a workspace by using the Short cut mode, you can create and run EMR nodes to generate data. If you associate an EMR cluster with a workspace by using the Securit y mode, you can create and run EMR nodes to generate data and manage permissions on the data to ensure higher security. Shortcut mode In Short cut mode, if you run or schedule EMR nodes in DataWorks by using your Apsara Stack tenant account or as a RAM user, the code is committed to the EMR cluster and run by the Hadoop user of the EMR cluster. Not ice The Hadoop user has all the permissions on the EMR cluster. Proceed with caution when you use the Shortcut mode to associate an EMR cluster with a workspace. Before you use the Short cut mode to associate an EMR cluster with a workspace, you must attach the AliyunEMRDevelopAccess policy to workspace roles such as developers and administrators. This way, the roles can be used to create and run EMR nodes in DataStudio. The AliyunEMRDevelopAccess policy is attached to Apsara Stack tenant accounts by default. To run EMR nodes as a RAM user, you must attach the AliyunEMRDevelopAccess policy to the RAM user. The Short cut mode is suitable for workspaces that do not require strict permission management for users who run nodes. To associate an EMR cluster with a workspace in Short cut mode, perform the following steps:
 1. Log on to the DataWorks console.
@@ -13143,7 +13624,7 @@ i. Log on to the DataWorks console. ii. In the upper-right corner of the page, c
 
 vi. Click Conf irm.
 
-##### Create an EMR MR node
+##### 4.5.3.2 Create an EMR MR node
 
 You can create an EMR MR node to compute a large-scale dataset by using multiple Map tasks in a parallel manner. Prerequisites The EMR folder is available on the DataStudio page only after you bind an E-MapReduce compute engine to the current workspace on the Project Management page. Procedure
 1. Log on to the DataWorks console.
@@ -13160,7 +13641,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create an EMR Spark SQL node
+##### 4.5.3.3 Create an EMR Spark SQL node
 
 You can create an EMR Spark SQL node to use the distributed SQL query engine to process structured data, improving the task execution efficiency. Prerequisites The EMR folder is available on the DataStudio page only after you bind an E-MapReduce compute engine to the current workspace on the Project Management page. Procedure
 1. Log on to the DataWorks console.
@@ -13177,7 +13658,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create an EMR Spark node
+##### 4.5.3.4 Create an EMR Spark node
 
 You can create an EMR Spark node to perform complex memory analysis and build large and lowlatency data analysis applications. Prerequisites The EMR folder is available on the DataStudio page only after you bind an E-MapReduce compute engine to the current workspace on the Project Management page. Procedure
 1. Log on to the DataWorks console.
@@ -13194,7 +13675,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create an EMR Hive node
+##### 4.5.3.5 Create an EMR Hive node
 
 This topic describes how to create an EMR Hive node. This type of node allows you to use SQL-like statements to read data from, write data to, and manage data warehouses with a large amount of data stored in a distributed storage system. By using this type of node, you can efficiently analyze a large amount of log data. Prerequisites The EMR folder is available on the DataStudio page only after you bind an E-MapReduce compute engine to the current workspace on the Project Management page. Procedure
 1. Log on to the DataWorks console.
@@ -13211,7 +13692,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create and use an EMR Shell node
+##### 4.5.3.6 Create and use an EMR Shell node
 
 You can create an EMR Shell node and run the node by using the code editor. Prerequisites An EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the EMR cluster belongs: Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. For more information, see Associate an EMR cluster with a workspace. If you integrate Hive with Ranger in EMR, you must modify whitelist configurations and restart Hive before you develop EMR nodes in DataWorks. Otherwise, the error message Cannot modif y spark.yarn.queue at runt ime or Cannot modif y SKYNET _BIZDAT E at runt ime is returned when you run EMR nodes. i. You can modify the whitelist configurations by using custom parameters in EMR. You can append key-value pairs to the value of a custom parameter. In this example, the custom parameter for Hive components is used. The following code provides an example:
 
@@ -13242,7 +13723,7 @@ i. Click the icon in the top toolbar to save the node. ii. Click the icon in the
 7. View the EMR Shell node.
 i. On the configuration tab of the EMR Shell node, click Operat ion Cent er in the upper-right corner to go to Operation Center. ii. View the scheduled EMR Shell node. For more information, see Manage auto triggered nodes.
 
-##### Create and use an EMR Spark Shell node
+##### 4.5.3.7 Create and use an EMR Spark Shell node
 
 You can create an EMR Spark Shell node and run the node by using the code editor. Prerequisites An EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the EMR cluster belongs: Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. For more information, see Associate an EMR cluster with a workspace. If you integrate Hive with Ranger in EMR, you must modify whitelist configurations and restart Hive before you develop EMR nodes in DataWorks. Otherwise, the error message Cannot modif y spark.yarn.queue at runt ime or Cannot modif y SKYNET _BIZDAT E at runt ime is returned if you run EMR nodes. i. You can modify the whitelist configurations by using custom parameters in EMR. You can append key-value pairs to the value of a custom parameter. In this example, the custom parameter for Hive components is used. The following code provides an example:
 
@@ -13275,7 +13756,7 @@ i. Click the icon in the top toolbar to save the node. ii. Click the icon in the
 7. View the EMR Spark Shell node.
 i. On the configuration tab of the EMR Spark Shell node, click Operat ion Cent er in the upperright corner to go to Operation Center. ii. View the scheduled EMR Spark Shell node. For more information, see Manage auto triggered nodes.
 
-##### Create an EMR Impala node
+##### 4.5.3.8 Create an EMR Impala node
 
 This topic describes how to create an EMR Impala node. EMR Impala nodes allow you to perform interactive analysis and queries by executing SQL statements on petabytes of data. Prerequisites An EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the EMR cluster belongs: Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. For more information, see Associate an EMR cluster with a workspace. If you integrate Hive with Ranger in EMR, you must modify whitelist configurations and restart Hive before you develop EMR nodes in DataWorks. Otherwise, the error message Cannot modif y spark.yarn.queue at runt ime or Cannot modif y SKYNET _BIZDAT E at runt ime is returned if you run EMR nodes. i. You can modify the whitelist configurations by using custom parameters in EMR. You can append key-value pairs to the value of a custom parameter. In this example, the custom parameter for Hive components is used. The following code provides an example:
 
@@ -13313,7 +13794,7 @@ i. Click the icon in the top toolbar to save the node. ii. Click the icon in the
 9. View the EMR Impala node.
 i. On the configuration tab of the EMR Impala node, click Operat ion Cent er in the upper-right corner to go to Operation Center. ii. View the scheduled EMR Impala node. For more information, see Manage auto triggered nodes.
 
-##### Create and use an EMR Presto node
+##### 4.5.3.9 Create and use an EMR Presto node
 
 This topic describes how to create an EMR Presto node in DataWorks. EMR Presto nodes allow you to perform interactive analysis and queries on large amounts of structured and unstructured data. Prerequisites An EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the EMR cluster belongs: Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. For more information, see Associate an EMR cluster with a workspace. If you integrate Hive with Ranger in EMR, you must modify whitelist configurations and restart Hive before you develop EMR nodes in DataWorks. Otherwise, the error message Cannot modif y spark.yarn.queue at runt ime or Cannot modif y SKYNET _BIZDAT E at runt ime is returned if you run EMR nodes. i. You can modify the whitelist configurations by using custom parameters in EMR. You can append key-value pairs to the value of a custom parameter. In this example, the custom parameter for Hive components is used. The following code provides an example:
 
@@ -13344,7 +13825,7 @@ i. Click the icon in the top toolbar to save the node. ii. Click the icon in the
 9. View the EMR Presto node.
 i. On the configuration tab of the EMR Spark Shell node, click Operat ion Cent er in the upperright corner to go to Operation Center. ii. View the scheduled EMR Presto node. For more information, see Manage auto triggered nodes.
 
-##### Create and use an EMR JAR resource
+##### 4.5.3.10 Create and use an EMR JAR resource
 
 DataWorks allows you to create EMR JAR resources in the DataWorks console. You can upload a Java Archive (JAR) file that contains user-defined functions (UDFs) or open source MapReduce code as an EMR JAR resource. Then, you can reference the resource in compute nodes such as an EMR MR node. This topic describes how to create an EMR JAR resource by uploading a file, commit the resource, and reference the resource in compute nodes such as an EMR MR node. Prerequisites An EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the EMR cluster belongs: Action: Allow Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. If you integrate Hive with Ranger in EMR, you must modify whitelist configurations and restart Hive before you develop EMR nodes in DataWorks. Otherwise, the error message Cannot modif y spark.yarn.queue at runt ime or Cannot modif y SKYNET _BIZDAT E at runt ime is returned if you run EMR nodes. i. You can modify the whitelist configurations by using custom parameters in EMR. You can append key-value pairs to the value of a custom parameter. In this example, the custom parameter for Hive components is used. The following code provides an example:
 
@@ -13371,7 +13852,7 @@ icon and choose EMR > Resource > EMR JAR. You can also find the required workflo
 5. Click the
 and icons in the top toolbar to save and commit the resource to the development environment. What's next After you create an EMR JAR resource, you can reference the resource in the code of compute nodes such as an EMR MR node. The following figure shows how to reference the resource. For more information, see Create an EMR MR node.
 
-##### Create an EMR table
+##### 4.5.3.11 Create an EMR table
 
 This topic describes how to create an EMR table. Prerequisites An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. The metadata of an EMR data source is collected in Data Map so that you can select an EMR database when you create a table. Limits If Kerberos authentication is enabled for an EMR cluster., you cannot create tables, resources, and functions in a visualized manner for this cluster. Procedure
 1. Log on to the DataWorks console.
@@ -13426,7 +13907,7 @@ The upper part of the tab shows the configurations that you specified in the Cre
 8. Click the
 icon in the top toolbar to commit the EMR table to the production environment. If you are using a workspace in standard mode, commit the table to the development environment and the production environment in sequence. Not ice You cannot create an EMR table in DDL mode.
 
-##### Create an EMR function
+##### 4.5.3.12 Create an EMR function
 
 This topic describes how to create an EMR function. Prerequisites An EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the EMR cluster belongs: Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 An EMR compute engine instance is associated with the current workspace. The EMR folder is displayed only after you associate an EMR compute engine instance with the workspace on the Workspace Management page. The required resources are uploaded. Limits If Kerberos authentication is enabled for an EMR cluster., you cannot create tables, resources, and functions in a visualized manner for this cluster. Procedure
 1. Log on to the DataWorks console.
@@ -13457,7 +13938,7 @@ icon in the top toolbar.
 6. Commit the function.
 i. Click the icon in the top toolbar. ii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iii. Click OK.
 
-##### Create and use an EMR Spark Streaming node
+##### 4.5.3.13 Create and use an EMR Spark Streaming node
 
 E-MapReduce (EMR) Spark Streaming nodes can be used to process streaming data with high throughput and support fault tolerance. These nodes help you restore data streams on which errors occur. This topic describes how to create an EMR Spark Streaming node and use the node to develop data. Prerequisites An Alibaba Cloud EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the cluster belongs. Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 The EMR cluster is associated with your DataWorks workspace as a compute engine instance. The EMR folder is displayed on the DataStudio page only after an EMR cluster is associated with your workspace as a compute engine instance on the Workspace Management page. For more information, see Configure a workspace. The hadoop.http.authentication.simple.anonymous.allowed parameter is set to true on the HDFS page in the EMR console. The HDFS and YARN services are restarted. Create an EMR Spark Streaming node and use the node to develop data
 1. Log on to the DataWorks console.
@@ -13482,7 +13963,7 @@ i. Click the icon in the top toolbar to save the node. ii. Click the icon in the
 8. View the real-time computing node.
 i. Click Operat ion Cent er in the top navigation bar of the DataStudio page to go to Operation Center. ii. View the real-time computing node that is running. For more information, see Manage real-time computing nodes.
 
-##### Create and use an EMR Streaming SQL node
+##### 4.5.3.14 Create and use an EMR Streaming SQL node
 
 E-MapReduce (EMR) Streaming SQL nodes allow you to use SQL statements to develop streaming analytics jobs. This topic describes how to create an EMR Streaming SQL node and use the node to develop data. Prerequisites An Alibaba Cloud EMR cluster is created. An inbound rule that contains the following content is added to the security group to which the cluster belongs. Action: Allow Protocol type: Custom TCP Port range: 8898/8898 Authorization object: 100.104.0.0/16 The EMR cluster is associated with your DataWorks workspace as a compute engine instance. The EMR folder is displayed on the DataStudio page only after an EMR cluster is associated with your workspace as a compute engine instance on the Workspace Management page. For more information, see Configure a workspace. The hadoop.http.authentication.simple.anonymous.allowed parameter is set to true on the HDFS page in the EMR console The HDFS and YARN services are restarted. Create an EMR Streaming SQL node and use the node to develop data
 1. Log on to the DataWorks console.
@@ -13513,9 +13994,9 @@ i. Click the icon in the top toolbar to save the node. ii. Click the icon in the
 8. View the real-time computing node.
 i. Click Operat ion Cent er in the top navigation bar of the DataStudio page to go to Operation Center. ii. View the real-time computing node that is running. For more information, see Manage real-time computing nodes.
 
-#### Hologres
+#### 4.5.4 Hologres
 
-##### Create a Hologres SQL node
+##### 4.5.4.1 Create a Hologres SQL node
 
 This topic describes how to create a Hologres SQL node. Hologres seamlessly integrates with MaxCompute at the underlying layer. This integration allows you to use standard PostgreSQL statements to query and analyze large volumes of data stored in MaxCompute. In this case, you do not need to transfer data. This allows you to quickly obtain query results. Prerequisites A Hologres compute engine instance is added on the Project Management page. This ensures that the Hologres folder is displayed on the page on which you want to create a Hologres SQL node. Procedure
 1. Log on to the DataWorks console.
@@ -13532,9 +14013,9 @@ On the Properties tab, configure properties for the node. For more information, 
 Not ice You must set the Rerun and Parent Nodes parameters before you commit the node. i. Click the icon in the top toolbar to save the node. ii. Click the icon in the top toolbar. iii. (Optional)In the Commit Node dialog box, enter your comments in the Change descript ion field. iv. Click OK. If the workspace that you use is in standard mode, you must click Deploy in the top navigation bar after you commit the node. For more information, see Deploy nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-#### AnalyticDB for PostgreSQL
+#### 4.5.5 AnalyticDB for PostgreSQL
 
-##### Create an AnalyticDB for PostgreSQL node
+##### 4.5.5.1 Create an AnalyticDB for PostgreSQL node
 
 You can create AnalyticDB for PostgreSQL nodes in the DataWorks console to build an online extract, transform, load (ETL) process. Prerequisites The AnalyticDB for PostgreSQL compute engine is associated with the workspace in which you want to create an AnalyticDB for PostgreSQL node. The AnalyticDB for PostgreSQL folder is displayed in a workspace only after you associate an AnalyticDB for PostgreSQL compute engine instance with the workspace on the Workspace Management page. For more information, see Create an AnalyticDB for PostgreSQL node. Procedure
 1. Log on to the DataWorks console.
@@ -13551,7 +14032,7 @@ properties for the node. For more information, see Basic properties.
 Not ice You must specify the Rerun and Parent Nodes parameters in the Properties panel before you commit the node. i. Click in the top toolbar to save the node. ii. Click the icon in the top toolbar. iii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iv. Click OK. If the workspace that you use is in standard mode, you must click Deploy in the upper-right corner after you commit the AnalyticDB for PostgreSQL node. For more information, see Deploy nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create an AnalyticDB for PostgreSQL table
+##### 4.5.5.2 Create an AnalyticDB for PostgreSQL table
 
 This topic describes how to create an AnalyticDB for PostgreSQL table. Prerequisites An AnalyticDB for PostgreSQL instance is associated with the workspace in which you want to create an AnalyticDB for PostgreSQL table. The AnalyticDB for PostgreSQL folder is displayed on the DataStudio page of a workspace only after you associate an AnalyticDB for PostgreSQL instance with the workspace on the Project Management page. For more information, see Create an AnalyticDB for PostgreSQL table. The metadata of the associated AnalyticDB for PostgreSQL instance is collected on the Dat a Map page. For more information, see Collect metadata from an AnalyticDB for PostgreSQL data source. Procedure
 1. Log on to the DataWorks console.
@@ -13614,9 +14095,9 @@ sequence. If you are using a workspace in basic mode, you need only to click Sub
 9. In the Submit changes dialog box, confirm that the table creation statements are correct, select
 a resource group from the Select a resource group drop-down list, and then click Conf irm execut ion. What's next After the AnalyticDB for PostgreSQL table is created, you can query the table data, modify the table, or delete the table. For more information, see Manage tables.
 
-#### AnalyticDB for MySQL
+#### 4.5.6 AnalyticDB for MySQL
 
-##### Create and use an AnalyticDB for MySQL node
+##### 4.5.6.1 Create and use an AnalyticDB for MySQL node
 
 You can create an AnalyticDB for MySQL node and use SQL statements to develop data for an AnalyticDB for MySQL data source. This topic describes how to create and use an AnalyticDB for MySQL node. Prerequisites An AnalyticDB for MySQL instance is purchased and associated with the current DataWorks workspace in the Workspace Management page of DataWorks. For more information, see Associate an AnalyticDB for MySQL instance with a workspace. A workflow is created. For more information, see Create a workflow. Create an AnalyticDB for MySQL node and use the node to develop data
 1. Log on to the DataWorks console.
@@ -13632,9 +14113,9 @@ scheduling properties for the node. For more information, see Basic properties.
 Not ice You must set the Rerun and Parent Nodes parameters in the Properties panel before you commit the node. i. Click the icon in the top toolbar to save the node. ii. Click the icon in the top toolbar. iii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iv. Click OK. If the workspace that you use is in standard mode, you must click Deploy in the upper-right corner after you commit the AnalyticDB for MySQL node. For more information, see Deploy nodes.
 7. Test the node. For more information, see Manage auto triggered nodes.
 
-#### Algorithm
+#### 4.5.7 Algorithm
 
-##### Create a PAI node
+##### 4.5.7.1 Create a PAI node
 
 PAI nodes are used to call tasks that are created on PAI and schedule production activities based on the node configuration. Prerequisites To create a PAI node in DataWorks, you must first create a PAI experiment in PAI. Procedure
 1. Log on to the DataWorks console.
@@ -13651,9 +14132,9 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-#### General
+#### 4.5.8 General
 
-##### Create a for-each node
+##### 4.5.8.1 Create a for-each node
 
 This topic describes how to use a for-each node to repeat a loop twice and display the loop count. Prerequisites The MaxCompute module is available on the DataStudio page only after you bind a MaxCompute compute engine to the current workspace on the Project Management page. Context You can use a for-each node to repeat a loop for a maximum of 128 times. If the loop count exceeds this limit, an error occurs. If the for-each node needs to perform logic judgment and result traversal, you can use the branch node. However, the branch node must be used with the merge node for result traversal. Procedure
 1. Log on to the DataWorks console.
@@ -13689,7 +14170,7 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 Not ice You can commit the node only after you specify the Rerun and Parent Nodes parameters. i. Click the icon in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Change descript ion field. iii. Click OK. In a workspace in standard mode, you must click Publish in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-##### Create a do-while node
+##### 4.5.8.2 Create a do-while node
 
 You can define mutually dependent nodes, including a loop decision node named end, in a do-while node. DataWorks repeatedly runs the nodes and exits the loop only when the end node returns False. Context A loop can be repeated for a maximum of 128 times. If the loop count exceeds this limit, an error occurs. The do-while node supports the MaxCompute SQL, SHELL, and Python languages. If you use MaxCompute SQL, you can use a `CASE WHEN` statement to evaluate whether the specified condition for exiting the loop is met. Simple example This section describes how to use a do-while node to repeat a loop five times and display the loop count each time the loop runs.
 1. Log on to the DataWorks console.
@@ -13710,7 +14191,7 @@ i. Create an assignment node named Initialize dataset and add it as the parent n
 3. Run the do-while node and view the running result.
 Summary Compared with the while, foreach, and do...while statements, a do-while node has the following characteristics: A do-while node contains a loop body that runs a loop before evaluating the conditional statement. This node functions the same as the do...while statement. A do-while node can also use the system variable ${dag.offset} and the node context to implement the feature of the foreach statement. A do-while node cannot achieve the feature of the while statement because a do-while node runs a loop before evaluating the conditional statement. A do-while node works in the following way: i. Run nodes in the loop body starting from the start node based on node dependencies. ii. Run the code defined for the end node. Run the loop again if the end node returns True. Exit the loop if the end node returns False. How to use the node context: The internal nodes of a do-while node can use ${dag.${ctxKey}} to reference the context defined for the do-while node. System parameters: DataWorks provides the following system variables for the internal nodes of the do-while node: ${dag.loopTimes}: the loop count, starting from 1. ${dag.offset}: the offset of the loop count to 1, starting from 0.
 
-##### Create a merge node
+##### 4.5.8.3 Create a merge node
 
 This topic describes the definition of merge nodes and how to create a merge node and define the merging logic. It also provides an example to show the scheduling configuration and running details of a merge node. A merge node is a logical control node in DataStudio. It can merge the running results of its parent nodes, regardless of their running statuses. It aims at facilitating the running of nodes that depend on the output of the child nodes of a branch node. You cannot change the running status of a merge node. A merge node merges the running results of multiple child nodes of a branch node and sets the running status to Successful. To guarantee the proper running of a node that depends on the output of the child nodes of a branch node, you can configure the node to directly depend on the merge node. For example, Branch node C has two logically exclusive branches C1 and C2. These two branches use different logic to write data to the same MaxCompute table. Assume that Node B depends on the output of this MaxCompute table. To make sure that Node B can run properly, you must use Merge node J to merge the running results of branches C1 and C2, and then configure Merge node J as the parent node of Node B. If Node B directly depends on branches C1 and C2, one of the branches will fail to run because only one branch meets the branch condition each time Branch node C runs. In this case, Node B cannot be triggered as scheduled. Create a merge node
 1. Log on to the DataWorks console.
@@ -13721,7 +14202,7 @@ The node name must be 1 to 128 characters in length and can contain letters, dig
 4. Click Commit .
 Define the merging logic After the merge node is created, the node configuration tab appears. Specify the branches to be merged for the node. Enter the output name or output table name of the parent node, and click the Add icon. You can view the running status in the Result section. The available running statuses are Successf ul and Branch Not Running. Click the Propert ies tab in the right-side navigation pane and configure the scheduling properties of the merge node. Run the merge node If a branch meets the specified condition, the branch is run. You can select the branch and view the running details on the Runt ime Logs tab. If a branch does not meet the specified condition, the branch is skipped. You can select the branch and view related information on the Runt ime Logs tab.
 
-##### Create a branch node
+##### 4.5.8.4 Create a branch node
 
 A branch node is a logical control node in DataStudio. It can define the branch logic and the direction of branches under different logical conditions. Prerequisites Generally, branch nodes need to be used with assignment nodes. Create a branch node
 1. Log on to the DataWorks console.
@@ -13761,7 +14242,7 @@ Supported Python comparison operators In the following table, assume that the va
 | >= | Greater than or equal to: checks whether the variable on the left side of the operator is greater than or equal to that on the right side. | (a>=b) returns false. |
 | <= | Less than or equal to: checks whether the variable on the left side of the operator is less than or equal to that on the right side. | (a<=b) returns true. |
 
-##### Create an assignment node
+##### 4.5.8.5 Create an assignment node
 
 An assignment node uses one of the three value assignment languages MaxCompute SQL, SHELL, and Python to assign values by using the outputs parameter. This node is used to transmit data between a parent node and a child node based on context-based parameters. Context The outputs parameter has the following limits: The value of the outputs parameter is taken only from the output of the last line of the code. If you use MaxCompute SQL, the output of the SELECT statement in the last line is used. If you use SHELL, the output of the ECHO statement in the last line is used. If you use Python, the output of the PRINT statement in the last line is used. The passed value of the outputs parameter is limited to 2 MB in size. If the output of the assignment statement exceeds this limit, the assignment node fails to run. If you use Python or SHELL, the value of the outputs parameter is a one-dimensional array where elements are separated with commas (,). If you use MaxCompute SQL, the value of the outputs parameter is passed to child nodes as a two-dimensional array. Create an assignment node
 1. Log on to the DataWorks console.
@@ -13829,7 +14310,7 @@ in the toolbar.
 7. In the Warning message, click Cont inue t o Run.
 8. View the result.
 
-##### Create a Shell node
+##### 4.5.8.6 Create a Shell node
 
 Shell nodes support standard shell syntax but not interactive syntax. Procedure
 1. Log on to the DataWorks console.
@@ -13852,7 +14333,7 @@ pane. On the Properties tab, set parameters in the Schedule section.
 Not ice You must set Rerun and Parent Nodes before you can commit the node. i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you need to click Deploy in the upper-right corner after you commit the branch node.
 8. Test the node.
 
-##### Create a zero-load node
+##### 4.5.8.7 Create a zero-load node
 
 A zero-load node is a control node, which only supports dry-run scheduling and does not generate any data. It usually serves as the root node of a workflow. Context You can configure an output table for a zero-load node so that the output table can be used as an input table of another node. However, the zero-load node does not process the table data. Procedure
 1. Log on to the DataWorks console.
@@ -13867,7 +14348,7 @@ navigation pane. On the Properties tab, set parameters in the Schedule section. 
 Not ice You must set Rerun and Parent Nodes before you can commit the node. i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you need to click Deploy in the upper-right corner after you commit the branch node.
 7. Test the node.
 
-##### Create a cross-tenant collaboration node
+##### 4.5.8.8 Create a cross-tenant collaboration node
 
 Cross-tenant collaboration nodes are used to associate nodes from different tenants. Cross-tenant collaboration nodes are classified into sender nodes and receiver nodes. Prerequisites A sender node and its receiver node use the same CRON expression. You can click the Propert ies tab in the right-side navigation pane of a node configuration tab and view the CRON expression in the Schedule section. Create a cross-tenant collaboration node
 1. Log on to the DataWorks console.
@@ -13887,7 +14368,7 @@ The node name must be 1 to 128 characters in length and can contain letters, dig
 Apsara Stack tenant account and workspace to which the receiver node belongs. Set the node type to Receiver. The information about available sender nodes appears. You must also set T imeout . This parameter indicates the timeout period of the receiver node after it starts running. The sender node first sends a message to the message center. After the message is delivered, the status of the sender node is set to successful. The receiver node continuously pulls messages from the message center. If a message is received within the timeout period, the status of the receiver node is set to successful. If the receiver node does not receive any messages within the timeout period, the receiver node fails. The lifecycle of a message is 24 hours. Assume that an auto triggered instance was run on October 8, 2018. A message indicating the completion of the instance was then sent to the message center. If you create a retroactive instance for the receiver node with the data timestamp set to October 7, 2018, the status of the generated receiver node instance is set to successful.
 6. After the configuration is completed, save and commit the node.
 
-##### Create a data analysis report node
+##### 4.5.8.9 Create a data analysis report node
 
 A data analysis report node is used to associate a report in the DataAnalysis module with the parent nodes on which the report depends and update the report as scheduled. Prerequisites A table is created on the Report page of the Dat aAnalysis module. Procedure
 1. Log on to the DataWorks console.
@@ -13911,9 +14392,9 @@ i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments 
 8. Test the data analysis report node. For more information, see Manage auto triggered nodes.
 After the node is run in the production environment, you can view updates of the report on the Report page of the Dat aAnalysis module.
 
-#### Custom
+#### 4.5.9 Custom
 
-##### Create a Hologres development node
+##### 4.5.9.1 Create a Hologres development node
 
 This topic describes how to create and modify a Hologres development node and update the node version. Procedure
 1. Log on to the DataWorks console.
@@ -13930,9 +14411,9 @@ side navigation pane. On the Properties tab, configure parameters in the Schedul
 i. Click in the toolbar. ii. In the Commit Node dialog box, enter your comments in the Descript ion field. iii. Click OK. In a workspace in standard mode, you must click Deploy in the upper-right corner after you commit the node. For more information, see Publish nodes.
 8. Test the node. For more information, see Manage auto triggered nodes.
 
-### Schedule
+### 4.6 Schedule
 
-#### Basic properties
+#### 4.6.1 Basic properties
 
 On the Properties tab of a node, you can set parameters of the node in the General, Schedule, Dependencies, and Parameters sections. The General section allows you to set the basic properties of the node. On the Dat a Analyt ics tab of the DataStudio page, double-click a node. On the node configuration tab that appears, click the Propert ies tab in the right-side navigation pane and set the parameters in the General section.
 
@@ -13950,7 +14431,7 @@ On the Properties tab of a node, you can set parameters of the node in the Gener
 
 Parameter value assignment formats for various node types Format for ODPS SQL and ODPS MR nodes: `Variable name 1=Parameter 1 Variable name 2=Paramete` `r 2` . Separate multiple parameters with spaces. Format for Shell nodes: `Parameter 1 Parameter 2` . Separate multiple parameters with spaces. For more information about the built-in scheduling parameters, see Parameter configuration.
 
-#### Scheduling parameters
+#### 4.6.2 Scheduling parameters
 
 In common data development scenarios, the code of different types of nodes may be subject to change from time to time. You must dynamically modify the values of some parameters, such as the date and time, based on the requirement changes and time changes. In this case, you can use the scheduling parameter configuration feature of DataWorks. After relevant parameters are set, auto triggered nodes can automatically parse the code to obtain required data. Configurable parameters in DataWorks are classified into system parameters and custom parameters. We recommend that you use custom parameters. `{`
 
@@ -14070,11 +14551,11 @@ the node in Operation Center. The scheduling system generates instances for the 
 
 $gmtdate Parameter description: the current date in the format of yyyymmdd. By default, the value of this parameter is the current date. During retroactive data generation, the input value is the data timestamp plus one day. For example, the code of an ODPS SQL node includes pt=${datetime}, and the parameter configured for the node is datetime=$gmtdate. Assume that the current day is July 22, 2017. If the node is run on July 22, 2017, $gmtdate is replaced with pt=20170722. ${yyyymmdd} Parameter description: the data timestamp in the format of yyyymmdd. The value of this parameter is the same as that of $bizdate. This parameter supports delimiters, for example, yyyymm-dd. By default, the value of this parameter is one day before the scheduled time to run a node. You can customize a time format for this parameter, for example, yyyy-mm-dd for ${yyyy-mm-dd}. Examples: The code of an ODPS SQL node includes pt=${datetime}, and the parameter configured for the node is datetime=${yyyy-mm-dd}. If the node is run on July 22, 2018, ${yyyy-mm-dd} is replaced with pt=2018-07-21. The code of an ODPS SQL node includes pt=${datetime}, and the parameter configured for the node is datetime=${yyyymmdd-2}. If the node is run on July 22, 2018, ${yyyymmdd-2} is replaced with pt=20180719. The code of an ODPS SQL node includes pt=${datetime}, and the parameter configured for the node is datetime=${yyyymm-2}. If the node is run on July 22, 2018, ${yyyymm-2} is replaced with pt=201805. The code of an ODPS SQL node includes pt=${datetime}, and the parameter configured for the node is datetime=${yyyy-2}. If the node is run on July 22, 2018, ${yyyy-2} is replaced with pt=2016. You can assign values to multiple parameters when configuring an ODPS SQL node. For example, set startdatetime=$bizdate enddatetime=${yyyymmdd+1} starttime=${yyyy-mm-dd} endtime=${yyyy-mm-dd+1}. FAQ Q: The table partition format is pt=yyyy-mm-dd hh24:mi:ss, but spaces are not allowed in scheduling parameters. How can I configure the format of $[yyyy-mm-dd hh24:mi:ss]? A: Use the custom variables datetime=$[yyyy-mm-dd] and hour=$[hh24:mi:ss] to obtain the date and time. Then, join them together to form pt="${datetime} ${hour}" in the code. Separate the two variables with a space. Q: The table partition is pt="${datetime} ${hour}" in the code. To obtain the data for the last hour when the node is run, the custom variables datetime=$[yyyymmdd] and hour=$[hh24-1/24] can be used to obtain the date and time, respectively. However, for an instance running at 00:00, it analyzes data for 23:00 of the current day, instead of 23:00 of the previous day. What measures can I take in this case? A: Modify the formula of datetime to $[yyyymmdd-1/24] and keep the formula of hour unchanged at $[hh24-1/24]. Then, the node can be run properly. For an instance that is scheduled to run at 2015-10-27 00:00:00, the values of $[yyyymmdd-1/24] and $[hh24-1/24] are 20151026 and 23, respectively. This is because the scheduled time minus 1 hour is a time value that belongs to yesterday. For an instance that is scheduled to run at 2015-10-27 01:00:00, the values of $[yyyymmdd-1/24] and $[hh24-1/24] are 20151027 and 00, respectively. This is because the scheduled time minus 1 hour is a time value that belongs to the current day. DataWorks offers the following node running modes: Manually run a node in DataStudio: You must assign temporary values to parameters in the code to ensure proper running of the node. The assigned values are not saved as node properties and do not take effect in other node running modes. Automatically run a node at specified intervals: No configuration is needed in the Arguments field. The scheduling system automatically replaces the values of parameters based on the scheduled time of the current instance. Test a node or generate retroactive data: You must specify the data timestamp. The scheduled time of each instance can be calculated based on the formula described earlier in this topic.
 
-#### Scheduling properties
+#### 4.6.3 Scheduling properties
 
 This topic describes how to configure the scheduling properties of a node, including the recurrence and dependencies. You can click the Propert ies tab in the right-side navigation pane of the node configuration tab and set the parameters in the Schedule section. Node status Normal: If you select this option, the node is run based on the recurrence. By default, this option is selected for a node. Dry Run: If you select this option, the node is run based on the recurrence. However, the scheduling system does not actually run the code but directly returns a success response. Ret ry Upon Error: If you select this check box, the node is rerun when it encounters an error. By default, a node can be automatically rerun for a maximum of three times at an interval of 2 minutes. Skip Execut ion: If you select this check box, the node is run based on the recurrence. However, the scheduling system does not actually run the code but directly returns a failure response. You can select this check box if you want to suspend a node and run it later. Recurrence After a node is committed and deployed, the scheduling system generates instances every day from the next day based on the scheduling properties of the node. Then, the scheduling system runs the instances based on the running results of ancestor instances and the scheduled time. If a node is committed and deployed after 23:30, the scheduling system generates instances for it from the third day. If you schedule a node to run every Monday, the node is run only on Mondays. On the other days, the scheduling system does not actually run the code but directly returns a success response. When you test a node scheduled by week or generate retroactive data for the node, you must set the data timestamp to one day earlier than the scheduled time to run the node. For an auto triggered node, its dependencies take priority over other scheduling properties. That is, when the scheduled time arrives, the scheduling system does not immediately run a node instance but first checks whether all the ancestor instances are run. The node instance is in the Not Running state if any ancestor instances are not run when the scheduled time arrives. The node instance is in the Pending (Schedule) state if the scheduled time does not arrive but all the ancestor instances are run. The node instance is in the Pending (Resources) state if all the ancestor instances are run and the scheduled time arrives. Cross-cycle dependencies DataWorks supports the following three types of cross-cycle dependencies: Dependency on instances of child nodes Node dependency: The current node depends on the last-cycle instances of its child nodes. For example, Node A has three child nodes B, C, and D. If you select this node dependency, Node A depends on the last-cycle instances of nodes B, C, and D. Business scenario: The current node depends on instances of child nodes in the last cycle to cleanse the output tables of the current node and check whether the final result is generated properly. Dependency on instances of the current node Node dependency: The current node depends on its last-cycle instances. Business scenario: The current node depends on the data output result of its last-cycle instances. Dependency on instances of custom nodes: If you select this node dependency, enter the IDs of the nodes on which the current node depends. You can specify multiple nodes and separate their IDs with commas (,). For example, enter 12345,23456. Node dependency: The current node depends on the last-cycle instances of custom nodes. Business scenario: In the business logic, the current node depends on the proper output of other business data that is not processed by the current node. The difference between cross-cycle dependencies and dependencies in the current cycle lies in that cross-cycle dependencies are displayed as dotted lines in Operation Center. Before deleting a node from Operation Center, you must delete all dependencies of the node so that other nodes can run properly. Scheduled by day Nodes scheduled by day are automatically run once per day. When you create an auto triggered node, the node is set to run at 00:00 every day by default. You can specify another time as needed. In the example shown in the following figure, the time is specified as 13:00. If you select Customize Runtime, the node is run at the specified time every day. The time format is YYYY-MM-DD HH:MM:SS. An auto triggered node can be run only when all the ancestor instances are run and the scheduled time arrives. Both prerequisites are indispensable and have no specific chronological order. If you clear Customize Runtime, the scheduled time of the node is randomly set in the range of 00:00 to 00:30. Scenarios: For example, you have created an import node, an analytics node, and an export node. They are all scheduled to run at 13:00 every day. The analytics node depends on the import node, and the export node depends on the analytics node. The following figure shows that the analytics node is configured to depend on the import node. Based on the preceding node scheduling properties, the scheduling system automatically generates and runs instances for the nodes, as shown in the following figure. Scheduled by week Nodes scheduled by week are automatically run at a specified time of specified days every week. On the other days, the scheduling system still generates instances to make sure the proper running of descendant instances. However, the system does not actually run the code or consume resources but directly returns a success response. For example, you have created a node. As shown in the preceding figure, the scheduling system runs instances generated on Mondays and Fridays, but returns success responses without running the code for instances generated on Tuesdays, Wednesdays, Thursdays, Saturdays, and Sundays. Based on the preceding node scheduling properties, the scheduling system automatically generates and runs instances for the node, as shown in the following figure. Scheduled by month Nodes scheduled by month are automatically run at a specified time of specified days every month. On the other days, the scheduling system still generates instances to make sure the proper running of descendant instances. However, the system does not actually run the code or consume resources but directly returns a success response. For example, you have created a node. As shown in the preceding figure, the scheduling system runs the instance generated on the first day of each month, but returns success responses without running the code for instances generated on the other days. Based on the preceding node scheduling properties, the scheduling system automatically generates and runs instances for the node, as shown in the following figure. Scheduled by hour Nodes scheduled by hour are automatically run once every N hours in a specific time period every day. For example, a node is run once per hour from 01:00 to 04:00 every day. The time period is a closed interval. For example, if a node is scheduled to run once per hour in the period from 00:00 to 03:00, the scheduling system generates four instances every day, which are run at 00:00, 01:00, 02:00, and 03:00, respectively. For example, you have created a node. As shown in the preceding figure, the node is automatically run every 6 hours in the period from 00:00 to 23:59 every day. In this case, the scheduling system automatically generates and runs instances for the node, as shown in the following figure. Scheduled by minute Nodes scheduled by minute are automatically run once every N minutes in a specific time period every day. For example, you have created a node. As shown in the following figure, the node is run every 30 minutes in the period from 00:00 to 23:00 every day. Currently, a minimum interval of 5 minutes is supported. The time expression is automatically generated based on the time you select and cannot be modified. FAQ Q: Node A is scheduled by hour and Node B is scheduled by day. How do I enable Node B to automatically run every day after all instances of Node A are run? A: A node scheduled by day can depend on a node scheduled by hour. To enable Node B to automatically run every day after all 24 instances of Node A are run, do not specify the time to run Node B every day. Then, configure Node A as an ancestor of Node B. For more information, see the Dependencies topic. A node can depend on any other node, regardless of the recurrence. The recurrence of each node is specified in its scheduling properties. Q: Node A is run once per hour on the hour every day and Node B is run once per day. How do I enable Node B to automatically run after Node A is run for the first time every day? A: When configuring the scheduling properties of Node A, select Cross-Cycle Dependencies and select Inst ances of Current Node from the Depend On drop-down list. When configuring the scheduling properties of Node B, configure Node B to depend on Node A and set the scheduled time of Node B to 00:00 every day. In this way, instances of Node B only depend on the instance of Node A generated at 00:00 every day, that is, the first instance of Node A. Q: Node A is run once every Monday and Node B depends on Node A. How do I enable Node B to run once every Monday? A: Set the scheduling properties of Node B to be the same as those of Node A. That is, select Week as the instance recurrence and select Monday. Q: How are the instances of a node affected when the node is deleted? A: When a node is deleted, its instances are retained because the scheduling system still generates one or more instances for the node based on the scheduling properties. However, when the scheduling system runs such instances after the node is deleted, an error message appears because the required code is unavailable, as shown in the following figure. Q: Can I enable a node to process monthly data on the last day of each month? A: No, DataWorks does not support setting a node to run on the last day of each month. If you enable a node to run on the thirty-first day of each month, the scheduling system runs a node instance in each month that has 31 days and returns a success response without running the code in any other month. We recommend that you configure a node to process the data of the past month on the first day of each month. Q: If a node scheduled by day depends on a node scheduled by hour, how do I enable the node scheduled by day to run at 00:00 every day? A: You can configure the node scheduled by day to depend on the data generated on the day before for the node scheduled by hour. If the node scheduled by day depends on the data generated on the current day for the node scheduled by hour, the instances of the node scheduled by day can be run only on the next day. In the Schedule section of the node scheduled by day, select Cross-Cycle Dependencies, select Inst ances of Cust om Nodes from the Depend On drop-down list, and then enter the ID of the node scheduled by hour on which the node scheduled by day depends. Commit and deploy the node scheduled by day. Q: What can I do if I do not know when the output data of the ancestor node is generated? A: You can set the cross-cycle dependency for the current node to depend on the last-cycle instances of the ancestor node. Q: After a modified node is committed and deployed to the production environment, will the node instances that were originally faulty in the production environment be overwritten? A: No, the node instances that have been generated will not be overwritten. The updated code is used to run the node instances that are newly generated and have not been run. If the scheduling properties are modified, the modified configuration also applies to the newly generated node instances.
 
-#### Dependencies
+#### 4.6.4 Dependencies
 
 Scheduling dependencies are the foundation for building orderly workflows. You must configure correct dependencies between nodes to make sure that business data is produced effectively and in a timely manner. This helps standardize data development activities. DataWorks allows you to automatically parse node dependencies from the code or manually customize node dependencies. You can configure correct relationships between ancestor and descendant nodes and monitor the running status of nodes to make sure the orderly production of business data. The purpose of configuring node dependencies is to check the data output time of the table queried by SQL statements and check whether data is properly produced from an ancestor node based on the node status. You can set the output of an ancestor node as the input of a descendant node to configure a dependency between the two nodes. Regardless of the dependency configuration mode, the overall scheduling logic is that descendant nodes can be run only after ancestor nodes are run. Therefore, each node in a workflow must have at least one parent node. The dependencies between the parent nodes and child nodes are the core of scheduling dependencies. The following sections describe the principles and configuration methods of scheduling dependencies in detail. Differences between automatic parsing and custom dependencies DataWorks can automatically parse the input and output of a node based on the lineage parsed from the code. If the lineage parsed from the code is inaccurate, you can add custom dependencies as needed. We recommend that you write the code correctly to parse the lineage from the code and reduce custom dependencies. The following example shows how to configure the input and output of a node. Auto Parse: If you select Yes, node dependencies are automatically parsed from the code. For example, the code of an ODPS SQL node is as follows:
 
@@ -14084,9 +14565,9 @@ insert overwrite table table_a as select * from project_b_name.table_b;
 
 From the code, DataWorks determines that the current node depends on the node that generates table_b and the current node generates table_a. Therefore, the output name of the parent node is project_b_name.table_b and the output name of the current node is project_name.table_a. If you do not want to parse node dependencies from the code, select No for Auto Parse. If a table in an SQL statement is both an output table and a referenced table on which another node depends, the table is parsed only as an output table. If a table in an SQL statement is used as an output table or a referenced table multiple times, only one scheduling dependency is parsed. If the SQL code contains a temporary table, the table is not involved in a scheduling dependency. Temporary tables are prefixed with t_. For more information, see Project Configuration. Parent nodes In the Dependencies section of a node, you must specify an ancestor node as the parent node on which the current node depends. You must enter the output name of the ancestor node, rather than the ancestor node name. A node may have multiple output names. Enter an output name as needed. You can search for an output name of the ancestor node to be added, or click Parse I/O to parse the output name based on the lineage parsed from the code. You must enter an output name or output table name to search for the ancestor node. If you enter an output name to search for the ancestor node, DataWorks searches for the output name among the output names of nodes that have been committed to the scheduling system. Search by entering an output name You can enter an output name to search for the ancestor node and configure the node as the parent node of the current node to create a dependency. Search by entering an output table name When using this method, make sure that the entered output table name of the ancestor node is the table name used in the INSERT or CREATE statement of the current node, such as Project name.Table name . Such output names can be automatically parsed. After you click the Submit icon, the output table name of the parent node configured for the current node can be found when you enter an output table name to search for the ancestor node for other nodes. Outputs You can click the Propert ies tab in the right-side navigation pane to view and configure the output of the current node. DataWorks assigns a default output name that ends with .out to each node. You can also customize an output name or click Parse I/O to parse the output name based on the lineage parsed from the code. The output name of each node must be globally unique. FAQ Q: After DataWorks automatically parses the input and output of a node, the node fails to be committed. An error message appears to indicate that the parsed output name workshop_yanshi.tb_2 of the parent node does not exist and you must commit the parent node before committing the current node. Why does this error occur? A: The possible causes are as follows: The ancestor node is not committed. Commit the ancestor node and try again. The ancestor node is committed, but workshop_yanshi.tb_2 is not an output name of the ancestor node. Usually, the output names of the parent node and the current node are automatically parsed based on the table name that is used in the INSERT or CREATE statement or follows the FROM keyword. Make sure that you follow the principles of automatic parsing in the Differences between automatic parsing and custom dependencies section. Q: In the output of the current node, the descendant node name and ID are empty and cannot be specified. Why does this happen? A: If the current node does not have a descendant node, the descendant node name and ID are empty. After a descendant node is configured for the current node, the corresponding content can be automatically parsed. Q: What is the output name of a node used for? A: The output name of a node is used to establish dependencies between nodes. For example, if the output name of Node A is ABC and Node B uses ABC as its input, a dependency is established between nodes A and B. Q: Can a node have multiple output names? A: Yes, a node can have multiple output names. If a descendant node references an output name of the current node as the output name of the parent node, a dependency is established between the descendant node and the current node. Q: Can multiple nodes have the same output name? A: No, the output name of each node must be unique under your Apsara Stack tenant account. If multiple nodes export data to the same MaxCompute table, we recommend that you use Table name_Partition ID as the output name format of these nodes. Q: How can I avoid intermediate tables when I enable DataWorks to automatically parse node dependencies? A: Right-click an intermediate table name in the SQL code and select Delet e Input or Delet e Out put . Then, click Parse I/O to parse the input and output of the node. Q: How do I configure dependencies for the upmost node in a workflow? A: You can set the node to depend on the root node of the current workspace. Q: Why do I find a non-existent output name of Node B when I enter an output name to search for the ancestor node for Node A? A: DataWorks searches for the output name among the output names of nodes that have been committed to the scheduling system. After Node B is committed, if you delete the output name of Node B and does not commit Node B to the scheduling system again, the deleted output name of Node B can still be found. Q: How do I enable nodes A, B, and C to run in sequence once per hour? A: Set the output of Node A as the input of Node B and the output of Node B as the input of Node C. Also, set nodes A, B, and C to run once per hour. Q: An error message is returned to indicate that the parent node ID fails to be automatically parsed based on an output table name. Why does this error occur? A: This error does not indicate that the table does not exist. Instead, it indicates that the table is not the output of a specific node. Therefore, the table name cannot be used to find the node that generates the table data. In this case, the dependency on the node cannot be created. According to the principles of automatic parsing described in this topic, a dependency is created after the output of an ancestor node is set as the input of a descendant node. If no ancestor node can be parsed based on the xc_demo_partition table referenced in SQL statements, no node uses the xc_demo_partition table as its output. You can resolve this problem in the following way: i. Find the node that generates the table data and view the node output. If you do not know which the target node is, you can enter keywords to search the code for the node in fuzzy match mode. ii. If the table data is uploaded from a local server or you do not need to depend on the node, you can right-click the table name in the code and select Delet e Input . We recommend that you write the code correctly to parse the lineage from the code and reduce custom dependencies.
 
-### Components
+### 4.7 Components
 
-#### Create a script template
+#### 4.7.1 Create a script template
 
 This topic describes the definition and composition of script templates and how to create a script template. Definition A script template defines an SQL code process that involves multiple input and output parameters. Each SQL code process references one or more source tables. You can filter source table data, join source tables, and aggregate them to generate a result table required for new business. Value In actual business, many SQL code processes are similar. The input and output tables in these processes may have the same or compatible schema but different names. In this case, developers can abstract an SQL code process as a script template to reuse the SQL code. The script template extracts input parameters from input tables and generates output parameters in output tables. To create SQL script templates, you can select script templates from the script template list based on your business process and configure specific input and output tables in your business for the selected script templates, without repeatedly copying the code. This greatly improves the development efficiency and avoids repeated development. You can deploy and run the created SQL script templates in the same way as other SQL nodes. Composition Similar to a function, a script template consists of input parameters, output parameters, and an SQL code process. Input parameters The input parameters of a script template have the properties such as the parameter name, parameter type, parameter description, and parameter definition. The parameter type can be table or string. A table-type parameter specifies the table to be referenced in an SQL code process. When you use a script template, you can specify the input table required for the specific business. A string-type parameter specifies the variable control parameter in an SQL code process. For example, to export only the sales amount of the top N cities in each region in a result table of an SQL code process, you can use a string-type parameter to specify the value of N. To export the total sales amount of a province in a result table of an SQL code process, you can set a string-type parameter to specify the province and obtain the sales data of the specified province. The parameter description specifies the role of a parameter in an SQL code process. The parameter definition is a text definition of the table schema, which is required only for tabletype parameters. When you specify the parameter definition for a table-type parameter, you must provide an input table that contains the same field names and compatible types defined by the table-type parameter so that the SQL code process can run properly. Otherwise, an error is returned when the SQL code process runs because the specified field name cannot be found in the input table. The input table must contain the field names and types defined by the table-type parameter. The input table can also contain other fields. The field names and types in the input table can be in any order. The parameter definition is for reference only. We recommend that you enter the parameter definition in the following format:
 
@@ -14173,7 +14654,7 @@ INSERT OVERWRITE TABLE @@{myoutput} PARTITION (pt='${bizdate}')
     r3.city_id,
     r3.order_amt,
     r3.rank
-from ( SELECT
+from (
     area_id,
     city_id,
     rank,
@@ -14217,7 +14698,7 @@ ORDER BY
 
 Sharing scope Script templates can be shared within a workspace or made public. By default, a deployed script template is visible and available to users within the current workspace. The developer of a script template can click the Publish Snippet icon to make the general-purpose script template public to the current tenant account so that all users under the account can view and use the script template. You can view the Publish Snippet icon in the toolbar of the configuration tab of a script template. If the icon is clickable, the script template is made public. Use of script templates For more information about how to use a developed script template, see Use components. Reference records In the script template list, double-click a script template. On the configuration tab that appears, click the Snippet Nodes tab in the right-side navigation pane to view the reference records of the script template.
 
-#### Use a script template
+#### 4.7.2 Use a script template
 
 To improve development efficiency, you can create data analytics nodes by using the script templates provided by workspace members and tenants. Note the following points when you use script templates: The script templates provided by members of the current workspace are available on the Workspace-Specif ic tab. The script templates provided by tenants are available on the Public tab. GUI elements
 
@@ -14238,9 +14719,9 @@ To improve development efficiency, you can create data analytics nodes by using 
 | Versions t ab | Allows you to view the deployed versions of the current script template. |
 | Snippet Nodes t ab | Lists the reference records of the current script template. |
 
-### Custom node type
+### 4.8 Custom node type
 
-#### Overview
+#### 4.8.1 Overview
 
 DataStudio supports default node types such as ODPS SQL and Shell nodes. You can also create custom node types to meet your requirements. To create a custom node type, you need to create a custom wrapper and use it to define a custom node type. Entry
 1. Log on to the DataWorks console.
@@ -14258,7 +14739,7 @@ Only the workspace owner and administrators can access this page. View the list 
 
 Create a custom wrapper A wrapper is the core processing logic of a node type. For example, after you compile an SQL statement in the editor for an ODPS SQL node and submit the statement, the system calls the corresponding wrapper to parse and run the statement. You need to create a wrapper before creating a custom node type. Currently, only the Java programming language is supported. The procedure of creating a wrapper includes four steps: specify settings for the wrapper, deploy the wrapper in the development environment, test the wrapper in the development environment, and deploy the wrapper in the production environment. For more information, see Create a custom wrapper. View the list of custom node types The Custom Node Types page displays all custom node types in the workspace. You can click Creat e in the upper-right corner to create a custom node type. For more information, see Create a custom node type. Currently, you can only create custom node types in DataStudio. The workspace owner or node type creator can change or delet e existing node types. Change: You can click Change to edit the settings for the node type as needed. Delet e: You can click this button to delete the node type that no node uses. If any node uses the node type, a message appears, indicating that you need to disable the node first before deleting the node type. Use a custom node type After creating a custom node type, go to the Dat a Analyt ics page. Move the pointer over the Creat e icon and click Dat a Analyt ics. In the list that appears, select the created node type to create a node.
 
-#### Create a custom wrapper
+#### 4.8.2 Create a custom wrapper
 
 The procedure of creating a wrapper includes four steps: specify settings for a wrapper, deploy the wrapper in the development environment, test the wrapper in the development environment, and deploy the wrapper in the production environment. Specify settings for a wrapper
 1. Click Wrappers in the left-side navigation pane. On the page that appears, click Creat e in the
@@ -14279,7 +14760,7 @@ upper-right corner.
 3. Click Save and then click Next .
 The settings are updated to the database after you click Save. If you only modify basic settings of a wrapper without changing the resource file, the modification takes immediate effect after you click Save. If you change the resource file, the change only applies after deployment. Deploy the wrapper in the development environment After you specify the parameters in the Set t ings step and click Next , the information in the Deploy in Development Environment step is updated accordingly. You can identify the changes by checking the file name and MD5 checksum. Click Deploy in Development Environment . You can view the deployment progress in real time. After the wrapper is deployed, click Next . Test the wrapper in the development environment Specify the parameters for testing and click T est to send the parameters to the wrapper. This step is to validate the deployment and logic of the wrapper. You can also locally test the wrapper before uploading it for deployment. After the test, review the output logs in the Test Results section on the right to determine whether the test is passed. If the test is passed, select T est Passed and click Next . The Next button is operable only after you select T est Passed. Deploy the wrapper in the production environment Click Deploy in Product ion Environment . In the Conf irm dialog box that appears, click OK. The wrapper is deployed in the production environment. You can view the deployment progress in real time. The wrapper to be deployed in the production environment must be of the latest version, have been deployed in the development environment, and have passed the test. Otherwise, a message appears, indicating that the deployment in the production environment fails. Click Complet e. You can view and edit the created wrapper on the Wrappers page.
 
-#### Create a custom node type
+#### 4.8.3 Create a custom node type
 
 The Configure Custom Node Type page consists of three sections: Basic Information, Interaction, and Wrapper.
 1. On the DataStudio page, click Node Market in the top navigation bar. On the page that appears,
@@ -14315,23 +14796,23 @@ click Cust om Node T ypes in the left-side navigation pane.
 6. Click Save and Exit . Then, go to the Dat a Analyt ics page to use the custom node type that is
 created.
 
-### Manage configurations
+### 4.9 Manage configurations
 
-#### Setup
+#### 4.9.1 Setup
 
 On the Setup page, you can add and delete modules. You can also configure code templates, folders, and table levels on this page. Procedure
 1. Log on to the DataWorks console.
 2. Click
-in the lower-left corner of the Dat aSt udio page to go to the Set up page. You can perform operations on the following tabs: Configuration Center Project Configuration Template management Folder management Level management
+in the lower-left corner of the Dat aSt udio page to go to the Set up page. You can perform operations on the following tabs: Project Configuration
 
-#### Configuration center
+#### 4.9.2 Configuration center
 
 You can combine your DataStudio modules and specify editor settings on the Configuration Center tab. Go to Configuration Center
 1. Log on to the DataWorks console.
 2. Click
 in the lower-left corner of the Dat aSt udio page. The Conf igurat ion Cent er tab appears. The Configuration Center tab includes three sections: Dat aSt udio T abs, Edit or Set t ings, and General Set t ings. After the configurations are completed, you can click Apply t o All Workspaces in the lower-right corner of the page to apply the settings to all existing workspaces. DataStudio tabs On the Dat aSt udio T abs tab, you can add and delete public and MaxCompute functional modules, and drag modules to change their orders. Under T abs on Dat aSt udio Page, click next to a module to delete it. Deleted modules will not appear in the left-side navigation pane of the Dat aSt udio page. Under All Modules, click the desired module to add it. Added modules will appear in the left-side navigation pane of the Dat aSt udio page. The module settings take effect immediately for the current workspace. To make the module settings effective for all workspaces, click Apply t o All Workspaces in the lower-right corner of the page. Editor settings You can configure the code editor in the Editor Settings section. The editor settings take effect immediately for the current workspace without requiring you to refresh the page. Minimap The masked code in the current interface is displayed in the minimap in the upper-right corner of the page. When the code is long, you can move the pointer to specify the code block to be displayed in the minimap. Error Annot at ion If you select this check box, DataWorks marks potential syntax errors with a red squiggly line. When you see a syntax error, you can move the pointer over the underlined code to view the error message. Aut o Save If you select this check box, DataWorks automatically saves the code being edited at a specific interval. In this way, if the code editor of a node is closed unexpectedly, you can click Use Version Saved on Server or Use Version Saved in Local Cache to re-open the node. Aut o-Complet ed Code St yle You can set the code style to uppercase or lowercase as required. Aut o Line Wrap You can set Auto Line Wrap to Disable or Enable. Wrap at Column If Auto Line Wrap is set to Disable, the value of Wrap at Column is 80 by default, which cannot be modified. If Auto Line Wrap is set to Enable, you can set a value for Wrap at Column as required. Code Font Size Valid values: 12 to 18. You can change the font size based on your habits and code size. Ent er suggest ions If you select this check box, the system automatically displays suggestions on how to set a field when you press Enter. If you clear this check box, a new line is started after you press Enter. In addition to the Enter key, you can also use the Tab key to enter prompted suggestions. Aut o Complet ion You can specify whether to enable the following code hints when you enter the code: Cont inuous Smart T ips: specifies whether to automatically add a space after each autocompleted term such as a keyword, table name, or field name. Keyword: specifies whether to enable keyword hints. Synt ax T emplat e: specifies whether to enable syntax template hints. Project : specifies whether to enable project name hints. T able Name: specifies whether to enable table name hints. When this feature is enabled, the system gives higher priority to tables used recently. Field: specifies whether to enable field name hints. General settings Display Node Engine Inf ormat ion on DAG You can specify whether to display node engine information on the DAG. T heme You can set the DataStudio theme to black or white.
 
-#### Workspace settings
+#### 4.9.3 Workspace settings
 
 The Workspace Settings tab displays five parameters: Partition Date Format, Partition Field Name, Temporary Table Prefix, Upload Table (Import Table) Prefix, and Mask Data in Page Query Results. Go to the Workspace Settings tab
 1. Log on to the DataWorks console.
@@ -14360,7 +14841,7 @@ Enable de-identification for DataWorks workspaces Data de-identification for Dat
 
 If you want to de-identify more data types or have special requirements on the deidentified data formats, complete your de-identification settings in Data Security Guard. The feature of de-identifying data for DataWorks workspaces must work with Data Security Guard. For more information, see Data security guard.
 
-#### Template management
+#### 4.9.4 Template management
 
 The Template Management page displays code templates. Workspace administrators can change the display formats of the templates as required. Procedure
 1. Log on to the DataWorks console.
@@ -14372,7 +14853,7 @@ Templates are only available for ODPS SQL, ODPS MR, and Shell nodes.
 5. In the Node T emplat e dialog box, enter the template as required.
 6. Click Save.
 
-#### Folder management
+#### 4.9.5 Folder management
 
 Each workspace can hold a great number of tables. For easy management, you can organize tables in two levels of folders. Context Folders are used to store tables. A workspace administrator can add multiple folders and classify tables by purpose and name. Procedure
 1. Log on to the DataWorks console.
@@ -14381,7 +14862,7 @@ in the lower-left corner.
 3. On the Set up page, click the Folder Management tab.
 On the page that appears, you can add, modify, and delete folders. Add a folder Enter a custom folder name in the Folder field, select a parent folder from the Parent Folder drop-down list, and then click Creat e. Modify a folder Find the target folder and click Change in the Actions column. In the Change Folder dialog box, enter a new folder name and click OK. Delete a folder Find the target folder and click Delet e in the Actions column. In the Delet e Folder message, click OK.
 
-#### Level management
+#### 4.9.6 Level management
 
 On the Level Management tab, you can design physical levels of tables. Procedure
 1. Log on to the DataWorks console.
@@ -14390,7 +14871,7 @@ in the lower-left corner.
 3. On the Set up page, click the Level Management tab.
 You can classify tables based on their importance. Level management allows you to precisely locate incorrectly organized tables and ensures normal running of published jobs. If a workspace does not contain default table levels, the workspace owner or workspace administrator must add them as required. On the Level Management tab, you can add, modify, and delete table levels. To add a table level, perform the following steps: a. In the Hierarchy section, set Level and Descript ion. b. Click Creat e. To modify a table level, perform the following steps: a. Find the target table level and click Change in the Actions column. b. In the Change Level dialog box, modify Level and Descript ion as needed. c. Click OK. To delete a table level, perform the following steps: a. Find the target table level and click Delet e in the Actions column. b. In the Delet e Level message, click OK. On the Level Management tab, you can also add, modify, and delete table categories. To add a table category, perform the following steps: a. In the T able Cat egory section, set Cat egory and Descript ion. b. Click Creat e. To modify a table category, perform the following steps: a. Find the target table category and click Change in the Actions column. b. In the Change Cat egory dialog box, modify Cat egory and Descript ion as needed. c. Click OK. To delete a table category, perform the following steps: a. Find the target table category and click Delet e in the Actions column. b. In the Delet e Cat egory message, click OK.
 
-#### Workspace backup and restore
+#### 4.9.7 Workspace backup and restore
 
 On the Workspace Backup and Restoration tab, you can migrate code between workspaces. This topic describes how to back up and restore a workspace. Prerequisites Workspaces are created. For more information, see Create a workspace. Go to the Workspace Backup and Restoration tab
 1. Log on to the DataWorks console.
@@ -14420,9 +14901,9 @@ the compute engines of the current workspace and the destination workspace.
 6. Click OK.
 If the workspace that you backed up contains multiple compute engines, the system scans all compute engine instances during restoration. The system only restores nodes of the existing compute engines in the workspace to be restored. In this case, you must configure the mappings between the compute engines before restoring the destination workspace. If the workspace to be restored does not contain a compute engine type such as E- MapReduce, or no instance is available for the compute engine type, nodes of this engine type are not restored. Compute engine mappings must be configured for custom node types.
 
-### Deploy
+### 4.10 Deploy
 
-#### Deploy nodes
+#### 4.10.1 Deploy nodes
 
 In a rigorous data development process, developers develop and debug code and configure dependencies and scheduling properties for nodes in the development environment. Then, developers commit and deploy the nodes to run them in the production environment. DataWorks workspaces in standard mode can process data seamlessly from the development environment to the production environment within a single workspace. We recommend that you use workspaces in standard mode to develop and produce data. Deploy nodes in a workspace in standard mode Each DataWorks workspace in standard mode is linked with two MaxCompute projects, one as the development environment and the other as the production environment. You can directly commit and deploy nodes from the development environment to the production environment. Follow these steps:
 1. On the Dat aSt udio page, configure and debug the code of nodes. Then, double-click the target
@@ -14442,11 +14923,11 @@ nodes to be cloned and click Clone All. In the Create Clone Task dialog box that
 5. View the cloned nodes.
 You can view the successfully cloned nodes on the View Clone Tasks page of the source workspace. Switch to the destination workspace. You can find that the nodes are cloned from the source workspace.
 
-#### Overview of cross-workspace cloning
+#### 4.10.2 Overview of cross-workspace cloning
 
 For workspaces under the same Apsara Stack tenant account, you can use the cross-workspace cloning feature to clone and deploy workflows across these workspaces. You can also use this feature to clone nodes, such as computing or sync nodes, across workspaces. This topic describes how to process the dependencies between nodes during cross-workspace cloning. If you clone nodes across workspaces by using the cross-workspace cloning feature, DataWorks automatically changes the output names of the cloned nodes in the destination workspace to distinguish nodes in different workspaces under the same Apsara Stack tenant account. This allows you to successfully clone node dependencies. Cross-workspace cloning cannot be used to clone nodes across workspaces in different regions. You can set the owner of cloned nodes in the destination workspace to Def ault or Clone T ask Creat or. If you clone nodes owned by the workspace administrator: After the nodes are cloned to the destination workspace, their owner is set to the original owner preferentially. If the original owner is not added to the destination workspace, you will become the owner. If you clone nodes owned by yourself: After the nodes are cloned to the destination workspace, their owner is set to you preferentially. If you are not added to the destination workspace, you are asked whether to change the owner. If you agree to change the owner, you will be added to the destination workspace and become the owner of the cloned nodes. If you do not agree to change the owner, the clone task is canceled. Clone a workflow Assume that the output of the task_A node in the project_1 workspace is project_1.task_A_out. If you clone a workflow that contains the task_A node to the destination workspace project_2, the node output name changes to project_2.task_A_out in the destination workspace. Clone node dependencies Assume that the task_ B node in the project_1 workspace depends on the task_A node in the project_3 workspace. If you clone the task_B node in the project_1 workspace to the destination workspace project_2, the dependency between the task_A and task_B nodes is also cloned. The task_B node in the project_2 workspace also depends on the task_A node in the project_3 workspace.
 
-#### Clone nodes across workspaces
+#### 4.10.3 Clone nodes across workspaces
 
 This topic describes how to clone nodes across workspaces with an example of cloning a workflow from one workspace to another. Prerequisites Two workspaces named Weisong_dataworks_test and Weisong_dataworks_test2 respectively are created. For more information about how to create a workspace, see Create a workspace. Context You can clone nodes across workspaces in the following scenarios: Clone nodes from a workspace in the basic mode to another workspace in the basic mode. Clone nodes from a workspace in the basic mode to another workspace in the standard mode. After you clone a node, the folder and workflow to which the node belongs are cloned to the destination workspace. Any change to the node, folder, or workflow can also be cloned to the destination workspace. Procedure
 1. Log on to the DataWorks console. On the DataStudio page that appears, switch to the
@@ -14460,7 +14941,7 @@ and change type, and then click Clone.
 5. After the system message that indicates the target node is cloned successfully and is being
 committed to the destination workspace appears, switch to the Weisong_dataworks_test2 workspace. In the Dat a Analyt ics section, view the workflow that has been successfully cloned to the current workspace.
 
-### Create an ad hoc query node
+### 4.11 Create an ad hoc query node
 
 The Ad-Hoc Query tab allows you to test your code in the development environment. You can check for errors and check whether your code works as expected. Context You do not need to commit and deploy ad hoc query nodes or configure scheduling policies for ad hoc query nodes. You can configure scheduling policies only for nodes created under Business Flow on the Dat a Analyt ics tab. Create a folder
 1. Log on to the DataWorks console.
@@ -14480,7 +14961,7 @@ The node name must be 1 to 128 characters in length and can contain letters, dig
 5. Click
 in the toolbar.
 
-### View runtime logs
+### 4.12 View runtime logs
 
 The Runtime Logs tab displays the records of all nodes that have been run in the last three days. You can click a node to view its runtime logs. Context The runtime logs are retained for only three days. Procedure
 1. Log on to the DataWorks console.
@@ -14491,7 +14972,7 @@ state.
 4. Click a record to view the runtime log on the right.
 If you need to save the SQL statements in the runtime log, click in the toolbar. In the Creat e Node dialog box, set the parameters and click Commit to save the SQL statements that have been run as an ad hoc query node.
 
-### View tenant tables
+### 4.13 View tenant tables
 
 On the Tenant Tables tab, you can view tables of all workspaces of the current tenant account. Prerequisites The T enant T ables tab appears only after you bind a MaxCompute compute engine on the Project Management page. For more information, see Configure a workspace. Procedure
 1. Log on to the DataWorks console.
@@ -14510,7 +14991,7 @@ Click in the lower-left corner to show or hide the left-side navigation pane.
 |---|---|
 | Preview t ab | Displays the data of the current table. Not ice You can preview only the data of MaxCompute tenant tables. |
 
-### Manage tables
+### 4.14 Manage tables
 
 This topic describes how to view, modify, and delete MaxCompute tables, and the basic knowledge about data hierarchy. Prerequisites The Workspace T ables tab appears only after you bind a MaxCompute compute engine on the Project Management page. For more information, see Configure a workspace. Manage tables
 1. Log on to the DataWorks console.
@@ -14526,7 +15007,7 @@ The following section describes how to view, modify, and delete a MaxCompute tab
 
 Divide a data warehouse into layers In the Physical Model section of the configuration tab of a table, you can define table layers for a data warehouse. This allows you to have better planning and control over your data. Typically, a data warehouse consists of the following layers: ODS: The ODS layer stores raw data of the source system based on the original data structure. The ODS layer serves as the data staging area of the data warehouse. It imports basic data to MaxCompute and records historical changes of basic data. CDM: The CDM layer consists of the dimension data (DIM), data warehouse detail (DWD), and data warehouse service (DWS) layers. The CDM layer processes and integrates the data of the ODS layer to define conformed dimensions, create reusable detailed fact tables for data analysis and statistics collection, and aggregate common metrics. The DIM layer defines conformed dimensions for an enterprise based on the concepts of dimensional modeling. It reduces the risk of inconsistent statistical criteria and algorithms. Tables at the DIM layer are also called logical dimension tables. Generally, each dimension corresponds to a logical dimension table. The DWS layer is driven by analyzed subjects during data modeling. Based on the metric requirements of upper-layer applications and products, the DWS layer creates fact tables to aggregate common metrics and builds a physical data model by using wide tables. The DWS layer creates statistical metrics in compliance with uniform naming conventions and statistical criteria, provides common metrics for the upper layer, and generates aggregate wide tables and detailed fact tables. Tables at the DWS layer are also called logical aggregate tables, which are used to store derived metrics. The DWD layer is driven by business processes during data modeling. It creates detailed fact tables at the finest granularity based on each specific business process. In combination with the data usage habits of an enterprise, you can duplicate some key attribute fields of dimensions in detailed fact tables to create wide tables. Tables at the DWD layer are also called logical fact tables. ADS: The ADS layer stores personalized statistical metrics of data products. It processes the data of the CDM and ODS layers.
 
-### View built-in functions
+### 4.15 View built-in functions
 
 The Built-In Functions tab displays functions built in MaxCompute. You can view the types, description, and examples of functions on this tab. Procedure
 1. Log on to the DataWorks console.
@@ -14535,7 +15016,7 @@ Click in the lower-left corner to show or hide the left-side navigation pane.
 3. View the types, description, and examples of the built-in functions.
 Functions are categorized into aggregate functions, analytic functions, date functions, mathematical functions, string functions, and other functions. The preceding functions are built in MaxCompute. You can click a function to view its description.
 
-### Manage deleted nodes
+### 4.16 Manage deleted nodes
 
 DataWorks provides a recycle bin to store all deleted nodes in the current workspace. You can restore or permanently delete the nodes. Go to the Recycle Bin tab
 1. Log on to the DataWorks console.
@@ -14552,7 +15033,7 @@ After you restore a node, a new node ID is generated for scheduling and all the 
 3. In the Delet e message, click OK.
 Nodes permanently deleted from the recycle bin cannot be restored. The recycle bin displays only deleted nodes.
 
-### Create a manually triggered
+### 4.17 Create a manually triggered workflow
 
 workflow In a manually triggered workflow, all nodes must be manually triggered, and cannot be automatically scheduled by DataWorks. Therefore, you do not need to specify parent nodes or outputs for nodes in manually triggered workflows. Create a manually triggered workflow
 1. Log on to the DataWorks console.
@@ -14562,7 +15043,7 @@ Click in the lower-left corner to show or hide the left-side navigation pane.
 4. In the Creat e Workf low dialog box, set Workf low Name and Descript ion.
 Not ice The workflow name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and periods (.). It is not case-sensitive.
 5. Click Creat e.
-Composition of a manually triggered workflow We recommend that you create a maximum of 100 nodes in a manually triggered workflow. A manually triggered workflow consists of the nodes of the following modules. After you create a manually triggered workflow, open this workflow and create nodes of various types for each module. For more information, see Node types. Dat a Int egrat ion Double-click Dat a Int egrat ion under the created workflow to view all the data integration nodes. Right-click Dat a Int egrat ion and choose Creat e > Bat ch Synchronizat ion to create a batch sync node. For more information, see Create a batch sync node. MaxComput e The MaxCompute compute engine consists of data analytics nodes, such as ODPS SQL, SQL Snippet, ODPS Spark, PyODPS, ODPS Script, and ODPS MR nodes. You can also view and create tables, resources, and functions. Dat a Analyt ics Show MaxComput e under the created workflow and right-click Dat a Analyt ics to create a data analytics node. For more information, see Create an ODPS SQL node, Create an SQL Snippet node, Create an ODPS Spark node, Create a PyODPS node, Create an ODPS Script node, and Create an ODPS MR node. T able Show MaxComput e under the created workflow and right-click T able to create a table. You can also view all the tables created for the current MaxCompute compute engine. For more information, see Create a MaxCompute table. Resource Show MaxComput e under the created workflow and right-click Resource to create a resource. You can also view all the resources created for the current MaxCompute compute engine. For more information, see Create, reference, and download resources. Funct ion Show MaxComput e under the created workflow and right-click Funct ion to create a function. You can also view all the functions created for the current MaxCompute compute engine. For more information, see Register a UDF. Algorit hm Click the created workflow and right-click Algorit hm to create an algorithm. You can also view all the PAI nodes created in the current manually triggered workflow. For more information, see Create a PAI node. General Click the created workflow and right-click General to create relevant nodes. For more information, see Create a Shell node and Create a zero-load node. UserDef ined Click the created workflow and right-click UserDef ined to create relevant nodes. For more information, see Create a Hologres development node. GUI elements The following table describes the icons and tabs on the Manually Triggered Workflows page.
+Composition of a manually triggered workflow We recommend that you create a maximum of 100 nodes in a manually triggered workflow. A manually triggered workflow consists of the nodes of the following modules. After you create a manually triggered workflow, open this workflow and create nodes of various types for each module. For more information, see Node types. Dat a Int egrat ion Double-click Dat a Int egrat ion under the created workflow to view all the data integration nodes. Right-click Dat a Int egrat ion and choose Creat e > Bat ch Synchronizat ion to create a batch sync node. For more information, see Create a batch sync node. MaxComput e The MaxCompute compute engine consists of data analytics nodes, such as ODPS SQL, SQL Snippet, ODPS Spark, PyODPS, ODPS Script, and ODPS MR nodes. You can also view and create tables, resources, and functions. Dat a Analyt ics Show MaxComput e under the created workflow and right-click Dat a Analyt ics to create a data analytics node. For more information, see Create an ODPS SQL node, Create an SQL Snippet node, Create an ODPS Spark node, Create a PyODPS node, Create an ODPS Script node, and Create an ODPS MR node. T able Show MaxComput e under the created workflow and right-click T able to create a table. You can also view all the tables created for the current MaxCompute compute engine. For more information, see Create a MaxCompute table. Resource Show MaxComput e under the created workflow and right-click Resource to create a resource. You can also view all the resources created for the current MaxCompute compute engine. For more information, see Create, reference, and download resources. Funct ion Show MaxComput e under the created workflow and right-click Funct ion to create a function. You can also view all the functions created for the current MaxCompute compute engine. For more information, see Register a UDF. Algorit hm Click the created workflow and right-click Algorit hm to create an algorithm. You can also view all the PAI nodes created in the current manually triggered workflow. For more information, see Create a PAI node. Click the created workflow and right-click General to create relevant nodes. For more information, see Create a Shell node and Create a zero-load node. UserDef ined Click the created workflow and right-click UserDef ined to create relevant nodes. For more information, see Create a Hologres development node. GUI elements The following table describes the icons and tabs on the Manually Triggered Workflows page.
 
 | No. | Icon or tab | Description |
 |---|---|---|
@@ -14586,11 +15067,11 @@ Composition of a manually triggered workflow We recommend that you create a maxi
 | 15 | Change Hist ory t ab | Allows you to view the operation records of all nodes in the current manually triggered workflow. |
 | 16 | Versions t ab | Allows you to view the deployment records of all nodes in the current manually triggered workflow. |
 
-### Editor keyboard shortcuts
+### 4.18 Editor keyboard shortcuts
 
 This section describes keyboard shortcuts available for the code editor. Google Chrome in Windows OS `Ctrl + S` : Save changes to a node. `Ctrl + Z` : Undo an action. `Ctrl + Y` : Redo an action. `Ctrl + D` : Select occurrences. `Ctrl + X` : Cut a line. `Ctrl + Shift + K` : Delete a line. `Ctrl + C` : Copy a line. `Ctrl + I` : Select a line. `Alt + Shift + Drag` : Select a block. `Alt + Click` : Insert an additional cursor. `Ctrl + Shift + L` : Select all occurrences. `Ctrl + F` : Search for text in a node. `Ctrl + H` : Replace text in a node. `Ctrl + G` : Locate a line. `Alt + Enter` : Select all matched strings. `Alt + Up or down arrow` : Move a line up or down. `Alt + Shift + Up or down arrow` : Duplicate a line. `Ctrl + Shift + K` : Delete a line. `Ctrl + Enter or Ctrl + Shift + Enter` : Insert a line break downwards or upwards. Ctrl + Shift + Back slash (\) : Jump to the parenthesis, bracket, or brace that matches the adjacent one. `Ctrl + Left bracket (]) or right bracket ([)` : Increase or decrease the indent of a line. `Home or End` : Move the cursor to the beginning or end of a line. `Ctrl + Home or End` : Move the cursor to the top or bottom of a node. `Ctrl + Left or Right arrow` : Move the cursor one word to left or right. `Ctrl + Shift + Left bracket (]) or right bracket ([)` : Hide or show a block. `Ctrl + K + Left bracket (]) or right bracket ([)` : Hide or show sub-blocks in a block. `Ctrl + K + 0 or J` : Hide or show all blocks. `Ctrl + Slash (/)` : Comment out or uncomment the selected lines or blocks. Google Chrome in Mac OS `Command-S` : Save changes to a node. `Command-Z` : Undo an action. `Command-Y` : Redo an action. `Command-D` : Select occurrences. `Command-X` : Cut a line. `Shift-Command-K` : Delete a line. `Command-C` : Copy a line. `Command-I` : Select a line. `Command-F` : Search for text in a node. `Option-Command-F` : Replace text in a node. `Option-Up or down arrow` : Move a line up or down. `Option-Shift-Up or down arrow` : Duplicate a line. `Shift-Command-K` : Delete a line. `Command-Enter or Shift-Command-Enter` : Insert a line break downwards or upwards. Shift-Command-Back slash (\) : Jump to the parenthesis, bracket, or brace that matches the adjacent one. `Command-Left bracket (]) or right bracket ([)` : Increase or decrease the indent of a line. `Command-Left or right arrow` : Move the cursor to the beginning or end of a line. `Command-Up or down arrow` : Move the cursor to the top or bottom of a node. `Option-Left or right arrow` : Move the cursor one word to left or right. `Option-Command-Left bracket (]) or right bracket ([)` : Hide or show a block. `Command-K-Left bracket (]) or right bracket ([)` : Hide or show sub-blocks in a block. `Command-K-0 or J` : Hide or show all blocks. `Command-Slash (/)` : Comment out or uncomment the selected lines or blocks. Insert multiple cursors and select multiple occurrences or lines `Option-Click` : Insert an additional cursor. `Option-Command-Up or down arrow` : Insert an additional cursor to the previous or next line. `Command-U` : Undo a cursor-related operation. `Option-Shift-I` : Insert a cursor at the end of each selected line. `Command-G or Shift-Command-G` : Select the next or previous matched string. `Command-F2` : Select the nearest character of each cursor. `Shift-Command-L` : Select the nearest word of each cursor. `Option-Enter` : Select all the matched strings. `Option-Shift-Drag` : Multi-select lines `Option-Shift-Command-Up or down arrow` : Extend a selection one line up or down. `Option-Shift-Command-Left or right arrow` : Extend a selection one character to the left or right.
 
-### Use E-MapReduce in DataWorks
+### 4.19 Use E-MapReduce in DataWorks
 
 This topic describes how to use E-MapReduce in DataWorks. Bind an E-MapReduce project to a DataWorks workspace Before you bind an E-MapReduce project to a DataWorks workspace, you must obtain the information about the E-MapReduce project.
 1. Log on to the DataWorks console.
@@ -14622,7 +15103,7 @@ view the information about all available E-MapReduce compute engines in the curr
 6. Click Conf irm. After the E-MapReduce cluster is bound to your workspace, you can create E-
 MapReduce nodes on the Dat aSt udio page. If the binding fails, check whether the failure is caused by one of the following reasons: The E-MapReduce user ID is bound to another tenant account. The specified cluster name already exists. Create an E-MapReduce node E-MapReduce nodes are categorized into four types: EMR Hive, EMR Spark SQL, EMR Spark, and EMR MR. For more information, see Create an EMR MR node. Reference resource files E-MapReduce resource files are categorized into two resource types: EMR JAR and EMR File. Reference E-MapReduce resource files by using the following methods: For EMR Hive and EMR MR nodes, add `--@resource_reference{"Resource name"}` at the first line of the code. For EMR Spark nodes, add `##@resource_reference{"Resource name"}` at the first line of the code. Manage data DataWorks allows you to query E-MapReduce metadata and synchronize the data for data development.
 
-### Migrate nodes in DataStudio
+### 4.20 Migrate nodes in DataStudio
 
 This topic describes how to migrate nodes in DataStudio that are created in a workflow of an earlier version to a workflow of a later version. Migrate nodes in DataStudio
 1. Log on to the DataWorks console. The DataStudio page appears.
@@ -14634,13 +15115,13 @@ want to migrate in the Data Integration folder, and select Move.
 version.
 5. Click OK.
 
-## HoloStudio
+## 5 HoloStudio
 
-### Overview
+### 5.1 Overview
 
-This topic describes what is HoloStudio and the features of HoloStudio. HoloStudio, which is developed based on Hologres, is an all-in-one online analytical processing (OLAP) development platform deeply integrated with DataWorks. HoloStudio provides Hologres users with standardized and easy-to-use development services and one-stop real-time data warehouse building services by using a visualized and wizard-based user interface. In addition to standard management available in PostgreSQL, HoloStudio provides more interactive analytics features. HoloStudio supports the following features: Table management HoloStudio allows you to create a PostgreSQL table on a visualized user interface or by using SQL statements. HoloStudio also allows you to create a foreign table sourced from MaxCompute by synchronize the schema with one click and preview and analyze MaxCompute data. SQL Console The SQL Console module of HoloStudio allows you to use an SQL editor to obtain query results in seconds. Data analytics Based on the underlying capabilities of DataWorks, HoloStudio allows you to create multiple foreign tables at a time and synchronize data with one click and provides you with the one-stop, stable, and efficient extract-transform-load (ETL) service. Seamless connection to the Hologres console HoloStudio is seamlessly connected to the Hologres console. In the Hologres console, you can manage Hologres instances, users, and databases on a visualized user interface.
+This topic describes what is HoloStudio and the features of HoloStudio. HoloStudio, which is developed based on Hologres, is an all-in-one online analytical processing (OLAP) development platform deeply integrated with DataWorks. HoloStudio provides Hologres users with standardized and easy-to-use development services and one-stop real-time data warehouse building services by using a visualized and wizard-based user interface. In addition to standard management available in PostgreSQL, HoloStudio provides more interactive analytics features. HoloStudio supports the following features: Table management HoloStudio allows you to create a PostgreSQL table on a visualized user interface or by using SQL statements. HoloStudio also allows you to create a foreign table sourced from MaxCompute by synchronize the schema with one click and preview and analyze MaxCompute data. The SQL Console module of HoloStudio allows you to use an SQL editor to obtain query results in seconds. Based on the underlying capabilities of DataWorks, HoloStudio allows you to create multiple foreign tables at a time and synchronize data with one click and provides you with the one-stop, stable, and efficient extract-transform-load (ETL) service. Seamless connection to the Hologres console HoloStudio is seamlessly connected to the Hologres console. In the Hologres console, you can manage Hologres instances, users, and databases on a visualized user interface.
 
-### Bind a Hologres database to the
+### 5.2 Bind a Hologres database to the current workspace
 
 current workspace This topic describes how to bind a Hologres database to the current workspace. If you need to use HoloStudio for data development, bind a Hologres database to the current workspace. Perform the following steps:
 1. Log on to HoloStudio.
@@ -14666,7 +15147,7 @@ In the Creat e Dat abase dialog box, set relevant parameters and click T est con
 3. Use the Hologres database in HoloStudio.
 After the Hologres database is bound to the current workspace, click the Refresh icon on the PG management tab. After the database appears, you can use the database in HoloStudio.
 
-### SQL Console
+### 5.3 SQL Console
 
 The SQL Console in HoloStudio is an editor for executing SQL statements. In the SQL Console, you can execute SQL statements to analyze data in Hologres and obtain the query results. This topic describes the basic features and usage of the SQL Console in HoloStudio. Folder The Folder module stores new ad hoc queries, which helps you manage ad hoc queries. In the left-side navigation pane, click SQL Console. Move the pointer over the Create icon and select Folder. In the Create Folder dialog box, enter a folder name and click Commit to create a folder. You can create an ad hoc query in the folder and execute standard SQL statements on tables. You can also right-click a table in the folder and select the relevant menu item to move, rename, or delete the table. SQL Console The SQL Console module allows you to create ad hoc queries and execute standard SQL statements.
 1. Create an ad hoc query.
@@ -14720,9 +15201,9 @@ The following table describes the GUI elements on the node editing tab.
 
 HoloStudio also allows you to directly manage the queried data. For example, you can hide columns, copy data, and search for data. For statements without results returned, such as the `CREATE TABLE` statement, only operational logs are generated after the statements are executed.
 
-### PostgreSQL management
+### 5.4 PostgreSQL management
 
-#### Manage databases
+#### 5.4.1 Manage databases
 
 The PG management module of HoloStudio allows you to manage databases and tables with one click in a visualized manner. In addition, HoloStudio supports interactive queries with a response time within seconds. This topic describes how to use the PG management module to manage databases. Create a database The PG management module allows you to connect databases to HoloStudio and manage the connected databases in a visualized manner. Before you connect a database to HoloStudio, create the database in the Hologres console or by executing SQL statements in the SQL Console. The following example demonstrates how to create a database by executing SQL statements in the SQL Console and connect the database to HoloStudio:
 1. Create an ad hoc query.
@@ -14757,7 +15238,7 @@ In the Creat e Dat abase dialog box, set relevant parameters and click T est con
 
 Delete a database The PG management module of HoloStudio allows you to delete databases. On the left-side navigation submenu, click PG management . On the PG management tab, right-click the database you want to delete and select Delet e Dat abase. In the Delete Database message, click Ok to delete the database. Only a superuser of a database or the database owner configured by a superuser can delete the database. View database details On the left-side navigation submenu, click PG management . On the PG management tab, right-click the database for which you want to view details and select Dat abase det ails.
 
-#### Manage tables
+#### 5.4.2 Manage tables
 
 Similar to PostgreSQL, Hologres manages data by using tables. The PG management module of HoloStudio allows you to manage tables in a visualized manner. You can create, check, or delete a table with one click. This topic describes how to use the PG management module of HoloStudio to manage tables. Create a table
 1. Create a table.
@@ -14794,7 +15275,7 @@ On the left-side navigation submenu, click PG management . Double-click the tabl
 2. Preview data.
 On the left-side navigation submenu, click PG management . Double-click the table you want to check and click Dat a Preview to check the content of the table. If the table contains no data, you can only view the fields of the table. Delete a table On the left-side navigation submenu, click PG management . On the PG management tab, right-click the table you want to delete and select Delet e T able. In the Delete message, click Ok.
 
-#### Manage foreign tables
+#### 5.4.3 Manage foreign tables
 
 In Hologres, a foreign table does not store data but maps the table from the external data source. The PG management module of HoloStudio allows you to create, query, or delete foreign tables. You can only analyze foreign tables sourced from MaxCompute. This helps you obtain the query results. This topic describes how to use the PG management module of HoloStudio to manage foreign tables. Create a foreign table On the left-side navigation submenu, click PG management . On the PG management tab, move the pointer over the Create icon and select Ext ernal T able. On the tab that appears, set parameters for creating a foreign table and click Commit . An existing MaxCompute table is used in the following example. After you search for a MaxCompute table by entering its name, HoloStudio automatically generates a foreign table based on the fields of the MaxCompute table after you click Commit.
 1. Before you create a foreign table in Hologres, make sure that its source table exists in a
@@ -14816,9 +15297,9 @@ On the left-side navigation submenu, click PG management . On the PG management 
 2. View t he DDL st at ement used t o creat e t he t able.
 On the left-side navigation submenu, click PG management . On the PG management tab, doubleclick the foreign table you want to check, and click Generat e DDL St at ement to check the SQL statement used to create the foreign table. Delete a foreign table On the left-side navigation submenu, click PG management . On the PG management tab, right-click the foreign table you want to delete and select Delet e T able. In the Delete message, click Ok to delete the foreign table.
 
-### Data analytics
+### 5.5 Data analytics
 
-#### Overview
+#### 5.5.1 Overview
 
 The Data Analytics module of HoloStudio is seamlessly integrated with DataWorks for node scheduling and provides all-in-one, stable, and efficient extract, transform, load (ETL) services. It can also synchronize MaxCompute table schemas and data and allows you to upload local files for data analytics. The Data Analytics module consists of the following submodules:
 1. Folder: stores data analytics nodes, helping you manage data analytics nodes of each database.
@@ -14830,7 +15311,7 @@ synchronize MaxCompute data to Hologres.
 5. One-click local file Upload: allows you to upload local files to Hologres.
 Folder Folders store data analytics nodes, helping you manage data analytics nodes of each database. On the left-side navigation submenu, click Dat a Analyt ics. On the Data Analytics tab, move the pointer over the Create icon and select Folder. In the Create Folder dialog box, enter a folder name and click Commit .
 
-#### Use the Interactive Analytics Development
+#### 5.5.2 Use the Interactive Analytics Development submodule
 
 submodule The Interactive Analytics Development submodule is seamlessly integrated with DataWorks. You can use HoloStudio to import data from MaxCompute to Hologres. You can also use DataWorks to schedule nodes to periodically import data to Hologres. This topic describes how to use HoloStudio to map the source data stored in a MaxCompute table to Hologres for periodic scheduling.
 1. Prepare a MaxComput e t able.
@@ -14943,7 +15424,7 @@ On the HoloStudio page, click Dat a Analyt ics on the left-side navigation subme
 ```
 create table if not exists bank_data_holo_1_${bizdate} partition of bank_data_holo
   for values in ('${bizdate}');
-insert into bank_data_holo_1_${bizdate} select
+insert into bank_data_holo_1_${bizdate}
     age as age,
     job as job,
     marital as marital,
@@ -14980,7 +15461,7 @@ On the Creat e Package page, find the target node and click Publish in the Actio
 9. Check t he cont ent of t he t able in HoloSt udio.
 After the retroactive data generation node is run, go back to HoloStudio. On the left-side navigation submenu, click PG management . On the PG management tab, click a database and choose Mode > public > T able. Double-click the partitioned table that is scheduled and click Dat a Preview to check whether the data is imported to the table.
 
-#### Create multiple foreign tables at a time
+#### 5.5.3 Create multiple foreign tables at a time
 
 Seamlessly integrated with MaxCompute at the underlying layer, Hologres allows you to create foreign tables to query MaxCompute data in an accelerated manner. You can create multiple foreign tables at a time by using the IMPORT FOREIGN TABLE statement. To free you from SQL operations, HoloStudio provides the following submodule for you to create foreign tables in a visualized manner: One-click MaxCompute table structure synchronization.
 1. Creat e a schema sync node.
@@ -15004,7 +15485,7 @@ After the schema sync node is created, you must set parameters for synchronizing
 3. Run t he schema sync node.
 Click the Save icon and then click the Run icon to run the schema sync node. After the schema sync node is run, click PG management on the left-side navigation submenu. The created foreign tables appear. You can query the table data.
 
-#### Import MaxCompute data
+#### 5.5.4 Import MaxCompute data
 
 To improve the efficiency of querying MaxCompute data, Hologres allows you to import MaxCompute data to Hologres for queries. HoloStudio provides the following submodule for you to directly import MaxCompute data in a visualized manner: One-click MaxCompute data synchronization.
 1. Creat e a dat a sync node.
@@ -15036,7 +15517,7 @@ After the data sync node is created, you must set parameters for synchronizing d
 3. Run t he dat a sync node.
 Click the Save icon and then click the Run icon to run the data sync node. After the node is run, you can query the imported data in SQL Console or PG management.
 
-#### Upload local files
+#### 5.5.5 Upload local files
 
 This topic describes how to upload local files in HoloStudio in a visualized manner. Hologres allows you to use the COPY statement to import data from the standard input of a client to a specified table. For more information, see COPY. HoloStudio allows you to import data in a local file to a specified table by uploading the local file in a visualized manner. To upload a local file in HoloStudio, perform the following steps:
 1. Creat e a t able.
@@ -15097,13 +15578,13 @@ After you click Next Step, select the local file to upload, set other required p
 5. View t he import ed dat a.
 After you click Commit , data in the selected local file is imported to the specified table. You can go to SQL Console or PG management to view the imported data.
 
-### Hologres console
+### 5.6 Hologres console
 
-#### Overview
+#### 5.6.1 Overview
 
 Hologres is a real-time interactive analytics service that is fully compatible with PostgreSQL and seamlessly integrated with the big data ecosystem. Hologres delivers high-concurrency and lowlatency performance in analyzing terabyte-scale data. Hologres allows you to use mainstream Business Intelligence (BI) tools to get an analytical insight into data from multiple dimensions and explore business data in an efficient and cost-effective manner. For convenience of business, Apsara Stack provides the Hologres console independent from the DataWorks console for different users to managing Hologres instances, users, and databases. Log on to the Apsara Stack console. In the top navigation bar, choose Product s > Int eract ive Analyt ics to go to the Hologres console. The following figure shows the Overview page in the Hologres console.
 
-#### View the instance list
+#### 5.6.2 View the instance list
 
 The Instances page lists all Hologres instances purchased by your Apsara Stack tenant account. On this page, you can view the instance status, change instance configurations, and create instances. You can also click an instance name to go to the instance details page where you can manage objects in the instance, including databases and users. Instances Log on to the Apsara Stack console. In the top navigation bar, choose Product s > Int eract ive Analyt ics to go to the Hologres console. In the Hologres console, click Inst ance List in the left-side navigation pane. The following figure shows the Instance List page.
 1. New engine inst ance but t on
@@ -15119,7 +15600,7 @@ If your instance cannot meet your business needs or your instance has a large am
 3. Shut down
 Find the target instance and click Shut down in the Operat ion column to suspend the instance. You cannot connect to the suspended instance.
 
-#### Manage instances
+#### 5.6.3 Manage instances
 
 This topic describes how to view and change instance configurations, select a network type, and select a connection method on the Basic information page in the Hologres console. View and change instance configurations In the Hologres console, click Inst ance List in the left-side navigation pane. In the instance list, find the target instance and click Management in the Operat ion column. The Basic information page displays basic information about a Hologres instance, including the instance name, instance ID, region, instance version, billing method, instance specification, and creation time. If you need to change the instance specifications, click Change conf igurat ion. In the Change configuration dialog box, upgrade or downgrade the instance specifications based on your business needs. Select a network type The following table lists the supported network type.
 
@@ -15148,7 +15629,7 @@ To connect to a Hologres instance over JDBC, use the following connection string
 postgres://<AccessId>:<AccessKey>@<Endpoint>:<Port>/<database>? preferQueryMode=simple& tcpKeepAlive=true
 ```
 
-#### Manage users
+#### 5.6.4 Manage users
 
 This topic describes how to manage users on the User Management page in the Hologres console. Overview In the Hologres console, click Inst ance List in the left-side navigation pane. In the instance list, find the target instance and click Management in the Operat ion column. On the page that appears, click User Management . On the User Management page, you can manage users on a Hologres instance without executing cumbersome SQL statements. For example, you can add and delete users and grant permissions to users on this page. After you create a Hologres instance with your Apsara Stack tenant account, this account becomes a superuser of the instance. A superuser has all permissions on the Hologres instance. By default, the User Management page displays only the information of the Apsara Stack tenant account that creates the Hologres instance. The information of a Resource Access Management (RAM) user appears on this page only after you use the Apsara Stack tenant account to add it to the instance.
 
@@ -15160,7 +15641,7 @@ This topic describes how to manage users on the User Management page in the Holo
 
 Add a user On the User Management page, you can create RAM users on a Hologres instance without executing the SQL CREATE statement. Click Add new user. In the Add new user dialog box, select existing RAM users under your Apsara Stack tenant account to add them to the Hologres instance. If no RAM user exists under your Apsara Stack tenant account, create a RAM user first. When you add a RAM user, you can assign the superuser or normal user role to the user. Superuser: A superuser has all permissions on the Hologres instance without the need for additional authorization. Normal user: A normal user cannot view or manage any objects on the Hologres instance, including databases, schemas, and tables. A normal user must be authorized before it can view and manage objects in the instance. We recommended that you go to the DB management page to grant permissions to RAM users as required. Alternatively, you can use SQL statements to grant permissions to RAM users. Delete a user Find the target user on the User Management page and click Delet e in the Operation column to delete the user from the Hologres instance. A deleted user has no access to the Hologres instance.
 
-#### Manage databases
+#### 5.6.5 Manage databases
 
 This topic describes how to manage databases on the DB management page in the Hologres console. Overview In the Hologres console, click Inst ance List in the left-side navigation pane. In the instance list, find the target instance and click Management in the Operat ion column. On the page that appears, click DB management . On the DB management page, you can manage all databases on the current Hologres instance. You can create databases, select a permission management mode for the databases, and view database information. A default database named postgres is automatically created after you create a Hologres instance. This database is provided for management purposes only and does not appear on the DB management page. This database is allocated with limited resources. Create databases on this page based on your business needs. Create a database Hologres allows you to create a database with one click on the graphical user interface (GUI), eliminating the need for SQL operations. Click New Dat abase. In the New Database dialog box, enter a name for the database and set the Simple permissions model parameter to Open or Close. To simplify authorization, we recommend that you set the Simple permissions model parameter to Open. Hologres provides two permission models for you to authorize users in a convenient way. Standard PostgreSQL authorization: Compatible with PostgreSQL, Hologres provides a permission model that is exactly the same as the standard PostgreSQL authorization model. You can authorize RAM users by using the standard PostgreSQL GRANT statement. SPM: Backed by the understanding of customers' business and its practical experience, Alibaba Cloud introduced a simple permission model (SPM) to Hologres to simplify the management of user permissions. The SPM is a coarse-grained model that authorizes users by user group. After a database is created, you can use a development tool to connect to the database to analyze data. Authorize a user After the SPM is enabled for a new database, you can authorize RAM users with one click in the Hologres console. Perform the following steps:
 1. Open t he Permission management right -side pane.
@@ -15168,17 +15649,17 @@ Find the target RAM user and click User aut horizat ion in the Operation column.
 2. Add a RAM user t o a user group.
 In the Permission management right-side pane, click Add aut horizat ion. In the Add authorization dialog box, select the account to which you want to grant permissions, select the desired user group below Permissions policy, and then click OK. Revoke permissions If the SPM is enabled for your database, you can revoke the permissions of a RAM user with one click in the Hologres console. On the instance details page, click DB management . On the DB management page, find the target database and click User aut horizat ion in the Operation column. In the Permission management rightside pane, find the target RAM user and click Delet e aut horizat ion in the Operation column. Delete a database On the DB management page, find the database no longer required and click Delete in the Operation column to delete the database. After a database is deleted, data in the database is also deleted and cannot be recovered.
 
-## Realtime Analysis
+## 6 Realtime Analysis
 
-### Overview
+### 6.1 Overview
 
 Integrated with DataWorks, DataAnalysis supports creating MaxCompute tables in tabular mode, collaboratively editing workbooks and performing statistical analysis, and generating and sharing visual reports. These features enable data developers and business staff to quickly analyze data. Go to DataAnalysis
 1. Log on to the DataWorks console.
 2. Click the DataWorks icon in the upper-left corner and choose All Product s > Dat aAnalysis.
 3. On the Home page of DataAnalysis, click Experience now to go to the Web Excel page.
-Features Workbook You can create and edit workbooks. Workbooks support basic operations such as addition, subtraction, multiplication, and division, and multiple data processing methods, including functions, classification, and aggregation. In addition, you can edit workbooks collaboratively with other users online and create pivot tables for further analysis. Visual report You can create and design visual reports by dragging, dropping, and configuring controls without running SQL statements. Dimension t able You can create MaxCompute tables in tabular mode by one click without running SQL statements and edit MaxCompute tables collaboratively with other users online. You can create a MaxCompute table in tabular mode. You can import data into a MaxCompute table by one click.
+Features You can create and edit workbooks. Workbooks support basic operations such as addition, subtraction, multiplication, and division, and multiple data processing methods, including functions, classification, and aggregation. In addition, you can edit workbooks collaboratively with other users online and create pivot tables for further analysis. Visual report You can create and design visual reports by dragging, dropping, and configuring controls without running SQL statements. Dimension t able You can create MaxCompute tables in tabular mode by one click without running SQL statements and edit MaxCompute tables collaboratively with other users online. You can create a MaxCompute table in tabular mode. You can import data into a MaxCompute table by one click.
 
-### SQL queries
+### 6.2 SQL queries
 
 DataWorks allows you to import data from a data source and perform queries and analysis of data by using the SQL query feature. This topic describes how to use the SQL query feature. Create an SQL query task
 1. Go to the DataAnalysis page.
@@ -15202,9 +15683,9 @@ iii. Click OK to create an SQL query task. On the SQL Query page, you can use SQ
 | 2 | This section allows you to run SQL statements to query data. After you enter the SQL statement to be executed, click the icon in the toolbar to run the statement. You can also click Go t o Dat aSt udio to copy the SQL statement and go to the DataStudio page. On the DataStudio page, you can develop data and schedule ETL tasks. |
 | 3 | In this section, you can view the details of the saved queries, execution history, and logs of SQL queries. You can also preview, load, rename, and delete historical SQL queries on the Saved query tab. |
 
-### Workbook
+### 6.3 Workbook
 
-#### Create a workbook
+#### 6.3.1 Create a workbook
 
 This topic describes how to create a workbook. After a workbook is created, you can rename, clone, delete, or change the owner of the workbook. Procedure
 1. Log on to the DataWorks console.
@@ -15217,7 +15698,7 @@ in the New Spreadsheet section. If you have created workbooks, you can search fo
 6. Click OK.
 Result After the workbook is created, it appears in the All Spreadsheet s section. In this section, you can view all created workbooks. In addition, you can rename, clone, delete, or change the owner of a workbook. Find the target workbook and click Rename in the Operation column. In the Rename dialog box, enter the new name in the File Name field and click OK. Find the target workbook and click Change Owner in the Operation column. In the Change Owner dialog box, select an owner from the New Owner drop-down list and click OK. Find the target workbook and click Clone in the Operation column. The cloned workbook appears in the workbook list. The name of the cloned workbook contains the _copy suffix. Find the target workbook and click Delet e in the Operation column. In the Delet e message, click OK.
 
-#### Edit a workbook
+#### 6.3.2 Edit a workbook
 
 This topic describes how to edit a workbook. For example, you can import data to, export data from, and share a workbook, create a pivot table in a workbook, and use the data profiling feature. Go to the workbook editing page
 1. Log on to the DataWorks console.
@@ -15385,9 +15866,9 @@ Edit
 
 Chart s Column Chart : After you click the Column Chart icon, you can select Column Chart , St acked Column Chart , or 100% St acked Column Chart . Line Chart : After you click the Line Chart icon, you can select Line Chart , St acked Line Chart , 100% St acked Line Chart , Line Chart wit h Markers, St acked Line Chart wit h Markers, or 100% St acked Line Chart wit h Markers. Pie Chart : After you click the Pie Chart icon, you can select Pie Chart or Doughnut Chart . More: After you click the More icon, you can view more chart types, including area charts, bar charts, scatter charts, and stock charts. Dat a Prof ile The data profiling feature allows you to analyze the quality, structure, distribution, and statistics of the data. It also allows you to preview, profile, process, analyze, and visualize data. The data profiling feature analyzes data by column and allows you to view the distribution of data types and values of each column. Select the data to be analyzed and click Dat a Prof ile. The data profiling feature displays the data type and value distribution of each column above the editing area in the form of charts and rich text. Simple mode: For a column whose values are of the STRING or DATE type: The simple mode displays the values ranking top 2 based on frequency and their respective percentages, and the percentage of other values in the form of rich text. If the number of value types exceeds 50% of the total number of values, the simple mode displays the number of unique values. For a column whose values are of the INTEGER or FLOAT type: The simple mode displays the value distribution in the form of a histogram. For a column whose values are of the BOOLEAN type: The simple mode displays the proportions of different values in the form of pie charts. For a column whose values are of two or more data types: The simple mode displays the proportions of different data types in the form of pie charts. In addition, the system reminds you that the current column has dirty data. After the dirty data is cleared, the simple mode displays the data in one of the preceding forms based on the data type. For a column whose values are null values: The simple mode displays the percentage of null values in red. Click Det ailed Mode in the upper-right corner. In the Dat a Prof ile dialog box, you can view the profiling result of each column. Detailed mode: For a column whose values are of the STRING or DATE type: The detailed mode displays the number of fields, the numbers and percentages of unique values, valid values, and null values, and the numbers of occurrences of the values ranking top 5 based on frequency. For a column whose values are of the INTEGER or FLOAT type: The detailed mode displays the number of fields, the numbers and percentages of unique values, valid values, zeros, and null values, the numbers of occurrences of the values ranking top 5 based on frequency, the statistics, and a histogram. For a column whose values are of the BOOLEAN type: The detailed mode displays the number of fields, the numbers and percentages of unique values, zeros, and null values, the numbers of occurrences of the values ranking top 5 based on frequency, and a pie chart. The system considers the true and false strings and the 0 and 1 integers as values of the BOOLEAN type. List of Short cut Keys Click to view the shortcut keys for different features.
 
-### Dimension tables
+### 6.4 Dimension tables
 
-#### Create and manage dimension tables
+#### 6.4.1 Create and manage dimension tables
 
 The dimension table feature allows you to create MaxCompute tables, import local data to MaxCompute tables, and edit MaxCompute tables in a visualized manner. Prerequisites
 1. A MaxCompute compute engine instance is bound to a DataWorks workspace.
@@ -15419,7 +15900,7 @@ list in the upper-right corner to view the tables in the corresponding category.
 3. Click the file name of a required table or click Edit in the Operation column of the table to go to
 the dimension table editing page. On the Dimension page, you can also perform the following operations to manage a dimension table: To change the owner of a dimension table, find the table and click Change Owner in the Operation column. In the Change Owner dialog box, select an owner from the New Owner drop-down list and click OK. To delete a dimension table, find the table and click Delet e in the Operation column. In the Delet e message, click OK. What's next After you create a dimension table, go to the dimension table editing page and import data to this table. For more information about how to import data to a dimension table, see Import data to a dimension table.
 
-#### Import data to a dimension table
+#### 6.4.2 Import data to a dimension table
 
 After you create a dimension table, you can write data to the table for data analysis. You can also import data from a workbook, local CSV file, or local Excel file to the table for data analysis. This topic describes how to import data to a dimension table. Prerequisites A dimension table is created. For more information about how to create a dimension table, see Create a dimension table. Procedure
 1. Log on to the DataWorks console.
@@ -15431,7 +15912,7 @@ icon in the upper-left corner and choose All Product s > Dat a Development > Dat
 want to edit in the File Name column to go to the dimension table editing page. If no dimension table exists and you created one, the table editing page appears after the table is created. For more information about how to edit a dimension table, see Edit a dimension table.
 6. On the dimension table editing page, click Import in the upper-right corner.
 7. In the Import dialog box, select the type of the file that contains the data to be imported and
-configure parameters. Only data of the STRING type can be imported to a dimension table. Data that is not of the STRING type will be automatically converted to the STRING type when it is imported. Workbook
+configure parameters. Only data of the STRING type can be imported to a dimension table. Data that is not of the STRING type will be automatically converted to the STRING type when it is imported.
 
 | Parameter | Description |
 |---|---|
@@ -15469,7 +15950,7 @@ Local Excel f ile
 9. Click Save in the upper-right corner of the page.
 After you save the dimension table, you can click Dif f in the upper-right corner of the page to check whether the changes meet expectations to prevent misoperations.
 
-#### Edit a dimension table
+#### 6.4.3 Edit a dimension table
 
 This topic describes how to edit a dimension table in a visualized manner to modify the information of a MaxCompute table that you created. You do not need to write SQL code. Prerequisites A dimension table is created. For more information, see Create a dimension table. Procedure
 1. Log on to the DataWorks console.
@@ -15484,7 +15965,7 @@ In the left-side pane of the dimension table editing page, you can view the tabl
 7. Click Save in the upper-right corner of the page to save the changes.
 After you save the dimension table, you can view all the data in the table. You can also click Dif f in the upper-right corner of the page to view all the data in the Dif f Result s dialog box.
 
-#### Share a dimension table
+#### 6.4.4 Share a dimension table
 
 If you want to collaboratively edit a dimension table with multiple members, you can share the dimension table and grant the members the permissions to edit the table. This topic describes how to share a dimension table and grant edit or read permissions to specified members. Prerequisites The Allow Sharing switch is turned on on the Management page. Procedure
 1. Log on to the DataWorks console.
@@ -15497,9 +15978,9 @@ want to edit in the File Name column to go to the dimension table editing page. 
 6. In the upper-right corner of the dimension table editing page, click Share. In the dialog box that
 appears, configure the sharing method as required. You must configure the following information before you can share a dimension table with other members: Link: After you specify Users with Edit Access and Users with Read Access, click Copy Link and send the copied URL to specified members. Users wit h Edit Access: To specify members with permissions to edit the dimension table, click Add in the Users wit h Edit Access section. In the Share File with These Users dialog box, enter and select the names of the members to be granted the edit permissions, and click OK. You can grant the edit permissions to a maximum of 10 members. Users wit h Read Access: To specify members with permissions to read the dimension table, click Add in the Users wit h Read Access section. In the Share File with These Users dialog box, enter and select the names of the members to be granted the read permissions, and click OK. You can grant the read permissions to a maximum of 30 members. After the sharing method is configured, you can send the URL to specified members. The members can use the URL to access the dimension table. You can go back to the Dimension page to view shared dimension tables.
 
-### Report
+### 6.5 Report
 
-#### Create a report
+#### 6.5.1 Create a report
 
 This topic describes how to create a report. After a report is created, you can rename or delete the report. Procedure
 1. Log on to the DataWorks console.
@@ -15513,7 +15994,7 @@ in the New Report section. Alternatively, click a template in the New Report sec
 7. Click OK.
 Result After the report is created, it appears in the All Report s section. In this section, you can view all created reports. In addition, you can rename or delete a report. To rename a report, perform the following steps: Find the target report and click Rename in the Operation column. In the Rename dialog box, enter the new name in the File Name field and click OK. To delete a report, perform the following steps: Find the target report and click Delet e in the Operation column. In the Delet e message, click OK.
 
-#### Edit a report
+#### 6.5.2 Edit a report
 
 This topic describes how to edit, preview, save, share, and release a report, and save a report as a template. Procedure
 1. Go to the Report page.
@@ -15572,22 +16053,22 @@ Ret urn: You can click Ret urn in the upper-left corner to return to the Report 
 
 d. Click OK. After you save the report as a template, you can click the template in the New Report section of the Report page to create a report. Share & Release: You can click Share & Release in the upper-right corner to share and release the report. You can share the report with specified users or all users. If you need to share the report to specific users, click Add to specify the users.
 
-## Administration
+## 7 Administration
 
-### Overview
+### 7.1 Overview
 
 Generally, developers need to test workflows and nodes on the Operation Center page. As a key tool for routine O&M, Operation Center enables you to manage and maintain the workflows and nodes that you have committed. The Operation Center service consists of four modules: Dashboard, Nodes, Node Instances, and Monitor. Dashboard: enables you to view and manage all global nodes of DataWorks. It displays various information, including Inst ances, Inst ances Run T oday, Node Runt ime, Inst ances Run in t he Last Mont h, Nodes wit h Errors in t he Last Mont h, and Node T ypes of the current workspace. Nodes: provides Recurring and Manually T riggered. Node Inst ances: provides Recurring, Manually T riggered, Smoke T est and Ret roact ive. You can manage them in a list view or DAG. The list view displays the running status of nodes in a list. You can add multiple alerts at a time, change owners, and add nodes to baselines. In the DAG, you can maintain and manage the running status of nodes and their dependencies on ancestor and descendant nodes. You can also perform operations, such as retroactive data generation and rerun, for a single node. Monit or: provides Baseline Inst ances, Baselines, Event s, Alert T riggers, and Alert s.
 
-### Dashboard
+### 7.2 Dashboard
 
 The Dashboard page provides information about the node running status, the trend of the number of nodes that were run, the node running time, and the nodes with errors. Go to the Dashboard page
 1. Log on to the DataWorks console.
 2. Click
 in the upper-left corner and choose All Product s > Operat ion Cent er. By default, the Dashboard page appears. The Dashboard page consists of the following sections: Inst ances, Inst ances Run T oday, Node Runt ime, Nodes wit h Errors In t he Last Mont h, Inst ances Run In t he Last Mont h, and Node T ypes. Pending (Schedule): the instances whose scheduled time has not arrived. These instances will be automatically run when their scheduled time arrives. Pending (Resources): the instances whose scheduled time has arrived. These instances are waiting for scheduling resources. View the summary of instance running The Inst ances section displays the numbers of auto triggered node instances that were run today and yesterday, as well as the historical average. If the deviations among the three numbers are large, an exception occurred during a specific period of time. Further check and analysis are required. The statistical chart on the right of the Instances section shows three lines in different colors, representing the numbers of instances completed between 00:00 and 23:00 of today and yesterday, as well as the historical average. You can also view the number and proportion of instances in the pie chart on the left. In the upper-right corner of the statistics chart, you can select a node type from the Node T ype dropdown list to view statistics on the specified type of nodes. View the statistics on instances run today The Inst ances Run T oday section displays the numbers of node instances that were running at different time points of the current day. In the chart, you can find the time point when peak concurrency occurred and the maximum number of concurrent nodes. Based on the information, you can determine whether to avoid node scheduling at the peak hours and adjust the scheduling time of nodes. View the rankings of nodes based on their running time The Node Runt ime section displays nodes with a specified timestamp in the current workspace by their running time. By default, this section displays the top 10 nodes in descending order of their running time. You can view Node ID, Node Name, Owner, and Runt ime of each node. View the rankings of nodes with errors in the last month The Nodes wit h Errors In t he Last Mont h section displays the top 10 nodes with the most errors in the last month. You can view Node ID, Node Name, Owner, and Errors of each node. You can click a node ID to go to the node details page. View the trend of the number of instances that were run The Inst ances Run In t he Last Mont h section displays the number of instances that were run today, comparison with yesterday, comparison with the same day last week, and comparison with the same day last month. View the node distribution by node type In the Node Types section, you can move the pointer over a sector of the pie chart to view the number and proportion of nodes of the specific type.
 
-### Real-time node O&M
+### 7.3 Real-time node O&M
 
-#### Manage real-time computing nodes
+#### 7.3.1 Manage real-time computing nodes
 
 The Stream Task page of the DataWorks console displays all real-time computing nodes. You can view the basic information and details of the nodes on this page. You can also configure alert rules for the nodes that you want to monitor. This way, you can identify and handle exceptions at the earliest opportunity if an error occurs on a node. Limits DataWorks supports O&M only for EMR Spark Streaming and EMR Streaming SQL nodes on the Stream Task page. Go to the Stream Task page
 1. Log on to the DataWorks console.
@@ -15611,7 +16092,7 @@ Stream Task page. View real-time computing nodes in the node list The Stream Tas
 
 View the details of a real-time computing node On the Stream Task page, find the real-time computing node whose details you want to view and click the node name to open the details panel of the node. In the node details panel, you can view the details, run logs, operation logs, and code of the node on the Det ails, Runt ime Log, Operat ion Log, and Code tabs. This allows you to quickly find the operations performed on the node and operation records, obtain the details of the errors reported for the node, and fix the errors.
 
-#### Manage real-time synchronization nodes
+#### 7.3.2 Manage real-time synchronization nodes
 
 The Real Time DI page of the DataWorks console displays all real-time synchronization nodes that are committed to and run by the scheduling system. Go to the Real Time DI page
 1. Log on to the DataWorks console.
@@ -15651,9 +16132,9 @@ View the details of a real-time synchronization node On the Real Time DI page, f
 | CRIT ICAL | The method used to receive a notification for a CRITICAL-level alert. Valid values: Mail, SMS, T elephone, and DingT alk. | No |
 | Receiver (Non-DingT alk User) | The alert contact to whom alert notifications are sent. | Yes |
 
-### Auto triggered node O&M
+### 7.4 Auto triggered node O&M
 
-#### Manage auto triggered nodes
+#### 7.4.1 Manage auto triggered nodes
 
 Auto triggered nodes are automatically run as scheduled after they are committed to the scheduling system. By default, the auto triggered node list displays nodes in all the workflows created by the current account. After you commit a node, the scheduling system automatically generates and runs an instance of the node at 23:30 the next day. If you commit a node after 23:30, the scheduling system generates and runs an instance of the node on the third day. Do not perform any operations on the Workspace name_root node, which is the root node of the workspace. All instances of auto triggered nodes depend on this node. If this node is frozen, instances of auto triggered nodes cannot be run. Manage auto triggered nodes in the node list The Cycle T ask page displays auto triggered nodes that are committed to the scheduling system in a list.
 
@@ -15694,7 +16175,7 @@ Manage auto triggered nodes in a DAG Click the name of a node or DAG in the Acti
 | Unf reeze | Resume the scheduling of the node after it is frozen. |
 | Conf igure Dat a Qualit y Rules | Configure rules for monitoring the data quality of the node. |
 
-#### Manage auto triggered node instances
+#### 7.4.2 Manage auto triggered node instances
 
 Auto triggered node instances are snapshots taken for auto triggered nodes that are run. An instance is generated each time when an auto triggered node is run as scheduled. You can manage auto triggered node instances. For example, you can view the running status of instances, and stop, rerun, and unfreeze instances. DataWorks regularly generates instances for auto triggered nodes. Each generated instance runs the latest code. If you modify and recommit the node code after instances are generated, the instances that have not been run will run the latest code. Manage auto triggered node instances in the instance list You can manage auto triggered node instances in the instance list. For example, you can check operational logs, rerun instances, and stop running instances.
 
@@ -15743,7 +16224,7 @@ Manage auto triggered node instances in a DAG Click the name of an instance or D
 |---|---|
 | Unf reeze | Unfreeze the instance after it is frozen. If the instance is not run, DataWorks automatically runs this instance after its ancestor instances are run. If all the ancestor instances have been run, the instance is directly set to Failed. You must manually rerun the instance. |
 
-#### Manage retroactive instances
+#### 7.4.3 Manage retroactive instances
 
 DataWorks runs retroactive instances to generate retroactive data for auto triggered nodes. You can manage retroactive instances. For example, you can view the running status of instances, and stop, rerun, or unfreeze instances. Limits When DataWorks generates retroactive data in a period of time for a node, if one instance of the node fails on a day, the retroactive instance for that day is also set to Failed. DataWorks will not run instances of this node for the next day. To sum up, DataWorks runs instances of a node on a day only when all its instances of the previous day are successful. For a self-dependent auto triggered node, if the first instance for which retroactive data needs to be generated has a last-cycle instance on the previous day but the last-cycle instance is not run, the retroactive instance cannot be triggered. If the first instance for which retroactive data needs to be generated does not have a last-cycle instance on the previous day, the retroactive instance is directly triggered. DataWorks generates alerts only for auto triggered node instances. If an auto triggered node has an instance in the Running state, its retroactive or test instance can start to run only after this auto triggered node instance is run. If both an auto triggered node instance and a retroactive instance are running for a node at the same time, you must stop the retroactive instance to ensure proper running of the auto triggered node instance. Go to the page for configuring retroactive instances
 1. Log on to the DataWorks console.
@@ -15830,7 +16311,7 @@ Manage retroactive instances in a DAG Click the name of an instance or DAG in th
 | Freeze | Pause the scheduling of the instance. |
 | Unf reeze | Resume the scheduling of the instance after it is paused. |
 
-#### Manage test instances
+#### 7.4.4 Manage test instances
 
 Test instances are generated when you test auto triggered nodes. You can manage test instances. Go to the Test Instance page
 1. Log on to the DataWorks console.
@@ -15867,9 +16348,9 @@ Manage test instances in a DAG Click the name of an instance or DAG in the Actio
 | Freeze | Pause the scheduling of the instance. |
 | Unf reeze | Resume the scheduling of the instance after it is frozen. If the instance is not run, DataWorks automatically runs this instance after its ancestor instances are run. If all the ancestor instances have been run, the instance is directly set to Failed. You must manually rerun the instance. |
 
-### Manually triggered node O&M
+### 7.5 Manually triggered node O&M
 
-#### Manage manually triggered nodes
+#### 7.5.1 Manage manually triggered nodes
 
 Manually triggered nodes are nodes whose scheduling type is set to manual before they are committed to the scheduling system. After a manually triggered node is committed to the scheduling system, it will run only after it is manually triggered. Manage manually triggered nodes in the node list The manually triggered node list displays manually triggered nodes that are committed.
 
@@ -15896,7 +16377,7 @@ Manage manually triggered nodes in a DAG Click the name of a node or DAG in the 
 | Run | Run the node. After you click Run, manually triggered node instances are generated. |
 | Change Resource Group | Change the resource group where the node is run. |
 
-#### Manage manually triggered node
+#### 7.5.2 Manage manually triggered node instances
 
 instances DataWorks generates manually triggered node instances from manually triggered nodes. Manually triggered nodes do not have node dependencies. They must be run manually. Not ice DataWorks generates alerts only for auto triggered node instances when they fail to be run. Go to the page for managing manually triggered node instances
 1. Log on to the DataWorks console.
@@ -15930,7 +16411,7 @@ Manage manually triggered node instances in a DAG Click the name of an instance 
 |---|---|
 | Rerun | Rerun the instance if it is in the Failed or an abnormal state. |
 
-### MaxCompute engine O&M
+### 7.6 MaxCompute engine O&M
 
 DataWorks Operation Center allows you to view the jobs, quota groups, and projects of MaxCompute. Prerequisites A MaxCompute engine is added on the Project Management page. Go to the MaxCompute page
 1. Log on to the DataWorks console.
@@ -15939,25 +16420,25 @@ in the upper-left corner and choose All Product s > Operat ion Cent er.
 3. In the left-side navigation pane, choose Engine Maint enance > MaxComput e. The Job Queue
 tab appears by default. You can view the jobs, quota groups, and projects of MaxCompute. View jobs On the Job Queue tab, you can view the total number of jobs and numbers of jobs in the Running, Wait ing f or Resources, and Init ializing states. You can set the Quot aGroup and Project parameters to filter jobs. You can view the following parameters of each job: Inst ance, Execut ion T ime, CPU Usage (Minimum/Maximum), Memory Usage (Minimum/Maximum), Priorit y, Node, Submit t ed By, Project , T ype, Quot a Group, Clust er, St at us, and St art T ime. View quota groups On the MaxComput e page, click the Quot as tab. On the Quot as tab, you can view the following parameters of each quota group: Project , Quot a Group, Def ault , Clust er, Minimum CPU (cores), Maximum CPU (cores), Minimum Memory (byt es), Maximum Memory (byt es), and Project s. You can click the name of a quota group to view the resource usage information about the quota group. View projects On the MaxComput e page, click the Project s tab. On the Project s tab, you can view the following parameters of each project: Project , Owner, Clust er, Quot a Group, St orage Used, St orage Quot a, St orage Usage, and Files.
 
-### Monitor
+### 7.7 Monitor
 
-#### Overview
+#### 7.7.1 Overview
 
 The Monitor module is a node monitoring and analysis system of DataWorks. Based on monitoring rules and node running status, the Monitor module determines whether, when, and how to trigger an alert, and whom an alert is sent to. It automatically selects the most appropriate alerting time, notification methods, and recipients. The Monitor module provides you with the following benefits: Improves your efficiency on configuring monitoring rules. Prevents invalid alerts from bothering you. Automatically covers all important nodes for you. General monitoring systems cannot meet the requirement of DataWorks. The reasons are as follows: DataWorks has numerous nodes, so it is difficult for you to find out the nodes to be monitored. Some DataWorks businesses have a large number of nodes, and dependencies between the nodes are complex. Even if you know the most important node, it is difficult to find all ancestor nodes of the node and monitor them all. In this case, if you simply monitor all nodes, a large number of invalid alerts may be generated. In consequence, you may miss those useful alerts. The alerting method varies with nodes. For example, some monitoring tasks require the relevant nodes to run for more than one hour before triggering alerts, while other monitoring tasks require the relevant nodes to run for more than two hours. It is extremely complex to set a monitoring node for each node, and it is difficult to predict the alert threshold value for each node. The alerting time varies with nodes. For example, an alert for an unimportant node can be sent after you start working in the morning. An alert for an important node needs to be sent immediately when an error occurs. General monitoring systems cannot tell the importance of each node. Different alerts require different operations to turn off. The Monitor module provides comprehensive monitoring and alerting logic. You only need to provide the node name of your business. Then, the Monitor module automatically monitors the entire process of your node and creates standard alert triggers for the node. In addition, you can customize alerting triggers by completing basic settings. Currently, the Monitor module has been used for monitoring all important businesses of Alibaba Group. Its full-path monitoring function guarantees the overall data output of all important businesses of Alibaba Group. In addition, it supports analyzing ancestor and descendant node paths to promptly detect risks and provide O&M advice for business departments. These functions of the Monitor module have guaranteed the long-term high stability of businesses in Alibaba Group.
 
-#### Feature description
+#### 7.7.2 Feature description
 
-##### Baseline alert and event alert
+##### 7.7.2.1 Baseline alert and event alert
 
 This topic describes the functional logic of baseline alerts and event alerts from the aspects of monitoring scope, node capturing, alert object judgment, alerting time judgment, notification methods, and alert escalation. Monitoring scope A baseline is a management unit of a group of nodes, that is, a node group. You can specify nodes to monitor in a baseline. After a baseline is monitored, all nodes of the baseline and its ancestor nodes are monitored. The Monitor module does not monitor all nodes by default. A node is monitored only when it has descendant nodes that are added to a monitoring baseline. If no descendant nodes are added to a monitoring baseline, the Monitor module does not report any alert even if the node fails. As shown in the preceding figure, assume that DataWorks has only six nodes, and nodes D and E belong to a monitoring baseline. Nodes D and E and all their ancestor nodes are monitored by the Monitor module. That is, any error or slowdown on node A, B, D, or E will be detected by the Monitor module. However, nodes C and F are not monitored by the Monitor module. Node capturing After the nodes to be monitored are specified, if a monitored node incurs an exception, the Monitor module generates an event. All alert decisions are based on the analysis of this event. Two types of node exceptions are available. You can choose Event s > Event T ype to view them. Error: indicates that a node fails to run. Slow: indicates that the running time of a node is significantly longer than the average running time of the node in the past periods. If a node times out and then encounters an error, two events are generated. Alerting time judgment Buf f er, an important concept in the Monitor module, refers to the maximum time period that a node can be delayed. The latest start time of a node is obtained by subtracting the average uptime from the baseline time. The baseline time of baseline A is 05:00, you must set the latest start time of node E to 04:10. This time is calculated by subtracting the average uptime of node F (20 minutes) and node E (30 minutes) from the baseline time 05:00. This time is also the latest completion time of node B in baseline A. To ensure that the baseline time of baseline B is 06:00, you must set the latest completion time of node B to 04:00. This time, which is earlier than 04:10, is calculated by subtracting the average uptime of node D (2 hours) from the baseline time 06:00. To meet the baseline time of both baseline A and baseline B, you must set the latest completion time of node B to 04:00. The latest completion time of node A is 02:00, which is calculated by subtracting the average uptime of node B (2 hours) from 04:00. The latest start time of node A is 01:50, which is calculated by subtracting the average uptime of node A (10 minutes) from 02:00. If node A fails to run before 01:50, it is probable that baseline A is broken. If node A fails to run at 01:00, its buffer is 50 minutes, which is the difference between 01:00 and 01:50. As demonstrated in this example, buffer reflects the degree of caution for a node exception. Baseline alert Baseline alerting is an additional feature developed for baselines that are enabled. Each baseline must provide an alert buffer and committed time. Baseline alerting is the action of notifying the preset alert recipient three times at the interval of 30 minutes when the baseline completion time estimated by the Monitor module exceeds the alert buffer. Notification method Currently, baseline alerts are sent to the baseline owner by default. On the Alert T riggers page, you can find Global Baseline Alert T rigger, click View Det ails, and change the alert trigger method and the alerting action. Gantt chart function The Gantt chart function reflects the key path of a node. The function is provided by the Baseline Inst ances module of Monitor. The key path is the slowest upstream link that causes the node to be completed at this time point.
 
-##### Custom alert trigger
+##### 7.7.2.2 Custom alert trigger
 
 Alert trigger customization is a lightweight monitoring function of the Monitor module. You can customize all monitoring alert triggers by setting the following parameters: Objects: You can specify nodes, baselines, and workspaces as objects. Trigger Condition: Valid values include Completed, Uncompleted, Error, Uncompleted Cycle, and Overtime. Notification Method: Valid values include SMS and Email. Maximum Alerts: This parameter indicates the maximum number of alert reporting times. If the number of alerting times exceeds the preset threshold, no alerts are generated. Minimum Alert Interval: This parameter indicates the minimum time interval at which DataWorks reports alerts. Quiet Hours: This parameter indicates the specified period during which no alerts are reported. Recipient: This parameter indicates the person who receives alerts. You can set this parameter to the node owner or another recipient. A monitoring rule uses the following five alert trigger conditions: Completed, Uncompleted, Error, Uncompleted Cycle, and Overtime. Complet ed A completion alert can be set for nodes, baselines, and workspaces. Once all nodes of the preset objects are completed, the completion alert is reported. If you set a completion alert for a baseline, the alert is reported when all nodes of the baseline are completed. Uncomplet ed You can set alerts for nodes, baselines, or workspaces that are not completed at a certain time point. For example, if you require that a baseline be completed at 10:00, an alert containing a list of uncompleted nodes is reported once a node in the baseline is not completed at the specified time. Error An error alert can be set for nodes, baselines, and workspaces. Once a node has an error, an alert containing detailed node error information is sent to the recipient. Uncomplet ed Cycle For the monitoring rules of hourly scheduled nodes, you can separately specify the uncompleted time points in different periods. Overt ime An overtime alert can be set for nodes, baselines, and workspaces. Once a monitored node of the preset object is not completed within the specified time, an alert is reported.
 
-#### Instructions
+#### 7.7.3 Instructions
 
-##### Baseline instances
+##### 7.7.3.1 Baseline instances
 
 On the Baseline Instances page, you can view the information about a baseline.
 1. Log on to the DataWorks console.
@@ -15968,7 +16449,7 @@ the Baselines page, create a baseline. For more information abut how to create a
 4. In the left-side navigation pane, choose Monit or > Baseline Inst ances. The Baseline Inst ances
 page appears. On this page, you can search for baseline instances by condition, such as the data timestamp, owner name or ID, event ID, workspace, and baseline name. You can also click View Det ails, Handle, and View Gant t Chart in the Actions column to perform corresponding operations on a baseline. After creating a baseline, you must enable the baseline so that a baseline instance can be generated. A baseline can be in the one of the following four states: Normal: All nodes in the baseline are completed before the alerting time. Alert ing: One or more nodes in the baseline are not completed at the alerting time but the committed completion time has not arrived. Overt ime: One or more nodes in the baseline are not completed at the committed completion time. Ot hers: All nodes in the baseline are paused or the baseline is not associated with any node. You can click View Det ails, Handle, and View Gant t Chart in the Actions column to perform corresponding operations on a baseline. View Det ails: Click View Det ails to go to the Baseline Inst ance Det ails page. On the Baseline Inst ance Det ails page, you can view the general information, critical path, baseline instance information, history graph, and relevant events. In the preceding figure, the data timestamp is `one day before the system time` . When you create a baseline, you can select By t he Day Int erval or By t he Hour Int erval. The Cycle parameter appears as the advanced settings of the Commit t ed T ime parameter only when you select By the Hour Interval. Handle: Click Handle to pause the alert generated by the baseline when the baseline is being handled. View Gant t Chart : Click View Gant t Chart to view the critical paths of nodes.
 
-##### Baselines
+##### 7.7.3.2 Baselines
 
 You can create and define baselines on the Baselines page. Create a baseline
 1. Log on to the DataWorks console.
@@ -15997,7 +16478,7 @@ Currently, only workspace administrators can create baselines.
 6. After a baseline is created, click Enable in the Actions column to enable the baseline.
 You can click View Det ails, Change, Enable, Disable, or Delet e in the Actions column to perform the corresponding operation on a baseline. View Det ails: Click View Det ails to view the basic information about the baseline. Change: Click Change to modify the baseline. Enable or Disable: Click Enable or Disable to enable or disable the baseline. A baseline instance can be generated only when the corresponding baseline is enabled. Delet e: Click Delet e to delete the baseline. Add a node to a baseline By default, all nodes in the production environment are in the default baseline of each workspace. When you create a baseline, you actually move nodes from the default baseline to the baseline that you create. A node must belong to a baseline, so you cannot directly remove nodes from the default baseline. Instead, you can create a baseline to move nodes from the default baseline to the new baseline. When you delete a baseline that you create, you actually move the nodes in the baseline to the default baseline. To change the baseline of a node, perform one of the following operations: On the Baselines page, click Creat e Baseline in the upper-right corner. Then, create a baseline by following the instructions in the Create a baseline section. In the left-side navigation pane, choose Nodes > Recurring. On the page that appears, find the node and choose More > Add t o Baseline in the Actions column.
 
-##### Events
+##### 7.7.3.3 Events
 
 On the Events page, you can view all events related to slowdown or errors.
 1. Log on to the DataWorks console.
@@ -16006,7 +16487,7 @@ All Product s > Operat ion Cent er.
 3. On the Operation Center page, choose Monit or > Event s in the left-side navigation pane. The
 Event s page appears. You can search for events by condition, such as the event owner, time when an event was detected, event status, event type, and name or ID of a node or node instance. In the search results, each event is displayed in a row and associated with a node that encounters errors. The worst baseline indicates a baseline with the minimum margin among the baselines affected by an event. Click View Det ails in the Actions column of an event. You can view the event occurrence time, alert time, clearance time, historical runtime logs of the node, and detailed node logs. You can assign an alert recipient. After you click View Alert s, the alert details page corresponding to the event appears. Affected baselines are all descendant baselines affected by the node associated with the event. You can observe descendant baselines and the impact on these baselines and analyze node logs to identify the causes of the event. If you click Handle, DataWorks records the event handling operation and pauses the alert for the event when the event is being handled. If you click Ignore, DataWorks keeps the event ignorance record and permanently stops the alert for the event.
 
-##### Alert triggers
+##### 7.7.3.4 Alert triggers
 
 This topic describes how to customize alert triggers on the Alert Triggers page.
 1. Log on to the DataWorks console.
@@ -16033,7 +16514,7 @@ The Alert T riggers page appears.
 6. Click OK to create the alert trigger.
 On the Alert T riggers page, you can click View Det ails in the Actions column of an alert trigger to view the details of the alert trigger.
 
-##### Alert information
+##### 7.7.3.5 Alert information
 
 You can view all alerts on the Alerts page.
 1. Log on to the DataWorks console.
@@ -16042,7 +16523,7 @@ All Product s > Operat ion Cent er.
 3. On the Operation Center page, choose Monit or > Alert s in the left-side navigation pane. The
 Alert s page appears. You can search for alerts by condition, such as the alert trigger ID or name, recipient, alert time, notification method, and alert trigger type. You can also view alert details such as the notification method and status. To view more alert details, find the target alert and click View Det ails in the Actions column.
 
-#### FAQ
+#### 7.7.4 FAQ
 
 This topic describes the FAQ about the Monitor service. What can I do if I do not need to receive alerts for a node? After you create and enable a monitoring baseline, the Monitor service monitors all nodes in the baseline and their ancestor nodes. If a node in the baseline or an ancestor node of the baseline affects data generation of the monitored nodes in the baseline, the Monitor service reports an alert to the node owner. As shown in the preceding figure, assume that DataWorks has only six nodes, and Nodes D and E belong to a monitoring baseline. The Monitor service monitors Nodes D and E and all their ancestor nodes. Namely, the Monitor service will detect any error or slowdown on Node A, B, D, or E. Nodes C and F are not monitored by the Monitor service. Nodes A and B are ancestor nodes of Nodes D and E and may affect data generation of the monitored nodes in the baseline. When an error or slowdown occurs on Node A or B, the Monitor service reports an alert to the node owner. If you do not need to receive alerts for a node, use the following methods: If the owners of Nodes D and E do not need to receive alerts, contact the baseline owner to remove Nodes D and E from the baseline. If the owner of Node A or B does not need to receive alerts, contact the owners of Nodes D and E to delete the dependency of Nodes D and E on Node A or B. Why is no alert reported for a baseline in the Overtime state? Baseline monitoring is controlled by the baseline switch and enabled for nodes. If all nodes are running properly, no alert will be triggered even in the Overtime state. This is because all the nodes are running properly and the Monitor service cannot determine which node has an error. Overtime is a baseline state, indicating that a node is still not completed after the committed time. If the baseline still enters the Overtime state when all nodes are running properly, consider the following reasons: The baseline time is not properly set. The node dependency is not properly configured. Can I disable the Monitor service from reporting an alert for a node that slows down? The Monitor service reports a node slowdown alert only when a node meets both of the following conditions: The node is an ancestor node of an important baseline. Compared with its historical performance, the node does slow down. You can view the descendant baseline affected by the node on the Event Management page. Then, you can confirm the impact with the party whose monitoring baseline contains descendant nodes of your node. If the node slowdown has a minor impact, you can ignore the alert. If the node slowdown has a major impact, maintain your node properly. Why do I fail to receive an alert for an error node? The Monitor service reports an alert only for specified nodes when an error occurs. An alert is reported for an error node only when the node meets one of the following conditions: The node is an ancestor node of a baseline that has been enabled. An alert trigger has been customized. What can I do if I receive an alert at night?
 1. Log on to the DataWorks console.
@@ -16052,13 +16533,13 @@ in the upper-left corner and choose All Product s > Operat ion Cent er.
 4. On the Event Management page, disable the event alert. Disable the event alert in one of the
 following ways: Handle the event that triggers an alert. a. Find the target event and click Handle in the Actions column. b. In the Handle Event dialog box, set the Handling T ime parameter. c. Click OK. DataWorks records the event handling operation and pauses alerting for the event when the event is being handled. Ignore the event that triggers an alert. a. Find the target event and click Ignore in the Actions column. b. In the Ignore Event message, click OK. DataWorks records the event ignoring operation and permanently stops alerting for the event.
 
-## Security Center
+## 8 Security Center
 
-### Overview
+### 8.1 Overview
 
 Security Center provides flexible permission management features. It allows you to request permissions and handle permission requests on the graphical user interface (GUI), and view and manage permissions. Security Center not only improves data security but also facilitates data permission management. Log on to the DataWorks console. On the DataStudio page that appears, click the DataWorks icon in the upper-left corner and choose All Product s > Securit y Cent er. The Securit y Cent er page appears. Security Center consists of the following modules: My Permissions, Aut horizat ions, and Approval Cent er. Currently, Security Center provides the following features: Self-service permission request: Users can select the required tables to quickly initiate a permission request online. This online request mode is more efficient than the original mode in which users need to contact administrators offline. Permission management: Administrators can view the users who have permissions on database tables and revoke permissions as required. Users can also revoke unnecessary permissions themselves. Permission request approval: Before granting permissions to users, administrators approve permission requests initiated by users. This implements a visual and process-based permission management system, and supports reviewing the approval process. In Security Center, you can view permissions on all the tables in an organization, request and revoke table permissions, and approve or reject permission requests. Each operation in Security Center applies to all the workspaces of a tenant in standard mode and basic mode.
 
-### My Permissions
+### 8.2 My Permissions
 
 On the My Permissions page, you can view your table and field permissions in a workspace, and request or revoke table and field permissions. View table and field permissions
 1. Move the pointer over the DataWorks icon in the upper-left corner, and click Securit y Cent er. In
@@ -16081,11 +16562,11 @@ Request permissions on a table or some fields in the table Select the required f
 3. After the configuration is completed, click Submit . If you do not want to request the permissions,
 click Cancel. Revoke permissions You can revoke table and field permissions. Revoke field permissions You can revoke permissions on fields only in a workspace with LabelSecurity enabled. To revoke permissions on all the fields in a table, you can directly revoke the permissions on the table. i. Choose More > Revoke Field Permission in the Act ions column for the table on which you want to revoke permissions. ii. In the Revoke Field Permission dialog box, select the fields on which you want to revoke permissions. iii. Click OK. Revoke table permissions i. Choose More > Revoke Permission in the Act ions column for the table on which you want to revoke permissions. ii. In the Revoke Permission dialog box, select the permissions you want to revoke. iii. Click OK.
 
-### Authorizations
+### 8.3 Authorizations
 
 On the Authorizations page, a workspace administrator can view the accounts that have permissions on tables and fields in each workspace, and revoke unnecessary table and field permissions. You can move the pointer over the DataWorks icon in the upper-left corner, and click Securit y Cent er. In the left-side navigation pane, click Aut horizat ions. On the T able tab that appears, you can view and search for tables in workspaces of the current organization. On the Table tab, you can select a workspace and specify the environment (for a workspace in standard mode) to view all the tables of the workspace in the specified environment. You can also enter a table name in the search box to search for required tables in fuzzy match mode. View accounts that have permissions on a table On the T able tab of the Aut horizat ions page, click the plus sign (+) in front of a table to view all the accounts that have permissions on the table. Revoke table permissions Click Revoke Permission in the Actions column for an account to revoke the permissions of the account on the current table. View field permissions Click View Field Permissions in the Actions column for an account to view the permissions of the account on the fields in the current table. Revoke field permissions If LabelSecurity is enabled for the workspace, select fields on the Field Permissions page and click Revoke Field Permissions to revoke the permissions on the fields.
 
-### Approval Center
+### 8.4 Approval Center
 
 On the Approval Center page, you can view your requests and their status, view and handle the requests pending your approval, and view the requests that you have handled. My Requests
 1. Move the pointer over the DataWorks icon in the upper-left corner, and click Securit y Cent er. In
@@ -16103,17 +16584,17 @@ On this tab, you can view the information about each request that you have handl
 2. Click View in the Actions column to view the details about a request. The request details include
 the progress and objects requested.
 
-### FAQ
+### 8.5 FAQ
 
 This topic describes the frequently asked questions (FAQs) about the Security Center service of DataWorks. Q: What permissions can I request in Security Center? A: In Security Center, you can request permissions on tables in DataWorks workspaces in the development environment and production environment. Q: What is the relationship between Data Management and Security Center? A: Security Center is a product that upgrades and replaces the permission and security features in Data Management. You can choose Securit y Cent er > My Permissions to view the permissions requested or granted by using the `odpscmd grant` command in Dat a Management . If you want to request other permissions and handle permission requests on the GUI, go to Securit y Cent er and perform operations as required. The Dat a Management service does not support permission request and approval any more. Q: Why cannot I select fields when I request permissions? A: If LabelSecurity is enabled for a workspace, you can request permissions on fields in this workspace. If LabelSecurity is disabled for a workspace, you can request permissions only on tables in this workspace. Q: Who will handle my request? A: Your request is handled by a workspace administrator or a table owner. After either of them approves or rejects your request, the request is closed. Q: Why do I find two requests on the My Request s page after I submit only one request? A: The tables in your request belong to two owners. In this case, Security Center automatically splits your request into two by table owner. Q: I request permissions on a field for one month only. Why does the validity period of the permissions become permanent after my request is approved? A: The security level of this field is zero or not higher than the security level of your account. Q: Why do I obtain permissions on some tables and fields on which I have not requested any permissions? A: The possible causes are as follows: An administrator has granted the permissions to you by running commands in the DataWorks console. After your request is approved in Security Center, Security Center also grants you the permissions on fields whose security level is zero or not higher than the security level of your account, even though you have not requested the permissions. Q: Why does a request disappear from the Pending My Approval tab before I handle it? A: Another workspace administrator or the table owner has approved or rejected the request. The request is closed and no longer needs to be handled. Q: What can I do if the message "An error occurred in the MaxCompute project" appears when I specify the workspace and environment? A: Send the error message and error code to a workspace administrator for troubleshooting. Q: Why do I fail to revoke permissions on a field? A: You can revoke permissions only on the fields whose security level is higher than the security level of your account. Q: Why do I fail to request permissions by using my tenant account? A: By default, a tenant account has all permissions. Therefore, you do not need to request permissions for your tenant account. The tenant account hides unnecessary operations such as permission request. This does not affect the use of the tenant account. Q: In Securit y Cent er, can I view the permission request and approval records of Dat a Management ? A: Security Center and Data Management have not synchronized permission request and approval records yet. You need to go to Dat a Management to view the permission request and approval records of Data Management. Q: Can I revoke permissions based on the request records in Security Center? A: Currently, Security Center is not the only service that provides authorization. To facilitate permission revocation, the Authorizations page in Security Center provides an access control list (ACL) of all users, regardless of the authorization channel. You can revoke any granted permissions without using the request records. Q: A permission request submitted in Dat a Management has not been approved yet. Do I need to submit it again in Security Center? A: Security Center and Data Management have not synchronized permission request and approval records yet. You need to submit the permission request again in Security Center. Q: How do I specify the LabelSecurity parameter for fields? A: You need to go to Dat a Map to set the LabelSecurity parameter for fields. sion)
 
-## Security Center (new version)
+## 9 Security Center (new version)
 
-### Overview
+### 9.1 Overview
 
 DataWorks Security Center helps you build a security system that can secure data and personal privacy. Security Center can meet various security requirements, such as auditing, in high-risk scenarios. You can use Security Center without the need to perform additional configurations. Security Center provides security capabilities for big data systems in the cloud throughout the entire data security lifecycle. It also provides best practices for various security diagnostic scenarios based on security specifications. Security Center provides the following features: Data permission management Security Center supports fine-grained permission requesting, request processing, and permission auditing. This allows you to manage permissions based on the principle of least privilege. In addition, Security Center allows you to view the request processing progress and follow up request processing in real time. For more information, see Data access control. Security diagnosis Security Center provides features such as platform security diagnosis and data usage diagnosis. It also provides best practices for various security diagnosis scenarios based on security specifications. These features ensure that your business is run more effectively in a secure environment. For more information, see Platform security diagnosis.
 
-### Platform security diagnosis
+### 9.2 Platform security diagnosis
 
 The platform security diagnosis feature of DataWorks provides security capabilities for features, such as identity authentication, access control, and development mode, during data transmission, storage, and computing on the nodes in the current DataWorks workspace and the associated compute engine. In addition, best practices are provided for security diagnosis. The platform security diagnosis feature helps you identify the security risks of your platform at the earliest opportunity and build a basic security system before you perform related transactions. Go to the Platform safety diagnosis page
 1. Log on to the DataWorks console.
@@ -16122,7 +16603,7 @@ icon and choose All Product s > Dat a governance > Securit y Cent er. The Dat a 
 3. In the left-side navigation pane, click Plat f orm saf et y diagnosis to go to the Plat f orm saf et y
 diagnosis page. View diagnosis results sion) The Plat f orm saf et y diagnosis page displays the security risks that are detected during business interactions between the current workspace and the associated compute engine instance based on the best practices for security risks. You can identify risk categories and levels based on the diagnosis results, view risk details, and process the items that can be optimized to ensure secure and reliable business interactions. The following types of diagnostic items are provided: Dat a calculat ion and st orage Diagnoses security issues for features such as data permission management, data storage encryption, and data storage backup, and identifies potential security risks at the earliest opportunity to improve security during data storage and access. Dat a t ransmission securit y diagnosis Diagnoses security issues for features such as the access control of data sources and the isolation of data sources in the production and development environments. In addition, this diagnostic item identifies security risks during data transmission so that you can manage these risks at the earliest opportunity. This diagnostic item ensures a secure and reliable environment for data transmission. St andardized diagnosis of dat a product ion Diagnoses security issues for production processes, such as the rationality of the roles, number of administrators, and deployment personnel within the current workspace, and allows you to identify and process security risks at the earliest opportunity. This diagnostic item improves the reliability and security of the data output system. Plat f orm securit y conf igurat ion diagnosis Diagnoses security issues for features, such as auditing of operations on DataWorks, to improve the overall data security. sion) Potential security risks are classified as medium and high risks. You can click a security risk to view its details and manage the security risk at the earliest opportunity. The following figure shows the details about a medium-level risk of dat a source access cont rol. Security risk Permissions are not configured on the data sources. This way, users of low security levels can access data of high security levels. This leads to insecure access to the data sources. Suggestion You can configure permissions for the data sources based on the provided suggestion to improve access security for the data sources.
 
-### Data access control
+### 9.3 Data access control
 
 The data access control feature provides a visual interface that allows you to request permissions, process requests, view request processing progress, follow up request processing, and audit and manage permissions. Limits You can use the dat a access cont rol feature to request only permissions on MaxCompute tables. Usage note The Dat a access cont rol page displays the access control platform of the new version. If you want to use the access control platform of the earlier version, click Ret urn t o old version in the top navigation bar of the page. For more information about the access control platform of the earlier version, see Overview. Go to the Data access control page
 1. Log on to the DataWorks console.
@@ -16155,17 +16636,17 @@ Find the request and click Approval in the Operat ion column. Then, you can view
 3. Process requests.
 To process a single request, enter your comments and click Agree or Reject ion based on your business requirements. To process multiple requests at a time, you can select all the requests that you want to process on the Permission approval tab, click Bulk consent or Bat ch reject ion, and then enter your comments. View historical permission requests and their processing records Go to the Permission applicat ion record tab. Then, you can use the following parameters to find the historical permission requests within the current Apsara Stack tenant account: Approval st at us, Applicat ion t ime, Workspace, Project name, and T able name. You can click View det ails in the Operat ion column that corresponds to a request to view the details about the request. In addition, you can continue to process the requests whose approval states are In approval. Go to the Permission approval record tab. Then, you can use the following parameters to find the request processing records within the current Apsara Stack tenant account: Applicat ion account number, Approval Result s, Workspace, Project name, Object name, and Applicat ion t ime. You can click View det ails in the Operat ion column that corresponds to a request to view the details about the request. Audit permissions Go to the Permission audit tab. Then, you can use the following parameters to find the permission requests that are processed for the workspace, project, or object in Security Center: Workspace, Project name, and Object name.
 
-## Approval Center
+## 10 Approval Center
 
-### Overview
+### 10.1 Overview
 
 DataWorks Approval Center is a functional module that is used to manage approval processes for data permissions and sensitive behavior. You can define approval scopes and processes in Approval Center to meet different approval requirements in different scenarios. Features When you develop and manage data in DataWorks, you can manage permissions on table data and data service APIs with ease. You can use the default approval process provided by Securit y Cent er or customize an approval process in Approval Cent er to manage permissions. When a permission application is submitted after custom approval processes are configured, DataWorks automatically checks whether the permissions to be applied for hit a custom approval process. If a custom approval process is hit, DataWorks forwards the application based on the custom approval process. You can perform the following operations in DataWorks Approval Cent er: Define an approval policy: You can specify the scope of approval objects and define an approval process to customize a process of managing key data resources and sensitive behavior. In addition, you can configure notification methods such as text messages, emails, or DingTalk chatbots. Process permission applications: You can process permission applications that you submit and process permission applications as an approver in approval processes in Approval Center. For more information about custom approval policies, see Approval policies for MaxCompute data and Approval policies for data services. After a custom approval policy is configured, you can process the applications for table permissions or data service permissions based on the approval policy. For more information, see Applications for table field permissions and approval processes and Applications for data service permissions and approval processes. Applications for table field permissions and approval processes After approval policies for MaxCompute data are configured in Approval Cent er, a user submits an application for the permissions on a specific table field in Securit y Cent er. Then, the application is processed based on the flowchart shown in the following figure. When a user applies for the permissions on a specific field in a MaxCompute table, DataWorks identifies the type of approval process to be used based on the field. If the field belongs to the data range specified in a custom approval policy, the custom approval process of the approval policy is hit. Then, DataWorks processes the permission application based on the custom approval process configured in Approval Center. If the field does not belong to the data range specified in a custom approval policy, DataWorks processes the permission application based on the default approval process provided by Security Center. If a custom approval process is used to process the permission application, DataWorks determines the type of approval policy to be used based on the priorities of approval policies configured in Approval Center. When you configure a custom approval policy, you can specify the data range to which the approval policy applies based on a MaxCompute project or data classification in Data Security Guard. In addition, you can configure information such as approvers and notification methods, and set the priorities of MaxCompute project-based and data classification-based approval policies as required. For more information, see Approval policies for MaxCompute data. Applications for data service permissions and approval processes After approval policies for data services are configured, a custom approval process can be triggered if a data service operation is performed. Data service operations include publishing APIs, managing functions, and using service orchestration. When an application is submitted for data service permissions in Securit y Cent er, the application is processed based on the flowchart shown in the following figure. An application is submitted for permissions on data service operations such as publishing APIs, managing functions, or using service orchestration. Then, DataService Studio determines whether a custom approval process is used to process the permission application based on whether a custom approval policy is configured in the current workspace. If the custom approval process of a custom approval policy configured in Approval Center is hit, the permission application is processed based on the custom approval process. If no custom approval process is hit, you can perform data service operations without the need to apply for permissions. If a custom approval process is used, DataWorks forwards the permission application based on the approval policy configured in Approval Center. When you configure a custom approval policy, you can specify the data range to which the approval policy applies based on a workspace. In addition, you can configure information such as approvers and notification methods. For more information, see Approval policies for data services.
 
-### Create and manage approval
+### 10.2 Create and manage approval policies
 
 policies
 
-#### Approval policies for MaxCompute data
+#### 10.2.1 Approval policies for MaxCompute data
 
 You can customize approval processes for MaxCompute tables, resources, and functions. Context You can specify the data range to which an approval process applies based on a MaxComput e project or dat a classif icat ion in Dat a Securit y Guard. For more information, see the Specify the data range section of this topic. Limits Only workspace administrators and the RAM users that are granted the AliyunDataWorksFullAccess permission can create and manage approval policies. Only DataWorks Enterprise Edition and Ultimate Edition allow you to configure approval policies for MaxCompute data. Create an approval policy
 1. Log on to the DataWorks console.
@@ -16182,7 +16663,7 @@ Enter the basic information Set the Policy Name and Purpose parameters based on 
 
 Specify the data range based on data classification in Data Security Guard You must select a data security level from the Select Dat a Securit y Level drop-down list. This way, when applications are submitted to apply for the permissions on the tables at this data security level, this approval policy is used to process the applications. A data security level can be associated with only one data classification-based approval policy. Otherwise, a policy conflict error is reported. You can specify the data range by using an Apsara Stack tenant account or as a RAM user. If you specify the data range as a RAM user, one of the following conditions must be met: The AdministratorAccess policy is attached to the RAM user. The RAM user is granted the AliyunDataWorksFullAccess permission and assigned the Project Owner or Super_Administrator role of all MaxCompute projects. Configure the notification methods Three notification methods are supported: text messages, emails, and DingTalk chatbots. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission application is submitted for approval. In the Configure Processing Links step, you can specify approvers on each approval node. To ensure that the approvers can receive approval notifications by using text messages or emails, you must add the approvers as alert contacts of DataWorks. For more information, see Configure and view alert contacts. To ensure that the approvers can receive notifications by using a DingTalk chatbot, select Cust om Keywords when you set the Securit y Set t ings parameter in the Add Robot dialog box. Then, enter Dat aWorks in the Custom Keywords field. Make sure that the other check boxes are cleared when you set the Security Settings parameter. If you do not add DataWorks as a custom keyword or you select other check boxes when you set the Security Settings parameter, the approvers cannot receive notifications by using the DingTalk chatbot. Configure the approval nodes When you configure the approval nodes, take note of the following items: The approval nodes are sequentially connected. After you configure the approval policy, the approval process specified in the approval policy sequentially flows from node to node. After an approver on an approval node gives approval, the approvers on the next approval node receive a notification and then start approval. You can specify different roles as approvers on different approval nodes. The following roles are supported: DataWorks workspace roles, DataWorks workspace member, table owner, Apsara Stack tenant account, and MaxCompute roles. When an application is submitted for approval, DataWorks sends notifications to the approvers on the approval nodes based on the notification methods configured in the preceding step. You must add the approvers as alert contacts of DataWorks. For more information, see Configure and view alert contacts. If multiple users that assume the same role are specified as approvers on an approval node, notifications are sent to all the approvers. In this case, if one of the approvers on an approval node gives approval, the application is forwarded to the next approval node. Set priorities for approval policies If both MaxCompute project-based and data classification-based approval policies are configured, a specific data range may hit both types of approval policies. In this case, you can set priorities for the two types of approval policies.
 
-#### Approval policies for data services
+#### 10.2.2 Approval policies for data services
 
 DataWorks allows workspace administrators to configure approval policies for publishing data service APIs in workspaces. Limits Only DataWorks Enterprise Edition and Ultimate Edition allow you to configure approval policies for data services. Create an approval policy
 1. Log on to the DataWorks console.
@@ -16193,19 +16674,19 @@ St udio. On the page that appears, you can view a list of created approval polic
 4. Click Creat e Policy in the upper-right corner. Complete the Create Policy wizard.
 Enter the basic information Set the Policy Name and Purpose parameters based on the actual scenario to which the approval policy applies. Specify the data range You must specify the data range to which this approval policy applies based on the actual scenario. After this approval policy is created, the applications for the permissions on the data in this data range must be processed based on this approval policy. Configure the notification methods Three notification methods are supported: text messages, emails, and DingTalk chatbots. After you configure the notification methods, notifications are sent to approvers based on the configured notification methods when a permission application is submitted for approval. In the Configure Processing Links step, you can specify approvers on each approval node. To ensure that the approvers can receive approval notifications by using text messages or emails, you must add the approvers as alert contacts of DataWorks. For more information, see Configure and view alert contacts. To ensure that the approvers can receive notifications by using a DingTalk chatbot, select Cust om Keywords when you set the Securit y Set t ings parameter in the Add Robot dialog box. Then, enter Dat aWorks in the Custom Keywords field. Make sure that the other check boxes are cleared when you set the Security Settings parameter. If you do not add DataWorks as a custom keyword or you select other check boxes when you set the Security Settings parameter, the approvers cannot receive notifications by using the DingTalk chatbot. Configure the approval nodes When you configure the approval nodes, take note of the following items: The approval nodes are sequentially connected. After you configure the approval policy, the approval process specified in the approval policy sequentially flows from node to node. After an approver on an approval node gives approval, the approvers on the next approval node receive a notification and then start approval. You can specify different roles as approvers on different approval nodes. The following roles are supported: DataWorks workspace roles, DataWorks workspace member, table owner, Apsara Stack tenant account, and MaxCompute roles. When an application is submitted for approval, DataWorks sends notifications to the approvers on the approval nodes based on the notification methods configured in the preceding step. You must add the approvers as alert contacts of DataWorks. For more information, see Configure and view alert contacts. If multiple users that assume the same role are specified as approvers on an approval node, notifications are sent to all the approvers. In this case, if one of the approvers on an approval node gives approval, the application is forwarded to the next approval node.
 
-### Process and view applications
+### 10.3 Process and view applications
 
 You can view all applications submitted by the current account and the applications that are approved and to be approved by the current account in DataWorks Approval Center. Approval Center page On the Applicat ion Records page, you can view all applications submitted by the current account. You can filter application records based on Ef f ect ive Scope and Submit t ed At . On the Request s T o Be Processed page, you can view all applications to be approved by the current account. Find an application that you want to process and click Process in the upper-right corner. In the dialog box that appears, confirm the information, enter your comments, and then determine whether to approve or reject the application. On the Processing Records page, you can view all applications that are approved by the current account. You can filter approval records based on Ef f ect ive Scope, Submit t ed At , and Init iat ed By.
 
-## Data Quality
+## 11 Data Quality
 
-### Overview
+### 11.1 Overview
 
 DataWorks provides a Data Quality service for you to control the data quality of disparate connections. In Data Quality, you can check data quality, configure alert notifications, and manage connections. Relying on DataWorks, Data Quality provides a comprehensive data quality solution that has various features. For example, you can detect data, compare data, monitor data quality, and use intelligent alerting. Data Quality monitors data in datasets. Currently, it allows you to monitor MaxCompute tables and DataHub topics. When offline MaxCompute data changes, Data Quality checks data and blocks nodes if it detects exceptions. This prevents nodes from being affected. In addition, Data Quality allows you to manage the check result history so that you can analyze and evaluate the data quality. For streaming data, Data Quality uses DataHub to monitor data streams and sends alert notifications to subscribers if it detects stream discontinuity. You can also set the alert severity such as warning and error alerts, and the alert frequency to minimize repeated alerts. The following figure shows the monitoring flowchart in Data Quality. Data Quality monitors the quality of data from MaxCompute and DataHub datasets. To use Data Quality features, you need to create tables and write data to the tables. You can create MaxCompute tables and write data to the tables in the MaxCompute console or in the DataWorks console. Log on to the DataWorks console. Click the DataWorks icon in the upper-left corner and choose All Product s > Dat a Qualit y to go to the Dat a Qualit y page.
 
-### Features
+### 11.2 Features
 
-#### Dashboard
+#### 11.2.1 Dashboard
 
 As the homepage of Data Quality, the Dashboard page displays an overview of alerts and blocks for subscribed nodes. You can set filter conditions to view the required alerts and blocks.
 
@@ -16224,7 +16705,7 @@ As the homepage of Data Quality, the Dashboard page displays an overview of aler
 | T ask Alarm Sit uat ion T rend | Displays the trend chart of alerts for MaxCompute and DataHub connections. You can view the alert trend in the past 7 or 30 days, or a custom time period within the past three months. |
 | T ask Blocking Sit uat ion T rend Graph | Displays the trend chart of blocks for MaxCompute and DataHub connections. You can view the block trend in the past 7 or 30 days, or a custom time period within the past three months. |
 
-#### My Subscriptions
+#### 11.2.2 My Subscriptions
 
 The My Subscriptions page displays all nodes subscribed by your account. Go to the My Subscriptions page Currently, Data Quality allows you to monitor MaxCompute tables and DataHub topics. You can select a connection on the My Subscript ions page and search for subscribed nodes of the connection.
 1. Log on to the DataWorks console.
@@ -16232,7 +16713,7 @@ The My Subscriptions page displays all nodes subscribed by your account. Go to t
 3. In the left-side navigation pane, click My Subscript ions. The My Subscript ions page appears.
 Subscribed MaxCompute connections On the My Subscript ions page, select MaxComput e from the connection drop-down list in the upper-left corner. All the subscribed MaxCompute connections appear. You can click a partition expression on the right to go to the Rules page. You can click View Check Result s in the Actions column for a partition expression to go to the Search by Node page. Data Quality supports the following four notification methods: Email, Email and SMS, DingT alk Chat bot , and DingT alk Chat bot @ALL. You can click Cancel Subscript ion to unsubscribe from the connection. Subscribed DataHub connections On the My Subscript ions page, select Dat aHub from the connection drop-down list in the upper-left corner. All the subscribed DataHub connections appear. After you click Alert s for a topic, the Alert s page appears, allowing you to view detailed information about the rule alert. You can click Not if icat ion Met hod for a topic to change the notification method of the rule alert. You can click Cancel Subscript ion in the Actions column for a topic to unsubscribe from the topic.
 
-#### Configure monitoring rules
+#### 11.2.3 Configure monitoring rules
 
 Data Quality can monitor data in the MaxCompute, DataHub, and E-MapReduce data stores. This topic describes how to configure a rule for monitoring a table or topic. Go to the Monitoring Rules page
 1. Log on to the DataWorks console.
@@ -16310,7 +16791,7 @@ Click Quick Creat e. Set parameters in the rule configuration section that appea
 
 Associate a custom node with Data Quality monitoring rules Before you associate a custom node with Data Quality monitoring rules, make sure that the custom node is created and committed to the production environment. For more information, see Create a custom node type. You can use one of the following methods to associate a custom node with Data Quality monitoring rules: Associate a custom node with Data Quality monitoring rules on the Data Quality page. i. Log on to the DataWorks console. ii. On the DataStudio page, click the DataWorks icon in the upper-left corner and choose All Product s > Dat a Qualit y. iii. On the Data Quality page, click Monit oring Rules in the left-side navigation pane. iv. Select the target data store from the Engine/Data Source drop-down list, find the target table or topic, and then click View Monit oring Rules in the Actions column. v. On the rule configuration page that appears, click the partition filter expression for which monitoring rules are configured. vi. Click Manage Linked Nodes. vii. In the Manage Linked Nodes dialog box, select the target workspace, enter the ID or name of the custom node, and then click Creat e. Associate a custom node with Data Quality monitoring rules on the Operation Center page. i. Log on to the DataWorks console. ii. On the DataStudio page, click the DataWorks icon in the upper-left corner and choose All Product s > Operat ion Cent er. iii. In the left-side navigation pane, choose Cycle T ask Maint enance > Cycle T ask. iv. Find the target node and choose More > Conf igure Dat a Qualit y Rules in the Actions column. v. In the Conf igure Dat a Qualit y Rules dialog box, set the Workspace, T able Name, Engine t ype, Engine inst ance, and Part it ion Expression parameters, and click Add.
 
-#### View monitoring results
+#### 11.2.4 View monitoring results
 
 The Node Query page displays the monitoring results of rules. After monitoring rules are triggered, you can go to the Node Query page to view the monitoring results of the rules. Go to the Node Query page
 1. Log on to the DataWorks console.
@@ -16359,7 +16840,7 @@ View the monitoring results of DataHub topics
 | View Log | Click View Log in the Actions column of a topic to view the operational logs of rules configured for the topic. |
 | Alert s | Click Alert s in the Actions column of a topic. On the Alerts page, you can view details about alerts triggered by the topic. On the Alert s page, you can click Close in the Actions column of an alert. In the message that appears, click OK to disable the alert. |
 
-#### Report Template Management
+#### 11.2.5 Report Template Management
 
 On the Report T emplat e Management page, you can create a template of data quality reports. DataWorks can periodically generate and send data quality reports based on the template. Create a report template
 1. Log on to the DataWorks console. On the DataStudio page, click the DataWorks icon in the upper-
@@ -16395,7 +16876,7 @@ required parameters.
 4. Click Save in the upper-right corner. A template of data quality reports is generated.
 Preview a report template After creating a report template, you can click Preview in the upper-right corner of the Create Report Template page to view the display format of reports generated based on this template. If report subscribers view reports through email notifications, they can only view the reports in tables. If they view reports on the Data Quality page, they can view reports in tables or charts.
 
-#### Manage rule templates
+#### 11.2.6 Manage rule templates
 
 In Data Quality, you can manage a set of custom rule templates and use the rule templates to improve the efficiency of rule configuration. Context You can create a rule template on the Rule T emplat es and Monit oring Rules pages. After the rule template is created, you can manage and use it. Create a rule template on the Rule Template Management page
 1. Log on to the DataWorks console.
@@ -16478,9 +16959,9 @@ topic, and then click View Monit oring Rules in the Actions column. This topic u
 and select a rule template. For more information about the parameter description, see Rules.
 7. Click Bat ch Creat e.
 
-### User guide
+### 11.3 User guide
 
-#### Configure monitoring rules for
+#### 11.3.1 Configure monitoring rules for MaxCompute
 
 #### MaxCompute
 
@@ -16568,7 +17049,7 @@ View operational logs On the rule configuration page of a table, click View Oper
 3. Select Clone Subscribers or Change T able Names in Cust om Rules as required.
 4. Click Clone.
 
-#### Configure monitoring rules for DataHub
+#### 11.3.2 Configure monitoring rules for DataHub
 
 The Monitoring Rules page is the most important part of Data Quality, where you can configure rules to monitor data in E-MapReduce (EMR), MaxCompute, and DataHub. This topic describes how to configure monitoring rules for DataHub. Context DataHub monitoring supports the following features: Templates for monitoring stream discontinuity and data latency Stream processing features, such as custom Flink SQL, dimension table JOIN, multi-stream JOIN, and window functions Procedure
 1. Add a DataHub data source.
@@ -16618,13 +17099,13 @@ If template rules do not meet your requirements for monitoring the data quality 
 5. Click Bat ch Creat e. After rules are created for the topic, you can perform the following
 operations: View Log: Click it to view the operational logs of the rules. Manage Subscript ions: Click it to view and modify subscribers to the rules, and change the notification method. The changed notification method takes effect for all the subscribers of the rules. Data Quality supports the following methods: Email, Email and SMS, DingT alk Chat bot , and DingT alk Chat bot @ALL. Add a DingTalk chatbot and obtain the webhook address of the chatbot. Then, copy the webhook address to the Manage Subscriptions dialog box.
 
-## Data Map
+## 12 Data Map
 
-### Overview
+### 12.1 Overview
 
 Data Map is developed based on Data Management and uses roles to control the permissions for using different features, such as the permissions for creating and previewing data. Data Map helps you build a better enterprise-level knowledge base. On the homepage of Data Map, you can enter keywords to search for tables by name. You can also click a table in one of the following sections to view the table data: Recent ly Viewed T ables, Recent ly Read T ables, Most Viewed T ables, or Most Read T ables. If you prefer a powerful search engine, go to the homepage to search for data. The homepage appears when you go to the Dat a Map page. To return to the homepage from other pages, click Dat a Map in the upper-left corner. If you want to find tables by workspace or cluster, click All Dat a in the top navigation bar. On the page that appears, you can view tables on different tabs, such as MaxComput e or EMR. You can also find a table and perform the following operations on it: Add t o Favorit es, Apply f or Permission, View Lineage, or View DDL St at ement . If you have added tables to categories, move the pointer over All Dat a in the top navigation bar and select a category. Tables in the category appear. For more information, see Manage categories of and permissions on MaxCompute tables. If you want to view the overall data of the current tenant, click Overview in the top navigation bar. For more information, see View overall data. If you want to modify tables that are owned by your account, click My Dat a in the top navigation bar. For more information, see View and manage tables and data permissions. If you are a category administrator or workspace administrator and want to modify the workspace configurations or global categories, click Conf igurat ion Management in the top navigation bar. For more information, see Manage categories of and permissions on MaxCompute tables.
 
-### Configure whitelists and
+### 12.2 Configure whitelists and category management permissions
 
 category management permissions If you want to view MaxCompute table data or collect metadata in Data Map, you must configure a whitelist for your MaxCompute project or the desired data source. Then, add the Classless Inter-Domain Routing (CIDR) blocks of the region where your DataWorks workspace resides to the whitelist. If you want to manage categories in Data Map, you must grant the related permissions to the account you use. This topic describes how to configure the whitelists and grant category management permissions. Context Data Map provides a platform to manage both metadata and the data assets of enterprises. This platform allows you to search global data, view metadata details, preview data, view data lineages, and manage data categories. Data Map helps you search for, understand, and use data. If you want to use Data Map to view the table data in a MaxCompute project, check whether a whitelist is configured for the project. If a whitelist is configured, make sure that the CIDR blocks of the region where your DataWorks workspace resides are in the whitelist. Otherwise, you cannot view the table data in Data Map. Therefore, to ensure that Data Map can access MaxCompute projects, you must configure whitelists for the projects in advance. Only MaxCompute requires whitelist configuration. For other products, you can directly view data in Data Map. The metadata collection feature allows you to collect metadata from different data sources. This way, you can manage the metadata in a centralized manner. After the metadata of a data source is collected, you can view the metadata in Data Map. Before you collect metadata from the data source, check whether a whitelist is configured for the data source. If a whitelist is configured, make sure that the CIDR blocks of the region where your DataWorks workspace resides are in the whitelist. The category management feature allows you to effectively organize and manage tables by category. For more information, see Manage categories of and permissions on MaxCompute tables. Before you use this feature, make sure that you have the required permissions. If you use an Alibaba Cloud account to manage categories, you have the permissions by default. If you use a RAM user to manage categories, you must attach the AliyunDat aWorksFullAccess policy to the RAM user. Configure a whitelist for a MaxCompute project to allow Data Map to access the project
 1. Check whether a whitelist is configured for your MaxCompute project. For more information, see Vie
@@ -16663,7 +17144,7 @@ Add the desired CIDR blocks of the region where your DataWorks workspace resides
 
 Configure a whitelist for metadata collection from a data source
 1. Check whether a whitelist is configured for the data source.
-Data Map allows you to collect metadata from the following types of data sources: Collect metadata from an EMR data source Collect metadata from an AnalyticDB for PostgreSQL data source Collect metadata from a MySQL data source Collect metadata from a PostgreSQL data source Collect metadata from an SQL Server data source Collect metadata from an Oracle data source Collect metadata from an AnalyticDB for MySQL 2.0 data source Collect metadata from an AnalyticDB for MySQL 3.0 data source Collect metadata from a Hologres data source The method used to check whether a whitelist is configured varies based on the data source type. You can consult technical support personnel. If a whitelist is not configured for the data source, you can directly use Data Map to collect metadata from the data source. If a whitelist is configured, proceed to the next step.
+Data Map allows you to collect metadata from the following types of data sources: Collect metadata from an AnalyticDB for PostgreSQL data source Collect metadata from an AnalyticDB for MySQL 2.0 data source Collect metadata from an AnalyticDB for MySQL 3.0 data source The method used to check whether a whitelist is configured varies based on the data source type. You can consult technical support personnel. If a whitelist is not configured for the data source, you can directly use Data Map to collect metadata from the data source. If a whitelist is configured, proceed to the next step.
 2. Configure the whitelist.
 Add the desired CIDR blocks of the region where your DataWorks workspace resides to the whitelist. The following table lists the CIDR blocks of each region. The position where the CIDR blocks are added varies based on the data source type. You can consult technical support personnel.
 
@@ -16678,7 +17159,7 @@ Add the desired CIDR blocks of the region where your DataWorks workspace resides
 
 Configure category management permissions for a RAM user If you use a RAM user to manage categories, you must attach the AliyunDat aWorksFullAccess policy to the RAM user. What's next After the whitelists and category management permissions are configured, you can view MaxCompute table data, collect metadata, or manage categories in Data Map.
 
-### View overall data
+### 12.3 View overall data
 
 This topic describes how to view the overall data of a tenant on the Overview page. Procedure
 1. Log on to the DataWorks console.
@@ -16697,7 +17178,7 @@ The Overview page displays the offline statistics of the current tenant. The dat
 | T op T ables by Occupied St orage | The top tables that occupy the most storage space for the current tenant. You can click a table name to go to the details page of the table. Not e The logical storage space that is occupied by projects and tables is calculated in a T+1 manner. The numbers next to the project and table names indicate the sizes of the occupied logical storage space. The project storage volume includes not only the table storage volume but also the storage volumes of resources, data in the recycle bin, and other system files. Therefore, the project storage volume is larger than the table storage volume. You are charged for the logical storage volume of a table rather than the physical storage volume of a table. |
 | Most Frequent ly Used T ables | The most frequently referenced tables for the current tenant. You can click a table name to go to the details page of the table. |
 
-### View and manage tables and
+### 12.4 View and manage tables and data permissions
 
 data permissions This topic describes how to view and manage tables on the Owned by Me, Managed by Me, Managed by Tenant Account, and My Favorites pages. This topic also describes how to view and manage data permissions. Context Data Map updates data one day after the data is generated. If you want to query real-time data, we recommend that you use SQL statements. Go to the Owned by Me page
 1. Log on to the DataWorks console.
@@ -16791,7 +17272,7 @@ Manually Sync T able page.
 2. Enter a table GUID in the T able GUID field. Then, click Manually Sync T able to synchronize the
 table.
 
-### Manage categories of and
+### 12.5 Manage categories of and permissions on MaxCompute tables
 
 permissions on MaxCompute tables This topic describes how to manage categories of and permissions on MaxCompute tables that are in your owned or managed workspaces on the Configuration Management page of Data Map. Go to the Configuration Management page
 1. Log on to the DataWorks console.
@@ -16813,9 +17294,9 @@ Development Environment or Preview T ables in Product ion Environment column.
 4. Turn on the switch in the Preview T ables in Product ion Environment column. In the At t ent ion
 message, click I already know t hat I am sure t o open it . If you use a workspace in basic mode, you can turn on or off only the switch in the Preview T ables in Product ion Environment column. After the switch in the Preview T ables in Product ion Environment column is turned on, all members of the workspace can preview MaxCompute tables in the production environment without requesting permissions. This may cause the leak of sensitive data. Therefore, exercise caution before you turn on the switch.
 
-### Table details
+### 12.6 Table details
 
-#### View the details of a table
+#### 12.6.1 View the details of a table
 
 This topic describes how to go to the details page of a table and view the details of the table, such as the basic information, output information, and lineage information. Go to the details page of a table 1. 2.
 3. In the top navigation bar, click All Dat a.
@@ -16839,7 +17320,7 @@ View technical information In the T echnical Inf ormat ion section, you can view
 
 Part it ions subtab On the Part it ions subtab, you can view the name, number of records, storage capacity, creation time, and last update time of each partition in the current table. Change Records subtab On the Change Records subtab, you can view the description, type, granularity, time, and operator of changes performed on the current table. On this subtab, you can also select a change type from the drop-down list in the upper-left corner to filter the table changes. Change types include Creat e T able, Modif y T able, Delet e T able, Creat e Part it ion, Delet e Part it ion, Change Owner, and Change T T L. View output information If the table data periodically changes with the related node, you can view the change status and data that is continuously updated on the Inst ances tab. On this tab, you can also click View Code or View Log in the Act ions column of a node to view the code or logs of the node. View lineage information On the Lineage tab, you can view the source and destination of data and manage the lineage information with ease. The Lineage tab contains the following subtabs: T able Lineage, Field Lineage, and Impact Analysis. The T able Lineage subtab consists of the Graph Analysis and View by Level parts. Graph Analysis: displays the ancestor and descendant tables of a specified level for the current table and the number of ancestor and descendant tables for each table. View by Level: displays the parent and child tables at one level of the current table by default. You can search for the parent and child tables based on the globally unique identifier (GUID). On the Field Lineage subtab, you can select a field from the Field Name drop-down list to view the lineage information of the field. On the Impact Analysis subtab, you can query the node that generates a lineage and the full link of the lineage based on information such as the lineage level, field, node type, table name, workspace name, and table owner. You can click Manual updat e to rerun the impact analysis. You can also download the impact analysis result or send the impact analysis result to the owners of descendant tables of the current table by email. View reference records The Records tab contains the following subtabs: Foreign Key Ref erences and Access St at ist ics. Foreign Key Ref erences subtab: On this subtab, you can check the number of users who reference the current table. Access St at ist ics subtab: On this subtab, you can view the reference records in a line chart. Preview data On the Dat a Preview tab, you can preview the data of the current table. Not ice Only authorized users can preview tables in the production environment. If you do not have the required permissions, click Apply Now. View usage notes On the Usage Not es tab, you can edit usage notes, check the historical versions of the usage notes, and view the business description of data.
 
-#### Request permissions on tables
+#### 12.6.2 Request permissions on tables
 
 This topic describes how to request permissions on tables in Security Center or Data Map. Go to the details page of a table pg
 1. Log on to the DataWorks console.
@@ -16884,7 +17365,7 @@ View the request status
 3. On the page that appears, click the Submit t ed by Me tab.
 4. Find the required request record and click View in the Actions column to view the request status.
 
-#### Add a table to favorites
+#### 12.6.3 Add a table to favorites
 
 This topic describes how to add a table to favorites, remove a table from favorites, and view the tables added to favorites. Procedure
 1. Go to the details page of a table.
@@ -16894,7 +17375,7 @@ i. Log on to the DataWorks console. ii. On the DataStudio page, click the icon i
 4. On the My Dat a page, click My Favorit es in the left-side navigation pane.
 On the page that appears, you can view all the tables that you have added to favorites and remove tables from favorites. To remove a table from favorites, find the table that you want to remove and click Remove f rom Favorit es in the Actions column.
 
-#### Go to DataService Studio to create an API
+#### 12.6.4 Go to DataService Studio to create an API
 
 This topic describes how to go to DataService Studio from the details page of a table to create an API. Procedure
 1. Log on to the DataWorks console.
@@ -16906,9 +17387,9 @@ icon in the upper-left corner and choose All Product s > Dat a governance > Dat 
 6. On the Dat aService St udio page, create an API based on tables or register the existing API as
 required. For more information, see Overview.
 
-### Data discovery
+### 12.7 Data discovery
 
-#### Collect metadata from an EMR data
+#### 12.7.1 Collect metadata from an EMR data source
 
 source This topic describes how to create a crawler to collect metadata from an E-MapReduce (EMR) data source to DataWorks. You can view the collected metadata in Data Map. Prerequisites An EMR cluster is associated with your DataWorks workspace. Procedure
 1. Go to the Dat a Discovery page.
@@ -16926,7 +17407,7 @@ All in the Actions column. Click Ref resh in the upper-right corner of the page 
 9. View the metadata collected from the EMR data source.
 i. In the top navigation bar, click All Dat a. ii. Click the E-MapReduce tab. iii. On the E-MapReduce tab, click the name of the table that stores the collected metadata and view the table details.
 
-#### Collect metadata from a Tablestore data
+#### 12.7.2 Collect metadata from a Tablestore data source
 
 source You can collect information about the schema and lineage of a table to Data Map. This way, the inner structure and association relationships of the table can be clearly displayed. This topic describes how to create a crawler and collect metadata from a Tablestore data source to DataWorks. You can view the collected metadata in Data Map.
 1. Go to the Dat a Discovery page.
@@ -16947,7 +17428,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the OT SMet adat a Crawler page, you can view the information about your crawler and
 manage your crawler. The following descriptions show the information that you can view and the operations that you can perform: You can view St at us, Execut ion Plan, Last Run At , Last Consumed T ime, Average Running T ime, Updated Tables in Last Run, and Added Tables in Last Run of your crawler. You can click Det ails, Edit , Delet e, Run, or St op in the Act ions column to perform the desired operation. Det ails: View Crawler Name, Dat a Source T ype, and Execut ion Plan configured for the crawler. Edit : Modify the configurations of the crawler. Delet e: Delete the crawler. Run: Run the task to collect metadata from the Tablestore data source. The Run entry point is available only when Execut ion Plan is set to On-demand Execut ion. St op: Stop running the crawler. Result After the metadata in the Tablestore data source is collected, switch back to the previous page and click All Dat a in the top navigation bar. On the page that appears, click the OT S tab in the upper part. On the OTS tab, you can view the table that stores the collected Tablestore metadata. Click the t able name, workspace, or dat abase to view the related details. Example 1: View the details of the mysql_ots table. Example 2: View all tables in the datax-bvt database.
 
-#### Collect metadata from a MySQL data
+#### 12.7.3 Collect metadata from a MySQL data source
 
 source This topic describes how to create a crawler to collect metadata from a MySQL data source to DataWorks. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -16968,7 +17449,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the MySQLMet adat a Crawler page, find the created crawler and click Run in the Actions
 column. Result After the metadata in the MySQL data source is collected, click All Dat a in the top navigation bar. Select MySQL from the options in the upper part of the page. You can view the tables that store the collected MySQL metadata. Click the name of the table to view the table details.
 
-#### Collect metadata from an SQL Server data
+#### 12.7.4 Collect metadata from an SQL Server data source
 
 source This topic describes how to create a crawler to collect metadata from an SQL Server data source. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -16989,7 +17470,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the SQL ServerMet adat a Crawler page, find the created crawler and click Run in the Actions
 column.
 
-#### Collect metadata from a PostgreSQL data
+#### 12.7.5 Collect metadata from a PostgreSQL data source
 
 source This topic describes how to create a crawler to collect metadata from a PostgreSQL data source to DataWorks. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -17010,7 +17491,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the Post greSQLMet adat a Crawler page, find the created crawler and click Run in the Actions
 column.
 
-#### Collect metadata from an Oracle data
+#### 12.7.6 Collect metadata from an Oracle data source
 
 source This topic describes how to create a crawler to collect metadata from an Oracle data source to DataWorks. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -17031,7 +17512,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the OracleMet adat a Crawler page, find the created crawler and click Run in the Actions
 column.
 
-#### Collect metadata from an AnalyticDB for
+#### 12.7.7 Collect metadata from an AnalyticDB for PostgreSQL data source
 
 PostgreSQL data source This topic describes how to create a crawler to collect metadata from an AnalyticDB for PostgreSQL data source to DataWorks. You can view the collected metadata in Data Map. Procedure
 1. Go to the Dat a Discovery page.
@@ -17052,7 +17533,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the Analyt icDB f or Post greSQLMet adat a Crawler page, find the created crawler and click
 Run in the Actions column. After the crawler is run, click the number in the T ables f ound during Last Run column to view the details of the updated or created tables. Not ice The Run button is available only in the Actions column of a crawler that needs to be manually triggered. You can also perform the following operations on the AnalyticDB for PostgreSQLMetadata Crawler page: Click Det ails in the Actions column that corresponds to a crawler. In the Crawler Det ails dialog box, view the detailed information about the crawler. Click Edit in the Actions column that corresponds to a crawler. In the Edit Crawler dialog box, modify the configurations of the crawler. Click Delet e in the Actions column that corresponds to a crawler. In the Conf irm message, click Ok to delete the crawler. Find a crawler that is running and click St op in the Act ions column to stop the crawler.
 
-#### Collect metadata from an AnalyticDB for
+#### 12.7.8 Collect metadata from an AnalyticDB for MySQL 2.0 data source
 
 MySQL 2.0 data source This topic describes how to create a crawler to collect metadata from an AnalyticDB for MySQL 2.0 data source to DataWorks. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -17073,7 +17554,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the Analyt icDB f or MySQL 2.0Met adat a Crawler page, find the created crawler and click
 Run in the Actions column.
 
-#### Collect metadata from an AnalyticDB for
+#### 12.7.9 Collect metadata from an AnalyticDB for MySQL 3.0 data source
 
 MySQL 3.0 data source This topic describes how to create a crawler to collect metadata from an AnalyticDB for MySQL 3.0 data source to DataWorks. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -17094,7 +17575,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the Analyt icDB f or MySQL 3.0Met adat a Crawler page, find the created crawler and click
 Run in the Actions column.
 
-#### Collect metadata from a Hologres data
+#### 12.7.10 Collect metadata from a Hologres data source
 
 source This topic describes how to create a crawler to collect metadata from a Hologres data source to DataWorks. You can view the collected metadata on the Data Map page. Procedure
 1. Go to the Dat a Discovery page.
@@ -17115,7 +17596,7 @@ ii. Click Next . iii. In the Select Collect ion Object step, select a data sourc
 5. On the HologresMet adat a Crawler page, find the created crawler and click Run in the Actions
 column.
 
-#### Collect metadata from a CDH Hive data
+#### 12.7.11 Collect metadata from a CDH Hive data source
 
 source DataWorks allows you to collect metadata that includes the table schema and the linage information of tables in Data Map. You can view the schema of a table and the relationships between tables. This topic describes how to create a crawler to collect metadata from a CDH Hive data source to DataWorks. You can view the collected metadata on the Data Map page. Prerequisites A CDH cluster is associated with the current DataWorks workspace. For more information, see Associate a CDH cluster with a workspace. Limits You cannot collect metadata across regions. You must create a crawler in the region where the source metadata resides to collect the metadata. Create a crawler
 1. Go to the Dat a Discovery page.
@@ -17135,7 +17616,7 @@ i. Select a CDH cluster. In the Creat e Crawler dialog box, select the cluster f
 
 What's next After the metadata is collected, you can view the details of the collected metadata on the All Dat a page of Data Map.
 
-#### Collect metadata from an HBase data
+#### 12.7.12 Collect metadata from an HBase data source
 
 source DataWorks allows you to collect metadata that includes the table schema and the linage information of tables in Data Map. You can view the schema of a table and the relationships between tables. This topic describes how to create a crawler to collect metadata from an HBase data source to DataWorks. You can view the collected metadata on the Data Map page. Prerequisites A Cloudera Distribution Hadoop (CDH) cluster is associated with the current DataWorks workspace. For more information, see Associate a CDH cluster with a workspace. Limits You cannot collect metadata across regions. You must create a crawler in the region where the source metadata resides to collect the metadata. Create a crawler
 1. Go to the Dat a Discovery page.
@@ -17161,7 +17642,7 @@ ii. Click Next . iii. Select an HBase data source. In the Select Collect ion Obj
 
 What's next After the metadata is collected, you can view the details of the collected metadata on the All Dat a page of Data Map.
 
-#### Collect metadata from a Kudu data
+#### 12.7.13 Collect metadata from a Kudu data source
 
 source DataWorks allows you to collect metadata that includes the table schema and the linage information of tables in Data Map. You can view the schema of a table and the relationships between tables. This topic describes how to create a crawler to collect metadata from a Kudu data source to DataWorks. You can view the collected metadata on the Data Map page. Prerequisites A CDH cluster is associated with the current DataWorks workspace. For more information, see Associate a CDH cluster with a workspace. Limits You cannot collect metadata across regions. You must create a crawler in the region where the source metadata resides to collect the metadata. Create a crawler
 1. Go to the Dat a Discovery page.
@@ -17187,7 +17668,7 @@ ii. Click Next . iii. Select a Kudu data source. In the Select Collect ion Objec
 
 What's next After the metadata is collected, you can view the details of the collected metadata on the All Dat a page of Data Map.
 
-### What do I do if no search results
+### 12.8 What do I do if no search results are returned when I query a newly created table in the Data Map service of DataWorks?
 
 are returned when I query a newly created table in the Data Map service of DataWorks? The Data Map service of DataWorks allows you to query tables on the homepage of Data Map by using a keyword. It also allows you to view the tables that you have recently browsed or read. If no search results are returned when you query a newly created table in the Data Map service of DataWorks, the possible cause is a latency of DataWorks in obtaining metadata. This topic describes how to address this issue. Problem description When I query a newly created table on the All Dat a page of Data Map by using a keyword, the No dat a f ound. message is displayed. Possible causes Possible causes: Possible cause 1: You entered an invalid keyword and no tables that match the keyword can be found. Possible cause 2: The table that you want to query has just been created, and no search results can be returned because of a latency of DataWorks in obtaining metadata. Solution
 1. Check the keyword that you have entered.
@@ -17201,9 +17682,9 @@ ick Manually Sync Table.
 
 After you complete the preceding steps, query the table on the All Data page of Data Map by using the keyword again. t
 
-## Data Asset Management
+## 13 Data Asset Management
 
-### Go to the Data Asset
+### 13.1 Go to the Data Asset Management page
 
 Management page Data Asset Management provides you with an overview of your data assets. Data Asset Management requires that data be synchronized by using Data Integration and processed by using DataStudio before you manage your tables and APIs stored in your business system and DataWorks. Context Data Asset Management controls the permissions of users independently. You must grant the permissions on the Project Management page because Data Asset Management is a tenant-level feature. Data Asset Management allows you to view the metadata collected in Data Map. You can also perform basic management operations on the metadata. For example, you can change the business classes and add business descriptions for metadata tables. Procedure
 1. Log on to the DataWorks console.
@@ -17222,7 +17703,7 @@ in the upper-left corner and choose All Product s > Dat a Asset Management to ma
 
 t
 
-### Asset manager
+### 13.2 Asset manager
 
 Asset managers can view the information about data assets. Procedure
 1. Log on to the DataWorks console.
@@ -17232,7 +17713,7 @@ All Product s > Dat a Asset Management .
 4. On the search results page that appears, click the T ables, File, or API tab to view details and
 apply for permissions. You can click the Classes tab in the top navigation bar to filter data assets by class.
 
-### Asset user
+### 13.3 Asset user
 
 Asset users can access Data Asset Management to perform operations such as searching for assets, applying for permissions, and using assets.
 1. Log on to the DataWorks console.
@@ -17242,14 +17723,14 @@ All Product s > Dat a Asset Management .
 4. On the search results page that appears, click the T ables, File, or API tab to view details and
 apply for permissions. You can click the Classes tab in the top navigation bar to filter data assets by class.
 
-### Asset administrator
+### 13.4 Asset administrator
 
 Asset administrators can manage assets and authorizations in Data Asset Management. You can submit a ticket to apply for the asset administrator role. An administrator can grant the administrator role to common users. An administrator can perform any operations in Data Asset Management, and no approval is required. Go to the Assets tab
 1. Log on to the DataWorks console.
 2. On the DataStudio page that appears, click the DataWorks icon in the upper-left corner and choose
 All Product s > Dat a Asset Management .
 3. In the top navigation bar, click the Asset s tab.
-Under the Asset s tab, you can click Dat a Management , Classes, or Business Management in the left-side navigation pane to manage your data assets accordingly. Manage data t In the left-side navigation pane, you can click Dat a Management and then T ables, Files, or APIs to manage tables, files, or APIs. Manage t ables In the left-side navigation pane, choose Dat a Management > T ables to go to the T ables page. On the Tables page, you can view, edit, publish, or delete a table. Click the name of a table to view table details. Click Edit in the Actions column of a table. In the Edit dialog box that appears, you can edit the configuration of the table. Move the pointer over Publish in the Actions column of a table. In the dialog box that appears, click Publish. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You can search for a published table in Data Asset Management. Move the pointer over Delet e in the Actions column of a table. In the dialog box that appears, click Delet e. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You cannot search for a deleted table in Data Asset Management. Manage f iles In the left-side navigation pane, choose Dat a Management > Files to go to the Files page. On the File Management page that appears, you can upload a file. Then, you can view, edit, download, or delete the file. In the upper-right corner, click Upload File. In the Upload File dialog box that appears, click Add File. In the Add dialog box that appears, select the file to be uploaded and click Open. Alternatively, you can drag and drop a file to the Upload File dialog box. Then, click Next . To upload a file, make sure that the size of the file does not exceed 50 MB. You can only upload a file with one of the following file name extensions: 3DX, 7Z, A3D, ATX, AVI, BMP, SV, DBF, DOC, DOCX, DWG, EPS, ESP, FREELIST, GDB, GDBINDEXES, GDBTABLE, GDBTABLX, GIF, GZ, HTM, HTML, IVE, JPEG, JPG, LOCK, LSP, LST, MP3, MP4, MPJ, OSG, OSGB, PDF, PNG, PPT, PPTX, PRJ, PSD, RAR, S3C, SBN, SBX, SCP, SHP, SPX, TFW, TIF, TIFF, TTF, TXT, WAV, WL, WP, WT, XLS, XLSX, ZIP, XML, SHX, and SKP Click the name of a file to view file details. Click Edit in the Actions column of a file. In the Edit dialog box that appears, you can edit the configuration of the file. t Move the pointer over Publish in the Actions column of a file. In the dialog box that appears, click Publish. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You can search for a published file in Data Asset Management. Move the pointer over Delet e in the Actions column of a file. In the dialog box that appears, click Delet e. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You cannot search for a deleted file in Data Asset Management. Click Download in the Actions column of a file to download the file. Before downloading a file, apply for the download permission. Manage APIs In the left-side navigation pane, choose Dat a Management > APIs to go to the APIs page. On the APIs page, you can edit, publish, or delete an API. Click Edit in the Actions column of an API. In the Edit dialog box that appears, you can edit the configuration of the API. Then, click Submit . Move the pointer over Publish in the Actions column of an API. In the dialog box that appears, click Publish. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You can search for a published API in Data Asset Management. Move the pointer over Delet e in the Actions column of an API. In the dialog box that appears, click Delet e. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You cannot search for a deleted API in Data Asset Management. Manage classes
+Under the Asset s tab, you can click Dat a Management , Classes, or Business Management in the left-side navigation pane to manage your data assets accordingly. Manage data t In the left-side navigation pane, you can click Dat a Management and then T ables, Files, or APIs to manage tables, files, or APIs. Manage t ables In the left-side navigation pane, choose Dat a Management > T ables to go to the T ables page. On the Tables page, you can view, edit, publish, or delete a table. Click the name of a table to view table details. Click Edit in the Actions column of a table. In the Edit dialog box that appears, you can edit the configuration of the table. Move the pointer over Publish in the Actions column of a table. In the dialog box that appears, click Publish. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You can search for a published table in Data Asset Management. Move the pointer over Delet e in the Actions column of a table. In the dialog box that appears, click Delet e. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You cannot search for a deleted table in Data Asset Management. Manage f iles In the left-side navigation pane, choose Dat a Management > Files to go to the Files page. On the File Management page that appears, you can upload a file. Then, you can view, edit, download, or delete the file. In the upper-right corner, click Upload File. In the Upload File dialog box that appears, click Add File. In the Add dialog box that appears, select the file to be uploaded and click Open. Alternatively, you can drag and drop a file to the Upload File dialog box. Then, click Next . To upload a file, make sure that the size of the file does not exceed 50 MB. You can only upload a file with one of the following file name extensions: 3DX, 7Z, A3D, ATX, AVI, BMP, SV, DBF, DOC, DOCX, DWG, EPS, ESP, FREELIST, GDB, GDBINDEXES, GDBTABLE, GDBTABLX, GIF, GZ, HTM, HTML, IVE, JPEG, JPG, LOCK, LSP, LST, MP3, MP4, MPJ, OSG, OSGB, PDF, PNG, PPT, PPTX, PRJ, PSD, RAR, S3C, SBN, SBX, SCP, SHP, SPX, TFW, TIF, TIFF, TTF, TXT, WAV, WL, WP, WT, XLS, XLSX, ZIP, XML, SHX, and SKP Click the name of a file to view file details. Click Edit in the Actions column of a file. In the Edit dialog box that appears, you can edit the configuration of the file. t Move the pointer over Publish in the Actions column of a file. In the dialog box that appears, click Publish. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You can search for a published file in Data Asset Management. Move the pointer over Delet e in the Actions column of a file. In the dialog box that appears, click Delet e. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You cannot search for a deleted file in Data Asset Management. Click Download in the Actions column of a file to download the file. Before downloading a file, apply for the download permission. In the left-side navigation pane, choose Dat a Management > APIs to go to the APIs page. On the APIs page, you can edit, publish, or delete an API. Click Edit in the Actions column of an API. In the Edit dialog box that appears, you can edit the configuration of the API. Then, click Submit . Move the pointer over Publish in the Actions column of an API. In the dialog box that appears, click Publish. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You can search for a published API in Data Asset Management. Move the pointer over Delet e in the Actions column of an API. In the dialog box that appears, click Delet e. After the request is submitted, click the Permissions tab in the top-navigation bar. In the left-side navigation pane, click Submit t ed by Me to view the request you submitted. You cannot search for a deleted API in Data Asset Management. Manage classes
 1. In the left-side navigation pane, click Classes to go to the Classes page.
 On the Classes page, you can import or export a class.
 2. Click the
@@ -17292,7 +17773,7 @@ t
 
 To create a sub-business unit under a business unit, click the icon next to the business unit. Manage business syst ems In the left-side navigation pane, choose Business Management > Business Syst ems to go to the Business Syst ems page. On the Business Systems page, you can add a business system. Then, you can view, edit, or delete the business system. Click Add Business Syst em. In the Basic inf ormat ion dialog box that appears, set relevant parameters and click Submit . Click View in the Actions column of a business system to view its details. Click Edit in the Actions column of a business system. In the Business Syst em Propert ies dialog box that appears, you can edit the configuration of the business system. Click Delet e in the Actions column of a business system. In the Delet e business syst em dialog box that appears, click OK to delete the business system. Manage connect ions In the left-side navigation pane, choose Business Management > Connect ions to go to the Connect ions page. On the Connect ions page, you can view the information of connections. The connection information includes the connection name, the number of tables, the owner, the business system to which the connection belongs, the data type, and the update time. You can also edit the configuration of a connection.
 
-### Manage authorizations
+### 13.5 Manage authorizations
 
 Under the Permissions tab, you can view permissions in different states on the Submitted by Me, To Be Handled, Handled by Me, and My Permissions pages respectively. Go to the Permissions tab
 1. Log on to the DataWorks console.
@@ -17301,7 +17782,7 @@ All Product s > Dat a Asset Management .
 3. In the top navigation bar, click the Permissions tab.
 Under the Permissions tab, you can view permissions in different states on the Submit t ed by Me, T o Be Handled, Handled by Me, and My Permissions pages respectively. t Submitted by Me In the left-side navigation pane, click Submit t ed by Me. On the Submit t ed by Me page, you can view request details or cancel requests submitted by you. To resubmit a request that was not approved, find the target request and click Reapply. To Be Handled In the left-side navigation pane, click T o Be Handled. On the To Be Handled page, you can view request details and approve or reject requests. Handled by Me In the left-side navigation pane, click Handled by Me to view requests handled by you. My Permissions In the left-side navigation pane, click My Permissions. On the My Permissions page, you can view your permissions on tables, files, and APIs respectively.
 
-### Perform cross-tenant
+### 13.6 Perform cross-tenant authorization
 
 authorization Authorization logic The logic of authorization within a tenant and that of cross-tenant authorization are as follows: Authorization within a tenant: An access control list (ACL) is used for authorization. You need to add the applicant to the corresponding workspace and then grant permissions to the applicant as requested. Cross-tenant authorization: A package is used for authorization. First, check whether the workspace where the requested resources reside has a package. If the workspace does not have a package, create a package and add the requested resources to the package. Then, install the package in the workspace where the requested resources are used. After that, use an ACL to grant permissions to the applicant as requested. If the workspace has a package, add the requested resources to the package. If the requested resources need to be shared with multiple workspaces, install the package in all these workspaces. If the workspace where the requested resources reside has multiple packages, install all of them in the workspaces where the requested resources are used. Procedure
 1. Log on to the DataWorks console. On the DataStudio page, click the DataWorks icon in the upper-
@@ -17330,9 +17811,9 @@ After you submit the request, click Approval Management in the top navigation ba
 7. Log on to the DataWorks console as the table owner, go to the Approval Management tab and
 click T o Be Handled. On the page that appears, review the request information and click Agree. After clicking Agree, click Approval Management in the top navigation bar and click Handled by Me. On the page that appears, you can view your authorization records and revoke specific authorizations. nt
 
-## Organization management
+## 14 Organization management
 
-### Member management
+### 14.1 Member management
 
 1. Log on to the DataWorks console as a workspace administrator.
 2. Move your pointer over the DataWorks icon in the upper-left corner, and click Project
@@ -17341,16 +17822,16 @@ Management .
 4. You can enter a member name or logon name in the search box to search for a member to be
 added or removed from the current organization. Assign a role To assign a role to a member, click the Roles drop-down list next to the member, and select the role to be assigned. To unassign a role from a member, click x next to the role. Remove a member from an organization Click Delet e next to the member, and click OK in the Remove f rom T enant dialog box that appears.
 
-### Resource groups
+### 14.2 Resource groups
 
-#### About scheduling resources
+#### 14.2.1 About scheduling resources
 
 You can use the Scheduling Resource page to create, configure, and edit a scheduling resource. A scheduling resource is an object within an organization. A dedicated scheduling resource may contain multiple physical machines or ECS instances that are used to implement a specific task.
 1. Log on to the DataWorks console.
 2. In the left-side navigation pane, choose Organizat ion Management > Scheduling Resources.
 On the Scheduling Resources page, the tenant administrator can create a dedicated scheduling resource, and edit an existing scheduling resource.
 
-#### Change the workspace of scheduling
+#### 14.2.2 Change the workspace of scheduling resources
 
 resources You can change the workspace of dedicated scheduling resources that have been created and configured. Procedure To change the workspace of dedicated scheduling resources, the tenant administrator performs the following operations:
 1. Log on to the DataWorks console as a tenant administrator.
@@ -17361,7 +17842,7 @@ scheduling resource.
 4. Click Change Workspace.
 5. Click OK.
 
-### Configure the compute engine
+### 14.3 Configure the compute engine
 
 Currently, DataWorks only supports MaxCompute as its compute engine. All business flows and nodes in a workspace are run on the MaxCompute project associated to the workspace. Example Tenant administrators can modify the settings for MaxCompute projects. The following settings are changeable: the project description, whether to use the MaxCompute project owner account to run MaxCompute jobs, the account used for running MaxCompute jobs, and the AccessKey of the account. Assume that the account used for running MaxCompute jobs is no longer available, for example, because the account owner has resigned. If Run MaxCompute Task Using MaxCompute Owner Account is not selected, the tenant administrator needs to immediately modify the account used for running MaxCompute jobs and its AccessKey so that tasks can properly run in the workspace that uses the corresponding MaxCompute project. Procedure You can modify the account used for running MaxCompute jobs and its AccessKey as follows:
 1. Log on to the DataWorks console as a tenant administrator. For more information, see Log on to
@@ -17374,13 +17855,13 @@ engine name. Fuzzy search is supported.
 AccessKey. You can also select Run MaxCompute Task Using MaxCompute Owner Account or create a new Alibaba Cloud account.
 6. Click Submit .
 
-## Data Service
+## 15 Data Service
 
-### Overview
+### 15.1 Overview
 
 DataService Studio aims to build a data service bus to help enterprises centrally manage private and public APIs. DataService Studio allows you to create APIs based on data tables. You can also register existing APIs to DataService Studio for centralized management. DataService Studio and API Gateway are interconnected. This allows you to publish APIs to API Gateway with ease. DataService Studio works together with API Gateway to provide a secure, stable, cost-effective, and easy-to-use data sharing service. DataService Studio adopts a serverless architecture. This allows you to focus on the query logic of the API without worrying about the infrastructure, such as compute resources. DataService Studio supports automatic scaling for compute resources. This way, you can significantly reduce O&M costs. Create an API DataService Studio allows you to create APIs based on tables in relational databases and NoSQL databases. You can create an API in the codeless user interface (UI) within a few minutes without the need to write code. For more information, see Create an API in the codeless UI. DataService Studio also allows you to create an API in the code editor. You can write SQL statements to customize the query logic of the API. In the code editor, you can specify multi-table join queries, complex query criteria, and aggregate functions. For more information, see Create an API in the code editor. Register an API You can register existing RESTful APIs to DataService Studio to manage them together with the APIs that are created in DataService Studio based on tables. Four request methods and three data formats are supported. The four request methods are GET, POST, PUT, and DELETE. The three data formats are tables, JSON, and XML. API Gateway API Gateway provides API lifecycle management services, including API publishing, management, maintenance, and monetization. API Gateway provides a simple, fast, cost-effective, and low-risk service for you to aggregate microservices, separate the frontend from the backend, integrate systems, and provide features and data to partners and developers. Being integrated with API Gateway, DataService Studio allows you to publish APIs to API Gateway conveniently. Both APIs that you create based on data tables and APIs that you register to DataService Studio can be published to API Gateway for management, for example, for authorization, authentication, throttling, and billing. Sell APIs in Alibaba Cloud Marketplace The API sector of Alibaba Cloud Marketplace provides thousands of API products in the following categories: finance, AI, e-commerce, transportation and geography, living services, corporate management, and public affairs. Alibaba Cloud Marketplace provides a platform where you can monetize your data. After you publish APIs that are created or registered in DataService Studio to API Gateway, you can publish them to Alibaba Cloud Marketplace with a few clicks. This is an easy way to achieve financial gains for your enterprise.
 
-### Terms
+### 15.2 Terms
 
 This section introduces terms of Data Service.
 
@@ -17394,7 +17875,7 @@ This section introduces terms of Data Service.
 | API group | Indicates a set of APIs for a specific scenario or for consuming a specific service. An API group is the smallest group unit in Data Service, and the smallest unit for API Gateway management. API groups are published in Alibaba Cloud API Marketplace as API products. |
 | API Gateway | Indicates a hosted service provided by Alibaba Cloud to manage APIs. API Gateway supports API lifecycle management, permission management, access management, and traffic control. |
 
-### Manage tags
+### 15.3 Manage tags
 
 This topic describes how to create, add, view, and remove tags for an API. DataService Studio allows you to add tags to APIs when you manage workflows and create, register, and deploy APIs. In this topic, the scenario of creating an API in the codeless user interface (UI) is used. Tags allow you to efficiently classify and search for APIs. You can maintain only one tag list in a workspace, and cannot use the tag list of a workspace in another workspace. Each API supports zero to five tags. You can add no tag to an API at all or add up to five tags to an API. A tag can be up to 20 characters in length and can contain letters, digits, and underscores (_). Create a tag for an API
 1. Log on to the DataWorks console, click the DataWorks icon in the upper-left corner, and then
@@ -17435,11 +17916,11 @@ Published tab and view the tags of each API in the Label column. If an API has m
 4. On the APIs of Published tab, enter a tag in the Label field to search for all APIs associated with
 the tag. You can search for APIs based on multiple tags.
 
-### Manage business processes and
+### 15.4 Manage business processes and objects under business processes
 
 objects under business processes
 
-#### Manage business processes
+#### 15.4.1 Manage business processes
 
 This topic describes how to create, modify, and delete a business process. Context DataWorks allows you to organize different types of resources in a business process. This helps you analyze data by business. Each business process contains APIs, functions, and workflows. Create a business process
 1. Log on to the DataWorks console.
@@ -17472,7 +17953,7 @@ delete and select Delet e.
 2. In the Not es message, click OK.
 You can delete only business processes that do not contain objects such as folders, APIs, functions, or workflows. If you want to delete a business process that contains such objects, delete the objects before you delete the business process.
 
-#### Manage APIs
+#### 15.4.2 Manage APIs
 
 This topic describes how to view, clone, delete, and move APIs. View an API
 1. Log on to the DataWorks console.
@@ -17500,7 +17981,7 @@ Deleted APIs cannot be recovered. Use caution when you delete an API. Move an AP
 2. In the Modif y f ile pat h dialog box, set the T arget Folder parameter.
 3. Click OK.
 
-#### Manage functions
+#### 15.4.3 Manage functions
 
 This topic describes how to create, clone, delete, and move Python functions. Create a Python function
 1. Log on to the DataWorks console.
@@ -17538,7 +18019,7 @@ and select Mobile.
 2. In the Modif y f ile pat h dialog box, set the Dest inat ion Folder parameter.
 3. Click OK.
 
-#### Manage workflows
+#### 15.4.4 Manage workflows
 
 This topic describes how to view, clone, delete, and move a workflow. Prerequisites Workflows are created and published. For more information, see Use workflows. View a workflow
 1. Log on to the DataWorks console.
@@ -17569,7 +18050,7 @@ and select Mobile.
 2. In the Modif y f ile pat h dialog box, set the Dest inat ion Folder parameter.
 3. Click OK.
 
-### Create an API
+### 15.5 Create an API
 
 In Data Service, you can quickly create APIs based on tables in relational databases or NoSQL databases using a visual wizard. It takes only a few minutes to configure a data API, and coding is not required. You can also create APIs by specifying SQL scripts. The script mode supports advanced functions such as associative tables, complex criteria, and aggregate functions. The differences between the wizard mode and script mode are described as follows: Differences between the wizard mode and script mode
 
@@ -17592,7 +18073,7 @@ In Data Service, you can quickly create APIs based on tables in relational datab
 |   | Performs an aggregate operation on field values | Not supported | Supported |
 |   | Displays results with pagination | Supported | Supported |
 
-#### Configure connections
+#### 15.5.1 Configure connections
 
 DataService Studio allows you to obtain table schemas and query data through APIs from connections. Before generating an API, make sure that you have configured the relevant connections. You can click Connect ions on the Dat a Int egrat ion page to configure connections. The following table lists the available connection types and supported configuration modes.
 
@@ -17608,7 +18089,7 @@ DataService Studio allows you to obtain table schemas and query data through API
 | Table Store | Supported | Not supported |
 | MongoDB | Supported | Not supported |
 
-#### Create an API in the codeless UI
+#### 15.5.2 Create an API in the codeless UI
 
 DataWorks allows you to create APIs by setting parameters in the codeless UI without the need to write code. This topic describes how to create an API in the codeless UI. Prerequisites Connections are configured on the Dat a Source page. For more information, see Configure data sources. Create an API
 1. Log on to the DataWorks console.
@@ -17683,7 +18164,7 @@ in the toolbar.
 3. In the message that appears, click OK. Then, you can view the SQL statements of the API in the Edit
 query SQL section. Not ice DataService Studio allows you to switch only from the codeless UI to the code editor. After you switch from the codeless UI to the code editor, you cannot switch back to the codeless UI.
 
-#### Create an API in the code editor
+#### 15.5.3 Create an API in the code editor
 
 To meet the requirements of advanced data query, DataService Studio allows you to create an API by writing an SQL script in the code editor. DataService Studio supports table join queries, complex queries, and aggregate functions. This topic describes how to create an API in the code editor. Prerequisites Connections are configured on the Dat a Source page. For more information, see Configure data sources. Create an API
 1. Log on to the DataWorks console.
@@ -17755,9 +18236,9 @@ The request and response details appear on the right. If the API fails the test,
 3. After the API is tested, close the T est APIs dialog box and click Publish in the upper-right corner
 of the configuration tab.
 
-#### Use filters
+#### 15.5.4 Use filters
 
-##### Use prefilters
+##### 15.5.4.1 Use prefilters
 
 A prefilter is a function that is used to process request parameters of APIs. You can specify one or more prefilters to customize the request content for APIs. This topic describes the limits of prefilters, the built-in function template provided by the system, and how to create functions and use them as prefilters. Context Prefilters have the following limits: Only Python 3.0 functions can be used as prefilters. Prefilters support importing only the following modules: json, time, random, pickle, re, and math. The function name of a prefilter must be `def handler(event,context):` . Function template The system provides the following built-in function template:
 
@@ -17807,7 +18288,7 @@ pane.
 A prefilter is a function that is used to process request parameters of APIs. You can create a function and use it as a prefilter.
 5. Click Preview Response to view the processing results of the prefilters.
 
-##### Use post filters
+##### 15.5.4.2 Use post filters
 
 A post filter is a function that is used to process the results returned by APIs. You can specify one or more post filters to process the results returned by APIs. This topic describes the limits of post filters, the built-in function template provided by the system, and how to create functions and use them as post filters. Context Post filters have the following limits: Only Python 3.0 functions can be used as post filters. Post filters support importing only the following modules: json, time, random, pickle, re, and math. The function name of a post filter must be `def handler(event,context):` . Function template The system provides the following built-in function template:
 
@@ -17857,7 +18338,7 @@ pane.
 A post filter is a function that is used to process the results returned by APIs. You can create a function and use it as a post filter.
 5. Click Preview Response to view the processing results of the post filters.
 
-### Register an API
+### 15.6 Register an API
 
 This topic describes how to register APIs, manage APIs, and publish APIs to API Gateway together with APIs created based on data tables. Four request methods and three data formats are supported. The four request methods are GET, POST, PUT, and DELETE. The three data formats are tables, JSON, and XML. Register an API
 1. Log on to the DataWorks console
@@ -17912,7 +18393,7 @@ to define an error code. The information helps API callers diagnose the causes o
 5. Click the
 icon in the top toolbar. After the API is configured, you can test it. For more information, see Test an API. After the API passes the test, click Submission in the upper-right corner. In the right-side navigation pane of the configuration tab of the API, click Version. Find the version that you want to publish and click Publish in the Actions column.
 
-### Manage APIs
+### 15.7 Manage APIs
 
 After an API is published, you can perform operations to manage the API. For example, you can authorize access to, unpublish, or test the API. This topic describes the operations that you can perform to manage APIs. Prerequisites One or more APIs are published. You can unpublish, authorize access to, or change the protocols of APIs only after the APIs are published. For more information, see Publish APIs. Go to the Manage APIs page
 1. Log on to the DataWorks console
@@ -17946,9 +18427,9 @@ View the statistics of an API On the APIs of Published tab, find the API of whic
 > View St at ist ics in the Actions column. The page for viewing the statistics of the API appears.
 View the APIs that you are authorized to access On the Manage APIs page, click the Aut horized t o Use tab to view the APIs that you are authorized to access. You can perform the following operations on the APIs that you are authorized to access: Find the API that you want to test and click T est in the Actions column to test the API on the T est APIs page. Find the API on which you want to remove access permissions and click Delet e. In the Delet e aut horized message, click OK to remove access permissions on the API. If you remove access permissions on an API, the workspace to which you belong can no longer call the API. View the APIs that you authorize others to access On the Manage APIs page, click the Aut horize Ot hers t o Use tab to view the APIs that you authorize others to access. You can perform the following operations on the APIs that you authorize others to access: Find the API that you want to test and click T est in the Actions column to test the API on the T est APIs page. Find the API on which you want to manage access permissions and click Manage in the Actions column. In the Aut horizat ion dialog box, revoke or modify the permissions of a workspace on the API.
 
-### View API statistics
+### 15.8 View API statistics
 
-#### View the summary information about API
+#### 15.8.1 View the summary information about API statistics
 
 statistics DataWorks uses dashboards to provide various visual charts and statistics of APIs. You can view the total number of APIs in a workspace, total number of API calls, total resource consumption, and information such as HTTP status codes, data service error codes, resource allocation, and rankings. This helps you obtain information about API calls from a global perspective. Go to the Statistics Dashboard page
 1. Go to the Dat a Service page.
@@ -17957,7 +18438,7 @@ Manage APIs page appears.
 3. In the left-side navigation pane, choose API St at ist ics > St at ist ics Dashboard. The Statistics
 Dashboard page appears. View overall statistics Total APIs section In this section, you can view the number of published APIs and the number of unpublished APIs as of the current time in the current workspace. Overall Statistics section In this section, you can view the statistics of all the APIs in the current workspace in the specified period of time, including the total number of API calls and total resource consumption. The maximum statistical period for overall statistics is seven days. Distribution of HTTP Status Codes section In this section, you can view the distribution of HTTP status codes that are returned by all published APIs in the current workspace after the APIs are called in the specified period of time. Different sectors in the pie chart represent different HTTP status codes. You can click a sector in the pie chart to view the corresponding status code. The maximum statistical period for HTTP status codes is seven days. Distribution of DataService Studio Error Codes section In this section, you can view the distribution of data service error codes that are returned by all published APIs in the current workspace after the APIs are called in the specified period of time. Different sectors in the pie chart represent different data service error codes. You can click a sector in the pie chart to view the corresponding error code. For more information about data service error codes, see . The maximum statistical period for data service error codes is seven days. View resource allocation The chart in the Resource Allocation section displays the trend of the number of API calls that are requested in the past 24 hours. View rankings Top 10 API Operations with Highest Error Rate Yesterday section In this section, you can view the top 10 APIs with the highest call error rate in the past 24 hours. You can view the ID, name, number of calls, and call error rate of each API. Top 10 Frequently Called API Operations Yesterday section In this section, you can view the top 10 APIs that are most frequently called or the top 10 applications that most frequently call APIs in the past 24 hours. You can click API or APP in the upperright corner of the section to view rankings in different dimensions. In the API dimension, you can view the following information: API ID, API Name, Number of Requests, Execution Duration (ms), and Average Latency (ms). In the APP dimension, you can view the following information: APP ID, Application Name, Workspace, Number of Requests, Execution Duration (ms), and Average Latency (ms).
 
-#### View the details of API statistics
+#### 15.8.2 View the details of API statistics
 
 DataWorks provides various visual charts and statistics for each API. You can view monitoring charts of an API to obtain statistics details of the API, including HTTP status codes, data service error codes, the number of requests from applications, traffic bandwidth, and average response time. Go to the Statistics Details page
 1. Go to the Dat a Service page.
@@ -17966,7 +18447,7 @@ Manage APIs page appears.
 3. In the left-side navigation pane, choose API St at ist ics > St at ist ics Det ails. The Statistics Details
 page appears. Find the API of which you want to view the statistics details and click Monit oring Chart in the Actions column. Then, you can view monitoring charts of the API. View monitoring charts HTTP Status Codes chart The HTTP Status Codes chart displays the trends of the numbers of different HTTP status codes that are returned after the API is called in the specified period of time. DataService Studio Error Codes chart The DataService Studio Error Codes chart displays the trends of the numbers of different data service error codes that are returned after the API is called in the specified period of time. This helps you troubleshoot errors in an efficient manner. Number of Application Requests chart The Number of Application Requests chart displays the trends of the numbers of API calls from different applications in the specified period of time. Traffic Bandwidth chart The Traffic Bandwidth chart displays the trends of the outbound traffic from DataService Studio and outbound traffic from API Gateway for API calls in the specified period of time. Average Response Time chart The Average Response Time chart displays the trends of the execution durations in API Gateway, DataService Studio, and the data source after API calls are requested in the specified period of time.
 
-### Test an API
+### 15.9 Test an API
 
 This topic describes how to test an API. DataWorks allows you to test an API when you create or register the API. DataWorks also provides an independent API test feature, which allows you to test an API online. Test an API that is being developed You can test an API that is being developed on the Service Development tab. Before you perform such a test, create or register an API. For more information, see Create an API in the codeless UI and Register APIs.
 1. Log on to the DataWorks console
@@ -17982,11 +18463,11 @@ The request and response details appear on the right. If the API fails the test,
 3. Select the API to be tested, set the request parameters, and then click T est .
 On the Test APIs page, you can only test published APIs online, but not update sample success responses for APIs. To update the sample success response for an API, click the API name in the API list to go to the API Details page. Then, update the sample success response for the API in the Successful Response Example section. You must test an API before you publish it.
 
-### Publish an API
+### 15.10 Publish an API
 
 API Gateway supports API lifecycle management, including API publishing, management, maintenance, and monetization. API Gateway provides a simple, fast, cost-effective, and low-risk service for you to aggregate microservices, separate the frontend from the backend, integrate systems, and provide features and data to partners and developers. For security reasons, you must publish APIs that are created or registered in DataService Studio to API Gateway before the APIs are called by other users or in your own applications. In API Gateway, you can perform a variety of management operations on APIs. For example, you can manage permissions, configure bandwidth throttling, configure access control, and view statistics on APIs. DataService Studio is integrated with API Gateway to allow you to publish APIs to API Gateway with one click. Publish an API from DataService Studio to API Gateway Before you publish an API, you must activate API Gateway and register and test the API. If the API passes the test, click Submit in the upper-right corner of the configuration tab of the API. After the API is submitted, click the Version tab in the right-side navigation pane. Find the version that you want to publish and click Publish in the Actions column. This way, you can publish the API to API Gateway with one click. The system automatically registers the API with API Gateway during the publish process. The system also creates a group in API Gateway with the same name as the API group to which the API belongs in DataService Studio and publishes the API in this group. After the API is published, you can log on to the API Gateway console to view details of the API and configure features such as bandwidth throttling and access control on the API. If you need to call the API in your own application, create the application and authorize the application to use the API in the API Gateway console. Then, call the API in your application by signing the API request with the AppKey and AppSecret of the application. For more information, see API Gateway Documentation. API Gateway also provides SDKs for mainstream programming languages. You can use the SDKs to integrate APIs with your application.
 
-### Call an API
+### 15.11 Call an API
 
 This topic describes how to call an API after the API is published to API Gateway. Prerequisites An API is published to API Gateway. For more information, see Publish APIs. The following conditions are met: The parameter definition of the API is obtained. The AppKey and AppSecret of the application that needs to call the API are obtained. The application is authorized to call the API. Context API Gateway allows you to authorize access to APIs and use SDKs to integrate APIs with applications. You can authorize your own account, a user in your enterprise, or a third party to call APIs. Procedure
 1. Obtain the API documentation.
@@ -18004,7 +18485,7 @@ icon in the upper-left corner and choose All Product s > Dat a Development > Dat
 4. In the left-side navigation pane, click Call APIs.
 On the Call APIs page, you can view or copy the authentication information that is required to call APIs. You can also view the information about the applications that are bound to the current workspace. This helps you find the applications in the API Gateway console.
 
-### Service orchestration
+### 15.12 Service orchestration
 
 The workflow feature, also called service orchestration, provides a composite API service. This topic describes the benefits of workflows and how to use workflows. In DataService Studio, a workflow is represented as a directed acyclic graph (DAG). By dragging and dropping nodes to a DAG, you can arrange APIs and functions in a serial, parallel, or branch structure based on the business logic. When you run a workflow to call APIs, DataWorks runs the nodes in the workflow in sequence, passes parameters among the nodes, and automatically changes the status of each node. The workflow feature simplifies the process of calling multiple APIs or functions and reduces the cost of O&M. This allows you to focus on business development. Benefits Reduced cost of developing APIs By dragging nodes to a DAG, you can arrange APIs and functions in a serial, parallel, or branch structure without writing code. This reduces the cost of developing APIs. Higher performance in calling APIs and functions A workflow allows you to call multiple APIs and functions in a container. Compared with writing code to call APIs and functions, the workflow feature reduces the latency of calling APIs and functions and greatly improves the calling performance. Serverless architecture The workflow feature adopts a serverless architecture. A serverless architecture supports automatic resource scaling based on business needs. You can only focus on the business logic. Values of request and response parameters DataService Studio uses JSONPath to obtain parameter values. JSONPath is a query language that allows you to extract data from JSON files. For example, three nodes are run in the following order: A, B, and then C. Node C needs to use the response parameters of Node A and Node B. Response parameter of Node A: {"namea":"valuea"} Expression for obtaining the value of the response parameter of Node A: ${A.namea} Response parameter of Node B: {"nameb":"valueb"} Expression for obtaining the value of the response parameter of Node B: $.nameb or ${B.nameb} The built-in start node provides request parameters for the whole workflow. Assume that a request parameter of a workflow is {"namewf":"valuewf"}. All nodes of the workflow can obtain the value of the request parameter by using the ${START.namewf} expression. Parameters Request parameters: If you do not specify a value for a request parameter of a node, DataService Studio obtains the value of the same parameter from the first layer of the JSON string that is returned by the parent node. Then, DataService Studio assigns the value to the request parameter. If no value is specified for a request parameter of the first node, DataService Studio obtains the value of the same parameter from the request parameters of the workflow. If you specify a value for a request parameter of a node, DataService Studio uses the value that you specify. If you need to use the value of the specified parameter that is returned by the specified ancestor node, obtain the value by using a JSONPath expression. Common JSONPath expressions for obtaining parameter values: $.: obtains the response parameters of the parent node. $.param: obtains the value of the param parameter that is returned by the parent node. DataService Studio enhances JSONPath expressions to help you obtain the response parameters of an ancestor node. ${NODEID1}: obtains response parameters of the node whose ID is NODEID1. ${START}: obtains the request parameters of the workflow, which are the response parameters of the start node. ${NODEID1.param}: obtains the value of the param parameter returned by the node whose ID is NODEID1. Settings of the response parameters of a node: $.: sets the response parameters of the current node. $.param: sets the param parameter to be returned by the current node. ${NODEID1.param}: obtains the value of the param parameter returned by the node whose ID is NODEID1. Example Add a connection before you create and use a workflow. In this example, a MySQL connection is used.
 1. Register an API.
@@ -18076,7 +18557,7 @@ v. Double-click the end node and then click the Response Paramet ers tab on the 
 6. In the T est APIs dialog box, set the parameters as required and click OK.
 You can view the test result after the workflow is tested.
 
-### Version management
+### 15.13 Version management
 
 This topic describes how to manage versions of APIs, workflows, and functions in Data Service. You can view and compare historical versions of APIs, workflows, and functions. Data Service generates a version record each time an API, a workflow, or a function is published. View Versions
 1. Log on to the DataWorks console, click the DataWorks icon in the upper-left corner, and then
@@ -18100,11 +18581,11 @@ of the API.
 
 View Versions In the Version dialog box, select two versions to compare, and click Cont rast . In the Hist ory Version Cont rast dialog box, compare the code and parameters of the two versions. The information appears in the History Version Contrast message varies with the mode in which the API was created: If the API was created in the codeless user interface (UI), the request parameters and response parameters of the two versions are compared. If the API was created in the code editor, the SQL statements of the two versions are compared.
 
-### FAQ
+### 15.14 FAQ
 
 This topic provides answers to commonly asked questions about DataService Studio. Q: Do I need to activate the API Gateway service? A: API Gateway provides you with high-performance and highly available API hosting services. If you need to make your APIs available to others, activate the API Gateway service first. Q: Where can I add and change connections? A: After you log on to the DataWorks console, click the DataWorks icon in the upper-left corner and choose All Product s > Dat a Int egrat ion to go to the Dat a Int egrat ion page. In the left-side navigation pane, choose Sync Resources > Connect ions. On the page that appears, perform the relevant configuration. DataService Studio automatically reads data from the connections that you have configured. Q: What is the role of an API group in DataService Studio? What is the relationship between an API group in DataService Studio and an API group in API Gateway? A: An API group is a set of APIs specific to a feature or scenario. It is the smallest organization unit in DataService Studio, which is similar to an API group in API Gateway. An API group in DataService Studio is equivalent to an API group in API Gateway. After you publish an API from DataService Studio to API Gateway, API Gateway automatically creates an API group with the same name. Q: How can I configure an API group appropriately? A: Typically, an API group includes APIs that provide similar features or resolve a specific issue. For example, a weather API group can include APIs that are used to check the weather by city and by longitude and latitude. Q: How many API groups can I create? A: An Alibaba Cloud account can create up to 100 API groups. Q: When do I need to enable the pagination feature for an API call so that its return results can be displayed on multiple pages? A: By default, an API call returns a maximum of 2,000 records. If an API call may return more than 2,000 records, enable the pagination feature. If you do not specify any request parameters, the API call usually returns a large number of records and the pagination feature is automatically enabled. Q: Do APIs created by DataService Studio support POST requests? A: APIs created by DataService Studio support GET and POST requests. Q: Do APIs created by DataService Studio support the HTTPS protocol? A: APIs created by DataService Studio support both HTTP and HTTPS protocols.
 
-### Appendix: DataService Studio
+### 15.15 Appendix: DataService Studio error codes
 
 error codes After DataService Studio receives an API request, it returns a response that contains an error code. You can locate and troubleshoot issues based on the error code. This topic describes common error codes that are returned by DataService Studio.
 
@@ -18121,13 +18602,13 @@ error codes After DataService Studio receives an API request, it returns a respo
 | 1108110703 | database connection error | The error message returned because the data source has failed to be connected. |
 | Other error codes | Other error messages | If the response contains an error code other than the preceding error codes, you can consult technical support personnel. |
 
-## Stream Studio
+## 16 Stream Studio
 
-### Overview
+### 16.1 Overview
 
 Built on Alibaba Cloud Realtime Compute, which is based on Apache Flink, Stream Studio allows you to develop real-time computing nodes in directed acyclic graph (DAG) mode or SQL mode. You can switch between the two modes to edit the code or drag and drop components and configure them in a visual way. As an ideal platform for developing real-time computing nodes, Stream Studio has the following features: Supports developing nodes in DAG mode. You can perform drag and drop components to configure real-time computing nodes. Supports developing nodes in SQL mode. You can edit the code to configure real-time computing nodes. Supports switching between the DAG mode and the SQL mode for you to easily check SQL operators. Supports using Function Studio to create and publish user-defined functions (UDFs) online in exclusive mode. Supports smart diagnosis for real-time computing nodes to facilitate online troubleshooting.
 
-### Bind a Realtime Compute project
+### 16.2 Bind a Realtime Compute project
 
 1. Log on to the DataWorks console.
 2. Click the Project Manage icon in the upper-right corner. The Project Management page
@@ -18136,7 +18617,7 @@ appears.
 and select Add engine service.
 4. Enter the name of the Blink engine to be added and click Bind.
 
-### Create a real-time computing
+### 16.3 Create a real-time computing node
 
 node This topic describes how to create a real-time computing node and develop data in Stream Studio. Prerequisites A workflow is created. You can create real-time computing nodes and develop data under an existing workflow. Procedure After a workflow is created, you can create real-time computing nodes under the workflow. By default, data is developed for a real-time computing node in directed acyclic graph (DAG) mode.
 1. Right-click the workflow that you have created and select Creat e t ask.
@@ -18144,7 +18625,7 @@ node This topic describes how to create a real-time computing node and develop d
 3. Develop data in DAG mode on the Component s page.
 The Components page includes the following four sections: Component list section: In this section, you can view the list of available components. You can click Component s on the left-side navigation submenu to go to the Components page and view the list. DAG section: In this section, you can drag and drop components to the DAG and connect them. To configure the dependency between two components, click and hold the highlighted dot at the bottom of a component and move the pointer to link this component with a descendant component. A DAG corresponds to a real-time computing node. Parameter configuration section: Double-click a component in the DAG. Then, you can set the related parameters in this section. Toolbar section: In this section, you can click the icons to perform the save, submit, steal lock, pre-compilation, test, stop, reload, and format operations respectively. When you configure the DAG, you can right-click a component and select an operation from the menu that appears to perform it on the selected component. Available operations include Rename, View schema, Delet e node, View error message, New component group, and Copy.
 
-### Get started with Stream Studio
+### 16.4 Get started with Stream Studio
 
 This topic uses an example to describe how to use Stream Studio to develop and manage a real-time computing node. Stream Studio allows you to create, configure, publish, run, stop, and unpublish a real-time computing node. Prerequisites A Realtime Compute project is bound to the current DataWorks workspace. Context Data store: a Datahub table with a created topic, which contains the `m_name, id, m_type, and tag` fields. The Datahub topic must be created in advance. Data processing: splits the tag field by using the semicolon (;) as the delimiter to the color, mode, and weight fields. Output data: writes the `id, m_type, and weight` fields to a Log Service table. The Log Service project and Logstore must be created in advance. Procedure
 1. Log on to the DataWorks console. On the DataStudio page that appears, click the DataWorks icon
@@ -18196,11 +18677,11 @@ You can publish the real-time computing node that you have configured. Click Sav
 6. Perform O&M on the real-time computing node.
 Click OAM in the upper-right corner to perform O&M on the real-time computing node. i. Start the real-time computing node. Find the real-time computing node that you have created in the node list and click St art to start the node. You can set a custom start time for the real-time computing node based on your business requirement. After starting the real-time computing node, you can click the node name to view its running status. If the real-time computing node is started properly, it enters the Run state. ii. Stop and unpublish the real-time computing node. a. Click St op to stop the real-time computing node. b. After the real-time computing node is stopped, click Of f line to unpublish it. Result Now you have created, configured, published, run, stopped, and unpublished a real-time streaming node.
 
-### Configure components
+### 16.5 Configure components
 
-#### Source tables
+#### 16.5.1 Source tables
 
-##### Datahub
+##### 16.5.1.1 Datahub
 
 Datahub is a real-time data distribution platform that is designed to process streaming data. It provides a channel for the Apsara Stack DTplus platform to process big data. Realtime Compute typically uses Datahub to store source and result tables for streaming data processing. Data Transmission Services (DTS) and the Internet of Things (IoT) also use Datahub to access big data platforms. Datahub stores streaming data that can be used as input data for Realtime Compute. Parameter configuration
 
@@ -18248,7 +18729,7 @@ Attribute fields You can obtain the attribute field indicating the system time a
 |---|---|
 | Syst em T ime | The system time at which each data record is written to Datahub. |
 
-##### Log Service
+##### 16.5.1.2 Log Service
 
 As an all-in-one real-time data logging service, Log Service allows you to quickly finish tasks such as data ingestion, consumption, delivery, query, and analysis without any extra development work. This can help you improve O&M and operational efficiency, and build up the capability to process large amounts of logs in the data technology era. Log Service stores streaming data that can be used as input data for Realtime Compute. The data format of Log Service is consistent with JSON. Example: `{`
 
@@ -18303,9 +18784,9 @@ Currently, Log Service does not support the MAP type. We recommend that you defi
 
 The batchGetSize value must not exceed 1,000. Otherwise, an error occurs. The batchGetSize parameter specifies the number of log items read at a time in a log group. If both the size of a single log item and the batchGetSize value are too large, frequent garbage collection (GC) may be triggered. To avoid this, you must set batchGetSize parameter to a smaller value.
 
-#### Dimension tables
+#### 16.5.2 Dimension tables
 
-##### ApsaraDB RDS
+##### 16.5.2.1 ApsaraDB RDS
 
 ApsaraDB RDS is a stable, reliable, and scalable cloud database service. Parameter configuration
 
@@ -18323,7 +18804,7 @@ ApsaraDB RDS is a stable, reliable, and scalable cloud database service. Paramet
 
 Additional information ApsaraDB RDS and PolarDB-X provide the following cache policies: None: indicates that data is not cached. LRU: indicates that only the recently used data is cached. If this cache policy is selected, you must specify the cacheSize and cacheTTLMs parameters. ALL: indicates that all data is cached. Before the system runs a node, it loads all the data in the remote table to the memory. Then, the system searches the cache for data in all dimension table queries. If a cache miss occurs, all data is cached again after the cache times out. The ALL cache policy applies to scenarios where the remote table is small but a large number of missing keys exist. If this cache policy is selected, you must specify the cacheTTLMs and cacheReloadTimeBlackList parameters. If the ALL cache policy is used, the system reloads data asynchronously. Therefore, you must increase the memory of the JOIN operator. The size of the increased memory is twice the data size of the remote table. If the ALL cache policy is used, pay special attention to the memory of the JOIN operator to prevent out of memory (OOM) errors.
 
-##### Tablestore
+##### 16.5.2.2 Tablestore
 
 Tablestore is a distributed NoSQL database service that is developed based on the Apsara distributed operating system. It features high availability and data reliability. Parameter configuration
 
@@ -18343,7 +18824,7 @@ Tablestore is a distributed NoSQL database service that is developed based on th
 | Cache Policy | The policy used to cache data. Valid values: None and LRU. |
 | primaryKey | The primary key field in the output fields. |
 
-##### MaxCompute
+##### 16.5.2.3 MaxCompute
 
 This topic describes the parameter configuration, field type mapping, and metrics of a MaxCompute dimension table. Parameter configuration
 
@@ -18409,13 +18890,13 @@ RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecuto
 
 Generally, this message appears because dimension table joining in Realtime Compute V1.x has certain issues. We recommend that you upgrade Realtime Compute to V2.1.1 or later. If you want to continue using the existing version, we recommend that you pause the node and resume it after troubleshooting. To troubleshoot the failover, check the specific error information that was generated for the first failover record in the failover history.
 
-#### Data operators
+#### 16.5.3 Data operators
 
-##### Filter
+##### 16.5.3.1 Filter
 
 The Filter component allows you to configure filter conditions. It corresponds to the WHERE clause in SQL statements. Parameter configuration Enter the filter expression to configure this component. The filter expression supports functions and operators (=, <>, >, >=, <, and <=), for example, `city = 'Beijing'` .
 
-##### GroupBy
+##### 16.5.3.2 GroupBy
 
 The GroupBy component corresponds to the GROUP BY clause in SQL statements. Parameter configuration
 
@@ -18424,7 +18905,7 @@ The GroupBy component corresponds to the GROUP BY clause in SQL statements. Para
 | Select grouping f ield | The fields based on which data is grouped. You can specify multiple fields. |
 | Out put Field | The fields to be returned, that is, the fields to be selected. You can specify the fields in the same way that you configure the Select component. |
 
-##### Join
+##### 16.5.3.3 Join
 
 The Join component corresponds to the JOIN clause in SQL statements. Parameter configuration
 
@@ -18434,11 +18915,11 @@ The Join component corresponds to the JOIN clause in SQL statements. Parameter c
 | expression | The JOIN expression. An equijoin is supported, for example, leftId = rightId AND limit = 0, whereas a non-equijoin is not supported. |
 | Select Field | The fields to be returned, that is, the fields to be selected. |
 
-##### Select
+##### 16.5.3.4 Select
 
 The Select component allows you to configure the fields to be returned and supports field expressions. It corresponds to SELECT statements. Parameter configuration Select or configure the output fields in the Select field dialog box. You can select fields to be returned in the Field list section and set an alias for a field in the Field alias column. To set a field expression, click the Edit icon next to the target field name. In the Edit dialog box that appears, enter the required SQL statement.
 
-##### UDTF
+##### 16.5.3.5 UDTF
 
 The UDTF component allows you to configure custom functions. It corresponds to the UDTF clause in SQL statements. Parameter configuration
 
@@ -18455,11 +18936,11 @@ The UDTF component allows you to configure custom functions. It corresponds to t
 | paramet er expression | The input parameters and output parameters of the referenced function. |
 | Out put Field | The fields to be returned. You can configure the name, alias, and expression of each field. |
 
-##### UnionAll
+##### 16.5.3.6 UnionAll
 
 The UnionAll component corresponds to the UNION ALL clause in SQL statements. Parameter configuration No parameter configuration is required.
 
-##### Dynamic column splitting
+##### 16.5.3.7 Dynamic column splitting
 
 Dynamic column splitting allows you to split data records with a dynamic number of columns. Example Input data:
 
@@ -18476,7 +18957,7 @@ In the preceding example, the data is stored in key-value pairs in the format of
 | secondary level column delimit er | The delimiter used to split the field at the secondary level. Default value: \u0002. |
 | Add column | The fields that store the split data. Specify a key for each field. An alias is allowed. |
 
-##### Static column splitting
+##### 16.5.3.8 Static column splitting
 
 Static column splitting allows you to split data records with fixed columns that are separated by a fixed delimiter. Example You can use commas (,) as the delimiter to split the following data to four new columns, that is, 1111, 2222, 3333, and 4444.
 
@@ -18492,7 +18973,7 @@ The static column splitting method is applicable to data records with fixed colu
 | column separat or | The delimiter used to split the field. You can use full-width characters or half-width characters as needed. |
 | Add column | The fields that store the split data. Specify a key and a sequence number for each field. An alias is allowed. |
 
-##### Row splitting
+##### 16.5.3.9 Row splitting
 
 Row splitting allows you split a row to multiple rows based on a field by using the specified delimiter. Example The following table lists the input data.
 
@@ -18518,9 +18999,9 @@ Parameter configuration
 | Field separator | The delimiter used to split the field. Default value: (\n). | This parameter is set to comma (,) in the preceding example. |
 | Define new column name | The name of the new field that stores the split data. | This parameter is set to new num in the preceding _ example. |
 
-#### Result tables
+#### 16.5.4 Result tables
 
-##### Datahub
+##### 16.5.4.1 Datahub
 
 Datahub is a real-time data distribution platform that is designed to process streaming data. It provides a channel for the Apsara Stack DTplus platform to process big data. Datahub works with multiple Apsara Stack services to provide an end-to-end data processing solution. Realtime Compute typically uses Datahub to store source and result tables for streaming data processing. Parameter configuration
 
@@ -18554,7 +19035,7 @@ Field type mapping The following table lists the mapping between Datahub and Rea
 | BOOLEAN | BOOLEAN |
 | DECIMAL | DECIMAL |
 
-##### Log Service
+##### 16.5.4.2 Log Service
 
 As an all-in-one real-time data logging service, Log Service allows you to quickly finish tasks such as data ingestion, consumption, delivery, query, and analysis without any extra development work. This can help you improve O&M and operational efficiency, and build up the capability to process large amounts of logs in the data technology era. Parameter configuration
 
@@ -18581,7 +19062,7 @@ As an all-in-one real-time data logging service, Log Service allows you to quick
 |---|---|
 | partition |   |
 
-##### ApsaraDB RDS
+##### 16.5.4.3 ApsaraDB RDS
 
 ApsaraDB RDS is a stable, reliable, and scalable cloud database service. Parameter configuration
 
@@ -18651,7 +19132,7 @@ JDBC parameters
 
 FAQ Q: When the output data of Realtime Compute is written to an ApsaraDB RDS table, is the result table updated based on the primary key or is a new data record generated in the table? A: The processing method depends on whether the primary key is defined in the DDL statement. If a primary key is defined in the DDL statement, the result table is updated by using `insert into` `on duplicate key update` . For a data record, if the primary key does not exist, the record is inserted into the table as a new row. If the value of the primary key field exists, the original row in the table is updated. If no primary key is defined in the DDL statement, new data records are inserted into the table by using `insert into` . Q: What do I need to pay attention to when I perform GROUP BY operations based on the unique index of an ApsaraDB RDS table? A: An ApsaraDB RDS table has only one auto-increment primary key. Therefore, this auto-increment primary key cannot be declared as the primary key in a Realtime Compute job. If you want to perform GROUP BY operations based on the unique index of the table, declare the unique index as the primary key in the job.
 
-##### Table Store
+##### 16.5.4.4 Table Store
 
 Table Store is a distributed NoSQL database service built on the Apsara distributed operating system of Alibaba Cloud. Based on data sharding and load balancing technologies, Table Store has high performance in scaling out and handling concurrent transactions. You can use Table Store to store and query large amounts of structured data. Parameter configuration
 
@@ -18684,7 +19165,7 @@ Field type mapping
 | BOOLEAN | BOOLEAN |
 | DOUBLE | DOUBLE |
 
-##### MaxCompute
+##### 16.5.4.5 MaxCompute
 
 Realtime Compute supports creating a MaxCompute table as the result table. Parameter configuration
 
@@ -18722,13 +19203,13 @@ Realtime Compute writes cached data to a MaxCompute table every time when a chec
 
 FAQ Q: Does a real-time computing node clear the result table before it writes data to the MaxCompute sink that is in Stream mode when `isOverwrite` is set to `true` ? A: The `isOverwrite` parameter is set to `true` by default. That is, a real-time computing node clears the result table and result data before it writes data to the sink. Every time a real-time computing node starts or resumes after being paused, it clears data of the existing result table or the result partition before it writes data. Certain data may be lost when data is cleared after a paused realtime computing node is resumed.
 
-#### FAQ
+#### 16.5.5 FAQ
 
 This topic describes the frequently asked questions (FAQs) about Stream Studio. Q: What computing engine do I need to activate before using Stream Studio? A: You must first activate Realtime Compute because Stream Studio is a development platform based on Realtime Compute. Q: Where can I create a Realtime Compute project? How do I bind the project to Stream Studio? A: You can create a Realtime Compute project in the Realtime Compute console. After a project is created, you can bind it to an existing DataWorks workspace in the DataWorks console or directly create a workspace and bind the project to it. After the Realtime Compute project is bound to your workspace, you can develop real-time computing nodes in Stream Studio. Q: What are the advantages of the directed acyclic graph (DAG) mode in Stream Studio? What are the similarities and differences between the DAG mode and SQL mode? A: Stream Studio supports both the DAG mode and the SQL mode to develop real-time computing nodes. In DAG mode, you can perform drag-and-drop operations on components to configure real-time computing nodes without writing code. In this mode, what you see is what you get. You can also switch to the SQL mode to configure nodes by writing SQL statements. Q: What types of SQL does Stream Studio support? A: Realtime Compute is based on Apache Flink. Therefore, Stream Studio supports Flink SQL.
 
-## Data Protection
+## 17 Data Protection
 
-### Overview
+### 17.1 Overview
 
 Data Protection is a data security management platform. It can be used to detect data assets, detect sensitive data, classify data, de-identify data, monitor data access behavior, report alerts, and audit risks. Data Protection provides security management services for MaxCompute. Access Data Protection
 1. Log on to the DataWorks console.
@@ -18737,7 +19218,7 @@ Product s > Dat a Prot ect ion.
 3. Click T ry now to go to the Data Protection page.
 Features Data Protection provides the following features: Intelligent sensitive data detection Data Protection automatically detects an enterprise's sensitive data based on self-training models and algorithms, and clearly displays statistics on data types, volume, and visitors. It also recognizes custom data types. Accurate data classification: Data Protection allows you to classify data and create custom levels for better data management. Flexible data de-identification Data Protection provides diverse and configurable methods for dynamic data de-identification. Risky behavior monitoring and auditing Data Protection uses various correlation analysis algorithms to detect risky behavior. It also provides alerts and supports visualized auditing for detected risks.
 
-### Configure rules for defining
+### 17.2 Configure rules for defining sensitive data
 
 sensitive data This topic describes how to configure rules for defining sensitive data. Procedure
 1. Log on to the DataWorks console.
@@ -18770,7 +19251,7 @@ You can create a template-based identification rule or a custom identification r
 7. Click Next . After you confirm the configuration, click Save and Apply.
 When you create a rule to define sensitive data, note the following: The rule name must be unique. The content scanning and field scanning configuration must be unique. You can only view the sensitive data that is detected based on the data identification rule one day after the rule takes effect.
 
-### View the distribution of sensitive
+### 17.3 View the distribution of sensitive data
 
 data On the next day after you configure and activate sensitive data identification rules as a data security administrator, you can access Data Recognition to view the distribution of sensitive data.
 1. Log on to the DataWorks console.
@@ -18779,7 +19260,7 @@ All Product s > Dat a Prot ect ion.
 3. In the left-side navigation pane, click Dat a Recognit ion. On the Data Recognition page that
 appears, you can view the overall data distribution and field details.
 
-### View the information about data
+### 17.4 View the information about data activities
 
 activities On the next day after you configure and activate sensitive data identification rules as a data security administrator, you can access Data Activities to view related activity statistics, trend, and details.
 1. Log on to the DataWorks console.
@@ -18788,7 +19269,7 @@ All Product s > Dat a Prot ect ion.
 3. In the left-side navigation pane, click Dat a Act ivit ies to go to the Dat a Act ivit ies page.
 The Data Activities page allows you to view the information of each activity that involves sensitive data. On the Manipulations and Queries tab, you can view the statistics, trend, user, and details of data access activities. On the Export tab, you can view the statistics and details of data export.
 
-### View the data audited as risky
+### 17.5 View the data audited as risky
 
 Data activities are audited manually or based on the risk identification rules and AI-based identification rules. The Data Risks page displays data activities that are audited as risky. You can comment audit results as required.
 1. Log on to the DataWorks console.
@@ -18798,7 +19279,7 @@ All Product s > Dat a Prot ect ion.
 4. In the left-side navigation pane, click Dat a Risks to filter and view the data audited as risky as
 needed.
 
-### Track data
+### 17.6 Track data
 
 You can create a data tracking task to track the source of leaked data. You can also download a data tracking file and delete a data tracking task. Configure a data watermark
 1. Log on to the DataWorks console.
@@ -18821,7 +19302,7 @@ icon that corresponds to your data tracking task and view the tracking result. Y
 icon.
 2. In the message that appears, click Conf irm.
 
-### Manage a self-generated data
+### 17.7 Manage a self-generated data recognition model
 
 recognition model This topic describes how to train a model that can be used to summarize the data characteristics of specific columns in a table based on these columns. It also describes how to use the trained model to identify sensitive data. Go to the Self Generated Data Recognition Model tab
 1. Log on to the DataWorks console.
@@ -18874,7 +19355,7 @@ icon in the Actions column to stop training the model.
 2. Find the model whose training is stopped and click the
 icon to continue the training. Delete a self-generated data recognition model Find a model that is not being trained and click the Delet e icon in the Actions column to delete the model. A model that is being trained cannot be deleted. If you want to delete such a model, you can stop training the model and delete it. A model that is in use cannot be deleted. If you want to delete such a model, you can delete the data recognition rules configured for the model and delete the model.
 
-### Manage the data security levels
+### 17.8 Manage the data security levels
 
 When creating a rule, you can specify a security level for the data to which the rule applies. On the Levels page, you can create and delete security levels. You can also modify the priority of each security level and manage rules by security level.
 1. Log on to the DataWorks console.
@@ -18891,7 +19372,7 @@ On the Levels page, you can create and delete security levels. You can also modi
 | Delete a security level | Find the target security level and click the icon in the Actions column. In the dialog box that appears, click Delet e. |
 | Modify the priority of a security level | Find the target security level. Drag and drop the icon in the Actions column. |
 
-### Manage data that is incorrectly
+### 17.9 Manage data that is incorrectly detected
 
 detected On the Manual Check page, you can manually correct the sensitive data that is incorrectly detected by rules. For example, you can delete incorrectly detected data, change the type of the detected data, and delete or recover data in batches.
 1. Log on to the DataWorks console.
@@ -18901,7 +19382,7 @@ All Product s > Dat a Prot ect ion.
 4. In the left-side navigation pane, choose Management > Manual Check.
 On the Manual Check page, you can delete incorrectly detected data, change the type of the detected data, and delete or recover data in batches. To delete a data record that is incorrectly detected, turn off the switch in the Status column of the data record. You can recover data records that you have deleted. To change the type of a data record, click the edit icon next to the name of the target rule and select a rule. You can only select a rule that has been configured in DataWorks. To delete or recover multiple data records at the same time, you can select the data records and click Remove or Recover.
 
-### Customize de-identification
+### 17.10 Customize de-identification rules
 
 rules This topic describes how to customize de-identification rules in Data Security Guard so that DataWorks can dynamically de-identify the results of ad hoc queries. Prerequisites Sensitive data detection rules are created and data security levels are specified. For more information, see Configure rules for defining sensitive data and Manage the data security levels. Go to the Data Masking page
 1. Log on to the DataWorks console.
@@ -18929,7 +19410,7 @@ more information about user groups, see Manage user groups. If you query data be
 7. Click Save.
 Verify the de-identification effect in DataWorks After you create and configure de-identification rules, DataWorks dynamically de-identifies the results of queries in your workspace based on the rules. You must first turn on Mask Data in Page Query Results for your workspace in the DataWorks console.
 
-### Manage user groups
+### 17.11 Manage user groups
 
 You can create a user group on the GroupManagement page and reference it in a de-identification whitelist. You can also copy, edit, and delete user groups on the GroupManagement page. Go to the GroupManagement page
 1. Log on to the DataWorks console.
@@ -18956,7 +19437,7 @@ T ype.
 3. Verify the settings and click Save.
 Delete a user group To delete a user group, find the user group on the GroupManagement page and click Delet e in the Actions column. In the dialog box that appears, click Delet e. You cannot delete a user group that is referenced in a de-identification whitelist. If you still want to delete the user group, delete the user group from the corresponding deidentification whitelist first.
 
-### Automatically mark security
+### 17.12 Automatically mark security levels for sensitive data
 
 levels for sensitive data After you turn on Open Marking in DataWorks, DataWorks can identify sensitive data, automatically mark the security level of the sensitive data, and then display the security level as a label for the sensitive data that belongs to a MaxCompute project. The security level of the sensitive data is displayed in Data Map of DataWorks. Precautions If you turn on Open Marking in DataWorks, Data Protection automatically configures security levels for the columns that contain sensitive data. This configuration affects your access permissions on sensitive data. Fully evaluate the impact before you turn on Open Marking in DataWorks. Turn on Open Marking in DataWorks
 1. Log on to the DataWorks console.
@@ -18967,7 +19448,7 @@ icon in the upper-left corner and choose All Product s > Dat a governance > Dat 
 5. On the System Config page, turn on Open Marking. MarkingOpen is displayed on the right of the
 switch.
 
-### Mask the underlying data of a
+### 17.13 Mask the underlying data of a MaxCompute project
 
 MaxCompute project This topic describes how to mask the underlying data of a MaxCompute project on the Data Masking page. After the data is masked, the data queried from each of the MaxCompute query entries is masked. Prerequisites The data masking function base_meta.masking_v2 is available. If the function is unavailable, contact O&M personnel to publish the function. A network whitelist is enabled and SQL properties are configured for the MaxCompute projects whose underlying data needs to be masked. If no network whitelist is enabled, contact the O&M personnel. The rules for identifying sensitive data are created. Go to the Data Masking page
 1. Log on to the DataWorks console.
@@ -18983,13 +19464,13 @@ i. Click Select Desensit izat ion Project . ii. In the Aut horize T he Desensit 
 3. In the left-side navigation pane, choose Rule Change > Custom Identification Rules. On the Rule
 Set t ings tab of the page that appears, you can create, edit, or delete a data masking rule. The data masking rules that are configured for MaxCompute projects take effect only in underlying data masking scenarios, and can be edited or deleted only in such scenarios. What's next You can go to the MaxCompute project for which underlying data masking is enabled to check whether the data is masked.
 
-## App Studio
+## 18 App Studio
 
-### Overview
+### 18.1 Overview
 
-App Studio is a tool designed to help you develop data products. It comes with a rich set of front-end components that you can drag and drop to simply and quickly build front-end apps. With App Studio, you do not need to download and install a local integrated development environment (IDE) or configure and maintain environment variables. Instead, you can use a browser to write, run, and debug apps and enjoy the same programming experience as that in a local IDE. App Studio also allows you to publish apps online. Advantages App Studio has the following core advantages: Data development anytime, anywhere You do not need to download and install a local IDE or configure and maintain environment variables. Instead, you can use a browser to develop data in your office, at home, or anywhere that you can connect to the network. Editor with complete features App Studio provides a browser-based editor that allows you to easily write, run, and debug projects. When you enter the code, App Studio provides code hinting, code completion, and repair suggestions. You can also find all references and the definition of a method to automatically generate code. Online debugging App Studio comes with all breakpoint types and operations of a local IDE. It supports thread switching and filtering, variable checking and watching, remote debugging, and hot code replacement. Multi-feature terminal You can directly access the runtime environment, which is currently built based on CentOS as the base image. The multi-feature terminal supports all bash commands, including vim and other interactive commands. Collaborative coding You and your team members can use App Studio to share the development environment for collaborative coding. Currently, App Studio allows a maximum of eight users to edit the same file of a project online concurrently, improving work efficiency. In the future, the collaborative coding component will support chatting, bullet screen messages, code annotations, videos, and other features to make teamwork efficient and pleasant. Plug-in system App Studio supports business plug-ins, tool plug-ins, and language plug-ins. App Studio allows you to customize any required menu or add any service portal based on your business needs. You can customize project management processes, project types, and templates dedicated to your business. You can develop common tools, such as enhanced Git features, code rule scanning, keyboard shortcuts, enhanced editing features, and code snippets, and integrate them into App Studio. You can use language plug-ins to enrich the languages supported by App Studio, enabling App Studio to serve users with more languages while addressing your own business needs. Visual building App Studio provides a WYSIWYG designer that has rich components and deeply integrates DataService Studio and DataStudio. Among all components of DataWorks, you can call DataWorks API operations only in App Studio. In addition to calling the API operations, you can quickly build front-end apps by dragging and dropping components and configuring them in the WYSIWYG designer based on the santa file system, developing web apps without code. Rich templates and flexible project management App Studio provides rich project templates, allowing you to develop your project accordingly with fewer steps and higher efficiency. You can also save your project as a template for future development and use, or share it with other users.
+App Studio is a tool designed to help you develop data products. It comes with a rich set of front-end components that you can drag and drop to simply and quickly build front-end apps. With App Studio, you do not need to download and install a local integrated development environment (IDE) or configure and maintain environment variables. Instead, you can use a browser to write, run, and debug apps and enjoy the same programming experience as that in a local IDE. App Studio also allows you to publish apps online. Advantages App Studio has the following core advantages: Data development anytime, anywhere You do not need to download and install a local IDE or configure and maintain environment variables. Instead, you can use a browser to develop data in your office, at home, or anywhere that you can connect to the network. Editor with complete features App Studio provides a browser-based editor that allows you to easily write, run, and debug projects. When you enter the code, App Studio provides code hinting, code completion, and repair suggestions. You can also find all references and the definition of a method to automatically generate code. App Studio comes with all breakpoint types and operations of a local IDE. It supports thread switching and filtering, variable checking and watching, remote debugging, and hot code replacement. Multi-feature terminal You can directly access the runtime environment, which is currently built based on CentOS as the base image. The multi-feature terminal supports all bash commands, including vim and other interactive commands. Collaborative coding You and your team members can use App Studio to share the development environment for collaborative coding. Currently, App Studio allows a maximum of eight users to edit the same file of a project online concurrently, improving work efficiency. In the future, the collaborative coding component will support chatting, bullet screen messages, code annotations, videos, and other features to make teamwork efficient and pleasant. Plug-in system App Studio supports business plug-ins, tool plug-ins, and language plug-ins. App Studio allows you to customize any required menu or add any service portal based on your business needs. You can customize project management processes, project types, and templates dedicated to your business. You can develop common tools, such as enhanced Git features, code rule scanning, keyboard shortcuts, enhanced editing features, and code snippets, and integrate them into App Studio. You can use language plug-ins to enrich the languages supported by App Studio, enabling App Studio to serve users with more languages while addressing your own business needs. Visual building App Studio provides a WYSIWYG designer that has rich components and deeply integrates DataService Studio and DataStudio. Among all components of DataWorks, you can call DataWorks API operations only in App Studio. In addition to calling the API operations, you can quickly build front-end apps by dragging and dropping components and configuring them in the WYSIWYG designer based on the santa file system, developing web apps without code. Rich templates and flexible project management App Studio provides rich project templates, allowing you to develop your project accordingly with fewer steps and higher efficiency. You can also save your project as a template for future development and use, or share it with other users.
 
-### Get started with App Studio
+### 18.2 Get started with App Studio
 
 To build a data portal, engineers need to develop data, build backend services, and develop front-end pages. This topic describes the basic features of App Studio and how to use App Studio. Originally, DataWorks is mainly used by data engineers to implement offline or streaming data development. As DataWorks becomes increasingly easy to use, many roles such as algorithm engineers, BI analysts, operators, and product managers who are familiar with SQL can use DataWorks to develop data. App Studio helps different types of users quickly build webpages for data viewing and apps for data query. Go to the App Studio page
 1. Log on to the DataWorks console.
@@ -19034,7 +19515,7 @@ You can click Add on the left of the Run/Debug Configurations dialog box to add 
 3. Run the project.
 Click the Run icon in the upper-right corner to run the project. The first time that the project is run takes a longer time because App Studio needs to allocate the ECS instance and initialize the language service. After the running is completed, the Runtime tab appears, showing the access link.
 4. Access the project.
-Click Open Link to access the project. Append /testapi to the link and refresh the page. Understand App Studio The following operations are supported for created projects: Top navigation bar Project From the Project menu, you can configure the project or view detailed information by selecting Charact er Set or Project Inf ormat ion. Provided information about the current project includes the ID specified by Project ID, name specified by Project Name, type specified by Project T ype, creation time specified by Creat ed At , and UUID. File From the File menu, you can create a file or open a recently created file by selecting Creat e File or Re-Open Most Recent Files. Edit From the Edit menu, you can perform common editing operations. To search all the code in the project and open the related file, select Find in Path. Version From the Version menu, you can select Swit ch Branch, View Changes, Submit , View Log, Connect t o Remot e Repo, and Merge Abort . Swit ch Branch In the Check Out Branch dialog box, you can click +Creat e Branch to create a local branch and push it to the remote repo. You can click a local branch and select checkout from the shortcut menu on the right to switch to the branch. You can also select merge to merge the selected branch to the current branch. You can click a remote branch and select check out as a new local branch from the shortcut menu on the right to check out the remote branch locally. Then rename the branch. You can also select merge to merge the selected branch to the current branch. View Changes Click View Changes to view the list of edited files on a local branch in the right-side navigation pane. Submit Click Submit to commit edits on a local branch for staging. You must enter the commit information. View Log On the Log page, you can view all commit records of branches and filter them. Connect t o Remot e Repo You can associate a new project with a remote repo for version control. View You can click T oggle Full Screen or press Esc on the keyboard to enter or exit the full screen mode of the page. You can also click Hide Sidebar or Hide St at us Bar to hide the right-side navigation pane or the status bar. If they are hidden, you can click Show Sidebar or Show Status Bar to show them respectively. Debug If you create a front-end project, you can set running parameters and add custom images. App Studio supports Java-based debugging. In addition to setting running parameters and adding custom images, you can perform many other operations for debugging backend projects. You can also perform full or incremental builds and compile the Main.java file. Set t ings From the Settings menu, you can set the Git configuration to import the Git code to create a project. You can also configure your preference and shortcut keys. Deploy You can choose Deploy > Download Source Code to download the source code. T emplat e You can choose T emplat e > Manage T emplat es to go to the My T emplat es page to manage templates. Left-side navigation pane Entry Click the icon framed in red. The project section appears. Edit section Double-click a file that you want to edit. In the Edit section that appears, right-click the code section to perform the following operations.
+Click Open Link to access the project. Append /testapi to the link and refresh the page. Understand App Studio The following operations are supported for created projects: Top navigation bar Project From the Project menu, you can configure the project or view detailed information by selecting Charact er Set or Project Inf ormat ion. Provided information about the current project includes the ID specified by Project ID, name specified by Project Name, type specified by Project T ype, creation time specified by Creat ed At , and UUID. File From the File menu, you can create a file or open a recently created file by selecting Creat e File or Re-Open Most Recent Files. Edit From the Edit menu, you can perform common editing operations. To search all the code in the project and open the related file, select Find in Path. Version From the Version menu, you can select Swit ch Branch, View Changes, Submit , View Log, Connect t o Remot e Repo, and Merge Abort . Swit ch Branch In the Check Out Branch dialog box, you can click +Creat e Branch to create a local branch and push it to the remote repo. You can click a local branch and select checkout from the shortcut menu on the right to switch to the branch. You can also select merge to merge the selected branch to the current branch. You can click a remote branch and select check out as a new local branch from the shortcut menu on the right to check out the remote branch locally. Then rename the branch. You can also select merge to merge the selected branch to the current branch. View Changes Click View Changes to view the list of edited files on a local branch in the right-side navigation pane. Submit Click Submit to commit edits on a local branch for staging. You must enter the commit information. View Log On the Log page, you can view all commit records of branches and filter them. Connect t o Remot e Repo You can associate a new project with a remote repo for version control. View You can click T oggle Full Screen or press Esc on the keyboard to enter or exit the full screen mode of the page. You can also click Hide Sidebar or Hide St at us Bar to hide the right-side navigation pane or the status bar. If they are hidden, you can click Show Sidebar or Show Status Bar to show them respectively. Debug If you create a front-end project, you can set running parameters and add custom images. App Studio supports Java-based debugging. In addition to setting running parameters and adding custom images, you can perform many other operations for debugging backend projects. You can also perform full or incremental builds and compile the Main.java file. Set t ings From the Settings menu, you can set the Git configuration to import the Git code to create a project. You can also configure your preference and shortcut keys. You can choose Deploy > Download Source Code to download the source code. T emplat e You can choose T emplat e > Manage T emplat es to go to the My T emplat es page to manage templates. Left-side navigation pane Entry Click the icon framed in red. The project section appears. Edit section Double-click a file that you want to edit. In the Edit section that appears, right-click the code section to perform the following operations.
 
 | Action | Description |
 |---|---|
@@ -19062,9 +19543,9 @@ Icons in the upper-right corner
 
 Bottom bar OUT tab You can click the OUT tab to view the output. RUN or DEBUG tab If you click the Run or Debug icon for a project, this tab appears, showing the progress and information of the project. PROBLEM tab If you click the Run or Debug icon for a project that has a problem, this tab appears. Terminal tab When running or debugging a project, you can click the Terminal tab and run bash or vim commands on the ECS instance. Version Control tab You can click the Version Control tab to view the logs and history of the project.
 
-### Navigation pane
+### 18.3 Navigation pane
 
-#### View and manage projects
+#### 18.3.1 View and manage projects
 
 You can create and manage projects on the Projects page. Go to the App Studio page and click Projects in the left-side navigation pane. On the page that appears, you can view projects that you have created. For more information about how to create template-based and code-based projects, see Project management. Click a project to go to the project editing page. You can also click Creat e T emplat e of a project to create a template based on the project. Create a template
 1. Click Creat e T emplat e of a project.
@@ -19078,11 +19559,11 @@ You can create and manage projects on the Projects page. Go to the App Studio pa
 
 3. After the configuration is completed, click OK.
 
-#### View and manage templates
+#### 18.3.2 View and manage templates
 
 You can view all templates created based on projects on the Templates page. Click a template to go to the template details page. Then, click Code Edit or to view the project code that this template is based on. You can also click Creat e Project of a template to create a project based on this template.
 
-### Project management
+### 18.4 Project management
 
 This topic describes how to create and manage projects. You can create a template-based or code-based project. Create a template-based project
 1. Go to the App Studio page and click Projects in the left-side navigation pane. On the Project s
@@ -19097,9 +19578,9 @@ page, click Creat e Project f rom Code.
 3. After the configuration is completed, click Submit .
 View and manage projects You can view the created projects on the Project s page. You can click a project name to go to the project editing page. You can also click Creat e T emplat e of a project to create a template based on the project. You can view projects shared by others but cannot create templates based on those projects.
 
-### Code editing
+### 18.5 Code editing
 
-#### Overview
+#### 18.5.1 Overview
 
 Code editing supports common IDE features, such as automatic completion, code hinting, syntax diagnosis, and global content search. The following tables list the basic and advanced features that App Studio supports in different languages.
 
@@ -19134,21 +19615,21 @@ Code editing supports common IDE features, such as automatic completion, code hi
 |---|---|---|---|
 | Generate | Constructor Override Getter and Setter Implement | Not supported | Not supported |
 
-#### Generate code snippets
+#### 18.5.2 Generate code snippets
 
 Currently, App Studio supports the Java class constructor, getter and setter methods, override methods of the parent class that a child class inherits, and API methods to be implemented. Entry Perform either of the following operations to generate the Java code: Right-click the code section and select Generat e. Press Command+M on the keyboard. The Java code is automatically generated. Constructor On the Generate menu, click Const ruct or. Select the fields to be included in the constructor and click OK. The constructor that contains the initialization statement of the fields is generated. Getter and setter methods Generate the getter and setter methods in a way similar to the constructor. If a Java class does not have any field or the Java class is overwritten by the @data annotation of lombok, the getter or setter method is not required for the Java class. In this case, the Getter, Setter, and Getter And Setter options do not appear on the Generate menu. Override methods Click Override Methods on the Generate menu. All methods that can be overridden are listed in the Generate Code dialog box. Select a method. The corresponding method is generated.
 
-#### Run UT
+#### 18.5.3 Run UT
 
 App Studio currently supports unit testing (UT), including automatically generating UT code, detecting the entry for UT, running UT code, and displaying the UT result. Automatically generate UT code Open the target file, right-click the code editing section, select Generat e and then click Creat e T est . The UT class file and UT code are automatically generated in the test directory. Detect the entry for UT UT class files must be stored in the src/test/java directory. A Java UT class file that is not stored in this directory cannot be identified as the Java UT class. For a method annotated with @Test annotation, Run Test appears, indicating the entry for UT. After the Java UT class file is created, add the @T est annotation of `org.junit.Test` to the corresponding sample UT method. Run UT code Click the Run icon in the upper-right corner. The sample UT starts.
 
-#### Find in Path
+#### 18.5.4 Find in Path
 
 App Studio provides the Find in Path feature to support global content search. Move the pointer over Edit in the top navigation bar and select Find in Pat h. You can select Mat ch Case, Words, Regex, and File Mask as required. If you select File Mask, you must also select a file name extension from the right drop-down list to search in files of the specified type. You can also search for content in the specified project, module, or directory. After selecting a file, you can locate the searched content in the file and open the file in the editor.
 
-### Debugging
+### 18.6 Debugging
 
-#### Configuration and startup
+#### 18.6.1 Configuration and startup
 
 You can configure the entry method, start debugging, and set breakpoints to debug an app. Configure the entry method
 
@@ -19168,15 +19649,15 @@ You can configure the entry method, start debugging, and set breakpoints to debu
 
 Start debugging Move the pointer over Debug in the top navigation bar and click St art Debugging. The first startup is slower, because the system needs to prepare the runtime environment and download Maven dependencies for you. When you restart debugging, App Studio skips this process and provides user experience similar to that in a local IDE.
 
-#### Online debugging
+#### 18.6.2 Online debugging
 
 App Studio supports the online debugging of Java apps and Spring Boot-based web projects. Before online debugging, you must configure the entry method and start debugging. For more information, see Configuration and startup. Exposed services After your app is started, two basic services are provided. You can click the link next to Backend to debug the back-end Java code. Panel introduction Output The Output panel displays the standard output, excluding System.in, of all apps. It supports the ANSI color and guarantees consistent experience as a local terminal. Call Stack Breakpoint The Breakpoint panel displays the breakpoints that are currently set. For more information about the breakpoint types and usage, see Breakpoint types. PROBLEM The PROBLEM panel displays compilation problems of apps. You can click a record to go to the corresponding line in the file.
 
-#### Breakpoint types
+#### 18.6.3 Breakpoint types
 
 App Studio supports normal line breakpoints, method breakpoints, and exception breakpoints. Normal line breakpoint You can click the blank section next to a line in the current file to generate a breakpoint for that line. The breakpoint also appears on the Breakpoint panel. Method breakpoint Different from a line breakpoint or an exception breakpoint, a method breakpoint triggers two events, namely, entry and exit. You can manually add a method breakpoint, or set a breakpoint at the place where the method is defined. If the method breakpoint is triggered, the program stops when stepping into or out of the method. Exception breakpoint If an exception breakpoint is set, the program stops when encountering the exception. As shown in the following figure, after index is triggered, the program stops in line 23 because NullPoint erExcept ion appears.
 
-#### Breakpoint operations
+#### 18.6.4 Breakpoint operations
 
 The Breakpoint panel displays the breakpoints that are currently set. This topic describes how to operate breakpoints. Breakpoints can be classified into normal line breakpoints, method breakpoints, and exception breakpoints. For more information, see Breakpoint types. Debugging buttons You can perform the debugging operations by clicking the following buttons listed in the table:
 
@@ -19193,17 +19674,17 @@ The Breakpoint panel displays the breakpoints that are currently set. This topic
 | 9 | Run t o Cursor | Runs to the current line of code. You can set a temporary breakpoint in a line. |
 | 10 | Evaluat e Expression | Calculates an expression. |
 
-#### Terminal
+#### 18.6.5 Terminal
 
 You can start multiple terminals in App Studio. The T erminal tab appears in the lower part of the page. App Studio supports common shell commands such as ls and cat and interactive commands such as vi and t op.
 
-#### Hot code replacement
+#### 18.6.6 Hot code replacement
 
 Using the hot code replacement feature, you can edit the running code of an app and make the edits effective without restarting the app. For example, after you edit the code while debugging a Spring Boot-based app, you do not need to restart the app. The edited code takes effect once it is saved. App Studio supports this feature by default. App Studio also supports hot code replacement while an app is running. To trigger hot code replacement, you only need to save the file without installing any plug-in or manually compiling the file. If you are editing the code in Debug mode, App Studio automatically deletes the current running stack and returns to the method entry. Configure hot code replacement in Run mode Enable hot code replacement on the Run/Debug Configurations page. After you click Run or Debug, the output information of the HotCode2 plug-in appears on the OUT tab. Save the file after editing it. Configure hot code replacement in Debug mode You can use the native Java Debug Interface (JDI) to enable hot code replacement in Debug mode. However, due to Java Virtual Machine (JVM) restrictions, hot code replacement is unavailable when a method is added to or deleted from a class. You can save the file to trigger hot code replacement. The native JVM supports hot code replacement for operations such as adding or deleting a class. However, hot code replacement is unavailable when you change the class structure.
 
-### WYSIWYG designer
+### 18.7 WYSIWYG designer
 
-#### Get started with the WYSIWYG designer
+#### 18.7.1 Get started with the WYSIWYG designer
 
 This topic describes basic operations in the WYSIWYG designer, including creating a project and building a visual page. Create a project
 1. Log on to the DataWorks console.
@@ -19216,11 +19697,11 @@ runt ime environment to appst udio.
 5. After the configuration is completed, click Submit .
 Build a visual page Open a project created by using the WYSIWYG designer. Go to the santa/pages directory in your project. Double-click a .santa file to go to the WYSIWYG designer. For example, you can double-click the file named home.santa. You can also right-click pages and choose Creat e > T emplat e to develop the page based on a template. The WYSIWYG designer consists of the component menu and operation panel. Component menu The component menu lists all components that the WYSIWYG designer presets, including layout component s, basic component s, f orm component s, chart component s, and advanced component s. Select a component from the component menu and drag and drop it to the visual operation section. Click the component. The Component Set t ings panel appears on the right. On the Component Set t ings panel, you can configure the component on the Propert ies, St yle, and Advance tabs. Operation panel You can click the corresponding icon on this panel to undo an operat ion, redo an operat ion, preview t he rendering result , enable t he code mode, use t he global st yle, conf igure t he navigat ion, conf igure a global dat a f low, deploy as a t emplat e, and save edit s. Click the Conf igure Navigat ion icon in the upper-right corner to go to the navigation configuration page. For more information, see Navigation configuration. Configure a global data flow For more information about how to configure a global data flow, see Global data flow. On the Component Settings panel, you can configure the component on the Propert ies, St yle, and Advance tabs. Configure component properties On the Properties tab, you can visually configure component properties. Based on the rules for configuring component properties, a visual form is generated on the Properties tab. After you configure component properties in this form, the WYSIWYG designer re-renders the component in the visual operation section based on the new properties. You can view the rendering results of the component with different properties in real time. Configure component styles On the Style tab, you can configure the styles of a component. A visual panel for configuring common styles is provided on the Style tab. On this panel, you can customize the basic styles of a component, including the layout, text, background, border, and effect. After you add or modify the component styles on this tab, the WYSIWYG designer collects all the style settings and re-renders the component in the visual operation section based on the new component style. You can view the component configuration effect in real time. Configure association between components On the Advanced Settings tab, you can configure association between components. Select a component in the visual operation section and click the Advance tab. The properties of the selected component are listed on the left of the tab. Click the Magnifier icon on the right and select the component to be associated to your selected component. The properties of the associated component appear on the right of the tab. Select a property, for example, searchParams, in the left property list and connect it to a property, for example, requestParams, in the right property list. In this way, any change of the searchParams parameter of the left component is transferred to the requestParams parameter of the right component in real time. This achieves property-based association between the two components. Configure the code mode By using the code mode, you can implement complex interactions in a more advanced way. For more information, see Code mode. Save, preview, run, and hot code replacement For more information, see Save, preview, run, and hot code replacement.
 
-#### Code mode
+#### 18.7.2 Code mode
 
 By using the code mode, you can implement complex interactions in a more advanced way. Click the Code Mode icon in the upper-right corner of the operation panel to enable the code mode. The WYSIWYG designer uses domain-specific language (DSL) at the intermediate layer to switch between the visualization mode and code mode. DSL can be considered as a simplified version of React. The DSL syntax is basically the same as the React syntax. As shown in the code section in the preceding figure, DSL uses a tag to describe a component. The tag properties are the component properties. The property value can be of a simple data type such as a string or a number. The property value can also be an expression. You can enter `state.xxx` to obtain data from the global data flow. The code mode has the following features: If you drag and drop a component or configure the component properties in the visualization section, the edits are updated in the code in real time. If you edit the code in the code section, the edits are updated in the visualization section in real time. The drag-and-drop operation and component property configuration in the visualization section and code edits in the code section can be converted between each other.
 
-#### DSL syntax
+#### 18.7.3 DSL syntax
 
 Domain-specific language (DSL) is a component-based language developed based on the features of React JSX and Vue templates and is more suitable for UI layout design. JSX The DSL syntax is similar to the JSX syntax in the React.render method. The following section provides a brief description of JSX: You can use `{ }` to switch an HTML scope to a JavaScript scope. In a JavaScript scope, you can write any valid JavaScript expression. The return value appears on the page, for example, `<div>{'He`
 
@@ -19257,7 +19738,7 @@ Invalid JavaScript expressions
 { var a = 1 } // The value assignment statement. { aaa * 111; 2} // Multiple statements separated with semicolons (;).
 ```
 
-#### Global data flow
+#### 18.7.4 Global data flow
 
 A global data flow is used for front-end data management. For multiple components that need to share a state, it is difficult to transfer the state among them. To resolve this issue, you can extract the shared state and use a global data flow to transfer it to all related components. Principles In a global data flow, global data is transferred in a globally unique way. Once the data declared in global data changes, the data flow shown in the following figure is executed.
 1. A component triggers an action when, for example, a user clicks the component.
@@ -19284,11 +19765,11 @@ Modify global data Use the $setState() method in the component to modify global 
 |---|---|---|---|
 |   |   | state.name |   |
 
-#### Save, preview, run, and hot code
+#### 18.7.5 Save, preview, run, and hot code replacement
 
 replacement In the WYSIWYG designer, you can perform operations such as saving edits, previewing the rendering result, running an app, or making edits in hot code replacement mode. Save edits The WYSIWYG designer periodically saves your edits. You can also click the Save icon in the upper-right corner of the operation panel to save edits. Preview the rendering results In the WYSIWYG designer, code in the operation section is in the editable status. However, special processing is added for the editable status of some components. For these components, you can run the rendering logic only when the app is running. To preview the rendering result, click the Preview icon in the upper-right corner of the operation panel. Run an app In the WYSIWYG designer, you can open and edit only one santa file at a time. To view the effect of the entire app, click the Run Program icon on the Debug panel of App Studio to run the app. Make edits in hot code replacement mode If you are not satisfied with any page after running the app, you can edit the code in the WYSIWYG designer and save the edits. The edited code takes effect on the running page in hot code replacement mode.
 
-#### Navigation configuration
+#### 18.7.6 Navigation configuration
 
 This topic describes how to configure the site navigation in the WYSIWYG designer. The WYSIWYG designer provides each app with a public page header, a public bottom bar, and public sidebars, where you can configure various menus and themes. You can also specify whether to display the public header, bottom bar, and sidebars as required. Click the Navigat ion Set t ings icon in the upper-right corner of the operation panel to go to the page for configuring the navigation of an app. Configure the public header You can configure the public header based on your business requirements.
 
@@ -19309,15 +19790,15 @@ Configure the sidebars You can configure the sidebars based on your business req
 | T heme | The theme of the sidebars. You can select a dark or light theme. |
 | Enable Folding | Specifies whether the sidebar menus can be hidden. |
 
-## Migration Assistant
+## 19 Migration Assistant
 
-### Overview
+### 19.1 Overview
 
 The Migration Assistant service of DataWorks allows you to migrate data objects across different DataWorks versions, Alibaba Cloud accounts, regions, and workspaces. Migration Assistant allows you to export data objects in your workspace, including auto triggered nodes, manually triggered nodes, resources, functions, data sources, table metadata, ad hoc queries, and components. You can create full export tasks, incremental export tasks, or custom export tasks to export your data objects in DataWorks based on your business requirements. Not ice To create export or import tasks, you must use an Alibaba Cloud account or be the workspace administrator. If you use a Resource Access Management (RAM) user that is not assigned the administrator role, you can only view export and import tasks. Scenarios Back up node code You can use Migration Assistant to periodically back up your node code to prevent data from being deleted by mistake. In this case, we recommend that you create a full export task. Export a common workflow for replication You can use Migration Assistant to export a common workflow that can be replicated in other workspaces. In this case, we recommend that you create a custom export task. Build a test environment You can use Migration Assistant to copy all the node code and replace the production data with test data to build a test environment. In this case, we recommend that you create a full export task or a custom export task. Develop data in a hybrid cloud environment You can use Migration Assistant to migrate node code from Alibaba Cloud public cloud to Alibaba Cloud Apsara Stack to develop data in a hybrid cloud environment. We recommend that you create a custom export task. If the difference between Alibaba Cloud public cloud and Alibaba Cloud Apsara Stack is large, a compatibility problem may occur when data objects are migrated. Migrate data objects between the development environment and production environment If a workspace consists of the production environment and development environment that are completely isolated, you can use Migration Assistant to export nodes from the development environment and import them to the production environment for deployment.
 
-### Cloud tasks
+### 19.2 Cloud tasks
 
-#### Export tasks from open source engines
+#### 19.2.1 Export tasks from open source engines
 
 DataWorks allows you to migrate tasks from open source scheduling engines such as Oozie and Azkaban to DataWorks. This topic describes the requirements for the files to be exported. Context Before you import a task of an open source scheduling engine to DataWorks, you must export the task to your on-premises machine or Object Storage Service (OSS). For more information about the import procedure, see Import tasks of open source engines. Export a task from Oozie Requirements and structure of the package to be exported: Requirements The package must contain XML-formatted definition files and configuration files of a flow task. The package is exported in the ZIP format. Structure Oozie task descriptions are saved in a Hadoop Distributed File System (HDFS) directory. For example, each subdirectory under the apps directory in the Examples package at the Apache Oozie official website is a flow task of Oozie. Each subdirectory contains XML-formatted definition files and configuration files of a flow task. Export a task from Azkaban You can download a specific flow task in the Azkaban console.
 1. Log on to the Azkaban console and go to the Project s page.
@@ -19335,7 +19816,7 @@ the Open Source engine export scheme select ion page.
 6. Modify the content to be exported based on the template and generate a package to be
 exported.
 
-#### Import tasks of open source engines
+#### 19.2.2 Import tasks of open source engines
 
 This topic describes how to import tasks that are exported from open source engines into DataWorks. Procedure
 1. Go to the Open Source engine import page.
@@ -19356,11 +19837,11 @@ i. On the Edit import t ask page, specify Import object s. Periodic t asks is se
 4. View the import report.
 i. In the Import progress dialog box, confirm the import task progress. ii. After the import task is completed, click Ret urn t o import t ask list . iii. Find the task on the Import T asks page and click View Import Report in the Actions column. On the page that appears, view the task information in the Basic Inf ormat ion, Import Set t ings, Import result s, and Det ails sections.
 
-### Migrate data objects in
+### 19.3 Migrate data objects in DataWorks
 
 DataWorks
 
-#### Create and view export tasks
+#### 19.3.1 Create and view export tasks
 
 Migration Assistant allows you to export data objects in your workspace, including auto triggered nodes, manually triggered nodes, resources, functions, table metadata, data sources, components, and ad hoc queries. This topic describes how to create and view export tasks. Prerequisites To create export or import tasks, you must use an Alibaba Cloud account or be the workspace administrator. If you use a Resource Access Management (RAM) user that is not assigned the administrator role, you can only view export and import tasks. Context Migration Assistant allows you to export data objects in different modes. These modes include full export, incremental export, and custom export. You can choose an export mode that best suits your business scenario. Full export tasks are used to export all the data objects in a workspace. For example, you can run a full export task to back up node code or clone the workspace to a test environment. When you run a full export task, data objects of the latest version are exported. Only saved data objects can be exported. If a node is saved in both the development environment and production environment, the node saved in the development environment is exported. Incremental export tasks are used to export data objects that were modified after the specified date. You cannot configure a blacklist for incremental export tasks. Custom export tasks are used to export data objects that you specify. For example, you can run a custom export task to extract a common workflow and clone it to other workspaces. If a workspace runs in both a production environment and a development environment that are completely isolated from each other, you can run a custom export task to export nodes from the development environment and import them to the production environment for deployment. Go to the Migration Assistant page
 1. Log on to the DataWorks console.
@@ -19416,7 +19897,7 @@ You can also configure filter conditions such as Export Object , Object T ype, a
 6. Click Export in the upper-right corner.
 View and manage export tasks On the Export T asks page, you can view the name, type, creator, status, update time, and description of created export tasks. The operations that you can perform on export tasks vary based on their status. If an export task is in the Successf ul state, you can perform the following operations on the task: Click View Export Report in the Actions column. On the page that appears, view the task information in the Basic Inf ormat ion, Overview, and Det ails sections. Click Download in the upper-right corner to download the package of the export task to a local directory. Clone the export task. Full export task for which the blacklist feature is not enabled: Click Clone in the Act ions column. In the Clone dialog box, specify Name and click Export . Full export task for which the blacklist feature is enabled: Click Clone in the Act ions column. In the Clone dialog box, specify Name and click Add t o Blacklist . On the Set Blacklist page, select the data objects that you do not want to export, click Add Select ed t o Blacklist , and then click Export in the upper-right corner. Custom export task: Click Clone in the Act ions column. In the Clone dialog box, specify Name and click Select Export Object s. On the Export Object s page, select the data objects that you want to export, click Add Select ed t o Export Package, and then click Export in the upper-right corner. If an export task is in the Export f ailed state, you can click View Export Package, Download Export Package, or Re-export in the Actions column as required. To retry the export task, click Reexport . If an export task is a custom export task that is in the Edit ing state, you can perform the following operations on the task: Click Edit in the Actions column. On the Export Objects page, modify the data objects that you want to export. Click View Export Package in the Actions column. On the Export Package Det ails page, view the task information in the Basic Inf ormat ion, Overview, and Det ails sections. Click Delet e in the Actions column. In the Delet e message, click Ok to delete the task. If an export task is a full export task that is in the Edit ing state, you can click Edit , Delet e, or View Blacklist in the Actions column as required. If you click View Blacklist in the Actions column, you can check the blacklist and click Export to run the export task or click Close in the dialog box that appears.
 
-#### Create and view import tasks
+#### 19.3.2 Create and view import tasks
 
 After you run an export task to export data objects from a workspace, you can create an import task to import these data objects to a specified workspace. Prerequisites To create export or import tasks, you must use an Alibaba Cloud account or be the workspace administrator. If you use a Resource Access Management (RAM) user that is not assigned the administrator role, you can only view export and import tasks. Go to the Migration Assistant page
 1. Log on to the DataWorks console.
@@ -19441,9 +19922,9 @@ When you configure the import task, you must complete the settings in the Engine
 7. In the Conf irm message, click OK.
 View and manage import tasks On the Import T asks page, the operations that you can perform on import tasks vary based on their status. After an import task is complete, you can view the details of the task. To view the task details, find the task on the Import T asks page and click View Import Report in the Actions column. On the page that appears, view the task information in the Basic Inf ormat ion, Import Set t ings, Import result s, and Det ails sections. If an import task is in the Edit ing state, you can perform the following operations on the task: Click Edit in the Actions column. On the Import T ask Set t ings page, modify the task configurations. Click Preview in the Actions column. On the page that appears, view the task information in the Basic Inf ormat ion, Overview, and Det ails sections. Click Delet e in the Actions column. In the message that appears, click Ok to delete the task. If an import task is in the Import f ailed state, you can click Re-import in the Actions column of the task. In the Import progress dialog box, click Ret urn t o import t ask list after the import task is complete. t
 
-## Workspace management
+## 20 Workspace management
 
-### Configure a workspace
+### 20.1 Configure a workspace
 
 On the Workspace Management page of a workspace, you can configure and manage the workspace. DataWorks supports a variety of compute engines, such as MaxCompute, E-MapReduce (EMR), Realtime Compute for Apache Flink, Hologres, Graph Compute, AnalyticDB for PostgreSQL, and AnalyticDB for MySQL. Go to the Workspace Management page
 1. Log on to the DataWorks console.
@@ -19597,7 +20078,7 @@ t
 
 4. After the connectivity test is passed, click Conf irm.
 
-### Workspace modes
+### 20.2 Workspace modes
 
 DataWorks supports workspaces in basic mode and standard mode. You can implement different levels of security control on production data by using workspaces in different modes. This topic describes the differences between the two types of workspaces and the types of accounts or roles that can be used to access each type of workspace. Workspaces in basic mode t A DataWorks workspace in basic mode can be associated with only one project, instance, or database of each compute engine type. A workspace in basic mode does not isolate the development environment from the production environment. In such a workspace, you can perform only basic data development but cannot control the data development process and table permissions. A workspace in basic mode has the following benefits and risks: Benefits: This mode is easy to use. After you commit a node, the scheduling system immediately runs the node on a regular basis to produce data. In this case, you do not need to deploy the node. Risks: Developers can modify or commit a node to the scheduling system without the need to obtain approval. This makes the production environment unstable. In addition, if this workspace is associated with a MaxCompute project, developers have the read and write permissions on all the tables of the MaxCompute project by default. Developers can create, delete, or modify tables. This puts data at risk. The following figure shows the data production process of a DataWorks workspace in basic mode. This workspace is associated with one MaxCompute compute engine instance. Workspaces in standard mode A DataWorks workspace in standard mode can be associated with two projects, instances, or databases of each compute engine type. A workspace in standard mode differs from a workspace in basic mode in the following aspects: You can modify code only in the development environment. After you commit a node, the scheduling system runs the node in the development environment only for smoke testing. The scheduling system does not automatically run this node in the development environment in the future. If you want the scheduling system to automatically run this node in the future, you must deploy it to the production environment. You can deploy a node only after you obtain approval from a workspace administrator or O&M expert. t The following figure shows the data production process of a DataWorks workspace in standard mode. This workspace is associated with two MaxCompute compute engine instances. Types of accounts or roles used to access workspaces in basic mode and standard mode You can specify the accounts or roles for workspaces in the Comput e Engine Inf ormat ion section of the Workspace Management page.
 
@@ -19627,7 +20108,7 @@ t Naming formats of tables in compute engine instances associated with each type
 
 t
 
-### Manage members and roles
+### 20.3 Manage members and roles
 
 DataWorks provides roles that have different permissions for you to implement finer-grained permission management. You can add the required users to your workspace and assign the required roles to the users. You can also create custom roles and grant permissions to the roles based on your business requirements. Background information Multiple users can be added to the same DataWorks workspace. In this case, if the users have excessive permissions on the workspace, the data security of the workspace may be affected by inappropriate permission use. However, if the users have insufficient permissions on the workspace, they may be unable to use the required features. To resolve this issue, DataWorks provides identities such as members and roles. You can assign different roles to users based on their requirements on the use of workspaces. If the default roles that are provided by DataWorks cannot meet your requirements, you can create custom roles and grant the required permissions to the roles. DataWorks provides the following identities: Member: the Apsara Stack tenant accounts or RAM users that are added to a DataWorks workspace. Cloud account : Apsara Stack tenant accounts or RAM users. Role: the carriers that have permissions in a workspace and can be assumed by the members of the workspace. DataWorks provides the following roles: Project Manager: the administrators that have all the permissions on the features in a workspace. For example, the workspace administrator role can be used to assign the required role to a RAM user and remove a member that is not the workspace owner from a workspace. Deploy: the engineers that have the permissions to deploy nodes. Development : the developers that have the permissions to develop and commit nodes. Model Developer: the designers that have the permissions to use the data modeling feature. Visit or: the visitors that have the read-only permissions on a DataWorks workspace. Project owner: the owner that has the highest level of permissions on a workspace. O&M: the engineers that have the permissions to allocate resources and deploy nodes. Securit y Manager: the administrators that have the permissions to use Data Security Guard. For more information about the permissions of different roles, see Permission list. Limits Only the Project Manager and the Project owner roles can add users, change the roles of users, and remove users and the added cust om roles. You can use only an Apsara Stack tenant account or the RAM user whose role is an administrator or a super administrator of a MaxCompute project to map a custom DataWorks role to a role of the MaxCompute project. Go to the User Management page
 1. Log on to the DataWorks console.
@@ -19636,7 +20117,7 @@ icon in the upper-right corner. t
 3. In the left-side navigation pane, click User Management to go to the User Management page.
 You can manage members and roles on the User Management page. Manages members On the Manage Members tab, you can perform the following operations: View member information. You can view the accounts of members and the roles that are assigned to the members in the current workspace. You can also specify the name of the member, account, or role to search for a specific member. Then, you can view the member information and the number of members to which the role has been assigned. This allows you to realize centralized management of members and roles assigned to the members. Add a user. i. Click Add Member in the upper-right corner of the Manage Members tab to add a user to the current workspace. ii. In the Add Member dialog box, select one or more RAM users from the Available Account s list. Member: the Apsara Stack tenant accounts or RAM users that are added to a DataWorks workspace. Cloud account : Apsara Stack tenant accounts or RAM users. Role: the carriers that have permissions in a workspace and can be assumed by the members of the workspace. DataWorks provides the following roles: Project Manager: the administrators that have all the permissions on the features in a workspace. For example, the workspace administrator role can be used to assign the required role to a RAM user and remove a member that is not the workspace owner from a workspace. Deploy: the engineers that have the permissions to deploy nodes. Development : the developers that have the permissions to develop and commit nodes. Model Developer: the designers that have the permissions to use the data modeling feature. Visit or: the visitors that have the read-only permissions on a DataWorks workspace. Project owner: the owner that has the highest level of permissions on a workspace. O&M: the engineers that have the permissions to allocate resources and deploy nodes. Securit y Manager: the administrators that have the permissions to use Data Security Guard. iii. Click the > icon to move the selected RAM users to the Added Account s list. iv. Select one or more roles that you want to assign to the selected RAM users. v. Click Conf irm. Remove a member. t On the Manage Members tab, find the member that you want to remove from the workspace and click Remove in the Act ions column to remove the member from the workspace. If you want to remove multiple members from the workspace, you can select them and click Batch removal to remove them at a time. Manage roles On the Roles tab, you can perform the following operations: Create a custom role. i. Click Add Cust om Role in the upper-right corner of the Roles tab. ii. In the Add Cust om Role dialog box, enter a name for your custom role, such as test. iii. Grant permissions on the required DataWorks modules to the role. Unaut horized: indicates that the role has no permissions on the related module. Read-only: indicates that the role can only view the data in the related module. Read and Writ e: indicates that the role can modify the data in the related module. t iv. Map a cust om role t o a role of a comput e engine. You can map a custom role to a role of a compute engine. For example, you can map the custom role test to the Admin role of a MaxCompute project. In this case, the Admin role is assumed by the custom role when the custom role accesses the MaxCompute project. You can use only an Apsara Stack tenant account or the RAM user whose role is an administrator or a super administrator of a MaxCompute project to map a custom DataWorks role to a role of the MaxCompute project. v. Click Conf igure. View or edit roles. You can view the preset roles and cust om roles that have been configured for the workspace on the Roles tab. You can also edit or delete cust om roles. For more information about the permissions of preset roles, see Permission list. t
 
-### Permission list
+### 20.4 Permission list
 
 DataWorks provides seven roles: workspace owner, workspace administrator, developer, administration expert, deployment expert, visitor, and security expert. You cannot grant the role of the workspace owner to other workspace members. This topic describes the permissions of these roles. In the following tables, Yes indicates that a role has the corresponding permission, and No indicates that a role does not have the corresponding permission. Data management
 
@@ -19980,7 +20461,7 @@ Data integration
 | Delete nodes | Yes | Yes | Yes | No | No | No | No |
 | Migrate database tables | Yes | Yes | No | No | No | No | No |
 
-### Manage connections
+### 20.5 Manage connections
 
 Connections are used to configure readers and writers during data integration. On the Data Source page of a workspace, you can view and add connections. Procedure
 1. Log on to the DataWorks console.

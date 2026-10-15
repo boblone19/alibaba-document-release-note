@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Operations and Maint
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "2a91c0294cd61f90_Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20API%20Gateway%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 API Gateway Operations and Maintenance Guide 20260828
 
-## O&M
+## Table of Contents
 
-### O&M overview
+  - 1.1 O&M overview
+  - 1.2 O&M architecture
+- 2 O&M process
+- 3 FAQ
+
+## 1 O&M
+
+### 1.1 O&M overview
 
 This topic describes the purpose, requirements, and precautions for API Gateway O&M, and explains how to get technical support.
 
@@ -36,11 +43,11 @@ To ensure system stability and prevent accidents, maintenance personnel must fol
 
 If maintenance personnel require assistance, contact Alibaba Cloud technical support.
 
-### O&M architecture
+### 1.2 O&M architecture
 
 This topic describes the O&M architecture of API Gateway. As shown in the preceding figure, the O&M mainly focuses on the base console, the tenantside control plane, and the data plane.
 
-## O&M process
+## 2 O&M process
 
 This topic describes the O&M process for API Gateway.
 
@@ -112,7 +119,7 @@ Run the following command:
 kubectl get wasmplugin -n higress-system
 ```
 
-## FAQ
+## 3 FAQ
 
 This topic describes common issues with API Gateway and their solutions.
 

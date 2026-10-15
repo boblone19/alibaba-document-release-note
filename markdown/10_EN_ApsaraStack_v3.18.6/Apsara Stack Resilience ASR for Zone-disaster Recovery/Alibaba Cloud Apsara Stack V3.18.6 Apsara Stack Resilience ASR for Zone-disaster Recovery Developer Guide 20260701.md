@@ -2,16 +2,53 @@
 title: "Apsara Stack Resilience ASR for Zone-disaster Recovery Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 118
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Developer Guide 20260701.pdf"
+source_pdf: "0b932e6f7aeda293_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Resilience ASR for Zone-disaster Recovery Developer "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%90%8C%E5%9F%8E%E5%AE%B9%E7%81%BEASR/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Resilience%20ASR%20for%20Zone-disaster%20Recovery%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Stack Resilience ASR for Zone-disaster Recovery Developer Guide 20260701
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
+## Table of Contents
 
-## API call flow
+- 1 API call flow
+- 2 Preparations
+  - 2.1 Obtain an AccessKey
+  - 2.2 Obtain API information and its endpoint
+  - 2.3 Calling private cloud APIs through a POP gateway
+    - 2.3.1 Python version
+    - 2.3.2 Java version
+    - 2.3.3 SDK overview
+- 3 Error code information
+- 4 API reference
+  - 4.1 Protection group
+    - 4.1.1 ListProtectionGroup
+    - 4.1.2 ListProtectionGroupStatistics
+    - 4.1.3 ListProtectionGroupStatus
+    - 4.1.4 GetProtectionGroup
+    - 4.1.5 CheckProductInstance
+    - 4.1.6 GetZoneInfo
+  - 4.2 Drill plans
+    - 4.2.1 ListProcesses
+    - 4.2.2 ListDrillProcesses
+    - 4.2.3 CloseProcess
+    - 4.2.4 CreateDrillProcess
+    - 4.2.5 GetProcessTrace
+    - 4.2.6 ExecuteProcess
+    - 4.2.7 CreateNextProcess
+    - 4.2.8 GetInstanceStatus
+    - 4.2.9 GetProcessEntry
+    - 4.2.10 CreateDisasterRecoveryProcess
+    - 4.2.11 CreateHdrReverse
+    - 4.2.12 GetDrillPlan
+    - 4.2.13 ListDrillPlan
+    - 4.2.14 GetProcessCheck
+    - 4.2.15 GetPrevProcess
+    - 4.2.16 GetProcessDetail
+    - 4.2.17 SwitchInstance
+    - 4.2.18 SetProcessSwitchStep
+
+## 1 API call flow
 
 Apsara Stack lets you call APIs of the Zone-Disaster Recovery Management Platform (ASR) through the POP Gateway.
 
@@ -30,17 +67,20 @@ information and its endpoint.
 4. Obtain the SDK package and SDK core library for ASR. For more information, see Calling
 Apsara Stack APIs using POP Gateway.
 5. Call an API operation for ASR.
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 
-## Preparations
+## 2 Preparations
 
-### Obtain an AccessKey
+### 2.1 Obtain an AccessKey
 
 This topic describes how to obtain an AccessKey ID and an AccessKey secret.
 
 **Background information**
 
-An AccessKey authenticates the identity of a request sender. It uses symmetric encryption and consists of an AccessKey ID and an AccessKey secret. The AccessKey ID identifies the user, and the AccessKey secret is a string used to create an encrypted signature. The Apsara Uni-manager Management Console provides personal AccessKeys and organization AccessKeys. Personal account AccessKeys are used to call APIs.
+An AccessKey authenticates the identity of a request sender. It uses symmetric encryption and consists of an AccessKey ID and an AccessKey secret. The AccessKey ID identifies the user, and the AccessKey secret is a string used to create an encrypted signature.
+
+**Obtain an AccessKey**
+
+The Apsara Uni-manager Management Console provides personal AccessKeys and organization AccessKeys. Personal account AccessKeys are used to call APIs.
 
 **Note**
 
@@ -70,7 +110,6 @@ The AccessKey ID and AccessKey secret are the keys to access your cloud resource
 
 Personal account AccessKeys are restricted by the permission system of the Apsara Unimanager Management Console. In contrast, organization AccessKeys have higher permissions. Therefore, an administrator must confirm that the operation is secure.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 2. In the top menu bar, click**Enterprise**.
 3. In the navigation pane on the left, choose**Resource Management**>**Organization**
 **Management**.
@@ -78,7 +117,7 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 5. Click**Manage AccessKey**.
 6. In the dialog box that appears, you can view the organization AccessKey information.
 
-### Obtain API information and its
+### 2.2 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -94,17 +133,16 @@ Before you begin, you need the following information for the API operation: the 
 4. In the search box, enter bcmc.
 5. Click **Cluster Details**. On the details page, select the **Desired State Configuration** tab.
 6. Select kv.conf. Click **Show Content** to view and save the region value.
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 7. Select the **Service List** tab. Click the bcmc service name to open its details page.
 8. Obtain the value of asr.pop.open.endpoint and save it.
 
-### Calling private cloud APIs
+### 2.3 Calling private cloud APIs through a POP gateway
 
 **through a POP gateway**
 
 This topic describes how to call private cloud APIs through a Product Open Platform (POP) gateway.
 
-#### Python version
+#### 2.3.1 Python version
 
 **Prerequisites**
 
@@ -123,7 +161,6 @@ pip install apsarastack_asr20250916.tar.gz
 **Obtain the SDK from the developer portal**
 
 1. Log on to the ASCM developer portal and click SDK Sample.
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 2. From the SDK Type drop-down list, select Premium Edition. Then, select Java as the
 language.
 3. The sample code is displayed. Click Download Full Project to download the sample project
@@ -132,7 +169,7 @@ and the SDK package.
 **Import the SDK package**
 
 1. Create a Maven project in one of the following ways.
-ASR for Zone-disaster Recovery Apsara Stack Resilience Method 1: Add a Maven project in IDEA. Method 2: Convert an existing project to a Maven project. Right-click the project that you want to convert and select **Add Framework Support**... Select Maven and click OK.
+Method 1: Add a Maven project in IDEA. Method 2: Convert an existing project to a Maven project. Right-click the project that you want to convert and select **Add Framework Support**... Select Maven and click OK.
 2. In the project's root directory, create a `lib` folder and place the Java SDK package in it, as
 shown in the following figure.
 3. In the pom.xml file in the project directory, add the dependency for the Java SDK. For the
@@ -149,8 +186,6 @@ Use the following sample code to call an API. Ensure that the code runs successf
 # This file is auto-generated, don't edit it. Thanks.
 import os import sys fromtypingimportList
 ```
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 ```python
 from typing import List from alibabacloud_tea_openapi import models as open_api_models from alibabacloud_tea_util import models as util_models from alibabacloud_darabonba_env.client import Client as EnvClient from alibabacloud_tea_console.client import Client as ConsoleClient from alibabacloud_tea_util.client import Client as UtilClient from apsarastack_asr20250916.client import Client as SddpClient from apsarastack_asr20250916 import models as sddp_models class Sample:
@@ -189,12 +224,11 @@ cribeImagesWithOptions(describeImagesRequest, runtime).
             'x-acs-organizationid': '<yourOrganizationId>',
             'x-acs-resourcegroupid': '<yourResourceGroupId>',
             'x-acs-regionId': '<yourRegionId>',
-        }
         extends_params = util_models.ExtendsParameters(
             headers=headers
 ```
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience )
+`)`
 
 ```bash
         # Create and configure runtimeOptions.
@@ -202,7 +236,7 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience )
             extends_parameters=extends_params
 ```
 
-)
+`)`
 
 ```bash
         # To ensure secure communication in a production environment, we recommend that
@@ -229,7 +263,7 @@ if __name__ == '__main__':
 **Step-by-step example**
 
 1. Initialize the Config object. This object stores configurations such as the AccessKey ID,
-AccessKey secret, and endpoint. You can find the endpoint in the ASCM developer portal. Apsara Stack Resilience ASR for Zone-disaster Recovery
+AccessKey secret, and endpoint. You can find the endpoint in the ASCM developer portal.
 
 ```python
 @staticmethod def create_client(
@@ -266,19 +300,17 @@ request = sddp_models.ListProtectionGroupRequest()
 ```
 
 4. Set the headers and runtime parameters for the method call.
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 ```
 headers = {
             'x-acs-organizationid': '<yourOrganizationId>',
             'x-acs-resourcegroupid': '<yourResourceGroupId>',
             'x-acs-regionId': '<yourRegionId>',
-        }
 extends_params = util_models.ExtendsParameters(
             headers=headers
 ```
 
-)
+`)`
 
 ```bash
 # Create and configure runtimeOptions
@@ -286,7 +318,7 @@ extends_params = util_models.ExtendsParameters(
             extends_parameters=extends_params
 ```
 
-)
+`)`
 
 ```bash
  # To ensure secure communication in a production environment, we recommend that you ke
@@ -309,7 +341,7 @@ except Exception as e:
    logging.error(e)
 ```
 
-#### Java version
+#### 2.3.2 Java version
 
 **Prerequisites**
 
@@ -331,7 +363,6 @@ After you obtain the software development kit (SDK) package from the developer p
 
 **Obtain the SDK from the developer portal**
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 1. Log on to the ASCM developer portal and click SDK Sample.
 2. From the SDK Type drop-down list, select Premium Edition, and then select Java.
 3. The sample code is displayed. Click Download Full Project to obtain the sample project and
@@ -340,7 +371,7 @@ the SDK package.
 **Import the SDK package**
 
 1. Create a Maven project in one of the following ways:
-ASR for Zone-disaster Recovery Apsara Stack Resilience Method 1: Add a Maven project in IntelliJ IDEA. Method 2: Convert an existing project to a Maven project. Right-click the project that you want to convert and select **Add Framework Support...**. Select Maven and click OK.
+Method 1: Add a Maven project in IntelliJ IDEA. Method 2: Convert an existing project to a Maven project. Right-click the project that you want to convert and select **Add Framework Support...**. Select Maven and click OK.
 2. In the project's root directory, create a `lib` folder and add the Java SDK package to it, as
 shown in the following figure.
 3. Add the Java SDK dependency to the `pom.xml` file in the project directory. For the
@@ -356,8 +387,6 @@ Use the following sample code to call an API. Ensure that your code runs correct
 import com.aliyun.apsarastack.asr20250916.Client; import com.aliyun.apsarastack.asr20250916.models.*; import com.aliyun.teautil.models.ExtendsParameters; import com.aliyun.teautil.models.RuntimeOptions; importcomgooglegsonGson;
 ```
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
 ```java
 import com.google.gson.Gson; import java.util.HashMap; import java.util.Map; public class Sample {
     public static Client createClient() throws Exception {
@@ -371,10 +400,8 @@ com.aliyun.teaopenapi.models.Config()
         // The public domain name of the POP API for the product.
         config.endpoint = "<yourEndpoint>";
         return new Client(config);
-    }
     public static void main(String[] args_) throws Exception {
         testSwitchInstance();
-    }
     public static void testSwitchInstance() throws Exception {
         Client client = createClient();
         SwitchInstanceRequest switchInstanceRequest = new SwitchInstanceRequest();
@@ -394,17 +421,13 @@ eplace it with the actual value.
         switchInstanceRequest.setInstanceIds("oss-instance1");  // This is a sample val
 ue. Replace it with the actual value.
         try {
+            SwitchInstanceResponse response =
 client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime);
             System.out.println(new Gson().toJson(response.body));
         } catch (Exception error) {
             // Error message
             System.out.println(error.getMessage());
-        }
-    }
-}
 ```
-
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 **Sample steps**
 
@@ -443,15 +466,33 @@ RuntimeOptions runtime = new RuntimeOptions(); Map<String, String> headers = new
 5. Use the `client` object to retrieve the response for the request.
 
 ```java
-client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime); System.out.println(new Gson().toJson(response.body));
+SwitchInstanceResponse response = client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime); System.out.println(new Gson().toJson(response.body));
 ```
 
 6. Use a `catch` block to handle errors.
+
+```bash
+except Exception as e:
+    # Handle the exception
+    logging.error(e)
+```
+
+#### 2.3.3 SDK overview
+
+**Overview**
+
+The API sample code in this document is provided for reference only. For complete instructions and parameter descriptions, see the SDK examples and the OpenAPI documentation on the Developer Portal.
+
+**SDK versions**
 
 | Language | Version number | Release date | Updates |
 |---|---|---|---|
 | Java | 3.18.6-SP003 | 2025-09 | Drill APIs for ASR protection groups |
 | Python | 3.18.6-SP003 | 2025-09 | Drill APIs for ASR protection groups |
+
+**API list**
+
+The current SDK supports the following APIs.
 
 | API name | Version |
 |---|---|
@@ -463,24 +504,6 @@ client.switchInstanceWithOptions(switchInstanceRequest, headers, runtime); Syste
 | ASR.CreateNextProcess.2025-09-16 | v3.18.6 |
 | ASR.ExecuteProcess.2025-09-16 | v3.18.6 |
 | ASR.GetDrillPlan.2025-09-16 | v3.18.6 |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-```bash
-except Exception as e:
-    # Handle the exception
-    logging.error(e)
-```
-
-#### SDK overview
-
-The API sample code in this document is provided for reference only. For complete instructions and parameter descriptions, see the SDK examples and the OpenAPI documentation on the Developer Portal.
-
-**SDK versions**
-
-**API list**
-
-The current SDK supports the following APIs.
 
 | ASR.GetInstanceStatus.2025-09-16 | v3.18.6 |
 |---|---|
@@ -500,11 +523,13 @@ The current SDK supports the following APIs.
 | ASR.SetProcessSwitchStep.2025-09-16 | v3.18.6 |
 | ASR.SwitchInstance.2025-09-16 | v3.18.6 |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
 **Availability**
 
-Some APIs from previous versions are now deprecated or obsolete. This topic describes these deprecated and obsolete APIs. Deprecated APIs are marked as such in your Integrated Development Environment (IDE). The API reference still describes how to call them. Deprecated APIs are typically not supported in future Apsara Stack versions. Apsara Stack Resilience ASR for Zone-disaster Recovery Most obsolete APIs do not have an alternative and are not described in the API reference. However, a few obsolete APIs have alternatives with similar features. IDEA marks deprecated APIs to help developers identify them. Do not use these APIs for new projects.
+Some APIs from previous versions are now deprecated or obsolete. This topic describes these deprecated and obsolete APIs. Deprecated APIs are marked as such in your Integrated Development Environment (IDE). The API reference still describes how to call them. Deprecated APIs are typically not supported in future Apsara Stack versions. Most obsolete APIs do not have an alternative and are not described in the API reference. However, a few obsolete APIs have alternatives with similar features. IDEA marks deprecated APIs to help developers identify them. Do not use these APIs for new projects. mation
+
+## 3 Error code information
+
+This topic describes the common error codes and error messages that occur when you call API operations. When you call ASR API operations, you might encounter two types of errors: software development kit (SDK) call exceptions and backend service execution exceptions. If a request to a POP API operation fails, the system returns an error message. This type of error is usually caused by an improper API call. You can adjust the request parameters based on the error message. The following table describes common POP SDK exceptions.
 
 | Status code | Error code | Error message | Error scenarios |
 |---|---|---|---|
@@ -517,14 +542,12 @@ Some APIs from previous versions are now deprecated or obsolete. This topic desc
 | 400 | InvalidTimeStamp.For mat | Specified time stamp or date value is not well formatted. | The timestamp format is incorrect. Use the Date or Timestamp format. |
 | 400 | InvalidTimeStamp.Expi red | Specified time stamp or date value is expired. | The timestamp is expired. Make sure the device time is synchronized with the server time. The allowed time drift is 15 minutes. |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-## Error code information
-
-This topic describes the common error codes and error messages that occur when you call API operations. When you call ASR API operations, you might encounter two types of errors: software development kit (SDK) call exceptions and backend service execution exceptions. If a request to a POP API operation fails, the system returns an error message. This type of error is usually caused by an improper API call. You can adjust the request parameters based on the error message. The following table describes common POP SDK exceptions.
+mation
 
 | 413 | PayloadTooLarge | The request payload is too large, the limitation is xxx bytes. | The request body is too large and exceeds the limit of xxx bytes. Reduce the request data size and retry. |
 |---|---|---|---|
+
+For backend service exceptions, the API operation still returns a response, but the Success field is false. The response also contains a specific error code and error message. Contact the zone-disaster recovery development team with this error information to locate and resolve the issue.
 
 | Success | Error code | Error message | Error message |
 |---|---|---|---|
@@ -536,7 +559,7 @@ This topic describes the common error codes and error messages that occur when y
 | false | protectionGroupStatusError | Protection group status check error! | An error occurred during the protection group status check. |
 | false | protectionGroupDetailError | ProtectionGroup detail query error! | An error occurred while viewing the protection group details. |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery For backend service exceptions, the API operation still returns a response, but the Success field is false. The response also contains a specific error code and error message. Contact the zone-disaster recovery development team with this error information to locate and resolve the issue.
+mation
 
 | false | recoveryProcessQueryError | Recovery process detail query error! | An error occurred during the recovery flow information query. |
 |---|---|---|---|
@@ -548,7 +571,31 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery For backend service excep
 | false | switchInstanceError | switch instance error! | An error occurred during the instance switchover operation. Check the status of the target instance. |
 | false | createHdrReverseError | Create hdr reverse error! | The reverse switchover of the HDR protection group failed. Check the synchronization status. |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
+## 4 API reference
+
+This is the API reference content.
+
+### 4.1 Protection group
+
+#### 4.1.1 ListProtectionGroup
+
+This operation lists protection groups. The response contains creation information, instance information, and the current status of each group.
+
+**Preparations**
+
+You can query all protection groups, or filter the results by specifying parameters such as PageNumber.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request syntax**
+
+```
+POST /api/pop/v1/listProtectionGroup HTTP/1.1
+```
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -558,30 +605,10 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 | CheckStat us | Strin g | Body | No | NORMAL | The check status. |
 | Protection GroupId | Integ er | Body | No | 10 | The ID of the protection group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-## API reference
-
-This is the API reference content.
-
-### Protection group
-
-#### ListProtectionGroup
-
-This operation lists protection groups. The response contains creation information, instance information, and the current status of each group. Description You can query all protection groups, or filter the results by specifying parameters such as PageNumber.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request syntax**
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -602,9 +629,7 @@ This operation uses only common request headers. For more information, see Commo
 | ErrorMessage | String | "" | The error message. |
 | ErrorCode | String | 500 | The error code. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-| psara Stack Resil | ience |  | ASR for Zone-disaster Recovery |
+| psara Stack Resil | ience |   | ASR for Zone-disaster Recovery |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -620,13 +645,12 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
 Sample request
 
 ```
-{ }
+POST /api/pop/v1/listProtectionGroup HTTP/1.1
 ```
 
-Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`{` Sample response `JSON` format `{`
 
 ```json
-{
  "Path":"/xxx/",
  "TotalCount":100,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -634,7 +658,11 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
  "PageSize":10,
  "PageNumber":1,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "Instances":"rm-xxx",
    "GmtCreate":1756107183000,
    "Description":"test",
@@ -644,7 +672,6 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
    "CheckStatus":"NORMAL",
    "GmtModified":1756107183000,
    "CreateUid":"999999999"
-  }
 ```
 
 `],`
@@ -655,7 +682,6 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -666,6 +692,7 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
  <GmtCreate>1756107183000</GmtCreate>
  <Description>test</Description>
  <AccountId>999999999</AccountId>
+ <ProtectionGroupId>10</ProtectionGroupId>
  <ProtectionName>test</ProtectionName>
  <CheckStatus>NORMAL</CheckStatus>
  <GmtModified>1756107183000</GmtModified>
@@ -673,24 +700,9 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Protection GroupIds | Strin g | Body | Yes | 12 | The ID of the protection group. |
+#### 4.1.2 ListProtectionGroupStatistics
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
-| Success | Boolean | true | Indicates whether the request was successful. true: The request was successful. Failed: false. |
-| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
-| Message | String | success | The returned message. |
-| ErrorMessage | String | "" | The error message. |
-| ErrorCode | String | 500 | The error code. |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-#### ListProtectionGroupStatistics
-
-This operation queries overview information for a protection group, including the number of switches, involved products, instances, and the time of the last drill. Description
+This operation queries overview information for a protection group, including the number of switches, involved products, instances, and the time of the last drill.
 
 **Prerequisites**
 
@@ -708,9 +720,22 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Protection GroupIds | Strin g | Body | Yes | 12 | The ID of the protection group. |
+
 **Response parameters**
 
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+| Success | Boolean | true | Indicates whether the request was successful. true: The request was successful. Failed: false. |
+| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
+| Message | String | success | The returned message. |
+| ErrorMessage | String | "" | The error message. |
+| ErrorCode | String | 500 | The error code. |
+
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -733,7 +758,7 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 | - SwitchCheckC ount | Integer | 10 | The number of switchover checks. |
 | - RecoveryChec kCount | Integer | 10 | The number of recovery checks. |
 
-| A | psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
+| A | psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -748,13 +773,18 @@ POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 Request example
 
 ```
-POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1 { }
+POST /api/pop/v1/listProtectionGroupStatistics HTTP/1.1
 ```
 
-Sample success response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`{`
 
 ```json
-{
+"ProtectionGroupIds":"12"
+```
+
+Sample success response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -764,11 +794,14 @@ Sample success response `JSON` format ASR for Zone-disaster Recovery Apsara Stac
   "SwitchBackCheckCount":10,
   "CrashCount":10,
   "Instances":[
-   {
+```
+
+`{`
+
+```json
     "NormalCount":10,
     "Product":"RDS",
     "AbnormalCount":10
-   }
 ```
 
 `],`
@@ -784,16 +817,19 @@ Sample success response `JSON` format ASR for Zone-disaster Recovery Apsara Stac
   "DrillFailure":10,
   "RecoveryCheckCount":10,
   "DrillSuccess":10
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -819,9 +855,9 @@ Sample success response `JSON` format ASR for Zone-disaster Recovery Apsara Stac
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListProtectionGroupStatus
+#### 4.1.3 ListProtectionGroupStatus
 
-This operation lists the status of protection groups to check whether they are in a normal state. Description
+This operation lists the status of protection groups to check whether they are in a normal state.
 
 **Usage notes**
 
@@ -843,6 +879,8 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 |---|---|---|---|---|---|
 | Protection GroupIds | Strin g | Body | Yes | 10 | The ID of the protection group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Data | Array | {} | The returned data. |
@@ -858,31 +896,35 @@ POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 | Path | String | /xxx/ | The URI of the request. |
 | Cost | Long | 20 | The time consumed by the API call. Unit: milliseconds (ms). |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Response parameters**
-
 **Examples**
 
-Request example Apsara Stack Resilience ASR for Zone-disaster Recovery
+Request example
 
 ```
-POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1 { }
+POST /api/pop/v1/listProtectionGroupStatus HTTP/1.1
 ```
 
-Example of a successful response `JSON` format
+`{`
 
 ```json
-{
+"ProtectionGroupIds":"10"
+```
+
+Example of a successful response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "Status":"Normal",
    "ProtectionGroupId":10,
    "CanEdit":true
-  }
 ```
 
 `],`
@@ -893,7 +935,6 @@ Example of a successful response `JSON` format
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -901,19 +942,36 @@ Example of a successful response `JSON` format
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
  <Status>Normal</Status>
+ <ProtectionGroupId>10</ProtectionGroupId>
  <CanEdit>true</CanEdit>
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetProtectionGroup
+#### 4.1.4 GetProtectionGroup
 
-Retrieves the details of a protection group, including the products and instances that the group contains. Description
+Retrieves the details of a protection group, including the products and instances that the group contains.
 
 **Before you begin**
+
+This operation requires the ProtectionGroupId parameter. Call the ListProtectionGroup operation to retrieve a list of all protection groups. Then, find the ProtectionGroupId that corresponds to the name of your protection group.
+
+**Request headers**
+
+This operation uses common request headers and has no special request headers. For more information about common request parameters, see the corresponding document.
+
+**Request syntax**
+
+```
+POST /api/pop/v1/getProtectionGroup HTTP/1.1
+```
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Protection GroupId | Integ er | Body | Yes | 10 | The ID of the protection group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -926,19 +984,7 @@ Retrieves the details of a protection group, including the products and instance
 | Path | String | /xxx/xx | The URI of the request. |
 | Cost | Long | 30 | The time consumed by the API call. Unit: milliseconds (ms). |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience This operation requires the ProtectionGroupId parameter. Call the ListProtectionGroup operation to retrieve a list of all protection groups. Then, find the ProtectionGroupId that corresponds to the name of your protection group.
-
-**Request headers**
-
-This operation uses common request headers and has no special request headers. For more information about common request parameters, see the corresponding document.
-
-**Request syntax**
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc |
+| psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -962,7 +1008,7 @@ This operation uses common request headers and has no special request headers. F
 | -GmtModified | Long | 1756107183000 | The time when the group was last modified. |
 | -AccountId | String | 999999999 | The ID of the Alibaba Cloud account. |
 
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -975,13 +1021,18 @@ This operation uses common request headers and has no special request headers. F
 Request example
 
 ```
-{ }
+POST /api/pop/v1/getProtectionGroup HTTP/1.1
 ```
 
-Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"ProtectionGroupId":"10"
+```
+
+Response example `JSON` format `{`
+
+```json
  "Path":"/xxx/xx",
  "RequestId":"F0A8A039-930D-5EC1-97C8",
  "Message":"success",
@@ -990,7 +1041,11 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
   "Description":"test",
   "AccountId":"999999999",
   "Instances":[
-   {
+```
+
+`{`
+
+```json
     "MasterLocation":"cn-wulan-env10-amtest10000-a",
     "CheckTime":1635143903000,
     "InstanceId":"\"rm-xx\"",
@@ -1000,7 +1055,6 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
     "Info":"",
     "ZoneInfo":"cn-wulan-env10-amtest10000-a",
     "Result":"success"
-   }
 ```
 
 `],`
@@ -1012,16 +1066,19 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
   "CreateUid":"999999999",
   "Id":10,
   "CanEdit":true
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":30,
  "Success":true
-}
 ```
 
-`XML` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`XML` format
 
 ```xml
 <Path>/xxx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8</RequestId> <Message>success</Message> <Data>
@@ -1048,9 +1105,13 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>30</Cost> <Success>true</Success>
 ```
 
-#### CheckProductInstance
+#### 4.1.5 CheckProductInstance
 
-You can call this operation to check the status of a product instance and determine whether it supports a disaster recovery switchover. API description Before you call this operation, you must confirm which organization owns the instance to prevent unauthorized access. Alibaba Cloud Site Recovery (ASR) does not verify instance ownership.
+You can call this operation to check the status of a product instance and determine whether it supports a disaster recovery switchover. API description
+
+**Preparations**
+
+Before you call this operation, you must confirm which organization owns the instance to prevent unauthorized access. Alibaba Cloud Site Recovery (ASR) does not verify instance ownership.
 
 **Request headers**
 
@@ -1058,12 +1119,18 @@ This operation has no special request headers. For more information about common
 
 **Request syntax**
 
+```
+POST /api/pop/v1/checkProductInstance HTTP/1.1
+```
+
 **Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | CloudProd uct | Strin g | Body | Yes | RDS | The cloud product. |
 | InstanceId s | Strin g | Body | Yes | rm-2ze8g2am97624 | The instance ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1081,11 +1148,7 @@ This operation has no special request headers. For more information about common
 | --Available | Boolean | true | Indicates whether the instance is available. |
 | --Message | String | message | The returned message. |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-**Response parameters**
-
-| ASR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| ASR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1096,48 +1159,51 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 Request example
 
-```json
-{ "CloudProduct":"RDS", "InstanceIds":"rm-2ze8g2am97624" }
+```
+POST /api/pop/v1/checkProductInstance HTTP/1.1
 ```
 
-Successful response example `JSON` format
+`{`
 
 ```json
-{
+"CloudProduct":"RDS", "InstanceIds":"rm-2ze8g2am97624"
+```
+
+Successful response example `JSON` format `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8",
  "Message":"success",
  "Data":{
   "Instances":[
-   {
+```
+
+`{`
+
+```json
     "Message":"message",
     "InstanceId":"rm-2ze8g2am97624",
     "Available":true
-   }
 ```
 
 `],`
 
 ```json
   "CloudProduct":"RDS"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
-| Success | Boolean | true | The return status. true: The request was successful. false: The request failed. |
-| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8</RequestId> <Message>success</Message> <Data>
@@ -1150,9 +1216,13 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetZoneInfo
+#### 4.1.6 GetZoneInfo
 
-Retrieves information about the zones that are available when you create a recovery plan. Description You can also call this operation to retrieve information about the zones that are available when you create a protection group.
+Retrieves information about the zones that are available when you create a recovery plan.
+
+**Preparations**
+
+You can also call this operation to retrieve information about the zones that are available when you create a protection group.
 
 **Request headers**
 
@@ -1160,9 +1230,19 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+```
+POST /api/pop/v1/getZoneInfo HTTP/1.1
+```
+
 **Response data**
 
-| SR for Zone-disa | ster Recovery |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+| Success | Boolean | true | The return status. true: The request was successful. false: The request failed. |
+| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
+
+| SR for Zone-disa | ster Recovery |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1177,25 +1257,61 @@ This operation uses only common request headers. For more information, see Commo
 
 **Examples**
 
-Request example Successful response example `JSON` format
+Request example
+
+```
+POST /api/pop/v1/getZoneInfo HTTP/1.1
+```
+
+Successful response example `JSON` format `{`
 
 ```json
-{
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{
   "ZoneInfo":"cn-wulan-env10-amtest10000-a"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
+
+```xml
+<Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
+ <ZoneInfo>cn-wulan-env10-amtest10000-a</ZoneInfo>
+</Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
+```
+
+### 4.2 Drill plans
+
+#### 4.2.1 ListProcesses
+
+You can call this operation to list the steps in a recovery drill process and view details such as the process type, execution mode, and current status. API description
+
+**Preparations**
+
+This operation is used only for resource processing in upgrade scenarios. Customers must call the ListDrillProcesses operation instead. You can call this operation to query all processes or a specific process. To query all processes, do not specify any parameters. To query a specific process, specify the ProcessId parameter.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common parameters.
+
+**Request syntax**
+
+```
+POST /api/pop/v1/listProcesses HTTP/1.1
+```
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1204,35 +1320,15 @@ Request example Successful response example `JSON` format
 | Execution Mode | Strin g | Body | No | MANUAL | The execution mode. |
 | ProcessSt atus | Strin g | Body | No | EXECUTING | The status of the process. |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-```xml
-<Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
- <ZoneInfo>cn-wulan-env10-amtest10000-a</ZoneInfo>
-</Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
-```
-
-### Drill plans
-
-#### ListProcesses
-
-You can call this operation to list the steps in a recovery drill process and view details such as the process type, execution mode, and current status. API description This operation is used only for resource processing in upgrade scenarios. Customers must call the ListDrillProcesses operation instead. You can call this operation to query all processes or a specific process. To query all processes, do not specify any parameters. To query a specific process, specify the ProcessId parameter.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common parameters.
-
-**Request syntax**
-
-**Request parameters**
-
-| SR for Zone- Developer Gui | disaster R de·API re | ecovery ference |  |  | Apsara Stack Resilienc |
+| SR for Zone- Developer Gui | disaster R de·API re | ecovery ference |   |   | Apsara Stack Resilienc |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 100 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1251,9 +1347,7 @@ This operation uses only common request headers. For more information, see Commo
 | -StartTime | Long | 1756112392000 | The time when the process started. |
 | -EndTime | Long | 1756112392000 | The time when the process ended. |
 
-**Response parameters**
-
-| A | psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
+| A | psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1276,13 +1370,12 @@ This operation uses only common request headers. For more information, see Commo
 Sample request
 
 ```
-{ }
+POST /api/pop/v1/listProcesses HTTP/1.1
 ```
 
-Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`{` Sample response `JSON` format `{`
 
 ```json
-{
  "Path":"/xxx/",
  "TotalCount":100,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -1290,7 +1383,11 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
  "PageSize":10,
  "PageNumber":1,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "AccountId":"999999999",
    "EndTime":1756112392000,
    "ProcessStatus":"EXECUTING",
@@ -1305,7 +1402,6 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
    "PgId":10,
    "ProtectionName":"test",
    "ProcessId":5
-  }
 ```
 
 `],`
@@ -1316,10 +1412,9 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`XML` format
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1340,15 +1435,23 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListDrillProcesses
+#### 4.2.2 ListDrillProcesses
 
-This operation lists drill processes. The information returned includes the process type, execution mode, and current status. API details You can call this operation to query information about drill processes. To query all processes, do not specify any request parameters. To query a specific process, specify the ProcessId parameter.
+This operation lists drill processes. The information returned includes the process type, execution mode, and current status. API details
+
+**Preparations**
+
+You can call this operation to query information about drill processes. To query all processes, do not specify any request parameters. To query a specific process, specify the ProcessId parameter.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see the documentation about common request parameters.
 
 **Request syntax**
+
+```
+POST /api/pop/v1/listDrillProcesses HTTP/1.1
+```
 
 **Request parameters**
 
@@ -1360,6 +1463,8 @@ This operation uses only common request headers. For more information, see the d
 | ProcessSt atus | Strin g | Body | No | EXECUTING | The process status. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1374,11 +1479,7 @@ This operation uses only common request headers. For more information, see the d
 | - ExecutionMod e | String | MANUAL | The execution mode. |
 | -ProcessStatus | String | EXECUTING | The process status. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Response parameters**
-
-| A | psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
+| A | psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1402,16 +1503,15 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 **Examples**
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience Request example
+Request example
 
 ```
-{ }
+POST /api/pop/v1/listDrillProcesses HTTP/1.1
 ```
 
-Sample response `JSON` format
+`{` Sample response `JSON` format `{`
 
 ```json
-{
  "Path":"/xxx/",
  "TotalCount":100,
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
@@ -1419,7 +1519,11 @@ Sample response `JSON` format
  "PageSize":10,
  "PageNumber":1,
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "AccountId":"999999999",
    "EndTime":1756112392000,
    "ProcessStatus":"EXECUTING",
@@ -1434,7 +1538,6 @@ Sample response `JSON` format
    "PgId":1,
    "ProtectionName":"test",
    "ProcessId":5
-  }
 ```
 
 `],`
@@ -1445,15 +1548,9 @@ Sample response `JSON` format
  "Code":"200",
  "Cost":1000,
  "Success":true
-}
 ```
 
 `XML` format
-
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 ```xml
 <Path>/xxx/</Path> <TotalCount>100</TotalCount> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1474,9 +1571,9 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>1000</Cost> <Success>true</Success>
 ```
 
-#### CloseProcess
+#### 4.2.3 CloseProcess
 
-Call this operation to shut down a flow. You can shut down a flow after a recovery drill for a protection group is complete or shut it down early if an exception occurs. Description
+Call this operation to shut down a flow. You can shut down a flow after a recovery drill for a protection group is complete or shut it down early if an exception occurs.
 
 **Prerequisites**
 
@@ -1488,12 +1585,21 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
+```
+POST /api/pop/v1/closeProcess HTTP/1.1
+```
+
 **Request parameters**
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
 | IsForce | Boole an | Body | Yes | false | Specifies whether to forcibly shut down the flow. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1510,11 +1616,7 @@ This operation uses common request headers. No special request headers are requi
 | -ProcessAction | String | SWITCH | The drill action. |
 | -PlanId | Integer | 10 | The ID of the plan. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Response parameters**
-
-|  |  |  | ASR for Zone-disaster Recovery |
+|   |   |   | ASR for Zone-disaster Recovery |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1525,14 +1627,19 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 Sample request
 
-```json
-{ "ProcessId":"10", "IsForce":"false" }
+```
+POST /api/pop/v1/closeProcess HTTP/1.1
 ```
 
-Sample successful response `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10", "IsForce":"false"
+```
+
+Sample successful response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1541,13 +1648,16 @@ Sample successful response `JSON` format
   "ProcessType":"SWITCH",
   "PlanId":10,
   "ProcessId":"10"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -1561,25 +1671,9 @@ Sample successful response `JSON` format
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PlanId | Integ er | Body | Yes | 10 | The ID of the plan. |
+#### 4.2.4 CreateDrillProcess
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
-| Success | Boolean | true | The status of the response. true: The request was successful. The operation has not failed. |
-| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
-| Message | String | success | The returned message. |
-| ErrorMessage | String | "" | The error message. |
-| ErrorCode | String | 500 | The error code. |
-| Path | String | /xxx/ | The URI of the request. |
-
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-#### CreateDrillProcess
-
-This operation creates a drill process for a drill plan. After the process starts, you can perform a switchover of the protection group. Description
+This operation creates a drill process for a drill plan. After the process starts, you can perform a switchover of the protection group.
 
 **Prerequisites**
 
@@ -1591,11 +1685,29 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+```
+POST /api/pop/v1/createDrillProcess HTTP/1.1
+```
+
 **Request parameters**
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PlanId | Integ er | Body | Yes | 10 | The ID of the plan. |
 
 **Response parameters**
 
-| A | psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+| Success | Boolean | true | The status of the response. true: The request was successful. The operation has not failed. |
+| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
+| Message | String | success | The returned message. |
+| ErrorMessage | String | "" | The error message. |
+| ErrorCode | String | 500 | The error code. |
+| Path | String | /xxx/ | The URI of the request. |
+
+| A | psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1611,14 +1723,19 @@ This operation uses only common request headers. For more information, see Commo
 
 Request example
 
-```json
-{ "PlanId":"10" }
+```
+POST /api/pop/v1/createDrillProcess HTTP/1.1
 ```
 
-Response example `JSON` format
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+Response example `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1627,26 +1744,19 @@ Response example `JSON` format
   "ProcessType":"DRILL_RECOVERY",
   "PlanId":4,
   "ProcessId":"10"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ProcessId | Integ er | Body | Yes | 10 | The flow ID. |
-| TraceId | Strin g | Body | Yes | 1760325130967#rm- jp7lct7rd5l61b7t0#1#61 5E81E0-82CA-40C3- 8AC0-F002591EFC1C | The execution record ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1657,9 +1767,13 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetProcessTrace
+#### 4.2.5 GetProcessTrace
 
-You can call this operation to retrieve flow logs. It is primarily used to obtain the switchover logs for a protection group. Description You can call this operation to retrieve flow logs. Before you call this operation, you must obtain the ProcessId of the protection group switchover and the TraceId that is returned by the switchover operation.
+You can call this operation to retrieve flow logs. It is primarily used to obtain the switchover logs for a protection group.
+
+**Preparations**
+
+You can call this operation to retrieve flow logs. Before you call this operation, you must obtain the ProcessId of the protection group switchover and the TraceId that is returned by the switchover operation.
 
 **Request headers**
 
@@ -1667,9 +1781,21 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
+```
+POST /api/pop/v1/getProcessTrace HTTP/1.1
+```
+
 **Request parameters**
 
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ProcessId | Integ er | Body | Yes | 10 | The flow ID. |
+| TraceId | Strin g | Body | Yes | 1760325130967#rm- jp7lct7rd5l61b7t0#1#61 5E81E0-82CA-40C3- 8AC0-F002591EFC1C | The execution record ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1690,25 +1816,32 @@ This operation uses common request headers. No special request headers are requi
 | Path | String | /xxx/ | The URI of the request. |
 | Cost | Long | 20 | The time consumed by the operation. Unit: milliseconds (ms). |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery ASR for Zone-disaster Recovery Apsara Stack Resilience
-
 **Examples**
 
 Sample request
 
-```json
-{ "ProcessId":"10", "TraceId":"1760325130967#rm-jp7lct7rd5l61b7t0#1#615E81E0-82CA-40C3-8AC0-F002591EFC1C" }
+```
+POST /api/pop/v1/getProcessTrace HTTP/1.1
 ```
 
-Sample successful response `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10", "TraceId":"1760325130967#rm-jp7lct7rd5l61b7t0#1#615E81E0-82CA-40C3-8AC0-F002591EFC1C"
+```
+
+Sample successful response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":[
-  {
+```
+
+`{`
+
+```json
    "ActionType":"SWITCH",
    "GmtModified":1760325133000,
    "TraceId":"9A506E30-DA33-43D6-AACC-C3F85435D890",
@@ -1716,7 +1849,6 @@ Sample successful response `JSON` format
    "StepName":"dr service check",
    "GmtCreated":1760325133000,
    "StepMsg":"dr service status is good"
-  }
 ```
 
 `],`
@@ -1727,18 +1859,9 @@ Sample successful response `JSON` format
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
-
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
-| ProcessAc tion | Strin g | Body | Yes | SWITCH | The action of the flow. |
-| Step | Integ er | Body | Yes | 1 | The step number. |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -1752,9 +1875,13 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ExecuteProcess
+#### 4.2.6 ExecuteProcess
 
-Call this API to start a switchover flow that executes the steps for switchovers and failbacks within a protection group. API description Before you call this API, obtain the values for the ProcessId and ProcessAction parameters.
+Call this API to start a switchover flow that executes the steps for switchovers and failbacks within a protection group. API description
+
+**Preparations**
+
+Before you call this API, obtain the values for the ProcessId and ProcessAction parameters.
 
 **Request headers**
 
@@ -1762,7 +1889,17 @@ This API uses common request headers. No special request headers are required. F
 
 **Request syntax**
 
+```
+POST /api/pop/v1/executeProcess HTTP/1.1
+```
+
 **Request parameters**
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
+| ProcessAc tion | Strin g | Body | Yes | SWITCH | The action of the flow. |
+| Step | Integ er | Body | Yes | 1 | The step number. |
 
 **Response parameters**
 
@@ -1777,27 +1914,23 @@ This API uses common request headers. No special request headers are required. F
 | Path | String | /xxx/ | The URI of the request. |
 | Cost | Long | 20 | The time it takes to call the API. Unit: milliseconds (ms). |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
 **Examples**
 
 Request example
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH", "Step":"1" }
+```
+POST /api/pop/v1/executeProcess HTTP/1.1
 ```
 
-Response example `JSON` format
-
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
-| ProcessAc tion | Strin g | Body | Yes | SWITCH | The action type of the flow. |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH", "Step":"1"
+```
+
+Response example `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1806,7 +1939,6 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -1815,7 +1947,7 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateNextProcess
+#### 4.2.7 CreateNextProcess
 
 You can call this operation to move a drill flow to the next step.
 
@@ -1829,11 +1961,22 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
+```
+POST /api/pop/v1/createNextProcess HTTP/1.1
+```
+
 **Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
+| ProcessAc tion | Strin g | Body | Yes | SWITCH | The action type of the flow. |
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | IsForce | Boole an | Body | Yes | true | Specifies whether to force the operation. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1850,22 +1993,23 @@ This operation uses common request headers. No special request headers are requi
 | -ProcessAction | String | SWITCH | The action type of the flow. |
 | - ProtectionGrou pId | Integer | 6 | The ID of the protection group. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Response parameters**
-
 **Examples**
 
-Sample request Apsara Stack Resilience ASR for Zone-disaster Recovery
+Sample request
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH", "IsForce":"true" }
+```
+POST /api/pop/v1/createNextProcess HTTP/1.1
 ```
 
-Sample response `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH", "IsForce":"true"
+```
+
+Sample response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -1873,13 +2017,16 @@ Sample response `JSON` format
   "ProcessAction":"SWITCH",
   "ProtectionGroupId":6,
   "ProcessId":"10"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -1887,18 +2034,37 @@ Sample response `JSON` format
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
  <ProcessAction>SWITCH</ProcessAction>
+ <ProtectionGroupId>6</ProtectionGroupId>
  <ProcessId>10</ProcessId>
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetInstanceStatus
+#### 4.2.8 GetInstanceStatus
 
 You can call this operation to retrieve the status of an instance in a protection group. The status includes information such as the location of the primary node and the Recovery Point Objective (RPO). API description
+
+**Preparations**
+
+Before you call this operation, you must obtain the ProcessId of the drill flow.
+
+**Request headers**
+
+This operation uses only common request headers. No special request headers are required. For more information, see Common Request Parameters.
+
+**Request syntax**
+
+```
+POST /api/pop/v1/getInstanceStatus HTTP/1.1
+```
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
 | ProcessAc tion | Strin g | Body | Yes | SWITCH | The type of the flow. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1911,19 +2077,7 @@ You can call this operation to retrieve the status of an instance in a protectio
 | Path | String | /xxx/ | The URI of the request. |
 | Cost | Long | 20 | The time consumed by the API call, in milliseconds (ms). |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience Before you call this operation, you must obtain the ProcessId of the drill flow.
-
-**Request headers**
-
-This operation uses only common request headers. No special request headers are required. For more information, see Common Request Parameters.
-
-**Request syntax**
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack Resil | ience |  | ASR for Zone-disaster Recovery |
+| psara Stack Resil | ience |   | ASR for Zone-disaster Recovery |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1947,7 +2101,7 @@ This operation uses only common request headers. No special request headers are 
 | --Result | String | "" | The returned result. |
 | -- ConsumeTime | String | 120 | The time consumed. |
 
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1970,20 +2124,29 @@ This operation uses only common request headers. No special request headers are 
 
 Sample request
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH" }
+```
+POST /api/pop/v1/getInstanceStatus HTTP/1.1
 ```
 
-Sample response `JSON` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH"
+```
+
+Sample response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{
   "InstanceActions":[
-   {
+```
+
+`{`
+
+```json
     "ProcessAction":"RECOVERY_CHECK",
     "SyncDelay":"{<br/>            \"value\": \"0\",<br/>            \"status\":
 true<br/> }",
@@ -1995,10 +2158,13 @@ true<br/> }",
     "Product":"RDS",
     "Step":1,
     "FailoverType":[
-     {
+```
+
+`{`
+
+```json
       "value":"AUTOMATIC",
       "info":"AutomaticFailover"
-     }
 ```
 
 `],`
@@ -2015,7 +2181,6 @@ true<br/> }",
     "Id":1,
     "SourceIdc":"amtest21",
     "ConsumeTime":"120"
-   }
 ```
 
 `],`
@@ -2028,7 +2193,11 @@ true<br/> }",
   "ConsumeTime":"120",
   "PrevActionStatus":"[]",
   "ActionStatus":"INIT"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"",
  "Code":"200",
@@ -2037,7 +2206,7 @@ true<br/> }",
 }<br/><br/><br/><br/><br/><br/>
 ```
 
-`XML` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2087,11 +2256,31 @@ true<br/> }",
   <Success>true</Success>
 ```
 
-#### GetProcessEntry
+#### 4.2.9 GetProcessEntry
+
+This operation retrieves information about the steps in a drill process, including the instance status, action status, and process steps. API description
+
+**Prerequisites**
+
+Before you call this operation, call the ListDrillPlan operation to obtain the PlanId of the drill plan.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request syntax**
+
+```
+POST /api/pop/v1/getProcessEntry HTTP/1.1
+```
+
+**Request parameters**
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PlanId | Integ er | Body | Yes | 10 | The ID of the drill plan. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2104,23 +2293,7 @@ true<br/> }",
 | Path | String | /xxx/ | The URI of the request. |
 | Cost | Long | 20 | The time it took to process the request. Unit: milliseconds (ms). |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery This operation retrieves information about the steps in a drill process, including the instance status, action status, and process steps. API description
-
-**Prerequisites**
-
-Before you call this operation, call the ListDrillPlan operation to obtain the PlanId of the drill plan.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request syntax**
-
-**Request parameters**
-
-**Response parameters**
-
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2144,7 +2317,7 @@ This operation uses only common request headers. For more information, see Commo
 | -- ConsumeTime | String | 120 | The time consumed. |
 | --TraceId | String | 9A506E30-DA33- 43D6-AACC- C3F85435D890 | The ID of the request record. |
 
-| psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc |
+| psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2167,7 +2340,7 @@ This operation uses only common request headers. For more information, see Commo
 | -ProcessStatus | String | FINISH | The process status. |
 | -CurrentStep | String | 1 | The current step. |
 
-| SR for Zone-disa | ster Recovery |  | Apsara Stack Resilienc |
+| SR for Zone-disa | ster Recovery |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2179,21 +2352,30 @@ This operation uses only common request headers. For more information, see Commo
 
 Sample request
 
-```json
-{ "PlanId":"10" }
+```
+POST /api/pop/v1/getProcessEntry HTTP/1.1
 ```
 
-Sample response `JSON` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+Sample response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
  "Data":{
   "ProcessAction":"RECOVERY_CHECK",
   "InstanceActions":[
-   {
+```
+
+`{`
+
+```json
     "ProcessAction":"SWITCH",
     "SyncDelay":"{<br/>            \"value\": \"0\",<br/>            \"status\":
 true<br/> }",
@@ -2214,7 +2396,6 @@ true<br/> }",
     "Id":1,
     "SourceIdc":"amtest21",
     "ConsumeTime":"120"
-   }
 ```
 
 `],`
@@ -2236,7 +2417,11 @@ true<br/> }",
   "CurrentStep":"1",
   "ProcessId":"1",
   "ConsumeTime":"120"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
@@ -2245,7 +2430,7 @@ true<br/> }",
 }<br/><br/><br/><br/><br/><br/><br/>
 ```
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience `XML` format
+`XML` format
 
 ```xml
 <Path>/xxx/</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2288,6 +2473,7 @@ RECOVERY_CHECK</ShowAction>
     <ActionStatus>NORMAL</ActionStatus>
     <ProcessType>DRILL_RECOVERY</ProcessType>
     <ActionUser>999999999</ActionUser>
+    <ProtectionGroupId>16</ProtectionGroupId>
     <SwitchDirection>amtest21-&gt;amtest22</SwitchDirection>
     <CurrentStep>1</CurrentStep>
     <ProcessId>1</ProcessId>
@@ -2298,28 +2484,18 @@ RECOVERY_CHECK</ShowAction>
    <Code>200</Code>
 ```
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PlanId | Integ er | Body | Yes | 10 | The ID of the plan. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
-| Success | Boolean | true | The status of the response. true: The request was successful. false: The request failed. |
-| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
-| Message | String | success | The returned message. |
-| ErrorMessage | String | "" | The error message. |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
 ```xml
    <Cost>20</Cost>
    <Success>true</Success>
 ```
 
-#### CreateDisasterRecoveryProcess
+#### 4.2.10 CreateDisasterRecoveryProcess
 
-Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario. Description Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario.
+Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario.
+
+**Preparations**
+
+Creates a fault recovery flow. After you create a protection group, you can call this operation to start the protection group flow for a fault scenario.
 
 **Request headers**
 
@@ -2333,9 +2509,21 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 
 **Request parameters**
 
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PlanId | Integ er | Body | Yes | 10 | The ID of the plan. |
+
 **Response parameters**
 
-| SR for Zone-disa | ster Recovery |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+| Success | Boolean | true | The status of the response. true: The request was successful. false: The request failed. |
+| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
+| Message | String | success | The returned message. |
+| ErrorMessage | String | "" | The error message. |
+
+| SR for Zone-disa | ster Recovery |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2353,14 +2541,19 @@ POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 
 Sample request
 
-```json
-POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1 { "PlanId":"10" }
+```
+POST /api/pop/v1/createDisasterRecoveryProcess HTTP/1.1
 ```
 
-Sample successful response `JSON` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+Sample successful response `JSON` format `{`
+
+```json
  "Path":"/xxx/",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -2369,13 +2562,16 @@ Sample successful response `JSON` format Apsara Stack Resilience ASR for Zone-di
   "ProcessType":"DRILL_RECOVER",
   "PlanId":18,
   "ProcessId":"16"
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -2389,9 +2585,13 @@ Sample successful response `JSON` format Apsara Stack Resilience ASR for Zone-di
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### CreateHdrReverse
+#### 4.2.11 CreateHdrReverse
 
-Switches an HDR protection group. Description This operation switches an HDR protection group. Before you switch the group, obtain information about its recovery drill flow.
+Switches an HDR protection group.
+
+**Preparations**
+
+This operation switches an HDR protection group. Before you switch the group, obtain information about its recovery drill flow.
 
 **Request header**
 
@@ -2399,12 +2599,20 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+```
+POST /api/pop/v1/createHdrReverse HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | Yes | 10 | The process ID. |
 | Product | Strin g | Body | Yes | HDR | The product name. |
 | InstanceId | Strin g | Body | Yes | "xxxx" | The instance name. |
 | RecoverOr iginal | Boole an | Body | Yes | true | Specifies whether to recover to the original host. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2417,24 +2625,23 @@ This operation uses only common request headers. For more information, see Commo
 | Path | String | /xxx/xxx | The URI of the request. |
 | Cost | Long | 20 | The time consumed by the API call, in milliseconds (ms). |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Request parameters**
-
-**Response data**
-
 **Examples**
 
-Sample request Apsara Stack Resilience ASR for Zone-disaster Recovery
+Sample request
 
-```json
-{ "ProcessId":"10", "Product":"HDR", "InstanceId":"xxxx", "RecoverOriginal":"true" }
+```
+POST /api/pop/v1/createHdrReverse HTTP/1.1
 ```
 
-Sample response `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10", "Product":"HDR", "InstanceId":"xxxx", "RecoverOriginal":"true"
+```
+
+Sample response `JSON` format `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -2443,7 +2650,6 @@ Sample response `JSON` format
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -2452,9 +2658,13 @@ Sample response `JSON` format
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### GetDrillPlan
+#### 4.2.12 GetDrillPlan
 
-Call this operation to retrieve the details of a drill plan. The details include the products, instances, and zones that are included in the plan. Description This operation requires the PlanId parameter. Before you call this operation, call the ListDrillPlan operation to obtain a list of drill plans. From the list, obtain the PlanId of the drill plan for which you want to retrieve details.
+Call this operation to retrieve the details of a drill plan. The details include the products, instances, and zones that are included in the plan.
+
+**Preparations**
+
+This operation requires the PlanId parameter. Before you call this operation, call the ListDrillPlan operation to obtain a list of drill plans. From the list, obtain the PlanId of the drill plan for which you want to retrieve details.
 
 **Request headers**
 
@@ -2462,9 +2672,17 @@ This operation uses common request headers and does not have any special request
 
 **Request syntax**
 
+```
+POST /api/pop/v1/getDrillPlan HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PlanId | Integ er | Body | Yes | 10 | The ID of the plan. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2482,13 +2700,7 @@ This operation uses common request headers and does not have any special request
 | --InstanceAlias | String | test | The alias of the instance. |
 | --Step | Integer | 1 | The step number. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack Resil | ience |  | ASR for Zone-disaster Recovery |
+| psara Stack Resil | ience |   | ASR for Zone-disaster Recovery |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2517,20 +2729,23 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
 | -ExecuteCount | Integer | 10 | The number of executions. |
 | - RunningProces sId | Integer | 10 | The ID of the process that is being executed. |
 
-Apsara Stack Resilience
-
 **Examples**
 
 Request example
 
-```json
-{ "PlanId":"10" }
+```
+POST /api/pop/v1/getDrillPlan HTTP/1.1
 ```
 
-Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"PlanId":"10"
+```
+
+Response example `JSON` format `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -2549,40 +2764,49 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
   "Id":10,
   "NotInPlanInstanceCount":10,
   "PlanItems":[
-   {
+```
+
+`{`
+
+```json
     "Impacts":"\"product.drill.effect.RDS\"",
     "InstanceId":"rm-bp1162kryivb8****",
     "InstanceAlias":"test",
     "Product":"RDS",
     "Step":1,
     "FailoverType":[
-     {
+```
+
+`{`
+
+```json
       "value":"\"NONEED\"",
       "info":"\"InstancePrimaryZoneMissMatch\""
-     }
 ```
 
 `],`
 
 ```json
     "Info":"{}"
-   }
 ```
 
 `],`
 
 ```json
   "LastTime":1756110161000
- },
+```
+
+`},`
+
+```json
  "ErrorCode":"500",
  "ErrorMessage":"\"\"",
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
-`XML` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`XML` format
 
 ```xml
 <Path>/xxx/xxx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>
@@ -2594,6 +2818,7 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
  <GmtCreate>1756110161000</GmtCreate>
  <RunningProcessId>10</RunningProcessId>
  <InPlanInstanceCount>10</InPlanInstanceCount>
+ <ProtectionGroupId>10</ProtectionGroupId>
  <ProtectionGroupName>test</ProtectionGroupName>
  <ExecuteCount>10</ExecuteCount>
  <Id>10</Id>
@@ -2614,9 +2839,9 @@ Response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Rec
 </Data> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### ListDrillPlan
+#### 4.2.13 ListDrillPlan
 
-This operation lists drill plans. You can query for a plan by its name. The response includes details about each plan, such as its execution mode and the zone where the drill is performed. Description
+This operation lists drill plans. You can query for a plan by its name. The response includes details about each plan, such as its execution mode and the zone where the drill is performed.
 
 **Prerequisites**
 
@@ -2628,6 +2853,12 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+```
+POST /api/pop/v1/listDrillPlan HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | PlanId | Integ er | Body | No | 1 | The ID of the drill plan. |
@@ -2635,6 +2866,8 @@ This operation uses only common request headers. For more information, see Commo
 | Execution Mode | Strin g | Body | No | MANUAL | The execution mode. |
 | PageNum ber | Integ er | Body | No | 1 | The page number for the paged query. |
 | PageSize | Integ er | Body | No | 100 | The number of entries per page for the paged query. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2647,13 +2880,7 @@ This operation uses only common request headers. For more information, see Commo
 | - ExecutionMod e | String | MANUAL | The execution mode. |
 | -Zone | String | cn-wulan-env10- amtest10000-a | The zone. |
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-**Request parameters**
-
-**Response parameters**
-
-| A | SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc | e |
+| A | SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2675,20 +2902,23 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 **Examples**
 
-Sample request Apsara Stack Resilience ASR for Zone-disaster Recovery
+Sample request
 
 ```
-{ }
+POST /api/pop/v1/listDrillPlan HTTP/1.1
 ```
 
-Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resilience
+`{` Sample response `JSON` format `{`
 
 ```json
-{
   "Code": "200",
   "Data": {
     "Item": [
-      {
+```
+
+`{`
+
+```json
         "ExecutionMode": "MANUAL",
         "GmtCreate": 1759992973000,
         "GmtModified": 1759992973000,
@@ -2698,8 +2928,11 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
         "ProtectionGroupName": "123123",
         "RunningProcessId": 6,
         "Zone": "cn-wulan-env128-amtest217002-b"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ExecutionMode": "AUTOMATIC",
         "GmtCreate": 1759211078000,
         "GmtModified": 1759211078000,
@@ -2708,8 +2941,11 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
         "ProtectionGroupId": 3,
         "ProtectionGroupName": "bcmctest",
         "Zone": "cn-wulan-env128-amtest128001-a"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ExecutionMode": "MANUAL",
         "GmtCreate": 1757578962000,
         "GmtModified": 1757578962000,
@@ -2719,23 +2955,20 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
         "ProtectionGroupName": "es-ab",
         "RunningProcessId": 3,
         "Zone": "cn-wulan-env128-amtest128001-a"
-      }
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "Message": "success",
   "PageNumber": 1,
   "PageSize": 10,
   "RequestId": "AB3E6FFC-6467-4804-832C-E05E7C14D7A8",
   "Success": true,
   "TotalCount": 3
-}
 ```
 
-`XML` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`XML` format
 
 ```xml
 <Code>200</Code> <Data>
@@ -2745,6 +2978,7 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
   <GmtModified>1759992973000</GmtModified>
   <PlanId>6</PlanId>
   <PlanName>test</PlanName>
+  <ProtectionGroupId>4</ProtectionGroupId>
   <ProtectionGroupName>123123</ProtectionGroupName>
   <RunningProcessId>6</RunningProcessId>
   <Zone>cn-wulan-env128-amtest217002-b</Zone>
@@ -2755,6 +2989,7 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
   <GmtModified>1759211078000</GmtModified>
   <PlanId>4</PlanId>
   <PlanName>bcmctest</PlanName>
+  <ProtectionGroupId>3</ProtectionGroupId>
   <ProtectionGroupName>bcmctest</ProtectionGroupName>
   <Zone>cn-wulan-env128-amtest128001-a</Zone>
  </Item>
@@ -2764,6 +2999,7 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
   <GmtModified>1757578962000</GmtModified>
   <PlanId>3</PlanId>
   <PlanName>es</PlanName>
+  <ProtectionGroupId>2</ProtectionGroupId>
   <ProtectionGroupName>es-ab</ProtectionGroupName>
   <RunningProcessId>3</RunningProcessId>
   <Zone>cn-wulan-env128-amtest128001-a</Zone>
@@ -2771,18 +3007,32 @@ Sample response `JSON` format ASR for Zone-disaster Recovery Apsara Stack Resili
 </Data> <Message>success</Message> <PageNumber>1</PageNumber> <PageSize>10</PageSize> <RequestId>AB3E6FFC-6467-4804-832C-E05E7C14D7A8</RequestId> <Success>true</Success> <TotalCount>3</TotalCount>
 ```
 
-#### GetProcessCheck
+#### 4.2.14 GetProcessCheck
 
-You can call this operation to retrieve the check result of a flow execution. This check verifies the instance status before a switch. The result includes information such as synchronization latency, primary node location, and whether a drill action is involved. Description
+You can call this operation to retrieve the check result of a flow execution. This check verifies the instance status before a switch. The result includes information such as synchronization latency, primary node location, and whether a drill action is involved.
 
 **Prerequisites**
 
 Before calling this operation, make sure that the drill plan flow exists. You can call the ListProcesses operation to obtain the ProcessId from the list of flows.
 
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see the documentation for common request parameters.
+
+**Request syntax**
+
+```
+POST /api/pop/v1/getProcessCheck HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | Yes | 10 | The ID of the drill flow. |
 | ProcessAc tion | Strin g | Body | Yes | SWITCH | The type of the flow action. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2796,19 +3046,7 @@ Before calling this operation, make sure that the drill plan flow exists. You ca
 | Cost | Long | 20 | The time it took to process the request, in milliseconds (ms). |
 | Data | Struct | {} | The returned data. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see the documentation for common request parameters.
-
-**Request syntax**
-
-**Request parameters**
-
-**Response parameters**
-
-| A | psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
+| A | psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2832,7 +3070,7 @@ This operation uses common request headers. No special request headers are requi
 | --Result | String | “” | The returned result. |
 | -- ConsumeTime | String | 120 | The time consumed. |
 
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2855,14 +3093,19 @@ This operation uses common request headers. No special request headers are requi
 
 Request example
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH" }
+```
+POST /api/pop/v1/getProcessCheck HTTP/1.1
 ```
 
-Successful response example `JSON` format Apsara Stack Resilience ASR for Zone-disaster Recovery
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH"
+```
+
+Successful response example `JSON` format `{`
+
+```json
   "Code": "200",
   "Data": {
     "ActionStatus": "SUCCESS",
@@ -2871,7 +3114,11 @@ Successful response example `JSON` format Apsara Stack Resilience ASR for Zone-d
     "EndTime": 1760323989000,
     "InstanceActions": {
       "InstanceAction": [
-        {
+```
+
+`{`
+
+```json
           "ActionId": 12,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -2880,7 +3127,11 @@ Successful response example `JSON` format Apsara Stack Resilience ASR for Zone-d
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 12,
           "Info": {},
           "InstanceAlias": "rds-mysql80-classic",
@@ -2888,7 +3139,11 @@ Successful response example `JSON` format Apsara Stack Resilience ASR for Zone-d
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "SWITCH_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -2898,11 +3153,19 @@ Successful response example `JSON` format Apsara Stack Resilience ASR for Zone-d
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1760323988819#rm-jp7r3459uq299j520#1#4F19DE7F-67E5-4F6C-AA06-
 75CBB5DC7C65",
           "ZoneInfo": {
@@ -2911,18 +3174,13 @@ Successful response example `JSON` format Apsara Stack Resilience ASR for Zone-d
               "cn-wulan-env128-amtest217002-b"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-          }
-        },
-        {
           "ActionId": 12,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
 ```
-
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 ```json
           "DestIdc": "amtest217",
@@ -2930,7 +3188,11 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 13,
           "Info": {},
           "InstanceAlias": "mysql-80-vpc",
@@ -2938,7 +3200,11 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "SWITCH_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -2948,11 +3214,19 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1760323988819#rm-jp72fab594a0x427u#1#4F19DE7F-67E5-4F6C-AA06-
 75CBB5DC7C65",
           "ZoneInfo": {
@@ -2961,17 +3235,9 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
               "cn-wulan-env128-amtest217002-b"
 ```
 
-]
-
-```
-          }
-        }
-```
-
-]
+`]` `]` `},`
 
 ```json
-    },
     "PrevActionStatus": {
       "Item": [
         "{\"actionStatus\":\"finish\",\"actionType\":\"SWITCH_BACK_CHECK\"}",
@@ -2981,22 +3247,19 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
         "{\"actionStatus\":\"finish\",\"actionType\":\"RECOVERY_CHECK\"}"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ProcessStatus": "FINISH",
     "StartTime": 1760323989000
-  },
+```
+
+`},`
+
+```json
   "Message": "success",
   "RequestId": "4F19DE7F-67E5-4F6C-AA06-75CBB5DC7C65",
   "Success": true
-```
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
-```
-}
 ```
 
 `XML` format
@@ -3053,7 +3316,7 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
    <ConsumeTime>0</ConsumeTime>
 ```
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience /
+`/`
 
 ```xml
    <DestIdc>amtest217</DestIdc>
@@ -3107,27 +3370,18 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience /
  <ProcessStatus>FINISH</ProcessStatus>
 ```
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ProcessId | Integ er | Body | Yes | 10 | The ID of the recovery drill process. |
-| ProcessAc tion | Strin g | Body | Yes | SWITCH | The type of the process action. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
-| Success | Boolean | true | The status of the response. true: The request was successful. false: The request failed. |
-| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
 ```xml
  <StartTime>1760323989000</StartTime>
 </Data> <Message>success</Message> <RequestId>4F19DE7F-67E5-4F6C-AA06-75CBB5DC7C65</RequestId> <Success>true</Success>
 ```
 
-#### GetPrevProcess
+#### 4.2.15 GetPrevProcess
 
-This operation retrieves the status of the previous process in a recovery drill plan. It obtains information about the previous step but does not change the status of the process. Description Before calling this operation, confirm that the recovery drill plan process exists. Call the ListProcesses operation to obtain the ProcessId from the list of processes.
+This operation retrieves the status of the previous process in a recovery drill plan. It obtains information about the previous step but does not change the status of the process.
+
+**Preparations**
+
+Before calling this operation, confirm that the recovery drill plan process exists. Call the ListProcesses operation to obtain the ProcessId from the list of processes.
 
 **Request headers**
 
@@ -3135,11 +3389,26 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
+```
+POST /api/pop/v1/getPrevProcess HTTP/1.1
+```
+
 **Request parameters**
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ProcessId | Integ er | Body | Yes | 10 | The ID of the recovery drill process. |
+| ProcessAc tion | Strin g | Body | Yes | SWITCH | The type of the process action. |
 
 **Response parameters**
 
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
+| Success | Boolean | true | The status of the response. true: The request was successful. false: The request failed. |
+| Code | String | 200 | The status code. A value of 200 indicates that the call was successful. |
+
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | Message | String | success | The returned message. |
@@ -3180,9 +3449,7 @@ This operation uses common request headers. No special request headers are requi
 | -ProcessAction | String | RECOVERY CHECK _ | The process action. |
 | - ExecutionMod e | String | MANUAL | The execution pattern. |
 
-Apsara Stack Resilience
-
-| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |  | Apsara Stack Resilienc |
+| SR for Zone-disa Developer Guide·A | ster Recovery PI reference |   | Apsara Stack Resilienc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3204,20 +3471,23 @@ Apsara Stack Resilience
 
 Request example
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH" }
+```
+POST /api/pop/v1/getPrevProcess HTTP/1.1
 ```
 
-Successful response example `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH"
+```
+
+Successful response example `JSON` format `{`
+
+```json
   "Code": "200",
   "Data": {
 "ActionStatus":"SUCCESS",
 ```
-
-Apsara Stack Resilience ASR for Zone-disaster Recovery
 
 ```json
     ActionStatus: SUCCESS,
@@ -3228,7 +3498,11 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
     "ExecutionMode": "MANUAL",
     "InstanceActions": {
       "InstanceAction": [
-        {
+```
+
+`{`
+
+```json
           "ActionId": 19,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -3237,14 +3511,22 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 26,
           "InstanceAlias": "rds-mysql57-classic",
           "InstanceId": "rm-jp7lct7rd5l61b7t0",
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "SWITCH_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -3254,11 +3536,19 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1760324733966#rm-jp7lct7rd5l61b7t0#1#AD59B157-3B17-4C4B-A0BE-
 2A7772BABAD7",
           "ZoneInfo": {
@@ -3267,17 +3557,9 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
               "cn-wulan-env128-amtest217002-b"
 ```
 
-]
-
-```
-          }
-        }
-```
-
-]
+`]` `]` `},`
 
 ```json
-    },
     "PlanId": 6,
     "PrevActionStatus": {
       "Item": [
@@ -3285,10 +3567,9 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
         "{\"actionStatus\":\"process\",\"actionType\":\"SWITCH\"}"
 ```
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience ]
+`]` `},`
 
 ```json
-    },
     "ProcessAction": "SWITCH",
     "ProcessId": 6,
     "ProcessStatus": "EXECUTING",
@@ -3298,11 +3579,14 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience ]
     "StartTime": 1760324734000,
     "SwitchDirection": "amtest128->amtest217",
     "Zone": "cn-wulan-env128-amtest217002-b"
-  },
+```
+
+`},`
+
+```json
   "Message": "success",
   "RequestId": "DC9C8651-9890-423E-8056-8E81F0B95FEE",
   "Success": true
-}
 ```
 
 `XML` format
@@ -3344,8 +3628,6 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience ]
 <status>true</status>
 ```
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
 ```xml
     <status>true</status>
    </SyncDelay>
@@ -3372,6 +3654,7 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
  <ProcessId>6</ProcessId>
  <ProcessStatus>EXECUTING</ProcessStatus>
  <ProcessType>DRILL_RECOVERY</ProcessType>
+ <ProtectionGroupId>4</ProtectionGroupId>
  <ShowAction>SWITCH_CHECK</ShowAction>
  <StartTime>1760324734000</StartTime>
  <SwitchDirection>amtest128-&gt;amtest217</SwitchDirection>
@@ -3379,9 +3662,9 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 </Data> <Message>success</Message> <RequestId>DC9C8651-9890-423E-8056-8E81F0B95FEE</RequestId> <Success>true</Success>
 ```
 
-#### GetProcessDetail
+#### 4.2.16 GetProcessDetail
 
-Call this operation to retrieve the details of a flow. The details include the products and instances involved in the recovery plan, the switch direction, the current execution step, and the status of the preceding action. Description
+Call this operation to retrieve the details of a flow. The details include the products and instances involved in the recovery plan, the switch direction, the current execution step, and the status of the preceding action.
 
 **Prerequisites**
 
@@ -3391,10 +3674,20 @@ Before calling this operation, make sure that the recovery plan flow exists. Cal
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
+**Request syntax**
+
+```
+POST /api/pop/v1/getProcessDetail HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | Yes | 10 | The ID of the flow. |
 | ProcessAc tion | Strin g | Body | No | SWITCH | The type of the flow action. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3409,15 +3702,7 @@ This operation uses only common request headers. For more information, see Commo
 | Data | Struct | {} | The returned data. |
 | - PrevActionStat us | String | [] | The status of the preceding action. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Request syntax**
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack Resil | ience |  | ASR for Zone-disaster Recovery Developer Guide·API referenc |
+| psara Stack Resil | ience |   | ASR for Zone-disaster Recovery Developer Guide·API referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3460,8 +3745,6 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
 | -ShowAction | String | RECOVERY CHECK _ | The flow status displayed on the page. |
 | -ProcessStatus | String | FINISH | The status of the flow. |
 
-Apsara Stack Resilience
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -CurrentStep | String | 1 | The current step. |
@@ -3469,20 +3752,23 @@ Apsara Stack Resilience
 | -PlanId | Integer | 16 | The ID of the recovery plan. |
 | -Zone | String | cn-hangzhou-a | The zone of the recovery drill. |
 
-Apsara Stack Resilience
-
 **Examples**
 
 Request example
 
-```json
-{ "ProcessId":"10" }
+```
+POST /api/pop/v1/getProcessDetail HTTP/1.1
 ```
 
-Successful response example `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10"
+```
+
+Successful response example `JSON` format `{`
+
+```json
   "Code": "200",
   "Data": {
     "ActionStatus": "SUCCESS",
@@ -3493,7 +3779,11 @@ Successful response example `JSON` format
     "ExecutionMode": "AUTOMATIC",
     "InstanceActions": {
       "InstanceAction": [
-        {
+```
+
+`{`
+
+```json
           "ActionId": 16,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -3502,20 +3792,22 @@ Successful response example `JSON` format
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 20,
           "InstanceAlias": "rds-mysql80-classic",
           "InstanceId": "rm-jp7r3459uq299j520",
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-}
 ```
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
+`},`
 
 ```json
-          },
           "ProcessAction": "RECOVERY_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -3525,15 +3817,26 @@ ASR for Zone-disaster Recovery Apsara Stack Resilience
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "TraceId": "1759211487345#rm-jp7r3459uq299j520#1#E0C7141D-5EBB-4E80-8595-
 C16CF72D81C2"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "ActionId": 16,
           "ActionStatus": "NORMAL",
           "ConsumeTime": "0",
@@ -3542,14 +3845,22 @@ C16CF72D81C2"
           "FailoverType": {
             "info": "InstancePrimaryZoneMissMatch",
             "value": "NONEED"
-          },
+```
+
+`},`
+
+```json
           "Id": 21,
           "InstanceAlias": "mysql-80-vpc",
           "InstanceId": "rm-jp72fab594a0x427u",
           "MasterLocation": {
             "value": "cn-wulan-env128-amtest128001-a",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "ProcessAction": "RECOVERY_CHECK",
           "Product": "RDS",
           "Result": "",
@@ -3559,24 +3870,30 @@ C16CF72D81C2"
           "SyncDelay": {
             "value": "0",
             "status": true
-          },
+```
+
+`},`
+
+```json
           "SyncStatus": {
             "value": "CheckInfo.IncreaseReplica",
             "status": true
-          },
-          "TraceId": "1759211487345#rm-jp72fab594a0x427u#1#E0C7141D-5EBB-4E80-8595-
-C16CF72D81C2"
-        }
 ```
 
-]
+`},`
 
 ```json
-    },
+          "TraceId": "1759211487345#rm-jp72fab594a0x427u#1#E0C7141D-5EBB-4E80-8595-
+C16CF72D81C2"
+```
+
+`]` `},`
+
+```json
     "PlanId": 4,
 ```
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery a d: ,
+`a` `d``:` `,`
 
 ```json
     "PrevActionStatus": {
@@ -3588,10 +3905,9 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery a d: ,
         "{\"actionStatus\":\"finish\",\"actionType\":\"RECOVERY_CHECK\"}"
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "ProcessAction": "RECOVERY_CHECK",
     "ProcessId": 4,
     "ProcessStatus": "FINISH",
@@ -3601,11 +3917,14 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery a d: ,
     "StartTime": 1759211487000,
     "SwitchDirection": "amtest217->amtest128",
     "Zone": "cn-wulan-env128-amtest128001-a"
-  },
+```
+
+`},`
+
+```json
   "Message": "success",
   "RequestId": "FD418663-E79E-4196-AB7A-36922FC2D572",
   "Success": true
-}
 ```
 
 `XML` format
@@ -3639,8 +3958,6 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery a d: ,
    <ProcessAction>RECOVERY_CHECK</ProcessAction>
 <Prodct>RDS</Prodct>
 ```
-
-ASR for Zone-disaster Recovery Apsara Stack Resilience
 
 ```xml
    <Product>RDS</Product>
@@ -3700,8 +4017,6 @@ C16CF72D81C2</TraceId>
 {&quot;actionStatus&quot;:&quot;finish&quot;,&quot;actionType&quot;:&quot;SWITCHCHECK&qu
 ```
 
-Apsara Stack Resilience ASR for Zone-disaster Recovery
-
 ```xml
 {&quot;actionStatus&quot;:&quot;finish&quot;,&quot;actionType&quot;:&quot;SWITCH_CHECK&qu ;}</Item>
   <Item>
@@ -3717,6 +4032,7 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
  <ProcessId>4</ProcessId>
  <ProcessStatus>FINISH</ProcessStatus>
  <ProcessType>DRILL_RECOVERY</ProcessType>
+ <ProtectionGroupId>3</ProtectionGroupId>
  <ShowAction>RECOVERY_CHECK</ShowAction>
  <StartTime>1759211487000</StartTime>
  <SwitchDirection>amtest217-&gt;amtest128</SwitchDirection>
@@ -3724,9 +4040,9 @@ Apsara Stack Resilience ASR for Zone-disaster Recovery
 </Data> <Message>success</Message> <RequestId>FD418663-E79E-4196-AB7A-36922FC2D572</RequestId> <Success>true</Success>
 ```
 
-#### SwitchInstance
+#### 4.2.17 SwitchInstance
 
-You can call this operation to retry a switch to a disaster recovery instance for a protection group. The operation performs an instance switch or switchback based on the scenario in the drill plan. Description
+You can call this operation to retry a switch to a disaster recovery instance for a protection group. The operation performs an instance switch or switchback based on the scenario in the drill plan.
 
 **Prerequisites**
 
@@ -3738,6 +4054,10 @@ This operation uses common request headers. No special request headers are used.
 
 **Request syntax**
 
+```
+POST /api/pop/v1/switchInstance HTTP/1.1
+```
+
 **Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -3745,6 +4065,8 @@ This operation uses common request headers. No special request headers are used.
 | ProcessId | Integ er | Body | Yes | 10 | The flow ID. |
 | ProcessAc tion | Strin g | Body | Yes | SWITCH | The type of the flow action. |
 | InstanceId s | Strin g | Body | Yes | rm-hg30ps8hg9vtcqf71r | The instance ID. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3757,22 +4079,23 @@ This operation uses common request headers. No special request headers are used.
 | Path | String | /xx/xx | The URI of the request. |
 | Cost | Long | 20 | The time consumed by the API call. Unit: milliseconds (ms). |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Response data**
-
 **Examples**
 
-Request example Apsara Stack Resilience ASR for Zone-disaster Recovery
+Request example
 
-```json
-{ "ProcessId":"10", "ProcessAction":"SWITCH", "InstanceIds":"rm-hg30ps8hg9vtcqf71r" }
+```
+POST /api/pop/v1/switchInstance HTTP/1.1
 ```
 
-Successful response example `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"10", "ProcessAction":"SWITCH", "InstanceIds":"rm-hg30ps8hg9vtcqf71r"
+```
+
+Successful response example `JSON` format `{`
+
+```json
  "Path":"/xx/xx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -3781,7 +4104,6 @@ Successful response example `JSON` format
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format
@@ -3790,9 +4112,13 @@ Successful response example `JSON` format
 <Path>/xx/xx</Path> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <ErrorCode>500</ErrorCode> <ErrorMessage>&quot;&quot;</ErrorMessage> <Code>200</Code> <Cost>20</Cost> <Success>true</Success>
 ```
 
-#### SetProcessSwitchStep
+#### 4.2.18 SetProcessSwitchStep
 
-This API is used to skip a failed batch and proceed to the next one during a manual batch switchover for a protection group. Description Before you call this API, call the GetProcessDetail operation to obtain the ProcessId and ProcessAction. You must also confirm the current failed switchover step.
+This API is used to skip a failed batch and proceed to the next one during a manual batch switchover for a protection group.
+
+**Preparations**
+
+Before you call this API, call the GetProcessDetail operation to obtain the ProcessId and ProcessAction. You must also confirm the current failed switchover step.
 
 **Request headers**
 
@@ -3800,11 +4126,19 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
+```
+POST /api/pop/v1/setProcessSwitchStep HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProcessId | Integ er | Body | Yes | 22 | The process ID. |
 | ProcessAc tion | Strin g | Body | Yes | SWITCH | The type of process action. |
 | Step | Integ er | Body | Yes | 2 | The step. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3818,24 +4152,23 @@ This operation uses common request headers. No special request headers are requi
 | Cost | Long | 20 | The time it took to process the request. Unit: milliseconds (ms). |
 | Data | Integer | 2 | The returned data. |
 
-ASR for Zone-disaster Recovery Apsara Stack Resilience
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
-Request example Apsara Stack Resilience ASR for Zone-disaster Recovery
+Request example
 
-```json
-{ "ProcessId":"22", "ProcessAction":"SWITCH", "Step":"2" }
+```
+POST /api/pop/v1/setProcessSwitchStep HTTP/1.1
 ```
 
-Response example `JSON` format
+`{`
 
 ```json
-{
+"ProcessId":"22", "ProcessAction":"SWITCH", "Step":"2"
+```
+
+Response example `JSON` format `{`
+
+```json
  "Path":"/xxx/xxx",
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Message":"success",
@@ -3845,7 +4178,6 @@ Response example `JSON` format
  "Code":"200",
  "Cost":20,
  "Success":true
-}
 ```
 
 `XML` format

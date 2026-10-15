@@ -3,16 +3,22 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Product Introduction 20260
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Product Introduction 20260831.pdf"
+source_pdf: "dca6eec20ce55fd7_Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20IDaaS%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 IDaaS Product Introduction 20260831
 
+## Table of Contents
+
+- 1 What is IDaaS?
+- 2 Terms
+- 3 Scenarios
+
 aS?
 
-## What is IDaaS?
+## 1 What is IDaaS?
 
 Identity as a Service (IDaaS) is a cloud-based identity and access management (IAM) service that supports various all-in-one services, including organizational structure management, account lifecycle management, and single sign-on (SSO). IDaaS is ideal for connecting enterprise identity and access management (EIAM) systems and multi-account systems. It helps you improve the efficiency and security of identity management.
 
@@ -39,7 +45,7 @@ applications. This avoids repetitive permission configuration and O&M operations
 **Connect different account systems**: IDaaS account systems can be integrated with
 applications and enterprise contacts. You can also use IDaaS as an EIAM system or as a centralized system that connects different account systems. IDaaS not only provides powerful identity management features, but also ensures high system availability and security. IDaaS is an efficient and secure EIAM service for connecting different account systems and managing identities. IDaaS is an ideal service for such scenarios.
 
-## Terms
+## 2 Terms
 
 **IDaaS terms**
 
@@ -233,7 +239,7 @@ An OTP is a dynamic password that is valid for only one time. The most common ty
 
 IDaaS Application Portal is the page on which you can initiate SSO to all applications.
 
-## Scenarios
+## 3 Scenarios
 
 Identity as a Service (IDaaS) allows you to break down identity silos and manage the lifecycle of application accounts in different departments and organizations for centralized access control. Enterprise members can use one account to access all applications. ​ This topic describes some common scenarios of IDaaS.
 

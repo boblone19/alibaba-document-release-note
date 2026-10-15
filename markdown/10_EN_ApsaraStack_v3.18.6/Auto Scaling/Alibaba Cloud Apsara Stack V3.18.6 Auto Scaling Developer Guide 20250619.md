@@ -2,16 +2,155 @@
 title: "Auto Scaling Developer Guide 20250619"
 product_version: "V3.18.6"
 pdf_pages: 420
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Developer Guide 20250619.pdf"
+source_pdf: "0517f54106b09eb9_Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Developer Guide 20250619.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%20ESS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Auto%20Scaling%20Developer%20Guide%2020250619.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Auto Scaling Developer Guide 20250619
 
-## Getting started
+## Table of Contents
 
-### Apsara Stack documentation
+- 1 Getting started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Process of API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about API operations
+  - 2.3 Obtain AccessKey credentials
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain Auto Scaling SDKs
+- 3 Examples of using Auto Scaling SDK for Java
+  - 3.1 Getting started
+  - 3.2 Work with Auto Scaling SDK for Java
+    - 3.2.1 Install Auto Scaling SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Use Auto Scaling SDK for Java to initiate requests
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples of Auto Scaling SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use Auto Scaling SDK for Python
+    - 4.2.1 Install Auto Scaling SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Use Auto Scaling SDK for Python to initiate requests
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Examples of using Auto Scaling SDK for Go
+  - 5.1 Getting started
+  - 5.2 Work with Auto Scaling SDK for Go
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API Reference
+  - 6.1 API usage instructions
+  - 6.2 Make API requests
+  - 6.3 Request structure
+  - 6.4 Common parameters
+  - 6.5 Responses
+    - 6.5.1 Successful response examples
+    - 6.5.2 Sample error responses
+  - 6.6 Request signatures
+  - 6.7 Scaling groups
+    - 6.7.1 CreateScalingGroup
+    - 6.7.2 ModifyScalingGroup
+    - 6.7.3 EnableScalingGroup
+    - 6.7.4 DisableScalingGroup
+    - 6.7.5 DeleteScalingGroup
+    - 6.7.6 DescribeScalingGroups
+    - 6.7.7 DescribeScalingInstances
+    - 6.7.8 DescribeScalingActivityDetail
+    - 6.7.9 DescribeScalingActivities
+    - 6.7.10 AttachDBInstances
+    - 6.7.11 DetachDBInstances
+    - 6.7.12 SetGroupDeletionProtection
+    - 6.7.13 ResumeProcesses
+    - 6.7.14 SuspendProcesses
+    - 6.7.15 AttachVServerGroups
+    - 6.7.16 DetachVServerGroups
+    - 6.7.17 AttachAlbServerGroups
+    - 6.7.18 DetachAlbServerGroups
+    - 6.7.19 AttachLoadBalancers
+    - 6.7.20 DetachLoadBalancers
+  - 6.8 Scaling configurations
+    - 6.8.1 CreateScalingConfiguration
+    - 6.8.2 DescribeScalingConfigurations
+    - 6.8.3 ModifyScalingConfiguration
+    - 6.8.4 DeleteScalingConfiguration
+    - 6.8.5 CreateEciScalingConfiguration
+    - 6.8.6 DescribeEciScalingConfigurations
+    - 6.8.7 ModifyEciScalingConfiguration
+    - 6.8.8 DeleteEciScalingConfiguration
+  - 6.9 Scaling rules
+    - 6.9.1 CreateScalingRule
+    - 6.9.2 ModifyScalingRule
+    - 6.9.3 DescribeScalingRules
+    - 6.9.4 DeleteScalingRule
+  - 6.10 Scaling tasks
+    - 6.10.1 ExecuteScalingRule
+    - 6.10.2 ScaleWithAdjustment
+    - 6.10.3 AttachInstances
+    - 6.10.4 RemoveInstances
+    - 6.10.5 DetachInstances
+  - 6.11 Scheduled tasks
+    - 6.11.1 CreateScheduledTask
+    - 6.11.2 ModifyScheduledTask
+    - 6.11.3 DescribeScheduledTasks
+    - 6.11.4 DeleteScheduledTask
+  - 6.12 Event-triggered tasks
+    - 6.12.1 CreateAlarm
+    - 6.12.2 DescribeAlarms
+    - 6.12.3 ModifyAlarm
+    - 6.12.4 EnableAlarm
+    - 6.12.5 DisableAlarm
+    - 6.12.6 DeleteAlarm
+  - 6.13 Lifecycle hooks
+    - 6.13.1 CreateLifecycleHook
+    - 6.13.2 ModifyLifecycleHook
+    - 6.13.3 RecordLifecycleActionHeartbeat
+    - 6.13.4 DescribeLifecycleHooks
+    - 6.13.5 DescribeLifecycleActions
+    - 6.13.6 CompleteLifecycleAction
+    - 6.13.7 DeleteLifecycleHook
+  - 6.14 Notification rules
+    - 6.14.1 CreateNotificationConfiguration
+    - 6.14.2 ModifyNotificationConfiguration
+    - 6.14.3 DescribeNotificationConfigurations
+    - 6.14.4 DescribeNotificationTypes
+    - 6.14.5 DeleteNotificationConfiguration
+  - 6.15 Instances
+    - 6.15.1 EnterStandby
+    - 6.15.2 ExitStandby
+    - 6.15.3 SetInstancesProtection
+    - 6.15.4 SetInstanceHealth
+    - 6.15.5 RebalanceInstances
+  - 6.16 Regions
+    - 6.16.1 DescribeRegions
+  - 6.17 Tags
+    - 6.17.1 TagResources
+    - 6.17.2 ListTagResources
+    - 6.17.3 UntagResources
+    - 6.17.4 ListTagKeys
+    - 6.17.5 ListTagValues
+  - 6.18 Others
+    - 6.18.1 DescribeLimitation
+  - 6.19 Error codes
+    - 6.19.1 Client errors
+    - 6.19.2 Server errors
+  - 6.20 Ensure idempotence
+- 7 Appendixes
+  - 7.1 STS overview
+    - 7.1.1 What is STS?
+    - 7.1.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to find the required documentation when you call an API operation of an Apsara Stack service.
 
@@ -34,15 +173,11 @@ use.
 want to view.
 5. In the product documentation section, click **View Details** or **Download PDF**.
 
-### Process of API calls
+### 1.2 Process of API calls
 
 Apsara Stack allows you to call API operations by using the Portable OpenAPI Proxy (POP) gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud Public Cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called by using the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
 **Flowchart**
-
-|  | Note When you call the required API operations, we recommend that you specify the <x- acs-organizationid> and <x-acs-resourcegroupid> headers to narrow down the query scope for exact search. If you do not specify the <x-acs-organizationid> header, the organization of the current user is returned by default. If you do not specify the <x-acs-resourcegroupid> header, null is returned by default. If you specify this header, you must also specify the <x-acs- organizationid> header. |
-|---|---|
-|  | acs-organizationid> |
 
 **Procedure**
 
@@ -56,14 +191,19 @@ We recommend that you use the AccessKey credentials of a personal account to cal
 For information about how to obtain the region ID, see Obtain the endpoint of Auto Scaling.
 3. Obtain the organization ID and resource set ID.
 For information about how to obtain an organization ID by calling an API operation, see the GetOrganizationList topic in Apsara Uni-manager Management Console Developer Guide. For information about how to obtain a resource set ID by calling an API operation, see the Li stResourceGroup topic in Apsara Uni-manager Management Console Developer Guide.
+
+|   | Note When you call the required API operations, we recommend that you specify the <x- acs-organizationid> and <x-acs-resourcegroupid> headers to narrow down the query scope for exact search. If you do not specify the <x-acs-organizationid> header, the organization of the current user is returned by default. If you do not specify the <x-acs-resourcegroupid> header, null is returned by default. If you specify this header, you must also specify the <x-acs- organizationid> header. |
+|---|---|
+|   | acs-organizationid> |
+
 4. Obtain the API references.
 You can refer to the developer guide of the cloud service that you want to use to learn the features of API operations and how to call the API operations. For more information, see Usage notes on development documentation.
 5. Obtain the endpoint of the cloud service.
 6. Obtain the cloud service SDK and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -87,7 +227,7 @@ Obtain the username and password for the Apsara Uni-manager Management Console f
 3. Click **Account Logon**.
 4. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### View the information about
+### 2.2 View the information about API operations
 
 **API operations**
 
@@ -99,14 +239,9 @@ You must obtain a service name, API operation name, and API version. All the inf
 2. In the left-side navigation pane, click **API fold**.
 3. On the **API Directory** page, select the target service from the drop-down list, enter the API
 operation name in the search box, and then click the search icon.
-
-| Request header | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. Example: cn-hangzhou-****. |
-
 4. View and remember the service name, API operation name, and API version.
 
-### Obtain AccessKey credentials
+### 2.3 Obtain AccessKey credentials
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You must use one of the preceding types of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain AccessKey credentials that are assigned by RAM.
 
@@ -117,6 +252,10 @@ The AccessKey ID and AccessKey secret contained in AccessKey credentials are use
 **Warning**
 
 The AccessKey credentials of a personal account are managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey credentials of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+
+| Request header | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. Example: cn-hangzhou-****. |
 
 | x-acs-organizationid | The ID of the organization in the Apsara Uni-manager Management Console. For more information about how to obtain organization IDs, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
 |---|---|
@@ -146,7 +285,7 @@ credentials you want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey credentials of the organization.
 
-### Obtain an STS AccessKey 3-
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 **tuple**
 
@@ -170,7 +309,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role 
 
 In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourRoleSessionName>: Replace the variable parameter with the name of your session. <yourRoleArn>: Replace the variable parameter with the ARN of your RAM role. "sts.aliyuns.com": Replace the variable parameter with the endpoint of STS.
 
-```java
+```xml
 public static void main(String[] args) {
     // Create and initialize a DefaultAcsClient instance.
     // Specify the region ID, AccessKey ID, and AccessKey secret.
@@ -189,7 +328,12 @@ public static void main(String[] args) {
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the endpoint of STS. The format of an STS endpo
 int is sts-vpc.${global:region}.${global:internet-domain}.
@@ -213,21 +357,21 @@ eding step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the STS AccessKey 3-tuple to call an API operation of a cloud service. The following
 sample code provides an example on how to call the CreateScalingGroup operation of Auto Scaling.
 
 **Note**
 
 In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourStsAccesskeyID>: Replace the variable parameter with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace the variable parameter with your STS AccessKey secret. <yourStsToken>. Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID.
-
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. For more information about how to obtain region IDs, see Obtain a region ID. |
 
 ```java
 public static void main(String[] args) {
@@ -266,25 +410,26 @@ tained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
 ```
 
-### Obtain the values of common
+`}`
+
+### 2.5 Obtain the values of common header parameters
 
 **header parameters**
 
 You must specify multiple header parameters when you call Apsara Stack API operations. This topic describes the common header parameters and how to obtain the values of the parameters. This topic also describes the return values of specific parameters after you call API operations.
 
+**Header parameters**
+
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. For more information about how to obtain region IDs, see Obtain a region ID. |
+
 | x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see Obtain an organization ID. |
 |---|---|
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see Obtain a resource set ID. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. For more information about how to obtain instance IDs, see Obtain an instance ID. |
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-| DepartmentName | The name of the organization. |
 
 **Obtain a region ID**
 
@@ -316,35 +461,54 @@ You can obtain the ID of an instance in the cloud service console of the Apsara 
 
 The following table describes the additional response parameters returned by default when you call operations to query the instances of cloud services.
 
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+| DepartmentName | The name of the organization. |
+
 | Department | The ID of the organization. |
 |---|---|
 
-### Obtain Auto Scaling SDKs
+### 2.6 Obtain Auto Scaling SDKs
 
 When you call Auto Scaling API operations by using the Portable OpenAPI Proxy (POP) gateway, you must obtain Auto Scaling SDKs. This topic describes how to obtain Alibaba Cloud SDKs.
 
 **Background information**
 
-To use Auto Scaling SDKs, you must install Auto Scaling SDKs and Alibaba Cloud core libraries. For example, to use Auto Scaling SDK for Java, you must download aliyun-java-sdkess and aliyun-java-sdk-core. Auto Scaling SDKs encapsulate the API that was released on August 28, 2014. The SDKs identify callers based on the AccessKey credentials and provide features such as automatic signing. This way, you can call API operations to create and manage resources. Alibaba Cloud SDKs include code and examples. You can create cloud applications by using an SDK for the programming language that you require. We recommend that you use the SDK core library that is provided by Alibaba Cloud. The SDK core library is suitable for all cloud services and is compatible with Apsara Stack. Currently, SDKs for Java, Python, and Go are supported. You can go to the SDK Center to select the SDK version that meets your business requirements.
+To use Auto Scaling SDKs, you must install Auto Scaling SDKs and Alibaba Cloud core libraries. For example, to use Auto Scaling SDK for Java, you must download aliyun-java-sdkess and aliyun-java-sdk-core. Auto Scaling SDKs encapsulate the API that was released on August 28, 2014. The SDKs identify callers based on the AccessKey credentials and provide features such as automatic signing. This way, you can call API operations to create and manage resources. Alibaba Cloud SDKs include code and examples. You can create cloud applications by using an SDK for the programming language that you require. We recommend that you use the SDK core library that is provided by Alibaba Cloud. The SDK core library is suitable for all cloud services and is compatible with Apsara Stack.
+
+**Reference**
+
+Currently, SDKs for Java, Python, and Go are supported. You can go to the SDK Center to select the SDK version that meets your business requirements.
 
 **Important**
 
-We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system.
+We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. ng Auto Scaling SDK for Java
 
-## Examples of using Auto
+## 3 Examples of using Auto Scaling SDK for Java
 
 **Scaling SDK for Java**
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use Auto Scaling SDK for Java.
 
 **Prerequisites**
 
-An Apsara Stack tenant account that has the permissions on Auto Scaling SDK for Java and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The endpoint of Auto Scaling is obtained. For information about how to obtain the endpoint of Auto Scaling, see Obtain the endpoint of Auto Scaling. Java Development Kit (JDK) 1.8 or later is installed. SDKs for Java provided by Alibaba Cloudrequire JDK 1.8 or later. If you use Apache Maven to manage a Java project, you need to only import the JAR file to the pom.xml file of the project. To use an Auto Scaling SDK, you must install the SDK core library and the Auto Scaling SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, Auto Scaling SDK uses version 3.2.0. To use Auto Scaling SDK for Java, perform the following steps:
+An Apsara Stack tenant account that has the permissions on Auto Scaling SDK for Java and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The endpoint of Auto Scaling is obtained. For information about how to obtain the endpoint of Auto Scaling, see Obtain the endpoint of Auto Scaling. Java Development Kit (JDK) 1.8 or later is installed. SDKs for Java provided by Alibaba Cloudrequire JDK 1.8 or later.
+
+**Install Auto Scaling SDK for Java**
+
+If you use Apache Maven to manage a Java project, you need to only import the JAR file to the pom.xml file of the project. To use an Auto Scaling SDK, you must install the SDK core library and the Auto Scaling SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, Auto Scaling SDK uses version 3.2.0.
+
+**Use Auto Scaling SDK for Java**
+
+To use Auto Scaling SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
+ng Auto Scaling SDK for Java
 
 **Note**
 
@@ -381,19 +545,7 @@ cify the connection timeout period. Unit: milliseconds.
         clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>);    // Optional.
 ```
 
-g q
-
-```
-(
-```
-
-q
-
-```
-);
-```
-
-`//` p
+ng Auto Scaling SDK for Java `g` `q` `(` `q` ); `//` `p`
 
 ```
 Specify the maximum number of requests per host.
@@ -429,23 +581,26 @@ y specified resources.
         DescribeScalingGroupsResponse response;
         try {
             response = client.getAcsResponse(request);
-            }
+```
+
+`}`
+
+```
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
-        }
-     }
- }
 ```
 
-### Work with Auto Scaling SDK
+`}` `}` `}`
+
+### 3.2 Work with Auto Scaling SDK for Java
 
 **for Java**
 
-#### Install Auto Scaling SDK for Java
+#### 3.2.1 Install Auto Scaling SDK for Java
 
-This topic describes how to install and use Auto Scaling SDK for Java. Auto Scaling SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Auto Scaling SDK for Java by adding Maven dependencies or downloading the SDK. For more information, see Alibaba Cloud SDKs. To use the development tool kit of Auto Scaling, you must install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java. We recommend that you use the core library version 4.5.17 or later and Auto Scaling SDK for Java version 2.1.1. To install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java, you must add the following dependencies to the pom.xml file. For information about the specific SDK version, visit Alibaba Cloud SDKs.
+This topic describes how to install and use Auto Scaling SDK for Java. Auto Scaling SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Auto Scaling SDK for Java by adding Maven dependencies or downloading the SDK. For more information, see Alibaba Cloud SDKs. To use the development tool kit of Auto Scaling, you must install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java. We recommend that you use the core library version 4.5.17 or later and Auto Scaling SDK for Java version 2.1.1. To install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java, you must add the following dependencies to the pom.xml file. For information about the specific SDK version, visit Alibaba Cloud SDKs. ng Auto Scaling SDK for Java
 
 ```xml
 <!-- Alibaba Cloud SDK for Java --> <dependency>
@@ -459,7 +614,7 @@ This topic describes how to install and use Auto Scaling SDK for Java. Auto Scal
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Java supports authentication based on an AccessKey pair. For information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
@@ -479,9 +634,9 @@ ret.
 
 In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. ng Auto Scaling SDK for Java
 
 **Note**
 
@@ -509,7 +664,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Use Auto Scaling SDK for Java to
+#### 3.2.4 Use Auto Scaling SDK for Java to initiate requests
 
 **initiate requests**
 
@@ -517,6 +672,7 @@ This topic describes how to use Auto Scaling SDK for Java to initiate a request.
 
 **Procedure**
 
+ng Auto Scaling SDK for Java
 1. Create an AcsClient.
 
 ```
@@ -533,16 +689,17 @@ CreateScalingGroupRequest request = new CreateScalingGroupRequest(); // Service-
 3. Initiate the request and handle the response.
 
 ```java
-CreateScalingGroupRequest request = new CreateScalingGroupRequest(); request.setRegionId("cn-hangzhou"); request.setMinSize("0"); request.setMaxSize(1); try { client.getCreateScalingGroupResponse(request);
+CreateScalingGroupRequest request = new CreateScalingGroupRequest(); request.setRegionId("cn-hangzhou"); request.setMinSize("0"); request.setMaxSize(1); try {
+    CreateScalingGroupResponse response =
+client.getCreateScalingGroupResponse(request);
     System.out.println(response.getScalingGroups());
 } catch (ServerException e) {
     e.printStackTrace();
 } catch (ClientException e) {
     e.printStackTrace();
-}
 ```
 
-In most cases, all response fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
+`}` In most cases, all response fields are deserialized into the response. You can call `response.getXXX()` to obtain the values of the response fields.
 
 ```java
 System.out.println(response.getScalingGroups());
@@ -554,9 +711,9 @@ If an exception occurs or if you require the original HTTP response, call `doAct
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
-If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
+If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. ng Auto Scaling SDK for Java `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
 ```
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
@@ -581,10 +738,11 @@ try {
     // For example, print the detailed error message.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-#### Use CommonRequest to call API
+`}`
+
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -598,7 +756,10 @@ and install SDKs of services.
 2. Easy to use: You can call the new API operations of a service without the need to update the
 SDK of the service.
 3. Fast iteration.
-If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of the parameters from the API references of cloud services. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You must obtain the value of the **Action** parameter and then use the `request.ApiName = "<Action>"` method to specify the name of the operation. For example, if the operation that you want to call is **DescribeScalingActivities**, specify the operation as `request.ApiName = "DescribeScalingActivities"` before you make the request by using CommonRequest.
+
+**Use CommonRequest**
+
+If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of the parameters from the API references of cloud services. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version ng Auto Scaling SDK for Java from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. You must obtain the value of the **Action** parameter and then use the `request.ApiName = "<Action>"` method to specify the name of the operation. For example, if the operation that you want to call is **DescribeScalingActivities**, specify the operation as `request.ApiName = "DescribeScalingActivities"` before you make the request by using CommonRequest.
 
 **Example: Call an RPC API operation**
 
@@ -609,7 +770,7 @@ In this example, the **CreateScalingGroup** API operation of Auto Scaling is use
 In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. <http://192.168.XX.XX:33XX>: Replace the variable parameter with the IP address and the port number of your proxy.
 
 ```java
-import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class CreateScalingGroup {
     public static void main(String[] args) {
         // Create a DefaultAcsClient instance and initialize the instance.
         DefaultProfile profile = DefaultProfile.getProfile(
@@ -627,7 +788,7 @@ AccessKey secret.
         Specify the IP address and the port number of the proxy.
 ```
 
-`*/`
+`*/` ng Auto Scaling SDK for Java
 
 ```
         profile.setHttpClientConfig(clientConfig);
@@ -671,22 +832,24 @@ he SecurityToken field in the request parameters.
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-## Call examples of Auto
+`}` `}` `}` f Auto Scaling SDK for Python
+
+## 4 Call examples of Auto Scaling SDK for Python
 
 **Scaling SDK for Python**
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain and use Auto Scaling SDK for Python.
 
 **Prerequisites**
 
 An Apsara Stack tenant account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain AccessKey credentials. The endpoint of Auto Scaling is obtained. For more information, see Obtain the endpoint of Auto Scaling.
+
+**Install Auto Scaling SDK for Python**
+
 1. Install the SDK core library.
 If you use Python 2.x.x, run the following command to install the core library:
 
@@ -713,11 +876,14 @@ If you use Python 3.x.x, run the following command to install Auto Scaling SDK f
 pip3 install aliyun-python-sdk-ess
 ```
 
+**Use Auto Scaling SDK for Python**
+
 In the following sample code, the **CreateScalingGroup** operation is used to describe how to use Auto Scaling SDK for Python to call an API operation.
 1. Create a client instance.
 When you create a client instance, you must obtain a region ID, AccessKey ID, and AccessKey secret.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and handle the response or exception.
+f Auto Scaling SDK for Python
 
 **Note**
 
@@ -734,16 +900,16 @@ product_name = 'ess' # Specify your service name. endpoint = '<ess.aliyuncs.com>
 # create client
 region_provider.modify_point(product_name, region_id, endpoint) clt = client.AcsClient(access_key, acces_secret, region_id)
 # setup request
-request.set_accept_format('json') # Specify the format of the response.
+request = CreateScalingGroupRequest() request.set_accept_format('json') # Specify the format of the response.
 # get response
 response = clt.do_action_with_exception(request) print response
 ```
 
-### Use Auto Scaling SDK for
+### 4.2 Use Auto Scaling SDK for Python
 
 **Python**
 
-#### Install Auto Scaling SDK for Python
+#### 4.2.1 Install Auto Scaling SDK for Python
 
 This topic describes how to install and use Auto Scaling SDK for Python.
 
@@ -753,7 +919,7 @@ Apsara Stack SDK for Python supports Python 2.7 and Python 3.x. You can install 
 
 **Note**
 
-To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use Auto Scaling SDK for Python, you must install the core library of Apsara Stack SDK for Python and Auto Scaling SDK for Python.
+To use the SDK of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use Auto Scaling SDK for Python, you must install the core library of Apsara Stack SDK for Python and Auto Scaling SDK for Python. f Auto Scaling SDK for Python
 
 **Procedure**
 
@@ -779,7 +945,7 @@ pip install aliyun-python-sdk-ess==2.3.19
 
 In the preceding code, the version of `aliyun-python-sdk-ess` is 2.3.19. You can replace the version with the latest one.
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Auto Scaling SDK for Python supports authentication based on AccessKey credentials. For information about how to obtain the AccessKey credentials, see Obtain AccessKey credentials. If you want to use your AccessKey credentials to access Apsara Stack, you must specify the AccessKey credentials as the authentication credentials when you initialize the client.
 
@@ -795,13 +961,9 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
-Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
-
-| python -c "import ssl" |  | command to check whethe |
-|---|---|---|
-| OpenSSL. If the |  |  |
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. f Auto Scaling SDK for Python
 
 **Note**
 
@@ -809,7 +971,13 @@ The default HTTP or HTTPS protocol of a service takes precedence over the global
 
 **Add OpenSSL support**
 
-OpenSSL support in Python is required for sending HTTPS requests by using SDK for Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later. If OpenSSL is not supported, run the following command to install it:
+OpenSSL support in Python is required for sending HTTPS requests by using SDK for Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later.
+
+| python -c "import ssl" |   | command to check whethe |
+|---|---|---|
+| OpenSSL. If the |   |   |
+
+in the command output, OpenSSL is supported. If OpenSSL is not supported, run the following command to install it:
 
 ```
 pip install pyopenssl# You need to use this command if you use Python 2 in your local e nvironment.
@@ -823,8 +991,8 @@ If you use Python 3 in your local environment, run the `pip3 install pyopenssl"`
 
 The following sample code provides an example on how to set HTTPS as the protocol for a request:
 
-```bash
-request.set_protocol_type("https")
+```java
+import DescribeInstancesRequest request = DescribeInstancesRequest() request.set_protocol_type("https")
 # Set the value to https or http.
 ```
 
@@ -837,7 +1005,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Use Auto Scaling SDK for Python to
+#### 4.2.4 Use Auto Scaling SDK for Python to initiate requests
 
 **initiate requests**
 
@@ -846,7 +1014,7 @@ This topic describes how to use Auto Scaling SDK for Python to initiate a reques
 **Procedure**
 
 1. Import the Auto Scaling SDK for Python.
-In the following code, the **DescribeScalingGroups** API operation is used.
+In the following code, the **DescribeScalingGroups** API operation is used. f Auto Scaling SDK for Python
 
 ```python
 from aliyunsdkcore import client from aliyunsdkcore.profile import region_provider from aliyunsdkess.request.v20140828 import DescribeScalingGroupsRequest
@@ -861,7 +1029,7 @@ client.region_provider.modify_point(product_name, region_id, endpoint) clt = cli
 3. Create a request.
 
 ```
-request.set_accept_format('json')
+request = DescribeScalingGroupsRequest() request.set_accept_format('json')
 ```
 
 4. Initiate a call and print the response.
@@ -870,7 +1038,7 @@ request.set_accept_format('json')
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -891,11 +1059,11 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 4.2.6 Use CommonRequest to call API operations
 
 **operations**
 
-If you want to call the API operations of Auto Scaling that do not provide an SDK or if the requests and responses do not meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations.
+If you want to call the API operations of Auto Scaling that do not provide an SDK or if the requests and responses do not meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations. f Auto Scaling SDK for Python
 
 **Benefits**
 
@@ -905,6 +1073,9 @@ and install SDKs of Apsara Stack services.
 2. Easy to use: You can call the new API operations of a service without the need to update the
 SDK of the service.
 3. Fast iteration.
+
+**Use CommonRequest**
+
 If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from Auto Scaling API References. Domain: the service endpoint. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the common parameters in the API documents. Operation information: the name of the API operation that you want to call. You must obtain the value of the **Action** parameter and then run `request.ApiName = "<Action>"` to specify the name of the operation. For example, if you want to call the **DescribeScalingActivities** operation, you must specify the operation as `request.ApiName = "DescribeScalingActivities"` before you send the request by using CommonRequest.
 
 **Example: Call an RPC API operation**
@@ -913,12 +1084,12 @@ In this example, the **CreateScalingGroup** API operation of Auto Scaling is use
 
 **Note**
 
-In the following code, replace the variable parameters with your actual values. Delete the angle brackets <> in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. <your-endpoint>: Replace the variable parameter with the endpoint of your service.
+In the following code, replace the variable parameters with your actual values. Delete the angle brackets <> in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. <your-endpoint>: Replace the variable parameter with the endpoint of your service. f Auto Scaling SDK for Python
 
 ```python
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest
 # Specify the AccessKey ID, AccessKey secret, the region ID.
-client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('ess') request.set_version('2014-08-28') request.set_domain('<ess.aliyuncs.com>') # Specify the endpoint of the service.
+client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('ess') request.set_action_name('CreateScalingGroup') request.set_version('2014-08-28') request.set_domain('<ess.aliyuncs.com>') # Specify the endpoint of the service.
 # or:
 # request = = CommonRequest(product='ess',
 action_name='CreateScalingGroup',version='2014-08-28',domain='ess.aliyuncs.com')
@@ -949,11 +1120,13 @@ e, this parameter is required.
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-## Examples of using Auto
+ng Auto Scaling SDK for Go
+
+## 5 Examples of using Auto Scaling SDK for Go
 
 **Scaling SDK for Go**
 
-### Getting started
+### 5.1 Getting started
 
 Alibaba Cloud SDK for Go allows you to access services without the need for complex coding. This topic describes how to obtain and use Auto Scaling SDK for Go.
 
@@ -978,7 +1151,7 @@ In the following code, the **DescribeScalingGroups** is used to describe how to 
 
 **Note**
 
-In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <Endpoint>: Replace the variable parameter with your endpoint.
+In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <Endpoint>: Replace the variable parameter with your endpoint. ng Auto Scaling SDK for Go
 
 ```java
 package main import (
@@ -987,7 +1160,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1002,7 +1175,11 @@ AccessKey secret.
     if err != nil {
         // Handle exceptions.
         panic(err)
-    }
+```
+
+`}`
+
+```
     // Create a request and configure the required parameters.
     request := ess.CreateDescribeScalingGroupsRequest()
     // Specify the endpoint of Auto Scaling.
@@ -1014,30 +1191,34 @@ AccessKey secret.
     if err != nil {
         // Handle exceptions.
         panic(err)
-    }
-    fmt.Println(response)
-}
 ```
 
+`}`
+
+```
+    fmt.Println(response)
+```
+
+`}`
 4. (Optional) Switch to HTTP or HTTPS.
 
 ```
 request.Scheme = "HTTPS"
 ```
 
-### Work with Auto Scaling SDK
+### 5.2 Work with Auto Scaling SDK for Go
 
 **for Go**
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
-When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
+ng Auto Scaling SDK for Go When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client.
 
 **Important**
 
@@ -1057,7 +1238,7 @@ AccessKey secret.
 
 In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use Auto Scaling SDK for Go to initiate a request. To use Auto Scaling SDK for Go to initiate a request, perform the following steps:
 1. Import Auto Scaling SDK for Go
@@ -1083,11 +1264,7 @@ ecret. essClient.Domain = "ess.aliyuncs.com" // Specify the endpoint of your ser
 3. Use the `xxx.CreateXXXRequest` method to create a request.
 The naming convention for this method is ${service}.Create${apiName}Request .
 **${service}** specifiesthenameoftheserviceinlowercaseExample: ess
-
-| ServerError |  |
-|---|---|
-| sdk.errors | . |
-
+ng Auto Scaling SDK for Go
 **${service}** specifies the name of the service in lowercase. Example: ess.
 **${apiName}** specifies the name of the operation that you want to perform. Example:
 DescribeScalingGroups.
@@ -1102,7 +1279,17 @@ request := ess.CreateDescribeScalingGroupsAttributeRequest() request.InstanceId 
 response, err := essClient.DescribeScalingGroupsAttribute(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
+
+If an error occurs on the server or in the SDK when you can use Auto Scaling SDK for Go, a
+
+| ServerError |   |
+|---|---|
+| sdk.errors | . |
+
+`ServerError` or a `ClientError` error is returned. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a similar manner as standard Go errors.
+
+**Handle errors**
 
 In the following sample code, the **DescribeScalingGroups** operation is used to describe how to handle errors.
 
@@ -1110,8 +1297,11 @@ In the following sample code, the **DescribeScalingGroups** operation is used to
 response,err := essClient.DescribeScalingGroups(request) if err != nil {
     // Obtain the error information.
    err.Error()
-}
 ```
+
+`}`
+
+**ClientError**
 
 If an error occurs in the SDK when you initiate a request and the error cannot be automatically handled, the SDK returns a `ClientError` . In the following sample example, the **DescribeScalingGroups** operation is used to describe how to determine and obtain the error information in a `ClientError` that is returned by Auto Scaling SDK for Go.
 
@@ -1129,7 +1319,7 @@ ame of your service.
     "fmt"
 ```
 
-)
+`)` ng Auto Scaling SDK for Go
 
 ```
 response, err := essClient.DescribeScalingGroups(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -1139,8 +1329,11 @@ response, err := essClient.DescribeScalingGroups(request) if clientError, ok := 
     clientError.Message()
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
-}
 ```
+
+`}`
+
+**ServerError**
 
 When the server returns an error message, the SDK wraps the message into a `ServerError` and returns it to the client. In this case, you can still obtain the original HTTP response from Response. In the following sample example, the **DescribeScalingGroups** operation is used to describe how to determine and obtain the error information in a ServerError and a Response that are returned by Auto Scaling SDK for Go.
 
@@ -1158,7 +1351,7 @@ ame of your service.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := essClient.DescribeScalingGroups(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -1168,14 +1361,15 @@ response, err := essClient.DescribeScalingGroups(request) if serverError, ok := 
     serverError.Message()
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
-}
 ```
 
-#### Use CommonRequest to call API
+`}`
+
+#### 5.2.5 Use CommonRequest to call API operations
 
 **operations**
 
-You can use CommonRequest to call API operations in the following scenarios: You want to call Auto Scaling API operations that do not provide SDKs. The requests and responses of the API operations that you called by using an Auto Scaling SDK do not meet your business requirements. You can use CommonRequest to call all API operations.
+You can use CommonRequest to call API operations in the following scenarios: You want to call Auto Scaling API operations that do not provide SDKs. The requests and responses of the API operations that you called by using an Auto Scaling SDK do not meet your business requirements. You can use CommonRequest to call all API operations. ng Auto Scaling SDK for Go
 
 **Benefits**
 
@@ -1185,6 +1379,9 @@ and install SDKs of Apsara Stack services.
 2. Easy to use: You can call the new API operations of a service without the need to update the
 SDK of the service.
 3. Fast iteration.
+
+**Use CommonRequest**
+
 If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from Auto Scaling API References. Domain: the service endpoint. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the common parameters in the API documents. Operation information: the name of the API operation that you want to call. You must obtain the value of the **Action** parameter and then run `request.ApiName = "<Action>"` to specify the name of the operation. For example, if you want to call the **DescribeScalingActivities** operation, you must specify the operation as `request.ApiName = "DescribeScalingActivities"` before you send the request by using CommonRequest.
 
 **Example: Call an RPC API operation**
@@ -1193,7 +1390,7 @@ The following sample code provides an example on how to obtain information about
 
 **Note**
 
-In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the variable parameter with the endpoint of your service. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID.
+In the following sample code, replace the variable parameters with actual values. Delete the angle brackets (<>) in the final code. Variable parameters: <yourRegionID>: Replace the variable parameter with your region ID. <yourAccessKeyID>: Replace the variable parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the variable parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the variable parameter with the endpoint of your service. <yourSecurityToken>: Replace the variable parameter with your security token. <yourResourceGroupID>: Replace the variable parameter with your resource set ID. <yourOrganizationID>: Replace the variable parameter with your organization ID. <yourInstanceID>: Replace the variable parameter with your instance ID. ng Auto Scaling SDK for Go
 
 ```java
 package main import (
@@ -1202,7 +1399,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1218,7 +1415,11 @@ func main() {
 ecret.
     if err != nil {
         panic(err)
-    }
+```
+
+`}`
+
+```
     request := requests.NewCommonRequest()
     request.Method = "POST"
     request.Domain = "<ess.aliyuncs.com>" // Replace the variable parameter with the en
@@ -1227,6 +1428,7 @@ dpoint of your service.
     request.Version = "2014-08-28"
     // This is an RPC API operation. Therefore, the ApiName(Action) parameter must be c
 onfigured.
+    request.ApiName = "DescribeScalingGroups"
     // Configure service-related parameters.
     request.QueryParams["PageNumber"] = "1"
     request.QueryParams["PageSize"] = "30"
@@ -1258,31 +1460,40 @@ e instance ID. If you want to modify, delete, or query an instance, you must con
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+## 6 API Reference
+
+### 6.1 API usage instructions
+
+Before you call Auto Scaling API operations, you must be granted the Auto Scaling API permissions in the Auto Scaling console. The following table describes the errors that occur if you are not granted the permissions.Table 1. Description
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbidden.Unsubscribe d | Do not have permission to access this API. | The error message returned because Auto Scaling is not activated, and you are not authorized to call Auto Scaling API operations. |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 
-## API Reference
-
-### API usage instructions
-
-Before you call Auto Scaling API operations, you must be granted the Auto Scaling API permissions in the Auto Scaling console. The following table describes the errors that occur if you are not granted the permissions.Table 1. Description
-
-### Make API requests
+### 6.2 Make API requests
 
 Call an Auto Scaling API operation, send an HTTP GET request to the Auto Scaling API server, and then add corresponding parameters to the request based on the description of the corresponding API operation. After the request is processed, the system returns a result.
 
-### Request structure
+### 6.3 Request structure
 
 This topic describes the syntax of an API request. Service endpoint Communications protocol You can send requests over HTTP or HTTPS. We recommend that you use HTTPS to improve security. Method You can send requests by using the HTTP GET method. This method requires that you specify request parameters in the request URLs. Request parameters For each request, you must specify the operation that you want to perform, such as CreateScalingGroup. Additionally, each request must contain the common request parameters and operation-specific request parameters. Character encoding All requests and responses are encoded in UTF-8.
 
-### Common parameters
+### 6.4 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all API requests. The following table describes the common request parameters.
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1294,17 +1505,13 @@ This topic describes the syntax of an API request. Service endpoint Communicatio
 | Action | Strin g | Yes | The operation that you want to perform. |
 | Product | Strin g | Yes | The name of the service to which the API operation belongs. Set the value to Ess. |
 
+**Common request headers**
+
 | Name | Description |
 |---|---|
 | x-acs-organizationId | The ID of the organization in the Apsara Uni-manager Management Console. For more information about how to obtain organization IDs, see Obtain the values of common header parameters. |
 | x-acs-resourcegroupId | The ID of the resource set in the Apsara Uni-manager Management Console. For more information about how to obtain resource set IDs, see Obtain the values of common header parameters. |
 | x-acs-instanceId | The ID of the instance on which you want to perform the operation. For more information about how to obtain an instance ID, see Obtain the values of common header parameters. |
-
-**Common request parameters**
-
-Common request parameters must be included in all API requests. The following table describes the common request parameters.
-
-**Common request headers**
 
 **Note**
 
@@ -1316,9 +1523,9 @@ organization ID, resource set ID, and instance ID. You cannot configure the x-ac
 
 API responses use the HTTP response format: A 2xx HTTP status code indicates that the call is successful. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-### Responses
+### 6.5 Responses
 
-#### Successful response examples
+#### 6.5.1 Successful response examples
 
 API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML.
 
@@ -1334,16 +1541,16 @@ Sample responses in our API documents are formatted in a way that is easier for 
 </Operation Name+Response>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216",
     /* Return Result Data */
-}
 ```
 
-#### Sample error responses
+`}`
+
+#### 6.5.2 Sample error responses
 
 When an error occurs during an API call, no result data is returned. You can locate the cause of an error based on the error codes defined by each API operation, the error code table in the appendix Client errors, and Server errors. When an error occurs on an HTTP request for an API operation, a 4xx or 5xx HTTP status code is returned. The response body includes the error code and error message. The response body also contains a globally unique request ID (RequestId) and the ID of the site you accessed with this request (HostId). XML format
 
@@ -1356,22 +1563,22 @@ When an error occurs during an API call, no result data is returned. You can loc
 </Error>
 ```
 
-JSON format
+JSON format `{`
 
 ```json
-{
     "RequestId": "8906582E-6722-409A-A6C4-0E7863B733A5",
     "HostId": "ess.example.com",
     "Code": "UnsupportedOperation",
     "Message": "The specified action is not supported."
-}
 ```
 
-### Request signatures
+`}`
+
+### 6.6 Request signatures
 
 This topic describes how to use the request signature to verify the identity of the API caller. Auto Scaling authenticates each access request. Therefore, each request must contain signature information, regardless of whether the request is sent over HTTP or HTTPS. Auto Scaling implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. You can obtain the AccessKey ID and the AccessKey secret in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The AccessKey ID is used to verify the identity of a user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. Perform the following operations to sign an access request:
 1. Create a canonicalized query string by using request parameters.
-i. Arrange all request parameters in alphabetical order. These parameters include all common request parameters and operation-specific parameters except the Signature parameter in the common request parameters. If you use the GET method to make a request, the request parameters are included as a part of the request URL. The first parameter follows a question mark ( ? ) in the URL, and the other parameters follow an ampersand ( & ). ii. Encode the name and value of each request parameter. The parameter names and values must be URL-encoded in UTF-8 based on the following encoding rules: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. `XY` represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA... format. Spaces must be encoded as %20 . Do not encode spaces as plus signs `(+)` .
+i. Arrange all request parameters in alphabetical order. These parameters include all common request parameters and operation-specific parameters except the Signature parameter in the common request parameters. If you use the GET method to make a request, the request parameters are included as a part of the request URL. The first parameter follows a question mark ( ? ) in the URL, and the other parameters follow an ampersand ( `&` ). ii. Encode the name and value of each request parameter. The parameter names and values must be URL-encoded in UTF-8 based on the following encoding rules: Uppercase letters, lowercase letters, digits, and some special characters such as ampersands (&), hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. `XY` represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22 . Extended UTF-8 characters are encoded in the %XY%ZA... format. Spaces must be encoded as %20 . Do not encode spaces as plus signs `(+)` .
 
 **Note**
 
@@ -1412,15 +1619,13 @@ http://ess.example.com/?TimeStamp=2014-08- 15T11%3A10%3A07Z&Format=xml&AccessKey
 
 The signature string is used as the value of the Signature parameter, and the parameter is added to the request URL.
 
-### Scaling groups
+### 6.7 Scaling groups
 
-#### CreateScalingGroup
+#### 6.7.1 CreateScalingGroup
 
-Creates a scaling group.
+Creates a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios. You can create up to 50 scaling groups in one region. A scaling group does not immediately take effect after you create it. You must call the EnableScalingGroup operation to enable the scaling group. After the scaling group is enabled, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group. Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are associated with a scaling group must reside in the same region as the scaling group. For more information, see the Regions and zones topic in ECS documentation. If you specify an SLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the specified SLB instance. The default weight of an ECS instance added to the backend server group is 50. The specified SLB instance must meet the following requirements: The SLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the status of the specified SLB instance. The health check feature is enabled on all listener ports configured for the SLB instance. Otherwise, the scaling group cannot be created. If you specify an ApsaraDB RDS instance when you create a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the whitelist that manages access to the specified ApsaraDB RDS instance. The specified ApsaraDB RDS instance must meet the following requirements: The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the status of the specified ApsaraDB RDS instance. The number of IP addresses in the whitelist that manages access to the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the Configure a whiteli st topic in ApsaraDB RDS documentation. If the MultiAZPolicy parameter of the scaling group is set to COST_OPTIMIZED, the following rules apply: You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the percentages of pay-as-you-go instances and preemptible instances based on the cost optimization policy. This instance allocation method is prioritized during scaling. If OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools is not specified, the instance types provided at the lowest cost are used to create instances based on the cost optimization policy.
 
-**Description**
-
-A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios. You can create up to 50 scaling groups in one region. A scaling group does not immediately take effect after you create it. You must call the EnableScalingGroup operation to enable the scaling group. After the scaling group is enabled, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group. Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are associated with a scaling group must reside in the same region as the scaling group. For more information, see the Regions and zones topic in ECS documentation. If you specify an SLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the specified SLB instance. The default weight of an ECS instance added to the backend server group is 50. The specified SLB instance must meet the following requirements: The SLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the status of the specified SLB instance. The health check feature is enabled on all listener ports configured for the SLB instance. Otherwise, the scaling group cannot be created. If you specify an ApsaraDB RDS instance when you create a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the whitelist that manages access to the specified ApsaraDB RDS instance. The specified ApsaraDB RDS instance must meet the following requirements: The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the status of the specified ApsaraDB RDS instance. The number of IP addresses in the whitelist that manages access to the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the Configure a whiteli st topic in ApsaraDB RDS documentation. If the MultiAZPolicy parameter of the scaling group is set to COST_OPTIMIZED, the following rules apply:
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1428,10 +1633,6 @@ A scaling group is a group of Elastic Compute Service (ECS) instances that can b
 | MaxSize | Integer | Yes | 20 | The maximum number of ECS instances in the scaling group. Valid values: 0 to 1000. If the number of ECS instances in the scaling group is greater than the value of the MaxSize parameter, Auto Scaling automatically removes ECS instances from the scaling group until the number of instances is equal to the value of this parameter. |
 | MinSize | Integer | Yes | 2 | The minimum number of ECS instances in the scaling group. Valid values: 0 to 1000. If the number of ECS instances in the scaling group is less than the value of the MinSize parameter, Auto Scaling automatically creates ECS instances until the number of instances is equal to the value of this parameter. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The ID of the region where the scaling group resides. For more information, see the Regions and zones topic in ECS documentation. |
-
-You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the percentages of pay-as-you-go instances and preemptible instances based on the cost optimization policy. This instance allocation method is prioritized during scaling. If OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools is not specified, the instance types provided at the lowest cost are used to create instances based on the cost optimization policy.
-
-**Request parameters**
 
 | ScalingGroupNa me | String | No | scalinggroup**** | The name of the scaling group. The name of a scaling group must be unique in a region. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), hyphens (-), and _ periods (.). The name must start with a letter or a digit. If you do not specify this parameter, the scaling group ID is used. |
 |---|---|---|---|---|
@@ -1496,40 +1697,46 @@ You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and S
 | GroupType | String | No | ECS | The type of instances that are managed by the scaling group. Valid values: ECS: ECS instances ECI: elastic container instances Default value: ECS. |
 | ContainerGroupI d | String | No | eci- bp13fm93jggsvj nuad3z | The ID of the container group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ScalingGroupI d | String | asg- bp14wlu85wrpchm 0**** | The ID of the scaling group. The ID is a globally unique identifier (GUID) that is generated by the system. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http://ess.example.com/?Action=CreateScalingGroup &RegionId=cn-qingdao-env17-d01 &MaxSize=20 &MinSize=2 &LoadBalancerId=147b46d767c-cn-qingdao-env17-d01-cm5**** &DBInstanceId.1=rm-rdszzzyyuny**** &DBInstanceId.2=rm-rdsia3u3yia**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<CreateScalingGroupResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+      <ScalingGroupId>asg-bp14wlu85wrpchm0****</ScalingGroupId>
+</CreateScalingGroupResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "ScalingGroupId": "asg-bp14wlu85wrpchm0****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | IncorrectDBInstanceSt atus | The current status of DB instance "XXX" does not support this action. | The error message returned because the specified ApsaraDB RDS instance is not in the Running state. |
 | 400 | IncorrectLoadBalancer HealthCheck | The current health check type of specified load balancer does not support this action. | The error message returned because the health check feature is not enabled for the specified SLB instance. |
 | 400 | IncorrectLoadBalancer Status | The current status of the specified load balancer does not support this action. | The error message returned because the specified SLB instance is not in the Active state. |
-
-```
-http://ess.example.com/?Action=CreateScalingGroup &RegionId=cn-qingdao-env17-d01 &MaxSize=20 &MinSize=2 &LoadBalancerId=147b46d767c-cn-qingdao-env17-d01-cm5**** &DBInstanceId.1=rm-rdszzzyyuny**** &DBInstanceId.2=rm-rdsia3u3yia**** &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
-      <ScalingGroupId>asg-bp14wlu85wrpchm0****</ScalingGroupId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "ScalingGroupId": "asg-bp14wlu85wrpchm0****"
-}
-```
 
 | 400 | IncorrectVSwitchStatu s | The current status of virtual switch does not support this operation. | The error message returned because the vSwitch is unavailable. Therefore, ECS instances cannot be created. |
 |---|---|---|---|
@@ -1562,17 +1769,9 @@ http://ess.example.com/?Action=CreateScalingGroup &RegionId=cn-qingdao-env17-d01
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersio n parameter contains non-digit characters. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyScalingGr oup | The operation that you want to perform. Set the value to ModifyScalingGroup. |
+#### 6.7.2 ModifyScalingGroup
 
-#### ModifyScalingGroup
-
-Modifies a scaling group.
-
-**Description**
-
-You cannot modify the following parameters: RegionId LoadBalancerId
+Modifies a scaling group. You cannot modify the following parameters: RegionId LoadBalancerId
 
 **Note**
 
@@ -1583,6 +1782,10 @@ If you want to associate a Server Load Balancer (SLB) instance with a scaling gr
 If you want to associate an ApsaraDB RDS instance with a scaling group, call the AttachDBInstances operation. If you want to disassociate an ApsaraDB RDS instance from a scaling group, call the DetachDBInstances operation. You can call this operation to modify a scaling group only when the scaling group is in the Active or Inactive state. If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group. If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range. If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyScalingGr oup | The operation that you want to perform. Set the value to ModifyScalingGroup. |
 
 | ScalingGroupId | String | Yes | asg- bp1ffogfdauy0jw 0**** | The ID of the scaling group that you want to modify. |
 |---|---|---|---|---|
@@ -1620,17 +1823,13 @@ If you want to associate an ApsaraDB RDS instance with a scaling group, call the
 | MultiAZPolicy | String | No | PRIORITY | The scaling policy of the multi-zone scaling group that contains ECS instances. Valid values: PRIORITY: The first vSwitch that is specified by using the VSwitchIds.N parameter has the highest priority. Auto Scaling scales instances in the zone where the vSwitch that has the highest priority resides. If Auto Scaling fails to scale the instances, Auto Scaling scales instances in the zone where the vSwitch that has the next highest priority resides. COST OPTIMIZED: During a scale- _ out activity, Auto Scaling creates ECS instances that have vCPUs of the lowest price. During a scale-in activity, Auto Scaling removes ECS instances that have vCPUs of the highest price. Preemptible instances are preferentially created when preemptible instance types are specified in the active scaling configuration. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you- go instances when Auto Scaling fails to create preemptible instances. Note Note: The COST OPTIMIZED parameter _ takes effect only when multiple instance types are specified or at least one instance type is specified for preemptible instances. BALANCE: ECS instances are evenly distributed across zones that are specified in the scaling group. If ECS instances are unevenly distributed among multiple zones due to insufficient resources, you can call the RebalanceInstance operation to evenly distribute the instances among multiple zones. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within the Apsara Stack tenant account. |
-| 400 | InvalidScalingGroupNa me.Duplicate | The specified value of parameter <parameter name> is duplicated. | The error message returned because the name that you specified for the scaling group already exists. |
-| 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | The error message returned because the specified scaling configuration does not exist in the scaling group. |
+**Examples**
 
 Sample requests
 
@@ -1638,19 +1837,29 @@ Sample requests
 http://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &ScalingGroupName=Scaling**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</ModifyScalingGroupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within the Apsara Stack tenant account. |
+| 400 | InvalidScalingGroupNa me.Duplicate | The specified value of parameter <parameter name> is duplicated. | The error message returned because the name that you specified for the scaling group already exists. |
+| 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | The error message returned because the specified scaling configuration does not exist in the scaling group. |
 
 | 400 | InvalidScalingConfigur ationId.InstanceTypeM ismatch | The specified scaling configuration and existing active scaling configuration have different instance type. | The error message returned because the instance type in the specified scaling configuration is different from the instance type in the active scaling configuration. |
 |---|---|---|---|
@@ -1664,22 +1873,18 @@ http://ess.example.com/?Action=ModifyScalingGroup &ScalingGroupId=asg-bp1ffogfda
 |---|---|---|---|
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersio n parameter of the launch template contains non-digit characters. |
 
-| 6 |  |  |  | > Document Version: 2025061 |
-|---|---|---|---|---|
+#### 6.7.3 EnableScalingGroup
 
-#### EnableScalingGroup
-
-Enables a scaling group.
-
-**Description**
-
-You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group.
+Enables a scaling group. You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group.
 
 **Note**
 
 A scaling group can have only one active instance configuration source at a time. When you call this operation to enable a scaling group, you can specify a scaling configuration or a launch template for the scaling group. If an instance configuration source is configured for the scaling group before you call this operation, the scaling configuration or launch template that you specify in the request overwrites the original scaling configuration or launch template. If you specify a value for the InstanceId.N parameter when you call the operation, Auto Scaling checks whether the total number of ECS instances is within the range allowed for the scaling group after you call the operation. If the total number of ECS instances is less than the minimum number of instances allowed in the scaling group, Auto Scaling automatically creates the required number of pay-as-you-go ECS instances to maintain the minimum number. For example, if the minimum number of instances allowed in your scaling group is five, and you specify the InstanceId.N parameter to add two created ECS instances to the scaling group, Auto Scaling automatically creates three instances in the scaling group after the two instances are added. If the total number of instances is greater than the maximum number of instances allowed in the scaling group, the operation fails.
 
 **Request parameters**
+
+| 6 |   |   |   | > Document Version: 2025061 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1697,13 +1902,37 @@ A scaling group can have only one active instance configuration source at a time
 | LaunchTemplate Override.N.Weig htedCapacity | Integer | No | 4 | If you want to scale instances in the scaling group based on the weighted capacity of instance types, you must specify the LaunchTemplateOverride.N.Weighte dCapacity parameter after you specify the LaunchTemplateOverride.N.Instance Type parameter. The values of N in the two parameters must be the same. This parameter specifies the weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity. Performance metrics such as the number of vCPUs and the memory size of each instance type may vary. You can specify different weights for different instance types based on your business requirements. Example: Current capacity: 0 Expected capacity: 6 Capacity of ecs.c5.xlarge: 4 To meet the expected capacity, Auto Scaling must create two ecs.c5.xlarge instances. Note The capacity of the scaling group cannot exceed the sum of the maximum capacity that is specified by the MaxSize parameter and the maximum weight of the instance type. Valid values of WeightedCapacity in LaunchTemplateOverride.N.Weighte dCapacity: 1 to 500. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &InstanceId.1=i-283vv**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<EnableScalingGroupResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</EnableScalingGroupResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -1711,24 +1940,6 @@ Sample requests
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | The error message returned because the specified scaling group is being deleted. |
 | 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | The error message returned because the specified scaling configuration does not exist in the specified scaling group. |
-
-```
-http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &InstanceId.1=i-283vv**** &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
-```
 
 | 400 | InvalidScalingConfigur ationId.InstanceTypeM ismatch | The specified scaling configuration and existing active scaling configuration have different instance type. | The error message returned because the instance type of the specified scaling configuration is different from the instance type of the active scaling configuration. |
 |---|---|---|---|
@@ -1759,26 +1970,24 @@ http://ess.example.com/?Action=EnableScalingGroup &ScalingGroupId=asg-bp1ffogfda
 | 400 | TemplateVersion.NotN umber | The input parameter "LaunchTemplateVersi on" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersio n parameter contains non-digit characters. |
 |---|---|---|---|
 
+#### 6.7.4 DisableScalingGroup
+
+Disables a scaling group. The scaling activity that is being executed before this operation is called continues until the scaling activity is complete. Scaling activity requests that are issued after this operation is called are rejected. You can call this operation only if the scaling group is in the Active state.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DisableScalingG roup | The operation that you want to perform. Set the value to DisableScalingGroup. |
 | ScalingGroupId | String | Yes | dmIDKNcyWfznc X9MWX1**** | The ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-#### DisableScalingGroup
-
-Disables a scaling group.
-
-**Description**
-
-The scaling activity that is being executed before this operation is called continues until the scaling activity is complete. Scaling activity requests that are issued after this operation is called are rejected. You can call this operation only if the scaling group is in the Active state.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1786,47 +1995,49 @@ Sample requests
 http://ess.example.com/?Action=DisableScalingGroup &ScalingGroupId=dmIDKNcyWfzncX9MWX1**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DisableScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DisableScalingGroupResponse>
 ```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within your Apsara Stack tenant account. |
+
+#### 6.7.5 DeleteScalingGroup
+
+Deletes a scaling group. When a scaling group is deleted, the scaling configurations, rules, activities, and scaling requests that are associated with the scaling group are also deleted. The following tasks and instances are not deleted after a scaling group is deleted: scheduled tasks, event-triggered tasks, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteScalingGr oup | The operation that you want to perform. Set the value to DeleteScalingGroup. |
 | ScalingGroupId | String | Yes | dmIDKNcyWfznc X9MWX1**** | The ID of the scaling group. |
 
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
-```
-
-#### DeleteScalingGroup
-
-Deletes a scaling group.
-
-**Description**
-
-When a scaling group is deleted, the scaling configurations, rules, activities, and scaling requests that are associated with the scaling group are also deleted. The following tasks and instances are not deleted after a scaling group is deleted: scheduled tasks, event-triggered tasks, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances.
-
-**Request parameters**
-
 | ForceDelete | Boolean | No | false | Specifies whether to forcibly delete the scaling group, and remove and release Elastic Compute Service (ECS) instances if the scaling group has ECS instances or ongoing scaling activities. Valid values: true: The scaling group is disabled and new scaling requests are rejected. After all existing scaling requests are processed, the ECS instances in the scaling group are removed. Then, the scaling group is deleted. If ECS instances are manually added to the scaling group, the ECS instances are removed. If ECS instances are automatically created in the scaling group, the ECS instances are removed and released. false: You can set this parameter to false if the following conditions are met: No ongoing scaling activities exist in the scaling group. The TotalCapacity parameter is set to 0. A value of 0 specifies that no ECS instances exist in the scaling group. Default value: false. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1834,13 +2045,23 @@ Sample requests
 http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX9MWX1**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DeleteScalingGroupResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScalingGroupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -1848,24 +2069,14 @@ http://ess.example.com/?Action=DeleteScalingGroup &ScalingGroupId=dmIDKNcyWfzncX
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | The error message returned because the specified scaling group contains ECS instances. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
+#### 6.7.6 DescribeScalingGroups
 
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
-```
-
-#### DescribeScalingGroups
-
-Queries scaling groups.
-
-**Description**
-
-A scaling group can have the following states during its lifecycle: Active: The scaling group is active. Scaling groups that are in the Active state can receive requests to execute scaling rules and trigger scaling activities. Inactive: The scaling group is inactive. Scaling groups that are in the Inactive state cannot receive any requests to execute scaling rules. Deleting: The scaling group is being deleted. Scaling groups that are in the Deleting state cannot receive any requests to execute scaling rules.
+Queries scaling groups. A scaling group can have the following states during its lifecycle: Active: The scaling group is active. Scaling groups that are in the Active state can receive requests to execute scaling rules and trigger scaling activities. Inactive: The scaling group is inactive. Scaling groups that are in the Inactive state cannot receive any requests to execute scaling rules. Deleting: The scaling group is being deleted. Scaling groups that are in the Deleting state cannot receive any requests to execute scaling rules.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | DescribeScaling Groups | The operation that you want to perform. Set the value to DescribeScalingGroups. |
 |---|---|---|---|---|
@@ -1876,21 +2087,21 @@ A scaling group can have the following states during its lifecycle: Active: The 
 | GroupType | String | No | ECS | The type of instances that are managed by the scaling group. Valid values: ECS: ECS instances ECI: elastic container instances Default value: ECS. |
 | ScalingGroupId. N | RepeatL ist | No | asg- bp14wlu85wrpc hm0**** | The ID of scaling group N that you want to query. Valid values of N: 1 to 20. The IDs of inactive scaling groups are not displayed in the query results and no error is reported. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-**Response parameters**
-
-| ScalingGroups | Array of ScalingGroup |  | Details of the scaling groups. |
+| ScalingGroups | Array of ScalingGroup |   | Details of the scaling groups. |
 |---|---|---|---|
-| ScalingGroup |  |  |  |
+| ScalingGroup |   |   |   |
 | ActiveCapacity | Integer | 1 | The number of ECS instances that are added to the scaling group and can provide services. |
 | ActiveScalingC onfigurationId | String | asc- bp1et2qekq3ojr33* *** | The ID of the scaling configuration that is in the Active state in the scaling group. |
-| AlbServerGrou ps | Array of AlbServerGrou p |  | Details of Application Load Balancer (ALB) server groups. |
-| AlbServerGrou p |  |  |  |
+| AlbServerGrou ps | Array of AlbServerGrou p |   | Details of Application Load Balancer (ALB) server groups. |
+| AlbServerGrou p |   |   |   |
 | AlbServerGrou pId | String | sgp- ddwb0y0g6y9bjm* *** | The ID of the ALB server group. |
 | Port | Integer | 80 | The port number used by the ECS instance after the instance is added to the ALB server group. |
 | Weight | Integer | 100 | The weight of the ECS instance as a backend server after the instance is added to the ALB server group. |
@@ -1905,8 +2116,8 @@ A scaling group can have the following states during its lifecycle: Active: The 
 | GroupType | String | ECS | The type of instances that are managed by the scaling group. |
 | HealthCheckT ype | String | ECS | The health check mode of the scaling group. Valid values: NONE: No health checks are performed. ECS: Auto Scaling performs health checks on ECS instances in the scaling group. |
 | LaunchTempla teId | String | lt- m5e3ofjr1zn1aw7* *** | The ID of the launch template used by the scaling group. |
-| LaunchTempla teOverrides | Array of LaunchTempla teOverride |  | Details of the instance type specified in the extended configurations. |
-| LaunchTempla teOverride |  |  |  |
+| LaunchTempla teOverrides | Array of LaunchTempla teOverride |   | Details of the instance type specified in the extended configurations. |
+| LaunchTempla teOverride |   |   |   |
 | InstanceType | String | ecs.c5.xlarge | The instance type. The specified instance type overwrites the instance type specified in the launch template. |
 | WeightedCapa city | Integer | 4 | The weight of the instance type. The value of this parameter indicates the capacity of an instance of this instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity. |
 
@@ -1944,13 +2155,13 @@ A scaling group can have the following states during its lifecycle: Active: The 
 | SystemSuspen ded | Boolean | true | Indicates whether Auto Scaling stops executing scaling activities in the scaling group. true: Auto Scaling stops executing scaling activities in the scaling group if the scaling activities failed for more than seven consecutive days. You must modify the scaling group or scaling configuration to resume the execution of scaling activities. false: Auto Scaling does not stop executing scaling activities in the scaling group. |
 | TotalCapacity | Integer | 1 | The total weighted capacity of all ECS instances in the scaling group if the Weighted parameter is specified. if the Weighted parameter is not specified, the value of this parameter indicates the total number of ECS instances in the scaling group. |
 | TotalInstanceC ount | Integer | 1 | The total number of ECS instances in the scaling group. |
-| VServerGroup s | Array of VServerGroup |  | The backend server groups. |
-| VServerGroup |  |  |  |
+| VServerGroup s | Array of VServerGroup |   | The backend server groups. |
+| VServerGroup |   |   |   |
 
 | LoadBalancerI d | String | 147b46d767c-cn- qingdao-cm5**** | The ID of the SLB instance to which the backend server group belongs. |
 |---|---|---|---|
-| VServerGroup Attributes | Array of VServerGroup Attribute |  | The attributes of the backend server group. |
-| VServerGroup Attribute |  |  |  |
+| VServerGroup Attributes | Array of VServerGroup Attribute |   | The attributes of the backend server group. |
+| VServerGroup Attribute |   |   |   |
 | Port | Integer | 22 | The port number used by the SLB instance to provide external services. |
 | VServerGroupI d | String | rsp-bp12bjrny**** | The ID of the backend server group. |
 | Weight | Integer | 1 | The weight of the backend server group. |
@@ -1959,19 +2170,23 @@ A scaling group can have the following states during its lifecycle: Active: The 
 | VpcId | String | vpc-**** | The ID of the VPC in which the scaling group resides. |
 | TotalCount | Integer | 1 | The total number of scaling groups. |
 
+**Examples**
+
 Sample requests
 
 ```
 http://ess.example.com/?Action=DescribeScalingGroups &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScalingGroupsResponse>
       <RequestId>68386699-8B9E-4D5B-BC4C-75A28F6C2A00</RequestId>
       <TotalCount>1</TotalCount>
       <PageSize>10</PageSize>
       <PageNumber>1</PageNumber>
+      <ScalingGroups>
             <ScalingGroup>
                   <ScalingGroupId>asg-bp14wlu85wrpchm0****</ScalingGroupId>
                   <ScalingGroupName>b8pYCVbIV5k9cz4PWpbe****</ScalingGroupName>
@@ -2000,18 +2215,24 @@ onfigurationId>
                         <RemovalPolicy>OldestInstance</RemovalPolicy>
                   </RemovalPolicies>
             </ScalingGroup>
+      </ScalingGroups>
+</DescribeScalingGroupsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "68386699-8B9E-4D5B-BC4C-75A28F6C2A00",
     "TotalCount": 1,
     "PageSize": 10,
     "PageNumber": 1,
+    "ScalingGroups": {
         "ScalingGroup": [
-            {
+```
+
+`{`
+
+```json
                 "ScalingGroupId": "asg-bp14wlu85wrpchm0****",
                 "ScalingGroupName": "b8pYCVbIV5k9cz4PWpbe****",
                 "RegionId": "cn-qingdao",
@@ -2026,10 +2247,9 @@ onfigurationId>
                         "lb-bp19byhscefk3x0li****"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "PendingCapacity": 0,
                 "TotalCapacity": 0,
                 "ActiveCapacity": 0,
@@ -2040,10 +2260,9 @@ onfigurationId>
                         "rm-bp52316qzhbg6****"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "VSwitchId": "vsw-bp1whw2u46cn8zubm****",
                 "RemovalPolicies": {
                     "RemovalPolicy": [
@@ -2051,27 +2270,13 @@ onfigurationId>
                         "OldestInstance"
 ```
 
-]
+`]` `}` `}` `]` `}` `}`
 
-```
-                }
-            }
-```
+#### 6.7.7 DescribeScalingInstances
 
-]
+Queries the Elastic Compute Service (ECS) instances in a scaling group and the details of the instances. You can query the ECS instances in a scaling group by specifying the scaling group ID, scaling configuration ID, health status, lifecycle status, and how an ECS instance is created.
 
-```
-    }
-}
-```
-
-#### DescribeScalingInstances
-
-Queries the Elastic Compute Service (ECS) instances in a scaling group and the details of the instances.
-
-**Description**
-
-You can query the ECS instances in a scaling group by specifying the scaling group ID, scaling configuration ID, health status, lifecycle status, and how an ECS instance is created.
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2082,8 +2287,6 @@ You can query the ECS instances in a scaling group by specifying the scaling gro
 | HealthStatus | String | No | Healthy | The health status of the ECS instance in the scaling group. If the ECS instance is not in the Running state, the instance is unhealthy. Valid values: Healthy Unhealthy Auto Scaling automatically removes unhealthy ECS instances from the scaling group. Auto Scaling stops and releases only the ECS instances that are automatically created. |
 | LifecycleState | String | No | InService | The lifecycle status of the ECS instance in the scaling group. Valid values: InService: The ECS instance is added to the scaling group and can provide services. Pending: The ECS instance is being added to the scaling group, but is still being configured. For example, the ECS instance is being created, the ECS instance is being attached to the associated Server Load Balancer (SLB) instance, or the private IP address of the ECS instance is being added to the whitelist of the associated ApsaraDB RDS instance. Removing: The ECS instance is being removed from the scaling group. |
 
-**Request parameters**
-
 | CreationType | String | No | AutoCreated | Specifies how to create the ECS instance. Valid values: AutoCreated: Auto Scaling automatically creates the ECS instance based on the scaling configuration and scaling rules. Attached: You manually add the ECS instance to the scaling group. |
 |---|---|---|---|---|
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
@@ -2091,16 +2294,16 @@ You can query the ECS instances in a scaling group by specifying the scaling gro
 | InstanceId.N | RepeatL ist | No | i- bp109k5j3dum1 ce6**** | The ID of ECS instance N. Valid values of N: 1 to 20. The IDs of inactive instances are not displayed in the query result, and no errors are reported. |
 | ScalingActivityId | String | No | asa- bp1c9djwrgxjyk 31**** | The ID of the scaling activity. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | E481B3F5-F290- 4F3E-AB40- F980FB8E098A | The ID of the request. |
-| ScalingInstanc es | Array of ScalingInstanc e |  | The information about the ECS instances. |
-| ScalingInstanc e |  |  |  |
+| ScalingInstanc es | Array of ScalingInstanc e |   | The information about the ECS instances. |
+| ScalingInstanc e |   |   |   |
 | CreatedTime | String | 2019-03- 06T08:06:39Z | The time when the ECS instance was added to the scaling group. The value is accurate to the second. |
-
-**Response parameters**
 
 | CreationTime | String | 2019-03- 06T08:06Z | The time when the ECS instance was created in the scaling group. |
 |---|---|---|---|
@@ -2126,19 +2329,23 @@ You can query the ECS instances in a scaling group by specifying the scaling gro
 | TotalCount | Integer | 1 | The total number of the ECS instances in the scaling group. |
 | TotalSpotCoun t | Integer | 4 | The total number of preemptible instances that are in the Running state in the scaling group. |
 
+**Examples**
+
 Sample requests
 
 ```
 https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScalingInstancesResponse>
       <RequestId>13305F2D-A4C2-4E6B-B7C7-0F2150842EA3</RequestId>
       <TotalCount>1</TotalCount>
       <PageNumber>1</PageNumber>
       <PageSize>50</PageSize>
+      <ScalingInstances>
             <ScalingInstance>
                   <ScalingConfigurationId>asc-****</ScalingConfigurationId>
                   <CreationType>AutoCreated</CreationType>
@@ -2149,28 +2356,24 @@ https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-en
                   <Entrusted>false</Entrusted>
                   <ScalingGroupId>asg-****</ScalingGroupId>
             </ScalingInstance>
+      </ScalingInstances>
+</DescribeScalingInstancesResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeScaling ActivityDetail | The operation that you want to perform. Set the value to DescribeScalingActivityDetail. |
-| ScalingActivityId | String | Yes | asa- bp1c9djwrgxjyk 31**** | The ID of the scaling activity that you want to query. You can call the DescribeScalingActivities operation to query the ID of a scaling activity. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Detail | String | new ECS instances \"i- bp16t2cgmiiymeqv ****\" are created. | The information about the scaling activity. |
-| RequestId | String | B13527BF-1FBD- 4334-A512- 20F5E9D3**** | The ID of the request. |
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "13305F2D-A4C2-4E6B-B7C7-0F2150842EA3",
     "TotalCount": 1,
     "PageNumber": 1,
     "PageSize": 50,
+    "ScalingInstances": {
         "ScalingInstance": [
-            {
+```
+
+`{`
+
+```json
                 "ScalingConfigurationId": "asc-****",
                 "CreationType": "AutoCreated",
                 "InstanceId": "i-28sov****",
@@ -2179,30 +2382,32 @@ https://ess.example.com/?Action=DescribeScalingInstances &RegionId=cn-qingdao-en
                 "LifecycleState": "InService",
                 "Entrusted": "false",
                 "ScalingGroupId": "asg-****"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-#### DescribeScalingActivityDetail
+#### 6.7.8 DescribeScalingActivityDetail
 
 Queries information about a scaling activity.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeScaling ActivityDetail | The operation that you want to perform. Set the value to DescribeScalingActivityDetail. |
+| ScalingActivityId | String | Yes | asa- bp1c9djwrgxjyk 31**** | The ID of the scaling activity that you want to query. You can call the DescribeScalingActivities operation to query the ID of a scaling activity. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Detail | String | new ECS instances \"i- bp16t2cgmiiymeqv ****\" are created. | The information about the scaling activity. |
+| RequestId | String | B13527BF-1FBD- 4334-A512- 20F5E9D3**** | The ID of the request. |
 
 | ScalingActivity Id | String | asa- bp1c9djwrgxjyk31* *** | The ID of the scaling activity. |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParameter | The input parameter "ScalingActivityId" that is mandatory for processing this request is not supplied | No value is specified for ScalingActivityId. |
+**Examples**
 
 Sample requests
 
@@ -2210,31 +2415,35 @@ Sample requests
 http(s)://ess.example.com/?Action=DescribeScalingActivityDetail &ScalingActivityId=asa-bp1c9djwrgxjyk31**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScalingActivityDetailResponse>
       <RequestId>B13527BF-1FBD-4334-A512-20F5E9D3****</RequestId>
       <ScalingActivityId>asa-bp1c9djwrgxjyk31****</ScalingActivityId>
       <Detail>new ECS instances \"i-bp16t2cgmiiymeqv****\" are created.</Detail>
+</DescribeScalingActivityDetailResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B13527BF-1FBD-4334-A512-20F5E9D3****",
     "ScalingActivityId": "asa-bp1c9djwrgxjyk31****",
     "Detail": "new ECS instances \"i-bp16t2cgmiiymeqv****\" are created."
-}
 ```
 
-#### DescribeScalingActivities
+`}`
 
-Queries one or more scaling activities.
+**Error codes**
 
-**Description**
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParameter | The input parameter "ScalingActivityId" that is mandatory for processing this request is not supplied | No value is specified for ScalingActivityId. |
 
-You can specify a scaling group ID to query all scaling activities in the scaling group. You can filter query results based on the status of scaling activities. You can query scaling activities that are executed in the previous 30 days.
+#### 6.7.9 DescribeScalingActivities
+
+Queries one or more scaling activities. You can specify a scaling group ID to query all scaling activities in the scaling group. You can filter query results based on the status of scaling activities. You can query scaling activities that are executed in the previous 30 days.
 
 **Request parameters**
 
@@ -2248,16 +2457,16 @@ You can specify a scaling group ID to query all scaling activities in the scalin
 | StatusCode | String | No | Successful | The status of the scaling activity. Valid values: Successful: The scaling activity is successful. Warning: The scaling activity is partially successful. Failed: The scaling activity failed. InProgress: The scaling activity is in progress. Rejected: The scaling activity is rejected. |
 | ScalingActivityId .N | RepeatL ist | No | asa- bp161xudmuxdz ofe**** | The ID of scaling activity N that you want to query. Valid values of N: 1 to 20. Note You must specify a value for the ScalingGroupId or ScalingActivityId.N parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 
-**Response parameters**
-
 | PageSize | Integer | 50 | The number of entries returned per page. |
 |---|---|---|---|
-| ScalingActiviti es | Array of ScalingActivity |  | The information about the scaling activities. |
-| ScalingActivity |  |  |  |
+| ScalingActiviti es | Array of ScalingActivity |   | The information about the scaling activities. |
+| ScalingActivity |   |   |   |
 | AttachedCapa city | String | 1 | The total number of instances that were manually added to the scaling group after the scaling activity was complete. |
 | AutoCreatedC apacity | String | 1 | The total number of instances that were automatically created by Auto Scaling after the scaling activity was complete. |
 | Cause | String | A user requests to execute scaling rule "asr- 1kx06p7kys0e6cy2 ****", changing the Total Capacity from "0" to "1". | The cause that triggered the scaling activity. |
@@ -2276,15 +2485,18 @@ You can specify a scaling group ID to query all scaling activities in the scalin
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of scaling activities. |
 
+**Examples**
+
 Sample requests
 
 ```
 http://ess.example.com/?Action=DescribeScalingActivities &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScalingActivitiesResponse>
       <RequestId>8FAAE99E-EB43-4838-85AD-93F62454904C</RequestId>
       <TotalCount>1</TotalCount>
       <PageNumber>1</PageNumber>
@@ -2303,12 +2515,12 @@ Total Capacity from "0" to "1".</Cause>
                   <StatusMessage>"1" ECS instances is added. </StatusMessage>
             </ScalingActivity>
       </ScalingActivities>
+</DescribeScalingActivitiesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
         "RequestId": "8FAAE99E-EB43-4838-85AD-93F62454904C",
         "TotalCount": 1,
         "PageNumber": 1,
@@ -2325,18 +2537,19 @@ the Total Capacity from \"0\" to \"1\".",
                 "StartTime": "2014-08-17T12:39Z",
                 "StatusCode": "Successful",
                 "StatusMessage": "\"1\" ECS instances is added."
-            }
-        }
-}
 ```
 
-#### AttachDBInstances
+`}` `}` `}`
+
+#### 6.7.10 AttachDBInstances
 
 Associates ApsaraDB RDS instances with a scaling group.
 
 **Usage notes**
 
-Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the following requirements are met:
+Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the following requirements are met: The ApsaraDB RDS instance and the scaling group must belong to the same Apsara Stack tenant account. The ApsaraDB RDS instance must be unlocked. For information about the lock policy, see the "Limits" topic in the Auto Scaling documentation. The ApsaraDB RDS instance must be in the Running state. After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For information about the IP address whitelist, see the "Use a database client or the CLI to connect to an RDS for MySQL instance" topic in the ApsaraDB RDS documentation.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2347,20 +2560,13 @@ Before you associate an ApsaraDB RDS instance with a scaling group, make sure th
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 
-The ApsaraDB RDS instance and the scaling group must belong to the same Apsara Stack tenant account. The ApsaraDB RDS instance must be unlocked. For information about the lock policy, see the "Limits" topic in the Auto Scaling documentation. The ApsaraDB RDS instance must be in the Running state. After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For information about the IP address whitelist, see the "Use a database client or the CLI to connect to an RDS for MySQL instance" topic in the ApsaraDB RDS documentation.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within the Apsara Stack tenant account. |
-| 400 | QuotaExceeded.RDS | "RDS" quota exceeded. | The maximum number of ApsaraDB RDS instances that can be associated with the scaling group has been reached. |
+**Examples**
 
 Sample requests
 
@@ -2368,19 +2574,28 @@ Sample requests
 http(s)://ess.example.com/?Action=AttachDBInstances &ScalingGroupId=asg-bp1avr6ensitts3w**** &ForceAttach=false &ClientToken=123e4567-e89b-12d3-a456-42665544**** &DBInstance=["rm-bp12cy3****"] &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<AttachDBInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</AttachDBInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within the Apsara Stack tenant account. |
+| 400 | QuotaExceeded.RDS | "RDS" quota exceeded. | The maximum number of ApsaraDB RDS instances that can be associated with the scaling group has been reached. |
 
 | 400 | InvalidDBInstanceId.N otFound | The specified value of parameter "%s" is not valid. | The ApsaraDB RDS instance does not exist. |
 |---|---|---|---|
@@ -2388,28 +2603,30 @@ http(s)://ess.example.com/?Action=AttachDBInstances &ScalingGroupId=asg-bp1avr6e
 | 400 | QuotaExceeded.DBInst anceSecurityIP | Security IP quota exceeded in DB instance "%s". | The maximum number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance has been reached. |
 | 400 | InvalidInstanceIds.Priv ateIpNotFound | Can not find all private ips of instances in specific scaling group. | The private IP addresses of instances in the scaling group cannot be obtained. |
 
+#### 6.7.11 DetachDBInstances
+
+Disassociates ApsaraDB RDS instances from a scaling group.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DetachDBInstan ces | The operation that you want to perform. Set the value to DetachDBInstances. |
 | DBInstance.N | RepeatL ist | Yes | rm-bp12cy3**** | The ID of ApsaraDB RDS instance N. You can disassociate up to five ApsaraDB RDS instances from a scaling group at a time. |
 | ScalingGroupId | String | Yes | asg- bp1igpak5ft1fly p**** | The ID of the scaling group. |
 
-#### DetachDBInstances
-
-Disassociates ApsaraDB RDS instances from a scaling group.
-
-**Request parameters**
-
 | ForceDetach | Boolean | No | false | Specifies whether to remove the private IP addresses of instances in the scaling group from the IP address whitelist of the associated ApsaraDB RDS instance N. Valid values: true false Default value: false. |
 |---|---|---|---|---|
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2417,18 +2634,34 @@ Sample requests
 http(s)://ess.example.com/?Action=DetachDBInstances &ScalingGroupId=asg-bp1igpak5ft1flyp**** &ForceDetach=false &ClientToken=123e4567-e89b-12d3-a456-42665544**** &DBInstance=["rm-bp12cy3****"] &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DetachDBInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</DetachDBInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
 | 400 | InvalidDBInstanceId.N otFound | DB instance "%s" does not exist. | The ApsaraDB RDS instance does not exist. |
+
+#### 6.7.12 SetGroupDeletionProtection
+
+Enables or disables deletion protection for a scaling group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2437,31 +2670,13 @@ http(s)://ess.example.com/?Action=DetachDBInstances &ScalingGroupId=asg-bp1igpak
 | ScalingGroupId | String | Yes | asg- bp1igpak5ft1fly p**** | The ID of the scaling group. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
-```
-
-#### SetGroupDeletionProtection
-
-Enables or disables deletion protection for a scaling group.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CCC29E24-3AEC- 4F2C-8A14- 78B14FA7**** | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
-| 400 | InvalidOperation.Confli ct | Specific operation may conflicts with other operations, please retry later. | The operation conflicts with another operation that is in progress. Try again later. |
-
-| 14 |  |  |  | > Document Version: 2025061 |
-|---|---|---|---|---|
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2469,25 +2684,37 @@ Sample requests
 http(s)://ess.example.com/?Action=SetGroupDeletionProtection &GroupDeletionProtection=true &ScalingGroupId=asg-bp1igpak5ft1flyp**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<SetGroupDeletionProtectionResponse>
       <RequestId>CCC29E24-3AEC-4F2C-8A14-78B14FA7****</RequestId>
+</SetGroupDeletionProtectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CCC29E24-3AEC-4F2C-8A14-78B14FA7****"
-}
 ```
 
-#### ResumeProcesses
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
+| 400 | InvalidOperation.Confli ct | Specific operation may conflicts with other operations, please retry later. | The operation conflicts with another operation that is in progress. Try again later. |
+
+#### 6.7.13 ResumeProcesses
 
 Resumes suspended processes in a scaling group.
 
 **Request parameters**
+
+| 14 |   |   |   | > Document Version: 2025061 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2497,46 +2724,52 @@ Resumes suspended processes in a scaling group.
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | E38EB733-D714- 4658-8A5F- 0688AB68**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http(s)://ess.example.com/?Action=ResumeProcesses &ScalingGroupId=asg-bp15oubotmrq11xe**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Process=["ScaleIn"] &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<ResumeProcessesResponse>
+    <RequestId>E38EB733-D714-4658-8A5F-0688AB68****</RequestId>
+</ResumeProcessesResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "E38EB733-D714-4658-8A5F-0688AB68****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within the Apsara Stack tenant account. |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SuspendProcess es | The operation that you want to perform. Set the value to SuspendProcesses. |
-
-```
-http(s)://ess.example.com/?Action=ResumeProcesses &ScalingGroupId=asg-bp15oubotmrq11xe**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Process=["ScaleIn"] &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-    <RequestId>E38EB733-D714-4658-8A5F-0688AB68****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "E38EB733-D714-4658-8A5F-0688AB68****"
-}
-```
-
-#### SuspendProcesses
+#### 6.7.14 SuspendProcesses
 
 Suspends processes in a scaling group.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SuspendProcess es | The operation that you want to perform. Set the value to SuspendProcesses. |
 
 | Process.N | RepeatL ist | Yes | ScaleIn | Process N that you want to suspend. Valid values of N: 1 to 100. Valid values: ScaleIn ScaleOut HealthCheck AlarmNotification ScheduledAction You can suspend up to five types of processes. If you specify more than five types, the duplicate types are automatically removed. |
 |---|---|---|---|---|
@@ -2544,55 +2777,50 @@ Suspends processes in a scaling group.
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 | RegionId | String | No | cn-hangzhou- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 3E2033F0-03B4- 419D-BCE2- C2339DB5**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http(s)://ess.example.com/?Action=SuspendProcesses &ScalingGroupId=asg-bp15oubotmrq11xe**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Process=["ScaleIn"] &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<SuspendProcessesResponse>
+    <RequestId>3E2033F0-03B4-419D-BCE2-C2339DB5****</RequestId>
+</SuspendProcessesResponse>
+```
+
+`JSON` format `{`
+
+```json
+ "RequestId": "3E2033F0-03B4-419D-BCE2-C2339DB5****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within the Apsara Stack tenant account. |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 
-```
-http(s)://ess.example.com/?Action=SuspendProcesses &ScalingGroupId=asg-bp15oubotmrq11xe**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Process=["ScaleIn"] &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-    <RequestId>3E2033F0-03B4-419D-BCE2-C2339DB5****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
- "RequestId": "3E2033F0-03B4-419D-BCE2-C2339DB5****"
-}
-```
-
-#### AttachVServerGroups
+#### 6.7.15 AttachVServerGroups
 
 Attaches one or more vServer groups to a scaling group.
 
 **Usage notes**
 
-Before you call this operation, make sure that the following requirements are met: The scaling group and the load balancer whose vServer groups that you want to attach to the scaling group belong to the same Apsara Stack tenant account. The scaling group and the load balancer reside in the same region. The load balancer is in the Running state. The load balancer has at least one listener configured and the health check feature enabled. If the network types of the load balancer and the scaling group are virtual private cloud (VPC), they use the same VPC.
-
-| Parameter | Type | Loca tion | Required | Example |  |  | Description |  |  |  |  |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Action | Strin g | Quer y | Yes | AttachVServerGroups |  |  | The operation that you want to perform. Set the value to AttachVServerGroups. |  |  |  |  |
-| RegionId | Strin g | Quer y | Yes | cn-hangzhou-env17-d01 |  |  | The region ID of the scaling group. Examples: cn-hangzhou-env17- d01 and cn- shanghai-env17-d01 . |  |  |  |  |
-|  |  |  |  |  |  |  |  | cn-hangzhou-env17- |  |  |  |
-|  |  |  |  |  |  |  | d01 |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | and | cn- |  |
-| ScalingGro upId | Strin g | Quer y | Yes | asg- bp18p2yfxow2dloq**** |  |  | The ID of the scaling group. |  |  |  |  |
-
-If the network type of the scaling group is VPC and that of the load balancer is classic network and one backend server of the load balancer uses a VPC, the scaling group and the backend server use the same VPC. The vServer groups that you want to attach to the scaling group belong to the load balancer that is associated with the scaling group. The attachment of vServer groups does not cause the number of vServer groups of the scaling group to exceed the upper limit. For information about the vServer group quota, see
+Before you call this operation, make sure that the following requirements are met: The scaling group and the load balancer whose vServer groups that you want to attach to the scaling group belong to the same Apsara Stack tenant account. The scaling group and the load balancer reside in the same region. The load balancer is in the Running state. The load balancer has at least one listener configured and the health check feature enabled. If the network types of the load balancer and the scaling group are virtual private cloud (VPC), they use the same VPC. If the network type of the scaling group is VPC and that of the load balancer is classic network and one backend server of the load balancer uses a VPC, the scaling group and the backend server use the same VPC. The vServer groups that you want to attach to the scaling group belong to the load balancer that is associated with the scaling group. The attachment of vServer groups does not cause the number of vServer groups of the scaling group to exceed the upper limit. For information about the vServer group quota, see
 **Limits** of Auto Scaling User Guide.
 When you call this operation, you must use the following parameters to specify vServer groups: LoadBalancerId: the ID of the load balancer. VServerGroupId: the ID of the vServer group Port: the port number of the vServer group If you attach the same vServer group to a scaling group over different ports, Auto Scaling considers that multiple vServer groups are attached to the scaling group. If you specify multiple vServer groups that have the same group ID and port number in the request parameters, only the first vServer group is used. Other vServer groups are ignored.
 
@@ -2602,47 +2830,64 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Loca tion | Required | Example |   |   | Description |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Action | Strin g | Quer y | Yes | AttachVServerGroups |   |   | The operation that you want to perform. Set the value to AttachVServerGroups. |   |   |   |   |
+| RegionId | Strin g | Quer y | Yes | cn-hangzhou-env17-d01 |   |   | The region ID of the scaling group. Examples: cn-hangzhou-env17- d01 and cn- shanghai-env17-d01 . |   |   |   |   |
+|   |   |   |   |   |   |   |   | cn-hangzhou-env17- |   |   |   |
+|   |   |   |   |   |   |   | d01 |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | and | cn- |   |
+| ScalingGro upId | Strin g | Quer y | Yes | asg- bp18p2yfxow2dloq**** |   |   | The ID of the scaling group. |   |   |   |   |
+
 | ClientToke n | Strin g | Quer y | No | 123e4567-e89b-12d3- a456-42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see Ensure idempotence. |
 |---|---|---|---|---|---|
 | ForceAttac h | Bool ean | Quer y | No | false | Specifies whether to add the existing Elastic Compute Service (ECS) instances of the scaling group to the vServer group that you want to attach. Valid values: true false Default value: false. |
 | VServerGr oup | Repe atLis t | Quer y | Yes | VServerGroup | The information about the vServer group. |
-| - VServerGr oupAttribu te | Repe atLis t |  | No | VServerGroupAttribute | The attribute of the vServer group. |
-| -- VServerGr oupId | Strin g |  | No | rsp-bp1jp1rge**** | The ID of the vServer group. |
-| --Weight | Integ er |  | No | 100 | The weight of an ECS instance as a backend server in the vServer group. Valid values: 0 to 100. Default value: 50. |
-| --Port | Integ er |  | No | 22 | The port over which Auto Scaling adds an ECS instance to the vServer group. Valid values: 1 to 65535. |
+| - VServerGr oupAttribu te | Repe atLis t |   | No | VServerGroupAttribute | The attribute of the vServer group. |
+| -- VServerGr oupId | Strin g |   | No | rsp-bp1jp1rge**** | The ID of the vServer group. |
+| --Weight | Integ er |   | No | 100 | The weight of an ECS instance as a backend server in the vServer group. Valid values: 0 to 100. Default value: 50. |
+| --Port | Integ er |   | No | 22 | The port over which Auto Scaling adds an ECS instance to the vServer group. Valid values: 1 to 65535. |
 
-| - LoadBalan cerId | Strin g |  | No | lb- bp1u7etiogg38yvwz**** | The ID of the load balancer to which the vServer group belongs. |
+| - LoadBalan cerId | Strin g |   | No | lb- bp1u7etiogg38yvwz**** | The ID of the load balancer to which the vServer group belongs. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The request ID. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | Auto Scaling is not authorized to call the operation. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-http(s)://ess.example.com/?Action=AttachVServerGroups &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &VServerGroup=VServerGroup &<Common request parameters>
+http(s)://ess.example.com/?Action=AttachVServerGroups &Action=AttachVServerGroups &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &VServerGroup=VServerGroup &<Common request parameters>
 ```
 
-`JSON` format
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
 ```
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | Auto Scaling is not authorized to call the operation. |
 
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
 |---|---|---|---|
@@ -2654,19 +2899,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidVServerGroupId. ForLoadBalancer | Invalid VServerGroupId For LoadBalancer "%s". | The vServer group that is specified by VServerGroupId does not belong to the specified load balancer. |
 | 400 | QuotaExceeded.VServ erGroup | VServerGroup quota exceeded in the specified scaling group. | The maximum number of vServer groups that can be associated with the scaling group has been reached. |
 
+#### 6.7.16 DetachVServerGroups
+
 Detaches vServer groups of a Server Load Balancer (SLB) instance from a scaling group.
-
-#### DetachVServerGroups
-
-| Parameter | Type | Requir ed |  | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Yes |  | DetachVServerG roups | The operation that you want to perform. Set the value to DetachVServerGroups. |
-| RegionId | String | Yes |  |  | The region ID of the scaling group. Examples: cn-hangzhou-env17- d01 and cn-shanghai-env17- d01 . For more information, see the "Regions and zones" topic in Basics for Beginners. |
-|  |  |  |  | cn-hangzhou- | d01 |
-|  |  |  |  | env17-d01 | d01 |
-| ScalingGroupId | String | Yes |  | asg- bp1fo0dbtsbmq a9h**** | The ID of the scaling group. |
-| ClientToken | String | No |  | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic. |
-| VServerGroup.N. LoadBalancerId | String | No |  | lb- bp1p90y3ya9h8 s62d**** | The ID of SLB instance N to which the vServer group that you want to detach from the scaling group belongs. N specifies the number of the SLB instance. Valid values of N: 1 to 5. |
 
 **Usage notes**
 
@@ -2674,16 +2909,28 @@ To specify the vServer groups that you want to detach from your scaling group, s
 
 **Request parameters**
 
+| Parameter | Type | Requir ed |   | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Yes |   | DetachVServerG roups | The operation that you want to perform. Set the value to DetachVServerGroups. |
+| RegionId | String | Yes |   |   | The region ID of the scaling group. Examples: cn-hangzhou-env17- d01 and cn-shanghai-env17- d01 . For more information, see the "Regions and zones" topic in Basics for Beginners. |
+|   |   |   |   | cn-hangzhou- | d01 |
+|   |   |   |   | env17-d01 | d01 |
+| ScalingGroupId | String | Yes |   | asg- bp1fo0dbtsbmq a9h**** | The ID of the scaling group. |
+| ClientToken | String | No |   | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic. |
+| VServerGroup.N. LoadBalancerId | String | No |   | lb- bp1p90y3ya9h8 s62d**** | The ID of SLB instance N to which the vServer group that you want to detach from the scaling group belongs. N specifies the number of the SLB instance. Valid values of N: 1 to 5. |
+
 | VServerGroup.N. VServerGroupAtt ribute.N.VServer GroupId | String | No | rsp- bp1jp1rge**** | The ID of vServer group N. The first N specifies the number of the SLB instance. Valid values of the first N: 1 to 5. The second N specifies the number of the vServer group that belongs to SLB instance N. Valid values of the second N: 1 to 5. |
 |---|---|---|---|---|
 | VServerGroup.N. VServerGroupAtt ribute.N.Port | Integer | No | 22 | The port number that is used by Auto Scaling to add ECS instances to vServer group N. Valid values: 1 to 65535. The first N specifies the number of the SLB instance. Valid values of the first N: 1 to 5. The second N specifies the number of the vServer group that belongs to SLB instance N. Valid values of the second N: 1 to 5. |
 | ForceDetach | Boolean | No | false | Specifies whether to remove ECS instances of the scaling group from the vServer group that you want to detach from the scaling group. true false Default value: false. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2691,7 +2938,23 @@ Sample requests
 http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &VServerGroup.1.LoadBalancerId=lb-bp1p90y3ya9h8s62d**** &VServerGroup.1.VServerGroupAttribute.1.VServerGroupId=rsp-bp1jp1rge**** &VServerGroup.1.VServerGroupAttribute.1.Port=22 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
+
+```xml
+<DetachVServerGroupsResponse>
+    <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</DetachVServerGroupsResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -2700,19 +2963,7 @@ http(s)://ess.example.com/?Action=DetachVServerGroups &RegionId=cn-hangzhou-env1
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 | 400 | MissingParameter | The input parameter "%s" that is mandatory for processing this request is not supplied. | A required parameter is not specified. |
 
-```xml
-    <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
-```
-
-#### AttachAlbServerGroups
+#### 6.7.17 AttachAlbServerGroups
 
 Associates Application Load Balancer (ALB) server groups with a scaling group.
 
@@ -2735,12 +2986,14 @@ Before you associate an ALB server group with a scaling group, make sure that th
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in Auto Scaling documentation. |
 | ForceAttach | Boolean | No | false | Specifies whether to add the ECS instances in the scaling group to the newly associated ALB server group. true: adds the ECS instances to the ALB server group and returns the ScalingActivityId value. You can view the ID of the scaling activity to determine whether the instances are added. false: does not add the ECS instances to the ALB server group. Default value: false. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 | ScalingActivity Id | String | asa- 2ze6wxj8vsohn6j9* *** | The ID of the scaling activity in which Auto Scaling associates the ALB server group with the scaling group and adds ECS instances in the scaling group to the ALB server group. This parameter is valid only if you set ForceAttach to true . |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2748,37 +3001,41 @@ Sample requests
 http(s)://ess.example.com/?Action=AttachAlbServerGroups &AlbServerGroup.1.AlbServerGroupId=sgp-ddwb0y0g6y9bjm**** &AlbServerGroup.1.Port=22 &AlbServerGroup.1.Weight=100 &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &<Common request parameters>
 ```
 
+Sample success responses `XML` format
+
+```xml
+<AttachAlbServerGroupsResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <ScalingActivityId>asa-2ze6wxj8vsohn6j9****</ScalingActivityId>
+</AttachAlbServerGroupsResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "ScalingActivityId": "asa-2ze6wxj8vsohn6j9****"
+```
+
+`}`
+
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | AlbServerGroup.NotExi st | The ServerGroup "%s" do(es) not exist. | The ALB server group does not exist within the Apsara Stack tenant account. |
 | 400 | AlbServerGroup.Alread yAttached | The ALB ServerGroups are already attached. | The ALB server group is already associated with the scaling group. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DetachAlbServer Groups | The operation that you want to perform. Set the value to DetachAlbServerGroups. |
-| AlbServerGroup. N.AlbServerGrou pId | String | Yes | sgp- ddwb0y0g6y9bj m**** | The ID of ALB server group N. N specifies the serial number of the ALB server group. |
-
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-      <ScalingActivityId>asa-2ze6wxj8vsohn6j9****</ScalingActivityId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "ScalingActivityId": "asa-2ze6wxj8vsohn6j9****"
-}
-```
-
-#### DetachAlbServerGroups
+#### 6.7.18 DetachAlbServerGroups
 
 Disassociates Application Load Balancer (ALB) server groups from a scaling group.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DetachAlbServer Groups | The operation that you want to perform. Set the value to DetachAlbServerGroups. |
+| AlbServerGroup. N.AlbServerGrou pId | String | Yes | sgp- ddwb0y0g6y9bj m**** | The ID of ALB server group N. N specifies the serial number of the ALB server group. |
 
 | AlbServerGroup. N.Port | Integer | Yes | 22 | The port number that is used by an Elastic Compute Service (ECS) instance after Auto Scaling adds the ECS instance to ALB server group N. N specifies the serial number of the ALB server group. |
 |---|---|---|---|---|
@@ -2787,18 +3044,16 @@ Disassociates Application Load Balancer (ALB) server groups from a scaling group
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 | ForceDetach | Boolean | No | false | Specifies whether to remove existing ECS instances from the ALB server group that you want to disassociate from the scaling group. true: removes existing ECS instances from the ALB server group and returns the ScalingActivityId value. You can view the ID of the scaling activity to determine whether the instances are removed. false: does not remove existing ECS instances from the ALB server group. Default value: false. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
-
 | ScalingActivity Id | String | asa- 2ze6wxj8vsohn6j9* *** | The ID of the scaling activity in which the ALB server group is disassociated from the scaling group and Auto Scaling removes ECS instances in the scaling group from the ALB server group. This parameter is valid only if you set ForceDetach to true . |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | AlbServerGroup.NotAtt ached | The ALB server groups are not attached to specific ScalingGroup. | The ALB server group is not associated with the scaling group. |
+**Examples**
 
 Sample requests
 
@@ -2806,27 +3061,39 @@ Sample requests
 http(s)://ess.example.com?Action=DetachAlbServerGroups &AlbServerGroup.1.AlbServerGroupId=sgp-ddwb0y0g6y9bjm**** &AlbServerGroup.1.Port=22 &RegionId=cn-hangzhou-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DetachAlbServerGroupsResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-2ze6wxj8vsohn6j9****</ScalingActivityId>
+</DetachAlbServerGroupsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-2ze6wxj8vsohn6j9****"
-}
 ```
 
-#### AttachLoadBalancers
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | AlbServerGroup.NotAtt ached | The ALB server groups are not attached to specific ScalingGroup. | The ALB server group is not associated with the scaling group. |
+
+#### 6.7.19 AttachLoadBalancers
 
 Associates Server Load Balancer (SLB) instances with a scaling group.
 
 **Usage notes**
+
+Before you associate an SLB instance with a scaling group, make sure that the following requirements are met: The SLB instance and the scaling group must belong to the same Apsara Stack tenant account. The SLB instance and the scaling group must reside in the same region. The SLB instance must be in the Running state. The SLB instance must be configured with at least one listener. The health check feature is enabled for the SLB instance. If the network types of the SLB instance and the scaling group are virtual private cloud (VPC), the instance and the scaling group must be in the same VPC. If the network type of the scaling group is VPC, the network type of the SLB instance is classic network, and the SLB backend server groups contain instances whose network type is VPC, the instances and the scaling group must be in the same VPC. You can associate only a limited number of SLB instances with a scaling group. For more information, see the "Limits" topic in the Auto Scaling documentation.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2836,19 +3103,17 @@ Associates Server Load Balancer (SLB) instances with a scaling group.
 | ForceAttach | Boolean | No | false | Specifies whether to add all instances in the scaling group to the SLB backend server group. Valid values: true false Default value: false. |
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 
-Before you associate an SLB instance with a scaling group, make sure that the following requirements are met: The SLB instance and the scaling group must belong to the same Apsara Stack tenant account. The SLB instance and the scaling group must reside in the same region. The SLB instance must be in the Running state. The SLB instance must be configured with at least one listener. The health check feature is enabled for the SLB instance. If the network types of the SLB instance and the scaling group are virtual private cloud (VPC), the instance and the scaling group must be in the same VPC. If the network type of the scaling group is VPC, the network type of the SLB instance is classic network, and the SLB backend server groups contain instances whose network type is VPC, the instances and the scaling group must be in the same VPC. You can associate only a limited number of SLB instances with a scaling group. For more information, see the "Limits" topic in the Auto Scaling documentation.
-
-**Request parameters**
-
 | Async | Boolean | No | false | Specifies whether to associate an SLB instance with the scaling group in an asynchronous manner. If you associate an SLB instance with the scaling group in an asynchronous manner, the call is successful only after all operations are successful. If a specific operation fails, the call fails. We recommend that you set this parameter to true. Valid values: true: associates the SLB instance with the scaling group in an asynchronous manner. In this case, the ID of the scaling activity is returned. false: does not associate the SLB instance with the scaling group in an asynchronous manner. Default value: false. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 | ScalingActivity Id | String | asa- bp140qd7mak8k63 f**** | The ID of the scaling activity. The value of this parameter is returned only if you set Async is set to true. You can call the DescribeScalingActivities operation to query the returned IDs of the scaling activities and view the execution status of the scaling activities. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2856,7 +3121,25 @@ Sample requests
 http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05gfs**** &ScalingGroupId=asg-bp1avr6ensitts3w**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
+
+```xml
+<AttachLoadBalancersResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <ScalingActivityId>asa-bp140qd7mak8k63f****</ScalingActivityId>
+</AttachLoadBalancersResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "ScalingActivityId": "asa-bp140qd7mak8k63f****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -2868,27 +3151,19 @@ http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05
 | 400 | IncorrectLoadBalancer Status | The current status of the load balancer "%s" does not support this action. | The operation is not supported when the SLB instance is in the current state. |
 | 400 | IncorrectLoadBalancer HealthCheck | The current health check type of the load balancer "%s" does not support this action. | The health check feature is disabled for the SLB instance. |
 
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-      <ScalingActivityId>asa-bp140qd7mak8k63f****</ScalingActivityId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "ScalingActivityId": "asa-bp140qd7mak8k63f****"
-}
-```
-
-| Developer Guide·API Refe | rence |  | Auto Scalin |
+| Developer Guide·API Refe | rence |   | Auto Scalin |
 |---|---|---|---|
 
 | 400 | InvalidLoadBalancerId. VPCMismatch | The specified virtual switch and the instance in the load balancer "%s" are not in the same VPC. | The SLB instance and the scaling group do not reside in the same VPC. |
 |---|---|---|---|
 | 400 | QuotaExceeded.Backe ndServer | Backend server quota exceeded in the load balancer "%s". | The maximum number of backend servers of the SLB instance has been reached. |
 | 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | The scaling configuration of the scaling group does not exist. |
+
+#### 6.7.20 DetachLoadBalancers
+
+Detaches Server Load Balancer (SLB) instances from a scaling group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2897,30 +3172,21 @@ http(s)://ess.example.com/?Action=AttachLoadBalancers &LoadBalancer.1=lb-2zeur05
 | ScalingGroupId | String | Yes | asg- bp1ffogfdauy0jw 0**** | The ID of the scaling group. |
 | ForceDetach | Boolean | No | false | Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of SLB instance N. Valid values: true false Default value: false. |
 
-#### DetachLoadBalancers
-
-Detaches Server Load Balancer (SLB) instances from a scaling group.
-
-**Request parameters**
-
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 |---|---|---|---|---|
 | Async | Boolean | No | false | Specifies whether to detach SLB instance N from the scaling group in an asynchronous manner. If you detach an SLB instance from the scaling group in an asynchronous manner, the call is successful only after all operations are successful. If a specific operation fails, the call fails. We recommend that you set this parameter to true. Valid values: true: detaches SLB instance N from the scaling group in an asynchronous manner. The request returns the ID of the scaling activity. false: does not detach SLB instance N from the scaling group in an asynchronous manner. Default value: false. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
-
 | ScalingActivity Id | String | asa- bp140qd7mak8k63 f**** | The ID of the scaling activity. The value of this parameter is returned only if you set Async to true. You can call the DescribeScalingActivities operation to query the returned IDs of the scaling activities and view the execution status of the scaling activities. |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | Auto Scaling is not authorized to call the operation. |
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
+**Examples**
 
 Sample requests
 
@@ -2928,44 +3194,49 @@ Sample requests
 http(s)://ess.example.com/?Action=DetachLoadBalancers &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &ForceDetach=false &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Async=false &LoadBalancer=["lb-2zeur05gfs****"] &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DetachLoadBalancersResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-bp140qd7mak8k63f****</ScalingActivityId>
+</DetachLoadBalancersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-bp140qd7mak8k63f****"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | Auto Scaling is not authorized to call the operation. |
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
 
 | 404 | InvalidLoadBalancerId. NotFound | The Load Balancer "%s" does not exist. | The specified SLB instance is not attached to the scaling group. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateScalingCo nfiguration | The operation that you want to perform. Set the value to CreateScalingConfiguration. |
+### 6.8 Scaling configurations
 
-### Scaling configurations
+#### 6.8.1 CreateScalingConfiguration
 
-#### CreateScalingConfiguration
-
-Creates a scaling configuration.
-
-**Description**
-
-Auto Scaling automatically scales out Elastic Compute Service (ECS) instances based on a scaling configuration. ECS instances can be configured in the following modes: InstancePatternInfo.N: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and price limit. The system creates ECS instances of an instance type that is provided at the lowest price based on your configurations. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types. InstanceType: In this mode, you must specify an instance type. InstanceTypes.N: In this mode, you must specify multiple instance types. InstanceTypeOverride.N: In this mode, you must specify multiple instance types and weights for the instance types. Cpu and Memory: In this mode, you can specify the Cpu and Memory parameters to configure the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+Creates a scaling configuration. Auto Scaling automatically scales out Elastic Compute Service (ECS) instances based on a scaling configuration. ECS instances can be configured in the following modes: InstancePatternInfo.N: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and price limit. The system creates ECS instances of an instance type that is provided at the lowest price based on your configurations. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types. InstanceType: In this mode, you must specify an instance type. InstanceTypes.N: In this mode, you must specify multiple instance types. InstanceTypeOverride.N: In this mode, you must specify multiple instance types and weights for the instance types. Cpu and Memory: In this mode, you can specify the Cpu and Memory parameters to configure the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
 
 **Note**
 
 You cannot specify the InstanceType, InstanceTypes.N, InstanceTypeOverride.N, and Cpu and Memory parameters at the same time. If you specify the InstanceTypes.N parameter, the InstanceType parameter is ignored. You can specify only the InstanceType parameter and the InstancePatternInfo.N parameter or the InstanceTypes.N parameter and the InstancePatternInfo.N parameter at the same time. In this case, Auto Scaling preferentially creates instances of the instance type specified by the InstanceType parameter or the InstanceTypes.N parameter. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfo.N parameter.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateScalingCo nfiguration | The operation that you want to perform. Set the value to CreateScalingConfiguration. |
 
 | ScalingGroupId | String | Yes | asg- bp14wlu85wrpc hm0**** | The ID of the scaling group in which you want to create the scaling configuration. |
 |---|---|---|---|---|
@@ -3072,12 +3343,14 @@ You cannot specify the InstanceType, InstanceTypes.N, InstanceTypeOverride.N, an
 | SystemDiskCate gories.N | RepeatL ist | No | cloud | The categories of the system disk. Valid values of N: 1 to 4. You can specify up to four system disk categories in a scaling configuration. A smaller value of N specifies a higher priority. If Auto Scaling cannot create instances by using the system disk that has the highest priority, Auto Scaling creates instances by using the system disk that has the next highest priority. Valid values: cloud: basic disk. cloud efficiency: ultra disk. _ cloud ssd: standard SSD. _ cloud essd: ESSD. _ Note You cannot specify the SystemDiskCategories.N and SystemDisk.Category parameters at the same time. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | ScalingConfigu rationId | String | asc- bp1ffogfdauy0nu5* *** | The ID of the scaling configuration. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3085,14 +3358,25 @@ Sample requests
 http://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg-bp14wlu85wrpchm0**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<CreateScalingConfigurationResponse>
       <ScalingConfigurationId>asc-bp1ffogfdauy0nu5****</ScalingConfigurationId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</CreateScalingConfigurationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "ScalingConfigurationId": "asc-bp1ffogfdauy0nu5****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -3102,13 +3386,6 @@ http://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg-bp
 | 403 | InvalidDevice.InUse | Device "XXX" has been occupied. | The error message returned because the mount target of the data disk is occupied. |
 | 400 | InvalidImageId.Instanc eTypeMismatch | The specified image does not support the specified instance type. | The error message returned because the specified image does not support the specified instance type. |
 | 404 | InvalidImageId.NotFou nd | The specified image does not exist. | The error message returned because the specified image does not exist within the Apsara Stack tenant account. |
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "ScalingConfigurationId": "asc-bp1ffogfdauy0nu5****"
-}
-```
 
 | 400 | InvalidKeyPairName.N otFound | The specified KeyPairName does not exist in our records. | The error message returned because the specified key pair does not exist. |
 |---|---|---|---|
@@ -3133,6 +3410,12 @@ http://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg-bp
 | 400 | QuotaExceeded.Scalin gConfiguration | Scaling configuration quota exceeded in the specified scaling group. | The error message returned because the maximum number of scaling configurations has been reached. |
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | The error message returned because the maximum number of ECS instances that can be associated with the specified security group is reached. |
 
+#### 6.8.2 DescribeScalingConfigurations
+
+Queries one or more scaling configurations.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeScaling Configurations | The operation that you want to perform. Set the value to DescribeScalingConfigurations. |
@@ -3141,33 +3424,27 @@ http://ess.example.com/?Action=CreateScalingConfiguration &ScalingGroupId=asg-bp
 | PageSize | Integer | No | 50 | The number of entries to return on each page. Maximum value: 50. Default value: 10 |
 | ScalingGroupId | String | No | asg- bp17pelvl720x3 v7**** | The ID of the scaling group. You can query all scaling configurations in the scaling group. |
 
-#### DescribeScalingConfigurations
-
-Queries one or more scaling configurations.
-
-**Request parameters**
-
 | ScalingConfigura tionId.N | RepeatL ist | No | asc- bp17pelvl720x5 ub**** | The ID of scaling configuration N that you want to query. Valid values of N: 1 to 10. The IDs of active and inactive scaling configurations are displayed in the query results. You can differentiate between active and inactive scaling configurations based on the value of the LifecycleState parameter. |
 |---|---|---|---|---|
 | ScalingConfigura tionName.N | RepeatL ist | No | scalingcon**** | The name of scaling configuration N that you want to query. Valid values of N: 1 to 10. The names of inactive scaling configurations are not displayed in the query results and no error is returned. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 50 | The number of entries returned per page. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
-| ScalingConfigu rations | Array of ScalingConfigu ration |  | Details of the scaling configurations. |
-| ScalingConfigu ration |  |  |  |
+| ScalingConfigu rations | Array of ScalingConfigu ration |   | Details of the scaling configurations. |
+| ScalingConfigu ration |   |   |   |
 | Affinity | String | default | Indicates whether an instance on a dedicated host is associated with the dedicated host. Valid values: default: The instance is not associated with the dedicated host. If you restart an instance that was stopped in economical mode when the original dedicated host of the instance has insufficient resources, the instance is deployed to another dedicated host in the automatic deployment resource pool. host: The instance is associated with the dedicated host. If you restart an instance that was stopped in economical mode, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the instance cannot be restarted. |
-
-**Response parameters**
 
 | Cpu | Integer | 2 | The number of vCPUs. You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price. Note You can specify the number of vCPUs and the memory size to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration. |
 |---|---|---|---|
 | CreationTime | String | 2014-08- 14T10:58Z | The time when the scaling configuration was created. |
 | CreditSpecifica tion | String | Standard | The performance mode of the burstable instance. Valid values: Standard: the standard mode. For more information, see the "Performance modes" section in the Overview topic of ECS documentation. Unlimited: the unlimited mode. For more information, see the "Performance modes" section in the Overview topic of ECS documentation. |
-| DataDisks | Array of DataDisk |  | Details of the data disks. |
-| DataDisk |  |  |  |
+| DataDisks | Array of DataDisk |   | Details of the data disks. |
+| DataDisk |   |   |   |
 | AutoSnapshot PolicyId | String | sp- bp19nq9enxqkomi b**** | The ID of the automatic snapshot policy that is applied to the data disk. |
 
 | Categories | List | cloud essd _ | The categories of the data disks. The values are sorted based on their priorities. The first value has the highest priority. If Auto Scaling cannot use the disk category that has the highest priority to create instances, Auto Scaling uses the disk category that has the next highest priority to create instances. Valid values: cloud: basic disk. The DeleteWithInstance attribute of a basic disk that is created together with the instance is set to true. cloud efficiency: ultra disk. _ cloud ssd: standard SSD. _ cloud essd: enhanced SSD (ESSD). _ |
@@ -3196,8 +3473,8 @@ Queries one or more scaling configurations.
 |---|---|---|---|
 | InstanceGener ation | String | ecs-3 | The generation of the ECS instance. |
 | InstanceName | String | fortest | The name of the ECS instance. |
-| InstancePatter nInfos | Array of InstancePatter nInfo |  | Information about the intelligent configuration settings, which determines the available instance types. |
-| InstancePatter nInfo |  |  |  |
+| InstancePatter nInfos | Array of InstancePatter nInfo |   | Information about the intelligent configuration settings, which determines the available instance types. |
+| InstancePatter nInfo |   |   |   |
 | Cores | Integer | 2 | The number of vCPUs that are supported by the instance type. |
 | InstanceFamil yLevel | String | EnterpriseLevel | The level of the instance family. EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the Shared instan ce families topic in ECS documentation. EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see the I nstance type families topic in ECS documentation. CreditEntryLevel: This value is available only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the Burstable instance types topic in ECS documentation. |
 | MaxPrice | Float | 2 | The maximum hourly price for pay-as-you- go instances or preemptible instances. |
@@ -3227,7 +3504,7 @@ Queries one or more scaling configurations.
 | ScalingConfigu rationId | String | asc- bp1ezrfgoyn5kijl*** * | The ID of the scaling configuration. |
 | ScalingConfigu rationName | String | c1908dd1-690f- 4c9b-ab73- 350f1f06**** | The name of the scaling configuration. |
 | ScalingGroupI d | String | sg-280ih**** | The ID of the scaling group for which the scaling configuration is created. |
-| SchedulerOpti ons | Struct |  | Note This parameter is unavailable. |
+| SchedulerOpti ons | Struct |   | Note This parameter is unavailable. |
 | ManagedPrivat eSpaceId | String | testManagedPrivat eSpaceId | Note This parameter is unavailable. |
 
 | SecurityEnhan cementStrateg y | String | Active | Indicates whether security hardening is enabled. Valid values: Active: Security hardening is enabled. This value is available only for public images. Deactive: Security hardening is disabled. This value is available for all types of images. |
@@ -3236,8 +3513,8 @@ Queries one or more scaling configurations.
 | SecurityGroupI ds | List | sg- bp18kz60mefs**** | The IDs of the security groups with which the ECS instance is associated. The ECS instances that are associated with the same security group can access each other. |
 | SpotDuration | Integer | 1 | The retention period of the preemptible instance. Unit: hours. |
 | SpotInterrupti onBehavior | String | Terminate | The interruption mode of the preemptible instance. |
-| SpotPriceLimit | Array of SpotPriceMode l |  | Information about the preemptible instance. |
-| SpotPriceMode l |  |  |  |
+| SpotPriceLimit | Array of SpotPriceMode l |   | Information about the preemptible instance. |
+| SpotPriceMode l |   |   |   |
 | InstanceType | String | ecs.t1.xsmall | The instance type of the preemptible instance. |
 | PriceLimit | Float | 0.125 | The price limit of the preemptible instance. |
 
@@ -3250,8 +3527,8 @@ Queries one or more scaling configurations.
 | SystemDiskNa me | String | cloud ssd Test _ _ | The name of the system disk. |
 | SystemDiskPer formanceLevel | String | PL1 | The PL of the system disk that is an ESSD. |
 | SystemDiskSiz e | Integer | 100 | The size of the system disk. |
-| Tags | Array of Tag |  | Information about tags. |
-| Tag |  |  |  |
+| Tags | Array of Tag |   | Information about tags. |
+| Tag |   |   |   |
 
 | Key | String | binary | The key of the tag. |
 |---|---|---|---|
@@ -3262,19 +3539,23 @@ Queries one or more scaling configurations.
 | ZoneId | String | cn-hangzhou- env17-d01-g | The ID of the zone in which the instance is created. You can call the DescribeZones operation to query the available zones. |
 | TotalCount | Integer | 1 | The total number of scaling configurations. |
 
+**Examples**
+
 Sample requests
 
 ```
 http://ess.example.com/?Action=DescribeScalingConfigurations &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScalingConfigurationsResponse>
       <RequestId>804F240A-8D3E-40A1-BD68-6B333DEA2CA8</RequestId>
       <TotalCount>1</TotalCount>
       <PageNumber>1</PageNumber>
       <PageSize>50</PageSize>
+      <ScalingConfigurations>
             <ScalingConfiguration>
                   <CreationTime>2014-08-14T10:58Z</CreationTime>
                   <ImageId>centos6u5_64_20G_aliaegis_20140703.vhd</ImageId>
@@ -3299,21 +3580,18 @@ gConfigurationName>
                         </DataDisk>
                   </DataDisks>
             </ScalingConfiguration>
+      </ScalingConfigurations>
+</DescribeScalingConfigurationsResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyScalingCo nfiguration | The operation that you want to perform. Set the value to ModifyScalingConfiguration. |
-| ScalingConfigura tionId | String | Yes | asc- bp16har3jpj6fjb x**** | The ID of the scaling configuration that you want to modify. |
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "804F240A-8D3E-40A1-BD68-6B333DEA2CA8",
     "TotalCount": "1",
     "PageNumber": "1",
     "PageSize": "50",
+    "ScalingConfigurations": {
         "ScalingConfiguration": {
             "CreationTime": "2014-08-14T10:58Z",
             "ImageId": "centos6u5_64_20G_aliaegis_20140703.vhd",
@@ -3333,14 +3611,11 @@ gConfigurationName>
                     "Category": "cloud",
                     "SnapshotId": "s-280s7****",
                     "Device": "/dev/xvdb"
-                }
-            }
-        }
-    }
-}
 ```
 
-#### ModifyScalingConfiguration
+`}` `}` `}` `}` `}`
+
+#### 6.8.3 ModifyScalingConfiguration
 
 Modifies a scaling configuration.
 
@@ -3349,6 +3624,11 @@ Modifies a scaling configuration.
 You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyScalingCo nfiguration | The operation that you want to perform. Set the value to ModifyScalingConfiguration. |
+| ScalingConfigura tionId | String | Yes | asc- bp16har3jpj6fjb x**** | The ID of the scaling configuration that you want to modify. |
 
 | IoOptimized | String | No | none | Specifies whether to create an I/O optimized instance. Valid values: none: does not create an I/O optimized instance. optimized: creates an I/O optimized instance. |
 |---|---|---|---|---|
@@ -3418,20 +3698,20 @@ You can change the name of a scaling configuration in a scaling group. The name 
 | DataDisk.N.Dele teWithInstance | Boolean | No | true | Specifies whether to release data disk N if the instance to which data disk N is attached is released. Valid values of N: 1 to 16. Valid values: true false This parameter is available only if you set DataDisk.N.Category to cloud, cloud efficiency, or cloud ssd. _ _ If you specify this parameter when the value of DataDisk.N.Category is ephemeral ssd, an error is reported. _ |
 | DataDisk.N.KMS KeyId | String | No | 0e478b7a-4262- 4802-b8cb- 00d3fb40**** | The ID of the KMS key that you want to use to encrypt data disk N. Valid values of N: 1 to 16. |
 
-| InstanceTypes.N | RepeatL ist |  | No | ecs.g6.large | Instance type N. If you specify this parameter, InstanceType is ignored. Valid values of N: 1 to 10. The first instance type that is specified by using InstanceTypes.N has the highest priority. The priority decreases based on the specified order of instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority. |  |  |
+| InstanceTypes.N | RepeatL ist |   | No | ecs.g6.large | Instance type N. If you specify this parameter, InstanceType is ignored. Valid values of N: 1 to 10. The first instance type that is specified by using InstanceTypes.N has the highest priority. The priority decreases based on the specified order of instance types. Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority. |   |   |
 |---|---|---|---|---|---|---|---|
-| InstanceTypeOv erride.N.Instanc eType | String |  |  |  | Instance type N. If you want to specify the weight of instance type N in the scaling configuration, specify InstanceTypeOverride.N.Instance Type and InstanceTypeOverride.N.WeightedCa pacity. You can use InstanceTypeOverride.N.InstanceTyp e to specify multiple instance types and use InstanceTypeOverride.N.Weighted Capacity to specify weights for the instance types. Valid values of N: 1 to 10. Note If you specify this parameter, you cannot specify InstanceTypes . You can specify only instance types that are available for purchase. For more information about instance types, see the "Instance families" topic in the ECS documentation. |  |  |
-|  |  |  |  |  |  | InstanceTypeOverride.N.Instance |  |
-|  |  |  |  |  | Type |  |  |
-|  |  |  |  |  |  | InstanceTypeOverride.N.Weighted |  |
-|  |  |  | No | ecs.c5.xlarge | Capacity |  |  |
+| InstanceTypeOv erride.N.Instanc eType | String |   |   |   | Instance type N. If you want to specify the weight of instance type N in the scaling configuration, specify InstanceTypeOverride.N.Instance Type and InstanceTypeOverride.N.WeightedCa pacity. You can use InstanceTypeOverride.N.InstanceTyp e to specify multiple instance types and use InstanceTypeOverride.N.Weighted Capacity to specify weights for the instance types. Valid values of N: 1 to 10. Note If you specify this parameter, you cannot specify InstanceTypes . You can specify only instance types that are available for purchase. For more information about instance types, see the "Instance families" topic in the ECS documentation. |   |   |
+|   |   |   |   |   |   | InstanceTypeOverride.N.Instance |   |
+|   |   |   |   |   | Type |   |   |
+|   |   |   |   |   |   | InstanceTypeOverride.N.Weighted |   |
+|   |   |   | No | ecs.c5.xlarge | Capacity |   |   |
 
-| InstanceTypeOv erride.N.Weighte dCapacity | Integer |  |  |  | The weight of instance type N. If you want to specify the weights of instance types in the scaling configuration, specify InstanceTypeOverride.N.WeightedCa pacity after you specify InstanceTypeOverride.N.Instance Type . The values of N in the two parameters must be the same. The weight specifies the capacity of an instance of instance type N in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement. Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements. Example: Current capacity: 0 Expected capacity: 6 Capacity of ecs.c5.xlarge: 4 To meet the expected capacity requirement, Auto Scaling must create two ecs.c5.xlarge instances. Note The capacity of the scaling group during a scale-out cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance type. Valid values of WeightedCapacity in InstanceTypeOverride.N.WeightedCa pacity: 1 to 500. |  |  |
+| InstanceTypeOv erride.N.Weighte dCapacity | Integer |   |   |   | The weight of instance type N. If you want to specify the weights of instance types in the scaling configuration, specify InstanceTypeOverride.N.WeightedCa pacity after you specify InstanceTypeOverride.N.Instance Type . The values of N in the two parameters must be the same. The weight specifies the capacity of an instance of instance type N in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement. Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements. Example: Current capacity: 0 Expected capacity: 6 Capacity of ecs.c5.xlarge: 4 To meet the expected capacity requirement, Auto Scaling must create two ecs.c5.xlarge instances. Note The capacity of the scaling group during a scale-out cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance type. Valid values of WeightedCapacity in InstanceTypeOverride.N.WeightedCa pacity: 1 to 500. |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | InstanceTypeOverride.N.Instance |  |
-|  |  |  |  |  | Type |  |  |
-|  |  |  | No | 4 |  |  |  |
-| SecurityGroupId s.N | RepeatL ist |  | No | sg- bp18kz60mefs** ** | The ID of the security group. |  |  |
+|   |   |   |   |   |   | InstanceTypeOverride.N.Instance |   |
+|   |   |   |   |   | Type |   |   |
+|   |   |   | No | 4 |   |   |   |
+| SecurityGroupId s.N | RepeatL ist |   | No | sg- bp18kz60mefs** ** | The ID of the security group. |   |   |
 
 | InstancePatternI nfo.N.Cores | Integer | No | 2 | The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified requirements. For more information, see the "Instance families" topic in the ECS documentation. Valid values of N: 1 to 10. When you specify this parameter, take note of the following items: You can specify InstancePatternInfo.N only for scaling groups that reside in virtual private clouds (VPCs). If you specify InstancePatternInfo.N, you must also specify InstancePatternInfo.N.Cores and InstancePatternInfo.N.Memory. If you specify an instance type by using InstanceType or InstanceTypes.N, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes.N for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.N. |
 |---|---|---|---|---|
@@ -3444,11 +3724,13 @@ You can change the name of a scaling configuration in a scaling group. The name 
 | SystemDiskCate gories.N | RepeatL ist | No | cloud | Category N of the system disk. Valid values of N: 1 to 4. A smaller value of N specifies a higher priority. If Auto Scaling cannot create instances by using the disk category that has the highest priority, Auto Scaling creates instances by using the disk category that has the next highest priority. Valid values: cloud: basic disk cloud efficiency: ultra disk _ cloud ssd: standard SSD _ |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3456,29 +3738,33 @@ Sample requests
 http(s)://ess.example.com/?Action=ModifyScalingConfiguration &ScalingConfigurationId=asc-bp16har3jpj6fjbx**** &IoOptimized=none &ScalingConfigurationName=test-modify &InstanceName=inst**** &HostName=hos**** &ImageId=centos6u5_64_20G_aliaegis_2014****.vhd &ImageName=suse11sp3_64_20G_aliaegis_2015****.vhd &Cpu=2 &Memory=16 &InternetChargeType=PayByBandwidth &InternetMaxBandwidthOut=50 &SystemDisk.Category=cloud_efficiency &SystemDisk.Size=50 &SystemDisk.DiskName=cloud_ssdSystem &SystemDisk.Description=Test system disk. &SystemDisk.AutoSnapshotPolicyId=sp-bp12m37ccmxvbmi5**** &SystemDisk.PerformanceLevel=PL0 &LoadBalancerWeight=50 &UserData=echo hello ecs! &KeyPairName=KeyPair_Name &RamRoleName=RamRoleTest &PasswordInherit=false &Tags={"key1":"value1","key2":"value2", ... "key5":"value5"} &DeploymentSetId=ds-bp13v7bjnj9gis**** &SecurityGroupId=sg-F876F**** &Override=true &HpcClusterId=hpc-clusterid &InstanceDescription=Test instance. &Ipv6AddressCount=1
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the operation. |
-
-p
+`p`
 
 ```json
 &CreditSpecification=Standard &ImageFamily=hangzhou-daily-update &ZoneId=cn-hangzhou-g &DedicatedHostId=dh-bp67acfmxazb4p**** &Affinity=default &Tenancy=default &PrivatePoolOptions.MatchCriteria=Open &PrivatePoolOptions.Id=eap-bp67acfmxazb4**** &DataDisk=[{"PerformanceLevel":"PL1","AutoSnapshotPolicyId":"spbp19nq9enxqkomib****","Encrypted":"false","Description":"Test data disk.","SnapshotId":"s-snapshot****","Categories": ["cloud"],"Size":100,"Device":"/dev/xvdb","DiskName":"cloud_ssdData","Category":"cloud_ss ,"DeleteWithInstance":true,"KMSKeyId":"0e478b7a-4262-4802-b8cb- 00d3fb40****","ProvisionedIops":100,"BurstingEnabled":false}] &InstanceTypes=["ecs.g6.large"] &InstanceTypeOverride=[{"InstanceType":"ecs.c5.xlarge","WeightedCapacity":4}] &SecurityGroupIds=["sg-bp18kz60mefs****"] &InstancePatternInfo= [{"Cores":2,"InstanceFamilyLevel":"EnterpriseLevel","MaxPrice":2.0,"Memory":4.0,"Architec re":["X86"],"BurstablePerformance":"Include","ExcludedInstanceType": ["ecs.n1.small/ecs.n1.*/*7*"]}] &SystemDiskCategories=["cloud"] &SystemDisk.Encrypted=false &SystemDisk.KMSKeyId=0e478b7a-4262-4802-b8cb-00d3fb40**** &SystemDisk.EncryptAlgorithm=AES-256 &SystemDisk.ProvisionedIops=100 &SystemDisk.BurstingEnabled=false &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyScalingConfigurationResponse>
     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyScalingConfigurationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the operation. |
 
 | 404 | InvalidDataDiskSnapsh otId.NotFound | Snapshot "XXX" does not exist. | The snapshot does not exist. |
 |---|---|---|---|
@@ -3497,26 +3783,24 @@ p
 |---|---|---|---|
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | The user data size exceeds the upper limit. |
 
+#### 6.8.4 DeleteScalingConfiguration
+
+Deletes a scaling configuration. You cannot delete a scaling configuration in one of the following scenarios: The scaling configuration in your scaling group is in the Active state. Your scaling group contains Elastic Compute Service (ECS) instances that are created based on the scaling configuration.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteScalingCo nfiguration | The operation that you want to perform. Set the value to DeleteScalingConfiguration. |
 | ScalingConfigura tionId | String | Yes | eOs27Kb0oXvQc UYjEGel**** | The ID of the scaling configuration that you want to delete. You can call the DescribeScalingConfigurations operation to query the ID of the scaling configuration. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. Every response returns a unique request ID regardless of whether the call is successful. |
 
-#### DeleteScalingConfiguration
-
-Deletes a scaling configuration.
-
-**Description**
-
-You cannot delete a scaling configuration in one of the following scenarios: The scaling configuration in your scaling group is in the Active state. Your scaling group contains Elastic Compute Service (ECS) instances that are created based on the scaling configuration.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3524,33 +3808,39 @@ Sample requests
 http://ess.example.com/?Action=DeleteScalingConfiguration &ScalingConfigurationId=eOs27Kb0oXvQcUYjEGel**** &<Common request parameters>
 ```
 
+Sample success responses `XML` format
+
+```xml
+<DeleteScalingConfigurationResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScalingConfigurationResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
+```
+
+`}`
+
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidScalingConfigur ationId.NotFound | The specified scaling configuration does not exist. | The error message returned because the specified scaling configuration does not exist within your Apsara Stack tenant account. |
 | 400 | IncorrectScalingConfig urationLifecycleState | The current lifecycle state of specified scaling configuration does not support this action. | The error message returned because the specified scaling configuration is in the Active state. |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | The error message returned because the scaling group contains ECS instances that are created based on the specified scaling configuration. |
 
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
-```
-
-#### CreateEciScalingConfiguration
+#### 6.8.5 CreateEciScalingConfiguration
 
 Creates a scaling configuration that is used to create elastic container instances.
 
 **Usage notes**
 
 A scaling configuration is a template that is used to create elastic container instances during scale-outs. You can specify Cpu and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3559,8 +3849,6 @@ A scaling configuration is a template that is used to create elastic container i
 | ScalingConfigura tionName | String | Yes | scalingconfig*** * | The name of the scaling configuration that you want to create. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), _ hyphens (-), and periods (.). The name must start with a letter or a digit. The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used. |
 | ScalingGroupId | String | Yes | asg- bp14wlu85wrpc hm0**** | The ID of the scaling group for which you want to create the scaling configuration. |
 | SecurityGroupId | String | Yes | sg- uf66jeqopgqa9h dn**** | The ID of the security group with which you want to associate the elastic container instance. Elastic container instances that are associated with the same security group can access each other. If you do not specify a security group, the system uses the default security group in the region that you selected. Make sure that the inbound rules of the security group contain the protocols and the port numbers of the containers that you want to expose. If no default security group is available in the region, the system automatically creates a default security group and adds the container protocols and port numbers to the inbound rules of the security group. |
-
-**Request parameters**
 
 | RestartPolicy | String | No | Always | The restart policy of the elastic container instance. Valid values: Always: always restarts the elastic container instance. Never: never restarts the elastic container instance. OnFailure: restarts the elastic container instance upon failure. Default value: Always. |
 |---|---|---|---|---|
@@ -3616,9 +3904,9 @@ A scaling configuration is a template that is used to create elastic container i
 | Container.N.Stdi n | Boolean | No | false | Specifies whether container N allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error occurs. Default value: false. |
 | Container.N.Me mory | Float | No | 0.5 | The memory size that you want to allocate to container N. Unit: GiB. |
 
-|  | Command |
+|   | Command |
 |---|---|
-| /bin/bash |  |
+| /bin/bash |   |
 
 | Container.N.Na me | String | No | nginx | The name of the image in container N. |
 |---|---|---|---|---|
@@ -3668,17 +3956,17 @@ A scaling configuration is a template that is used to create elastic container i
 | Volume.N.Name | String | No | default-volume1 | The name of volume N. |
 | Volume.N.Empty DirVolume.Medi um | String | No | memory | The storage medium of the emptyDir volume. If you do not specify a storage medium for the emptyDir volume, the volume stores data in the file system of a node. If you set this parameter to memory , the emptyDir volume stores data in the memory. |
 
-| Volume.N.Config FileVolumeConfi gFileToPath.N.Pa th | String | No | PATH | The name of environment variable N. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores ( ). _ The name cannot start with a digit. Specify the value in the [0-9a-zA- Z] format. |  |  |
+| Volume.N.Config FileVolumeConfi gFileToPath.N.Pa th | String | No | PATH | The name of environment variable N. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores ( ). _ The name cannot start with a digit. Specify the value in the [0-9a-zA- Z] format. |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | [0-9a-zA- |  |
-| Volume.N.Config FileVolumeConfi gFileToPath.N.M ode | Integer | No | 0644 | The permissions on the directory if you set Volume.N.Type to ConfigFileVolume. |  |  |
-| Volume.N.Config FileVolumeConfi gFileToPath.N.Co ntent | String | No | bGl1bWk= | The content of the configuration file. The maximum size of the configuration file is 32 KB. |  |  |
-| InitContainer.N.I nitContainerEnvi ronmentVar.N.K ey | String | No | Path | The key of environment variable N for init container N. The key must be 1 to 128 characters in length and can contain letters, digits, and underscores ( ). The key cannot start _ with a digit. Specify the value in the [0-9a-zA-Z] format. |  |  |
-| InitContainer.N.I nitContainerEnvi ronmentVar.N.V alue | String | No | /usr/bin/ | The value of environment variable N for init container N. The value can be up to 256 characters in length. |  |  |
-| InitContainer.N.S ecurityContext.C apability.Add.N | RepeatL ist | No | NET ADMIN _ | The permissions that you want to grant to the processes in init container N. Valid values: NET ADMIN and NET RAW. _ _ Note If you want to use NET RAW, submit a ticket. _ |  |  |
-| InitContainer.N.I mage | String | No | nginx | The image in init container N. |  |  |
+|   |   |   |   |   | [0-9a-zA- |   |
+| Volume.N.Config FileVolumeConfi gFileToPath.N.M ode | Integer | No | 0644 | The permissions on the directory if you set Volume.N.Type to ConfigFileVolume. |   |   |
+| Volume.N.Config FileVolumeConfi gFileToPath.N.Co ntent | String | No | bGl1bWk= | The content of the configuration file. The maximum size of the configuration file is 32 KB. |   |   |
+| InitContainer.N.I nitContainerEnvi ronmentVar.N.K ey | String | No | Path | The key of environment variable N for init container N. The key must be 1 to 128 characters in length and can contain letters, digits, and underscores ( ). The key cannot start _ with a digit. Specify the value in the [0-9a-zA-Z] format. |   |   |
+| InitContainer.N.I nitContainerEnvi ronmentVar.N.V alue | String | No | /usr/bin/ | The value of environment variable N for init container N. The value can be up to 256 characters in length. |   |   |
+| InitContainer.N.S ecurityContext.C apability.Add.N | RepeatL ist | No | NET ADMIN _ | The permissions that you want to grant to the processes in init container N. Valid values: NET ADMIN and NET RAW. _ _ Note If you want to use NET RAW, submit a ticket. _ |   |   |
+| InitContainer.N.I mage | String | No | nginx | The image in init container N. |   |   |
 
-|  | Z] |
+|   | Z] |
 |---|---|
 
 | InitContainer.N.I nitContainerVolu meMount.N.Mou ntPropagation | String | No | None | The mount propagation settings of volume N. Mount propagation allows volumes that are mounted on a container to be shared with other containers in the same pod or other pods on the same node. Valid values: None: The volume mount does not receive subsequent mounts that are mounted to the volume or to the subdirectories of the volume. HostToCotainer: The volume mount receives all subsequent mounts that are mounted to the volume or the subdirectories of the volume. Bidirectional: This value is similar to HostToCotainer. The volume mount receives all subsequent mounts that are mounted to the volume or the subdirectories of the volume. All volume mounts that are mounted by the container are propagated back to the instance and all containers of all pods that use the same volume. |
@@ -3714,12 +4002,14 @@ A scaling configuration is a template that is used to create elastic container i
 | AcrRegistryInfo. N.InstanceId | String | No | cri- nwj395hgf6f3*** * | The ID of Container Registry Enterprise Edition instance N. |
 | AcrRegistryInfo. N.RegionId | String | No | cn-shanghai- env17-d01 | The region ID of Container Registry Enterprise Edition instance N. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 89945DD3-9072- 47D0-A318- 353284CF**** | The ID of the request. |
 | ScalingConfigu rationId | String | eci- uf6fonnghi50u374* *** | The ID of the elastic container instance. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3731,31 +4021,35 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 &RestartPolicy=Always &Cpu=1.0 &Memory=2.0 &DnsPolicy=Default &ImageSnapshotId=imc-2zebxkiifuyzzlhl**** &RamRoleName=RamTestRole &TerminationGracePeriodSeconds=60 &AutoMatchImageCache=false &Ipv6AddressCount=1 &ActiveDeadlineSeconds=1000 &AutoCreateEip=true &EipBandwidth=5 &HostName=test &IngressBandwidth=1024000 &EgressBandwidth=1024000 &CpuOptionsCore=2 &CpuOptionsThreadsPerCore=2 &EphemeralStorage=20 &LoadBalancerWeight=50 &Tag=[{"Key":"version","Value":"3"}] &ImageRegistryCredential=[{"Password":"yourpaasword","Server":"registry-vpc.cn-shanghai -env17-d01.aliyuncs.com","UserName":"yourusername"}] &Container= [{"ReadinessProbe.TimeoutSeconds":5,"ReadinessProbe.SuccessThreshold":1,"SecurityContext. pability.Add": ["NET_ADMIN"],"ReadinessProbe.TcpSocket.Port":8000,"ReadinessProbe.HttpGet.Scheme":"HTTP" LivenessProbe.PeriodSeconds":5,"Port":[{"Protocol":"TCP","Port":80}],"EnvironmentVar":[ {"Key":"PATH","Value":"/usr/local/bin"}],"LivenessProbe.TcpSocket.Port":8000,"Tty":false, orkingDir":"/usr/local/","LivenessProbe.HttpGet.Scheme":"HTTP","ReadinessProbe.HttpGet.Po ":8080,"Arg": ["100"],"Gpu":1,"ReadinessProbe.InitialDelaySeconds":3,"Stdin":false,"Memory":0.5,"Name": ginx","Image":"registry-vpc.cn-shanghai-env17d01.aliyuncs.com/eci_open/nginx:latest","LivenessProbe.InitialDelaySeconds":5,"VolumeMoun :[{"MountPropagation":"None","MountPath":"/pod/data","ReadOnly":false,"Name":"default-v olume1","SubPath":"data2/"}],"LivenessProbe.FailureThreshold":3,"ReadinessProbe.Exec.Comm d":["cat /tmp/healthy"],"ReadinessProbe.FailureThreshold":3,"ImagePullPolicy":"Always","StdinOnce" alse,"Cpu":0.25,"LivenessProbe.HttpGet.Port":8888,"LivenessProbe.HttpGet.Path":"/healthyz "LivenessProbe.SuccessThreshold":1,"ReadinessProbe.PeriodSeconds":3,"LivenessProbe.Timeou econds":1,"Command": ["sleep"],"SecurityContext.RunAsUser":1000,"ReadinessProbe.HttpGet.Path":"/healthz","Live ssProbe.Exec.Command":["cat/tmp/healthy"]}] &Volume= [{"Type":"ConfigFileVolume","DiskVolume.DiskSize":15,"NFSVolume.Path":"/share","FlexVolum FsType":"ext4","DiskVolume.FsType":"xfs","HostPathVolume.Type":"Directory","NFSVolume.Rea nly":false,"HostPathVolume.Path":"/xx/xx/path","FlexVolume.Options":"{\"volumeId\":\"d- 2zehdahrwoa7srg****\",\"performanceLevel\": \"PL2\"}","FlexVolume.Driver":"flexvolume","ConfigFileVolumeDefaultMode":644,"NFSVolume.S ver":"3f9cd4a596-naw76.cn-shanghai-env17-d01.nas.aliyuncs.com","DiskVolume.DiskId":"d-x x","Name":"defaultvolume1","EmptyDirVolume.Medium":"memory","ConfigFileVolumeConfigFileToPath":[{"Path":" PATH","Mode":644,"Content":"bGl1bWk="}]}] &InitContainer=[{"InitContainerEnvironmentVar": [{"Key":"Path","Value":"/usr/bin/"}],"SecurityContext.Capability.Add": ["NETADMIN"],"Image":"nginx","InitContainerVolumeMount":
 ```
 
+```json
+[NET_ADMIN],Image:nginx,InitContainerVolumeMount: [{"MountPropagation":"None","MountPath":"/usr/share/","ReadOnly":false,"Name":"test-emp ty","SubPath":"/usr/sub/"}],"ImagePullPolicy":"Always","Cpu":0.5,"WorkingDir":"/usr/local "Command":["sleep"],"Arg": ["10"],"SecurityContext.RunAsUser":587,"Gpu":1,"Memory":1.0,"Name":"test-init"}] &DnsConfigNameServer=["172.10.*.**"] &DnsConfigSearch=["svc.local.kubenetes"] &DnsConfigOption=[{"Value":"value","Name":"name"}] &HostAliase=[{"Ip":"1.1.1.1","Hostname":["hehe.com"]}] &SecurityContextSysctl=[{"Value":"65536","Name":"kernel.msgmax"}] &NtpServer=["ntp.cloud.aliyuncs.com"] &AcrRegistryInfo=[{"Domain":["*****-****-registry.cn-shanghai-env17d01.cr.aliyuncs.com"],"InstanceName":"acr-test","InstanceId":"crinwj395hgf6f3****","RegionId":"cn-shanghai-env17-d01"}] &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<CreateEciScalingConfigurationResponse>
+      <RequestId>89945DD3-9072-47D0-A318-353284CF****</RequestId>
+      <ScalingConfigurationId>eci-uf6fonnghi50u374****</ScalingConfigurationId>
+</CreateEciScalingConfigurationResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "89945DD3-9072-47D0-A318-353284CF****",
+    "ScalingConfigurationId": "eci-uf6fonnghi50u374****"
+```
+
+`}`
+
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InstanceType.Mismatc h | The specified scaling configuration and existing active scaling configuration have different instance type. | The instance type in the specified scaling configuration is different from the instance type in the current scaling configuration. |
 | 404 | InvalidDataDiskSnapsh otId.NotFound | Snapshot "XXX" does not exist. | The snapshot does not exist. |
 | 400 | InvalidDataDiskSnapsh otId.SizeNotSupported | The capacity of snapshot "XXX" exceeds the size limit of the specified disk category. | The size of the snapshot exceeds the maximum size that is allowed for the disk. |
-
-```json
-[NET_ADMIN],Image:nginx,InitContainerVolumeMount: [{"MountPropagation":"None","MountPath":"/usr/share/","ReadOnly":false,"Name":"test-emp ty","SubPath":"/usr/sub/"}],"ImagePullPolicy":"Always","Cpu":0.5,"WorkingDir":"/usr/local "Command":["sleep"],"Arg": ["10"],"SecurityContext.RunAsUser":587,"Gpu":1,"Memory":1.0,"Name":"test-init"}] &DnsConfigNameServer=["172.10.*.**"] &DnsConfigSearch=["svc.local.kubenetes"] &DnsConfigOption=[{"Value":"value","Name":"name"}] &HostAliase=[{"Ip":"1.1.1.1","Hostname":["hehe.com"]}] &SecurityContextSysctl=[{"Value":"65536","Name":"kernel.msgmax"}] &NtpServer=["ntp.cloud.aliyuncs.com"] &AcrRegistryInfo=[{"Domain":["*****-****-registry.cn-shanghai-env17d01.cr.aliyuncs.com"],"InstanceName":"acr-test","InstanceId":"crinwj395hgf6f3****","RegionId":"cn-shanghai-env17-d01"}] &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>89945DD3-9072-47D0-A318-353284CF****</RequestId>
-      <ScalingConfigurationId>eci-uf6fonnghi50u374****</ScalingConfigurationId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "89945DD3-9072-47D0-A318-353284CF****",
-    "ScalingConfigurationId": "eci-uf6fonnghi50u374****"
-}
-```
 
 | 403 | InvalidDevice.InUse | Device "XXX" has been occupied. | The mount target of the data disk is occupied. |
 |---|---|---|---|
@@ -3783,6 +4077,12 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | 400 | QuotaExceeded.Securi tyGroupInstance | Instance quota exceeded in the specified security group. | The maximum number of elastic container instances that can be associated with the security group has been reached. |
 |---|---|---|---|
 
+#### 6.8.6 DescribeEciScalingConfigurations
+
+Queries scaling configurations that are used to create elastic container instances.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeEciScali ngConfiguration s | The operation that you want to perform. Set the value to DescribeEciScalingConfigurations. |
@@ -3792,22 +4092,18 @@ http(s)://ess.example.com/?Action=CreateEciScalingConfiguration &ScalingGroupId=
 | ScalingGroupId | String | No | asg- bp17pelvl720x3 v7**** | The ID of the scaling group. You can query all scaling configurations in the scaling group. |
 | ScalingConfigura tionId.N | RepeatL ist | No | asc- bp17pelvl720x5 ub**** | The ID of scaling configuration N that you want to query. Valid values of N: 1 to 10. The IDs of active and inactive scaling configurations are displayed in the query results. You can distinguish between active and inactive scaling configurations based on the value of LifecycleState. |
 
-#### DescribeEciScalingConfigurations
-
-Queries scaling configurations that are used to create elastic container instances.
-
-**Request parameters**
-
 | ScalingConfigura tionName.N | RepeatL ist | No | scalingcon**** | The name of scaling configuration N that you want to query. Valid values of N: 1 to 10. The names of inactive scaling configurations are not displayed in the query results, and no error is reported. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 50 | The number of entries per page. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
-| ScalingConfigu rations | Array of ScalingConfigu ration |  | The scaling configurations. |
-| AcrRegistryInf os | Array of AcrRegistryInf o |  | The information about the Container Registry Enterprise Edition instance. |
+| ScalingConfigu rations | Array of ScalingConfigu ration |   | The scaling configurations. |
+| AcrRegistryInf os | Array of AcrRegistryInf o |   | The information about the Container Registry Enterprise Edition instance. |
 | Domains | List | *****-****- registry.cn-beijing- env17- d01.cr.aliyuncs.co m | The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the Container Registry Enterprise Edition instance are displayed. Multiple domain names are separated by commas (,). |
 | InstanceId | String | cri- nwj395hgf6f3**** | The ID of the Container Registry Enterprise Edition instance. |
 | InstanceName | String | acr-test | The name of the Container Registry Enterprise Edition instance. |
@@ -3815,24 +4111,22 @@ Queries scaling configurations that are used to create elastic container instanc
 | ActiveDeadlin eSeconds | Integer | 1000 | The validity period of the scaling configuration. Unit: seconds. |
 | AutoCreateEip | Boolean | true | Indicates whether an elastic IP address (EIP) is automatically created and then bound to the elastic container instance. |
 
-**Response parameters**
-
-| AutoMatchIma geCache | Boolean | false | Indicates whether the image cache is automatically matched. Default value: false. |  |  |
+| AutoMatchIma geCache | Boolean | false | Indicates whether the image cache is automatically matched. Default value: false. |   |   |
 |---|---|---|---|---|---|
-| ContainerGrou pName | String | test | The name of the elastic container instance. |  |  |
-| Containers | Array of Container |  | The containers in the elastic container instance. |  |  |
-| Args | List | 10 | The arguments that are passed to the container startup commands. Maximum value: 10. |  |  |
-| Commands | List | sleep | The container startup commands. Maximum value: 20. Each command contains up to 256 characters. |  |  |
-| Cpu | Float | 2.0 | The number of vCPUs of the container. |  |  |
-| EnvironmentV ars | Array of EnvironmentV ar |  | The environment variables. |  |  |
-| Key | String | PATH | The key of the environment variable. The key must be 1 to 128 characters in length and can contain letters, digits, and underscore( ). The key is in the [0-9a- _ zA-Z] format. |  |  |
-|  |  |  |  | [0-9a- |  |
-| Value | String | /usr/bin/ | The value of the environment variable. The value can be up to 256 characters in length. |  |  |
-| Gpu | Integer | 1 | The number of GPUs of the container. |  |  |
-| Image | String | mysql | The image of the container. |  |  |
-| ImagePullPolic y | String | Always | The policy for image pulling. Valid values: Always: Each time instances are created, image pulling is performed. IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed. Never: On-premises images are always used. |  |  |
+| ContainerGrou pName | String | test | The name of the elastic container instance. |   |   |
+| Containers | Array of Container |   | The containers in the elastic container instance. |   |   |
+| Args | List | 10 | The arguments that are passed to the container startup commands. Maximum value: 10. |   |   |
+| Commands | List | sleep | The container startup commands. Maximum value: 20. Each command contains up to 256 characters. |   |   |
+| Cpu | Float | 2.0 | The number of vCPUs of the container. |   |   |
+| EnvironmentV ars | Array of EnvironmentV ar |   | The environment variables. |   |   |
+| Key | String | PATH | The key of the environment variable. The key must be 1 to 128 characters in length and can contain letters, digits, and underscore( ). The key is in the [0-9a- _ zA-Z] format. |   |   |
+|   |   |   |   | [0-9a- |   |
+| Value | String | /usr/bin/ | The value of the environment variable. The value can be up to 256 characters in length. |   |   |
+| Gpu | Integer | 1 | The number of GPUs of the container. |   |   |
+| Image | String | mysql | The image of the container. |   |   |
+| ImagePullPolic y | String | Always | The policy for image pulling. Valid values: Always: Each time instances are created, image pulling is performed. IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed. Never: On-premises images are always used. |   |   |
 
-|  | zA-Z] |
+|   | zA-Z] |
 |---|---|
 
 | LivenessProbe ExecCommand s | List | cat/tmp/healthy | The commands that are run in the container when you use the CLI to perform probes. |
@@ -3850,7 +4144,7 @@ Queries scaling configurations that are used to create elastic container instanc
 
 | Name | String | nginx | The name of the container. |
 |---|---|---|---|
-| Ports | Array of Port |  | The exposed ports and protocols of the container. |
+| Ports | Array of Port |   | The exposed ports and protocols of the container. |
 | Port | Integer | 8888 | The port number. Valid values: 1 to 65535. |
 | Protocol | String | TCP | The type of the protocol. Valid values: TCP UDP |
 | ReadinessProb eExecComman ds | List | cat/tmp/healthy | The commands that are run in the container when you use the CLI to perform readiness probes. |
@@ -3870,7 +4164,7 @@ Queries scaling configurations that are used to create elastic container instanc
 | Stdin | Boolean | true | Indicates whether the container allocates buffer resources to standard input streams when the container is run. If this parameter is not specified, an end-of-file (EOF) error occurs. Default value: false. |
 | StdinOnce | Boolean | true | Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected during multiple sessions. If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container is restarted. |
 | Tty | Boolean | false | Indicates whether interaction is enabled. Valid values: true false If Command is set to /bin/bash , this parameter must be set to true. Default value: false. |
-| VolumeMounts | Array of VolumeMount |  | The volumes that are mounted to the container. |
+| VolumeMounts | Array of VolumeMount |   | The volumes that are mounted to the container. |
 
 | MountPath | String | /pod/data | The directory on which the volume is mounted. Important Data in this directory is overwritten by the data on the volume. |
 |---|---|---|---|
@@ -3887,7 +4181,7 @@ Queries scaling configurations that are used to create elastic container instanc
 | CpuOptionsThr eadsPerCore | Integer | 2 | The number of threads per core. This parameter can be specified only for specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see the "Specify CPU options" topic in the Elastic Container Instance documentation. |
 | CreationTime | String | 2014-08- 14T10:58Z | The time at which the scaling configuration was created. |
 | DnsConfigNam eServers | List | 172.10.*.** | The IP addresses of the domain name system (DNS) server. |
-| DnsConfigOpti ons | Array of DnsConfigOpti on |  | The options. Each option is a name-value pair. The value in the name-value pair is optional. |
+| DnsConfigOpti ons | Array of DnsConfigOpti on |   | The options. Each option is a name-value pair. The value in the name-value pair is optional. |
 | Name | String | name | The variable name of the option. |
 | Value | String | value | The variable value of the option. |
 | DnsConfigSear ches | List | svc.local.kubenete s | The search domains of the DNS server. |
@@ -3897,33 +4191,33 @@ Queries scaling configurations that are used to create elastic container instanc
 
 | EphemeralStor age | Integer | 20 | The capacity of the ephemeral storage. Unit: GiB. |
 |---|---|---|---|
-| HostAliases | Array of HostAlias |  | The hostnames and IP addresses of a container that are added to the hosts file of the elastic container instance. |
+| HostAliases | Array of HostAlias |   | The hostnames and IP addresses of a container that are added to the hosts file of the elastic container instance. |
 | Hostnames | List | ['hehe.com', 'haha.com'] | The hostnames that are added. |
 | Ip | String | 192.0.XX.XX | The IP address that is added. |
 | HostName | String | ['hehe.com', 'haha.com'] | The hostname. |
-| ImageRegistry Credentials | Array of ImageRegistry Credential |  | The information about the image repository. |
+| ImageRegistry Credentials | Array of ImageRegistry Credential |   | The information about the image repository. |
 | Password | String | yourpaasword | The password of the image repository. |
 | Server | String | registry-vpc.cn- shanghai-env17- d01.aliyuncs.com | The address of the image repository. |
 | UserName | String | yourusername | The username of the image repository. |
 | ImageSnapsho tId | String | imc- 2zebxkiifuyzzlhl*** * | The ID of the image snapshot. |
 | IngressBandwi dth | Long | 1024000 | The maximum inbound bandwidth. Unit: bytes. |
-| InitContainers | Array of InitContainer |  | The init containers. |
+| InitContainers | Array of InitContainer |   | The init containers. |
 | Cpu | Float | 0.5 | The number of vCPUs of the init container. |
 | Gpu | Integer | 1 | The number of GPUs of the init container. |
 | Image | String | nginx | The image of the container. |
 
-| ImagePullPolic y | String | Always | The policy for image pulling. Valid values: Always: Each time instances are created, image pulling is performed. IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed. Never: On-premises images are always used. |  |  |
+| ImagePullPolic y | String | Always | The policy for image pulling. Valid values: Always: Each time instances are created, image pulling is performed. IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed. Never: On-premises images are always used. |   |   |
 |---|---|---|---|---|---|
-| InitContainerA rgs | List | 10 | The container startup arguments. |  |  |
-| InitContainerC ommands | List | sleep | The container startup commands. |  |  |
-| InitContainerE nvironmentVar s | Array of InitContainerE nvironmentVar |  | The environment variables. |  |  |
-| Key | String | PATH | The key of the environment variable. The key must be 1 to 128 characters in length and can contain letters, digits, and underscore( ). The key is in the [0-9a- _ zA-Z] format. |  |  |
-|  |  |  |  | [0-9a- |  |
-| Value | String | /usr/local/bin | The value of the environment variable. The value can be up to 256 characters in length. |  |  |
-| InitContainerV olumeMounts | Array of InitContainerV olumeMount |  | The volumes that are mounted on the container. |  |  |
-| MountPath | String | /usr/share/ | The directory on which the volume is mounted. Important Data in this directory is overwritten by the data on the volume. |  |  |
+| InitContainerA rgs | List | 10 | The container startup arguments. |   |   |
+| InitContainerC ommands | List | sleep | The container startup commands. |   |   |
+| InitContainerE nvironmentVar s | Array of InitContainerE nvironmentVar |   | The environment variables. |   |   |
+| Key | String | PATH | The key of the environment variable. The key must be 1 to 128 characters in length and can contain letters, digits, and underscore( ). The key is in the [0-9a- _ zA-Z] format. |   |   |
+|   |   |   |   | [0-9a- |   |
+| Value | String | /usr/local/bin | The value of the environment variable. The value can be up to 256 characters in length. |   |   |
+| InitContainerV olumeMounts | Array of InitContainerV olumeMount |   | The volumes that are mounted on the container. |   |   |
+| MountPath | String | /usr/share/ | The directory on which the volume is mounted. Important Data in this directory is overwritten by the data on the volume. |   |   |
 
-|  | zA-Z] |
+|   | zA-Z] |
 |---|---|
 
 | MountPropaga tion | String | None | The mount propagation setting of the volume. Mount propagation allows you to share volumes that are mounted on a container with other containers in the same pod or other pods on the same node. Valid values: None: The volume mount does not receive subsequent mounts that are mounted to the volume or to the subdirectories of the volume. HostToCotainer: The volume mount receives all subsequent mounts that are mounted to the volume or the subdirectories of the volume. Bidirectional: This value is similar to HostToCotainer. The volume mount receives all subsequent mounts that are mounted to the volume or the subdirectories of the volume. All volume mounts that are mounted by the container are propagated back to the instance and all containers of all pods that use the same volume. Default value: None. |
@@ -3956,20 +4250,20 @@ Queries scaling configurations that are used to create elastic container instanc
 | ScalingConfigu rationId | String | asc- bp1ezrfgoyn5kijl*** * | The ID of the scaling configuration. |
 | ScalingConfigu rationName | String | scalingconfi**** | The name of the scaling configuration. |
 | ScalingGroupI d | String | asg- bp17pelvl720x3v7* *** | The ID of the scaling group to which the scaling configuration belongs. |
-| SecurityConte xtSysCtls | Array of SecurityConte xtSysCtl |  | The system information about the security context in which the elastic container instance is run. |
+| SecurityConte xtSysCtls | Array of SecurityConte xtSysCtl |   | The system information about the security context in which the elastic container instance is run. |
 | Name | String | kernel.msgmax | The name of the security context in which the elastic container instance is run. |
 | Value | String | 65536 | The value of the security context in which the elastic container instance is run. |
 | SecurityGroupI d | String | sg- bp18kz60mefs**** | The ID of the security group with which the elastic container instance is associated. Elastic container instances that are associated with the same security group can access each other. |
 | SpotPriceLimit | Float | 0.025 | Note This parameter is not publicly available. |
 | SpotStrategy | String | NoSpot | Note This parameter is not publicly available. |
 
-| Tags | Array of Tag |  | The tags of the elastic container instance. Tags are specified in the key-value format. |
+| Tags | Array of Tag |   | The tags of the elastic container instance. Tags are specified in the key-value format. |
 |---|---|---|---|
 | Key | String | version | The tag key of the elastic container instance. |
 | Value | String | 3 | The tag value of the elastic container instance. |
 | TerminationGr acePeriodSeco nds | Integer | 60 | The buffer period during which a program handles operations before the program is stopped. |
-| Volumes | Array of Volume |  | The information about volumes. |
-| ConfigFileVolu meConfigFileT oPaths | Array of ConfigFileVolu meConfigFileT oPath |  | The paths to configuration files. |
+| Volumes | Array of Volume |   | The information about volumes. |
+| ConfigFileVolu meConfigFileT oPaths | Array of ConfigFileVolu meConfigFileT oPath |   | The paths to configuration files. |
 | Content | String | bGl1bWk= | The content of the configuration file. The maximum size of the configuration file is 32 KB. |
 | Mode | Integer | 644 | The permissions on the directory when Type is set to ConfigFileVolume. |
 | Path | String | /usr/bin/ | The relative path to the configuration file. |
@@ -3992,13 +4286,15 @@ Queries scaling configurations that are used to create elastic container instanc
 | Type | String | EmptyDirVolume | The type of the volume. Valid values: EmptyDirVolume: an empty volume. NFSVolume: an NFS volume. ConfigFileVolume: a configuration file. FlexVolume: a volume that uses the FlexVolume plug-in to extend storage and supports disks. HostPathVolume: a file or path of the host node. DiskVolume: a disk volume. This value is not recommended. We recommend that you set Type to FlexVolume. |
 | TotalCount | Integer | 1 | The total number of scaling configurations. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://ess.example.com/?Action=DescribeEciScalingConfigurations &RegionId=cn-qingdao-env17-d01 &PageNumber=1 &PageSize=50 &ScalingGroupId=asg-bp17pelvl720x3v7**** &ScalingConfigurationId=["asc-bp17pelvl720x5ub****"] &ScalingConfigurationName=["scalingcon****"] &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <DescribeEciScalingConfigurationsResponse>
@@ -4006,6 +4302,7 @@ http(s)://ess.example.com/?Action=DescribeEciScalingConfigurations &RegionId=cn-
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <PageSize>50</PageSize>
       <PageNumber>1</PageNumber>
+      <ScalingConfigurations>
             <ScalingConfigurationName>scalingconfi****</ScalingConfigurationName>
             <Memory>16</Memory>
             <Cpu>2</Cpu>
@@ -4076,13 +4373,13 @@ d01.cr.aliyuncs.com</Domains>
 itC
 ```
 
-t `tC`
+`t` `tC`
 
 ```
 bilitAdd>NETADMIN</S itC
 ```
 
-t `tC`
+`t` `tC`
 
 ```
 bilitAdd>
@@ -4189,13 +4486,13 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
             <DnsConfigNameServers>172.10.*.**</DnsConfigNameServers>
             <DnsConfigSearches>svc.local.kubenetes</DnsConfigSearches>
             <NtpServers>ntp.cloud.aliyuncs.com</NtpServers>
+      </ScalingConfigurations>
 </DescribeEciScalingConfigurationsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 1,
 ```
 
@@ -4203,6 +4500,7 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "PageSize": 50,
     "PageNumber": 1,
+    "ScalingConfigurations": {
         "ScalingConfigurationName": "scalingconfi****",
         "Memory": 16,
         "Cpu": 2,
@@ -4233,13 +4531,21 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
         "HostAliases": {
             "Ip": "192.0.XX.XX",
             "Hostnames": "['hehe.com', 'haha.com']"
-        },
+```
+
+`},`
+
+```json
         "AcrRegistryInfos": {
             "InstanceName": "acr-test",
             "InstanceId": "cri-nwj395hgf6f3****",
             "RegionId": "cn-hangzhou-env17-d01",
             "Domains": "*****-****-registry.cn-beijing-env17-d01.cr.aliyuncs.com"
-        },
+```
+
+`},`
+
+```json
         "InitContainers": {
             "WorkingDir": "/usr/local",
             "ImagePullPolicy": "Always",
@@ -4260,15 +4566,27 @@ d01.nas.aliyuncs.com</NFSVolumeServer>
                 "SubPath": "/usr/sub/",
                 "MountPropagation": "None",
                 "Name": "test-empty"
-            },
+```
+
+`},`
+
+```json
             "InitContainerEnvironmentVars": {
                 "Value": "/usr/local/bin",
                 "Key": "PATH"
-            },
+```
+
+`},`
+
+```json
             "SecurityContextCapabilityAdds": "NET_ADMIN",
             "InitContainerCommands": "sleep",
             "InitContainerArgs": 10
-        },
+```
+
+`},`
+
+```json
         "Volumes": {
             "NFSVolumePath": "/share",
             "Type": "EmptyDirVolume",
@@ -4289,17 +4607,28 @@ d01.nas.aliyuncs.com",
                 "Path": "/usr/bin/",
                 "Content": "bGl1bWk=",
                 "Mode": 644
-            }
-        },
+```
+
+`}` `},`
+
+```json
         "SecurityContextSysCtls": {
             "Value": 65536,
             "Name": "kernel.msgmax"
-        },
+```
+
+`},`
+
+```json
         "ImageRegistryCredentials": {
             "UserName": "yourusername",
             "Server": "registry-vpc.cn-shanghai-env17-d01.aliyuncs.com",
             "Password": "yourpaasword"
-        },
+```
+
+`},`
+
+```json
         "Containers": {
             "Memory": 2,
             "ReadinessProbeTcpSocketPort": 8888,
@@ -4337,47 +4666,64 @@ d01.nas.aliyuncs.com",
             "EnvironmentVars": {
                 "Value": "/usr/bin/",
                 "Key": "PATH"
-            },
+```
+
+`},`
+
+```json
             "Ports": {
                 "Port": 8888,
                 "Protocol": "TCP"
-            },
+```
+
+`},`
+
+```json
             "VolumeMounts": {
                 "MountPath": "/pod/data",
                 "ReadOnly": false,
                 "SubPath": "data2/",
                 "MountPropagation": "None",
                 "Name": "default-volume1"
-            },
+```
+
+`},`
+
+```json
             "Commands": "sleep",
             "LivenessProbeExecCommands": "cat/tmp/healthy",
             "Args": 10,
             "ReadinessProbeExecCommands": "cat/tmp/healthy",
             "SecurityContextCapabilityAdds": "NET_ADMIN"
-        },
+```
+
+`},`
+
+```json
         "DnsConfigOptions": {
             "Value": "value",
             "Name": "name"
-        },
+```
+
+`},`
+
+```json
         "Tags": {
             "Value": 3,
             "Key": "version"
-        },
+```
+
+`},`
+
+```json
         "DnsConfigNameServers": "172.10.*.**",
         "DnsConfigSearches": "svc.local.kubenetes",
         "NtpServers": "ntp.cloud.aliyuncs.com"
-    }
-}
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyEciScaling Configuration | The operation that you want to perform. Set the value to ModifyEciScalingConfiguration. |
-| ScalingConfigura tionId | String | Yes | asc- bp16har3jpj6fjb x**** | The ID of the scaling configuration that you want to modify. |
-| ContainerGroup Name | String | No | nginx-test | The name of the elastic container instance. The name must meet the following requirements: The name must be 2 to 128 characters in length. The name can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-). |
-| ScalingConfigura tionName | String | No | test-modify | The name of the scaling configuration that you want to create. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), _ hyphens (-), and periods (.). The name must start with a letter or a digit. The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the value of ScalingConfigurationId is used. |
+`}` `}`
 
-#### ModifyEciScalingConfiguration
+#### 6.8.7 ModifyEciScalingConfiguration
 
 Modifies a scaling configuration that is used to create elastic container instances.
 
@@ -4386,6 +4732,13 @@ Modifies a scaling configuration that is used to create elastic container instan
 If you need to modify the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyEciScaling Configuration | The operation that you want to perform. Set the value to ModifyEciScalingConfiguration. |
+| ScalingConfigura tionId | String | Yes | asc- bp16har3jpj6fjb x**** | The ID of the scaling configuration that you want to modify. |
+| ContainerGroup Name | String | No | nginx-test | The name of the elastic container instance. The name must meet the following requirements: The name must be 2 to 128 characters in length. The name can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-). |
+| ScalingConfigura tionName | String | No | test-modify | The name of the scaling configuration that you want to create. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), _ hyphens (-), and periods (.). The name must start with a letter or a digit. The name of the scaling configuration must be unique within a scaling group in a region. If you do not specify this parameter, the value of ScalingConfigurationId is used. |
 
 | SecurityGroupId | String | No | sg- uf66jeqopgqa9h dn**** | The ID of the security group with which you want to associate the elastic container instance. Elastic container instances that are associated with the same security group can communicate with each other. If you do not specify a security group, the system uses the default security group in the region that you select. Make sure that the inbound rules of the security group contain the protocols and port numbers of the containers that you want to expose. If you do not have a default security group in the region, the system automatically creates a default security group and adds the declared container protocols and port numbers to the inbound rules of the security group. |
 |---|---|---|---|---|
@@ -4427,20 +4780,20 @@ If you need to modify the name of a scaling configuration in a scaling group, ma
 | Container.N.Live nessProbe.Perio dSeconds | Integer | No | 5 | The interval at which liveness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1. |
 | Container.N.Port .N.Protocol | String | No | TCP | The type of the protocol. Valid values: TCP UDP |
 
-| Container.N.Port .N.Port | Integer | No | 80 | The port number. Valid values: 1 to 65535. |  |  |
+| Container.N.Port .N.Port | Integer | No | 80 | The port number. Valid values: 1 to 65535. |   |   |
 |---|---|---|---|---|---|---|
-| Container.N.Sec urityContext.Rea dOnlyRootFilesy stem | Boolean | No | true | Specifies whether the root file system on which the container runs is read-only. Valid value: true . |  |  |
-| Container.N.Envi ronmentVar.N.K ey | String | No | PATH | The key of environment variable N. Specify the value in the [0-9a-zA- Z] format. The key can be 1 to 128 characters in length and can contain underscores ( ). The key cannot start _ with a digit. |  |  |
-|  |  |  |  |  | [0-9a-zA- |  |
-| Container.N.Envi ronmentVar.N.V alue | String | No | /usr/local/bin | The value of environment variable N. The value can be up to 256 characters in length. |  |  |
-| Container.N.Live nessProbe.TcpSo cket.Port | Integer | No | 8000 | The port detected by TCP sockets when you use the TCP sockets to perform liveness probes. |  |  |
-| Container.N.Tty | Boolean | No | false | Specifies whether to enable interaction. Default value: false. If Command is set to /bin/bash , set this parameter to true . |  |  |
-| Container.N.Wor kingDir | String | No | /usr/local/ | The working directory of container N. |  |  |
-| Container.N.Live nessProbe.HttpG et.Scheme | String | No | HTTP | The protocol type of the HTTP GET requests that you use to perform liveness probes. Valid values: HTTP HTTPS |  |  |
-| Container.N.Rea dinessProbe.Htt pGet.Port | Integer | No | 8080 | The port to which the HTTP GET requests that you use to perform readiness probes are sent. |  |  |
-| Container.N.Arg. N | RepeatL ist | No | 100 | Argument N that is passed to the container startup command. Maximum value of N: 10. |  |  |
+| Container.N.Sec urityContext.Rea dOnlyRootFilesy stem | Boolean | No | true | Specifies whether the root file system on which the container runs is read-only. Valid value: true . |   |   |
+| Container.N.Envi ronmentVar.N.K ey | String | No | PATH | The key of environment variable N. Specify the value in the [0-9a-zA- Z] format. The key can be 1 to 128 characters in length and can contain underscores ( ). The key cannot start _ with a digit. |   |   |
+|   |   |   |   |   | [0-9a-zA- |   |
+| Container.N.Envi ronmentVar.N.V alue | String | No | /usr/local/bin | The value of environment variable N. The value can be up to 256 characters in length. |   |   |
+| Container.N.Live nessProbe.TcpSo cket.Port | Integer | No | 8000 | The port detected by TCP sockets when you use the TCP sockets to perform liveness probes. |   |   |
+| Container.N.Tty | Boolean | No | false | Specifies whether to enable interaction. Default value: false. If Command is set to /bin/bash , set this parameter to true . |   |   |
+| Container.N.Wor kingDir | String | No | /usr/local/ | The working directory of container N. |   |   |
+| Container.N.Live nessProbe.HttpG et.Scheme | String | No | HTTP | The protocol type of the HTTP GET requests that you use to perform liveness probes. Valid values: HTTP HTTPS |   |   |
+| Container.N.Rea dinessProbe.Htt pGet.Port | Integer | No | 8080 | The port to which the HTTP GET requests that you use to perform readiness probes are sent. |   |   |
+| Container.N.Arg. N | RepeatL ist | No | 100 | Argument N that is passed to the container startup command. Maximum value of N: 10. |   |   |
 
-|  | Z] |
+|   | Z] |
 |---|---|
 
 | Container.N.Gpu | Integer | No | 1 | The number of GPUs that you want to allocate to container N. |
@@ -4543,11 +4896,13 @@ If you need to modify the name of a scaling configuration in a scaling group, ma
 | InstanceFamilyL evel | String | No | EnterpriseLevel | The instance family level, which is used to filter the range of instance types that meet the specified criteria. This parameter takes effect when CostOptimization is set to true. Valid values: EntryLevel: shared instance type. Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "Shared instance families" topic in ECS documentation. EnterpriseLevel: Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "Instance type families" topic in ECS documentation. CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "Burstable instance types" topic in ECS documentation. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 89945DD3-9072- 47D0-A318- 353284CF**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4559,42 +4914,46 @@ http(s)://ess.example.com/?Action=ModifyEciScalingConfiguration &ScalingConfigur
 &ImageSnapshotId=imc-2zebxkiifuyzzlhl**** &RamRoleName=RamTestRole &TerminationGracePeriodSeconds=60 &AutoMatchImageCache=false &Ipv6AddressCount=1 &ActiveDeadlineSeconds=1000 &AutoCreateEip=true &EipBandwidth=5 &HostName=test &IngressBandwidth=1024000 &EgressBandwidth=1024000 &CpuOptionsCore=2 &CpuOptionsThreadsPerCore=2 &EphemeralStorage=20 &LoadBalancerWeight=50 &Tag=[{"Key":"version","Value":"3"}] &ImageRegistryCredential=[{"Password":"yourpaasword","Server":"registry-vpc.cn-shanghai -env17-d01.aliyuncs.com","UserName":"yourusername"}] &Container= [{"ReadinessProbe.TimeoutSeconds":1,"ReadinessProbe.SuccessThreshold":1,"SecurityContext. pability.Add": ["NET_ADMIN"],"ReadinessProbe.TcpSocket.Port":8000,"ReadinessProbe.HttpGet.Scheme":"HTTP" LivenessProbe.PeriodSeconds":5,"Port": [{"Protocol":"TCP","Port":80}],"SecurityContext.ReadOnlyRootFilesystem":true,"Environment r": [{"Key":"PATH","Value":"/usr/local/bin"}],"LivenessProbe.TcpSocket.Port":8000,"Tty":false WorkingDir":"/usr/local/","LivenessProbe.HttpGet.Scheme":"HTTP","ReadinessProbe.HttpGet.P t":8080,"Arg": ["100"],"Gpu":1,"ReadinessProbe.InitialDelaySeconds":3,"Stdin":false,"Memory":0.5,"Name": ginx","Image":"registry-vpc.cn-hangzhou-env17d01.aliyuncs.com/eci_open/nginx:latest","LivenessProbe.InitialDelaySeconds":5,"VolumeMoun :[{"MountPropagation":"None","MountPath":"/pod/data","ReadOnly":false,"Name":"default-v olume1","SubPath":"data2/"}],"LivenessProbe.FailureThreshold":3,"ReadinessProbe.Exec.Comm d": ["cat/tmp/healthy"],"ReadinessProbe.FailureThreshold":3,"ImagePullPolicy":"Always","Stdin ce":false,"Cpu":0.25,"LivenessProbe.HttpGet.Port":8888,"LivenessProbe.HttpGet.Path":"/hea hyz","LivenessProbe.SuccessThreshold":1,"ReadinessProbe.PeriodSeconds":3,"LivenessProbe.T eoutSeconds":1,"Command": ["sleep"],"SecurityContext.RunAsUser":1000,"ReadinessProbe.HttpGet.Path":"/healthz","Live ssProbe.Exec.Command":["cat /tmp/healthy"]}] &Volume= [{"Type":"EmptyDirVolume","DiskVolume.DiskSize":15,"NFSVolume.Path":"/share","FlexVolume. Type":"ext4","DiskVolume.FsType":"xfs","HostPathVolume.Type":"Directory","NFSVolume.ReadO y":false,"HostPathVolume.Path":"/xx/xx/name","FlexVolume.Options":"{\"volumeId\":\"d-2z ehdahrwoa7srg****\",\"performanceLevel\": \"PL2\"}","FlexVolume.Driver":"flexvolume","ConfigFileVolumeDefaultMode":644,"NFSVolume.S ver":"3f9cd4a596-naw76.cn-shanghai-env17-d01.nas.aliyuncs.com","DiskVolume.DiskId":"d-x x","Name":"defaultvolume1","EmptyDirVolume.Medium":"memory","ConfigFileVolumeConfigFileToPath":[{"Path":" /usr/bin/","Mode":644,"Content":"bGl1bWk="}]}] &InitContainer=[{"InitContainerEnvironmentVar": [{"Key":"Path","Value":"/usr/bin/"}],"SecurityContext.Capability.Add": ["NET_ADMIN"],"Image":"nginx","InitContainerVolumeMount": [{"MountPropagation":"None","MountPath":"/usr/share/","ReadOnly":false,"Name":"test-emp ty","SubPath":"/usr/sub/"}],"ImagePullPolicy":"Always","Cpu":0.5,"WorkingDir":"/usr/local
 ```
 
+```
+ty,Subat :/us/sub/}], ageu
+```
+
+`o`
+
+```
+cy: ways,Cpu:0.5,
+```
+
+`o` `g`
+
+```json
+:/us/oca "Command":["sleep"],"Arg": ["10"],"SecurityContext.RunAsUser":587,"Gpu":1,"Memory":1.0,"Name":"test-init"}] &DnsConfigNameServer=["172.10.*.**"] &DnsConfigSearch=["svc.local.kubenetes"] &DnsConfigOption=[{"Value":"value","Name":"name"}] &HostAliase=[{"Ip":"192.0.XX.XX","Hostname":["['hehe.com', 'haha.com']"]}] &SecurityContextSysctl=[{"Value":"65536","Name":"kernel.msgmax"}] &NtpServer=["ntp.cloud.aliyuncs.com"] &AcrRegistryInfo=[{"Domain":["*****-****-registry.cn-beijing-env17d01.cr.aliyuncs.com"],"InstanceName":"acr-test","InstanceId":"crinwj395hgf6f3****","RegionId":"cn-hangzhou-env17-d01"}] &CostOptimization=false &InstanceFamilyLevel=EnterpriseLevel &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<ModifyEciScalingConfigurationResponse>
+      <RequestId>89945DD3-9072-47D0-A318-353284CF****</RequestId>
+</ModifyEciScalingConfigurationResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "89945DD3-9072-47D0-A318-353284CF****"
+```
+
+`}`
+
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the operation. |
 | 404 | InvalidDataDiskSnapsh otId.NotFound | Snapshot "XXX" does not exist. | The snapshot does not exist. |
 | 400 | InvalidDataDiskSnapsh otId.SizeNotSupported | The capacity of snapshot "XXX" exceeds the size limit of the specified disk category. | The size of the snapshot exceeds the maximum size that is allowed for the disk. |
 | 404 | InvalidImageId.NotFou nd | The specified image does not exist. | The image does not exist. |
-
-```
-ty,Subat :/us/sub/}], ageu
-```
-
-o
-
-```
-cy: ways,Cpu:0.5,
-```
-
-o g
-
-```json
-:/us/oca "Command":["sleep"],"Arg": ["10"],"SecurityContext.RunAsUser":587,"Gpu":1,"Memory":1.0,"Name":"test-init"}] &DnsConfigNameServer=["172.10.*.**"] &DnsConfigSearch=["svc.local.kubenetes"] &DnsConfigOption=[{"Value":"value","Name":"name"}] &HostAliase=[{"Ip":"192.0.XX.XX","Hostname":["['hehe.com', 'haha.com']"]}] &SecurityContextSysctl=[{"Value":"65536","Name":"kernel.msgmax"}] &NtpServer=["ntp.cloud.aliyuncs.com"] &AcrRegistryInfo=[{"Domain":["*****-****-registry.cn-beijing-env17d01.cr.aliyuncs.com"],"InstanceName":"acr-test","InstanceId":"crinwj395hgf6f3****","RegionId":"cn-hangzhou-env17-d01"}] &CostOptimization=false &InstanceFamilyLevel=EnterpriseLevel &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>89945DD3-9072-47D0-A318-353284CF****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "89945DD3-9072-47D0-A318-353284CF****"
-}
-```
 
 | 400 | InvalidKeyPairName.N otFound | The specified KeyPairName does not exist in our records. | The key pair does not exist. |
 |---|---|---|---|
@@ -4608,17 +4967,7 @@ o g
 | 400 | InvalidUserData.Base6 4FormatInvalid | The specified parameter UserData must be base64 encoded. | The user data is not encoded in Base64. |
 | 400 | InvalidUserData.SizeEx ceeded | The specified parameter UserData exceeds the size. | The maximum size of the user data has been reached. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteEciScaling Configuration | The operation that you want to perform. Set the value to DeleteEciScalingConfiguration. |
-| ScalingConfigura tionId | String | Yes | asc- bp1bx8mzur534 edp**** | The ID of the scaling configuration that you want to delete. |
-| RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 45D5B0AD-3B00- 4A9B-9911- 6D5303B0**** | The ID of the request. The ID of the request is returned regardless of whether the request is successful. |
-
-#### DeleteEciScalingConfiguration
+#### 6.8.8 DeleteEciScalingConfiguration
 
 Deletes a scaling configuration that is used to create elastic container instances.
 
@@ -4628,7 +4977,19 @@ You cannot call this operation in the following scenarios: The scaling configura
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteEciScaling Configuration | The operation that you want to perform. Set the value to DeleteEciScalingConfiguration. |
+| ScalingConfigura tionId | String | Yes | asc- bp1bx8mzur534 edp**** | The ID of the scaling configuration that you want to delete. |
+| RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 45D5B0AD-3B00- 4A9B-9911- 6D5303B0**** | The ID of the request. The ID of the request is returned regardless of whether the request is successful. |
+
+**Examples**
 
 Sample requests
 
@@ -4636,29 +4997,27 @@ Sample requests
 http(s)://ess.example.com/?Action=DeleteEciScalingConfiguration &ScalingConfigurationId=asc-bp1bx8mzur534edp**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DeleteEciScalingConfigurationResponse>
       <RequestId>45D5B0AD-3B00-4A9B-9911-6D5303B0****</RequestId>
+</DeleteEciScalingConfigurationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "45D5B0AD-3B00-4A9B-9911-6D5303B0****"
-}
 ```
 
-### Scaling rules
+`}`
 
-#### CreateScalingRule
+### 6.9 Scaling rules
 
-Creates a scaling rule.
+#### 6.9.1 CreateScalingRule
 
-**Description**
-
-A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances. This way, the number of ECS instances is still within the specified range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. You can create scaling rules based on input parameters. If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0. If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group. If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that must be scaled: Value of TotalCapacity × Value of AdjustmentValue/100. If the cooldown time (Cooldown) is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group. A scaling group can have up to 10 scaling rules. The following API operations use the unique identifier that is indicated by the ScalingRuleAri parameter of a scaling rule returned by this operation: ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier. CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier.
+Creates a scaling rule. A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances. This way, the number of ECS instances is still within the specified range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. You can create scaling rules based on input parameters. If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0. If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group. If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that must be scaled: Value of TotalCapacity × Value of AdjustmentValue/100. If the cooldown time (Cooldown) is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group. A scaling group can have up to 10 scaling rules. The following API operations use the unique identifier that is indicated by the ScalingRuleAri parameter of a scaling rule returned by this operation: ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier. CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier.
 
 **Request parameters**
 
@@ -4699,13 +5058,15 @@ A scaling rule defines a specific scaling activity, such as adding or removing N
 | InitialMaxSize | Integer | No | 100 | The maximum number of ECS instances in the scaling group. This parameter is used together with the PredictiveValueBehavior parameter. The default value of this parameter is the value of the MaxSize parameter. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | ScalingRuleAri | String | ari:acs:ess:cn- hangzhou-env17- d01:14069264740 6****:scalingrule/a sr- bp1dvirgwkoowxk7 **** | The unique identifier of the scaling rule. |
 | ScalingRuleId | String | asr- bp1dvirgwkoowxk7 **** | The ID of the scaling rule, which is generated by the system and is globally unique. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4713,16 +5074,29 @@ Sample requests
 http://ess.example.com/?Action=CreateScalingRule &ScalingGroupId=asg-bp1ffogfdauy0jw0**** &AdjustmentType=QuantityChangeInCapacity &AdjustmentValue=-10 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<CreateScalingRuleResponse>
       <ScalingRuleAri>ari:acs:ess:cn-hangzhou-env17-
 d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****</ScalingRuleAri>
       <ScalingRuleId>asr-bp1dvirgwkoowxk7****</ScalingRuleId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</CreateScalingRuleResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "ScalingRuleId": "asr-bp1dvirgwkoowxk7****",
+    "ScalingRuleAri": "ari:acs:ess:cn-hangzhou-env17-
+d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -4731,14 +5105,6 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****</ScalingRuleAri>
 | 400 | QuotaExceeded.Scalin gRule | Scaling rule quota exceeded in the specified scaling group. | The error message returned because the maximum number of scaling rules in the scaling group has been reached. |
 | 400 | TargetTrackingScaling Rule.UnsupportedMetri c | Specific metric is not supported for target tracking scaling rule. | The error message returned because the target tracking scaling rule does not support the specified monitoring metric. |
 | 400 | TargetTrackingScaling Rule.DumplicateMetric | Only one TargetTrackingScaling rule for a given metric specification is allowed. | The error message returned because the monitoring metric is already specified for a target tracking scaling rule in the scaling group. |
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "ScalingRuleId": "asr-bp1dvirgwkoowxk7****",
-    "ScalingRuleAri": "ari:acs:ess:cn-hangzhou-env17-
-d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
-```
 
 | 400 | InvalidMinAdjustment MagnitudeMismatchAd justmentType | MinAdjustmentMagnitu de is not supported by the specified adjustment type. | The error message returned because the MinAdjustmentMagnitu de parameter cannot be applied to the specified adjustment method of the scaling rule. |
 |---|---|---|---|
@@ -4755,17 +5121,17 @@ d01:140692647406****:scalingrule/asr-bp1dvirgwkoowxk7****" }
 | 400 | InvalidStepAdjustment s.MaxNum | Your scaling rule can have at most %s StepAdjustments. | The error message returned because the maximum number of step adjustments in the scaling group has been reached. |
 | 400 | StepBeyondPermitRan ge | Specific parameter "%s" beyond permit range. | The error message returned because the specified upper limit or lower limit of the step adjustment is invalid. |
 
+#### 6.9.2 ModifyScalingRule
+
+Modifies a scaling rule.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyScalingRu le | The operation that you want to perform. Set the value to ModifyScalingRule. |
 | ScalingRuleId | String | Yes | eMKWG8SRNb9 dBLAjweN**** | The ID of the scaling rule that you want to modify. |
 | ScalingRuleNam e | String | No | scalingrule**** | The name of the scaling rule. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), hyphens (-), and _ periods (.). The name must start with a letter or a digit. The name of a scaling rule must be unique in the scaling group to which the scaling rule belongs in an Apsara Stack tenant account. |
-
-#### ModifyScalingRule
-
-Modifies a scaling rule.
-
-**Request parameters**
 
 | Cooldown | Integer | No | 60 | The cooldown time of the scaling rule. This parameter takes effect only for simple scaling rules. Valid values: 0 to 86400. Unit: seconds. |
 |---|---|---|---|---|
@@ -4795,17 +5161,13 @@ Modifies a scaling rule.
 | PredictiveTaskB ufferTime | Integer | No | 30 | The amount of buffer time before the prediction task is executed. By default, all scheduled tasks that are automatically created for a predictive scaling rule are executed on the hour. You can specify an amount of buffer time for resource preparation before prediction tasks are executed. Valid values: 0 to 60. |
 | InitialMaxSize | Integer | No | 100 | The maximum number of ECS instances in the scaling group. This parameter is used together with the PredictiveValueBehavior parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist in the Apsara Stack tenant account. |
-| 400 | InvalidScalingRuleNam e.Duplicate | The specified value of parameter <parameter name> is duplicated. | The error message returned because the scaling rule name already exists. |
-| 400 | QuotaExceeded.Scalin gRule | Scaling rule quota exceeded in the specified scaling group. | The error message returned because the maximum number of scaling rules in the scaling group has been reached. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4813,19 +5175,29 @@ Sample requests
 http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAjweN**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyScalingRuleResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</ModifyScalingRuleResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist in the Apsara Stack tenant account. |
+| 400 | InvalidScalingRuleNam e.Duplicate | The specified value of parameter <parameter name> is duplicated. | The error message returned because the scaling rule name already exists. |
+| 400 | QuotaExceeded.Scalin gRule | Scaling rule quota exceeded in the specified scaling group. | The error message returned because the maximum number of scaling rules in the scaling group has been reached. |
 
 | 400 | TargetTrackingScaling Rule.UnsupportedMetri c | Specific metric is not supported for target tracking scaling rule. | The error message returned because the target tracking scaling rule does not support the specified monitoring metric. |
 |---|---|---|---|
@@ -4844,11 +5216,11 @@ http://ess.example.com/?Action=ModifyScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAj
 | 400 | InvalidStepAdjustment s.MaxNum | Your scaling rule can have at most %s StepAdjustments. | The error message returned because the maximum number of step adjustments in the scaling group has been reached. |
 | 400 | StepBeyondPermitRan ge | Specific parameter "%s" beyond permit range. | The error message returned because the specified upper limit or lower limit of the step adjustment is invalid. |
 
-#### DescribeScalingRules
+#### 6.9.3 DescribeScalingRules
 
-Queries all scaling rules in a scaling group and information about the scaling rules.
+Queries all scaling rules in a scaling group and information about the scaling rules. You can query all scaling rules in a scaling group by specifying the ID of the scaling group and filter scaling rules that are returned by scaling rule ID, name, unique identifier, and type.
 
-**Description**
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -4857,10 +5229,6 @@ Queries all scaling rules in a scaling group and information about the scaling r
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
 | PageSize | Integer | No | 50 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 | ScalingGroupId | String | No | AG6CQdPU8OKd wLjgZcJ**** | The ID of the scaling group. |
-
-You can query all scaling rules in a scaling group by specifying the ID of the scaling group and filter scaling rules that are returned by scaling rule ID, name, unique identifier, and type.
-
-**Request parameters**
 
 | ScalingRuleType | String | No | SimpleScalingRu le | The type of the scaling rule. Valid values: SimpleScalingRule: scales the number of ECS instances based on the values of the AdjustmentType and AdjustmentValue parameters. TargetTrackingScalingRule: calculates the number of ECS instances that must be scaled and maintains the value of the predefined metric close to the value of the TargetValue parameter. StepScalingRule: scales ECS instances in steps based on specified thresholds and metric values. PredictiveScalingRule: analyzes historical monitoring data of the scaling group and uses machine learning to predict the future values of metrics. If you set the ScalingRuleType parameter to PredictiveScalingRule, Auto Scaling creates scheduled tasks to specify the boundary values for the scaling group. Default value: SimpleScalingRule. |
 |---|---|---|---|---|
@@ -4876,19 +5244,19 @@ You can query all scaling rules in a scaling group by specifying the ID of the s
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 50 | The number of entries returned per page. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
-| ScalingRules | Array of ScalingRule |  | The information about the scaling rules. |
-| ScalingRule |  |  |  |
+| ScalingRules | Array of ScalingRule |   | The information about the scaling rules. |
+| ScalingRule |   |   |   |
 | AdjustmentTy pe | String | QuantityChangeInC apacity | The method used by the scaling rule to adjust the number of instances. Valid values: QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group. PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group. TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number. |
 | AdjustmentVal ue | Integer | 1 | The adjustment value that is specified in the scaling rule. |
-| Alarms | Array of Alarm |  | The event-triggered tasks that are associated with the scaling rule. Event- triggered tasks that are associated with the scaling rule are returned only if you set the ShowAlarmRules parameter to true. Otherwise, an empty list is returned. |
-| Alarm |  |  |  |
+| Alarms | Array of Alarm |   | The event-triggered tasks that are associated with the scaling rule. Event- triggered tasks that are associated with the scaling rule are returned only if you set the ShowAlarmRules parameter to true. Otherwise, an empty list is returned. |
+| Alarm |   |   |   |
 | AlarmTaskId | String | asg- bp18p2yfxow2dloq **** 1f9458d1- _ 70e1-4bee-8c7f- 7a47695b**** | The ID of the event-triggered task that is associated with the scaling rule. |
 | AlarmTaskNa me | String | event-notified**** | The name of the event-triggered task that is associated with the scaling rule. |
 
 | ComparisonOp erator | String | >= | The comparison operator between the metric value and the threshold for the event-triggered task that is associated with the scaling rule. The comparison operator indicates the relationship in which the metric value and the threshold can meet the condition. Valid value if the metric value is greater than or equal to the threshold: >= Valid value if the metric value is less than or equal to the threshold: <= Valid value if the metric value is greater than the threshold: > Valid value if the metric value is less than the threshold: < |
 |---|---|---|---|
-| Dimensions | Array of Dimension |  | The dimensions of the event-triggered task that is associated with the scaling rule. |
-| Dimension |  |  |  |
+| Dimensions | Array of Dimension |   | The dimensions of the event-triggered task that is associated with the scaling rule. |
+| Dimension |   |   |   |
 | DimensionKey | String | scaling group _ | The key of the dimension that is associated with the metric. Valid values: scaling group: the ID of the scaling _ group userId: the ID of the Alibaba Cloud account |
 | DimensionValu e | String | asg- bp18p2yfxow2dloq **** | The value of the dimension that is associated with the metric. |
 | EvaluationCou nt | Integer | 3 | The number of consecutive times when the event-triggered task that is associated with the scaling rule meets the threshold expression to trigger an alert. |
@@ -4923,8 +5291,8 @@ You can query all scaling rules in a scaling group by specifying the ID of the s
 | ScalingRuleId | String | eMKWG8SRNb9dBL AjweN**** | The ID of the scaling rule. |
 | ScalingRuleNa me | String | eMKWG8SRNb9dBL AjweN**** | The name of the scaling rule. |
 | ScalingRuleTy pe | String | SimpleScalingRule | The type of the scaling rule. Valid values: SimpleScalingRule: scales the number of ECS instances based on the values of the AdjustmentType and AdjustmentValue parameters. TargetTrackingScalingRule: calculates the number of ECS instances that must be scaled and maintains the value of the predefined metric close to the value of the TargetValue parameter. StepScalingRule: scales ECS instances in steps based on specified thresholds and metric values. PredictiveScalingRule: analyzes historical monitoring data of the scaling group and uses machine learning to predict the future values of metrics. If you set the ScalingRuleType parameter to PredictiveScalingRule, Auto Scaling creates scheduled tasks to specify the boundary values for the scaling group. |
-| StepAdjustme nts | Array of StepAdjustme nt |  | The step adjustments of the step scaling rule. |
-| StepAdjustme nt |  |  |  |
+| StepAdjustme nts | Array of StepAdjustme nt |   | The step adjustments of the step scaling rule. |
+| StepAdjustme nt |   |   |   |
 | MetricIntervalL owerBound | Float | 1.0 | The lower limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18. |
 
 | MetricInterval UpperBound | Float | 5.0 | The upper limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18. |
@@ -4933,17 +5301,21 @@ You can query all scaling rules in a scaling group by specifying the ID of the s
 | TargetValue | Float | 0.125 | The target value of the metric. |
 | TotalCount | Integer | 1 | The total number of scaling rules. |
 
+**Examples**
+
 Sample requests
 
 ```
 http://ess.example.com/?Action=DescribeScalingRules &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScalingRulesResponse>
       <PageNumber>1</PageNumber>
       <PageSize>50</PageSize>
+      <ScalingRules>
             <ScalingRule>
                   <AdjustmentType>QuantityChangeInCapacity</AdjustmentType>
                   <AdjustmentValue>1</AdjustmentValue>
@@ -4954,29 +5326,26 @@ d01:134****:scalingRule/eMKWG8SRNb9dBLAjweN****</ScalingRuleAri>
                   <ScalingRuleId>eMKWG8SRNb9dBLAjweN****</ScalingRuleId>
                   <ScalingRuleName>eMKWG8SRNb9dBLAjweN****</ScalingRuleName>
             </ScalingRule>
+      </ScalingRules>
       <TotalCount>1</TotalCount>
       <RequestId>3306A40D-3412-4101-9F19-5F81E3055DAD</RequestId>
+</DescribeScalingRulesResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteScalingRu le | The operation that you want to perform. Set the value to DeleteScalingRule. |
-| ScalingRuleId | String | Yes | eMKWG8SRNb9 dBLAjweN**** | The ID of the scaling rule that you want to delete. You can call the DescribeScalingRules operation to query the ID of the scaling rule. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B583BFEF-A779-427A-9B74-262DDD249702",
     "TotalCount": 1,
     "PageNumber": 1,
     "PageSize": 10,
+    "ScalingRules": {
         "ScalingRule": [
-            {
+```
+
+`{`
+
+```json
                 "ScalingRuleId": "efcqrZdjlookc0UkE3dA****",
                 "ScalingRuleAri": "ari:acs:ess:cn-qingdao-env17-
 d01:134****:scalingRule/efcqrZdjlookc0UkE3dA****",
@@ -4985,57 +5354,64 @@ d01:134****:scalingRule/efcqrZdjlookc0UkE3dA****",
                 "AdjustmentType": "TotalCapacity",
                 "ScalingRuleName": "KFJoxG****",
                 "AdjustmentValue": 5
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-#### DeleteScalingRule
+#### 6.9.4 DeleteScalingRule
 
 Deletes a scaling rule.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteScalingRu le | The operation that you want to perform. Set the value to DeleteScalingRule. |
+| ScalingRuleId | String | Yes | eMKWG8SRNb9 dBLAjweN**** | The ID of the scaling rule that you want to delete. You can call the DescribeScalingRules operation to query the ID of the scaling rule. |
+
 **Response parameters**
 
-Sample requests
-
-| HTTP status code | Error code | Error message | Description |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| 404 | InvalidScalingRuleId.N otFound | The specified scaling rule does not exist. | The error message returned because the specified scaling rule does not exist within the Apsara Stack tenant account. |
+| RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
+
+**Examples**
+
+Sample requests
 
 ```
 http://ess.example.com/?Action=DeleteScalingRule &ScalingRuleId=eMKWG8SRNb9dBLAjweN**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DeleteScalingRuleResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScalingRuleResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
 
-### Scaling tasks
+`}`
 
-#### ExecuteScalingRule
+**Error codes**
 
-Executes a scaling rule.
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingRuleId.N otFound | The specified scaling rule does not exist. | The error message returned because the specified scaling rule does not exist within the Apsara Stack tenant account. |
 
-**Description**
+### 6.10 Scaling tasks
 
-Before you call this operation, make sure that the following conditions are met: The scaling group is in the Active state. No scaling activities are in progress in the scaling group. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities without the need to wait for the cooldown time to expire. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can check the returned ScalingActivityId parameter to obtain the status of the scaling activity. If the number of Elastic Compute Service (ECS) instances that you want to add causes the number of instances in the scaling group to exceed the MaxSize value, the rule Total Capacity = MaxSize takes effect. If the number of ECS instances that you want to remove causes the number of instances in the scaling group to be less than the MinSize value, the rule Total Capacity = MinSize takes
+#### 6.10.1 ExecuteScalingRule
+
+Executes a scaling rule. Before you call this operation, make sure that the following conditions are met: The scaling group is in the Active state. No scaling activities are in progress in the scaling group. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities without the need to wait for the cooldown time to expire. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can check the returned ScalingActivityId parameter to obtain the status of the scaling activity. If the number of Elastic Compute Service (ECS) instances that you want to add causes the number of instances in the scaling group to exceed the MaxSize value, the rule Total Capacity = MaxSize takes effect. If the number of ECS instances that you want to remove causes the number of instances in the scaling group to be less than the MinSize value, the rule Total Capacity = MinSize takes effect.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5045,44 +5421,46 @@ Before you call this operation, make sure that the following conditions are met:
 | BreachThreshold | Float | No | 1.0 | The threshold specified when the step scaling rule is executed. Valid values: -9.999999E18~9.999999E18. |
 | MetricValue | Float | No | 1.0 | The metric value specified when the step scaling rule is executed. Valid values: -9.999999E18~9.999999E18. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | ScalingActivity Id | String | asa- bp13o672yeautiil** ** | The ID of the scaling activity. |
 
-effect.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn-hangzhou-env17-d01:140692647406****:scalingrule/asr-bp1d virgwkoowxk7**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<ExecuteScalingRuleResponse>
+      <ScalingActivityId>asa-bp13o672yeautiil****</ScalingActivityId>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ExecuteScalingRuleResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
+    "ScalingActivityId": "asa-bp13o672yeautiil****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidScalingRuleAri.N otFound | The specified scaling rule Ari does not exist. | The error message returned because the specified scaling rule does not exist in the Apsara Stack tenant account. |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | The error message returned because the scaling group to which the specified scaling rule belongs is not in the Active state. |
-
-```
-http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn-hangzhou-env17-d01:140692647406****:scalingrule/asr-bp1d virgwkoowxk7**** &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <ScalingActivityId>asa-bp13o672yeautiil****</ScalingActivityId>
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-    "ScalingActivityId": "asa-bp13o672yeautiil****"
-}
-```
 
 | 400 | ScalingActivityInProgre ss | You cannot delete a scaling group or launch a new scaling activity while there is a scaling activity in progress for the specified scaling group. | The error message returned because a scaling activity is in progress in the scaling group to which the specified scaling rule belongs. |
 |---|---|---|---|
@@ -5112,11 +5490,7 @@ http://ess.example.com/?Action=ExecuteScalingRule &ScalingRuleAri=ari:acs:ess:cn
 | 400 | BreachThresholdBeyon dPermitRange | Specific parameter "%s" beyond permit range. | The error message returned because the specified threshold is invalid. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ScaleWithAdjust ment | The operation that you want to perform. Set the value to ScaleWithAdjustment. |
-
-#### ScaleWithAdjustment
+#### 6.10.2 ScaleWithAdjustment
 
 Triggers a scaling activity based on an adjustment rule.
 
@@ -5125,6 +5499,10 @@ Triggers a scaling activity based on an adjustment rule.
 Different from the `ExecuteScalingRule` operation, the ScaleWithAdjustment operation does not require a scaling rule that is created in advance. Before you call the ScaleWithAdjustment operation, take note of the following items: The scaling group is in the Active state. No scaling activities in the scaling group are in progress. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities before the cooldown period of the scaling group expires. If the addition of a specific number of Elastic Compute Service (ECS) instances to a scaling group causes the total number of ECS instances in the scaling group to exceed the maximum number of instances allowed in the scaling group, Auto Scaling adds only the required number of ECS instances to ensure that the total number of instances is equal to the maximum number of instances. If the removal of a specific number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to be less than the minimum number of instances required in the scaling group, Auto Scaling removes only the required number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances. If the call is successful, Auto Scaling accepted the request. However, this does not ensure a successful scaling activity. You can obtain the status of a scaling activity based on the return value of ScalingActivityId.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ScaleWithAdjust ment | The operation that you want to perform. Set the value to ScaleWithAdjustment. |
 
 | AdjustmentType | String | Yes | QuantityChangeI nCapacity | Specifies how to scale ECS instances. Valid values: QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group. PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group. TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number. |
 |---|---|---|---|---|
@@ -5136,47 +5514,47 @@ Different from the `ExecuteScalingRule` operation, the ScaleWithAdjustment opera
 | SyncActivity | Boolean | No | false | Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values: true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed. false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result. Note For information about the expected number of instances, see the "Expected number of instances" topic in Auto Scaling documentation. Default value: false. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 | ScalingActivity Id | String | asa- bp175o6f6ego3r2j* *** | The ID of the scaling activity. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityChangeInCapacity &AdjustmentValue=100 &MinAdjustmentMagnitude=1 &ClientToken=123e4567-e89b-12d3-a456-42665544**** &SyncActivity=false &<Common request parameters>
+http(s)://ess.example.com/?Action=ScaleWithAdjustment &AdjustmentType=QuantityChangeInCapacity &AdjustmentValue=100 &MinAdjustmentMagnitude=1 &ClientToken=123e4567-e89b-12d3-a456-42665544**** &Action=ScaleWithAdjustment &SyncActivity=false &<Common request parameters>
 ```
+
+Sample success responses `XML` format
+
+```xml
+<ScaleWithAdjustmentResponse>
+    <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+    <ScalingActivityId>asa-bp175o6f6ego3r2j****</ScalingActivityId>
+<ScaleWithAdjustmentResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "ScalingActivityId": "asa-bp175o6f6ego3r2j****"
+```
+
+`}`
+
+#### 6.10.3 AttachInstances
+
+Adds Elastic Compute Service (ECS) instances to a scaling group. Before you add ECS instances to a scaling group, take note of the following items: The ECS instances and the scaling group must reside in the same region. The ECS instances must be in the Running state. The ECS instances are not added to other scaling groups. The ECS instances use the subscription or pay-as-you-go billing method. If the VswitchID parameter is specified for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group. If the VswitchID parameter is not specified for the scaling group, the ECS instances must not reside in VPCs. You can call this operation to add ECS instances to a scaling group only if the scaling group is in the Active state. You can call this operation only if no scaling activities are in progress in the scaling group. If no scaling activities are in progress in the scaling group, the operation can trigger scaling activities even before the cooldown period ends. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the ScalingActivityId parameter in the response. If the total number of ECS instances in the scaling group is greater than the value that you specify for the MaxSize parameter after you add a specific number of ECS instances to the scaling group, the call fails. ECS instances that you manually add to the scaling group are not associated with the active scaling configuration in the scaling group.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-
-`XML` format
-
-```xml
-    <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-    <ScalingActivityId>asa-bp175o6f6ego3r2j****</ScalingActivityId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "ScalingActivityId": "asa-bp175o6f6ego3r2j****"
-}
-```
-
-#### AttachInstances
-
-Adds Elastic Compute Service (ECS) instances to a scaling group.
-
-**Description**
-
-Before you add ECS instances to a scaling group, take note of the following items: The ECS instances and the scaling group must reside in the same region. The ECS instances must be in the Running state. The ECS instances are not added to other scaling groups. The ECS instances use the subscription or pay-as-you-go billing method. If the VswitchID parameter is specified for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group. If the VswitchID parameter is not specified for the scaling group, the ECS instances must not reside in VPCs. You can call this operation to add ECS instances to a scaling group only if the scaling group is in the Active state. You can call this operation only if no scaling activities are in progress in the scaling group. If no scaling activities are in progress in the scaling group, the operation can trigger scaling activities even before the cooldown period ends. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the ScalingActivityId parameter in the response. If the total number of ECS instances in the scaling group is greater than the value that you specify for the MaxSize parameter after you add a specific number of ECS instances to the scaling group, the call fails. ECS instances that you manually add to the scaling group are not associated with the active scaling configuration in the scaling group.
-
-**Request parameters**
 
 | Action | String | Yes | AttachInstances | The operation that you want to perform. Set the value to AttachInstances. |
 |---|---|---|---|---|
@@ -5192,31 +5570,37 @@ Before you add ECS instances to a scaling group, take note of the following item
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | ScalingActivity Id | String | asa- bp1crxor24s28xf1* *** | The ID of the scaling activity. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within the Apsara Stack tenant account. |
+**Examples**
 
 Sample requests
 
 ```
-&InstanceId.1=i-28wt4**** &ScalingGroupId=asg-bp18p2yfxow2dloq**** &<Common request parameters>
+http://ess.example.com/?Action=AttachInstances &InstanceId.1=i-28wt4**** &ScalingGroupId=asg-bp18p2yfxow2dloq**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<AttachInstancesResponse>
       <ScalingActivityId>asa-bp1crxor24s28xf1****</ScalingActivityId>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</AttachInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "ScalingActivityId": "asa-bp1crxor24s28xf1****"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within the Apsara Stack tenant account. |
 
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 |---|---|---|---|
@@ -5244,19 +5628,15 @@ Sample requests
 | 400 | IncorrectCapacity.Max Size | To attach the instances, the total capacity will be greater than the MaxSize. | The error message returned because the total number of ECS instances that is indicated by the Total Capacity parameter exceeds the specified value of the MaxSize parameter after ECS instances are added to the specified scaling group. |
 |---|---|---|---|
 
+#### 6.10.4 RemoveInstances
+
+Removes Elastic Compute Service (ECS) instances from a scaling group. Before you call this operation, make sure that the following requirements are met: The scaling group is in the Active state. No scaling activity is in progress in the scaling group. If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires. The cooldown time is specified by the DefaultCooldown parameter. When an automatically created ECS instance is removed from a scaling group, the instance is stopped and released. When a manually added ECS instance is removed from a scaling group, the ECS instance is not stopped or released. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can use the value of the ScalingActivityId parameter in the response to check the status of the scaling activity. If the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter, the call fails.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RemoveInstance s | The operation that you want to perform. Set the value to RemoveInstances. |
-
-#### RemoveInstances
-
-Removes Elastic Compute Service (ECS) instances from a scaling group.
-
-**Description**
-
-Before you call this operation, make sure that the following requirements are met: The scaling group is in the Active state. No scaling activity is in progress in the scaling group. If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires. The cooldown time is specified by the DefaultCooldown parameter. When an automatically created ECS instance is removed from a scaling group, the instance is stopped and released. When a manually added ECS instance is removed from a scaling group, the ECS instance is not stopped or released. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can use the value of the ScalingActivityId parameter in the response to check the status of the scaling activity. If the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter, the call fails.
-
-**Request parameters**
 
 | InstanceId.N | RepeatL ist | Yes | i- 1kx0159ruc4x22 ek**** | The ID of ECS instance N that you want to remove. Valid values of N: 1 to 20. |
 |---|---|---|---|---|
@@ -5264,14 +5644,40 @@ Before you call this operation, make sure that the following requirements are me
 | RemovePolicy | String | No | release | The policy used to remove instances. Valid values: recycle: The instances are stopped. Note This setting takes effect only if you set the ScalingPolicy parameter to recycle. release: The instances are released. Default value: release. |
 | DecreaseDesire dCapacity | Boolean | No | true | Specifies whether to adjust the expected number of instances in the scaling group. Valid values: true: After ECS instances are removed from the scaling group, the expected number of ECS instances in the scaling group decreases. false: After ECS instances are removed from the scaling group, the expected number of instances in the scaling group remains unchanged. Default value: true. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | ScalingActivity Id | String | bybj9OcaOT4ucPM bFhcq**** | The ID of the scaling activity. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http://ess.example.com/?Action=RemoveInstances &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<RemoveInstancesResponse>
+      <ScalingActivityId>bybj9OcaOT4ucPMbFhcq****</ScalingActivityId>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</RemoveInstancesResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "ScalingActivityId":"bybj9OcaOT4ucPMbFhcq****",
+    "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -5280,26 +5686,6 @@ Sample requests
 | 400 | InvalidParameter | The specified group does not support the specified RemovePolicy. | The error message returned because the specified scaling group does not support the specified value of the RemovePolicy parameter. |
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 
-```
-&ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4**** &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <ScalingActivityId>bybj9OcaOT4ucPMbFhcq****</ScalingActivityId>
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "ScalingActivityId":"bybj9OcaOT4ucPMbFhcq****",
-    "RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
-```
-
 | 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | The error message returned because the specified scaling group is not in the Active state. |
 |---|---|---|---|
 | 400 | ScalingActivityInProgre ss | You cannot delete a scaling group or launch a new scaling activity while there is a scaling activity in progress for the specified scaling group. | The error message returned because a scaling activity is in progress in the specified scaling group. |
@@ -5307,9 +5693,11 @@ Sample requests
 | 400 | IncorrectDBInstanceSt atus | The current status of DB instance "XXX" does not support this action. | The error message returned because the specified ApsaraDB RDS instance that is associated with the scaling group to which the specified scaling rule belongs is not in the Running state. |
 | 400 | IncorrectCapacity.MinS ize | To remove the instances, the total capacity will be lesser than the MinSize. | The error message the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter. |
 
-Removes one or more Elastic Compute Service (ECS) instances from a scaling group.
+#### 6.10.5 DetachInstances
 
-#### DetachInstances
+Removes one or more Elastic Compute Service (ECS) instances from a scaling group. After ECS instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances that are removed from the scaling group to other scaling groups. After you remove an ECS instance by calling the DetachInstances operation, the ECS instance is not stopped or released. Before you call the DetachInstances operation, make sure that the following conditions are met: The specified scaling group is enabled. The specified scaling group cannot have a scaling activity in progress. If no scaling activities in the scaling group are in progress, the DetachInstances operation can trigger scaling activities without the need to wait for the cooldown period to end. A successful call to the DetachInstances operation indicates only that the request for the call is accepted. The scaling activity can be triggered, but may fail to be executed. You can use the ScalingActivityId parameter in the response to query the status of the scaling activity. The difference between the number of existing ECS instances in the specified scaling group and the number of ECS instances that you want to remove must be greater than or equal to the value of the MinSize parameter. Otherwise, an error message is returned.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5318,43 +5706,43 @@ Removes one or more Elastic Compute Service (ECS) instances from a scaling group
 | ScalingGroupId | String | Yes | AG6CQdPU8OKd wLjgZcJ**** | The ID of the scaling group. |
 | DecreaseDesire dCapacity | Boolean | No | true | Specifies whether to adjust the expected number of instances in the scaling group. Valid values: true: After ECS instances are removed from a scaling group, the expected number of ECS instances in the scaling group decreases. false: After ECS instances are removed from a scaling group, the expected number of instances in the scaling group remains unchanged. Default value: true. |
 
-**Description**
-
-After ECS instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances that are removed from the scaling group to other scaling groups. After you remove an ECS instance by calling the DetachInstances operation, the ECS instance is not stopped or released. Before you call the DetachInstances operation, make sure that the following conditions are met: The specified scaling group is enabled. The specified scaling group cannot have a scaling activity in progress. If no scaling activities in the scaling group are in progress, the DetachInstances operation can trigger scaling activities without the need to wait for the cooldown period to end. A successful call to the DetachInstances operation indicates only that the request for the call is accepted. The scaling activity can be triggered, but may fail to be executed. You can use the ScalingActivityId parameter in the response to query the status of the scaling activity. The difference between the number of existing ECS instances in the specified scaling group and the number of ECS instances that you want to remove must be greater than or equal to the value of the MinSize parameter. Otherwise, an error message is returned.
-
-**Request parameters**
-
 | DetachOption | String | No | both | Specifies whether to remove the ECS instance from the default server groups and vServer groups of the Server Load Balancer (SLB) instances that are associated with the scaling group, and whether to remove the private IP address of the ECS instance from the whitelist of the ApsaraDB RDS instances that are associated with the scaling group. If you set this parameter to both, the ECS instance is removed from the default sever groups and vServer groups of the associated SLB instances, and the private IP address of the ECS instance is removed from the whitelist of the associated ApsaraDB RDS instances. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 | ScalingActivity Id | String | asa-**** | The ID of the scaling activity. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4**** &<Common request parameters>
+http://ess.example.com/?Action=DetachInstances &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &InstanceId.1=i-28wt4**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DetachInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
       <ScalingActivityId>asa-****</ScalingActivityId>
+</DetachInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
     "ScalingActivityId": "asa-****"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -5369,22 +5757,18 @@ Sample requests
 | 404 | InvalidInstanceId.NotF ound | Instance “XXX” does not exist. | The error message returned because the specified ECS instance does not exist. |
 |---|---|---|---|
 
+### 6.11 Scheduled tasks
+
+#### 6.11.1 CreateScheduledTask
+
+Creates a scheduled task. You can create up to 20 scheduled tasks within an Apsara Stack tenant account. If a scheduled task fails to trigger a scaling rule due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling rule after the period ends, the task is automatically skipped. If multiple tasks are scheduled at similar points in time to execute scaling rules in the same scaling group, the earliest task executes the scaling activity first. Other tasks may attempt to execute their scaling rules during their launch expiration time, but only one scaling activity can be triggered in a scaling group at a time. If the previous scaling activity is complete and another scheduled task executes the scaling rule during the period that is specified by the LaunchExpirationTime parameter, the scaling rule in the scheduled task is executed, and a new scaling activity is triggered. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateSchedule dTask | The operation that you want to perform. Set the value to CreateScheduledTask. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The region ID of the scheduled task. |
-
-### Scheduled tasks
-
-#### CreateScheduledTask
-
-Creates a scheduled task.
-
-**Description**
-
-You can create up to 20 scheduled tasks within an Apsara Stack tenant account. If a scheduled task fails to trigger a scaling rule due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling rule after the period ends, the task is automatically skipped. If multiple tasks are scheduled at similar points in time to execute scaling rules in the same scaling group, the earliest task executes the scaling activity first. Other tasks may attempt to execute their scaling rules during their launch expiration time, but only one scaling activity can be triggered in a scaling group at a time. If the previous scaling activity is complete and another scheduled task executes the scaling rule during the period that is specified by the LaunchExpirationTime parameter, the scaling rule in the scheduled task is executed, and a new scaling activity is triggered. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
-
-**Request parameters**
 
 | ScheduledTaskN ame | String | No | scheduled**** | The display name of the scheduled task. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), _ hyphens (-), and periods (.). The name must start with a letter or a digit. The name of the scheduled task must be unique in the region and within the Apsara Stack tenant account. If you do not specify this parameter, the value of the ScheduledScalingTaskId parameter is used. |
 |---|---|---|---|---|
@@ -5407,18 +5791,40 @@ You can create up to 20 scheduled tasks within an Apsara Stack tenant account. I
 | DesiredCapacity | Integer | No | 10 | The expected number of instances in the scaling group if the scaling method of the scheduled task is to specify the number of instances. Note You must specify the DesiredCapacity parameter when you create the scaling group. |
 | ScalingGroupIdI nvalid | String | No | asg- bp18p2yfxow2dl oq**** | The ID of the scaling group whose number of instances is changed when the scheduled task is triggered. If you specify the ScalingGroupId parameter, the scaling method of the scheduled task is to specify the number of instance in a scaling group. You must specify at least one of the MinValue, MaxValue, and DesiredCapacity parameters. Note You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 | ScheduledTas kId | String | edRtShc57WGXdt8 TlPbr**** | The globally unique ID of the scheduled task. The globally unique ID is generated by the system. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
 http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d01 &ScheduledAction=ari:acs:ess:cn-qingdao-env17d01:134****:scalingRule/cCBpdYdQuBe2cUxOdu6**** &<Common request parameters>
 ```
+
+Sample success responses `XML` format
+
+```xml
+<CreateScheduledTaskResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <ScheduledTaskId>edRtShc57WGXdt8TlPbr****</ScheduledTaskId>
+</CreateScheduledTaskResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "ScheduledTaskId": "edRtShc57WGXdt8TlPbr****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -5427,25 +5833,15 @@ http://ess.example.com/?Action=CreateScheduledTask &RegionId=cn-qingdao-env17-d0
 | 400 | QuotaExceeded.Sched uledTask | Scheduled task quota exceeded. | The error message returned because the maximum number of scheduled tasks has been reached. |
 | 400 | ScheduledAction.Regio nMismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | The error message returned because the specified scaling rule and the specified scheduled task do not reside in the same region. |
 
-`XML` format
+#### 6.11.2 ModifyScheduledTask
 
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-      <ScheduledTaskId>edRtShc57WGXdt8TlPbr****</ScheduledTaskId>
-```
+Modifies a scheduled task. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
 
-`JSON` format
+**Note**
 
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "ScheduledTaskId": "edRtShc57WGXdt8TlPbr****"
-}
-```
+You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time.
 
-Modifies a scheduled task.
-
-#### ModifyScheduledTask
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5454,46 +5850,38 @@ Modifies a scheduled task.
 | ScheduledTaskN ame | String | No | scheduled**** | The name of the scheduled task. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores ( ), hyphens (-), _ and periods (.). The name must start with a letter or a digit. The name of the scheduled task must be unique in the region and within the Apsara Stack tenant account. |
 | Description | String | No | fortest | The description of the scheduled task. The description must be 2 to 200 characters in length. |
 
-**Description**
-
-A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task.
-
-**Note**
-
-You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time.
-
-**Request parameters**
-
-| ScheduledAction | String | No | ari:acs:ess:cn- qingdao-env17- d01:134****:scal ingRule/cCBpdY dQuBe2cUxOdu 6**** | The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule. If you specify the ScheduledAction parameter, you must select an existing scaling rule for the scheduled task. Note You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time. |  |  |
+| ScheduledAction | String | No | ari:acs:ess:cn- qingdao-env17- d01:134****:scal ingRule/cCBpdY dQuBe2cUxOdu 6**** | The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule. If you specify the ScheduledAction parameter, you must select an existing scaling rule for the scheduled task. Note You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time. |   |   |
 |---|---|---|---|---|---|---|
-| RecurrenceEndTi me | String | No | 2014-08- 20T16:55Z | The end time of the scheduled task. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. You cannot enter a time point later than 365 days from the scheduled task modification. After the scheduled task is modified, you must specify valid values for the RecurrenceType, RecurrenceValue, and RecurrenceEndTime parameters. |  |  |
-|  |  |  |  |  | yyyy-MM- |  |
-| LaunchTime | String | No | 2014-08- 18T10:52Z | The point in time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. You cannot enter a time point later than 90 days from the scheduled task modification. If you specify the RecurrenceType parameter, the task is repeatedly executed at the point in time that is specified by the LaunchTime parameter. If you do not specify the RecurrenceType parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter. |  |  |
+| RecurrenceEndTi me | String | No | 2014-08- 20T16:55Z | The end time of the scheduled task. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. You cannot enter a time point later than 365 days from the scheduled task modification. After the scheduled task is modified, you must specify valid values for the RecurrenceType, RecurrenceValue, and RecurrenceEndTime parameters. |   |   |
+|   |   |   |   |   | yyyy-MM- |   |
+| LaunchTime | String | No | 2014-08- 18T10:52Z | The point in time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. You cannot enter a time point later than 90 days from the scheduled task modification. If you specify the RecurrenceType parameter, the task is repeatedly executed at the point in time that is specified by the LaunchTime parameter. If you do not specify the RecurrenceType parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter. |   |   |
 
-|  | ddTHH:mm:ssZ |
+|   | ddTHH:mm:ssZ |
 |---|---|
 
 | RecurrenceType | String | No | Daily | The interval at which the scheduled task is repeated. Valid values: Daily: The scheduled task is executed once every specified number of days. Weekly: The scheduled task is executed on each specified day of the week. Monthly: The scheduled task is executed on each specified day of the month. Cron: The scheduled task is executed based on the specified cron expression. After the scheduled task is modified, the RecurrenceType, RecurrenceValue, and RecurrenceEndTime parameters must be valid. |
 |---|---|---|---|---|
 
-| RecurrenceValu e | String | No |  |  | The number of recurrences of the scheduled task. Daily: If you set the RecurrenceType parameter to Daily, you can specify only one value. Valid values: 1 to 31. Weekly: If you set the RecurrenceType parameter to Weekly, you can specify multiple values. Separate the values with commas (,). For example, the values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6 . Monthly: If you set the RecurrenceType parameter to Monthly, you can specify two values in the A-B format. Valid values of A and B: 1 to 31. B must be greater than or equal to A. Cron: If you set the RecurrenceType parameter to Cron, you can specify a cron expression. A cron expression is written in UTC time and consists of five fields: minute, hour, day, month, and week. The expression can contain the letters L and W and the following wildcard characters: commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), and forward slashes (/). After the scheduled task is modified, the RecurrenceType, RecurrenceValue, and RecurrenceEndTime parameters must be valid. |
+| RecurrenceValu e | String | No |   |   | The number of recurrences of the scheduled task. Daily: If you set the RecurrenceType parameter to Daily, you can specify only one value. Valid values: 1 to 31. Weekly: If you set the RecurrenceType parameter to Weekly, you can specify multiple values. Separate the values with commas (,). For example, the values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6 . Monthly: If you set the RecurrenceType parameter to Monthly, you can specify two values in the A-B format. Valid values of A and B: 1 to 31. B must be greater than or equal to A. Cron: If you set the RecurrenceType parameter to Cron, you can specify a cron expression. A cron expression is written in UTC time and consists of five fields: minute, hour, day, month, and week. The expression can contain the letters L and W and the following wildcard characters: commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), and forward slashes (/). After the scheduled task is modified, the RecurrenceType, RecurrenceValue, and RecurrenceEndTime parameters must be valid. |
 |---|---|---|---|---|---|
-|  |  |  |  |  | 6 |
-|  |  |  |  | 2 |  |
-| TaskEnabled | Boolean | No |  | true | Specifies whether to enable the scheduled task. true false |
-| LaunchExpiratio nTime | Integer | No |  | 600 | The period of time during which the failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. |
-| MinValue | Integer | No |  | 0 | The minimum number of instances in the scaling group if the scaling method of the scheduled task is to specify the number of instances. |
+|   |   |   |   |   | 6 |
+|   |   |   |   | 2 |   |
+| TaskEnabled | Boolean | No |   | true | Specifies whether to enable the scheduled task. true false |
+| LaunchExpiratio nTime | Integer | No |   | 600 | The period of time during which the failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. |
+| MinValue | Integer | No |   | 0 | The minimum number of instances in the scaling group if the scaling method of the scheduled task is to specify the number of instances. |
 
 | MaxValue | Integer | No | 10 | The maximum number of instances in the scaling group if the scaling method of the scheduled task is to specify the number of instances. |
 |---|---|---|---|---|
 | DesiredCapacity | Integer | No | 10 | The expected number of instances in the scaling group if the scaling method of the scheduled task is to specify the number of instances. Note You must specify the DesiredCapacity parameter when you create the scaling group. |
 | ScalingGroupIdI nvalid | String | No | asg- bp18p2yfxow2dl oq**** | The ID of the scaling group whose number of instances is changed when the scheduled task is triggered. If you specify the ScalingGroupId parameter, the scaling method of the scheduled task is to specify a number of instances in the scaling group. In this case, you must specify at least one of the MinValue, MaxValue, and DesiredCapacity parameters. Note You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5501,7 +5889,23 @@ Sample requests
 http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGXdt8TlPbr**** &LaunchTime=2014-08-18T10:52Z &RecurrenceEndTime=2014-08-20T16:55Z &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
+
+```xml
+<ModifyScheduledTaskResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyScheduledTaskResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -5509,34 +5913,18 @@ http://ess.example.com/?Action=ModifyScheduledTask &ScheduledTaskId=edRtShc57WGX
 | 400 | InvalidScheduledTask Name.Duplicate | The specified value of parameter ScheduledTaskName is duplicated. | The error message returned because the specified name of the scheduled task already exists. |
 | 400 | ScheduledAction.Regio nMismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | The error message returned because the specified scaling rule and the specified scheduled task do not reside in the same region. |
 
-|  |  | ScheduledTaskName |
+|   |   | ScheduledTaskName |
 |---|---|---|
-| e.Duplicate |  |  |
+| e.Duplicate |   |   |
+
+#### 6.11.3 DescribeScheduledTasks
+
+Queries scheduled tasks. You can query scheduled tasks based on scaling rule, task ID, and task name.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
-```
-
-#### DescribeScheduledTasks
-
-Queries scheduled tasks.
-
-**Description**
-
-You can query scheduled tasks based on scaling rule, task ID, and task name.
-
-**Request parameters**
 
 | Action | String | Yes | DescribeSchedul edTasks | The operation that you want to perform. Set the value to DescribeScheduledTasks. |
 |---|---|---|---|---|
@@ -5548,16 +5936,16 @@ You can query scheduled tasks based on scaling rule, task ID, and task name.
 | ScheduledTaskN ame.N | RepeatL ist | No | scheduled**** | The name of scheduled task N that you want to query. Valid values of N: 1 to 20. |
 | ScalingGroupId | String | No | asg- bp1bo5tca4m56 nap**** | The ID of the scaling group to which the scheduled task belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 50 | The number of entries returned per page. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
-| ScheduledTas ks | Array of ScheduledTas k |  | Details of the scheduled tasks. |
+| ScheduledTas ks | Array of ScheduledTas k |   | Details of the scheduled tasks. |
 
-**Response parameters**
-
-| ScheduledTas k |  |  |  |
+| ScheduledTas k |   |   |   |
 |---|---|---|---|
 | Description | String | fortest | The description of the scheduled task. |
 | DesiredCapaci ty | Integer | 10 | The expected number of instances in the scaling group when the Scaling Method parameter of the scheduled task is set to Configure Number of Instances in Scaling Group. |
@@ -5577,15 +5965,19 @@ You can query scheduled tasks based on scaling rule, task ID, and task name.
 | TaskEnabled | Boolean | true | Indicates whether the scheduled task feature is enabled. |
 | TotalCount | Integer | 1 | The total number of scheduled tasks. |
 
+**Examples**
+
 Sample requests
 
 ```
 http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeScheduledTasksResponse>
+      <ScheduledTasks>
             <ScheduledTask>
                   <LaunchExpirationTime>600</LaunchExpirationTime>
                   <RecurrenceType>Daily</RecurrenceType>
@@ -5610,22 +6002,24 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
                   <ScheduledTaskId>cD3G3pesE65NcSTmkld1****</ScheduledTaskId>
                   <RecurrenceValue>31</RecurrenceValue>
             </ScheduledTask>
+      </ScheduledTasks>
       <PageNumber>1</PageNumber>
       <TotalCount>34</TotalCount>
       <PageSize>10</PageSize>
       <RequestId>4CF33369-7318-4BD5-BE1C-A776BA2C6627</RequestId>
+</DescribeScheduledTasksResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteSchedule dTask | The operation that you want to perform. Set the value to DeleteScheduledTask. |
+`JSON` format `{`
 
 ```json
-{
+ "ScheduledTasks": {
   "ScheduledTask": [
-   {
+```
+
+`{`
+
+```json
     "LaunchExpirationTime": 600,
     "RecurrenceType": "Daily",
     "RecurrenceEndTime": "2020-03-02T00:00Z",
@@ -5636,8 +6030,11 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
     "LaunchTime": "2020-03-01T00:00Z",
     "ScheduledTaskId": "cV0bJbAXpipdbFI1NbM****",
     "RecurrenceValue": "31"
-   },
-   {
+```
+
+`},` `{`
+
+```json
     "LaunchExpirationTime": 600,
     "MinValue": 1,
     "RecurrenceType": "Daily",
@@ -5648,38 +6045,39 @@ http://ess.example.com/?Action=DescribeScheduledTasks &RegionId=cn-qingdao-env17
     "LaunchTime": "2020-02-26T00:00Z",
     "ScheduledTaskId": "cD3G3pesE65NcSTmkld1****",
     "RecurrenceValue": "31"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "PageNumber": 1,
  "TotalCount": 34,
  "PageSize": 10,
  "RequestId": "4CF33369-7318-4BD5-BE1C-A776BA2C6627"
-}
 ```
 
-#### DeleteScheduledTask
+`}`
+
+#### 6.11.4 DeleteScheduledTask
 
 Deletes scheduled tasks.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteSchedule dTask | The operation that you want to perform. Set the value to DeleteScheduledTask. |
+
 | ScheduledTaskId | String | Yes | edRtShc57WGX dt8TlPbr**** | The ID of the scheduled task that you want to delete. You can call the DescribeScheduledTasks operation to query the ID of the scheduled task. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C83E | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScheduledTaskI d.NotFound | The specified scheduled task does not exist. | The error message returned because the specified scheduled task does not exist within the Apsara Stack tenant account. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5687,28 +6085,31 @@ Sample requests
 http://ess.example.com/?Action=DeleteScheduledTask &ScheduledTaskId=edRtShc57WGXdt8TlPbr**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DeleteScheduledTaskResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E</RequestId>
+</DeleteScheduledTaskResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
-}
 ```
 
-### Event-triggered tasks
+`}`
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateAlarm | The operation that you want to perform. Set the value to CreateAlarm. |
-|  |  |  |  | The name of the metric. The valid values of MetricName vary based on the value of MetricType. If you set MetricType to custom, the valid values of MetricName are your custom metrics. If you set MetricType to system, MetricName has the following valid values: CpuUtilization: the CPU utilization of an ECS instance. Unit: %. IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min. IntranetRx: the inbound traffic over the internal network to an ECS instance. Unit: KB/min. |
+**Error codes**
 
-#### CreateAlarm
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScheduledTaskI d.NotFound | The specified scheduled task does not exist. | The error message returned because the specified scheduled task does not exist within the Apsara Stack tenant account. |
+
+### 6.12 Event-triggered tasks
+
+#### 6.12.1 CreateAlarm
 
 Creates an event-triggered task.
 
@@ -5722,11 +6123,16 @@ The user_id and scaling_group dimensions are automatically populated. You need t
 
 **Request parameters**
 
-|  |  |  |  | VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min. VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min. SystemDiskReadBps: the |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateAlarm | The operation that you want to perform. Set the value to CreateAlarm. |
+|   |   |   |   | The name of the metric. The valid values of MetricName vary based on the value of MetricType. If you set MetricType to custom, the valid values of MetricName are your custom metrics. If you set MetricType to system, MetricName has the following valid values: CpuUtilization: the CPU utilization of an ECS instance. Unit: %. IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min. IntranetRx: the inbound traffic over the internal network to an ECS instance. Unit: KB/min. |
+
+|   |   |   |   | VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min. VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min. SystemDiskReadBps: the |
 |---|---|---|---|---|
 | MetricName | String | Yes | CpuUtilization | number of bytes that are read per second from the system disk that is used by an ECS instance. SystemDiskWriteBps: the number of bytes that are written per second to the system disk that is used by an ECS instance. SystemDiskReadOps: the number of read operations per second on the system disk that is used by an ECS instance. SystemDiskWriteOps: the number of write operations per second on the system disk that is used by an ECS instance. CpuUtilizationAgent: the CPU utilization of an agent. Unit: %. GpuUtilizationAgent: the GPU utilization of an agent. Unit: %. GpuMemoryFreeUtilizationAgent : the percentage of idle GPU memory of an agent. GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %. MemoryUtilization: the memory usage of an agent. Unit: %. LoadAverage: the average system load of an agent. TcpConnection: the total number of TCP connections of an agent. ESTABLISHED: the number of established TCP connections of an agent. PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) that is used by an agent. PackagesNetIn: the number of packets that are received by the internal NIC that is used by an agent. EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %. |
 
-|  |  |  |  | EciPodMemoryUtilization: the |
+|   |   |   |   | EciPodMemoryUtilization: the |
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-qingdao- env17-d01 | memory usage of an elastic The rceogniotani nIDe ro ifn tshtaen sccea.l iUnngi tg: r%ou.p. |
 | ScalingGroupId | String | Yes | asg- bp18p2yfxow2dl oq**** | For more information, see the "TEhvee InDt -otrfi gthgee rsecda ltiansgk g frooru spy sthteamt is mmoonniittoorriendg "b yto tphiec .event-triggered task. |
@@ -5742,12 +6148,12 @@ The user_id and scaling_group dimensions are automatically populated. You need t
 | EvaluationCount | Integer | No | 3 | The number of times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach 80% three consecutive times before a scaling rule is executed. Default value: 3. |
 | GroupId | Integer | No | 4055401 | The ID of the CloudMonitor application group to which the custom metric belongs. If you set MetricType to custom, you must specify this parameter. |
 
-| Effective | String | No | TZ=+00 * * 1-2 * * ? | The effective period of the event- triggered task. By default, the event- triggered task is effective at all times. The value of this parameter follows the cron expression format. The default format is X X X X X ? . In the default format: X : a placeholder for a field, which represents seconds, minutes, hours, days of month, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the value range of X, see the "Cron expressions" topic. ? : No value is specified. Note By default, the value of this parameter is specified in UTC+8. You can specify the time zone before a cron expression in the TZ=+yy format. y specifies the time zone. For example, TZ=+00 * * 1-2 * * ? specifies that the event-triggered task is effective between 01:00 and 02:59 (UTC+0) every day. Examples: * * * * * ? : The event- triggered task is effective at all times. * * 17-18 * * ? : The event- triggered task is effective between 17:00:00 and 18:59:00 (UTC+8) every day. TZ=+00 * * 1-2 * * ? : The event-triggered task is effective between 01:00:00 and 02:59:00 (UTC+0) every day. |  |  |  |
+| Effective | String | No | TZ=+00 * * 1-2 * * ? | The effective period of the event- triggered task. By default, the event- triggered task is effective at all times. The value of this parameter follows the cron expression format. The default format is X X X X X ? . In the default format: X : a placeholder for a field, which represents seconds, minutes, hours, days of month, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the value range of X, see the "Cron expressions" topic. ? : No value is specified. Note By default, the value of this parameter is specified in UTC+8. You can specify the time zone before a cron expression in the TZ=+yy format. y specifies the time zone. For example, TZ=+00 * * 1-2 * * ? specifies that the event-triggered task is effective between 01:00 and 02:59 (UTC+0) every day. Examples: * * * * * ? : The event- triggered task is effective at all times. * * 17-18 * * ? : The event- triggered task is effective between 17:00:00 and 18:59:00 (UTC+8) every day. TZ=+00 * * 1-2 * * ? : The event-triggered task is effective between 01:00:00 and 02:59:00 (UTC+0) every day. |   |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  | TZ=+00 * |  |  |
-| AlarmAction.N | RepeatL ist | No | ari:acs:ess:cn- hangzhou- env17- d01:1406926*** *:scalingrule/asr - bp163l21e07uh n**** | The unique identifier of scaling rule N that you want to associate with the event-triggered task. |  |  |  |
+|   |   |   |   |   | TZ=+00 * |   |   |
+| AlarmAction.N | RepeatL ist | No | ari:acs:ess:cn- hangzhou- env17- d01:1406926*** *:scalingrule/asr - bp163l21e07uh n**** | The unique identifier of scaling rule N that you want to associate with the event-triggered task. |   |   |   |
 
-|  |  | * 1-2 * * ? |
+|   |   | * 1-2 * * ? |
 |---|---|---|
 
 | Dimension.N.Di mensionKey | String | No | device | The key of dimension N that you want to associate with the metric. The valid values of Dimension.N.DimensionKey vary based on the value of MetricType. If you set MetricType to custom, you can specify this parameter based on your business requirements. If you set MetricType to system, Dimension.N.DimensionKey has the following valid values: user id: the ID of your Apsara _ Stack tenant account scaling group: the scaling group _ that is monitored by the event- triggered task. device: the type of the NIC. state: the status of the TCP connection. |
@@ -5756,41 +6162,47 @@ The user_id and scaling_group dimensions are automatically populated. You need t
 | Dimension.N.Di mensionValue | String | No | eth0 | The value of dimension N that you want to associate with the metric. The valid values of Dimension.N.DimensionValue vary based on the value of Dimension.N.DimensionKey. If you set MetricType to custom, you can specify this parameter based on your business requirements. If you set MetricType to system, Dimension.N.DimensionValue has the following valid values: user id: The system specifies _ the value. scaling group: The system _ specifies the value. device: You can set this parameter to eth0 or eth1. For instances that reside in the classic network, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC. For instances that reside in the classic network, eth1 specifies the public NIC. state: You can set this parameter to TCP TOTAL or _ ESTABLISHED. TCP TOTAL specifies the total _ number of TCP connections. ESTABLISHED specifies the number of TCP connections that are established. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AlarmTaskId | String | asg- bp1hvbnmkl10vll5* *** f95ce797- _ dc2e-4bad-9618- 14fee7d1**** | The ID of the event-triggered task. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http(s)://ess.example.com/?Action=CreateAlarm &RegionId=cn-hangzhou-env17-d01 &Name=TestAlarmTask &Description=Test alarm task. &ScalingGroupId=asg-bp18p2yfxow2dloq**** &MetricName=CpuUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:1406926****:scalingrule/asr-bp163l21e0 7uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}] &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<CreateAlarmResponse>
+    <AlarmTaskId>asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****</AlarmTa
+skId>
+    <RequestId>ADD82C07-7A7C-4DD4-907F-1D114742****</RequestId>
+</CreateAlarmResponse>
+```
+
+`JSON` format `{`
+
+```json
+        "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****",
+        "RequestId": "ADD82C07-7A7C-4DD4-907F-1D114742****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 404 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of "%s" is invalid. |
 
-```
-&RegionId=cn-hangzhou-env17-d01 &Name=TestAlarmTask &Description=Test alarm task. &ScalingGroupId=asg-bp18p2yfxow2dloq**** &MetricName=CpuUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:1406926****:scalingrule/asr-bp163l21e0 7uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}] &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-    <AlarmTaskId>asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****</AlarmTa
-skId>
-    <RequestId>ADD82C07-7A7C-4DD4-907F-1D114742****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-        "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****",
-        "RequestId": "ADD82C07-7A7C-4DD4-907F-1D114742****"
-}
-```
-
-#### DescribeAlarms
+#### 6.12.2 DescribeAlarms
 
 Queries information about event-triggered tasks.
 
@@ -5811,28 +6223,28 @@ Queries information about event-triggered tasks.
 | PageNumber | Integer | No | 1 | The number of the page to return. Pages start from page 1. Default value: 1. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AlarmList | Array of Alarm |  | The event-triggered tasks. |
-| Alarm |  |  |  |
+| AlarmList | Array of Alarm |   | The event-triggered tasks. |
+| Alarm |   |   |   |
 | AlarmActions | List | ari:acs:ess:cn- qingdao-env17- d01:1344371:scali ngrule/eMKWG8SR Nb9dBLAjweN**** | The unique identifier of the scaling rule that is associated with the event-triggered task. |
 | AlarmTaskId | String | asg- bp1hvbnmkl10vll5* *** f95ce797- _ dc2e-4bad-9618- 14fee7d1**** | The ID of the event-triggered task. |
 | ComparisonOp erator | String | >= | The operator that is used to compare the metric value and the metric threshold. Valid value if the metric value is greater than or equal to the threshold: >= Valid value if the metric value is less than or equal to the threshold: <= Valid value if the metric value is greater than the threshold: > Valid value if the metric value is less than the threshold: < |
 | Description | String | Test alarm task. | The description of the event-triggered task. |
-| Dimensions | Array of Dimension |  | The dimensions of the metric. |
-| Dimension |  |  |  |
+| Dimensions | Array of Dimension |   | The dimensions of the metric. |
+| Dimension |   |   |   |
 | DimensionKey | String | device | The dimension key of the metric. Valid values: user id: the ID of your Apsara Stack _ tenant account. scaling group: the scaling group that is _ monitored by the event-triggered task. device: the type of the network interface controller (NIC). state: the status of the TCP connection. |
-
-**Response parameters**
 
 | DimensionValu e | String | eth0 | The dimension value of the metric. The value of this parameter varies based on the value of DimensionKey. user id: The system specifies the value. _ scaling group: The system specifies the _ value. Valid values of DimensionValue if DimensionKey is set to device: eth0: the internal NIC for instances that reside in the classic network. Only one eth0 NIC exists on each instance that resides in a VPC. eth1: the public NIC for instances that reside in the classic network. Valid values of DimensionValue if DimensionKey is set to state: TCP TOTAL: the total number of TCP _ connections. ESTABLISHED: the number of established TCP connections. |
 |---|---|---|---|
 | Effective | String | Test | Note This parameter is in invitational preview and is unavailable to regular users. |
 | Enable | Boolean | true | Indicates whether the event-triggered task is enabled. Valid values: true false |
 | EvaluationCou nt | Integer | 3 | The number of times that the threshold must be reached before a scaling rule of the event-triggered task is executed. For example, if you set this parameter to 3, the average CPU utilization must consecutively reach 80% three times before a scaling rule is executed. |
-|  |  |  | The name of the metric. Valid values: CpuUtilization: the CPU utilization of an Elastic Compute Service (ECS) instance. Unit: %. IntranetTx: the outbound traffic from an ECS instance over the internal network. Unit: KB/min. IntranetRx: the inbound traffic to an ECS instance over the internal network. Unit: KB/min. VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min. |
+|   |   |   | The name of the metric. Valid values: CpuUtilization: the CPU utilization of an Elastic Compute Service (ECS) instance. Unit: %. IntranetTx: the outbound traffic from an ECS instance over the internal network. Unit: KB/min. IntranetRx: the inbound traffic to an ECS instance over the internal network. Unit: KB/min. VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min. |
 
-|  |  |  | VpcInternetRx: the inbound traffic over the Internet to an ECS instance that |
+|   |   |   | VpcInternetRx: the inbound traffic over the Internet to an ECS instance that |
 |---|---|---|---|
 | MetricName | String | CpuUtilization | resides in a VPC. Unit: KB/min. SystemDiskReadBps: the number of bytes read from the system disk that is used by an ECS instance per second. SystemDiskWriteBps: the number of bytes written to the system disk that is used by an ECS instance per second. SystemDiskReadOps: the number of read operations on the system disk that is used by an ECS instance per second. SystemDiskWriteOps: the number of write operations on the system disk that is used by an ECS instance per second. CpuUtilizationAgent: the CPU utilization of an agent. Unit: %. GpuUtilizationAgent: the GPU utilization of an agent. Unit: %. GpuMemoryFreeUtilizationAgent: the idle GPU memory usage of an agent. Unit: %. GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %. MemoryUtilization: the memory usage of an agent. Unit: %. LoadAverage: the average system load of an agent. TcpConnection: the total number of TCP connections of an agent. TcpConnection: the number of established TCP connections of an agent. PackagesNetOut: the number of packets sent by the internal NIC that is used by an agent. PackagesNetIn: the number of packets received by the internal NIC that is used by an agent. EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %. EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %. For more information, see the "Event- triggered task for system monitoring" topic in the Auto Scaling documentation. |
 | MetricType | String | system | The type of the metric. Valid values: system: system metrics of CloudMonitor custom: custom metrics that are reported to CloudMonitor |
@@ -5851,13 +6263,15 @@ Queries information about event-triggered tasks.
 | TotalCount | Integer | 2 | The total number of event-triggered tasks. |
 |---|---|---|---|
 
+**Examples**
+
 Sample requests
 
 ```
-&RegionId=cn-qingdao-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &State=OK &IsEnable=true &MetricType=system &MetricName=CpuUtilization &PageSize=10 &PageNumber=1 &<Common request parameters>
+http(s)://ess.example.com/?Action=DescribeAlarms &RegionId=cn-qingdao-env17-d01 &ScalingGroupId=asg-bp18p2yfxow2dloq**** &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &State=OK &IsEnable=true &MetricType=system &MetricName=CpuUtilization &PageSize=10 &PageNumber=1 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <TotalCount>2</TotalCount> <PageSize>10</PageSize> <RequestId>871C7C53-34A4-45AA-8C14-4B72FA6A****</RequestId> <PageNumber>1</PageNumber> <AlarmList>
@@ -5884,10 +6298,9 @@ skId>
 d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****</AlarmActions> </AlarmList>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 2,
     "PageSize": 10,
     "RequestId": "871C7C53-34A4-45AA-8C14-4B72FA6A****",
@@ -5910,14 +6323,18 @@ d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****</AlarmActions> </AlarmList>
         "Dimensions": {
             "DimensionValue": "eth0",
             "DimensionKey": "device"
-        },
-        "AlarmActions": "ari:acs:ess:cn-qingdao-env17-
-d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
-    }
-}
 ```
 
-#### ModifyAlarm
+`},`
+
+```json
+        "AlarmActions": "ari:acs:ess:cn-qingdao-env17-
+d01:1344371:scalingrule/eMKWG8SRNb9dBLAjweN****"
+```
+
+`}` `}`
+
+#### 6.12.3 ModifyAlarm
 
 Modifies an event-triggered task.
 
@@ -5929,6 +6346,8 @@ If you set MetricType to custom, you must report your custom metrics to CloudMon
 
 The user_id and scaling_group dimensions are automatically populated. You need to only specify the device and state dimensions. For more information, see `Dimension.N.DimensionKey` and `Dimension.N.DimensionValue` in the "Request parameters" section of this topic.
 
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyAlarm | The operation that you want to perform. Set the value to ModifyAlarm. |
@@ -5936,13 +6355,11 @@ The user_id and scaling_group dimensions are automatically populated. You need t
 | RegionId | String | Yes | cn-hangzhou- env17-d01 | The region ID of the event-triggered task. |
 | Name | String | No | TestAlarmTask | The name of the event-triggered task. |
 | Description | String | No | Test alarm task. | The description of the event- triggered task. |
-|  |  |  |  | The name of the metric. Valid values of MetricName vary based on the value of MetricType. If you set MetricType to custom, the valid values of MetricName are your custom metrics. If you set MetricType to system, the MetricName parameter has the following valid values: CpuUtilization: the CPU utilization of an ECS instance. Unit: %. IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min. IntranetRx: the inbound traffic over the internal network to an ECS instance. Unit: KB/min. VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min. VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min. SystemDiskReadBps: the number of bytes read from the system disk that is used by an ECS instance per second. |
-
-**Request parameters**
+|   |   |   |   | The name of the metric. Valid values of MetricName vary based on the value of MetricType. If you set MetricType to custom, the valid values of MetricName are your custom metrics. If you set MetricType to system, the MetricName parameter has the following valid values: CpuUtilization: the CPU utilization of an ECS instance. Unit: %. IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min. IntranetRx: the inbound traffic over the internal network to an ECS instance. Unit: KB/min. VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min. VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min. SystemDiskReadBps: the number of bytes read from the system disk that is used by an ECS instance per second. |
 
 | MetricName | String | No | MemoryUtilizatio n | SystemDiskWriteBps: the number of bytes written to the system disk that is used by an ECS instance per second. SystemDiskReadOps: the number of read operations on the system disk that is used by an ECS instance per second. SystemDiskWriteOps: the number of write operations on the system disk that is used by an ECS instance per second. CpuUtilizationAgent: the CPU utilization of an agent. Unit: %. GpuUtilizationAgent: the GPU utilization of an agent. Unit: %. GpuMemoryFreeUtilizationAgent : the percentage of idle GPU |
 |---|---|---|---|---|
-|  |  |  |  | memory of an agent. GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %. MemoryUtilization: the memory usage of an agent. Unit: %. LoadAverage: the average system load of an agent. TcpConnection: the total number of TCP connections of an agent. ESTABLISHED: the number of established TCP connections of an agent. PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) used by an agent. PackagesNetIn: the number of packets that are received by the internal NIC used by an agent. EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %. EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %. For more information, see the "Event-triggered task for system monitoring" topic. |
+|   |   |   |   | memory of an agent. GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %. MemoryUtilization: the memory usage of an agent. Unit: %. LoadAverage: the average system load of an agent. TcpConnection: the total number of TCP connections of an agent. ESTABLISHED: the number of established TCP connections of an agent. PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) used by an agent. PackagesNetIn: the number of packets that are received by the internal NIC used by an agent. EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %. EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %. For more information, see the "Event-triggered task for system monitoring" topic. |
 
 | MetricType | String | No | system | The type of the metric. Valid values: system: system metrics of CloudMonitor custom: custom metrics that are published to CloudMonitor |
 |---|---|---|---|---|
@@ -5965,169 +6382,177 @@ The user_id and scaling_group dimensions are automatically populated. You need t
 | Dimension.N.Di mensionValue | String | No | eth0 | The value of dimension N that is associated with the metric. Valid values of Dimension.N.DimensionValue vary based on the value of Dimension.N.DimensionKey . If you set MetricType to custom, you can specify this parameter based on your business requirements. If you set MetricType to system, Dimension.N.DimensionValue has the following valid values: user id: The system specifies _ the value. scaling group: The system _ specifies the value. device: You can set this parameter to eth0 or eth1. For instances that reside in the classic network, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC. For instances that reside in the classic network, eth1 specifies the public NIC. state: You can set this parameter to TCP TOTAL or _ ESTABLISHED. TCP TOTAL specifies the total _ number of TCP connections. ESTABLISHED specifies the number of TCP connections that are established. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AlarmTaskId | String | asg- bp1hvbnmkl10vll5* *** 83948190- _ acdd-483f-98f7- b77f4778**** | The ID of the event-triggered task. |
 | RequestId | String | BACACF83-7070- 4953-A8FD- D81F89F1**** | The ID of the request. |
 
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | EnableAlarm | The operation that you want to perform. Set the value to EnableAlarm. |
+**Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &Name=alarmtask**** &Description=Test alarm task. &MetricName=MemoryUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:140692647****:scalingrule/asr-bp163l21 e07uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}] &<Common request parameters>
+http(s)://ess.example.com/?Action=ModifyAlarm &RegionId=cn-hangzhou-env17-d01 &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &Name=alarmtask**** &Description=Test alarm task. &MetricName=MemoryUtilization &MetricType=system &Period=300 &Statistics=Average &Threshold=80.0 &ComparisonOperator=>= &EvaluationCount=3 &GroupId=4055401 &Effective=TZ=+00 * * 1-2 * * ? &AlarmAction=["ari:acs:ess:cn-hangzhou-env17-d01:140692647****:scalingrule/asr-bp163l21 e07uhn****"] &Dimension=[{"DimensionKey":"device","DimensionValue":"eth0"}] &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyAlarmResponse>
     <AlarmTaskId>asg-bp1hvbnmkl10vll5****_83948190-acdd-483f-98f7-b77f4778****</AlarmTa
 skId>
     <RequestId>BACACF83-7070-4953-A8FD-D81F89F1****</RequestId>
+</ModifyAlarmResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_83948190-acdd-483f-98f7-b77f4778****",
     "RequestId": "BACACF83-7070-4953-A8FD-D81F89F1****"
-}
 ```
 
-#### EnableAlarm
+`}`
+
+#### 6.12.4 EnableAlarm
 
 Enables an event-triggered task.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | EnableAlarm | The operation that you want to perform. Set the value to EnableAlarm. |
+
 | AlarmTaskId | String | Yes | asg- bp1hvbnmkl10vl l5**** f95ce797 _ -dc2e-4bad- 9618- 14fee7d1**** | The ID of the event-triggered task that you want to enable. |
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The region ID of the event-triggered task that you want to enable. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 688B18B8-FB1E- 42EB-A1ED- 7F55B090**** | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+http(s)://ess.example.com/?Action=EnableAlarm &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<EnableAlarmResponse>
     <RequestId>688B18B8-FB1E-42EB-A1ED-7F55B090****</RequestId>
+</EnableAlarmResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "688B18B8-FB1E-42EB-A1ED-7F55B090****"
-}
 ```
 
-#### DisableAlarm
+`}`
+
+#### 6.12.5 DisableAlarm
 
 Disables an event-triggered task.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | DisableAlarm | The operation that you want to perform. Set the value to DisableAlarm. |
 |---|---|---|---|---|
 | AlarmTaskId | String | Yes | asg- bp1hvbnmkl10vl l5**** f95ce797 _ -dc2e-4bad- 9618- 14fee7d1**** | The ID of the event-triggered task that you want to disable. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The region ID of the event-triggered task that you want to disable. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 086EFCD4-C76F- 4DC6-9EE9- 0D9B711E**** | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+http(s)://ess.example.com/?Action=DisableAlarm &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>086EFCD4-C76F-4DC6-9EE9-0D9B711E****</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "086EFCD4-C76F-4DC6-9EE9-0D9B711E****"
-}
 ```
 
-#### DeleteAlarm
+`}`
+
+#### 6.12.6 DeleteAlarm
 
 Deletes an event-triggered task.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | DeleteAlarm | The operation that you want to perform. Set the value to DeleteAlarm. |
 |---|---|---|---|---|
 | AlarmTaskId | String | Yes | asg- bp1hvbnmkl10vl l5**** f95ce797 _ -dc2e-4bad- 9618- 14fee7d1**** | The ID of the event-triggered task. |
 | RegionId | String | Yes | cn-qingdao- env17-d01 | The region ID of the event-triggered task. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AlarmTaskId | String | asg- bp1hvbnmkl10vll5* *** f95ce797- _ dc2e-4bad-9618- 14fee7d1**** | The ID of the event-triggered task. |
 | RequestId | String | 6EF9BFEE-FE07- 4627-B8FB- 14326FB9**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+http(s)://ess.example.com/?Action=DeleteAlarm &AlarmTaskId=asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DeleteAlarmResponse>
     <AlarmTaskId>asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****</AlarmTa
 skId>
     <RequestId>6EF9BFEE-FE07-4627-B8FB-14326FB9****</RequestId>
+</DeleteAlarmResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "AlarmTaskId": "asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****",
     "RequestId": "6EF9BFEE-FE07-4627-B8FB-14326FB9****"
-}
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateLifecycle Hook | The operation that you want to perform. Set the value to CreateLifecycleHook. |
-| LifecycleTransiti on | String | Yes | SCALE OUT _ | The type of the scaling activity to which you want to apply the lifecycle hook. Valid values: SCALE OUT _ SCALE IN _ |
-| ScalingGroupId | String | Yes | asg- bp1eyv4qn8ssg v43**** | The ID of the scaling group. |
+`}`
 
-### Lifecycle hooks
+### 6.13 Lifecycle hooks
 
-#### CreateLifecycleHook
+#### 6.13.1 CreateLifecycleHook
 
 Creates lifecycle hooks.
 
@@ -6141,41 +6566,75 @@ If your scaling group has existing ECS instances and you specified an OOS templa
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateLifecycle Hook | The operation that you want to perform. Set the value to CreateLifecycleHook. |
+| LifecycleTransiti on | String | Yes | SCALE OUT _ | The type of the scaling activity to which you want to apply the lifecycle hook. Valid values: SCALE OUT _ SCALE IN _ |
+| ScalingGroupId | String | Yes | asg- bp1eyv4qn8ssg v43**** | The ID of the scaling group. |
+
 | LifecycleHookNa me | String | No | lifecyclehook*** * | The name of the lifecycle hook. Each lifecycle hook name must be unique in a scaling group. The name must be 2 to 64 characters in length and can contain letters, digits, underscores ( ), hyphens (-), and _ periods (.). The name must start with a letter or a digit. The default name is the ID of the lifecycle hook. |
 |---|---|---|---|---|
 | DefaultResult | String | No | CONTINUE | The action that you want Auto Scaling to perform when the lifecycle hook times out. Valid values: CONTINUE: Auto Scaling continues to respond to scale-in or scale-out requests. ABANDON: Auto Scaling releases ECS instances that are created during scale-outs, or removes ECS instances from the scaling group during scale-ins. If multiple lifecycle hooks in a scaling group are triggered during scale-ins and you set DefaultResult to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the ABANDON action after the lifecycle hook times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of DefaultResult that you specify for the lifecycle hook that most recent times out. Default value: CONTINUE. |
 
-| HeartbeatTimeo ut | Integer |  |  |  | The timeout period of the lifecycle hook. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds. After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule. Default value: 600. |  |
+| HeartbeatTimeo ut | Integer |   |   |   | The timeout period of the lifecycle hook. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds. After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule. Default value: 600. |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  | RecordLifecycleActionHeartbeat |
-|  |  |  | No | 600 |  |  |
+|   |   |   |   |   |   | RecordLifecycleActionHeartbeat |
+|   |   |   | No | 600 |   |   |
 
-| NotificationMeta data |  |  |  |  | The notification metadata that is sent when the lifecycle hook takes effect. This helps you manage and categorize notifications in an efficient manner. If you specify this parameter, you must also specify NotificationArn. The value of this parameter cannot exceed 4,096 characters in length. If you use NotificationArn to specify a public or custom OOS template, the value of NotificationMetadata must be a JSON string that contains the OOS template parameters. Sample parameters in an OOS template: {"dbInstanceId": |  |
+| NotificationMeta data |   |   |   |   | The notification metadata that is sent when the lifecycle hook takes effect. This helps you manage and categorize notifications in an efficient manner. If you specify this parameter, you must also specify NotificationArn. The value of this parameter cannot exceed 4,096 characters in length. If you use NotificationArn to specify a public or custom OOS template, the value of NotificationMetadata must be a JSON string that contains the OOS template parameters. Sample parameters in an OOS template: {"dbInstanceId": |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  | {"dbInstanceId": |
-|  |  |  |  |  | "dds-bp17661e0135****", |  |
-|  |  |  |  |  | "modifyMode": "Append"} |  |
-|  |  | String | No | Test lifecycle hook. |  |  |
+|   |   |   |   |   |   | {"dbInstanceId": |
+|   |   |   |   |   | "dds-bp17661e0135****", |   |
+|   |   |   |   |   | "modifyMode": "Append"} |   |
+|   |   | String | No | Test lifecycle hook. |   |   |
 
-| NotificationArn | String | No |  |  |  | The Alibaba Cloud Resource Name (ARN) of the notification method. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the following rules apply: If you use an MNS queue as the notification method, specify the value for this parameter in the acs:mns:{region-id}: |  |  |
+| NotificationArn | String | No |   |   |   | The Alibaba Cloud Resource Name (ARN) of the notification method. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the following rules apply: If you use an MNS queue as the notification method, specify the value for this parameter in the acs:mns:{region-id}: |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | acs:mns:{region-id}: |  |
-|  |  |  |  |  |  | {account- |  |  |
-|  |  |  |  |  |  | id}:queue/{queuename} |  |  |
-|  |  |  |  |  |  |  | acs:mns:{region-id}: |  |
-|  |  |  |  |  |  | {account- |  |  |
-|  |  |  |  |  |  | id}:topic/{topicname} |  |  |
-|  |  |  |  |  | acs:mns:cn- beijing-env17- d01:161456884 340****:queue/ |  |  |  |
-|  |  |  |  |  |  |  | acs:oos:{region-id}: |  |
-|  |  |  |  |  | modifyLifecycle Ho**** | {account- |  |  |
-|  |  |  |  |  |  | id}:template/{templatename} |  |  |
+|   |   |   |   |   |   |   | acs:mns:{region-id}: |   |
+|   |   |   |   |   |   | {account- |   |   |
+|   |   |   |   |   |   | id}:queue/{queuename} |   |   |
+|   |   |   |   |   |   |   | acs:mns:{region-id}: |   |
+|   |   |   |   |   |   | {account- |   |   |
+|   |   |   |   |   |   | id}:topic/{topicname} |   |   |
+|   |   |   |   |   | acs:mns:cn- beijing-env17- d01:161456884 340****:queue/ |   |   |   |
+|   |   |   |   |   |   |   | acs:oos:{region-id}: |   |
+|   |   |   |   |   | modifyLifecycle Ho**** | {account- |   |   |
+|   |   |   |   |   |   | id}:template/{templatename} |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LifecycleHookI d | String | ash- bp1at9ufhmcf9cmy **** | The ID of the lifecycle hook. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
+
+Sample requests
+
+```
+http(s)://ess.example.com/?Action=CreateLifecycleHook &ScalingGroupId=asg-bp1eyv4qn8ssgv43**** &LifecycleHookName=lifecyclehook**** &LifecycleTransition=SCALE_OUT &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &NotificationMetadata=Test lifecycle hook. &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<CreateLifecycleHookResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <LifecycleHookId>ash-bp1at9ufhmcf9cmy****</LifecycleHookId>
+</CreateLifecycleHookResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "LifecycleHookId": "ash-bp1at9ufhmcf9cmy****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -6184,41 +6643,12 @@ If your scaling group has existing ECS instances and you specified an OOS templa
 | 400 | UnsupportedNotificatio nType.CurrentRegion | The notificationType is not supported in the special region which scalingGroup belongs to. | The notification type is not supported in the region where the scaling group resides. |
 | 400 | QueueNotExist | The specified queue does not exist. | The MNS queue does not exist. |
 
-Sample requests
-
-```
-http(s)://ess.example.com/?Action=CreateLifecycleHook &ScalingGroupId=asg-bp1eyv4qn8ssgv43**** &LifecycleHookName=lifecyclehook**** &LifecycleTransition=SCALE_OUT &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &NotificationMetadata=Test lifecycle hook. &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-      <LifecycleHookId>ash-bp1at9ufhmcf9cmy****</LifecycleHookId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "LifecycleHookId": "ash-bp1at9ufhmcf9cmy****"
-}
-```
-
 | 400 | TopicNotExist | The specified topic does not exist. | The MNS topic does not exist. |
 |---|---|---|---|
 | 400 | InvalidLifecycleHookN ame.Duplicate | The specified value of parameter lifecycleHookName is duplicated. | The name of the lifecycle hook already exists. |
 | 400 | QuotaExceeded.Lifecy cleHook | Lifecycle hook quota exceeded in the specified scaling group. | The maximum number of lifecycle hooks that you can create has been reached. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyLifecycleH ook | The operation that you want to perform. Set the value to ModifyLifecycleHook. |
-| LifecycleHookId | String | No | ash- bp1fxuqyi98w0a ib**** | The ID of the lifecycle hook that you want to modify. |
-| ScalingGroupId | String | No | asg- bp18p2yfxow2dl oq**** | The ID of the scaling group to which the lifecycle hook belongs. |
-| LifecycleHookNa me | String | No | test SCALE IN _ _ | The name of the lifecycle hook that you want to modify. |
-
-#### ModifyLifecycleHook
+#### 6.13.2 ModifyLifecycleHook
 
 Modifies a lifecycle hook.
 
@@ -6228,37 +6658,41 @@ You can use one of the following methods to specify the lifecycle hook that you 
 
 **Request parameters**
 
-| DefaultResult | String |  | No | CONTINUE | The action that you want Auto Scaling to perform when the lifecycle hook times out. Valid values: CONTINUE: Auto Scaling continues to respond to scale-in or scale-out requests. ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-outs, or removes ECS instances from the scaling group during scale-ins. If multiple lifecycle hooks in a scaling group are triggered during scale-ins and you set DefaultResult to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the ABANDON action after the lifecycle hook times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of DefaultResult that you specify for the lifecycle hook that most recent times out. |  |
-|---|---|---|---|---|---|---|
-| HeartbeatTimeo ut | Integer |  | No | 600 | The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds. After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule. |  |
-|  |  |  |  |  |  | RecordLifecycleActionHeartbeat |
-| LifecycleTransiti on | String |  | No | SCALE IN _ | The type of scaling activity to which you can apply the lifecycle hook. Valid values: SCALE OUT _ SCALE IN _ |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyLifecycleH ook | The operation that you want to perform. Set the value to ModifyLifecycleHook. |
+| LifecycleHookId | String | No | ash- bp1fxuqyi98w0a ib**** | The ID of the lifecycle hook that you want to modify. |
+| ScalingGroupId | String | No | asg- bp18p2yfxow2dl oq**** | The ID of the scaling group to which the lifecycle hook belongs. |
+| LifecycleHookNa me | String | No | test SCALE IN _ _ | The name of the lifecycle hook that you want to modify. |
 
-| NotificationMeta data | String | No |  |  | Test |  | The fixed string that you want to include in a notification. When the lifecycle hook takes effect, Auto Scaling sends a notification. The value of this parameter cannot exceed 128 characters in length. Auto Scaling sends the value of NotificationMetadata together with the notification. This allows you to categorize and manage your notifications in an efficient manner. NotificationMetadata takes effect only if you specify NotificationArn. |  |  |  |
+| DefaultResult | String |   | No | CONTINUE | The action that you want Auto Scaling to perform when the lifecycle hook times out. Valid values: CONTINUE: Auto Scaling continues to respond to scale-in or scale-out requests. ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-outs, or removes ECS instances from the scaling group during scale-ins. If multiple lifecycle hooks in a scaling group are triggered during scale-ins and you set DefaultResult to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the ABANDON action after the lifecycle hook times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of DefaultResult that you specify for the lifecycle hook that most recent times out. |   |
+|---|---|---|---|---|---|---|
+| HeartbeatTimeo ut | Integer |   | No | 600 | The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds. After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule. |   |
+|   |   |   |   |   |   | RecordLifecycleActionHeartbeat |
+| LifecycleTransiti on | String |   | No | SCALE IN _ | The type of scaling activity to which you can apply the lifecycle hook. Valid values: SCALE OUT _ SCALE IN _ |   |
+
+| NotificationMeta data | String | No |   |   | Test |   | The fixed string that you want to include in a notification. When the lifecycle hook takes effect, Auto Scaling sends a notification. The value of this parameter cannot exceed 128 characters in length. Auto Scaling sends the value of NotificationMetadata together with the notification. This allows you to categorize and manage your notifications in an efficient manner. NotificationMetadata takes effect only if you specify NotificationArn. |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-| NotificationArn | String | No |  |  |  |  | The Alibaba Cloud Resource Name (ARN) of the notification method. Specify the value in one of the following formats: If you use a Message Service (MNS) queue as the notification method, specify the value in the acs:mns:{region-id}: |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  |  |  | {account- |  |  |  |
-|  |  |  |  |  |  |  | id}:queue/{queuename} |  |  |  |
-|  |  |  |  |  |  |  |  |  | acs:mns:{region- |  |
-|  |  |  |  |  |  |  | id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-|  |  |  |  |  | acs:mns:cn- beijing-env17- d01:161456884 340****:queue/ |  |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:oos:{region-id}: |  |  |
-|  |  |  |  |  | modifyLifecycle |  | {account- |  |  |  |
-|  |  |  |  |  | Ho**** |  | id}:template/{templatename} |  |  |  |
-| RegionId | String | No |  |  | cn-beijing- env17-d01 |  | The region ID of the scaling group. |  |  |  |
+| NotificationArn | String | No |   |   |   |   | The Alibaba Cloud Resource Name (ARN) of the notification method. Specify the value in one of the following formats: If you use a Message Service (MNS) queue as the notification method, specify the value in the acs:mns:{region-id}: |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   |   |   | {account- |   |   |   |
+|   |   |   |   |   |   |   | id}:queue/{queuename} |   |   |   |
+|   |   |   |   |   |   |   |   |   | acs:mns:{region- |   |
+|   |   |   |   |   |   |   | id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
+|   |   |   |   |   | acs:mns:cn- beijing-env17- d01:161456884 340****:queue/ |   |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:oos:{region-id}: |   |   |
+|   |   |   |   |   | modifyLifecycle |   | {account- |   |   |   |
+|   |   |   |   |   | Ho**** |   | id}:template/{templatename} |   |   |   |
+| RegionId | String | No |   |   | cn-beijing- env17-d01 |   | The region ID of the scaling group. |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParamter | The specified value of parameter is not valid. | The value of a parameter is invalid. |
-| 400 | InvalidLifecycleHookId. NotExist | The specified LifecycleHookId not exist. | The value of LifecycleHookId is invalid. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6266,19 +6700,28 @@ Sample requests
 http(s)://ess.example.com/?Action=ModifyLifecycleHook &LifecycleHookId=ash-bp1fxuqyi98w0aib**** &ScalingGroupId=asg-bp18p2yfxow2dloq**** &LifecycleHookName=test_SCALE_IN &DefaultResult=CONTINUE &HeartbeatTimeout=600 &LifecycleTransition=SCALE_IN &NotificationMetadata=Test &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &RegionId=cn-beijing-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyLifecycleHookResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</ModifyLifecycleHookResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParamter | The specified value of parameter is not valid. | The value of a parameter is invalid. |
+| 400 | InvalidLifecycleHookId. NotExist | The specified LifecycleHookId not exist. | The value of LifecycleHookId is invalid. |
 
 | 400 | InvalidLifecycleHookN ame.NotExist | The specified LifecycleHookName you provided not exist. | The value of LifecycleHookName is invalid. |
 |---|---|---|---|
@@ -6287,13 +6730,7 @@ http(s)://ess.example.com/?Action=ModifyLifecycleHook &LifecycleHookId=ash-bp1fx
 | 400 | LifecycleHook | The specified queue does not exist. | The MNS queue does not exist. |
 | 400 | TopicNotExist | The specified topic does not exist. | The MNS topic does not exist. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | RecordLifecycle ActionHeartbeat | The operation that you want to perform. Set the value to RecordLifecycleActionHeartbeat. |
-| lifecycleActionTo ken | String | Yes | F324B880-900E- 4968-85DD- 81691113**** | The token of the lifecycle hook. You can obtain the token by using a Message Service (MNS) queue or an MNS topic that is specified when you create the lifecycle hook. |
-| lifecycleHookId | String | Yes | ash- bp1fxuqyi98w0a ib**** | The ID of the lifecycle hook. |
-
-#### RecordLifecycleActionHeartbeat
+#### 6.13.3 RecordLifecycleActionHeartbeat
 
 Extends the timeout period of a lifecycle hook.
 
@@ -6303,15 +6740,23 @@ You can call this operation to extend the timeout period of a lifecycle hook up 
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RecordLifecycle ActionHeartbeat | The operation that you want to perform. Set the value to RecordLifecycleActionHeartbeat. |
+| lifecycleActionTo ken | String | Yes | F324B880-900E- 4968-85DD- 81691113**** | The token of the lifecycle hook. You can obtain the token by using a Message Service (MNS) queue or an MNS topic that is specified when you create the lifecycle hook. |
+| lifecycleHookId | String | Yes | ash- bp1fxuqyi98w0a ib**** | The ID of the lifecycle hook. |
+
 | heartbeatTimeo ut | Integer | No | 600 | The timeout period of the lifecycle hook. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds. After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule. Default value: 600. |
 |---|---|---|---|---|
 | RegionId | String | No | cn-hangzhou- env17-d01 | The region ID of the scaling group. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6319,19 +6764,23 @@ Sample requests
 http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookId=ash-bp1fxuqyi98w0aib**** &lifecycleActionToken=F324B880-900E-4968-85DD-81691113**** &heartbeatTimeout=600 &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<RecordLifecycleActionHeartbeatResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</RecordLifecycleActionHeartbeatResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -6340,11 +6789,7 @@ http(s)://ess.example.com/?Action=RecordLifecycleActionHeartbeat &lifecycleHookI
 | 400 | LifecycleAction.TimeEx ceeded | The specified parameter heartbeatTime exceed lifecycleAction max suspend time. | The timeout period of the lifecycle hook exceeds 6 hours. |
 | 400 | LifecycleAction.Record TimesExceeded | The specified lifecycleAction exceed lifecycleAction max record times. | The maximum number of times that you can extend the timeout period of the lifecycle hook has been reached. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLifecycl eHooks | The operation that you want to perform. Set the value to DescribeLifecycleHooks. |
-
-#### DescribeLifecycleHooks
+#### 6.13.4 DescribeLifecycleHooks
 
 Queries information about lifecycle hooks.
 
@@ -6354,6 +6799,10 @@ You can use one of the following methods to specify the lifecycle hooks whose in
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLifecycl eHooks | The operation that you want to perform. Set the value to DescribeLifecycleHooks. |
+
 | ScalingGroupId | String | No | asg- bp1igpak5ft1fly p**** | The ID of the scaling group. |
 |---|---|---|---|---|
 | LifecycleHookNa me | String | No | lifecyclehook*** * | The name of the lifecycle hook. |
@@ -6362,17 +6811,17 @@ You can use one of the following methods to specify the lifecycle hooks whose in
 | RegionId | String | No | cn-beijing- env17d01 | The region ID of the scaling group. |
 | LifecycleHookId. N | RepeatL ist | No | ash- bp1at9ufhmcf9c my**** | The ID of lifecycle hook N. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| LifecycleHooks | Array of LifecycleHook |  | Details of the lifecycle hooks. |
-| LifecycleHook |  |  |  |
+| LifecycleHooks | Array of LifecycleHook |   | Details of the lifecycle hooks. |
+| LifecycleHook |   |   |   |
 | DefaultResult | String | CONTINUE | The action that is performed by Auto Scaling after the lifecycle hook times out. |
 | HeartbeatTime out | Integer | 60 | The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. |
 | LifecycleHookI d | String | ash- bp19d1032y9kij96 **** | The ID of the lifecycle hook. |
 | LifecycleHook Name | String | lifecyclehook**** | The name of the lifecycle hook. |
 | LifecycleTransi tion | String | SCALE OUT _ | The type of scaling activity to which the lifecycle hook applies. |
-
-**Response parameters**
 
 | NotificationArn | String | acs:ess:cn-beijing- env17- d01:16145688434 0****:null/null | The Alibaba Cloud Resource Name (ARN) of the notification method that is used by Auto Scaling to send notifications when the lifecycle hook takes effect. The value of this parameter is in one of the following formats: If you did not create a notification rule, the value of this parameter is specified in the acs:ess:{region-id}:{account- id}:null/null format. If the notification method is a Message Service (MNS) queue, the value of this parameter is specified in the acs:mns: {region-id}:{account- id}:queue/{queuename} format. If the notification method is an MNS topic, the value of this parameter is specified in the acs:mns:{region-id}: {account-id}:topic/{topicname} format. If the notification method is an Operation Orchestration Service (OOS) template, the value of this parameter is specified in the acs:oos:{region-id}: {account- id}:template/{templatename} format. The following items describe the variables in the preceding value formats: region-id: the region ID of the scaling group. account-id: the ID of the Alibaba Cloud account. queuename: the name of the MNS queue. topicname: the name of the MNS topic. templatename: the name of the OOS template. |
 |---|---|---|---|
@@ -6383,19 +6832,23 @@ You can use one of the following methods to specify the lifecycle hooks whose in
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3C**** | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of lifecycle hooks. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://ess.example.com/?Action=DescribeLifecycleHooks &ScalingGroupId=asg-bp1igpak5ft1flyp**** &LifecycleHookName=lifecyclehook**** &PageNumber=1 &PageSize=50 &LifecycleHookId=["ash-bp1at9ufhmcf9cmy****"] &RegionId=cn-beijing-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeLifecycleHooksResponse>
     <TotalCount>1</TotalCount>
     <PageSize>50</PageSize>
     <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3C****</RequestId>
     <PageNumber>1</PageNumber>
+    <LifecycleHooks>
         <LifecycleHookName>lifecyclehook****</LifecycleHookName>
         <NotificationArn>acs:ess:cn-beijing-env17-
 d01:161456884340****:null/null</NotificationArn>
@@ -6405,16 +6858,18 @@ d01:161456884340****:null/null</NotificationArn>
         <NotificationMetadata>Test Lifecycle Hook.</NotificationMetadata>
         <DefaultResult>CONTINUE</DefaultResult>
         <LifecycleHookId>ash-bp19d1032y9kij96****</LifecycleHookId>
+    </LifecycleHooks>
+<DescribeLifecycleHooksResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 1,
     "PageSize": 50,
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C****",
     "PageNumber": 1,
+    "LifecycleHooks": {
         "LifecycleHookName": "lifecyclehook****",
         "NotificationArn": "acs:ess:cn-beijing-env17-d01:161456884340****:null/null",
         "ScalingGroupId": "asg-bp1igpak5ft1flyp****",
@@ -6423,20 +6878,17 @@ d01:161456884340****:null/null</NotificationArn>
         "NotificationMetadata": "Test Lifecycle Hook.",
         "DefaultResult": "CONTINUE",
         "LifecycleHookId": "ash-bp19d1032y9kij96****"
-    }
-}
 ```
+
+`}` `}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidParamter | The specified value of parameter is not valid. | The value of a parameter is invalid. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLifecycl eActions | The operation that you want to perform. Set the value to DescribeLifecycleActions. |
-| ScalingActivityId | String | Yes | asa- bp17mug9t0peg agw**** | The ID of the scaling activity. |
-
-#### DescribeLifecycleActions
+#### 6.13.5 DescribeLifecycleActions
 
 Queries the information about lifecycle actions.
 
@@ -6446,19 +6898,24 @@ If a scaling activity for which you create a lifecycle hook occurs, the lifecycl
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLifecycl eActions | The operation that you want to perform. Set the value to DescribeLifecycleActions. |
+| ScalingActivityId | String | Yes | asa- bp17mug9t0peg agw**** | The ID of the scaling activity. |
+
 | LifecycleActionS tatus | String | No | Pending | The status of the lifecycle action. Valid values: Pending: The lifecycle action is in the Pending state. In this case, ECS instances to which the lifecycle hook applies enter the Pending Add or Pending Remove state. Timeout: The lifecycle action timed out. In this case, ECS instances to which the lifecycle hook applies automatically exit the Pending Add or Pending Remove state. Completed: The lifecycle action is completed. This specifies that you manually remove ECS instances to which the lifecycle hook applies from the Pending Add or Pending Remove state. |
 |---|---|---|---|---|
 | NextToken | String | No | AAAAAcSz4VTb1 Nq**** | The pagination token that is used in the next request to retrieve a new page of results. For example, if the value of NextToken that is returned in the previous call is 10, the next query starts from 11. You must specify the token that is obtained from the previous query as the value of NextToken. If you do not specify this parameter, the query starts from the beginning. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 | MaxResults | Integer | No | 10 | The maximum number of entries to return on each page. Valid values: 1 to 50. Default value: 10. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| LifecycleAction s | Array of LifecycleAction |  | The lifecycle actions that are triggered by the lifecycle hook. |
-| LifecycleAction |  |  |  |
+| LifecycleAction s | Array of LifecycleAction |   | The lifecycle actions that are triggered by the lifecycle hook. |
+| LifecycleAction |   |   |   |
 | InstanceIds | List | ["i- bp11m3fzlqrgk5vh ****","i- bp11m3fzlqrgk5vh ****"] | The IDs of the ECS instances to which the lifecycle hook applies. |
-
-**Response parameters**
 
 | LifecycleAction Result | String | CONTINUE | The subsequent action to take after the lifecycle hook times out. Valid values: CONTINUE: Auto Scaling continues to respond to a scale-in or scale-out request. ABANDON: Auto Scaling stops adding ECS instances to the scaling group and releases the ECS instances, or continues to respond to scale-in requests and remove ECS instances from the scaling group. |
 |---|---|---|---|
@@ -6470,21 +6927,18 @@ If a scaling activity for which you create a lifecycle hook occurs, the lifecycl
 | RequestId | String | 42A742EB-FCF3- 459E-9C62- E107048C**** | The ID of the request. |
 | TotalCount | Integer | 3 | The total number of lifecycle actions. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://ess.example.com/?Action=DescribeLifecycleActions &ScalingActivityId=asa-bp17mug9t0pegagw**** &LifecycleActionStatus=Pending &NextToken=AAAAAcSz4VTb1Nq**** &MaxResults=10 &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParameter | The specified value of parameter "ScalingActivityId" is not valid. | The value of ScalingActivityId is invalid. |
-| 400 | InvalidParameter | The specified value of parameter "MaxResults" is not valid. | The value of MaxResults is invalid. |
-| 400 | InvalidParameter | The specified value of parameter "LifecycleActionStatus " is not valid. | The value of LifecycleActionStatus is invalid. |
+Sample success responses `XML` format
 
 ```xml
+<DescribeLifecycleActionsResponse>
     <TotalCount>3</TotalCount>
     <RequestId>42A742EB-FCF3-459E-9C62-E107048C****</RequestId>
     <NextToken>AAAAAcSz4VTb1Nq****</NextToken>
@@ -6497,12 +6951,12 @@ CEE24444F7BB</LifecycleActionToken>
         <LifecycleHookId>ash-bp18uoft0deax0f7****</LifecycleHookId>
         <InstanceIds>["i-bp11m3fzlqrgk5vh****","i-bp11m3fzlqrgk5vh****"]</InstanceIds>
     </LifecycleActions>
+<DescribeLifecycleActionsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 3,
     "RequestId": "42A742EB-FCF3-459E-9C62-E107048C****",
     "NextToken": "AAAAAcSz4VTb1Nq****",
@@ -6513,17 +6967,19 @@ CEE24444F7BB</LifecycleActionToken>
         "LifecycleActionToken": "9C2E9DA7-F794-449A-ACF6-CEE24444F7BB",
         "LifecycleHookId": "ash-bp18uoft0deax0f7****",
         "InstanceIds": "[\"i-bp11m3fzlqrgk5vh****\",\"i-bp11m3fzlqrgk5vh****\"]"
-    }
-}
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CompleteLifecyc leAction | The operation that you want to perform. Set the value to CompleteLifecycleAction. |
-| LifecycleActionT oken | String | Yes | aaaa-bbbbb- cccc-ddddd | The token of the lifecycle action that is triggered by the lifecycle hook. You can obtain the token by using a Message Service (MNS) queue or MNS topic that is specified for the lifecycle hook. |
-| LifecycleHookId | String | Yes | ash- bp14g3ee6bt3sc 98**** | The ID of the lifecycle hook. |
+`}` `}`
 
-#### CompleteLifecycleAction
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParameter | The specified value of parameter "ScalingActivityId" is not valid. | The value of ScalingActivityId is invalid. |
+| 400 | InvalidParameter | The specified value of parameter "MaxResults" is not valid. | The value of MaxResults is invalid. |
+| 400 | InvalidParameter | The specified value of parameter "LifecycleActionStatus " is not valid. | The value of LifecycleActionStatus is invalid. |
+
+#### 6.13.6 CompleteLifecycleAction
 
 Ends the timeout period of a lifecycle hook ahead of schedule.
 
@@ -6533,23 +6989,26 @@ When you create a lifecycle hook, you can set LifecycleActionResult to CONTINUE 
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CompleteLifecyc leAction | The operation that you want to perform. Set the value to CompleteLifecycleAction. |
+| LifecycleActionT oken | String | Yes | aaaa-bbbbb- cccc-ddddd | The token of the lifecycle action that is triggered by the lifecycle hook. You can obtain the token by using a Message Service (MNS) queue or MNS topic that is specified for the lifecycle hook. |
+| LifecycleHookId | String | Yes | ash- bp14g3ee6bt3sc 98**** | The ID of the lifecycle hook. |
+
 | LifecycleActionR esult | String | No | CONTINUE | The action that you want Auto Scaling to perform after the lifecycle hook times out. Valid values: CONTINUE: Auto Scaling continues to respond to a scale-in or scale- out request. ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-outs or removes ECS instances from the scaling group during scale-ins. Default value: CONTINUE. If multiple lifecycle hooks exist in a scaling group and are triggered at the same time, the following rules apply: If you set LifecycleActionResult to ABANDON for a lifecycle hook that is used for scale-in, Auto Scaling immediately removes ECS instances from the scaling group after the lifecycle hook times out, without waiting for all the lifecycle hooks to time out. If you set LifecycleActionResult to CONTINUE for a lifecycle hook that is used for scale-in or scale-out, Auto Scaling performs the next action after all the lifecycle hooks time out. The action that is performed by Auto Scaling varies based on the value that you specified for LifecycleActionResult of the lifecycle hook that last times out. |
 |---|---|---|---|---|
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 | RegionId | String | No | cn-qingdao- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Response parameters**
 
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParamter | The specified value of parameter is invalid. | The value of a parameter is invalid. |
-| 400 | LifecycleHookIdAndLif ecycleActionToken.Inv alid | The specified LifecycleActionToken and LifecycleHookId you provided does not match any in process lifecycle action. | The value of LifecycleActionToken does not match the value of LifecycleHookId. |
+**Examples**
 
 Sample requests
 
@@ -6557,25 +7016,38 @@ Sample requests
 http(s)://ess.example.com/?Action=CompleteLifecycleAction &LifecycleHookId=ash-bp14g3ee6bt3sc98**** &LifecycleActionToken=aaaa-bbbbb-cccc-ddddd &LifecycleActionResult=CONTINUE &ClientToken=123e4567-e89b-12d3-a456-42665544**** &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<CompleteLifecycleActionResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</CompleteLifecycleActionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
 
-#### DeleteLifecycleHook
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParamter | The specified value of parameter is invalid. | The value of a parameter is invalid. |
+| 400 | LifecycleHookIdAndLif ecycleActionToken.Inv alid | The specified LifecycleActionToken and LifecycleHookId you provided does not match any in process lifecycle action. | The value of LifecycleActionToken does not match the value of LifecycleHookId. |
+
+#### 6.13.7 DeleteLifecycleHook
 
 Deletes a lifecycle hook.
 
 **Usage notes**
+
+If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete: Specify the lifecycle hook ID by using `LifecycleHookId` . In this case, `ScalingGroupId` and `LifecycleHookName` are ignored. Specify the scaling group ID by using `ScalingGroupId` and specify the lifecycle hook name by using `LifecycleHookName` .
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6585,15 +7057,13 @@ Deletes a lifecycle hook.
 | LifecycleHookNa me | String | No | lifecyclehook*** * | The name of the lifecycle hook that you want to delete. |
 | RegionId | String | No | cn-hangzhou- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete: Specify the lifecycle hook ID by using `LifecycleHookId` . In this case, `ScalingGroupId` and `LifecycleHookName` are ignored. Specify the scaling group ID by using `ScalingGroupId` and specify the lifecycle hook name by using `LifecycleHookName` .
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6601,7 +7071,23 @@ Sample requests
 http(s)://ess.example.com/?Action=DeleteLifecycleHook &LifecycleHookId=ash-bp14g3ee6bt3sc98**** &ScalingGroupId=asg-bp18p2yfxow2dloq**** &LifecycleHookName=lifecyclehook**** &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
+
+```xml
+<DeleteLifecycleHookResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</DeleteLifecycleHookResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -6609,25 +7095,9 @@ http(s)://ess.example.com/?Action=DeleteLifecycleHook &LifecycleHookId=ash-bp14g
 | 400 | InvalidLifecycleHookId. NotExist | The specified LifecycleHookId does not exist. | The lifecycle hook ID does not exist. |
 | 400 | InvalidLifecycleHookN ame.NotExist | The specified LifecycleHookName you provided does not exist. | The lifecycle hook name does not exist. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateNotificatio nConfiguration | The operation that you want to perform. Set the value to CreateNotificationConfiguration. |
+### 6.14 Notification rules
 
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
-```
-
-### Notification rules
-
-#### CreateNotificationConfiguration
+#### 6.14.1 CreateNotificationConfiguration
 
 Creates a notification rule.
 
@@ -6637,28 +7107,58 @@ You can configure CloudMonitor system events, Message Service (MNS) queues, or M
 
 **Request parameters**
 
-| NotificationArn | String | Yes |  |  |  | The Alibaba Cloud Resource Name (ARN) of the notification method. The following items describe the value formats of this parameter: If you use CloudMonitor as the notification method, specify the value in the acs:ess:{region- |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateNotificatio nConfiguration | The operation that you want to perform. Set the value to CreateNotificationConfiguration. |
+
+| NotificationArn | String | Yes |   |   |   | The Alibaba Cloud Resource Name (ARN) of the notification method. The following items describe the value formats of this parameter: If you use CloudMonitor as the notification method, specify the value in the acs:ess:{region- |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  | acs:ess:{region- |  |
-|  |  |  |  |  |  | id}:{account- |  |  |
-|  |  |  |  |  |  | id}:cloudmonitor |  |  |
-|  |  |  |  |  |  |  | acs:mns:{region- |  |
-|  |  |  |  |  |  | id}:{account- |  |  |
-|  |  |  |  | acs:mns:cn- beijing-env17- | s:mns:cn- |  |  |  |
-|  |  |  |  |  |  | id}:queue/{queuename} |  |  |
-|  |  |  |  | d01:161456884 340****:queue/ modifyLifecycle Ho**** |  |  |  |  |
-|  |  |  |  |  |  |  | acs:mns:{region- |  |
-|  |  |  |  |  | **** | id}:{account- |  |  |
-|  |  |  |  |  |  | id}:topic/{topicname} |  |  |
-| NotificationType. N | RepeatL ist | Yes |  | AUTOSCALING:S CALE OUT SUCC _ _ ESS |  | The type of notification rule N. Valid values of N: 1 to 8. Specify multiple values in the form of a repeated list. You can call the DescribeNotificationTypes operation to query the value of this parameter. |  |  |
-| ScalingGroupId | String | Yes |  | AG6CQdPU8OKd wLjgZcJ**** |  | The ID of the scaling group. |  |  |
-| RegionId | String | No |  | cn-beijing- env17-d01 |  | The region ID of the scaling group. |  |  |
+|   |   |   |   |   |   |   | acs:ess:{region- |   |
+|   |   |   |   |   |   | id}:{account- |   |   |
+|   |   |   |   |   |   | id}:cloudmonitor |   |   |
+|   |   |   |   |   |   |   | acs:mns:{region- |   |
+|   |   |   |   |   |   | id}:{account- |   |   |
+|   |   |   |   | acs:mns:cn- beijing-env17- | s:mns:cn- |   |   |   |
+|   |   |   |   |   |   | id}:queue/{queuename} |   |   |
+|   |   |   |   | d01:161456884 340****:queue/ modifyLifecycle Ho**** |   |   |   |   |
+|   |   |   |   |   |   |   | acs:mns:{region- |   |
+|   |   |   |   |   | **** | id}:{account- |   |   |
+|   |   |   |   |   |   | id}:topic/{topicname} |   |   |
+| NotificationType. N | RepeatL ist | Yes |   | AUTOSCALING:S CALE OUT SUCC _ _ ESS |   | The type of notification rule N. Valid values of N: 1 to 8. Specify multiple values in the form of a repeated list. You can call the DescribeNotificationTypes operation to query the value of this parameter. |   |   |
+| ScalingGroupId | String | Yes |   | AG6CQdPU8OKd wLjgZcJ**** |   | The ID of the scaling group. |   |   |
+| RegionId | String | No |   | cn-beijing- env17-d01 |   | The region ID of the scaling group. |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
+
+Sample requests
+
+```
+http(s)://ess.example.com/?Action=CreateNotificationConfiguration &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &NotificationType.1=AUTOSCALING:SCALE_OUT_SUCCESS &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<CreateNotificationConfigurationResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</CreateNotificationConfigurationResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -6668,72 +7168,46 @@ You can configure CloudMonitor system events, Message Service (MNS) queues, or M
 | 400 | NotificationConfigurati onQuotaExceed.ForSc alingGroup | NotificationConfigurati on num exceed for the specified scalingGroup. | The maximum number of notification rules that you can create for the scaling group has been reached. |
 | 400 | QueueNotExist | The specified queue queuename does not exist. | The MNS queue does not exist. |
 
-Sample requests
-
-```
-http(s)://ess.example.com/?Action=CreateNotificationConfiguration &NotificationArn=acs:mns:cn-beijing-env17d01:161456884340****:queue/modifyLifecycleHo**** &NotificationType.1=AUTOSCALING:SCALE_OUT_SUCCESS &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-<CreateNotificationConfigurationResponse>
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-</CreateNotificationConfigurationResponse>
-```
-
-`JSON` format
-
-```json
-{
-    "requestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
-```
-
 | 400 | TopicNotExist | The specified topic topicname does not exist. | The MNS topic does not exist. |
 |---|---|---|---|
 | 400 | UnsupportedNotificatio nType.CurrentRegion | The notificationType is not supported in the special region which scalingGroup belongs to. | The notification method is not supported in the region of the scaling group. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyNotificatio nConfiguration | The operation that you want to perform. Set the value to ModifyNotificationConfiguration. |
-
-#### ModifyNotificationConfiguration
+#### 6.14.2 ModifyNotificationConfiguration
 
 Modifies a notification rule.
 
 **Request parameters**
 
-| NotificationArn | String | Yes |  |  |  |  | The Alibaba Cloud Resource Name (ARN) of the notification method. The following section describes the value formats of this parameter: If you use CloudMonitor as the notification method, specify the value in the acs:ess:{region- |  |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyNotificatio nConfiguration | The operation that you want to perform. Set the value to ModifyNotificationConfiguration. |
+
+| NotificationArn | String | Yes |   |   |   |   | The Alibaba Cloud Resource Name (ARN) of the notification method. The following section describes the value formats of this parameter: If you use CloudMonitor as the notification method, specify the value in the acs:ess:{region- |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | acs:ess:{region- |  |
-|  |  |  |  |  |  |  | id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:cloudmonitor |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  |  |  | {account- |  |  |  |
-|  |  |  |  |  | acs:ess:cn- |  | id}:queue/{queuename} |  |  |  |
-|  |  |  |  |  | beijing-env17- d01:161456884 340****:cloudm onitor |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | acs:mns:{region- |  |
-|  |  |  |  |  |  |  | id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-| NotificationType. N | RepeatL ist | Yes |  |  | AUTOSCALING:S CALE OUT SUCC _ _ ESS |  | The type of notification rule N. Valid values of N: 1 to 8. Specify multiple values in the repeated list format. You can call the DescribeNotificationTypes operation to query the value of this parameter. |  |  |  |
-| ScalingGroupId | String | Yes |  |  | AG6CQdPU8OKd wLjgZcJ**** |  | The ID of the scaling group. |  |  |  |
-| RegionId | String | No |  |  | cn-beijing- env17-d01 |  | The region ID of the scaling group. |  |  |  |
+|   |   |   |   |   |   |   |   |   | acs:ess:{region- |   |
+|   |   |   |   |   |   |   | id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:cloudmonitor |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   |   |   | {account- |   |   |   |
+|   |   |   |   |   | acs:ess:cn- |   | id}:queue/{queuename} |   |   |   |
+|   |   |   |   |   | beijing-env17- d01:161456884 340****:cloudm onitor |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | acs:mns:{region- |   |
+|   |   |   |   |   |   |   | id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
+| NotificationType. N | RepeatL ist | Yes |   |   | AUTOSCALING:S CALE OUT SUCC _ _ ESS |   | The type of notification rule N. Valid values of N: 1 to 8. Specify multiple values in the repeated list format. You can call the DescribeNotificationTypes operation to query the value of this parameter. |   |   |   |
+| ScalingGroupId | String | Yes |   |   | AG6CQdPU8OKd wLjgZcJ**** |   | The ID of the scaling group. |   |   |   |
+| RegionId | String | No |   |   | cn-beijing- env17-d01 |   | The region ID of the scaling group. |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 |---|---|---|---|
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidNotificationType s | The specified notification type is invalid. | The value of NotificationType.N is invalid. |
-| 400 | NotificationConfigurati onNotExist | The specified notification configuration not exist for the scaling group. | The specified event during which Auto Scaling resources change does not exist. |
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
+**Examples**
 
 Sample requests
 
@@ -6741,7 +7215,7 @@ Sample requests
 http(s)://ess.example.com/?Action=ModifyNotificationConfiguration &NotificationArn=acs:ess:cn-beijing-env17-d01:161456884340****:cloudmonitor &NotificationType.1=AUTOSCALING:SCALE_OUT_SUCCESS &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <ModifyNotificationConfigurationResponse>
@@ -6749,15 +7223,23 @@ http(s)://ess.example.com/?Action=ModifyNotificationConfiguration &NotificationA
 </ModifyNotificationConfigurationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
         "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
 
-#### DescribeNotificationConfigurations
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidNotificationType s | The specified notification type is invalid. | The value of NotificationType.N is invalid. |
+| 400 | NotificationConfigurati onNotExist | The specified notification configuration not exist for the scaling group. | The specified event during which Auto Scaling resources change does not exist. |
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
+
+#### 6.14.3 DescribeNotificationConfigurations
 
 Queries the information about notification rules.
 
@@ -6769,32 +7251,30 @@ Queries the information about notification rules.
 | ScalingGroupId | String | Yes | AG6CQdPU8OKd wLjgZcJ**** | The ID of the scaling group. |
 | RegionId | String | No | cn-beijing | The region ID of the scaling group. |
 
-| Parameter | Type |  | Example |  | Description |  |  |  |  |
-|---|---|---|---|---|---|---|---|---|---|
-| NotificationCo nfigurationMo dels | Array of NotificationCo nfigurationMo del |  |  |  | Details of the notification rules. |  |  |  |  |
-| NotificationCo nfigurationMo del |  |  |  |  |  |  |  |  |  |
-| NotificationArn | String |  |  |  | The Alibaba Cloud Resource Name (ARN) of the notification method. The following items describe the value formats of this parameter: If the notification method is CloudMonitor, the value format is acs:ess:{region-id}:{account- id}:cloudmonitor . If the notification method is an MNS queue, the value format is acs:mns: |  |  |  |  |
-|  |  |  |  |  |  | acs:ess:{region-id}:{account- |  |  |  |
-|  |  |  |  |  | id}:cloudmonitor |  |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns: |  |
-|  |  |  |  |  | {region-id}:{account- |  |  |  |  |
-|  |  |  | acs:mns:cn- |  |  |  |  |  |  |
-|  |  |  |  |  | id}:queue/{queuename} |  |  |  |  |
-|  |  |  | beijing:161456884 340****:topic/modi fyLifecycleHo**** |  |  |  |  |  |  |
-|  |  |  |  |  |  |  | acs:mns: |  |  |
-|  |  |  |  | *** | {region-id}:{account- |  |  |  |  |
-|  |  |  |  |  | id}:topic/{topicname} |  |  |  |  |
-| NotificationTy pes | List |  | AUTOSCALING:SCA LE IN SUCCESS _ _ |  | The types of the notification rules. |  |  |  |  |
-
 **Response parameters**
+
+| Parameter | Type |   | Example |   | Description |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|
+| NotificationCo nfigurationMo dels | Array of NotificationCo nfigurationMo del |   |   |   | Details of the notification rules. |   |   |   |   |
+| NotificationCo nfigurationMo del |   |   |   |   |   |   |   |   |   |
+| NotificationArn | String |   |   |   | The Alibaba Cloud Resource Name (ARN) of the notification method. The following items describe the value formats of this parameter: If the notification method is CloudMonitor, the value format is acs:ess:{region-id}:{account- id}:cloudmonitor . If the notification method is an MNS queue, the value format is acs:mns: |   |   |   |   |
+|   |   |   |   |   |   | acs:ess:{region-id}:{account- |   |   |   |
+|   |   |   |   |   | id}:cloudmonitor |   |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns: |   |
+|   |   |   |   |   | {region-id}:{account- |   |   |   |   |
+|   |   |   | acs:mns:cn- |   |   |   |   |   |   |
+|   |   |   |   |   | id}:queue/{queuename} |   |   |   |   |
+|   |   |   | beijing:161456884 340****:topic/modi fyLifecycleHo**** |   |   |   |   |   |   |
+|   |   |   |   |   |   |   | acs:mns: |   |   |
+|   |   |   |   | *** | {region-id}:{account- |   |   |   |   |
+|   |   |   |   |   | id}:topic/{topicname} |   |   |   |   |
+| NotificationTy pes | List |   | AUTOSCALING:SCA LE IN SUCCESS _ _ |   | The types of the notification rules. |   |   |   |   |
 
 | ScalingGroupI d | String | asg- bp1igpak5ft1flyp** ** | The ID of the scaling group. |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
+**Examples**
 
 Sample requests
 
@@ -6802,7 +7282,7 @@ Sample requests
 http(s)://ess.aliyuncs.com/?Action=DescribeNotificationConfigurations &ScalingGroupId=AG6CQdPU8OKdwLjgZcJ**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <DescribeNotificationConfigurationsResponse>
@@ -6816,36 +7296,43 @@ beijing:161456884340****:topic/modifyLifecycleHo****</NotificationArn>
 <DescribeNotificationConfigurationsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "NotificationConfigurationModels": {
         "NotificationArn": "acs:mns:cn-
 beijing:161456884340****:topic/modifyLifecycleHo****",
         "ScalingGroupId": "asg-bp1igpak5ft1flyp****",
         "NotificationTypes": "AUTOSCALING:SCALE_IN_SUCCESS"
-    }
-}
 ```
 
-#### DescribeNotificationTypes
+`}` `}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
+
+#### 6.14.4 DescribeNotificationTypes
+
+Queries information about notification types.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeNotifica tionTypes | The operation that you want to perform. Set the value to DescribeNotificationTypes. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NotificationTy pes | List | AUTOSCALING:SCA LE OUT SUCCESS _ _ | The types of the notifications. AUTOSCALING:SCALE OUT SUCCESS: _ _ The scale-out is successful. AUTOSCALING:SCALE IN SUCCESS: The _ _ scale-in is successful. AUTOSCALING:SCALE OUT ERROR: The _ _ scale-out failed. AUTOSCALING:SCALE IN ERROR: The _ _ scale-in failed. AUTOSCALING:SCALE REJECT: The _ scaling request is rejected. AUTOSCALING:SCALE OUT START: The _ _ scale-out is started. AUTOSCALING:SCALE IN START: The _ _ scale-in is started. AUTOSCALING:SCHEDULE TASK EXPIRI _ _ NG: The scheduled task expired. |
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-Queries information about notification types.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6853,13 +7340,10 @@ Sample requests
 http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes &<Common request parameters>
 ```
 
-`XML` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteNotificatio nConfiguration | The operation that you want to perform. Set the value to DeleteNotificationConfiguration. |
+Sample success responses `XML` format
 
 ```xml
+<DescribeNotificationTypesResponse>
     <RequestId>66046F31-AF8C-44B4-9992-453F33CF****</RequestId>
     <NotificationTypes>
         <NotificationType>AUTOSCALING:SCALE_OUT_SUCCESS</NotificationType>
@@ -6871,12 +7355,12 @@ http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes &<Common request pa
         <NotificationType>AUTOSCALING:SCALE_IN_START</NotificationType>
         <NotificationType>AUTOSCALING:SCHEDULE_TASK_EXPIRING</NotificationType>
     </NotificationTypes>
+</DescribeNotificationTypesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "66046F31-AF8C-44B4-9992-453F33CF****",
  "NotificationTypes": {
   "NotificationType": [
@@ -6890,53 +7374,49 @@ http(s)://ess.aliyuncs.com/?Action=DescribeNotificationTypes &<Common request pa
    "AUTOSCALING:SCHEDULE_TASK_EXPIRING"
 ```
 
-]
+`]` `}` `}`
 
-```
- }
-}
-```
-
-#### DeleteNotificationConfiguration
+#### 6.14.5 DeleteNotificationConfiguration
 
 Deletes a notification rule.
 
 **Request parameters**
 
-| NotificationArn | String | Yes |  |  |  |  | The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the formats that are supported for the value of this parameter: If you use CloudMonitor as the notification method, specify the value in the acs:ess:{region- |  |  |  |
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteNotificatio nConfiguration | The operation that you want to perform. Set the value to DeleteNotificationConfiguration. |
+
+| NotificationArn | String | Yes |   |   |   |   | The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the formats that are supported for the value of this parameter: If you use CloudMonitor as the notification method, specify the value in the acs:ess:{region- |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |  | acs:ess:{region- |  |
-|  |  |  |  |  |  |  | id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:cloudmonitor |  |  |  |
-|  |  |  |  |  |  |  |  | acs:mns:{region-id}: |  |  |
-|  |  |  |  |  |  |  | {account- |  |  |  |
-|  |  |  |  |  | acs:ess:cn- |  |  |  |  |  |
-|  |  |  |  |  | beijing-env17- |  | id}:queue/{queuename} |  |  |  |
-|  |  |  |  |  | d01:161456884 340****:cloudm onitor |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  | acs:mns:{region- |  |
-|  |  |  |  |  |  |  | id}:{account- |  |  |  |
-|  |  |  |  |  |  |  | id}:topic/{topicname} |  |  |  |
-| ScalingGroupId | String | Yes |  |  | asg- bp18p2yfxow2dl oq**** |  | The ID of the scaling group. |  |  |  |
-| RegionId | String | No |  |  | cn-beijing- env17-d01 |  | The region ID of the scaling group. |  |  |  |
+|   |   |   |   |   |   |   |   |   | acs:ess:{region- |   |
+|   |   |   |   |   |   |   | id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:cloudmonitor |   |   |   |
+|   |   |   |   |   |   |   |   | acs:mns:{region-id}: |   |   |
+|   |   |   |   |   |   |   | {account- |   |   |   |
+|   |   |   |   |   | acs:ess:cn- |   |   |   |   |   |
+|   |   |   |   |   | beijing-env17- |   | id}:queue/{queuename} |   |   |   |
+|   |   |   |   |   | d01:161456884 340****:cloudm onitor |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   | acs:mns:{region- |   |
+|   |   |   |   |   |   |   | id}:{account- |   |   |   |
+|   |   |   |   |   |   |   | id}:topic/{topicname} |   |   |   |
+| ScalingGroupId | String | Yes |   |   | asg- bp18p2yfxow2dl oq**** |   | The ID of the scaling group. |   |   |   |
+| RegionId | String | No |   |   | cn-beijing- env17-d01 |   | The region ID of the scaling group. |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | NotificationConfigurati onNotExist | The specified NotificationConfigurati on not exist for the scalingGroup. | The notification rule and the event that triggers the notification rule do not exist. |
-| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
 ```
 http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupId=asg-bp18p2yfxow2dloq**** &NotificationArn=acs:ess:cn-beijing-env17-d01:161456884340****:cloudmonitor &RegionId=cn-beijing-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <DeleteNotificationConfigurationResponse>
@@ -6944,23 +7424,32 @@ http(s)://ess.example.com/?Action=DeleteNotificationConfiguration &ScalingGroupI
 </DeleteNotificationConfigurationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
 
-### Instances
+`}`
 
-#### EnterStandby
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | NotificationConfigurati onNotExist | The specified NotificationConfigurati on not exist for the scalingGroup. | The notification rule and the event that triggers the notification rule do not exist. |
+| 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
+
+### 6.15 Instances
+
+#### 6.15.1 EnterStandby
 
 Puts an Elastic Compute Service (ECS) instance into the Standby state.
 
 **Usage notes**
 
-If you call this operation to put an ECS instance of a scaling group that is associated with a Server Load Balancer (SLB) instance into the Standby state, the weight of the ECS instance as the backend server of the SLB instance is set to 0. When an ECS instance is in the Standby state, you can manually remove the instance from the scaling group and release the instance. During the scale-ins that are triggered by the changes in the number of ECS instances in a scaling group or by the event-triggered tasks, the ECS instances in the Standby state are not removed. If an ECS instance in the Standby state is considered unhealthy (for example, the ECS
+If you call this operation to put an ECS instance of a scaling group that is associated with a Server Load Balancer (SLB) instance into the Standby state, the weight of the ECS instance as the backend server of the SLB instance is set to 0. When an ECS instance is in the Standby state, you can manually remove the instance from the scaling group and release the instance. During the scale-ins that are triggered by the changes in the number of ECS instances in a scaling group or by the event-triggered tasks, the ECS instances in the Standby state are not removed. If an ECS instance in the Standby state is considered unhealthy (for example, the ECS instance is in the Stopping or Restarting state), the health status of the ECS instance remains unchanged and Auto Scaling does not trigger a scale-in to remove the ECS instance. The health status of the ECS instance is updated only after the instance exits the Standby state.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6970,16 +7459,40 @@ If you call this operation to put an ECS instance of a scaling group that is ass
 | ClientToken | String | No | 123e4567-e89b- 12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the "How to ensure idempotence" topic in the Auto Scaling documentation. |
 | Async | Boolean | No | false | Specifies whether to asynchronously put the ECS instance into the Standby state. Valid values: true false Default value: false. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 | ScalingActivity Id | String | asa- 2zeb04oym05qace q**** | The ID of the scaling activity. |
 
-instance is in the Stopping or Restarting state), the health status of the ECS instance remains unchanged and Auto Scaling does not trigger a scale-in to remove the ECS instance. The health status of the ECS instance is updated only after the instance exits the Standby state.
+**Examples**
 
-**Request parameters**
+Sample requests
 
-**Response parameters**
+```
+http(s)://ess.example.com/?Action=EnterStandby &ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<EnterStandbyResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <ScalingActivityId>asa-2zeb04oym05qaceq****</ScalingActivityId>
+</EnterStandbyResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "ScalingActivityId": "asa-2zeb04oym05qaceq****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -6987,33 +7500,15 @@ instance is in the Stopping or Restarting state), the health status of the ECS i
 | 404 | InvalidInstanceId.NotF ound | Instance "XXX" does not exist. | The ECS instance does not exist. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-Sample requests
-
-```
-&ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-      <ScalingActivityId>asa-2zeb04oym05qaceq****</ScalingActivityId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "ScalingActivityId": "asa-2zeb04oym05qaceq****"
-}
-```
-
-#### ExitStandby
+#### 6.15.2 ExitStandby
 
 Removes an Elastic Compute Service (ECS) instance from the Standby state.
 
 **Usage notes**
+
+If a scaling group is associated with Server Load Balancer (SLB) instances, the weight of an ECS instance in the scaling group is set to the value that is specified in the scaling configuration when you call this operation to remove the ECS instance from the Standby state.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7024,56 +7519,52 @@ Removes an Elastic Compute Service (ECS) instance from the Standby state.
 | Async | Boolean | No | false | Specifies whether to asynchronously remove an ECS instance from the Standby state. Valid values: true false Default value: false. |
 | RegionId | String | No | cn-hangzhou- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-If a scaling group is associated with Server Load Balancer (SLB) instances, the weight of an ECS instance in the scaling group is set to the value that is specified in the scaling configuration when you call this operation to remove the ECS instance from the Standby state.
-
-**Request parameters**
-
-**Response parameters**
-
 | ScalingActivity Id | String | asa- 2zeb04oym05qace q**** | The ID of the scaling activity. |
 |---|---|---|---|
+
+**Examples**
+
+Sample requests
+
+```
+http(s)://ess.example.com/?Action=ExitStandby &ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<ExitStandbyResponse>
+      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <ScalingActivityId>asa-2zeb04oym05qaceq****</ScalingActivityId>
+</ExitStandbyResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "ScalingActivityId": "asa-2zeb04oym05qaceq****"
+```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | The RAM user is not authorized to call this operation. Contact the owner of the Apsara Stack tenant account to grant the RAM user the required permissions and try again. |
 
-Sample requests
-
-```
-&ScalingGroupId=asg-bp1fo0dbtsbmqa9h**** &ClientToken=123e4567-e89b-12d3-a456-42665544**** &InstanceId=["i-28wt4****"] &Async=false &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
-      <ScalingActivityId>asa-2zeb04oym05qaceq****</ScalingActivityId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
-    "ScalingActivityId": "asa-2zeb04oym05qaceq****"
-}
-```
-
 | 404 | InvalidInstanceId.NotF ound | A required authorization for the specified action is not supplied. | The ECS instance does not exist. |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist within the Apsara Stack tenant account. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SetInstancesProt ection | The operation that you want to perform. Set the value to SetInstancesProtection. |
-| InstanceId.N | RepeatL ist | Yes | i-28wt4**** | The ID of ECS instance N. Valid values of N: 1 to 20. |
-| ProtectedFromS caleIn | Boolean | Yes | true | Specifies whether to put an ECS instance into the Protected state. If you put an ECS instance into the Protected state, Auto Scaling does not stop the instance or remove the instance from the scaling group during scale-in activities. Valid values: true false |
-
-#### SetInstancesProtection
+#### 6.15.3 SetInstancesProtection
 
 Puts Elastic Compute Service (ECS) instances into or removes ECS instances from the Protected state.
 
@@ -7083,19 +7574,22 @@ Before you call this operation, take note of the following items: After you put 
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SetInstancesProt ection | The operation that you want to perform. Set the value to SetInstancesProtection. |
+| InstanceId.N | RepeatL ist | Yes | i-28wt4**** | The ID of ECS instance N. Valid values of N: 1 to 20. |
+| ProtectedFromS caleIn | Boolean | Yes | true | Specifies whether to put an ECS instance into the Protected state. If you put an ECS instance into the Protected state, Auto Scaling does not stop the instance or remove the instance from the scaling group during scale-in activities. Valid values: true false |
+
 | ScalingGroupId | String | Yes | asg- bp18p2yfxow2dl oq**** | The ID of the scaling group. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | The scaling group is disabled. |
-| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the SetInstancesProtection operation. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7103,35 +7597,34 @@ Sample requests
 http(s)://ess.example.com/?Action=SetInstancesProtection &InstanceId.1=i-28wt4**** &ProtectedFromScaleIn=true &ScalingGroupId=asg-bp18p2yfxow2dloq**** &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<SetInstancesProtectionResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+</SetInstancesProtectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IncorrectScalingGroup Status | The current status of the specified scaling group does not support this action. | The scaling group is disabled. |
+| 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the SetInstancesProtection operation. |
 
 | 404 | InvalidInstanceId.NotF ound | Instance “XXX” does not exist. | The ECS instance does not exist. |
 |---|---|---|---|
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The scaling group does not exist. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SetInstanceHeal th | The operation that you want to perform. Set the value to SetInstanceHealth. |
-| HealthStatus | String | Yes | Healthy | The health status of an ECS instance. Valid values: Healthy Unhealthy |
-| InstanceId | String | Yes | i- bp1ap6bro51a7f sa**** | The ID of an ECS instance in a scaling group. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | B755AE57-6093- 43E4-938E- DEA422A9**** | The ID of the request. |
-
-#### SetInstanceHealth
+#### 6.15.4 SetInstanceHealth
 
 Configures the health check feature for Elastic Compute Service (ECS) instances.
 
@@ -7141,7 +7634,19 @@ Auto Scaling performs health checks on ECS instances in a scaling group and remo
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SetInstanceHeal th | The operation that you want to perform. Set the value to SetInstanceHealth. |
+| HealthStatus | String | Yes | Healthy | The health status of an ECS instance. Valid values: Healthy Unhealthy |
+| InstanceId | String | Yes | i- bp1ap6bro51a7f sa**** | The ID of an ECS instance in a scaling group. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | B755AE57-6093- 43E4-938E- DEA422A9**** | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -7149,29 +7654,30 @@ Sample requests
 http(s)://ess.example.com/?Action=SetInstanceHealth &HealthStatus=Healthy &InstanceId=i-bp1ap6bro51a7fsa**** &<Common request parameters>
 ```
 
+Sample success responses `XML` format
+
+```xml
+<SetInstanceHealthResponse>
+        <RequestId>B755AE57-6093-43E4-938E-DEA422A9****</RequestId>
+</SetInstanceHealthResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "B755AE57-6093-43E4-938E-DEA422A9****"
+```
+
+`}`
+
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidInstanceId.NotF ound | Instance "%s" does not exist. | The instance does not exist in the scaling group. |
 | 400 | InvalidParameter | The specified value of parameter "%s" is not valid. | The value of a parameter is invalid. |
 
-| 94 |  |  |  | > Document Version: 2025061 |
-|---|---|---|---|---|
-
-`XML` format
-
-```xml
-        <RequestId>B755AE57-6093-43E4-938E-DEA422A9****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "B755AE57-6093-43E4-938E-DEA422A9****"
-}
-```
-
-#### RebalanceInstances
+#### 6.15.5 RebalanceInstances
 
 Rebalances Elastic Compute Service (ECS) instances in a multi-zone scaling group.
 
@@ -7181,18 +7687,23 @@ You can call the RebalanceInstances operation to maintain an equal number of ins
 
 **Request parameters**
 
+| 94 |   |   |   | > Document Version: 2025061 |
+|---|---|---|---|---|
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RebalanceInstan ces | The operation that you want to perform. Set the value to RebalanceInstances. |
 | ScalingGroupId | String | Yes | asg- bp18p2yfxow2dl oq**** | The ID of the scaling group. |
 | RegionId | String | No | cn-hangzhou- env17-d01 | The region ID of the scaling group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 473469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 | ScalingActivity Id | String | asa- kjgffgdfadah**** | The ID of the scaling activity. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -7200,21 +7711,25 @@ Sample requests
 http(s)://ess.example.com/?Action=RebalanceInstances &ScalingGroupId=asg-bp18p2yfxow2dloq**** &RegionId=cn-hangzhou-env17-d01 &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<RebalanceInstancesResponse>
       <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
       <ScalingActivityId>asa-kjgffgdfadah****</ScalingActivityId>
+</RebalanceInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
     "ScalingActivityId": "asa-kjgffgdfadah****"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -7223,25 +7738,25 @@ http(s)://ess.example.com/?Action=RebalanceInstances &ScalingGroupId=asg-bp18p2y
 | 403 | Forbidden.Unauthorize d | A required authorization for the specified action is not supplied. | You are not authorized to call the RebalanceInstances operation. |
 | 404 | InvalidScalingGroupId. NotFound | The specified scaling group does not exist. | The specified scaling group does not exist within your Apsara Stack tenant account. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
-| AcceptLanguage | String | No | zh-CN | The language of the returned results. Valid values: zh-CN: Chinese en-US: English ja: Japanese Default value: zh-CN. |
+### 6.16 Regions
 
-### Regions
-
-#### DescribeRegions
+#### 6.16.1 DescribeRegions
 
 Queries the regions in which Auto Scaling is available.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
+| AcceptLanguage | String | No | zh-CN | The language of the returned results. Valid values: zh-CN: Chinese en-US: English ja: Japanese Default value: zh-CN. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Regions | Array of Region |  | Details of the regions. |
-| Region |  |  |  |
+| Regions | Array of Region |   | Details of the regions. |
+| Region |   |   |   |
 | ClassicUnavail able | Boolean | false | Indicates whether the region supports scaling groups of the classic network type. Valid values: true false |
 | LocalName | String | China (Beijing) | The name of the region. |
 | RegionEndpoin t | String | ess.example.com | The endpoint of the region. |
@@ -7249,47 +7764,52 @@ Queries the regions in which Auto Scaling is available.
 | VpcUnavailabl e | Boolean | false | Indicates whether the region supports scaling groups of the virtual private cloud (VPC) network type. Valid values: true false |
 | RequestId | String | 73469C7-AA6F- 4DC5-B3DB- A3DC0DE3**** | The ID of the request. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://ess.example.com/?Action=DescribeRegions &AcceptLanguage=zh-CN &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeRegionsResponse>
       <RequestId>73469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
+      <Regions>
             <VpcUnavailable>false</VpcUnavailable>
             <ClassicUnavailable>false</ClassicUnavailable>
             <RegionId>cn-beijing-env17-d01</RegionId>
             <RegionEndpoint>ess.example.com</RegionEndpoint>
             <LocalName>China (Beijing)</LocalName>
+      </Regions>
+</DescribeRegionsResponse>
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidAcceptLanguag e.NotFound | Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed. | The specified language is not supported. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "73469C7-AA6F-4DC5-B3DB-A3DC0DE3****",
+    "Regions": {
         "VpcUnavailable": false,
         "ClassicUnavailable": false,
         "RegionId": "cn-beijing-env17-d01",
         "RegionEndpoint": "ess.example.com",
         "localName": "China (Beijing)",
-    }
-}
 ```
 
-### Tags
+`}` `}`
 
-#### TagResources
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidAcceptLanguag e.NotFound | Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed. | The specified language is not supported. |
+
+### 6.17 Tags
+
+#### 6.17.1 TagResources
 
 Creates and adds tags to Auto Scaling resources.
 
@@ -7299,6 +7819,9 @@ You can add up to 20 tags to a scaling group. Before you add tags to a scaling g
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | TagResources | The operation that you want to perform. Set the value to TagResources. |
 |---|---|---|---|---|
 | RegionId | String | Yes | cn-hangzhou- env17-d01 | The region ID of the resource. You can call the DescribeRegions operation to query the most recent region list. |
@@ -7307,40 +7830,37 @@ You can add up to 20 tags to a scaling group. Before you add tags to a scaling g
 | Tag.N.Key | String | No | TestKey | The key of tag N. Valid values of N: 1 to 20 You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain http:// or https:// . The tag key cannot start with acs: or aliyun . |
 | Tag.N.Value | String | No | TestValue | The value of tag N. Valid values of N: 1 to 20. You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain http:// or https:// . The tag value cannot start with acs: . |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 74C4E313-8570- 479F-8791- DC25360D**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ListTagResource s | The operation that you want to perform. Set the value to ListTagResources. |
-| RegionId | String | Yes | cn-hangzhou- env17-d01 | The region ID of the resource. You can call the DescribeRegions operation to query the most recent region list. |
-| ResourceType | String | Yes | scalinggroup | The type of the resource. Set the value to scalinggroup. |
-| ResourceId.N | RepeatL ist | No | asg- bp17xb4x1vr29l gt**** | The ID of resource N. Valid values of N: 1 to 50. |
-
 ```
-&RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup &<Common request parameters>
+http(s)://ess.example.com/?Action=TagResources &RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<TagResourcesResponse>
       <RequestId>74C4E313-8570-479F-8791-DC25360D****</RequestId>
+</TagResourcesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "74C4E313-8570-479F-8791-DC25360D****"
-}
 ```
 
-#### ListTagResources
+`}`
+
+#### 6.17.2 ListTagResources
 
 Queries the tags that are added to Auto Scaling resources.
 
@@ -7350,19 +7870,26 @@ Specify `ResourceId.N` or `Tag.N` that consists of `Tag.N.Key` and `Tag.N.Value`
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ListTagResource s | The operation that you want to perform. Set the value to ListTagResources. |
+| RegionId | String | Yes | cn-hangzhou- env17-d01 | The region ID of the resource. You can call the DescribeRegions operation to query the most recent region list. |
+| ResourceType | String | Yes | scalinggroup | The type of the resource. Set the value to scalinggroup. |
+| ResourceId.N | RepeatL ist | No | asg- bp17xb4x1vr29l gt**** | The ID of resource N. Valid values of N: 1 to 50. |
+
 | Tag.N.Key | String | No | TestKey | The key of tag N. The key is used to perform an exact match of Auto Scaling resources. The key must be 1 to 128 characters in length. Valid values of N: 1 to 20. Tag.N (Tag.N.Key and Tag.N.Value) is used to perform an exact search of Elastic Compute Service (ECS) instances that have specified tags added. A tag is a key- value pair that consists of a tag key and a tag value. If you specify only Tag.N.Key , all resources whose tags contain the specified tag key are returned. If you specify only Tag.N.Value , the MissingParameter.TagKey error is returned. If you specify multiple tags at the same time, only Auto Scaling resources that match all tag keys and tag values are returned. |
 |---|---|---|---|---|
 | Tag.N.Value | String | No | TestValue | The value of tag N. The value is used to perform an exact match of Auto Scaling resources. The value can be up to 128 characters in length. Valid values of N: 1 to 20. |
 | NextToken | String | No | caeba0bbb2be0 3f84eb48b699f0 a**** | The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NextToken | String | caeba0bbb2be03f8 4eb48b699f0a**** | The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. |
 | RequestId | String | DE65F6B7-7566- 4802-9007- 96F2494A**** | The ID of the request. |
-| TagResources | Array of TagResource |  | The collection of resources that have tags, including the resource IDs, resource types, and tags. |
-| TagResource |  |  |  |
-
-**Response parameters**
+| TagResources | Array of TagResource |   | The collection of resources that have tags, including the resource IDs, resource types, and tags. |
+| TagResource |   |   |   |
 
 | ResourceId | String | asg- bp17xb4x1vr29lgt* *** | The ID of the resource. |
 |---|---|---|---|
@@ -7370,36 +7897,48 @@ Specify `ResourceId.N` or `Tag.N` that consists of `Tag.N.Key` and `Tag.N.Value`
 | TagKey | String | TestKey | The key of the tag. |
 | TagValue | String | TestValue | The value of the tag. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup &NextToken=caeba0bbb2be03f84eb48b699f0a4883 &ResourceId=["asg-bp17xb4x1vr29lgt****"] &Tag=[{"Key":"TestKey","Value":"TestValue"}] &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+</ListTagResourcesResponse>
     <NextToken>caeba0bbb2be03f84eb48b699f0a****</NextToken>
     <RequestId>DE65F6B7-7566-4802-9007-96F2494A****</RequestId>
+    <TagResources>
         <ResourceId>asg-bp17xb4x1vr29lgt****</ResourceId>
         <TagKey>TestKey</TagKey>
         <ResourceType>ALIYUN::ESS::SCALINGGROUP</ResourceType>
         <TagValue>TestValue</TagValue>
+    </TagResources>
+</ListTagResourcesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "NextToken":"caeba0bbb2be03f84eb48b699f0a****",
     "RequestId":"DE65F6B7-7566-4802-9007-96F2494A****",
+    "TagResources":[{
         "ResourceId":"asg-bp17xb4x1vr29lgt****",
         "TagKey":"TestKey",
         "ResourceType":"ALIYUN::ESS::SCALINGGROUP",
         "TagValue":"TestValue"
-    }]
-}
 ```
+
+`}]` `}`
+
+#### 6.17.3 UntagResources
+
+Removes tags from Auto Scaling resources. After you remove a tag that is not added to other resources, the tag is automatically deleted.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7410,19 +7949,41 @@ http(s)://ess.example.com/?Action=ListTagResources &RegionId=cn-hangzhou-env17-d
 | TagKey.N | RepeatL ist | No | TestKey | The key of tag N. Valid values of N: 1 to 20. |
 | All | Boolean | No | false | Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N . Valid values: true false Default value: false. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 3AEBB1B9-5B13- 4311-951F- C3C7FA2B**** | The ID of the request. |
 
-#### UntagResources
-
-Removes tags from Auto Scaling resources. After you remove a tag that is not added to other resources, the tag is automatically deleted.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http(s)://ess.example.com/?Action=UntagResources &RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<UntagResourcesResponse>
+      <RequestId>3AEBB1B9-5B13-4311-951F-C3C7FA2B****</RequestId>
+</UntagResourcesResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "3AEBB1B9-5B13-4311-951F-C3C7FA2B****"
+```
+
+`}`
+
+#### 6.17.4 ListTagKeys
+
+Queries the tag keys of Auto Scaling resources.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7431,32 +7992,10 @@ Sample requests
 | ResourceType | String | Yes | scalinggroup | The type of the Auto Scaling resource. Set the value to scalinggroup , which specifies that the tag is added to a scaling group. |
 | NextToken | String | No | caeba0bbb2be0 3f84eb48b699f0 a**** | The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. |
 
-```
-&RegionId=cn-hangzhou-env17-d01 &ResourceId.1=asg-bp17xb4x1vr29lgt**** &ResourceType=scalinggroup &<Common request parameters>
-```
-
-`XML` format
-
-```xml
-      <RequestId>3AEBB1B9-5B13-4311-951F-C3C7FA2B****</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "3AEBB1B9-5B13-4311-951F-C3C7FA2B****"
-}
-```
-
-#### ListTagKeys
-
-Queries the tag keys of Auto Scaling resources.
-
-**Request parameters**
-
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7465,37 +8004,47 @@ Queries the tag keys of Auto Scaling resources.
 | PageSize | Integer | 10 | The number of entries returned per page. |
 | RequestId | String | DC09A6AA-2713- 4E10-A2E9- E6C5C43A**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup &<Common request parameters>
+http(s)://ess.example.com/?Action=ListTagKeys &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ListTagKeysResponse>
       <PageSize>10</PageSize>
       <NextToken>caeba0bbb2be03f84eb48b699f0a****</NextToken>
       <RequestId>DC09A6AA-2713-4E10-A2E9-E6C5C43A****</RequestId>
       <Keys>ESS</Keys>
+</ListTagKeysResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PageSize": 10,
     "NextToken": "caeba0bbb2be03f84eb48b699f0a****",
     "RequestId": "DC09A6AA-2713-4E10-A2E9-E6C5C43A****",
     "Keys": "ESS"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidResourceType.N otFound | The ResourceType provided does not exist in our records. | The value of ResourceType is invalid. |
+
+#### 6.17.5 ListTagValues
+
+Queries the tag values of Auto Scaling resources.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7506,16 +8055,10 @@ Sample requests
 | NextToken | String | No | caeba0bbb2be0 3f84eb48b699f0 a**** | The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. |
 | PageSize | Integer | No | 10 | The number of entries to return on each page. Maximum value: 50. Default value: 10. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-#### ListTagValues
-
-Queries the tag values of Auto Scaling resources.
-
-**Request parameters**
-
-**Response parameters**
 
 | NextToken | String | caeba0bbb2be03f8 4eb48b699f0a**** | The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. |
 |---|---|---|---|
@@ -7523,53 +8066,48 @@ Queries the tag values of Auto Scaling resources.
 | RequestId | String | AB444F46-1CFF- 4B06-B8F0- B45D3158**** | The ID of the request. |
 | Values | List | Doc | Details of the tag values. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
+**Examples**
 
 Sample requests
 
 ```
-&Key=ESS &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup &<Common request parameters>
+http(s)://ess.example.com?Action=ListTagValues &Key=ESS &RegionId=cn-hangzhou-env17-d01 &ResourceType=scalinggroup &<Common request parameters>
 ```
 
-`XML` format
+Sample success responses `XML` format
 
 ```xml
+<ListTagValuesResponse>
       <PageSize>10</PageSize>
       <NextToken>caeba0bbb2be03f84eb48b699f0a****</NextToken>
       <RequestId>AB444F46-1CFF-4B06-B8F0-B45D3158****</RequestId>
       <Values>Doc</Values>
+</ListTagValuesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PageSize": 10,
     "NextToken": "caeba0bbb2be03f84eb48b699f0a****",
     "RequestId": "AB444F46-1CFF-4B06-B8F0-B45D3158****",
     "Values": "Doc"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
 
 | 400 | InvalidResourceType.N otFound | The ResourceType provided does not exist in our records. | The value of ResourceType is invalid. |
 |---|---|---|---|
 | 400 | InvalidTagKey.Malform ed | The specified tag key "%s" is not valid. | The tag key does not exist. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| AccessKeyI d | Strin g | Quer y | No | 2442****45 | The AccessKey ID provided to you by Alibaba Cloud. |
-| Action | Strin g | Quer y | Yes | DescribeLimitation | The operation that you want to perform. Set the value to DescribeLimitation. |
-| OwnerId | Long | Quer y | No | 3554****2 | The ID of your Alibaba Cloud account. |
-| ResourceO wnerAccou nt | Strin g | Quer y | No | 233****67 | The account ID of the resource owner. |
+### 6.18 Others
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| MaxNumberOf ScalingInstanc es | Integer | 1000 | The maximum number of Elastic Compute Service (ECS) instances that can be added to or removed from a scaling group. |
-
-### Others
-
-#### DescribeLimitation
+#### 6.18.1 DescribeLimitation
 
 Queries information about resource quota.
 
@@ -7579,7 +8117,18 @@ This operation uses only common request headers. For more information, see the "
 
 **Request parameters**
 
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| AccessKeyI d | Strin g | Quer y | No | 2442****45 | The AccessKey ID provided to you by Alibaba Cloud. |
+| Action | Strin g | Quer y | Yes | DescribeLimitation | The operation that you want to perform. Set the value to DescribeLimitation. |
+| OwnerId | Long | Quer y | No | 3554****2 | The ID of your Alibaba Cloud account. |
+| ResourceO wnerAccou nt | Strin g | Quer y | No | 233****67 | The account ID of the resource owner. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| MaxNumberOf ScalingInstanc es | Integer | 1000 | The maximum number of Elastic Compute Service (ECS) instances that can be added to or removed from a scaling group. |
 
 | RequestId | String | BE9BEB41-E7B8- 4C7D-A3CF- 2DCB106665E9 | The request ID. |
 |---|---|---|---|
@@ -7599,16 +8148,23 @@ This operation uses only common request headers. For more information, see the "
 |---|---|---|---|
 | MaxNumberOf NlbServerGrou p | Integer | 30 | The maximum number of Network Load Balancer (NLB) server groups that can be attached to a scaling group. |
 
+**Examples**
+
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeLimitation &<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeLimitation &Action=DescribeLimitation &<Common request parameters>
 ```
 
-`JSON` format
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "MaxNumberOfScalingInstances":1000,
  "RequestId":"BE9BEB41-E7B8-4C7D-A3CF-2DCB106665E9",
  "MaxNumberOfScheduledTasks":20,
@@ -7623,10 +8179,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "MaxNumberOfLifecycleHooks":6,
  "MaxNumberOfScalingRules":50,
  "MaxNumberOfNlbServerGroup":"",
-}
+ "MaxNumberOfScalingConfigurations":10
 ```
 
-`XML` format
+`}` `XML` format
+
+```xml
+<MaxNumberOfScalingInstances>1000</MaxNumberOfScalingInstances> <RequestId>BE9BEB41-E7B8-4C7D-A3CF-2DCB106665E9</RequestId> <MaxNumberOfScheduledTasks>20</MaxNumberOfScheduledTasks> <MaxNumberOfVServerGroups>5</MaxNumberOfVServerGroups> <MaxNumberOfLoadBalancers>10</MaxNumberOfLoadBalancers> <MaxNumberOfAlbServerGroup>30</MaxNumberOfAlbServerGroup> <MaxNumberOfMinSize>2000</MaxNumberOfMinSize> <MaxNumberOfScalingGroups>50</MaxNumberOfScalingGroups> <MaxNumberOfNotificationConfigurations>6</MaxNumberOfNotificationConfigurations> <MaxNumberOfMaxSize>2000</MaxNumberOfMaxSize> <MaxNumberOfDBInstances>8</MaxNumberOfDBInstances> <MaxNumberOfLifecycleHooks>6</MaxNumberOfLifecycleHooks> <MaxNumberOfScalingRules>50</MaxNumberOfScalingRules> <MaxNumberOfNlbServerGroup /> <MaxNumberOfScalingConfigurations>10</MaxNumberOfScalingConfigurations>
+```
+
+### 6.19 Error codes
+
+#### 6.19.1 Client errors
+
+This topic describes the details of errors caused by clients. Table 1. Description
 
 | HTTP | Error code | Error message | Description |
 |---|---|---|---|
@@ -7635,16 +8201,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | UnsupportedOperation | The specified action is not supported. | The error message returned because the specified API operation is invalid. |
 | 400 | NoSuchVersion | The specified version does not exist. | The error message returned because the specified version is invalid. |
 | 400 | Throttling | Request was denied due to request throttling. | The error message returned because the specified operation is denied by the throttling system. |
-
-```xml
-<MaxNumberOfScalingInstances>1000</MaxNumberOfScalingInstances> <RequestId>BE9BEB41-E7B8-4C7D-A3CF-2DCB106665E9</RequestId> <MaxNumberOfScheduledTasks>20</MaxNumberOfScheduledTasks> <MaxNumberOfVServerGroups>5</MaxNumberOfVServerGroups> <MaxNumberOfLoadBalancers>10</MaxNumberOfLoadBalancers> <MaxNumberOfAlbServerGroup>30</MaxNumberOfAlbServerGroup> <MaxNumberOfMinSize>2000</MaxNumberOfMinSize> <MaxNumberOfScalingGroups>50</MaxNumberOfScalingGroups> <MaxNumberOfNotificationConfigurations>6</MaxNumberOfNotificationConfigurations> <MaxNumberOfMaxSize>2000</MaxNumberOfMaxSize> <MaxNumberOfDBInstances>8</MaxNumberOfDBInstances> <MaxNumberOfLifecycleHooks>6</MaxNumberOfLifecycleHooks> <MaxNumberOfScalingRules>50</MaxNumberOfScalingRules> <MaxNumberOfNlbServerGroup /> <MaxNumberOfScalingConfigurations>10</MaxNumberOfScalingConfigurations>
-```
-
-### Error codes
-
-#### Client errors
-
-This topic describes the details of errors caused by clients. Table 1. Description
 
 | 400 | InvalidAccessKeyId.No tFound | The Access Key ID provided does not exist in our records. | The error message returned because the specified AccessKey pair is invalid. |
 |---|---|---|---|
@@ -7655,29 +8211,24 @@ This topic describes the details of errors caused by clients. Table 1. Descripti
 | 403 | Forbidden.UserVerifica tion | Your user account is not verified by Aliyun. | The error message returned because the real-name verification is not complete. |
 | 400 | ResourceNotAvailable | Resource you requested is not available in this region or zone. | The error message returned because Auto Scaling is unavailable in the specified region. |
 
+#### 6.19.2 Server errors
+
+This topic describes the details of errors caused by servers. Table 1. Description
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because the server fails to process the request. |
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | The error message returned because the server fails to process this request. |
 
-#### Server errors
-
-This topic describes the details of errors caused by servers. Table 1. Description
-
-### Ensure idempotence
+### 6.20 Ensure idempotence
 
 This topic describes how to ensure that requests are idempotent by using ClientToken. If a request times out or an internal server error occurs when the ExecuteScalingRule operation is called to create or release ECS instances, the client may attempt to resend the request. In this case, the client provides the ClientToken parameter to prevent the server from creating or releasing more instances than intended. The ClientToken parameter also ensures that requests are idempotent. The ClientToken value is a unique and case-sensitive string that is generated by the client. The token can only contain ASCII characters and cannot exceed 64 characters in length. If the same ClientToken value is used to call the CreateInstance operation, the server returns identical request results with identical ScalingActivityId values. Therefore, when the request is resent due to an error, the same ClientToken value can ensure that only one scaling activity is created and the corresponding ScalingActivityId value is obtained. If you provide a used ClientToken value and other request parameters are different, Auto Scaling returns the `IdempotentParameterMismatch` error code. Note: You must specify the SignatureNonce, Timestamp, and Signature parameters again before the request is resent because Auto Scaling uses SignatureNonce to prevent replay attacks and uses Timestamp to mark the time of each request. Therefore, you must provide different SignatureNonce and Timestamp values. This also produces a different Signature value. Typically, you only need to configure the client to resend a request in the case of Error 503 (ServiceUnAvailable) or no response. If Error 200 is returned, a retry can obtain the same result as that of the previous request, but the server status is not affected. If Error 4xx or 500 is returned, the request cannot be retried unless the error message states Try it later.
 
-| Parameter | Type | Requ ired | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
-| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+## 7 Appendixes
 
-## Appendixes
+### 7.1 STS overview
 
-### STS overview
-
-#### What is STS?
+#### 7.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -7689,7 +8240,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
@@ -7697,8 +8248,15 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 
 | Parameter | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
+| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
+| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+
+| Parameter | Type | Requ ired | Example | Description |
+|---|---|---|---|---|
 | RoleSessionNa me | String | Yes | alice | The name of the role session. Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the user who calls the operation. For example, specify a username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing. The name must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores ( ). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | The policy that specifies the permissions of the STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. The policy must be 1 to 1,024 characters in length. |
+
+**Responses**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7714,6 +8272,8 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495** **:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -7779,10 +8339,11 @@ le in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
+
+**Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
 
@@ -7828,10 +8389,11 @@ in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|

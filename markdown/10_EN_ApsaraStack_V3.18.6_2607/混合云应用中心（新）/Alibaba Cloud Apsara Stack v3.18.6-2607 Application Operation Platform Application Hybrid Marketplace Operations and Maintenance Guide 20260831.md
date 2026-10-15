@@ -3,24 +3,38 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform A
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace Operations and Maintenance Guide 20260831.pdf"
+source_pdf: "726e2da7f732532d_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplac"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E6%96%B0%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Operation%20Platform%20Application%20Hybrid%20Marketplace%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace Operations and Maintenance Guide 20260831
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Service architecture
+- 3 Routine O&M
+  - 3.1 Perform O&M during the delivery phase
+  - 3.2 Running stage
+- 4 Emergency response plans
+  - 4.1 Plugin center is unavailable
+  - 4.2 Service components are unavailable
+- 5 Product inspection
+  - 5.1 Inspect AHM by using the Inspections console
+  - 5.2 Inspection through command line
+
+## 1 Overview
 
 In Apsara Stack environments, the Hybrid Cloud Application Center (AHM) is deployed only with a Delivery Center. It provides capabilities such as application import, application deployment, application details, application upgrade, application decommissioning, and system configuration management. AHM supports applications with various deployment modes including On Kubernetes, and On ECS. The operations and maintenance (O&M) of AHM primarily include the following contents: Query the version number during the delivery process Verify whether each component has reached the desired state during product deployment Troubleshoot common feature issues of the product View AHM product monitoring metrics View AHM product inspection results
 
-## Service architecture
+## 2 Service architecture
 
 The Delivery Center module of Hybrid Cloud Application Center is deployed in the classic network of the infrastructure based on the PaaS foundation in the Apsara Stack environment. Widgets in Hybrid Cloud Application Center are as follows: ahm-ark-apiserver ahm-ark-webhook ahm-autotest ahm-cloud-operator ahm-cluster-init ahm-conversion-webhook ahm-dbinit ahm-gateway ahm-k8s-apiserver ahm-kone-runtime
 
-## Routine O&M
+## 3 Routine O&M
 
-### Perform O&M during the
+### 3.1 Perform O&M during the delivery phase
 
 **delivery phase**
 
@@ -46,7 +60,7 @@ build-id parameter indicates the build ID and the system-id parameter indicates 
 
 Log on to the terminal server and run the `kubectl get pod,svc,deploy -nahm` command to check the status of the AHM components. If the AHM components are normal and the pod is in the Running state, AHM is deployed.
 
-### Running stage
+### 3.2 Running stage
 
 During the daily operation of the Hybrid Cloud Application Center product, you might encounter common issues such as browser security alerts. You can use the provided methods to resolve or troubleshoot these issues.
 
@@ -54,11 +68,11 @@ During the daily operation of the Hybrid Cloud Application Center product, you m
 
 When accessing the Hybrid Cloud Application Center console, the browser might display a security prompt indicating that the certificate authentication is invalid. This prevents you from continuing to use the Hybrid Cloud Application Center product. You can resolve this issue using the following methods: Install the relevant certificate on the client, then log on to the Hybrid Cloud Application Center console again. On the browser alert page, directly type thisisunsafe. The browser will automatically refresh and allow normal access to the Hybrid Cloud Application Center console.
 
-## Emergency response plans
+## 4 Emergency response plans
 
 For potential failures in the Hybrid Cloud Application Center (AHM) products, you can quickly resolve the failures by using the handling methods in the relevant emergency response plans.
 
-### Plugin center is unavailable
+### 4.1 Plugin center is unavailable
 
 All plugins in the Hybrid Cloud Application Center (AHM) are unavailable, and abnormal results occur when calling any plugin.
 
@@ -79,7 +93,7 @@ If the failure is not recovered timely, remote plugins may not be callable.
 On the **Plug-in Center** **＞** **My Plugins** page of the Hybrid Cloud Application Center, click
 **Restart Plugin Center**.
 
-### Service components are
+### 4.2 Service components are unavailable
 
 **unavailable**
 
@@ -117,7 +131,7 @@ delete the Pod. For example, execute the `kubectl delete pod ahm-gateway-0 -nahm
 4. Execute the kubectl get pod -nahm | grep ahm command to confirm that the Pod is in
 the Running status, which indicates that the Pod has been successfully restarted.
 
-## Product inspection
+## 5 Product inspection
 
 Hybrid Cloud Application Center is integrated with the PaaS inspection framework of Apsara Stack. You can verify the availability of various component services through the PaaS inspection console. The product inspection in Hybrid Cloud Application Center primarily includes basic health checks for the ahm-web and ahm-plugin components.
 
@@ -126,7 +140,7 @@ Hybrid Cloud Application Center is integrated with the PaaS inspection framework
 | ahm-web | test ahm web service health check _ _ _ _ _ | Health check for the ahm-core project to verify whether the component can provide business services normally. |
 | ahm-pugin | test ahm web plugin health check _ _ _ _ _ | Health check for Plug-in Center to verify whether the component can provide business services normally. |
 
-### Inspect AHM by using the
+### 5.1 Inspect AHM by using the Inspections console
 
 **Inspections console**
 
@@ -151,7 +165,7 @@ If a large number of inspection tasks fail, you can select each inspection task 
 **Inspect Now** to manually run the inspection task to check whether the inspection
 results are as expected.
 
-### Inspection through command
+### 5.2 Inspection through command line
 
 **line**
 

@@ -2,18 +2,91 @@
 title: "Container Security Service Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 189
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Container Security Service Developer Guide 20260701.pdf"
+source_pdf: "0253fb402e433c82_Alibaba Cloud Apsara Stack V3.18.6 Container Security Service Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Security%20Service%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Container Security Service Developer Guide 20260701
 
-Container Security Service Devel
+## Table of Contents
 
-## Getting started
+- 1 Getting started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Obtain an AccessKey pair
+  - 2.2 Obtain an AccessKey pair assigned by STS
+  - 2.3 Obtain API information and the endpoint of an API operation
+- 3 Call examples
+  - 3.1 Call examples for SDK for Java
+    - 3.1.1 Quick start
+    - 3.1.2 Use SDK
+      - 3.1.2.1 Install SDK for Java
+      - 3.1.2.2 Use CommonRequest
+  - 3.2 Call examples for SDK for Python
+    - 3.2.1 Quick start
+    - 3.2.2 Use SDK
+      - 3.2.2.1 Install SDK for Python
+      - 3.2.2.2 Use CommonRequest
+  - 3.3 Call examples for SDK for Go
+    - 3.3.1 Quick start
+    - 3.3.2 Use SDK
+      - 3.3.2.1 Install the core package of SDK for Go
+      - 3.3.2.2 Use CommonRequest
+- 4 Common parameters
+- 5 API reference
+  - 5.1 DescribeLatestScanTask
+  - 5.2 ListImageRisk
+  - 5.3 UpdateJenkinsImageScanTaskStatus
+  - 5.4 DescribeImageInfoList
+  - 5.5 DescribeImageBaselineCheckSummary
+  - 5.6 DescribeImageListWithBaselineName
+  - 5.7 DescribeImageBaselineItemList
+  - 5.8 DescribeCycleTaskList
+  - 5.9 DescribeContainerCriteria
+  - 5.10 DescribeContainerFieldStatistics
+  - 5.11 DescribeContainerGroupedFieldDetail
+  - 5.12 DescribeContainerInstances
+  - 5.13 DescribeGroupedContainerInstances
+  - 5.14 DescribeImageSecurityScanCount
+  - 5.15 DescribeImageCriteria
+  - 5.16 GetRegistryScanDayNum
+  - 5.17 DescribeImageInstances
+  - 5.18 ListPrivateRegistryList
+  - 5.19 ListPrivateRegistryType
+  - 5.20 DescribeAlarmEventDetail
+  - 5.21 DescribeNsasSuspEventType
+  - 5.22 DescribeSuspEvents
+  - 5.23 DescribeConcernNecessity
+  - 5.24 DescribeEventLevelCount
+  - 5.25 DescribeSecurityEventOperations
+  - 5.26 DescribeGroupedVul
+  - 5.27 DescribeImageGroupedVulList
+  - 5.28 DescribeAllGroups
+  - 5.29 DescribeImageVulList
+  - 5.30 DescribeVulDetails
+  - 5.31 DescribeAssetDetailByUuid
+  - 5.32 DescribeAllEntity
+  - 5.33 DescribeClusterVulStatistics
+  - 5.34 DescribeContainerInstancesWithoutAscm
+  - 5.35 DescribeExportInfo
+  - 5.36 DescribePropertyCount
+  - 5.37 DescribePropertyCronDetail
+  - 5.38 DescribePropertySoftwareDetail
+  - 5.39 DescribePropertyUserDetail
+  - 5.40 ExportRecord
+  - 5.41 GetClusterCheckItemWarningStatistics
+  - 5.42 GetClusterSuspEventStatistics
+  - 5.43 IgnoreCheckItems
+  - 5.44 ListCheckItemWarningMachine
+  - 5.45 ListCheckItemWarningSummary
+  - 5.46 ModifyOperateVul
+- 6 Error codes
 
-### Apsara Stack documentation
+## 1 Getting started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to find the required documentation when you call an API operation of an Apsara Stack service.
 
@@ -23,20 +96,27 @@ You can follow the procedure described in the following figure to view the speci
 
 **Prerequisites**
 
-The Apsara Stack version is obtained from an O&M personnel or operations administrator. You can go to the Apsara Stack documentation center to view the desired documentation.
+The Apsara Stack version is obtained from an O&M personnel or operations administrator.
+
+**Procedure**
+
+You can go to the Apsara Stack documentation center to view the desired documentation.
 1. Go to the Apsara Stack documentation center.
 2. Click the **Enterprise**, **Agility&XStack**, or **All-in-one** tab based on the Apsara Stack edition that you use.
 3. Select an Apsara Stack version from the drop-down list.
 4. In the left-side navigation pane, select the Apsara Stack service whose documentation you want to view.
 5. In the product documentation section, click **View Details** or **Download PDF**.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
 By default, Apsara Stack Enterprise Edition V3.16.0 and later versions use the point of presence (POP) gateway to deliver the same user experience as in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
 **Flowchart**
 
-Container Security Service Devel Make prepara access credentials Obtain the values of common request headers Obtain the endpoint of the Apsara Uni-manager Management Console Make API calls Obtain an SDK package of the Apsara Uni-manager Management Console Call an API
+Obtain API information Obtain an AccessKey pair or STS Make prepara access credentials Obtain the values of common request headers Obtain the endpoint of the Apsara Uni-manager Management Console Make API calls Obtain an SDK package of the Apsara Uni-manager Management Console Call an API operation
+
+**Procedure**
+
 1. Obtain an AccessKey pair.
 Obtain the AccessKey credential that is required for calling an API operation. For more information, see Obtain an AccessKey pair or Obtain an AccessKey pair assigned by STS.
 
@@ -53,8 +133,21 @@ When you call an API operation, set the `<x-acs-organizationid>` header to the o
 4. View the developer guide of the cloud service that you want to use to learn how to make the API call.
 To learn the features of API operations and how to call the API operations, obtain the developer guide of the Apsara Stack service that you want to use. For more information, see Apsara Stack documentation.
 5. Obtain the endpoint of the cloud service.
-Container Security Service Devel
 6. Obtain the SDK of the cloud service and make the API call.
+
+## 2 Preparations
+
+### 2.1 Obtain an AccessKey pair
+
+Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
+
+**Background information**
+
+An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An access credential that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
+
+**Warning**
+
+The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -63,24 +156,11 @@ Container Security Service Devel
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
 
-Container Security Service Devel
-
-## Preparations
-
-### Obtain an AccessKey pair
-
-Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
-
-**Background information**
-
-An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An access credential that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
-
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
-Container Security Service Devel
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
 
 **Note**
@@ -98,7 +178,7 @@ obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an AccessKey pair assigned
+### 2.2 Obtain an AccessKey pair assigned by STS
 
 **by STS**
 
@@ -107,16 +187,18 @@ This topic describes how to use Security Token Service (STS) to make API calls.
 **Background information**
 
 Alibaba Cloud STS allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. An AccessKey pair assigned by STS consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to make API calls, you must use an AccessKey pair assigned by STS.
+
+**Procedure**
+
 1. Obtain your `RAM role` .
 i. Log on to the Apsara Uni-manager Management Console. ii. Click the profile picture in the upper-right corner of the page and click **User Information**. iii. Click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view your `RAM role` .
 2. Obtain the AccessKey pair assigned by STS.
-Container Security Service Devel
 
 **Note**
 
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS. Container Security Service Devel
+You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS.
 
-```java
+```
 public static void main(String[] args) {
     // Create a DefaultAcsClient instance and initialize it.
     // Replace <yourRegionID>, <yourAccessKeyID>, and <yourAccessKeySecret> with the actual region I
@@ -136,7 +218,12 @@ AccessKeySecret>");
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+```
+
+`}`
+
+```java
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of STS. The format of an STS endpoint is
 sts-vpc.${global:region}.${global:internet-domain}.
@@ -160,13 +247,17 @@ ned in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-    return null;
-}
 ```
 
+`}`
+
+```
+    return null;
+```
+
+`}`
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The following sample code
-provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS): Container Security Service Devel
+provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
@@ -209,19 +300,22 @@ token is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-### Obtain API information and the
+`}` `}`
+
+### 2.3 Obtain API information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
-To call an API operation of a cloud service, you must obtain the information about the operation, including the service code, operation name, and API version. Container Security Service Devel
+To call an API operation of a cloud service, you must obtain the information about the operation, including the service code, operation name, and API version.
 
 **Background information**
 
 The API information on the debugging page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the debugging page is different from that in the developer guide of a cloud service, the information in the developer guide prevails.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI Explorer**.
 3. On the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging** in the top navigation bar.
@@ -229,13 +323,12 @@ The API information on the debugging page of the Apsara Uni-manager Management C
 5. Select an API version from the **Version** drop-down list.
 6. In the API operation list, you can view all API operations of the current version.
 7. Select an API operation and obtain the POP endpoint of the cloud service on the Parameter tab.
-Container Security Service Devel
 
-## Call examples
+## 3 Call examples
 
-### Call examples for SDK for Java
+### 3.1 Call examples for SDK for Java
 
-#### Quick start
+#### 3.1.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Java.
 
@@ -256,7 +349,7 @@ To use Apsara Stack SDK for Java, perform the following steps:
 
 **Note**
 
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. Variables: <your-region-id>: Replace this variable with the region ID. <your-access-key-id>: Replace this variable with your AccessKey ID. <your-access-key-secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation. Container Security Service Devel
+In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. Variables: <your-region-id>: Replace this variable with the region ID. <your-access-key-id>: Replace this variable with your AccessKey ID. <your-access-key-secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -283,14 +376,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-#### Use SDK
+`}` `}` `}`
 
-##### Install SDK for Java
+#### 3.1.2 Use SDK
+
+##### 3.1.2.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -302,9 +394,9 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest
+##### 3.1.2.2 Use CommonRequest
 
-Container Security Service Devel Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
+Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
 
 **Prerequisites**
 
@@ -314,7 +406,11 @@ We recommend that you use CommonRequest to call Apsara Stack API operations. To 
 
 **Important**
 
-We recommend that you do not download SDKs fromSDK Centerand use them in Apsara Stack. SDKs for the Alibaba Cloud public cloud may not support Apsara Stack API operations and may have compatibility issues. Proceed with caution. The following sample code provides an example on how to call RPC API operations. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
+We recommend that you do not download SDKs fromSDK Centerand use them in Apsara Stack. SDKs for the Alibaba Cloud public cloud may not support Apsara Stack API operations and may have compatibility issues. Proceed with caution.
+
+**Use CommonRequest to call API operations**
+
+The following sample code provides an example on how to call RPC API operations. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -346,7 +442,7 @@ sides.
         request.setSysAction("DescribeApiGroups");
 ```
 
-`//` Container Security Service Devel
+`//`
 
 ```java
         // If you use access credentials assigned by Security Token Service (STS) to call RPC API oper
@@ -376,12 +472,9 @@ operations.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-The following sample code provides an example on how to call ROA API operations. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA API operations. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -398,8 +491,6 @@ ourAccessSecret>");
         // clientConfig.setReadTimeoutMillis(10000L);
 //profilesetHttpClientConfig(clientConfig)
 ```
-
-Container Security Service Devel
 
 ```java
         // profile.setHttpClientConfig(clientConfig);
@@ -445,22 +536,21 @@ x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Container Security Service Devel Java
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Call examples for SDK for Python
+### 3.2 Call examples for SDK for Python
 
-#### Quick start
+#### 3.2.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Python.
 
@@ -492,7 +582,7 @@ Before you create a client instance, you must obtain a region ID, an AccessKey I
 
 **Note**
 
-In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <your_region_id>: Replace this variable with the region ID. <your_access_key_id>: Replace this variable with your AccessKey ID. <your_access_key_secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation. Container Security Service Devel
+In the following sample code, replace the variables with actual values based on your business requirements and remove the angle brackets (<>) from the final code. The following list describes the variables: <your_region_id>: Replace this variable with the region ID. <your_access_key_id>: Replace this variable with your AccessKey ID. <your_access_key_secret>: Replace this variable with your AccessKey secret. <your-endpoint>: Replace this variable with the endpoint of the service. <API-version>: Replace this variable with the version of the API. <your-action>: Replace this variable with the name of the API operation.
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}','{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('<your-endpoint>') # The endpoint of the service. request.set_version('<API-version>') # The version of the API. request.set_action_name('<your-action>') # The name of the API operation.
@@ -500,9 +590,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 tion>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### Use SDK
+#### 3.2.2 Use SDK
 
-##### Install SDK for Python
+##### 3.2.2.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -520,7 +610,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest
+##### 3.2.2.2 Use CommonRequest
 
 This topic describes how to use the POP Python software development kit (SDK) to call cloud product APIs.
 
@@ -540,7 +630,7 @@ Currently, you can call APIs only using the Remote Procedure Call (RPC) method.
 
 **CommonRequest call example**
 
-The following example shows how to call the DescribeInstances operation of ECS. The API version is 2014-05- 26. The following is the sample code: Container Security Service Devel
+The following example shows how to call the DescribeInstances operation of ECS. The API version is 2014-05- 26. The following is the sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -551,7 +641,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set the timeout period.
     verify=False, # Ignore the certificate or set verify='<certificate_path>'.
+```
+
 );
+
+```python
 # Use with HTTPS.
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -575,7 +669,11 @@ ers.
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. Required for modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -593,7 +691,7 @@ if __name__ == '__main__':
 
 **Set a proxy**
 
-When you call an API, you may need to set the HTTP_PROXY and HTTPS_PROXY environment variables. The following is the sample code: Container Security Service Devel
+When you call an API, you may need to set the HTTP_PROXY and HTTPS_PROXY environment variables. The following is the sample code:
 
 ```bash
 # HTTPS proxy
@@ -615,7 +713,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # Region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HTTPS. client.do_action_with_exception(request)
@@ -633,7 +731,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Ignore SSL certificate verification.
 ```
 
-)
+`)`
 
 **Specify a CA certificate file**
 
@@ -643,17 +741,17 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # Certificate path
 ```
 
-)
+`)`
 
-### Call examples for SDK for Go
+### 3.3 Call examples for SDK for Go
 
-#### Quick start
+#### 3.3.1 Quick start
 
 Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Apsara Stack SDK for Go.
 
 **Prerequisites**
 
-Container Security Service Devel An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained before you can use Apsara Stack SDK for Go. You can view and obtain your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of a service is obtained. For more information, see Obtain an endpoint.
+An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained before you can use Apsara Stack SDK for Go. You can view and obtain your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of a service is obtained. For more information, see Obtain an endpoint.
 
 **Install the core package of Apsara Stack SDK for Go**
 
@@ -678,21 +776,30 @@ In the following sample code, replace the variables with actual values based on 
 package main import ( "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests" "github.com/aliyun/alibaba-cloud-sdk-go/sdk" "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() { client, err := sdk.NewClientWithAccessKey("<your_region_id>", "{your_access_key_id}", "{your_access_key_secret}") if err != nil { panic(err)
- }
-:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
- }
-fmt.Print(response.GetHttpContentString()) }
 ```
 
-Container Security Service Devel
+`}`
 
-#### Use SDK
+```
+ request
+:= requests.NewCommonRequest() request.Domain = "<your-endpoint>"// The endpoint of the service. request.Version = "<API-version>"// The version of the API. request.ApiName = "<your-action>"// The name of the API operation. request.QueryParams["PageNumber"] = "1" request.QueryParams["PageSize"] = "30" response, err := client.ProcessCommonRequest(request) if err != nil { panic(err)
+```
 
-##### Install the core package of SDK for Go
+`}`
+
+```
+fmt.Print(response.GetHttpContentString())
+```
+
+`}`
+
+#### 3.3.2 Use SDK
+
+##### 3.3.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -700,7 +807,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Use CommonRequest
+##### 3.3.2.2 Use CommonRequest
 
 This topic describes how to use the POP Go software development kit (SDK) to make API calls.
 
@@ -715,7 +822,11 @@ Do not download SDKs directly from the SDK Center for Apsara Stack environments.
 
 **Background information**
 
-You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style. The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example: Container Security Service Devel
+You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
+
+**CommonRequest call examples**
+
+The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example:
 
 ```java
 package main import (
@@ -724,7 +835,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -755,12 +866,15 @@ func main() {
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example: Container Security Service Devel
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
 
 ```java
 package main import (
@@ -770,7 +884,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -799,10 +913,15 @@ der.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Set a proxy**
 
@@ -813,22 +932,23 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment variable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment variable.
-}
 ```
 
-Set the proxy on the client. Container Security Service Devel The following code is an example:
+`}` Set the proxy on the client. The following code is an example:
 
 ```
 // Proxy settings on the client have a higher priority than environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Set the HTTP proxy. client.GetHttpProxy() // Get the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Set the HTTPS proxy. client.GetHttpsProxy() // Get the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Set the proxy whitelist. client.GetNoProxy() // Get the proxy whitelist.
 ```
 
 **SSL verification**
+
+**Summary**
 
 This setting controls the SSL certificate verification behavior for requests. Set to `true` to disable certificate verification. This is an insecure practice. We recommend that you configure a certificate. Set to `false` to enable SSL certificate verification. By default, the operating system's CA certificates are used.
 
@@ -852,6 +972,12 @@ The client-level setting takes effect only if the request-level setting is not s
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the client to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting for the client.
 ```
 
+## 4 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all Apsara Stack API requests. Table 1. Common request parameters
+
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
 | Format | String | No | The type of the returned value. Set the value to JSON. |
@@ -861,43 +987,24 @@ The client-level setting takes effect only if the request-level setting is not s
 | RegionId | String | Yes | The region ID of the service. |
 | Product | String | Yes | The name of the service to which the operation belongs. Valid values: Auditprivate: basic components of Apsara Stack Security yundunnextsoc: Security Operations Center (SOC) Sas: Threat Detection Service aegis: Server Guard yundun-css: Container Protection secspy: Network Detection and Response Ddosprivate: Anti-DDoS Service hsm-private: Data Encryption Service Cloudfw: Cloud Firewall Sddp: Sensitive Data Discovery and Protection (SDDP) semawaf: Web Application Firewall (WAF) soar: Security Orchestration and Automation Response (SOAR) |
 
-Container Security Service Devel
-
-## Common parameters
-
-**Common request parameters**
-
-Common request parameters must be included in all Apsara Stack API requests. Table 1. Common request parameters
-
 | EndpointPre | String | Yes | The prefix in the endpoint of the service to which the operation belongs. Valid values: auditprivate: the prefix in the endpoint of basic components of Apsara Stack Security yundunnextsoc-pop: the prefix in the endpoint of SOC tds: the prefix in the endpoint of Threat Detection Service aegis: the prefix in the endpoint of Server Guard yundun-css: the prefix in the endpoint of Container Protection secspy-share: the prefix in the endpoint of Network Detection and Response ddosprivate: the prefix in the endpoint of Anti-DDoS Service hsmprivate: the prefix in the endpoint of Data Encryption Service cloudfw: the prefix in the endpoint of Cloud Firewall sddp-api: the prefix in the endpoint of SDDP semawaf: the prefix in the endpoint of WAF soar: the prefix in the endpoint of SOAR |
 |---|---|---|---|
-
-Container Security Service Devel
 
 **Common response parameters**
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun-css:DescribeLatestScanTask | Read | acs:yundun-css:*:{#accountId}:* |
+## 5 API reference
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Uuids | Normal | 78645c8e-2e89-441b- 8eb***,a9622a6b- adb5-4dd3- 929e,0136460a-1cb5- 44e8-**** | The UUIDs. Multiple UUIDs are separated by commas (,). |
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
-| LastCheckTime | Long | 1671610264000 | The timestamp when the last check was performed. Unit: milliseconds. |
-| RiskNum | Integer | 1 | The number of viruses detected on the server. |
-
-Container Security Service Devel
-
-## API reference
-
-### DescribeLatestScanTask
+### 5.1 DescribeLatestScanTask
 
 Queries the progress of the last virus scan task.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun-css:DescribeLatestScanTask | Read | acs:yundun-css:*:{#accountId}:* |
 
 **Traffic throttling**
 
@@ -909,10 +1016,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Uuids | Normal | 78645c8e-2e89-441b- 8eb***,a9622a6b- adb5-4dd3- 929e,0136460a-1cb5- 44e8-**** | The UUIDs. Multiple UUIDs are separated by commas (,). |
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
+| LastCheckTime | Long | 1671610264000 | The timestamp when the last check was performed. Unit: milliseconds. |
+| RiskNum | Integer | 1 | The number of viruses detected on the server. |
+
 | TargetInfo | String | [{"type":"uuid","name" :"host001","target":"50 3201a7-14c6-4280- 801b-1169ed42****"}] | The information about the asset on which the virus scan task runs. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields: type: the type of the asset on which the virus scan task runs. Valid values: groupId: server group. uuid: server. name: the name of the server group or server. target: the asset on which the virus scan task runs. The value of this field varies based on the value of the type field. If the value of type is groupId, the value of this field is the ID of the server group. If the value of type is uuid, the value of this field is the UUID of the server. |
 |---|---|---|---|
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=DescribeLatestScanTask&RegionId=cn-hangzhou
@@ -920,21 +1036,25 @@ https://[Endpoint]/?Action=DescribeLatestScanTask&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "LastCheckTime":1671610264000,
     "RiskNum":1,
     "TargetInfo":"[{\"type\":\"uuid\",\"name\":\"host001\",\"target\":\"503201a7-14c6-4280-801b-1169ed
 42****\"}]",
     "Uuids":"78645c8e-2e89-441b-8eb***,a9622a6b-adb5-4dd3-929e,0136460a-1cb5-44e8-****"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeLatestScanTaskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <LastCheckTime>1671610264000</LastCheckTime>
     <RiskNum>1</RiskNum>
@@ -943,35 +1063,18 @@ rgetInfo>
     <Uuids>
         <uuid>78645c8e-2e89-441b-8eb***,a9622a6b-adb5-4dd3-929e,0136460a-1cb5-44e8-****</uuid>
     </Uuids>
+</DescribeLatestScanTaskResponse>
 ```
+
+### 5.2 ListImageRisk
 
 Queries security information about a container image.
 
-### ListImageRisk
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun-css:ListImageRisk | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| CurrentPage | Intege r | Query | No | 1 | The page number. |
-| PageSize | Intege r | Query | No | 20 | The number of entries per page. Default value: 20. |
-| ClusterId | String | Query | No | c80f79959fd724a888e118777 9b13**** | The ID of the cluster to which the container belongs. |
-| Namespace | String | Query | No | kube-sy**** | The namespace to which the image repository belongs. |
-| AppName | String | Query | No | e**** | The application name. |
-| ImageName | String | Query | No | container-***:**** | The image name. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ImageRiskList | Array |  | The security information about the image. |
-| -EndPointList | Array |  | The details of the endpoint. |
-| --Domains | String | ['xxx.com','aaa.com'] | The details of the domain name in the endpoint. |
-| --Type | String | internet | The type of the domain name in the endpoint. Valid values: internet intranet |
-
-Container Security Service Devel
-
-**Authorization information**
 
 **Traffic throttling**
 
@@ -983,7 +1086,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| CurrentPage | Intege r | Query | No | 1 | The page number. |
+| PageSize | Intege r | Query | No | 20 | The number of entries per page. Default value: 20. |
+| ClusterId | String | Query | No | c80f79959fd724a888e118777 9b13**** | The ID of the cluster to which the container belongs. |
+| Namespace | String | Query | No | kube-sy**** | The namespace to which the image repository belongs. |
+| AppName | String | Query | No | e**** | The application name. |
+| ImageName | String | Query | No | container-***:**** | The image name. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ImageRiskList | Array |   | The security information about the image. |
+| -EndPointList | Array |   | The details of the endpoint. |
+| --Domains | String | ['xxx.com','aaa.com'] | The details of the domain name in the endpoint. |
+| --Type | String | internet | The type of the domain name in the endpoint. Valid values: internet intranet |
 
 | -RepoNamespace | String | vultar*** | The namespace to which the image repository belongs. |
 |---|---|---|---|
@@ -1000,8 +1119,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Statistics | String | { "baselineNum": 0, "newSuspicious": 0, "vul": 0 } | The statistics on a security event. |
 | - ImageAccessType | String | IN SAS _ | The registration status of the image repository. Valid values: IN SAS: The image repository is registered with _ Security Center. NOT IN SAS: The image repository is not _ _ registered with Security Center. |
 
-Container Security Service Devel
-
 | -Image | String | .aliyuncs.com/sas test/ _ baseline:exploit | The image. |
 |---|---|---|---|
 | -Uuid | String | 624778f3-5bf2-423c- ac0c-47a62c05**** | The UUID of the image. |
@@ -1010,25 +1127,36 @@ Container Security Service Devel
 | -OrgId | String | 12 | The organization ID. |
 | -ResourceSetId | String | 12 | The ID of the resource set. |
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 | -TotalCount | Integer | 23 | The total number of entries returned. |
 | -Count | Integer | 3 | The number of entries on the current page. |
 | -PageSize | Integer | 20 | The number of entries per page. |
 | -CurrentPage | Integer | 1 | The page number. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 https://[Endpoint]/?Action=ListImageRisk&RegionId=cnhangzhou&CurrentPage=1&PageSize=20&ClusterId=c80f79959fd724a888e1187779b13****&Namespace=kube-sy****&A ppName=e****&ImageName=container-***:****
 ```
 
-Sample success responses `JSON` format Container Security Service Devel
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "ImageRiskList":[
-        {
+```
+
+`{`
+
+```json
             "ImageAccessType":"IN_SAS",
             "RepoNamespace":"vultar***",
             "RegistryType":"harbor",
@@ -1044,7 +1172,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Uuid":"624778f3-5bf2-423c-ac0c-47a62c05****",
             "RepoType":"PRIVATE",
             "EndPointList":[
-                {
+```
+
+`{`
+
+```json
                     "Domains":[
                         "xxx.com",
                         "aaa.com"
@@ -1054,10 +1186,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 ```json
                     "Type":"internet"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "ImageId":"f922bfeb6960436fe3f0e7b62fc6b9a0b47980986669c367c22433269404****",
@@ -1067,10 +1198,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "VpcURLs":"****-registry-registry-vpc.cn-shenzhen-finance-1.cr.aliyuncs.com/xxxx/docker-**
 **",
             "ResourceSetId":"12"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -1078,20 +1208,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":20,
         "CurrentPage":1,
         "Count":3
-    }
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:UpdateJenkinsImageScanTaskStat us | Write | acs:yundun-css:*:{#accountId}:* |
-
-Container Security Service Devel
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListImageRiskResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <ImageRiskList>
         <RepoNamespace>vultar***</RepoNamespace>
@@ -1128,19 +1250,28 @@ cURLs>
         <PageSize>20</PageSize>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</ListImageRiskResponse>
 ```
 
-### UpdateJenkinsImageScanTaskStatus
+### 5.3 UpdateJenkinsImageScanTaskStatus
 
 Changes the status of the scan task on a Jenkins image repository.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:UpdateJenkinsImageScanTaskStat us | Write | acs:yundun-css:*:{#accountId}:* |
 
 **Traffic throttling**
 
 You can call this operation up to 10 times per second per account. You can call this operation up to 100 times per second.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parameter | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1149,16 +1280,14 @@ You can call this operation up to 10 times per second per account. You can call 
 | Result | String | Body | No | SUCCESS | The result of the scan task. Valid values: SUCCESS: The scan task is successful. TASK NOT SUPPORT REGIO _ _ _ N: The image is deployed in a region that is not supported by container image scan. TASK NOT EXISTS: The _ _ scan task does not exist. |
 | Status | String | Body | No | START | The status of the scan task. Valid values: START SUCCESS FAIL TIMEOUT |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID. |
 | TimeCost | Long | 1 | The time consumed. Unit: seconds. |
 
-Container Security Service Devel This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1168,31 +1297,18 @@ https://[Endpoint]/?Action=UpdateJenkinsImageScanTaskStatus&RegionId=cn-hangzhou
 
 Sample success responses `JSON` format
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeImageInfoL ist | The operation that you want to perform. Set the value to DescribeImageInfoList. |
-| Uuids | String | Yes | UUID1,UUID2,UUID3 | The UUIDs of the images. Separate multiple UUIDs with commas (,). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ImageInfos | Array of ImageInfo |  | An array that consists of the information about the images. |
-| AlarmCount | Integer | 1 | The number of exceptions. |
-| AlarmStatus | String | NO | Indicates whether alerts are triggered. Valid values: YES NO |
-| Digest | String | 6a5e1031a5858617f7d 8a179ead6*** | The digest of the image. |
-| Endpoints | String | [] | The endpoint of the image. |
-| ImageCreate | Long | 1639236844747 | The time when the image was created. The value is a UNIX timestamp. Unit: milliseconds. |
-| ImageId | String | asdaSdasd****** | The ID of the image. |
-
-Container Security Service Devel
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
-    "TimeCost":1
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+    "TimeCost":1
+```
+
+`}` `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusResponse>
@@ -1201,15 +1317,30 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateJenkinsImageScanTaskStatusRe
 </UpdateJenkinsImageScanTaskStatusResponse>
 ```
 
-### DescribeImageInfoList
+### 5.4 DescribeImageInfoList
 
 Queries the information about images.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeImageInfoL ist | The operation that you want to perform. Set the value to DescribeImageInfoList. |
+| Uuids | String | Yes | UUID1,UUID2,UUID3 | The UUIDs of the images. Separate multiple UUIDs with commas (,). |
+
 **Response parameters**
 
-|  |  |  | oper Guide·API reference |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ImageInfos | Array of ImageInfo |   | An array that consists of the information about the images. |
+| AlarmCount | Integer | 1 | The number of exceptions. |
+| AlarmStatus | String | NO | Indicates whether alerts are triggered. Valid values: YES NO |
+| Digest | String | 6a5e1031a5858617f7d 8a179ead6*** | The digest of the image. |
+| Endpoints | String | [] | The endpoint of the image. |
+| ImageCreate | Long | 1639236844747 | The time when the image was created. The value is a UNIX timestamp. Unit: milliseconds. |
+| ImageId | String | asdaSdasd****** | The ID of the image. |
+
+|   |   |   | oper Guide·API reference |
 |---|---|---|---|
 
 | ImageSize | Long | 100 | The size of the image. |
@@ -1231,7 +1362,9 @@ Queries the information about images.
 | VulStatus | String | YES | Indicates whether vulnerabilities are detected. Valid values: YES NO |
 | RequestId | String | B41B****-337A-472D- B82E-9FD3642B**** | The ID of the request. |
 
-Sample requests Container Security Service Devel
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageInfoList &Uuids=UUID1,UUID2,UUID3 &<Common request parameters>
@@ -1266,17 +1399,9 @@ Sample success responses `XML` format
 </ImageInfos> <RequestId>B41B****-337A-472D-B82E-9FD3642B****</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeImageBase lineCheckSummary | The operation that you want to perform. Set the value to DescribeImageBaselineCheckSummary. |
-| RiskLevel | String | No | high,medium,low | The severity of the image baseline risk. Separate multiple severities with commas (,). Valid values: high medium low |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "ImageInfos": {
         "Status": "NORMAL",
         "RepoNamespace": "hang***-namespace",
@@ -1300,10 +1425,15 @@ Container Security Service Devel
         "RegionId": "cn-wu***-env***-d01***",
         "RepoId": "crr-vridcl4****",
         "AlarmCount": 1
-    },
-    "RequestId": "B41B****-337A-472D-B82E-9FD3642B****"
-}
 ```
+
+`},`
+
+```json
+    "RequestId": "B41B****-337A-472D-B82E-9FD3642B****"
+```
+
+`}`
 
 **5.5.**
 
@@ -1313,6 +1443,11 @@ Queries image baseline check results.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeImageBase lineCheckSummary | The operation that you want to perform. Set the value to DescribeImageBaselineCheckSummary. |
+| RiskLevel | String | No | high,medium,low | The severity of the image baseline risk. Separate multiple severities with commas (,). Valid values: high medium low |
+
 | Criteria | String | No | [{\"name\":\"riskSta tus\",\"value\":\"YES \"}, {\"name\":\"internet Ip\",\"value\":\"1.2.3 .4\"}] | The search conditions for assets. Set the value in the following format: [{\"name\":\"Name of Condition 1\",\"value\":\"Value of Condition 1\"},{\"name\":\"Name of Condition 2\",\"value\":\"Value of Condition 2\"},{},...] |
 |---|---|---|---|---|
 | CriteriaType | String | No | BaselineClassAlias | The type of the query condition. Valid values: BaselineClassAlias: baseline category BaselineNameAlias: baseline name |
@@ -1320,9 +1455,11 @@ Queries image baseline check results.
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| BaselineResultSu mmary | Array of BaselineResultSu mmary |  | An array that consists of the image baseline check results. |
+| BaselineResultSu mmary | Array of BaselineResultSu mmary |   | An array that consists of the image baseline check results. |
 | BaselineClassAlia s | String | Identity authentication | The category of the baseline. |
 | BaselineClassKey | String | identification | The key of the baseline category. |
 | BaselineNameAlia s | String | Identity authentication | The name of the baseline. |
@@ -1330,36 +1467,28 @@ Queries image baseline check results.
 | BaselineNameLev el | String | high | The severity of the baseline. |
 | FirstScanTime | Long | 1639236844747 | The time when the first image baseline check was performed. The value is a UNIX timestamp. Unit: milliseconds. |
 
-Container Security Service Devel
-
-**Response parameters**
-
 | HighRiskImage | Integer | 1 | The number of images on which high baseline risks are detected. |
 |---|---|---|---|
 | LastScanTime | Long | 1639236844747 | The time when the last image baseline check was performed. The value is a UNIX timestamp. Unit: milliseconds. |
 | LowRiskImage | Integer | 2 | The number of images on which low baseline risks are detected. |
 | MiddleRiskImage | Integer | 3 | The number of images on which medium baseline risks are detected. |
 | Status | Integer | 0 | The status of the baseline. Valid values: 0: normal 1: abnormal |
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 | Count | Integer | 18 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 20 | The number of entries returned per page. |
 | TotalCount | Integer | 18 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageBaselineCheckSummary &<Common request parameters>
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeImageList WithBaselineName | The operation that you want to perform. Set the value to DescribeImageListWithBaselineName. |
-
-Container Security Service Devel
 
 ```xml
 <PageInfo>
@@ -1382,16 +1511,19 @@ Container Security Service Devel
 </BaselineResultSummary>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PageInfo": {
         "TotalCount": 18,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 18
-    },
+```
+
+`},`
+
+```json
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "BaselineResultSummary": {
         "Status": 0,
@@ -1405,9 +1537,9 @@ Container Security Service Devel
         "BaselineNameLevel": "high",
         "LastScanTime": 1639236844747,
         "BaselineNameKey": "identification"
-    }
-}
 ```
+
+`}` `}`
 
 **5.6.**
 
@@ -1416,6 +1548,10 @@ Container Security Service Devel
 Queries baseline check results.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeImageList WithBaselineName | The operation that you want to perform. Set the value to DescribeImageListWithBaselineName. |
 
 | BaselineNameKey | String | Yes | identification | The key of the baseline name. |
 |---|---|---|---|---|
@@ -1429,16 +1565,14 @@ Queries baseline check results.
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ImageInfos | Array of ImageInfos |  | An array that consists of the information about the image. |
+| ImageInfos | Array of ImageInfos |   | An array that consists of the information about the image. |
 | Digest | String | 6a5e1031a5858617f7d 8a179ead6**** | The digest of the image. |
 | Endpoints | String | [] | The endpoint of the image. |
 | HighRiskImage | Integer | 1 | The number of images on which high baseline risks are detected. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | ImageCreate | Long | 1639236844747 | The time when the image was created. The value is a UNIX timestamp. Unit: milliseconds. |
 |---|---|---|---|
@@ -1458,10 +1592,8 @@ Container Security Service Devel
 | Tag | String | 0.2 | The tag that is added to the image. |
 | TotalItemCount | Integer | 1 | The total number of images. |
 | Uuid | String | B41B3780-337A-472D- B82E-9FD36****** | The UUID of the image. |
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 | Count | Integer | 18 | The total number of returned pages. |
-
-Container Security Service Devel
 
 | CurrentPage | Integer | 1 | The page number of the returned page. |
 |---|---|---|---|
@@ -1469,7 +1601,9 @@ Container Security Service Devel
 | TotalCount | Integer | 18 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B935 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageListWithBaselineName &BaselineNameKey=identification &<Common request parameters>
@@ -1507,21 +1641,9 @@ Sample success responses `XML` format
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B935</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeImageBase lineItemList | The operation that you want to perform. Set the value to DescribeImageBaselineItemList. |
-| ImageUuid | String | Yes | e05c0de798217637 868ef4**** | The UUID of the image. |
-| Status | String | No | 1 | The status of the baseline check item. |
-| BaselineClassKey | String | No | identification | The key of the baseline type. |
-| BaselineNameKey | String | No | identification | The key of the baseline name. |
-| PageSize | Integer | No | 20 | The number of entries to return on each page. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "ImageInfos": {
         "NoRiskImage": 3,
         "RepoNamespace": "hanghai-namespace",
@@ -1543,30 +1665,50 @@ Container Security Service Devel
         "Tag": 0.2,
         "RegionId": "cn-wulan-env116-d01***",
         "RepoId": "crr-vridcl4****"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 18,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 18
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B935"
-}
 ```
 
-### DescribeImageBaselineItemList
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B935"
+```
+
+`}`
+
+### 5.7 DescribeImageBaselineItemList
 
 Queries the baseline check items of an image.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeImageBase lineItemList | The operation that you want to perform. Set the value to DescribeImageBaselineItemList. |
+| ImageUuid | String | Yes | e05c0de798217637 868ef4**** | The UUID of the image. |
+| Status | String | No | 1 | The status of the baseline check item. |
+| BaselineClassKey | String | No | identification | The key of the baseline type. |
+| BaselineNameKey | String | No | identification | The key of the baseline name. |
+| PageSize | Integer | No | 20 | The number of entries to return on each page. |
+
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 |---|---|---|---|---|
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| BaselineItemInfos | Array of BaselineItemInfos |  | An array that consists of the baseline check items. |
+| BaselineItemInfos | Array of BaselineItemInfos |   | An array that consists of the baseline check items. |
 | BaselineClassAlia s | String | Identity authentication | The type of the baseline. |
 | BaselineClassKey | String | identification | The key of the baseline type. |
 | BaselineItemAlias | String | Make sure that no accounts in the system use blank passwords | The baseline check item. |
@@ -1575,24 +1717,16 @@ Queries the baseline check items of an image.
 | BaselineNameKe y | String | identification | The key of the baseline name. |
 | Status | Integer | 0 | The status of the baseline check item. Valid values: 0: normal 1: abnormal |
 | WhiteList | Integer | 0 | The whitelist. |
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 | Count | Integer | 18 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 20 | The number of entries returned per page. |
 | TotalCount | Integer | 200 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeCycleTaskL ist | The operation that you want to perform. Set the value to DescribeCycleTaskList. |
-
-Container Security Service Devel
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageBaselineItemList &ImageUuid=e05c0de798217637868ef4**** &<Common request parameters>
@@ -1619,10 +1753,9 @@ passwords</BaselineItemAlias>
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "BaselineItemInfos": {
         "Status": 0,
         "BaselineClassKey": "identification",
@@ -1632,22 +1765,35 @@ passwords</BaselineItemAlias>
         "BaselineNameAlias": "Identity authentication",
         "WhiteList": 0,
         "BaselineNameKey": "identification"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 200,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 18
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeCycleTaskList
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.8 DescribeCycleTaskList
 
 Queries image scan tasks.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeCycleTaskL ist | The operation that you want to perform. Set the value to DescribeCycleTaskList. |
 
 | TaskType | String | Yes | IMAGE SCAN _ | The type of the task. Set the value to IMAGE SCAN. _ |
 |---|---|---|---|---|
@@ -1655,9 +1801,11 @@ Queries image scan tasks.
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| CycleScheduleRe sponseList | Array of CycleScheduleRe sponse |  | An array that consists of scheduled tasks. |
+| CycleScheduleRe sponseList | Array of CycleScheduleRe sponse |   | An array that consists of scheduled tasks. |
 | ConfigId | String | 60846e06a516e91ce1 665a8b50***** | The ID of the configuration. |
 | Enable | Integer | 1 | Indicates whether the task is enabled. 0: no 1: yes |
 | FirstDateStr | Long | 1639236844747 | The time of the first scan. The value is a UNIX timestamp. Unit: milliseconds. |
@@ -1671,11 +1819,7 @@ Queries image scan tasks.
 | TaskName | String | IMAGE SCAN _ | The name of the task. The value is fixed as IMAGE SCAN. _ |
 | TaskType | String | IMAGE SCAN _ | The type of the task. The value is fixed as IMAGE SCAN. _ |
 
-Container Security Service Devel
-
-**Response parameters**
-
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 |---|---|---|---|
 | Count | Integer | 15 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
@@ -1683,7 +1827,9 @@ Container Security Service Devel
 | TotalCount | Integer | 15 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeCycleTaskList &TaskType=IMAGE_SCAN &<Common request parameters>
@@ -1713,23 +1859,9 @@ Sample success responses `XML` format
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeContainerC riteria | The operation that you want to perform. Set the value to DescribeContainerCriteria. |
-| GroupField | String | No | pod | The type of the group that you want to query. Valid values: pod appName namespace clusterId |
-| Value | String | No | test | The fuzzy search conditions that can be automatically matched. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| CriteriaList | Array of Criteria |  | An array that consists of the query conditions. |
-| Name | String | demoKey | The key of the parameter. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "CycleScheduleResponseList": {
         "TargetEndTime": 24,
         "TaskName": "IMAGE_SCAN",
@@ -1743,39 +1875,53 @@ Container Security Service Devel
         "ConfigId": "60846e06a516e91ce1665a8b50*****",
         "LastTaskId": "c619d978da536af2532ea45501ef****",
         "PeriodUnit": "day"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 15,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 15
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeContainerCriteria
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.9 DescribeContainerCriteria
 
 Queries the conditions that are used to query containers.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeContainerC riteria | The operation that you want to perform. Set the value to DescribeContainerCriteria. |
+| GroupField | String | No | pod | The type of the group that you want to query. Valid values: pod appName namespace clusterId |
+| Value | String | No | test | The fuzzy search conditions that can be automatically matched. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| CriteriaList | Array of Criteria |   | An array that consists of the query conditions. |
+| Name | String | demoKey | The key of the parameter. |
 
 | Type | String | select | The type of the parameter. Valid values: input: input box select: drop-down list |
 |---|---|---|---|
 | Values | String | value1,value2,value3 | The values of the parameter. Multiple values are separated by commas (,). |
 | RequestId | String | clusterTypeB41B3780- 337A-472D-B82E- 9FD3642B9350 | The ID of the request. |
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeContainerFi eldStatistics | The operation that you want to perform. Set the value to DescribeContainerFieldStatistics. |
+**Examples**
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ContainerGroupe dFields | Struct |  | The information about the pod. |
-
-Container Security Service Devel Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeContainerCriteria &<Common request parameters>
@@ -1791,26 +1937,38 @@ Sample success responses `XML` format
 </CriteriaList> <RequestId>clusterTypeB41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "CriteriaList": {
         "Type": "select",
         "Values": "value1,value2,value3",
         "Name": "demoKey"
-    },
-    "RequestId": "clusterTypeB41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeContainerFieldStatistics
+`},`
+
+```json
+    "RequestId": "clusterTypeB41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.10 DescribeContainerFieldStatistics
 
 Queries statistics of container risks.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeContainerFi eldStatistics | The operation that you want to perform. Set the value to DescribeContainerFieldStatistics. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ContainerGroupe dFields | Struct |   | The information about the pod. |
 
 | AlarmContainerC ount | Integer | 2 | The number of containers on which alerts are generated. |
 |---|---|---|---|
@@ -1829,19 +1987,15 @@ Queries statistics of container risks.
 | RiskPodCount | Integer | 3 | The number of pods on which risks are detected. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeContainerFieldStatistics &<Common request parameters>
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeContainerG roupedFieldDetail | The operation that you want to perform. Set the value to DescribeContainerGroupedFieldDetail. |
-
-Container Security Service Devel
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <ContainerGroupedFields>
@@ -1862,10 +2016,9 @@ Container Security Service Devel
 </ContainerGroupedFields>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "ContainerGroupedFields": {
         "RiskContainerCount": 4,
@@ -1882,9 +2035,9 @@ Container Security Service Devel
         "ContainerCount": 4,
         "AlarmContainerCount": 2,
         "RiskPodCount": 3
-    }
-}
 ```
+
+`}` `}`
 
 **5.11.**
 
@@ -1894,13 +2047,19 @@ Queries the details of pods.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeContainerG roupedFieldDetail | The operation that you want to perform. Set the value to DescribeContainerGroupedFieldDetail. |
+
 | Criteria | String | Yes | [{\"name\":\"riskSta tus\",\"value\":\"YES \"}, {\"name\":\"internet Ip\",\"value\":\"1.2.3 .4\"}] | The search conditions for assets. Set the value in the following format: [{\"name\":\"Name of Condition 1\",\"value\":\"Value of Condition 1\"},{\"name\":\"Name of Condition 2\",\"value\":\"Value of Condition 2\"},{},...] Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the DescribeCriteria operation to query the supported search conditions. |
 |---|---|---|---|---|
 | GroupField | String | Yes | pod | The group type that you want to use for query. Valid values: pod appName namespace clusterId |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Struct |  | The details of the pod. |
+| Data | Struct |   | The details of the pod. |
 | AlarmCount | Integer | 1 | The statistics of alerts. |
 | AppName | String | csi-provisioner | The name of the application. |
 | ClusterCurrentVe rsion | String | None | This parameter is deprecated. |
@@ -1912,10 +2071,6 @@ Queries the details of pods.
 | CreateTime | Long | 1639236844747 | The creation time. The value is a UNIX timestamp. Unit: milliseconds. |
 | InstanceCount | Integer | 1 | The number of instances. |
 
-Container Security Service Devel
-
-**Response parameters**
-
 | Namespace | String | ********-namespace | The namespace to which the image repository belongs. |
 |---|---|---|---|
 | NodeName | String | cn-****-env116-d01.i- km100o6qw4bhyq**** ** | The name of the node. |
@@ -1926,7 +2081,9 @@ Container Security Service Devel
 | VulCount | Integer | 2 | The number of vulnerabilities. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeContainerGroupedFieldDetail &Criteria=[{\"name\":\"riskStatus\",\"value\":\"YES\"}, {\"name\":\"internetIp\",\"value\":\"1.2.3.4\"}] &GroupField=pod &<Common request parameters>
@@ -1956,18 +2113,9 @@ Sample success responses `XML` format
 </Data>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeContainerI nstances | The operation that you want to perform. Set the value to DescribeContainerInstances. |
-| Criteria | String | No | [{\"name\":\"riskSta tus\",\"value\":\"YES \"}, {\"name\":\"internet Ip\",\"value\":\"1.2.3 .4\"}] | The search conditions for assets. Set the value in the following format: [{\"name\":\"Name of Condition 1\",\"value\":\"Value of Condition 1\"},{\"name\":\"Name of Condition 2\",\"value\":\"Value of Condition 2\"},{},...] Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the DescribeCriteria operation to query the supported search conditions. |
-| LogicalExp | String | No | OR | The logical relationship among the search conditions. Valid values: OR: The logical relationship among the search conditions is OR. AND: The logical relationship among the search conditions is AND. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "Data": {
         "ClusterState": "None",
@@ -1987,23 +2135,31 @@ Container Security Service Devel
         "ClusterName": "test****",
         "RegionId": "cn-wulan-env116-d01",
         "AlarmCount": 1
-    }
-}
 ```
 
-### DescribeContainerInstances
+`}` `}`
+
+### 5.12 DescribeContainerInstances
 
 Queries containers.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeContainerI nstances | The operation that you want to perform. Set the value to DescribeContainerInstances. |
+| Criteria | String | No | [{\"name\":\"riskSta tus\",\"value\":\"YES \"}, {\"name\":\"internet Ip\",\"value\":\"1.2.3 .4\"}] | The search conditions for assets. Set the value in the following format: [{\"name\":\"Name of Condition 1\",\"value\":\"Value of Condition 1\"},{\"name\":\"Name of Condition 2\",\"value\":\"Value of Condition 2\"},{},...] Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the DescribeCriteria operation to query the supported search conditions. |
+| LogicalExp | String | No | OR | The logical relationship among the search conditions. Valid values: OR: The logical relationship among the search conditions is OR. AND: The logical relationship among the search conditions is AND. |
+
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
 |---|---|---|---|---|
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ContainerInstanc eList | Array of ContainerInstanc e |  | An array that consists of the containers. |
+| ContainerInstanc eList | Array of ContainerInstanc e |   | An array that consists of the containers. |
 | AlarmCount | Integer | 1 | The statistics of alerts. |
 | AlarmStatus | String | NO | Indicates whether alerts were triggered. Valid values: YES NO |
 | AppName | String | csi-provisioner | The name of the application. |
@@ -2017,10 +2173,6 @@ Queries containers.
 | Image | String | registry.acs.intra.env1 16.shuguang.com/acs/l og-controller:0.2.7.0- 68ada84-aliyun | The image. |
 | ImageDigest | String | 6a5e103187b31a9459 2a47a5858617f7a179e ad61df7606**** | The digest of the image. |
 | ImageId | String | asdaSdasd******** | The ID of the image. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | ImageRepoName | String | centos1 | The image repository. |
 |---|---|---|---|
@@ -2039,18 +2191,18 @@ Container Security Service Devel
 | UpdateMark | String | None | This parameter is deprecated. |
 | VulCount | Integer | 0 | The number of vulnerabilities. |
 | VulStatus | String | NO | Indicates whether vulnerabilities were detected. Valid values: YES NO |
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 | Count | Integer | 20 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
-
-Container Security Service Devel
 
 | PageSize | Integer | 20 | The number of entries returned per page. |
 |---|---|---|---|
 | TotalCount | Integer | 50 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeContainerInstances &<Common request parameters>
@@ -2097,16 +2249,9 @@ Sample success responses `XML` format
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeGroupedCo ntainerInstances | The operation that you want to perform. Set the value to DescribeGroupedContainerInstances. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "ContainerInstanceList": {
         "VulStatus": "NO",
         "ImageDigest": "6a5e103187b31a94592a47a5858617f7a179ead61df7606****",
@@ -2137,16 +2282,25 @@ Container Security Service Devel
         "ImageRepoTag": "0.2.7.0-68ada84-aliyun",
         "HcStatus": "NO",
         "UpdateMark": "None"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 50,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 20
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
+
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
 
 **5.13.**
 
@@ -2156,6 +2310,10 @@ Queries the details about containers by group, such as application, cluster, nam
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeGroupedCo ntainerInstances | The operation that you want to perform. Set the value to DescribeGroupedContainerInstances. |
+
 | Criteria | String | No | [{\"name\":\"riskSta tus\",\"value\":\"YES \"}, {\"name\":\"internet Ip\",\"value\":\"1.2.3 .4\"}] | The search conditions for assets. Set the value in the following format: [{\"name\":\"Name of Condition 1\",\"value\":\"Value of Condition 1\"},{\"name\":\"Name of Condition 2\",\"value\":\"Value of Condition 2\"},{},...] Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the DescribeCriteria operation to query the supported search conditions. |
 |---|---|---|---|---|
 | LogicalExp | String | No | OR | The logical relationship among the search conditions. OR: The logical relationship among the search conditions is OR. AND: The logical relationship among the search conditions is AND. |
@@ -2164,13 +2322,11 @@ Queries the details about containers by group, such as application, cluster, nam
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| GroupedContaine rInstanceList | Array of GroupedContaine rInstance |  | An array that consists of the details about the containers of the specified group. |
-
-Container Security Service Devel
-
-**Response parameters**
+| GroupedContaine rInstanceList | Array of GroupedContaine rInstance |   | An array that consists of the details about the containers of the specified group. |
 
 | AlarmCount | Integer | 1 | The number of alerts. |
 |---|---|---|---|
@@ -2192,9 +2348,7 @@ Container Security Service Devel
 | RiskStatus | String | YES | Indicates whether risks were detected. Valid values: YES NO |
 | VulCount | Integer | 2 | The number of vulnerabilities. |
 
-Container Security Service Devel
-
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 |---|---|---|---|
 | Count | Integer | 20 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
@@ -2202,7 +2356,9 @@ Container Security Service Devel
 | TotalCount | Integer | 35 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeGroupedContainerInstances &<Common request parameters>
@@ -2238,21 +2394,9 @@ Sample success responses `XML` format
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeImageSecu rityScanCount | The operation that you want to perform. Set the value to DescribeImageSecurityScanCount. |
-| RepoRegionId | String | No | cn-********** | The region ID of the image repository. |
-| RepoInstanceId | String | No | cri-datvailb**** | The ID of the Container Registry instance. |
-| RepoId | String | No | crr-vridcl4**** | The ID of the image repository. |
-| ImageTag | String | No | 0.2 | The tag that is added to the image. |
-| ImageDigest | String | No | 6a5e103187b31a94 592a47a5858617f7 a179ead61df7606* *** | The digest of the image. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "GroupedContainerInstanceList": {
         "HostIp": "47.100.XX.XX",
         "Pod": "csi-provisioner-564c7989c4-9****",
@@ -2272,39 +2416,57 @@ Container Security Service Devel
         "RegionId": "cn-*****-env116-d01",
         "RiskLevel": "medium",
         "AlarmCount": 1
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 35,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 20
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeImageSecurityScanCount
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.14 DescribeImageSecurityScanCount
 
 Queries the results of an image scan.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeImageSecu rityScanCount | The operation that you want to perform. Set the value to DescribeImageSecurityScanCount. |
+| RepoRegionId | String | No | cn-********** | The region ID of the image repository. |
+| RepoInstanceId | String | No | cri-datvailb**** | The ID of the Container Registry instance. |
+| RepoId | String | No | crr-vridcl4**** | The ID of the image repository. |
+| ImageTag | String | No | 0.2 | The tag that is added to the image. |
+| ImageDigest | String | No | 6a5e103187b31a94 592a47a5858617f7 a179ead61df7606* *** | The digest of the image. |
+
 | Dealed | String | No | N | The status of the vulnerabilities that are detected. Valid values: Y: handled N: unhandled |
 |---|---|---|---|---|
 | ImageUuid | String | No | e05c0de798217637 868ef4**** | The ID of the image. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Struct |  | The information of image. |
+| Data | Struct |   | The information of image. |
 | ImageBaselineCo unt | Integer | 1 | The number of image baselines. |
 | ImageCveVulCou nt | Integer | 2 | The number of image system vulnerabilities. |
 | ImageMaliciousFil eCount | Integer | 3 | The number of alerts that are generated for suspicious file changes. |
 | ImageScaVulCou nt | Integer | 1 | The number of Software Composition Analysis (SCA) vulnerabilities. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2323,42 +2485,41 @@ Sample success responses `XML` format
 </Data>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "Data": {
         "ImageBaselineCount": 1,
         "ImageCveVulCount": 2,
         "ImageMaliciousFileCount": 3,
         "ImageScaVulCount": 1
-    }
-}
 ```
+
+`}` `}`
+
+### 5.15 DescribeImageCriteria
+
+Queries the search conditions that can be used to obtain images.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeImageCrite ria | The operation that you want to perform. Set the value to DescribeImageCriteria. |
 | Value | String | No | demo | The search conditions. Fuzzy match is supported. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| CriteriaList | Array of Criteria |  | An array that consists of the search conditions. |
+| CriteriaList | Array of Criteria |   | An array that consists of the search conditions. |
 | Name | String | riskStatus | The name of the search condition. |
 | Type | String | select | The type of the search condition. input: text box select: drop-down list |
 | Values | String | NO | The value of the search condition. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel
-
-### DescribeImageCriteria
-
-Queries the search conditions that can be used to obtain images.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2376,39 +2537,43 @@ Sample success responses `XML` format
 </CriteriaList> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GetRegistryScanDa yNum | The operation that you want to perform. Set the value to GetRegistryScanDayNum. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
-| ScanDayNumCon fig | Struct |  | The settings for image scans. |
-| DayNumList | String | 1,3,7,15,30,90,180,365 | The valid values of the time setting for image scans. |
-| ScanDayNum | Integer | 90 | The time setting for scanning images. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "CriteriaList": {
         "Type": "select",
         "Values": "NO",
         "Name": "riskStatus"
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### GetRegistryScanDayNum
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.16 GetRegistryScanDayNum
 
 Queries the time setting for image scans.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GetRegistryScanDa yNum | The operation that you want to perform. Set the value to GetRegistryScanDayNum. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
+| ScanDayNumCon fig | Struct |   | The settings for image scans. |
+| DayNumList | String | 1,3,7,15,30,90,180,365 | The valid values of the time setting for image scans. |
+| ScanDayNum | Integer | 90 | The time setting for scanning images. |
+
+**Examples**
 
 Sample requests
 
@@ -2425,7 +2590,27 @@ Sample success responses `XML` format
 </ScanDayNumConfig> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "ScanDayNumConfig": {
+        "DayNumList": "1,3,7,15,30,90,180,365",
+        "ScanDayNum": 90
+```
+
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.17 DescribeImageInstances
+
+Queries the information of images.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2435,31 +2620,13 @@ Sample success responses `XML` format
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ImageInstanceLis t | Array of responses |  | An array that consists of the images. |
+| ImageInstanceLis t | Array of responses |   | An array that consists of the images. |
 | AlarmCount | Integer | 1 | The number of alerts. |
 | AlarmStatus | String | YES | Indicates whether alerts were triggered. Valid values: YES NO |
-
-Container Security Service Devel
-
-```json
-{
-    "ScanDayNumConfig": {
-        "DayNumList": "1,3,7,15,30,90,180,365",
-        "ScanDayNum": 90
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
-```
-
-### DescribeImageInstances
-
-Queries the information of images.
-
-**Request parameters**
-
-**Response parameters**
 
 | Digest | String | 6a5e1031a5858617f7d 8a179ead6*** | The digest of the image. |
 |---|---|---|---|
@@ -2481,8 +2648,6 @@ Queries the information of images.
 | ScaProgress | Integer | 1 | This parameter is deprecated. |
 | ScaResult | String | None | This parameter is deprecated. |
 
-Container Security Service Devel
-
 | ScaStatus | String | YES | Indicates whether Software Composition Analysis (SCA) vulnerabilities were detected. YES NO |
 |---|---|---|---|
 | Status | String | NORMAL | The status. |
@@ -2490,20 +2655,22 @@ Container Security Service Devel
 | Uuid | String | B41B****-337A-472D- B82E-9FD3642B**** | The UUID of the asset. |
 | VulCount | Integer | 1 | The number of vulnerabilities. |
 | VulStatus | String | YES | Indicates whether vulnerabilities were detected. Valid values: YES NO |
-| PageInfo | Struct |  | The pagination information. |
+| PageInfo | Struct |   | The pagination information. |
 | Count | Integer | 15 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 20 | The number of entries returned per page. |
 | TotalCount | Integer | 15 | The total number of entries returned. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageInstances &<Common request parameters>
 ```
 
-Sample success responses `XML` format Container Security Service Devel
+Sample success responses `XML` format
 
 ```xml
 <ImageInstanceList>
@@ -2541,21 +2708,9 @@ Sample success responses `XML` format Container Security Service Devel
 </PageInfo> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ListPrivateRegistryL ist | The operation that you want to perform. Set the value to ListPrivateRegistryList. |
-| RegistryType | String | No | defaultAcr | The type of the repository. Set the value to defaultAcr. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ImageRegistryInf os | Array of ImageRegistryInf o |  | An array that consists of image repositories. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "ImageInstanceList": {
         "VulStatus": "YES",
         "ImageSize": 101,
@@ -2583,24 +2738,42 @@ Container Security Service Devel
         "RegionId": "cn-wulan-env116-d01",
         "RepoId": "crr-vridcl4****",
         "HcStatus": "NO"
-    },
+```
+
+`},`
+
+```json
     "PageInfo": {
         "TotalCount": 15,
         "PageSize": 20,
         "CurrentPage": 1,
         "Count": 15
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### ListPrivateRegistryList
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.18 ListPrivateRegistryList
 
 Queries third-party image repositories.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ListPrivateRegistryL ist | The operation that you want to perform. Set the value to ListPrivateRegistryList. |
+| RegistryType | String | No | defaultAcr | The type of the repository. Set the value to defaultAcr. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ImageRegistryInf os | Array of ImageRegistryInf o |   | An array that consists of image repositories. |
 
 | AliUid | Long | 1 | The Apsara Stack tenant account. |
 |---|---|---|---|
@@ -2617,25 +2790,15 @@ Queries third-party image repositories.
 | WhiteList | String | 47.100.XX.XX/24 | The whitelist. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ListPrivateRegistryList &<Common request parameters>
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ListPrivateRegistryT ype | The operation that you want to perform. Set the value to ListPrivateRegistryType. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RegistryTypeInfos | Array of RegistryTypeInfo |  | An array that consists of the information about repository types. |
-| Count | Long | 2 | The number of repositories of the type. |
-| RegistryType | String | defaultAcr | The type of the repository. |
-
-Container Security Service Devel
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <ImageRegistryInfos>
@@ -2654,10 +2817,9 @@ Container Security Service Devel
 </ImageRegistryInfos>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "ImageRegistryInfos": {
         "VpcId": "112***",
@@ -2672,33 +2834,34 @@ Container Security Service Devel
         "NetType": 1,
         "RegistryVersion": 1,
         "AliUid": 1
-    }
-}
 ```
 
-### ListPrivateRegistryType
+`}` `}`
+
+### 5.19 ListPrivateRegistryType
 
 Queries the types of image repositories.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ListPrivateRegistryT ype | The operation that you want to perform. Set the value to ListPrivateRegistryType. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RegistryTypeInfos | Array of RegistryTypeInfo |   | An array that consists of the information about repository types. |
+| Count | Long | 2 | The number of repositories of the type. |
+| RegistryType | String | defaultAcr | The type of the repository. |
 
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAlarmEven tDetail | The operation that you want to perform. Set the value to DescribeAlarmEventDetail. |
-| AlarmUniqueInfo | String | Yes | asdsafasdfadsfasdf* ****** | The unique value that identifies the exception. |
-| From | String | Yes | css | The code of the service. Set the value to css. |
-| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
-| Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
+**Examples**
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Container Security Service Devel Sample requests
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=ListPrivateRegistryType &<Common request parameters>
@@ -2713,27 +2876,42 @@ Sample success responses `XML` format
 </RegistryTypeInfos> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RegistryTypeInfos": {
         "RegistryType": "defaultAcr",
         "Count": 2
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeAlarmEventDetail
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.20 DescribeAlarmEventDetail
 
 Queries the details of an exception.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAlarmEven tDetail | The operation that you want to perform. Set the value to DescribeAlarmEventDetail. |
+| AlarmUniqueInfo | String | Yes | asdsafasdfadsfasdf* ****** | The unique value that identifies the exception. |
+| From | String | Yes | css | The code of the service. Set the value to css. |
+| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
+| Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
+
 **Response parameters**
 
-| Data | Struct |  | The details of the exception. |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+
+| Data | Struct |   | The details of the exception. |
 |---|---|---|---|
 | AccessCode | String | None | This parameter is deprecated. |
 | AlarmEventAliasN ame | String | Webshell - Webshell file | The alias of the alert type. |
@@ -2741,15 +2919,13 @@ Queries the details of an exception.
 | AlarmUniqueInfo | String | asdajshdklahsdj****** | The unique value that identifies the alert event. |
 | CanBeDealOnLine | Boolean | false | Indicates whether the online processing of alert events is supported, such as blocking an alert, adding an alert to the whitelist, and ignoring an alert. Valid values: true: yes false: no |
 | CanCancelFault | Boolean | false | Indicates whether you can cancel marking the alert as a false positive. Valid values: true: yes false: no |
-| CauseDetails | Array of CauseDetail |  | An array that consists of the details about the exception. |
+| CauseDetails | Array of CauseDetail |   | An array that consists of the details about the exception. |
 | Key | String | html | The format in the exception details. Valid values: text html |
-| Value | Array of Value |  | An array that consists of exception details. |
+| Value | Array of Value |   | An array that consists of exception details. |
 | Name | String | Solution | The name of the field that displays tracing information. |
 | Type | String | html | The format of the field that displays tracing information. Valid values: text html |
 | Value | String | [] | The value of the field that displays tracing information. |
 | DataSource | String | console | The source of data. |
-
-Container Security Service Devel
 
 | Dealed | Boolean | false | The status of the exception. Valid values: true: handled false: unhandled |
 |---|---|---|---|
@@ -2762,20 +2938,20 @@ Container Security Service Devel
 | Solution | String | Check the malicious URLs that are listed in the alert. Check the directory for malicious file downloads. Stop the malicious processes that are running. If you trust the processes, mark the alert as a false positive in the console, and submit a ticket to notify security engineers. | The solution to the exception. |
 | StartTime | Long | 1234567890123 | The start of the time range during which the exception was handled. The value is a UNIX timestamp. Unit: milliseconds. |
 
-Container Security Service Devel
-
 | Type | String | Webshell | The type of the alert event. Valid values: Suspicious process Webshell Unusual logon Exception Sensitive file tampering Malicious process Suspicious network connection Other. Abnormal account. Application intrusion event Cloud threat detection Precise defense Application whitelist. Persistent webshell Web application threat detection Malicious script Threat intelligence. Malicious network activity |
 |---|---|---|---|
 | Uuid | String | B41B3780-337A-472D- B82E-9FD364****** | The UUID of the asset. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeAlarmEventDetail &AlarmUniqueInfo=asdsafasdfadsfasdf******* &From=css &<Common request parameters>
 ```
 
-Sample success responses `XML` format Container Security Service Devel
+Sample success responses `XML` format
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <Data>
@@ -2810,19 +2986,9 @@ malicious file downloads. Stop the malicious processes that are running. If you 
 </Data>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeNsasSuspE ventType | The operation that you want to perform. Set the value to DescribeNsasSuspEventType. |
-| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
-| Remark | String | No | test | The conditions for fuzzy search. |
-| Name | String | No | Threat Intelligence | The name of the alert event. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "Data": {
         "CanCancelFault": false,
@@ -2851,17 +3017,22 @@ licious file downloads. Stop the malicious processes that are running. If you tr
                 "Type": "html",
                 "Value": "[]",
                 "Name": "Solution"
-            }
-        }
-    }
-}
 ```
 
-### DescribeNsasSuspEventType
+`}` `}` `}` `}`
+
+### 5.21 DescribeNsasSuspEventType
 
 Queries the types of alert events.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeNsasSuspE ventType | The operation that you want to perform. Set the value to DescribeNsasSuspEventType. |
+| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
+| Remark | String | No | test | The conditions for fuzzy search. |
+| Name | String | No | Threat Intelligence | The name of the alert event. |
 
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|
@@ -2872,17 +3043,17 @@ Queries the types of alert events.
 | ContainerFieldValue | String | No | 4b092975242bea7f a4af8515057f660fa f2b285bc1693fd4cb 0e7bfac******* | The search term that is used to query containers. |
 | TargetType | String | No | containerId | The information that is used to query the types of alert events. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| EventTypes | Array of Data |  | An array that consists of the types of alert events. |
+| EventTypes | Array of Data |   | An array that consists of the types of alert events. |
 | Name | String | Threat Intelligence | The name of the exception. |
 | SuspEventCount | Integer | 12 | The number of exceptions. |
 | Type | String | Threat Intelligence | The type of the exception. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2891,6 +3062,32 @@ http(s)://[Endpoint]/?Action=DescribeNsasSuspEventType &<Common request paramete
 ```
 
 Sample success responses `XML` format
+
+```xml
+<RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <EventTypes>
+    <Type>Threat Intelligence</Type>
+    <SuspEventCount>12</SuspEventCount>
+    <Name>Threat Intelligence</Name>
+</EventTypes>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
+    "EventTypes": {
+        "Type": "Threat Intelligence",
+        "SuspEventCount": 12,
+        "Name": "Threat Intelligence"
+```
+
+`}` `}`
+
+### 5.22 DescribeSuspEvents
+
+Queries exceptions.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2903,35 +3100,6 @@ Sample success responses `XML` format
 | Remark | String | No | test | The IP address or hostname of the server. |
 | Status | String | No | None | This parameter is deprecated. |
 | PageSize | String | No | 20 | The number of entries to return on each page. |
-
-Container Security Service Devel
-
-```xml
-<RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <EventTypes>
-    <Type>Threat Intelligence</Type>
-    <SuspEventCount>12</SuspEventCount>
-    <Name>Threat Intelligence</Name>
-</EventTypes>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
-    "EventTypes": {
-        "Type": "Threat Intelligence",
-        "SuspEventCount": 12,
-        "Name": "Threat Intelligence"
-    }
-}
-```
-
-### DescribeSuspEvents
-
-Queries exceptions.
-
-**Request parameters**
 
 | CurrentPage | String | No | 1 | The number of the page to return. |
 |---|---|---|---|---|
@@ -2948,17 +3116,15 @@ Queries exceptions.
 | ContainerFieldValue | String | No | nginx-ingress- controller | The value that is used to query the container. |
 | TargetType | String | No | containerId | The container that matches both the value of ContainerFieldValue and the value of ContainerFieldName. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Count | Integer | 20 | The total number of returned pages. |
 | CurrentPage | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 20 | The number of entries returned per page. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
-| SuspEvents | Array of WarningSummary |  | The content of the exception. |
-
-Container Security Service Devel
-
-**Response parameters**
+| SuspEvents | Array of WarningSummary |   | The content of the exception. |
 
 | Advanced | Boolean | false | Indicates whether the Advanced edition is used. true: yes false: no |
 |---|---|---|---|
@@ -2971,8 +3137,6 @@ Container Security Service Devel
 | AssetType | Integer | 0 | The type of the asset. Valid values: 0: Elastic Compute Service (ECS) instance 1: Server Load Balancer (SLB) instance 2: NAT gateway 3: ApsaraDB RDS database 4: ApsaraDB for MongoDB database 6: container image 7: container |
 | AutoBreaking | Boolean | false | Indicates whether the exception is automatically blocked. true: yes false: no |
 
-Container Security Service Devel
-
 | CanBeDealOnLine | Boolean | false | Indicates whether the online processing of alert events is supported, such as blocking an alert, adding an alert to the whitelist, and ignoring an alert. Valid values: true: yes false: no |
 |---|---|---|---|
 | CanCancelFault | Boolean | false | Indicates whether you can cancel marking the alert as a false positive. Valid values: true: yes false: no |
@@ -2982,18 +3146,16 @@ Container Security Service Devel
 | ContainerImageN ame | String | name1 | The name of the image to which the container belongs. |
 | DataSource | String | aegis suspicious *** _ _ | The data source on which the exception is detected. |
 | Desc | String | The threat detection model detected that the command line data of a process on your server was highly suspicious. This may be related to trojans, viruses, or attackers. | The description of the exception. |
-| Details | Array of QuaraFile |  | The details of the exception. |
+| Details | Array of QuaraFile |   | The details of the exception. |
 | InfoType | String | None | This parameter is deprecated. |
 | Name | String | ${suspicious.sp.rs.des cription} | The keyword that identifies the exception for internationalization. |
 | NameDisplay | String | Event description | The display name of the exception. |
 | Type | String | text | The format in which the details of the exception are displayed. Valid values: text html |
 | Value | String | The threat detection model detected that the command line data of a process on your server was highly suspicious. This may be related to trojans, viruses, or attackers. | The detailed content of the exception. |
 
-Container Security Service Devel
-
 | ValueDisplay | String | The threat detection model detected that the command line data of a process on your server was highly suspicious. This may be related to trojans, viruses, or attackers. | The detailed content that is displayed. |
 |---|---|---|---|
-| EventNotes | Array of EventNote |  | This parameter is deprecated. |
+| EventNotes | Array of EventNote |   | This parameter is deprecated. |
 | Note | String | None | This parameter is deprecated. |
 | NoteId | Long | 1 | This parameter is deprecated. |
 | NoteTime | String | None | This parameter is deprecated. |
@@ -3002,8 +3164,6 @@ Container Security Service Devel
 | HasTraceInfo | Boolean | false | This parameter is deprecated. |
 | Id | Long | 1 | The ID. |
 | InstanceId | String | i-asdasdjhkjh****** | The ID of the instance. |
-
-Container Security Service Devel
 
 | InstanceName | String | worker-k8s-for-cs- cb9218d50728c470fb7 dfbc16577a2673 | The name of the instance. |
 |---|---|---|---|
@@ -3026,8 +3186,6 @@ Container Security Service Devel
 | OccurrenceTime | String | 2022-01-06 18:41:24 | The time when the exception was detected. The time is in the yyyy-MM-dd HH:mm:ss format. |
 | OccurrenceTimeS tamp | Long | 1234567890123 | The timestamp when the exception was detected. The value is a UNIX timestamp. Unit: milliseconds. |
 
-Container Security Service Devel
-
 | OperateErrorCod e | String | quara.Succes | The handling result of the exception. |
 |---|---|---|---|
 | OperateMsg | String | succes | The message that describes the handling result of the exception. |
@@ -3041,7 +3199,9 @@ Container Security Service Devel
 | Uuid | String | B41B3780-337A-472D- B82E-9FD364****** | The UUID of the asset. |
 | TotalCount | Integer | 35 | The total number of entries returned. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSuspEvents &<Common request parameters>
@@ -3067,19 +3227,19 @@ as highly suspicious. This may be related to trojans, viruses, or attackers. </D
     <AlarmEventType>Malicious process</AlarmEventType>
 ```
 
-Container Security Service Devel a
+`a`
 
 ```
 etype
 ```
 
-a
+`a`
 
 ```
 couspocess/
 ```
 
-a
+`a`
 
 ```xml
 etype
@@ -3139,16 +3299,13 @@ our server was highly suspicious. This may be related to trojans, viruses, or at
 </SuspEvents>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 35,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
 ```
-
-Container Security Service Devel
 
 ```json
     "CurrentPage": 1,
@@ -3216,37 +3373,42 @@ ss on your server was highly suspicious. This may be related to trojans, viruses
             "NameDisplay": "Event description",
 ```
 
+`p` `y` `p` `,`
+
+```json
+            "Name": "${suspicious.sp.rs.description}"
+```
+
+`},`
+
+```json
+        "EventNotes": {
+            "NoteId": 1,
+            "Note": "None",
+            "NoteTime": "None"
+```
+
+`}` `}` `}`
+
+### 5.23 DescribeConcernNecessity
+
+Queries the severities of alert events.
+
+**Request parameters**
+
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeConcernNe cessity | The operation that you want to perform. Set the value to DescribeConcernNecessity. |
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ConcernNecessity | List | ["nntf", "later", "asap"] | The severities of alert events. nntf: low later: medium asap: high |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel p y p ,
-
-```json
-            "Name": "${suspicious.sp.rs.description}"
-        },
-        "EventNotes": {
-            "NoteId": 1,
-            "Note": "None",
-            "NoteTime": "None"
-        }
-    }
-}
-```
-
-### DescribeConcernNecessity
-
-Queries the severities of alert events.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3260,14 +3422,20 @@ Sample success responses `XML` format
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <ConcernNecessity>["nntf", "later", "asap"]</ConcernNecessity>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "ConcernNecessity": "[\"nntf\", \"later\", \"asap\"]"
-}
 ```
+
+`}`
+
+### 5.24 DescribeEventLevelCount
+
+Queries the severities of alerts.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3280,39 +3448,19 @@ Sample success responses `XML` format
 | ContainerFieldValue | String | No | 4b092975242bea7f a4af8515057f660fa f2b285bc1693fd4cb 0e7bfac***** | The value that is used to query the container. |
 | TargetType | String | No | containerId | The container that matches both the value of ContainerFieldName and the value of ContainerFieldValue. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| EventLevels | Struct |  | The alerts. |
+| EventLevels | Struct |   | The alerts. |
 | Remind | Integer | 1 | The number of alerts that have the remind severity. |
 | Serious | Integer | 2 | The number of alerts that have the serious severity. |
 | Suspicious | Integer | 3 | The number of alerts that have the suspicious severity. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel
-
-### DescribeEventLevelCount
-
-Queries the severities of alerts.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeSecurityEv entOperations | The operation that you want to perform. Set the value to DescribeSecurityEventOperations. |
-| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
-| Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
-| SecurityEventId | Long | No | 1 | The ID of the alert event. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
-| SecurityEventOpe rationsResponse | Array of SecurityEventOpe ration |  | An array that consists of the operations performed on alert events. |
-
-Container Security Service Devel
 
 ```
 http(s)://[Endpoint]/?Action=DescribeEventLevelCount &<Common request parameters>
@@ -3328,35 +3476,51 @@ Sample success responses `XML` format
 </EventLevels> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "EventLevels": {
         "Serious": 2,
         "Suspicious": 3,
         "Remind": 1
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeSecurityEventOperations
+`},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.25 DescribeSecurityEventOperations
 
 Queries the operations that are performed on alert events.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeSecurityEv entOperations | The operation that you want to perform. Set the value to DescribeSecurityEventOperations. |
+| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
+| Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
+| SecurityEventId | Long | No | 1 | The ID of the alert event. |
+
 **Response parameters**
 
-| MarkField | Array of MarkField |  | This parameter is deprecated. |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
+| SecurityEventOpe rationsResponse | Array of SecurityEventOpe ration |   | An array that consists of the operations performed on alert events. |
+
+| MarkField | Array of MarkField |   | This parameter is deprecated. |
 |---|---|---|---|
 | FiledAliasName | String | None | This parameter is deprecated. |
 | FiledName | String | None | This parameter is deprecated. |
 | MarkMisType | String | None | This parameter is deprecated. |
 | MarkMisValue | String | None | This parameter is deprecated. |
 | SupportedMisTyp e | List | None | This parameter is deprecated. |
-| MarkFieldsSource | Array of SecurityEventOpe ration |  | An array that consists of the information of the alert events. |
+| MarkFieldsSource | Array of SecurityEventOpe ration |   | An array that consists of the information of the alert events. |
 | FiledAliasName | String | Process path | The name of the alert. |
 | FiledName | String | proc path _ | The key of the field. |
 | MarkMisValue | String | /usr/bin/ps | The operation instruction. |
@@ -3365,20 +3529,15 @@ Queries the operations that are performed on alert events.
 | OperationParams | String | demo | The parameters of the operation. |
 | UserCanOperate | Boolean | false | Indicates whether you can handle the alert. Valid values: true: yes false: no |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeSecurityEventOperations &<Common request parameters>
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeGroupedVu l | The operation that you want to perform. Set the value to DescribeGroupedVul. |
-| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
-
-Container Security Service Devel
 
 ```xml
 <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <SecurityEventOperationsResponse>
@@ -3402,10 +3561,9 @@ sType>
 </SecurityEventOperationsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
     "SecurityEventOperationsResponse": {
         "OperationParams": "demo",
@@ -3417,23 +3575,31 @@ sType>
             "MarkMisType": "None",
             "FiledAliasName": "None",
             "SupportedMisType": "None"
-        },
+```
+
+`},`
+
+```json
         "MarkFieldsSource": {
             "FiledName": "proc_path",
             "MarkMisValue": "/usr/bin/ps",
             "FiledAliasName": "Process path",
             "SupportedMisType": "[\"contains\", \"notContains\", \"regex\", \"strEqual\",
 \"strNotEqual\"]"
-        }
-    }
-}
 ```
 
-### DescribeGroupedVul
+`}` `}` `}`
+
+### 5.26 DescribeGroupedVul
 
 Queries vulnerabilities by group.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeGroupedVu l | The operation that you want to perform. Set the value to DescribeGroupedVul. |
+| SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
 
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|
@@ -3454,8 +3620,6 @@ Queries vulnerabilities by group.
 | Dealed | String | No | Y | The status of the vulnerability. Valid values: N: unhandled Y: handled |
 | CreateTsStart | Long | No | 1 | This parameter is deprecated. |
 
-Container Security Service Devel
-
 | CreateTsEnd | Long | No | 1 | This parameter is deprecated. |
 |---|---|---|---|---|
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
@@ -3469,18 +3633,16 @@ Container Security Service Devel
 | MinScore | Integer | No | 1 | This parameter is deprecated. |
 | VpcInstanceIds | String | No | None | This parameter is deprecated. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CurrentPage | Integer | 1 | The page number of the returned page. |
-| GroupedVulItems | Array of GroupedVulItem |  | An array that consists of the vulnerabilities by group. |
+| GroupedVulItems | Array of GroupedVulItem |   | An array that consists of the vulnerabilities by group. |
 | AliasName | String | DSA-2019 libseccomp security vulnerability | The alias of the vulnerability. |
 | AsapCount | Integer | 1 | The number of vulnerabilities that have the high priority. |
 | GmtLast | Long | 1234567890123 | The timestamp when the last scan was performed. Unit: milliseconds. |
 | HandledCount | Integer | 1 | The number of handled vulnerabilities. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | LaterCount | Integer | 2 | The number of vulnerabilities that have the medium priority. |
 |---|---|---|---|
@@ -3494,21 +3656,15 @@ Container Security Service Devel
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 | TotalCount | Integer | 25 | The total number of entries returned. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeGroupedVul &<Common request parameters>
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeImageGrou pedVulList | The operation that you want to perform. Set the value to DescribeImageGroupedVulList. |
-| Type | String | No | sca | The type of the vulnerability that you want to query. Valid values: CVE: image system vulnerability SCA: image application vulnerability |
-| GroupId | String | No | 12345*** | The ID of the asset group. |
-
-Container Security Service Devel
 
 ```xml
 <TotalCount>25</TotalCount> <PageSize>20</PageSize> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <CurrentPage>1</CurrentPage> <GroupedVulItems>
@@ -3526,10 +3682,9 @@ Container Security Service Devel
 </GroupedVulItems>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 25,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -3546,15 +3701,21 @@ Container Security Service Devel
         "NntfCount": 4,
         "Tags": "Code execution",
         "Name": "debian:10:CVE-2019-9893"
-    }
-}
 ```
 
-### DescribeImageGroupedVulList
+`}` `}`
+
+### 5.27 DescribeImageGroupedVulList
 
 Queries image vulnerabilities by group.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeImageGrou pedVulList | The operation that you want to perform. Set the value to DescribeImageGroupedVulList. |
+| Type | String | No | sca | The type of the vulnerability that you want to query. Valid values: CVE: image system vulnerability SCA: image application vulnerability |
+| GroupId | String | No | 12345*** | The ID of the asset group. |
 
 | CveId | String | No | CVE-2017-15420 | The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability. |
 |---|---|---|---|---|
@@ -3574,15 +3735,15 @@ Queries image vulnerabilities by group.
 | ImageLayer | String | No | 27213ad375b53628 dd152a5ca**** | The information about the image layer. |
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 
-Container Security Service Devel
-
 | IsLatest | Integer | No | 0 | Specifies whether to query the vulnerabilities in the latest images. If you do not specify this parameter, the vulnerabilities of all images are queried. Valid values: 0: no 1: yes |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CurrentPage | Integer | 1 | The page number of the returned page. |
-| GroupedVulItems | Array of GroupedVulItem |  | An array that consists of the vulnerabilities by group. |
+| GroupedVulItems | Array of GroupedVulItem |   | An array that consists of the vulnerabilities by group. |
 | AliasName | String | DSA-2019 libseccomp security vulnerability | The alias of the vulnerability. |
 | AsapCount | Integer | 1 | The number of vulnerabilities that have the high priority. |
 | GmtLast | Long | 1234567890123 | The time when the status of the image vulnerability is last modified. The value is a UNIX timestamp. Unit: milliseconds. |
@@ -3593,17 +3754,15 @@ Container Security Service Devel
 | Status | Integer | 0 | The status of the vulnerability. Valid values: 0: unhandled 1: handled 2: being verified 3: added to the whitelist |
 | Tags | String | Code execution | The tag that is added to the vulnerability. Valid values: Restart required Remote exploitation Exploit exists Exploitable Privilege escalation Code execution |
 
-Container Security Service Devel
-
-**Response parameters**
-
 | Type | String | sca | The type of the vulnerability. Valid values: CVE: image system vulnerability SCA: image application vulnerability |
 |---|---|---|---|
 | PageSize | Integer | 20 | The number of entries returned per page. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 | TotalCount | Integer | 27 | The total number of entries returned. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageGroupedVulList &<Common request parameters>
@@ -3626,10 +3785,9 @@ Sample success responses `XML` format
 </GroupedVulItems>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 27,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -3645,38 +3803,38 @@ Sample success responses `XML` format
         "NntfCount": 3,
         "Tags": "Code execution",
         "Name": "debian:10:CVE-2019-9893"
-    }
-}
 ```
+
+`}` `}`
+
+### 5.28 DescribeAllGroups
+
+Queries the grouping information about servers.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAllGroups | The operation that you want to perform. Set the value to DescribeAllGroups. |
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Count | Integer | 1 | The total number of groups. |
-| Groups | Array of Group |  | An array that consists of the grouping information. |
+| Groups | Array of Group |   | An array that consists of the grouping information. |
 | GroupFlag | Integer | 0 | The type of the server group. Valid values: 0: default group 1: other groups |
 | GroupId | Integer | 123 | The ID of the group. |
 | GroupName | String | abc | The name of the group. |
 | RequestId | String | 7E0618A9-D5EF-4220- 9471-C42B5E92719F | The ID of the request. |
 
-Container Security Service Devel
-
-### DescribeAllGroups
-
-Queries the grouping information about servers.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeAllGroups &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -3689,7 +3847,29 @@ Sample success responses `XML` format
 </Groups> <Count>1</Count>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
+    "Groups": {
+        "GroupName": "abc",
+        "GroupFlag": 0,
+        "GroupId": 123
+```
+
+`},`
+
+```json
+    "Count": 1
+```
+
+`}`
+
+### 5.29 DescribeImageVulList
+
+Queries image vulnerabilities.
+
+**Request parameters**
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -3704,26 +3884,6 @@ Sample success responses `XML` format
 | Dealed | String | No | N | The status of the vulnerability. Valid values: Y: handled N: unhandled |
 | CurrentPage | Integer | No | 1 | The number of the page to return. |
 
-Container Security Service Devel
-
-```json
-{
-    "RequestId": "7E0618A9-D5EF-4220-9471-C42B5E92719F",
-    "Groups": {
-        "GroupName": "abc",
-        "GroupFlag": 0,
-        "GroupId": 123
-    },
-    "Count": 1
-}
-```
-
-### DescribeImageVulList
-
-Queries image vulnerabilities.
-
-**Request parameters**
-
 | PageSize | Integer | No | 20 | The number of entries to return on each page. |
 |---|---|---|---|---|
 | RepoRegionId | String | No | cn-hangzhou | The region ID of the image repository. |
@@ -3736,25 +3896,23 @@ Queries image vulnerabilities.
 | Tag | String | No | None | This parameter is deprecated. |
 | Digest | String | No | None | This parameter is deprecated. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CurrentPage | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 20 | The number of entries returned per page. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 | TotalCount | Integer | 25 | The total number of entries returned. |
-| VulRecords | Array of VulRecord |  | An array that consists of the vulnerabilities. |
+| VulRecords | Array of VulRecord |   | An array that consists of the vulnerabilities. |
 | AliasName | String | DSA-2019 libseccomp security vulnerability | The alias of the vulnerability. |
 | CanUpdate | Boolean | false | Indicates whether the information about the vulnerability can be modified. Valid values: true false |
-| ExtendContentJso n | Struct |  | The extended information about the vulnerability. |
+| ExtendContentJso n | Struct |   | The extended information about the vulnerability. |
 | Os | String | centos | The name of the operating system. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | OsRelease | String | 7 | The version of the operating system. |
 |---|---|---|---|
-| RpmEntityList | Array of RpmEntity |  | An array that consists of the information about RPM Package Manager (RPM) packages. |
+| RpmEntityList | Array of RpmEntity |   | An array that consists of the information about RPM Package Manager (RPM) packages. |
 | FullVersion | String | 1.4.3-12.el7 6.2 _ | The complete version number. |
 | Layer | String | 27213ad3447f0209dd 152a5cadea**** | The image layer. |
 | MatchDetail | String | libssh2 version less than 0:1.4.3-12.el7 6.3 _ | The details about how the vulnerability was detected. |
@@ -3771,8 +3929,6 @@ Container Security Service Devel
 | Name | String | debian:10:CVE-2019- 9893 | The name of the vulnerability. |
 | Necessity | String | asap | The priority to fix the vulnerability. Multiple priorities are separated by commas (,). Valid values: asap: high later: medium nntf: low |
 
-Container Security Service Devel
-
 | PrimaryId | Long | 2 | The ID. |
 |---|---|---|---|
 | Related | String | CVE-2019-3862 | The Common Vulnerabilities and Exposures (CVE) ID of the associated vulnerability. |
@@ -3784,13 +3940,15 @@ Container Security Service Devel
 | Type | String | cve | The type of the vulnerability. Valid values: CVE: image system vulnerability SCA: image application vulnerability |
 | Uuid | String | B41B3780-337A-472D- B82E-9FD3********* | The UUID of the asset. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeImageVulList &<Common request parameters>
 ```
 
-Sample success responses `XML` format Container Security Service Devel
+Sample success responses `XML` format
 
 ```xml
 <TotalCount>25</TotalCount> <PageSize>20</PageSize> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId> <VulRecords>
@@ -3829,18 +3987,9 @@ Sample success responses `XML` format Container Security Service Devel
 </VulRecords> <CurrentPage>1</CurrentPage>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeVulDetails | The operation that you want to perform. Set the value to DescribeVulDetails. |
-| Name | String | Yes | debian:10:CVE- 2019-9893 | The name of the vulnerability. |
-| Type | String | Yes | cve | The type of the vulnerability. Valid values: CVE: system vulnerability SCA: application vulnerability |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "TotalCount": 25,
     "PageSize": 20,
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350",
@@ -3875,29 +4024,40 @@ Container Security Service Devel
                 "Layer": "27213ad3447f0209dd152a5cadea****",
                 "MatchDetail": "libssh2 version less than 0:1.4.3-12.el7_6.3",
                 "Name": "libssh2"
-            }
-        }
-    },
-    "CurrentPage": 1
-}
 ```
 
-### DescribeVulDetails
+`}` `}` `},`
+
+```json
+    "CurrentPage": 1
+```
+
+`}`
+
+### 5.30 DescribeVulDetails
 
 Queries the details of a vulnerability.
 
 **Request parameters**
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeVulDetails | The operation that you want to perform. Set the value to DescribeVulDetails. |
+| Name | String | Yes | debian:10:CVE- 2019-9893 | The name of the vulnerability. |
+| Type | String | Yes | cve | The type of the vulnerability. Valid values: CVE: system vulnerability SCA: application vulnerability |
 
 | SourceIp | String | No | 47.100.XX.XX | The source IP address of the request. |
 |---|---|---|---|---|
 | Lang | String | No | zh | The language of the content within the request and response. Valid values: zh: Chinese en: English |
 | AliasName | String | No | DSA-2019 libseccomp security vulnerability | The alias of the vulnerability. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Cves | Array of Cve |  | An array that consists of system vulnerabilities. |
+| Cves | Array of Cve |   | An array that consists of system vulnerabilities. |
 | Classify | String | None | This parameter is deprecated. |
-| Classifys | Array of Classify |  | This parameter is deprecated. |
+| Classifys | Array of Classify |   | This parameter is deprecated. |
 | Classify | String | None | This parameter is deprecated. |
 | DemoVideoUrl | String | None | This parameter is deprecated. |
 | Description | String | None | This parameter is deprecated. |
@@ -3906,10 +4066,6 @@ Queries the details of a vulnerability.
 | Content | String | FasterXML Jackson is a Java-oriented data processing tool provided by FasterXML. The jackson-databind component of FasterXML Jackson is used to bind data. \nA vulnerability was detected in FasterXML jackson-databind 2.x versions earlier than FasterXML jackson- databind 2.9.10.5. Attacker can exploit this vulnerability to execute arbitrary code on the system by sending commands. | The description of the vulnerability. |
 | CveId | String | CVE-2018-** | The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability. |
 | CvssScore | String | 9.3 | The Common Vulnerability Scoring System (CVSS) score. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | CvssVector | String | CVSS:3.1/AV:N/AC:H/P R:N/UI:N/S:U/C:H/I:H/A: H | The CVSS vendor. |
 |---|---|---|---|
@@ -3927,7 +4083,9 @@ Container Security Service Devel
 | VulLevel | String | serious | The severity of the vulnerability. |
 | RequestId | String | B41B3780-337A-472D- B82E-9FD3642B9350 | The ID of the request. |
 
-Container Security Service Devel Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVulDetails &Name=debian:10:CVE-2019-9893 &Type=cve &<Common request parameters>
@@ -3967,18 +4125,9 @@ from:\n&lt;br /&gt;https://github.com/FasterXML/jackson-databind/issues/2765&lt;
 </Cves> <RequestId>B41B3780-337A-472D-B82E-9FD3642B9350</RequestId>
 ```
 
-`JSON` format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAssetDetail ByUuid | The operation that you want to perform. Set the value to DescribeAssetDetailByUuid. |
-| Uuid | String | Yes | 9e6cad93-a379- 46fd-a701- 9bbf02f4**** | The UUID of the asset that you want to query. |
-| SourceIp | String | No | 192.0.XX.XX | The source IP address of the request. |
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "Cves": {
         "CvssVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "CvssScore": 9.3,
@@ -4006,24 +4155,36 @@ patch from:\\n&lt;br /&gt;https://github.com/FasterXML/jackson-databind/issues/2
             "DemoVideoUrl": "None",
             "Description": "None",
             "Classify": "None"
-        }
-    },
-    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
-}
 ```
 
-### DescribeAssetDetailByUuid
+`}` `},`
+
+```json
+    "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
+```
+
+`}`
+
+### 5.31 DescribeAssetDetailByUuid
 
 Queries the details of an asset by using the UUID of the asset.
 
 **Request parameters**
 
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAssetDetail ByUuid | The operation that you want to perform. Set the value to DescribeAssetDetailByUuid. |
+| Uuid | String | Yes | 9e6cad93-a379- 46fd-a701- 9bbf02f4**** | The UUID of the asset that you want to query. |
+| SourceIp | String | No | 192.0.XX.XX | The source IP address of the request. |
+
 | Lang | String | No | zh | The language of the content within the request and response. Default value: zh. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AssetDetail | Struct |  | The details of the asset. |
+| AssetDetail | Struct |   | The details of the asset. |
 | AssetType | String | 6 | The type of the asset. Valid values: 0: Elastic Compute Service (ECS) instance 1: Server Load Balancer (SLB) instance 2: NAT gateway 3: ApsaraDB RDS database 4: ApsaraDB for MongoDB database 5: KVStore for Redis database 6: image 7: container |
 | AuthModifyTime | Long | 1627974044000 | The timestamp when Container Protection was authorized to scan the asset. Unit: milliseconds. |
 | AuthVersion | Integer | 1 | The edition of Container Protection that is authorized to scan the asset. Valid values: 1: Basic edition (Unauthorized) 6: Anti-virus edition 5: Advanced edition 3: Enterprise edition 7: Ultimate edition 10: Value-added Plan edition |
@@ -4032,10 +4193,6 @@ Queries the details of an asset by using the UUID of the asset.
 | Cpu | Integer | 4 | The number of CPU cores. |
 | CpuInfo | String | Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz | The details of the CPU. |
 | CreateTime | Long | 1603863599000 | The timestamp when Container Protection records the details of the asset. Unit: milliseconds. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | DiskInfoList | List | [ { "diskName": "/dev/vda1", "totalSize": 20, "useSize": 2 } ] | The information about the disk. This parameter contains the following fields: diskName: the name of the disk. totalSize: the total amount of the disk space. Unit: GB. useSize: the amount of the used disk space. Unit: GB. |
 |---|---|---|---|
@@ -4059,14 +4216,14 @@ Container Security Service Devel
 | SysInfo | String | CentOS Linux 8.0.1905 | The details of the operating system. |
 | Tag | String | InternetIp | The tag that is added to the asset. |
 
-Container Security Service Devel
-
 | Uuid | String | 9e6cad93-a379-46fd- a701-9bbf02f4**** | The UUID of the asset. |
 |---|---|---|---|
 | VpcInstanceId | String | vpc- bp1fs3bwonlfq503w*** * | The ID of the virtual private cloud (VPC) to which the asset belongs. |
 | RequestId | String | 39031E31-6BBA-5C99- A870-D807E78918CD | The ID of the request, which is used to locate and troubleshoot issues. |
 
-Container Security Service Devel Sample requests
+**Examples**
+
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeAssetDetailByUuid &Uuid=9e6cad93-a379-46fd-a701-9bbf02f4**** &<Common request parameters>
@@ -4109,20 +4266,9 @@ Sample success responses `XML` format
 </AssetDetail>
 ```
 
-`JSON` format
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| GroupId | Long | Query | No | 1 | Deprecated. |
-| Os | String | Query | No | linux | The operating system. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Container Security Service Devel
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "39031E31-6BBA-5C99-A870-D807E78918CD",
     "AssetDetail": {
         "GroupTrace": "Ungrouped",
@@ -4155,11 +4301,11 @@ Container Security Service Devel
         "IpList": "[\"192.168.XX.XX\",\"192.168.XX.XX\"]",
         "MacList": "[\"00:16:3*:1*:9*:cf\"]",
         "DiskInfoList": "[ { \"diskName\": \"/dev/vda1\", \"totalSize\": 20, \"useSize\": 2 } ]"
-    }
-}
 ```
 
-### DescribeAllEntity
+`}` `}`
+
+### 5.32 DescribeAllEntity
 
 Queries information about all entities and supports multiple filter conditions for different scenarios.
 
@@ -4169,7 +4315,15 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| GroupId | Long | Query | No | 1 | Deprecated. |
+| Os | String | Query | No | linux | The operating system. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4183,19 +4337,30 @@ This operation uses common request headers. No special request headers are requi
 | -IntranetIp | String | 192.168.XX.XX | The private IP address of the node. |
 | RequestId | String | F0A8***-930D-5EC1- 97C8-************ | The request ID. |
 
-Container Security Service Devel Request example
+**Examples**
+
+Request example
 
 ```
-&<Common request parameters>
+http(s)://[Endpoint]/?Action=DescribeAllEntity &<Common request parameters>
 ```
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"F0A8***-930D-5EC1-97C8-************",
  "EntityList":[
-  {
+```
+
+`{`
+
+```json
    "InstanceName":"test",
    "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****",
    "Os":"linux",
@@ -4203,41 +4368,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "Ip":"127.0.0.1",
    "IntranetIp":"192.168.XX.XX",
    "GroupId":12345
-  }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+### 5.33 DescribeClusterVulStatistics
 
 Queries vulnerability statistics.
 
-### DescribeClusterVulStatistics
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- css:DescribeClusterVulStatistics | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address. |
-| ClusterId | String | Query | No | c690a0789419f4284a4e0a29 e12fe**** | The ID of the cluster. |
-| Types | String | Query | No | cve,app,sca | The types of vulnerabilities to query. Valid values: cve: Linux software vulnerabilities app: application vulnerabilities sca: software composition analysis (SCA) vulnerabilities |
-| From | String | Query | No | css | The identifier of the request source. Valid values: sas: Server Guard css: Container Security |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID is a unique identifier generated by Alibaba Cloud. You can use this ID to troubleshoot and locate problems. |
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID is a unique identifier generated by Alibaba Cloud and can be used to troubleshoot issues. |
-| VulStat | Struct | { "LaterCount":"2", "AsapCount":"1", "NntfCount":"3" } | The vulnerability statistics. |
-| -AsapCount | String | 1 | The number of high-risk vulnerabilities. |
-| -LaterCount | String | 2 | The number of medium-risk vulnerabilities. |
-
-Container Security Service Devel
-
-**Authorization information**
 
 **Traffic shaping**
 
@@ -4249,18 +4392,31 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address. |
+| ClusterId | String | Query | No | c690a0789419f4284a4e0a29 e12fe**** | The ID of the cluster. |
+| Types | String | Query | No | cve,app,sca | The types of vulnerabilities to query. Valid values: cve: Linux software vulnerabilities app: application vulnerabilities sca: software composition analysis (SCA) vulnerabilities |
+| From | String | Query | No | css | The identifier of the request source. Valid values: sas: Server Guard css: Container Security |
+
 **Response parameters**
 
-|  |  |  | Container Security Service Deve oper Guide·API reference |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID is a unique identifier generated by Alibaba Cloud. You can use this ID to troubleshoot and locate problems. |
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID is a unique identifier generated by Alibaba Cloud and can be used to troubleshoot issues. |
+| VulStat | Struct | { "LaterCount":"2", "AsapCount":"1", "NntfCount":"3" } | The vulnerability statistics. |
+| -AsapCount | String | 1 | The number of high-risk vulnerabilities. |
+| -LaterCount | String | 2 | The number of medium-risk vulnerabilities. |
+
+|   |   |   | Container Security Service Deve oper Guide·API reference |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -NntfCount | String | 3 | The number of low-risk vulnerabilities. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:DescribeContainerInstancesWitho utAscm | Read | acs:yundun-css:*:{#accountId}:* |
+**Examples**
 
 Sample request
 
@@ -4270,27 +4426,31 @@ https://[Endpoint]/?Action=DescribeClusterVulStatistics&RegionId=cnhangzhou&Sour
 
 Sample response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "VulStat":{
         "LaterCount":"2",
         "AsapCount":"1",
         "NntfCount":"3"
-    }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type: application/xml
+HTTP/1.1 200 OK Content-Type: application/xml <DescribeClusterVulStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <VulStat>
         <AsapCount>1</AsapCount>
         <LaterCount>2</LaterCount>
         <NntfCount>3</NntfCount>
     </VulStat>
+</DescribeClusterVulStatisticsResponse>
 ```
 
 **5.34.**
@@ -4301,11 +4461,19 @@ Queries a list of containers without filtering the results by multi-level organi
 
 **Authorization**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:DescribeContainerInstancesWitho utAscm | Read | acs:yundun-css:*:{#accountId}:* |
+
 **Throttling**
 
 Call frequency per user: 10 queries per second (QPS). Overall API call frequency: 100 QPS.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see the documentation about common request parameters.
+
+**Request parameters**
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4314,28 +4482,22 @@ Call frequency per user: 10 queries per second (QPS). Overall API call frequency
 | PageSize | Integer | Query | No | 20 | The maximum number of entries to return on each page. |
 | CurrentPage | Integer | Query | No | 1 | The page number of the current page. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-|  |  | [ { "ImageRepoTag": "0.3.1.0-dfa2010- aliyun", "AppName": "alibaba-log- controller", "PodIp": "172.24.XX.XX", "VulCount": 15, "HcStatus": "YES", "ImageId": "registry- vpc.cn- beijing.aliyuncs.com/ac s/log- controller@sha256:5b0 46e2de8c4908191251 93ee2eb71a66f2cc16c 032dcd8b69ead4be10 24****", "ClusterId": "cfb41a869c71e4678a 97021582dd8a****", "I R N " |  |
-
-Container Security Service Devel This operation uses only common request headers. For more information, see the documentation about common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+|   |   | [ { "ImageRepoTag": "0.3.1.0-dfa2010- aliyun", "AppName": "alibaba-log- controller", "PodIp": "172.24.XX.XX", "VulCount": 15, "HcStatus": "YES", "ImageId": "registry- vpc.cn- beijing.aliyuncs.com/ac s/log- controller@sha256:5b0 46e2de8c4908191251 93ee2eb71a66f2cc16c 032dcd8b69ead4be10 24****", "ClusterId": "cfb41a869c71e4678a 97021582dd8a****", "I R N " |   |
 
 | Parameter | Type | "ImageRepoName": "Eloxga-mcopntlreoller", | Description |
 |---|---|---|---|
-|  |  | "HostIp": |  |
+|   |   | "HostIp": |   |
 | ContainerInstanc eList | Array | "172.24.XX.XX", "Pod": "alibaba-log-controller- 6f847f8786-mk2mg", "RiskStatus": "YES", "VulStatus": "YES", "AlarmStatus": "YES", "Image": "docker.io/library/nginx :latest", "ImageRepoNamespac e": "acs", "ImageDigest": "5b046e2de8c490819 125193ee2eb71a66f2c c16c032dcd8b69ead4 be1024****", "Namespace": "kube- system", "InstanceId": "i- 2zegzjyotydfkz9****", "NodeInfo": "test", "ImageUuid": "5f23dfbceec289a49ac 94e035e2****", "RegionId": "cn- hangzhou", "UpdateMark": "79cff74d-e967-5407- 8a78-ee03b9****", "ContainerId": "48a6d9a92435a13ad 573372c3f3c63b7e04d 106458141df9f921557 09d****", "NodeName": "test", "HcCount": 1, "ClusterName": "test", "RiskCount": 1, "AlarmCount": 1, "CreateTimestamp": 1670368337000, "Exposed": 1, "ExposedDetail": " [{\\\"exposedName\\\": \\\"nginx-ingress- lb\\\",\\\"exposedType\\ \":\\\"LoadBalancer\\\",\ \\"portDOList\\\": [{\\\"name\\\":\\\"http\\\ ",\\\"nodePort\\\":32268 ,\\\"port\\\":80,\\\"target Port\\\":80}, {\\\"name\\\":\\\"https\\ \",\\\"nodePort\\\":3237 6,\\\"port\\\":443,\\\"tar getPort\\\":443}]}] " } ] | The list of containers. |
 | -ContainerId | String | B41B3780-337A-472D- B82E-9FD3******** | The container ID. |
 | -Image | String | registry.acs.intra.***.** *.com/acs/log- ***:0.2.7.0-68ada84- aliyun | The image. |
 | -ImageId | String | asdaSdasd******** | The image ID. |
 | -Pod | String | csi-provisioner- 564c7989c4-9**** | The pod. |
 
-Container Security Service Devel
-
-|  | Container Security oper Guide·API ref | Service Devel erence |  |  |  |
+|   | Container Security oper Guide·API ref | Service Devel erence |   |   |   |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4377,25 +4539,40 @@ Container Security Service Devel
 | -TotalCount | Integer | 50 | The total number of entries. |
 | -CurrentPage | Integer | 1 | The page number of the current page. |
 
-Container Security Service Devel Request example
+**Examples**
+
+Request example
 
 ```
 https://[Endpoint]/?Action=DescribeContainerInstancesWithoutAscm&RegionId=cn-hangzhou&Criteria=[{"name ":"flag","value":"0|8","logicalExp":"AND"},{"name":"ecsType","value":"!8","logicalExp":"AND"}][{"name" :"clusterType","value":"NotManagedKubernetes","logicalExp":"AND"}]&LogicalExp=OR&PageSize=20&CurrentPage
 ```
 
-Container Security Service Devel Response example `JSON` format
+Response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageInfo":{
         "TotalCount":50,
         "PageSize":20,
         "CurrentPage":1,
         "Count":20
-    },
+```
+
+`},`
+
+```json
     "ContainerInstanceList":[
-        {
+```
+
+`{`
+
+```json
             "NodeName":"cn-wulan-env116-d01.i-km100o6qw4bhyqo7pbvb",
             "ImageDigest":"6a5e103187b31a94592a47a5858617f7a179ead61df7606****",
             "VulStatus":"NO",
@@ -4427,22 +4604,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "ImageRepoTag":"0.2.7.0-68ada84-aliyun",
             "UpdateMark":"None",
             "HcStatus":"NO"
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| ExportId | Long | Query | No | 14356 | The ID of the vulnerability export task. |
-
-Container Security Service Devel
+`}` `]` `}` `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <DescribeContainerInstancesWithoutAscmResponse>
@@ -4489,7 +4653,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeContainerInstancesWithoutA
 </DescribeContainerInstancesWithoutAscmResponse>
 ```
 
-### DescribeExportInfo
+### 5.35 DescribeExportInfo
 
 Queries the details of an export task.
 
@@ -4498,6 +4662,12 @@ Queries the details of an export task.
 This operation uses only common request headers. For more information, see Common request parameters.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| ExportId | Long | Query | No | 14356 | The ID of the vulnerability export task. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4511,9 +4681,7 @@ This operation uses only common request headers. For more information, see Commo
 | Message | String | success | The response message. |
 | Link | String | http://xxxxx | The download link for the file. |
 
-Container Security Service Devel
-
-**Response parameters**
+**Examples**
 
 Sample request
 
@@ -4523,8 +4691,13 @@ http(s)://[Endpoint]/?Action=DescribeExportInfo &Common request parameters
 
 Sample response Sample response in `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":32,
  "Progress":100,
  "RequestId":"F0A8***-930D-5EC1-97C8-************",
@@ -4534,10 +4707,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "CurrentCount":1,
  "Id":1,
  "Link":"http://xxxxx"
-}
 ```
 
-### DescribePropertyCount
+`}`
+
+### 5.36 DescribePropertyCount
 
 Counts the properties of assets in Security Center to provide a comprehensive overview of your assets.
 
@@ -4545,10 +4719,14 @@ Counts the properties of assets in Security Center to provide a comprehensive ov
 
 This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
+**Request parameters**
+
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | Type | String | Query | No | containerNetwork | The type of active protection to query. Valid values: auto breaking : Anti- _ virus ransomware breaking _ : Anti-ransomware (bait capture) webshell cloud breakin _ _ g : Web shell connection protection (not yet available) alinet : Malicious network behavior protection k8s log analysis : _ _ Container K8s threat detection (not yet available) alisecguard : Client self- protection. |
 | UuidList | String | Query | No | a9a95aad-2b60-4812-b22d- ***********,a9a95aad-2b60- 4812-b22d-*********** | A list of server UUIDs. Note: If you set UuidList, Server Guard deletes the tag only from the servers specified in the list. If UuidList is empty, Server Guard deletes the tag from all servers. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4561,26 +4739,9 @@ This operation has no special request headers. For more information about common
 | Sca | Integer | 112 | The number of middleware. |
 | Autorun | Integer | 3 | The number of startup items. |
 
-Container Security Service Devel
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample request
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:DescribePropertyCronDetail | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Remark | String | Query | No | 192.168.XX.XX | The name or IP address of the server to query. |
-| Source | String | Query | No | /etc/cron.d/root | The path of the task to query. |
-| User | String | Query | No | root | The account name for the scheduled task to query. |
-| Uuid | String | Query | No | 50d213b4-3a35-427a-b8a5- 04b0c7e1**** | The UUID of the server to query. |
-
-Container Security Service Devel
 
 ```
 http(s)://[Endpoint]/?Action=DescribePropertyCount &Common request parameters
@@ -4588,8 +4749,13 @@ http(s)://[Endpoint]/?Action=DescribePropertyCount &Common request parameters
 
 Sample success response `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Sca":112,
  "User":"",
  "RequestId":"F0A8***-930D-5EC1-97C8-************",
@@ -4598,14 +4764,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "Software":111,
  "Cron":123,
  "Autorun":3
-}
 ```
 
-### DescribePropertyCronDetail
+`}`
+
+### 5.37 DescribePropertyCronDetail
 
 The DescribePropertyCronDetail operation queries the details of scheduled tasks on your host assets.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:DescribePropertyCronDetail | Read | acs:yundun-css:*:{#accountId}:* |
 
 **Traffic shaping**
 
@@ -4619,10 +4790,19 @@ This operation uses common request headers and has no special request headers. F
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Remark | String | Query | No | 192.168.XX.XX | The name or IP address of the server to query. |
+| Source | String | Query | No | /etc/cron.d/root | The path of the task to query. |
+| User | String | Query | No | root | The account name for the scheduled task to query. |
+| Uuid | String | Query | No | 50d213b4-3a35-427a-b8a5- 04b0c7e1**** | The UUID of the server to query. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | CurrentPage | Integer | Query | No | 1 | The page number to return. Default value: 1. |
 | PageSize | Integer | Query | No | 10 | The number of entries to return on each page. Default value: 10. |
 | SelectType | String | Query | No | equals | The query type. Default value: like . Valid values: equals : term query. such as : fuzzy query. |
 | AssetType | String | Query | No | IMAGE | The type of the asset fingerprint. Default value: HOST . Valid values: Image : image asset fingerprint Host : host asset fingerprint |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4630,11 +4810,7 @@ This operation uses common request headers and has no special request headers. F
 | -InstanceName | String | hc-host-**** | The name of the server instance. |
 | -Ip | String | 192.168.XX.XX | The IP addresses of the server. |
 
-Container Security Service Devel
-
-**Response parameters**
-
-| Container Security | Service Devel |  |  |
+| Container Security | Service Devel |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4659,13 +4835,15 @@ Container Security Service Devel
 | -Count | Integer | 1 | The number of entries returned on the current page. |
 | -PageSize | Integer | 10 | Specifies the number of fingerprints for Scheduled Task Assets to display on each page of a paged query. The default is 10. |
 
-|  |  |  | Container Security Service Deve oper Guide·API reference |
+|   |   |   | Container Security Service Deve oper Guide·API reference |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -TotalCount | Integer | 1 | The total number of fingerprints for the assets in the queried scheduled task. |
 | -CurrentPage | Integer | 1 | The page number of the returned page. |
+
+**Examples**
 
 Request example
 
@@ -4676,11 +4854,20 @@ https://[Endpoint]/?Action=DescribePropertyCronDetail&RegionId=cnhangzhou&Remark
 
 Response examples `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Propertys":[
-        {
+```
+
+`{`
+
+```json
             "User":"root",
             "InstanceId":"i-hp35tftuh52wbp1g****",
             "ResourceSetName":"test",
@@ -4698,10 +4885,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "ResourceSetId":"12",
             "CreateTimestamp":1649149566000,
             "Md5":"4cc8f97c2bf9cbabb2c2be2erqw****"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -4709,24 +4895,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":10,
         "CurrentPage":1,
         "Count":1
-    }
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:DescribePropertySoftwareDetail | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Remark | String | Query | No | 47.100.XX.XX | The name or IP address of the server. |
-
-Container Security Service Devel
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyCronDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Propertys>
         <InstanceName>hc-host-****</InstanceName>
@@ -4753,13 +4927,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>1</TotalCount>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</DescribePropertyCronDetailResponse>
 ```
 
-### DescribePropertySoftwareDetail
+### 5.38 DescribePropertySoftwareDetail
 
 Queries the details of software assets.
 
 **Authorization**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:DescribePropertySoftwareDetail | Read | acs:yundun-css:*:{#accountId}:* |
 
 **Throttling**
 
@@ -4771,7 +4950,11 @@ This operation uses only common request headers. For more information, see the d
 
 **Request parameters**
 
-|  |  |  |  | Conta | iner Security Service Deve |
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Remark | String | Query | No | 47.100.XX.XX | The name or IP address of the server. |
+
+|   |   |   |   | Conta | iner Security Service Deve |
 |---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
@@ -4788,10 +4971,10 @@ This operation uses only common request headers. For more information, see the d
 | GroupId | String | Query | No | 1 | The ID of the group. |
 | AssetType | String | Query | No | IMAGE | The type of the Asset Fingerprint. Default value: HOST . Valid values: IMAGE : Image Asset Fingerprint HOST : Host Asset Fingerprint. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4809,9 +4992,7 @@ This operation uses only common request headers. For more information, see the d
 | -InstanceId | String | i- 5fq05ua8z5cd1spus1t w | The ID of the instance where the software is installed. |
 | -IntranetIp | String | 192.168.176.124 | The internal IP address of the server. |
 
-Container Security Service Devel
-
-|  |  |  | oper Guide·API reference |
+|   |   |   | oper Guide·API reference |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
@@ -4828,19 +5009,30 @@ Container Security Service Devel
 | -TotalCount | Integer | 2 | The total number of software entries. |
 | -CurrentPage | Integer | 1 | The page number. |
 
+**Examples**
+
 Request example
 
 ```
-https://[Endpoint]/?Action=DescribePropertySoftwareDetail&RegionId=cnhangzhou&Remark=47.100.XX.XX&Name=sshd&Path=/usr/xxx&SoftwareVersion=1.1.x.x&Extend=1&Uuid=inet-f6ac9a 93xxx&ContainerId=c1caea99b7649408aa5035dca00ac97ed&CurrentPage=1&PageSize=20&SelectType=equals&Ip=47.100. XX&GroupId=1&AssetType=IMAGE
+https://[Endpoint]/?Action=DescribePropertySoftwareDetail&RegionId=cnhangzhou&Remark=47.100.XX.XX&Name=sshd&Path=/usr/xxx&SoftwareVersion=1.1.x.x&Extend=1&Uuid=inet-f6ac9a xxx&ContainerId=c1caea99b7649408aa5035dca00ac97ed&CurrentPage=1&PageSize=20&SelectType=equals&Ip=47.100. XX&GroupId=1&AssetType=IMAGE
 ```
 
-Sample successful response `JSON` format Container Security Service Devel
+Sample successful response `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Propertys":[
-        {
+```
+
+`{`
+
+```json
             "Path":"/boot/.vmlinuz-3.10.0-514.el7.x86_64.hmac",
             "InstallTimeStamp":1498375028000,
             "InstallTime":"2017-06-25 15:17:08",
@@ -4858,10 +5050,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Create":1704248313000,
             "ResourceSetId":"12",
             "CreateTimestamp":1704248313000
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -4869,24 +5060,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":20,
         "CurrentPage":1,
         "Count":2
-    }
-}
 ```
 
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:DescribePropertyUserDetail | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Remark | String | Query | No | 192.168.x.x | The name or IP address of the server. |
-
-Container Security Service Devel
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertySoftwareDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Propertys>
         <Name>kernel</Name>
@@ -4913,13 +5092,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>2</TotalCount>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</DescribePropertySoftwareDetailResponse>
 ```
 
-### DescribePropertyUserDetail
+### 5.39 DescribePropertyUserDetail
 
 Queries the details of server accounts.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:DescribePropertyUserDetail | Read | acs:yundun-css:*:{#accountId}:* |
 
 **Throttling**
 
@@ -4931,7 +5115,11 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
-| Container Sec | urity Serv | ice Devel |  |  |  |
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Remark | String | Query | No | 192.168.x.x | The name or IP address of the server. |
+
+| Container Sec | urity Serv | ice Devel |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
@@ -4948,10 +5136,10 @@ This operation uses common request headers. No special request headers are requi
 | GroupId | String | Query | No | 1 | The group ID. |
 | TagIdListStri ng | String | Query | No | 1 | A list of tags. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4966,9 +5154,7 @@ This operation uses common request headers. No special request headers are requi
 | -Ip | String | 192.168.176.124 | The IP address of the server. |
 | -Create | String | 1704248304000 | The time of the last scan. |
 
-Container Security Service Devel
-
-| Container Security oper Guide·API ref | Service Devel erence |  |  |
+| Container Security oper Guide·API ref | Service Devel erence |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4990,7 +5176,7 @@ Container Security Service Devel
 | -ResourceSetId | String | 12 | The resource set ID. |
 | -OrgName | String | test | The organization name. |
 
-|  |  |  | Container Security Service Deve |
+|   |   |   | Container Security Service Deve |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5003,27 +5189,41 @@ Container Security Service Devel
 | -TotalCount | Integer | 20 | The total number of entries returned. |
 | -CurrentPage | Integer | 1 | The page number of the returned page. |
 
+**Examples**
+
 Sample request
 
 ```
 https://[Endpoint]/?Action=DescribePropertyUserDetail&RegionId=cnhangzhou&Remark=192.168.x.x&User=root&IsRoot=1&Extend=1&Uuid=inet-00f20b1a-e2dd-408b-b38e-
 *****&CurrentPage=1&PageSize=20&SelectType=equals&AssetType=IMAGE&Ip=47.200.XX.XX&GroupId=1&TagIdListStr
-=1
 ```
 
-Sample responses `JSON` format Container Security Service Devel
+`=1` Sample responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "PageInfo":{
         "TotalCount":20,
         "PageSize":20,
         "CurrentPage":1,
         "Count":2
-    },
+```
+
+`},`
+
+```json
     "Propertys":[
-        {
+```
+
+`{`
+
+```json
             "IsRoot":"0",
             "User":"root",
             "LastLoginIp":"N/A",
@@ -5050,25 +5250,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "OrgId":"12",
             "Uuid":"00f2-xxx-xxx",
             "IsUserExpired":0
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun-css:ExportRecord | Write | acs:yundun-css:*:{#accountId}:* |
-
-Container Security Service Devel
+`}` `]` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyUserDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <PageInfo>
         <Count>2</Count>
@@ -5106,13 +5293,18 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <OrgName>test</OrgName>
         <ResourceSetName>test</ResourceSetName>
     </Propertys>
+</DescribePropertyUserDetailResponse>
 ```
 
-### ExportRecord
+### 5.40 ExportRecord
 
 Call the ExportRecord operation to export detection results to an Excel file. You can export results from various pages, such as Asset Center, cloud platform configuration checks, image security scans, attack analysis, and AccessKey pair leak detection.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun-css:ExportRecord | Write | acs:yundun-css:*:{#accountId}:* |
 
 **Traffic shaping**
 
@@ -5120,25 +5312,23 @@ Call frequency per user: 10 queries per second (QPS). Call frequency for the API
 
 **Request header**
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Lang | String | Query | No | zh | The language of the request and response. Default value: zh. zh: Chinese. en: English. |
-| Params | String | Query | No | {"extend":"1","currentPage": 1,"pageSize":10} | The filter conditions for the export. Note This is a generic export operation for the detection lists of multiple Security Center features. The fields for this parameter vary based on the feature. Avoid specifying this parameter when you call the operation. Leave this parameter unspecified to export the information list. Then, filter the data in the exported Excel file. |
-
-Container Security Service Devel This operation has no special request headers. For information about common request headers, see Common request parameters.
+This operation has no special request headers. For information about common request headers, see Common request parameters.
 
 **Request parameters**
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Lang | String | Query | No | zh | The language of the request and response. Default value: zh. zh: Chinese. en: English. |
+| Params | String | Query | No | {"extend":"1","currentPage": 1,"pageSize":10} | The filter conditions for the export. Note This is a generic export operation for the detection lists of multiple Security Center features. The fields for this parameter vary based on the feature. Avoid specifying this parameter when you call the operation. Leave this parameter unspecified to export the information list. Then, filter the data in the exported Excel file. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | ExportType | String | Query | Yes | database | The type of list to export. Valid values: assetInstance : The list of servers in Asset Center. user : The list of Asset Fingerprints for accounts. port : The list of Asset Fingerprints for ports. process : The list of Asset Fingerprints for processes. sca : The list of Asset Fingerprints for middleware. database : The list of Asset Fingerprints for databases. web : The list of Asset Fingerprints for web services. software : The list of Asset Fingerprints for software. cron : The list of Asset Fingerprints for cron jobs. autorun : The list of Asset Fingerprints for startup items. lkm : The list of Asset Fingerprints for kernel modules. webserver : The list of Asset Fingerprints for websites. imageVulExport : The list of system vulnerabilities for images. imageBaseLineExport : The list of baseline check results for images. imageAffectedMalicious Export : The list of check results for malicious samples in images. baselineCspm : The list of detection results from cloud platform configuration checks. attack : The list of alert events from attack analysis. accessKey : The list of alert events from AccessKey pair leak detection. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Container Security Service Devel
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5146,11 +5336,9 @@ Container Security Service Devel
 | Id | Long | 131231 | The ID of the exported file. |
 | FileName | String | cms 20171101.xlsx _ | The name of the exported file. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:GetClusterCheckItemWarningStat istics | Read | acs:yundun-css:*:{#accountId}:* |
+**Examples**
 
-Container Security Service Devel Request example
+Request example
 
 ```json
 https://[Endpoint]/?Action=ExportRecord&RegionId=cn-hangzhou&Lang=zh&Params= {"extend":"1","currentPage":1,"pageSize":10}&ExportType=database
@@ -5158,21 +5346,26 @@ https://[Endpoint]/?Action=ExportRecord&RegionId=cn-hangzhou&Lang=zh&Params= {"e
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Id":131231,
     "FileName":"cms_20171101.xlsx"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ExportRecordResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Id>131231</Id>
     <FileName>cms_20171101.xlsx</FileName>
+</ExportRecordResponse>
 ```
 
 **5.41.**
@@ -5183,14 +5376,26 @@ Call the GetClusterCheckItemWarningStatistics operation to retrieve statistics a
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:GetClusterCheckItemWarningStat istics | Read | acs:yundun-css:*:{#accountId}:* |
+
 **Traffic shaping**
 
-The request frequency for a single user is limited to 10 queries per second (QPS).
+The request frequency for a single user is limited to 10 queries per second (QPS). The request frequency for this operation is limited to 100 queries per second (QPS).
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | SourceIp | String | Query | No | 219.133.XX.XX | The source IP address. |
 | ClusterId | String | Query | No | c690a0789419f4284a4e0a29 e12fe**** | The cluster ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5200,15 +5405,7 @@ The request frequency for a single user is limited to 10 queries per second (QPS
 | - MediumWarningC ount | Integer | 2 | The number of medium-risk check items on the server. |
 | - HighWarningCou nt | Integer | 10 | The number of high-risk check items on the server. |
 
-Container Security Service Devel The request frequency for this operation is limited to 100 queries per second (QPS).
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Request example
 
@@ -5218,33 +5415,21 @@ https://[Endpoint]/?Action=GetClusterCheckItemWarningStatistics&RegionId=cnhangz
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Data":{
         "MediumWarningCount":2,
         "HighWarningCount":10,
         "LowWarningCount":3
-    }
-}
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | -101 | -101 | %s %s |
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:GetClusterSuspEventStatistics | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address of the request. |
-| Type | String | Query | No | alarm | The type. The value is fixed to `alarm` for alert queries. |
-| From | String | Query | No | css | The source of the request. The value is fixed to `css`. |
-| ClusterId | String | Query | No | Cccfd68c474454665ace07ef ce924*** | The ID of the container cluster. |
-
-Container Security Service Devel `XML` format
+`}` `}` `XML` format
 
 ```xml
 HTTP/1.1 200 OK Content-Type:application/xml <GetClusterCheckItemWarningStatisticsResponse>
@@ -5257,11 +5442,19 @@ HTTP/1.1 200 OK Content-Type:application/xml <GetClusterCheckItemWarningStatisti
 </GetClusterCheckItemWarningStatisticsResponse>
 ```
 
-### GetClusterSuspEventStatistics
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | -101 | -101 | %s %s |
+
+### 5.42 GetClusterSuspEventStatistics
 
 Call the GetClusterSuspEventStatistics operation to query statistics on the severity levels of alerts.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:GetClusterSuspEventStatistics | Read | acs:yundun-css:*:{#accountId}:* |
 
 **Throttling**
 
@@ -5273,7 +5466,14 @@ This operation uses common request headers. Special request headers are not requ
 
 **Request parameters**
 
-|  |  |  |  | Conta | iner Security Service Deve oper Guide·API reference |
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address of the request. |
+| Type | String | Query | No | alarm | The type. The value is fixed to `alarm` for alert queries. |
+| From | String | Query | No | css | The source of the request. The value is fixed to `css`. |
+| ClusterId | String | Query | No | Cccfd68c474454665ace07ef ce924*** | The ID of the container cluster. |
+
+|   |   |   |   | Conta | iner Security Service Deve oper Guide·API reference |
 |---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
@@ -5282,13 +5482,13 @@ This operation uses common request headers. Special request headers are not requ
 | ContainerFie ldValue | String | Query | No | 4b092975242bea7fa4af8515 057f660faf2b285bc1693fd4c b0e7bfac***** | The value of the container search item. |
 | TargetType | String | Query | No | containerId | The ContainerFieldName and ContainerFieldValue parameters are used to filter the target information. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID is a unique identifier generated by Alibaba Cloud that helps you troubleshoot issues. |
 
-**Response parameters**
-
-| Container Security oper Guide·API ref | Service Devel erence |  |  |
+| Container Security oper Guide·API ref | Service Devel erence |   |   |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
@@ -5298,6 +5498,8 @@ This operation uses common request headers. Special request headers are not requ
 | -Suspicious | Integer | 3 | The number of suspicious events. |
 | -Remind | Integer | 1 | The number of reminder events. |
 
+**Examples**
+
 Request example
 
 ```
@@ -5306,30 +5508,34 @@ https://[Endpoint]/?Action=GetClusterSuspEventStatistics&RegionId=cnhangzhou&Sou
 
 Response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "SuspStatistics":{
         "Serious":2,
         "Suspicious":3,
         "Remind":1
-    }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <GetClusterSuspEventStatisticsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <SuspStatistics>
         <Serious>2</Serious>
         <Suspicious>3</Suspicious>
         <Remind>1</Remind>
     </SuspStatistics>
+</GetClusterSuspEventStatisticsResponse>
 ```
 
-### IgnoreCheckItems
+### 5.43 IgnoreCheckItems
 
 Call the IgnoreCheckItems operation to ignore risk items in baseline checks.
 
@@ -5338,24 +5544,6 @@ Call the IgnoreCheckItems operation to ignore risk items in baseline checks.
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun-css:IgnoreCheckItems | Write | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address of the request. |
-| Type | Integer | Query | Yes | 1 | The type of operation. Valid values: 1: Ignore 2: Stop ignoring |
-| Reason | String | Query | No | already config in another way | Rationale |
-| Source | String | Query | No | default | The data source. Valid values: default: host baseline agentless: agentless baseline |
-| UuidList | Repeat List | Query | No | 55bf7984-9b3b-4e8d-be8e- f3e5b0b4**** | The UUIDs of the servers to ignore. |
-| CheckAndRis kTypeList | Repeat List | Query | No | [{"CheckId":52,"RiskType","w eak password"}] _ | A list of check items to ignore. |
-| -CheckId | Long |  | No | 52 | The ID of the check item. |
-| -RiskType | String |  | No | weak password _ | The type of the baseline risk. |
-| CheckIds | Repeat List | Query | No | 1 | A list of check item IDs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The ID of the request. This ID is unique to the request. You can use this ID to troubleshoot issues. |
-
-Container Security Service Devel
 
 **Throttling**
 
@@ -5367,19 +5555,27 @@ This operation uses common request headers. No special request headers are requi
 
 **Request parameters**
 
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address of the request. |
+| Type | Integer | Query | Yes | 1 | The type of operation. Valid values: 1: Ignore 2: Stop ignoring |
+| Reason | String | Query | No | already config in another way | Rationale |
+| Source | String | Query | No | default | The data source. Valid values: default: host baseline agentless: agentless baseline |
+| UuidList | Repeat List | Query | No | 55bf7984-9b3b-4e8d-be8e- f3e5b0b4**** | The UUIDs of the servers to ignore. |
+| CheckAndRis kTypeList | Repeat List | Query | No | [{"CheckId":52,"RiskType","w eak password"}] _ | A list of check items to ignore. |
+| -CheckId | Long |   | No | 52 | The ID of the check item. |
+| -RiskType | String |   | No | weak password _ | The type of the baseline risk. |
+| CheckIds | Repeat List | Query | No | 1 | A list of check item IDs. |
+
 **Response parameters**
 
-| HTTP status code | Error code | Error message | Description |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| 500 | -100 | ServerError | ServerError |
-| 500 | ServerError | ServerError | ServerError |
-| 403 | NoPermission | NoPermission | caller has no permission |
+| RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The ID of the request. This ID is unique to the request. You can use this ID to troubleshoot issues. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- css:ListCheckItemWarningMachine | Read | acs:yundun-css:*:{#accountId}:* |
+**Examples**
 
-Container Security Service Devel Request example
+Request example
 
 ```
 https://[Endpoint]/?Action=IgnoreCheckItems&RegionId=cnhangzhou&SourceIp=219.133.XX.XX&Type=1&Reason=already config in another way&Source=default&UuidList.1=55bf7984-9b3b-4e8d-be8e-f3e5b0b4****&CheckIds.1=1
@@ -5387,24 +5583,39 @@ https://[Endpoint]/?Action=IgnoreCheckItems&RegionId=cnhangzhou&SourceIp=219.133
 
 Response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <IgnoreCheckItemsResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</IgnoreCheckItemsResponse>
 ```
 
-### ListCheckItemWarningMachine
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | -100 | ServerError | ServerError |
+| 500 | ServerError | ServerError | ServerError |
+| 403 | NoPermission | NoPermission | caller has no permission |
+
+### 5.44 ListCheckItemWarningMachine
 
 Call the ListCheckItemWarningMachine operation to retrieve the machines that have alerts for a specific baseline check item.
 
 **Authorization information**
+
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- css:ListCheckItemWarningMachine | Read | acs:yundun-css:*:{#accountId}:* |
 
 **Traffic shaping**
 
@@ -5430,19 +5641,15 @@ This operation uses common request headers. No special request headers are requi
 | PageSize | Integer | Query | No | 20 | The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned. |
 | GroupId | Long | Query | No | 1161**** | The ID of the asset group to query. |
 
-Container Security Service Devel
-
 | Paramete r | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | Source | String | Query | No | default | The data source. If you leave this parameter empty, the results of host baselines are queried by default. Valid values: default: host agentless: agentless |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | List | Array | [ { "Status":7, "Bind":true, "InstanceId":"i- bp1a69mvjujbakxu**** ", "PortOpen":true, "WarningRiskList":[ { "RiskId":215, "RiskName":"Alibaba Cloud Linux/Aliyun Linux 2 Baseline for China classified protection of cybersecurity-Level II" } ], "LastScanTime":16946 92471000, "TargetName":"jenkins ****", "IntranetIp":"172.25.X X.XX", "TargetId":"30****", "InstanceName":"sql- test-0****", "OrgId":"1", "Uuid":"49e25e0f- bb51-4a5a-a1b3- 13a4ddaa****", "FixList":[ { "RiskId":215, "RiskName":"Alibaba Cloud Linux/Aliyun Linux 2 Baseline for China classified protection of cybersecurity-Level II" } ], "InternetIp":"8.210.XX. XX", "ContainerId":"48a6d9 a92435a13ad573372c 3f3c63b7e04d1064581 41df9f9215570******** ", "ContainerName":"mys ql", "TargetType":"ECS IMA _ GE", "Prompt":"There is a weak password (username/password): root/he*****34", "RegionId":"cn- hangzhou", "AuthVersion":5, "ResourceSetId":"11", "LastHandleTime":169 4692471000 } ] | A list of machines that have alerts. |
-
-Container Security Service Devel
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5455,8 +5662,6 @@ Container Security Service Devel
 | -Status | Integer | 7 | The status of the check item. Valid values: 1: Failed 2: Verifying 3: Passed 6: Ignored 7: Fixing |
 | -Bind | Boolean | true | Indicates whether the asset is granted the required permissions. Valid values: true: The asset is granted the required permissions. false: The asset is not granted the required permissions. |
 | -AuthVersion | Integer | 5 | The edition of Security Center that is authorized to protect the asset. Valid values: 1: Free Edition 6: Anti-virus Edition 5: Premium Edition 3: Enterprise Edition 7: Ultimate Edition 10: Value-added Service Edition |
-
-Container Security Service Devel
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5478,8 +5683,6 @@ Container Security Service Devel
 | -OrgId | String | 1 | The ID of the organization. |
 | -ResourceSetId | String | 11 | The ID of the resource set. |
 
-Container Security Service Devel
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The invocation request ID is a unique identifier generated by Alibaba Cloud that you can use to troubleshoot issues. |
@@ -5489,32 +5692,46 @@ Container Security Service Devel
 | -TotalCount | Integer | 103 | The total number of affected assets. |
 | -Count | Integer | 2 | The number of affected assets returned on the current page. |
 
-Container Security Service Devel Request example
+**Examples**
+
+Request example
 
 ```
 https://[Endpoint]/?Action=ListCheckItemWarningMachine&RegionId=cnhangzhou&SourceIp=219.133.XX.XX&CheckId=8&RiskType=cis&Status=3&Remark=225&ContainerFieldName=clusterId& tainerFieldValue=ce89cdd0ea732472a8703821b19e****&Lang=zh&CurrentPage=1&PageSize=20&GroupId=1161****&Sou =default
 ```
 
-Successful response example `JSON` format Container Security Service Devel
+Successful response example `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "List":[
-        {
+```
+
+`{`
+
+```json
             "Status":7,
             "Bind":true,
             "InstanceId":"i-bp1a69mvjujbakxu****",
             "PortOpen":true,
             "WarningRiskList":[
-                {
+```
+
+`{`
+
+```json
                     "RiskId":215,
                     "RiskName":"Alibaba Cloud Linux/Aliyun Linux 2 Baseline for China classified
 protection of cybersecurity-Level II"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "LastScanTime":1694692471000,
@@ -5525,14 +5742,17 @@ protection of cybersecurity-Level II"
             "OrgId":"1",
             "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****",
             "FixList":[
-                {
+```
+
+`{`
+
+```json
                     "RiskId":215,
                     "RiskName":"Alibaba Cloud Linux/Aliyun Linux 2 Baseline for China classified
 protection of cybersecurity-Level II"
-                }
 ```
 
-`],`
+`}` `],`
 
 ```json
             "InternetIp":"8.210.XX.XX",
@@ -5544,10 +5764,9 @@ protection of cybersecurity-Level II"
             "AuthVersion":5,
             "ResourceSetId":"11",
             "LastHandleTime":1694692471000
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -5556,20 +5775,12 @@ protection of cybersecurity-Level II"
         "CurrentPage":1,
         "Count":2,
         "LastRowKey":"null"
-    }
-}
 ```
 
-`XML` format
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | -101 | -101 | %s %s |
-
-Container Security Service Devel
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListCheckItemWarningMachineResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <List>
         <Status>7</Status>
@@ -5610,9 +5821,14 @@ ybersecurity-Level II</RiskName>
         <TotalCount>103</TotalCount>
         <Count>2</Count>
     </PageInfo>
+</ListCheckItemWarningMachineResponse>
 ```
 
-### ListCheckItemWarningSummary
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | -101 | -101 | %s %s |
+
+### 5.45 ListCheckItemWarningSummary
 
 Call the ListCheckItemWarningSummary operation to retrieve statistics about risks for baseline check items.
 
@@ -5621,20 +5837,6 @@ Call the ListCheckItemWarningSummary operation to retrieve statistics about risk
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- css:ListCheckItemWarningSummary | Read | acs:yundun-css:*:{#accountId}:* |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address of the request. |
-| CheckWarni ngStatus | Integer | Query | No | 1 | The status of the threat. If you do not specify this parameter, threats in all statuses are queried. Valid values: * 1: Failed * 3: Passed * 6: Whitelisted |
-| CheckLevel | String | Query | No | high | The severity level of the threat. If you do not specify this parameter, threats of all severity levels are queried. Valid values: * high * medium * low |
-| ContainerFie ldName | String | Query | No | clusterId | The name of the query parameter for container security. |
-| ContainerFie ldValue | String | Query | No | c471f0f61b9c04f8380556e9 22cf1**** | The value of the query parameter for container security. |
-| TargetType | String | Query | No | 1 | This parameter is deprecated. |
-| ClusterId | String | Query | No | c690a0789419f4284a4e0a29 e12fe**** | The ID of the cluster. |
-| CurrentPage | Integer | Query | No | 1 | The number of the page to return. Default value: 1. |
-| PageSize | Integer | Query | No | 20 | The number of entries to return on each page. Default value: 20. |
-
-Container Security Service Devel
 
 **Traffic shaping**
 
@@ -5648,7 +5850,21 @@ This operation uses common request headers. No special request headers are requi
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| SourceIp | String | Query | No | 219.133.XX.XX | The source IP address of the request. |
+| CheckWarni ngStatus | Integer | Query | No | 1 | The status of the threat. If you do not specify this parameter, threats in all statuses are queried. Valid values: * 1: Failed * 3: Passed * 6: Whitelisted |
+| CheckLevel | String | Query | No | high | The severity level of the threat. If you do not specify this parameter, threats of all severity levels are queried. Valid values: * high * medium * low |
+| ContainerFie ldName | String | Query | No | clusterId | The name of the query parameter for container security. |
+| ContainerFie ldValue | String | Query | No | c471f0f61b9c04f8380556e9 22cf1**** | The value of the query parameter for container security. |
+| TargetType | String | Query | No | 1 | This parameter is deprecated. |
+| ClusterId | String | Query | No | c690a0789419f4284a4e0a29 e12fe**** | The ID of the cluster. |
+| CurrentPage | Integer | Query | No | 1 | The number of the page to return. Default value: 1. |
+| PageSize | Integer | Query | No | 20 | The number of entries to return on each page. Default value: 20. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | CheckItemF uzzy | String | Query | No | password | The name of the check item to query. Fuzzy match is supported. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5660,11 +5876,7 @@ This operation uses common request headers. No special request headers are requi
 | -Alias | String | week pa**** _ | The name of the baseline classification. |
 | -CheckId | Long | 696 | The ID of the check item. |
 
-Container Security Service Devel
-
-**Response data**
-
-| Container Security oper Guide·API ref | Service Devel erence |  |  |
+| Container Security oper Guide·API ref | Service Devel erence |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5683,12 +5895,14 @@ Container Security Service Devel
 | -PageSize | Integer | 20 | The number of entries returned per page. |
 | -TotalCount | Integer | 105 | The total number of check items found. |
 
-|  |  |  | Container Security Service Deve |
+|   |   |   | Container Security Service Deve |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -Count | Integer | 3 | The number of check items returned on the current page. |
+
+**Examples**
 
 Sample request
 
@@ -5698,11 +5912,20 @@ https://[Endpoint]/?Action=ListCheckItemWarningSummary&RegionId=cnhangzhou&Sourc
 
 Sample responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "List":[
-        {
+```
+
+`{`
+
+```json
             "Status":1,
             "EnableRisks":[
                 "CIS Ubuntu Linux 14 LTS Benchmark"
@@ -5736,10 +5959,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "Advice":"In the Administrative Tools window, double-click Local Security Policy. In the L
 ocal Security Policy window, go to Security Settings\\\\Local Policies\\\\Audit Policy and set all au dit policies to `Success, Failure`.",
             "RiskType":"weak_password"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "PageInfo":{
@@ -5748,24 +5970,12 @@ ocal Security Policy window, go to Security Settings\\\\Local Policies\\\\Audit 
         "CurrentPage":1,
         "Count":3,
         "LastRowKey":"null"
-    }
-}
 ```
 
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | -101 | -101 | %s %s |
-
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun-css:ModifyOperateVul | Write | acs:yundun-css:*:{#accountId}:* |
-
-Container Security Service Devel
+`}` `}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListCheckItemWarningSummaryResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <List>
         <RiskType>weak_password</RiskType>
@@ -5797,23 +6007,26 @@ ecurity Policy window, go to Security Settings\\Local Policies\\Audit Policy and
         <TotalCount>105</TotalCount>
         <Count>3</Count>
     </PageInfo>
+</ListCheckItemWarningSummaryResponse>
 ```
 
-### ModifyOperateVul
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | -101 | -101 | %s %s |
+
+### 5.46 ModifyOperateVul
 
 Call the ModifyOperateVul operation to manage detected vulnerabilities.
 
 **Authorization information**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun-css:ModifyOperateVul | Write | acs:yundun-css:*:{#accountId}:* |
+
 **Traffic shaping**
 
 Throttling limit for a single user: 10 queries per second (QPS). Throttling limit for this operation: 100 QPS.
-
-| Paramete r | Type | Locatio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Info | String | Query | Yes | [{"name":"alilinux2:2.1903:A LINUX2-SA- 2022:0007","uuid":"a3bb82a 8-a3bd-4546-acce- 45ac34af****","tag":"oval","i sFront":0}, {"name":"alilinux2:2.1903:AL INUX2-SA- 2022:0007","uuid":"98a6fecc -88cd-46f2-8e35- f808a388****","tag":"oval","i sFront":0}] | The information about the vulnerabilities to manage. This parameter is a JSON string and contains the following fields: name: The name of the vulnerability. uuid: The universally unique identifier (UUID) of the server where the vulnerability exists. tag: The tag of the vulnerability. Valid values: oval : Linux software vulnerability system : Windows system vulnerability cms : Web-CMS vulnerability Note To obtain the tag values for other vulnerability types, call the DescribeVulList operation. isFront: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when you manage Windows system vulnerabilities. It can be ignored for other vulnerability types. Valid values: 0 : No 1 : Yes Note You can manage multiple vulnerabilities at a time. Separate the information for each vulnerability with a comma (,). To obtain vulnerability information, call the DescribeVulList operation. |
-
-Container Security Service Devel
 
 **Request headers**
 
@@ -5823,20 +6036,24 @@ This operation uses only common request headers. For more information, see Commo
 
 | Paramete r | Type | Locatio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Info | String | Query | Yes | [{"name":"alilinux2:2.1903:A LINUX2-SA- 2022:0007","uuid":"a3bb82a 8-a3bd-4546-acce- 45ac34af****","tag":"oval","i sFront":0}, {"name":"alilinux2:2.1903:AL INUX2-SA- 2022:0007","uuid":"98a6fecc -88cd-46f2-8e35- f808a388****","tag":"oval","i sFront":0}] | The information about the vulnerabilities to manage. This parameter is a JSON string and contains the following fields: name: The name of the vulnerability. uuid: The universally unique identifier (UUID) of the server where the vulnerability exists. tag: The tag of the vulnerability. Valid values: oval : Linux software vulnerability system : Windows system vulnerability cms : Web-CMS vulnerability Note To obtain the tag values for other vulnerability types, call the DescribeVulList operation. isFront: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when you manage Windows system vulnerabilities. It can be ignored for other vulnerability types. Valid values: 0 : No 1 : Yes Note You can manage multiple vulnerabilities at a time. Separate the information for each vulnerability with a comma (,). To obtain vulnerability information, call the DescribeVulList operation. |
+
+| Paramete r | Type | Locatio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | OperateType | String | Query | Yes | vul fix _ | The management operation for the vulnerability. Valid values: vul fix: Fix the _ vulnerability. vul verify: Verify the _ vulnerability. vul ignore: Ignore the _ vulnerability. vul undo ignore: Cancel _ _ ignoring the vulnerability. vul delete: Delete the _ vulnerability. |
 | Type | String | Query | Yes | cve | The type of the vulnerability to manage. Valid values: cve: Linux software vulnerability sys: Windows system vulnerability cms: Web-CMS vulnerability emg: Emergency vulnerability app: Application vulnerability sca: Software constituency parsing vulnerability Note The fix operation is not supported for emergency vulnerabilities (emg), application vulnerabilities (app), and software constituency parsing vulnerabilities (sca). |
 | Reason | String | Query | No | not operate | The reason for managing the vulnerability. Note This parameter is required only when you set OperateType to vulignore. _ |
 | From | String | Query | No | css | The source of the request. The value is fixed to css. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D-5EC1- 97C8-************ | The request ID is generated by Alibaba Cloud. You can use this ID to troubleshoot issues. |
 
-Container Security Service Devel
+**Examples**
 
-**Response parameters**
-
-Container Security Service Devel Sample request
+Sample request
 
 ```
 https://[Endpoint]/?Action=ModifyOperateVul&RegionId=cn-hangzhou&Info= [{"name":"alilinux2:2.1903:ALINUX2-SA-2022:0007","uuid":"a3bb82a8-a3bd-4546-acce- 45ac34af****","tag":"oval","isFront":0},{"name":"alilinux2:2.1903:ALINUX2-SA- 2022:0007","uuid":"98a6fecc-88cd-46f2-8e35f808a388****","tag":"oval","isFront":0}]&OperateType=vul_fix&Type=cve&Reason=not operate&From=css
@@ -5844,18 +6061,27 @@ https://[Endpoint]/?Action=ModifyOperateVul&RegionId=cn-hangzhou&Info= [{"name":
 
 Sample responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
-    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+    "RequestId":"F0A8A039-930D-5EC1-97C8-************"
+```
+
+`}` `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyOperateVulResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</ModifyOperateVulResponse>
 ```
+
+## 6 Error codes
+
+This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -5874,13 +6100,7 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | yd.error.all.ConsoleSystemError 1014 _ | The format of the specified parameter is invalid. | The error message returned because the format of the specified parameter is invalid. Check the parameter and try again. |
 | yd.error.all.ConsoleNeedLogin | You are not logged on. | The error message returned because you are not authorized to perform the operation. Check the account permissions. |
 
-Container Security Service Devel
-
-## Error codes
-
-This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
-
-|  |  | Container Security Service Deve oper Guide·Error code |
+|   |   | Container Security Service Deve oper Guide·Error code |
 |---|---|---|
 
 | yd.error.all.InvalidApi | An operation exception occurred. | The error message returned because an operation exception occurred. Try again later. |
@@ -5892,6 +6112,8 @@ This topic describes the error codes returned for operations in Apsara Stack Sec
 | yd.error.all.ServerError | A server error occurred. | The error message returned because a server error occurred. Try again later or contact Alibaba Cloud technical support. |
 | yd.error.all.UnkownError | An unknown error occurred. | The error message returned because an unknown error occurred. Try again later or contact Alibaba Cloud technical support. |
 
+Table 2. Error codes specific to Threat Detection Service
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.sas.1 | The specified field does not exist in the metadata. | The error message returned because the field you queried does not exist in the metadata. Check the request and try again. |
@@ -5901,8 +6123,6 @@ This topic describes the error codes returned for operations in Apsara Stack Sec
 | yd.error.sas.5 | An error occurred while restarting the task. Try again. | The error message returned because the system failed to restart the task. Try again later. |
 | yd.error.sas.6 | An error occurred while obtaining the task status. Try again. | The error message returned because the system failed to obtain the task status. Try again later. |
 | yd.error.sas.7 | An error occurred while deleting the task. Try again. | The error message returned because the system failed to delete the task. Try again later. |
-
-Table 2. Error codes specific to Threat Detection Service
 
 | yd.error.sas.8 | The specified table does not contain metadata. | The error message returned because the table you queried does not contain metadata. Check the request and try again. |
 |---|---|---|
@@ -5914,6 +6134,8 @@ Table 2. Error codes specific to Threat Detection Service
 | yd.error.sas.501 | The feature is not available in the current version. | The error message returned because the version you used does not support this feature. |
 | yd.error.sas.502 | You are not authorized to access the server. | The error message returned because you are not authorized to manage the server. |
 
+Table 3. Error codes specific to Anti-DDoS Service
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.ddos.400 | An error occurred while accessing the server. Try again. | The error message returned because the system failed to access the server. Try again later. |
@@ -5923,8 +6145,6 @@ Table 2. Error codes specific to Threat Detection Service
 | yd.error.ddos.SERVER FAILED _ | The operation failed. | The error message returned because the operation failed. Contact Alibaba Cloud technical support. |
 | yd.error.ddos.NOT AUTHORIZED _ | Authorization required. | The error message returned because you are not authorized to perform the operation. Check the account permissions. |
 | yd.error.ddos.PARAMETER INVALID _ | The parameter is invalid or is not specified. | The error message returned because the specified request parameter is invalid. Check the parameter and try again. |
-
-Container Security Service Devel Table 3. Error codes specific to Anti-DDoS Service
 
 | yd.error.ddos.IP SEGMENT INVALID _ _ | The specified CIDR block is invalid. Check the parameter and enter another value. | The error message returned because the specified CIDR block is invalid. Check the CIDR block specified in the request parameter. |
 |---|---|---|
@@ -5942,8 +6162,6 @@ Container Security Service Devel Table 3. Error codes specific to Anti-DDoS Serv
 | yd.error.ddos.SET VALVE INVALID _ _ | The threshold validation failed. Check the thresholds and enter correct values. | The error message returned because the threshold verification failed. Check the thresholds and try again. |
 | yd.error.ddos.VALVE DEFAULT ALRE _ _ ADY | The specified request is invalid. You cannot add the default threshold. | The error message returned because the system failed to add the default threshold. The default threshold can only be modified. |
 
-Container Security Service Devel
-
 | yd.error.ddos.NOT BELONG BEAVER _ _ _ IP SEGMENT _ | Check whether the specified CIDR block belongs to the internal network of Network Detection and Response. | The error message returned because the CIDR block you entered does not belong to the internal network of Network Detection and Response. Check the CIDR block. |
 |---|---|---|
 | yd.error.ddos.VALVE DELETE ERR _ _ | The default threshold or the threshold configured for 128.0.XX.XX/XX cannot be deleted. | The error message returned because the system failed to delete the default threshold or the threshold configured for 128.0.XX.XX/XX. |
@@ -5951,9 +6169,13 @@ Container Security Service Devel
 | yd.error.ddos.IS OPENED _ | Enabled. | The error message returned because the specified switch has been turned on. |
 | yd.error.ddos.IS CLOSED _ | Disabled. | The error message returned because the specified switch has been turned off. |
 
+Table 4. Error codes specific to Server Guard
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.aqs.REQUEST FAILED _ | Request failed. Try again later. | The error message returned because the request failed. Try again later. |
+
+Table 7. Error codes specific to Cloud Firewall
 
 | Error code | Error message |
 |---|---|
@@ -5973,8 +6195,6 @@ Container Security Service Devel
 | yd.error.code.-360112 | A parsing error occurred. |
 | yd.error.code.-360113 | The name of the firewall is invalid. Enter another value. |
 | yd.error.code.-360114 | The specified network instance is invalid. Enter another value. |
-
-Container Security Service Devel
 
 | yd.error.code.-360115 | The specified VPC is invalid. Enter another value. |
 |---|---|
@@ -6007,8 +6227,6 @@ Container Security Service Devel
 | yd.error.code.-360142 | The firewall is enabled. |
 | yd.error.code.-360143 | The firewall is disabled. |
 | yd.error.code.-360144 | The firewall cannot be enabled because the status of the firewall is invalid. Try again later. |
-
-Container Security Service Devel
 
 | yd.error.code.-360145 | The firewall cannot be disabled because the status of the firewall is invalid. Try again later. |
 |---|---|
@@ -6044,8 +6262,6 @@ Container Security Service Devel
 | yd.error.code.-360175 | The parameter is invalid. Try again. |
 | yd.error.code.-360176 | The parameter is invalid. Try again. |
 
-Container Security Service Devel
-
 | yd.error.code.-360177 | The parameter is invalid. Try again. |
 |---|---|
 | yd.error.code.-360178 | An unknown error occurred. |
@@ -6076,8 +6292,6 @@ Container Security Service Devel
 | yd.error.code.-360203 | The specified VPC does not exist. |
 | yd.error.code.-360204 | A timeout error occurred while creating a VPC. |
 | yd.error.code.-360205 | A timeout error occurred while creating a VPC. |
-
-Container Security Service Devel
 
 | yd.error.code.-360206 | The specified ECS instance does not exist. |
 |---|---|
@@ -6112,8 +6326,6 @@ Container Security Service Devel
 | yd.error.code.-360316 | An error occurred while inserting the firewall ns. |
 | yd.error.code.-360317 | An error occurred while updating the VLAN. |
 
-Container Security Service Devel
-
 | yd.error.code.-360318 | An error occurred while updating the endpoint information about the firewall. |
 |---|---|
 | yd.error.code.-360319 | An error occurred while updating the network information about the firewall. |
@@ -6142,8 +6354,6 @@ Container Security Service Devel
 | yd.error.code.-360418 | The status of the instance is invalid. |
 | yd.error.code.-193000 | An unknown error occurred. |
 | yd.error.code.-193001 | The specified HTTP request method is invalid. |
-
-Container Security Service Devel
 
 | yd.error.code.-193002 | An error occurred while calling the operation by using HTTP. |
 |---|---|
@@ -6179,8 +6389,6 @@ Container Security Service Devel
 | yd.error.code.-193315 | An error occurred while creating the route. |
 | yd.error.code.-193316 | The ID of the Cloud Firewall instance is invalid. |
 
-Container Security Service Devel
-
 | yd.error.code.-193317 | The Cloud Firewall instance must be specified. |
 |---|---|
 | yd.error.code.-200100 | The request method is invalid. |
@@ -6212,8 +6420,6 @@ Container Security Service Devel
 | yd.error.code.-200126 | The specified parameter is invalid. |
 | yd.error.code.-200127 | The number of ports in the address book exceeds the upper limit. |
 | yd.error.code.-200128 | The port in the address book is invalid. Check the parameter and enter another value. |
-
-Container Security Service Devel
 
 | yd.error.code.-200129 | The number of address books exceeds the upper limit. |
 |---|---|
@@ -6251,8 +6457,6 @@ Container Security Service Devel
 | yd.error.code.200 | Success |
 | yd.error.code.-230100 | The request method is invalid. |
 
-Container Security Service Devel
-
 | yd.error.code.-230101 | Authentication failed. |
 |---|---|
 | yd.error.code.-230102 | An error occurred while sending the request to the local server. |
@@ -6287,8 +6491,6 @@ Container Security Service Devel
 | yd.error.code.-230131 | The policy cannot be submitted. |
 | yd.error.code.-230150 | The policy group does not exist. Specify another value. |
 
-Container Security Service Devel
-
 | yd.error.code.-230151 | The number of policy groups exceeds the limit. |
 |---|---|
 | yd.error.code.-230152 | The policy group cannot be modified. |
@@ -6299,6 +6501,8 @@ Container Security Service Devel
 | yd.error.code.-230301 | A backend error occurred. |
 | yd.error.code.-230302 | A backend error occurred. |
 | yd.error.code.-230400 | An unknown error occurred. |
+
+**Error codes specific to Network Detection and Response**
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -6315,10 +6519,6 @@ Container Security Service Devel
 | ErrorDBSelect.-210124 | internal error: sql select (An internal error occurred while executing the SELECT statement.) | The error message returned because an internal error occurred while executing the SELECT statement. |
 | ErrorParasAddressCidrFeild.-210915 | paras addressCidrList filed (Failed to reset the addressCidrList rule.) | The error message returned because the system failed to reset the addressCidrList rule. |
 
-Container Security Service Devel
-
-**Error codes specific to Network Detection and Response**
-
 | ErrorPortAddressGroup.-210303 | get port in address group failed (Failed to obtain port information from the address group.) | The error message returned because the system failed to obtain port information from the address group. |
 |---|---|---|
 | ErrorPortAddressGroup.-210303 | get port in address group failed (Failed to obtain port information from the address group.) | The error message returned because the system failed to obtain port information from the address group. |
@@ -6329,5 +6529,3 @@ Container Security Service Devel
 | ErrorDBUpdate.-210121 | internal error: sql update (An internal error occurred while executing the UPDATE statement.) | The error message returned because an internal error occurred while executing the UPDATE statement. |
 | ErrorDBDelete.-210123 | internal error: sql delete (An internal error occurred while executing the DELETE statement.) | The error message returned because an internal error occurred while executing the DELETE statement. |
 | ErrorMarshalJSON.-210125 | internal error: marshal json (An internal error occurred while marshaling JSON data.) | The error message returned because an internal error occurred while marshaling JSON data. |
-
-Container Security Service Devel

@@ -3,14 +3,126 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic Fi
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 164
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Developer Guide 20260831.pdf"
+source_pdf: "df220f98ed146bfe_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Developer Guid"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Developer Guide 20260831
 
-## Release notes
+## Table of Contents
+
+- 1 Release notes
+- 2 Preparations
+  - 2.1 Get the file storage Endpoint
+  - 2.2 Obtain AccessKey credentials
+  - 2.3 Obtain the values of common request headers
+- 3 Java SDK call examples
+  - 3.1 Getting started
+  - 3.2 User guide
+    - 3.2.1 Install the Java SDK
+    - 3.2.2 Set identity verification credentials
+    - 3.2.3 Request connection configuration
+    - 3.2.4 Make a call
+    - 3.2.5 Error handling
+- 4 Python SDK call examples
+  - 4.1 Getting started
+  - 4.2 User guide
+    - 4.2.1 Install the Python SDK
+    - 4.2.2 Set identity verification credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Make a call
+    - 4.2.5 Error handling
+- 5 Go SDK call examples
+  - 5.1 Getting started
+  - 5.2 User guide
+    - 5.2.1 Install the Go SDK
+    - 5.2.2 Set identity verification credentials
+    - 5.2.3 Request connection configuration
+    - 5.2.4 Make a call
+    - 5.2.5 Error handling
+- 6 API reference
+  - 6.1 Call APIs
+    - 6.1.1 Overview
+    - 6.1.2 Request structure
+    - 6.1.3 Return results
+  - 6.2 RAM authentication
+  - 6.3 Common parameters
+  - 6.4 Cluster
+    - 6.4.1 DescribeClusters
+  - 6.5 Region
+    - 6.5.1 DescribeZones
+  - 6.6 File system
+    - 6.6.1 CreateFileSystem
+    - 6.6.2 DescribeFileSystems
+    - 6.6.3 ModifyFileSystem
+    - 6.6.4 DeleteFileSystem
+    - 6.6.5 BatchModifyFileSystem
+  - 6.7 Quota
+    - 6.7.1 CreateDfsQuota
+    - 6.7.2 DescribeDfsQuotas
+    - 6.7.3 DeleteDfsQuota
+    - 6.7.4 ModifyDfsQuota
+  - 6.8 User
+    - 6.8.1 CreateFsUser
+    - 6.8.2 DescribeFsUsers
+    - 6.8.3 ModifyFsUser
+    - 6.8.4 DeleteFsUser
+  - 6.9 User group
+    - 6.9.1 CreateFsUserGroup
+    - 6.9.2 AddFsUsersToGroup
+    - 6.9.3 RemoveFsUsersFromGroup
+    - 6.9.4 DescribeFsUserGroups
+    - 6.9.5 DeleteFsUserGroup
+  - 6.10 SMB share
+    - 6.10.1 CreateSmbShare
+    - 6.10.2 DescribeSmbConnections
+    - 6.10.3 DescribeSmbShares
+    - 6.10.4 ModifySmbShare
+    - 6.10.5 DeleteSmbShare
+  - 6.11 SMB ACL
+    - 6.11.1 BatchCreateSmbAcl
+    - 6.11.2 DescribeSmbAcls
+    - 6.11.3 BatchUpdateSmbAcl
+    - 6.11.4 BatchDeleteSmbAcl
+  - 6.12 NFS share
+    - 6.12.1 CreateNfsShare
+    - 6.12.2 DescribeNfsConnections
+    - 6.12.3 DescribeNfsShares
+    - 6.12.4 ModifyNfsShare
+    - 6.12.5 DeleteNfsShare
+  - 6.13 NFS ACL
+    - 6.13.1 BatchCreateNfsAcl
+    - 6.13.2 DescribeNfsAcls
+    - 6.13.3 BatchUpdateNfsAcl
+    - 6.13.4 BatchDeleteNfsAcl
+  - 6.14 Snapshot
+    - 6.14.1 CreateSnapshot
+    - 6.14.2 ModifySnapshot
+    - 6.14.3 DescribeSnapshots
+    - 6.14.4 DeleteSnapshot
+    - 6.14.5 CreateScheduledSnapshot
+    - 6.14.6 DescribeSnapshotPolicyBindings
+    - 6.14.7 DeleteScheduledSnapshot
+  - 6.15 Snapshot policy
+    - 6.15.1 CreateSnapshotPolicy
+    - 6.15.2 ModifySnapshotPolicy
+    - 6.15.3 DescribeSnapshotPolicies
+    - 6.15.4 DeleteSnapshotPolicy
+  - 6.16 WORM
+    - 6.16.1 CreateWorm
+    - 6.16.2 UpdateWorm
+    - 6.16.3 DescribeWorms
+  - 6.17 Recycle bin
+    - 6.17.1 EnableTrash
+    - 6.17.2 UpdateTrash
+    - 6.17.3 ListTrashFiles
+    - 6.17.4 RestoreTrashFile
+    - 6.17.5 RemoveTrashFile
+    - 6.17.6 DisableAndCleanTrash
+    - 6.17.7 EmptyTrash
+
+## 1 Release notes
 
 This topic describes the feature release notes for each version of the EFS-NAS service, covering only changes to APIs and call examples.
 
@@ -56,9 +168,9 @@ This is the initial release. The following table describes the features of this 
 | NFS share and ACL | Adds operations related to NFS share and NFS ACL, such as creating a Network File System (NFS) share, querying NFS share connections, creating NFS ACLs in batches, and querying NFS ACL information. |
 | Region | Adds Region operations to query information about available zones that support specified file system types in a region. |
 
-## Preparations
+## 2 Preparations
 
-### Get the file storage Endpoint
+### 2.1 Get the file storage Endpoint
 
 When calling Apsara Stack APIs through the POP gateway, you must specify the service endpoint for the target cloud product.For EFS-NAS, you can construct the endpoint using the predefined format and variable values provided by the Apsara Infrastructure Management Platform. Alternatively, you can directly search for the endpoint in the platform's console.
 
@@ -103,7 +215,7 @@ information section, select the **Resources** tab.
 4. Search for the resource named `EFS-NAS` . Click the information in the **Resource Request**
 **Parameters** column. The value of the **domain** parameter is the Endpoint for EFS-NAS.
 
-### Obtain AccessKey credentials
+### 2.2 Obtain AccessKey credentials
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one of the preceding types of AccessKey credentials for authentication when you call API operations.
 
@@ -284,7 +396,7 @@ esource belongs.
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain the values of common
+### 2.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -373,9 +485,9 @@ The following table describes the common response parameters that are returned b
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-## Java SDK call examples
+## 3 Java SDK call examples
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain the EFS-NAS Java SDK and use it to make API calls.
 
@@ -473,9 +585,9 @@ eprintStackTrace();
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-### User guide
+### 3.2 User guide
 
-#### Install the Java SDK
+#### 3.2.1 Install the Java SDK
 
 This topic describes how to install the Java SDK. The Apsara Stack Java SDK supports JDK 1.8 and later. You can install the Apsara Stack Java SDK by adding a Maven dependency or by downloading the Alibaba Cloud Developer Toolkit (SDK). To use the file storage feature, install version 4.5.17 or later of the Alibaba Cloud Java SDK core library.
 
@@ -487,7 +599,7 @@ This topic describes how to install the Java SDK. The Apsara Stack Java SDK supp
 </dependency>
 ```
 
-#### Set identity verification credentials
+#### 3.2.2 Set identity verification credentials
 
 Before using the Apsara Stack SDK to call services, you must configure authentication credentials. This topic describes the supported methods.
 
@@ -612,7 +724,7 @@ ALIBABA_CLOUD_STS_SECURITY_TOKEN environment variable.
 
 );
 
-#### Request connection configuration
+#### 3.2.3 Request connection configuration
 
 This topic describes how to configure request connections using HttpClientConfig. Use the following code to configure HttpClientConfig. You can select and set the configuration items as needed.
 
@@ -636,7 +748,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace with your ac
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Make a call
+#### 3.2.4 Make a call
 
 You can use the generic CommonRequest method to call an API operation if an SDK is not available or if the provided SDK does not meet your needs. The CommonRequest method lets you call any OpenAPI operation.
 
@@ -782,7 +894,7 @@ ultiple common header parameters, including x-acs-regionid, x-acs-organizationid
 
 REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent the region ID, the AccessKey ID, and the AccessKey secret of your account. Set them as environment variables. In the code sample, replace all variables with your actual information. Do not include the angle brackets (<>) in your final code. The variables that need to be replaced are as follows: <efs-nas.aliyuns.com>: Replace with the actual endpoint of the product. <readTimeout>: Set the read timeout in milliseconds as needed. <connectionTimeout>: Set the connection timeout in milliseconds as needed. <http://192.168.XX:33XX>: Replace with the actual proxy IP address and port.
 
-#### Error handling
+#### 3.2.5 Error handling
 
 The Java SDK throws an exception when an error occurs. This error can be a server-side error or an SDK-side error. The exception contains an error code and an error message. In most cases, you only need to handle server-side errors based on the returned error messages. You do not need to handle errors that originate from the Java SDK. `ServerException` represents server-side errors. `ClientException` represents SDK-side errors. For example, if the following error occurs, modify the AccessKey ID based on the error message.
 
@@ -814,9 +926,9 @@ provide the RequestID.
 
 s
 
-## Python SDK call examples
+## 4 Python SDK call examples
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain the software development kit (SDK) and make calls.
 
@@ -879,9 +991,9 @@ if __name__ == '__main__':
     main()
 ```
 
-### User guide
+### 4.2 User guide
 
-#### Install the Python SDK
+#### 4.2.1 Install the Python SDK
 
 This topic describes how to install and call the EFS-NAS Python SDK.
 
@@ -903,7 +1015,7 @@ If you use Python 3.x, run the following command to install the Alibaba Cloud SD
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-#### Set identity verification credentials
+#### 4.2.2 Set identity verification credentials
 
 Before using the Apsara Stack SDK to call services, you must configure authentication credentials. This topic describes the supported methods.
 
@@ -1020,7 +1132,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(os.environ['ALIBAB
                    os.environ['REGION_ID'])
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports API requests using the HTTP and HTTPS protocols. The Python SDK lets you specify the HTTP or HTTPS protocol for a single request. You can also set a global default protocol.
 
@@ -1066,7 +1178,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Make a call
+#### 4.2.4 Make a call
 
 If an SDK is not available for an API that you want to call, or if the request parameters and response values in the provided SDK do not meet your requirements, you can use the generic API call method (CommonRequest). The CommonRequest method lets you call any OpenAPI operation.
 
@@ -1148,7 +1260,7 @@ s
 
 REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET represent your region ID, AccessKey ID, and AccessKey secret. You must set them as environment variables. Replace all variables in the code sample with your actual information. Do not include the angle brackets (<>) in the final code. The variables that need to be replaced are as follows: <efs-nas.aliyuns.com>: Replace this with the actual endpoint of your product. <http://192.168.XX:33XX>: Replace this with the actual proxy IP address and port.
 
-#### Error handling
+#### 4.2.5 Error handling
 
 The Python SDK throws an exception when a server or SDK error occurs. This exception contains an error code and an error message. You do not typically need to handle errors from the Python SDK. Instead, you can handle server errors based on the messages that the server returns. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message.
 
@@ -1169,9 +1281,9 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-## Go SDK call examples
+## 5 Go SDK call examples
 
-### Getting started
+### 5.1 Getting started
 
 The Alibaba Cloud Go SDK lets you access cloud products without complex programming. This topic describes how to obtain the Alibaba Cloud EFS-NAS Go SDK and start making calls.
 
@@ -1270,9 +1382,9 @@ to isolate resources by organization.
     fmt.Println(response.GetHttpContentString())
 ```
 
-### User guide
+### 5.2 User guide
 
-#### Install the Go SDK
+#### 5.2.1 Install the Go SDK
 
 This document describes how to install the Go SDK core package. The Alibaba Cloud Go SDK supports Go 1.10.x and later. After running the `go mod init` `<DIRNAME>` command in your project folder to generate a go.mod file, run the following command to install the Go SDK core package.
 
@@ -1297,7 +1409,7 @@ GOPROXY=https://goproxy.cn,direct go get -u github.com/aliyun/alibaba-cloud-sdk-
 go env -W GOPROXY='https://goproxy.cn,direct'
 ```
 
-#### Set identity verification credentials
+#### 5.2.2 Set identity verification credentials
 
 Before using the Apsara Stack SDK to call services, you must configure authentication credentials. This topic describes the supported methods.
 
@@ -1426,7 +1538,7 @@ client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(),
     panic(err)
 ```
 
-#### Request connection configuration
+#### 5.2.3 Request connection configuration
 
 This topic describes how to configure request connection settings (HttpClientConfig). Use the following code to configure HttpClientConfig. Select and set the configuration items based on your requirements.
 
@@ -1446,7 +1558,7 @@ client, err := sdk.NewClientWithOptions(os.Getenv("REGION_ID"), sdk.NewConfig(),
 
 values and remove the angle brackets (<>).
 
-#### Make a call
+#### 5.2.4 Make a call
 
 If an API does not have a software development kit (SDK), or if the request parameters and response values in a provided SDK do not meet your needs, you can use the generic API call method (CommonRequest). The CommonRequest method lets you call any OpenAPI operation.
 
@@ -1549,7 +1661,7 @@ o implement fencing by organization.
 
 Set the REGION_ID, ALIBABA_CLOUD_ACCESS_KEY_ID, and ALIBABA_CLOUD_ACCESS_KEY_SECRET environment variables. These variables represent the region ID, your AccessKey ID, and your AccessKey secret. In the code sample, <efs-nas.aliyuns.com> is a variable. Replace it with the actual endpoint for your product. Do not include the angle brackets (<>) in your final code.
 
-#### Error handling
+#### 5.2.5 Error handling
 
 When an error occurs on the server or in the Alibaba Cloud Go SDK, the SDK returns a `ClientError` or `ServerError` message from the `sdk.errors` package. These errors are based on Go's standard `Error` interface. You can handle errors from the Alibaba Cloud Go SDK in the same way that you handle standard Go errors.
 
@@ -1599,15 +1711,15 @@ response, err := client.ProcessCommonRequest(request) if serverError, ok := err.
     response.GetOriginHttpResponse()
 ```
 
-## API reference
+## 6 API reference
 
-### Call APIs
+### 6.1 Call APIs
 
-#### Overview
+#### 6.1.1 Overview
 
 An API call is an HTTP GET request sent to a product's service endpoint. The request must include the required parameters as specified in the API reference. The service processes the request and returns a response. Both the request and the response are encoded in the UTF-8 character set.
 
-#### Request structure
+#### 6.1.2 Request structure
 
 **Endpoint**
 
@@ -1625,7 +1737,7 @@ You can send requests over HTTP or HTTPS channels. For greater security, use the
 
 Requests and responses are encoded using the UTF-8 character set.
 
-#### Return results
+#### 6.1.3 Return results
 
 API calls return data in a standard format. An HTTP status code in the 2xx range indicates a successful call. A status code in the 4xx or 5xx range indicates a failed call. For successful calls, data is returned in JSON format only.
 
@@ -1651,7 +1763,7 @@ If an API call fails, no result data is returned. You can use the error code ret
     "Message": "The specified OwnerId is not valid."
 ```
 
-### RAM authentication
+### 6.2 RAM authentication
 
 When a Resource Access Management (RAM) user accesses resources of an Alibaba Cloud account using OpenAPI, the system uses RAM to check permissions. This check ensures that the resource owner has granted the caller the required permissions to access the resources.
 
@@ -1663,7 +1775,7 @@ By default, an Alibaba Cloud account or a RAM user can use the EFS-NAS console o
 
 Each EFS-NAS API determines which resource permissions to check based on the resources and API semantics involved.
 
-### Common parameters
+### 6.3 Common parameters
 
 Common parameters include request parameters, header parameters, and response parameters.
 
@@ -1701,9 +1813,9 @@ For more information, see Obtain common header parameters.
 
 API responses use a unified format. The status of a call is indicated by the returned HTTP status code. An HTTP status code in the 2xx range indicates that the call is successful. An HTTP status code in the 4xx or 5xx range indicates that the call failed. If a call is successful, the response is returned in JSON format. A unique RequestId is returned for each API call, regardless of whether the call is successful.
 
-### Cluster
+### 6.4 Cluster
 
-#### DescribeClusters
+#### 6.4.1 DescribeClusters
 
 Query the list of clusters. This API uses common request headers only. For more information, see the documentation on common request parameters.
 
@@ -1755,9 +1867,9 @@ Sample success responses
 
 `]`
 
-### Region
+### 6.5 Region
 
-#### DescribeZones
+#### 6.5.1 DescribeZones
 
 Queries the zones that support a specified file system type in a region.
 
@@ -1796,9 +1908,9 @@ Response example
 
 `]`
 
-### File system
+### 6.6 File system
 
-#### CreateFileSystem
+#### 6.6.1 CreateFileSystem
 
 Creates a file system. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -1835,7 +1947,7 @@ Successful response example
  "FsId":"efs-nas-0*****"
 ```
 
-#### DescribeFileSystems
+#### 6.6.2 DescribeFileSystems
 
 This operation queries a list of file systems and supports paged queries.
 
@@ -1922,7 +2034,7 @@ Successful response example
  "PageNum":1
 ```
 
-#### ModifyFileSystem
+#### 6.6.3 ModifyFileSystem
 
 Modifies the properties of a file system, such as its capacity and description. This operation uses common request headers and does not require special request headers. For more information, see the Common request parameters document.
 
@@ -1954,7 +2066,7 @@ Sample response The response is returned in `JSON` format.
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DeleteFileSystem
+#### 6.6.4 DeleteFileSystem
 
 Deletes a file system.
 
@@ -1985,7 +2097,7 @@ Successful response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### BatchModifyFileSystem
+#### 6.6.5 BatchModifyFileSystem
 
 Modify the file system statuses in batches. API description
 
@@ -2023,9 +2135,9 @@ Sample success responses
  "RequestId":""
 ```
 
-### Quota
+### 6.7 Quota
 
-#### CreateDfsQuota
+#### 6.7.1 CreateDfsQuota
 
 Create a Distributed File System (DFS) quota to limit the storage capacity or the number of files in a specified path. This API requires signature authentication by using an AccessKey (authType=AK). Request method: POST You must specify the file system ID (FileSystemId) and the quota path (Path). You can optionally configure quota parameters (such as SizeHardQuota and FileSoftQuota) based on your business requirements, and the server validates the enforcement logic. The path (Path) must be a valid directory path in the file system. This operation uses common request headers only. For more information, see the documentation on common request parameters.
 
@@ -2077,7 +2189,7 @@ Sample success responses
  "Success":true
 ```
 
-#### DescribeDfsQuotas
+#### 6.7.2 DescribeDfsQuotas
 
 Query the list of quotas for a Distributed File System (DFS), supporting filtering by path, keyword, and other conditions, as well as pagination.
 **Authentication method**: You must use an AccessKey (AK) for signature authentication.
@@ -2236,7 +2348,7 @@ Sample success responses
 
 The system sorts quota query results in descending order of creation time. To monitor quota usage in real time, analyze historical trends by using the `Samples` field. For quota management operations such as creation and modification, refer to the DFS quota management APIs.
 
-#### DeleteDfsQuota
+#### 6.7.3 DeleteDfsQuota
 
 Delete the quota configuration of a Distributed File System (DFS).
 **Authorization method**: Requires an AccessKey (AK) for signature authentication.
@@ -2273,7 +2385,7 @@ Sample success responses
  "Success":true
 ```
 
-#### ModifyDfsQuota
+#### 6.7.4 ModifyDfsQuota
 
 Modify the quota configuration parameters of a Distributed File System (DFS).
 **Authentication method**: You must use an AccessKey (AK) for signature authentication.
@@ -2343,9 +2455,9 @@ quota. The server performs parameter validation.
 4. You must explicitly specify the cluster ID (ClusterId) in multi-cluster deployment scenarios.
 It is optional in single-cluster environments.
 
-### User
+### 6.8 User
 
-#### CreateFsUser
+#### 6.8.1 CreateFsUser
 
 Creates a file system user. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2377,7 +2489,7 @@ Sample response The response is in `JSON` format.
  "FsUserId":100000
 ```
 
-#### DescribeFsUsers
+#### 6.8.2 DescribeFsUsers
 
 Queries the users of a file system. This operation supports paged queries and queries by file system user ID. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2431,7 +2543,7 @@ Response example
 
 `]`
 
-#### ModifyFsUser
+#### 6.8.3 ModifyFsUser
 
 Modifies a file system user. This operation uses only common request headers. For more information, see Common parameters.
 
@@ -2469,7 +2581,7 @@ Sample response
  "Name":"myuser"
 ```
 
-#### DeleteFsUser
+#### 6.8.4 DeleteFsUser
 
 Deletes a file system user.
 
@@ -2501,9 +2613,9 @@ Successful response example
  "Success":true
 ```
 
-### User group
+### 6.9 User group
 
-#### CreateFsUserGroup
+#### 6.9.1 CreateFsUserGroup
 
 Creates a file system user group. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2533,7 +2645,7 @@ Sample success response
  "FsUserGroupId":10000
 ```
 
-#### AddFsUsersToGroup
+#### 6.9.2 AddFsUsersToGroup
 
 Adds file system users to a specified user group. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2562,7 +2674,7 @@ Sample successful response
  "Success":true
 ```
 
-#### RemoveFsUsersFromGroup
+#### 6.9.3 RemoveFsUsersFromGroup
 
 Removes file system users from a specified user group. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2591,7 +2703,7 @@ Response example
  "Success":true
 ```
 
-#### DescribeFsUserGroups
+#### 6.9.4 DescribeFsUserGroups
 
 Queries a list of file system user groups. This operation supports paged queries and lets you query by file system user group ID. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2648,7 +2760,7 @@ Sample response
  "PageSize":10
 ```
 
-#### DeleteFsUserGroup
+#### 6.9.5 DeleteFsUserGroup
 
 Deletes a file system user group. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2676,9 +2788,9 @@ Sample success response
  "Success":true
 ```
 
-### SMB share
+### 6.10 SMB share
 
-#### CreateSmbShare
+#### 6.10.1 CreateSmbShare
 
 Creates an SMB share. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2728,7 +2840,7 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DescribeSmbConnections
+#### 6.10.2 DescribeSmbConnections
 
 Retrieves the details and total number of connections for a Server Message Block (SMB) share. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2782,7 +2894,7 @@ Sample response
 
 `]`
 
-#### DescribeSmbShares
+#### 6.10.3 DescribeSmbShares
 
 Queries a list of Server Message Block (SMB) shares. This operation supports paged queries. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2856,7 +2968,7 @@ Sample response
  "PageSize":10
 ```
 
-#### ModifySmbShare
+#### 6.10.4 ModifySmbShare
 
 Modifies the configuration of a Server Message Block (SMB) share. This operation has no special request headers. For more information about common request headers, see Common parameters.
 
@@ -2890,7 +3002,7 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DeleteSmbShare
+#### 6.10.5 DeleteSmbShare
 
 Deletes an SMB share.
 
@@ -2921,9 +3033,9 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-### SMB ACL
+### 6.11 SMB ACL
 
-#### BatchCreateSmbAcl
+#### 6.11.1 BatchCreateSmbAcl
 
 Creates multiple Server Message Block (SMB) access control lists. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2954,7 +3066,7 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DescribeSmbAcls
+#### 6.11.2 DescribeSmbAcls
 
 Queries the Server Message Block (SMB) access control lists (ACLs). This operation supports paginated queries. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -3022,7 +3134,7 @@ Response example
  "PageSize":10
 ```
 
-#### BatchUpdateSmbAcl
+#### 6.11.3 BatchUpdateSmbAcl
 
 Updates multiple SMB access control lists at a time. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3053,7 +3165,7 @@ Sample success response
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### BatchDeleteSmbAcl
+#### 6.11.4 BatchDeleteSmbAcl
 
 Deletes one or more Server Message Block (SMB) access control lists (ACLs).
 
@@ -3081,9 +3193,9 @@ http(s)://[Endpoint]/?Action=BatchDeleteSmbAcl &ShareId=3e47****** &AclIds=[1000
 
 Response example
 
-### NFS share
+### 6.12 NFS share
 
-#### CreateNfsShare
+#### 6.12.1 CreateNfsShare
 
 Creates a Network File System (NFS) share. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3123,7 +3235,7 @@ Sample success response
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DescribeNfsConnections
+#### 6.12.2 DescribeNfsConnections
 
 Queries the details and the number of connections for a Network File System (NFS) share. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3171,7 +3283,7 @@ Sample response
  "PageSize":10
 ```
 
-#### DescribeNfsShares
+#### 6.12.3 DescribeNfsShares
 
 Queries a paginated list of Network File System (NFS) shares. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3231,7 +3343,7 @@ Sample response
 
 `]`
 
-#### ModifyNfsShare
+#### 6.12.4 ModifyNfsShare
 
 Modifies the configuration of an NFS share.
 
@@ -3266,7 +3378,7 @@ Sample success response
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DeleteNfsShare
+#### 6.12.5 DeleteNfsShare
 
 Deletes an NFS share.
 
@@ -3297,9 +3409,9 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-### NFS ACL
+### 6.13 NFS ACL
 
-#### BatchCreateNfsAcl
+#### 6.13.1 BatchCreateNfsAcl
 
 Creates multiple Network File System (NFS) access control lists (ACLs) in a batch operation. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3333,7 +3445,7 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### DescribeNfsAcls
+#### 6.13.2 DescribeNfsAcls
 
 Queries the access control lists (ACLs) of a Network File System (NFS). This operation supports paged queries. This operation uses only common request headers. For more information, see the Common request parameters document.
 
@@ -3397,7 +3509,7 @@ Sample response
  "PageSize":10
 ```
 
-#### BatchUpdateNfsAcl
+#### 6.13.3 BatchUpdateNfsAcl
 
 Updates multiple Network File System (NFS) access control lists in a batch. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3426,7 +3538,7 @@ Sample response
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-#### BatchDeleteNfsAcl
+#### 6.13.4 BatchDeleteNfsAcl
 
 Deletes multiple Network File System (NFS) access control lists (ACLs) in a batch operation.
 
@@ -3459,9 +3571,9 @@ Response example
  "RequestId":"F0A8A039-930D-5EC1-97C8-************"
 ```
 
-### Snapshot
+### 6.14 Snapshot
 
-#### CreateSnapshot
+#### 6.14.1 CreateSnapshot
 
 Create a snapshot.
 
@@ -3501,7 +3613,7 @@ Sample response
     "Success":true
 ```
 
-#### ModifySnapshot
+#### 6.14.2 ModifySnapshot
 
 Modify the properties of a specified snapshot, such as its name, description, and retention period. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3537,7 +3649,7 @@ Sample response
     "Success":true
 ```
 
-#### DescribeSnapshots
+#### 6.14.3 DescribeSnapshots
 
 Query information about one or more snapshots of a specified file system.
 
@@ -3603,7 +3715,7 @@ Sample response
 
 `]`
 
-#### DeleteSnapshot
+#### 6.14.4 DeleteSnapshot
 
 Delete a specified snapshot or cancels an in-progress snapshot creation task.
 
@@ -3637,7 +3749,7 @@ Sample successful response
     "Result":"true"
 ```
 
-#### CreateScheduledSnapshot
+#### 6.14.5 CreateScheduledSnapshot
 
 Creates a scheduled snapshot for a file system. After the policy is created, the system automatically generates snapshots for the file system periodically.
 
@@ -3681,7 +3793,7 @@ Sample success responses
  "Success":true
 ```
 
-#### DescribeSnapshotPolicyBindings
+#### 6.14.6 DescribeSnapshotPolicyBindings
 
 Lists the association relationships between snapshot policies and file systems. You can filter results by policy ID or file system ID, and you can paginate the results. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3728,7 +3840,7 @@ Sample success responses
 
 `]`
 
-#### DeleteScheduledSnapshot
+#### 6.14.7 DeleteScheduledSnapshot
 
 Disassociates a file system from a snapshot policy and stops scheduled snapshots for the file system. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -3767,9 +3879,9 @@ Sample success responses
  "Success":true
 ```
 
-### Snapshot policy
+### 6.15 Snapshot policy
 
-#### CreateSnapshotPolicy
+#### 6.15.1 CreateSnapshotPolicy
 
 Create a snapshot policy to bind to a file system for scheduled snapshots.
 
@@ -3812,7 +3924,7 @@ Sample success responses
  "Success":true
 ```
 
-#### ModifySnapshotPolicy
+#### 6.15.2 ModifySnapshotPolicy
 
 Modifies the configuration of an existing snapshot policy, including the snapshot cycle and deletion upon expiration. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3852,7 +3964,7 @@ Sample success responses
  "Success":true
 ```
 
-#### DescribeSnapshotPolicies
+#### 6.15.3 DescribeSnapshotPolicies
 
 List snapshot policies. You can filter the list by file system or policy ID. Pagination is supported. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -3915,7 +4027,7 @@ Sample success responses
 
 `]`
 
-#### DeleteSnapshotPolicy
+#### 6.15.4 DeleteSnapshotPolicy
 
 Deletes a specified snapshot policy.
 
@@ -3950,9 +4062,9 @@ Sample success responses
  "Success":true
 ```
 
-### WORM
+### 6.16 WORM
 
-#### CreateWorm
+#### 6.16.1 CreateWorm
 
 Enables the Write Once Read Many (WORM) policy for a file system. Once enabled, files automatically or manually enter a protected state upon write completion. During the protection period, you can only read the files, and any modifications or deletions are prohibited.
 
@@ -4002,7 +4114,7 @@ Sample success responses
  "Success":true
 ```
 
-#### UpdateWorm
+#### 6.16.2 UpdateWorm
 
 Modifies the protection period configuration of a Write Once Read Many (WORM) protection policy.
 
@@ -4050,7 +4162,7 @@ Sample success responses
  "Success":true
 ```
 
-#### DescribeWorms
+#### 6.16.3 DescribeWorms
 
 Lists WORM protection policies. You can filter the list by WORM ID or file system ID. Pagination is supported. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -4116,9 +4228,9 @@ Sample success responses
 
 `]`
 
-### Recycle bin
+### 6.17 Recycle bin
 
-#### EnableTrash
+#### 6.17.1 EnableTrash
 
 Enable the recycle bin feature, which moves deleted files to the recycle bin instead of permanently deleting them. This operation requires only common request headers. For more information, see Common request parameters.
 
@@ -4154,7 +4266,7 @@ Successful response example
     "Success":true
 ```
 
-#### UpdateTrash
+#### 6.17.2 UpdateTrash
 
 Update the retention period for data in the recycle bin or the file filtering rules. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -4200,7 +4312,7 @@ Successful response example
     "Success":true
 ```
 
-#### ListTrashFiles
+#### 6.17.3 ListTrashFiles
 
 Query the files or folders in the recycle bin of a file system. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -4253,7 +4365,7 @@ Response example
 
 `]`
 
-#### RestoreTrashFile
+#### 6.17.4 RestoreTrashFile
 
 Recover a file or folder from the recycle bin.
 
@@ -4295,7 +4407,7 @@ Sample successful response
     "Success":true
 ```
 
-#### RemoveTrashFile
+#### 6.17.5 RemoveTrashFile
 
 Permanently delete files or folders from the recycle bin.
 
@@ -4334,7 +4446,7 @@ Sample response
     "Success":true
 ```
 
-#### DisableAndCleanTrash
+#### 6.17.6 DisableAndCleanTrash
 
 Disable the recycle bin feature for a file system and deletes all files in the recycle bin.
 
@@ -4372,7 +4484,7 @@ Response example
     "Success":true
 ```
 
-#### EmptyTrash
+#### 6.17.7 EmptyTrash
 
 Empty the recycle bin of a specified file system.
 

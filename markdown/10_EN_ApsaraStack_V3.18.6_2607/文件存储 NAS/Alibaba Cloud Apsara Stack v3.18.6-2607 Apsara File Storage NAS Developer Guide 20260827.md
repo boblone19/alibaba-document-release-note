@@ -3,16 +3,102 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Develope
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 129
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Developer Guide 20260827.pdf"
+source_pdf: "7c4a3ca49af0e46d_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Developer Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%20NAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20File%20Storage%20NAS%20Developer%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara File Storage NAS Developer Guide 20260827
 
-## Preparations
+## Table of Contents
 
-### Log on to OpenAPI Explorer
+- 1 Preparations
+  - 1.1 Log on to OpenAPI Explorer
+  - 1.2 Obtain the information and the endpoint of an API operation
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain an access credential assigned by STS
+  - 1.5 Obtain common header parameters
+  - 1.6 Obtain NAS SDKs
+- 2 Call examples for SDK for Java
+  - 2.1 Getting started
+  - 2.2 Use SDK
+    - 2.2.1 Install NAS SDK for Java
+    - 2.2.2 Configure authentication credentials
+    - 2.2.3 Configure connection requests
+    - 2.2.4 Initiate a request
+    - 2.2.5 Handle errors
+    - 2.2.6 Use CommonRequest to call API operations
+- 3 Call examples for SDK for Python
+  - 3.1 Getting started
+  - 3.2 Use SDK
+    - 3.2.1 Install the SDK for Python
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Set HTTPS requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 API Reference
+  - 4.1 List of operations by function
+  - 4.2 Make API requests
+    - 4.2.1 Common parameters
+    - 4.2.2 Request syntax
+  - 4.3 Regions
+    - 4.3.1 DescribeRegions
+    - 4.3.2 DescribeZones
+  - 4.4 NAS file system
+    - 4.4.1 CreateFileSystem
+    - 4.4.2 DeleteFileSystem
+    - 4.4.3 ModifyFileSystem
+    - 4.4.4 DescribeFileSystems
+  - 4.5 Mount target
+    - 4.5.1 CreateMountTarget
+    - 4.5.2 DeleteMountTarget
+    - 4.5.3 DescribeMountTargets
+    - 4.5.4 ModifyMountTarget
+    - 4.5.5 DescribeMountedClients
+  - 4.6 Permission group
+    - 4.6.1 CreateAccessGroup
+    - 4.6.2 DeleteAccessGroup
+    - 4.6.3 ModifyAccessGroup
+    - 4.6.4 DescribeAccessGroups
+    - 4.6.5 CreateAccessRule
+    - 4.6.6 DeleteAccessRule
+    - 4.6.7 ModifyAccessRule
+    - 4.6.8 DescribeAccessRules
+  - 4.7 Quotas
+    - 4.7.1 SetDirQuota
+    - 4.7.2 CancelDirQuota
+    - 4.7.3 DescribeDirQuotas
+  - 4.8 Unified namespaces
+    - 4.8.1 CreateNamespace
+    - 4.8.2 DeleteNamespace
+    - 4.8.3 ModifyNamespace
+    - 4.8.4 DescribeNamespaces
+    - 4.8.5 AddFileSystemToNamespace
+    - 4.8.6 RemoveFileSystemFromNamespace
+    - 4.8.7 RenameMappedPathInNamespace
+    - 4.8.8 ListFileSystemsInNamespace
+    - 4.8.9 CreateNamespaceMountTarget
+    - 4.8.10 DeleteNamespaceMountTarget
+    - 4.8.11 ModifyNamespaceMountTarget
+    - 4.8.12 DescribeNamespaceMountTargets
+    - 4.8.13 AddNamespaceToGroup
+    - 4.8.14 RemoveNamespaceFromGroup
+    - 4.8.15 DescribeNamespaceGroup
+  - 4.9 Lifecycle management
+    - 4.9.1 CreateLifecyclePolicy
+    - 4.9.2 DeleteLifecyclePolicy
+    - 4.9.3 ModifyLifecyclePolicy
+    - 4.9.4 DescribeLifecyclePolicies
+  - 4.10 NFS NAS ACL
+    - 4.10.1 EnableNfsAcl
+    - 4.10.2 DisableNfsAcl
+    - 4.10.3 DescribeNfsAcl
+  - 4.11 Appendix: Error codes
+
+## 1 Preparations
+
+### 1.1 Log on to OpenAPI Explorer
 
 You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -41,7 +127,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
-### Obtain the information and
+### 1.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -64,7 +150,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you call an API operation. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -106,7 +192,7 @@ want to obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an access credential
+### 1.4 Obtain an access credential assigned by STS
 
 **assigned by STS**
 
@@ -224,7 +310,7 @@ ey ID and AccessKey secret obtained in the preceding step.
         System.out.println(e.getErrMsg());
 ```
 
-### Obtain common header
+### 1.5 Obtain common header parameters
 
 **parameters**
 
@@ -271,7 +357,7 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The organization name. |
 | Department | The organization ID. |
 
-### Obtain NAS SDKs
+### 1.6 Obtain NAS SDKs
 
 When you call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain File Storage NAS SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can obtain the SDKs from Apsara Stack SDKs based on your business requirements.
 
@@ -286,11 +372,11 @@ We recommend that you use an SDK for Java or Python. If you use SDKs in other pr
 
 or SDK for Java
 
-## Call examples for SDK for
+## 2 Call examples for SDK for Java
 
 **Java**
 
-### Getting started
+### 2.1 Getting started
 
 This topic describes how to obtain and use File Storage NAS (NAS) SDK for Java.
 
@@ -384,11 +470,11 @@ fileSystem:rsp.getFileSystems()) {
            e.printStackTrace();
 ```
 
-### Use SDK
+### 2.2 Use SDK
 
 or SDK for Java
 
-#### Install NAS SDK for Java
+#### 2.2.1 Install NAS SDK for Java
 
 This topic describes how to install NAS SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, see Alibaba Cloud SDKs. To use a NAS SDK, you must install the core library of Apsara Stack SDK for Java and NAS SDK for Java. We recommend that you use the core library V4.5.17 or later, and use NAS SDK for Java V2.0.2. To use NAS SDK for Java, you must install the core library of Apsara Stack SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDKs.
 
@@ -404,7 +490,7 @@ This topic describes how to install NAS SDK for Java. Apsara Stack SDK for Java 
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 2.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -425,7 +511,7 @@ or SDK for Java
 
 In the preceding sample code, replace the variables with the actual values. Delete the angle brackets (<>) from the final code.
 
-#### Configure connection requests
+#### 2.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
@@ -455,7 +541,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 2.2.4 Initiate a request
 
 This topic describes how to use the SDK for Java to initiate a request.
 
@@ -501,7 +587,7 @@ However, if an exception occurs or you need to obtain the original HTTP response
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 2.2.5 Handle errors
 
 If an error occurs on the server or SDK when you use the SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the SDK for Java. You only need to handle the errors returned by the server based on the error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -530,7 +616,7 @@ to request technical support.
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
 
-#### Use CommonRequest to call API
+#### 2.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -634,11 +720,11 @@ peration, you must add the SecurityToken field in the request parameters.
 
 or SDK for Python
 
-## Call examples for SDK for
+## 3 Call examples for SDK for Python
 
 **Python**
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use File Storage NAS (NAS) SDK for Python.
 
@@ -699,9 +785,9 @@ request = DescribeFileSystemsRequest.DescribeFileSystemsRequest() request.set_ac
 response = clt.do_action_with_exception(request) print(response)
 ```
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install the SDK for Python
+#### 3.2.1 Install the SDK for Python
 
 This topic describes how to install Alibaba Cloud SDK for Python and File Storage NAS SDK for Python.
 1. Install Alibaba Cloud SDK for Python.
@@ -734,7 +820,7 @@ If you use Python 3.x, run the following command to install NAS SDK for Python:
 pip3 install aliyun-python-sdk-nas
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Python supports authentication based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client.
 
@@ -746,7 +832,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(access_key, access_secret, region_id)
 ```
 
-#### Set HTTPS requests
+#### 3.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use.
 
@@ -788,7 +874,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use File Storage NAS SDK for Python to initiate a request.
 
@@ -818,7 +904,7 @@ request = DescribeFileSystemsRequest.DescribeFileSystemsRequest() request.set_ac
 response = clt.do_action_with_exception(request) print(response)
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Python, the SDK returns an error response. The error response contains an error code and an error message. Among the errors returned by the SDK for Python, you do not need to handle the SDK errors, but must solve the server errors. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, if the following error occurs, you can modify the AccessKey ID based on the error message:
 
@@ -839,7 +925,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API
+#### 3.2.6 Use CommonRequest to call API operations
 
 **operations**
 
@@ -901,9 +987,9 @@ e, this parameter is required.
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-## API Reference
+## 4 API Reference
 
-### List of operations by function
+### 4.1 List of operations by function
 
 The API operations table lists the API operations that are available for use in File Storage NAS (NAS). Table 1. API operations
 
@@ -960,9 +1046,9 @@ The API operations table lists the API operations that are available for use in 
 |   | DisableNfsAcl | Disables the NFS ACL feature for a file system. |
 |   | DescribeNfsAcl | Queries whether the NFS ACL feature is enabled for a file system. |
 
-### Make API requests
+### 4.2 Make API requests
 
-#### Common parameters
+#### 4.2.1 Common parameters
 
 **Common request parameters**
 
@@ -1009,7 +1095,7 @@ Every response returns a unique request ID (indicated by **RequestId**) regardle
   /* The returned data */
 ```
 
-#### Request syntax
+#### 4.2.2 Request syntax
 
 **Endpoints**
 
@@ -1027,9 +1113,9 @@ You can call an API operation by sending an HTTP GET request. If you use this me
 
 All requests and responses are encoded in `UTF-8` .
 
-### Regions
+### 4.3 Regions
 
-#### DescribeRegions
+#### 4.3.1 DescribeRegions
 
 Queries available regions.
 
@@ -1074,7 +1160,7 @@ http(s)://[Endpoint]/?Action=DescribeRegions
         "LocalName": "East China 1"
 ```
 
-#### DescribeZones
+#### 4.3.2 DescribeZones
 
 Queries all zones in a region and the file system types that are supported in each zone.
 
@@ -1152,9 +1238,9 @@ http(s)://[Endpoint]/?Action=DescribeZones &RegionId=cn-hangzhou <RequestId>A70B
 | 500 | InternalError | The request processing has failed due to some unknown error. | The request failed due to an unknown error. Try again later. |
 | 404 | InvalidRegionId.Not Found | The specified Region is not found. | The requested region does not exist or the query service is unavailable in this region. |
 
-### NAS file system
+### 4.4 NAS file system
 
-#### CreateFileSystem
+#### 4.4.1 CreateFileSystem
 
 Creates a file system.
 
@@ -1183,7 +1269,7 @@ http(s)://[Endpoint]/?Action=CreateFileSystem &ProtocolType=NFS &StorageType=Per
     "FileSystemId": "1ca404****"
 ```
 
-#### DeleteFileSystem
+#### 4.4.2 DeleteFileSystem
 
 Deletes a file system. Before you delete a file system, you must remove all the mount targets from the file system. After the file system is deleted, the data on the file system cannot be restored. Proceed with caution.
 
@@ -1201,7 +1287,7 @@ http(s)://[Endpoint]/? Action=DeleteFileSystem &FileSystemId=1ca404**** <Request
     "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****"
 ```
 
-#### ModifyFileSystem
+#### 4.4.3 ModifyFileSystem
 
 Modifies the details of a file system.
 
@@ -1226,7 +1312,7 @@ http(s)://[Endpoint]/? Action=ModifyFileSystem &FileSystemId=1ca404**** <Request
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****"
 ```
 
-#### DescribeFileSystems
+#### 4.4.4 DescribeFileSystems
 
 Queries file systems.
 
@@ -1342,9 +1428,9 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
 | { "FileSystems": [ { "Status": "Pending", "StorageType": "Performance", "Description": "This can be the description of the created file system.", "ZoneId": "cn-hangzhou-b", "MeteredIASize": 1000, "CreateTime": "2017-05-27T15:43:06CST", "QuotaSize": 100, "MeteredSize": 1611661312, "EncryptType": 1, "ChargeType": "PayAsYouGo", "ProtocolType": "NFS", "Bandwidth": 150, "FileSystemType": "all", "ExpiredTime": 1572174830000, "FileSystemId": "109c04****", "RegionId": "cn-hangzhou", "VolumeSize": 1000 }, { "MountTargets": { "Status": "active", "VswId": "vsw-bp1omfzsszekkvaxn****", "VpcId": "vpc-bp1sevsgtqvk5gxbl****", "MountTargetDomain": "109c04****-w****.cn-hangzhou.nas.aliyuncs.com", "NetworkType": "vpc", "AccessGroupName": "test-001" }, "Packages": { "StartTime": "2019-12-05T01:40:56Z", "PackageId": "naspackage-0be9c4b624-37****", "Size": 107374182400, "ExpiredTime": "2020-01-05T16:00:00Z", "PackageType": "hybrid" } }, { "SupportedFeatures": "Lifecycle" }, { "Ldap": { "SearchBase": "dc=example", "URI": "ldap://ldap.example.example", "BindDN": "cn=alibaba,dc=com" } } ], "TotalCount": 1, "PageSize": 1, "RequestId": "035B3A3A-E514-4B41-B906-5D906CFB****", "PageNumber": 1 } |   |
 |---|---|
 
-### Mount target
+### 4.5 Mount target
 
-#### CreateMountTarget
+#### 4.5.1 CreateMountTarget
 
 Creates a mount target.
 
@@ -1369,7 +1455,7 @@ http(s)://[Endpoint]/? Action=CreateMountTarget &AccessGroupName=classic-test &F
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
 ```
 
-#### DeleteMountTarget
+#### 4.5.2 DeleteMountTarget
 
 Deletes a mount target. After you delete a mount target, the mount target cannot be restored. Proceed with caution.
 
@@ -1390,7 +1476,7 @@ http(s)://[Endpoint]/? Action=DeleteMountTarget &FileSystemId=174494**** &MountT
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF42****"
 ```
 
-#### DescribeMountTargets
+#### 4.5.3 DescribeMountTargets
 
 Queries the information of mount targets.
 
@@ -1447,7 +1533,7 @@ hangzhou.nas.aliyuncs.com</MountTargetDomain>
         "NetworkType": "Vpc"
 ```
 
-#### ModifyMountTarget
+#### 4.5.4 ModifyMountTarget
 
 Modifies a mount target.
 
@@ -1470,7 +1556,7 @@ http(s)://[Endpoint]/? Action=ModifyMountTarget &FileSystemId=1ca404**** &MountT
     "RequestId": "FF387D95-34C4-4879-B65A-99D1FA1****"
 ```
 
-#### DescribeMountedClients
+#### 4.5.5 DescribeMountedClients
 
 Queries the clients on which a file system is mounted.
 
@@ -1518,9 +1604,9 @@ http(s)://[Endpoint]/?Action=DescribeMountedClients &RegionId=cn-hangzhou-balbal
 
 `]`
 
-### Permission group
+### 4.6 Permission group
 
-#### CreateAccessGroup
+#### 4.6.1 CreateAccessGroup
 
 Creates a permission group.
 
@@ -1548,7 +1634,7 @@ http(s)://[Endpoint]/? Action=CreateAccessGroup &AccessGroupName=classic-test &A
     "AccessGroupName": "classic-test"
 ```
 
-#### DeleteAccessGroup
+#### 4.6.2 DeleteAccessGroup
 
 Deletes a permission group. Default permission groups include DEFAULT_VPC_GROUP_NAME and DEFAULT_CLASSIC_GROUP_NAME. You cannot delete the default permission groups.
 
@@ -1571,7 +1657,7 @@ http(s)://[Endpoint]/? Action=DeleteAccessGroup &AccessGroupName=classic-test
     "RequestId": "9E15E394-38A6-457A-A62A-D9797C9A****"
 ```
 
-#### ModifyAccessGroup
+#### 4.6.3 ModifyAccessGroup
 
 Modifies a permission group.
 
@@ -1593,7 +1679,7 @@ http(s)://[Endpoint]/? Action=ModifyAccessGroup &AccessGroupName=classic-test <R
     "RequestId": "ED2AE737-9D50-4CA4-B0DA-31BD610C****"
 ```
 
-#### DescribeAccessGroups
+#### 4.6.4 DescribeAccessGroups
 
 Queries the information of permission groups.
 
@@ -1654,7 +1740,7 @@ http(s)://[Endpoint]/? Action=DescribeAccessGroups <AccessGroups>
     "ResourceOwnerId": 258456
 ```
 
-#### CreateAccessRule
+#### 4.6.5 CreateAccessRule
 
 Creates a rule for a permission group.
 
@@ -1685,7 +1771,7 @@ http(s)://[Endpoint]/? Action=CreateAccessRule &AccessGroupName=classic-test &So
     "AccessRuleId": 1
 ```
 
-#### DeleteAccessRule
+#### 4.6.6 DeleteAccessRule
 
 Deletes a rule from a permission group.
 
@@ -1705,7 +1791,7 @@ http(s)://[Endpoint]/? Action=DeleteAccessRule &AccessGroupName=classic-test &Ac
     "RequestId": "5B4511A7-C99E-4071-AA8C-32E2529D****"
 ```
 
-#### ModifyAccessRule
+#### 4.6.7 ModifyAccessRule
 
 Modifies a rule in a permission group.
 
@@ -1731,7 +1817,7 @@ http(s)://[Endpoint]/? Action=ModifyAccessRule &AccessGroupName=classic-test &Ac
     "RequestId": "6299428C-3861-435D-AE54-9B330A00****"
 ```
 
-#### DescribeAccessRules
+#### 4.6.8 DescribeAccessRules
 
 Queries the information about rules.
 
@@ -1783,9 +1869,9 @@ http(s)://[Endpoint]/? Action=DescribeAccessRules &AccessGroupName=classic-test 
         "SourceCidrIp": "10.0. *. */**"
 ```
 
-### Quotas
+### 4.7 Quotas
 
-#### SetDirQuota
+#### 4.7.1 SetDirQuota
 
 Creates a directory quota for a file system.
 
@@ -1816,7 +1902,7 @@ http(s)://[Endpoint]/?Action=SetDirQuota &FileSystemId=1ca404**** &Path=/data/su
     "Success": true
 ```
 
-#### CancelDirQuota
+#### 4.7.2 CancelDirQuota
 
 Cancels the directory quotas of a file system.
 
@@ -1839,7 +1925,7 @@ http(s)://[Endpoint]/?Action=CancelDirQuota &FileSystemId=1ca404**** &Path=/data
     "Success": true
 ```
 
-#### DescribeDirQuotas
+#### 4.7.3 DescribeDirQuotas
 
 Queries the directory quotas of a file system.
 
@@ -1916,9 +2002,9 @@ http(s)://[Endpoint]/?Action=DescribeDirQuotas &FileSystemId=1ca404****
     "PageNumber": 1
 ```
 
-### Unified namespaces
+### 4.8 Unified namespaces
 
-#### CreateNamespace
+#### 4.8.1 CreateNamespace
 
 Creates a namespace.
 
@@ -1950,7 +2036,7 @@ http(s)://[Endpoint]/?Action=CreateNamespace &ProtocolType=NFS &StorageType=Perf
     "NasNamespaceId": "1NS244****"
 ```
 
-#### DeleteNamespace
+#### 4.8.2 DeleteNamespace
 
 Deletes a namespace.
 
@@ -1971,7 +2057,7 @@ http(s)://[Endpoint]/?Action=DeleteNamespace &NasNamespaceId=1NS244**** <Request
     "NasNamespaceId": "1NS244****"
 ```
 
-#### ModifyNamespace
+#### 4.8.3 ModifyNamespace
 
 Modifies a namespace.
 
@@ -1998,7 +2084,7 @@ http(s)://[Endpoint]/?Action=ModifyNamespace &Description=test &NasNamespaceId=1
     "NasNamespaceId": "1NS244****"
 ```
 
-#### DescribeNamespaces
+#### 4.8.4 DescribeNamespaces
 
 Queries namespaces.
 
@@ -2097,7 +2183,7 @@ http(s)://[Endpoint]/?Action=DescribeNamespaces <TotalCount>1</TotalCount> <Page
             "AccessGroupName": ""
 ```
 
-#### AddFileSystemToNamespace
+#### 4.8.5 AddFileSystemToNamespace
 
 Adds a file system to a namespace.
 
@@ -2122,7 +2208,7 @@ http(s)://[Endpoint]/?Action=AddFileSystemToNamespace &FileSystemId=1ca404**** &
     "FileSystemId": "1ca404****"
 ```
 
-#### RemoveFileSystemFromNamespace
+#### 4.8.6 RemoveFileSystemFromNamespace
 
 Deletes a file system from a namespace.
 
@@ -2146,7 +2232,7 @@ http(s)://[Endpoint]/?Action=RemoveFileSystemFromNamespace &FileSystemId=1ca404*
     "FileSystemId": "1ca404****"
 ```
 
-#### RenameMappedPathInNamespace
+#### 4.8.7 RenameMappedPathInNamespace
 
 Modifies the mapping name of a file system in a namespace.
 
@@ -2173,7 +2259,7 @@ http(s)://[Endpoint]/?Action=RenameMappedPathInNamespace &FileSystemId=1ca404***
     "NasNamespaceId": "1NS244****"
 ```
 
-#### ListFileSystemsInNamespace
+#### 4.8.8 ListFileSystemsInNamespace
 
 Queries the mapped file systems in a namespace.
 
@@ -2226,7 +2312,7 @@ http(s)://[Endpoint]/?Action=ListFileSystemsInNamespace <TotalCount>1</TotalCoun
         "MappedPath": "tmp_path"
 ```
 
-#### CreateNamespaceMountTarget
+#### 4.8.9 CreateNamespaceMountTarget
 
 Creates a mount target for a namespace.
 
@@ -2254,7 +2340,7 @@ http(s)://[Endpoint]/?Action=CreateNamespaceMountTarget &AccessGroupName=classic
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
 ```
 
-#### DeleteNamespaceMountTarget
+#### 4.8.10 DeleteNamespaceMountTarget
 
 Deletes a mount target for a namespace.
 
@@ -2278,7 +2364,7 @@ http(s)://[Endpoint]/?Action=DeleteNamespaceMountTarget &MountTargetDomain=17449
     "MountTargetDomain": "174494b666-x****.cn-hangzhou.nas.aliyuncs.com"
 ```
 
-#### ModifyNamespaceMountTarget
+#### 4.8.11 ModifyNamespaceMountTarget
 
 Modifies the status of the mount target for a namespace.
 
@@ -2301,7 +2387,7 @@ http(s)://[Endpoint]/?Action=ModifyNamespaceMountTarget &MountTargetDomain=1ca40
     "RequestId": "5BC5CB97-9F28-42FE-84A4-0CD0DF4211C8"
 ```
 
-#### DescribeNamespaceMountTargets
+#### 4.8.12 DescribeNamespaceMountTargets
 
 Queries the mount targets of a namespace.
 
@@ -2370,7 +2456,7 @@ d01.nas.inter.en****.sh****ng.com</MountTargetDomain>
 </MountTargets>
 ```
 
-#### AddNamespaceToGroup
+#### 4.8.13 AddNamespaceToGroup
 
 Creates a cross-domain mount orchestration.
 
@@ -2399,7 +2485,7 @@ http(s)://[Endpoint]/?Action=AddNamespaceToGroup &MappedPath=data &MountTargetDo
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
 
-#### RemoveNamespaceFromGroup
+#### 4.8.14 RemoveNamespaceFromGroup
 
 Deletes a cross-domain mount orchestration.
 
@@ -2424,7 +2510,7 @@ http(s)://[Endpoint]/?Action=RemoveNamespaceFromGroup &MemberId=1
     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E"
 ```
 
-#### DescribeNamespaceGroup
+#### 4.8.15 DescribeNamespaceGroup
 
 Queries the Cross-domain Mount Orchestration page.
 
@@ -2503,11 +2589,11 @@ ountTargetDomain>
 </NasNamespaces>
 ```
 
-NAS 2017-06-26 DescribeNamespaceGroup
+NAS 2017-06-26
 
-### Lifecycle management
+### 4.9 Lifecycle management
 
-#### CreateLifecyclePolicy
+#### 4.9.1 CreateLifecyclePolicy
 
 Creates a lifecycle policy.
 
@@ -2538,7 +2624,7 @@ http(s)://[Endpoint]/?Action=CreateLifecyclePolicy &FileSystemId=1ca404**** &Lif
     "Success": true
 ```
 
-#### DeleteLifecyclePolicy
+#### 4.9.2 DeleteLifecyclePolicy
 
 Deletes a lifecycle policy.
 
@@ -2561,7 +2647,7 @@ http(s)://[Endpoint]/?Action=DeleteLifecyclePolicy &FileSystemId=106174**** &Lif
 {"RequestId":"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E","Success":"true"}
 ```
 
-#### ModifyLifecyclePolicy
+#### 4.9.3 ModifyLifecyclePolicy
 
 Modifies a lifecycle policy.
 
@@ -2591,7 +2677,7 @@ http(s)://[Endpoint]/?Action=ModifyLifecyclePolicy &FileSystemId=1ca404**** &Lif
     "Success": true
 ```
 
-#### DescribeLifecyclePolicies
+#### 4.9.4 DescribeLifecyclePolicies
 
 Queries lifecycle policies.
 
@@ -2646,9 +2732,9 @@ http(s)://[Endpoint]/?Action=DescribeLifecyclePolicies <TotalCount>10</TotalCoun
         "Recursive": true
 ```
 
-### NFS NAS ACL
+### 4.10 NFS NAS ACL
 
-#### EnableNfsAcl
+#### 4.10.1 EnableNfsAcl
 
 Enables the Network File System (NFS) access control list (ACL) feature for a file system.
 
@@ -2670,7 +2756,7 @@ http(s)://[Endpoint]/?Action=EnableNfsAcl &FileSystemId=43f264xxxx HTTP/1.1 200 
 <RequestId>29F4F360-A6A8-561A-A45B-A0F6882969BA</RequestId>
 ```
 
-#### DisableNfsAcl
+#### 4.10.2 DisableNfsAcl
 
 Disables the Network File System (NFS) access control list (ACL) feature for a file system.
 
@@ -2692,7 +2778,7 @@ http(s)://[Endpoint]/?Action=DisableNfsAcl &FileSystemId=91fcdxxxx HTTP/1.1 200 
 <RequestId>24487C24-AE54-57EC-B4E4-4EDEEEB83B01</RequestId>
 ```
 
-#### DescribeNfsAcl
+#### 4.10.3 DescribeNfsAcl
 
 Queries whether the Network File System (NFS) access control list (ACL) feature is enabled for a file system.
 
@@ -2720,7 +2806,7 @@ http(s)://[Endpoint]/?Action=DescribeNfsAcl &FileSystemId=206614xxxx HTTP/1.1 20
 </Acl>
 ```
 
-### Appendix: Error codes
+### 4.11 Appendix: Error codes
 
 An error code consists of four components, as listed in Error codes. Table 1. Error codes
 

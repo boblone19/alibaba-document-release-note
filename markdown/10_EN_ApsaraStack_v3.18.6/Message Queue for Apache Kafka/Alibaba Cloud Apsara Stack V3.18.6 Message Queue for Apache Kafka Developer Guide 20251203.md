@@ -2,18 +2,113 @@
 title: "Message Queue for Apache Kafka Developer Guide 20251203"
 product_version: "V3.18.6"
 pdf_pages: 125
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Developer Guide 20251203.pdf"
+source_pdf: "d2b899d7fa2432eb_Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Developer Guide 20251203.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97Kafka%E7%89%88%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Message%20Queue%20for%20Apache%20Kafka%20Developer%20Guide%2020251203.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Message Queue for Apache Kafka Developer Guide 20251203
 
-Message Queue for Apache Kafka
+## Table of Contents
 
-## Preparations
+- 1 Preparations
+  - 1.1 Obtain API information and its endpoint
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Get common header parameters
+  - 1.4 Obtain STS credentials
+- 2 Call private cloud APIs through a POP gateway
+  - 2.1 Overview
+  - 2.2 Preparations
+  - 2.3 Java version
+- 3 Demo projects
+  - 3.1 Overview
+  - 3.2 Prepare the environment
+  - 3.3 Configure a demo project
+  - 3.4 Run a demo
+- 4 SDK reference
+  - 4.1 SDK for Java
+  - 4.2 SDK for Python
+  - 4.3 SDK for C++
+  - 4.4 SDK for Go
+  - 4.5 SDK for PHP
+  - 4.6 SDK for Ruby
+  - 4.7 SDK for Node.js
+- 5 API reference
+  - 5.1 Common request parameters
+  - 5.2 Common response parameters
+  - 5.3 Use the domain name to access API operations
+  - 5.4 Use the gateway signature to access API operations
+  - 5.5 Instance management
+    - 5.5.1 CreateInstance
+    - 5.5.2 CreateDisasterRecoveryInstance
+    - 5.5.3 UpdateDisasterRecoveryInstance
+    - 5.5.4 DeleteDisasterRecoveryInstance
+    - 5.5.5 CreateInstanceRelation
+    - 5.5.6 GetInstanceConfig
+    - 5.5.7 GetInstanceIdList
+    - 5.5.8 GetScheduledTaskList
+    - 5.5.9 DeleteInstance
+    - 5.5.10 GetDisasterRecoveryInstanceList
+    - 5.5.11 GetDisasterRecoveryInstanceLag
+    - 5.5.12 GetInstanceList
+    - 5.5.13 GetInstanceRelationList
+    - 5.5.14 GetInstanceStatus
+    - 5.5.15 GetKafkaInstanceList
+    - 5.5.16 ScaleInstance
+    - 5.5.17 HotSwitchDisasterRecoveryInstance
+    - 5.5.18 UpdateInstanceConfig
+    - 5.5.19 UpdateInstanceName
+    - 5.5.20 GetZoneList
+    - 5.5.21 RebalanceInstanceTopic
+  - 5.6 Topic management
+    - 5.6.1 CreateTopic
+    - 5.6.2 GetTopicList
+    - 5.6.3 GetTopicListAll
+    - 5.6.4 DeleteTopic
+    - 5.6.5 GetTopicConfigList
+    - 5.6.6 GetTopicListByConsumerId
+    - 5.6.7 GetTopicQuotaTip
+    - 5.6.8 GetTopicStatus
+    - 5.6.9 GetTopicSubscribeStatus
+    - 5.6.10 UpdateTopicConfig
+    - 5.6.11 RebalanceTopic
+    - 5.6.12 ModifyPartitionNum
+  - 5.7 Group management
+    - 5.7.1 GetConsumerList
+    - 5.7.2 GetConsumerProgress
+    - 5.7.3 GetConsumerProgressByTopic
+    - 5.7.4 GetConsumerTimespan
+    - 5.7.5 DeleteConsumerGroup
+  - 5.8 Message management
+    - 5.8.1 QueryMessage
+    - 5.8.2 DownloadMessage
+    - 5.8.3 SendMessage
+    - 5.8.4 ResetOffset
+  - 5.9 Resource management
+    - 5.9.1 DescribeCpuTypes
+    - 5.9.2 GetPaasResource
+    - 5.9.3 GetReplicatorList
+    - 5.9.4 GetMetaData
+    - 5.9.5 GetRegionList
+    - 5.9.6 GetUnscheduledTaskList
+  - 5.10 ACLs
+    - 5.10.1 CreateACL
+    - 5.10.2 DeleteAcl
+    - 5.10.3 CreateSaslUser
+    - 5.10.4 DeleteSaslUser
+    - 5.10.5 DescribeAcls
+    - 5.10.6 DescribeSaslUsers
+    - 5.10.7 QueryExistedAclResource
+    - 5.10.8 DownloadFile
+    - 5.10.9 GetSaslUserList
+  - 5.11 VIPs
+    - 5.11.1 ApplyVipInfo
+  - 5.12 Tags
+    - 5.12.1 GetKafkaTagList
 
-### Obtain API information and its
+## 1 Preparations
+
+### 1.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -35,15 +130,7 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 7. Select the API operation that you want to call. On the Parameters tab, obtain the POP
 Endpoint information.
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList document in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup document in Apsara Uni-manager Management Console Developer Guide. |
-
-Message Queue for Apache Kafka
-
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 You can obtain AccessKey pairs through Resource Access Management (RAM) or Security Token Service (STS). You can use either type of AccessKey pair to authenticate your API calls. This topic describes how to obtain an AccessKey pair that is granted by RAM.
 
@@ -55,10 +142,14 @@ An AccessKey pair authenticates the identity of a requester. An AccessKey pair c
 
 An AccessKey pair for a personal account is a restricted key managed by the permission system of the Apsara Uni-manager Management Console. An AccessKey pair for an organization has broader permissions. An administrator must ensure the security of any operation that uses an organization's AccessKey pair.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList document in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup document in Apsara Uni-manager Management Console Developer Guide. |
+
 | x-acs-instanceid | The ID of the instance to manage. For example, you can find the instance ID of an Elastic Compute Service (ECS) instance in the ECS instance list. |
 |---|---|
-
-Message Queue for Apache Kafka
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -83,7 +174,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. Click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Get common header
+### 1.3 Get common header parameters
 
 **parameters**
 
@@ -93,7 +184,6 @@ You must provide multiple header parameters when you call an API. This topic des
 
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top menu bar, click **Enterprise**.
-Message Queue for Apache Kafka
 3. In the left navigation pane, choose **Resource Management** > **Region Management**.
 4. Click the name of the target organization.
 5. The **Region Name** in the **Region List** on the right is the region ID.
@@ -139,9 +229,7 @@ The following additional parameters are returned by default when you call an API
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-Message Queue for Apache Kafka
-
-### Obtain STS credentials
+### 1.4 Obtain STS credentials
 
 This topic describes how to use Security Token Service (STS) to call product APIs in Apsara Stack.
 
@@ -156,7 +244,7 @@ Security Token Service (STS) is an Alibaba Cloud service that provides temporary
 **Information**.
 iii. Click **View Current Role Policy**. In the **Policies Of Current Role** dialog box, view the `RAM role` .
 2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ),
-and Security Token Service token ( `stsToken` ) by assuming the RAM role. Message Queue for Apache Kafka
+and Security Token Service token ( `stsToken` ) by assuming the RAM role.
 
 ```
 public static void main(String[] args) {
@@ -171,7 +259,7 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -185,11 +273,9 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
 3. Use the STS credentials to call cloud service APIs. The following code provides an example.
-Message Queue for Apache Kafka
 
 ```java
 import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Config; // The following example shows how to use an STS token to initialize a credential cli ent. This example does not include the procedure for obtaining the STS token. public class DemoStsTest {
@@ -207,29 +293,17 @@ previous step.
         credentialConfig.setSecurityToken("your__SecurityToken");
         Client credentialClient = new Client(credentialConfig);
         // Continue to call the API. For more information, see the API documentation.
-    }
-}
 ```
 
-| Version number | Release date | Updates |
-|---|---|---|
-| 3.18.3-0 | 2024.09 | New release of SDK for Apsara Stack 3.18.3 external API. |
+ud APIs through a POP gateway
 
-| API name | Version |
-|---|---|
-| ApplyVipInfo | 3.18.3-0 |
-| CreateAcl | 3.18.3-0 |
-| CreateDisasterRecoveryInstance | 3.18.3-0 |
-
-Message Queue for Apache Kafka
-
-## Call private cloud APIs
+## 2 Call private cloud APIs through a POP gateway
 
 **through a POP gateway**
 
 This topic describes how to call private cloud APIs through a POP (Point of Presence) gateway.
 
-### Overview
+### 2.1 Overview
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic provides an overview of the SDK.
 
@@ -249,7 +323,21 @@ Currently only the Java language is supported.
 
 **SDK version**
 
+| Version number | Release date | Updates |
+|---|---|---|
+| 3.18.3-0 | 2024.09 | New release of SDK for Apsara Stack 3.18.3 external API. |
+
+**API operations**
+
 The API operations currently supported by the Apsara Stack Enterprise SDK.
+
+| API name | Version |
+|---|---|
+| ApplyVipInfo | 3.18.3-0 |
+| CreateAcl | 3.18.3-0 |
+| CreateDisasterRecoveryInstance | 3.18.3-0 |
+
+ud APIs through a POP gateway
 
 | CreateInstance | 3.18.3-0 |
 |---|---|
@@ -272,7 +360,7 @@ The API operations currently supported by the Apsara Stack Enterprise SDK.
 | GetConsumerProgressByTopic | 3.18.3-0 |
 | GetConsumerTimespan | 3.18.3-0 |
 
-Message Queue for Apache Kafka
+ud APIs through a POP gateway
 
 | GetDisasterRecoveryInstanceLag | 3.18.3-0 |
 |---|---|
@@ -295,7 +383,7 @@ Message Queue for Apache Kafka
 | GetTopicListByConsumerId | 3.18.3-0 |
 | GetTopicQuotaTip | 3.18.3-0 |
 
-Message Queue for Apache Kafka
+ud APIs through a POP gateway
 
 | GetTopicStatus | 3.18.3-0 |
 |---|---|
@@ -318,7 +406,7 @@ Message Queue for Apache Kafka
 | TagListTagsByResourceIds | 3.18.3-0 |
 | TagUnbind | 3.18.3-0 |
 
-Message Queue for Apache Kafka
+ud APIs through a POP gateway
 
 | TagUnbindSystemTags | 3.18.3-0 |
 |---|---|
@@ -327,9 +415,7 @@ Message Queue for Apache Kafka
 | UpdateInstancesNames | 3.18.3-0 |
 | UpdateTopicConfig | 3.18.3-0 |
 
-Message Queue for Apache Kafka
-
-### Preparations
+### 2.2 Preparations
 
 You can call Apsara Stack API operations through the Point of Presence (POP) gateway, in the same way as you do for the Alibaba Cloud public cloud. This topic describes the required preparations.
 
@@ -349,7 +435,7 @@ To maintain a consistent and convenient experience between Apsara Stack and the 
 5. From the **Version** drop-down list, select the target API version.
 6. The API operation list displays all API operations for the current version.
 7. Click the API operation that you want to call. Obtain the POP Endpoint from the list of
-parameters. Message Queue for Apache Kafka
+parameters. ud APIs through a POP gateway
 
 **Obtain an endpoint from Apsara Infrastructure Management**
 
@@ -368,9 +454,9 @@ service. In the **Registration Variables** dialog box that appears, find the val
 
 **Obtain common parameters**
 
-When you call Apsara Stack API operations using the POP gateway, you must include parameters such as the organization ID, resource set ID, RegionID, and instance ID. For more information about how to obtain these parameters, see Obtain common header parameters. Message Queue for Apache Kafka
+When you call Apsara Stack API operations using the POP gateway, you must include parameters such as the organization ID, resource set ID, RegionID, and instance ID. For more information about how to obtain these parameters, see Obtain common header parameters. ud APIs through a POP gateway
 
-### Java version
+### 2.3 Java version
 
 **Prerequisites**
 
@@ -404,9 +490,9 @@ the SDK package.
 
 **Import the SDK package**
 
-Message Queue for Apache Kafka
+ud APIs through a POP gateway
 1. Create a Maven project in one of the following ways:
-Method 1: Create a Maven project in IntelliJ IDEA. Method 2: Convert an existing project into a Maven project. Right-click the project that you want to convert and select **Add Framework Support...**. Select Maven and click OK. Message Queue for Apache Kafka
+Method 1: Create a Maven project in IntelliJ IDEA. Method 2: Convert an existing project into a Maven project. Right-click the project that you want to convert and select **Add Framework Support...**. Select Maven and click OK. ud APIs through a POP gateway
 2. In the project root directory, create a lib folder and place the Java SDK package in it, as
 shown in the following figure.
 3. In the pom.xml file in the project directory, add the Java SDK dependency. For the required
@@ -416,10 +502,10 @@ imported, as shown in the following figure.
 
 **Code sample**
 
-Use this sample to call an API. Ensure that your code runs successfully and does not expose sensitive information. Message Queue for Apache Kafka
+Use this sample to call an API. Ensure that your code runs successfully and does not expose sensitive information. ud APIs through a POP gateway
 
 ```java
-import com.aliyun.alikafka20190916.Client; import com.aliyun.alikafka20190916.models.ApplyVipInfoRequest; import com.aliyun.alikafka20190916.models.ApplyVipInfoResponse; import com.aliyun.tea.TeaException; import com.aliyun.teautil.models.RuntimeOptions;
+import com.aliyun.alikafka20190916.Client; import com.aliyun.alikafka20190916.models.ApplyVipInfoRequest; import com.aliyun.alikafka20190916.models.ApplyVipInfoResponse; import com.aliyun.tea.TeaException; import com.aliyun.teautil.models.RuntimeOptions; public class ApplyVipInfo {
     // This sample shows how to call the ApplyVipInfo API to request the creation of a
 VIP endpoint.
     public static  void testApplyVipInfo(Client client, RuntimeOptions runtime) {
@@ -441,9 +527,6 @@ client.applyVipInfoWithOptions(request,runtime); System.out.println(com.aliyun.t
         } catch (Exception _error) {
             TeaException error = new TeaException(_error.getMessage(), _error);
             System.out.println(error.getCause());
-        }
-    }
-}
 ```
 
 **Sample steps**
@@ -466,7 +549,7 @@ class. Subsequent request and response objects are retrieved from com.aliyun.ali
 Client client = new Client(config);
 ```
 
-Message Queue for Apache Kafka
+ud APIs through a POP gateway
 3. Create the Request object for the API that you want to call. The naming convention for the
 class is the API method name followed by Request. For example:
 
@@ -500,12 +583,9 @@ String requestId = response.Body.requestId;
 catch (Exception _error) {
     TeaException error = new TeaException(_error.getMessage(), _error);
     System.out.println(error.getCause());
-}
 ```
 
-Message Queue for Apache Kafka
-
-## Demo projects
+## 3 Demo projects
 
 A demo is a sample program for messaging by using an SDK. This topic describes how to build a test project in ApsaraMQ for Kafka to send and receive messages by using the SDK for Java.
 
@@ -518,7 +598,7 @@ preparations include installing an integrated development environment (IDE), dow
 3. Run the demo: After you configure the demo project, you can run the demo to send and
 receive messages.
 
-### Overview
+### 3.1 Overview
 
 A demo is a sample program for messaging by using an SDK. This topic describes how to build a test project in ApsaraMQ for Kafka to send and receive messages by using the SDK for Java.
 
@@ -531,13 +611,13 @@ preparations include installing an integrated development environment (IDE), dow
 3. Run the demo: After you configure the demo project, you can run the demo to send and
 receive messages.
 
-### Prepare the environment
+### 3.2 Prepare the environment
 
 This topic describes the preparations before you configure a demo project. The preparations include installing an integrated development environment (IDE), downloading the demo project, installing the Java Development Kit (JDK), and creating topics.
 
 **Install an IDE**
 
-You can use IntelliJ IDEA or Eclipse as the IDE. In this topic, IntelliJ IDEA is used. Download IntelliJ IDEA Ultimate from https://www.jetbrains.com/idea/ and follow the instructions to install it. Message Queue for Apache Kafka
+You can use IntelliJ IDEA or Eclipse as the IDE. In this topic, IntelliJ IDEA is used. Download IntelliJ IDEA Ultimate from https://www.jetbrains.com/idea/ and follow the instructions to install it.
 
 **Download a demo project**
 
@@ -549,16 +629,20 @@ If the JDK is not installed on your on-premises machine, visit Java Downloads to
 
 **Install Maven**
 
-If Maven is not installed on your on-premises machine, visit Downloading Apache Maven to download Maven 2.5 or later and install it on your on-premises machine. You can create the required topics in the ApsaraMQ for Kafka console. For more information, see **Create topics** in ApsaraMQ for Kafka **User Guide**.
+If Maven is not installed on your on-premises machine, visit Downloading Apache Maven to download Maven 2.5 or later and install it on your on-premises machine.
 
-### Configure a demo project
+**Create topics**
+
+You can create the required topics in the ApsaraMQ for Kafka console. For more information, see **Create topics** in ApsaraMQ for Kafka **User Guide**.
+
+### 3.3 Configure a demo project
 
 This topic describes how to configure a demo project.
 
 **Procedure**
 
 1. Import the demo project to IntelliJ IDEA.
-Message Queue for Apache Kafka i. On the IntelliJ IDEA interface, choose **New > Project From Existing Sources…** and then select the kafka-java-demo folder. ii. Select Maven. iii. Click **Finish** and wait until the project is imported. The project requires 2 to 3 minutes to be imported because the JAR dependency needs to be loaded to the demo project. Message Queue for Apache Kafka
+i. On the IntelliJ IDEA interface, choose **New > Project From Existing Sources…** and then select the kafka-java-demo folder. ii. Select Maven. iii. Click **Finish** and wait until the project is imported. The project requires 2 to 3 minutes to be imported because the JAR dependency needs to be loaded to the demo project.
 2. Configure the kafka.properties class based on the following sample code:
 
 ```
@@ -570,9 +654,12 @@ for Kafka console. topic=alikafka-topic-demo
 oup for you. group.id=CID-consumer-group-demo
 ```
 
-### Run a demo
+### 3.4 Run a demo
 
 After you configure a demo project, you can run the demo to send and receive messages. This topic describes how to run a demo to send and receive messages.
+
+**Send messages**
+
 1. Run the KafkaProducerDemo.java class to send messages.
 2. Verify whether a message is sent.
 i. Log on to the ApsaraMQ for Kafka console. For more information, see **Console**
@@ -588,15 +675,15 @@ Run the KafkaConsumerDemo.java class to subscribe to messages by using a single 
 i. Log on to the ApsaraMQ for Kafka console. For more information, see **Console**
 **operations > Log on to the ApsaraMQ for Kafka console** in ApsaraMQ for Kafka
 **User Guide**.
-ii. On the **Instance List** page, find the instance that you want to manage and click **Details** in the **Operation** column. Message Queue for Apache Kafka iii. On the Instance details page, click the **Group management** tab. On the **Group**
+ii. On the **Instance List** page, find the instance that you want to manage and click **Details** in the **Operation** column. iii. On the Instance details page, click the **Group management** tab. On the **Group**
 **management** tab, find the consumer group whose consumption status you want to
-query and click **Consumption status** in the **Operation** column. If messages are successfully consumed, you can see that the started consumers are online and the subscriptions of the consumers are consistent. Message Queue for Apache Kafka
+query and click **Consumption status** in the **Operation** column. If messages are successfully consumed, you can see that the started consumers are online and the subscriptions of the consumers are consistent.
 
-## SDK reference
+## 4 SDK reference
 
 This topic describes SDKs for multiple programming languages that are supported by ApsaraMQ for Kafka. ApsaraMQ for Kafka supports the following SDKs for multiple programming languages: For more information, see ApsaraMQ for Kafka demo library.
 
-### SDK for Java
+### 4.1 SDK for Java
 
 This topic describes how to use the SDK for Java to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -627,7 +714,6 @@ We recommend that your client version be consistent with the major version of yo
 **Create configuration files**
 
 1. Create a Log4j configuration file named log4j.properties.
-Message Queue for Apache Kafka
 
 ```bash
 # Licensed to the Apache Software Foundation (ASF) under one or more
@@ -638,13 +724,13 @@ Message Queue for Apache Kafka
 # the License.  You may obtain a copy of the License at
 ```
 
-#
+`#`
 
 ```bash
 #    http://www.apache.org/licenses/LICENSE-2.0
 ```
 
-#
+`#`
 
 ```bash
 # Unless required by applicable law or agreed to in writing, software
@@ -674,7 +760,6 @@ public class JavaKafkaConfigurer {
     public synchronized static Properties getKafkaProperties() {
        if (null != properties) {
            return properties;
-       }
        // Obtain the content of the kafka.properties file.
        Properties kafkaProperties = new Properties();
        try {
@@ -682,14 +767,12 @@ kafkaProperties.load(KafkaProducerDemo.class.getClassLoader().getResourceAsStrea
        } catch (Exception e) {
            // If the file cannot be loaded, exit the program.
            e.printStackTrace();
-       }
        properties = kafkaProperties;
        return kafkaProperties;
-    }
-}
 ```
 
-Message Queue for Apache Kafka
+**Send messages**
+
 1. Create a producer program named KafkaProducerDemo.java.
 
 ```java
@@ -724,7 +807,7 @@ ops);
 e message belongs. Enter the topic that you created in the ApsaraMQ for Kafka console
 ```
 
-.
+`.`
 
 ```
         String value = "this is the message's value"; // The message content.
@@ -733,7 +816,7 @@ e message belongs. Enter the topic that you created in the ApsaraMQ for Kafka co
 efficiency. However, do not obtain a large number of future objects at the same time.
 ```
 
-Message Queue for Apache Kafka y , g j
+`y` `,` `g` `j`
 
 ```java
             List<Future<RecordMetadata>> futures = new
@@ -744,7 +827,6 @@ ArrayList<Future<RecordMetadata>>(128);
 ProducerRecord<String, String>(topic, value + ": " + i);
                 Future<RecordMetadata> metadataFuture = producer.send(kafkaMessage);
                 futures.add(metadataFuture);
-            }
             producer.flush();
             for (Future<RecordMetadata> future: futures) {
                 // Obtain the results of the future object in a synchronous manner.
@@ -753,16 +835,11 @@ ProducerRecord<String, String>(topic, value + ": " + i);
                     System.out.println("Produce ok:" + recordMetadata.toString());
                 } catch (Throwable t) {
                     t.printStackTrace();
-                }
-            }
         } catch (Exception e) {
             // If the message still fails to be sent after the maximum number of retri
 es is reached, troubleshoot the error.
             System.out.println("error occurred");
             e.printStackTrace();
-        }
-    }
-}
 ```
 
 2. Compile and run KafkaProducerDemo.java to send messages.
@@ -778,13 +855,7 @@ import java.util.ArrayList; import java.util.List; import java.util.Properties; 
         Properties kafkaProperties =  JavaKafkaConfigurer.getKafkaProperties();
 ```
 
-i i
-
-```
-()
-```
-
-Message Queue for Apache Kafka
+`i` `i` `()`
 
 ```java
         Properties props = new Properties();
@@ -822,7 +893,6 @@ GROUP_ID_CONFIG value to subscribe to the same topics.
         String[] topics = topicStr.split(",");
         for (String topic: topics) {
             subscribedTopics.add(topic.trim());
-        }
         consumer.subscribe(subscribedTopics);
         // Consume messages in a loop.
         while (true){
@@ -834,23 +904,15 @@ starts. The total duration cannot exceed the interval specified by SESSION_TIMEO
 messages and return the results in an asynchronous manner.
                 for (ConsumerRecord<String, String> record : records) {
                     System.out.println(String.format("Consume partition:%d offset:%d
-", record.partition(), record.offset())); }
+", record.partition(), record.offset()));
 ```
 
-Message Queue for Apache Kafka
-
 ```
-                }
             } catch (Exception e) {
                 try {
                     Thread.sleep(1000);
                 } catch (Throwable ignore) {
-                }
                 e.printStackTrace();
-            }
-        }
-    }
-}
 ```
 
 ii. Compile and run KafkaConsumerDemo.java to consume messages. Use multiple consumers to consume messages i. Create a multi-consumer program named KafkaMultiConsumerDemo.java.
@@ -884,7 +946,7 @@ beat message within the interval, the broker determines that the consumer is not
 essages are not consumed before the next polling cycle starts, load balancing is tr
 ```
 
-i d d f d i Message Queue for Apache Kafka
+`i` `d` `d` `f` `d` `i`
 
 ```java
 iggered and performance may deteriorate.
@@ -909,20 +971,15 @@ ng>(props);
             KafkaConsumerRunner kafkaConsumerRunner = new
 KafkaConsumerRunner(consumer);
             consumerThreads[i] = new Thread(kafkaConsumerRunner);
-        }
         for (int i = 0; i < consumerNum; i++) {
             consumerThreads[i].start();
-        }
         for (int i = 0; i < consumerNum; i++) {
             consumerThreads[i].join();
-        }
-    }
     static class KafkaConsumerRunner implements Runnable {
         private final AtomicBoolean closed = new AtomicBoolean(false);
         private final KafkaConsumer consumer;
         KafkaConsumerRunner(KafkaConsumer consumer) {
             this.consumer = consumer;
-        }
         @Override
         public void run() {
             try {
@@ -934,37 +991,25 @@ consumer.poll(1000);
 le starts. The total duration cannot exceed the interval specified by SESSION_TIMEO UT_MS_CONFIG. for(ConsumerRecord<String String>record:records){
 ```
 
-Message Queue for Apache Kafka
-
 ```java
                         for (ConsumerRecord<String, String> record : records) {
                             System.out.println(String.format("Thread:%s Consume part
 ition:%d offset:%d", Thread.currentThread().getName(), record.partition(), record.o ffset()));
-                        }
                     } catch (Exception e) {
                         try {
                             Thread.sleep(1000);
                         } catch (Throwable ignore) {
-                        }
                         e.printStackTrace();
-                    }
-                }
             } catch (WakeupException e) {
                 // If the consumer is shut down, ignore the exception.
                 if (!closed.get()) {
                     throw e;
-                }
             } finally {
                 consumer.close();
-            }
-        }
         // Implement a shutdown hook that can be called by another thread.
         public void shutdown() {
             closed.set(true);
             consumer.wakeup();
-        }
-    }
-}
 ```
 
 ii. Compile and run KafkaMultiConsumerDemo.java to consume messages.
@@ -973,7 +1018,7 @@ ii. Compile and run KafkaMultiConsumerDemo.java to consume messages.
 
 For information about the sample code of SDKs for other programming languages, see ApsaraMQ for Kafka demo library.
 
-### SDK for Python
+### 4.2 SDK for Python
 
 This topic describes how to use the SDK for Python to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -989,14 +1034,6 @@ Python 2.7, 3.4, 3.5, 3.6, and 3.7 are supported. pip is installed. For more inf
 
 Run the following command to install the Python library:
 
-| Parameter | Description |
-|---|---|
-| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
-| topic name _ | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
-| consumer id _ | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
-
-Message Queue for Apache Kafka
-
 ```
 pip install kafka-python
 ```
@@ -1010,11 +1047,17 @@ kafka_setting = {
     'bootstrap_servers': ["XXX", "XXX", "XXX"],
     'topic_name': 'XXX',
     'consumer_id': 'XXX'
-}
 ```
 
+| Parameter | Description |
+|---|---|
+| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
+| topic name _ | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
+| consumer id _ | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
+
+**Send messages**
+
 1. Create a producer program named aliyun_kafka_producer.py.
-Message Queue for Apache Kafka
 
 ```java
 #!/usr/bin/env python
@@ -1025,7 +1068,9 @@ import socket from kafka import KafkaProducer from kafka.errors import KafkaErro
 partitions = producer.partitions_for(conf['topic_name']) print 'Partitions in the topic: %s' % partitions try:
     future = producer.send(conf['topic_name'], 'hello aliyun-kafka!')
     future.get()
+    print 'send message succeed.'
 except KafkaError, e:
+    print 'send message failed.'
     print e
 ```
 
@@ -1038,7 +1083,6 @@ python aliyun_kafka_producer.py
 **Subscribe to messages**
 
 1. Create a consumer program named aliyun_kafka_consumer.py.
-Message Queue for Apache Kafka
 
 ```java
 #!/usr/bin/env python
@@ -1060,7 +1104,7 @@ essage.partition
 python aliyun_kafka_consumer.py
 ```
 
-### SDK for C++
+### 4.3 SDK for C++
 
 This topic describes how to use the SDK for C++ to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -1077,7 +1121,6 @@ cd /etc/yum.repos.d/
 ```
 
 2. Create a yum repository configuration file named confluent.repo.
-Message Queue for Apache Kafka
 
 ```
 [Confluent.dist] name=Confluent repository (dist) baseurl=https://packages.confluent.io/rpm/5.1/7 gpgcheck=1 gpgkey=https://packages.confluent.io/rpm/5.1/archive.key enabled=1 [Confluent] name=Confluent repository baseurl=https://packages.confluent.io/rpm/5.1 gpgcheck=1 gpgkey=https://packages.confluent.io/rpm/5.1/archive.key enabled=1
@@ -1089,6 +1132,8 @@ Message Queue for Apache Kafka
 yum install librdkafka-devel
 ```
 
+**Send messages**
+
 1. Create a producer program named kafka_producer.c.
 `/*`
 
@@ -1096,21 +1141,21 @@ yum install librdkafka-devel
  * librdkafka - Apache Kafka C library
 ```
 
-*
+`*`
 
 ```
  * Copyright (c) 2017, Magnus Edenhill
  * All rights reserved.
 ```
 
-*
+`*`
 
 ```
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
 ```
 
-*
+`*`
 
 ```
  * 1. Redistributions of source code must retain the above copyright notice,
@@ -1120,7 +1165,7 @@ yum install librdkafka-devel
  *    and/or other materials provided with the distribution.
 ```
 
-*
+`*`
 
 ```
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -1145,7 +1190,7 @@ yum install librdkafka-devel
  * (https://github.com/edenhill/librdkafka)
 ```
 
-`*/` Message Queue for Apache Kafka /
+`*/` `/`
 
 ```
 #include <stdio.h>
@@ -1164,11 +1209,11 @@ static int run = 1; /**
 static void stop (int sig) {
         run = 0;
         fclose(stdin); /* abort fgets() */
-} /**
+/**
  * @brief Message delivery report callback.
 ```
 
-*
+`*`
 
 ```
  * This callback is called exactly once per message, indicating if
@@ -1177,7 +1222,7 @@ static void stop (int sig) {
  * failed delivery (rkmessage->err != RD_KAFKA_RESP_ERR_NO_ERROR).
 ```
 
-*
+`*`
 
 ```
  * The callback is triggered from rd_kafka_poll() and executes on
@@ -1198,14 +1243,12 @@ static void dr_msg_cb (rd_kafka_t *rk,
                         "partition %"PRId32")\n",
                         rkmessage->len, rkmessage->partition);
         /* The rkmessage is destroyed automatically by librdkafka */
-} int main (int argc, char **argv) {
+int main (int argc, char **argv) {
         rd_kafka_t *rk;         /* Producer instance handle */
         rd_kafka_topic_t *rkt;  /* Topic object */
         rd_kafka_conf_t *conf;  /* Temporary configuration object */
         char errstr[512];       /* librdkafka API error reporting buffer */
 ```
-
-Message Queue for Apache Kafka
 
 ```
         char buf[512];          /* Message value temporary buffer */
@@ -1225,7 +1268,6 @@ Message Queue for Apache Kafka
         if (argc != 3) {
                 fprintf(stderr, "%% Usage: %s <broker> <topic>\n", argv[0]);
                 return 1;
-        }
         brokers = argv[1];
         topic   = argv[2];
 ```
@@ -1248,7 +1290,6 @@ Message Queue for Apache Kafka
                               errstr, sizeof(errstr)) != RD_KAFKA_CONF_OK) {
                 fprintf(stderr, "%s\n", errstr);
                 return 1;
-        }
         /* Set the delivery report callback.
          * This callback will be called once per message to inform
          * the application if delivery succeeded or failed.
@@ -1262,7 +1303,7 @@ Message Queue for Apache Kafka
          * Create producer instance.
 ```
 
-*
+`*`
 
 ```
          * NOTE: rd_kafka_new() takes ownership of the conf object
@@ -1278,17 +1319,14 @@ Message Queue for Apache Kafka
                 fprintf(stderr,
                         "%% Failed to create new producer: %s\n", errstr);
                 return 1;
-        }
         /* Create topic object that will be reused for each message
 ```
-
-Message Queue for Apache Kafka
 
 ```
          * produced.
 ```
 
-*
+`*`
 
 ```
          * Both the producer instance (rd_kafka_t) and topic objects (topic_t)
@@ -1304,7 +1342,6 @@ Message Queue for Apache Kafka
                         rd_kafka_err2str(rd_kafka_last_error()));
                 rd_kafka_destroy(rk);
                 return 1;
-        }
         /* Signal handler for clean shutdown */
         signal(SIGINT, stop);
         fprintf(stderr,
@@ -1319,7 +1356,6 @@ Message Queue for Apache Kafka
                         /* Empty line: only serve delivery reports */
                         rd_kafka_poll(rk, 0/*non-blocking */);
                         continue;
-                }
 ```
 
 `/*`
@@ -1351,8 +1387,6 @@ Message Queue for Apache Kafka
                             /* Optional key and its length */
 ```
 
-Message Queue for Apache Kafka
-
 ```
                             NULL, 0,
                             /* Message opaque, provided in
@@ -1381,7 +1415,7 @@ Message Queue for Apache Kafka
                                  * delivery report callback to be called.
 ```
 
-*
+`*`
 
 ```
                                  * The internal queue is limited by the
@@ -1389,12 +1423,10 @@ Message Queue for Apache Kafka
                                  * queue.buffering.max.messages */
                                 rd_kafka_poll(rk, 1000/*block for max 1000ms*/);
                                 goto retry;
-                        }
                 } else {
                         fprintf(stderr, "%% Enqueued message (%zd bytes) "
                                 "for topic %s\n",
                                 len, rd_kafka_topic_name(rkt));
-                }
                 /* A producer application should continually serve
                  * the delivery report queue by calling rd_kafka_poll()
                  * at frequent intervals.
@@ -1407,19 +1439,11 @@ Message Queue for Apache Kafka
                  * delivery report callback served (and any other callbacks
                  * you register). */
                 rd_kafka_poll(rk, 0/*non-blocking*/);
-        }
         /* Wait for final messages to be delivered or fail.
          * rd_kafka_flush() is an abstraction over rd_kafka_poll() which
          * waits for all messages to be delivered. */
 fprintf(stderr "%%Flushingfinalmessages \n");
 ```
-
-| Parameter | Description |
-|---|---|
-| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
-| topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
-
-Message Queue for Apache Kafka
 
 ```
         fprintf(stderr, "%% Flushing final messages..\n");
@@ -1429,7 +1453,6 @@ Message Queue for Apache Kafka
         /* Destroy the producer instance */
         rd_kafka_destroy(rk);
         return 0;
-}
 ```
 
 2. Run the following command to compile kafka_producer.c:
@@ -1444,6 +1467,11 @@ gcc -lrdkafka ./kafka_producer.c -o kafka_producer
 ./kafka_producer <bootstrap_servers> <topic>
 ```
 
+| Parameter | Description |
+|---|---|
+| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
+| topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
+
 **Subscribe to messages**
 
 1. Create a consumer program named kafka_consumer.c.
@@ -1453,21 +1481,21 @@ gcc -lrdkafka ./kafka_producer.c -o kafka_producer
  * librdkafka - Apache Kafka C library
 ```
 
-*
+`*`
 
 ```
  * Copyright (c) 2015, Magnus Edenhill
  * All rights reserved.
 ```
 
-*
+`*`
 
 ```
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
 ```
 
-*
+`*`
 
 ```
  * 1. Redistributions of source code must retain the above copyright notice,
@@ -1477,13 +1505,11 @@ gcc -lrdkafka ./kafka_producer.c -o kafka_producer
  *    and/or other materials provided with the distribution.
 ```
 
-*
+`*`
 
 ```
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 ```
-
-Message Queue for Apache Kafka
 
 ```
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -1530,12 +1556,10 @@ static int run = 1; static rd_kafka_t *rk; static int exit_eof = 0; static int w
                 exit(1);
     run = 0;
     fclose(stdin); /* abort fgets() */
-} static void hexdump (FILE *fp, const char *name, const void *ptr, size_t len) {
+static void hexdump (FILE *fp, const char *name, const void *ptr, size_t len) {
     const char *p = (const char *)ptr;
     unsigned int of = 0;
 ```
-
-Message Queue for Apache Kafka
 
 ```
     if (name)
@@ -1550,11 +1574,9 @@ Message Queue for Apache Kafka
             hof += sprintf(hexen+hof, "%02x ", p[i] & 0xff);
             cof += sprintf(charen+cof, "%c",
                        isprint((int)p[i]) ?  p[i] : '.');
-        }
         fprintf(fp, "%08x: %-48s %-16s\n",
             of, hexen, charen);
-    }
-} /**
+/**
  * Kafka logger callback (optional)
 ```
 
@@ -1568,7 +1590,7 @@ static void logger (const rd_kafka_t *rk, int level,
     fprintf(stdout, "%u.%03u RDKAFKA-%i-%s: %s: %s\n",
         (int)tv.tv_sec, (int)(tv.tv_usec / 1000),
         level, fac, rd_kafka_name(rk), buf);
-} /**
+/**
  * Handle and print a consumed message.
  * Internally crafted messages are also used to propagate state from
  * librdkafka to the application. The application needs to check
@@ -1590,15 +1612,11 @@ static void msg_consume (rd_kafka_message_t *rkmessage) {
                                 fprintf(stderr,
 ```
 
-Message Queue for Apache Kafka
-
 ```
                                         "%% All partition(s) reached EOF: "
                                         "exiting\n");
                 run = 0;
-                        }
             return;
-        }
                 if (rkmessage->rkt)
                         fprintf(stderr, "%% Consume error for "
                                 "topic \"%s\" [%"PRId32"] "
@@ -1615,7 +1633,6 @@ Message Queue for Apache Kafka
                     rkmessage->err == RD_KAFKA_RESP_ERR__UNKNOWN_TOPIC)
                         run = 0;
         return;
-    }
     if (!quiet)
         fprintf(stdout, "%% Message (topic %s [%"PRId32"], "
                         "offset %"PRId64", %zd bytes):\n",
@@ -1629,19 +1646,16 @@ Message Queue for Apache Kafka
         else
             printf("Key: %.*s\n",
                    (int)rkmessage->key_len, (char *)rkmessage->key);
-    }
     if (output == OUTPUT_HEXDUMP)
         hexdump(stdout, "Message Payload",
             rkmessage->payload, rkmessage->len);
     else
         printf("%.*s\n",
                (int)rkmessage->len, (char *)rkmessage->payload);
-} static void print_partition_list (FILE *fp,
+static void print_partition_list (FILE *fp,
                                   const rd_kafka_topic_partition_list_t
 *partitions){
 ```
-
-Message Queue for Apache Kafka
 
 ```
                                   *partitions) {
@@ -1652,15 +1666,18 @@ Message Queue for Apache Kafka
                         partitions->elems[i].topic,
                         partitions->elems[i].partition,
             partitions->elems[i].offset);
-        }
         fprintf(stderr, "\n");
-} static void rebalance_cb (rd_kafka_t *rk,
+static void rebalance_cb (rd_kafka_t *rk,
                           rd_kafka_resp_err_t err,
               rd_kafka_topic_partition_list_t *partitions,
                           void *opaque) {
     fprintf(stderr, "%% Consumer group rebalanced: ");
     switch (err)
-    {
+```
+
+`{`
+
+```
     case RD_KAFKA_RESP_ERR__ASSIGN_PARTITIONS:
         fprintf(stderr, "assigned:\n");
         print_partition_list(stderr, partitions);
@@ -1678,8 +1695,7 @@ Message Queue for Apache Kafka
                         rd_kafka_err2str(err));
                 rd_kafka_assign(rk, NULL);
         break;
-    }
-} static int describe_groups (rd_kafka_t *rk, const char *group) {
+static int describe_groups (rd_kafka_t *rk, const char *group) {
         rd_kafka_resp_err_t err;
         const struct rd_kafka_group_list *grplist;
         int i;
@@ -1690,11 +1706,8 @@ Message Queue for Apache Kafka
 return-1;
 ```
 
-Message Queue for Apache Kafka
-
 ```
                 return 1;
-        }
         for (i = 0 ; i < grplist->group_cnt ; i++) {
                 const struct rd_kafka_group_info *gi = &grplist->groups[i];
                 int j;
@@ -1715,16 +1728,14 @@ Message Queue for Apache Kafka
                                mi->member_metadata_size);
                         printf("    assignment: %d bytes\n",
                                mi->member_assignment_size);
-                }
                 printf("\n");
-        }
         if (group && !grplist->group_cnt)
                 fprintf(stderr, "%% No matching group (%s)\n", group);
         rd_kafka_group_list_destroy(grplist);
         return 0;
-} static void sig_usr1 (int sig) {
+static void sig_usr1 (int sig) {
     rd_kafka_dump(stdout, rk);
-} int main (int argc, char **argv) {
+int main (int argc, char **argv) {
         char mode = 'C';
     char *brokers = "localhost:9092";
     int opt;
@@ -1737,7 +1748,7 @@ Message Queue for Apache Kafka
         rdkafkaresperrt err;
 ```
 
-Message Queue for Apache Kafka _ _ _ _
+`_` `_` `_` `_`
 
 ```
         char *group = NULL;
@@ -1775,29 +1786,28 @@ Message Queue for Apache Kafka _ _ _ _
             output = OUTPUT_RAW;
             break;
         case 'X':
-        {
+```
+
+`{`
+
+```
             char *name, *val;
             rd_kafka_conf_res_t res;
             if (!strcmp(optarg, "list") ||
                 !strcmp(optarg, "help")) {
                 rd_kafka_conf_properties_show(stdout);
                 exit(0);
-            }
             if (!strcmp(optarg, "dump")) {
                 do_conf_dump = 1;
                 continue;
 ```
 
-Message Queue for Apache Kafka
-
 ```
-            }
             name = optarg;
             if (!(val = strchr(name, '='))) {
                 fprintf(stderr, "%% Expected "
                     "-X property=value, not %s\n", name);
                 exit(1);
-            }
             *val = '\0';
             val++;
             res = RD_KAFKA_CONF_UNKNOWN;
@@ -1817,8 +1827,6 @@ Message Queue for Apache Kafka
             if (res != RD_KAFKA_CONF_OK) {
                 fprintf(stderr, "%% %s\n", errstr);
                 exit(1);
-            }
-        }
         break;
                 case 'D':
                 case 'O':
@@ -1826,8 +1834,6 @@ Message Queue for Apache Kafka
                         break;
         default:
             goto usage;
-        }
-    }
     if (do_conf_dump) {
         const char **arr;
         size_t cnt;
@@ -1837,23 +1843,18 @@ Message Queue for Apache Kafka
                 arr = rd_kafka_conf_dump(conf, &cnt);
 ```
 
-Message Queue for Apache Kafka
-
 ```
                 printf("# Global config\n");
             } else {
                 printf("# Topic config\n");
                 arr = rd_kafka_topic_conf_dump(topic_conf,
                                    &cnt);
-            }
             for (i = 0 ; i < (int)cnt ; i += 2)
                 printf("%s = %s\n",
                        arr[i], arr[i+1]);
             printf("\n");
             rd_kafka_conf_dump_free(arr, cnt);
-        }
         exit(0);
-    }
     if (strchr("OC", mode) && optind == argc) {
     usage:
         fprintf(stderr,
@@ -1891,11 +1892,8 @@ Message Queue for Apache Kafka
 eit(1)
 ```
 
-Message Queue for Apache Kafka
-
 ```
         exit(1);
-    }
     signal(SIGINT, stop);
     signal(SIGUSR1, sig_usr1);
     if (debug &&
@@ -1904,7 +1902,6 @@ Message Queue for Apache Kafka
         fprintf(stderr, "%% Debug configuration failed: %s: %s\n",
             errstr, debug);
         exit(1);
-    }
 ```
 
 `/*`
@@ -1925,7 +1922,6 @@ Message Queue for Apache Kafka
                     RD_KAFKA_CONF_OK) {
                         fprintf(stderr, "%% %s\n", errstr);
                         exit(1);
-                }
                 /* Consumer groups always use broker based offset storage */
                 if (rd_kafka_topic_conf_set(topic_conf, "offset.store.method",
                                             "broker",
@@ -1933,14 +1929,12 @@ Message Queue for Apache Kafka
                     RD_KAFKA_CONF_OK) {
                         fprintf(stderr, "%% %s\n", errstr);
                         exit(1);
-                }
                 /* Set default topic config for pattern-matched topics. */
                 rd_kafka_conf_set_default_topic_conf(conf, topic_conf);
                 /* Callback called on partition assignment changes */
                 rd_kafka_conf_set_rebalance_cb(conf, rebalance_cb);
                 rd_kafka_conf_set(conf, "enable.partition.eof", "true",
                                   NULL, 0);
-        }
         /* Create Kafka handle */
         if (!(rk = rd_kafka_new(RD_KAFKA_CONSUMER, conf,
                                 errstr, sizeof(errstr)))) {
@@ -1949,24 +1943,19 @@ Message Queue for Apache Kafka
 errstr);
 ```
 
-Message Queue for Apache Kafka
-
 ```
                         errstr);
                 exit(1);
-        }
         /* Add brokers */
         if (rd_kafka_brokers_add(rk, brokers) == 0) {
                 fprintf(stderr, "%% No valid brokers specified\n");
                 exit(1);
-        }
         if (mode == 'D') {
                 int r;
                 /* Describe groups */
                 r = describe_groups(rk, group);
                 rd_kafka_destroy(rk);
                 exit(r == -1 ?  1 : 0);
-        }
         /* Redirect rd_kafka_poll() to consumer_poll() */
         rd_kafka_poll_set_consumer(rk);
         topics = rd_kafka_topic_partition_list_new(argc - optind);
@@ -1981,9 +1970,7 @@ Message Queue for Apache Kafka
                         partition = atoi(t+1);
                         is_subscription = 0; /* is assignment */
                         wait_eof++;
-                }
                 rd_kafka_topic_partition_list_add(topics, topic, partition);
-        }
         if (mode == 'O') {
                 /* Offset query */
                 err = rd_kafka_committed(rk, topics, 5000);
@@ -1991,14 +1978,13 @@ Message Queue for Apache Kafka
                         fprintf(stderr, "%% Failed to fetch offsets: %s\n",
                                 rd_kafka_err2str(err));
                         exit(1);
-                }
                 for (i = 0 ; i < topics->cnt ; i++) {
                         rd_kafka_topic_partition_t *p = &topics->elems[i];
                         printf("Topic \"%s\" partition %"PRId32,
                                p->topic, p->partition);
 ```
 
-Message Queue for Apache Kafka p p ,p p
+`p` `p` `,``p` `p`
 
 ```
                         if (p->err)
@@ -2010,11 +1996,8 @@ Message Queue for Apache Kafka p p ,p p
                                 if (p->metadata_size)
                                         printf(" (%d bytes of metadata)",
                                                (int)p->metadata_size);
-                        }
                         printf("\n");
-                }
                 goto done;
-        }
         if (is_subscription) {
                 fprintf(stderr, "%% Subscribing to %d topics\n", topics->cnt);
                 if ((err = rd_kafka_subscribe(rk, topics))) {
@@ -2022,23 +2005,18 @@ Message Queue for Apache Kafka p p ,p p
                                 "%% Failed to start consuming topics: %s\n",
                                 rd_kafka_err2str(err));
                         exit(1);
-                }
         } else {
                 fprintf(stderr, "%% Assigning %d partitions\n", topics->cnt);
                 if ((err = rd_kafka_assign(rk, topics))) {
                         fprintf(stderr,
                                 "%% Failed to assign partitions: %s\n",
                                 rd_kafka_err2str(err));
-                }
-        }
         while (run) {
                 rd_kafka_message_t *rkmessage;
                 rkmessage = rd_kafka_consumer_poll(rk, 1000);
                 if (rkmessage) {
                         msg_consume(rkmessage);
                         rd_kafka_message_destroy(rkmessage);
-                }
-        }
 done:
         err = rd_kafka_consumer_close(rk);
         if (err)
@@ -2047,14 +2025,6 @@ done:
         else
                 fprintf(stderr, "%% Consumer closed\n");
 ```
-
-| Parameter | Description |
-|---|---|
-| group | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
-| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
-| topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
-
-Message Queue for Apache Kafka
 
 ```
         rd_kafka_topic_partition_list_destroy(topics);
@@ -2067,7 +2037,6 @@ Message Queue for Apache Kafka
     if (run <= 0)
         rd_kafka_dump(stdout, rk);
     return 0;
-}
 ```
 
 2. Run the following command to compile kafka_consumer.c:
@@ -2082,19 +2051,19 @@ gcc -lrdkafka ./kafka_consumer.c -o kafka_consumer
 ./kafka_consumer -g <group> -b <bootstrap_servers> <topic>
 ```
 
-### SDK for Go
+| Parameter | Description |
+|---|---|
+| group | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
+| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
+| topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
+
+### 4.4 SDK for Go
 
 This topic describes how to use the SDK for Go to connect to ApsaraMQ for Kafka to send and receive messages.
 
 **Prerequisites**
 
-| Parameter | Description |
-|---|---|
-| topics | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
-| servers | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
-| consumerGroup | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
-
-Message Queue for Apache Kafka Go is installed. For more information, see All releases.
+Go is installed. For more information, see All releases.
 
 **Install the Go library**
 
@@ -2113,22 +2082,25 @@ i. go install services ii. go install services/producer iii. go install services
 **Create configuration files**
 
 1. Create a configuration file named kafka.json for ApsaraMQ for Kafka.
+`{`
 
 ```json
-{
   "topics": ["XXX"],
   "servers": ["XXX","XXX","XXX"],
   "consumerGroup": "XXX"
-}
 ```
+
+| Parameter | Description |
+|---|---|
+| topics | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
+| servers | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
+| consumerGroup | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
 
 2. Create a configurator named configs.go.
 
 ```java
 package configs import (
 ```
-
-Message Queue for Apache Kafka
 
 ```
     "encoding/json"
@@ -2138,14 +2110,14 @@ Message Queue for Apache Kafka
     "path/filepath"
 ```
 
-)
+`)`
 
 ```
 var (
     configPath string
 ```
 
-)
+`)`
 
 ```
 func init() {
@@ -2153,9 +2125,8 @@ func init() {
     workPath, err := os.Getwd()
     if err != nil {
         panic(err)
-    }
     configPath = filepath.Join(workPath, "conf")
-} // LoadJsonConfig is used to load a configuration file to config in JSON format. // config indicates a pointer to a struct. Otherwise, a panic exception is thrown. func LoadJsonConfig(config interface{}, filename string) {
+// LoadJsonConfig is used to load a configuration file to config in JSON format. // config indicates a pointer to a struct. Otherwise, a panic exception is thrown. func LoadJsonConfig(config interface{}, filename string) {
     var err error
     var decoder *json.Decoder
     file := OpenFile(filename)
@@ -2165,9 +2136,8 @@ func init() {
         msg := fmt.Sprintf("Decode json fail for config file at %s. Error: %v", filen
 ame, err)
         panic(msg)
-    }
     json.Marshal(config)
-} func LoadJsonFile(filename string) (cfg string) {
+func LoadJsonFile(filename string) (cfg string) {
     file := OpenFile(filename)
     defer file.Close()
     content, err := ioutil.ReadAll(file)
@@ -2175,26 +2145,21 @@ ame, err)
         msg := fmt.Sprintf("Read config to string error. file at %s. Error: %v", file
 name, err)
         panic(msg)
-    }
     cfg = string(content)
 ```
 
-Message Queue for Apache Kafka
-
 ```
     return cfg
-} func GetFullPath(filename string) string {
+func GetFullPath(filename string) string {
     return filepath.Join(configPath, filename)
-} func OpenFile(filename string) *os.File {
+func OpenFile(filename string) *os.File {
     fullPath := filepath.Join(configPath, filename)
     var file *os.File
     var err error
     if file, err = os.Open(fullPath); err != nil {
         msg := fmt.Sprintf("Can not load config at %s. Error: %v", fullPath, err)
         panic(msg)
-    }
     return file
-}
 ```
 
 3. Create a configurator named types.go.
@@ -2204,8 +2169,9 @@ package configs type MqConfig struct {
     Topics     []string `json:"topics"`
     Servers    []string `json:"servers"`
     ConsumerId string   `json:"consumerGroup"`
-}
 ```
+
+**Send messages**
 
 1. Create a producer program named producer.go.
 
@@ -2218,7 +2184,7 @@ import (
     "github.com/Shopify/sarama"
 ```
 
-)
+`)`
 
 ```
 var cfg *configs.MqConfig var producer sarama.SyncProducer func init() {
@@ -2227,13 +2193,11 @@ connection\n")
     var err error
 ```
 
-f `fi` MC
+`f` `fi` `M``C`
 
 ```
 fi{}
 ```
-
-Message Queue for Apache Kafka
 
 ```
     cfg = &configs.MqConfig{}
@@ -2246,33 +2210,29 @@ Message Queue for Apache Kafka
 cfg, err)
         fmt.Println(msg)
         panic(msg)
-    }
     producer, err = sarama.NewSyncProducer(cfg.Servers, mqConfig)
     if err != nil {
         msg := fmt.Sprintf("Kafak producer create fail. err: %v", err)
         fmt.Println(msg)
         panic(msg)
-    }
-} func produce(topic string, key string, content string) error {
+func produce(topic string, key string, content string) error {
     msg := &sarama.ProducerMessage{
         Topic: topic,
         Key:   sarama.StringEncoder(key),
         Value: sarama.StringEncoder(content),
         Timestamp: time.Now(),
-    }
+    _, _, err := producer.SendMessage(msg)
     if err != nil {
         msg := fmt.Sprintf("Send Error topic: %v. key: %v. content: %v", topic, key,
 content)
         fmt.Println(msg)
         return err
-    }
     fmt.Printf("Send OK topic:%s key:%s value:%s\n", topic, key, content)
     return nil
-} func main() {
+func main() {
     key := strconv.FormatInt(time.Now().UTC().UnixNano(), 10)
     value := "this is a kafka message!"
     produce(cfg.Topics[0], key, value)
-}
 ```
 
 2. Run the following command to send messages:
@@ -2280,8 +2240,6 @@ content)
 ```
 go run producer.go
 ```
-
-Message Queue for Apache Kafka
 
 **Subscribe to messages**
 
@@ -2297,7 +2255,7 @@ import (
     "github.com/bsm/sarama-cluster"
 ```
 
-)
+`)`
 
 ```
 var cfg *configs.MqConfig var consumer *cluster.Consumer var sig chan os.Signal func init() {
@@ -2315,7 +2273,6 @@ var cfg *configs.MqConfig var consumer *cluster.Consumer var sig chan os.Signal 
 clusterCfg, err)
         fmt.Println(msg)
         panic(msg)
-    }
     consumer, err = cluster.NewConsumer(cfg.Servers, cfg.ConsumerId, cfg.Topics, clus
 terCfg)
     if err != nil {
@@ -2323,14 +2280,10 @@ terCfg)
 rCfg)
         fmt.Println(msg)
         panic(msg)
-    }
     sig = make(chan os.Signal, 1)
-} func Start() {
+func Start() {
     go consume()
-}
 ```
-
-Message Queue for Apache Kafka
 
 ```
 func consume() {
@@ -2341,34 +2294,27 @@ func consume() {
                 fmt.Printf("Partition:%d, Offset:%d, Key:%s, Value:%s Timestamp:%s\n",
 msg.Partition, msg.Offset, string(msg.Key), string(msg.Value), msg.Timestamp)
                 consumer.MarkOffset(msg, "")
-            }
         case err, more := <-consumer.Errors():
             if more {
                 fmt.Println("Kafka consumer error: %v", err.Error())
-            }
         case ntf, more := <-consumer.Notifications():
             if more {
                 fmt.Println("Kafka consumer rebalance: %v", ntf)
-            }
         case <-sig:
             fmt.Errorf("Stop consumer server...")
             consumer.Close()
             return
-        }
-    }
-} func Stop(s os.Signal) {
+func Stop(s os.Signal) {
     fmt.Println("Recived kafka consumer stop signal...")
     sig <- s
     fmt.Println("kafka consumer stopped!!!")
-} func main() {
+func main() {
     signals := make(chan os.Signal, 1)
     signal.Notify(signals, os.Interrupt)
     Start()
     select {
     case s := <-signals:
         Stop(s)
-    }
-}
 ```
 
 2. Run the following command to subscribe to messages:
@@ -2377,9 +2323,9 @@ msg.Partition, msg.Offset, string(msg.Key), string(msg.Value), msg.Timestamp)
 go run consumer.go
 ```
 
-### SDK for PHP
+### 4.5 SDK for PHP
 
-Message Queue for Apache Kafka This topic describes how to use the SDK for PHP to connect to ApsaraMQ for Kafka to send and receive messages.
+This topic describes how to use the SDK for PHP to connect to ApsaraMQ for Kafka to send and receive messages.
 
 **Prerequisites**
 
@@ -2428,8 +2374,9 @@ Create a configuration file named setting.php.
     'bootstrap_servers' => "xxx:xx,xxx:xx",
     'topic_name' => 'xxx',
     'consumer_id' => 'xxx'
-];
 ```
+
+];
 
 | Parameter | Description |
 |---|---|
@@ -2437,7 +2384,8 @@ Create a configuration file named setting.php.
 | topic name _ | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
 | consumer id _ | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
 
-Message Queue for Apache Kafka
+**Send messages**
+
 1. Create a producer program named kafka-producer.php.
 
 ```
@@ -2445,7 +2393,7 @@ Message Queue for Apache Kafka
 ## If want to debug, set log level to LOG_DEBUG
 $rk->setLogLevel(LOG_INFO); $rk->addBrokers($setting['bootstrap_servers']); $topic = $rk->newTopic($setting['topic_name']); $a = $topic->produce(RD_KAFKA_PARTITION_UA, 0, "Message hello kafka"); $rk->poll(0); while ($rk->getOutQLen() > 0) {
     $rk->poll(50);
-} echo "send succ" . PHP_EOL;
+echo "send succ" . PHP_EOL;
 ```
 
 2. Run the following command to send messages:
@@ -2457,7 +2405,6 @@ php kafka-producer.php
 **Subscribe to messages**
 
 1. Create a consumer program named kafka-consumer.php.
-Message Queue for Apache Kafka
 
 ```
 <?php $setting = require __DIR__ . '/setting.php'; $conf = new RdKafka\Conf(); $conf->set('api.version.request', 'true'); $conf->set('group.id', $setting['consumer_id']); $conf->set('metadata.broker.list', $setting['bootstrap_servers']); $topicConf = new RdKafka\TopicConf(); $conf->setDefaultTopicConf($topicConf); $consumer = new RdKafka\KafkaConsumer($conf); $consumer->subscribe([$setting['topic_name']]); echo "Waiting for partition assignment... (make take some time when\n"; echo "quickly re-joining the group after leaving it.)\n"; while (true) {
@@ -2475,8 +2422,6 @@ Message Queue for Apache Kafka
         default:
             throw new \Exception($message->errstr(), $message->err);
             break;
-    }
-}
 ```
 
 ?>
@@ -2486,7 +2431,7 @@ Message Queue for Apache Kafka
 php kafka-consumer.php
 ```
 
-### SDK for Ruby
+### 4.6 SDK for Ruby
 
 This topic describes how to use the SDK for Ruby to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -2496,14 +2441,13 @@ Ruby is installed. For more information, see Ruby.
 
 **Install the Ruby library**
 
-| Parameter | Description |
-|---|---|
-
-Message Queue for Apache Kafka Run the following command to install the Ruby library:
+Run the following command to install the Ruby library:
 
 ```
 gem install ruby-kafka -v 0.6.8
 ```
+
+**Send messages**
 
 1. Create a producer program named producer.rb.
 
@@ -2517,7 +2461,7 @@ logger.level = Logger::INFO brokers = "xxx:xx,xxx:xx" topic = "xxx" kafka = Kafk
         logger: logger,
 ```
 
-)
+`)`
 
 ```
 producer = kafka.producer begin
@@ -2530,11 +2474,13 @@ end ensure
 end
 ```
 
+| Parameter | Description |
+|---|---|
+
 | brokers | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
 |---|---|
 | topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
 
-Message Queue for Apache Kafka
 2. Run the following command to send messages:
 
 ```
@@ -2544,13 +2490,6 @@ ruby producer.rb
 **Subscribe to messages**
 
 1. Create a consumer program named consumer.rb.
-
-| Parameter | Description |
-|---|---|
-| brokers | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
-| topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
-
-Message Queue for Apache Kafka
 
 ```bash
 # frozen_string_literal: true
@@ -2563,7 +2502,7 @@ logger.level = Logger::INFO brokers = "XXX:XX,XXX:XX" topic = "XXX" consumerGrou
         logger: logger,
 ```
 
-)
+`)`
 
 ```
 consumer = kafka.consumer(group_id: consumerGroup) consumer.subscribe(topic, start_from_beginning: false) trap("TERM") { consumer.stop } trap("INT") { consumer.stop } begin
@@ -2577,17 +2516,21 @@ rescue Kafka::ProcessingError => e
 end
 ```
 
+| Parameter | Description |
+|---|---|
+| brokers | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
+| topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
+
 | consumerGroup | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
 |---|---|
 
-Message Queue for Apache Kafka
 2. Run the following command to subscribe to messages:
 
 ```
 ruby consumer.rb
 ```
 
-### SDK for Node.js
+### 4.7 SDK for Node.js
 
 This topic describes how to use the SDK for Node.js to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -2628,21 +2571,22 @@ Run the **whereis openssl** command to obtain the path of the OpenSSL header fil
 
 **Create a configuration file**
 
-| Parameter | Description |
-|---|---|
-| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
-| topic name _ | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
-| consumer id _ | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
-
-Message Queue for Apache Kafka Create a configuration file named setting.js for ApsaraMQ for Kafka.
+Create a configuration file named setting.js for ApsaraMQ for Kafka.
 
 ```json
 module.exports = {
     'bootstrap_servers': ["kafka-ons-internet.aliyun.com:8080"],
     'topic_name': 'xxx',
     'consumer_id': 'xxx'
-}
 ```
+
+| Parameter | Description |
+|---|---|
+| bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
+| topic name _ | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
+| consumer id _ | The name of the consumer group. You do not need to create a consumer group before you send and receive messages. ApsaraMQ for Kafka automatically creates a consumer group based on your configurations. You can view the automatically created consumer group on the Consumer Groups page in the ApsaraMQ for Kafka console. |
+
+**Send messages**
 
 1. Create a producer program named producer.js that contains the following code:
 
@@ -2656,8 +2600,6 @@ const Kafka = require('node-rdkafka'); const config = require('./setting'); cons
 }); var connected = false producer.setPollInterval(100); producer.connect();
 ```
 
-Message Queue for Apache Kafka
-
 ```
 producer.on('ready', function() {
   connected = true
@@ -2665,7 +2607,12 @@ producer.on('ready', function() {
 }); producer.on("disconnected", function() {
   connected = false;
   producer.connect();
-}) producer.on('event.log', function(event) {
+```
+
+`})`
+
+```
+producer.on('event.log', function(event) {
       console.log("event.log", event);
 }); producer.on("error", function(error) {
     console.log("error:" + error);
@@ -2677,16 +2624,24 @@ producer.on('ready', function() {
       new Buffer('Hello Ali Kafka'),
       null,
       Date.now()
-    );
+```
+
+);
+
+```
   } catch (err) {
     console.error('A problem occurred when sending our message');
     console.error(err);
-  }
-} producer.on('delivery-report', function(err, report) {
+producer.on('delivery-report', function(err, report) {
     console.log("delivery-report: producer ok");
 }); producer.on('event.error', function(err) {
     console.error('event.error:' + err);
-}) setInterval(produce,1000,"Interval");
+```
+
+`})`
+
+```
+setInterval(produce,1000,"Interval");
 ```
 
 2. Run the following command to send messages:
@@ -2698,7 +2653,6 @@ node producer.js
 **Subscribe to messages**
 
 1. Create a consumption program named consumer.js.
-Message Queue for Apache Kafka
 
 ```
 const Kafka = require('node-rdkafka'); const config = require('./setting'); console.log(Kafka.features); console.log(Kafka.librdkafkaVersion); console.log(config) var consumer = new Kafka.KafkaConsumer({
@@ -2710,7 +2664,12 @@ const Kafka = require('node-rdkafka'); const config = require('./setting'); cons
   console.log("connect ok");
   consumer.subscribe([config['topic_name']]);
   consumer.consume();
-}) consumer.on('data', function(data) {
+```
+
+`})`
+
+```
+consumer.on('data', function(data) {
   console.log(data);
 }); consumer.on('event.log', function(event) {
       console.log("event.log", event);
@@ -2727,6 +2686,12 @@ const Kafka = require('node-rdkafka'); const config = require('./setting'); cons
 node consumer.js
 ```
 
+## 5 API reference
+
+### 5.1 Common request parameters
+
+A client calls ApsaraMQ for Kafka API operations based on HTTPS. Common request parameters must be included in all API requests and sent to the backend service of ApsaraMQ for Kafka for permission verification. The following table describes common request parameters.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | requestId | String | No | The request ID. We recommend that you save the request ID for log tracking. |
@@ -2734,14 +2699,6 @@ node consumer.js
 | callerType _ | String | No | The user type. Valid values: partner: an account in an account group customer: an Alibaba Cloud account sub: a Resource Access Management (RAM) user AssumedRoleUser: a user that uses a temporary Security Token Service (STS) token. |
 | parentId _ | Long | No | If you set callerType to sub, specify the ID of the Alibaba Cloud account for this parameter. If you set callerType to other values, leave this parameter empty. When you access resources by using an STS token, this parameter is not passed. |
 | AccessKeyId | String | No | The AccessKey ID of the user. |
-
-Message Queue for Apache Kafka
-
-## API reference
-
-### Common request parameters
-
-A client calls ApsaraMQ for Kafka API operations based on HTTPS. Common request parameters must be included in all API requests and sent to the backend service of ApsaraMQ for Kafka for permission verification. The following table describes common request parameters.
 
 | SecurityToken | String | No | The security token. The value of this parameter is the caller ID and all the preceding IDs. |
 |---|---|---|---|
@@ -2752,24 +2709,20 @@ A client calls ApsaraMQ for Kafka API operations based on HTTPS. Common request 
 | IspSignature | String | No | The signature string of the current request. For more information, see Use gateway signature to access API operations. |
 | IspSignatureSecretKey | String | No | The AccessKey secret used for the signature. For more information, see Use gateway signature to access API operations. |
 
-Message Queue for Apache Kafka
+### 5.2 Common response parameters
 
-### Common response parameters
-
-A client sends an HTTP request to the backend service of ApsaraMQ for Kafka. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format: Message Queue for Apache Kafka
+A client sends an HTTP request to the backend service of ApsaraMQ for Kafka. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format: `{`
 
 ```json
-{
     "code": 200,
     "message": "operation success",
     "requestId": "",
     "success": true,
-}
 ```
 
 Valid values: code: the HTTP status code. A value of 200 indicates that the request was successful. Other values indicate that the request failed. message: the processing result. success: indicates whether the request was successful. RequestId: the request ID. The value is a string.
 
-### Use the domain name to
+### 5.3 Use the domain name to access API operations
 
 **access API operations**
 
@@ -2790,7 +2743,7 @@ Sample output:
 
 The complete API URL is in the `http://<Domain name of ApsaraMQ for Kafka>/pop/<API` `operation>` format. The value of API operation varies based on operations. For example, the complete API URL for the ApplyVipInfo operation is `http://<Domain name of ApsaraMQ for` `Kafka>/pop/kafkaInstance/applyVipInfo` . For more information, see the documentation of the corresponding API operation.
 
-### Use the gateway signature to
+### 5.4 Use the gateway signature to access API operations
 
 **access API operations**
 
@@ -2798,28 +2751,23 @@ To allow clients to use the gateway signature to access API operations, the serv
 
 **RPC**
 
-| nd | x-acs-sign | parameters in the |
-|---|---|---|
-| request.getHeader("x-acs-sign") |  |  |
+The IspSignatureSecretKey parameter specifies the AccessKey secret of the signature. If you enter multiple key pairs in POP, hot replacement and signed keys are supported. This way, the backend can determine which key is used. The IspSignature parameter specifies the signing result. The value of the name parameter is the name of the parameter that is mapped to the backend. You can specify a custom value for the name parameter. The following items describe how to add parameters to an API operation. XML
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceType | String | No | The instance type. Valid values: Single-zone instance Dual-zone instance Three-zone instance |
-| zoneId | String | Yes | The zone ID. |
-
-Message Queue for Apache Kafka The IspSignatureSecretKey parameter specifies the AccessKey secret of the signature. If you enter multiple key pairs in POP, hot replacement and signed keys are supported. This way, the backend can determine which key is used. The IspSignature parameter specifies the signing result. The value of the name parameter is the name of the parameter that is mapped to the backend. You can specify a custom value for the name parameter. The following items describe how to add parameters to an API operation. XML
-
-```xml
+```
 <Parameter type="String" tagPosition="System" name="secretKey" required="false" tagNa me="IspSignatureSecretKey"/> <Parameter type="String" tagPosition="System" name="signature" required="false" tagNa me="IspSignature"/>
 ```
 
 **ROA**
 
-command to read the x-acs-sign parameter. To verify the signature, you need only to compare whether the signature of the gateway is the same as the signature calculated by HTTP.
+| nd | x-acs-sign | parameters in the |
+|---|---|---|
+| request.getHeader("x-acs-sign") |   |   |
 
-### Instance management
+Read the `x-acs-isp-signature-secret-key` and `x-acs-sign` parameters in the request header. For example, in Java, you can run the `request.getHeader("x-acs-sign")` command to read the x-acs-sign parameter. To verify the signature, you need only to compare whether the signature of the gateway is the same as the signature calculated by HTTP.
 
-#### CreateInstance
+### 5.5 Instance management
+
+#### 5.5.1 CreateInstance
 
 Creates an instance.
 
@@ -2831,6 +2779,11 @@ Creates an instance.
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceType | String | No | The instance type. Valid values: Single-zone instance Dual-zone instance Three-zone instance |
+| zoneId | String | Yes | The zone ID. |
+
 | zoneB | String | No | Zone B. This parameter is required only if you specify Dual-zone instance or Three-zone instance as the instance type. |
 |---|---|---|---|
 | zoneC | String | No | Zone C. This parameter is required only if you specify Three-zone instance as the instance type. |
@@ -2840,8 +2793,6 @@ For information about common request parameters, see Common request parameters.
 | spec | String | No | The instance specification. Valid values: broker4c16g broker8c32g broker16c64g broker32c128g |
 | cpuType | String | No | The CPU type of the node on which the broker is deployed. |
 | vpcId | String | No | The ID of the virtual private cloud (VPC) to which the instance belongs. This parameter is required only if you set vipType to SingleTunnel. |
-
-Message Queue for Apache Kafka
 
 | vSwitchId | String | No | The ID of the vSwitch with which the instance is associated. This parameter is required only if you set vipType to SingleTunnel. |
 |---|---|---|---|
@@ -2854,27 +2805,16 @@ Message Queue for Apache Kafka
 | tags | String | Yes | The tags that are added to the instance in STS mode. |
 | scope | String | No | The scope to which the tags added to the instance belongs in STS mode. |
 
-Message Queue for Apache Kafka
-
 | tagOwnerUid | Long | Yes | The tag owner. |
 |---|---|---|---|
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | instanceId | String | The ID of the instance that is created. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| name | String | No | The name of the zone- disaster recovery instance. |
-| targetInstanceId | String | No | The ID of the destination ApsaraMQ for Kafka instance. |
-| instanceId1 | String | No | The ID of ApsaraMQ for Kafka Instance 1. |
-| replicatorId1 | String | No | The ID of ApsaraMQ for Kafka Replicator 1. |
-| instanceId2 | String | No | The ID of ApsaraMQ for Kafka Instance 2. |
-| replicatorId2 | String | No | The ID of ApsaraMQ for Kafka Replicator 2. |
-
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### CreateDisasterRecoveryInstance
+#### 5.5.2 CreateDisasterRecoveryInstance
 
 Creates a zone-disaster recovery instance.
 
@@ -2887,24 +2827,33 @@ Kafka>/pop/kafkaDisasterRecoveryInstance/createInstance
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| name | String | No | The name of the zone- disaster recovery instance. |
+| targetInstanceId | String | No | The ID of the destination ApsaraMQ for Kafka instance. |
+| instanceId1 | String | No | The ID of ApsaraMQ for Kafka Instance 1. |
+| replicatorId1 | String | No | The ID of ApsaraMQ for Kafka Replicator 1. |
+| instanceId2 | String | No | The ID of ApsaraMQ for Kafka Instance 2. |
+| replicatorId2 | String | No | The ID of ApsaraMQ for Kafka Replicator 2. |
+
 | autoOffsetReset | String | No | The offset to start data synchronization. Valid values: Earliest offset Latest offset |
 |---|---|---|---|
 | dateTimeOfOffset | String | No | The point in time if you specify a time point as the offset to start data synchronization. |
 | quota | String | No | The throttling limit. Unit: MB/s. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Quer y | Yes | cn-hangzhou | The region ID of the instance. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
-
-#### UpdateDisasterRecoveryInstance
+#### 5.5.3 UpdateDisasterRecoveryInstance
 
 Updates a disaster recovery instance.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common Request Parameters.
+
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Quer y | Yes | cn-hangzhou | The region ID of the instance. |
 
 | SourceInst anceId | Strin g | Quer y | Yes | i-bp19ienyt0yax748**** | The ID of the source instance for the device. The IDs of public instances in different regions: China (Shanghai): iotx-oxssharez200. Japan: iotx- oxssharez300. Singapore: iotx- oxssharez400. US (Silicon Valley): iotx-oxssharez500. US (Virginia): iotx- oxssharez600. Germany (Frankfurt): iotx-oxssharez700. The ID of an Enterprise instance: i. Log on to the IoT Platform console. In the upper-left corner of the top navigation bar, select a region from the drop-down menu. ii. On the Instance Overview page, click the instance name. On the Instance Details page, view the Instance ID in the Basic Information section. |
 |---|---|---|---|---|---|
@@ -2915,49 +2864,55 @@ This operation uses common request headers. No special request headers are requi
 | RequestId | String | 06084011-E093- 46F3-A51F- 4B19A8AD**** | The request ID. |
 | Success | Boolean | True | Indicates whether the call was successful. |
 
-Message Queue for Apache Kafka
-
 | Code | Integer | 200 | The status code. A return value of 200 indicates that the call was successful. |
 |---|---|---|---|
 | Message | String | operation success | The returned message. |
-
-| http://<Domain name of ApsaraMQ for |  |
-|---|---|
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| sourceInstanceId | String | Yes | The ID of the source ApsaraMQ for Kafka instance. |
-
-Message Queue for Apache Kafka
 
 **Examples**
 
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=UpdateDisasterRecoveryInstance &RegionId=cn-hangzhou &SourceInstanceId=i-bp19ienyt0yax748**** &Quota={}
+http(s)://[Endpoint]/?Action=UpdateDisasterRecoveryInstance &RegionId=cn-hangzhou &SourceInstanceId=i-bp19ienyt0yax748**** &Quota={} &<Common request parameters>
 ```
 
-Sample normal response `JSON` format
+Sample normal response `JSON` format `{`
 
 ```json
-{
  "RequestId":"06084011-E093-46F3-A51F-4B19A8AD****",
  "Message":"operation success",
  "Code":200,
  "Success":true
-}
 ```
 
-#### DeleteDisasterRecoveryInstance
+#### 5.5.4 DeleteDisasterRecoveryInstance
 
 Deletes a zone-disaster recovery instance.
 
 **API URL**
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+| http://<Domain name of ApsaraMQ for |   |
+|---|---|
 
-#### CreateInstanceRelation
+For information about common request parameters, see Common request parameters.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| sourceInstanceId | String | Yes | The ID of the source ApsaraMQ for Kafka instance. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.5.5 CreateInstanceRelation
+
+Creates instance relationships.
+
+**API URL**
+
+```
+ http://<Domain name of ApsaraMQ for Kafka>/pop/relation/create
+```
+
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2971,31 +2926,11 @@ For information about common request parameters, see Common request parameters. 
 | scope | String | No | The scope to which the tags added to the instance belongs in STS mode. |
 | tagOwnerUid | Long | Yes | The owner ID of the tags added to the instance. |
 
-Message Queue for Apache Kafka Creates instance relationships.
+For information about the response parameters, see Common response parameters.
 
-**API URL**
+#### 5.5.6 GetInstanceConfig
 
-```
- http://<Domain name of ApsaraMQ for Kafka>/pop/relation/create
-```
-
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
-
-#### GetInstanceConfig
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-Message Queue for Apache Kafka Queries the configurations of an instance.
+Queries the configurations of an instance.
 
 **API URL**
 
@@ -3003,9 +2938,19 @@ Message Queue for Apache Kafka Queries the configurations of an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/getInstanceConfig
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetInstanceIdList
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.5.7 GetInstanceIdList
 
 Queries the list of instance IDs.
 
@@ -3017,7 +2962,11 @@ Queries the list of instance IDs.
 
 For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
 
-#### GetScheduledTaskList
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.5.8 GetScheduledTaskList
 
 Retrieves a list of task executions.
 
@@ -3043,27 +2992,17 @@ This operation uses only common request headers. For more information, see Commo
 | PageSize | Integer | 10 | The page size. |
 | CurrentPage | Integer | 1 | The page number of the current page during paging query. |
 
-Message Queue for Apache Kafka
-
 **Examples**
 
 Request example
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| namespace | String | Yes | The namespace to which the instance belongs. Default value: default. |
-
-Message Queue for Apache Kafka
-
 ```
-http(s)://[Endpoint]/?Action=GetScheduledTaskList &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2****
+http(s)://[Endpoint]/?Action=GetScheduledTaskList &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2**** &<Common request parameters>
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
-{
  "RequestId":"06084011-E093-46F3-A51F-4B19A8AD****",
  "Message":"operation success",
  "PageSize":10,
@@ -3072,10 +3011,9 @@ Response example `JSON` format
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-#### DeleteInstance
+#### 5.5.9 DeleteInstance
 
 Deletes an instance.
 
@@ -3085,42 +3023,49 @@ Deletes an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/delete
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetDisasterRecoveryInstanceList
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| namespace | String | Yes | The namespace to which the instance belongs. Default value: default. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.5.10 GetDisasterRecoveryInstanceList
 
 Queries the list of disaster recovery instances.
 
 **API URL**
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| kafkaInstance | String | Yes | The ApsaraMQ for Kafka instance. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Query | Yes | cn-hangzhou | The ID of the region where the instance resides. |
-
-Message Queue for Apache Kafka
 
 ```
  http://<Domain name of ApsaraMQ for
 Kafka>/pop/kafkaDisasterRecoveryInstance/listKafkaDisasterRecoveryInstances
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetDisasterRecoveryInstanceLag
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| kafkaInstance | String | Yes | The ApsaraMQ for Kafka instance. |
+
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.5.11 GetDisasterRecoveryInstanceLag
 
 Queries the latency of a disaster recovery instance.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
+
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Query | Yes | cn-hangzhou | The ID of the region where the instance resides. |
 
 | Parame ter Name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3131,9 +3076,7 @@ This operation uses only common request headers. For more information, see Commo
 | RequestId | String | 06084011-E093- 46F3-A51F- 4B19A8AD**** | The request ID. |
 | Success | Boolean | True | Indicates whether the call was successful. |
 
-Message Queue for Apache Kafka
-
-| Message Queue fo | r Apache Kafka |  | Developer Guide·API referenc |
+| Message Queue fo | r Apache Kafka |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3142,31 +3085,25 @@ Message Queue for Apache Kafka
 | Message | String | operation success | The returned message. |
 | Data | String | [{}] | The returned data. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| orderId | String | No | The order ID. |
-
 **Examples**
 
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=GetDisasterRecoveryInstanceLag &RegionId=cn-hangzhou &SourceInstanceId=i-bp19ienyt0yax748****
+http(s)://[Endpoint]/?Action=GetDisasterRecoveryInstanceLag &RegionId=cn-hangzhou &SourceInstanceId=i-bp19ienyt0yax748**** &Common request parameters
 ```
 
-Response example `JSON` format
+Response example `JSON` format `{`
 
 ```json
-{
  "RequestId":"06084011-E093-46F3-A51F-4B19A8AD****",
  "Message":"operation success",
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-#### GetInstanceList
+#### 5.5.12 GetInstanceList
 
 Queries the list of instances.
 
@@ -3178,22 +3115,22 @@ Queries the list of instances.
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| orderId | String | No | The order ID. |
+
 | instanceId | String | No | The instance ID. If you configure this parameter, only the information about the specified instance is returned. |
 |---|---|---|---|
 | instanceIds | String | No | The instance IDs. If you configure this parameter, only the information about the specified instances is returned. |
 | tags | String | No | The tags. |
 
+For information about common response parameters, see Common response parameters.
+
 | Parameter | Type | Description |
 |---|---|---|
 | InstanceList | String | The instances. |
 
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### GetInstanceRelationList
+#### 5.5.13 GetInstanceRelationList
 
 Queries the relationships of an instance.
 
@@ -3205,49 +3142,59 @@ Queries the relationships of an instance.
 
 For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
 
-#### GetInstanceStatus
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.5.14 GetInstanceStatus
 
 Queries the status of an instance.
 
 **API URL**
+
+```
+ http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/status
+```
+
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
 | namespace | String | No | The namespace to which the instance belongs. Default value: default. |
 
+For information about common response parameters, see Common response parameters.
+
 | Parameter | Type | Description |
 |---|---|---|
 | InstanceStatus | String | The instance status. |
 
-| http://<Domain name of ApsaraMQ for |  |
-|---|---|
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-Message Queue for Apache Kafka
-
-```
- http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/status
-```
-
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-#### GetKafkaInstanceList
+#### 5.5.15 GetKafkaInstanceList
 
 Queries the list of ApsaraMQ for Kafka instances.
 
 **API URL**
 
+| http://<Domain name of ApsaraMQ for |   |
+|---|---|
+
 For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
 
-#### ScaleInstance
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.5.16 ScaleInstance
 
 Scales out an instance.
 
 **API URL**
+
+```
+ http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/scale
+```
+
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3255,19 +3202,9 @@ Scales out an instance.
 | namespace | String | No | Default value: default. You cannot specify a custom value. |
 | replicas | String | No | The number of nodes after you scale out the instance. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| expectedSourceInstan ceId | String | Yes | The ID of the source instance of the disaster recovery cluster for which you want to perform hot switchover. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka
-
-```
- http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/scale
-```
-
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
-
-#### HotSwitchDisasterRecoveryInstance
+#### 5.5.17 HotSwitchDisasterRecoveryInstance
 
 Performs hot switchover for a disaster recovery instance.
 
@@ -3277,13 +3214,25 @@ Performs hot switchover for a disaster recovery instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaDisasterRecoveryInstance/hotSwitch
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### UpdateInstanceConfig
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| expectedSourceInstan ceId | String | Yes | The ID of the source instance of the disaster recovery cluster for which you want to perform hot switchover. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.5.18 UpdateInstanceConfig
 
 Updates the configurations of an instance.
 
 **API URL**
+
+```
+ http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/updateConfig
+```
+
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3291,20 +3240,9 @@ Updates the configurations of an instance.
 | config | String | Yes | The name of the configuration item. |
 | value | String | No | The value of the configuration item. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| instanceName | String | Yes | The instance name. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka
-
-```
- http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/updateConfig
-```
-
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
-
-#### UpdateInstanceName
+#### 5.5.19 UpdateInstanceName
 
 Updates the name of an instance.
 
@@ -3314,9 +3252,16 @@ Updates the name of an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/updateInstanceName
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetZoneList
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| instanceName | String | Yes | The instance name. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.5.20 GetZoneList
 
 Queries the most recent list of zones.
 
@@ -3326,9 +3271,19 @@ Queries the most recent list of zones.
  http://<Domain name of ApsaraMQ for Kafka>/pop/region/listZones
 ```
 
+For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
+
+#### 5.5.21 RebalanceInstanceTopic
+
+Rebalances the topics of a specified instance.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3342,46 +3297,26 @@ Queries the most recent list of zones.
 | Code | Integer | 200 | The status code. A value of 200 indicates success. |
 | Message | String | operation success | The returned message. |
 
-Message Queue for Apache Kafka For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-#### RebalanceInstanceTopic
-
-Rebalances the topics of a specified instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
 **Examples**
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| topic | String | Yes | The name of the topic that you want to create. |
-| compactTopic | Boolean | No | Specifies whether the topic is a compact topic. |
-| partitionNum | String | No | The number of partitions in the topic. |
-| replicationFactor | String | No | The number of replicas of the topic. |
-
-Message Queue for Apache Kafka Sample request
+Sample request
 
 ```
-http(s)://[Endpoint]/?Action=RebalanceInstanceTopic &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2****
+http(s)://[Endpoint]/?Action=RebalanceInstanceTopic &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2**** &<Common request parameters>
 ```
 
-Sample success response `JSON` format
+Sample success response `JSON` format `{`
 
 ```json
-{
  "RequestId":"06084011-E093-46F3-A51F-4B19A8AD****",
  "Message":"operation success",
  "Code":200,
  "Success":true
-}
 ```
 
-### Topic management
+### 5.6 Topic management
 
-#### CreateTopic
+#### 5.6.1 CreateTopic
 
 Creates a topic.
 
@@ -3393,25 +3328,21 @@ Creates a topic.
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| topic | String | Yes | The name of the topic that you want to create. |
+| compactTopic | Boolean | No | Specifies whether the topic is a compact topic. |
+| partitionNum | String | No | The number of partitions in the topic. |
+| replicationFactor | String | No | The number of replicas of the topic. |
+
 | minInsyncReplicas | String | No | The minimum number of synchronized replicas. |
 |---|---|---|---|
 | retentionHours | String | No | The retention period of data in the topic. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| currentPage | String | No | The page number. |
-| pageSize | String | No | The number of entries per page. |
-| search | String | No | The keyword that you specify for fuzzy search when you query the topics. |
+For information about the response parameters, see Common response parameters.
 
-| Parameter | Type | Description |
-|---|---|---|
-| total | Int | The number of consumers. |
-| pageSize | Int | The number of entries per page. |
-
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
-
-#### GetTopicList
+#### 5.6.2 GetTopicList
 
 Queries the list of topics on an instance.
 
@@ -3421,29 +3352,27 @@ Queries the list of topics on an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/listInPage
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-| currentPage | Int | The page number. |
-|---|---|---|
-| data | String | The response data. |
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
 | currentPage | String | No | The page number. |
 | pageSize | String | No | The number of entries per page. |
-| topic | String | No | The topic name. |
 | search | String | No | The keyword that you specify for fuzzy search when you query the topics. |
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | total | Int | The number of consumers. |
 | pageSize | Int | The number of entries per page. |
+
 | currentPage | Int | The page number. |
+|---|---|---|
+| data | String | The response data. |
 
-Message Queue for Apache Kafka
-
-#### GetTopicListAll
+#### 5.6.3 GetTopicListAll
 
 Queries the list of topics on an instance.
 
@@ -3453,27 +3382,28 @@ Queries the list of topics on an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/listAllTopic
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-| data | String | The response data. |
-|---|---|---|
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance name. |
-| topic | String | Yes | The topic name. |
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
+| currentPage | String | No | The page number. |
+| pageSize | String | No | The number of entries per page. |
 | topic | String | No | The topic name. |
+| search | String | No | The keyword that you specify for fuzzy search when you query the topics. |
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
+| total | Int | The number of consumers. |
+| pageSize | Int | The number of entries per page. |
+| currentPage | Int | The page number. |
 
-Message Queue for Apache Kafka
+| data | String | The response data. |
+|---|---|---|
 
-#### DeleteTopic
+#### 5.6.4 DeleteTopic
 
 Deletes a topic.
 
@@ -3483,9 +3413,16 @@ Deletes a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/delete
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetTopicConfigList
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance name. |
+| topic | String | Yes | The topic name. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.6.5 GetTopicConfigList
 
 Queries the configurations of a topic.
 
@@ -3495,27 +3432,22 @@ Queries the configurations of a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/listTopicConfig
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-| data | String | The response data. |
-|---|---|---|
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
-| consumerId | String | Yes | The consumer ID. |
+| topic | String | No | The topic name. |
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
+
 | data | String | The response data. |
+|---|---|---|
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-
-Message Queue for Apache Kafka
-
-#### GetTopicListByConsumerId
+#### 5.6.6 GetTopicListByConsumerId
 
 Queries the list of topics subscribed by a consumer.
 
@@ -3525,9 +3457,20 @@ Queries the list of topics subscribed by a consumer.
  http://<Domain name of ApsaraMQ for Kafka>/pop/subscription/listTopicsByConsumerId
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetTopicQuotaTip
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| consumerId | String | Yes | The consumer ID. |
+
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.6.7 GetTopicQuotaTip
 
 Queries the partition quota of a topic.
 
@@ -3537,28 +3480,19 @@ Queries the partition quota of a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/quataTipOfTopic
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| topic | String | No | The topic on the instance. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
 
-Message Queue for Apache Kafka
+For information about common response parameters, see Common response parameters.
 
-#### GetTopicStatus
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.6.8 GetTopicStatus
 
 Queries the status of a topic.
 
@@ -3568,9 +3502,20 @@ Queries the status of a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/status
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetTopicSubscribeStatus
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| topic | String | No | The topic on the instance. |
+
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.6.9 GetTopicSubscribeStatus
 
 Queries the subscription status of a topic.
 
@@ -3582,23 +3527,20 @@ Queries the subscription status of a topic.
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+
 | topic | String | No | The topic name. |
 |---|---|---|---|
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| topic | String | Yes | The topic name. |
-| config | String | Yes | The name of the configuration item. |
-| value | String | Yes | The value of the configuration item. |
-
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### UpdateTopicConfig
+#### 5.6.10 UpdateTopicConfig
 
 Updates the configurations of a topic.
 
@@ -3608,9 +3550,18 @@ Updates the configurations of a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/updateTopicConfig
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### RebalanceTopic
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| topic | String | Yes | The topic name. |
+| config | String | Yes | The name of the configuration item. |
+| value | String | Yes | The value of the configuration item. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.6.11 RebalanceTopic
 
 Rebalances topics.
 
@@ -3631,9 +3582,9 @@ For information about common request parameters, see Common request parameters.
 | logDirThrottle | Long | No | The rate at which logs are written to shards in a specific directory. If you do not configure this parameter, no limit is imposed. |
 | additional | Boolean | No | Specifies whether to overwrite the previous rebalance. |
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
+For information about the response parameters, see Common response parameters.
 
-#### ModifyPartitionNum
+#### 5.6.12 ModifyPartitionNum
 
 Changes the number of partitions in a topic.
 
@@ -3643,24 +3594,19 @@ Changes the number of partitions in a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/addPartition
 ```
 
+For information about common request parameters, see Common request parameters.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
 | topic | String | Yes | The topic name. |
 | partitionNum | Int | Yes | The final number of partitions in the topic. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| currentPage | String | No | The page number. |
-| pageSize | String | No | The number of entries per page. |
-| search | String | No | The keyword that you specify for fuzzy search when you query the consumers. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+### 5.7 Group management
 
-### Group management
-
-#### GetConsumerList
+#### 5.7.1 GetConsumerList
 
 Queries the list of consumers of an instance.
 
@@ -3670,7 +3616,16 @@ Queries the list of consumers of an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/subscription/listInPage
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| currentPage | String | No | The page number. |
+| pageSize | String | No | The number of entries per page. |
+| search | String | No | The keyword that you specify for fuzzy search when you query the consumers. |
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3679,18 +3634,7 @@ For information about common request parameters, see Common request parameters. 
 | currentPage | Int | The page number. |
 | data | String | The response data. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| consumerId | String | Yes | The name of the consumer group. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-Message Queue for Apache Kafka
-
-#### GetConsumerProgress
+#### 5.7.2 GetConsumerProgress
 
 Queries the consumer progress in a consumer group.
 
@@ -3700,9 +3644,20 @@ Queries the consumer progress in a consumer group.
  http://<Domain name of ApsaraMQ for Kafka>/pop/subscription/progress2
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### GetConsumerProgressByTopic
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| consumerId | String | Yes | The name of the consumer group. |
+
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.7.3 GetConsumerProgressByTopic
 
 Queries the consumer progress of a topic.
 
@@ -3712,28 +3667,21 @@ Queries the consumer progress of a topic.
  http://<Domain name of ApsaraMQ for Kafka>/pop/topic/consumerProgressOneTopic
 ```
 
+For information about common request parameters, see Common request parameters.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
 | consumerId | String | Yes | The consumer ID. |
 | topic | String | Yes | The topic name. |
 
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| consumerId | String | Yes | The name of the consumer group. |
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
 
-Message Queue for Apache Kafka For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-#### GetConsumerTimespan
+#### 5.7.4 GetConsumerTimespan
 
 Queries the time range in which consumption can be reset in a consumer group.
 
@@ -3743,7 +3691,26 @@ Queries the time range in which consumption can be reset in a consumer group.
  http://<Domain name of ApsaraMQ for Kafka>/pop/subscription/timespan
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| consumerId | String | Yes | The name of the consumer group. |
+
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.7.5 DeleteConsumerGroup
+
+Deletes a consumer group.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common Parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3755,50 +3722,31 @@ For information about common request parameters, see Common request parameters. 
 |---|---|---|---|
 | RequestId | String | 06084011-E093- 46F3-A51F- 4B19A8AD**** | The ID of the request. |
 
-Message Queue for Apache Kafka
-
-#### DeleteConsumerGroup
-
-Deletes a consumer group.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common Parameters.
-
 | Success | Boolean | True | Indicates whether the call was successful. |
 |---|---|---|---|
 | Code | Integer | 200 | The status code. A value of 200 indicates that the call is successful. |
 | Message | String | operation success | The returned message. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| topic | String | Yes | The topic name. |
-
-Message Queue for Apache Kafka
 
 **Examples**
 
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=DeleteConsumerGroup &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2**** &ConsumerId=kafka-test
+http(s)://[Endpoint]/?Action=DeleteConsumerGroup &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2**** &ConsumerId=kafka-test &<Common request parameters>
 ```
 
-Sample normal response `JSON` format
+Sample normal response `JSON` format `{`
 
 ```json
-{
  "RequestId":"06084011-E093-46F3-A51F-4B19A8AD****",
  "Message":"operation success",
  "Code":200,
  "Success":true
-}
 ```
 
-### Message management
+### 5.8 Message management
 
-#### QueryMessage
+#### 5.8.1 QueryMessage
 
 Queries a message.
 
@@ -3810,22 +3758,24 @@ Queries a message.
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| topic | String | Yes | The topic name. |
+
 | queryType | String | No | The query type. Valid values: byOffset: queries the message by offset. byTimeStamp: queries the message by timestamp. |
 |---|---|---|---|
 | partition | String | No | The partition in the topic from which the message was sent. This parameter is required only if you set queryType to byOffset. |
 | timestampStr | String | No | The timestamp that indicates when the message was sent. This parameter is required only if you set queryType to byTimestamp. |
 | offset | String | No | The message offset. This parameter is required only if you set queryType to byOffset. |
 
+For information about common response parameters, see Common response parameters.
+
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### DownloadMessage
+#### 5.8.2 DownloadMessage
 
 Downloads a message.
 
@@ -3837,6 +3787,9 @@ Downloads a message.
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
 | instanceId | String | Yes | The instance ID. |
 |---|---|---|---|
 | topic | String | Yes | The topic name. |
@@ -3844,16 +3797,9 @@ For information about common request parameters, see Common request parameters.
 | partition | String | No | The partition from which the message was sent. |
 | offset | String | No | The message offset. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| topic | String | Yes | The topic name. |
-| partition | String | No | The partition in the topic. If you do not configure this parameter, the system randomly selects a partition. |
-| key | String | Yes | The message key. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
-
-#### SendMessage
+#### 5.8.3 SendMessage
 
 Sends a test message.
 
@@ -3865,19 +3811,19 @@ Sends a test message.
 
 For information about common request parameters, see Common request parameters.
 
-| value | String | Yes | The message value. |
-|---|---|---|---|
-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
-| consumerId | String | Yes | The consumer ID. |
 | topic | String | Yes | The topic name. |
-| timeStampStr | String | Yes | The timestamp that specifies the point in time to which you want to reset the consumer offset. Unit: milliseconds. |
+| partition | String | No | The partition in the topic. If you do not configure this parameter, the system randomly selects a partition. |
+| key | String | Yes | The message key. |
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
+| value | String | Yes | The message value. |
+|---|---|---|---|
 
-#### ResetOffset
+For information about the response parameters, see Common response parameters.
+
+#### 5.8.4 ResetOffset
 
 Resets a consumer offset.
 
@@ -3887,11 +3833,20 @@ Resets a consumer offset.
  http://<Domain name of ApsaraMQ for Kafka>/pop/subscription/resetOffset
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-### Resource management
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| consumerId | String | Yes | The consumer ID. |
+| topic | String | Yes | The topic name. |
+| timeStampStr | String | Yes | The timestamp that specifies the point in time to which you want to reset the consumer offset. Unit: milliseconds. |
 
-#### DescribeCpuTypes
+For information about the response parameters, see Common response parameters.
+
+### 5.9 Resource management
+
+#### 5.9.1 DescribeCpuTypes
 
 Queries the CPU types of an instance.
 
@@ -3907,22 +3862,13 @@ For information about common request parameters, see Common request parameters.
 |---|---|---|---|
 | zoneId | String | No | The zone ID. |
 
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| labels | String | No | The labels of the node on which you want to query the physical resources. By default, this parameter is left empty. |
-| taints | String | No | The taints of the node on which you want to query the physical resources. By default, this parameter is left empty. |
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
 
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### GetPaasResource
+#### 5.9.2 GetPaasResource
 
 Queries the physical resources that are exclusively used by an instance.
 
@@ -3932,34 +3878,35 @@ Queries the physical resources that are exclusively used by an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaInstance/paasResource
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-| http://<Domain name of ApsaraMQ for |  |
-|---|---|
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| instanceId | String | No | The instance ID. |
+| labels | String | No | The labels of the node on which you want to query the physical resources. By default, this parameter is left empty. |
+| taints | String | No | The taints of the node on which you want to query the physical resources. By default, this parameter is left empty. |
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
 
-Message Queue for Apache Kafka
-
-#### GetReplicatorList
+#### 5.9.3 GetReplicatorList
 
 Queries the list of replicators on a disaster recovery instance.
 
 **API URL**
 
+| http://<Domain name of ApsaraMQ for |   |
+|---|---|
+
 For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
 
-#### GetMetaData
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.9.4 GetMetaData
 
 Queries the frontend configurations of an instance.
 
@@ -3969,24 +3916,21 @@ Queries the frontend configurations of an instance.
  http://<Domain name of ApsaraMQ for Kafka>/pop/meta/data
 ```
 
-For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
-
-#### GetRegionList
-
-Queries the most recent list of regions.
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| data | String | The response data. |
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| instanceId | String | No | The instance ID. |
 
-Message Queue for Apache Kafka
+For information about common response parameters, see Common response parameters.
+
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.9.5 GetRegionList
+
+Queries the most recent list of regions.
 
 **API URL**
 
@@ -3996,7 +3940,11 @@ Message Queue for Apache Kafka
 
 For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
 
-#### GetUnscheduledTaskList
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
+
+#### 5.9.6 GetUnscheduledTaskList
 
 Queries the list of unscheduled tasks.
 
@@ -4008,9 +3956,13 @@ Queries the list of unscheduled tasks.
 
 For information about the request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.
 
-### ACLs
+| Parameter | Type | Description |
+|---|---|---|
+| data | String | The response data. |
 
-#### CreateACL
+### 5.10 ACLs
+
+#### 5.10.1 CreateACL
 
 Creates an access control list (ACL).
 
@@ -4022,6 +3974,9 @@ Creates an access control list (ACL).
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
 | instanceId | String | Yes | The instance ID. |
 |---|---|---|---|
 | username | String | No | The username. |
@@ -4030,15 +3985,9 @@ For information about common request parameters, see Common request parameters.
 | aclResourcePatternTyp e | String | No | The mode in which the resource with which the ACL is associated is matched. |
 | aclOperationType | String | No | The type of operation that is allowed by the ACL. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| username | String | Yes | The username. |
-| aclResourceType | String | No | The type of the resource with which the ACL is associated. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
-
-#### DeleteAcl
+#### 5.10.2 DeleteAcl
 
 Deletes an access control list (ACL).
 
@@ -4050,21 +3999,20 @@ Deletes an access control list (ACL).
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| username | String | Yes | The username. |
+| aclResourceType | String | No | The type of the resource with which the ACL is associated. |
+
 | aclResourceName | Boolean | No | The name of the resource with which the ACL is associated. |
 |---|---|---|---|
 | aclResourcePatternTyp e | String | No | The mode in which the resource with which the ACL is associated is matched. |
 | aclOperationType | String | No | The type of operation that is allowed by the ACL. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| username | String | Yes | The username of the SASL user. |
-| password | String | Yes | The password of the SASL user. |
-| type | String | No | The type of the SASL user. Only SASL users of the SCRAM type are supported. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
-
-#### CreateSaslUser
+#### 5.10.3 CreateSaslUser
 
 Creates a Simple Authentication and Security Layer (SASL) user.
 
@@ -4074,24 +4022,20 @@ Creates a Simple Authentication and Security Layer (SASL) user.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaAcl/addSaslUser
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
-
-#### DeleteSaslUser
+For information about common request parameters, see Common request parameters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
-| username | String | Yes | The username. |
+| username | String | Yes | The username of the SASL user. |
+| password | String | Yes | The password of the SASL user. |
 | type | String | No | The type of the SASL user. Only SASL users of the SCRAM type are supported. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-| username | String | No | The username. |
-| aclResourceType | String | No | The type of the resource with which the ACL is associated. |
-| aclResourceName | Boolean | No | The name of the resource with which the ACL is associated. |
+For information about the response parameters, see Common response parameters.
 
-Message Queue for Apache Kafka Deletes a Simple Authentication and Security Layer (SASL) user.
+#### 5.10.4 DeleteSaslUser
+
+Deletes a Simple Authentication and Security Layer (SASL) user.
 
 **API URL**
 
@@ -4099,9 +4043,17 @@ Message Queue for Apache Kafka Deletes a Simple Authentication and Security Laye
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaAcl/deleteSaslUser
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### DescribeAcls
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| username | String | Yes | The username. |
+| type | String | No | The type of the SASL user. Only SASL users of the SCRAM type are supported. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.10.5 DescribeAcls
 
 Queries access control lists (ACLs).
 
@@ -4113,24 +4065,23 @@ Queries access control lists (ACLs).
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+| username | String | No | The username. |
+| aclResourceType | String | No | The type of the resource with which the ACL is associated. |
+| aclResourceName | Boolean | No | The name of the resource with which the ACL is associated. |
+
 | aclResourcePatternTyp e | String | No | The mode in which the resource with which the ACL is associated is matched. |
 |---|---|---|---|
+
+For information about common response parameters, see Common response parameters.
 
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### DescribeSaslUsers
+#### 5.10.6 DescribeSaslUsers
 
 Queries Simple Authentication and Security Layer (SASL) users.
 
@@ -4140,9 +4091,15 @@ Queries Simple Authentication and Security Layer (SASL) users.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaAcl/describeSaslUsers
 ```
 
-For information about common request parameters, see Common request parameters. For information about the response parameters, see Common response parameters.
+For information about common request parameters, see Common request parameters.
 
-#### QueryExistedAclResource
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+
+For information about the response parameters, see Common response parameters.
+
+#### 5.10.7 QueryExistedAclResource
 
 Query existing resources associated with an access control list (ACL).
 
@@ -4154,31 +4111,39 @@ Query existing resources associated with an access control list (ACL).
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+
 | username | String | No | The username. |
 |---|---|---|---|
 | aclResourceType | String | No | The type of the resource with which the ACL is associated. |
 | aclResourceName | String | No | The name of the resource with which the ACL is associated. |
 | aclResourcePatternTyp e | String | No | The mode in which the resource with which the ACL is associated is matched. |
 
+For information about common response parameters, see Common response parameters.
+
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
+
+#### 5.10.8 DownloadFile
+
+Retrieves the content of the Access Control List (ACL) certificate file.
+
+**API endpoint**
+
+```
+ http://<Domain>/pop/kafkaInstance/downloadFile
+```
+
+For information about common parameters, see Common parameter settings.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | instanceId | String | Yes | The instance ID. |
 | namespace | String | false | The namespace. |
 | filePath | String | false | The file path. |
-
-Message Queue for Apache Kafka For information about common response parameters, see Common response parameters.
-
-#### DownloadFile
-
-Retrieves the content of the Access Control List (ACL) certificate file.
-
-**API endpoint**
-
-For information about common parameters, see Common parameter settings.
 
 **Return parameters**
 
@@ -4187,6 +4152,14 @@ For information about common return values, see Parsing common return values.
 | Name | Type | Description |
 |---|---|---|
 | data | String | The returned data. |
+
+#### 5.10.9 GetSaslUserList
+
+Retrieves a list of SASL users.
+
+**Request headers**
+
+This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4202,38 +4175,21 @@ For information about common return values, see Parsing common return values.
 | Message | String | operation success | The returned message. |
 | Total | Integer | 1 | The total number of topics. |
 
-Message Queue for Apache Kafka
-
-#### GetSaslUserList
-
-Retrieves a list of SASL users.
-
-**Request headers**
-
-This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
-
 | PageSize | Integer | 10 | The page size. |
 |---|---|---|---|
 | CurrentPage | Integer | 1 | The page number of the current page in a paged query. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| instanceId | String | Yes | The instance ID. |
-
-Message Queue for Apache Kafka
 
 **Examples**
 
 Example request
 
 ```
-&RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2****
+http(s)://[Endpoint]/?Action=GetSaslUserList &RegionId=cn-hangzhou &InstanceId=alikafka_post-cn-v0h1fgs2**** &CommonRequestParameters
 ```
 
-Example of a successful response `JSON` format
+Example of a successful response `JSON` format `{`
 
 ```json
-{
  "RequestId":"06084011-E093-46F3-A51F-4B19A8AD****",
  "Message":"operation success",
  "PageSize":10,
@@ -4242,12 +4198,11 @@ Example of a successful response `JSON` format
  "Data":"[{}]",
  "Code":200,
  "Success":true
-}
 ```
 
-### VIPs
+### 5.11 VIPs
 
-#### ApplyVipInfo
+#### 5.11.1 ApplyVipInfo
 
 Creates or deletes a virtual IP address (VIP).
 
@@ -4259,6 +4214,10 @@ Creates or deletes a virtual IP address (VIP).
 
 For information about common request parameters, see Common request parameters.
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| instanceId | String | Yes | The instance ID. |
+
 | vpcId | String | No | The ID of the virtual private cloud (VPC) to which the instance belongs. This parameter is required only if you set vipType to SingleTunnel. |
 |---|---|---|---|
 | vSwitchId | String | No | The ID of the vSwitch with which the instance is associated. This parameter is required only if you set vipType to SingleTunnel. |
@@ -4267,11 +4226,11 @@ For information about common request parameters, see Common request parameters.
 | vipAction | String | No | The operation to be performed. Valid values: create delete |
 | endpointTypes | String | Yes | The endpoint type. Valid values: PLAINTEXT SASL |
 
-Message Queue for Apache Kafka For information about the response parameters, see Common response parameters.
+For information about the response parameters, see Common response parameters.
 
-### Tags
+### 5.12 Tags
 
-#### GetKafkaTagList
+#### 5.12.1 GetKafkaTagList
 
 Queries the list of tags.
 
@@ -4281,13 +4240,15 @@ Queries the list of tags.
  http://<Domain name of ApsaraMQ for Kafka>/pop/kafkaTags/listTags
 ```
 
+For information about common request parameters, see Common request parameters.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | pageStart | String | No | The page number. |
 | pageSize | String | No | The number of entries per page. |
 
+For information about common response parameters, see Common response parameters.
+
 | Parameter | Type | Description |
 |---|---|---|
 | data | String | The response data. |
-
-Message Queue for Apache Kafka For information about common request parameters, see Common request parameters. For information about common response parameters, see Common response parameters.

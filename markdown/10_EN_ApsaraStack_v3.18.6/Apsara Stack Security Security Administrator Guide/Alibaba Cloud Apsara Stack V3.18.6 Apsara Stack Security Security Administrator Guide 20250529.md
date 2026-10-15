@@ -3,16 +3,60 @@ title: "Apsara Stack Security Security Administrator Guide 20250529"
 product_version: "V3.18.6"
 doc_version: "20250529"
 pdf_pages: 38
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Security Security Administrator Guide 20250529.pdf"
+source_pdf: "41ad4128af759968_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack Security Security Administrator Guide 20250529.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE%E5%9F%BA%E7%A1%80%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20Security%20Security%20Administrator%20Guide%2020250529.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Stack Security Security Administrator Guide 20250529
 
+## Table of Contents
+
+- 1 Restrictions
+- 2 Log on to Cloud Security Operations Center
+- 3 Monitoring and alerting
+  - 3.1 View the system monitoring data
+  - 3.2 View the business monitoring data
+  - 3.3 Configure alert contacts
+- 4 O&M management
+  - 4.1 Manage middleware
+- 5 Cloud service management
+  - 5.1 Server Guard
+    - 5.1.1 Manage high-risk items and canary release policies
+  - 5.2 NDR
+    - 5.2.1 View O&M logs
+    - 5.2.2 View the node status
+    - 5.2.3 Configure features
+  - 5.3 KMS
+    - 5.3.1 Manage resources
+    - 5.3.2 Manage tasks
+    - 5.3.3 Manage throttling rules
+    - 5.3.4 Manage user quotas
+    - 5.3.5 Configure global quotas
+    - 5.3.6 Configure global settings
+- 6 Updates
+  - 6.1 Synchronization overview
+  - 6.2 Update feature libraries or the version of Apsara Stack Security
+- 7 Log diagnosis
+  - 7.1 View end-to-end logs
+  - 7.2 Use the quick diagnostics feature
+  - 7.3 Use the frontend monitoring feature
+- 8 Security Audit
+  - 8.1 Overview
+  - 8.2 View the summary information about security audit
+  - 8.3 Query audit events
+  - 8.4 View raw logs
+  - 8.5 View the number of logs
+  - 8.6 Policy settings
+    - 8.6.1 Manage audit rules
+    - 8.6.2 Configure alert recipients
+    - 8.6.3 Query the archives of audit events and raw logs
+    - 8.6.4 Download exported audit events or logs
+    - 8.6.5 Modify system settings
+
 trictions
 
-## Restrictions
+## 1 Restrictions
 
 Before logging on to Apsara Stack Security Center, make sure that your local PC meets the requirements. Table 1. Configuration requirements
 
@@ -23,7 +67,7 @@ Before logging on to Apsara Stack Security Center, make sure that your local PC 
 
 on to Cloud Security Operations Center
 
-## Log on to Cloud Security
+## 2 Log on to Cloud Security Operations Center
 
 **Operations Center**
 
@@ -51,9 +95,9 @@ To obtain the username and password that are used to log on to the Apsara Uniman
 
 On the **Cloud Security Operations Center** page, you can view the following information. nitoring and alerting
 
-## Monitoring and alerting
+## 3 Monitoring and alerting
 
-### View the system monitoring
+### 3.1 View the system monitoring data
 
 **data**
 
@@ -69,7 +113,7 @@ services. On the **Monitoring Overview** tab, view the following information. Ov
 | Middle ware | You can specify the monitoring time range and monitoring view to view the details of basic monitoring and middleware monitoring. Valid values for the time range: 3 Hours, 6 Hours, 12 Hours, 1 Day, 2 Days, and Custom. You can click the icon to manually refresh the monitoring data. You can also turn on Automatic Refresh to automatically refresh the monitoring data. Valid values for the View parameter: Cluster View and Single-server View. You can view the following monitoring data: the QPS of MetaQ, the number of GCs in the JVM, the amount of time consumed to monitor GCs in the JVM, the amount of JVM memory, the number of loaded classes in the JVM, the numbers of JVM threads in different statuses, the number of JVM threads, the QPS of HSF, the response time of HSF (ms), and database usage (%). |
 | Health check | Check the health status of all hosts in an application by using TCP or HTTP. |
 
-### View the business monitoring
+### 3.2 View the business monitoring data
 
 **data**
 
@@ -83,7 +127,7 @@ On the **Server Guard** tab, you can view the monitoring details of Asset exposu
 **Audit events**.
 On the **Container Security** tab, you can view the monitoring details of Container assets, Mirror scanning, CICD, Container firewall, Container vulnerability, and Container alarm. On the **Security Operations Center** tab, you can view the monitoring details of SocApp and SiemApp.
 
-### Configure alert contacts
+### 3.3 Configure alert contacts
 
 This topic describes how to configure and manage alert contacts.
 
@@ -100,9 +144,9 @@ Apsara Stack Security sends alert notifications to alert contacts by text messag
 7. Manage alert contacts.
 In the contact list, find a contact whose information you want to modify and click **Edit** in the Actions column. M management
 
-## O&M management
+## 4 O&M management
 
-### Manage middleware
+### 4.1 Manage middleware
 
 Cloud Security Operations Center allows you to manage middleware such as Diamond, Tair, ScheduleX, Dubbo, OpenAPI, and MetaQ. This topic describes how to manage Apsara Stack Security middleware.
 1. Log on to Cloud Security Operations Center.
@@ -195,11 +239,11 @@ Click the **Metaq Management** tab, configure the following parameters, and then
 
 ud service management
 
-## Cloud service management
+## 5 Cloud service management
 
-### Server Guard
+### 5.1 Server Guard
 
-#### Manage high-risk items and canary
+#### 5.1.1 Manage high-risk items and canary release policies
 
 **release policies**
 
@@ -231,9 +275,9 @@ On the **Plug-in Publish Management** tab, manage the canary release policy of a
 **Release Policy Switch**.
 On the **Blocking Policy Management** tab, click **Create Blocking Policy**. In the Publish Blocking Policy dialog box, configure the Plug-in Name, Operation Type, Dimension, Source, Unit, Value, and Threshold parameters. Then, click **OK**. After the policy is created, you can modify or delete it. In the upper-right corner of the Blocking Policy Management tab, click the icon to configure the items that you want to view in the extension list. On the **Canary Release Monitoring on Asset** tab, monitor the gray scale of assets. You can find the required asset and push the latest version for the asset, pause the push, and view the push details of the asset. You can also select multiple assets and choose **Batch Operation > Pause** to pause the push of multiple assets at a time.
 
-### NDR
+### 5.2 NDR
 
-#### View O&M logs
+#### 5.2.1 View O&M logs
 
 O&M logs include the resource utilization and mirrored traffic logs of Network Detection and Response (NDR). This topic describes how to view the O&M logs of NDR.
 1. Log on to Cloud Security Operations Center.
@@ -242,7 +286,7 @@ O&M logs include the resource utilization and mirrored traffic logs of Network D
 3. On the **O & M log** page, view the O&M logs that are generated within the current day, last
 day, last 7 days, last 30 days, or a custom time range. The O&M log list displays the log creation time, log type, and log content. You can search O&M logs by event type and keyword.
 
-#### View the node status
+#### 5.2.2 View the node status
 
 You can view a Network Detection and Response (NDR) node and the status trend of the node. This topic describes how to view the status of an NDR node.
 1. Log on to Cloud Security Operations Center.
@@ -251,7 +295,7 @@ You can view a Network Detection and Response (NDR) node and the status trend of
 3. On the page that appears, select the required node and view all physical nodes and the
 status trend of the node. You can view the status trend of the node from the following dimensions: CPU utilization (%) Memory usage (%) Overall inbound traffic (Mbit/s) Overall outbound traffic (Mbit/s) ud service management Packet loss rate (%) You can view the status trend of the node within a specific time range. The time range can be 30 minutes, 6 hours, 24 hours, 7 days, 30 days, or a custom time range.
 
-#### Configure features
+#### 5.2.3 Configure features
 
 You can enable or disable features such as malicious IP address filtering and interaction with Anti-DDoS Pro or Anti-DDoS Premium. This topic describes how to configure the features.
 1. Log on to Cloud Security Operations Center.
@@ -260,9 +304,9 @@ You can enable or disable features such as malicious IP address filtering and in
 3. On the **Function configuration** page, turn on or turn off **Malicious IP access filtering**
 and **DDoS anti-DDoS** to enable or disable the features. By default, **Malicious IP access filtering** is turned on. If this feature is enabled, the feature takes effect on the platform and tenant sides. The feature helps automatically filter out and block Internet access from malicious IP addresses. The malicious IP addresses are recorded in a threat intelligence library. By default, **DDoS anti-DDoS** is turned off. If this feature is enabled, the interaction between Anti-DDoS Service and anti-DDoS mitigation policies is implemented. In addition, the features related to account management in Apsara Stack Security are enabled.
 
-### KMS
+### 5.3 KMS
 
-#### Manage resources
+#### 5.3.1 Manage resources
 
 This topic describes how to manage resources. You can register and initialize resources.
 1. Log on to Cloud Shield Operations Center.
@@ -310,7 +354,7 @@ i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > *
 **KMS O&M**.
 ii. On the **Resources** tab, find the HSM that you want to disable and click **Bring Offline** in the **Actions** column. ud service management iii. Obtain the O&M code for this operation from Apsara Stack technical support as prompted, enter the O&M code in the field, and then click **OK**.
 
-#### Manage tasks
+#### 5.3.2 Manage tasks
 
 This topic describes how to view existing tasks on the Tasks tab.
 1. Log on to Cloud Shield Operations Center.
@@ -321,7 +365,7 @@ This topic describes how to view existing tasks on the Tasks tab.
 4. Click the
 icon to the left of the task ID to query the execution information about its subtasks.
 
-#### Manage throttling rules
+#### 5.3.3 Manage throttling rules
 
 This topic describes how to create and modify a throttling rule.
 
@@ -372,7 +416,7 @@ the **Resources** column.
 
 After a throttling rule is created or modified, the system generates an O&M event. You can view the details about the event by choosing **O&M Management > Event**. You can also view the task status for the event by choosing **O&M Management > Tasks**.
 
-#### Manage user quotas
+#### 5.3.4 Manage user quotas
 
 This topic describes how to create and modify user quotas.
 
@@ -417,7 +461,7 @@ ud service management
 
 After a user quota is created or modified, the system generates an O&M event. You can view the details about the event by choosing **O&M Management > Event**. You can also view the task status for the event by choosing **O&M Management > Tasks**. ud service management
 
-#### Configure global quotas
+#### 5.3.5 Configure global quotas
 
 This topic describes how to configure global quotas.
 1. Log on to the KMS O&M platform.
@@ -438,7 +482,7 @@ This topic describes how to configure global quotas.
 After the global quota is modified, the system generates an O&M event. You can view the details about the event by choosing **O&M Management > Event**. You can also view the task status for the event by choosing **O&M Management >**
 **Tasks**.
 
-#### Configure global settings
+#### 5.3.6 Configure global settings
 
 By default, TASS Crypto Engine hardware security modules (HSMs) do not support ShangMi (SM) algorithms. If your business requires SM algorithms, you need to turn on HSMs (TASSCryptoEngine) Support SM Algorithms on the Global Settings tab. This topic describes how to enable TASS Crypto Engine HSMs to support SM algorithms.
 
@@ -451,9 +495,9 @@ By default, this feature is disabled. After this feature is enabled, TASS Crypto
 3. On the Tenant-side KMS O&M page, click the **Global Settings** tab. On the Global Settings
 tab, turn on or off **HSMs (TASSCryptoEngine) Support SM Algorithms**. dates
 
-## Updates
+## 6 Updates
 
-### Synchronization overview
+### 6.1 Synchronization overview
 
 This function synchronizes specific security information such as rule databases and vulnerabilities from Alibaba Cloud to Apsara Stack. Rule databases are in the initial status before being synchronized from Alibaba Cloud. Only rule databases on Alibaba Cloud can be synchronized to Apsara Stack. The synchronized rules are used in functional modules of Apsara Stack Security to ensure that the security capabilities of Alibaba Cloud are provided in Apsara Stack. The rule database information and rule database synchronization frequency and time can be set by the administrator. The synchronization can also be triggered automatically. If the administrator do not set the synchronization frequency and time, the default settings will apply. Table 1. Synchronization status description
 
@@ -466,7 +510,7 @@ This function synchronizes specific security information such as rule databases 
 
 Rule databases can be synchronized from Alibaba Cloud through online upgrade or offline upgrade by importing upgrade package, depending on the deployment mode of Apsara Stack.
 
-### Update feature libraries or the
+### 6.2 Update feature libraries or the version of Apsara Stack Security
 
 **version of Apsara Stack Security**
 
@@ -515,9 +559,9 @@ On the **Feature Library Upgrade** tab, find the service and click **Upgrade Rec
 
 Batch upgrade: On the **Version Upgrade** tab, click **One-click upgrade**. Update a service in Apsara Stack Security: Find the service that you want to update on the **Version Upgrade** tab and click **Upgrade now** in the **Operation** column. After the update is complete, the status of the service is **Upgrade successful**. If the update fails, you can click **Upgrade Records** in the **Operation** column to find the versions of the feature libraries that failed to be updated and click **Retry** in the Operation column. If the update is successful, you can perform the following operations: Click **Upgrade Records** in the **Operation** column to view the versions of the updated feature libraries. You can also click **Restart Upgrade** or **Rollback**. diagnosis
 
-## Log diagnosis
+## 7 Log diagnosis
 
-### View end-to-end logs
+### 7.1 View end-to-end logs
 
 This topic describes how to use the end-to-end log tracing feature to view end-to-end logs in the Logstore of Apsara Stack Security.
 1. Log on to Cloud Security Operations Center.
@@ -531,7 +575,7 @@ You can use the following search conditions to query end-to-end logs.
 | Time range | The start and end time of the query. |
 | Keyword | The keyword that you want to use. Fuzzy search and exact search are supported. |
 
-### Use the quick diagnostics
+### 7.2 Use the quick diagnostics feature
 
 **feature**
 
@@ -563,7 +607,7 @@ box, click **OK**. In this case, the diagnostic task is in the **Under diagnosis
 
 Click **View historical tasks** in the **Operation** column of a diagnostic task to view all historical diagnostic tasks. Click **Edit**, **Delete**, or **Download** in the Operation column of a diagnostic task to edit, delete, or download the diagnostic task.
 
-### Use the frontend monitoring
+### 7.3 Use the frontend monitoring feature
 
 **feature**
 
@@ -582,13 +626,13 @@ Error Reported by react
 **Page Performance Errors**: Occurred At, aliUid, Network Status, Connection Duration,
 Response Duration, Request Duration, SSL Connection Duration, First Packet Time, Page Loading Duration, and Event Loading Duration Click **View Details** in the **Actions** column of an error. In the panel that appears, view the details of the error. urity Audit
 
-## Security Audit
+## 8 Security Audit
 
-### Overview
+### 8.1 Overview
 
 A security audit refers to the systemic and independent inspection and verification of activities and behavior in the computer network environment. Delegated by property owners and authorized by management authorities, professional auditors give their assessments according to relevant laws and regulations. When the administrator needs to backtrack system operations, the administrator can perform a security audit. Security audits are long-term security management activities throughout the lifecycle of cloud services. The security audit feature of Apsara Stack Security can collect system security data, analyze weaknesses in system operations, report audit events, and classify audit events into important, moderate, and low risk levels. The security administrator views and analyzes audit events to continuously improve the system and ensure the security and reliability of cloud services.
 
-### View the summary
+### 8.2 View the summary information about security audit
 
 **information about security audit**
 
@@ -610,7 +654,7 @@ seven days. Security administrators can analyze the trend to check whether the n
 5. View the audit summary in a specific time range.
 i. Specify **End Time** as the end of the time range to query. ii. In the **Audit Type** section, select the audit types that you want to query. iii. Click **View** to query the audit summary in the last seven days before the specified end time.
 
-### Query audit events
+### 8.3 Query audit events
 
 This topic describes how to query audit events.
 
@@ -637,7 +681,7 @@ d. Click **Save**.
 6. Click **Export** to export the audit events.
 For more information about how to download the exported audit events to your computer for analysis, see Download exported audit events or logs.
 
-### View raw logs
+### 8.4 View raw logs
 
 This topic describes how to view raw audit logs.
 
@@ -654,7 +698,7 @@ logs within a specific time range. i. Specify **Audit Type** and **Audit Target*
 6. Click **Export** to export the audit events.
 Download the exported file for analysis. For more information, see Manage export tasks.
 
-### View the number of logs
+### 8.5 View the number of logs
 
 This topic describes how to view and manage log sources.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -681,9 +725,9 @@ ii. In the message that appears, click **OK**.
 
 The steps that are performed to display the logs of multiple device instances are similar to the steps that are performed to hide the logs.
 
-### Policy settings
+### 8.6 Policy settings
 
-#### Manage audit rules
+#### 8.6.1 Manage audit rules
 
 This topic describes how to create, modify, or delete an audit rule.
 
@@ -727,7 +771,7 @@ Disable an audit rule Find the audit rule that you want to disable and click **D
 
 You can delete only custom rules. Import a rule Click **Import Rule** and upload a rule file as prompted. Export a rule You can export multiple custom rules at a time. Select the custom rules that you want to export and click **Export Rule**.
 
-#### Configure alert recipients
+#### 8.6.2 Configure alert recipients
 
 This topic describes how to configure the recipients of alerts on audit events.
 
@@ -754,7 +798,7 @@ iii. Click **OK**.
 6. Manage alert recipients.
 Search for alert recipients Specify **Audit Type**, **Audit Target**, and **Risk Level**, enter the keyword of the email address, and then click the search icon. Delete alert recipients Find the email address that you want to delete and click **Delete** in the Actions column.
 
-#### Query the archives of audit events and
+#### 8.6.3 Query the archives of audit events and raw logs
 
 **raw logs**
 
@@ -771,7 +815,7 @@ You can download the archives of events and logs to analyze audit events. This e
 5. Query the archives of events and logs.
 By default, the system automatically stores logs of the last 185 days. i. Configure **Audit Type** and **Archiving Type**. urity Audit ii. Specify a time range to query. iii. Click **OK**. Find the file where the archive information is stored and click **Download** in the **Actions** column to save the archive file to your computer.
 
-#### Download exported audit events or
+#### 8.6.4 Download exported audit events or logs
 
 **logs**
 
@@ -790,7 +834,7 @@ You can export audit events or logs on the **Audit Query** or **Raw Log** tab of
 7. Click **Download** to download audit events or logs to your on-premises server.
 To delete an export task, click **Delete**.
 
-#### Modify system settings
+#### 8.6.5 Modify system settings
 
 This topic describes how to configure system parameters for security audit.
 

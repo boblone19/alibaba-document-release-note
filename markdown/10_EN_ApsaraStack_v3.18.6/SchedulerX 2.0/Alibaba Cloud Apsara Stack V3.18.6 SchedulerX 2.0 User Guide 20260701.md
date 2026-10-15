@@ -2,14 +2,72 @@
 title: "SchedulerX 2.0 User Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 139
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 SchedulerX 2.0 User Guide 20260701.pdf"
+source_pdf: "6fe4e9c681cb1af1_Alibaba Cloud Apsara Stack V3.18.6 SchedulerX 2.0 User Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6scheduler-x/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20SchedulerX%202.0%20User%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # SchedulerX 2.0 User Guide 20260701
 
-## Distributed Task
+## Table of Contents
+
+- 1 Distributed Task Scheduling Platform SchedulerX 2.0
+- 2 Quick Start
+  - 2.1 Log on to the Apsara Uni-manager Management Console
+  - 2.2 Log on to the SchedulerX console
+  - 2.3 Get the domainName for SchedulerX
+  - 2.4 Connect clients to SchedulerX
+    - 2.4.1 Integrate a Java application with SchedulerX 2.0
+    - 2.4.2 Integrate a Spring application with SchedulerX 2.0
+    - 2.4.3 Integrate a Spring Boot application with SchedulerX 2.0
+  - 2.5 Create standalone script tasks using an agent
+  - 2.6 Adapt to IPv6 access
+  - 2.7 Client release history
+    - 2.7.1 Java SDK
+- 3 Scheduling and triggers
+  - 3.1 Timed scheduling
+  - 3.2 Workflow scheduling
+  - 3.3 API trigger
+  - 3.4 Backfill data
+  - 3.5 Second-level scheduling
+- 4 Task types
+  - 4.1 Java tasks
+  - 4.2 Script tasks
+  - 4.3 HTTP tasks
+- 5 Distributed programming model
+  - 5.1 Standalone
+  - 5.2 Broadcast
+  - 5.3 Map model
+  - 5.4 MapReduce model
+  - 5.5 Multi-language sharding models
+- 6 Console user guide
+  - 6.1 Overview
+  - 6.2 Execution List
+  - 6.3 Task List
+  - 6.4 Workflow Management
+  - 6.5 Application Management
+  - 6.6 Operation records
+- 7 Advanced features
+  - 7.1 Create a second-level scheduling task
+  - 7.2 Create a new account
+  - 7.3 How to pass data between upstream and downstream nodes in a workflow
+- 8 Configuration reference
+  - 8.1 JobContext parameters
+  - 8.2 Advanced configuration parameters for task management
+  - 8.3 SchedulerxWorker configuration parameters
+- 9 Permission management
+  - 9.1 Overview of permission management
+  - 9.2 Create users and user groups
+  - 9.3 Create a role and attach permissions
+  - 9.4 Verify logon permissions
+  - 9.5 Verify application-level permissions
+- 10 FAQ
+  - 10.1 FAQ
+  - 10.2 Alert FAQ
+
+buted Task Scheduling Platform SchedulerX 2.0
+
+## 1 Distributed Task Scheduling Platform SchedulerX 2.0
 
 **Scheduling Platform**
 
@@ -17,9 +75,9 @@ converter: line-classifier (PyMuPDF)
 
 SchedulerX 2.0 is Alibaba Group's next-generation Distributed Task Scheduling Platform, built on the Akka architecture. It supports timed scheduling, workflow task orchestration, and distributed batch scheduling. It delivers high reliability, manages massive task volumes, and schedules tasks in seconds. You configure and manage your timed scheduling tasks in the console. You query task execution records and operational logs. You orchestrate tasks and pass data using workflows. SchedulerX 2.0 provides a simple, easy-to-use distributed programming model. With just a few lines of code, you can distribute large data volumes across multiple machines for execution.
 
-## Quick Start
+## 2 Quick Start
 
-### Log on to the Apsara Uni-
+### 2.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -82,7 +140,7 @@ the Captcha, and then click **Confirm**.
 
 For Account Name, enter your username. For Email Address, enter the email address that you used to create the account. A password reset link is sent to your email address. Open the link to reset your password.
 
-### Log on to the SchedulerX
+### 2.2 Log on to the SchedulerX console
 
 **console**
 
@@ -143,7 +201,7 @@ Enter the six-digit MFA code and click **Authenticate**.
 
 If you are an administrator, click **Access With Administrator Permissions**. If you are not an administrator, click **Access With Role-based Authorization**.
 
-### Get the domainName for
+### 2.3 Get the domainName for SchedulerX
 
 **SchedulerX**
 
@@ -176,9 +234,9 @@ select **Show More**.
 4. In the **Details** dialog box, obtain the domainName for SchedulerX 2.0 and record it.
 The **domain** value is the domainName for SchedulerX 2.0.
 
-### Connect clients to SchedulerX
+### 2.4 Connect clients to SchedulerX
 
-#### Integrate a Java application with
+#### 2.4.1 Integrate a Java application with SchedulerX 2.0
 
 **SchedulerX 2.0**
 
@@ -189,14 +247,6 @@ Integrate SchedulerX 2.0 with your Java application to enable distributed task s
 You have created a resource. For more information, see Application management.
 
 **Procedure**
-
-| Parameter | Description | Default value |
-|---|---|---|
-| Applicatio n Name | A custom name for the application. | None |
-| Group ID | The Group ID for the application. The value must be unique in the system. Otherwise, the creation fails. | None |
-| Descriptio n | A custom description. | None |
-| Load5 Threshold | The value cannot exceed the number of available CPU cores on the client machine. | 0 |
-| Memory Usage | The average memory usage of the process in the last 5 minutes cannot be greater than this threshold. Otherwise, the client machine is considered busy. | 90% |
 
 The process of integrating task scheduling capabilities into an application involves the following steps:
 1. Create an application group.
@@ -219,6 +269,14 @@ To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000
 4. In the **Create Application** panel, on the **Basic Configurations** tab, configure the
 following parameters and click **Next**.
 
+| Parameter | Description | Default value |
+|---|---|---|
+| Applicatio n Name | A custom name for the application. | None |
+| Group ID | The Group ID for the application. The value must be unique in the system. Otherwise, the creation fails. | None |
+| Descriptio n | A custom description. | None |
+| Load5 Threshold | The value cannot exceed the number of available CPU cores on the client machine. | 0 |
+| Memory Usage | The average memory usage of the process in the last 5 minutes cannot be greater than this threshold. Otherwise, the client machine is considered busy. | 90% |
+
 | Disk Usage | The disk usage cannot be greater than this value. Otherwise, the client machine is considered unhealthy and busy. | 95% |
 |---|---|---|
 | Trigger Busy Machines | Specifies whether to continue triggering client execution when a machine is busy. | Open |
@@ -227,13 +285,14 @@ following parameters and click **Next**.
 | Maximum Tasks | The maximum number of tasks that a group can have. The value cannot exceed 1,000. | None |
 | Calendar | Import a custom calendar. You can set scheduled tasks to run on specified dates to meet specific business requirements. | None |
 
+5. In the **Create Application** panel, on the **Notifications** tab, select an **Alert Method**, add
+**Alert Contacts**, and then click **Submit**.
+
 | Configuration Item | Description | Example |
 |---|---|---|
 | Alert Method | DingTalk Email | DingTalk |
 | Add Alert Contact | Enter the Nickname, Email, and DingTalk Access token. _ | None |
 
-5. In the **Create Application** panel, on the **Notifications** tab, select an **Alert Method**, add
-**Alert Contacts**, and then click **Submit**.
 After the application group is created, you are redirected to the **Application Management** page. Verify that the application group exists and obtain its **Group ID** and **AppKey**.
 
 **Step 2: Integrate the Java application with SchedulerX 2.0**
@@ -293,8 +352,9 @@ To obtain the latest version of the SchedulerX 2.0 client, see Client release hi
      schedulerxWorker.setAppKey(appKey);
      schedulerxWorker.init();
      LOGGER.info("SchedulerxWorker init success. groupId={}", groupId);
-   }
 ```
+
+`}`
 
 **Note**
 
@@ -308,9 +368,9 @@ package com.alibaba.armon.test.processor.demo; import com.alibaba.schedulerx.wor
     public ProcessResult process(JobContext context) throws Exception {
         System.out.println("hello world");
         return new ProcessResult(true);
-    }
-}
 ```
+
+`}` `}`
 
 **Verify the result**
 
@@ -319,7 +379,7 @@ After you complete the integration, you can verify it in the console.
 2. In the navigation pane on the left, choose **Application Management**.
 3. On the **Application Management** page, find the group that you created and click
 **Connected Machines** in the **Actions** column.
-If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed.
+If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed. Java application
 
 **Note**
 
@@ -333,7 +393,7 @@ Based on the hello world example in Integrate a Java application with SchedulerX
 
 Cron expressions do not support second-level granularity. To schedule tasks at the second level, use second_delay.
 
-#### Integrate a Spring application with
+#### 2.4.2 Integrate a Spring application with SchedulerX 2.0
 
 **SchedulerX 2.0**
 
@@ -380,11 +440,11 @@ following parameters and click **Next**.
 | Maximum Tasks | The maximum number of tasks that a group can have. The value cannot exceed 1,000. | None |
 | Calendar | Import a custom calendar. You can set scheduled tasks to run on specified dates to meet specific business requirements. | None |
 
-| Configuration Item | Description | Example |
-|---|---|---|
-
 5. In the **Create Application** panel, on the **Notifications** tab, select an **Alert Method**, add
 **Alert Contacts**, and then click **Submit**.
+
+| Configuration Item | Description | Example |
+|---|---|---|
 
 | Alert Method | DingTalk Email | DingTalk |
 |---|---|---|
@@ -460,9 +520,9 @@ package com.alibaba.armon.test.processor.demo; import com.alibaba.schedulerx.wor
     public ProcessResult process(JobContext context) throws Exception {
         System.out.println("hello world");
         return new ProcessResult(true);
-    }
-}
 ```
+
+`}` `}`
 
 **Verify the result**
 
@@ -471,7 +531,7 @@ After you complete the integration, you can verify it in the console.
 2. In the navigation pane on the left, choose **Application Management**.
 3. On the **Application Management** page, find the group that you created and click
 **Connected Machines** in the **Actions** column.
-If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed.
+If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed. Java application
 
 **Note**
 
@@ -485,7 +545,7 @@ Based on the "hello world" example in Integrate a Spring application with Schedu
 
 Cron expressions do not support second-level precision. To schedule tasks by the second, use second_delay.
 
-#### Integrate a Spring Boot application
+#### 2.4.3 Integrate a Spring Boot application with SchedulerX 2.0
 
 **with SchedulerX 2.0**
 
@@ -498,16 +558,6 @@ An existing Spring Boot project.
 **Procedure**
 
 The workflow to integrate task scheduling capabilities into an application consists of the following steps:
-
-| Parameter | Description | Default value |
-|---|---|---|
-| Applicatio n Name | A custom name for the application. | None |
-| Group ID | The Group ID for the application. The value must be unique in the system. Otherwise, the creation fails. | None |
-| Descriptio n | A custom description. | None |
-| Load5 Threshold | The value cannot exceed the number of available CPU cores on the client machine. | 0 |
-| Memory Usage | The average memory usage of the process in the last 5 minutes cannot be greater than this threshold. Otherwise, the client machine is considered busy. | 90% |
-| Disk Usage | The disk usage cannot be greater than this value. Otherwise, the client machine is considered unhealthy and busy. | 95% |
-
 1. Create an application group.
 2. Integrate the client with SchedulerX.
 
@@ -528,6 +578,15 @@ To prevent resource waste, a group in SchedulerX 2.0 supports a maximum of 1,000
 4. In the **Create Application** panel, on the **Basic Configurations** tab, configure the
 following parameters and click **Next**.
 
+| Parameter | Description | Default value |
+|---|---|---|
+| Applicatio n Name | A custom name for the application. | None |
+| Group ID | The Group ID for the application. The value must be unique in the system. Otherwise, the creation fails. | None |
+| Descriptio n | A custom description. | None |
+| Load5 Threshold | The value cannot exceed the number of available CPU cores on the client machine. | 0 |
+| Memory Usage | The average memory usage of the process in the last 5 minutes cannot be greater than this threshold. Otherwise, the client machine is considered busy. | 90% |
+| Disk Usage | The disk usage cannot be greater than this value. Otherwise, the client machine is considered unhealthy and busy. | 95% |
+
 | Trigger Busy Machines | Specifies whether to continue triggering client execution when a machine is busy. | Open |
 |---|---|---|
 | Throttling | Specifies whether to enable throttling. If you enable this feature, you must set Concurrent Task Instances. | Off |
@@ -535,13 +594,14 @@ following parameters and click **Next**.
 | Maximum Tasks | The maximum number of tasks that a group can have. The value cannot exceed 1,000. | None |
 | Calendar | Import a custom calendar. You can set scheduled tasks to run on specified dates to meet specific business requirements. | None |
 
+5. In the **Create Application** panel, on the **Notifications** tab, select an **Alert Method**, add
+**Alert Contacts**, and then click **Submit**.
+
 | Configuration Item | Description | Example |
 |---|---|---|
 | Alert Method | DingTalk Email | DingTalk |
 | Add Alert Contact | Enter the Nickname, Email, and DingTalk Access token. _ | None |
 
-5. In the **Create Application** panel, on the **Notifications** tab, select an **Alert Method**, add
-**Alert Contacts**, and then click **Submit**.
 After the application group is created, you are redirected to the **Application Management** page. Verify that the application group exists and obtain its **Group ID** and **AppKey**.
 
 **Integrate the Spring Boot application with SchedulerX 2.0**
@@ -550,9 +610,6 @@ To integrate task scheduling into your application, follow these steps:
 1. You can initialize SchedulerxWorker.
 2. You can create a class to implement the scheduling task.
 3. Add the SchedulerxWorker dependency to the pom.xml file of your application.
-
-| Key | Description | Value | Supp orted from versi on |
-|---|---|---|---|
 
 ```xml
 <dependency>
@@ -597,6 +654,9 @@ ment. spring.schedulerx2.appKey=sfhdsfhdjshdgf****==
 
 All JobProcessors must be set as beans. For example, add the `@Component` annotation. Parameter descriptions:
 
+| Key | Description | Value | Supp orted from versi on |
+|---|---|---|---|
+
 | spring.schedulerx2.enabled | Specifies whether to enable the SchedulerX 2.0 starter. It is enabled by default and does not need to be configured. | `true` or `false`. Default value: `true`. | 0.1.7 |
 |---|---|---|---|
 | spring.schedulerx2.groupId | The group ID. | None | 0.1.7 |
@@ -632,9 +692,9 @@ package com.alibaba.armon.test.processor.demo; import com.alibaba.schedulerx.wor
     public ProcessResult process(JobContext context) throws Exception {
         System.out.println("hello world");
         return new ProcessResult(true);
-    }
-}
 ```
+
+`}` `}`
 
 **Verify the result**
 
@@ -643,7 +703,7 @@ After you complete the integration, you can verify it in the console.
 2. In the navigation pane on the left, choose **Application Management**.
 3. On the **Application Management** page, find the group that you created and click
 **Connected Machines** in the **Actions** column.
-If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed.
+If the integration is successful, a list of machines is displayed. If the integration fails, a message that indicates no active machines are available is displayed. Java application
 
 **Note**
 
@@ -651,16 +711,13 @@ You can also check the SchedulerX client logs in the ${user.home}/logs/scheduler
 
 **What to do next**
 
-| Version | Download URL | Release notes |
-|---|---|---|
-
 Create a timed scheduling task in the console based on the "hello world" example in Integrate a Spring Boot application with SchedulerX 2.0. For the **Processor Class** parameter, enter the full path of the JobProcessor, such as `com.alibaba.armon.test.processor.demo.HelloWorldProcessor` . For more information, see Create a scheduling task.
 
 **Note**
 
 Cron expressions do not support second-level precision. To schedule tasks at the second level, use the second_delay parameter.
 
-### Create standalone script tasks
+### 2.5 Create standalone script tasks using an agent
 
 **using an agent**
 
@@ -685,6 +742,9 @@ X.X.X is a placeholder for the version number. Replace this placeholder with the
 ```
 wget https://schedulerx2.oss-cn-hangzhou.aliyuncs.com/agent/schedulerxAgent-X.X.X.tar
 ```
+
+| Version | Download URL | Release notes |
+|---|---|---|
 
 | Agent 1.12.5 | https://schedulerx2.oss-cn- hangzhou.aliyuncs.com/age nt/schedulerxAgent- 1.12.5.tar | New features: Supports obtaining task system variables using placeholders. Supports custom thread pool sizes for HTTP tasks. Allows script tasks to return the last line of standard output as the execution result. |
 |---|---|---|
@@ -725,7 +785,7 @@ After you start the agent, check the ${user.home}/schedulerx/worker.log file. Th
 
 To stop the agent, go to the schedulerxAgent/bin directory and run **stop.sh**.
 
-### Adapt to IPv6 access
+### 2.6 Adapt to IPv6 access
 
 SchedulerX 2.0 supports IPv4/IPv6 dual-stack communication for the console, server, and worker components.
 
@@ -772,9 +832,6 @@ spring:
     appKey: <your appKey>
 ```
 
-| Version | Change type | Feature description | Release date | References |
-|---|---|---|---|---|
-
 **Note**
 
 By default, Spring Boot applications read the application.yaml file in the current program directory as the configuration file.
@@ -794,253 +851,270 @@ After startup, the logs in the log directory display IPv6 addresses.
 3. On the **Application Management** page, in the **Actions** column, click **Connect Machine**
 to query machine IP information.
 
-### Client release history
+### 2.7 Client release history
 
 This topic provides the release notes for the SchedulerX client SDK.
 
-#### Java SDK
+#### 2.7.1 Java SDK
 
 This topic describes the updates for the SchedulerX Java software development kit (SDK), which include new features, optimizations, and important bug fixes for each release.
+
+| Version | Change type | Feature description | Release date | References |
+|---|---|---|---|---|
 
 | 1.13.1 | Bug fix | Fixed an issue where heartbeats were registered and reported prematurely in scenarios with Spring parent-child containers. Fixed an issue where Map tasks would stop abnormally during an upgrade from an earlier version to the new SDK. | July 28, 2025 | None |
 |---|---|---|---|---|
 | 1.13.0 | New feature | Added support for link encryption. For applications in the Professional Edition, sensitive data is encrypted during communication between the server and the client. | June 18, 2025 | None |
 | 1.12.7 | Optimiz ation | Refactored the placeholder logic for script tasks to resolve placeholder replacement failures caused by Spring conflicts. Upgraded the Spring version to 5.3.31 to fix security vulnerabilities. | May 29, 2025 | None |
-|  | Bug fix | Fixed an issue where automatic retries for failed subtasks were not supported for shard 0 in broadcast tasks and sharded tasks. Fixed an issue where context retrieved an incorrect triggerType when a visualized MapReduce task was manually rerun. |  | None |
+|   | Bug fix | Fixed an issue where automatic retries for failed subtasks were not supported for shard 0 in broadcast tasks and sharded tasks. Fixed an issue where context retrieved an incorrect triggerType when a visualized MapReduce task was manually rerun. |   | None |
 | 1.12.5 | Optimiz ation | Optimized Spring tasks to be compatible with scenarios where other components implement TaskScheduler. | February 8, 2025 | None |
 
-|  |  |  | Added support for configuring the SDK log directory. Add the startup command - Dschedulerx.log.path=log root p _ _ ath. The final path is {schedulerx.log.path}/logs/s chedulerx . Added support for overwriting the default Logback configuration for SDK framework logs. You can also output logs to your own Simple Log Service (SLS) repository. You can write to your own Logstore using SLS configurations. |  | January 3, 2025 | None |
+|   |   |   | Added support for configuring the SDK log directory. Add the startup command - Dschedulerx.log.path=log root p _ _ ath. The final path is {schedulerx.log.path}/logs/s chedulerx . Added support for overwriting the default Logback configuration for SDK framework logs. You can also output logs to your own Simple Log Service (SLS) repository. You can write to your own Logstore using SLS configurations. |   | January 3, 2025 | None |
 |---|---|---|---|---|---|---|
-|  |  |  |  | {schedulerx.log.path}/logs/s |  |  |
-|  |  |  | chedulerx |  |  |  |
-|  | 1.12.3 | New feature |  |  |  |  |
-|  |  | Optimiz ation | Optimized Spring tasks to be compatible with Spring 6.x. Fixed an H2 `DriverClass Not Found` exception that occurred when the driver class was not configured for the application Java Database Connectivity (JDBC). Fixed an issue where Map tasks failed due to concurrency problems during status checks. |  |  |  |
+|   |   |   |   | {schedulerx.log.path}/logs/s |   |   |
+|   |   |   | chedulerx |   |   |   |
+|   | 1.12.3 | New feature |   |   |   |   |
+|   |   | Optimiz ation | Optimized Spring tasks to be compatible with Spring 6.x. Fixed an H2 `DriverClass Not Found` exception that occurred when the driver class was not configured for the application Java Database Connectivity (JDBC). Fixed an issue where Map tasks failed due to concurrency problems during status checks. |   |   |   |
 
 | Version | Chang e type | Feature description | Release date | References |
 |---|---|---|---|---|
 | 1.12.2 | Optimiz ation | Fixed security vulnerabilities in visualized MapReduce tasks. Fixed security vulnerabilities in some Akka interfaces. | November 20, 2024 | None |
 | 1.12.1 | New feature | Added support for custom thread pool sizes for HTTP agent tasks. Added support for custom loggers for SchedulerX logs. Added the @SchedulerX annotation. This annotation can work with the Spring @Scheduled annotation to take over some of the Spring scheduled tasks. | October 12, 2024 | None |
-|  | Optimiz ation | Removed the fastjson package to fix security vulnerabilities. |  | None |
+|   | Optimiz ation | Removed the fastjson package to fix security vulnerabilities. |   | None |
 
 | 1.11.5 | Optimiz ation | Optimized the log output of SLS. Fixed an issue where heartbeat reporting was affected when multiple application groups failed to read configurations. Reduced the number of fault- tolerant retries for heartbeat timeout exceptions. | June 17, 2024 | None |
 |---|---|---|---|---|
 | 1.11.4 | New feature | JobContext can now get the workflow ID. | March 20, 2024 | For more information, see JobContext parameter description. |
-|  | Optimiz ation | Reduced the SDK size by removing unused dependencies. Removed the unused Log4j2.xml file from the SDK to prevent log configuration conflicts. |  | None |
+|   | Optimiz ation | Reduced the SDK size by removing unused dependencies. Removed the unused Log4j2.xml file from the SDK to prevent log configuration conflicts. |   | None |
 | 1.11.1 | New feature | Added support for getting task parameters from environment variables. | February 20, 2024 | None |
-|  | New feature | Added support for application-level isolation. |  | None |
-|  | Bug fix | Fixed Netty security vulnerabilities. Fixed Logback security vulnerabilities. Fixed an issue where SchedulerX framework logs were not displayed due to log conflicts. |  | None |
-|  | New feature | Added support for graceful shutdown. Before an application stops, it waits for all running tasks to complete. This ensures that no services are interrupted during release and restart. |  | None |
-|  | New feature | Added support for configuring the distribution rate of subtasks. |  | None |
+|   | New feature | Added support for application-level isolation. |   | None |
+|   | Bug fix | Fixed Netty security vulnerabilities. Fixed Logback security vulnerabilities. Fixed an issue where SchedulerX framework logs were not displayed due to log conflicts. |   | None |
+|   | New feature | Added support for graceful shutdown. Before an application stops, it waits for all running tasks to complete. This ensures that no services are interrupted during release and restart. |   | None |
+|   | New feature | Added support for configuring the distribution rate of subtasks. |   | None |
 
-|  |  |  |  |  |  | For more information, see Connect a Spring Boot application to SchedulerX 2.0. None None None None |
+|   |   |   |   |   |   | For more information, see Connect a Spring Boot application to SchedulerX 2.0. None None None None |
 |---|---|---|---|---|---|---|
-|  |  |  | Added support for configuring a user and password. spring.schedulerx2.h2DatabaseU ser : Sets the user for the built-in H2 database. spring.schedulerx2.h2DatabaseP assword : Sets the password for the built-in H2 database. |  |  |  |
-|  |  |  |  | spring.schedulerx2.h2DatabaseU |  |  |
-|  |  | New | ser |  |  |  |
-|  |  | feature |  |  |  |  |
-|  |  |  |  | spring.schedulerx2.h2DatabaseP |  |  |
-|  |  |  | assword |  |  |  |
-|  | 1.10.14 |  |  |  |  |  |
-|  |  | Optimiz ation | Added support for isolation by application group. |  |  |  |
-|  |  | Optimiz ation | Added support for distribution sorted by worker IP address. |  |  |  |
-|  |  | Optimiz ation | Added support for earlier versions of Spring 4. The timed method for Spring tasks now supports any return value. |  |  |  |
-|  |  | Optimiz ation | Prevents the creation of duplicate heartbeat threads when the Spring container is reinitialized. Added support for automatic restarts when an Akka Actor terminates unexpectedly. |  |  |  |
+|   |   |   | Added support for configuring a user and password. spring.schedulerx2.h2DatabaseU ser : Sets the user for the built-in H2 database. spring.schedulerx2.h2DatabaseP assword : Sets the password for the built-in H2 database. |   |   |   |
+|   |   |   |   | spring.schedulerx2.h2DatabaseU |   |   |
+|   |   | New | ser |   |   |   |
+|   |   | feature |   |   |   |   |
+|   |   |   |   | spring.schedulerx2.h2DatabaseP |   |   |
+|   |   |   | assword |   |   |   |
+|   | 1.10.14 |   |   |   |   |   |
+|   |   | Optimiz ation | Added support for isolation by application group. |   |   |   |
+|   |   | Optimiz ation | Added support for distribution sorted by worker IP address. |   |   |   |
+|   |   | Optimiz ation | Added support for earlier versions of Spring 4. The timed method for Spring tasks now supports any return value. |   |   |   |
+|   |   | Optimiz ation | Prevents the creation of duplicate heartbeat threads when the Spring container is reinitialized. Added support for automatic restarts when an Akka Actor terminates unexpectedly. |   |   |   |
 
-|  | Bug fix | Fixed an issue where an exception was returned immediately after Spring failed to read a processor bean. Fixed an issue introduced in version 1.10.x where Map tasks would get stuck. Fixed an issue where a task instance could not be terminated after the preProcess method of a broadcast task failed to execute. Fixed an issue where a task timeout alert was triggered by residual threads when a task instance terminated abnormally. Fixed an issue where task status could be lost and tasks could get stuck after an application started in shared thread pool mode. Fixed a configuration loading exception that occurred when multiple application groups or appKeys contained special characters. Fixed an issue where Professional Edition features for visualized Map tasks could not be used. |  | None |
+|   | Bug fix | Fixed an issue where an exception was returned immediately after Spring failed to read a processor bean. Fixed an issue introduced in version 1.10.x where Map tasks would get stuck. Fixed an issue where a task instance could not be terminated after the preProcess method of a broadcast task failed to execute. Fixed an issue where a task timeout alert was triggered by residual threads when a task instance terminated abnormally. Fixed an issue where task status could be lost and tasks could get stuck after an application started in shared thread pool mode. Fixed a configuration loading exception that occurred when multiple application groups or appKeys contained special characters. Fixed an issue where Professional Edition features for visualized Map tasks could not be used. |   | None |
 |---|---|---|---|---|
 
 | Version | Chang e type | Feature description | Release date | References |
 |---|---|---|---|---|
 | 1.9.6 | New feature | Added support for standard and custom templates. Standard template: You can modify the image and image pull policy. Custom template: Compatible with native Kubernetes content. The schedulerx2-plugin-kubernetes must be version 1.0.5 or later. | July 4, 2023 | None |
-|  | New feature | Map tasks now support starting distribution from a random position. To enable this, set the spring.schedulerx2.mapMasterDispatc hRandom parameter to true . The default value is `false`. |  | None |
-| 9 |  |  | > Document V |  |
+|   | New feature | Map tasks now support starting distribution from a random position. To enable this, set the spring.schedulerx2.mapMasterDispatc hRandom parameter to true . The default value is `false`. |   | None |
+| 9 |   |   | > Document V |   |
 
-|  |  |  |  |  |  |  |  | None None None None None |
+|   |   |   |   |   |   |   |   | None None None None None |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | New feature | Shell tasks now support common built- in system parameters. `schedule.timestamp`: The time when the task is scheduled. `data.timestamp`: The data timestamp for the scheduling. |  |  |  | None |
-|  |  |  |  | Adjusted the execution thread model. The model is switched to the non- shared thread pool mode. Parameters for the shared thread pool model. spring.schedulerx2.shareCont ainerPool=true : Enables the shared thread pool. spring.schedulerx2.sharePool Size=32 : The global size of the shared thread pool. Default: 64. spring.schedulerx2.sharePool QueueSize=20480 : The queue size of the shared thread pool. Default: `Integer.MAX VALUE`. _ |  |  |  | None |
-|  |  |  |  |  |  | spring.schedulerx2.shareCont |  |  |
-|  |  |  | New | ainerPool=true |  |  |  |  |
-|  |  |  | feature |  |  |  |  |  |
-|  |  |  |  |  |  | spring.schedulerx2.sharePool |  |  |
-|  |  |  |  | Size=32 |  |  |  |  |
-|  |  |  |  |  |  | spring.schedulerx2.sharePool |  |  |
-|  |  |  |  | QueueSize=20480 |  |  |  |  |
-|  |  |  |  | The following parameters are added. spring.schedulerx2.broadcastMa sterExecEnable=false : Specifies whether the master node participates in broadcast task execution. Default: true. spring.schedulerx2.broadcastDi spatchRetryTimes=5 : The number of retry attempts for broadcast distribution. |  |  |  | None |
-|  |  |  |  |  | spring.schedulerx2.broadcastMa |  |  |  |
-|  |  |  |  | sterExecEnable=false |  |  |  |  |
-|  |  |  | New feature |  |  |  |  |  |
-|  |  |  |  |  | spring.schedulerx2.broadcastDi |  |  |  |
-|  |  |  |  | spatchRetryTimes=5 |  |  |  |  |
-|  |  |  |  |  |  |  | September 8, 2023 |  |
-|  |  | 1.8.13 |  |  |  |  |  |  |
-|  |  |  | Optimiz ation | Optimized the performance of Map tasks during large-scale application publishing and scale-in. |  |  |  | None |
-|  |  |  | Optimiz ation | Optimized the timing of heartbeat reporting at application startup to prevent long task processing times caused by slow application container startup. |  |  |  | None |
+|   |   |   | New feature | Shell tasks now support common built- in system parameters. `schedule.timestamp`: The time when the task is scheduled. `data.timestamp`: The data timestamp for the scheduling. |   |   |   | None |
+|   |   |   |   | Adjusted the execution thread model. The model is switched to the non- shared thread pool mode. Parameters for the shared thread pool model. spring.schedulerx2.shareCont ainerPool=true : Enables the shared thread pool. spring.schedulerx2.sharePool Size=32 : The global size of the shared thread pool. Default: 64. spring.schedulerx2.sharePool QueueSize=20480 : The queue size of the shared thread pool. Default: `Integer.MAX VALUE`. _ |   |   |   | None |
+|   |   |   |   |   |   | spring.schedulerx2.shareCont |   |   |
+|   |   |   | New | ainerPool=true |   |   |   |   |
+|   |   |   | feature |   |   |   |   |   |
+|   |   |   |   |   |   | spring.schedulerx2.sharePool |   |   |
+|   |   |   |   | Size=32 |   |   |   |   |
+|   |   |   |   |   |   | spring.schedulerx2.sharePool |   |   |
+|   |   |   |   | QueueSize=20480 |   |   |   |   |
+|   |   |   |   | The following parameters are added. spring.schedulerx2.broadcastMa sterExecEnable=false : Specifies whether the master node participates in broadcast task execution. Default: true. spring.schedulerx2.broadcastDi spatchRetryTimes=5 : The number of retry attempts for broadcast distribution. |   |   |   | None |
+|   |   |   |   |   | spring.schedulerx2.broadcastMa |   |   |   |
+|   |   |   |   | sterExecEnable=false |   |   |   |   |
+|   |   |   | New feature |   |   |   |   |   |
+|   |   |   |   |   | spring.schedulerx2.broadcastDi |   |   |   |
+|   |   |   |   | spatchRetryTimes=5 |   |   |   |   |
+|   |   |   |   |   |   |   | September 8, 2023 |   |
+|   |   | 1.8.13 |   |   |   |   |   |   |
+|   |   |   | Optimiz ation | Optimized the performance of Map tasks during large-scale application publishing and scale-in. |   |   |   | None |
+|   |   |   | Optimiz ation | Optimized the timing of heartbeat reporting at application startup to prevent long task processing times caused by slow application container startup. |   |   |   | None |
 
-|  | Bug fix | Fixed an issue where tasks were rejected after running for a long time in shared thread pool mode. Fixed an issue where null pointer logs occasionally appeared during task status reporting. Fixed an issue where the number of threads for broadcast tasks continuously increased in versions later than 1.7.x. Fixed a memory leak in shared thread pool mode. Fixed an issue where dynamic proxy objects could not execute the Reduce method. Fixed an issue where acknowledgements for second-level tasks were lost during merging. Fixed an exception that occurred when Diamond read environment addresses. Fixed an issue with long heartbeat timeouts when connecting to the public cloud. Fixed alerts related to the log4j log format. Fixed an issue where standalone tasks would get stuck if a distribution exception occurred. Fixed an issue where new versions were not compatible with the `ClassName:BeanId` configuration mode. Modified the maximum file size limit for Logback standalone logs. |  | None |
+|   | Bug fix | Fixed an issue where tasks were rejected after running for a long time in shared thread pool mode. Fixed an issue where null pointer logs occasionally appeared during task status reporting. Fixed an issue where the number of threads for broadcast tasks continuously increased in versions later than 1.7.x. Fixed a memory leak in shared thread pool mode. Fixed an issue where dynamic proxy objects could not execute the Reduce method. Fixed an issue where acknowledgements for second-level tasks were lost during merging. Fixed an exception that occurred when Diamond read environment addresses. Fixed an issue with long heartbeat timeouts when connecting to the public cloud. Fixed alerts related to the log4j log format. Fixed an issue where standalone tasks would get stuck if a distribution exception occurred. Fixed an issue where new versions were not compatible with the `ClassName:BeanId` configuration mode. Modified the maximum file size limit for Logback standalone logs. |   | None |
 |---|---|---|---|---|
 
 | Version | Chang e type | Feature description | Release date | References |
 |---|---|---|---|---|
-|  | New feature | Added support for integrating native Spring scheduled tasks. Added support for integrating Tracing Analysis. |  | None |
-|  | Optimiz ation | Enabled fast responses for client shutdown and offline operations. |  | None |
+|   | New feature | Added support for integrating native Spring scheduled tasks. Added support for integrating Tracing Analysis. |   | None |
+|   | Optimiz ation | Enabled fast responses for client shutdown and offline operations. |   | None |
 
-|  |  |  | SchedulerX 2.0 | User Guide·Quic Star |
+|   |   |   | SchedulerX 2.0 | User Guide·Quic Star |
 |---|---|---|---|---|
-| 1.7.10 |  |  | August 30, 2022 |  |
-|  | Bug fix | Fixed an out-of-memory issue caused by many SLS log outputs for high-frequency tasks. Fixed a delay issue that occurred when many second-level tasks ran concurrently. |  | None |
+| 1.7.10 |   |   | August 30, 2022 |   |
+|   | Bug fix | Fixed an out-of-memory issue caused by many SLS log outputs for high-frequency tasks. Fixed a delay issue that occurred when many second-level tasks ran concurrently. |   | None |
 | 1.6.1 | Bug fix | Fixed an issue of high CPU usage by the detection thread for second-level broadcast tasks. | August 3, 2022 | None |
 | 1.6.0 | New feature | Added support for integrating Kubernetes Job scheduling. | June 24, 2022 | None |
-|  | Optimiz ation | Processor classes are now compatible with Spring AOP proxy configurations. Optimized the content of ERROR log messages that occasionally appeared in the monitoring timer for active workers. Added support for log collection for `second delay` tasks. _ |  | None |
+|   | Optimiz ation | Processor classes are now compatible with Spring AOP proxy configurations. Optimized the content of ERROR log messages that occasionally appeared in the monitoring timer for active workers. Added support for log collection for `second delay` tasks. _ |   | None |
 | 1.5.1.1 | New feature | Added support for dynamically enabling or disabling Simple Log Service. | April 19, 2022 | None |
-|  | Bug fix | Fixed an issue where version 1.5.0.x was not compatible with Spring Boot 2.0.3. Fixed a potential JobSyncService bean initialization error in version 1.5.0.x. |  |  |
+|   | Bug fix | Fixed an issue where version 1.5.0.x was not compatible with Spring Boot 2.0.3. Fixed a potential JobSyncService bean initialization error in version 1.5.0.x. |   |   |
 | 1.5.0.2 | New feature | Added support for declarative task definitions in Spring Boot. You can declare namespaces, applications, tasks, and alerts in configuration files to manage tasks within an application. The file declarations can be modified, which lets you start applications in any environment with a single click. | April 1, 2022 | None |
 
-|  |  |  | Visualized MapReduce tasks, formerly parallel computing, now support subtask-level lists, logs, and reruns. You can also define custom tags for subtasks and search for subtasks by tag. |  |  | None |
+|   |   |   | Visualized MapReduce tasks, formerly parallel computing, now support subtask-level lists, logs, and reruns. You can also define custom tags for subtasks and search for subtasks by tag. |   |   | None |
 |---|---|---|---|---|---|---|
-| 1.4.2 |  | New feature | With the log service for SchedulerX 2.0, you can view the application logs for each task scheduling, including distributed tasks, in the console by adding a Log4j or Logback configuration. No code changes are required. |  | March 7, 2022 | None |
-|  |  |  | You can now view the stack of running tasks directly in the console to troubleshoot stuck tasks. To use this feature, upgrade your client to version 1.4.0 or later. |  |  | None |
-|  |  |  | Added support for connecting to executors developed with ElasticJob. |  |  |  |
-| 1.3.4 |  | New | Added support for DataWorks tasks. Added schedulerx2-plugin- xxljob to be compatible with Xxl- job interfaces. |  | January 6, 2022 | None |
-|  |  |  |  | schedulerx2-plugin- |  |  |
-|  |  | feature | xxljob |  |  |  |
+| 1.4.2 |   | New feature | With the log service for SchedulerX 2.0, you can view the application logs for each task scheduling, including distributed tasks, in the console by adding a Log4j or Logback configuration. No code changes are required. |   | March 7, 2022 | None |
+|   |   |   | You can now view the stack of running tasks directly in the console to troubleshoot stuck tasks. To use this feature, upgrade your client to version 1.4.0 or later. |   |   | None |
+|   |   |   | Added support for connecting to executors developed with ElasticJob. |   |   |   |
+| 1.3.4 |   | New | Added support for DataWorks tasks. Added schedulerx2-plugin- xxljob to be compatible with Xxl- job interfaces. |   | January 6, 2022 | None |
+|   |   |   |   | schedulerx2-plugin- |   |   |
+|   |   | feature | xxljob |   |   |   |
 
-|  | Version | Chang e type | Feature description |  | Release date | References |
+|   | Version | Chang e type | Feature description |   | Release date | References |
 |---|---|---|---|---|---|---|
-|  | 1.3.2 | Optimiz ation | Optimized an issue by upgrading the default log4j2 dependency to version 2.15.0. |  | December 15, 2021 | None |
-|  |  | New feature | Enhanced second-level standalone tasks: Second-level standalone loops now support distribution and switching between different instances. For Spring Boot applications, set the following parameter: spring.schedulerx2.enableSecondD elayStandaloneDispatch=true . The default value is false . |  |  | None |
-|  |  |  |  | spring.schedulerx2.enableSecondD |  |  |
-|  |  |  | elayStandaloneDispatch=true |  |  |  |
+|   | 1.3.2 | Optimiz ation | Optimized an issue by upgrading the default log4j2 dependency to version 2.15.0. |   | December 15, 2021 | None |
+|   |   | New feature | Enhanced second-level standalone tasks: Second-level standalone loops now support distribution and switching between different instances. For Spring Boot applications, set the following parameter: spring.schedulerx2.enableSecondD elayStandaloneDispatch=true . The default value is false . |   |   | None |
+|   |   |   |   | spring.schedulerx2.enableSecondD |   |   |
+|   |   |   | elayStandaloneDispatch=true |   |   |   |
 
-|  |  |  |  |  |  | None None None None None |
+|   |   |   |   |   |   | None None None None None |
 |---|---|---|---|---|---|---|
-|  |  | Optimiz ation | Enabled fast responses for client shutdown and offline operations. |  |  | None |
-|  | 1.3.0.3 |  |  |  | November 26, 2021 |  |
-|  |  | Bug fix | Fixed an issue where instance heartbeats were reported only to the specified scheduling service when the client was connected to multiple application groups. Fixed issues with occasional thread interruptions and null pointer exceptions in second-level tasks. Fixed a compatibility issue where tasks would lock up and time out when the SchedulerX client was integrated with Spring Cloud. Fixed an issue where broadcast tasks were interrupted under concurrent conditions. Fixed an issue where the worker instance list was not regularly refreshed during the execution of second-level tasks. Fixed an issue where the scan thread did not terminate after a stop instruction was executed for a second-level broadcast task. Fixed an issue where tasks had a probability of getting stuck during batch releases of many workers in second-level broadcast task scenarios. |  |  | None |
-|  | 1.2.9.1 | Bug fix | Fixed an issue where tasks would lock up and time out when the worker was integrated with Spring Cloud. |  | August 30, 2021 | None |
-|  |  | New feature | Enhanced second-level standalone tasks: Second-level standalone loops now support distribution and switching between different instances. Set the parameter spring.schedulerx2.enableSecondD elayStandaloneDispatch=true . The default value is false . |  |  | None |
-|  |  |  |  | spring.schedulerx2.enableSecondD |  |  |
-|  |  |  | elayStandaloneDispatch=true |  |  |  |
-|  |  |  |  |  | August 27, 2021 |  |
-|  | 1.2.9 |  |  |  |  |  |
-|  |  | Bug fix | Fixed an issue where broadcast tasks received an interrupt signal under concurrent conditions and the worker instance list was not updated. |  |  | None |
+|   |   | Optimiz ation | Enabled fast responses for client shutdown and offline operations. |   |   | None |
+|   | 1.3.0.3 |   |   |   | November 26, 2021 |   |
+|   |   | Bug fix | Fixed an issue where instance heartbeats were reported only to the specified scheduling service when the client was connected to multiple application groups. Fixed issues with occasional thread interruptions and null pointer exceptions in second-level tasks. Fixed a compatibility issue where tasks would lock up and time out when the SchedulerX client was integrated with Spring Cloud. Fixed an issue where broadcast tasks were interrupted under concurrent conditions. Fixed an issue where the worker instance list was not regularly refreshed during the execution of second-level tasks. Fixed an issue where the scan thread did not terminate after a stop instruction was executed for a second-level broadcast task. Fixed an issue where tasks had a probability of getting stuck during batch releases of many workers in second-level broadcast task scenarios. |   |   | None |
+|   | 1.2.9.1 | Bug fix | Fixed an issue where tasks would lock up and time out when the worker was integrated with Spring Cloud. |   | August 30, 2021 | None |
+|   |   | New feature | Enhanced second-level standalone tasks: Second-level standalone loops now support distribution and switching between different instances. Set the parameter spring.schedulerx2.enableSecondD elayStandaloneDispatch=true . The default value is false . |   |   | None |
+|   |   |   |   | spring.schedulerx2.enableSecondD |   |   |
+|   |   |   | elayStandaloneDispatch=true |   |   |   |
+|   |   |   |   |   | August 27, 2021 |   |
+|   | 1.2.9 |   |   |   |   |   |
+|   |   | Bug fix | Fixed an issue where broadcast tasks received an interrupt signal under concurrent conditions and the worker instance list was not updated. |   |   | None |
 
-|  | 1.2.8.3 | Bug fix | Fixed an issue where the scan thread did not terminate after a stop instruction was executed for a second- level broadcast task. |  | August 13, 2021 | None |
+|   | 1.2.8.3 | Bug fix | Fixed an issue where the scan thread did not terminate after a stop instruction was executed for a second- level broadcast task. |   | August 13, 2021 | None |
 |---|---|---|---|---|---|---|
-|  | 1.2.8.2 | Bug fix | Fixed an issue where tasks had a probability of getting stuck during batch releases of many workers in second-level broadcast task scenarios. |  | August 6, 2021 | None |
-|  |  |  | Enhanced broadcast tasks: The postProcess method can now get the execution status of all machines from JobContext.getTaskStatuses() and the execution results from JobContext.getTaskResults() . Broadcast sharding model: Broadcast tasks can get shardingNum and sharingId from JobContext to perform distributed data processing based on the machine's index. Enhanced sharding model: JobContext can get the total number of shards from shardingNum . |  | June 23, 2021 | None |
-|  |  |  |  | JobContext.getTaskStatuses() |  |  |
-|  | 1.2.8 | New feature |  |  |  |  |
-|  | 1.2.7 | New feature | Added a switch to disable the failover feature. |  | April 28, 2021 | None |
-|  |  | Bug fix | Fixed a potential socket leak caused by heartbeat check failures. Fixed an issue where the MapTask Master might frequently trigger false failovers when there were many subtasks. |  |  | None |
-|  | 1.2.5.2 | New feature | The interval for second-level tasks now supports millisecond-level precision. |  | April 8, 2021 | None |
-|  |  | Optimiz ation | In the MapReduce model, the root task is now fixed to run on the master node to simplify troubleshooting. Removed the strong dependency on log4j2. If you use Logback, you can remove the log4j and log4j2 dependencies. |  |  | None |
+|   | 1.2.8.2 | Bug fix | Fixed an issue where tasks had a probability of getting stuck during batch releases of many workers in second-level broadcast task scenarios. |   | August 6, 2021 | None |
+|   |   |   | Enhanced broadcast tasks: The postProcess method can now get the execution status of all machines from JobContext.getTaskStatuses() and the execution results from JobContext.getTaskResults() . Broadcast sharding model: Broadcast tasks can get shardingNum and sharingId from JobContext to perform distributed data processing based on the machine's index. Enhanced sharding model: JobContext can get the total number of shards from shardingNum . |   | June 23, 2021 | None |
+|   |   |   |   | JobContext.getTaskStatuses() |   |   |
+|   | 1.2.8 | New feature |   |   |   |   |
+|   | 1.2.7 | New feature | Added a switch to disable the failover feature. |   | April 28, 2021 | None |
+|   |   | Bug fix | Fixed a potential socket leak caused by heartbeat check failures. Fixed an issue where the MapTask Master might frequently trigger false failovers when there were many subtasks. |   |   | None |
+|   | 1.2.5.2 | New feature | The interval for second-level tasks now supports millisecond-level precision. |   | April 8, 2021 | None |
+|   |   | Optimiz ation | In the MapReduce model, the root task is now fixed to run on the master node to simplify troubleshooting. Removed the strong dependency on log4j2. If you use Logback, you can remove the log4j and log4j2 dependencies. |   |   | None |
 
 | 1.2.4.3 | New feature | Added support for progress reporting for running broadcast tasks. Heartbeat logs can now be disabled with a switch. | January 21, 2021 | None |
 |---|---|---|---|---|
-|  | Bug fix | The heartbeat interval is adjusted to 10 seconds. Fixed a critical issue where broadcast tasks could get stuck. |  | None |
+|   | Bug fix | The heartbeat interval is adjusted to 10 seconds. Fixed a critical issue where broadcast tasks could get stuck. |   | None |
 
-|  |  | Version | Chang e type | Feature description |  | Release date | References |
+|   |   | Version | Chang e type | Feature description |   | Release date | References |
 |---|---|---|---|---|---|---|---|
-|  |  | 1.2.3.1 | Optimiz ation | Fixed an issue where high client load could cause the persistent connection for task scheduling to fail, preventing further task scheduling. |  | December 16, 2020 | None |
-|  |  |  |  | Added support for collecting the actual CPU usage of a container. You need to add configurations. For example, for a starter, add spring.schedulerx2.enableCgroupMe trics=true and spring.schedulerx2.cgroupPathP refix=/sys/fs/cgroup/cpu/ . The `cgroupPathPrefix` parameter is optional. If the container has the ` /sys/fs/cgroup/cpu/ ` path, you do not need to configure it. Otherwise, change it to the actual cgroup path. Added support for tags. You can add custom tags when the client starts. For example, for a starter, add spring.schedulerx2.labels=xxx . In task management, you can specify machines and run tasks on instances with a specific tag. This is useful for scenarios such as grayscale releases and unitization. |  |  | None |
-|  |  |  |  |  | spring.schedulerx2.cgroupPathP |  |  |
-|  |  |  |  | refix=/sys/fs/cgroup/cpu/ |  |  |  |
-|  |  |  |  |  |  | December 10, 2020 |  |
-|  |  | 1.2.2.2 | New feature |  |  |  |  |
-|  |  |  |  |  | spring.schedulerx2.labels=xxx |  |  |
-|  |  |  | Optimiz ation | Separated the client heartbeat thread and the Akka core thread to ensure that high application load does not affect heartbeat checks. Removed h2 from the shade. Shading h2 might cause MySQL driver loading to fail. |  |  | None |
+|   |   | 1.2.3.1 | Optimiz ation | Fixed an issue where high client load could cause the persistent connection for task scheduling to fail, preventing further task scheduling. |   | December 16, 2020 | None |
+|   |   |   |   | Added support for collecting the actual CPU usage of a container. You need to add configurations. For example, for a starter, add spring.schedulerx2.enableCgroupMe trics=true and spring.schedulerx2.cgroupPathP refix=/sys/fs/cgroup/cpu/ . The `cgroupPathPrefix` parameter is optional. If the container has the ` /sys/fs/cgroup/cpu/ ` path, you do not need to configure it. Otherwise, change it to the actual cgroup path. Added support for tags. You can add custom tags when the client starts. For example, for a starter, add spring.schedulerx2.labels=xxx . In task management, you can specify machines and run tasks on instances with a specific tag. This is useful for scenarios such as grayscale releases and unitization. |   |   | None |
+|   |   |   |   |   | spring.schedulerx2.cgroupPathP |   |   |
+|   |   |   |   | refix=/sys/fs/cgroup/cpu/ |   |   |   |
+|   |   |   |   |   |   | December 10, 2020 |   |
+|   |   | 1.2.2.2 | New feature |   |   |   |   |
+|   |   |   |   |   | spring.schedulerx2.labels=xxx |   |   |
+|   |   |   | Optimiz ation | Separated the client heartbeat thread and the Akka core thread to ensure that high application load does not affect heartbeat checks. Removed h2 from the shade. Shading h2 might cause MySQL driver loading to fail. |   |   | None |
 
 | 1.2.1.2 | New feature | Added support for a shared ContainerPool. All tasks on the client can share the same thread pool, which greatly improves client performance and stability when scheduling many tasks with high concurrency. Shaded Scala to resolve Scala conflicts. Added support for appKey authentication for the public cloud. Enhanced the MapReduce model to support configuring whether the Reduce method is executed only after all subtasks succeed. The client now supports setting the appKey using - Dschedulerx.appKey . | October 20, 2020 | None |
 |---|---|---|---|---|
-|  | Optimiz ation | Optimized the client Netty thread pool. |  | None |
-|  | Bug fix | Fixed an issue where broadcast tasks could get stuck. Fixed an issue where the AccessKey ID or AccessKey secret for the SLS feature could be leaked. |  | None |
+|   | Optimiz ation | Optimized the client Netty thread pool. |   | None |
+|   | Bug fix | Fixed an issue where broadcast tasks could get stuck. Fixed an issue where the AccessKey ID or AccessKey secret for the SLS feature could be leaked. |   | None |
 | 1.2.0.2 | New feature | An application now supports more than 100,000 tasks. This feature is available only on the public cloud. Added a switch for client logs. It is enabled by default. You can now set the status when creating a task using OpenAPI. Removed dependencies on diamond-client, logger.API, and log4j. | August 19, 2020 | None |
-|  | Bug fix | Fixed an issue where the client would lose connection with the server during network disconnection drills. EDAS applications could not read the AccessKey secret. |  | None |
+|   | Bug fix | Fixed an issue where the client would lose connection with the server during network disconnection drills. EDAS applications could not read the AccessKey secret. |   | None |
 
-|  | - | Oct |
+|   | - | Oct |
 |---|---|---|
-| Dschedulerx.appKey |  |  |
+| Dschedulerx.appKey |   |   |
 
-|  | 1.1.4.REL EASE | New feature | Added support for custom namespaces. Added support for initializing multiple SchedulerxWorker instances. Enhanced the MapReduce model. The Reduce method can be executed even if a subtask fails. JobContext.getTaskStatuses can determine the status of each task. In the Map<Long, TaskStatus> struct, the key is the task ID and the value is the task status. |  | May 15, 2020 | None |
+|   | 1.1.4.REL EASE | New feature | Added support for custom namespaces. Added support for initializing multiple SchedulerxWorker instances. Enhanced the MapReduce model. The Reduce method can be executed even if a subtask fails. JobContext.getTaskStatuses can determine the status of each task. In the Map<Long, TaskStatus> struct, the key is the task ID and the value is the task status. |   | May 15, 2020 | None |
 |---|---|---|---|---|---|---|
-|  |  | Bug fix | A null pointer exception occurred if the result in ProcessResult was empty. Tasks would get stuck if thread- dispatcher-delivery was suspended. |  |  | None |
-|  |  |  | shade protobuf and netty from AccessKey IDka , which resolves over 90% of JAR package conflicts. |  | February 10, 2020 | None |
-|  |  |  |  | shade protobuf and netty from |  |  |
-|  |  |  | AccessKey IDka |  |  |  |
-|  | 1.1.2.REL EASE | New feature |  |  |  |  |
-|  |  | Optimiz ation | AppKeys do not support multiple groups. |  |  | None |
+|   |   | Bug fix | A null pointer exception occurred if the result in ProcessResult was empty. Tasks would get stuck if thread- dispatcher-delivery was suspended. |   |   | None |
+|   |   |   | shade protobuf and netty from AccessKey IDka , which resolves over 90% of JAR package conflicts. |   | February 10, 2020 | None |
+|   |   |   |   | shade protobuf and netty from |   |   |
+|   |   |   | AccessKey IDka |   |   |   |
+|   | 1.1.2.REL EASE | New feature |   |   |   |   |
+|   |   | Optimiz ation | AppKeys do not support multiple groups. |   |   | None |
 
-|  |  | Map<Long, |  |
+|   |   | Map<Long, |   |
 |---|---|---|---|
-|  | TaskStatus> |  |  |
+|   | TaskStatus> |   |   |
 
-| thread- |  |
+| thread- |   |
 |---|---|
 
-|  | dispatcher-delivery |
+|   | dispatcher-delivery |
 |---|---|
 
 | Version | Chang e type | Feature description | Release date | References |
 |---|---|---|---|---|
-|  | New feature | Added support for a multi-language sharding model similar to elastic-job . For more information, see Multi-language sharding model. When you create a group using OpenAPI, an AppKey can be returned. Added support for rerunning tasks with a successful status. Rerunning a task instance in a workflow also reruns its downstream tasks. |  | None |
+|   | New feature | Added support for a multi-language sharding model similar to elastic-job . For more information, see Multi-language sharding model. When you create a group using OpenAPI, an AppKey can be returned. Added support for rerunning tasks with a successful status. Rerunning a task instance in a workflow also reruns its downstream tasks. |   | None |
 
-|  | Optimiz ation | Optimized server performance by changing the communication with the client from synchronous to asynchronous and optimizing the default Akka dispatcher configuration. Using client version 1.1.0 improves heartbeat performance by three times. Redesigned the task management list on the frontend to display more information. |  | None |
+|   | Optimiz ation | Optimized server performance by changing the communication with the client from synchronous to asynchronous and optimizing the default Akka dispatcher configuration. Using client version 1.1.0 improves heartbeat performance by three times. Redesigned the task management list on the frontend to display more information. |   | None |
 |---|---|---|---|---|
-| 1.1.0 |  |  | December 17, 2019 |  |
-|  | Bug fix | Fixed an issue where global subtasks might not work in the distributed pull model. Fixed an issue where startup might fail in an isolated environment if a domain was not configured. |  | None |
-|  | New feature | Added the BlockAppStart configuration. It specifies whether to block the application startup if SchedulerX fails to start. The default value is true . Added an API operation to query the running status of a workflow. The API operation is GetWorkflowInstanceRequest . Added the `jobName` field to the JobContext context. This lets users get the task name during runtime. |  | None |
+| 1.1.0 |   |   | December 17, 2019 |   |
+|   | Bug fix | Fixed an issue where global subtasks might not work in the distributed pull model. Fixed an issue where startup might fail in an isolated environment if a domain was not configured. |   | None |
+|   | New feature | Added the BlockAppStart configuration. It specifies whether to block the application startup if SchedulerX fails to start. The default value is true . Added an API operation to query the running status of a workflow. The API operation is GetWorkflowInstanceRequest . Added the `jobName` field to the JobContext context. This lets users get the task name during runtime. |   | None |
 
-|  | 1.0.9 |  |  |  | November 28, 2019 | None |
+|   | 1.0.9 |   |   |   | November 28, 2019 | None |
 |---|---|---|---|---|---|---|
-|  |  |  | Deserializing BigDecimal using Hessian returned 0. An error occurred when deserializing LocalDateTime using Hessian. Fixed an issue with the specify machines feature. If a task ran for a certain period, subtasks were sent to unspecified machines. The client's springContext.getBean call throws the AnnotationConfigApplicationCon |  |  |  |
-|  |  |  |  | AnnotationConfigApplicationCon |  |  |
-|  |  |  | text has not been refreshed |  |  |  |
-|  |  |  | yet |  |  |  |
-|  |  | Bug fix |  |  |  |  |
-|  |  |  |  | AnnotationConfigApplicationCon |  |  |
-|  |  |  | text has been closed already |  |  |  |
+|   |   |   | Deserializing BigDecimal using Hessian returned 0. An error occurred when deserializing LocalDateTime using Hessian. Fixed an issue with the specify machines feature. If a task ran for a certain period, subtasks were sent to unspecified machines. The client's springContext.getBean call throws the AnnotationConfigApplicationCon |   |   |   |
+|   |   |   |   | AnnotationConfigApplicationCon |   |   |
+|   |   |   | text has not been refreshed |   |   |   |
+|   |   |   | yet |   |   |   |
+|   |   | Bug fix |   |   |   |   |
+|   |   |   |   | AnnotationConfigApplicationCon |   |   |
+|   |   |   | text has been closed already |   |   |   |
 
 | 1.0.8 | New feature | 【Important】Refactored the JobProcessor.postProcess interface and added the ProcessResult return value. If you used the postProcess interface before, you need to modify your code. Enhanced broadcast execution. BroadcastJobProcessor now supports preProcess and postProcess . The preProcess method is executed once before all machines execute the process method. The postProcess method is executed once after all machines execute the process method. JobContext.getTaskAttempt can now get the current number of retries for a subtask. The client now supports custom listener ports, such as SchedulerxWorker.setPort . Java tasks can now implement JobProcessor and do not have to inherit JavaProcessor . | August 6, 2019 | None |
 |---|---|---|---|---|
-|  | Bug fix | Fixed a bug where subtasks with TaskId=1 did not support automatic retries. If the root task of a distributed task failed, the failure reason could not be viewed. Subtasks could not be retried from the subtask list of a parallel task. |  | None |
+|   | Bug fix | Fixed a bug where subtasks with TaskId=1 did not support automatic retries. If the root task of a distributed task failed, the failure reason could not be viewed. Subtasks could not be retried from the subtask list of a parallel task. |   | None |
 
-|  | preProcess |
+|   | preProcess |
 |---|---|
-| postProcess |  |
-| preProcess |  |
+| postProcess |   |
+| preProcess |   |
 
-| 1.0.6- compatib le |  |  | Optimiz ation | This is a compatible version for the schedulerx1.0(DTS) interface. It does not support depending on both the schedulerx-client and schedulerx-worker packages at the same time. You can only depend on the schedulerx-worker package. This means you need to migrate all DTS tasks to SchedulerX 2.0. |  |  | July 2, 2019 | None |  |
+| 1.0.6- compatib le |   |   | Optimiz ation | This is a compatible version for the schedulerx1.0(DTS) interface. It does not support depending on both the schedulerx-client and schedulerx-worker packages at the same time. You can only depend on the schedulerx-worker package. This means you need to migrate all DTS tasks to SchedulerX 2.0. |   |   | July 2, 2019 | None |   |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  |  |  | Added shade for some packages: aliyun-log, commons- |  |  |  |  |  |
-|  |  |  |  |  | aliyun-log, commons- |  |  |  |  |
-|  |  |  |  | validator, gson, fastjson, |  |  |  |  |  |
-|  |  |  |  | guava, commons-collections |  |  |  |  |  |
-| 1.0.6 |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | ProcessResult(false, |  |  |  |  |
-|  |  |  |  | errorMsg) |  |  |  |  |  |
-|  |  |  | New feature |  |  |  |  |  |  |
-|  |  |  |  |  |  | at- |  |  |  |
-|  |  |  |  |  |  |  | July 2, 2019 |  |  |
-|  |  |  | Bug fix | Broadcast tasks become stuck. Fixed an issue where second-level tasks would get stuck. at-least-once-delivery could cause infinite retries of subtask statuses. If logcollector failed to initialize, an exception was thrown and the startup failed. Fixed an issue where cleaning up workflow task instances from the DB caused the workflow to fail to resume scheduling. The kill command was not supported for Spring-based startups. |  |  |  |  |  |
+|   |   |   |   | Added shade for some packages: aliyun-log, commons- |   |   |   |   |   |
+|   |   |   |   |   | aliyun-log, commons- |   |   |   |   |
+|   |   |   |   | validator, gson, fastjson, |   |   |   |   |   |
+|   |   |   |   | guava, commons-collections |   |   |   |   |   |
+| 1.0.6 |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | ProcessResult(false, |   |   |   |   |
+|   |   |   |   | errorMsg) |   |   |   |   |   |
+|   |   |   | New feature |   |   |   |   |   |   |
+|   |   |   |   |   |   | at- |   |   |   |
+|   |   |   |   |   |   |   | July 2, 2019 |   |   |
+|   |   |   | Bug fix | Broadcast tasks become stuck. Fixed an issue where second-level tasks would get stuck. at-least-once-delivery could cause infinite retries of subtask statuses. If logcollector failed to initialize, an exception was thrown and the startup failed. Fixed an issue where cleaning up workflow task instances from the DB caused the workflow to fail to resume scheduling. The kill command was not supported for Spring-based startups. |   |   |   |   |   |
 
-|  | schedulerx-client |
+|   | schedulerx-client |
 |---|---|
-| schedulerx-worker |  |
+| schedulerx-worker |   |
 
-|  | least-once-delivery |
+|   | least-once-delivery |
 |---|---|
 
 | 1.0.3 | New feature | The MapReduce model now supports returning the results of all subtasks to be processed by the Reduce method. The distributed model now supports a pull model. This resolves the bottleneck effect caused by single- machine performance and supports dynamic scale-out to pull subtasks. The pull model supports global subtask concurrency for rate limiting. Added wfInstanceId to JobContext. If the client fails to start, it throws an exception and blocks the JVM startup. This helps you identify problems early. When the client starts, it prints the versions and paths of Maven dependency JAR files to help you troubleshoot JAR package conflicts. The subtask details of the distributed model now include a queue dimension, which lets you see the cached subtask queue on each machine. | June 6, 2019 | None |
 |---|---|---|---|---|
-|  | Bug fix | If a worker was mistakenly quarantined due to high server load, it can now recover automatically without restarting the client. The subtask details of the distributed model can now show the actual number of running subtasks on each machine. If a master node fails, the server cleans up the resources on the slave nodes to prevent memory leaks. |  | None |
+|   | Bug fix | If a worker was mistakenly quarantined due to high server load, it can now recover automatically without restarting the client. The subtask details of the distributed model can now show the actual number of running subtasks on each machine. If a master node fails, the server cleans up the resources on the slave nodes to prevent memory leaks. |   | None |
 
 | 1.0.0 | New feature | Supports periodic timed scheduling using crontab and fixed rate expressions. _ Supports workflow scheduling for flow orchestration. Supports second-level scheduling using the second delay _ expression. Supports Java, Shell, Python, and Go task types. Supports standalone execution, broadcast execution, parallel computing, in-memory grid, and grid computing. Supports Map and MapReduce distributed programming models. Supports automatic retries for failed task instances and subtasks. Retries are disabled by default. Supports data timestamps and data refresh. | April 30, 2019 | None |
 |---|---|---|---|---|
 
-|  | crontab |
+|   | crontab |
 |---|---|
-| fixed rate _ |  |
+| fixed rate _ |   |
+
+duling and triggers
+
+## 3 Scheduling and triggers
+
+### 3.1 Timed scheduling
+
+Timed scheduling includes methods such as Cron, Second delay, and Fixed rate.
+
+**Cron**
+
+Cron is a time-based task management system for Unix-like operating systems. You can use Cron to run scheduled tasks, such as commands and scripts, at fixed times and intervals. The expression format is **Second****Minute****Hour****Day Of Month****Month****Day Of Week**
+**[Year]**.
+The following are examples of common Cron expressions:
 
 | Cron example | Description |
 |---|---|
@@ -1055,17 +1129,7 @@ This topic describes the updates for the SchedulerX Java software development ki
 | 0 0 12 ? * WED | Triggers at 12:00 every Wednesday. |
 | 0 0 17 ? * TUES,THUR,SAT | Triggers at 17:00 every Tuesday, Thursday, and Saturday. |
 
-## Scheduling and triggers
-
-### Timed scheduling
-
-Timed scheduling includes methods such as Cron, Second delay, and Fixed rate.
-
-**Cron**
-
-Cron is a time-based task management system for Unix-like operating systems. You can use Cron to run scheduled tasks, such as commands and scripts, at fixed times and intervals. The expression format is **Second****Minute****Hour****Day Of Month****Month****Day Of Week**
-**[Year]**.
-The following are examples of common Cron expressions:
+duling and triggers
 
 | 0 10,44 14 ? 3 WED | Triggers at 14:10 and 14:44 every Wednesday in March. |
 |---|---|
@@ -1085,26 +1149,26 @@ Second delay scheduling is designed for services that require high real-time per
 
 This method schedules tasks at a fixed frequency. The frequency is measured in seconds and must be 60 seconds or longer.
 
-### Workflow scheduling
+### 3.2 Workflow scheduling
 
 Orchestrate tasks using visual workflows. You can trigger these workflows using cron expressions or APIs. Jobs in a workflow do not have independent schedules. Instead, they follow the schedule of the workflow. You can transfer data between upstream and downstream nodes in a workflow. For more information, see How to pass data between upstream and downstream nodes in a workflow. To schedule a workflow, it must contain at least two Jobs with a dependency. If you have only one Job, use task management instead.
 
-### API trigger
+### 3.3 API trigger
 
-You can use an API to trigger job scheduling. For information on using the API trigger, see the **Integration Guide** section of the
+You can use an API to trigger job scheduling. duling and triggers For information on using the API trigger, see the **Integration Guide** section of the
 **SchedulerX Developer Guide**.
 
-### Backfill data
+### 3.4 Backfill data
 
 You can use the data backfill feature to re-trigger instances for a specific time range to backfill business data. For instructions and examples, see Backfill data for scheduling tasks.
 
-### Second-level scheduling
+### 3.5 Second-level scheduling
 
-Second-level tasks are ideal for services that require high real-time performance, such as near-real-time services that perform continuous polling. A memory grid and second-level scheduling enable you to continuously process massive amounts of data. Second-level tasks in SchedulerX are a type of timed scheduling. They support simple Java tasks, distributed Java tasks, script tasks, and various execution methods. For more information, see How to create a second-level scheduling task.
+Second-level tasks are ideal for services that require high real-time performance, such as near-real-time services that perform continuous polling. A memory grid and second-level scheduling enable you to continuously process massive amounts of data. Second-level tasks in SchedulerX are a type of timed scheduling. They support simple Java tasks, distributed Java tasks, script tasks, and various execution methods. For more information, see How to create a second-level scheduling task. types
 
-## Task types
+## 4 Task types
 
-### Java tasks
+### 4.1 Java tasks
 
 You can run Java scheduled tasks in your application process. This topic describes how to manage Java tasks.
 
@@ -1118,6 +1182,7 @@ For more information about how to create a scheduled task, see Create a schedule
 example, com.apache.armon.test.schedulerx.processor.MySimpleJob .
 ```
 
+types
 **Execution Mode**: The Java job type supports six execution modes: **Standalone**
 **Execution**, **Broadcast****Execution**, **Parallel Computing**, **In-memory Grid**, **Grid**
 **Computing**, and **Sharded Execution**. **Standalone Execution** and **Broadcast**
@@ -1132,7 +1197,11 @@ subtasks and offers high execution speeds.
 **Grid Computing**: Performs file-based computing. It supports fewer than 1,000,000
 subtasks.
 **Sharding**: Distributes shards evenly across multiple clients for execution based on
-sharding parameters. Java tasks support two programming models: JavaProcessor and MapJobProcessor. JavaProcessor
+sharding parameters.
+
+**Programming model**
+
+Java tasks support two programming models: JavaProcessor and MapJobProcessor. JavaProcessor
 **Optional:** `public void preProcess(JobContext context)`
 
 ```
@@ -1166,6 +1235,8 @@ Each process method must return a ProcessResult object. This object indicates th
 
 **Example of a HelloSchedulerx2.0 task**
 
+types
+
 ```java
 @Component public class MyProcessor1 extends JavaProcessor {
     @Override
@@ -1173,9 +1244,9 @@ Each process method must return a ProcessResult object. This object indicates th
         // TODO
         System.out.println("Hello, schedulerx2.0!");
         return new ProcessResult(true);
-    }
-}
 ```
+
+`}` `}`
 
 **Example of a task that supports the kill feature**
 
@@ -1188,20 +1259,32 @@ Each process method must return a ProcessResult object. This object indicates th
         while (!stop && N >= 0) {
             // TODO
             N--;
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(true);
-    }
+```
+
+`}`
+
+```java
     @Override
     public void kill(JobContext context) {
         stop = true;
-    }
+```
+
+`}`
+
+```java
     @Override
     public void preProcess(JobContext context) {
         stop = false;  // If you use Spring to start the application, the bean is a sin
 gleton. You must use preProcess to reset the flag.
-    }
-}
 ```
+
+`}` `}`
 
 **Example of a batch processing task that uses the Map model**
 
@@ -1213,13 +1296,15 @@ gleton. You must use preProcess to reset the flag.
  * 3. If a sub-node receives a PageTask object, it processes the data.
 ```
 
-* `*/`
+`*` `*/`
 
 ```java
 @Component public class ScanSingleTableJobProcessor extends MapJobProcessor {
     private static final int pageSize = 100;
 staticclassPageTask{
 ```
+
+types
 
 ```java
     static class PageTask {
@@ -1228,14 +1313,25 @@ staticclassPageTask{
         public PageTask(int startId, int endId) {
              this.startId = startId;
              this.endId = endId;
-        }
+```
+
+`}`
+
+```
         public int getStartId() {
               return startId;
-        }
+```
+
+`}`
+
+```
         public int getEndId() {
               return endId;
-        }
-    }
+```
+
+`}` `}`
+
+```java
     @Override
     public ProcessResult process(JobContext context) {
         String taskName = context.getTaskName();
@@ -1250,7 +1346,11 @@ staticclassPageTask{
 ages.
             for (int i = minId; i < maxId; i+=step) {
                 taskList.add(new PageTask(i, (i+step > maxId ? maxId : i+step)));
-            }
+```
+
+`}`
+
+```
             return map(taskList, "Level1Dispatch");
         } else if (taskName.equals("Level1Dispatch")) {
             PageTask record = (PageTask)task;
@@ -1258,22 +1358,34 @@ ages.
             long endId = record.getEndId();
             // TODO
             return new ProcessResult(true);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(true);
-    }
+```
+
+`}`
+
+```java
     @Override
     public void postProcess(JobContext context) {
         // TODO
         System.out.println("all tasks is finished.");
-    }
+```
+
+`}`
+
+```java
     private Pair<Integer, Integer> queryMinAndMaxId() {
         // TODO: select min(id),max(id) from xxx
         return null;
-    }
-}
 ```
 
-### Script tasks
+`}` `}` types
+
+### 4.2 Script tasks
 
 You can create a script task by writing a Shell, Python, or Go script.
 
@@ -1289,11 +1401,15 @@ You can create a script task by writing a script when you create a scheduling ta
 
 **Shell task example with parameters**
 
+types
+
 **Python task example**
 
 **Go task example**
 
-### HTTP tasks
+types
+
+### 4.3 HTTP tasks
 
 SchedulerX 2.0 supports HTTP tasks. You do not need a client. You can configure the task in the console.
 
@@ -1303,22 +1419,21 @@ Only GET and POST requests are supported. The HTTP request must return a result 
 
 **Task configuration**
 
-For information about how to create a scheduling task, see Create a Scheduling Task. This topic describes only the configurations for HTTP tasks.
+For information about how to create a scheduling task, see Create a Scheduling Task. This topic describes only the configurations for HTTP tasks. types
 **Tasktype**: Select http.
 **Full URL**: Enter the full URL, including `http://` .
 **Response Validation Key** and **Response Validation Value**: By default, the service
-expects the HTTP request to return a result in JSON format. The service validates the success of the request based on the key and value that you enter. For example, you can validate that the value of the `success` key is `true` or that the value of the `code` key is `200`.
+expects the HTTP request to return a result in JSON format. The service validates the success of the request based on the key and value that you enter. For example, you can validate that the value of the `success` key is `true` or that the value of the `code` key is `200`. types `{`
 
 ```
-{
   code: 200,
   data: "true",
   message: "",
   requestId: "446655068791923614103381232971",
   success: true
-}
 ```
 
+`}`
 **Execution Timeout**: The value can be from 0 to 30 seconds.
 **Cookie**: For example, key1=val1;key2=val2 . Use semicolons (;) to separate multiple
 values. The maximum length is 300 bytes.
@@ -1335,10 +1450,9 @@ The code configuration is different for GET and POST methods. GET
     result.setCode(200);
     result.setData(vo);
     return result;
-}
 ```
 
-POST
+`}` POST
 
 ```java
 import com.alibaba.schedulerx.common.constants.CommonConstants; @POST @Path("createUser") @Produces(MediaType.APPLICATION_JSON) public RestResult createUser(@FormParam("userId") String userId,
@@ -1350,22 +1464,15 @@ import com.alibaba.schedulerx.common.constants.CommonConstants; @POST @Path("cre
     result.setCode(200);
     result.setData(vo);
     return result;
-}
 ```
+
+`}`
 
 **Obtain task information**
 
 HTTP tasks record basic task information in the HTTP header. To obtain this information, add the required dependency and code to your project.
 1. Add the dependency to the pom.xml file.
-
-| CommonConstants constant | Key | Value description |
-|---|---|---|
-| JOB ID HEADER _ _ | schedulerx-jobId | The task ID. |
-| JOB NAME HEADER _ _ | schedulerx-jobName | The task name. The name must be in English because the header does not support Chinese characters. |
-| SCHEDULE TIMESTAMP HEADE _ _ R | schedulerx- scheduleTimestamp | The timestamp of the scheduling time. |
-| DATA TIMESTAMP HEADER _ _ | schedulerx-dataTimestamp | The data timestamp. |
-| GROUP ID HEADER _ _ | schedulerx-groupId | The application ID. |
-| USER HEADER _ | schedulerx-user | The username. |
+types
 
 ```xml
 <dependency>
@@ -1389,10 +1496,20 @@ import com.alibaba.schedulerx.common.constants.CommonConstants; @GET @Path("hi")
     result.setCode(200);
     result.setData(vo);
     return result;
-}
 ```
 
-The following table lists the basic task information that you can obtain.
+`}` The following table lists the basic task information that you can obtain.
+
+| CommonConstants constant | Key | Value description |
+|---|---|---|
+| JOB ID HEADER _ _ | schedulerx-jobId | The task ID. |
+| JOB NAME HEADER _ _ | schedulerx-jobName | The task name. The name must be in English because the header does not support Chinese characters. |
+| SCHEDULE TIMESTAMP HEADE _ _ R | schedulerx- scheduleTimestamp | The timestamp of the scheduling time. |
+| DATA TIMESTAMP HEADER _ _ | schedulerx-dataTimestamp | The data timestamp. |
+| GROUP ID HEADER _ _ | schedulerx-groupId | The application ID. |
+| USER HEADER _ | schedulerx-user | The username. |
+
+types
 
 | MAX ATTEMPT HEADER _ _ | schedulerx-maxAttempt | The maximum number of retries for the instance. |
 |---|---|---|
@@ -1412,30 +1529,38 @@ The execution timed out. Error message: `Service request error: Read timed out` 
 
 **Error alerts**
 
-HTTP tasks support error alerts. You can configure alerts for exceptions, such as unexpected return values and execution timeouts, when you create a task.
+HTTP tasks support error alerts. You can configure alerts for exceptions, such as unexpected return values and execution timeouts, when you create a task. buted programming model
 
-| : | public ProcessResult process(JobContext context) throws Exception |
-|---|---|
-| public void preProcess(JobContext context) |  |
-| public ProcessResult postProcess(JobContext context) |  |
-
-## Distributed programming
+## 5 Distributed programming model
 
 **model**
 
-### Standalone
+### 5.1 Standalone
 
 Standalone execution is a mode where a task instance is triggered on a single, randomly selected Worker. This mode supports all task types.
 
-### Broadcast
+### 5.2 Broadcast
 
 In a broadcast execution, a task instance is sent to all Workers in a group. The task is considered complete only after all Workers finish executing. If any Worker fails, the entire task fails.
 
 **Scenarios**
 
-Batch operations Periodically broadcast a script to execute on all machines. Periodically broadcast a command to clear the cache on all machines. Data aggregation You can use a JavaProcessor to reset the database count to 0 during the preProcess phase. When each machine executes the process method, it increments the count in the database based on its memory or log values. During the postProcess phase, you can read the count value from the database and pass it to a downstream task. Various task types are available, such as script and Java tasks. Java tasks support advanced attributes, such as preProcess and postProcess. To use a Java task, inherit from the JavaProcessor class (version 1.0.7 or later). The interface is as follows: preProcess executes once before any machine executes the process method. postProcess executes once after all machines have successfully executed the process method. It can return a result to pass data within a workflow.
+Batch operations Periodically broadcast a script to execute on all machines. Periodically broadcast a command to clear the cache on all machines. Data aggregation You can use a JavaProcessor to reset the database count to 0 during the preProcess phase. When each machine executes the process method, it increments the count in the database based on its memory or log values. During the postProcess phase, you can read the count value from the database and pass it to a downstream task.
+
+**Task types**
+
+Various task types are available, such as script and Java tasks. Java tasks support advanced attributes, such as preProcess and postProcess. To use a Java task, inherit from the JavaProcessor class (version 1.0.7 or later). The interface is as follows:
+
+| : | public ProcessResult process(JobContext context) throws Exception |
+|---|---|
+| public void preProcess(JobContext context) |   |
+| public ProcessResult postProcess(JobContext context) |   |
+
+preProcess executes once before any machine executes the process method. postProcess executes once after all machines have successfully executed the process method. It can return a result to pass data within a workflow.
 
 **Demo**
+
+buted programming model
 
 ```java
 @Component public class TestBroadcastJobProcessor extends JavaProcessor {
@@ -1443,20 +1568,26 @@ Batch operations Periodically broadcast a script to execute on all machines. Per
     public ProcessResult process(JobContext context) throws Exception {
         System.out.println("this is process");
         return new ProcessResult(true);
-    }
+```
+
+`}`
+
+```java
     @Override
     public void preProcess(JobContext context) {
         System.out.println("this is preProcess");
-    }
+```
+
+`}`
+
+```java
     @Override
     public ProcessResult postProcess(JobContext context) {
         System.out.println("this is postProcess");
         return new ProcessResult(true, "hello broadcast");
-    }
-}
 ```
 
-If you start three machines, the execution results are as follows: Worker 1
+`}` `}` If you start three machines, the execution results are as follows: Worker 1
 
 ```
 this is preProcess this is process this is postProcess
@@ -1474,7 +1605,7 @@ Worker 3
 this is process
 ```
 
-### Map model
+### 5.3 Map model
 
 You can use the `MapJobProcessor` and call the `map` method to run distributed batch jobs for big data.
 
@@ -1486,22 +1617,24 @@ structures, you must replace them. For **BigDecimal**, serialization does not ca
 
 **Interfaces**
 
-|  | Interface |  | Description | Required |
-|---|---|---|---|---|
-|  | ProcessResult |  | The entry point for the business logic of each sub-task. Get the taskName from the context to identify the sub-task and process its logic. After the task is executed, return a `ProcessResult`. For more information about the `ProcessResult` interface, see ProcessResult. | Yes |
-|  |  | ProcessResult | identify the sub- process its logic. |  |
-|  | process(JobContext |  |  |  |
-|  | context) |  |  |  |
-|  | ProcessResult map(List<? |  | The `map` method distributes a batch of sub-tasks across multiple machines for execution. You can call the | Yes |
-|  |  | ProcessResult map(List<? | `map` method multiple times. If `taskList` is empty, the |  |
-|  | extends Object> taskList, |  | If `taskList` is e |  |
-|  |  |  | method fails. Aft |  |
-|  | String taskName) |  |  |  |
-|  | void kill(JobContext context) |  | This method is triggered when a task is killed from the console. You must implement the logic to break the business process. | No |
+buted programming model
 
-|  | void kill(JobContext | a t co |
+|   | Interface |   | Description | Required |
+|---|---|---|---|---|
+|   | ProcessResult |   | The entry point for the business logic of each sub-task. Get the taskName from the context to identify the sub-task and process its logic. After the task is executed, return a `ProcessResult`. For more information about the `ProcessResult` interface, see ProcessResult. | Yes |
+|   |   | ProcessResult | identify the sub- process its logic. |   |
+|   | process(JobContext |   |   |   |
+|   | context) |   |   |   |
+|   | ProcessResult map(List<? |   | The `map` method distributes a batch of sub-tasks across multiple machines for execution. You can call the | Yes |
+|   |   | ProcessResult map(List<? | `map` method multiple times. If `taskList` is empty, the |   |
+|   | extends Object> taskList, |   | If `taskList` is e |   |
+|   |   |   | method fails. Aft |   |
+|   | String taskName) |   |   |   |
+|   | void kill(JobContext context) |   | This method is triggered when a task is killed from the console. You must implement the logic to break the business process. | No |
+
+|   | void kill(JobContext | a t co |
 |---|---|---|
-| context) |  |  |
+| context) |   |   |
 
 **Execution modes**
 
@@ -1509,7 +1642,15 @@ Parallel computing: Supports up to 300 tasks and requires a list of sub-tasks.
 
 **Important**
 
-Do not use parallel computing for tasks that complete within seconds. Memory grid: An in-memory computing mode. It supports fewer than 50,000 sub-tasks and provides high performance. Grid computing: A file-based computing mode. It supports up to 1,000,000 sub-tasks. For more information about advanced configurations, see Advanced configuration parameters for task management.
+Do not use parallel computing for tasks that complete within seconds. Memory grid: An in-memory computing mode. It supports fewer than 50,000 sub-tasks and provides high performance. Grid computing: A file-based computing mode. It supports up to 1,000,000 sub-tasks.
+
+**Advanced configuration**
+
+For more information about advanced configurations, see Advanced configuration parameters for task management.
+
+**Demo: Send 50 messages (for Map model)**
+
+buted programming model
 
 ```java
 @Component public class TestMapJobProcessor extends MapJobProcessor {
@@ -1522,19 +1663,29 @@ Do not use parallel computing for tasks that complete within seconds. Memory gri
             List<String> msgList = Lists.newArrayList();
             for (int i = 0; i <= dispatchNum; i++) {
                 msgList.add("msg_" + i);
-            }
+```
+
+`}`
+
+```java
             return map(msgList, "Level1Dispatch");
         } else if (taskName.equals("Level1Dispatch")) {
             String task = (String)context.getTask();
             System.out.println(task);
             return new ProcessResult(true);
-        }
-        return new ProcessResult(false);
-    }
-}
 ```
 
+`}`
+
+```
+        return new ProcessResult(false);
+```
+
+`}` `}`
+
 **Demo: Process data from a single table (for Map or MapReduce**
+
+**models)**
 
 ```java
 @Component public class ScanSingleTableJobProcessor extends MapJobProcessor {
@@ -1547,15 +1698,23 @@ Do not use parallel computing for tasks that complete within seconds. Memory gri
         public PageTask(long startId, long endId) {
             this.startId = startId;
             this.endId = endId;
-        }
+```
+
+`}`
+
+```
         public long getStartId() {
             return startId;
-        }
+```
+
+`}`
+
+```
         public long getEndId() {
             return endId;
-        }
-    }
 ```
+
+`}` `}` buted programming model
 
 ```java
     @Override
@@ -1574,7 +1733,11 @@ ter in the console to specify the table name.
             int step = (int) ((maxId - minId) / PAGE_SIZE);
             for (long i = minId; i < maxId; i+=step) {
                 tasks.add(new PageTask(i, (i+step > maxId ? maxId : i+step)));
-            }
+```
+
+`}`
+
+```
             return map(tasks, "PageTask");
         } else if (taskName.equals("PageTask")) {
             PageTask pageTask = (PageTask)task;
@@ -1583,22 +1746,36 @@ ter in the console to specify the table name.
             List<Record> records = queryRecord(tableName, startId, endId);
             // TODO: Handle records.
             return new ProcessResult(true);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(false);
-    }
+```
+
+`}`
+
+```java
     private Pair<Long, Long> queryMinAndMaxId(String tableName) {
         // TODO: select min(id), max(id) from [tableName]
         return new Pair<Long, Long>(1L, 10000L);
-    }
+```
+
+`}`
+
+```java
     private List<Record> queryRecord(String tableName, long startId, long endId) {
         List<Record> records = Lists.newArrayList();
         // TODO: select * from [tableName] where id >= [startId] and id < [endId]
         return records;
-    }
-}
 ```
 
+`}` `}`
+
 **Demo: Process sharded database and table data (for Map or**
+
+**MapReduce models)**
 
 ```java
 @Component public class ScanShardingTableJobProcessor extends MapJobProcessor {
@@ -1606,6 +1783,8 @@ ter in the console to specify the table name.
     private XXXService xxxService;
 priatefinalintPAGESIZE
 ```
+
+buted programming model
 
 ```java
     private final int PAGE_SIZE = 500;
@@ -1617,17 +1796,32 @@ priatefinalintPAGESIZE
             this.tableName = tableName;
             this.startId = startId;
             this.endId = endId;
-        }
+```
+
+`}`
+
+```
         public String getTableName() {
             return tableName;
-        }
+```
+
+`}`
+
+```
         public long getStartId() {
             return startId;
-        }
+```
+
+`}`
+
+```
         public long getEndId() {
             return endId;
-        }
-    }
+```
+
+`}` `}`
+
+```java
     @Override
     public ProcessResult process(JobContext context) throws Exception {
         String taskName = context.getTaskName();
@@ -1652,14 +1846,19 @@ priatefinalintPAGESIZE
             int step = (int) ((maxId - minId) / PAGE_SIZE);
             for (long i = minId; i < maxId; i+=step) {
                 tasks.add(new PageTask(tableName, i, (i+step > maxId ? maxId : i+step)))
-;
-            }
+```
+
+; `}`
+
+```
             return map(tasks, "PageTask");
         } else if (taskName.equals("PageTask")) {
 PageTaskpageTask=(PageTask)task;
 ```
 
-```java
+buted programming model
+
+```
             PageTask pageTask  (PageTask)task;
             String tableName = pageTask.getTableName();
             long startId = pageTask.getStartId();
@@ -1667,32 +1866,52 @@ PageTaskpageTask=(PageTask)task;
             List<Record> records = queryRecord(tableName, startId, endId);
             // TODO: Handle records.
             return new ProcessResult(true);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(false);
-    }
+```
+
+`}`
+
+```java
     private List<String> getDbList() {
         List<String> dbList = Lists.newArrayList();
         // TODO: Return the list of sharded databases.
         return dbList;
-    }
+```
+
+`}`
+
+```java
     private List<String> getTableList(String dbName) {
         List<String> tableList = Lists.newArrayList();
         // TODO: Return the list of sharded tables.
         return tableList;
-    }
+```
+
+`}`
+
+```java
     private Pair<Long, Long> queryMinAndMaxId(String tableName) {
         // TODO: select min(id), max(id) from [tableName]
         return new Pair<Long, Long>(1L, 10000L);
-    }
+```
+
+`}`
+
+```java
     private List<Record> queryRecord(String tableName, long startId, long endId) {
         List<Record> records = Lists.newArrayList();
         // TODO: select * from [tableName] where id >= [startId] and id < [endId]
         return records;
-    }
-}
 ```
 
-### MapReduce model
+`}` `}`
+
+### 5.4 MapReduce model
 
 The MapReduce model is an extension of the Map model. It adds a Reduce interface and requires the implementation of `MapReduceJobProcessor`.
 
@@ -1700,28 +1919,26 @@ The MapReduce model is an extension of the Map model. It adds a Reduce interface
 
 The MapReduce model has a single Reduce method that runs after all subtasks are complete. You can use this method to return the execution result of the task instance, which is then passed as output data in the workflow. The Reduce method does not run if a subtask fails. If the Reduce method fails, the entire task instance fails. Scheduler X does not guarantee that a subtask runs only once. A failover can occur under certain conditions, which may cause the subtask to run multiple times. Therefore, you must implement idempotence for your services. Scheduler X uses the Hessian serialization framework. This framework does not support
 **LocalDateTime** or **BigDecimal**. If a subtask contains these data structures, you must
-replace them. For **BigDecimal**, serialization does not cause an error, but its value becomes
-
-|  | Interface |  | Description | Required |
-|---|---|---|---|---|
-|  | ProcessResult |  | The entry point for the business logic of each subtask. Get the taskName from the context to identify the subtask and process its logic. After the task runs, return a `ProcessResult`. For more information about the `ProcessResult` interface, see ProcessResult. | Yes |
-|  |  | ProcessResult | taskName from identify the subt |  |
-|  | process(JobContext |  |  |  |
-|  | context) |  |  |  |
-|  | ProcessResult map(List<? |  | Run the `map` method to distribute a batch of subtasks across multiple machines. You | Yes |
-|  |  | ProcessResult map(List<? | can run the `map` method multiple times. If `taskList` is |  |
-|  | extends Object> taskList, |  |  |  |
-|  |  |  | empty, the meth |  |
-|  | String taskName) |  |  |  |
-|  | void kill(JobContext context) |  | Killing a task in the frontend triggers this method. You must implement the logic to break your business process. | No |
-
-|  | void kill(JobContext | tri |
-|---|---|---|
-| context) |  |  |
-
-0 after deserialization.
+replace them. For **BigDecimal**, serialization does not cause an error, but its value becomes buted programming model 0 after deserialization.
 
 **Interfaces**
+
+|   | Interface |   | Description | Required |
+|---|---|---|---|---|
+|   | ProcessResult |   | The entry point for the business logic of each subtask. Get the taskName from the context to identify the subtask and process its logic. After the task runs, return a `ProcessResult`. For more information about the `ProcessResult` interface, see ProcessResult. | Yes |
+|   |   | ProcessResult | taskName from identify the subt |   |
+|   | process(JobContext |   |   |   |
+|   | context) |   |   |   |
+|   | ProcessResult map(List<? |   | Run the `map` method to distribute a batch of subtasks across multiple machines. You | Yes |
+|   |   | ProcessResult map(List<? | can run the `map` method multiple times. If `taskList` is |   |
+|   | extends Object> taskList, |   |   |   |
+|   |   |   | empty, the meth |   |
+|   | String taskName) |   |   |   |
+|   | void kill(JobContext context) |   | Killing a task in the frontend triggers this method. You must implement the logic to break your business process. | No |
+
+|   | void kill(JobContext | tri |
+|---|---|---|
+| context) |   |   |
 
 **Execution modes**
 
@@ -1729,7 +1946,15 @@ Parallel computing: Supports up to 300 tasks and includes a subtask list.
 
 **Important**
 
-Do not use parallel computing for tasks that run in seconds. Memory grid: Performs high-speed, in-memory computing and supports fewer than 50,000 subtasks. Grid computing: Performs file-based computing and supports up to 1,000,000 subtasks. For more information about advanced configurations, see Advanced configuration parameters for task management.
+Do not use parallel computing for tasks that run in seconds. Memory grid: Performs high-speed, in-memory computing and supports fewer than 50,000 subtasks. Grid computing: Performs file-based computing and supports up to 1,000,000 subtasks.
+
+**Advanced configuration**
+
+For more information about advanced configurations, see Advanced configuration parameters for task management.
+
+**Demo: Send 500 messages (for the MapReduce model)**
+
+buted programming model
 
 ```java
 @Component public class TestMapReduceJobProcessor extends MapReduceJobProcessor {
@@ -1742,23 +1967,37 @@ Do not use parallel computing for tasks that run in seconds. Memory grid: Perfor
             List<String> msgList = Lists.newArrayList();
             for (int i = 0; i <= dispatchNum; i++) {
                 msgList.add("msg_" + i);
-            }
+```
+
+`}`
+
+```java
             return map(msgList, "Level1Dispatch");
         } else if (taskName.equals("Level1Dispatch")) {
             String task = (String)context.getTask();
             System.out.println(task);
             return new ProcessResult(true);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(false);
-    }
+```
+
+`}`
+
+```java
     @Override
     public ProcessResult reduce(JobContext context) throws Exception {
         return new ProcessResult(true, "TestMapReduceJobProcessor.reduce");
-    }
-}
 ```
 
+`}` `}`
+
 **Demo: Process data from a single table (for Map or MapReduce**
+
+**models)**
 
 ```java
 @Component public class ScanSingleTableJobProcessor extends MapJobProcessor {
@@ -1771,17 +2010,25 @@ Do not use parallel computing for tasks that run in seconds. Memory grid: Perfor
         public PageTask(long startId, long endId) {
             this.startId = startId;
             this.endId = endId;
-        }
-        public long getStartId() {
-            return startId;
-        }
 ```
 
-```java
+`}`
+
+```
+        public long getStartId() {
+            return startId;
+```
+
+`}` buted programming model
+
+```
         public long getEndId() {
             return endId;
-        }
-    }
+```
+
+`}` `}`
+
+```java
     @Override
     public ProcessResult process(JobContext context) throws Exception {
         // The backend code can be the same for multiple jobs. Use the console to confi
@@ -1798,7 +2045,11 @@ gure the job parameter that specifies the table name.
             int step = (int) ((maxId - minId) / PAGE_SIZE);
             for (long i = minId; i < maxId; i+=step) {
                 tasks.add(new PageTask(i, (i+step > maxId ? maxId : i+step)));
-            }
+```
+
+`}`
+
+```
             return map(tasks, "PageTask");
         } else if (taskName.equals("PageTask")) {
             PageTask pageTask = (PageTask)task;
@@ -1807,26 +2058,40 @@ gure the job parameter that specifies the table name.
             List<Record> records = queryRecord(tableName, startId, endId);
             //TODO: handle records
             return new ProcessResult(true);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(false);
-    }
+```
+
+`}`
+
+```java
     private Pair<Long, Long> queryMinAndMaxId(String tableName) {
         //TODO: select min(id),max(id) from [tableName]
         return new Pair<Long, Long>(1L, 10000L);
-    }
+```
+
+`}`
+
+```java
     private List<Record> queryRecord(String tableName, long startId, long endId) {
         List<Record> records = Lists.newArrayList();
         //TODO: select * from [tableName] where id>=[startId] and id<[endId]
         return records;
-    }
-}
 ```
+
+`}` `}`
 
 **Demo: Process sharded data (for Map or MapReduce models)**
 
 ```java
 @Component public class ScanShardingTableJobProcessor extends MapJobProcessor {
 ```
+
+buted programming model
 
 ```java
     @Service
@@ -1840,17 +2105,32 @@ gure the job parameter that specifies the table name.
             this.tableName = tableName;
             this.startId = startId;
             this.endId = endId;
-        }
+```
+
+`}`
+
+```
         public String getTableName() {
             return tableName;
-        }
+```
+
+`}`
+
+```
         public long getStartId() {
             return startId;
-        }
+```
+
+`}`
+
+```
         public long getEndId() {
             return endId;
-        }
-    }
+```
+
+`}` `}`
+
+```java
     @Override
     public ProcessResult process(JobContext context) throws Exception {
         String taskName = context.getTaskName();
@@ -1875,11 +2155,11 @@ gure the job parameter that specifies the table name.
             int step = (int) ((maxId - minId) / PAGE_SIZE);
             for (long i = minId; i < maxId; i+=step) {
                 tasks.add(new PageTask(tableName, i, (i+step > maxId ? maxId : i+step)))
-;
 ```
 
-```java
-            }
+; buted programming model `}`
+
+```
             return map(tasks, "PageTask");
         } else if (taskName.equals("PageTask")) {
             PageTask pageTask = (PageTask)task;
@@ -1889,32 +2169,56 @@ gure the job parameter that specifies the table name.
             List<Record> records = queryRecord(tableName, startId, endId);
             //TODO: handle records
             return new ProcessResult(true);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(false);
-    }
+```
+
+`}`
+
+```java
     private List<String> getDbList() {
         List<String> dbList = Lists.newArrayList();
         //TODO: Return the list of database shards.
         return dbList;
-    }
+```
+
+`}`
+
+```java
     private List<String> getTableList(String dbName) {
         List<String> tableList = Lists.newArrayList();
         //TODO: Return the list of table shards.
         return tableList;
-    }
+```
+
+`}`
+
+```java
     private Pair<Long, Long> queryMinAndMaxId(String tableName) {
         //TODO: select min(id),max(id) from [tableName]
         return new Pair<Long, Long>(1L, 10000L);
-    }
+```
+
+`}`
+
+```java
     private List<Record> queryRecord(String tableName, long startId, long endId) {
         List<Record> records = Lists.newArrayList();
         //TODO: select * from [tableName] where id>=[startId] and id<[endId]
         return records;
-    }
-}
 ```
 
+`}` `}`
+
 **Demo: Process 50 messages and have Reduce aggregate the**
+
+**subtask results (for the MapReduce model)**
+
+buted programming model
 
 ```java
 @Component public class TestMapReduceJobProcessor extends MapReduceJobProcessor {
@@ -1924,33 +2228,53 @@ gure the job parameter that specifies the table name.
         int dispatchNum = 50;
         if (context.getJobParameters() != null) {
             dispatchNum = Integer.valueOf(context.getJobParameters());
-        }
+```
+
+`}`
+
+```java
         if (isRootTask(context)) {
             System.out.println("start root task");
             List<String> msgList = Lists.newArrayList();
             for (int i = 0; i <= dispatchNum; i++) {
                 msgList.add("msg_" + i);
-            }
+```
+
+`}`
+
+```
             return map(msgList, "Level1Dispatch");
         } else if (taskName.equals("Level1Dispatch")) {
             String task = (String)context.getTask();
             Thread.sleep(2000);
             return new ProcessResult(true, task);
-        }
+```
+
+`}`
+
+```
         return new ProcessResult(false);
-    }
+```
+
+`}`
+
+```java
     @Override
     public ProcessResult reduce(JobContext context) throws Exception {
         for (Entry<Long, String> result : context.getTaskResults().entrySet()) {
             System.out.println("taskId:" + result.getKey() + ", result:" +
 result.getValue());
-        }
-        return new ProcessResult(true, "TestMapReduceJobProcessor.reduce");
-    }
-}
 ```
 
-### Multi-language sharding
+`}`
+
+```
+        return new ProcessResult(true, "TestMapReduceJobProcessor.reduce");
+```
+
+`}` `}`
+
+### 5.5 Multi-language sharding models
 
 **models**
 
@@ -1958,7 +2282,11 @@ SchedulerX can schedule various tasks, such as timed scheduling, orchestration, 
 
 **Background information**
 
-Sharding models include static sharding and dynamic sharding. Static sharding: Processes a fixed number of shards. For example, you can use multiple machines to process 1,024 fixed tables in a sharded database. Dynamic sharding: Processes data of an unknown volume in a distributed manner. For example, you can run distributed batch jobs on a large, constantly changing table. The mainstream framework for this is the MapReduce model in SchedulerX 2.0, which is not yet open source. The multi-language sharding models have the following features. Compatible with the static sharding model of Elastic-Job. Supports four languages: Java, Python, Shell, and Go. High availability: The sharding model is based on the Map model and inherits its high availability (HA) features. If an exception occurs on a worker, the master worker fails the shard over to another slave node for execution. Traffic shaping: The sharding model is based on the Map model and inherits its traffic shaping features. This lets you control the concurrency of subtasks on a single machine. For example, if you have 1,000 shards and 10 machines, you can limit concurrent execution to a maximum of 5 shards. The remaining shards wait in a queue. Automatic retry on shard failure: The sharding model is based on the Map model and inherits its automatic retry feature for failed subtasks. You can set availability and traffic shaping in the advanced configuration when you create a task. For more information, see Create a scheduling task and Advanced configuration parameters for task management.
+Sharding models include static sharding and dynamic sharding. Static sharding: Processes a fixed number of shards. For example, you can use multiple machines to process 1,024 fixed tables in a sharded database. buted programming model Dynamic sharding: Processes data of an unknown volume in a distributed manner. For example, you can run distributed batch jobs on a large, constantly changing table. The mainstream framework for this is the MapReduce model in SchedulerX 2.0, which is not yet open source.
+
+**Features**
+
+The multi-language sharding models have the following features. Compatible with the static sharding model of Elastic-Job. Supports four languages: Java, Python, Shell, and Go. High availability: The sharding model is based on the Map model and inherits its high availability (HA) features. If an exception occurs on a worker, the master worker fails the shard over to another slave node for execution. Traffic shaping: The sharding model is based on the Map model and inherits its traffic shaping features. This lets you control the concurrency of subtasks on a single machine. For example, if you have 1,000 shards and 10 machines, you can limit concurrent execution to a maximum of 5 shards. The remaining shards wait in a queue. Automatic retry on shard failure: The sharding model is based on the Map model and inherits its automatic retry feature for failed subtasks. You can set availability and traffic shaping in the advanced configuration when you create a task. For more information, see Create a scheduling task and Advanced configuration parameters for task management.
 
 **Note**
 
@@ -1971,26 +2299,27 @@ Only client versions 1.1.0 and later support the multi-language sharding models.
 3. On the **Task List** page, click **Create**.
 4. On the **Basic Information** page, set **Execution Mode** to **Shard** and configure the **Shard**
 **Parameters**.
+buted programming model buted programming model The following table describes the parameters.
 
-|  | Parameter |  | Description |  |  |
+|   | Parameter |   | Description |   |   |
 |---|---|---|---|---|---|
-|  | Task Name |  | A custom name for the task. |  |  |
-|  | Description |  | A custom description of the task. |  |  |
-|  | Group ID |  | The group to which the task belongs. Select one from the drop-down list. |  |  |
-|  | Task Type |  | The language of the task. For this scenario, select java. |  |  |
-|  | Processor Class Name |  | The full path of the JobProcessor class, for example, xxx.xxx.xxx.HelloProcessor. |  |  |
-|  | Execution Mode |  | The execution mode of the task. For this scenario, select Shard. |  |  |
-|  | Priority |  | The priority of the task. For this scenario, select the default value Medium. |  |  |
-|  | Shard Parameters |  | Set shard parameters to distribute shards evenly across multiple clients for execution. Separate shard parameters with commas (,) or line breaks. For example, shard ID 1=shard |  |  |
-|  |  |  |  | shard ID 1=shard |  |
-|  |  |  | parameter 1,shard ID 2=shard parameter |  |  |
-|  |  |  | 2,... |  |  |
+|   | Task Name |   | A custom name for the task. |   |   |
+|   | Description |   | A custom description of the task. |   |   |
+|   | Group ID |   | The group to which the task belongs. Select one from the drop-down list. |   |   |
+|   | Task Type |   | The language of the task. For this scenario, select java. |   |   |
+|   | Processor Class Name |   | The full path of the JobProcessor class, for example, xxx.xxx.xxx.HelloProcessor. |   |   |
+|   | Execution Mode |   | The execution mode of the task. For this scenario, select Shard. |   |   |
+|   | Priority |   | The priority of the task. For this scenario, select the default value Medium. |   |   |
+|   | Shard Parameters |   | Set shard parameters to distribute shards evenly across multiple clients for execution. Separate shard parameters with commas (,) or line breaks. For example, shard ID 1=shard |   |   |
+|   |   |   |   | shard ID 1=shard |   |
+|   |   |   | parameter 1,shard ID 2=shard parameter |   |   |
+|   |   |   | 2,... |   |   |
 
-|  | JobContext.getShardingId() |
+|   | JobContext.getShardingId() |
 |---|---|
-| JobContext.getShardingParameter() |  |
+| JobContext.getShardingParameter() |   |
 
-The following table describes the parameters. parameter. Example:
+parameter. Example: buted programming model
 
 ```java
 @Component public class HelloWorldProcessor extends JavaProcessor {
@@ -1999,10 +2328,9 @@ The following table describes the parameters. parameter. Example:
         System.out.println("shardId=" + context.getShardingId() + ",
 shardingParameter=" + context.getShardingParameter());
         return new ProcessResult(true);
-    }
-}
 ```
 
+`}` `}`
 6. View shard details.
 i. In the navigation pane on the left, click **Execution List**. ii. On the **Execution List** page, click **Shard Details**.
 
@@ -2025,15 +2353,15 @@ parameter 2,... .
 ```
 
 3. View shard details.
-i. In the navigation pane on the left, click **Execution List**. ii. On the **Execution List** page, click **Shard Details**.
+i. In the navigation pane on the left, click **Execution List**. ii. On the **Execution List** page, click **Shard Details**. buted programming model
 
 **Shell and Go sharding tasks**
 
-Shell and Go sharding tasks are similar to Python sharding tasks. For the creation steps, see Python sharding task.
+Shell and Go sharding tasks are similar to Python sharding tasks. For the creation steps, see Python sharding task. ole user guide
 
-## Console user guide
+## 6 Console user guide
 
-### Overview
+### 6.1 Overview
 
 The Overview page displays a summary of Jobs, task instances, and a list of failed instances.
 
@@ -2063,9 +2391,11 @@ instance. In the **Basic Information** panel, view **Instance ID**, **Retries**,
 **Start Time**, **End Time**, **Scheduled Time**, **Data Timestamp**, **Server IP**, **Worker**
 **Address**, and **Result or Error Message**.
 
-### Execution List
+### 6.2 Execution List
 
 Use the Execution List to view today’s task execution status. The list includes two tabs: Task Instances and Workflow Instances.
+
+**View the Execution List**
 
 **Note**
 
@@ -2075,7 +2405,7 @@ By default, SchedulerX retains the most recent 60 records for each task and work
 3. On the **Execution List** page, click the **Task Instances** tab or the **Workflow Instances**
 tab. By default, the page displays all execution records under **All Groups** and **All**. To filter records, select a specific task group and then filter by status: **All**, **Succeeded**,
 **Failed**, **Running**, **In Pool**, or **Waiting**. You can also search by task ID and time range.
-Enter the task ID in the text box next to **Task ID**, and select a time range.
+Enter the task ID in the text box next to **Task ID**, and select a time range. ole user guide
 
 **View Task Instance Details**
 
@@ -2104,19 +2434,13 @@ Each task is color-coded by its execution status. For example, red indicates fai
 4. After making changes, right-click the task again. In the shortcut menu, click **Rerun** to re-
 execute it. If the task succeeds, downstream tasks run. If you do not want to rerun the task, click **Mark as Succeeded** in the shortcut menu. This forces the task into the succeeded state, and downstream tasks start running.
 
-### Task List
+### 6.3 Task List
 
 On the Task Management page, you can create, edit, run, copy, enable, disable, import, export, and delete scheduling tasks. You can also refresh task data and assign specific machines to a task.
 
 **Create a Scheduling Task**
 
-| Configuration Name | Meaning | Default Value |
-|---|---|---|
-| Task Name | The name of the task. | None |
-| Description | A brief description of the business logic. This helps with later searches. | None |
-| Group ID | The group that the task belongs to. Select from the drop-down list. | None |
-| Task Type | The implementation language of the task. The following five languages are supported: Java Shell Python Go HTTP For Shell, Python, and Go, an editor appears. Write your task script in the editor. | None |
-| Processor Class Name | Appears only when you select Task Type as Java. Enter the full path of the JobProcessor class, such as xxx.xxx.xxx.HelloProcessor. | None |
+ole user guide
 
 **Important**
 
@@ -2128,16 +2452,30 @@ Before creating a task, make sure you have created a task group. For more inform
 **Advanced Configuration**. Then click **Next**.
 Parameter descriptions for basic configuration:
 
+| Configuration Name | Meaning | Default Value |
+|---|---|---|
+| Task Name | The name of the task. | None |
+| Description | A brief description of the business logic. This helps with later searches. | None |
+| Group ID | The group that the task belongs to. Select from the drop-down list. | None |
+| Task Type | The implementation language of the task. The following five languages are supported: Java Shell Python Go HTTP For Shell, Python, and Go, an editor appears. Write your task script in the editor. | None |
+| Processor Class Name | Appears only when you select Task Type as Java. Enter the full path of the JobProcessor class, such as xxx.xxx.xxx.HelloProcessor. | None |
+
+ole user guide
+
 | Execution Mode | The mode used to execute the task. The following modes are supported: Standalone: Run on one randomly selected machine. Broadcast: Run on all machines at once and wait for all to finish. Parallel Computing: Map model. Supports up to 300 subtasks. Shows a subtask list. In-Memory Grid: Map model. Supports up to 50,000 subtasks. No subtask list. Fast execution. Grid Computing: Map model. Supports up to 1,000,000 subtasks. No subtask list. Sharding: Similar to Elastic- Job. Configure sharding parameters to distribute shards evenly across multiple clients. Supports multi-language versions. Note Advanced settings change based on the execution mode you select. | None |
 |---|---|---|
 | Full URL | Enter the full URL, including http:// . Note Appears only when you select Task Type as HTTP. | None |
 | Request Method | Select GET or POST. Note Appears only when you select Task Type as HTTP. | None |
+
+ole user guide
 
 | Response Parsing Mode | Select HTTP Status Code, Custom JSON, or Custom String. Note Appears only when you select Task Type as HTTP. | None |
 |---|---|---|
 | HTTP Status Code | Set the HTTP status code that indicates success. Note Appears when you select Response Parsing Mode as HTTP Status Code. | 200 |
 | Return Verification Key | Supports only JSON-formatted return values. Enter the key that indicates success. Note Appears when you select Response Parsing Mode as Custom JSON. | None |
 | Return Verification Value | Return values are supported only in JSON format. If the request succeeds, the validated value is returned. Note Appears when you select Response Parsing Mode as Custom JSON. | None |
+
+ole user guide
 
 | Custom String | Enter a keyword or phrase that indicates success. Note Appears when you select Response Parsing Mode as Custom String. | None |
 |---|---|---|
@@ -2149,16 +2487,18 @@ Parameter descriptions for basic configuration:
 
 If advanced configuration is needed for your business, see Advanced Configuration Parameters for Task Management.
 5. On the **Schedule Configuration** tab, set schedule parameters and optional advanced
-configuration. Then click **Next**.
+configuration. Then click **Next**. ole user guide Schedule parameter descriptions:
 
 | Configuration Name | Significance | Default Value |
 |---|---|---|
 | Time Type | None: No scheduling. Usually triggered by workflows. Cron: Cron expression. API: Triggered by API calls. Fixed Rate: Fixed frequency. Second Delay: Fixed delay in seconds. | cron |
 
-Schedule parameter descriptions:
+ole user guide
 
 | Time Expression | Enter the time expression based on the time type: None: Not required. Cron: Enter a cron expression. Use standard cron syntax or generate and validate it using a tool. API: Not required. Fixed Rate: Enter the interval in seconds. For example, 65 runs the task every 65 seconds. Second Delay: Enter the delay in seconds. Valid range: 1 to 60 seconds. For example, 5 triggers the task after a 5-second delay. | None |
 |---|---|---|
+
+When you select Cron as the time type, advanced configuration options appear. Advanced configuration parameter descriptions:
 
 | Configuration Name | Significance | Default Value |
 |---|---|---|
@@ -2166,8 +2506,8 @@ Schedule parameter descriptions:
 | Time Zone | Select a time zone based on your needs. Options include common countries and regions, and standard GMT formats. | None |
 | Calendar | Examples: custom scheduling calendar, skip weekends, skip specific dates. | None |
 
-When you select Cron as the time type, advanced configuration options appear. Advanced configuration parameter descriptions:
 6. On the **Alert Configuration** tab, set alert parameters. Then click **Submit**.
+ole user guide Alert parameter descriptions:
 
 | Configuration Name | Meaning | Default Value |
 |---|---|---|
@@ -2177,7 +2517,7 @@ When you select Cron as the time type, advanced configuration options appear. Ad
 | Failure Alert | Open Shut down | Open |
 | No Available Machine Alert | Open Shut down | Open |
 
-Alert parameter descriptions:
+ole user guide
 7. Return to the **Task Management** page. Check whether the task you just created appears
 and whether its parameters match your configuration.
 
@@ -2214,14 +2554,9 @@ If your business changes—for example, you add a field to your database or find
 
 **Note**
 
-Both tasks and workflows support data refresh. Only day-level scheduling cycles are supported. If data from a previous task run contains drift or gaps, reset the runtime parameters and run the task again to retrieve correct data.
-
-| Parameter | Description |
-|---|---|
-| Select Application ID | Select the application to import the task into. |
-
+Both tasks and workflows support data refresh. Only day-level scheduling cycles are supported. If data from a previous task run contains drift or gaps, reset the runtime parameters and run the task again to retrieve correct data. ole user guide
 1. On the **Task Management** page, click
-pop-up menu, click **Refresh Data**.
+in the Actions column of the task list, and in the pop-up menu, click **Refresh Data**.
 2. On the **Refresh Task** page, set **Start and End Time** and **Data Timestamp**. Then click
 **OK**.
 **Start and End Date**: The time range for data refresh.
@@ -2242,6 +2577,12 @@ ii. In the **Confirm** dialog box, click **OK**. Delete multiple tasks On the **
 
 1. On the **Task List** page, click **Import** above the list.
 2. In the **Import Task** dialog box, configure the following parameters. Then click **OK**.
+
+| Parameter | Description |
+|---|---|
+| Select Application ID | Select the application to import the task into. |
+
+ole user guide
 
 | Same Task | Overwrite: Replace an existing task with the same name or ID. Skip: Skip importing a duplicate task and keep the existing one. |
 |---|---|
@@ -2268,7 +2609,7 @@ By default, all tasks are exported.
 
 If machine transfer is enabled, the task runs on non-assigned machines when all assigned machines go offline.
 
-### Workflow Management
+### 6.4 Workflow Management
 
 SchedulerX supports cross-application task orchestration. You can orchestrate tasks from the same or different applications into a single workflow based on their execution logic.
 
@@ -2283,6 +2624,7 @@ Currently, workflow scheduling supports only Cron expressions and API scheduling
 2. In the navigation pane on the left, click **Workflow Management**.
 3. On the **Workflow Management** page, click **Create**.
 4. On the **Create Workflow** page, set the following parameters and click **OK**.
+ole user guide
 
 | Parameter | Description |
 |---|---|
@@ -2304,7 +2646,7 @@ information, see Create Scheduling Tasks.
 
 **Note**
 
-When you import a Job, a prompt appears: "Importing this Job will remove its scheduled configuration." Click **OK**. The Job will no longer be scheduled independently and will instead follow the workflow's scheduling cycle.
+When you import a Job, a prompt appears: "Importing this Job will remove its scheduled configuration." Click **OK**. The Job will no longer be scheduled independently and will instead follow the workflow's scheduling cycle. ole user guide
 7. After you add the scheduling tasks, connect them with lines to define their dependencies
 and complete the workflow. In a workflow, you can pass data from upstream Jobs to downstream Jobs. For more information, see Passing data between upstream and downstream Jobs in a workflow. To delete a dependency between two tasks, select the connecting line, right-click it, and select **Remove**. To delete a task, right-click the scheduling task and click **Remove** in the shortcut menu. You can also click a task name and select **Edit** to modify the task. An example workflow is shown below: In this workflow, after Job 101 finishes executing, Jobs 102 and 103 start executing simultaneously. After Jobs 104, 105, and 106 all execute successfully, Job 107 starts executing.
 8. After you configure the workflow, click **Save Changes** and return to the **Workflow**
@@ -2325,14 +2667,14 @@ enable or disable the workflow.
 
 **Delete Workflow**
 
+1. On the **Workflow Management** page, click the
 icon in the **Actions** column and select
 **Delete**.
 2. In the **Confirm** dialog box, click **OK**.
 
-| Parameter | Description |
-|---|---|
+**View Workflow History and Operation Records**
 
-View execution records: On the **Workflow Management** page, click the icon in the
+ole user guide View execution records: On the **Workflow Management** page, click the icon in the
 **Actions** column and select **History** to view the execution records of the workflow. For
 more information, see Execution list. View operation records: On the **Workflow Management** page, click the icon in the
 **Actions** column and select **Operation Records** to view the management operation
@@ -2344,7 +2686,9 @@ If your business requirements change, such as adding a field to a database or di
 
 **Note**
 
-Only day-level scheduling cycles are supported. icon in the **Actions** column and select
+Only day-level scheduling cycles are supported.
+1. On the **Workflow Management** page, click the
+icon in the **Actions** column and select
 **Flush Data**.
 2. On the **Refresh Data** page, set **Start and End Time** and **Data Timestamp**, and click **OK**.
 **Start and End Date**: The time range for the data refresh.
@@ -2356,14 +2700,15 @@ Example Start and End Date: 2025-08-01 to 2025-08-03. By default, this specifies
 1. On the **Workflow Management** page, click **Import** above the list.
 2. In the **Import Workflow** dialog box, set the following parameters and click **OK**.
 
+| Parameter | Description |
+|---|---|
+
+ole user guide
+
 | Select Application ID | Select the target application to import the workflow into. Note The application ID of the original workflow and the application IDs of tasks within the workflow must match the application ID of the new environment. |
 |---|---|
 | Identical Tasks | Overwrite: If the target environment already has tasks with the same name or ID, the imported tasks will replace the existing tasks. Skip: If duplicate tasks are found, skip importing them and keep the existing tasks. |
 | Import Workflow | Click the icon, select the local object file, then click Open. |
-
-| Parameter | Description | Default |
-|---|---|---|
-| Applicatio n Name | Customize the application name. | None |
 
 **Export Workflow**
 
@@ -2371,7 +2716,7 @@ Example Start and End Date: 2025-08-01 to 2025-08-03. By default, this specifies
 2. In the **Export Workflow** dialog box, select the application ID and click **OK**.
 3. In the pop-up dialog box, click **Download** to save the workflow file to your local machine.
 
-### Application Management
+### 6.5 Application Management
 
 The Application Management page lets you create application groups, test machine connections, authorize RAM users, and delete unneeded groups.
 
@@ -2383,6 +2728,12 @@ You can create an application group. The Group ID and AppKey for this group are 
 3. On the **Application Management** page, click **Create**.
 4. On the **Create Application** panel, configure the following parameters on the **Basic**
 **Configuration** tab, and then click **Next**.
+
+| Parameter | Description | Default |
+|---|---|---|
+| Applicatio n Name | Customize the application name. | None |
+
+ole user guide
 
 | Group ID | The Group ID for application access. This value must be unique in the system; otherwise, creation fails. | None |
 |---|---|---|
@@ -2396,13 +2747,15 @@ You can create an application group. The Group ID and AppKey for this group are 
 | Maximum Number of Tasks | The maximum number of tasks a group supports. The maximum task count cannot exceed 1000. | None |
 | Calendar | Import a custom calendar. Set scheduled tasks to run on specific dates to meet specific business needs. | None |
 
+5. On the **Create Application** panel, select the **Alert Method** and add **Alert Contacts** on
+the **Notification Configuration** tab. Then, click **Submit**.
+
 | Configuration Item | Description | Example Value |
 |---|---|---|
 | Alert Method | DingTalk Email | DingTalk |
 | Add Alert Contact | Enter the Nickname, Email, and DingTalk access token. _ | None |
 
-5. On the **Create Application** panel, select the **Alert Method** and add **Alert Contacts** on
-the **Notification Configuration** tab. Then, click **Submit**. After the application group is created, you are automatically returned to the **Application**
+ole user guide After the application group is created, you are automatically returned to the **Application**
 **Management** page. Find the application group and obtain its **Group ID** and **AppKey**.
 
 **View Application Group Details**
@@ -2436,7 +2789,7 @@ left list. Click **>>** to add the RAM users to the right list. Then, click **Au
 
 **Delete Application Group**
 
-You can delete an application group after confirming that you will no longer create scheduling tasks through it. After deletion, all scheduling tasks associated with that group will no longer execute.
+ole user guide You can delete an application group after confirming that you will no longer create scheduling tasks through it. After deletion, all scheduling tasks associated with that group will no longer execute.
 1. On the **Application Management** page, click **Delete** in the **Actions** column of the group
 list.
 2. In the delete confirmation dialog box, click **OK**.
@@ -2446,12 +2799,15 @@ list.
 1. On the **Application Management** page, in the **Actions** column of the group list, click
 . Then, click **Edit**.
 2. On the **Edit Application** panel, you can modify the task group information.
+
+**View Application Group Operation Records**
+
 1. On the **Application Management** page, in the **Actions** column of the group list, click
 and then select **Operation Records**.
 2. You can view the application group's operation details on the **Operation Records** page.
 For more information, see the referenced document.
 
-### Operation records
+### 6.6 Operation records
 
 The Operation records page lists the operation records for application groups, jobs, and flows.
 
@@ -2462,22 +2818,31 @@ The Operation records page lists the operation records for application groups, j
 3. On the **Operation Records** page, set **Type** to **Application Group**, **Task**, or **Flow**, enter
 the corresponding ID in the text box, and then click Search.
 4. In the search results, view the operation records for the corresponding group, task, or flow.
+nced features
 
-## Advanced features
+## 7 Advanced features
 
-### Create a second-level
+### 7.1 Create a second-level scheduling task
 
 **scheduling task**
 
-Second-level tasks are ideal for services with high real-time requirements, such as near-realtime services that perform continuous polling. Memory grid and second-level scheduling allow you to continuously process large volumes of data. This topic provides an example of how to create a second-level scheduling task. In SchedulerX 2.0, second-level tasks are a type of timed scheduling. They apply to simple Java tasks, distributed Java tasks, and script tasks, and support all execution methods. Because second-level scheduling is a type of timed scheduling, set the **Time Type** to second_delay and the **Fixed Delay** to 50 seconds in the scheduling configuration step. For more information, see Create a scheduling task. To view the details of a task instance, see Execution list. The details page of a second-level task instance includes a **Second-level Task Statistics** tab. This tab provides the following information: The total number of executions, successes, and failures for the current day. The total number of executions, successes, and failures for the previous day. The results of the 10 most recent executions. Details for subtasks in each loop, including the total number of subtasks and the number of successes and failures for each distribution level. A task execution failure alert is triggered if the initial execution fails. After a successful initial execution, subsequent failures do not trigger this alert. A consecutive failure alert is triggered if a task fails more than 10 times consecutively after a successful initial execution. To receive these two alerts, enable the failure alert switch in the task's alert configuration.
+Second-level tasks are ideal for services with high real-time requirements, such as near-realtime services that perform continuous polling. Memory grid and second-level scheduling allow you to continuously process large volumes of data. This topic provides an example of how to create a second-level scheduling task. In SchedulerX 2.0, second-level tasks are a type of timed scheduling. They apply to simple Java tasks, distributed Java tasks, and script tasks, and support all execution methods. Because second-level scheduling is a type of timed scheduling, set the **Time Type** to second_delay and the **Fixed Delay** to 50 seconds in the scheduling configuration step. For more information, see Create a scheduling task.
 
-### Create a new account
+**View second-level scheduling task details**
+
+To view the details of a task instance, see Execution list. The details page of a second-level task instance includes a **Second-level Task Statistics** tab. This tab provides the following information: The total number of executions, successes, and failures for the current day. The total number of executions, successes, and failures for the previous day. The results of the 10 most recent executions. Details for subtasks in each loop, including the total number of subtasks and the number of successes and failures for each distribution level. nced features
+
+**Set alerts for second-level scheduling tasks**
+
+A task execution failure alert is triggered if the initial execution fails. After a successful initial execution, subsequent failures do not trigger this alert. A consecutive failure alert is triggered if a task fails more than 10 times consecutively after a successful initial execution. To receive these two alerts, enable the failure alert switch in the task's alert configuration.
+
+### 7.2 Create a new account
 
 This topic explains how to create a new account for SchedulerX.
 
 **Prerequisites**
 
-Contact the operations administrator to request an account.
+Contact the operations administrator to request an account. nced features
 
 **Verify the result**
 
@@ -2487,7 +2852,7 @@ Log on to the console with your username and password to verify that the account
 
 Click the profile picture in the upper-right corner, and then click **Log Out**.
 
-### How to pass data between
+### 7.3 How to pass data between upstream and downstream nodes in a workflow
 
 **upstream and downstream nodes**
 
@@ -2507,7 +2872,7 @@ Data passing is currently supported only for Java tasks. For distributed Java ta
 /**
 ```
 
-*
+`*`
 
 ```
  * @param status
@@ -2521,7 +2886,7 @@ Data passing is currently supported only for Java tasks. For distributed Java ta
 public ProcessResult(boolean status, String result) throws Exception;
 ```
 
-Use this method at the end of the processor to return the execution result.
+Use this method at the end of the processor to return the execution result. nced features
 
 **Important**
 
@@ -2546,11 +2911,9 @@ public class TestSimpleJobA extends JavaProcessor {
         System.out.println("TestSimpleJobA " + DateTime.now().toString("yyyy-MM-dd
 HH:mm:ss"));
         return new ProcessResult(true, String.valueOf(1));
-    }
-}
 ```
 
-JobProcessor B
+`}` `}` JobProcessor B
 
 ```java
 public class TestSimpleJobB extends JavaProcessor {
@@ -2559,11 +2922,9 @@ public class TestSimpleJobB extends JavaProcessor {
         System.out.println("TestSimpleJobB " + DateTime.now().toString("yyyy-MM-dd
 HH:mm:ss"));
         return new ProcessResult(true, String.valueOf(2));
-    }
-}
 ```
 
-JobProcessor C
+`}` `}` JobProcessor C nced features
 
 ```java
 public class TestSimpleJobC extends JavaProcessor {
@@ -2575,13 +2936,16 @@ public class TestSimpleJobC extends JavaProcessor {
             System.out.println("jobName=" + jobInstanceData.getJobName()
                     + ", data=" + jobInstanceData.getData());
             sum += Integer.valueOf(jobInstanceData.getData());
-        }
-        System.out.println("TestSimpleJobC sum=" + sum);
-        return new ProcessResult(true, String.valueOf(sum));
-    }
-}
 ```
 
+`}`
+
+```java
+        System.out.println("TestSimpleJobC sum=" + sum);
+        return new ProcessResult(true, String.valueOf(sum));
+```
+
+`}` `}`
 2. Create an application group and a scheduled job for each of the three applications: jobA,
 jobB, and jobC. For more information, see Create an application group and Create a scheduled job.
 3. Create a workflow and import the three scheduled jobs. For more information, see Create a
@@ -2596,6 +2960,14 @@ Go to the **Workflow Details** page. To view the details for the task instances,
 ```
 jobName=jobB, data=2 jobName=jobA, data=1 TestSimpleJobC sum=3
 ```
+
+guration reference
+
+## 8 Configuration reference
+
+### 8.1 JobContext parameters
+
+This topic describes the JobContext parameters. The following table describes the JobContext parameters.
 
 | Parameter | Description |
 |---|---|
@@ -2614,15 +2986,17 @@ jobName=jobB, data=2 jobName=jobA, data=1 TestSimpleJobC sum=3
 | int attempt | The current number of retries for the instance. |
 | int taskMaxAttempt | The maximum number of retries for the subtask. |
 
-## Configuration reference
-
-### JobContext parameters
-
-This topic describes the JobContext parameters. The following table describes the JobContext parameters.
+guration reference
 
 | int taskAttempt | The current number of retries for the subtask. |
 |---|---|
 | List<JobInstanceData> upstreamData | The upstream data of the workflow instance. A workflow instance can have multiple upstream sources. The data is in the List<JobInstanceData> format. |
+
+### 8.2 Advanced configuration parameters for task management
+
+**parameters for task management**
+
+This topic describes the advanced configuration parameters for task management. The following table describes the advanced configuration parameters for task management.
 
 | Parameter | Applicable execution modes | Description | Default value |
 |---|---|---|---|
@@ -2632,11 +3006,7 @@ This topic describes the JobContext parameters. The following table describes th
 | Sub-task concurrency per machine | Parallel computing Memory grid Grid computing | In a distributed model, this is the number of sub-tasks that a single machine can concurrently process. | 5 |
 | Sub-task retries on failure | Parallel computing Memory grid Grid computing | In a distributed model, this is the number of times a sub-task automatically retries if it fails. | 0 |
 
-### Advanced configuration
-
-**parameters for task management**
-
-This topic describes the advanced configuration parameters for task management. The following table describes the advanced configuration parameters for task management.
+guration reference
 
 | Sub-task retry interval on failure | Parallel computing Memory grid Grid computing | In a distributed model, this is the interval between automatic retries if a sub-task fails. Unit: seconds. | 0 |
 |---|---|---|---|
@@ -2645,11 +3015,11 @@ This topic describes the advanced configuration parameters for task management. 
 | Sub-task queue capacity (pull model only) | Parallel computing Memory grid Grid computing | The size of the queue on a slave node that caches sub-tasks. | 10 |
 | Global sub-task concurrency (pull model only) | Parallel computing Memory grid Grid computing | The distributed pull model supports global sub-task concurrency, which can be used for rate limiting. | 0 |
 
-### SchedulerxWorker
+### 8.3 SchedulerxWorker configuration parameters
 
 **configuration parameters**
 
-This topic describes the parameters for configuring SchedulerxWorker. The following table lists each parameter and its description.
+This topic describes the parameters for configuring SchedulerxWorker. The following table lists each parameter and its description. guration reference
 
 | Parameter | Description | Default value |
 |---|---|---|
@@ -2663,37 +3033,39 @@ This topic describes the parameters for configuring SchedulerxWorker. The follow
 | setClassLoader(ClassLoader userClassLoader) | For non-Spring applications that use other third-party frameworks, you may need to set a custom class loader. | None |
 | setBlockAppStart(boolean block) | Specifies whether to block the application process from starting if SchedulerX initialization fails. | true |
 
-|  | setGroupId(String |  |
+|   | setGroupId(String |   |
 |---|---|---|
-| groupId) |  |  |
+| groupId) |   |   |
 
-|  | setAppKey(String |
+|   | setAppKey(String |
 |---|---|
-| appKey) |  |
+| appKey) |   |
 
-|  | setEndpoint(String | T |
+|   | setEndpoint(String | T |
 |---|---|---|
-| endpoint) |  |  |
+| endpoint) |   |   |
 
-|  | setNamespace(String | The |
+|   | setNamespace(String | The |
 |---|---|---|
-| namespace) |  |  |
+| namespace) |   |   |
 
-|  | setEnableBatchWork(boolean | computing, do this parameter. |
+|   | setEnableBatchWork(boolean | computing, do this parameter. |
 |---|---|---|
-| enableBatchWork) |  |  |
+| enableBatchWork) |   |   |
 
-|  | setClassLoader(ClassLoader | use other third-pa |
+|   | setClassLoader(ClassLoader | use other third-pa |
 |---|---|---|
-| userClassLoader) |  |  |
+| userClassLoader) |   |   |
 
-|  | setBlockAppStart(boolean | appli |
+|   | setBlockAppStart(boolean | appli |
 |---|---|---|
-| block) |  |  |
+| block) |   |   |
 
-## Permission management
+ssion management
 
-### Overview of permission
+## 9 Permission management
+
+### 9.1 Overview of permission management
 
 **management**
 
@@ -2705,41 +3077,34 @@ SchedulerX uses the authentication system for Alibaba Cloud accounts and RAM use
 
 **Logon permission control**
 
-A RAM user cannot directly log on to SchedulerX. To log on, the RAM user must meet the following two conditions: The RAM user must have the **Resource User** role. The Alibaba Cloud account must grant the RAM user the permission to log on to SchedulerX. The access policy for this permission is:
+A RAM user cannot directly log on to SchedulerX. To log on, the RAM user must meet the following two conditions: The RAM user must have the **Resource User** role. The Alibaba Cloud account must grant the RAM user the permission to log on to SchedulerX. The access policy for this permission is: `{`
 
 ```json
-{
   "Version": "1",
   "Statement": [
-    {
+```
+
+`{`
+
+```json
       "Action": "schedulerx:ManageMenu",
       "Resource": "acs:schedulerx:*:*:*",
       "Effect": "Allow"
-    }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+**Application-level permission management**
 
 Different RAM users are typically responsible for different applications. An application created by a RAM user is not visible to other RAM users, but is visible to the Alibaba Cloud account. Both the Alibaba Cloud account and the RAM user who created the application can grant permissions on it to other RAM users.
 
-### Create users and user groups
+### 9.2 Create users and user groups
 
 You can use an Alibaba Cloud account to create users and assign roles to them to manage system access.
 
 **Create an organization**
 
-An organization is required to create users and user groups.
-
-| Parameter | Description |
-|---|---|
-| Name | The name of the organization. The name must be 2 to 128 characters in length. The name cannot start or end with a space. Note The organization name must be unique in the organizational architecture. |
-| Description | The description of the organization. |
-| Associate Third-party Authenticatio n | If no global identity provider (IdP) is configured in the Apsara Uni-manager Management Console, you can select Set Now or Set Later. If you select Set Now, you must select a local IdP name from the IdP Name drop-down list. You can associate only one IdP with the organization. If you select Set Later, third-party authentication is not associated. Important The Associate Third-party Authentication parameter is displayed only when you create a level-1 organization. If a global IdP has been configured in the Apsara Uni-manager Management Console, third-party authentication cannot be associated with level-1 organizations. In this case, Set Now and Set Later are dimmed. |
-
+An organization is required to create users and user groups. ssion management
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Organizations**.
@@ -2751,9 +3116,23 @@ organization and click **Create Organization** in the upper-right corner of the 
 If you select the root organization, a level-1 organization is created. If you want to create a level-2 organization, you must select a level-1 organization. The same method applies to subordinate organizations. You can create up to five levels of organizations. An operations administrator can create level-1 to level-5 organizations. An organization administrator can create only subordinate organizations under the organization to which the organization administrator belongs.
 5. In the **Add Organization** dialog box, configure the parameters that are described in the
 following table.
+
+| Parameter | Description |
+|---|---|
+| Name | The name of the organization. The name must be 2 to 128 characters in length. The name cannot start or end with a space. Note The organization name must be unique in the organizational architecture. |
+| Description | The description of the organization. |
+| Associate Third-party Authenticatio n | If no global identity provider (IdP) is configured in the Apsara Uni-manager Management Console, you can select Set Now or Set Later. If you select Set Now, you must select a local IdP name from the IdP Name drop-down list. You can associate only one IdP with the organization. If you select Set Later, third-party authentication is not associated. Important The Associate Third-party Authentication parameter is displayed only when you create a level-1 organization. If a global IdP has been configured in the Apsara Uni-manager Management Console, third-party authentication cannot be associated with level-1 organizations. In this case, Set Now and Set Later are dimmed. |
+
 6. Click **OK**.
 
 **Create a user group**
+
+ssion management Roles cannot be attached directly to users. Instead, roles are attached to user groups. Users in a group inherit the permissions of the roles attached to that group.
+1. In the top navigation bar, click **Enterprise**.
+2. In the left-side navigation pane, choose **Users** > **User Groups**.
+3. On the **User Groups** page, click **Create User Group**.
+4. In the **Create User Group** dialog box, configure the parameters that are described in the
+following table.
 
 | Parameter | Description |
 |---|---|
@@ -2761,12 +3140,6 @@ following table.
 | Organization | The organization to which the user group belongs. |
 | Role authorized | The roles that are assigned to the user group. |
 
-Roles cannot be attached directly to users. Instead, roles are attached to user groups. Users in a group inherit the permissions of the roles attached to that group.
-1. In the top navigation bar, click **Enterprise**.
-2. In the left-side navigation pane, choose **Users** > **User Groups**.
-3. On the **User Groups** page, click **Create User Group**.
-4. In the **Create User Group** dialog box, configure the parameters that are described in the
-following table.
 5. Click **OK**.
 
 **Create a user**
@@ -2775,6 +3148,9 @@ You can create users as needed.
 1. In the top navigation bar, click **Enterprise**.
 2. In the left-side navigation pane, choose **Users** > **Users.**
 3. On the **System Users** tab, click **Create User**.
+ssion management
+4. In the **Create User** dialog box, configure the parameters. The following table describes the
+parameters.
 
 | Parameter | Description |
 |---|---|
@@ -2788,12 +3164,12 @@ You can create users as needed.
 | Email | The email address of the user. This email address is used to receive system notifications about resource applications and usage. Make sure that the email address is valid. |
 | DingTalk Key | The key of the chatbot for the DingTalk group to which the user belongs. For more information about how to configure the key, see DingTalk development documentation. |
 
-4. In the **Create User** dialog box, configure the parameters. The following table describes the
-parameters.
+ssion management
 
 | Message | Notify User by Email: If the user is configured as an alert contact, the Apsara Uni-manager Management Console notifies the user by email when an alert is generated. Note If you enable email notifications, you must configure an email server. For more information, contact on-site O&M engineers. If you enable email notifications, you can select After creation, the user is notified of information such as the username and password by email. Notify User by DingTalk: If the user is configured as an alert contact, the Apsara Uni-manager Management Console notifies the user by DingTalk when an alert is generated. |
 |---|---|
 
+ssion management
 5. Click **OK**.
 
 **Add a user to a user group**
@@ -2804,29 +3180,30 @@ When a user is added to a user group, the user inherits the permissions of the r
 3. On the User Groups page, select a condition from the drop-down list and then enter a
 keyword in the search box to search for a user group. Alternatively, specify advanced filter conditions above the user group list to search for a user group.
 4. Find the user group that you want to manage and click **Add User** in the **Actions** column.
+ssion management
+5. In the **Add User** dialog box, add users. You can manually add users or upload multiple
+users at a time.
 
 | Adding Method | Description |
 |---|---|
 | Manually Add | i. Set the Adding Method parameter to Manually Add ii. Select one or more users that you want to add from the left-side section and click the icon to add the selected users to the right-side section. Note You can manually add up to five users at a time. To add more than five users at a time, we recommend that you use the batch upload method. You can also select one or more users added to the right-side section and click the icon to remove the users from the right-side section. iii. Click OK. |
 
-5. In the **Add User** dialog box, add users. You can manually add users or upload multiple
-users at a time.
+ssion management
 
-|  | i. Set the Adding Method parameter to Batch Upload ii. Click Download Batch Operation Template to download the template file in the XLSX format to your local computer. |
+|   | i. Set the Adding Method parameter to Batch Upload ii. Click Download Batch Operation Template to download the template file in the XLSX format to your local computer. |
 |---|---|
 | Batch Upload | iii. Fill the template file with the names of the users to be added in the template file and save the file. Note You can add up to 300 users by using a template file and upload only one template file at a time. iv. In the file upload section, upload the template file that you filled in. v. Click OK. |
 
-| Paramete r | Description |
-|---|---|
-| Role Name | The name of the role. |
-| Descripti on | (Optional) The description of the role. |
-| Sharing Scope | The visibility of the role. When an operations administrator creates a role, only Global is supported. Global: The role is shared across all organizations. This organization: The role is shared only within the current organization. Subordinate organizations: The role is shared with the current organization and its subordinate organizations. |
+ssion management
 
-### Create a role and attach
+### 9.3 Create a role and attach permissions
 
 **permissions**
 
 SchedulerX uses the authentication system for Alibaba Cloud accounts and RAM (Resource Access Management) users. It also supports RAM authorization. You can create custom roles and attach access policies. Then, assign these roles to users to manage permissions. This topic describes how to create a role and attach user groups and access policies.
+
+**Create a role**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top menu bar, click **Enterprise**.
 3. In the navigation pane on the left, choose **Permission Management** > **Role**
@@ -2835,19 +3212,26 @@ SchedulerX uses the authentication system for Alibaba Cloud accounts and RAM (Re
 5. On the **Create Custom Role** page, expand **Advanced Create** at the bottom of the page,
 and then click **Create RAM Authorization**.
 6. Enter the **Basic Information**.
+
+| Paramete r | Description |
+|---|---|
+| Role Name | The name of the role. |
+| Descripti on | (Optional) The description of the role. |
+| Sharing Scope | The visibility of the role. When an operations administrator creates a role, only Global is supported. Global: The role is shared across all organizations. This organization: The role is shared only within the current organization. Subordinate organizations: The role is shared with the current organization and its subordinate organizations. |
+
 7. Click **Create RAM Authorization and Configure** . On the **Role Authorization** page,
 configure the role authorization. Attach a user group to the role.
 
 **Note**
 
-You can choose not to attach a user group when you create the role. Instead, you can attach the role on the user group page. For more information, see Attach a role to a user group. a. On the **Role Authorization** page, click the **User Group Management** tab, and then click **Add User Group**.
+You can choose not to attach a user group when you create the role. Instead, you can attach the role on the user group page. For more information, see Attach a role to a user group. a. On the **Role Authorization** page, click the **User Group Management** tab, and then click **Add User Group**. ssion management b. In the **Add User Group** dialog box, select the target user group, and then click **OK**. Attach a custom policy to the role. a. On the **Role Authorization** page, click the **Permission Management** tab, and then click **Add Access Policy**. b. In the **Add Access Policy** dialog box, click **Create Access Policy**. In the **Create**
+**Access Policy** dialog box, set the basic information for the policy, and then click **OK**.
 
 | Parameter | Description |
 |---|---|
 | Policy Name | Enter a custom policy name. The name can be up to 50 characters in length. For example, ScxManageMenu . |
 
-b. In the **Add User Group** dialog box, select the target user group, and then click **OK**. Attach a custom policy to the role. a. On the **Role Authorization** page, click the **Permission Management** tab, and then click **Add Access Policy**. b. In the **Add Access Policy** dialog box, click **Create Access Policy**. In the **Create**
-**Access Policy** dialog box, set the basic information for the policy, and then click **OK**.
+ssion management
 
 | Remarks | The description of the policy. This is often used to describe the permissions that the policy grants. |
 |---|---|
@@ -2868,13 +3252,13 @@ in its
 down list, and then click **OK**.
 5. In the **Add Role** dialog box, select the target role, and then click **OK**.
 
-### Verify logon permissions
+### 9.4 Verify logon permissions
 
 This topic describes how to verify logon permissions after SchedulerX is integrated with Resource Access Management (RAM).
 
 **Prerequisites**
 
-A user with the **Resource User** role has been created. For more information, see Create a user.
+A user with the **Resource User** role has been created. For more information, see Create a user. ssion management
 
 **Log on to SchedulerX as a new user**
 
@@ -2907,13 +3291,15 @@ When a user with the required permissions logs on to SchedulerX, no error messag
 3. On the **Distributed Task Scheduling Platform** page, click the **Switch Account** floating
 button in the lower-right corner. Select **Organization Settings** and **Region Settings**. Then, click **Role-based Access**. The user successfully logs on to the SchedulerX console.
 
-### Verify application-level
+### 9.5 Verify application-level permissions
 
 **permissions**
 
 This topic describes how to verify application-level permissions after SchedulerX is integrated with Resource Access Management (RAM).
 
 **Background information**
+
+ssion management
 
 **g**
 
@@ -2947,7 +3333,7 @@ To revoke permissions for a user, select the user ID in the lower-right corner a
 
 By default, a RAM user can view only the applications that they created and cannot view applications created by other RAM users.
 3. On the **Application Management** page, select the application you want to authorize, click
-in the **Actions** column, and select **Authorization**.
+in the **Actions** column, and select **Authorization**. ssion management
 4. In the **Authorization Management** dialog box, enter the ID of the RAM user in the **User**
 **ID** search box, click **Add**, and then click **Grant**.
 You can add multiple RAM user IDs to grant permissions in a batch.
@@ -2957,9 +3343,9 @@ You can add multiple RAM user IDs to grant permissions in a batch.
 To revoke permissions for a user, select the user ID in the lower-right corner and click
 **Revoke Authorization**.
 
-## FAQ
+## 10 FAQ
 
-### FAQ
+### 10.1 FAQ
 
 You might encounter issues when you use SchedulerX. This topic describes how to resolve common issues.
 
@@ -2975,13 +3361,7 @@ icon and select **Edit**. In the
 
 **No available machines**
 
-Symptom When you connect an application to SchedulerX and try to verify the connection, the message No available machines is displayed. Possible causes The application failed to connect to SchedulerX. There were conflicts between JAR packages. The SchedulerXWorker was configured incorrectly. Solution
-
-| JAR package | Version |
-|---|---|
-| guava | 20.0 |
-
-i. Log on to the ECS instance where the application is deployed and check if the log directory /home/${user.home}/logs/schedulerx/worker.log exists.
+Symptom When you connect an application to SchedulerX and try to verify the connection, the message No available machines is displayed. Possible causes The application failed to connect to SchedulerX. There were conflicts between JAR packages. The SchedulerXWorker was configured incorrectly. Solution i. Log on to the ECS instance where the application is deployed and check if the log directory /home/${user.home}/logs/schedulerx/worker.log exists.
 
 **Note**
 
@@ -2994,6 +3374,10 @@ Obtain the namespace ID from the **Namespace ID** on the **Namespace** page. If 
 **JAR package conflicts**
 
 Symptom When you deploy a scheduling task, the message JAR package conflict is displayed. Possible cause A JAR package conflict can be caused by conflicts between specific sub-packages. You can search for **maven dependencies** in the log to view the version and path of each JAR package. This helps you quickly locate and resolve the conflict, as shown in the following figure: Solution Upgrade the packages that have earlier versions, as specified in the following table.
+
+| JAR package | Version |
+|---|---|
+| guava | 20.0 |
 
 | com.typesafe.config | 1.3.0 |
 |---|---|
@@ -3079,20 +3463,26 @@ com.alibaba.schedulerx.common.util.ReflectionUtil.newInstance(ReflectionUtil.jav
 
 javaassist conflict httpclient conflict
 
-| If | spring-boot-devtools |  |
-|---|---|---|
-| devtools |  |  |
-|  |  | dependency. |
-
 **Incompatibility between tablestore protobuf-2.4.1 and**
+
+**SchedulerX**
 
 For more information, see Protobuf library conflict when using Java SDK.
 
 **Spring application cannot find a bean**
 
-Symptom The Spring application cannot find the corresponding bean. Possible causes Incorrect connection type. A bean is not injected into the JobProcessor. The `spring-boot-devtools` dependency is added to the pom.xml file. Transaction annotations are added to the JobProcessor and the process method. The bean is proxied by other aspects. Inconsistent classLoaders. Solution On the **Application Management** page in the console, click **Connected Machines** in the **Operation** column of the target group. In the **Connected Machines** panel, check that the startup mode is Spring or Spring Boot. If the startup mode is not Spring or Spring Boot, check your application. Check whether the JobProcessor is injected as a bean in the application code, for example, by adding the @Component annotation. If the JobProcessor is not injected as a bean, inject it as a bean. Check whether `spring-boot-devtools` is added to the pom.xml file. Check whether transaction annotations are added to the JobProcessor and the process method. If transaction annotations are added to the JobProcessor and the process method, delete the annotations. Check whether the bean list is proxied by other aspects. Set a breakpoint in the DefaultListableBeanFactory class. Check whether the beanDefiniti onNames member list, which is the list of beans registered with Spring, is proxied by other aspects. If the bean list is proxied by other aspects, delete the proxy. Debug ThreadContainer.start and check for a class.forName error. If a class.forName error occurs but the class exists, the issue is with the classLoader. This might be because a framework you are using causes classLoader inconsistency. You can use SchedulerxWorker.setClassLoader to resolve this issue. If none of these methods resolve the issue, contact the SchedulerX helpdesk.
+Symptom The Spring application cannot find the corresponding bean. Possible causes Incorrect connection type. A bean is not injected into the JobProcessor. The `spring-boot-devtools` dependency is added to the pom.xml file. Transaction annotations are added to the JobProcessor and the process method. The bean is proxied by other aspects. Inconsistent classLoaders. Solution On the **Application Management** page in the console, click **Connected Machines** in the **Operation** column of the target group. In the **Connected Machines** panel, check that the startup mode is Spring or Spring Boot. If the startup mode is not Spring or Spring Boot, check your application. Check whether the JobProcessor is injected as a bean in the application code, for example, by adding the @Component annotation. If the JobProcessor is not injected as a bean, inject it as a bean. Check whether `spring-boot-devtools` is added to the pom.xml file.
+
+| If | spring-boot-devtools |   |
+|---|---|---|
+| devtools |   |   |
+|   |   | dependency. |
+
+If `spring-boot-devtools` is added to the pom.xml file, delete the `spring-boot-` Check whether transaction annotations are added to the JobProcessor and the process method. If transaction annotations are added to the JobProcessor and the process method, delete the annotations. Check whether the bean list is proxied by other aspects. Set a breakpoint in the DefaultListableBeanFactory class. Check whether the beanDefiniti onNames member list, which is the list of beans registered with Spring, is proxied by other aspects. If the bean list is proxied by other aspects, delete the proxy. Debug ThreadContainer.start and check for a class.forName error. If a class.forName error occurs but the class exists, the issue is with the classLoader. This might be because a framework you are using causes classLoader inconsistency. You can use SchedulerxWorker.setClassLoader to resolve this issue. If none of these methods resolve the issue, contact the SchedulerX helpdesk.
 
 **Incompatibility between tablestore protobuf-2.4.1 and**
+
+**SchedulerX**
 
 For more information, see Protobuf or HttpClient library conflict when using Java SDK.
 
@@ -3114,7 +3504,7 @@ Symptom The application is published without issues. However, when you restart t
 
 Symptom A scheduling task is always in the running state and does not end. Possible causes A business logic issue. A SchedulerX issue. Solution When `schedulerx-worker` executes each processor, it adds the task instance ID to the thread name to help you view the thread stack. This section uses a stuck sub-task of a distributed task as an example. The solution for a standalone task or a broadcast task is similar. i. On the **Execution List** page in the console, view the details of the stuck task instance to retrieve its instance ID. ii. Log on to the stuck machine and run **jstack [pid] | grep [instance id] -A 20** to view the thread stack. If the execution result is similar to the one shown in the following figure, the cause is a business logic issue. Otherwise, contact the SchedulerX helpdesk.
 
-### Alert FAQ
+### 10.2 Alert FAQ
 
 This topic describes how to handle the alerts that you may receive when using SchedulerX.
 

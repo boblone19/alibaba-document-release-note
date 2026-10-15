@@ -2,18 +2,131 @@
 title: "Server Guard Advanced Edition Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 225
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Server Guard Advanced Edition Developer Guide 20260701.pdf"
+source_pdf: "7f102e6a8cc5a76f_Alibaba Cloud Apsara Stack V3.18.6 Server Guard Advanced Edition Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E5%AE%89%E9%AA%91%E5%A3%AB%E9%AB%98%E7%BA%A7%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Guard%20Advanced%20Edition%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Server Guard Advanced Edition Developer Guide 20260701
 
-Server Guard Advanced Edition D
+## Table of Contents
 
-## Preparations
+- 1 Preparations
+  - 1.1 Obtain API information and the endpoint of an API operation
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain the values of common request headers
+  - 1.4 Obtain an AccessKey pair assigned by STS
+- 2 Call examples
+  - 2.1 Call examples for SDK for Java
+    - 2.1.1 Use SDK
+      - 2.1.1.1 Install SDK for Java
+      - 2.1.1.2 Use CommonRequest
+  - 2.2 Call examples for SDK for Python
+    - 2.2.1 Use SDK
+      - 2.2.1.1 Install SDK for Python
+      - 2.2.1.2 Use CommonRequest
+  - 2.3 Call examples for SDK for Go
+    - 2.3.1 Use SDK
+      - 2.3.1.1 Install the core package of SDK for Go
+      - 2.3.1.2 Use CommonRequest
+- 3 Common parameters
+- 4 API documentation
+  - 4.1 Make API requests
+    - 4.1.1 Request structure
+    - 4.1.2 Signature mechanism
+    - 4.1.3 Common request parameters
+    - 4.1.4 Response structure
+  - 4.2 Asset management
+    - 4.2.1 DescribeCloudCenterInstances
+    - 4.2.2 DescribePropertyScaDetail
+    - 4.2.3 DescribeAssetDetailByUuid
+    - 4.2.4 DescribeGroupSummary
+    - 4.2.5 DescribeGroupStruct
+    - 4.2.6 DescribeAllEntity
+    - 4.2.7 DescribeEntityList
+    - 4.2.8 DescribeMachines
+    - 4.2.9 DescribeMachineDetail
+    - 4.2.10 DescribePropertyStatistic
+    - 4.2.11 DescribePropertyPortItem
+    - 4.2.12 DescribePropertyPortDetail
+    - 4.2.13 DescribePropertyProcItem
+    - 4.2.14 DescribePropertyProcDetail
+    - 4.2.15 DescribePropertySoftwareItem
+    - 4.2.16 DescribePropertySoftwareDetail
+    - 4.2.17 DescribePropertyUserItem
+    - 4.2.18 DescribePropertyUserDetail
+    - 4.2.19 DescribeTopRiskyAssets
+    - 4.2.20 CreateAssetGroup
+    - 4.2.21 DescribePropertyUserChangeItem
+  - 4.3 Vulnerability management
+    - 4.3.1 DescribeTarget
+    - 4.3.2 DescribeVulTargetStatistics
+    - 4.3.3 DescribeTargetConfig
+    - 4.3.4 DescribeVulConfig
+    - 4.3.5 DescribeAutoDelConfig
+    - 4.3.6 DescribeVulLevel
+    - 4.3.7 DescribeVulWhitelist
+    - 4.3.8 DescribeGroupedVul
+    - 4.3.9 DescribeVulList
+    - 4.3.10 DescribeVulDetails
+    - 4.3.11 DescribeVulNumStatistics
+    - 4.3.12 DescribeVulLevelStatistics
+    - 4.3.13 DescribeVulMachineList
+  - 4.4 Baseline check
+    - 4.4.1 DescribeStratetyDetail
+    - 4.4.2 DescribeStrategyTarget
+    - 4.4.3 DescribeUuidConfig
+    - 4.4.4 DescribeUserSetting
+    - 4.4.5 DescribeRiskWhiteList
+    - 4.4.6 DescribeStratety
+    - 4.4.7 DescribeStrategyExecDetail
+    - 4.4.8 DescribeRiskType
+    - 4.4.9 Describesummary
+    - 4.4.10 ListBaselineCheckWhiteRecord
+  - 4.5 Unusual logon detection
+    - 4.5.1 DescribeBaseConfigs
+    - 4.5.2 DescribeSwitchConfigs
+    - 4.5.3 DescribeConfigTarget
+    - 4.5.4 ModifyBaseConfig
+    - 4.5.5 DeleteBaseConfig
+    - 4.5.6 ModifySwitchConfig
+  - 4.6 Webshell detection
+    - 4.6.1 DescribeCategoryCount
+    - 4.6.2 DescribeWebshell
+    - 4.6.3 DescribeQuaraFile
+    - 4.6.4 RollbackQuaraFile
+    - 4.6.5 DescribeWebPath
+    - 4.6.6 ModifyWebPath
+    - 4.6.7 OperateTrojan
+  - 4.7 Exception detection on hosts
+    - 4.7.1 DescribeSuspEventTypes
+    - 4.7.2 DescribeSuspTrendStatistics
+    - 4.7.3 DescribeSuspiciousExportInfo
+    - 4.7.4 OperateSuspiciousEvent
+    - 4.7.5 OperateLoginLog
+    - 4.7.6 DescribeVirusInfo
+    - 4.7.7 CreateSuspiciousExport
+    - 4.7.8 CreateFileProtectRule
+    - 4.7.9 UpdateFileProtectRule
+    - 4.7.10 ListFileProtectEventExport
+  - 4.8 Retrieval of host logs
+    - 4.8.1 DescribeFilterFields
+    - 4.8.2 DescribeHistogram
+    - 4.8.3 DescribeLogInfo
+    - 4.8.4 DescribeLogItems
+    - 4.8.5 CreateLogQuery
+    - 4.8.6 DescribeLogQuery
+    - 4.8.7 DeleteLogQuery
+  - 4.9 APIs for host rule settings
+    - 4.9.1 CreateAntiBruteForceRule
+    - 4.9.2 ModifyAntiBruteForceRule
+    - 4.9.3 DescribeAntiBruteForceRules
+    - 4.9.4 DescribeInstanceAntiBruteForceRules
+- 5 Error codes
 
-### Obtain API information and
+## 1 Preparations
+
+### 1.1 Obtain API information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -34,15 +147,19 @@ navigation bar.
 5. Select an API version from the **Version** drop-down list.
 6. In the API operation list, you can view all API operations of the current version.
 7. Select an API operation and obtain the POP endpoint of the cloud service on the Parameter
-tab. Server Guard Advanced Edition D
+tab.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
 **Background information**
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An access credential that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
+
+**Warning**
+
+The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -51,27 +168,12 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
 
-Server Guard Advanced Edition D
-
-**Warning**
-
-The AccessKey pair of a personal account is managed and limited by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
-
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. Click the profile picture in the upper-right corner of the page and click **User Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of the personal account.
-
-| Header | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. For more information about how to obtain region IDs, see Obtain a region ID. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see Obtain an organization ID. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see Obtain a resource set ID. |
-| x-acs-instanceid | The ID of the instance that you want to manage. For more information about how to obtain instance IDs, see Obtain an instance ID. |
-
-Server Guard Advanced Edition D
 
 **Note**
 
@@ -88,24 +190,24 @@ want to obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 1.3 Obtain the values of common request headers
 
 **request headers**
 
 You must specify multiple request headers when you call Apsara Stack API operations. This topic describes the common request headers and how to obtain the values of the request headers. This topic also describes the return values of specific parameters after you call API operations.
 
+**Common request headers**
+
+| Header | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. For more information about how to obtain region IDs, see Obtain a region ID. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see Obtain an organization ID. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see Obtain a resource set ID. |
+| x-acs-instanceid | The ID of the instance that you want to manage. For more information about how to obtain instance IDs, see Obtain an instance ID. |
+
 **Obtain a region ID**
 
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-| DepartmentName | The name of the organization. |
-| Department | The ID of the organization. |
-
-Server Guard Advanced Edition D
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources** > **Regions**.
 4. Click the name of the required organization.
@@ -127,16 +229,20 @@ You can obtain the ID of an instance in a service console of the Apsara Uni-mana
 **Service**.
 3. In the left-side navigation pane, click **Instances**.
 4. View the **instance ID** in the instance list.
-
-**Response parameters**
-
 The following table describes the additional response parameters that are returned by default when you call API operations to query the instances of cloud services.
 
-### Obtain an AccessKey pair
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+| DepartmentName | The name of the organization. |
+| Department | The ID of the organization. |
+
+### 1.4 Obtain an AccessKey pair assigned by STS
 
 **assigned by STS**
 
-This topic describes how to use Security Token Service (STS) to make API calls. Server Guard Advanced Edition D
+This topic describes how to use Security Token Service (STS) to make API calls.
 
 **Background information**
 
@@ -152,7 +258,7 @@ iii. Click **View Current Role Policy**. In the **View Policies of Current Role*
 
 **Note**
 
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS. Server Guard Advanced Edition D
+You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourRoleSessionName>: Replace it with your current session name. In most cases, this variable is set to the identity of the user who make API calls. Example: Username. You can distinguish the users who assume the same RAM role to perform operations based on the value of the `RoleSessionName` variable. This way, you can perform user-specific auditing. The value of this variable must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). <yourRoleArn>: Replace it with the Alibaba Cloud Resource Name (ARN) of your RAM role. "sts.aliyuns.com": Replace it with the endpoint of STS.
 
 ```java
 public static void main(String[] args) {
@@ -174,7 +280,7 @@ actual region ID, your AccessKey ID, and your AccessKey secret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual endpoint of STS. The format of an ST
 S endpoint is sts-vpc.${global:region}.${global:internet-domain}.
@@ -198,17 +304,15 @@ e that is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
     return null;
-}
 ```
 
 3. Use the AccessKey pair assigned by STS to call an operation of a cloud service. The
-following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS): Server Guard Advanced Edition D
+following sample code provides an example on how to use the AccessKey pair assigned by STS to call the `DescribeZones` operation of Elastic Compute Service (ECS):
 
 **Note**
 
-You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID. Server Guard Advanced Edition D
+You must use the actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourStsAccesskeyID>: Replace it with your STS AccessKey ID. <yourStsAccessKeySecret>: Replace it with your STS AccessKey secret. <yourStsToken>: Replace it with the security token of the AccessKey pair assigned by STS. <yourResourceGroupID>: Replace it with the actual resource set ID. <yourOrganizationID>: Replace it with the actual organization ID.
 
 ```java
 public static void main(String[] args) {
@@ -247,19 +351,15 @@ STS. The STS token is obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-Server Guard Advanced Edition D
+## 2 Call examples
 
-## Call examples
+### 2.1 Call examples for SDK for Java
 
-### Call examples for SDK for Java
+#### 2.1.1 Use SDK
 
-#### Use SDK
-
-##### Install SDK for Java
+##### 2.1.1.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -271,7 +371,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest
+##### 2.1.1.2 Use CommonRequest
 
 Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
 
@@ -283,7 +383,11 @@ page that appears, choose **API Integration** > **API Debugging**.
 
 **Important**
 
-We recommend that you do not download SDKs fromSDK Centerand use them in Apsara Stack. SDKs for the Alibaba Cloud public cloud may not support Apsara Stack API operations and may have compatibility issues. Proceed with caution. The following sample code provides an example on how to call RPC API operations. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: Server Guard Advanced Edition D
+We recommend that you do not download SDKs fromSDK Centerand use them in Apsara Stack. SDKs for the Alibaba Cloud public cloud may not support Apsara Stack API operations and may have compatibility issues. Proceed with caution.
+
+**Use CommonRequest to call API operations**
+
+The following sample code provides an example on how to call RPC API operations. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -327,8 +431,6 @@ and earlier.
         // Optional. Specify the ID of the resource set.
 ```
 
-Server Guard Advanced Edition D
-
 ```java
         request.putHeadParameter("x-acs-resourcegroupid", "<your-resourcegroupid>");
         // Required. Specify the organization ID.
@@ -346,9 +448,6 @@ ete operations.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 The following sample code provides an example on how to call ROA API operations. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
@@ -370,8 +469,6 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         IAcsClient client = new DefaultAcsClient(profile);
 //CreateanAPIrequestandspecifytherequestparameters
 ```
-
-Server Guard Advanced Edition D
 
 ```java
         // Create an API request and specify the request parameters.
@@ -416,26 +513,23 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 **Important**
 
-Server Guard Advanced Edition D By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Call examples for SDK for
+### 2.2 Call examples for SDK for Python
 
 **Python**
 
-#### Use SDK
+#### 2.2.1 Use SDK
 
-##### Install SDK for Python
+##### 2.2.1.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -453,7 +547,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest
+##### 2.2.1.2 Use CommonRequest
 
 This topic describes how to use the POP Python software development kit (SDK) to call cloud product APIs.
 
@@ -463,7 +557,7 @@ In Apsara Stack, use CommonRequest to make API calls. You can find the recommend
 
 **Important**
 
-Server Guard Advanced Edition D Do not download SDKs directly from the SDK Center for Apsara Stack scenarios. The SDKs for the public cloud may not support Apsara Stack APIs or have compatibility issues. Use them with caution.
+Do not download SDKs directly from the SDK Center for Apsara Stack scenarios. The SDKs for the public cloud may not support Apsara Stack APIs or have compatibility issues. Use them with caution.
 
 **Background information**
 
@@ -482,7 +576,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set the timeout period.
     verify=False, # Ignore the certificate or set verify='<certificate_path>'.
+```
+
 );
+
+```python
 # Use with HTTPS.
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -509,10 +607,7 @@ SecurityToken>"};
         # "x-acs-instanceid":"<your-InstanceID>"
 ```
 
-Server Guard Advanced Edition D
-
 ```python
-    }
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -552,7 +647,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # Region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HTTPS. client.do_action_with_exception(request)
@@ -562,7 +657,7 @@ request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HT
 
 **Important**
 
-Server Guard Advanced Edition D When you access OpenAPI using the HTTPS protocol, the SDK verifies the SSL/TLS certificate by default. If your code environment does not have a certificate, a certificate verification error is reported. To ensure secure communication in a production environment, keep this verification enabled. If you must ignore certificate verification in a test environment, set the `verify` parameter.
+When you access OpenAPI using the HTTPS protocol, the SDK verifies the SSL/TLS certificate by default. If your code environment does not have a certificate, a certificate verification error is reported. To ensure secure communication in a production environment, keep this verification enabled. If you must ignore certificate verification in a test environment, set the `verify` parameter.
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -570,7 +665,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Ignore SSL certificate verification.
 ```
 
-)
+`)`
 
 **Specify a CA certificate file**
 
@@ -580,13 +675,13 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # Certificate path
 ```
 
-)
+`)`
 
-### Call examples for SDK for Go
+### 2.3 Call examples for SDK for Go
 
-#### Use SDK
+#### 2.3.1 Use SDK
 
-##### Install the core package of SDK for Go
+##### 2.3.1.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -594,7 +689,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Use CommonRequest
+##### 2.3.1.2 Use CommonRequest
 
 This topic describes how to use the POP Go software development kit (SDK) to make API calls.
 
@@ -606,11 +701,15 @@ recommended SDK versions and sample code.
 
 **Important**
 
-Do not download SDKs directly from the SDK Center for Apsara Stack environments. SDKs for the Alibaba Cloud public cloud might not support Apsara Stack APIs and can cause compatibility issues. Use them with caution. Server Guard Advanced Edition D
+Do not download SDKs directly from the SDK Center for Apsara Stack environments. SDKs for the Alibaba Cloud public cloud might not support Apsara Stack APIs and can cause compatibility issues. Use them with caution.
 
 **Background information**
 
-You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style. The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example:
+You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
+
+**CommonRequest call examples**
+
+The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example:
 
 ```java
 package main import (
@@ -619,7 +718,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -647,12 +746,10 @@ eter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
 
-Server Guard Advanced Edition D The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
+The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
 
 ```java
 package main import (
@@ -662,7 +759,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -691,28 +788,26 @@ eld to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
 **Set a proxy**
 
-You may need to set a proxy when you call an instance. You can set the proxy in one of the following two ways. Set the proxy using environment variables. Server Guard Advanced Edition D Use the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variables. The following code is an example:
+You may need to set a proxy when you call an instance. You can set the proxy in one of the following two ways. Set the proxy using environment variables. Use the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variables. The following code is an example:
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
 Set the proxy on the client. The following code is an example:
@@ -723,11 +818,15 @@ Set the proxy on the client. The following code is an example:
 
 **SSL verification**
 
+**Summary**
+
 This setting controls the SSL certificate verification behavior for requests. Set to `true` to disable certificate verification. This is an insecure practice. We recommend that you configure a certificate. Set to `false` to enable SSL certificate verification. By default, the operating system's CA certificates are used.
 
 **Default value**
 
 The default value is `false` .
+
+**Settings**
 
 **Important**
 
@@ -737,11 +836,19 @@ When you access OpenAPI over HTTPS, the SDK enables SSL certificate validation b
 // Set HTTPSInsecure for the request (affects only the current request). request.SetHTTPSInsecure(true) // Set HTTPSInsecure for the re quest to true. isInsecure := request.GetHTTPSInsecure() // Get the HTTPSInsecure settin g for the request.
 ```
 
-Server Guard Advanced Edition D The client-level setting takes effect only if the request-level setting is not set.
+The client-level setting takes effect only if the request-level setting is not set.
 
 ```
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the clien t to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting f or the client.
 ```
+
+ters
+
+## 3 Common parameters
+
+**Common request parameters**
+
+Common request parameters must be included in all Apsara Stack API requests. Table 1. Common request parameters
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -751,44 +858,38 @@ Server Guard Advanced Edition D The client-level setting takes effect only if th
 | AccessKeySe cret | Strin g | Yes | The AccessKey secret that is provided by Apsara Stack. |
 | RegionId | Strin g | Yes | The region ID of the service. |
 
-Server Guard Advanced Edition D ters
-
-## Common parameters
-
-Common request parameters must be included in all Apsara Stack API requests.
+ters
 
 | Product | Strin g | Yes | The name of the service to which the operation belongs. Valid values: Auditprivate: basic components of Apsara Stack Security yundunnextsoc: Security Operations Center (SOC) Sas: Threat Detection Service aegis: Server Guard yundun-css: Container Protection secspy: Network Detection and Response Ddosprivate: Anti-DDoS Service hsm-private: Data Encryption Service Cloudfw: Cloud Firewall Sddp: Sensitive Data Discovery and Protection (SDDP) semawaf: Web Application Firewall (WAF) soar: Security Orchestration and Automation Response (SOAR) |
 |---|---|---|---|
 | EndpointPre | Strin g | Yes | The prefix in the endpoint of the service to which the operation belongs. Valid values: auditprivate: the prefix in the endpoint of basic components of Apsara Stack Security yundunnextsoc-pop: the prefix in the endpoint of SOC tds: the prefix in the endpoint of Threat Detection Service aegis: the prefix in the endpoint of Server Guard yundun-css: the prefix in the endpoint of Container Protection secspy-share: the prefix in the endpoint of Network Detection and Response ddosprivate: the prefix in the endpoint of Anti-DDoS Service hsmprivate: the prefix in the endpoint of Data Encryption Service cloudfw: the prefix in the endpoint of Cloud Firewall sddp-api: the prefix in the endpoint of SDDP semawaf: the prefix in the endpoint of WAF soar: the prefix in the endpoint of SOAR |
 
-Server Guard Advanced Edition D ters
-
 **Common response parameters**
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-| endpoint | : the endpoint used to call a clo |
-|---|---|
+## 4 API documentation
 
-Server Guard Advanced Edition D on
+### 4.1 Make API requests
 
-## API documentation
+#### 4.1.1 Request structure
 
-### Make API requests
-
-#### Request structure
-
-Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests.
-
-**Description**
-
-You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
+Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
 
 ```
 http://endpoint/?Action=xx&parameters
 ```
 
-Where: `Action` : the operation that you want to perform. For example, you can set this parameter to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : the request parameters. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters include information such as the API version and authentication information. For more information about the custom request parameters, see the corresponding operation description. Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
+Where:
+
+| endpoint | : the endpoint used to call a clo |
+|---|---|
+
+`endpoint` : the endpoint used to call a cloud service. The endpoint for the Server Guard service is `aegis.[ RegionId].example.com` . `Action` : the operation that you want to perform. For example, you can set this parameter to DescribeFeatures to query the deployed Apsara Stack Security features. `parameters` : the request parameters. Request parameters include common request parameters and custom request parameters. Request parameters must be separated with ampersands (&). Common request parameters include information such as the API version and authentication information. For more information about the custom request parameters, see the corresponding operation description.
+
+**Example**
+
+Call the DescribeFeatures operation to query the deployed Apsara Stack Security features.
 
 ```
 https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=keytest&Format=JSON&SecureTransport=true&SignatureMethod=HMAC- SHA1&SignatureNonce=15215528852396&SignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018- 03-02Txxxxxxx&Version=2018-01-16&Signature=xxxx%xxxx%3D
@@ -800,6 +901,14 @@ API requests are presented in the following easy-to-read format in this document
 https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Version=2018-01-16 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
+#### 4.1.2 Signature mechanism
+
+Alibaba Cloud Security authenticates every access request. You must include a signature in each request that you send over the HTTP or HTTPS protocol.
+
+**API signature**
+
+To ensure the security of API calls, Alibaba Cloud authenticates each API request using a signature. If you manually send an API request, you must use your AccessKey secret to calculate a Hash-based Message Authentication Code (HMAC) for the signature. The calculation is based on the encoded and sorted request parameters, as defined in RFC 2104. This section uses the following request parameters as an example to demonstrate how to create an API signature:
+
 | Parameter | Content |
 |---|---|
 | Endpoint | http://yundunprivate.[RegionId].example.com/? |
@@ -807,29 +916,11 @@ https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures &Format=J
 | Common parameters (excluding Signature) | &Timestamp=2016-02-23T12:46:24Z &Format=JSON &AccessKeyId=<yourAccessKeyId> &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2018-01-16 &SignatureVersion=1.0 |
 | AccessKey secret | <yourAccessKeySecret> |
 
-Server Guard Advanced Edition D on
-
-#### Signature mechanism
-
-Alibaba Cloud Security authenticates every access request. You must include a signature in each request that you send over the HTTP or HTTPS protocol.
-
-**API signature**
-
-To ensure the security of API calls, Alibaba Cloud authenticates each API request using a signature. If you manually send an API request, you must use your AccessKey secret to calculate a Hash-based Message Authentication Code (HMAC) for the signature. The calculation is based on the encoded and sorted request parameters, as defined in RFC 2104. This section uses the following request parameters as an example to demonstrate how to create an API signature:
 1. Construct a canonicalized query string from the request parameters.
 
 **Note**
 
-Request parameters consist of common request parameters (excluding the Signature parameter) and API-specific parameters. i. Sort the request parameters alphabetically by parameter name. Sort the request parameters alphabetically by name.
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Version | String | Yes | The API version in the format of YYYY- MM-DD. Set the value to 2016-11-11. |
-| AccessKeyId | String | Yes | The key ID that Alibaba Cloud assigns to a user for service access. |
-| Signature | String | Yes | The signature string. |
-| SignatureMethod | String | Yes | The signature method. Set the value to HMAC-SHA1. |
-
-Server Guard Advanced Edition D on ii. Parameter encoding URL-encode the names and values of the sorted parameters using the UTF-8 character set. The following rules apply to the encoding: Do not encode uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), periods (.), or tildes (~). Encode other characters in the %XY format, where XY is the hexadecimal value of the character's ASCII code. For example, the double quotation mark (") is encoded as %22. Encode extended UTF-8 characters in the %XY%ZA… format. Note that a space must be encoded as %20, not as a plus sign (+). iii. Connect each encoded parameter name and its value with an equal sign (=). iv. Join the resulting parameter-value pairs with ampersands (&) in the alphabetical order that is specified in the sorting step. This process creates the canonicalized query string.
+Request parameters consist of common request parameters (excluding the Signature parameter) and API-specific parameters. i. Sort the request parameters alphabetically by parameter name. Sort the request parameters alphabetically by name. ii. Parameter encoding URL-encode the names and values of the sorted parameters using the UTF-8 character set. The following rules apply to the encoding: Do not encode uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), periods (.), or tildes (~). Encode other characters in the %XY format, where XY is the hexadecimal value of the character's ASCII code. For example, the double quotation mark (") is encoded as %22. Encode extended UTF-8 characters in the %XY%ZA… format. Note that a space must be encoded as %20, not as a plus sign (+). iii. Connect each encoded parameter name and its value with an equal sign (=). iv. Join the resulting parameter-value pairs with ampersands (&) in the alphabetical order that is specified in the sorting step. This process creates the canonicalized query string.
 2. Construct the string-to-sign from the canonicalized query string using the following format:
 
 ```
@@ -850,9 +941,16 @@ LEW8N4y7Uasop******
 5. Add the resulting signature value to the request parameters as the Signature parameter.
 This completes the request signing process.
 
-#### Common request parameters
+#### 4.1.3 Common request parameters
 
 The following table describes the common request parameters that are used to indicate information such as the API version and authentication information.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Version | String | Yes | The API version in the format of YYYY- MM-DD. Set the value to 2016-11-11. |
+| AccessKeyId | String | Yes | The key ID that Alibaba Cloud assigns to a user for service access. |
+| Signature | String | Yes | The signature string. |
+| SignatureMethod | String | Yes | The signature method. Set the value to HMAC-SHA1. |
 
 | Timestamp | String | Yes | The timestamp of the request. Follow the ISO 8601 standard to specify the date and use the offset from Coordinated Universal Time (UTC) to specify the time zone. The format is YYYY-MM- DDThh:mm:ssZ . For example, 2014-05-26T12:00:00Z indicates 20:00:00 on May 26, 2014, Beijing time. |
 |---|---|---|---|
@@ -861,13 +959,11 @@ The following table describes the common request parameters that are used to ind
 | ResourceOwnerA ccount | String | No | The owner account of the resource to be accessed through this API request, that is, the logon username. |
 | Format | String | No | The format of the response. Set the value to JSON or XML. Note Default value: XML. |
 
-|  |  | YYYY-MM- |
+|   |   | YYYY-MM- |
 |---|---|---|
-|  | DDThh:mm:ssZ |  |
+|   | DDThh:mm:ssZ |   |
 
-Server Guard Advanced Edition D on
-
-#### Response structure
+#### 4.1.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -884,31 +980,33 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 **Sample responses (JSON format)**
 
 ```json
-{ "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */ }
+"RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- aegis:DescribeCloudCenterInsta nces | Read | acs:yundun-aegis:*: {#accountId}:* |
+### 4.2 Asset management
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Lang | Strin g | Query | No | Chinese | The language of the request and response. Default value: zh. zh: Chinese. en: English. |
-| RegionId | Strin g | Query | No | cn-hangzhou | The ID of the region where the instance resides. |
-
-Server Guard Advanced Edition D on
-
-### Asset management
-
-#### DescribeCloudCenterInstances
+#### 4.2.1 DescribeCloudCenterInstances
 
 You can call the DescribeCloudCenterInstances operation to query for assets that meet specific search criteria, such as an instance name or a region. This operation supports both paged queries and the NextToken method. The NextToken method is recommended.
 
 **Permissions**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- aegis:DescribeCloudCenterInsta nces | Read | acs:yundun-aegis:*: {#accountId}:* |
+
 **Throttling**
 
-Per user: 10 queries per second (QPS). Per API: 100 QPS. This operation uses only common request headers. For more information, see Common request parameters.
+Per user: 10 queries per second (QPS). Per API: 100 QPS.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Lang | Strin g | Query | No | Chinese | The language of the request and response. Default value: zh. zh: Chinese. en: English. |
+| RegionId | Strin g | Query | No | cn-hangzhou | The ID of the region where the instance resides. |
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -917,8 +1015,6 @@ Per user: 10 queries per second (QPS). Per API: 100 QPS. This operation uses onl
 | LogicalEx p | Strin g | Query | No | OR | The logical relationship between multiple search conditions. Default value: OR. Valid values: OR: The search conditions are combined with a logical OR. AND: The search conditions are combined with a logical AND. |
 | NoPage | Boole an | Query | No | true | Specifies whether to enable paged queries. Default value: true. Valid values: true: Enables paged queries. false: Disables paged queries. |
 | PageSize | Integ er | Query | No | 100 | The number of assets to display on each page in a paged query. Default value: 20. |
-
-Server Guard Advanced Edition D on
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -929,17 +1025,13 @@ Server Guard Advanced Edition D on
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Instances | Array |  | The details of the assets. |
+| Instances | Array |   | The details of the assets. |
 | -InternetIp | String | 1.2.XX.XX | The public IP address of the instance. |
 | -Os | String | Linux | The operating system of the instance. |
 | -InstanceId | String | i-m5*** | The instance ID. |
 | - InstanceName | String | yztest-l*** | The instance name. |
 | -RegionName | String | China (Hangzhou) | The name of the region where the asset resides. |
 | -Ip | String | 1.2.XX.XX | The public IP address of the instance. |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -954,8 +1046,6 @@ Server Guard Advanced Edition D on
 | -OsName | String | - | The kernel version of the instance. |
 | -Flag | Integer | 0 | Indicates whether the instance is an Alibaba Cloud asset. Valid values: 0: Alibaba Cloud asset. 1: Third-party asset. |
 
-Server Guard Advanced Edition D on
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -HcStatus | String | YES | Indicates whether baseline risks are detected on the instance. Valid values: YES: Baseline risks are detected. NO: No baseline risks are detected. |
@@ -969,29 +1059,23 @@ Server Guard Advanced Edition D on
 | -RegionId | String | cn-hanghzou | The ID of the region where the asset resides. |
 | -GroupId | String | 4120080 | The ID of the group to which the instance belongs. |
 
-Server Guard Advanced Edition D on
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -Importance | Integer | 2 | The importance level of the asset. Valid values: 2: Important. 1: General. 0: Test. |
 | -ClientVersion | String | 00 31 _ | The client version. |
 | -RiskCount | String | { "account": 0, "appNum": 0, "asapVulCount": 0, "baselineHigh": 0, "baselineLow": 0, "baselineMedium": 0, "baselineNum": 0, "cmsNum": 0, "containerAsap": 0, "containerLater": 0, "containerNntf": 0, "containerRemind": 0, "containerSerious": 0, "containerSuspicio us": 0, "cveNum": 0, "emgNum": 0, "health": 0, "imageBaselineHig h": 0, "imageBaselineLow ": 0, "imageBaselineMe dium": 0, "imageBaselineNu m": 0, "imageMaliciousFil | The statistics of risks on the asset. This parameter is a JSON string that contains the following fields: account: The number of accounts with unusual logons or successful brute-force attacks. appNum: The number of scanner vulnerabilities. asapVulCount: The total number of important vulnerabilities. baselineHigh: The number of important baseline risks. baselineLow: The number of low- severity baseline risks. baselineMedium: The number of medium-severity baseline risks. baselineNum: The total number of cloud product configuration risks. cmsNum: The number of Web-CMS vulnerabilities. containerAsap: The number of important container vulnerabilities. containerLater: The number of medium- severity container vulnerabilities. containerNntf: The number of low- severity container vulnerabilities. containerRemind: The number of container reminder alerts. containerSerious: The number of container urgent alerts. containerSuspicious: The number of container suspicious alerts. cveNum: The number of Linux vulnerabilities. emgNum: The number of emergency vulnerabilities. health: The number of unhandled baseline alerts. imageBaselineHigh: The number of important baseline risks for the image. imageBaselineLow: The number of low- severity baseline risks for the image. imageBaselineMedium: The number of medium-severity baseline risks for the |
 
-Server Guard Advanced Edition D on
-
-|  |  | imageMaliciousFil |  |
+|   |   | imageMaliciousFil |   |
 |---|---|---|---|
 | Parameter | Type | eERxeamminpdl"e: 0, "imageMaliciousFil | image. Description imageBaselineNum: The total number of |
-|  |  | eSerious": 0, "imageMaliciousFil eSuspicious": 0, "imageVulAsap": 0, "imageVulLater": 0, "imageVulNntf": 0, "laterVulCount": 0, "newSuspicious": 0, "nntfVulCount": 0, "remindNum": 0, "scaNum": 0, "seriousNum": 0, "suspNum": 0, "suspicious": 0, "sysNum": 0, "trojan": 0, "uuid": "inet-37316411- 37fe-4b72-b245- 346a2721****", "vul": 0, "weakPWNum": 0 } | baseline risks for the image. imageMaliciousFileRemind: The number of reminder alerts for malicious files in the image. imageMaliciousFileSerious: The number of urgent alerts for malicious files in the image. imageMaliciousFileSuspicious: The number of suspicious alerts for malicious files in the image. imageVulAsap: The number of important vulnerabilities in the image. imageVulLater: The number of medium- severity vulnerabilities in the image. imageVulNntf: The number of low- severity vulnerabilities in the image. laterVulCount: The number of medium- severity vulnerabilities. newSuspicious: The number of alerts. nntfVulCount: The number of low- severity vulnerabilities. remindNum: The number of reminder alerts. scaNum: The number of Software Component Analysis (SCA) vulnerabilities. seriousNum: The number of urgent alerts. suspNum: The number of suspicious alerts. |
-|  |  |  | suspicious: The total number of alerts. sysNum: The number of Windows vulnerabilities. trojan: The number of trojans. uuid: The UUID of the asset. vul: The number of vulnerabilities. weakPWNum: The number of weak passwords. |
+|   |   | eSerious": 0, "imageMaliciousFil eSuspicious": 0, "imageVulAsap": 0, "imageVulLater": 0, "imageVulNntf": 0, "laterVulCount": 0, "newSuspicious": 0, "nntfVulCount": 0, "remindNum": 0, "scaNum": 0, "seriousNum": 0, "suspNum": 0, "suspicious": 0, "sysNum": 0, "trojan": 0, "uuid": "inet-37316411- 37fe-4b72-b245- 346a2721****", "vul": 0, "weakPWNum": 0 } | baseline risks for the image. imageMaliciousFileRemind: The number of reminder alerts for malicious files in the image. imageMaliciousFileSerious: The number of urgent alerts for malicious files in the image. imageMaliciousFileSuspicious: The number of suspicious alerts for malicious files in the image. imageVulAsap: The number of important vulnerabilities in the image. imageVulLater: The number of medium- severity vulnerabilities in the image. imageVulNntf: The number of low- severity vulnerabilities in the image. laterVulCount: The number of medium- severity vulnerabilities. newSuspicious: The number of alerts. nntfVulCount: The number of low- severity vulnerabilities. remindNum: The number of reminder alerts. scaNum: The number of Software Component Analysis (SCA) vulnerabilities. seriousNum: The number of urgent alerts. suspNum: The number of suspicious alerts. |
+|   |   |   | suspicious: The total number of alerts. sysNum: The number of Windows vulnerabilities. trojan: The number of trojans. uuid: The UUID of the asset. vul: The number of vulnerabilities. weakPWNum: The number of weak passwords. |
 | -ClusterId | String | c690a0789419f428 4a4e0a29e12fe*** * | The cluster ID. |
 | -ClusterName | String | cluster1 | The cluster name. |
 | -CreatedTime | Long | 1607365213000 | The timestamp when the cluster was created. Unit: milliseconds. |
 | -PodCount | Integer | 1 | The number of pods. |
 
-Server Guard Advanced Edition D on
-
-|  |  |  | Server Guard Advanced Edition D |
+|   |   |   | Server Guard Advanced Edition D |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1011,9 +1095,7 @@ Server Guard Advanced Edition D on
 | -ProviderAzId | Long | 56 | The ID of the data center under the provider. |
 | -OrgId | String | 9 | The organization ID. |
 
-on
-
-| erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |  |  |
+| erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1022,7 +1104,7 @@ on
 | - ResourceSetId | String | 11 | The resource set ID. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. This is a unique identifier generated by Alibaba Cloud for the request. You can use this ID to troubleshoot issues. |
 | Success | Boolean | true | The status of the API call. Valid values: true: The call was successful. false: The call failed. |
-| PageInfo | Struct |  | The information is displayed on the page. |
+| PageInfo | Struct |   | The information is displayed on the page. |
 | -Count | Integer | 10 | The number of assets displayed on the current page. |
 | -PageSize | Integer | 20 | The number of assets to display on each page in a paged query. Default value: 20. |
 | -TotalCount | Integer | 50 | The total number of assets found. |
@@ -1037,23 +1119,24 @@ https://[Endpoint]/?Action=DescribeCloudCenterInstances&RegionId=cnhangzhou&Lang
 Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Success":true,
     "PageInfo":{
 "TtlC t"50
 ```
 
-Server Guard Advanced Edition D on
-
 ```json
         "TotalCount":50,
         "PageSize":20,
         "CurrentPage":1,
         "Count":10
-    },
+```
+
+`},`
+
+```json
     "Instances":[
-        {
             "ProviderId":34,
             "CreatedTime":1607365213000,
             "Os":"Linux",
@@ -1085,8 +1168,6 @@ Server Guard Advanced Edition D on
 "ProviderRegionId":12
 ```
 
-Server Guard Advanced Edition D on
-
 ```json
             ProviderRegionId:12,
             "ClusterName":"cluster1",
@@ -1110,10 +1191,9 @@ Server Guard Advanced Edition D on
             "Tag":"InternetIp,test",
             "RegionId":"cn-hanghzou",
             "HcStatus":"YES"
-        }
 ```
 
-]
+`]`
 
 ```
 }<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>< br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br /><br/><br/><br/><br/><br/><br/>
@@ -1122,7 +1202,7 @@ Server Guard Advanced Edition D on
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeCloudCenterInstancesResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Success>true</Success>
     <PageInfo>
@@ -1144,8 +1224,6 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <IntranetIp>1.2.XX.XX</IntranetIp>
         <AssetType>0</AssetType>
 ```
-
-Server Guard Advanced Edition D on
 
 ```json
         <Status>Running</Status>
@@ -1188,40 +1266,41 @@ Server Guard Advanced Edition D on
         <OrgFullId>|1|8|9|</OrgFullId>
         <ResourceSetId>11</ResourceSetId>
     </Instances>
+</DescribeCloudCenterInstancesResponse>
 ```
 
-#### DescribePropertyScaDetail
+#### 4.2.2 DescribePropertyScaDetail
+
+Queries the details of middleware on the Asset Fingerprints page.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- aegis:DescribePropertyScaDeta il | Read | acs:yundun-aegis:*: {#accountId}:* |
 
+**Traffic shaping**
+
+The request rate for a single user is limited to 10 queries per second (QPS). The request rate for this API is limited to 100 QPS.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common parameters.
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language of the request and response. Default value: zh. zh: Chinese. en: English. |
 
-Server Guard Advanced Edition D on Queries the details of middleware on the Asset Fingerprints page.
-
-**Authorization information**
-
-**Traffic shaping**
-
-The request rate for a single user is limited to 10 queries per second (QPS). The request rate for this API is limited to 100 QPS. This operation uses common request headers. No special request headers are required. For more information, see Common parameters.
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SearchIte m | Strin g | Query | No | type | The type of the search condition. Valid values: name : the name of the middleware, database, or web service type : the type of the middleware, database, or web service. Note: The SearchItem and SearchInfo parameters are used together. Set both parameters to view all data for asset fingerprints of a specific name or type. Setting only one parameter has no effect. |
-
-Server Guard Advanced Edition D on
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SearchInf o | Strin g | Query | No | system service _ | The content to query. The value you enter for this parameter depends on the value of the SearchItem parameter: SearchItem to name , enter the name of the asset fingerprint. SearchItem to type , select the type of the asset fingerprint. Valid values: system service : _ System service software librar _ y docker compone _ nt : The component for the container. Database : The name of the database. web container : _ The web container. jar : Java Archive (JAR) package web framework _ : Web framework Note The SearchItem and SearchInfo parameters are used together. Set both parameters to view all data for asset fingerprints of a specific name or type. Setting only one parameter has no effect. |
 | ScaName | Strin g | Query | No | openssl | The name of the asset fingerprint to query. |
 
-Server Guard Advanced Edition D on
-
-|  |  |  |  |  | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o | i n |
+|   |   |   |   |   | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o | i n |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -1237,9 +1316,7 @@ Server Guard Advanced Edition D on
 | Pid | Strin g | Query | No | 756 | The process ID. |
 | ScaVersio n | Strin g | Query | No | 1.0.2k | The version of the middleware, database, or web service. |
 
-Server Guard Advanced Edition D on
-
-|  |  |  |  | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o |
+|   |   |   |   | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | User | Strin g | Query | No | root | The user that runs the service. |
@@ -1251,13 +1328,11 @@ Server Guard Advanced Edition D on
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Propertys | Array |  | The details of the asset fingerprints. |
+| Propertys | Array |   | The details of the asset fingerprints. |
 | InstanceName | String | Test01 | The name of the server where the middleware, database, or web service is located. |
 | -Ip | String | 47.42.XX.XX | The public IP address of the server where the middleware, database, or web service is located. |
 
-**Response parameters**
-
-| erver Guard Adv veloper Guide·AP | anced Edition D I documentati |  |  |
+| erver Guard Adv veloper Guide·AP | anced Edition D I documentati |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1285,8 +1360,6 @@ Server Guard Advanced Edition D on
 | ListenIp | String | 0.0.XX.XX | The listening IP address of the process. |
 | ListenStatus | String | NONE | The listening status of the process. Valid values: NONE : not listening LISTEN : listening |
 
-Server Guard Advanced Edition D on
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ListenProtocol | String | UDP | The listening protocol of the process. Valid values: UDP TCP |
@@ -1301,11 +1374,9 @@ Server Guard Advanced Edition D on
 | OrgName | String | test | The organization name. |
 | ResourceSetN ame | String | test | The resource set name. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. This is a unique identifier that Alibaba Cloud generates for the request. You can use this ID to troubleshoot issues. |
-| PageInfo | Struct |  | The paging information. |
+| PageInfo | Struct |   | The paging information. |
 
-Server Guard Advanced Edition D on
-
-|  |  |  | eveloper Guide·API documentat o |
+|   |   |   | eveloper Guide·API documentat o |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | Count | Integer | 2 | The number of entries returned on the current page. |
@@ -1319,13 +1390,12 @@ Request example
 https://[Endpoint]/?Action=DescribePropertyScaDetail&RegionId=cnhangzhou&Lang=zh&SearchItem=type&SearchInfo=system_service&ScaName=openssl&BizType=system ervice&SearchItemSub=version&SearchInfoSub=1.0.2k&Remark=192.168&Port=68&Pid=756&ScaVersi =1.0.2k&User=root&Name=1&Uuid=uuid-02ebabe7-1c19ab****&CurrentPage=1&PageSize=10&SelectType=equals
 ```
 
-Response example `JSON` format Server Guard Advanced Edition D on
+Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "Propertys":[
-        {
             "BizTypeDisplay":"Software Library",
             "ProcessUser":"root",
             "ResourceSetName":"test",
@@ -1360,7 +1430,6 @@ controller****",
             "ListenIp":"0.0.XX.XX",
             "Cmdline":"/sbin/dhclient -H iz2zeflhhbtk8gtxzt087az -1 -q -lf /var/lib/dhcl
 ient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid eth0"
-        }
 ```
 
 `],`
@@ -1371,14 +1440,12 @@ ient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid eth0"
         "PageSize":20,
         "CurrentPage":1,
         "Count":2
-    }
-}
 ```
 
-`XML` format Server Guard Advanced Edition D on
+`XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribePropertyScaDetailResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <Propertys>
         <InstanceName>Test01</InstanceName>
@@ -1422,13 +1489,26 @@ controller****</ImageName>
         <TotalCount>2</TotalCount>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</DescribePropertyScaDetailResponse>
 ```
 
-#### DescribeAssetDetailByUuid
+#### 4.2.3 DescribeAssetDetailByUuid
+
+You can call the DescribeAssetDetailByUuid operation to query the details and extended information of a server asset by its UUID.
+
+**Authorization information**
 
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- aegis:DescribeAssetDetailByUui d | Read | acs:yundun-aegis:*: {#accountId}:* |
+
+**Traffic shaping**
+
+The rate limit for an individual user is 10 queries per second (QPS). The rate limit for this operation is 100 QPS.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1436,25 +1516,17 @@ controller****</ImageName>
 | Uuid | Strin g | Quer y | Yes | 9e6cad93-a379-46fd- a701-9bbf02f4**** | The UUID of the asset to query. Note: Call the DescribeCloudCenterInsta nces operation to obtain this parameter. |
 | Lang | Strin g | Quer y | No | zh | The language of the content in the request and response. Default value: zh. Valid values: zh: Chinese, en: English. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The call request ID is a unique identifier generated by Alibaba Cloud and is used to troubleshoot and locate issues. |
 
-Server Guard Advanced Edition D on You can call the DescribeAssetDetailByUuid operation to query the details and extended information of a server asset by its UUID.
-
-**Authorization information**
-
-**Traffic shaping**
-
-The rate limit for an individual user is 10 queries per second (QPS). The rate limit for this operation is 100 QPS. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Response data**
-
-| AssetDetail | Struct |  | The details of the asset. |
+| AssetDetail | Struct |   | The details of the asset. |
 |---|---|---|---|
 | -IpList | Normal | ["192.168.XX.XX"," 192.168.XX.XX"] | A list of IP addresses. |
 | -MacList | Normal | ["00:16:3*:1*:9*:cf "] | MAC address. |
-| -DiskInfoList | Normal |  | The disk information. The following list describes the disk-related parameters: * diskName: The name of the disk. * totalSize: The total disk capacity in GB. * useSize: The used disk capacity in GB. |
+| -DiskInfoList | Normal |   | The disk information. The following list describes the disk-related parameters: * diskName: The name of the disk. * totalSize: The total disk capacity in GB. * useSize: The used disk capacity in GB. |
 | -InternetIp | String | 192.168.XX.XX | The public IP address of the server. |
 | -IntranetIp | String | 192.168.XX.XX | The private IP address of the server. |
 | - InstanceName | String | i- fasdfasdfadfafa**** | The name of the server. |
@@ -1464,8 +1536,6 @@ The rate limit for an individual user is 10 queries per second (QPS). The rate l
 | -AssetType | String | 6 | The asset type. Valid values: * 0: ECS. * 1: Server Load Balancer (SLB). * 2: NAT Gateway. * 3: ApsaraDB RDS database. * 4: MongoDB database. * 5: Redis database. * 6: Container image. * 7: Container. |
 | -Os | String | linux | The operating system type of the server. |
 | -ClientStatus | String | online | The status of the Server Guard agent. Valid values: * pause: Protection is paused. * online: The server is protected. * offline: The server is not protected. |
-
-Server Guard Advanced Edition D on
 
 | -Region | String | cn-hangzhou-dg- a01 | The region where the server resides. |
 |---|---|---|---|
@@ -1484,24 +1554,22 @@ Server Guard Advanced Edition D on
 | -VpcInstanceId | String | vpc- bp1fs3bwonlfq503 w**** | The ID of the VPC that the server belongs to. |
 | -CreateTime | Long | 1603863599000 | The timestamp when Server Guard recorded the current asset information. Unit: milliseconds. |
 
-Server Guard Advanced Edition D on
-
 | -Flag | Integer | 0 | Indicates whether the asset is an Alibaba Cloud asset. Valid values: * 0: Alibaba Cloud asset. * 1: Third-party asset. |
 |---|---|---|---|
 | -OrgId | String | 12 | The organization ID. |
 | - ResourceSetId | String | 12 | The resource set ID. |
 | - FirstLoginTime | Long | 1603863599000 | The time of the first logon. |
 
-Server Guard Advanced Edition D on Request example
+Request example
 
 ```
 https://[Endpoint]/?Action=DescribeAssetDetailByUuid&RegionId=cnhangzhou&SourceIp=219.133.XX.XX&Uuid=9e6cad93-a379-46fd-a701-9bbf02f4****&Lang=zh
 ```
 
-Sample response `JSON` format Server Guard Advanced Edition D on
+Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "AssetDetail":{
         "GroupTrace":"default",
@@ -1548,14 +1616,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "VpcInstanceId":"vpc-bp1fs3bwonlfq503w****",
         "RegionId":"cn-hanghzou",
         "Tag":"InternetIp"
-    }
-}
 ```
 
-`XML` format Server Guard Advanced Edition D on
+`XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetDetailByUuidResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <AssetDetail>
         <InternetIp>192.168.XX.XX</InternetIp>
@@ -1597,11 +1663,10 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <ResourceSetId>12</ResourceSetId>
         <FirstLoginTime></FirstLoginTime>
     </AssetDetail>
+</DescribeAssetDetailByUuidResponse>
 ```
 
-#### DescribeGroupSummary
-
-**Description**
+#### 4.2.4 DescribeGroupSummary
 
 You can call this operation to obtain a list of asset groups.
 
@@ -1622,56 +1687,53 @@ You can call this operation to obtain a list of asset groups.
 | GroupFlag | Integer | The type of the asset group. Valid values: 1: indicates a non-leaf node group that contains child asset groups. 0: indicates a leaf node group. |
 | MachineNum | Integer | The number of ECS instances contained in the group. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupSummary
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupSummary &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeGroupStruct. |
-| Mark | String | No | The IP address or instance name of the server. |
-
-Server Guard Advanced Edition D on
-
 ```json
-{
  "Groups":[
-  {
    "GroupFlag":1,
    "GroupName":"Test group 21",
    "GroupIndex":1,
    "MachineNum":0,
    "GroupId":346
-  },
-  {
+```
+
+`},`
+
+```json
    "GroupFlag":1,
    "GroupName":"Test group 1",
    "GroupIndex":2,
    "MachineNum":0,
    "GroupId":343
-  },
-  {
+```
+
+`},`
+
+```json
    "GroupFlag":1,
    "GroupName":"Test group 2",
    "GroupIndex":3,
    "MachineNum":0,
    "GroupId":345
-  },
-  {
+```
+
+`},`
+
+```json
    "GroupFlag":0,
    "GroupName":"Not grouped",
    "GroupIndex":100,
    "MachineNum":1,
    "GroupId":336
-  }
 ```
 
 `],`
@@ -1679,14 +1741,16 @@ Server Guard Advanced Edition D on
 ```json
  "Count":4,
  "RequestId":"B9FB5483-3CA6-4520-9F89-068ED6AAC6EE"
-}
 ```
 
-#### DescribeGroupStruct
-
-**Description**
+#### 4.2.5 DescribeGroupStruct
 
 You can call this operation to query the asset group structure.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeGroupStruct. |
+| Mark | String | No | The IP address or instance name of the server. |
 
 | TagIdList | String | No | The server tag ID. |
 |---|---|---|---|
@@ -1705,22 +1769,18 @@ You can call this operation to query the asset group structure.
 | GroupFlag | Integer | The type of the asset group. Valid values: 1: indicates a non-leaf node group that contains child asset groups. 0: indicates a leaf node group. |
 | ChildGroups | List | The child asset groups. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupStruct &remark=x.x.x.x &tagIdList=123
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupStruct &remark=x.x.x.x &tagIdList=123 &<Common request parameters>
 ```
 
-Sample response (JSON format) Server Guard Advanced Edition D on
+Sample response (JSON format)
 
 ```json
-{
     "Groups":[
-        {
             "groupIndex":2,
             "groupFather":0,
             "groupId":343,
@@ -1728,8 +1788,11 @@ Sample response (JSON format) Server Guard Advanced Edition D on
             "groupLevel":1,
             "groupFlag":1,
             "childGroups":[]
-        },
-        {
+```
+
+`},`
+
+```json
             "groupIndex":3,
             "groupFather":0,
             "groupId":345,
@@ -1737,7 +1800,6 @@ Sample response (JSON format) Server Guard Advanced Edition D on
             "groupLevel":1,
             "groupFlag":1,
             "childGroups":[
-                {
                     "groupIndex":1,
                     "groupFather":345,
                     "groupId":346,
@@ -1745,21 +1807,17 @@ Sample response (JSON format) Server Guard Advanced Edition D on
                     "groupLevel":2,
                     "groupFlag":1,
                     "childGroups":[]
-                }
 ```
 
-]
+`]` `},`
 
 ```json
-        },
-        {
             "groupIndex":100,
             "groupFather":0,
             "groupId":336,
             "groupName":"****",
             "groupFlag":0,
             "childGroups":[]
-        }
 ```
 
 `],`
@@ -1768,12 +1826,9 @@ Sample response (JSON format) Server Guard Advanced Edition D on
     "RequestId":"C4490A16-DDE4-4351-A366-57F9FCDC188F",
     "GroupFather":0,
     "GroupId":0
-}
 ```
 
-#### DescribeAllEntity
-
-**Description**
+#### 4.2.6 DescribeAllEntity
 
 You can call this operation to query information about all servers.
 
@@ -1793,17 +1848,37 @@ You can call this operation to query information about all servers.
 | InstanceName | String | The instance name of the server. |
 | Ip | String | The IP address of the server. Note The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeAllEntity &GroupId=123 &Os=win
+https://aegis.[ RegionId].example.com/?Action=DescribeAllEntity &GroupId=123 &Os=win &<Common request parameters>
 ```
 
 Sample response (JSON format)
+
+```json
+    "Count":2,
+    "RequestId":"09D7C349-5306-4335-849A-10916F89E769",
+    "EntityList":[
+            "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
+            "Ip":"x.x.x.x",
+            "GroupId":336,
+            "InstanceName":"****"
+```
+
+`},`
+
+```
+        ......
+```
+
+`]`
+
+#### 4.2.7 DescribeEntityList
+
+You can call this operation to query servers of a specified type. For example, you can query servers by security event type.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1814,34 +1889,6 @@ Sample response (JSON format)
 | GroupId | Long | No | The ID of the asset group. |
 | Os | String | No | The operating system of the server. Valid values: win: indicates the Windows operating system. linux: indicates the Linux operating system. |
 | Account | String | No | Queries servers with unusual logons detected. Set this parameter to remoteLogin. |
-
-Server Guard Advanced Edition D on
-
-```json
-{
-    "Count":2,
-    "RequestId":"09D7C349-5306-4335-849A-10916F89E769",
-    "EntityList":[
-        {
-            "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
-            "Ip":"x.x.x.x",
-            "GroupId":336,
-            "InstanceName":"****"
-        },
-        ......
-```
-
-]
-
-```
-}
-```
-
-#### DescribeEntityList
-
-**Description**
-
-You can call this operation to query servers of a specified type. For example, you can query servers by security event type.
 
 | Health | String | No | Queries servers with baseline check issues detected. Set this parameter to exception. |
 |---|---|---|---|
@@ -1864,10 +1911,6 @@ You can call this operation to query servers of a specified type. For example, y
 | GroupId | Integer | The ID of the asset group. |
 | ClientStatus | Boolean | Indicates whether the server is protected. A value of false indicates that the protection for the server is paused. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | Flag | Integer | The type of the server. Valid values: 0: indicates an Alibaba Cloud ECS instance. 1: indicates an external server. |
 |---|---|---|
 | Uuid | String | The universally unique identifier (UUID) of the server. |
@@ -1876,13 +1919,38 @@ Server Guard Advanced Edition D on
 | Region | String | The ID of the region. |
 | Ip | String | The IP address of the server. Note The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeEntityList &Account=remoteLogin &CurrentPage=1 &GroupId=1 &Health=exception &Os=windows &PageSize=20 &Patch=vul &RegionNo=**** &Remark=x.x.x.x &Status=offline &Suspicious=exception &TagIdList=1,2,3 &Trojan=webshell
+https://aegis.[ RegionId].example.com/?Action=DescribeEntityList &Account=remoteLogin &CurrentPage=1 &GroupId=1 &Health=exception &Os=windows &PageSize=20 &Patch=vul &RegionNo=**** &Remark=x.x.x.x &Status=offline &Suspicious=exception &TagIdList=1,2,3 &Trojan=webshell &<Common request parameters>
 ```
 
 Sample response (JSON format)
+
+```json
+    "TotalCount":1,
+    "PageSize":1,
+    "RequestId":"8BFB5273-6582-446A-9E0B-BAC0A1A468EA",
+    "CurrentPage":1,
+    "EntityList":[
+            "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
+            "Os":"linux",
+            "ClientStatus":false,
+            "Ip":"x.x.x.x",
+            "Region":"****",
+            "Flag":0,
+            "BuyVersion":"4",
+            "GroupId":336,
+            "InstanceName":"****"
+```
+
+`]`
+
+#### 4.2.8 DescribeMachines
+
+You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1897,42 +1965,6 @@ Sample response (JSON format)
 | Count | Integer | The number of returned records. |
 | Machines | Array | The servers. For more information, see the following descriptions. |
 
-Server Guard Advanced Edition D on
-
-```json
-{
-    "TotalCount":1,
-    "PageSize":1,
-    "RequestId":"8BFB5273-6582-446A-9E0B-BAC0A1A468EA",
-    "CurrentPage":1,
-    "EntityList":[
-        {
-            "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
-            "Os":"linux",
-            "ClientStatus":false,
-            "Ip":"x.x.x.x",
-            "Region":"****",
-            "Flag":0,
-            "BuyVersion":"4",
-            "GroupId":336,
-            "InstanceName":"****"
-        }
-```
-
-]
-
-```
-}
-```
-
-#### DescribeMachines
-
-**Description**
-
-You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group.
-
-**Response parameters**
-
 | GroupId | Integer | The ID of the asset group. |
 |---|---|---|
 | InstanceName | String | The instance name of the server. |
@@ -1940,42 +1972,38 @@ You can call this operation to query servers that match the specified criteria. 
 | Ip | String | The IP address of the server. Note The public IP address of the server is displayed preferentially. If no public IP address is assigned to the server, the private IP address of the server is displayed. |
 | Uuid | String | The universally unique identifier (UUID) of the server. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeMachines &GroupId=123
+https://aegis.[ RegionId].example.com/?Action=DescribeMachines &GroupId=123 &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
 ```json
-{
     "Count":1,
     "Machines":[
-        {
             "groupId":336,
             "os":"linux",
             "instanceName":"****",
             "uuid":"inet-db626549-870c-4d3e-b0b5-4d8a5c7268a6",
             "ip":"192.168.x.x"
-        }
 ```
 
 `],`
 
 ```json
     "RequestId":"C984123D-C8E0-4974-9CEE-ADD0596C46DB"
-}
 ```
 
-#### DescribeMachineDetail
-
-**Description**
+#### 4.2.9 DescribeMachineDetail
 
 You can call this operation to query the detailed information about a specified server.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeMachineDetail. |
 |---|---|---|---|
@@ -2001,31 +2029,20 @@ You can call this operation to query the detailed information about a specified 
 | IntranetIp | String | The private IP address of the server. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | Tag | String | The server tag ID. |
 |---|---|---|
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertyStatistic. |
-| Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+**Error codes**
 
-| Name | Type | Description |
-|---|---|---|
-
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeMachineDetail &Uuid=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac
+https://aegis.[ RegionId].example.com/?Action=DescribeMachineDetail &Uuid=6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
 ```json
-{
     "RequestId":"5D5D6F8F-6986-4996-9321-8EEA9FC048D1",
     "MachineDetail":{
         "Uuid":"inet-db626549-870c-4d3e-b0b5-4d8a5c7268a6",
@@ -2037,17 +2054,19 @@ Sample response (JSON format)
         "Tag":"",
         "AegisOnline":false,
         "InstanceName":"****"
-    }
-}
 ```
 
-#### DescribePropertyStatistic
-
-**Description**
+#### 4.2.10 DescribePropertyStatistic
 
 You can call this operation to query the server statistics.
 
-**Response parameters**
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertyStatistic. |
+| Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+| Name | Type | Description |
+|---|---|---|
 
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 |---|---|---|
@@ -2061,18 +2080,18 @@ You can call this operation to query the server statistics.
 | UserGetDate | String | The user account information update time. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyStatistic &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyStatistic &Uuids=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "PropertyStatistics":[
-  {
    "UserGetDate":1514373155000,
    "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
    "RootUserCount":1,
@@ -2081,19 +2100,17 @@ Sample responses (JSON format)
    "PortGetDate":1514115614000,
    "PortCount":6,
    "ProcGetDate":1514373133000
-  }
 ```
 
 `],`
 
 ```json
  "RequestId":"C1CACE7E-E868-4E44-A52E-4CB1463B62BB"
-}
 ```
 
-#### DescribePropertyPortItem
+#### 4.2.11 DescribePropertyPortItem
 
-**Description**
+You can call this operation to obtain a list of listener ports on hosts.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2115,11 +2132,36 @@ Sample responses (JSON format)
 | Port | String | The port number. |
 | Proto | String | The network protocol, such as TCP or UDP. |
 
-Server Guard Advanced Edition D on You can call this operation to obtain a list of listener ports on hosts.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortItem &Port=22 &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+ "TotalCount":1,
+ "PageSize":20,
+ "RequestId":"9D38986A-F145-4FA8-AE1C-1DB1C2BDF4C0",
+ "CurrentPage":1,
+ "PropertyPortItems":[
+   "Proto":"tcp",
+   "Port":"22",
+   "Count":2
+```
+
+`],`
+
+```json
+ "Count":1
+```
+
+#### 4.2.12 DescribePropertyPortDetail
+
+You can call this operation to query detailed information about a listening port.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2129,41 +2171,6 @@ For more information about the error codes that this operation can return, see E
 | GroupId | Long | No | The ID of the asset group. |
 | Ip | String | No | The IP address of the server. |
 | Port | String | No | The port number. |
-
-Server Guard Advanced Edition D on
-
-```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortItem &Port=22
-```
-
-Sample responses (JSON format)
-
-```json
-{
- "TotalCount":1,
- "PageSize":20,
- "RequestId":"9D38986A-F145-4FA8-AE1C-1DB1C2BDF4C0",
- "CurrentPage":1,
- "PropertyPortItems":[
-  {
-   "Proto":"tcp",
-   "Port":"22",
-   "Count":2
-  }
-```
-
-`],`
-
-```json
- "Count":1
-}
-```
-
-#### DescribePropertyPortDetail
-
-**Description**
-
-You can call this operation to query detailed information about a listening port.
 
 | Extend | String | No | Indicates whether fuzzy match is enabled to search for port numbers. Valid values: 1: indicates that fuzzy match is enabled. 0: indicates that fuzzy match is disabled. |
 |---|---|---|---|
@@ -2189,33 +2196,22 @@ You can call this operation to query detailed information about a listening port
 | Proto | String | The network protocol, such as TCP and UDP. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on
+**Error codes**
 
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes.
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertyProcItem. |
-| PageSize | Integer | No | The maximum number of records to be displayed on each page of the query output. Default value: 20. |
-
-Server Guard Advanced Edition D on Sample request
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDetail &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyPortDetail &Uuid=inet-f6ac9a93-0818-4052-90e2-d24f18ee198b &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
 ```json
-{
     "TotalCount":1,
     "PageSize":20,
     "RequestId":"D85484BB-4DC2-44EC-AD67-0B3765EC9213",
     "CurrentPage":1,
     "PropertyPorts":[
-        {
             "InstanceName":"****",
             "Uuid":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
             "Proto":"tcp",
@@ -2224,21 +2220,22 @@ Sample response (JSON format)
             "Port":"22",
             "ProcName":"sshd",
             "BindIp":"0.0.0.0"
-        }
 ```
 
 `],`
 
 ```json
     "Count":1
-}
 ```
 
-#### DescribePropertyProcItem
-
-**Description**
+#### 4.2.13 DescribePropertyProcItem
 
 You can call this operation to obtain a list of server processes.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertyProcItem. |
+| PageSize | Integer | No | The maximum number of records to be displayed on each page of the query output. Default value: 20. |
 
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 |---|---|---|---|
@@ -2256,17 +2253,35 @@ You can call this operation to obtain a list of server processes.
 | Count | Integer | The number of servers on which the process is running. |
 | Name | String | The process name. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcItem &Name=init
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcItem &Name=init &<Common request parameters>
 ```
 
 Sample responses (JSON format)
+
+```json
+ "TotalCount":1,
+ "PropertyProcItems":[
+   "Count":2,
+   "Name":"init"
+```
+
+`],`
+
+```json
+ "PageSize":20,
+ "RequestId":"8BE95FB1-66B7-4509-AF82-3AA67368A5D8",
+ "CurrentPage":1,
+ "Count":1
+```
+
+#### 4.2.14 DescribePropertyProcDetail
+
+You can call this operation to query server process details.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2278,34 +2293,6 @@ Sample responses (JSON format)
 | Name | String | No | The name of the process. |
 | Extend | String | No | Indicates whether fuzzy match is enabled to search for process names. Valid values: 1: indicates that fuzzy match is enabled. 0: indicates that fuzzy match is disabled. |
 | User | String | No | The user who started the process. |
-
-Server Guard Advanced Edition D on
-
-```json
-{
- "TotalCount":1,
- "PropertyProcItems":[
-  {
-   "Count":2,
-   "Name":"init"
-  }
-```
-
-`],`
-
-```json
- "PageSize":20,
- "RequestId":"8BE95FB1-66B7-4509-AF82-3AA67368A5D8",
- "CurrentPage":1,
- "Count":1
-}
-```
-
-#### DescribePropertyProcDetail
-
-**Description**
-
-You can call this operation to query server process details.
 
 | Mark | String | No | The IP address or instance name of the server. Note Fuzzy match is supported. |
 |---|---|---|---|
@@ -2334,28 +2321,21 @@ You can call this operation to query server process details.
 | StartTime | String | The time when the process was started. |
 | User | String | The user who started the process. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | Uuid | String | The UUID of the server. |
 |---|---|---|
 
-| Name | Type | Required | Description |
-|---|---|---|---|
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyProcDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
 ```json
-{
     "PropertyProcs":[
-        {
             "InstanceName":"****",
             "Path":"/sbin/init",
             "Pname":"N/A",
@@ -2368,7 +2348,6 @@ Sample response (JSON format)
             "Cmdline":"/sbin/init",
             "Name":"init",
             "Md5":"70023aaf3f480d198d3b078d8c39****"
-        }
 ```
 
 `],`
@@ -2379,14 +2358,14 @@ Sample response (JSON format)
     "RequestId":"AB20A6D4-43EB-44E2-AD64-E03EAC1C14D9",
     "CurrentPage":1,
     "Count":1
-}
 ```
 
-#### DescribePropertySoftwareItem
-
-**Description**
+#### 4.2.15 DescribePropertySoftwareItem
 
 You can call this operation to query servers that have been installed with the specified application.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribePropertySoftwareItem. |
 |---|---|---|---|
@@ -2407,17 +2386,35 @@ You can call this operation to query servers that have been installed with the s
 | Count | Integer | The number of servers that have been installed with the application. |
 | Name | String | The name of the application. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareItem &Name=spice-vdagent
+https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareItem &Name=spice-vdagent &<Common request parameters>
 ```
 
 Sample responses (JSON format)
+
+```json
+ "TotalCount":1,
+ "PropertySoftwareItems":[
+   "count":2,
+   "Name":"spice-vdagent"
+```
+
+`],`
+
+```json
+ "PageSize":20,
+ "RequestId":"0F2A3DEA-A5B3-4C2A-8BFC-4724A205E28B",
+ "CurrentPage":1,
+ "count": 1,
+```
+
+#### 4.2.16 DescribePropertySoftwareDetail
+
+You can call this operation to query the details of software installed on a server.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2428,34 +2425,6 @@ Sample responses (JSON format)
 | Name | String | No | The name of the software. |
 | Extend | String | No | Indicates whether fuzzy match is enabled to search for software names.. Valid values: 1: indicates that fuzzy match is enabled. 0: indicates that fuzzy match is disabled. |
 | Path | String | No | The installation path of the software. |
-
-Server Guard Advanced Edition D on
-
-```json
-{
- "TotalCount":1,
- "PropertySoftwareItems":[
-  {
-   "count":2,
-   "Name":"spice-vdagent"
-  }
-```
-
-`],`
-
-```json
- "PageSize":20,
- "RequestId":"0F2A3DEA-A5B3-4C2A-8BFC-4724A205E28B",
- "CurrentPage":1,
- "count": 1,
-}
-```
-
-#### DescribePropertySoftwareDetail
-
-**Description**
-
-You can call this operation to query the details of software installed on a server.
 
 | Remark | String | No | The IP address or instance name of the server. Note Fuzzy match is supported. |
 |---|---|---|---|
@@ -2478,17 +2447,40 @@ You can call this operation to query the details of software installed on a serv
 | Version | String | The version of the software. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertySoftwareDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
+
+```json
+    "TotalCount":1,
+    "PropertySoftwares":[
+            "InstanceName":"****",
+            "Path":"/usr/libexec/gvfs-gphoto2-volume-monitor",
+            "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
+            "InstallTime":"2016-06-29 06:55:22",
+            "Version":"1.4.3",
+            "Create":1514172615000,
+            "Ip":"x.x.x.x"
+```
+
+`],`
+
+```json
+    "PageSize":20,
+    "RequestId":"31409246-AB88-4B36-A2B8-16D21BA9E170",
+    "CurrentPage":1,
+    "Count":1
+```
+
+#### 4.2.17 DescribePropertyUserItem
+
+You can call this operation to query user account information.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2502,41 +2494,6 @@ Sample response (JSON format)
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | TotalCount | Integer | The number of returned records. |
 
-Server Guard Advanced Edition D on
-
-```json
-{
-    "TotalCount":1,
-    "PropertySoftwares":[
-        {
-            "InstanceName":"****",
-            "Path":"/usr/libexec/gvfs-gphoto2-volume-monitor",
-            "Uuid":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
-            "InstallTime":"2016-06-29 06:55:22",
-            "Version":"1.4.3",
-            "Create":1514172615000,
-            "Ip":"x.x.x.x"
-        }
-```
-
-`],`
-
-```json
-    "PageSize":20,
-    "RequestId":"31409246-AB88-4B36-A2B8-16D21BA9E170",
-    "CurrentPage":1,
-    "Count":1
-}
-```
-
-#### DescribePropertyUserItem
-
-**Description**
-
-You can call this operation to query user account information.
-
-**Response parameters**
-
 | Count | Integer | The number of records on the current page. |
 |---|---|---|
 | CurrentPage | Integer | The current page number. |
@@ -2545,29 +2502,28 @@ You can call this operation to query user account information.
 | Count | Integer | The number of servers under the account. |
 | Name | String | The username of the account. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserItem
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserItem &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":2,
  "PropertyUserItems":[
-  {
    "User":"abrt",
    "Count": 2
-  },
-  {
+```
+
+`},`
+
+```json
    "User":"adm",
    "Count": 2
-  }
 ```
 
 `],`
@@ -2577,14 +2533,14 @@ Sample responses (JSON format)
  "RequestId":"E80981C2-AD12-4C60-9976-6927C1FE449B",
  "CurrentPage":1,
  "Count": 2
-}
 ```
 
-#### DescribePropertyUserDetail
-
-**Description**
+#### 4.2.18 DescribePropertyUserDetail
 
 You can call this operation to query user account details.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribePropertyUserDetail. |
 |---|---|---|---|
@@ -2606,10 +2562,6 @@ You can call this operation to query user account details.
 | Count | Integer | The number of records returned on the current page. |
 | CurrentPage | Integer | The number of the current page returned. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | PageSize | Integer | The number of records returned on each page. |
 |---|---|---|
 | PropertyUsers | Array | The details of the user account. For more information, see the following descriptions. |
@@ -2625,35 +2577,23 @@ Server Guard Advanced Edition D on
 | User | String | The name of the user account. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribePropertyUserDetail &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeTopRiskyAssets. |
-| PageSize | Integer | No | The number of records to return, that is, the top N vulnerable servers. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| RequestId | String | The ID of the request. |
-| TotalCount | Integer | The number of returned records. |
-
-Server Guard Advanced Edition D on
-
 ```json
-{
     "TotalCount":66,
     "PageSize":2,
     "RequestId":"2EEAE2A6-1662-471C-A5E5-8A6190B01AFF",
     "CurrentPage":1,
     "Count":1,
     "PropertyUsers":[
-        {
             "GroupName":[
                 "root"
 ```
@@ -2671,22 +2611,23 @@ Server Guard Advanced Edition D on
             "Ip":"x.x.x.x",
             "AccountsExpirationDate":"never",
             "PasswordExpirationDate":"never"
-        }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-#### DescribeTopRiskyAssets
-
-**Description**
+#### 4.2.19 DescribeTopRiskyAssets
 
 You can call this operation to query top N vulnerable servers.
 
-**Response parameters**
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeTopRiskyAssets. |
+| PageSize | Integer | No | The number of records to return, that is, the top N vulnerable servers. |
+
+| Parameter | Type | Description |
+|---|---|---|
+| RequestId | String | The ID of the request. |
+| TotalCount | Integer | The number of returned records. |
 
 | TopRiskyAssets | Array | The top N vulnerable servers. For more information, see the following descriptions. |
 |---|---|---|
@@ -2696,37 +2637,36 @@ You can call this operation to query top N vulnerable servers.
 | VulCount | String | The number of detected vulnerabilities. |
 | WarningCount | String | The number of detected security events. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTopRiskyAssets &PageSize=1
+https://aegis.[ RegionId].example.com/?Action=DescribeTopRiskyAssets &PageSize=1 &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
 ```json
-{
     "TotalCount": 1,
     "RequestId": "5D8D4058-2EE3-4599-9951-BDAA3340AD4D",
     "TopRiskyAssets": [
-        {
             "Ip": "192.168.x.x",
             "Uuid": "inet-dsljaoe-jjdsklaj****",
             "VulCount": 2,
             "HcCount": 1,
             "WarningCount": 2
-        }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 4.2.20 CreateAssetGroup
 
-#### CreateAssetGroup
+API for user login
 
-API for user login This operation uses common request headers and does not have any special request headers. For more information, see Common request parameters.
+**Request headers**
+
+This operation uses common request headers and does not have any special request headers. For more information, see Common request parameters.
 
 | Parame ter name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2738,28 +2678,32 @@ API for user login This operation uses common request headers and does not have 
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | GroupId | String | 12345 | The ID of the server group. |
 
+Sample request
+
+```
+http(s)://[Endpoint]/?Action=CreateAssetGroup &Common request parameters
+```
+
+Sample success response `JSON` format
+
+```json
+ "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "GroupId":"12345"
+```
+
+#### 4.2.21 DescribePropertyUserChangeItem
+
+Queries the records of property changes for users in Security Center.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Uuid | Strin g | Query | No | 00f2-xxx-xxx | The unique ID of the server. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
-Sample request Sample success response `JSON` format
-
-```json
-{
- "RequestId":"F0A8A039-930D-5EC1-97C8-************",
- "GroupId":"12345"
-}
-```
-
-#### DescribePropertyUserChangeItem
-
-Queries the records of property changes for users in Security Center. This operation uses only common request headers. For more information, see Common request parameters.
-
-|  |  |  |  | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o |
+|   |   |   |   | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -2781,9 +2725,7 @@ Queries the records of property changes for users in Security Center. This opera
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | PageInfo | Struct | - | The pagination information. |
 
-**Response parameters**
-
-| S e o | erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |  |  |  |
+| S e o | erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |   |   |   |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2796,39 +2738,34 @@ Queries the records of property changes for users in Security Center. This opera
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DescribePropertyUserChangeItem
+http(s)://[Endpoint]/?Action=DescribePropertyUserChangeItem &<Common request parameters>
 ```
 
 Response example `JSON` format
 
 ```json
-{
  "PageInfo":{
   "TotalCount":10,
   "PageSize":10,
   "CurrentPage":1,
   "Count":1
- },
+```
+
+`},`
+
+```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "PropertyUserChangeItemList":[
-  {
    "UserName":"test",
    "UserId":123,
    "Count":1
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+### 4.3 Vulnerability management
 
-### Vulnerability management
-
-#### DescribeTarget
-
-**Description**
+#### 4.3.1 DescribeTarget
 
 You can call this operation to query the servers that are checked for the specified type of risks in vulnerability management.
 
@@ -2846,17 +2783,36 @@ You can call this operation to query the servers that are checked for the specif
 | TargetType | String | Valid values: groupId: indicates the ID of an asset group. uuid: indicates the UUID of a server. |
 | Target | String | The asset group ID or server UUID. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTarget &Config={"vulType":"cve"} &Type=vul
+https://aegis.[ RegionId].example.com/?Action=DescribeTarget &Config={"vulType":"cve"} &Type=vul &<Common request parameters>
 ```
 
 Sample responses (JSON format)
+
+```json
+    "TotalCount":2,
+    "RequestId":"1FF54D56-47ED-47FB-B4DB-2BDF3857D526",
+    "Targets":[
+            "Target":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
+            "TargetType":"uuid"
+```
+
+`},`
+
+```json
+            "Target":"336",
+            "TargetType":"groupId"
+```
+
+`]`
+
+#### 4.3.2 DescribeVulTargetStatistics
+
+You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2872,74 +2828,44 @@ Sample responses (JSON format)
 | TargetStats | Array | The list of target hosts for which vulnerability detection is enabled. For more information, see the following parameter descriptions. |
 | VulType | String | The vulnerability type. |
 
-Server Guard Advanced Edition D on
-
-```json
-{
-    "TotalCount":2,
-    "RequestId":"1FF54D56-47ED-47FB-B4DB-2BDF3857D526",
-    "Targets":[
-        {
-            "Target":"inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818",
-            "TargetType":"uuid"
-        },
-        {
-            "Target":"336",
-            "TargetType":"groupId"
-        }
-```
-
-]
-
-```
-}
-```
-
-#### DescribeVulTargetStatistics
-
-**Description**
-
-You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration.
-
-**Response parameters**
-
 | Targets | Array | The information about target hosts. For more information, see the following parameter descriptions. |
 |---|---|---|
 | Flag | String | Indicates whether vulnerability detection is enabled. |
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a host asset UUID. |
 | Target | String | The asset group ID or host asset UUID. |
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeTargetConfig. |
-| Type | String | No | The type of the vulnerability. |
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulTargetStatistics &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulTargetStatistics &Type=cve &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":1,
  "TargetStats":[
-  {
    "VulType":"cve","Targets":[]
-  },
+```
+
+`},`
+
+```json
  "PageSize":10,
  "RequestId":"89DD84B4-B592-476C-A6C0-51D56B3E8EAC",
  "CurrentPage":1
-}
 ```
 
-#### DescribeTargetConfig
-
-**Description**
+#### 4.3.3 DescribeTargetConfig
 
 You can call this operation to query the vulnerability scanning configuration information of a specified server.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeTargetConfig. |
+| Type | String | No | The type of the vulnerability. |
 
 | Uuid | String | No | The UUID of the server. |
 |---|---|---|---|
@@ -2953,37 +2879,30 @@ You can call this operation to query the vulnerability scanning configuration in
 | Config | String | Whether vulnerability scanning is enabled. Valid values: on and off. |
 | OverAllConfig | String | Whether global vulnerability scanning is enabled. Valid values: on and off. Note The global vulnerability scanning configuration overrides the vulnerability scanning configuration for a single server. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeTargetConfig &Type=cve &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818
+https://aegis.[ RegionId].example.com/?Action=DescribeTargetConfig &Type=cve &Uuid=inet-00f20b1a-e2dd-408b-b38e-6a6e1ed5d818 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":1,
  "RequestId":"092094BF-910F-4CE6-BE93-C3989B607977",
  "TargetConfigs":[
-  {
    "Config":"off",
    "Type":"cve",
    "OverAllConfig":"off"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 4.3.4 DescribeVulConfig
 
-#### DescribeVulConfig
+You can call this operation to query the global scanning configuration for each vulnerability type.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -2998,33 +2917,27 @@ Sample responses (JSON format)
 | Type | String | The type of the vulnerability. |
 | Config | String | The global scanning configuration for the vulnerability type. Valid values: on and off. |
 
-Server Guard Advanced Edition D on
-
-**Description**
-
-You can call this operation to query the global scanning configuration for each vulnerability type.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulConfig &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulConfig &Type=cve &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":1,
  "RequestId":"A8E09216-31DF-45B6-A76B-E3F053752C07",
  "TargetConfigs":[
-  {
    "Config":"off",
    "Type":"cve"
-  }
-}
 ```
+
+#### 4.3.5 DescribeAutoDelConfig
+
+You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3035,39 +2948,27 @@ Sample responses (JSON format)
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Days | Integer | The number of days that an invalid vulnerability is kept for. |
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-
-Server Guard Advanced Edition D on
-
-#### DescribeAutoDelConfig
-
-**Description**
-
-You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeAutoDelConfig
+https://aegis.[ RegionId].example.com/?Action=DescribeAutoDelConfig &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053",
  "Days":7
-}
 ```
 
-#### DescribeVulLevel
-
-**Description**
+#### 4.3.6 DescribeVulLevel
 
 You can call this operation to query the vulnerability severities that require attention.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulLevel. |
 |---|---|---|---|
@@ -3077,36 +2978,30 @@ You can call this operation to query the vulnerability severities that require a
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | ConcernLevels | List | The list of vulnerability severities that require attention. |
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulWhitelist. |
-| PageSize | Integer | No | The maximum number of records to be displayed on each page of the query output. Default value: 20. |
-| CurrentPage | Integer | No | The current page number. Default value: 1. |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulLevel
+https://aegis.[ RegionId].example.com/?Action=DescribeVulLevel &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"7935CB7A-D1B7-4EE6-93D0-FF3D040CF19B",
  "ConcernLevels":["high","medium"]
-}
 ```
 
-#### DescribeVulWhitelist
-
-**Description**
+#### 4.3.7 DescribeVulWhitelist
 
 You can call this operation to obtain the whitelist of vulnerabilities.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulWhitelist. |
+| PageSize | Integer | No | The maximum number of records to be displayed on each page of the query output. Default value: 20. |
+| CurrentPage | Integer | No | The current page number. Default value: 1. |
 
 | Name | Type | Description |
 |---|---|---|
@@ -3120,28 +3015,23 @@ You can call this operation to obtain the whitelist of vulnerabilities.
 | Reason | String | The reason for adding the vulnerability to the whitelist. |
 | Type | String | The vulnerability type. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulWhitelist &CurrentPage=1 &PageSize=20
+https://aegis.[ RegionId].example.com/?Action=DescribeVulWhitelist &CurrentPage=1 &PageSize=20 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":1,
  "VulWhitelists":[
-  {
    "Name":"oval:com.redhat.rhsa:def:20173263",
    "AliasName":"RHSA-2017:3263: curl security update",
    "Type":"cve",
    "Reason":"Not fixed at present"
-  }
 ```
 
 `],`
@@ -3150,10 +3040,11 @@ Sample responses (JSON format)
  "PageSize":3,
  "RequestId":"74F97EF7-B543-43FD-A4E9-18456731F9C5",
  "CurrentPage":1
-}
 ```
 
-#### DescribeGroupedVul
+#### 4.3.8 DescribeGroupedVul
+
+You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3167,19 +3058,11 @@ Sample responses (JSON format)
 | Level | String | No | The severity of the vulnerability. Valid values: serious: critical high: important medium: moderate low: low |
 | Name | String | No | The name of the vulnerability. |
 
-Server Guard Advanced Edition D on
-
-**Description**
-
-You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard.
-
 | Necessity | String | No | The necessity for fixing the vulnerability. Valid values: asap: indicates that the vulnerability must be fixed as soon as possible. later: indicates that the vulnerability can be fixed later. nntf: indicates that the vulnerability can be ignored. |
 |---|---|---|---|
 | OrderBy | String | No | The field based on which the vulnerabilities in the vulnerability group are sorted. You can specify other request parameters for sorting order. |
 | PatchId | Long | No | The ID of the patch used to fix the vulnerability. |
 | Product | String | No | The product where the vulnerability exists. |
-
-Server Guard Advanced Edition D on
 
 | StatusList | String | No | The status of the vulnerability. Valid values: 1: indicates that the vulnerability has not been fixed. 2: indicates that the vulnerability fix failed. 3: indicates that the server has failed to be rolled back to the version before the vulnerability fix. 4: indicates that the vulnerability is being fixed. 5: indicates that the server is being rolled back to the version before the vulnerability fix. 6: indicates that the vulnerability fix is being verified. 7: indicates that the vulnerability has been fixed successfully. 8: indicates that the vulnerability has been fixed successfully, and that the server is waiting for restart. 9: indicates that the server has been rolled back to the version before the vulnerability fix. 10: indicates that the vulnerability has been ignored. 11: indicates that the server has been rolled back to the version before the vulnerability fix, and that the server is waiting for restart. 12: indicates that the vulnerability does not exist. 20: indicates that the vulnerability is invalid. Note The statuses are specified in a single parameter, separated with commas (,). |
 |---|---|---|---|
@@ -3190,10 +3073,6 @@ Server Guard Advanced Edition D on
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | CurrentPage | Integer | The current page number. |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
 
 | PageSize | Integer | The maximum number of records displayed on a page. |
 |---|---|---|
@@ -3212,23 +3091,18 @@ Server Guard Advanced Edition D on
 | TotalCount | Integer | The total number of vulnerabilities. |
 | Type | String | The type of the vulnerability. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-
-Server Guard Advanced Edition D on
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeGroupedVul &CurrentPage=1 &Dealed=y &Direction=asc &LastTsEnd=1517414400000 &LastTsStart=1517414500000 &Level=high &Name=oval:com.redhat.rhsa:def:20170817 &Necessity=asap &OrderBy=name &PageSize=20 &PatchId=27001 &Product=redhat &SourceIp= &StatusList=1,2 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5
+https://aegis.[ RegionId].example.com/?Action=DescribeGroupedVul &CurrentPage=1 &Dealed=y &Direction=asc &LastTsEnd=1517414400000 &LastTsStart=1517414500000 &Level=high &Name=oval:com.redhat.rhsa:def:20170817 &Necessity=asap &OrderBy=name &PageSize=20 &PatchId=27001 &Product=redhat &SourceIp= &StatusList=1,2 &Type=cve &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "GroupedVulItems":[
-  {
    "Name":"oval:com.redhat.rhsa:def:20170817",
    "Status":7,
    "Count":0,
@@ -3240,24 +3114,23 @@ Sample responses (JSON format)
    "GmtLast":1513695612000,
    "Level":"high",
    "HandledCount":1
-  },
 ```
 
-`],`
+`},` `],`
 
 ```json
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"6FCF95BE-7A78-4AD8-811C-BF12FC34AC34",
  "CurrentPage":1
-}
 ```
 
-#### DescribeVulList
-
-**Description**
+#### 4.3.9 DescribeVulList
 
 You can call this operation to obtain the vulnerability list of the specified host asset.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulList. |
 |---|---|---|---|
@@ -3269,8 +3142,6 @@ You can call this operation to obtain the vulnerability list of the specified ho
 | Necessity | String | No | The necessity for fixing the vulnerability. Valid values: asap: indicates that the vulnerability must be fixed as soon as possible. later: indicates that the vulnerability can be fixed later. nntf: indicates that the vulnerability can be ignored. |
 | Type | String | No | The type of the vulnerability. |
 
-Server Guard Advanced Edition D on
-
 | StatusList | String | No | The status of the vulnerability. Valid values: 1: indicates that the vulnerability has not been fixed. 2: indicates that the vulnerability fix failed. 3: indicates that the host has failed to be rolled back to the version before the vulnerability fix. 4: indicates that the vulnerability is being fixed. 5: indicates that the host is being rolled back to the version before the vulnerability fix. 6: indicates that the vulnerability fix is being verified. 7: indicates that the vulnerability has been fixed successfully. 8: indicates that the vulnerability has been fixed successfully, and that the host is waiting for restart. 9: indicates that the host has been rolled back to the version before the vulnerability fix. 10: indicates that the vulnerability has been ignored. 11: indicates that the host has been rolled back to the version before the vulnerability fix, and that the host is waiting for restart. 12: indicates that the vulnerability does not exist. 20: indicates that the vulnerability is invalid. Note Note: The statuses are specified in a single parameter, separated with commas (,). |
 |---|---|---|---|
 | Uuids | String | No | The UUID of the host asset. Separate multiple host asset UUIDs with commas (,). |
@@ -3280,10 +3151,6 @@ Server Guard Advanced Edition D on
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | CurrentPage | Integer | The current page number. |
 | PageSize | Integer | The maximum number of records displayed on a page. |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
 
 | TotalCount | Integer | The total number of records returned from the query. |
 |---|---|---|
@@ -3307,38 +3174,28 @@ Server Guard Advanced Edition D on
 | RiskDesc | String | The risk description of the vulnerability. |
 | RiskLevel | Integer | The risk level of the vulnerability. |
 
-Server Guard Advanced Edition D on
-
 | Status | Integer | The status of the vulnerability. Valid values: 1: indicates that the vulnerability is to be handled. 2: indicates that the vulnerability has been ignored. 3: indicates that the vulnerability has been confirmed. 8: indicates that the vulnerability has been marked as a false positive. 16: indicates that the vulnerability is being handled. 32: indicates that the vulnerability has been handled. |
 |---|---|---|
 | Tag | String | The tag of the vulnerability. |
 | Type | String | The type of the vulnerability. |
 | Uuid | String | The UUID of the host asset. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulList &CurrentPage=1 &Dealed=n &Level=serious &Name=RHSA-2017:1100: nss and nss-util security update &Necessity=asap &PageSize=20 &StatusList=1 &Type=cve &Uuids=f293ade2-e5b1-4cc0-99a6-cc993a4158cc
+https://aegis.[ RegionId].example.com/?Action=DescribeVulList &CurrentPage=1 &Dealed=n &Level=serious &Name=RHSA-2017:1100: nss and nss-util security update &Necessity=asap &PageSize=20 &StatusList=1 &Type=cve &Uuids=f293ade2-e5b1-4cc0-99a6-cc993a4158cc &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulDetails. |
-| Type | Integer | Yes | The type of the vulnerability. |
-| Name | String | Yes | The name of the vulnerability. |
-
-Server Guard Advanced Edition D on
-
 ```json
-{
  "TotalCount":1,
  "PageSize":20,
  "RequestId":"2E35F7F7-DA6D-46A5-BA9D-8751BDAE7710",
  "CurrentPage":1,
  "VulRecords":[
-  {
    "Uuid":"b688bf9f-1fd9-42c8-bb34-28697f562dc5",
    "Necessity":"nntf",
    "ModifyTs":1512949391000,
@@ -3354,22 +3211,19 @@ Server Guard Advanced Edition D on
    "Tag":"oval",
    "PrimaryId":281156,
    "Level":"high"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-#### DescribeVulDetails
-
-**Description**
+#### 4.3.10 DescribeVulDetails
 
 You can call this operation to query detailed information about a vulnerability.
 
-**Response parameters**
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulDetails. |
+| Type | Integer | Yes | The type of the vulnerability. |
+| Name | String | Yes | The name of the vulnerability. |
 
 | Name | Type | Description |
 |---|---|---|
@@ -3399,24 +3253,20 @@ You can call this operation to query detailed information about a vulnerability.
 | Title | String | The title of the vulnerability. |
 | Vendor | String | The vendors that are affected by the vulnerability. |
 
-Server Guard Advanced Edition D on
-
 | VulLevel | String | The severity level of the vulnerability. |
 |---|---|---|
 
-| Name | Type | Required | Description |
-|---|---|---|---|
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulDetails &Name=oval:com.redhat.rhsa:def:20170036 &Type=cve
+https://aegis.[ RegionId].example.com/?Action=DescribeVulDetails &Name=oval:com.redhat.rhsa:def:20170036 &Type=cve &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "Cves": [{
   "CvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "OtherId": "CVE-2016-7117",
@@ -3436,14 +3286,14 @@ kernel",
 es for Linux operating systems. The use-after-free vulnerability is found in the net/ socket.c file in \n\nLinux kernel 4.5.2 and earlier versions. It allows remote attack ers to execute arbitrary code."
  }],
  "RequestId": "70DEE6B7-A167-4B5D-ADAA-3631443D5190"
-}
 ```
 
-#### DescribeVulNumStatistics
-
-**Description**
+#### 4.3.11 DescribeVulNumStatistics
 
 You can call this operation to query vulnerability statistics.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulNumStatistics. |
 |---|---|---|---|
@@ -3468,32 +3318,17 @@ You can call this operation to query vulnerability statistics.
 | VulLaterSum | Integer | The number of vulnerabilities that can be handled later. |
 | VulNntfSum | Integer | The number of vulnerabilities that do not need to be fixed temporarily. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulLevelStatistics. |
-| StartTs | Long | No | The start time of the time frame specified for query. |
-| EndTs | Long | No | The end time of the time frame specified for query. |
-| Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
-
-| Name | Type | Description |
-|---|---|---|
-
-Server Guard Advanced Edition D on
-
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulNumStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=DescribeVulNumStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
     "VulHighTotal":0,
     "CveNum":1,
     "VulMediumTotal":0,
@@ -3508,16 +3343,21 @@ Sample responses (JSON format)
     "VulSeriousTotal":0,
     "CmsDealedTotalNum":0,
     "VulLaterSum":0
-}
 ```
 
-#### DescribeVulLevelStatistics
-
-**Description**
+#### 4.3.12 DescribeVulLevelStatistics
 
 You can call this operation to obtain the statistics on vulnerabilities by vulnerability severity.
 
-**Response parameters**
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulLevelStatistics. |
+| StartTs | Long | No | The start time of the time frame specified for query. |
+| EndTs | Long | No | The end time of the time frame specified for query. |
+| Uuids | String | No | The UUID of the server. Separate multiple UUIDs with commas (,). |
+
+| Name | Type | Description |
+|---|---|---|
 
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 |---|---|---|
@@ -3538,24 +3378,19 @@ You can call this operation to obtain the statistics on vulnerabilities by vulne
 | VulLaterSum | Integer | The number of medium-priority vulnerabilities. |
 | VulNntfSum | Integer | The number of low-priority vulnerabilities. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulLevelStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5
+https://aegis.[ RegionId].example.com/?Action=DescribeVulLevelStatistics &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c,b688bf9f-1fd9-42c8-bb34-28697f562dc5 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-
-Server Guard Advanced Edition D on
-
 ```json
-{
  "TotalCount":0,
  "LevelStatistics":[
-  {
    "VulHighTotal":0,
    "CveNum":0,
    "VulMediumTotal":0,
@@ -3570,8 +3405,11 @@ Server Guard Advanced Edition D on
    "VulSeriousTotal":0,
    "CmsDealedTotalNum":0,
    "VulLaterSum":0
-  },
-  {
+```
+
+`},`
+
+```json
    "VulHighTotal":0,
    "CveNum":0,
    "VulMediumTotal":0,
@@ -3586,21 +3424,20 @@ Server Guard Advanced Edition D on
    "VulSeriousTotal":0,
    "CmsDealedTotalNum":0,
    "VulLaterSum":0
-  }
 ```
 
 `],`
 
 ```json
  "RequestId":"9B062D3F-AD5A-4D3E-9A7A-45CAC2713FC0"
-}
 ```
 
-#### DescribeVulMachineList
-
-**Description**
+#### 4.3.13 DescribeVulMachineList
 
 You can call this operation to query the vulnerability statistics of a specified server.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeVulMachineList. |
 |---|---|---|---|
@@ -3628,27 +3465,19 @@ You can call this operation to query the vulnerability statistics of a specified
 | VulNntfSum | Integer | The number of low-priority vulnerabilities. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on
+**Error codes**
 
-**Response parameters**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeStratetyDetail. |
-
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeVulMachineList &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c
+https://aegis.[ RegionId].example.com/?Action=DescribeVulMachineList &EndTs=1514736000000 &StartTs=1514736000000 &Uuids=46ef7c05-0c53-486c-b446-ef6ff972551c &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":0,
  "MachineStatistics":[
-  {
    "Uuid":"577f9886-bf66-4c3c-88ac-28c938cb527b",
    "VulHighTotal":0,
    "CveNum":1,
@@ -3663,23 +3492,23 @@ Sample responses (JSON format)
    "VulSeriousTotal":0,
    "CmsDealedTotalNum":0,
    "VulLaterSum":0
-  }
 ```
 
 `],`
 
 ```json
  "RequestId":"A3F8BE63-9BA1-450D-BB5D-CE9205E6645D"
-}
 ```
 
-### Baseline check
+### 4.4 Baseline check
 
-#### DescribeStratetyDetail
-
-**Description**
+#### 4.4.1 DescribeStratetyDetail
 
 You can call this operation to query the details of a specified baseline check policy.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeStratetyDetail. |
 
 | Id | String | No | The ID of the baseline check policy. |
 |---|---|---|---|
@@ -3702,20 +3531,17 @@ You can call this operation to query the details of a specified baseline check p
 | TypeName | String | The code of the risk subcategory. |
 | On | Boolean | Indicates whether to check for risks of the specified subcategory. |
 
-Server Guard Advanced Edition D on
+**Error codes**
 
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Server Guard Advanced Edition D on Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStratetyDetail &Id=1
+https://aegis.[ RegionId].example.com/?Action=DescribeStratetyDetail &Id=1 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
      "RequestId": "99F17C4B-2E23-4B41-BBEB-C03963B06EB4",
      "Strategy": {
   "Name": "Yunwu testing",
@@ -3724,49 +3550,42 @@ Sample responses (JSON format)
              "Type": 2,
              "Id": 12,
              "RiskTypeWhiteListQueryResultList": [
-                 {
                      "On": false,
                      "Alias": "Compliance with Security Standards",
                      "TypeName": "cis",
                      "SubTypes": [
-                          {
                               "On": true,
                               "Alias": "Memcached",
                               "TypeName": "memcached-check"
-                          },
-                          {
+```
+
+`},`
+
+```json
                               "On": true,
                               "Alias": "CentOS 7",
                               "TypeName": "centos7"
-                          },
-                          {
+```
+
+`},`
+
+```json
                               "On": false,
                               "Alias": "Tomcat 7",
                               "TypeName": "tomcat7"
-                          },
-                          {
+```
+
+`},`
+
+```json
                               "On": false,
                               "Alias": "MongoDB",
                               "TypeName": "mongodb-check"
-                          }
 ```
 
-]
+`]` `]`
 
-```
-                 }
-```
-
-]
-
-```
- }
-}
-```
-
-#### DescribeStrategyTarget
-
-**Description**
+#### 4.4.2 DescribeStrategyTarget
 
 You can call this operation to query the information about asset groups to which a specified baseline check policy applies.
 
@@ -3786,11 +3605,33 @@ You can call this operation to query the information about asset groups to which
 | TargetType | String | The return value is fixed to groupId, indicating that the value of the Target parameter is the ID of the asset group. |
 | Target | String | The asset group ID. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategyTarget &Config={"strategyId":15161} &Type=hc_strategy &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+        "Count": 1,
+        "StrategyTargets":[
+                "Flag": "del",
+                "Target": "281801",
+                "TargetType": "groupId"
+```
+
+`]`
+
+```json
+ "requestId": "B44F545D-15CF-4A57-B8BF-4340D15D0507"
+```
+
+#### 4.4.3 DescribeUuidConfig
+
+You can call this operation to check whether baseline check is enabled for a specified server.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3803,41 +3644,30 @@ For more information about the error codes that this operation can return, see E
 | Data | Struct | The baseline check configuration. For more information, see the following parameter descriptions. |
 | Flag | String | Indicates whether baseline check is enabled. Valid values: add: indicates enabled. del: indicates disabled. |
 
-Server Guard Advanced Edition D on
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategyTarget &Config={"strategyId":15161} &Type=hc_strategy
+https://aegis.[ RegionId].example.com/?Action=DescribeUuidConfig &uuid=4bc19998-e100-4b04-ab11-1e677418d311 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
-        "Count": 1,
-        "StrategyTargets":[
-            {
-                "Flag": "del",
-                "Target": "281801",
-                "TargetType": "groupId"
-            }
+    "Data": {
+        "Flag": "del"
 ```
 
-]
+`},`
 
 ```json
- "requestId": "B44F545D-15CF-4A57-B8BF-4340D15D0507"
-}
+    "RequestId": "A89978FE-BC35-427E-A4B1-7AEEAE741CC2",
 ```
 
-#### DescribeUuidConfig
+#### 4.4.4 DescribeUserSetting
 
-**Description**
-
-You can call this operation to check whether baseline check is enabled for a specified server.
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes.
+You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3848,38 +3678,24 @@ For more information about the error codes that this operation can return, see E
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | InvalidWarningKeepDa ys | Integer | The number of days that an invalid risk is kept for. |
 
-Server Guard Advanced Edition D on Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeUuidConfig &uuid=4bc19998-e100-4b04-ab11-1e677418d311
+https://aegis.[ RegionId].example.com/?Action=DescribeUserSetting &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
-    "Data": {
-        "Flag": "del"
-    },
-    "RequestId": "A89978FE-BC35-427E-A4B1-7AEEAE741CC2",
-}
+ "InvalidWarningKeepDays":90,
+ "RequestId":"0A079FE2-0D1B-4A4D-A4EF-D02B5DDE12A7"
 ```
 
-#### DescribeUserSetting
+#### 4.4.5 DescribeRiskWhiteList
 
-**Description**
-
-You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=DescribeUserSetting
-```
-
-Sample responses (JSON format)
+You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3899,25 +3715,38 @@ Sample responses (JSON format)
 | Reason | String | The reason for adding the risk item to the whitelist. |
 | RiskId | Long | The ID of the risk item. |
 
-Server Guard Advanced Edition D on
-
-```json
-{
- "InvalidWarningKeepDays":90,
- "RequestId":"0A079FE2-0D1B-4A4D-A4EF-D02B5DDE12A7"
-}
-```
-
-#### DescribeRiskWhiteList
-
-**Description**
-
-You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check.
-
-**Response parameters**
-
 | RiskName | String | The name of the risk item. |
 |---|---|---|
+
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribeRiskWhiteList &RiskName=SSH logon baseline check &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+ "TotalCount":1,
+ "PageSize":20,
+ "RequestId":"B452E97A-7DFA-44FC-915D-5D590A702846",
+ "CurrentPage":1,
+ "WhiteLists":[
+   "RiskName":"SSH logon baseline check",
+   "RiskId":1
+```
+
+`],`
+
+```json
+ "Count":1
+```
+
+#### 4.4.6 DescribeStratety
+
+You can call this operation to query the execution details of a specified baseline check policy.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3927,42 +3756,6 @@ You can call this operation to obtain the whitelist of risk items that are exemp
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Strategies | Array | The list of baseline check policies. For more information, see the following parameter descriptions. |
-
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=DescribeRiskWhiteList
-```
-
-Sample responses (JSON format)
-
-```json
-{
- "TotalCount":1,
- "PageSize":20,
- "RequestId":"B452E97A-7DFA-44FC-915D-5D590A702846",
- "CurrentPage":1,
- "WhiteLists":[
-  {
-   "RiskName":"SSH logon baseline check",
-   "RiskId":1
-  }
-```
-
-`],`
-
-```json
- "Count":1
-}
-```
-
-#### DescribeStratety
-
-**Description**
-
-You can call this operation to query the execution details of a specified baseline check policy.
-
-**Response parameters**
 
 | CycleDays | Integer | The execution cycle of the policy. |
 |---|---|---|
@@ -3978,13 +3771,44 @@ You can call this operation to query the execution details of a specified baseli
 | TargetType | String | The return value is fixed to groupId, indicating that the value of the Target parameter is the ID of the asset group. |
 | Target | String | The asset group ID. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStratety
+https://aegis.[ RegionId].example.com/?Action=DescribeStratety &<Common request parameters>
 ```
 
 Sample responses (JSON format)
+
+```json
+        "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
+    "Strategies": [
+                "Name": "Threat Detection Service No. 12345",
+                "RiskCount": 4,
+                "CycleDays": 1,
+                "CycleStartTime": 6,
+                "Type": 2,
+                "ProcessRate": 0,
+                "ConfigTargets": [
+                        "Flag": "add",
+                        "Target": "5078483",
+                        "TargetType": "groupId"
+```
+
+`],`
+
+```json
+                "Id": 36071,
+                "ExecStatus": 1,
+                "EcsCount": 2
+```
+
+`]`
+
+#### 4.4.7 DescribeStrategyExecDetail
+
+You can call this operation to query the execution details of a baseline check policy.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -3996,50 +3820,6 @@ Sample responses (JSON format)
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | EndTime | String | The time when the baseline check was complete. |
 | FailCount | Integer | The number of servers that failed to pass the check. |
-
-Server Guard Advanced Edition D on
-
-```json
-{
-        "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
-    "Strategies": [
-            {
-                "Name": "Threat Detection Service No. 12345",
-                "RiskCount": 4,
-                "CycleDays": 1,
-                "CycleStartTime": 6,
-                "Type": 2,
-                "ProcessRate": 0,
-                "ConfigTargets": [
-                    {
-                        "Flag": "add",
-                        "Target": "5078483",
-                        "TargetType": "groupId"
-                    }
-```
-
-`],`
-
-```json
-                "Id": 36071,
-                "ExecStatus": 1,
-                "EcsCount": 2
-            }
-```
-
-]
-
-```
-}
-```
-
-#### DescribeStrategyExecDetail
-
-**Description**
-
-You can call this operation to query the execution details of a baseline check policy.
-
-**Response parameters**
 
 | FailedEcsList | Array | A list of servers that failed to pass the check. For more information, see the following parameter descriptions. |
 |---|---|---|
@@ -4053,16 +3833,17 @@ You can call this operation to query the execution details of a baseline check p
 | StartTime | String | The time when the baseline check started. |
 | SuccessCount | Integer | The number of servers that have passed the check. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeStrategyExecDetail &StrategyId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeStrategyExecDetail &StrategyId=1 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
      "requestId": "751BEDD8-A16F-49CE-A3C4-605849645D79",
        "Source": "Schedule",
        "InProcessCount": 0,
@@ -4072,12 +3853,9 @@ Sample responses (JSON format)
        "FailedEcsList": [],
        "StartTime": "2018-04-08 12:15:10",
        "FailCount": 0,
-}
 ```
 
-#### DescribeRiskType
-
-**Description**
+#### 4.4.8 DescribeRiskType
 
 You can call this operation to query all types of risks detected in baseline check and view the number of risks that have been detected by a baseline check policy or on the specified servers for a specific risk type.
 
@@ -4100,48 +3878,40 @@ You can call this operation to query all types of risks detected in baseline che
 | TypeName | String | The code of the sub-risk type. |
 | WarnCount | String | The number of risks that have been detected. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeRiskType &StrategyId=10
+https://aegis.[ RegionId].example.com/?Action=DescribeRiskType &StrategyId=10 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to Describesummary. |
-| PageSize | Integer | No | The number of records displayed on a page. Default value: 20. |
-| CurrentPage | Integer | No | The current page number. Default value: 1. |
-
-Server Guard Advanced Edition D on
-
 ```json
-{
  "RequestId":"11D3993A-02B8-4FD9-9116-922BCDE53A80",
  "RiskTypes":[
-  {
    "TypeName":"system",
    "SubTypes":[
-    {
      "TypeName":"group_policy",
      "Alias":"Group policy",
      "WarnCount":0
-    },
-    {
+```
+
+`},`
+
+```json
      "TypeName":"baseline",
      "Alias":"Baseline policy",
      "WarnCount":0
-    },
-    {
+```
+
+`},`
+
+```json
      "TypeName":"register",
      "Alias":"Registry",
      "WarnCount":0
-    }
 ```
 
 `],`
@@ -4149,21 +3919,23 @@ Server Guard Advanced Edition D on
 ```json
    "Alias":"System",
    "WarnCount":0
-  }
 ```
 
 `],`
 
 ```json
  "count": 1,
-}
 ```
 
-#### Describesummary
-
-**Description**
+#### 4.4.9 Describesummary
 
 You can call this operation to query the risks detected in baseline check by risk type.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to Describesummary. |
+| PageSize | Integer | No | The number of records displayed on a page. Default value: 20. |
+| CurrentPage | Integer | No | The current page number. Default value: 1. |
 
 | Dealed | String | No | Indicates whether the risk has been handled. Valid values: Y: indicates that the risk has been handled. N: indicates that the risk has not been handled. |
 |---|---|---|---|
@@ -4182,10 +3954,6 @@ You can call this operation to query the risks detected in baseline check by ris
 | Count | Integer | The number of returned risk records. |
 | CurrentPage | Integer | The current page number. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | PageSize | Integer | The maximum number of records displayed on a page. |
 |---|---|---|
 | WarningSummarys | Array | A list of risks. For more information, see the following parameter descriptions. |
@@ -4199,31 +3967,23 @@ Server Guard Advanced Edition D on
 | SubTypeAlias | String | The type of the sub-risk. |
 | TotalCount | Integer | The total number of risks. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=Describesummary &CurrentPage=20 &Dealed=Y &PageSize=10 &StrategyId=1 &Uuid=2738e842-7d46-42f7-acb4-e6796b051ddc
+https://aegis.[ RegionId].example.com/?Action=Describesummary &CurrentPage=20 &Dealed=Y &PageSize=10 &StrategyId=1 &Uuid=2738e842-7d46-42f7-acb4-e6796b051ddc &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Query | No | 219.133.XX.XX | The source IP address. |
-| Lang | Strin g | Query | No | en | The language of the request and response. The default value is zh. Valid values: zh: Chinese. en: English. |
-| Source | Strin g | Query | No | console batch _ | The source from which the task was added. |
-
-Server Guard Advanced Edition D on
-
 ```json
-{
  "TotalCount":1,
  "PageSize":20,
  "RequestId":"38AAFEEE-F52F-4B2E-9F28-FC4A35F8D432",
  "CurrentPage":1,
  "count": 1,
  "WarningSummarys":[
-  {
    "RiskId":1,
    "LastFoundTime":"2018-04-08 16:51:26",
    "RiskDetail":"The SSH logon security policy checks the following configurations: \
@@ -4231,18 +3991,24 @@ n1. Checks whether the logon port is the default port 22\n2 and whether the root
    "Level":"low",
    "TypeAlias":"System",
    "SubTypeAlias":"Baseline check policy",
-  }
+   "RiskName":"SSH logon baseline check"
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 4.4.10 ListBaselineCheckWhiteRecord
 
-#### ListBaselineCheckWhiteRecord
+Retrieves the details of baseline check whitelist records.
 
-Retrieves the details of baseline check whitelist records. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+**Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Query | No | 219.133.XX.XX | The source IP address. |
+| Lang | Strin g | Query | No | en | The language of the request and response. The default value is zh. Valid values: zh: Chinese. en: English. |
+| Source | Strin g | Query | No | console batch _ | The source from which the task was added. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4260,10 +4026,6 @@ Retrieves the details of baseline check whitelist records. This operation uses c
 | -TargetType | String | RD-Account | The mode used to select the assets on which the rule takes effect. Valid values: uuid: selects individual assets. groupId: The ID of the server group for adding servers. global: selects all assets. |
 | -Target | String | foo2,foo3 | The ID of the target. This is currently the group ID. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -Reason | String | Started | The reason for adding the item to the whitelist. |
@@ -4278,33 +4040,28 @@ Server Guard Advanced Edition D on
 | -PageSize | Integer | 10 | The maximum number of entries returned on each page. |
 | -TotalCount | Integer | 10 | The total number of entries. |
 
-Server Guard Advanced Edition D on
-
-| erver Guard Adv veloper Guide·AP | anced Edition D I documentati |  |  |
+| erver Guard Adv veloper Guide·AP | anced Edition D I documentati |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -Count | Integer | 1 | The number of entries returned on the current page. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | ServerError | ServerError | ServerError |
-| 403 | NoPermission | NoPermission | The caller does not have the required permissions. |
-
 The following is a sample response in `JSON` format.
 
 ```json
-{
  "PageInfo":{
   "TotalCount":10,
   "PageSize":10,
   "CurrentPage":1,
   "Count":1
- },
+```
+
+`},`
+
+```json
  "RequestId":"",
  "List":[
-  {
    "Target":"foo2,foo3",
    "CheckId":696,
    "CheckItem":"CHECK_CONN_SRC",
@@ -4315,20 +4072,20 @@ The following is a sample response in `JSON` format.
    "RecordId":20201105144514,
    "Reason":"Started",
    "Source":"Local"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+**Error codes**
 
-### Unusual logon detection
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | ServerError | ServerError | ServerError |
+| 403 | NoPermission | NoPermission | The caller does not have the required permissions. |
 
-#### DescribeBaseConfigs
+### 4.5 Unusual logon detection
 
-**Description**
+#### 4.5.1 DescribeBaseConfigs
 
 You can call this operation to query the logon security settings.
 
@@ -4349,10 +4106,6 @@ You can call this operation to query the logon security settings.
 | BaseConfigs | Array | The logon security settings. For more information, see the following parameter descriptions. |
 | Account | String | The approved logon account. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | EndTime | String | The end time of the approved logon time period. |
 |---|---|---|
 | Ip | String | The approved logon IP address. |
@@ -4364,13 +4117,39 @@ Server Guard Advanced Edition D on
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a server UUID. |
 | Target | String | The asset group ID or server UUID. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeBaseConfigs &CurrentPage=1 &PageSize=20 &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=DescribeBaseConfigs &CurrentPage=1 &PageSize=20 &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
 ```
 
 Sample responses (JSON format)
+
+```json
+ "BaseConfigs": [{
+  "totalCount": 9,
+  "location": "United States",
+  "uuidCount": 1,
+  "targetList": [{
+   "target": "6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac",
+   "targetType": "uuid"
+```
+
+`}]`
+
+```json
+ }],
+ "TotalCount": 1,
+ "PageSize": 5,
+ "RequestId": "485ABE58-4E27-4416-997C-F8F3B8748EB6",
+ "CurrentPage": 1
+```
+
+#### 4.5.2 DescribeSwitchConfigs
+
+You can call this operation to query the logon security configuration records in the logon security settings.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4382,73 +4161,44 @@ Sample responses (JSON format)
 | Count | Integer | The total number of returned records. |
 | ConfigList | Array | The statuses of the logon security configuration items. For more information, see the following parameter descriptions. |
 
-Server Guard Advanced Edition D on
-
-```json
-{
- "BaseConfigs": [{
-  "totalCount": 9,
-  "location": "United States",
-  "uuidCount": 1,
-  "targetList": [{
-   "target": "6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac",
-   "targetType": "uuid"
-  }]
- }],
- "TotalCount": 1,
- "PageSize": 5,
- "RequestId": "485ABE58-4E27-4416-997C-F8F3B8748EB6",
- "CurrentPage": 1
-}
-```
-
-#### DescribeSwitchConfigs
-
-**Description**
-
-You can call this operation to query the logon security configuration records in the logon security settings.
-
-**Response parameters**
-
 | Item | String | The logon security configuration items. Valid values: login common location: indicates an approved _ _ logon location. login common ip: indicates an approved logon _ _ IP address. login common time: indicates an approved _ _ logon time range. login common account: indicates an approved _ _ logon account. |
 |---|---|---|
 | Status | Integer | The status of the configuration item. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSwitchConfigs
+https://aegis.[ RegionId].example.com/?Action=DescribeSwitchConfigs &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "Count":3,
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4",
  "ConfigList":[
-  {
    "Status":1,
    "Item":"login_common_ip"
-  },
-  {
+```
+
+`},`
+
+```json
    "Status":0,
    "Item":"login_common_account"
-  },
-  {
+```
+
+`},`
+
+```json
    "Status":0,"Item":"login_common_time"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-#### DescribeConfigTarget
-
-**Description**
+#### 4.5.3 DescribeConfigTarget
 
 You can call this operation to query the information about servers to which a specified logon security configuration record applies.
 
@@ -4466,11 +4216,30 @@ You can call this operation to query the information about servers to which a sp
 | TargetType | String | The type of the Target parameter value. Valid values: groupId: indicates an asset group ID. uuid: indicates a server UUID. |
 | Target | String | The asset group ID or server UUID. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribeConfigTarget &Config={"uuidCount":1,"location":"Ganzhou"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+  "TargetList": [{
+   "Target": "inet-e53455ec-a134-4d46-9ff5-c4f3a5fe0f02",
+   "TargetType": "uuid"
+  }, {
+   "Target": "inet-25f4ef74-29c7-49fd-85cc-b4543a2489a8",
+   "TargetType": "uuid"
+ "Count": 2,
+ "RequestId": "B8064EA4-9472-4D03-B7D1-6684DB5CD0BE",
+```
+
+#### 4.5.4 ModifyBaseConfig
+
+You can call this operation to modify logon security settings.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4478,87 +4247,65 @@ For more information about the error codes that this operation can return, see E
 | Type | String | Yes | The type of the logon security settings. Valid values: login common location: indicates _ _ approved logon locations. login common ip: indicates _ _ approved logon IP addresses. login common time: indicates _ _ approved logon time periods. login common account: indicates _ _ approved logon accounts. |
 | Target | String | No | The target server. Note You must set this parameter when you need to query the logon security settings for a server. For more information about the format, see the following sample request. |
 
-Server Guard Advanced Edition D on
-
-```
-https://aegis.[ RegionId].example.com/?Action=DescribeConfigTarget &Config={"uuidCount":1,"location":"Ganzhou"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
-```
-
-Sample responses (JSON format)
-
-```json
-{
-  "TargetList": [{
-   "Target": "inet-e53455ec-a134-4d46-9ff5-c4f3a5fe0f02",
-   "TargetType": "uuid"
-  }, {
-   "Target": "inet-25f4ef74-29c7-49fd-85cc-b4543a2489a8",
-   "TargetType": "uuid"
-  }
- "Count": 2,
- "RequestId": "B8064EA4-9472-4D03-B7D1-6684DB5CD0BE",
-}
-```
-
-#### ModifyBaseConfig
-
-**Description**
-
-You can call this operation to modify logon security settings.
-
-| Config | String |  | No | The logon security settings. The formats for all the settings are as follows: Approved logon locations: {"location":"Ganzhou City"} Approved logon IP addresses: {"ip":"x.x.x.x"} Approved logon time periods: {"startTime":"16:18","endTime" :"16:18"} Approved logon accounts: {"account":"dbaadmin"} |  |  |
+| Config | String |   | No | The logon security settings. The formats for all the settings are as follows: Approved logon locations: {"location":"Ganzhou City"} Approved logon IP addresses: {"ip":"x.x.x.x"} Approved logon time periods: {"startTime":"16:18","endTime" :"16:18"} Approved logon accounts: {"account":"dbaadmin"} |   |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  | {"startTime":"16:18","endTime" |  |
-|  |  |  |  | :"16:18"} |  |  |
+|   |   |   |   |   | {"startTime":"16:18","endTime" |   |
+|   |   |   |   | :"16:18"} |   |   |
 
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifyBaseConfig &Config={"startTime":"16:18","endTime":"16:18"} &Target=[{"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"},{"targetType":"uuid","target":"1759b0ea-6dd7-438b-b60d-c9 0179bd9ebc","flag":"del"}] &Type=login_common_location
+https://aegis.[ RegionId].example.com/?Action=ModifyBaseConfig &Config={"startTime":"16:18","endTime":"16:18"} &Target=[{"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"},{"targetType":"uuid","target":"1759b0ea-6dd7-438b-b60d-c9 0179bd9ebc","flag":"del"}] &Type=login_common_location &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"BB8F5902-BD50-49AB-B124-18E9CA92BB99"
-}
 ```
 
-#### DeleteBaseConfig
-
-**Description**
+#### 4.5.5 DeleteBaseConfig
 
 You can call this operation to delete a logon security setting, such as an approved logon location or IP address.
 
-| Action | String |  | Yes | The operation that you want to perform. Set this parameter to DeleteBaseConfig. |  |  |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+| Action | String |   | Yes | The operation that you want to perform. Set this parameter to DeleteBaseConfig. |   |   |
 |---|---|---|---|---|---|---|
-| Config | String |  | Yes | The logon security setting. The formats of the logon security settings and examples are as follows: Approved logon location: {"location":"Ganzhou City"} Approved logon IP address: {"ip":" x.x.x.x"} Approved logon time range: {"startTime":"16:18","endTime" :"16:18"} Approved logon account: {"account":"dbaa****"} |  |  |
-|  |  |  |  |  | {"startTime":"16:18","endTime" |  |
-|  |  |  |  | :"16:18"} |  |  |
-| Type | String |  | Yes | The type of the logon security setting. Valid values: login common location: indicates _ _ an approved logon location. login common ip: indicates an _ _ approved logon IP address. login common time: indicates an _ _ approved logon time range. login common account: indicates _ _ an approved logon account. |  |  |
-| Target | String |  | No | The target server. Note You must set this parameter if you want to delete a logon security setting for a server. For more information about the format, see the following sample request. |  |  |
+| Config | String |   | Yes | The logon security setting. The formats of the logon security settings and examples are as follows: Approved logon location: {"location":"Ganzhou City"} Approved logon IP address: {"ip":" x.x.x.x"} Approved logon time range: {"startTime":"16:18","endTime" :"16:18"} Approved logon account: {"account":"dbaa****"} |   |   |
+|   |   |   |   |   | {"startTime":"16:18","endTime" |   |
+|   |   |   |   | :"16:18"} |   |   |
+| Type | String |   | Yes | The type of the logon security setting. Valid values: login common location: indicates _ _ an approved logon location. login common ip: indicates an _ _ approved logon IP address. login common time: indicates an _ _ approved logon time range. login common account: indicates _ _ an approved logon account. |   |   |
+| Target | String |   | No | The target server. Note You must set this parameter if you want to delete a logon security setting for a server. For more information about the format, see the following sample request. |   |   |
 
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample request
+
+```
+https://aegis.[ RegionId].example.com/?Action=DeleteBaseConfig &Config={"location":"Ganzhou City"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location &<Common request parameters>
+```
+
+Sample response (JSON format)
+
+```json
+    "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
+```
+
+#### 4.5.6 ModifySwitchConfig
+
+You can call this operation to modify the setting about whether to enable a logon security configuration record to identify a valid logon to a server in the logon security settings.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4571,57 +4318,33 @@ For more information about the error codes that this operation can return, see E
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Count | Integer | The total number of returned records. |
 
-Server Guard Advanced Edition D on
-
-```
-https://aegis.[ RegionId].example.com/?Action=DeleteBaseConfig &Config={"location":"Ganzhou City"} &Target=[{"targetType":"uuid","target":"6dbdbfe7-06fa-4d9a-8268-ce2dc6d673ac"}] &Type=login_common_location
-```
-
-Sample response (JSON format)
-
-```json
-{
-    "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
-}
-```
-
-#### ModifySwitchConfig
-
-**Description**
-
-You can call this operation to modify the setting about whether to enable a logon security configuration record to identify a valid logon to a server in the logon security settings.
-
-**Response parameters**
-
 | ConfigList | Array | The status of the logon security configuration switch. For more information, see the following parameter descriptions. |
 |---|---|---|
 | Item | String | The logon security configuration items. Valid values: login common location: indicates an approved _ _ logon location. login common ip: indicates an approved logon _ _ IP address. login common time: indicates an approved _ _ logon time range. login common account: indicates an approved _ _ logon account. |
 | Status | Integer | The status of the logon security configuration switch. Valid values: 1: indicates enabled. 0: indicates disabled. |
 
-| Name | Type | Required | Description |
-|---|---|---|---|
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=ModifySwitchConfig &Item=login_common_location &Status=1
+https://aegis.[ RegionId].example.com/?Action=ModifySwitchConfig &Item=login_common_location &Status=1 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4"
-}
 ```
 
-### Webshell detection
+### 4.6 Webshell detection
 
-#### DescribeCategoryCount
-
-**Description**
+#### 4.6.1 DescribeCategoryCount
 
 You can call this operation to query the number of webshells detected by Server Guard.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeCategoryCount. |
 |---|---|---|---|
@@ -4631,37 +4354,31 @@ You can call this operation to query the number of webshells detected by Server 
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Webshell | Integer | The number of webshells. |
 
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribeCategoryCount &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+    "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
+    "Webshell": 2
+```
+
+#### 4.6.2 DescribeWebshell
+
+You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeWebshell. |
 | GroupId | Integer | No | The ID of the asset group. |
 | Mark | String | No | The IP address or instance name of the server. |
 | Tag | Integer | No | The server tag ID. |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=DescribeCategoryCount
-```
-
-Sample responses (JSON format)
-
-```json
-{
-    "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
-    "Webshell": 2
-}
-```
-
-#### DescribeWebshell
-
-**Description**
-
-You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path.
 
 | Dealed | String | No | The status of the webshell event. Valid values: n: indicates that the event is pending. y: indicates that the event has been handled. |
 |---|---|---|---|
@@ -4684,29 +4401,20 @@ You can call this operation to query records of webshell files that have been de
 | TrojanPath | String | The path of the webshell file. |
 | Region | String | The region where the server resides. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | Status | Integer | The status of the webshell event. Valid values: 1: indicates that the event is pending. 2: indicates that the event has been ignored. 3: indicates that the event has been confirmed. 8: indicates that the event has been labeled as a false positive. 16: indicates that the event is being handled. 32: indicates that the event has been handled. |
 |---|---|---|
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeWebshell &Dealed=n &GroupId=1 &Remark=xx.xx.xx.xx &Tag=11
+https://aegis.[ RegionId].example.com/?Action=DescribeWebshell &Dealed=n &GroupId=1 &Remark=xx.xx.xx.xx &Tag=11 &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeQuaraFile. |
-
-Server Guard Advanced Edition D on
-
 ```json
-{
     "WebshellList": [{
         "Uuid": "aa46dbe9-d35d-4b77-a4d9-10bc6b1b****",
         "FoundTime": "2018-02-27 03:23:18",
@@ -4739,14 +4447,15 @@ Server Guard Advanced Edition D on
         "InstanceName": "win08-zhb"
     }],
     "RequestId": "E4B254AE-5CB1-4810-8B51-A08DF5697F25"
-}
 ```
 
-#### DescribeQuaraFile
-
-**Description**
+#### 4.6.3 DescribeQuaraFile
 
 You can call this operation to obtain the list of quarantined files.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeQuaraFile. |
 
 | PageSize | Integer | No | The maximum number of records to be displayed on each page of the query result. Default value: 20. |
 |---|---|---|---|
@@ -4768,9 +4477,37 @@ You can call this operation to obtain the list of quarantined files.
 | Tag | String | The unique identifier of the unusual event. |
 | Uuid | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on
+**Error codes**
 
-**Response parameters**
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribeQuaraFile &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+    "TotalCount":1,
+    "PageSize":20,
+    "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
+    "CurrentPage":1,
+    "QuaraFiles":[
+            "Path":"/bin/ping",
+            "Uuid":"9b0c4d55-2f1f-4766-a90a-2c9d8a0b7642",
+            "FileStatus":"quaraDone",
+            "EventType":"Parent class of cloud scanning events (test ping)",
+            "EventName":"Sub-class of cloud scanning events (test ping)",
+            "Tag":"1d791175ad0bffd973b039248d6086e0",
+            "Online":false,
+            "Md5":"1421d9ad2b0031483f396154d48161f1"
+```
+
+`]`
+
+#### 4.6.4 RollbackQuaraFile
+
+You can call this operation to restore a specified quarantined file.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4780,48 +4517,27 @@ Server Guard Advanced Edition D on
 | Tag | String | No | The GUID of the unusual event. |
 | Uuid | String | No | The UUID of the server. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+| Name | Type | Description |
+|---|---|---|
+| RequestId | String | The GUID generated by Alibaba Cloud for the request. |
+
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeQuaraFile
+https://aegis.[ RegionId].example.com/?Action=RollbackQuaraFile &EventName=DDoS trojan &EventType=Malicious process &Tag=a50f96f958fbd59f68e4bca4d90679d6 &Uuid=00f11fcb-1a9a-4fd5-a48a-e0e5bd12a6a4 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
-    "TotalCount":1,
-    "PageSize":20,
-    "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
-    "CurrentPage":1,
-    "QuaraFiles":[
-        {
-            "Path":"/bin/ping",
-            "Uuid":"9b0c4d55-2f1f-4766-a90a-2c9d8a0b7642",
-            "FileStatus":"quaraDone",
-            "EventType":"Parent class of cloud scanning events (test ping)",
-            "EventName":"Sub-class of cloud scanning events (test ping)",
-            "Tag":"1d791175ad0bffd973b039248d6086e0",
-            "Online":false,
-            "Md5":"1421d9ad2b0031483f396154d48161f1"
-        }
+ "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
 ```
 
-]
+#### 4.6.5 DescribeWebPath
 
-```
-}
-```
-
-#### RollbackQuaraFile
-
-**Description**
-
-You can call this operation to restore a specified quarantined file.
-
-| Name | Type | Description |
-|---|---|---|
-| RequestId | String | The GUID generated by Alibaba Cloud for the request. |
+You can call this operation to query the Web directories defined in webshell settings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4829,30 +4545,6 @@ You can call this operation to restore a specified quarantined file.
 | PageSize | Integer | No | The number of records to return on each page. Default value: 20. |
 | CurrentPage | Integer | No | The number of the page to return. Default value: 1. |
 | Type | String | No | The type of the settings. Set this parameter to web path to _ specify the Web directory settings. |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=RollbackQuaraFile &EventName=DDoS trojan &EventType=Malicious process &Tag=a50f96f958fbd59f68e4bca4d90679d6 &Uuid=00f11fcb-1a9a-4fd5-a48a-e0e5bd12a6a4
-```
-
-Sample responses (JSON format)
-
-```json
-{
- "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
-}
-```
-
-#### DescribeWebPath
-
-**Description**
-
-You can call this operation to query the Web directories defined in webshell settings.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -4867,17 +4559,39 @@ You can call this operation to query the Web directories defined in webshell set
 | TargetType | String | This parameter always returns a value of uuid, which means that the Target parameter returns the universally unique identifier (UUID) of the server. |
 | Target | String | The UUID of the server. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeWebPath
+https://aegis.[ RegionId].example.com/?Action=DescribeWebPath &<Common request parameters>
 ```
 
 Sample response (JSON format)
+
+```json
+ "TotalCount":1,
+ "PageSize":5,
+ "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534",
+ "CurrentPage":1,
+ "Count":1,
+ "ConfigList":[
+   "TargetList":[
+     "Target":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
+     "TargetType":"uuid"
+```
+
+`],`
+
+```json
+   "WebPath":"/usr/local/tomcat/webroot18"
+```
+
+`]`
+
+#### 4.6.6 ModifyWebPath
+
+You can call this operation to modify the Web directory in webshell settings.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4890,44 +4604,23 @@ Sample response (JSON format)
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-Server Guard Advanced Edition D on
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=ModifyWebPath &Type=web_path &Config={"webPath":"/test"} &Target={"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"} &<Common request parameters>
+```
+
+Sample responses (JSON format)
 
 ```json
-{
- "TotalCount":1,
- "PageSize":5,
- "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534",
- "CurrentPage":1,
- "Count":1,
- "ConfigList":[
-  {
-   "TargetList":[
-    {
-     "Target":"inet-f6ac9a93-0818-4052-90e2-d24f18ee198b",
-     "TargetType":"uuid"
-    }
+ "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534"
 ```
 
-`],`
+#### 4.6.7 OperateTrojan
 
-```json
-   "WebPath":"/usr/local/tomcat/webroot18"
-  }
-```
-
-]
-
-```
-}
-```
-
-#### ModifyWebPath
-
-**Description**
-
-You can call this operation to modify the Web directory in webshell settings.
-
-**Response parameters**
+You can call this operation to handle detected webshells.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4936,33 +4629,33 @@ You can call this operation to modify the Web directory in webshell settings.
 | OperateType | String | No | The type of the operation. Valid values: isolate: indicates an operation to quarantine the file. trust: indicates an operation to trust the file. untrust: indicates an operation to cancel trusting the file. restore: indicates an operation to restore the file. |
 | Type | Integer | No | The type of the trojan. Set the value to 1. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=ModifyWebPath &Type=web_path &Config={"webPath":"/test"} &Target={"targetType":"uuid","target":"0c797eb1-e6b9-4b5a-8917a7e6cbbb4b2e","flag":"add"}
-```
-
-Sample responses (JSON format)
-
-```json
-{
- "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534"
-}
-```
-
-#### OperateTrojan
-
-**Description**
-
-You can call this operation to handle detected webshells.
-
-**Response parameters**
-
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | FailedCount | Integer | The number of failed operations. |
 | SuccessCount | Integer | The number of successful operations. |
+
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=OperateTrojan &Info=[{"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","filePath":"/home/test/Z02.php","webshellId":""}] &OperateType=trust &Type=1 &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+    "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
+    "FailedCount": 0,
+    "SuccessCount": 1
+```
+
+### 4.7 Exception detection on hosts
+
+#### 4.7.1 DescribeSuspEventTypes
+
+You can call this operation to query the unusual event types.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -4971,32 +4664,6 @@ You can call this operation to handle detected webshells.
 | Name | Type | Description |
 |---|---|---|
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=OperateTrojan &Info=[{"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","filePath":"/home/test/Z02.php","webshellId":""}] &OperateType=trust &Type=1
-```
-
-Sample responses (JSON format)
-
-```json
-{
-    "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
-    "FailedCount": 0,
-    "SuccessCount": 1
-}
-```
-
-### Exception detection on hosts
-
-#### DescribeSuspEventTypes
-
-**Description**
-
-You can call this operation to query the unusual event types.
-
-**Response parameters**
-
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 |---|---|---|
 | TotalCount | Integer | The total number of returned records. |
@@ -5004,42 +4671,33 @@ You can call this operation to query the unusual event types.
 | AliseEventType | String | The name of the unusual event type. |
 | EventType | String | The identifier of the unusual event type. |
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeSuspTrendStatistics. |
+**Error codes**
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspEventTypes
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspEventTypes &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "TotalCount":1,
  "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
  "EventTypes":[
-  {
    "EventType":"Suspicious process",
    "AliseEventType":"Suspicious process"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
-
-#### DescribeSuspTrendStatistics
-
-**Description**
+#### 4.7.2 DescribeSuspTrendStatistics
 
 You can call this operation to query the chart data on different types of unusual server events on each day.
 
-**Response parameters**
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeSuspTrendStatistics. |
 
 | Name | Type | Description |
 |---|---|---|
@@ -5047,6 +4705,27 @@ You can call this operation to query the chart data on different types of unusua
 | Interval | Integer | The time length of the the time frame specified for query. |
 | StartTime | Integer | The start time of the time frame specified for query. |
 | SuspiciousItems | List | The statistics on numbers of different types of suspicious events. |
+
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspTrendStatistics &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+ "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
+ "Start":-28800000,
+ "Interval":86400000,
+ "SuspiciousItems":[ ]
+```
+
+#### 4.7.3 DescribeSuspiciousExportInfo
+
+You can call this operation to query an unusual event export task.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -5056,31 +4735,6 @@ You can call this operation to query the chart data on different types of unusua
 | Parameter | Type | Description |
 |---|---|---|
 | RequestId | String | The ID of the request. |
-
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspTrendStatistics
-```
-
-Sample responses (JSON format)
-
-```json
-{
- "RequestId":"66BE7091-BC00-4943-8A0D-B3DCE90AD7B5",
- "Start":-28800000,
- "Interval":86400000,
- "SuspiciousItems":[ ]
-}
-```
-
-#### DescribeSuspiciousExportInfo
-
-**Description**
-
-You can call this operation to query an unusual event export task.
-
-**Response parameters**
 
 | CurrentCount | Integer | The number of records that have been exported. |
 |---|---|---|
@@ -5093,16 +4747,17 @@ You can call this operation to query an unusual event export task.
 | Progress | Integer | The export progress. |
 | TotalCount | Integer | The total number of records that have been exported. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample request
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample request
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeSuspiciousExportInfo &ExportId=1
+https://aegis.[ RegionId].example.com/?Action=DescribeSuspiciousExportInfo &ExportId=1 &<Common request parameters>
 ```
 
 Sample response (JSON format)
 
 ```json
-{
  "TotalCount":30,
  "GmtCreate":1518071546000,
  "Progress":100,
@@ -5113,8 +4768,12 @@ Sample response (JSON format)
  "CurrentCount":30,
  "Id":11,
  "Link":"http://suspicious-export.oss-cn-
-shanghai.example.com/export/suspicious_20180208_1518071576098.zip? Expires=1518075176&OSSAccessKeyId=<yourAccessKeyId>&Signature=xxxx%xxxx%3D" }
+shanghai.example.com/export/suspicious_20180208_1518071576098.zip? Expires=1518075176&OSSAccessKeyId=<yourAccessKeyId>&Signature=xxxx%xxxx%3D"
 ```
+
+#### 4.7.4 OperateSuspiciousEvent
+
+You can call this operation to handle detected unusual events.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5126,17 +4785,23 @@ shanghai.example.com/export/suspicious_20180208_1518071576098.zip? Expires=15180
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-Server Guard Advanced Edition D on
-
-#### OperateSuspiciousEvent
-
-**Description**
-
-You can call this operation to handle detected unusual events.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=OperateSuspiciousEvent &OperateType=ignore &Data={"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","tag":"f87eb0ee5934f6f65343ec601ce71c2f","eventType":"Malicious process es (malware checking)","eventName":"DDoS Trojan},{"uuid":"97988c2b-de9d-4159-90ab-7cc 73561c64c","tag":"95347a77b8c0d6dae99a23ab69aa90f4","eventType":"Malicious processes (malware checking)","eventName":"GateDDoS Trojan"} &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+ "RequestId":"654A6FD8-B55D-4D6B-AAFF-4122503D108B"
+```
+
+#### 4.7.5 OperateLoginLog
+
+You can call this operation to label a detected unusual logon event as handled.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5148,29 +4813,23 @@ For more information about the error codes that this operation can return, see E
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-Server Guard Advanced Edition D on
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateSuspiciousEvent &OperateType=ignore &Data={"uuid":"97988c2b-de9d-4159-90ab- 7cc73561c64c","tag":"f87eb0ee5934f6f65343ec601ce71c2f","eventType":"Malicious process es (malware checking)","eventName":"DDoS Trojan},{"uuid":"97988c2b-de9d-4159-90ab-7cc 73561c64c","tag":"95347a77b8c0d6dae99a23ab69aa90f4","eventType":"Malicious processes (malware checking)","eventName":"GateDDoS Trojan"}
+https://aegis.[ RegionId].example.com/?Action=OperateLoginLog &Ids=2006434 &OperateType=confirm &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
- "RequestId":"654A6FD8-B55D-4D6B-AAFF-4122503D108B"
-}
+ "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905"
 ```
 
-#### OperateLoginLog
+#### 4.7.6 DescribeVirusInfo
 
-**Description**
-
-You can call this operation to label a detected unusual logon event as handled.
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Sample requests
+You can call this operation to upload the MD5 values of files and use Alibaba Cloud Antivirus to determine whether the files are malicious programs.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5183,33 +4842,24 @@ For more information about the error codes that this operation can return, see E
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | Data | Boolean | Indicates whether the file is malicious. Valid values: True: Indicates that the file is malicious. False: Indicates that the file is not malicious. |
 
-Server Guard Advanced Edition D on
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=OperateLoginLog &Ids=2006434 &OperateType=confirm
+https://aegis.[ RegionId].aliyuncs.com/?Action= DescribeVirusInfo &Md5=6f6628d923f9018b28acc5f905e03244 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
- "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905"
-}
+ "RequestId": "A2423F39-3272-4491-804E-D0EBDE3E894D",
+ "Data": true
 ```
 
-#### DescribeVirusInfo
+#### 4.7.7 CreateSuspiciousExport
 
-**Description**
-
-You can call this operation to upload the MD5 values of files and use Alibaba Cloud Antivirus to determine whether the files are malicious programs.
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```
-https://aegis.[ RegionId].aliyuncs.com/?Action= DescribeVirusInfo &Md5=6f6628d923f9018b28acc5f905e03244
-```
+You can call this operation to export the information about unusual events on servers based on search conditions.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5218,21 +4868,6 @@ https://aegis.[ RegionId].aliyuncs.com/?Action= DescribeVirusInfo &Md5=6f6628d92
 | EventNameRema rk | String | No | The name of the event. Fuzzy matching is supported. |
 | EventType | String | No | The name of the event type. Valid values: Unusual logon Suspicious process Suspicious account Sensitive file tampering Suspicious network connection Unusual event Suspicious file Malicious process |
 | GroupId | String | No | The ID of the asset group. |
-
-Server Guard Advanced Edition D on Sample responses (JSON format)
-
-```json
-{
- "RequestId": "A2423F39-3272-4491-804E-D0EBDE3E894D",
- "Data": true
-}
-```
-
-#### CreateSuspiciousExport
-
-**Description**
-
-You can call this operation to export the information about unusual events on servers based on search conditions.
 
 | Level | String | No | The risk level of the event. Valid values: Critical: indicates a critical-risk event. Important: indicates an important- risk event. Moderate: indicates a moderate-risk event. low: indicates a low-risk event. You can specify multiple event levels and separate them with commas (,). |
 |---|---|---|---|
@@ -5247,11 +4882,29 @@ You can call this operation to export the information about unusual events on se
 | FileName | String | The name of the exported file. |
 | Id | Long | The ID of the export task. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```
+https://aegis.[ RegionId].example.com/?Action=CreateSuspiciousExport &Remark=23 &EventType=Suspicious process &Level=serious,high,medium,low &Dealed=n &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+    "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
+    "FileName": "suspicious_20180408",
+    "Id": 387
+```
+
+#### 4.7.8 CreateFileProtectRule
+
+User logon
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5260,26 +4913,6 @@ For more information about the error codes that this operation can return, see E
 | Id | Long | Query | No | 245 | The ID of the baseline policy. |
 | RuleName | Strin g | Query | Yes | Rule**** | The name of the system rule. |
 | ProcPaths | Repe atList | Query | Yes | D:\Games\Launcher.exe | A list of process paths to monitor. Wildcards are supported. |
-
-Server Guard Advanced Edition D on
-
-```
-https://aegis.[ RegionId].example.com/?Action=CreateSuspiciousExport &Remark=23 &EventType=Suspicious process &Level=serious,high,medium,low &Dealed=n
-```
-
-Sample responses (JSON format)
-
-```json
-{
-    "RequestId": "43F670F3-AB40-4E91-BC7D-C57468834F67",
-    "FileName": "suspicious_20180408",
-    "Id": 387
-}
-```
-
-#### CreateFileProtectRule
-
-User logon This operation uses common request headers. For more information, see Common request parameters.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5290,55 +4923,55 @@ User logon This operation uses common request headers. For more information, see
 | SwitchId | Strin g | Query | No | vs-abcdef**** | The ID of the switch that corresponds to the rule. |
 | Status | Integ er | Query | No | 1 | The status of the quarantined file to query. Valid values: quaraFailed: Fencing failed quaraDone: Fencing successful Quarantining: The process of isolation. rollbackFailed: Revoking fencing failed rollbackDone: Revoking fencing successful rollbacking: Revoking fencing in progress. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-Server Guard Advanced Edition D on
-
-**Response data**
-
-| erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |  |  |
+| erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |   |   |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RuleId | Long | 123 | The ID of the rule. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- aegis:UpdateFileProtectRule | Write | acs:yundun-aegis:*: {#accountId}:* |
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Query | No | 219.133.XX.XX | The source IP address of the request. |
-
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateFileProtectRule &RuleName=Rule**** &ProcPaths=D:\Games\Launcher.exe &FilePaths=/static/test.png &FileOps=EXISTS &RuleAction=1
+http(s)://[Endpoint]/?Action=CreateFileProtectRule &RuleName=Rule**** &ProcPaths=D:\Games\Launcher.exe &FilePaths=/static/test.png &FileOps=EXISTS &RuleAction=1 &<Common request parameters>
 ```
 
 Response example `JSON` format
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "RuleId":123
-}
 ```
 
-#### UpdateFileProtectRule
+#### 4.7.9 UpdateFileProtectRule
 
 Modifies a core file protection rule.
 
 **Authorization**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- aegis:UpdateFileProtectRule | Write | acs:yundun-aegis:*: {#accountId}:* |
+
 **Traffic shaping**
 
-The request frequency for a single user is limited to 10 queries per second (QPS). The request frequency for this API is limited to 100 QPS. This operation uses only common request headers. For more information, see Common request parameters.
+The request frequency for a single user is limited to 10 queries per second (QPS). The request frequency for this API is limited to 100 QPS.
 
-|  |  |  |  | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o |
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Query | No | 219.133.XX.XX | The source IP address of the request. |
+
+|   |   |   |   | Serve evelo | r Guard Advanced Edition D per Guide·API documentat o |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | Lang | Strin g | Query | No | zh | The language of the request and response. The default value is zh. zh: Chinese en: English |
@@ -5359,10 +4992,6 @@ The request frequency for a single user is limited to 10 queries per second (QPS
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 Request example
 
 ```
@@ -5372,16 +5001,35 @@ https://[Endpoint]/?Action=UpdateFileProtectRule&RegionId=cnhangzhou&SourceIp=21
 Sample success response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` format
 
+```xml
+HTTP/1.1 200 OK Content-Type:application/xml <UpdateFileProtectRuleResponse>
+    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</UpdateFileProtectRuleResponse>
+```
+
+#### 4.7.10 ListFileProtectEventExport
+
+Call the ListFileProtectEventExport operation to query alert events for core file monitoring.
+
+**Authorization information**
+
 | Operation | Access level | Resource type |
 |---|---|---|
 | yundun- aegis:ListFileProtectEventExpor t | Read | acs:yundun-aegis:*: {#accountId}:* |
+
+**Traffic shaping**
+
+Call frequency for a single user: 10 QPS. Call frequency for this API operation: 100 QPS.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see the common request parameters document.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5391,25 +5039,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-Server Guard Advanced Edition D on
-
-```xml
-HTTP/1.1 200 OK Content-Type:application/xml
-    <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
-```
-
-#### ListFileProtectEventExport
-
-Call the ListFileProtectEventExport operation to query alert events for core file monitoring.
-
-**Authorization information**
-
-**Traffic shaping**
-
-Call frequency for a single user: 10 QPS. Call frequency for this API operation: 100 QPS. This operation uses only common request headers. For more information, see the common request parameters document.
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | EventDTOList | Array | [ { "LatestTimeStr":"1 694576692000", "Status":"0,1,2", "FilePath":"/etc/pa m.d/su", "FirstTime":169457 6692000, "ResourceSetName ":"test", "GmtModified":"16 7118088****", "CmdLine":" [\"touch\",\"/test/aa aa\"]", "OrgName":"test", "Operation":"READ ", "IntranetIp":"192.1 68.176.75", "Remark":"test", "InstanceName":"c a cpm ****", _ _ "OrgId":"12", "ProcPermission":"r wxr-xr-x", "Uuid":"c9107c04- 942f-40c1-981a- f1c1***", "InternetIp":"43.11 6.5.5", "LatestTime":1694 576692000, "FirstTimeStr":"169 4576692000", "AlertLevel":1, "ProcessId":"52636 ", "ProcPath":" /usr/bin/sshpass", "ResourceSetId":"1 2", "HandleTime":1694 576692000, "RuleName":"test- rule-1" } ] | The list of alerts. |
@@ -5417,9 +5046,7 @@ Call frequency for a single user: 10 QPS. Call frequency for this API operation:
 | -Uuid | String | c9107c04-942f- 40c1-981a-f1c1*** | The UUID of the instance. |
 | -RuleName | String | test-rule-1 | The name of the rule. |
 
-Server Guard Advanced Edition D on
-
-|  |  |  | Server Guard Advanced Edition D eveloper Guide·API documentat |
+|   |   |   | Server Guard Advanced Edition D eveloper Guide·API documentat |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5439,9 +5066,7 @@ Server Guard Advanced Edition D on
 | -InternetIp | String | 43.116.5.5 | The public IP address. |
 | -GmtModified | Long | 167118088**** | The time of the last modification. |
 
-on
-
-| S e o | erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |  |  |  |
+| S e o | erver Guard Adv veloper Guide·AP n | anced Edition D I documentati |   |   |   |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5466,13 +5091,12 @@ Sample request
 https://[Endpoint]/?Action=ListFileProtectEventExport&RegionId=cnhangzhou&SourceIp=219.133.XX.XX&Lang=zh
 ```
 
-Sample response Server Guard Advanced Edition D on `JSON` format
+Sample response `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************",
     "EventDTOList":[
-        {
             "LatestTimeStr":"1694576692000",
             "Status":"0,1,2",
             "FilePath":"/etc/pam.d/su",
@@ -5497,7 +5121,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
             "ResourceSetId":"12",
             "HandleTime":1694576692000,
             "RuleName":"test-rule-1"
-        }
 ```
 
 `],`
@@ -5508,21 +5131,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
         "PageSize":20,
         "CurrentPage":1,
         "Count":2
-    }
-}
 ```
 
 `XML` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | -2000 | DefenceAtLeastOneConfig | At least one protection directory is needed. |
-| 500 | -100 | InternalError | The request processing has failed due to some unknown error. |
-
-Server Guard Advanced Edition D on
-
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ListFileProtectEventExportResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
     <EventDTOList>
         <AlertLevel>1</AlertLevel>
@@ -5556,7 +5170,21 @@ HTTP/1.1 200 OK Content-Type:application/xml
         <TotalCount>2</TotalCount>
         <CurrentPage>1</CurrentPage>
     </PageInfo>
+</ListFileProtectEventExportResponse>
 ```
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | -2000 | DefenceAtLeastOneConfig | At least one protection directory is needed. |
+| 500 | -100 | InternalError | The request processing has failed due to some unknown error. |
+
+### 4.8 Retrieval of host logs
+
+#### 4.8.1 DescribeFilterFields
+
+You can call this operation to query the filter fields of a specified server log search condition.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5570,25 +5198,31 @@ HTTP/1.1 200 OK Content-Type:application/xml
 | LogFilterList | Array | The filter field information. For more information, see the following parameter descriptions. |
 | Fields | String | The filter fields. |
 
-Server Guard Advanced Edition D on
-
-### Retrieval of host logs
-
-#### DescribeFilterFields
-
-**Description**
-
-You can call this operation to query the filter fields of a specified server log search condition.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeFilterFields &Query=aegis-log-login@warn_port:22
+https://aegis.[ RegionId].example.com/?Action=DescribeFilterFields &Query=aegis-log-login@warn_port:22 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
+
+```json
+ "LogFilterList":[
+   "Fields":"IP;IP address,UUID;Client ID","fieldsName":"default"
+```
+
+`],`
+
+```json
+ "Total":"20",
+ "RequestID":"883e1e3d-4443-4206-871c-6c0625c01332"
+```
+
+#### 4.8.2 DescribeHistogram
+
+You can call this operation to obtain the statistics on server logs generated within a specified time frame.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5604,49 +5238,17 @@ Sample responses (JSON format)
 | Items | Array | The log quantity statistics. For more information, see the following parameter descriptions. |
 | Data | List | The number of logs. |
 
-Server Guard Advanced Edition D on
-
-```json
-{
- "LogFilterList":[
-  {
-   "Fields":"IP;IP address,UUID;Client ID","fieldsName":"default"
-  }
-```
-
-`],`
-
-```json
- "Total":"20",
- "RequestID":"883e1e3d-4443-4206-871c-6c0625c01332"
-}
-```
-
-#### DescribeHistogram
-
-**Description**
-
-You can call this operation to obtain the statistics on server logs generated within a specified time frame.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeLogInfo. |
-| PageSize | Integer | No | The maximum number of records to be displayed on each page of the query result. Default value: 20. |
-
-Server Guard Advanced Edition D on
-
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeHistogram &EndTime=2018-03-03 17:41:03 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeHistogram &EndTime=2018-03-03 17:41:03 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"82D245FB-7A5D-4155-B59F-5B084CE93B6B",
  "Categories":[
   "1519983663000,1519984800000",
@@ -5662,27 +5264,19 @@ Sample responses (JSON format)
 
 ```json
  "Items":[
-  {
    "Data":[
 ```
 
-`0,` `0,` `0,` `0,` `0,` `0,` ]
+`0,` `0,` `0,` `0,` `0,` `0,` `]` `]`
 
-```
-  }
-```
-
-]
-
-```
-}
-```
-
-#### DescribeLogInfo
-
-**Description**
+#### 4.8.3 DescribeLogInfo
 
 You can call this operation to query the server log fields based on specified query conditions.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeLogInfo. |
+| PageSize | Integer | No | The maximum number of records to be displayed on each page of the query result. Default value: 20. |
 
 | CurrentPage | Integer | No | The current page number. Default value: 1. |
 |---|---|---|---|
@@ -5702,60 +5296,72 @@ You can call this operation to query the server log fields based on specified qu
 | Desc | String | The name of the log field. |
 | Type | String | The type of the log field. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogInfo &CurrentPage=1 &EndTime=2018-03-03 17:41:03 &PageSize=20 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeLogInfo &CurrentPage=1 &EndTime=2018-03-03 17:41:03 &PageSize=20 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
-Sample responses (JSON format) Server Guard Advanced Edition D on
+Sample responses (JSON format)
 
 ```json
-{
     "TotalCount":1,
     "RequestId":"3A7CFB73-C24C-4711-B7D9-2BE74EBFFE78",
     "LogInfoItems":[
-        {
             "Fields":[
-                {
                     "Desc":"IP address",
                     "Type":"string",
                     "Name":"ip"
-                },
-                {
+```
+
+`},`
+
+```json
                     "Desc":"Client number",
                     "Type":"string",
                     "Name":"uuid"
-                },
-                {
+```
+
+`},`
+
+```json
                     "Desc":"Logon source IP address",
                     "Type":"string",
                     "Name":"warn_ip"
-                },
-                {
+```
+
+`},`
+
+```json
                     "Desc":"Logon port",
                     "Type":"string",
                     "Name":"warn_port"
-                },
-                {
+```
+
+`},`
+
+```json
                     "Desc":"Logon username",
                     "Type":"string",
                     "Name":"warn_user"
-                },
-                {
+```
+
+`},`
+
+```json
                     "Desc":"Logon type",
                     "Type":"string",
                     "Name":"warn_type"
-                },
-                {
+```
+
+`},`
+
+```json
                     "Desc":"Logon count",
                     "Type":"string",
                     "Name":"warn_count"
-                }
 ```
 
 `],`
@@ -5763,18 +5369,13 @@ Sample responses (JSON format) Server Guard Advanced Edition D on
 ```json
             "Id":"aegis-log-login",
             "Name":"Logon serial number"
-        },
 ```
 
-]
+`},` `]`
 
-```
-}
-```
+#### 4.8.4 DescribeLogItems
 
-#### DescribeLogItems
-
-**Description**
+You can call this operation to query the server log details that are returned by a query.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5797,10 +5398,6 @@ Sample responses (JSON format) Server Guard Advanced Edition D on
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | TotalCount | Integer | The number of returned records. |
 | CurrentPage | Integer | The current page number. |
-
-Server Guard Advanced Edition D on You can call this operation to query the server log details that are returned by a query.
-
-**Response parameters**
 
 | SetPageSize | Integer | The maximum number of records displayed on a page. |
 |---|---|---|
@@ -5825,23 +5422,17 @@ Server Guard Advanced Edition D on You can call this operation to query the serv
 | MKey | String | The log entry. |
 | MValue | String | The value of the log entry. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to CreateLogQuery. |
-| Conditions | String | No | The log search condition. |
-
-Server Guard Advanced Edition D on
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogItems &CurrentPage=1 &PageSize=100 &AccountSnapshotOffset=1000 &CrackOffset=1000 &EndTime=2018-03-05 11:46:07 &LoginOffset=1000 &NetworkOffset=1000 &PortSnapshotOffset=1000 &ProcessOffset=1000 &ProcessSnapshotOffset=1000 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03
+https://aegis.[ RegionId].example.com/?Action=DescribeLogItems &CurrentPage=1 &PageSize=100 &AccountSnapshotOffset=1000 &CrackOffset=1000 &EndTime=2018-03-05 11:46:07 &LoginOffset=1000 &NetworkOffset=1000 &PortSnapshotOffset=1000 &ProcessOffset=1000 &ProcessSnapshotOffset=1000 &Query=aegis-log-login@warn_port:22 &StartTime=2018-03-02 17:41:03 &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905",
  "PageSize":100,
  "AccountSnapshotTotalCount":0,
@@ -5859,14 +5450,16 @@ Sample responses (JSON format)
  "PortSnapshotTotalCount":0,
  "ProcessSnapshotTotalCount":0,
  "ProcessTotalCount":0
-}
 ```
 
-#### CreateLogQuery
-
-**Description**
+#### 4.8.5 CreateLogQuery
 
 You can call this operation to create or save server log search conditions.
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to CreateLogQuery. |
+| Conditions | String | No | The log search condition. |
 
 | QueryDetail | String | No | The log search sub-conditions. |
 |---|---|---|---|
@@ -5875,6 +5468,24 @@ You can call this operation to create or save server log search conditions.
 | Name | Type | Description |
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
+
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
+
+```json
+https://aegis.[ RegionId].example.com/?Action=CreateLogQuery &Conditions=aegis-log-login@warn_port:22 &QueryDetail=[[{"itemForm":{},"d":{"name":"Logons","id":"aegis-log-login","fields":[{ "name":"ip","type":"string","desc":"IP address","text":"IP(IP address)"}]] &QueryName=test &<Common request parameters>
+```
+
+Sample responses (JSON format)
+
+```json
+ "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
+```
+
+#### 4.8.6 DescribeLogQuery
+
+You can call this operation to query the saved server log search conditions.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5885,68 +5496,37 @@ You can call this operation to create or save server log search conditions.
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 | ListTotal | Integer | The total number of returned records. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
-For more information about the error codes that this operation can return, see Error codes. Sample requests
-
-```json
-https://aegis.[ RegionId].example.com/?Action=CreateLogQuery &Conditions=aegis-log-login@warn_port:22 &QueryDetail=[[{"itemForm":{},"d":{"name":"Logons","id":"aegis-log-login","fields":[{ "name":"ip","type":"string","desc":"IP address","text":"IP(IP address)"}]] &QueryName=test
-```
-
-Sample responses (JSON format)
-
-```json
-{
- "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
-}
-```
-
-#### DescribeLogQuery
-
-**Description**
-
-You can call this operation to query the saved server log search conditions.
-
-**Response parameters**
-
 | QueryItems | Array | The details of log search conditions. For more information, see the following parameter descriptions. |
 |---|---|---|
 | Conditions | String | The log search conditions. |
 | QueryDetail | String | The log search sub-conditions. |
 | QueryName | String | The name of the log search task. |
 
-Server Guard Advanced Edition D on For more information about the error codes that this operation can return, see Error codes. Sample requests
+**Error codes**
+
+For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DescribeLogQuery
+https://aegis.[ RegionId].example.com/?Action=DescribeLogQuery &<Common request parameters>
 ```
 
-Sample responses (JSON format) Server Guard Advanced Edition D on
+Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"65802B9B-4D30-40F0-8691-F126652DBEBE",
  "ListTotal":1,
  "QueryItems":[
-  {
    "QueryDetail":"[[{\"itemForm\":{},\"d\":{\"name\":\"Account
 snapshot\",\"id\":\"aegis-snapshot-host\",\"fields\": [{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\"}, {\"name\":\"uuid\",\"type\":\"string\",\"desc\":\"Client ID\"}, {\"name\":\"perm\",\"type\":\"string\",\"desc\":\"Root permission availability\"},{\" name\":\"home_dir\",\"type\":\"string\",\"desc\":\"Home directory\"}, {\"name\":\"warn_time\",\"type\":\"string\",\"desc\":\"Password expiration reminder t ime\"},{\"name\":\"groups\",\"type\":\"array\",\"desc\":\"User group\"}, {\"name\":\"login_ip\",\"type\":\"string\",\"desc\":\"Last logon IP\"}, {\"name\":\"last_chg\",\"type\":\"string\",\"desc\":\"Last password change time\"},{\ "name\":\"shell\",\"type\":\"string\",\"desc\":\"Linux shell command\"}, {\"name\":\"domain\",\"type\":\"string\",\"desc\":\"Windows domain\"}, {\"name\":\"tty\",\"type\":\"string\",\"desc\":\"Logon terminal\"}, {\"name\":\"account_expire\",\"type\":\"string\",\"desc\":\"Account expiration time\" },{\"name\":\"passwd_expire\",\"type\":\"string\",\"desc\":\"Password expiration time \"},{\"name\":\"last_logon\",\"type\":\"string\",\"desc\":\"Last logon time\"},{\"nam e\":\"user\",\"type\":\"string\",\"desc\":\"User\"}, {\"name\":\"status\",\"type\":\"string\",\"desc\":\"User status: 0-disabled, 1-enable d\"}]},\"searchFields\":[{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\" },{\"name\":\"uuid\",\"type\":\"string\",\"desc\":\"Client ID\"}, {\"name\":\"perm\",\"type\":\"string\",\"desc\":\"Root permission availability\"},{\" name\":\"home_dir\",\"type\":\"string\",\"desc\":\"Home directory\"}, {\"name\":\"warn_time\",\"type\":\"string\",\"desc\":\"Password expiration reminder t ime\"},{\"name\":\"groups\",\"type\":\"array\",\"desc\":\"User group\"}, {\"name\":\"login_ip\",\"type\":\"string\",\"desc\":\"Last logon IP\"}, {\"name\":\"last_chg\",\"type\":\"string\",\"desc\":\"Last password change time\"},{\ "name\":\"shell\",\"type\":\"string\",\"desc\":\"Linux shell command\"}, {\"name\":\"domain\",\"type\":\"string\",\"desc\":\"Windows domain\"}, {\"name\":\"tty\",\"type\":\"string\",\"desc\":\"Logon terminal\"}, {\"name\":\"account_expire\",\"type\":\"string\",\"desc\":\"Account expiration time\" },{\"name\":\"passwd_expire\",\"type\":\"string\",\"desc\":\"Password expiration time \"},{\"name\":\"last_logon\",\"type\":\"string\",\"desc\":\"Last logon time\"},{\"nam e\":\"user\",\"type\":\"string\",\"desc\":\"User\"}, {\"name\":\"status\",\"type\":\"string\",\"desc\":\"User status: 0-disabled, 1-enable d\"}],\"f\":{\"name\":\"ip\",\"type\":\"string\",\"desc\":\"IP address\"},\"searchLimit\": [{\"name\":\"Including\",\"value\":\":\"}],\"l\":\":\",\"kw\":\"string\"}]]",
    "Conditions":"aegis-snapshot-host@ip:string",
    "QueryName":"aa"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 4.8.7 DeleteLogQuery
 
-#### DeleteLogQuery
-
-**Description**
+You can call this operation to delete the saved server log search conditions.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -5957,32 +5537,32 @@ snapshot\",\"id\":\"aegis-snapshot-host\",\"fields\": [{\"name\":\"ip\",\"type\"
 |---|---|---|
 | RequestId | String | The GUID generated by Alibaba Cloud for the request. |
 
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Server Guard Advanced Edition D on You can call this operation to delete the saved server log search conditions.
-
-**Response parameters**
+**Error codes**
 
 For more information about the error codes that this operation can return, see Error codes. Sample requests
 
 ```
-https://aegis.[ RegionId].example.com/?Action=DeleteLogQuery &QueryName=test
+https://aegis.[ RegionId].example.com/?Action=DeleteLogQuery &QueryName=test &<Common request parameters>
 ```
 
 Sample responses (JSON format)
 
 ```json
-{
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
-}
 ```
 
-### APIs for host rule settings
+### 4.9 APIs for host rule settings
 
-#### CreateAntiBruteForceRule
+#### 4.9.1 CreateAntiBruteForceRule
 
-Creates a brute-force attacks protection rule. This operation requires only common request headers. For more information, see Common request parameters.
+Creates a brute-force attacks protection rule.
+
+**Request headers**
+
+This operation requires only common request headers. For more information, see Common request parameters.
+
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5992,15 +5572,11 @@ Creates a brute-force attacks protection rule. This operation requires only comm
 | Span | Integ er | Query | No | 1 | The period in which logon failures are counted. Unit: minutes. Valid values: 1 : 1 minute 2 : 2 minutes 5 : 5 minutes 10 : 10 minutes 15 : 15 minutes The Span, FailCount, and ForbiddenTime parameters define a brute-force attacks protection rule. The rule means that if an account fails to log on more than FailCount times within a Span minute period, the account is locked for ForbiddenTime minutes. |
 | FailCount | Integ er | Query | No | 2 | The maximum number of logon failures allowed. Unit: times. Valid values: 2, 3, 4, 5, 10, 50, 80, and 100. |
 
-Server Guard Advanced Edition D on
-
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Forbidden Time | Integ er | Query | No | 5 | The duration for which the account is locked. Unit: minutes. Valid values: 5 : 5 minutes 15 : 15 minutes 30 : 30 minutes 60 : 1 hour 120 : 2 hours 360 : 6 hours 720 : 12 hours 1440 : 24 hours 10080 : 7 days 52560000 : permanent (100 years) |
 | UuidList | Repe atList | Query | No | a9a95aad-2b60-4812- b22d- ***********,a9a95aad- 2b60-4812-b22d- *********** | The UUIDs of the servers to which the rule applies. Separate multiple UUIDs with a comma (,). Note: You can call the DescribeCloudCent erInstances operation to query server UUIDs. If you do not specify this parameter, the rule applies to all servers. |
 | DefaultRul e | Boole an | Query | No | true | The default forwarding rule forwards traffic to a specified application and port based on the IP address. The parameters are described as follows: appId : The ID of the application. containerPort : The port of the application instance. All requests that do not match the forwarding Rules go to the specified application. |
-
-Server Guard Advanced Edition D on
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6008,39 +5584,37 @@ Server Guard Advanced Edition D on
 | CreateAntiBrut eForceRule | Struct | {"ruleName": "block after 5 atte _ _ _ mpts", "maxAttempts": 5, "lockoutTime": 300} | The information about the created brute- force attacks protection rule. |
 | -RuleId | Long | 123 | The ID of the rule. |
 
-| Operation | Access level | Resource type |
-|---|---|---|
-| yundun- aegis:ModifyAntiBruteForceRule | Write | acs:yundun-aegis:*: {#accountId}:* |
-
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=CreateAntiBruteForceRule
+http(s)://[Endpoint]/?Action=CreateAntiBruteForceRule &<Common request parameters>
 ```
 
 Response example `JSON` format
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
+ "CreateAntiBruteForceRule":{
   "RuleId":123
- }
-}
 ```
 
-#### ModifyAntiBruteForceRule
+#### 4.9.2 ModifyAntiBruteForceRule
 
 Call the ModifyAntiBruteForceRule operation to modify a brute-force attacks protection rule.
 
 **Authorization**
 
+| Operation | Access level | Resource type |
+|---|---|---|
+| yundun- aegis:ModifyAntiBruteForceRule | Write | acs:yundun-aegis:*: {#accountId}:* |
+
 **Traffic Shaping**
 
-Call frequency for a single user: 10 queries per second (QPS). Total call frequency for this operation: 100 QPS. This operation uses only common request headers. For more information, see Common request parameters.
+Call frequency for a single user: 10 queries per second (QPS). Total call frequency for this operation: 100 QPS.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6049,8 +5623,6 @@ Call frequency for a single user: 10 queries per second (QPS). Total call freque
 | Name | Strin g | Query | No | TestRule | The name of the brute- force attacks protection rule. |
 | Span | Integ er | Query | No | 1 | The time interval for failed logons. Unit: minutes. Valid values: 1: 1 minute 2: 2 minutes 5: 5 minutes 10: 10 minutes 15: 15 minutes |
 | FailCount | Integ er | Query | No | 10 | The threshold for the number of failed logons. Valid values: 2: 2 times 3: 3 times 4: 4 times 5: 5 times 10: 10 times 50: 50 times 80: 80 times 100: 100 times |
-
-Server Guard Advanced Edition D on
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6062,11 +5634,7 @@ Server Guard Advanced Edition D on
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the request ID to troubleshoot issues. |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
-Request example Server Guard Advanced Edition D on
+Request example
 
 ```
 https://[Endpoint]/?Action=ModifyAntiBruteForceRule&RegionId=cnhangzhou&SourceIp=219.133.XX.XX&ResourceOwnerId=&Id=65778&Name=TestRule&Span=1&FailCount= &ForbiddenTime=5&UuidList.1={"uuid":"a9a95aad-2b60-4812-b22d-
@@ -6076,25 +5644,29 @@ https://[Endpoint]/?Action=ModifyAntiBruteForceRule&RegionId=cnhangzhou&SourceIp
 Response example `JSON` format
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
+HTTP/1.1 200 OK Content-Type:application/json
     "RequestId":"F0A8A039-930D-5EC1-97C8-************"
-}
 ```
 
 `XML` format
 
 ```xml
-HTTP/1.1 200 OK Content-Type:application/xml
+HTTP/1.1 200 OK Content-Type:application/xml <ModifyAntiBruteForceRuleResponse>
     <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
+</ModifyAntiBruteForceRuleResponse>
 ```
 
 **Additional information**
 
-{ "PageInfo":{ "TotalCount":10, "PageSize":10, "CurrentPage":1, "Count":1 }, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Rules":[ { "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****", "Id":1, "Name":"test" } ] }
+"PageInfo":{ "TotalCount":10, "PageSize":10, "CurrentPage":1, "Count":1 }, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Rules":[ "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****", "Id":1, "Name":"test" ]
 
-#### DescribeAntiBruteForceRules
+#### 4.9.3 DescribeAntiBruteForceRules
 
-This operation queries the brute-force attacks protection rules that you have created. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+This operation queries the brute-force attacks protection rules that you have created.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6113,10 +5685,6 @@ This operation queries the brute-force attacks protection rules that you have cr
 | -DefaultRule | Boolean | true | Indicates whether the rule is the default rule. Valid values: true : The rule is the default rule. false : The rule is not the default rule. A brute-force attacks protection rule that is set as the default rule applies to all servers for which no other rules are configured. |
 | -Name | String | test | Name of the vulnerability |
 
-Server Guard Advanced Edition D on
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | -Span | Integer | 10 | The period of time during which logon failures are measured. Unit: minutes. For example, if span is 10 and the number of logon failures exceeds the specified threshold within 10 minutes, the brute- force attack protection rule takes effect and blocks logons for a specified period. |
@@ -6132,32 +5700,27 @@ Server Guard Advanced Edition D on
 | -TotalCount | Integer | 10 | The total number of entries. |
 | -CurrentPage | Integer | 1 | The page number of the returned page. |
 
-on Request example
+Request example
 
 ```
-http(s)://[Endpoint]/?Action=DescribeAntiBruteForceRules
+http(s)://[Endpoint]/?Action=DescribeAntiBruteForceRules &<Common request parameters>
 ```
 
-Response example
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Query | No | 219.133.XX.XX | The source IP address of the request. |
-| Resource OwnerId | Long | Query | No | 1000000**** | A system parameter for authentication. Do not specify this parameter. |
-
-Server Guard Advanced Edition D on `JSON` format
+Response example `JSON` format
 
 ```json
-{
  "PageInfo":{
   "TotalCount":10,
   "PageSize":10,
   "CurrentPage":1,
   "Count":1
- },
+```
+
+`},`
+
+```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Rules":[
-  {
    "DefaultRule":true,
    "ForbiddenTime":360,
    "UuidList":[
@@ -6174,27 +5737,31 @@ Server Guard Advanced Edition D on `JSON` format
    "Span":10,
    "CreateTimestamp":1527690629357,
    "Name":"test"
-  }
 ```
 
-]
+`]` `XML` format
 
-```
-}
-```
+#### 4.9.4 DescribeInstanceAntiBruteForceRules
 
-`XML` format
+Retrieves a list of servers that have active brute-force attack defense rules.
 
-#### DescribeInstanceAntiBruteForceRules
+**Request headers**
 
-Retrieves a list of servers that have active brute-force attack defense rules. This operation uses only common request headers. For more information, see Common request parameters.
+This operation uses only common request headers. For more information, see Common request parameters.
 
-| erver Guard veloper Guid n | Advanced e·API doc | Edition D umentati |  |  |  |
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Query | No | 219.133.XX.XX | The source IP address of the request. |
+| Resource OwnerId | Long | Query | No | 1000000**** | A system parameter for authentication. Do not specify this parameter. |
+
+| erver Guard veloper Guid n | Advanced e·API doc | Edition D umentati |   |   |   |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | UuidList | Repe atList | Query | No | a9a95aad-2b60-4812- b22d- ***********,a9a95aad- 2b60-4812-b22d- *********** | The UUIDs of the servers that you want to query. Separate multiple UUIDs with a comma (,). Note: You can call the DescribeCloudCent erInstances operation to query the UUIDs of asset instances associated with a specific asset tag. If this parameter is left empty, the tags specified by the TagList parameter are removed from all asset instances. |
+
+**Response data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6207,9 +5774,7 @@ Retrieves a list of servers that have active brute-force attack defense rules. T
 | -Count | Integer | 1 | The number of entries returned on the current page. |
 | -PageSize | Integer | 10 | The number of entries to return on each page. |
 
-**Response data**
-
-|  |  |  | Server Guard Advanced Edition D eveloper Guide·API documentat |
+|   |   |   | Server Guard Advanced Edition D eveloper Guide·API documentat |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -6220,33 +5785,34 @@ Retrieves a list of servers that have active brute-force attack defense rules. T
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DescribeInstanceAntiBruteForceRules
+http(s)://[Endpoint]/?Action=DescribeInstanceAntiBruteForceRules &Common request parameters
 ```
 
 Response example `JSON` format
 
 ```json
-{
  "PageInfo":{
   "TotalCount":10,
   "PageSize":10,
   "CurrentPage":1,
   "Count":1
- },
+```
+
+`},`
+
+```json
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Rules":[
-  {
    "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****",
    "Id":1,
    "Name":"test"
-  }
 ```
 
-]
+`]`
 
-```
-}
-```
+## 5 Error codes
+
+This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -6262,12 +5828,6 @@ Response example `JSON` format
 | yd.error.all.ConsoleSystemError 1011 _ | The regionId parameter is not specified. | The error message returned because the RegionId parameter is not specified. Check the parameter. |
 | yd.error.all.ConsoleSystemError 1012 _ | The format of the specified regionId parameter is invalid. | The error message returned because the format of the specified RegionId parameter is invalid. Check the parameter. |
 
-Server Guard Advanced Edition D
-
-## Error codes
-
-This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
-
 | yd.error.all.ConsoleSystemError 1013 _ | The parameter is not specified. | The error message returned because the parameter is not specified. Check the parameter and try again. |
 |---|---|---|
 | yd.error.all.ConsoleSystemError 1014 _ | The format of the specified parameter is invalid. | The error message returned because the format of the specified parameter is invalid. Check the parameter and try again. |
@@ -6280,11 +5840,11 @@ This topic describes the error codes returned for operations in Apsara Stack Sec
 | yd.error.all.ServerError | A server error occurred. | The error message returned because a server error occurred. Try again later or contact Alibaba Cloud technical support. |
 | yd.error.all.UnkownError | An unknown error occurred. | The error message returned because an unknown error occurred. Try again later or contact Alibaba Cloud technical support. |
 
+Table 2. Error codes specific to Threat Detection Service
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.sas.1 | The specified field does not exist in the metadata. | The error message returned because the field you queried does not exist in the metadata. Check the request and try again. |
-
-Server Guard Advanced Edition D Table 2. Error codes specific to Threat Detection Service
 
 | yd.error.sas.2 | An error occurred while invoking the task engine. Try again. | The error message returned because the system failed to invoke the task engine. Try again later. |
 |---|---|---|
@@ -6301,10 +5861,10 @@ Server Guard Advanced Edition D Table 2. Error codes specific to Threat Detectio
 | yd.error.sas.500 | A system error occurred. | The error message returned because a system error occurred. Contact Alibaba Cloud technical support. |
 | yd.error.sas.501 | The feature is not available in the current version. | The error message returned because the version you used does not support this feature. |
 
-Server Guard Advanced Edition D
-
 | yd.error.sas.502 | You are not authorized to access the server. | The error message returned because you are not authorized to manage the server. |
 |---|---|---|
+
+Table 3. Error codes specific to Anti-DDoS Service
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -6319,8 +5879,6 @@ Server Guard Advanced Edition D
 | yd.error.ddos.IP SEGMENT REP _ _ EAT | One CIDR block cannot be used in different regions. Enter another CIDR block. | The error message returned because the specified CIDR block is invalid. Check the CIDR block specified in the request parameter. |
 | yd.error.ddos.IP SEGMENT ALR _ _ EADY | The specified CIDR block already exists. | The error message returned because the specified CIDR block is in use. Check the CIDR block specified in the request parameter. |
 
-Server Guard Advanced Edition D Table 3. Error codes specific to Anti-DDoS Service
-
 | yd.error.ddos.IP SEGMENT MAS _ _ K LENGTH ERR _ _ | The mask can contain a maximum of 24 bits. | The error message returned because the mask contains more than 24 bits. Check the mask of the CIDR block specified in the request parameter. |
 |---|---|---|
 | yd.error.ddos.QUERY REGION L _ _ IST ERR _ | An error occurred while obtaining the region list. | The error message returned because the system failed to obtain the region list. Try again later. |
@@ -6333,8 +5891,6 @@ Server Guard Advanced Edition D Table 3. Error codes specific to Anti-DDoS Servi
 | yd.error.ddos.QUERY BEAVER _ _ URL ERR _ | An error occurred while obtaining the URL of Network Detection and Response. | The error message returned because the system failed to obtain the URL of Network Detection and Response. Check the network connection to Network Detection and Response and try again. |
 | yd.error.ddos.SET VALVE INVA _ _ LID | The threshold validation failed. Check the thresholds and enter correct values. | The error message returned because the threshold verification failed. Check the thresholds and try again. |
 
-Server Guard Advanced Edition D
-
 | yd.error.ddos.VALVE DEFAULT _ _ ALREADY | The specified request is invalid. You cannot add the default threshold. | The error message returned because the system failed to add the default threshold. The default threshold can only be modified. |
 |---|---|---|
 | yd.error.ddos.NOT BELONG BE _ _ AVER IP SEGMENT _ _ | Check whether the specified CIDR block belongs to the internal network of Network Detection and Response. | The error message returned because the CIDR block you entered does not belong to the internal network of Network Detection and Response. Check the CIDR block. |
@@ -6343,9 +5899,13 @@ Server Guard Advanced Edition D
 | yd.error.ddos.IS OPENED _ | Enabled. | The error message returned because the specified switch has been turned on. |
 | yd.error.ddos.IS CLOSED _ | Disabled. | The error message returned because the specified switch has been turned off. |
 
+Table 4. Error codes specific to Server Guard
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.aqs.REQUEST FAILED _ | Request failed. Try again later. | The error message returned because the request failed. Try again later. |
+
+Table 7. Error codes specific to Cloud Firewall
 
 | Error code | Error message |
 |---|---|
@@ -6357,8 +5917,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360104 | The specified application is invalid. Try again. |
 | yd.error.code.-360105 | An error occurred while obtaining the logs. |
 | yd.error.code.-360106 | An error occurred while obtaining the logs. |
-
-Server Guard Advanced Edition D
 
 | yd.error.code.-360107 | The specified UID is invalid.Try again. |
 |---|---|
@@ -6387,8 +5945,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360130 | The specified ECS instance is unavailable. |
 | yd.error.code.-360131 | An unknown error occurred. |
 
-Server Guard Advanced Edition D
-
 | yd.error.code.-360132 | An error occurred while searching the route table. |
 |---|---|
 | yd.error.code.-360133 | The ID of the firewall is invalid. |
@@ -6413,8 +5969,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360152 | The endpoint is invalid. |
 | yd.error.code.-360153 | The endpoint is invalid. |
 | yd.error.code.-360154 | A timeout error occurred while creating the endpoint. |
-
-Server Guard Advanced Edition D
 
 | yd.error.code.-360155 | A timeout error occurred while deleting the endpoint. |
 |---|---|
@@ -6444,8 +5998,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360179 | An error occurred while calling the operation. |
 | yd.error.code.-360180 | The number of VPCs that are attached to the CEN instance is insufficient. |
 
-Server Guard Advanced Edition D
-
 | yd.error.code.-360181 | The firewall of the CEN instance is overwritten. You do not need to create a firewall. |
 |---|---|
 | yd.error.code.-360182 | The security group does not exist. |
@@ -6471,8 +6023,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360202 | The specified network instance ID is invalid. |
 | yd.error.code.-360203 | The specified VPC does not exist. |
 | yd.error.code.-360204 | A timeout error occurred while creating a VPC. |
-
-Server Guard Advanced Edition D
 
 | yd.error.code.-360205 | A timeout error occurred while creating a VPC. |
 |---|---|
@@ -6501,8 +6051,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360309 | An error occurred while updating the information about the cluster. |
 | yd.error.code.-360310 | An error occurred while updating the Express Connect circuit. |
 
-Server Guard Advanced Edition D
-
 | yd.error.code.-360311 | An error occurred while inserting the VLAN. |
 |---|---|
 | yd.error.code.-360312 | An error occurred while querying the IP address pool. |
@@ -6527,8 +6075,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-360407 | An error occurred while updating the attributes of the VBR. |
 | yd.error.code.-360408 | An error occurred while querying the VBR. |
 | yd.error.code.-360409 | An error occurred while creating the RI. |
-
-Server Guard Advanced Edition D
 
 | yd.error.code.-360410 | An error occurred while updating the attributes of the RI. |
 |---|---|
@@ -6556,8 +6102,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-193201 | The specified parameters are insufficient. |
 | yd.error.code.-193202 | The specified parameter value is invalid. |
 | yd.error.code.-193203 | The specified time is invalid. |
-
-Server Guard Advanced Edition D
 
 | yd.error.code.-193204 | The parameter is invalid. |
 |---|---|
@@ -6588,8 +6132,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-200106 | The IP address in the address book is invalid. Check the parameter and enter another value. |
 | yd.error.code.-200107 | The address book already exists. |
 
-Server Guard Advanced Edition D
-
 | yd.error.code.-200108 | An error occurred. Try again. |
 |---|---|
 | yd.error.code.-200109 | The address book is in use and cannot be deleted. |
@@ -6616,8 +6158,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-200130 | The number of address books exceeds the upper limit. |
 | yd.error.code.-200200 | A backend error occurred. |
 | yd.error.code.-200201 | A backend error occurred. |
-
-Server Guard Advanced Edition D
 
 | yd.error.code.-200202 | A backend error occurred. |
 |---|---|
@@ -6650,8 +6190,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-210400 | An error occurred. Try again. |
 | yd.error.code.200 | Success |
 
-Server Guard Advanced Edition D
-
 | yd.error.code.-230100 | The request method is invalid. |
 |---|---|
 | yd.error.code.-230101 | Authentication failed. |
@@ -6681,8 +6219,6 @@ Server Guard Advanced Edition D
 | yd.error.code.-230125 | The submitted information is invalid. |
 | yd.error.code.-230126 | The rule is not changed. You do not need to publish the rule. |
 
-Server Guard Advanced Edition D
-
 | yd.error.code.-230127 | The security group ID is invalid. |
 |---|---|
 | yd.error.code.-230128 | The IP address in the rule is invalid. |
@@ -6700,16 +6236,14 @@ Server Guard Advanced Edition D
 | yd.error.code.-230302 | A backend error occurred. |
 | yd.error.code.-230400 | An unknown error occurred. |
 
+**Error codes specific to Network Detection and Response**
+
 | Error code | Error message | Description |
 |---|---|---|
 | ErrorNeedLogin.-210204 | need login (You are not logged on.) | The error message returned because you are not logged on. Log on first. |
 | ErrorAuthentication.-210101 | authentication error (An authentication error occurred.) | The error message returned because an authentication error occurred. Use a RAM role that has the required permissions. |
 | ErrorParametersAliUid.-210902 | invalid AliUid (The value of the AliUid parameter is invalid.) | The error message returned because the value of the AliUid parameter is invalid. Specify a valid value. |
 | ErrorParametersIpType.-210920 | invalid para ip type (The value of the ipType parameter is invalid.) | The error message returned because the value of the ipType parameter is invalid. Specify a valid value. |
-
-Server Guard Advanced Edition D
-
-**Error codes specific to Network Detection and Response**
 
 | ErrorParametersSrcIP.-210919 | invalid para src ip (The value of the SrcIP parameter is invalid.) | The error message returned because the value of the SrcIP parameter is invalid. Specify a valid value. |
 |---|---|---|
@@ -6725,13 +6259,9 @@ Server Guard Advanced Edition D
 | ErrorSourceAddressGroup.- 210304 | get source address in address group failed (Failed to obtain source addresses from the address group.) | The error message returned because the system failed to obtain source addresses from the address group. |
 | ErrorSourceAddressRange.- 210306 | source address range error, must be like \"192.168.XX.XX/192.168.XX.X X\" (The source address range is invalid. Example: \"192.168.XX.XX/192.168.XX.X X\") | The error message returned because the source address range is invalid. Specify the value in the \"192.168.XX.XX/192.168.XX.X X\" format. |
 
-Server Guard Advanced Edition D
-
 | ErrorDestAddressGroup.- 210305 | get dest address in address group failed (Failed to obtain destination addresses from the address group.) | The error message returned because the system failed to obtain destination addresses from the address group. |
 |---|---|---|
 | ErrorNoBeaverRules.-210226 | no beaver rules for online (The specified Network Detection and Response rule does not exist.) | The error message returned because the specified Network Detection and Response rule does not exist. |
 | ErrorDBUpdate.-210121 | internal error: sql update (An internal error occurred while executing the UPDATE statement.) | The error message returned because an internal error occurred while executing the UPDATE statement. |
 | ErrorDBDelete.-210123 | internal error: sql delete (An internal error occurred while executing the DELETE statement.) | The error message returned because an internal error occurred while executing the DELETE statement. |
 | ErrorMarshalJSON.-210125 | internal error: marshal json (An internal error occurred while marshaling JSON data.) | The error message returned because an internal error occurred while marshaling JSON data. |
-
-Server Guard Advanced Edition D

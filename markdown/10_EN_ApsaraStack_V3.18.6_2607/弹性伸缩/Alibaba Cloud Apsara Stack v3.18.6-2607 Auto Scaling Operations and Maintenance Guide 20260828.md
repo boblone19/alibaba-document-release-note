@@ -3,16 +3,22 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Operations and Main
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "6f4d7e319bfd2b88_Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Auto%20Scaling%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log in to the Apsara Uni-manager Operations Console
+- 2 Check service status
+- 3 Manage components
+
 ger Operations Console
 
-## Log in to the Apsara Uni-
+## 1 Log in to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -40,7 +46,7 @@ Obtain the username and password that are used to log in to the Apsara Unimanage
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 
-## Check service status
+## 2 Check service status
 
 This topic describes how to check the status of services in an ess cluster.
 
@@ -65,7 +71,7 @@ ess cluster.
 5. In the **Operations** column for the target cluster, click **Cluster Details** to check if the
 service's **Status** is in its final state. If a service has not reached its final state, you can log on to the component machine. Use commands such as `docker ps` and `docker logs` to check the component's container log. Identify the issue based on any exceptions found in the log. After the issue is resolved, restart the component machine.
 
-## Manage components
+## 3 Manage components
 
 This topic describes common operations for ESS components, including viewing component monitoring information, logging on to component machines, and restarting those machines.
 

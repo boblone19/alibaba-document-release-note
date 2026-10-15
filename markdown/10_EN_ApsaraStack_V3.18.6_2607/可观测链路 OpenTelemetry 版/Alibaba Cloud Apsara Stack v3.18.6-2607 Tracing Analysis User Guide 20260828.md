@@ -3,16 +3,50 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis User Guide 2026
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 84
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis User Guide 20260828.pdf"
+source_pdf: "1f7b565ae9cc7e9e_Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E9%93%BE%E8%B7%AF%20OpenTelemetry%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Tracing%20Analysis%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis User Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Log on to the Tracing Analysis
+- 1 Getting started
+  - 1.1 Log on to the Tracing Analysis console
+  - 1.2 Get the endpoint
+  - 1.3 OpenTelemetry integration guide
+  - 1.4 Obtain OpenTelemetry Access Configuration
+  - 1.5 Monitor Java applications
+    - 1.5.1 Use Jaeger to report the trace data of Java applications
+    - 1.5.2 Use Zipkin to report the trace data of Java applications
+  - 1.6 Monitor PHP applications
+    - 1.6.1 Use Zipkin to report the trace data of PHP applications
+  - 1.7 Monitor Go applications
+    - 1.7.1 Use Jaeger to report the trace data of Go applications
+    - 1.7.2 Use Zipkin to report the trace data of a Go application
+  - 1.8 Monitor Node.js applications
+    - 1.8.1 Use Jaeger to report the trace data of Node.js applications
+  - 1.9 Monitor .NET applications
+    - 1.9.1 Use Jaeger to report the trace data of .NET applications
+    - 1.9.2 Use Zipkin to report the trace data of .NET applications
+  - 1.10 Monitor NGINX
+    - 1.10.1 Use Zipkin to perform tracing analysis on NGINX
+- 2 Tutorial
+  - 2.1 View applications
+  - 2.2 View the overall information about an application
+  - 2.3 View application details
+  - 2.4 View the details of span calls
+  - 2.5 View database calls
+  - 2.6 Perform diagnosis
+  - 2.7 Configure application settings
+  - 2.8 Run a multidimensional query
+  - 2.9 Global topology
+  - 2.10 Usage statistics
+
+## 1 Getting started
+
+### 1.1 Log on to the Tracing Analysis console
 
 **console**
 
@@ -49,7 +83,7 @@ region, and click **Administrative Access** to open the ARMS console.
 7. In the navigation pane on the left, choose **Tracing Analysis** to open the Tracing Analysis
 console.
 
-### Get the endpoint
+### 1.2 Get the endpoint
 
 Obtain an endpoint to connect your application. Connecting an application means reporting its trace data to Tracing Analysis through a client, enabling distributed tracing. You can report trace data from applications written in Java, PHP, Go, Python, JavaScript, .NET, C++, and other languages to Tracing Analysis.
 
@@ -62,7 +96,7 @@ Obtain an endpoint to connect your application. Connecting an application means 
 4. In the **Client** section, click the **OpenTelemetry** tab.
 In the table, the information next to **Endpoint** under the **Related Information** column is your endpoint.
 
-### OpenTelemetry integration
+### 1.3 OpenTelemetry integration guide
 
 **guide**
 
@@ -817,7 +851,7 @@ mkdir build && cd build && cmake .. && make
 ./otel-http-export-demo ${http-endpoint}
 ```
 
-### Obtain OpenTelemetry Access
+### 1.4 Obtain OpenTelemetry Access Configuration
 
 **Configuration**
 
@@ -869,9 +903,9 @@ When using the Endpoint obtained from ARMS, add protocol information, such as HT
 2. In the navigation pane on the left, select **Tracing Analysis > Application List**.
 3. If you find the configured application on the Application List page, the access is successful.
 
-### Monitor Java applications
+### 1.5 Monitor Java applications
 
-#### Use Jaeger to report the trace data of
+#### 1.5.1 Use Jaeger to report the trace data of Java applications
 
 **Java applications**
 
@@ -1105,7 +1139,7 @@ Q: What do I do if no data is reported to the console after I run the demo progr
 
 Jaeger official website Jaeger client for Java Component library of OpenTracing OpenTracing Spring Cloud
 
-#### Use Zipkin to report the trace data of
+#### 1.5.2 Use Zipkin to report the trace data of Java applications
 
 **Java applications**
 
@@ -1546,9 +1580,9 @@ data. If a 403 error is returned, the username configuration is invalid. You mus
 
 brave-webmvc-example brave-instrumentation spring-cloud-zipkin-sleuth-tutorial
 
-### Monitor PHP applications
+### 1.6 Monitor PHP applications
 
-#### Use Zipkin to report the trace data of
+#### 1.6.1 Use Zipkin to report the trace data of PHP applications
 
 **PHP applications**
 
@@ -1708,9 +1742,9 @@ Q: Why is no data reported after I perform the preceding operations? A: Check wh
 
 Zipkin official website Zipkin source code for PHP zipkin-php-example
 
-### Monitor Go applications
+### 1.7 Monitor Go applications
 
-#### Use Jaeger to report the trace data of
+#### 1.7.1 Use Jaeger to report the trace data of Go applications
 
 **Go applications**
 
@@ -1796,7 +1830,7 @@ If a parent span is available, use the following code:
 // Extract a SpanContext from an HTTP request or an RPC request. spanCtx, _ := tracer.Extract(opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(r.Header)) span := tracer.StartSpan("myspan", opentracing.ChildOf(spanCtx)) ... defer span.Finish()
 ```
 
-#### Use Zipkin to report the trace data of a
+#### 1.7.2 Use Zipkin to report the trace data of a Go application
 
 **Go application**
 
@@ -1921,9 +1955,9 @@ Q: Why is no data reported after I perform the preceding steps? A: You can check
 
 Zipkin official website Zipkin Library for Go
 
-### Monitor Node.js applications
+### 1.8 Monitor Node.js applications
 
-#### Use Jaeger to report the trace data of
+#### 1.8.1 Use Jaeger to report the trace data of Node.js applications
 
 **Node.js applications**
 
@@ -2015,9 +2049,9 @@ const tracer = initTracer(config); app.all('*', function (req, res, next) {
 
 jaeger-client-node opentracing-javascript
 
-### Monitor .NET applications
+### 1.9 Monitor .NET applications
 
-#### Use Jaeger to report the trace data of
+#### 1.9.1 Use Jaeger to report the trace data of .NET applications
 
 **.NET applications**
 
@@ -2244,7 +2278,7 @@ sz.aliyuncs.com/adapt_your_token/api/traces");
 
 Jaeger official website jaeger-client-csharp csharp-netcore csharp-grpc
 
-#### Use Zipkin to report the trace data of
+#### 1.9.2 Use Zipkin to report the trace data of .NET applications
 
 **.NET applications**
 
@@ -2417,9 +2451,9 @@ Q: What do I do if no data is reported to the console after I run the demo progr
 
 Zipkin official website .NET client for Zipkin
 
-### Monitor NGINX
+### 1.10 Monitor NGINX
 
-#### Use Zipkin to perform tracing analysis
+#### 1.10.1 Use Zipkin to perform tracing analysis on NGINX
 
 **on NGINX**
 
@@ -2569,9 +2603,9 @@ Wait for a moment. Then, log on to the ARMS console. If monitoring data appears,
 
 nginx-opentracing project jaeger-client-cpp project zipkin-cpp-opentracing Jaeger Example Zipkin Example
 
-## Tutorial
+## 2 Tutorial
 
-### View applications
+### 2.1 View applications
 
 On the Applications page, you can view the key metrics of all monitored applications, including the number of requests and errors in the current day and the response time. You can also add custom tags to applications and filter applications by tag.
 
@@ -2609,7 +2643,7 @@ the icon in the **Labels** column, and then select the tag that you specify.
 
 On the Applications page, you can click one or more tags in the **Select Label** section to search for all applications that have at least one of the selected tags.
 
-### View the overall information
+### 2.2 View the overall information about an application
 
 **about an application**
 
@@ -2642,7 +2676,7 @@ The topology of service calls for the application in the specified time range. T
 
 You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-### View application details
+### 2.3 View application details
 
 On the Application Details page of an application, you can view the key metrics, call topology, and traces of an application on each server where it is deployed.
 
@@ -2669,7 +2703,7 @@ The **Traces** tab displays the following information about a trace: start time,
 
 You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
 
-### View the details of span calls
+### 2.4 View the details of span calls
 
 On the Interface Calls page of an application, you can view the performance metrics of the span calls on the client, span calls on the server, and internal span calls of an application. You can also view the details of span calls for the upstream services that call the application and the downstream services that are called by the application.
 
@@ -2700,7 +2734,7 @@ The **Traces** tab displays the following information about a trace: start time,
 
 You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 2 Date and time picker
 
-### View database calls
+### 2.5 View database calls
 
 On the **Database Calls** page of an application, you can analyze SQL statements or query traces.
 
@@ -2719,7 +2753,7 @@ Click **Call Statistics** in the **Actions** column. The number of times that th
 
 You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-### Perform diagnosis
+### 2.6 Perform diagnosis
 
 This topic describes how to perform diagnosis on exceptions.
 
@@ -2742,7 +2776,7 @@ traces of the exception.
 
 You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-### Configure application settings
+### 2.7 Configure application settings
 
 This topic describes how to enable and manage tags and delete applications.
 
@@ -2785,7 +2819,7 @@ Alternatively, click the name of your application and click **Application Settin
 
 After an application is deleted, all monitoring data of the application is cleared. The deleted data cannot be restored.
 
-### Run a multidimensional query
+### 2.8 Run a multidimensional query
 
 This topic describes how to use the multidimensional query feature to query traces.
 
@@ -2803,7 +2837,7 @@ of the configuration alias.
 
 You can select a predefined time range or specify a custom time range. In the upper-right corner of the page, click the date and time picker and select a predefined time range, such as **Last 30 Minutes**, **Today**, or **This Week**. If no predefined time ranges meet your business requirements, select **Custom**. Select a start time and an end time in the calendar or enter a start time and an end time, and then click **OK**. The date is in the `YYYY-MM-DD` format and the time is in the `HH:MM` format. Figure 1 Date and time picker
 
-### Global topology
+### 2.9 Global topology
 
 The global topology map in Tracing Analysis displays the upstream and downstream dependencies of your applications.
 
@@ -2814,7 +2848,7 @@ The global topology map in Tracing Analysis displays the upstream and downstream
 3. On the **Global topology** page, select a time range in the upper-right corner.
 On the Global topology page, you can: Click the plus (+) icon or scroll up with your mouse wheel to zoom in on the topology map. Click the minus (-) icon or scroll down with your mouse wheel to zoom out of the topology map. Click the RESET icon to restore the topology map to its default size. Click a node to highlight its associated paths. Right-click an application node to copy application information, view only its downstream information, or view the application's details. For more information, see View application details. Click the dot on a connection line between nodes to view metrics such as QPS (number of requests), RT (response time), and ERROR (number of errors), and their corresponding time-series curves.
 
-### Usage statistics
+### 2.10 Usage statistics
 
 On the Usage statistics page, you can view the statistics on resource consumption. You can also specify filter conditions to view the resource consumption details of an application within the specified time range.
 1. Log on to the Application Real-Time Monitoring Service (ARMS) console.

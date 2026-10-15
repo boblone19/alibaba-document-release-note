@@ -2,27 +2,67 @@
 title: "SchedulerX 2.0 Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 102
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 SchedulerX 2.0 Developer Guide 20260701.pdf"
+source_pdf: "b0b9ddee2edf3e15_Alibaba Cloud Apsara Stack V3.18.6 SchedulerX 2.0 Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E5%BA%A6scheduler-x/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20SchedulerX%202.0%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # SchedulerX 2.0 Developer Guide 20260701
 
-| Parameter | Required | Description |
-|---|---|---|
-| groupId | Yes | The ID of the application group. Find this ID on the Application Management page in the console. |
-| appKey | Yes | The AppKey for the application group. Find this key on the Application Management page in the console. |
-| domain | Yes | The domain name used to access SchedulerX 2.0. For more information, see Domain name list. |
-| user | No | The default value is `openapi`. For all write operations, specify this parameter to make queries easier. The format is: "Username UserID". |
+## Table of Contents
 
-| Environment | Domain name |
-|---|---|
-| Daily environment | schedulerx2.taobao.net |
-| Staging environment | pre.schedulerx2.alibaba-inc.com |
-| Production environment | center.schedulerx2.alibaba-inc.com |
+- 1 Java API integration guide
+- 2 Python API integration guide
+- 3 HTTP API connection guide
+- 4 API list
+  - 4.1 Namespaces
+    - 4.1.1 Create a namespace
+    - 4.1.2 Query the list of namespaces
+  - 4.2 Application
+    - 4.2.1 Create an application
+    - 4.2.2 Update an application group
+    - 4.2.3 Query a specified application
+    - 4.2.4 Query application groups
+    - 4.2.5 Query the worker list
+  - 4.3 Tasks
+    - 4.3.1 Create a Java job
+    - 4.3.2 Create a script job
+    - 4.3.3 Create an HTTP job
+    - 4.3.4 Update a job
+    - 4.3.5 Get a task
+    - 4.3.6 Query a job list
+    - 4.3.7 Delete a job
+    - 4.3.8 Enable a job
+    - 4.3.9 Disable a job
+    - 4.3.10 Run a job
+    - 4.3.11 Specify Machines
+  - 4.4 Task instances
+    - 4.4.1 Stop a running task instance
+    - 4.4.2 Retry a failed task instance
+    - 4.4.3 Mark a task instance as successful
+    - 4.4.4 Query job instance details
+    - 4.4.5 Query task instances
+  - 4.5 Workflow
+    - 4.5.1 Create a workflow
+    - 4.5.2 Update basic workflow information
+    - 4.5.3 Update a workflow DAG
+    - 4.5.4 Enable workflow
+    - 4.5.5 Disable a workflow
+    - 4.5.6 Delete a workflow
+    - 4.5.7 Query workflow details and DAG
+    - 4.5.8 Run a workflow
+  - 4.6 Workflow instances
+    - 4.6.1 Query a specified workflow instance
+    - 4.6.2 Query the list of workflow instances
+    - 4.6.3 Stop a running workflow instance
+    - 4.6.4 Retry a failed workflow instance
+    - 4.6.5 Mark a failed workflow instance as successful
+    - 4.6.6 Pause a running workflow instance
+    - 4.6.7 Cancel a paused workflow instance
+    - 4.6.8 Skip a workflow instance node
+    - 4.6.9 Cancel a skipped workflow instance node
 
-## Java API integration guide
+## 1 Java API integration guide
 
 You can use the Software Development Kit (SDK) to call the SchedulerX 2.0 APIs for daily management operations. This document describes the steps and important considerations for Java API integration. It covers how to obtain the SDK, explains the initialization parameters, and provides a specific API call example.
 
@@ -38,11 +78,24 @@ You can use the Software Development Kit (SDK) to call the SchedulerX 2.0 APIs f
 
 **Common request parameters**
 
+| Parameter | Required | Description |
+|---|---|---|
+| groupId | Yes | The ID of the application group. Find this ID on the Application Management page in the console. |
+| appKey | Yes | The AppKey for the application group. Find this key on the Application Management page in the console. |
+| domain | Yes | The domain name used to access SchedulerX 2.0. For more information, see Domain name list. |
+| user | No | The default value is `openapi`. For all write operations, specify this parameter to make queries easier. The format is: "Username UserID". |
+
 **Domain name list**
 
 SchedulerX 2.0 has different deployments for different environments. You must configure the domain name based on the environment that you want to access. The following table lists the available domain names. For more information about connection types, see Connect a client to SchedulerX.
 
-## Python API integration
+| Environment | Domain name |
+|---|---|
+| Daily environment | schedulerx2.taobao.net |
+| Staging environment | pre.schedulerx2.alibaba-inc.com |
+| Production environment | center.schedulerx2.alibaba-inc.com |
+
+## 2 Python API integration guide
 
 **guide**
 
@@ -83,7 +136,7 @@ if __name__ == '__main__':
         "threadNum": 16,
 ```
 
-" `dR` `tU`
+`"` `dR` `tU`
 
 ```
 Liit"
@@ -93,12 +146,10 @@ Liit"
         "readRowCountUpperLimit": 6700,
         "batchSize": 10000,
         "tableTotalCountUpperLimit": 6500000,
-    }
     requestData = {
         "jobId": jobId,
         "groupId": groupId,
         "instanceParameters": json.dumps(instanceParameters)
-    }
     timestamp = calendar.timegm(time.gmtime()) * 1000
     # timestamp = time.time()
     print(timestamp)
@@ -110,7 +161,6 @@ Liit"
         'openapi-groupid': groupId,
         'openapi-timestamp': str(timestamp),
         'openapi-signature': signature
-    }
     try:
         ret = requests.post(url, data=requestData, headers=headers, timeout=5)
         print(ret.url)
@@ -132,7 +182,7 @@ Liit"
         print("Failed to trigger the job: ")
 ```
 
-## HTTP API connection guide
+## 3 HTTP API connection guide
 
 This topic uses an example of enabling a job to demonstrate how to connect to an HTTP API.
 
@@ -158,49 +208,36 @@ import java.nio.charset.Charset; import javax.crypto.Mac; import javax.crypto.sp
      * Generate a signature for an OpenAPI call.
 ```
 
-* `*/`
+`*` `*/`
 
-```java
+```
     public static String geneHmacSHA1Encrypt(String timeStamp, String appGroupId, Strin
 g secretKey) throws Exception{
         String encryptText = appGroupId + timeStamp;
         Mac mac = Mac.getInstance("HmacSHA1");
         if (secretKey == null) {
             throw new RuntimeException("accesskey not exist");
-        }
         mac.init(new SecretKeySpec(secretKey.getBytes(Charset.forName("UTF-8")),
 "HmacSHA1"));
         byte[] bytes = mac.doFinal(encryptText.getBytes(Charset.forName("UTF-8")));
         return new String(Base64.encodeBase64(bytes),
             Charset.forName("UTF-8")).replace("+", "").replace("=", "").replace("/", ""
+```
+
 );
-    }
+
+```java
     public static void main(String[] args) throws Exception {
         String timeNow = Long.toString(System.currentTimeMillis());
         System.out.println(timeNow);
         System.out.println(geneHmacSHA1Encrypt(timeNow, "dts-demo", "xxxxxxxx"));
-    }
-}
 ```
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| name | String | Yes | The name of the namespace. Examples: development and test. |
-| description | String | No | The description of the namespace. |
+## 4 API list
 
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
-| success | Boolean | Indicates whether the request was successful. |
-| message | String | The error message. |
-| requestId | String | The unique ID of the request. |
-| data | GetJobInfoResponse | The information about the specified job. |
+### 4.1 Namespaces
 
-## API list
-
-### Namespaces
-
-#### Create a namespace
+#### 4.1.1 Create a namespace
 
 Creates a namespace.
 
@@ -210,33 +247,44 @@ Creates a namespace.
  /openapi/v1/namespace/create
 ```
 
-**Request parameters**
-
 CreateNamespaceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| name | String | Yes | The name of the namespace. Examples: development and test. |
+| description | String | No | The description of the namespace. |
 
 **Response data**
 
-SchedulerXResult<CreateNamespaceResponse> CreateNamespaceResponse
-
-| Name | Type | Description |
-|---|---|---|
-| namespaceUid | String | The unique ID of the namespace. |
+SchedulerXResult<CreateNamespaceResponse>
 
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
 | success | Boolean | Indicates whether the request was successful. |
+| message | String | The error message. |
+| requestId | String | The unique ID of the request. |
+| data | GetJobInfoResponse | The information about the specified job. |
 
-Sample response:
+CreateNamespaceResponse
+
+| Name | Type | Description |
+|---|---|---|
+| namespaceUid | String | The unique ID of the namespace. |
+
+Sample response: `{`
 
 ```json
-{
   "data": {
     "namespaceUid": "3f3e1513-fc61-419c-b808-241a9ff5****"
-  },
+```
+
+`},`
+
+```json
   "code": 200,
   "success": true,
-}
+  "message": "create namespace successfully"
 ```
 
 **Code example**
@@ -250,10 +298,9 @@ public void testCreateNamespace() throws Exception {
     // Send the request.
     SchedulerXResult<CreateNamespaceResponse> result = client.getResponse(request);
     System.out.println(result);
-}
 ```
 
-#### Query the list of namespaces
+#### 4.1.2 Query the list of namespaces
 
 Queries a list of namespaces.
 
@@ -263,71 +310,81 @@ Queries a list of namespaces.
  /openapi/v1/namespace/list
 ```
 
-**Request parameters**
-
 GetNamespaceListRequest
 
 **Return data**
 
 SchedulerXResult<GetNamespaceListResponse>
 
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
+| success | Boolean | Indicates whether the request was successful. |
+
 | message | String | The error message. |
 |---|---|---|
 | requestId | String | The unique ID of the request. |
 | data | GetJobInfoResponse | The information about the specified job. |
 
+GetNamespaceListResponse
+
 | Name | Type | Description |
 |---|---|---|
 | namespaceInfos | List<NamespaceInfo> | The list of namespaces. |
 
-GetNamespaceListResponse Sample response
+Sample response `{`
 
 ```json
-{
   "data": {
     "namespaceInfos": [
-      {
+```
+
+`{`
+
+```json
         "name": "Default Namespace",
         "uId": "system_namespace",
         "description": ""
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "Development and Test",
         "uId": "7636af5b-4763-4fe9-8aa5-038d492****",
         "description": "Development and Test"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "xxx Test",
         "uId": "6abc550b-b616-46f5-919b-55931ab5****"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "xxx Dedicated",
         "uId": "f227f143-0adc-409a-9e02-213f84cc****",
         "description": "For xxx test only"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "Production Environment",
         "uId": "655a892e-940e-414d-a000-fcacdc2****",
         "description": "Production Environment"
-      }
 ```
 
-]
+`]` `},`
 
 ```json
-  },
   "code": 200,
   "success": true,
   "message": ""
-}
 ```
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| groupID | String | Yes | The ID of the application group. This ID has business significance. |
-| namespace | String | No | The UID of the namespace. |
-| appName | String | Yes | The name of the application. |
-| description | String | No | None |
 
 **Sample code**
 
@@ -342,13 +399,11 @@ public class TestNamespaceOpenApi {
         SchedulerXResult<GetNamespaceListResponse> result =
 client.getResponse(request);
         System.out.println(JsonUtil.toJson(result));
-    }
-}
 ```
 
-### Application
+### 4.2 Application
 
-#### Create an application
+#### 4.2.1 Create an application
 
 This topic describes how to create an application group.
 
@@ -358,9 +413,14 @@ This topic describes how to create an application group.
  /openapi/v1/group/create
 ```
 
-**Request parameters**
-
 CreateAppGroupRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| groupID | String | Yes | The ID of the application group. This ID has business significance. |
+| namespace | String | No | The UID of the namespace. |
+| appName | String | Yes | The name of the application. |
+| description | String | No | None |
 
 **Response data**
 
@@ -374,20 +434,14 @@ SchedulerXResult<CreateAppGroupResponse>
 | requestId | String | The unique ID of the request. |
 | data | CreateAppGroupResponse | The response information for the application group. |
 
+CreateAppGroupResponse
+
 | Name | Type | Description |
 |---|---|---|
 | appGroupID | Long | The ID of the application group. You can ignore this ID. |
 | appKey | String | The AppKey from the application management console. It is used for authentication. |
 
-CreateAppGroupResponse
-
 **Sample code**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| groupId | String | Yes | The ID of the application group. This ID has business significance. |
-| namespace | String | No | The UID of the namespace. |
-| description | String | No | None. |
 
 ```java
 public class TestAppGroupOpenApi {
@@ -403,7 +457,6 @@ xxx 144153");
         // Send the request.
         SchedulerXResult<CreateAppGroupResponse> result = client.getResponse(request);
         System.out.println(result);
-    }
     @Test
     public void testCreateWithNamespace() throws Exception {
         CreateAppGroupRequest request = new CreateAppGroupRequest();
@@ -416,11 +469,9 @@ xxx 144153");
         // Send the request.
         SchedulerXResult<CreateAppGroupResponse> result = client.getResponse(request);
         System.out.println(result);
-    }
-}
 ```
 
-#### Update an application group
+#### 4.2.2 Update an application group
 
 Create an application group.
 
@@ -430,16 +481,24 @@ Create an application group.
  /openapi/v1/group/update
 ```
 
-**Request parameters**
-
 UpdateAppGroupRequest
 
-| chedulerX 2.0 Developer Gu PI list | ide· |  |  |
+| Name | Type | Required | Description |
+|---|---|---|---|
+| groupId | String | Yes | The ID of the application group. This ID has business significance. |
+| namespace | String | No | The UID of the namespace. |
+| description | String | No | None. |
+
+| chedulerX 2.0 Developer Gu PI list | ide· |   |   |
 |---|---|---|---|
 
 | monitorConfig | String | No | The alert settings. |
 |---|---|---|---|
 | contact | String | No | The alert contact. |
+
+**Response data**
+
+SchedulerXResult<UpdateAppGroupResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -449,13 +508,11 @@ UpdateAppGroupRequest
 | requestId | String | The unique ID of the request. |
 | data | UpdateAppGroupResponse | The response information for the application group. |
 
+UpdateAppGroupResponse
+
 | Name | Type | Description |
 |---|---|---|
 | appGroupId | Long | The ID of the application group that was updated. |
-
-**Response data**
-
-SchedulerXResult<UpdateAppGroupResponse> UpdateAppGroupResponse
 
 **Sample code**
 
@@ -513,35 +570,13 @@ token value.");
 client.getResponse(updateAppGroupRequest);
                     if(res.isSuccess()) {
                         System.out.println(res.getData());
-                    }
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
-            }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
-| success | Boolean | Indicates whether the request was successful. |
-| message | String | The error message. |
-| requestId | String | The unique ID of the request. |
-| data | GetAppGroupResponse | The information returned for the application group. |
-
-| Name | Type | Description |
-|---|---|---|
-| appName | Long | The name of the application. |
-| groupId | String | The ID of the application. |
-| description | String | The description of the application group. |
-| appKey | String | The AppKey from the management console. It is used for authentication. |
-| maxJobs | Int | The maximum number of tasks that can be configured. |
-
-#### Query a specified application
+#### 4.2.3 Query a specified application
 
 Retrieves information about an application group.
 
@@ -551,13 +586,29 @@ Retrieves information about an application group.
  /openapi/v1/group/get
 ```
 
-**Request parameters**
-
 GetAppGroupRequest
 
 **Response data**
 
-SchedulerXResult<CreateAppGroupResponse> GetAppGroupResponse
+SchedulerXResult<CreateAppGroupResponse>
+
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
+| success | Boolean | Indicates whether the request was successful. |
+| message | String | The error message. |
+| requestId | String | The unique ID of the request. |
+| data | GetAppGroupResponse | The information returned for the application group. |
+
+GetAppGroupResponse
+
+| Name | Type | Description |
+|---|---|---|
+| appName | Long | The name of the application. |
+| groupId | String | The ID of the application. |
+| description | String | The description of the application group. |
+| appKey | String | The AppKey from the management console. It is used for authentication. |
+| maxJobs | Int | The maximum number of tasks that can be configured. |
 
 | curJobs | Int | The current number of tasks. |
 |---|---|---|
@@ -567,28 +618,19 @@ SchedulerXResult<CreateAppGroupResponse> GetAppGroupResponse
 | runningInstanceNum | Int | The current number of running task instances. |
 | readyInstanceNum | Int | The current number of task instances in the pool. |
 
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
-| success | Boolean | Indicates whether the request was successful. |
-
 **Sample code**
 
 ```java
 OpenApiClient client = new OpenApiClient("xxxxxxxx", "dts-demo", "schedulerx2.taobao.net"); // If you use a custom namespace, set the namespace UID in the client. //client.setNamespace("xxxx-xxx-xxx-xxx-xxxxx"); GetAppGroupRequest request = new GetAppGroupRequest(); // Send the request. SchedulerXResult<GetAppGroupResponse> result = client.getResponse(request); System.out.println(result);
 ```
 
-#### Query application groups
+#### 4.2.4 Query application groups
 
 Retrieve a list of all application groups that you have permission to access in a specific namespace.
-
-**Request URL**
 
 ```
  /openapi/v1/group/list
 ```
-
-**Request parameters**
 
 GetJobInstanceListRequest
 
@@ -596,10 +638,17 @@ GetJobInstanceListRequest
 
 SchedulerXResult<GetAppGroupListResponse>
 
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
+| success | Boolean | Indicates whether the request was successful. |
+
 | message | String | The error message. |
 |---|---|---|
 | requestId | String | The unique ID of the request. |
 | data | List<AppGroupInfo> | No content to parse. |
+
+AppGroupInfo
 
 | Name | Type | Description |
 |---|---|---|
@@ -608,27 +657,26 @@ SchedulerXResult<GetAppGroupListResponse>
 | appKey | String | The application key in the console. |
 | description | String | The application description. |
 
-AppGroupInfo
-
 **Sample code**
 
 ```java
 OpenApiClient client = new OpenApiClient("schedulerx2.taobao.net", "xx 144153"); //client.setNamespace("4a06d5ea-f576-4326-842c-fb14ea04****"); GetAppGroupListRequest request = new GetAppGroupListRequest(); // Send the request SchedulerXResult<GetAppGroupListResponse> result = client.getResponse(request); System.out.println(result); List<AppGroupInfo> appGroupInfos = result.getData().getAppGroupInfos(); for (AppGroupInfo appGroupInfo : appGroupInfos) {
     System.out.println(appGroupInfo);
-}
 ```
 
 For calls not made in Java, add the following header and request parameters.
 
 ```
---data-urlencode 'userId=employee ID' \ --data-urlencode 'userName=alias'
+--header 'openapi-list-groups: true' --data-urlencode 'userId=employee ID' \ --data-urlencode 'userName=alias'
 ```
 
-#### Query the worker list
+#### 4.2.5 Query the worker list
 
-Query the list of workers for a specific application. You can use this list to specify machines for a task or dynamically assign machines when a task runs.
+Query the list of workers for a specific application. You can use this list to specify machines for a task or dynamically assign machines when a task runs. /openapi/v1/group/getWorkerList GetWorkerListRequest
 
-**Request URL**
+**Response data**
+
+SchedulerXResult<GetWorkerListResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -637,6 +685,8 @@ Query the list of workers for a specific application. You can use this list to s
 | message | String | The fault message. |
 | requestId | String | The unique ID of the request. |
 | data | List<AppGroupInfo> | No content to parse. |
+
+Workers
 
 | Name | Type | Description |
 |---|---|---|
@@ -648,16 +698,6 @@ Query the list of workers for a specific application. You can use this list to s
 | metrics | String | The monitoring metrics of the worker. |
 | version | String | The version number. |
 
-/openapi/v1/group/getWorkerList
-
-**Request parameters**
-
-GetWorkerListRequest
-
-**Response data**
-
-SchedulerXResult<GetWorkerListResponse> Workers
-
 | starter | String | The startup method of the worker. |
 |---|---|---|
 
@@ -667,10 +707,9 @@ SchedulerXResult<GetWorkerListResponse> Workers
 OpenApiClient client = new OpenApiClient("xxxxx", "ram-access-advisor", "schedulerx2.taobao.net"); GetWorkerListRequest request = new GetWorkerListRequest(); SchedulerXResult<GetWorkerListResponse> response = client.getResponse(request); System.out.println(JsonUtil.toJson(response));
 ```
 
-Sample response
+Sample response `{`
 
 ```json
-{
   "data": {
     "workers": [{
       "ip": "11.xxx.xxx.xxx",
@@ -693,7 +732,11 @@ Sample response
         "sharePoolQueueSize": 0,
         "sharePoolAvailableSize": 0,
         "execCount": 0
-      },
+```
+
+`},`
+
+```json
       "version": "1.10.10",
       "starter": "springboot",
       "label": "",
@@ -712,13 +755,6 @@ Sample response
 "cpuProcessors":4
 ```
 
-| Name | Type | Require d | Description |
-|---|---|---|---|
-| javaJobConfig | JavaJobConfig | Yes | The job configuration. |
-
-| Name | Type | Requir ed | Default | Description |
-|---|---|---|---|---|
-
 ```json
         "cpuProcessors": 4,
         "heap1Usage": 0.08772786458333333,
@@ -731,53 +767,66 @@ Sample response
         "sharePoolQueueSize": 0,
         "sharePoolAvailableSize": 0,
         "execCount": 0
-      },
+```
+
+`},`
+
+```json
       "version": "1.10.10",
       "starter": "springboot",
       "label": "",
       "rpcPort": 42541,
       "busyStatus": "FREE"
-    }]
-  },
+```
+
+`}]` `},`
+
+```json
   "code": 200,
   "success": true,
   "message": ""
-}
 ```
 
-### Tasks
+### 4.3 Tasks
 
-#### Create a Java job
+#### 4.3.1 Create a Java job
 
 This topic describes how to create a Java job.
-
-**Request URL**
 
 ```
  /openapi/v1/job/create
 ```
 
-**Request parameters**
+CreateJavaJobRequest: The request parameters.
 
-CreateJavaJobRequest: The request parameters. JavaJobConfig: The job parameters.
+| Name | Type | Require d | Description |
+|---|---|---|---|
+| javaJobConfig | JavaJobConfig | Yes | The job configuration. |
 
-| className | String |  | Yes | None | The full path of the job interface class. For example, com.alibaba.test.TestJob . |  |
+JavaJobConfig: The job parameters.
+
+| Name | Type | Requir ed | Default | Description |
+|---|---|---|---|---|
+
+| className | String |   | Yes | None | The full path of the job interface class. For example, com.alibaba.test.TestJob . |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  | com.alibaba.test.TestJob |
-| jarUrl | String |  | No | None | The full path of the package uploaded to OSS. |  |
-| name | String |  | Yes | None | The job name. |  |
-| description | String |  | No | None | The job description. |  |
-| status | Int |  | No | 1 | 1. Get started. 0: Disables the job. |  |
-| executeMode | String |  | Yes | None | Select a value from the following options: Standalone: standalone Broadcast: broadcast Parallel computing: parallel Memory grid: grid Grid computing: batch |  |
-| parameters | String |  | No | None | Custom parameters that can be obtained at runtime. |  |
-| maxConcurrency | Int |  | No | 1 | The maximum number of concurrent instances. The default value is 1. This means that if a triggered instance is still running, the next trigger is skipped. |  |
-| maxAttempt | Int |  | No | 0 | The maximum number of retries after a fault. Specify this parameter as needed. |  |
-| attemptInterval | Int |  | No | 30 | The retry interval after a fault. Unit: seconds. |  |
-| mapTaskXAttrs | MapTaskXAttrs |  | No | None | The advanced configuration. This parameter is applicable only to parallel computing, memory grid, and grid computing jobs. |  |
+|   |   |   |   |   |   | com.alibaba.test.TestJob |
+| jarUrl | String |   | No | None | The full path of the package uploaded to OSS. |   |
+| name | String |   | Yes | None | The job name. |   |
+| description | String |   | No | None | The job description. |   |
+| status | Int |   | No | 1 | 1. Get started. 0: Disables the job. |   |
+| executeMode | String |   | Yes | None | Select a value from the following options: Standalone: standalone Broadcast: broadcast Parallel computing: parallel Memory grid: grid Grid computing: batch |   |
+| parameters | String |   | No | None | Custom parameters that can be obtained at runtime. |   |
+| maxConcurrency | Int |   | No | 1 | The maximum number of concurrent instances. The default value is 1. This means that if a triggered instance is still running, the next trigger is skipped. |   |
+| maxAttempt | Int |   | No | 0 | The maximum number of retries after a fault. Specify this parameter as needed. |   |
+| attemptInterval | Int |   | No | 30 | The retry interval after a fault. Unit: seconds. |   |
+| mapTaskXAttrs | MapTaskXAttrs |   | No | None | The advanced configuration. This parameter is applicable only to parallel computing, memory grid, and grid computing jobs. |   |
 
 | timeConfig | TimeConfig | Yes | None | The time configuration parameters. For more information, see the parameter description. |
 |---|---|---|---|---|
 | jobMonitorInfo | JobMonitorInfo | Yes | None | The monitoring and alert configuration. For more information, see the parameter description. |
+
+MapTaskXAttrs: The advanced configuration for parallel and grid execution modes.
 
 | Name | Type | Requir ed | Default | Description |
 |---|---|---|---|---|
@@ -786,27 +835,29 @@ CreateJavaJobRequest: The request parameters. JavaJobConfig: The job parameters.
 | taskMaxAttempt | Int | No | 0 | The maximum number of retries for a failed sub-task. |
 | taskAttemptInterval | Int | No | 0 | The retry interval for a failed sub-task. Unit: seconds. |
 
+TimeConfig: The time configuration.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | timeType | Int | Yes | The type of time configuration. Valid values: cron: 1 fix rate (fixed frequency): 3 _ second delay (second-level): 4 _ one time (one-time task): 5 _ api: 100 |
-
-MapTaskXAttrs: The advanced configuration for parallel and grid execution modes. TimeConfig: The time configuration.
 
 | timeExpression | String | No | api: Leave this parameter empty. fix rate: Specify a fixed _ frequency. Unit: seconds. For example, a value of 30 indicates that the job is triggered every 30 seconds. cron: Specify a standard cron expression. The system validates the expression. second delay: Specify a value _ in seconds. For example, set the value to 15. one time: Specify the point in _ time to run the job. The format is yyyy-MM-dd HH:mm:ss. |
 |---|---|---|---|
 | calendar | String | No | Workday Financial Trading Day (finance) If you do not set this parameter, the job runs every day by default. |
 | dataOffset | Int | No | For cron jobs, you can specify a time offset. Unit: seconds. |
 
+JobMonitorInfo: The monitoring configuration.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | monitorConfig | MonitorConfig | Yes | The alert switch and threshold configuration. |
 | contactInfo | List<ContactInfo> | No | The alert contacts. If you do not specify this parameter, alerts are sent to all users who have permissions on the group. |
 
+MonitorConfig: The configuration for the alert switch and thresholds.
+
 | Name | Type | Requir ed | Default | Description |
 |---|---|---|---|---|
 | timeoutEnable | Boolean | No | true | The switch to enable timeout alerts. This feature is enabled by default. |
-
-JobMonitorInfo: The monitoring configuration. MonitorConfig: The configuration for the alert switch and thresholds.
 
 | timeout | Long | No | 7200 | The timeout threshold. Unit: seconds. |
 |---|---|---|---|---|
@@ -816,14 +867,18 @@ JobMonitorInfo: The monitoring configuration. MonitorConfig: The configuration f
 | sendChannel | String | No | ding | The channel to send alerts. Valid values: ding: DingTalk sms: Text message mail: Email phone: Phone call By default, alerts are sent through DingTalk. Note To use multiple alert notification methods, separate them with commas. For example To use multiple channels, separate them with commas. For example, sms,ding indicates that alerts are sent through text messages and DingTalk. default: The alert contacts of the application. |
 |---|---|---|---|---|
 
+ContactInfo: The alert contact configuration.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | empId | String | Yes | The employee ID. |
 
-ContactInfo: The alert contact configuration.
-
 | userName | String | No | The user's nickname. |
 |---|---|---|---|
+
+**Return data**
+
+SchedulerXResult<CreateJobResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -832,10 +887,6 @@ ContactInfo: The alert contact configuration.
 | message | String | The error message. |
 | requestId | String | The unique ID of the request. |
 | data | CreateJobResponse | The ID of the job that was created. |
-
-**Return data**
-
-SchedulerXResult<CreateJobResponse>
 
 **Code examples**
 
@@ -852,19 +903,25 @@ client.getResponse(createJobRequest);
         logger.error("createJobRequest error code: {} message: {}, requestId: {}",
 createJobResponseResult.getCode(),
         createJobResponseResult.getMessage(), createJobResponseResult.getRequestId());
-    }
 } catch (Exception e) {
   logger.error("createJobRequest error.", e);
-}
 ```
 
-#### Create a script job
+#### 4.3.2 Create a script job
 
 Create a script job. Supported script types include Go, Python, and Shell.
+
+```
+ /openapi/v1/job/create
+```
+
+CreateScriptJobRequest: The request object for creating a script job.
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | scriptJobConfig | ScriptJobConfig | Yes | The job configuration information. |
+
+ScriptJobConfig: The configuration of the script job.
 
 | Name | Type | Requir ed | Default value | Description |
 |---|---|---|---|---|
@@ -877,20 +934,12 @@ Create a script job. Supported script types include Go, Python, and Shell.
 | maxConcurrency | Int | No | 1 | The maximum number of concurrent instances. The default value is 1. This means that if a previously triggered instance is still running, the next scheduled run is not triggered. |
 | maxAttempt | Int | No | 0 | The maximum number of retries after a fault. Set this parameter as needed. The default value is 0. |
 
-**Request URL**
-
-```
- /openapi/v1/job/create
-```
-
-**Request parameters**
-
-CreateScriptJobRequest: The request object for creating a script job. ScriptJobConfig: The configuration of the script job.
-
 | attemptInterval | Int | No | 30 | The retry interval after a fault. Unit: seconds. The default value is 30s. |
 |---|---|---|---|---|
 | timeConfig | TimeConfig | Yes | None | The time configuration parameters. For more information, see the definition. |
 | jobMonitorInfo | JobMonitorInfo | Yes | None | The monitoring and alert configuration. For more information, see the definition. |
+
+TimeConfig: The time-based configuration.
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
@@ -899,14 +948,16 @@ CreateScriptJobRequest: The request object for creating a script job. ScriptJobC
 | calendar | String | No | For the cron type, you can specify a custom calendar. |
 | dataOffset | Int | No | For the cron type, you can specify a time offset. Unit: seconds. |
 
+JobMonitorInfo: The monitoring configuration.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
-
-TimeConfig: The time-based configuration. JobMonitorInfo: The monitoring configuration.
 
 | monitorConfig | MonitorConfig | Yes | The alert switch and threshold settings. |
 |---|---|---|---|
 | contactInfo | List<ContactInfo> | No | The alert contacts. If you do not specify this parameter, alerts are sent to all users who have permissions on the group. |
+
+MonitorConfig: The configuration for alert switches and thresholds.
 
 | Name | Type | Requir ed | Default value | Description |
 |---|---|---|---|---|
@@ -916,14 +967,18 @@ TimeConfig: The time-based configuration. JobMonitorInfo: The monitoring configu
 | failEnable | Boolean | No | true | The switch for failure alerts. This feature is enabled by default. |
 | sendChannel | String | No | ding | The channel to send alerts. The default channel is DingTalk. Valid values: ding: DingTalk sms: text message mail: email phone : phone call Note Separate multiple alarm notification methods with a comma. For example: sms,ding sends alarms by text message and DingTalk. |
 
+ContactInfo: The configuration for alert contacts.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | empId | String | Yes | The employee ID. |
 
-MonitorConfig: The configuration for alert switches and thresholds. ContactInfo: The configuration for alert contacts.
-
 | userName | String | No | The username. We recommend that you specify this parameter. |
 |---|---|---|---|
+
+**Return data**
+
+SchedulerXResult<CreateJobResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -932,10 +987,6 @@ MonitorConfig: The configuration for alert switches and thresholds. ContactInfo:
 | message | String | The error message. |
 | requestId | String | The unique ID of the request. |
 | data | CreateJobResponse | The ID of the job that was created. |
-
-**Return data**
-
-SchedulerXResult<CreateJobResponse>
 
 **Example code**
 
@@ -952,17 +1003,21 @@ client.getResponse(createJobRequest);
         logger.error("createJobRequest error code: {} message: {}, requestId: {}",
 createJobResponseResult.getCode(),
         createJobResponseResult.getMessage(), createJobResponseResult.getRequestId());
-    }
 } catch (Exception e) {
   logger.error("createJobRequest error.", e);
-}
 ```
 
-#### Create an HTTP job
+#### 4.3.3 Create an HTTP job
 
 This topic describes how to create an HTTP job.
 
-**Request URL**
+```
+ /openapi/v1/job/create
+```
+
+**HTTP parameters**
+
+Request body
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
@@ -973,17 +1028,7 @@ This topic describes how to create an HTTP job.
 | executeMode | String | Yes | For HTTP jobs, set this parameter to `standalone`. |
 | content | JSON string | Yes | The HTTP property configuration. For more information, see the definition. |
 | monitorConfig | JSON string | Yes | The monitoring and alert configuration. For more information, see the definition. |
-| timeType |  |  | The time configuration type. Valid values: cron: 1 `3`: `fix rate` (fixed frequency) _ `5`: `one time` (one-time job) _ API: 100 HTTP jobs do not support second- level scheduling. |
-
-```
- /openapi/v1/job/create
-```
-
-**Request parameters**
-
-**HTTP parameters**
-
-Request body
+| timeType |   |   | The time configuration type. Valid values: cron: 1 `3`: `fix rate` (fixed frequency) _ `5`: `one time` (one-time job) _ API: 100 HTTP jobs do not support second- level scheduling. |
 
 | timeExpression | String | Yes | `api`: Leave this parameter empty. `fix rate`: The fixed frequency in _ seconds. For example, a value of `30` indicates that the job is triggered every 30 seconds. `cron`: A standard cron expression. The backend validates the expression. `second delay`: A number in _ seconds. For example, `15`. `one time`: The time to run the _ job. The format is `yyyy-MM-dd HH:mm:ss`. |
 |---|---|---|---|
@@ -992,13 +1037,13 @@ Request body
 | contact | JSON string | No | The alert contacts for the job. This parameter is valid only when `monitorConfig.sendChannel` is not set to `default`. |
 | parameters | String | No | The parameter information for the HTTP job. The value must match the format specified by `content.contentType`. |
 
+HTTP property configuration: content
+
 | Name | Type | Required | Description |
 |---|---|---|---|
 | url | String | Yes | The full request URL, including `http://`. |
 | method | String | Yes | Only GET and POST are supported. The default is GET. |
 | respParseMode | int | Yes | The HTTP response parsing mode. Options: `1`: HTTP response code `2`: Custom JSON (default) `3`: Custom string |
-
-HTTP property configuration: content
 
 | respKey | String | No | Required when `respParseMode` is `2`. The key used to check the return value for a successful request. |
 |---|---|---|---|
@@ -1007,13 +1052,13 @@ HTTP property configuration: content
 | respStr | String | No | Required when `respParseMode` is `3`. The string in the HTTP response that indicates a successful request. Example: `success`. |
 | timeout | int | Yes | The request timeout period. The value must be between 1 and 15 seconds. |
 | contentType | String | No | The parameter type for the HTTP job. This specifies the format for submitting the `parameters` in the request body. Option: application/x-www-form- urlencoded |
-| httpJobExecutionMode | int |  | The execution mode of the HTTP job. Options: 0: Serverless 1: Agent |
+| httpJobExecutionMode | int |   | The execution mode of the HTTP job. Options: 0: Serverless 1: Agent |
 | cookie | String | No | The cookie content for the HTTP request. |
+
+Monitoring and alerting configuration: monitorConfig
 
 | Name | Type | Require d | Default | Description |
 |---|---|---|---|---|
-
-Monitoring and alerting configuration: monitorConfig
 
 | failEnable | boolean | No | true | The switch to enable alerts for failed jobs. This is enabled by default. |
 |---|---|---|---|---|
@@ -1021,23 +1066,27 @@ Monitoring and alerting configuration: monitorConfig
 | failLimitTimes | int | No | 1 | The number of consecutive failures. An alert is sent only if the number of consecutive failures exceeds this value. |
 | sendChannel | String | No | ding | The following channels are available for sending alerts (the default is DingTalk): ding: DingTalk. Short Message Service (SMS): A text message. `sms`: Text message `mail`: Email Separate multiple values with commas. For example: To specify multiple methods, separate them with commas. For example, `sms,ding` indicates that alerts are sent by text message and DingTalk. `default`: The alert contacts for the application. This is the recommended setting. |
 
+**Java SDK parameters**
+
+CreateHttpJobRequest: Request parameters
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | httpJobConfig | HttpJobConfig | Yes | The job configuration information. |
 
+HttpJobConfig: Job parameters
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | name | String | Yes | The name of the job. |
-
-**Java SDK parameters**
-
-CreateHttpJobRequest: Request parameters HttpJobConfig: Job parameters
 
 | description | String | No | The description of the job. |
 |---|---|---|---|
 | httpAttribute | HttpAttribute | Yes | The HTTP property configuration. For more information, see the definition. |
 | timeConfig | TimeConfig | Yes | The time configuration parameters. For more information, see the definition. |
 | jobMonitorInfo | JobMonitorInfo | Yes | The monitoring and alert configuration. For more information, see the definition. |
+
+HttpAttribute: HTTP property definition
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
@@ -1048,33 +1097,41 @@ CreateHttpJobRequest: Request parameters HttpJobConfig: Job parameters
 | timeout | Int | Yes | The request timeout period. The value must be between 1 and 15 seconds. |
 | cookie | String | No | None. |
 
+TimeConfig: Time configuration
+
 | Name | Type | Required | Description |
 |---|---|---|---|
-
-HttpAttribute: HTTP property definition TimeConfig: Time configuration
 
 | timeType | Int | Yes | The time configuration type. Valid values: cron: 1 fix rate: 3 (Fixed frequency) _ API: 100 Note HTTP jobs do not support second-level scheduling. |
 |---|---|---|---|
 | timeExpressi on | String | No | `api`: Leave this parameter empty. `fix rate`: The fixed frequency in seconds. For _ example, a value of `30` indicates that the job is triggered every 30 seconds. `cron`: A standard cron expression. The backend validates the expression. |
+
+JobMonitorInfo: Monitoring configuration
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | monitorConfig | MonitorConfig | Yes | The alert switch and threshold configuration. |
 | contactInfo | List<ContactInfo> | No | The alert contacts. If you leave this empty, alerts are sent to all users who have permissions on the group. |
 
+MonitorConfig: Configuration for alert switches and thresholds
+
 | Name | Type | Req uire d | Defa ult | Description |
 |---|---|---|---|---|
 | failEnable | Boolea n | No | true | The switch to enable alerts for failed jobs. This is enabled by default. |
 
-JobMonitorInfo: Monitoring configuration MonitorConfig: Configuration for alert switches and thresholds
-
 | sendChanne l | String | No | ding | The method to send alerts. The default is DingTalk. Valid values: `ding`: DingTalk `sms`: Text message `mail`: Email `phone`: Phone call Note To specify multiple methods, separate them with a comma (,). For example, sms,ding indicates that alerts are sent by text message and DingTalk. |
 |---|---|---|---|---|
+
+ContactInfo: Configuration for alert contacts
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | empId | String | Yes | The employee ID. |
 | userName | String | No | The username. Setting this parameter is recommended. |
+
+**Return data**
+
+SchedulerXResult<CreateJobResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -1083,12 +1140,6 @@ JobMonitorInfo: Monitoring configuration MonitorConfig: Configuration for alert 
 | message | String | The error message. |
 | requestId | String | The unique ID of the request. |
 | data | CreateJobResponse | If the job is created, the job ID is returned. |
-
-ContactInfo: Configuration for alert contacts
-
-**Return data**
-
-SchedulerXResult<CreateJobResponse>
 
 **Sample code**
 
@@ -1103,15 +1154,25 @@ client.getResponse(request);
         logger.error("createJobRequest error code: {} message: {}, requestId: {}",
 createJobResponseResult.getCode(),
         createJobResponseResult.getMessage(), createJobResponseResult.getRequestId());
-    }
 } catch (Exception e) {
   logger.error("createJobRequest error.", e);
-}
 ```
+
+#### 4.3.4 Update a job
+
+This operation updates parts of a job's configuration. We recommend that you first call the Get Job API operation to retrieve the job's configuration and then modify the required fields.
+
+```
+ /openapi/v1/job/update
+```
+
+UpdateJobRequest: The request parameters.
 
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | jobConfigInfo | JobConfigInfo | Yes | The job configuration information. |
+
+JobConfigInfo: The job parameters.
 
 | Name | Type | Requir ed | Defau lt value | Description |
 |---|---|---|---|---|
@@ -1120,20 +1181,6 @@ createJobResponseResult.getCode(),
 | content | String | Yes | None | Required for script jobs. This is the script code to be executed. Do not specify this parameter for Java jobs. |
 | name | String | Yes | None | The job name. |
 | description | String | No | None | The job description. |
-
-#### Update a job
-
-This operation updates parts of a job's configuration. We recommend that you first call the Get Job API operation to retrieve the job's configuration and then modify the required fields.
-
-**Request URL**
-
-```
- /openapi/v1/job/update
-```
-
-**Request parameters**
-
-UpdateJobRequest: The request parameters. JobConfigInfo: The job parameters.
 
 | executeMode | String | Yes | None | Select one of the following values: Standalone mode Broadcast: broadcast Parallel computing: parallel In-memory grid: grid Grid computing: batch Note Parallel computing, in-memory grid, and grid computing are supported only for Java jobs. |
 |---|---|---|---|---|
@@ -1145,16 +1192,18 @@ UpdateJobRequest: The request parameters. JobConfigInfo: The job parameters.
 | timeConfig | TimeConfi g | Yes | None | The time configuration parameters. For more information, see the parameter description. |
 | jobMonitorInf o | JobMonito rInfo | Yes | None | The monitoring and alert configuration. For more information, see the parameter description. |
 
+MapTaskXAttrs: The advanced configuration for parallel and grid execution modes.
+
 | Name | Type | Requir ed | Default value | Description |
 |---|---|---|---|---|
-
-MapTaskXAttrs: The advanced configuration for parallel and grid execution modes.
 
 | pageSize | Int | No | 100 | The number of subtasks to pull at a time for a parallel job. |
 |---|---|---|---|---|
 | consumerSize | Int | No | 5 | The number of threads for a single job instance on a single machine. |
 | queueSize | Int | No | 10000 | The upper limit of the subtask queue cache. |
 | dispatcherSize | Int | No | 5 | The number of threads for subtask distribution. |
+
+TimeConfig: The time configuration.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -1163,14 +1212,16 @@ MapTaskXAttrs: The advanced configuration for parallel and grid execution modes.
 | calendar | String | No | If you set timeType to cron, you can specify a custom calendar. |
 | dataOffset | Int | No | If you set timeType to cron, you can specify a time offset. Unit: seconds. |
 
+JobMonitorInfo: The monitoring configuration.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | monitorConfig | MonitorConfig | Yes | The alert switch and threshold configuration. |
 
-TimeConfig: The time configuration. JobMonitorInfo: The monitoring configuration.
-
 | contactInfo | List<ContactInfo> | No | The alert contacts. If you do not specify this parameter, alerts are sent to all users who have permissions on the group. |
 |---|---|---|---|
+
+MonitorConfig: The configuration for alert notifications and thresholds.
 
 | Name | Type | Req uire d | Default value | Description |
 |---|---|---|---|---|
@@ -1180,14 +1231,16 @@ TimeConfig: The time configuration. JobMonitorInfo: The monitoring configuration
 | failEnable | Boolean | No | true | The switch for failure alerts. This is enabled by default. |
 | sendChanne l | String | No | ding | The channel for sending alerts. The default is DingTalk. Valid values: ding: DingTalk sms: text message mail: email phone: Phone number Note If you want to use multiple alert notification methods, separate them with a comma (,). For example: To use multiple channels, separate them with a comma (,). For example, sms,ding indicates that alerts are sent through text messages and DingTalk. |
 
+ContactInfo: The configuration for alert contacts.
+
 | Name | Type | Require d | Description |
 |---|---|---|---|
 | empId | String | Yes | The employee ID. |
 
-MonitorConfig: The configuration for alert notifications and thresholds. ContactInfo: The configuration for alert contacts.
-
 | userName | String | No | The alias. Specifying this parameter is recommended. |
 |---|---|---|---|
+
+**Response data**
 
 | Name | Type | Description |
 |---|---|---|
@@ -1197,14 +1250,9 @@ MonitorConfig: The configuration for alert notifications and thresholds. Contact
 | requestId | String | The unique ID of the request. |
 | data | UpdateJobResponse | The job ID is returned on successful update. |
 
-**Response data**
-
 **Examples**
 
 Java HTTP
-
-| Name | Type | Required | Description |
-|---|---|---|---|
 
 ```java
 // You can find the appkey and groupId on the Group Management page. The domain varies by environment. For more information, see the integration document. OpenApiClient client = new OpenApiClient(${appKey},${groupId},${domain}) // Get the information of the job to modify. GetJobInfoRequest getJobInfoRequest = new GetJobInfoRequest(); getJobInfoRequest.setJobId(530); // Send the request. try {
@@ -1226,35 +1274,33 @@ client.getResponse(updateJobRequest);
               System.out.println(response);
             } else {
               // Print the log.
-            }
-        }
     } else {
         logger.error("getJobInfoRequest error code: {} message: {}, requestId: {}", get
 JobInfoResponseResult.getCode(),
         getJobInfoResponseResult.getMessage(),
-getJobInfoResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+getJobInfoResponseResult.getRequestId()); } catch (Exception e) {
   logger.error("updateJobRequest error.", e);
-}
 ```
 
-#### Get a task
+#### 4.3.5 Get a task
 
 Retrieves the details of a task by its job ID. This operation is typically used to update tasks.
-
-**Request URL**
 
 ```
  /openapi/v1/job/get
 ```
 
-**Request parameters**
-
 GetJobInfoRequest: Request parameters
+
+| Name | Type | Required | Description |
+|---|---|---|---|
 
 | jobID | Long | Yes | The task ID. |
 |---|---|---|---|
+
+**Response data**
+
+SchedulerXResult<GetJobInfoResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -1264,6 +1310,8 @@ GetJobInfoRequest: Request parameters
 | requestId | String | The unique ID of the request. |
 | data | GetJobInfoResponse | The information about the specified task. |
 
+JobConfigInfo: The task configuration object in GetJobInfoResponse
+
 | Name | Type | Description |
 |---|---|---|
 | className | String | The full path of the task interface class. For example, com.alibaba.test.TestJob . |
@@ -1272,10 +1320,6 @@ GetJobInfoRequest: Request parameters
 | name | String | The task name. |
 | description | String | The task description. |
 | status | Int | 1: Enabled. The task can be triggered normally. 0: Disabled. The task will not be triggered. |
-
-**Response data**
-
-SchedulerXResult<GetJobInfoResponse> JobConfigInfo: The task configuration object in GetJobInfoResponse
 
 | executeMode | String | Select one of the following input values: Mode: Standalone Run mode: broadcast Parallel computing Memory Grid: grid batch: Grid computing. |
 |---|---|---|
@@ -1287,16 +1331,18 @@ SchedulerXResult<GetJobInfoResponse> JobConfigInfo: The task configuration objec
 | timeConfig | TimeConfig | Time configuration parameters. See the definition for details. |
 | jobMonitorInfo | JobMonitorInfo | Monitoring and alert configuration. See the definition for details. |
 
+MapTaskXAttrs: Advanced configuration for parallel and grid execution modes
+
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | pageSize | Int | 100 | The number of sub-tasks to pull at a time for a parallel task. |
 | consumerSize | Int | 5 | The number of execution threads for a single trigger on a single machine. |
 | queueSize | Int | 10000 | The maximum size of the sub-task queue cache. |
 
-MapTaskXAttrs: Advanced configuration for parallel and grid execution modes
-
 | dispatcherSize | Int | 5 | The number of threads for dispatching sub- tasks. |
 |---|---|---|---|
+
+TimeConfig: Time-based scheduling configuration
 
 | Name | Type | Description |
 |---|---|---|
@@ -1305,38 +1351,35 @@ MapTaskXAttrs: Advanced configuration for parallel and grid execution modes
 | calendar | String | For the `cron` type, you can specify a custom calendar. |
 | dataOffset | Int | For the `cron` type, you can specify a time offset. Unit: seconds. |
 
+JobMonitorInfo: Job monitoring configuration
+
 | Name | Type | Description |
 |---|---|---|
 | monitorConfig | MonitorConfig | The alert switch and threshold configuration. |
 | contactInfo | List<ContactInfo> | The alert contacts. If you leave this empty, alerts are sent to all users who have permissions on the group. |
+
+MonitorConfig: Alert and threshold configuration
 
 | Name | Type | Description |
 |---|---|---|
 | timeoutEnable | Boolean | The switch for timeout alerts. Enabled by default. |
 | timeout | Long | The timeout threshold. Unit: seconds. The default value is 2 hours. |
 
-TimeConfig: Time-based scheduling configuration JobMonitorInfo: Job monitoring configuration MonitorConfig: Alert and threshold configuration
-
 | timeoutKillEnable | Boolean | The switch to stop the current run on timeout. Disabled by default. |
 |---|---|---|
 | failEnable | Boolean | The switch for failure alerts. Enabled by default. |
 | sendChannel | String | The channel to send alerts. DingTalk is used by default. Valid values: ding: DingTalk sms: Text message mail: Email phone: Phone call Note To use multiple alert channels, separate them with a comma (,). For example: sms,ding sends alerts through both text message and DingTalk. |
+
+ContactInfo: Alert contact configuration
 
 | Name | Type | Description |
 |---|---|---|
 | empId | String | The employee ID. |
 | userName | String | The username. We recommend that you set this parameter. |
 
-ContactInfo: Alert contact configuration
-
 **Sample code**
 
 Java HTTP
-
-| Name | Type | Requir ed | Description |
-|---|---|---|---|
-| status | Int | No | You can query tasks by status. 1: Enabled. 0: Disabled. If no value is specified, all tasks are returned. |
-| keyword | String | No | A keyword for a fuzzy search on the job name and description. This parameter takes effect only if pageNum is set. This parameter is available in version 1.8.10 and later. |
 
 ```java
 // You can find the appKey and groupId on the Group Management page. For the domain, se e the integration document. The domain varies by environment. OpenApiClient client = new OpenApiClient(${appKey},${groupId},${domain}) // Create and populate the request object. GetJobInfoRequest getJobInfoRequest = new GetJobInfoRequest(); getJobInfoRequest.setJobId(530); // Send the request. try {
@@ -1349,33 +1392,34 @@ client.getResponse(getJobInfoRequest);
         logger.error("getJobInfoRequest error code: {} message: {}, requestId: {}", get
 JobInfoResponseResult.getCode(),
         getJobInfoResponseResult.getMessage(),
-getJobInfoResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+getJobInfoResponseResult.getRequestId()); } catch (Exception e) {
   logger.error("getJobInfoRequest error.", e);
-}
 ```
 
-#### Query a job list
+#### 4.3.6 Query a job list
 
 Retrieves a list of all application groups in a specified namespace for which you have permissions.
 
-**Request URL**
-
 ```
  /openapi/v1/job/list
-```
-
-**Request parameters**
-
-```
  GetJobInfoListRequest
 ```
+
+| Name | Type | Requir ed | Description |
+|---|---|---|---|
+| status | Int | No | You can query tasks by status. 1: Enabled. 0: Disabled. If no value is specified, all tasks are returned. |
+| keyword | String | No | A keyword for a fuzzy search on the job name and description. This parameter takes effect only if pageNum is set. This parameter is available in version 1.8.10 and later. |
 
 | className | String | No | A keyword for a fuzzy search on the class name for Java jobs. This parameter takes effect only if pageNum is set. This parameter is available in version 1.8.10 and later. |
 |---|---|---|---|
 | pageSize | Int | No | The number of entries to return on each page. The default value is 10. This parameter takes effect only if pageNum is set. This parameter is available in version 1.8.10 and later. |
 | pageNum | Int | No | The page number to return. If you do not set this parameter, all jobs are returned, and the keyword, className, and pageSize parameters are ignored. This parameter is available in version 1.8.10 and later. |
+
+**Returned data**
+
+```
+ SchedulerXResult<GetJobInfoListResponse>
+```
 
 | Name | Type | Description |
 |---|---|---|
@@ -1385,25 +1429,15 @@ Retrieves a list of all application groups in a specified namespace for which yo
 | requestId | String | The unique ID of the request. |
 | data | GetJobInfoListResponse | The content was not parsed. |
 
+```
+ GetJobInfoListResponse
+```
+
 | Name | Type | Description |
 |---|---|---|
 | jobConfigInfos | List<JobConfigInfo> | The name of the application. |
 
-**Returned data**
-
-```
- SchedulerXResult<GetJobInfoListResponse>
- GetJobInfoListResponse
-```
-
 **Example code**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| jobId | Long | Yes | The job ID. |
-
-| Name | Type | Description |
-|---|---|---|
 
 ```java
 public void testListJobs() {
@@ -1427,31 +1461,30 @@ client.getResponse(request);
                 System.out.println("jobid:" + jobConfigInfo.getJobId() + ", name:" +
 jobConfigInfo.getName()
                                    + ", jobType:" + jobConfigInfo.getJobType());
-            }
-        }
     } catch (Exception e) {
         e.printStackTrace();
-    }
-}
 ```
 
-#### Delete a job
+#### 4.3.7 Delete a job
 
 This operation deletes a specified job.
-
-**Request URL**
 
 ```
  /openapi/v1/job/delete
 ```
 
-**Request parameters**
-
 DeleteJobRequest parameters
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| jobId | Long | Yes | The job ID. |
 
 **Response data**
 
 SchedulerXResult<DeleteJobResponse>
+
+| Name | Type | Description |
+|---|---|---|
 
 | code | Int | The return code. |
 |---|---|---|
@@ -1472,30 +1505,27 @@ client.getResponse(deleteJobRequest);
         logger.error("deleteJobRequest error code: {} message: {}, requestId: {}",
 deleteJobResponseResult.getCode(),
             deleteJobResponseResult.getMessage(),
-deleteJobResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+deleteJobResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("deleteJobRequest error.", e);
-}
 ```
 
-#### Enable a job
+#### 4.3.8 Enable a job
 
 Enables a specified Job. Jobs are enabled by default after they are created. This feature is used in conjunction with the API for disabling Jobs.
-
-**Request URL**
 
 ```
  /openapi/v1/job/enable
 ```
-
-**Request parameters**
 
 The request parameters are contained in the EnableJobRequest object.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | jobID | Long | Yes | The job ID. |
+
+**Response data**
+
+SchedulerXResult<EnableJobResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -1504,10 +1534,6 @@ The request parameters are contained in the EnableJobRequest object.
 | message | String | The error message. |
 | requestId | String | The unique ID of the request. |
 | data | EnableJobResponse | No objects were parsed. |
-
-**Response data**
-
-SchedulerXResult<EnableJobResponse>
 
 **Sample code**
 
@@ -1521,16 +1547,29 @@ client.getResponse(enableJobRequest);
         logger.error("enableJobRequest error code: {} message: {}, requestId: {}",
 enableJobResponseResult.getCode(),
             enableJobResponseResult.getMessage(),
-enableJobResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+enableJobResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("enableJobRequest error.", e);
-}
 ```
+
+#### 4.3.9 Disable a job
+
+Disables a specified job. A disabled job will not be triggered.
+
+```
+ /openapi/v1/job/disable
+```
+
+The request parameters are included in the `DisableJobRequest` object.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | jobId | Long | Yes | The job ID. |
+
+**Return value**
+
+```
+ SchedulerXResult<DisableJobResponse>
+```
 
 | Name | Type | Description |
 |---|---|---|
@@ -1540,33 +1579,7 @@ enableJobResponseResult.getRequestId());
 | requestId | String | The unique ID of the request. |
 | data | DisableJobResponse | Object parsing is not supported. |
 
-#### Disable a job
-
-Disables a specified job. A disabled job will not be triggered.
-
-**Request URL**
-
-```
- /openapi/v1/job/disable
-```
-
-**Request parameters**
-
-The request parameters are included in the `DisableJobRequest` object.
-
-**Return value**
-
-```
- SchedulerXResult<DisableJobResponse>
-```
-
 **Sample code**
-
-| Name | Type | Requir ed | Description |
-|---|---|---|---|
-| jobId | Long | Yes | The ID of the job. |
-| instanceParamet ers | String | No | The parameters for this specific trigger. This can be any string. The processor code retrieves these parameters by calling context.getInstanceParameters() . These parameters are different from the custom parameters defined when the job was created. |
-| designateType | int | No | 1: Specify the worker address. 2: Specify the label. |
 
 ```java
 // Query the appkey and groupId on the Group Management page. For information about the domain, see the integration document. The domain varies based on the environment. OpenApiClient client = new OpenApiClient(${appKey},${groupId},${domain}) // If a custom namespace is used, set the namespace UID in the client. //client.setNamespace("xxxx-xxx-xxx-xxx-xxxxx"); // Create and populate the job request object. DisableJobRequest disableJobRequest = new DisableJobRequest(); disableJobRequest.setJobId(529); try {
@@ -1578,30 +1591,33 @@ client.getResponse(disableJobRequest);
         logger.error("disableJobRequest error code: {} message: {}, requestId: {}", dis
 ableJobResponseResult.getCode(),
             disableJobResponseResult.getMessage(),
-disableJobResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+disableJobResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("disableJobRequest error.", e);
-}
 ```
 
-#### Run a job
+#### 4.3.10 Run a job
 
 Triggers a job. This method is required for API-type jobs but can also be called for other job types.
-
-**Request URL**
 
 ```
  /openapi/v1/job/execute
 ```
 
-**Request parameters**
-
 The request parameters are described in the ExecuteJobRequest object.
+
+| Name | Type | Requir ed | Description |
+|---|---|---|---|
+| jobId | Long | Yes | The ID of the job. |
+| instanceParamet ers | String | No | The parameters for this specific trigger. This can be any string. The processor code retrieves these parameters by calling context.getInstanceParameters() . These parameters are different from the custom parameters defined when the job was created. |
+| designateType | int | No | 1: Specify the worker address. 2: Specify the label. |
 
 | worker | String | No | The address of the worker. You can obtain the worker address by calling the API operation that queries the list of workers. Example: 011159226222 647755 26517@11.xxx.xxx.xxx:40219 _ _ |
 |---|---|---|---|
 | label | String | No | gray |
+
+**Response data**
+
+SchedulerXResult<ExecuteJobResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -1611,27 +1627,19 @@ The request parameters are described in the ExecuteJobRequest object.
 | requestId | String | The unique ID of the request. |
 | data | ExecuteJobResponse | The instance ID is returned if the request is successful. |
 
-**Response data**
-
-SchedulerXResult<ExecuteJobResponse>
-
 **Sample code**
 
 ```java
 OpenApiClient client = new OpenApiClient("xxxxxx", "ram-access-advisor", "schedulerx2.taobao.net"); ExecuteJobRequest request = new ExecuteJobRequest(); request.setJobId(492708L); request.setDesignateType(1); request.setWorker("011159226222_647755_26517@11.xxx.xxx.xxx:40219"); SchedulerXResult<ExecuteJobResponse> response = client.getResponse(request); System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Specify Machines
+#### 4.3.11 Specify Machines
 
 After you designate a worker, wait 10 seconds before you call the execute API.
-
-**Request URL**
 
 ```
  /openapi/v1/job/designateWorkers
 ```
-
-**Request parameters**
 
 DesignateWorkersConsoleRequest parameters
 
@@ -1643,6 +1651,10 @@ DesignateWorkersConsoleRequest parameters
 | workers | String | No | A list of IP addresses for the designated workers. Separate the IP addresses with commas (,). |
 | labels | String | No | A list of designated labels. Separate the labels with commas (,). |
 
+**Returned data**
+
+SchedulerXResult<DesignateWorkersResponse>
+
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
@@ -1651,16 +1663,7 @@ DesignateWorkersConsoleRequest parameters
 | requestId | String | The unique ID of the request. |
 | data | DesignateWorkersRes ponse | Object parsing is not performed. |
 
-**Returned data**
-
-SchedulerXResult<DesignateWorkersResponse>
-
 **Example code**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| instanceId | Long | Yes | The ID of the running instance. |
-| jobId | Long | Yes | The job ID. |
 
 ```
 // You can find the appKey and groupId on the Group Management page. // The domain varies based on the environment. For more information, see the integratio n guide. OpenApiClient client = new OpenApiClient(${appKey},${groupId},${domain}) DesignateWorkersRequest request = new DesignateWorkersRequest(); request.setJobId(jobId); request.setTransferable(false); request.setDesignateType(DesignateType.WORKER.getValue()); request.setWorkers(JsonUtils.objectToJson(Lists.newArrayList(workerIp))); request.setLabels(""); request.setGroupId(config.getGroupId()); try {
@@ -1674,27 +1677,26 @@ SchedulerXResult<DesignateWorkersResponse>
                 executeJobResponseResult.getCode(),
                 executeJobResponseResult.getMessage(),
                 executeJobResponseResult.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("executeJobRequest error.", e);
-}
 ```
 
-### Task instances
+### 4.4 Task instances
 
-#### Stop a running task instance
+#### 4.4.1 Stop a running task instance
 
 This operation stops a running task instance.
-
-**Request URL**
 
 ```
  /openapi/v1/instance/kill
 ```
 
-**Request parameters**
-
 KillInstanceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| instanceId | Long | Yes | The ID of the running instance. |
+| jobId | Long | Yes | The job ID. |
 
 **Response data**
 
@@ -1720,24 +1722,17 @@ client.getResponse(killInstanceRequest);
         logger.error("killInstanceRequest error code: {} message: {}, requestId: {}", k
 illInstanceResponseResult.getCode(),
             killInstanceResponseResult.getMessage(),
-killInstanceResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+killInstanceResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("killInstanceRequest error.", e);
-}
 ```
 
-#### Retry a failed task instance
+#### 4.4.2 Retry a failed task instance
 
 This operation retries a failed task instance.
-
-**Request URL**
 
 ```
  /openapi/v1/instance/retry
 ```
-
-**Request parameters**
 
 RetryJobInstanceRequest
 
@@ -1745,6 +1740,10 @@ RetryJobInstanceRequest
 |---|---|---|---|
 | instanceId | Long | Yes | The ID of the running instance. |
 | jobId | Long | Yes | The job ID. |
+
+**Return data**
+
+SchedulerXResult<RetryInstanceResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -1754,20 +1753,7 @@ RetryJobInstanceRequest
 | requestId | String | The unique ID of the request. |
 | data | RetryInstanceResponse | There is no content to parse. |
 
-**Return data**
-
-SchedulerXResult<RetryInstanceResponse>
-
 **Sample code**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| id | Long | Yes | The task instance ID. |
-| jobId | Long | Yes | The job ID. |
-
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
 
 ```java
 // Find the appKey and groupId on the Group Management page. The domain varies by envir onment. For more information about the domain, see the integration document. OpenApiClient client = new OpenApiClient(${appKey},${groupId},${domain}) // Create and populate the request object. RetryJobInstanceRequest retryJobInstanceRequest = new RetryJobInstanceRequest(); retryJobInstanceRequest.setInstanceId(52932); retryJobInstanceRequest.jobId(123); try {
@@ -1779,40 +1765,38 @@ client.getResponse(retryJobInstanceRequest);
         logger.error("retryJobInstanceResponseResult error code: {} message: {},
 requestId: {}", retryJobInstanceResponseResult.getCode(),
             retryJobInstanceResponseResult.getMessage(),
-retryJobInstanceResponseResult.getRequestId());
-    }
-} catch (Exception e) {
+retryJobInstanceResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("retryJobInstanceRequest error.", e);
-}
 ```
 
-#### Mark a task instance as successful
+#### 4.4.3 Mark a task instance as successful
 
 Sets the status of a failed task instance to successful.
-
-**Request URL**
 
 ```
  /openapi/v1/instance/setSuccess
 ```
 
-**Request parameters**
-
 SetJobInstanceSuccessRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| id | Long | Yes | The task instance ID. |
+| jobId | Long | Yes | The job ID. |
 
 **Return data**
 
 SchedulerXResult<SetJobInstanceSuccessResponse>
+
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
 
 | success | Boolean | Indicates whether the call is successful. |
 |---|---|---|
 | message | String | The error message. |
 | requestId | String | The unique ID of the request. |
 | data | SetJobInstanceSuccessResponse | No content is parsed. |
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| jobId | Long | Yes | The job ID. |
 
 **Sample code**
 
@@ -1826,28 +1810,30 @@ client.getResponse(request);
         logger.error("result error code: {} message: {}, requestId: {}",
 result.getCode(),
             result.getMessage(), result.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("SetJobInstanceSuccessRequest error.", e);
-}
 ```
 
-#### Query job instance details
+#### 4.4.4 Query job instance details
 
 Retrieves the details of a specified job instance.
-
-**Request URL**
 
 ```
  /openapi/v1/instance/get
 ```
 
-**Request parameters**
-
 GetJobInstanceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| jobId | Long | Yes | The job ID. |
 
 | jobInstanceId | Long | Yes | The instance ID. |
 |---|---|---|---|
+
+**Response data**
+
+SchedulerXResult<GetJobInstanceResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -1857,53 +1843,43 @@ GetJobInstanceRequest
 | requestId | String | The unique ID of the request. |
 | data | GetJobInstanceResponse | No content has been parsed. |
 
+GetJobInstanceResponse
+
 | Property | Type | Description |
 |---|---|---|
 | jobInstanceDetail | JobInstanceDetail | None |
 
-|  | Property | Type | Description |  |  |
-|---|---|---|---|---|---|
-|  | instanceId | Long | The instance ID. |  |  |
-|  | jobId | Long | The job ID. |  |  |
-|  | status | Int | 1: Waiting 3: Running 4: Succeeded 5: Failed 9: Rejected The corresponding enumeration class is com.alibaba.schedulerx.common.domain.InstanceSt atus . |  |  |
-|  |  |  |  | com.alibaba.schedulerx.common.domain.InstanceSt |  |
-|  |  |  | atus |  |  |
+JobInstanceDetail
 
-|  |  | > Document Version: 2026070 |
+|   | Property | Type | Description |   |   |
+|---|---|---|---|---|---|
+|   | instanceId | Long | The instance ID. |   |   |
+|   | jobId | Long | The job ID. |   |   |
+|   | status | Int | 1: Waiting 3: Running 4: Succeeded 5: Failed 9: Rejected The corresponding enumeration class is com.alibaba.schedulerx.common.domain.InstanceSt atus . |   |   |
+|   |   |   |   | com.alibaba.schedulerx.common.domain.InstanceSt |   |
+|   |   |   | atus |   |   |
+
+|   |   | > Document Version: 2026070 |
 |---|---|---|
 
-**Response data**
-
-SchedulerXResult<GetJobInstanceResponse> GetJobInstanceResponse
-
-|  |  | startTime | Date | The time when the client started to execute the task. |  |  |
+|   |   | startTime | Date | The time when the client started to execute the task. |   |   |
 |---|---|---|---|---|---|---|
-|  |  | endTime | Date | The time when the client finished executing the task. |  |  |
-|  |  | scheduleTime | Date | The time when the service scheduled the task. |  |  |
-|  |  | dataTime | Date | The data timestamp. |  |  |
-|  |  | executor | String | The executor. |  |  |
-|  |  | workAddr | String | The IP address of the client that was triggered. |  |  |
-|  |  | result | String | The execution result of the instance or the reason for the failure. |  |  |
-|  |  | progress | String | The execution details of the instance. |  |  |
-|  |  | timeType | Int | The scheduling time type of the instance. The corresponding enumeration class is com.alibaba.schedulerx.common.domain.TimeType . |  |  |
-|  |  |  |  |  | com.alibaba.schedulerx.common.domain.TimeType |  |
-|  |  | triggerType | Int | The trigger type. The corresponding enumeration class is com.alibaba.schedulerx.common.domain.TriggerTyp e . |  |  |
-|  |  |  |  |  | com.alibaba.schedulerx.common.domain.TriggerTyp |  |
-|  |  |  |  | e |  |  |
-|  |  | attempt | Int | The number of retries for the task instance. |  |  |
-|  |  | parameters | String | The parameters of the task instance. |  |  |
+|   |   | endTime | Date | The time when the client finished executing the task. |   |   |
+|   |   | scheduleTime | Date | The time when the service scheduled the task. |   |   |
+|   |   | dataTime | Date | The data timestamp. |   |   |
+|   |   | executor | String | The executor. |   |   |
+|   |   | workAddr | String | The IP address of the client that was triggered. |   |   |
+|   |   | result | String | The execution result of the instance or the reason for the failure. |   |   |
+|   |   | progress | String | The execution details of the instance. |   |   |
+|   |   | timeType | Int | The scheduling time type of the instance. The corresponding enumeration class is com.alibaba.schedulerx.common.domain.TimeType . |   |   |
+|   |   |   |   |   | com.alibaba.schedulerx.common.domain.TimeType |   |
+|   |   | triggerType | Int | The trigger type. The corresponding enumeration class is com.alibaba.schedulerx.common.domain.TriggerTyp e . |   |   |
+|   |   |   |   |   | com.alibaba.schedulerx.common.domain.TriggerTyp |   |
+|   |   |   |   | e |   |   |
+|   |   | attempt | Int | The number of retries for the task instance. |   |   |
+|   |   | parameters | String | The parameters of the task instance. |   |   |
 
 **Code example**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| jobId | Long | Yes | The job ID. |
-
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
-| success | Boolean | Indicates whether the request was successful. |
-| message | String | The error message. |
 
 ```java
 // You can find the appKey and groupId on the Group Management page. For information ab out the domain, see the integration document. The domain varies by environment. OpenApiClient client = new OpenApiClient(${appKey},${groupId},${domain}) // Create and populate the GetJobInstanceRequest object. GetJobInstanceRequest request = new GetJobInstanceRequest(); request.setJobId(119); request.setJobInstanceId(99490); try {
@@ -1914,54 +1890,60 @@ SchedulerXResult<GetJobInstanceResponse> GetJobInstanceResponse
         logger.error("GetJobInstanceRequest error code: {} message: {}, requestId: {}",
 result.getCode(),
             result.getMessage(), result.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("GetJobInstanceRequest error.", e);
-}
 ```
 
-#### Query task instances
+#### 4.4.5 Query task instances
 
 Retrieves a list of Job instances for a specified Job ID. This operation returns information about the 10 most recent running instances.
-
-**Request URL**
 
 ```
  /openapi/v1/instance/getList
 ```
 
-**Request parameters**
-
 GetJobInstanceListRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| jobId | Long | Yes | The job ID. |
 
 **Response data**
 
 SchedulerXResult<GetJobInstanceListResponse>
 
-|  |  | SchedulerX 2.0 Developer Guide API lis |
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
+| success | Boolean | Indicates whether the request was successful. |
+| message | String | The error message. |
+
+|   |   | SchedulerX 2.0 Developer Guide API lis |
 |---|---|---|
 
 | requestId | String | The unique ID of the request. |
 |---|---|---|
 | data | GetJobInstanceListResponse | There is no content to parse. |
 
+GetJobInstanceListResponse
+
 | Property | Type | Description |
 |---|---|---|
 | jobInstanceDetails | List<JobInstanceDetail> | A list of the 10 most recent instances. |
 
-| Property | Type | Description |  |  |
-|---|---|---|---|---|
-| instanceId | Long | The instance ID. |  |  |
-| jobId | Long | The job ID. |  |  |
-| status | Int | 1: Waiting 3: Running 4: Succeeded 5: Failed 9: Rejected Corresponds to the com.alibaba.schedulerx.common.domain.InstanceStatus enumeration class. |  |  |
-|  |  |  | com.alibaba.schedulerx.common.domain.InstanceStatus |  |
-| startTime | Date | The time when the client started the execution. |  |  |
-| endTime | Date | The time when the client finished the execution. |  |  |
-| scheduleTime | Date | The time when the service scheduled the instance. |  |  |
-| dataTime | Date | The data timestamp. |  |  |
-| executor | String | The executor. |  |  |
+jobInstanceDetails
 
-GetJobInstanceListResponse
+| Property | Type | Description |   |   |
+|---|---|---|---|---|
+| instanceId | Long | The instance ID. |   |   |
+| jobId | Long | The job ID. |   |   |
+| status | Int | 1: Waiting 3: Running 4: Succeeded 5: Failed 9: Rejected Corresponds to the com.alibaba.schedulerx.common.domain.InstanceStatus enumeration class. |   |   |
+|   |   |   | com.alibaba.schedulerx.common.domain.InstanceStatus |   |
+| startTime | Date | The time when the client started the execution. |   |   |
+| endTime | Date | The time when the client finished the execution. |   |   |
+| scheduleTime | Date | The time when the service scheduled the instance. |   |   |
+| dataTime | Date | The data timestamp. |   |   |
+| executor | String | The executor. |   |   |
 
 | workAddr | String | The IP address of the triggered client. |
 |---|---|---|
@@ -1981,19 +1963,21 @@ GetJobInstanceListResponse
         logger.error("GetJobInstanceListRequest error code: {} message: {}, requestId:
 {}", result.getCode(),
             result.getMessage(), result.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("GetJobInstanceListRequest error.", e);
-}
 ```
 
-### Workflow
+### 4.5 Workflow
 
-#### Create a workflow
+#### 4.5.1 Create a workflow
 
 Create a workflow and define its basic information.
 
-**Request URL**
+```
+ /openapi/v1/workflow/create
+```
+
+CreateWorkflowRequest
 
 | Name | Type | Require d | Default value | Description |
 |---|---|---|---|---|
@@ -2004,6 +1988,10 @@ Create a workflow and define its basic information.
 | status | Integer | No | 0 | 0: Disabled. 1: Enabled. |
 | maxConcurrency | Integer | No | 1 | The maximum number of concurrent executions for the workflow. |
 
+**Response data**
+
+SchedulerXResult<CreateWorkflowResponse>
+
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
@@ -2012,26 +2000,19 @@ Create a workflow and define its basic information.
 | requestId | String | The unique ID of the request. |
 | data | CreateWorkflowResponse | If the request is successful, the workflow ID is returned. |
 
-**Request parameters**
-
-**Response data**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The ID of the workflow. |
-| name | String | No | The name of the workflow. |
-| description | String | No | The description of the workflow. |
-
-Response example:
+Response example: `{`
 
 ```json
-{
   "data": {
-  },
+    "workflowId": 8253
+```
+
+`},`
+
+```json
   "code": 200,
   "success": true,
   "message": ""
-}
 ```
 
 **Code example**
@@ -2050,21 +2031,32 @@ public void testCreate() throws Exception {
     request.setStatus(1);
     SchedulerXResult<CreateWorkflowResponse> response = client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Update basic workflow information
+#### 4.5.2 Update basic workflow information
 
 Updates the basic information of a workflow.
 
-**Request URL**
+```
+ /openapi/v1/workflow/update
+```
 
-**Request parameters**
+UpdateWorkflowRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The ID of the workflow. |
+| name | String | No | The name of the workflow. |
+| description | String | No | The description of the workflow. |
 
 | timeType | Integer | No | 1: cron 100: api |
 |---|---|---|---|
 | timeExpression | String | No | This parameter is required if you set timeType to 1. This parameter is not required if you set timeType to 100. |
 | maxConcurrency | Integer | No | The maximum number of concurrent workflow instances. |
+
+**Response data**
+
+SchedulerXResult<UpdateWorkflowResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -2074,13 +2066,7 @@ Updates the basic information of a workflow.
 | requestId | String | The unique ID of the request. |
 | data | UpdateWorkflowResponse | The ID of the workflow. This parameter is returned if the request is successful. |
 
-**Response data**
-
 **Sample code**
-
-| Name | Type | Req uire d | Description |
-|---|---|---|---|
-| workflo wId | Long | Yes | The ID of the workflow. |
 
 ```java
 @Test public void testUpdate() throws Exception {
@@ -2096,40 +2082,38 @@ Updates the basic information of a workflow.
     request.setTimeExpression("0 0 15 * * ?");
     SchedulerXResult<UpdateWorkflowResponse> response = client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Update a workflow DAG
+#### 4.5.3 Update a workflow DAG
 
 Define the basic information for the workflow.
 
-**Request URL**
+```
+ /openapi/v1/workflow/updateDag
+```
 
-**Request parameters**
+UpdateWorkflowDagRequest
+
+| Name | Type | Req uire d | Description |
+|---|---|---|---|
+| workflo wId | Long | Yes | The ID of the workflow. |
 
 | dagJson | String | Yes | The DAG information for the workflow. The value is a JSON string that contains node and edge information. Example: { "nodes": [ { "id": 1060973 }, { "id": 1060974 }, { "id": 1060975 }, { "id": 1060976 } ], "edges": [ { "source": 1060973, "target": 1060974 }, { "source": 1060973, "target": 1060975 }, { "source": 1060974, "target": 1060976 }, { "source": 1060975, "target": 1060976 } ] } |
 |---|---|---|---|
+
+**Data returned**
+
+SchedulerXResult<UpdateWorkflowDagResponse>
 
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
 | success | Boolean | Indicates whether the request was successful. |
 
-**Data returned**
-
-SchedulerXResult<UpdateWorkflowDagResponse>
-
 | message | String | The error message. |
 |---|---|---|
 | requestId | String | The unique ID of the request. |
 | data | UpdateWorkflowDagResponse | The ID of the workflow is returned if the request is successful. |
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| WorkflowId | Long | Yes | The workflow ID. |
-
-| Name | Type | Description |
-|---|---|---|
 
 **Sample code**
 
@@ -2145,28 +2129,34 @@ SchedulerXResult<UpdateWorkflowDagResponse>
 {\"id\":1060976}],\"edges\":[{\"source\":1060973,\"target\":1060974}, {\"source\":1060973,\"target\":1060975},{\"source\":1060974,\"target\":1060976},{\"sour ce\":1060975,\"target\":1060976}]}");
     SchedulerXResult<UpdateWorkflowDagResponse> response = client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Enable workflow
+#### 4.5.4 Enable workflow
 
 Enables a specified workflow.
 
-**Request URL**
+```
+ /openapi/v1/workflow/enable
+```
 
-**Request parameters**
+EnableWorkflowRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| WorkflowId | Long | Yes | The workflow ID. |
 
 **Return data**
+
+SchedulerXResult<EnableWorkflowResponse>
+
+| Name | Type | Description |
+|---|---|---|
 
 | Code | Integer | The return code. |
 |---|---|---|
 | Success | Boolean | Indicates whether the request was successful. |
 | Message | String | The error message. |
 | RequestId | String | The unique ID of the request. |
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| WorkflowId | Long | Yes | The ID of the workflow. |
 
 **Example code**
 
@@ -2178,19 +2168,23 @@ Enables a specified workflow.
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", request.getCode(),
             request.getMessage(), request.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("", e);
-}
 ```
 
-#### Disable a workflow
+#### 4.5.5 Disable a workflow
 
 This operation disables a specified workflow.
 
-**Request URL**
+```
+ /openapi/v1/workflow/disable
+```
 
-**Request parameters**
+DisableWorkflowRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| WorkflowId | Long | Yes | The ID of the workflow. |
 
 **Response data**
 
@@ -2203,10 +2197,6 @@ SchedulerXResult<DisableWorkflowResponse>
 | Message | String | The error message. |
 | RequestId | String | The unique ID of the request. |
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| WorkflowId | Long | Yes | The ID of the workflow. |
-
 **Sample code**
 
 ```java
@@ -2217,21 +2207,27 @@ SchedulerXResult<DisableWorkflowResponse>
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", request.getCode(),
             request.getMessage(), request.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("", e);
-}
 ```
 
-#### Delete a workflow
+#### 4.5.6 Delete a workflow
 
 This operation deletes a specified workflow.
 
-**Request URL**
+```
+ /openapi/v1/workflow/delete
+```
 
-**Request parameters**
+DeleteWorkflowRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| WorkflowId | Long | Yes | The ID of the workflow. |
 
 **Response data**
+
+SchedulerXResult<DeleteWorkflowResponse>
 
 | Name | Type | Description |
 |---|---|---|
@@ -2239,10 +2235,6 @@ This operation deletes a specified workflow.
 | Success | Boolean | Indicates whether the request was successful. |
 | Message | String | The error message. |
 | RequestId | String | The unique ID of the request. |
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The workflow ID. |
 
 **Sample code**
 
@@ -2254,19 +2246,27 @@ This operation deletes a specified workflow.
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", request.getCode(),
             request.getMessage(), request.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("", e);
-}
 ```
 
-#### Query workflow details and DAG
+#### 4.5.7 Query workflow details and DAG
 
 This operation returns the details and dependencies of a workflow.
 
-**Request URL**
+```
+ /openapi/v1/workflow/get
+```
 
-**Request parameters**
+GetWorkFlowRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The workflow ID. |
+
+**Returned data**
+
+GetWorkFlowResponse
 
 | Name | Type | Description |
 |---|---|---|
@@ -2278,13 +2278,11 @@ This operation returns the details and dependencies of a workflow.
 | data.workFlowInfo | WorkFlowInfo | The returned workflow information. This includes the name, description, and scheduling expression. |
 | data.workFlowNodeInfo | WorkFlowNodeInfo | The returned workflow node information. This includes the node list and dependencies. |
 
-**Returned data**
-
-Sample response:
+Sample response: `{`
 
 ```json
-{
   "data": {
+    "workFlowInfo": {
       "workflowId": 8253,
       "appGroupId": 14415,
       "creator": "",
@@ -2293,20 +2291,29 @@ Sample response:
         "code": "enable",
         "name": "enable",
         "tips": {}
-      },
+```
+
+`},`
+
+```json
       "status": "enable",
       "timeType": "cron",
       "name": "wf_api_test2",
       "description": "api update workflow test",
       "timeExpression": "0 0 15 * * ?",
       "maxConcurrency": 1
-    },
-      "nodes": [
-{
 ```
 
+`},`
+
 ```json
-        {
+    "workFlowNodeInfo": {
+      "nodes": [
+```
+
+`{` `{`
+
+```json
           "id": 1060973,
           "label": "1,060,973(wf1_http1)",
           "status": 1,
@@ -2319,13 +2326,20 @@ Sample response:
             "code": "standalone",
             "name": "Standalone",
             "tips": {}
-          },
+```
+
+`},`
+
+```json
           "contentType": 1,
           "content": "
 {\"url\":\"http://www.baidu.com\",\"method\":\"GET\",\"respParseMode\":1,\"respCode\":200 "timeout\":5,\"httpJobExecutionMode\":0}",
           "jobXAtrrs": ""
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "id": 1060974,
           "label": "1,060,974(wf1_http2)",
           "status": 1,
@@ -2338,13 +2352,20 @@ Sample response:
             "code": "standalone",
             "name": "Standalone",
             "tips": {}
-          },
+```
+
+`},`
+
+```json
           "contentType": 1,
           "content": "
 {\"url\":\"http://www.baidu.com\",\"method\":\"GET\",\"respParseMode\":1,\"respCode\":200 "timeout\":5,\"httpJobExecutionMode\":0}",
           "jobXAtrrs": ""
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "id": 1060975,
           "label": "1,060,975(wf1_http3)",
           "status": 1,
@@ -2357,7 +2378,11 @@ Sample response:
             "code": "standalone",
             "name": "Standalone",
             "tips": {}
-          },
+```
+
+`},`
+
+```json
           "contentType": 1,
 ```
 
@@ -2365,8 +2390,11 @@ Sample response:
           "content": "
 {\"url\":\"http://www.baidu.com\",\"method\":\"GET\",\"respParseMode\":1,\"respCode\":200 "timeout\":5,\"httpJobExecutionMode\":0}",
           "jobXAtrrs": ""
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "id": 1060976,
                     "label": "1,060,976(wf1_http4)",
                     "status": 1,
@@ -2379,58 +2407,60 @@ Sample response:
                         "code": "standalone",
                         "name": "Standalone",
                         "tips": {}
-                    },
+```
+
+`},`
+
+```json
                     "contentType": 1,
                     "content": "
 {\"url\":\"http://www.baidu.com\",\"method\":\"GET\",\"respParseMode\":1,\"respCode\":200 "timeout\":5,\"httpJobExecutionMode\":0}",
                     "jobXAtrrs": ""
-                }
 ```
 
 `],`
 
 ```json
             "edges": [
-                {
-                    "source": 1060973,
-                    "target": 1060974
-                },
-                {
-                    "source": 1060975,
-                    "target": 1060976
-                },
-                {
-                    "source": 1060973,
-                    "target": 1060975
-                },
-                {
-                    "source": 1060974,
-                    "target": 1060976
-                }
 ```
 
-]
+`{`
 
 ```json
-        }
-    },
+                    "source": 1060973,
+                    "target": 1060974
+```
+
+`},` `{`
+
+```json
+                    "source": 1060975,
+                    "target": 1060976
+```
+
+`},` `{`
+
+```json
+                    "source": 1060973,
+                    "target": 1060975
+```
+
+`},` `{`
+
+```json
+                    "source": 1060974,
+                    "target": 1060976
+```
+
+`]` `},`
+
+```json
     "code": 200,
     "success": true,
     "message": ""
-}
 ```
 
 **Sample code**
-
-| Name | Type | Require d | Description |
-|---|---|---|---|
-| WorkflowId | Long | Yes | The workflow ID. |
-| InstanceParameters | String | No | The dynamic parameters for the workflow instance. The size cannot exceed 1000 bytes. All tasks in the workflow can get these parameters by calling JobContext.getInstanceParameters . |
-
-| Name | Type | Description |
-|---|---|---|
-| Code | Int | The return code. |
-| Success | Boolean | Indicates whether the request was successful. |
 
 ```java
 public void testGetWorkFlow() throws Exception {
@@ -2442,30 +2472,37 @@ public void testGetWorkFlow() throws Exception {
     System.out.println("Basic information:" +
 JsonUtil.toJson(result.getData().getWorkFlowInfo()));
     System.out.println("Node information:" +
-JsonUtil.toJson(result.getData().getWorkFlowNodeInfo())); }
+JsonUtil.toJson(result.getData().getWorkFlowNodeInfo()));
 ```
 
-#### Run a workflow
+#### 4.5.8 Run a workflow
 
 This operation triggers a workflow. You must invoke a method for API-based workflows. You can also use this operation to invoke non-API-based workflows.
 
-**Request URL**
+```
+ /openapi/v1/workflow/execute
+```
 
-**Request parameters**
+ExecuteWorkflowRequest
+
+| Name | Type | Require d | Description |
+|---|---|---|---|
+| WorkflowId | Long | Yes | The workflow ID. |
+| InstanceParameters | String | No | The dynamic parameters for the workflow instance. The size cannot exceed 1000 bytes. All tasks in the workflow can get these parameters by calling JobContext.getInstanceParameters . |
 
 **Response data**
 
 SchedulerXResult<ExecuteWorkflowResponse>
 
+| Name | Type | Description |
+|---|---|---|
+| Code | Int | The return code. |
+| Success | Boolean | Indicates whether the request was successful. |
+
 | Message | String | The error message. |
 |---|---|---|
 | RequestId | String | The unique ID of the request. |
 | Data | ExecuteJobResponse | The ID of the workflow instance (wfInstanceId) is returned if the request is successful. |
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The workflow ID. |
-| wfInstanceId | Long | Yes | The workflow instance ID. |
 
 **Sample code**
 
@@ -2477,25 +2514,30 @@ SchedulerXResult<ExecuteWorkflowResponse>
     } else {
         logger.error("error code: {}, message: {}, requestId: {}", result.getCode(),
             result.getMessage(), result.getRequestId());
-    }
 } catch (Exception e) {
     logger.error("", e);
-}
 ```
 
-### Workflow instances
+### 4.6 Workflow instances
 
-#### Query a specified workflow instance
+#### 4.6.1 Query a specified workflow instance
 
 This operation queries a specified workflow instance and returns the instance status and its node topology.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/get
 ```
 
-**Request parameters**
+GetWorkflowInstanceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The workflow ID. |
+| wfInstanceId | Long | Yes | The workflow instance ID. |
+
+**Return values**
+
+GetWorkflowInstanceResponse
 
 | Name | Type | Description |
 |---|---|---|
@@ -2507,12 +2549,11 @@ This operation queries a specified workflow instance and returns the instance st
 | data.wfInstanceInfo | WfInstanceInfo | The information about the workflow instance. This includes the scheduling type, start and end times, and status. |
 | data.wfInstanceDag | WfInstanceDag | The information about the workflow nodes. This includes the node status and dependencies. |
 
-**Return values**
-
 **Demo**
 
+`{`
+
 ```json
-{
     "data": {
         "status": 0,
         "wfInstanceInfo": {
@@ -2530,15 +2571,23 @@ This operation queries a specified workflow instance and returns the instance st
             "scheduleDate": "2023-10-25 16:13:54",
             "dataDate": "2023-10-25 16:13:54",
             "status": 4
-        },
+```
+
+`},`
+
+```json
         "wfInstanceDag": {
             "nodes": [
-                {
+```
+
+`{`
+
+```json
                     "instanceId": 574995027,
                     "jobId": 1061320,
 ```
 
-j ,
+`j` `,`
 
 ```json
                     "jobName": "Send image to DingTalk Robot",
@@ -2557,8 +2606,11 @@ j ,
                     "timeType": -1,
                     "triggerType": 3,
                     "attempt": 0
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "instanceId": 574995028,
                     "jobId": 1061275,
                     "jobName": "Beauty model prompt template",
@@ -2575,8 +2627,11 @@ j ,
                     "timeType": -1,
                     "triggerType": 3,
                     "attempt": 0
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "instanceId": 574995029,
                     "jobId": 1061276,
                     "jobName": "Wan image generation model",
@@ -2593,9 +2648,9 @@ j ,
                     "timeType": -1,
                     "triggerType": 3,
                     "attempt": 0
-                },
-                {
 ```
+
+`},` `{`
 
 ```json
                     "instanceId": 574995030,
@@ -2616,59 +2671,58 @@ j ,
                     "timeType": -1,
                     "triggerType": 3,
                     "attempt": 0
-                }
 ```
 
 `],`
 
 ```json
             "edges": [
-                {
-                    "source": 574995030,
-                    "target": 574995027
-                },
-                {
-                    "source": 0,
-                    "target": 574995028
-                },
-                {
-                    "source": 0,
-                    "target": 574995029
-                },
-                {
-                    "source": 574995028,
-                    "target": 574995030
-                },
-                {
-                    "source": 574995029,
-                    "target": 574995030
-                }
 ```
 
-]
+`{`
 
 ```json
-        }
-    },
+                    "source": 574995030,
+                    "target": 574995027
+```
+
+`},` `{`
+
+```json
+                    "source": 0,
+                    "target": 574995028
+```
+
+`},` `{`
+
+```json
+                    "source": 0,
+                    "target": 574995029
+```
+
+`},` `{`
+
+```json
+                    "source": 574995028,
+                    "target": 574995030
+```
+
+`},` `{`
+
+```json
+                    "source": 574995029,
+                    "target": 574995030
+```
+
+`]` `},`
+
+```json
     "code": 200,
     "success": true,
     "message": ""
-}
 ```
 
 **Sample code**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The workflow ID. |
-
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
-| success | Boolean | Indicates whether the request was successful. |
-| message | String | The error message. |
-| requestId | String | The unique ID of the request. |
-| data | Data | The returned data. |
 
 ```java
 public void testGetWfInstance() throws Exception {
@@ -2682,30 +2736,42 @@ public void testGetWfInstance() throws Exception {
     SchedulerXResult<GetWorkflowInstanceResponse> response =
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Query the list of workflow instances
+#### 4.6.2 Query the list of workflow instances
 
 Queries a list of workflow instances.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/list
 ```
 
-**Request parameters**
+GetWorkflowInstanceListRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The workflow ID. |
 
 **Return values**
+
+GetWorkflowInstanceListResponse
+
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
+| success | Boolean | Indicates whether the request was successful. |
+| message | String | The error message. |
+| requestId | String | The unique ID of the request. |
+| data | Data | The returned data. |
 
 | data.wfInstanceInfos | List<WfInstanceInfo> | The returned list of workflow instances. |
 |---|---|---|
 
 **Demo**
 
+`{`
+
 ```json
-{
  "data": {
   "wfInstanceInfos": [{
    "instanceId": 4776975,
@@ -2755,7 +2821,7 @@ Queries a list of workflow instances.
   }, {
 ```
 
-,
+`,`
 
 ```json
    "instanceId": 4776972,
@@ -2865,26 +2931,17 @@ Queries a list of workflow instances.
    "scheduleDate": "2023-10-14 11:19:13",
    "dataDate": "2023-10-14 11:19:13",
    "status": 5
-  }]
- },
+```
+
+`}]` `},`
+
+```json
  "code": 200,
  "success": true,
 ```
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The workflow ID. |
-| wfInstanceId | Long | Yes | The workflow instance ID. |
-
-| Name | Type | Description |
-|---|---|---|
-| code | Int | The return code. |
-| success | Boolean | Indicates whether the request was successful. |
-| message | String | The error message. |
-
 ```json
  "message": ""
-}
 ```
 
 **Sample code**
@@ -2900,41 +2957,35 @@ public void testListWfInstances() throws Exception {
     SchedulerXResult<GetWorkflowInstanceListResponse> response =
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Stop a running workflow instance
+#### 4.6.3 Stop a running workflow instance
 
 Stopping a running workflow instance also stops all of its running nodes.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/stop
 ```
 
-**Request parameters**
-
 StopWfInstanceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The workflow ID. |
+| wfInstanceId | Long | Yes | The workflow instance ID. |
 
 **Return values**
 
 StopWfInstanceResponse
-
-| requestId | String | The unique ID of the request. |
-|---|---|---|
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The ID of the workflow. |
-| wfInstanceId | Long | Yes | The ID of the workflow instance. |
 
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
 | success | Boolean | Indicates whether the request was successful. |
 | message | String | The error message. |
+
 | requestId | String | The unique ID of the request. |
+|---|---|---|
 
 **Sample code**
 
@@ -2947,31 +2998,26 @@ public void testStopWfInstance() throws Exception {
     request.setWfInstanceId(2670L);
     SchedulerXResult<StopWfInstanceResponse> response = client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Retry a failed workflow instance
+#### 4.6.4 Retry a failed workflow instance
 
 When you retry a failed workflow instance, all failed nodes in the workflow are rerun.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/retry
 ```
 
-**Request parameters**
-
 RetryWfInstanceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The ID of the workflow. |
+| wfInstanceId | Long | Yes | The ID of the workflow instance. |
 
 **Return values**
 
 RetryWfInstanceResponse
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The workflow ID. |
-| wfInstanceId | Long | Yes | The workflow instance ID. |
 
 | Name | Type | Description |
 |---|---|---|
@@ -2991,33 +3037,28 @@ public void testRetryWfInstance() throws Exception {
     request.setWfInstanceId(2670L);
     SchedulerXResult<RetryWfInstanceResponse> response = client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Mark a failed workflow instance as
+#### 4.6.5 Mark a failed workflow instance as successful
 
 **successful**
 
 Marking a failed workflow instance as successful also marks all its failed and pending nodes as successful and stops the workflow execution.
 
-**Request URL**
-
 ```
  /openapi/v1/wfInstance/setSuccess
 ```
 
-**Request parameters**
-
 SetWfInstanceSuccessRequest
-
-**Return values**
-
-SetWfInstanceSuccessResponse
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | workflowId | Long | Yes | The workflow ID. |
 | wfInstanceId | Long | Yes | The workflow instance ID. |
+
+**Return values**
+
+SetWfInstanceSuccessResponse
 
 | Name | Type | Description |
 |---|---|---|
@@ -3038,37 +3079,32 @@ public void testSetWfInstanceSuccess() throws Exception {
     SchedulerXResult<SetWfInstanceSuccessResponse> response =
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Pause a running workflow instance
+#### 4.6.6 Pause a running workflow instance
 
 Pausing a running workflow allows currently running nodes to complete, but prevents new nodes from starting.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/suspend
 ```
 
-**Request parameters**
-
 SuspendWfInstanceRequest
-
-**Return value**
-
-SuspendWfInstanceResponse
 
 | Name | Type | Required | Description |
 |---|---|---|---|
 | workflowId | Long | Yes | The workflow ID. |
 | wfInstanceId | Long | Yes | The workflow instance ID. |
 
+**Return value**
+
+SuspendWfInstanceResponse
+
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
 | success | Boolean | Indicates whether the request was successful. |
-| message | String | The fault message. |
+| message | String | The error message. |
 | requestId | String | The unique ID of the request. |
 
 **Sample code**
@@ -3082,41 +3118,35 @@ public void testSuspendWfInstance() throws Exception {
     request.setWfInstanceId(2669L);
     SchedulerXResult<SuspendWfInstanceResponse> response = client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Cancel a paused workflow instance
+#### 4.6.7 Cancel a paused workflow instance
 
 You can resume a paused workflow instance.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/cancelSuspend
 ```
 
-**Request parameters**
-
 CancelSuspendWfInstanceRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The workflow ID. |
+| wfInstanceId | Long | Yes | The workflow instance ID. |
 
 **Return values**
 
 CancelSuspendWfInstanceResponse
 
-**Sample code**
-
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The ID of the workflow. |
-| wfInstanceId | Long | Yes | The ID of the workflow instance. |
-| jobInstanceId | Long | Yes | The ID of the job instance. |
-
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
 | success | Boolean | Indicates whether the request was successful. |
-| message | String | The error message. |
+| message | String | The fault message. |
 | requestId | String | The unique ID of the request. |
+
+**Sample code**
 
 ```java
 public void testCancelSuspendWfInstance() throws Exception {
@@ -3128,37 +3158,34 @@ public void testCancelSuspendWfInstance() throws Exception {
     SchedulerXResult<CancelSuspendWfInstanceResponse> response =
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Skip a workflow instance node
+#### 4.6.8 Skip a workflow instance node
 
 You can skip a node in a workflow instance that has not yet run.
-
-**Request URL**
 
 ```
  /openapi/v1/wfInstance/skip
 ```
 
-**Request parameters**
-
 SkipWfInstanceNodeRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The ID of the workflow. |
+| wfInstanceId | Long | Yes | The ID of the workflow instance. |
+| jobInstanceId | Long | Yes | The ID of the job instance. |
 
 **Return values**
 
 SkipWfInstanceNodeResponse
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| workflowId | Long | Yes | The workflow ID. |
-| wfInstanceId | Long | Yes | The workflow instance ID. |
-| jobInstanceId | Long | Yes | The job instance ID. |
-
 | Name | Type | Description |
 |---|---|---|
 | code | Int | The return code. |
 | success | Boolean | Indicates whether the request was successful. |
+| message | String | The error message. |
+| requestId | String | The unique ID of the request. |
 
 **Sample code**
 
@@ -3173,28 +3200,34 @@ public void testSkipWfInstanceNode() throws Exception {
     SchedulerXResult<SkipWfInstanceNodeResponse> response =
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```
 
-#### Cancel a skipped workflow instance
+#### 4.6.9 Cancel a skipped workflow instance node
 
 **node**
 
 If a workflow node is set to be skipped, you can cancel this setting. The node then resumes execution.
 
-**Request URL**
-
 ```
  /openapi/v1/wfInstance/cancelSkip
 ```
 
-**Request parameters**
-
 CancelSkipWfInstanceNodeRequest
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| workflowId | Long | Yes | The workflow ID. |
+| wfInstanceId | Long | Yes | The workflow instance ID. |
+| jobInstanceId | Long | Yes | The job instance ID. |
 
 **Return value**
 
 CancelSkipWfInstanceNodeResponse
+
+| Name | Type | Description |
+|---|---|---|
+| code | Int | The return code. |
+| success | Boolean | Indicates whether the request was successful. |
 
 | message | String | The error message. |
 |---|---|---|
@@ -3213,5 +3246,4 @@ public void testCancelSkipWfInstanceNode() throws Exception {
     SchedulerXResult<CancelSkipWfInstanceNodeResponse> response =
 client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
-}
 ```

@@ -3,28 +3,74 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 110
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 20260828.pdf"
+source_pdf: "43f5666ab5c24ba1_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1ARMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Real-time%20Monitoring%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service Developer Guide 20260828
 
-## Overview
+## Table of Contents
+
+- 1 Overview
+- 2 Postman request examples
+- 3 Dataset query
+  - 3.1 Overview
+  - 3.2 Description of request parameters
+  - 3.3 API reference
+  - 3.4 Response code
+- 4 Event set query
+- 5 API Reference
+  - 5.1 Log on to the Apsara Uni-manager Management Console
+  - 5.2 Obtain AccessKey pairs of an organization
+  - 5.3 Application Monitoring
+    - 5.3.1 ConfigApp
+    - 5.3.2 SaveTraceAppConfig
+    - 5.3.3 GetTrace
+    - 5.3.4 GetTraceApp
+    - 5.3.5 GetStack
+    - 5.3.6 ListTraceApps
+    - 5.3.7 SearchTraceAppByName
+    - 5.3.8 SearchTraceAppByPage
+    - 5.3.9 SearchTraces
+    - 5.3.10 SearchTracesByPage
+    - 5.3.11 QueryMetric
+    - 5.3.12 DeleteTraceApp
+    - 5.3.13 GetArmsAgentDownLoadUrl
+    - 5.3.14 DescribeTraceLicenseKey
+    - 5.3.15 DescribeTraceLocation
+  - 5.4 Alerting
+    - 5.4.1 UpdateAlertRule
+    - 5.4.2 DeleteAlertRules
+    - 5.4.3 SearchAlertRules
+    - 5.4.4 CreateAlertContact
+    - 5.4.5 DeleteAlertContact
+    - 5.4.6 UpdateAlertContact
+    - 5.4.7 SearchAlertContact
+    - 5.4.8 CreateAlertContactGroup
+    - 5.4.9 DeleteAlertContactGroup
+    - 5.4.10 UpdateAlertContactGroup
+    - 5.4.11 SearchAlertContactGroup
+    - 5.4.12 StartAlert
+    - 5.4.13 StopAlert
+    - 5.4.14 SearchEvents
+    - 5.4.15 SearchAlertHistories
+
+## 1 Overview
 
 This document is the ARMS Developer Guide, which focuses on how to use ARMS RESTful API to query datasets and how to use ES RESTful API to query event sets. This document contains the following information: Parameter description: ARMS API specifications, including detailed descriptions of API paths, methods, input parameters, and response parameters. Response Code: Descriptions of the responses returned when API calls encounter errors. Detailed interface information and usage examples: Including general dataset queries, dataset drill down queries, multi-dimension dataset queries, and WhereIn condition dataset query interfaces. Common query interfaces and syntax for event sets. t examples
 
-## Postman request examples
+## 2 Postman request examples
 
 Before using ARMS Open API and ES API, you can test them with the third-party software Postman to ensure access to dataset and event set data. Figure 1. Testing ARMS Open API with Postman Figure 2. Testing ES Rest API with Postman
 
-## Dataset query
+## 3 Dataset query
 
-### Overview
+### 3.1 Overview
 
 This chapter describes the parameters, interfaces, and response codes related to dataset queries.
 
-### Description of request
+### 3.2 Description of request parameters
 
 **parameters**
 
@@ -54,7 +100,7 @@ List[String] indicates the string returned after the toString() method is called
 | reduceTail | Boolean | Specifies whether to merge data beyond the limit | No |   |
 | userId _ | String | The user ID |   | In Apsara Stack, userId is the same _ as the username. For example, the user ID of the ARMS administrator is arms admin. _ |
 
-### API reference
+### 3.3 API reference
 
 This topic provides examples of ARMS dataset query APIs. The following examples use Java Apache HTTP Client and Python scripts to send HTTP Post requests to obtain data. You can also select other languages as needed, such as Ruby.
 
@@ -166,7 +212,7 @@ This example code is basically the same as the **Java Apache HTTP request exampl
 Map<String, String> optionalDim = Maps.newTreeMap(); optionalDim.put("value", "hz"); optionalDim.put("key", "area"); optionalDim.put("type", "ALL"); List<Map<String, String>> optionalDims = Lists.newArrayList(); optionalDims.add(optionalDim);
 ```
 
-### Response code
+### 3.4 Response code
 
 This topic describes response content and corresponding troubleshooting methods. The general response results returned by the API include the following content:
 
@@ -215,7 +261,7 @@ This code indicates an internal ARMS error. Solution: Contact ARMS developers.
 
 This code indicates that the access was processed successfully.
 
-## Event set query
+## 4 Event set query
 
 **Request parameters**
 
@@ -250,9 +296,9 @@ http://IP:9200/index/_search
 
 For query syntax, see the official ES website.
 
-## API Reference
+## 5 API Reference
 
-### Log on to the Apsara Uni-
+### 5.1 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -303,7 +349,7 @@ code, and then click **Confirm**.
 
 You can use the username of your account and the email address that was used to create the account. A password reset link will be sent to your email. You can enter a new password after accessing the link.
 
-### Obtain AccessKey pairs of an
+### 5.2 Obtain AccessKey pairs of an organization
 
 **organization**
 
@@ -329,9 +375,9 @@ organization.
 
 You must use the AccessKey pair of an organization that is enabled when you call this operation. If the AccessKey pair is disabled, you cannot call API operations.
 
-### Application Monitoring
+### 5.3 Application Monitoring
 
-#### ConfigApp
+#### 5.3.1 ConfigApp
 
 Turns on or turns off the main switch of an ARMS agent, or queries the status of the main switch.
 
@@ -375,7 +421,7 @@ Sample success responses `XML` format
     "Data": "abc@def success\\nghi@jkl success\\n"
 ```
 
-#### SaveTraceAppConfig
+#### 5.3.2 SaveTraceAppConfig
 
 Modifies the settings of Application Monitoring, such as trace sampling and agent switch settings.
 
@@ -499,7 +545,7 @@ Sample success responses `XML` format
     "Data": "success"
 ```
 
-#### GetTrace
+#### 5.3.3 GetTrace
 
 Queries the details of a trace.
 
@@ -611,7 +657,7 @@ Sample success responses `XML` format
                 "Key": "logLevel"
 ```
 
-#### GetTraceApp
+#### 5.3.4 GetTraceApp
 
 Queries the details of a application monitoring task.
 
@@ -685,7 +731,7 @@ Sample success responses `XML` format
         "Labels": "[ \"test\", \"123123123\", \"uat\" ],"
 ```
 
-#### GetStack
+#### 5.3.5 GetStack
 
 Queries the information of a method stack.
 
@@ -764,7 +810,7 @@ Sample success responses `XML` format
             "Info": "input=254275&amp;"
 ```
 
-#### ListTraceApps
+#### 5.3.6 ListTraceApps
 
 Queries all Application Monitoring tasks in a specified region.
 
@@ -851,7 +897,7 @@ if the issue persists after multiple retries.",
     "Success": true
 ```
 
-#### SearchTraceAppByName
+#### 5.3.7 SearchTraceAppByName
 
 Queries application monitoring jobs by application name.
 
@@ -930,7 +976,7 @@ Sample success responses `XML` format
     "RequestId": "F7781D4A-2818-41E7-B7BB-79D809E9****"
 ```
 
-#### SearchTraceAppByPage
+#### 5.3.8 SearchTraceAppByPage
 
 Queries application monitoring jobs by page.
 
@@ -1026,7 +1072,7 @@ Sample success responses `XML` format
     "RequestId": "4B446DF2-3DDD-4B5B-8E3F-D5225120****"
 ```
 
-#### SearchTraces
+#### 5.3.9 SearchTraces
 
 Queries traces by time, application name, IP address, span name, and tag. A maximum of 100 data entries can be returned each time this operation is called. If you want to query full data, we recommend that you use **SearchTracesByPage**.
 
@@ -1099,7 +1145,7 @@ Sample success responses `XML` format
         "Timestamp": 1595174436993
 ```
 
-#### SearchTracesByPage
+#### 5.3.10 SearchTracesByPage
 
 Queries all existing traces by time, application name, IP address, span name, or tag.
 
@@ -1191,7 +1237,7 @@ Sample success responses `XML` format
     "RequestId": "4C518054-852F-4023-ABC1-4AF95FF7****"
 ```
 
-#### QueryMetric
+#### 5.3.11 QueryMetric
 
 Queries a metric.
 
@@ -1291,7 +1337,7 @@ Sample success responses `XML` format
 \"data\\\": [{\\\"date\\\":1583686800000,\\\"count\\\":0,\\\"rt\\\":0,\\\"rpc\\\":\\\"childSpan3\\\"}
 ```
 
-#### DeleteTraceApp
+#### 5.3.12 DeleteTraceApp
 
 Deletes an application based on a specified process identifier (PID) and application type.
 
@@ -1342,7 +1388,7 @@ Sample success responses `XML` format
 \"code\\\":200 ,\\ "data \\":\\\"{\\\\\\" code \\\\\\\\\ ":200 ,\\\\\\\\\" data \\\\":t rue ,\\\\\\\\" errorCode \\\\\\\\\ ":\\\\\\\ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \\\\\true,\\\"traceId\\\":\\\"0ab2646915954826692568137d****\\\"}\" }"
 ```
 
-#### GetArmsAgentDownLoadUrl
+#### 5.3.13 GetArmsAgentDownLoadUrl
 
 You can call the GetArmsAgentDownLoadUrl operation to obtain the download link of the agent package.
 
@@ -1386,7 +1432,7 @@ Sample success responses `XML` format
     "RequestId": "46355DD8-FC56-40C5-BFC6-269DE4F9****"
 ```
 
-#### DescribeTraceLicenseKey
+#### 5.3.14 DescribeTraceLicenseKey
 
 Queries the license key.
 
@@ -1426,7 +1472,7 @@ Sample success responses `XML` format
     "LicenseKey": "b590lhguqs@3a75d95f218****"
 ```
 
-#### DescribeTraceLocation
+#### 5.3.15 DescribeTraceLocation
 
 You can call the DescribeTraceLocation operation to query the region where the application resides.
 
@@ -1473,9 +1519,9 @@ Sample success responses `XML` format
         "Url": "arms.console.inter.env66.shuguang.com"
 ```
 
-### Alerting
+### 5.4 Alerting
 
-#### UpdateAlertRule
+#### 5.4.1 UpdateAlertRule
 
 You can call the UpdateAlertRule operation to update an alert rule.
 
@@ -1664,7 +1710,7 @@ Sample success responses `XML` format
     "Data": "-"
 ```
 
-#### DeleteAlertRules
+#### 5.4.2 DeleteAlertRules
 
 Deletes alert rules.
 
@@ -1707,7 +1753,7 @@ Sample success responses `XML` format
     "RequestId": "C21AB7CF-B7AF-410F-BD61-82D1567F****"
 ```
 
-#### SearchAlertRules
+#### 5.4.3 SearchAlertRules
 
 Queries alert rules.
 
@@ -1959,7 +2005,7 @@ t time: $Alert time \\nAlert content: $Alert content \\nNote: The alert is ongoi
     "RequestId": "34ED024E-9E31-434A-9E4E-D9D15C3****"
 ```
 
-#### CreateAlertContact
+#### 5.4.4 CreateAlertContact
 
 Creates an alert contact.
 
@@ -2006,7 +2052,7 @@ Sample success responses `XML` format
     "ContactId": 12345
 ```
 
-#### DeleteAlertContact
+#### 5.4.5 DeleteAlertContact
 
 Deletes an alert contact.
 
@@ -2047,7 +2093,7 @@ Sample success responses `XML` format
     "RequestId": "78901766-3806-4E96-8E47-CFEF59E4****"
 ```
 
-#### UpdateAlertContact
+#### 5.4.6 UpdateAlertContact
 
 Updates an alert contact.
 
@@ -2097,7 +2143,7 @@ Sample success responses `XML` format
     "RequestId": "1A474FF8-7861-4D00-81B5-5BC3DA4E****"
 ```
 
-#### SearchAlertContact
+#### 5.4.7 SearchAlertContact
 
 Queries alert contacts.
 
@@ -2200,7 +2246,7 @@ access_token=91f2f6****",
     "RequestId": "21E85B16-75A6-429A-9F65-8AAC9A54****"
 ```
 
-#### CreateAlertContactGroup
+#### 5.4.8 CreateAlertContactGroup
 
 Creates an alert contact group.
 
@@ -2242,7 +2288,7 @@ Sample success responses `XML` format
     "RequestId": "70675725-8F11-4817-8106-CFE0AD71****"
 ```
 
-#### DeleteAlertContactGroup
+#### 5.4.9 DeleteAlertContactGroup
 
 Deletes an alert contact group.
 
@@ -2283,7 +2329,7 @@ Sample success responses `XML` format
     "RequestId": "C21AB7CF-B7AF-410F-BD61-82D1567F****"
 ```
 
-#### UpdateAlertContactGroup
+#### 5.4.10 UpdateAlertContactGroup
 
 Updates an alert contact group.
 
@@ -2328,7 +2374,7 @@ Sample success responses `XML` format
     "RequestId": "9319A57D-2D9E-472A-B69B-CF3CD16D****"
 ```
 
-#### SearchAlertContactGroup
+#### 5.4.11 SearchAlertContactGroup
 
 Queries alert contact groups.
 
@@ -2431,7 +2477,7 @@ access_token=91f2f6****",
     "RequestId": "4D6C358A-A58B-4F4B-94CE-F5AAF023****"
 ```
 
-#### StartAlert
+#### 5.4.12 StartAlert
 
 Starts an alert rule.
 
@@ -2472,7 +2518,7 @@ Sample success responses `XML` format
     "RequestId": "27E653FA-5958-45BE-8AA9-14D884DC****"
 ```
 
-#### StopAlert
+#### 5.4.13 StopAlert
 
 You can call this operation to stop an alert rule.
 
@@ -2513,7 +2559,7 @@ Sample success responses `XML` format
     "RequestId": "27E653FA-5958-45BE-8AA9-14D884DC****"
 ```
 
-#### SearchEvents
+#### 5.4.14 SearchEvents
 
 Queries alert event records.
 
@@ -2622,7 +2668,7 @@ startTime=1595565300000&amp;endTime=1595569246633&amp;regionId=cnhangzhou&amp;pi
     "IsTrigger": 1
 ```
 
-#### SearchAlertHistories
+#### 5.4.15 SearchAlertHistories
 
 Queries the alert records of an alert rule.
 

@@ -2,16 +2,22 @@
 title: "IDaaS Product Introduction 20251216"
 product_version: "V3.18.6"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 IDaaS Product Introduction 20251216.pdf"
+source_pdf: "a4c44cf8bb287d01_Alibaba Cloud Apsara Stack V3.18.6 IDaaS Product Introduction 20251216.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20IDaaS%20Product%20Introduction%2020251216.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # IDaaS Product Introduction 20251216
 
+## Table of Contents
+
+- 1 What is IDaaS?
+- 2 Terms
+- 3 Scenarios
+
 aS?
 
-## What is IDaaS?
+## 1 What is IDaaS?
 
 Identity as a Service (IDaaS) is a cloud-based identity and access management (IAM) service that supports various all-in-one services, including organizational structure management, account lifecycle management, and single sign-on (SSO). IDaaS is ideal for connecting enterprise identity and access management (EIAM) systems and multi-account systems. It helps you improve the efficiency and security of identity management.
 
@@ -30,12 +36,17 @@ You can use IDaaS to manage accounts and assign permissions across applications 
 identities.
 **Open**: IDaaS is designed for developers and provides a wide range of templates. IDaaS can
 also be integrated with other Apsara Stack services. ​
+
+**Scenarios**
+
 **EIAM**: You can use IDaaS to centrally manage accounts and assign permissions across
 applications. This avoids repetitive permission configuration and O&M operations, and improves efficiency and productivity.
 **Connect different account systems**: IDaaS account systems can be integrated with
 applications and enterprise contacts. You can also use IDaaS as an EIAM system or as a centralized system that connects different account systems. IDaaS not only provides powerful identity management features, but also ensures high system availability and security. IDaaS is an efficient and secure EIAM service for connecting different account systems and managing identities. IDaaS is an ideal service for such scenarios.
 
-## Terms
+## 2 Terms
+
+**IDaaS terms**
 
 Identity as a Service (IDaaS) is a cloud-based identity management service that helps enterprises centrally manage identities. ​
 
@@ -62,6 +73,8 @@ Zero trust is an emerging network architecture that is widely used in the indust
 **Private deployment**
 
 IDaaS private deployment refers to a private deployment of Apsara Stack IDaaS to a specified environment, such as your Apsara Stack virtual private cloud (VPC), an Amazon Web Services (AWS) environment, or a data center.
+
+**Terms related to identity providers**
 
 **IdP**
 
@@ -125,6 +138,8 @@ In IDaaS, synchronization refers to the transfer of accounts and organizations b
 
 System for Cross-domain Identity Management (SCIM) is an international specification for the synchronization of accounts and organizations between different systems. A large number of applications receive SCIM synchronization requests to achieve the interoperability of different system identities.
 
+**Terms related to applications**
+
 **SSO**
 
 SSO means that users can access all applications after a single login. SSO is implemented in different forms as applications evolve over time. In the context of IDaaS, SSO refers only to federated identity management based on standard protocols such as SAML and OpenID Connect (OIDC). ​
@@ -155,14 +170,6 @@ Authorization refers to the assignment of permissions on objects (applications o
 
 **SAML**
 
-| refresh token pires. ​ |  |
-|---|---|
-| pires. |  |
-
-| client secret _ |  | parameters |
-|---|---|---|
-| eters for an |  |  |
-
 Security Assertion Markup Language (SAML) is a widely adopted XML-based authentication standard for SSO. SAML is more complex than OIDC. IDaaS supports SAML 2.0. ​
 
 **OIDC**
@@ -185,9 +192,21 @@ OAuth 2.0 is an authorization protocol that is often used to implement SSO. Beca
 
 An `access token` is used to call an API operation provided by an IdP. An `ID token` is used to obtain information about the account that is logged on.
 
+| refresh token pires. ​ |   |
+|---|---|
+| pires. |   |
+
+A `refresh token` is used to obtain a new access token after the original `access token`
+
 **OIDC and OAuth client credentials flow**
 
-In the client credentials flow, the application service instead of the user or account is granted specified by IDaaS. ​
+In the client credentials flow, the application service instead of the user or account is granted permissions. The application obtains the permissions to call the resource or API operation.
+
+| client secret _ |   | parameters |
+|---|---|---|
+| eters for an |   |   |
+
+specified by IDaaS. ​
 
 **OAuth authorization code flow**
 
@@ -196,6 +215,8 @@ In the authorization code flow, the user is authorized. The application obtains 
 **OAuth device flow**
 
 The device flow is used in specific hardware devices and allows a user to access the IDaaS login page in a computer or mobile browser when the device cannot display the IDaaS login page. After the user logs on, the identity of the user is transmitted to the device to complete the login. ​
+
+**Terms related to login**
 
 **Password complexity**
 
@@ -217,7 +238,7 @@ An OTP is a dynamic password that is valid for only one time. The most common ty
 
 IDaaS Application Portal is the page on which you can initiate SSO to all applications.
 
-## Scenarios
+## 3 Scenarios
 
 Identity as a Service (IDaaS) allows you to break down identity silos and manage the lifecycle of application accounts in different departments and organizations for centralized access control. Enterprise members can use one account to access all applications. ​ This topic describes some common scenarios of IDaaS.
 

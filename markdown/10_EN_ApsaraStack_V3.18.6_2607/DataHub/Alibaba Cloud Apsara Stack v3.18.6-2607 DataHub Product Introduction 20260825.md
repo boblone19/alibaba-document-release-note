@@ -3,16 +3,24 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Product Introduction 202
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Product Introduction 20260825.pdf"
+source_pdf: "65b2bb428bb1f72d_Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/DataHub/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20DataHub%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 DataHub Product Introduction 20260825
 
-## DataHub
+## Table of Contents
 
-### Features
+- 1 DataHub
+  - 1.1 Features
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 DataHub
+
+### 1.1 Features
 
 DataHub collects, stores, and processes streaming data from mobile devices, applications, website services, and sensors. You can use your own applications or Apsara Stack Realtime Compute to process streaming data in DataHub, such as real-time website access logs, application logs, and events. The processed data is updated in real time and delivered to you in the form of alerts and statistics (visualized as graphs or tables).
 
@@ -32,7 +40,7 @@ Data in DataHub is automatically synchronized to other Alibaba Cloud services. Y
 
 DataHub can scale flexibly to increase or decrease the number of shards in a cluster. This allows you to handle traffic surges or save resource costs based on actual business conditions. For example, if the topic has insufficient throughput to cope with the surge in service load during the Double 11 Shopping Festival, you can use the SplitShard operation to increase the number of shards to a maximum of 256 shards in response to the traffic spike. This expands the throughput capacity up to 256 MB/s. When traffic returns to normal after the Double 11 Shopping Festival and you no longer require high throughput capacity, you can use the MergeShard operation to merge every two shards into one.
 
-### Benefits
+### 1.2 Benefits
 
 Built on the Apsara system of Alibaba Cloud, DataHub features elastic scalability, high availability, high throughput, and low latency.
 
@@ -60,7 +68,7 @@ The throughput of each topic can be increased or decreased dynamically, with the
 
 DataHub provides enterprise-level security mechanisms and tenant-level isolation. It supports multiple authentication and authorization methods. For example, you can configure an allowlist or grant permissions by using Resource Access Management (RAM).
 
-### Scenarios
+### 1.3 Scenarios
 
 As a fully managed real-time data streaming service platform of Alibaba Cloud, DataHub is deeply integrated with core products such as MaxCompute, Realtime Compute for Apache Flink, and E-MapReduce (EMR). It provides an end-to-end solution for enterprises, covering real-time data collection, cleaning, and transformation, as well as multi-dimensional analysis. It helps build an efficient and flexible one-stop data processing system.
 
@@ -80,7 +88,7 @@ You can write applications to subscribe to data in DataHub, process the data in 
 
 You only need to create a DataHub connector and configure relevant parameters to archive streaming data to MaxCompute on a regular basis.
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the features of DataHub.
 

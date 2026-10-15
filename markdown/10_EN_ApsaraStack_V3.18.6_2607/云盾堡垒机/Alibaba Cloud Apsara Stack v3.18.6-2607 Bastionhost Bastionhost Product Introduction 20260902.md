@@ -3,16 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Bastionhost Product 
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 17
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Bastionhost Product Introduction 20260902.pdf"
+source_pdf: "6e5afa282b0c9d65_Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Bastionhost Product Introduction 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E5%A0%A1%E5%9E%92%E6%9C%BA/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Bastionhost%20Bastionhost%20Product%20Introduction%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Bastionhost Product Introduction 20260902
 
-What is Bastionhost?
+## Table of Contents
 
-## What is Bastionhost?
+- 1 What is Bastionhost?
+- 2 Features
+- 3 Benefits
+- 4 Scenarios
+
+## 1 What is Bastionhost?
 
 Developed by Alibaba Cloud based on years of theoretical and practical experience in O&M security management, Bastionhost provides a platform for centralized security management and audit that controls risks in O&M operations. Bastionhost complies with the requirements of the Multi-Level Protection Scheme (MLPS) and other laws and regulations on O&M audit. Bastionhost adopts the B/S architecture and integrates features including authentication, account management, authorization, and log audit. It supports security monitoring and historical data queries based on multiple character terminal protocols, file transfer protocols, graphic terminal protocols, and remote application protocols.
 
@@ -46,9 +51,9 @@ When an O&M engineer requests permissions from an administrator to access a devi
 
 **System self-review**
 
-What is Bastionhost? Bastionhost audits the operations that are performed by users and itself, and generates system analysis reports.
+Bastionhost audits the operations that are performed by users and itself, and generates system analysis reports.
 
-## Features
+## 2 Features
 
 | Feature category | Feature | Description |
 |---|---|---|
@@ -141,9 +146,7 @@ What is Bastionhost? Bastionhost audits the operations that are performed by use
 |   | Storage management | Supports NFS and CIFS storage. Supports video storage in Object Storage Service (OSS). |
 | Deployment requirements | Deployment on dual servers | Supports HA deployment and active-active deployment. Audit data can be automatically synchronized between servers. |
 
-Benefits
-
-## Benefits
+## 3 Benefits
 
 **Enhances transparency in the operational process**
 
@@ -163,9 +166,9 @@ O&M engineers may perform unintentional operations that cause data loss or servi
 
 **Meets compliance requirements**
 
-Currently, numerous standards, laws, and regulations, in and outside China, mandate organizations to establish audit systems for security management. The systems must ensure that audit information is secure, comprehensive, accessible, and unique. Multi-Level Protection Scheme (MLPS) requires user identification, permission isolation, data audit, log records, and audit reports. Benefits The ISO 27001 standard mandates organizations to record user access, incidents, and information security events to investigate and collect evidence for security incidents. The Sarbanes-Oxley (SOX) Act mandates organizations to establish and enforce suitable policies to ensure the reliability and trustworthiness of financial statement data. Enterprise internal control standards mandate enterprises to adhere to the requirements. This helps enhance and standardize internal control practices and improve risk prevention capabilities. Scenarios
+Currently, numerous standards, laws, and regulations, in and outside China, mandate organizations to establish audit systems for security management. The systems must ensure that audit information is secure, comprehensive, accessible, and unique. Multi-Level Protection Scheme (MLPS) requires user identification, permission isolation, data audit, log records, and audit reports. The ISO 27001 standard mandates organizations to record user access, incidents, and information security events to investigate and collect evidence for security incidents. The Sarbanes-Oxley (SOX) Act mandates organizations to establish and enforce suitable policies to ensure the reliability and trustworthiness of financial statement data. Enterprise internal control standards mandate enterprises to adhere to the requirements. This helps enhance and standardize internal control practices and improve risk prevention capabilities.
 
-## Scenarios
+## 4 Scenarios
 
 **Centralized management of assets to resolve scattered asset**
 

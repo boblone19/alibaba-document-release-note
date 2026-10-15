@@ -3,16 +3,24 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Clou
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Product Introduction 20260828.pdf"
+source_pdf: "619075b273cb3e67_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Product Introduct"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20NFV%20Cloud%20Firewall%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is NFV Cloud Firewall?
+- 2 Benefits
+- 3 Service architecture
+- 4 Functions and features
+- 5 Scenarios
+
 Firewall?
 
-## What is NFV Cloud
+## 1 What is NFV Cloud Firewall?
 
 **Firewall?**
 
@@ -31,7 +39,7 @@ More and more enterprises migrate their businesses to the cloud as digital trans
 | Such advantages help you better align business scenarios with business development, and |   |
 | build a green, secure cloud computing environment that provides power services. |   |
 
-## Benefits
+## 2 Benefits
 
 **Fully adaptable software firewall**
 
@@ -45,7 +53,7 @@ NFV Cloud Firewall provides a wide array of network security features to defend 
 
 In a cloud computing environment, the cloud platform provides a variety of technical solutions to improve the stability, scalability, and performance of the system. These technical solutions are closely related to the cloud computing environment and show strong cloudnative characteristics. Adopting these technical solutions to solve speciﬁc problems makes NFV Cloud Firewall more adaptable to the cloud environment. NFV Cloud Firewall is deeply integrated with the cloud computing platform. The cloud platform monitors the status of devices. When the performance is insuﬃcient, virtual devices or resources are automatically scaled out to ensure system performance for your business.
 
-## Service architecture
+## 3 Service architecture
 
 NFV Cloud Firewall is deployed in primary and secondary clusters, and uses high availability (HA) heartbeat detection and a quick failover mechanism to ensure business continuity and fault recovery.
 
@@ -213,7 +221,7 @@ Business Traffic Fault Isolation Cross-zone Fault isolation
 
 The cross-zone HA architecture is the same as that of the single-zone HA architecture. The cross-zone HA architecture is mainly used to ensure failover between the primary and secondary NFV Cloud Firewall clusters. In this architecture, if the NFV Cloud Firewall cluster or NC cluster fails, east-west traffic across VPCs is redirected to the NFV Cloud Firewall cluster in the other zone based on the configured routes. This mechanism enhances security for multi-zone deployment and enables HA between clusters.
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the functions and features of NFV Cloud Firewall.
 
@@ -276,7 +284,7 @@ bandwidth adjustment mechanism. If the pipeline of each level has remaining band
 **Peer suppression**: NFV Cloud Firewall enables peer suppression by using the iQoS
 technology. Peer suppression reduces the packet rate of the peer and improves the bandwidth utilization of the local host.
 
-## Scenarios
+## 5 Scenarios
 
 | If your business is deployed in multiple virtual private clouds (VPCs) and cross-VPC |   |   |
 |---|---|---|

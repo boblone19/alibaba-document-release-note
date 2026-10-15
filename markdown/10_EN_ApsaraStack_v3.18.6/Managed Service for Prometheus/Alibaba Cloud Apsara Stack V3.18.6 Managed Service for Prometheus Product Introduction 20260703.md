@@ -2,20 +2,30 @@
 title: "Managed Service for Prometheus Product Introduction 20260703"
 product_version: "V3.18.6"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus Product Introduction 20260703.pdf"
+source_pdf: "4f878744af3f7ab0_Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus Product Introduction 20260703.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Managed%20Service%20for%20Prometheus%20Product%20Introduction%2020260703.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Managed Service for Prometheus Product Introduction 20260703
 
-Managed Service for Prometheus
+## Table of Contents
 
-## Prometheus monitoring
+- 1 Prometheus monitoring
+- 2 Product details
+- 3 Product value
+- 4 Features
+- 5 Scenarios
+- 6 Limitations
+- 7 Key concepts
 
-Alibaba Cloud Prometheus Monitoring is a fully managed Prometheus service. It fully integrates with the open source Prometheus ecosystem, supports monitoring for a wide range of components, and provides multiple out-of-the-box dashboards. ails Managed Service for Prometheus
+monitoring
 
-## Product details
+## 1 Prometheus monitoring
+
+Alibaba Cloud Prometheus Monitoring is a fully managed Prometheus service. It fully integrates with the open source Prometheus ecosystem, supports monitoring for a wide range of components, and provides multiple out-of-the-box dashboards. ails
+
+## 2 Product details
 
 Prometheus Monitoring provides service discovery, data collection, dashboards, and horizontal scaling for agents. It also lets you create custom visual dashboards and alerts for container metrics.
 
@@ -45,9 +55,9 @@ You can add alert policies for metrics reported by the cluster. You can use vari
 
 **Unified provisioning**
 
-You can centrally manage connected ACK managed clusters on the **Provisioning** page. This page provides a unified portal to configure service discovery, manage the installation and uninstallation of Prometheus probes, and view Prometheus Agent self-monitoring dashboards. Managed Service for Prometheus e
+You can centrally manage connected ACK managed clusters on the **Provisioning** page. This page provides a unified portal to configure service discovery, manage the installation and uninstallation of Prometheus probes, and view Prometheus Agent self-monitoring dashboards. e
 
-## Product value
+## 3 Product value
 
 Alibaba Cloud Prometheus Service is more stable, saves time, and uses fewer resources than open source Prometheus.
 
@@ -65,12 +75,18 @@ Alibaba Cloud Prometheus Service supports horizontal scaling for data processing
 
 Alibaba Cloud Prometheus Service uses an integrated agent that runs as a single process. This design limits the agent's resource consumption and optimizes memory and CPU usage.
 
+## 4 Features
+
+**Integration Center**
+
 | Feature | Description |
 |---|---|
 | Container service registration | Connect container service clusters to the Prometheus monitoring platform for integrated monitoring of clusters and workloads. |
 | Custom registration | Integrate custom service discovery for custom data collection. View metrics, dashboards, and alert information. |
 | Cloud service registration | Integrate with Hybrid Cloud Monitoring and cloud product self- monitoring to view monitoring data from your cloud products. |
 | Component monitoring registration | Install and configure components with a single click and use out-of- the-box monitoring dashboards. |
+
+**Instance management**
 
 | Feature | Description |
 |---|---|
@@ -79,38 +95,26 @@ Alibaba Cloud Prometheus Service uses an integrated agent that runs as a single 
 | Service discovery | Use multiple service discovery mechanisms to optimize the monitoring scope for Kubernetes clusters and ECS. This ensures that the required metric data is collected. |
 | Settings | View basic probe information and health check results. Set the number of agent replicas and restart probes. |
 
+**Global configuration**
+
 | Feature | Description |
 |---|---|
 | Aggregation instances | Use region-level GlobalView aggregation instances for unified metric queries and alerting. |
 
-Managed Service for Prometheus
-
-## Features
-
-**Integration Center**
-
-**Instance management**
-
-**Global configuration**
+**Alert management**
 
 | Feature | Description |
 |---|---|
 | Prometheus alert rules | Create alert rules for specific Prometheus instances. Alert events are generated when conditions are met. Multiple notification methods are supported. |
 | Prometheus alert rule templates | Create the same alert rules for multiple Prometheus instances across different regions. This improves the efficiency of rule management. |
 
+**Data shipping**
+
 | Feature | Description |
 |---|---|
 | Create data shipping tasks | Remotely write data from one Prometheus instance to another. Stream data to other cloud products, such as Kafka and MaxCompute. |
 
-Managed Service for Prometheus
-
-**Alert management**
-
-**Data shipping**
-
-Managed Service for Prometheus
-
-## Scenarios
+## 5 Scenarios
 
 Managed Service for Prometheus provides unified monitoring for Alibaba Cloud services such as ECS and Kafka, container services (ACK), and application performance (ARMS). It also supports multicloud and on-premises components and custom metrics to provide full-stack observability for operations and maintenance (O&M).
 
@@ -120,14 +124,13 @@ Managed Service for Prometheus integrates with Cloud Monitor (CMS) to support a 
 
 **Container layer metric monitoring**
 
-Managed Service for Prometheus The service is deeply integrated with ACK. You can enable monitoring during cluster configuration. The service provides components to monitor container performance for workloads, ingresses, and CoreDNS. Dedicated dashboards display metrics for container services, application components, Alibaba Cloud services, and the application itself. The service also syncs cloud resource tags to display monitoring data organized by business dimension.
+The service is deeply integrated with ACK. You can enable monitoring during cluster configuration. The service provides components to monitor container performance for workloads, ingresses, and CoreDNS. Dedicated dashboards display metrics for container services, application components, Alibaba Cloud services, and the application itself. The service also syncs cloud resource tags to display monitoring data organized by business dimension.
 **Monitored object:** ACK.
 
 **Application performance metric monitoring**
 
 The service integrates with ARMS to provide one-click access to application performance metrics and prebuilt dashboards. It also supports service discovery to collect application performance data.
 **Monitored object:** ARMS.
-Managed Service for Prometheus
 
 **Multicloud application component metric monitoring**
 
@@ -136,19 +139,21 @@ The service provides exporter integration solutions for third-party clouds and o
 **Managed Service for Prometheus User Guide > Create Service Discovery by Using a**
 
 **ServiceMonitor**.
-Managed Service for Prometheus
 
 **Business custom metric monitoring**
 
 You can define custom metrics that align with your business needs, such as metrics for business objectives, service quality, technical components, and infrastructure resources. You can then configure scrape tasks for these metrics and display them together to improve data correlation.
 **Monitored objects:** Simple Log Service (SLS) and Elasticsearch.
-Managed Service for Prometheus Managed Service for Prometheus
 
-## Limitations
+## 6 Limitations
 
-This topic describes the limitations of Prometheus monitoring. By default, metric data is retained for 7 days. Prometheus monitoring does not support multi-region deployment or disaster recovery. Horizontal scaling is limited to two physical machines. Prometheus monitoring data is retained for 7 days by default. To extend this period, contact your Technical Account Manager (TAM). A metric can have up to 20 labels, and a label can have up to 20 values. A standard two-machine deployment supports monitoring for up to 30 container clusters. Historical data is not automatically recovered after a physical machine failure. s Managed Service for Prometheus
+This topic describes the limitations of Prometheus monitoring.
 
-## Key concepts
+**Limitations**
+
+By default, metric data is retained for 7 days. Prometheus monitoring does not support multi-region deployment or disaster recovery. Horizontal scaling is limited to two physical machines. Prometheus monitoring data is retained for 7 days by default. To extend this period, contact your Technical Account Manager (TAM). A metric can have up to 20 labels, and a label can have up to 20 values. A standard two-machine deployment supports monitoring for up to 30 container clusters. Historical data is not automatically recovered after a physical machine failure. s
+
+## 7 Key concepts
 
 This topic describes key concepts of Alibaba Cloud Container Service for Kubernetes (ACK).
 **Kubernetes**: An open-source, portable, and extensible platform for managing

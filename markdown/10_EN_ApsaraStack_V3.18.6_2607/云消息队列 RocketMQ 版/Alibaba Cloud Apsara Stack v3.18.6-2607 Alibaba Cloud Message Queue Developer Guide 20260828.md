@@ -3,16 +3,338 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Deve
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 386
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Developer Guide 20260828.pdf"
+source_pdf: "0d7ba6915328640b_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Developer Guide 20260828
 
-## Prerequisites
+## Table of Contents
 
-### Obtain API information and its
+- 1 Prerequisites
+  - 1.1 Obtain API information and its endpoint
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain common header parameters
+  - 1.4 Obtain STS access credentials
+- 2 Calling private cloud APIs through a POP gateway
+  - 2.1 Overview
+  - 2.2 Preparations
+  - 2.3 SDK for Java
+- 3 API reference
+  - 3.1 RocketMQ_API
+    - 3.1.1 Updates
+    - 3.1.2 Overview
+      - 3.1.2.1 Intended audience and scenarios
+      - 3.1.2.2 Scenarios and limits
+      - 3.1.2.3 Basic principles
+    - 3.1.3 Common parameters
+      - 3.1.3.1 Common request parameters
+      - 3.1.3.2 Common response parameters
+    - 3.1.4 Common terms
+      - 3.1.4.1 Account security
+        - 3.1.4.1.1 AccessKey
+        - 3.1.4.1.2 SecretKey
+      - 3.1.4.2 Resource management
+        - 3.1.4.2.1 Topic
+        - 3.1.4.2.2 Group ID
+    - 3.1.5 Error codes
+    - 3.1.6 API reference
+      - 3.1.6.1 Instance management
+        - 3.1.6.1.1 QueryCommonGenRedirectUrl
+        - 3.1.6.1.2 QueryTrendFlowLimit
+        - 3.1.6.1.3 UnbindSystemTags
+        - 3.1.6.1.4 CreateInstance
+        - 3.1.6.1.5 BindSystemTags
+        - 3.1.6.1.6 QuerySystemTagList
+        - 3.1.6.1.7 DeleteInstance
+        - 3.1.6.1.8 QueryInstanceBaseInfo
+        - 3.1.6.1.9 QueryInstanceStatistics
+        - 3.1.6.1.10 QueryInstanceList
+        - 3.1.6.1.11 QueryRouterInstanceList
+        - 3.1.6.1.12 UpdateInstance
+        - 3.1.6.1.13 CheckFortestInstance
+      - 3.1.6.2 Topic management
+        - 3.1.6.2.1 CheckFortestTopic
+        - 3.1.6.2.2 PageQueryTopicList
+        - 3.1.6.2.3 CreateSubscription
+        - 3.1.6.2.4 CreateTopic
+        - 3.1.6.2.5 DeleteTopic
+        - 3.1.6.2.6 DeleteSubscription
+        - 3.1.6.2.7 QueryTrendTopicInputTps
+        - 3.1.6.2.8 QueryTopicSubDetail
+        - 3.1.6.2.9 QueryTopicStatus
+        - 3.1.6.2.10 QueryTopicNameList
+        - 3.1.6.2.11 QueryTopicListByGroupId
+        - 3.1.6.2.12 QueryTopicList
+        - 3.1.6.2.13 QueryTopic
+        - 3.1.6.2.14 QuerySubscriptionList
+        - 3.1.6.2.15 QuerySubscription
+        - 3.1.6.2.16 QueryRouterTopicList
+        - 3.1.6.2.17 UpdateTopicInfo
+        - 3.1.6.2.18 UpdateTopic
+        - 3.1.6.2.19 UpdateSubscription
+        - 3.1.6.2.20 SearchSubscription
+      - 3.1.6.3 Cluster management
+        - 3.1.6.3.1 QueryClusterList
+        - 3.1.6.3.2 QueryClusterCapacity
+      - 3.1.6.4 Group management
+        - 3.1.6.4.1 CreateGroup
+        - 3.1.6.4.2 PageQueryGroupList
+        - 3.1.6.4.3 DeleteGroup
+        - 3.1.6.4.4 QueryGroupIdList
+        - 3.1.6.4.5 QueryGroupSubDetail
+        - 3.1.6.4.6 QueryGroupList
+        - 3.1.6.4.7 QueryTrendGroupOutputTps
+        - 3.1.6.4.8 UpdateGroupInfo
+        - 3.1.6.4.9 UpdateGroupConsumer
+      - 3.1.6.5 CloudInfo management
+        - 3.1.6.5.1 QueryCloudInfoNoPage
+        - 3.1.6.5.2 UpdateCloudInfo
+        - 3.1.6.5.3 DeleteCloudInfo
+        - 3.1.6.5.4 CreateCloudInfo
+        - 3.1.6.5.5 QueryCloudInfo
+      - 3.1.6.6 Message management
+        - 3.1.6.6.1 PushMessage
+        - 3.1.6.6.2 DownloadMessageBodyInDLQ
+        - 3.1.6.6.3 DownloadMessageAllInDLQ
+        - 3.1.6.6.4 DownloadMessage
+        - 3.1.6.6.5 QueryMessageByPagedTopic
+        - 3.1.6.6.6 QueryMessageByPagedDLQ
+        - 3.1.6.6.7 QueryMessageByKey
+        - 3.1.6.6.8 QueryMessageByIdInDLQ
+        - 3.1.6.6.9 QueryMessageById
+        - 3.1.6.6.10 TraceMessage
+        - 3.1.6.6.11 SendMessage
+        - 3.1.6.6.12 ResendMessageByIdInDLQ
+      - 3.1.6.7 Empower management
+        - 3.1.6.7.1 CheckFortestRamAction
+        - 3.1.6.7.2 DeleteDauthToolByUserId
+        - 3.1.6.7.3 CreateGroupEmpowerBySub
+        - 3.1.6.7.4 CreateEmpowerBySub
+        - 3.1.6.7.5 CreateEmpower
+        - 3.1.6.7.6 QueryGroupEmpowerList
+        - 3.1.6.7.7 QueryEmpowerList
+        - 3.1.6.7.8 DeleteGroupEmpower
+        - 3.1.6.7.9 DeleteEmpower
+      - 3.1.6.8 MQTT management API
+        - 3.1.6.8.1 DeleteMqttGroupId
+        - 3.1.6.8.2 SendMqtt
+        - 3.1.6.8.3 QueryMqttMsgTransTask
+        - 3.1.6.8.4 CreateMqttInstanceStoreResource
+        - 3.1.6.8.5 CreateMqttInstance
+        - 3.1.6.8.6 CreateMqttGroupId
+        - 3.1.6.8.7 PageQueryMqttInstanceStoreResource
+        - 3.1.6.8.8 PageQueryMqttInstanceList
+        - 3.1.6.8.9 PageQueryMqttGroupId
+        - 3.1.6.8.10 DeleteMqttInstanceStoreResource
+        - 3.1.6.8.11 DeleteMqttInstance
+        - 3.1.6.8.12 QueryMqttInstanceReport
+        - 3.1.6.8.13 QueryMqttInstanceList
+        - 3.1.6.8.14 QueryMqttInstanceBaseInfo
+        - 3.1.6.8.15 QueryMqttGroupIdList
+        - 3.1.6.8.16 QueryMqttDeviceRunningInfo
+        - 3.1.6.8.17 QueryMqttConnectionSum
+        - 3.1.6.8.18 QueryMqttClientSetByTopic
+        - 3.1.6.8.19 QueryMqttClientSetByGroupId
+        - 3.1.6.8.20 QueryMqttTraceByTraceId
+        - 3.1.6.8.21 QueryMqttMsgByPubInfo
+        - 3.1.6.8.22 QueryMqttInstanceStoreResourceNameList
+        - 3.1.6.8.23 QueryMqttInstanceStoreInstanceList
+        - 3.1.6.8.24 UpdateMqttInstance
+        - 3.1.6.8.25 ChangeMqttInstanceSpec
+        - 3.1.6.8.26 BindMqttInstance
+      - 3.1.6.9 Trace management
+        - 3.1.6.9.1 QueryTraceMapByQueryId
+        - 3.1.6.9.2 QueryPubTraceByQueryId
+        - 3.1.6.9.3 PageQueryTraceListByUserId
+        - 3.1.6.9.4 DeleteTraceQueryTask
+        - 3.1.6.9.5 QueryTraceByMsgTopic
+        - 3.1.6.9.6 QueryTraceByMsgKey
+        - 3.1.6.9.7 QueryTraceByMsgId
+      - 3.1.6.10 Consumer management
+        - 3.1.6.10.1 CheckFortestConsumerId
+        - 3.1.6.10.2 QueryAllConsumerAccumulation
+        - 3.1.6.10.3 QueryConsumerTimespan
+        - 3.1.6.10.4 QueryConsumerStatus
+        - 3.1.6.10.5 QueryConsumerProgress
+        - 3.1.6.10.6 QueryConsumerJstackInfo
+        - 3.1.6.10.7 QueryConsumerConnection
+        - 3.1.6.10.8 QueryConsumerAccumulate
+        - 3.1.6.10.9 UpdateConsumerReadableByTopicAndGroup
+        - 3.1.6.10.10 ResetConsumerOffset
+        - 3.1.6.10.11 QueryUnitLatestConsumerTime
+      - 3.1.6.11 MQ connector management
+        - 3.1.6.11.1 ResumeMqConnector
+        - 3.1.6.11.2 PauseMqConnector
+        - 3.1.6.11.3 DeleteDeploymentMqConnector
+        - 3.1.6.11.4 CreateDeploymentMqConnector
+        - 3.1.6.11.5 DeployDeploymentMqConnector
+        - 3.1.6.11.6 QueryMqConnectorSysResourceName
+        - 3.1.6.11.7 QueryMqConnectorMetricsDetailList
+        - 3.1.6.11.8 QueryMqConnectorInfoList
+        - 3.1.6.11.9 QueryMqConnectorDeploymentList
+        - 3.1.6.11.10 UpdateMqConnectorDeployment
+      - 3.1.6.12 Router task management
+        - 3.1.6.12.1 DeleteCloudRouterTask
+        - 3.1.6.12.2 CreateRouterTask
+        - 3.1.6.12.3 CreateRouterInnerTask
+        - 3.1.6.12.4 CreateCloudRouterTask
+        - 3.1.6.12.5 QueryCloudRouterTaskStats
+        - 3.1.6.12.6 QueryCloudRouterTask
+        - 3.1.6.12.7 QueryCloudRouterItems
+        - 3.1.6.12.8 PageQueryCloudRouterTask
+        - 3.1.6.12.9 DeleteRouterTask
+        - 3.1.6.12.10 DeleteRouterInnerTask
+        - 3.1.6.12.11 QueryRouterTask
+        - 3.1.6.12.12 QueryRouterStat
+        - 3.1.6.12.13 QueryRouterInnerTask
+        - 3.1.6.12.14 QueryRouterInnerStat
+        - 3.1.6.12.15 UpdateRouterFilterRule
+        - 3.1.6.12.16 UpdateCloudRouterTask
+        - 3.1.6.12.17 StopRouterTask
+        - 3.1.6.12.18 StopCloudRouterTask
+        - 3.1.6.12.19 StartRouterTask
+        - 3.1.6.12.20 StartRouterInnerTask
+        - 3.1.6.12.21 StartCloudRouterTask
+        - 3.1.6.12.22 SearchRouterTask
+        - 3.1.6.12.23 AddRouterInnerConfig
+      - 3.1.6.13 VPC management
+        - 3.1.6.13.1 CreateVpcTunnelInstanceSingleTunnel
+        - 3.1.6.13.2 DeleteVpcTunnelInstanceSingleTunnel
+        - 3.1.6.13.3 QueryVpcTunnelTunnelSwitch
+        - 3.1.6.13.4 QueryVpcTunnelInstanceSingleTunnelList
+      - 3.1.6.14 Region management
+        - 3.1.6.14.1 QueryMetaData
+        - 3.1.6.14.2 QueryCommonRegionData
+        - 3.1.6.14.3 QueryRegionList
+        - 3.1.6.14.4 QueryRegionConsoleUrlList
+      - 3.1.6.15 UnitResetTask management
+        - 3.1.6.15.1 CreateUnitResetTask
+        - 3.1.6.15.2 QueryUnitResetTask
+- 4 SDK reference
+  - 4.1 RocketMQ_SDK
+    - 4.1.1 Overview
+    - 4.1.2 Messaging model
+    - 4.1.3 Updates
+    - 4.1.4 Transport protocol and character encoding
+    - 4.1.5 Common classes and methods
+      - 4.1.5.1 PropertyKeyConst
+      - 4.1.5.2 ONSFactory
+        - 4.1.5.2.1 createConsumer
+        - 4.1.5.2.2 createBatchConsumer
+        - 4.1.5.2.3 createOrderedConsumer
+        - 4.1.5.2.4 createOrderProducer
+        - 4.1.5.2.5 createProducer
+        - 4.1.5.2.6 createTransactionProducer
+      - 4.1.5.3 Message
+        - 4.1.5.3.1 Overview
+        - 4.1.5.3.2 Default message construction
+        - 4.1.5.3.3 Message construction by using parameters (1)
+        - 4.1.5.3.4 Message construction by using parameters (2)
+        - 4.1.5.3.5 putUserProperties
+        - 4.1.5.3.6 getUserProperties
+        - 4.1.5.3.7 getTopic
+        - 4.1.5.3.8 setTopic
+        - 4.1.5.3.9 getTag
+        - 4.1.5.3.10 setTag
+        - 4.1.5.3.11 getKey
+        - 4.1.5.3.12 setKey
+        - 4.1.5.3.13 getMsgID
+        - 4.1.5.3.14 setMsgID
+        - 4.1.5.3.15 getReconsumeTimes
+        - 4.1.5.3.16 setReconsumeTimes
+        - 4.1.5.3.17 getBornTimestamp
+        - 4.1.5.3.18 setBornTimestamp
+        - 4.1.5.3.19 getBornHost
+        - 4.1.5.3.20 setBornHost
+        - 4.1.5.3.21 getStartDeliverTime
+        - 4.1.5.3.22 setStartDeliverTime
+        - 4.1.5.3.23 getShardingKey
+        - 4.1.5.3.24 setShardingKey
+      - 4.1.5.4 ONSClientException
+        - 4.1.5.4.1 Default ONSClientException construction
+        - 4.1.5.4.2 ONSClientException construction by using parameters (1)
+        - 4.1.5.4.3 ONSClientException construction by using parameters (2)
+        - 4.1.5.4.4 ONSClientException construction by using parameters (3)
+      - 4.1.5.5 Message sending
+        - 4.1.5.5.1 Overview
+        - 4.1.5.5.2 SendResult
+          - 4.1.5.5.2.1 Default SendResult construction
+          - 4.1.5.5.2.2 getMessageId
+          - 4.1.5.5.2.3 getTopic
+          - 4.1.5.5.2.4 toString
+        - 4.1.5.5.3 Producer
+          - 4.1.5.5.3.1 Overview
+          - 4.1.5.5.3.2 send
+          - 4.1.5.5.3.3 sendOneway
+          - 4.1.5.5.3.4 sendAsync
+          - 4.1.5.5.3.5 isStarted
+          - 4.1.5.5.3.6 isClosed
+          - 4.1.5.5.3.7 start
+          - 4.1.5.5.3.8 shutdown
+        - 4.1.5.5.4 TransactionProducer
+          - 4.1.5.5.4.1 send
+          - 4.1.5.5.4.2 isStarted
+          - 4.1.5.5.4.3 isClosed
+          - 4.1.5.5.4.4 start
+          - 4.1.5.5.4.5 shutdown
+          - 4.1.5.5.4.6 LocalTransactionExecuter
+          - 4.1.5.5.4.7 TransactionStatus
+        - 4.1.5.5.5 OrderProducer
+          - 4.1.5.5.5.1 send
+          - 4.1.5.5.5.2 isStarted
+          - 4.1.5.5.5.3 isClosed
+          - 4.1.5.5.5.4 start
+          - 4.1.5.5.5.5 shutdown
+      - 4.1.5.6 Message subscription
+        - 4.1.5.6.1 Overview
+        - 4.1.5.6.2 Consumer
+          - 4.1.5.6.2.1 Overview
+          - 4.1.5.6.2.2 subscribe
+          - 4.1.5.6.2.3 unsubscribe
+          - 4.1.5.6.2.4 isStarted
+          - 4.1.5.6.2.5 isClosed
+          - 4.1.5.6.2.6 start
+          - 4.1.5.6.2.7 shutdown
+        - 4.1.5.6.3 MessageListener
+          - 4.1.5.6.3.1 Overview
+          - 4.1.5.6.3.2 consume
+        - 4.1.5.6.4 Action
+          - 4.1.5.6.4.1 Overview
+          - 4.1.5.6.4.2 valueOf
+          - 4.1.5.6.4.3 values
+        - 4.1.5.6.5 PropertyValueConst
+        - 4.1.5.6.6 OrderConsumer
+          - 4.1.5.6.6.1 Overview
+          - 4.1.5.6.6.2 subscribe
+          - 4.1.5.6.6.3 unsubscribe
+          - 4.1.5.6.6.4 isStarted
+          - 4.1.5.6.6.5 isClosed
+          - 4.1.5.6.6.6 start
+          - 4.1.5.6.6.7 shutdown
+        - 4.1.5.6.7 MessageOrderListener
+          - 4.1.5.6.7.1 Overview
+          - 4.1.5.6.7.2 consume
+        - 4.1.5.6.8 OrderAction
+          - 4.1.5.6.8.1 Overview
+          - 4.1.5.6.8.2 valueOf
+          - 4.1.5.6.8.3 values
+        - 4.1.5.6.9 BatchConsumer
+          - 4.1.5.6.9.1 Overview
+          - 4.1.5.6.9.2 subscribe
+          - 4.1.5.6.9.3 unsubscribe
+          - 4.1.5.6.9.4 isStarted
+          - 4.1.5.6.9.5 isClosed
+          - 4.1.5.6.9.6 start
+          - 4.1.5.6.9.7 shutdown
+        - 4.1.5.6.10 BatchMessageListener
+          - 4.1.5.6.10.1 Overview
+          - 4.1.5.6.10.2 consume
+
+## 1 Prerequisites
+
+### 1.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -33,7 +355,7 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 6. The page displays a list of all API operations for the current version.
 7. Click a desired API operation. In the list of parameters, find the POP Endpoint information.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 You can use an AccessKey pair to authenticate API calls. AccessKey pairs support two authorization modes: Resource Access Management (RAM) and Security Token Service (STS). This topic describes how to obtain a RAM-authorized AccessKey pair.
 
@@ -74,7 +396,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. Click the **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain common header
+### 1.3 Obtain common header parameters
 
 **parameters**
 
@@ -134,7 +456,7 @@ When you call an API operation to query a list of resource instances for a cloud
 |---|---|
 | Department | The ID of the organization. |
 
-### Obtain STS access credentials
+### 1.4 Obtain STS access credentials
 
 This topic describes how to use Security Token Service (STS) to call product APIs in Apsara Stack.
 
@@ -204,11 +526,11 @@ evant API documentation.
 
 cloud APIs through a POP gatewa
 
-## Calling private cloud APIs
+## 2 Calling private cloud APIs through a POP gateway
 
 **through a POP gateway**
 
-### Overview
+### 2.1 Overview
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic provides an overview.
 
@@ -375,7 +697,7 @@ cloud APIs through a POP gatewa
 | UpdateTopic | 3.16.2-0 |
 | UpdateTopicInfo | 3.16.2-0 |
 
-### Preparations
+### 2.2 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way that you call them in the Alibaba Cloud public cloud. This topic describes the required preparations.
 
@@ -418,7 +740,7 @@ This value is the `Endpoint` .
 
 Calling API operations using the POP gateway requires common parameters, such as organization ID, resource set ID, Region ID, and instance ID. For more information, see Obtain common header parameters.
 
-### SDK for Java
+### 2.3 SDK for Java
 
 This topic provides examples of how to use the Premium software development kit (SDK) to call APIs over the POP gateway.
 
@@ -595,11 +917,11 @@ catch (Exception e) {
     e.printStackTrace();
 ```
 
-## API reference
+## 3 API reference
 
-### RocketMQ_API
+### 3.1 RocketMQ_API
 
-#### Updates
+#### 3.1.1 Updates
 
 This topic describes the updates of ApsaraMQ for RocketMQ from V3.8.0 to V3.18.3 to help you get started with the updated version.
 
@@ -621,7 +943,7 @@ A RocketMQ client must be updated to the following latest versions for different
 
 **Optimization of resource application**
 
-Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two of the resources have a many-to-many relationship, which was difficult to comprehend. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This process was too complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the resource application process has been simplified. The resource application process has been optimized in the following aspects: Topic management, which is unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. Group management You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you need only to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be set in the **PropertyKeyConst.ConsumerId** or
+Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two of the resources have a many-to-many relationship, which was difficult to comprehend. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This process was too complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the resource application process has been simplified. The resource application process has been optimized in the following aspects: Topic management, which is unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you need only to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be set in the **PropertyKeyConst.ConsumerId** or
 **PropertyKeyConst.GROUP_ID** parameter of the code.
 Sample code
 
@@ -639,26 +961,26 @@ Compatible configuration: Use a producer ID to identify a producer and a consume
 // When you create a producer, you must set the PropertyKeyConst.ProducerId paramet er. properties.put(PropertyKeyConst.ProducerId, "The original PID-XXX or the GID-XXX"); // When you create a consumer, you must set the PropertyKeyConst.ConsumerId paramet er. properties.put(PropertyKeyConst.ConsumerId, "The original CID-XXX or the GID-XXX");
 ```
 
-#### Overview
+#### 3.1.2 Overview
 
-##### Intended audience and scenarios
+##### 3.1.2.1 Intended audience and scenarios
 
 ApsaraMQ for RocketMQ provides you with API operations to help you manage resources. Different from the SDKs for production, API operations are used to manage the resources of ApsaraMQ for RocketMQ, such as topics and group IDs. API operations are intended for those who: Are familiar with the main features of the ApsaraMQ for RocketMQ console. Require a management and control tool similar to the console and have a need for custom management and control features.
 
-##### Scenarios and limits
+##### 3.1.2.2 Scenarios and limits
 
 1. Due to the implementation principles of API operations, the caller must be able to access
 the domain name of the ApsaraMQ for RocketMQ console. Otherwise, the call may fail.
 2. The underlying layer of API operations is based on HTTP, with average performance and
 efficiency. Therefore, API operations are applicable only to management and control scenarios. Do not use them in mass production scenarios with high concurrency.
 
-##### Basic principles
+##### 3.1.2.3 Basic principles
 
 The underlying layer of API operations provides services based on HTTP. Each time you call an API operation, you send an HTTP request from the HTTP client to the backend service of ApsaraMQ for RocketMQ for execution. You can encapsulate parameters in an HTTP request and send the request to call an API operation. The execution results are returned in a response. The request and response are encoded in UTF-8. The service endpoint in the HTTP request is the domain name of the ApsaraMQ for RocketMQ console.
 
-#### Common parameters
+#### 3.1.3 Common parameters
 
-##### Common request parameters
+##### 3.1.3.1 Common request parameters
 
 The HTTP client calls ApsaraMQ for RocketMQ API operations based on HTTPS. Common request parameters must be included in all API requests and sent to the backend service of ApsaraMQ for RocketMQ for permission verification. The following table describes common request parameters.
 
@@ -704,7 +1026,7 @@ Assume that the final result is: eqweq+adwe23****=. Replace "+" with "%2B", "=" 
 https://mq.console.${global:internet-domain}/json/topic/create? Key_2=Value_2&Key_1=Value_1&Key_3=Value_3&_signature= eqweq%2Badwe23****%3D
 ```
 
-##### Common response parameters
+##### 3.1.3.2 Common response parameters
 
 The HTTP client sends an HTTP request to the backend service of ApsaraMQ for RocketMQ. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format:
 
@@ -724,29 +1046,29 @@ The HTTP client sends an HTTP request to the backend service of ApsaraMQ for Roc
 
 Response parameters: code: the HTTP status code. A value of 200 indicates that the call is successful. Other values indicate that the call fails. currentPage: the page number of the returned page if the request is a paged query. dynamicMessage: the error message. message: the processing result. pageSize: the number of entries returned per page if the request is a paged query. success: indicates whether the call is successful. data: the returned service data. The value is also a JSON string. If the return results of the current request contain service data, you must reverse parse the content in the JSON format. RequestId: the unique ID of the request. The value is a string.
 
-#### Common terms
+#### 3.1.4 Common terms
 
-##### Account security
+##### 3.1.4.1 Account security
 
-###### AccessKey
+###### 3.1.4.1.1 AccessKey
 
 The AccessKey ID of the account that you use to access Alibaba Cloud services. You can obtain your AccessKey ID from the console. When you call an API operation, the AccessKey ID is included in the API request and sent to the backend service of ApsaraMQ for RocketMQ for identity authentication. You can call ApsaraMQ for RocketMQ API operations to manage resources only within your account.
 
-###### SecretKey
+###### 3.1.4.1.2 SecretKey
 
 The AccessKey secret of the account that you use to access Alibaba Cloud services. You can obtain your AccessKey secret from the console. When you call an API operation, the AccessKey secret is included in the API request and used to calculate the signature string of the API request. The backend service of ApsaraMQ for RocketMQ uses the AccessKey secret to verify the signature string of the API request for authentication.
 
-##### Resource management
+##### 3.1.4.2 Resource management
 
-###### Topic
+###### 3.1.4.2.1 Topic
 
 A classifier that is used to classify messages. Messages in ApsaraMQ for RocketMQ are stored by topic. Topics are among the most important resources in ApsaraMQ for RocketMQ. In ApsaraMQ for RocketMQ, topics are globally unique.
 
-###### Group ID
+###### 3.1.4.2.2 Group ID
 
 The ID of a group. A group consists of producers or consumers that produce or consume messages of the same type and publish or subscribe to messages based on the same logic. If group IDs for consumers or existing consumer IDs are created by a RAM user, both the RAM user and the Apsara Stack tenant account to which the RAM user belongs have permissions on these resources. If group IDs for consumers or existing consumer IDs are created by an Apsara Stack tenant account, only the Apsara Stack tenant account has permissions on these resources. Its RAM users have no permissions on these resources. For more information about the changes in the use of existing producer IDs, existing consumer IDs, and group IDs, see Updates.
 
-#### Error codes
+#### 3.1.5 Error codes
 
 If a ApsaraMQ for RocketMQ API operation is successfully called, HTTP status code 200 is returned to the client. If the call fails, error codes and descriptions are returned. You can find solutions based on the error codes that are described in the following table.
 
@@ -772,11 +1094,11 @@ If a ApsaraMQ for RocketMQ API operation is successfully called, HTTP status cod
 | EMPOWER EXIST ERROR _ _ | The specified authorization already exists. | Check the request parameters and try again or query the authorization first. |
 | EMPOWER OWNER CHECK ERROR _ _ _ | The current user is not the owner of the authorized topic. | Check the ownership of the resource. |
 
-#### API reference
+#### 3.1.6 API reference
 
-##### Instance management
+##### 3.1.6.1 Instance management
 
-###### QueryCommonGenRedirectUrl
+###### 3.1.6.1.1 QueryCommonGenRedirectUrl
 
 Generates a generic redirection URL for ApsaraMQ for RocketMQ operations.
 
@@ -817,7 +1139,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### QueryTrendFlowLimit
+###### 3.1.6.1.2 QueryTrendFlowLimit
 
 Queries trend data for traffic throttling in ApsaraMQ for RocketMQ.
 
@@ -869,7 +1191,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UnbindSystemTags
+###### 3.1.6.1.3 UnbindSystemTags
 
 Detaches system tags from a specified instance.
 
@@ -915,7 +1237,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### CreateInstance
+###### 3.1.6.1.4 CreateInstance
 
 Creates an instance.
 
@@ -966,7 +1288,7 @@ Sample successful response
  "Data":{},
 ```
 
-###### BindSystemTags
+###### 3.1.6.1.5 BindSystemTags
 
 Attaches system tags to a message queue instance.
 
@@ -1006,7 +1328,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### QuerySystemTagList
+###### 3.1.6.1.6 QuerySystemTagList
 
 Queries a list of system tags.
 
@@ -1053,7 +1375,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DeleteInstance
+###### 3.1.6.1.7 DeleteInstance
 
 Deletes the specified message queue instance.
 
@@ -1083,7 +1405,7 @@ http(s)://[Endpoint]/?Action=DeleteInstance &OnsRegionId=Region01 &PreventCache=
 
 Sample response
 
-###### QueryInstanceBaseInfo
+###### 3.1.6.1.8 QueryInstanceBaseInfo
 
 Queries the basic information about a specified Message Service instance, including the instance ID, name, status, and specifications.
 
@@ -1117,7 +1439,7 @@ http(s)://[Endpoint]/?Action=QueryInstanceBaseInfo &OnsRegionId=REGION_001 &Prev
 
 Sample success response
 
-###### QueryInstanceStatistics
+###### 3.1.6.1.9 QueryInstanceStatistics
 
 Queries the runtime statistics for a specified message instance. The statistics include the number of messages, topics, and consumer groups.
 
@@ -1162,7 +1484,7 @@ Example response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryInstanceList
+###### 3.1.6.1.10 QueryInstanceList
 
 Queries the list of ApsaraMQ for RocketMQ instances.
 
@@ -1208,7 +1530,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterInstanceList
+###### 3.1.6.1.11 QueryRouterInstanceList
 
 Queries a list of routing instances for ApsaraMQ for RocketMQ.
 
@@ -1253,7 +1575,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateInstance
+###### 3.1.6.1.12 UpdateInstance
 
 Updates the configuration of an ApsaraMQ for RocketMQ instance.
 
@@ -1303,7 +1625,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### CheckFortestInstance
+###### 3.1.6.1.13 CheckFortestInstance
 
 Checks the status of and permissions on a test instance.
 
@@ -1343,9 +1665,9 @@ Sample response
  "Data":"[{}]",
 ```
 
-##### Topic management
+##### 3.1.6.2 Topic management
 
-###### CheckFortestTopic
+###### 3.1.6.2.1 CheckFortestTopic
 
 Used to verify that the Topic was created and that the current user has the specified publish/subscribe permissions in the Test environment.
 
@@ -1386,7 +1708,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### PageQueryTopicList
+###### 3.1.6.2.2 PageQueryTopicList
 
 Queries a paginated list of topics in ApsaraMQ for RocketMQ.
 
@@ -1427,7 +1749,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### CreateSubscription
+###### 3.1.6.2.3 CreateSubscription
 
 API for creating subscription relationships.
 
@@ -1467,7 +1789,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### CreateTopic
+###### 3.1.6.2.4 CreateTopic
 
 Creates a new message topic.
 
@@ -1507,7 +1829,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### DeleteTopic
+###### 3.1.6.2.5 DeleteTopic
 
 Deletes a specified message topic.
 
@@ -1545,7 +1867,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### DeleteSubscription
+###### 3.1.6.2.6 DeleteSubscription
 
 Deletes a subscription relationship in ApsaraMQ for RocketMQ.
 
@@ -1585,7 +1907,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### QueryTrendTopicInputTps
+###### 3.1.6.2.7 QueryTrendTopicInputTps
 
 Queries the trend of Transactions Per Second (TPS) for messages sent to a topic, which indicates the trend in message production volume.
 
@@ -1636,7 +1958,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicSubDetail
+###### 3.1.6.2.8 QueryTopicSubDetail
 
 Queries the subscription relationship details for a specified topic, including information about all consumer groups that subscribe to the topic.
 
@@ -1681,7 +2003,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicStatus
+###### 3.1.6.2.9 QueryTopicStatus
 
 Queries the message status of a specified topic. The status includes statistics information, such as the total number of messages and the last send time.
 
@@ -1730,7 +2052,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicNameList
+###### 3.1.6.2.10 QueryTopicNameList
 
 Queries a list of topic names in ApsaraMQ for RocketMQ.
 
@@ -1777,7 +2099,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicListByGroupId
+###### 3.1.6.2.11 QueryTopicListByGroupId
 
 Queries a list of topics by consumer group ID.
 
@@ -1822,7 +2144,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopicList
+###### 3.1.6.2.12 QueryTopicList
 
 Queries the list of topics in ApsaraMQ for RocketMQ.
 
@@ -1868,7 +2190,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTopic
+###### 3.1.6.2.13 QueryTopic
 
 Queries information about topics.
 
@@ -1914,7 +2236,7 @@ Response examples
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QuerySubscriptionList
+###### 3.1.6.2.14 QuerySubscriptionList
 
 Queries the list of subscriptions for ApsaraMQ for RocketMQ.
 
@@ -1959,7 +2281,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QuerySubscription
+###### 3.1.6.2.15 QuerySubscription
 
 Queries the details of a subscription in ApsaraMQ for RocketMQ.
 
@@ -2005,7 +2327,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterTopicList
+###### 3.1.6.2.16 QueryRouterTopicList
 
 Queries a list of routing topics in ApsaraMQ for RocketMQ.
 
@@ -2051,7 +2373,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateTopicInfo
+###### 3.1.6.2.17 UpdateTopicInfo
 
 Updates the information about a specified topic in ApsaraMQ for RocketMQ.
 
@@ -2096,7 +2418,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateTopic
+###### 3.1.6.2.18 UpdateTopic
 
 Updates the configuration of a topic in ApsaraMQ for RocketMQ.
 
@@ -2142,7 +2464,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateSubscription
+###### 3.1.6.2.19 UpdateSubscription
 
 The API interface that updates the subscription relationship.
 
@@ -2188,7 +2510,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### SearchSubscription
+###### 3.1.6.2.20 SearchSubscription
 
 Queries subscription relationships in ApsaraMQ for RocketMQ.
 
@@ -2233,9 +2555,9 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Cluster management
+##### 3.1.6.3 Cluster management
 
-###### QueryClusterList
+###### 3.1.6.3.1 QueryClusterList
 
 Retrieves a list of clusters for ApsaraMQ for RocketMQ
 
@@ -2273,7 +2595,7 @@ Sample successful response
  "Data":"[{}]",
 ```
 
-###### QueryClusterCapacity
+###### 3.1.6.3.2 QueryClusterCapacity
 
 Queries the capacity information of a specified cluster. This information includes capacity limits, such as the maximum number of subjects, maximum sending transactions per second (TPS), and maximum receiving TPS.
 
@@ -2312,9 +2634,9 @@ Successful response example
  "Data":{},
 ```
 
-##### Group management
+##### 3.1.6.4 Group management
 
-###### CreateGroup
+###### 3.1.6.4.1 CreateGroup
 
 Creates a new consumer group.
 
@@ -2356,7 +2678,7 @@ Sample successful response
  "Data":"[{}]",
 ```
 
-###### PageQueryGroupList
+###### 3.1.6.4.2 PageQueryGroupList
 
 Queries a paginated list of groups in ApsaraMQ for RocketMQ.
 
@@ -2403,7 +2725,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### DeleteGroup
+###### 3.1.6.4.3 DeleteGroup
 
 Delete a message queue consumption group.
 
@@ -2443,7 +2765,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### QueryGroupIdList
+###### 3.1.6.4.4 QueryGroupIdList
 
 Queries a list of all group IDs for a specified instance.
 
@@ -2489,7 +2811,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryGroupSubDetail
+###### 3.1.6.4.5 QueryGroupSubDetail
 
 Queries the complete subscription details for a consumer group.
 
@@ -2536,7 +2858,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryGroupList
+###### 3.1.6.4.6 QueryGroupList
 
 Queries a list of consumer groups in ApsaraMQ for RocketMQ.
 
@@ -2583,7 +2905,7 @@ Response examples
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTrendGroupOutputTps
+###### 3.1.6.4.7 QueryTrendGroupOutputTps
 
 Queries the trend data of message consumption, measured in Transactions Per Second (TPS), for a consumer group. This data shows changes in consumption capacity.
 
@@ -2637,7 +2959,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateGroupInfo
+###### 3.1.6.4.8 UpdateGroupInfo
 
 Updates information about a group in ApsaraMQ for RocketMQ.
 
@@ -2687,7 +3009,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateGroupConsumer
+###### 3.1.6.4.9 UpdateGroupConsumer
 
 Updates the configuration of a specified consumer group in ApsaraMQ for RocketMQ.
 
@@ -2734,9 +3056,9 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### CloudInfo management
+##### 3.1.6.5 CloudInfo management
 
-###### QueryCloudInfoNoPage
+###### 3.1.6.5.1 QueryCloudInfoNoPage
 
 Query cloud information (no paging) API.
 
@@ -2776,7 +3098,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### UpdateCloudInfo
+###### 3.1.6.5.2 UpdateCloudInfo
 
 Updates the information about a specified cloud instance.
 
@@ -2828,7 +3150,7 @@ Example responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DeleteCloudInfo
+###### 3.1.6.5.3 DeleteCloudInfo
 
 Deletes information about a specified cloud instance.
 
@@ -2865,7 +3187,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### CreateCloudInfo
+###### 3.1.6.5.4 CreateCloudInfo
 
 Creates a cloud instance for ApsaraMQ for RocketMQ.
 
@@ -2908,7 +3230,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### QueryCloudInfo
+###### 3.1.6.5.5 QueryCloudInfo
 
 Queries a paginated list of Alibaba Cloud services that are related to Message Queue.
 
@@ -2950,9 +3272,9 @@ Sample success response
  "Data":"[{}]",
 ```
 
-##### Message management
+##### 3.1.6.6 Message management
 
-###### PushMessage
+###### 3.1.6.6.1 PushMessage
 
 You can use the PushMessage API to push messages to a specified consumer group in ApsaraMQ for RocketMQ.
 
@@ -3001,7 +3323,7 @@ Response examples
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DownloadMessageBodyInDLQ
+###### 3.1.6.6.2 DownloadMessageBodyInDLQ
 
 Downloads the message body of a specified message from a dead-letter queue.
 
@@ -3045,7 +3367,7 @@ Sample response (success)
  "Data":"[{}]",
 ```
 
-###### DownloadMessageAllInDLQ
+###### 3.1.6.6.3 DownloadMessageAllInDLQ
 
 Downloads a batch of messages from a dead-letter queue.
 
@@ -3087,7 +3409,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### DownloadMessage
+###### 3.1.6.6.4 DownloadMessage
 
 Download the API interface for the specified message.
 
@@ -3127,7 +3449,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### QueryMessageByPagedTopic
+###### 3.1.6.6.5 QueryMessageByPagedTopic
 
 Queries a paginated list of messages in a specified topic.
 
@@ -3178,7 +3500,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageByPagedDLQ
+###### 3.1.6.6.6 QueryMessageByPagedDLQ
 
 Performs a paged query for messages in a dead-letter queue (DLQ).
 
@@ -3233,7 +3555,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageByKey
+###### 3.1.6.6.7 QueryMessageByKey
 
 Queries messages based on message keys.
 
@@ -3281,7 +3603,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageByIdInDLQ
+###### 3.1.6.6.8 QueryMessageByIdInDLQ
 
 Queries the details of a specific message in a dead-letter queue (DLQ) by its message ID.
 
@@ -3329,7 +3651,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMessageById
+###### 3.1.6.6.9 QueryMessageById
 
 Queries the details of a specific message by its message ID.
 
@@ -3375,7 +3697,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### TraceMessage
+###### 3.1.6.6.10 TraceMessage
 
 Queries the trace of a message to track its path through a message queue.
 
@@ -3426,7 +3748,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### SendMessage
+###### 3.1.6.6.11 SendMessage
 
 Sends messages to ApsaraMQ for RocketMQ.
 
@@ -3475,7 +3797,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### ResendMessageByIdInDLQ
+###### 3.1.6.6.12 ResendMessageByIdInDLQ
 
 Resends a message in a dead-letter queue.
 
@@ -3522,9 +3844,9 @@ Successful response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Empower management
+##### 3.1.6.7 Empower management
 
-###### CheckFortestRamAction
+###### 3.1.6.7.1 CheckFortestRamAction
 
 Verifies the RAM permissions in a test environment.
 
@@ -3563,7 +3885,7 @@ Sample successful response
  "Data":"[{}]",
 ```
 
-###### DeleteDauthToolByUserId
+###### 3.1.6.7.2 DeleteDauthToolByUserId
 
 Deletes an authorization tool by user ID.
 
@@ -3601,7 +3923,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### CreateGroupEmpowerBySub
+###### 3.1.6.7.3 CreateGroupEmpowerBySub
 
 Grants a RAM user permissions on a specified consumer group in ApsaraMQ for RocketMQ.
 
@@ -3642,7 +3964,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### CreateEmpowerBySub
+###### 3.1.6.7.4 CreateEmpowerBySub
 
 Grants permissions on ApsaraMQ for RocketMQ to a specified RAM user.
 
@@ -3684,7 +4006,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### CreateEmpower
+###### 3.1.6.7.5 CreateEmpower
 
 Creates an authorization for ApsaraMQ for RocketMQ.
 
@@ -3726,7 +4048,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### QueryGroupEmpowerList
+###### 3.1.6.7.6 QueryGroupEmpowerList
 
 Queries the authorization list for a specified instance and consumer group.
 
@@ -3769,7 +4091,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryEmpowerList
+###### 3.1.6.7.7 QueryEmpowerList
 
 Queries the authorization list for ApsaraMQ for RocketMQ.
 
@@ -3816,7 +4138,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### DeleteGroupEmpower
+###### 3.1.6.7.8 DeleteGroupEmpower
 
 Deletes an authorization group in ApsaraMQ for RocketMQ.
 
@@ -3857,7 +4179,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### DeleteEmpower
+###### 3.1.6.7.9 DeleteEmpower
 
 Deletes the authorization for a specified topic in ApsaraMQ for RocketMQ.
 
@@ -3901,9 +4223,9 @@ Successful response example
  "Data":"[{}]",
 ```
 
-##### MQTT management API
+##### 3.1.6.8 MQTT management API
 
-###### DeleteMqttGroupId
+###### 3.1.6.8.1 DeleteMqttGroupId
 
 Deletes the specified MQTT group ID.
 
@@ -3943,7 +4265,7 @@ Sample successful response
  "Data":"[{}]",
 ```
 
-###### SendMqtt
+###### 3.1.6.8.2 SendMqtt
 
 The interface that sends messages through the specified MQTT instance.
 
@@ -3993,7 +4315,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttMsgTransTask
+###### 3.1.6.8.3 QueryMqttMsgTransTask
 
 Queries the history of publish and subscribe operations for an MQTT message transmission task.
 
@@ -4049,7 +4371,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### CreateMqttInstanceStoreResource
+###### 3.1.6.8.4 CreateMqttInstanceStoreResource
 
 Creates a storage resource for an MQTT instance.
 
@@ -4093,7 +4415,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### CreateMqttInstance
+###### 3.1.6.8.5 CreateMqttInstance
 
 Creates a Message Queuing Telemetry Transport (MQTT) instance to enable access to ApsaraMQ for RocketMQ using the MQTT protocol.
 
@@ -4140,7 +4462,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### CreateMqttGroupId
+###### 3.1.6.8.6 CreateMqttGroupId
 
 Creates an MQTT group ID.
 
@@ -4180,7 +4502,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### PageQueryMqttInstanceStoreResource
+###### 3.1.6.8.7 PageQueryMqttInstanceStoreResource
 
 Performs a paged query on the storage resources of MQTT instance.
 
@@ -4224,7 +4546,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### PageQueryMqttInstanceList
+###### 3.1.6.8.8 PageQueryMqttInstanceList
 
 Queries a paginated list of MQTT instances.
 
@@ -4264,7 +4586,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### PageQueryMqttGroupId
+###### 3.1.6.8.9 PageQueryMqttGroupId
 
 Performs a paged query to retrieve a list of group IDs for MQTT instance.
 
@@ -4308,7 +4630,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### DeleteMqttInstanceStoreResource
+###### 3.1.6.8.10 DeleteMqttInstanceStoreResource
 
 Deletes the storage resource for a specified MQTT instance.
 
@@ -4350,7 +4672,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### DeleteMqttInstance
+###### 3.1.6.8.11 DeleteMqttInstance
 
 Deletes the specified MQTT instance.
 
@@ -4389,7 +4711,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### QueryMqttInstanceReport
+###### 3.1.6.8.12 QueryMqttInstanceReport
 
 Queries the runtime report statistics for MQTT instance.
 
@@ -4438,7 +4760,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttInstanceList
+###### 3.1.6.8.13 QueryMqttInstanceList
 
 Queries a list of MQTT instances in a specified region.
 
@@ -4482,7 +4804,7 @@ Response examples
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttInstanceBaseInfo
+###### 3.1.6.8.14 QueryMqttInstanceBaseInfo
 
 Queries the basic information for MQTT instance, such as the instance ID, name, and specifications.
 
@@ -4527,7 +4849,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttGroupIdList
+###### 3.1.6.8.15 QueryMqttGroupIdList
 
 Queries all group IDs in a specified for MQTT instance.
 
@@ -4572,7 +4894,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttDeviceRunningInfo
+###### 3.1.6.8.16 QueryMqttDeviceRunningInfo
 
 Queries the running status of an MQTT device.
 
@@ -4618,7 +4940,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttConnectionSum
+###### 3.1.6.8.17 QueryMqttConnectionSum
 
 Queries statistics and trend data for MQTT connections.
 
@@ -4666,7 +4988,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttClientSetByTopic
+###### 3.1.6.8.18 QueryMqttClientSetByTopic
 
 Queries information about the clients that subscribe to an MQTT topic.
 
@@ -4713,7 +5035,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttClientSetByGroupId
+###### 3.1.6.8.19 QueryMqttClientSetByGroupId
 
 Queries information about a collection of online clients based on an MQTT Group ID.
 
@@ -4762,7 +5084,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data/> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttTraceByTraceId
+###### 3.1.6.8.20 QueryMqttTraceByTraceId
 
 Queries the MQTT message traces for a specified Trace ID.
 
@@ -4812,7 +5134,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttMsgByPubInfo
+###### 3.1.6.8.21 QueryMqttMsgByPubInfo
 
 Queries MQTT messages based on publication information.
 
@@ -4913,7 +5235,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqttInstanceStoreInstanceList
+###### 3.1.6.8.23 QueryMqttInstanceStoreInstanceList
 
 Queries the storage instances of an MQTT instance.
 
@@ -4958,7 +5280,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateMqttInstance
+###### 3.1.6.8.24 UpdateMqttInstance
 
 Updates the details of a specified MQTT instance.
 
@@ -5005,7 +5327,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### ChangeMqttInstanceSpec
+###### 3.1.6.8.25 ChangeMqttInstanceSpec
 
 Changes the instance type for MQTT instance.
 
@@ -5056,7 +5378,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### BindMqttInstance
+###### 3.1.6.8.26 BindMqttInstance
 
 ind an MQTT instance to ApsaraMQ for RocketMQ.
 
@@ -5101,9 +5423,9 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Trace management
+##### 3.1.6.9 Trace management
 
-###### QueryTraceMapByQueryId
+###### 3.1.6.9.1 QueryTraceMapByQueryId
 
 Retrieves the complete event chain diagram of a message trace based on a query ID. This diagram shows the full path of the message, from the time it is sent until it is consumed.
 
@@ -5148,7 +5470,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryPubTraceByQueryId
+###### 3.1.6.9.2 QueryPubTraceByQueryId
 
 Retrieves the details of a message publishing trace based on a query ID.
 
@@ -5196,7 +5518,7 @@ Example responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### PageQueryTraceListByUserId
+###### 3.1.6.9.3 PageQueryTraceListByUserId
 
 Queries a paginated list of message traces for a user.
 
@@ -5240,7 +5562,7 @@ Example of a successful response
  "Data":"[{}]",
 ```
 
-###### DeleteTraceQueryTask
+###### 3.1.6.9.4 DeleteTraceQueryTask
 
 The API interface that deletes the message trace query task.
 
@@ -5278,7 +5600,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### QueryTraceByMsgTopic
+###### 3.1.6.9.5 QueryTraceByMsgTopic
 
 Queries message traces by topic.
 
@@ -5327,7 +5649,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTraceByMsgKey
+###### 3.1.6.9.6 QueryTraceByMsgKey
 
 Queries a message trace by message key.
 
@@ -5379,7 +5701,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryTraceByMsgId
+###### 3.1.6.9.7 QueryTraceByMsgId
 
 Queries the message trace for a specified message ID.
 
@@ -5425,9 +5747,9 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Consumer management
+##### 3.1.6.10 Consumer management
 
-###### CheckFortestConsumerId
+###### 3.1.6.10.1 CheckFortestConsumerId
 
 Checks whether a consumer ID is valid in the test environment.
 
@@ -5469,7 +5791,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### QueryAllConsumerAccumulation
+###### 3.1.6.10.2 QueryAllConsumerAccumulation
 
 Queries the message accumulation status of a specified consumer group across all message queues in a specific topic.
 
@@ -5509,7 +5831,7 @@ Sample response
  "Data":{},
 ```
 
-###### QueryConsumerTimespan
+###### 3.1.6.10.3 QueryConsumerTimespan
 
 Queries the consumption time span for a specified consumer group on a specific topic. This operation returns time-related metrics, such as the earliest and latest consumption times and consumption latency.
 
@@ -5557,7 +5879,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerStatus
+###### 3.1.6.10.4 QueryConsumerStatus
 
 Queries the overall status of a specified consumer group. The status includes key operational metrics such as online status, consumer TPS, message accumulation, consumption latency, and subscription relationship consistency.
 
@@ -5604,7 +5926,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerProgress
+###### 3.1.6.10.5 QueryConsumerProgress
 
 Queries the consumption progress of a specified consumer group. This includes details such as the consumer offset, message accumulation, and last consumption time for each message queue.
 
@@ -5652,7 +5974,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerJstackInfo
+###### 3.1.6.10.6 QueryConsumerJstackInfo
 
 Queries the thread stack information of a consumer in ApsaraMQ for RocketMQ.
 
@@ -5704,7 +6026,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerConnection
+###### 3.1.6.10.7 QueryConsumerConnection
 
 Queries the connection information for a specified consumer group. The information includes a list of online consumer client connections and their details.
 
@@ -5750,7 +6072,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryConsumerAccumulate
+###### 3.1.6.10.8 QueryConsumerAccumulate
 
 Queries the message accumulation for a specified consumer group. The response includes the total number of accumulated messages and the accumulation details for each topic.
 
@@ -5846,7 +6168,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### ResetConsumerOffset
+###### 3.1.6.10.10 ResetConsumerOffset
 
 Resets the consumer offset for ApsaraMQ for RocketMQ.
 
@@ -5895,7 +6217,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryUnitLatestConsumerTime
+###### 3.1.6.10.11 QueryUnitLatestConsumerTime
 
 Queries the latest consumption time for a consumer group on a specific topic and instance.
 
@@ -5942,9 +6264,9 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### MQ connector management
+##### 3.1.6.11 MQ connector management
 
-###### ResumeMqConnector
+###### 3.1.6.11.1 ResumeMqConnector
 
 Resumes a Message Queue (MQ) connector.
 
@@ -5991,7 +6313,7 @@ Successful response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### PauseMqConnector
+###### 3.1.6.11.2 PauseMqConnector
 
 Pauses a Message Queue (MQ) connector.
 
@@ -6028,7 +6350,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### DeleteDeploymentMqConnector
+###### 3.1.6.11.3 DeleteDeploymentMqConnector
 
 Deletes a deployment connector in Message Queue.
 
@@ -6068,7 +6390,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### CreateDeploymentMqConnector
+###### 3.1.6.11.4 CreateDeploymentMqConnector
 
 Creates a Message Queue deployment connector.
 
@@ -6110,7 +6432,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### DeployDeploymentMqConnector
+###### 3.1.6.11.5 DeployDeploymentMqConnector
 
 Deploys a Message Queue (MQ) connector.
 
@@ -6150,7 +6472,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### QueryMqConnectorSysResourceName
+###### 3.1.6.11.6 QueryMqConnectorSysResourceName
 
 Generates system resource names, such as error-handling topics and consumer groups, for a Message Queue (MQ) connector task.
 
@@ -6197,7 +6519,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqConnectorMetricsDetailList
+###### 3.1.6.11.7 QueryMqConnectorMetricsDetailList
 
 Queries a list of metric details for an MSMQ connector.
 
@@ -6240,7 +6562,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqConnectorInfoList
+###### 3.1.6.11.8 QueryMqConnectorInfoList
 
 Queries a list of Message Queue (MQ) connectors.
 
@@ -6283,7 +6605,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryMqConnectorDeploymentList
+###### 3.1.6.11.9 QueryMqConnectorDeploymentList
 
 Queries the list of deployments for a Message Queue (MQ) connector.
 
@@ -6326,7 +6648,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateMqConnectorDeployment
+###### 3.1.6.11.10 UpdateMqConnectorDeployment
 
 Updates the deployment configuration of a Message Queue (MQ) connector.
 
@@ -6374,9 +6696,9 @@ Successful response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Router task management
+##### 3.1.6.12 Router task management
 
-###### DeleteCloudRouterTask
+###### 3.1.6.12.1 DeleteCloudRouterTask
 
 Deletes a specified cloud routing task.
 
@@ -6413,7 +6735,7 @@ Response example
  "Data":"[{}]",
 ```
 
-###### CreateRouterTask
+###### 3.1.6.12.2 CreateRouterTask
 
 Creates a message routing task that you can use to forward messages across regions or instances.
 
@@ -6471,7 +6793,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### CreateRouterInnerTask
+###### 3.1.6.12.3 CreateRouterInnerTask
 
 Creates an internal message routing task.
 
@@ -6530,7 +6852,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### CreateCloudRouterTask
+###### 3.1.6.12.4 CreateCloudRouterTask
 
 Creates a cross-cloud routing task for cross-cloud communication between message queues.
 
@@ -6593,7 +6915,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### QueryCloudRouterTaskStats
+###### 3.1.6.12.5 QueryCloudRouterTaskStats
 
 Queries the performance statistics of a cloud router task, such as Transactions Per Second (TPS), message discrepancies, and latency.
 
@@ -6635,7 +6957,7 @@ Response example
  "Data":{},
 ```
 
-###### QueryCloudRouterTask
+###### 3.1.6.12.6 QueryCloudRouterTask
 
 Queries the details of a specified cloud router task.
 
@@ -6678,7 +7000,7 @@ Response example
  "Data":{},
 ```
 
-###### QueryCloudRouterItems
+###### 3.1.6.12.7 QueryCloudRouterItems
 
 Queries the items of a cloud router task.
 
@@ -6722,7 +7044,7 @@ Sample success response
  "Data":"[{}]",
 ```
 
-###### PageQueryCloudRouterTask
+###### 3.1.6.12.8 PageQueryCloudRouterTask
 
 Performs a paged query to retrieve a list of cloud routing tasks.
 
@@ -6766,7 +7088,7 @@ Sample successful response
  "Data":"[{}]",
 ```
 
-###### DeleteRouterTask
+###### 3.1.6.12.9 DeleteRouterTask
 
 Deletes the specified routing task.
 
@@ -6808,7 +7130,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### DeleteRouterInnerTask
+###### 3.1.6.12.10 DeleteRouterInnerTask
 
 Deletes the specified task.
 
@@ -6846,7 +7168,7 @@ Successful response example
  "Data":"[{}]",
 ```
 
-###### QueryRouterTask
+###### 3.1.6.12.11 QueryRouterTask
 
 Queries the status and details of a message routing task.
 
@@ -6893,7 +7215,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterStat
+###### 3.1.6.12.12 QueryRouterStat
 
 Queries the performance statistics for message routing.
 
@@ -6944,7 +7266,7 @@ Response examples
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterInnerTask
+###### 3.1.6.12.13 QueryRouterInnerTask
 
 Queries details of an internal message routing task, such as its status, source, and destination.
 
@@ -6988,7 +7310,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRouterInnerStat
+###### 3.1.6.12.14 QueryRouterInnerStat
 
 Queries the runtime statistics of a message routing task, such as Transactions Per Second (TPS) and latency.
 
@@ -7036,7 +7358,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateRouterFilterRule
+###### 3.1.6.12.15 UpdateRouterFilterRule
 
 Updates a filter rule for message routing.
 
@@ -7087,7 +7409,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### UpdateCloudRouterTask
+###### 3.1.6.12.16 UpdateCloudRouterTask
 
 Updates the configuration of a cloud router task in ApsaraMQ for RocketMQ.
 
@@ -7136,7 +7458,7 @@ Sample successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StopRouterTask
+###### 3.1.6.12.17 StopRouterTask
 
 Stops a message routing task.
 
@@ -7182,7 +7504,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StopCloudRouterTask
+###### 3.1.6.12.18 StopCloudRouterTask
 
 Stops a specified cloud router task.
 
@@ -7225,7 +7547,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StartRouterTask
+###### 3.1.6.12.19 StartRouterTask
 
 Starts a message routing task.
 
@@ -7271,7 +7593,7 @@ Example of a successful response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StartRouterInnerTask
+###### 3.1.6.12.20 StartRouterInnerTask
 
 Starts an internal routing task in ApsaraMQ for RocketMQ.
 
@@ -7315,7 +7637,7 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### StartCloudRouterTask
+###### 3.1.6.12.21 StartCloudRouterTask
 
 Starts a cloud routing task in ApsaraMQ for RocketMQ.
 
@@ -7360,7 +7682,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### SearchRouterTask
+###### 3.1.6.12.22 SearchRouterTask
 
 This API operation searches for message routing tasks.
 
@@ -7413,7 +7735,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### AddRouterInnerConfig
+###### 3.1.6.12.23 AddRouterInnerConfig
 
 Adds an internal routing configuration to ApsaraMQ for RocketMQ.
 
@@ -7451,9 +7773,9 @@ Sample success response
  "Data":"[{}]",
 ```
 
-##### VPC management
+##### 3.1.6.13 VPC management
 
-###### CreateVpcTunnelInstanceSingleTunnel
+###### 3.1.6.13.1 CreateVpcTunnelInstanceSingleTunnel
 
 Create an API interface for a single VPC tunnel instance.
 
@@ -7494,7 +7816,7 @@ Sample response
  "Data":"[{}]",
 ```
 
-###### DeleteVpcTunnelInstanceSingleTunnel
+###### 3.1.6.13.2 DeleteVpcTunnelInstanceSingleTunnel
 
 Deletes the specified VPC tunnel instance.
 
@@ -7534,7 +7856,7 @@ Example of a successful response
  "Data":"[{}]",
 ```
 
-###### QueryVpcTunnelTunnelSwitch
+###### 3.1.6.13.3 QueryVpcTunnelTunnelSwitch
 
 The API that queries the status of the VPC tunnel switch.
 
@@ -7628,9 +7950,9 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-##### Region management
+##### 3.1.6.14 Region management
 
-###### QueryMetaData
+###### 3.1.6.14.1 QueryMetaData
 
 Queries system metadata.
 
@@ -7670,7 +7992,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryCommonRegionData
+###### 3.1.6.14.2 QueryCommonRegionData
 
 Queries common data for a specified region. This data includes configuration information, such as whether the region supports creating shared instances.
 
@@ -7708,7 +8030,7 @@ Sample success response
  "Data":{},
 ```
 
-###### QueryRegionList
+###### 3.1.6.14.3 QueryRegionList
 
 Query the list of regions supported by the ApsaraMQ for RocketMQ.
 
@@ -7751,7 +8073,7 @@ Response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-###### QueryRegionConsoleUrlList
+###### 3.1.6.14.4 QueryRegionConsoleUrlList
 
 Retrieves a list of console URLs for each region. You can use these URLs to navigate to the console in a specific region.
 
@@ -7794,9 +8116,9 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-##### UnitResetTask management
+##### 3.1.6.15 UnitResetTask management
 
-###### CreateUnitResetTask
+###### 3.1.6.15.1 CreateUnitResetTask
 
 Creates a reset task for a specified topic and consumer group.
 
@@ -7837,7 +8159,7 @@ http(s)://[Endpoint]/?Action=CreateUnitResetTask &OnsRegionId=region1 &PreventCa
 
 Sample response
 
-###### QueryUnitResetTask
+###### 3.1.6.15.2 QueryUnitResetTask
 
 Queries the execution status and details of a specified unit reset task.
 
@@ -7882,19 +8204,19 @@ Sample response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-## SDK reference
+## 4 SDK reference
 
-### RocketMQ_SDK
+### 4.1 RocketMQ_SDK
 
-#### Overview
+#### 4.1.1 Overview
 
 ApsaraMQ for RocketMQ is an important component of distributed systems. This service supports asynchronous communication for application decoupling and load shifting, and provides high performance, high availability, high scalability, and eventual consistency. This document describes how to manage a message queuing service between RocketMQ applications and the message queuing server during data transmission. This document provides the specifications that the service complies with and the common API operations that are used to manage the service. This document is suitable for scenarios in which messages are transmitted over the TCP protocol by using ApsaraMQ for RocketMQ SDK for Java.
 
-#### Messaging model
+#### 4.1.2 Messaging model
 
 ApsaraMQ for RocketMQ supports the publish-subscribe model. A producer can publish a message to a broker, and multiple consumers can subscribe to a topic on the broker. The following figure shows the messaging model. Figure 1. Publish-subscribe model
 
-#### Updates
+#### 4.1.3 Updates
 
 This topic describes the updates of ApsaraMQ for RocketMQ from V3.8.0 to V3.18.3 to help you get started with the updated version.
 
@@ -7916,7 +8238,7 @@ A RocketMQ client must be updated to the following latest versions for different
 
 **Optimization of resource application**
 
-Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two of the resources have a many-to-many relationship, which was difficult to comprehend. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This process was too complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the resource application process has been simplified. The resource application process has been optimized in the following aspects: Topic management, which is unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. Group management You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you need only to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be set in the **PropertyKeyConst.ConsumerId** or
+Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two of the resources have a many-to-many relationship, which was difficult to comprehend. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This process was too complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the resource application process has been simplified. The resource application process has been optimized in the following aspects: Topic management, which is unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you need only to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be set in the **PropertyKeyConst.ConsumerId** or
 **PropertyKeyConst.GROUP_ID** parameter of the code.
 Sample code
 
@@ -7934,7 +8256,7 @@ Compatible configuration: Use a producer ID to identify a producer and a consume
 // When you create a producer, you must set the PropertyKeyConst.ProducerId paramet er. properties.put(PropertyKeyConst.ProducerId, "The original PID-XXX or the GID-XXX"); // When you create a consumer, you must set the PropertyKeyConst.ConsumerId paramet er. properties.put(PropertyKeyConst.ConsumerId, "The original CID-XXX or the GID-XXX");
 ```
 
-#### Transport protocol and character
+#### 4.1.4 Transport protocol and character encoding
 
 **encoding**
 
@@ -7948,9 +8270,9 @@ determine whether to use the encrypted transport layer link. The startup command
 **Dtls.enable=true**. By default, TLS links are disabled. If you set the value to true, encrypted
 transport layer links are enabled.
 
-#### Common classes and methods
+#### 4.1.5 Common classes and methods
 
-##### PropertyKeyConst
+##### 4.1.5.1 PropertyKeyConst
 
 The following table lists the main fields of this class.
 
@@ -7972,9 +8294,9 @@ The following table lists the main fields of this class.
 | shardingKey | String | - | The partition key that is used to determine the partitions to which ordered messages are distributed. |
 | suspendTimeMillis | String | 3000 | The retry interval for ordered messages that fail to be consumed. Unit: milliseconds. |
 
-##### ONSFactory
+##### 4.1.5.2 ONSFactory
 
-###### createConsumer
+###### 4.1.5.2.1 createConsumer
 
 Syntax: static Consumer createConsumer(Properties properties) Description: You can call this operation to create a consumer instance that consumes multiple types of messages in ApsaraMQ for RocketMQ. These message types include normal messages, scheduled messages, delayed messages, and transactional messages. Request parameter
 
@@ -7990,7 +8312,7 @@ Response parameter
 |---|---|
 | Consumer | The consumer instance that consumes multiple types of messages in ApsaraMQ for RocketMQ. These message types include normal messages, scheduled messages, transactional messages, and delayed messages. |
 
-###### createBatchConsumer
+###### 4.1.5.2.2 createBatchConsumer
 
 Syntax: static BatchConsumer createBatchConsumer(Properties properties) Description: You can call this operation to create consumer instances in ApsaraMQ for RocketMQ (RocketMQ) in batches. Request parameters:
 
@@ -8004,7 +8326,7 @@ Response:
 |---|---|
 | BatchConsumer | BatchConsumer |
 
-###### createOrderedConsumer
+###### 4.1.5.2.3 createOrderedConsumer
 
 Syntax: static OrderConsumer createOrderedConsumer(Properties properties) Description: You can call this operation to create a consumer instance for consuming ordered messages in ApsaraMQ for RocketMQ (RocketMQ). Request parameters:
 
@@ -8018,7 +8340,7 @@ Response:
 |---|---|
 | OrderConsumer | The consumer instance of ordered messages in RocketMQ. |
 
-###### createOrderProducer
+###### 4.1.5.2.4 createOrderProducer
 
 Syntax: static OrderProducer createOrderProducer(Properties properties) Description: You can call this operation to create a producer instance for sending ordered messages in ApsaraMQ for RocketMQ (RocketMQ). Request parameters:
 
@@ -8032,7 +8354,7 @@ Response:
 |---|---|
 | OrderProducer | The producer instance of ordered messages in RocketMQ. |
 
-###### createProducer
+###### 4.1.5.2.5 createProducer
 
 Syntax: static Producer createProducer(Properties properties) Description: You can call this operation to create a producer instance that publishes normal messages, scheduled messages, and delayed messages in ApsaraMQ for RocketMQ. Request parameter
 
@@ -8046,7 +8368,7 @@ Response parameter
 |---|---|
 | Producer | The producer instance that publishes normal messages, scheduled messages, and delayed messages in ApsaraMQ for RocketMQ. |
 
-###### createTransactionProducer
+###### 4.1.5.2.6 createTransactionProducer
 
 Syntax: static TransactionProducer createTransactionProducer(Properties properties, LocalTransactionChecker checker) Description: You can call this operation to create a producer instance for sending distributed transactional messages in ApsaraMQ for RocketMQ (RocketMQ). Request parameters:
 
@@ -8063,17 +8385,17 @@ Response:
 |---|---|
 | TransactionProducer | The producer instance of transactional messages in RocketMQ. |
 
-##### Message
+##### 4.1.5.3 Message
 
-###### Overview
+###### 4.1.5.3.1 Overview
 
 It is a message that you want to send. A valid message must contain the topic, body, optional tags, and message key. Note: The length of the custom key-value pair for a message is not constrained, but all custom key-value pairs cannot exceed 32,767 bytes after they are serialized.
 
-###### Default message construction
+###### 4.1.5.3.2 Default message construction
 
 Syntax: Message() Description: You can call this operation to create a message by using the default constructor. Request parameters: none
 
-###### Message construction by using
+###### 4.1.5.3.3 Message construction by using parameters (1)
 
 **parameters (1)**
 
@@ -8088,7 +8410,7 @@ Syntax: public Message(String topic, String tag, String key, byte body) Descript
 | key | String | The key of the message. |
 | body | byte | The message body. It cannot exceed 4 MB by default, including message attributes that cannot exceed 8 KB. For more information about the message body, see the cluster deployment documentation. |
 
-###### Message construction by using
+###### 4.1.5.3.4 Message construction by using parameters (2)
 
 **parameters (2)**
 
@@ -8100,7 +8422,7 @@ Syntax: public Message(String topic, String tags, byte body) Description: You ca
 | tags | String | The message tag, which must be a valid identifier. The tag must be as short as possible and easy to understand. |
 | body | byte | The message body. It cannot exceed 4 MB by default, including message attributes that cannot exceed 8 KB. For more information about the message body, see the cluster deployment documentation. |
 
-###### putUserProperties
+###### 4.1.5.3.5 putUserProperties
 
 Syntax: public void putUserProperties(String key, String value) Description: You can call this operation to add a custom property key-value pair that can be obtained when the message is consumed. Request parameters:
 
@@ -8111,7 +8433,7 @@ Syntax: public void putUserProperties(String key, String value) Description: You
 
 Response: none
 
-###### getUserProperties
+###### 4.1.5.3.6 getUserProperties
 
 Syntax: public String getUserProperties(String key) Description: You can call this operation to obtain the custom property value. Request parameters:
 
@@ -8125,7 +8447,7 @@ Response:
 |---|---|
 | String | The custom property value. |
 
-###### getTopic
+###### 4.1.5.3.7 getTopic
 
 Syntax: public String getTopic() Description: You can call this operation to obtain the topic of the messages. Request parameters: none Response:
 
@@ -8133,7 +8455,7 @@ Syntax: public String getTopic() Description: You can call this operation to obt
 |---|---|
 | String | The topic of the messages. |
 
-###### setTopic
+###### 4.1.5.3.8 setTopic
 
 Syntax: public void setTopic(String topic) Description: You can call this operation to set the topic of the messages. Request parameters:
 
@@ -8143,7 +8465,7 @@ Syntax: public void setTopic(String topic) Description: You can call this operat
 
 Response: none
 
-###### getTag
+###### 4.1.5.3.9 getTag
 
 Syntax: public String getTag() Description: You can call this operation to obtain the message tag. Request parameters: none Response:
 
@@ -8151,7 +8473,7 @@ Syntax: public String getTag() Description: You can call this operation to obtai
 |---|---|
 | String | The tag of the message. |
 
-###### setTag
+###### 4.1.5.3.10 setTag
 
 Syntax: public void setTag(String tag) Sy a pubc o dse ag(S gag) Description: You can call this operation to set the message tag. Request parameters:
 
@@ -8161,7 +8483,7 @@ Syntax: public void setTag(String tag) Sy a pubc o dse ag(S gag) Description: Yo
 
 Response: none
 
-###### getKey
+###### 4.1.5.3.11 getKey
 
 Description: You can call this operation to obtain the message key. Syntax: public String getKey() Request parameters: none Response:
 
@@ -8169,7 +8491,7 @@ Description: You can call this operation to obtain the message key. Syntax: publ
 |---|---|
 | String | The key of the message. |
 
-###### setKey
+###### 4.1.5.3.12 setKey
 
 Syntax: public void setKey(String key) Description: You can call this operation to set the message key. Request parameters:
 
@@ -8179,7 +8501,7 @@ Syntax: public void setKey(String key) Description: You can call this operation 
 
 Response: none
 
-###### getMsgID
+###### 4.1.5.3.13 getMsgID
 
 Syntax: public String getMsgID() Description: You can call this operation to obtain the message ID. Request parameters: none Response:
 
@@ -8187,7 +8509,7 @@ Syntax: public String getMsgID() Description: You can call this operation to obt
 |---|---|
 | String | The ID of the message. |
 
-###### setMsgID
+###### 4.1.5.3.14 setMsgID
 
 Syntax: public void setMsgID(String msgid) Description: You can call this operation to set the message ID. Request parameters:
 
@@ -8199,7 +8521,7 @@ Syntax: public void setMsgID(String msgid) Description: You can call this operat
 
 Response: none
 
-###### getReconsumeTimes
+###### 4.1.5.3.15 getReconsumeTimes
 
 Syntax: public int getReconsumeTimes() Description: You can call this operation to obtain the number of retries after a message has failed to be consumed. Request parameters: none Response:
 
@@ -8207,7 +8529,7 @@ Syntax: public int getReconsumeTimes() Description: You can call this operation 
 |---|---|
 | String | The number of retries. |
 
-###### setReconsumeTimes
+###### 4.1.5.3.16 setReconsumeTimes
 
 Syntax: public void setReconsumeTimes(int value) Description: You can call this operation to set the number of retries to consume a message. Request parameters:
 
@@ -8217,7 +8539,7 @@ Syntax: public void setReconsumeTimes(int value) Description: You can call this 
 
 Response: none
 
-###### getBornTimestamp
+###### 4.1.5.3.17 getBornTimestamp
 
 Syntax: public long getBornTimestamp() Description: You can call this operation to obtain the message production time. Request parameters: none Response:
 
@@ -8225,7 +8547,7 @@ Syntax: public long getBornTimestamp() Description: You can call this operation 
 |---|---|
 | String | The production time of the message. |
 
-###### setBornTimestamp
+###### 4.1.5.3.18 setBornTimestamp
 
 Syntax: public void setBornTimestamp(long value) Description: You can call this operation to set the message production time. Request parameters:
 
@@ -8235,7 +8557,7 @@ Syntax: public void setBornTimestamp(long value) Description: You can call this 
 
 Response: none
 
-###### getBornHost
+###### 4.1.5.3.19 getBornHost
 
 Syntax: public String getBornHost() Description: You can call this operation to retrieve the message production host. Request parameters: none Response:
 
@@ -8243,7 +8565,7 @@ Syntax: public String getBornHost() Description: You can call this operation to 
 |---|---|
 | String | The host that produced the message. |
 
-###### setBornHost
+###### 4.1.5.3.20 setBornHost
 
 Syntax: public void setBornHost(String value) Description: You can call this operation to set the message production host. Request parameters:
 
@@ -8253,7 +8575,7 @@ Syntax: public void setBornHost(String value) Description: You can call this ope
 
 Response: none
 
-###### getStartDeliverTime
+###### 4.1.5.3.21 getStartDeliverTime
 
 Syntax: public long getStartDeliverTime() Description: You can call this operation to obtain the start time for delivering scheduled messages. Request parameters: none Response:
 
@@ -8261,7 +8583,7 @@ Syntax: public long getStartDeliverTime() Description: You can call this operati
 |---|---|
 | String | The start time for delivering scheduled messages. |
 
-###### setStartDeliverTime
+###### 4.1.5.3.22 setStartDeliverTime
 
 Syntax: public void setStartDeliverTime(long value) Description: You can call this operation to set the delivery time (absolute time) of scheduled messages with a maximum latency of 40 days. Request parameters:
 
@@ -8271,7 +8593,7 @@ Syntax: public void setStartDeliverTime(long value) Description: You can call th
 
 Response: none
 
-###### getShardingKey
+###### 4.1.5.3.23 getShardingKey
 
 Syntax: public long getShardingKey() Description: You can call this operation to obtain the sharding key for ordered messages. Request parameters: none Response:
 
@@ -8279,7 +8601,7 @@ Syntax: public long getShardingKey() Description: You can call this operation to
 |---|---|
 | String | The sharding key for ordered messages. |
 
-###### setShardingKey
+###### 4.1.5.3.24 setShardingKey
 
 Syntax: public void setShardingKey(String value) Description: You can call this operation to set the sharding key for ordered messages. Request parameters:
 
@@ -8289,13 +8611,13 @@ Syntax: public void setShardingKey(String value) Description: You can call this 
 
 Response: none
 
-##### ONSClientException
+##### 4.1.5.4 ONSClientException
 
-###### Default ONSClientException construction
+###### 4.1.5.4.1 Default ONSClientException construction
 
 Syntax: public ONSClientException() Description: Uses the default exception constructor to construct ONSClientException. Request parameters: none
 
-###### ONSClientException construction by
+###### 4.1.5.4.2 ONSClientException construction by using parameters (1)
 
 **using parameters (1)**
 
@@ -8305,7 +8627,7 @@ Syntax: public ONSClientException(String message) Description: Uses the exceptio
 |---|---|---|
 | message | String | The exception information that needs to be exposed. |
 
-###### ONSClientException construction by
+###### 4.1.5.4.3 ONSClientException construction by using parameters (2)
 
 **using parameters (2)**
 
@@ -8315,7 +8637,7 @@ Syntax: public ONSClientException(Throwable cause) Description: Uses the excepti
 |---|---|---|
 | message | String | The exception information that needs to be exposed. |
 
-###### ONSClientException construction by
+###### 4.1.5.4.4 ONSClientException construction by using parameters (3)
 
 **using parameters (3)**
 
@@ -8326,19 +8648,19 @@ Syntax: public ONSClientException(String message, Throwable cause) Description: 
 | message | String | The exception information that needs to be exposed. |
 | cause | Throwable | The exception information that needs to be exposed. |
 
-##### Message sending
+##### 4.1.5.5 Message sending
 
-###### Overview
+###### 4.1.5.5.1 Overview
 
 This topic describes the methods for sending various types of messages in ApsaraMQ for RocketMQ. The following figure shows the methods and parameters for different message types. Figure 1. Methods and parameters for publishing messages
 
-###### SendResult
+###### 4.1.5.5.2 SendResult
 
-###### Default SendResult construction
+###### 4.1.5.5.2.1 Default SendResult construction
 
 Syntax: public SendResult() Description: Uses the default constructor to create a message sending result object. Request parameters: none
 
-###### getMessageId
+###### 4.1.5.5.2.2 getMessageId
 
 Syntax: public long getMessageId() Description: Queries the ID of a message that is sent. Request parameters: none
 
@@ -8346,7 +8668,7 @@ Syntax: public long getMessageId() Description: Queries the ID of a message that
 |---|---|
 | String | The ID of the sent message. |
 
-###### getTopic
+###### 4.1.5.5.2.3 getTopic
 
 Syntax: public String getTopic() Description: Queries the topic to which a message that is sent belongs. Request parameters: none
 
@@ -8354,7 +8676,7 @@ Syntax: public String getTopic() Description: Queries the topic to which a messa
 |---|---|
 | String | The topic of the sent message. |
 
-###### toString
+###### 4.1.5.5.2.4 toString
 
 Syntax: public String toString() Description: Serializes a message sending result. Request parameters: none
 
@@ -8362,13 +8684,13 @@ Syntax: public String toString() Description: Serializes a message sending resul
 |---|---|
 | String | The serialized string of the message sending result. |
 
-###### Producer
+###### 4.1.5.5.3 Producer
 
-###### Overview
+###### 4.1.5.5.3.1 Overview
 
 You can use a producer instance to send regular messages, scheduled messages, or delayed messages. Thread security: All implementation classes of a producer instance are thread-secure. Multiple threads can be used to send messages concurrently. A producer instance can send messages under multiple topics. In normal cases, a producer instance is efficient enough to complete all the message sending tasks by using relevant methods. No more instances need to be created. Regular messages can be sent in reliable synchronous, reliable asynchronous, or one-way mode.
 
-###### send
+###### 4.1.5.5.3.2 send
 
 Syntax: public SendResult send(Message message) Description: Sends a regular message, scheduled message, or delayed message in synchronous mode. The message is sent if no exception is thrown.
 
@@ -8380,7 +8702,7 @@ Syntax: public SendResult send(Message message) Description: Sends a regular mes
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
-###### sendOneway
+###### 4.1.5.5.3.3 sendOneway
 
 Syntax: public void sendOneway(Message message) Description: Sends a regular message, scheduled message, or delayed message in one-way mode. In this mode, if the RocketMQ broker does not respond, you cannot know whether the message is sent to the broker.
 
@@ -8392,7 +8714,7 @@ Syntax: public void sendOneway(Message message) Description: Sends a regular mes
 
 Response parameters: none
 
-###### sendAsync
+###### 4.1.5.5.3.4 sendAsync
 
 Syntax: public void sendAsync(Message message, SendCallback sendCallback) Description: Sends a regular message, scheduled message, or delayed message in asynchronous callback mode.
 
@@ -8403,7 +8725,7 @@ Syntax: public void sendAsync(Message message, SendCallback sendCallback) Descri
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.5.5.3.5 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -8411,7 +8733,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.5.5.3.6 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -8419,17 +8741,17 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.5.5.3.7 start
 
 Syntax: public void start() Description: Enables a producer instance to send messages. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.5.5.3.8 shutdown
 
 Syntax: public void shutdown() Description: Disables a producer instance from sending messages. Request parameters: none Response parameters: none
 
-###### TransactionProducer
+###### 4.1.5.5.4 TransactionProducer
 
-###### send
+###### 4.1.5.5.4.1 send
 
 Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Object arg) Description: Sends a transactional message. The process of sending a transactional message consists of the following three steps: The producer instance first sends a half message to the RocketMQ broker. The producer instance starts a local transaction by using an executor. The RocketMQ broker commits or rolls back the half message that is sent in Step 1 based on the result of the local transaction in Step 2.
 
@@ -8443,7 +8765,7 @@ Syntax: SendResult send(Message message, LocalTransactionExecuter executer, Obje
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
-###### isStarted
+###### 4.1.5.5.4.2 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -8453,7 +8775,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 |---|---|
 
-###### isClosed
+###### 4.1.5.5.4.3 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -8461,15 +8783,15 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.5.5.4.4 start
 
 Syntax: public void start() Description: Enables a producer instance to send transactional messages. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.5.5.4.5 shutdown
 
 Syntax: public void shutdown() Description: Disables a producer instance from sending transactional messages. Request parameters: none Response parameters: none
 
-###### LocalTransactionExecuter
+###### 4.1.5.5.4.6 LocalTransactionExecuter
 
 execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: Starts a local transaction. This method is called by applications.
 
@@ -8485,7 +8807,7 @@ execute Syntax: TransactionStatus execute(Message msg, Object arg) Description: 
 | veloper Guide·SDK reference | Alibaba Cloud Message Queu |
 |---|---|
 
-###### TransactionStatus
+###### 4.1.5.5.4.7 TransactionStatus
 
 The result of a local transaction that corresponds to a half message. The transaction may be in the Commit, Rollback, or unknown state. Enumeration
 
@@ -8495,9 +8817,9 @@ The result of a local transaction that corresponds to a half message. The transa
 | RollbackTransaction | The transaction is rolled back. Then, the RocketMQ broker deletes the half message and does not deliver it to the consumer. |
 | Unknow | The transaction is in the unknown state. Generally, this value is used when you are not sure whether the transaction is successful or fails. The RocketMQ broker periodically checks the transactions that are in the unknown state. |
 
-###### OrderProducer
+###### 4.1.5.5.5 OrderProducer
 
-###### send
+###### 4.1.5.5.5.1 send
 
 Syntax: SendResult send(Message message, String shardingKey) Description: Sends an ordered message.
 
@@ -8510,7 +8832,7 @@ Syntax: SendResult send(Message message, String shardingKey) Description: Sends 
 |---|---|
 | SendResult | The sending result that is returned, including the message ID and topic. |
 
-###### isStarted
+###### 4.1.5.5.5.2 isStarted
 
 Syntax: public boolean isStarted() p () Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -8518,7 +8840,7 @@ Syntax: public boolean isStarted() p () Description: Checks whether an instance 
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.5.5.5.3 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -8526,27 +8848,27 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.5.5.5.4 start
 
 Syntax: public void start() Description: Enables a producer instance to send ordered messages. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.5.5.5.5 shutdown
 
 Syntax: public void shutdown() Description: Disables a producer instance from sending ordered messages. Request parameters: none Response parameters: none
 
-##### Message subscription
+##### 4.1.5.6 Message subscription
 
-###### Overview
+###### 4.1.5.6.1 Overview
 
 This topic describes the methods for subscribing to various types of messages in ApsaraMQ for RocketMQ. The following figure shows the methods and parameters for different message types. Figure 1. Methods and parameters for subscribing to messages
 
-###### Consumer
+###### 4.1.5.6.2 Consumer
 
-###### Overview
+###### 4.1.5.6.2.1 Overview
 
 You can use a consumer instance to subscribe to regular messages, transactional messages, scheduled messages, or delayed messages.
 
-###### subscribe
+###### 4.1.5.6.2.2 subscribe
 
 Syntax: public void subscribe(String topic, String subExpression, MessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages.
 
@@ -8558,7 +8880,7 @@ Syntax: public void subscribe(String topic, String subExpression, MessageListene
 
 Response parameters: none
 
-###### unsubscribe
+###### 4.1.5.6.2.3 unsubscribe
 
 Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
 
@@ -8568,7 +8890,7 @@ Syntax: void unsubscribe(String topic) Description: Cancels the subscription to 
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.5.6.2.4 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -8576,7 +8898,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.5.6.2.5 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -8584,21 +8906,21 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.5.6.2.6 start
 
 Syntax: public void start() Description: Enables a consumer instance. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.5.6.2.7 shutdown
 
 Syntax: public void shutdown() Description: Disables a consumer instance. Request parameters: none Response parameters: none
 
-###### MessageListener
+###### 4.1.5.6.3 MessageListener
 
-###### Overview
+###### 4.1.5.6.3.1 Overview
 
 A consumer registers a message listener to subscribe to messages. Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
 
-###### consume
+###### 4.1.5.6.3.2 consume
 
 Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
 
@@ -8611,9 +8933,9 @@ Syntax: Action consume(Message message, ConsumeContext context) Description: Con
 |---|---|
 | Action | The result of the consumption. Consumption failed: An exception is thrown or Action.ReconsumeLater is returned. Action.ReconsumeLater indicates null. Consumption succeeded: Action.CommitMessage is returned. |
 
-###### Action
+###### 4.1.5.6.4 Action
 
-###### Overview
+###### 4.1.5.6.4.1 Overview
 
 The result of the consumption that is returned for a message. Enumeration
 
@@ -8622,7 +8944,7 @@ The result of the consumption that is returned for a message. Enumeration
 | CommitMessage | String | The message is consumed. The consumer continues to consume the next message. |
 | ReconsumeLater | String | The consumer failed to consume the message. The consumer requests the RocketMQ broker to redeliver the failed message later and continues to consume another message. |
 
-###### valueOf
+###### 4.1.5.6.4.2 valueOf
 
 Syntax: public static Action valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
 
@@ -8641,7 +8963,7 @@ Exceptions
 | IllegalArgumentException | This exception is thrown because the enumerated type does not have an enumerated constant with the specified name. |
 | NullPointerException | This exception is thrown because the value of the request parameter is null. |
 
-###### values
+###### 4.1.5.6.4.3 values
 
 Syntax: public static Action[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
 
@@ -8649,7 +8971,7 @@ Syntax: public static Action[] values() Description: Returns an array of constan
 |---|---|
 | Action[] | The array of constants in the declared order of constants of the enumerated type that is returned. |
 
-###### PropertyValueConst
+###### 4.1.5.6.5 PropertyValueConst
 
 The constant that specifies the consumption mode. Enumeration
 
@@ -8658,13 +8980,13 @@ The constant that specifies the consumption mode. Enumeration
 | BROADCASTING | String | The broadcasting consumption mode. |
 | CLUSTERING | String | The clustering consumption mode. |
 
-###### OrderConsumer
+###### 4.1.5.6.6 OrderConsumer
 
-###### Overview
+###### 4.1.5.6.6.1 Overview
 
 You can use a consumer instance of ordered messages to subscribe to messages in first in, first out (FIFO) order.
 
-###### subscribe
+###### 4.1.5.6.6.2 subscribe
 
 Syntax: void subscribe(String topic, String subExpression, MessageOrderListener listener) Description: Subscribes to ordered messages. Parameters:
 
@@ -8676,7 +8998,7 @@ Syntax: void subscribe(String topic, String subExpression, MessageOrderListener 
 
 Response parameters: none
 
-###### unsubscribe
+###### 4.1.5.6.6.3 unsubscribe
 
 Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
 
@@ -8686,7 +9008,7 @@ Syntax: void unsubscribe(String topic) Description: Cancels the subscription to 
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.5.6.6.4 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -8694,7 +9016,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.5.6.6.5 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -8702,21 +9024,21 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.5.6.6.6 start
 
 Syntax: public void start() Description: Enables a consumer instance. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.5.6.6.7 shutdown
 
 Syntax: public void shutdown() Description: Disables a consumer instance. Request parameters: none Response parameters: none
 
-###### MessageOrderListener
+###### 4.1.5.6.7 MessageOrderListener
 
-###### Overview
+###### 4.1.5.6.7.1 Overview
 
 A consumer registers an ordered message listener to subscribe to ordered messages. Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
 
-###### consume
+###### 4.1.5.6.7.2 consume
 
 Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Description: Consumes messages. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
 
@@ -8731,9 +9053,9 @@ Syntax: OrderAction consume(Message message, ConsumeOrderContext context) Descri
 | OrderAction | The result of the consumption. Consumption failed: An exception is thrown or Action.Suspend is returned. Action.Suspend indicates null. Consumption succeeded: Action.Success is returned. |
 |---|---|
 
-###### OrderAction
+###### 4.1.5.6.8 OrderAction
 
-###### Overview
+###### 4.1.5.6.8.1 Overview
 
 The result of the consumption that is returned for an ordered message. Enumeration
 
@@ -8742,7 +9064,7 @@ The result of the consumption that is returned for an ordered message. Enumerati
 | Success | String | The message is consumed. The consumer continues to consume the next message. |
 | Suspend | String | The consumer failed to consume the message. The current queue is suspended. |
 
-###### valueOf
+###### 4.1.5.6.8.2 valueOf
 
 Syntax: public static OrderAction valueOf(String name) Description: Returns an enumerated constant of an enumerated type with the specified name. The specified string must exactly match the ID that is used to declare the enumerated constant. No extra space is allowed.
 
@@ -8761,7 +9083,7 @@ Exceptions
 | IllegalArgumentException | This exception is thrown because the enumerated type does not have an enumerated constant with the specified name. |
 | NullPointerException | This exception is thrown because the value of the request parameter is null. |
 
-###### values
+###### 4.1.5.6.8.3 values
 
 Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] values() Description: Returns an array of constants in the declared order of constants of an enumerated type. Request parameters: none
 
@@ -8769,13 +9091,13 @@ Syntax:publicstaticOrderAction[]values() Syntax: public static OrderAction[] val
 |---|---|
 | OrderAction[] | The array of constants in the declared order of constants of the enumerated type that is returned. |
 
-###### BatchConsumer
+###### 4.1.5.6.9 BatchConsumer
 
-###### Overview
+###### 4.1.5.6.9.1 Overview
 
 You can use a batch consumer instance to subscribe to multiple messages at a time.
 
-###### subscribe
+###### 4.1.5.6.9.2 subscribe
 
 Syntax: void subscribe(String topic, String subExpression, BatchMessageListener listener) Description: Subscribes to regular messages, transactional messages, scheduled messages, or delayed messages. Parameters:
 
@@ -8787,7 +9109,7 @@ Syntax: void subscribe(String topic, String subExpression, BatchMessageListener 
 
 Response parameters: none
 
-###### unsubscribe
+###### 4.1.5.6.9.3 unsubscribe
 
 Syntax: void unsubscribe(String topic) Description: Cancels the subscription to a specific topic.
 
@@ -8797,7 +9119,7 @@ Syntax: void unsubscribe(String topic) Description: Cancels the subscription to 
 
 Response parameters: none
 
-###### isStarted
+###### 4.1.5.6.9.4 isStarted
 
 Syntax: public boolean isStarted() Description: Checks whether an instance is enabled. Request parameters: none
 
@@ -8805,7 +9127,7 @@ Syntax: public boolean isStarted() Description: Checks whether an instance is en
 |---|---|
 | boolean | Indicates whether the instance is enabled. A value of true indicates that the instance is enabled. A value of false indicates that the instance is not enabled. |
 
-###### isClosed
+###### 4.1.5.6.9.5 isClosed
 
 Syntax: public boolean isClosed() Description: Checks whether an instance is disabled. Request parameters: none
 
@@ -8813,21 +9135,21 @@ Syntax: public boolean isClosed() Description: Checks whether an instance is dis
 |---|---|
 | boolean | Indicates whether the instance is disabled. A value of true indicates that the instance is disabled. A value of false indicates that the instance is not disabled. |
 
-###### start
+###### 4.1.5.6.9.6 start
 
 Syntax: public void start() Description: Enables a consumer instance. Request parameters: none Response parameters: none
 
-###### shutdown
+###### 4.1.5.6.9.7 shutdown
 
 Syntax: public void shutdown() Description: Disables a consumer instance. Request parameters: none Response parameters: none
 
-###### BatchMessageListener
+###### 4.1.5.6.10 BatchMessageListener
 
-###### Overview
+###### 4.1.5.6.10.1 Overview
 
 A consumer registers a batch message listener to consume multiple messages at a time. Thread security requirements: A message listener can be concurrently used by multiple threads of a consumer. You must ensure the security of concurrency.
 
-###### consume
+###### 4.1.5.6.10.2 consume
 
 Syntax: Action consume(Message message, ConsumeContext context) Description: Consumes multiple messages at a time. This method is called by applications. Unstable network conditions such as network jitter may result in message duplication. In this case, the consumer can perform idempotent processing for services that are sensitive to duplicated messages.
 

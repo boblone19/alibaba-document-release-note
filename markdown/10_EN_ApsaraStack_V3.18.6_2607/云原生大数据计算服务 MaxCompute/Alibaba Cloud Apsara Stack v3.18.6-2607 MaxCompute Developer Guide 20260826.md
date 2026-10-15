@@ -3,16 +3,533 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260
 product_version: "V3.18.6_2607"
 doc_version: "20260826"
 pdf_pages: 552
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260826.pdf"
+source_pdf: "7ec3d22d9fa18d33_Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260826.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%20MaxCompute/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20MaxCompute%20Developer%20Guide%2020260826.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Developer Guide 20260826
 
-## Java SDK
+## Table of Contents
 
-### Java SDK
+- 1 Java SDK
+  - 1.1 Java SDK
+  - 1.2 Prerequisites
+    - 1.2.1 Overview
+    - 1.2.2 Obtain an AccessKey pair
+      - 1.2.2.1 Log on to the Apsara Uni-manager Management Console
+      - 1.2.2.2 Obtain the AccessKey pair of an organization
+      - 1.2.2.3 Obtain the AccessKey pair of an Alibaba Cloud account
+    - 1.2.3 Obtain an endpoint
+  - 1.3 Major APIs
+    - 1.3.1 AliyunAccount
+    - 1.3.2 Odps
+    - 1.3.3 Projects
+    - 1.3.4 Project
+    - 1.3.5 SQLTask
+    - 1.3.6 Instances
+    - 1.3.7 Instance
+    - 1.3.8 Tables
+    - 1.3.9 Table
+    - 1.3.10 Resources
+    - 1.3.11 Resource
+    - 1.3.12 Functions
+    - 1.3.13 Function
+    - 1.3.14 Spark Shell
+    - 1.3.15 Spark R
+    - 1.3.16 Spark SQL
+    - 1.3.17 Spark JDBC
+    - 1.3.18 Document APIs
+    - 1.3.19 Search APIs
+    - 1.3.20 CheckPermissionTest
+    - 1.3.21 Volume2
+- 2 SDK for Python
+- 3 MaxCompute SQL
+  - 3.1 Overview
+    - 3.1.1 Scenarios
+    - 3.1.2 Reserved words
+    - 3.1.3 Partitioned tables
+    - 3.1.4 Type conversion
+      - 3.1.4.1 Explicit conversions of data types
+      - 3.1.4.2 Implicit type conversion and its application scope
+      - 3.1.4.3 SQL built-in functions
+      - 3.1.4.4 CASE WHEN
+      - 3.1.4.5 Conversions between the STRING and DATETIME types
+  - 3.2 Operators
+    - 3.2.1 Relational operators
+    - 3.2.2 Arithmetic operators
+    - 3.2.3 Bitwise operators
+    - 3.2.4 Logical operators
+  - 3.3 LOAD
+  - 3.4 DDL statements
+    - 3.4.1 Table operations
+      - 3.4.1.1 Create a table
+      - 3.4.1.2 Drop a table
+      - 3.4.1.3 Rename a table
+      - 3.4.1.4 Change the owner of a table
+      - 3.4.1.5 Modify the comment of a table
+      - 3.4.1.6 Modify the lifecycle settings of a table
+      - 3.4.1.7 Disable or enable the lifecycle feature
+      - 3.4.1.8 Modify the value of LastDataModifiedTime for a table
+      - 3.4.1.9 Modify the clustering attributes of a table
+      - 3.4.1.10 Delete data from a non-partitioned table
+      - 3.4.1.11 Archive table data
+      - 3.4.1.12 Forcibly delete data from a table or partition
+    - 3.4.2 View-based operation
+      - 3.4.2.1 Create a view
+      - 3.4.2.2 Delete a view
+      - 3.4.2.3 Rename a view
+    - 3.4.3 Materialized view operations
+    - 3.4.4 Column and partition operations
+      - 3.4.4.1 Add partitions
+      - 3.4.4.2 Delete a partition
+      - 3.4.4.3 Add columns or comments
+      - 3.4.4.4 Change the name of a column
+      - 3.4.4.5 Modify the comment of a column
+      - 3.4.4.6 Modify the name and comment of a column at the same time
+      - 3.4.4.7 Change LastDataModifiedTime of a non-partitioned table or a partition in a partitioned table.
+      - 3.4.4.8 Modify partition values
+      - 3.4.4.9 Merge partitions
+  - 3.5 DML statements
+    - 3.5.1 INSERT
+      - 3.5.1.1 Update data in a table
+      - 3.5.1.2 Insert data into multiple objects
+      - 3.5.1.3 Insert data into dynamic partitions
+      - 3.5.1.4 VALUES
+    - 3.5.2 SELECT
+      - 3.5.2.1 SELECT operations
+      - 3.5.2.2 Subquery
+      - 3.5.2.3 UNION ALL
+      - 3.5.2.4 JOIN
+      - 3.5.2.5 MAPJOIN hint
+      - 3.5.2.6 SELECT TRANSFORM
+        - 3.5.2.6.1 Overview
+        - 3.5.2.6.2 SELECT TRANSFORM examples
+          - 3.5.2.6.2.1 Call shell scripts
+          - 3.5.2.6.2.2 Call Python scripts
+          - 3.5.2.6.2.3 Call Java scripts
+          - 3.5.2.6.2.4 Call the scripts of other programming languages
+          - 3.5.2.6.2.5 Call scripts in series
+        - 3.5.2.6.3 Performance
+      - 3.5.2.7 GROUPING SETS
+        - 3.5.2.7.1 Overview
+        - 3.5.2.7.2 Example
+        - 3.5.2.7.3 CUBE and ROLLUP
+        - 3.5.2.7.4 GROUPING and GROUPING_ID
+      - 3.5.2.8 UNION, INTERSECT, and EXCEPT
+    - 3.5.3 EXPLAIN
+    - 3.5.4 IF statement
+    - 3.5.5 UPDATE and DELETE
+  - 3.6 Built-in functions
+    - 3.6.1 Mathematical functions
+      - 3.6.1.1 ABS
+      - 3.6.1.2 ACOS
+      - 3.6.1.3 ASIN
+      - 3.6.1.4 ATAN
+      - 3.6.1.5 CEIL
+      - 3.6.1.6 CONV
+      - 3.6.1.7 COS
+      - 3.6.1.8 COSH
+      - 3.6.1.9 COT
+      - 3.6.1.10 EXP
+      - 3.6.1.11 FLOOR
+      - 3.6.1.13 LOG
+      - 3.6.1.14 POW
+      - 3.6.1.15 RAND
+      - 3.6.1.16 ROUND
+      - 3.6.1.17 SIN
+      - 3.6.1.18 SINH
+      - 3.6.1.19 SQRT
+      - 3.6.1.20 TAN
+      - 3.6.1.21 TANH
+      - 3.6.1.22 TRUNC
+      - 3.6.1.23 Additional mathematical functions
+        - 3.6.1.23.1 Usage notes
+        - 3.6.1.23.2 LOG2
+        - 3.6.1.23.3 LOG10
+        - 3.6.1.23.4 BIN
+        - 3.6.1.23.5 HEX
+        - 3.6.1.23.6 UNHEX
+        - 3.6.1.23.7 RADIANS
+        - 3.6.1.23.8 DEGREES
+        - 3.6.1.23.9 SIGN
+        - 3.6.1.23.12 FACTORIAL
+        - 3.6.1.23.13 CBRT
+        - 3.6.1.23.14 SHIFTLEFT
+        - 3.6.1.23.15 SHIFTRIGHT
+        - 3.6.1.23.16 SHIFTRIGHTUNSIGNED
+        - 3.6.1.23.17 FORMAT_NUMBER
+        - 3.6.1.23.18 WIDTH_BUCKET
+    - 3.6.2 String functions
+      - 3.6.2.1 CHAR_MATCHCOUNT
+      - 3.6.2.2 CHR
+      - 3.6.2.3 CONCAT
+      - 3.6.2.4 INSTR
+      - 3.6.2.5 IS_ENCODING
+      - 3.6.2.6 KEYVALUE
+      - 3.6.2.7 LENGTH
+      - 3.6.2.8 LENGTHB
+      - 3.6.2.10 PARSE_URL
+      - 3.6.2.11 REGEXP_EXTRACT
+      - 3.6.2.12 REGEXP_INSTR
+      - 3.6.2.13 REGEXP_SUBSTR
+      - 3.6.2.14 REGEXP_COUNT
+      - 3.6.2.15 REGEXP_REPLACE
+      - 3.6.2.16 SPLIT_PART
+      - 3.6.2.17 SUBSTR
+      - 3.6.2.18 TOLOWER
+      - 3.6.2.19 TOUPPER
+      - 3.6.2.20 TO_CHAR
+      - 3.6.2.21 TRIM
+      - 3.6.2.22 LTRIM
+      - 3.6.2.23 RTRIM
+      - 3.6.2.24 REVERSE
+      - 3.6.2.25 SPACE
+      - 3.6.2.26 REPEAT
+      - 3.6.2.27 ASCII
+      - 3.6.2.28 Additional string functions
+        - 3.6.2.28.1 Usage notes
+        - 3.6.2.28.2 CONCAT_WS
+        - 3.6.2.28.3 LPAD
+        - 3.6.2.28.4 RPAD
+        - 3.6.2.28.5 REPLACE
+        - 3.6.2.28.6 SOUNDEX
+        - 3.6.2.28.7 SUBSTRING_INDEX
+        - 3.6.2.28.8 TRANSLATE
+        - 3.6.2.28.9 URL_ENCODE
+        - 3.6.2.28.10 URL_DECODE
+        - 3.6.2.28.11 JSON_TUPLE
+        - 3.6.2.28.12 FROM_JSON
+        - 3.6.2.28.13 TO_JSON
+    - 3.6.3 Date functions
+      - 3.6.3.1 DATEADD
+      - 3.6.3.2 DATEDIFF
+      - 3.6.3.3 DATEPART
+      - 3.6.3.4 DATETRUNC
+      - 3.6.3.5 GETDATE
+      - 3.6.3.6 ISDATE
+      - 3.6.3.7 LASTDAY
+      - 3.6.3.8 TO_DATE
+      - 3.6.3.9 TO_CHAR
+      - 3.6.3.10 UNIX_TIMESTAMP
+      - 3.6.3.11 FROM_UNIXTIME
+      - 3.6.3.12 WEEKDAY
+      - 3.6.3.13 WEEKOFYEAR
+      - 3.6.3.14 Additional date functions
+        - 3.6.3.14.1 Usage notes
+        - 3.6.3.14.2 YEAR
+        - 3.6.3.14.3 QUARTER
+        - 3.6.3.14.4 MONTH
+        - 3.6.3.14.5 DAY
+        - 3.6.3.14.6 DAYOFMONTH
+        - 3.6.3.14.7 HOUR
+        - 3.6.3.14.8 MINUTE
+        - 3.6.3.14.9 SECOND
+        - 3.6.3.14.10 FROM_UTC_TIMESTAMP
+        - 3.6.3.14.11 CURRENT_TIMESTAMP
+        - 3.6.3.14.12 ADD_MONTHS
+        - 3.6.3.14.13 LAST_DAY
+        - 3.6.3.14.14 NEXT_DAY
+        - 3.6.3.14.15 MONTHS_BETWEEN
+        - 3.6.3.14.16 EXTRACT
+    - 3.6.4 Window functions
+      - 3.6.4.1 Overview
+      - 3.6.4.2 COUNT
+      - 3.6.4.3 AVG
+      - 3.6.4.4 MAX
+      - 3.6.4.5 MIN
+      - 3.6.4.6 MEDIAN
+      - 3.6.4.7 STDDEV
+      - 3.6.4.8 STDDEV_SAMP
+      - 3.6.4.9 SUM
+      - 3.6.4.10 DENSE_RANK
+      - 3.6.4.11 RANK
+      - 3.6.4.12 LAG
+      - 3.6.4.13 LEAD
+      - 3.6.4.14 PERCENT_RANK
+      - 3.6.4.15 ROW_NUMBER
+      - 3.6.4.16 CLUSTER_SAMPLE
+      - 3.6.4.17 NTILE
+      - 3.6.4.18 NTH_VALUE
+      - 3.6.4.19 CUME_DIST
+      - 3.6.4.20 FIRST_VALUE
+      - 3.6.4.21 LAST_VALUE
+    - 3.6.5 Aggregate functions
+      - 3.6.5.1 Expressions of filter conditions in aggregate functions
+      - 3.6.5.2 COUNT
+      - 3.6.5.3 COUNT_IF
+      - 3.6.5.4 AVG
+      - 3.6.5.5 MAX
+      - 3.6.5.6 MIN
+      - 3.6.5.7 MEDIAN
+      - 3.6.5.8 STDDEV
+      - 3.6.5.9 STDDEV_SAMP
+      - 3.6.5.10 SUM
+      - 3.6.5.11 WM_CONCAT
+      - 3.6.5.12 PERCENTILE
+      - 3.6.5.13 Additional aggregate functions
+        - 3.6.5.13.1 Usage notes
+        - 3.6.5.13.2 COLLECT_LIST
+        - 3.6.5.13.3 COLLECT_SET
+        - 3.6.5.13.4 VARIANCE/VAR_POP
+        - 3.6.5.13.5 VAR_SAMP
+        - 3.6.5.13.6 COVAR_POP
+        - 3.6.5.13.7 COVAR_SAMP
+        - 3.6.5.13.8 ANY_VALUE
+        - 3.6.5.13.9 NUMERIC_HISTOGRAM
+        - 3.6.5.13.10 PERCENTILE_APPROX
+        - 3.6.5.13.11 APPROX_DISTINCT
+    - 3.6.6 Other functions
+      - 3.6.6.1 ARRAY
+      - 3.6.6.2 ARRAY_CONTAINS
+      - 3.6.6.3 CAST
+      - 3.6.6.4 COALESCE
+      - 3.6.6.5 DECODE
+      - 3.6.6.6 EXPLODE
+      - 3.6.6.7 GET_IDCARD_AGE
+      - 3.6.6.8 GET_IDCARD_BIRTHDAY
+      - 3.6.6.9 GET_IDCARD_SEX
+      - 3.6.6.10 GREATEST
+      - 3.6.6.11 INDEX
+      - 3.6.6.12 MAX_PT
+      - 3.6.6.13 ORDINAL
+      - 3.6.6.14 LEAST
+      - 3.6.6.15 SIZE
+      - 3.6.6.16 SPLIT
+      - 3.6.6.17 STR_TO_MAP
+      - 3.6.6.18 UUID
+      - 3.6.6.19 UNIQUE_ID
+      - 3.6.6.20 SAMPLE
+      - 3.6.6.21 CASE WHEN expression
+      - 3.6.6.23 Additional functions
+        - 3.6.6.23.1 Usage notes
+        - 3.6.6.23.2 MAP
+        - 3.6.6.23.3 MAP_KEYS
+        - 3.6.6.23.4 MAP_VALUES
+        - 3.6.6.23.5 SORT_ARRAY
+        - 3.6.6.23.6 POSEXPLODE
+        - 3.6.6.23.7 STRUCT
+        - 3.6.6.23.8 NAMED_STRUCT
+        - 3.6.6.23.9 INLINE
+        - 3.6.6.23.10 BETWEEN AND expression
+        - 3.6.6.23.11 NVL
+        - 3.6.6.23.12 TABLE_EXISTS
+        - 3.6.6.23.13 PARTITION_EXISTS
+  - 3.7 UDFs
+    - 3.7.1 Java UDFs
+      - 3.7.1.1 Overview
+      - 3.7.1.2 Parameters and return value types
+      - 3.7.1.3 UDF
+      - 3.7.1.4 UDAF
+      - 3.7.1.5 UDTFs
+        - 3.7.1.5.1 Overview
+        - 3.7.1.5.2 Examples of using UDTFs
+    - 3.7.2 Python UDFs
+      - 3.7.2.1 Prerequisites
+      - 3.7.2.2 Usage limits
+      - 3.7.2.3 Third-party libraries
+      - 3.7.2.4 Parameters and return value types
+      - 3.7.2.5 UDF
+      - 3.7.2.6 UDAF
+      - 3.7.2.7 UDTF
+      - 3.7.2.8 Reference resources
+    - 3.7.3 Python 3 UDF
+    - 3.7.4 SQL Function
+    - 3.7.5 Embedded UDF
+      - 3.7.5.1 Background
+      - 3.7.5.2 Feature overview
+      - 3.7.5.3 Usage limits
+      - 3.7.5.4 Examples
+  - 3.8 UDTs
+    - 3.8.1 Common scenarios and usage limits
+    - 3.8.2 Feature overview
+    - 3.8.3 Implementation principles and features
+    - 3.8.4 Benefits
+    - 3.8.5 Performance advantages
+    - 3.8.6 Security advantages
+    - 3.8.7 More examples
+      - 3.8.7.1 Java array examples
+      - 3.8.7.2 JSON examples
+      - 3.8.7.3 Complex type operation examples
+      - 3.8.7.4 Aggregate operation examples
+      - 3.8.7.5 Table-valued function examples
+  - 3.9 UDJ
+    - 3.9.1 UDJ background
+    - 3.9.2 Examples of using UDJ
+      - 3.9.2.1 Cross join operations by using UDJ
+      - 3.9.2.2 UDJ pre-sorting
+    - 3.9.3 Performance benefits
+  - 3.10 Parameterized views
+  - 3.11 CLONE TABLE
+  - 3.12 Geographic functions
+    - 3.12.1 Usage notes
+    - 3.12.2 Constructors
+      - 3.12.2.1 ST_AsBinary
+      - 3.12.2.2 ST_AsGeoJson
+      - 3.12.2.3 ST_AsJson
+      - 3.12.2.4 ST_AsShape
+      - 3.12.2.5 ST_AsText
+      - 3.12.2.6 ST_GeomCollection
+      - 3.12.2.7 ST_GeomFromGeoJson
+      - 3.12.2.8 ST_GeomFromJSON
+      - 3.12.2.9 ST_GeomFromShape
+      - 3.12.2.10 ST_GeomFromText
+      - 3.12.2.11 ST_GeomFromWKB
+      - 3.12.2.12 ST_GeometryType
+      - 3.12.2.13 ST_LineString
+      - 3.12.2.14 ST_LineFromWKB
+      - 3.12.2.15 ST_MultiLineString
+      - 3.12.2.16 ST_MLineFromWKB
+      - 3.12.2.17 ST_MultiPoint
+      - 3.12.2.18 ST_MPointFromWKB
+      - 3.12.2.19 ST_MultiPolygon
+      - 3.12.2.20 ST_MPolyFromWKB
+      - 3.12.2.21 ST_Point
+      - 3.12.2.22 ST_PointFromWKB
+      - 3.12.2.23 ST_PointZ
+      - 3.12.2.24 ST_Polygon
+      - 3.12.2.25 ST_PolyFromWKB
+      - 3.12.2.26 ST_SetSRID
+    - 3.12.3 Accessors
+      - 3.12.3.1 ST_Area
+      - 3.12.3.2 ST_Centroid
+      - 3.12.3.3 ST_CoordDim
+      - 3.12.3.4 ST_Dimension
+      - 3.12.3.5 ST_Distance
+      - 3.12.3.6 ST_GeodesicLengthWGS84
+      - 3.12.3.7 ST_GeometryN
+      - 3.12.3.9 ST_IsClosed
+      - 3.12.3.10 ST_IsEmpty
+      - 3.12.3.11 ST_IsMeasured
+      - 3.12.3.12 ST_IsSimple
+      - 3.12.3.13 ST_IsRing
+      - 3.12.3.14 ST_Length
+      - 3.12.3.16 ST_MaxM
+      - 3.12.3.17 ST_MinM
+      - 3.12.3.21 ST_MaxX
+      - 3.12.3.22 ST_MaxY
+      - 3.12.3.23 ST_MaxZ
+      - 3.12.3.24 ST_MinX
+      - 3.12.3.25 ST_MinY
+      - 3.12.3.26 ST_MinZ
+      - 3.12.3.27 ST_NumGeometries
+      - 3.12.3.28 ST_NumInteriorRing
+      - 3.12.3.29 ST_NumPoints
+      - 3.12.3.30 ST_PointN
+      - 3.12.3.31 ST_StartPoint
+      - 3.12.3.32 ST_EndPoint
+      - 3.12.3.33 ST_SRID
+    - 3.12.4 Operations
+      - 3.12.4.1 ST_Aggr_ConvexHull
+      - 3.12.4.2 ST_Aggr_Intersection
+      - 3.12.4.3 ST_Aggr_Union
+      - 3.12.4.4 ST_Bin
+      - 3.12.4.5 ST_BinEnvelope
+      - 3.12.4.6 ST_Boundary
+      - 3.12.4.7 ST_Buffer
+      - 3.12.4.8 ST_ConvexHull
+      - 3.12.4.9 ST_Difference
+      - 3.12.4.10 ST_Envelope
+      - 3.12.4.11 ST_ExteriorRing
+      - 3.12.4.12 ST_InteriorRingN
+      - 3.12.4.13 ST_Intersection
+      - 3.12.4.14 ST_SymmetricDiff
+      - 3.12.4.15 ST_Union
+    - 3.12.5 Relationship tests
+      - 3.12.5.1 ST_Contains
+      - 3.12.5.2 ST_Crosses
+      - 3.12.5.3 ST_Disjoint
+      - 3.12.5.4 ST_EnvIntersects
+      - 3.12.5.5 ST_Equals
+      - 3.12.5.6 ST_Intersects
+      - 3.12.5.7 ST_Overlaps
+      - 3.12.5.8 ST_Relate
+      - 3.12.5.9 ST_Touches
+      - 3.12.5.10 ST_Within
+    - 3.12.6 Geohash index functions
+      - 3.12.6.1 ST_GeoHash
+      - 3.12.6.2 ST_PointFromGeoHash
+      - 3.12.6.3 ST_EnvelopeFromGeoHash
+      - 3.12.6.4 ST_GeoHashNeighbours
+    - 3.12.7 S2 mesh functions
+      - 3.12.7.1 ST_S2CellIdsFromGeom
+      - 3.12.7.2 ST_S2CellIdsFromText
+      - 3.12.7.3 ST_S2CellCenterPoint
+      - 3.12.7.4 ST_S2CellNeighbours
+    - 3.12.8 Geodesic functions
+      - 3.12.8.1 ST_AreaWGS84
+      - 3.12.8.2 ST_DistanceWGS84
+      - 3.12.8.3 ST_BufferWGS84
+      - 3.12.8.4 ST_GeodesicDistance
+      - 3.12.8.5 ST_Distance_Sphere
+      - 3.12.8.6 ST_Area_Sphere
+    - 3.12.9 R-tree index functions
+      - 3.12.9.1 ST_BuildRTreeIndex
+      - 3.12.9.2 ST_ContainsFromRTree
+      - 3.12.9.3 ST_CrossesFromRTree
+      - 3.12.9.4 ST_EqualsFromRTree
+      - 3.12.9.5 ST_IntersectsFromRTree
+      - 3.12.9.6 ST_OverlapsFromRTree
+      - 3.12.9.7 ST_TouchesFromRTree
+      - 3.12.9.8 ST_WithinFromRTree
+      - 3.12.9.9 ST_KNNFromRTree
+    - 3.12.10 Other functions
+      - 3.12.10.1 ST_IsValid
+      - 3.12.10.2 ST_Transform
+  - 3.13 MaxCompute Hash Clustering
+    - 3.13.1 Feature background
+    - 3.13.2 Descriptions
+      - 3.13.2.1 Enable Hash Clustering
+      - 3.13.2.2 Create a hash-clustered table
+      - 3.13.2.3 Modify table attributes
+      - 3.13.2.4 View and verify table attributes
+    - 3.13.3 Benefits
+      - 3.13.3.1 Bucket pruning and index optimization
+      - 3.13.3.2 Aggregation optimization
+      - 3.13.3.3 Storage optimization
+    - 3.13.4 ShuffleRemove
+    - 3.13.5 Usage limits
+  - 3.14 Common MaxCompute SQL parameter settings
+    - 3.14.1 Map configurations
+    - 3.14.2 Join configurations
+    - 3.14.3 Reduce configurations
+    - 3.14.4 UDF configurations
+    - 3.14.5 MapJoin configurations
+    - 3.14.6 Configurations of data skew
+  - 3.15 MapReduce-to-SQL conversion for execution
+    - 3.15.1 Overview
+    - 3.15.2 Configure the MaxCompute client
+    - 3.15.3 Configure running settings in DataWorks
+    - 3.15.4 View details
+    - 3.15.5 Perform operations on the distributed file system
+  - 3.16 Analysis of the mapping between SQL input and output fields
+    - 3.16.1 Overview
+    - 3.16.2 Usage notes
+  - 3.17 Common MaxCompute SQL errors and solutions
+    - 3.17.1 Data skew
+      - 3.17.1.1 Overview
+      - 3.17.1.2 GROUP BY data skew
+      - 3.17.1.3 DISTRIBUTE BY data skew
+      - 3.17.1.4 Data skew caused by JOIN operations
+      - 3.17.1.5 Data skew caused by multiple DISTINCT operations
+      - 3.17.1.6 Data skew caused by misuse of dynamic partitions
+      - 3.17.1.7 Use SKEWJOIN HINT to avoid skewed hot key values
+    - 3.17.2 Insufficient computing resources
+    - 3.17.3 Methods to optimize storage in MaxCompute SQL
+    - 3.17.4 UDF OOM
+  - 3.18 Limits of MaxCompute SQL statements
+  - 3.19 Appendix
+    - 3.19.1 Escape characters
+    - 3.19.2 LIKE usage
+    - 3.19.3 Regular expressions
+    - 3.19.4 Reserved words and keywords
+    - 3.19.5 Settings of new data types
+    - 3.19.6 ACID semantics of concurrent write operations in MaxCompute
+- 4 Open source features of MaxCompute
+
+## 1 Java SDK
+
+### 1.1 Java SDK
 
 This document introduces the MaxCompute Java SDK packages and links to the complete API reference. Complete API reference for MaxCompute Use Maven to manage the SDK version. The following shows an example configuration.
 
@@ -42,15 +559,15 @@ For the SDK packages provided for MaxCompute, if you use a MaxCompute version ea
 **0.30.9**. If you use MaxCompute V3.12.0 or later, download and use SDK package version
 **0.36.2**.
 
-### Prerequisites
+### 1.2 Prerequisites
 
-#### Overview
+#### 1.2.1 Overview
 
 Before you use MaxCompute SDKs, you must prepare the required environment. Create an Alibaba Cloud account that is authorized to access MaxCompute and obtain an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. Obtain the endpoint of MaxCompute.
 
-#### Obtain an AccessKey pair
+#### 1.2.2 Obtain an AccessKey pair
 
-##### Log on to the Apsara Uni-manager
+##### 1.2.2.1 Log on to the Apsara Uni-manager Management Console
 
 **Management Console**
 
@@ -79,7 +596,7 @@ operations in the following scenarios: You log on to the Apsara Uni-manager Mana
 For more information, see the **Manage MFA** section in **Apsara Uni-manager**
 **Management Console User Guide**.
 
-##### Obtain the AccessKey pair of an
+##### 1.2.2.2 Obtain the AccessKey pair of an organization
 
 **organization**
 
@@ -103,7 +620,7 @@ the icon on the right of an organization.
 
 An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
 
-##### Obtain the AccessKey pair of an Alibaba
+##### 1.2.2.3 Obtain the AccessKey pair of an Alibaba Cloud account
 
 **Cloud account**
 
@@ -120,7 +637,7 @@ click **User Information**.
 
 The AccessKey pair provides full access to cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
 
-#### Obtain an endpoint
+#### 1.2.3 Obtain an endpoint
 
 This topic describes how to obtain the endpoint of MaxCompute in the Apsara Uni-manager Operations Console.
 
@@ -158,9 +675,9 @@ curl -l "http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?c
 8. Find the endpoint of MaxCompute based on the service ID (odps-service-frontend) and the
 key value (odps_frontend_server.endpoint) of MaxCompute.
 
-### Major APIs
+### 1.3 Major APIs
 
-#### AliyunAccount
+#### 1.3.1 AliyunAccount
 
 This topic describes the AliyunAccount API provided by SDK for Java. You can call this API to obtain your Alibaba Cloud account. The input parameters are
 **accessId** and **accessKey**. This API is also considered a class that is used to initialize
@@ -171,7 +688,7 @@ MaxCompute.
 **accessId** indicates the AccessKey ID that uniquely identifies an Alibaba
 Cloud account. ************* indicates the AccessKey secret that is used to authenticate the identity of the account.
 
-#### Odps
+#### 1.3.2 Odps
 
 This topic describes the Odps API provided by SDK for Java. This API is also considered a class that is the entry point of MaxCompute SDK for Java. This class allows you to access all types of objects in MaxCompute, including projects, tables, resources, functions, and instances. You can pass this class into the AliyunAccount instance to construct a MaxCompute object. Sample code:
 
@@ -181,7 +698,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Projects
+#### 1.3.3 Projects
 
 This topic describes the Projects API provided by SDK for Java. This API is a collection of all projects in MaxCompute. Sample code:
 
@@ -189,11 +706,11 @@ This topic describes the Projects API provided by SDK for Java. This API is a co
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Project p = odps.projects().get("my_exists"); p.reload(); Map<String, String> properties = prj.getProperties(); ...
 ```
 
-#### Project
+#### 1.3.4 Project
 
 This topic describes the Project API provided by SDK for Java. This API provides descriptions of projects. You can call the Projects API to obtain the projects.
 
-#### SQLTask
+#### 1.3.5 SQLTask
 
 This topic describes the SQLTask API provided by SDK for Java. You can call this API to run and process SQL tasks. You can use SQLTask.run to run SQL tasks. SQLTask.run returns an instance, and obtains the running status and results of SQL tasks from the instance. Sample code:
 
@@ -213,7 +730,7 @@ Map<String, String> results = instance.getTaskResults(); Map<String, TaskStatus>
 
 To create a table, you must call the SQLTask API instead of the Table API. In this case, you must pass the CREATE TABLE statement into SQLTask.
 
-#### Instances
+#### 1.3.6 Instances
 
 This topic describes the Instances API provided by SDK for Java. This API is a collection of all instances in MaxCompute. Sample code:
 
@@ -223,7 +740,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Instance
+#### 1.3.7 Instance
 
 This topic describes the Instance API provided by SDK for Java. This API provides descriptions of instances. You can call the Instances API to obtain the instances. Sample code:
 
@@ -243,7 +760,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 ... TaskSummary summary = instance.getTaskSummary("instance name"); String s = summary.getSummaryText();
 ```
 
-#### Tables
+#### 1.3.8 Tables
 
 This topic describes the Tables API provided by SDK for Java. This API is a collection of tables in MaxCompute. Sample code:
 
@@ -253,7 +770,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Table
+#### 1.3.9 Table
 
 This topic describes the Table API provided by SDK for Java. This API provides descriptions of tables in MaxCompute. You can call the Tables API to obtain the tables. Sample code:
 
@@ -261,7 +778,7 @@ This topic describes the Table API provided by SDK for Java. This API provides d
 Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps = new Odps(account); String odpsUrl = "<your odps endpoint>"; odps.setEndpoint(odpsUrl); Table t = odps.tables().get("table name"); t.reload(); Partition part = t.getPartition(new PartitionSpec(tableSpec[1])); part.reload(); ...
 ```
 
-#### Resources
+#### 1.3.10 Resources
 
 This topic describes the Resources API provided by SDK for Java. This API is a collection of resources in MaxCompute. Sample code:
 
@@ -271,7 +788,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Resource
+#### 1.3.11 Resource
 
 This topic describes the Resource API provided by SDK for Java. This API provides descriptions of resources. You can call the Resources API to obtain the resources. Sample code:
 
@@ -297,7 +814,7 @@ The following sample code shows how to create a table resource:
 TableResource resource = new TableResource(tableName, tablePrj, partitionSpec); //resource.setName(INVALID_USER_TABLE); resource.setName("table_resource_name"); odps.resources().update(projectName, resource);
 ```
 
-#### Functions
+#### 1.3.12 Functions
 
 This topic describes the Functions API provided by SDK for Java. This API is a collection of functions in MaxCompute. Sample code:
 
@@ -307,7 +824,7 @@ Account account = new AliyunAccount("my_access_id", "my_access_key"); Odps odps 
 
 `}`
 
-#### Function
+#### 1.3.13 Function
 
 This topic describes the Function API provided by SDK for Java. This API provides descriptions of functions. You can call the Functions API to obtain the functions. Sample code:
 
@@ -327,7 +844,7 @@ String resources = "xxx:xxx"; String classType = "com.aliyun.odps.mapred.open.ex
 Function func = new Function(); func.setName(name); func.setClassType(classType); func.setResources(resourceList); odps.functions().create(projectName, func);
 ```
 
-#### Spark Shell
+#### 1.3.14 Spark Shell
 
 This topic describes the Spark Shell API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -341,7 +858,7 @@ Sample code:
 sc.parallelize(0 to 100, 2).collect sql("show tables").show sql("select * from spark_user_data").show(200,100)
 ```
 
-#### Spark R
+#### 1.3.15 Spark R
 
 This topic describes the Spark R API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -361,7 +878,7 @@ df <- as.DataFrame(faithful)
 head(select(df, df$eruptions)) head(select(df, "eruptions")) head(filter(df, df$waiting < 50)) results <- sql("FROM spark_user_data SELECT *") head(results)
 ```
 
-#### Spark SQL
+#### 1.3.16 Spark SQL
 
 This topic describes the Spark SQL API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -375,7 +892,7 @@ Sample code:
 show tables; select * from spark_user_data limit 3; quit;
 ```
 
-#### Spark JDBC
+#### 1.3.17 Spark JDBC
 
 This topic describes the Spark JDBC API provided by SDK for Java. This API is commonly used by Spark to submit tasks to a cluster. Run the following commands to enable the API:
 
@@ -389,15 +906,15 @@ Sample code:
 ! connect jdbc:hive2://localhost:10000/odps_smoke_test show tables; select * from mr_input limit 3; ! quit
 ```
 
-#### Document APIs
+#### 1.3.18 Document APIs
 
 This topic describes the Document APIs provided by SDKs for Java. Document APIs are a set of open source APIs that are compatible with Elasticsearch on MaxCompute. For more information, see Document APIs.
 
-#### Search APIs
+#### 1.3.19 Search APIs
 
 This topic describes the Search APIs provided by SDK for Java. It is an open source API repository that is compatible with Elasticsearch on MaxCompute. For more information, see Search APIs.
 
-#### CheckPermissionTest
+#### 1.3.20 CheckPermissionTest
 
 This topic describes the CheckPermissionTest API provided by SDK for Java. You can call this API to check whether a specified user has the specified permission on a resource. Sample code:
 
@@ -410,7 +927,7 @@ Account account = new AliyunAccount("accessId", "accessKey"); Odps odps = new Od
 desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$t***@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
 ```
 
-#### Volume2
+#### 1.3.21 Volume2
 
 This topic describes the Volume2 API provided by SDK for Java. If you use the Volume2 API on Apsara Stack with type set to `new` , you do not need to specify Apsara Stack external volumn information, such as `extLocationt` .
 
@@ -500,7 +1017,7 @@ external volume for the VolumeFS feature{@link Volume} *. Type.New. The VolumeFS
 public void create(String projectName, String volumeName, String comment, Volume.Type type, Long lifecycle) throws OdpsException
 ```
 
-Example `/*`
+`/*`
 
 ```
  Create an external volume.
@@ -581,7 +1098,7 @@ public Volume get(String volumeName) /**
 public Volume get(String projectName, String volumeName)
 ```
 
-Example `/*`
+`/*`
 
 ```
 Obtain the information about a specified external volume.
@@ -666,7 +1183,7 @@ public Iterator<Volume> iterator(final VolumeFilter filter)
 public Iterator<Volume> iterator(final String projectName, final VolumeFilter filter)
 ```
 
-Example `/*`
+`/*`
 
 ```
 Obtain an external volume iterator.
@@ -723,7 +1240,7 @@ public void delete(String volumeName) /**
 public void delete(String projectName, String volumeName)
 ```
 
-Example `/*`
+`/*`
 
 ```
 Delete an external volume.
@@ -764,7 +1281,7 @@ getVolumeFSFile
 public VolumeFSFile getVolumeFSFile(String path) throws VolumeException;
 ```
 
-Example `/*`
+`/*`
 
 ```
 Obtain detailed information about the FS file of an external volume.
@@ -785,7 +1302,7 @@ volumeName).getVolumeFSFile(testFilePath);
 
 `}`
 
-## SDK for Python
+## 2 SDK for Python
 
 This topic describes how to use SDK for Python to create, view, and delete tables. PyODPS is MaxCompute SDK for Python. It provides easy-to-use Python programming interfaces. Similar to pandas, PyODPS provides fast, flexible, and expressive data structures. You can use the data processing feature of PyODPS, which is similar to that of pandas, by calling the DataFrame API provided by PyODPS. For more information, see aliyun-odpspython-sdk and PyODPS: ODPS Python SDK and data analysis framework. For more information about PyODPS, see the relevant description in MaxCompute User Guide. The following sections describe how to use SDK for Python to create, view, and delete tables.
 
@@ -1011,13 +1528,7 @@ Obtain information about a partition. Example:
 Create a partition
 
 ```
-t.create_partition('pt=test', if_not_exists=True) # Create a partition only if no par tition with the same name exists.
-```
-
-Delete a partition
-
-```
-t.delete_partition('pt=test', if_exists=True) # Delete a partition only if the parti tion exists.
+t.create_partition('pt=test', if_not_exists=True) # Create a partition only if no par tition with the same name exists. t.delete_partition('pt=test', if_exists=True) # Delete a partition only if the parti tion exists.
  Use the drop() method to delete a partition only if the partition exists.
 ```
 
@@ -1384,11 +1895,11 @@ PyODPS ML configurations
 | ml.use model transfer _ _ | Specifies whether to use ModelTransfer to obtain the PMML model. | True |
 | ml.model volume _ | The volume name used when ModelTransfer is used. | pyodps volume _ |
 
-## MaxCompute SQL
+## 3 MaxCompute SQL
 
-### Overview
+### 3.1 Overview
 
-#### Scenarios
+#### 3.1.1 Scenarios
 
 This topic describes the scenarios of MaxCompute SQL.
 
@@ -1402,7 +1913,7 @@ MaxCompute SQL offline computing is applicable to scenarios where you need to pr
 
 The MaxCompute SQL syntax is similar to the SQL syntax. The MaxCompute SQL syntax can be considered a subset of standard SQL. MaxCompute SQL lacks many database features, such as transactions, primary key constraints, and indexes. Therefore, MaxCompute SQL cannot be regarded as a database. The maximum size of each SQL statement supported by MaxCompute is `2 MB` .
 
-#### Reserved words
+#### 3.1.2 Reserved words
 
 The keywords of SQL statements are reserved words in MaxCompute. Do not use the reserved words when you name tables, columns, or partitions. If you use the reserved words, an error is reported. Reserved words are not case-sensitive.
 
@@ -1426,7 +1937,7 @@ The following table lists common reserved words. For a complete list of reserved
 |---|---|
 | Other keywords | AS |
 
-#### Partitioned tables
+#### 3.1.3 Partitioned tables
 
 This topic introduces the usage notes and limits for MaxCompute partitioned tables to ensure proper usage.
 
@@ -1438,9 +1949,9 @@ You can specify a partition key column as a filter condition in the WHERE clause
 
 Some SQL statements for partition operations are less efficient: For example, if more than 10,000 partitions exist in an output table for a job, a large number of parallel operations are performed to write data to partitions. As a result, the SQL statements may fail. When you use partitioned tables, evaluate the number of partitions and partition levels based on the data source to avoid performance and stability issues. MaxCompute allows a maximum of six levels of partitions in a partitioned table. The statements that are used to process partitioned and non-partitioned tables are different in MaxCompute. For more information, see DDL statements and DML statements. For more information about the statements that are used to create tables, see Create a table.
 
-#### Type conversion
+#### 3.1.4 Type conversion
 
-##### Explicit conversions of data types
+##### 3.1.4.1 Explicit conversions of data types
 
 An explicit conversion uses CAST to convert a value type into another one. This topic describes explicit conversions.
 
@@ -1476,7 +1987,7 @@ Y indicates that the conversion is supported. N indicates that the conversion is
 | CAST(STRING |   |
 |---|---|
 
-##### Implicit type conversion and its application
+##### 3.1.4.2 Implicit type conversion and its application scope
 
 **scope**
 
@@ -1587,7 +2098,7 @@ Logical operators include AND, OR, and NOT. This section describes the rules for
 
 For more information about logical operators, see Logical operators.
 
-##### SQL built-in functions
+##### 3.1.4.3 SQL built-in functions
 
 MaxCompute SQL provides a variety of built-in functions. These functions can be used to calculate one or more columns of a row and provide data of any type.
 
@@ -1595,7 +2106,7 @@ MaxCompute SQL provides a variety of built-in functions. These functions can be 
 
 If you call a function and the data type of an input parameter is different from that defined in the function, the data type of the input parameter is converted into the function-defined data type. The support for implicit type conversions of parameters differs for each MaxCompute SQL built-in function. For more information, see Built-in functions.
 
-##### CASE WHEN
+##### 3.1.4.4 CASE WHEN
 
 This topic describes the implicit type conversion rules for CASE WHEN.
 
@@ -1603,7 +2114,7 @@ This topic describes the implicit type conversion rules for CASE WHEN.
 
 CASE WHEN uses the following implicit type conversion rules: If return values are of the BIGINT and DOUBLE types, all the values are converted into the DOUBLE type. If return values include those of the STRING type, all the values are converted into the STRING type. If a conversion, such as conversion from BOOLEAN into STRING, fails, an error is returned. Conversions between other types are not allowed.
 
-##### Conversions between the STRING and
+##### 3.1.4.5 Conversions between the STRING and DATETIME types
 
 **DATETIME types**
 
@@ -1641,9 +2152,9 @@ CAST("2017/12/31 02/34/34" AS datetime); CAST("20171231023434" AS datetime); CAS
 
 MaxCompute provides the TO_DATE function to convert the STRING type that does not meet the DATETIME format requirements into the DATETIME type. For more information, see TO_DATE.
 
-### Operators
+### 3.2 Operators
 
-#### Relational operators
+#### 3.2.1 Relational operators
 
 This topic describes the relational operators in MaxCompute SQL operators.
 
@@ -1677,7 +2188,7 @@ ABS(0.9999999999 - 1.0000000000) < 0.000000001 -- 0.9999999999 and 1.0000000000 
 
 ABS is a built-in function provided by MaxCompute to take the absolute value of its input. For more information, see ABS. In most cases, a value of the DOUBLE type in MaxCompute can retain 16 valid digits.
 
-#### Arithmetic operators
+#### 3.2.2 Arithmetic operators
 
 This topic describes arithmetic operators in MaxCompute SQL operators.
 
@@ -1697,7 +2208,7 @@ This topic describes arithmetic operators in MaxCompute SQL operators.
 
 You can use only the values of the STRING, BIGINT, DOUBLE, or DECIMAL type to perform arithmetic operations. You cannot use the values of the DATETIME or BOOLEAN type to perform arithmetic operations. Values of the STRING type are implicitly converted into values of the DOUBLE type before arithmetic operations. If you use the values of the BIGINT and DOUBLE types to perform arithmetic operations, the value of the BIGINT type is implicitly converted into the value of the DOUBLE type before arithmetic operations. A value of the DOUBLE type is returned. If both A and B are of the BIGINT type, a value of the DOUBLE type is returned after you perform the A/B operation. For other arithmetic operations, a value of the BIGINT type is returned.
 
-#### Bitwise operators
+#### 3.2.3 Bitwise operators
 
 This topic describes bitwise operators in MaxCompute SQL operators.
 
@@ -1712,7 +2223,7 @@ This topic describes bitwise operators in MaxCompute SQL operators.
 
 Bitwise operators do not support implicit type conversions. You can use the values only of the BIGINT type in bitwise operations.
 
-#### Logical operators
+#### 3.2.4 Logical operators
 
 This topic describes the operation rules and type constraints of the `AND` , `OR` , and `NOT` logical operators in MaxCompute SQL.
 
@@ -1749,7 +2260,7 @@ This topic describes the operation rules and type constraints of the `AND` , `OR
 
 Logical operators do not support implicit type conversions. You can use only the values of the BOOLEAN type in logical operations.
 
-### LOAD
+### 3.3 LOAD
 
 This topic describes how to use LOAD statements to import data from external storage, such as Object Storage Service (OSS), to a table or a table partition in MaxCompute.
 
@@ -1839,11 +2350,11 @@ oss://${accessKeyId}:${accessKeySecret}@oss-cn-hangzhouzmf.aliyuncs.com/bucket/d
 
 If you download data to a partitioned table, the schema of the external table in the OSS directory does not include partition key columns. In the preceding example, the external table in the directory contains only the business fields. The table does not include partition key columns.
 
-### DDL statements
+### 3.4 DDL statements
 
-#### Table operations
+#### 3.4.1 Table operations
 
-##### Create a table
+##### 3.4.1.1 Create a table
 
 This topic describes how to use DDL statements to create a table. Syntax:
 
@@ -2032,7 +2543,7 @@ SHOW CREATE TABLE <table_name>;
 
 You can use this statement to generate SQL DDL statements that are used to create tables. These DDL statements can be used to rebuild the table schema.
 
-##### Drop a table
+##### 3.4.1.2 Drop a table
 
 This topic describes how to use a DDL statement to drop a table in MaxCompute. You can use this statement to drop a table that you no longer need.
 
@@ -2048,7 +2559,7 @@ If you do not specify **IF EXISTS** and the table does not exist, an error is re
 CREATE TABLE sale_detail_drop LIKE sale_detail; -- If the table exists, the system returns a success message. If the table does not e xist, the system returns an exception. DROP TABLE sale_detail_drop; -- The system returns a success message regardless of whether the sale_detail_drop2 t able exists. DROP TABLE IF EXISTS sale_detail_drop2;
 ```
 
-##### Rename a table
+##### 3.4.1.3 Rename a table
 
 This topic describes how to use a DDL statement to rename a table in MaxCompute. You can use this statement to rename a table.
 
@@ -2064,7 +2575,7 @@ The **RENAME** operation modifies only the table name and does not change the da
 --Create a table for the example CREATE TABLE sale_detail_rename1 LIKE sale_detail; --Rename the table ALTER TABLE sale_detail_rename1 RENAME TO sale_detail_rename2; --Check whether the renamed table exists SHOW TABLES;
 ```
 
-##### Change the owner of a table
+##### 3.4.1.4 Change the owner of a table
 
 This topic describes how to use a DDL statement to change the owner of a table. MaxCompute SQL allows you to execute the `CHANGEOWNER` statement to change the owner of a table. Syntax:
 
@@ -2072,7 +2583,7 @@ This topic describes how to use a DDL statement to change the owner of a table. 
 ALTER TABLE table_name CHANGEOWNER TO 'ALIYUN$xxx@aliyun.com';
 ```
 
-##### Modify the comment of a table
+##### 3.4.1.5 Modify the comment of a table
 
 This topic describes how to use a DDL statement to modify the comment of a table. Syntax:
 
@@ -2090,7 +2601,7 @@ ALTER TABLE sale_detail SET COMMENT 'new coments for table sale_detail';
 
 You can execute the DESC statement in MaxCompute to view the comment of the table after modification.
 
-##### Modify the lifecycle settings of a table
+##### 3.4.1.6 Modify the lifecycle settings of a table
 
 MaxCompute provides the lifecycle management feature to facilitate storage release and simplify data reclamation. This topic describes how to use a DDL statement to modify the lifecycle settings of a table. Syntax:
 
@@ -2108,7 +2619,7 @@ You can specify the lifecycle when you create a table. The lifecycle can be spec
 create table test_lifecycle(key string) lifecycle 100; -- Create a table named test_lifecycle with a lifecycle of 100 days. alter table test_lifecycle set lifecycle 50; -- Change the lifecycle of the test_lifecycle table to 50 days.
 ```
 
-##### Disable or enable the lifecycle feature
+##### 3.4.1.7 Disable or enable the lifecycle feature
 
 In some cases, if you do not want some partitions to be automatically reclaimed based on the lifecycle feature, you can disable the lifecycle feature for these partitions. This topic describes how to use a DDL statement to disable or enable the lifecycle feature. Syntax:
 
@@ -2129,7 +2640,7 @@ A table and its partitions can be reclaimed based on the lifecycle feature again
 ALTER TABLE trans DISABLE LIFECYCLE; -- Disable the lifecycle feature for the trans table. ALTER TABLE trans PARTITION(dt='20141111') DISABLE LIFECYCLE; -- Disable the lifecycle feature for the dt='20141111' partition in the trans table. ALTER TABLE trans ENABLE LIFECYCLE; -- Enable the lifecycle feature for the trans table. ALTER TABLE trans PARTITION(dt='20141111') ENABLE LIFECYCLE; -- Enable the lifecycle feature for the dt='20141111' partition in the trans table.
 ```
 
-##### Modify the value of LastDataModifiedTime
+##### 3.4.1.8 Modify the value of LastDataModifiedTime for a table
 
 **for a table**
 
@@ -2146,7 +2657,7 @@ ALTER TABLE table_name TOUCH;
 
 If the table specified by **table_name** does not exist, an error is returned. This operation modifies the value of **LastDataModifiedTime** for a table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle.
 
-##### Modify the clustering attributes of a table
+##### 3.4.1.9 Modify the clustering attributes of a table
 
 This topic describes how to use a DDL statement to modify the clustering attributes of a table. MaxCompute allows you to add or remove the clustering attributes of a partitioned table by using the `ALTER TABLE` statement.
 
@@ -2186,7 +2697,7 @@ Syntax:
 ALTER TABLE table_name NOT CLUSTERED; ALTER TABLE table_name partition_spec NOT CLUSTERED;
 ```
 
-##### Delete data from a non-partitioned table
+##### 3.4.1.10 Delete data from a non-partitioned table
 
 This topic describes how to use a DDL statement to delete data from a non-partitioned table. Syntax:
 
@@ -2198,7 +2709,7 @@ TRUNCATE TABLE table_name;
 
 This statement is used to delete data from a specific non-partitioned table. To delete data from a partitioned table, execute the `ALTER TABLE table_name DROP` `PARTITION(partition_spec)` statement.
 
-##### Archive table data
+##### 3.4.1.11 Archive table data
 
 This topic describes how to use a DDL statement to archive the data of a table. If a project does not have enough space and data needs to be compressed or deleted, you can use table archiving of MaxCompute to compress data by about 50%. Table archiving uses a compression algorithm with a high compression ratio. It saves data as redundant array of independent disks (RAID) files. Data is no longer simply stored in three copies. Instead, six copies and three check blocks are maintained to increase the compression ratio from 1:3 to 1:1.5. Table archiving allows data to consume only half of the physical space. However, this feature comes at a price. If a data block or machine is faulty, it requires a long time to restore the data block, and read performance deteriorates. Therefore, this feature is suitable for the compression of cold data. For example, you can use this feature to store a large number of logs that are less used as RAID files for a long time. Syntax:
 
@@ -2228,7 +2739,7 @@ The output shows the changes in the logical size and physical size after the dat
 desc extended my_log partition(ds='20170101'); -- The following result is returned: +------------------------------------------------------------------------------------ PartitionSize: 512 | +------------------------------------------------------------------------------------ CreateTime: 2017-01-28 07:05:20 | LastDDLTime: 2017-01-28 07:05:20 | LastModifiedTime: 2017-01-28 07:05:21 | +------------------------------------------------------------------------------------
 ```
 
-##### Forcibly delete data from a table or
+##### 3.4.1.12 Forcibly delete data from a table or partition
 
 **partition**
 
@@ -2244,9 +2755,9 @@ Examples:
 drop table my_log purge; alter table my_log drop partition (ds='20170618') purge;
 ```
 
-#### View-based operation
+#### 3.4.2 View-based operation
 
-##### Create a view
+##### 3.4.2.1 Create a view
 
 This topic describes how to use a DDL statement to create a view. Syntax:
 
@@ -2264,7 +2775,7 @@ Examples:
 create view if not exists sale_detail_view (store_name, customer_id, price, sale_date, region) comment 'a view for table sale_detail' as select * from sale_detail; -- Create a view named sale_detail_view.
 ```
 
-##### Delete a view
+##### 3.4.2.2 Delete a view
 
 This topic describes how to use a DDL statement to delete a view. Syntax:
 
@@ -2280,7 +2791,7 @@ If the partition does not exist and **IF EXISTS** is not specified, an error is 
 DROP VIEW IF EXISTS sale_detail_view;
 ```
 
-##### Rename a view
+##### 3.4.2.3 Rename a view
 
 This topic describes how to use a DDL statement to rename a view. Syntax:
 
@@ -2296,7 +2807,7 @@ If a view with the same name already exists, an error is returned. Examples:
 alter view sale_detail_view rename to market;
 ```
 
-#### Materialized view operations
+#### 3.4.3 Materialized view operations
 
 A materialized view is a database object that stores the pre-calculation results of timeconsuming queries, such as JOIN and AGGREGATE. You can directly reuse the pre-calculation results when you want to perform the same queries. This accelerates the speed of queries.
 
@@ -2343,7 +2854,7 @@ Window functions, User-defined table-valued functions (UDTFs), and non-determini
 
 **partitioning**
 
-You can create a materialized view that supports clustering or partitioning based on the data for materialized view scenarios. Limits The name of the materialized view that you want to create cannot be the same as the name of an existing table, view, or materialized view in the current project. You can run the SHOW TABLES; command to view the names of all tables and materialized views in a project. You cannot create a materialized view based on an existing materialized view. You cannot create a materialized view based on an external table. Usage notes If the query statement based on which you create a materialized view fails to be executed, you cannot create the materialized view. Partition key columns in a materialized view must be derived from a source table. The sequence and number of the columns in the materialized view must be the same as the sequence and number of the columns in the source table. Column names can be different. You must specify comments for all columns, including partition key columns. If you specify comments only for some columns, an error is returned. You can specify both the partitioning and clustering attributes for a materialized view. In this case, the data in each partition has the specified clustering attribute. If the query statement based on which you create a materialized view contains operators that are not supported by the materialized view, an error is returned. By default, MaxCompute does not allow you to create materialized views by using nondeterministic functions, such as UDFs or UDAFs. If you must use non-deterministic
+You can create a materialized view that supports clustering or partitioning based on the data for materialized view scenarios. Limits The name of the materialized view that you want to create cannot be the same as the name of an existing table, view, or materialized view in the current project. You can run the SHOW TABLES; command to view the names of all tables and materialized views in a project. You cannot create a materialized view based on an existing materialized view. You cannot create a materialized view based on an external table. If the query statement based on which you create a materialized view fails to be executed, you cannot create the materialized view. Partition key columns in a materialized view must be derived from a source table. The sequence and number of the columns in the materialized view must be the same as the sequence and number of the columns in the source table. Column names can be different. You must specify comments for all columns, including partition key columns. If you specify comments only for some columns, an error is returned. You can specify both the partitioning and clustering attributes for a materialized view. In this case, the data in each partition has the specified clustering attribute. If the query statement based on which you create a materialized view contains operators that are not supported by the materialized view, an error is returned. By default, MaxCompute does not allow you to create materialized views by using nondeterministic functions, such as UDFs or UDAFs. If you must use non-deterministic
 
 | functions, run the | set |   |
 |---|---|---|
@@ -2487,7 +2998,7 @@ CREATE TABLE mf_blank_pts(id bigint ,name string) PARTITIONED BY (ds bigint); AL
 
 **Update a materialized view**
 
-If you perform operations, such as insert, overwrite, update, and delete operations on the table or partition that corresponds to a materialized view, the materialized view becomes invalid and cannot be used for query rewrite operations. You can check the status of a materialized view. If the materialized view is invalid, you must update the materialized view. Usage notes Data in a materialized view or a partition in a materialized view is updated only when data in the source table or a partition in the source table changes. Command syntax
+If you perform operations, such as insert, overwrite, update, and delete operations on the table or partition that corresponds to a materialized view, the materialized view becomes invalid and cannot be used for query rewrite operations. You can check the status of a materialized view. If the materialized view is invalid, you must update the materialized view. Data in a materialized view or a partition in a materialized view is updated only when data in the source table or a partition in the source table changes. Command syntax
 
 ```
 ALTER MATERIALIZED VIEW [<project_name>.]<mv_name>
@@ -2850,14 +3361,13 @@ materialized view does not contain all partition data. Therefore, a penetration 
 
 ```
 SELECT * FROM mv WHERE dt >= '20201230' AND dt<='20210102' AND id='5'; -- The mv materialized view does not contain the data of the 20210102 partition, and a penetration query is performed to query the data of the 20210102 partition from the source table. The preceding statement is equivalent to the following statement: SELECT * FROM (SELECT id, name, dt FROM src WHERE dt='20211231' OR dt='20210102'
- UNION ALL
  SELECT * FROM mv WHERE dt='20210101'
 ) t WHERE id = '5';
 ```
 
-#### Column and partition operations
+#### 3.4.4 Column and partition operations
 
-##### Add partitions
+##### 3.4.4.1 Add partitions
 
 This topic describes how to use a DDL statement to add partitions. Syntax:
 
@@ -2873,7 +3383,7 @@ If you do not specify **IF NOT EXISTS** and another partition with the same name
 alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou'); -- Add a partition to store the sales records of the China (Hangzhou) region for Decemb er 2017. alter table sale_detail add if not exists partition (sale_date='201712', region='shanghai'); -- Add a partition to store the sales records of the China (Shanghai) region for Decemb er 2017. alter table sale_detail add if not exists partition(sale_date='20171011'); -- Specify only the sale_date partition. An error is returned. alter table sale_detail add if not exists partition(region='shanghai'); -- Specify only the region partition. An error is returned. alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou') partition (sale_date='201712', region='shanghai'); -- Add two partitions to store the sales records of the China (Hangzhou) and China (Sha nghai) regions for December 2017.
 ```
 
-##### Delete a partition
+##### 3.4.4.2 Delete a partition
 
 This topic describes how to use DDL statements to delete a partition. MaxCompute allows you to delete partitions that meet a specific filter condition. If you want to delete one or more partitions that meet a filter condition at a time, you can use an expression to specify the condition, use the condition to filter partitions, and then delete the partitions. If you do not specify a filter condition, execute the following statements:
 
@@ -2947,7 +3457,7 @@ If you execute the following statement, the following error is returned: `FAILED
 [1,82] Semantic analysis exception - invalid column reference region, partition expression must have one and only one column reference . -- An error is returned because PARTITION partition_filtercondition can be specified on ly for one partition key column. ALTER TABLE region_sale_detail DROP IF EXISTS PARTITION(sale_date < '201911' AND region = 'beijing');
 ```
 
-##### Add columns or comments
+##### 3.4.4.3 Add columns or comments
 
 This topic describes how to use DDL statements to add columns or comments. Syntax:
 
@@ -2961,7 +3471,7 @@ Examples:
 ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING, education BIGINT); -- Add two columns to the sale_detail table. ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING comment 'Customer', education BIGINT comment 'Education' ); -- Add two columns and their comments to the sale_detail table.
 ```
 
-##### Change the name of a column
+##### 3.4.4.4 Change the name of a column
 
 This topic describes how to use a DDL statement to change the name of a column. Syntax:
 
@@ -2977,7 +3487,7 @@ The column specified by **old_col_name** must exist in the table. The table cann
 ALTER TABLE sale_detail CHANGE COLUMN customer_name RENAME TO customer; -- Change the name of a column in the sale_detail table.
 ```
 
-##### Modify the comment of a column
+##### 3.4.4.5 Modify the comment of a column
 
 This topic describes how to use a DDL statement to modify the comment of a column. Syntax:
 
@@ -2993,7 +3503,7 @@ The value of **comment_string** cannot exceed 1,024 bytes. The data type and pos
 ALTER TABLE sale_detail CHANGE COLUMN customer COMMENT 'customer'; -- Modify the comment of a column in the sale_detail table.
 ```
 
-##### Modify the name and comment of a
+##### 3.4.4.6 Modify the name and comment of a column at the same time
 
 **column at the same time**
 
@@ -3011,7 +3521,7 @@ The column specified by **old_col_name** must exist. The table cannot contain th
 ALTER TABLE sale_detail CHANGE COLUMN customer customer_name string COMMENT 'Customer'; -- Modify the name and comment of a column in the sale_detail table.
 ```
 
-##### Change LastDataModifiedTime of a non-
+##### 3.4.4.7 Change LastDataModifiedTime of a non-partitioned table or a partition in a partitioned table.
 
 **partitioned table or a partition in a partitioned**
 
@@ -3033,7 +3543,7 @@ If the table specified by **table_name** does not exist, an error is returned. I
 ALTER TABLE result_table TOUCH; -- Change the value of LastDataModifiedTime for a non-partitioned table. ALTER TABLE sale_detail TOUCH PARTITION(sale_date='201712'); -- Change the value of LastDataModifiedTime for a partition in a partitioned table.
 ```
 
-##### Modify partition values
+##### 3.4.4.8 Modify partition values
 
 This topic describes how to use a DDL statement to modify partition values. Syntax:
 
@@ -3049,7 +3559,7 @@ This statement can modify only the values rather than the names of partition key
 ALTER TABLE sale_detail PARTITION (sale_date = '201712', region = 'hangzhou') RENAME TO PARTITION (sale_date = '201710', region = 'beijing'); -- Modify the partition values in the sale_detail table.
 ```
 
-##### Merge partitions
+##### 3.4.4.9 Merge partitions
 
 MaxCompute SQL allows you to execute the `MERGE PARTITION` statement to merge multiple partitions of a partitioned table into one partition. This operation deletes the dimension information about the merged partitions and moves data to a specific partition. This topic describes how to use a DDL statement to merge partitions. Syntax
 
@@ -3097,11 +3607,11 @@ odps@ jet_zwz>DESC intpstringstringstring; +------------+------------+----------
 +------------+------------+------------+------------+ -- Data in two partitions that meet the specified condition is merged into the specifie d partition.
 ```
 
-### DML statements
+### 3.5 DML statements
 
-#### INSERT
+#### 3.5.1 INSERT
 
-##### Update data in a table
+##### 3.5.1.1 Update data in a table
 
 This topic describes how to use an INSERT statement to update data in a table. The `INSERT OVERWRITE` and `INSERT INTO` statements are used to write the data processing results of MaxCompute SQL to a destination table. The `INSERT INTO` statement inserts data into a table or partition. The `INSERT INTO` statement cannot be used to insert data into clustered tables. If you want to insert a small amount of test data, you can use this statement with VALUES. The `INSERT OVERWRITE` statement clears the original data in a table or partition and inserts data into the table or partition. The `INSERT OVERWRITE` statement cannot be used to insert data into specific columns. Syntax:
 
@@ -3148,7 +3658,6 @@ PARTITIONED BY (sale_date STRING,region STRING); -- Add partitions to the source
 
 ```
 INSERT INTO sale_detail PARTITION (sale_date='2013', region='china') VALUES ('s1','c1',100.1),('s2','c2',100.2),('s3','c3',100.3); -- Create a destination table named sale_detail_insert that has the same schema as the source table. CREATE TABLE sale_detail_insert LIKE sale_detail; -- Add partitions to the destination table. ALTER TABLE sale_detail_insert ADD PARTITION (sale_date='2013', region='china'); -- Extract data from the sale_detail table and insert the data into the sale_detail_insert table. -- Fields in the destination table do not need to be declared or rearranged. -- If the destination table consists of static partitions and partition fields have bee n declared in PARTITION(), you do not need to include these fields in the SELECT clause . You only need to search for the fields based on the sequence of standard columns in t he destination table and sequentially map these fields to those in the destination tabl e. If the destination table consists of dynamic partitions, partition fields must be in cluded in the SELECT clause. For more information, see Insert data into dynamic partiti ons. INSERT OVERWRITE TABLE sale_detail_insert PARTITION (sale_date='2013', region='china')
-  SELECT
   shop_name,
   customer_id,
   total_price
@@ -3189,7 +3698,7 @@ INSERT OVERWRITE TABLE sale_detail_insert PARTITION (sale_date=datepart('2016-09
 
 If you want to update table data to a dynamic partition, take note of the following points: If you execute the `INSERT INTO PARTITION` statement and the specified partition does not exist, the system automatically creates this partition. If multiple jobs that use the `INSERT INTO PARTITION` statement concurrently run and the specified partitions do not exist, the system attempts to create these partitions. However, only one partition can be created. If you cannot control the concurrency of the jobs that use the `INSERT INTO PARTITION` statement, we recommend that you use the `ALTER TABLE` statement to create partitions in advance.
 
-##### Insert data into multiple objects
+##### 3.5.1.2 Insert data into multiple objects
 
 This topic describes how to use an INSERT statement to insert data to multiple objects. MaxCompute SQL allows you to insert data into different result tables or partitions by using one SQL statement. Syntax:
 
@@ -3213,7 +3722,7 @@ only constants rather than expressions, such as functions. Examples:
 -- Create a destination table named sale_detail_multi. create table sale_detail_multi like sale_detail; -- Insert data from sale_detail into sale_detail_multi. set odps.sql.allow.fullscan=true; -- Enable the full table scan, which is valid only fo r this session. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price ; -- An error is returned because the same partition appears more than once. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price; -- An error is returned because the INSERT OVERWRITE and INSERT INTO operations are sim ultaneously performed on different partitions of a partitioned table. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert into table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price;
 ```
 
-##### Insert data into dynamic partitions
+##### 3.5.1.3 Insert data into dynamic partitions
 
 This topic describes how to use an INSERT statement to insert data into dynamic partitions. You can use the INSERT OVERWRITE statement to insert data into the following partitions of a partitioned table: Static partitions: You must specify partition values in the INSERT statement to insert data into the specified partitions. Dynamic partitions: You need only to specify the names of partition key columns in the INSERT statement. The values of the partition key columns are provided in the SELECT clause. The system automatically inserts data into the required partitions based on the values. Syntax:
 
@@ -3261,7 +3770,7 @@ If the data types of values in partition key columns are inconsistent with those
 -- Create a destination table named parttable. create table parttable(a int, b double) partitioned by (p string); -- Insert the data from source table src into destination table parttable. insert into parttable partition(p) select key, value, current_timestmap() from src; -- Query data in parttable. select * from parttable;
 ```
 
-##### VALUES
+##### 3.5.1.4 VALUES
 
 This topic describes how to use the INSERT...VALUES statement to insert data into a table that contains small amounts of data. Syntax:
 
@@ -3439,9 +3948,9 @@ Constant expressions are supported in VALUES expressions. Expressions that do no
 select * from values (udf(1)),(to_date('20190101', 'yyyyMMdd')),(getdate()) t(d);
 ```
 
-#### SELECT
+#### 3.5.2 SELECT
 
-##### SELECT operations
+##### 3.5.2.1 SELECT operations
 
 This topic describes how to use SELECT statements for SELECT operations. Syntax
 
@@ -3630,7 +4139,7 @@ You can run the SHOW SecurityConfiguration; command to view the value of
 **ProjectProtection**. If **ProjectProtection** is set to true, you can determine whether to
 disable project data protection. You can run the set ProjectProtection=false; command to disable project data protection. By default, **ProjectProtection** is disabled. For more information about project data protection, see Data protection.
 
-##### Subquery
+##### 3.5.2.2 Subquery
 
 This topic describes how to use a SELECT statement to perform subqueries. A common SELECT statement reads data from multiple tables, such as, `select column_1,` `column_2 ... from table_name` . The query object can be another SELECT operation, which is a subquery. Syntax:
 
@@ -3650,7 +4159,7 @@ create table shop as select * from sale_detail; select a.shop_name, a.customer_i
 
 In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries.
 
-##### UNION ALL
+##### 3.5.2.3 UNION ALL
 
 This topic describes how to use a SELECT statement to perform UNION ALL operations. Syntax:
 
@@ -3663,7 +4172,7 @@ select_statement union all select_statement
 The UNION ALL clause is used to combine two or more datasets returned from a SELECT operation into one dataset. If duplicate rows exist in the results, all rows that meet the condition are returned, with duplicate rows retained. MaxCompute SQL does not support UNION ALL between two top-level query statements. To combine the query results of the two statements, you must rewrite the UNION ALL clause as a subquery. Syntax before rewriting:
 
 ```
-select * from sale_detail where region = 'hangzhou' union all select * from sale_detail where region = 'shanghai';
+select * from sale_detail where region = 'hangzhou' select * from sale_detail where region = 'shanghai';
 ```
 
 Syntax after rewriting:
@@ -3682,7 +4191,7 @@ SELECT * FROM src UNION ALL (SELECT * FROM src2 UNION ALL SELECT * FROM src3); -
 
 For a UNION ALL operation, all subqueries must have the same number of columns, column names, and column types. If the column names are inconsistent, use column aliases. In most cases, MaxCompute allows a UNION ALL operation for a maximum of 256 subqueries. If the limit is exceeded, a syntax error is returned.
 
-##### JOIN
+##### 3.5.2.4 JOIN
 
 This topic describes how to use SELECT statements to perform JOIN operations. MaxCompute supports multiple JOIN operations in an SQL statement. MaxCompute does not support CROSS JOIN. A CROSS JOIN operation joins two tables without the need to specify conditions in the ON clause. Syntax:
 
@@ -3767,7 +4276,7 @@ SELECT s.id
 FROM (SELECT * FROM test_table_a WHERE ds > "20180101" ) s LEFT JOIN (SELECT * FROM test_table_b WHERE ds > "20180101") d ON s.origin = d.id;
 ```
 
-##### MAPJOIN hint
+##### 3.5.2.5 MAPJOIN hint
 
 This topic describes how to specify MAPJOIN in a SELECT statement to join a large table with one or more small tables.
 
@@ -3813,9 +4322,9 @@ SELECT /* + MAPJOIN(a) */
 FROM shop a JOIN sale_detail b ON a.total_price < b.total_price OR a.total_price + b.total_price < 500;
 ```
 
-##### SELECT TRANSFORM
+##### 3.5.2.6 SELECT TRANSFORM
 
-###### Overview
+###### 3.5.2.6.1 Overview
 
 This topic describes the syntax of the SELECT TRANSFORM statement in MaxCompute. The SELECT TRANSFORM statement allows you to start a specific child process and insert data in the required format into the child process by using standard input. Then, the SELECT TRANSFORM statement parses the standard output of the child process to obtain the output data. The SELECT TRANSFORM statement allows you to run scripts in other programming languages without the need to write user-defined functions (UDFs). Syntax:
 
@@ -3862,9 +4371,9 @@ Hive-compatible mode to use the syntax. To enable the Hive-compatible mode, add 
 If you do not specify the data types for output columns, the STRING type is used. The output data is obtained after the standard output of the child process is parsed. If the data is not of the STRING type, the system implicitly calls the CAST function to convert the data into the STRING type. Exceptions may occur during the conversion process. You must specify data types for all output columns. If you omit the AS keyword, the field before the first **\t** in the standard output data is the key and all the following parts are values. This is equivalent to
 **AS(key, value)**.
 
-###### SELECT TRANSFORM examples
+###### 3.5.2.6.2 SELECT TRANSFORM examples
 
-###### Call shell scripts
+###### 3.5.2.6.2.1 Call shell scripts
 
 This topic describes how to use SELECT TRANSFORM to call shell scripts and provides examples. Assume that you use a shell script to generate 50 rows of data. The values are from 1 to 50. The following code shows the output of the data field:
 
@@ -3880,7 +4389,7 @@ SELECT TRANSFORM(script) USING 'sh' AS (data) FROM (
 
 SELECT TRANSFORM allows you to use the scripts of multiple programming languages, such as AWK, Python, Perl, and shell, as the input to implement simple features. You do not need to compile script files or upload resources, which simplifies development. You can upload a script to implement complex features. For more information, see Call Python scripts.
 
-###### Call Python scripts
+###### 3.5.2.6.2.2 Call Python scripts
 
 This topic describes how to use SELECT TRANSFORM to call Python scripts and provides examples.
 1. Compile a Python script file. In this example, the file name is myplus.py.
@@ -3905,7 +4414,7 @@ add py ./myplus.py -f;
 3. Execute SELECT TRANSFORM to call the resource.
 
 ```
--- Create a test table. CREATE TABLE testdata(c1 bigint,c2 bigint); -- Insert test data into the test table. INSERT INTO TABLE testdata VALUES (1,4),(2,5),(3,6); -- Execute the following statement: SELECT TRANSFORM (testdata.c1, testdata.c2) USING 'python myplus.py'resources 'myplus.py' AS (result1,result2) FROM testdata; -- The preceding statement is equivalent to the following statement: set odps.sql.session.resources=myplus.py; SELECT TRANSFORM (testdata.c1, testdata.c2) USING 'python myplus.py' AS (result1,result2) FROM testdata;
+-- Create a test table. CREATE TABLE testdata(c1 bigint,c2 bigint); -- Insert test data into the test table. INSERT INTO TABLE testdata VALUES (1,4),(2,5),(3,6); -- Execute the following statement: TRANSFORM (testdata.c1, testdata.c2) USING 'python myplus.py'resources 'myplus.py' AS (result1,result2) FROM testdata; -- The preceding statement is equivalent to the following statement: set odps.sql.session.resources=myplus.py; SELECT TRANSFORM (testdata.c1, testdata.c2) USING 'python myplus.py' AS (result1,result2) FROM testdata;
 ```
 
 **Note**
@@ -3931,7 +4440,7 @@ The following result is returned:
 +------------+------------+
 ```
 
-###### Call Java scripts
+###### 3.5.2.6.2.3 Call Java scripts
 
 This topic describes how to use SELECT TRANSFORM to call Java scripts and provides examples. Java scripts are called in a similar way to Python scripts. In this example, you must prepare a Java script file, export it as a JAR package, and then execute the `ADD FILE` statement to add the JAR package as a resource to MaxCompute. Then, the resource can be called by using SELECT TRANSFORM.
 1. Prepare a Java script file and export it as a JAR package. In this example, the name of the
@@ -3989,7 +4498,7 @@ The following result is returned:
 
 You can use the preceding method to run most Java utilities. Although UDTF frameworks are provided for Java and Python, SELECT TRANSFORM makes it easier to compile code. SELECT TRANSFORM is a simpler process because it is not subject to dependencies or format requirements and can be called offline. The paths for Java and Python offline scripts can be obtained from the JAVA_HOME and PYTHON_HOME environment variables.
 
-###### Call the scripts of other programming
+###### 3.5.2.6.2.4 Call the scripts of other programming languages
 
 **languages**
 
@@ -4009,7 +4518,7 @@ SELECT TRANSFORM (testdata.c1, testdata.c2) USING "perl -e 'WHILE($input = <STDI
 
 PHP and Ruby are not deployed in MaxCompute compute clusters. Therefore, you cannot call PHP or Ruby scripts in MaxCompute.
 
-###### Call scripts in series
+###### 3.5.2.6.2.5 Call scripts in series
 
 This topic describes how to use SELECT TRANSFORM to call scripts in series and provides examples. SELECT TRANSFORM allows you to call scripts in series. For example, you can use DISTRIBUTE BY and SORT BY to pre-process data.
 
@@ -4037,7 +4546,7 @@ You can also use the MAP or REDUCE keyword to obtain the same results.
 @a := select * from data distribute by col2 sort by col1; @b := map * using 'cmd1' distribute by col1 sort by col2 from @a; reduce * using 'cmd2' from @b;
 ```
 
-###### Performance
+###### 3.5.2.6.3 Performance
 
 This topic describes the advantages of SELECT TRANSFORM and user-defined table-valued functions (UDTFs). The performance of SELECT TRANSFORM and UDTFs varies based on specific scenarios. In most cases, SELECT TRANSFORM performs better. However, UDTFs perform better as the data amount increases. SELECT TRANSFORM is more suitable for ad hoc data analytics because the development of SELECT TRANSFORM is easier. The following sections describe the advantages of UDTFs and SELECT TRANSFORM.
 
@@ -4049,9 +4558,9 @@ For UDTFs, the input parameters and output results support multiple data types. 
 
 SELECT TRANSFORM supports two processes: parent and child processes. UDTFs support only a single process. If the usage of computing resources is high and the data throughput is low, SELECT TRANSFORM can take advantage of the multi-core feature of the server. SELECT TRANSFORM calls underlying systems to read and write data during data transfer. This allows SELECT TRANSFORM to provide better performance in data transfer than Java programs. SELECT TRANSFORM supports the native code of tools such as AWK. This allows SELECT TRANSFORM to deliver more performance benefits than Java programs.
 
-##### GROUPING SETS
+##### 3.5.2.7 GROUPING SETS
 
-###### Overview
+###### 3.5.2.7.1 Overview
 
 This topic describes GROUPING SETS in MaxCompute. In some cases, you must execute the UNION ALL clause multiple times to aggregate and analyze data from multiple dimensions. For example, you want to aggregate Column A, aggregate Column B, and then aggregate Column A and Column B. The GROUPING SETS clause is a better choice in these cases. GROUPING SETS is an extension to the GROUP BY clause in a SELECT statement. GROUPING SETS allows you to group results by using various methods without the need to execute multiple SELECT statements. This allows the MaxCompute engine to generate more efficient execution plans with high performance.
 
@@ -4059,7 +4568,7 @@ This topic describes GROUPING SETS in MaxCompute. In some cases, you must execut
 
 Most examples in this topic are demonstrated by using MaxCompute Studio. We recommend that you install MaxCompute Studio before you proceed with subsequent operations. For more information, see MaxCompute Studio.
 
-###### Example
+###### 3.5.2.7.2 Example
 
 This topic provides an example on how to execute the GROUPING SETS statement. Example:
 1. Prepare data.
@@ -4102,7 +4611,7 @@ The following result is returned:
 You can also execute multiple SELECT statements to obtain the same result.
 
 ```
-SELECT NULL, NULL, NULL, COUNT(*) FROM requests UNION ALL SELECT os, device, NULL, COUNT(*) FROM requests GROUP BY os, device UNION ALL SELECT null, null, city, COUNT(*) FROM requests GROUP BY city;
+SELECT NULL, NULL, NULL, COUNT(*) FROM requests SELECT os, device, NULL, COUNT(*) FROM requests GROUP BY os, device SELECT null, null, city, COUNT(*) FROM requests GROUP BY city;
 ```
 
 However, the execution of GROUPING SETS is simpler and more efficient.
@@ -4111,7 +4620,7 @@ However, the execution of GROUPING SETS is simpler and more efficient.
 
 NULL is used as placeholders for the expressions that are not used in GROUPING SETS. This way, you can perform UNION operations on the result sets.
 
-###### CUBE and ROLLUP
+###### 3.5.2.7.3 CUBE and ROLLUP
 
 This topic describes the CUBE and ROLLUP functions for GROUPING SETS. CUBE and ROLLUP are special GROUPING SETS functions. CUBE lists all the possible combinations of specific columns as grouping sets. ROLLUP aggregates data by level to generate grouping sets. Examples:
 
@@ -4153,7 +4662,7 @@ GROUP BY grouping sets((b), (c),rollup(a,b,c)) -- Equivalent to the following st
 
 `)`
 
-###### GROUPING and GROUPING_ID
+###### 3.5.2.7.4 GROUPING and GROUPING_ID
 
 This topic describes the GROUPING and GROUPING_ID functions in GROUPING SETS. NULL is used as placeholders in the results of GROUPING SETS. As a result, the NULL placeholders cannot be distinguished from the NULL values. To address this issue, MaxCompute provides the GROUPING function. GROUPING allows you to specify the name of a column as a parameter. If specific rows are aggregated based on the column specified in the GROUPING function, 0 is returned, which indicates that NULL is an input value. Otherwise, 1 is returned, which indicates that NULL is a placeholder in GROUPING SETS. GROUPING_ID allows you to specify the names of one or more columns as parameters. The GROUPING results of these columns are formed into integers by using bitmap. Examples:
 
@@ -4198,7 +4707,7 @@ By default, the columns that are not used in the GROUP BY clause are filled with
     (5, 'ios', 'Phone', 'Shijiazhuang'),
     (6, 'linux', 'PC', 'Beijing'),
     (7, 'windows', 'Phone', 'Shijiazhuang')
-as t(id, os, device, city); -- Sample code select
+as t(id, os, device, city); -- Sample code
   if(grouping(os) == 0, os, 'ALL') as os,
   if(grouping(device) == 0, device, 'ALL') as device,
   if(grouping(city) == 0, city, 'ALL') as city,
@@ -4223,7 +4732,7 @@ The following result is returned:
 +------------+------------+------------+------------+
 ```
 
-##### UNION, INTERSECT, and EXCEPT
+##### 3.5.2.8 UNION, INTERSECT, and EXCEPT
 
 This topic describes the SQL statements that use the UNION, INTERSECT, and EXCEPT set operators, such as UNION, UNION ALL, UNION DISTINCT, INTERSECT, INTERSECT ALL, INTERSECT DISTINCT, EXCEPT, EXCEPT ALL, and EXCEPT DISTINCT. Syntax:
 
@@ -4234,7 +4743,7 @@ select_statement UNION ALL select_statement; select_statement UNION [DISTINCT] s
 Parameters: UNION: the union of two datasets. The UNION operation combines two datasets into one dataset. INTERSECT: the intersection of two datasets. The INTERSECT operation returns the records contained in both datasets. EXCEPT: the complement of the second dataset in the first dataset. The EXCEPT operation returns the records that are contained in the first dataset, but not in the second dataset. MINUS: equivalent to EXCEPT. Examples: UNION: If UNION ALL is used, all records of the two datasets are returned.
 
 ```
-SELECT * FROM VALUES (1, 2), (1, 2), (3, 4) t(a, b) UNION ALL SELECT * FROM VALUES (1, 2), (1, 4) t(a, b);
+SELECT * FROM VALUES (1, 2), (1, 2), (3, 4) t(a, b) SELECT * FROM VALUES (1, 2), (1, 4) t(a, b);
 ```
 
 The following result is returned:
@@ -4365,7 +4874,7 @@ SELECT * FROM VALUES (1, 2), (1, 2), (3, 4), (3, 4), (5, 6), (7, 8) t(a, b) EXCE
 
 Set operations do not necessarily return sorted results. The two branches for a set operation must have the same number of output columns with consistent data types. If data types are inconsistent, implicit conversion of the data types may be performed. To ensure compatibility for set operations, MaxCompute forbids the implicit conversion between STRING and other data types. MaxCompute supports a maximum of 256 branches for a set operation. If the limit is exceeded, an error is returned.
 
-#### EXPLAIN
+#### 3.5.3 EXPLAIN
 
 This topic describes the EXPLAIN statement in MaxCompute SQL. This statement shows the structure of the execution plan of a DML statement. An execution plan is a program that executes SQL statements. Syntax:
 
@@ -4378,7 +4887,7 @@ EXPLAIN <DML query>;
 The execution results of an EXPLAIN statement include: Dependencies among all the jobs of this DML statement Dependencies among all the tasks of each job Dependencies among all operators in a task Examples:
 
 ```
-EXPLAIN SELECT abs(a.key), b.value FROM src a JOIN src1 b ON a.value = b.value;
+SELECT abs(a.key), b.value FROM src a JOIN src1 b ON a.value = b.value;
 ```
 
 The output of the EXPLAIN statement consists of the following three parts: Job dependencies: `job0 is root job` . This query requires only one **job (job0)**. Therefore, only one row of information is displayed. Task dependencies. Example:
@@ -4437,7 +4946,7 @@ The following table describes the operators.
 
 If a query statement is complex, the EXPLAIN statement returns excessive results. As a result, API limits are reached and complete results cannot be obtained. In this case, you can split a query and execute the EXPLAIN statement on each subquery to understand the structure of the job. If you specify more than 10,000 partitions in a query, large amounts of source data needs to be read. To circumvent this limit, you can add filter conditions in the query to filter out most partitions.
 
-#### IF statement
+#### 3.5.4 IF statement
 
 This topic describes the IF statement that MaxCompute SQL supports. MaxCompute SQL supports the IF-ELSE statement. You can use the IF-ELSE statement to execute SQL scripts with specific conditions. A condition in the IF-ELSE statement can be a standard variable or a scalar subquery that returns only one column value from one row. The IF statement allows the system to automatically select the execution logic based on the specified conditions. MaxCompute supports the following IF syntax:
 
@@ -4469,7 +4978,7 @@ Scalar subqueries: A BOOLEAN-type scalar subquery in the IF-ELSE statement deter
 @i bigint; @t table(id bigint, value bigint); IF ((SELECT count(*) FROM src WHERE a = '5') > 1) BEGIN @i := 1; @t := select @i, @i*2; END ELSE BEGIN @i := 2; @t := select @i, @i*2; END select id, value from @t;
 ```
 
-#### UPDATE and DELETE
+#### 3.5.5 UPDATE and DELETE
 
 This topic describes the UPDATE and DELETE statements in MaxCompute SQL. The UPDATE and DELETE statements are used to manage data of specific rows in tables or partitions.
 
@@ -4731,11 +5240,11 @@ Summary: table name: acid_update_pt /ds=2019 instance count: 2 run time: 16
    after merge, file count:        2  file size: 642  file physical size: 1926
 ```
 
-### Built-in functions
+### 3.6 Built-in functions
 
-#### Mathematical functions
+#### 3.6.1 Mathematical functions
 
-##### ABS
+##### 3.6.1.1 ABS
 
 This topic describes how to use the ABS mathematical function in MaxCompute. This function calculates the absolute value.
 
@@ -4781,7 +5290,7 @@ CREATE TABLE IF NOT EXISTS tbl1 (
 ) COMMENT 'ABS function test table'; INSERT INTO tbl1 VALUES (10), (-25), (0), (NULL); SELECT ABS(id) FROM tbl1; -- Calculate the absolute value of the id field in the tbl1 table.
 ```
 
-##### ACOS
+##### 3.6.1.2 ACOS
 
 This topic describes how to use the ACOS mathematical function in MaxCompute. This function calculates the arc cosine of a specified **number**.
 
@@ -4804,7 +5313,7 @@ SELECT ACOS("0.87"); -- Result +---------------------+
 +---------------------+
 ```
 
-##### ASIN
+##### 3.6.1.3 ASIN
 
 This topic describes how to use the ASIN mathematical function in MaxCompute to calculate the arcsine of an input value. This function calculates the arcsine of a specified `number` and returns the result in radians.
 
@@ -4826,7 +5335,7 @@ SELECT ASIN(1); -- Result +----------------------+
 +----------------------+
 ```
 
-##### ATAN
+##### 3.6.1.4 ATAN
 
 This topic describes how to use the ATAN mathematical function in MaxCompute to calculate the arc tangent of an input value. This function calculates the arc tangent of a specified number and returns the result in radians.
 
@@ -4848,7 +5357,7 @@ SELECT ATAN(1); -- Return result +----------------------+
 +----------------------+
 ```
 
-##### CEIL
+##### 3.6.1.5 CEIL
 
 This topic describes how to use the CEIL mathematical function in MaxCompute to round up an input value. This function rounds up an input value and returns the smallest integer that is greater than or equal to the input value.
 
@@ -4870,7 +5379,7 @@ SELECT CEIL(1.1); -- Result +-------+
 +-------+
 ```
 
-##### CONV
+##### 3.6.1.6 CONV
 
 This topic describes how to use the CONV mathematical function in MaxCompute for base conversion. This function converts a numeric value from a specified base to another.
 
@@ -4900,7 +5409,7 @@ SELECT CONV('1100', 2, 10); -- Result +------+
 +------+
 ```
 
-##### COS
+##### 3.6.1.7 COS
 
 This topic describes how to use the COS mathematical function in MaxCompute to calculate the cosine of an input radian value. This function calculates the cosine of number, which is a radian value.
 
@@ -4922,7 +5431,7 @@ SELECT COS(3.1415926/2); -- Result +-------------------------+
 +----------------------+
 ```
 
-##### COSH
+##### 3.6.1.8 COSH
 
 This topic describes how to use the COSH mathematical function in MaxCompute to calculate the hyperbolic cosine of an input value. This function calculates the hyperbolic cosine of a number.
 
@@ -4944,7 +5453,7 @@ SELECT COSH(1); -- Result +----------------------+
 +------+
 ```
 
-##### COT
+##### 3.6.1.9 COT
 
 This topic describes how to use the COT mathematical function in MaxCompute to calculate the cotangent of an input value in radians. This function calculates the cotangent of a number. The input value is in radians.
 
@@ -4966,7 +5475,7 @@ SELECT COT(0.7853981633974483); -- Output +--------------------+
 +---------------------+
 ```
 
-##### EXP
+##### 3.6.1.10 EXP
 
 This topic describes how to use the EXP mathematical function in MaxCompute to calculate the power of the natural constant e. This function calculates the exponential value of a specified number.
 
@@ -4988,7 +5497,7 @@ SELECT EXP(1); -- Result +---------------------+
 +------+
 ```
 
-##### FLOOR
+##### 3.6.1.11 FLOOR
 
 This topic describes how to use the FLOOR mathematical function in MaxCompute to round down an input value. This function rounds down a number and returns the largest integer that is less than or equal to the number.
 
@@ -5034,7 +5543,7 @@ SELECT FLOOR(1.2); -- Return result +------+
 +------+
 ```
 
-##### LN
+##### 3.6.1.12 LN
 
 This topic describes how to use the LN mathematical function in MaxCompute to calculate the natural logarithm of an input value. This function returns the natural logarithm of a number.
 
@@ -5052,7 +5561,7 @@ SELECT LN(1000); -- Result +--------------------+
 +--------------------+
 ```
 
-##### LOG
+##### 3.6.1.13 LOG
 
 This topic describes the LOG mathematical function. Function syntax:
 
@@ -5080,7 +5589,7 @@ The following result is returned:
 +------------+
 ```
 
-##### POW
+##### 3.6.1.14 POW
 
 This topic describes how to use the POW mathematical function in MaxCompute to calculate x raised to the power of y. This function returns x raised to the power of y, which is xy.
 
@@ -5098,7 +5607,7 @@ SELECT POW(10, 2); -- Return result +-------+
 +-------+
 ```
 
-##### RAND
+##### 3.6.1.15 RAND
 
 This topic describes how to use the RAND mathematical function in MaxCompute to generate a random number with a specified seed. This function returns a random number of the DOUBLE type based on the specified seed, and the return value ranges from 0 to 1.
 
@@ -5120,7 +5629,7 @@ seed: optional. The data type is BIGINT. This parameter specifies the random num
 +--------------------+
 ```
 
-##### ROUND
+##### 3.6.1.16 ROUND
 
 This topic describes how to use the ROUND mathematical function in MaxCompute to round a number to a specified number of decimal places. This function rounds a number to a specified number of decimal places.
 
@@ -5186,7 +5695,7 @@ SELECT ROUND(125.315); -- Return result +-------+
 +------+
 ```
 
-##### SIN
+##### 3.6.1.17 SIN
 
 This topic describes how to use the SIN mathematical function in MaxCompute to calculate the sine of an input value in radians. This function calculates the sine of a number. The input value must be in radians.
 
@@ -5208,7 +5717,7 @@ SELECT SIN(0); -- Return result +------+
 +---------------------+
 ```
 
-##### SINH
+##### 3.6.1.18 SINH
 
 This topic describes how to use the SINH mathematical function in MaxCompute to calculate the hyperbolic sine of an input value. This function calculates the hyperbolic sine of a number.
 
@@ -5230,7 +5739,7 @@ SELECT SINH(0); -- Result +------+
 +---------------------+
 ```
 
-##### SQRT
+##### 3.6.1.19 SQRT
 
 This topic describes how to use the SQRT mathematical function in MaxCompute to calculate the square root of an input value. This function calculates the square root of a number.
 
@@ -5252,7 +5761,7 @@ SELECT SQRT(4); -- Result +------+
 +------+
 ```
 
-##### TAN
+##### 3.6.1.20 TAN
 
 This topic describes how to use the TAN mathematical function in MaxCompute to calculate the tangent of an input value in radians. This function calculates the tangent of a number. The input value must be in radians.
 
@@ -5274,7 +5783,7 @@ SELECT TAN(0); -- Return result +------+
 +--------------------+
 ```
 
-##### TANH
+##### 3.6.1.21 TANH
 
 This topic describes how to use the TANH mathematical function in MaxCompute to calculate the hyperbolic tangent of an input value. This function calculates the hyperbolic tangent of a number.
 
@@ -5295,7 +5804,7 @@ SELECT TANH(0); -- Result +------+
 | 0.7615941559557649  |
 ```
 
-##### TRUNC
+##### 3.6.1.22 TRUNC
 
 This topic describes how to use the TRUNC mathematical function and provides examples. Function syntax:
 
@@ -5324,9 +5833,9 @@ The number is filled with zeros from the specified position. Examples:
 trunc(125.815) = 125.0 trunc(125.815, 0) =125.0 trunc(125.815, 1) = 125.80000000000001 trunc(125.815, 2) = 125.81 trunc(125.815, 3) = 125.815 trunc(-125.815, 2) = -125.81 trunc(125.815, -1) = 120.0 trunc(125.815, -2) = 100.0 trunc(125.815, -3) = 0.0 trunc(123.345, 4) = 123.345 trunc(123.345, -4) = 0.0
 ```
 
-##### Additional mathematical functions
+##### 3.6.1.23 Additional mathematical functions
 
-###### Usage notes
+###### 3.6.1.23.1 Usage notes
 
 This topic describes the settings for using the newly extended mathematical functions. MaxCompute 2.0 introduces new mathematical functions. To use these new functions in SQL statements, you must add the following SET statement.
 
@@ -5338,7 +5847,7 @@ SET odps.sql.type.system.odps2=true;
 
 You must submit and run the preceding SET statement together with the SQL statements that use the new functions.
 
-###### LOG2
+###### 3.6.1.23.2 LOG2
 
 This topic describes how to use the LOG2 mathematical function in MaxCompute to calculate the base-2 logarithm of a number. This function returns the base-2 logarithm of a number.
 
@@ -5364,7 +5873,7 @@ SELECT LOG2(NULL); -- Return result +------+
 +------+
 ```
 
-###### LOG10
+###### 3.6.1.23.3 LOG10
 
 This topic describes how to use the LOG10 function in MaxCompute to calculate the base-10 logarithm of a number. This function returns the base-10 logarithm of a number.
 
@@ -5390,7 +5899,7 @@ SELECT LOG10(NULL); -- Result +------+
 +----------------------+
 ```
 
-###### BIN
+###### 3.6.1.23.4 BIN
 
 This topic describes how to use the BIN mathematical function in MaxCompute to return the binary representation of an input value. This function returns the binary representation of a number.
 
@@ -5417,7 +5926,7 @@ SELECT BIN(0); -- Result +------+
 +------+
 ```
 
-###### HEX
+###### 3.6.1.23.5 HEX
 
 This topic describes how to use the HEX mathematical function in MaxCompute to convert integers or strings into hexadecimal. This function converts an integer or a string into hexadecimal.
 
@@ -5447,7 +5956,7 @@ SELECT HEX(0); -- Result +------+
 +------+ SELECT HEX(NULL); -- The function returns an error message and the execution fails.
 ```
 
-###### UNHEX
+###### 3.6.1.23.6 UNHEX
 
 This topic describes how to use the UNHEX mathematical function in MaxCompute to convert a hexadecimal string into the corresponding string. This function converts a hexadecimal string into the corresponding string.
 
@@ -5469,7 +5978,7 @@ SELECT UNHEX('616263'); -- Result +------+
 +------+
 ```
 
-###### RADIANS
+###### 3.6.1.23.7 RADIANS
 
 This topic describes how to use the RADIANS mathematical function in MaxCompute to convert degreesto radians. This function converts degreesto radians.
 
@@ -5495,7 +6004,7 @@ SELECT RADIANS(90); -- Result +----------------------+
 +------+
 ```
 
-###### DEGREES
+###### 3.6.1.23.8 DEGREES
 
 This topic describes how to use the DEGREES mathematical function in MaxCompute to convert radians to degrees. This function converts radians to degrees.
 
@@ -5521,7 +6030,7 @@ SELECT DEGREES(1.5707963267948966); -- Result +------+
 +------+
 ```
 
-###### SIGN
+###### 3.6.1.23.9 SIGN
 
 This topic describes how to use the SIGN mathematical function in MaxCompute to obtain the sign of an input parameter. This function obtains the sign of an input parameter.
 
@@ -5551,7 +6060,7 @@ SELECT SIGN(-2.5); -- Result +------+
 +------+
 ```
 
-###### E
+###### 3.6.1.23.10 E
 
 This topic describes how to use the E mathematical function in MaxCompute to return the value of a natural constant e. This function returns the value of e.
 
@@ -5569,7 +6078,7 @@ SELECT E(); -- Result +---------------------+
 +---------------------+
 ```
 
-###### PI
+###### 3.6.1.23.11 PI
 
 This topic describes how to use the PI mathematical function in MaxCompute to return the value of pi (π). This function returns the value of pi (π).
 
@@ -5587,7 +6096,7 @@ SELECT PI(); -- Result +---------------------+
 +---------------------+
 ```
 
-###### FACTORIAL
+###### 3.6.1.23.12 FACTORIAL
 
 This topic describes how to use the FACTORIAL mathematical function in MaxCompute to calculate the factorial of an input value. This function returns the factorial of a number.
 
@@ -5605,7 +6114,7 @@ SELECT FACTORIAL(5); -- Result +------+
 +------+
 ```
 
-###### CBRT
+###### 3.6.1.23.13 CBRT
 
 This topic describes how to use the CBRT mathematical function in MaxCompute to calculate the cube root of an input value. This function calculates the cube root of a number.
 
@@ -5627,7 +6136,7 @@ SELECT CBRT(8); -- Result +------+
 +------+
 ```
 
-###### SHIFTLEFT
+###### 3.6.1.23.14 SHIFTLEFT
 
 This topic describes how to use the SHIFTLEFT mathematical function in MaxCompute to perform a bitwise left shift operation. This function performs a bitwise left shift operation (<<).
 
@@ -5649,7 +6158,7 @@ number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGI
 +------+
 ```
 
-###### SHIFTRIGHT
+###### 3.6.1.23.15 SHIFTRIGHT
 
 This topic describes how to use the SHIFTRIGHT mathematical function in MaxCompute to perform a bitwise right shift operation. This function performs a bitwise right shift operation (>>).
 
@@ -5672,7 +6181,7 @@ the right by 2 bits yields 0001) SELECT SHIFTRIGHT(4, 2); -- Result +------+
 +------+
 ```
 
-###### SHIFTRIGHTUNSIGNED
+###### 3.6.1.23.16 SHIFTRIGHTUNSIGNED
 
 This topic describes how to use the SHIFTRIGHTUNSIGNED mathematical function in MaxCompute to perform unsigned bitwise right shift operations. This function performs an unsigned bitwise right shift operation (>>>).
 
@@ -5694,7 +6203,7 @@ number1: required. This parameter must be of the TINYINT, SMALLINT, INT, or BIGI
 +------------+
 ```
 
-###### FORMAT_NUMBER
+###### 3.6.1.23.17 FORMAT_NUMBER
 
 This topic describes how to use the FORMAT_NUMBER mathematical function in MaxCompute to convert a number into a string of a specified format. This function converts a number into a string of a specified format.
 
@@ -5720,7 +6229,7 @@ SELECT FORMAT_NUMBER(5.230134523424545456, 3); -- Result +------+
 +---------+
 ```
 
-###### WIDTH_BUCKET
+###### 3.6.1.23.18 WIDTH_BUCKET
 
 This topic describes how to use the WIDTH_BUCKET mathematical function in MaxCompute to define bucket ranges and return the ID of the bucket into which the value of a specific expression falls. This function specifies the number of buckets and the minimum and maximum values of the acceptable range for a bucket. This function allows you to construct equi-width buckets, in which the bucket range is divided into intervals that have an identical size. This function returns the ID of the bucket into which the value of a specific expression falls. This function supports the following data types: DECIMAL(precision,scale) in the MaxCompute V2.0 data type edition, BIGINT, INT, FLOAT, DOUBLE, and DECIMAL.
 
@@ -5754,9 +6263,9 @@ AS t(key, value); -- Return result +-------+--------+-------------+
 +-------+--------+-------------+
 ```
 
-#### String functions
+#### 3.6.2 String functions
 
-##### CHAR_MATCHCOUNT
+##### 3.6.2.1 CHAR_MATCHCOUNT
 
 The CHAR_MATCHCOUNT function counts the number of identical characters between two strings. Specifically, it counts how many characters in `str1` also appear in `str2` . This topic describes how to use the CHAR_MATCHCOUNT function in MaxCompute. This function counts the number of characters in the first string that also appear in the second string.
 
@@ -5776,7 +6285,7 @@ SELECT CHAR_MATCHCOUNT('abd', 'aabc'); -- Return result +--------+
 +--------+
 ```
 
-##### CHR
+##### 3.6.2.2 CHR
 
 This topic describes how to use the CHR string function in MaxCompute to convert a specified ASCII code into the corresponding character. This function converts a specified ASCII code into a character.
 
@@ -5798,7 +6307,7 @@ SELECT CHR(65); -- Result +------+
 +------+
 ```
 
-##### CONCAT
+##### 3.6.2.3 CONCAT
 
 This topic describes how to use the CONCAT string function in MaxCompute to concatenate all input strings. This function concatenates all input strings and returns the result.
 
@@ -5824,7 +6333,7 @@ SELECT CONCAT('ab', 'c'); -- Result +------+
 +------+
 ```
 
-##### INSTR
+##### 3.6.2.4 INSTR
 
 This topic describes how to use the INSTR string function in MaxCompute to calculate the position of a substring in a string. This function calculates the position of the substring str2 in the string str1.
 
@@ -5860,7 +6369,7 @@ SELECT INSTR('Tech on the net', 'on'); -- Result +------+
 +------+
 ```
 
-##### IS_ENCODING
+##### 3.6.2.5 IS_ENCODING
 
 This topic describes how to use the IS_ENCODING string function in MaxCompute to determine whether an input string can be converted between specified character sets. This function determines whether the input string str can be converted from a specified source character set from_encoding to another character set to_encoding. You can also use this function to detect corrupted data. A common approach is to set from_encoding to UTF- 8 and to_encoding to GBK.
 
@@ -5886,7 +6395,7 @@ SELECT IS_ENCODING('测试', 'utf-8', 'gbk'); -- Result +------+
 +-------+
 ```
 
-##### KEYVALUE
+##### 3.6.2.6 KEYVALUE
 
 This topic describes how to use the KEYVALUE string function in MaxCompute to split a source string into key-value pairs by using specified delimiters and return the value that corresponds to a specified key. The function splits the source string srcStr into key-value pairs by using split1, separates the keys and values by using split2, and returns the value that corresponds to the specified key.
 
@@ -5901,14 +6410,14 @@ srcStr: required. This parameter must be of the STRING type. It specifies the so
 | _c0  |
 +------+
 | 2    |
-+------+ -- Example 2: Specify "\;" as split1 and ":" as split2, and return the Value that cor responds to the key tf SELECT KEYVALUE('\;decreaseStore:1\;xcard:1\;isB2C:1\;tf:21910\;cart:1\;shipping:2\;pf:0\;mark :shoes\;instPayAmount:0\;', '\;', ':', 'tf'); -- Result +-------+
++------+ -- Example 2: Specify "\;" as split1 and ":" as split2, and return the Value that cor responds to the key tf KEYVALUE('\;decreaseStore:1\;xcard:1\;isB2C:1\;tf:21910\;cart:1\;shipping:2\;pf:0\;mark :shoes\;instPayAmount:0\;', '\;', ':', 'tf'); -- Result +-------+
 | _c0   |
 +-------+
 | 21910 |
 +-------+
 ```
 
-##### LENGTH
+##### 3.6.2.7 LENGTH
 
 This topic describes how to use the LENGTH string function in MaxCompute to return the length of a string. This function returns the length of the string str.
 
@@ -5926,7 +6435,7 @@ SELECT LENGTH('hi! China'); -- Return result +------+
 +------+
 ```
 
-##### LENGTHB
+##### 3.6.2.8 LENGTHB
 
 This topic describes how to use the LENGTHB string function in MaxCompute to return the length of a string in bytes. This function returns the length of the string str in bytes.
 
@@ -5944,13 +6453,9 @@ SELECT LENGTHB('hi! 中国'); -- Return result +------+
 +------+
 ```
 
-##### MD5
+##### 3.6.2.9 MD5
 
-This topic describes how to use the string function MD5 in MaxCompute to compute the MD5 hash of an input string.
-
-**Usage notes**
-
-Computes the MD5 hash of the input string value.
+This topic describes how to use the string function MD5 in MaxCompute to compute the MD5 hash of an input string. Computes the MD5 hash of the input string value.
 
 **Syntax**
 
@@ -5972,7 +6477,7 @@ SELECT MD5('abc'); -- Return result +----------------------------------+
 +------+
 ```
 
-##### PARSE_URL
+##### 3.6.2.10 PARSE_URL
 
 This topic describes how to use the PARSE_URL string function in MaxCompute to parse URLs and extract information based on specified parts. This function parses a URL and extracts information based on a key.
 
@@ -6025,7 +6530,7 @@ url: required. The URL to parse. If the URL is NULL, the function returns NULL. 
 +---------------------+
 ```
 
-##### REGEXP_EXTRACT
+##### 3.6.2.11 REGEXP_EXTRACT
 
 This topic describes how to use the REGEXP_EXTRACT string function in MaxCompute to extract the content of a specified group from a string based on a regular expression. This function splits the source string based on the regular expression pattern and returns the characters of the group at the specified occurrence index.
 
@@ -6055,7 +6560,7 @@ SELECT REGEXP_EXTRACT('foothebar', 'foo(.*?)(bar)', 1); -- Result +------+
 +------+ -- If you submit SQL statements for regular expression calculations on the MaxCompute client, you must use two backslashes (\\) as escape characters. -- If the pattern does not specify a group, the system returns an error: -- SELECT REGEXP_EXTRACT('foothebar', 'foothebar'); -- Error
 ```
 
-##### REGEXP_INSTR
+##### 3.6.2.12 REGEXP_INSTR
 
 This topic describes how to use the REGEXP_INSTR string function in MaxCompute to return the start or end position of the substring that matches a regular expression for the nth time in a string. This function returns the start or end position of the substring in the source string that matches the pattern for the nth occurrence, starting from start_position.
 
@@ -6073,7 +6578,7 @@ SELECT REGEXP_INSTR('i love www.taobao.com', 'o[[:alpha:]]{1}', 3, 2); -- Return
 +------+
 ```
 
-##### REGEXP_SUBSTR
+##### 3.6.2.13 REGEXP_SUBSTR
 
 This topic describes how to use the REGEXP_SUBSTR string function in MaxCompute to return a substring that matches a regular expression for the nth time in a string. This function returns the substring that matches the specified pattern for the nth_occurrence time in source, starting from the start_position.
 
@@ -6101,7 +6606,7 @@ SELECT REGEXP_SUBSTR('I love aliyun very much', 'a[[:alpha:]]{5}'); -- Return re
 +------+
 ```
 
-##### REGEXP_COUNT
+##### 3.6.2.14 REGEXP_COUNT
 
 This topic describes how to use the REGEXP_COUNT string function in MaxCompute to count the occurrences of substrings that match a regular expression in a string. This function counts the occurrences of substrings that match the specified pattern in the source string, starting from start_position.
 
@@ -6123,7 +6628,7 @@ SELECT REGEXP_COUNT('abababc', 'a.c'); -- Result +------+
 +------+
 ```
 
-##### REGEXP_REPLACE
+##### 3.6.2.15 REGEXP_REPLACE
 
 This topic describes how to use the REGEXP_REPLACE string function in MaxCompute to replace substrings that match a regular expression in a string with a specified string. This function replaces the substring in the source string that matches the pattern for the specified occurrence time with the replace_string and returns the result.
 
@@ -6149,7 +6654,7 @@ source: required. This parameter is of the STRING type and specifies the string 
 +------+
 ```
 
-##### SPLIT_PART
+##### 3.6.2.16 SPLIT_PART
 
 This topic describes how to use the SPLIT_PART string function in MaxCompute to split a string by a delimiter and return the substring of a specified segment. This function splits the string str by the specifiedseparator and returns the substring from the start segment to the end segment (inclusive).
 
@@ -6169,7 +6674,7 @@ str: required. This parameter is of the STRING type and specifies the string to 
 +------+
 ```
 
-##### SUBSTR
+##### 3.6.2.17 SUBSTR
 
 This topic describes how to use the SUBSTR string function in MaxCompute to return a substring of a specified length starting from a specified position in a string. This function returns a substring of the string str, starting at start_position with a length of length.
 
@@ -6189,7 +6694,7 @@ str: required. The data type is STRING. If the input value is of the BIGINT, DEC
 +------+
 ```
 
-##### TOLOWER
+##### 3.6.2.18 TOLOWER
 
 This topic describes how to use the TOLOWER string function in MaxCompute to convert an English string to lowercase. This function converts the English string specified by source to lowercase.
 
@@ -6211,7 +6716,7 @@ source: required. The value is of the STRING type. If the input value is of the 
 +--------+
 ```
 
-##### TOUPPER
+##### 3.6.2.19 TOUPPER
 
 This topic describes how to use the TOUPPER string function in MaxCompute to convert an English string to uppercase. This function converts the English string specified by source to uppercase.
 
@@ -6229,7 +6734,7 @@ source: required. The value is of the STRING type. If the input value is of the 
 +--------+
 ```
 
-##### TO_CHAR
+##### 3.6.2.20 TO_CHAR
 
 This topic describes how to use the TO_CHAR string function in MaxCompute to convert BOOLEAN, BIGINT, DECIMAL, or DOUBLE values into their corresponding STRING representations. This function converts BOOLEAN, BIGINT, DECIMAL, or DOUBLE values into their corresponding STRING representations.
 
@@ -6251,7 +6756,7 @@ SELECT TO_CHAR(123); -- Result +------+
 +-------+
 ```
 
-##### TRIM
+##### 3.6.2.21 TRIM
 
 This topic describes how to use the TRIM string function in MaxCompute to remove leading and trailing spaces from an input string. This function removes leading and trailing spaces from the input string str.
 
@@ -6269,7 +6774,7 @@ SELECT TRIM(' abc '); -- Return result +------+
 +------+
 ```
 
-##### LTRIM
+##### 3.6.2.22 LTRIM
 
 This topic describes how to use the LTRIM string function in MaxCompute to remove leading spaces from an input string. This function removes leading spaces from the input string str.
 
@@ -6285,7 +6790,7 @@ SELECT LTRIM(' abc '); -- Result +------+
 +------+
 ```
 
-##### RTRIM
+##### 3.6.2.23 RTRIM
 
 This topic describes how to use the RTRIM string function in MaxCompute to remove trailing spaces from an input string. This function removes trailing spaces from the input string str.
 
@@ -6303,7 +6808,7 @@ SELECT RTRIM('a abc '); -- Return result +------+
 +------+
 ```
 
-##### REVERSE
+##### 3.6.2.24 REVERSE
 
 This topic describes how to use the REVERSE string function in MaxCompute to return a reversed string. The function returns a reversed string.
 
@@ -6313,15 +6818,13 @@ STRING REVERSE(STRING str);
 
 str: required. The value is of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, the function implicitly converts it to the STRING type before calculation. If the input value is of any other type, the system returns an error. The function returns a value of the STRING type. If the input parameter is NULL, the function returns NULL.
 
-**Example**
-
 ```
 SELECT REVERSE('abcedfg'); -- Result +---------+
 | gfdecba |
 +---------+
 ```
 
-##### SPACE
+##### 3.6.2.25 SPACE
 
 This topic describes how to use the SPACE string function in MaxCompute to return a string of spaces with a specified length. The function returns a string of spaces with a length of n.
 
@@ -6337,7 +6840,7 @@ n: required. The value must be of the BIGINT type and must not exceed `2 MB` . I
 +------+ -- An error occurs if the length exceeds 2 MB. SELECT SPACE(400000000000);
 ```
 
-##### REPEAT
+##### 3.6.2.26 REPEAT
 
 This topic describes how to use the REPEAT string function in MaxCompute to repeat a string a specified number of times. This function returns the str string repeated n times.
 
@@ -6353,7 +6856,7 @@ str: Required. The value must be of the STRING type. If the input value is of th
 +-------------------+
 ```
 
-##### ASCII
+##### 3.6.2.27 ASCII
 
 This topic describes how to use the ASCII string function in MaxCompute. This function returns the ASCII code of the first character in the string **str**.
 
@@ -6371,9 +6874,9 @@ SELECT ASCII('abcde'); -- Result +-------+
 +-------+
 ```
 
-##### Additional string functions
+##### 3.6.2.28 Additional string functions
 
-###### Usage notes
+###### 3.6.2.28.1 Usage notes
 
 This topic describes the settings that you must configure to use the newly extended string functions. After an upgrade to MaxCompute 2.0, MaxCompute provides newly extended string functions. To use these new functions in SQL statements, you must add the following SET statement.
 
@@ -6385,7 +6888,7 @@ SET odps.sql.type.system.odps2=true;
 
 You must submit and run the preceding SET statement and the SQL statements that use the new functions at the same time.
 
-###### CONCAT_WS
+###### 3.6.2.28.2 CONCAT_WS
 
 This topic describes the CONCAT_WS function in string functions and provides examples. Syntax:
 
@@ -6403,7 +6906,7 @@ DATETIME type, it is implicitly converted to a value of the STRING type before c
 concat_ws(':','name','hanmeimei')='name:hanmeimei' concat_ws(':','avg',null,'34')=null
 ```
 
-###### LPAD
+###### 3.6.2.28.3 LPAD
 
 This topic describes how to use the LPAD string function in MaxCompute to pad a string to a specified length on the left. This function pads the string `a` to the length `len` on the left using the string `b` .
 
@@ -6427,7 +6930,7 @@ a: required. The data type is STRING. len: required. The data type is INT. b: re
 +---------------+
 ```
 
-###### RPAD
+###### 3.6.2.28.4 RPAD
 
 This topic describes how to use the RPAD string function in MaxCompute to pad a string to a specified length on the right. This function pads the string a to the length len on the right using the string b.
 
@@ -6451,7 +6954,7 @@ a: required. The data type is STRING. len: required. The data type is INT. b: re
 +---------------+
 ```
 
-###### REPLACE
+###### 3.6.2.28.5 REPLACE
 
 This topic describes how to use the REPLACE string function in MaxCompute to replace matched substrings in a source string with a specified string. This function replaces the exact matches of the OLD string in string a with the NEW string, and returns string a.
 
@@ -6471,7 +6974,7 @@ a: required. This parameter must be of the STRING type and specifies the source 
 +------+
 ```
 
-###### SOUNDEX
+###### 3.6.2.28.6 SOUNDEX
 
 This topic describes how to use the SOUNDEX string function in MaxCompute to convert a regular string into a SOUNDEX string. This function converts a regular string into a SOUNDEX string.
 
@@ -6487,7 +6990,7 @@ a: required. This parameter must be of the STRING type. The function returns a v
 +------+
 ```
 
-###### SUBSTRING_INDEX
+###### 3.6.2.28.7 SUBSTRING_INDEX
 
 This topic describes how to use the SUBSTRING_INDEX string function in MaxCompute to extract the substring before a specified segment of a string by using a delimiter. This function extracts the substring before the count-th delimiter in string a. If count is positive, the extraction starts from the left. If count is negative, it starts from the right.
 
@@ -6507,7 +7010,7 @@ a: required. This parameter must be of the STRING type and specifies the source 
 +------+
 ```
 
-###### TRANSLATE
+###### 3.6.2.28.8 TRANSLATE
 
 This topic describes how to use the TRANSLATE string function in MaxCompute to replace specified characters in a string with corresponding characters one by one. This function replace each character in str1 that appears in str2 with the character at the corresponding position in str3.
 
@@ -6527,7 +7030,7 @@ str1: required. This parameter must be of the STRING or VARCHAR type and specifi
 +------+
 ```
 
-###### URL_ENCODE
+###### 3.6.2.28.9 URL_ENCODE
 
 This topic describes how to use the URL_ENCODE string function in MaxCompute to encode an input string into the application/x-www-form-urlencoded MIME format. This function encodes an input string into the application/x-www-form-urlencoded MIME format. Letters a through z and A through Z remain unchanged. Periods (.), hyphens (-), asterisks (*), and underscores (_) also remain unchanged. The function converts spaces to plus signs (+). For all other characters, the function converts them to byte values based on the specified encoding format and then represents each byte value in the %xy format, where xy is the hexadecimal representation of the character.
 
@@ -6545,7 +7048,7 @@ input: required. This parameter must be of the STRING type and specifies the inp
 +---------------------------------------------------+
 ```
 
-###### URL_DECODE
+###### 3.6.2.28.10 URL_DECODE
 
 This topic describes how to use the URL_DECODE string function in MaxCompute to convert a URL-encoded string to a regular string, which is the reverse process of URL_ENCODE. This function converts an input string from the application/x-www-form-urlencoded MIME format to a regular string, which is the reverse process of URL_ENCODE. Characters a through z and A through Z remain unchanged. Periods (.), hyphens (-), asterisks (*), and underscores (_) remain unchanged. Plus signs (+) are converted to spaces. The function first performs percent-decoding, converting %xy sequences into their corresponding byte values. Then, it decodes continuous byte values into a string based on the encoding format specified by the second parameter. All other characters remain unchanged. The final return value is a UTF-8 encoded string.
 
@@ -6563,7 +7066,7 @@ input: required. This parameter must be of the STRING type and specifies the inp
 +---------------------------------------+
 ```
 
-###### JSON_TUPLE
+###### 3.6.2.28.11 JSON_TUPLE
 
 This topic describes how to use the JSON_TUPLE string function in MaxCompute to extract strings from a standard JSON string based on a set of keys. This function extracts the strings specified by a set of keys (key1, key2, ...) from a standard JSON string.
 
@@ -6614,7 +7117,7 @@ l;
 +------+---------+-------+
 ```
 
-###### FROM_JSON
+###### 3.6.2.28.12 FROM_JSON
 
 This topic describes how to use the FROM_JSON string function in MaxCompute to return an object of the ARRAY, MAP, or STRUCT type based on a JSON string and schema information. This function returns an object of the ARRAY, MAP, or STRUCT type based on the specified JSON string and schema information.
 
@@ -6654,7 +7157,7 @@ For the Object and Array types, the function parses as many elements as possible
 +--------------+
 ```
 
-###### TO_JSON
+###### 3.6.2.28.13 TO_JSON
 
 This topic describes how to use the TO_JSON string function in MaxCompute. This function converts a given data type to a JSON string.
 
@@ -6692,9 +7195,9 @@ SELECT TO_JSON(named_struct('a', 1, 'b', 2)); -- Result +---------------+
 +-----------+
 ```
 
-#### Date functions
+#### 3.6.3 Date functions
 
-##### DATEADD
+##### 3.6.3.1 DATEADD
 
 This topic describes how to use the DATEADD date function in MaxCompute to modify a date value based on a specified datepart and delta. This function modifies a date value based on a specified datepart and delta.
 
@@ -6742,7 +7245,7 @@ Example 2: DATETIME represented as a constant.
 SELECT DATEADD(DATETIME '2005-03-30 00:00:00', -1, 'mm'); -- In MaxCompute SQL, the DATETIME type does not have a direct constant representat ion. This is an incorrect usage. SELECT DATEADD(CAST("2005-03-30 00:00:00" AS DATETIME), -1, 'mm'); -- To specify a DATETIME constant, you must explicitly cast a STRING constant to th e DATETIME type.
 ```
 
-##### DATEDIFF
+##### 3.6.3.2 DATEDIFF
 
 This topic describes how to use the DATEDIFF date function in MaxCompute to calculate the difference between two dates in a specified datepart. This function calculates the difference between `date1` and `date2` in the specified
 
@@ -6836,7 +7339,7 @@ SELECT DATEDIFF(DATETIME '2013-05-31 13:00:00', TO_DATE('2013-05-31 12:30:00', '
 +--------+
 ```
 
-##### DATEPART
+##### 3.6.3.3 DATEPART
 
 This topic describes how to use the DATEPART date function in MaxCompute to extract a value from a date based on a specified datepart. This function extracts a value from `date` based on the specified `datepart` .
 
@@ -6858,7 +7361,7 @@ SELECT DATEPART(TO_DATE('2017-06-08 01:10:00', 'yyyy-mm-dd hh:mi:ss'), 'yyyy'); 
 +--------+
 ```
 
-##### DATETRUNC
+##### 3.6.3.4 DATETRUNC
 
 This topic describes how to use the DATETRUNC date function in MaxCompute to truncate a date to a specified datepart and return the resulting date value. This function returns the date value after the specified datepart has been truncated from a date.
 
@@ -6884,7 +7387,7 @@ date: The value must be of the DATE, DATETIME, or TIMESTAMP type. If the input v
 +---------------------+
 ```
 
-##### GETDATE
+##### 3.6.3.5 GETDATE
 
 This topic describes how to use the GETDATE date function in MaxCompute to obtain the current system time. This function obtains the current system time. MaxCompute uses UTC+8 as its standard time zone.
 
@@ -6906,7 +7409,7 @@ SELECT GETDATE(); -- Result +---------------------+
 +---------------------+
 ```
 
-##### ISDATE
+##### 3.6.3.6 ISDATE
 
 This topic describes how to use the ISDATE date function in MaxCompute to determine whether a date string can be converted to a date value based on a format string. This function checks whether a date string can be converted to a date value based on the specified format string. If the conversion succeeds, the function returns `true` . Otherwise, it returns `false` .
 
@@ -6928,7 +7431,7 @@ SELECT ISDATE('2023-01-15', 'yyyy-MM-dd'); -- Result +------+
 +-------+
 ```
 
-##### LASTDAY
+##### 3.6.3.7 LASTDAY
 
 This topic describes how to use the LASTDAY date function in MaxCompute to obtain the last day of the month for a given date. This function returns the last day of the month for the specified date. The result is truncated to the day, with the time portion set to 00:00:00.
 
@@ -6950,7 +7453,7 @@ SELECT LASTDAY(DATETIME '2023-02-15 10:30:45'); -- Result +---------------------
 +---------------------+
 ```
 
-##### TO_DATE
+##### 3.6.3.8 TO_DATE
 
 This topic describes how to use the TO_DATE date function in MaxCompute to convert a string in a specified format into a date value. This function converts a string in a specified format into a date value.
 
@@ -7007,7 +7510,7 @@ SELECT TO_DATE('Alibaba2017-12*03', 'Alibabayyyy-mm*dd'); -- Result +-----------
 +--------------------------+
 ```
 
-##### TO_CHAR
+##### 3.6.3.9 TO_CHAR
 
 This topic describes how to use the TO_CHAR date function in MaxCompute to convert a date value into a string based on a specified format. The function converts a date value into a string based on the specified format.
 
@@ -7029,7 +7532,7 @@ SELECT TO_CHAR(TO_DATE('2017-12-03 00:00:00', 'yyyy-mm-dd hh:mi:ss'), 'Alibaba C
 +----------+ -- The following examples use invalid formats and return errors. SELECT TO_CHAR('Alibaba 2017-12*3', 'Alibaba yyyy-mm*dd'); SELECT TO_CHAR('2017-24-01', 'yyyy'); SELECT TO_CHAR('2017718', 'yyyymmdd');
 ```
 
-##### UNIX_TIMESTAMP
+##### 3.6.3.10 UNIX_TIMESTAMP
 
 This topic describes how to use the UNIX_TIMESTAMP date function in MaxCompute to convert a date into an integer UNIX timestamp. This function converts a `date` into an integer UNIX timestamp.
 
@@ -7047,7 +7550,7 @@ SELECT UNIX_TIMESTAMP(DATETIME '2009-03-20 11:11:00'); -- Result +------------+
 +------------+
 ```
 
-##### FROM_UNIXTIME
+##### 3.6.3.11 FROM_UNIXTIME
 
 This topic describes how to use the FROM_UNIXTIME date function in MaxCompute to convert a numeric UNIX timestamp into a date value. This function converts a numeric UNIX timestamp unixtime into a date value.
 
@@ -7065,7 +7568,7 @@ SELECT FROM_UNIXTIME(123456789); -- Result +---------------------+
 +---------------------+
 ```
 
-##### WEEKDAY
+##### 3.6.3.12 WEEKDAY
 
 This topic describes how to use the WEEKDAY date function in MaxCompute to return the day of the week for a given date. This function returns the day of the week for the specified date.
 
@@ -7091,7 +7594,7 @@ SELECT WEEKDAY(DATETIME '2023-06-26 00:00:00'); -- Return result (Monday) +-----
 +------+
 ```
 
-##### WEEKOFYEAR
+##### 3.6.3.13 WEEKOFYEAR
 
 This topic describes how to use the WEEKOFYEAR date function in MaxCompute to return the week number of the year for a given date. This function returns the week number of the year for the specified date. Monday is the first day of each week.
 
@@ -7123,9 +7626,9 @@ SELECT WEEKOFYEAR(TO_DATE("20141229", "yyyymmdd")); -- Result +------------+
 +------------+
 ```
 
-##### Additional date functions
+##### 3.6.3.14 Additional date functions
 
-###### Usage notes
+###### 3.6.3.14.1 Usage notes
 
 This topic describes the settings required for using the newly extended date functions. MaxCompute 2.0 introduces new date functions. To use these new functions in SQL statements, you must add the following SET statement.
 
@@ -7137,7 +7640,7 @@ SET odps.sql.type.system.odps2=true;
 
 You must submit and run the preceding SET statement and the SQL statements that use the new functions at the same time.
 
-###### YEAR
+###### 3.6.3.14.2 YEAR
 
 This topic describes how to use the YEAR date function in MaxCompute to return the year of a given date. This function returns the year of the specified `date` .
 
@@ -7175,7 +7678,7 @@ SELECT YEAR('1970-01-01 12:30:00'); -- Result +--------+
 +--------+
 ```
 
-###### QUARTER
+###### 3.6.3.14.3 QUARTER
 
 This topic describes how to use the QUARTER date function in MaxCompute to return the quarter of a date. This function returns the quarter of a date. The return value ranges from 1 to 4.
 
@@ -7197,7 +7700,7 @@ SELECT QUARTER('1970-11-12 10:00:00'); -- Return result +------------+
 +------------+
 ```
 
-###### MONTH
+###### 3.6.3.14.4 MONTH
 
 This topic describes how to use the MONTH date function in MaxCompute to return the month of a date. This function returns the month of a date.
 
@@ -7219,7 +7722,7 @@ SELECT MONTH('2014-09-01'); -- Result +------+
 +------+
 ```
 
-###### DAY
+###### 3.6.3.14.5 DAY
 
 This topic describes how to use the DAY date function in MaxCompute to return the day of a date. This function returns the day of a date.
 
@@ -7241,7 +7744,7 @@ SELECT DAY('2014-09-01'); -- Result +------+
 +------+
 ```
 
-###### DAYOFMONTH
+###### 3.6.3.14.6 DAYOFMONTH
 
 This topic describes how to use the DAYOFMONTH date function in MaxCompute to return the day part of a date. This function returns the day part in a date. For example, if you run the `INT` `DAYOFMONTH(2019-10-13)` command for October 13, 2019, the function returns 13.
 
@@ -7263,7 +7766,7 @@ SELECT DAYOFMONTH('2019-09-01'); -- Result +------+
 +------+
 ```
 
-###### HOUR
+###### 3.6.3.14.7 HOUR
 
 This topic describes how to use the HOUR date function in MaxCompute to return the hour part of a date. This function returns the hour part of a date.
 
@@ -7289,7 +7792,7 @@ SELECT HOUR('2014-09-01 12:00:00'); -- Result +--------+
 +--------+
 ```
 
-###### MINUTE
+###### 3.6.3.14.8 MINUTE
 
 This topic describes how to use the MINUTE date function in MaxCompute to return the minute part of a date. The function returns the minute part of a date.
 
@@ -7315,7 +7818,7 @@ SELECT MINUTE('2014-09-01 12:30:00'); -- Result +------------+
 +------------+
 ```
 
-###### SECOND
+###### 3.6.3.14.9 SECOND
 
 This topic describes how to use the SECOND date function in MaxCompute to return the second part of a date. The function returns the second part of a date.
 
@@ -7341,7 +7844,7 @@ SELECT SECOND('2014-09-01 12:30:45'); -- Result +--------+
 +--------+
 ```
 
-###### FROM_UTC_TIMESTAMP
+###### 3.6.3.14.10 FROM_UTC_TIMESTAMP
 
 This topic describes how to use the FROM_UTC_TIMESTAMP function in MaxCompute to convert a Coordinated Universal Time (UTC) timestamp to a timestamp in a specified time zone. This function converts a UTC timestamp to a timestamp in a specified time zone.
 
@@ -7367,7 +7870,7 @@ TIMESTAMP FROM_UTC_TIMESTAMP({any primitive type}*, STRING timezone);
 +-----------------------+
 ```
 
-###### CURRENT_TIMESTAMP
+###### 3.6.3.14.11 CURRENT_TIMESTAMP
 
 This topic describes how to use the CURRENT_TIMESTAMP date function in MaxCompute to return a timestamp of the TIMESTAMP type. This function returns the current timestamp of the TIMESTAMP type. The returned value is not fixed.
 
@@ -7385,7 +7888,7 @@ SELECT CURRENT_TIMESTAMP(); -- Result +-------------------------+
 +-------------------------+
 ```
 
-###### ADD_MONTHS
+###### 3.6.3.14.12 ADD_MONTHS
 
 This topic describes how to use the ADD_MONTHS date function in MaxCompute to return a date that results from adding a specified number of months to a start date. This function returns the date that results from adding nummonths months to the start date startdate.
 
@@ -7415,7 +7918,7 @@ SELECT ADD_MONTHS('2017-02-14', 3); -- Result +------------+
 +------+
 ```
 
-###### LAST_DAY
+###### 3.6.3.14.13 LAST_DAY
 
 This topic describes how to use the LAST_DAY date function in MaxCompute to return the last day of the month for a given date. This function returns the last day of the month for a given date.
 
@@ -7441,7 +7944,7 @@ SELECT LAST_DAY('2017-03-04'); -- Result +------------+
 +--------+
 ```
 
-###### NEXT_DAY
+###### 3.6.3.14.14 NEXT_DAY
 
 This topic describes how to use the NEXT_DAY date function in MaxCompute to return the first date that is later than the specified date and falls on the specified day of the week. This function returns the first date that is later than the specified startdate and falls on the specified day of the week.
 
@@ -7467,7 +7970,7 @@ SELECT NEXT_DAY('2017-08-01','TU'); -- Return result +------------+
 +------------+
 ```
 
-###### MONTHS_BETWEEN
+###### 3.6.3.14.15 MONTHS_BETWEEN
 
 This topic describes how to use the MONTHS_BETWEEN function in MaxCompute to return the number of months between date1 and date2. This function returns the number of months between date1 and date2.
 
@@ -7493,7 +7996,7 @@ SELECT MONTHS_BETWEEN('1997-02-28 10:30:00', '1996-10-30'); -- Result +---------
 +------------+
 ```
 
-###### EXTRACT
+###### 3.6.3.14.16 EXTRACT
 
 This topic describes how to use the EXTRACT date function in MaxCompute to extract a specified datepart from a date. The function extracts the specified `datepart` unit from the date `timestamp` . If the time value is invalid, such as exceeding the valid range, the function returns the remainder of the out-of-range value divided by the maximum value of the corresponding valid time range.
 
@@ -7522,9 +8025,9 @@ SET odps.sql.type.system.odps2=true; SELECT EXTRACT(YEAR FROM '2019-05-01 11:21:
 +------+--------+ -- The maximum valid value for hour is 24. The out-of-range value is 31. The remainde r of 31 divided by 24 is 7. -- The maximum valid value for minute is 60. The out-of-range value is 61. The remain der of 61 divided by 60 is 1.
 ```
 
-#### Window functions
+#### 3.6.4 Window functions
 
-##### Overview
+##### 3.6.4.1 Overview
 
 MaxCompute SQL supports window functions for flexible data analysis and processing. This topic describes the usage notes and syntax for window functions. MaxCompute SQL supports window functions for flexible data analysis and processing.
 
@@ -7542,7 +8045,7 @@ PARTITION BY: specifies the columns used for partitioning. Rows with the same va
 
 x, y: must be integer constants greater than or equal to 0, with a valid range of 0 to 10000. A value of 0 indicates the current row. You must specify ORDER BY before you can use ROWS to define the window frame. The window functions that support specifying the window frame using ROWS include AVG, COUNT, MAX, MIN, STDDEV, and SUM.
 
-##### COUNT
+##### 3.6.4.2 COUNT
 
 This topic describes how to use the COUNT window function in MaxCompute to calculate the count. This function calculates the count.
 
@@ -7606,7 +8109,7 @@ he count for the second row equals the count for the third row.
 +---------+-------+-------+
 ```
 
-##### AVG
+##### 3.6.4.3 AVG
 
 This topic describes how to use the AVG window function in MaxCompute to calculate the average value. This function calculates the average value.
 
@@ -7642,7 +8145,7 @@ expr: Required. This parameter must be of the DOUBLE or DECIMAL type. If the inp
 +---------+-------+---------------------+
 ```
 
-##### MAX
+##### 3.6.4.4 MAX
 
 This topic describes how to use the MAX window function in MaxCompute to calculate the maximum value. This function calculates the maximum value.
 
@@ -7678,7 +8181,7 @@ expr: required. This parameter accepts any data type except BOOLEAN. If the valu
 +---------+-------+------+
 ```
 
-##### MIN
+##### 3.6.4.5 MIN
 
 This topic describes how to use the MIN window function in MaxCompute to calculate the minimum value. This function calculates the minimum value.
 
@@ -7714,7 +8217,7 @@ expr: required. This parameter accepts any data type except BOOLEAN. If the valu
 +---------+-------+------+
 ```
 
-##### MEDIAN
+##### 3.6.4.6 MEDIAN
 
 This topic describes how to use the MEDIAN window function in MaxCompute to calculate the median. This function calculates the median.
 
@@ -7739,7 +8242,7 @@ number1, number2...: required. These parameters must be numbers of the DOUBLE or
 +---------+-------+------+
 ```
 
-##### STDDEV
+##### 3.6.4.7 STDDEV
 
 This topic describes how to use the STDDEV window function in MaxCompute to calculate the population standard deviation. This function calculates the population standard deviation.
 
@@ -7776,7 +8279,7 @@ expr: required. The value must be of the DOUBLE or DECIMAL type. If the input va
 +---------+-------+----------------------+
 ```
 
-##### STDDEV_SAMP
+##### 3.6.4.8 STDDEV_SAMP
 
 This topic describes how to use the STDDEV_SAMP window function in MaxCompute to calculate the sample standard deviation. This function calculates the sample standard deviation.
 
@@ -7813,7 +8316,7 @@ n cannot calculate the sample standard deviation.
 +---------+-------+----------------------+
 ```
 
-##### SUM
+##### 3.6.4.9 SUM
 
 This topic describes how to use the SUM window function in MaxCompute to calculate the sum. This function calculates the sum.
 
@@ -7849,7 +8352,7 @@ expr: required. The data type must be of the DOUBLE, DECIMAL, or BIGINT type. If
 +---------+-------+------+
 ```
 
-##### DENSE_RANK
+##### 3.6.4.10 DENSE_RANK
 
 This topic describes how to use the DENSE_RANK window function in MaxCompute to calculate consecutive ranks. This function calculates consecutive ranks. Rows with the same values in the ORDER BY columns receive the same rank.
 
@@ -7901,7 +8404,7 @@ INSERT INTO emp VALUES (7844, 'TURNER', 'SALESMAN', 7698, '1981-09-08 00:00:00',
 +--------+--------+---------+------+
 ```
 
-##### RANK
+##### 3.6.4.11 RANK
 
 This topic describes how to use the RANK window function in MaxCompute to calculate ranks. This function calculates ranks. If rows have identical values in the ORDER BY columns, the function assigns them the same rank and skips the subsequent ranks.
 
@@ -7953,7 +8456,7 @@ ULL, 20); INSERT INTO emp VALUES (7934, 'MILLER', 'CLERK', 7782, '1982-01-23 00:
 +--------+--------+---------+------+
 ```
 
-##### LAG
+##### 3.6.4.12 LAG
 
 This topic describes how to use the LAG window function in MaxCompute to retrieve the value of a preceding row at a specified offset. This function retrieves the value of a row that precedes the current row by a specified offset. For example, if the current row number is rn, the function retrieves the value from the row numbered rn-offset.
 
@@ -7988,7 +8491,7 @@ expr: required. This parameter can be of any data type. offset: required. This p
 +-----+------+
 ```
 
-##### LEAD
+##### 3.6.4.13 LEAD
 
 This topic describes how to use the LEAD window function in MaxCompute to return the expression value from a subsequent row at a specified offset. The LEAD function returns the value of the expression expr from the offset-th row after the current row towards the end of the partition. The expression expr can be a column, a column operation, or a function operation.
 
@@ -8046,7 +8549,7 @@ SELECT deptno, ename, sal, LEAD(sal, 1) OVER (PARTITION BY deptno ORDER BY sal) 
 +--------+--------+------+---------+
 ```
 
-##### PERCENT_RANK
+##### 3.6.4.14 PERCENT_RANK
 
 This topic describes how to use the PERCENT_RANK window function in MaxCompute to calculate the relative rank of a row within a group of data. This function calculates the relative rank of a row within a group of data.
 
@@ -8109,7 +8612,7 @@ A single window cannot contain more than 10 million rows. `rank` is the return v
 +--------+--------+------+---------------------+
 ```
 
-##### ROW_NUMBER
+##### 3.6.4.15 ROW_NUMBER
 
 This topic describes how to use the ROW_NUMBER window function in MaxCompute to calculate the row number. This function calculates the row number, starting from 1.
 
@@ -8161,7 +8664,7 @@ PARTITION BY [col1, col2, ...]: optional. This clause specifies the columns used
 +--------+--------+--------+------+
 ```
 
-##### CLUSTER_SAMPLE
+##### 3.6.4.16 CLUSTER_SAMPLE
 
 This topic describes how to use the CLUSTER_SAMPLE window function in MaxCompute for cluster sampling. This function performs cluster sampling.
 
@@ -8188,7 +8691,7 @@ CREATE TABLE IF NOT EXISTS test_tbl (
 | groupb | -1.11828960785008   |
 ```
 
-##### NTILE
+##### 3.6.4.17 NTILE
 
 This topic describes how to use the NTILE window function in MaxCompute. This function divides grouped data into **n** sequential slices and returns the current slice value. If the slices are uneven, the system adds the extra rows to the first slice by default.
 
@@ -8241,7 +8744,7 @@ SELECT deptno,ename,sal,NTILE(3) OVER(PARTITION BY deptno ORDER BY sal DESC) AS 
 +------------+--------+------------+------------+
 ```
 
-##### NTH_VALUE
+##### 3.6.4.18 NTH_VALUE
 
 This topic describes how to use the NTH_VALUE window function in MaxCompute to calculate the nth value in a window. This function calculates the nth value in a window. If n exceeds the maximum length of the window, the function returns NULL.
 
@@ -8311,7 +8814,7 @@ ond row exceeds the window length.
 +------------+------------+------------+
 ```
 
-##### CUME_DIST
+##### 3.6.4.19 CUME_DIST
 
 This topic describes how to use the CUME_DIST window function in MaxCompute to calculate the cumulative distribution. The function calculates the cumulative distribution, which is the ratio of the number of rows with values greater than or equal to the current value to the total number of rows in the group. The ORDER BY clause specifies the values used for comparison.
 
@@ -8364,7 +8867,7 @@ INSERT INTO emp VALUES (7839, 'KING', 'PRESIDENT', NULL, DATETIME'1981-11-17 00:
 +--------+--------+--------+-----------+
 ```
 
-##### FIRST_VALUE
+##### 3.6.4.20 FIRST_VALUE
 
 This topic describes how to use the FIRST_VALUE window function in MaxCompute to obtain the first value up to the current row after sorting within a group. This function obtains the first value from the start of a group up to the current row after sorting.
 
@@ -8411,7 +8914,7 @@ expr: required. This parameter can be any basic data type. PARTITION BY [col1, c
 +---------+-------+-------------+
 ```
 
-##### LAST_VALUE
+##### 3.6.4.21 LAST_VALUE
 
 This topic describes how to use the LAST_VALUE window function in MaxCompute to obtain the last value up to the current row after sorting within a group. This function obtains the last value from the start of a group up to the current row after sorting.
 
@@ -8459,9 +8962,9 @@ CREATE TABLE IF NOT EXISTS test_src (
 +---------+-------+------------+
 ```
 
-#### Aggregate functions
+#### 3.6.5 Aggregate functions
 
-##### Expressions of filter conditions in
+##### 3.6.5.1 Expressions of filter conditions in aggregate functions
 
 #### aggregate functions
 
@@ -8478,7 +8981,7 @@ aggregate_name(expression [, ...]) [FILTER (WHERE where_condition)];
 aggregate_name: the name of the aggregate function. expression: the expression parameter of the aggregate function. FILTER (WHERE where_condition): optional. The filter condition expression. Only the rows where where_condition evaluates to TRUE participate in aggregate computing. The type of the return value depends on the aggregate function that you use.
 
 ```
--- Use the VALUES clause to construct test data and demonstrate the FILTER condition SELECT
+-- Use the VALUES clause to construct test data and demonstrate the FILTER condition
     SUM(x),
     SUM(x) FILTER (WHERE y > 1),
     SUM(x) FILTER (WHERE y > 2)
@@ -8489,7 +8992,7 @@ FROM VALUES (NULL, 1), (1, 2), (2, 3), (3, NULL) AS t(x, y); -- Output +-----+--
 +-----+-----+-----+
 ```
 
-##### COUNT
+##### 3.6.5.2 COUNT
 
 This topic describes how to use the COUNT function in MaxCompute to calculate the number of records and provides reference examples. This function calculates the number of records.
 
@@ -8538,7 +9041,7 @@ INSERT INTO test_src VALUES ('a', 2.0), ('a', 4.0), ('b', 1.0), ('b', 3.0); SELE
 +-----+-------+
 ```
 
-##### COUNT_IF
+##### 3.6.5.3 COUNT_IF
 
 This topic describes how to use the COUNT_IF aggregation function in MaxCompute to count the number of records where the value of expr is TRUE. This function counts the number of records where the value of expr is TRUE.
 
@@ -8556,7 +9059,7 @@ SELECT COUNT_IF(x > 1), COUNT_IF(x <= 1) FROM VALUES (NULL), (0), (1), (2) AS t(
 +-----+-----+
 ```
 
-##### AVG
+##### 3.6.5.4 AVG
 
 This topic describes how to use the AVG aggregate function in MaxCompute to calculate the average value. This function calculates the average value.
 
@@ -8581,7 +9084,7 @@ value: required. The value must be of the DOUBLE or DECIMAL type. If the input v
 +------+
 ```
 
-##### MAX
+##### 3.6.5.5 MAX
 
 This topic describes how to use the MAX aggregate function in MaxCompute to calculate the maximum value. This function calculates the maximum value.
 
@@ -8606,7 +9109,7 @@ value: required. This parameter accepts any data type. If a value in the column 
 +------+
 ```
 
-##### MIN
+##### 3.6.5.6 MIN
 
 This topic describes how to use the MIN aggregate function in MaxCompute to calculate the minimum value. This function calculates the minimum value.
 
@@ -8631,7 +9134,7 @@ value: required. This parameter accepts any data type. If a column value is NULL
 +------+
 ```
 
-##### MEDIAN
+##### 3.6.5.7 MEDIAN
 
 This topic describes how to use the MEDIAN aggregate function in MaxCompute to calculate the median. This function calculates the median.
 
@@ -8656,7 +9159,7 @@ number: required. This parameter must be of the DOUBLE or DECIMAL type. If the i
 +------+
 ```
 
-##### STDDEV
+##### 3.6.5.8 STDDEV
 
 This topic describes how to use the aggregation function STDDEV in MaxCompute to calculate the population standard deviation. This function calculates the population standard deviation.
 
@@ -8681,7 +9184,7 @@ number: required. This parameter must be of the DOUBLE or DECIMAL type. If the i
 +---------------------+
 ```
 
-##### STDDEV_SAMP
+##### 3.6.5.9 STDDEV_SAMP
 
 This topic describes how to use the STDDEV_SAMP aggregation function in MaxCompute to calculate the sample standard deviation. This function calculates the sample standard deviation.
 
@@ -8706,7 +9209,7 @@ number: required. This parameter must be of the DOUBLE or DECIMAL type. If the i
 +----------------------+
 ```
 
-##### SUM
+##### 3.6.5.10 SUM
 
 This topic describes how to use the SUM aggregate function in MaxCompute to calculate the aggregate sum. This function calculates the aggregate sum.
 
@@ -8731,7 +9234,7 @@ value: required. This parameter must be of the DOUBLE, DECIMAL, or BIGINT. If th
 +------+
 ```
 
-##### WM_CONCAT
+##### 3.6.5.11 WM_CONCAT
 
 This topic describes how to use the WM_CONCAT aggregate function in MaxCompute to concatenate values with a specified delimiter. This function concatenates values in str by using the specified separator as the delimiter.
 
@@ -8762,7 +9265,7 @@ In the statement SELECT WM_CONCAT(',', name) FROM test_src; , if test_src is an 
 +----+-------+
 ```
 
-##### PERCENTILE
+##### 3.6.5.12 PERCENTILE
 
 This topic describes how to use the PERCENTILE aggregate function in MaxCompute to return the exact p-th percentile of a specified column. This function returns the exact p-th percentile of a specified column. The value of p must be between 0 and 1. Only integer values produce true percentiles.
 
@@ -8791,9 +9294,9 @@ col: required. The name of a BIGINT column. p: required. This parameter specifie
 +-------------------+
 ```
 
-##### Additional aggregate functions
+##### 3.6.5.13 Additional aggregate functions
 
-###### Usage notes
+###### 3.6.5.13.1 Usage notes
 
 This topic describes the settings that you must configure to use the new aggregation functions. MaxCompute 2.0 introduces new aggregation functions. To use these new functions in SQL statements, you must add the following SET statement.
 
@@ -8805,7 +9308,7 @@ SET odps.sql.type.system.odps2=true;
 
 You must submit the preceding SET statement and the SQL statements that use the new functions at the same time.
 
-###### COLLECT_LIST
+###### 3.6.5.13.2 COLLECT_LIST
 
 This topic describes how to use the COLLECT_LIST aggregate function in MaxCompute to aggregate the values of a specified column into an array. Within a given group, the function aggregates the expression specified by col into an array.
 
@@ -8832,7 +9335,7 @@ col: required. This parameter specifies the name of a column. It can be of any d
 +------+-----------------+
 ```
 
-###### COLLECT_SET
+###### 3.6.5.13.3 COLLECT_SET
 
 This topic describes how to use the COLLECT_SET aggregate function in MaxCompute to aggregate the values of a specified column into an array of unique elements. This function aggregates the expression specified by col within a given group into an array of unique elements.
 
@@ -8859,7 +9362,7 @@ col: required. This parameter specifies the name of a column and can be of any d
 +------+----------+
 ```
 
-###### VARIANCE/VAR_POP
+###### 3.6.5.13.4 VARIANCE/VAR_POP
 
 This topic describes how to use the VARIANCE/VAR_POP aggregate function in MaxCompute to calculate the variance of a specified numeric column. This function calculates the variance of a specified numeric column.
 
@@ -8884,7 +9387,7 @@ col: required. The column must be of the numeric type. If the column is of anoth
 +------+
 ```
 
-###### VAR_SAMP
+###### 3.6.5.13.5 VAR_SAMP
 
 This topic describes how to use the VAR_SAMP aggregate function in MaxCompute to calculate the sample variance of a specified numeric column. This function calculates the sample variance of a specified numeric column.
 
@@ -8909,7 +9412,7 @@ col: required. This parameter specifies a numeric column. If a column of another
 +---------------------+
 ```
 
-###### COVAR_POP
+###### 3.6.5.13.6 COVAR_POP
 
 This topic describes how to use the COVAR_POP aggregate function in MaxCompute to calculate the population covariance of two specified numeric columns. This function calculates the population covariance of two specified numeric columns.
 
@@ -8935,7 +9438,7 @@ col1: required. This parameter specifies a numeric column. The function returns 
 +----------------------+
 ```
 
-###### COVAR_SAMP
+###### 3.6.5.13.7 COVAR_SAMP
 
 This topic describes how to use the COVAR_SAMP aggregate function in MaxCompute to calculate the sample covariance of two specified numeric columns. This function calculates the sample covariance of two specified numeric columns.
 
@@ -8961,7 +9464,7 @@ col1: required. This parameter specifies a numeric column. The function returns 
 +----------------------+
 ```
 
-###### ANY_VALUE
+###### 3.6.5.13.8 ANY_VALUE
 
 This topic describes how to use the ANY_VALUE aggregate function in MaxCompute to return an arbitrary non-NULL value from a specified range. The function returns an arbitrary value from a specified range.
 
@@ -8981,7 +9484,7 @@ SELECT key, ANY_VALUE(value) FROM VALUES (1, 'value1'), (1, 'value2'), (2, 'valu
 +------------+------------+
 ```
 
-###### NUMERIC_HISTOGRAM
+###### 3.6.5.13.9 NUMERIC_HISTOGRAM
 
 This topic describes how to use the NUMERIC_HISTOGRAM aggregate function in MaxCompute to calculate the approximate histogram of a specified column. This function calculates the approximate histogram of a specified column.
 
@@ -8999,7 +9502,7 @@ SELECT NUMERIC_HISTOGRAM(5, value) FROM VALUES (1.0), (2.0), (3.0), (4.0), (5.0)
 +-------------------------------------+
 ```
 
-###### PERCENTILE_APPROX
+###### 3.6.5.13.10 PERCENTILE_APPROX
 
 This topic describes how to use the PERCENTILE_APPROX aggregate function in MaxCompute to return the approximate value for a specified percentile in a specified numeric column. This function returns the value that corresponds to a specified percentile p in a specified numeric column col.
 
@@ -9021,7 +9524,7 @@ SELECT PERCENTILE_APPROX(10.0, 0.5, 100); -- Result +------+
 +------------------+
 ```
 
-###### APPROX_DISTINCT
+###### 3.6.5.13.11 APPROX_DISTINCT
 
 This topic describes how to use the APPROX_DISTINCT aggregate function in MaxCompute to return the approximate number of distinct values in input data. This function returns the approximate number of distinct values in input data.
 
@@ -9039,9 +9542,9 @@ SELECT APPROX_DISTINCT(value) FROM VALUES (1), (2), (2), (3), (3), (3), (4) AS t
 +------+
 ```
 
-#### Other functions
+#### 3.6.6 Other functions
 
-##### ARRAY
+##### 3.6.6.1 ARRAY
 
 This topic describes how to use the ARRAY function in MaxCompute to construct an array from specified values. This function constructs an array from specified values.
 
@@ -9059,7 +9562,7 @@ SELECT ARRAY(123, 456, 789); -- Result +---------------+
 +---------------+
 ```
 
-##### ARRAY_CONTAINS
+##### 3.6.6.2 ARRAY_CONTAINS
 
 This topic describes how to use the ARRAY_CONTAINS function in MaxCompute to check whether a given ARRAY contains a specified value. This function checks whether ARRAY a contains v.
 
@@ -9081,7 +9584,7 @@ SELECT ARRAY_CONTAINS(ARRAY('a', 'b'), 'a'); -- Result +------+
 +-------+
 ```
 
-##### CAST
+##### 3.6.6.3 CAST
 
 This topic describes how to use the CAST function in MaxCompute to convert the result of an expression to a target data type and provides reference examples. This function converts the result of an expression to a target data type. For example, `cast('1' as bigint)` converts the string **1** to the integer **1**.
 
@@ -9101,7 +9604,7 @@ SELECT CAST('12' AS BIGINT); -- Result +--------+
 +--------+
 ```
 
-##### COALESCE
+##### 3.6.6.4 COALESCE
 
 This topic describes how to use the COALESCE function in MaxCompute to return the first non-NULL value in a list. This function returns the first non-NULL value in a list.
 
@@ -9123,7 +9626,7 @@ SELECT COALESCE(NULL, NULL, 3); -- Result +------+
 +-------+
 ```
 
-##### DECODE
+##### 3.6.6.5 DECODE
 
 This topic describes how to use the DECODE function in MaxCompute to implement if-thenelse conditional branching. This function implements if-then-else conditional branching.
 
@@ -9160,7 +9663,7 @@ END IF;
 
 By default, MaxCompute SQL returns NULL when it evaluates NULL=NULL. However, in the **decode** function, NULL equals NULL. In the preceding example, when the value of **customer_id** is NULL, the **decode** function returns N/A.
 
-##### EXPLODE
+##### 3.6.6.6 EXPLODE
 
 This topic describes how to use the EXPLODE function in MaxCompute. EXPLODE is a User- Defined Table-generating Function (UDTF) that converts one row of data into multiple rows. EXPLODE is a UDTF that converts one row of data into multiple rows. If var is of the ARRAY type, the function converts the array stored in the column into multiple rows. If var is of the MAP<K, V> type, the function converts each key-value pair of the map stored in the column into a row with two columns, where one column stores the key and the other stores the value.
 
@@ -9185,7 +9688,7 @@ SELECT EXPLODE(ARRAY(NULL, 'a', 'b', 'c')); -- Result +------+
 +------+
 ```
 
-##### GET_IDCARD_AGE
+##### 3.6.6.7 GET_IDCARD_AGE
 
 This topic describes how to use the GET_IDCARD_AGE function in MaxCompute to return the current age based on an ID card number. This function returns the current age based on an ID card number. The return value is the difference between the current year and the birth year specified in the ID card number.
 
@@ -9203,7 +9706,7 @@ SELECT GET_IDCARD_AGE('id_card_number'); -- Return result (Enter a valid ID card
 +------+
 ```
 
-##### GET_IDCARD_BIRTHDAY
+##### 3.6.6.8 GET_IDCARD_BIRTHDAY
 
 This topic describes how to use the GET_IDCARD_BIRTHDAY function in MaxCompute to return the date of birth based on an ID card number. This function returns the date of birth based on an ID card number.
 
@@ -9221,7 +9724,7 @@ SELECT GET_IDCARD_BIRTHDAY('ID card number'); -- Returned result (returns the bi
 +------+
 ```
 
-##### GET_IDCARD_SEX
+##### 3.6.6.9 GET_IDCARD_SEX
 
 This topic describes how to use the GET_IDCARD_SEX function in MaxCompute to return the gender based on an ID card number. The function returns the gender based on an ID card number. The return value is M (male) or F (female).
 
@@ -9239,7 +9742,7 @@ SELECT GET_IDCARD_SEX('ID card number'); -- Return result: The function returns 
 +------+
 ```
 
-##### GREATEST
+##### 3.6.6.10 GREATEST
 
 This topic describes how to use the GREATEST function in MaxCompute to return the maximum value among the input parameters. The function returns the maximum value among the input parameters.
 
@@ -9269,7 +9772,7 @@ SELECT GREATEST(1, 2, 3); -- Result +------+
 +------+
 ```
 
-##### INDEX
+##### 3.6.6.11 INDEX
 
 This topic describes how to use the INDEX function in MaxCompute to return the element value at a specified position in an array or a map. If var1 is of the ARRAY type, the function returns the value of the var2-th element. If var1 is of the MAP<K, V> type, the function returns the value whose key is var2 in var1.
 
@@ -9295,7 +9798,7 @@ var1: required. This parameter must be of the ARRAY or MAP<K, V> type. var2: req
 +-----+
 ```
 
-##### MAX_PT
+##### 3.6.6.12 MAX_PT
 
 This topic describes how to use the MAX_PT function in MaxCompute to return the maximum value of a level-1 partition in a partitioned table and read the data files in the partition. For a partitioned table, this function returns the maximum value of a level-1 partition in lexicographic order and reads the data files in the partition.
 
@@ -9316,7 +9819,7 @@ table_full_name: required. This parameter must be of the STRING type. It specifi
 +----+-------+----------+
 ```
 
-##### ORDINAL
+##### 3.6.6.13 ORDINAL
 
 This topic describes the ORDINAL function and provides examples of using this function. Syntax:
 
@@ -9334,7 +9837,7 @@ Return value: The value in the **nth** bit is returned. If no implicit conversio
 -- The return value is 2. select ordinal(3, 1, 3, 2, 5, 2, 4, 6);
 ```
 
-##### LEAST
+##### 3.6.6.14 LEAST
 
 This topic describes how to use the LEAST function in MaxCompute to return the minimum value among input parameters. This function returns the minimum value among the input parameters.
 
@@ -9360,7 +9863,7 @@ SELECT LEAST(1, 2, 3); -- Result +------+
 +------+
 ```
 
-##### SIZE
+##### 3.6.6.15 SIZE
 
 This topic describes how to use the SIZE function in MaxCompute to return the number of key-value pairs in a specified MAP or the number of elements in a specified ARRAY. SIZE(MAP) returns the number of key-value pairs in a specified MAP. SIZE(ARRAY) returns the number of elements in a specified ARRAY.
 
@@ -9390,7 +9893,7 @@ SELECT SIZE(MAP('a', 123, 'b', 456)); -- Return result +------+
 +------+
 ```
 
-##### SPLIT
+##### 3.6.6.16 SPLIT
 
 This topic describes how to use the SPLIT function in MaxCompute to split a string with a specified delimiter and return an array. This function splits str by using pat and returns an array.
 
@@ -9408,7 +9911,7 @@ SELECT SPLIT("a,b,c", ","); -- Result +-----------+
 +-----------+
 ```
 
-##### STR_TO_MAP
+##### 3.6.6.17 STR_TO_MAP
 
 This topic describes how to use the STR_TO_MAP function in MaxCompute to split a string into key-value pairs by using specified delimiters and return a MAP. This function uses delimiter1 to split text into key-value pairs and then uses delimiter2 to split the key and value of each key-value pair.
 
@@ -9426,7 +9929,7 @@ SELECT STR_TO_MAP("test1=1,test2=2"); -- Result +------------------------+
 +------------------------+
 ```
 
-##### UUID
+##### 3.6.6.18 UUID
 
 This topic describes how to use the UUID function in MaxCompute to return a random globally unique identifier (GUID). This function returns a random ID in the format of 29347a88-1e57-41ae-bb68a9edbdd94212. A UUID is a random GUID with a very low probability of duplication.
 
@@ -9444,7 +9947,7 @@ SELECT UUID(); -- Result +--------------------------------------+
 +--------------------------------------+
 ```
 
-##### UNIQUE_ID
+##### 3.6.6.19 UNIQUE_ID
 
 This topic describes how to use the UNIQUE_ID function in MaxCompute to return a random unique ID. This function returns a random unique ID in the format of 29347a88-1e57-41ae-bb68a9edbdd94212_1. It runs more efficiently than the UUID function.
 
@@ -9462,7 +9965,7 @@ SELECT UNIQUE_ID(); -- Result +----------------------------------------+
 +----------------------------------------+
 ```
 
-##### SAMPLE
+##### 3.6.6.20 SAMPLE
 
 This topic describes how to use the SAMPLE function in MaxCompute to sample and filter data based on specified conditions. For all values in column_name, the SAMPLE function performs sampling based on the values of x and y, and filters out rows that do not meet the sampling conditions.
 
@@ -9497,7 +10000,7 @@ If x or y is of a different type or has a value less than or equal to 0, an erro
 +------+------+
 ```
 
-##### CASE WHEN expression
+##### 3.6.6.21 CASE WHEN expression
 
 This topic describes how to use the CASE WHEN expression function in MaxCompute to return different values based on calculation results of expressions. The CASE WHEN expression returns different values based on the calculation result of the value expression. MaxCompute supports two syntax formats for the CASE WHEN expression:
 
@@ -9527,7 +10030,7 @@ value: required. This parameter specifies the expression to be compared. value1,
 );
 
 ```
--- Insert test data INSERT INTO sale_detail VALUES ('hangzhou_shop', 100); INSERT INTO sale_detail VALUES ('shanghai_shop', 200); INSERT INTO sale_detail VALUES ('beijing_shop', 300); INSERT INTO sale_detail VALUES (NULL, 400); -- Determine the region based on the shop_name value SELECT
+-- Insert test data INSERT INTO sale_detail VALUES ('hangzhou_shop', 100); INSERT INTO sale_detail VALUES ('shanghai_shop', 200); INSERT INTO sale_detail VALUES ('beijing_shop', 300); INSERT INTO sale_detail VALUES (NULL, 400); -- Determine the region based on the shop_name value
   CASE
     WHEN shop_name IS NULL THEN 'default_region'
     WHEN shop_name LIKE 'hang%' THEN 'zj_region'
@@ -9542,7 +10045,7 @@ FROM sale_detail; -- Output +---------------+
 +---------------+
 ```
 
-##### IF
+##### 3.6.6.22 IF
 
 This topic describes how to use the IF function in MaxCompute to return different values based on a conditional expression and provides examples. The IF function returns a value based on whether a conditional expression evaluates to true or false.
 
@@ -9560,9 +10063,9 @@ SELECT IF(1=2,100,200); -- Result +--------+
 +--------+
 ```
 
-##### Additional functions
+##### 3.6.6.23 Additional functions
 
-###### Usage notes
+###### 3.6.6.23.1 Usage notes
 
 This topic describes the configurations required for using other newly extended functions. After an upgrade to MaxCompute 2.0, MaxCompute provides other newly extended functions. To use these new functions in SQL statements, you must add the following SET statement.
 
@@ -9574,7 +10077,7 @@ SET odps.sql.type.system.odps2=true;
 
 You must submit and run the preceding SET statement and the SQL statements for the new functions at the same time.
 
-###### MAP
+###### 3.6.6.23.2 MAP
 
 This topic describes how to use the MAP function and provides reference examples. The MAP function creates a map from the specified key-value pairs.
 
@@ -9605,7 +10108,7 @@ INSERT INTO t_table VALUES (1000, 'k11', 'k21', 86, 15), (1001, 'k12', 'k22', 97
 +------------------+
 ```
 
-###### MAP_KEYS
+###### 3.6.6.23.3 MAP_KEYS
 
 This topic describes how to use the MAP_KEYS function in MaxCompute to return all keys in a map as an array. This function returns all keys in a map as an array.
 
@@ -9633,7 +10136,7 @@ map: required. This parameter must be of the MAP type. This function returns a v
 +------+--------------+
 ```
 
-###### MAP_VALUES
+###### 3.6.6.23.4 MAP_VALUES
 
 This topic describes how to use the MAP_VALUES function in MaxCompute to return all values in a map as an array. This function returns all values in a map as an array.
 
@@ -9651,7 +10154,7 @@ SELECT MAP_VALUES(MAP('a', 123, 'b', 456)); -- Result +------------+
 +------------+
 ```
 
-###### SORT_ARRAY
+###### 3.6.6.23.5 SORT_ARRAY
 
 This topic describes how to use the SORT_ARRAY function in MaxCompute to sort the data in a specified array. This function sorts data in a specified array.
 
@@ -9678,7 +10181,7 @@ ARRAY: required. This parameter must be of the ARRAY type. The elements in the a
 +-----------------+---------------------+-----------------+
 ```
 
-###### POSEXPLODE
+###### 3.6.6.23.6 POSEXPLODE
 
 This topic describes how to use the POSEXPLODE function in MaxCompute to expand a given ARRAY into multiple rows of data with subscripts. The function expands a given ARRAY and generates one row for each value. Each row consists of two columns, which represent the zero-based subscript and the array element, respectively.
 
@@ -9699,7 +10202,7 @@ SELECT POSEXPLODE(ARRAY('a', 'c', 'f', 'b')); -- Result +-----+-----+
 +-----+-----+
 ```
 
-###### STRUCT
+###### 3.6.6.23.7 STRUCT
 
 This topic describes how to use the STRUCT function in MaxCompute to create a STRUCT from a specified list of values. This function creates a STRUCT from a specified list of values.
 
@@ -9717,7 +10220,7 @@ SELECT STRUCT('a', 123, 'true', 56.90); -- Result +-----------------------------
 +------------------------------------------+
 ```
 
-###### NAMED_STRUCT
+###### 3.6.6.23.8 NAMED_STRUCT
 
 This topic describes how to use the NAMED_STRUCT function in MaxCompute to create a STRUCT from a given list of name and value pairs. This function creates a STRUCT from a given list of name and value pairs.
 
@@ -9735,7 +10238,7 @@ SELECT NAMED_STRUCT('user_id', 10001, 'user_name', 'bob', 'married', 'F', 'weigh
 +------------------------------------------------------------+
 ```
 
-###### INLINE
+###### 3.6.6.23.9 INLINE
 
 This topic describes how to use the INLINE function in MaxCompute to expand a given STRUCT array into multiple rows and columns. The function expands a given STRUCT array, where each array element corresponds to a row and each STRUCT element within the row corresponds to a column.
 
@@ -9761,7 +10264,7 @@ STRUCT: required. The values in the array can be of any data type. This function
 +---------+-----------+---------+--------+
 ```
 
-###### BETWEEN AND expression
+###### 3.6.6.23.10 BETWEEN AND expression
 
 This topic describes how to use the BETWEEN AND expression function in MaxCompute to determine whether a value falls within a specified range. If A, B, or C is null, the result is null. If A is greater than or equal to B and less than or equal to C, the result is true. Otherwise, the result is false.
 
@@ -9815,7 +10318,7 @@ hiredateDATETIME
 +-------+--------+----------+------+---------------------+--------+--------+--------+
 ```
 
-###### NVL
+###### 3.6.6.23.11 NVL
 
 When you need to replace a NULL value with a specific value in a query, you can use the NVL function in MaxCompute to replace the NULL value with a specified value. This prevents unexpected null values in the results during data analysis or report generation. This topic describes how to use the NVL function in MaxCompute. If the value is NULL, the function returns default_value. Otherwise, it returns value. The two parameters of this function must be of the same type.
 
@@ -9845,7 +10348,7 @@ value: required. This parameter specifies an input parameter. T represents the i
 +-------+--------+-------------------------+
 ```
 
-###### TABLE_EXISTS
+###### 3.6.6.23.12 TABLE_EXISTS
 
 This topic describes how to use the TABLE_EXISTS function in MaxCompute to query whether a specified table exists. This function queries whether a specified table exists.
 
@@ -9871,7 +10374,7 @@ table_name: required. This parameter specifies the name of the table. It must be
 +--------+
 ```
 
-###### PARTITION_EXISTS
+###### 3.6.6.23.13 PARTITION_EXISTS
 
 This topic describes how to use the PARTITION_EXISTS function in MaxCompute to check whether a specified partition exists. This function checks whether a specified partition exists.
 
@@ -9891,11 +10394,11 @@ table_name: required. This parameter specifies the name of the table. It must be
 +-------+
 ```
 
-### UDFs
+### 3.7 UDFs
 
-#### Java UDFs
+#### 3.7.1 Java UDFs
 
-##### Overview
+##### 3.7.1.1 Overview
 
 This topic describes the categories, invocation rules, and cross-project usage of User-Defined Functions (UDFs) in MaxCompute. When built-in functions do not meet your business requirements, you can extend SQL computing capabilities by using UDFs.
 
@@ -9944,7 +10447,7 @@ If you use Maven, you can search for `odps-sdk-udf` in the Maven repository to o
 </dependency>
 ```
 
-##### Parameters and return value types
+##### 3.7.1.2 Parameters and return value types
 
 This topic describes the parameters and return value types of UDFs in MaxCompute and the mapping rules between Java data types and MaxCompute data types. This information helps you accurately declare types for UDFs and avoid runtime errors or data precision loss due to data type mismatches.
 
@@ -10034,7 +10537,7 @@ MaxCompute 2.0 allows you to use Writable types as parameters and return values 
 | MAP | N/A |
 | STRUCT | N/A |
 
-##### UDF
+##### 3.7.1.3 UDF
 
 This topic describes user-defined scalar functions (UDFs) and provides reference examples.
 
@@ -10088,7 +10591,7 @@ package com.aliyun.odps.udf.example; import com.aliyun.odps.io.Text; import com.
 
 `}` `}`
 
-##### UDAF
+##### 3.7.1.4 UDAF
 
 This topic describes user-defined aggregation functions (UDAFs) among UDFs and provides reference examples.
 
@@ -10219,9 +10722,9 @@ package org.alidata.odps.udf.examples; import java.io.DataInput; import java.io.
 
 `}` `}`
 
-##### UDTFs
+##### 3.7.1.5 UDTFs
 
-###### Overview
+###### 3.7.1.5.1 Overview
 
 This topic describes User-Defined Table-Valued Functions (UDTFs) and provides reference examples.
 
@@ -10273,7 +10776,7 @@ INSERT INTO TABLE my_table VALUES ('A B', 1), ('C D', 2); SELECT user_udtf(col0,
 +----+------------+
 ```
 
-###### Examples of using UDTFs
+###### 3.7.1.5.2 Examples of using UDTFs
 
 This topic provides examples of using UDTFs.
 
@@ -10502,9 +11005,9 @@ Returned result:
 
 Take note of the following items when you use Hive UDFs that are compatible with MaxCompute: Specify the JAR package when you create a Hive UDF. MaxCompute cannot automatically add all JAR packages to the classpath. The `add jar` command in MaxCompute creates a permanent resource in the project. Insert set odps.sql.hive.compatible=true; before an SQL statement, and commit and execute the SET statement with the SQL statement. Pay attention to the limits imposed by the Java sandbox on MaxCompute.
 
-#### Python UDFs
+#### 3.7.2 Python UDFs
 
-##### Prerequisites
+##### 3.7.2.1 Prerequisites
 
 This topic describes the prerequisites for using Python UDFs. Before you use Python UDFs, you must enable the isolation sandbox feature for your project. To do this, navigate to project management in adminconsole and set **ISOLATION SETTING >**
 **odps.isolation.enable** to True.
@@ -10513,7 +11016,7 @@ This topic describes the prerequisites for using Python UDFs. Before you use Pyt
 
 The Python UDF feature currently is supported only in the Job Scheduler (sp44 kernel) version. The Unified Scheduling (sp52 kernel) version does not support this feature. To use Python UDFs in the Unified Scheduling version, submit a ticket.
 
-##### Usage limits
+##### 3.7.2.2 Usage limits
 
 This topic describes the limits of using Python UDFs.
 
@@ -10523,9 +11026,9 @@ MaxCompute uses Python 2.7 to run Python UDFs. User code is executed in a sandbo
 
 **Available modules**
 
-In addition, standard library modules that involve the aforementioned functionalities are also prohibited. The following section describes the available modules in the standard library: All modules in standard Python implementations that do not depend on extension modules are available. The following C extension modules are available: array audioop binascii _bisect cmath _codecs_cn _codecs_hk _codecs_iso2022 _codecs_jp _codecs_kr _codecs_tw _collections cStringIO datetime _functools future_builtins _hashlib _heapq itertools _json _locale _lsprof math _md5 _multibytecodec operator _random _sha256 _sha512 _sha _struct strop time unicodedata _weakref cPickle Some modules have limited functionalities. For example, the sandbox limits the data size that your code can write to Stdout and standard error output to 20 KB. This means `sys.stdout/sys.stderr` can write a maximum of 20 KB, and the system ignores any additional characters.
+In addition, standard library modules that involve the aforementioned functionalities are also prohibited. The following section describes the available modules in the standard library: All modules in standard Python implementations that do not depend on extension modules are available. The following C extension modules are available: audioop binascii _bisect cmath _codecs_cn _codecs_hk _codecs_iso2022 _codecs_jp _codecs_kr _codecs_tw _collections cStringIO datetime _functools future_builtins _hashlib _heapq itertools _json _locale _lsprof math _md5 _multibytecodec operator _random _sha256 _sha512 _sha _struct strop time unicodedata _weakref cPickle Some modules have limited functionalities. For example, the sandbox limits the data size that your code can write to Stdout and standard error output to 20 KB. This means `sys.stdout/sys.stderr` can write a maximum of 20 KB, and the system ignores any additional characters.
 
-##### Third-party libraries
+##### 3.7.2.3 Third-party libraries
 
 This topic describes third-party libraries for Python UDFs.
 
@@ -10537,7 +11040,7 @@ The runtime environment also includes common third-party libraries such as NumPy
 
 The system restricts third-party libraries by prohibiting local access and limiting network I/O. Therefore, you cannot use APIs in third-party libraries that involve these features.
 
-##### Parameters and return value types
+##### 3.7.2.4 Parameters and return value types
 
 This topic describes the parameters and return value types for Python UDFs. Specify parameters and return values in the following way:
 
@@ -10595,7 +11098,7 @@ The Python type that corresponds to the DATETIME type is INT. The value represen
 **value** to INT.
 A NULL value corresponds to None in Python.
 
-##### UDF
+##### 3.7.2.5 UDF
 
 This topic introduces user-defined scalar functions in Python UDFs and provides reference examples. To implement a Python UDF, define a new-style class and use the **evaluate** method.
 
@@ -10611,7 +11114,7 @@ from odps.udf import annotate @annotate("bigint,bigint->bigint") class MyPlus(ob
 
 Python UDFs must specify a function signature using the **annotate** decorator.
 
-##### UDAF
+##### 3.7.2.6 UDAF
 
 This topic describes user-defined aggregation functions (UDAFs) in Python UDFs and provides reference examples.
 
@@ -10642,7 +11145,7 @@ from odps.udf import BaseUDAF, annotate @annotate('double->double') class Averag
         return buffer[0] / buffer[1]
 ```
 
-##### UDTF
+##### 3.7.2.7 UDTF
 
 This topic describes user-defined table-valued functions (UDTFs) in Python UDFs and provides reference examples.
 
@@ -10671,7 +11174,7 @@ from odps.udf import annotate from odps.udf import BaseUDTF @annotate('string ->
 
 A Python UDTF does not need to use **annotate** to specify parameter types and return value types. In this case, the function can accept any input parameters when you use it in SQL, but the system cannot infer the return value types and treats all output parameters as the STRING type. Therefore, when you call **forward**, you must convert all output values to the STRING type.
 
-##### Reference resources
+##### 3.7.2.8 Reference resources
 
 This topic describes how to reference resources in Python UDFs and provides examples. Python UDFs can reference file and table resources through the **odps.distcache** module.
 
@@ -10728,7 +11231,7 @@ from odps.udf import annotate from odps.distcache import get_cache_table @annota
         return str(ret)
 ```
 
-#### Python 3 UDF
+#### 3.7.3 Python 3 UDF
 
 This topic describes the precautions for writing UDFs in Python 3.
 
@@ -10761,7 +11264,7 @@ Python 2 has reached EOL. We recommend that you perform migration based on the p
 
 If you need to write public UDFs and authorize multiple projects to use them, we recommend that you make the UDFs compatible with both Python 2 and Python 3.
 
-#### SQL Function
+#### 3.7.4 SQL Function
 
 This topic describes how to use SQL-defined UDFs in SQL scripts through the SQL FUNCTION statement.
 
@@ -10770,7 +11273,6 @@ This topic describes how to use SQL-defined UDFs in SQL scripts through the SQL 
 You can use SQL Function in MaxCompute to resolve the following issues: Code often contains many similar sections, which makes maintenance difficult and errorprone. Furthermore, if you introduce a UDF, you must write the code, compile it in Java, create resources, and create the function. This process is tedious, and the performance is inferior to that of built-in functions. Sample syntax:
 
 ```
-SELECT
     NVL(STR_TO_MAP(GET_JSON_OBJECT(col, '$.key1')), 'default') AS key1,
     NVL(STR_TO_MAP(GET_JSON_OBJECT(col, '$.key2')), 'default') AS key2,
     ...
@@ -10876,9 +11378,9 @@ FUNCTION OP(@a BIGINT, @fun FUNCTION (BIGINT) RETURNS BIGINT) AS @fun(@a); SELEC
 
 In this example, **FUNCTION (@a) AS @a + 1** is an anonymous function. You do not need to specify the type of the input parameter **@a** for the anonymous function. The Compiler infers the type of **@a** based on the parameter definition of the OP function.
 
-#### Embedded UDF
+#### 3.7.5 Embedded UDF
 
-##### Background
+##### 3.7.5.1 Background
 
 This topic describes the background of embedded UDFs.
 
@@ -10890,11 +11392,11 @@ You can use embedded UDFs in MaxCompute to resolve the following issues, where c
 Foo f = new Foo(); f.execute(); f.getResult();
 ```
 
-##### Feature overview
+##### 3.7.5.2 Feature overview
 
 This topic describes the features supported by embedded UDFs. Embedded UDFs allow you to embed Java or Python code in SQL scripts. The Janino compiler identifies and extracts the embedded code to compile the Java code, dynamically generate resources, and create temporary functions. Embedded UDFs allow you to place SQL scripts and third-party code in the same source code file, reducing the steps to use UDTs or UDFs and facilitating routine development.
 
-##### Usage limits
+##### 3.7.5.3 Usage limits
 
 This topic describes the usage limits of embedded UDFs.
 
@@ -10908,15 +11410,11 @@ The compiler ignores type parameter inference, and you must use explicit casting
 **(String) myMap.get(key)**.
 The Assert statement is always enabled and is not controlled by the JVM parameter -ea. Language features from Java versions later than Java 8 are not supported.
 
-##### Examples
+##### 3.7.5.4 Examples
 
 This topic describes how to use the embedded UDF feature and provides reference examples.
 
 **Reference embedded code in UDT**
-
-```
-SELECT
-```
 
 `s,`
 
@@ -11023,9 +11521,9 @@ SELECT foo(4);
 
 The indentation of Python code must conform to Python language specifications. When you register a Python UDF, the class name after **AS** must include the file name of the Python source code. You can use `'filename'='embedded'` to specify a virtual file name.
 
-### UDTs
+### 3.8 UDTs
 
-#### Common scenarios and usage limits
+#### 3.8.1 Common scenarios and usage limits
 
 This topic describes the common scenarios and usage limits of the User Defined Type (UDT) feature.
 
@@ -11045,7 +11543,7 @@ UDT supports only Java, and Java SDK classes are available by default.
 
 The current runtime uses JDK 1.8 and may not support later JDK versions. All operators use MaxCompute SQL semantics, not UDT semantics. UDTs cannot be used as Shuffle keys, including the keys for structures such as JOIN, GROUP BY, DISTRIBUTE BY, SORT BY, ORDER BY, and CLUSTER BY. DDL statements do not support UDTs. You cannot insert UDT objects into tables, and the final display results cannot be of the UDT type.
 
-#### Feature overview
+#### 3.8.2 Feature overview
 
 This topic describes UDT features and provides examples. In many SQL engines, UDTs are similar to the complex STRUCT type in MaxCompute. In contrast, UDTs in MaxCompute resemble the CREATE TYPE concept more closely, where a type includes data fields and methods. MaxCompute does not require special DDL syntax to define new types. You can use new types directly in SQL statements by using UDTs. The following examples demonstrate UDT features. You can call the `java.lang` package in SQL by using one of the following two methods.
 
@@ -11097,7 +11595,7 @@ SELECT integer_max_value(); -- Result +------------+
 
 The preceding examples show that UDTs simplify these processes and allow you to extend SQL features by using other languages.
 
-#### Implementation principles and features
+#### 3.8.3 Implementation principles and features
 
 This topic describes the implementation principles of UDTs and provides detailed feature descriptions.
 
@@ -11181,7 +11679,7 @@ UDT extends the type conversion rules: UDT objects can be implicitly converted t
 
 Type parameters must be specified for constructors. Otherwise, **java.lang.Object** is used. This behavior is consistent with Java. All operators follow MaxCompute SQL semantics, not UDT semantics. Examples: STRING addition: The result of `String.valueOf(1) + String.valueOf(2)` is 3 (STRINGs are implicitly converted to DOUBLEs, and then DOUBLE addition is performed), rather than 12. This differs from Java, where STRING addition uses concatenation semantics. In Java, you should use the `equals()` method instead of the **=** operator to check equality. In contrast, in SQL, the**=** operator is used to check for equality. UDT has an ambiguous concept of object identity due to data reshuffling. Objects may be transmitted between different processes and different physical machines. During the transmission, the same object may reference different objects at different times. For example, the system may shuffle an object to two machines and then shuffle it back together in the next phase. Therefore, when you use UDT, you should use the `equals()` method to check for equality and avoid inaccurate results from using the **=** operator for equality checks. The system guarantees the data correlation among internal data objects within an object at a specific row and column. However, the system does not guarantee data correlation between objects in different rows or different columns. You cannot use UDTs as shuffle keys, including keys in Join, Group By, Distribute By, Sort By, Order By, and Cluster By structures. You can use a UDT at any intermediate stage in an expression, but you cannot use it as the final output. UDTs can implement scalar function capabilities. Combined with built-in functions COLLECT_SET and EXPLODE, UDTs can also implement aggregator and table-valued function capabilities.
 
-#### Benefits
+#### 3.8.4 Benefits
 
 This topic describes the benefits of UDTs.
 
@@ -11189,7 +11687,7 @@ This topic describes the benefits of UDTs.
 
 UDTs provide the following benefits: UDTs are easy to use and do not require you to define any functions. They support all JDK features, thereby extending the capabilities of SQL. You can place code and SQL statements in the same file for easier management. UDTs can directly use other class libraries, resulting in high code reusability.
 
-#### Performance advantages
+#### 3.8.5 Performance advantages
 
 This topic describes the performance advantages of UDTs.
 
@@ -11201,7 +11699,7 @@ In terms of performance, UDTs and UDFs deliver almost identical performance beca
 values[x].add(values[y]).divide(java.math.BigInteger.valueOf(2))
 ```
 
-#### Security advantages
+#### 3.8.6 Security advantages
 
 This topic describes the security advantages of UDTs.
 
@@ -11209,16 +11707,16 @@ This topic describes the security advantages of UDTs.
 
 In terms of security control, UDTs and UDFs are identical. Both are subject to the restrictions of the Java sandbox policy. Therefore, to perform restricted operations, you must either enable sandbox isolation or apply for a sandbox whitelist.
 
-#### More examples
+#### 3.8.7 More examples
 
-##### Java array examples
+##### 3.8.7.1 Java array examples
 
 This topic provides Java array examples for UDTs for your reference.
 
 **Usage examples**
 
 ```
-SET odps.sql.type.system.odps2=true; SET odps.sql.udt.display.tostring=true; SELECT -- Create an array with 10 elements.
+SET odps.sql.type.system.odps2=true; SET odps.sql.udt.display.tostring=true; -- Create an array with 10 elements.
     new Integer[10],
 -- Create an array of length 3 by using a collection initializer.
     new Integer[] {c1, c2, c3},
@@ -11231,7 +11729,7 @@ SET odps.sql.type.system.odps2=true; SET odps.sql.udt.display.tostring=true; SEL
 FROM VALUES (1,2,3,4) AS t(c1, c2, c3, c4);
 ```
 
-##### JSON examples
+##### 3.8.7.2 JSON examples
 
 This topic provides UDT JSON examples for your reference.
 
@@ -11244,7 +11742,7 @@ The UDT runtime includes a built-in JSON dependency (version 2.2.4), so you can 
 In addition to JSON, the MaxCompute runtime also includes built-in dependencies such as commons-logging (version 1.1.1), commons-lang (version 2.5), commons-io (version 2.4), and protobuf-java (version 2.4.1).
 
 ```
-SET odps.sql.type.system.odps2=true; SET odps.sql.session.java.imports=java.util.*,java,com.google.gson.*; -- Separate multi ple packages with commas when you import them. @a := SELECT new Gson() gson; -- Create a Gson object. SELECT gson.toJson(new ArrayList<Integer>(Arrays.asList(1, 2, 3))), -- Convert any object to a JSON string. cast(gson.fromJson('["a","b","c"]', List.class) as List<String>) -- Deserialize the JSO N string. Note that the Gson API returns a List<Object> type after direct deserialization. This example forcibly converts it to a List<String> type for subsequen t use. FROM @a;
+SET odps.sql.type.system.odps2=true; SET odps.sql.session.java.imports=java.util.*,java,com.google.gson.*; -- Separate multi ple packages with commas when you import them. @a := SELECT new Gson() gson; -- Create a Gson object. gson.toJson(new ArrayList<Integer>(Arrays.asList(1, 2, 3))), -- Convert any object to a JSON string. cast(gson.fromJson('["a","b","c"]', List.class) as List<String>) -- Deserialize the JSO N string. Note that the Gson API returns a List<Object> type after direct deserialization. This example forcibly converts it to a List<String> type for subsequen t use. FROM @a;
 ```
 
 Query results:
@@ -11259,7 +11757,7 @@ Query results:
 
 Compared with the built-in GET_JSON_OBJECT function, this method is easier to use and deserializes JSON strings into formatted data during extraction, which improves efficiency.
 
-##### Complex type operation examples
+##### 3.8.7.3 Complex type operation examples
 
 This topic provides examples of complex type operations on UDTs for your reference.
 
@@ -11270,7 +11768,7 @@ Built-in types have the following mapping relationships with Java types: ARRAY m
 Objects of classes that implement the **java.util.List** or **java.util.Map** interface in Java can be used in complex type operations in MaxCompute SQL. ARRAY or MAP data in MaxCompute can directly call the methods of the List or Map interfaces.
 
 ```
-SET odps.sql.type.system.odps2=true; SET odps.sql.session.java.imports=java.util.*; SELECT
+SET odps.sql.type.system.odps2=true; SET odps.sql.session.java.imports=java.util.*;
     size(new ArrayList<Integer>()),        -- Call the built-in Size function on
 ArrayList data.
     array(1,2,3).size(),                   -- Call the Size method of List on the built-
@@ -11294,7 +11792,7 @@ The following results are returned.
 +------------+------------+------------+------------+------------+------------+
 ```
 
-##### Aggregate operation examples
+##### 3.8.7.4 Aggregate operation examples
 
 This topic provides UDT aggregate operation examples for your reference.
 
@@ -11318,7 +11816,7 @@ The following results are returned.
 
 The **collect_list** function collects all data together first and cannot implement partial aggregation. Therefore, it processes data less efficiently than built-in aggregate functions or UDAFs. Use built-in aggregate functions whenever possible. Additionally, collecting all data of a single group together increases the risk of data skew. If a UDAF needs to aggregate all data together (similar to the built-in WM_CONCAT aggregate function), the preceding method offers higher processing efficiency than a UDAF.
 
-##### Table-valued function examples
+##### 3.8.7.5 Table-valued function examples
 
 This topic provides table-valued function examples for UDTs for your reference.
 
@@ -11342,9 +11840,9 @@ The following results are returned.
 +------------+------------+
 ```
 
-### UDJ
+### 3.9 UDJ
 
-#### UDJ background
+#### 3.9.1 UDJ background
 
 This topic introduces the background of the User Defined Join (UDJ) mechanism.
 
@@ -11352,9 +11850,9 @@ This topic introduces the background of the User Defined Join (UDJ) mechanism.
 
 MaxCompute provides multiple JOIN methods, including INNER JOIN, RIGHT JOIN, OUTER JOIN, LEFT JOIN, FULL JOIN, SEMI JOIN, and ANTI-SEMI JOIN. You can use the built-in JOIN methods in most scenarios. However, these methods are insufficient if you want to perform cross join operations. In most cases, you can use UDFs to describe your code framework. However, the current UDF, user-defined table-valued function (UDTF), and user-defined aggregate function (UDAF) frameworks can only handle one table at a time. For custom operations on multiple tables, you often need to combine built-in joins with various UDFs and UDTFs, and write complex SQL statements. In such scenarios, you must use a custom MapReduce framework instead of SQL to complete the required computing tasks. Both the combination of Joins, various UDFs/UDTFs, and complex SQL, as well as custom MapReduce, have high barriers to entry and introduce several issues: Combination of Joins, various UDFs/UDTFs, and complex SQL: Multiple complex joins and code distributed throughout SQL statements create multiple logical black boxes. This prevents the system from generating an optimal execution plan. Using MapReduce: This approach significantly limits the execution optimization capabilities of the system. Furthermore, because developers write most MapReduce code in Java, MapReduce jobs run much less efficiently than the LLVM-based code generator of MaxCompute when you deeply optimize on-premises code. To resolve these issues, MaxCompute introduces UDJ as a new extension mechanism in the UDF framework based on the MaxCompute 2.0 compute engine. UDJ allows more userdefined operations by flexibly joining tables and simplifies MapReduce-based operations in the underlying distributed system.
 
-#### Examples of using UDJ
+#### 3.9.2 Examples of using UDJ
 
-##### Cross join operations by using UDJ
+##### 3.9.2.1 Cross join operations by using UDJ
 
 This topic describes the cross-table join feature of user-defined join (UDJ) and provides reference examples.
 
@@ -11562,7 +12060,6 @@ ii. Insert data into the tables.
 3. Use the UDJ function in SQL.
 
 ```
-SELECT
     r.user_id,
     from_unixtime(CAST(time / 1000 AS BIGINT)) AS time,
     content
@@ -11608,7 +12105,7 @@ The following result is returned.
 +---------+---------------------+---------------------------------------+
 ```
 
-##### UDJ pre-sorting
+##### 3.9.2.2 UDJ pre-sorting
 
 This topic describes the pre-sorting feature of user-defined join (UDJ) and provides an example for reference.
 
@@ -11676,7 +12173,7 @@ ocessing.
 
 `}` `}` `}` `}`
 
-#### Performance benefits
+#### 3.9.3 Performance benefits
 
 This topic describes the performance benefits of user-defined join (UDJ).
 
@@ -11684,7 +12181,7 @@ This topic describes the performance benefits of user-defined join (UDJ).
 
 A real online MapReduce job is used as an example to verify the performance of UDJ. The job runs based on a complex algorithm. In this example, two tables are joined, UDJ is used to rewrite the MapReduce job, and the correctness of the UDJ results is checked. The following figure shows the MapReduce and UDJ performance under the same data concurrency. As shown in the figure, UDJ conveniently describes the complex logic of how to handle multiple tables and greatly improves performance. The code is called only within UDJ. The entire Mapper logic in this example is executed by the native runtime engine of MaxCompute. The data exchange logic between the MaxCompute UDJ runtime engine and Java interfaces is optimized in Java code. The JOIN logic of UDJ is more efficient than that of a reducer.
 
-### Parameterized views
+### 3.10 Parameterized views
 
 This topic describes the parameterized view feature that the MaxCompute SQL Engine supports.
 
@@ -11737,7 +12234,7 @@ In this example, the view accepts two TABLE parameters. In the table specified b
 You can execute the following statement to call the pv1 view that you defined:
 
 ```
-@a := SELECT * FROM src WHERE value >0; --call view with table variable and scalar @b := SELECT * FROM pv1(@a,'20170101'); @another_day := '20170102'; --call view with table name and scalar variable @c := SELECT * FROM pv1(src2, @another_day); @d := SELECT * FROM @c UNION ALL SELECT * FROM @b; WITH t AS(SELECT * FROM src3) SELECT * FROM @c UNION ALL SELECT * FROM @d UNION ALL SELECT * FROM pv1(t,@another_day);
+@a := SELECT * FROM src WHERE value >0; --call view with table variable and scalar @b := SELECT * FROM pv1(@a,'20170101'); @another_day := '20170102'; --call view with table name and scalar variable @c := SELECT * FROM pv1(src2, @another_day); @d := SELECT * FROM @c UNION ALL SELECT * FROM @b; WITH t AS(SELECT * FROM src3) SELECT * FROM @c SELECT * FROM @d SELECT * FROM pv1(t,@another_day);
 ```
 
 **Note**
@@ -11774,7 +12271,7 @@ end;
 **RETURNS @ret TABLE (x STRING,y STRING)** defines the following information:
 The return type is **TABLE (x STRING,y STRING)** , which is the type that the system returns to the caller. You can use this parameter to customize the table schema. The return parameter is **@ret**. The script of the view assigns a value to this parameter, which effectively defines the name of the return parameter. You can consider a view that contains no **BEGIN/END** or return variables as a simplified parameterized view.
 
-### CLONE TABLE
+### 3.11 CLONE TABLE
 
 This topic describes how to use the CLONE TABLE statement. This statement is used to clone data from one table to another, which improves data migration efficiency.
 
@@ -11783,8 +12280,6 @@ This topic describes how to use the CLONE TABLE statement. This statement is use
 The schema of the destination table must be compatible with the schema of the source table. The CLONE TABLE statement can be executed for partitioned tables and non-partitioned tables. This statement cannot be executed for hash clustering tables. If you have created the destination table before the CLONE TABLE statement is executed, you can execute the CLONE TABLE statement to clone data from a maximum of 10,000 partitions at the same time. If you have not created the destination table before the CLONE TABLE statement is executed, the number of partitions from which you can clone data at the same time is unlimited. This way, the atomicity of the cloning operation is ensured. You can execute the CLONE TABLE statement for up to seven times in the same nonpartitioned table or in the same partition of a partitioned table. You cannot execute the CLONE TABLE statement for projects across regions.
 
 **Operation instructions**
-
-**Usage notes**
 
 The CLONE TABLE statement is used to clone data from the src_table_name table to the desc_table_name table. After you clone data to the desc_table_name table, we recommend that you verify the data accuracy. For example, you can execute the SELECT COUNT statement to view the number of rows in the destination table or execute the DESC statement to view the table size.
 
@@ -11837,9 +12332,9 @@ ii. Operation examples
 +-----+-------+------------+----+
 ```
 
-### Geographic functions
+### 3.12 Geographic functions
 
-#### Usage notes
+#### 3.12.1 Usage notes
 
 Geographic functions use a set of Java user-defined functions (UDFs) to allow you to perform geometric computing in MaxCompute. Before you use geographic functions, understand the following information:
 
@@ -11925,9 +12420,9 @@ The following output indicates that the UDF is registered with MaxCompute.
 
 For more information about how to use the geographic function, see UDF-Documentation.
 
-#### Constructors
+#### 3.12.2 Constructors
 
-##### ST_AsBinary
+##### 3.12.2.1 ST_AsBinary
 
 This topic describes how to use the ST_AsBinary function in MaxCompute and provides reference examples. This function returns the Well-Known Binary (WKB) representation of a geometry.
 
@@ -11945,7 +12440,7 @@ SELECT ST_AsBinary(ST_Point(1, 2)); -- Result +---------------------------------
 +--------------------------------------------------------------+
 ```
 
-##### ST_AsGeoJson
+##### 3.12.2.2 ST_AsGeoJson
 
 This topic describes how to use the ST_AsGeoJson function in MaxCompute and provides reference examples. This function returns the GeoJSON expression of a geometry.
 
@@ -11963,7 +12458,7 @@ SELECT ST_ASGEOJSON(ST_POINT(1.0, 2.0)); -- Result +----------------------------
 +-------------------------------------------------+
 ```
 
-##### ST_AsJson
+##### 3.12.2.3 ST_AsJson
 
 This topic describes how to use the ST_ASJSON function in MaxCompute and provides reference examples. This function returns the JSON expression of a geometry.
 
@@ -11985,7 +12480,7 @@ SELECT ST_ASJSON(ST_POINT(1.0, 2.0)); -- Result +-----------------------+
 +-----------------------------------------------------------+
 ```
 
-##### ST_AsShape
+##### 3.12.2.4 ST_AsShape
 
 This topic describes how to use the ST_AsShape function in MaxCompute and provides reference examples. This function returns the Esri shape representation of a geometry.
 
@@ -11999,7 +12494,7 @@ ST_GEOMETRY: required. This parameter specifies a geometry. This function return
 SELECT ST_AsShape(ST_POINT(1, 2));
 ```
 
-##### ST_AsText
+##### 3.12.2.5 ST_AsText
 
 This topic describes how to use the ST_AsText function in MaxCompute and provides reference examples. This function returns the Well-Known Text (WKT) expression of a geometry.
 
@@ -12017,7 +12512,7 @@ SELECT ST_ASTEXT(ST_POINT(1, 2)); -- Result +-------------+
 +-------------+
 ```
 
-##### ST_GeomCollection
+##### 3.12.2.6 ST_GeomCollection
 
 This topic describes how to use the ST_GeomCollection function in MaxCompute and provides reference examples. This function constructs a multi-part geometry by using a Well-Known Text (WKT) expression of the Open Geospatial Consortium (OGC). ST_GeomCollection in MaxCompute does not support the collection feature and supports only multi-part geometries.
 
@@ -12031,7 +12526,7 @@ wkt: required. This parameter must be of the STRING type. It specifies an OGC WK
 SELECT ST_GeomCollection('MULTIPOINT ((1 0), (2 3))'); -- The following usage is not supported (collection feature) -- ST_GeomCollection('POINT(1 1), LINESTRING(2 0,3 0)')
 ```
 
-##### ST_GeomFromGeoJson
+##### 3.12.2.7 ST_GeomFromGeoJson
 
 This topic describes how to use the ST_GeomFromGeoJson function in MaxCompute and provides reference examples. This function constructs a geometry from a GeoJSON expression.
 
@@ -12045,7 +12540,7 @@ json: required. This parameter must be of the STRING type. It specifies a GeoJSO
 SELECT ST_GeomFromGeoJson('{"type":"Point", "coordinates":[1.2, 2.4]}'); -- Construct an ST_LineString SELECT ST_GeomFromGeoJson('{"type":"LineString", "coordinates":[[1,2], [3,4]]}');
 ```
 
-##### ST_GeomFromJSON
+##### 3.12.2.8 ST_GeomFromJSON
 
 This topic describes how to use the ST_GeomFromJSON function in MaxCompute and provides reference examples. This function constructs a geometry from an Esri JSON expression.
 
@@ -12059,7 +12554,7 @@ json: required. This parameter must be of the STRING type. It specifies an Esri 
 SELECT ST_GeomFromJSON('{"x":0.0,"y":0.0}');
 ```
 
-##### ST_GeomFromShape
+##### 3.12.2.9 ST_GeomFromShape
 
 This topic describes how to use the ST_GeomFromShape function in MaxCompute and provides reference examples. This function constructs a geometry from an Esri shape expression.
 
@@ -12073,7 +12568,7 @@ shape: required. This parameter specifies an Esri shape expression. This functio
 SELECT ST_GeomFromShape(ST_AsShape(ST_Point(1, 2)));
 ```
 
-##### ST_GeomFromText
+##### 3.12.2.10 ST_GeomFromText
 
 This topic describes how to use the ST_GeomFromText function in MaxCompute and provides reference examples. This function constructs a geometry from a Well-Known Text (WKT) expression of Open Geospatial Consortium (OGC).
 
@@ -12087,7 +12582,7 @@ wkt: required. This parameter must be of the STRING type. It specifies an OGC WK
 -- Construct an ST_Linestring SELECT ST_GeomFromText('linestring (1 0, 2 3)'); -- Construct an ST_MultiPoint SELECT ST_GeomFromText('multipoint ((1 0), (2 3))');
 ```
 
-##### ST_GeomFromWKB
+##### 3.12.2.11 ST_GeomFromWKB
 
 This topic describes how to use the ST_GeomFromWKB function in MaxCompute and provides reference examples. This function constructs a geometry from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
 
@@ -12101,7 +12596,7 @@ wkb: required. This parameter specifies an OGC WKB expression of the BINARY type
 -- Construct an ST_Linestring SELECT ST_GeomFromWKB(ST_AsBinary(ST_GeomFromText('linestring (1 0, 2 3)'))); -- Construct an ST_MultiPoint SELECT ST_GeomFromWKB(ST_AsBinary(ST_GeomFromText('multipoint ((1 0), (2 3))')));
 ```
 
-##### ST_GeometryType
+##### 3.12.2.12 ST_GeometryType
 
 This topic describes how to use the ST_GeometryType function in MaxCompute and provides reference examples. This function returns the type of a geometry.
 
@@ -12127,7 +12622,7 @@ SELECT ST_GeometryType(ST_Point(1.5, 2.5)); -- Result +----------+
 +------------+
 ```
 
-##### ST_LineString
+##### 3.12.2.13 ST_LineString
 
 This topic describes how to use the ST_LineString function in MaxCompute and provides reference examples. This function constructs a 2D line string.
 
@@ -12141,7 +12636,7 @@ x, y: required. These parameters specify the coordinate values of a point. The v
 -- Construct a line string from coordinate values. SELECT ST_LineString(1, 1, 2, 2, 3, 3); -- Construct a line string from a WKT expression. SELECT ST_LineString('linestring(1 1, 2 2, 3 3)'); -- Construct a line string from coordinate arrays. SELECT ST_LineString(ARRAY(1, 2, 3), ARRAY(1, 2, 3)); -- Construct a line string from an array of ST_Point objects. SELECT ST_LineString(ARRAY(ST_Point(1, 1), ST_Point(2, 2), ST_Point(3, 3)));
 ```
 
-##### ST_LineFromWKB
+##### 3.12.2.14 ST_LineFromWKB
 
 This topic describes how to use the ST_LineFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D line string by using the well-known binary (WKB) format of Open Geospatial Consortium (OGC).
 
@@ -12155,7 +12650,7 @@ wkb: required. This parameter must be of the BINARY type. It specifies an OGC WK
 SELECT ST_LineFromWKB(ST_AsBinary(ST_GeomFromText('linestring (1 0, 2 3)')));
 ```
 
-##### ST_MultiLineString
+##### 3.12.2.15 ST_MultiLineString
 
 This topic describes how to use the ST_MultiLineString function in MaxCompute and provides reference examples. This function constructs 2D multilinestrings.
 
@@ -12169,7 +12664,7 @@ ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type a
 -- Construct a two-dimensional multilinestring from coordinate arrays SELECT ST_MultiLineString(ARRAY(1, 1, 2, 2), ARRAY(10, 10, 20, 20)); -- Construct a two-dimensional multilinestring from a WKT expression SELECT ST_MultiLineString('multilinestring ((1 1, 2 2), (10 10, 20 20))');
 ```
 
-##### ST_MLineFromWKB
+##### 3.12.2.16 ST_MLineFromWKB
 
 This topic describes how to use the ST_MLineFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D multilinestring from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
 
@@ -12183,7 +12678,7 @@ wkb: required. This parameter must be of the BINARY type. It specifies an OGC WK
 -- Construct a 2D multilinestring. SELECT ST_MLineFromWKB(ST_AsBinary(ST_GeomFromText('multilinestring ((1 0, 2 3), (5 7 , 7 5))')));
 ```
 
-##### ST_MultiPoint
+##### 3.12.2.17 ST_MultiPoint
 
 This topic describes how to use the ST_MultiPoint function in MaxCompute and provides reference examples. This function constructs a multipoint geometry.
 
@@ -12197,7 +12692,7 @@ x1, y1, x2, y2, ...: required. These parameters must be of the DOUBLE type. They
 -- Construct three points from coordinate values SELECT ST_MultiPoint(1, 1, 2, 2, 3, 3); -- Construct two points from a WKT expression SELECT ST_MultiPoint('MULTIPOINT ((10 40), (40 30))');
 ```
 
-##### ST_MPointFromWKB
+##### 3.12.2.18 ST_MPointFromWKB
 
 This topic describes how to use the ST_MPointFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D multipoint geometry from a Well-Known Binary (WKB) representation of Open Geospatial Consortium (OGC).
 
@@ -12211,7 +12706,7 @@ wkb: required. This parameter must be of the BINARY type. It specifies an OGC WK
 SELECT ST_MPointFromWKB(ST_AsBinary(ST_GeomFromText('multipoint ((1 0), (2 3))')));
 ```
 
-##### ST_MultiPolygon
+##### 3.12.2.19 ST_MultiPolygon
 
 This topic describes how to use the ST_MultiPolygon function in MaxCompute and provides reference examples. This function constructs a 2D polygon.
 
@@ -12225,7 +12720,7 @@ ARRAY(x1, y1, x2, y2, ...): required. This parameter must be of the ARRAY type. 
 SELECT ST_MultiPolygon(ARRAY(1, 1, 1, 2, 2, 2, 2, 1), ARRAY(3, 3, 3, 4, 4, 4, 4, 3)); SELECT ST_MultiPolygon('multipolygon (((0 0, 0 1, 1 0, 0 0)), ((2 2, 2 3, 3 2, 2 2))) ');
 ```
 
-##### ST_MPolyFromWKB
+##### 3.12.2.20 ST_MPolyFromWKB
 
 This topic describes how to use the ST_MPolyFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D polygon from a Well-Known Text (WKB) expression of Open Geospatial Consortium (OGC).
 
@@ -12239,7 +12734,7 @@ wkb: required. This parameter must be of the BINARY type. It specifies an OGC WK
 SELECT ST_MPolyFromWKB(ST_AsBinary(ST_GeomFromText('multipolygon (((0 0, 1 0, 0 1, 0 0)), ((2 2, 1 2, 2 1, 2 2)))')));
 ```
 
-##### ST_Point
+##### 3.12.2.21 ST_Point
 
 This topic describes how to use the ST_Point function in MaxCompute and provides reference examples. This function constructs a 2D point.
 
@@ -12253,7 +12748,7 @@ x, y: required. These parameters must be of the DOUBLE type. They specify the co
 -- Use coordinate values to construct a two-dimensional point SELECT ST_Point(1, 2); -- Use a WKT expression to construct a two-dimensional point SELECT ST_Point('point (0 0)');
 ```
 
-##### ST_PointFromWKB
+##### 3.12.2.22 ST_PointFromWKB
 
 This topic describes how to use the ST_PointFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D point from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
 
@@ -12267,7 +12762,7 @@ wkb: required. This parameter must be of the BINARY type. It specifies an OGC WK
 SELECT ST_PointFromWKB(ST_AsBinary(ST_GeomFromText('point (1 0)')));
 ```
 
-##### ST_PointZ
+##### 3.12.2.23 ST_PointZ
 
 This topic describes how to use the ST_PointZ function in MaxCompute and provides reference examples. This function constructs a 3D point.
 
@@ -12281,7 +12776,7 @@ x: required. This parameter must be of the DOUBLE type. It specifies the X-coord
 -- Construct a 3D point SELECT ST_PointZ(1, 2, 3);
 ```
 
-##### ST_Polygon
+##### 3.12.2.24 ST_Polygon
 
 This topic describes how to use the ST_Polygon function in MaxCompute and provides reference examples. This function constructs a 2D polygon.
 
@@ -12295,7 +12790,7 @@ x, y: required. These parameters must be of the DOUBLE type. They specify the co
 -- Construct a square from coordinate values SELECT ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1); -- Construct a triangle from a WKT expression SELECT ST_Polygon('polygon ((1 1, 4 1, 1 4, 1 1))');
 ```
 
-##### ST_PolyFromWKB
+##### 3.12.2.25 ST_PolyFromWKB
 
 This topic describes how to use the ST_PolyFromWKB function in MaxCompute and provides reference examples. This function constructs a 2D polygon from a Well-Known Binary (WKB) expression of Open Geospatial Consortium (OGC).
 
@@ -12311,7 +12806,7 @@ wkb: required. This parameter must be of the BINARY type and it specifies an OGC
 SELECT ST_PolyFromWKB(ST_AsBinary(ST_GeomFromText('polygon ((0 0, 10 0, 0 10, 0 0))') ));
 ```
 
-##### ST_SetSRID
+##### 3.12.2.26 ST_SetSRID
 
 This topic describes how to use the ST_SetSRID function and provides reference examples. This function sets the Spatial Reference Identifier (SRID) of a geometry.
 
@@ -12325,9 +12820,9 @@ ST_Geometry: required. This parameter specifies a geometry. SRID: required. This
 SELECT ST_SetSRID(ST_Point(1.5, 2.5), 4326);
 ```
 
-#### Accessors
+#### 3.12.3 Accessors
 
-##### ST_Area
+##### 3.12.3.1 ST_Area
 
 This topic describes how to use the ST_Area function in MaxCompute and provides reference examples. This function returns the area of one or more polygons.
 
@@ -12345,7 +12840,7 @@ SELECT ST_Area(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result +------------+
 +------------+
 ```
 
-##### ST_Centroid
+##### 3.12.3.2 ST_Centroid
 
 This topic describes how to use the ST_Centroid function in MaxCompute and provides reference examples. This function returns the center point of the minimum bounding rectangle of a polygon.
 
@@ -12359,7 +12854,7 @@ polygon: required. This parameter specifies a geometry of the ST_Polygon type. T
 SELECT ST_Centroid(ST_GeomFromText('polygon ((0 0, 3 6, 6 0, 0 0))')); SELECT ST_Centroid(ST_GeomFromText('polygon ((0 0, 0 8, 8 0, 0 0))'));
 ```
 
-##### ST_CoordDim
+##### 3.12.3.3 ST_CoordDim
 
 This topic describes how to use the ST_CoordDim function in MaxCompute and provides reference examples. This function returns the number of coordinate dimensions of a point.
 
@@ -12385,7 +12880,7 @@ geometry: required. This parameter specifies a geometry. This function returns a
 +------+
 ```
 
-##### ST_Dimension
+##### 3.12.3.4 ST_Dimension
 
 This topic describes how to use the ST_Dimension function in MaxCompute and provides reference examples. This function returns the spatial dimension of a geometry.
 
@@ -12411,7 +12906,7 @@ SELECT ST_Dimension(ST_Point(1.5, 2.5)); -- Return result +------+
 +------+
 ```
 
-##### ST_Distance
+##### 3.12.3.5 ST_Distance
 
 This topic describes how to use the ST_Distance function in MaxCompute and provides reference examples. This function returns the distance between two geometries.
 
@@ -12429,7 +12924,7 @@ SELECT ST_Distance(ST_Point(0.0, 0.0), ST_Point(3.0, 4.0)); -- Result +------+
 +------+
 ```
 
-##### ST_GeodesicLengthWGS84
+##### 3.12.3.6 ST_GeodesicLengthWGS84
 
 This topic describes how to use the ST_GeodesicLengthWGS84 function in MaxCompute and provides reference examples. The function returns the distance along a line on the WGS84 spheroid in meters. The geometry must use the WGS84 coordinate system. Otherwise, the function returns NULL.
 
@@ -12451,7 +12946,7 @@ SELECT ST_GeodesicLengthWGS84(ST_SetSRID(ST_LineString(0.0, 0.0, 0.3, 0.4), 4326
 +--------------------+
 ```
 
-##### ST_GeometryN
+##### 3.12.3.7 ST_GeometryN
 
 This topic describes how to use the ST_GeometryN function in MaxCompute and provides reference examples. The function returns the nth ST_Geometry object in a collection, where n starts from 1.
 
@@ -12465,7 +12960,7 @@ ST_GeometryCollection: required. This parameter specifies a geometry collection.
 -- Return the third point in the multipoint SELECT ST_GeometryN(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), (30 10))' ), 3); -- Return the second line in the multilinestring SELECT ST_GeometryN(ST_GeomFromText('multilinestring ((2 4, 10 10), (20 20, 7 8))'), 2);
 ```
 
-##### ST_Is3D
+##### 3.12.3.8 ST_Is3D
 
 This topic describes how to use the ST_Is3D function in MaxCompute and provides reference examples. This function determines whether a geometry is a 3D geometry. It returns true if the geometry is 3D, and false otherwise.
 
@@ -12495,7 +12990,7 @@ geometry: required. This parameter specifies a geometry. This function returns a
 +------+
 ```
 
-##### ST_IsClosed
+##### 3.12.3.9 ST_IsClosed
 
 This topic describes how to use the ST_IsClosed function in MaxCompute and provides reference examples. If a linestring or multiple linestrings are closed, this function returns True. Otherwise, it returns False.
 
@@ -12517,7 +13012,7 @@ ST_[Multi]LineString: required. This parameter specifies a geometry of the ST_Li
 +-------+
 ```
 
-##### ST_IsEmpty
+##### 3.12.3.10 ST_IsEmpty
 
 This topic describes how to use the ST_IsEmpty function in MaxCompute and provides reference examples. The function returns true if a geometry is empty and returns false otherwise.
 
@@ -12539,7 +13034,7 @@ geometry: required. This parameter specifies a geometry. This function returns a
 +------+
 ```
 
-##### ST_IsMeasured
+##### 3.12.3.11 ST_IsMeasured
 
 This topic describes the Accessor function ST_IsMeasured and provides an example for reference. Function declaration:
 
@@ -12553,7 +13048,7 @@ Description: If the input geometry has M coordinates (measures), this function r
 SELECT ST_IsMeasured(ST_Polygon(1,1, 1,4, 4,4, 4,1)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsMeasured(ST_LineString(0.,0., 3.,4., 0.,4., 0.,0.)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsMeasured(ST_Point(3., 4.)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsMeasured(ST_PointM(3., 4., 2)) FROM src LIMIT 1; -- True is returned.
 ```
 
-##### ST_IsSimple
+##### 3.12.3.12 ST_IsSimple
 
 This topic describes how to use the ST_IsSimple function in MaxCompute and provides reference examples. This function determines whether a geometry is a simple object. The function returns true if the geometry is simple, and returns false otherwise. Simple geometries include the following types: Simple point: A point has no interior rings and consists of only one coordinate. Simple line: A linestring has no self-intersections or intersections, no overlapping parts, and no interior rings. Simple multipoint: A multipoint geometry consists of multiple simple points, and each point has no interior rings. Simple multilinestring: A multilinestring geometry consists of multiple simple linestrings, and each linestring has no self-intersections or intersections, no overlapping segments, and no interior rings. Simple polygon: A polygon geometry consists of one exterior ring and zero or more interior rings. Each ring is a simple linestring, and no self-intersections, intersections, or overlapping segments exist between the exterior ring and the interior rings.
 
@@ -12575,7 +13070,7 @@ geometry: required. This parameter specifies a geometry. This function returns a
 +-------+
 ```
 
-##### ST_IsRing
+##### 3.12.3.13 ST_IsRing
 
 This topic describes how to use the ST_IsRing function in MaxCompute and provides reference examples. This function determines whether a geometry is a closed ring, meaning that the start point and end point are identical. The function returns true if the geometry is a closed ring, and returns false otherwise.
 
@@ -12601,7 +13096,7 @@ ST_LineString: required. This parameter specifies a geometry of the ST_LineStrin
 +-------+
 ```
 
-##### ST_Length
+##### 3.12.3.14 ST_Length
 
 This topic describes how to use the ST_Length function in MaxCompute and provides reference examples. This function returns the length of a linestring.
 
@@ -12619,7 +13114,7 @@ SELECT ST_Length(ST_LineString(0.0, 0.0, 3.0, 4.0)); -- Result +------+
 +------+
 ```
 
-##### ST_M
+##### 3.12.3.15 ST_M
 
 This topic describes the Accessor function ST_M and provides an example for reference. Function declaration:
 
@@ -12635,7 +13130,7 @@ SELECT ST_M(ST_PointM(3., 4., 2)) FROM src LIMIT 1;
 
 Returned results:
 
-##### ST_MaxM
+##### 3.12.3.16 ST_MaxM
 
 This topic describes the Accessor function ST_MaxM and provides examples for reference. Function declaration:
 
@@ -12657,7 +13152,7 @@ SELECT ST_MaxM(ST_LineString('linestring m (1.5 2.5 2, 3.0 2.2 1)')) FROM src LI
 
 Returned results:
 
-##### ST_MinM
+##### 3.12.3.17 ST_MinM
 
 This topic describes the Accessor function ST_MinM and provides examples for reference. Function declaration:
 
@@ -12679,7 +13174,7 @@ SELECT ST_MinM(ST_LineString('linestring m (1.5 2.5 2, 3.0 2.2 1)')) FROM src LI
 
 Returned results:
 
-##### ST_X
+##### 3.12.3.18 ST_X
 
 This topic describes how to use the ST_X function in MaxCompute and provides reference examples. This function returns the X-axis coordinate of a point.
 
@@ -12697,7 +13192,7 @@ SELECT ST_X(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_Y
+##### 3.12.3.19 ST_Y
 
 This topic describes how to use the ST_Y function in MaxCompute and provides reference examples. This function returns the Y-axis coordinate of a point.
 
@@ -12715,7 +13210,7 @@ SELECT ST_Y(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_Z
+##### 3.12.3.20 ST_Z
 
 This topic describes how to use the ST_Z function in MaxCompute and provides reference examples. This function returns the Z-axis coordinate of a point.
 
@@ -12733,7 +13228,7 @@ SELECT ST_Z(ST_Point(1.5, 2.5, 3.0)); -- Result +------+
 +------+
 ```
 
-##### ST_MaxX
+##### 3.12.3.21 ST_MaxX
 
 This topic describes how to use the ST_MaxX function in MaxCompute and provides reference examples. This function returns the maximum X-axis coordinate of a geometry.
 
@@ -12755,7 +13250,7 @@ SELECT ST_MaxX(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_MaxY
+##### 3.12.3.22 ST_MaxY
 
 This topic describes how to use the ST_MaxY function in MaxCompute and provides reference examples. This function returns the maximum Y-axis coordinate of a geometry.
 
@@ -12777,7 +13272,7 @@ SELECT ST_MaxY(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_MaxZ
+##### 3.12.3.23 ST_MaxZ
 
 This topic describes how to use the ST_MaxZ function in MaxCompute and provides reference examples. This function returns the maximum Z-axis coordinate of a geometry.
 
@@ -12799,7 +13294,7 @@ SELECT ST_MaxZ(ST_PointZ(1.5, 2.5, 2)); -- Return result +------+
 +------+
 ```
 
-##### ST_MinX
+##### 3.12.3.24 ST_MinX
 
 This topic describes how to use the ST_MinX function in MaxCompute and provides reference examples. This function returns the minimum X-axis coordinate of a geometry.
 
@@ -12821,7 +13316,7 @@ SELECT ST_MinX(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_MinY
+##### 3.12.3.25 ST_MinY
 
 This topic describes how to use the ST_MinY function in MaxCompute and provides reference examples. This function returns the minimum Y-axis coordinate of a geometry.
 
@@ -12843,7 +13338,7 @@ SELECT ST_MinY(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_MinZ
+##### 3.12.3.26 ST_MinZ
 
 This topic describes how to use the ST_MinZ function in MaxCompute and provides reference examples. This function returns the minimum Z-axis coordinate of a geometry.
 
@@ -12865,7 +13360,7 @@ SELECT ST_MinZ(ST_PointZ(1.5, 2.5, 2)); -- Result +------+
 +------+
 ```
 
-##### ST_NumGeometries
+##### 3.12.3.27 ST_NumGeometries
 
 This topic describes how to use the ST_NumGeometries function in MaxCompute and provides reference examples. This function returns the number of geometries in a geometry collection.
 
@@ -12887,7 +13382,7 @@ SELECT ST_NumGeometries(ST_GeomFromText('multipoint ((10 40), (40 30), (20 20), 
 +------+
 ```
 
-##### ST_NumInteriorRing
+##### 3.12.3.28 ST_NumInteriorRing
 
 This topic describes how to use the ST_NumInteriorRing function in MaxCompute and provides reference examples. This function returns the number of interior rings of a polygon.
 
@@ -12909,7 +13404,7 @@ ST_Polygon: required. This parameter specifies a geometry of the ST_Polygon type
 +------+
 ```
 
-##### ST_NumPoints
+##### 3.12.3.29 ST_NumPoints
 
 This topic describes how to use the ST_NumPoints function in MaxCompute and provides reference examples. This function returns the number of points in a geometry.
 
@@ -12935,7 +13430,7 @@ SELECT ST_NumPoints(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-##### ST_PointN
+##### 3.12.3.30 ST_PointN
 
 This topic describes how to use the ST_PointN function in MaxCompute and provides reference examples. This function returns the nth vertex of one or more linestrings.
 
@@ -12949,7 +13444,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies an
 SELECT ST_PointN(ST_LineString(1.5, 2.5, 3.0, 2.2), 2);
 ```
 
-##### ST_StartPoint
+##### 3.12.3.31 ST_StartPoint
 
 This topic describes how to use the ST_StartPoint function in MaxCompute and provides reference examples. The function returns the first point of a linestring.
 
@@ -12963,7 +13458,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies an
 SELECT ST_StartPoint(ST_LineString(1.5, 2.5, 3.0, 2.2));
 ```
 
-##### ST_EndPoint
+##### 3.12.3.32 ST_EndPoint
 
 This topic describes how to use the ST_EndPoint function in MaxCompute and provides reference examples. This function returns the last point of a linestring.
 
@@ -12977,7 +13472,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies an
 SELECT ST_EndPoint(ST_LineString(1.5, 2.5, 3.0, 2.2));
 ```
 
-##### ST_SRID
+##### 3.12.3.33 ST_SRID
 
 This topic describes how to use the ST_SRID function in MaxCompute and provides reference examples.
 
@@ -13003,9 +13498,9 @@ SELECT ST_SRID(ST_Point(1.5, 2.5)); -- Result +------+
 +------+
 ```
 
-#### Operations
+#### 3.12.4 Operations
 
-##### ST_Aggr_ConvexHull
+##### 3.12.4.1 ST_Aggr_ConvexHull
 
 This topic describes how to use the ST_Aggr_ConvexHull function in MaxCompute and provides reference examples. This function returns the convex hull geometry after aggregating all geometries.
 
@@ -13019,7 +13514,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies th
 SELECT ST_Aggr_ConvexHull(ST_Point(1.5, 2.5));
 ```
 
-##### ST_Aggr_Intersection
+##### 3.12.4.2 ST_Aggr_Intersection
 
 This topic describes how to use the ST_Aggr_Intersection function in MaxCompute and provides reference examples. This function returns a geometry formed by the intersection of all specified geometries.
 
@@ -13033,7 +13528,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies th
 SELECT ST_Aggr_Intersection(ST_Point(1.5, 2.5));
 ```
 
-##### ST_Aggr_Union
+##### 3.12.4.3 ST_Aggr_Union
 
 This topic describes how to use the ST_Aggr_Union function in MaxCompute and provides reference examples. This function returns a geometry formed by the union of all specified geometries.
 
@@ -13047,7 +13542,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies th
 SELECT ST_Aggr_Union(ST_Point(1.5, 2.5));
 ```
 
-##### ST_Bin
+##### 3.12.4.4 ST_Bin
 
 This topic describes the Operation function ST_Bin. Function declaration:
 
@@ -13057,7 +13552,7 @@ ST_Bin(placeholder)
 
 Description: This function returns the bin ID of the input point.
 
-##### ST_BinEnvelope
+##### 3.12.4.5 ST_BinEnvelope
 
 This topic describes the Operation function ST_BinEnvelop. Function declaration:
 
@@ -13073,7 +13568,7 @@ ST_BinEnvelope(binsize, binid)
 
 Description: This function returns the binary envelope for the input bin ID.
 
-##### ST_Boundary
+##### 3.12.4.6 ST_Boundary
 
 This topic describes how to use the ST_Boundary function in MaxCompute and provides reference examples. This function returns the boundary of an input geometry.
 
@@ -13087,7 +13582,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies an
 SELECT ST_Boundary(ST_LineString(0, 1, 1, 0)); SELECT ST_Boundary(ST_Polygon(1, 1, 4, 1, 1, 4));
 ```
 
-##### ST_Buffer
+##### 3.12.4.7 ST_Buffer
 
 This topic describes how to use the ST_Buffer function in MaxCompute and provides reference examples. This function takes a geometry and a distance, and returns a geometry consisting of all points whose distance from the input geometry is less than or equal to the specified distance.
 
@@ -13101,7 +13596,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies an
 SELECT ST_Buffer(ST_Point(1.5, 2.5), 1.0);
 ```
 
-##### ST_ConvexHull
+##### 3.12.4.8 ST_ConvexHull
 
 This topic describes how to use the ST_ConvexHull function in MaxCompute and provides reference examples. This function returns the convex hull of geometries.
 
@@ -13119,7 +13614,7 @@ SELECT ST_AsText(ST_ConvexHull(ST_Point(0, 0), ST_Point(0, 1), ST_Point(1, 1)));
 +---------------------------------------+
 ```
 
-##### ST_Difference
+##### 3.12.4.9 ST_Difference
 
 This topic describes how to use the ST_Difference function in MaxCompute and provides reference examples. This function returns the first geometry minus its intersection with the second geometry.
 
@@ -13141,7 +13636,7 @@ SELECT ST_AsText(ST_Difference(ST_MultiPoint(1, 1, 1.5, 1.5, 2, 2), ST_Point(1.5
 +---------------------------------------------------+
 ```
 
-##### ST_Envelope
+##### 3.12.4.10 ST_Envelope
 
 This topic describes how to use the ST_Envelope function in MaxCompute and provides reference examples. This function returns the envelope of a geometry. If the geometry is a point or a vertical or horizontal line, this function may return a degenerate envelope or an empty envelope.
 
@@ -13155,7 +13650,7 @@ geometry: required. This parameter must be of the GEOMETRY type. It specifies an
 SELECT ST_Envelope(ST_LineString(0, 0, 2, 2)); SELECT ST_Envelope(ST_Polygon(2, 0, 2, 3, 3, 0));
 ```
 
-##### ST_ExteriorRing
+##### 3.12.4.11 ST_ExteriorRing
 
 This topic describes how to use the ST_ExteriorRing function in MaxCompute and provides reference examples. This function returns the exterior ring of a polygon as a linestring.
 
@@ -13169,7 +13664,7 @@ polygon: required. This parameter must be of the GEOMETRY type. It specifies an 
 SELECT ST_ExteriorRing(ST_Polygon(1, 1, 1, 4, 4, 1)); SELECT ST_ExteriorRing(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 1, 1 1 ))'));
 ```
 
-##### ST_InteriorRingN
+##### 3.12.4.12 ST_InteriorRingN
 
 This topic describes how to use the ST_InteriorRingN function in MaxCompute and provides reference examples. This function returns the nth interior ring of a polygon as a linestring.
 
@@ -13183,7 +13678,7 @@ polygon: required. This parameter must be of the GEOMETRY type. It specifies an 
 SELECT ST_InteriorRingN(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 1, 1 1))'), 1);
 ```
 
-##### ST_Intersection
+##### 3.12.4.13 ST_Intersection
 
 This topic describes how to use the ST_Intersection function in MaxCompute and provides reference examples. This function returns the intersection of two geometries. If the dimension of the intersection is lower than the dimension of the input geometries, the ST_Intersection function may drop the lower-dimensional intersection geometry or return it as a closed linestring.
 
@@ -13217,7 +13712,7 @@ SELECT ST_AsText(ST_Intersection(ST_Point(1, 1), ST_Point(1, 1))); -- Result +--
 +-----------------------+
 ```
 
-##### ST_SymmetricDiff
+##### 3.12.4.14 ST_SymmetricDiff
 
 This topic describes how to use the ST_SymmetricDiff function in MaxCompute and provides reference examples. This function returns a geometry that consists of the non-intersecting portions of two geometries.
 
@@ -13244,7 +13739,7 @@ SELECT ST_AsText(ST_SymmetricDiff(ST_LineString('linestring(0 2, 2 2)'), ST_Line
 , 2 1))) | +-------------------------------------------------------------------------------------- ------+
 ```
 
-##### ST_Union
+##### 3.12.4.15 ST_Union
 
 This topic describes how to use the ST_Union function in MaxCompute and provides reference examples. This function returns a geometry that represents the union of two or more geometries.
 
@@ -13262,9 +13757,9 @@ SELECT ST_AsText(ST_Union(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1), ST_Polygon(4, 1, 4
 +------------------------------------------------------+
 ```
 
-#### Relationship tests
+#### 3.12.5 Relationship tests
 
-##### ST_Contains
+##### 3.12.5.1 ST_Contains
 
 This topic describes how to use the ST_Contains function in MaxCompute and provides reference examples. If a geometry geometry1 contains another geometry geometry2, the function returns true. Otherwise, it returns false.
 
@@ -13286,7 +13781,7 @@ SELECT ST_Contains(ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1), ST_Point(2, 3)); -- Resul
 +-------+
 ```
 
-##### ST_Crosses
+##### 3.12.5.2 ST_Crosses
 
 This topic describes how to use the ST_Crosses function in MaxCompute and provides reference examples. This function determines whether two geometries intersect, excluding tangent or containment relationships. The function returns true if the two geometries have a crossing point, and returns false otherwise. This function is applicable to the relationship evaluation between lines and lines, lines and polygons, and polygons and polygons.
 
@@ -13312,7 +13807,7 @@ SELECT ST_Crosses(ST_LineString(0, 0, 1, 1), ST_LineString(1, 0, 0, 1)); -- Resu
 +-------+
 ```
 
-##### ST_Disjoint
+##### 3.12.5.3 ST_Disjoint
 
 This topic describes how to use the ST_Disjoint function in MaxCompute and provides reference examples. This function determines whether two geometries are completely disjoint. If the two geometries share no intersecting points, lines, or surfaces, the function returns true. Otherwise, it returns false.
 
@@ -13334,7 +13829,7 @@ SELECT ST_Disjoint(ST_LineString(0, 0, 0, 1), ST_LineString(1, 1, 1, 0)); -- Res
 +-------+
 ```
 
-##### ST_EnvIntersects
+##### 3.12.5.4 ST_EnvIntersects
 
 This topic describes how to use the ST_EnvIntersects function in MaxCompute and provides reference examples. This function determines whether the bounding rectangles of two geometries intersect. If the bounding rectangles intersect, the function returns true. Otherwise, it returns false.
 
@@ -13356,7 +13851,7 @@ SELECT ST_EnvIntersects(ST_LineString(0, 0, 1, 1), ST_LineString(1, 3, 2, 2)); -
 +------+
 ```
 
-##### ST_Equals
+##### 3.12.5.5 ST_Equals
 
 This topic describes how to use the ST_Equals function in MaxCompute and provides reference examples. The function determines whether two geometries are identical. If geometry1 and geometry2 are spatially identical, the function returns true. Otherwise, it returns false.
 
@@ -13378,7 +13873,7 @@ SELECT ST_Equals(ST_LineString(0, 0, 1, 1), ST_LineString(1, 1, 0, 0)); -- Resul
 +-------+
 ```
 
-##### ST_Intersects
+##### 3.12.5.6 ST_Intersects
 
 This topic describes how to use the ST_Intersects function in MaxCompute and provides reference examples. This function determines whether two geometries share a common intersection. If geometry1 and geometry2 share a common intersection, the function returns true. Otherwise, the function returns false.
 
@@ -13408,7 +13903,7 @@ SELECT ST_Intersects(ST_LineString(0, 0, 1, 1), ST_LineString(1, 1, 0, 0)); -- R
 +-------+
 ```
 
-##### ST_Overlaps
+##### 3.12.5.7 ST_Overlaps
 
 This topic describes how to use the ST_Overlaps function in MaxCompute and provides reference examples. This function determines whether two geometries overlap (excluding tangency). This function returns true if geometry1 and geometry2 overlap, and returns false otherwise.
 
@@ -13430,7 +13925,7 @@ SELECT ST_Overlaps(ST_Polygon(2, 0, 2, 3, 3, 0), ST_Polygon(1, 1, 1, 4, 4, 4, 4,
 +-------+
 ```
 
-##### ST_Relate
+##### 3.12.5.8 ST_Relate
 
 This topic describes how to use the ST_Relate function in MaxCompute and provides reference examples. This function determines whether two geometries have a DE-9IM topological relationship. If geometry1 and geometry2 match the specified DE-9IM topological pattern, the function returns true. Otherwise, it returns false.
 
@@ -13464,7 +13959,7 @@ SELECT ST_Relate(ST_Polygon(2, 0, 2, 1, 3, 1), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1
 +-------+
 ```
 
-##### ST_Touches
+##### 3.12.5.9 ST_Touches
 
 This topic describes how to use the ST_Touches function in MaxCompute and provides reference examples. This function determines whether two geometries touch only at their boundaries. If geometry1 and geometry2 intersect at least at one point and their interiors do not intersect, the function returns true. Otherwise, it returns false.
 
@@ -13486,7 +13981,7 @@ SELECT ST_Touches(ST_Point(1, 2), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result
 +-------+
 ```
 
-##### ST_Within
+##### 3.12.5.10 ST_Within
 
 This topic describes how to use the ST_Within function in MaxCompute and provides reference examples. The function determines whether one geometry contains another. If geometry2 contains geometry1, the function returns true. Otherwise, it returns false.
 
@@ -13508,9 +14003,9 @@ SELECT ST_Within(ST_Point(2, 3), ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1)); -- Result 
 +-------+
 ```
 
-#### Geohash index functions
+#### 3.12.6 Geohash index functions
 
-##### ST_GeoHash
+##### 3.12.6.1 ST_GeoHash
 
 This topic describes how to use the ST_GeoHash function in MaxCompute and provides reference examples. This function calculates the GeoHash value of an input point geometry and returns the result as a string. The function accepts longitude and latitude values or geometries returned by ST_ functions. If the precision is not specified, the maximum precision is used by default. The precision value depends on your application requirements and the characteristics of your spatial data.
 
@@ -13536,7 +14031,7 @@ SELECT ST_GeoHash(ST_Point(-102.849854, 36.451113), 8); -- Return result +------
 +------------+
 ```
 
-##### ST_PointFromGeoHash
+##### 3.12.6.2 ST_PointFromGeoHash
 
 This topic describes how to use the ST_PointFromGeoHash function in MaxCompute and provides reference examples. This function returns a point geometry based on an input GeoHash value. If the precision is not specified, the function uses the maximum precision by default. The precision value depends on your application requirements and the characteristics of your spatial data.
 
@@ -13558,7 +14053,7 @@ SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq')); -- Result +--------------
 +------------------------------------+
 ```
 
-##### ST_EnvelopeFromGeoHash
+##### 3.12.6.3 ST_EnvelopeFromGeoHash
 
 This topic describes how to use the ST_EnvelopeFromGeoHash function in MaxCompute and provides reference examples. This function returns a bounding rectangle of a specified precision based on an input GeoHash value. If the precision is not specified, the maximum precision is used by default. The precision value depends on your application requirements and the characteristics of your spatial data.
 
@@ -13580,7 +14075,7 @@ SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq', 8)); -- Result +--------
 36.451112888753414, -102.84985385835171 36.45111305639148, -102.84985419362783 36.451 11305639148, -102.84985419362783 36.451112888753414)) | +------------------------------------------------------------+
 ```
 
-##### ST_GeoHashNeighbours
+##### 3.12.6.4 ST_GeoHashNeighbours
 
 This topic describes how to use the ST_GeoHashNeighbours function in MaxCompute and provides reference examples. This function is a User-Defined Table-Generating Function (UDTF) that generates nine rows of data. Based on the input longitude, latitude, and precision, this function returns nine GeoHash string values that represent the current point and its surrounding neighbors. The precision parameter must be specified.
 
@@ -13606,9 +14101,9 @@ SELECT ST_GeoHashNeighbours(-102.849854, 36.451113, 10) AS geohash; -- Result +-
 +------------+
 ```
 
-#### S2 mesh functions
+#### 3.12.7 S2 mesh functions
 
-##### ST_S2CellIdsFromGeom
+##### 3.12.7.1 ST_S2CellIdsFromGeom
 
 This topic describes the ST_S2CellIdsFromGeom function and provides an example of using this function. Function declaration:
 
@@ -13622,7 +14117,7 @@ Description: This function overwrites the input geometry by using S2 cells at th
 SELECT ST_S2CellIdsFromGeom(ST_Point(-102.849854, 36.451113), 4); SELECT ST_S2CellIdsFromGeom(ST_LineString('LINESTRING(-71.160281 42.258729,-71.160837 4 2.259113,-71.161144 42.25932)'), 17) as cellid;
 ```
 
-##### ST_S2CellIdsFromText
+##### 3.12.7.2 ST_S2CellIdsFromText
 
 This topic describes the ST_S2CellIdsFromText function and provides an example of using this function. Function declaration:
 
@@ -13636,7 +14131,7 @@ Description: This function overwrites the well-known text (WKT) representation o
 SELECT ST_S2CellIdsFromText(ST_GeomFromText('POINT(-102.849854 36.451113)'), 4); SELECT ST_S2CellIdsFromText('LINESTRING(-71.160281 42.258729,-71.160837 42.259113,-71.1 61144 42.25932)', 17) as cellid;
 ```
 
-##### ST_S2CellCenterPoint
+##### 3.12.7.3 ST_S2CellCenterPoint
 
 This topic describes the ST_S2CellCenterPoint function and provides an example of using this function. Function declaration:
 
@@ -13650,7 +14145,7 @@ Description: This function calculates the center point of the cell specified by 
 SELECT ST_S2CellCenterPoint('549015'); SELECT ST_AsText(ST_S2CellCenterPoint('89e37f091'));
 ```
 
-##### ST_S2CellNeighbours
+##### 3.12.7.4 ST_S2CellNeighbours
 
 This topic describes how to use the ST_S2CellNeighbours function in MaxCompute and provides reference examples. The function calculates all neighboring cells of a specified S2 cell at a given level, and returns a list of S2 cell IDs for all neighboring cells.
 
@@ -13686,9 +14181,9 @@ SELECT ST_S2CellNeighbours('549015', 10) AS neighbour; -- Return result +-------
 +-----------+
 ```
 
-#### Geodesic functions
+#### 3.12.8 Geodesic functions
 
-##### ST_AreaWGS84
+##### 3.12.8.1 ST_AreaWGS84
 
 This topic describes the ST_AreaWGS84 function and provides an example of using this function. Function declaration:
 
@@ -13702,7 +14197,7 @@ Description: This function returns the approximate geodesic area of the input ge
 SELECT ST_AreaWGS84(ST_GeomFromText('POLYGON((743238 2967416,743238 2967450, 743265 296 7450,743265.625 2967416,743238 2967416))'));
 ```
 
-##### ST_DistanceWGS84
+##### 3.12.8.2 ST_DistanceWGS84
 
 This topic describes the ST_DistanceWGS84 function and provides an example of using this function. Function declaration:
 
@@ -13716,7 +14211,7 @@ Description: This function returns the approximate geodesic distance of the inpu
 SELECT ST_DistanceWGS84(ST_GeomFromText('POINT(-72.1235 42.3521)'), ST_GeomFromText('LINESTRING(-72.1260 42.45, -72.123 42.1546)'));
 ```
 
-##### ST_BufferWGS84
+##### 3.12.8.3 ST_BufferWGS84
 
 This topic describes the ST_BufferWGS84 function and provides an example of using this function. Function declaration:
 
@@ -13730,7 +14225,7 @@ Description: This function returns the approximate geodesic buffer of the input 
 SELECT ST_AsText(ST_BufferWGS84(ST_GeomFromText('POINT(-72.1235 42.3521)'), 10));
 ```
 
-##### ST_GeodesicDistance
+##### 3.12.8.4 ST_GeodesicDistance
 
 This topic describes the ST_GeodesicDistance function and provides an example of using this function. Function declaration:
 
@@ -13744,7 +14239,7 @@ double ST_GeodesicDistance(double lon1, double lat1, double lon2, double lat2, s
 SELECT ST_GeodesicDistance(ST_GeomFromText('POINT(152.352298 -24.875975)'), ST_GeomFromText('POINT(151.960336 -24.993289)'), 'LawOfCosines');
 ```
 
-##### ST_Distance_Sphere
+##### 3.12.8.5 ST_Distance_Sphere
 
 This topic describes the ST_Distance_Sphere function and provides an example of using this function. Syntax:
 
@@ -13770,7 +14265,7 @@ Returned result:
 +------------+
 ```
 
-##### ST_Area_Sphere
+##### 3.12.8.6 ST_Area_Sphere
 
 This topic describes the ST_Area_Sphere function and provides an example of using this function. Syntax:
 
@@ -13794,9 +14289,9 @@ The following result is returned:
 +------------+
 ```
 
-#### R-tree index functions
+#### 3.12.9 R-tree index functions
 
-##### ST_BuildRTreeIndex
+##### 3.12.9.1 ST_BuildRTreeIndex
 
 This topic describes the ST_BuildRTreeIndex function and provides an example of using this function. Function declaration:
 
@@ -13810,7 +14305,7 @@ Description: This function is a user-defined aggregate function (UDAF). It uses 
 SELECT geospatial.ST_BuildRTreeIndex(id, shape) AS index FROM poi_sample;
 ```
 
-##### ST_ContainsFromRTree
+##### 3.12.9.2 ST_ContainsFromRTree
 
 This topic describes the ST_ContainsFromRTree function. Function declaration:
 
@@ -13820,7 +14315,7 @@ ST_ContainsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 
 Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that are contained by the geometry from the R-tree index. This function is used to accelerate the ST_Contains query.
 
-##### ST_CrossesFromRTree
+##### 3.12.9.3 ST_CrossesFromRTree
 
 This topic describes the ST_CrossesFromRTree function. Function declaration:
 
@@ -13830,7 +14325,7 @@ ST_CrossesFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 
 Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that cross the geometry from the R-tree index. This function is used to accelerate the ST_Crosses query.
 
-##### ST_EqualsFromRTree
+##### 3.12.9.4 ST_EqualsFromRTree
 
 This topic describes the ST_EqualsFromRTree function. Function declaration:
 
@@ -13840,7 +14335,7 @@ ST_EqualsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 
 Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that equal the geometry from the R-tree index. This function is used to accelerate the ST_Equals query.
 
-##### ST_IntersectsFromRTree
+##### 3.12.9.5 ST_IntersectsFromRTree
 
 This topic describes the ST_IntersectsFromRTree function. Function declaration:
 
@@ -13850,7 +14345,7 @@ ST_IntersectsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 
 Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that intersect with the geometry from the R-tree index. This function is used to accelerate the ST_Intersects query.
 
-##### ST_OverlapsFromRTree
+##### 3.12.9.6 ST_OverlapsFromRTree
 
 This topic describes the ST_OverlapsFromRTree function. Function declaration:
 
@@ -13860,7 +14355,7 @@ ST_OverlapsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 
 Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that overlap with the geometry from the R-tree index. This function is used to accelerate the ST_Overlaps query.
 
-##### ST_TouchesFromRTree
+##### 3.12.9.7 ST_TouchesFromRTree
 
 This topic describes the ST_TouchesFromRTree function. Function declaration:
 
@@ -13870,7 +14365,7 @@ ST_TouchesFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 
 Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that spatially touch the geometry from the R-tree index. This function is used to accelerate the ST_Touches query.
 
-##### ST_WithinFromRTree
+##### 3.12.9.8 ST_WithinFromRTree
 
 This topic describes the ST_WithinFromRTree function and provides an example of using this function. Function declaration:
 
@@ -13907,7 +14402,7 @@ After optimization by using the new function:
 SELECT /*+mapjoin(i)*/
       geospatial.ST_IntersectsFromRTree(id, line, i.index)
       AS (link_id, shape_id)
-FROM link_sample_wkt JOIN
+FROM link_sample_wkt
 ```
 
 `(`
@@ -13934,7 +14429,7 @@ outputs: Job run time: 41.000 +---------+----------+
 +---------+----------+
 ```
 
-##### ST_KNNFromRTree
+##### 3.12.9.9 ST_KNNFromRTree
 
 This topic describes the ST_KNNFromRTree function and provides an example of using this function. Function declaration:
 
@@ -13947,7 +14442,7 @@ Description: This function is a user-defined table-valued function (UDTF). It us
 ```
 SELECT /*+mapjoin(i)*/
     geospatial.ST_KNNFromRTree(id, point, 1, i.index) AS (id1, id2)
-FROM poi_sample_wkt JOIN
+FROM poi_sample_wkt
 ```
 
 `(`
@@ -13976,9 +14471,9 @@ outputs: Job run time: 46.000 +-----+-----+
 ... -- The table has 1,000 rows of data. This function returns 1,000 rows of data, which me ets your expectations.
 ```
 
-#### Other functions
+#### 3.12.10 Other functions
 
-##### ST_IsValid
+##### 3.12.10.1 ST_IsValid
 
 This topic describes the ST_IsValid function and provides an example of using this function. Function declaration:
 
@@ -13992,7 +14487,7 @@ Description: This function checks whether the input geometry or well-known text 
 SELECT ST_IsValid('POINT(-102.849854 36.451113)'); SELECT ST_IsValid(ST_Point('POINT(-102.849854 36.451113)'));
 ```
 
-##### ST_Transform
+##### 3.12.10.2 ST_Transform
 
 This topic describes the ST_Transform function and provides an example of using this function. Function declaration:
 
@@ -14006,9 +14501,9 @@ Description: This function converts the coordinates of the input geometry from o
 SELECT ST_AsText(ST_Transform(ST_GeomFromText('POLYGON((743238 2967416,743238 2967450, 743265 2967450,743265.625 2967416,743238 2967416))', 2249, 4326))); SELECT ST_AsText(ST_TransformWGS84(ST_GeomFromText('POLYGON((-71.1776848522251 42.39028 96512902,-71.1776843766326 42.3903829478009, -71.1775844305465 42.3903826677917,-71.177 5825927231 42.3902893647987,-71.1776848522251 42.3902896512902))')));
 ```
 
-### MaxCompute Hash Clustering
+### 3.13 MaxCompute Hash Clustering
 
-#### Feature background
+#### 3.13.1 Feature background
 
 This topic describes the background of MaxCompute Hash Clustering.
 
@@ -14032,9 +14527,9 @@ The sort merge join method is commonly used in MaxCompute because MaxCompute pro
 
 To address this issue, MaxCompute allows you to configure the hash shuffle and sort attributes when the data is initially generated in a table. This prevents data from being repeatedly shuffled and sorted in subsequent queries. The number of stages in the physical execution plan of Job Scheduler of a JOIN operation is also reduced. The preceding figure shows that only one stage is required. MaxCompute Hash Clustering allows you to configure the shuffle and sort attributes of a table when you create the table. Then, MaxCompute optimizes the execution plan, improves the efficiency, and saves resources based on the existing storage characteristics.
 
-#### Descriptions
+#### 3.13.2 Descriptions
 
-##### Enable Hash Clustering
+##### 3.13.2.1 Enable Hash Clustering
 
 This topic describes how to enable the Hash Clustering feature of MaxCompute.
 
@@ -14054,7 +14549,7 @@ After the flag is set to true, the system automatically creates indexes for sort
 
 Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. You can experience the superior performance provided by Hash Clustering even if you do not add this flag.
 
-##### Create a hash-clustered table
+##### 3.13.2.2 Create a hash-clustered table
 
 This topic describes how to create a hash-clustered table.
 
@@ -14090,7 +14585,7 @@ You can use the following statement to create a partitioned table:
 CREATE TABLE t2 (a string, b string, c bigint) PARTITIONED BY (dt string) CLUSTERED BY (c) SORTED by (c) INTO 1024 BUCKETS;
 ```
 
-##### Modify table attributes
+##### 3.13.2.3 Modify table attributes
 
 This topic describes how to modify the attributes of a hash-clustered table.
 
@@ -14108,7 +14603,7 @@ me [ASC | DESC] ...])] INTO number_of_buckets BUCKETS] ALTER TABLE table_name NO
 
 When you use the ALTER TABLE statement, take note of the following points: The ALTER TABLE statement can modify only the Hash Clustering attribute of a partitioned table. The Hash Clustering attribute cannot be modified after it is added to a nonpartitioned table. The ALTER TABLE statement takes effect only on the new partitions of a table, which include the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the Hash Clustering attribute. The storage formats of existing partitions remain unchanged. The ALTER TABLE statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement. The ALTER TABLE statement is suitable for existing tables. After the Hash Clustering attribute is added, new partitions are stored based on the Hash Clustering attribute.
 
-##### View and verify table attributes
+##### 3.13.2.4 View and verify table attributes
 
 This topic describes how to view and verify attributes of a hash-clustered table.
 
@@ -14132,9 +14627,9 @@ DESC EXTENDED table_name PARTITION(pt_spec);
 
 The following figure shows the execution result.
 
-#### Benefits
+#### 3.13.3 Benefits
 
-##### Bucket pruning and index optimization
+##### 3.13.3.1 Bucket pruning and index optimization
 
 This topic describes bucket pruning and index optimization.
 
@@ -14152,7 +14647,7 @@ bucket, not all 1,000 buckets. This process is called **bucket pruning**.
 2. Data in a bucket is stored based on IDs. MaxCompute automatically creates indexes and
 uses the INDEX LOOKUP function to locate relevant records. The simplified procedure not only greatly reduces the number of mappers, but also allows mappers to locate the page where the data is stored by using the INDEX function. Therefore, the volume of loaded data is greatly reduced.
 
-##### Aggregation optimization
+##### 3.13.3.2 Aggregation optimization
 
 This topic describes how the hash clustering feature optimizes aggregation.
 
@@ -14166,7 +14661,7 @@ SELECT department, SUM(salary) FROM employee GROUP BY (department);
 
 Typically, the system performs shuffle and sort operations on the **department** column and then executes a stream aggregate to calculate statistics for each **department group**. However, if the table data already uses `CLUSTERED BY (department) SORTED BY (department)` , the system can skip these shuffle and sort operations.
 
-##### Storage optimization
+##### 3.13.3.3 Storage optimization
 
 This topic describes storage optimization.
 
@@ -14174,7 +14669,7 @@ This topic describes storage optimization.
 
 In addition to computation optimization, storage space is greatly saved if tables are shuffled and stored in a sorted manner. MaxCompute uses column store at the underlying layer. Records that have the same or similar key-value pairs are stored together by the sort function, which facilitates encoding and compression. This way, compression efficiency is improved. In some extreme cases, a sorted table can save 50% more storage space than an unsorted table. Therefore, Hash Clustering is suitable for storing tables that have long lifecycles. The following figure shows a sample table with 100 GB of TPC-H line items and multiple data types, such as INT, DOUBLE, and STRING. If Hash Clustering is used, about 10% of the storage space is saved when the volume of data and compression format remain unchanged.
 
-#### ShuffleRemove
+#### 3.13.4 ShuffleRemove
 
 This topic describes the operations that are related to ShuffleRemove. Range-clustered tables support the join and aggregate operations. If a join key or group key is a range-clustered key or its prefix, data redistribution is not required. This mechanism is called ShuffleRemove, which improves execution efficiency.
 **Usage**: The `odps.optimizer.enable.range.partial.repartitioning` flag specifies whether
@@ -14182,7 +14677,7 @@ to enable this feature. By default, this feature is disabled. If the two hash-cl
 **Usage**: The `odps.optimizer.enable.hash.partial.repartitioning` flag specifies whether to
 enable this feature. By default, this feature is enabled. Correlated Shuffle Remove is supported. If data meets distribution requirements but does not meet the sorting requirements, you can add a sort operator to avoid data redistribution.
 
-#### Usage limits
+#### 3.13.5 Usage limits
 
 This topic describes limits on MaxCompute Hash Clustering.
 
@@ -14190,11 +14685,11 @@ This topic describes limits on MaxCompute Hash Clustering.
 
 The Hash clustering feature has the following usage limits: The INSERT INTO statement is not supported. You can insert data only by using the INSERT OVERWRITE statement. Small files cannot be merged. Most data is evenly distributed in buckets when it is split. Therefore, the number of small files is not large. If you merge files, the data distribution is affected. However, you can still use the merge and archive commands to change the storage format of a table file and the format of a RAID file. You cannot use Tunnel to upload data to a range-clustered table because the data uploaded by using Tunnel is unsorted.
 
-### Common MaxCompute SQL
+### 3.14 Common MaxCompute SQL parameter settings
 
 **parameter settings**
 
-#### Map configurations
+#### 3.14.1 Map configurations
 
 This topic describes the common SET parameters that are used in MaxCompute to control Map task resources and input blocks. You can properly adjust these parameters to optimize job performance and prevent data skew or resource waste.
 
@@ -14238,7 +14733,7 @@ This parameter specifies the maximum data input volume for a Map task. Unit: MB.
 SET odps.sql.mapper.split.size=256;
 ```
 
-#### Join configurations
+#### 3.14.2 Join configurations
 
 This topic describes common SET parameters that are used to configure Join task resources in MaxCompute.
 
@@ -14272,7 +14767,7 @@ This parameter specifies the memory size of each instance of a Join task. Unit: 
 SET odps.sql.joiner.memory=1024;
 ```
 
-#### Reduce configurations
+#### 3.14.3 Reduce configurations
 
 This topic describes the common SET parameters that are used to configure Reduce task resources in MaxCompute.
 
@@ -14306,7 +14801,7 @@ This parameter specifies the memory size of each instance in a Reduce task. Unit
 SET odps.sql.reducer.memory=1024;
 ```
 
-#### UDF configurations
+#### 3.14.4 UDF configurations
 
 This topic describes common SET parameters that are used to control the execution behavior of user-defined functions (UDFs) in MaxCompute.
 
@@ -14360,7 +14855,7 @@ This parameter specifies whether functions return NULL or an error if dirty data
 SET odps.sql.udf.strict.mode=false/true;
 ```
 
-#### MapJoin configurations
+#### 3.14.5 MapJoin configurations
 
 This topic describes MapJoin configurations.
 
@@ -14384,7 +14879,7 @@ Dynamic partitioning is time-consuming in some scenarios. Disabling dynamic part
 SET odps.sql.reshuffle.dynamicpt=true/false;
 ```
 
-#### Configurations of data skew
+#### 3.14.6 Configurations of data skew
 
 This topic describes configurations of data skew.
 
@@ -14437,11 +14932,11 @@ Configure multiple skewed values for a single field.
 SET odps.sql.skewinfo=src_skewjoin1:(key)[("0")("1")];
 ```
 
-### MapReduce-to-SQL
+### 3.15 MapReduce-to-SQL conversion for execution
 
 **conversion for execution**
 
-#### Overview
+#### 3.15.1 Overview
 
 This topic describes the MapReduce-to-SQL execution feature.
 
@@ -14453,7 +14948,7 @@ MaxCompute provides a series of Java APIs for MapReduce to process data. MaxComp
 
 This feature brings the following benefits: You do not need to change the original APIs and job logic. Only MapReduce jobs of the OpenMR type, which are written by using MapReduce APIs, can be converted to SQL. This feature can be used only for projects and jobs. This feature supports views as the input. This feature supports external tables as the input. This feature supports TemporaryFile reads and writes. This feature allows you to read data from and write data to hash-clustered tables. This feature supports near-real-time execution of small jobs.
 
-#### Configure the MaxCompute client
+#### 3.15.2 Configure the MaxCompute client
 
 This topic describes how to configure the MaxCompute client when you use the MapReduceto-SQL conversion feature.
 1. Download the latest version of the MaxCompute client package to your on-premises
@@ -14471,7 +14966,7 @@ JobConf job = new JobConf(); job.set("odps.mr.run.mode","hybrid")
 
 MaxCompute O&M personnel can enable the execution mode at the project level at a later point in time.
 
-#### Configure running settings in
+#### 3.15.3 Configure running settings in DataWorks
 
 **DataWorks**
 
@@ -14483,17 +14978,16 @@ JobConf job = new JobConf(); job.set("odps.mr.run.mode","hybrid")
 
 Enable the conversion at the project level by setting **odps.mr.run.mode** for a project.
 
-#### View details
+#### 3.15.4 View details
 
 This topic describes how to view MapReduce-to-SQL conversion results and running details of SQL jobs. You can use Logview and MaxCompute Studio to view MapReduce-to-SQL conversion results and running details of SQL jobs. Logview XML Open Logview and click the LOT node in the center of the page. The SQL jobs that are converted from MapReduce jobs are included in the XML information about the node. Example:
 
 ```
 create temporary function mr2sql_mapper_152955927079392291755 as 'com.aliyun.odps.mapred.bridge.LotMapperUDTF' using ; create temporary function mr2sql_reducer_152955927079392291755 as 'com.aliyun.odps.mapred.bridge.LotReducerUDTF' using ;
  @sub_query_mapper :=
- SELECT
-k_id,v_gmt_create,v_gmt_modified,v_product_id,v_admin_seq,v_sku_attr,v_sku_price,v_sku_ ock,v_sku_code,v_sku_image,v_delivery_time,v_sku_bulk_order,v_sku_bulk_discount,v_sku_i ge_version,v_currency_code FROM( SELECT mr2sql_mapper_152955927079392291755(id,gmt_create,gmt_modified,product_id,admin_seq,sku ttr,sku_price,sku_stock,sku_code,sku_image,delivery_time,sku_bulk_order,sku_bulk_discou ,sku_image_version,currency_code ) as (k_id,v_gmt_create,v_gmt_modified,v_product_id,v_admin_seq,v_sku_attr,v_sku_price,v_sku tock,v_sku_code,v_sku_image,v_delivery_time,v_sku_bulk_order,v_sku_bulk_discount,v_sku_ age_version,v_currency_code) FROM ae_antispam.product_sku_tt_inc WHERE ds = "20180615" AND hh = "21" UNION ALL SELECT mr2sql_mapper_152955927079392291755(id,gmt_create,gmt_modified,product_id,admin_seq,sku ttr,sku_price,sku_stock,sku_code,sku_image,delivery_time,sku_bulk_order,sku_bulk_discou ,sku_image_version,currency_code ) as (k_id,v_gmt_create,v_gmt_modified,v_product_id,v_admin_seq,v_sku_attr,v_sku_price,v_sku tock,v_sku_code,v_sku_image,v_delivery_time,v_sku_bulk_order,v_sku_bulk_discount,v_sku_ age_version,v_currency_code) FROM ae_antispam.product_sku ) open_mr_alias1
+k_id,v_gmt_create,v_gmt_modified,v_product_id,v_admin_seq,v_sku_attr,v_sku_price,v_sku_ ock,v_sku_code,v_sku_image,v_delivery_time,v_sku_bulk_order,v_sku_bulk_discount,v_sku_i ge_version,v_currency_code FROM( mr2sql_mapper_152955927079392291755(id,gmt_create,gmt_modified,product_id,admin_seq,sku ttr,sku_price,sku_stock,sku_code,sku_image,delivery_time,sku_bulk_order,sku_bulk_discou ,sku_image_version,currency_code ) as (k_id,v_gmt_create,v_gmt_modified,v_product_id,v_admin_seq,v_sku_attr,v_sku_price,v_sku tock,v_sku_code,v_sku_image,v_delivery_time,v_sku_bulk_order,v_sku_bulk_discount,v_sku_ age_version,v_currency_code) FROM ae_antispam.product_sku_tt_inc WHERE ds = "20180615" AND hh = "21" mr2sql_mapper_152955927079392291755(id,gmt_create,gmt_modified,product_id,admin_seq,sku ttr,sku_price,sku_stock,sku_code,sku_image,delivery_time,sku_bulk_order,sku_bulk_discou ,sku_image_version,currency_code ) as (k_id,v_gmt_create,v_gmt_modified,v_product_id,v_admin_seq,v_sku_attr,v_sku_price,v_sku tock,v_sku_code,v_sku_image,v_delivery_time,v_sku_bulk_order,v_sku_bulk_discount,v_sku_ age_version,v_currency_code) FROM ae_antispam.product_sku ) open_mr_alias1
  DISTRIBUTE BY k_id SORT BY k_id ASC;
-@sub_query_reducer := SELECT mr2sql_reducer_152955927079392291755(k_id,v_gmt_create,v_gmt_modified,v_product_id,v_ad n_seq,v_sku_attr,v_sku_price,v_sku_stock,v_sku_code,v_sku_image,v_delivery_time,v_sku_b k_order,v_sku_bulk_discount,v_sku_image_version,v_currency_code) as (id,gmt_create,gmt_modified,product_id,admin_seq,sku_attr,sku_price,sku_stock,sku_code, u_image,delivery_time,sku_bulk_order,sku_bulk_discount,sku_image_version,currency_code) FROM @sub_query_mapper; FROM @sub_query_reducer INSERT OVERWRITE TABLE ae_antispam.product_sku SELECT id,gmt_create,gmt_modified,product_id,admin_seq,sku_attr,sku_price,sku_stock,sku_code,s _image,delivery_time,sku_bulk_order,sku_bulk_discount,sku_image_version,currency_code
+@sub_query_reducer := mr2sql_reducer_152955927079392291755(k_id,v_gmt_create,v_gmt_modified,v_product_id,v_ad n_seq,v_sku_attr,v_sku_price,v_sku_stock,v_sku_code,v_sku_image,v_delivery_time,v_sku_b k_order,v_sku_bulk_discount,v_sku_image_version,v_currency_code) as (id,gmt_create,gmt_modified,product_id,admin_seq,sku_attr,sku_price,sku_stock,sku_code, u_image,delivery_time,sku_bulk_order,sku_bulk_discount,sku_image_version,currency_code) FROM @sub_query_mapper; FROM @sub_query_reducer INSERT OVERWRITE TABLE ae_antispam.product_sku id,gmt_create,gmt_modified,product_id,admin_seq,sku_attr,sku_price,sku_stock,sku_code,s _image,delivery_time,sku_bulk_order,sku_bulk_discount,sku_image_version,currency_code
 ```
 
 ; Logview details or summary A new execution engine is used to run jobs.
@@ -14523,7 +15017,7 @@ OdpsLogicalTableScan(table= [[ad_quality_tech.qp_algo_antifake_wordbag_filter_ba
 
 `]`
 
-#### Perform operations on the distributed
+#### 3.15.5 Perform operations on the distributed file system
 
 **file system**
 
@@ -14552,13 +15046,13 @@ data to the distributed file system or write data stream input and output files:
 context.getOutputVolumeFileSystem();
 ```
 
-### Analysis of the mapping
+### 3.16 Analysis of the mapping between SQL input and output fields
 
 **between SQL input and output**
 
 **fields**
 
-#### Overview
+#### 3.16.1 Overview
 
 This topic describes the feature of analyzing the mapping between fields in input and output tables.
 
@@ -14572,7 +15066,7 @@ SELECT key, SUM(value) AS total FROM src GROUP BY key;
 
 The result shown in the following figure is returned. Two columns are returned: **key** and **total**. The **key** column corresponds to the **src.key** column of the input table, and the **total** column corresponds to the **src.value** column of the input table.
 
-#### Usage notes
+#### 3.16.2 Usage notes
 
 This topic provides an example on how to use the feature of analyzing the mapping between fields in input and output tables.
 
@@ -14581,8 +15075,6 @@ This topic provides an example on how to use the feature of analyzing the mappin
 Field mapping analysis supports human-readable and JSON formats. You can use the `set` `odps.sql.select.output.format=HumanReadable/json` flag to specify the output format.
 
 **SDK-based field mapping analysis**
-
-Example
 
 ```java
 Odps odps = initOdps(); // To perform analysis, use LineageTask. LineageTask task = new LineageTask("task_name", "select * from dual;"); // Optional. Use the preceding flag to specify the output format. Map<String, String> settings = new LinkedHashMap<>(); settings.putIfAbsent("odps.sql.select.output.format", "json"); task.setProperty("settings", JSON.toJSONString(settings)); // Submit code to the server for field mapping analysis. Instance instance = odps.instances().create(task); System.out.println(instance.getId()); String logView = odps.logview().generateLogView(instance, 72); System.out.println(logView); instance.waitForSuccess(); // Obtain the analysis result. System.out.println(instance.getTaskResults().get("task_name"));
@@ -14609,13 +15101,13 @@ Returned result:
   test2.dual.id
 ```
 
-### Common MaxCompute SQL
+### 3.17 Common MaxCompute SQL errors and solutions
 
 **errors and solutions**
 
-#### Data skew
+#### 3.17.1 Data skew
 
-##### Overview
+##### 3.17.1.1 Overview
 
 This topic provides an overview of data skew issues.
 
@@ -14623,7 +15115,7 @@ This topic provides an overview of data skew issues.
 
 In most cases, data skew occurs if the min, max, and avg values of the instance time, input records, and output records parameters are unbalanced in an instance on which jobs run. For example, if the max value is significantly larger than the avg value, data skew may occur. You can use Logview to identify data skew issues, as shown in the following figure. The **Long Tails** tab of each task displays the instances on which data skew occurs. The root cause of data skew is that the amount of data processed by a specific instance far exceeds that processed by other instances. As a result, the running time of this instance is also much longer than the average running time of other instances, and the entire job slows down. Different types of data skew issues in SQL are resolved by using different methods. The subsequent topics describe possible causes of data skew issues and provide solutions.
 
-##### GROUP BY data skew
+##### 3.17.1.2 GROUP BY data skew
 
 This topic describes possible causes of the GROUP BY data skew and provides a solution.
 
@@ -14641,7 +15133,7 @@ SET odps.sql.groupby.skewindata=true;
 
 If you set this parameter to true, when the Shuffle hash algorithm is used, the system automatically adds a random factor and introduces a new task to prevent data skew.
 
-##### DISTRIBUTE BY data skew
+##### 3.17.1.3 DISTRIBUTE BY data skew
 
 This topic describes possible causes of the DISTRIBUTE BY data skew and provides a solution.
 
@@ -14658,7 +15150,7 @@ The DISTRIBUTE BY clause determines how to distribute the output values of the m
 
 To prevent data skew and hot spots, you must specify a column that has large value ranges in the DISTRIBUTE BY clause.
 
-##### Data skew caused by JOIN operations
+##### 3.17.1.4 Data skew caused by JOIN operations
 
 This topic describes the data skew caused by JOIN operations and provides a solution.
 
@@ -14673,7 +15165,7 @@ on scenarios: If one of the tables that you want to join is a small table, execu
 SET odps.sql.skewinfo=tab1:(col1,col2)[(v1,v2),(v3,v4),...]; SET odps.sql.skewjoin=true;
 ```
 
-##### Data skew caused by multiple DISTINCT
+##### 3.17.1.5 Data skew caused by multiple DISTINCT operations
 
 #### operations
 
@@ -14685,7 +15177,7 @@ This topic describes the data skew caused by multiple DISTINCT operations and pr
 **Solution**: Execute two GROUP BY clauses to alleviate the data skew issue. In most cases,
 do not use multiple DISTINCT operations at the same time.
 
-##### Data skew caused by misuse of dynamic
+##### 3.17.1.6 Data skew caused by misuse of dynamic partitions
 
 **partitions**
 
@@ -14710,7 +15202,7 @@ SET odps.sql.reshuffle.dynamicpt=false;
 
 If the number of destination partitions is large, we recommend that you do not use dynamic partitions because a large number of small files are generated.
 
-##### Use SKEWJOIN HINT to avoid skewed hot
+##### 3.17.1.7 Use SKEWJOIN HINT to avoid skewed hot key values
 
 **key values**
 
@@ -14774,7 +15266,7 @@ SET odps.optimizer.skew.join.topk.num = xx;
 
 You can specify a hint only for one of the two tables in the JOIN operation. In the JOIN statement to which SKEWJOIN HINT is added, **left key** = **right key** must be included. SKEWJOIN HINT cannot be added to a CARTESIAN JOIN statement. When you use SKEWJOIN HINT with other hints, note that SKEWJOIN HINT cannot be added to a JOIN statement to which MAPJOIN HINT is added. On the Json Summary tab of LogView, you can search for the **topk_agg** field to check whether SKEWJOIN HINT takes effect. If such a field exists, SKEWJOIN HINT takes effect.
 
-#### Insufficient computing resources
+#### 3.17.2 Insufficient computing resources
 
 This topic describes the issue of insufficient computing resources and provides a solution.
 
@@ -14791,7 +15283,7 @@ Each job is split into multiple tasks based on an execution plan. These tasks fo
 
 You can use one of the following methods to resolve this issue: Run jobs in off-peak hours. Contact O&M personnel to increase the resource capacity of the quota group for the project.
 
-#### Methods to optimize storage in
+#### 3.17.3 Methods to optimize storage in MaxCompute SQL
 
 ## MaxCompute SQL
 
@@ -14837,7 +15329,7 @@ The lifecycle takes a partition as the smallest unit. For a partitioned table, i
 ALTER TABLE table_name SET lifecycle days;
 ```
 
-#### UDF OOM
+#### 3.17.4 UDF OOM
 
 This topic describes the UDF Out-of-Memory (OOM) issue and provides a solution.
 
@@ -14857,7 +15349,7 @@ You can configure UDF runtime parameters to fix the error. Example:
 SET odps.sql.mapper.memory=3072; SET odps.sql.udf.jvm.memory=2048; SET odps.sql.udf.python.memory=1536;
 ```
 
-### Limits of MaxCompute SQL
+### 3.18 Limits of MaxCompute SQL statements
 
 **statements**
 
@@ -14904,9 +15396,9 @@ This topic describes all the limits of MaxCompute SQL statements.
 
 The preceding limits cannot be manually modified.
 
-### Appendix
+### 3.19 Appendix
 
-#### Escape characters
+#### 3.19.1 Escape characters
 
 This topic describes the escape characters in MaxCompute SQL.
 
@@ -14941,7 +15433,7 @@ Use an escape character to represent special characters. Examples:
 SELECT length('a\tb'); -- The result is 3. This indicates that the string contains three characters, and the system treats \t as a single character. SELECT 'a\ab',length('a\ab'); -- The result is aab, 3. The system interprets \a as a regular a.
 ```
 
-#### LIKE usage
+#### 3.19.2 LIKE usage
 
 This topic describes how to use the LIKE operator for character matching.
 
@@ -14969,7 +15461,7 @@ SELECT 'abcd' LIKE 'ab%' ; -- Result +-------+
 
 MaxCompute SQL statements support only UTF-8 character sets. If data is encoded in another format, the calculation result may be incorrect.
 
-#### Regular expressions
+#### 3.19.3 Regular expressions
 
 This topic describes regular expressions in MaxCompute SQL.
 
@@ -15060,7 +15552,7 @@ SELECT 'a\tb', 'a\tb' rlike 'a\tb'; -- Result +---------+------+
 +---------+------+
 ```
 
-#### Reserved words and keywords
+#### 3.19.4 Reserved words and keywords
 
 This topic describes all reserved words and keywords in MaxCompute SQL.
 
@@ -15173,7 +15665,7 @@ When you name a table, column, or partition, do not use reserved words or keywor
 +---------------+---------------------+---------------+--------------+-----------------+
 ```
 
-#### Settings of new data types
+#### 3.19.5 Settings of new data types
 
 This topic describes the precautions for configuring new data types in MaxCompute SQL.
 
@@ -15181,7 +15673,7 @@ This topic describes the precautions for configuring new data types in MaxComput
 
 If you want to read a table that includes new data types, you are not required to add the setodps.sql.type.system.odps2=true; flag. However, you must take note of the following points: If the flag is not added, the read data is implicitly converted into the original data type for all computations. If the flag is not added for integer constants, the BIGINT type is used, and an error message is reported. If you write data to a table and the data is in passthrough mode, you can choose not to add the new data type flag. However, if you want to calculate the data, an error is reported because the implicit data type conversion is invalid.
 
-#### ACID semantics of concurrent write
+#### 3.19.6 ACID semantics of concurrent write operations in MaxCompute
 
 **operations in MaxCompute**
 
@@ -15229,7 +15721,7 @@ No conflict occurs for INSERT operations in the event of data changes. An error 
 
 MINOR/MAJOR COMPACT is classified as MERGE SMALLFILES operations. In extreme scenarios, if multiple jobs are all in the metadata update phase, an error may be reported due to a concurrency conflict among these update operations. atures of MaxCompute
 
-## Open source features of
+## 4 Open source features of MaxCompute
 
 **MaxCompute**
 

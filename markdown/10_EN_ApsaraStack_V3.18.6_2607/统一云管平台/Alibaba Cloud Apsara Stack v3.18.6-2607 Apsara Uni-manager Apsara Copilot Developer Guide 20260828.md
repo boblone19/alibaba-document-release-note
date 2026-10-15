@@ -3,18 +3,39 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilo
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 57
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Developer Guide 20260828.pdf"
+source_pdf: "caee149f91f6b63c_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Developer Guide 20260828.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Apsara%20Copilot%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot Developer Guide 20260828
 
-Preparations
+## Table of Contents
 
-## Preparations
+- 1 Preparations
+  - 1.1 Obtain the information and the endpoint of an API operation
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain the values of common request headers
+  - 1.4 Obtain access credentials assigned by STS
+- 2 Use POP to make API calls
+  - 2.1 Preparations
+  - 2.2 SDK for Java
+  - 2.4 Python version
+- 3 API list
+  - 3.1 IntelligentAnalysis
+  - 3.2 IntelligentSearch
+  - 3.3 IntelligentQa
+  - 3.4 CreateChat
+  - 3.5 IntelligentCoding
+  - 3.6 GetChatHistory
+  - 3.7 ListHistoryChats
+  - 3.8 PushChatMessage
+  - 3.9 MessageFeedback
+  - 3.10 DeleteChat
 
-### Obtain the information and
+## 1 Preparations
+
+### 1.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -35,9 +56,9 @@ navigation bar.
 5. Select an API version from the **Version** drop-down list.
 6. In the API operation list, you can view all API operations of the current version.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
-on the Parameter tab. Preparations
+on the Parameter tab.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -64,7 +85,7 @@ The AccessKey pair of a personal account is managed and controlled by the permis
 
 **Obtain the AccessKey pair of a personal account**
 
-Preparations To obtain the AccessKey pair of a personal account, perform the following steps:
+To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, move the pointer over the profile picture and
 choose **User Information** from the shortcut menu.
@@ -85,7 +106,7 @@ want to obtain AccessKey pairs.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 1.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -103,7 +124,6 @@ You must provide multiple request headers when you call API operations in Apsara
 
 You must call a specific API operation to obtain an organization ID. You can obtain an organization ID by using the online debugging feature in the Apsara Uni-manager Management Console.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
-Preparations
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI**
 **Explorer**.
 3. On the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging** in the top
@@ -144,14 +164,12 @@ The following table describes the additional response parameters that are return
 |---|---|
 | ResourceGroupName | The name of the resource set. |
 
-Preparations
-
 | ResourceGroup | The ID of a resource set. |
 |---|---|
 | DepartmentName | The name of the organization. |
 | Department | The ID of an organization. |
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -173,7 +191,7 @@ iii. On the page that appears, click **View Current Role Policy**. In the **View
 | RAM role |   |
 
 2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ),
-and STS token ( `stsToken` ) by assuming the `RAM role` . Preparations
+and STS token ( `stsToken` ) by assuming the `RAM role` .
 
 ```
 public static void main(String[] args) {
@@ -205,7 +223,7 @@ public static String AssumeRole(ASClient asClient, String roleArn) {
 ```
 
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
-this example, the Elastic Compute Service (ECS) API is used. Preparations
+this example, the Elastic Compute Service (ECS) API is used.
 
 ```
 public static void main(String[] args) {
@@ -227,11 +245,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
 ```
 
-Use POP to make API calls
+## 2 Use POP to make API calls
 
-## Use POP to make API calls
-
-### Preparations
+### 2.1 Preparations
 
 You can use the POP gateway to call Apsara Stack API operations in the same way as you do for Alibaba Cloud. This topic describes the required preparations.
 
@@ -267,13 +283,13 @@ When you use the POP gateway to call Apsara Stack API operations, you must use t
 7. On the Resource Details tab, find the resource with the name `copilot-api-dns` and type
 icon in the **Resource Request Result** column. `dns` . Then, click the
 8. Click the text in the **Resource Request Result** column. In the dialog box that appears,
-you can view the domain value. This value is the `Endpoint` . Use POP to make API calls
+you can view the domain value. This value is the `Endpoint` .
 
 **Obtain common parameters**
 
 For information about how to obtain common parameters, such as the organization ID, resource set ID, region ID, and instance ID, see the **Obtain common header parameters** section in the **Preparations** topic of this guide. These parameters are used to call Apsara Stack API operations through the POP gateway.
 
-### SDK for Java
+### 2.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -304,8 +320,6 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         // Specify the read timeout period.
         // clientConfig.setReadTimeoutMillis(10000L);
 ```
-
-Use POP to make API calls
 
 ```java
         // profile.setHttpClientConfig(clientConfig);
@@ -352,7 +366,7 @@ operations.
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-Use POP to make API calls The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -392,7 +406,7 @@ and earlier.
         request.putHeadParameter("x-acs-regionid", "<your-regionid>");
 ```
 
-`//` Use POP to make API calls
+`//`
 
 ```java
         // Optional. The resource set ID.
@@ -425,13 +439,13 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Go
+### 2.3 Go
 
 This topic describes how to use the POP Go software development kit (SDK) to make API calls.
 
 **Prerequisites**
 
-Use POP to make API calls For Apsara Stack, use CommonRequest to make API calls. In the Apsara Uni-manager Management Console, go to **Products** > **Development Tools** > **API And Tools** >
+For Apsara Stack, use CommonRequest to make API calls. In the Apsara Uni-manager Management Console, go to **Products** > **Development Tools** > **API And Tools** >
 **Developer Portal**. Then, choose **API Integration** > **API Debugging** to view the
 recommended SDK versions and sample code.
 
@@ -445,7 +459,7 @@ You can call APIs using the Remote Procedure Call (RPC) or Resource-Oriented Arc
 
 **CommonRequest call examples**
 
-The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example: Use POP to make API calls
+The API information for the RPC example is as follows: Product (apigateway), API operation (DescribeApiGroups), and Version (2016-07-14). The following code is an example:
 
 ```java
 package main import (
@@ -485,7 +499,7 @@ eter.
     fmt.Print(response.GetHttpContentString())
 ```
 
-The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example: Use POP to make API calls
+The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
 
 ```java
 package main import (
@@ -529,7 +543,7 @@ eld to the header.
 
 **Set a proxy**
 
-You may need to set a proxy when you call an instance. You can set the proxy in one of the following two ways. Set the proxy using environment variables. Use the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variables. The following code is an example: Use POP to make API calls
+You may need to set a proxy when you call an instance. You can set the proxy in one of the following two ways. Set the proxy using environment variables. Use the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variables. The following code is an example:
 
 ```java
 import (
@@ -572,13 +586,13 @@ When you access OpenAPI over HTTPS, the SDK enables SSL certificate validation b
 // Set HTTPSInsecure for the request (affects only the current request). request.SetHTTPSInsecure(true) // Set HTTPSInsecure for the re quest to true. isInsecure := request.GetHTTPSInsecure() // Get the HTTPSInsecure settin g for the request.
 ```
 
-The client-level setting takes effect only if the request-level setting is not set. Use POP to make API calls
+The client-level setting takes effect only if the request-level setting is not set.
 
 ```
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the clien t to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting f or the client.
 ```
 
-### Python version
+### 2.4 Python version
 
 This topic describes how to use the POP Python software development kit (SDK) to call cloud product APIs.
 
@@ -620,8 +634,6 @@ def describe_api_groups():
     # Create a request and set its parameters.
     request = CommonRequest()
 ```
-
-Use POP to make API calls
 
 ```python
     # When you call an RPC API using an STS AccessKey pair, add the SecurityToken field
@@ -669,7 +681,7 @@ os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 
 **HTTPS configuration**
 
-This section describes how to access OpenAPI using the HTTPS protocol. Use POP to make API calls
+This section describes how to access OpenAPI using the HTTPS protocol.
 
 **Use the HTTPS protocol**
 
@@ -710,9 +722,9 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-## API list
+## 3 API list
 
-### IntelligentAnalysis
+### 3.1 IntelligentAnalysis
 
 The system supports intelligent data querying for the following scenarios: 1. Cloud platform billing and cost analysis: The system provides annual and monthly billing statistics, trend analysis, and year-over-year or month-over-month calculations at the organization, resource set, and resource levels. 2. Cloud resource optimization and governance analysis: The system analyzes resource idleness, bottlenecks, and health status at the organization, resource set, and resource levels. 3. Cloud resource statistics: The system counts cloud resources and calculates utilization rates by organization, resource set, and other dimensions. This API uses Server-Sent Events (SSE) for communication. Its response type is text/eventstream, meaning the server returns data progressively via streaming transmission. Clients continuously listen to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the response"}. Clients can parse and process these events one by one to achieve dynamic updates and real-time feedback.
 
@@ -773,7 +785,7 @@ nd select the top 5 level-1 organizations by instance count.", "phase": "execute
 data: {"choices": [{"delta": {"role": "assistant", "content": "...<Summary and analysis text>", "status": "ongoing", "phase": "answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "status": "ongoing", "phase": "answer"}}]} data: [DONE]
 ```
 
-### IntelligentSearch
+### 3.2 IntelligentSearch
 
 Intelligent search for cloud service instances, organizations, resource sets, and users. This API uses Server-Sent Events (SSE) for communication. The response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the answer"}. The client can parse and process these events one by one to achieve dynamic updates and real-time feedback.
 
@@ -833,7 +845,7 @@ POST /api/open/api/IntelligentSearch HTTP/1.1
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### IntelligentQa
+### 3.3 IntelligentQa
 
 The cloud product knowledge Q&A answers questions about using and configuring the cloud platform and cloud resources. The system supports two modes: context-aware conversations based on dialogue history, and single-turn Q&A without dialogue history. API description This API uses Server-Sent Events (SSE) for communication. Its response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the answer"}. The client can parse and process these events one by one to enable dynamic updates and real-time feedback.
 
@@ -929,7 +941,7 @@ POST /api/open/api/IntelligentQa HTTP/1.1 Content-Type: application/json
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### CreateChat
+### 3.4 CreateChat
 
 Create a new chat and return its globally unique identifier and the generated title (by default, the title is the user's first input). API description
 
@@ -1031,7 +1043,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | INTERNAL ERROR _ | %s | An internal error occurred. The system carries a dynamic error code and dynamic error message from the business layer. |
 
-### IntelligentCoding
+### 3.5 IntelligentCoding
 
 Generate code samples for Open Platform OpenAPI and Terraform. This API uses Server-Sent Events (SSE) for communication. The response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response process, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the response"}. The client can parse and process these events one by one to achieve dynamic updates and real-time feedback.
 
@@ -1093,7 +1105,7 @@ Sample success responses `JSON` format `{`
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>A system exception occurred.</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### GetChatHistory
+### 3.6 GetChatHistory
 
 Retrieve the complete chat history by chat ID. API description
 
@@ -1310,7 +1322,7 @@ r me?",
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 |---|---|---|---|
 
-### ListHistoryChats
+### 3.7 ListHistoryChats
 
 List a user's chat history. API description
 
@@ -1410,7 +1422,7 @@ Sample success responses `JSON` format `{`
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 |---|---|---|---|
 
-### PushChatMessage
+### 3.8 PushChatMessage
 
 Save historical chat messages. API description
 
@@ -1524,7 +1536,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 
-### MessageFeedback
+### 3.9 MessageFeedback
 
 Use this API to submit rating feedback for a specific chat message. It supports thumbs-up and thumbs-down operations. API description
 
@@ -1606,7 +1618,7 @@ Sample success responses `JSON` format `{`
 |---|---|---|---|
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 
-### DeleteChat
+### 3.10 DeleteChat
 
 Delete the specified chat record. API description
 

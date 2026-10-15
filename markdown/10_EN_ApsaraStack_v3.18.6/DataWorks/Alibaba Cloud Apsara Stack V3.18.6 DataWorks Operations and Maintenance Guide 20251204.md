@@ -3,30 +3,120 @@ title: "DataWorks Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20251204"
 pdf_pages: 137
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 DataWorks Operations and Maintenance Guide 20251204.pdf"
+source_pdf: "f955d88deb264853_Alibaba Cloud Apsara Stack V3.18.6 DataWorks Operations and Maintenance Guide 20251204.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/DataWorks/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20DataWorks%20Operations%20and%20Maintenance%20Guide%2020251204.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # DataWorks Operations and Maintenance Guide
 
-## Basic concepts and
+## Table of Contents
+
+- 1 Basic concepts and structure
+  - 1.1 What is DataWorks?
+  - 1.2 Benefits
+  - 1.3 Introduction to Data Development
+  - 1.4 DataWorks architecture
+  - 1.5 Service directories
+- 2 O&M by using Apsara Big Data Manager
+  - 2.1 Log on to the ABM console
+  - 2.2 Monitoring
+    - 2.2.1 Health
+    - 2.2.2 Reports
+    - 2.3.1 DataWorks O&M overview
+    - 2.3.2 Service O&M
+      - 2.3.2.1 Data Warehouse
+        - 2.3.2.1.1 Service overview
+        - 2.3.2.1.2 DataWorks service roles
+        - 2.3.2.1.3 Service slots
+        - 2.3.2.1.4 DataWorks service nodes
+        - 2.3.2.1.5 DataWorks projects
+        - 2.3.2.1.6 Service configurations
+        - 2.3.2.1.7 Cluster scaling
+      - 2.3.2.2 Data Integration
+        - 2.3.2.2.1 Data Integration overview
+        - 2.3.2.2.2 Data Integration instances
+        - 2.3.2.2.3 View historical analysis information
+    - 2.3.3 Cluster O&M
+      - 2.3.3.1 Cluster overview
+      - 2.3.3.2 Cluster health
+    - 2.3.4 Host O&M
+      - 2.3.4.1 Host overview
+      - 2.3.4.2 Host server roles
+  - 2.4 Management
+    - 2.4.1 Overview
+    - 2.4.2 Jobs
+      - 2.4.2.1 Overview
+      - 2.4.2.2 Jobs
+        - 2.4.2.2.1 Manually run a job
+        - 2.4.2.2.2 Enable or disable a cron job
+        - 2.4.2.2.3 View the execution history of a job
+        - 2.4.2.2.4 View execution history
+    - 2.4.3 Health management
+      - 2.4.3.1 Health management
+      - 2.4.3.2 Inspection management
+    - 2.4.4 Operation auditing
+- 3 Deep inspection
+  - 3.1 Overview
+  - 3.2 Introduction to DataWorks service roles
+  - 3.3 Inspect clusters
+  - 3.4 Inspect the base_meta project
+  - 3.5 Inspect the BaseBizAlisa service
+  - 3.6 Inspect the BaseBizPhoenix service
+  - 3.7 Inspect the BaseBizCdp service
+  - 3.8 Appendix: Log in to a database
+- 4 Common administration tools and commands
+  - 4.1 View the servers on which a service is deployed
+  - 4.2 View cluster resources
+  - 4.3 View service registration variables
+  - 4.4 Commands to restart services
+  - 4.5 View logs of a failed instance
+  - 4.6 Rerun multiple instances at a time
+  - 4.7 Stop multiple instances at a time
+  - 4.8 Commonly used Linux commands
+  - 4.9 View the slot usage of resource groups
+- 5 Process daily administration operations
+  - 5.1 Daily check
+    - 5.1.1 Check the service status and server information
+    - 5.1.2 Check the status of a gateway server
+    - 5.1.3 Monitor service roles and servers
+  - 5.2 View logs of the services
+  - 5.3 Scale out the cluster that runs the base-biz-gateway service
+  - 5.4 Scale in the cluster that runs the base-biz-gateway service
+  - 5.5 Restart the BaseBizTenant service
+  - 5.6 Restart the Redis service
+  - 5.7 Restart the BaseBizDmc service
+  - 5.8 Restart the BaseBizAlisa service
+  - 5.9 Restart the BaseBizPhoenix service
+  - 5.10 Restart the BaseBizCdpGateway service
+  - 5.11 Restart the dataworks-dataservice service
+  - 5.12 Restart the BaseBizCdpGateway service
+  - 5.13 Configure a resource group in a multi-region environment
+  - 5.14 Configure a resource group for Data Integration in a multi-region environment
+- 6 Common issues and solutions
+  - 6.1 Nodes remain in the Pending (Resources) state
+  - 6.2 An out-of-memory (OOM) error occurs when synchronizing data from an Oracle database
+  - 6.3 A task does not run at the specified time
+  - 6.4 What do I do if the number and usage of tables are not displayed on the Data Map page?
+  - 6.5 Logs are not automatically cleaned up
+
+## 1 Basic concepts and structure
 
 **structure**
 
-### What is DataWorks?
+### 1.1 What is DataWorks?
 
-DataWorks, formerly known as Big Data Development Suite, is a one-stop platform for intelligent big data development and governance. It is built on compute engines such as MaxCompute and E-MapReduce (EMR). DataWorks provides a comprehensive suite of tools for data integration, development, governance, services, quality control, and security. DataWorks provides a one-stop solution for the entire data lifecycle, from data collection and presentation to analysis and application development. It supports offline processing, analysis, and data mining of massive amounts of data. DataWorks also integrates core data processes, such as data integration, data development, production operations and maintenance (O&M), real-time analysis, asset management, data quality, data security, and data sharing. Additionally, DataWorks provides DataService Studio and an online development platform for Machine Learning Platform for Artificial Intelligence (PAI). In 2018, the analytics firm Forrester ranked the DataWorks and MaxCompute solution second in the world among cloud data warehouses. It was the only Chinese product to be included in the evaluation. DataWorks V2.0 builds on V1.0 by adding business flows and components. This version improves the data development system by supporting dual-project development, isolating development and production environments, enforcing development standards, and reducing code errors. Data asset Data analysis Data Quality Data security map reports
+DataWorks, formerly known as Big Data Development Suite, is a one-stop platform for intelligent big data development and governance. It is built on compute engines such as MaxCompute and E-MapReduce (EMR). DataWorks provides a comprehensive suite of tools for data integration, development, governance, services, quality control, and security. DataWorks provides a one-stop solution for the entire data lifecycle, from data collection and presentation to analysis and application development. It supports offline processing, analysis, and data mining of massive amounts of data. DataWorks also integrates core data processes, such as data integration, data development, production operations and maintenance (O&M), real-time analysis, asset management, data quality, data security, and data sharing. Additionally, DataWorks provides DataService Studio and an online development platform for Machine Learning Platform for Artificial Intelligence (PAI). In 2018, the analytics firm Forrester ranked the DataWorks and MaxCompute solution second in the world among cloud data warehouses. It was the only Chinese product to be included in the evaluation. DataWorks V2.0 builds on V1.0 by adding business flows and components. This version improves the data development system by supporting dual-project development, isolating development and production environments, enforcing development standards, and reducing code errors. Data asset Data analysis Data Quality Data security map
 
 **Comprehensive**
 
-Asset Metadata Intelligent Resource discovery/Asset parsing/Data monitoring optimization (beta)
+Asset Metadata Intelligent Resource discovery/Asset parsing/Data optimization (beta)
 
 **data**
 
 **governance**
 
-management exploration XStudio: Cloud-based IDE with plug-ins for various engines
+exploration XStudio: Cloud-based IDE with plug-ins for various engines
 
 **Intelligent**
 
@@ -66,7 +156,7 @@ acquisition and warehouse Service source
 
 **Center**
 
-management construction
+construction
 
 **Global data**
 
@@ -74,7 +164,7 @@ Concurrency Batch Incremental Real-time Dirty data
 
 **integration**
 
-synchronization synchronization synchronization monitoring control (beta) MaxComputeProprietary E-MapReduceOpen- RealtimeComputeReal- GraphComputeGraph HologresInteractive big data computing time computing computing and analysis source big data
+synchronization synchronization synchronization control (beta) MaxComputeProprietary E-MapReduceOpen- RealtimeComputeReal- GraphComputeGraph HologresInteractive big data computing time computing computing and analysis source big data
 
 **Compute**
 
@@ -86,11 +176,11 @@ service computing service analysis
 
 OSS HDFS DB IoT
 
-### Benefits
+### 1.2 Benefits
 
 This topic describes the benefits of DataWorks. Powerful computing capabilities DataWorks integrates with compute engines that can process large amounts of data. DataWorks supports join operations for trillions of data records, millions of concurrent jobs, and petabytes (PB) of I/O throughput per day. The offline scheduling system can run millions of concurrent jobs. You can configure rules and alerts to monitor the running statuses of nodes in real time. DataWorks provides efficient and easy-to-use SQL and MapReduce engines, and supports most standard SQL syntax. MaxCompute protects user data from loss, breach, or theft by using multi-layer data storage and access security mechanisms, including triplicate backups, read/write request authentication, application sandboxes, and system sandboxes. End-to-end platform DataWorks provides the graphical user interface (GUI) and allows multiple users to collaborate on a workspace. DataWorks integrates all processes from data integration, processing, management, and monitoring to output. You can create and edit workflows in a visual manner by using the workflow designer. DataWorks provides a collaborative development environment. You can create and assign roles for varying nodes, such as development, online scheduling, maintenance, and data permission management, without locally processing data and nodes. Integration of heterogeneous data stores DataWorks supports batch synchronization of data among heterogeneous data stores at custom intervals in minutes, days, hours, weeks, or months. More than 400 pairs of heterogeneous data stores are supported. Web-based software DataWorks is an out-of-the-box service. You can use it on the Internet or an internal network without the need for installation and deployment. Multitenancy Data is isolated among different tenants. Each tenant controls permissions, processes data, allocates resources, and manages members in a unified and independent manner. Intelligent monitoring and alerting By setting monitoring thresholds, you can control the entire process of all nodes as well as monitor the running status of each node. Easy-to-use SQL editor The SQL editor supports automatic code and metadata completion, code formatting and folding, and pre-compilation. It offers two editor themes. These features ensure a good user experience. Comprehensive data quality monitoring DataWorks allows you to control the quality of data in heterogeneous data stores, offline data, and real-time data. You can check data quality, configure alert notifications, and manage connections. Convenient API development and management The DataService Studio service of DataWorks interacts with API Gateway. This makes it easy for you to develop and publish APIs for data sharing. Secure data sharing DataWorks enables you to de-identify sensitive data before you share it with other tenants, which ensures the security of your big data assets and maximizes their value.
 
-### Introduction to Data
+### 1.3 Introduction to Data Development
 
 **Development**
 
@@ -112,9 +202,9 @@ Base is an alternative name for DataWorks that appears in some technical context
 
 DataWorks supports data synchronization between different types of databases. For scenarios that require only data synchronization, DataWorks provides a simplified process. Data Oracle ads synchronization Data RDS Oracle synchronization Data Oracle ODPS synchronization
 
-### DataWorks architecture
+### 1.4 DataWorks architecture
 
-This topic describes the core architecture and components of DataWorks. BaseBizTenant (tenant Account management) management layer
+This topic describes the core architecture and components of DataWorks. BaseBizTenant (tenant Account management) layer
 
 | Application BaseBizCommonbase (IDE) layer |   |
 |---|---|
@@ -126,7 +216,7 @@ This topic describes the core architecture and components of DataWorks. BaseBizT
 
 The components in DataWorks are critical for submitting and executing your tasks. All O&M for the V3 environment is performed in **Apsara Infrastructure Management**. The following figure shows the modules that make up DataWorks. All DataWorks services are deployed in containers. The following figure shows the output after you log on to a host and run the `docker ps` command to view the containers where the services are deployed. Except for the gateway service, the internal structure of a single application is shown in the following figure. Domain name SLB Nginx Nginx Port Port
 
-### Service directories
+### 1.5 Service directories
 
 This topic describes the directory structure of each service.
 
@@ -142,11 +232,11 @@ The base-biz-cdp service is used to synchronize data. Logs directory: stores the
 
 The base-biz-alisa service directory is used as an example. Logs directory: stores the operational logs of the base-biz-alisa service. Conf directory: stores the configuration files of the base-biz-alisa service. Bin directory: stores the start script.
 
-## O&M by using Apsara Big
+## 2 O&M by using Apsara Big Data Manager
 
 **Data Manager**
 
-### Log on to the ABM console
+### 2.1 Log on to the ABM console
 
 This topic describes how to log on to the Apsara Big Data Manager (ABM) console.
 
@@ -173,9 +263,9 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 **Operation**.
 6. Choose **Big Data > Bigdata Manager** to go to the homepage of the ABM console.
 
-### Monitoring
+### 2.2 Monitoring
 
-#### Health
+#### 2.2.1 Health
 
 In the Apsara Big Data Manager (ABM) console, the Degree of health page allows you to view the monitoring items of each big data service and the alerts of different levels of severity and check the monitoring items and alerts again after the alerts are handled.
 
@@ -187,7 +277,7 @@ After you log in to the **ABM** console, the **Instrument cluster** page appears
 3. Click the **Degree of health** tab to view the health check result.
 The Degree of health page displays the monitoring items, monitoring sources, severity level, and monitoring details. You can filter data based on your business requirements.
 
-#### Reports
+#### 2.2.2 Reports
 
 In the Apsara Big Data Manager (ABM) console, the Report page allows you to view the inspection results of each big data service.
 
@@ -199,9 +289,9 @@ After you log in to the **ABM** console, the **Instrument cluster** page appears
 3. Click the **Report** tab to view the reports.
 The Report page displays the following information about each report: ID, Report Name, Product, Template Name, Instance Type, Created By, and Created At. You can also view the details about each report.
 
-### O&M
+### 2.3 O&M
 
-#### DataWorks O&M overview
+#### 2.3.1 DataWorks O&M overview
 
 This topic describes the DataWorks O&M features supported by Apsara Big Data Manager (ABM) and how to use the DataWorks O&M features.
 
@@ -238,11 +328,11 @@ icon in the upper-left corner and select **DataWorks**.
 3. In the upper-right corner of the page that appears, click **Operation and maintenance**.
 The **Overview** tab of the **Service operation and maintenance > Data workshop** page appears.
 
-#### Service O&M
+#### 2.3.2 Service O&M
 
-##### Data Warehouse
+##### 2.3.2.1 Data Warehouse
 
-###### Service overview
+###### 2.3.2.1.1 Service overview
 
 The DataWorks Overview page displays the key operation metrics, including service overview, service status, instance scheduling information, and slot usage. On this page, you can also view the trend chart of the total number of finished tasks.
 
@@ -278,7 +368,7 @@ Slots are resources that can be used by DataWorks for instance scheduling.
 
 This section displays the trend chart of the total number of finished nodes. The trend chart displays the trend lines of the number of nodes finished yesterday, the number of nodes finished today, and the average number of nodes finished each day over time in different colors.
 
-###### DataWorks service roles
+###### 2.3.2.1.2 DataWorks service roles
 
 The Service Roles tab displays information about DataWorks service roles, such as the role name, status, and expected and actual numbers of hosts in the desired state.
 
@@ -296,7 +386,7 @@ The **Service Roles** tab displays information about all service roles, includin
 
 On the **Service Roles** tab, you can filter or sort service roles by column to facilitate information retrieval.
 
-###### Service slots
+###### 2.3.2.1.3 Service slots
 
 Slots are resources used to process tasks. Apsara Big Data Manager (ABM) allows you to view the slot information of DataWorks clusters, resource groups, and hosts. The information includes the maximum number of slots, the number of used slots, and slot usage. You can also migrate resource groups, modify the number of slots for resource groups or hosts, and modify the host status.
 
@@ -454,7 +544,7 @@ Click the **Resource Analysis** tab on the **Slot** tab. The **Resource Analysis
 **Terminate Tasks**.
 2. In the **Terminate Alisa Task** panel, click **Run**.
 
-###### DataWorks service nodes
+###### 2.3.2.1.4 DataWorks service nodes
 
 The Nodes tab displays the nodes that are created by users in DataWorks. You can filter or sort nodes to facilitate information retrieval.
 
@@ -480,7 +570,7 @@ You can select a time period, including the date and time, in the upper-left cor
 
 You can filter nodes, sort nodes by column, and customize columns on the Nodes tab.
 
-###### DataWorks projects
+###### 2.3.2.1.5 DataWorks projects
 
 DataWorks provides a list of tenant projects on DataWorks. You can filter and sort the projects in the Apsara Big Data Manager (ABM) console.
 
@@ -507,7 +597,7 @@ the **Target resource group identity** drop-down list.
 
 Filter projects You can filter projects by **Tenant Name** and **Environment**. Select a tenant name or an environment and click the icon to filter projects. Sort projects You can sort projects by column in ascending or descending order. You can click the icon to the right of a column to sort existing projects. The icon indicates that the projects are sorted in ascending order, while the icon indicates that the projects are sorted in descending. The icon indicates that project sorting is canceled. Export project information Click **Export** in the upper-right corner of **project list**. In the **Create Download** dialog box, specify a download path and a file name, and click **Download** to export the project list. If you select **Open after download**, the exported project list is displayed by default.
 
-###### Service configurations
+###### 2.3.2.1.6 Service configurations
 
 The Configuration tab allows you to modify the configuration items of the service roles of DataWorks based on your business requirements.
 
@@ -527,7 +617,7 @@ in the **Actions** column.
 2. In the **Edit Setting** panel, modify the **configValue** parameter.
 3. Click **Run**.
 
-###### Cluster scaling
+###### 2.3.2.1.7 Cluster scaling
 
 Apsara Big Data Manager (ABM) supports DataWorks cluster scaling. To scale out a DataWorks cluster, add physical hosts in the default cluster of Apsara Infrastructure Management to the DataWorks cluster. To scale in a DataWorks cluster, remove physical hosts from the DataWorks cluster to the default cluster of Apsara Infrastructure Management.
 
@@ -612,9 +702,9 @@ to **Scale-up for Normal Hosts** to view the scale-out history.
 5. In the panel that appears, click **Details** in the Details column of a failed execution to locate
 the failure cause. You can locate the failure cause based on the following information: parameter settings, host details, scripts, and execution parameters.
 
-##### Data Integration
+##### 2.3.2.2 Data Integration
 
-###### Data Integration overview
+###### 2.3.2.2.1 Data Integration overview
 
 The Overview tab of Data Integration displays information in the Task Scheduling Overview, Today's Tasks, Third-party Dependencies - Total Requests, Third-party Dependencies - Response Time (milliseconds), Third-party Dependencies - Request Error Rate, and Thirdparty Dependencies - Failed Requests sections.
 
@@ -640,7 +730,7 @@ Integration appears. After you configure the **Aggregation Period** parameter an
 
 **Third-party Dependencies - Failed Requests**
 
-###### Data Integration instances
+###### 2.3.2.2.2 Data Integration instances
 
 This topic describes how to view instance information on the Instance tab of Data Integration and analyze data from multiple dimensions such as synchronized data volume, synchronization speed, and number of tasks.
 
@@ -667,7 +757,7 @@ On the **Multi-dimensional Analysis of Current Day** tab, you can filter data by
 **Write Plug-in Type**, and **Data Source**. Then, you can view analysis information from
 multiple dimensions such as synchronized data volume, synchronization speed, and number of tasks.
 
-###### View historical analysis information
+###### 2.3.2.2.3 View historical analysis information
 
 On the Historical Analysis page, you can view information about multi-dimensional analysis, execution time analysis, and nodes rankings.
 
@@ -698,9 +788,9 @@ or **Data Source**.
 On the **Task Rankings** tab, you can filter top 10 nodes by **Project Name**, **Resource Group**,
 **Host**, **Status**, **Read Plug-in Type**, **Write Plug-in Type**, or **Data Source**.
 
-#### Cluster O&M
+#### 2.3.3 Cluster O&M
 
-##### Cluster overview
+##### 2.3.3.1 Cluster overview
 
 The Overview tab displays the key metrics and health check results of a cluster in the Health Check, CPU, DISK, LOAD, MEMORY, and PACKAGE sections.
 
@@ -738,7 +828,7 @@ The MEMORY chart shows the trend lines of the memory usage, total memory size, u
 
 The PACKAGE chart shows the trend lines of the numbers of dropped packets, error packets, received packets, and sent packets for the cluster over time in different colors. These trend lines reflect the data transmission status of the cluster. In the upper-right corner of the chart, click the icon to zoom in on the chart. You can specify the start time and end time in the upper-right corner of the enlarged chart to view the data transmission status of the cluster within the specified period of time.
 
-##### Cluster health
+##### 2.3.3.2 Cluster health
 
 On the Health Status page, you can view all checkers of a cluster, including the checker details, check results for the hosts in the cluster, and schemes to clear alerts (if any). In addition, you can log on to a host and perform manual checks on the host.
 
@@ -782,9 +872,9 @@ On the Health Status page, click **Details** in the Actions column of a checker 
 
 After you handle an alert for a host, click **Refresh** in the Actions column of the host to run the check item again for the host. This way, you can check whether the alert is cleared.
 
-#### Host O&M
+#### 2.3.4 Host O&M
 
-##### Host overview
+##### 2.3.4.1 Host overview
 
 The Overview tab displays the information about a host in the Machine Information, Server Role Status, CPU, DISK, LOAD, MEMORY, and PACKAGE sections.
 
@@ -818,7 +908,7 @@ The MEMORY chart shows the trend lines of the memory usage, total memory size, u
 
 The PACKAGE chart shows the trend lines of the numbers of dropped packets, error packets, received packets, and sent packets for the host over time in different colors. These trend lines reflect the data transmission status of the host. In the upper-right corner of the chart, click the icon to zoom in on the chart. You can specify the start time and end time in the upper-right corner of the enlarged chart to view the data transmission status of the host in the specified period.
 
-##### Host server roles
+##### 2.3.4.2 Host server roles
 
 The Server Role tab displays the information about server roles, including cluster, service instance, and role name.
 
@@ -831,15 +921,15 @@ icon in the upper-left corner and select **DataWorks**.
 4. On the **O&M** page, click the **Host O&M** tab.
 5. On the left side of the **Host O&M** page, select a host. Then, click the **Server Role** tab.
 
-### Management
+### 2.4 Management
 
-#### Overview
+#### 2.4.1 Overview
 
 The management module is the configuration and software management center of Apsara Big Data Manager (ABM). It is an important functional module that supports and customizes O&M items for services. The management module supports the following features: Jobs: allows you to run jobs to perform O&M operations on big data products. API Management: allows you to manage the permissions of ABM APIs. Health Checks: allows you to create health check items and apply them to service hosts. Operation Logs: allows you to view the job execution records and other service O&M operations in ABM.
 
-#### Jobs
+#### 2.4.2 Jobs
 
-##### Overview
+##### 2.4.2.1 Overview
 
 This topic describes the UIs for job management and terms related to jobs in Apsara Big Data Manager (ABM). ABM allows you to run jobs to perform O&M operations on big data services. Jobs in ABM are run to perform O&M operations on physical devices in a cluster. The Jobs page contains the
 **Job Execution** page.
@@ -850,11 +940,11 @@ Terms related to jobs include: Ordinary job: A job that can only be manually run
 
 **Job Execution page**
 
-The **Job Execution** page contains the following tabs: Jobs You can view and run ordinary jobs, and view their execution history. You can search for a specific ordinary job. Cron Jobs You can enable, disable, view, or run cron jobs, and view their execution history. You can search for a specific cron job. Execution History You can view the execution history of ordinary and cron jobs. You can specify multiple filter conditions to search for a specific job and view the execution history of the specific job.
+The **Job Execution** page contains the following tabs: You can view and run ordinary jobs, and view their execution history. You can search for a specific ordinary job. Cron Jobs You can enable, disable, view, or run cron jobs, and view their execution history. You can search for a specific cron job. Execution History You can view the execution history of ordinary and cron jobs. You can specify multiple filter conditions to search for a specific job and view the execution history of the specific job.
 
-##### Jobs
+##### 2.4.2.2 Jobs
 
-###### Manually run a job
+###### 2.4.2.2.1 Manually run a job
 
 After you have created an ordinary job, you must manually run the job in order to perform O&M operations on the product. You can also manually run a cron job.
 
@@ -875,7 +965,7 @@ After you have confirmed, a record is automatically generated on the **Execution
 6. On the job execution page, click **Start** at the top to start the execution.
 You can find the record about a job on the **Execution History** page, and click **View** to go to the detailed execution page.
 
-###### Enable or disable a cron job
+###### 2.4.2.2.2 Enable or disable a cron job
 
 When a cron job is generated from a scheme, the job is disabled by default. You must manually enable it. If you do not need the cron job to run during a specified time period, you can manually disable it.
 
@@ -892,7 +982,7 @@ left-side navigation pane.
 4. On the **Cron Jobs** page, you can enable or disable a cron job.
 To enable a cron job in the inactive status, click **Enable** in the Actions column of the cron job. After a cron job is enabled, its **status** changes to **Active**. The **Enable** button is replaced by **Disable**. To disable a cron job in the active status, click **Disable** in the Actions column of the cron job. After a cron job is disabled, its **status** changes to **Inactive**. The **Disable** button is replaced by **Enable**.
 
-###### View the execution history of a job
+###### 2.4.2.2.3 View the execution history of a job
 
 Apsara Big Data Manager (ABM) allows you to view the execution history of a specific job to learn the execution status of it.
 
@@ -916,7 +1006,7 @@ left-side navigation pane.
 **Execution History** page appears.
 You can view the execution history of this job on the **Execution History** page. For more information, see View execution history.
 
-###### View execution history
+###### 2.4.2.2.4 View execution history
 
 Apsara Big Data Manager (ABM) allows you to view the execution history of jobs and schemes to learn about their execution details.
 
@@ -970,9 +1060,9 @@ The following table lists the operations that you can perform on records in diff
 |---|---|---|
 |   | Cancel the job | Click Cancel in the upper-right corner of the job details page to cancel the job. |
 
-#### Health management
+#### 2.4.3 Health management
 
-##### Health management
+##### 2.4.3.1 Health management
 
 Apsara Big Data Manager (ABM) provides a wide variety of built-in checkers for each big data service. These checkers are used to check service faults and send alerts. This helps you detect and fix faults in a timely manner.
 
@@ -1089,7 +1179,7 @@ appears.
 5. Find the desired monitoring item and click **Delete** in the Actions column. In the message
 that appears, click **OK**. The monitoring item is deleted.
 
-##### Inspection management
+##### 2.4.3.2 Inspection management
 
 The inspection management feature of Apsara Big Data Manager (ABM) allows you to configure inspection scenarios, inspection items, and scenario combinations based on your business requirements.
 
@@ -1135,7 +1225,7 @@ requirements.
 After a scenario combination is created, you can **Edit**, **Manage Patrol Items**, and view
 **Execution History** of the scenario combination.
 
-#### Operation auditing
+#### 2.4.4 Operation auditing
 
 This feature allows you to view the O&M operations of the current service of Apsara Big Data Manager (ABM). The details of each operation are provided for retrieval and fault locating.
 
@@ -1177,17 +1267,17 @@ operations listed in the following table based on your situation.
 7. To download the O&M operation execution logs, click **Download Execution Details** at the
 top to save the logs to your local device.
 
-## Deep inspection
+## 3 Deep inspection
 
-### Overview
+### 3.1 Overview
 
 DataWorks deep inspection covers and collects the monitoring alerts, resource usage, and key metrics of DataWorks. This allows you to check the health status of DataWorks in a visualized manner, prevent unexpected risks before major issues or faults occur, and ensure service stability.
 
 **Note**
 
-Apsara Big Data Manager does not revoke inspection reports. However, the risks generated in all inspection reports and the corresponding thresholds are collected. DataWorks deep inspection covers the following items: Inspect clusters Inspect the base_meta project Inspect the BaseBizAlisa service Inspect the BaseBizPhoenix service Inspect the BaseBizCdp service
+Apsara Big Data Manager does not revoke inspection reports. However, the risks generated in all inspection reports and the corresponding thresholds are collected. DataWorks deep inspection covers the following items:
 
-### Introduction to DataWorks
+### 3.2 Introduction to DataWorks service roles
 
 **service roles**
 
@@ -1262,11 +1352,11 @@ Actions column. The service role is displayed in the left-side Components pane.
 
 **BaseBizSso#**
 
-Role description This service role provides the SSO logon service and depends on the BaseBizDbinit# and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the Remote Maintenance Agent (RMA) or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-sso/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the SSO logon service and depends on the BaseBizDbinit# and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the Remote Maintenance Agent (RMA) or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-sso/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizWkbench#**
 
-Role description This service role provides the features of an O&M center and depends on the BaseBizDbinit#, BaseBizTenant#, and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-wkbench/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the features of an O&M center and depends on the BaseBizDbinit#, BaseBizTenant#, and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-wkbench/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **Redis1#**
 
@@ -1276,7 +1366,7 @@ Role description This service role provides the Redis service and does not depen
 Log path: /var/log/redis/redis.log and /var/log/redis/sentinel.log
 ```
 
-Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **Redis2#**
 
@@ -1286,11 +1376,11 @@ Role description This service role provides the Redis service and depends on the
 Log path: /var/log/redis/redis.log and /var/log/redis/sentinel.log
 ```
 
-Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizDmc#**
 
-Role description This service role provides the features of Data Map and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-dmc/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the features of Data Map and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-dmc/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizBaseapi#**
 
@@ -1300,7 +1390,7 @@ Role description This service role schedules the API service and depends on the 
 -- View the status of all Docker containers and obtain the docker_id parameter of the BaseBizBaseapi container. docker ps -a; -- Retrieve the logs of the container. You need to use this command to retrieve logs because the volume of logs is large. docker logs $docker_id;
 ```
 
-Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizDbinit#**
 
@@ -1310,63 +1400,63 @@ Role description This service role provides the database initialization service 
 -- View the status of all Docker containers and obtain the docker_id parameter of the BaseBizDbinit container. docker ps -a; -- Retrieve the logs of the container. You need to use this command to retrieve logs because the volume of logs is large. docker logs $docker_id ;
 ```
 
-Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizPhoenix#**
 
-Role description This service role provides the schedule engine and features such as generating instances of auto triggered nodes, and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-phoenix/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the schedule engine and features such as generating instances of auto triggered nodes, and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-phoenix/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizAlisa#**
 
-Role description This service role provides the execution engine and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-alisa/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the execution engine and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-alisa/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizConsole#**
 
-Role description This service role provides the Apsara Stack console and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-console/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the Apsara Stack console and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-console/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizTenant#**
 
-Role description This service role provides the tenant service and depends on the BaseBizDbinit#, DataworksMessageCenter#, and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-tenant/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the tenant service and depends on the BaseBizDbinit#, DataworksMessageCenter#, and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-tenant/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizMetaservice#**
 
-Role description This service role provides the metadata service and depends on the BaseBizAlisa#, BaseBizBaseapi#, BaseBizDbinit#, BaseBizPhoenix#, and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-metaservice/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the metadata service and depends on the BaseBizAlisa#, BaseBizBaseapi#, BaseBizDbinit#, BaseBizPhoenix#, and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-metaservice/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizMario#**
 
-Role description This service role provides the real-time synchronization service and depends on the BaseBizAlisa#, BaseBizDbinit#, and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-mario/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the real-time synchronization service and depends on the BaseBizAlisa#, BaseBizDbinit#, and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-mario/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizDashboard#**
 
-Role description This service role provides the Data Integration dashboard and depends on the BaseBizAlisa#, BaseBizDbinit#, and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-dashboard/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the Data Integration dashboard and depends on the BaseBizAlisa#, BaseBizDbinit#, and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-dashboard/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizCdp#**
 
-Role description This service role provides the offline synchronization scheduling service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-cdp/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the offline synchronization scheduling service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-cdp/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizGateway#**
 
-Role description This service role provides the scheduling gateway deployed in Docker and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the scheduling gateway deployed in Docker and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizCdpGateway#**
 
-Role description This service role provides the offline synchronization gateway deployed in Docker and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the offline synchronization gateway deployed in Docker and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizGatewaySearch#**
 
-Role description This service role provides the gateway for code search and backup or restoration and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the gateway for code search and backup or restoration and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizGatewayWithNc#**
 
-Role description This service role provides the scheduling gateway deployed on a physical server and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the scheduling gateway deployed on a physical server and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizCdpGatewayWithNc#**
 
-Role description This service role provides the offline synchronization gateway deployed on a physical server and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the offline synchronization gateway deployed on a physical server and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizCommonbase#**
 
-Role description This service role provides the features of DataStudio and depends on the BaseBizDbinit#, BaseBizTenant#, and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-commonbase/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the features of DataStudio and depends on the BaseBizDbinit#, BaseBizTenant#, and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-commonbase/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **ServiceTest#**
 
@@ -1376,35 +1466,35 @@ Role description This service role provides the smoke testing service. You can c
 -- View the status of all Docker containers and obtain the docker_id parameter of the ServiceTest container. docker ps -a; -- Retrieve the logs of the container. You need to use this command to retrieve logs because the volume of logs is large. docker logs $docker_id;
 ```
 
-Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksDataosPanel#**
 
-Role description This service role provides the workspace and tenant management services and depends on the BaseBizDbinit# and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-dataos-panel/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the workspace and tenant management services and depends on the BaseBizDbinit# and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-dataos-panel/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksMessageCenter#**
 
-Role description This service role provides the features of Notification Center and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-message-center/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the features of Notification Center and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-message-center/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizTsp#**
 
-Role description This service role provides the code repository service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-tsp/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the code repository service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-tsp/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksMosad#**
 
-Role description This service role provides the intelligent monitoring service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-mosad/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the intelligent monitoring service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-mosad/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizDiide#**
 
-Role description This service role provides the Data Integration service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-diide/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the Data Integration service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-diide/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksNavigation#**
 
-Role description This service role provides public headers and depends on the BaseBizDbinit# and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-navigation/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides public headers and depends on the BaseBizDbinit# and BaseBizTenant# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-navigation/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizWormhole#**
 
-Role description This service role provides the wormhole service and depends on the BaseBizDbinit# and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-wormhole/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the wormhole service and depends on the BaseBizDbinit# and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-wormhole/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizDataOsApiInit#**
 
@@ -1414,61 +1504,61 @@ Role description This service role provides the POP API registration service and
 -- View the status of all Docker containers and obtain the docker_id parameter of the BaseBizDataOsApiInit container. docker ps -a; -- Retrieve the logs of the container. You need to use this command to retrieve logs because the volume of logs is large. docker logs $docker_id;
 ```
 
-Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksDsmGuard#**
 
-Role description This service role provides the features of Security Center and depends on the BaseBizTenant# and DataworksNavigation# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dsm-guard/logs/loginlogs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the features of Security Center and depends on the BaseBizTenant# and DataworksNavigation# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dsm-guard/logs/loginlogs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizGatewayStreamX#**
 
-Role description This service role provides the real-time synchronization gateway and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the real-time synchronization gateway and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/alisatasknode/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizAlisalogagent#**
 
-Role description This service role provides the Alisa log agent and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-alisalogagent/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the Alisa log agent and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-biz-alisalogagent/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksExecutorNode#**
 
-Role description This service role provides the real-time execution engine node and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-executor-node/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the real-time execution engine node and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-executor-node/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksExecutorManager#**
 
-Role description This service role provides the real-time execution engine manager and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-executor-manager/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the real-time execution engine manager and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-executor-manager/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksNodemarket#**
 
-Role description This service role provides the custom node and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-nodemarket/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the custom node and depends on the BaseBizAlisa# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-nodemarket/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksMeasure#**
 
-Role description This service role provides the metering service and depends on the BaseBizTenant# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-measure/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the metering service and depends on the BaseBizTenant# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-measure/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksLsp#**
 
-Role description This service role provides the LSP-based intelligent code editor and does not depend on other service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-lsp/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the LSP-based intelligent code editor and does not depend on other service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-lsp/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksPlugin#**
 
-Role description This service role provides the microservices framework and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-plugin/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the microservices framework and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-plugin/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksCdn#**
 
-Role description This service role provides the frontend service and does not depend on other service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-cdn/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the frontend service and does not depend on other service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-cdn/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksMetaPluginService#**
 
-Role description This service role provides the metadata plug-in service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-mps/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the metadata plug-in service and depends on the BaseBizDbinit# service role. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/dataworks-mps/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **BaseBizOps#**
 
-Role description This service role provides the features of O&M Assistant and depends on the BaseBizDbinit# and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-tenant-ops/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the features of O&M Assistant and depends on the BaseBizDbinit# and Redis1# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/base-tenant-ops/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
 **DataworksElasticsearch#**
 
-Role description This service role provides the Elasticsearch service and depends on the Redis1# and Redis2# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/elasticsearch-6.8.23/logs` Monitoring Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
+Role description This service role provides the Elasticsearch service and depends on the Redis1# and Redis2# service roles. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone The physical server on which the service role is deployed supports the reclone operation. You need to perform the operation on physical servers in batches. Logs Log path: `/home/admin/elasticsearch-6.8.23/logs` Check whether the service role is in the desired state in the Apsara Infrastructure Management console. For more information, see the View service roles section of this topic.
 
-### Inspect clusters
+### 3.3 Inspect clusters
 
 Cluster inspection helps you monitor the status of components and services. This topic describes how to use inspect clusters.
 
@@ -1525,7 +1615,7 @@ The following table describes the clusters of other features.
 | DataBlau (OEM) | BaseDatablauFeature | BaseDatablauCluster- |
 | Secure Multi-party Computation (OEM) | BaseMorseFeature | BaseMorseCluster- |
 
-### Inspect the base_meta project
+### 3.4 Inspect the base_meta project
 
 The base_meta project is a metadata project of DataWorks. The project is used to process data of DataWorks offline. This topic describes how to inspect the base_meta project to check the status of the tasks in the base_meta project.
 
@@ -1548,7 +1638,7 @@ iii. Find base_admin and click the icon in the **Resource Application Result** c
 5. Go to the Operation Center page to view the status of the MaxCompute project.
 If the MaxCompute project is not running, contact technical support for troubleshooting.
 
-### Inspect the BaseBizAlisa
+### 3.5 Inspect the BaseBizAlisa service
 
 **service**
 
@@ -1605,7 +1695,7 @@ task_id not in (select task_id from alisa_task);
 task_id not in (select task_id from alisa_task);
 ```
 
-### Inspect the BaseBizPhoenix
+### 3.6 Inspect the BaseBizPhoenix service
 
 **service**
 
@@ -1637,7 +1727,7 @@ phoenix_schedule_event;
 
 If the amount of data is too large, the system may be affected, and you need to manually clear the data. For example, if the phoenix_task_inst table contains more than one million data records, the table needs to be cleared.
 
-### Inspect the BaseBizCdp
+### 3.7 Inspect the BaseBizCdp service
 
 **service**
 
@@ -1654,7 +1744,7 @@ the table.
 
 If the number of data records exceeds 100,000, the system may be affected, and you need to manually clear the data.
 
-### Appendix: Log in to a
+### 3.8 Appendix: Log in to a database
 
 **database**
 
@@ -1677,11 +1767,11 @@ You must go to the cluster details page for the corresponding service to obtain 
 3. On the **Resource Details** tab of the **Cluster Details** page, filter resources of the **db** type.
 View the value in the Resource Application Result column of the corresponding database and obtain the name of and connection information about the database. Then, log in the database based on the connection information. and commands
 
-## Common administration
+## 4 Common administration tools and commands
 
 **tools and commands**
 
-### View the servers on which a
+### 4.1 View the servers on which a service is deployed
 
 **service is deployed**
 
@@ -1701,7 +1791,7 @@ service is used.
 **Component Details** page. In the Components section, click a service and view the servers
 on which the service is deployed. and commands
 
-### View cluster resources
+### 4.2 View cluster resources
 
 This topic describes how to view the applications, resources, status, and version of a cluster.
 
@@ -1721,7 +1811,7 @@ Find the resource that you want to view and click the icon in the **Resource App
 **Result** column to view the application details. For example, if you want to log in to the
 database of a specific application, you can view detailed logon information about the database in the **Resource Application Parameters** message. and commands
 
-### View service registration
+### 4.3 View service registration variables
 
 **variables**
 
@@ -1822,7 +1912,7 @@ and commands
 | service-dataworks- openplatform | dataworks- openplatform | openplatform.${global:inter net-domain} | openplatform.${global:con sole-private-domain} |
 | service-dataworks- governance | dataworks- datagovernance | dgc.${global:internet- domain} | dgc.${global:console- private-domain} |
 
-### Commands to restart services
+### 4.4 Commands to restart services
 
 Enter the container that runs the service as an admin user, and then run the following commands to restart services.
 
@@ -1841,7 +1931,7 @@ alisa/bin/jbossctl
        restart .
 ```
 
-### View logs of a failed instance
+### 4.5 View logs of a failed instance
 
 This topic describes how to view logs of a failed instance in Operation Center.
 
@@ -1857,7 +1947,7 @@ appears. On this page, you can view all the instances that failed to run in the 
 and commands the right side of the page.
 5. Select **View Runtime Log**.
 
-### Rerun multiple instances at a
+### 4.6 Rerun multiple instances at a time
 
 **time**
 
@@ -1875,7 +1965,7 @@ appears. On this page, you can view all the instances that failed to run in the 
 5. Choose **More > Rerun** in the lower-left corner.
 6. In the message that appears, click **Rerun**.
 
-### Stop multiple instances at a
+### 4.7 Stop multiple instances at a time
 
 **time**
 
@@ -1897,7 +1987,7 @@ You can stop only instances that are running.
 5. Choose **More > Stop** in the lower-left corner.
 6. In the message that appears, click **Stop**.
 
-### Commonly used Linux
+### 4.8 Commonly used Linux commands
 
 **commands**
 
@@ -1945,7 +2035,7 @@ You can run the `kill -9` command with the PID of a process added at the end to 
 
 List all containers: `docker ps -a` List the logs of a container: `docker logs [Container ID]` Log on to a container: `docker exec -it [Container ID] bash`
 
-### View the slot usage of
+### 4.9 View the slot usage of resource groups
 
 **resource groups**
 
@@ -1981,13 +2071,13 @@ select * from alisa_node;
 
 perations
 
-## Process daily
+## 5 Process daily administration operations
 
 **administration operations**
 
-### Daily check
+### 5.1 Daily check
 
-#### Check the service status and server
+#### 5.1.1 Check the service status and server information
 
 **information**
 
@@ -2006,7 +2096,7 @@ Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, 
 **Dashboard** in the **Actions** column. On the page that appears, view the basic information
 and process status of the server.
 
-#### Check the status of a gateway server
+#### 5.1.2 Check the status of a gateway server
 
 This topic describes how to check the status of a gateway server.
 
@@ -2033,7 +2123,7 @@ Select * from alisa_node;
 
 If -1 or 0 is returned for the **active_type** or **live** parameter, the service is abnormal. In this case, contact Apsara Stack technical support.
 
-#### Monitor service roles and servers
+#### 5.1.3 Monitor service roles and servers
 
 This topic describes how to view the details of monitored service roles and servers.
 
@@ -2056,7 +2146,7 @@ in the **Actions** column.
 6. In the **Component Metrics** dialog box, view the information on the **Component Metrics**
 and **Machine Metrics** tabs.
 
-### View logs of the services
+### 5.2 View logs of the services
 
 Logs of the gateway service are stored in
 
@@ -2076,7 +2166,7 @@ For example, the logs of the base-biz-phoenix service are stored in `/home/admin
 phoenix/base-biz-phoenix.log .
 ```
 
-### Scale out the cluster that runs
+### 5.3 Scale out the cluster that runs the base-biz-gateway service
 
 **the base-biz-gateway service**
 
@@ -2167,7 +2257,7 @@ i. Check the heartbeat logs of the servers. Open the terminal of each added serv
 **biz-alisa** service of the **db** type. Click the
 icon in the **Resource Application Result** column to view the database connection information. Connect to the database by executing a MySQL command and run the `select * from` alisa_node; command. The information about all servers that run the base-biz-gateway service appears. Check the values of the live and active_type parameters for each added server. If both the values are 1, the server is online.
 
-### Scale in the cluster that runs
+### 5.4 Scale in the cluster that runs the base-biz-gateway service
 
 **the base-biz-gateway service**
 
@@ -2237,7 +2327,7 @@ curl http://127.0.0.1:7070/api/v5/GetMachineInfo?hostname=$hostname
 
 perations
 
-### Restart the BaseBizTenant
+### 5.5 Restart the BaseBizTenant service
 
 **service**
 
@@ -2276,7 +2366,7 @@ You need to replace yourID with a container ID.
 8. Enter `/home/admin/base-biz-tenant/bin/jbossctl restart` in the code editor and press
 Enter to restart the BaseBizTenant service. If the **OK** and **NGINX start Done** messages appear, the BaseBizTenant service is restarted.
 
-### Restart the Redis service
+### 5.6 Restart the Redis service
 
 This topic describes how to restart the Redis service on the Component Details page.
 
@@ -2317,7 +2407,7 @@ service:
 
 perations
 
-### Restart the BaseBizDmc
+### 5.7 Restart the BaseBizDmc service
 
 **service**
 
@@ -2355,7 +2445,7 @@ You need to replace yourID with a container ID.
 7. Enter `/home/admin/base-biz-dmc/bin/jbossctl restart` in the code editor and press Enter
 to restart the BaseBizDmc service. If the **OK** and **NGINX start Done** messages appear, the BaseBizDmc service is restarted.
 
-### Restart the BaseBizAlisa
+### 5.8 Restart the BaseBizAlisa service
 
 **service**
 
@@ -2393,7 +2483,7 @@ You need to replace yourID with a container ID.
 8. Enter `/home/admin/base-biz-alisa/bin/jbossctl restart` in the code editor and press
 Enter to restart the BaseBizAlisa service. perations If the **OK** and **NGINX start Done** messages appear, the BaseBizAlisa service is restarted.
 
-### Restart the BaseBizPhoenix
+### 5.9 Restart the BaseBizPhoenix service
 
 **service**
 
@@ -2431,7 +2521,7 @@ You need to replace yourID with the container ID.
 8. Enter `/home/admin/base-biz-phoenix/bin/jbossctl restart` in the code editor and press
 Enter to restart the BaseBizPhoenix service. If the **OK** and **NGINX start Done** messages appear, the BaseBizPhoenix service is restarted.
 
-### Restart the
+### 5.10 Restart the BaseBizCdpGateway service
 
 **BaseBizCdpGateway service**
 
@@ -2469,7 +2559,7 @@ You need to replace yourID with a container ID.
 8. Enter `/home/admin/alisatasknode/target/alisatasknode/bin/serverctl restart` in the code
 editor and press Enter to restart the BaseBizCdpGateway service. perations
 
-### Restart the dataworks-
+### 5.11 Restart the dataworks-dataservice service
 
 **dataservice service**
 
@@ -2495,7 +2585,7 @@ command to obtain the container ID.
 8. If the service is in the **OK** state and the command output displays [ OK] -- SUCCESS at the
 end, the dataworks-dataservice service is restarted.
 
-### Restart the
+### 5.12 Restart the BaseBizCdpGateway service
 
 **BaseBizCdpGateway service**
 
@@ -2548,7 +2638,7 @@ admin account, and then run the
 
 perations
 
-### Configure a resource group
+### 5.13 Configure a resource group in a multi-region environment
 
 **in a multi-region environment**
 
@@ -2654,7 +2744,7 @@ create table phoenix_node_def_20200108_bak as select * from phoenix_node_def; //
 
 This way, the resource group for historical nodes in the datam4 workspace is changed to the resource group named region_test. After the resource group is changed, test whether all the historical nodes can be run as expected.
 
-### Configure a resource group
+### 5.14 Configure a resource group for Data Integration in a multi-region environment
 
 **for Data Integration in a multi-**
 
@@ -2741,11 +2831,11 @@ update alisa_group set cluster_name='4be2***' where group_name='4be2***';
 **group_name** and **cluster_name** indicate the name and cluster name of
 the custom resource group.
 
-## Common issues and
+## 6 Common issues and solutions
 
 **solutions**
 
-### Nodes remain in the Pending
+### 6.1 Nodes remain in the Pending (Resources) state
 
 **(Resources) state**
 
@@ -2801,7 +2891,7 @@ sudo su admin -c "/home/admin/alisatasknode/target/alisatasknode/bin/serverctlre
 
 This is a rare problem which tends to occur when a gateway server uses the third extended (ext3) file system.
 
-### An out-of-memory (OOM) error
+### 6.2 An out-of-memory (OOM) error occurs when synchronizing data from an Oracle database
 
 **occurs when synchronizing data**
 
@@ -2829,7 +2919,7 @@ Rerun the task after the fetchsize value is changed. To reset the fetchsize valu
 update t_plugin_template set template=replace(template,'128','1024') where name='oracle' and type='reader';
 ```
 
-### A task does not run at the
+### 6.3 A task does not run at the specified time
 
 **specified time**
 
@@ -2860,7 +2950,7 @@ curl -v -H "Accept:application/json"-H "Content-type: application/json"-X POST -
 
 bizdate refers to the previous day, and gmtdate refers to the current day. Modify the command if needed before running it.
 
-### What do I do if the number
+### 6.4 What do I do if the number and usage of tables are not displayed on the Data Map page?
 
 **and usage of tables are not**
 
@@ -2886,7 +2976,7 @@ To log in to the base_meta project, enter the domain name of the base_meta proje
 5. Go to the Operation Center page of the base_meta project.
 If a failed task exists, rerun the task. After the task is rerun, check whether data is displayed on the Data Map page as expected. If the task fails to be rerun, contact Apsara Stack technical support for troubleshooting.
 
-### Logs are not automatically
+### 6.5 Logs are not automatically cleaned up
 
 **cleaned up**
 

@@ -3,20 +3,37 @@ title: "Container Security Service Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 50
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Container Security Service Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "466bc43925b755b5_Alibaba Cloud Apsara Stack V3.18.6 Container Security Service Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Security%20Service%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Container Security Service Operations and Maintenance Guide
 
-## O&M documentation
+## Table of Contents
 
-### Introduction
+- 1 O&M documentation
+  - 1.1 Introduction
+    - 1.1.1 Deployment architecture
+    - 1.1.2 Core modules
+      - 1.1.2.1 Asset Management
+      - 1.1.2.2 Container Firewall
+      - 1.1.2.3 Mirror Scan
+      - 1.1.2.4 Cluster defense
+  - 1.2 High availability
+  - 1.3 Disaster recovery and backup
+  - 1.4 Monitor objects and send alert notifications
+  - 1.5 Capacity Planning
+  - 1.7 Hot upgrade
+  - 1.8 AliNet (06_21) Linux Driver OS / Kernel List
+
+## 1 O&M documentation
+
+### 1.1 Introduction
 
 Container Security Service (CSS) is a centralized management and operations platform for immutable infrastructure to ensure cloud native container security. CSS uses the automatic mode to resolve security issues that occur when containers are constantly integrated, delivered, deployed, and run. CSS uses a cloud-native architecture of Server Guard to provide multiple features such as cloud asset management, baseline check, proactive defense, security hardening, and security status visualization. CSS can efficiently detect and block risks such as container escapes, viruses, attacks, encryption ransomware, and vulnerability exploits. CSS protects runtime nodes, containers, and images in and outside the cloud, and helps you meet regulatory compliance requirements. The feature of container image scan detects high-risk and medium-risk system vulnerabilities, application vulnerabilities, malicious samples, configuration risks, and sensitive data in images. The feature provides suggestions on how to handle these issues and supports end-to-end image risk management. The container firewall feature is provided by CSS to ensure the security of container environments. If attackers exploit vulnerabilities or malicious images to intrude into clusters, the container firewall feature generates alerts or blocks attacks.
 
-#### Deployment architecture
+#### 1.1.1 Deployment architecture
 
 **Deployment architecture**
 
@@ -32,7 +49,7 @@ Core Capabilities AegisContainerNetwork SasContainerService AegisVirusScan MiniR
 
 **Side**
 
-AegisVulnerability AegisHealthCheck AegisDetect OSS Detection /Defense Capability SLS YaraSlave AegisMaster AegisCloudavbd MetaQ/Diamond AegisPrivate Aegiserver Aegisupdate AegisCloudavira CloudEngine Tair/SchedulerX Detection Client Management engine
+AegisVulnerability AegisHealthCheck AegisDetect OSS Detection /Defense Capability SLS YaraSlave AegisMaster AegisCloudavbd MetaQ/Diamond Aegiserver Aegisupdate AegisCloudavira AegisPrivate CloudEngine Tair/SchedulerX Detection Client Management engine
 
 **Middleware**
 
@@ -122,7 +139,7 @@ YundunConsole YundunBaseService
 
 **capacity**
 
-AegisPrivate Dipper CloudEegine
+Dipper AegisPrivate CloudEegine
 
 **Detection engine**
 
@@ -130,11 +147,11 @@ AegisPrivate Dipper CloudEegine
 
 **yundun-basic**
 
-MiniRDS SasContainer SasContainer AegisContainer Aegisbiz OSS Network Service Defense
+MiniRDS SasContainer SasContainer Aegisbiz AegisContainer OSS Network Service Defense
 
 **Core Competence**
 
-SLS AegisSuspicious AegisVirusScan AegisImage AegisHealthCheck Analyzer MetaQ/Diamond
+SLS AegisSuspicious AegisHealthCheck AegisVirusScan AegisImage Analyzer MetaQ/Diamond
 
 **Service**
 
@@ -160,7 +177,7 @@ Aegisupdate AegisMaster Aegiserver
 
 **Paas Shared Node Pool**
 
-deamonsetsas-image- AliYunDun sas-jenkins- AliYunDun AliNet
+deamonsetsas-image- AliYunDun AliYunDun AliNet sas-jenkins-
 
 **Customer**
 
@@ -219,9 +236,9 @@ The following table describes the server processes that correspond to the module
 
 Operating systems supported by the Server Guard agent Operating systems supported by AliNet
 
-#### Core modules
+#### 1.1.2 Core modules
 
-##### Asset Management
+##### 1.1.2.1 Asset Management
 
 The Container Security Asset Center allows you to view the security protection status of managed assets, such as container clusters and images.
 
@@ -367,7 +384,7 @@ Dipper Report in and out network logs
 
 hosts
 
-##### Container Firewall
+##### 1.1.2.2 Container Firewall
 
 Container Firewall is a firewall service provided by Container Security for container environments and is a core feature of Container Security run time protection. Combined with container network visualization, configure reasonable isolation rules. When hackers exploit vulnerabilities or malicious images to invade a container cluster, the container firewall will alert or intercept abnormal behaviors, which can control risks within a small range and prevent the entire container environment from being invaded.
 
@@ -397,7 +414,7 @@ current node, and accepts firewall rules issued by the server.
 3. Allows, alerts, and blocks network traffic: The aliNet neutron plug-in aliSecNetFilter enables,
 alerts, and blocks traffic that hits rules based on the recorded container metadata and firewall rules.
 
-##### Mirror Scan
+##### 1.1.2.3 Mirror Scan
 
 The image security scan feature can detect high and high risk system vulnerability, application vulnerabilities, malicious samples, and configuration risks in images.
 
@@ -469,9 +486,9 @@ groovy parsing scripts Client
 |   | temporary upload oss url |
 |---|---|
 
-SasImageScanner container Server Query Obtain the groovy temporary scripts upload url. Update scan Aegisbiz progress OSS
+SasImageScanner container Server Query Obtain the groovy temporary scripts upload url. Update scan Aegisbiz progress
 7. Report script
-filtering results Filtering results of distributed images SasContainerService
+OSS filtering results Filtering results of distributed images SasContainerService
 8. Report File
 8. Report package
 8. Report baseline
@@ -479,7 +496,7 @@ Filtering List filtering list check results Lifecycle tasks Vulnerability Determ
 9. Query image
 security information Engine detection result Record alarm information Image cve and sca vulnerabilities AegisSuspicious Detection engine
 
-##### Cluster defense
+##### 1.1.2.4 Cluster defense
 
 **Container file defense**
 
@@ -569,7 +586,7 @@ to create a container. enterprise RSA_2048 edition has the image
 **Key purpose:** the key of
 SIGN/VERIFY signing feature.
 
-### High availability
+### 1.2 High availability
 
 **High-availability server side**
 
@@ -585,7 +602,7 @@ High availability is delivered by using stateless applications. The server side 
 |   | VIP |   |
 |---|---|---|
 
-### Disaster recovery and backup
+### 1.3 Disaster recovery and backup
 
 **Zone-disaster recovery**
 
@@ -626,7 +643,7 @@ The following table describes the disaster recovery solution in each component.
 
 Geo-disaster recovery is delivered based on independent regions. The multi-region architecture of CSS follows the rules of independent regions. General regions do not depend on the central region, and data is completely isolated from services.
 
-### Monitor objects and send alert
+### 1.4 Monitor objects and send alert notifications
 
 **notifications**
 
@@ -788,7 +805,7 @@ System monitoring of CSS is implemented based on TianjiMon. The following table 
 |   | Number of container application vulnerabilities | Number of container application vulnerabilities |
 |   | Number of container alerts | Number of container alerts |
 
-### Capacity Planning
+### 1.5 Capacity Planning
 
 Container security is calculated based on the number of CPU cores of the NC in the zone. For each additional 12000 container cores, two physical machines must be added to the BasicThinCluster (the ratio of NC to ECS is 1:6,500 NC to 3000 ECS, and the average specification of each ECS is 4 cores). The maximum specification of the Server Guard can only support up to 192000 cores. If the upper limit is exceeded, contact R&D for intervention.
 
@@ -903,7 +920,7 @@ Arm /sw database specifications
 | xlarge | 96000 | 672 | 56 | 14 | 42 | 168 | 392 | 1624 |
 | 2xlarg e | 192000 | 1344 | 112 | 28 | 84 | 336 | 784 | 3248 |
 
-### XC
+### 1.6 XC
 
 **Difference between Apsara Stack and controllable capabilities**
 
@@ -943,11 +960,11 @@ Multi-chip architecture in one cloud is commonly suitable for two scenarios: het
 |---|---|
 | Heterogeneous multi-region deployment ((x86 and ARM)) Hardware heterogeneity at the central/unit data center level | Yes |
 
-### Hot upgrade
+### 1.7 Hot upgrade
 
 Container Security Service (CSS) supports hot upgrade by default. No additional O&M operations are required.
 
-### AliNet (06_21) Linux Driver OS
+### 1.8 AliNet (06_21) Linux Driver OS / Kernel List
 
 **/ Kernel List**
 

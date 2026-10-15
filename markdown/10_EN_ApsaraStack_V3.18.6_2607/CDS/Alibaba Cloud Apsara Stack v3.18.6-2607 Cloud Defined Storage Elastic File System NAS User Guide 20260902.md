@@ -3,14 +3,49 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic Fi
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 50
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 20260902.pdf"
+source_pdf: "03deb6b106b070a8_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS User Guide 20260902
 
-## What is EFS-NAS?
+## Table of Contents
+
+- 1 What is EFS-NAS?
+- 2 Limits
+- 3 Getting started
+  - 3.1 Log in to the EFS-NAS console
+  - 3.2 Create a file system
+  - 3.3 Create a user
+  - 3.4 Create a share
+  - 3.5 Mount an NFS file system
+  - 3.6 Mount an SMB file system
+- 4 Manage file systems
+  - 4.1 View the detailed information about a file system
+  - 4.2 Scale up a file system
+  - 4.3 Delete a file system
+  - 4.4 Share management
+    - 4.4.1 Manage NFS shares
+    - 4.4.2 Manage SMB shares
+  - 4.5 Freeze and thawing file systems
+  - 4.6 File system quotas
+- 5 User and user group management
+  - 5.1 User management
+  - 5.2 Manage user groups
+- 6 Recycle bin
+  - 6.1 Enable the recycle bin feature
+  - 6.2 Restore files from the recycle bin
+  - 6.3 Manage the recycle bin
+- 7 Snapshots
+  - 7.1 Create a snapshot
+  - 7.2 Manage snapshots
+  - 7.3 Create a scheduled snapshot policy
+- 8 WORM
+  - 8.1 Create a WORM policy
+  - 8.2 Modify a WORM policy
+
+## 1 What is EFS-NAS?
 
 **Product overview**
 
@@ -24,7 +59,7 @@ EFS-NAS supports two instance types, capacity and performance, to meet different
 
 File system mounting: Multiple clients can mount the file system. Elastic scaling: You can scale out the file system online and dynamically adjust the capacity as your business grows. Mount points: You can generate mount points through Network File System (NFS) or Server Message Block (SMB) protocol shares. Quota management: You can set capacity quotas by organization to achieve rational resource allocation, cost control, and performance optimization. Unique namespace capacity: A single namespace supports up to 5 PiB of capacity for unified management of mass data. Maximum cluster scale: A single cluster supports up to 2,000 disks and scales out horizontally on demand. Minimum three-node deployment: You can start with three nodes to meet the needs of small-scale business and smooth scaling. Flexible storage pool deployment: You can dedicate and flexibly plan resources at the underlying layer of the storage cluster to reduce initial equipment investment.
 
-## Limits
+## 2 Limits
 
 Review the following limits before using File Storage NAS.
 
@@ -36,9 +71,9 @@ Maximum files per file system: 10 billion. Maximum size per file: 512 TiB. A fil
 
 To delete a file system, first unmount it from all clients and delete its associated share. To delete a user group, first remove it from the SMB share. To delete a user, first remove them from their user group and any associated SMB shares.
 
-## Getting started
+## 3 Getting started
 
-### Log in to the EFS-NAS console
+### 3.1 Log in to the EFS-NAS console
 
 This topic describes how to log in to the EFS-NAS console.
 
@@ -72,7 +107,7 @@ Enter the six-digit MFA code and click **Authenticate**.
 6. In the top navigation bar, select **Products**. In the **Storage** section, click **File Storage**
 **EFS-NAS**.
 
-### Create a file system
+### 3.2 Create a file system
 
 This topic describes how to create a file system in the EFS-NAS console.
 
@@ -98,7 +133,7 @@ After you configure the parameters, a configuration summary appears in the pane 
 information, see the **Quota management** topic in User Guide - Apsara Uni-manager Mana gement Console.
 5. Click **Submit** to create the file system.
 
-### Create a user
+### 3.3 Create a user
 
 Learn how to create a user.
 
@@ -121,7 +156,7 @@ parameters.
 
 4. Click **Submit** to create the user.
 
-### Create a share
+### 3.4 Create a share
 
 In EFS-NAS, you use shares to mount file systems to clients. This topic describes how to create a share.
 
@@ -181,7 +216,7 @@ target file system, and then select **SMB Share**.
 
 4. Click **Submit**.
 
-### Mount an NFS file system
+### 3.5 Mount an NFS file system
 
 After you create an NFS share, you can mount the file system to a client from the console or by connecting to an ECS instance.
 
@@ -327,7 +362,7 @@ df -h | grep efs-nas
 
 No output indicates that the file system has been successfully unmounted.
 
-### Mount an SMB file system
+### 3.6 Mount an SMB file system
 
 After you create a share, you can use a mount point to mount the file system to a client. This topic describes how to mount an SMB file system.
 
@@ -364,9 +399,9 @@ net use Z: \\2001-0db8-1.ipv6-literal.net\smb-share /user:test-user
 5. After mounting the file system, you can access it on your ECS instance to read and write
 data.
 
-## Manage file systems
+## 4 Manage file systems
 
-### View the detailed information
+### 4.1 View the detailed information about a file system
 
 **about a file system**
 
@@ -380,7 +415,7 @@ status, usage and total capacity, cluster, storage type, label, NFS version, org
 3. You can click the ID of a file system or click Details in the Operation column to go to the
 details page. On the details page, you can view NFS and SMB shares. For more information, see Share management.
 
-### Scale up a file system
+### 4.2 Scale up a file system
 
 This topic explains how to increase the total capacity of a file system.
 
@@ -393,7 +428,7 @@ column, click the icon and then click **Capacity Expansion**.
 in **New Total Capacity (GiB)**. The new total capacity must be greater than the current total capacity.
 4. Click **Submit**.
 
-### Delete a file system
+### 4.3 Delete a file system
 
 Delete a file system that you no longer need.
 
@@ -419,11 +454,11 @@ to be deleted.
 File systems in a frozen state cannot be deleted. If a batch deletion includes frozen file systems, a dialog box identifies the items that cannot be processed. After you confirm, only the eligible file systems are deleted.
 3. Click **OK**.
 
-### Share management
+### 4.4 Share management
 
 Elastic File Storage-File Storage NAS (EFS-NAS) supports the Network File System (NFS) and Server Message Block (SMB) file access protocols, which allow you to access shared, elastic, highly reliable, and high-performance distributed file systems through shares without making any changes to your applications.
 
-#### Manage NFS shares
+#### 4.4.1 Manage NFS shares
 
 This topic describes the operations that you can perform to manage Network File System (NFS) shares.
 
@@ -480,7 +515,7 @@ page of the file system.
 3. On the **NFS Share** tab, find the target share and click **Delete** in the Operation column.
 4. In the message that appears, click **OK**.
 
-#### Manage SMB shares
+#### 4.4.2 Manage SMB shares
 
 This topic describes the operations that you can perform to manage Server Message Block (SMB) shares.
 
@@ -536,7 +571,7 @@ page of the file system.
 3. On the **SMB Share**, find the target SMB share and click **Delete** in the Operation column.
 4. In the message that appears, click **OK**.
 
-### Freeze and thawing file
+### 4.5 Freeze and thawing file systems
 
 **systems**
 
@@ -565,7 +600,7 @@ that you want to thawing.
 **OK**.
 If any selected file systems cannot be unfrozen (for example, because they are not frozen), a message appears listing them. After you confirm, the system unfreezes only the eligible file systems.
 
-### File system quotas
+### 4.6 File system quotas
 
 This topic describes how to manage file system quotas, including how to create, view, modify, and delete directory quotas.
 
@@ -646,11 +681,11 @@ click **Delete** in the **Operation** column.
 2. In the confirmation dialog box, click **OK**.
 ment
 
-## User and user group
+## 5 User and user group management
 
 **management**
 
-### User management
+### 5.1 User management
 
 This document describes user management for EFS-NAS file systems.
 
@@ -696,7 +731,7 @@ Before deleting a user, remove them from all SMB shares and user groups.
 3. On the **User** page, find the target user and click **Delete** in the **Operation** column.
 4. Click **OK**.
 
-### Manage user groups
+### 5.2 Manage user groups
 
 This topic describes how to manage user groups for EFS-NAS file systems.
 
@@ -752,7 +787,7 @@ You must remove a user group from all associated SMB shares before you can delet
 column.
 4. Click **OK**.
 
-## Recycle bin
+## 6 Recycle bin
 
 To prevent business disruption or permanent data loss from accidental file deletions, we recommend enabling the Recycle Bin. When enabled, the Recycle Bin temporarily stores deleted files and directories. You can configure a retention policy to permanently delete these items after a specified period. During the retention period, you can restore these files and their metadata, including UID, GID, and ACLs.
 
@@ -760,7 +795,7 @@ To prevent business disruption or permanent data loss from accidental file delet
 
 When the Recycle Bin is enabled, deleted files or directories are moved to the Recycle Bin. Examples include: Files in an EFS-NAS file system that you manually delete from a client. For example, if you run the `rm -f test01.text` command to delete the filetest01.text, the filetest01.text is moved to the Recycle Bin. Files or directories in an EFS-NAS file system that are automatically deleted by an application on a client. For example, if a Python application uses `os.remove("test02.text")` to delete the filetest02.text, the filetest02.text is moved to the Recycle Bin. Files or directories that are deleted by a POSIX rename operation. For example, if a directory contains bothtest_a.txt andtest_b.txt, and you run the `mv test_a.txt test_b.txt` command, the originaltest_b.txt file is overwritten and moved to the Recycle Bin. Temporary files generated by applications using the EFS-NAS file system. For example, when you edit a file with the**vim** command, temporary files such as `.swp` and `.swpx` are moved to the Recycle Bin. Log files that are automatically rotated by an application. For example, if Nginx is configured to automatically rotate logs and keep a maximum of 20 log files, when the log filetest.log.19 is renamed totest.log.20, the originaltest.log.20 file is overwritten and moved to the Recycle Bin. Overwriting a file's content does not move the file to the Recycle Bin. For example, calling the open() function in w+ mode to write to a file does not move the file to the Recycle Bin.
 
-### Enable the recycle bin feature
+### 6.1 Enable the recycle bin feature
 
 After you enable the recycle bin feature, deleted files are automatically added to the recycle bin. If you configure a retention policy, files in the recycle bin are permanently deleted when the specified retention period ends.
 
@@ -782,7 +817,7 @@ parameters.
 
 4. Click **OK**.
 
-### Restore files from the recycle
+### 6.2 Restore files from the recycle bin
 
 **bin**
 
@@ -802,7 +837,7 @@ The file list displays at most 100 data entries. If the file that you want to re
 5. In the **Confirm recovery?** dialog box, turn on or turn off **Overwrite a file with the same**
 **name** and click **OK**.
 
-### Manage the recycle bin
+### 6.3 Manage the recycle bin
 
 You can delete files from the recycle bin, modify the retention policy of the recycle bin, empty the recycle bin, and disable the recycle bin.
 
@@ -816,11 +851,11 @@ You can delete files from the recycle bin, modify the retention policy of the re
 |---|---|---|
 | Disable the recycle bin feature | If you no longer need to use the files in the recycle bin or you no longer want to use the recycle bin feature, you can disable and empty the recycle bin. Warning If you disable the recycle bin, all files in the recycle bin are permanently deleted. If you disable and then enable the recycle bin again, the recycle bin is empty. The deleted files cannot be restored. | 1. Log in to the EFS-NAS console. 2. In the left-side navigation pane, click Recycle Bin. 3. Find the file system that you want to manage, click the icon in the Actions column, and then select Close Recycle Bin. 4. Check the information and click OK. |
 
-## Snapshots
+## 7 Snapshots
 
 To prevent data loss caused by accidental operations, attacks, or viruses, you can use snapshots to periodically back up business data stored in file systems. To ensure the integrity and recoverability of data stored in an Elastic File Storage-File Storage NAS (EFS-NAS) file system, the system provides the snapshot feature. It allows you to create a read-only replica of the state of a file system at a certain point in time. Snapshots are classified into regular snapshots and scheduled snapshots, which can meet diverse data protection requirements. The differences between normal snapshots and scheduled snapshots are as follows: Normal snapshots: manually created by users. They are suitable for instant backup before important operations, such as system upgrades, configuration changes, and data migration. Scheduled snapshots: periodically generated by the system based on the scheduled snapshot policy. Scheduled snapshots are suitable for routine backup of important directories in a production environment to meet long-term protection requirements, such as legitimate data retention, prevention of accidental deletion, and automated O&M. We recommend that you formulate a tiered backup policy based on the actual business scenarios to balance security and resource costs.
 
-### Create a snapshot
+### 7.1 Create a snapshot
 
 EFS-NAS supports two types of snapshots: manual snapshots and automatic snapshots. You can create a manual snapshot on demand, while the system creates automatic snapshots based on an automatic snapshot policy. This topic explains how to create a snapshot for a file system.
 
@@ -874,7 +909,7 @@ After a snapshot is created, you can use it to restore files and manage the snap
 **Restore files from a snapshot** : If data is lost, you can locate the snapshot's directory on
 the EFS-NAS cluster node and manually restore the required files. For assistance with file restoration, contact Alibaba Cloud Technical Support. Manage snapshots: View snapshot details and delete snapshots as needed.
 
-### Manage snapshots
+### 7.2 Manage snapshots
 
 After a snapshot is created, you can view the snapshot information, modify the snapshot attributes, lock or unlock the snapshot, and delete the snapshot.
 
@@ -887,7 +922,7 @@ After a snapshot is created, you can view the snapshot information, modify the s
 | Lock or unlock a snapshot | You can lock snapshots used for long- term businesses. Locked snapshots cannot be deleted. To delete a locked snapshot, unlock it first. | 1. Log in to the EFS-NAS console. 2. In the left-side navigation pane, click Snapshot. 3. On the Directory Snapshot tab, unlock or lock the desired snapshot. Lock a snapshot: Select the snapshot that you want to lock and click Lock below the list. In the message that appears, click OK. Unlock a snapshot: Select the snapshot that you want to unlock and click Unlock below the list. In the message that appears, click OK. |
 | Delete a snapshot | If you no longer use a snapshot, you can delete it. Important Unlocked snapshots cannot be deleted. To delete an unlocked snapshot, unlock it first. For more information, refer to the steps for locking and unlocking snapshots. Deleted snapshots cannot be restored. Proceed with caution. | 1. Log in to the EFS-NAS console. 2. In the left-side navigation pane, click Snapshot. 3. On the Directory Snapshot tab, use one of the following methods to delete snapshots. Delete a single snapshot: Click Delete in the Operation column of the snapshot. In the message that appears, click OK. Delete multiple snapshots at a time: Select the snapshots that you want to delete and click Delete in the Operation column. In the message that appears, click OK. |
 
-### Create a scheduled snapshot
+### 7.3 Create a scheduled snapshot policy
 
 **policy**
 
@@ -934,7 +969,7 @@ After you create an automatic snapshot policy, you can manage the policy and its
 | Delete an automatic snapshot policy | You can delete automatic snapshot policies that you no longer need. Important Before you delete an automatic snapshot policy, make sure that it is not associated with any file systems. Unassociating a policy from a file system does not delete the file system itself. An automatic snapshot policy cannot be recovered after it is deleted. Proceed with caution. 1. Unassociate file systems. If the policy is associated with any file systems, you must first unassociate them. i. In the list of automatic snapshot policies, click the name of the policy. ii. On the Policy details page, find the file system that you want to unassociate, click Disassociate in the Operation column, and then confirm the action. 2. Delete the automatic snapshot policy. In the list of automatic snapshot policies, find the policy that you want to delete, click Delete in the Operation column, and then confirm the deletion. |
 |---|---|
 
-## WORM
+## 8 WORM
 
 The Write Once Read Many (WORM) feature is used to ensure the security of data. After a WORM policy is enabled, file access is strictly limited within the protection period to prevent data changes once data is written. This can efficiently prevent user errors, unauthorized deletion, and blackmail attacks.
 
@@ -946,7 +981,7 @@ Prevent tampering and deletion During the protection period, file changes or del
 
 Log archiving in the finance sector You can use the WORM feature to archive transaction logs, audit records, and other data that must be retained for long-term businesses and must not be changed. Medical imaging data storage Sensitive information such as PACS images and electronic medical records must not be tampered with during the legal preservation period to ensure the credibility of diagnosis and treatment. Enterprise legal affair and contract management After important materials such as contracts and intellectual property documents are uploaded, they are automatically protected to prevent internal tampering.
 
-### Create a WORM policy
+### 8.1 Create a WORM policy
 
 After you enable a Write Once Read Many (WORM) policy for a file system, files will automatically enter the WORM state after they are written to the file system. You can also manually set files to the WORM state after the files are written to the file system. During the protection period, files are only readable. Any changes or deletion is prohibited to ensure data integrity and prevent tampering. This feature is suitable for scenarios such as data archiving for compliance needs, audit logs, and long-term data retention.
 
@@ -981,7 +1016,7 @@ The following table describes file states and state transition after a WORM poli
 | Protecte d | The file is read-only. No changes are allowed. | Manually extend the protection period of the file to keep it in the protected state. After the protection period ends, the file enters the protection- expired state. |
 | Protectio n expired | The file is readable and deletable. However, it cannot be modified. Note After the protection period of the file ends, you can run the touch -a command to set a protection period for the file. This way, the file will enter the WORM state again. | Manually extend the protection period of the file. Then, the file enters the protected state again. |
 
-### Modify a WORM policy
+### 8.2 Modify a WORM policy
 
 After you enable a Write Once Read Many (WORM) policy for a file system, you can extend the default protection period, minimum protection period, and maximum protection period based on your business requirements.
 

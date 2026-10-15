@@ -3,32 +3,109 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 118
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20260902.pdf"
+source_pdf: "e8d4317b20a5ef65_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%20ACR/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Registry%20User%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry User Guide 20260902
 
+## Table of Contents
+
+- 1 What is Container Registry?
+- 2 Getting started
+  - 2.1 Work with Container Registry
+  - 2.2 Log in to the Container Registry console
+- 3 Container Registry Standard Edition
+  - 3.1 Permission management
+    - 3.1.1 Create users and user groups
+    - 3.1.2 Create a role and assign permissions
+    - 3.1.3 Repository access control
+  - 3.2 Quota management
+    - 3.2.1 Configure quotas
+    - 3.2.2 Create an alert rule for a quota
+    - 3.2.3 Quota description
+  - 3.3 Create a namespace
+  - 3.4 Delete a namespace
+  - 3.5 Create an image repository
+  - 3.6 Manage image repositories
+  - 3.7 Delete an image repository
+  - 3.8 Configure an access credential
+  - 3.9 Upload and download images
+  - 3.10 Replicate an image
+  - 3.11 Configure a trigger
+  - 3.12 Sign container images
+- 4 Container Registry Advanced Edition
+  - 4.1 Instance overview
+  - 4.2 Permission management
+    - 4.2.1 Create users and user groups
+    - 4.2.2 Create a role and assign permissions
+    - 4.2.3 Enable access control for a repository
+  - 4.3 Quota management
+    - 4.3.1 Configure quotas
+    - 4.3.2 Create an alert rule for a quota
+    - 4.3.3 Quota overview
+  - 4.4 Create a namespace
+  - 4.5 Modify image accessibility
+  - 4.6 Delete a namespace
+  - 4.7 Helm chart management
+    - 4.7.1 Overview of Helm charts
+    - 4.7.2 Create a namespace
+    - 4.7.3 Delete a namespace
+    - 4.7.4 Create a chart repository
+    - 4.7.5 Manage chart repositories
+    - 4.7.6 Create a synchronization source
+    - 4.7.7 Add a chart whitelist
+  - 4.8 Create a repository
+  - 4.9 Manage image repositories
+  - 4.10 Delete a repository
+  - 4.11 Export image information
+  - 4.12 Configure an access credential
+  - 4.13 Upload and download images
+  - 4.14 Configure a trigger
+  - 4.15 Synchronize instances in the same account
+  - 4.16 Configure a repository to be immutable
+  - 4.17 Delete image tags
+  - 4.18 Use the aliyun-acr-credential-helper component to pull images without a secret
+  - 4.19 Sign container images
+- 5 Container Registry Multi-instance Edition
+  - 5.1 Create an instance
+  - 5.2 Delete an instance
+  - 5.3 Permission management
+    - 5.3.1 Create a user and a user group
+    - 5.3.2 Create a role and assign permissions
+    - 5.3.3 Enable access control for a repository
+    - 5.3.4 Use RAM to enable access to OSS buckets
+  - 5.4 Quota management
+    - 5.4.1 Configure quotas
+    - 5.4.2 Create a quota alert rule
+    - 5.4.3 Quota overview
+  - 5.5 Create a namespace
+  - 5.6 Batch modify the accessibility of images
+  - 5.7 Delete a namespace
+  - 5.8 Create an image repository
+  - 5.9 Manage image repositories
+  - 5.10 Delete an image repository
+  - 5.11 Export image information
+  - 5.12 Configure an access credential
+  - 5.13 Configure access control policies
+  - 5.14 Upload and download images
+  - 5.15 Configure a trigger
+  - 5.16 Synchronize instances within the same account
+  - 5.17 Configure a repository to be immutable
+  - 5.18 Delete image tags
+  - 5.19 Use the aliyun-acr-credential-helper component to pull images without using a secret
+  - 5.20 Sign container images
+
 gistry?
 
-## What is Container Registry?
+## 1 What is Container Registry?
 
 Container Registry is a platform that allows you to manage and distribute cloud-native artifacts in a secure and efficient manner. Cloud-native artifacts include container images and Helm charts that meet the standards of Open Container Initiative (OCI). Container Registry provides the following features: image permission management, synchronous image distribution, and content signing. The features allow you to manage the entire lifecycle of container images. Container Registry simplifies the setup and O&M of container registries. Container Registry is integrated with Alibaba Cloud services such as Container Service for Kubernetes (ACK) to help enterprises reduce delivery complexity and create a one-stop solution for cloud-native applications.
 
 **Classification of Container Registry Enterprise Edition**
 
-**Container Registry Standard Edition**
-
-Container Registry Standard Edition is suitable for small and medium-sized enterprises. It supports secure hosting and efficient distribution of container images. You can use multiple Alibaba Cloud accounts in the Container Registry Standard Edition, create 15 namespaces for each account, and maintain 1,000 public repositories or private repositories in each namespace. Container Registry Standard Edition allows 100 nodes to concurrently pull container images.
-
-**Container Registry Advanced Edition**
-
-Container Registry Advanced Edition is suitable for medium and large-sized enterprises. It provides secure hosting and lifecycle management of OCI artifacts, such as container images, Helm charts, and operators. Container Registry Advanced Edition also supports efficient artifact distribution scenarios, such as multi-region replication and cross-cloud replication. You can create up to 1,000 namespaces and maintain 100,000 repositories on a Container Registry Advanced Edition instance. Container Registry Advanced Edition allows 500 nodes to concurrently pull container images.
-
-**Container Registry Multi-instance Edition**
-
-Container Registry Multi-instance Edition is suitable for medium and large-sized enterprises. Based on Container Registry Advanced Edition, Container Registry Multi-instance Edition allows you to create multiple independent Container Registry instances within a single region. Each instance has its dedicated resources such as namespaces and image repositories. Container Registry Multi-instance Edition meets the requirements for storage isolation between image repositories and fine-grained permission management. Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
+Container Registry Standard Edition is suitable for small and medium-sized enterprises. It supports secure hosting and efficient distribution of container images. You can use multiple Alibaba Cloud accounts in the Container Registry Standard Edition, create 15 namespaces for each account, and maintain 1,000 public repositories or private repositories in each namespace. Container Registry Standard Edition allows 100 nodes to concurrently pull container images. Container Registry Advanced Edition is suitable for medium and large-sized enterprises. It provides secure hosting and lifecycle management of OCI artifacts, such as container images, Helm charts, and operators. Container Registry Advanced Edition also supports efficient artifact distribution scenarios, such as multi-region replication and cross-cloud replication. You can create up to 1,000 namespaces and maintain 100,000 repositories on a Container Registry Advanced Edition instance. Container Registry Advanced Edition allows 500 nodes to concurrently pull container images. Container Registry Multi-instance Edition is suitable for medium and large-sized enterprises. Based on Container Registry Advanced Edition, Container Registry Multi-instance Edition allows you to create multiple independent Container Registry instances within a single region. Each instance has its dedicated resources such as namespaces and image repositories. Container Registry Multi-instance Edition meets the requirements for storage isolation between image repositories and fine-grained permission management. Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
 
 **Features**
 
@@ -66,9 +143,9 @@ gistry?
 | Deployment Integration | Passwordless Pull |   |   |   |   |
 |   | Deployment Selection | Supports visually selecting image repositories and versions from ACR during deployment on container platforms. | Supported | Supported | Supported |
 
-## Getting started
+## 2 Getting started
 
-### Work with Container Registry
+### 2.1 Work with Container Registry
 
 This topic describes how to use Container Registry.
 
@@ -97,7 +174,7 @@ instance.
 4. Create an image repository. For more information, see Create an image repository.
 5. Upload and download images. For more information, see Upload and download images.
 
-### Log in to the Container Registry
+### 2.2 Log in to the Container Registry console
 
 **console**
 
@@ -141,13 +218,13 @@ On the **Standard Instance Management** page, click **Management**. You can crea
 7. Use the floating action button to perform operations.
 Click the Shopping Cart icon on the floating action button to go to the shopping cart page. Click the Arrow icon on the floating action button to expand or collapse the floating menu. The floating action button is in the lower-right corner of the page by default, and can be dragged to the desired position. andard Edition
 
-## Container Registry Standard
+## 3 Container Registry Standard Edition
 
 **Edition**
 
-### Permission management
+### 3.1 Permission management
 
-#### Create users and user groups
+#### 3.1.1 Create users and user groups
 
 You can create users and assign different roles to the users to meet different requirements for system access control as an administrator. This topic describes how to create a user and a user group.
 
@@ -218,7 +295,7 @@ in the **Actions** column.
 icon, and then click
 **OK**.
 
-#### Create a role and assign permissions
+#### 3.1.2 Create a role and assign permissions
 
 Container Registry uses Alibaba Cloud accounts and Resource Access Management (RAM) users for authentication. You can use RAM authorization to create custom roles, attach permission policies, and assign roles to users for permission management. This topic describes how to create a role and assign it to a user group.
 
@@ -301,7 +378,7 @@ After you assign a role to a user group, all users in the group inherit the perm
 **Actions** column.
 4. In the **Authorize** dialog box, select a role from the **Role Authorization** drop-down list and click **OK**.
 
-#### Repository access control
+#### 3.1.3 Repository access control
 
 Users can obtain access to a repository if you grant them permissions. This topic describes how to configure access control for repositories in different scenarios.
 
@@ -574,9 +651,9 @@ andard Edition
 | Pulls images | cr:PullRepository | acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name |
 | Pushes images | cr:PushRepository | acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name |
 
-### Quota management
+### 3.2 Quota management
 
-#### Configure quotas
+#### 3.2.1 Configure quotas
 
 This topic describes how to allocate resource quotas for a Container Registry Standard Edition instance in an organization or resource set.
 
@@ -622,7 +699,7 @@ details of Container Registry Standard Edition in the organization or resource s
 8. In the **Quota Details** panel, click **Set Quota**, configure the parameters, and then click **Save**.
 andard Edition
 
-#### Create an alert rule for a quota
+#### 3.2.2 Create an alert rule for a quota
 
 This topic describes how to create an alert rule for a quota of Container Registry Standard Edition in an organization and resource set. When the quota of an organization or a resource set reaches the preset threshold, the system notifies the administrator of the organization or resource set once a day. The system sends a notification when the quota alert is triggered for the first time every day.
 
@@ -663,7 +740,7 @@ andard Edition
 
 6. Click **OK**.
 
-#### Quota description
+#### 3.2.3 Quota description
 
 This topic describes the quotas that you can configure for Container Registry Standard Edition, calculation methods of quota usage, and inventory source.
 
@@ -676,13 +753,13 @@ This topic describes the quotas that you can configure for Container Registry St
 
 **Calculation methods of quota usage**
 
-Usage of Image Repository Quota (Units) = Number of image repositories that are created for Container Registry Standard Edition Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for Container Registry Standard Edition The quota usage is calculated based on the number of resource instances.
+Usage of Image Repository Quota (Units) = Number of image repositories that are created for Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for The quota usage is calculated based on the number of resource instances.
 
 **Inventory source**
 
 Not applicable. By default, the inventory is unlimited. andard Edition
 
-### Create a namespace
+### 3.3 Create a namespace
 
 You can create a namespace in Container Registry to organize your image repositories.
 
@@ -715,7 +792,7 @@ You can also click **Add to Configuration Pricer** to save the configuration to 
 
 When you create an image repository, you can use this namespace to organize your images. andard Edition
 
-### Delete a namespace
+### 3.4 Delete a namespace
 
 This topic describes how to delete a namespace from a Container Registry Standard Edition instance.
 
@@ -726,7 +803,7 @@ This topic describes how to delete a namespace from a Container Registry Standar
 **Actions** column.
 6. In the dialog box that appears, select **Confirm to Delete** and click **OK**.
 
-### Create an image repository
+### 3.5 Create an image repository
 
 You can create an image repository in Container Registry to upload your container images.
 
@@ -763,7 +840,7 @@ andard Edition
 After you create the image repository, click **Manage** in the **Actions** column for the repository to open its
 **Basic Information** page. This page provides instructions on how to use the image repository.
 
-### Manage image repositories
+### 3.6 Manage image repositories
 
 This topic describes how to manage image repositories of Container Registry Standard Edition instances.
 
@@ -808,7 +885,7 @@ Click **Delete**. In the dialog box that appears, select **Confirm to Delete Ima
 
 For more information, see Replicate an image.
 
-### Delete an image repository
+### 3.7 Delete an image repository
 
 This topic describes how to delete an image repository from a Container Registry Standard Edition instance.
 
@@ -819,7 +896,7 @@ This topic describes how to delete an image repository from a Container Registry
 **Actions** column.
 6. In the dialog box that appears, select **Confirm to Delete** and click **OK**.
 
-### Configure an access credential
+### 3.8 Configure an access credential
 
 Access credentials can be used to control and secure the upload and download of container images. This topic describes how to configure an access credential.
 
@@ -845,7 +922,7 @@ You can use the password or temporary token that you set to log in to the Contai
 1. On the Access Credential page, check the logon command.
 2. Run the login command and enter the logon password as prompted in the command output.
 
-### Upload and download images
+### 3.9 Upload and download images
 
 This topic describes how to upload and download images.
 
@@ -892,7 +969,7 @@ ii. Run the following command to modify the name of the image:
 sudo docker tag <ID of the image> registryDomain/<Name of the namespace>/<Name of the repository>:<Image version number>
 ```
 
-### Replicate an image
+### 3.10 Replicate an image
 
 Container Registry allows you to replicate images across data centers. This way, you can obtain the expected image from the nearest data center when you deploy workloads.
 
@@ -921,7 +998,7 @@ andard Edition
 
 On the **Image Replication** page, you can view the status of the replication task. You can click **Details** in the Actions column of the task to check the replication status of image layers.
 
-### Configure a trigger
+### 3.11 Configure a trigger
 
 Container Registry provides the trigger feature for image repositories. If you create a trigger for an image repository, a notification is pushed to you when an image is built. This facilitates the redeployment of images for applications. This topic describes how to configure a trigger.
 
@@ -970,7 +1047,7 @@ column.
 column.
 2. In the **Are you sure you want to delete the repository** message, click **OK**.
 
-### Sign container images
+### 3.12 Sign container images
 
 When you manage container images, you can use content trust to verify both the integrity and the publisher of images. Image publishers can encrypt images by using digital signatures that are stored in Container Registry.
 
@@ -1071,11 +1148,11 @@ The output shows that the image digest value is
 create resources, the following image ID must be used: **registry.acs.example.com/kritis-**
 **test/alpine:sha256:ddba4d27a7ffc3f86dd6c2f92041af252a1f23a8e742c90e6e1297bfa1bc0c45**.
 
-## Container Registry Advanced
+## 4 Container Registry Advanced Edition
 
 **Edition**
 
-### Instance overview
+### 4.1 Instance overview
 
 This topic describes how to view the information about a Container Registry Advanced Edition instance.
 
@@ -1122,9 +1199,9 @@ This topic describes how to view the information about a Container Registry Adva
 
 The **Instance settings** module is not available in the current version.
 
-### Permission management
+### 4.2 Permission management
 
-#### Create users and user groups
+#### 4.2.1 Create users and user groups
 
 You can create users and assign different roles to the users to meet different requirements for system access control as an administrator. This topic describes how to create a user and a user group.
 
@@ -1193,7 +1270,7 @@ in the **Actions** column.
 icon, and then click
 **OK**.
 
-#### Create a role and assign permissions
+#### 4.2.2 Create a role and assign permissions
 
 Container Registry uses Alibaba Cloud accounts and Resource Access Management (RAM) users for authentication. You can use RAM authorization to create custom roles, attach permission policies, and assign roles to users for permission management. This topic describes how to create a role and assign it to a user group.
 
@@ -1275,7 +1352,7 @@ After you assign a role to a user group, all users in the group inherit the perm
 **Actions** column.
 4. In the **Authorize** dialog box, select a role from the **Role Authorization** drop-down list and click **OK**.
 
-#### Enable access control for a repository
+#### 4.2.3 Enable access control for a repository
 
 You can create users and grant different permissions to the users. This way, you can control the access permissions of the users on Container Registry resources. This topic describes how to configure access control for repositories in different scenarios.
 
@@ -1507,9 +1584,9 @@ Authentication rules When you access the Container Registry API as a RAM user or
 | Queries the manifest information of an image tag | cr:GetRepositoryManifest | acs:cr:$regionid:$accountid:reposit ory/$instanceid/$namespacename/ $repositoryname |
 | Updates a trigger for an image repository | cr:UpdateWebHook | acs:cr:$regionid:$accountid:reposit ory/$instanceid/$namespacename/ $repositoryname |
 
-### Quota management
+### 4.3 Quota management
 
-#### Configure quotas
+#### 4.3.1 Configure quotas
 
 This topic describes how to allocate resource quotas for a Container Registry Advanced Edition instance in an organization or resource set.
 
@@ -1553,7 +1630,7 @@ whose resources you want to manage.
 details in the organization or resource set.
 8. In the **Quota Details** panel, click **Set Quota**, configure the parameters, and then click **Save**.
 
-#### Create an alert rule for a quota
+#### 4.3.2 Create an alert rule for a quota
 
 This topic describes how to create an alert rule for a quota of Container Registry Advanced Edition in an organization or resource set. When the quota of an organization or a resource set reaches the preset threshold, the system notifies the administrator of the organization or resource set once a day. The system sends a notification when the quota alert is triggered for the first time every day.
 
@@ -1592,7 +1669,7 @@ table.
 
 6. Click **OK**.
 
-#### Quota overview
+#### 4.3.3 Quota overview
 
 This topic describes the quotas that you can configure for Container Registry Advanced Edition, calculation methods of quota usage, and inventory source.
 
@@ -1611,7 +1688,7 @@ Usage of Apsara Stack Advanced Edition Namespace Quota (Units) = Number of names
 
 No inventory is involved. By default, the inventory is unlimited.
 
-### Create a namespace
+### 4.4 Create a namespace
 
 This topic describes how to create a namespace in an Enterprise Edition instance.
 
@@ -1641,7 +1718,7 @@ By default, pushing an image automatically creates a repository. You can disable
 | Automatic repository creation | Specifies whether to automatically create a repository when an image is pushed. If you enable this option, you can configure Immutable Image Tags and Image Acceleration. Immutable Image Tags: If you select this option, image tags other than latest in the repository cannot be overwritten. This helps ensure the consistency of image tags. Image Acceleration: Selecting this option automatically generates an accelerated image tag with the accelerated suffix for images in the _ repository. |
 | Default repository type | The default type for automatically created repositories. Can be set to public repository or private repository. |
 
-### Modify image accessibility
+### 4.5 Modify image accessibility
 
 The system allows you to modify the types of existing images and new images. This topic describes how to change the types of all images in the same namespace.
 
@@ -1654,7 +1731,7 @@ If the **Automatically Create Repository** feature is disabled, you must enable 
 6. In the dialog box that appears, select **Inventory and new images are modified** or **Add only**
 **Image modifications** based on your business requirements, and then click **OK**.
 
-### Delete a namespace
+### 4.6 Delete a namespace
 
 This topic describes how to delete a namespace in an Advanced Edition instance of Container Registry Enterprise Edition.
 
@@ -1665,9 +1742,9 @@ This topic describes how to delete a namespace in an Advanced Edition instance o
 **Actions** column.
 6. In the message that appears, click **OK**.
 
-### Helm chart management
+### 4.7 Helm chart management
 
-#### Overview of Helm charts
+#### 4.7.1 Overview of Helm charts
 
 This topic introduces Helm charts.
 
@@ -1675,7 +1752,7 @@ This topic introduces Helm charts.
 
 Kubernetes provides a unified API that you can call to define Kubernetes resources in YAML files. Kubernetes has defined a variety of resource types, such as Deployments, StatefulSets, and ConfigMaps. As the YAML-based software delivery system is constantly improved, the Cloud Native Computing Foundation (CNCF) community has developed charts and its implementation tool Helm to manage resources at a higher level. A chart is a collection of files that describe a related collection of Kubernetes resources. For example, a chart can be a collection of files that describe WordPress and MySQL resources or a collection of resource description files for an etcd cluster. Helm is a CLI tool used to manage charts and their releases.
 
-#### Create a namespace
+#### 4.7.2 Create a namespace
 
 This topic describes how to create a namespace on a Container Registry Advanced Edition instance.
 
@@ -1700,7 +1777,7 @@ You can click **Delete** in the **Operation** column of a namespace to delete th
 
 After a **namespace** is deleted, you can no longer access repositories in the namespace. Proceed with caution.
 
-#### Delete a namespace
+#### 4.7.3 Delete a namespace
 
 This topic describes how to delete a namespace on a Container Registry Advanced Edition instance.
 
@@ -1714,7 +1791,7 @@ After a namespace is deleted, you can no longer access the repositories in the n
 5. On the **Namespace** tab, click **Delete** in the **Operation** column of the namespace you want to delete.
 6. Confirm the information in the **Confirm** message and click **OK**.
 
-#### Create a chart repository
+#### 4.7.4 Create a chart repository
 
 This topic describes how to create a chart repository on a Container Registry Advanced Edition instance.
 
@@ -1738,7 +1815,7 @@ A namespace is created. For more information, see Create a namespace.
 | Description | The description of the chart repository. The description can be up to 2,000 characters in length. |
 |---|---|
 
-#### Manage chart repositories
+#### 4.7.5 Manage chart repositories
 
 This topic describes how to manage chart repositories on a Container Registry Advanced Edition instance.
 
@@ -1784,7 +1861,7 @@ To delete a chart version, click **Delete** in the **Operation** column of the v
 
 After you delete a chart file, all versions of the chart file are deleted. Proceed with caution. a. On the **Chart Management** tab, click **Delete** in the Operation column of a chart. b. Click **OK**.
 
-#### Create a synchronization source
+#### 4.7.6 Create a synchronization source
 
 This topic describes how to create and manage synchronization sources.
 
@@ -1827,7 +1904,7 @@ i. In the list of synchronization sources, find the target synchronization sourc
 **Actions** column.
 ii. In the confirmation dialog box, click **OK**. Deleting a synchronization source does not remove Chart packages already synchronized to your instance. It only stops future synchronizations.
 
-#### Add a chart whitelist
+#### 4.7.7 Add a chart whitelist
 
 Use an IP whitelist for access control to secure your chart repository. This ensures that only trusted IP addresses can access your Helm charts.
 
@@ -1843,7 +1920,7 @@ Only IP addresses on the whitelist can access the instance's Helm chart reposito
 
 To delete an IP address entry from the whitelist, click **Delete** in the **Actions** column and click **OK** in the confirmation dialog box.
 
-### Create a repository
+### 4.8 Create a repository
 
 This topic shows you how to create a repository in an Advanced Edition instance.
 
@@ -1874,7 +1951,7 @@ You can also click **Add to Configuration Pricer** to save the configuration to 
 | Summary | Enter a summary for the repository. |
 | Description | Enter a description. The maximum length is 2,000 characters. |
 
-### Manage image repositories
+### 4.9 Manage image repositories
 
 This topic describes how to manage image repositories in a Container Registry Advanced Edition instance.
 
@@ -1928,7 +2005,7 @@ Click **Layer Information** and view the layer information, including the size a
 2. On the **Image Synchronization** page, you can perform the following operations:
 Click **Create Copy Task**. In the **Select Destination Repository for Replication** dialog box, configure the **Image Tag to be Copied**, **Destination Repository**, and **Overwrite Image** parameters. Then, click **OK**. For more information, see Replicate images between instances that belong to the same account. Find the replication task that you want to view and click **Details** in the **Actions** column. You can view the path from the source to the destination and the replication status of the involved artifacts and layers, such as **Image Layer Digest**, **Image Size**, and **Replication Status**.
 
-### Delete a repository
+### 4.10 Delete a repository
 
 This topic describes how to delete a repository in an Enterprise Edition instance. The process includes moving a repository to the Recycle Bin, restoring it, and permanently deleting it.
 
@@ -1960,7 +2037,7 @@ in the **Actions** column.
 
 This action is irreversible. When you permanently delete a repository, its image data and database records are also permanently deleted. Proceed with caution.
 
-### Export image information
+### 4.11 Export image information
 
 This topic describes how to export the summary information about the images in a Container Registry Advanced Edition instance.
 
@@ -1976,7 +2053,7 @@ icon in the upper-right corner of the image list.
 **Download** to export the data as an Excel file.
 After the download is complete, you can view the exported file on your on-premises machine.
 
-### Configure an access credential
+### 4.12 Configure an access credential
 
 You can configure an access credential to set a password that you use to log in to a Container Registry Advanced Edition instance. This method ensures that you can control the upload and download of container images. This topic describes how to configure an access credential.
 
@@ -2000,7 +2077,7 @@ parameters. Then, click **OK**.
 7. **Optional.** For more information about how to set a temporary token, see **GetAuthorizationToken** of
 **API Reference for Advanced Edition** in the **Container Registry Developer Guide**.
 
-### Upload and download images
+### 4.13 Upload and download images
 
 This topic describes how to upload an image to and download an image from a Container Registry Advanced Edition instance.
 
@@ -2050,7 +2127,7 @@ Download an image a. On the **Image Details** page, click **Download** in the **
 
 Use this download feature only when you cannot use the standard Docker API to download images. This feature is not suitable for large-sized images. Do not use this feature to pull all images. Use the standard Docker API if possible. The download task is executed in the background. The validity period of the generated package is 24 hours. c. After the image package is generated, click **Download** in the **Download Info** column to download the package to your on-premises machine. d. In the **New Download Task** dialog box, click **Download**. After the package is downloaded, you can view it on the on-premises machine.
 
-### Configure a trigger
+### 4.14 Configure a trigger
 
 Container Registry provides the trigger feature for image repositories. If you create a trigger for an image repository, a notification is pushed to you when an image is built. This facilitates the redeployment of images for applications. This topic describes how to configure a trigger.
 
@@ -2094,7 +2171,7 @@ column.
 column.
 2. In the **Are you sure you want to delete the repository** message, click **OK**.
 
-### Synchronize instances in the
+### 4.15 Synchronize instances in the same account
 
 **same account**
 
@@ -2150,7 +2227,7 @@ destination by selecting the region, product type, destination instance, namespa
 **succeeded** and the image appears in the destination instance, the synchronization is successful.
 In the **Actions** column for the task, click **Details** to view the synchronization path and the status of artifacts and layers, including the **layer digest**, **Image size**, and **Sync status**.
 
-### Configure a repository to be
+### 4.16 Configure a repository to be immutable
 
 **immutable**
 
@@ -2192,7 +2269,7 @@ pushed in Step 3. The push is successful. The image overwrites the image that yo
 6. Push another image whose tag is the same as the tag of the image you pushed in Step 1.
 The push is successful. The image overwrites the image that is pushed in Step 1.
 
-### Delete image tags
+### 4.17 Delete image tags
 
 Container Registry allows you to delete multiple image tags of a Container Registry instance at a time. This topic describes how to delete multiple image tags at a time by configuring a tag retention policy.
 
@@ -2233,7 +2310,7 @@ On the **Version Management** page, you can perform the following operations on 
 Delete a retention policy: Find the retention policy that you want to delete and click **Delete** in the
 **Operation** column. In the message that appears, click **OK**.
 
-### Use the aliyun-acr-credential-
+### 4.18 Use the aliyun-acr-credential-helper component to pull images without a secret
 
 **helper component to pull images**
 
@@ -2348,7 +2425,7 @@ data:
       - instanceId: "cri-xxxx"
 ```
 
-### Sign container images
+### 4.19 Sign container images
 
 To prevent man-in-the-middle ((MITM)) attacks and the update and running of invalid images, Container Registry automatically signs images in specified namespaces. After an image is pushed to Container Registry, Container Registry automatically signs the image based on the matched signing rules. This ensures that your container images are trusted.
 
@@ -2470,20 +2547,17 @@ For more information about image signature verification, see **kritis-validation
 
 You can use kritis-validation-hook to automatically verify image signatures in ACK clusters. You can set a policy to block image deployment if image signatures fail the verification. We recommend that you use this method. You can also verify image signatures in Container Registry by using the signature verification feature of **KMS**.
 
-## Container Registry Multi-
+## 5 Container Registry Multi-instance Edition
 
 **instance Edition**
 
-### Create an instance
+### 5.1 Create an instance
 
 Before you can use the Container Registry multi-instance edition, you must first create an instance to host and distribute your cloud-native artifacts.
 
 **Prerequisites**
 
 Ensure you have granted the Container Registry multi-instance edition permission to access your OSS Bucket. For more information, see Configure RAM access control for OSS Buckets.
-
-**Create an instance**
-
 3. On the **Instance List** page, click **Create Instance**.
 4. On the **Create Instance** page, configure the following parameters, then click **Submit**.
 In the **Quota Overview** section on the right, you can review the current configuration and click a parameter to navigate to the corresponding setting. To adjust quotas, click **Manage** next to
@@ -2545,7 +2619,7 @@ Based on your business needs, you can follow the steps above to create multiple 
 
 **Instance settings** and **Component settings** are not currently available.
 
-### Delete an instance
+### 5.2 Delete an instance
 
 This topic describes how to delete a Container Registry Multi-instance Edition instance.
 
@@ -2559,9 +2633,9 @@ All namespaces under the instance are deleted. For more information, see Delete 
 **Delete** in the **Operation** column.
 4. In the message that appears, click **OK**.
 
-### Permission management
+### 5.3 Permission management
 
-#### Create a user and a user group
+#### 5.3.1 Create a user and a user group
 
 You can create users and assign different roles to the users to meet different requirements for system access control as an administrator. This topic describes how to create a user and a user group.
 
@@ -2630,7 +2704,7 @@ in the **Actions** column.
 icon, and then click
 **OK**.
 
-#### Create a role and assign permissions
+#### 5.3.2 Create a role and assign permissions
 
 Container Registry uses Alibaba Cloud accounts and Resource Access Management (RAM) users for authentication. You can use RAM authorization to create custom roles, attach permission policies, and assign roles to users for permission management. This topic describes how to create a role and assign it to a user group.
 
@@ -2712,7 +2786,7 @@ After you assign a role to a user group, all users in the group inherit the perm
 **Actions** column.
 4. In the **Authorize** dialog box, select a role from the **Role Authorization** drop-down list and click **OK**.
 
-#### Enable access control for a repository
+#### 5.3.3 Enable access control for a repository
 
 You can create users and grant different permissions to the users. This way, you can control the access of the users to Container Registry resources. This topic describes how to configure access control for repositories in different scenarios.
 
@@ -2944,7 +3018,7 @@ Authentication rules When you access the Container Registry API as a RAM user or
 | Queries the manifest information of an image tag | cr:GetRepositoryManifest | acs:cr:$regionid:$accountid:reposit ory/$instanceid/$namespacename/ $repositoryname |
 | Updates a trigger for an image repository | cr:UpdateWebHook | acs:cr:$regionid:$accountid:reposit ory/$instanceid/$namespacename/ $repositoryname |
 
-#### Use RAM to enable access to OSS buckets
+#### 5.3.4 Use RAM to enable access to OSS buckets
 
 Container Registry Multi-instance Edition hosts container images in Object Storage Service (OSS) buckets. You need to authorize Container Registry Multi-instance Edition to access OSS buckets.
 
@@ -3117,9 +3191,9 @@ The policy of the RAM role grants Container Registry Multi-instance Edition mana
 
 `}` `]` `}`
 
-### Quota management
+### 5.4 Quota management
 
-#### Configure quotas
+#### 5.4.1 Configure quotas
 
 This topic describes how to allocate resource quotas for a Container Registry Multi-instance Edition instance in an organization or resource set.
 
@@ -3163,7 +3237,7 @@ whose resources you want to manage.
 details in the organization or resource set.
 8. In the **Quota Details** panel, click **Set Quota**, configure the parameters, and then click **Save**.
 
-#### Create a quota alert rule
+#### 5.4.2 Create a quota alert rule
 
 This topic describes how to create an alert rule for a quota of Container Registry Multi-instance Edition in an organization or resource set. When the quota of an organization or a resource set reaches the preset threshold, the system notifies the administrator of the organization or resource set once per day. The system sends a notification when the quota alert is triggered for the first time every day.
 
@@ -3198,7 +3272,7 @@ table.
 
 6. Click **OK**.
 
-#### Quota overview
+#### 5.4.3 Quota overview
 
 This topic describes the quotas that you can configure for Container Registry Multi-instance Edition, calculation methods of quota usage, and inventory source.
 
@@ -3216,7 +3290,7 @@ Usage of Apsara Stack Multi-instance Edition instance quota (units) = Number of 
 
 No inventory is involved. By default, the inventory is unlimited.
 
-### Create a namespace
+### 5.5 Create a namespace
 
 This topic describes how to create a namespace in an Enterprise Edition instance.
 
@@ -3245,7 +3319,7 @@ By default, when you push an image, the system automatically creates a repositor
 | Automatically create repository | Specifies whether to automatically create a repository when an image is pushed. If you enable this option, you can configure Immutable Image Tags and Image Acceleration. Immutable Image Tags: If you select this option, image tags other than latest in the repository cannot be overwritten. This helps ensure the consistency of image tags. Image Acceleration: Selecting this option automatically generates an accelerated image tag with the accelerated suffix for images in the _ repository. |
 | Default repository type | Supports Public Repository and Private Repository. |
 
-### Batch modify the accessibility of
+### 5.6 Batch modify the accessibility of images
 
 **images**
 
@@ -3260,7 +3334,7 @@ If the **Automatically Create Repository** feature is disabled, you must enable 
 6. In the dialog box that appears, select **Inventory and new images are modified** or **Add only**
 **Image modifications** based on your business requirements, and then click **OK**.
 
-### Delete a namespace
+### 5.7 Delete a namespace
 
 This topic describes how to delete a namespace from a Container Registry Multi-instance Edition instance.
 
@@ -3271,7 +3345,7 @@ This topic describes how to delete a namespace from a Container Registry Multi-i
 **Actions** column.
 6. In the message that appears, click **OK**.
 
-### Create an image repository
+### 5.8 Create an image repository
 
 This topic describes how to create an image repository in an Enterprise Edition instance.
 
@@ -3299,7 +3373,7 @@ Alternatively, click **Add to Quote** to save the configuration for later purcha
 | Summary | Enter a summary for the image repository. |
 | Description | Enter a description for the image repository (up to 2,000 characters). |
 
-### Manage image repositories
+### 5.9 Manage image repositories
 
 This topic describes how to manage image repositories in a Container Registry Multi-instance Edition instance.
 
@@ -3353,7 +3427,7 @@ Click **Layer Information** and view the layer information, including the size a
 2. On the **Image Synchronization** page, you can perform the following operations:
 Click **Create Copy Task**. In the **Select Destination Repository for Replication** dialog box, configure the **Image Tag to be Copied**, **Destination Repository**, and **Overwrite Image** parameters. Then, click **OK**. For more information, see Replicate images between instances that belong to the same account. Find the replication task that you want to view and click **Details** in the **Actions** column. You can view the path from the source to the destination and the replication status of the involved artifacts and layers, such as **Image Layer Digest**, **Image Size**, and **Replication Status**.
 
-### Delete an image repository
+### 5.10 Delete an image repository
 
 This topic describes how to delete image repositories in an Enterprise Edition instance, including how to restore a repository from the recycle bin and how to permanently delete it.
 
@@ -3386,7 +3460,7 @@ in the **Actions** column.
 
 This action is irreversible. When you permanently delete a repository, its image data and database records are also permanently deleted. Proceed with caution.
 
-### Export image information
+### 5.11 Export image information
 
 This topic describes how to export the summary information about images in an instance of Container Registry Multi-instance Edition.
 
@@ -3403,7 +3477,7 @@ icon in the upper-right corner of the image list.
 **Download** to export the data as an Excel file.
 After the download is complete, you can view the exported file on your on-premises machine.
 
-### Configure an access credential
+### 5.12 Configure an access credential
 
 You can configure an access credential to set a password that you use to log in to a Container Registry Multi-instance Edition instance. This method ensures that you securely control the upload and download of container images. This topic describes how to configure an access credential.
 
@@ -3427,7 +3501,7 @@ parameters. Then, click **OK**.
 7. **Optional.** For more information about how to set a temporary token, see **GetAuthorizationToken** of
 **API Reference for Advanced Edition** in the **Container Registry Developer Guide**.
 
-### Configure access control policies
+### 5.13 Configure access control policies
 
 You can configure access control policies to enable access to Container Registry domain names over the Internet. By configuring a public IP address whitelist, you can restrict only specified clients to access your image repositories over the Internet. This improves security. This topic describes how to configure access control policies.
 
@@ -3453,7 +3527,7 @@ access Container Registry domain names and the remarks, and then click **OK**. Y
 4. Refer to the step descriptions on the **Image Instructions** tab of the **Basic Information** page. Log in
 to a public IP address in the public IP address whitelist. Then, upload and download an image. For more information, see Upload and download images. A successful image upload or download indicates that the public IP address whitelist is successfully configured. Replace <Repository address> in the command with the domain name obtained in Step 1.
 
-### Upload and download images
+### 5.14 Upload and download images
 
 This topic describes how to upload an image to and download an image from a Container Registry Multiinstance Edition instance.
 
@@ -3503,7 +3577,7 @@ Download an image a. On the **Image Details** page, click **Download** in the **
 
 Use this download feature only when you cannot use the standard Docker API to download images. This feature is not suitable for large-sized images. Do not use this feature to pull all images. Use the standard Docker API if possible. The download task is executed in the background. The validity period of the generated package is 24 hours. c. After the image package is generated, click **Download** in the **Download Info** column to download the package to your on-premises machine. d. In the **New Download Task** dialog box, click **Download**. After the package is downloaded, you can view it on the on-premises machine.
 
-### Configure a trigger
+### 5.15 Configure a trigger
 
 Container Registry provides the trigger feature for image repositories. If you create a trigger for an image repository, a notification is pushed to you when an image is built. This facilitates the redeployment of images for applications. This topic describes how to configure a trigger.
 
@@ -3551,7 +3625,7 @@ column.
 column.
 2. In the **Confirm Deletion** message, click **OK**.
 
-### Synchronize instances within the
+### 5.16 Synchronize instances within the same account
 
 **same account**
 
@@ -3615,7 +3689,7 @@ the transfer status of specific layers. To retry the task, click **Trigger Again
 8. In the **Select Destination Repository** dialog box, select a **Version to Replicate**. Configure the
 destination by specifying its region, product type, destination instance name, namespace, repository, and image version. Select whether to **Overwrite Existing Image with the Same Name** and then click **OK**. You can synchronize images to an Enterprise Edition or Advanced Edition instance in the same or a different region. If the source and destination instances are the same, you can synchronize images only between different namespaces. The synchronization task starts immediately after it is created. On the **Image Synchronization** page, you can view the status of the synchronization task. If the status is **Succeeded** and the image is available in the destination instance, the synchronization is successful. In the **Actions** column of the synchronization task, click **Details** to view the synchronization path from source to destination and the synchronization status of the artifacts and layers involved. The details include **Image Layer Digest**, **Image Size**, and **Synchronization Status**.
 
-### Configure a repository to be
+### 5.17 Configure a repository to be immutable
 
 **immutable**
 
@@ -3657,7 +3731,7 @@ Step 3. The push is successful. The image overwrites the image that you pushed i
 6. Push another image whose tag is the same as the tag of the image you pushed in Step 1.
 The push is successful. The image overwrites the image that is pushed in Step 1.
 
-### Delete image tags
+### 5.18 Delete image tags
 
 Container Registry allows you to delete multiple image tags of a Container Registry instance at a time. This topic describes how to delete multiple image tags at a time by configuring a tag retention policy.
 
@@ -3698,7 +3772,7 @@ On the **Version Management** page, you can perform the following operations on 
 Delete a retention policy: Find the retention policy that you want to delete and click **Delete** in the
 **Operation** column. In the message that appears, click **OK**.
 
-### Use the aliyun-acr-credential-
+### 5.19 Use the aliyun-acr-credential-helper component to pull images without using a secret
 
 **helper component to pull images**
 
@@ -3813,7 +3887,7 @@ data:
       - instanceId: "cri-xxxx"
 ```
 
-### Sign container images
+### 5.20 Sign container images
 
 To prevent man-in-the-middle (MITM) attacks and the update and running of invalid images, Container Registry automatically signs images in specified namespaces. After an image is pushed to Container Registry, Container Registry automatically signs the image based on the matched signing rules. This ensures that your container images are trusted.
 

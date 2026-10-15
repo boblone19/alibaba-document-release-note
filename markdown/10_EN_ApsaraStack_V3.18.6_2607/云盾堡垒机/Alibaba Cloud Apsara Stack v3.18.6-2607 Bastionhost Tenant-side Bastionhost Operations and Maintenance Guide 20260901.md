@@ -3,18 +3,43 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Tenant-side Bastionh
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 33
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Tenant-side Bastionhost Operations and Maintenance Guide 20260901.pdf"
+source_pdf: "5ff03e7e56df3475_Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Tenant-side Bastionhost Operations and Maintenan"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E5%A0%A1%E5%9E%92%E6%9C%BA/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Bastionhost%20Tenant-side%C2%A0Bastionhost%20Operations%20and%20Maintenance%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Bastionhost Tenant-side Bastionhost Operations and Maintenance Guide 20260901
 
-## Cloud-native Bastionhost
+## Table of Contents
+
+- 1 Cloud-native Bastionhost O&M Guide
+  - 1.1 Protocol versions that support O&M
+    - 1.1.1 Supported O&M client versions by protocol
+  - 1.2 Web-based O&M operations
+    - 1.2.1 Log on to the O&M audit system
+    - 1.2.2 Install Bastionhost Assistant
+    - 1.2.3 Specify an O&M tool
+    - 1.2.4 Host O&M
+      - 1.2.4.1 O&M of hosts that use SSH
+      - 1.2.4.2 O&M of hosts that use RDP
+    - 1.2.5 Database O&M
+      - 1.2.5.2 Tunnel O&M
+  - 1.3 C/S O&M operations
+    - 1.3.1 Preparations
+    - 1.3.2 Host O&M
+      - 1.3.2.1 O&M of hosts that use SSH, Telnet, and RLogin
+      - 1.3.2.2 O&M of hosts that use RDP
+      - 1.3.2.3 O&M of hosts that use SFTP
+      - 1.3.2.4 O&M of hosts that use FTP
+  - 1.4 Host logon O&M
+    - 1.4.1 Log on to a host by using menus for a CLI terminal application
+    - 1.4.2 Log on to a host by using menus for a remote desktop connection application
+
+## 1 Cloud-native Bastionhost O&M Guide
 
 **O&M Guide**
 
-### Protocol versions that support
+### 1.1 Protocol versions that support O&M
 
 **O&M**
 
@@ -54,7 +79,7 @@ This topic describes the protocol versions supported by Bastionhost for O&M.
 | Highgo | 4.5.8 | Only v4.5.8 is supported because Highgo is not open source. |
 |---|---|---|
 
-#### Supported O&M client versions by
+#### 1.1.1 Supported O&M client versions by protocol
 
 **protocol**
 
@@ -149,11 +174,11 @@ This topic describes the O&M client versions supported by each protocol.
 | HighGo | Windows | HGDB Developer: 6.1 DBeaver: 24 | Not supported |
 |   | Linux x86 | HGDB Developer: 6.1 |   |
 
-### Web-based O&M operations
+### 1.2 Web-based O&M operations
 
 After an administrator grants permissions on a host to an O&M engineer, the O&M engineer can log on to the host from the web page of the O&M audit system to perform O&M operations. Only O&M engineers of Windows terminals can use the preceding method to perform O&M operations.
 
-#### Log on to the O&M audit system
+#### 1.2.1 Log on to the O&M audit system
 
 This topic describes how to log on to the O&M audit system.
 1. Log on to the O&M audit system by using a browser and enter the username, password,
@@ -161,7 +186,7 @@ and verification code.
 2. Click **Log On** to enter the system. Change the password if it is the first time you log on to
 the O&M audit system.
 
-#### Install Bastionhost Assistant
+#### 1.2.2 Install Bastionhost Assistant
 
 This topic describes how to install Bastionhost Assistant.
 1. In the upper-right corner of the Control Panel page, move the pointer over the username
@@ -172,7 +197,7 @@ and click Tool Download to go the Tool Download page.
 
 Bastionhost Assistant is a logon tool that you need to install if you want to call an onpremises O&M client tool based on a web page. Make sure that you are not blocked by antivirus software.
 
-#### Specify an O&M tool
+#### 1.2.3 Specify an O&M tool
 
 This topic provides an example on how to specify Xshell as an O&M tool.
 1. Click **SSH**. On the configuration page that appears, set Client Program to Xshell and
@@ -184,45 +209,45 @@ Message for successful configuration:
 4. Click **OK**. Xshell is specified as an O&M tool.
 After the configuration is complete, close the page.
 
-#### Host O&M
+#### 1.2.4 Host O&M
 
 This topic provides an example on how to perform O&M operations on hosts that use Remote Desktop Protocol (RDP) or SSH.
 
-##### O&M of hosts that use SSH
+##### 1.2.4.1 O&M of hosts that use SSH
 
 This topic describes O&M of hosts that use SSH.
 1. Choose **O&M** > **Host O&M** and find hosts that use SSH.
 2. Open the **on-premises client** to access the desired host on which you want to perform
 O&M operations.
 
-##### O&M of hosts that use RDP
+##### 1.2.4.2 O&M of hosts that use RDP
 
 This topic describes O&M of hosts that use Remote Desktop Protocol (RDP).
 1. Choose **O&M** > **Host O&M** and find hosts that use RDP.
 2. Open the **H5 client** to access the desired host on which you want to perform O&M
 operations.
 
-#### Database O&M
+#### 1.2.5 Database O&M
 
-##### BS O&M
+##### 1.2.5.1 BS O&M
 
 This topic describes BS O&M of hosts that use MySQL, Oracle, SQL Server, and DB2 protocols.
 1. Choose **O&M** > **Host O&M** and find hosts that use the MySQL protocol.
 2. Open the **on-premises client** to access the desired host on which you want to perform
 O&M operations.
 
-##### Tunnel O&M
+##### 1.2.5.2 Tunnel O&M
 
 This topic describes tunnel O&M of hosts that use MySQL and Oracle protocols.
 1. Open the Navicat client and create a MySQL connection. On the General tab of the window
 that appears, enter the connection name and information about the host that uses the MySQL protocol. On the SSH tab of the same window, select **Use SSH Channel** and enter information such as the IP address, username, and password of the bastion host.
 2. Click OK to save the configurations and double-click the tag for a MySQL connection.
 
-### C/S O&M operations
+### 1.3 C/S O&M operations
 
 O&M engineers log on to the O&M audit system by using an on-premises client tool and then access the desired host.
 
-#### Preparations
+#### 1.3.1 Preparations
 
 This topic describes the preparations for C/S O&M.
 
@@ -252,9 +277,9 @@ For example, you can install Xftp.
 
 Default ports of the O&M audit system: Port 60022 is used to access hosts that use SSH, Telnet, and SFTP. Port 63389 is used to access hosts that use RDP. Port 60021 is used to access hosts that use FTP.
 
-#### Host O&M
+#### 1.3.2 Host O&M
 
-##### O&M of hosts that use SSH, Telnet, and
+##### 1.3.2.1 O&M of hosts that use SSH, Telnet, and RLogin
 
 **RLogin**
 
@@ -272,7 +297,7 @@ logging on to the host.
 6. After you press the Enter key, you enter the page on which you can perform O&M
 operations on the host.
 
-##### O&M of hosts that use RDP
+##### 1.3.2.2 O&M of hosts that use RDP
 
 This topic provides an example on how to use a remote desktop connection tool Microsoft Terminal Server Client (MSTSC) to perform O&M operations on hosts that use Remote Desktop Protocol (RDP).
 1. Open the **Start** menu on your Windows computer, enter mstsc in the Run input box, and
@@ -294,7 +319,7 @@ for logging on to the host.
 7. After you press the Enter key, you can enter the page on which you can perform O&M
 operations on the host.
 
-##### O&M of hosts that use SFTP
+##### 1.3.2.3 O&M of hosts that use SFTP
 
 This topic provides an example on how to use WinSCP to perform O&M operations on hosts that use Secure File Transfer Protocol (SFTP).
 1. Open the WinSCP tool. In the logon window of the tool, enter the IP address, port number
@@ -303,7 +328,7 @@ This topic provides an example on how to use WinSCP to perform O&M operations on
 3. Find the desired host and double-click the host. You can access the directories of the host
 and transfer files.
 
-##### O&M of hosts that use FTP
+##### 1.3.2.4 O&M of hosts that use FTP
 
 This topic provides an example on how to use Xftp to perform O&M operations on hosts that use FTP.
 1. O&M engineers can go to the web page of a bastion host by using a browser. In the upper-
@@ -318,9 +343,9 @@ password. This password is used to log on to Bastionhost to perform C/S O&M oper
 5. Find the desired host and double-click the host. You can access the directories of the host
 and transfer files.
 
-### Host logon O&M
+### 1.4 Host logon O&M
 
-#### Log on to a host by using menus for a
+#### 1.4.1 Log on to a host by using menus for a CLI terminal application
 
 **CLI terminal application**
 
@@ -338,7 +363,7 @@ desired host.
 4. After you press the Enter key, you enter the page on which you can perform O&M
 operations on the host.
 
-#### Log on to a host by using menus for a
+#### 1.4.2 Log on to a host by using menus for a remote desktop connection application
 
 **remote desktop connection application**
 

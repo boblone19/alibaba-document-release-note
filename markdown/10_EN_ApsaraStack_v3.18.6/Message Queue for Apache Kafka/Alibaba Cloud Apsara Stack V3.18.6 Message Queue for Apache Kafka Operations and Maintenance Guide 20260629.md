@@ -3,22 +3,56 @@ title: "Message Queue for Apache Kafka Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 44
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "324cf613f463ded8_Alibaba Cloud Apsara Stack V3.18.6 Message Queue for Apache Kafka Operations and Maintenance Guide 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97Kafka%E7%89%88%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Message%20Queue%20for%20Apache%20Kafka%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Message Queue for Apache Kafka Operations and Maintenance Guide
 
-## Overview
+## Table of Contents
 
-You must perform various maintenance operations on ApsaraMQ for Kafka to ensure its stability and availability. ApsaraMQ for Kafka supports the following maintenance operations: Routine maintenance Routine inspection r Guide
+- 1 Overview
+- 2 Kafka Operations Console User Guide
+  - 2.1 Log in to the Kafka Operations Console
+  - 2.2 Overview
+  - 2.3 Instance list
+  - 2.4 Broker list
+  - 2.5 Metadata management
+  - 2.6 Upgrade a cluster
+- 3 Routine maintenance
+  - 3.1 Pod maintenance
+    - 3.1.1 Query a list of pods
+    - 3.1.2 Query the information about a pod
+    - 3.1.3 Query the logs of a pod
+    - 3.1.4 Restart a Pod
+    - 3.1.5 Query the information about PVs and PVCs
+    - 3.1.6 FAQ
+  - 3.2 Process maintenance
+    - 3.2.1 Query the metric information of brokers
+    - 3.2.2 View log information
+    - 3.2.3 Query the status of a topic
+    - 3.2.4 Query the status of a consumer group
+    - 3.2.5 Query the data of ZooKeeper
+    - 3.2.6 Update the configurations of a topic
+    - 3.2.7 FAQ
+  - 3.3 Other maintenance operations
+    - 3.3.1 Evaluate the capacity of a cluster
+- 4 Routine inspection
+  - 4.1 Inspect the status of pods
+  - 4.2 Inspect the resource availability
+  - 4.3 Inspect the service availability
+  - 4.4 Inspect a physical server after a restart
 
-## Kafka Operations Console
+## 1 Overview
+
+You must perform various maintenance operations on ApsaraMQ for Kafka to ensure its stability and availability. ApsaraMQ for Kafka supports the following maintenance operations: r Guide
+
+## 2 Kafka Operations Console User Guide
 
 **User Guide**
 
-### Log in to the Kafka Operations
+### 2.1 Log in to the Kafka Operations Console
 
 **Console**
 
@@ -32,7 +66,7 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 5. In the top navigation bar, choose **Product Operation > Middleware > Kafka**
 **Operations Console**.
 
-### Overview
+### 2.2 Overview
 
 This topic describes how to query the metrics of ApsaraMQ for Kafka.
 1. Log in to the Kafka Operations Console.
@@ -52,7 +86,7 @@ r Guide
 | Alarm Statistics | This section displays the total number of alerts with different severity levels, such as P1 Critical, P2 Major, P3 Minor, and P4 Warning. |
 | Last 5 alarm records | This section displays the most recent five alert records, including the alert item, severity, and alert time. Click View more to go to the Alert List page. On this page, you can view the alert information, including real-time alerts that are not handled and historical alerts that are handled. |
 
-### Instance list
+### 2.3 Instance list
 
 This topic describes how to view, configure, and diagnose instances.
 1. Log in to the Kafka Operations Console.
@@ -76,7 +110,7 @@ r Guide
 | Version Number | The Kafka version used by the instance. |
 | Operation | Click View to go to the Broker Management page. You can view the information about the brokers on the instance. Click Configuration. In the Instance configuration panel, you can view the keys and values of the current instance. Click Diagnosis to view the diagnostic report of the instance. In the Diagnostic Report dialog box, click View Details in the Operation column. The detailed diagnostic information is displayed in the JSON format. |
 
-### Broker list
+### 2.4 Broker list
 
 This topic describes how to view the detailed information about a broker.
 1. Log in to the Kafka Operations Console.
@@ -113,7 +147,7 @@ r Guide
 |---|---|
 | Process Information | Displays the process ID, username, process name, CPU usage, memory usage, status, and number of threads. |
 
-### Metadata management
+### 2.5 Metadata management
 
 On the Metadata Management page, you can use **ZooKeeper** to view and manage metadata structures of ApsaraMQ for Kafka.
 1. Log in to the Kafka Operations Console.
@@ -132,7 +166,7 @@ middleware components in ZooKeeper. ApsaraMQ for Kafka middleware components inc
 
 a. Do not modify ZooKeeper data in the production environment. This may cause service interruptions. b. If you delete a node, the normal operation of ApsaraMQ for Kafka is affected. Proceed with caution. Click **Edit node** to modify the JSON data of the node. This operation can be performed only in the environments that support writing. Click **Delete Node** to delete the ZooKeeper node.
 
-### Upgrade a cluster
+### 2.6 Upgrade a cluster
 
 r Guide On the **Cluster Upgrade** page, you can manage key components such as Broker, Connect, and Replicator in a visualized manner.
 
@@ -158,11 +192,11 @@ column. In the Upgrade History panel, you can view the information about the clu
 4. In the upgrade history list, click **Details** in the **Operation** column to view information such
 as basic information, image changes, and upgrade process.
 
-## Routine maintenance
+## 3 Routine maintenance
 
-### Pod maintenance
+### 3.1 Pod maintenance
 
-#### Query a list of pods
+#### 3.1.1 Query a list of pods
 
 This topic describes how to query a list of pods in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -174,7 +208,7 @@ alibaba-kafka-autotest-***** 0/1 Completed 0 5h14m 10.**.*.** a*******8.cloud.b*
 
 In most cases, the kafka-cluster cluster has three pods, the operator cluster has only one pod, and the manager cluster has one or two pods. The number of pods varies based on the deployment environment. In normal cases, pods are in the Running state.
 
-#### Query the information about a pod
+#### 3.1.2 Query the information about a pod
 
 If an exception occurs during the deployment of a pod, you can query the information about the pod in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -390,7 +424,7 @@ Events: <none>
 
 In most cases, the value of the Events parameter is <none>.
 
-#### Query the logs of a pod
+#### 3.1.3 Query the logs of a pod
 
 This topic describes how to query the logs of a pod in ApsaraMQ for Kafka. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -404,7 +438,7 @@ This topic describes how to query the logs of a pod in ApsaraMQ for Kafka. The i
 {"level":"info","ts":1598777607.4786668,"logger":"controller_kafka","msg":"Reconcile Kafka......","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-priv ate-release-alibaba-kafka","RequestID":1598777607478639249} {"level":"info","ts":1598777607.4789321,"logger":"controller_kafka","msg":"reconcileClu erStatus expire size:3, current size:3","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-private-r elease-alibaba-kafka","RequestID":1598777607478639249} {"level":"info","ts":1598777608.3835506,"logger":"controller_kafka","msg":"Reconcile Kafka......","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-priv ate-release-alibaba-kafka","RequestID":1598777608383517127} {"level":"info","ts":1598777608.3838317,"logger":"controller_kafka","msg":"reconcileClu erStatus expire size:3, current size:3","Request.Namespace":"default","Request.Name":"alibaba-kafka-cluster-private-r elease-alibaba-kafka","RequestID":1598777608383517127}
 ```
 
-#### Restart a Pod
+#### 3.1.4 Restart a Pod
 
 This topic describes how to restart a Pod for Message Queue for Apache Kafka.
 
@@ -424,7 +458,7 @@ Pods cannot be restarted directly. If a Pod becomes abnormal, first try restarti
 | kubectl delete pod alibaba-kafka-cluster-private-paas-default-0 |   |   |
 |   |   | . |
 
-#### Query the information about PVs and
+#### 3.1.5 Query the information about PVs and PVCs
 
 **PVCs**
 
@@ -497,7 +531,7 @@ yodaplugin.csi.alibabacloud.com
 Finalizers: [kubernetes.io/pvc-protection] Capacity: 90Gi Access Modes: RWO VolumeMode: Filesystem Events: <none> Mounted By: alibaba-kafka-cluster-multi-alibaba-kafka-0
 ```
 
-#### FAQ
+#### 3.1.6 FAQ
 
 This topic describes common issues with pod operation and maintenance.
 
@@ -554,9 +588,9 @@ i. Run `kubectl exec -it zk-middleware-0 bash` to enter the ZooKeeper container.
 6. Redeploy Message Queue for Apache Kafka:
 i. In the new_kafka.yaml file, remove the `privileged: true` line. ii. Run `kubectl create -f new_kafka.yaml` to redeploy Message Queue for Apache Kafka.
 
-### Process maintenance
+### 3.2 Process maintenance
 
-#### Query the metric information of
+#### 3.2.1 Query the metric information of brokers
 
 **brokers**
 
@@ -706,7 +740,7 @@ emoryUsage_Used_Mb 80.63 null null| --------------------------------------------
 |   |   | java -jar kafka- |   |
 |   | pkgs/KafkaMetricChecker.jar |   |   |
 
-#### View log information
+#### 3.2.2 View log information
 
 This topic describes how to view log information for ApsaraMQ for Kafka. You can also use the **Log Query** feature in **Log Center** on the Apsara Uni-manager Operations Console to query and analyze Kafka logs. For more information, see **Apsara Uni-**
 
@@ -732,7 +766,7 @@ commercial.log controller.log kafka-authorizer.log kafka-request.log kafka-reque
 
 6. Run the `cat <filename>` command to view the information in a specific log file.
 
-#### Query the status of a topic
+#### 3.2.3 Query the status of a topic
 
 This topic describes how to query the status of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -790,7 +824,7 @@ Isr: 1003,1002,1001
 Isr: 1003,1002,1001
 ```
 
-#### Query the status of a consumer group
+#### 3.2.4 Query the status of a consumer group
 
 This topic describes how to query the status of a consumer group. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -847,7 +881,7 @@ test 2 14161 16509 2348 -
 -               -
 ```
 
-#### Query the data of ZooKeeper
+#### 3.2.5 Query the data of ZooKeeper
 
 This topic describes how to query the data of ZooKeeper. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -910,7 +944,7 @@ After you query the data of ZooKeeper, run the **quit** command to exit ZooKeepe
 Quitting... 2020-09-01 11:45:05,123 [myid:] - INFO [main:ZooKeeper@684] - Session: 0x300axxxx0ba c losed 2020-09-01 11:45:05,125 [myid:] - INFO [main-EventThread:ClientCnxn$EventThread@519] - EventThread shut down for session: 0x300axxxx0ba
 ```
 
-#### Update the configurations of a topic
+#### 3.2.6 Update the configurations of a topic
 
 This topic describes how to update the configurations of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -942,7 +976,7 @@ zookeeper.connect=10.XX.XX.XXX:2188,10.XX.XX.XXX:2188,10.XX.XX.XXX:2188/kafka-pr
 retention.ms=37000 --entity-name test --entity-type topics command.
 ```
 
-#### FAQ
+#### 3.2.7 FAQ
 
 This topic lists common issues with process operations and maintenance.
 
@@ -975,9 +1009,9 @@ directory.
 2. Run the command ./bin/kafka-topics.sh --describe --bootstrap-server `hostname -
 i`:9092 --topic {topic} to view the topic information.
 
-### Other maintenance operations
+### 3.3 Other maintenance operations
 
-#### Evaluate the capacity of a cluster
+#### 3.3.1 Evaluate the capacity of a cluster
 
 This topic describes how to evaluate the capacity of an ApsaraMQ for Kafka cluster, including disk usage and peak traffic. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -1019,9 +1053,9 @@ Evaluate the capacity based on the queried node information.
 2. Evaluate whether the nodes encounter bottlenecks based on the queried peak duration and
 peak traffic.
 
-## Routine inspection
+## 4 Routine inspection
 
-### Inspect the status of pods
+### 4.1 Inspect the status of pods
 
 This topic describes how to inspect the status of pods. The information about the master node in ApsaraMQ for Kafka is obtained.
 1. Connect to the master node in ApsaraMQ for Kafka.
@@ -1232,7 +1266,7 @@ Events: <none>
 
 In most cases, the value of the Events parameter is <none>.
 
-### Inspect the resource
+### 4.2 Inspect the resource availability
 
 **availability**
 
@@ -1305,7 +1339,7 @@ to query the information about error logs. The returned result is empty.
 For more information about how to check other monitored physical resources of pods on Grafana monitoring dashboards, see the **View dashboards** topic in ApsaraMQ for Kafka
 **User Guide**.
 
-### Inspect the service availability
+### 4.3 Inspect the service availability
 
 This topic describes how to inspect the service availability.
 
@@ -1340,7 +1374,7 @@ message.
 
 `bootstrap-server <pod ip>:9092` command to consume the messages.
 
-### Inspect a physical server after
+### 4.4 Inspect a physical server after a restart
 
 **a restart**
 

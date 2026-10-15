@@ -2,22 +2,33 @@
 title: "Alibaba Cloud Message Queue Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 27
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue Product Introduction 20260629.pdf"
+source_pdf: "b1a90cc4441d64da_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20MQ/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Message%20Queue%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Message Queue Product Introduction 20260629
 
-Alibaba Cloud Message Queue Q?
+## Table of Contents
 
-## What is Message Queue for
+- 1 What is Message Queue for Apache RocketMQ?
+- 2 Product details
+- 3 Benefits
+- 4 Features
+- 5 Scenarios
+- 6 Instance types
+- 7 Limits
+- 8 Terms
+
+sage Queue for Apache RocketM Q?
+
+## 1 What is Message Queue for Apache RocketMQ?
 
 **Apache RocketMQ?**
 
-Message Queue for Apache RocketMQ is a distributed messaging middleware that is developed by Alibaba Cloud based on Apache RocketMQ. This Alibaba Cloud service features low latency, high concurrency, high availability, and high reliability. Message Queue for Apache RocketMQ is a core service in the enterprise-level Internet architecture. Using the highly available distributed cluster technology, this service offers a series of messaging services in the cloud, including message subscription and delivery, message tracing and query, scheduled or delayed messages, and resource statistics. Message Queue for Apache RocketMQ provides asynchronous decoupling and load shifting for distributed application systems. It also supports various features for Internet applications, including massive message accumulation, high throughput, and reliable message consumption retry. It is one of the core Alibaba Cloud services that are used to support the Double 11 Shopping Festival. Message Queue for Apache RocketMQ supports access by using TCP. It also supports the Java, C++,and .NET programming languages. This facilitates quick access to Message Queue for Apache RocketMQ for applications that are developed in different programming languages. ails Alibaba Cloud Message Queue
+Message Queue for Apache RocketMQ is a distributed messaging middleware that is developed by Alibaba Cloud based on Apache RocketMQ. This Alibaba Cloud service features low latency, high concurrency, high availability, and high reliability. Message Queue for Apache RocketMQ is a core service in the enterprise-level Internet architecture. Using the highly available distributed cluster technology, this service offers a series of messaging services in the cloud, including message subscription and delivery, message tracing and query, scheduled or delayed messages, and resource statistics. Message Queue for Apache RocketMQ provides asynchronous decoupling and load shifting for distributed application systems. It also supports various features for Internet applications, including massive message accumulation, high throughput, and reliable message consumption retry. It is one of the core Alibaba Cloud services that are used to support the Double 11 Shopping Festival. Message Queue for Apache RocketMQ supports access by using TCP. It also supports the Java, C++,and .NET programming languages. This facilitates quick access to Message Queue for Apache RocketMQ for applications that are developed in different programming languages. ails
 
-## Product details
+## 2 Product details
 
 This topic describes how ApsaraMQ for RocketMQ works and the key features of ApsaraMQ for RocketMQ. ApsaraMQ for RocketMQ supports connections over TCP and HTTP from clients that are developed in multiple programming languages, offers high performance and reliability based on multiple replicas, and provides multi-dimensional O&M and management tools. It also supports enterprise-class features, such as message traces and dead-letter queues.
 
@@ -38,9 +49,13 @@ message queue by using long polling or push mechanisms.
 4. After the consumer processes the message, the consumer typically sends an
 acknowledgement (ACK) to indicate that the message has been processed. Then, the message is removed from the queue to ensure that the message is not processed multiple times. ApsaraMQ for RocketMQ improves reliability by implementing redundant storage and data replicas, which prevent message loss even in cases of partial system failures. ApsaraMQ for RocketMQ services can be scaled in and scaled out based on workloads. You do not need to manually scale services.
 
+**Key functions and features**
+
+**Producers: message types and scenarios**
+
 **Message types**
 
-Normal messages: suitable for asynchronous communication, such as log collection and event notification. Alibaba Cloud Message Queue ails Transactional messages: Ensure the atomicity of business operations and message sending, such as payment and inventory updates. Ordered messages: Ensure that messages are strictly ordered by business dimension, such as order ID. This type of message is suitable for processing financial transactions. Scheduled and delayed messages: Support delayed message delivery that is accurate to the millisecond, such as payment timeouts.
+Normal messages: suitable for asynchronous communication, such as log collection and event notification. ails Transactional messages: Ensure the atomicity of business operations and message sending, such as payment and inventory updates. Ordered messages: Ensure that messages are strictly ordered by business dimension, such as order ID. This type of message is suitable for processing financial transactions. Scheduled and delayed messages: Support delayed message delivery that is accurate to the millisecond, such as payment timeouts.
 
 **Key capabilities**
 
@@ -71,9 +86,12 @@ Failed messages can be retried up to 16 times and automatically quarantined to a
 **High availability and high performance**
 
 **Throughput**: A single ApsaraMQ for RocketMQ cluster supports millions of transactions per
-second (TPS) and millisecond-level latency to support high concurrency for businesses. ails Alibaba Cloud Message Queue
+second (TPS) and millisecond-level latency to support high concurrency for businesses. ails
 **Multi-replica mechanism**: ApsaraMQ for RocketMQ implements data synchronization and
 backeup, and supports cross-region disaster recovery to ensure availability.
+
+**Enterprise-class features**
+
 **Protocols**: ApsaraMQ for RocketMQ supports connections over TCP and HTTP and provides
 SDKs for multiple programming languages, such as Java, C, C++, and .NET.
 **Message traces**: You can use message traces to track message flows and facilitate
@@ -101,11 +119,13 @@ You can run commands to manage your resources in ApsaraMQ for RocketMQ.
 **Flexible deployment**: ApsaraMQ for RocketMQ can be deployed on Apsara Stack as an
 independent service or on a hybrid cloud architecture.
 **O&M management**: Apsara Stack supports O&M management tools such as the mqadmin
-command set and API operations. You can integrate various management tools with the ApsaraMQ for RocketMQ console and perform unified O&M operations. Alibaba Cloud Message Queue
+command set and API operations. You can integrate various management tools with the ApsaraMQ for RocketMQ console and perform unified O&M operations.
 
-## Benefits
+## 3 Benefits
 
 As a professional messaging middleware, ApsaraMQ for RocketMQ provides various benefits such as high reliability, high availability, and high performance. It also supports multiple protocols and independent deployment.
+
+**Benefits of ApsaraMQ for RocketMQ**
 
 **Professionalism**
 
@@ -133,20 +153,20 @@ ApsaraMQ for RocketMQ can be deployed on Apsara Stack as an independent service 
 
 **Comparison between ApsaraMQ for RocketMQ and open source**
 
+**Apache RocketMQ**
+
+ApsaraMQ for RocketMQ outperforms open source Apache RocketMQ in terms of the following aspects:
+
 | Category | ApsaraMQ for RocketMQ | Open source Apache RocketMQ |
 |---|---|---|
 | Security | Continuous fixing for vulnerabilities, including automatic updates and patch support. An integrated Apsara Stack account permission system for all cloud services. Multi-tenant resource isolation. Flexible resource access control methods, such as Resource Access Management (RAM) users and roles, and Security Token Service (STS). Fine-grained control of API permissions. | Vulnerability fixing rely on community solutions and requires active updates from users. Basic access control based on access control lists (ACLs), which do not support multi-tenant isolation. Permission management requires custom methods and configurations. Coarse-grained control of API permissions, which rely on custom configurations. |
 | Stability | Efficient troubleshooting from Apsara Stack technical support. Adaptation to multi- architecture chip processors, such as ARM and x86. Clear performance metrics, with quantified performance for each type of chip. Mature O&M change solutions, such as visualized operations and automated O&M tool chains. | Insufficient troubleshooting that replies on community solutions. Reply on mainstream architectures with limited adaptation to chips. Performance metrics require customer-side testing and optimization. O&M replies on customer- side experience because no mature O&M solutions are provided. |
 | Disaster recovery | Zone-disaster recovery, including symmetric and asymmetric disaster recovery between zones. Disaster recovery supported by data centers. Active geo-redundancy for cross-region disaster recovery. Automatic failover and disaster recovery by high- availability clusters. | Basic master-replica replication, which requires customer-side configurations. Disaster recovery across data centers, which requires external tools. Active geo-redundancy requires customer-side design and configurations. Highly complex disaster recovery solutions that rely on community best practices. |
 
-Alibaba Cloud Message Queue ApsaraMQ for RocketMQ outperforms open source Apache RocketMQ in terms of the following aspects:
-
 | Observability | Various built-in monitoring metrics at the underlying physical resource layer, platform layer, and tenant business layer, such as message latency, throughput, and cluster status. Custom monitoring and alerting that are deeply integrated with Apsara Stack monitoring services. Visualized dashboards and alerting capabilities. Continuous optimization for monitoring dimensions and metrics. | Basic monitoring provided by the open source version with limited monitoring metrics. Advanced monitoring requires integration with third-party tools, such as Prometheus and Grafana. Customized observation solutions must be developed by customers themselves. Updates of monitoring metrics rely on community iteration. |
 |---|---|---|
 | Scalability | Scaling within and across clusters. | Elastic scaling rely on manual operations or third- party tools. The scalability is limited by the hardware environment supported by the community. |
 | Multi-chip support | Support different chips in multiple clusters, such as ARM clusters and x86 clusters. Each cluster must use the same type of chip, but you can deploy clusters that use heterogeneous chips. Support chip performance optimization and adaptation, with performance tuning guides provided by Apsara Stack. | Each cluster must use the same type of chip, and you cannot deploy clusters that use heterogeneous chips. Chip adaptation requires customer-side testing and optimization. |
-
-Alibaba Cloud Message Queue
 
 **Highlights**
 
@@ -157,11 +177,17 @@ adaptation and optimization. However, open source Apache RocketMQ relies on comm
 3. **Disaster recovery**: ApsaraMQ for RocketMQ provides advanced built-in disaster recovery
 solutions, such as active geo-redundancy. If you use open source Apache RocketMQ, you must integrate with third-party tools to implement advanced disaster recovery capabilities.
 4. **Observability**: ApsaraMQ for RocketMQ is integrated with a variety of CloudMonitor
-features to support holistic observability, while open source Apache RocketMQ relies on third-party tools. Alibaba Cloud Message Queue
+features to support holistic observability, while open source Apache RocketMQ relies on third-party tools.
 5. **Scalability**: ApsaraMQ for RocketMQ supports scaling within or across clusters. However,
 open source Apache RocketMQ requires manual operations and are limited by the hardware environment provided by the community.
 6. **Multi-chip support**: ApsaraMQ for RocketMQ allows you to deploy heterogeneous chips in
 multiple clusters. However, open source Apache RocketMQ clusters must use the same type of chip.
+
+## 4 Features
+
+Message Queue for Apache RocketMQ is a distributed messaging middleware service built on Apache RocketMQ. It provides SDKs for multiple programming languages and a wide range of management tools. The service also offers purpose-built features for different use cases, such as dead-letter queues and message queries. The following sections describe these features in detail.
+
+**Instance management**
 
 | Feature | Description |
 |---|---|
@@ -173,18 +199,12 @@ multiple clusters. However, open source Apache RocketMQ clusters must use the sa
 | Delete instance | Delete an instance. |
 | Instance-level throttling | Enable instance-level throttling based on the TPS you specified during instance creation. If throttling is enabled, the service rejects message production when the TPS limit is reached. |
 
-Alibaba Cloud Message Queue
-
-## Features
-
-Message Queue for Apache RocketMQ is a distributed messaging middleware service built on Apache RocketMQ. It provides SDKs for multiple programming languages and a wide range of management tools. The service also offers purpose-built features for different use cases, such as dead-letter queues and message queries. The following sections describe these features in detail.
-
-**Instance management**
-
 | Scale out instance | Scale out the brokers of an instance. This feature supports partition load balancing and automatically redistributes partitions after the scale-out is complete. |
 |---|---|
 | Operation logs | Review operation logs to quickly diagnose issues and improve troubleshooting efficiency. |
 | Data integration | Use fully managed, O&M-free connectors to synchronize data between Message Queue for Apache RocketMQ and other Alibaba Cloud services. |
+
+**Topic management**
 
 | Feature | Description |
 |---|---|
@@ -196,16 +216,12 @@ Message Queue for Apache RocketMQ is a distributed messaging middleware service 
 | Resource reports | Use resource reports to gather statistics and query data about message production and consumption. |
 | View subscriptions | View the subscriptions of a topic. |
 
+**Group management**
+
 | Feature | Description |
 |---|---|
 | Create group | After you select the protocol type for a group, you can create a group for the selected instance and set its description. |
 | Query group list | View the list of groups for a selected instance, including their group ID, creation time, permissions, description, and available operations. |
-
-Alibaba Cloud Message Queue
-
-**Topic management**
-
-**Group management**
 
 | View subscriptions | View the subscriptions of a group. |
 |---|---|
@@ -214,6 +230,8 @@ Alibaba Cloud Message Queue
 | Reset consumption offset | Reset the consumption offset for a selected group. You can clear the entire message backlog and start consuming from the latest offset, or reset the consumption offset to a specific point in time. |
 | Delete group | Delete a selected group. |
 
+**Message trace**
+
 | Feature | Description |
 |---|---|
 | Query message trace by Message ID | Query a message trace by Message ID. You must provide the message's unique Message ID, the topic, and the approximate send time. This method provides fast and precise results. |
@@ -221,15 +239,11 @@ Alibaba Cloud Message Queue
 | Query message traces by topic | Query message traces by topic. This method performs a range query. Although you only need to provide the topic and time range, the query may return a large number of messages and lacks granularity. |
 | View trace | View information about the message producer, topic, and consumers. You can also export the queried message trace as an image. |
 
+**Message routing**
+
 | Feature | Description |
 |---|---|
 | Cross-cluster message synchronization | Use routing rules to dynamically plan message synchronization paths to synchronize messages from a source node to a destination node based on filtering conditions. This feature enables real-time, long-distance, cross-cluster message synchronization with millisecond-level latency, ensuring data consistency and integrity between clusters. |
-
-Alibaba Cloud Message Queue
-
-**Message trace**
-
-**Message routing**
 
 **Message query**
 
@@ -241,18 +255,16 @@ Alibaba Cloud Message Queue
 | Consumption verification | Resend a queried message. |
 | Download message | Download a queried message. |
 
+**Dead-letter queue**
+
+The service provides a dead-letter queue for messages that fail to be consumed after the maximum number of retries. By managing these dead-letter messages, you can prevent message loss. You can query, export in bulk, and resend dead-letter messages.
+
 | Feature | Description |
 |---|---|
 | Query dead-letter messages by group ID | Query all dead-letter messages generated by a specific group ID within a specified time range. |
 | Query dead-letter message by Message ID | Query for a specific dead-letter message by its group ID and Message ID. |
 | Export dead-letter messages | Export dead-letter messages individually or in bulk. The exported file is in CSV format. |
 | Resend dead-letter messages | Resend dead-letter messages. |
-
-Alibaba Cloud Message Queue
-
-**Dead-letter queue**
-
-The service provides a dead-letter queue for messages that fail to be consumed after the maximum number of retries. By managing these dead-letter messages, you can prevent message loss. You can query, export in bulk, and resend dead-letter messages.
 
 **Monitoring**
 
@@ -264,10 +276,14 @@ CloudMonitor provides real-time resource monitoring, data collection and visuali
 | View monitoring metrics | View metric charts for selected resources. |
 | Create alert rule | Create alert rules by using CloudMonitor. |
 
+**High scalability**
+
 | Feature | Description |
 |---|---|
 | Seamless scale-out and scale-in | Seamlessly scale out and scale in your resources. Adding or removing a node does not affect users or normal cluster operation. |
 | Multi-dimensional scaling | Scale your resources horizontally across multiple dimensions, including clusters, nodes within a cluster, topics, and queues. |
+
+**High availability**
 
 | Feature | Description |
 |---|---|
@@ -275,15 +291,7 @@ CloudMonitor provides real-time resource monitoring, data collection and visuali
 | Overload protection | If traffic exceeds system capacity, overload protection ensures that services operating within the capacity limits remain unaffected. |
 | Geo-redundancy | The service uses bidirectional data synchronization between instances and traffic switching capabilities to decouple service recovery from fault recovery to ensure business continuity in fault scenarios. |
 
-Alibaba Cloud Message Queue
-
-**High scalability**
-
-**High availability**
-
-Alibaba Cloud Message Queue
-
-## Scenarios
+## 5 Scenarios
 
 ApsaraMQ for RocketMQ is applicable for distributed transactions, real-time computing, Internet of Things (IoT) applications, and large-scale cache synchronization.
 
@@ -297,7 +305,7 @@ ApsaraMQ for RocketMQ decouples upstream businesses from downstream systems and 
 
 **High system stability**
 
-ApsaraMQ for RocketMQ was first developed for online businesses and e-commerce transactions. Compared with traditional message-oriented middleware, ApsaraMQ for RocketMQ provides not only the asynchronization capability, but also the peak-load shifting capability. Peak-load shifting improves system stability and reduces business costs. The peak-load shifting feature requires message-oriented middleware to support a large number of accumulated messages and a traffic model in which hot messages and cold messages are mixed. ApsaraMQ for RocketMQ supports the accumulation of hundreds of millions of messages. It can accommodate traffic spikes in scenarios such as big sales promotions and ensure the stable and secure running of downstream services. Alibaba Cloud Message Queue
+ApsaraMQ for RocketMQ was first developed for online businesses and e-commerce transactions. Compared with traditional message-oriented middleware, ApsaraMQ for RocketMQ provides not only the asynchronization capability, but also the peak-load shifting capability. Peak-load shifting improves system stability and reduces business costs. The peak-load shifting feature requires message-oriented middleware to support a large number of accumulated messages and a traffic model in which hot messages and cold messages are mixed. ApsaraMQ for RocketMQ supports the accumulation of hundreds of millions of messages. It can accommodate traffic spikes in scenarios such as big sales promotions and ensure the stable and secure running of downstream services.
 
 **Distributed transactions**
 
@@ -305,7 +313,7 @@ In traditional transaction processing mode, interactions among different systems
 
 **Real-time computing**
 
-Data that is continuously generated by a source flow to a computing engine in real time by using ApsaraMQ for RocketMQ. This achieves real-time computing. You can use the following computing engines: Spark, Storm, E-MapReduce, Application Real-Time Monitoring Service (ARMS), and Beam Runner. Figure 2. Real-time computing Alibaba Cloud Message Queue
+Data that is continuously generated by a source flow to a computing engine in real time by using ApsaraMQ for RocketMQ. This achieves real-time computing. You can use the following computing engines: Spark, Storm, E-MapReduce, Application Real-Time Monitoring Service (ARMS), and Beam Runner. Figure 2. Real-time computing
 
 **IoT applications**
 
@@ -313,7 +321,15 @@ IoT devices connect to the cloud by using ApsaraMQ for MQTT for bidirectional co
 
 **Large-scale cache synchronization**
 
-In business promotion activities such as the Double 11 Shopping Festival, each branch has a wide range of products, and the price of each product changes in real time. A huge number of concurrent access requests for the product database results in long response time on the web page of each branch. In centralized caching mode, the bandwidth becomes a bottleneck which blocks access requests to product prices. ApsaraMQ for RocketMQ can reduce the page response time by means of large-scale cache synchronization for different branches. This allows customers to access product prices. Figure 4. Large-scale cache synchronization Alibaba Cloud Message Queue
+In business promotion activities such as the Double 11 Shopping Festival, each branch has a wide range of products, and the price of each product changes in real time. A huge number of concurrent access requests for the product database results in long response time on the web page of each branch. In centralized caching mode, the bandwidth becomes a bottleneck which blocks access requests to product prices. ApsaraMQ for RocketMQ can reduce the page response time by means of large-scale cache synchronization for different branches. This allows customers to access product prices. Figure 4. Large-scale cache synchronization es
+
+## 6 Instance types
+
+This topic describes the instance types that Message Queue for Apache RocketMQ supports. You can use this information to select an instance type that meets your requirements.
+
+**Instance types**
+
+Message Queue for Apache RocketMQ provides the following instance types:
 
 | Specific ations | Container CPU (cores) | Container memory (GB) | Container storage (GB) | TPS | Number of topics & GIDs |
 |---|---|---|---|---|---|
@@ -322,11 +338,9 @@ In business promotion activities such as the Double 11 Shopping Festival, each b
 | 60xlarge | 88 | 368 | 1800 | 60000 | 3000 |
 | 80xlarge | 120 | 496 | 1800 | 80000 | 3500 |
 
-es Alibaba Cloud Message Queue
+## 7 Limits
 
-## Instance types
-
-This topic describes the instance types that Message Queue for Apache RocketMQ supports. You can use this information to select an instance type that meets your requirements. Message Queue for Apache RocketMQ provides the following instance types:
+This topic describes the limits on specific metrics in Message Queue for Apache RocketMQ. To avoid system exception errors, do not exceed the limits when you use Message Queue for Apache RocketMQ. The following table describes the limits. Table 1. Limits of Message Queue for Apache RocketMQ
 
 | Restrictions | Limit | Description |
 |---|---|---|
@@ -336,26 +350,22 @@ This topic describes the instance types that Message Queue for Apache RocketMQ s
 | Consumer offset resetting | Three days | Consumer offsets can be reset for messages that are retained within the previous three days. |
 | The rate of transactions per second (TPS) for sending and receiving messages on a single Message Queue for Apache RocketMQ instance | For a cluster that consists of two primary brokers and two secondary brokers, a message of 1 KB size is used as a baseline. The following data is verified in the test environment: Messages that are sent and received per second: 30,000 Note A maximum of 10,000 messages can be sent per second. | N/A |
 
-Alibaba Cloud Message Queue
-
-## Limits
-
-This topic describes the limits on specific metrics in Message Queue for Apache RocketMQ. To avoid system exception errors, do not exceed the limits when you use Message Queue for Apache RocketMQ. The following table describes the limits. Table 1. Limits of Message Queue for Apache RocketMQ
-
 | Delay time of scheduled or delayed messages | 40 days | msg.setStartDeliverTime parameter can be set to a point in time within the following 40 days. The unit of the parameter value is milliseconds. If the specified point in time is not within the 40 days, the message fails to be sent. |
 |---|---|---|
 | Concurrent scheduled messages | 200 for a default cluster | If the default limit does not meet your requirements, contact Alibaba Cloud technical support to submit a request. |
 | Concurrent transactional messages | 200 for a default cluster | If the default limit does not meet your requirements, contact Alibaba Cloud technical support to submit a request. |
 
-Alibaba Cloud Message Queue Alibaba Cloud Message Queue
-
-## Terms
+## 8 Terms
 
 This topic introduces the terms related to Message Queue for Apache RocketMQ to help you better understand and use this service.
 
 **Topic**
 
-A topic is used to classify messages. It is the primary classifier. In Message Queue for Apache RocketMQ, a message is a carrier that is used to transfer information.
+A topic is used to classify messages. It is the primary classifier.
+
+**Message**
+
+In Message Queue for Apache RocketMQ, a message is a carrier that is used to transfer information.
 
 **Message ID**
 
@@ -391,7 +401,11 @@ A group consists of producers or consumers that produce or consume messages of t
 
 **Group ID**
 
-A group ID identifies a group. Each topic has one or more queues to store messages.
+A group ID identifies a group.
+
+**Queue**
+
+Each topic has one or more queues to store messages.
 
 **Exactly-once delivery semantics**
 
@@ -399,7 +413,7 @@ Messages that are sent to the system can be consumed by consumers only once even
 
 **Clustering consumption**
 
-Alibaba Cloud Message Queue All consumers that are identified by the same consumer ID consume messages in an even manner. For example, if a topic contains nine messages and three consumer instances are identified by the same consumer ID, each of the three consumer instances consumes three messages in clustering consumption mode.
+All consumers that are identified by the same consumer ID consume messages in an even manner. For example, if a topic contains nine messages and three consumer instances are identified by the same consumer ID, each of the three consumer instances consumes three messages in clustering consumption mode.
 
 **Broadcasting consumption**
 
@@ -443,7 +457,7 @@ A producer has sent messages to a RocketMQ broker but a consumer cannot consume 
 
 **Message filtering**
 
-A subscriber can filter messages by tag so that the subscriber receives only the filtered messages. Messages are filtered on a RocketMQ broker. Alibaba Cloud Message Queue
+A subscriber can filter messages by tag so that the subscriber receives only the filtered messages. Messages are filtered on a RocketMQ broker.
 
 **Message tracing**
 

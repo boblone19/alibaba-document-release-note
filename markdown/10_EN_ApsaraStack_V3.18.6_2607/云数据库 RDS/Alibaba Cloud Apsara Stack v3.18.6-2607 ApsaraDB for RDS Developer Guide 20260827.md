@@ -3,22 +3,182 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Developer Guide
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 399
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Developer Guide 20260827.pdf"
+source_pdf: "522d83b5fc60b5b8_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Developer Guide 20260827.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20RDS%20Developer%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Developer Guide 20260827
 
+## Table of Contents
+
+- 1 Use ASAPI to call Apsara Stack SDKs
+  - 1.1 Preparations
+    - 1.1.1 Go to OpenAPI Explorer
+    - 1.1.2 Obtain the information and the endpoint of an API operation
+    - 1.1.3 Obtain an AccessKey pair
+    - 1.1.4 Obtain the values of common request headers
+    - 1.1.5 Obtain access credentials assigned by STS
+  - 1.2 Use POP to make API calls
+    - 1.2.1 Preparations
+    - 1.2.2 SDK for Java
+    - 1.2.3 SDK for Go
+    - 1.2.4 SDK for Python
+- 2 API reference
+  - 2.1 Instance management
+    - 2.1.1 CreateDBInstance
+    - 2.1.2 DescribeDBInstanceAttribute
+    - 2.1.3 Instance list
+    - 2.1.4 ModifyDBInstanceSpec
+    - 2.1.5 DeleteDBInstance
+    - 2.1.6 RestartDBInstance
+    - 2.1.7 DescribeRegions
+    - 2.1.8 MigrateToOtherZone
+    - 2.1.9 ModifyDBInstanceDescription
+    - 2.1.10 ModifyDBInstanceMaintainTime
+    - 2.1.11 DescribeCharacterSetName
+    - 2.1.12 DescribeDBInstanceIpHostname
+    - 2.1.13 ModifyResourceGroup
+  - 2.2 Read-only instances
+    - 2.2.1 CreateReadOnlyDBInstance
+    - 2.2.2 DescribeReadDBInstanceDelay
+  - 2.3 Version upgrade
+    - 2.3.1 ModifyDBInstanceAutoUpgradeMinorVersion
+    - 2.3.2 UpgradeDBInstanceKernelVersion
+  - 2.4 Network and endpoint management
+    - 2.4.1 AllocateInstancePublicConnection
+    - 2.4.2 ReleaseInstancePublicConnection
+    - 2.4.3 SwitchDBInstanceNetType
+    - 2.4.4 DescribeDBInstanceNetInfo
+    - 2.4.5 ModifyDBInstanceConnectionString
+    - 2.4.6 ReleaseInstanceConnection
+    - 2.4.7 ModifyDBInstanceNetworkType
+    - 2.4.8 SwitchDBInstanceVpc
+    - 2.4.9 ModifyDBInstanceNetworkExpireTime
+  - 2.5 Database management
+    - 2.5.1 CreateDatabase
+    - 2.5.2 DeleteDatabase
+    - 2.5.3 DescribeDatabases
+    - 2.5.4 ModifyDBDescription
+    - 2.5.5 CopyDatabaseBetweenInstances
+  - 2.6 Account management
+    - 2.6.1 CreateAccount
+    - 2.6.2 DeleteAccount
+    - 2.6.3 CheckAccountNameAvailable
+    - 2.6.4 CheckDBNameAvailable
+    - 2.6.5 DescribeAccounts
+    - 2.6.6 GrantAccountPrivilege
+    - 2.6.7 RevokeAccountPrivilege
+    - 2.6.8 ModifyAccountDescription
+    - 2.6.9 ResetAccountPassword
+    - 2.6.10 ResetAccount
+    - 2.6.11 GrantOperatorPermission
+    - 2.6.12 LockAccount
+    - 2.6.13 RevokeOperatorPermission
+    - 2.6.14 UnlockAccount
+  - 2.7 Backup and restoration
+    - 2.7.1 CreateBackup
+    - 2.7.2 CloneDBInstance
+    - 2.7.3 DescribeBackups
+    - 2.7.4 DescribeBackupPolicy
+    - 2.7.5 ModifyBackupPolicy
+    - 2.7.6 DeleteBackup
+    - 2.7.7 DeleteBackupFile
+    - 2.7.8 DescribeBackupTasks
+    - 2.7.9 DescribeLogBackupFiles
+    - 2.7.10 DescribeMetaList
+    - 2.7.11 RestoreTable
+    - 2.7.12 DescribeDetachedBackups
+  - 2.8 Database proxy
+    - 2.8.1 CalculateDBInstanceWeight
+    - 2.8.2 DescribeDBInstanceProxyConfiguration
+    - 2.8.3 DescribeDBProxy
+    - 2.8.4 DescribeDBProxyEndpoint
+    - 2.8.5 DescribeDBProxyPerformance
+    - 2.8.6 ModifyDBProxy
+    - 2.8.7 ModifyDBProxyEndpoint
+    - 2.8.8 ModifyDBProxyInstance
+    - 2.8.9 ModifyReadWriteSplittingConnection
+    - 2.8.10 ReleaseReadWriteSplittingConnection
+  - 2.9 Primary/secondary high availability and data replication
+    - 2.9.1 DescribeDBInstanceHAConfig
+    - 2.9.2 ModifyDBInstanceHAConfig
+    - 2.9.3 DescribeDBInstanceSwitchLog
+    - 2.9.4 DescribeHASwitchConfig
+    - 2.9.5 SwitchDBInstanceHA
+    - 2.9.6 ModifyHASwitchConfig
+  - 2.10 Security and encryption
+    - 2.10.1 DescribeDBInstanceIPArrayList
+    - 2.10.2 ModifySecurityIps
+    - 2.10.3 DescribeDBInstanceEncryptionKey
+    - 2.10.4 ModifyDTCSecurityIpHostsForSQLServer
+    - 2.10.5 DescribeDTCSecurityIpHostsForSQLServer
+    - 2.10.6 DescribeDBInstanceSSL
+    - 2.10.7 ModifyDBInstanceSSL
+    - 2.10.8 ModifyDBInstanceTDE
+    - 2.10.9 DescribeDBInstanceTDE
+  - 2.11 Monitoring management
+    - 2.11.1 DescribeResourceUsage
+    - 2.11.2 DescribeDBInstancePerformance
+    - 2.11.3 DescribeDBInstanceMonitor
+    - 2.11.4 ModifyDBInstanceMonitor
+  - 2.12 Parameter management
+    - 2.12.1 DescribeParameters
+    - 2.12.2 ModifyParameter
+    - 2.12.3 DescribeModifyParameterLog
+  - 2.13 Log management
+    - 2.13.1 DescribeSlowLogs
+    - 2.13.2 DescribeSlowLogRecords
+    - 2.13.3 DescribeErrorLogs
+    - 2.13.4 DescribeBinlogFiles
+    - 2.13.5 DescribeSQLCollectorPolicy
+    - 2.13.6 ModifySQLCollectorPolicy
+    - 2.13.7 DescribeSQLLogRecords
+    - 2.13.8 DescribeSQLLogFiles
+    - 2.13.9 DescribeSQLLogReportList
+    - 2.13.10 PurgeDBInstanceLog
+  - 2.14 Event history management
+    - 2.14.1 ModifyActionEventPolicy
+    - 2.14.2 DescribeActionEventPolicy
+    - 2.14.3 DescribeEvents
+  - 2.15 Performance optimization and diagnostics (CloudDBA)
+    - 2.15.1 CreateDiagnosticReport
+    - 2.15.2 DescribeDiagnosticReportList
+  - 2.16 Data migration
+    - 2.16.1 CreateUploadPathForSQLServer
+    - 2.16.2 DescribeFilesForSQLServer
+    - 2.16.3 ImportDatabaseBetweenInstances
+    - 2.16.4 CancelImport
+    - 2.16.5 CreateMigrateTask
+    - 2.16.6 DescibeImportsFromDatabase
+    - 2.16.7 DescribeMigrateTaskById
+    - 2.16.8 DescribeMigrateTasks
+    - 2.16.9 DescribeOssDownloads
+  - 2.17 Tag management
+    - 2.17.1 TagResources
+    - 2.17.2 AddTagsToResource
+    - 2.17.3 ListTagResources
+    - 2.17.4 UntagResources
+  - 2.18 RAM authorization
+  - 2.19 Appendix
+    - 2.19.1 Error codes on the client
+      - 2.19.1.1 Common errors
+      - 2.19.1.2 Specific errors
+    - 2.19.2 Error codes on the server
+    - 2.19.3 Instance states
+    - 2.19.4 Performance parameters
+    - 2.19.5 Forbidden keywords
+    - 2.19.6 Instance specifications
+
 ll Apsara Stack SDKs
 
-## Use ASAPI to call Apsara
+## 1 Use ASAPI to call Apsara Stack SDKs
 
 **Stack SDKs**
 
-### Preparations
+### 1.1 Preparations
 
-#### Go to OpenAPI Explorer
+#### 1.1.1 Go to OpenAPI Explorer
 
 You can go to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -47,7 +207,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
-#### Obtain the information and the
+#### 1.1.2 Obtain the information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -70,7 +230,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab. ll Apsara Stack SDKs
 
-#### Obtain an AccessKey pair
+#### 1.1.3 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -121,7 +281,7 @@ want to obtain AccessKey pairs.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-#### Obtain the values of common request
+#### 1.1.4 Obtain the values of common request headers
 
 **headers**
 
@@ -183,7 +343,7 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The ID of an organization. |
 
-#### Obtain access credentials assigned by
+#### 1.1.5 Obtain access credentials assigned by STS
 
 **STS**
 
@@ -273,9 +433,9 @@ public static String DescribeZones(ASClient asClient, String stsAK, String stsSK
 
 `}`
 
-### Use POP to make API calls
+### 1.2 Use POP to make API calls
 
-#### Preparations
+#### 1.2.1 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations before you use the POP gateway to call API operations.
 
@@ -318,7 +478,7 @@ In the **Registration Variables** message, obtain the endpoint from the value of
 
 ll Apsara Stack SDKs You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain the values of common request headers.
 
-#### SDK for Java
+#### 1.2.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -473,7 +633,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-#### SDK for Go
+#### 1.2.3 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -642,7 +802,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-#### SDK for Python
+#### 1.2.4 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -783,11 +943,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-## API reference
+## 2 API reference
 
-### Instance management
+### 2.1 Instance management
 
-#### CreateDBInstance
+#### 2.1.1 CreateDBInstance
 
 Creates an ApsaraDB RDS instance.
 
@@ -890,7 +1050,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 500 | SUBNET IP EXHAU _ _ STED | SUBNET IP EXHAUSTED _ _ | error subnet ip exhaust |
 | 400 | SpecifiedMinorVersi onProcessFailed | SpecifiedMinorVersionProcessF ailed | Specified minor version process failed. |
 
-#### DescribeDBInstanceAttribute
+#### 2.1.2 DescribeDBInstanceAttribute
 
 Queries the details of ApsaraDB RDS instances.
 
@@ -1188,7 +1348,7 @@ eeso
 
 `}` `]` `}` `}`
 
-#### Instance list
+#### 2.1.3 Instance list
 
 The DescribeDBInstances operation lists RDS instances.
 
@@ -1404,7 +1564,7 @@ Sample responses `XML` format
 |---|---|---|---|
 | 400 | InvalidDBInstanceT ype.ValueNotSuppo rt | The specified "DBInstanceType" parameter is invalid. | The specified instance type is invalid. Specify a supported one and try again. |
 
-#### ModifyDBInstanceSpec
+#### 2.1.4 ModifyDBInstanceSpec
 
 Changes the instance type or storage capacity of an ApsaraDB RDS instance. This operation is supported for primary and read-only instances. This operation is not supported for disaster recovery or temporary instances. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks. At least one of the DBInstanceClass and DBInstanceStorage parameters is specified in the request. If you want to decrease the storage capacity, the specified storage capacity is greater than or equal to 1.1 times the used storage capacity. The instance is a primary or read-only instance.
 
@@ -1464,7 +1624,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteDBInstance
+#### 2.1.5 DeleteDBInstance
 
 Releases an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The read/write splitting feature is disabled for the instance. The instance is a primary, read-only, disaster recovery, or temporary instance.
 
@@ -1510,7 +1670,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### RestartDBInstance
+#### 2.1.6 RestartDBInstance
 
 Restarts an ApsaraDB RDS instance. If a large number of transactions need to be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks.
 
@@ -1554,7 +1714,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeRegions
+#### 2.1.7 DescribeRegions
 
 Queries the details of the regions that are available to ApsaraDB RDS. Before you call the CreateDBInstance operation to create an instance, you can call the DescribeRegions operation to query the available regions and zones.
 
@@ -1652,7 +1812,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### MigrateToOtherZone
+#### 2.1.8 MigrateToOtherZone
 
 Migrates an ApsaraDB RDS instance across zones within the same region. For example, if an instance is located in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
 
@@ -1708,7 +1868,7 @@ Sample success responses `XML` format
 | 403 | OperationDenied.O utofUsage | The resource is out of usage. | The error message returned because the specified zone does not provide sufficient resources. Select another zone and try again. |
 | 404 | InvalidVPCId.NotFo und | Specified virtual vpc is not found. | The error message returned because the specified VPC ID does not exist. Check whether the VPC ID is correct. |
 
-#### ModifyDBInstanceDescription
+#### 2.1.9 ModifyDBInstanceDescription
 
 Modifies the name of an ApsaraDB RDS instance.
 
@@ -1753,7 +1913,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceMaintainTime
+#### 2.1.10 ModifyDBInstanceMaintainTime
 
 Modifies the maintenance window of an ApsaraDB RDS instance. You can set the maintenance window to a period of time during off-peak hours. Apsara Stack performs routine maintenance within the maintenance window to minimize impacts on your business.
 
@@ -1795,7 +1955,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeCharacterSetName
+#### 2.1.11 DescribeCharacterSetName
 
 Queries the character sets that are supported for an ApsaraDB RDS instance.
 
@@ -1847,7 +2007,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceIpHostname
+#### 2.1.12 DescribeDBInstanceIpHostname
 
 Queries the hostname of the Elastic Compute Service (ECS) instance where an ApsaraDB RDS instance resides. ApsaraDB RDS instances are deployed based on ECS instances. This operation is used to query the hostname of the ECS instance where an ApsaraDB RDS instance resides. The hostname is required when you configure a distributed transaction whitelist. This operation is applicable only to ApsaraDB RDS High-availability Edition instances that run one of the following SQL Server versions: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
 
@@ -1896,7 +2056,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyResourceGroup
+#### 2.1.13 ModifyResourceGroup
 
 Migrates an ApsaraDB RDS instance to a specified resource group. Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources.
 
@@ -1949,9 +2109,9 @@ Sample success responses `XML` format
 | 400 | ResourceGroupId.In Valid | The Specified resource group id is not found. | The error message returned because the specified resource group ID does not exist. Check whether the ID is correct. |
 |---|---|---|---|
 
-### Read-only instances
+### 2.2 Read-only instances
 
-#### CreateReadOnlyDBInstance
+#### 2.2.1 CreateReadOnlyDBInstance
 
 Creates a read-only instance for a primary ApsaraDB RDS instance.
 
@@ -2048,7 +2208,7 @@ Sample success responses `XML` format
 | 404 | IncorrectDBInstanc eConnType | Current DB instance conn type does not support this operation. | This operation is not supported by the network connection type of the instance. |
 | 400 | InvalidZoneId.NotS upported | The Specified vpc Zone not supported. | The specified zone does not allow you to create an instance in a VPC. Specify a different zone. |
 
-#### DescribeReadDBInstanceDelay
+#### 2.2.2 DescribeReadDBInstanceDelay
 
 Queries the latency of data replication between a primary ApsaraDB RDS instance and its read-only instance. Before you call this operation, make sure that the following requirements are met: The instance runs MySQL, PostgreSQL, or PolarDB. The primary instance has a read-only instance attached.
 
@@ -2158,7 +2318,7 @@ Sample success responses `XML` format
 
 `}`
 
-### Version upgrade
+### 2.3 Version upgrade
 
 **2.3.1.**
 
@@ -2205,7 +2365,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UpgradeDBInstanceKernelVersion
+#### 2.3.2 UpgradeDBInstanceKernelVersion
 
 Updates the minor engine version of an ApsaraDB RDS instance. An update to the minor engine version enhances performance, introduces new features, and fixes known bugs. For more information, see Update the minor engine version of an ApsaraDB RDS for MySQL instance, Update the minor engine version of an ApsaraDB RDS for SQL Server instance, and Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance.
 
@@ -2265,11 +2425,11 @@ Sample success responses `XML` format
 
 `}`
 
-### Network and endpoint
+### 2.4 Network and endpoint management
 
 **management**
 
-#### AllocateInstancePublicConnection
+#### 2.4.1 AllocateInstancePublicConnection
 
 Applies for a public endpoint for an ApsaraDB for RDS instance.
 
@@ -2312,7 +2472,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ReleaseInstancePublicConnection
+#### 2.4.2 ReleaseInstancePublicConnection
 
 Releases the public endpoint of an ApsaraDB RDS instance. When you do not need to connect to an instance over the Internet, you can release its public endpoint to ensure data security.
 
@@ -2354,7 +2514,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SwitchDBInstanceNetType
+#### 2.4.3 SwitchDBInstanceNetType
 
 Switches an ApsaraDB RDS instance between its internal and public endpoints. To save endpoint resources, you can call this operation to switch an instance between its internal and public endpoints. After the endpoint that is used to connect to the instance is changed, you must update the endpoint information in the code of your application and restart the application. Before you call this operation, make sure that the following requirements are met: The instance is connected by using its internal or public endpoint. The instance is in the running state. The number of times that you have switched the instance between its internal and public endpoints within the last 24 hours does not reach 20. The instance resides in the classic network.
 
@@ -2401,7 +2561,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceNetInfo
+#### 2.4.4 DescribeDBInstanceNetInfo
 
 Queries the connection information of an ApsaraDB RDS instance.
 
@@ -2508,7 +2668,7 @@ uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com</connectionString>
 
 `}`
 
-#### ModifyDBInstanceConnectionString
+#### 2.4.5 ModifyDBInstanceConnectionString
 
 Modifies the endpoint and port number of an ApsaraDB RDS instance. ApsaraDB RDS provides the internal and public endpoints. It allows hybrid access by using both a Virtual Private Cloud (VPC) endpoint and a classic network endpoint.
 
@@ -2558,7 +2718,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ReleaseInstanceConnection
+#### 2.4.6 ReleaseInstanceConnection
 
 Releases the endpoint of an ApsaraDB RDS instance.
 
@@ -2601,7 +2761,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceNetworkType
+#### 2.4.7 ModifyDBInstanceNetworkType
 
 Changes the network type of an ApsaraDB RDS instance. This operation is used to switch the network type of an instance between Virtual Private Cloud (VPC) and classic network.
 
@@ -2662,7 +2822,7 @@ Sample success responses `XML` format
 | 400 | NetTypeExists | Specified network type already exists. | The error message returned because the specified network type is the same as the original network type of the specified instance. |
 | 403 | OperationDenied.D BInstanceConnTyp e | The current DB instance connection type does not support this operation. | The error message returned because the current network connection type does not support this operation. |
 
-#### SwitchDBInstanceVpc
+#### 2.4.8 SwitchDBInstanceVpc
 
 Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB RDS instance. This operation is supported only for ApsaraDB RDS for PostgreSQL instances that use standard SSDs or ApsaraDB RDS for MySQL instances.
 
@@ -2706,7 +2866,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceNetworkExpireTime
+#### 2.4.9 ModifyDBInstanceNetworkExpireTime
 
 Changes the expiration time of an endpoint for an ApsaraDB RDS instance. When an ApsaraDB RDS instance runs in hybrid access mode and provides both a VPC endpoint and a classic network endpoint, this operation is used to extend the expiration time of the retained classic network endpoint.
 
@@ -2750,9 +2910,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Database management
+### 2.5 Database management
 
-#### CreateDatabase
+#### 2.5.1 CreateDatabase
 
 Creates a database on an ApsaraDB RDS instance. If you want to perform data management tasks such as data change and schema design, use Data Management System (DMS). Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The maximum number of databases in the instance is not reached. You can call the DescribeDBInstanceAttribute operation to query the maximum number of databases. The instance is not a read-only instance.
 
@@ -2804,7 +2964,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteDatabase
+#### 2.5.2 DeleteDatabase
 
 Deletes a database from an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance. The instance runs the MySQL or SQL Server database engine.
 
@@ -2850,7 +3010,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDatabases
+#### 2.5.3 DescribeDatabases
 
 Queries the details of databases on an ApsaraDB RDS instance.
 
@@ -2970,7 +3130,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-#### ModifyDBDescription
+#### 2.5.4 ModifyDBDescription
 
 Modifies the description of a database.
 
@@ -3019,7 +3179,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CopyDatabaseBetweenInstances
+#### 2.5.5 CopyDatabaseBetweenInstances
 
 Copies databases across ApsaraDB RDS instances. This operation can also be used to restore specific databases to an existing instance by point in time or backup set. Before you call this operation, make sure that the following requirements are met: The source and destination instances belong to the same Apsara Stack tenant account. The source and destination instances run the same version of database engine. The source and destination instances reside in the same region and use the same network type. Their zones can be different. The destination instance does not have databases whose names are the same as those of the databases that you want to copy. The available storage capacity of the destination instance is larger than the size of the databases that you want to copy from the source instance.
 
@@ -3071,9 +3231,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Account management
+### 2.6 Account management
 
-#### CreateAccount
+#### 2.6.1 CreateAccount
 
 Creates an account that is used to manage databases on an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance.
 
@@ -3128,7 +3288,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteAccount
+#### 2.6.2 DeleteAccount
 
 Deletes an account from an ApsaraDB for RDS instance. Before you call this operation, make sure that the instance is in the running state.
 
@@ -3174,7 +3334,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CheckAccountNameAvailable
+#### 2.6.3 CheckAccountNameAvailable
 
 Queries whether the name of the account that you want to create on an ApsaraDB RDS instance is available.
 
@@ -3219,7 +3379,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CheckDBNameAvailable
+#### 2.6.4 CheckDBNameAvailable
 
 Checks whether a database name is unique and conforms to the naming conventions on an ApsaraDB RDS instance.
 
@@ -3260,7 +3420,7 @@ Sample success responses `XML` format
 {"RequestId":"6EF82B07-28D2-48D1-B5D6-7E78FED277C7"}
 ```
 
-#### DescribeAccounts
+#### 2.6.5 DescribeAccounts
 
 Queries information of the accounts that are created on an ApsaraDB RDS instance.
 
@@ -3378,7 +3538,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GrantAccountPrivilege
+#### 2.6.6 GrantAccountPrivilege
 
 Grants an account the permissions on a database of an ApsaraDB for RDS instance. Each account can be granted permissions on one or more databases. Before you call this operation, make sure that the instance is in the running state.
 
@@ -3429,7 +3589,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### RevokeAccountPrivilege
+#### 2.6.7 RevokeAccountPrivilege
 
 Revokes database access permissions of an account. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state.
 
@@ -3479,7 +3639,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyAccountDescription
+#### 2.6.8 ModifyAccountDescription
 
 Modifies the description of a database account.
 
@@ -3526,7 +3686,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ResetAccountPassword
+#### 2.6.9 ResetAccountPassword
 
 Resets the password of an account on an ApsaraDB RDS instance. Before you call this operation, make sure that the instance is in the running state.
 
@@ -3573,7 +3733,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ResetAccount
+#### 2.6.10 ResetAccount
 
 Resets permissions of the privileged account.
 
@@ -3622,7 +3782,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### GrantOperatorPermission
+#### 2.6.11 GrantOperatorPermission
 
 Grants permissions to the service account of an ApsaraDB RDS instance. When you seek help from Alibaba Cloud technical support to troubleshoot instance exceptions, you must grant permissions to the service account of your instance. The service account is used by Alibaba Cloud technical support to perform operations on the databases of your instance. This operation is available only when your instance runs one of the following database engines: MySQL SQL Server PostgreSQL
 
@@ -3665,7 +3825,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### LockAccount
+#### 2.6.12 LockAccount
 
 Locks an account of an ApsaraDB RDS for PostgreSQL instance. ApsaraDB RDS for PostgreSQL instances that use standard SSDs allow you to lock accounts. Locked accounts cannot be used to log on to an instance.
 
@@ -3707,7 +3867,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### RevokeOperatorPermission
+#### 2.6.13 RevokeOperatorPermission
 
 Revokes permissions from the service account of an ApsaraDB RDS instance. After Alibaba Cloud technical support resolves the issues on your instance, you can revoke permissions from the service account of your instance. This operation is available only when your instance runs one of the following database engines: MySQL SQL Server PostgreSQL
 
@@ -3750,7 +3910,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UnlockAccount
+#### 2.6.14 UnlockAccount
 
 Unlocks an account of an ApsaraDB RDS for PostgreSQL instance. You cannot use a locked account to log on to the corresponding ApsaraDB RDS for PostgreSQL instance that uses standard SSDs. You must first unlock the account.
 
@@ -3792,9 +3952,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Backup and restoration
+### 2.7 Backup and restoration
 
-#### CreateBackup
+#### 2.7.1 CreateBackup
 
 Creates a backup set for an ApsaraDB RDS instance. This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup schedule. For more information, see **List of operations by function** in **Database Backup****Developer Guide**. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks. The number of backup sets that are created per day for an instance cannot exceed 20.
 
@@ -3848,7 +4008,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CloneDBInstance
+#### 2.7.2 CloneDBInstance
 
 Restores the data of an ApsaraDB RDS instance to a new instance. The new instance is also called a cloned instance. Before you call this operation, make sure that the following requirements are met: The original instance is in the running state. The original instance does not have ongoing migration tasks. The log backup feature is enabled for the original instance to support point-in-time restoration. The primary instance has at least one completed backup set before you clone the instance by backup set.
 
@@ -3912,7 +4072,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeBackups
+#### 2.7.3 DescribeBackups
 
 Queries the backup sets of an ApsaraDB RDS instance.
 
@@ -4065,7 +4225,7 @@ internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
 
 `}` `}` `}` `}` `}` `}`
 
-#### DescribeBackupPolicy
+#### 2.7.4 DescribeBackupPolicy
 
 Queries the backup settings of an ApsaraDB RDS instance.
 
@@ -4198,7 +4358,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyBackupPolicy
+#### 2.7.5 ModifyBackupPolicy
 
 Modifies the backup settings of an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is not a read-only instance. The instance is in the running state.
 
@@ -4291,7 +4451,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteBackup
+#### 2.7.6 DeleteBackup
 
 Deletes backup sets of an ApsaraDB RDS instance. Backup sets of only the instance itself are deleted. Backup sets of the associated instances such as read-only, disaster recovery, and cloned instances are not deleted. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is of the High-availability Edition and runs MySQL or PostgreSQL. If the log backup feature is disabled, ApsaraDB RDS instances cannot be restored by point in time. You can delete data backup sets that are retained for more than seven days. If the log backup feature is enabled and the retention period of log backups is shorter than the retention period of data backups, the data backup sets that are retained for longer than the retention period of log backups can be deleted.
 
@@ -4335,7 +4495,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DeleteBackupFile
+#### 2.7.7 DeleteBackupFile
 
 Deletes backup sets of an ApsaraDB RDS for SQL Server instance.
 
@@ -4379,7 +4539,7 @@ Sample success responses `XML` format
 {"RequestId":"C7B3A91C-0ACD-4948-ACAE-xxxxxxxD4069","DeletedBaksetIds": {"DeletedBaksetIds":"1111"}}
 ```
 
-#### DescribeBackupTasks
+#### 2.7.8 DescribeBackupTasks
 
 Queries the backup tasks of an ApsaraDB RDS instance.
 
@@ -4464,7 +4624,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeLogBackupFiles
+#### 2.7.9 DescribeLogBackupFiles
 
 Queries the log backup files of an ApsaraDB RDS instance.
 
@@ -4539,7 +4699,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeMetaList
+#### 2.7.10 DescribeMetaList
 
 Queries the information of the restorable databases and tables in a specific backup set. Before you call the RestoreTable operation to restore individual databases or tables of an ApsaraDB RDS for MySQL instance, you can call this operation to query the information of the restorable databases and tables.
 
@@ -4635,7 +4795,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### RestoreTable
+#### 2.7.11 RestoreTable
 
 Restores individual databases or tables for an ApsaraDB RDS instance. ApsaraDB RDS for MySQL allows you to restore individual databases or tables. If one or more databases or tables of an ApsaraDB RDS instance are accidentally deleted, you can use a backup set to restore the databases or tables. For more information, see Restore individual databases and tables for an ApsaraDB RDS for MySQL instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing migration tasks. If you want to restore data to a specific point in time, the log backup feature is enabled for the instance. The restoration of individual databases or tables is enabled, and new backups are created. The instance does not contain tables that have the same names as the new tables.
 
@@ -4690,7 +4850,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDetachedBackups
+#### 2.7.12 DescribeDetachedBackups
 
 Queries the backup sets of an ApsaraDB RDS instance that is deleted. This operation is supported for instances that run MySQL with local SSDs.
 
@@ -4838,9 +4998,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Database proxy
+### 2.8 Database proxy
 
-#### CalculateDBInstanceWeight
+#### 2.8.1 CalculateDBInstanceWeight
 
 Queries the read weights of a primary ApsaraDB RDS instance and its read-only instances. When the read/write splitting feature is enabled, this operation is used to calculate systemassigned read weights. For more information about custom read weights, see DescribeDBInstanceNetInfo. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the primary instance. The primary instance runs one of the following database engine versions and RDS editions: MySQL 5.7 on RDS High-availability Edition (with local SSDs) MySQL 5.6 SQL Server 2017 EE
 
@@ -4908,7 +5068,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceProxyConfiguration
+#### 2.8.2 DescribeDBInstanceProxyConfiguration
 
 Queries the shared proxy settings on an ApsaraDB RDS instance. This operation is used to query the original shared proxy settings rather than the latest dedicated proxy settings. For more information about how to query the dedicated proxy settings, see DescribeDBProxy. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the instance. The read/write splitting feature is enabled for the instance.
 
@@ -4966,7 +5126,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBProxy
+#### 2.8.3 DescribeDBProxy
 
 Queries the details of the dedicated proxy of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS High-availability Edition (minor engine version of 20190915 or later) MySQL 5.7 on RDS High-availability Edition (minor engine version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor engine version of 20200229 or later)
 
@@ -5097,7 +5257,7 @@ tanceId>
 
 `}`
 
-#### DescribeDBProxyEndpoint
+#### 2.8.4 DescribeDBProxyEndpoint
 
 Queries the dedicated proxy endpoint of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS High-availability Edition (minor engine version of 20190915 or later) MySQL 5.7 on RDS High-availability Edition (minor engine version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor engine version of 20200229 or later)
 
@@ -5219,7 +5379,7 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
 |---|---|---|---|
 | 404 | Endpoint.NotFound | Specified endpoint is not found. | The port number that you specified cannot be found. |
 
-#### DescribeDBProxyPerformance
+#### 2.8.5 DescribeDBProxyPerformance
 
 Queries the performance data of the dedicated proxy for an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled for the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS High-availability Edition (minor engine version of 20190915 or later) MySQL 5.7 on RDS High-availability Edition (minor engine version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor engine version of 20200229 or later)
 
@@ -5328,7 +5488,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | Endpoint.NotFound | Specified endpoint is not found. | The port number that you specified cannot be found. |
 
-#### ModifyDBProxy
+#### 2.8.6 ModifyDBProxy
 
 Enables or disables the dedicated proxy feature for an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS High-availability Edition (minor engine version of 20190915 or later) MySQL 5.7 on RDS High-availability Edition (minor engine version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor engine version of 20200229 or later)
 
@@ -5377,7 +5537,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBProxyEndpoint
+#### 2.8.7 ModifyDBProxyEndpoint
 
 Modifies the proxy terminal settings of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and connection pooling. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled for the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS High-availability Edition (minor engine version of 20190915 or later) MySQL 5.7 on RDS High-availability Edition (minor engine version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor engine version of 20200229 or later)
 
@@ -5433,7 +5593,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBProxyInstance
+#### 2.8.8 ModifyDBProxyInstance
 
 Modifies the dedicated proxy settings of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled for the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS High-availability Edition (minor engine version of 20190915 or later) MySQL 5.7 on RDS High-availability Edition (minor engine version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor engine version of 20200229 or later)
 
@@ -5481,7 +5641,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyReadWriteSplittingConnection
+#### 2.8.9 ModifyReadWriteSplittingConnection
 
 Modifies the latency threshold that is allowed for read/write splitting and the read weights of a primary ApsaraDB RDS instance and its read-only instances. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the primary instance. The read/write splitting feature is enabled for the primary instance. The primary instance runs one of the following database engine versions and RDS editions: MySQL 5.7 on RDS High-availability Edition (with local SSDs) MySQL 5.6 SQL Server 2017 EE
 
@@ -5529,7 +5689,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ReleaseReadWriteSplittingConnection
+#### 2.8.10 ReleaseReadWriteSplittingConnection
 
 Releases the read/write splitting endpoint of a primary ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the primary instance. The read/write splitting feature is enabled for the primary instance. The primary instance runs one of the following database engine versions and RDS editions: MySQL 5.7 on RDS High-availability Edition (with local SSDs) MySQL 5.6 SQL Server 2017 EE
 
@@ -5572,11 +5732,11 @@ Sample success responses `XML` format
 
 `}`
 
-### Primary/secondary high
+### 2.9 Primary/secondary high availability and data replication
 
 **availability and data replication**
 
-#### DescribeDBInstanceHAConfig
+#### 2.9.1 DescribeDBInstanceHAConfig
 
 Queries the high availability mode and data replication mode of an ApsaraDB RDS instance.
 
@@ -5691,7 +5851,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceHAConfig
+#### 2.9.2 ModifyDBInstanceHAConfig
 
 Changes the high availability mode and data replication mode of an ApsaraDB RDS instance.
 
@@ -5737,7 +5897,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceSwitchLog
+#### 2.9.3 DescribeDBInstanceSwitchLog
 
 Queries the primary/secondary switchover logs of an ApsaraDB RDS instance. This operation is supported for instances that run MySQL, SQL Server, PostgreSQL, or PolarDB.
 
@@ -5805,7 +5965,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeHASwitchConfig
+#### 2.9.4 DescribeHASwitchConfig
 
 Queries the automatic primary/secondary switchover settings of an ApsaraDB RDS instance. After a primary/secondary switchover is complete, the original primary instance becomes a secondary instance. This operation is supported only for instances that run the High-availability Edition or Cluster Edition.
 
@@ -5853,7 +6013,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### SwitchDBInstanceHA
+#### 2.9.5 SwitchDBInstanceHA
 
 Switches workloads between a primary ApsaraDB RDS instance and its secondary instance. This operation switches workloads between the primary and secondary ApsaraDB RDS instances that do not run the Basic Edition. After the switchover, the secondary instance takes over as the primary instance.
 
@@ -5900,7 +6060,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyHASwitchConfig
+#### 2.9.6 ModifyHASwitchConfig
 
 Enables or disables the automatic primary/secondary switchover feature for an ApsaraDB RDS instance. After the switchover, the original primary instance becomes the secondary instance.
 
@@ -5950,9 +6110,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Security and encryption
+### 2.10 Security and encryption
 
-#### DescribeDBInstanceIPArrayList
+#### 2.10.1 DescribeDBInstanceIPArrayList
 
 Queries the IP address whitelists of an ApsaraDB RDS instance.
 
@@ -6026,7 +6186,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifySecurityIps
+#### 2.10.2 ModifySecurityIps
 
 Modifies an IP address whitelist of an ApsaraDB RDS instance. This operation allows you to add more IP addresses to a whitelist to allow their access to the instance.
 
@@ -6084,7 +6244,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceEncryptionKey
+#### 2.10.3 DescribeDBInstanceEncryptionKey
 
 Queries the status of disk encryption and the details of keys on an ApsaraDB RDS instance. This operation is supported for instances that run MySQL, SQL Server, or PostgreSQL.
 
@@ -6281,7 +6441,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstanceSSL
+#### 2.10.6 DescribeDBInstanceSSL
 
 Queries Secure Sockets Layer (SSL) settings of an ApsaraDB RDS instance.
 
@@ -6366,7 +6526,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceSSL
+#### 2.10.7 ModifyDBInstanceSSL
 
 Modifies the SSL encryption settings of an ApsaraDB RDS instance. This operation is used to configure SSL encryption for an instance.
 
@@ -6411,7 +6571,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceTDE
+#### 2.10.8 ModifyDBInstanceTDE
 
 Enables the Transparent Data Encryption (TDE) feature for an ApsaraDB RDS instance. TDE performs real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk. Data is also decrypted when it is read from a disk and written to the memory. Before you call this operation, make sure that the following requirements are met: Key Management Service (KMS) is activated. If KMS is not activated, you can activate it when you enable TDE. The instance runs one of the following database engines and RDS editions: MySQL 5.6 MySQL 5.7 on RDS High-availability Edition with local SSDs SQL Server 2019 SE or an Enterprise Edition of SQL Server
 
@@ -6460,7 +6620,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeDBInstanceTDE
+#### 2.10.9 DescribeDBInstanceTDE
 
 Queries the data encryption status of an ApsaraDB RDS instance. This operation is used to view the Transparent Data Encryption (TDE) configuration of an instance.
 
@@ -6532,9 +6692,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Monitoring management
+### 2.11 Monitoring management
 
-#### DescribeResourceUsage
+#### 2.11.1 DescribeResourceUsage
 
 Queries the storage usage of an ApsaraDB RDS instance.
 
@@ -6616,7 +6776,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDBInstancePerformance
+#### 2.11.2 DescribeDBInstancePerformance
 
 Queries the performance metrics of an ApsaraDB RDS instance. You can query the performance of an instance over a specific time range based on its performance metrics. Performance metrics are generated by using one of the following methods based on the database engine and version, RDS edition, monitoring frequency (ModifyDBInstanceMonitor), and query time range: Instances that run MySQL: 5-second monitoring frequency If the query time range is greater than seven days, performance metrics are collected at 1-day intervals. If the query time range is greater than one day but less than or equal to seven days, performance metrics are collected at 1-hour intervals. If the query time range is greater than or equal to an hour but less than or equal to one day, performance metrics are collected at 1-minute intervals. If the query time range is less than an hour, performance metrics are collected at 5second intervals. 60-second monitoring frequency If the query time range is greater than 30 days, performance metrics are collected at 1day intervals. If the query time range is greater than seven days but less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is less than or equal to seven days, performance metrics are collected at 1-minute intervals. 300-second monitoring frequency If the query time range is greater than 30 days, performance metrics are collected at 1day intervals. If the query time range is greater than seven days but less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is less than or equal to seven days, performance metrics are collected at 5-minute intervals. Instances that run PostgreSQL with local SSDs or standard SSDs: If the query time range is less than or equal to an hour, performance metrics are collected at 5-second intervals. If the query time range is less than or equal to 2 hours, performance metrics are collected at 10-second intervals. If the query time range is less than or equal to 6 hours, performance metrics are collected at 30-second intervals. If the query time range is less than or equal to 12 hours, performance metrics are collected at 1-minute intervals. If the query time range is less than or equal to one day, performance metrics are collected at 2-minute intervals. If the query time range is less than or equal to five days, performance metrics are collected at 10-minute intervals. If the query time range is less than or equal to 15 days, performance metrics are collected at 30-minute intervals. If the query time range is less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is greater than 30 days, performance metrics are collected at 1day intervals.
 
@@ -6703,7 +6863,7 @@ Sample success responses `XML` format
 
 `}` `}` `]` `}` `}`
 
-#### DescribeDBInstanceMonitor
+#### 2.11.3 DescribeDBInstanceMonitor
 
 Queries the monitoring frequency of an ApsaraDB RDS instance.
 
@@ -6752,7 +6912,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyDBInstanceMonitor
+#### 2.11.4 ModifyDBInstanceMonitor
 
 Modifies the monitoring frequency of an ApsaraDB RDS instance. ApsaraDB RDS provides different monitoring frequency settings for different instances. For more information, see **Set a monitoring frequency** in **ApsaraDB RDS****User Guide**.
 
@@ -6805,9 +6965,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidDBInstanceI d.NotFound | The DBInstanceId provided does not exist in our records. | The error message returned because the specified instance does not exist. |
 
-### Parameter management
+### 2.12 Parameter management
 
-#### DescribeParameters
+#### 2.12.1 DescribeParameters
 
 Queries the parameter configurations of an ApsaraDB RDS instance. Before you call this operation, make sure that the instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
 
@@ -6915,7 +7075,7 @@ within the server scope. A fill factor is provided to optimize index data storag
 
 `}`
 
-#### ModifyParameter
+#### 2.12.2 ModifyParameter
 
 Modifies the parameters of an ApsaraDB RDS instance. You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance.
 
@@ -6968,7 +7128,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeModifyParameterLog
+#### 2.12.3 DescribeModifyParameterLog
 
 Queries the parameter modification logs of an ApsaraDB RDS instance.
 
@@ -7059,9 +7219,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Log management
+### 2.13 Log management
 
-#### DescribeSlowLogs
+#### 2.13.1 DescribeSlowLogs
 
 You can call the DescribeSlowLogs operation to query the summary of the slow query logs of an instance.
 
@@ -7620,7 +7780,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 503 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 500 |   | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 
-#### DescribeSlowLogRecords
+#### 2.13.2 DescribeSlowLogRecords
 
 You can call the DescribeSlowLogRecords operation to query the details of the slow query logs of an instance.
 
@@ -8136,7 +8296,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 503 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
 | 500 |   | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 
-#### DescribeErrorLogs
+#### 2.13.3 DescribeErrorLogs
 
 Queries the error logs of an ApsaraDB RDS instance within a specific time range. Error logs contain the time when they were generated and the error messages.
 
@@ -8206,7 +8366,7 @@ is an informational message only; no user action is required</ErrorInfo>
 
 `}` `]` `}` `}`
 
-#### DescribeBinlogFiles
+#### 2.13.4 DescribeBinlogFiles
 
 Queries the log backup files of an ApsaraDB RDS instance. If the **DownloadLink** value is null, ApsaraDB RDS does not provide a download URL. If the **DownloadLink** value is not null, ApsaraDB RDS provides a download URL for a log backup file. The expiration time of the URL is specified by the **LinkExpiredTime** parameter. You must download the log backup file before the expiration time. This operation returns SQL log entries that are generated over a specific time range. The beginning of the time range must be earlier than or equal to the time that is specified by the LogEndTime parameter. In addition, the end of the time range must be later than or equal to the time that is specified by the LogBeginTime parameter.
 
@@ -8288,7 +8448,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeSQLCollectorPolicy
+#### 2.13.5 DescribeSQLCollectorPolicy
 
 Queries the status of the SQL Explorer (SQL Audit) feature on an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
 
@@ -8336,7 +8496,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifySQLCollectorPolicy
+#### 2.13.6 ModifySQLCollectorPolicy
 
 Enables or disables the SQL Explorer (SQL Audit) feature for an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
 
@@ -8380,7 +8540,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeSQLLogRecords
+#### 2.13.7 DescribeSQLLogRecords
 
 Queries the logs that are generated by the SQL Explorer (SQL Audit) feature on an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
 
@@ -8476,7 +8636,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeSQLLogFiles
+#### 2.13.8 DescribeSQLLogFiles
 
 Queries the audit log files that the SQL Explorer (SQL Audit) feature generates for an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server 2008 R2 PostgreSQL PolarDB
 
@@ -8565,7 +8725,7 @@ inc.com/xxxxx</LogDownloadURL>
 
 `}`
 
-#### DescribeSQLLogReportList
+#### 2.13.9 DescribeSQLLogReportList
 
 Queries the SQL log reports of an ApsaraDB RDS instance.
 
@@ -8670,7 +8830,7 @@ Sample success responses `XML` format
 
 `}]` `}` `}]` `}` `}`
 
-#### PurgeDBInstanceLog
+#### 2.13.10 PurgeDBInstanceLog
 
 Deletes log backup files from an ApsaraDB RDS instance. ApsaraDB RDS allows an instance to automatically upload log backup files to Object Storage Service (OSS) buckets. If the remaining storage space of an instance is insufficient, you can also manually upload the log backup files of the instance to OSS buckets. After the log backup files of an instance are uploaded, ApsaraDB RDS deletes these files from the instance to release storage space. When this operation is called, log backup files are uploaded from an instance to OSS buckets, and then are deleted from the instance. If the instance runs SQL Server, transaction log backup files are compressed before they are uploaded.
 
@@ -8718,9 +8878,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Event history management
+### 2.14 Event history management
 
-#### ModifyActionEventPolicy
+#### 2.14.1 ModifyActionEventPolicy
 
 Enables or disables the event history feature of an ApsaraDB RDS instance.
 
@@ -8778,7 +8938,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 404 | InvalidRegion.NotF ound | InvalidRegion.NotFound | The specified region does not exist in ApsaraDB RDS. |
 
-#### DescribeActionEventPolicy
+#### 2.14.2 DescribeActionEventPolicy
 
 Queries the status of the event history feature of an ApsaraDB RDS instance. The event history feature enables you to view the events that occurred within a region over a specific time range. Historical events include instance creation and parameter modification.
 
@@ -8837,7 +8997,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 404 | InvalidRegion.NotF ound | InvalidRegion.NotFound | The specified region does not exist in ApsaraDB RDS. |
 
-#### DescribeEvents
+#### 2.14.3 DescribeEvents
 
 Queries the events of ApsaraDB RDS instances within a region. The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification. Before you call this operation, make sure that the event history feature is enabled.
 
@@ -8983,11 +9143,11 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidStartTime.Fo rmat | Specified start time is not valid. | The error message returned because the specified start time is invalid. |
 
-### Performance optimization
+### 2.15 Performance optimization and diagnostics (CloudDBA)
 
 **and diagnostics (CloudDBA)**
 
-#### CreateDiagnosticReport
+#### 2.15.1 CreateDiagnosticReport
 
 Creates a diagnostic report for an ApsaraDB RDS instance.
 
@@ -9033,7 +9193,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeDiagnosticReportList
+#### 2.15.2 DescribeDiagnosticReportList
 
 Queries diagnostic reports of an ApsaraDB RDS instance. This operation returns the details of diagnostic reports such as the time range of monitoring data, report generation time, and download URL. The diagnostic reports are retained for 15 days.
 
@@ -9111,9 +9271,9 @@ i.aliyuncs.com/xxxxx",
 
 `}`
 
-### Data migration
+### 2.16 Data migration
 
-#### CreateUploadPathForSQLServer
+#### 2.16.1 CreateUploadPathForSQLServer
 
 Obtains the information used to upload files.
 
@@ -9188,7 +9348,7 @@ Sample success responses `XML` format
 | 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | The error message returned because an FTP server error occurred. |
 | 403 | OperationDenied.D BStatus | The operation is not permitted due to status of database. | The error message returned because this operation is not supported when the instance or database is in the read-only state. Before you call this operation on an ApsaraDB RDS for SQL Server instance of the dedicated instance family, make sure that the following requirements are met: 1. The instance is in the running state. 2. The instance does not have temporary backup tasks. 3. The instance does not have migration tasks. 4. The instance does not have restoration tasks. 5. Files have been uploaded and are valid. |
 
-#### DescribeFilesForSQLServer
+#### 2.16.2 DescribeFilesForSQLServer
 
 Queries the details of data files for an ApsaraDB RDS instance. This operation returns the username used to log on to the file server. After data files are uploaded, their states are updated. This operation also returns the states of data files. If data files are available, you can migrate the data files and view their migration progress information.
 
@@ -9309,7 +9469,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | The error message returned because an FTP server error occurred. |
 
-#### ImportDatabaseBetweenInstances
+#### 2.16.3 ImportDatabaseBetweenInstances
 
 Migrates data across ApsaraDB RDS instances. We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features to help you establish stable and secure transmission links. During migration, the source instance changes to the **Migrating** state and the destination instance changes to the **Importing Data** state. Before you call this operation, make sure that the following requirements are met: The source and destination instances run SQL Server and belong to the dedicated or dedicated host instance family. For more information about instance types, see **Instance**
 **types** in **ApsaraDB RDS****Product Introduction**.
@@ -9365,7 +9525,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CancelImport
+#### 2.16.4 CancelImport
 
 Cancels a migration task of an ApsaraDB RDS instance. This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For information about how to initiate a migration task, see ImportDatabaseBetweenInstances.
 
@@ -9411,7 +9571,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateMigrateTask
+#### 2.16.5 CreateMigrateTask
 
 Creates a backup data migration task from Object Storage Service (OSS) to ApsaraDB RDS for SQL Server.
 
@@ -9486,7 +9646,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidOSSURL | The Specified OSS URL is not valid | The error message returned because the specified OSS URL is invalid. |
 
-#### DescibeImportsFromDatabase
+#### 2.16.6 DescibeImportsFromDatabase
 
 Queries the details of migration tasks for an ApsaraDB RDS instance. This operation is supported only for instances that run MySQL or SQL Server. For information about how to initiate a migration task, see ImportDatabaseBetweenInstances.
 
@@ -9581,7 +9741,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | OperationDenied.D BInstanceType | The operation is not permitted due to type of instance. | The error message returned because this operation is not supported when the instance is not a primary instance. |
 
-#### DescribeMigrateTaskById
+#### 2.16.7 DescribeMigrateTaskById
 
 Queries a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 
@@ -9650,7 +9810,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeMigrateTasks
+#### 2.16.8 DescribeMigrateTasks
 
 Queries backup data migration tasks for an ApsaraDB RDS for SQL Server instance. This operation allows you to query the backup data migration tasks that are created for an instance within the last week.
 
@@ -9742,7 +9902,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-#### DescribeOssDownloads
+#### 2.16.9 DescribeOssDownloads
 
 Queries the backup file details of a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 
@@ -9830,9 +9990,9 @@ Sample success responses `XML` format
 
 `}` `}` `}` `}`
 
-### Tag management
+### 2.17 Tag management
 
-#### TagResources
+#### 2.17.1 TagResources
 
 Creates and adds tags to ApsaraDB RDS instances. If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter the instances by tag. A tag consists of a key and a value. Each key must be unique within a region for an Apsara Stack account. Different keys can be mapped to the same value. If the tag that you specify does not exist, this tag is automatically created and added to the specified instance. If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag. You can add up to 20 tags to each instance. You can add tags to up to 50 instances at a time.
 
@@ -9879,7 +10039,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### AddTagsToResource
+#### 2.17.2 AddTagsToResource
 
 Adds existing or new tags to an ApsaraDB RDS instance. This operation has the following limits: Each tag consists of a tag key and a tag value. The tag key is required, and the tag value is optional. Tag keys and tag values cannot start with aliyun. Tag keys and tag values are not case-sensitive. Each tag key can be up to 64 characters in length, and each tag value can be up to 128 characters in length. Up to 10 tags can be added to each instance. The tag keys of these tags must be unique. If you add two tags that have the same tag value to an instance, the new tag overwrites the existing tag.
 
@@ -9938,7 +10098,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ListTagResources
+#### 2.17.3 ListTagResources
 
 Queries the tags that are added to ApsaraDB RDS instances.
 
@@ -10017,7 +10177,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### UntagResources
+#### 2.17.4 UntagResources
 
 Removes tags from ApsaraDB RDS instances.
 
@@ -10066,7 +10226,7 @@ Sample success responses `XML` format
 
 `}`
 
-### RAM authorization
+### 2.18 RAM authorization
 
 **Use RAM for RDS resource authorization**
 
@@ -10177,11 +10337,11 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 | DescribeOptimizeAdviceByDBA | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | ModifyeParameter | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 
-### Appendix
+### 2.19 Appendix
 
-#### Error codes on the client
+#### 2.19.1 Error codes on the client
 
-##### Common errors
+##### 2.19.1.1 Common errors
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
@@ -10210,7 +10370,7 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
 
-##### Specific errors
+##### 2.19.1.2 Specific errors
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
@@ -10332,14 +10492,14 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 | PublicConnectionExists | PublicConnection exists. | 403 |
 | bpcIzNoNotEqualsRdsMultIzNo | Specified vpc IzNo not equal rds IzNo. | 400 |
 
-#### Error codes on the server
+#### 2.19.2 Error codes on the server
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
 
-#### Instance states
+#### 2.19.3 Instance states
 
 | State | Description |
 |---|---|
@@ -10361,7 +10521,7 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 | GuardSwitching | The instance is undergoing disaster recover failover. |
 | INS CLONING _ | The instance is being cloned. |
 
-#### Performance parameters
+#### 2.19.4 Performance parameters
 
 **ApsaraDB RDS for MySQL**
 
@@ -10408,7 +10568,7 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 | SQLServer IOPS _ | The IOPS of an SQL server instance. |
 | SQLServer SpaceUsage _ | The space usage of an SQL Server instance within the entire operating system. |
 
-#### Forbidden keywords
+#### 2.19.5 Forbidden keywords
 
 **ApsaraDB RDS for MySQL**
 
@@ -10422,7 +10582,7 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 |---|---|
 | DBName/ AccountName | root,admin,eagleye,master,aurora,sa,sysadmin,administrator,mssqld,public,security admin,serveradmin,setupadmin,pr ocessadmin,diskadmin,dbcreator,bulkadmin,tempdb,msdb,model,distribution,mssqls ystemresource,guest,add,except, percent,all,exec,plan,alter,execute,precision,and,exists,primary,any,exit,print,as,fetc h,proc,asc,file,procedure,authorizati on,fillfactor,public,backup,for,raiserror,begin,foreign,read,between,freetext,readtext, break,freetexttable,reconfigure,br owse,from,references,bulk,full,replication,by,function,restore,cascade,goto,restrict,c ase,grant,return,check,group,rev oke,checkpoint,having,right,close,holdlock,rollback,clustered,identity,rowcount,coale sce,identity insert,rowguidcol,coll _ ate,identitycol,rule,column,if,save,commit,in,schema,compute,index,select,constrain t,inner,session user,contains,insert, _ set,containstable,intersect,setuser,continue,into,shutdown,convert,is,some,create,jo in,statistics,cross,key,system user, _ current,kill,table,current date,left,textsize,current time,like,then,current timestamp, _ _ _ lineno,to,current user,load,top,cur _ sor,national,tran,database,nocheck,transaction,dbcc,nonclustered,trigger,deallocate ,not,truncate,declare,null,tsequal, default,nullif,union,delete,of,unique,deny,off,update,desc,offsets,updatetext,disk,on, use,distinct,open,user,distributed, opendatasource,values,double,openquery,varying,drop,openrowset,view,dummy,op enxml,waitfor,dump,option,when, else,or,where,end,order,while,errlvl,outer,with,escape,over,writetext,galaxy |
 
-#### Instance specifications
+#### 2.19.6 Instance specifications
 
 Instances of different editions, versions, and instance types each perform differently from one another. Table 1. ApsaraDB RDS for MySQL instance specifications
 

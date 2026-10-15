@@ -3,14 +3,83 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer User Guide 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 130
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer User Guide 20260828.pdf"
+source_pdf: "5269826c1e6a94a5_Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Server%20Load%20Balancer%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Server Load Balancer User Guide 20260828
 
-## What is SLB?
+## Table of Contents
+
+- 1 What is SLB?
+- 2 Log on to the SLB console
+- 3 Quick start
+  - 3.1 Overview
+  - 3.2 Preparations
+  - 3.3 Create an SLB instance
+  - 3.4 Configure an SLB instance
+  - 3.5 Release an SLB instance
+  - 3.6 Enable Proxy Protocol to obtain client IP addresses
+  - 3.7 Add backend servers and their ENIs
+- 4 SLB instances
+  - 4.1 Overview
+  - 4.2 Instance management
+    - 4.2.1 Instance overview
+    - 4.2.2 Create and manage CLB instances
+    - 4.2.3 Listeners
+      - 4.2.3.1 Listener overview
+      - 4.2.3.2 Configure and manage listeners
+        - 4.2.3.2.1 Add a TCP listener
+        - 4.2.3.2.2 Add a UDP listener
+        - 4.2.3.2.3 Add an HTTP listener
+        - 4.2.3.2.4 Add an HTTPS listener
+        - 4.2.3.2.5 Configure forwarding rules
+        - 4.2.3.2.6 Domain name extensions
+          - 4.2.3.2.6.1 SLB additional domain names
+          - 4.2.3.2.6.2 Add and manage additional domain names
+    - 4.2.4 Backend servers
+      - 4.2.4.1 Backend server overview
+      - 4.2.4.2 vServer groups
+        - 4.2.4.2.1 Create a vServer group
+        - 4.2.4.2.2 Modify a vServer group
+        - 4.2.4.2.3 Delete a vServer group
+      - 4.2.4.3 Default server groups
+        - 4.2.4.3.1 Add a backend server
+        - 4.2.4.3.2 Change the weights of backend servers in the default server group
+        - 4.2.4.3.3 Remove backend servers
+      - 4.2.4.4 Primary/secondary server groups
+        - 4.2.4.4.1 Create a primary/secondary server group
+        - 4.2.4.4.2 Delete a primary/secondary server group
+    - 4.2.5 Primary/secondary vServer groups
+    - 4.2.6 Health checks
+      - 4.2.6.1 Health check overview
+      - 4.2.6.2 Configure health checks
+      - 4.2.6.3 Disable the health check feature
+    - 4.2.7 Associate an EIP with an internal-facing SLB instance and manage the EIP
+    - 4.2.8 View monitoring data in the console
+    - 4.2.9 View fine-grained monitoring data in the console
+    - 4.2.10 View the details of an SLB instance
+  - 4.3 Certificate management
+    - 4.3.1 Certificate overview
+    - 4.3.2 Certificate requirements
+    - 4.3.3 Add and manage certificates
+    - 4.3.4 Generate a CA certificate
+    - 4.3.5 Convert certificate formats
+  - 4.4 Manage access logs
+  - 4.5 Access control
+    - 4.5.1 Access control overview
+    - 4.5.2 Create and manage ACLs
+    - 4.5.3 Adjust the quota on ACLs
+  - 4.6 Operation logs
+  - 4.7 Tag management
+    - 4.7.1 Overview
+    - 4.7.2 Add tags
+    - 4.7.3 Remove tags
+    - 4.7.4 Search for resources by tag
+- 5 Quick links
+
+## 1 What is SLB?
 
 This topic provides an overview of Server Load Balancer (SLB). SLB distributes network traffic across backend Elastic Compute Service (ECS) instances based on forwarding rules. SLB extends the service capability of applications and enhances their availability.
 
@@ -20,13 +89,13 @@ After you add ECS instances that are deployed in the same region to an SLB insta
 
 **Components**
 
-SLB consists of the following components: SLB instances An SLB instance is a running entity of the SLB service that receives and distributes traffic to backend servers. To get started with SLB, you must create an SLB instance and add at least one listener and two ECS instances to the SLB instance. Listeners A listener checks client requests and forwards them to backend servers. A listener also performs health checks on backend servers. Backend servers ECS instances are used as backend servers in SLB to receive and process client requests. You can add ECS instances to the default server group of an SLB instance. You can also add multiple ECS servers to vServer groups or primary/secondary server groups after the corresponding groups are created.
+SLB consists of the following components: An SLB instance is a running entity of the SLB service that receives and distributes traffic to backend servers. To get started with SLB, you must create an SLB instance and add at least one listener and two ECS instances to the SLB instance. A listener checks client requests and forwards them to backend servers. A listener also performs health checks on backend servers. ECS instances are used as backend servers in SLB to receive and process client requests. You can add ECS instances to the default server group of an SLB instance. You can also add multiple ECS servers to vServer groups or primary/secondary server groups after the corresponding groups are created.
 
 **Benefits**
 
 High availability SLB is designed with full redundancy to eliminate single points of failure and support zonedisaster recovery. You can use SLB with services such as Apsara Stack DNS to implement geo-disaster recovery with 99.95% service uptime. SLB can be scaled based on application loads to ensure business continuity during traffic fluctuations. Scalability You can add or remove backend servers based on your business requirements to improve the availability of your service. Cost-effectiveness SLB can reduce 60% of load balancing costs compared with traditional hardware-based solutions. Security You can integrate SLB with Apsara Stack Security to defend your applications against DDoS attacks of up to 5 Gbit/s. High concurrency An SLB cluster supports hundreds of millions of concurrent connections and a single SLB instance supports tens of millions of concurrent connections. sole
 
-## Log on to the SLB console
+## 2 Log on to the SLB console
 
 This topic describes how to navigate to the Server Load Balancer (SLB) console after you log on to the Apsara Uni-manager Management Console by using Google Chrome.
 
@@ -55,19 +124,13 @@ operations based on your scenario: Scenario 1: You log on to the Apsara Uni-mana
 the Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Networking > Server Load Balancer**.
 
-## Quick start
+## 3 Quick start
 
-### Overview
+### 3.1 Overview
 
-This topic describes how to create an Internet-facing Server Load Balancer (SLB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances. Before you create an SLB instance, you must determine the configurations of the SLB instance, such as the region, type, and specification. For more information, see Preparations. This topic includes the following operations:
-1. Create an SLB instance
-Create an SLB instance. An SLB instance is an entity that provides load balancing services.
-2. Configure an SLB instance
-After you create an SLB instance, you must add listeners and backend servers to the SLB instance.
-3. Release an SLB instance
-If you no longer need the SLB instance, you can release it.
+This topic describes how to create an Internet-facing Server Load Balancer (SLB) instance to distribute client requests to two backend Elastic Compute Service (ECS) instances. Before you create an SLB instance, you must determine the configurations of the SLB instance, such as the region, type, and specification. For more information, see Preparations. This topic includes the following operations: Create an SLB instance. An SLB instance is an entity that provides load balancing services. After you create an SLB instance, you must add listeners and backend servers to the SLB instance. If you no longer need the SLB instance, you can release it.
 
-### Preparations
+### 3.2 Preparations
 
 Before you create a Server Load Balancer (SLB) instance, you must determine the configurations of the SLB instance, such as the listener type and network type.
 
@@ -106,7 +169,7 @@ Before you use SLB, you must create ECS instances that function as backend serve
 net.ipv4.conf.default.rp_filter = 0 net.ipv4.conf.all.rp_filter = 0 net.ipv4.conf.eth0.rp_filter = 0
 ```
 
-### Create an SLB instance
+### 3.3 Create an SLB instance
 
 A Server Load Balancer (SLB) instance is an entity that provides load balancing services. You can add multiple listeners and backend servers to an SLB instance.
 
@@ -169,9 +232,7 @@ icon in the upper-right corner. Select the columns to include, such as Instance 
 
 **What to do next**
 
-Configure an SLB instance
-
-### Configure an SLB instance
+### 3.4 Configure an SLB instance
 
 This topic describes how to configure a Server Load Balancer (SLB) instance. To enable an SLB instance to forward traffic, you must add at least one listener and one group of backend servers to the SLB instance. In this example, a TCP listener and two Elastic Compute Service (ECS) instances named ECS01 and ECS02 are added to an SLB instance. These ECS instances function as backend servers that host static web pages.
 
@@ -217,7 +278,7 @@ icon to refresh the page. If the health check status of the backend ECS instance
 1. Enter the IP address of the SLB instance in the address bar of a browser to test the load
 balancing performance of the SLB instance. Figure 1: ECS01 Figure 2: ECS02
 
-### Release an SLB instance
+### 3.5 Release an SLB instance
 
 This topic describes how to release a Server Load Balancer (SLB) instance. After you release an SLB instance, the backend Elastic Compute Service (ECS) instances of the SLB instance are not released or affected.
 
@@ -235,7 +296,7 @@ To release multiple instances: Select the checkboxes of the instances, and then 
 5. In the **Release** panel, click **Release**.
 6. In the **Release Resource** dialog box, click **Confirm Release**.
 
-### Enable Proxy Protocol to
+### 3.6 Enable Proxy Protocol to obtain client IP addresses
 
 **obtain client IP addresses**
 
@@ -292,7 +353,7 @@ stream {
 
 The following example shows how an IPv4 client IP address is carried in the Proxy Protocol V2 header in the binary format. The following example shows how an IPv6 client IP address is carried in the Proxy Protocol V2 header in the binary format.
 
-### Add backend servers and their
+### 3.7 Add backend servers and their ENIs
 
 **ENIs**
 
@@ -330,9 +391,9 @@ A larger weight indicates that the backend server can receive more requests. The
 2. Select the ECS instances that you want to add and click **Create**. In the **Confirm** message,
 click **OK**.
 
-## SLB instances
+## 4 SLB instances
 
-### Overview
+### 4.1 Overview
 
 This topic describes how to view the total number of instances and quotas on public IP addresses and internal IP addresses in the Server Load Balancer (SLB) console.
 
@@ -349,9 +410,9 @@ addresses and private IP addresses. In the **Top 10 in Quota Use** section, clic
 **Network Quota Utilization**, or **Internet Quota Utilization** tab to view the quota
 usage rankings of the organization and the quota usage of each network type in the previous 7, 15, or 30 days. In the **Monitoring Sorting** section, you can view the monitoring data. In the **Alarm Statistics** section, you can view alerts.
 
-### Instance management
+### 4.2 Instance management
 
-#### Instance overview
+#### 4.2.1 Instance overview
 
 Server Load Balancer (SLB) balances loads by distributing requests from clients across backend servers. To use SLB, you must create an SLB instance and add listeners and backend servers to the SLB instance.
 
@@ -386,7 +447,7 @@ High-performance SLB instances have the following key metrics: Maximum number of
 
 The available specifications vary based on the actual scenario. The preceding table is for reference only.
 
-#### Create and manage CLB instances
+#### 4.2.2 Create and manage CLB instances
 
 A Classic Load Balancer (CLB) instance is a running instance of the load balancing service. You can add multiple listeners and backend servers to a CLB instance.
 
@@ -529,9 +590,9 @@ The key information card for the instance displays important information, includ
 **Network** to view the details of the VPC and VSwitch to which the CLB instance belongs.
 For an internal-facing instance in a VPC, click **Modify Specification** in the upper-right corner of the **Specification information** section to change the instance specification. For an internal-facing instance in a VPC, click **Bind** or **Unbind** in the upper-right corner of the **EIP information** section to associate and manage an EIP. For more information, see Associate and manage an EIP for an internal-facing SLB instance. If an EIP is associated, click its ID next to **EIP** to view its details. Click the **Listeners** tab to manage the listeners for the instance. For more information, see Configure and manage listeners. Click the **Virtual server groups** tab to manage the virtual server groups for the instance. For more information, see Virtual server groups. Click the **Default server group** tab to manage the default server group for the instance. For more information, see Default server group. Click the **Primary/secondary server group** tab to manage the primary/secondary server groups for the instance. For more information, see Primary/secondary server groups. Click the **Monitoring** tab to view the CloudMonitor data for the instance. For more information, see View monitoring data in the console. Click the **High-precision second-level monitoring** tab to view second-level CloudMonitor data for Layer 4 load balancing. For more information, see View highprecision second-level monitoring data in the console. Click the **Action log** tab to view the operation logs for the instance. For more information, see Action logs. In the upper-right corner, click **Start** or **Stop** to start or stop the CLB instance. In the upper-right corner, click **Modify Specification** to change the instance specification.
 
-#### Listeners
+#### 4.2.3 Listeners
 
-##### Listener overview
+##### 4.2.3.1 Listener overview
 
 This topic provides an overview of listeners. After you create a Server Load Balancer (SLB) instance, you must configure one or more listeners for the SLB instance. A listener checks for connection requests and then distributes the requests to backend servers based on the forwarding rules that are defined by a specified scheduling algorithm. SLB provides TCP and UDP listeners for Layer 4 load balancing, and HTTP and HTTPS listeners for Layer 7 load balancing. The following table describes the features and use scenarios of these listeners.
 
@@ -544,9 +605,9 @@ This topic provides an overview of listeners. After you create a Server Load Bal
 | HTTP | An application-layer protocol that is used to package data. Cookie-based session persistence. Retrieve client IP addresses by using the X-Forward-For header. | Intended for applications that identify data content, such as web applications and mobile games. |
 | HTTPS | Encrypted data transmission that prevents unauthorized access. Centralized certificate management service. You can upload certificates to SLB. Then, data decryption is offloaded from backend servers to SLB. | Intended for applications that require encrypted data transmission. |
 
-##### Configure and manage listeners
+##### 4.2.3.2 Configure and manage listeners
 
-###### Add a TCP listener
+###### 4.2.3.2.1 Add a TCP listener
 
 TCP provides reliable and accurate content delivery at relatively low connection speeds. Therefore, TCP is ideal for file transfer, email services, and remote logins. You can add a TCP listener to forward TCP requests.
 
@@ -673,7 +734,7 @@ the following table and click **OK**.
 | Access Control Mode | The access control method. This parameter is required only if you turn on Access Control. Valid values: Whitelist: Allows Access from Specified IP Addresses: Only requests from the IP addresses or CIDR blocks specified in the access control list (ACL) are forwarded. You can use a whitelist in scenarios where you want to allow access only from specific IP addresses to an application. Blacklist: Block specific IP addresses from accessing the IP address of the SLB instance.: Requests from the IP addresses or CIDR blocks specified in the ACL are denied. You can use a blacklist in scenarios where you want to deny access only from specific IP addresses to an application. |
 | Select ACL | The ACL to use. This parameter is required only if you turn on Access Control. |
 
-###### Add a UDP listener
+###### 4.2.3.2.2 Add a UDP listener
 
 UDP is ideal for services that prioritize real-time content delivery over reliability, such as video conferencing and real-time quote services. You can add a UDP listener to forward UDP requests.
 
@@ -803,7 +864,7 @@ the following table and click **OK**.
 | Access Control Mode | The access control method. This parameter is required only if you turn on Access Control. Valid values: Whitelist: Allows Access from Specified IP Addresses: Only requests from the IP addresses or CIDR blocks specified in the access control list (ACL) are forwarded. You can use a whitelist in scenarios where you want to allow access only from specific IP addresses to an application. Blacklist: Block specific IP addresses from accessing the IP address of the SLB instance.: Requests from the IP addresses or CIDR blocks specified in the ACL are denied. You can use a blacklist in scenarios where you want to deny access only from specific IP addresses to an application. |
 | Select ACL | The ACL to use. This parameter is required only if you turn on Access Control. |
 
-###### Add an HTTP listener
+###### 4.2.3.2.3 Add an HTTP listener
 
 HTTP is ideal for applications that need to identify data content, such as web applications and mobile games. You can add HTTP listeners to forward HTTP requests.
 
@@ -934,7 +995,7 @@ the following table and click **OK**.
 | Access Control Mode | The access control method. This parameter is required only if you turn on Access Control. Valid values: Whitelist: Allows Access from Specified IP Addresses: Only requests from the IP addresses or CIDR blocks specified in the access control list (ACL) are forwarded. You can use a whitelist in scenarios where you want to allow access only from specific IP addresses to an application. Blacklist: Block specific IP addresses from accessing the IP address of the SLB instance.: Requests from the IP addresses or CIDR blocks specified in the ACL are denied. You can use a blacklist in scenarios where you want to deny access only from specific IP addresses to an application. |
 | Select ACL | The ACL to use. This parameter is required only if you turn on Access Control. |
 
-###### Add an HTTPS listener
+###### 4.2.3.2.4 Add an HTTPS listener
 
 This topic describes how to add an HTTPS listener to a Server Load Balancer (SLB) instance. HTTPS is intended for applications that require encrypted data transmission. You can add an HTTPS listener to forward HTTPS requests.
 
@@ -1085,7 +1146,7 @@ the following table and click **OK**.
 | Access Control Mode | The access control method. This parameter is required only if you turn on Access Control. Valid values: Whitelist: Allows Access from Specified IP Addresses: Only requests from the IP addresses or CIDR blocks specified in the access control list (ACL) are forwarded. You can use a whitelist in scenarios where you want to allow access only from specific IP addresses to an application. Blacklist: Block specific IP addresses from accessing the IP address of the SLB instance.: Requests from the IP addresses or CIDR blocks specified in the ACL are denied. You can use a blacklist in scenarios where you want to deny access only from specific IP addresses to an application. |
 | Select ACL | The ACL to use. This parameter is required only if you turn on Access Control. |
 
-###### Configure forwarding rules
+###### 4.2.3.2.5 Configure forwarding rules
 
 This topic describes how to configure forwarding rules for a Server Load Balancer (SLB) instance. You can configure domain name-based or URL-based forwarding rules for an SLB instance that uses Layer 7 listeners. Layer 7 listeners distribute requests destined for different domain names or URLs to different Elastic Compute Service (ECS) instances.
 
@@ -1168,9 +1229,9 @@ find the listener that you want to manage and click **Configure Forwarding Rule*
 3. In the message that appears, click **OK**.
 4. In the message that appears, confirm the high-risk operation and click **Delete**.
 
-###### Domain name extensions
+###### 4.2.3.2.6 Domain name extensions
 
-###### SLB additional domain names
+###### 4.2.3.2.6.1 SLB additional domain names
 
 To allow a listener to distribute HTTPS requests that are destined for different domain names to different backend server groups, you can add multiple SSL certificates to the listener.
 
@@ -1182,7 +1243,7 @@ Server Name Indication (SNI) is an extension to SSL and TLS. SNI allows a server
 
 SNI is supported only by high-performance SLB instances. SLB supports the following algorithms for public keys: RSA 1024 RSA 2048 RSA 4096 ECDSA P-256 ECDSA P-384 ECDSA P-521
 
-###### Add and manage additional domain
+###### 4.2.3.2.6.2 Add and manage additional domain names
 
 **names**
 
@@ -1239,9 +1300,9 @@ You can remove additional domain names that you no longer use. The default domai
 want to remove in the **Additional Certificates** section and click **Delete** in the **Actions** column.
 2. In the message that appears, click **Delete**.
 
-#### Backend servers
+#### 4.2.4 Backend servers
 
-##### Backend server overview
+##### 4.2.4.1 Backend server overview
 
 Before you use a Server Load Balancer (SLB) instance, you must add Elastic Compute Service (ECS) instances as the backend servers of the SLB instance to receive requests forwarded by the listeners of the SLB instance.
 
@@ -1265,9 +1326,9 @@ Each SLB instance can have multiple vServer groups. You can associate listeners 
 
 You cannot associate a Layer 7 listener with a primary/secondary server group. You can associate only TCP and UDP listeners with primary/secondary server groups. A primary/secondary server group contains only two ECS instances. One ECS instance serves as the primary server, and the other ECS instance serves as the secondary server. SLB does not perform health checks on the secondary server in a primary/secondary server group. If the primary server is down, network traffic is automatically distributed to the secondary server. When the primary server recovers, network traffic is switched back to the primary server. For more information, see Add ECS instances to a primary/secondary server group.
 
-##### vServer groups
+##### 4.2.4.2 vServer groups
 
-###### Create a vServer group
+###### 4.2.4.2.1 Create a vServer group
 
 This topic describes how to create a vServer group and add on-premises servers or Elastic Compute Service (ECS) instances to the vServer group. A vServer group is a group of ECS instances or on-premises servers. If you associate a vServer group with a listener, the listener distributes requests only to backend servers in the vServer group.
 
@@ -1331,7 +1392,7 @@ want and click **Set Same Weight** below the list.
 
 In the **Added Servers** section on the **Create vServer Group** page, find the server you want to remove and click **Delete** in the **Actions** column. In the **Added Servers** section on the **Create vServer Group** page, select the backend servers that you want to remove and click **Delete** below the list.
 
-###### Modify a vServer group
+###### 4.2.4.2.2 Modify a vServer group
 
 This topic describes how to modify the configurations of Elastic Compute Service (ECS) instances or on-premises servers in a vServer group.
 
@@ -1353,7 +1414,7 @@ on-premises servers, and click **Save**.
 A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
 7. In the message that appears, click **OK**.
 
-###### Delete a vServer group
+###### 4.2.4.2.3 Delete a vServer group
 
 If you no longer use a vServer group to receive requests, you can delete the vServer group.
 
@@ -1371,9 +1432,9 @@ in the **Actions** column.
 6. In the **Confirm** message, click **OK**.
 7. In the message that appears, confirm the high-risk operation and click **Delete**.
 
-##### Default server groups
+##### 4.2.4.3 Default server groups
 
-###### Add a backend server
+###### 4.2.4.3.1 Add a backend server
 
 Each Server Load Balancer (SLB) instance is associated with a default server group, which is shared by all listeners added to the SLB instance. You can add backend servers to the default server group as needed. Before an SLB instance can process requests, you must add at least one backend server to the default server group to receive requests.
 
@@ -1416,7 +1477,7 @@ A larger weight indicates that the backend server can receive more requests. The
 6. In the **Servers to Add** panel, select the servers that you want and click **OK**.
 7. In the message that appears, click **OK**.
 
-###### Change the weights of backend servers
+###### 4.2.4.3.2 Change the weights of backend servers in the default server group
 
 **in the default server group**
 
@@ -1442,7 +1503,7 @@ Change the weights of multiple backend servers at a time i. On the Default Serve
 
 A larger weight indicates that the backend server can receive more requests. The default weight is 100. Valid values: 0 to 100. If session persistence is enabled, requests may not be evenly distributed to backend servers. If you set the weight of a server to 0, the server does not receive requests.
 
-###### Remove backend servers
+###### 4.2.4.3.3 Remove backend servers
 
 This topic describes how to remove backend servers that are no longer needed.
 
@@ -1460,9 +1521,9 @@ On the **Instance Management** page, click the ID or name of the SLB instance. A
 5. Remove backend servers.
 Remove a single backend server i. On the Default Server Group tab, find the backend server that you want to remove and click **Remove** in the **Actions** column. ii. In the **Confirm** message, click **OK**. Remove multiple backend servers at a time i. On the Default Server Group tab, select the backend servers that you want to remove and click **Batch Delete** in the lower-left corner. ii. In the **Confirm** message, click **OK**.
 
-##### Primary/secondary server groups
+##### 4.2.4.4 Primary/secondary server groups
 
-###### Create a primary/secondary server group
+###### 4.2.4.4.1 Create a primary/secondary server group
 
 In traditional scenarios, the backend server group consists of a primary server and a secondary server. If the primary server fails, requests are distributed to the secondary server.
 
@@ -1509,7 +1570,7 @@ Configure the ports based on the following information:
 ports can be opened on an on-premises server. You can set the same port for multiple backend servers for the same SLB instance. In addition, you can click **Add Port** to specify multiple ports for a backend server. v. Select **Host** in the **Type** column and select a server as the primary server.
 6. Click **Create**. In the message that appears, click **OK**.
 
-###### Delete a primary/secondary server group
+###### 4.2.4.4.2 Delete a primary/secondary server group
 
 If you no longer use a primary/secondary server group to receive requests, you can delete the primary/secondary server group.
 
@@ -1526,7 +1587,7 @@ On the **Instance Management** page, find the SLB instance that you want to mana
 you want to delete and click **Delete** in the **Actions** column.
 6. In the message that appears, click **OK**.
 
-#### Primary/secondary vServer groups
+#### 4.2.5 Primary/secondary vServer groups
 
 This topic describes the primary/secondary vServer group feature. A Server Load Balancer (SLB) primary/secondary vServer group supports two groups of virtual servers. When a fault occurs, load balancing services are switched from the primary vServer group to the secondary vServer group.
 
@@ -1581,9 +1642,9 @@ information about the instance that is added as a backend server.
 
 For more information about how to perform other operations on listeners, see the What to do next section of the "Add a TCP listener" topic.
 
-#### Health checks
+#### 4.2.6 Health checks
 
-##### Health check overview
+##### 4.2.6.1 Health check overview
 
 Server Load Balancer (SLB) performs health checks to check the availability of backend Elastic Compute Service (ECS) instances. The health check feature improves overall service availability and reduces the impact of backend server failures. After you enable the health check feature for an SLB instance, the SLB instance periodically checks whether the backend ECS instances are healthy. When the SLB instance detects an unhealthy ECS instance, the SLB instance distributes new requests to other healthy ECS instances. When the unhealthy ECS instance recovers, the SLB instance distributes requests to the recovered ECS instance again. If your business is highly sensitive to traffic fluctuations, frequent health checks may affect the availability of your business. To reduce the adverse impacts of health checks on your business, you can reduce the health check frequency, increase the health check interval, or change Layer 7 health checks to Layer 4 health checks. To ensure business continuity, we recommend that you enable the health check feature.
 
@@ -1656,7 +1717,7 @@ Time window for health check failures = Response timeout period × Unhealthy thr
 
 You can specify a domain name for HTTP health checks. This setting is optional. Some application servers must verify the host field in requests before the application servers can accept the requests. In this case, the request header must carry the host field. If a domain name is specified in health check configurations, SLB adds this domain name to the host field when SLB forwards a health check request to an application server. If no domain name is specified, SLB does not include the host field in the request. As a result, the request is rejected by the application server and the health check fails. If your application server verifies the host field in requests, you must specify a domain name in health check configurations to ensure that the health check feature works as expected.
 
-##### Configure health checks
+##### 4.2.6.2 Configure health checks
 
 Server Load Balancer (SLB) performs health checks to check the availability of backend Elastic Compute Service (ECS) instances. The health check feature improves service availability and prevents service errors caused by unhealthy backend ECS instances. When you add or modify a listener, you can enable health checks and use the default health check configuration. Alternatively, you can click Advanced Settings and customize the health check configuration. Configure the following parameters in **Advanced Settings** to customize the health check configuration. Table 1. **Advanced Settings** for health checks
 
@@ -1684,7 +1745,7 @@ Server Load Balancer (SLB) performs health checks to check the availability of b
 |---|---|
 | FIN Termination | Specify whether to enable FIN termination. TCP segments with the FIN flag are used to terminate the connection after the health check is complete. However, in certain scenarios, the frequent establishment and termination of connections during health checks may increase CPU overheads. Note This parameter is available only when the Listener Protocol parameter is set to TCP and the Health Check Protocol parameter is set to TCP. |
 
-##### Disable the health check feature
+##### 4.2.6.3 Disable the health check feature
 
 This topic describes how to disable the health check feature for a Server Load Balancer (SLB) instance. If you disable the health check feature, requests may be distributed to unhealthy backend Elastic Compute Service (ECS) instances. This causes service interruptions. We recommend that you enable the health check feature.
 
@@ -1707,7 +1768,7 @@ in the **Actions** column.
 8. Turn off Health Check and click **Next**.
 9. Click **Submit**. In the message that appears, click **OK**.
 
-#### Associate an EIP with an internal-facing
+#### 4.2.7 Associate an EIP with an internal-facing SLB instance and manage the EIP
 
 **SLB instance and manage the EIP**
 
@@ -1750,7 +1811,7 @@ is located.
 6. In the **EIP Information** section, click **Unbind** in the upper-right corner.
 7. In the message that appears, confirm the information and click **OK**.
 
-#### View monitoring data in the console
+#### 4.2.8 View monitoring data in the console
 
 You can view the monitoring data of a Server Load Balancer (SLB) instance in Cloud Monitor, such as the number of connections, number of packets, and data transfer.
 
@@ -1829,7 +1890,7 @@ Set the **Namespace** parameter to **acs_slb_dashboard**. Set the **Period** par
 | Failure rate of seven-tier back- end health check | % | SeventhFloorUnh ealthyServerRat e | userId, instanceId, port, and vip | The percentage of backend ECS instances that fail to pass the health check at Layer 7. |
 |---|---|---|---|---|
 
-#### View fine-grained monitoring data in
+#### 4.2.9 View fine-grained monitoring data in the console
 
 **the console**
 
@@ -1863,7 +1924,7 @@ The following table describes the metrics of Layer 4 SLB.
 | ACL Dropped Packets | The number of packets dropped due to ACL rules. |
 | ACL Dropped Flow | The amount of traffic dropped due to ACL rules. |
 
-#### View the details of an SLB instance
+#### 4.2.10 View the details of an SLB instance
 
 This topic describes how to view the details of a Server Load Balancer (SLB) instance.
 
@@ -1894,9 +1955,9 @@ In the **Basic Information** section of the Instance Details tab, find the **Ins
 | Created At | The time when the instance was created. |
 | Maximum Bandwidth | The maximum bandwidth of the instance. Valid values: 1 to 5120. Unit: Mbit/s. Note This parameter is displayed only if you set the Instance Type parameter to Internet and the Bandwidth limit parameter to Restriction. |
 
-### Certificate management
+### 4.3 Certificate management
 
-#### Certificate overview
+#### 4.3.1 Certificate overview
 
 This topic provides an overview of certificates. To create an HTTPS listener, you must first upload the required third-party server certificate and certificate issued by a certificate authority (CA) to Server Load Balancer (SLB). You do not need to install certificates on backend servers after you upload the certificates to SLB.
 
@@ -1908,7 +1969,7 @@ This topic provides an overview of certificates. To create an HTTPS listener, yo
 
 SLB supports third-party certificates. To upload a third-party certificate, you must have the files that contain the public key and private key of the certificate. HTTPS server certificates and client CA certificates are supported. You can add up to 600 certificates with each account.
 
-#### Certificate requirements
+#### 4.3.2 Certificate requirements
 
 Server Load Balancer (SLB) supports only certificates in the PEM format. Before you upload a certificate, make sure that the certificate content, certificate chain, and private key meet the corresponding format requirements.
 
@@ -1941,7 +2002,7 @@ When you upload a server certificate, you must upload the private key of the cer
 openssl rsa -in old_server_key.pem -out new_server_key.pem
 ```
 
-#### Add and manage certificates
+#### 4.3.3 Add and manage certificates
 
 When you configure an HTTPS listener, you can directly use a certificate from Certificate Management Service or upload a third-party server certificate and a certificate authority (CA) certificate to Server Load Balancer (SLB). After you upload the certificates to SLB, you do not need to configure certificates on backend servers.
 
@@ -2041,7 +2102,7 @@ We recommend that you replace certificates before they expire to avoid impacts o
 2. In the message that appears, click **OK**. All expired certificates are removed.
 If a certificate is associated with a listener, the certificate cannot be removed.
 
-#### Generate a CA certificate
+#### 4.3.4 Generate a CA certificate
 
 When you configure an HTTPS listener, you can use a self-signed certificate authority (CA) certificate. You can also use the CA certificate to sign a client certificate.
 
@@ -2177,7 +2238,7 @@ Enter the passphrase of the client key as prompted and press the Enter key. Then
 
 `ls`
 
-#### Convert certificate formats
+#### 4.3.5 Convert certificate formats
 
 Server Load Balancer (SLB) supports only certificates in the PEM format. Certificates in other formats must be converted to the PEM format before they can be uploaded to SLB. We recommend that you use OpenSSL to convert certificate formats.
 
@@ -2217,7 +2278,7 @@ Run the following command to extract the private key:
 openssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes
 ```
 
-### Manage access logs
+### 4.4 Manage access logs
 
 Server Load Balancer (SLB) allows you to view access logs. After you enable the access log feature, you can store access logs in a Logstore. This way, you can analyze the access logs in Simple Log Service (SLS).
 
@@ -2309,9 +2370,9 @@ in the **Actions** column.
 2. In the message that appears, click **OK**.
 Disabling the access log feature does not delete the corresponding SLS project or Logstore.
 
-### Access control
+### 4.5 Access control
 
-#### Access control overview
+#### 4.5.1 Access control overview
 
 This topic describes how to enable access control for a listener. You can enable access control for each listener of a Server Load Balancer (SLB) instance. After you create a listener, you can enable or disable access control, configure an access control list (ACL), or modify access control configurations for the listener.
 
@@ -2338,7 +2399,7 @@ Apsara Stack allows you to adjust ACL quotas. For more information, see Adjust A
 
 The following figure shows how to configure an ACL for a listener.
 
-#### Create and manage ACLs
+#### 4.5.2 Create and manage ACLs
 
 Server Load Balancer (SLB) supports access control lists (ACLs) for listeners, which can be used to control access from specific IP addresses and CIDR blocks.
 
@@ -2413,7 +2474,7 @@ the **ACL ID/Name** column or **Actions** in the **Manage** column.
 
 On the Access Control page, you can add tags to ACLs for management. For more information, see Manage tags.
 
-#### Adjust the quota on ACLs
+#### 4.5.3 Adjust the quota on ACLs
 
 Server Load Balancer (SLB) allows you to increase the quota on access control lists (ACLs) to thousands of entries. This topic describes how to increase the quota on ACLs.
 
@@ -2476,7 +2537,7 @@ describes the parameters.
 
 3. Click **Add**.
 
-### Operation logs
+### 4.6 Operation logs
 
 Server Load Balancer (SLB) allows you to view the operation log of an SLB instance, which records the instance status, operation source, operation time, and API call details. You can analyze and trace historical operations based on the operation data.
 
@@ -2509,9 +2570,9 @@ and **Operator**. The following table describes the filter conditions.
 5. **Optional.** Find the operation that you want to view and click **Operation Details** in the
 **Operation** column to view the operation details.
 
-### Tag management
+### 4.7 Tag management
 
-#### Overview
+#### 4.7.1 Overview
 
 Server Load Balancer (SLB) provides the tag management feature. You can use tags to mark and classify SLB resources. This way, you can search for and manage the resources by tag.
 
@@ -2519,7 +2580,7 @@ Server Load Balancer (SLB) provides the tag management feature. You can use tags
 
 Tags are used to mark resources. Each tag consists of a key and a value. Before you use tags, take note of the following limits: SLB instances and access control lists (ACLs) support tag management. You can modify the key and value of a tag or remove a tag from a resource. If you delete a resource, all tags added to the resource are removed. This operation does not affect the tags added to other resources. The key of each tag added to the same resource must be unique. If you add a tag that uses the same key as an existing tag, the new tag overwrites the existing tag. At most 10 tags can be added to a resource. You can add or remove a maximum of five tags at a time. Tags cannot exist as an independent resource. If you create a tag, it must be added to a resource.
 
-#### Add tags
+#### 4.7.2 Add tags
 
 Server Load Balancer (SLB) allows you to add tags. You can add tags to a single resource or add tags to multiple resources at a time. This topic describes how to add tags to SLB instances. The method of adding tags to access control lists (ACLs) is similar to that of adding tags to SLB instances.
 
@@ -2541,7 +2602,7 @@ c. In the **Edited** message, confirm the tag information and click **Close**. A
 **Add Tags**.
 b. In the **Batch Add Tags** dialog box, configure the **Tag Key** and **Tag Value** parameters and click **OK**. c. In the **Edited** message, confirm the tag information and click **Close**.
 
-#### Remove tags
+#### 4.7.3 Remove tags
 
 Server Load Balancer (SLB) allows you to remove tags. You can remove tags from a single resource or remove tags from multiple resources at a time. This topic describes how to remove tags from SLB instances. The method of removing tags from access control lists (ACLs) is similar to that of removing tags from SLB instances.
 
@@ -2558,7 +2619,7 @@ b. In the **Batch Remove Tags** dialog box, select the tags that you want to rem
 **Tags to Remove** section and click **OK**.
 c. In the **Edited** message, confirm the tag information and click **Close**.
 
-#### Search for resources by tag
+#### 4.7.4 Search for resources by tag
 
 After you add tags to Server Load Balancer (SLB) instances or access control lists (ACLs), you can quickly search for the resources by tag. This topic describes how to search for resources by tag.
 
@@ -2577,6 +2638,6 @@ b. On the **Access Control** page, click **Advanced Filter** and then click the 
 **Value** sections. Then, click **Search**.
 The resources with the specified tag keys and tag values are displayed.
 
-## Quick links
+## 5 Quick links
 
 Quick links let you quickly open the consoles of related products and manage them. SLB provides quick links to the following products: VPC EIP Express Connect CEN Alibaba Cloud DNS cross-cloud DNS ECS Auto Scaling

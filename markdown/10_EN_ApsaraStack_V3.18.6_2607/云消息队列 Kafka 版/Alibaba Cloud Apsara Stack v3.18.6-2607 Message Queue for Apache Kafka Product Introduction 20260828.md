@@ -3,18 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka P
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 17
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Product Introduction 20260828.pdf"
+source_pdf: "aa5e03f4de7862b1_Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Product Introduction 20260828"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20Kafka%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Message%20Queue%20for%20Apache%20Kafka%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Product Introduction 20260828
 
-## ApsaraMQ for Kafka
+## Table of Contents
+
+- 1 ApsaraMQ for Kafka
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Features
+  - 1.4 Use scenarios
+  - 1.5 Instance specifications
+  - 1.6 Key concepts
+  - 1.7 Limitations
+
+## 1 ApsaraMQ for Kafka
 
 ApsaraMQ for Kafka is a distributed message queue service provided by Alibaba Cloud. This service features high throughput and scalability. Widely used in big data fields such as log collection, monitoring data aggregation, streaming data processing, and online and offline analytics, ApsaraMQ for Kafka consists of an indispensable part of the big data ecosystem. ApsaraMQ for Kafka provides a fully managed service with ultrahigh elasticity, and eliminates the need for deployment and O&M while ensuring professional, reliable, and secure operations.
 
-### Product details
+### 1.1 Product details
 
 ApsaraMQ for Kafka is a fully managed, distributed message queue system designed to reduce the operations and maintenance (O&M) costs and complexity associated with open source Apache Kafka. It provides high-throughput message processing, persistent storage, multi-replica partitions, stream processing, auto-scaling, and security controls. ApsaraMQ for Kafka also features cross-region high availability, elastic scalability, full management, global deployment capabilities, and deep integration with other services. The service is ideal for use cases such as real-time data collection, data pipelines, monitoring and alerting, microservice decoupling, and event-driven architectures. Using ApsaraMQ for Kafka, you can reduce O&M costs, enhance business agility and data processing capabilities, ensure data consistency, and accelerate your time-to-market.
 
@@ -50,7 +61,7 @@ Authentication and Security Layer (SASL) user management, and permission managem
 **Alibaba Cloud VPC:** In addition to public network access, ApsaraMQ for Kafka also
 supports virtual private clouds (VPCs). You have full control over your VPCs. For example, you can select IP address ranges and configure route tables and gateways. You can also use other Alibaba Cloud resources, such as Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, and Server Load Balancer (SLB) instances, in your custom VPCs.
 
-### Benefits
+### 1.2 Benefits
 
 ApsaraMQ for Kafka offers advantages over self-managed open-source Apache Kafka, including out-of-the-box usability, a fully managed service, high availability, and elastic computing.
 
@@ -70,7 +81,7 @@ The Alibaba Cloud development and performance optimization teams have improved t
 
 You can scale resources as needed as needed. The scaling process does not affect your applications. Cluster scale-out: You can scale out nodes horizontally. Partition scale-out: You can scale out partitions quickly.
 
-### Features
+### 1.3 Features
 
 ApsaraMQ for Kafka is a distributed message queue service provided by Alibaba Cloud. This service features high throughput and scalability. It lets you manage instances, topics, and groups, to perform monitoring and O&M, and guarantees high reliability at the same time.
 
@@ -176,7 +187,7 @@ ApsaraMQ for Kafka is a distributed message queue service provided by Alibaba Cl
 |---|---|
 | Zone-disaster recovery | The system supports the configuration of a zone-disaster recovery architecture and switchover between zones. Note This feature needs to be used with KafkaReplicator. |
 
-### Use scenarios
+### 1.4 Use scenarios
 
 This topic describes the typical use scenarios of ApsaraMQ for Kafka, including website activity tracking, log aggregation, stream computing, and data transfer hub.
 
@@ -200,7 +211,7 @@ In fields such as stock market trend analysis, meteorological data monitoring an
 
 Over the past 10 years, dedicated systems have emerged to provide specific services such as key-value storage (HBase), search (Elasticsearch), stream processing (Storm, Spark, and Samza), and time series database (OpenTSDB). Each dedicated system is designed for a single goal. The simplicity of dedicated systems makes it easier and more cost-efficient to build distributed systems on commercial hardware. In most cases, the same dataset needs to be injected into multiple dedicated systems. For example, if application logs are used for offline analysis, searching for a single log is also required. However, it is impractical to construct an independent workflow to collect data of each type before importing the data to the corresponding dedicated systems. In this case, you can use ApsaraMQ for Kafka as a data transfer hub to import the same data record to different dedicated systems. ApsaraMQ for Kafka provides the following benefits when it serves as a data transfer hub: High-capacity storage: ApsaraMQ for Kafka can store a large amount of data on commercial hardware and help build horizontally scalable distributed systems. One-to-many consumption model: The publish-subscribe model allows the same dataset to be consumed multiple times. Real-time and batch processing: ApsaraMQ for Kafka supports local data persistence and page cache, and transmits messages to consumers for real-time processing and batch processing at the same time without performance loss.
 
-### Instance specifications
+### 1.5 Instance specifications
 
 This topic describes the specification types available for the Enterprise Edition of Message Queue for Apache Kafka to help you select an instance specification that meets your business requirements.
 
@@ -222,7 +233,7 @@ The Enterprise Edition of Message Queue for Apache Kafka offers the following in
 |   |   | 16 | 64 |   |   | Cluster- shared 120 MB/s read/write bandwidt h | Recommend ed maximum of 600 partition leaders per cluster. |
 |   |   | 32 | 128 |   |   | Cluster- shared 240 MB/s read/write bandwidt h | Recommend ed maximum of 1,200 partition leaders per cluster. |
 
-### Key concepts
+### 1.6 Key concepts
 
 This topic defines and explains the terms and concepts used in Message Queue for Apache Kafka to help you better understand and use the product.
 
@@ -270,7 +281,7 @@ By default, messages with the same key are distributed to the same partition and
 
 In Message Queue for Apache Kafka, a topic is a logical category for classifying messages, consisting of one or more partitions distributed across one or more brokers.
 
-### Limitations
+### 1.7 Limitations
 
 Before you use the Message Queue for Apache Kafka service, you need to understand the usage limits of Message Queue for Apache Kafka.
 

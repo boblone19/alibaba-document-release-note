@@ -3,22 +3,50 @@ title: "Data Transmission Service Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 32
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Data Transmission Service Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "45b58ca37518b1e5_Alibaba Cloud Apsara Stack V3.18.6 Data Transmission Service Operations and Maintenance Guide 202606"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Data%20Transmission%20Service%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Data Transmission Service Operations and Maintenance Guide
 
-## DTS O&M console overview
+## Table of Contents
+
+- 1 DTS O&M console overview
+- 2 Log on to the DTS O&M console
+- 3 Task management
+  - 3.1 Manage tasks
+  - 3.2 Manage modules in a task
+  - 3.3 Resize the DStore memory
+- 4 Task engine
+  - 4.1 Query tasks
+- 5 Monitoring and alerting
+  - 5.1 View the monitoring information of full data migration tasks
+  - 5.2 View dashboard data
+- 6 Cluster management
+  - 6.1 Manage clusters
+  - 6.2 Manage change tracking tasks in DStore Workbench
+- 7 Resource management
+  - 7.1 View DTS resources
+  - 7.2 Manage DTS resources
+  - 7.3 View the CIDR blocks of DTS servers
+- 8 O&M support
+  - 8.1 Modify the Numen configurations
+- 9 O&M practices
+  - 9.1 View alerts
+  - 9.2 View logs
+  - 9.3 Practices for managing data migration and data synchronization tasks
+  - 9.4 Practices for managing change tracking tasks
+
+## 1 DTS O&M console overview
 
 The Data Transmission Service (DTS) O&M console is a backend system for DTS. This topic describes the features of the DTS O&M console.
 
 **Features**
 
-The DTS O&M console provides the following features: Task management You can view the information about DTS tasks, such as the basic information, source database information, and destination database information. Task engine You can query information such as task type, error messages, business ID, creation time, and last modification time. Monitoring and alerting You can view the information about performance monitoring and alerts. Cluster management You can manage clusters. Resource management You can manage various resources of DTS. e
+The DTS O&M console provides the following features: You can view the information about DTS tasks, such as the basic information, source database information, and destination database information. You can query information such as task type, error messages, business ID, creation time, and last modification time. You can view the information about performance monitoring and alerts. You can manage clusters. You can manage various resources of DTS. e
 
-## Log on to the DTS O&M
+## 2 Log on to the DTS O&M console
 
 **console**
 
@@ -32,9 +60,9 @@ Press the ENTER key. You can click the current language in the upper-right corne
 3. Choose **Databases** > **Data Transmission Service**. Then, you are navigated to the **DTS**
 **O&M console**.
 
-## Task management
+## 3 Task management
 
-### Manage tasks
+### 3.1 Manage tasks
 
 This topic describes how to manage data migration, data synchronization, and change tracking tasks on the **Task List** page in the Data Transmission Service (DTS) O&M console. You can view the task details and status such as checkpoints, configure full and incremental data verification parameters, perform quick diagnostics, modify consumption time points and task configurations, and release tasks.
 1. Log in to the DTS O&M console.
@@ -144,7 +172,7 @@ After a task is released, all data of the task is deleted and cannot be retrieve
 
 In the **Task Information** section, click **Update Subscription**. In the message that appears, click **OK**.
 
-### Manage modules in a task
+### 3.2 Manage modules in a task
 
 A DTS task comprises multiple modules. This topic explains how to manage them.
 1. Log on to the DTS console.
@@ -186,7 +214,7 @@ You must restart the task for module configuration changes to take effect. Resta
 
 On the **Migration Objects** tab, you can view the information, status, and DDL statements for each migration object.
 
-### Resize the DStore memory
+### 3.3 Resize the DStore memory
 
 The Data Transmission Service (DTS) O&M console is a graphic user interface (GUI) that helps you adjust the memory of DStore in a secure manner. This prevents out-of-memory (OOM) error caused by insufficient memory and improves task stability.
 
@@ -209,9 +237,9 @@ Operation column.
 If the memory size you enter is less than 100 MB, the system automatically ignores this setting and restores to the default memory size of the current instance type.
 7. Click **Determine**.
 
-## Task engine
+## 4 Task engine
 
-### Query tasks
+### 4.1 Query tasks
 
 On the Task Query page, you can find tasks in the task engine using the task ID, business ID, sub-business ID, task creation time, or task type.
 1. Log on to the DTS console.
@@ -219,9 +247,9 @@ On the Task Query page, you can find tasks in the task engine using the task ID,
 3. On the **Task Engine - Query** page, specify the filter conditions and click **Query**.
 Click the **ID** of a task to view its detailed information.
 
-## Monitoring and alerting
+## 5 Monitoring and alerting
 
-### View the monitoring
+### 5.1 View the monitoring information of full data migration tasks
 
 **information of full data migration**
 
@@ -234,7 +262,7 @@ A full data migration task needs to read data from the source database and write
 3. On the **Full Data Monitoring** page, specify filter conditions, such as task ID, name, status,
 database type, and region, and then click **Query**. You can view the status of the full migration and the data transfer progress. You can also click a task name to open the task details page. You can enable the **Auto-refresh** feature. The system then automatically updates the Full Data Monitoring page, so you do not need to refresh it manually.
 
-### View dashboard data
+### 5.2 View dashboard data
 
 You can use the DTS O&M platform to view dashboards for full data migration, incremental data migration, and data synchronization tasks. This topic describes the procedure using the full data migration dashboard as an example.
 1. Log on to the DTS console.
@@ -249,9 +277,9 @@ task performance information.
 3. Perform the following operations as needed.
 View information about full data migration tasks The **Full Data Migration Dashboard** page displays the basic information, status, and monitoring data for all full data migration tasks. You can also filter tasks by specifying conditions at the top of the page or enable the auto-refresh feature. On the **Full Data Migration Dashboard**, the color of the **Alarm** information indicates the task status: blue indicates Pending, yellow indicates Running, green indicates Successful, and red indicates Failed. Manage a single task In the **Operations** column, you can pause, restart, or skip a task. Manage tasks in a batch Select one or more tasks to pause, restart, or skip them in a batch. View batch operation records On the **Batch Records** tab, you can view the records of previous batch operations.
 
-## Cluster management
+## 6 Cluster management
 
-### Manage clusters
+### 6.1 Manage clusters
 
 This topic describes how to manage clusters in the Data Transmission Service (DTS) O&M console.
 1. Log on to the DTS console.
@@ -259,7 +287,7 @@ This topic describes how to manage clusters in the Data Transmission Service (DT
 3. By default, the information about all clusters is displayed. You can find a cluster and click
 the buttons in the **Actions** column to perform operations on the cluster based on your business requirements.
 
-### Manage change tracking tasks
+### 6.2 Manage change tracking tasks in DStore Workbench
 
 **in DStore Workbench**
 
@@ -269,16 +297,16 @@ The DStore module is used to store incremental data. You can view the details of
 3. On the **DStore Workbench** page, perform the following operations based on your business
 requirements. In the upper-right corner of the page, you can enter a keyword to search for tasks or click Advanced Options to specify more filter conditions to filter tasks. View the details of a functional module Click a tab to view the details of specific tasks on the tab. Restart or pause multiple tasks at a time a. Click the **Batch Restart Reader/Writer** tab. b. Select one or more tasks. c. Click **Batch Restart** or **Batch Pause**. d. In the dialog box that appears, click **Batch Run**.
 
-## Resource management
+## 7 Resource management
 
-### View DTS resources
+### 7.1 View DTS resources
 
 You can view the overview information of Data Transmission Service (DTS) resources. This helps you understand the status of DTS resources.
 1. Log on to the DTS console.
 2. In the navigation pane on the left, click **Resource Management > DTS Resources**.
 On the DTS Resources page, the information about all DTS resources is displayed. The information about a resource includes the region in which the resource resides, CPU utilization, and memory usage.
 
-### Manage DTS resources
+### 7.2 Manage DTS resources
 
 You can view and manage Data Transmission Service (DTS) resources in the DTS O&M console.
 1. Log on to the DTS console.
@@ -286,7 +314,7 @@ You can view and manage Data Transmission Service (DTS) resources in the DTS O&M
 3. Perform the following operations based on your business requirements:
 View resource information By default, the information about all DTS resources is displayed. In the upper part of the page, you can specify filter conditions such as resource group, region, and server IP address, and then click **Search** to filter resources. Manage resources Find a resource and click the buttons in the **Actions** column to perform operations on the resource. Initialize multiple servers at a time Select one or more resources and click **Initialize Servers**. Then, complete the subsequent operations as prompted. Add resources to a resource group Select one or more resources and click **Add Resources to Group**. Then, complete the subsequent operations as prompted.
 
-### View the CIDR blocks of DTS
+### 7.3 View the CIDR blocks of DTS servers
 
 **servers**
 
@@ -297,9 +325,9 @@ By default, the CIDR blocks of all regions and all network types are displayed.
 3. In the upper part of the page, specify a region and a network type. Then, click **Search** to
 filter CIDR blocks.
 
-## O&M support
+## 8 O&M support
 
-### Modify the Numen
+### 8.1 Modify the Numen configurations
 
 **configurations**
 
@@ -320,9 +348,9 @@ This topic describes how to globally modify the key runtime parameters of the Nu
 as **Private cloud IP address whitelist**) in the upper-left corner and click **Modification** in the **Operation** column.
 4. In the dialog box that appears, enter the configuration value and click **Save**.
 
-## O&M practices
+## 9 O&M practices
 
-### View alerts
+### 9.1 View alerts
 
 On the **Alerts** page, you can search for alerts by product, alert ID, source, level, status, and time range. You can then perform O&M operations on a target alert. For more information about monitoring, alerts, and platform O&M operations, see the
 **Apsara Uni-manager Management Console O&M Guide** .
@@ -344,7 +372,7 @@ the alert details page.
 i. **Optional:** Click **Suggestions** to view the recommended actions for the alert. ii. Click **Process** or **Close**. iii. In the dialog box that appears, click **OK**. The **Alert Status** changes to **Processing** or
 **Closed**.
 
-### View logs
+### 9.2 View logs
 
 This topic describes the types of Data Transmission Service (DTS) logs and how to query them. This information helps you troubleshoot issues when a task is in an abnormal state.
 
@@ -406,7 +434,7 @@ The logs for the DtsNode component are stored on the host. The logs for other co
 | dts-dts.DtsProxy# | /dts/proxy/logs/proxy.log | Proxy run logs. The proxy acts as an intermediary to provide message producers and consumers with information such as the IP addresses and port numbers of the Kafka middleware. These logs are rarely used for troubleshooting. If a connection error is displayed for the DStore, DReader, incremental migration, or synchronization module (data writing module), you can view the corresponding log information. |
 |---|---|---|
 
-### Practices for managing data
+### 9.3 Practices for managing data migration and data synchronization tasks
 
 **migration and data**
 
@@ -487,7 +515,7 @@ You can also click the **Run Logs** tab to troubleshoot issues.
 
 In this example, the error message indicates that the synchronization or migration fails due to an incorrect database account or password. You can return to the **Task Details** page, and click **Modify Configurations** to modify the database account or password. Then, restart the task.
 
-### Practices for managing
+### 9.4 Practices for managing change tracking tasks
 
 **change tracking tasks**
 

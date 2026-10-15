@@ -3,22 +3,213 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Develope
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 465
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Developer Guide 20260902.pdf"
+source_pdf: "25e6f517453d0b94_Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Developer Guide 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%20ECS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elastic%20Compute%20Service%20Developer%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Developer Guide 20260902
 
+## Table of Contents
+
+- 1 Make API requests
+  - 1.1 Overview
+  - 1.2 Request structure
+  - 1.3 Authorization
+  - 1.4 Request signatures
+  - 1.5 Responses
+- 2 RAM authorization
+- 3 Common parameters
+- 4 Instances
+  - 4.1 CreateInstance
+  - 4.2 RunInstances
+  - 4.3 StartInstance
+  - 4.4 StopInstance
+  - 4.5 RebootInstance
+  - 4.6 DeleteInstance
+  - 4.7 AttachInstanceRamRole
+  - 4.8 DetachInstanceRamRole
+  - 4.9 DescribeInstanceStatus
+  - 4.10 DescribeInstances
+  - 4.11 StartInstances
+  - 4.12 RebootInstances
+  - 4.13 DeleteInstances
+  - 4.14 DescribeUserData
+  - 4.15 DescribeInstanceRamRole
+  - 4.16 DescribeInstanceTypeFamilies
+  - 4.17 DescribeInstanceAttribute
+  - 4.18 ModifyInstanceAttribute
+  - 4.19 ModifyInstanceVpcAttribute
+  - 4.20 ModifyInstanceVncPasswd
+  - 4.21 ModifyInstanceMetadataOptions
+  - 4.22 DescribeInstanceTypes
+  - 4.23 SoftDeleteInstances
+  - 4.24 RestoreSoftDeletedInstances
+- 5 Dedicated hosts
+  - 5.1 AllocateDedicatedHosts
+  - 5.2 ModifyDedicatedHostAttribute
+  - 5.3 ModifyInstanceDeployment
+  - 5.4 DescribeDedicatedHostTypes
+  - 5.5 DescribeDedicatedHosts
+  - 5.6 ReleaseDedicatedHost
+  - 5.7 CreateDedicatedHostCluster
+  - 5.8 DescribeDedicatedHostClusters
+  - 5.9 ModifyDedicatedHostClusterAttribute
+  - 5.10 DeleteDedicatedHostCluster
+- 6 Deployment set
+  - 6.1 CreateDeploymentSet
+  - 6.2 ModifyDeploymentSetAttribute
+  - 6.3 DescribeDeploymentSets
+  - 6.4 DeleteDeploymentSet
+  - 6.5 DescribeDeploymentSetSupportedInstanceTypeFamily
+- 7 Storage sets
+  - 7.1 CreateStorageSet
+  - 7.2 DescribeStorageSets
+  - 7.3 DescribeStorageSetDetails
+  - 7.4 ModifyStorageSetAttribute
+  - 7.5 DeleteStorageSet
+- 8 Disks
+  - 8.1 CreateDisk
+  - 8.2 DescribeDisks
+  - 8.3 AttachDisk
+  - 8.4 DetachDisk
+  - 8.5 ModifyDiskAttribute
+  - 8.6 ModifyDiskSpec
+  - 8.7 ReInitDisk
+  - 8.8 ReplaceSystemDisk
+  - 8.9 ResizeDisk
+  - 8.10 DeleteDisk
+  - 8.11 ResetDisks
+- 9 Snapshots
+  - 9.1 CreateSnapshot
+  - 9.2 DescribeSnapshots
+  - 9.3 DeleteSnapshot
+  - 9.4 CopySnapshot
+  - 9.5 DescribeSnapshotLinks
+  - 9.6 DescribeSnapshotsUsage
+  - 9.7 CreateAutoSnapshotPolicy
+  - 9.8 DeleteAutoSnapshotPolicy
+  - 9.9 ModifyAutoSnapshotPolicyEx
+  - 9.10 ModifySnapshotAttribute
+  - 9.11 DescribeAutoSnapshotPolicyEX
+  - 9.12 ApplyAutoSnapshotPolicy
+  - 9.13 CancelAutoSnapshotPolicy
+  - 9.14 CreateSnapshotGroup
+  - 9.15 DescribeSnapshotGroups
+  - 9.16 DeleteSnapshotGroup
+  - 9.17 ModifySnapshotGroup
+- 10 Images
+  - 10.1 CreateImage
+  - 10.2 DescribeImages
+  - 10.3 ModifyImageAttribute
+  - 10.4 DeleteImage
+  - 10.5 CopyImage
+  - 10.6 CancelCopyImage
+  - 10.7 ModifyImageSharePermission
+  - 10.8 DescribeImageSharePermission
+  - 10.9 ImportImage
+  - 10.10 ExportImage
+  - 10.11 DescribeImageSupportInstanceTypes
+- 11 Networks
+  - 11.1 ModifyInstanceNetworkSpec
+  - 11.2 AttachClassicLinkVpc
+  - 11.3 ModifyInstanceSpec
+  - 11.4 DescribeClassicLinkInstances
+  - 11.5 DetachClassicLinkVpc
+- 12 Security groups
+  - 12.1 CreateSecurityGroup
+  - 12.2 AuthorizeSecurityGroup
+  - 12.3 AuthorizeSecurityGroupEgress
+  - 12.4 JoinSecurityGroup
+  - 12.5 LeaveSecurityGroup
+  - 12.6 DeleteSecurityGroup
+  - 12.7 DescribeSecurityGroupAttribute
+  - 12.8 DescribeSecurityGroups
+  - 12.9 DescribeSecurityGroupReferences
+  - 12.10 RevokeSecurityGroup
+  - 12.11 RevokeSecurityGroupEgress
+  - 12.12 ModifySecurityGroupAttribute
+  - 12.13 ModifySecurityGroupPolicy
+  - 12.14 ModifySecurityGroupRule
+  - 12.15 ModifySecurityGroupEgressRule
+- 13 SSH key pairs
+  - 13.1 CreateKeyPair
+  - 13.2 AttachKeyPair
+  - 13.3 DetachKeyPair
+  - 13.4 DeleteKeyPairs
+  - 13.5 DescribeKeyPairs
+- 14 Elastic network interfaces
+  - 14.1 CreateNetworkInterface
+  - 14.2 AttachNetworkInterface
+  - 14.3 AssignPrivateIpAddresses
+  - 14.4 UnassignPrivateIpAddresses
+  - 14.5 DescribeNetworkInterfaces
+  - 14.6 DetachNetworkInterface
+  - 14.7 DeleteNetworkInterface
+  - 14.8 ModifyNetworkInterfaceAttribute
+  - 14.9 AssignIpv6Addresses
+  - 14.10 UnassignIpv6Addresses
+- 15 Prefix lists
+  - 15.1 CreatePrefixList
+  - 15.2 DescribePrefixLists
+  - 15.3 ModifyPrefixList
+  - 15.4 DescribePrefixListAttributes
+  - 15.5 DescribePrefixListAssociations
+  - 15.6 DeletePrefixList
+- 16 System events
+  - 16.1 DescribeInstanceHistoryEvents
+- 17 Regions and zones
+  - 17.1 DescribeRegions
+  - 17.2 DescribeZones
+  - 17.3 DescribeAvailableResource
+  - 17.4 DescribeResourcesModification
+- 18 Operations and monitoring
+  - 18.1 GetInstanceConsoleOutput
+  - 18.2 GetInstanceScreenshot
+  - 18.3 DescribeSnapshotMonitorData
+  - 18.4 DescribeEniMonitorData
+- 19 Cloud Assistant
+  - 19.1 CreateCommand
+  - 19.2 InvokeCommand
+  - 19.3 RunCommand
+  - 19.4 DescribeCommands
+  - 19.5 ModifyCommand
+  - 19.6 StopInvocation
+  - 19.7 DescribeInvocationResults
+  - 19.8 DescribeInvocations
+  - 19.9 DescribeCloudAssistantStatus
+  - 19.10 DeleteCommand
+  - 19.11 SendFile
+  - 19.12 DescribeSendFileResults
+- 20 Tags
+  - 20.1 AddTags
+  - 20.2 RemoveTags
+  - 20.3 DescribeTags
+  - 20.4 TagResources
+  - 20.5 ListTagResources
+  - 20.6 UntagResources
+- 21 Other operations
+  - 21.1 DescribeTasks
+  - 21.2 CancelTask
+  - 21.3 DescribeTaskAttribute
+- 22 Appendix
+  - 22.1 Terms
+  - 22.2 Instance statuses
+  - 22.3 Common errors
+  - 22.4 Disk categories
+  - 22.5 How to ensure idempotency
+  - 22.6 API behavior when an instance is locked for security reasons
+  - 22.7 ISO 8601 date and time formats
+
 sts
 
-## Make API requests
+## 1 Make API requests
 
-### Overview
+### 1.1 Overview
 
 You can call an operation by sending an HTTP GET request to the ECS endpoint. You must specify the relevant request parameters in the request based on the operation descriptions. The system returns the processing result of the request. Requests and responses are encoded using UTF-8.
 
-### Request structure
+### 1.2 Request structure
 
 **Endpoints**
 
@@ -40,11 +231,11 @@ When you make an API request, you must set the Action parameter to the operation
 
 Requests and responses are both encoded in UTF-8.
 
-### Authorization
+### 1.3 Authorization
 
-To ensure the security of your account, we recommend that you call ECS API operations as a RAM user. Before you can call ECS API operations as a RAM user, you must create and authorize the RAM user. In RAM, you can authorize the RAM user to perform the following API operations on an ECS resource: AttachDisk AuthorizeSecurityGroup CreateDisk CreateImage CreateInstance CreateSecurityGroup CreateSnapshot DeleteDisk DeleteImage DeleteInstance DeleteSecurityGroup DeleteSnapshot DescribeAutoSnapshotPolicy DescribeDisks DescribeImages DescribeInstanceMonitorData DescribeInstances DescribeInstanceStatus DescribeInstanceTypes DescribeRegions DescribeSecurityGroupAttribute DescribeSecurityGroups DescribeSnapshots DescribeZones DetachDisk JoinSecurityGroup LeaveSecurityGroup ModifyAutoSnapshotPolicy ModifyDiskAttribute ModifyInstanceAttribute ModifyInstanceNetworkSpec RebootInstance ReplaceSystemDisk ReInitDisk ResetDisk RevokeSecurityGroup StartInstance StopInstance sts
+To ensure the security of your account, we recommend that you call ECS API operations as a RAM user. Before you can call ECS API operations as a RAM user, you must create and authorize the RAM user. In RAM, you can authorize the RAM user to perform the following API operations on an ECS resource: DescribeAutoSnapshotPolicy DescribeInstanceMonitorData ModifyAutoSnapshotPolicy ResetDisk sts
 
-### Request signatures
+### 1.4 Request signatures
 
 You must sign all HTTP and HTTPS API requests to ensure security. Elastic Compute Service (ECS) uses the request signature to verify the identity of a request sender. ECS implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Apsara Stack tenant accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, and the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For information about how to obtain AccessKey pairs, see Obtain an AccessKey pair. Perform the following steps to sign an access request:
 1. Create a canonicalized query string by arranging the request parameters.
@@ -97,7 +288,7 @@ The ******************** is testsecret, so the key used for the HMAC calculation
 http://ecs.example.com/?SignatureVersion=1.0&Action=DescribeRegions&Format=XML&SignatureNonce=3ee8c1b8-83d3-44af-a94f- 4e0ad82f****&Version=2014-05-26&AccessKeyId=testid&Signature=CT9X0VtwR86fNWSnsc6v8YGO****&SignatureMethod=HMAC-SHA1&TimeStamp=2016-02 -23T12%3A46%3A24Z
 ```
 
-### Responses
+### 1.5 Responses
 
 sts API responses use unified formats. 2xx HTTP status codes indicate successful calls. 4xx or 5xx HTTP status codes indicate failed calls. Responses can be returned in the JSON or XML format. By default, responses are returned in the XML format. You can specify the response format in the request.
 
@@ -150,7 +341,7 @@ JSON format `{`
 
 `}` on
 
-## RAM authorization
+## 2 RAM authorization
 
 When you call an ECS API operation to access the ECS resources in your Apsara Stack tenant account as a RAM user, ECS checks with RAM whether the RAM user has the permissions on these resources. ECS determines which permissions to check based on the involved resources and the semantics of the API operation. Resources involved in ECS API operations describes the resources involved in each ECS API operation. Table 1. Resources involved in ECS API operations
 
@@ -227,7 +418,7 @@ on
 
 eters
 
-## Common parameters
+## 3 Common parameters
 
 Common parameters include common request parameters, common headers, and common response parameters.
 
@@ -268,9 +459,9 @@ organization and resource set to which the instance belongs. If you are creating
 
 API responses use the HTTP response format: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique request ID regardless of whether the call is successful.
 
-## Instances
+## 4 Instances
 
-### CreateInstance
+### 4.1 CreateInstance
 
 Creates an Elastic Compute Service (ECS) instance. Usage notes You can call the `DescribeAvailableResource` operation to query available resources in a specific region or zone. If you want to create multiple ECS instances at a time and allow the instances to automatically enter the `Running` state, we recommend that you call the `RunInstances` operation. When you create an ECS instance, take note of the following items:
 
@@ -1081,7 +1272,7 @@ Sample success responses
 | 500 | INTERNALERROR _ | InternalError | The request processing has failed due to some unknown error. |
 | 500 | Invalid.Image.Type | InvalidImage.OSType | The image OSType does not support this instance type. |
 
-### RunInstances
+### 4.2 RunInstances
 
 Creates one or more Elastic Compute Service (ECS) instances. Usage notes
 
@@ -2072,7 +2263,7 @@ Sample success responses
 | 500 | ORDER.DEDUCEACTIVITYINVE _ _ NTORYERROR _ | InternalError | The request processing has failed due to some unknown error. |
 | 500 | PRICE.HSFTIMEOUTERROR _ _ | InternalError | The request processing has failed due to some unknown error. |
 
-### StartInstance
+### 4.3 StartInstance
 
 You can call this operation to start an ECS instance. After the operation is called, the instance enters the Starting state. When you call this operation, take note of the following items:
 
@@ -2136,7 +2327,7 @@ Sample success responses
 | 403 | InvalidParameter.KMSKeyId.KM SUnauthorized | ECS service have no right to access your KMS. | The error message returned because ECS is not authorized to access your KMS resources. |
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### StopInstance
+### 4.4 StopInstance
 
 You can call this operation to stop an ECS instance in the Running state. After the operation is called, the status of the instance changes to Stopping and then to Stopped. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be stopped through calls to this operation. To stop an instance of an instance family equipped with local SSDs, take note of the following items: After the instance is stopped, data in its local disks is cleared. To ensure data availability, we recommend that you implement data redundancy at the application layer. ECS automatically ignores the `ConfirmStop` parameter in the requests to stop instances of other instance families.
 
@@ -2194,7 +2385,7 @@ Sample success responses
 | 403 | InvalidParameter.KMSKeyId.KM SUnauthorized | ECS service have no right to access your KMS. | The error message returned because ECS is not authorized to access your KMS resources. |
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### RebootInstance
+### 4.5 RebootInstance
 
 You can call this operation to restart an instance in the Running state. Only instances in the **Running** ( `Running` ) state can be restarted. After the operation is called, the status of the corresponding instance changes to **Starting** ( `Starting` ). Instances can be forcibly restarted. A forced restart ( `ForceStop` ) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks. If OperationLocks in the DescribeInstances response contains "LockReason" : "security" for an instance, the instance is locked for security reasons and cannot be restarted through calls to this operation.
 
@@ -2247,7 +2438,7 @@ Sample success responses
 | 403 | InvalidParameter.KMSKeyId.KM SUnauthorized | ECS service have no right to access your KMS. | The error message returned because ECS is not authorized to access your KMS resources. |
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### DeleteInstance
+### 4.6 DeleteInstance
 
 You can call this operation to release an ECS instance. After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered. Disks attached to the instance: The disks for which `DeleteWithInstance` is set to true are released along with the instance. For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained. For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released. Manual snapshots of the disks are retained. If OperationLocks in the DescribeInstances response contains `"LockReason" : "security` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to false for the disks attached to the instance, this parameter is ignored and the disks are released along with the instance.
 
@@ -2302,7 +2493,7 @@ Sample success responses
 | 403 | InvalidOperation.DeletionProtec tion | %s | The error message returned because the operation is invalid. Disable release protection for the instance first. |
 | 403 | InvalidOperation.EniLinked | %s | The error message returned because the operation is not supported while the instance is bound with elastic network interfaces (ENIs). You must unbind the ENIs before you can release the instance. |
 
-### AttachInstanceRamRole
+### 4.7 AttachInstanceRamRole
 
 You can call this operation to attach an instance RAM role to one or more instances. An instance can have only one instance RAM role. If an instance already has an instance RAM role, an error is returned when you attach another instance RAM role to the instance.
 
@@ -2363,7 +2554,7 @@ Sample success responses
 |---|---|---|---|
 | 404 | InvalidRamRole.NotEcsRole | The specified ram role is not authorized for ecs, please check your role policy. | The error message returned because the specified RAM role is not authorized to use ECS. Check your role policy. |
 
-### DetachInstanceRamRole
+### 4.8 DetachInstanceRamRole
 
 You can call this operation to detach instance RAM roles from one or more ECS instances.
 
@@ -2421,7 +2612,7 @@ Sample success responses
 | 403 | InvalidNetworkType.MismatchR amRole | Ram role cannot be applied to instances of Classic network type. | The error message returned because instance RAM roles can be used only for instances in VPCs, not for instances in the classic network. |
 | 403 | InvalidUser.PassRoleForbidden | The RAM user does not have the privilege to pass a RAM role. | The error message returned because the RAM user is not authorized to pass the RAM role. |
 
-### DescribeInstanceStatus
+### 4.9 DescribeInstanceStatus
 
 You can call this operation to query the status information of multiple instances. You can also call this operation to query the list of instances.
 
@@ -2494,7 +2685,7 @@ Sample success responses
 
 `}`
 
-### DescribeInstances
+### 4.10 DescribeInstances
 
 You can call this operation to query the details of one or more instances. You can specify multiple request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned. If you are using a RAM user or RAM role, an empty list is returned when the user or the role does not have the permission to call this operation. You can include the `DryRun` parameter in your request to check whether the empty list is caused by the lack of permissions.
 
@@ -2798,7 +2989,7 @@ Sample success responses
 | 400 | InvalidHpcClusterId.NotFound | The specified HpcClusterId is not found. | The error message returned because the specified HpcClusterId parameter does not exist. |
 | 400 | InvalidHpcClusterId.Creating | The specified HpcClusterId is creating. | The error message returned because the specified HPC cluster is being created. |
 
-### StartInstances
+### 4.11 StartInstances
 
 Starts one or more Elastic Compute Service (ECS) instances that are in the Stopped state. After the operation is called, the instances enter the Starting state.
 
@@ -2902,7 +3093,7 @@ Sample success responses
 | 403 | InsufficientBalance | Your account does not have enough balance. | The account balance is insufficient. Add funds to the account and try again. |
 | 403 | InstanceNotReady | The specified instance is not ready for use. | This operation cannot be performed on the resource in the current state. Try again later. |
 
-### RebootInstances
+### 4.12 RebootInstances
 
 Restarts Elastic Compute Service (ECS) instances that are in the Running state. After this API operation is called, the ECS instances enter the Stopping state and then the Running state.
 
@@ -3006,7 +3197,7 @@ Sample success responses
 | 403 | InsufficientBalance | Your account does not have enough balance. | The account balance is insufficient. Add funds to the account and try again. |
 | 403 | InstanceNotReady | The specified instance is not ready for use. | This operation cannot be performed on the resource in the current state. Try again later. |
 
-### DeleteInstances
+### 4.13 DeleteInstances
 
 Releases one or more Elastic Compute Service (ECS) instances.
 
@@ -3075,7 +3266,7 @@ Sample success responses
 | 400 | DependencyViolation.SLBConfig uring | Specified operation is denied as your instance is using by another product. | The instance is referenced by an SLB instance that is being configured. |
 | 400 | DependencyViolation.RouteEntr y | Specified instance is used by route entry. | Custom routing rules exist in the virtual private cloud (VPC) and the VPC cannot be deleted. |
 
-### DescribeUserData
+### 4.14 DescribeUserData
 
 You can call this operation to query the user data of an ECS instance. The returned user data is encoded in Base64. If the instance does not have user data configured, an empty result is returned.
 
@@ -3122,7 +3313,7 @@ Sample success responses
 |---|---|---|---|
 | 404 | InvalidInstanceId.NotFound | The specified InstanceId does not exist. | The error message returned because the specified InstanceId parameter does not exist. |
 
-### DescribeInstanceRamRole
+### 4.15 DescribeInstanceRamRole
 
 You can call this operation to query the instance RAM roles attached to one or more ECS instances.
 
@@ -3181,7 +3372,7 @@ Sample success responses
 | 403 | InvalidParameter.AllEmpty | %s | The error message returned because no parameters are specified. Specify required parameters. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### DescribeInstanceTypeFamilies
+### 4.16 DescribeInstanceTypeFamilies
 
 You can call this operation to query the instance families provided by ECS.
 
@@ -3368,7 +3559,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeInstanceAttribute
+### 4.17 DescribeInstanceAttribute
 
 Queries the information about an Elastic Compute Service (ECS) instance.
 
@@ -3532,7 +3723,7 @@ Sample success responses `XML` format
 | 404 | InvalidInstanceId.NotFound | The specified InstanceId does not exist. | The specified instance is not found. Check whether the specified instance ID is valid. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | An internal error occurred. Try again later. If the error persists, submit a ticket. |
 
-### ModifyInstanceAttribute
+### 4.18 ModifyInstanceAttribute
 
 Call ModifyInstanceAttribute to modify the attributes of an ECS instance, including the instance password, name, description, hostname, security groups, and user data. API description If the response to a query for information about an ECS instance contains `{"OperationLocks": {"LockReason" : "security"}}` , you cannot perform any operations on the instance.
 
@@ -3682,7 +3873,7 @@ Sample response
 | 500 | 500 | InternalError | The request failed due to an unknown error. |
 | 500 | InternalError | InternalError | The request failed due to an unknown error, exception, or failure. |
 
-### ModifyInstanceVpcAttribute
+### 4.19 ModifyInstanceVpcAttribute
 
 Modifies the virtual private cloud (VPC), private IP address, or vSwitch of an Elastic Compute Service (ECS) instance in a VPC. The instance must be in the **Stopped** ( `Stopped` ) state. When you call this operation to modify the private IP address or vSwitch of an instance, take note of the following items: If the instance is a new instance, you must restart the instance before you call this operation on it. After the private IP address or vSwitch of an instance is modified, you must restart the instance before you can call this operation again. When you call this operation to modify the VPC of an instance, take note of the following items: Instance: The instance cannot be associated with Server Load Balancer (SLB) instances. The instance cannot be in the Locked or To Be Released state. The instance cannot be used in other cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission (DTS). Network: The instance cannot have secondary ENIs bound. The instance cannot have IPv6 addresses assigned. The primary ENI of the instance cannot be associated with multiple IP addresses. The vSwitch specified by the VSwitchId parameter must belong to the new VPC. The vSwitches before and after the modification must reside within the same zone. If the private IP address of the primary ENI is specified, the private IP address must be available and within the CIDR block of the vSwitch. If the private IP address is not specified, the system randomly assigns one. The available IP addresses in the CIDR block of the new vSwitch must be sufficient. The Alibaba Cloud account that owns the new VPC cannot share the VPC to other accounts. Security group (SecurityGroupId.N): The valid values of N depend on the maximum number of security groups to which an instance can belong. Make sure that the quota for security groups within your account is sufficient. The specified security groups must belong to the new VPC.
 
@@ -3752,7 +3943,7 @@ Sample success responses
 | 404 | EnterpriseGroupLimited.MutliGr oupType | The specified instance can not join multi SecurityGroup types. | The error message returned because the specified instance cannot belong to both a basic and an advanced security group. You can call the DescribeSecurityGroups operation to query the type of a specific security group. |
 | 403 | InvalidOperation.ResourceMana gedByCloudProduct | %s | The error message returned because security groups managed by cloud services cannot be modified. |
 
-### ModifyInstanceVncPasswd
+### 4.20 ModifyInstanceVncPasswd
 
 You can call this operation to change the VNC password of an instance. The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits. After you change the VNC password of an instance: If the instance is I/O optimized, the new password takes effect immediately. If the instance is not I/O optimized, you must restart the instance by using the ECS console or by calling the RebootInstance operation for the new password to take effect.
 
@@ -3801,7 +3992,7 @@ Sample success responses
 | 400 | IncorrectVncPassword.Malforme d | The specified parameter VncPassword is not valid. | The error message returned because the specified VncPassword parameter is invalid. |
 | 404 | NoSuchResource | The specified resource is not found. | The error message returned because the specified resource does not exist. |
 
-### ModifyInstanceMetadataOptions
+### 4.21 ModifyInstanceMetadataOptions
 
 Modifies the metadata of an Elastic Compute Service (ECS) instance.
 
@@ -3849,7 +4040,7 @@ Sample success responses
 | 400 | InvalidHttpTokens.NotSupporte d | The specified HttpTokens not supported, you can use optional(default) or required. | Invalid HttpTokens value. The valid values of this parameter are optional and required. The default value is optional. |
 | 400 | InvalidHttpPutResponseHopLimi t.NotSupported | The specified HttpPutResponseHopLimit not supported, more than 1 and less than 64 is reasonable. | Invalid HttpPutResponseHopLimit value. The valid values of this parameter are 1 to 64. |
 
-### DescribeInstanceTypes
+### 4.22 DescribeInstanceTypes
 
 Call the DescribeInstanceTypes operation to query instance types provided by Elastic Compute Service (ECS). Operation description The DescribeInstanceTypes operation queries only the specifications and performance data of instance types. If you want to query instance types that are available in a region or zone, you can call the DescribeAvailableResource operation.
 
@@ -3956,9 +4147,9 @@ Examples for successful responses `JSON` format `{`
 |---|---|
 | <NextToken>e71d8a535bd9****</NextToken> <RequestId>00827261-20B7-4562-83F2-4DF3987XXXXX</RequestId> <InstanceTypes> <InstancePpsTx>300000</InstancePpsTx> <NvmeSupport>unsupported</NvmeSupport> <PrimaryEniQueueNumber>4</PrimaryEniQueueNumber> <TotalEniQueueQuantity>128</TotalEniQueueQuantity> <LocalStorageCapacity>2048</LocalStorageCapacity> <InstanceTypeFamily>ecs.g5</InstanceTypeFamily> <InstancePpsRx>300000</InstancePpsRx> <EriQuantity>0</EriQuantity> <InstanceBandwidthRx>1024000</InstanceBandwidthRx> <InstanceBandwidthTx>1024000</InstanceBandwidthTx> <LocalStorageAmount>1</LocalStorageAmount> <SecondaryEniQueueNumber>4</SecondaryEniQueueNumber> <LocalStorageCategory>local_ssd_pro</LocalStorageCategory> <GPUSpec>NVIDIA V100</GPUSpec> <InstanceTypeId>ecs.g5.large</InstanceTypeId> <MemorySize>8</MemorySize> <MaximumQueueNumberPerEni>4</MaximumQueueNumberPerEni> <EniIpv6AddressQuantity>1</EniIpv6AddressQuantity> <CpuCoreCount>8</CpuCoreCount> <InitialCredit>120</InitialCredit> <EniQuantity>2</EniQuantity> <GPUAmount>2</GPUAmount> <DiskQuantity>17</DiskQuantity> <QueuePairNumber>22</QueuePairNumber> <BaselineCredit>4</BaselineCredit> <InstanceFamilyLevel>EnterpriseLevel</InstanceFamilyLevel> <EniPrivateIpAddressQuantity>6</EniPrivateIpAddressQuantity> </InstanceTypes> |   |
 
-Ecs 2014-05-26 DescribeInstanceTypes
+Ecs 2014-05-26
 
-### SoftDeleteInstances
+### 4.23 SoftDeleteInstances
 
 Logically deletes one or more Elastic Compute Service (ECS) instances. Logical deletion is a new method to delete ECS resources. Different from the DeleteInstance operation, after an instance is logically deleted by calling the SoftDeleteInstances operation, the instance is moved to the recycle bin and is retained here for a specified period of time, which is specified by the Hours parameter. During the retention period, computing resources such as CPUs and memory are released, elastic IP addresses (EIPs) are disassociated from the instance, and storage resources are retained. After the retention period, all ECS resources including storage resources are permanently deleted and cannot be restored. When you call this operation, take note of the following items: Instances of instance families equipped with local disks cannot be logically deleted. The instance must be in the **Stopped** (Stopped) or **Running** (Running) state. After an instance is logically deleted, the instance enters a retention period. During the retention period, you can only recover or permanently delete the instance but cannot associate or disassociate other resources with or from it, such as attaching or detaching a disk.
 
@@ -4005,7 +4196,7 @@ Sample success responses
 | 404 | InvalidInstanceId.NotFound | The specified InstanceId does not exist. | The error message returned because the specified instance does not exist. Check whether the instance ID is correct. |
 |---|---|---|---|
 
-### RestoreSoftDeletedInstances
+### 4.24 RestoreSoftDeletedInstances
 
 Call RestoreSoftDeletedInstances to restore one or more soft-deleted Elastic Compute Service (ECS) instances.
 
@@ -4070,9 +4261,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 403 | InvalidParameter.INVALIDINST _ ANCEIDSTOOMANY _ _ _ | InvalidParameter.TooManyInstanceIds | You cannot specify more than 100 instance IDs. |
 | 404 | INSTANCENOEXIST _ _ | InvalidInstanceId.NotFound | The specified instance ID does not exist. |
 
-## Dedicated hosts
+## 5 Dedicated hosts
 
-### AllocateDedicatedHosts
+### 5.1 AllocateDedicatedHosts
 
 You can call this operation to create one or more dedicated hosts. A dedicated host is a physical server dedicated to a single tenant. You can create ECS instances on a dedicated host and view the attributes of the dedicated host. Before you create a dedicated host, you can call the DescribeAvailableResource operation to view the available resources in the target region or zone. You can create a maximum of 100 dedicated hosts at a time. After you create a dedicated host, you can use its ID that is returned by the system as the request parameter to call the DescribeDedicatedHosts operation to query the status of the dedicated host. After you submit a request to create a dedicated host, an error is returned if a specified parameter is invalid or the requested resources are insufficient. For more information about error causes, see Error codes. After a dedicated host is created, you can call the ModifyInstanceDeployment operation to migrate ECS instances from a shared host to the dedicated host. You can also migrate ECS instances from another dedicated host to the created dedicated host.
 
@@ -4171,7 +4362,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter.UdpTimeout | The specified value is invalid. | The error message returned because the specified NetworkAttributes.UdpTimeout parameter is invalid. |
 | 400 | Duplicate.TagKey | The Tag.N.Key contain duplicate key. | The error message returned because the specified tag key already exists. Tag keys must be unique. |
 
-### ModifyDedicatedHostAttribute
+### 5.2 ModifyDedicatedHostAttribute
 
 Modifies some properties of a dedicated host, such as the name, description, and instance migration policy that is applied when the dedicated host fails.
 
@@ -4229,7 +4420,7 @@ Sample success responses
 | 403 | InvalidUser.Unauthorized | The user is not authorized | You are not authorized to perform this operation. |
 | 404 | InvalidDedicatedHostId.NotFoun d | The specified DedicatedHostId does not exist. | The dedicated host is not found. |
 
-### ModifyInstanceDeployment
+### 5.3 ModifyInstanceDeployment
 
 Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of the instance when you migrate the instance.
 
@@ -4307,7 +4498,7 @@ Sample success responses
 | 400 | ChargeTypeViolation.PostPaidD edicatedHost | Prepaid instance onto postpaid dedicated host is not allowed | The error message returned because subscription instances cannot be deployed on pay-as-you-go dedicated hosts. |
 | 400 | InvalidInstanceType.ValueNotSu pported | The specified InstanceType does not exist or beyond the permitted range. | The error message returned because the specified InstanceType parameter does not exist or because you are not authorized to manage instances of this instance type. |
 
-### DescribeDedicatedHostTypes
+### 5.4 DescribeDedicatedHostTypes
 
 You can call this operation to query the details about dedicated host types supported in a region, or the ECS instance families supported by a specific dedicated host type.
 
@@ -4391,7 +4582,7 @@ Sample success responses `XML` format
 |---|---|
 | { "DedicatedHostTypes":{ "DedicatedHostType":[ { "LocalStorageAmount":0, "Sockets":2, "DedicatedHostType":"ddh.sn1ne", "LocalStorageCapacity":0, "SupportedInstanceTypeFamilies":{ "SupportedInstanceTypeFamily":[ "ecs.sn1ne" ] }, "MemorySize":112, "Cores":32, "TotalVcpus":56, "LocalStorageCategory":"" }, { "LocalStorageAmount":0, "Sockets":2, "DedicatedHostType":"dh.c60m83.n1", "LocalStorageCapacity":0, "SupportedInstanceTypeFamilies":{ "SupportedInstanceTypeFamily":[ "ecs.n1" ] }, "MemorySize":84, "Cores":32, "TotalVcpus":40, "LocalStorageCategory":"" } ] }, "RequestId":"9A0FE8A2-720C-45AE-B2D9-813060FCBBF5" } |   |
 
-### DescribeDedicatedHosts
+### 5.5 DescribeDedicatedHosts
 
 You can call this operation to query the details about one or more dedicated hosts, including the physical performance specifications, machine code, service status, and a list of ECS instances that are deployed on the dedicated hosts.
 
@@ -4609,7 +4800,7 @@ Sample success responses `XML` format
 | 400 | InvalidZone.NotFound | The specified parameter ZoneId is not valid. | The error message returned because the specified ZoneId parameter is invalid. |
 | 404 | InvalidLockReason.NotFound | The specified LockReason is not found | The error message returned because the specified reason why the resources of the dedicated host were locked does not exist. |
 
-### ReleaseDedicatedHost
+### 5.6 ReleaseDedicatedHost
 
 You can call this operation to release a dedicated host. Before you release a dedicated host, make sure that no ECS instances are deployed on the dedicated host.
 
@@ -4655,7 +4846,7 @@ Sample success responses
 | 404 | InvalidDedicatedHostId.NotFoun d | The specified DedicatedHostId does not exist. | The error message returned because the specified DedicatedHostId parameter does not exist. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### CreateDedicatedHostCluster
+### 5.7 CreateDedicatedHostCluster
 
 You can call this operation to create a dedicated host cluster.
 
@@ -4713,7 +4904,7 @@ Sample success responses
 | 400 | InvalidTagValue.Malformed | The specified Tag.n.Value is not valid. | The error message returned because the specified Tag.N.Value parameter is invalid. |
 | 400 | Duplicate.TagKey | The Tag.N.Key contain duplicate key. | The error message returned because the specified tag key already exists. Tag keys must be unique. |
 
-### DescribeDedicatedHostClusters
+### 5.8 DescribeDedicatedHostClusters
 
 You can call this operation to query details of one or more dedicated host clusters.
 
@@ -4794,7 +4985,7 @@ Sample success responses
 |---|---|---|---|
 | 400 | InvalidZone.NotFound | The specified parameter ZoneId is not valid. | The error message returned because the specified ZoneId parameter is invalid. |
 
-### ModifyDedicatedHostClusterAttribute
+### 5.9 ModifyDedicatedHostClusterAttribute
 
 You can call this operation to modify some attributes of a dedicated host cluster, such as the name and description.
 
@@ -4839,7 +5030,7 @@ Sample success responses
 | 400 | InvalidDescription.Malformed | The specified parameter Description is not valid. | The error message returned because the specified Description parameter is invalid. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
 | 403 | InvalidUser.Unauthorized | The user is not authorized | The error message returned because you are not authorized to perform this operation. |
 
-### DeleteDedicatedHostCluster
+### 5.10 DeleteDedicatedHostCluster
 
 You can call this operation to delete a dedicated host cluster.
 
@@ -4877,9 +5068,9 @@ Sample success responses `XML` format
 |---|---|
 | { "RequestId": "11B55F58-D3A4-4A9B-9596-342420D02FF8" } |   |
 
-## Deployment set
+## 6 Deployment set
 
-### CreateDeploymentSet
+### 6.1 CreateDeploymentSet
 
 You can call this operation to create a deployment set in a specified region.
 
@@ -4940,7 +5131,7 @@ Sample success responses
 | 400 | DependencyViolation.strategy.g ranularity | The DeploymentSet strategy and granularity is violation. | The error message returned because the specified Strategy and Granularity parameters do not correspond to each other. |
 | 400 | DEPLOYMENTSET.QUOTAFULL _ | The deploymentSet quota is full | The error message returned because the maximum number of deployment sets has been reached. |
 
-### ModifyDeploymentSetAttribute
+### 6.2 ModifyDeploymentSetAttribute
 
 Modifies the name or description of a deployment set.
 
@@ -4990,7 +5181,7 @@ Sample success responses
 | 400 | InvalidDeploymentSetId.NotFou nd | The specified DeploymentSetId does not exist. | The error message returned because the specified DeploymentSetId parameter does not exist. Check whether the deployment set ID is correct. |
 | 403 | QuotaExceed.DeploymentSetIn stanceQuotaFull | instance quota in one deployment set exceeded. | The error message returned because the maximum number of instances in the deployment set has been reached. |
 
-### DescribeDeploymentSets
+### 6.3 DescribeDeploymentSets
 
 You can call this operation to query the attributes of one or more deployment sets.
 
@@ -5098,7 +5289,7 @@ Sample success responses
 |---|---|---|---|
 | 403 | InvalidDeploymentSetIds.TooMa nyInput | The parameter DeploymentSets size should less than 100. | The error message returned because more than 100 deployment sets are specified. |
 
-### DeleteDeploymentSet
+### 6.4 DeleteDeploymentSet
 
 Deletes a deployment set.
 
@@ -5188,9 +5379,9 @@ Sample success responses
 |---|---|
 | { "RequestId": "473469C7-AA6F-4DC5-B7DB-A3DC7DE*****", "InstanceTypeFamilies": "ecs.s6-k,ecs.sn1" } |   |
 
-## Storage sets
+## 7 Storage sets
 
-### CreateStorageSet
+### 7.1 CreateStorageSet
 
 Creates a storage set in a zone within a specified region. A storage set can distribute disks or Shared Block Storage devices to different locations. You can specify the number of partitions in a storage set. A larger number of partitions indicate more discrete distribution of disks or Shared Block Storage devices. For more information about storage sets, see Create a storage set in Defined Storage User Guide.
 
@@ -5240,7 +5431,7 @@ Sample success responses
 | 403 | InvalidRegionId.NotFound | %s | The error message returned because the specified RegionId parameter does not exist. |
 | 403 | InvalidParameter | %s | The error message returned because a specified parameter is invalid. |
 
-### DescribeStorageSets
+### 7.2 DescribeStorageSets
 
 Queries the information of one or more storage sets, such as the region, zone, creation time, and maximum number of partitions.
 
@@ -5304,7 +5495,7 @@ Sample success responses
 | 403 | InvalidRegionId.NotFound | %s | The error message returned because the specified RegionId parameter does not exist. |
 | 403 | InvalidParameter | %s | The error message returned because a specified parameter is invalid. |
 
-### DescribeStorageSetDetails
+### 7.3 DescribeStorageSetDetails
 
 Queries the detailed information of disks or Shared Block Storage devices in a storage set.
 
@@ -5371,7 +5562,7 @@ Sample success responses
 |---|---|---|---|
 | 403 | InvalidParameter | %s | The error message returned because a specified parameter is invalid. |
 
-### ModifyStorageSetAttribute
+### 7.4 ModifyStorageSetAttribute
 
 Modifies the name or description of a storage set.
 
@@ -5421,7 +5612,7 @@ Sample success responses
 | 403 | InvalidRegionId.NotFound | %s | The error message returned because the specified RegionId parameter does not exist. |
 | 403 | InvalidParameter | %s | The error message returned because a specified parameter is invalid. |
 
-### DeleteStorageSet
+### 7.5 DeleteStorageSet
 
 Deletes an empty storage set. The storage set that you want to delete must be empty and cannot contain disks or Shared Block Storage devices.
 
@@ -5469,9 +5660,9 @@ Sample success responses
 |---|---|---|---|
 | 403 | InvalidParameter | %s | The error message returned because a specified parameter is invalid. |
 
-## Disks
+## 8 Disks
 
-### CreateDisk
+### 8.1 CreateDisk
 
 Call CreateDisk operation to create a data disk. Operation description After you create a disk, and when the disk is deleted, its snapshots is automatically deleted by default. This means `DeleteAutoSnapshot` is set to `true` . You can modify this parameter by calling `ModifyDiskAttribute` operation. You must specify either the `Size` or `SnapshotId` request parameter. The `Size` parameter specifies the disk capacity, and the `SnapshotId` parameter creates a disk from a snapshot. When creating a disk, you can enable the multi-attach feature ( `MultiAttach` ). We recommend that you understand this feature and its limitations before using it. For more information, see the **Cloud Disks > Support for NVMe Protocol and Multi-Attach Function** section in the ECS User Guide of Apsara Stack documentation center. You can create premium performance disks, standard performance disks, ultra disks, and standard SSDs. By default, shared standard SSDs and shared ultra disks cannot be created. If you want to create shared standard SSDs and shared ultra disks, you should submit a ticket.
 
@@ -5615,9 +5806,9 @@ Examples for successful responses
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message is returned, because an internal error has occurred. Try again later. If the problem still exists, you can submit a ticket. |
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message is returned, because an internal error has occurred. Try again later. If the problem still exists, you can submit a ticket. |
 
-Ecs 2014-05-26 CreateDisk
+Ecs 2014-05-26
 
-### DescribeDisks
+### 8.2 DescribeDisks
 
 Queries one or more Elastic Block Storage (EBS) devices that you created, including cloud disks and local disks. You can specify multiple request parameters such as `RegionId` , `ZoneId` , `DiskIds` , and `InstanceId` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions. The `DiskIds` value is a JSON array. If DiskIds is not specified, it is not used as a filter condition. If `DiskIds` is set to an empty JSON array, it is regarded as a valid filter condition, and an empty result is returned. A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attach information of the disk based on the Attachment values in the response.
 
@@ -5907,7 +6098,7 @@ Sample success responses `XML` format
 | 404 | InvalidDiskIds.ValueNotSupport ed | The specified parameter "DiskIds" is not supported. | The error message returned because the specified DiskIds parameter is invalid. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the error persists, submit a ticket. |
 
-### AttachDisk
+### 8.3 AttachDisk
 
 Attaches a system disk or data disk to an instance. The instance and the disk must reside in the same zone. When you call this operation, take note of the following items: The disk to be attached must be in the **Unattached** ( `Available` ) state. When the disk is attached as a data disk, take note of the following items: The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ) state. When the disk is attached as a system disk, take note of the following items: The instance must be the original instance from which the system disk is detached. The instance must be in the **Stopped** ( `Stopped` ) state. The logon credentials must be configured. When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}` , the instance is locked for security reasons and all operations cannot take effect on the instance.
 
@@ -5990,7 +6181,7 @@ Sample success responses
 | 400 | InvalidParameter.AllEmpty | %s | The error message returned because the required parameters are not specified. |
 | 403 | InvalidInstanceType.NotSupport DiskCategory | The instanceType of the specified instance does not support this disk category. | The error message returned because the instance type specified by the InstanceType parameter does not support the disk category of the instance. Try another instance type. For information about the disk categories supported by instance types, see the instance family documentation. |
 
-### DetachDisk
+### 8.4 DetachDisk
 
 Detaches a data disk or system disk from an Elastic Compute Service (ECS) instance. Usage notes Take note of the following items: The disk that you want to detach must be in the **In Use** ( `In_use` ) state. The instance from which you want to detach a data disk must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ) state. The instance from which you want to detach a system disk must be in the **Stopped** ( `Stopped` ) state. If `OperationLocks` in the response contains `"LockReason" : "security"` when you query the information of an ECS instance, the instance is locked for security reasons and all operations are prohibited on the instance. DetachDisk is an asynchronous operation. After you call the operation to detach a disk from an ECS instance, the disk is detached in approximately 1 minute.
 
@@ -6053,7 +6244,7 @@ Sample success responses
 | 400 | InvalidOperation.InstanceTypeN otSupport | The instance type of the specified instance does not support hot detach disk. | The instance to which the disk is attached does not support the hot swapping of disks. |
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | An internal error occurred. Try again later. If the error persists, submit a ticket. |
 
-### ModifyDiskAttribute
+### 8.5 ModifyDiskAttribute
 
 You can call this operation to modify the attributes of one or more Block Storage devices, including their names, descriptions, and whether they are released along with their attached instances. If you set DeleteWithInstance to false for a disk and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance parameter will be ignored and the disk will be released along with the instance. (If the value of `LockReason` is security in OperationLocks of the API response when you query information of an instance, the instance is locked for security reasons.)
 
@@ -6110,7 +6301,7 @@ Sample success responses
 | 400 | InvalidRegionId.MalFormed | The specified RegionId is not valid | The error message returned because the specified region ID is invalid. |
 | 404 | InvalidInstanceId.NotFound | Specified attached instance does not exist. | The error message returned because the specified instance ID does not exist. |
 
-### ModifyDiskSpec
+### 8.6 ModifyDiskSpec
 
 Modifies the category of a disk.
 
@@ -6174,7 +6365,7 @@ Sample success responses
 | 404 | InvalidDiskId.NotFound | The specified disk does not exist. | This disk is not found. Check whether the disk ID is valid. |
 | 404 | InvalidInstanceId.NotFound | The specified InstanceId does not exist. | This instance is not found. Check whether the specified instance ID is valid. |
 
-### ReInitDisk
+### 8.7 ReInitDisk
 
 Re-initializes a disk. When you call this operation, take note of the following items: The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state. If the instance has never been started since it was created, the disks attached to it cannot be re-initialized. When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized. When a separately created data disk is re-initialized, it is restored to an empty data disk. When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot. If the snapshot has been deleted, the disk cannot be re-initialized and an error is returned.
 
@@ -6243,7 +6434,7 @@ Sample success responses
 | 403 | InvalidParameter.KMSKeyId.KM SUnauthorized | ECS service have no right to access your KMS. | The error message returned because Elastic Compute Service (ECS) is not authorized to access your KMS resources. |
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because an internal error has occurred. Try again later. If the error persists, submit a ticket. |
 
-### ReplaceSystemDisk
+### 8.8 ReplaceSystemDisk
 
 Replaces the system disk or operating system of an Elastic Compute Service (ECS) instance. After you call this operation for an ECS instance, the original system disk of the instance is released and a new system disk is created for the instance. This causes the ID of the system disk to change.
 
@@ -6360,7 +6551,7 @@ Sample success responses
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | An internal error occurred. Try again later. If the error persists, submit a ticket. |
 | 403 | OperationDenied.ImageNotVali d | %s | The operation cannot be performed on the image. |
 
-### ResizeDisk
+### 8.9 ResizeDisk
 
 Call the ResizeDisk operation to resize a system disk or data disk.
 
@@ -6453,9 +6644,9 @@ Examples for successful responses
 | 403 | SecurityRisk.3DVerification | We have detected a security risk with your default credit or debit card. Please proceed with verification via the link in your email. | The error message is returned, because risks are detected in your default credit card or debit card. Please proceed with verification via the link in your email. |
 | 400 | InvalidSystemDiskSize.ImageNo tSupportResize | The specified image does not support resize. | The error message is returned, because the specified image does not support resize. |
 
-Ecs 2014-05-26 ResizeDisk
+Ecs 2014-05-26
 
-### DeleteDisk
+### 8.10 DeleteDisk
 
 Releases a data disk. When you call this operation to release a data disk, take note of the following items: Manual snapshots of the disk are retained. You can call the ModifyDiskAttribute operation to configure whether to retain automatic snapshots of the disk or release them along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots. The disk must be in the Unattached (Available) state. If the specified DiskId parameter does not exist, the request is ignored.
 
@@ -6510,7 +6701,7 @@ Sample success responses
 | 400 | InvalidRegionId.MalFormed | The specified parameter RegionId is not valid. | The error message returned because the specified RegionId parameter is invalid. |
 | 403 | InvalidDiskStatus.DeleteProtecti on | The specified disk is under delete protection, can not be deleted. | The error message returned because deletion protection is enabled for the specified disk and the disk cannot be released. Possible cause: The disk was detached from an instance to which it was attached as the system disk, and the detached system disk was retained as a data disk. The detached system disk cannot be released before the instance is released. |
 
-### ResetDisks
+### 8.11 ResetDisks
 
 Rolls back one or more disks to the state of an instance snapshot.
 
@@ -6640,9 +6831,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 500 | RAMSerivceUnavailableTempor ary | InternalError | The request failed due to an unknown error, exception, or failure. |
 | 500 | -1000016 | InternalError | The request failed due to an unknown error, exception, or failure. |
 
-## Snapshots
+## 9 Snapshots
 
-### CreateSnapshot
+### 9.1 CreateSnapshot
 
 Creates a snapshot for a disk. In the following scenarios, snapshots cannot be created for a disk: The number of manual snapshots of the disk has reached 256. A snapshot is being created for the disk. The Elastic Compute Service (ECS) instance to which the disk is attached has never been started. The instance to which the disk is attached is not in the **Stopped** ( `Stopped` ) or **Running** ( `Running` ) state. If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it. When you create a snapshot, take note of the following items: About 1 hour after an instance is created or the system disk of an instance is replaced, you can create a snapshot for a disk that is attached to the instance. After a data disk is attached to an instance, you must wait a period of time before you can create a snapshot for the data disk. The amount of time to wait depends on the volume of data stored on the disk. If a snapshot is being created, this snapshot cannot be used to create a custom image by calling the CreateImage operation. If the disk for which you want to create a snapshot is attached to an ECS instance, do not change the instance state during snapshot creation.
 
@@ -6735,7 +6926,7 @@ Sample success responses
 | 403 | QuotaExceed.Tags | %s | The error message returned because the number of specified tags exceeds the upper limit. %s is a variable. An error message is dynamically returned based on call conditions. |
 | 403 | InvalidSnapshotCategory.Malfor med | The specified Category is not valid. | The error message returned because the specified Category parameter is invalid. Check whether the value of the Category parameter is valid. |
 
-### DescribeSnapshots
+### 9.2 DescribeSnapshots
 
 Call the DescribeSnapshots operation to query the snapshots of an ECS instance or a disk. The `InstanceId` , `DiskId` , and `SnapshotIds` parameters are optional. You can use these parameters to filter the query results. If you specify more than one of these parameters, they are combined using a logical AND.
 
@@ -6917,7 +7108,7 @@ Sample response
 | 404 | SNAPSHOTLINKNOTEXISTS _ _ _ | InvalidSnapshotLinkId.NotFound | The specified snapshot link is not found. |
 | 500 | -40 | InternalError | The request failed due to an unknown internal error. |
 
-### DeleteSnapshot
+### 9.3 DeleteSnapshot
 
 Deletes a snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled. When you call this operation, take note of the following items: If the specified snapshot does not exist, the request is ignored. A snapshot that has already been used to create custom images cannot be deleted. You must call the DeleteImage operation to delete the custom images before you can delete the snapshot. If the specified snapshot has been used to create disks and the `Force` parameter is not specified or is set to `false` , the snapshot cannot be deleted directly. If you want to delete the snapshot, set the `Force` parameter to true to forcefully delete the snapshot. The disks created from the snapshot cannot be re-initialized after the snapshot is forcefully deleted.
 
@@ -6966,7 +7157,7 @@ Sample success responses
 |---|---|---|---|
 | 403 | Operation.Conflict | The operation may conflicts with others, please retry later. | The error message returned because the operation conflicts with other operations. Try again later. |
 
-### CopySnapshot
+### 9.4 CopySnapshot
 
 You can call this operation to copy a normal snapshot from one region to another. When you call this operation, take note of the following items: New snapshots, which are the copies of source snapshots, cannot be used to roll back the disks for which the source snapshots were created. Encrypted snapshots cannot be copied. Local snapshots cannot be copied.
 
@@ -7022,7 +7213,7 @@ Sample success responses
 | 400 | InvalidTagValue.Malformed | The specified Tag.n.Value is not valid. | The error message returned because the specified Tag.N.Value parameter is invalid. |
 | 400 | InvalidRegionId.MalFormed | The specified RegionId is not valid | The error message returned because the specified RegionId parameter is invalid. |
 
-### DescribeSnapshotLinks
+### 9.5 DescribeSnapshotLinks
 
 Queries the snapshot chains of disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots. Usage notes Take note of the following items: You can specify multiple request parameters, such as `RegionId` , `DiskIds` , and `InstanceId` , to query snapshot chains. Specified parameters have logical AND relations. Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
 
@@ -7136,7 +7327,7 @@ Sample success responses
 | 400 | PARAMETERDISKIDSINVALID _ _ _ | InvalidDiskIds | Invalid diskIds value. |
 | 500 | -40 | InternalError | The request failed due to unknown errors. |
 
-### DescribeSnapshotsUsage
+### 9.6 DescribeSnapshotsUsage
 
 You can call this operation to query the number of snapshots stored in a region and the total size of the snapshots. If you want to view the snapshot usage information on each disk in the current region, we recommend that you call the DescribeSnapshotLinks operation to query snapshot chain information.
 
@@ -7179,7 +7370,7 @@ Sample success responses
 |---|---|---|---|
 | 403 | InvalidParam.RegionId | The specified region is not exist. | The error message returned because the specified RegionId parameter does not exist. |
 
-### CreateAutoSnapshotPolicy
+### 9.7 CreateAutoSnapshotPolicy
 
 You can call this operation to create an automatic snapshot policy. After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to disks. You can also call the ModifyAutoSnapshotPolicyEx operation to modify the automatic snapshot policy. When you call this operation, take note of the following items: A maximum of 100 automatic snapshot policies can be created in each region per Apsara Stack tenant account. If an automatic snapshot is being created when the time scheduled for a new automatic snapshot is due, the new snapshot task is skipped. This may occur when a disk contains a large volume of data. For example, an automatic snapshot policy is applied to a disk that contains a large volume of data, and the policy specifies that snapshots are created at 09:00, 10:00, 11:00, and 12:00. The system starts to create a snapshot for the disk at 09:00. The snapshot creation process takes 80 minutes and ends at 10:20. The system skips the automatic snapshot task scheduled for 10:00 and creates the next automatic snapshot for the disk at 11:00.
 
@@ -7234,7 +7425,7 @@ Sample success responses
 | 403 | InvalidAccountStatus.NotEnoug hBalance | Your account does not have enough balance. | The error message returned because your account balance is insufficient. Add funds to your account and try again. |
 | 403 | InvalidAccountStatus.SnapshotS erviceUnavailable | Snapshot service has not been opened yet. | The error message returned because the operation is not supported while the snapshot service is not activated. |
 
-### DeleteAutoSnapshotPolicy
+### 9.8 DeleteAutoSnapshotPolicy
 
 You can call this operation to delete an automatic snapshot policy. After an automatic snapshot policy is deleted, the policy will no longer be applied to the disks that it previously took effect on.
 
@@ -7277,7 +7468,7 @@ Sample success responses
 | 404 | ParameterInvalid | The specified automatic snapshot policy does not exist. | The error message returned because the specified autoSnapshotPolicyID parameter does not exist. |
 | 404 | ParameterInvalid | The specified automatic snapshot policy does not exist in the region. | The error message returned because the specified automatic snapshot policy does not exist in the current region. |
 
-### ModifyAutoSnapshotPolicyEx
+### 9.9 ModifyAutoSnapshotPolicyEx
 
 You can call this operation to modify an automatic snapshot policy. After an automatic snapshot policy is modified, the modifications take effect immediately on the disks to which the policy is applied.
 
@@ -7333,7 +7524,7 @@ Sample success responses
 |---|---|---|---|
 | 403 | ParameterInvalid | The specified RetentionDays parameter is invalid. | The error message returned because the specified retentionDays parameter is invalid. |
 
-### ModifySnapshotAttribute
+### 9.10 ModifySnapshotAttribute
 
 Modifies the name or description of a snapshot.
 
@@ -7382,7 +7573,7 @@ Sample success responses
 | 400 | NoAttributeToModify | No attribute to be modified in this request. | The error message returned because no properties of the specified snapshot are modified. |
 | 404 | InvalidSnapshotId.NotFound | The specified SnapshotId does not exist. | The error message returned because the specified snapshot does not exist. Check whether the snapshot ID is correct. |
 
-### DescribeAutoSnapshotPolicyEX
+### 9.11 DescribeAutoSnapshotPolicyEX
 
 You can call this operation to query the automatic snapshot policies that you have created.
 
@@ -7479,7 +7670,7 @@ Sample success responses `XML` format
 | 400 | InvalidTag.Mismatch | The specified Tag.n.Key and Tag.n.Value are not match. | The error message returned because the specified Tag.N.Key and Tag.N.Value parameters do not match. |
 | 400 | InvalidTagCount | The specified tags are beyond the permitted range. | The error message returned because the number of specified tags exceeds the upper limit. |
 
-### ApplyAutoSnapshotPolicy
+### 9.12 ApplyAutoSnapshotPolicy
 
 Applies an automatic snapshot policy to one or more disks. If you apply an automatic snapshot policy to a disk that already has an automatic snapshot policy, the new policy replaces the original policy to take effect on the disk. Each disk can have only one automatic snapshot policy applied. A single automatic snapshot policy can be applied to multiple disks.
 
@@ -7533,7 +7724,7 @@ Sample success responses
 | 403 | InvalidAccountStatus.NotEnoug hBalance | Your account does not have enough balance. | The error message returned because your account balance is insufficient. Add funds to your account and try again. |
 | 403 | InvalidAccountStatus.SnapshotS erviceUnavailable | Snapshot service has not been opened yet. | The error message returned because the operation is not supported while the snapshot service is not activated. |
 
-### CancelAutoSnapshotPolicy
+### 9.13 CancelAutoSnapshotPolicy
 
 You can call this operation to disable the automatic snapshot policy for one or more disks.
 
@@ -7577,7 +7768,7 @@ Sample success responses
 | 403 | ParameterInvalid | The specified DiskIds are invalid. | The error message returned because the specified diskIds parameter is invalid. |
 | 404 | InvalidDiskId.NotFound | The specified DiskIds are not found. | The error message returned because the specified diskIds parameter does not exist. |
 
-### CreateSnapshotGroup
+### 9.14 CreateSnapshotGroup
 
 Creates a snapshot-consistent group for the disks in an Elastic Compute Service (ECS) instance. A snapshot-consistent group can contain snapshots of one or more disks. When you call this operation, take note of the following items:
 
@@ -7668,7 +7859,7 @@ Sample success responses
 | 400 | InvalidParameter.Name | The specified Name is invalid. | The error message returned because the specified Name parameter is invalid. |
 | 403 | NumberExceed.TooManyDisks | The number of all disks in the request exceeds. | The error message returned because the number of disks exceeds the limit. |
 
-### DescribeSnapshotGroups
+### 9.15 DescribeSnapshotGroups
 
 Queries the details of one or more snapshot-consistent groups. You can specify multiple request parameters such as `InstanceId` , `SnapshotGroupId.N` , and `Status.N` in the request. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
 
@@ -7756,7 +7947,7 @@ Sample success responses
 |---|---|---|---|
 | 403 | InvalidStatus.ValueNotSupporte d | %s | The error message returned because the operation is not supported while the resource is in the current state. |
 
-### DeleteSnapshotGroup
+### 9.16 DeleteSnapshotGroup
 
 Deletes a snapshot-consistent group. If you have custom images that were created from a disk snapshot contained in a snapshot-consistent group, the disk snapshot is retained when the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the DeleteImage operation to delete the custom images. Then, you can call the DeleteSnapshot operation to delete the disk snapshot.
 
@@ -7803,7 +7994,7 @@ Sample success responses
 |---|---|
 | { "RequestId": "6EDE885A-FDC1-4FAE-BC44-6EACAEA6****", "OperationProgressSet": { "OperationStatus": "Success", "ErrorMsg": "testErrorMsg", "ErrorCode": 400, "RelatedItemSet": { "Value": "", "Name": "" } } } |   |
 
-### ModifySnapshotGroup
+### 9.17 ModifySnapshotGroup
 
 Modifies the name or description of a snapshot-consistent group.
 
@@ -7849,9 +8040,9 @@ Sample success responses
 |---|---|---|---|
 | 400 | InvalidParameter.Name | The specified Name is invalid. | The error message returned because the specified Name parameter is invalid. |
 
-## Images
+## 10 Images
 
-### CreateImage
+### 10.1 CreateImage
 
 Call CreateImage to create a custom image. You can use the created custom image to create an Elastic Compute Service (ECS) instance (RunInstances) or replace the system disk of an instance (ReplaceSystemDisk). API description When you call this API, note the following points: Wait until the image status changes to available ( `Available` ) before you use the image resource. When you query ECS instance information, if the returned data contains `{"OperationLocks": {"LockReason" : "security"}}` , do not perform any operations. The following section describes three methods to create a custom image by calling this API. The priority of request parameters is as follows: `InstanceId` > `DiskDeviceMapping` > `SnapshotId` . If your request contains two or more of these parameters, the system creates the image based on the parameter with the highest priority by default.
 **Method 1**: Use an instance as a template. You only need to specify the instance ID ( `InstanceId` ). The instance must be in the running
@@ -8044,7 +8235,7 @@ Sample success responses
 | 500 | RAMSerivceUnavailableTempor ary | InternalError | The system encountered an unknown error, exception, or failure while processing the request. |
 | 500 | -305 | InternalError | The system encountered an unknown error while creating the snapshot. |
 
-### DescribeImages
+### 10.2 DescribeImages
 
 Queries available images.
 
@@ -8306,7 +8497,7 @@ Sample success responses `XML` format
 | 500 | InternalError | The request processing has failed due to some unknown error. | An internal error occurred. Try again later. If the error persists, submit a ticket. |
 |---|---|---|---|
 
-### ModifyImageAttribute
+### 10.3 ModifyImageAttribute
 
 Modifies the name or description of a custom image.
 
@@ -8354,7 +8545,7 @@ Sample success responses
 | 400 | InvalidDescription.Malformed | The specified description is wrongly formed. | Invalid Description format. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
 | 404 | InvalidImageId.NotFound | The specified ImageId does not exist. | The image is not found in this account. Check whether the image ID is correct. |
 
-### DeleteImage
+### 10.4 DeleteImage
 
 You can call this operation to delete a custom image.
 
@@ -8403,7 +8594,7 @@ Sample success responses
 | 403 | ImageIsExporting | The specified Image is exporting. Please cancel task first. | The error message returned because the specified image is being exported. Cancel the export task first. |
 | 404 | InvalidImageId.NotFound | The specified ImageId does not exist. | The error message returned because the specified image does not exist in this account. Check whether the image ID is correct. |
 
-### CopyImage
+### 10.5 CopyImage
 
 You can call this operation to copy a custom image from one region to another. You can deploy or copy instances across regions by copying images. You can use the image copy to create ECS instances (RunInstances) or replace system disks of instances (ReplaceSystemDisk) in the destination region. When you call this operation, take note of the following items: Only custom images that are in the Available ( `Available` ) state can be copied. You can copy only the images in your Apsara Stack tenant account. Images cannot be copied across accounts. When an image is being copied, you cannot delete the image copy by calling the DeleteImage operation, but you can cancel the copy task by calling the CancelCopyImage operation.
 
@@ -8484,7 +8675,7 @@ Sample success responses
 | 403 | UserNotInTheWhiteList | The user is not in byok white list. | The error message returned because you are not in the BYOK whitelist. Try again when you are in the whitelist. |
 | 400 | InvalidParameter.EncryptedIlleg al | The specified parameter Encrypted must be true when kmsKeyId is not empty. | The error message returned because the encryption feature is not enabled after a KMS key ID is specified. |
 
-### CancelCopyImage
+### 10.6 CancelCopyImage
 
 You can call this operation to cancel an ongoing image copy (CopyImage) task. When you call this operation, take note of the following items: After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged. If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
 
@@ -8538,7 +8729,7 @@ Sample success responses
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 | 400 | CancelNotSupported | The specified image coping can not be cancelled. | The error message returned because the specified image copy task cannot be canceled. |
 
-### ModifyImageSharePermission
+### 10.7 ModifyImageSharePermission
 
 Manages the share permission on a custom image. After you share a custom image to another Apsara Stack tenant account, the account can use the shared image to create Elastic Compute Service (ECS) instances (RunInstances) or replace the system disks of ECS instances (ReplaceSystemDisk). When you call this operation, take note of the following items: You can share only your own custom images to other Apsara Stack tenant accounts. A custom image can be shared to up to 10 Apsara Stack tenant accounts at a time. You can specify up to 10 Apsara Stack tenant account IDs in the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the parameter is ignored. A single custom image can be shared to up to 50 Apsara Stack tenant accounts. If an instance was created (RunInstances) from a shared image, the system disk of this instance cannot be re-initialized (ReInitDisk) after the image owner unshares or deletes the image (DeleteImage).
 
@@ -8592,7 +8783,7 @@ Sample success responses
 | 403 | InvalidImageId.BidMismatch | Cannot share image with other bid user. | The error message returned because images cannot be shared among users of different carriers. |
 | 403 | OperationDeined.EncryptedSna pshot | The image contains encrypted snapshots, which do not support share. | The error message returned because the specified image contains encrypted snapshots and cannot be shared. |
 
-### DescribeImageSharePermission
+### 10.8 DescribeImageSharePermission
 
 You can call this operation to query the accounts to which a custom image is shared. The response can be displayed by page. By default, ten entries are displayed on each page.
 
@@ -8649,7 +8840,7 @@ Sample success responses
 | 400 | MissingParameter | The input parameter "ImageId "that is mandatory for processing this request is not supplied. | The error message returned because the ImageId parameter is not specified. |
 | 404 | InvalidImageId.NotFound | The specified ImageId does not exist. | The error message returned because the specified image does not exist in this account. |
 
-### ImportImage
+### 10.9 ImportImage
 
 Imports an image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances (RunInstances) or replace the system disks of ECS instances (ReplaceSystemDisk).
 
@@ -8777,7 +8968,7 @@ Sample success responses `XML` format
 | 400 | InvalidLicenseType.BYOLOnly | Only BYOL LicenseType is supported for the current platform provided | The current platform supports only BYOL licenses. |
 |---|---|---|---|
 
-### ExportImage
+### 10.10 ExportImage
 
 You can call this operation to export a custom image to an OSS bucket in the same region. A custom image cannot be exported if it contains more than four data disk snapshots or if one of the data disk snapshots exceeds 500 GiB in size. Before you export a custom image, you must use Resource Access Management (RAM) to create a RAM role for ECS and authorize ECS to write data to OSS.
 
@@ -8885,7 +9076,7 @@ Sample success responses
 | 403 | ConcurrentQuotaExceed.ExportI mage | %s | The error message returned because the maximum number of concurrent ongoing tasks has been reached. Try again later. |
 | 403 | WeeklyQuotaExceed.ExportIma ge | %s | The error message returned because the weekly quota for exported images of this week has been used up. Retry when the quota becomes available again. |
 
-### DescribeImageSupportInstanceTypes
+### 10.11 DescribeImageSupportInstanceTypes
 
 You can call this operation to query the instance types supported by an image.
 
@@ -8963,9 +9154,9 @@ Sample success responses
 | 404 | InvalidUsage | The specifed Usage is not valid | The error message returned because the specified referenced resource type (image, disk, imagedisk, or none) is invalid. _ |
 | 400 | InvalidInstanceType.ValueNotSu pported | The specified InstanceType does not exist or beyond the permitted range. | The error message returned because the specified instance type does not exist or you are not authorized to manage instances of this instance type. |
 
-## Networks
+## 11 Networks
 
-### ModifyInstanceNetworkSpec
+### 11.1 ModifyInstanceNetworkSpec
 
 You can call this operation to modify the bandwidth configurations of an instance. You can modify the bandwidth configurations of an instance to improve network performance.
 
@@ -9053,7 +9244,7 @@ Sample success responses
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 | 403 | IncorrectInstanceStatus | The current status of the resource does not support this operation. | The error message returned because the operation is not supported while the resource is in the current state. |
 
-### AttachClassicLinkVpc
+### 11.2 AttachClassicLinkVpc
 
 Links an instance that is deployed in the classic network to a virtual private cloud (VPC) by establishing a ClassicLink connection between the classic network and the VPC. This way, the instance can communicate with cloud resources in the VPC over the internal network. When you call this operation, take note of the following items: The instance that you want to connect to a VPC must be in the **Running** or **Stopped** state. The instance and the VPC must reside in the same region.
 
@@ -9114,7 +9305,7 @@ Sample success responses
 | 403 | InvalidInstanceId.LimitedRegion | The specified instance does not support this operation due to the limitation of its region. | The error message returned because ClassicLink connections cannot be established in the specified region due to lack of support. |
 | 403 | Forbidden.SubUser | User not authorized to operate on the specified resource. | The error message returned because the RAM user is not authorized to manage the specified resource. |
 
-### ModifyInstanceSpec
+### 11.3 ModifyInstanceSpec
 
 Changes the instance type and network bandwidth of an Elastic Compute Service (ECS) instance.
 
@@ -9251,7 +9442,7 @@ Sample success responses
 | 403 | InvalidParameter.InvalidEniQue ueNumber | %s | The number of queues for all ENIs on an instance is incorrect. For more information, see the return value of the %s placeholder in the error message. |
 | 400 | Invalid.PrivatePoolOptions.Matc hCriteria | Target mode does not support this operation. | This operation cannot be performed when PrivatePoolOptions.MatchCriteria is set to Target. |
 
-### DescribeClassicLinkInstances
+### 11.4 DescribeClassicLinkInstances
 
 You can call this operation to query one or more classic network-type instances that are linked to VPCs. When you call this operation, take note of the following items: This operation applies only to instances in the classic network. You can query a maximum of 100 classic network-type instances each time. At least one of VpcId and InstanceId must be specified.
 
@@ -9309,7 +9500,7 @@ Sample success responses
 | 403 | InvalidInstanceId.NotBelong | The specified instance is not belong to you. | The error message returned because the specified instance does not exist in your account. |
 | 403 | InvalidVpc.NotBelong | The specified vpc is not belong to you. | The error message returned because the specified VPC does not exist in your account. |
 
-### DetachClassicLinkVpc
+### 11.5 DetachClassicLinkVpc
 
 You can call this operation to unlink a classic network-type instance from a virtual private cloud (VPC) by removing the ClassicLink connection between them. After the instance is unlinked from the VPC, they can no longer communicate with each other.
 
@@ -9366,9 +9557,9 @@ Sample success responses `XML` format
 | 403 | Forbidden.SubUser | User not authorized to operate on the specified resource. | The error message returned because the RAM user is not authorized to manage this resource. |
 | 403 | InvalidStatus.InstanceStatus | The specified instance status does not support this operation, expected status is Running or Stopped. | The error message returned because the operation is not supported while the instance is in the current state. The instance must be in the Running or Stopped state. |
 
-## Security groups
+## 12 Security groups
 
-### CreateSecurityGroup
+### 12.1 CreateSecurityGroup
 
 Creates a security group. By default, a security group allows mutual access between instances in the security group. Access requests to the security group from outside are denied. If you want to allow requests from the Internet or requests from instances in other security groups, you can call the AuthorizeSecurityGroup operation. Usage notes To create a security group of the Virtual Private Cloud (VPC) type, you must specify `VpcId` .
 
@@ -9460,7 +9651,7 @@ Sample success responses
 |---|---|---|---|
 | 404 | InvalidResourceGroup | InvalidResourceGroup.NotFound | The ResourceGroup provided does not exist in our records. |
 
-### AuthorizeSecurityGroup
+### 12.2 AuthorizeSecurityGroup
 
 Creates an inbound security group rule. You can use the created rule to allow or deny inbound traffic from other devices to instances in the security group.
 
@@ -9590,7 +9781,7 @@ Sample success responses
 | 404 | InvalidSecurityGroupId.NotFoun d | %s | The error message returned because the specified security group ID does not exist. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the issue persists, submit a ticket. |
 
-### AuthorizeSecurityGroupEgress
+### 12.3 AuthorizeSecurityGroupEgress
 
 Creates an outbound rule in a security group. You can use the created rule to allow or deny outbound traffic from instances in the security group to other devices.
 
@@ -9722,7 +9913,7 @@ Sample success responses
 | 404 | InvalidSecurityGroupId.NotFoun d | %s | The error message returned because the specified security group ID does not exist. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the issue persists, submit a ticket. |
 
-### JoinSecurityGroup
+### 12.4 JoinSecurityGroup
 
 Adds an Elastic Compute Service (ECS) instance to a security group.
 
@@ -9784,7 +9975,7 @@ Sample success responses
 | 403 | InstanceSecurityGroupLimitExc eeded | %s | The maximum number of security groups to which the instance can be added is reached. |
 | 400 | InvalidInstanceId.Malformed | The specified parameter "InstanceId" is not valid. | The specified InstanceId parameter is invalid. |
 
-### LeaveSecurityGroup
+### 12.5 LeaveSecurityGroup
 
 You can call this operation to remove an ECS instance from a security group. When you call this operation, take note of the following items: Before you remove an ECS instance from a security group, make sure that the instance is in the **Stopped** (Stopped) or **Running** (Running) state. An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails.
 
@@ -9833,7 +10024,7 @@ Sample success responses
 | 504 | RequestTimeout | The request encounters an upstream server timeout. | The error message returned because the request is denied due to a timeout error of the upstream server. |
 | 400 | InvalidInstanceId.Malformed | The specified parameter "InstanceId" is not valid. | The error message returned because the specified InstanceId parameter is invalid. |
 
-### DeleteSecurityGroup
+### 12.6 DeleteSecurityGroup
 
 You can call this operation to delete a security group. Before you delete a security group, make sure that no instances exist in the security group and that the security group is not referenced by rules of other security groups. Otherwise, the DeleteSecurityGroup request fails. You can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups.
 
@@ -9877,7 +10068,7 @@ Sample success responses
 | 403 | DependencyViolation | The specified security group has been authorized in another one. | The error message returned because the specified security group is referenced by rules of another security group. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket. |
 
-### DescribeSecurityGroupAttribute
+### 12.7 DescribeSecurityGroupAttribute
 
 You can call this operation to query the rules of a security group.
 
@@ -10074,7 +10265,7 @@ Sample success responses
 | 400 | InvalidSecurityGroupId.Malform ed | The specified parameter "SecurityGroupId" is not valid. | The error message returned because the specified SecurityGroupId parameter is invalid. |
 |---|---|---|---|
 
-### DescribeSecurityGroups
+### 12.8 DescribeSecurityGroups
 
 Queries the basic information about security groups. The basic information about security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs. When you use Alibaba Cloud CLI to call an API operation, you must specify request parameters of different data types in required formats.
 
@@ -10150,7 +10341,7 @@ Sample success responses
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the error persists, submit a ticket. |
 
-### DescribeSecurityGroupReferences
+### 12.9 DescribeSecurityGroupReferences
 
 You can call this operation to query whether one or more security groups are referenced by rules of other security groups. When you call this operation, take note of the following items: Security group-level authorization includes authorization for inbound and outbound traffic. A maximum of 100 entries can be returned each time. If you fail to delete a security group by calling the DeleteSecurityGroup operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by rules of other security groups. If the security group is referenced by a rule of another security group, you must remove the reference before you can delete the security group.
 
@@ -10228,7 +10419,7 @@ Sample success responses
 | 400 | InvalidSecurityGroupId.Malform ed | The specified parameter SecurityGroupId is essential and size should less than 10 | The error message returned because the SecurityGroupId.N parameter must be specified and the value of N cannot exceed 10. |
 | 404 | InvalidSecurityGroupId.NotFoun d | The SecurityGroupId provided does not exist in our records. | The error message returned because the specified security group does not exist in this account. Check whether the security group ID is correct. |
 
-### RevokeSecurityGroup
+### 12.10 RevokeSecurityGroup
 
 Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed. In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination. You can delete a specific inbound rule by specifying one of the following groups of parameters. However, you cannot delete the security group rule by specifying only one of the parameters in a group. Parameters used to specify an inbound security group rule that controls access from specified ranges of IP addresses: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp, and SourceCidrIp (optional). Parameters used to specify an inbound security group rule that controls access from a specified security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestCidrIp (optional), DestGroupOwnerAccount, and DestGroupId. If the security group rule to be deleted does not exist, the RevokeSecurityGroup operation succeeds but no rule is deleted.
 
@@ -10326,9 +10517,9 @@ Sample success responses
 | 404 | InvalidSecurityGroupId.NotFoun d | %s | The error message returned because the specified security group ID does not exist. |
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. If the issue persists, submit a ticket. |
 
-Ecs 2014-05-26 RevokeSecurityGroup
+Ecs 2014-05-26
 
-### RevokeSecurityGroupEgress
+### 12.11 RevokeSecurityGroupEgress
 
 Call RevokeSecurityGroupEgress operation to delete an outbound security group rule. After the rule is deleted, the access permission implemented by the rule is removed.
 
@@ -10472,9 +10663,9 @@ Examples for successful responses
 |---|---|---|---|
 | 404 | PREFIXLISTNOTFOUND _ _ _ | InvalidPrefixListId.NotFound | The specified prefix list was not found. |
 
-Ecs 2014-05-26 RevokeSecurityGroupEgress
+Ecs 2014-05-26
 
-### ModifySecurityGroupAttribute
+### 12.12 ModifySecurityGroupAttribute
 
 Modifies the name or description of a security group.
 
@@ -10523,7 +10714,7 @@ Sample success responses
 | 400 | InvalidSecurityGroupDiscription. Malformed | Specified security group description is not valid. | The error message returned because the specified Description parameter is invalid. |
 | 403 | InvalidOperation.ResourceMana gedByCloudProduct | %s | The error message returned because you cannot modify security groups managed by cloud services. |
 
-### ModifySecurityGroupPolicy
+### 12.13 ModifySecurityGroupPolicy
 
 Modifies the internal access policy of a basic security group. The internal access policies of advanced security groups cannot be modified.
 
@@ -10575,7 +10766,7 @@ Sample success responses `XML` format
 | 403 | InvalidOperation.ResourceMana gedByCloudProduct | %s | You cannot modify security groups managed by cloud services. |
 | 404 | InvalidSecurityGroupId.NotFoun d | The specified SecurityGroupId does not exist. | The specified security group is not found in this account. Check whether the security group ID is correct. |
 
-### ModifySecurityGroupRule
+### 12.14 ModifySecurityGroupRule
 
 Calls ModifySecurityGroupRule to modify an inbound security group rule in a specified security group. Operation description When modifying a security group rule by specifying the security group rule ID, consider the following limitations: The authorization objects of security group rules can be IPv4 CIDR blocks (or IP addresses), IPv6 CIDR blocks (or IP addresses), or security groups. You cannot change the authorization object type of an existing security group rule using this operation. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address) or a security group. You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create a new rule and delete the original rule.
 
@@ -10683,7 +10874,7 @@ Sample success responses
 | 400 | InvalidSourcePortRange.Malfor med | The specified parameter "SourcePortRange" is not valid. | The error message returned because the specified SourcePortRange parameter is invalid. |
 | 400 | InvalidSecurityGroupId.Malform ed | The specified parameter "SecurityGroupId" is not valid. | The error message returned because the specified SecurityGroupId parameter is invalid. |
 
-### ModifySecurityGroupEgressRule
+### 12.15 ModifySecurityGroupEgressRule
 
 You can call the ModifySecurityGroupEgressRule operation to modify an outbound security group rule. Operation description When you modify a security group rule by specifying its rule ID, note the following limitations: The authorization objects of security group rules are classified into IPv4 CIDR blocks (or IP addresses), IPv6 CIDR blocks (or IP addresses), and security groups. You cannot use this operation to modify the authorization object type of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address) or a security group. You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create a new rule and delete the original rule.
 
@@ -10753,9 +10944,9 @@ HTTP/1.1 200 OK Content-Type:application/json
 <RequestId>473469C7-AA6F-4DC5-B3DB-A3DC0DE3****</RequestId>
 ```
 
-## SSH key pairs
+## 13 SSH key pairs
 
-### CreateKeyPair
+### 13.1 CreateKeyPair
 
 You can call this operation to create an SSH key pair. Apsara Stack stores the public key and returns the unencrypted private key. The private key is PEM-encoded in the PKCS#8 format. You must securely lock away the private key on your own. In addition to calling CreateKeyPair, you can create a key pair by using other key pair generation tools and call ImportKeyPair to upload the key pair to a region. You have a maximum of 500 key pairs in each region.
 
@@ -10817,7 +11008,7 @@ Sample success responses `XML` format
 | 400 | InvalidTagValue.Malformed | The specified Tag.n.Value is not valid. | The error message returned because the specified Tag.N.Value parameter is invalid. |
 | 403 | QuotaExceed.Tags | %s | The error message returned because the number of specified tags exceeds the upper limit. |
 
-### AttachKeyPair
+### 13.2 AttachKeyPair
 
 Binds an SSH key pair to one or more Linux instances. When you call this operation, consider the following items: Windows instances do not support SSH key pairs. After an SSH key pair is attached to an ECS instance that uses password authentication, the password authentication method might be disabled. If an instance is in the Running state, you must restart the instance (RebootInstance) for the SSH key pair to take effect. If an instance is in the Stopped state, you must start the instance (StartInstance) for the SSH key pair to take effect. If an instance is already bound to an SSH key pair, the new SSH key pair will replace the original one.
 
@@ -10898,9 +11089,9 @@ Sample success responses
 | 400 | InvalidInstanceIds.ValueNotSup ported | The specified parameter InstanceIds is not valid. | The error message returned because the specified InstanceId parameter is invalid. |
 | 400 | DependencyViolation.IoOptimiz e | The specified parameter InstanceIds is not valid. | The error message returned because the specified instance ID is invalid. |
 
-Ecs 2014-05-26 AttachKeyPair
+Ecs 2014-05-26
 
-### DetachKeyPair
+### 13.3 DetachKeyPair
 
 You can call this operation to detach an SSH key pair from one or more Linux instances. When you call this operation, take note of the following items: After you detach an SSH key pair from an instance, you must call the RebootInstance operation to restart the instance for the detach operation to take effect. By default, the username and password authentication method is used for an instance after you detach an SSH key pair from the instance.
 
@@ -10986,7 +11177,7 @@ Sample success responses
 | 403 | InstanceKeyPairLimitExceeded | Exceeding the allowed amount of instance that an key pair can attach. | The error message returned because the number of instances exceeds the maximum number allowed in a single request. |
 | 400 | InvalidInstanceIds.ValueNotSup ported | The specified parameter InstanceIds is not valid. | The error message returned because the specified InstanceIds parameter is invalid. |
 
-### DeleteKeyPairs
+### 13.4 DeleteKeyPairs
 
 You can call this operation to delete one or more SSH key pairs. After an SSH key pair is deleted: You cannot query the key pair by calling the DescribeKeyPairs operation. If the key pair was bound to one or more ECS instances: The key pair is no longer stored on Apsara Stack but the instances can still use the key pair. When you call the DescribeInstance operation to query instance information, the name of the key pair name (KeyPairNames) is still returned, but no other information about the key pair.
 
@@ -11030,7 +11221,7 @@ Sample success responses
 | 400 | InvalidKeyPairNames.ValueNotS upported | The specified parameter "KeyPairNames" is not valid. | The error message returned because the specified KeyPairNames parameter is invalid. |
 | 403 | InstanceKeyPairLimitExceeded | Exceeding the allowed amount of instance which will be deleted. | The error message returned because the number of specified key pairs exceeds the upper limit. |
 
-### DescribeKeyPairs
+### 13.5 DescribeKeyPairs
 
 You can call this operation to query one or more key pairs.
 
@@ -11105,9 +11296,9 @@ Sample success responses
 
 `}` interfaces
 
-## Elastic network interfaces
+## 14 Elastic network interfaces
 
-### CreateNetworkInterface
+### 14.1 CreateNetworkInterface
 
 Creates an elastic network interface (ENI).
 
@@ -11272,7 +11463,7 @@ interfaces
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | An internal error occurred. Try again later. If the error persists, submit a ticket. |
 |---|---|---|---|
 
-### AttachNetworkInterface
+### 14.2 AttachNetworkInterface
 
 You can call this operation to bind an elastic network interface (ENI) to an ECS instance in a VPC. When you call this operation, take note of the following items: The ENI must be in the **Available** ( `Available` ) state. Each ENI can be bound to a single instance. The instance must be in the **Running** ( `Running` ) or **Stopped** ( `Stopped` ). When you bind ENIs to instances of some instance types, the instances must be in the **Stopped** ( `Stopped` ) state.
 
@@ -11354,7 +11545,7 @@ interfaces
 
 interfaces
 
-### AssignPrivateIpAddresses
+### 14.3 AssignPrivateIpAddresses
 
 Assigns one or more secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that hosts the ENI. Alternatively, you can specify the number of private IP addresses for Elastic Compute Service (ECS) to automatically assign them. The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
 
@@ -11440,7 +11631,7 @@ interfaces
 | 400 | InvalidPrivateIpAddress.Duplica ted | Specified private IP address is duplicated. | The error message returned because the specified private IP address is already in use. Try another IP address. |
 | 403 | InvalidIp.IpRepeated | %s | The error message returned because the specified IP address already exists. |
 
-### UnassignPrivateIpAddresses
+### 14.4 UnassignPrivateIpAddresses
 
 You can call this operation to unassign one or more secondary private IP addresses from an elastic network interface (ENI). The ENI from which you want to unassign private IP addresses must be in the **Available** (Available) or **Bound** (InUse) state. When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
 
@@ -11517,7 +11708,7 @@ interfaces
 | 400 | InvalidAction | %s | The error message returned because the operation is invalid. |
 | 403 | InvalidOperation.EniServiceMan aged | %s | The error message returned because the operation is invalid. |
 
-### DescribeNetworkInterfaces
+### 14.5 DescribeNetworkInterfaces
 
 You can call this operation to query the list of elastic network interfaces (ENIs). `You can use one of the following methods to check` the responses returned by the DescribeNetworkInterfaces operation: Method 1: Use `NextToken` to configure the query token. Set the value of this parameter to the `NextToken` value returned in the last call to `DescribeNetworkInterfaces` . Then use `MaxResults` to set the maximum number of entries to return on each page. Method 2: Use `PageSize` to set the number of entries to return on each page and then use `PageNumber` to set the number of the page to return. You can use only one of the preceding methods. If a large number of entries are returned, we recommend that you use method 1. If `NextToken` is set, `PageSize` and `PageNumber` will not take effect and `TotalCount` in the response will be invalid.
 
@@ -11661,7 +11852,7 @@ interfaces
 | 403 | InvalidOperation.InvalidEniType | %s | The error message returned because the current ENI type does not support this operation. |
 | 400 | Forbidden.RegionId | %s | The error message returned because the service is not available in the current region. |
 
-### DetachNetworkInterface
+### 14.6 DetachNetworkInterface
 
 You can call this operation to unbind an elastic network interface (ENI) from an ECS instance. When you call this operation, take note of the following items: The primary ENIs of ECS instances cannot be unbound. The ENI must be in the Detaching (Detaching) or Bound (InUse) state. The instance must be in the Running (Running) or Stopped (Stopped) state.
 
@@ -11735,7 +11926,7 @@ interfaces
 | 403 | InvalidOperation.EniLinked | %s | The error message returned because the operation is not supported while ENIs are bound to the instance. |
 | 403 | InvalidInstanceId.NotFound | %s | The error message returned because the specified InstanceId parameter does not exist. |
 
-### DeleteNetworkInterface
+### 14.7 DeleteNetworkInterface
 
 You can call this operation to delete an elastic network interface (ENI). The ENI must be in the Available (Available) state. If the ENI is bound to an ECS instance, you must unbind the ENI from the ECS instance (DetachNetworkInterface) before you can delete the ENI. After an ENI is deleted: The primary private IP address of the ENI is automatically released. The ENI is automatically removed from its security groups.
 
@@ -11809,7 +12000,7 @@ interfaces
 | 403 | InvalidOperation.EniServiceMan aged | %s | The error message returned because the operation is invalid. |
 |---|---|---|---|
 
-### ModifyNetworkInterfaceAttribute
+### 14.8 ModifyNetworkInterfaceAttribute
 
 Modifies the attributes of an elastic network interface (ENI), such as its name, description, and security group.
 
@@ -11885,7 +12076,7 @@ interfaces
 | 403 | InvalidOperation.ResourceMana gedByCloudProduct | %s | The error message returned because you cannot modify security groups managed by cloud services. |
 |---|---|---|---|
 
-### AssignIpv6Addresses
+### 14.9 AssignIpv6Addresses
 
 Assigns one or more IPv6 addresses to an elastic network interface (ENI).
 
@@ -11967,7 +12158,7 @@ Sample success responses `XML` format interfaces
 
 interfaces
 
-### UnassignIpv6Addresses
+### 14.10 UnassignIpv6Addresses
 
 You can call this operation to reclaim one or multiple IPv6 addresses assigned to an elastic network interface (ENI). When you call this operation, take note of the following items: The ENI must be in the **Available** (Available) or **Bound** (InUse) state. If the ENI is a primary ENI, the ECS instance to which the primary ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
 
@@ -12030,9 +12221,9 @@ interfaces
 | 403 | Forbidden.RegionId | %s | The error message returned because the service is not available in the current region. |
 | 403 | InvalidOperation.EniServiceMan aged | %s | The error message returned because the operation is invalid. |
 
-## Prefix lists
+## 15 Prefix lists
 
-### CreatePrefixList
+### 15.1 CreatePrefixList
 
 Creates a prefix list. A prefix list is a collection of Classless Inter-Domain Routing (CIDR) blocks. You can reference the prefix list when you configure network rules for other resources. When you create a prefix list: You must specify an address family (IPv4 or IPv6) for the prefix list. All entries in the prefix list must belong to the same address family. The address family cannot be changed after the prefix list is created. You must set the maximum number of entries for the prefix list. This value cannot be changed after the prefix list is created. You can specify entries for the prefix list. An entry consists of a CIDR block and a description. The number of entries cannot exceed the maximum value that you set.
 
@@ -12105,7 +12296,7 @@ Sample response
 | 404 | PREFIXLISTPERREGIONLIMIT _ _ _ _ EXCEED _ | LimitExceed.PrefixListPerRegion | The number of prefix lists in the region exceeds the limit. |
 | 404 | REGIONNOTEXISTS _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist. |
 
-### DescribePrefixLists
+### 15.2 DescribePrefixLists
 
 Queries information about one or more prefix lists.
 
@@ -12176,7 +12367,7 @@ Sample response
 | 400 | LimitExceed.PrefixListId | LimitExceed.PrefixListId | The specified number of PrefixListId exceeds the limit. |
 | 404 | REGIONNOTEXISTS _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist. |
 
-### ModifyPrefixList
+### 15.3 ModifyPrefixList
 
 Modifies the name and description of a prefix list. You can also add, modify, and delete entries. The specified Classless Inter-Domain Routing (CIDR) block must be in the canonical form. For example, 10.0.0.0/8 is a valid CIDR block, but 10.0.0.1/8 is not. Do not specify duplicate CIDR blocks when you add or delete entries. For example: For IPv4 CIDR blocks: You cannot specify two entries with the CIDR block 10.0.0.0/8. You also cannot specify two entries with the CIDR blocks 10.0.0.1/32 and 10.0.0.1 because these addresses are duplicates. For IPv6 CIDR blocks: You cannot specify two entries with the CIDR blocks 2001:fd01:0:0:0:0:0:0/32 and 2001:fd01::/32 because these addresses are duplicates. The CIDR block of an entry you add cannot be the same as the CIDR block of an entry you delete. For example, if you add an entry with the CIDR block 10.0.0.0/8, you cannot also delete an entry with the CIDR block 10.0.0.0/8. To modify the description of an entry, specify the entry's CIDR block (AddEntry.N.Cidr) and the new description (AddEntry.N.Description).
 
@@ -12240,7 +12431,7 @@ Example response
 | 404 | -2021010112 | InvalidPrefixListId.NotFound | The specified prefix list was not found. |
 | 404 | REGIONNOTEXISTS _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist. |
 
-### DescribePrefixListAttributes
+### 15.4 DescribePrefixListAttributes
 
 Queries the details of a specified prefix list, including its name, address family, maximum entry capacity, and entries.
 
@@ -12296,7 +12487,7 @@ Sample response
 | 404 | -2021010112 | InvalidPrefixListId.NotFound | The specified prefix list was not found. |
 | 404 | REGIONNOTEXISTS _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist. |
 
-### DescribePrefixListAssociations
+### 15.5 DescribePrefixListAssociations
 
 Queries the associations between a specified prefix list and resources. The returned information includes the resource ID and resource type for each association.
 
@@ -12353,7 +12544,7 @@ Response example
 | 404 | PREFIXLISTNOTFOUND _ _ _ | InvalidPrefixListId.NotFound | The specified prefix list was not found. |
 | 404 | REGIONNOTEXISTS _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist. |
 
-### DeletePrefixList
+### 15.6 DeletePrefixList
 
 Deletes a specified prefix list and all of its entries. You cannot delete a prefix list if it is associated with other resources. You must first disassociate the prefix list from the resources. You can call the DescribePrefixListAssociations operation to query the resources that are associated with a prefix list.
 
@@ -12402,9 +12593,9 @@ Sample responses
 | 404 | -2021010112 | InvalidPrefixListId.NotFound | The specified prefix list was not found. |
 | 404 | REGIONNOTEXISTS _ _ | InvalidRegionId.NotFound | The specified RegionId does not exist. |
 
-## System events
+## 16 System events
 
-### DescribeInstanceHistoryEvents
+### 16.1 DescribeInstanceHistoryEvents
 
 Queries the system events of Elastic Compute Service (ECS) instances. By default, system events that are in the Executed, Avoided, Canceled, or Failed state can be queried by calling the DescribeInstanceHistoryEvents operation. You can specify InstanceEventCycleStatus.N to query system events in a specific state.
 
@@ -12566,9 +12757,9 @@ Sample success responses
 
 nes
 
-## Regions and zones
+## 17 Regions and zones
 
-### DescribeRegions
+### 17.1 DescribeRegions
 
 You can call this operation to query available regions.
 
@@ -12640,7 +12831,7 @@ Sample success responses
 | 404 | InvalidAcceptLanguage.NotFou nd | Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed. | The error message returned because the specified AcceptLanguage parameter is invalid. Only Chinese, English, and Japanese are supported. |
 | 404 | InvalidResourceType.NotFound | The ResourceType provided does not exist in our records. | The error message returned because the specified ResourceType parameter does not exist. |
 
-### DescribeZones
+### 17.2 DescribeZones
 
 Queries the zones in a region. Usage notes When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query the list of resources in a specific zone, we recommend that you use DescribeAvailableResource.
 
@@ -12785,7 +12976,7 @@ Sample success responses `JSON` format nes `{`
 |---|---|---|---|
 | 404 | InvalidAcceptLanguage.NotFou nd | InvalidAcceptLanguage.NotFound | Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed. |
 
-### DescribeAvailableResource
+### 17.3 DescribeAvailableResource
 
 Queries resources in a specific zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you modify instance types by calling the ModifyInstanceSpec operation. Usage notes The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify. `Sequence:` Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk Examples: If you set `DestinationResource` to `DataDisk` , you must specify `InstanceType` or set `ResourceType` to `disk` . If you set `DestinationResource` to `SystemDisk` , you must specify `InstanceType` .
 
@@ -12908,9 +13099,9 @@ nes
 | 404 | InvalidResourceId.NotFound | InvalidResourceId.NotFound | The specified ResourceId is not found. |
 | 404 | -140 | InvalidRegionId.NotFound | The specified RegionId is not found. |
 
-Ecs 2014-05-26 DescribeAvailableResource
+Ecs 2014-05-26
 
-### DescribeResourcesModification
+### 17.4 DescribeResourcesModification
 
 You can call this operation to query available resources in a zone when you upgrade or downgrade instance types or replace system disks.
 
@@ -13008,9 +13199,9 @@ nes
 
 monitoring
 
-## Operations and monitoring
+## 18 Operations and monitoring
 
-### GetInstanceConsoleOutput
+### 18.1 GetInstanceConsoleOutput
 
 You can call this operation to obtain the command output of an instance. The returned command output is encoded in Base64. ECS is a virtualized cloud-based service and cannot be connected to display devices. However, the command output for the last start, restart, or shutdown of each instance is cached. You can call GetInstanceConsoleOutput to obtain this information. You cannot obtain the command output of Windows instances.
 
@@ -13063,7 +13254,7 @@ Sample success responses `XML` format monitoring
 | 405 | NotSupported | %s | The error message returned because the operation is invalid. |
 | 429 | Throttling | %s | The error message returned because the request is denied due to throttling. |
 
-### GetInstanceScreenshot
+### 18.2 GetInstanceScreenshot
 
 You can call this operation to obtain screenshots of an instance. ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items: The instance must be in the Running state. If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
 
@@ -13116,7 +13307,7 @@ Sample success responses
 | 405 | NotSupported | %s | The error message returned because the operation is invalid. |
 | 429 | Throttling | %s | The error message returned because the request is denied due to throttling. |
 
-### DescribeSnapshotMonitorData
+### 18.3 DescribeSnapshotMonitorData
 
 You can call this operation to query all monitoring data about snapshot size changes in a region over the past 30 days. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: (EndTime − StartTime)/Period . You can query the monitoring data from up to the past 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
 
@@ -13201,7 +13392,7 @@ Sample success responses
 | 400 | InvalidParameter.TooManyData Queried | Too many data queried. | The error message returned because the amount of queried monitoring data has reached the upper limit. |
 | 400 | Throttling | Request was denied due to request throttling. | The error message returned because the request is denied due to throttling. Try again later. |
 
-### DescribeEniMonitorData
+### 18.4 DescribeEniMonitorData
 
 You can call this operation to query all monitoring data about traffic on a secondary elastic network interface (ENI) over a specific period of time. The monitoring data includes traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of dropped packets sent and received by the secondary ENI. A portion may be missing from the returned monitoring data. This is because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is bound is in the Stopped state, or if the secondary ENI is not bound to an instance and in the Available state, monitoring data about traffic on the ENI cannot be obtained. When you call this operation, take note of the following items: Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: (EndTime − StartTime)/Period. You can query monitoring data from up to the past 30 days. If the value of StartTime is more than 30 days earlier than the current time, an error is returned.
 
@@ -13374,9 +13565,9 @@ Sample success responses `XML` format monitoring
 | 403 | InvalidParameter.EndTime | The specified parameter EndTime is earlier than StartTime. | The error message returned because the end time is earlier than the start time. |
 | 4003 | InvalidParam.Malformed | The specified parameter "EniId" and "InstanceId" are not valid | The error message returned because a specified parameter is invalid. |
 
-## Cloud Assistant
+## 19 Cloud Assistant
 
-### CreateCommand
+### 19.1 CreateCommand
 
 Creates a Cloud Assistant command.
 
@@ -13444,7 +13635,7 @@ Sample success responses
 | 403 | Operation.Forbidden | The operation is not permitted. | The operation is not supported. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### InvokeCommand
+### 19.2 InvokeCommand
 
 Triggers a Cloud Assistant command on Elastic Compute Service (ECS) instances.
 
@@ -13523,7 +13714,7 @@ Sample success responses
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 |---|---|---|---|
 
-### RunCommand
+### 19.3 RunCommand
 
 Runs a shell, PowerShell, or batch command on Elastic Compute Service (ECS) instances.
 
@@ -13623,7 +13814,7 @@ Sample success responses
 | 404 | InvalidCmdId.NotFound | The specified command ID does not exist. | Invalid CommandId value. You can call the DescribeCommands operation to query all available command IDs. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### DescribeCommands
+### 19.4 DescribeCommands
 
 Queries Cloud Assistant commands that you created. If you specify only Action and RegionId, all available commands in the specified region are queried.
 
@@ -13748,7 +13939,7 @@ Sample success responses `XML` format
 | 403 | Operation.Forbidden | The operation is not permitted. | The operation is not supported. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### ModifyCommand
+### 19.5 ModifyCommand
 
 Modifies the parameters and content of a Cloud Assistant command.
 
@@ -13808,7 +13999,7 @@ Sample success responses
 | 404 | InvalidCmdId.NotFound | The specified command ID does not exist. | Invalid CommandId value. You can call the DescribeCommands operation to query all available command IDs. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### StopInvocation
+### 19.6 StopInvocation
 
 Stops the process of a Cloud Assistant command that is running on one or more Elastic Compute Service (ECS) instances. If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled. If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
 
@@ -13854,7 +14045,7 @@ Sample success responses
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | The error message returned because an error occurred while the request was being sent. Try again later. |
 | 404 | InvalidInvokeId.NotFound | The specified invoke ID does not exist. | The error message returned because the specified InvokeId parameter does not exist. |
 
-### DescribeInvocationResults
+### 19.7 DescribeInvocationResults
 
 Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances.
 
@@ -13951,7 +14142,7 @@ Sample success responses
 | 403 | Operation.Forbidden | The operation is not permitted. | The operation is not supported. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### DescribeInvocations
+### 19.8 DescribeInvocations
 
 Queries the list of tasks and execution status of Cloud Assistant commands. After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results. You can query the execution information that is generated within the last two weeks. Up to 100,000 lines of execution information can be retained.
 
@@ -14124,7 +14315,7 @@ Sample success responses
 | 403 | Operation.Forbidden | The operation is not permitted. | The operation is not supported. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### DescribeCloudAssistantStatus
+### 19.9 DescribeCloudAssistantStatus
 
 Queries whether the Cloud Assistant client is installed on one or more Elastic Compute Service (ECS) instances. If the Cloud Assistant client is installed, the system queries the total number of Cloud Assistant commands that have been run, the number of Cloud Assistant commands that are being run, and the time when Cloud Assistant commands were last run.
 
@@ -14189,7 +14380,7 @@ Sample success responses
 | 404 | InvalidInstance.NotFound | The specified instance does not exist. | The specified instance is not found. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### DeleteCommand
+### 19.10 DeleteCommand
 
 Deletes a Cloud Assistant command.
 
@@ -14237,7 +14428,7 @@ Sample success responses
 | 404 | InvalidCmdId.NotFound | The specified command ID does not exist. | Invalid CommandId value. You can call the DescribeCommands operation to query all available command IDs. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### SendFile
+### 19.11 SendFile
 
 Sends a file to one or more Elastic Compute Service (ECS) instances.
 
@@ -14307,7 +14498,7 @@ Sample success responses
 | 404 | InvalidInstance.NotFound | The specified instances not found. | The specified instances are not found. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-### DescribeSendFileResults
+### 19.12 DescribeSendFileResults
 
 Queries the files sent by Cloud Assistant and their states.
 
@@ -14425,9 +14616,9 @@ Sample success responses
 | 403 | Operation.Forbidden | The operation is not permitted. | The operation is not supported. |
 | 500 | InternalError.Dispatch | An error occurred when you dispatched the request. | An error occurred while the request was being sent. Try again later. |
 
-## Tags
+## 20 Tags
 
-### AddTags
+### 20.1 AddTags
 
 You can call this operation to add or overwrite one or more tags on your ECS resources. You can add or overwrite tags on instances, disks, snapshots, images, and security groups to facilitate resource management. When you call this operation, take note of the following items: Up to 20 tags can be added to each ECS resource.
 
@@ -14490,7 +14681,7 @@ Sample success responses
 | 400 | Duplicate.TagKey | The Tag.N.Key contain duplicate key. | The error message returned because the specified tag key already exists. Tag keys must be unique. |
 | 403 | QuotaExceed.Tags | %s | The error message returned because the number of tags has reached the quota. |
 
-### RemoveTags
+### 20.2 RemoveTags
 
 You can call this operation to unbind one or more tags from a resource such as an instance, disk, snapshot, image, or security group.
 
@@ -14547,7 +14738,7 @@ Sample success responses
 | 400 | InvalidTagKey.Malformed | The specified Tag.n.Key is not valid. | The error message returned because the specified Tag.N.Key parameter is invalid. |
 | 400 | InvalidResourceType.NotFound | The specified ResourceType does not exist. | The error message returned because the specified ResourceType parameter is invalid. |
 
-### DescribeTags
+### 20.3 DescribeTags
 
 You can call this operation to query available tags. You can query tags by specifying filter conditions such as resource type, resource ID, tag key, and tag value. The specified filter conditions have logical AND relations. Only the tags that meet all the specified filter conditions are returned. If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
 
@@ -14631,7 +14822,7 @@ Sample success responses `XML` format
 | 400 | InvalidTagKey.Malformed | The parameter Tag.n.Key is illegal. | The error message returned because the specified Tag.N.Key parameter is invalid. |
 | 400 | InvalidTagValue.Malformed | The parameter Tag.n.Value is illegal. | The error message returned because the specified Tag.N.Value parameter is invalid. |
 
-### TagResources
+### 20.4 TagResources
 
 You can call this operation to create and bind tags to specified ECS resources. Before you bind tags to a resource, the system checks the number of existing tags on the resource. An error message is returned if the maximum number of tags is reached.
 
@@ -14702,7 +14893,7 @@ Sample success responses
 | 403 | NoPermission.Tag | The operator is not permission for the tag. | The error message returned because you are not authorized to manage the resource tag. |
 | 403 | QuotaExceed.Tags | %s | The error message returned because the number of tags has reached the quota. |
 
-### ListTagResources
+### 20.5 ListTagResources
 
 Queries the tags that are added to one or more Elastic Compute Service (ECS) resources and these ECS resources. You must specify at least one of the following parameters or parameter pairs in the request to determine a query object: the `ResourceId.N` parameter, the `Tag.N` parameter pair ( `Tag.N.Key` and `Tag.N.Value` ), and the `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N). If one of the following sets of request parameters is specified as filter conditions, the response contains only ECS resources that meet all these filter conditions:
 
@@ -14795,7 +14986,7 @@ Sample success responses
 | 400 | Invalid.Scope | The specified scope is invalid. | The error message returned because the specified Scope parameter is invalid. |
 | 403 | NoPermission.Tag | The operator is not permission for the tag. | The error message returned because you are not authorized to manage the tag. |
 
-### UntagResources
+### 20.6 UntagResources
 
 You can call this operation to unbind tags from specified ECS resources. After a tag is unbound from a resource, it is automatically deleted if it is not bound to any other resources.
 
@@ -14867,9 +15058,9 @@ Sample success responses
 
 s
 
-## Other operations
+## 21 Other operations
 
-### DescribeTasks
+### 21.1 DescribeTasks
 
 You can call this operation to query the progress of one or more asynchronous tasks.
 
@@ -14976,7 +15167,7 @@ Sample success responses
 | 400 | MissingParameter | An input parameter "RegionId" that is mandatory for processing the request is not supplied. | The error message returned because the RegionId parameter is not specified. |
 | 400 | InvalidRegionId.NotFound | The specified RegionId does not exist. | The error message returned because the specified RegionId parameter does not exist. |
 
-### CancelTask
+### 21.2 CancelTask
 
 You can call this operation to cancel a running task. You can call this operation to cancel the following tasks: Image import (ImportImage) Image export (ExportImage)
 
@@ -15024,7 +15215,7 @@ s Sample success responses
 | 403 | InvalidTaskId.IncorrectTaskStat us | The specified task status is not invalid. | The error message returned because the status of the specified task is invalid. |
 | 403 | CancelTaskFailed | The task is failed to cancel, Please contact the administrator. | The error message returned because the task cannot be canceled. Contact the administrator. |
 
-### DescribeTaskAttribute
+### 21.3 DescribeTaskAttribute
 
 Queries the details of an asynchronous task. You can query the following asynchronous tasks: Import image task (ImportImage) Export image task (ExportImage) Change disk type (ModifyDiskSpec)
 
@@ -15153,17 +15344,13 @@ s
 | 400 | MissingParameter | An input parameter "TaskId" that is mandatory for processing the request is not supplied. | The error message returned because the TaskId parameter is not specified. |
 | 400 | InvalidTaskId.NotFound | The specified "TaskId" is not found. | The error message returned because the specified TaskId does not exist. |
 
-Ecs 2014-05-26 DescribeTaskAttribute
+Ecs 2014-05-26
 
-## Appendix
+## 22 Appendix
 
-### Terms
+### 22.1 Terms
 
-This topic describes the terms that may be used in ECS API operations.
-
-**Terms**
-
-The following table describes the terms that may be used in ECS API operations.
+This topic describes the terms that may be used in ECS API operations. The following table describes the terms that may be used in ECS API operations.
 
 | Term | Full name | Description |
 |---|---|---|
@@ -15181,7 +15368,7 @@ The following table describes the terms that may be used in ECS API operations.
 
 ECS enforces quotas on the number of instances, security groups, and other resources that can be used by each user. Limits apply to instance types, the number of disks per instance, disk capacity, and the number of disk snapshots.
 
-### Instance statuses
+### 22.2 Instance statuses
 
 Table 1. Statuses
 
@@ -15195,7 +15382,7 @@ Table 1. Statuses
 
 Figure 1. Instance state diagram
 
-### Common errors
+### 22.3 Common errors
 
 Table 1. Error codes
 
@@ -15250,7 +15437,7 @@ Table 1. Error codes
 | ServiceUnavailable | 500 | The request has failed due to a temporary failure of the server. |
 | ServiceUnavailable.RegionMaintaining | 503 | System maintenance is in progress on the selected region, please wait a few minutes before trying again. |
 
-### Disk categories
+### 22.4 Disk categories
 
 This topic describes the disk categories that are supported by Elastic Compute Service (ECS).
 
@@ -15265,7 +15452,7 @@ This topic describes the disk categories that are supported by Elastic Compute S
 
 For more information about disks, see the **Overview** topic about disks in **ECS User Guide**.
 
-### How to ensure idempotency
+### 22.5 How to ensure idempotency
 
 If a request timeout or internal server error occurs when you call CreateInstance to create an ECS instance, the client may attempt to resend the request. You can specify the **ClientToken** parameter to prevent the server from creating redundant instances in these cases. The
 **ClientToken** parameter ensures idempotency of the request.
@@ -15276,7 +15463,7 @@ If you specify a **ClientToken** that is in use with different request parameter
 **IdempotentParameterMismatch** error code. You must change the **SignatureNonce**, **Timestamp**, and **Signature** values when calling the
 operation again. This is because ECS uses **SignatureNonce** to prevent replay attacks and **Timestamp** to mark the time of each request. Each new request must have different **SignatureNonce** and **Timestamp** values, which changes the **Signature** value. Typically, if a 500 (InternalError) or 503 (ServiceUnavailable) error code is returned or no responses are returned, you must retry operations. If an operation is retried after a response code of 200 is returned, an identical response will be returned but the server status will not be affected. If a 4xx error code is returned and try it later does not appear in the error message, attempts to retry the operation will fail.
 
-### API behavior when an instance is locked for
+### 22.6 API behavior when an instance is locked for security reasons
 
 **security reasons**
 
@@ -15325,6 +15512,6 @@ When OperationLocks in the DescribeInstances response contains LockReason: secur
 | StartInstance | Returns an error. |
 | StopInstance | Returns an error. |
 
-### ISO 8601 date and time formats
+### 22.7 ISO 8601 date and time formats
 
 ISO 8601 Data elements and interchange formats – Information interchange – Representation of dates and times is an international standard covering the exchange of date- and time-related data. It was issued by the International Organization for Standardization (ISO). ECS open APIs adopt the ISO 8601 standard date and time formats.

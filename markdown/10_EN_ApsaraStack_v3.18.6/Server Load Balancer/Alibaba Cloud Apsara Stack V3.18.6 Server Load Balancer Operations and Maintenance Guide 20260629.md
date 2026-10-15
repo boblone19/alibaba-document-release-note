@@ -3,16 +3,29 @@ title: "Server Load Balancer Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 41
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "e75b5155f68b6eec_Alibaba Cloud Apsara Stack V3.18.6 Server Load Balancer Operations and Maintenance Guide 20260629.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Server%20Load%20Balancer%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Server Load Balancer Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Network services
+  - 2.1 SLB O&M
+    - 2.1.1 SLB cluster management
+    - 2.1.2 SLB management
+  - 2.2 Proxy O&M
+    - 2.2.1 Proxy management
+    - 2.2.2 ALB proxy management
+- 3 Network resources
+  - 3.1 Cloud instance management
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -31,11 +44,11 @@ Press the ENTER key. You can click the current language in the upper-right corne
 ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-## Network services
+## 2 Network services
 
-### SLB O&M
+### 2.1 SLB O&M
 
-#### SLB cluster management
+#### 2.1.1 SLB cluster management
 
 After you add tags to Server Load Balancer (SLB) clusters, you can easily find the desired clusters in the tenant console.
 
@@ -51,7 +64,7 @@ information about the desired cluster.
 5. Click **Edit Tag** in the **Actions** column of the desired cluster. In the dialog box that appears,
 modify the tag keys and click **OK**. You cannot modify the tags of the default cluster.
 
-#### SLB management
+#### 2.1.2 SLB management
 
 The SLB Management page displays Layer 4 service resources and monitoring and O&M information of Server Load Balancer (SLB) clusters and SLB instances.
 
@@ -160,9 +173,9 @@ section of the **Product console configuration management** topic below **UniCon
 | aclDropPktsPS | The number of packets dropped by ACL rules per second. | 0 |
 | failConnPS | The number of failed connections per second. | 0 |
 
-### Proxy O&M
+### 2.2 Proxy O&M
 
-#### Proxy management
+#### 2.2.1 Proxy management
 
 The proxy management module displays Layer 7 service resources and monitoring and maintenance information of Server Load Balancer (SLB).
 
@@ -333,7 +346,7 @@ corresponding metrics and usage data. The following table describes the metrics.
 |   | upstream code 4xx _ _ | The number of requests for which a 4xx status code is returned by backend ECS instances. |
 |   | upstream code 5xx _ _ | The number of requests for which a 5xx status code is returned by backend ECS instances. |
 
-#### ALB proxy management
+#### 2.2.2 ALB proxy management
 
 The ALB Proxy Management page displays information about Application Load Balancer (ALB) resources and monitoring O&M.
 
@@ -519,9 +532,9 @@ usage data charts of the corresponding metrics. The following table describes th
 |   | upstream 508 _ | The number of requests for which the 508 status code is returned by the upstream per second. |
 |   | upstream other code _ _ | The number of requests for which other status codes are returned by the upstream per second. |
 
-## Network resources
+## 3 Network resources
 
-### Cloud instance management
+### 3.1 Cloud instance management
 
 This topic describes how to manage the lifecycle of cloud service instances, including creating, deleting, and querying instance status.
 

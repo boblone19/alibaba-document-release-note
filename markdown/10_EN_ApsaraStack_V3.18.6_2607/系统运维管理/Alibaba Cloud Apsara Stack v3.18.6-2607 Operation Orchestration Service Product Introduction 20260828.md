@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Product Introduction 20260828.pdf"
+source_pdf: "066e3a0f26c3e9b1_Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Product Introduction 2026082"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Operation%20Orchestration%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Operation Orchestration Service Product Introduction 20260828
 
+## Table of Contents
+
+- 1 Product details
+- 2 Benefits
+- 3 Use cases
+- 4 Features
+
 ails
 
-## Product details
+## 1 Product details
 
 A template defines tasks, their execution order, inputs, and outputs. Running the template automates these tasks. OOS integrates with multiple cloud products, such as ECS, RDS, SLB, and VPC.
 
@@ -24,7 +31,7 @@ OOS uses templates to define operation orchestration tasks. Templates support bo
 
 OOS supports multiple execution modes, including automatic execution and step-by-step execution. Automatic execution: We recommend first running the template in a test environment to understand its operations and verify the results before deploying it to a production environment. Step-by-step execution: Use this debugging mode to closely examine how each task in the template runs.
 
-## Benefits
+## 2 Benefits
 
 This topic describes the key benefits of OOS.
 
@@ -56,7 +63,7 @@ The OOS template builder makes it easy to create templates without starting from
 
 OOS lets you manage operational tasks as code by defining them in templates that follow standard code lifecycle practices. After a template is created, reviewed, and synchronized with a production account, subsequent O&M tasks are run exclusively from standard templates. This practice ensures that your operations are secure, standardized, and auditable, which helps you implement Operations as Code best practices.
 
-## Use cases
+## 3 Use cases
 
 Operation Orchestration Service (OOS) supports a variety of common operational scenarios. It enables standardized operations and lets you create custom templates for your specific business needs. This topic describes common use cases for OOS.
 
@@ -76,7 +83,7 @@ For high-risk or sensitive tasks, you can introduce a manual approval step to en
 
 You can schedule recurring operational tasks to run automatically. This reduces manual effort and helps maintain a stable environment. For example, in a testing scenario, you might need to automatically clear files in an OSS object storage bucket at midnight every day to ensure each test starts in a clean environment. You can create a template that runs daily to keep your test environment pristine and prevent previous test data from affecting new results.
 
-## Features
+## 4 Features
 
 This topic describes the features of CloudOps Orchestration Service (OOS).
 

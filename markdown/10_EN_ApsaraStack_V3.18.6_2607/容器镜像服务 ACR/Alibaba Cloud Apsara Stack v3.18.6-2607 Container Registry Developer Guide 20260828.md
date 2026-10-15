@@ -3,18 +3,119 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Gui
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 147
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828.pdf"
+source_pdf: "e468a45feffc1fcb_Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%20ACR/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Container%20Registry%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Container Registry Developer Guide 20260828
 
-## SDK reference
+## Table of Contents
 
-### Getting started
+- 1 SDK reference
+  - 1.1 Getting started
+    - 1.1.1 Usage notes on development documentation
+    - 1.1.2 Procedure for API calls
+  - 1.2 Preparations
+    - 1.2.1 Log on to the API Tool console
+    - 1.2.2 Obtain API information and the endpoint of an API operation
+    - 1.2.3 Obtain an AccessKey pair
+    - 1.2.4 Obtain an AccessKey pair assigned by STS
+    - 1.2.5 Obtain the values of common headers
+    - 1.2.6 Obtain the Container Registry SDK
+  - 1.3 Standard SDK
+    - 1.3.1 SDK for Java
+      - 1.3.1.1 Install Java
+      - 1.3.1.2 Call SDK for Java
+    - 1.3.2 SDK for Python
+      - 1.3.2.1 Installation
+      - 1.3.2.2 Usage
+  - 1.4 Container Registry Advanced Edition SDKs
+    - 1.4.1 SDK for Java
+      - 1.4.1.1 Installation
+      - 1.4.1.2 Usage
+    - 1.4.2 SDK for Python
+      - 1.4.2.1 Installation
+      - 1.4.2.2 Usage
+    - 1.4.3 SDK for Go
+      - 1.4.3.1 Installation
+      - 1.4.3.2 Usage
+- 2 API references for Container Registry Standard Edition
+  - 2.1 Make API requests
+    - 2.1.1 Common request parameters
+    - 2.1.2 Request syntax
+    - 2.1.3 Request signatures
+  - 2.2 Manage namespaces
+    - 2.2.1 CreateNamespace
+    - 2.2.2 DeleteNamespace
+    - 2.2.3 UpdateNamespace
+    - 2.2.4 GetNamespace
+    - 2.2.5 GetNamespaceList
+  - 2.3 Image repository management
+    - 2.3.1 CreateRepo
+    - 2.3.2 DeleteRepo
+    - 2.3.3 UpdateRepo
+    - 2.3.4 GetRepoTag
+    - 2.3.5 GetRepo
+    - 2.3.6 GetRepoList
+    - 2.3.7 GetRepoListByNamespace
+    - 2.3.8 GetRepoTags
+  - 2.4 Image management
+    - 2.4.1 DeleteImage
+    - 2.4.2 GetImageManifest
+    - 2.4.3 GetImageLayer
+  - 2.5 Trigger management
+    - 2.5.1 CreateRepoWebhook
+    - 2.5.2 DeleteRepoWebhook
+    - 2.5.3 GetRepoWebhook
+    - 2.5.4 UpdateRepoWebhook
+  - 2.6 Access credential management
+    - 2.6.1 GetAuthorizationToken
+- 3 API references for Container Registry Advanced Edition
+  - 3.1 Namespace management
+    - 3.1.1 CreateNamespace
+    - 3.1.2 DeleteNamespace
+    - 3.1.3 UpdateNamespace
+    - 3.1.4 GetNamespace
+    - 3.1.5 ListNamespace
+  - 3.2 Image repository management
+    - 3.2.1 CreateRepository
+    - 3.2.2 DeleteRepository
+    - 3.2.3 UpdateRepository
+    - 3.2.4 ListRepository
+    - 3.2.5 GetRepository
+  - 3.3 Image management
+    - 3.3.1 ListRepoTag
+    - 3.3.2 DeleteRepoTag
+    - 3.3.3 GetRepoTag
+    - 3.3.4 GetRepoTagLayers
+    - 3.3.5 GetRepoTagManifest
+    - 3.3.6 CreateRepoTag
+  - 3.4 Trigger management
+    - 3.4.1 UpdateRepoTrigger
+    - 3.4.2 ListRepoTrigger
+    - 3.4.3 CreateRepoTrigger
+    - 3.4.4 DeleteRepoTrigger
+  - 3.5 Access credential management
+    - 3.5.1 GetAuthorizationToken
+    - 3.5.2 ResetLoginPassword
+  - 3.6 Artifact build
+    - 3.6.1 CreateArtifactBuildTask
+    - 3.6.2 CreateArtifactBuildRule
+    - 3.6.3 GetArtifactBuildTask
+    - 3.6.4 ListArtifactBuildTask
+    - 3.6.5 GetArtifactBuildRule
+    - 3.6.6 DeleteArtifactBuildRule
+- 4 Appendixes
+  - 4.1 STS overview
+    - 4.1.1 What is STS?
+    - 4.1.2 AssumeRole
 
-#### Usage notes on development
+## 1 SDK reference
+
+### 1.1 Getting started
+
+#### 1.1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -39,7 +140,7 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-#### Procedure for API calls
+#### 1.1.2 Procedure for API calls
 
 Apsara Stack allows you to call API operations by using the point of presence (POP) gateway. To ensure that Apsara Stack provides the same experience as Alibaba Cloud public cloud, API operations in Apsara Stack Enterprise V3.16.0 and later are called by using the POP gateway by default. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
@@ -68,9 +169,9 @@ For more information about how to view, use, and obtain the developer guide of a
 5. Obtain the endpoint of a cloud service.
 6. Obtain the service SDK and use the SDK to call an operation of the service.
 
-### Preparations
+### 1.2 Preparations
 
-#### Log on to the API Tool console
+#### 1.2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -97,7 +198,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 3. Click **Log In**.
 4. In the top navigation bar, choose **Products > Others > API Tool**.
 
-#### Obtain API information and the
+#### 1.2.2 Obtain API information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -119,7 +220,7 @@ The information on the API directory page of the Apsara Uni-manager Management C
 7. Select an API operation and obtain the POP endpoint of the cloud service on the Parameter
 tab.
 
-#### Obtain an AccessKey pair
+#### 1.2.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -161,7 +262,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-#### Obtain an AccessKey pair assigned by
+#### 1.2.4 Obtain an AccessKey pair assigned by STS
 
 **STS**
 
@@ -279,7 +380,7 @@ essKeySecret", "securityToken");
         client.createNamespace(createNamespaceRequest);
 ```
 
-#### Obtain the values of common headers
+#### 1.2.5 Obtain the values of common headers
 
 You must provide multiple headers when you call Apsara Stack operations. This topic describes the headers and how to obtain the values of the headers. This topic also describes the return values of some headers after you call Apsara Stack operations.
 
@@ -327,7 +428,7 @@ The following response parameters are returned by default when you call operatio
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-#### Obtain the Container Registry SDK
+#### 1.2.6 Obtain the Container Registry SDK
 
 To use points of presence (POPs) to call Apsara Stack API operations, you must use the Container Registry SDK. This topic describes how to obtain Alibaba Cloud SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.
 
@@ -335,11 +436,11 @@ To use points of presence (POPs) to call Apsara Stack API operations, you must u
 
 We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
-### Standard SDK
+### 1.3 Standard SDK
 
-#### SDK for Java
+#### 1.3.1 SDK for Java
 
-##### Install Java
+##### 1.3.1.1 Install Java
 
 This topic describes how to install Java.
 
@@ -375,7 +476,7 @@ In the following example, SDK V4.1.2 is installed.
 </dependency>
 ```
 
-##### Call SDK for Java
+##### 1.3.1.2 Call SDK for Java
 
 This topic describes how to call SDK for Java.
 
@@ -429,9 +530,9 @@ access-key-id>", "<your-access-key-secret>");
             e.printStackTrace();
 ```
 
-#### SDK for Python
+#### 1.3.2 SDK for Python
 
-##### Installation
+##### 1.3.2.1 Installation
 
 This topic describes how to install SDK for Python.
 
@@ -457,7 +558,7 @@ PyPI Anaconda
 conde install aliyun-python-sdk-cr=4.1.2
 ```
 
-##### Usage
+##### 1.3.2.2 Usage
 
 This topic describes how to use SDK for Python.
 
@@ -474,13 +575,13 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 print(str(response, encoding = 'utf-8'))
 ```
 
-### Container Registry Advanced
+### 1.4 Container Registry Advanced Edition SDKs
 
 **Edition SDKs**
 
-#### SDK for Java
+#### 1.4.1 SDK for Java
 
-##### Installation
+##### 1.4.1.1 Installation
 
 This topic describes how to install SDK for Java.
 
@@ -516,7 +617,7 @@ In this topic, a dependency of version 1.0.1 is used.
 </dependency>
 ```
 
-##### Usage
+##### 1.4.1.2 Usage
 
 This topic describes how to use the SDK for Java.
 
@@ -612,9 +713,9 @@ e response data of the request:
         client.getNamespace(getNamespaceRequest);
 ```
 
-#### SDK for Python
+#### 1.4.2 SDK for Python
 
-##### Installation
+##### 1.4.2.1 Installation
 
 This topic describes how to install SDK for Python.
 
@@ -640,7 +741,7 @@ PyPI Anaconda
 conde install alibabacloud_cr20181201=1.0.3
 ```
 
-##### Usage
+##### 1.4.2.2 Usage
 
 This topic describes how to use SDK for Python.
 
@@ -780,9 +881,9 @@ if __name__ == '__main__':
     Sample.main(sys.argv[1:])
 ```
 
-#### SDK for Go
+#### 1.4.3 SDK for Go
 
-##### Installation
+##### 1.4.3.1 Installation
 
 This topic describes how to install SDK for Go.
 
@@ -802,7 +903,7 @@ To install Container Registry SDK for Go, we recommend that you run the followin
 go get github.com/alibabacloud-go/cr-20181201
 ```
 
-##### Usage
+##### 1.4.3.2 Usage
 
 This topic describes how to use SDK for Go.
 
@@ -928,15 +1029,15 @@ func main() {
     panic(err)
 ```
 
-## API references for
+## 2 API references for Container Registry Standard Edition
 
 **Container Registry Standard**
 
 **Edition**
 
-### Make API requests
+### 2.1 Make API requests
 
-#### Common request parameters
+#### 2.1.1 Common request parameters
 
 This topic provides the common request parameters and common responses of Container Registry API operations.
 
@@ -987,7 +1088,7 @@ JSON format:
     /* Returned data */
 ```
 
-#### Request syntax
+#### 2.1.2 Request syntax
 
 This topic describes the syntax that you must follow when you make Container Registry API requests.
 
@@ -1007,7 +1108,7 @@ Each request must contain Common request parameters and operation-specific reque
 
 All requests and responses are encoded in `UTF-8` .
 
-#### Request signatures
+#### 2.1.3 Request signatures
 
 You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller.
 
@@ -1094,9 +1195,9 @@ The value of CanonicalizedResource must be the following string:
 /repository?name=repository1&namespace=namespace1
 ```
 
-### Manage namespaces
+### 2.2 Manage namespaces
 
-#### CreateNamespace
+#### 2.2.1 CreateNamespace
 
 Creates a namespace.
 
@@ -1172,7 +1273,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "589EA3A1-9A67-4B82-95E5-11B1740178D1"
 ```
 
-#### DeleteNamespace
+#### 2.2.2 DeleteNamespace
 
 Deletes an existing namespace. After you delete a namespace, all repositories in the namespace and all images in the repositories are deleted.
 
@@ -1237,7 +1338,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "CBC151B2-C9B6-4393-9A7F-712C920F1DC7"
 ```
 
-#### UpdateNamespace
+#### 2.2.3 UpdateNamespace
 
 Updates the basic information about a namespace.
 
@@ -1310,7 +1411,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "AL103117-2140-4A69-AC1A-BE69N040D01A"
 ```
 
-#### GetNamespace
+#### 2.2.4 GetNamespace
 
 Queries the detailed information about a specified namespace.
 
@@ -1407,7 +1508,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "19228CE5-4905-4A24-A2C1-E774F32CCC31"
 ```
 
-#### GetNamespaceList
+#### 2.2.5 GetNamespaceList
 
 Queries namespaces.
 
@@ -1502,9 +1603,9 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "AB034FC3-27E8-4E34-958B-0944E369270B"
 ```
 
-### Image repository management
+### 2.3 Image repository management
 
-#### CreateRepo
+#### 2.3.1 CreateRepo
 
 Creates a repository.
 
@@ -1592,7 +1693,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "80705201-FE46-4C08-AE30-FD50F5930993"
 ```
 
-#### DeleteRepo
+#### 2.3.2 DeleteRepo
 
 Deletes an existing repository. After you delete a repository, all images in the repository are deleted.
 
@@ -1656,7 +1757,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "7BF6D761-E7F8-454C-A235-983E5D183B4E"
 ```
 
-#### UpdateRepo
+#### 2.3.3 UpdateRepo
 
 Updates the basic information about an image repository, including the repository type, summary, and description.
 
@@ -1733,7 +1834,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "F3103017-5928-4A69-AC1A-BE69A840D01A"
 ```
 
-#### GetRepoTag
+#### 2.3.4 GetRepoTag
 
 Queries the information about an image.
 
@@ -1815,7 +1916,7 @@ HTTP/1.1 200 OK <Common response headers>
     "status": "NORMAL"
 ```
 
-#### GetRepo
+#### 2.3.5 GetRepo
 
 Queries the detailed information about a repository.
 
@@ -1945,7 +2046,7 @@ HTTP/1.1 200 OK <Common response headers>
  "requestId": "B21BE190-08BA-41B6-B8B5-CA4029F1CC58"
 ```
 
-#### GetRepoList
+#### 2.3.6 GetRepoList
 
 Queries information about repositories.
 
@@ -2128,7 +2229,7 @@ HTTP/1.1 200 OK <Common response headers> "data": {
 "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
 ```
 
-#### GetRepoListByNamespace
+#### 2.3.7 GetRepoListByNamespace
 
 Queries information about repositories.
 
@@ -2312,7 +2413,7 @@ HTTP/1.1 200 OK <Common response headers> "data": {
 "requestId": "F11E3C4C-LO9Q-4D11-B7C5-5EFCA8E7CA2E"
 ```
 
-#### GetRepoTags
+#### 2.3.8 GetRepoTags
 
 Queries the information about images in a repository.
 
@@ -2436,9 +2537,9 @@ HTTP/1.1 200 OK <Common response headers>
  "requestId": "9AFB52D3-6631-4B00-A857-932492097726"
 ```
 
-### Image management
+### 2.4 Image management
 
-#### DeleteImage
+#### 2.4.1 DeleteImage
 
 Deletes an image tag. After an image tag is deleted, it cannot be recovered.
 
@@ -2505,7 +2606,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "7BF6D761-E7F8-454C-A235-983E5D183B4E"
 ```
 
-#### GetImageManifest
+#### 2.4.2 GetImageManifest
 
 Queries the manifest information about an image.
 
@@ -2631,7 +2732,7 @@ HTTP/1.1 200 OK <Common response headers>
   "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
 ```
 
-#### GetImageLayer
+#### 2.4.3 GetImageLayer
 
 Queries the layer information about an image.
 
@@ -2750,9 +2851,9 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
 ```
 
-### Trigger management
+### 2.5 Trigger management
 
-#### CreateRepoWebhook
+#### 2.5.1 CreateRepoWebhook
 
 Creates a trigger for an image repository.
 
@@ -2843,7 +2944,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "3666F8EA-1468-4BEA-883B-FC60A651A609"
 ```
 
-#### DeleteRepoWebhook
+#### 2.5.2 DeleteRepoWebhook
 
 Deletes a trigger of a repository.
 
@@ -2908,7 +3009,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "639F1195-56D9-49B7-BC47-B3BFCC9ED1C9"
 ```
 
-#### GetRepoWebhook
+#### 2.5.3 GetRepoWebhook
 
 Queries triggers for an image repository.
 
@@ -3002,7 +3103,7 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "A86AB63A-758B-4FD9-9CB1-1421083A2EF5"
 ```
 
-#### UpdateRepoWebhook
+#### 2.5.4 UpdateRepoWebhook
 
 Updates a trigger for an image repository.
 
@@ -3097,11 +3198,11 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "8DBD3292-A232-44F6-93DC-B30D70AF54E9"
 ```
 
-### Access credential
+### 2.6 Access credential management
 
 **management**
 
-#### GetAuthorizationToken
+#### 2.6.1 GetAuthorizationToken
 
 Returns the temporary account and token that you use to log on to the registry. The token is valid for 1 hour. If you send a Security Token Service (STS) request, the token is valid within the request period of the STS token.
 
@@ -3190,15 +3291,15 @@ HTTP/1.1 200 OK <Common response headers>
     "requestId": "94E89857-B994-44B6-9C4F-DBD200E9E272"
 ```
 
-## API references for
+## 3 API references for Container Registry Advanced Edition
 
 **Container Registry Advanced**
 
 **Edition**
 
-### Namespace management
+### 3.1 Namespace management
 
-#### CreateNamespace
+#### 3.1.1 CreateNamespace
 
 Creates a namespace.
 
@@ -3244,7 +3345,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "Code" : "success"
 ```
 
-#### DeleteNamespace
+#### 3.1.2 DeleteNamespace
 
 Deletes a namespace.
 
@@ -3291,7 +3392,7 @@ Sample success responses `XML` format
     "Code":"success"
 ```
 
-#### UpdateNamespace
+#### 3.1.3 UpdateNamespace
 
 Updates a namespace.
 
@@ -3334,7 +3435,7 @@ Sample success responses `XML` format
     "Code":"success"
 ```
 
-#### GetNamespace
+#### 3.1.4 GetNamespace
 
 Queries details about a namespace.
 
@@ -3394,7 +3495,7 @@ Sample success responses `XML` format
 
 访问错误中心查看更多错误码。 For a list of error codes, visit the API Error Center.
 
-#### ListNamespace
+#### 3.1.5 ListNamespace
 
 Queries the namespaces.
 
@@ -3474,9 +3575,9 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-### Image repository management
+### 3.2 Image repository management
 
-#### CreateRepository
+#### 3.2.1 CreateRepository
 
 Creates an image repository.
 
@@ -3526,7 +3627,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### DeleteRepository
+#### 3.2.2 DeleteRepository
 
 Deletes an image repository.
 
@@ -3573,7 +3674,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### UpdateRepository
+#### 3.2.3 UpdateRepository
 
 Updates an image repository.
 
@@ -3625,7 +3726,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "RequestId" : "CC43EC6B-0DD4-40AE-8811-B0519617051A"
 ```
 
-#### ListRepository
+#### 3.2.4 ListRepository
 
 Queries image repositories.
 
@@ -3721,7 +3822,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### GetRepository
+#### 3.2.5 GetRepository
 
 Queries details about an image repository.
 
@@ -3799,9 +3900,9 @@ Sample success responses `XML` format
 
 访问错误中心查看更多错误码。 For a list of error codes, visit the API Error Center.
 
-### Image management
+### 3.3 Image management
 
-#### ListRepoTag
+#### 3.3.1 ListRepoTag
 
 Queries images in a repository.
 
@@ -3886,7 +3987,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### DeleteRepoTag
+#### 3.3.2 DeleteRepoTag
 
 Deletes an image from a repository.
 
@@ -3930,7 +4031,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### GetRepoTag
+#### 3.3.3 GetRepoTag
 
 Queries the tag information about a single image.
 
@@ -4000,7 +4101,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "ImageId" : "45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****"
 ```
 
-#### GetRepoTagLayers
+#### 3.3.4 GetRepoTagLayers
 
 Queries the information about image layers of an image that is corresponding to a tag.
 
@@ -4066,7 +4167,7 @@ Sample success responses `XML` format
     "Code":"success"
 ```
 
-#### GetRepoTagManifest
+#### 3.3.5 GetRepoTagManifest
 
 Queries the manifest information of an image tag.
 
@@ -4211,7 +4312,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### CreateRepoTag
+#### 3.3.6 CreateRepoTag
 
 Creates an image tag based on an existing image tag in an image repository.
 
@@ -4257,9 +4358,9 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-### Trigger management
+### 3.4 Trigger management
 
-#### UpdateRepoTrigger
+#### 3.4.1 UpdateRepoTrigger
 
 Updates a trigger for a repository.
 
@@ -4307,7 +4408,7 @@ Sample success responses `XML` format
     "Code":"success"
 ```
 
-#### ListRepoTrigger
+#### 3.4.2 ListRepoTrigger
 
 Queries the triggers of a repository.
 
@@ -4376,7 +4477,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### CreateRepoTrigger
+#### 3.4.3 CreateRepoTrigger
 
 Creates a trigger for a repository.
 
@@ -4427,7 +4528,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### DeleteRepoTrigger
+#### 3.4.4 DeleteRepoTrigger
 
 Deletes a trigger of an image repository.
 
@@ -4471,11 +4572,11 @@ Sample success responses `XML` format
     "Code":"success"
 ```
 
-### Access credential
+### 3.5 Access credential management
 
 **management**
 
-#### GetAuthorizationToken
+#### 3.5.1 GetAuthorizationToken
 
 Obtains the temporary account and token that you use to log on to a Container Registry instance. The returned token is valid for one hour. If you request for the token by using Security Token Service (STS), the returned token is valid within the validity period of the STS token. Take note of the following items when you log on to Container Registry instances by using an STS token: If the STS token belongs to an Alibaba Cloud account, you can use the STS token to log on to all Container Registry instances that belong to the Alibaba Cloud account. If the STS token belongs to a RAM user, you can use the STS token to log on to all Container Registry instances that belong to the RAM user. You can use an STS token to access only Container Registry instances to which the STS token is scoped.
 
@@ -4523,7 +4624,7 @@ Sample success responses `XML` format
     "Code": "success"
 ```
 
-#### ResetLoginPassword
+#### 3.5.2 ResetLoginPassword
 
 Resets the logon password of a Container Registry instance.
 
@@ -4566,9 +4667,9 @@ Sample success responses `XML` format
     "Code":"success"
 ```
 
-### Artifact build
+### 3.6 Artifact build
 
-#### CreateArtifactBuildTask
+#### 3.6.1 CreateArtifactBuildTask
 
 Creates an artifact build task in Container Registry.
 
@@ -4617,7 +4718,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  "Code":"0"
 ```
 
-#### CreateArtifactBuildRule
+#### 3.6.2 CreateArtifactBuildRule
 
 Creates an accelerated image build rule for an image repository.
 
@@ -4663,7 +4764,7 @@ Response example `JSON` format
  "Code":"0"
 ```
 
-#### GetArtifactBuildTask
+#### 3.6.3 GetArtifactBuildTask
 
 Retrieves the details of an artifact build task in Container Registry.
 
@@ -4741,7 +4842,7 @@ HTTP/1.1 200 OK Content-Type:application/json
   "RepoId":"1234567890"
 ```
 
-#### ListArtifactBuildTask
+#### 3.6.4 ListArtifactBuildTask
 
 Retrieves a list of artifact build tasks.
 
@@ -4798,7 +4899,7 @@ This operation uses only common request headers. For more information, see Commo
 | PageSize | Integer | 10 | The number of entries returned per page. |
 |---|---|---|---|
 
-#### GetArtifactBuildRule
+#### 3.6.5 GetArtifactBuildRule
 
 Retrieves a build rule for accelerated images in an image repository.
 
@@ -4861,7 +4962,7 @@ HTTP/1.1 200 OK Content-Type: application/json
  "Code":"0"
 ```
 
-#### DeleteArtifactBuildRule
+#### 3.6.6 DeleteArtifactBuildRule
 
 Deletes a build rule for accelerated images in an image repository.
 
@@ -4908,11 +5009,11 @@ HTTP/1.1 200 OK Content-Type:application/json
  "Code":"0"
 ```
 
-## Appendixes
+## 4 Appendixes
 
-### STS overview
+### 4.1 STS overview
 
-#### What is STS?
+#### 4.1.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -4924,7 +5025,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 4.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 

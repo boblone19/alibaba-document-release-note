@@ -3,20 +3,30 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Product Intro
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Product Introduction 20260828.pdf"
+source_pdf: "4e44716566eea6bc_Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Prometheus%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Prometheus Service Product Introduction 20260828
 
+## Table of Contents
+
+- 1 Prometheus monitoring
+- 2 Product details
+- 3 Product value
+- 4 Features
+- 5 Scenarios
+- 6 Limitations
+- 7 Key concepts
+
 monitoring
 
-## Prometheus monitoring
+## 1 Prometheus monitoring
 
 Alibaba Cloud Prometheus Monitoring is a fully managed Prometheus service. It fully integrates with the open source Prometheus ecosystem, supports monitoring for a wide range of components, and provides multiple out-of-the-box dashboards. ails
 
-## Product details
+## 2 Product details
 
 Prometheus Monitoring provides service discovery, data collection, dashboards, and horizontal scaling for agents. It also lets you create custom visual dashboards and alerts for container metrics.
 
@@ -48,7 +58,7 @@ You can add alert policies for metrics reported by the cluster. You can use vari
 
 You can centrally manage connected ACK managed clusters on the **Provisioning** page. This page provides a unified portal to configure service discovery, manage the installation and uninstallation of Prometheus probes, and view Prometheus Agent self-monitoring dashboards. e
 
-## Product value
+## 3 Product value
 
 Alibaba Cloud Prometheus Service is more stable, saves time, and uses fewer resources than open source Prometheus.
 
@@ -66,7 +76,7 @@ Alibaba Cloud Prometheus Service supports horizontal scaling for data processing
 
 Alibaba Cloud Prometheus Service uses an integrated agent that runs as a single process. This design limits the agent's resource consumption and optimizes memory and CPU usage.
 
-## Features
+## 4 Features
 
 **Integration Center**
 
@@ -105,7 +115,7 @@ Alibaba Cloud Prometheus Service uses an integrated agent that runs as a single 
 |---|---|
 | Create data shipping tasks | Remotely write data from one Prometheus instance to another. Stream data to other cloud products, such as Kafka and MaxCompute. |
 
-## Scenarios
+## 5 Scenarios
 
 Managed Service for Prometheus provides unified monitoring for Alibaba Cloud services such as ECS and Kafka, container services (ACK), and application performance (ARMS). It also supports multicloud and on-premises components and custom metrics to provide full-stack observability for operations and maintenance (O&M).
 
@@ -136,7 +146,7 @@ The service provides exporter integration solutions for third-party clouds and o
 You can define custom metrics that align with your business needs, such as metrics for business objectives, service quality, technical components, and infrastructure resources. You can then configure scrape tasks for these metrics and display them together to improve data correlation.
 **Monitored objects:** Simple Log Service (SLS) and Elasticsearch.
 
-## Limitations
+## 6 Limitations
 
 This topic describes the limitations of Prometheus monitoring.
 
@@ -144,7 +154,7 @@ This topic describes the limitations of Prometheus monitoring.
 
 By default, metric data is retained for 7 days. Prometheus monitoring does not support multi-region deployment or disaster recovery. Horizontal scaling is limited to two physical machines. Prometheus monitoring data is retained for 7 days by default. To extend this period, contact your Technical Account Manager (TAM). A metric can have up to 20 labels, and a label can have up to 20 values. A standard two-machine deployment supports monitoring for up to 30 container clusters. Historical data is not automatically recovered after a physical machine failure. s
 
-## Key concepts
+## 7 Key concepts
 
 This topic describes key concepts of Alibaba Cloud Container Service for Kubernetes (ACK).
 **Kubernetes**: An open-source, portable, and extensible platform for managing

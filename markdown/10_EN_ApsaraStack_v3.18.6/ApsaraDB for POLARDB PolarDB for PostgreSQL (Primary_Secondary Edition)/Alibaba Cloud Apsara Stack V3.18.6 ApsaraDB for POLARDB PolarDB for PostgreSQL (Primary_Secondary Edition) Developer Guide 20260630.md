@@ -2,12 +2,137 @@
 title: "ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Developer Guide 20260630"
 product_version: "V3.18.6"
 pdf_pages: 158
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Developer Guide 20260630.pdf"
+source_pdf: "d51fbfeb3e3ce88d_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Ed"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/PolarDB%20PG%E6%9C%AC%E5%9C%B0%E7%9B%98/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary_Secondary%20Edition%29%20Developer%20Guide%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) Developer Guide 20260630
+
+## Table of Contents
+
+- 1 API reference
+  - 1.1 API overview
+  - 1.2 Make API requests
+    - 1.2.1 Request structure
+    - 1.2.2 Common parameters
+      - 1.2.2.1 Common request parameters
+      - 1.2.2.2 Common response parameters
+    - 1.2.3 Responses
+      - 1.2.3.1 Sample success responses
+      - 1.2.3.2 Sample error responses
+  - 1.3 Instance management
+    - 1.3.1 CreateDBInstance
+    - 1.3.2 DeleteDBInstance
+    - 1.3.3 RestartDBInstance
+    - 1.3.4 DescribeDBInstanceAttribute
+    - 1.3.5 DescribeDBInstances
+    - 1.3.6 ModifyDBInstanceSpec
+    - 1.3.7 AllocateInstancePublicConnection
+    - 1.3.8 ReleaseInstancePublicConnection
+    - 1.3.9 SwitchDBInstanceNetType
+    - 1.3.10 DescribeDBInstanceNetInfo
+    - 1.3.11 ModifyDBInstanceConnectionString
+    - 1.3.12 ModifyDBInstanceConnectionMode
+    - 1.3.13 ModifyDBInstanceNetworkType
+    - 1.3.14 DescribeDBInstanceIPArrayList
+    - 1.3.15 ModifySecurityIps
+    - 1.3.16 DescribeRegions
+    - 1.3.17 DescribeDBInstanceHAConfig
+    - 1.3.18 MigrateToOtherZone
+    - 1.3.19 PurgeDBInstanceLog
+    - 1.3.20 ModifyDBInstanceDescription
+    - 1.3.21 ModifyDBInstanceMaintainTime
+    - 1.3.22 ModifyDBInstanceHAConfig
+    - 1.3.23 SwitchDBInstanceHA
+    - 1.3.24 CreateReadOnlyDBInstance
+    - 1.3.25 DescribeDBInstanceSSL
+    - 1.3.26 ModifyDBInstanceSSL
+    - 1.3.27 DescribeDBInstanceTDE
+    - 1.3.28 ModifyDBInstanceTDE
+  - 1.4 Database management
+    - 1.4.1 CreateDatabase
+    - 1.4.2 DeleteDatabase
+    - 1.4.3 DescribeDatabases
+    - 1.4.4 ModifyDBDescription
+  - 1.5 Account management
+    - 1.5.1 CreateAccount
+    - 1.5.2 DeleteAccount
+    - 1.5.3 DescribeAccounts
+    - 1.5.4 GrantAccountPrivilege
+    - 1.5.5 RevokeAccountPrivilege
+    - 1.5.6 ModifyAccountDescription
+    - 1.5.7 ResetAccountPassword
+    - 1.5.8 ResetAccount
+  - 1.6 Backup and restoration
+    - 1.6.1 CreateBackup
+    - 1.6.2 CloneDBInstance
+    - 1.6.3 DescribeBackups
+    - 1.6.4 CreateTempDBInstance
+    - 1.6.5 DescribeBackupPolicy
+    - 1.6.6 Query available point-in-time recovery range
+    - 1.6.7 ModifyBackupPolicy
+    - 1.6.8 RestoreDBInstance
+    - 1.6.9 DeleteBackup
+  - 1.7 Plugin management
+    - 1.7.1 Uninstall a plugin
+    - 1.7.2 Update a plugin
+    - 1.7.3 Query details of a plugin
+    - 1.7.4 Install plugins
+  - 1.8 Monitoring management
+    - 1.8.1 DescribeResourceUsage
+    - 1.8.2 DescribeDBInstancePerformance
+    - 1.8.3 DescribeDBInstanceMonitor
+    - 1.8.4 ModifyDBInstanceMonitor
+  - 1.9 Parameter management
+    - 1.9.1 DescribeParameterTemplates
+    - 1.9.2 DescribeParameters
+    - 1.9.3 ModifyParameter
+  - 1.10 Log management
+    - 1.10.1 DescribeSlowLogs
+    - 1.10.2 DescribeSlowLogRecords
+    - 1.10.3 DescribeErrorLogs
+    - 1.10.4 DescribeSQLCollectorPolicy
+    - 1.10.5 ModifySQLCollectorPolicy
+    - 1.10.6 DescribeSQLLogRecords
+    - 1.10.7 DescribeSQLLogFiles
+  - 1.11 Data migration
+    - 1.11.1 CreateUploadPathForSQLServer
+    - 1.11.2 ImportDatabaseBetweenInstances
+    - 1.11.3 CancelImport
+  - 1.12 Tag management
+    - 1.12.1 AddTagsToResource
+    - 1.12.2 DescribeTags
+    - 1.12.3 RemoveTagsFromResource
+  - 1.13 RAM authorization
+  - 1.14 Appendix
+    - 1.14.1 Client error codes
+      - 1.14.1.1 Common errors
+      - 1.14.1.2 Specific errors
+    - 1.14.2 Error codes on the server
+    - 1.14.3 Instance states
+    - 1.14.4 Character set tables
+- 2 SDK reference
+  - 2.1 Obtain the SDK source code
+  - 2.2 SDK for Java
+    - 2.2.1 Use the SDK
+      - 2.2.1.1 Use CommonRequest to call API operations
+  - 2.3 SDK for Python
+    - 2.3.1 Use the SDK
+      - 2.3.1.1 Use CommonRequest to call API operations
+  - 2.4 SDK for PHP
+    - 2.4.1 Getting started
+  - 2.5 SDK for C#
+- 3 Obtain an endpoint
+- 4 Obtain an AccessKey pair
+
+## 1 API reference
+
+### 1.1 API overview
+
+The following tables list the API operations available for use in PolarDB.
+
+**PolarDB instance management**
 
 | API | Description |
 |---|---|
@@ -26,14 +151,6 @@ converter: line-classifier (PyMuPDF)
 | ModifyDBInstanceNetworkType | Changes the network type of a PolarDB instance. |
 | DescribeDBInstanceIPArrayList | Queries the IP address whitelist of a PolarDB instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-## API reference
-
-### API overview
-
-The following tables list the API operations available for use in PolarDB.
-
 | ModifySecurityIps | Modifies the IP address whitelist of a PolarDB instance. |
 |---|---|
 | DescribeRegions | Queries available regions and zones. |
@@ -49,16 +166,18 @@ The following tables list the API operations available for use in PolarDB.
 | DescribeDBInstanceSSL | Queries the SSL connection of an instance. |
 | ModifyDBInstanceSSL | Modifies the SSL connection of an instance. |
 
+**PolarDB database management**
+
 | API | Description |
 |---|---|
 | CreateDatabase | Creates a database. |
 | DeleteDatabase | Deletes a database. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | DescribeDatabases | Queries the list of databases. |
 |---|---|
 | ModifyDBDescription | Modifies the description of a database. |
+
+**PolarDB account management**
 
 | API | Description |
 |---|---|
@@ -71,6 +190,8 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | ResetAccountPassword | Resets the password of an account. |
 | ResetAccount | Resets the account. |
 
+**PolarDB backup and restoration**
+
 | API | Description |
 |---|---|
 | CreateBackup | Creates a backup. |
@@ -79,13 +200,13 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | CreateTempDBInstance | Creates a temporary instance. |
 | DescribeBackupPolicy | Queries the backup policy configured for an instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | DescribeLocalAvailableRecoveryTime | Queries the recoverable time range for backups. |
 |---|---|
 | ModifyBackupPolicy | Modifies the backup policy configured for an instance. |
 | RestoreDBInstance | Restores an instance from a backup set. |
 | DeleteBackup | Deletes the data backup files of an instance. |
+
+**PolarDB plugin management**
 
 | API | Description |
 |---|---|
@@ -94,6 +215,8 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | UpdateExtensions | Updates a plugin. |
 | DeleteExtensions | Uninstalls a plugin. |
 
+**PolarDB monitoring management**
+
 | API | Description |
 |---|---|
 | DescribeResourceUsage | Queries the resource usage of an instance. |
@@ -101,15 +224,17 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | DescribeDBInstanceMonitor | Queries the monitoring settings of an instance. |
 | ModifyDBInstanceMonitor | Modifies the monitoring settings of an instance. |
 
+**PolarDB parameter management**
+
 | API | Description |
 |---|---|
 | DescribeParameterTemplates | Queries the list of database parameter templates. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | DescribeParameters | Queries the parameter settings of an instance. |
 |---|---|
 | ModifyParameter | Modifies the parameters of an instance. |
+
+**PolarDB log management**
 
 | API | Description |
 |---|---|
@@ -122,31 +247,26 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | DescribeSQLLogRecords | Queries SQL audit logs. |
 | DescribeSQLLogFiles | Queries the list of SQL audit log files. |
 
+**PolarDB data migration**
+
 | API | Description |
 |---|---|
 | ImportDatabaseBetweenInstances | Migrates data from an instance. |
 | CancelImport | Cancels the migration from an instance. |
 
+**PolarDB tag management**
+
 | API | Description |
 |---|---|
 | AddTagsToResource | Adds tags. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | DescribeTags | Queries tags. |
 |---|---|
 | RemoveTagsFromResource | Removes tags. |
 
-| Parameter | Typ e | Requi red | Description |
-|---|---|---|---|
-| Format | Stri ng | No | The format in which to return the response. Valid values: JSON and XML. Default value: XML. |
-| Version | Stri ng | Yes | The version number of the API. Specify the version number in the YYYY-MM-DD format. Set the value to 2024-01-30. |
+### 1.2 Make API requests
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-### Make API requests
-
-#### Request structure
+#### 1.2.1 Request structure
 
 This topic describes the request structure of the PolarDB API.
 
@@ -160,17 +280,26 @@ You can send API requests over HTTP or HTTPS. We recommend that you use HTTPS fo
 
 **Methods**
 
-You can use the HTTP GET method to send API requests. When you use this method, you must include request parameters in the request URL. In each request, you must set the Action parameter to specify the operation that you want to perform, such as CreateDatabase. You must also specify common request parameters and operation-specific parameters.
+You can use the HTTP GET method to send API requests. When you use this method, you must include request parameters in the request URL.
+
+**Parameters**
+
+In each request, you must set the Action parameter to specify the operation that you want to perform, such as CreateDatabase. You must also specify common request parameters and operation-specific parameters.
 
 **Encoding**
 
 Requests and responses are both encoded in UTF-8.
 
-#### Common parameters
+#### 1.2.2 Common parameters
 
-##### Common request parameters
+##### 1.2.2.1 Common request parameters
 
 Common request parameters must be included in all PolarDB API requests.
+
+| Parameter | Typ e | Requi red | Description |
+|---|---|---|---|
+| Format | Stri ng | No | The format in which to return the response. Valid values: JSON and XML. Default value: XML. |
+| Version | Stri ng | Yes | The version number of the API. Specify the version number in the YYYY-MM-DD format. Set the value to 2024-01-30. |
 
 | AccessKeyId | Stri ng | Yes | The AccessKey ID provided to you by Apsara Stack. |
 |---|---|---|---|
@@ -180,15 +309,13 @@ Common request parameters must be included in all PolarDB API requests.
 | SignatureVer sion | Stri ng | Yes | The version of the signature encryption algorithm. Set the value to 1.0. |
 | SignatureNo nce | Stri ng | Yes | A unique, random number used to prevent replay attacks. You must use different numbers for different requests. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 ```
 https://polardb.example.com/ ?Format=xml &Version=2024-01-30 &Signature=Pc5WB8gokVnxxxxx &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &OwnerId=12345678 &Timestamp=2024-07-12T12:00:00Z
 ```
 
-##### Common response parameters
+##### 1.2.2.2 Common response parameters
 
 Every response returns a unique request ID regardless of whether the call is successful.
 
@@ -202,11 +329,9 @@ Every response returns a unique request ID regardless of whether the call is suc
 </Operation name + Response>
 ```
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+#### 1.2.3 Responses
 
-#### Responses
-
-##### Sample success responses
+##### 1.2.3.1 Sample success responses
 
 The response data for API requests is displayed in a uniform format. In the response data, a 2xx HTTP status code indicates that the API operation is called. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. The response examples in this section have been formatted with line breaks or indents for a clear view. The actual responses are not properly formatted as these examples. Responses in the XML format include the result of the request and the details of the operation. Examples:
 
@@ -220,7 +345,7 @@ JSON format
 { "RequestId": "4C467B38-****-447D-****-AC04*******16", /* Return result data */}
 ```
 
-##### Sample error responses
+##### 1.2.3.2 Sample error responses
 
 If an error occurs when you call an API operation, no result data is returned. You can identify the cause of the error by referring to the error codes in Appendix. If an error occurs when you call an API operation, a 4XX or 5XX HTTP status code is returned. The returned message contains the specific error code and error message. The RequestId parameter uniquely identifies the request, and the HostId parameter indicates the ID of the site requested to be accessed. You can contact Apsara Stack technical support if the cause of the error cannot be found. We recommend that you provide the HostId and RequestId parameters to help technical support engineers resolve the issue at the earliest opportunity. XML format
 
@@ -229,6 +354,18 @@ If an error occurs when you call an API operation, no result data is returned. Y
 ```
 
 JSON format
+
+```json
+{ "RequestId": "7463B73D-****-4D19-****-6B8*******2EF", "HostId": "polardb.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported."
+```
+
+`}`
+
+### 1.3 Instance management
+
+#### 1.3.1 CreateDBInstance
+
+Creates a PolarDB instance. For more information about instance types, see Instance types in Appendix.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -239,33 +376,19 @@ JSON format
 | EngineVersion | Strin g | Yes | The PolarDB PG database version of the instance. Valid _ values: 14 16 |
 | DBInstanceClass | Strin g | Yes | The instance type of the instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```json
-{ "RequestId": "7463B73D-****-4D19-****-6B8*******2EF", "HostId": "polardb.example.com", "Code": "UnsupportedOperation", "Message": "The specified action is not supported." }
-```
-
-### Instance management
-
-#### CreateDBInstance
-
-Creates a PolarDB instance. For more information about instance types, see Instance types in Appendix.
-
-| DBInstanceStora ge | Integ er |  | Yes | The storage capacity of the instance. Valid values: MySQL High-availability Edition: 5 to 2000 PolarDB High-availability Edition: 5 to 2000 The capacity must be incremented by 5 GB. Unit: GB. |  |
+| DBInstanceStora ge | Integ er |   | Yes | The storage capacity of the instance. Valid values: MySQL High-availability Edition: 5 to 2000 PolarDB High-availability Edition: 5 to 2000 The capacity must be incremented by 5 GB. Unit: GB. |   |
 |---|---|---|---|---|---|
-| DBInstanceNetT ype | Strin g |  | Yes | The network connection type of the instance. Valid values: Internet Intranet |  |
-| DBInstanceDescr iption | Strin g |  | No | The description of the instance, which is used to describe the purpose of the instance. The description must be 2 to 256 characters in length and cannot start with http:// or https:// . It must start with a letter and can contain letters, digits, underscores ( ), and hyphens (-) . _ |  |
-|  |  |  |  |  | letters, digits, |
-|  |  |  |  | underscores ( ), and hyphens (-) _ |  |
-| SecurityIPList | Strin g |  | Yes | The IP addresses that are allowed to access all databases in the instance. You can add a maximum of 1,000 unduplicated IP addresses and separate them with commas (,). Supported formats include %, 0.0.0.0/0, a single IP address (such as 10.23.12.24), and a CIDR block (such as 10.23.12.24/24) with a prefix length ranging from 1 to 32. 0.0.0.0/0 indicates that access sources are not limited. |  |
-| ClientToken | Strin g |  | Yes | The client token that is used to ensure the idempotence of the request. |  |
-| InstanceNetwork Type | Strin g |  | No | The network type of the instance. Valid values: VPC and Classic. Default value: Classic. |  |
-| ConnectionMode | Strin g |  | No | The access mode of the instance. Valid values: Performance and Safety. If no value is specified, the system assigns an access mode. |  |
-| VPCId | Strin g |  | No | The virtual private cloud (VPC) ID. |  |
-| VSwitchId | Strin g |  | No | The vSwitch ID. |  |
-| PrivateIpAddress | Strin g |  | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |  |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+| DBInstanceNetT ype | Strin g |   | Yes | The network connection type of the instance. Valid values: Internet Intranet |   |
+| DBInstanceDescr iption | Strin g |   | No | The description of the instance, which is used to describe the purpose of the instance. The description must be 2 to 256 characters in length and cannot start with http:// or https:// . It must start with a letter and can contain letters, digits, underscores ( ), and hyphens (-) . _ |   |
+|   |   |   |   |   | letters, digits, |
+|   |   |   |   | underscores ( ), and hyphens (-) _ |   |
+| SecurityIPList | Strin g |   | Yes | The IP addresses that are allowed to access all databases in the instance. You can add a maximum of 1,000 unduplicated IP addresses and separate them with commas (,). Supported formats include %, 0.0.0.0/0, a single IP address (such as 10.23.12.24), and a CIDR block (such as 10.23.12.24/24) with a prefix length ranging from 1 to 32. 0.0.0.0/0 indicates that access sources are not limited. |   |
+| ClientToken | Strin g |   | Yes | The client token that is used to ensure the idempotence of the request. |   |
+| InstanceNetwork Type | Strin g |   | No | The network type of the instance. Valid values: VPC and Classic. Default value: Classic. |   |
+| ConnectionMode | Strin g |   | No | The access mode of the instance. Valid values: Performance and Safety. If no value is specified, the system assigns an access mode. |   |
+| VPCId | Strin g |   | No | The virtual private cloud (VPC) ID. |   |
+| VSwitchId | Strin g |   | No | The vSwitch ID. |   |
+| PrivateIpAddress | Strin g |   | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |   |
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -275,14 +398,14 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | ConnectionString | String | The endpoint used to connect to the instance. |
 | Port | String | The port used to connect to the instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 XML format
 
+**Sample responses**
+
 ```xml
-<OrderId>100789370******</OrderId> <ConnectionString>rm-5ob3ye******.o.polardb.rds.inter.env17e.shuguang.com </ConnectionString> <DBInstanceId>polardb-****</DBInstanceId> <port>3433</port> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<CreateDBInstanceResponse> <OrderId>100789370******</OrderId> <ConnectionString>rm-5ob3ye******.o.polardb.rds.inter.env17e.shuguang.com </ConnectionString> <DBInstanceId>polardb-****</DBInstanceId> <port>3433</port> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CreateDBInstanceResponse>
 ```
 
 JSON format
@@ -291,7 +414,7 @@ JSON format
 { "OrderId": "100789370******", "ConnectionString": "rm-5ob3ye******.o.polardb.rds.inter.env17e.shuguang.com", "DBInstanceId": "polardb-****", "Port": "3433", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DeleteDBInstance
+#### 1.3.2 DeleteDBInstance
 
 Releases a PolarDB instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not manually locked. The instance is a pay-as-you-go primary instance, read-only instance, disaster recovery instance, or temporary instance.
 
@@ -304,20 +427,20 @@ Releases a PolarDB instance. Before you call this operation, make sure that the 
 |---|---|---|
 | <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DeleteDBInstance &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=DeleteDBInstance &DBInstanceId=polardb-xxxxx &Common request parameters
 ```
+
+**Sample responses**
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<DeleteDBInstanceResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </DeleteDBInstanceResponse>
 ```
 
 JSON format
@@ -326,7 +449,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### RestartDBInstance
+#### 1.3.3 RestartDBInstance
 
 Restarts an instance. The instance will be restarted in 10 seconds. If a large number of transactions must be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, make sure that the following requirements are met: The instance is in use. The instance does not have ongoing backup tasks.
 
@@ -339,19 +462,12 @@ Restarts an instance. The instance will be restarted in 10 seconds. If a large n
 |---|---|---|
 | <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
 
-| Paramete r | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceAttribute. |
-| DBInstanc eId | String | Yes | The instance ID. You can specify up to 30 IDs at a time. Separate multiple IDs with commas (,). |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<RestartDBInstanceResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </RestartDBInstanceResponse>
 ```
 
 JSON format
@@ -360,13 +476,18 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeDBInstanceAttribute
+#### 1.3.4 DescribeDBInstanceAttribute
 
 Queries the attributes of instances.
 
+| Paramete r | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceAttribute. |
+| DBInstanc eId | String | Yes | The instance ID. You can specify up to 30 IDs at a time. Separate multiple IDs with commas (,). |
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items |  |  | The queried instance attributes. |
+| Items |   |   | The queried instance attributes. |
 | DBInstanceId | String | rm-bpvxxxxx | The instance ID. |
 | DBInstanceType | String | Primary | The type of the instance. Valid values: Primary: primary instance. Readonly: read-only instance. Guard: disaster recovery instance. Temp: temporary instance. |
 | Category | String | Basic | The edition of the instance. Valid values: Basic: Basic Edition. Standard: High-availability Edition. Enterprise: Enterprise Edition. |
@@ -377,8 +498,6 @@ Queries the attributes of instances.
 | Port | String | 3433 | The port used to connect to the instance. |
 | Engine | String | PolarDB PG _ | The database engine of the instance. |
 | EngineVersion | String | 16 | The database engine version of the instance. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | DBInstanceClass Type | String | x | The instance family. Valid values: s: shared instance. x: general-purpose instance. d: dedicated instance. h: dedicated host. |
 |---|---|---|---|
@@ -393,8 +512,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | DBMaxQuantity | Integer | 200 | The maximum number of databases that can be created in the instance. |
 | AccountMaxQuan tity | Integer | 50 | The maximum number of accounts that can be created in the instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | CreationTime | String | 2025-05- 30T12:11:4Z | The time when the instance was created. Format and example: YYYY-MM-DDThh:mm:ssZ 2025-05-30T12:11:4Z |
 |---|---|---|---|
 | ExpireTime | String | No | The expiration time of the instance. This parameter is not returned for pay-as-you-go instances. |
@@ -406,9 +523,7 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | IncrementSource DBInstanceId | String | null | The instance ID of the incremental data source. For example, the incremental data source of a disaster recovery instance or read-only instance is the primary instance, and the incremental data source of the primary instance is null. |
 | GuardDBInstance Id | String | No | The ID of the disaster recovery instance attached to the instance. |
 | TempDBInstance Id | String | No | The ID of the temporary instance attached to the instance. |
-| ReadOnlyDBInsta nceIds |  | rr-xxxxx | The IDs of the read-only instances attached to the instance. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+| ReadOnlyDBInsta nceIds |   | rr-xxxxx | The IDs of the read-only instances attached to the instance. |
 
 | DBInstanceId | String | rm-bpxxxxx | The name of the instance. |
 |---|---|---|---|
@@ -416,7 +531,7 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | ResourceGroupId | String | 365378**** | The resource group ID. |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The request ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui DBInstanceAttribute parameters
+DBInstanceAttribute parameters
 
 **Note**
 
@@ -427,10 +542,10 @@ You can call the DescribeDBInstanceHAConfig operation to query the information a
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
-JSON format ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+JSON format
 
 ```json
 { "Items":
@@ -475,7 +590,7 @@ JSON format
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeDBInstances
+#### 1.3.5 DescribeDBInstances
 
 Queries a list of instances or Resource Access Management (RAM)-authorized instances.
 
@@ -490,14 +605,12 @@ Queries a list of instances or Resource Access Management (RAM)-authorized insta
 | PageSize | Intege r | No | 30 | The number of entries per page. Valid values: 30, 50, and 100. Default value: 30. |
 | Tags | String | No | No | The tags of the instance. Specify the value in the JSON format. Each tag is a key-value pair that consists of TagKey and TagValue. You must specify TagKey, and you can specify TagValue as needed. Example: {"key1":"value1"}. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number. |
 | TotalRecordCount | Integer | 1 | The total number of entries returned. |
 | PageRecordCount | Integer | 1 | The number of entries per page. |
-| Items |  |  | The queried instances. |
+| Items |   |   | The queried instances. |
 | └DBInstanceId | String | rm-xxxxx | The instance ID. |
 | └DBInstanceDescriptio n | String | testforRemark s | The description of the instance. |
 | └PayType | String | Postpaid | The billing method of the instance. Valid values: Postpaid: pay-as-you-go. Prepaid: subscription. |
@@ -505,8 +618,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | └InstanceNetworkType | String | Classic | The network type of the instance. Valid values: Classic VPC |
 | └ConnectionMode | String | Performance | The access mode of the instance. Valid values: Performance: standard access mode. Safety: secure access mode. |
 | └RegionId | String | cn-hangzhou | The region ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | └ExpireTime | String | No | The expiration time of the instance. This parameter is not returned for pay-as-you-go instances. |
 |---|---|---|---|
@@ -519,36 +630,27 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | └GuardDBInstanceId | String | No | The ID of the disaster recovery instance attached to the instance. |
 | └TempDBInstanceId | String | No | The ID of the temporary instance attached to the instance. |
 | └VpcCloudInstanceId | String | vpc-xxxxx | The virtual private cloud (VPC) ID. |
-| └ReadOnlyDBInstanceI ds |  |  | None |
+| └ReadOnlyDBInstanceI ds |   |   | None |
 | └DBInstanceId | String | rm-xxxxx | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | RequestId | String | 1AD222E9- E606-4A42- BF6D- 8A4442913CEF | The request ID. |
 |---|---|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeDBInstances &RegionId=cn-hangzhou &Engine=PolarDB_PG
+https://polardb.example.com/?Action=DescribeDBInstances &RegionId=cn-hangzhou &Engine=PolarDB_PG &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<PageRecordCount>2</PageRecordCount> <Items> <DBInstance> <DBInstanceDescription>testforRemarks</DBInstanceDescription> <ExpireTime>2014-10-10T16:00:00Z</ExpireTime> <DBInstanceId>polardbmjfirxxxxx</DBInstanceId> <DBInstanceNetType>Internet</DBInstanceNetType> <PayType>Prepaid</PayType> <DBInstanceStatus>Running</DBInstanceStatus> <DBInstanceType>Primary</DBInstanceType> <Engine>PolarDB_PG</Engine> <LockMode>Unlock</LockMode> <LockReason/> <RegionId>cn-hangzhou</RegionId> <ZoneId>cn-hangzhou-a</ZoneId> <MasterInstanceId/> <GuardDBInstanceId/> <TempDBInstanceId/> <ReadOnlyDBInstanceIds> <ReadOnlyDBInstanceId/> </ReadOnlyDBInstanceIds> </DBInstance> </Items> <PageNumber>1</PageNumber> <TotalRecordCount>2</TotalRecordCount> <RequestId>2553A660-E4EB-4AF4-A402-8AFF70A49143</RequestId>
+<DescribeDBInstancesResponse> <PageRecordCount>2</PageRecordCount> <Items> <DBInstance> <DBInstanceDescription>testforRemarks</DBInstanceDescription> <ExpireTime>2014-10-10T16:00:00Z</ExpireTime> <DBInstanceId>polardbmjfirxxxxx</DBInstanceId> <DBInstanceNetType>Internet</DBInstanceNetType> <PayType>Prepaid</PayType> <DBInstanceStatus>Running</DBInstanceStatus> <DBInstanceType>Primary</DBInstanceType> <Engine>PolarDB_PG</Engine> <LockMode>Unlock</LockMode> <LockReason/> <RegionId>cn-hangzhou</RegionId> <ZoneId>cn-hangzhou-a</ZoneId> <MasterInstanceId/> <GuardDBInstanceId/> <TempDBInstanceId/> <ReadOnlyDBInstanceIds> <ReadOnlyDBInstanceId/> </ReadOnlyDBInstanceIds> </DBInstance> </Items> <PageNumber>1</PageNumber> <TotalRecordCount>2</TotalRecordCount> <RequestId>2553A660-E4EB-4AF4-A402-8AFF70A49143</RequestId> </DescribeDBInstancesResponse>
 ```
 
 JSON format
-
-| Parameter | Type | Required | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 ```json
 { "Items":
@@ -574,18 +676,20 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
     "PageRecordCount":2,
     "RequestId":"2553A660-E4EB-4AF4-A402-8AFF70A49143",
     "TotalRecordCount":2
-}
 ```
 
-JSON format
+`}` JSON format
 
 ```json
 { "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
 ```
 
-#### ModifyDBInstanceSpec
+#### 1.3.6 ModifyDBInstanceSpec
 
 Modifies the configurations of an instance, such as the instance type or storage capacity. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance does not have ongoing backup tasks. One of the DBInstanceClass and DBInstanceStorage parameters is specified. The new storage capacity is at least 1.1 times the used storage space. The instance is a primary instance or read-only instance.
+
+| Parameter | Type | Required | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | ModifyDBInstanc eSpec | The operation that you want to perform. Set the value to ModifyDBInstanc eSpec. |
 |---|---|---|---|---|
@@ -595,8 +699,6 @@ Modifies the configurations of an instance, such as the instance type or storage
 | DBInstanceClass | String | No | polardb.mys2.sm all | The instance type of the instance. For more information about instance types, see Instance types in Appendix. |
 | DBInstanceStora ge | Integer | No | 20 | The storage capacity of the instance. Unit: GB. The capacity must be incremented by 5 GB. For more information, see the Instance types topic in PolarDB User Guide. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | EffectiveTime | String | No | Immediate | The effective time. Valid values: Immediate: The configuration changes immediately take effect. MaintainTime: The configuration changes take effect within the maintenance window. Default value: Immediate. |
 |---|---|---|---|---|
 | OwnerAccount | String | No | testuser@aliyun. com | The Apsara Stack tenant account. |
@@ -605,20 +707,18 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606-4A42- BF6D-8A4442913CEF | The request ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=polardb-xxxxx &PayType=Postpaid &DBInstanceStorage=10
+https://polardb.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=polardb-xxxxx &PayType=Postpaid &DBInstanceStorage=10 &Common request parameters
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ModifyDBInstanceSpecResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyDBInstanceSpecResponse>
 ```
 
 JSON format
@@ -628,6 +728,14 @@ JSON format
 ```
 
 JSON format
+
+```json
+{ "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
+```
+
+#### 1.3.7 AllocateInstancePublicConnection
+
+Applies for a public endpoint for an instance.
 
 | Parameter | Typ e | Requir ed | Description |
 |---|---|---|---|
@@ -640,35 +748,17 @@ JSON format
 |---|---|---|
 | <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```json
-{ "Code":"UnsupportedOperation", "HostId":"polardb.aliyuncs.com", "Message":"The specified action is not supported.", "RequestId":"7463B73D-35CC-4D19-A010-6B8D65D242EF"}
-```
-
-#### AllocateInstancePublicConnection
-
-Applies for a public endpoint for an instance.
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=AllocateInstancePublicConnection &DBInstanceId=polardb-xxxxx &ConnectionStringPrefix=test0001 &Port=3306
+https://polardb.example.com/?Action=AllocateInstancePublicConnection &DBInstanceId=polardb-xxxxx &ConnectionStringPrefix=test0001 &Port=3306 &Common request parameters
 ```
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set this parameter to ReleaseInstancePublicConnection. |
-| DBInstanceId | String | Yes | The instance ID. |
-| CurrentConnection String | String | Yes | The public endpoint. |
+**Sample responses**
 
-| Parameter | Type | Description |
-|---|---|---|
-| <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui XML format
+XML format
 
 ```xml
 <AllocateInstancePublicConnectionResponse> <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId> </AllocateInstancePublicConnectionResponse>
@@ -680,31 +770,31 @@ JSON format
 { "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64"}
 ```
 
-#### ReleaseInstancePublicConnection
+#### 1.3.8 ReleaseInstancePublicConnection
 
 Releases the public endpoint of an instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set this parameter to ReleaseInstancePublicConnection. |
+| DBInstanceId | String | Yes | The instance ID. |
+| CurrentConnection String | String | Yes | The public endpoint. |
+
+| Parameter | Type | Description |
+|---|---|---|
+| <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=polardb-xxxxx &CurrentConnectionString=test0001.mysql.polardb.example.com
+https://polardb.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=polardb-xxxxx &CurrentConnectionString=test0001.mysql.polardb.example.com &Common request parameters
 ```
 
+**Sample responses**
+
 XML format
-
-| Parameter | Type | Require d | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to SwitchDBInstanceNetType. |
-| DBInstanceId | String | Yes | The instance ID. |
-| ConnectionString Prefix | String | Yes | The unique endpoint to be used. It can be up to 30 characters in length and can contain lowercase letters, digits, and hyphens (-). It must start with a letter. |
-
-| Parameter | Type | Requir ed | Description |
-|---|---|---|---|
-| Action | Strin g | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceNetInfo. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 ```xml
 <ReleaseInstancePublicConnectionResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ReleaseInstancePublicConnectionResponse>
@@ -716,22 +806,36 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### SwitchDBInstanceNetType
+#### 1.3.9 SwitchDBInstanceNetType
 
-You can call this operation to switch the network type of an instance between internal and public networks. After switching, the endpoint of the instance changes. You must modify the endpoint in the code and restart the application. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The number of times that you have switched the instance between its internal and public endpoints within the last 24 hours does not reach 20. For more information, see Common response parameters.
+You can call this operation to switch the network type of an instance between internal and public networks. After switching, the endpoint of the instance changes. You must modify the endpoint in the code and restart the application. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The number of times that you have switched the instance between its internal and public endpoints within the last 24 hours does not reach 20.
 
-#### DescribeDBInstanceNetInfo
+| Parameter | Type | Require d | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to SwitchDBInstanceNetType. |
+| DBInstanceId | String | Yes | The instance ID. |
+| ConnectionString Prefix | String | Yes | The unique endpoint to be used. It can be up to 30 characters in length and can contain lowercase letters, digits, and hyphens (-). It must start with a letter. |
+
+For more information, see Common response parameters.
+
+#### 1.3.10 DescribeDBInstanceNetInfo
 
 Queries the connection information of an instance.
+
+| Parameter | Type | Requir ed | Description |
+|---|---|---|---|
+| Action | Strin g | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceNetInfo. |
 
 | DBInstanceI d | Strin g | Yes | The instance ID. |
 |---|---|---|---|
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | The common response parameters. For more information, see Common response parameters. |
+| <Common response parameters> |   | The common response parameters. For more information, see Common response parameters. |
 | DBInstanceNetInfos | List<DBInstanceAttribute> | The connection information of the instance. |
 | InstanceNetworkType | String | The network type of the instance. Valid values: VPC and Classic. |
+
+DBInstanceNetInfo parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -742,9 +846,7 @@ Queries the connection information of an instance.
 | VPCId | String | The VPC ID. |
 | VSwitchId | String | The vSwitch ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui DBInstanceNetInfo parameters
-
-#### ModifyDBInstanceConnectionString
+#### 1.3.11 ModifyDBInstanceConnectionString
 
 Modifies the endpoint and port of an instance. PolarDB provides the internal and public endpoints for an instance and allows both endpoint types to coexist in a specific access mode.
 
@@ -756,17 +858,27 @@ Modifies the endpoint and port of an instance. PolarDB provides the internal and
 | ConnectionStringP refix | Str ing | No | The endpoint to be used by the instance. |
 | Port | Str ing | No | The port to be used by the instance. |
 
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+
+#### 1.3.12 ModifyDBInstanceConnectionMode
+
+Changes the access mode of an instance. PolarDB supports the following access modes: Standard access mode Secure access mode
+
 | Parameter | Typ e | Require d | Description |
 |---|---|---|---|
 | Action | Stri ng | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceConnectionMode. |
 | DBInstance Id | Stri ng | Yes | The instance ID. |
 | Connection Mode | Stri ng | Yes | The access mode of the instance. Valid values: Performance and Safety. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### ModifyDBInstanceConnectionMode
+#### 1.3.13 ModifyDBInstanceNetworkType
 
-Changes the access mode of an instance. PolarDB supports the following access modes: Standard access mode Secure access mode
+Switches the network type of an instance between virtual private cloud (VPC) and classic network.
+
+**Note**
+
+Only the classic network instances whose ConnectionMode is Safety can have their network type switched to VPC.
 
 | Parameter | T y p e | Requi red | Description |
 |---|---|---|---|
@@ -776,18 +888,14 @@ Changes the access mode of an instance. PolarDB supports the following access mo
 | VPCId | St ri n g | No | The VPC ID. |
 | VSwitchId | St ri n g | No | The VSwitch ID. This parameter is required if the value of VPCId is specified. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
-
-#### ModifyDBInstanceNetworkType
-
-Switches the network type of an instance between virtual private cloud (VPC) and classic network.
-
-**Note**
-
-Only the classic network instances whose ConnectionMode is Safety can have their network type switched to VPC.
-
 | PrivateIpAddres s | St ri n g | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |
 |---|---|---|---|
+
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+
+#### 1.3.14 DescribeDBInstanceIPArrayList
+
+Queries the IP address whitelist of an instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -796,22 +904,22 @@ Only the classic network instances whose ConnectionMode is Safety can have their
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | The common response parameters. For more information, see Common response parameters. |
+| <Common response parameters> |   | The common response parameters. For more information, see Common response parameters. |
 | Items | List<DBInstanceIP Array> | The queried IP address whitelist. |
+
+DBInstanceIPArray parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | DBInstanceIPArrayN ame | Strin g | The name of the IP address whitelist. |
 | DBInstanceIPArrayAt tribute | Strin g | By default, this parameter is left empty. IP address whitelists with the hidden attribute are not displayed in the console. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
-
-#### DescribeDBInstanceIPArrayList
-
-Queries the IP address whitelist of an instance. DBInstanceIPArray parameters
-
 | SecurityIPList | Strin g | The IP addresses in the IP address whitelist. The IP address whitelist can contain a maximum of 1,000 IP addresses. Multiple IP addresses are separated by commas (,). Supported formats include 0.0.0.0/0, 10.23.12.24, and 10.23.12.24/24. 10.23.12.24 is an IP address. 10.23.12.24/24 is a CIDR block, in which the suffix /24 indicates the number of bits for the prefix of the IP address. The suffix ranges from 1 to 32. |
 |---|---|---|
+
+#### 1.3.15 ModifySecurityIps
+
+Modifies the IP address whitelist of an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not locked by the system.
 
 | Parameter | Ty pe | Requ ired | Description |
 |---|---|---|---|
@@ -821,11 +929,33 @@ Queries the IP address whitelist of an instance. DBInstanceIPArray parameters
 | DBInstanceIPArrayNa me | Str ing | No | The name of the IP address whitelist. If you do not enter a name, IP addresses are added to the default whitelist. |
 | DBInstanceIPArrayAtt ribute | Str ing | No | By default, this parameter is left empty. IP address whitelists with the hidden attribute are not displayed in the console. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
-#### ModifySecurityIps
+**Examples**
 
-Modifies the IP address whitelist of an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the Running state. The instance is not locked by the system.
+**Sample requests**
+
+```
+https://polardb.example.com/?Action=ModifySecurityIps &DBInstanceId=polardb-xxxxx &SecurityIps=192.168.1.2 &Common request parameters
+```
+
+**Sample responses**
+
+XML format
+
+```xml
+<ModifySecurityIpsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifySecurityIpsResponse>
+```
+
+JSON format
+
+```json
+{ "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
+```
+
+#### 1.3.16 DescribeRegions
+
+Queries available regions and zones. You must call the DescribeRegions operation to query available regions before you call the CreateDBInstance operation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -836,51 +966,27 @@ Modifies the IP address whitelist of an instance. Before you call this operation
 | <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
 | Regions | List<PolarDBRegion> | The queried regions. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
-
-**Examples**
-
-**Sample requests**
-
-```
-https://polardb.example.com/?Action=ModifySecurityIps &DBInstanceId=polardb-xxxxx &SecurityIps=192.168.1.2
-```
-
-XML format
-
-```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
-```
-
-JSON format
-
-```json
-{ "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
-```
-
-#### DescribeRegions
-
-Queries available regions and zones. You must call the DescribeRegions operation to query available regions before you call the CreateDBInstance operation.
+PolarDBRegion parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | RegionId | String | The region ID. |
 | ZoneId | String | The zone ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui PolarDBRegion parameters
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeRegions
+https://polardb.example.com/?Action=DescribeRegions &Common request parameters
 ```
+
+**Sample responses**
 
 XML format
 
 ```xml
-<Regions> <PolarDBRegion> <RegionId>cn-hangzhou</RegionId> <ZoneId>cn-hangzhou-a</RegionId> </PolarDBRegion> <PolarDBRegion> <RegionId>cn-hangzhou</RegionId ><ZoneId>cn-hangzhou-b</ZoneId> </PolarDBRegion> </Regions> <RequestId>A36D9720-7902-42A4-B8B9-014A2135E6C3</RequestId>
+<DescribeRegionsResponse> <Regions> <PolarDBRegion> <RegionId>cn-hangzhou</RegionId> <ZoneId>cn-hangzhou-a</RegionId> </PolarDBRegion> <PolarDBRegion> <RegionId>cn-hangzhou</RegionId ><ZoneId>cn-hangzhou-b</ZoneId> </PolarDBRegion> </Regions> <RequestId>A36D9720-7902-42A4-B8B9-014A2135E6C3</RequestId> </DescribeRegionsResponse>
 ```
 
 JSON format
@@ -894,10 +1000,11 @@ JSON format
             "ZoneId":"cn-hangzhou-b"},
              ]},
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"
-}
 ```
 
-#### DescribeDBInstanceHAConfig
+`}`
+
+#### 1.3.17 DescribeDBInstanceHAConfig
 
 Queries the zone information and data replication status of an instance.
 
@@ -908,11 +1015,13 @@ Queries the zone information and data replication status of an instance.
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | The common response parameters. For more information, see Common response parameters. |
+| <Common response parameters> |   | The common response parameters. For more information, see Common response parameters. |
 | DBInstanceId | String | The instance ID. |
 | SyncMode | String | The synchronization mode of the instance. Valid values: Semi-sync and Async. |
 | HAMode | String | The high availability mode of the instance. Valid values: RPO: Data persistence prevails. RTO: Instance availability prevails. |
 | HostInstanceInfos | List<NodeI nfo> | The information about the primary and secondary instances. |
+
+NodeInfo parameters
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -921,12 +1030,18 @@ Queries the zone information and data replication status of an instance.
 | RegionId | String | The region ID. |
 | ZoneId | String | The zone ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui NodeInfo parameters
-
 | SyncStatus | String | The synchronization status of the instance. Valid values: NotAvailable: Synchronization is unavailable because a failure has occurred. Syncing: Synchronization is in process, with a probability of data loss during failovers. Synchronized: Synchronization is complete. NotSupport: Synchronization is not supported by the database engine or version. |
 |---|---|---|
 | LogSyncTime | String | The time when the secondary instance receives logs. |
 | DataSyncTime | String | The time when the secondary instance receives data. |
+
+#### 1.3.18 MigrateToOtherZone
+
+Migrates an instance from one zone to another. For example, if Instance 1 resides in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
+
+**Note**
+
+In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -934,35 +1049,22 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | DBInstanceId | String | Yes | The instance ID. |
 | ZoneId | String | Yes | The zone ID of the instance. You can call the DescribeRegions operation to query available zones. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### MigrateToOtherZone
-
-Migrates an instance from one zone to another. For example, if Instance 1 resides in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
-
-**Note**
-
-In cross-zone migration, instances must be migrated within the same region. For example, instances in a zone of the China (Hangzhou) region cannot be migrated to a zone of the China (Qingdao) region. This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to PurgeDBInstanceLog. |
-| DBInstanceId | String | Yes | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 ```
-https://polardb.example.com/?Action=MigrateToOtherZone &DBInstanceId=polardb-xxxxx &ZoneId=cn-hangzhou-b
+https://polardb.example.com/?Action=MigrateToOtherZone &DBInstanceId=polardb-xxxxx &ZoneId=cn-hangzhou-b &Common request parameters
 ```
+
+**Sample responses**
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<MigrateToOtherZoneResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </MigrateToOtherZoneResponse>
 ```
 
 JSON format
@@ -971,23 +1073,42 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### PurgeDBInstanceLog
+#### 1.3.19 PurgeDBInstanceLog
 
-Clears all binlogs of an instance. This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+Clears all binlogs of an instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to PurgeDBInstanceLog. |
+| DBInstanceId | String | Yes | The instance ID. |
+
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=polardb-xxxxx &Common request parameters
 ```
+
+**Sample responses**
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<PurgeDBInstanceLogResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </PurgeDBInstanceLogResponse>
 ```
+
+JSON format
+
+```json
+{ "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
+```
+
+#### 1.3.20 ModifyDBInstanceDescription
+
+Modifies the description of an instance to help identify the instance. For example, you can modify the description of an instance to Alibaba_Cloud_testing_environment_instance.
 
 | Parameter | Typ e | Requir ed | Description |
 |---|---|---|---|
@@ -995,28 +1116,22 @@ XML format
 | DBInstanceId | Strin g | Yes | The instance ID. |
 | DBInstanceDesc ription | Stin g | Yes | The description of the instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui JSON format
-
-```json
-{ "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
-```
-
-#### ModifyDBInstanceDescription
-
-Modifies the description of an instance to help identify the instance. For example, you can modify the description of an instance to Alibaba_Cloud_testing_environment_instance. This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyDBInstanceDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testdescribe
+https://polardb.example.com/?Action=ModifyDBInstanceDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testdescribe &Common request parameters
 ```
+
+**Sample responses**
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ModifyDBInstanceDescriptionResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyDBInstanceDescriptionResponse>
 ```
 
 JSON format
@@ -1025,31 +1140,43 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
+#### 1.3.21 ModifyDBInstanceMaintainTime
+
+Modifies the maintenance window of an instance. You can set the maintenance window to offpeak hours. Apsara Stack performs routine maintenance during the maintenance window to minimize the impacts on your business.
+
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceMaintainTime. |
 | DBInstanceI d | String | Yes | The instance ID. |
 | MaintainTim e | String | Yes | The maintenance window of the instance. Valid values: 22:00Z-02:00Z 02:00Z-06:00Z 06:00Z-10:00Z 10:00Z-14:00Z 14:00Z-18:00Z 18:00Z-22:00Z |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### ModifyDBInstanceMaintainTime
-
-Modifies the maintenance window of an instance. You can set the maintenance window to offpeak hours. Apsara Stack performs routine maintenance during the maintenance window to minimize the impacts on your business. This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=polardb-xxxxx &MaintainTime=22:00Z-02:00Z
+https://polardb.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=polardb-xxxxx &MaintainTime=22:00Z-02:00Z &Common request parameters
 ```
+
+**Sample responses**
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ModifyDBInstanceMaintainTimeResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyDBInstanceMaintainTimeResponse>
 ```
+
+JSON format
+
+```json
+{ "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
+```
+
+#### 1.3.22 ModifyDBInstanceHAConfig
+
+Modifies the data replication mode and high availability switching rules of an instance.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1058,28 +1185,26 @@ XML format
 | SyncMode | String | Yes | The synchronization mode of the instance. Valid values: Semi- sync and Async. |
 | HAMode | String | Yes | The high availability mode of the instance. Valid values: RPO: Data persistence prevails. RTO: Instance availability prevails. |
 
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+
+#### 1.3.23 SwitchDBInstanceHA
+
+Switches between the primary and secondary instances. PolarDB instances are composed of primary and secondary instances distributed across different servers. The primary instance bears the service traffic.
+
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to SwitchDBInstanceHA. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui JSON format
-
-```json
-{ "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
-```
-
-#### ModifyDBInstanceHAConfig
-
-Modifies the data replication mode and high availability switching rules of an instance. This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
-
-#### SwitchDBInstanceHA
-
-Switches between the primary and secondary instances. PolarDB instances are composed of primary and secondary instances distributed across different servers. The primary instance bears the service traffic.
 
 | DBInstanc eId | String | Yes | The instance ID. |
 |---|---|---|---|
 | NodeId | String | Yes | The unique ID of the primary or secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the value of this parameter. |
 | Force | String | Yes | Specifies whether to forcibly switch between the primary and secondary instances. Valid values: Yes and No. Default value: No. |
+
+This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
+
+#### 1.3.24 CreateReadOnlyDBInstance
+
+Creates a read-only instance for a primary instance. Before you call this operation, make sure that the following requirements are met: The primary instance is in the Running state, but not in the Failover state. The read-only instance and the primary instance are in the same region. A primary instance can have up to five read-only instances.
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1088,25 +1213,19 @@ Switches between the primary and secondary instances. PolarDB instances are comp
 | ZoneId | String | Yes | The zone ID of the instance. You can call the DescribeRegions operation to query the most recent zone list. |
 | DBInstanceId | String | Yes | The ID of the primary instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui This operation returns only common response parameters. For more information about common response parameters, see Common response parameters.
-
-#### CreateReadOnlyDBInstance
-
-Creates a read-only instance for a primary instance. Before you call this operation, make sure that the following requirements are met: The primary instance is in the Running state, but not in the Failover state. The read-only instance and the primary instance are in the same region. A primary instance can have up to five read-only instances.
-
-| EngineVersion | String | Yes | The database engine version of the read-only instance. The read-only instance and the primary instance must run the same database engine version. Valid values: 14 16 |  |  |
+| EngineVersion | String | Yes | The database engine version of the read-only instance. The read-only instance and the primary instance must run the same database engine version. Valid values: 14 16 |   |   |
 |---|---|---|---|---|---|
-| DBInstanceClass | String | Yes | The instance type of the instance. |  |  |
-| DBInstanceStora ge | Intege r | Yes | The storage capacity of the instance. Valid values: 5 to 1000 . The capacity must be incremented by 5 GB. Unit: GB. |  |  |
-|  |  |  |  | 5 to |  |
-| DBInstanceDesc ription | String | No | The description of the instance. It must be 2 to 256 characters in length. The description cannot start with http:// or https://. The description can contain letters, digits, underscores ( ), _ and hyphens (-). It must start with a letter. |  |  |
-| ClientToken | String | Yes | The client token that is used to ensure the idempotence of the request. |  |  |
-| InstanceNetwork Type | String | No | VPC Classic Default value: Classic. |  |  |
-| VPCId | String | No | The virtual private cloud (VPC) ID. |  |  |
-| VSwitchId | String | No | The vSwitch ID. |  |  |
-| PrivateIpAddress | String | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |  |  |
+| DBInstanceClass | String | Yes | The instance type of the instance. |   |   |
+| DBInstanceStora ge | Intege r | Yes | The storage capacity of the instance. Valid values: 5 to 1000 . The capacity must be incremented by 5 GB. Unit: GB. |   |   |
+|   |   |   |   | 5 to |   |
+| DBInstanceDesc ription | String | No | The description of the instance. It must be 2 to 256 characters in length. The description cannot start with http:// or https://. The description can contain letters, digits, underscores ( ), _ and hyphens (-). It must start with a letter. |   |   |
+| ClientToken | String | Yes | The client token that is used to ensure the idempotence of the request. |   |   |
+| InstanceNetwork Type | String | No | VPC Classic Default value: Classic. |   |   |
+| VPCId | String | No | The virtual private cloud (VPC) ID. |   |   |
+| VSwitchId | String | No | The vSwitch ID. |   |   |
+| PrivateIpAddress | String | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |   |   |
 
-|  | 1000 |
+|   | 1000 |
 |---|---|
 
 | Parameter | Type | Description |
@@ -1115,16 +1234,12 @@ Creates a read-only instance for a primary instance. Before you call this operat
 | DBInstanceId | String | The instance ID. |
 | OrderId | String | The order ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | econdary Edition) e·API reference | Developer Gui | ApsaraDB for POLARDB |
 |---|---|---|
 
 | ConnectionStrin g | String | The endpoint used to connect to the instance. |
 |---|---|---|
 | Port | String | The port used to connect to the instance. |
-
-PolarDB for PostgreSQL (Primary/
 
 **Examples**
 
@@ -1137,7 +1252,7 @@ https://polardb.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzh
 XML format
 
 ```xml
-<OrderId>10078937023****</OrderId> <ConnectionString>rm-5obp******.o.polardb.rds.inter.env17e.shuguang.com </ConnectionString> <DBInstanceId>polardb-xxxxx</DBInstanceId> <port>3433</port> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<CreateDBInstanceResponse> <OrderId>10078937023****</OrderId> <ConnectionString>rm-5obp******.o.polardb.rds.inter.env17e.shuguang.com </ConnectionString> <DBInstanceId>polardb-xxxxx</DBInstanceId> <port>3433</port> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CreateDBInstanceResponse>
 ```
 
 JSON format
@@ -1146,7 +1261,7 @@ JSON format
 { "OrderId": "10078937023****", "ConnectionString": "rm-5obp******.o.polardb.rds.inter.env17e.shuguang.com", "DBInstanceId": "polardb-xxxxx", "Port": "3433", "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DescribeDBInstanceSSL
+#### 1.3.25 DescribeDBInstanceSSL
 
 Queries the SSL link of an instance.
 
@@ -1163,16 +1278,14 @@ Queries the SSL link of an instance.
 | RequireUpdate | String | Indicates whether an immediate update is required. Valid values: Yes and No. |
 | RequireUpdateRe ason | String | The reason why an update is required. |
 
+#### 1.3.26 ModifyDBInstanceSSL
+
+Modifies the SSL link of a PolarDB instance.
+
 | Parameter | Typ e | Req uire d | Description |
 |---|---|---|---|
 | Action | Strin g | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceSSL. |
 | DBInstance Id | Strin g | Yes | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### ModifyDBInstanceSSL
-
-Modifies the SSL link of a PolarDB instance.
 
 | Connection String | Strin g | Yes | The connection string of the instance. Each instance can have only one connection string protected by the SSL certificate. The SSL certificate can be created or updated for the connection string. |
 |---|---|---|---|
@@ -1182,6 +1295,10 @@ Modifies the SSL link of a PolarDB instance.
 | <Common response parameters> | - | For more information, see Common response parameters. |
 | SSLExpireTime | String | The expiration time of the SSL certificate. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 
+#### 1.3.27 DescribeDBInstanceTDE
+
+Queries the Transparent Data Encryption (TDE) status of a PolarDB instance.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeDBInstanceTDE. |
@@ -1189,20 +1306,20 @@ Modifies the SSL link of a PolarDB instance.
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | TDEStatus | String | The TDE status of the instance. Valid values: Enabled and Disabled. |
 | Databases | List<DataBase> | The details of the database. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### DescribeDBInstanceTDE
-
-Queries the Transparent Data Encryption (TDE) status of a PolarDB instance.
+DataBase
 
 | Paramete r | Type | Description |
 |---|---|---|
 | DBName | String | The database name. |
 | TDEStatus | String | The TDE status of the database. Valid values: Enabled and Disabled. |
+
+#### 1.3.28 ModifyDBInstanceTDE
+
+Modifies the Transparent Data Encryption (TDE) status of a PolarDB instance.
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1211,17 +1328,17 @@ Queries the Transparent Data Encryption (TDE) status of a PolarDB instance.
 | TDEStatus | String | Yes | Specifies whether to enable TDE for the instance. Valid values: Enabled and Disabled. |
 | DBName | String | No | The database name. You can specify up to 50 database names in a single request. Separate multiple names with commas (,). |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+For more information, see Common response parameters.
 
-#### ModifyDBInstanceTDE
+### 1.4 Database management
 
-Modifies the Transparent Data Encryption (TDE) status of a PolarDB instance. For more information, see Common response parameters.
+#### 1.4.1 CreateDatabase
 
-### Database management
+Creates a database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached. The instance is a primary instance.
 
-#### CreateDatabase
+**Note**
 
-Creates a database in an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. The maximum number of databases in the instance is not reached.
+This operation is not supported for PolarDB. You can create databases in PolarDB instances by executing a CREATE DATABASE statement.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1231,21 +1348,35 @@ Creates a database in an instance. Before you call this operation, make sure tha
 | CharacterSet Name | String | Yes | The character set that is used by the database. You can view the character set on the Databases tab of the instance details page. |
 | DBDescriptio n | String | No | The description of the instance. It must be 2 to 256 characters in length. The description cannot start with http:// or https://. The description can contain letters, digits, underscores ( ), and hyphens (-). It must start with a letter. _ |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui The instance is a primary instance.
-
-**Note**
-
-This operation is not supported for PolarDB. You can create databases in PolarDB instances by executing a CREATE DATABASE statement. For more information, see Common response parameters.
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=CreateDatabase &CharacterSetName=GBK &DBName=testDB &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=CreateDatabase &CharacterSetName=GBK &DBName=testDB &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
+
+```xml
+<CreateDatabaseResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CreateDatabaseResponse>
+```
+
+JSON format
+
+```json
+{ "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
+```
+
+#### 1.4.2 DeleteDatabase
+
+Deletes a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance.
+
+**Note**
+
+This operation is not supported for PolarDB. You can delete databases from PolarDB instances by executing a DROP DATABASE statement.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1257,29 +1388,29 @@ XML format
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+**Examples**
+
+**Sample requests**
+
+```
+https://polardb.example.com/?Action=DeleteDatabase &DBName=testDB &DBInstanceId=polardb-xxxxx &<Common request parameters>
+```
+
+XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<DeleteDatabaseResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </DeleteDatabaseResponse>
 ```
 
 JSON format
 
 ```json
-{ "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
+{ "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DeleteDatabase
+#### 1.4.3 DescribeDatabases
 
-Deletes a database from an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance.
-
-**Note**
-
-This operation is not supported for PolarDB. You can delete databases from PolarDB instances by executing a DROP DATABASE statement.
-
-**Examples**
-
-**Sample requests**
+Queries a list of databases of an instance and the information about a database. If you specify invalid request parameters, an error message is returned and the returned data is empty.
 
 | Parame ter | Type | Requ ired | Description |
 |---|---|---|---|
@@ -1291,31 +1422,11 @@ This operation is not supported for PolarDB. You can delete databases from Polar
 | Parameter | Type | Description |
 |---|---|---|
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```
-https://polardb.example.com/?Action=DeleteDatabase &DBName=testDB &DBInstanceId=polardb-xxxxx
-```
-
-XML format
-
-```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
-```
-
-JSON format
-
-```json
-{ "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
-```
-
-#### DescribeDatabases
-
-Queries a list of databases of an instance and the information about a database. If you specify invalid request parameters, an error message is returned and the returned data is empty.
-
 | <Common response parameters> | - | The common response parameters. For more information, see Common response parameters. |
 |---|---|---|
 | Databases | List<Database> | The list of databases. |
+
+Parameters in Database
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1329,29 +1440,27 @@ Queries a list of databases of an instance and the information about a database.
 | Account | String | The account name. |
 | AccountPrivile ge | String | The permissions of the account on the database. |
 
+Parameters in AccountPrivilegeInfo
+
 | Parameter | Type | Description |
 |---|---|---|
 | Account | String | The account name. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui Parameters in Database Parameters in AccountPrivilegeInfo
-
 | AccountPrivilege | String | The permissions of the account on the database. |
 |---|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeDatabases &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=DescribeDatabases &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Databases> <Database> <Engine>PolarDB_PG</Engine> <DBName>testdb</DBName> <CharacterSetName>utf8</CharacterSetName> <DBStatus>Creating</DBStatus> <DBInstanceId>polardb-xxxxx</DBInstanceId> <Accounts> <AccountPrivilegeInfo></AccountPrivilegeInfo> <Accounts> </Database> </Databases>
+<DescribeDatabasesResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Databases> <Database> <Engine>PolarDB_PG</Engine> <DBName>testdb</DBName> <CharacterSetName>utf8</CharacterSetName> <DBStatus>Creating</DBStatus> <DBInstanceId>polardb-xxxxx</DBInstanceId> <Accounts> <AccountPrivilegeInfo></AccountPrivilegeInfo> <Accounts> </Database> </Databases> </DescribeDatabasesResponse>
 ```
 
 JSON format
@@ -1366,10 +1475,11 @@ JSON format
             "DBInstanceId": "polardb-xxxxx",
             "Accounts": { " AccountPrivilegeInfo": [] },
             "DBName": "testdb" }] }
-            }
 ```
 
-#### ModifyDBDescription
+`}`
+
+#### 1.4.4 ModifyDBDescription
 
 Modifies the description of a database to help identify the database. For example, you can change the description of a database to Database A for the Alibaba Cloud testing environment.
 
@@ -1380,20 +1490,20 @@ Modifies the description of a database to help identify the database. For exampl
 | DBName | String | Yes | The database name. |
 | DBDescription | String | Yes | The new description of the database. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui For more information, see Common response parameters.
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyDBDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testDBdescribe
+https://polardb.example.com/?Action=ModifyDBDescription &DBInstanceId=polardb-xxxxx &DBInstanceDescription=testDBdescribe &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ModifyDBDescriptionResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyDBDescriptionResponse>
 ```
 
 JSON format
@@ -1402,11 +1512,11 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### Account management
+### 1.5 Account management
 
-#### CreateAccount
+#### 1.5.1 CreateAccount
 
-Creates an account for a database. In the same instance, one account can manage multiple databases by using different permissions. Before you call this operation, make sure that the following requirements are met: The instance is in the running state.
+Creates an account for a database. In the same instance, one account can manage multiple databases by using different permissions. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The instance is not locked. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance.
 
 | Parameter | Typ e | Req uire d | Description |
 |---|---|---|---|
@@ -1417,26 +1527,20 @@ Creates an account for a database. In the same instance, one account can manage 
 | AccountType | Strin g | No | The account type. Valid values: Normal and Super. Default value: Normal. PolarDB can have only one initial account. You must use the initial account to log on to the database and create other types of accounts. |
 | AccountDescr iption | Strin g | No | The account description. It must be 2 to 256 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, underscores ( ), and hyphens (-). _ |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui The database is in the running state. The instance is not locked. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance. For more information, see Common response parameters.
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx
+https://polardb.example.com/?Action=CreateAccount &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=rds-xxxxx &<Common request parameters>
 ```
 
-| Parameter | Type | Require d | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DeleteAccount. |
-| DBInstanceI d | String | Yes | The instance ID. |
-| AccountNam e | String | Yes | The unique name of the account. The name can be up to 16 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. For _ more information about invalid characters, see Forbidden keywords. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui XML format
+XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<CreateAccountResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CreateAccountResponse>
 ```
 
 JSON format
@@ -1445,19 +1549,41 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### DeleteAccount
+#### 1.5.2 DeleteAccount
 
-Deletes a database account of an instance. Before you call this operation, make sure that the instance is in the Running state. For more information, see Common response parameters.
+Deletes a database account of an instance. Before you call this operation, make sure that the instance is in the Running state.
+
+| Parameter | Type | Require d | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DeleteAccount. |
+| DBInstanceI d | String | Yes | The instance ID. |
+| AccountNam e | String | Yes | The unique name of the account. The name can be up to 16 characters in length and can contain lowercase letters, digits, and underscores ( ). It must start with a letter. For _ more information about invalid characters, see Forbidden keywords. |
+
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DeleteAccount &DBInstanceId=rds-xxxxx &AccountName=testacc01
+https://polardb.example.com/?Action=DeleteAccount &DBInstanceId=rds-xxxxx &AccountName=testacc01 &<Common request parameters>
 ```
 
 XML format
+
+```xml
+<DeleteAccountResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </DeleteAccountResponse>
+```
+
+JSON format
+
+```json
+{ "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
+```
+
+#### 1.5.3 DescribeAccounts
+
+Queries a list of accounts for a database in an instance and the information about an account.
 
 | Parameter | Typ e | Required | Description |
 |---|---|---|---|
@@ -1467,28 +1593,14 @@ XML format
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | Accounts | List<DBInstanceAccount > | The information about the account. |
+
+DBInstanceAccount
 
 | Parameter | Type | Description |
 |---|---|---|
 | DBInstanceId | String | The ID of the instance to which the account belongs. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
-```
-
-JSON format
-
-```json
-{ "RequestID":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
-```
-
-#### DescribeAccounts
-
-Queries a list of accounts for a database in an instance and the information about an account. DBInstanceAccount
 
 | AccountName | String | The account name. |
 |---|---|---|
@@ -1497,33 +1609,25 @@ Queries a list of accounts for a database in an instance and the information abo
 | DatabasePrivileges | List<DatabasePrivil ege> | The array that consists of DatabasePrivilege data. |
 | AccountType | String | The account type. Valid values: Normal: a standard account Super: a super account |
 
+DatabasePrivilege
+
 | Parameter | Type | Description |
 |---|---|---|
 | DBName | String | The database name. |
 | AccountPrivilege | String | The account name. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui DatabasePrivilege
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeAccounts &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=DescribeAccounts &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to GrantAccountPrivilege. |
-| DBInstanceId | String | Yes | The instance ID. |
-| AccountName | String | Yes | The account name. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Accounts> <DBInstanceAccount> <AccountName>PolarDB_PG</AccountName> <DBInstanceId>testdb</DBInstanceId> <AccountStatus>utf8</AccountStatus> <AccountDescription> </AccountDescription> <DatabasePrivileges> <DatabasePrivilege></DatabasePrivilege> </DatabasePrivileges> <DBInstanceAccount> </Accounts>
+<DescribeAccountsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Accounts> <DBInstanceAccount> <AccountName>PolarDB_PG</AccountName> <DBInstanceId>testdb</DBInstanceId> <AccountStatus>utf8</AccountStatus> <AccountDescription> </AccountDescription> <DatabasePrivileges> <DatabasePrivilege></DatabasePrivilege> </DatabasePrivileges> <DBInstanceAccount> </Accounts> </DescribeAccountsResponse>
 ```
 
 JSON format
@@ -1539,32 +1643,34 @@ JSON format
  "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-#### GrantAccountPrivilege
+#### 1.5.4 GrantAccountPrivilege
 
 Grants database access permissions to an account. An account can be associated with one or more databases. If the specified account already has access permissions on the specified database, the operation directly returns a success response. Before you call this operation, make sure that the instance is in the running state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to GrantAccountPrivilege. |
+| DBInstanceId | String | Yes | The instance ID. |
+| AccountName | String | Yes | The account name. |
 
 | DBName | String | Yes | The name of the database to be accessed by the account. |
 |---|---|---|---|
 | AccountPrivileg e | String | Yes | The permissions of the account. Valid values: ReadOnly and ReadWrite. |
 
-| Paramete r | Type | Requi red | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to RevokeAccountPrivilege. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui For more information, see Common response parameters.
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=GrantAccountPrivilege &AccountName=testacc02 &AccountPrivilege=readwrite &DBName=testdb03 &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=GrantAccountPrivilege &AccountName=testacc02 &AccountPrivilege=readwrite &DBName=testdb03 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<GrantAccountPrivilegeResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </GrantAccountPrivilegeResponse>
 ```
 
 JSON format
@@ -1573,33 +1679,33 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### RevokeAccountPrivilege
+#### 1.5.5 RevokeAccountPrivilege
 
 Revokes database access permissions from an account. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state.
+
+| Paramete r | Type | Requi red | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to RevokeAccountPrivilege. |
 
 | DBInstanc eId | String | Yes | The instance ID. |
 |---|---|---|---|
 | AccountNa me | String | Yes | The account name. |
 | DBName | String | Yes | The database name. |
 
-| Parameter | Typ e | Require d | Description |
-|---|---|---|---|
-| Action | Stri ng | Yes | The operation that you want to perform. Set the value to ModifyAccountDescription. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui For more information, see Common response parameters.
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=RevokeAccountPrivilege &AccountName=testacc02 &DBName=testdb03 &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=RevokeAccountPrivilege &AccountName=testacc02 &DBName=testdb03 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<RevokeAccountPrivilegeResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </RevokeAccountPrivilegeResponse>
 ```
 
 JSON format
@@ -1608,9 +1714,13 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ModifyAccountDescription
+#### 1.5.6 ModifyAccountDescription
 
 Modifies the description of an account to help identify the account. For example, you can change the description of an account to Account A for the Alibaba Cloud testing environment.
+
+| Parameter | Typ e | Require d | Description |
+|---|---|---|---|
+| Action | Stri ng | Yes | The operation that you want to perform. Set the value to ModifyAccountDescription. |
 
 | DBInstanceId | Stri ng | Yes | The instance ID. |
 |---|---|---|---|
@@ -1621,20 +1731,18 @@ Modifies the description of an account to help identify the account. For example
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyAccountDescription &DBInstanceId=polardb-xxxxx &AccountName=testacc01 &AccountDescription=testAccoutdescribe
+https://polardb.example.com/?Action=ModifyAccountDescription &DBInstanceId=polardb-xxxxx &AccountName=testacc01 &AccountDescription=testAccoutdescribe &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ModifyAccountDescription> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyAccountDescription>
 ```
 
 JSON format
@@ -1643,7 +1751,7 @@ JSON format
 { "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ResetAccountPassword
+#### 1.5.7 ResetAccountPassword
 
 Resets the password of an account for an instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state and not locked.
 
@@ -1654,23 +1762,20 @@ Resets the password of an account for an instance. Before you call this operatio
 | AccountNam e | Strin g | Yes | The account name. |
 | AccountPass word | Strin g | Yes | The new password of the account. It must be 6 to 32 characters in length and can contain letters, digits, and underscores ( ). _ |
 
-| 0 |  |  | > Document Version: 2026063 |
-|---|---|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui For more information, see Common response parameters.
+For more information, see Common response parameters.
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ResetAccountPassword &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=ResetAccountPassword &AccountName=testacc02 &AccountPassword=pwxxxxx &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ResetAccountPasswordResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ResetAccountPasswordResponse>
 ```
 
 JSON format
@@ -1679,9 +1784,12 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ResetAccount
+#### 1.5.8 ResetAccount
 
 You can call this operation to reset the initial account of an instance.
+
+| 0 |   |   | > Document Version: 2026063 |
+|---|---|---|---|
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -1694,19 +1802,17 @@ You can call this operation to reset the initial account of an instance.
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
+### 1.6 Backup and restoration
+
+#### 1.6.1 CreateBackup
+
+Creates a backup. You can create up to 10 backups for an instance in a single day. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The last backup is complete.
+
 | Paramet er | Type | Req uire d | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set this parameter to CreateBackup. |
 | DBInstanc eId | String | Yes | The instance ID. |
 | BackupMe thod | String | No | The backup method. Valid values: Logical and Physical. Default value: Physical. Logical backup cannot be used for instances without databases. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-### Backup and restoration
-
-#### CreateBackup
-
-Creates a backup. You can create up to 10 backups for an instance in a single day. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The last backup is complete.
 
 | BackupStr ategy | String | No | The logical backup range. Valid values: db: single-database backup. instance: instance backup. This parameter takes effect only when BackupMethod is set to Logical. |
 |---|---|---|---|
@@ -1717,20 +1823,18 @@ Creates a backup. You can create up to 10 backups for an instance in a single da
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action= CreateBackup &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action= CreateBackup &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<CreateBackupResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CreateBackupResponse>
 ```
 
 JSON format
@@ -1739,9 +1843,9 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### CloneDBInstance
+#### 1.6.2 CloneDBInstance
 
-Clones a new instance from an existing instance by using data from either a backup file or a specific point in time. The new instance inherits the whitelist, SQL audit, alert threshold, backup, and parameter settings from the original instance. The data in the new instance is the same as that in the backup file. The clone feature is available only for PolarDB for MySQL instances.
+Clones a new instance from an existing instance by using data from either a backup file or a specific point in time. The new instance inherits the whitelist, SQL audit, alert threshold, backup, and parameter settings from the original instance. The data in the new instance is the same as that in the backup file. The clone feature is available only for PolarDB for MySQL instances. The new instance handles database account information based on the following rules: If the original instance is cloned by using a privileged account, the new instance inherits that privileged account. If the original instance is cloned by using a standard account, the new instance inherits the account information from the backup file or the specified point in time.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1756,28 +1860,24 @@ Clones a new instance from an existing instance by using data from either a back
 | VSwitichId | String | No | The vSwitch ID. |
 | PrivateIpAddres s | String | No | The VPC IP address that belongs to the specified vSwitch. If no value is specified, the system assigns a VPC IP address. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui The new instance handles database account information based on the following rules: If the original instance is cloned by using a privileged account, the new instance inherits that privileged account. If the original instance is cloned by using a standard account, the new instance inherits the account information from the backup file or the specified point in time.
-
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 | DBInstanceId | String | The instance ID. |
 | OrderId | Integer | The order ID. |
 
-| Parameter | Type | Require d | Description |
-|---|---|---|---|
-| Action | Strin g | Yes | The operation that you want to perform. Set this parameter to DescribeBackups. |
-| DBInstanceI d | Strin g | Yes | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### DescribeBackups
+#### 1.6.3 DescribeBackups
 
 Queries the backup sets of an instance. Only backup sets in the Success state can be used for database restoration. PolarDB allows you to download backup files. A null value of DownloadLink indicates that no URL is available for downloading a backup file. A non-null value of DownloadLink provides a URL for downloading a backup file by using wget (enclose the URL in double quotation marks), a web browser, or a custom program. The URL expires at the time specified by LinkExpiredTime. Download the backup file before it expires. If you attempt to download a backup file by using an expired URL, the following error code is returned:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?><Error><Code>AccessDenied</Code> <Message>Request has expired.</Message><Expires>2012-12-25T09:47:52.000Z</Expires><Se rverTime>2012-12-25T09:49:00.000Z</ServerTime> <RequestId>50D9768CA801C2F102005C70</RequestId><HostId>oss-test.aliyuninc.com</HostId></Error>
 ```
+
+| Parameter | Type | Require d | Description |
+|---|---|---|---|
+| Action | Strin g | Yes | The operation that you want to perform. Set this parameter to DescribeBackups. |
+| DBInstanceI d | Strin g | Yes | The instance ID. |
 
 | BackupId | Integ er | No | The backup set ID. |
 |---|---|---|---|
@@ -1790,15 +1890,17 @@ Queries the backup sets of an instance. Only backup sets in the Success state ca
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | TotalRecordCount | Integer | The total number of entries returned. |
 | PageNumber | Integer | The page number. |
 | PageRecordCount | Integer | The number of backup sets on the current page. |
 | Items | List<Backup> | The list of backup files. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+#### 1.6.4 CreateTempDBInstance
 
-#### CreateTempDBInstance
+**Note**
+
+Creates a temporary instance from a backup set or a point in time within the last seven days. After the temporary instance is created, its accounts and databases inherit the data from the backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
 
 | Parameter | Type | Requir ed | Description |
 |---|---|---|---|
@@ -1809,40 +1911,21 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | TempDBInstanceId | String | The temporary instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-**Note**
-
-Creates a temporary instance from a backup set or a point in time within the last seven days. After the temporary instance is created, its accounts and databases inherit the data from the backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
 
 **Examples**
 
 **Sample requests**
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeBackupPolicy. |
-| DBInstanceId | String | Yes | The instance ID. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
-| BackupRetentionPeri od | String | The data backup retention period. Unit: days. Valid values: 1 to 30. |
-| PreferredBackupTim e | String | The time range for backups, in UTC. Format: HH:mmZ- HH:mmZ. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 ```
-https://polardb.example.com/?Action=CreateTempDBInstance &BackupId=90262 &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=CreateTempDBInstance &BackupId=90262 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TempDBInstanceId>sub-xxxxx</TempDBInstanceId>
+<CreateTempDBInstanceResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TempDBInstanceId>sub-xxxxx</TempDBInstanceId> </CreateTempDBInstanceResponse>
 ```
 
 JSON format
@@ -1851,27 +1934,27 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC", "TempDBInstanceId":"sub-xxxxx"}
 ```
 
-#### DescribeBackupPolicy
+#### 1.6.5 DescribeBackupPolicy
 
 Queries the backup policy configured for an instance. PolarDB periodically backs up an instance based on the user-defined system configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set this parameter to DescribeBackupPolicy. |
+| DBInstanceId | String | Yes | The instance ID. |
+
+| Parameter | Type | Description |
+|---|---|---|
+| <Common response parameters> |   | For more information, see Common response parameters. |
+| BackupRetentionPeri od | String | The data backup retention period. Unit: days. Valid values: 1 to 30. |
+| PreferredBackupTim e | String | The time range for backups, in UTC. Format: HH:mmZ- HH:mmZ. |
 
 | PreferredBackupPeri od | String | The backup day. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday. |
 |---|---|---|
 | BackupLog | String | Indicates whether log backup is enabled. Valid values: Enable and Disabled. |
 | LogBackupRetention Period | String | The log backup retention period. Unit: days. Valid values: 1 to 30. |
 
-| Parameter | Type | In | Required | Example | Description |
-|---|---|---|---|---|---|
-| DBInstanc eId | Strin g | Quer y | Yes | rm-wq64n542y9j****** | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 9B7BFB11-C077- 4FE3-B051- F69CEB****** | The ID of the request. |
-| Message | String | Successful | The response message. A value of Successful is returned on success; an error message is returned on failure. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### Query available point-in-time recovery
+#### 1.6.6 Query available point-in-time recovery range
 
 **range**
 
@@ -1885,6 +1968,15 @@ PolarDB for MySQL Cluster Edition PolarDB for PostgreSQL Primary/Standby Edition
 
 This operation uses only common request headers. For more information, see common request parameters.
 
+| Parameter | Type | In | Required | Example | Description |
+|---|---|---|---|---|---|
+| DBInstanc eId | Strin g | Quer y | Yes | rm-wq64n542y9j****** | The ID of the instance. |
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 9B7BFB11-C077- 4FE3-B051- F69CEB****** | The ID of the request. |
+| Message | String | Successful | The response message. A value of Successful is returned on success; an error message is returned on failure. |
+
 | Success | Boolean | true | Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed. |
 |---|---|---|---|
 | Data | Struct | {} | The response data. |
@@ -1892,47 +1984,38 @@ This operation uses only common request headers. For more information, see commo
 | - RecoveryBegin Time | String | 2026-01- 21T04:30:32Z | The earliest time to which the instance can be restored. |
 | - DBInstanceNa me | String | rm- wq64n542y9j****** | The instance ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 Request example
 
 ```
-http(s)://[Endpoint]/?Action=DescribeLocalAvailableRecoveryTime &DBInstanceId=rm-wq64n542y9j******
+http(s)://[Endpoint]/?Action=DescribeLocalAvailableRecoveryTime &DBInstanceId=rm-wq64n542y9j****** &<common request parameters>
 ```
 
 Successful response example `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Data":{
   "RecoveryEndTime":"2026-01-26T13:01:15Z",
   "RecoveryBeginTime":"2026-01-21T04:30:32Z",
   "DBInstanceName":"rm-wq64n542y9j******"
- },
- "Success":true
-}
 ```
 
-`XML` format
+`},`
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidDBInstanceN ame.NotFound | IInvalidDBInstanceName.NotFo und | The specified instance ID does not exist. |
-| 400 | MissingUserID | MissingUserID | The request is missing a user id parameter. _ |
-| 400 | MissingUID | MissingUID | The request is missing a uid parameter. |
+```json
+ "Success":true
+```
 
-| Parameter | Type | Requ ired | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set this parameter to ModifyBackupPolicy. |
-| DBInstanceId | String | Yes | The instance ID. |
-| PreferredBackupTim e | String | Yes | The time range for backups, in UTC. Format: HH:mmZ- HH:mmZ. |
-| PreferredBackupPeri od | String | Yes | The backup day. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+`}` `XML` format
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Data>
@@ -1942,9 +2025,24 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 </Data> <Success>true</Success>
 ```
 
-#### ModifyBackupPolicy
+**Error codes**
+
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidDBInstanceN ame.NotFound | IInvalidDBInstanceName.NotFo und | The specified instance ID does not exist. |
+| 400 | MissingUserID | MissingUserID | The request is missing a user id parameter. _ |
+| 400 | MissingUID | MissingUID | The request is missing a uid parameter. |
+
+#### 1.6.7 ModifyBackupPolicy
 
 Modifies the backup policy configured for an instance. PolarDB periodically backs up an instance based on the user-defined system configuration.
+
+| Parameter | Type | Requ ired | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set this parameter to ModifyBackupPolicy. |
+| DBInstanceId | String | Yes | The instance ID. |
+| PreferredBackupTim e | String | Yes | The time range for backups, in UTC. Format: HH:mmZ- HH:mmZ. |
+| PreferredBackupPeri od | String | Yes | The backup day. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday. |
 
 | BackupRetentionPeri od | String | No | The data backup retention period. Unit: days. Valid values: 1 to 30. Default value: 7. |
 |---|---|---|---|
@@ -1955,20 +2053,18 @@ Modifies the backup policy configured for an instance. PolarDB periodically back
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyBackupPolicy &DBInstanceId=polardb-xxxxx &PreferredBackupTime=00:00Z-01:00Z &PreferredBackupPeriod=Monday
+https://polardb.example.com/?Action=ModifyBackupPolicy &DBInstanceId=polardb-xxxxx &PreferredBackupTime=00:00Z-01:00Z &PreferredBackupPeriod=Monday &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<ModifyBackupPolicyResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </ModifyBackupPolicyResponse>
 ```
 
 JSON format
@@ -1977,9 +2073,9 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### RestoreDBInstance
+#### 1.6.8 RestoreDBInstance
 
-Restores an instance from a backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state.
+Restores an instance from a backup set. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1991,20 +2087,18 @@ Restores an instance from a backup set. Before you call this operation, make sur
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui The instance is not undergoing migration tasks. The instance is not locked. The backup set is complete.
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=RestoreDBInstance &BackupId=103312 &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=RestoreDBInstance &BackupId=103312 &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<RestoreDBInstanceResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </RestoreDBInstanceResponse>
 ```
 
 JSON format
@@ -2013,7 +2107,9 @@ JSON format
 {"RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DeleteBackup
+#### 1.6.9 DeleteBackup
+
+Deletes data backup files that have been stored for longer than seven days or longer than the log backup retention period. This operation deletes only the specified backup sets of a specific instance. It does not delete the backup sets of associated instances, such as read-only, disaster recovery, or cloned instances. Before you call this operation, make sure that the instance is in the Running state.
 
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
@@ -2021,21 +2117,21 @@ JSON format
 | DBInstanc eId | String | Yes | The instance ID. |
 | BackupId | String | Yes | The backup set ID. You can call the DescribeBackups operation to query backup set IDs. You can specify up to 100 backup set IDs in a single request. Separate multiple IDs with commas (,). Among the query results of DescribeBackups, you can delete only backup sets that are in the enabled state. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Syst em | Yes | DeleteExtensions | The operation that you want to perform. Set the value to DeleteExtensions. |
+For more information, see Common response parameters.
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui Deletes data backup files that have been stored for longer than seven days or longer than the log backup retention period. This operation deletes only the specified backup sets of a specific instance. It does not delete the backup sets of associated instances, such as read-only, disaster recovery, or cloned instances. Before you call this operation, make sure that the instance is in the Running state. For more information, see Common response parameters.
+### 1.7 Plugin management
 
-### Plugin management
-
-#### Uninstall a plugin
+#### 1.7.1 Uninstall a plugin
 
 Uninstalls a plugin.
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | Strin g | Syst em | Yes | DeleteExtensions | The operation that you want to perform. Set the value to DeleteExtensions. |
 
 | AccessKeyI d | Strin g | Quer y | No | LTAI4G28PhwnizaSC***** *** | The AccessKey ID of the account. |
 |---|---|---|---|---|---|
@@ -2048,8 +2144,6 @@ This operation uses common request headers. For more information, see Common req
 | ResourceG roupId | Strin g | Quer y | No | rg-************ | The ID of the resource group to which the vSwitch belongs. |
 | DBInstanc eId | Strin g | Quer y | Yes | pc-**************** | The ID of the instance. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | Extensions | Strin g | Quer y | Yes | pase,hstore | The plug-ins to be uninstalled. Separate multiple plug-ins with commas (,). |
 |---|---|---|---|---|---|
 | DBNames | Strin g | Quer y | Yes | auto test db _ _ | The name of the database in the instance. |
@@ -2060,27 +2154,35 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | Message | String | Successful | The returned message. |
 | Success | Boolean | true | Indicates whether the request succeeded. Valid values: true: The request succeeded. false: The request failed. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DeleteExtensions &Action=DeleteExtensions &DBInstanceId=pc-**************** &Extensions=pase,hstore &DBNames=auto_test_db
+http(s)://[Endpoint]/?Action=DeleteExtensions &Action=DeleteExtensions &DBInstanceId=pc-**************** &Extensions=pase,hstore &DBNames=auto_test_db &Common request parameters
 ```
 
 `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Success":true
-}
 ```
 
-`XML` format
+`}` `XML` format
+
+```xml
+<RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2096,16 +2198,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 404 | InvalidAccountNam e.NotFound | InvalidAccountName.NotFound | The specified account name does not exist. |
 | 403 | UnsupportDBOwne rForExtensionOps | UnsupportDBOwnerForExtensi onOps | The DBOwner does not support the specified extensions. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```xml
-<RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
-```
-
 | 400 | Extension.NotInstal l | Extension.NotInstall | The extensions are not installed. |
 |---|---|---|---|
 | 400 | Extension.Depende ncy | Extension.Dependency | The required extension list exists, but some extensions are missing. |
 | 400 | -2001 | Extension.Dependency.Invalid | The required extension list exists, but some extensions are missing: %s |
+
+#### 1.7.2 Update a plugin
+
+Updates a plugin.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2114,16 +2218,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | OwnerId | Long | Quer y | No | 123456**** | The system-defined parameter. The ID of the user account. |
 | ResourceO wnerAccou nt | Strin g | Quer y | No | aliyun123 | The system-defined parameter. The ID of the resource owner account. |
 | ResourceO wnerId | Long | Quer y | No | 123456**** | The ID of the user account that owns the resource. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### Update a plugin
-
-Updates a plugin.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
 
 | ClientToke n | Strin g | Quer y | No | 6000170000591aed949d 0f54a343f1a4233c1e7d1 c5c****** | The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You must generate a unique value for this parameter for different requests. The value is case-sensitive and can contain up to 64 ASCII characters. |
 |---|---|---|---|---|---|
@@ -2140,7 +2234,35 @@ This operation uses common request headers. For more information, see Common req
 | Message | String | Successful | The returned message. true: The request succeeded. false: The request failed. |
 | Success | Boolean | true | Indicates whether the request succeeded. Valid values: |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateExtensions &Action=UpdateExtensions &DBInstanceId=pc-**************** &Extensions=postgres_fdw &DBNames=auto_test_db &Common request parameters
+```
+
+`JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
+ "Message":"Successful",
+ "Success":true
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2149,32 +2271,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | 400 | InvalidDBInstanceE ngineVersion.Form at | InvalidDBInstanceEngineVersio n.Format | The DB instance engine version does not support this operation. |
 | 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | The current DB instance state does not support this operation. |
 | 403 | IncorrectDBInstanc e | IncorrectDBInstance | The current DB instance does not support this operation. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateExtensions &Action=UpdateExtensions &DBInstanceId=pc-**************** &Extensions=postgres_fdw &DBNames=auto_test_db
-```
-
-`JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
- "Message":"Successful",
- "Success":true
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
-```
 
 | 400 | InvalidParameters. Format | InvalidParameters.Format | The specified parameters are not valid. |
 |---|---|---|---|
@@ -2188,18 +2284,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | CurMinorVersionUn supportUpdateGive nExtension | CurMinorVersionUnsupportUpd ateGivenExtension | The current minor version does not support updating the given extension. |
 | 400 | Extension.Depende ncy | Extension.Dependency | The database was not found. |
 
-| 0 |  |  |  | > D | ocument Version: 2026063 |
-|---|---|---|---|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### Query details of a plugin
+#### 1.7.3 Query details of a plugin
 
 Queries details of an installed plugin.
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+| 0 |   |   |   | > D | ocument Version: 2026063 |
+|---|---|---|---|---|---|
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2213,8 +2307,6 @@ This operation uses common request headers. For more information, see Common req
 | ZoneId | Strin g | Quer y | No | cn-hangzhou-i | The ID of the zone where the vSwitch is deployed. |
 | ResourceG roupId | Strin g | Quer y | No | rg-************ | The ID of the resource group to which the vSwitch belongs. |
 | DBInstanc eId | Strin g | Quer y | Yes | pc-**************** | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | Extension Name | Strin g | Quer y | No | address standardizer _ | The name of the plugin. |
 |---|---|---|---|---|---|
@@ -2234,8 +2326,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | --Priority | String | 1 | The priority of the plugin. |
 | --Requires | String | ganos networking _ | The plugins on which this plugin depends during installation. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | --Category | String | geography space, _ self develop _ | The type of the plugin. |
 |---|---|---|---|
 | --Restart | String | true | Indicates whether to restart the application. Valid values: true: Restart the application. false: Do not restart the application. |
@@ -2250,25 +2340,32 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | --Category | String | geography space, _ self develop _ | The type of the plugin. |
 | --Restart | String | true | Indicates whether to restart the application. Valid values: true: Restart the application. false: Do not restart the application. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
-Sample requests ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=DescribeExtensions &Action=DescribeExtensions &DBInstanceId=pc-**************** &DBName=testdb
+http(s)://[Endpoint]/?Action=DescribeExtensions &Action=DescribeExtensions &DBInstanceId=pc-**************** &DBName=testdb &Common request parameters
 ```
 
 `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"success",
  "Data":{
   "UninstalledExtensions":[
-   {
+```
+
+`{`
+
+```json
     "Comment":"test",
     "Owner":"admin",
     "Category":"geography_space, self_develop",
@@ -2277,14 +2374,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "DefaultVersion":"7.7",
     "Restart":"true",
     "Name":"jueming"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "InstalledExtensions":[
-   {
+```
+
+`{`
+
+```json
     "Comment":"test",
     "Owner":"9527952****",
     "Category":"geography_space, self_develop",
@@ -2294,27 +2394,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
     "DefaultVersion":"7.7",
     "Restart":"true",
     "Name":"jueming"
-   }
 ```
 
-]
+`}` `]` `},`
 
 ```json
- },
  "Success":true
-}
 ```
 
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidInnerParame ter | InvalidInnerParameter | The inner parameter is invalid. |
-| 400 | InvalidDBInstanceE ngineType.Format | InvalidDBInstanceEngineType. Format | The DB instance engine type does not support this operation. |
-| 400 | InvalidDBInstanceE ngineVersion.Form at | InvalidDBInstanceEngineVersio n.Format | The DB instance engine version does not support this operation. |
-| 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | The current DB instance state does not support this operation. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+`}` `XML` format
 
 ```xml
 <RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>success</Message> <Data>
@@ -2342,6 +2430,15 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 </Data> <Success>true</Success>
 ```
 
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidInnerParame ter | InvalidInnerParameter | The inner parameter is invalid. |
+| 400 | InvalidDBInstanceE ngineType.Format | InvalidDBInstanceEngineType. Format | The DB instance engine type does not support this operation. |
+| 400 | InvalidDBInstanceE ngineVersion.Form at | InvalidDBInstanceEngineVersio n.Format | The DB instance engine version does not support this operation. |
+| 403 | IncorrectDBInstanc eState | IncorrectDBInstanceState | The current DB instance state does not support this operation. |
+
 | 403 | IncorrectDBInstanc e | IncorrectDBInstance | The current DB instance does not support this operation. |
 |---|---|---|---|
 | 400 | InvalidParameters. Format | InvalidParameters.Format | The specified parameters are not valid. |
@@ -2352,19 +2449,17 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | 404 | InternalError.Exten sionConfigNotFoun d | InternalError.ExtensionConfigN otFound | The extension configuration was not found. |
 | 400 | InternalError.Exten sionConfigEmpty | InternalError.ExtensionConfigE mpty | The extension configuration is empty. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Syst em | Yes | CreateExtensions | The operation that you want to perform. Set the value to CreateExtensions. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### Install plugins
+#### 1.7.4 Install plugins
 
 Installs plugins.
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
+
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | Strin g | Syst em | Yes | CreateExtensions | The operation that you want to perform. Set the value to CreateExtensions. |
 
 | AccessKeyI d | Strin g | Quer y | No | LTAI4G28PhwnizaSC***** *** | The AccessKey ID of the account. |
 |---|---|---|---|---|---|
@@ -2379,8 +2474,6 @@ This operation uses common request headers. For more information, see Common req
 | Extensions | Strin g | Quer y | No | address standardizer _ | The name of the plugin. Separate multiple plugins with commas (,). |
 | DBNames | Strin g | Quer y | Yes | testdb01 | The name of the database on which you want to install the plugin. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | SourceDB Name | Strin g | Quer y | No | testdb1 | This parameter is invalid. |
 |---|---|---|---|---|---|
 | AccountNa me | Strin g | Quer y | Yes | test acc _ | The name of the account. |
@@ -2391,27 +2484,35 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | Message | String | Successful | The returned message. true: The request succeeded. false: The request failed. |
 | Success | Boolean | true | Indicates whether the request succeeded. Valid values: |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=CreateExtensions &Action=CreateExtensions &DBInstanceId=pc-**************** &DBNames=testdb01 &AccountName=test_acc
+http(s)://[Endpoint]/?Action=CreateExtensions &Action=CreateExtensions &DBInstanceId=pc-**************** &DBNames=testdb01 &AccountName=test_acc &Common request parameters
 ```
 
 `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"9B7BFB11-C077-4FE3-B051-F69CEB******",
  "Message":"Successful",
  "Success":true
-}
 ```
 
-`XML` format
+`}` `XML` format
+
+```xml
+<RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2427,12 +2528,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidSourceDb | InvalidSourceDb | The specified SourceDb is not valid. |
 | 400 | InvalidDBName.For mat | InvalidDBName.Format | The specified DB name is not valid. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```xml
-<RequestId>9B7BFB11-C077-4FE3-B051-F69CEB******</RequestId> <Message>Successful</Message> <Success>true</Success>
-```
-
 | 400 | EventTriggerExistIn CurDB | EventTriggerExistInCurDB | An event trigger exists in the current DB. |
 |---|---|---|---|
 | 400 | ExtensionNum.Not Support | ExtensionNum.NotSupport | The current extension count exceeds the maximum supported extension count. |
@@ -2446,11 +2541,11 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | 400 | InternalError.Exten sionConfigEmpty | InternalError.ExtensionConfigE mpty | The extension configuration is empty. |
 | 400 | AccountNameOwne rNotDBOwner | AccountNameOwnerNotDBOw ner | The account name is not the owner of the database. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+### 1.8 Monitoring management
 
-### Monitoring management
+#### 1.8.1 DescribeResourceUsage
 
-#### DescribeResourceUsage
+You can call this operation to query the disk space usage of an instance. When this operation is called, the system returns the amount of space occupied by the specified instance. The DBInstanceId parameter is used to obtain instance resource usage information.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2459,7 +2554,7 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | DBInstanceId | String | The instance ID. |
 | Engine | String | The database engine. |
 | DiskUsed | Integer | The total space occupied by data and log files. Unit: bytes. -1 indicates that no space is used. |
@@ -2469,11 +2564,13 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | ColdBackupSize | Integer | The total space occupied by cold backup data. Unit: bytes. -1 indicates that no space is used. |
 | SQLSize | Integer | The total space occupied by SQL data. Unit: bytes. -1 indicates that no space is used. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui You can call this operation to query the disk space usage of an instance. When this operation is called, the system returns the amount of space occupied by the specified instance. The DBInstanceId parameter is used to obtain instance resource usage information.
+#### 1.8.2 DescribeDBInstancePerformance
 
-#### DescribeDBInstancePerformance
+Queries the performance metrics of an instance over a period of time based on the performance parameters. The output format depends on the length of the query time range: If the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. If the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported. If the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals.
 
-Queries the performance metrics of an instance over a period of time based on the performance parameters. The output format depends on the length of the query time range: If the query time range is less than or equal to one day, performance metrics are displayed at one-minute intervals. Queries with the time range from one to seven days are not supported. If the query time range is greater than seven days but less than or equal to 15 days, performance metrics are displayed at one-hour intervals. Queries with the time range greater than 15 days but less than 30 days are not supported.
+**Note**
+
+If the instance space usage key is MySQL_SpaceUsage, performance metric data can be queried only when the query time range is less than or equal to one day.
 
 | Paramet er | Type | Requir ed | Description |
 |---|---|---|---|
@@ -2490,39 +2587,44 @@ Queries the performance metrics of an instance over a period of time based on th
 | Engine | String | The database engine. |
 | StartTime | String | The beginning of the time range where the query was executed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. Example: 2025-05-30T03:29Z . |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui If the query time range is greater than or equal to 30 days but less than or equal to one year, performance metrics are displayed at one-day intervals.
-
-**Note**
-
-If the instance space usage key is MySQL_SpaceUsage, performance metric data can be queried only when the query time range is less than or equal to one day.
-
 | EndTime | String | The end of the time range where the query was executed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. The end time is later than the start time. Example: 2025-05-30T04:29Z . |
 |---|---|---|
 | PerformanceKey s | List<PerformanceKe y> | The list of performance metrics. Format: {perf1, perf2, perf3, …} . |
 
-| {perf1, |  |
+| {perf1, |   |
 |---|---|
 
-|  | perf2, perf3, …} |
+|   | perf2, perf3, …} |
 |---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId=polardb-xxxxx &key= PolarDB_PG_xxxxx &StartTime=2025-05-30T03:29Z &EndTime=2025-05-30T04:29Z
+https://polardb.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId=polardb-xxxxx &key= PolarDB_PG_xxxxx &StartTime=2025-05-30T03:29Z &EndTime=2025-05-30T04:29Z &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <StartTime>2025-05-30T03:29Z</StartTime> <EndTime>2025-05-30T04:29Z</EndTime> <Engine>PolarDB_PG</Engine> <PerformanceKeys> <PerformanceKey> <Key>MySQL_xxxxx</Key> <Unit>KB</Unit> <ValueFormat>recv_k&amp;sent_k</ValueFormat> <Values><Values/> </PerformanceKey> </PerformanceKeys>
+<DescribeDBInstancePerformanceResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <StartTime>2025-05-30T03:29Z</StartTime> <EndTime>2025-05-30T04:29Z</EndTime> <Engine>PolarDB_PG</Engine> <PerformanceKeys> <PerformanceKey> <Key>MySQL_xxxxx</Key> <Unit>KB</Unit> <ValueFormat>recv_k&amp;sent_k</ValueFormat> <Values><Values/> </PerformanceKey> </PerformanceKeys> </DescribeDBInstancePerformanceResponse>
 ```
 
 JSON format
+
+```json
+{ "RequestId"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC, "DBInstanceID": polardb-xxxxx, "StartTime": "2025-05-30T03:29Z", "EndTime": "2025-05-30T04:29Z", "Engine": "PolarDB_PG", "PerformanceKeys":
+    { PerformanceKey[ {
+        "Key": "PolarDB_PG_xxxxx",
+        "Unit": "KB",
+        "ValueFormat": "recv_k&sent_k",
+        "Values": { "PerformanceValue":[] } } ] }}
+```
+
+#### 1.8.3 DescribeDBInstanceMonitor
+
+You can call this operation to query the monitoring behavior of an instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2534,29 +2636,14 @@ JSON format
 | <Common response parameters> | - | For more information, see Common response parameters. |
 | Period | String | The monitoring data collection interval. Unit: seconds. |
 
+#### 1.8.4 ModifyDBInstanceMonitor
+
+You can call this operation to modify the monitoring behavior of an instance.
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyDBInstanceMonitor. |
 | DBInstanceId | String | Yes | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-```json
-{ "RequestId"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC, "DBInstanceID": polardb-xxxxx, "StartTime": "2025-05-30T03:29Z", "EndTime": "2025-05-30T04:29Z", "Engine": "PolarDB_PG", "PerformanceKeys":
-    { PerformanceKey[ {
-        "Key": "PolarDB_PG_xxxxx",
-        "Unit": "KB",
-        "ValueFormat": "recv_k&sent_k",
-        "Values": { "PerformanceValue":[] } } ] }}
-```
-
-#### DescribeDBInstanceMonitor
-
-You can call this operation to query the monitoring behavior of an instance.
-
-#### ModifyDBInstanceMonitor
-
-You can call this operation to modify the monitoring behavior of an instance.
 
 | Period | String | Yes | The monitoring data collection interval. Unit: seconds. Valid values: 60 and 300. Default value: 300. |
 |---|---|---|---|
@@ -2564,6 +2651,12 @@ You can call this operation to modify the monitoring behavior of an instance.
 | Parameter | Type | Description |
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
+
+### 1.9 Parameter management
+
+#### 1.9.1 DescribeParameterTemplates
+
+Queries a list of parameter templates. The list includes parameter names, default parameter values, whether the parameters can be modified, whether the database must be restarted for the parameters to take effect, and regular expressions that act as parameter validation rules.
 
 | Paramete r | Typ e | Requi red | Description |
 |---|---|---|---|
@@ -2576,56 +2669,30 @@ You can call this operation to modify the monitoring behavior of an instance.
 | <Common response parameters> | - | The common response parameters. |
 | Engine | String | The database engine. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-### Parameter management
-
-#### DescribeParameterTemplates
-
-Queries a list of parameter templates. The list includes parameter names, default parameter values, whether the parameters can be modified, whether the database must be restarted for the parameters to take effect, and regular expressions that act as parameter validation rules.
-
 | EngineVersion | String | The database engine version. |
 |---|---|---|
 | ParameterCount | Integer | The number of parameters. |
 | Parameters | List<TemplateRecord > | The list of parameters. Format: {parameter1, parameter2, parameter3, ...} . |
 
-|  |  | {parameter1, |
+|   |   | {parameter1, |
 |---|---|---|
-|  | parameter2, parameter3, ...} |  |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+|   | parameter2, parameter3, ...} |   |
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeParameterTemplates &Engine=PolarDB_PG &EngineVersion=16
+https://polardb.example.com/?Action=DescribeParameterTemplates &Engine=PolarDB_PG &EngineVersion=16 &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<Engine>PolarDB_PG</Engine> <EngineVersion>16</EngineVersion> <ParameterCount>1</ParameterCount> <Parameters> <TemplateRecord> <CheckingCode>[0-100]</CheckingCode> <ForceRestart>True</ForceRestart> <Factor>1</Factor> <ParameterDescription>test</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>0</ParameterValue> <ForceModify>True</ForceModify> <Unit>INT</Unit> </TemplateRecord> </Parameters> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<DescribeParameterTemplatesResponse> <Engine>PolarDB_PG</Engine> <EngineVersion>16</EngineVersion> <ParameterCount>1</ParameterCount> <Parameters> <TemplateRecord> <CheckingCode>[0-100]</CheckingCode> <ForceRestart>True</ForceRestart> <Factor>1</Factor> <ParameterDescription>test</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>0</ParameterValue> <ForceModify>True</ForceModify> <Unit>INT</Unit> </TemplateRecord> </Parameters> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </DescribeParameterTemplatesResponse>
 ```
 
 JSON format
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeParameters. |
-| DBInstanceId | String | Yes | The instance ID. |
-
-| Parameter | Type |  | Description |  |  |
-|---|---|---|---|---|---|
-| <Common response parameters> | - |  | The common response parameters. |  |  |
-| Engine | String |  | The database engine. |  |  |
-| EngineVersion | String |  | The database engine version. |  |  |
-| RunningParameters | List<DBInstanceParameter> |  | The list of active parameters. Format: {parameter1,parameter2,para meter3, ...} . |  |  |
-|  |  |  |  | {parameter1,parameter2,para |  |
-|  |  |  | meter3, ...} |  |  |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 ```json
 {"Engine": "PolarDB_PG", "EngineVersion": "16", "ParameterCount":1, "Parameters":
@@ -2641,15 +2708,31 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### DescribeParameters
+#### 1.9.2 DescribeParameters
 
 Queries the parameter settings of an instance.
 
-| ConfigParameters | List<DBInstanceParameter> | The list of parameters awaiting synchronization. Format: {parameter1,parameter2,para meter3, ...} . |  |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeParameters. |
+| DBInstanceId | String | Yes | The instance ID. |
+
+| Parameter | Type |   | Description |   |   |
+|---|---|---|---|---|---|
+| <Common response parameters> | - |   | The common response parameters. |   |   |
+| Engine | String |   | The database engine. |   |   |
+| EngineVersion | String |   | The database engine version. |   |   |
+| RunningParameters | List<DBInstanceParameter> |   | The list of active parameters. Format: {parameter1,parameter2,para meter3, ...} . |   |   |
+|   |   |   |   | {parameter1,parameter2,para |   |
+|   |   |   | meter3, ...} |   |   |
+
+| ConfigParameters | List<DBInstanceParameter> | The list of parameters awaiting synchronization. Format: {parameter1,parameter2,para meter3, ...} . |   |
 |---|---|---|---|
 
-|  | meter3, ...} |
+|   | meter3, ...} |
 |---|---|
+
+DBInstanceParameter
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -2657,28 +2740,21 @@ Queries the parameter settings of an instance.
 | ParameterValue | String | The parameter value. |
 | ParameterDescription | String | The parameter description. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui DBInstanceParameter
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeParameters &DBInstanceId=polardb-xxxxx
+https://polardb.example.com/?Action=DescribeParameters &DBInstanceId=polardb-xxxxx &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Engine>PolarDB_PG</Engine > <EngineVersion>16</EngineVersion> <RunningParameters> <DBInstanceParameter> <ParameterDescription>test</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>0</ParameterValue> </DBInstanceParameter> </RunningParameters> <ConfigParameters> <DBInstanceParameter> <ParameterDescription>test1</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>50</ParameterValue> </DBInstanceParameter> </ConfigParameters>
+<DescribeParametersResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <Engine>PolarDB_PG</Engine > <EngineVersion>16</EngineVersion> <RunningParameters> <DBInstanceParameter> <ParameterDescription>test</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>0</ParameterValue> </DBInstanceParameter> </RunningParameters> <ConfigParameters> <DBInstanceParameter> <ParameterDescription>test1</ParameterDescription> <ParameterName>fill factor</ParameterName> <ParameterValue>50</ParameterValue> </DBInstanceParameter> </ConfigParameters> </DescribeParametersResponse>
 ```
 
 JSON format
-
-| Parameter | Type | Require d | Description |
-|---|---|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 ```json
 { "ConfigParameters": {
@@ -2696,7 +2772,7 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
     "RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### ModifyParameter
+#### 1.9.3 ModifyParameter
 
 Modifies the parameters of an instance. After you submit the parameter modification request, PolarDB starts a task to apply the new parameter values to the instance. If a database restart is required for a new parameter value to take effect, PolarDB restarts the database. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is not locked. Parameter values fall into the following categories: Numeric range (1-65535): The minimum and maximum values are extracted by using regular expressions. Input parameters are validated against this range and must also be a multiple of a specific factor. Fixed values (utf8, gbk, and latin1): The valid values are extracted by using regular expressions. Input parameters are validated against these fixed values. Other: Values in this category must match a defined regular expression. Before the task is started, PolarDB performs the following parameter checks:
 1. Checks whether the parameters exist.
@@ -2708,6 +2784,9 @@ If a parameter is invalid, PolarDB returns the 400 HTTP status code and informat
 {"HttpStatusCode":400, "Code":"InvalidParameter.Format", "Message":"Specified parameter is not valid. [auto_increment_increment:a,character_set_client:41]"}
 ```
 
+| Parameter | Type | Require d | Description |
+|---|---|---|---|
+
 | Action | String | Yes | The operation that you want to perform. Set the value to ModifyParameter. |
 |---|---|---|---|
 | DBInstanceI d | String | Yes | The instance ID. |
@@ -2718,14 +2797,12 @@ If a parameter is invalid, PolarDB returns the 400 HTTP status code and informat
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ModifyeParameter &DBInstanceId=polardb-xxxxx &Parameters={"key_buffer_size":"456","character_set_client":"gbk"}
+https://polardb.example.com/?Action=ModifyeParameter &DBInstanceId=polardb-xxxxx &Parameters={"key_buffer_size":"456","character_set_client":"gbk"} &<Common request parameters>
 ```
 
 XML format
@@ -2740,7 +2817,11 @@ JSON format
 { "RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC",}
 ```
 
-### Log management
+### 1.10 Log management
+
+#### 1.10.1 DescribeSlowLogs
+
+Queries the slow log summary of a database in an instance over a period of time. This operation supports pagination.
 
 | Paramet er | Type | Required | Description |
 |---|---|---|---|
@@ -2753,15 +2834,9 @@ JSON format
 | PageSize | Integer | No | The number of entries per page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNum ber | Integer | No | The page number. Pages start from page 1. Default value: 1. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### DescribeSlowLogs
-
-Queries the slow log summary of a database in an instance over a period of time. This operation supports pagination.
-
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | The common response parameters. |
+| <Common response parameters> |   | The common response parameters. |
 | Engine | String | The database engine. |
 | StartTime | String | The beginning of the time range where the query was executed. The date follows the ISO 8601 standard in the yyyy-MM-ddZ format. The time is displayed in UTC. Example: 2025-05-30Z. |
 | EndTime | String | The end of the time range where the query was executed. The date follows the ISO 8601 standard in the yyyy-MM-ddZ format. The time is displayed in UTC. Example: 2025-06-30Z. |
@@ -2770,26 +2845,18 @@ Queries the slow log summary of a database in an instance over a period of time.
 | PageRecordCou nt | Integer | The number of SQL statements on the current page. |
 | Items | List<SQLSlow Log> | The list of slow logs. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeSlowLogs &DBInstanceId=polardb-xxxxx &StartTime=2025-05-30Z &EndTime=2025-06-30Z &SortKey= Totaxxxxx
+https://polardb.example.com/?Action=DescribeSlowLogs &DBInstanceId=polardb-xxxxx &StartTime=2025-05-30Z &EndTime=2025-06-30Z &SortKey= Totaxxxxx &<Common request parameters>
 ```
 
 XML format
 
-| Paramet er | Type | Requir ed | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeSlowLogRecords. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <Engine>PolarDB_PG</Engine> <StartTime>2025-05-30Z</StartTime> <EndTime>2025-06-30Z</EndTime> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowLog> <SQLText>update test.zxb set id=0 limit 1</SQLText> <MySQLTotalExecutionCounts>178</MySQLTotalExecutionCounts> <MySQLTotalExecutionTimes>189</MySQLTotalExecutionTimes> <TotalLogicalReadcounts>89</TotalLogicalReadcounts> <TotalPhysicalReadcounts>90</TotalPhysicalReadcounts> <ReportTime>2025-06-30Z</ReportTime> </SQLSlowLog> </Items>
+<DescribeSlowLogsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>polardb-xxxxx</DBInstanceID> <Engine>PolarDB_PG</Engine> <StartTime>2025-05-30Z</StartTime> <EndTime>2025-06-30Z</EndTime> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowLog> <SQLText>update test.zxb set id=0 limit 1</SQLText> <MySQLTotalExecutionCounts>178</MySQLTotalExecutionCounts> <MySQLTotalExecutionTimes>189</MySQLTotalExecutionTimes> <TotalLogicalReadcounts>89</TotalLogicalReadcounts> <TotalPhysicalReadcounts>90</TotalPhysicalReadcounts> <ReportTime>2025-06-30Z</ReportTime> </SQLSlowLog> </Items> </DescribeSlowLogsResponse>
 ```
 
 JSON format
@@ -2805,9 +2872,13 @@ JSON format
         "ReportTime":"2025-06-30Z" }]}}
 ```
 
-#### DescribeSlowLogRecords
+#### 1.10.2 DescribeSlowLogRecords
 
 Queries the slow log details of a database in an instance over a period of time.
+
+| Paramet er | Type | Requir ed | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeSlowLogRecords. |
 
 | DBInstan ceId | String | Yes | The instance ID. |
 |---|---|---|---|
@@ -2819,49 +2890,41 @@ Queries the slow log details of a database in an instance over a period of time.
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | The common response parameters. |
+| <Common response parameters> |   | The common response parameters. |
 | Engine | String | The database engine. |
 | TotalRecordCount | Integer | The total number of entries returned. |
 | PageNumber | Integer | The page number. |
 | PageRecordCount | Integer | The number of SQL statements on the current page. |
 | Items | List<SQLSlowRecord> | - |
 
+SQLSlowRecord
+
 | Parameter | Type | Description |
 |---|---|---|
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui SQLSlowRecord
-
-| HostAddress |  | Strin g | The IP address of the host that is used to connect to the database. |  |
+| HostAddress |   | Strin g | The IP address of the host that is used to connect to the database. |   |
 |---|---|---|---|---|
-| DBName |  | Strin g | The database name. |  |
-| SQLText |  | Strin g | The query statement. |  |
-| QueryTimes |  | Long | The execution duration of the query. Unit: seconds. |  |
-| LockTimes |  | Long | The lock duration of the query. Unit: seconds. |  |
-| ParseRowCounts |  | Long | The number of rows parsed by the SQL statement. |  |
-| ReturnRowCount s |  | Long | The number of entries returned. |  |
-| ExecutionStartTi me |  | Strin g | The beginning of the time range where the query was executed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. Example: 2025-06-11 T15:00:08Z . |  |
-|  |  |  | T15:00:08Z |  |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+| DBName |   | Strin g | The database name. |   |
+| SQLText |   | Strin g | The query statement. |   |
+| QueryTimes |   | Long | The execution duration of the query. Unit: seconds. |   |
+| LockTimes |   | Long | The lock duration of the query. Unit: seconds. |   |
+| ParseRowCounts |   | Long | The number of rows parsed by the SQL statement. |   |
+| ReturnRowCount s |   | Long | The number of entries returned. |   |
+| ExecutionStartTi me |   | Strin g | The beginning of the time range where the query was executed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. Example: 2025-06-11 T15:00:08Z . |   |
+|   |   |   | T15:00:08Z |   |
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-xxxxx &StartTime=2025-06-11 T15:00:08Z &EndTime=2025-06-11 T16:00:08Z
+https://polardb.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-xxxxx &StartTime=2025-06-11 T15:00:08Z &EndTime=2025-06-11 T16:00:08Z &<Common request parameters>
 ```
 
 XML format
 
-| Paramete r | Ty pe | Requ ired | Description |
-|---|---|---|---|
-| Action | Stri ng | Yes | The operation that you want to perform. Set the value to DescribeErrorLogs. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>rm-xxxxx</DBInstanceID> <Engine>PolarDB_PG</Engine> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowRecord> <HostAddress>192.168.0.123</HostAddress> <DBName>test</DBName> <SQLText>update test.zxb set id=0 limit 1</SQLText> <QueryTimes>123</QueryTimes> <LockTimes>12</LockTimes> <ParseRowCounts>125</ParseRowCounts> <ReturnRowCounts>1</ReturnRowCounts> <ExecutionStartTime>2025-06-11T15:00:08Z</ExecutionStartTime> </SQLSlowRecord> </Items>
+<DescribeSlowLogRecordsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <DBInstanceID>rm-xxxxx</DBInstanceID> <Engine>PolarDB_PG</Engine> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1</PageRecordCount> <Items> <SQLSlowRecord> <HostAddress>192.168.0.123</HostAddress> <DBName>test</DBName> <SQLText>update test.zxb set id=0 limit 1</SQLText> <QueryTimes>123</QueryTimes> <LockTimes>12</LockTimes> <ParseRowCounts>125</ParseRowCounts> <ReturnRowCounts>1</ReturnRowCounts> <ExecutionStartTime>2025-06-11T15:00:08Z</ExecutionStartTime> </SQLSlowRecord> </Items> </DescribeSlowLogRecordsResponse>
 ```
 
 JSON format
@@ -2879,9 +2942,13 @@ JSON format
   ExecutionStartTime:"2025-06-11T15:00:08Z"}]}}
 ```
 
-#### DescribeErrorLogs
+#### 1.10.3 DescribeErrorLogs
 
 Queries the error logs generated for an instance over a period of time.
+
+| Paramete r | Ty pe | Requ ired | Description |
+|---|---|---|---|
+| Action | Stri ng | Yes | The operation that you want to perform. Set the value to DescribeErrorLogs. |
 
 | DBInstanc eId | Stri ng | Yes | The instance ID. |
 |---|---|---|---|
@@ -2892,37 +2959,31 @@ Queries the error logs generated for an instance over a period of time.
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | TotalRecordCount | Integer | The total number of entries returned. |
 | PageNumber | Integer | The page number. |
 | PageRecordCount | Integer | The number of error logs on the current page. |
 | Items | List<ErrorLogs> | - |
+
+ErrorLogs
 
 | Parameter | Type | Description |
 |---|---|---|
 | ErrorInfo | String | The error log information. |
 | CreateTime | String | The time when the error log was generated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. Example: 2011-05-30T12:11:4Z. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to DescribeSQLCollectorPolicy. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=DescribeErrorLogs &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00Z &EndTime=2011-06-11T20:00Z
+https://polardb.example.com/?Action=DescribeErrorLogs &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00Z &EndTime=2011-06-11T20:00Z &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1<PageRecordCount> <Items> <ErrorLog> <ErrorInfo>spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required</ErrorInfo> <CreateTime>2013-06-04T15:00:00</CreateTime> </ErrorLog> </Items>
+<DescribeErrorLogsResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <TotalRecordCount>1</TotalRecordCount> <PageNumber>1</PageNumber> <PageRecordCount>1<PageRecordCount> <Items> <ErrorLog> <ErrorInfo>spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required</ErrorInfo> <CreateTime>2013-06-04T15:00:00</CreateTime> </ErrorLog> </Items> </DescribeErrorLogsResponse>
 ```
 
 JSON format
@@ -2935,17 +2996,25 @@ ational message only; no user action is required",
   CreateTime:"2013-06-04T15:00:00"}]}}
 ```
 
-#### DescribeSQLCollectorPolicy
+#### 1.10.4 DescribeSQLCollectorPolicy
 
 Checks whether the SQL collection feature is enabled for a PolarDB instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to DescribeSQLCollectorPolicy. |
 
 | DBInstanceId | String | Yes | The instance ID. |
 |---|---|---|---|
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | SQLCollectorStatu s | String | Indicates whether the SQL collection feature is enabled. Valid values: Enable and Disabled. |
+
+#### 1.10.5 ModifySQLCollectorPolicy
+
+Enables or disables the SQL collection feature for an instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2953,18 +3022,14 @@ Checks whether the SQL collection feature is enabled for a PolarDB instance.
 | DBInstanceId | Strin g | Yes | The instance ID. |
 | SQLCollector Status | Strin g | Yes | Specifies whether to enable the SQL collection feature. Valid values: Enable and Disabled. |
 
-| > Document V | ersion: | 20260630 | 11 |
-|---|---|---|---|
+For more information, see Common response parameters.
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### ModifySQLCollectorPolicy
-
-Enables or disables the SQL collection feature for an instance. For more information, see Common response parameters.
-
-#### DescribeSQLLogRecords
+#### 1.10.6 DescribeSQLLogRecords
 
 Queries the SQL audit logs of an instance.
+
+| > Document V | ersion: | 20260630 | 11 |
+|---|---|---|---|
 
 | Paramete r | Typ e | Requi red | Description |
 |---|---|---|---|
@@ -2982,14 +3047,14 @@ Queries the SQL audit logs of an instance.
 | Parameter | Type | Description |
 |---|---|---|
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | <Common response parameters> | - | For more information, see Common response parameters. |
 |---|---|---|
 | TotalRecordCount | Integer | The total number of entries returned. |
 | PageNumber | Integer | The page number. |
 | PageRecordCount | Integer | The number of SQL audit logs on the current page. |
 | Items | List<SQLRecord > | The list of SQL audit logs. |
+
+SQLRecord
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3002,22 +3067,18 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | ThreadID | String | The thread ID. |
 | ExecuteTime | String | The execution time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. Example: 2011-05-30T12:11:20Z. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui SQLRecord
-
 **Examples**
 
 **Sample requests**
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 ```
-https://polardb.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z
+https://polardb.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=polardb-xxxxx &StartTime=2011-06-11T15:00:00Z &EndTime=2013-06-05T15:00:00Z &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<PageNumber>1</PageNumber>
+<DescribeSQLLogRecordsResponse> <PageNumber>1</PageNumber>
     <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId>
     <TotalRecordCounts>1</TotalRecordCounts>
     <SQLItems>
@@ -3032,6 +3093,7 @@ XML format
         </SQLItem>
     </SQLItems>
     <ItemsCounts>1</ItemsCounts>
+</DescribeSQLLogRecordsResponse>
 ```
 
 JSON format
@@ -3042,7 +3104,11 @@ JSON format
     "TotalRecordCounts":1,
     "SQLItems":{
         "SQLItem":[
-            {
+```
+
+`{`
+
+```json
                 "ReturnRowCounts":34,
                 "TotalExecutionTimes":12,
                 "HostAddress":"192.168.xx.xx",
@@ -3050,18 +3116,19 @@ JSON format
                 "SQLText":"update test.zxb set id=0 limit 1",
                 "AccountName":"accounttest",
                 "DBName":"test"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "ItemsCounts":1
-}
 ```
 
-#### DescribeSQLLogFiles
+`}`
+
+#### 1.10.7 DescribeSQLLogFiles
+
+Queries a list of SQL audit log files of an instance.
 
 | Parameter | Type | Require d | Description |
 |---|---|---|---|
@@ -3070,11 +3137,13 @@ JSON format
 
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | TotalRecordCount | Interger | The total number of entries returned. |
 | PageNumber | Interger | The page number. |
 | PageRecordCount | Interger | The number of entries per page. |
 | Items | List<LogFile> | The list of SQL audit log files. |
+
+Parameters in LogFile
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -3082,13 +3151,17 @@ JSON format
 | DBInstanceId | String | The instance ID. |
 | LogStatus | String | The status of the SQL audit log file. Valid values: Success: The SQL audit log file was generated. Failed: The SQL audit log file failed to be generated. Generating: The SQL audit log file is being generated. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui Queries a list of SQL audit log files of an instance. Parameters in LogFile
-
 | LogStartTime | String | The time when the first SQL statement recorded in the audit log file was executed. |
 |---|---|---|
 | LogEndTime | String | The time when the last SQL statement recorded in the audit log file was executed. |
 | LogDownloadU RL | String | The URL for downloading the SQL audit log file. If no download URL is available, an empty string is returned. |
 | LogSize | Long | The size of the SQL audit log file. Unit: bytes. |
+
+### 1.11 Data migration
+
+#### 1.11.1 CreateUploadPathForSQLServer
+
+Creates a username and a password for the file server and generates the upload path. You can then use these credentials to upload your data files to the specified path. After the upload is complete, call the data import operation to migrate external data.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3102,14 +3175,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | InternetFtpServer | String | The IP address of the file server on the public network. |
 | InternetPort | Integer | The port of the file server on the public network. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-### Data migration
-
-#### CreateUploadPathForSQLServer
-
-Creates a username and a password for the file server and generates the upload path. You can then use these credentials to upload your data files to the specified path. After the upload is complete, call the data import operation to migrate external data.
-
 | IntranetFtpServer | String | The IP address of the file server on the internal network. |
 |---|---|---|
 | IntranetPort | Integer | The port of the file server on the internal network. |
@@ -3117,20 +3182,18 @@ Creates a username and a password for the file server and generates the upload p
 | Password | String | The password of the file server. |
 | FileName | String | The file name, with the extension. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action= CreateUploadPathForSQLServer &DBInstanceId=polardb-xxxxx &DBName=testdb01
+https://polardb.example.com/?Action= CreateUploadPathForSQLServer &DBInstanceId=polardb-xxxxx &DBName=testdb01 &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <InternetFtpServer>10.230.239.1</InternetFtpServer> <InternetPort>3021</InternetPort> <IntranetFtpServer></IntranetFtpServer> <UserName>userxxx</UserName> <Password>pwxxxxx</Password> <FileName>testdb01_xxxxx.bak</FileName>
+<CreateUploadPathForSQLServerResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> <InternetFtpServer>10.230.239.1</InternetFtpServer> <InternetPort>3021</InternetPort> <IntranetFtpServer></IntranetFtpServer> <UserName>userxxx</UserName> <Password>pwxxxxx</Password> <FileName>testdb01_xxxxx.bak</FileName> </CreateUploadPathForSQLServerResponse>
 ```
 
 JSON format
@@ -3145,9 +3208,9 @@ JSON format
  "FileName":"testdb01_xxxxx.bak"}
 ```
 
-#### ImportDatabaseBetweenInstances
+#### 1.11.2 ImportDatabaseBetweenInstances
 
-Migrates data from a PolarDB instance. This operation is supported only for dedicated PolarDB for MySQL instances.
+Migrates data from a PolarDB instance. This operation is supported only for dedicated PolarDB for MySQL instances. PolarDB for MySQL instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The source instance is in the running state. The databases to be migrated in the source instance are in the running state. The destination instance is not locked. The reserved storage space of the destination instance is greater than the space calculated by the following formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Databases to be migrated exist in both the source and destination instances and are activated.
 
 | Parameter | Type | Requi red | Description |
 |---|---|---|---|
@@ -3156,37 +3219,32 @@ Migrates data from a PolarDB instance. This operation is supported only for dedi
 | SourceDBInstan ceId | String | Yes | The ID of the source instance. It cannot be the same as that of the destination instance. |
 | DBInfo | String | Yes | The information about the databases to be migrated. Specify this parameter in the JSON format. For PolarDB for MySQL instances, the parameter value is an array. Example: {"DBNames":["mydb","mydb2"]}. The names of the source and destination databases must be the same. In this example, data is migrated from the mydb and mydb2 databases. These databases must exist in both the source and destination instances. |
 
+DBInfo
+
 | Paramet er | Type | Required | Description |
 |---|---|---|---|
 | DBNames | List | Yes | The names of the databases to be migrated. Example: ["mydb","mydb2"]. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui PolarDB for MySQL instances support batch database migration. During migration, the source instance status changes to Migrating and the destination instance status changes to Importing Data. Database migration is performed between different instances that belong to the same user. Before you call this operation, make sure that the following requirements are met: The source instance is in the running state. The databases to be migrated in the source instance are in the running state. The destination instance is not locked. The reserved storage space of the destination instance is greater than the space calculated by the following formula: Space occupied by the destination instance - Database space of the destination instance + Database space of the source instance. Databases to be migrated exist in both the source and destination instances and are activated. DBInfo
-
 | Parameter | Type | Description |
 |---|---|---|
-| <Common response parameters> |  | For more information, see Common response parameters. |
+| <Common response parameters> |   | For more information, see Common response parameters. |
 | ImportId | Integer | The destination instance ID. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Action | String | Yes | The operation that you want to perform. Set the value to CancelImport. |
-| DBInstanceId | String | Yes | The instance ID. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=polardb-xxxxx &SourceDBInstanceId=polardb-xxxxx &{"DBNames":["mydb","mydb2"]}
+https://polardb.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=polardb-xxxxx &SourceDBInstanceId=polardb-xxxxx &{"DBNames":["mydb","mydb2"]} &<Common request parameters>
 ```
 
 XML format
 
 ```xml
+<ImportDatabaseBetweenInstancesResponse>
  <ImportId>2122321</ImportId>
  <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+ </ImportDatabaseBetweenInstancesResponse>
 ```
 
 JSON format
@@ -3196,9 +3254,14 @@ JSON format
  RequestId":"1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC"}
 ```
 
-#### CancelImport
+#### 1.11.3 CancelImport
 
 Cancels a migration from a PolarDB for MySQL instance. Migrations from PolarDB for MySQL instances can be canceled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Action | String | Yes | The operation that you want to perform. Set the value to CancelImport. |
+| DBInstanceId | String | Yes | The instance ID. |
 
 | ImportId | Integer | Yes | The migration task ID. |
 |---|---|---|---|
@@ -3207,20 +3270,18 @@ Cancels a migration from a PolarDB for MySQL instance. Migrations from PolarDB f
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Examples**
 
 **Sample requests**
 
 ```
-https://polardb.example.com/?Action=CancelImport &DBInstanceId=polardb-xxxxx &ImportId=127562
+https://polardb.example.com/?Action=CancelImport &DBInstanceId=polardb-xxxxx &ImportId=127562 &<Common request parameters>
 ```
 
 XML format
 
 ```xml
-<RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId>
+<CancelImportResponse> <RequestId>1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC</RequestId> </CancelImportResponse>
 ```
 
 JSON format
@@ -3229,9 +3290,9 @@ JSON format
 {"RequestId": "1E3D5A1E0-67CA-43DA-24BC-EAF2D5A1E4DC" }
 ```
 
-### Tag management
+### 1.12 Tag management
 
-#### AddTagsToResource
+#### 1.12.1 AddTagsToResource
 
 Adds existing or newly created tags to instances. Each tag consists of a tag key and a tag value. The tag key cannot be blank, but the tag value can. The tag keys and tag values cannot start with aliyun. The tag keys and tag values are not case-sensitive. The maximum length of a tag key is 64 characters and the maximum length of a tag value is 128 characters. Each instance can have a maximum of 10 tags. Tag keys must be unique for each tag added to an instance. If tags with duplicate tag keys are added to an instance, the last tag added takes precedence.
 
@@ -3246,15 +3307,13 @@ Adds existing or newly created tags to instances. Each tag consists of a tag key
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
+#### 1.12.2 DescribeTags
+
+Queries the tags that are added to a PolarDB instance within an account. If an instance ID is specified, all tags added to the instance are returned, regardless of other filter criteria. If only a tag key is specified, all matching tags are returned. If both a tag key and a tag value are specified, only tags that match both criteria are returned.
+
 | Paramete r | Type | Required | Description |
 |---|---|---|---|
 | Action | String | Yes | The operation that you want to perform. Set the value to DescribeTags. |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### DescribeTags
-
-Queries the tags that are added to a PolarDB instance within an account. If an instance ID is specified, all tags added to the instance are returned, regardless of other filter criteria. If only a tag key is specified, all matching tags are returned. If both a tag key and a tag value are specified, only tags that match both criteria are returned.
 
 | RegionId | String | Yes | The region ID. |
 |---|---|---|---|
@@ -3266,21 +3325,23 @@ Queries the tags that are added to a PolarDB instance within an account. If an i
 | <Common response parameters> | - | For more information, see Common response parameters. |
 | Items | List<TagInfos> | The array that consists of tag data. |
 
+TagInfos
+
 | Parameter | Type | Description |
 |---|---|---|
 | TagKey | String | The tag key. |
 | TagValue | String | The tag value. |
 | DBInstanceIds | List<DBInstanceId> | The ID of the instance to which the tag is added. |
 
+DBInstanceId
+
 | Parameter | Type | Description |
 |---|---|---|
 | DBInstanceId | String | The instance ID. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui TagInfos DBInstanceId
+#### 1.12.3 RemoveTagsFromResource
 
-#### RemoveTagsFromResource
-
-You can call this operation to remove tags from an instance. This operation must meet the following requirements:
+You can call this operation to remove tags from an instance. This operation must meet the following requirements: A maximum of 10 tags can be removed in a single request. If a tag is removed from all instances to which the tag is added, the tag is automatically deleted. If the TagKey of a key is provided without a TagValue, all tags matching the TagKey are removed.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3293,12 +3354,7 @@ You can call this operation to remove tags from an instance. This operation must
 |---|---|---|
 | <Common response parameters> | - | For more information, see Common response parameters. |
 
-| Resource type | ARN |
-|---|---|
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui A maximum of 10 tags can be removed in a single request. If a tag is removed from all instances to which the tag is added, the tag is automatically deleted. If the TagKey of a key is provided without a TagValue, all tags matching the TagKey are removed.
-
-### RAM authorization
+### 1.13 RAM authorization
 
 **Use RAM to authorize PolarDB resources**
 
@@ -3308,8 +3364,17 @@ All PolarDB instances that are created within an Apsara Stack tenant account are
 
 For PolarDB, only instances can be authorized in RAM. The following table describes the Alibaba Cloud Resource Name (ARN) format in which resources are specified in authorization policies when you use RAM to authorize access to the resources.
 
+| Resource type | ARN |
+|---|---|
+
 | Instance | acs:polardb:$regionid:$accountid:dbinstance/$dbinstanceid acs:polardb:$regionid:$accountid:dbinstance/ acs:polardb:::dbinstance/ |
 |---|---|
+
+Set the $regionid field to a region ID or an asterisk (*). Set the $dbinstanceid field to an instance ID or an asterisk (*). Set the $account-id field to the numerical ID of your Apsara Stack tenant account, which can be replaced by an asterisk (*).
+
+**Operations that can be authorized in RAM**
+
+In RAM, you can authorize a RAM user to call the following operations on PolarDB resources.
 
 | Operation1 | Operation2 |
 |---|---|
@@ -3328,12 +3393,6 @@ For PolarDB, only instances can be authorized in RAM. The following table descri
 | ResetAccountPassword | GrantAccountPrivilege |
 | RevokeAccountPrivilege | DescribeAccounts |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui Set the $regionid field to a region ID or an asterisk (*). Set the $dbinstanceid field to an instance ID or an asterisk (*). Set the $account-id field to the numerical ID of your Apsara Stack tenant account, which can be replaced by an asterisk (*).
-
-**Operations that can be authorized in RAM**
-
-In RAM, you can authorize a RAM user to call the following operations on PolarDB resources.
-
 | DeleteAccount | ModifyAccountDescription |
 |---|---|
 | CreateBackup | DescribeBackups |
@@ -3345,14 +3404,6 @@ In RAM, you can authorize a RAM user to call the following operations on PolarDB
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
 | DescribeOptimizeAdviceOnMissPK | DescribeOptimizeAdviceOnExcessIndex |
 
-| Operation | Authentication rule |
-|---|---|
-| CreateDBInstance | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-| DeleteDBInstance | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-| DescribeDBInstances | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 **Note**
 
 All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
@@ -3360,6 +3411,12 @@ All operations except DescribeRegions and DescribeParameterTemplates can be auth
 **RAM authentication rules of API operations**
 
 When you call PolarDB API operations to access resources as a RAM user, PolarDB checks with RAM whether the RAM user is granted the required permissions. The permissions to be checked are determined by the resources that are used by each PolarDB API operation. The following table describes the authentication rules for each API operation.
+
+| Operation | Authentication rule |
+|---|---|
+| CreateDBInstance | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
+| DeleteDBInstance | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
+| DescribeDBInstances | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
 | SwitchDBInstanceNetType | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
@@ -3378,8 +3435,6 @@ When you call PolarDB API operations to access resources as a RAM user, PolarDB 
 | DescribeDBInstancePerformance | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | DescribeSlowLogRecords | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | DescribeBinlogFiles | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
 | DescribeSQLLogRecords | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
@@ -3395,8 +3450,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | ModifySecurityIps | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | UpgradeDBInstanceEngineVersion | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | CreateDatabase | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | DescribeDatabases | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
@@ -3415,10 +3468,14 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | DescribeOptimizeAdviceOnExcessIndex | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 | DescribeOptimizeAdviceByDBA | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | ModifyeParameter | acs:polardb:$regionid:$accountid:dbinstance/$dbinstance id |
 |---|---|
+
+### 1.14 Appendix
+
+#### 1.14.1 Client error codes
+
+##### 1.14.1.1 Common errors
 
 | Error code | Description | HTTP status code |
 |---|---|---|
@@ -3441,19 +3498,13 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | Forbidden.RiskControl | This operation is forbidden by Aliyun Risk Control system. | 403 |
 | InsufficientBalance | Your account does not have enough balance. | 400 |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-### Appendix
-
-#### Client error codes
-
-##### Common errors
-
 | Forbidden.Authentication | This operation is forbidden by Aliyun Realname Authentication system. | 403 |
 |---|---|---|
 | Invalid<parameter name>.ValueNotSupport ed | The specified parameter "parameter name" is not valid. | 400 |
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
+
+##### 1.14.1.2 Specific errors
 
 | Error code | Error message | HTTP status code |
 |---|---|---|
@@ -3467,10 +3518,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | RegionUnauthorized | There is no authority to create instance in the specified region. | 403 |
 | QuotaExceeded.CreateInstance | The quota of create instance exceeds. | 403 |
 | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist in our records. | 404 |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-##### Specific errors
 
 | MissingParameter | The input parameters "DBInstanceClass" and "DBInstanceStorage" all blank or no change. | 400 |
 |---|---|---|
@@ -3488,8 +3535,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | OperationDenied.MasterDBInstance State | The operation is not permitted due to status of master instance. | 403 |
 | QuotaExceeded.DBName | The quota of db exceeds. | 400 |
 | InvalidDBName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | InvalidParameter.Keyword | The specified parameter "DBName" is keyword | 400 |
 |---|---|---|
@@ -3509,8 +3554,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | OperationDenied.IncorrectTaskStat us | The operation is not permitted due to status of import. | 403 |
 | InvalidAccountName.keyword | The specified parameter "AccountName" is a keyword. | 400 |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | InvalidAccountName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
 |---|---|---|
 | QuotaExceeded.AccountName | The quota of account exceeds. | 403 |
@@ -3528,8 +3571,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | OperationDenied.TempDBInstanceE xists | The operation is not permitted due to temp instance exist. | 403 |
 | Forbidden.Authentication | The operation is forbidden by Aliyun Realname Authentication System. | 403 |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | IncorrectDBInstanceConnType | Current DB instance conn type does not support this operation. | 404 |
 |---|---|---|
 | IncorrecttVpcId.Mismatch | The specified parameter "VpcId " is not valid. | 400 |
@@ -3546,8 +3587,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | InvalidDBinstanceNetType.ValueNot Support | The specified parameter "DBinstanceNetType" is not valid. | 400 |
 | InvalidDBInstanceType.ValueNotSu pport | The specified parameter "DBInstanceType" is not valid. | 400 |
 | InvalidEngineVersion.Malformed | The specified parameter "EngineVersion" is not valid. | 400 |
-
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 | InvalidInstanceNetworkType.ValueN otSupported | The specified parameter "InstanceNetworkType" is not valid. | 400 |
 |---|---|---|
@@ -3567,8 +3606,6 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | OperationDenied.Switch | Specified instance cannot be switched. | 400 |
 | OperationDenied.Switch | Specified instance cannot be switched to VPC. | 403 |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | OperationDenied.SwitchToVPC | Specified instance cannot be switched to VPC. | 403 |
 |---|---|---|
 | OperationDenied | The resource is out of usage. | 403 |
@@ -3589,16 +3626,18 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | PARAMETER ERROR _ | The vpc request parameter may not be null. | 406 |
 | PARAMETER MUST NOT NULL _ _ _ | The parameter must not be null. | 406 |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
 | PublicConnectionExists | PublicConnection exists. | 403 |
 |---|---|---|
 | bpcIzNoNotEqualsRdsMultIzNo | Specified vpc IzNo not equal rds IzNo. | 400 |
+
+#### 1.14.2 Error codes on the server
 
 | Error code | Description | HTTP status code |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
+
+#### 1.14.3 Instance states
 
 | State | Description |
 |---|---|
@@ -3613,18 +3652,18 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | GuardDBInstanceCreating | A disaster recovery instance is being created. |
 | Restoring | The instance is being restored from a backup. |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### Error codes on the server
-
-#### Instance states
-
 | Importing | Data is being imported into the instance. |
 |---|---|
 | ImportingFromOthers | Data is being imported into the instance from another PolarDB instance. |
 | DBInstanceNetTypeChanging | The network type is being switched between the public network and internal network. |
 | GuardSwitching | The instance is undergoing a switchover for disaster recovery. |
 | INS CLONING _ | The instance is being cloned. |
+
+#### 1.14.4 Character set tables
+
+This topic describes character sets that are supported by PolarDB.
+
+**Character sets supported by PolarDB for PostgreSQL**
 
 | Character set | Character set | Character set |
 |---|---|---|
@@ -3639,24 +3678,14 @@ ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Develop
 | gbk | latin6 | win1256 |
 | gb18030 | latin7 | win1257 |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
-
-#### Character set tables
-
-This topic describes character sets that are supported by PolarDB.
-
-**Character sets supported by PolarDB for PostgreSQL**
-
 | koi8r | latin8 | win1258 |
 |---|---|---|
-| koi8u | latin9 |  |
-| iso 8859 5 _ _ | latin10 |  |
+| koi8u | latin9 |   |
+| iso 8859 5 _ _ | latin10 |   |
 
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+## 2 SDK reference
 
-## SDK reference
-
-### Obtain the SDK source code
+### 2.1 Obtain the SDK source code
 
 You can use SDK tools to customize SDK for a specific programming language.
 
@@ -3671,13 +3700,13 @@ i. In the address bar of the web browser, enter the URL of the Apsara Uni-manage
 2. Log in to the Apsara ASAPI Management platform. In the left-side navigation pane, click
 **Products > Opsapi** to log in to the **Apsara ASAPI Management platform**.
 3. Download the SDK source code.
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui i. In the left-side navigation pane, choose **Versions > SDK Tools**. ii. Click **Customize SDK** in the upper-right corner. iii. In the **Customize Apsara Stack SDK** dialog box that appears, select an Apsara Stack version, a service name, a service version, an SDK version, an API version, and an SDK language. iv. After you complete the configuration, click **Create SDK**. v. Click **Download** to download the SDK.
+i. In the left-side navigation pane, choose **Versions > SDK Tools**. ii. Click **Customize SDK** in the upper-right corner. iii. In the **Customize Apsara Stack SDK** dialog box that appears, select an Apsara Stack version, a service name, a service version, an SDK version, an API version, and an SDK language. iv. After you complete the configuration, click **Create SDK**. v. Click **Download** to download the SDK.
 
-### SDK for Java
+### 2.2 SDK for Java
 
-#### Use the SDK
+#### 2.2.1 Use the SDK
 
-##### Use CommonRequest to call API operations
+##### 2.2.1.1 Use CommonRequest to call API operations
 
 If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call all API operations.
 
@@ -3689,11 +3718,14 @@ and install SDKs of Apsara Stack services.
 2. Easy to use: You can call the newly released API operations of an Apsara Stack service
 without the need to update the SDK for the service.
 3. Fast iteration.
-If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of the parameters from the API references of cloud services. domain: the endpoint of a service. ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui Version: the version of the API. The version is in the YYYY-MM-DD format. You can obtain the API version from the common parameters in the API references of cloud services. Action: the name of the API operation that you want to call. You must obtain the value of the **Action** parameter and use `request.ApiName = "` `<Action>"` to specify the name of the operation. For example, to use CommonRequest to call the RunInstances operation, you must specify the operation name by using `request.ApiName = "RunInstances"` . You must obtain the value of the **PathPattern** parameter and use `request.PathPattern =` `"<PathPattern>"` to specify the RESTful path. For example, the **PathPattern** parameter of the API operation that is used to query all cluster instances is set to `/clusters` . When you initiate a CommonRequest request, you must specify the RESTful path by using `request.PathPattern = "/clusters"` .
+
+**Use CommonRequest**
+
+If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of the parameters from the API references of cloud services. domain: the endpoint of a service. Version: the version of the API. The version is in the YYYY-MM-DD format. You can obtain the API version from the common parameters in the API references of cloud services. Action: the name of the API operation that you want to call. You must obtain the value of the **Action** parameter and use `request.ApiName = "` `<Action>"` to specify the name of the operation. For example, to use CommonRequest to call the RunInstances operation, you must specify the operation name by using `request.ApiName = "RunInstances"` . You must obtain the value of the **PathPattern** parameter and use `request.PathPattern =` `"<PathPattern>"` to specify the RESTful path. For example, the **PathPattern** parameter of the API operation that is used to query all cluster instances is set to `/clusters` . When you initiate a CommonRequest request, you must specify the RESTful path by using `request.PathPattern = "/clusters"` .
 
 **Example: Call an RPC API operation**
 
-The following sample code shows how to use CommonRequest to call DescribeDBInstanceAttribute: ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+The following sample code shows how to use CommonRequest to call DescribeDBInstanceAttribute:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -3720,14 +3752,13 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Example: Call a RESTful API operation**
 
-The following sample code shows how to use CommonRequest to call the API operation to query all cluster instances: ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+The following sample code shows how to use CommonRequest to call the API operation to query all cluster instances:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
@@ -3752,22 +3783,25 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
-### SDK for Python
+`}` `}` `}`
 
-#### Use the SDK
+### 2.3 SDK for Python
 
-##### Use CommonRequest to call API operations
+#### 2.3.1 Use the SDK
+
+##### 2.3.1.1 Use CommonRequest to call API operations
 
 If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call all API operations.
 
 **Characteristics of CommonRequest calling**
 
-The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui To initiate a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API document of each product. Domain: the service address of a product Version: the version of the API, which is in the format of YYYY-MM-DD You can obtain the API version from the common parameters in the API document of each product. API information: the name of the API to be called. You must obtain the value of the **Action** parameter and use `request.ApiName = "` `<Action>"` to specify the API name. Take the RunInstances API as an example. You must use `request.ApiName =` `"RunInstances"` to specify the API name when initiating a CommonRequest request. You must obtain the value of the **PathPattern** parameter and use `request.PathPattern =` `"<PathPattern>"` to specify the RESTful path. For example, if the **PathPattern** value of the GetClusterList API is `/clusters` , you must use `request.PathPattern = "/clusters"` to specify the RESTful path when initiating a CommonRequest request.
+The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration
+
+**Use CommonRequest**
+
+To initiate a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API document of each product. Domain: the service address of a product Version: the version of the API, which is in the format of YYYY-MM-DD You can obtain the API version from the common parameters in the API document of each product. API information: the name of the API to be called. You must obtain the value of the **Action** parameter and use `request.ApiName = "` `<Action>"` to specify the API name. Take the RunInstances API as an example. You must use `request.ApiName =` `"RunInstances"` to specify the API name when initiating a CommonRequest request. You must obtain the value of the **PathPattern** parameter and use `request.PathPattern =` `"<PathPattern>"` to specify the RESTful path. For example, if the **PathPattern** value of the GetClusterList API is `/clusters` , you must use `request.PathPattern = "/clusters"` to specify the RESTful path when initiating a CommonRequest request.
 
 **Example: Call an RPC API operation**
 
@@ -3777,12 +3811,12 @@ The following sample code shows how Python 2.x uses CommonRequest to call Descri
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('polardb-xxxxx.xxx.com') request.set_version('2024-01-30') request.set_action_name('DescribeDBInstanceAttribute')
 # or:
 # request = CommonRequest(domain='polardb.aliyuncs.com', version='2024-01-30', action_n
-request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
+ame='DescribeDBInstanceAttribute') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
 **Example: Call a RESTful API operation**
 
-The following sample code shows how Python 2.x uses CommonRequest to call the API operation to query all cluster instances: ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+The following sample code shows how Python 2.x uses CommonRequest to call the API operation to query all cluster instances:
 
 ```bash
 from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest client = AcsClient('{your_access_key_id}', '{your_access_key_secret}', '{your_region_id}') request = CommonRequest() request.set_domain('polardb-xxxxx.xxx.com') request.set_version('2024-01-30') request.set_uri_pattern('/clusters')
@@ -3791,9 +3825,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 ern='/clusters') response = client.do_action_with_exception(request)
 ```
 
-### SDK for PHP
+### 2.4 SDK for PHP
 
-#### Getting started
+#### 2.4.1 Getting started
 
 PolarDB SDK for PHP allows you to access PolarDB without performing complex programming operations. This topic describes how to obtain and use PolarDB SDK for PHP.
 
@@ -3801,6 +3835,9 @@ PolarDB SDK for PHP allows you to access PolarDB without performing complex prog
 
 An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained. For more information about how to obtain and view your AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. For more information about how to obtain the endpoint of PolarDB, see Obtain an endpoint. PolarDB SDK for PHP is compatible with PHP 5.3, 5.4, 5.5, 5.6, 7.0, and 7.1. You can run the
 **php -v** command to obtain your PHP version number.
+
+**Install PolarDB SDK for PHP**
+
 To install PolarDB SDK for PHP, perform the following steps:
 1. Download the source code package of PolarDB SDK for PHP from the Apsara Stack official
 website.
@@ -3811,12 +3848,13 @@ For example, if the source code package is downloaded to `/path/to/aliyun-openap
 require_once '/path/to/aliyun-openapi-php-sdk/aliyun-php-sdk-core/Config.php';
 ```
 
+**Use PolarDB SDK for PHP**
+
 To use PolarDB SDK for PHP, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 When you create and initialize a DefaultAcsClient instance, you must provide the values of the **Region ID**, ****************, and ******************** parameters.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and manage the response or exceptions.
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
 ```bash
 <?php use PolarDB\Request\V20140526\DescribeDBInstanceAttributeRequest;
@@ -3825,7 +3863,12 @@ $clientProfile = DefaultProfile::getProfile(
     "<your-region-id>",                   # Your region ID.
     "<your-access-key-id>",               # Your AccessKey ID.
     "<your-access-key-secret>"            # Your AccessKey secret.
-); $client = new DefaultAcsClient($clientProfile);
+```
+
+);
+
+```bash
+$client = new DefaultAcsClient($clientProfile);
 # Set the endpoint of the service.
 $profile->endpoint ="your-region-id", "your-region-id", "product", "endpoint";
 # Create an API request and configure its parameters.
@@ -3838,12 +3881,11 @@ try {
     print "Error: " . $e->getErrorCode() . " Message: " . $e->getMessage() . "\n";
 } catch(ClientException $e) {
     print "Error: " . $e->getErrorCode() . " Message: " . $e->getMessage() . "\n";
-}
 ```
 
-?>
+`}` ?>
 
-### SDK for C#
+### 2.5 SDK for C#
 
 **Environment preparations**
 
@@ -3859,9 +3901,8 @@ Download the source code of SDK for C# from https://github.com/aliyun/aliyun-ope
 2. Right-click your Visual Studio project and choose **Add Reference > Browse**. If you are
 using MonoDevelop, follow the MonoDevelop instructions to import the DLL file.
 3. Select the DLL file and click **OK**. Then, you can use SDK for C# in your project.
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 
-## Obtain an endpoint
+## 3 Obtain an endpoint
 
 You can obtain the endpoint of PolarDB in the Apsara Uni-manager Operations Console.
 
@@ -3895,11 +3936,10 @@ Apsara Infrastructure Management Framework page.
 **"http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?**
 
 **c.sr.service_registration"** to obtain JSON data.
-ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
 7. Find the endpoint of PolarDB based on the service ID (polardb-yaochi) and key value (polard
-b.openapi.endpoint) of PolarDB. ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/ Secondary Edition) Developer Gui
+b.openapi.endpoint) of PolarDB.
 
-## Obtain an AccessKey pair
+## 4 Obtain an AccessKey pair
 
 You can obtain an AccessKey pair in the Apsara Uni-manager Management Console.
 

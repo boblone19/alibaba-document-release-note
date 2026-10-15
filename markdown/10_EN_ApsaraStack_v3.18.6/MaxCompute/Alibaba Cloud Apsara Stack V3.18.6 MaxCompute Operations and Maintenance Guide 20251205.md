@@ -3,14 +3,119 @@ title: "MaxCompute Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20251205"
 pdf_pages: 174
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 MaxCompute Operations and Maintenance Guide 20251205.pdf"
+source_pdf: "656bc7f88b8ecaf9_Alibaba Cloud Apsara Stack V3.18.6 MaxCompute Operations and Maintenance Guide 20251205.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20MaxCompute%20Operations%20and%20Maintenance%20Guide%2020251205.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # MaxCompute Operations and Maintenance Guide
 
-## Concepts and architecture
+## Table of Contents
+
+- 1 Concepts and architecture
+- 2 O&M commands and tools
+  - 2.1 Before you start
+  - 2.2 odpscmd commands
+  - 2.3 Tunnel commands
+  - 2.4 LogView tool
+    - 2.4.1 Prerequisites
+    - 2.4.2 Overview
+    - 2.4.3 Preliminary knowledge of LogView
+    - 2.4.4 LogView usage examples
+  - 2.5 Apsara Big Data Manager
+- 3 Routine O&M
+  - 3.1 Manage service configurations
+  - 3.2 Perform routine inspections
+  - 3.3 Shut down a chunk server for maintenance and clone the chunk server
+  - 3.4 Shut down a chunk server for maintenance without compromising the system
+  - 3.5 Adjust the virtual resources of Apsara Distributed Operating System in MaxCompute
+  - 3.6 Restart MaxCompute services
+- 4 O&M using Apsara Bigdata Manager
+  - 4.1 Log in to the ABM console
+  - 4.2 Monitoring
+    - 4.2.1 Health
+    - 4.2.2 Reports
+    - 4.3.1 Business O&M
+      - 4.3.1.1 Business O&M features and page
+      - 4.3.1.2 Project management
+        - 4.3.1.2.1 Manage projects
+        - 4.3.1.2.2 View project details
+        - 4.3.1.2.3 Encrypt data
+        - 4.3.1.2.4 Grant access permissions on the metadata warehouse
+        - 4.3.1.2.5 Migrate projects
+      - 4.3.1.3 Manage quota groups
+      - 4.3.1.4 Job management
+        - 4.3.1.4.1 Manage job snapshots
+      - 4.3.1.5 Business optimization
+        - 4.3.1.5.1 Merge small files
+        - 4.3.1.5.2 Compress idle files
+        - 4.3.1.5.3 Analyze MaxCompute resources
+      - 4.3.1.6 MaxCompute zone-disaster recovery
+    - 4.3.2 Service O&M
+      - 4.3.2.1 Control service O&M
+        - 4.3.2.1.1 O&M features and page
+        - 4.3.2.1.2 Overview
+        - 4.3.2.1.3 Control server roles
+        - 4.3.2.1.4 Manage configurations
+        - 4.3.2.1.5 View the information about the metadata repository
+        - 4.3.2.1.6 Stop or start a service role
+        - 4.3.2.1.7 Start AdminConsole
+        - 4.3.2.1.8 Collect service logs
+        - 4.3.2.1.9 Change the number of control nodes
+      - 4.3.2.2 Job Scheduler O&M
+        - 4.3.2.2.1 O&M features and page
+        - 4.3.2.2.2 Overview
+        - 4.3.2.2.3 MaxCompute Fuxi server role
+        - 4.3.2.2.4 MaxCompute Fuxi service compute nodes
+        - 4.3.2.2.5 Enable and disable SQL acceleration
+        - 4.3.2.2.6 Restart a master node of Job Scheduler
+      - 4.3.2.3 Apsara Distribute File System O&M
+        - 4.3.2.3.1 O&M features and page
+        - 4.3.2.3.2 Overview
+        - 4.3.2.3.3 Manage service roles
+        - 4.3.2.3.4 Apsara Distributed File System storage
+        - 4.3.2.3.5 Change the primary master node of Apsara Distributed File System
+        - 4.3.2.3.6 Run a checkpoint on a master node of Apsara Distributed File System
+        - 4.3.2.3.7 Clear the recycle bin of Apsara Distributed File System
+        - 4.3.2.3.8 Enable or disable data rebalancing for Apsara Distributed File System
+      - 4.3.2.4 Tunnel service
+        - 4.3.2.4.1 O&M features and page
+        - 4.3.2.4.2 Overview
+        - 4.3.2.4.3 MaxCompute tunnel service roles
+        - 4.3.2.4.4 Traffic analysis
+        - 4.3.2.4.5 Manage configurations
+      - 4.3.2.5 MaxCompute replication service
+    - 4.3.3 Cluster O&M
+      - 4.3.3.1 O&M features and entry
+      - 4.3.3.2 Overview
+      - 4.3.3.3 Manage cluster health checks
+      - 4.3.3.4 Servers
+      - 4.3.3.5 Scale out or in a MaxCompute cluster
+    - 4.3.4 Host O&M
+      - 4.3.4.1 O&M features and page
+      - 4.3.4.2 Overview
+      - 4.3.4.3 Manage service roles
+  - 4.4 Management
+    - 4.4.1 Management overview
+    - 4.4.2 Job services
+      - 4.4.2.1 Overview
+      - 4.4.2.2 Enable or disable a cron job
+      - 4.4.2.3 Manually run a job
+      - 4.4.2.4 View job execution history
+    - 4.4.3 Health management
+      - 4.4.3.1 Monitoring configuration
+      - 4.4.3.2 Inspection management
+    - 4.4.4 Operational audit
+- 5 Deep inspection
+  - 5.1 Overview
+  - 5.2 Inspect clusters
+  - 5.3 MaxCompute risk inspection
+  - 5.4 Log on to MaxCompute AG
+- 6 Common issues and solutions
+  - 6.1 Query and allocate resources in a MaxCompute cluster
+  - 6.2 Common issues and data skew troubleshooting
+
+## 1 Concepts and architecture
 
 The following figure shows the architecture of MaxCompute. The architecture and descriptions are for reference only. The actual service that is released and the features that are updated prevail. Figure 1: MaxCompute architecture indicates the basic features of MaxCompute. indicates the enhanced features of MaxCompute. indicates the features that are provided by external systems.
 
@@ -49,13 +154,13 @@ system process. A worker can be reused by multiple Fuxi instances, but a worker 
 
 Instance ID: the unique identifier of a MaxCompute job. It is commonly used for troubleshooting. You can construct the LogView component for the current instance based on the project name and instance ID. Service master or job master: a master node of the service or job type. A service master or job master is responsible for requesting and scheduling resources, creating work plans for workers, and monitoring workers across their entire lifecycles. The storage and computing layer of MaxCompute is a core component of the cloud computing platform developed by Alibaba Cloud. As the kernel of Apsara Distributed Operating System, this component runs on compute clusters that are independent of control clusters. In the preceding architecture, major modules in the kernel of Apsara Distributed Operating System are displayed.
 
-## O&M commands and tools
+## 2 O&M commands and tools
 
-### Before you start
+### 2.1 Before you start
 
 Before using MaxCompute O&M commands and tools, you must be aware of the following information: During the MaxCompute O&M process, the default account is admin. You must run all commands as an admin user. You must use your admin account and sudo to run commands that require sudo privileges.
 
-### odpscmd commands
+### 2.2 odpscmd commands
 
 **Open the command execution window**
 
@@ -100,7 +205,7 @@ The following table describes common commands. Table 1. Common commands
 | show | Views information about items such as tables and partitions. |
 | purge | Moves data from the MaxCompute recycle bin to the recycle bin of Apsara Distributed File System. purge table <tablename>: Deletes a single table from the recycle bin. purge all: Deletes all tables in the current project from the recycle bin. |
 
-### Tunnel commands
+### 2.3 Tunnel commands
 
 You can use Tunnel commands provided by the MaxCompute client to implement the original features of the Dship tool. Tunnel commands are mainly used to upload or download data. Table 1 Tunnel commands
 
@@ -297,9 +402,9 @@ Example:
     tunnel purge 5
 ```
 
-### LogView tool
+### 2.4 LogView tool
 
-#### Prerequisites
+#### 2.4.1 Prerequisites
 
 Before using the LogView tool, check the LogView process status. If the process is shut down, start the process.
 
@@ -336,7 +441,7 @@ ps -aux|grep logview; netstat -ntulp|grep 9000;
 /opt/aliyun/app/logview/bin/control start;
 ```
 
-#### Overview
+#### 2.4.2 Overview
 
 You can use LogView to check and debug tasks for a MaxCompute job that is submitted. LogView allows you to check the details of a job.
 
@@ -348,7 +453,7 @@ LogView allows you to check the status, details, and results of a job, and the p
 
 After you submit an SQL task on a client, a long string that starts with `http://logview.odps.aliyun.com/logview` is returned. In this example, a client named odpscmd is used. Figure 1: Returned long string Remove all line feeds and enter the string in the address bar of a browser.
 
-#### Preliminary knowledge of LogView
+#### 2.4.3 Preliminary knowledge of LogView
 
 For complex SQL queries, you must have an in-depth knowledge of the relationships between MaxCompute tasks and Fuxi instances before you can understand LogView. In short, a MaxCompute task consists of one or more Fuxi jobs. Each Fuxi job consists of one or more Fuxi tasks. Each Fuxi task consists of one or more Fuxi instances. Figure 1. Relationships between MaxCompute tasks and Fuxi instances The following figures show the relevant information in LogView.
 
@@ -372,7 +477,7 @@ Figure 6. Task Detail - Summary
 
 Figure 7. Task Detail - JSONSummary
 
-#### LogView usage examples
+#### 2.4.4 LogView usage examples
 
 This topic provides usage examples for LogView.
 
@@ -418,13 +523,13 @@ After you submit a job, you can press Ctrl+C to return to odpscmd and perform ot
 
 After you exit the control window, if you are unsure which tasks are running or have run, you can run the show p; command to find them.
 
-### Apsara Big Data Manager
+### 2.5 Apsara Big Data Manager
 
 Apsara Big Data Manager (ABM) supports O&M on big data services from the perspectives of business, services, clusters, and hosts. You can also update big data services, customize alert configurations, and view the O&M history in the ABM console. For more information about how to log on to the ABM console and how to manage MaxCompute, see MaxCompute O&M.
 
-## Routine O&M
+## 3 Routine O&M
 
-### Manage service configurations
+### 3.1 Manage service configurations
 
 MaxCompute configurations are stored in the /apsara/odps_service/deploy/env.cfg directory in odpsag. The configuration file contains the following content:
 
@@ -434,7 +539,7 @@ odps_worker_num=3 executor_worker_num=3 hiveserver_worker_num=3 replication_serv
 
 You can modify the values of these parameters based on your business requirements and start the corresponding MaxCompute services based on the configured values. For more information, see Restart MaxCompute services. If you add `xstream_max_worker_num=3` at the end of the configuration file, three workers are running when you start XStream.
 
-### Perform routine inspections
+### 3.2 Perform routine inspections
 
 1. Check whether all machines are at desired state in the Apsara Infrastructure Management
 console. i. Log on to the Apsara Infrastructure Management console. In the left-side navigation pane, choose **Resource Management > Product & Cluster O&M**. On the Product & Cluster O&M page, enter odps in the **Product | Cluster** search box to search for MaxCompute clusters. Figure 1: Search for clusters ii. Check whether all machines are at desired state based on the information in the **Status** and **Instance Status** columns. The following figure provides an example on machines that are not at desired state. Figure 2: Check whether all machines are at desired state iii. Find the cluster that you want to manage and click **Service** and **Component** in the
@@ -494,7 +599,7 @@ puadmin gems; puadmin gss;
 8. Perform daily inspections in the Apsara Big Data Manager (ABM) console to check disk
 usage.
 
-### Shut down a chunk server for
+### 3.3 Shut down a chunk server for maintenance and clone the chunk server
 
 **maintenance and clone the chunk**
 
@@ -691,7 +796,7 @@ Management console. If the machine is in the GOOD state, the maintenance is comp
 1. Check whether the cluster is at desired state. Make sure that all services on the machine
 that you publish are at desired state.
 
-### Shut down a chunk server for
+### 3.4 Shut down a chunk server for maintenance without compromising the system
 
 **maintenance without**
 
@@ -753,7 +858,7 @@ Do not compromise the system during the maintenance.
 
 During the shutdown of the chunk server, Apsara Distributed File System continuously tries to read data, and SQL tasks remain in the running state. The tasks are complete after the task runs for 7 to 8 minutes, or after the machine resumes.
 
-### Adjust the virtual resources of
+### 3.5 Adjust the virtual resources of Apsara Distributed Operating System in MaxCompute
 
 **Apsara Distributed Operating**
 
@@ -780,7 +885,7 @@ You can check the task status in operation logs. If the task status is rolling s
 6. After the changes are made, run the `r ttrl` command on the TerminalService page to
 confirm the changes.
 
-### Restart MaxCompute services
+### 3.6 Restart MaxCompute services
 
 **Procedure**
 
@@ -842,11 +947,11 @@ cd /apsara/odps_service/deploy/; sh install_odps.sh pedeployreplicationservice; 
 r plan Odps/CGServiceControllerx >/home/admin/servicemode.json; r sstop Odps/CGServiceControllerx; r start /home/admin/servicemode.json; -- Restart the service mode. r swl Odps/CGServiceControllerx; -- Check the update status and update time of the service after you restart the servi ce.
 ```
 
-## O&M using Apsara Bigdata
+## 4 O&M using Apsara Bigdata Manager
 
 **Manager**
 
-### Log in to the ABM console
+### 4.1 Log in to the ABM console
 
 This topic describes how to log in to the Apsara Big Data Manager (ABM) console.
 
@@ -874,9 +979,9 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 6. Choose **Big Data > Bigdata Manager** to go to the **Instrument cluster** page of the ABM
 console.
 
-### Monitoring
+### 4.2 Monitoring
 
-#### Health
+#### 4.2.1 Health
 
 In the Apsara Big Data Manager (ABM) console, the Degree of health page allows you to view the monitoring items of each big data service and the alerts of different levels of severity and check the monitoring items and alerts again after the alerts are handled.
 
@@ -888,7 +993,7 @@ After you log in to the **ABM** console, the **Instrument cluster** page appears
 3. Click the **Degree of health** tab to view the health check result.
 The Degree of health page displays the monitoring items, monitoring sources, severity level, and monitoring details. You can filter data based on your business requirements.
 
-#### Reports
+#### 4.2.2 Reports
 
 In the Apsara Big Data Manager (ABM) console, the Report page allows you to view the inspection results of each big data service.
 
@@ -900,11 +1005,11 @@ After you log in to the **ABM** console, the **Instrument cluster** page appears
 3. Click the **Report** tab to view the reports.
 The Report page displays the following information about each report: ID, Report Name, Product, Template Name, Instance Type, Created By, and Created At. You can also view the details about each report.
 
-### O&M
+### 4.3 O&M
 
-#### Business O&M
+#### 4.3.1 Business O&M
 
-##### Business O&M features and page
+##### 4.3.1.1 Business O&M features and page
 
 This topic describes the business O&M features and how to go to the business O&M page.
 
@@ -920,9 +1025,9 @@ icon and choose Big Data Computing > **MaxCompute**.
 3. In the MaxCompute console, click **Operation and maintenance** in the top navigation bar.
 Then, click the **Business operation and maintenance** tab. In the left-side navigation pane, choose **Project Management > Project List**.
 
-##### Project management
+##### 4.3.1.2 Project management
 
-###### Manage projects
+###### 4.3.1.2.1 Manage projects
 
 The Project List page displays all projects and project details of MaxCompute clusters. You can filter, query, and sort projects. You can also change the quota group of a project. If zonedisaster recovery is enabled, you can configure resource replication parameters and specify whether to enable resource replication for a project.
 
@@ -994,7 +1099,7 @@ drop-down list.
 **Configurations** drop-down list.
 4. Click **Run**. The tunnel configurations are switched.
 
-###### View project details
+###### 4.3.1.2.2 View project details
 
 The Apsara Big Data Manager (ABM) console allows you to view the details of your MaxCompute projects, including the project overview, jobs, storage, computing, configurations, tunnel, and information about resource analysis, storage encryption, and cluster replication.
 
@@ -1050,7 +1155,7 @@ On the **StorageEncryption** tab, you can configure encryption algorithms to enc
 
 On the **ClusterReplication** tab, you can view the projects for which the cluster replication feature is enabled and the details and status of cluster replication. When you deploy multiple clusters to use MaxCompute, MaxCompute projects may be mutually dependent, and data is directly read between projects. MaxCompute regularly scans tables or partitions that are directly read by other tables or partitions. If the duration of direct data reading reaches the specified threshold, MaxCompute adds the tables or partitions to the cluster replication list. For example, Project 1 in Cluster A depends on Table 1 of Project 2 in Cluster B. In this case, Project 1 directly reads data from Table 1. If the duration of direct data reading reaches the specified threshold, MaxCompute adds Table 1 to the cluster replication list. The **ClusterReplication** tab consists of the **CopyDetails** and **CopyConfiguration** tabs. On the CopyDetails tab, the information about the tables that support cluster replication is displayed. You can view the project name, cluster name, table name, partition, storage size, number of files, and cluster to which the data is synchronized. On the CopyConfiguration tab, the configurations of the tables that support cluster replication are displayed. You can view the table name, priority, cluster to which the data is synchronized, and lifecycle. You can also view the progress of cluster replication for a table.
 
-###### Encrypt data
+###### 4.3.1.2.3 Encrypt data
 
 You can specify whether to encrypt the data stored in MaxCompute projects.
 
@@ -1103,7 +1208,7 @@ ii. Create a key rotate task. On the **Configure Task** tab, click **Add a key r
 8. **Optional.** View the history of data encryption in the project.
 On the **Historical Queries** tab, select a date from the **Date** drop-down list. Then, you can view the information about storage encryption on the specified date.
 
-###### Grant access permissions on the
+###### 4.3.1.2.4 Grant access permissions on the metadata warehouse
 
 **metadata warehouse**
 
@@ -1133,7 +1238,7 @@ Then, click the **Business operation and maintenance** tab. The **Project Manage
 7. Click **Installation** in the Actions column. In the **package installation** message, click **Run**.
 A message appears, indicating that the package is installed. After the package is installed, the switch in the **Authorization** column is turned on.
 
-###### Migrate projects
+###### 4.3.1.2.5 Migrate projects
 
 Apsara Big Data Manager (ABM) lets you migrate MaxCompute projects across regions from one cluster to another. This lets you balance the computing and storage resources of each cluster.
 
@@ -1227,7 +1332,7 @@ If a step fails, you can view the step details and debugging information to iden
 
 After a project migration task is created, you can modify the task if the task does not meet your requirements. To modify the task, find the required task, and click **Modify Mission** in the Actions column. You can also click **Replan** on the **Migration Details** page.
 
-##### Manage quota groups
+##### 4.3.1.3 Manage quota groups
 
 Apsara Big Data Manager (ABM) shows the quota groups of all projects in a MaxCompute cluster. You can create and modify quota groups. You can also view details about quota groups and enable period management for quota groups.
 
@@ -1287,9 +1392,9 @@ specified period.
 3. To disable time-specific configuration management for a quota group, click **Set**
 **timesharing** again. In the dialog box that appears, click **Close TimeSet**.
 
-##### Job management
+##### 4.3.1.4 Job management
 
-###### Manage job snapshots
+###### 4.3.1.4.1 Manage job snapshots
 
 The job snapshot feature allows you to manage the tasks that are created in MaxCompute and the merge tasks that are created in Apsara Big Data Manager (ABM). You can also view the LogView information of jobs, terminate jobs, and collect job logs.
 
@@ -1345,9 +1450,9 @@ collected. **FAILED** indicates that job logs fail to be collected. If a record 
 6. View the path to store job logs.
 In the **Execution History** panel, find a record of job log collection in the SUCCESS state and click **Details** in the Details column. In the Job Log Collection section, find the odps_worker_collect module and click View Details to view the path in which the collected job logs are stored.
 
-##### Business optimization
+##### 4.3.1.5 Business optimization
 
-###### Merge small files
+###### 4.3.1.5.1 Merge small files
 
 Excessive small files in a MaxCompute cluster occupy a lot of memory resources. Apsara Big Data Manager (ABM) allows you to merge multiple small files in MaxCompute clusters and projects to free up the memory occupied by these files.
 
@@ -1434,7 +1539,7 @@ between the original and modified values.
 3. Click **Run**.
 The merge type that you create appears in the Merge Tasks section.
 
-###### Compress idle files
+###### 4.3.1.5.2 Compress idle files
 
 Apsara Big Data Manager (ABM) allows you to create archive tasks to compress idle files in MaxCompute clusters and projects. This saves storage space for the clusters.
 
@@ -1529,7 +1634,7 @@ differences between the original and modified values.
 3. Click **Run**.
 The archive type that you create appears in the Archive Tasks section.
 
-###### Analyze MaxCompute resources
+###### 4.3.1.5.3 Analyze MaxCompute resources
 
 Apsara Big Data Manager (ABM) allows you to analyze the resources of MaxCompute clusters from multiple dimensions to help you better understand the data stored in MaxCompute. You can view the analysis results of data storage from the table, project, task, execution time, start time, and engine dimensions.
 
@@ -1577,7 +1682,7 @@ On the MeasurementDimensions tab, you can view the storage data of each project 
 **Business Governance > Resource Analysis**. On the page that appears, click the
 **MeasurementDimensions** tab.
 
-##### MaxCompute zone-disaster recovery
+##### 4.3.1.6 MaxCompute zone-disaster recovery
 
 If a primary MaxCompute cluster fails, you can use Apsara Bigdata Manager (ABM) to quickly switch to the secondary cluster and restore your services. This topic describes the zonedisaster recovery feature.
 
@@ -1642,11 +1747,11 @@ A direct switch of the default compute cluster can cause data loss. Before you s
 
 In the **Project Overview** area, click **View Switch History** in the **Actions** column for the target project to view the history of switches from the source cluster to the target cluster.
 
-#### Service O&M
+#### 4.3.2 Service O&M
 
-##### Control service O&M
+##### 4.3.2.1 Control service O&M
 
-###### O&M features and page
+###### 4.3.2.1.1 O&M features and page
 
 This topic describes the O&M features for control services and how to go to the O&M page.
 
@@ -1664,7 +1769,7 @@ Then, click the **Service operation and maintenance** tab.
 4. In the left-side navigation pane of the **Service operation and maintenance** tab, click
 **Control Services**. The **Overview** tab for the control service appears.
 
-###### Overview
+###### 4.3.2.1.2 Overview
 
 On the Overview tab, the overall information about the control service is displayed. You can view the summary of services, service role status, job statistics, statistics on the executor thread pool, and the trend chart of job latency.
 
@@ -1692,7 +1797,7 @@ In the Saturability - Executor Pool Size section, the information about the thre
 
 In the Latency - Waiting Jobs section, the trend chart of jobs is displayed. The chart displays the trend lines of the numbers of jobs that are running, jobs that are waiting for resources, and jobs that are waiting for scheduling in different colors. You can click the icon in the upper-right corner of the chart to zoom in on the trend chart and specify the time range during which you want to view the trends.
 
-###### Control server roles
+###### 4.3.2.1.3 Control server roles
 
 The Server Roles tab on the Control page shows information about the roles of the control service. You can view the host, status, requested CPU resources, and requested memory of each role.
 
@@ -1701,13 +1806,13 @@ The Server Roles tab on the Control page shows information about the roles of th
 In the left-side navigation pane of the **Services** page, click **Control**. Then, click the **Server**
 **Roles** tab.
 
-###### Manage configurations
+###### 4.3.2.1.4 Manage configurations
 
 On the ConfigurationManagement tab, you can manage the configurations of global computing, cluster-level computing, computing scheduling, and cluster endpoints. If you want to modify the configurations of the control service, submit a ticket to apply for technical support, and then modify the configurations carefully under the guidance of technical support engineers. In the left-side navigation pane of the **Service operation and maintenance** tab, click
 **Control Services**. Then, click the **ConfigurationManagement** tab.
 The **ConfigurationManagement** tab consists of the following tabs: Computescheduling: You can manage the configurations of global computing, cluster-level computing, and computing scheduling. DataChannelrouting: You can manage the configurations of cluster endpoints.
 
-###### View the information about the
+###### 4.3.2.1.5 View the information about the metadata repository
 
 **metadata repository**
 
@@ -1715,7 +1820,7 @@ This topic describes how to view the completion time and status of the output ta
 **Repository Monitoring** tab.
 The **Metadata Repository Monitoring** tab displays the completion time of the output tasks of the metadata repository and the trend chart of the time consumed for running output tasks during a specific period of time. The **Completed At** column displays the time when an output task was complete. The **Collected At** column displays the time when ABM last obtained the status of an output task.
 
-###### Stop or start a service role
+###### 4.3.2.1.6 Stop or start a service role
 
 Apsara Big Data Manager (ABM) allows you to start or stop the service roles of the MaxCompute control service and view the operation history. If you fail to start or stop a service role, you can identify the cause of the failure.
 
@@ -1757,7 +1862,7 @@ Execution History next to Start Service Role. In the Execution History panel, fi
 2. In the Start Service Role panel, find a failed step and click **View Details** to identify the
 cause of the failure. You can view the parameter settings, outputs, error messages, script, and runtime parameters to identify the cause of the failure.
 
-###### Start AdminConsole
+###### 4.3.2.1.7 Start AdminConsole
 
 AdminConsole is a management platform of MaxCompute and is disabled by default. Apsara Big Data Manager (ABM) allows you to quickly start AdminConsole to manage MaxCompute clusters in an efficient manner.
 
@@ -1796,7 +1901,7 @@ details.
 3. On the **Servers** tab of the failed step, click **View Details** in the Actions column of a failed
 server. The **Execution Output** tab appears in the Execution Details section. You can view the output to identify the cause of the failure.
 
-###### Collect service logs
+###### 4.3.2.1.8 Collect service logs
 
 Apsara Big Data Manager (ABM) allows you to collect service logs that are generated during a specific period of time to identify the cause of a failure.
 
@@ -1849,7 +1954,7 @@ to view the details.
 **Execution Output** tab appears in the Execution Details section. You can view the output
 to identify the cause of the failure.
 
-###### Change the number of control nodes
+###### 4.3.2.1.9 Change the number of control nodes
 
 MaxCompute allows you to change the number of control nodes for each service, such as HiveServer and ExecutorWorker.
 
@@ -1857,9 +1962,9 @@ MaxCompute allows you to change the number of control nodes for each service, su
 
 Log on to the MaxCompute console from Apsara Big Data Manager (ABM). In the top navigation bar, click O&M. Then, click the Services tab. On the **Services** tab, click **Control** in the left-side navigation pane. In the upper-right corner of the Control page, move the pointer over **Actions** and select **Modify Number of Control Nodes**.
 
-##### Job Scheduler O&M
+##### 4.3.2.2 Job Scheduler O&M
 
-###### O&M features and page
+###### 4.3.2.2.1 O&M features and page
 
 This topic describes the O&M features for Job Scheduler and how to go to the O&M page.
 
@@ -1877,7 +1982,7 @@ tab.
 4. In the left-side navigation pane of the **Services** tab, click **Fuxi**. The **Overview** tab for Job
 Scheduler appears.
 
-###### Overview
+###### 4.3.2.2.2 Overview
 
 On the Overview tab, the key information about the operations of Job Scheduler is displayed. You can view the summary of services, service role status, statistics on resource allocation, statistics on compute nodes, and the trend charts of CPU utilization and memory usage.
 
@@ -1908,7 +2013,7 @@ In the Saturability - Resource Usage section, the statistics on the allocation o
 
 In the Compute Nodes section, the information about compute nodes is displayed. You can view the percentage of online compute nodes, the total number of compute nodes, the number of online compute nodes, and the number of compute nodes that are added to the blacklist.
 
-###### MaxCompute Fuxi server role
+###### 4.3.2.2.3 MaxCompute Fuxi server role
 
 This topic describes how to view the Master hosts for the Fuxi service, manage service roles, and restart the Master hosts.
 
@@ -1934,7 +2039,7 @@ service. The **Service Roles** page displays information about the Fuxi service 
 
 **FuxiMaster#**
 
-Service role description This service role does not depend on other service roles. This role is the master role of Job Scheduler. In most cases, the FuxiMaster# role is deployed on three physical servers. You must deploy the FuxiMaster# role on at least two physical servers. Make sure that at least one physical server on which this role is deployed works properly. RMA or restart The physical servers on which the service role is deployed support the Remote Maintenance Agent (RMA) or can be restarted. You must restart the physical servers in batches. Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/FuxiMaster#/fuxi_master` . Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the Service Roles tab section of this topic.
+Service role description This service role does not depend on other service roles. This role is the master role of Job Scheduler. In most cases, the FuxiMaster# role is deployed on three physical servers. You must deploy the FuxiMaster# role on at least two physical servers. Make sure that at least one physical server on which this role is deployed works properly. RMA or restart The physical servers on which the service role is deployed support the Remote Maintenance Agent (RMA) or can be restarted. You must restart the physical servers in batches. Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/FuxiMaster#/fuxi_master` . You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the Service Roles tab section of this topic.
 
 **FuxiApiServer#**
 
@@ -1944,7 +2049,7 @@ Service role description This service role depends on the FuxiMaster# role. This
  /cloud/app/fuxi/FuxiApiServer#/fuxi_apiserver .
 ```
 
-Monitoring You can verify that it is in the desired state. For more information, see Fuxi server role.
+You can verify that it is in the desired state. For more information, see Fuxi server role.
 
 **PackageManager#**
 
@@ -1954,29 +2059,29 @@ Service role description This service role does not depend on other service role
  /cloud/app/fuxi/Packagemanager#/packagemanager .
 ```
 
-Monitoring Verify that it is in the desired state. For more information, see Fuxi service role entry point.
+Verify that it is in the desired state. For more information, see Fuxi service role entry point.
 
 **Tubo#**
 
-Service role description This service role depends on the FuxiMaster# role. The Fuxi service requires at least 3 compute nodes. Compute tasks are scheduled to run on these nodes. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/Tubo#/tubo` . Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the Service Roles tab section of this topic.
+Service role description This service role depends on the FuxiMaster# role. The Fuxi service requires at least 3 compute nodes. Compute tasks are scheduled to run on these nodes. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/Tubo#/tubo` . You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the Service Roles tab section of this topic.
 
 **DeployAgent#**
 
-Service role description This service role is the deployment agent for the compute node packages of the Fuxi service and depends on the PackageManager# service. A minimum of three instances are required. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/DeployAgent#/deploy_agent` . Monitoring You can check whether it is in the desired state. For more information, see Fuxi Server Role Entry.
+Service role description This service role is the deployment agent for the compute node packages of the Fuxi service and depends on the PackageManager# service. A minimum of three instances are required. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/DeployAgent#/deploy_agent` . You can check whether it is in the desired state. For more information, see Fuxi Server Role Entry.
 
 **FuxiDecider#**
 
-Service role description This service role does not depend on other service roles. This role provides the approval service for bringing Fuxi compute nodes online and taking them offline. Approval from this role is required to take a compute node offline. In most cases, the FuxiDecider# role is deployed on three physical servers. You must deploy the FuxiDecider# role on at least two physical servers. You can deploy the FuxiDecider# role together with the FuxiMaster# role. RMA and restart instructions The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone: Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/FuxiDecider#/fuxi_decider` . Monitoring You can check if it is in the desired state. For more information, see Fuxi server role entry point.
+Service role description This service role does not depend on other service roles. This role provides the approval service for bringing Fuxi compute nodes online and taking them offline. Approval from this role is required to take a compute node offline. In most cases, the FuxiDecider# role is deployed on three physical servers. You must deploy the FuxiDecider# role on at least two physical servers. You can deploy the FuxiDecider# role together with the FuxiMaster# role. RMA and restart instructions The physical servers on which the service role is deployed support the RMA or can be restarted. You must restart the physical servers in batches. Reclone: Description The physical servers on which the service role is deployed can be recloned. You must reclone the physical servers in batches. Logs Logs are stored in the following directory: `/cloud/app/fuxi/FuxiDecider#/fuxi_decider` . You can check if it is in the desired state. For more information, see Fuxi server role entry point.
 
 **FuxiMonitor#**
 
-Service role description This service role does not depend on other service roles. Typically, one instance is deployed on each physical server in the cluster. It monitors all Fuxi service roles on the physical server. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Description of the reclone The physical servers on which the service role is deployed can be recloned. Logs Logs are stored in the following directory: `/cloud/app/fuxi/FuxiMonitor#/fuxi_monitor` . Monitoring You can check if it is in the desired state. For more information, see Fuxi Server Role Entry.
+Service role description This service role does not depend on other service roles. Typically, one instance is deployed on each physical server in the cluster. It monitors all Fuxi service roles on the physical server. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Description of the reclone The physical servers on which the service role is deployed can be recloned. Logs Logs are stored in the following directory: `/cloud/app/fuxi/FuxiMonitor#/fuxi_monitor` . You can check if it is in the desired state. For more information, see Fuxi Server Role Entry.
 
 **Supported operations**
 
 For instructions on how to restart the Fuxi Master host, see Restart Fuxi Master.
 
-###### MaxCompute Fuxi service compute
+###### 4.3.2.2.4 MaxCompute Fuxi service compute nodes
 
 **nodes**
 
@@ -1996,7 +2101,7 @@ You can add nodes to or remove them from a blacklist, and grant or revoke read-o
 2. In the dialog box that appears, click **Execute**. A message is displayed to indicate that the
 operation is submitted. The **Hostname** parameter is automatically populated with the name of the compute node. You do not need to enter this value. After the operation is complete, you can view the **Blacklist Status** of the node in the compute node list.
 
-###### Enable and disable SQL acceleration
+###### 4.3.2.2.5 Enable and disable SQL acceleration
 
 Apsara Bigdata Manager lets you enable or disable SQL acceleration for the Fuxi service. Enabling SQL acceleration significantly improves the execution speed of SQL statements, but it also consumes more computing resources.
 
@@ -2035,7 +2140,7 @@ The execution history displays the status, submission time, start time, end time
 4. If an execution fails, click **Details** to navigate to the job page and identify the cause of the
 failure.
 
-###### Restart a master node of Job Scheduler
+###### 4.3.2.2.6 Restart a master node of Job Scheduler
 
 Job Scheduler is the resource management and task scheduling system of the Apsara distributed operating system. Apsara Big Data Manager (ABM) allows you to quickly restart the primary and secondary master nodes of Job Scheduler. Cluster services are not affected during the restart process.
 
@@ -2073,9 +2178,9 @@ nodes of Job Scheduler.
 3. On the **Servers** tab of the failed step, find a failed node and click **View Details** in the
 Actions column. The **Execution Output** tab appears in the Execution Details section. You can view the output to identify the cause of the failure.
 
-##### Apsara Distribute File System O&M
+##### 4.3.2.3 Apsara Distribute File System O&M
 
-###### O&M features and page
+###### 4.3.2.3.1 O&M features and page
 
 This topic describes the O&M features for Apsara Distributed File System and how to go to the O&M page.
 
@@ -2093,7 +2198,7 @@ tab.
 4. In the navigation pane on the left of the **Services** tab, click **Pangu**. On the Pangu page,
 select a cluster. The **Overview** tab for Apsara Distributed File System of the selected cluster appears.
 
-###### Overview
+###### 4.3.2.3.2 Overview
 
 On the Overview tab, the key information about the operations of Apsara Distributed File System is displayed. You can view the summary of services, service role status, statistics on storage usage, statistics on storage nodes, and the trend charts of storage usage and the number of files.
 
@@ -2125,7 +2230,7 @@ In the Physical storage capacity and Document change trend sections, the trend c
 
 In the Storage Node Overview section, the information about the storage nodes of Apsara Distributed File System is displayed. You can view the numbers of data nodes, normal nodes, disks, and normal disks. You can also view the percentages of faulty nodes and faulty disks.
 
-###### Manage service roles
+###### 4.3.2.3.3 Manage service roles
 
 This topic describes how to view the master nodes and service roles of Apsara Distributed File System and manage service roles. This topic also describes how to change the primary master node or run a checkpoint on a master node of Apsara Distributed File System.
 
@@ -2152,7 +2257,7 @@ On the **ServiceRole** tab, the information about the master nodes and service r
 
 **PanguMaster#**
 
-Service role description This service role does not depend on other service roles. You must deploy this role on at least one volume for a cluster. A volume contains multiple master nodes. Each volume contains one primary master node and multiple secondary master nodes. A cluster for which three physical servers are deployed can work properly if a single physical server becomes faulty. A cluster for which five physical servers are deployed can work properly if one or two physical servers become faulty. RMA or restart The physical servers on which the service role is deployed support the Remote Maintenance Agent (RMA) or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. Logs Logs are stored in the following directory: `/cloud/app/pangu/PanguMaster#/pangu_master` . Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
+Service role description This service role does not depend on other service roles. You must deploy this role on at least one volume for a cluster. A volume contains multiple master nodes. Each volume contains one primary master node and multiple secondary master nodes. A cluster for which three physical servers are deployed can work properly if a single physical server becomes faulty. A cluster for which five physical servers are deployed can work properly if one or two physical servers become faulty. RMA or restart The physical servers on which the service role is deployed support the Remote Maintenance Agent (RMA) or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. Logs Logs are stored in the following directory: `/cloud/app/pangu/PanguMaster#/pangu_master` . You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
 
 **PanguChunkserver#**
 
@@ -2166,7 +2271,7 @@ You must make sure that a request for shutting down data nodes is approved. In t
  /cloud/app/pangu/PanguChunkserver#/pangu_chunkserver .
 ```
 
-Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
+You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
 
 **PanguSupervisor#**
 
@@ -2176,21 +2281,21 @@ Service role description This service role does not depend on other service role
  /cloud/app/pangu/PanguSupervisor#/pangu_supervisor .
 ```
 
-Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
+You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
 
 **PanguMonitor#**
 
-Service role description This service role does not depend on other service roles. In most cases, the PanguMonitor# role is deployed on each physical server of a cluster and is used to monitor all service roles of Apsara Distributed File System that are deployed on each physical server. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. Logs Logs are stored in the following directory: `/cloud/app/pangu/PanguMonitor#/pangu_monitor` . Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
+Service role description This service role does not depend on other service roles. In most cases, the PanguMonitor# role is deployed on each physical server of a cluster and is used to monitor all service roles of Apsara Distributed File System that are deployed on each physical server. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. Logs Logs are stored in the following directory: `/cloud/app/pangu/PanguMonitor#/pangu_monitor` . You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
 
 **PanguTools#**
 
-Service role description This service role does not depend on other service roles. A physical server on which this role is deployed provides the CLI toolkit for Apsara Distributed File System. You can deploy this role on one or more physical servers. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. Logs N/A Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
+Service role description This service role does not depend on other service roles. A physical server on which this role is deployed provides the CLI toolkit for Apsara Distributed File System. You can deploy this role on one or more physical servers. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Reclone The physical servers on which the service role is deployed can be recloned. Logs N/A You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the ServiceRole tab section of this topic.
 
 **Supported operations**
 
 You can change the primary master node or run a checkpoint on a master node of Apsara Distributed File System. For more information, see Change the primary master node of Apsara Distributed File System or Run a checkpoint on a master node of Apsara Distributed File System.
 
-###### Apsara Distributed File System storage
+###### 4.3.2.3.4 Apsara Distributed File System storage
 
 This topic describes how to view the storage overview and storage node information of Apsara Distributed File System, and how to set the status of storage nodes and data disks.
 
@@ -2227,7 +2332,7 @@ The values of the **Volume** and **Hostname** parameters are automatically fille
 3. After you configure the parameter, click **Execute**. A message appears, indicating that the
 operation was submitted.
 
-###### Change the primary master node of
+###### 4.3.2.3.5 Change the primary master node of Apsara Distributed File System
 
 **Apsara Distributed File System**
 
@@ -2265,7 +2370,7 @@ The **Master performs switching** panel shows the switchover history. **RUNNING*
 7. If the status is FAILED, click **Details** in the Details column to identify the cause of the
 failure. You can also view the parameter settings, server details, script, and runtime parameters to identify the cause of the failure.
 
-###### Run a checkpoint on a master node of
+###### 4.3.2.3.6 Run a checkpoint on a master node of Apsara Distributed File System
 
 **Apsara Distributed File System**
 
@@ -2298,7 +2403,7 @@ In the **Run Checkpoint on Master Node** panel, the history of checkpoints on th
 7. If an operation record is in the FAILED state, click **Details** in the Details column to identify
 the cause of the failure. You can also view the parameter settings, server details, script, and runtime parameters to identify the cause of the failure.
 
-###### Clear the recycle bin of Apsara
+###### 4.3.2.3.7 Clear the recycle bin of Apsara Distributed File System
 
 **Distributed File System**
 
@@ -2325,7 +2430,7 @@ recycle bin is cleared. **FAILED** indicates that the recycle bin fails to be cl
 6. If an operation record is in the FAILED state, click **Details** in the Details column to identify
 the cause of the failure. You can also view the parameter settings, server details, script, and runtime parameters to identify the cause of the failure.
 
-###### Enable or disable data rebalancing for
+###### 4.3.2.3.8 Enable or disable data rebalancing for Apsara Distributed File System
 
 **Apsara Distributed File System**
 
@@ -2377,9 +2482,9 @@ Details column.
 2. In the panel that appears, find a failed step and click **View Details** to identify the cause of
 the failure. You can also view the parameter settings, server details, script, and runtime parameters to identify the cause of the failure.
 
-##### Tunnel service
+##### 4.3.2.4 Tunnel service
 
-###### O&M features and page
+###### 4.3.2.4.1 O&M features and page
 
 This topic describes the O&M features for the tunnel service and how to go to the O&M page.
 
@@ -2401,7 +2506,7 @@ tab.
 4. In the navigation pane on the left of the **Services** tab, click **Tunnel**. The **Overview** tab for
 the tunnel service appears.
 
-###### Overview
+###### 4.3.2.4.2 Overview
 
 On the Overview tab, the overall information about the tunnel service is displayed. You can view the summary of services, service role status, and the trend chart of throughput.
 
@@ -2421,7 +2526,7 @@ In the Service Status section, all service roles of the tunnel service and their
 
 In the Tunnel Throughput (Bytes per Minute) section, a chart is displayed. The trend lines of different colors indicate the inbound and outbound traffic. This trend chart can be automatically or manually refreshed. You can also view the trend chart of the tunnel throughput in a specific period of time.
 
-###### MaxCompute tunnel service roles
+###### 4.3.2.4.3 MaxCompute tunnel service roles
 
 On the Service Roles tab, the information about the service roles of the tunnel service is displayed. You can view the role name, hostname, IP address, role status, and host status of each service role.
 
@@ -2484,7 +2589,7 @@ Service role description This service role does not depend on other service role
 frontend/FrontendServer#/frontend_server/current/log .
 ```
 
-Monitoring You can check whether the desired state has been reached. For more information, see Accessing the Tunnel Service role page.
+You can check whether the desired state has been reached. For more information, see Accessing the Tunnel Service role page.
 
 **TunnelFrontendServer#**
 
@@ -2494,13 +2599,13 @@ Service role description This service role does not depend on other service role
 frontend/TunnelFrontendServer#/tunnel_frontend_server/current/log .
 ```
 
-Monitoring You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the Service Roles tab section of this topic.
+You can check whether the physical servers on which the service role is deployed are at desired state. For more information, see the Go to the Service Roles tab section of this topic.
 
 **ServiceTest#**
 
-Service role description This service role does not depend on other service roles. This role provides the frontend service detection capability. You can deploy this role on one or more physical servers. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Description The physical servers on which the service role is deployed can be recloned. Logs N/A. Monitoring You can check if the service is in the desired state. For more information, see Accessing the Tunnel Service Role Page.
+Service role description This service role does not depend on other service roles. This role provides the frontend service detection capability. You can deploy this role on one or more physical servers. RMA or restart The physical servers on which the service role is deployed support the RMA or can be restarted. Description The physical servers on which the service role is deployed can be recloned. Logs N/A. You can check if the service is in the desired state. For more information, see Accessing the Tunnel Service Role Page.
 
-###### Traffic analysis
+###### 4.3.2.4.4 Traffic analysis
 
 The Flowanalysis tab displays the traffic curves of specific projects in a specific period. The curves show traffic types and the peak throughout in the specified period, which helps you make informed decisions.
 
@@ -2514,7 +2619,7 @@ After you specify a period and the project for traffic analysis, click the icon.
 
 The traffic data comes from Monitoring System. Make sure that this system is normal. By default, the top five projects that have the most traffic are selected. You can also filter projects based on your business requirements. By default, the beginning of the period is two days before the current time, and the end of the period is one day before the current time. You can also specify the period based on your business requirements.
 
-###### Manage configurations
+###### 4.3.2.4.5 Manage configurations
 
 On the ConfigurationManagement tab, you can manage endpoints, view all the projects that are configured in the current cluster, and switch the tunnel configurations for projects.
 
@@ -2547,7 +2652,7 @@ click **Switch Channel Configuration**.
 4. In the **Switch project tunnel** panel, configure the **Target Cluster** parameter and click
 **Run**.
 
-##### MaxCompute replication service
+##### 4.3.2.5 MaxCompute replication service
 
 The replication service lets you manage the configuration of base_config, infoBetweenClusters, taskParams, virtualResource, and bandwidthTopology in a destination region.
 
@@ -2597,9 +2702,9 @@ In the **base_config**, **infoBetweenClusters**, and **taskParams** areas, you c
 **XLS**, **Auto-fit Column Width**, and show or hide the **Configuration Content**
 column.
 
-#### Cluster O&M
+#### 4.3.3 Cluster O&M
 
-##### O&M features and entry
+##### 4.3.3.1 O&M features and entry
 
 This topic describes the O&M features of MaxCompute clusters. It also provides information about how to go to the MaxCompute cluster O&M page.
 
@@ -2617,7 +2722,7 @@ Then, click the **Cluster O&M** tab.
 4. On the **Cluster O&M** tab, select a cluster. The **Overview** tab for the O&M of the selected
 cluster appears.
 
-##### Overview
+##### 4.3.3.2 Overview
 
 This topic describes how to go to the Overview tab for the O&M of a MaxCompute cluster. This topic also describes the cluster overview and the operations that you can perform on the Overview tab.
 
@@ -2672,7 +2777,7 @@ The PACKAGE chart shows the trend lines of the numbers of dropped packets, error
 
 In the Health Check section, the number of check items for the cluster and the numbers of CRITICAL, WARNING, and EXCEPTION alerts are displayed.
 
-##### Manage cluster health checks
+##### 4.3.3.3 Manage cluster health checks
 
 On the Health tab, all check items and check results of a cluster are displayed. You can view the details of check items and view the check results for hosts to handle alerts. You can also log in to a host and perform manual checks on the host.
 
@@ -2721,11 +2826,11 @@ On the **Health** tab, find the check item for which alerts are reported and cli
 
 After you handle an alert for a host, click **Refresh** in the Actions column of the host to run the check item again for the host. This way, you can check whether the alert is cleared.
 
-##### Servers
+##### 4.3.3.4 Servers
 
 The Servers tab shows information about hosts. The information includes the hostname, IP address, role, type, CPU utilization, total memory size, available memory size, load, root disk usage, packet loss rate, and packet error rate. In the left-side navigation pane of the **Clusters** tab, click a cluster. Then, click the **Servers** tab. The **Servers** tab for the selected cluster appears. To view more information about a host, click the name of the host. The Hosts tab appears.
 
-##### Scale out or in a MaxCompute cluster
+##### 4.3.3.5 Scale out or in a MaxCompute cluster
 
 Apsara Big Data Manager (ABM) supports MaxCompute cluster scale-out and scale-in. To scale out a cluster, you can add physical hosts in the default cluster of Apsara Infrastructure Management to the cluster. To scale in a cluster, you can move physical hosts from the cluster to the default cluster of Apsara Infrastructure Management.
 
@@ -2788,9 +2893,9 @@ history.
 2. In the Execution History panel, click **Details** in the Details column of a failed operation to
 identify the cause of the failure. You can also view the parameter settings, server details, script, and runtime parameters to identify the cause of the failure.
 
-#### Host O&M
+#### 4.3.4 Host O&M
 
-##### O&M features and page
+##### 4.3.4.1 O&M features and page
 
 This topic describes the O&M features for the host service and how to go to the O&M page.
 
@@ -2809,7 +2914,7 @@ Then, click the **Host O&M** tab.
 4. In the left-side host list of the **Host O&M** tab, select a host. The **Overview** tab for the
 selected host appears.
 
-##### Overview
+##### 4.3.4.2 Overview
 
 On the Overview tab, the brief information about hosts in a MaxCompute cluster is displayed. You can view the server information and service role status of a host. You can also view the trend charts of CPU utilization, disk usage, memory usage, loads, and packet loss rate for the host.
 
@@ -2847,19 +2952,19 @@ The MEMORY chart shows the trend lines of the memory usage, total memory size, u
 
 The PACKAGE chart shows the trend lines of the numbers of dropped packets, error packets, received packets, and sent packets for the host over time in different colors. These trend lines reflect the data transmission status of the host. In the upper-right corner of the chart, click the icon to zoom in on the chart. You can specify the start time and end time in the upper-right corner of the enlarged chart to view the data transmission status of the host in the specified period.
 
-##### Manage service roles
+##### 4.3.4.3 Manage service roles
 
 On the Service Role tab, the service instances and service roles that are deployed on a host are displayed. Log in to the MaxCompute console from Apsara Big Data Manager (ABM). In the top navigation bar, click Operation and maintenance. Then, click the **Host O&M** tab. In the leftside host list, select a host. Then, click the **Service Role** tab. The **Service Role** tab for the selected host appears. On the **Service Role** tab, you can view the cluster to which the host belongs, the service instances that are running on the host, and the service roles that are deployed on the host.
 
-### Management
+### 4.4 Management
 
-#### Management overview
+#### 4.4.1 Management overview
 
 The management module of MaxCompute supports features such as Job Services, Recycling Management, Health Management, and Operational Audit. Job Services: allows you to run jobs to perform O&M operations on MaxCompute. Recycling Management: allows you to configure reclamation settings for chart data in MaxCompute. Health Management: allows you to create health check items and apply them to service hosts. Operational Audit: allows you to view the job execution records and O&M operation records in MaxCompute.
 
-#### Job services
+#### 4.4.2 Job services
 
-##### Overview
+##### 4.4.2.1 Overview
 
 This topic describes job-related concepts and the Job Execution page in MaxCompute. MaxCompute allows you to run jobs to perform O&M operations on services. Jobs, also known as service O&M tasks, are O&M operations performed on physical devices in a cluster. Jobrelated operations are performed on the **Job Execution** page.
 
@@ -2871,7 +2976,7 @@ Ordinary job: A job that can only be manually run. No timer is set. Cron job: A 
 
 The **Job Execution** page contains the following tabs: Jobs You can view, run, copy, export, and delete ordinary jobs, and view their execution history. You can search for a specific ordinary job. Cron Jobs You can enable, disable, view, run, copy, export, and delete cron jobs, and view their execution history. You can search for a specific cron job. Execution History You can view the execution history of ordinary and cron jobs. You can specify multiple filter conditions to search for a specific job and view the execution history of the specific job.
 
-##### Enable or disable a cron job
+##### 4.4.2.2 Enable or disable a cron job
 
 When a cron job is generated, the job is disabled by default. You must manually enable it. If you do not need the cron job to run during a specified time period, you can manually disable it.
 
@@ -2890,7 +2995,7 @@ navigation pane, click **Job Services**. The **Job Execution** page appears.
 5. On the **Cron Jobs** tab, you can enable or disable a cron job.
 To enable a cron job in the inactive state, click **Enable** in the Actions column of the cron job. After a cron job is enabled, its **status** changes to **Active**. The **Enable** button is replaced by **Disable**. To disable a cron job in the active state, click **Disable** in the Actions column of the cron job. After a cron job is disabled, its **status** changes to **Inactive**. The **Disable** button is replaced by **Enable**.
 
-##### Manually run a job
+##### 4.4.2.3 Manually run a job
 
 After you have created an ordinary job, you must manually run the job to perform O&M operations on the service. You can also manually run a cron job.
 
@@ -2914,7 +3019,7 @@ After your confirmation, a record is automatically generated on the **Execution 
 8. On the job execution page, click **Start** at the top to start the execution.
 If you exit the job execution page without performing any operations, you can find the record about the job on the **Execution History** page later, and click **View** to go to the detailed execution page.
 
-##### View job execution history
+##### 4.4.2.4 View job execution history
 
 MaxCompute allows you to view the execution history of a specific job or all jobs.
 
@@ -2981,9 +3086,9 @@ The following table lists the operations that you can perform on records in diff
 |   | Cancel the job | Click Cancel in the upper-right corner of the job details page to cancel the job. |
 |---|---|---|
 
-#### Health management
+#### 4.4.3 Health management
 
-##### Monitoring configuration
+##### 4.4.3.1 Monitoring configuration
 
 Apsara Big Data Manager (ABM) provides a wide variety of built-in checkers for each big data service. These checkers are used to check service faults and send alerts. This helps you detect and fix faults at the earliest opportunity.
 
@@ -3105,7 +3210,7 @@ navigation pane of the **Management** page, click **Health Checks**.
 5. Find the monitoring item that you want to delete and click **Delete** in the Actions column. In
 the message that appears, click **OK**. The monitoring item is deleted.
 
-##### Inspection management
+##### 4.4.3.2 Inspection management
 
 The inspection management feature of Apsara Big Data Manager (ABM) allows you to configure inspection scenarios, inspection items, and scenario combinations based on your business requirements.
 
@@ -3154,7 +3259,7 @@ navigation pane of the **Management** page, click **Health Management**. The **S
 7. Click **Submit**.
 After the scenario is created, you can perform operations on the scenario combination, such as **Edit** and **Manage Patrol Items**. You can also click **Execution History** to view the execution history.
 
-#### Operational audit
+#### 4.4.4 Operational audit
 
 This feature allows you to view the O&M operations of MaxCompute. The details of each operation are provided for retrieval and fault locating.
 
@@ -3188,9 +3293,9 @@ operations listed in the following table based on your situation.
 6. To download the O&M operation execution logs, click **Download Execution Details** at the
 top to save the logs to your on-premises machine.
 
-## Deep inspection
+## 5 Deep inspection
 
-### Overview
+### 5.1 Overview
 
 The deep inspection feature helps you check the monitoring alerts, resource usage, and key metrics of MaxCompute. You can use this feature to check the health status of the platform to avoid unexpected risks. This helps ensure the stability of MaxCompute clusters. The deep inspection feature can check information about the following aspects: Health status of MaxCompute clusters. For more information, see MaxCompute cluster inspection. Risks that affect the health of MaxCompute clusters. For more information, see MaxCompute risk inspection.
 
@@ -3198,7 +3303,7 @@ The deep inspection feature helps you check the monitoring alerts, resource usag
 
 Apsara Big Data Manager (ABM) does not recycle inspection reports, but collects all risks and related thresholds that are contained in the inspection reports.
 
-### Inspect clusters
+### 5.2 Inspect clusters
 
 This topic describes how to check the health status of MaxCompute clusters and quickly identify faulty clusters.
 
@@ -3375,7 +3480,7 @@ cat /apsara/meta/logs/20220424/meta.log
 
 Check whether the returned results are consistent with the information that is marked in the following figure. If the returned results are inconsistent with the information in the following figure, run the `sh /apsara/meta/daliyrun.sh` command as the administrator to restart MaxCompute AG and check the logs again. If the issue persists, submit a ticket for technical support.
 
-### MaxCompute risk inspection
+### 5.3 MaxCompute risk inspection
 
 If the number of chunks or the number of files in the volumes directory exceeds the upper limit, the cluster becomes unstable or even fails. This topic describes how to check risks that exist in MaxCompute clusters and how to handle the risks.
 
@@ -3409,7 +3514,7 @@ pu ls -l /product/aliyun/odps/adsmr|grep -A4 volume
 
 If the number of files in the volumes directory exceeds 5 million, a risk exists. If the number of files in the volumes directory exceeds 8 million, a high risk exists. In this case, you must submit a ticket and contact Alibaba Cloud engineers for technical support.
 
-### Log on to MaxCompute AG
+### 5.4 Log on to MaxCompute AG
 
 This topic describes how to log on to MaxCompute AG.
 
@@ -3422,11 +3527,11 @@ For more information, see Log in to the ABM console.
 **Machines** in the left-side navigation pane. On the Machines page, click Advanced Filter.
 Enter odps in the Product field and click Search. Find a host and click Terminal in the Actions column.
 
-## Common issues and
+## 6 Common issues and solutions
 
 **solutions**
 
-### Query and allocate resources
+### 6.1 Query and allocate resources in a MaxCompute cluster
 
 **in a MaxCompute cluster**
 
@@ -3502,7 +3607,7 @@ sh /apsara/deploy/rpc_wrapper/rpc.sh setquota -i $QUOTAID -a $QUOTANAME -t fair 
 
 If the **$QUOTAID** parameter is specified, the specified quota group is modified. If the $QUOTAID parameter is not specified, a quota group is created. Figure 12: Create a quota group Figure 13: Modify a quota group Divide quota groups To correctly divide quota groups, you must first understand the relationship between a MaxCompute project and a quota group. When you create a project, you must specify the quota group to which the project belongs. You can change the quota group after the project is created. Figure 14: Select a quota group Resources in a quota group can be used by all tasks of the projects that belong to this quota group. Therefore, the tasks of projects in the same quota group may affect each other during peak hours. Large tasks may occupy all resources in the quota group, whereas other computing tasks can only wait for resources. The following figures provide an example. In the scenario of the first figure, a great number of tasks are waiting for resources, whereas the remaining resources of the cluster are sufficient. In this case, you can check the quota usage. In the scenario of the second figure, the 9243 quota group is allocated 50 CPU cores and all allocated CPU cores are used. The tasks of projects that belong to the 9243 quota group must wait until the quota is available. In this case, the remaining resources of the cluster cannot be used by these tasks. Figure 15: Tasks waiting for resources Figure 16: Quota that is used up You must divide quota groups based on the following general principles: Make sure that quota groups do not affect each other in a large resource pool, and prevent overly fine-grained division of quota groups. For example, some large tasks cannot be scheduled due to quota group limits, or a quota group may be occupied for an extended period of time, which affects other tasks in the group. Consider the specified MinQuota and MaxQuota parameters when you divide quota groups. You can oversell the resources in your cluster. That is, the sum of the maximum quotas of all quota groups can be greater than the total amount of cluster resources. However, the oversell ratio cannot be too high. Otherwise, a project may perpetually occupy a large amount of resources. Take the following factors into consideration when you divide quota groups: the priorities of tasks, task duration, amount of task data, and characteristics of computing types. Properly configure quota groups for peak hours. We recommend that you configure a separate quota group for tasks that are important and time-consuming. Divide quota groups and select quota groups for projects based on a resource preallocation policy, and adjust your configurations in a timely manner based on actual requirements.
 
-### Common issues and data skew
+### 6.2 Common issues and data skew troubleshooting
 
 **troubleshooting**
 

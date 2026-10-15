@@ -3,16 +3,73 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 98
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Developer Guide 20260831.pdf"
+source_pdf: "1d8d1790e07f265b_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Developer Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Database%20Security%20Audit%20Developer%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Developer Guide 20260831
 
-## Preparations
+## Table of Contents
 
-### Log on to the API Tool console
+- 1 Preparations
+  - 1.1 Log on to the API Tool console
+  - 1.2 Obtain the information and the endpoint of an API operation
+  - 1.3 Obtain access credentials assigned by RAM
+  - 1.4 Obtain access credentials assigned by STS
+  - 1.5 Obtain the values of common request headers
+- 2 Call examples
+  - 2.1 SDK for Java
+    - 2.1.1 Use the SDK
+      - 2.1.1.1 Install the SDK for Java
+      - 2.1.1.2 Configure authentication credentials
+      - 2.1.1.3 Configure connection requests
+      - 2.1.1.4 Initiate a request
+      - 2.1.1.5 Troubleshooting
+      - 2.1.1.6 Use CommonRequest to call API operations
+  - 2.2 SDK for Python
+    - 2.2.1 Use the SDK
+      - 2.2.1.1 Install the SDK for Python
+      - 2.2.1.2 Configure authentication credentials
+      - 2.2.1.3 Configure HTTPS requests
+      - 2.2.1.4 Initiate a request
+      - 2.2.1.5 Troubleshooting
+      - 2.2.1.6 Use CommonRequest to call API operations
+  - 2.3 SDK for Go
+    - 2.3.1 Use the SDK
+      - 2.3.1.1 Install the core package of the SDK for Go
+      - 2.3.1.2 Configure authentication credentials
+      - 2.3.1.3 Initiate a request
+      - 2.3.1.4 Troubleshooting
+      - 2.3.1.5 Use CommonRequest to call API operations
+- 3 Common parameters
+- 4 DataBase Audit API reference
+  - 4.1 Databases
+    - 4.1.1 ListSupportDbTypesForDataSource
+    - 4.1.2 ListDataSources
+    - 4.1.3 CreateDataSource
+    - 4.1.4 ModifyDataSource
+    - 4.1.5 DeleteDataSource
+  - 4.2 Agents
+    - 4.2.1 GetAgentList
+  - 4.3 Risk identification rules
+    - 4.3.1 GetRuleList
+    - 4.3.2 EnableRulesForThisDB
+    - 4.3.3 DisableRulesForThisDB
+  - 4.4 Audit
+    - 4.4.1 GetDBAuditCount
+    - 4.4.2 GetAuditSearchList
+    - 4.4.3 GetFailedSqlList
+    - 4.4.4 GetSessionSearchList
+    - 4.4.5 GetFailedSessionList
+    - 4.4.6 GetRiskSqlSearchList
+    - 4.4.7 GetRiskBitsList
+    - 4.4.8 GetApiSearchConditionResult
+- 5 Error codes
+
+## 1 Preparations
+
+### 1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console.
 
@@ -40,7 +97,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 **Apsara Uni-manager Management Console User Guide** .
 5. In the top navigation bar, choose **Products > Others > API Tool**.
 
-### Obtain the information and
+### 1.2 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -63,7 +120,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Obtain access credentials
+### 1.3 Obtain access credentials assigned by RAM
 
 **assigned by RAM**
 
@@ -95,7 +152,7 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 
 The AccessKey pair provides full permissions on cloud resources within your account. You must keep the AccessKey pair strictly confidential.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -223,7 +280,7 @@ ned in the previous step.
 
 `}` `}`
 
-### Obtain the values of common
+### 1.5 Obtain the values of common request headers
 
 **request headers**
 
@@ -275,13 +332,13 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The organization ID. |
 
-## Call examples
+## 2 Call examples
 
-### SDK for Java
+### 2.1 SDK for Java
 
-#### Use the SDK
+#### 2.1.1 Use the SDK
 
-##### Install the SDK for Java
+##### 2.1.1.1 Install the SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 and later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit OpenAPI Explorer. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about SDK versions, visit SDK Center.
 
@@ -293,7 +350,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Configure authentication credentials
+##### 2.1.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
@@ -312,7 +369,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
 
-##### Configure connection requests
+##### 2.1.1.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
 
@@ -342,7 +399,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace the variable
 profile.setHttpClientConfig(clientConfig);
 ```
 
-##### Initiate a request
+##### 2.1.1.4 Initiate a request
 
 This topic describes how to initiate a request by using Apsara Stack SDK for Java.
 
@@ -391,7 +448,7 @@ If an exception occurs or you need the original HTTP response, you can use the `
 HttpResponse response = client.doAction(request);
 ```
 
-##### Troubleshooting
+##### 2.1.1.5 Troubleshooting
 
 If an error occurs on the server or in the SDK when you use Apsara Stack SDK for Java, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by Apsara Stack SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -423,7 +480,7 @@ to request technical support.
 
 `}`
 
-##### Use CommonRequest to call API operations
+##### 2.1.1.6 Use CommonRequest to call API operations
 
 **Prerequisites**
 
@@ -577,11 +634,11 @@ u must add the x-acs-security-token field to the header.
 
 `}` `}` `}`
 
-### SDK for Python
+### 2.2 SDK for Python
 
-#### Use the SDK
+#### 2.2.1 Use the SDK
 
-##### Install the SDK for Python
+##### 2.2.1.1 Install the SDK for Python
 
 This topic describes how to install and use Apsara Stack SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x and later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -599,7 +656,7 @@ If you use Python 3.x, run the following command to install the core library of 
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Configure authentication credentials
+##### 2.2.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Python supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
@@ -611,7 +668,7 @@ Do not disclose the code that contains your AccessKey pair. For example, do not 
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-##### Configure HTTPS requests
+##### 2.2.1.3 Configure HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or specify a global default protocol.
 
@@ -646,7 +703,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 quest.
 ```
 
-##### Initiate a request
+##### 2.2.1.4 Initiate a request
 
 This topic describes how to initiate a request by using Apsara Stack SDK for Python.
 
@@ -676,7 +733,7 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response
 ```
 
-##### Troubleshooting
+##### 2.2.1.5 Troubleshooting
 
 If an error occurs on the server or in the SDK when you use Apsara Stack SDK for Python, an error response is returned. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by Apsara Stack SDK for Python. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -697,7 +754,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-##### Use CommonRequest to call API operations
+##### 2.2.1.6 Use CommonRequest to call API operations
 
 **Prerequisites**
 
@@ -830,11 +887,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-### SDK for Go
+### 2.3 SDK for Go
 
-#### Use the SDK
+#### 2.3.1 Use the SDK
 
-##### Install the core package of the SDK for Go
+##### 2.3.1.1 Install the core package of the SDK for Go
 
 This topic describes how to install the core package of Apsara Stack SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package of Apsara Stack SDK for Go:
 
@@ -842,7 +899,7 @@ This topic describes how to install the core package of Apsara Stack SDK for Go.
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Configure authentication credentials
+##### 2.3.1.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDK for Go supports identity authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain access credentials assigned by RAM. If you want to use your AccessKey pair to access Apsara Stack services, you must configure the AccessKey pair as credentials when you initialize a client.
 
@@ -868,7 +925,7 @@ secret.
 
 Replace the variables in the preceding sample code with actual values. Delete the angle brackets (<>) from the final code.
 
-##### Initiate a request
+##### 2.3.1.3 Initiate a request
 
 This topic describes how to initiate a request by using Apsara Stack SDK for Go. In this example, a request is initiated by using Elastic Compute Service (ECS) SDK for Go.
 1. Import ECS SDK for Go.
@@ -906,7 +963,7 @@ request := ecs.CreateDescribeInstanceAttributeRequest() request.InstanceId = ""
 response, err := ecsClient.DescribeInstanceAttribute(request)
 ```
 
-##### Troubleshooting
+##### 2.3.1.4 Troubleshooting
 
 When you use Apsara Stack SDK for Go, a `ClientError` response is returned if an error occurs on the client, or a `ServerError` response is returned if an error occurs on the server. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in the same manner as standard Go errors.
 
@@ -986,7 +1043,7 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
 
 `}`
 
-##### Use CommonRequest to call API operations
+##### 2.3.1.5 Use CommonRequest to call API operations
 
 **Prerequisites**
 
@@ -1149,7 +1206,7 @@ The client-level setting takes effect only if the request-level setting is not s
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the clien t to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting f or the client.
 ```
 
-## Common parameters
+## 3 Common parameters
 
 **Common request parameters**
 
@@ -1171,13 +1228,13 @@ Common request parameters must be included in all Apsara Stack API requests. Tab
 
 Responses are returned in the unified format for API requests. The following HTTP status codes indicate different request states: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates a failed call. Responses are returned in the JSON format. Each response returns a unique request ID regardless of whether the call is successful.
 
-## DataBase Audit API
+## 4 DataBase Audit API reference
 
 **reference**
 
-### Databases
+### 4.1 Databases
 
-#### ListSupportDbTypesForDataSource
+#### 4.1.1 ListSupportDbTypesForDataSource
 
 Queries a list of database types supported by Database Security Audit.
 
@@ -1258,7 +1315,7 @@ Sample success responses `JSON` format `{`
 </ListSupportDbTypesForDataSourceResponse>
 ```
 
-#### ListDataSources
+#### 4.1.2 ListDataSources
 
 Queries a list of databases to be audited.
 
@@ -1337,7 +1394,7 @@ Sample success responses `JSON` format `{`
 </ListDataSourcesResponse>
 ```
 
-#### CreateDataSource
+#### 4.1.3 CreateDataSource
 
 Adds a database to be audited.
 
@@ -1373,7 +1430,7 @@ Sample success responses `JSON` format `{}` `XML` format
 <CreateDataSourceResponse></CreateDataSourceResponse>
 ```
 
-#### ModifyDataSource
+#### 4.1.4 ModifyDataSource
 
 Modifies the information about an audited database.
 
@@ -1426,7 +1483,7 @@ Sample success responses `JSON` format `{`
 <ModifyDataSourceResponse></ModifyDataSourceResponse>
 ```
 
-#### DeleteDataSource
+#### 4.1.5 DeleteDataSource
 
 Removes a data source from Database Security Audit.
 
@@ -1457,9 +1514,9 @@ Sample success responses `JSON` format `{}` `XML` format
 <DeleteDataSourceResponse></DeleteDataSourceResponse>
 ```
 
-### Agents
+### 4.2 Agents
 
-#### GetAgentList
+#### 4.2.1 GetAgentList
 
 Queries a list of installed agents.
 
@@ -1550,9 +1607,9 @@ Sample success responses `JSON` format `{`
 
 For a list of error codes, see Error codes.
 
-### Risk identification rules
+### 4.3 Risk identification rules
 
-#### GetRuleList
+#### 4.3.1 GetRuleList
 
 Queries a list of rules contained in each rule group of Database Security Audit.
 
@@ -1640,7 +1697,7 @@ Sample success responses `JSON` format `{`
 </GetRuleListResponse>
 ```
 
-#### EnableRulesForThisDB
+#### 4.3.2 EnableRulesForThisDB
 
 Enables rules for a database.
 
@@ -1672,7 +1729,7 @@ Sample success responses `JSON` format `{}` `XML` format
 <EnableRulesForThisDBResponse></EnableRulesForThisDBResponse>
 ```
 
-#### DisableRulesForThisDB
+#### 4.3.3 DisableRulesForThisDB
 
 Disables rules for a database.
 
@@ -1706,9 +1763,9 @@ Sample success responses `JSON` format `{}` `XML` format
 <DisableRulesForThisDBResponse></DisableRulesForThisDBResponse>
 ```
 
-### Audit
+### 4.4 Audit
 
-#### GetDBAuditCount
+#### 4.4.1 GetDBAuditCount
 
 Queries the audit statistics of a database.
 
@@ -1774,7 +1831,7 @@ Sample success responses `JSON` format `{`
 </GetDBAuditCountResponse>
 ```
 
-#### GetAuditSearchList
+#### 4.4.2 GetAuditSearchList
 
 Queries a list of audit logs generated for SQL statements that are executed to connect a database.
 
@@ -1926,7 +1983,7 @@ Sample success responses `JSON` format `{`
 </GetAuditSearchListResponse>
 ```
 
-#### GetFailedSqlList
+#### 4.4.3 GetFailedSqlList
 
 Queries a list of SQL statements that failed to connect to a database.
 
@@ -2056,7 +2113,7 @@ Sample success responses `JSON` format `{`
 </GetFailedSqlListResponse>
 ```
 
-#### GetSessionSearchList
+#### 4.4.4 GetSessionSearchList
 
 Queries a list of sessions that are established to connect to a database.
 
@@ -2164,7 +2221,7 @@ Sample success responses `JSON` format `{`
 </GetSessionSearchListResponse>
 ```
 
-#### GetFailedSessionList
+#### 4.4.5 GetFailedSessionList
 
 Queries a list of sessions that failed to log in to a database.
 
@@ -2258,7 +2315,7 @@ Sample success responses `JSON` format `{`
 </GetFailedSessionListResponse>
 ```
 
-#### GetRiskSqlSearchList
+#### 4.4.6 GetRiskSqlSearchList
 
 Queries a list of risky SQL statements.
 
@@ -2382,7 +2439,7 @@ Sample success responses `JSON` format `{`
 </GetRiskSqlSearchListResponse>
 ```
 
-#### GetRiskBitsList
+#### 4.4.7 GetRiskBitsList
 
 Queries the statistics of hit risk rules.
 
@@ -2456,7 +2513,7 @@ Sample success responses `JSON` format `{`
 </GetRiskBitsListResponse>
 ```
 
-#### GetApiSearchConditionResult
+#### 4.4.8 GetApiSearchConditionResult
 
 Queries the conditions that can be used to query SQL statements.
 
@@ -2520,7 +2577,7 @@ Sample success responses `JSON` format `{`
 </GetApiSearchConditionResultResponse>
 ```
 
-## Error codes
+## 5 Error codes
 
 This topic describes the error codes returned for API operations in Apsara Stack Security. Table 1: Common error codes of Apsara Stack Security
 

@@ -2,14 +2,104 @@
 title: "Elasticsearch Developer Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 177
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch Developer Guide 20260629.pdf"
+source_pdf: "0cedf87b418b42aa_Alibaba Cloud Apsara Stack V3.18.6 Elasticsearch Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%20Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elasticsearch%20Developer%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Elasticsearch Developer Guide 20260629
 
-## Interact using RESTful APIs
+## Table of Contents
+
+- 1 Interact using RESTful APIs
+- 2 Interact using the Python API
+  - 2.1 Preparations
+  - 2.2 Basic operation examples
+  - 2.3 Complete operation example
+  - 2.4 Performance optimization suggestions
+  - 2.5 FAQ
+  - 2.6 Use the Java API to access a cluster
+    - 2.6.1 Connect to an instance
+    - 2.6.2 Create an index
+    - 2.6.3 Write data
+    - 2.6.4 Query data
+    - 2.6.5 Delete an index
+- 3 Interact with OpenAPI
+  - 3.1 Process of API calls
+  - 3.2 Preparations
+    - 3.2.1 Obtain API information and its endpoint
+    - 3.2.2 Obtain AccessKey credentials
+    - 3.2.3 Obtain an STS AccessKey pair
+    - 3.2.4 Obtain the values of common headers
+  - 3.3 Use POP to make API calls
+    - 3.3.1 Java version
+    - 3.3.2 SDK for Go
+    - 3.3.3 Python Version
+  - 3.4 SLB instances
+    - 3.4.1 Create a Notebook modeling instance
+      - 3.4.1.1 CreateInstance
+      - 3.4.1.2 ListZones
+      - 3.4.1.3 ListDeploymentArchs
+      - 3.4.1.4 ListNetworkTypes
+      - 3.4.1.5 ListEsVersions
+      - 3.4.1.6 ListCpubrands
+      - 3.4.1.7 ListAvailiableSpecs
+      - 3.4.1.8 ListStorageClass
+    - 3.4.2 Instance management
+      - 3.4.2.1 ListInstance
+      - 3.4.2.2 DescribeInstance
+      - 3.4.2.3 RestartInstance
+      - 3.4.2.4 UpdateInstance
+      - 3.4.2.5 DeleteInstance
+      - 3.4.2.6 DescribeElasticsearchHealth
+      - 3.4.2.7 UpdateDescription
+      - 3.4.2.8 UpdateAdminPassword
+      - 3.4.2.9 ListAllNode
+      - 3.4.2.10 GetElasticsearchPodInfo
+      - 3.4.2.11 UpdateElasticsearchSettings
+      - 3.4.2.12 GetElasticsearchSettings
+      - 3.4.2.13 GetElasticsearchPodLogs
+      - 3.4.2.14 UpdateInstanceSettings
+    - 3.4.3 Snapshots
+      - 3.4.3.1 CreateSnapshot
+      - 3.4.3.2 ListSnapshots
+      - 3.4.3.3 DescribeSnapshotSetting
+      - 3.4.3.4 ListSnapshotRepoInfos
+      - 3.4.3.5 GetSnapshotRepoInfo
+      - 3.4.3.6 UpdateSnapshotSetting
+    - 3.4.4 Manage dictionaries
+      - 3.4.4.1 ListDicts
+      - 3.4.4.2 ListDictInformation
+      - 3.4.4.3 UpdateDict
+      - 3.4.4.4 UpdateSynonymsDicts
+      - 3.4.4.5 UpdateHotIkDicts
+    - 3.4.5 Plug-in
+      - 3.4.5.1 ListPlugins
+      - 3.4.5.2 ListKibanaPlugins
+      - 3.4.5.3 InstallKibanaSystemPlugin
+      - 3.4.5.4 UninstallKibanaPlugin
+      - 3.4.5.5 InstallSystemPlugin
+      - 3.4.5.6 InstallUserPlugins
+      - 3.4.5.7 UninstallPlugin
+      - 3.4.5.8 GetConfigFiles
+      - 3.4.5.9 UpdateConfigFiles
+      - 3.4.5.10 DeleteConfigFile
+    - 3.4.6 security-configuration-discontinued
+      - 3.4.6.1 ListInstanceCertificateFinger
+      - 3.4.6.2 ListUserSecurityInfo
+      - 3.4.6.3 UpdateUserSecurityInfo
+      - 3.4.6.4 ModifyAclWhiteIps
+      - 3.4.6.5 DisableHttps
+      - 3.4.6.6 EnableHttps
+      - 3.4.6.7 ListGlobalFeatures
+- 4 Appendixes
+  - 4.1 STS overview
+    - 4.1.1 What is STS?
+    - 4.1.2 Obtain an STS token
+
+ESTful APIs
+
+## 1 Interact using RESTful APIs
 
 Elasticsearch uses RESTful APIs. All operations, such as creating, retrieving, updating, and deleting data, and configuring aliases, are performed through HTTP APIs. This topic describes how to use RESTful APIs.
 
@@ -41,6 +131,8 @@ Elasticsearch provides official clients for many programming languages, such as 
 curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
 ```
 
+ESTful APIs
+
 | Parameter | Description |
 |---|---|
 | VERB | The HTTP method. Valid values are GET, POST, PUT, HEAD, and DELETE. |
@@ -51,68 +143,61 @@ curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
 | QUERY STRING _ | Optional query request parameters. For example, the ?pretty parameter makes the returned JSON data easier to read. |
 | BODY | The request body in JSON format. This parameter is optional. |
 
-|  | cluster/stats _ |
+|   | cluster/stats _ |
 |---|---|
-| nodes/stats/jvm _ |  |
+| nodes/stats/jvm _ |   |
 
 **REST API (HTTP) request examples**
 
 Run the following command to count the number of documents in an Elasticsearch cluster.
 
 ```json
-curl -XGET 'http://localhost:9200/_count?pretty' -d ' {
+curl -XGET 'http://localhost:9200/_count?pretty' -d '
   "query": {
     "match_all": {}
-  }
-}'
 ```
 
-The following result is returned.
+`}'` The following result is returned.
 
 ```json
-{
     "count" : 0,
     "_shards" : {
         "total" : 5,
         "successful" : 5,
         "failed" : 0
-     }
-}
 ```
 
-Use `curl -i` to display the HTTP request header. For example, `curl -i -XGET` `'localhost:9200/'` . The following example shows a complete request.
+ESTful APIs Use `curl -i` to display the HTTP request header. For example, `curl -i -XGET` `'localhost:9200/'` . The following example shows a complete request.
 
 ```json
-curl -i -XGET 'localhost:9200/_count?pretty' -d ' {
+curl -i -XGET 'localhost:9200/_count?pretty' -d '
     "query": {
         "match_all": {}
-    }
-}'
 ```
 
-The following example shows a shorthand request.
+`}'` The following example shows a shorthand request.
 
 ```json
-GET /_count {
+GET /_count
     "query": {
         "match_all": {}
-    }
-}
 ```
 
-## Interact using the Python
+he Python API
+
+## 2 Interact using the Python API
 
 **API**
 
 This topic describes how to use Python to access Alibaba Cloud Elasticsearch version 7.10. It covers client installation, connection configuration, basic operations, and end-to-end testing. Developers can use this guide to quickly learn how to work with Elasticsearch in Python.
 
-### Preparations
+### 2.1 Preparations
 
 This topic describes the preparations required to use Python to access Alibaba Cloud Elasticsearch version 7.10, including environment requirements, dependency installation, network configuration, client initialization, connection configuration, and authentication setup.
 
 **Environment requirements**
 
-Elasticsearch version: 7.10.0 (compatible with Alibaba Cloud Elasticsearch 7.10) Dependency libraries: `elasticsearch>=7.10.0` , `urllib3`
+Python version: 3.6 or later Elasticsearch version: 7.10.0 (compatible with Alibaba Cloud Elasticsearch 7.10) Dependency libraries: `elasticsearch>=7.10.0` , `urllib3`
 
 **Install dependencies**
 
@@ -130,6 +215,8 @@ Meet the following requirements based on your network configuration method: Publ
 
 **Basic connection configuration**
 
+he Python API
+
 ```python
 from elasticsearch import Elasticsearch
 # Basic configuration - HTTP connection
@@ -141,7 +228,7 @@ es = Elasticsearch(
     timeout=30
 ```
 
-)
+`)`
 
 ```python
 # Test the connection
@@ -168,11 +255,11 @@ es = Elasticsearch(
     timeout=30
 ```
 
-)
+`)`
 
 **Connection pool configuration**
 
-For high concurrency scenarios, configure the connection pool.
+For high concurrency scenarios, configure the connection pool. he Python API
 
 ```java
 from elasticsearch import Elasticsearch from urllib3.poolmanager import PoolManager import urllib3
@@ -188,7 +275,7 @@ es = Elasticsearch(
     max_retries=10
 ```
 
-)
+`)`
 
 **Authentication configuration**
 
@@ -205,13 +292,15 @@ es = Elasticsearch(
     timeout=30
 ```
 
-)
+`)`
 
-### Basic operation examples
+### 2.2 Basic operation examples
 
 This topic provides basic operation examples, including indexing documents, searching documents, aggregate queries, and deleting documents.
 
 **Index documents**
+
+he Python API
 
 ```json
 from datetime import datetime
@@ -220,7 +309,7 @@ doc = {
     'author': 'kimchy',
     'text': 'Elasticsearch: cool. bonsai cool.',
     'timestamp': datetime.now(),
-} res = es.index(index="test-index", doc_type='_doc', id=1, body=doc) print(res['result'])
+res = es.index(index="test-index", doc_type='_doc', id=1, body=doc) print(res['result'])
 # Retrieve the document
 res = es.get(index="test-index", doc_type='_doc', id=1) print(res['_source'])
 ```
@@ -242,10 +331,7 @@ agg_body = {
         "popular_tags": {
             "terms": {
                 "field": "tags.keyword"
-            }
-        }
-    }
-} res = es.search(index="my-index", body=agg_body) for bucket in res['aggregations']['popular_tags']['buckets']:
+res = es.search(index="my-index", body=agg_body) for bucket in res['aggregations']['popular_tags']['buckets']:
     print(bucket['key'], bucket['doc_count'])
 ```
 
@@ -256,9 +342,9 @@ agg_body = {
 res = es.delete(index="test-index", doc_type='_doc', id=1) print(res['result'])
 ```
 
-### Complete operation example
+### 2.3 Complete operation example
 
-This topic provides a complete operation example for performing basic Create, Read, Update, and Delete (CRUD) operations.
+he Python API This topic provides a complete operation example for performing basic Create, Read, Update, and Delete (CRUD) operations.
 
 ```python
 from datetime import datetime from elasticsearch import Elasticsearch, exceptions class ElasticSearchClient:
@@ -272,20 +358,18 @@ from datetime import datetime from elasticsearch import Elasticsearch, exception
             maxsize=50
 ```
 
-)
+`)`
 
 ```json
         self.index_name = index_name
     def create_index(self):
+        """Create an index"""
         mapping = {
             "mappings": {
                 "properties": {
                     "title": {"type": "text"},
                     "content": {"type": "text"},
                     "timestamp": {"type": "date"}
-                }
-            }
-        }
         try:
             if not self.es_client.indices.exists(index=self.index_name):
                 response = self.es_client.indices.create(index=self.index_name,
@@ -305,7 +389,7 @@ body=mapping)
                 body=doc_data
 ```
 
-)
+`)`
 
 ```python
             print(f"Document added successfully: {response}")
@@ -314,17 +398,13 @@ body=mapping)
             print(f"Error adding document: {e}")
 ```
 
-df d
-
-```
-(
-```
-
-`lf` d
+`d``f` `d` `(` `lf` `d`
 
 ```
 id)
 ```
+
+he Python API
 
 ```python
     def get_document(self, doc_id):
@@ -336,7 +416,7 @@ id)
                 id=doc_id
 ```
 
-)
+`)`
 
 ```python
             return response['_source']
@@ -351,7 +431,7 @@ id)
                 body=query
 ```
 
-)
+`)`
 
 ```python
             return response
@@ -367,7 +447,7 @@ id)
                 id=doc_id
 ```
 
-)
+`)`
 
 ```python
             print(f"Document deleted successfully: {response}")
@@ -390,16 +470,18 @@ if __name__ == "__main__":
 #Testallfeatures
 ```
 
+he Python API
+
 ```json
     # Test all features
     try:
+        # Create an index
         es_client.create_index()
         # Add a document
         sample_doc = {
             'title': 'Python Elasticsearch Demo',
             'content': 'This is an example of accessing Elasticsearch using Python',
             'timestamp': datetime.now()
-        }
         es_client.add_document('1', sample_doc)
         # Retrieve a document
         doc = es_client.get_document('1')
@@ -409,9 +491,6 @@ if __name__ == "__main__":
             "query": {
                 "match": {
                     "title": "Python"
-                }
-            }
-        }
         results = es_client.search_documents(query)
         if results:
             print("Number of search results:", results['hits']['total']['value'])
@@ -422,13 +501,13 @@ if __name__ == "__main__":
         es_client.close_connection()
 ```
 
-### Performance optimization
+### 2.4 Performance optimization suggestions
 
 **suggestions**
 
-This topic provides suggestions for improving performance. You can optimize performance in the following ways: The ES product is fully compatible with Elasticsearch 7.10. We recommend that you use tools such as Tongyi Lingma to perform checks. Use the bulk API to process large amounts of data. Adjust the timeout value to balance response time and resource consumption. Use the Elasticsearch caching mechanism. Create appropriate indexes on frequently queried fields.
+This topic provides suggestions for improving performance. You can optimize performance in the following ways: The ES product is fully compatible with Elasticsearch 7.10. We recommend that you use tools such as Tongyi Lingma to perform checks. Use the bulk API to process large amounts of data. Adjust the timeout value to balance response time and resource consumption. Use the Elasticsearch caching mechanism. Create appropriate indexes on frequently queried fields. he Python API
 
-### FAQ
+### 2.5 FAQ
 
 This topic describes how to troubleshoot common issues that occur when you run search operations with the Python client.
 
@@ -446,17 +525,17 @@ except Exception as e:
 
 This code sample applies to the following Alibaba Cloud Elasticsearch development scenarios. It demonstrates how to use the Python client to properly catch and handle exceptions when you run search operations: Index existence validation During development or debugging, you can quickly verify whether a target index exists. Catch the `NotFoundError` exception to determine if the index is missing. This lets you trigger a subsequent index creation or data initialization flow. Connection status check You can catch the `ConnectionError` exception to check the network connectivity between the client and the Elasticsearch cluster, authentication configurations such as the username and password, or cluster availability. This ensures that the connection parameters are correct. Fault tolerance design for production environments In a production system, you can use exception handling to prevent the program from crashing if a search operation fails. You can also provide helpful error messages or log records to help operations and maintenance (O&M) engineers quickly identify the issue. General error debugging You can catch unexpected exceptions, such as insufficient permissions or query syntax errors, and output detailed error messages to help developers diagnose issues and optimize the code.
 
-### Use the Java API to access a
+### 2.6 Use the Java API to access a cluster
 
 **cluster**
 
-#### Connect to an instance
+#### 2.6.1 Connect to an instance
 
 This topic describes how to connect to a Elasticsearch instance by using a Java High Level REST Client.
 
 **maven dependency**
 
-Take Elasticsearch 7.10 as an example. The following table lists the Maven dependencies.
+Take Elasticsearch 7.10 as an example. The following table lists the Maven dependencies. he Python API
 
 ```xml
 !" -- highLevelClient dependencies -->
@@ -477,6 +556,8 @@ Take Elasticsearch 7.10 as an example. The following table lists the Maven depen
 The version of the elasticsearch-rest-high-level-client used by the Java client must be the same as the version of the Elasticsearch cluster. elasticsearch-rest-high-level-client version 5.5.3 is unavailable. If you want to access a Elasticsearch cluster of version 5.5.3, you can use the elasticsearch-restclient of version 5.6.2.
 
 **Code example**
+
+he Python API
 
 ```
 @Bean("myRestHighLevelClient") public RestHighLevelClient elasticsearchRestClient(){
@@ -506,10 +587,9 @@ String(encodedBytes))};
      return httpClientBuilder;
    });
    return new RestHighLevelClient(builder);
-}
 ```
 
-#### Create an index
+#### 2.6.2 Create an index
 
 This topic describes how to create an index by using the Java API.
 
@@ -523,7 +603,7 @@ High Level REST Client is not supported in Elasticsearch 5.5.3.
 
 **Code example**
 
-When you create an index, an index of Elasticsearch 7.0 or earlier contains five primary shards and one secondary shard by default. Elasticsearch an index of 7.0 or later contains one primary shard and one secondary shard by default. The following code provides an example on how to customize the settings and mappings of an index:
+When you create an index, an index of Elasticsearch 7.0 or earlier contains five primary shards and one secondary shard by default. Elasticsearch an index of 7.0 or later contains one primary shard and one secondary shard by default. The following code provides an example on how to customize the settings and mappings of an index: he Python API
 
 ```
 // Specify the index name. CreateIndexRequest createIndexRequest = new CreateIndexRequest("index_name"); // Create an index. CreateIndexResponse createIndexResponse = restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT); // The request parameters must be adjusted for 6.3.2 and later. //CreateIndexResponse createIndexResponse = restHighLevelClient.indices().create(createIndexRequest);
@@ -579,6 +659,8 @@ The following example creates an index by Low Level REST Client. This is applica
 
 **Low Level Client configuration**
 
+he Python API
+
 ```
 @Bean("lowClient") public RestClient restClient(){
   // Set hostName to the cluster endpoint.
@@ -592,7 +674,6 @@ String(encodedBytes))};
   RestClientBuilder builder = RestClient.builder(httpHost);
   builder.setDefaultHeaders(headers);
   return builder.build();
-}
 ```
 
 **Example of creating an index in JSON form**
@@ -612,15 +693,14 @@ public String createIndex(){
         Response response = client.performRequest("PUT", "/index_name",
 Collections.emptyMap(), entity);
         return response.toString();
-    }
     catch (IOException e) {
         e.printStackTrace();
-    }
     return "request failed";
-}
 ```
 
 **Example of creating an index in Map form**
+
+he Python API
 
 ```
 public String createIndex() throws IOException {
@@ -635,15 +715,12 @@ pe.APPLICATION_JSON);
     Response response = client.performRequest("PUT", "/index_name",
 Collections.emptyMap(), entity);
     return response.toString();
-  }
   catch (IOException e) {
     e.printStackTrace();
-  }
   return "request failed";
-}
 ```
 
-#### Write data
+#### 2.6.3 Write data
 
 This topic describes how to use the Java API to write data to a Elasticsearch cluster, including single write and bulk write (batch write).
 
@@ -660,16 +737,18 @@ in JSON format // The index to be written. IndexRequest request = new IndexReque
 request.source(jsonString, XContentType.JSON); // In V6.3.2 and earlier, the RequestOptions.DEFAULT parameter is not required. IndexResponse response = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 ```
 
+he Python API
+
 ```
 as a map // The index to write. IndexRequest request = new IndexRequest("index_name"); // The ID of the document. request.id("6"); // The type of the document. It must be included in versions earlier than 7.x. In 5.5 .3, it cannot start with an underscore (_). request.type("_doc"); // The written information. Map<String, String> map = new HashMap<String, String>(); map.put("user","kimchy"); map.put("postDate","2013-01-30"); map.put("message","trying out Elasticsearch"); request.source(map); // In V6.3.2 and earlier, the RequestOptions.DEFAULT parameter is not required. IndexResponse response = restHighLevelClient.index(request,RequestOptions.DEFAULT);
 ```
 
 **Bulk write**
 
-You can specify or not specify the id when writing bulk data. If you do not specify this parameter, the parameter is randomly generated by the Elasticsearch. Example: BulkRequest request=new BulkRequest() of the 7.x version
+You can specify or not specify the id when writing bulk data. If you do not specify this parameter, the parameter is randomly generated by the Elasticsearch. Example: BulkRequest request=new BulkRequest() of the 7.x version ;
 
 ```
-; request.add(new IndexRequest("index_name").id("299")
+request.add(new IndexRequest("index_name").id("299")
             .source(XContentType.JSON,"field", "foo"));
 request.add(new IndexRequest("index_name").id("399")
             .source(XContentType.JSON,"field", "bar"));
@@ -678,10 +757,10 @@ request.add(new IndexRequest("index_name").id("499")
 BulkResponse response = restHighLevelClient.bulk(request,RequestOptions.DEFAULT);
 ```
 
-BulkRequest request=new BulkRequest() of the 6.x version
+BulkRequest request=new BulkRequest() of the 6.x version ;
 
 ```
-; request.add(new IndexRequest("index_name").id("1").type("_doc")
+request.add(new IndexRequest("index_name").id("1").type("_doc")
             .source(XContentType.JSON,"field", "foo"));
 request.add(new IndexRequest("index_name").id("2").type("_doc")
             .source(XContentType.JSON,"field", "bar"));
@@ -702,7 +781,9 @@ request.add(new IndexRequest("index_name").id("3").type("doc")
 BulkResponse response = restHighLevelClient.bulk(request);
 ```
 
-#### Query data
+he Python API
+
+#### 2.6.4 Query data
 
 This topic describes how to use the Java API to query data in a Elasticsearch cluster.
 
@@ -732,7 +813,7 @@ SearchSourceBuilder sourceBuilder=new SearchSourceBuilder(); // Arrange the fiel
 
 **Aggregation search**
 
-Example:
+he Python API Example:
 
 ```
 SearchSourceBuilder sourceBuilder=new SearchSourceBuilder(); // Run an aggregate query named "by_company" based on the company subfield. company is not of the keyword type, and its subfield company.keyword is of the keyword type. TermsAggregationBuilder aggregation = AggregationBuilders.terms("by_company")
@@ -744,7 +825,7 @@ sourceBuilder.aggregation(aggregation); SearchRequest request = new SearchReques
 
 You can aggregate only fields of the Keyword type. If you aggregate fields of other types, an error illegal_argument_exception is reported.
 
-#### Delete an index
+#### 2.6.5 Delete an index
 
 This topic describes how to use the Java API to delete an index.
 
@@ -766,6 +847,8 @@ The following example deletes an index by Low Level REST Client. This is applica
 
 **Low Level REST Client configuration**
 
+he Python API
+
 ```
 @Bean("lowClient") public RestClient restClient(){
   // Set hostName to the cluster endpoint.
@@ -779,7 +862,6 @@ String(encodedBytes))};
   RestClientBuilder builder = RestClient.builder(httpHost);
   builder.setDefaultHeaders(headers);
   return builder.build();
-}
 ```
 
 **Example of deleting an index**
@@ -790,17 +872,14 @@ public String deleteIndex(){
         Response response = client.performRequest("DELETE", "/index_name",
 Collections.emptyMap());
         return response.toString();
-    }
     catch (IOException e) {
         e.printStackTrace();
-    }
     return "request failed";
-}
 ```
 
-## Interact with OpenAPI
+## 3 Interact with OpenAPI
 
-### Process of API calls
+### 3.1 Process of API calls
 
 You can use POP Gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. From Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure that user experience is consistent with that in Alibaba Cloud public cloud. This topic describes how to use POP Gateway to call Apsara Stack API operations.
 
@@ -820,22 +899,22 @@ For more information about how to obtain the AccessKey pair, see Obtain an Acces
 If you want to make API calls to use the Apsara Uni-manager Management Console or other Apsara Stack services, we recommend that you use the AccessKey pair of a personal account.
 2. Obtain the region ID.
 For more information about how to obtain the value of the RegionID parameter, see Obtain header parameters.
-
-|  | Note When you call an operation, specify the <x-acs-organizationid> and <x-acs- resourcegroupid>, header parameters. The organization ID <x-acs-organizationid> and resource set ID <x-acs-resourcegroupid> specify the organization and resource set to which a resource belong. This implements isolated query of instance resources. If you do not specify the <x-acs-organizationid> parameter, the organization to which the current user belongs is obtained by default. If you do not specify the <x-acs-resourcegroupid> parameter, no resource set IDs are specified by default. If you specify a resource set ID, you must specify an organization ID. |  |  |
-|---|---|---|---|
-|  |  | <x-acs- |  |
-|  | resourcegroupid>, |  |  |
-
 3. Obtain the organization ID and resource set ID.
 You can call the GetOrganizationList operation to obtain the organization ID. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Develope r Guide.
+
+|   | Note When you call an operation, specify the <x-acs-organizationid> and <x-acs- resourcegroupid>, header parameters. The organization ID <x-acs-organizationid> and resource set ID <x-acs-resourcegroupid> specify the organization and resource set to which a resource belong. This implements isolated query of instance resources. If you do not specify the <x-acs-organizationid> parameter, the organization to which the current user belongs is obtained by default. If you do not specify the <x-acs-resourcegroupid> parameter, no resource set IDs are specified by default. If you specify a resource set ID, you must specify an organization ID. |   |   |
+|---|---|---|---|
+|   |   | <x-acs- |   |
+|   | resourcegroupid>, |   |   |
+
 4. Obtain the API reference of a service.
 For more information about how to view, use, and obtain the developer guide of a specific service, and understand the features and usage methods of operations, see Usage notes.
 5. Obtain the endpoint of the service.
 6. Obtain the service SDK and use the SDK to call an operation of the service.
 
-### Preparations
+### 3.2 Preparations
 
-#### Obtain API information and its
+#### 3.2.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -857,7 +936,7 @@ The information on the API Directory page of the Apsara Uni-manager Management C
 7. Select the corresponding API operation and obtain the POP endpoint information of the
 cloud service under the parameter name.
 
-#### Obtain AccessKey credentials
+#### 3.2.2 Obtain AccessKey credentials
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use either type of access credential for authentication when you make an API request. This topic describes how to obtain an access credential that is assigned by RAM.
 
@@ -865,16 +944,16 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 
 An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an access credential for authentication. RAM: assigns an AccessKey pair that consists of an AccessKey ID and an AccessKey secret. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
 
+**Warning**
+
+The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
+
 | Header | Description |
 |---|---|
 | x-acs-regionid | The region ID. Example: cn-hangzhou-*. |
 | x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which you want to perform the operation. For example, you can use the ID of an Elastic Compute Service (ECS) instance obtained from the ECS instance list. |
-
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -898,7 +977,7 @@ want to obtain.
 5. On the right side of the page, click **Manage AccessKey Pairs**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-#### Obtain an STS AccessKey pair
+#### 3.2.3 Obtain an STS AccessKey pair
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack.
 
@@ -938,7 +1017,7 @@ ret.
     String stsAK = credentials.getString("AccessKeyId");
     String stsSK = credentials.getString("AccessKeySecret");
     String stsToken = credentials.getString("SecurityToken");
-} private static String callAssumeRole(IAcsClient client) {
+private static String callAssumeRole(IAcsClient client) {
     CommonRequest request = new CommonRequest();
     // Replace "sts.aliyuns.com" with the actual STS endpoint. The general format is
 sts-vpc.${global:region}.${global:internet-domain}.
@@ -963,9 +1042,7 @@ am Role ARN obtained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
     return null;
-}
 ```
 
 3. Use the STS AccessKey triplet to call an API operation of a cloud product. The following
@@ -1019,11 +1096,9 @@ tained in the previous step.
     } catch (ClientException e) {
         System.out.println(e.getErrCode());
         System.out.println(e.getErrMsg());
-    }
-}
 ```
 
-#### Obtain the values of common headers
+#### 3.2.4 Obtain the values of common headers
 
 You must specify multiple request headers when you call Apsara Stack API operations. This topic describes the common request headers and how to obtain the values of the request headers. This topic also describes the return values of specific parameters after you call API operations.
 
@@ -1060,13 +1135,6 @@ You can obtain the ID of the Alibaba Cloud Elasticsearch instance from the insta
 2. In the top navigation bar, choose **Products** > **Big Data** > **Elasticsearch on Kubernetes**.
 3. Select the **organization** and **region** where the Elasticsearch instance resides.
 
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-| DepartmentName | The name of an organization. |
-| Department | The ID of an organization. |
-
 **Note**
 
 If you are an operations administrator, select the root organization to log on. If you are an organization administrator, select the organization to which you belong to log on.
@@ -1084,9 +1152,16 @@ access the console.
 
 If you call the API operation of a list instance, the following value is added by default.
 
-### Use POP to make API calls
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+| DepartmentName | The name of an organization. |
+| Department | The ID of an organization. |
 
-#### Java version
+### 3.3 Use POP to make API calls
+
+#### 3.3.1 Java version
 
 Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
 
@@ -1136,7 +1211,7 @@ oken field to the parameter.
         // request.putBodyParameter("SecurityToken", "<your-SecurityToken>");
 ```
 
-q p y y , y y
+`q` `p` `y` `y` `,` `y` `y`
 
 ```java
         // Business parameters
@@ -1164,9 +1239,6 @@ resources.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 ROA calls. Sample API information: Product (Elasticsearch) Interface (GetNamespaceList) Version (2016-06-07). Call the following example:
@@ -1174,6 +1246,7 @@ ROA calls. Sample API information: Product (Elasticsearch) Interface (GetNamespa
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; public class Sample {
     /**
+     * DemoAPI: DescribeInstance
 ```
 
 `*/`
@@ -1186,19 +1259,19 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
             "<yourAccessKeyID>", // Replace with your AccessKey ID.
 ```
 
-`"<` A K S
+`"<` `A` `K` `S`
 
 ```
 t>") //R
 ```
 
-l `th` l
+`l` `th` `l`
 
 ```
 ith
 ```
 
-A K t
+`A` `K` `t`
 
 ```
             "<yourAccessKeySecret>"); // Replace the value with your AccessKey secret.
@@ -1261,7 +1334,7 @@ application/json,
         request.setHttpContent(requestBody.getBytes(), "utf-8", FormatType.JSON);
 ```
 
-`*/` /
+`*/` `/`
 
 ```java
         try {
@@ -1273,9 +1346,6 @@ application/json,
         } catch (ClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-}
 ```
 
 **Important**
@@ -1286,7 +1356,7 @@ When you use HTTPS to access OpenAPI operations, the SDK enables SSL/TLS certifi
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify that the server certificate is not verified. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-#### SDK for Go
+#### 3.3.2 SDK for Go
 
 This topic describes how to use the Point of Presence (POP) gateway to call the SDK for Go.
 
@@ -1315,7 +1385,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1344,9 +1414,7 @@ V3.15.0.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
 
 Sample API information for ROA calls: Product (Elasticsearch) Interface (GetNamespaceList) Version (2016-06-07). Call the following example:
@@ -1358,7 +1426,7 @@ package main import (
     "fmt"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1368,7 +1436,6 @@ func main() {
         "<yourAccessKeySecret>") // Replace the value with your AccessKey secret.
     if err != nil {
         panic(err)
-    }
     request := requests.NewCommonRequest()
     request.Method = "GET"
     request.Domain = "elasticsearch.aliyuncs.com" // The URL of the request. This is an
@@ -1404,9 +1471,7 @@ application/json, data is transferred by using the following methods:
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
 
 **Configure proxies**
@@ -1418,14 +1483,14 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Specify the HTTP_PROXY environment
 variable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Specify the HTTPS_PROXY environm
-ent variable. }
+ent variable.
 ```
 
 Method 2: Configure a proxy on the client. Sample code:
@@ -1462,7 +1527,7 @@ The HTTPSInsecure setting takes effect for the client only when you do not speci
 // If you specify the HTTPSInsecure parameter for the client, the setting takes effect for all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter for the client to true. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-#### Python Version
+#### 3.3.3 Python Version
 
 This topic describes how to POP Python SDK call the API operations of cloud services.
 
@@ -1489,6 +1554,7 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 ```
 
 ```python
+# API:CS-DescribeInstance
 ######
 # Replace the values with your AccessKey ID, AccessKey secret, and region ID.
 client = AcsClient('{<yourAccessKeyID>}', '{<yourAccessKeySecret>}', '{<yourRegionID>}') request = CommonRequest() request.set_product('Elasticsearch') request.set_version('2017-06-13') request.set_uri_pattern('/openapi/instances/<yourInstanceID>') # Pattern request.set_domain('<elasticsearch.aliyuncs.com>') # The domain name of the product. Th is is a sample value. Replace it with your actual product endpoint.
@@ -1542,6 +1608,8 @@ os.environ["HTTPS_PROXY"] = "http://x.x.x.x:xxxx"
 os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 ```
 
+**HTTPS**
+
 This section describes how to send an API request over HTTPS.
 
 **Use HTTPS**
@@ -1549,14 +1617,14 @@ This section describes how to send an API request over HTTPS.
 By default, the SDK uses HTTPS as the request protocol.
 
 ```
-from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import from aliyunsdkcore.client import AcsClient client = AcsClient(
+from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest from aliyunsdkcore.client import AcsClient client = AcsClient(
     region_id='<region_id>',  # Specify the region ID.
 ```
 
-)
+`)`
 
 ```
-request.set_protocol_type('https') # Use the HTTPS protocol. client.do_action_with_exception(request)
+request = DescribeInstancesRequest() request.set_protocol_type('https') # Use the HTTPS protocol. client.do_action_with_exception(request)
 ```
 
 **Disable certificate verification**
@@ -1571,18 +1639,9 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Disable SSL certificate verification.
 ```
 
-)
+`)`
 
 **Enable certificate verification**
-
-| Parameter Name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| description | Strin g | Body | No | es-cn- 31am74f06w73n**** | Instance name. |
-| esAdminPa ssword | Strin g | Body | Yes | **** | Password |
-| zoneCount | Integ er | Body | Yes | 1 | Number of zones. |
-| networkCo nfig | Obje ct | Body | Yes | - | Network configuration. |
-| -vsArea | Strin g | Body | Yes | cn-hangzhou | Zone where the instance is deployed. |
-| -type | Strin g | Body | Yes | ANYTUNNEL | Network type. Valid values: VPC and ANYTUNNEL. |
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1591,13 +1650,13 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 cate.
 ```
 
-)
+`)`
 
-### SLB instances
+### 3.4 SLB instances
 
-#### Create a Notebook modeling instance
+#### 3.4.1 Create a Notebook modeling instance
 
-##### CreateInstance
+##### 3.4.1.1 CreateInstance
 
 Creates an Elasticsearch instance.
 
@@ -1612,6 +1671,15 @@ POST /openapi/instances HTTP/1.1
 ```
 
 **Request parameters**
+
+| Parameter Name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| description | Strin g | Body | No | es-cn- 31am74f06w73n**** | Instance name. |
+| esAdminPa ssword | Strin g | Body | Yes | **** | Password |
+| zoneCount | Integ er | Body | Yes | 1 | Number of zones. |
+| networkCo nfig | Obje ct | Body | Yes | - | Network configuration. |
+| -vsArea | Strin g | Body | Yes | cn-hangzhou | Zone where the instance is deployed. |
+| -type | Strin g | Body | Yes | ANYTUNNEL | Network type. Valid values: VPC and ANYTUNNEL. |
 
 | -vpcId | Strin g | Body | No | vpc-xxx | VPC ID. |
 |---|---|---|---|---|---|
@@ -1646,20 +1714,23 @@ POST /openapi/instances HTTP/1.1
 | monitorPa ssword | Strin g | Body | Yes | **** | Password for the monitoring service. Some monitoring features depend on this account. |
 |---|---|---|---|---|---|
 
+**Response data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
 | Result | - | - | The request returns results. |
 | -instanceId | String | es-cn-xxx | Instance ID. |
 
-**Response data**
+The response contains only the parameters listed in the preceding table. Other parameters are for reference only and must not be used in your code.
 
-The response contains only the parameters listed in the preceding table. Other parameters are for reference only and must not be used in your code. Sample request
+**Examples**
+
+Sample request
 
 ```json
 POST /openapi/instances HTTP/1.1
 ##body
-{
   "region": "cn-qingdao-env66-d01",
   "zoneCount": 1,
   "networkConfig": {
@@ -1667,14 +1738,22 @@ POST /openapi/instances HTTP/1.1
     "type": "vpc",
     "vpcId": "vpc-9hm2gli36hm45gxif****",
     "vswitchId": "vsw-9hm2oy9kt0wnhonus****"
-  },
+```
+
+`},`
+
+```json
   "esVersion": "7.10.0_ali1.6.0",
   "dataNode": true,
   "nodeSpec": {
     "spec": "8C 32Gi",
     "diskType": "fast-disks",
     "disk": 500
-  },
+```
+
+`},`
+
+```json
   "nodeAmount": 3,
   "haveKibana": false,
   "advancedDedicateMaster": false,
@@ -1685,14 +1764,11 @@ POST /openapi/instances HTTP/1.1
   "cpuType":{
       "cpuBrand": "Intel",
     "defaultType": true
-  }
-}
 ```
 
 Example of a successful response `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": {
         "instanceId": "es-cn-xxxxxx",
@@ -1703,14 +1779,22 @@ Example of a successful response `JSON` format
             "type": "vpc",
             "vpcId": "vpc-9hm2gli36hm45gxif****",
             "vswitchId": "vsw-9hm2oy9kt0wnhonus****"
-        },
+```
+
+`},`
+
+```json
         "esVersion": "7.10.0_ali1.6.0",
         "dataNode": true,
         "nodeSpec": {
             "spec": "8C 32Gi",
             "diskType": "fast-disks",
             "disk": 500
-        },
+```
+
+`},`
+
+```json
         "nodeAmount": 3,
         "haveKibana": false,
         "kibanaConfiguration": {},
@@ -1721,15 +1805,9 @@ Example of a successful response `JSON` format
         "description": "gyytest-0a",
         "esAdminPassword": "****",
         "instanceCategory": "x-pack"
-    }
-}
 ```
 
 `XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -1764,7 +1842,11 @@ Example of a successful response `JSON` format
 
 **Error codes**
 
-##### ListZones
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
+
+##### 3.4.1.2 ListZones
 
 Before you create an Elasticsearch instance, call the ListZones operation to retrieve a list of zones where ES instances can be created.
 
@@ -1774,23 +1856,30 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
-| Result | String | ["cn-hangzhou- a","cn-hangzhou- b"] | The list of zones. |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
+```
+GET /openapi/listZones HTTP/1.1
+```
 
 This operation has no request parameters.
 
 **Response data**
 
-Request example Successful response example `JSON` format
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
+| Result | String | ["cn-hangzhou- a","cn-hangzhou- b"] | The list of zones. |
+
+**Examples**
+
+Request example
+
+```
+GET /openapi/listZones HTTP/1.1
+```
+
+Successful response example `JSON` format
 
 ```json
-{
   "Result": [
     "cn-hangzhou-a",
     "cn-hangzhou-b"
@@ -1800,7 +1889,6 @@ Request example Successful response example `JSON` format
 
 ```json
   "RequestId": "2C1B46F2-D827-4C05-B8C2-5A823EC3C306"
-}
 ```
 
 `XML` format
@@ -1811,21 +1899,15 @@ Request example Successful response example `JSON` format
 
 **Error codes**
 
-##### ListDeploymentArchs
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
+
+##### 3.4.1.3 ListDeploymentArchs
 
 Call ListDeploymentArchs when you create an Elasticsearch cluster to retrieve the supported deployment architectures and zone list for the specified region.
 
 **Request headers**
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
-| Result | - | - | The result is returned. |
-| -app | String | elasticsearch | Cluster type. |
-| -zoneNum | String | 3 | Number of zones. |
-| -info | - | - | Zone information. |
-| --zoneName | String | es-cn-xxx | Zone name. |
-| --roles |  | [worker,master] | Supported role types. |
 
 This operation uses only common request headers. For more information, see the common request parameters documentation.
 
@@ -1839,6 +1921,18 @@ Only common parameters are required.
 
 **Response data**
 
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+| Result | - | - | The result is returned. |
+| -app | String | elasticsearch | Cluster type. |
+| -zoneNum | String | 3 | Number of zones. |
+| -info | - | - | Zone information. |
+| --zoneName | String | es-cn-xxx | Zone name. |
+| --roles |   | [worker,master] | Supported role types. |
+
+**Examples**
+
 Sample request
 
 ```
@@ -1847,37 +1941,22 @@ GET /openapi/archs HTTP/1.1
 
 Sample success response `JSON` format
 
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
-
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":[
-  {
    "app":"elasticsearch",
    "info":[
-    {
      "roles":"[worker,master]",
      "zoneName":"es-cn-xxx"
-    }
 ```
 
 `],`
 
 ```json
    "zoneNum":"3"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -1889,7 +1968,7 @@ Sample success response `JSON` format
 </Result>
 ```
 
-##### ListNetworkTypes
+##### 3.4.1.4 ListNetworkTypes
 
 Call ListNetworkTypes to obtain the network type architecture.
 
@@ -1909,12 +1988,13 @@ This operation has no request parameters.
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
 | Result | List | ["singleTunnel"] | A list of network access methods. Valid values: singleTunnel and anyTunnel. |
 
-| Parame ter name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| recomme nd | Boole an | Query | Yes | es-cn-xxx | The instance ID. |
-| cpuBrand | Strin g | Query | No | Intel | CPU type: Intel AMD |
+**Examples**
 
 Request example
 
@@ -1925,10 +2005,8 @@ GET /openapi/networkType HTTP/1.1
 Response example `JSON` format
 
 ```json
-{
   "RequestId": "FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result": ["singleTunnel"]
-}
 ```
 
 `XML` format
@@ -1937,7 +2015,7 @@ Response example `JSON` format
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>singleTunnel</Result>
 ```
 
-##### ListEsVersions
+##### 3.4.1.5 ListEsVersions
 
 Retrieves the available versions for an Elasticsearch cluster.
 
@@ -1947,39 +2025,44 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+```
+GET /openapi/listEsVersions HTTP/1.1
+```
+
 **Request parameters**
 
-| e | Developer Gui nAPI | de·Intera | ct with Op |  |  | Elasticsearc | h |
+| Parame ter name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| recomme nd | Boole an | Query | Yes | es-cn-xxx | The instance ID. |
+| cpuBrand | Strin g | Query | No | Intel | CPU type: Intel AMD |
+
+| e | Developer Gui nAPI | de·Intera | ct with Op |   |   | Elasticsearc | h |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | zones | Array | Query | No | ["aa","bb"] | The list of zones. |
 
+**Response data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The request ID. |
 | Result | String | ["6.7", "7.10"] | The list of instance versions. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
-
-**Response data**
+**Examples**
 
 Request example
 
 ```
-&recommend=es-cn-xxx
+GET /openapi/listEsVersions HTTP/1.1 &recommend=es-cn-xxx
 ```
 
 Successful response `JSON` format
 
 ```json
-{
     "RequestId": "44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF",
     "Result": ["6.7", "7.10"]
-}
 ```
 
 `XML` format
@@ -1990,22 +2073,13 @@ Successful response `JSON` format
 
 **Error codes**
 
-##### ListCpubrands
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
+
+##### 3.4.1.6 ListCpubrands
 
 Call ListCpubrands to retrieve a list of CPU architectures.
-
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| zoneId | Strin g | Query | No | cn-xxx-b | ID of the zone. |
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
-| Result | — | - | Response result. |
-| -cpuArch | String | x86 | CPU architecture. |
-| -cpuBrand | String | Intel | CPU type |
-| -cpuId | String | FT-2000+/64 | CPU model. |
-| -defaultType | Boolean | true | Enabled by default. |
 
 **Request headers**
 
@@ -2019,7 +2093,22 @@ GET /openapi/cpubrands HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| zoneId | Strin g | Query | No | cn-xxx-b | ID of the zone. |
+
 **Response data**
+
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+| Result | — | - | Response result. |
+| -cpuArch | String | x86 | CPU architecture. |
+| -cpuBrand | String | Intel | CPU type |
+| -cpuId | String | FT-2000+/64 | CPU model. |
+| -defaultType | Boolean | true | Enabled by default. |
+
+**Examples**
 
 Sample request
 
@@ -2029,20 +2118,13 @@ GET /openapi/cpubrands HTTP/1.1 &zoneId=cn-xx-b
 
 Sample success response `JSON` format
 
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| node | Strin g | Path | Yes | node | Node type: node (data node) worker (data node) master (master node) client node (client _ node) kibana node (Kibana _ node) |
-
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":{
   "cpuBrand":"Intel",
   "cpuId":"FT-2000+/64",
   "cpuArch":"x86",
   "defaultType":true
- }
-}
 ```
 
 `XML` format
@@ -2056,7 +2138,7 @@ Sample success response `JSON` format
 </Result>
 ```
 
-##### ListAvailiableSpecs
+##### 3.4.1.7 ListAvailiableSpecs
 
 When creating an Elasticsearch instance, call ListAvailiableSpecs to retrieve the available node specifications for different node types.
 
@@ -2074,19 +2156,21 @@ GET /openapi/assist/actions/[Node]-availiable-specs HTTP/1.1
 
 | Parame ter Name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| node | Strin g | Path | Yes | node | Node type: node (data node) worker (data node) master (master node) client node (client _ node) kibana node (Kibana _ node) |
+
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | vsArea | Strin g | Query | No | cn-hangzhou-* | The zone where the instance resides. |
 | instanceId | Strin g | Query | No | es-cn-xxxxxxxx | Instance ID. |
+
+**Response Data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | Request ID. |
 | Result | String | ["2C 4G"] | List of specifications. |
 
-| HttpCo de | Error Code | Error Message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The provided instance ID does not exist. |
-
-**Response Data**
+**Examples**
 
 Request Example
 
@@ -2097,10 +2181,8 @@ GET /openapi/assist/actions/[Node]-availiable-specs HTTP/1.1 &node=node
 Normal Response Example `JSON` format
 
 ```json
-{
  "RequestId":"F99407AB-2FA9-489E-A259-40CF6DCC47D9",
  "Result":"["2C 4G"]"
-}
 ```
 
 `XML` format
@@ -2111,19 +2193,11 @@ Normal Response Example `JSON` format
 
 **Error Codes**
 
-##### ListStorageClass
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| role | Strin g | Query | Yes | data | Node type: data (data node) master (dedicated master node) coordinating (client node, not supported yet) |
-| showShar ed | Boole an | Query | No | true | Display shared storage types. This parameter is valid only when `role` is set to `master`. |
-
-| Parameter Name | Type | Example | Description |
+| HttpCo de | Error Code | Error Message | Description |
 |---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
-| Result | Struct | - | The result of the current request. |
-| - storageClassN ame | String | fast-disk | The name of the disk type. |
-| -order | Integer | 0 | The display order. |
+| 400 | InstanceNotFound | The instanceId provided does not exist | The provided instance ID does not exist. |
+
+##### 3.4.1.8 ListStorageClass
 
 When you create an Elasticsearch instance, you can call ListStorageClass to retrieve the available disk types for the current node and their corresponding minimum and maximum storage capacities.
 
@@ -2139,13 +2213,27 @@ GET /openapi/assist/actions/listStorageClass HTTP/1.1
 
 **Request Parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| role | Strin g | Query | Yes | data | Node type: data (data node) master (dedicated master node) coordinating (client node, not supported yet) |
+| showShar ed | Boole an | Query | No | true | Display shared storage types. This parameter is valid only when `role` is set to `master`. |
+
 **Response Data**
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+| Result | Struct | - | The result of the current request. |
+| - storageClassN ame | String | fast-disk | The name of the disk type. |
+| -order | Integer | 0 | The display order. |
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | -shared | Boolean | false | Indicates whether the storage is shared. Shared storage types are not displayed when `role` is `data`. |
 | -minSize | Integer | 10 | The minimum disk size. |
 | -maxSize | Integer | 500 | The maximum disk size. |
+
+**Examples**
 
 Request example
 
@@ -2156,25 +2244,16 @@ GET /openapi/assist/actions/listStorageClass HTTP/1.1 &role=data
 Normal response example `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":[
-  {
    "shared":false,
    "storageClassName":"fast-disk",
    "minSize":10,
    "maxSize":500,
    "order":0
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -2192,22 +2271,9 @@ Normal response example `JSON` format
 |---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist | The provided instance ID does not exist. |
 
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| instanceId | Strin g | Query | No | es-cn- 31am74f06w73n**** | The ID of the instance. |
-| descriptio n | Strin g | Query | No | test | The name of the instance. |
-| esVersion | Strin g | Query | No | 6.7 | The version of the instance. |
-| vpcId | Strin g | Query | No | vpc- 8ftt3y3kh7yyubb1l**** | The ID of the VPC. |
-| zoneId | Strin g | Query | No | cn-wulan-env230- amtest230001-a | The ID of the zone. |
+#### 3.4.2 Instance management
 
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 138F3AA4-DC09- 46C2-BCD5- BD959A7E972C | The unique ID of the request. |
-| Result | Struct | [] | The list of instance information. |
-
-#### Instance management
-
-##### ListInstance
+##### 3.4.2.1 ListInstance
 
 Call ListInstance to retrieve a list of information about all instances.
 
@@ -2223,9 +2289,22 @@ GET /openapi/instances HTTP/1.1
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| instanceId | Strin g | Query | No | es-cn- 31am74f06w73n**** | The ID of the instance. |
+| descriptio n | Strin g | Query | No | test | The name of the instance. |
+| esVersion | Strin g | Query | No | 6.7 | The version of the instance. |
+| vpcId | Strin g | Query | No | vpc- 8ftt3y3kh7yyubb1l**** | The ID of the VPC. |
+| zoneId | Strin g | Query | No | cn-wulan-env230- amtest230001-a | The ID of the zone. |
+
 **Response parameters**
 
-| lasticsearch |  |  | Developer Guide·Interact with O enAP |
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 138F3AA4-DC09- 46C2-BCD5- BD959A7E972C | The unique ID of the request. |
+| Result | Struct | [] | The list of instance information. |
+
+| lasticsearch |   |   | Developer Guide·Interact with O enAP |
 |---|---|---|---|
 | Parameter name | Type | Example | Description |
 
@@ -2247,7 +2326,7 @@ GET /openapi/instances HTTP/1.1
 | --diskType | String | fast-disks | The disk type. |
 | --spec | String | 8C 32Gi | The specifications. |
 
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 | Parameter name | Type | Example | Description |
 | - haveClientNod e | Boolean | true | Does the cluster include a coordinator node? |
@@ -2283,7 +2362,11 @@ GET /openapi/instances HTTP/1.1
 | --cpuBrand | String | intel | The type of the CPU chip. |
 | --defaultType | Boolean | true | This setting is enabled by default. |
 
-The response includes the parameters described in the preceding table. Additional parameters may appear in the response but are provided for reference only. Your program must not depend on these parameters. Request example
+The response includes the parameters described in the preceding table. Additional parameters may appear in the response but are provided for reference only. Your program must not depend on these parameters.
+
+**Examples**
+
+Request example
 
 ```
 GET /openapi/instances HTTP/1.1
@@ -2292,30 +2375,24 @@ GET /openapi/instances HTTP/1.1
 Response example `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": [
-        {
             "clientNodeConfiguration": {},
             "clusterTasks": [
-                {
                     "taskType": "CLUSTER_CREATE",
                     "stateType": "OK",
                     "startTime": 1665457395125,
                     "nodeInfoList": []
-                }
 ```
 
 `],`
 
 ```json
             "zoneInfos": [
-                {
                     "clusterVswitchId": "vsw-8ftehwy5aft5ohffn****",
                     "zoneId": "cn-wulan-env230-amtest230001-a",
                     "clusterVpcId": "vpc-8ftt3y3kh7yyubb1l****",
                     "status": "NORMAL"
-                }
 ```
 
 `],`
@@ -2336,7 +2413,11 @@ bingo.intra.env230.shuguang.com",
                 "storageClassName": "fast-disks",
                 "diskType": "fast-disks",
                 "spec": "8C 32Gi"
-            },
+```
+
+`},`
+
+```json
             "warmNode": false,
             "kibanaProtocol": "HTTPS",
             "port": 9200,
@@ -2350,7 +2431,11 @@ bingo.intra.env230.shuguang.com",
 ```json
                 "disk": 0,
                 "spec": "2C 4Gi"
-            },
+```
+
+`},`
+
+```json
             "advancedDedicateMaster": false,
             "status": "active",
             "description": "source",
@@ -2366,29 +2451,29 @@ bingo.intra.env230.shuguang.com",
                 "vpcId": "vpc-8ftt3y3kh7yyubb1l****",
                 "type": "vpc",
                 "whiteIpGroupList": []
-            },
+```
+
+`},`
+
+```json
             "slbAddress": "192.168.231.***",
             "dataNode": true,
             "esConfig": {
                 "cluster.routing.allocation.awareness.attributes": "node_name,zone",
                 "cluster.routing.allocation.awareness.force.node_name.values": "abcd",
                 "node.attr.node_name": "${K8S_NODE_NAME}"
-            },
+```
+
+`},`
+
+```json
             "warmNodeConfiguration": {},
             "cpuType": {
                 "cpuBrand": "intel",
                 "defaultType": true
-            }
-        }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -2462,20 +2547,6 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
   <cpuType>
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 401 | UserUnauthorized | Authentication required | Valid identity authentication information is not provided. Check the configuration of your AccessKey. |
-| 401 | SubAccountNoPer mission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM | The RAM user does not have the required permissions. Grant the required permissions to the RAM user in the Resource Access Management (RAM) console. |
-
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-s9dsk3k4k**** | The instance ID. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| instanceId | String | es-cn-xxx | The instance ID. |
-| zoneCount | Integer | 1 | The number of zones. |
-
 ```xml
     <cpuBrand>intel</cpuBrand>
     <defaultType>true</defaultType>
@@ -2485,7 +2556,12 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
 
 **Error codes**
 
-##### DescribeInstance
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 401 | UserUnauthorized | Authentication required | Valid identity authentication information is not provided. Check the configuration of your AccessKey. |
+| 401 | SubAccountNoPer mission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM | The RAM user does not have the required permissions. Grant the required permissions to the RAM user in the Resource Access Management (RAM) console. |
+
+##### 3.4.2.2 DescribeInstance
 
 Queries the details of a specified instance.
 
@@ -2501,9 +2577,18 @@ GET /openapi/instances/[InstanceId] HTTP/1.1
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-s9dsk3k4k**** | The instance ID. |
+
 **Returned data**
 
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| instanceId | String | es-cn-xxx | The instance ID. |
+| zoneCount | Integer | 1 | The number of zones. |
+
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
@@ -2526,7 +2611,7 @@ GET /openapi/instances/[InstanceId] HTTP/1.1
 | clientNodeCon figuration | - | - | The client node configuration. |
 | -disk | Integer | 500 | The disk space. |
 
-| E | lasticsearch |  |  | Developer Guide·Interact with O enAP | p I |
+| E | lasticsearch |   |   | Developer Guide·Interact with O enAP | p I |
 |---|---|---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
@@ -2561,7 +2646,11 @@ GET /openapi/instances/[InstanceId] HTTP/1.1
 | -cpuBrand | String | intel | The CPU chip type. |
 | -defaultType | Boolean | true | Is default control enabled? |
 
-The response includes only the parameters described in the preceding table. Any other parameters that may be returned are for reference only. Do not programmatically rely on these parameters. Request example
+The response includes only the parameters described in the preceding table. Any other parameters that may be returned are for reference only. Do not programmatically rely on these parameters.
+
+**Examples**
+
+Request example
 
 ```
 GET /openapi/instances/[InstanceId] HTTP/1.1 &InstanceId=es-cn-s9dsk3k4k****
@@ -2570,23 +2659,28 @@ GET /openapi/instances/[InstanceId] HTTP/1.1 &InstanceId=es-cn-s9dsk3k4k****
 Response example `JSON` format
 
 ```json
-{
  "clientNodeConfiguration":{
   "disk":500,
   "storageClassName":"fast-disks",
   "diskType":"fast-disks",
   "spec":"8C 32Gi"
- },
+```
+
+`},`
+
+```json
  "cpuType":{
   "cpuBrand":"intel",
   "defaultType":true
- },
+```
+
+`},`
+
+```json
  "clusterTasks":[
-  {
    "taskType":"CLUSTER_CREATE",
    "stateType":"OK",
    "startTime":1665457395125
-  }
 ```
 
 `],`
@@ -2597,7 +2691,11 @@ Response example `JSON` format
   "vsArea":"cn-hangzhou-b",
   "vpcId":"vpc-abc",
   "type":"vpc/anytunnel"
- },
+```
+
+`},`
+
+```json
  "zoneCount":1,
  "kibanaSlbAddress":"10.230.111.*",
  "slbAddress":"10.230.111*",
@@ -2606,7 +2704,11 @@ Response example `JSON` format
   "storageClassName":"fast-disks",
   "diskType":"fast-disks",
   "spec":"8C 32Gi"
- },
+```
+
+`},`
+
+```json
  "haveKibana":true,
  "createdAt":"2018-07-13T03:58:07.253Z",
  "protocol":"http",
@@ -2619,21 +2721,24 @@ Response example `JSON` format
  "kibanaConfiguration":{
   "amount":1,
   "spec":"2C 4Gi"
-},
 ```
 
+`},` `},`
+
 ```json
- },
  "kibanaDomain":"es-cn-31am74f06w73n****-kibana.es-bingo.intra.env230.shuguang.com",
  "advancedDedicateMaster":{
   "disk":500,
   "storageClassName":"fast-disks",
   "diskType":"fast-disks",
   "spec":"8C 32Gi"
- },
+```
+
+`},`
+
+```json
  "esVersion":"6.8.13_ali1.3.0",
  "updatedAt":"2022-10-11T09:44:29.625Z"
-}
 ```
 
 `XML` format
@@ -2680,11 +2785,7 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
   <kibanaPort>443</kibanaPort>
 ```
 
-t `fi` `ti` /
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
+`t` `fi` `ti` `/`
 
 ```xml
   <masterConfiguration  />
@@ -2713,7 +2814,11 @@ t `fi` `ti` /
 
 **Error codes**
 
-##### RestartInstance
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. |
+
+##### 3.4.2.3 RestartInstance
 
 You can call the RestartInstance operation to restart an ES cluster.
 
@@ -2734,29 +2839,28 @@ POST /openapi/instances/[InstanceId]/actions/restart HTTP/1.1
 | InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
 | force | Boole an | Query | No | false | Specifies whether to force a restart. |
 
+**Returned Data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
 | Result | - | - | The request returns a result. |
 | -instanceId | String | es-cn-xxx | The instance ID. |
 
-**Returned Data**
+**Examples**
 
 Request example
 
 ```json
-POST /openapi/instances/[InstanceId]/actions/restart HTTP/1.1 { "InstanceId":"es-cn-xxx" }
+POST /openapi/instances/[InstanceId]/actions/restart HTTP/1.1 "InstanceId":"es-cn-xxx"
 ```
 
 Successful response example `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":{
   "instanceId":"es-cn-xxx"
- }
-}
 ```
 
 `XML` format
@@ -2774,17 +2878,7 @@ Successful response example `JSON` format
 | 400 | InstanceActivating | Instance is activating | The instance is being activated and cannot be restarted. |
 | 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the status of the instance and try again. |
 
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| nodeSpec | Objec t | Body | No | - | Data node configuration. |
-| -spec | Strin g | Body | No | 8C 32Gi | Data node specifications. |
-| -diskType | Strin g | Body | No | fast-disks | Data node disk type. |
-| -disk | Integ er | Body | No | 500 | Data node disk size, in GB. |
-| nodeAmo unt | Integ er | Body | No | 2 | Number of data nodes. |
-| kibanaCon figuration | Objec t | Body | No | - | Kibana configuration. |
-| -spec | Strin g | Body | No | 8C 32Gi | Kibana specifications. |
-
-##### UpdateInstance
+##### 3.4.2.4 UpdateInstance
 
 Call the UpdateInstance operation to modify the configuration of an Elasticsearch cluster. You can modify the configuration of only one node type at a time.
 
@@ -2802,6 +2896,16 @@ PUT /openapi/instances/[InstanceId] HTTP/1.1
 
 | Parame ter name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| nodeSpec | Objec t | Body | No | - | Data node configuration. |
+| -spec | Strin g | Body | No | 8C 32Gi | Data node specifications. |
+| -diskType | Strin g | Body | No | fast-disks | Data node disk type. |
+| -disk | Integ er | Body | No | 500 | Data node disk size, in GB. |
+| nodeAmo unt | Integ er | Body | No | 2 | Number of data nodes. |
+| kibanaCon figuration | Objec t | Body | No | - | Kibana configuration. |
+| -spec | Strin g | Body | No | 8C 32Gi | Kibana specifications. |
+
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | kibanaPas sword | Boole an | Body | No | **** | Kibana password. Required when you enable a new Kibana node. |
 | masterNo deConfigu ration | Objec t | Body | No | - | Dedicated master node configuration. |
 | -spec | Strin g | Body | No | 8C 32Gi | Dedicated master node specifications. |
@@ -2812,18 +2916,22 @@ PUT /openapi/instances/[InstanceId] HTTP/1.1
 | -spec | Strin g | Body | No | 8C 32Gi | Coordinator node specifications |
 | -amount | Integ er | Body | No | 3 | Number of client nodes. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
 | Result | Object | - | Instance name returned. |
 | -instanceId | String | es-cn-xxx | Instance ID. |
 
-**Response data**
+The response is guaranteed to include only the parameters that are described in the preceding table. Any parameters that are not described in the table are for reference only. Do not create programmatic dependencies on these parameters.
 
-The response is guaranteed to include only the parameters that are described in the preceding table. Any parameters that are not described in the table are for reference only. Do not create programmatic dependencies on these parameters. Request example
+**Examples**
+
+Request example
 
 ```json
-POST /openapi/instances // Body {
+POST /openapi/instances // Body
   "region": "cn-qingdao-env66-d01",
   "zoneCount": 1,
   "networkConfig": {
@@ -2831,14 +2939,22 @@ POST /openapi/instances // Body {
     "type": "vpc",
     "vpcId": "vpc-9hm2gli36hm45gxif****",
     "vswitchId": "vsw-9hm2oy9kt0wnhonus****"
-  },
+```
+
+`},`
+
+```json
   "esVersion": "7.10.0_ali1.6.0",
   "dataNode": true,
   "nodeSpec": {
     "spec": "8C 32Gi",
     "diskType": "fast-disks",
     "disk": 500
-  },
+```
+
+`},`
+
+```json
   "nodeAmount": 3,
   "haveKibana": false,
   "advancedDedicateMaster": false,
@@ -2849,14 +2965,11 @@ POST /openapi/instances // Body {
   "cpuType":{
       "cpuBrand": "intel",
     "defaultType": true
-  }
-}
 ```
 
 Sample normal response `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": {
         "instanceId": "es-cn-xxxxxx",
@@ -2867,14 +2980,22 @@ Sample normal response `JSON` format
             "type": "vpc",
             "vpcId": "vpc-9hm2gli36hm45gxif****",
             "vswitchId": "vsw-9hm2oy9kt0wnhonus****"
-        },
+```
+
+`},`
+
+```json
         "esVersion": "7.10.0_ali1.6.0",
         "dataNode": true,
         "nodeSpec": {
             "spec": "8C 32Gi",
             "diskType": "fast-disks",
             "disk": 500
-        },
+```
+
+`},`
+
+```json
         "nodeAmount": 3,
         "haveKibana": false,
         "kibanaConfiguration": {},
@@ -2885,15 +3006,9 @@ Sample normal response `JSON` format
         "description": "gyytest-0a",
         "esAdminPassword": "Admin@ga****",
         "instanceCategory": "x-pack"
-    }
-}
 ```
 
 `XML` format
-
-| HTTP code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and retry. |
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -2928,7 +3043,11 @@ Sample normal response `JSON` format
 
 **Error codes**
 
-##### DeleteInstance
+| HTTP code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and retry. |
+
+##### 3.4.2.5 DeleteInstance
 
 Call the DeleteInstance operation to release an Elasticsearch instance.
 
@@ -2948,6 +3067,8 @@ DELETE /openapi/instances/[InstanceId] HTTP/1.1
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Path | Yes | es-cn-xxxx | The ID of the instance to release. |
 
+**Returned Data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | instanceId | String | es-cn-xxx | The instance ID. |
@@ -2965,9 +3086,7 @@ DELETE /openapi/instances/[InstanceId] HTTP/1.1
 | haveClientNod e | Boolean | true | Indicates whether a client node exists. |
 | clientNodeCon figuration | Object | {} | The configuration of the client node. |
 
-**Returned Data**
-
-| E | lasticsearch |  |  | Developer Guide·Interact with O enAP | p I |
+| E | lasticsearch |   |   | Developer Guide·Interact with O enAP | p I |
 |---|---|---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
@@ -2988,7 +3107,7 @@ DELETE /openapi/instances/[InstanceId] HTTP/1.1
 | port | Integer | 9200 | The ES access port. |
 | protocol | String | http | The ES access protocol. |
 
-| Developer Guide·I | nteract with Op |  |  |
+| Developer Guide·I | nteract with Op |   |   |
 |---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
@@ -3006,7 +3125,11 @@ DELETE /openapi/instances/[InstanceId] HTTP/1.1
 | -cpuBrand | String | intel | The CPU chip type. |
 | -defaultType | Boolean | true | Determines whether to control by default. |
 
-The response includes only the parameters described in the preceding table. Your program should not rely on any other parameters that may be returned. Request example
+The response includes only the parameters described in the preceding table. Your program should not rely on any other parameters that may be returned.
+
+**Examples**
+
+Request example
 
 ```
 DELETE /openapi/instances/[InstanceId] HTTP/1.1 &InstanceId=es-cn-xxxx
@@ -3015,7 +3138,6 @@ DELETE /openapi/instances/[InstanceId] HTTP/1.1 &InstanceId=es-cn-xxxx
 Response example `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": {
         "clientNodeConfiguration": {},
@@ -3024,12 +3146,10 @@ Response example `JSON` format
 
 ```json
         clusterTasks: [
-            {
                 "taskType": "CLUSTER_CREATE",
                 "stateType": "OK",
                 "startTime": 1665457395125,
                 "nodeInfoList": []
-            }
 ```
 
 `],`
@@ -3050,7 +3170,11 @@ bingo.intra.env230.shuguang.com",
             "storageClassName": "fast-disks",
             "diskType": "fast-disks",
             "spec": "8C 32Gi"
-        },
+```
+
+`},`
+
+```json
         "warmNode": false,
         "kibanaProtocol": "HTTPS",
         "port": 9200,
@@ -3059,7 +3183,11 @@ bingo.intra.env230.shuguang.com",
             "amount": 1,
             "disk": 0,
             "spec": "2C 4Gi"
-        },
+```
+
+`},`
+
+```json
         "advancedDedicateMaster": false,
         "status": "active",
         "description": "source",
@@ -3075,7 +3203,11 @@ bingo.intra.env230.shuguang.com",
             "vpcId": "vpc-8ftt3y3kh7yyubb1l****",
             "type": "vpc",
             "whiteIpGroupList": []
-        },
+```
+
+`},`
+
+```json
         "slbAddress": "192.168.231.***",
         "dataNode": true,
         "esConfig": {
@@ -3084,17 +3216,13 @@ bingo.intra.env230.shuguang.com",
             "node.attr.nodename": "${K8SNODENAME}"
 ```
 
-_ _ _
+`_` `_` `_` `},`
 
 ```json
-        },
         "warmNodeConfiguration": {},
         "cpuType": {
             "cpuBrand": "intel",
             "defaultType": true
-        }
-    }
-}
 ```
 
 `XML` format
@@ -3144,10 +3272,6 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
 <instanceType>elasticsearch</instanceType>
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check whether the instance ID is correct or whether the instance has been deleted. |
-
 ```xml
   <instanceType>elasticsearch</instanceType>
   <networkConfig>
@@ -3173,7 +3297,11 @@ bingo.intra.env230.shuguang.com</kibanaDomain>
 
 **Error codes**
 
-##### DescribeElasticsearchHealth
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check whether the instance ID is correct or whether the instance has been deleted. |
+
+##### 3.4.2.6 DescribeElasticsearchHealth
 
 Call DescribeElasticsearchHealth to retrieve the health status of an Elasticsearch cluster.
 
@@ -3193,16 +3321,14 @@ GET /openapi/instances/[InstanceId]/elasticsearch-health HTTP/1.1
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxxxxx | Instance ID. |
 
+**Response Data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
 | Result | String | GREEN | Current cluster health status: GREEN RED YELLOW |
 
-| HttpCo de | Error Code | Error Message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is activating. Try again later. |
-
-**Response Data**
+**Examples**
 
 Sample request
 
@@ -3213,10 +3339,8 @@ GET /openapi/instances/[InstanceId]/elasticsearch-health HTTP/1.1 &InstanceId=es
 Sample response `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":"GREEN"
-}
 ```
 
 `XML` format
@@ -3229,20 +3353,13 @@ Sample response `JSON` format
 
 | HttpCo de | Error Code | Error Message | Description |
 |---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is activating. Try again later. |
+
+| HttpCo de | Error Code | Error Message | Description |
+|---|---|---|---|
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Confirm the instance ID is correct. |
 
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn- 31am74f06w73n**** | Instance ID. |
-| descriptio n | Strin g | body | Yes | test | The new instance name. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60**** | Request ID. |
-| Result | Object | - | The response contains the current cluster configuration. |
-| -description | String | gyytest-0a | The updated instance name. |
-
-##### UpdateDescription
+##### 3.4.2.7 UpdateDescription
 
 Call UpdateDescription to update the name of an Alibaba Cloud Elasticsearch instance.
 
@@ -3258,7 +3375,20 @@ POST /openapi/instances/[InstanceId]/description HTTP/1.1
 
 **Request Parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn- 31am74f06w73n**** | Instance ID. |
+| descriptio n | Strin g | body | Yes | test | The new instance name. |
+
 **Response Data**
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60**** | Request ID. |
+| Result | Object | - | The response contains the current cluster configuration. |
+| -description | String | gyytest-0a | The updated instance name. |
+
+**Examples**
 
 Request Example
 
@@ -3269,7 +3399,6 @@ POST /openapi/instances/[InstanceId]/description HTTP/1.1 &InstanceId=es-cn-31am
 Normal Response Example `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": {
         "instanceId": "es-cn-xxxxxx",
@@ -3280,14 +3409,22 @@ Normal Response Example `JSON` format
             "type": "vpc",
             "vpcId": "vpc-9hm2gli36hm45gxif****",
             "vswitchId": "vsw-9hm2oy9kt0wnhonus****"
-        },
+```
+
+`},`
+
+```json
         "esVersion": "7.10.0_ali1.6.0",
         "dataNode": true,
         "nodeSpec": {
             "spec": "8C 32Gi",
             "diskType": "fast-disks",
             "disk": 500
-        },
+```
+
+`},`
+
+```json
         "nodeAmount": 3,
         "haveKibana": false,
         "kibanaConfiguration": {},
@@ -3298,16 +3435,9 @@ Normal Response Example `JSON` format
         "description": "gyytest-0a",
         "esAdminPassword": "Admin@ga****",
         "instanceCategory": "x-pack"
-    }
-}
 ```
 
 `XML` format
-
-| HttpCo de | Error Code | Error Message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is activating. Cannot perform the update operation. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The provided instance ID does not exist. Check the instance status and retry. |
 
 ```xml
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>
@@ -3342,7 +3472,12 @@ Normal Response Example `JSON` format
 
 **Error Codes**
 
-##### UpdateAdminPassword
+| HttpCo de | Error Code | Error Message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is activating. Cannot perform the update operation. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The provided instance ID does not exist. Check the instance status and retry. |
+
+##### 3.4.2.8 UpdateAdminPassword
 
 Call the UpdateAdminPassword operation to modify the access password for an ES cluster.
 
@@ -3352,41 +3487,39 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | No | es-cn-xxx | The instance ID. |
-| esAdminP assword | Strin g | Body | No | xxxx | The new cluster password. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
-| Result | Boolean | true | Indicates whether the request was successful. |
-
 ```
 POST /openapi/instances/[InstanceId]/admin-pwd HTTP/1.1
 ```
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | No | es-cn-xxx | The instance ID. |
+| esAdminP assword | Strin g | Body | No | xxxx | The new cluster password. |
+
 **Response data**
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
+| Result | Boolean | true | Indicates whether the request was successful. |
+
+**Examples**
 
 Request example
 
 ```json
 POST /openapi/instances/es-cn-xxx/admin-pwd
 ## Body
-{
   "esAdminPassword": "Admin@ga****"
-}
 ```
 
 Response example `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": true
-}
 ```
 
 `XML` format
@@ -3395,25 +3528,14 @@ Response example `JSON` format
 <RequestId>138F3AA4-DC09-46C2-BCD5-BD959A7E972C</RequestId> <Result>true</Result>
 ```
 
+**Error codes**
+
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InstanceActivating | Instance is activating. | The instance is being activated. The password cannot be modified. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and retry the request. |
 
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The request ID. |
-| Result | - | - | Returns the result. |
-| -host | String | es-cn- xz6f5gmrr1q5841ti -****-0 | The IP address of the node. |
-| -port | Integer | 9200 | The port of the node. |
-
-**Error codes**
-
-##### ListAllNode
+##### 3.4.2.9 ListAllNode
 
 Call ListAllNode to retrieve information about all nodes in a specified cluster.
 
@@ -3429,7 +3551,18 @@ GET /openapi/instances/[InstanceId]/nodes HTTP/1.1
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+
 **Response Data**
+
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The request ID. |
+| Result | - | - | Returns the result. |
+| -host | String | es-cn- xz6f5gmrr1q5841ti -****-0 | The IP address of the node. |
+| -port | Integer | 9200 | The port of the node. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -3439,7 +3572,11 @@ GET /openapi/instances/[InstanceId]/nodes HTTP/1.1
 | -processState | String | Running | The runtime state of the node. |
 | -workTime | String | 0 days 19 hours 31 minutes | The runtime of the node. |
 
-The response contains only the parameters listed in the preceding table. Other parameters that may be returned are for reference only. Do not programmatically depend on them. Request example
+The response contains only the parameters listed in the preceding table. Other parameters that may be returned are for reference only. Do not programmatically depend on them.
+
+**Examples**
+
+Request example
 
 ```
 GET /openapi/instances/[InstanceId]/nodes HTTP/1.1 &InstanceId=es-cn-xxx
@@ -3447,16 +3584,9 @@ GET /openapi/instances/[InstanceId]/nodes HTTP/1.1 &InstanceId=es-cn-xxx
 
 Response examples `JSON` format
 
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-| PodName | Strin g | Path | Yes | es-cn-xxx-data-0 | The node name. |
-
 ```json
-{
  "RequestId":"F99407AB-2FA9-489E-A259-40CF6DCC47D9",
  "Result":[
-  {
    "port":9200,
    "processState":"Running",
    "host":"es-cn-xz6f5gmrr1q5841ti-****-0",
@@ -3464,16 +3594,9 @@ Response examples `JSON` format
    "health":"GREEN",
    "nodeType":"WORKER",
    "workTime":"0 days 19 hours 31 minutes"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>F99407AB-2FA9-489E-A259-40CF6DCC47D9</RequestId> <Result>
@@ -3487,7 +3610,7 @@ Response examples `JSON` format
 </Result>
 ```
 
-##### GetElasticsearchPodInfo
+##### 3.4.2.10 GetElasticsearchPodInfo
 
 Call GetElasticsearchPodInfo to retrieve pod information for an Elasticsearch cluster.
 
@@ -3503,12 +3626,19 @@ GET /openapi/instances/[InstanceId]/pod-info/[PodName] HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+| PodName | Strin g | Path | Yes | es-cn-xxx-data-0 | The node name. |
+
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
 | Result | Map | { "metadata": {}, "apiVersion": "v1", "kind": "Pod", "spec": {}, "status": {} } | The response result. |
 
-**Response data**
+**Examples**
 
 Sample request
 
@@ -3519,7 +3649,6 @@ GET /openapi/instances/[InstanceId]/pod-info/[PodName] HTTP/1.1 &InstanceId=es-c
 Sample successful response `JSON` format
 
 ```json
-{
     "RequestId": "ADCC3CFD-5E19-4AE7-AFFA-DD716C916145",
     "Result": {
         "metadata": {},
@@ -3527,8 +3656,6 @@ Sample successful response `JSON` format
         "kind": "Pod",
         "spec": {},
         "status": {}
-    }
-}
 ```
 
 `XML` format
@@ -3547,22 +3674,9 @@ Sample successful response `JSON` format
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
-|  | InstanceNotFound | The specified instance does not exist. Check the instance status and try again. | The specified instance does not exist. Check the instance status and try again. |
+|   | InstanceNotFound | The specified instance does not exist. Check the instance status and try again. | The specified instance does not exist. Check the instance status and try again. |
 
-| Parame ter Name | Typ e | Positi on | Require d | Description | Limit |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The instance ID. |
-
-| Parameter | Type | Position | Required | Descriptio n | Limit |
-|---|---|---|---|---|---|
-| esConfig | Map | body | Yes | "action.destru ctive requires _ name": _ "false" | The request body. |
-
-| Parameter | Type | Description | Limit |
-|---|---|---|---|
-| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
-|  |  | { "clientNodeConfigu ration": {}, "clusterTasks": [ { "taskType": "ES CONFIG MODI _ _ FY", "stateType": "OK", "startTime": 1739321868248, "nodeInfoList": [] }, |  |
-
-##### UpdateElasticsearchSettings
+##### 3.4.2.11 UpdateElasticsearchSettings
 
 Call UpdateElasticsearchSettings to modify the white screen configuration of a Elasticsearch instance.
 
@@ -3578,23 +3692,40 @@ PATCH|POST /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 
 **Parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Description | Limit |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The instance ID. |
+
+| Parameter | Type | Position | Required | Descriptio n | Limit |
+|---|---|---|---|---|---|
+| esConfig | Map | body | Yes | "action.destru ctive requires _ name": _ "false" | The request body. |
+
 **The data returned.**
 
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Parameter | Type | Description | Limit |
+|---|---|---|---|
+| RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+|   |   | { "clientNodeConfigu ration": {}, "clusterTasks": [ { "taskType": "ES CONFIG MODI _ _ FY", "stateType": "OK", "startTime": 1739321868248, "nodeInfoList": [] }, |   |
+
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 | Parameter | Type | { "taskType": Description "CLUSTER CREATE _ | Limit |
-|  |  | ", "stateType": "OK", "startTime": 1738982911582, "nodeInfoList": [] } ], "publicIpWhitelist": [], "zoneInfos": [ { "zoneId": "cn- wulan-env***- amtest******-a", "status": "NORMAL" } ], "haveElasticDataN ode": false, "ignoreStatus": false, "enableKibanaPubli cNetwork": false, "createdAt": "2025-02- 08T02:48:31.832Z" , "protocol": "HTTP", "enablePublic": false, "haveClientNode": false, "privateNetworkIp WhiteList": [], "archType": "exclusive", "esVersion": "5.5.3", "updatedAt": "2025-02- 08T02:48:31.832Z" , "enableKibanaPriva teNetwork": false, "zoneCount": 1, "version": "5.5.3", "nodeSpec": { "disk": 20, "storageClassNam e": "yoda-lvm", "diskType": "yoda- lvm", "spec": "1C 2Gi" }, "dictList": [], "extendConfigs": [ { "maintainEndTime" : "06:00Z", "maintainStartTime ": "02:00Z", "configType": "maintainTime" } ], "ikHotDicts": [], "warmNode": false, "kibanaProtocol": "HTTPS", "port": 9200, "validateMode": "all", "domain": |  |
+|   |   | ", "stateType": "OK", "startTime": 1738982911582, "nodeInfoList": [] } ], "publicIpWhitelist": [], "zoneInfos": [ { "zoneId": "cn- wulan-env***- amtest******-a", "status": "NORMAL" } ], "haveElasticDataN ode": false, "ignoreStatus": false, "enableKibanaPubli cNetwork": false, "createdAt": "2025-02- 08T02:48:31.832Z" , "protocol": "HTTP", "enablePublic": false, "haveClientNode": false, "privateNetworkIp WhiteList": [], "archType": "exclusive", "esVersion": "5.5.3", "updatedAt": "2025-02- 08T02:48:31.832Z" , "enableKibanaPriva teNetwork": false, "zoneCount": 1, "version": "5.5.3", "nodeSpec": { "disk": 20, "storageClassNam e": "yoda-lvm", "diskType": "yoda- lvm", "spec": "1C 2Gi" }, "dictList": [], "extendConfigs": [ { "maintainEndTime" : "06:00Z", "maintainStartTime ": "02:00Z", "configType": "maintainTime" } ], "ikHotDicts": [], "warmNode": false, "kibanaProtocol": "HTTPS", "port": 9200, "validateMode": "all", "domain": |   |
 
 | Parameter | Type | "test553.es- Description essen.intra.env***. | Limit |
 |---|---|---|---|
 | Result | String | shuguang.com", "force": false, "kibanaConfigurati on": {}, "esAclWhiteIpList": [ { "whiteIpType": "PRIVATE ES", _ "vpcId": "vpc- 4defdx20iplmzsgtd ****", "ips": [ "192.XX.XX.1/2" ] } ], "advancedDedicate Master": false, "status": "active", "cpuType": { "cpuBrand": "Intel", "defaultType": false }, "dryRun": false, "inited": true, "elasticDataNodeC onfiguration": {}, "serviceVpc": true, "esIPBlacklist": [], "description": "test553.es-essen", "haveKibana": false, "haveCerebro": false, "paymentType": "postpaid", "kibanaIPWhitelist" : [], "instanceId": "test553.es-essen", "masterConfigurati on": {}, "lockTime": 0, "resourceGroupId": "", "kibanaPrivateIPW hitelist": [], "nodeAmount": 3, "productType": "generalBusiness", "customerLabels": [], "aliwsDicts": [], "logEnhancement": false, "instanceType": "elasticsearch", "networkConfig": { "vsArea": "cn- wulan-env***- amtest******-a", "type": "anytunnel" }, "esDefaultConfigKe | Responses. |
-|  |  | y": [ "cluster.routing.all ocation.awareness. attributes", |  |
+|   |   | y": [ "cluster.routing.all ocation.awareness. attributes", |   |
 
 | Parameter | Type | "cluster.routing.all Description ocation.awareness. | Limit |
 |---|---|---|---|
-|  |  | force.node name.v _ alues", "node.attr.node na _ me" ], "slbAddress": "10.XX.XX.251", "dataNode": true, "esIPWhitelist": [], "esConfig": { "action.destructive requires name": _ _ "false" }, "endTime": 0, "haveGrafana": false, "synonymsDicts": [], "vpcInstanceId": "test553", "dedicateMaster": false, "warmNodeConfigu ration": {}, "advancedSetting": |  |
+|   |   | force.node name.v _ alues", "node.attr.node na _ me" ], "slbAddress": "10.XX.XX.251", "dataNode": true, "esIPWhitelist": [], "esConfig": { "action.destructive requires name": _ _ "false" }, "endTime": 0, "haveGrafana": false, "synonymsDicts": [], "vpcInstanceId": "test553", "dedicateMaster": false, "warmNodeConfigu ration": {}, "advancedSetting": |   |
 
-{} } } Sample requests
+{} } }
+
+**Examples**
+
+Sample requests
 
 ```
 PATCH|POST /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
@@ -3603,23 +3734,23 @@ PATCH|POST /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 Sample success responses `JSON` format
 
 ```json
-{
   "RequestId": "52F6650B-307A-4312-A303-7C621145****",
   "Result": {
       "clientNodeConfiguration": {},
       "clusterTasks": [
-          {
               "taskType": "ES_CONFIG_MODIFY",
               "stateType": "OK",
               "startTime": 1739321868248,
               "nodeInfoList": []
-          },
-          {
+```
+
+`},`
+
+```json
               "taskType": "CLUSTER_CREATE",
               "stateType": "OK",
               "startTime": 1738982911582,
               "nodeInfoList": []
-          }
 ```
 
 `],`
@@ -3627,10 +3758,8 @@ Sample success responses `JSON` format
 ```json
       "publicIpWhitelist": [],
       "zoneInfos": [
-          {
               "zoneId": "cn-wulan-env***-amtest******-a",
               "status": "NORMAL"
-          }
 ```
 
 `],`
@@ -3655,14 +3784,16 @@ Sample success responses `JSON` format
           "storageClassName": "yoda-lvm",
           "diskType": "yoda-lvm",
           "spec": "1C 2Gi"
-      },
+```
+
+`},`
+
+```json
       "dictList": [],
       "extendConfigs": [
-          {
               "maintainEndTime": "06:00Z",
               "maintainStartTime": "02:00Z",
               "configType": "maintainTime"
-          }
 ```
 
 `],`
@@ -3677,20 +3808,13 @@ Sample success responses `JSON` format
       "force": false,
       "kibanaConfiguration": {},
       "esAclWhiteIpList": [
-          {
               "whiteIpType": "PRIVATE_ES",
               "vpcId": "vpc-4defdx20iplmzsgtd****",
               "ips": [
                   "192.XX.XX.1/2"
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`]` `],`
 
 ```json
       "advancedDedicateMaster": false,
@@ -3698,11 +3822,17 @@ Sample success responses `JSON` format
       "cpuType": {
           "cpuBrand": "Intel",
           "defaultType": false
-      },
+```
+
+`},`
+
+```json
       "dryRun": false,
       "inited": true,
-"elasticDataNodeConfigration" {}
+"elasticDataNodeConfigration"
 ```
+
+`{}`
 
 ```json
       "elasticDataNodeConfiguration": {},
@@ -3727,7 +3857,11 @@ Sample success responses `JSON` format
       "networkConfig": {
           "vsArea": "cn-wulan-env***-amtest******-a",
           "type": "anytunnel"
-      },
+```
+
+`},`
+
+```json
       "esDefaultConfigKey": [
           "cluster.routing.allocation.awareness.attributes",
           "cluster.routing.allocation.awareness.force.node_name.values",
@@ -3742,7 +3876,11 @@ Sample success responses `JSON` format
       "esIPWhitelist": [],
       "esConfig": {
           "action.destructive_requires_name": "false"
-      },
+```
+
+`},`
+
+```json
       "endTime": 0,
       "haveGrafana": false,
       "synonymsDicts": [],
@@ -3750,8 +3888,6 @@ Sample success responses `JSON` format
       "dedicateMaster": false,
       "warmNodeConfiguration": {},
       "advancedSetting": {}
-  }
-}
 ```
 
 `XML` format
@@ -3822,7 +3958,7 @@ Sample success responses `JSON` format
  <status>active</status>
 ```
 
-T
+`T`
 
 ```xml
  <cpuType>
@@ -3879,17 +4015,7 @@ T
 | 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-| Parame ter Name | Typ e | Positi on | Require d | Description | Limit |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The ID of the instance. |
-
-| Parameter Name | Type | Examples | Description |
-|---|---|---|---|
-| Result | Array | "Result":[ { "key": "apack.accesslog.e nabled", "value": true, "keyDesc": "Access log audit function, only supported in 7.10.0", "valueDesc": "Boolean value, value range [true/false], default value: true", "needRestart": true } } ] | Responses. |
-| -key | String | apack.accesslog.en abled | The name of the parameter. |
-| -value | String | true | The value of the parameter. |
-
-##### GetElasticsearchSettings
+##### 3.4.2.12 GetElasticsearchSettings
 
 Call GetElasticsearchSettings to obtain the white screen configuration information of the Elasticsearch instance.
 
@@ -3905,9 +4031,19 @@ GET /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 
 **Parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Description | Limit |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The ID of the instance. |
+
 **Return data**
 
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Parameter Name | Type | Examples | Description |
+|---|---|---|---|
+| Result | Array | "Result":[ { "key": "apack.accesslog.e nabled", "value": true, "keyDesc": "Access log audit function, only supported in 7.10.0", "valueDesc": "Boolean value, value range [true/false], default value: true", "needRestart": true } } ] | Responses. |
+| -key | String | apack.accesslog.en abled | The name of the parameter. |
+| -value | String | true | The value of the parameter. |
+
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 
 | Parameter Name | Type | Examples | Description |
@@ -3916,6 +4052,8 @@ GET /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 | -valueDesc | String | A Boolean value. Valid values: true and false. Default value: true. | The description of the value. |
 | -needRestart | Boolean | true | Indicates whether a restart is required. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -3926,22 +4064,23 @@ GET /openapi/instances/[InstanceId]/actions/es-settings HTTP/1.1
 Sample success responses `JSON` format
 
 ```json
-{
   "RequestId": "52F6650B-307A-4312-A303-7C621145****",
   "Result":[
-    {
         "key": "apack.accesslog.enabled",
         "value": true,
         "keyDesc": "The access log audit feature is supported only in 7.10.0",
         "valueDesc": "Boolean value. Valid values: true and false. Default value: true"
 ```
 
-,
+`,`
 
 ```json
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "apack.accesslog.search.enabled",
         "value": true,
         "keyDesc": "The search request field printing feature is supported only in
@@ -3949,12 +4088,15 @@ Sample success responses `JSON` format
         "valueDesc": "Boolean value. Valid values: true and false. Default value: true"
 ```
 
-,
+`,`
 
 ```json
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "thread_pool.write.queue_size",
         "value": 10000,
         "keyDesc": "Document write queue size",
@@ -3965,16 +4107,22 @@ minimum values to adjust this value based on the cluster size and write operatio
 ```json
 rements. ] Default value: 10000,
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "thread_pool.search.queue_size",
         "value": 1000,
         "keyDesc": "Document search queue size",
         "valueDesc": "positive integer. Valid values: 1000 to 10000 based on the size a
 nd load of the cluster. Default value: 1000",
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "cluster.routing.allocation.disk.watermark.flood_stage",
         "value": true,
         "keyDesc": "When the disk usage reaches this threshold, the Elasticsearch marks
@@ -3982,8 +4130,11 @@ the node as unallocable and attempts to move all shards from this node to anothe
         "valueDesc": "String. Default value: 95%. It can also be set to static field (a
 vailable disk space) such as 500MB and 100g",
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "action.auto_create_index",
         "value": true,
         "keyDesc": "Whether to allow the system to automatically create an index if
@@ -3991,12 +4142,15 @@ there is no corresponding index after a new document is received",
         "valueDesc": "Boolean value. Valid values: true and false. Default value: true"
 ```
 
-,
+`,`
 
 ```json
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "action.destructive_requires_name",
         "value": false,
         "keyDesc": "Whether you need to specify the index name when deleting an index",
@@ -4007,8 +4161,11 @@ there is no corresponding index after a new document is received",
 
 ```json
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "cluster.routing.allocation.disk.watermark.low",
         "value": "80%",
         "keyDesc": "When the disk usage reaches this threshold, the Elasticsearch stops
@@ -4016,8 +4173,11 @@ allocating new shards to the node. For newly created indexes, the primary shard 
         "valueDesc": "String. Default value: 85%. It can also be set to static field (a
 vailable disk space) such as 500MB and 100g",
         "needRestart": true
-    },
-    {
+```
+
+`},`
+
+```json
         "key": "cluster.routing.allocation.disk.watermark.high",
         "value": true,
         "keyDesc": "When the disk usage reaches this threshold, the Elasticsearch will
@@ -4028,16 +4188,9 @@ try to move the existing shards from this node to other nodes, which will affect
 ```json
 vailable disk space) such as 500MB and 100g",
         "needRestart": true
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C621145****</RequestId> <Result>
@@ -4116,7 +4269,7 @@ space) such as 500mb, 100g</valueDesc>
 </Result>
 ```
 
-##### GetElasticsearchPodLogs
+##### 3.4.2.13 GetElasticsearchPodLogs
 
 Call the GetElasticsearchPodLogs operation to retrieve the log records of a pod in a specified Elasticsearch instance.
 
@@ -4130,6 +4283,8 @@ This operation uses common request headers. No special request headers are requi
 GET /openapi/instances/[InstanceId]/pod-logs/[PodName] HTTP/1.1
 ```
 
+**Request parameters**
+
 | Parame ter Name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Path | Yes | es-cn-6ja1ro4jt000c**** | The instance ID. |
@@ -4137,18 +4292,18 @@ GET /openapi/instances/[InstanceId]/pod-logs/[PodName] HTTP/1.1
 | lines | Integ er | Query | No | 50 | The number of lines to display. |
 | since | Integ er | Query | No | 2018-01-01 12:00:00 | The time when the mobile user registered with your service, in yyyy-MM-dd HH:mm:ss format. If the registration time is later than the time when the carrier released the number, the number is not a recycled number. Otherwise, the number is a recycled number. If a carrier releases a single phone number multiple times, the system uses the time of the most recent release for its evaluation. |
 
-|  |  | yyyy-MM-dd |
+|   |   | yyyy-MM-dd |
 |---|---|---|
-|  | HH:mm:ss |  |
+|   | HH:mm:ss |   |
+
+**Response data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
 | Result | String | es-cn- 6ja1ro4jt000c**** | The system returns the result. |
 
-**Request parameters**
-
-**Response data**
+**Examples**
 
 Request example
 
@@ -4156,18 +4311,11 @@ Request example
 GET /openapi/instances/[InstanceId]/pod-logs/[PodName] HTTP/1.1 &InstanceId=es-cn-6ja1ro4jt000c**** &PodName=pod-name &<Common request parameters>
 ```
 
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-nif1q9o8r0008**** | The instance ID. |
-| clientToke n | Strin g | Query | No | 123e4567-e89b-12d3- a456-426655440000 | Ensures the idempotence of the request. The client generates this value, which must be unique across different requests and contain no more than 64 ASCII characters. |
-
 Example of a successful response `JSON` format
 
 ```json
-{
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":"es-cn-6ja1ro4jt000c****"
-}
 ```
 
 `XML` format
@@ -4176,7 +4324,7 @@ Example of a successful response `JSON` format
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Result>es-cn-6ja1ro4jt000c****</Result>
 ```
 
-##### UpdateInstanceSettings
+##### 3.4.2.14 UpdateInstanceSettings
 
 You can call the UpdateInstanceSettings operation to update the configuration of an Alibaba Cloud Elasticsearch instance.
 
@@ -4196,6 +4344,11 @@ PATCH|POST /openapi/instances/[InstanceId]/instance-settings HTTP/1.1
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-nif1q9o8r0008**** | The instance ID. |
+| clientToke n | Strin g | Query | No | 123e4567-e89b-12d3- a456-426655440000 | Ensures the idempotence of the request. The client generates this value, which must be unique across different requests and contain no more than 64 ASCII characters. |
+
 | Parameter | Type | Location | Required | Example | Descriptio n |
 |---|---|---|---|---|---|
 | updateStrate gy | String | Query | No | normal | The change strategy for Elasticsearch operations such as index updates, cluster upgrades, and service deployments. Valid values:blue g _ reen: Blue- green deployment. Run two identical environments (blue and green) in parallel to enable seamless switching.nor mal: In-place update. Apply changes directly in the current environment (for example, upgrades or scaling) without additional resources.int elligent: Intelligent update. The system automatically analyzes the change type and environment status to dynamically select the optimal strategy (either blue- green or in- place). |
@@ -4204,26 +4357,22 @@ PATCH|POST /openapi/instances/[InstanceId]/instance-settings HTTP/1.1
 
 The request body must include the esConfig parameter to specify the YML parameters that you want to update. For more information about YML parameters, see Configure YML parameters. The following example shows how to adjust the document write queue size for Alibaba Cloud Elasticsearch V6.x, V7.x, and V8.x.
 
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
-
-| HttpCo de | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
-| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
-
 ```json
-{
     "esConfig": {
         "thread_pool.write.queue_size": 500
-    }
-}
 ```
 
 **Response data**
 
-The response also includes the Result parameter. For more information, see ListInstance. Sample request
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
+
+The response also includes the Result parameter. For more information, see ListInstance.
+
+**Examples**
+
+Sample request
 
 ```
 PATCH|POST /openapi/instances/[InstanceId]/instance-settings HTTP/1.1 &InstanceId=es-cn-nif1q9o8r0008**** &Common request parameters
@@ -4232,9 +4381,7 @@ PATCH|POST /openapi/instances/[InstanceId]/instance-settings HTTP/1.1 &InstanceI
 Sample success response `JSON` format
 
 ```json
-{
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7"
-}
 ```
 
 `XML` format
@@ -4245,20 +4392,16 @@ Sample success response `JSON` format
 
 **Error codes**
 
-#### Snapshots
+| HttpCo de | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
+| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-##### CreateSnapshot
+#### 3.4.3 Snapshots
+
+##### 3.4.3.1 CreateSnapshot
 
 Call the CreateSnapshot operation to create a snapshot replica of an instance.
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| Result | Boolean | true | Indicates whether the snapshot replica was successfully created. |
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
 
 **Request Headers**
 
@@ -4272,21 +4415,30 @@ POST /openapi/instances/[InstanceId]/snapshots HTTP/1.1
 
 **Request Parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
+
 **Response Data**
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| Result | Boolean | true | Indicates whether the snapshot replica was successfully created. |
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+
+**Examples**
 
 Request example
 
 ```json
-POST /openapi/instances/[InstanceId]/snapshots HTTP/1.1 { "InstanceId":"es-cn-xxx" }
+POST /openapi/instances/[InstanceId]/snapshots HTTP/1.1 "InstanceId":"es-cn-xxx"
 ```
 
 Normal response example `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":true
-}
 ```
 
 `XML` format
@@ -4295,26 +4447,14 @@ Normal response example `JSON` format
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>true</Result>
 ```
 
+**Error Codes**
+
 | HttpCo de | Error Code | Error Message | Description |
 |---|---|---|---|
 | 401 | StsRoleAccountNoP ermission | StsRoleAccountNoPermission | Role account has no permission or expired. |
 | 401 | SubAccountNoPer mission | SubAccountNoPermission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM. |
 
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-| page | Strin g | Query | No | 1 | The number of pages. |
-| size | Integ er | Query | No | 10 | The number of entries per page. |
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | E1EB6B19-DF6F- 4F15-A34B- 9B1A2D5E3BEF | The request ID. |
-| Result | Struct | - | Returns the result. |
-| -id | String | snapshot-1 | The snapshot ID. |
-
-**Error Codes**
-
-##### ListSnapshots
+##### 3.4.3.2 ListSnapshots
 
 Call ListSnapshots to retrieve a list of snapshots for an Elasticsearch cluster.
 
@@ -4330,9 +4470,21 @@ GET /openapi/instances/[InstanceId]/snapshots HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+| page | Strin g | Query | No | 1 | The number of pages. |
+| size | Integ er | Query | No | 10 | The number of entries per page. |
+
 **Response data**
 
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | E1EB6B19-DF6F- 4F15-A34B- 9B1A2D5E3BEF | The request ID. |
+| Result | Struct | - | Returns the result. |
+| -id | String | snapshot-1 | The snapshot ID. |
+
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 | Parameter name | Type | Example | Description |
 
@@ -4340,6 +4492,8 @@ GET /openapi/instances/[InstanceId]/snapshots HTTP/1.1
 |---|---|---|---|
 | -startTime | Long | 156848066 | The start time, in milliseconds since the Unix epoch. |
 | -endTime | Long | 358794445 | The end time, in milliseconds since the Unix epoch. |
+
+**Examples**
 
 Sample request
 
@@ -4350,38 +4504,15 @@ GET /openapi/instances/[InstanceId]/snapshots HTTP/1.1 &InstanceId=es-cn-xxx
 Sample success response `JSON` format
 
 ```json
-{
  "RequestId":"E1EB6B19-DF6F-4F15-A34B-9B1A2D5E3BEF",
  "Result":[
-  {
    "startTime":156848066,
    "id":"snapshot-1",
    "endTime":358794445,
    "status":"SUCCESS"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
-| Result | - | - | Result. |
+`]` `XML` format
 
 ```xml
 <RequestId>E1EB6B19-DF6F-4F15-A34B-9B1A2D5E3BEF</RequestId> <Result>
@@ -4394,7 +4525,12 @@ Sample success response `JSON` format
 
 **Error codes**
 
-##### DescribeSnapshotSetting
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
+
+##### 3.4.3.3 DescribeSnapshotSetting
 
 Call DescribeSnapshotSetting to view the data backup configuration of a specified cluster.
 
@@ -4410,9 +4546,18 @@ GET /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1
 
 **Request Parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
+
 **Response Data**
 
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+| Result | - | - | Result. |
+
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
@@ -4421,9 +4566,7 @@ GET /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1
 | -enable | Boolean | true | Is backup enabled. |
 | -repoName | String | backup | Backup repository name. |
 
-| HTTP Code | Error Code | Error Message | Description |
-|---|---|---|---|
-| 404 | InstanceNotFound | The specified cluster does not exist. Check the cluster status and try again. | The specified cluster does not exist. Check the cluster status and try again. |
+**Examples**
 
 Request Example
 
@@ -4434,14 +4577,11 @@ GET /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1 &InstanceId=es-cn-
 Normal Response Example `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":{
   "quartzRegex":"0 0 04 ? * THU,SAT",
   "enable":true,
   "repoName":"backup"
- }
-}
 ```
 
 `XML` format
@@ -4456,21 +4596,13 @@ Normal Response Example `JSON` format
 
 **Error Codes**
 
-##### ListSnapshotRepoInfos
+| HTTP Code | Error Code | Error Message | Description |
+|---|---|---|---|
+| 404 | InstanceNotFound | The specified cluster does not exist. Check the cluster status and try again. | The specified cluster does not exist. Check the cluster status and try again. |
+
+##### 3.4.3.4 ListSnapshotRepoInfos
 
 Call the ListSnapshotRepoInfos operation to retrieve a list of snapshot repositories.
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The ID of the request. |
-| Result | - | - | Return value. |
-| -settings | - | - | The repository settings. |
-| --bucket | String | test-bucket | The name of the OSS bucket. |
-| -- access key id _ _ | String | xxxxx | The AccessKey ID of the Alibaba Cloud account. |
-| --endpoint | String | oss-cn-wulan- enxxxxxx.shuguan g.com | The access path of the OSS repository. |
-| -- secret access _ _ key | String | xxxxx | The Access Key Secret of the Alibaba Cloud account. |
-| -name | String | test-bucket | The name of the repository. |
-| -type | String | oss | The type of the repository. The value is oss. |
 
 **Request headers**
 
@@ -4486,6 +4618,20 @@ This operation has no request parameters.
 
 **Response data**
 
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The ID of the request. |
+| Result | - | - | Return value. |
+| -settings | - | - | The repository settings. |
+| --bucket | String | test-bucket | The name of the OSS bucket. |
+| -- access key id _ _ | String | xxxxx | The AccessKey ID of the Alibaba Cloud account. |
+| --endpoint | String | oss-cn-wulan- enxxxxxx.shuguan g.com | The access path of the OSS repository. |
+| -- secret access _ _ key | String | xxxxx | The Access Key Secret of the Alibaba Cloud account. |
+| -name | String | test-bucket | The name of the repository. |
+| -type | String | oss | The type of the repository. The value is oss. |
+
+**Examples**
+
 Request example
 
 ```
@@ -4495,34 +4641,23 @@ GET /openapi/snapshot-repos HTTP/1.1
 Response example `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":[
-  {
    "name":"test-bucket",
    "settings":[
-    {
      "bucket":"test-bucket",
      "access_key_id":"xxxxx",
      "endpoint":"oss-cn-wulan-enxxxxxx.shuguang.com",
      "secret_access_key":"xxxxx"
-    }
 ```
 
 `],`
 
 ```json
    "type":"oss"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -4537,7 +4672,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### GetSnapshotRepoInfo
+##### 3.4.3.5 GetSnapshotRepoInfo
 
 Call the GetSnapshotRepoInfo operation to retrieve information about the snapshot repository of a specified instance.
 
@@ -4557,6 +4692,8 @@ GET /openapi/snapshot-repos/[SnapshotRepoName] HTTP/1.1
 |---|---|---|---|---|---|
 | Snapshot RepoNam e | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
 
+**Response data**
+
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
@@ -4569,7 +4706,7 @@ GET /openapi/snapshot-repos/[SnapshotRepoName] HTTP/1.1
 | --endpoint | String | oss-cn-wulan- enxxxxxx.shuguan g.com | The endpoint of the OSS repository. |
 | -- secret access _ _ key | String | xxxxx | The AccessKey secret of your Alibaba Cloud account. |
 
-**Response data**
+**Examples**
 
 Request example
 
@@ -4579,12 +4716,7 @@ GET /openapi/snapshot-repos/[SnapshotRepoName] HTTP/1.1 &SnapshotRepoName=es-cn-
 
 Response example `JSON` format
 
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn- oew1rgiev0009**** | The instance ID. |
-
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":{
   "name":"test-bucket",
@@ -4593,10 +4725,12 @@ Response example `JSON` format
    "access_key_id":"xxxxx",
    "endpoint":"oss-cn-wulan-enxxxxxx.shuguang.com",
    "secret_access_key":"xxxxx"
-  },
+```
+
+`},`
+
+```json
   "type":"oss"
- }
-}
 ```
 
 `XML` format
@@ -4614,7 +4748,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### UpdateSnapshotSetting
+##### 3.4.3.6 UpdateSnapshotSetting
 
 Updates the data backup configuration of a specified instance.
 
@@ -4630,12 +4764,27 @@ POST|PUT /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn- oew1rgiev0009**** | The instance ID. |
+
 **RequestBody**
+
+Specify the following parameters in the request body to update the data backup configuration.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | quartzRegex | String | No | 0 0 01 ? * * * | The start time of the automatic backup. This parameter is required when enable is set to true. |
 | enable | Boolean | Yes | true | Specifies whether to enable scheduled backups. |
+
+The following code provides an example.
+
+```json
+    "quartzRegex":"0 0 01 ? * * *",
+    "enable":true
+```
+
+**Response data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
@@ -4644,16 +4793,7 @@ POST|PUT /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1
 | -quartzRegex | String | 0 0 01 ? * * * | The start time of the automatic backup. |
 | -enable | Boolean | true | Indicates whether automatic backup is enabled. |
 
-Specify the following parameters in the request body to update the data backup configuration. The following code provides an example.
-
-```json
-{
-    "quartzRegex":"0 0 01 ? * * *",
-    "enable":true
-}
-```
-
-**Response data**
+**Examples**
 
 Sample request
 
@@ -4663,23 +4803,11 @@ POST|PUT /openapi/instances/[InstanceId]/snapshot-setting HTTP/1.1 &InstanceId=e
 
 Sample response `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | The instance is being activated. |
-| 400 | InstanceNotFound | InstanceNotFound | The specified instance ID does not exist. |
-
-| parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-
 ```json
-{
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":{
   "quartzRegex":"0 0 01 ? * * *",
   "enable":true
- }
-}
 ```
 
 `XML` format
@@ -4693,9 +4821,14 @@ Sample response `JSON` format
 
 **Error codes**
 
-#### Manage dictionaries
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | The instance is being activated. |
+| 400 | InstanceNotFound | InstanceNotFound | The specified instance ID does not exist. |
 
-##### ListDicts
+#### 3.4.4 Manage dictionaries
+
+##### 3.4.4.1 ListDicts
 
 Retrieves a list of dictionaries that are installed on a specified Elasticsearch cluster.
 
@@ -4711,12 +4844,18 @@ GET /openapi/instances/[InstanceId]/dicts HTTP/1.1
 
 **Request parameters**
 
-| lasticsearch |  |  |  | Devel | oper Guide·Interact with O enAP |
+| parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+
+| lasticsearch |   |   |   | Devel | oper Guide·Interact with O enAP |
 |---|---|---|---|---|---|
 
 | parame ter name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | analyzerT ype | Strin g | Query | Yes | ALI WS _ | The dictionary type: IK HOT: IK rolling _ update dictionary IK: IK cold update dictionary SYNONYMS: Synonyms ALI WS: aliws _ dictionary |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -4728,13 +4867,9 @@ GET /openapi/instances/[InstanceId]/dicts HTTP/1.1
 | -type | String | SYNONYMS | The dictionary type: STOP: Stop words MAIN: Main dictionary SYNONYMS: Synonyms ALI WS: aliws dictionary _ |
 | -name | String | sync | The dictionary name. |
 
-**Response data**
+**Examples**
 
 Request example
-
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| instanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
 
 ```
 GET /openapi/instances/[InstanceId]/dicts HTTP/1.1 &InstanceId=es-cn-xxx &analyzerType=ALI_WS
@@ -4743,7 +4878,6 @@ GET /openapi/instances/[InstanceId]/dicts HTTP/1.1 &InstanceId=es-cn-xxx &analyz
 Response example `JSON` format
 
 ```json
-{
     "RequestId": "44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF",
     "Result":{
       "fileSize": "1024",
@@ -4751,8 +4885,6 @@ Response example `JSON` format
       "sourceType": "OSS",
       "type": "SYNONYMS",
       "name": "sync"
-    }
-}
 ```
 
 `XML` format
@@ -4767,7 +4899,7 @@ Response example `JSON` format
 </Result>
 ```
 
-##### ListDictInformation
+##### 3.4.4.2 ListDictInformation
 
 You can call the ListDictInformation operation to retrieve the OSS information for the dictionary of an Elasticsearch instance.
 
@@ -4783,7 +4915,11 @@ GET /openapi/instances/[InstanceId]/dict/_info HTTP/1.1
 
 **Request parameters**
 
-| E | lasticsearch |  |  |  | Devel | oper Guide·Interact with O enAP | p I |
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| instanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+
+| E | lasticsearch |   |   |   | Devel | oper Guide·Interact with O enAP | p I |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter name | Typ e | Locati on | Require d | Example | Description |
@@ -4791,6 +4927,8 @@ GET /openapi/instances/[InstanceId]/dict/_info HTTP/1.1
 | bucketNa me | Strin g | Query | Yes | oss-test | The OSS bucket name. |
 | key | Strin g | Query | Yes | synonym.txt | The OSS file path. |
 | analyzerT ype | Strin g | Query | No | SYNONYMS | The dictionary type. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -4802,7 +4940,7 @@ GET /openapi/instances/[InstanceId]/dict/_info HTTP/1.1
 | --bucketName | String | tegt | The OSS bucket name. |
 | --etag | String | 5B3C1A2E0563E1B 002CC607C**** | The OSS ETag. This is the 32-character uppercase MD5 hash of the synonym file content. |
 
-**Response data**
+**Examples**
 
 Sample request
 
@@ -4812,16 +4950,7 @@ GET /openapi/instances/[InstanceId]/dict/_info HTTP/1.1 &instanceId=es-cn-xxx &b
 
 Sample success response `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | ComponentCodeVa lueError | component value is disable | The component parameter value is invalid or disabled. |
-| 401 | UserNotOpen | Aliyun account is not open elasticsearch | Your Alibaba Cloud account has not enabled the Elasticsearch service. |
-| 401 | StsRoleAccountNoP ermission | Role account has no permission or expired | The role account has no permissions or the credentials have expired. |
-| 401 | SubAccountNoPer mission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM | The RAM user has no permissions. Grant permissions to the RAM user in the RAM console. |
-| 401 | UserUnauthorized | Authentication required | Authentication failed. Provide valid credentials. |
-
 ```json
-{
     "RequestId": "44D5D2A7-0B8F-4497-A3E4-BB7A53ABD2CF",
     "Result":{
       "fileSize": "1024",
@@ -4829,9 +4958,6 @@ Sample success response `JSON` format
         "key":"test.text",
         "bucketName": "tegt",
         "etag":"ESOJAPJJE93"
-      }
-    }
-}
 ```
 
 `XML` format
@@ -4849,28 +4975,19 @@ Sample success response `JSON` format
 
 **Error codes**
 
-##### UpdateDict
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | ComponentCodeVa lueError | component value is disable | The component parameter value is invalid or disabled. |
+| 401 | UserNotOpen | Aliyun account is not open elasticsearch | Your Alibaba Cloud account has not enabled the Elasticsearch service. |
+| 401 | StsRoleAccountNoP ermission | Role account has no permission or expired | The role account has no permissions or the credentials have expired. |
+| 401 | SubAccountNoPer mission | Aliyun sub account has no permission, please authorize your sub account in Aliyun RAM | The RAM user has no permissions. Grant permissions to the RAM user in the RAM console. |
+| 401 | UserUnauthorized | Authentication required | Authentication failed. Provide valid credentials. |
+
+##### 3.4.4.3 UpdateDict
 
 Updates the IK dictionary of an Elasticsearch instance.
 
 **Request Headers**
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-| body | Array | Body | Yes | - | The request body. |
-| -name | Strin g | Body | Yes | 1.txt | The name of the uploaded dictionary file. |
-| -ossObject | Objec t | Body | Yes | - | The description of the OSS storage file. |
-| -- bucketNa me | Strin g | Body | Yes | search-cloud-test-cn- shenzhen | The name of the OSS bucket. |
-| --key | Strin g | Body | Yes | synonym txt/1.txt _ | The full path of the object. |
-| - sourceTyp e | Strin g | Body | Yes | OSS | The type of the synonym source. Only OSS is supported. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 5FFD9ED4-C2EC- 4E89-B22B- 1ACB6FE1DE9E | The request ID. |
-| Result | Struct | - | The returned result. |
-| -name | String | deploy 0.dic _ | The file name of the uploaded OSS file. |
-| -fileSize | Long | 220 | The size of the synonym file in bytes. |
 
 This operation uses common request headers. No special request headers are used. For more information, see the documentation about common request parameters.
 
@@ -4882,9 +4999,26 @@ PUT /openapi/instances/[InstanceId]/dict HTTP/1.1
 
 **Request Parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+| body | Array | Body | Yes | - | The request body. |
+| -name | Strin g | Body | Yes | 1.txt | The name of the uploaded dictionary file. |
+| -ossObject | Objec t | Body | Yes | - | The description of the OSS storage file. |
+| -- bucketNa me | Strin g | Body | Yes | search-cloud-test-cn- shenzhen | The name of the OSS bucket. |
+| --key | Strin g | Body | Yes | synonym txt/1.txt _ | The full path of the object. |
+| - sourceTyp e | Strin g | Body | Yes | OSS | The type of the synonym source. Only OSS is supported. |
+
 **Response Data**
 
-| e | Developer Guide·I nAPI | nteract with Op |  | Elasticsearc | h |
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 5FFD9ED4-C2EC- 4E89-B22B- 1ACB6FE1DE9E | The request ID. |
+| Result | Struct | - | The returned result. |
+| -name | String | deploy 0.dic _ | The file name of the uploaded OSS file. |
+| -fileSize | Long | 220 | The size of the synonym file in bytes. |
+
+| e | Developer Guide·I nAPI | nteract with Op |   | Elasticsearc | h |
 |---|---|---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
@@ -4895,54 +5029,29 @@ PUT /openapi/instances/[InstanceId]/dict HTTP/1.1
 | --key | String | es hot dic/ik main. _ _ _ dic | The path of the IK hot dictionary file in OSS. |
 | --etag | String | 65B94FC97AE79A5 67791D9A5689C50 38 | The 32-bit uppercase MD5 value of the synonym file content. |
 
+**Examples**
+
 Sample request
 
 ```json
-PUT /openapi/instances/[InstanceId]/dict HTTP/1.1 { "InstanceId":"es-cn-xxx", "body":"" }
+PUT /openapi/instances/[InstanceId]/dict HTTP/1.1 "InstanceId":"es-cn-xxx", "body":""
 ```
 
 Sample normal response `JSON` format
 
 ```json
-{
  "RequestId":"5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1DE9E",
  "Result":[
-  {
    "fileSize":220,
    "sourceType":"OSS",
    "name":"deploy_0.dic",
    "ossObject":[
-    {
      "bucketName":"jcj-oss-new",
      "etag":"65B94FC97AE79A567791D9A5689C5038",
      "key":"es_hot_dic/ik_main.dic"
-    }
 ```
 
-]
-
-```
-  }
-```
-
-]
-
-```
-}
-```
-
-`XML` format
-
-| HttpCo de | Error Code | Error Message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is activating. Retry later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and ID. |
-
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-| body | Array | Body | Yes | - | The request body. |
-| -name | Strin g | Body | Yes | deploy 0.dic _ | The name of the dictionary file to upload. |
+`]` `]` `XML` format
 
 ```xml
 <RequestId>5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1DE9E</RequestId> <Result>
@@ -4959,7 +5068,12 @@ Sample normal response `JSON` format
 
 **Error Codes**
 
-##### UpdateSynonymsDicts
+| HttpCo de | Error Code | Error Message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is activating. Retry later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and ID. |
+
+##### 3.4.4.4 UpdateSynonymsDicts
 
 Updates the synonym dictionaries for a cluster.
 
@@ -4977,10 +5091,18 @@ PUT /openapi/instances/[InstanceId]/synonymsDict HTTP/1.1
 
 | Parame ter Name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+| body | Array | Body | Yes | - | The request body. |
+| -name | Strin g | Body | Yes | deploy 0.dic _ | The name of the dictionary file to upload. |
+
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | -ossObject | Objec t | Body | Yes | - | A description of the file stored in OSS. |
 | -- bucketNa me | Strin g | Body | Yes | search-cloud-test-cn- shenzhen | The name of the OSS bucket. |
 | --key | Strin g | Body | Yes | user dict/dict 0.dic _ _ | The full path of the object. |
 | - sourceTyp e | Strin g | Body | Yes | OSS | The source type of the synonym dictionary. Only OSS is supported. |
+
+**Response data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
@@ -4994,7 +5116,7 @@ PUT /openapi/instances/[InstanceId]/synonymsDict HTTP/1.1
 | --key | String | es hot dic/ik main. _ _ _ dic | The path of the IK hot dictionary file in OSS. |
 | --etag | String | 65B94FC97AE79A5 67791D9A5689C50 38 | The 32-digit uppercase MD5 hash of the synonym dictionary file content. |
 
-**Response data**
+**Examples**
 
 Request example
 
@@ -5003,58 +5125,53 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
 # Request body
 ```
 
-[
+`[`
 
 ```json
-    {
         "name":"deploy_0.dic",
         "ossObject":{
             "bucketName":"search-cloud-test-cn-hangzhou",
             "key":"user_dict/dict_0.dic"
-        },
-        "sourceType":"OSS"
-    }
 ```
 
-] Successful response example `JSON` format
+`},`
 
 ```json
-{
+        "sourceType":"OSS"
+```
+
+`]` Successful response example `JSON` format
+
+```json
     "Result":[
-        {
             "name":"deploy_0.dic",
             "fileSize":220,
             "sourceType":"OSS"
-        },
-        {
+```
+
+`},`
+
+```json
             "name":"SYSTEM_MAIN.dic",
             "fileSize":2782602,
             "sourceType":"ORIGIN"
-        },
-        {
+```
+
+`},`
+
+```json
             "name":"SYSTEM_STOPWORD.dic",
             "fileSize":132,
             "sourceType":"ORIGIN"
-        }
 ```
 
 `],`
 
 ```json
     "RequestId":"7C5622CC-B312-426F-85AA-B0271A009E0C"
-}
 ```
 
 `XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating | The instance is being activated. Try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and try again. |
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
 
 ```xml
 <Result>
@@ -5074,7 +5191,12 @@ PUT /openapi/instances/es-cn-xxxx/synonymsDict
 
 **Error codes**
 
-##### UpdateHotIkDicts
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating | The instance is being activated. Try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and try again. |
+
+##### 3.4.4.5 UpdateHotIkDicts
 
 Updates the IK hot word dictionary for a cluster.
 
@@ -5092,12 +5214,18 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict HTTP/1.1
 
 | Parame ter Name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
+
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | body | Array | Body | Yes | [{"name":"deploy 0.dic" _ ,"ossObject": {"bucketName":"search- cloud-test-cn- hangzhou","key":"user d _ ict/dict 0.dic"},"sourceT _ ype":"OSS"}] | Request body. |
 | -name | Strin g | Body | Yes | 1.txt | Name of the uploaded dictionary file. |
 | -ossObject | Objec t | Body | Yes | {"bucketName":"search- cloud-test-cn- shenzhen","key":"synon ym txt/1.txt"} _ | Description of the OSS storage file. |
 | -- bucketNa me | Strin g | Body | Yes | search-cloud-test-cn- shenzhen | Name of the OSS bucket. |
 | --key | Strin g | Body | Yes | synonym txt/1.txt _ | Full path of the object. |
 | - sourceTyp e | Strin g | Body | Yes | OSS | Source type of the synonym. Only OSS is supported. |
+
+**Response Data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
@@ -5109,15 +5237,15 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict HTTP/1.1
 | -ossObject | - | - | Description of the OSS storage file. |
 | --bucketName | String | jcj-oss-new | Project name in the OSS data source. |
 
-**Response Data**
-
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 | Parameter Name | Type | Example | Description |
 
 | --key | String | es hot dic/ik main. _ _ _ dic | Path to the IK hotword dictionary file in OSS. |
 |---|---|---|---|
 | --etag | String | 65B94FC97AE79A5 67791D9A5689C50 38 | 32-bit uppercase MD5 value of the synonym file content. |
+
+**Examples**
 
 Sample request
 
@@ -5126,51 +5254,50 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
 #body
 ```
 
-[
+`[`
 
 ```json
-    {
         "name":"deploy_0.dic",
         "ossObject":{
             "bucketName":"search-cloud-test-cn-hangzhou",
             "key":"user_dict/dict_0.dic"
-        },
-        "sourceType":"OSS"
-    }
 ```
 
-] Sample normal response `JSON` format
-
-| HTTP Code | Error Code | Error Message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating | The instance is activating. Try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and ID. |
+`},`
 
 ```json
-{
+        "sourceType":"OSS"
+```
+
+`]` Sample normal response `JSON` format
+
+```json
     "Result":[
-        {
             "name":"deploy_0.dic",
             "fileSize":220,
             "sourceType":"OSS"
-        },
-        {
+```
+
+`},`
+
+```json
             "name":"SYSTEM_MAIN.dic",
             "fileSize":2782602,
             "sourceType":"ORIGIN"
-        },
-        {
+```
+
+`},`
+
+```json
             "name":"SYSTEM_STOPWORD.dic",
             "fileSize":132,
             "sourceType":"ORIGIN"
-        }
 ```
 
 `],`
 
 ```json
     "RequestId":"7C5622CC-B312-426F-85AA-B0271A009E0C",
-}
 ```
 
 `XML` format
@@ -5193,22 +5320,14 @@ PUT /openapi/instances/[InstanceId]/ik-hot-dict
 
 **Error Codes**
 
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The instance ID. |
-| name | Strin g | Query | No | analysis-ik | The plugin name. |
-| page | Integ er | Query | No | 5 | The page number. |
-| size | Integ er | Query | No | 20 | The number of entries per page. |
-| source | Strin g | Query | No | SYSTEM | The plugin source: SYSTEM: system plugin USER: user-defined plugin |
-
-| Parameter name | Type | Example | Description |
+| HTTP Code | Error Code | Error Message | Description |
 |---|---|---|---|
-| RequestId | String | 5A5D8E74-565C- 43DC-B031- 29289FA9BAD6 | The request ID. |
-| Result | Struct | - | The list of plugins returned by this request. |
+| 400 | InstanceActivating | Instance is activating | The instance is activating. Try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist | The specified instance ID does not exist. Check the instance status and ID. |
 
-#### Plug-in
+#### 3.4.5 Plug-in
 
-##### ListPlugins
+##### 3.4.5.1 ListPlugins
 
 Call the ListPlugins operation to retrieve a list of all installed and uninstalled plugins for an Elasticsearch cluster.
 
@@ -5224,9 +5343,22 @@ GET /openapi/instances/[InstanceId]/plugins HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The instance ID. |
+| name | Strin g | Query | No | analysis-ik | The plugin name. |
+| page | Integ er | Query | No | 5 | The page number. |
+| size | Integ er | Query | No | 20 | The number of entries per page. |
+| source | Strin g | Query | No | SYSTEM | The plugin source: SYSTEM: system plugin USER: user-defined plugin |
+
 **Response data**
 
-| E | lasticsearch |  |  | Developer Guide·Interact with O enAP | p I |
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 5A5D8E74-565C- 43DC-B031- 29289FA9BAD6 | The request ID. |
+| Result | Struct | - | The list of plugins returned by this request. |
+
+| E | lasticsearch |   |   | Developer Guide·Interact with O enAP | p I |
 |---|---|---|---|---|---|
 
 | Parameter name | Type | Example | Description |
@@ -5239,6 +5371,8 @@ GET /openapi/instances/[InstanceId]/plugins HTTP/1.1
 | Headers | Map | - | Message header |
 | -X-Total-Count | Integer | 2 | The total number of plugins in the list. |
 
+**Examples**
+
 Sample request
 
 ```
@@ -5247,34 +5381,24 @@ GET /openapi/instances/[InstanceId]/plugins HTTP/1.1 &InstanceId=es-cn-xxxxxxxx
 
 Sample success response `JSON` format
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
-
 ```json
-{
     "RequestId":"5A5D8E74-565C-43DC-B031-29289FA9BAD6",
     "Headers":{
     "XTotalCount":2
-    },
+```
+
+`},`
+
+```json
     "Result":[
-    {
     "name":"analysis-ik",
     "description":"IK analysis plug-in for Elasticsearch.",
     "state":"INSTALLED",
     "source":"SYSTEM",
     "configMutable":false
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>5A5D8E74-565C-43DC-B031-29289FA9BAD6</RequestId> <Headers>
@@ -5290,7 +5414,12 @@ Sample success response `JSON` format
 
 **Error codes**
 
-##### ListKibanaPlugins
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
+
+##### 3.4.5.2 ListKibanaPlugins
 
 Call ListKibanaPlugins to retrieve the list of plugins for the Kibana nodes of an Elasticsearch instance.
 
@@ -5300,11 +5429,19 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
+```
+GET /openapi/instances/[InstanceId]/kibana-plugins HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter Name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Path | Yes | es-cn- oew1q8bev0002**** | The instance ID. |
 | page | Strin g | Query | No | 1 | The page number of the instance list. The default value is 1. |
 | size | Integ er | Query | No | 10 | The number of entries to return on each page for a paged query. |
+
+**Returned data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
@@ -5314,15 +5451,7 @@ This operation uses common request headers. No special request headers are requi
 | -state | String | active | The installation state of the plugin. Valid values: INSTALLED: Installed UNINSTALLED: Not installed INSTALLING: Installing UNINSTALLING: Uninstalling UPGRADING: Upgrading FAILED: Installation failed UNKNOWN: The creation status cannot be obtained because the cluster is disconnected. |
 | -source | String | Local | The source of the plugin. Valid values: USER: Custom plugin SYSTEM: System-preinstalled plugin |
 
-```
-GET /openapi/instances/[InstanceId]/kibana-plugins HTTP/1.1
-```
-
-**Request parameters**
-
-**Returned data**
-
-| Developer Guide·I nAPI | nteract with Op |  | Elasticsearc |
+| Developer Guide·I nAPI | nteract with Op |   | Elasticsearc |
 |---|---|---|---|
 | Parameter Name | Type | Example | Description |
 
@@ -5331,6 +5460,8 @@ GET /openapi/instances/[InstanceId]/kibana-plugins HTTP/1.1
 | RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
 | Headers | Struct | ***** | Returns the headers. |
 | X-Total-Count | Integer | 10 | The number of returned data entries. |
+
+**Examples**
 
 Request example
 
@@ -5341,38 +5472,24 @@ GET /openapi/instances/[InstanceId]/kibana-plugins HTTP/1.1 &InstanceId=es-cn-oe
 Response example `JSON` format
 
 ```json
-{
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Headers":{
   "XTotalCount":10
- },
+```
+
+`},`
+
+```json
  "Result":[
-  {
    "specificationUrl":"https://xxxx.html",
    "name":"test",
    "description":"test",
    "state":"active",
    "source":"Local",
    "configMutable":"true"
-  }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
-| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn- n6w1o1x0w00****** | The instance ID. |
+`]` `XML` format
 
 ```xml
 <RequestId>52F6650B-307A-4312-A303-7C62114500A7</RequestId> <Headers>
@@ -5389,7 +5506,12 @@ Response example `JSON` format
 
 **Error codes**
 
-##### InstallKibanaSystemPlugin
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
+| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
+
+##### 3.4.5.3 InstallKibanaSystemPlugin
 
 Call InstallKibanaSystemPlugin to install a Kibana system plugin. The Kibana instance must have at least 2 CPU cores and 4 GB of memory.
 
@@ -5407,28 +5529,32 @@ POST /openapi/instances/[InstanceId]/kibana-plugins/system/actions/install HTTP/
 
 | Parame ter Name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn- n6w1o1x0w00****** | The instance ID. |
+
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | clientToke n | Strin g | Query | No | 123e4567-e89b-12d3- a456-426655440000 | A client token to ensure the idempotence of the request. This token is generated by the client and must be unique for each request. The token can be up to 64 ASCII characters in length. |
+
+**Returned Data**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | Result | List | ["bsearch querybui _ lder"] | The list of plugins that were requested for installation. |
 | RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
 
-**Returned Data**
+**Examples**
 
 Request example
 
 ```json
-POST /openapi/instances/[InstanceId]/kibana-plugins/system/actions/install HTTP/1.1 { "InstanceId":"es-cn-n6w1o1x0w00******" }
+POST /openapi/instances/[InstanceId]/kibana-plugins/system/actions/install HTTP/1.1 "InstanceId":"es-cn-n6w1o1x0w00******"
 ```
 
 Response example `JSON` format
 
 ```json
-{
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":["bsearch_querybuilder"]
-}
 ```
 
 `XML` format
@@ -5444,17 +5570,7 @@ Response example `JSON` format
 | 400 | InstanceActivating | InstanceActivating | The instance is being activated. |
 | 400 | InstanceNotFound | InstanceNotFound | The specified instance ID does not exist. |
 
-| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-6ja1ro4jt000c**** | The instance ID. |
-| clientToke n | Strin g | Query | No | 5A2CFF0E-5718-45B5- 9D4D-70B3FF**** | A client token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and can be up to 64 ASCII characters in length. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| Result | List | ["bsearch querybui _ lder"] | The result of the request. This is a list of the uninstalled plugins. |
-| RequestId | String | 5FFD9ED4-C2EC- 4E89-B22B- 1ACB6FE1D**** | The request ID. |
-
-##### UninstallKibanaPlugin
+##### 3.4.5.4 UninstallKibanaPlugin
 
 The UninstallKibanaPlugin operation uninstalls a Kibana plugin.
 
@@ -5464,30 +5580,31 @@ This operation uses common request headers and does not have any special request
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-6ja1ro4jt000c**** | The instance ID. |
+| clientToke n | Strin g | Query | No | 5A2CFF0E-5718-45B5- 9D4D-70B3FF**** | A client token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and can be up to 64 ASCII characters in length. |
+
 **Return Data**
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| Result | List | ["bsearch querybui _ lder"] | The result of the request. This is a list of the uninstalled plugins. |
+| RequestId | String | 5FFD9ED4-C2EC- 4E89-B22B- 1ACB6FE1D**** | The request ID. |
+
+**Examples**
 
 Request example
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
-| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | path | Yes | es-cn-xxx | The instance ID. |
-
 ```json
-POST /openapi/instances/[InstanceId]/kibana-plugins/actions/uninstall HTTP/1.1 { "InstanceId":"es-cn-6ja1ro4jt000c****" }
+POST /openapi/instances/[InstanceId]/kibana-plugins/actions/uninstall HTTP/1.1 "InstanceId":"es-cn-6ja1ro4jt000c****"
 ```
 
 Response example `JSON` format
 
 ```json
-{
  "RequestId":"5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****",
  "Result":"[\"bsearch_querybuilder\"]"
-}
 ```
 
 `XML` format
@@ -5498,7 +5615,12 @@ Response example `JSON` format
 
 **Error codes**
 
-##### InstallSystemPlugin
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
+| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
+
+##### 3.4.5.5 InstallSystemPlugin
 
 Installs system plugins on a specified instance.
 
@@ -5514,37 +5636,37 @@ POST /openapi/instances/[InstanceId]/plugins/system/actions/install HTTP/1.1
 
 **Request parameters**
 
-|  |  |  |  | Devel | oper Guide·Interact with O |
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | path | Yes | es-cn-xxx | The instance ID. |
+
+|   |   |   |   | Devel | oper Guide·Interact with O |
 |---|---|---|---|---|---|
 
 | Parame ter Name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | body | List | body | Yes | ["pluginNmae1","name2 "] | The names of the plugins. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The request ID. |
 | Result | List<-> | ["name1"] | The list of plugins requested for installation. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is being activated. The installation cannot be performed. |
-
-**Response data**
+**Examples**
 
 Request example
 
 ```json
-POST /openapi/instances/[InstanceId]/plugins/system/actions/install HTTP/1.1 { "InstanceId":"es-cn-xxx", }
+POST /openapi/instances/[InstanceId]/plugins/system/actions/install HTTP/1.1 "InstanceId":"es-cn-xxx", "body":"[\"pluginName1\",\"pluginName2\"]"
 ```
 
 Successful response example `JSON` format
 
 ```json
-{
     "Result": ["bsearch_querybuilder"],
     "RequestId": "5A5D8E74-565C-43DC-B031-29289FA9BAD6"
-}
 ```
 
 `XML` format
@@ -5555,22 +5677,16 @@ Successful response example `JSON` format
 
 **Error codes**
 
-| Developer Gui nAPI | de·Interact with Op |  | Elasticsearc |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is being activated. The installation cannot be performed. |
+
+| Developer Gui nAPI | de·Interact with Op |   | Elasticsearc |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The provided instance ID does not exist. |
 
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-| body | List | Body | Yes | ["pluginName1","name2 "] | The plugin names. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The request ID. |
-| Result | List | ["bsearch querybui _ lder"] | The list of plugins requested for installation. |
-
-##### InstallUserPlugins
+##### 3.4.5.6 InstallUserPlugins
 
 Call InstallUserPlugins to install custom user plugins for a specified instance.
 
@@ -5586,36 +5702,35 @@ POST /openapi/instances/[InstanceId]/plugins/user/actions/install HTTP/1.1
 
 **Request parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+| body | List | Body | Yes | ["pluginName1","name2 "] | The plugin names. |
+
 **Response data**
+
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The request ID. |
+| Result | List | ["bsearch querybui _ lder"] | The list of plugins requested for installation. |
+
+**Examples**
 
 Request example
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is being activated. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
-
 ```json
-POST /openapi/instances/[InstanceId]/plugins/user/actions/install HTTP/1.1 {
+POST /openapi/instances/[InstanceId]/plugins/user/actions/install HTTP/1.1
     "InstanceId": "es-cn-xxx",
     "body": [
         "pluginName1",
         "name2"
 ```
 
-]
-
-```
-}
-```
-
-Successful response examples `JSON` format
+`]` Successful response examples `JSON` format
 
 ```json
-{
     "Result": ["bsearch_querybuilder"],
     "RequestId": "5A5D8E74-565C-43DC-B031-29289FA9BAD6"
-}
 ```
 
 `XML` format
@@ -5626,7 +5741,12 @@ Successful response examples `JSON` format
 
 **Error codes**
 
-##### UninstallPlugin
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is being activated. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
+
+##### 3.4.5.7 UninstallPlugin
 
 Use the UninstallPlugin operation to uninstall an Elasticsearch cluster plugin.
 
@@ -5645,38 +5765,32 @@ POST /openapi/instances/[InstanceId]/plugins/actions/uninstall HTTP/1.1
 | Parame ter Name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | InstanceId | Strin g | path | Yes | es-cn-xxx | The ID of the instance. |
-| body |  | body | Yes | ["pluginName1","name2 "] | The name of the plugin. |
+| body |   | body | Yes | ["pluginName1","name2 "] | The name of the plugin. |
+
+**Response parameters**
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F99407AB-2FA9- 489E-A259- 40CF6DCC47D9 | The ID of the request. |
 | Result | List ↔ | ["bsearch querybui _ lder"] | A list of the ES cluster plugins that you requested to uninstall. |
 
-**Response parameters**
+**Examples**
 
 Request example
 
 ```json
-POST /openapi/instances/[InstanceId]/plugins/actions/uninstall HTTP/1.1 {
+POST /openapi/instances/[InstanceId]/plugins/actions/uninstall HTTP/1.1
     "InstanceId": "es-cn-xxx",
     "body": [
         "pluginName1",
         "name2"
 ```
 
-]
-
-```
-}
-```
-
-Sample responses `JSON` format
+`]` Sample responses `JSON` format
 
 ```json
-{
     "Result": ["bsearch_querybuilder"],
     "RequestId": "5A5D8E74-565C-43DC-B031-29289FA9BAD6"
-}
 ```
 
 `XML` format
@@ -5692,17 +5806,7 @@ Sample responses `JSON` format
 | 400 | InstanceActivating | Instance is activating. | The instance is being activated. The uninstall operation cannot be performed. |
 | 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
 
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
-| pluginNa me | Strin g | Query | Yes | aliyun-knn | Plugin name. |
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
-| Result |  | { "aliyun- knn":"text"} | Request results. Key: file name Value: file content |
-
-##### GetConfigFiles
+##### 3.4.5.8 GetConfigFiles
 
 Call GetConfigFiles to retrieve information about plugin configuration files.
 
@@ -5718,28 +5822,32 @@ GET /openapi/instances/[InstanceId]/config-files HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | Instance ID. |
+| pluginNa me | Strin g | Query | Yes | aliyun-knn | Plugin name. |
+
 **Response data**
+
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+| Result |   | { "aliyun- knn":"text"} | Request results. Key: file name Value: file content |
+
+**Examples**
 
 Sample request
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
-
 ```
-GET /openapi/instances/[InstanceId]/config-files HTTP/1.1 &InstanceId=es-cn-xxx
+GET /openapi/instances/[InstanceId]/config-files HTTP/1.1 &InstanceId=es-cn-xxx &pluginName=aliyun-knn
 ```
 
 Example of a successful response `JSON` format
 
 ```json
-{
     "RequestId": "138F3AA4-DC09-46C2-BCD5-BD959A7E972C",
     "Result": {
       "aliyun-knn":"text"
-    }
-}
 ```
 
 `XML` format
@@ -5752,7 +5860,12 @@ Example of a successful response `JSON` format
 
 **Error codes**
 
-##### UpdateConfigFiles
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
+
+##### 3.4.5.9 UpdateConfigFiles
 
 Call UpdateConfigFiles to update a plugin configuration file.
 
@@ -5775,49 +5888,33 @@ POST /openapi/instances/[InstanceId]/config-files HTTP/1.1
 | fileName | Strin g | Body | Yes | knn | The configuration file name. |
 | content | Strin g | Body | Yes | xxxxx | The configuration file content. |
 
+**Response data**
+
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
 | Result | Boolean | true | Indicates whether the plugin was updated successfully. |
 
-**Response data**
+**Examples**
 
 Sample request
 
 ```json
-POST /openapi/instances/[InstanceId]/config-files HTTP/1.1 {
+POST /openapi/instances/[InstanceId]/config-files HTTP/1.1
   "InstanceId": "es-cn-xxx",
   "pluginName": "aliyun-knn",
   "fileName": "knn",
   "content": "xxxxx"
-}
 ```
 
 Successful response example `JSON` format
 
 ```json
-{
   "RequestId": "FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result": true
-}
 ```
 
 `XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Wait and try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
-
-| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
-| pluginNa me | Strin g | Query | Yes | aliyun-knn | The plugin name. |
-| fileName | Strin g | Query | Yes | knn | The configuration file name. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>true</Result>
@@ -5825,7 +5922,12 @@ Successful response example `JSON` format
 
 **Error codes**
 
-##### DeleteConfigFile
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is still activating. Wait and try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
+
+##### 3.4.5.10 DeleteConfigFile
 
 You can call DeleteConfigFile to delete a plugin configuration.
 
@@ -5841,33 +5943,38 @@ DELETE /openapi/instances/[InstanceId]/config-files HTTP/1.1
 
 **Request Parameters**
 
+| Parame ter Name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxx | The instance ID. |
+| pluginNa me | Strin g | Query | Yes | aliyun-knn | The plugin name. |
+| fileName | Strin g | Query | Yes | knn | The configuration file name. |
+
 **Response Data**
 
-| lasticsearch |  |  | Developer Guide·Interact with O |
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
+
+| lasticsearch |   |   | Developer Guide·Interact with O |
 |---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | Result | Boolean | true | Indicates whether the plugin was deleted successfully. |
 
-| HttpCo de | Error Code | Error Message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is activating. Try again later. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
+**Examples**
 
 Request Example
 
 ```
-DELETE /openapi/instances/[InstanceId]/config-files HTTP/1.1 &InstanceId=es-cn-xxx &fileName=knn
+DELETE /openapi/instances/[InstanceId]/config-files HTTP/1.1 &InstanceId=es-cn-xxx &pluginName=aliyun-knn &fileName=knn
 ```
 
 Normal Response Example `JSON` Format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":true
-}
 ```
 
 `XML` Format
@@ -5878,9 +5985,14 @@ Normal Response Example `JSON` Format
 
 **Error Codes**
 
-#### security-configuration-discontinued
+| HttpCo de | Error Code | Error Message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is activating. Try again later. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. Check the instance status and try again. |
 
-##### ListInstanceCertificateFinger
+#### 3.4.6 security-configuration-discontinued
+
+##### 3.4.6.1 ListInstanceCertificateFinger
 
 Call ListInstanceCertificateFinger to view Elasticsearch certificate information.
 
@@ -5890,9 +6002,17 @@ This operation uses common request headers and does not require any special requ
 
 **Request syntax**
 
+```
+GET /openapi/instances/[InstanceId]/certificates HTTP/1.1
+```
+
+**Request parameters**
+
 | Parame ter name | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | instanceId | Strin g | Path | Yes | es-cn-xxxx | Instance ID. |
+
+**Response data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -5901,13 +6021,7 @@ This operation uses common request headers and does not require any special requ
 | -name | String | test | Certificate name. |
 | -finger | String | ************* | Certificate fingerprint, SHA-256 encoded fingerprint information. |
 
-```
-GET /openapi/instances/[InstanceId]/certificates HTTP/1.1
-```
-
-**Request parameters**
-
-**Response data**
+**Examples**
 
 Request example
 
@@ -5918,29 +6032,13 @@ GET /openapi/instances/[InstanceId]/certificates HTTP/1.1 &instanceId=es-cn-xxxx
 Normal response example `JSON` format
 
 ```json
-{
  "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
  "Result":{
   "finger":"*************",
   "name":"test"
- }
-}
 ```
 
 `XML` format
-
-| Parame ter name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| instanceId | Strin g | Path | Yes | es-cn-xx | The instance ID. |
-
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
-| Result | - | - | The returned result. |
-| -userName | String | fast-disk | The username. |
-| -roles | List | ["aa","vv"] | The list of roles. |
-| -ipWhitelist | List | ["127.0.0.1","192.* **.1.1"] | The IP address whitelist for access. |
-| -kibanaAuth | Boolean | false | Indicates whether the user can access Kibana. |
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -5949,7 +6047,7 @@ Normal response example `JSON` format
 </Result>
 ```
 
-##### ListUserSecurityInfo
+##### 3.4.6.2 ListUserSecurityInfo
 
 You can call ListUserSecurityInfo to view the security information for user accounts in a specified instance.
 
@@ -5965,14 +6063,29 @@ GET /openapi/instances/[InstanceId]/securitys HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| instanceId | Strin g | Path | Yes | es-cn-xx | The instance ID. |
+
 **Response data**
 
-| Developer Guide·I | nteract with Op |  |  |
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | The request ID. |
+| Result | - | - | The returned result. |
+| -userName | String | fast-disk | The username. |
+| -roles | List | ["aa","vv"] | The list of roles. |
+| -ipWhitelist | List | ["127.0.0.1","192.* **.1.1"] | The IP address whitelist for access. |
+| -kibanaAuth | Boolean | false | Indicates whether the user can access Kibana. |
+
+| Developer Guide·I | nteract with Op |   |   |
 |---|---|---|---|
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | -builtIn | Boolean | false | Indicates whether the user is a built-in user. true: The user is a built-in user. false: The user is a custom user. |
+
+**Examples**
 
 Request example
 
@@ -5983,25 +6096,16 @@ GET /openapi/instances/[InstanceId]/securitys HTTP/1.1 &instanceId=es-cn-xx
 Response example `JSON` format
 
 ```json
-{
   "RequestId":"FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result":[
-    {
         "userName": "fast-disk",
     "roles": ["aa","vv"],
         "ipWhitelist": ["127.0.0.1","192.***.1.1"],
     "kibanaAuth": false,
       "builtIn": false
-    }
 ```
 
-]
-
-```
-}
-```
-
-`XML` format
+`]` `XML` format
 
 ```xml
 <RequestId>FDF34727-1664-44C1-A8DA-3EB72D60206E</RequestId> <Result>
@@ -6015,26 +6119,11 @@ Response example `JSON` format
 </Result>
 ```
 
-##### UpdateUserSecurityInfo
+##### 3.4.6.3 UpdateUserSecurityInfo
 
 Call UpdateUserSecurityInfo to modify user security information.
 
 **Request headers**
-
-| Parame ter name | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| userName | Strin g | Body | Yes | elastic | Username. |
-| type | Strin g | Body | Yes | ipWhitelist | Type of update. Valid values: password, ipWhitelist, kibanaAuth. |
-| ipWhitelist |  | Body | No | ["127.0.0.1","192.***.1.1 "] | IP address whitelist for access. |
-| kibanaAut h | Boole an | Body | No | false | Specifies whether the user can access Kibana. |
-| password | Strin g | Body | No | xxxx | User password. |
-| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | Instance ID. |
-| clientToke n | Strin g | Query | No | 1AFAE64ED1BE- 432BA9**** | Idempotency token. We recommend using a UUID to uniquely identify this request. |
-
-| Parameter name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
-| Result | Boolean | true | Indicates whether the update succeeded. |
 
 This operation uses only common request headers. For more information, see the common request parameters documentation.
 
@@ -6046,30 +6135,39 @@ POST /openapi/instances/[InstanceId]/securitys HTTP/1.1
 
 **Request parameters**
 
+| Parame ter name | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| userName | Strin g | Body | Yes | elastic | Username. |
+| type | Strin g | Body | Yes | ipWhitelist | Type of update. Valid values: password, ipWhitelist, kibanaAuth. |
+| ipWhitelist |   | Body | No | ["127.0.0.1","192.***.1.1 "] | IP address whitelist for access. |
+| kibanaAut h | Boole an | Body | No | false | Specifies whether the user can access Kibana. |
+| password | Strin g | Body | No | xxxx | User password. |
+| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | Instance ID. |
+| clientToke n | Strin g | Query | No | 1AFAE64ED1BE- 432BA9**** | Idempotency token. We recommend using a UUID to uniquely identify this request. |
+
 **Response data**
+
+| Parameter name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | FDF34727-1664- 44C1-A8DA- 3EB72D60206E | Request ID. |
+| Result | Boolean | true | Indicates whether the update succeeded. |
+
+**Examples**
 
 Sample request
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | Instance is activating. | The instance is still activating. You cannot perform this operation. |
-| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
-
 ```json
-POST /openapi/instances/[InstanceId]/securitys HTTP/1.1 {
+POST /openapi/instances/[InstanceId]/securitys HTTP/1.1
   "userName": "elastic",
   "type": "ipWhitelist",
   "InstanceId": "es-cn-xxxxxxxx"
-}
 ```
 
 Sample success response `JSON` format
 
 ```json
-{
   "RequestId": "FDF34727-1664-44C1-A8DA-3EB72D60206E",
   "Result": true
-}
 ```
 
 `XML` format
@@ -6080,7 +6178,12 @@ Sample success response `JSON` format
 
 **Error codes**
 
-##### ModifyAclWhiteIps
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | Instance is activating. | The instance is still activating. You cannot perform this operation. |
+| 400 | InstanceNotFound | The instanceId provided does not exist. | The specified instance ID does not exist. |
+
+##### 3.4.6.4 ModifyAclWhiteIps
 
 Call the ModifyAclWhiteIps operation to configure an internal IP address whitelist for the Elasticsearch instance.
 
@@ -6103,30 +6206,27 @@ POST /openapi/instances/[InstanceId]/actions/modify-acl-white-ips HTTP/1.1
 | Parameter | Type | Position | Required | Descriptio n | Limit |
 |---|---|---|---|---|---|
 | modifyMode | String | body | No | Cover | The modification method. Optional value: Cover: overwrites the original IP address whitelist with the value of the ips parameter. Append: adds the IP address specified in the ips parameter to the original IP address whitelist of the specified VPC. Delete: deletes the IP address whitelist of a specified VPC. |
-| aclWhiteIp | Object | body | Yes |  | The configuration of the whitelist. |
+| aclWhiteIp | Object | body | Yes |   | The configuration of the whitelist. |
 | └ vpcId | String | body | Yes | vpc- xxxxvpcId | The endpoint of the VPC. |
 
 | Parameter | Type | Position | Required | Descriptio n | Limit |
 |---|---|---|---|---|---|
-| └ whiteIpType | String | body | Yes |  | The type of the PRIVATE ESIP _ whitelist. Valid values: PRIVATE KIBA _ NA:Kibana intranet whitelist. PRIVATE ES:E _ lasticsearch intranet whitelist. PUBLIC ES:El _ asticsearch Internet whitelist. PUBLIC KIBA _ NA:Kibana Internet whitelist. |
+| └ whiteIpType | String | body | Yes |   | The type of the PRIVATE ESIP _ whitelist. Valid values: PRIVATE KIBA _ NA:Kibana intranet whitelist. PRIVATE ES:E _ lasticsearch intranet whitelist. PUBLIC ES:El _ asticsearch Internet whitelist. PUBLIC KIBA _ NA:Kibana Internet whitelist. |
 | └ ips | Array of String | body | No | {"192.XX.XX. 189"} | The list of IP addresses. If the instance is of the anytunnel type, this field is optional. If the instance is of the Singletunnel type, this field is required. |
+
+**Return data**
 
 | Parameter Name | Type | Description | Limit |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Result | Boolean | true | Responses. |
 
-**Return data**
+**Examples**
 
 Sample requests
 
-| HttpCo de | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
-| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
-
 ```json
-POST /openapi/instances/es-cn-xxxxx/actions/modify-acl-white-ips Content-Type:application/json {
+POST /openapi/instances/es-cn-xxxxx/actions/modify-acl-white-ips Content-Type:application/json
   "modifyMode": "Cover",
   "aclWhiteIp": {
     "vpcId": "vpc-9ygeq48rs786h2sbb****",
@@ -6136,20 +6236,11 @@ POST /openapi/instances/es-cn-xxxxx/actions/modify-acl-white-ips Content-Type:ap
        "192.XX.XX.188"
 ```
 
-]
-
-```
-  }
-}
-```
-
-Sample success responses `JSON` format
+`]` Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"F0A8A039-930D-5EC1-97C8-************",
  "Result":true
-}
 ```
 
 `XML` format
@@ -6160,7 +6251,12 @@ Sample success responses `JSON` format
 
 **Error code**
 
-##### DisableHttps
+| HttpCo de | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
+| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
+
+##### 3.4.6.5 DisableHttps
 
 You can call the CloseHttps operation to disable HTTPS.
 
@@ -6180,17 +6276,14 @@ POST /openapi/instances/[InstanceId]/actions/disable-https HTTP/1.1
 |---|---|---|---|---|---|
 | InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The instance ID. |
 
+**The data returned.**
+
 | Parameter | Type | Description | Limit |
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | Result | String | es-cn-xxxxxxxx | Responses. |
 
-| HttpCo de | Error code | Error message | Examples |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
-| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
-
-**The data returned.**
+**Examples**
 
 Sample requests
 
@@ -6201,10 +6294,8 @@ POST /openapi/instances/[InstanceId]/actions/disable-https HTTP/1.1
 Sample success responses `JSON` format
 
 ```json
-{
   "RequestId": "52F6650B-307A-4312-A303-7C621145****",
   "Result": "es-cn-xxxxxxxx"
-}
 ```
 
 `XML` format
@@ -6215,24 +6306,16 @@ Sample success responses `JSON` format
 
 **Error code**
 
-##### EnableHttps
+| HttpCo de | Error code | Error message | Examples |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
+| 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
+
+##### 3.4.6.6 EnableHttps
 
 Enables HTTPS.
 
 **Request header**
-
-| Parame ter Name | Typ e | Positi on | Require d | Description | Limit |
-|---|---|---|---|---|---|
-| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The ID of the instance. |
-
-| Parameter Name | Type | Examples | Description |
-|---|---|---|---|
-| RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The ID of the request. |
-| Result | String | es-cn-xxxxxxxx | Responses. |
-
-| HttpCo de | Error code | Error message | Examples |
-|---|---|---|---|
-| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
 
 This interface uses common request headers without special request headers. See the public request parameters documentation.
 
@@ -6244,7 +6327,18 @@ POST /openapi/instances/[InstanceId]/actions/enable-https HTTP/1.1
 
 **Parameters**
 
+| Parame ter Name | Typ e | Positi on | Require d | Description | Limit |
+|---|---|---|---|---|---|
+| InstanceId | Strin g | Path | Yes | es-cn-xxxxxxxx | The ID of the instance. |
+
 **Return data**
+
+| Parameter Name | Type | Examples | Description |
+|---|---|---|---|
+| RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The ID of the request. |
+| Result | String | es-cn-xxxxxxxx | Responses. |
+
+**Examples**
 
 Sample requests
 
@@ -6255,10 +6349,8 @@ POST /openapi/instances/[InstanceId]/actions/enable-https HTTP/1.1
 Sample success responses `JSON` format
 
 ```json
-{
  "RequestId":"52F6650B-307A-4312-A303-7C62114500A7",
  "Result":"es-cn-xxxxxxxx"
-}
 ```
 
 `XML` format
@@ -6269,25 +6361,16 @@ Sample success responses `JSON` format
 
 **Error code**
 
-| nAPI |  |  | Elasticsearc |
+| HttpCo de | Error code | Error message | Examples |
+|---|---|---|---|
+| 400 | InstanceActivating | InstanceActivating | Instance is activating. |
+
+| nAPI |   |   | Elasticsearc |
 |---|---|---|---|
 | HttpCo de | Error code | Error message | Examples |
 | 400 | InstanceNotFound | InstanceNotFound | The instanceId provided does not exist. |
 
-| Parameter Name | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
-| Result | Map | {} | The response. |
-
-| Parameter | Type | Example | Nullable | Description |
-|---|---|---|---|---|
-| └esNetwork | String | vpc | No | The network type. Valid values: vpc and k8sNetwork. |
-| esSupportApplyU pdate | boolean | true | No | Indicates whether a restart is supported. |
-| esSupportDataNo deAffinity | boolean | true | No | Indicates whether the discretize data nodes feature is supported. |
-| esSupportOverrid eBuiltinPlugin | boolean | true | No | Indicates whether updates for built- in plug-ins are supported. |
-| esSupportUpdate StrategyForce | boolean | true | No | Indicates whether a forced restart is supported. |
-
-##### ListGlobalFeatures
+##### 3.4.6.7 ListGlobalFeatures
 
 Retrieves the global features of Elasticsearch.
 
@@ -6303,14 +6386,29 @@ GET /openapi/global-features
 
 **Returned data**
 
+| Parameter Name | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 52F6650B-307A- 4312-A303- 7C62114500A7 | The request ID. |
+| Result | Map | {} | The response. |
+
 The following table describes the parameters of the Result object.
 
-| lasticsearch |  |  | Developer G | uide·Interact with O enAP |
+| Parameter | Type | Example | Nullable | Description |
+|---|---|---|---|---|
+| └esNetwork | String | vpc | No | The network type. Valid values: vpc and k8sNetwork. |
+| esSupportApplyU pdate | boolean | true | No | Indicates whether a restart is supported. |
+| esSupportDataNo deAffinity | boolean | true | No | Indicates whether the discretize data nodes feature is supported. |
+| esSupportOverrid eBuiltinPlugin | boolean | true | No | Indicates whether updates for built- in plug-ins are supported. |
+| esSupportUpdate StrategyForce | boolean | true | No | Indicates whether a forced restart is supported. |
+
+| lasticsearch |   |   | Developer G | uide·Interact with O enAP |
 |---|---|---|---|---|
 | Parameter | Type | Example | Nullable | Description |
 
 | └showMigrate | boolean | false | No | Indicates whether the migration module is displayed. |
 |---|---|---|---|---|
+
+**Examples**
 
 Sample request
 
@@ -6321,7 +6419,6 @@ GET /openapi/global-features HTTP/1.1
 Sample responses `JSON` format
 
 ```json
-{
   "RequestId": "52F6650B-307A-4312-A303-7C62114500A7",
   "Result": {
       "esNetwork": "vpc",
@@ -6330,8 +6427,6 @@ Sample responses `JSON` format
       "showMigrate": false,
        "esSupportDataNodeAffinity": true,
        "esSupportApplyUpdate": true
-  }
-}
 ```
 
 `XML` format
@@ -6347,32 +6442,38 @@ Sample responses `JSON` format
 </Result>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | Obtain an STS token | The operation that you want to perform. Set the value to AssumeRole. |
-| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Alibaba Cloud Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Alibaba Cloud account. |
+## 4 Appendixes
 
-## Appendixes
+### 4.1 STS overview
 
-### STS overview
+#### 4.1.1 What is STS?
 
-#### What is STS?
+Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token.
 
-Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources.
+**Use a RAM user to obtain an STS token**
+
+An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources.
 
 **Benefits**
 
 STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### Obtain an STS token
+#### 4.1.2 Obtain an STS token
 
 You can call the AssumeRole operation to obtain a Security Token Service (STS) token. A Resource Access Management (RAM) user can use the STS token to assume a RAM role whose trusted entity is an Alibaba Cloud account.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | Obtain an STS token | The operation that you want to perform. Set the value to AssumeRole. |
+| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Alibaba Cloud Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Alibaba Cloud account. |
+
 | RoleSessionNa me | String | Yes | alice | The custom name of the role session. Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the API caller. For example, you can specify a username. You can specify RoleSessionName to identify API callers that assume the same RAM role in ActionTrail logs. This allows you to track the users that perform the operations. The value must be 2 to 64 characters in length, and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores ( ). _ |
 |---|---|---|---|---|
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. Details: If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role. If you do not specify this parameter, the returned STS token has all the permissions of the RAM role. The value of the parameter must be 1 to 1,024 characters in length. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6381,14 +6482,14 @@ You can call the AssumeRole operation to obtain a Security Token Service (STS) t
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
 | AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 
-**Response parameters**
-
 | SecurityToken | String | ******** | The STS token. |
 |---|---|---|---|
 | Expiration | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | N/A | None | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495** **:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -6454,9 +6555,6 @@ le in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
 **Sample requests**
@@ -6510,9 +6608,6 @@ in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
 **Error codes**

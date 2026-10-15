@@ -2,16 +2,113 @@
 title: "IDaaS User Guide 20260630"
 product_version: "V3.18.6"
 pdf_pages: 250
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 IDaaS User Guide 20260630.pdf"
+source_pdf: "87247d0b33de3b7a_Alibaba Cloud Apsara Stack V3.18.6 IDaaS User Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E8%BA%AB%E4%BB%BD%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20IDaaS%20User%20Guide%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # IDaaS User Guide 20260630
 
-## IdPs
+## Table of Contents
 
-### Associate IDaaS with DingTalk
+- 1 IdPs
+  - 1.1 Associate IDaaS with DingTalk - outbound direction
+  - 1.2 Bind a DingTalk first-party application to IDaaS
+  - 1.3 Connect WeCom to IDaaS
+  - 1.4 Connect IDaaS to Feishu
+  - 1.5 Connect IDaaS to AD
+  - 1.6 Connect IDaaS to OpenLDAP
+  - 1.7 Bind IDaaS to an OIDC IdP
+    - 1.7.1 Bind IDaaS to Okta
+    - 1.7.2 Bind IDaaS to Microsoft Entra ID (FKA Azure AD)
+  - 1.8 Field mappings
+  - 1.9 Introduction to cron expressions
+- 2 User portal
+  - 2.1 Portal page
+  - 2.2 Self-service
+  - 2.3 Access the IDaaS portal from the DingTalk console
+  - 2.4 Login by scanning DingTalk QR codes
+  - 2.5 General login page
+- 3 Accounts
+  - 3.1 Create an account or an organization
+  - 3.2 Manage accounts
+  - 3.3 Move an account
+  - 3.4 Account lifecycle
+  - 3.5 Field management
+  - 3.6 Advanced expressions for account fields
+  - 3.7 Manage organizations
+  - 3.8 Manage groups
+  - 3.9 Synchronize accounts
+  - 3.10 Import files and export data
+- 4 Applications
+  - 4.1 Create Application
+    - 4.1.1 Application overview
+    - 4.1.2 Application marketplace
+    - 4.1.3. 2. Standard protocols
+    - 4.1.4. 3. Custom applications
+  - 4.2 Manage Applications
+    - 4.2.1 General configurations
+    - 4.2.2 Configure SSO
+    - 4.2.3 SAML 2.0 SSO
+      - 4.2.3.1 Configuration of SAML 2.0-based SSO
+      - 4.2.3.2 Configure accounts for an SAML-based application
+      - 4.2.3.3 Rules for configuring SAML Attribute Statements
+      - 4.2.3.4 Multi-relay state access
+    - 4.2.4 OIDC SSO
+      - 4.2.4.1 Configure SSO for an OIDC-based application
+      - 4.2.4.2 Rules for the values of the extended OIDC id_token fields
+      - 4.2.4.3 Login by using OIDC Device Flow
+      - 4.2.4.4 M2M applications (machine-to-machine permission management)
+        - 4.2.4.4.1 Call examples of M2M Client Token
+    - 4.2.5 Configure SSO for custom applications
+    - 4.2.6 Advanced: SLO
+    - 4.2.7 Grant application permissions
+    - 4.2.8 Synchronize accounts - IDaaS event callbacks
+    - 4.2.9 Synchronize IDaaS accounts to an application by using SCIM
+    - 4.2.10 Synchronize data from an application to IDaaS by using SCIM
+    - 4.2.11 Open API operations
+    - 4.2.12 Management permissions on Apsara Stack applications
+  - 4.3 Configurations of common applications
+    - 4.3.1 Configure 2FA for establishing SSL-VPN connections in Alibaba Cloud
+- 5 Login
+  - 5.1 General settings
+  - 5.2 Authentication configuration
+    - 5.2.2 WebAuthn login
+    - 5.2.3 CAPTCHA verification
+  - 5.3 Password policies
+- 6 Logs
+  - 6.1 Management operations
+  - 6.2 User behavior
+  - 6.3 Synchronization logs
+- 7 Branding
+  - 7.1 Branding
+  - 7.2 Custom terms
+  - 7.3 SMS gateway
+  - 7.4 Email gateways
+- 8 Other configurations
+  - 8.1 Network endpoints
+  - 8.2 Network scopes
+- 9 Use Cases
+  - 9.1 Synchronize AD domain data to DingTalk
+  - 9.2 Log in to applications from DingTalk through SSO
+  - 9.3 Use an AD or OpenLDAP account to log in to a third-party application
+  - 9.4 Use AD, LDAP, or IDaaS accounts to log in to DingTalk Enterprise
+  - 9.5 Use Alibaba Cloud IDaaS to synchronize account data from DingTalk, WeCom, Feishu, AD, and other IdPs to Alibaba Cloud RAM
+  - 9.6 Synchronize accounts and groups to CloudSSO by using SCIM in Alibaba Cloud IDaaS
+  - 9.7 Synchronize accounts to RAM by using SCIM in Apsara Stack IDaaS
+  - 9.8 Use IDaaS to log in to Apsara Stack DevOps from IdPs such as AD, DingTalk, and WeCom
+  - 9.9 Configure Alibaba Cloud API Gateway
+  - 9.10 Use RAM to configure AccessKey-free access
+  - 9.11 Synchronize users or groups from Azure AD to IDaaS by using SCIM
+  - 9.12 Synchronize users or groups from Okta to IDaaS by using SCIM
+  - 9.13 Use IDaaS to implement user-based SSO and role-based SSO for Grafana
+  - 9.14 Log in to IDaaS applications from Lark by using SSO
+  - 9.15 Log in to IDaaS applications in WeCom through SSO
+  - 9.16 Configure SSO for AI Coding Assistant Lingma
+
+## 1 IdPs
+
+### 1.1 Associate IDaaS with DingTalk - outbound direction
 
   - **- outbound direction**
 This topic describes how to associate IDaaS with DingTalk for data push, including how to create an application, assign permissions, select scenarios, and map fields. This helps you smoothly connect Identity as a Service ( IDaaS) to DingTalk and synchronize data.
@@ -44,7 +141,11 @@ Synchronization direction: The data of the IDaaS account or organization selecte
 
 **Warning**
 
-We recommend that you test the synchronization by using the data of a small number of accounts or in a non-production environment. This prevents the data of DingTalk from being affected by improper configuration. If you already have data in DingTalk and need to associate the accounts or organizations in IDaaS with the DingTalk users or departments, or if you want to use some data of an IDaaS account as the data of a DingTalk user, you must configure field mapping. For example, you must configure field mapping if you want to use the display name of the IDaaS account as the name of the DingTalk user.
+We recommend that you test the synchronization by using the data of a small number of accounts or in a non-production environment. This prevents the data of DingTalk from being affected by improper configuration.
+
+**Step 4: Configure field mappings**
+
+If you already have data in DingTalk and need to associate the accounts or organizations in IDaaS with the DingTalk users or departments, or if you want to use some data of an IDaaS account as the data of a DingTalk user, you must configure field mapping. For example, you must configure field mapping if you want to use the display name of the IDaaS account as the name of the DingTalk user.
 
 **Important**
 
@@ -58,20 +159,20 @@ this case, all IDaaS data selected in **Step 3** is synchronized to DingTalk. If
 
 Before you use the incremental synchronization feature, make sure that full data synchronization is performed at least once. Otherwise, incremental synchronization may fail.
 
-### Bind a DingTalk first-party
+### 1.2 Bind a DingTalk first-party application to IDaaS
 
 **application to IDaaS**
-
-| Category | Capability |
-|---|---|
-| Account management | Full synchronization: You can use one of the following methods to synchronize data from your DingTalk address book to IDaaS. Manual synchronization Scheduled synchronization (synchronization frequency can be configured) Incremental synchronization: You can monitor DingTalk address book changes in real time and automatically synchronize the changed data to IDaaS to ensure data timeliness. |
-| Login integration | Unified authentication: You can use DingTalk to scan code to log in. Directly log in to IDaaS Log in to various application systems integrated with IDaaS |
 
 This topic describes how to bind a DingTalk first-party application to Alibaba Cloud Identity as a Service (IDaaS). The steps include creating an application, granting permissions, selecting a scenario, and configuring field mappings.
 
 **Scenario**
 
 After you bind a DingTalk first-party application to IDaaS, you can use the following integration capabilities.
+
+| Category | Capability |
+|---|---|
+| Account management | Full synchronization: You can use one of the following methods to synchronize data from your DingTalk address book to IDaaS. Manual synchronization Scheduled synchronization (synchronization frequency can be configured) Incremental synchronization: You can monitor DingTalk address book changes in real time and automatically synchronize the changed data to IDaaS to ensure data timeliness. |
+| Login integration | Unified authentication: You can use DingTalk to scan code to log in. Directly log in to IDaaS Log in to various application systems integrated with IDaaS |
 
 **Procedure**
 
@@ -94,17 +195,7 @@ i. Log in to the Alibaba Cloud IDaaS console and select the corresponding IDaaS 
 
 **(First-party Application).**
 
-ii. Enter the basic information. Enter the **display name** and **CorpId** as required.
-
-| Permission | Permission name | Note |
-|---|---|---|
-| Enterprise employee mobile number information | fieldMobile | You must select one of the two properties. You can select which field to use for the corresponding activation based on your business requirements. |
-| Email and other personal information | fieldEmail |  |
-| Obtain the basic information of contacts | qyapi get department list _ _ _ | -- |
-| Permission to read department members in contacts | qyapi get department member _ _ _ | -- |
-| Permissions to read information about members | qyapi get member _ _ | -- |
-
-iii. Enter the application information. Enter the obtained **AppKey** and **AppSecret** in the IDaaS console. Click **Next** to proceed.
+ii. Enter the basic information. Enter the **display name** and **CorpId** as required. iii. Enter the application information. Enter the obtained **AppKey** and **AppSecret** in the IDaaS console. Click **Next** to proceed.
 
 **Note**
 
@@ -116,6 +207,15 @@ The system automatically verifies the validity of the AppKey, AppSecret, and Cor
 1. On the DingTalk application details page, choose **Permission Management > Address**
 **Book Management**. Configure the following query permissions on the address book,
 which are required to enable data synchronization and user login.
+
+| Permission | Permission name | Note |
+|---|---|---|
+| Enterprise employee mobile number information | fieldMobile | You must select one of the two properties. You can select which field to use for the corresponding activation based on your business requirements. |
+| Email and other personal information | fieldEmail |   |
+| Obtain the basic information of contacts | qyapi get department list _ _ _ | -- |
+| Permission to read department members in contacts | qyapi get department member _ _ _ | -- |
+| Permissions to read information about members | qyapi get member _ _ | -- |
+
 2. On the **Permission Management** page, configure data permissions. This setting
 determines which users and organizations can synchronize data to IDaaS and log in to DingTalk.
 3. After you configure permissions, click **Next** in the IDaaS console. The system automatically
@@ -130,7 +230,11 @@ This feature depends on the DingTalk event callback mechanism and requires that 
 3. **Scheduled verification**: You can configure synchronization policies by using scheduled
 tasks or cron expressions to update local user data incrementally.
 4. **QR code login**: After you enable this mode, you can scan QR code by using DingTalk to log
-in to IDaaS. If you have existing data in IDaaS, you must associate the **DingTalk Address Book**
+in to IDaaS.
+
+**Step 4: Configure field mappings**
+
+If you have existing data in IDaaS, you must associate the **DingTalk Address Book**
 **Users/departments** with the existing IDaaS **Accounts/organizations**, or map the fields of
 the DingTalk user (such as the name) to the IDaaS account attributes (such as the display name). In this step, complete the field mapping configuration and click **Save**.
 
@@ -155,7 +259,7 @@ notifications when data changes. IDaaS synchronizes incremental data in real tim
 
 {Application Homepage Address} is the login homepage URL in the application details in the IDaaS application list. {CoprId} is the ID of the current enterprise in DingTalk. d. You cannot click Save in the current step. You must configure the aesKey and signature token in the IDaaS console and then click Save in DingTalk. ii. In the IDaaS console, go to the **IdPs** page and click **Modify** in the **IdP** column. Enter the
 **Encryption AesKey**, **Signature Token**, and **Request URL** obtained from the DingTalk
-Open Platform.
+Open Platform. iii. In the DingTalk Open Platform, click **Save Event Subscription**. a. When you save the configurations, the DingTalk server initiates a permission verification request to IDaaS. The verification process uses the aesKey and signature token generated by the DingTalk Open Platform for identity verification. b. On the **Event Subscription** page, find the events to which you want to subscribe, and enable event subscription. c. The description of the subscribed event.
 
 | No. | Interface name | Change type | Description |
 |---|---|---|---|
@@ -166,25 +270,15 @@ Open Platform.
 | 5 | org dept modify _ _ | Department change | An enterprise department in the address book is modified. |
 | 6 | org dept remove _ _ | Department change | An enterprise department is removed from the address book. |
 
-iii. In the DingTalk Open Platform, click **Save Event Subscription**. a. When you save the configurations, the DingTalk server initiates a permission verification request to IDaaS. The verification process uses the aesKey and signature token generated by the DingTalk Open Platform for identity verification. b. On the **Event Subscription** page, find the events to which you want to subscribe, and enable event subscription. c. The description of the subscribed event. iv. Enable incremental synchronization in the IDaaS console. After you configure incremental synchronization, you can verify event subscription based on logs or changes in the organization structure.
+iv. Enable incremental synchronization in the IDaaS console. After you configure incremental synchronization, you can verify event subscription based on logs or changes in the organization structure.
 3. **Scheduled synchronization:** If you configure a scheduled synchronization task, IDaaS
 regularly pulls full user data from DingTalk and automatically converts it to an incremental update. IDaaS can use one of the following methods: a fixed point in time every day or a Cron expression. During this time range, IDaaS automatically pulls all user information from DingTalk to synchronize incremental data.
 
-### Connect WeCom to IDaaS
+### 1.3 Connect WeCom to IDaaS
 
 This topic describes how to connect Identity as a Service (IDaaS) to WeCom and the common operations that you can perform.
 
 **Process overview**
-
-| Verification item | Description |
-|---|---|
-| Trusted domain name | A dedicated domain name. The principal of the domain name must be the same as the principal for authentication in WeCom. |
-| Trusted IP address | At least one dedicated endpoint must be configured for an IDaaS Employee Identity and Access Management (EIAM) instance. This way, the instance can access WeCom by using the dedicated public outbound IP address. For more information, see Network endpoints. |
-
-| Category | Operation |
-|---|---|
-| Account | Synchronize the non-sensitive data of WeCom contacts to IDaaS EIAM. Synchronize the sensitive data, such as mobile phone numbers and email addresses, of WeCom contacts to IDaaS EIAM. |
-| Login | Scan a QR code by using WeCom to log in to IDaaS EIAM or an IDaaS EIAM application. |
 
 Only four steps are required for connecting WeCom to IDaaS:
 1. Create an application: Create an application in the WeCom Management Back Office and an
@@ -200,9 +294,19 @@ account or organization fields in IDaaS to ensure the relevance and consistency 
 
 For security reasons, when you call the API operations of WeCom for contact verification and identity authentication, the system verifies the domain name and IP address that you use. If the verification is successful, the domain name and IP address are trusted. A trusted IP address can be used only by one enterprise in WeCom. If a trusted IP address is used by multiple enterprises, the IP address is considered as that of a service provider. As a result, the API operations for contact verification and identity authentication become unavailable. To meet the security requirements of WeCom, you must prepare the following items.
 
+| Verification item | Description |
+|---|---|
+| Trusted domain name | A dedicated domain name. The principal of the domain name must be the same as the principal for authentication in WeCom. |
+| Trusted IP address | At least one dedicated endpoint must be configured for an IDaaS Employee Identity and Access Management (EIAM) instance. This way, the instance can access WeCom by using the dedicated public outbound IP address. For more information, see Network endpoints. |
+
 **Scenarios**
 
 After you connect WeCom to IDaaS, you can perform the following operations.
+
+| Category | Operation |
+|---|---|
+| Account | Synchronize the non-sensitive data of WeCom contacts to IDaaS EIAM. Synchronize the sensitive data, such as mobile phone numbers and email addresses, of WeCom contacts to IDaaS EIAM. |
+| Login | Scan a QR code by using WeCom to log in to IDaaS EIAM or an IDaaS EIAM application. |
 
 **Procedure**
 
@@ -216,7 +320,7 @@ ii. **Configure application information** Upload **Application Logo**, specify *
 **(Optional)**, and **Visibility Scope**. Visibility Scope specifies the contact data that is
 synchronized to IDaaS EIAM and users can access after logging in to IDaaS EIAM. Return to the Application Management page. iii. **View the application** Return to the Application Management page. The list shows that the application that you created.
 2. **Create an application in IDaaS**.
-Log in to the IDaaS Console and find the desired IDaaS instance. On the **IdPs** page, choose **Other IdPs > WeCom** to connect WeCom to IDaaS.
+i. **Connect WeCom to IDaaS in the IDaaS console** Log in to the IDaaS Console and find the desired IDaaS instance. On the **IdPs** page, choose **Other IdPs > WeCom** to connect WeCom to IDaaS.
 
 **Important**
 
@@ -257,7 +361,11 @@ In this step, configure the features that you want to use in a specific scenario
 
 **Features**
 
-Synchronization Scope: After you select an IDaaS node, WeCom contacts are synchronized to the node. Scheduled Verification: If you turn on Scheduled Verification, IDaaS automatically synchronizes full data from the source node of WeCom every morning. You can configure mapping identifiers in the Field Mapping step of an IDaaS account to a field of a WeCom user. For example, you can match the Username field of an IDaaS account to the `userid` field of a WeCom user. If the matching is successful and the WeCom user is updated, the IDaaS account is also updated from the WeCom user. If the matching fails, an IDaaS account is created by using the information about the WeCom user. To synchronize the latest data, you must manually trigger full synchronization. IDaaS provides synchronization protection. When more than 30 accounts or more than 10 organizations need to be deleted, the synchronization task is automatically canceled to prevent accidental data deletion. We recommend that you adjust the synchronization protection settings based on the scale of your enterprise. Sign-In with QR Code: If you turn on Sign-In with QR Code, the QR Code (WeCom) option is provided and enabled on the **login page of IDaaS**. This way, users can scan a QR code by using WeCom to log in to IDaaS. If you already have accounts or organizations in IDaaS and you want to map them to the WeCom users or departments, or if you want to use specific fields of an IDaaS account as the fields of a WeCom user, you must configure field mappings. For example, if you want to use the display name of an IDaaS account as the name of a WeCom user, you must configure a field mapping.
+Synchronization Scope: After you select an IDaaS node, WeCom contacts are synchronized to the node. Scheduled Verification: If you turn on Scheduled Verification, IDaaS automatically synchronizes full data from the source node of WeCom every morning. You can configure mapping identifiers in the Field Mapping step of an IDaaS account to a field of a WeCom user. For example, you can match the Username field of an IDaaS account to the `userid` field of a WeCom user. If the matching is successful and the WeCom user is updated, the IDaaS account is also updated from the WeCom user. If the matching fails, an IDaaS account is created by using the information about the WeCom user. To synchronize the latest data, you must manually trigger full synchronization. IDaaS provides synchronization protection. When more than 30 accounts or more than 10 organizations need to be deleted, the synchronization task is automatically canceled to prevent accidental data deletion. We recommend that you adjust the synchronization protection settings based on the scale of your enterprise. Sign-In with QR Code: If you turn on Sign-In with QR Code, the QR Code (WeCom) option is provided and enabled on the **login page of IDaaS**. This way, users can scan a QR code by using WeCom to log in to IDaaS.
+
+**Step 4: Configure field mappings**
+
+If you already have accounts or organizations in IDaaS and you want to map them to the WeCom users or departments, or if you want to use specific fields of an IDaaS account as the fields of a WeCom user, you must configure field mappings. For example, if you want to use the display name of an IDaaS account as the name of a WeCom user, you must configure a field mapping.
 
 **Important**
 
@@ -269,6 +377,8 @@ After you connect WeCom to IDaaS, you are redirected to the **IdPs** page. You c
 
 **Usage notes**
 
+**QR code-based login**
+
 When you use QR code-based login by using WeCom, you are redirected to the address specified by the **Authorized Callback Domain** parameter. Specifically, if you want to use WeCom to scan a QR code to log in to IDaaS EIAM or an IDaaS EIAM application, you must ensure consistency between the domain name of the IDaaS EIAM login page, the value of the Authorized Callback Domain parameter for the WeCom IdP in IDaaS, and the authorized callback domain name in WeCom.
 
 **Sensitive data synchronization**
@@ -279,11 +389,13 @@ In addition to manual authorization, the administrator must perform the followin
 **Member Info Display**. Then, check whether the display of sensitive data such as the mobile
 phone number and email address is configured. Only sensitive data on which you have access permissions and is configured to be displayed by the administrator can be synchronized to IDaaS EIAM.
 
+**Other login methods**
+
 **Important**
 
 IDaaS makes every effort to ensure the availability of data synchronization and identity authentication for your WeCom contacts. However, due to the lack of publicly disclosed details regarding the verification methods, such as trusted domain names and trusted IP addresses in WeCom, and the risk management policies, Alibaba Cloud cannot guarantee that you can consistently and reliably log in to IDaaS by using your WeCom account. To mitigate the risk of being unable to access IDaaS when WeCom is unavailable, you must also enable other login methods, such as username and password-based authentication or verification code-based authentication. If you cannot log in to IDaaS by using a WeCom account and do not use another login method, you are liable for losses. For more information about other login methods, see Login.
 
-### Connect IDaaS to Feishu
+### 1.4 Connect IDaaS to Feishu
 
 This topic describes how to connect Identity as a Service (IDaaS) to Feishu and the common operations that you can perform.
 
@@ -308,11 +420,6 @@ After you connect IDaaS to Feishu, you can use the following features.
 | Account | Synchronize the full data of Feishu address book to IDaaS Enterprise Identity Access Management (EIAM). Scheduled verification is supported. |
 | Login | Scan a QR code by using Feishu to log in to IDaaS EIAM or an application in it. Initiate single sign-on (SSO) from the Feishu workbench to log in to IDaaS EIAM or an application in it. |
 
-| Permission description | Permission name | Note |
-|---|---|---|
-| Read the basic information of the address book | contact:contact.base:readonly | -- |
-| Read user IDs | contact:user.employee id:readonly _ | -- |
-
 **Procedure**
 
 On the **IdPs** page, click **Other IdPs**. In the panel that appears, click **Feishu**.
@@ -330,6 +437,11 @@ i. Go to the Feishu Open Platform and log in to the developer console. In the de
 3. In the left-side navigation pane of the details page of the Feishu application, choose
 **Permissions & Scopes > Add permission scopes to app**. On the panel that appears,
 find the **Address Book** section and grant the following permissions. The permissions are query permissions on the address book, which are required to enable data synchronization and user login.
+
+| Permission description | Permission name | Note |
+|---|---|---|
+| Read the basic information of the address book | contact:contact.base:readonly | -- |
+| Read user IDs | contact:user.employee id:readonly _ | -- |
 
 | Read the basic information of departments | contact:department.base:readonly | -- |
 |---|---|---|
@@ -385,11 +497,13 @@ The `userid` field in Feishu is the unique identifier of a Feishu user and can b
 
 After you connect IDaaS to Feishu, you are redirected to the **IdPs** page. You can manage different features that are used to interact with identity providers on the IdPs page.
 
-### Connect IDaaS to AD
+### 1.5 Connect IDaaS to AD
 
 This topic describes how to connect Identity as a Service (IDaaS) to Active Directory (AD) and the common operations that you can perform.
 
 **About AD**
+
+**Overview**
 
 AD is a directory service that runs on Microsoft Windows Server. AD allows administrators to centrally manage computers, user services, network resources, and permissions within domains in medium and large network environments.
 
@@ -442,6 +556,20 @@ openssl s_client -connect server_host:port | openssl x509 -noout -pubkey | opens
 
 **User Sign-in ID**
 
+When a user attempts to log in to IDaaS by using AD delegated authentication, IDaaS uses the attributes to query the user in AD and matches the password. If the password is correct, the user is allowed to log in to IDaaS. You can use one of the attributes such as userPrincipalName, sAMAccountName, mobile phone number, email address, and employee number to log in to IDaaS. You can define the attributes when you create identity providers (IdPs) or on the **Delegated Authentication** page. If you use multiple attributes, make sure that the attributes are unique and correspond to the same AD user. Otherwise, the user cannot use delegated authentication.
+
+**Filter**
+
+**Important**
+
+The modifications of the `ObjectClass` conditions and the `filter` statement affect the filter conditions of the AD node. During full data synchronization, IDaaS accounts and organizations that do not meet the filter conditions are deleted. We recommend that you adjust the synchronization protection settings and fully test whether the filtered results meet your expectations before you modify the ObjectClass conditions and the filter statement. For example, you can use another IDaaS instance to perform a test.
+
+**Overview**
+
+If you want to synchronize specific users from different organizations to IDaaS, you can use a custom `filter` statement to filter users. Only users that meet the filter conditions can be synchronized to IDaaS. By default, the `filter` statement contains `ObjectClass` conditions in the AND relationship. You can click **View Details** to view the complete statement. The following sections describe the common operators and `filter` statements for AD.
+
+**Common operators**
+
 | Operator | Description | Example |
 |---|---|---|
 | = | Equal to | (cn=Alice) |
@@ -449,27 +577,17 @@ openssl s_client -connect server_host:port | openssl x509 -noout -pubkey | opens
 | <= | Less than or equal to | (sAMAccountName<=a) |
 | & | AND relationship, which indicates that all conditions must be met | (&(cn=CN*)(memberOf=cn=Test,ou=HQ,dc=Domain,dc=com)) |
 
-When a user attempts to log in to IDaaS by using AD delegated authentication, IDaaS uses the attributes to query the user in AD and matches the password. If the password is correct, the user is allowed to log in to IDaaS. You can use one of the attributes such as userPrincipalName, sAMAccountName, mobile phone number, email address, and employee number to log in to IDaaS. You can define the attributes when you create identity providers (IdPs) or on the **Delegated Authentication** page. If you use multiple attributes, make sure that the attributes are unique and correspond to the same AD user. Otherwise, the user cannot use delegated authentication.
-
-**Filter**
-
-**Important**
-
-The modifications of the `ObjectClass` conditions and the `filter` statement affect the filter conditions of the AD node. During full data synchronization, IDaaS accounts and organizations that do not meet the filter conditions are deleted. We recommend that you adjust the synchronization protection settings and fully test whether the filtered results meet your expectations before you modify the ObjectClass conditions and the filter statement. For example, you can use another IDaaS instance to perform a test. If you want to synchronize specific users from different organizations to IDaaS, you can use a custom `filter` statement to filter users. Only users that meet the filter conditions can be synchronized to IDaaS. By default, the `filter` statement contains `ObjectClass` conditions in the AND relationship. You can click **View Details** to view the complete statement. The following sections describe the common operators and `filter` statements for AD.
-
-**Common operators**
-
 | \| | OR relationship, which indicates that at least one condition must be met | (\|(cn=Test*)(cn=Admin*)) |
 |---|---|---|
 | ! | NOT relationship, which indicates that all conditions must not be met | (!(memberOf=cn=Test,ou=HQ,dc=Domain,dc=com)) |
+
+**Common statements**
 
 | Scenario | Example |
 |---|---|
 | Select users whose usernames start with CN | (cn=CN*) |
 | Select the user with the specified email address | (\|(proxyAddresses=*:alice@example.com)(mail=alice@example.com)) |
 | Select users in the specified group | (memberOf=cn=Test,ou=HQ,dc=Domain,dc=com) |
-
-**Common statements**
 
 **AD synchronization configuration**
 
@@ -482,11 +600,13 @@ Base DN is the path identifier of a node in AD. IDaaS performs operations such a
 IDaaS listens to the data of AD users or organizations, and synchronizes the changed data from AD to IDaaS every 10 minutes. If a large amount of data is involved in a single synchronization, latency may occur. We recommend that you perform full data synchronization on a regular basis to ensure data consistency between AD and IDaaS. Because of the limits of AD incremental synchronization, IDaaS must use AD Recycle Bin to obtain messages about deletion events. Enable the Recycle Bin feature in **AD**
 **Administrative Center**. This feature is supported on Windows Server 2012 and later.
 
-### Connect IDaaS to OpenLDAP
+### 1.6 Connect IDaaS to OpenLDAP
 
 This topic describes how to connect Identity as a Service (IDaaS) to OpenLDAP and the common operations that you can perform.
 
 **Introduction to OpenLDAP**
+
+**Overview**
 
 OpenLDAP is an open source implementation of Lightweight Directory Access Protocol (LDAP). OpenLDAP is widely used to manage resources such as users, computers, and networks within an enterprise. OpenLDAP is commonly referred to as LDAP.
 
@@ -539,18 +659,22 @@ LDAP allows flexible customization. If you define the `ObjectClass` of a user or
 
 **User Sign-in ID**
 
-| Operator | Description | Example |
-|---|---|---|
-
 When a user attempts to log in to IDaaS by using LDAP delegated authentication, IDaaS uses the attributes to query the user in LDAP and matches the password. If the password is correct, the user is allowed to log in to IDaaS. You can use one of the attributes such as `UID` , mobile phone number, email address, and employee number to log in to IDaaS. You can define the attributes when you create identity providers (IdPs) or on the **Delegated Authentication** page. If you use multiple attributes, make sure that the attributes are unique and correspond to the same LDAP user. Otherwise, the user cannot use delegated authentication.
 
 **Filter**
 
 **Important**
 
-The modifications of the `ObjectClass` conditions and the `filter` statement affect the filter conditions of the LDAP node. During full data synchronization, IDaaS accounts and organizations that do not meet the filter conditions are deleted. We recommend that you adjust the synchronization protection settings and fully test whether the filtered results meet your expectations before you modify the ObjectClass conditions and the filter statement. For example, you can use another IDaaS instance to perform a test. If you want to synchronize specific users from different organizations to IDaaS, you can use a custom `filter` statement to filter users. Only users that meet the filter conditions can be synchronized to IDaaS. By default, the `filter` statement contains `ObjectClass` conditions in the AND relationship. You can click **View Details** to view the complete statement. You can enter the `filter` statement in LDAP Admin to check the filtered results. The following sections describe the common operators and filter statements for LDAP.
+The modifications of the `ObjectClass` conditions and the `filter` statement affect the filter conditions of the LDAP node. During full data synchronization, IDaaS accounts and organizations that do not meet the filter conditions are deleted. We recommend that you adjust the synchronization protection settings and fully test whether the filtered results meet your expectations before you modify the ObjectClass conditions and the filter statement. For example, you can use another IDaaS instance to perform a test.
+
+**Overview**
+
+If you want to synchronize specific users from different organizations to IDaaS, you can use a custom `filter` statement to filter users. Only users that meet the filter conditions can be synchronized to IDaaS. By default, the `filter` statement contains `ObjectClass` conditions in the AND relationship. You can click **View Details** to view the complete statement. You can enter the `filter` statement in LDAP Admin to check the filtered results. The following sections describe the common operators and filter statements for LDAP.
 
 **Common operators**
+
+| Operator | Description | Example |
+|---|---|---|
 
 | = | Equal to | (cn=Alice) |
 |---|---|---|
@@ -560,12 +684,12 @@ The modifications of the `ObjectClass` conditions and the `filter` statement aff
 | \| | OR relationship, which indicates that at least one condition must be met | (\|(cn=Test*)(cn=Admin*)) |
 | ! | NOT relationship, which indicates that all conditions must not be met | (!(cn=Test*)(cn=Admin*)) |
 
+**Common statements**
+
 | Scenario | Example |
 |---|---|
 | Select users whose usernames start with CN | (cn=CN*) |
 | Select the user with the specified email address | (mail=alice@example.com) |
-
-**Common statements**
 
 **LDAP synchronization configuration**
 
@@ -577,7 +701,7 @@ Base DN is the path identifier of a node in LDAP. IDaaS performs operations such
 
 LDAP does not support queries of incremental data. IDaaS automatically synchronizes full data within the LDAP source node every morning. To synchronize the latest data, you must manually trigger full data synchronization. IDaaS provides synchronization protection. When more than 30 accounts or more than 10 organizations need to be deleted, the synchronization task is automatically canceled to prevent data from being accidentally deleted. We recommend that you adjust the synchronization protection settings based on the size of your enterprise.
 
-### Bind IDaaS to an OIDC IdP
+### 1.7 Bind IDaaS to an OIDC IdP
 
 This topic describes how to configure and use enterprise-level identity providers (IdPs) such as Okta, Azure AD, and self-developed systems to interact with Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM) over the OpenID Connect (OIDC) protocol.
 
@@ -591,6 +715,8 @@ After you bind IDaaS to an OIDC IdP such as Okta, Azure AD, or a self-developed 
 | IdP | An identity provider. In this topic, Okta, Azure AD, or a self-developed system works as an IdP. As defined in Security Assertion Markup Language (SAML), an IdP verifies and authenticates a user and returns the authentication result in a SAML response to a service provider (SP). IdP now refers to a unified identity management platform in general. |
 | SP | A service provider. In this topic, IDaaS EIAM works as an SP. As defined in SAML, an SP receives a response from an IdP and parses the response to obtain the authentication result. In general, an SP is an application that interacts with an IdP. |
 | Federated authentication | An authentication mode in which an SP trusts and uses the authentication result from an IdP. In this topic, IDaaS EIAM trusts the authentication result from Okta, Azure AD, or a self-developed system. Users who pass federated authentication can log on to IDaaS EIAM by using their accounts configured in an IdP. Federated authentication is often used for single sign- on (SSO). |
+
+**Bind IDaaS to an OIDC IdP**
 
 IDaaS EIAM uses the standard authorization code flow of OIDC to implement federated authentication. Therefore, a user can use an account configured in your IdP such as Okta, Azure AD, or a self-managed system to log on to IDaaS EIAM, provided that your IdP supports SSO based on the standard authorization code flow of OIDC.
 
@@ -635,7 +761,9 @@ EIAM by using an OIDC account, the IDaaS account information is automatically up
 
 **Note**
 
-If you enable both **Manual Account Binding** and **Automatic Account Binding,** the system preferentially performs an automatic account binding during OIDC-based login. The Automatic Account Binding feature is available only for IDaaS instances of Trial Edition and Enterprise Edition. If you want to use this feature, make sure that your IDaaS instance meets this requirement in advance. Confirm the configurations and click **Confirm**.
+If you enable both **Manual Account Binding** and **Automatic Account Binding,** the system preferentially performs an automatic account binding during OIDC-based login**.** The Automatic Account Binding feature is available only for IDaaS instances of Trial Edition and Enterprise Edition. If you want to use this feature, make sure that your IDaaS instance meets this requirement in advance. Confirm the configurations and click **Confirm**.
+
+**Step 3: (Optional) Configure field mappings**
 
 **Note**
 
@@ -654,9 +782,12 @@ Users can log in to IDaaS EIAM by using an account in the following priority ord
 
 You can delete an **OIDC IdP** on the **IdPs** page. After an OIDC IdP is deleted, the related configurations are immediately deleted and **cannot be recovered**, and the related features **become unavailable**.
 
-#### Bind IDaaS to Okta
+#### 1.7.1 Bind IDaaS to Okta
 
 This topic describes how to configure and use the enterprise-class identity provider (IdP) Okta to log in to the Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) portal over the OpenID Connect (OIDC) protocol.
+
+**Step 1: Bind IDaaS to Okta**
+
 1. Go to the details page of your IDaaS EIAM instance. In the left-side navigation pane, click
 **IdPs**. On the IdPs page, click **Other IdPs**. In the Add IdP panel, click OIDC IdP.
 2. In the **Bind OIDC Identity Provider** panel, enter a display name in the **Nickname** field
@@ -689,6 +820,9 @@ The Okta issuer supports the Dynamic mode. To use this mode, perform the followi
 2. In the Bind OIDC Identity Provider panel, click **Parse** next to the Issuer parameter. Then,
 the endpoints are automatically entered.
 3. Confirm the configurations and click Next to go to the Select Scenario step.
+
+**Log in to IDaaS EIAM**
+
 This section describes the process of logging in to IDaaS EIAM by using an Okta account.
 1. Click the button for Okta on the login page of IDaaS EIAM.
 2. The system sends an authentication request to Okta. If no Okta account is logged in, the
@@ -696,7 +830,7 @@ Okta login page appears. If an Okta account is logged in, you are redirected to 
 3. If the Okta account is associated with your IDaaS account, you can directly log in to IDaaS
 EIAM. If the Okta account is not associated with your IDaaS account, the system automatically associates with the Okta account. If the association fails, you must manually associate with the Okta account or initiate the system to create an account. For more information, see Step 2: Select a scenario.
 
-#### Bind IDaaS to Microsoft Entra ID (FKA
+#### 1.7.2 Bind IDaaS to Microsoft Entra ID (FKA Azure AD)
 
 **Azure AD)**
 
@@ -731,6 +865,9 @@ Choose **Overview > Endpoints** and obtain the https://login.microsoftonline.com
 1. Log in to the IDaaS console and click **Console** in the Actions column of the desired IDaaS
 instance.
 2. On the **IdPs** page, choose **Other IdPs > OIDC IdP**.
+
+**Step 3: Bind IDaaS to an OIDC IdP**
+
 1. **Basic Information**
 i. **Logon Method Icon**: Upload the icon of the IdP, which must be a PNG or JPG file of no larger than 1 MB. We recommend that you set the pixel aspect ratio to 256*256. The icon is displayed on the login page. ii. **Display Name**: Enter a name for the login method into the **Display Name** field, which is displayed on the login page. During the first time you specify or modify the login method name, the system automatically reviews the name. After the name is approved, the name is automatically applied. The default name or the existing name is displayed during the review.
 2. **Network Configurations**
@@ -740,20 +877,32 @@ see Network endpoints.
 3. **Logon Settings**
 i. **Grant Types**: Select the OIDC authorization mode to be used. In most cases, the authorization code mode is used. Proof Key for Code Exchange (PKCE) provides an additional layer of security. You can enable PKCE based on your business requirements. ii. **Authentication Method**: You can select any authentication mode. a. client_secret_post: Carry the key pair information in POST requests that are sent to an authentication endpoint. This option is selected in most cases. b. client_secret_basic: Carry the encoded key pair information in the Authorization header of requests. iii. Client ID: Copy the value of the Application (client) ID parameter in Step 1: Create an application in Microsoft Entra IDand then paste the value to the Client ID field. iv. Client Secret: Click Add a certificate or secret next to the Client credentials parameter in Step 1: Create an application in Microsoft Entra ID. On the **Client secrets** tab, copy the secret in the Value column and then paste the value into the Client Secret field. v. Scopes: Select a scope based on your business requirements. If you want to obtain email addresses, select email.
 4. **Endpoint Configurations**
-i. Issuer: On the Overview page of the application in Step 1: Create an application in Microsoft Entra ID, choose **Endpoints > OpenID Connect metadata document**, copy the URL, and then paste it into the Issuer field. ii. Click **Parse** next to the Issuer field. Then, the endpoints are automatically specified. iii. Confirm the configuration and click **Next** to go to the Select Scenario step. For more information about the configuration in the Select Scenario step, see Step 2: Select a scenario. iv. **IDaaS Redirect URI**: You must specify the URI in the OIDC service in Step 1: Create an application in Microsoft Entra ID. This section describes how to log in to IDaaS by using a Microsoft Entra ID account.
+i. Issuer: On the Overview page of the application in Step 1: Create an application in Microsoft Entra ID, choose **Endpoints > OpenID Connect metadata document**, copy the URL, and then paste it into the Issuer field. ii. Click **Parse** next to the Issuer field. Then, the endpoints are automatically specified. iii. Confirm the configuration and click **Next** to go to the Select Scenario step. For more information about the configuration in the Select Scenario step, see Step 2: Select a scenario. iv. **IDaaS Redirect URI**: You must specify the URI in the OIDC service in Step 1: Create an application in Microsoft Entra ID.
+
+**Step 4: Verify the login process**
+
+This section describes how to log in to IDaaS by using a Microsoft Entra ID account.
 1. Click AAD on the login page of IDaaS.
 2. Then, the system sends an authentication request to Microsoft Entra ID. If no Microsoft
 Entra ID account is logged in, the sign-in page of Microsoft Entra ID appears. If a Microsoft Entra ID account is logged in, you are navigated to IDaaS.
 3. If the Microsoft Entra ID account is bound to your IDaaS account, you can directly log in to
 IDaaS. If the Microsoft Entra ID account is not bound to your IDaaS account, the system automatically binds the Microsoft Entra ID account. If the binding fails, you must manually bind the Microsoft Entra ID account or allow the system to create an account. For more information, see Step 2: Select a scenario.
 
-### Field mappings
+### 1.8 Field mappings
 
-You can use field mappings to manage the relationship between different account systems and accounts or organizations in Identity as a Service (IDaaS). This topic introduces the basic concepts related to field mappings and describes how to map fields. You can use field mappings to synchronize an IDaaS account with an external account. Accounts: You can bind accounts to synchronize account status. If you bind a DingTalk user to an IDaaS account after you import users from DingTalk, when you delete the user from DingTalk, the IDaaS account is also deleted. Fields: After you bind accounts, you can map the fields of the accounts to synchronize account information. For example, you can use the enterprise email addresses of DingTalk users as the display names of IDaaS accounts when you import users from DingTalk. When the enterprise email address of a DingTalk user is changed, the display name of the IDaaS account is also changed.
+You can use field mappings to manage the relationship between different account systems and accounts or organizations in Identity as a Service (IDaaS). This topic introduces the basic concepts related to field mappings and describes how to map fields.
+
+**Terms**
+
+You can use field mappings to synchronize an IDaaS account with an external account. Accounts: You can bind accounts to synchronize account status. If you bind a DingTalk user to an IDaaS account after you import users from DingTalk, when you delete the user from DingTalk, the IDaaS account is also deleted. Fields: After you bind accounts, you can map the fields of the accounts to synchronize account information. For example, you can use the enterprise email addresses of DingTalk users as the display names of IDaaS accounts when you import users from DingTalk. When the enterprise email address of a DingTalk user is changed, the display name of the IDaaS account is also changed.
 
 **Note**
 
-You can unbind a DingTalk user from an IDaaS account, organization, or group only after you delete the IDaaS account, organization, or group. You can also bind organizations and map the fields of organizations. However, mapping identifiers are unavailable for organizations. You can use the following methods to configure field mappings. Configure field mappings when you create an identity provider (IdP). However, you cannot configure field mappings when you create an IdP to synchronize data from DingTalk. Configure field mappings when you modify an IdP. On the **IdPs** page, click **Modify**
+You can unbind a DingTalk user from an IDaaS account, organization, or group only after you delete the IDaaS account, organization, or group. You can also bind organizations and map the fields of organizations. However, mapping identifiers are unavailable for organizations.
+
+**Configure field mappings**
+
+You can use the following methods to configure field mappings. Configure field mappings when you create an identity provider (IdP). However, you cannot configure field mappings when you create an IdP to synchronize data from DingTalk. Configure field mappings when you modify an IdP. On the **IdPs** page, click **Modify**
 **Settings**. In the panel that appears, click the **Field Mapping** tab, configure field
 mappings, and then click Confirm.
 
@@ -767,20 +916,13 @@ Different mapping identifiers are supported by various IdPs. You can configure o
 
 **Configure mapping rules**
 
-You can use one of the following methods to map fields. Select a field: Select a field from the synchronization source and use the field value as the value of the destination field. IDaaS provides different fields for different IdPs. If you cannot find a field that you require, you can specify an expression. Specify an expression: You can specify an expression to customize the value of a field and use the value as the value of a destination field. You can specify expressions for different scenarios. You can use the email prefix of DingTalk accounts as the IDaaS account name or use a field **that is not provided by IDaaS**. The following examples describe specific common expressions. The following examples describe specific common expressions.
-
-| No. | Time unit | Valid value | Allowed special character |
-|---|---|---|---|
-| 1 | Seconds | 0 to 59 | - * / |
-| 2 | Minutes | 0 to 59 | - * / |
-
-Use fields that are not provided by IDaaS: Position of users in DingTalk: `idpUser.title` Workplace of users in DingTalk: `idpUser.work_place` Head of department in DingTalk: `idpOrganizationalUnit.org_dept_owner` For more information about DingTalk fields, see DingTalk user fields and DingTalk department fields. Use email prefixes as field values: Email prefix of users in DingTalk: SubstringBefore(idpUser.email,"@") User Principal Name (UPN) prefix of accounts in Active Directory (AD): SubstringBefore(idpUser.userPrincipalName,"@") Fixed value: Trim("myString")
+You can use one of the following methods to map fields. Select a field: Select a field from the synchronization source and use the field value as the value of the destination field. IDaaS provides different fields for different IdPs. If you cannot find a field that you require, you can specify an expression. Specify an expression: You can specify an expression to customize the value of a field and use the value as the value of a destination field. You can specify expressions for different scenarios. You can use the email prefix of DingTalk accounts as the IDaaS account name or use a field **that is not provided by IDaaS**. The following examples describe specific common expressions. The following examples describe specific common expressions. Use fields that are not provided by IDaaS: Position of users in DingTalk: `idpUser.title` Workplace of users in DingTalk: `idpUser.work_place` Head of department in DingTalk: `idpOrganizationalUnit.org_dept_owner` For more information about DingTalk fields, see DingTalk user fields and DingTalk department fields. Use email prefixes as field values: Email prefix of users in DingTalk: SubstringBefore(idpUser.email,"@") User Principal Name (UPN) prefix of accounts in Active Directory (AD): SubstringBefore(idpUser.userPrincipalName,"@") Fixed value: Trim("myString")
 
 **Note**
 
 The fields in IDaaS expressions are in the idp<User/OrganizationUnit>.<Field name in the IdP> format for synchronization to IDaaS, such as `idpUser.userId` , or in the idp<User/OrganizationUnit>.<Field name in IDaaS> format for synchronization from IDaaS. For more information about the examples of expressions and the expression syntax, see Field expressions of advanced accounts. If you do not want to map a field, click **Remove** in the Actions column. Then, the Mapping Rule of the field is changed to Disable Mapping, and the data of this field is not synchronized.
 
-### Introduction to cron
+### 1.9 Introduction to cron expressions
 
 **expressions**
 
@@ -800,12 +942,19 @@ A cron expression is a time expression used to configure cron jobs. It is a stri
 
 2. Valid values of each field
 
+| No. | Time unit | Valid value | Allowed special character |
+|---|---|---|---|
+| 1 | Seconds | 0 to 59 | - * / |
+| 2 | Minutes | 0 to 59 | - * / |
+
 | 3 | Hours | 0 to 23 | - * / |
 |---|---|---|---|
 | 4 | Day of month | 1 to 31 | - * ? / L W C |
 | 5 | Month | 1 to 12 or JAN to DEC | JAN-DEC - * / |
 | 6 | Day of week | 0 to 7 (both 0 and 7 indicate Sunday) or SUN to SAT | SUN-SAT - * ? / L C # |
 | 7 (optional) | Year | Empty or 1970 to 2199 (Year is optional) | , - * / |
+
+**Special characters**
 
 | Ch ara cte r | Definition | Description |
 |---|---|---|
@@ -815,13 +964,17 @@ A cron expression is a time expression used to configure cron jobs. It is a stri
 | / | Represents the start time and the interval, which are separated by this character. The job is started at the specified start time and then run at the specified interval. | If you set the Minutes field to 5/20, the job is run at the 5th, 20th, 25th, and 45th minutes of an hour. |
 | , | Represents a list of different values. | If you set the Minutes field to 5,20, the job is run at the 5th and 20th minutes of an hour. |
 
-**Special characters**
-
 | L | Represents the last day or week. You can use this character only in the Day or Week field. | If you set the Week field to 5L, the job is run on the 5th day of the last week, which is the last Thursday of a month. |
 |---|---|---|
 | W | Represents the business days from Monday to Friday. You can use this character only in the Day field. The job is run on the business day nearest to the specified date. | Assume that you have set the Day field to 5W. If the 5th day of a month is Saturday, the job is run on the 4th day of the month, which is Friday, the nearest business day. If the 5th day of a month is Sunday, the job is run on the 6th day of the month, which is Monday. If the 5th day of a month is a business day, the job is run on that day. In addition, the nearest business day is limited to the current month. |
-| LW | Represents the last business day of a month, which is the last Friday. You can use these characters together. |  |
+| LW | Represents the last business day of a month, which is the last Friday. You can use these characters together. |   |
 | # | Represents the Nth occurrence of a day of the week in a month. You can use this character only in the Week field. | If you set the Week field to 4#2, the second Wednesday of a month is specified, where 4 indicates Wednesday and 2 indicates the second. |
+
+**Examples**
+
+**Warning**
+
+A job is run at an interval that is specified by a cron expression in IDaaS identity providers (IdPs). We recommend that you specify **an interval of more than 1 hour**. This ensures that the frequency of data synchronization meets your expectations.
 
 | Example | Description |
 |---|---|
@@ -831,13 +984,9 @@ A cron expression is a time expression used to configure cron jobs. It is a stri
 | 0 0 23 * * ? | The job is run once at 23:00 every day. |
 | 0 0 1 * * ? | The job is run once at 01:00 every day. |
 
-|  | 0 15 10 ? * MON- |  |
+|   | 0 15 10 ? * MON- |   |
 |---|---|---|
-| FRI |  |  |
-
-**Warning**
-
-A job is run at an interval that is specified by a cron expression in IDaaS identity providers (IdPs). We recommend that you specify **an interval of more than 1 hour**. This ensures that the frequency of data synchronization meets your expectations.
+| FRI |   |   |
 
 | 0 0 1 1 * ? | The job is run once at 01:00 on the first day of each month. |
 |---|---|
@@ -857,29 +1006,29 @@ A job is run at an interval that is specified by a cron expression in IDaaS iden
 | 0 15 10 ? * 6L 2025-2026 | The job is triggered at 10:15 on the last Friday of every month from 2025 to 2026. |
 | 0 15 10 ? * 6#3 | The job is triggered at 10:15 on the third Friday of every month. |
 
-|  | 0 0 0,13,18,21 * * |  |
+|   | 0 0 0,13,18,21 * * |   |
 |---|---|---|
-| ? |  |  |
+| ? |   |   |
 
-|  | 0 0 10,14,16 * * |
+|   | 0 0 10,14,16 * * |
 |---|---|
-| ? |  |
+| ? |   |
 
-|  |  | 0 15 10 * * ? |
+|   |   | 0 15 10 * * ? |
 |---|---|---|
-|  | 2025 |  |
+|   | 2025 |   |
 
-|  | 0 15 10 ? * 6L | The j |
+|   | 0 15 10 ? * 6L | The j |
 |---|---|---|
-| 2025-2026 |  |  |
+| 2025-2026 |   |   |
 
 **Note**
 
 In this example, all time fields, including the year field, can be modified on demand.
 
-## User portal
+## 2 User portal
 
-### Portal page
+### 2.1 Portal page
 
 This topic describes the features of the Identity as a Service (IDaaS) application portal and how to use the portal. This topic also describes the methods used to access the portal and the procedures for logging in to and logging out of applications.
 
@@ -900,14 +1049,23 @@ Log in to the IDaaS Console and find the desired IDaaS instance.
 On the right side of the Quick Start page, view the URL in the **IDaaS Sign-In URL** section.
 3. Click the URL to redirect to the login page and enter your username and password to log in
 to the application portal.
+
+**Applications**
+
 1. **Access an application.**
-i. On the Applications page, you can view the applications that the current IDaaS account is authorized to access. If this page is empty, contact the administrator to add an application and grant permissions on the application to you. For more information, see Create Application and Grant permissions on an application. ii. If a large number of applications are displayed, you can perform a fuzzy search by application name to quickly find the application that you want to access. . iii. Click an application icon to access the application through Single Sign-On (SSO).
+i. On the Applications page, you can view the applications that the current IDaaS account is authorized to access. If this page is empty, contact the administrator to add an application and grant permissions on the application to you. For more information, see Create Application and Grant permissions on an application. ii. If a large number of applications are displayed, you can perform a fuzzy search by application name to quickly find the application that you want to access. . iii. Click an application icon to access the application through Single Sign-On (SSO). iv. The number of available application users varies depending on the following scenarios.
 
 | Scenario | Description |
 |---|---|
 | One and only one application user | Users can log in to the application through SSO without the need to perform additional operations. |
 | No application user | If IDaaS cannot authenticate the identity required for SSO, the "No application user found" message appears. In this case, you cannot log in to the application through SSO. . You must contact the administrator to resolve this issue. In this scenario, you cannot add application users. |
 | Multiple application users | You can assume different roles when you use an IDaaS account to access an application. You can select multiple application users to assume different roles. . During SSO (initiated by the IdP) to the portal, if multiple application users are available, you are redirected to the page where you can select an application user. Select an application user to access the application. |
+
+**Note**
+
+If the SSO process is initiated by the application, you are redirected to the application instead of the portal after you are logged in. You are redirected to the portal page only after you log in to the portal from the Sign-in page. You can specify the application for SSO.
+2. **Log out of the application**.
+The following table describes scenarios where a logged-on IDaaS user logs out.
 
 | Scenario | Description |
 |---|---|
@@ -916,22 +1074,15 @@ i. On the Applications page, you can view the applications that the current IDaa
 | The user manually logs out. | In the IDaaS portal, you can also log out by clicking the Log Out button in the upper-right corner. |
 | The user closes the browser. | After the current browser is closed, your account is automatically logged out of the IDaaS portal. |
 
-iv. The number of available application users varies depending on the following scenarios.
+In this case, you must log in again if you want to access any application.
 
-**Note**
+### 2.2 Self-service
 
-If the SSO process is initiated by the application, you are redirected to the application instead of the portal after you are logged in. You are redirected to the portal page only after you log in to the portal from the Sign-in page. You can specify the application for SSO.
-2. **Log out of the application**.
-The following table describes scenarios where a logged-on IDaaS user logs out. In this case, you must log in again if you want to access any application.
+This topic describes the account management features available in the Identity as a Service (IDaaS) portal, including the basic information, extended information, security settings, and procedures and precautions for binding third-party accounts.
 
-### Self-service
+**Overview**
 
-| Type | Field | Description |
-|---|---|---|
-| Basic information | Username | The username of the account that is used to log in to the portal. The username uniquely identifies the account and can be changed later. Note The initial username is left empty for an account that is imported from DingTalk. You must specify a username when you create an account in IDaaS. |
-| 9 | > Document Version: 2026063 |  |
-
-This topic describes the account management features available in the Identity as a Service (IDaaS) portal, including the basic information, extended information, security settings, and procedures and precautions for binding third-party accounts. After you log in to the IDaaS portal, you can view and modify your personal information on the
+After you log in to the IDaaS portal, you can view and modify your personal information on the
 **My Account** page, such as the basic information and security settings. For more information
 about how to log in to the IDaaS portal, see IDaaS portal.
 
@@ -941,17 +1092,22 @@ The **My Account** page is unavailable in the IDaaS application on DingTalk. You
 
 **Description**
 
-|  | Display Name | The nickname or name of the user. You can click Change to change the display name. |
+| Type | Field | Description |
 |---|---|---|
-|  | / | The fields that are created on the Account > Field Management page in the IDaaS console can be displayed in this section. |
-| Extended information |  |  |
-| Security information | Mobile Phone Number | We recommend that you specify this parameter. This parameter is required in scenarios such as login, password resetting, and two-factor authentication (2FA). If you do not bind a mobile phone number or an email address, you cannot perform 2FA by default. We recommend that you bind a mobile phone number or an email address before you enable Bind Two-factor Authentication for Logons. For more information, see Two- factor authentication. |
-|  | Email Address | We recommend that you specify this parameter. This parameter is required in scenarios such as login, password resetting, and 2FA. If you do not bind a mobile phone number or an email address, you cannot perform 2FA by default. We recommend that you bind a mobile phone number or an email address before you enable Bind Two-factor Authentication for Logons. For more information, see Two- factor authentication. |
-|  | Password | The administrator can determine the password complexity. |
-| Bind Third-Party Account | / | Bind external enterprise identities that can be used to log in to the IDaaS portal. You can bind and unbind accounts. Accounts imported from an identity provider (IdP) are bound to IDaaS by default and cannot be unbound. Note You cannot bind IDaaS that is automatically bound to an IdP to another IdP. For example, you cannot bind IDaaS bound to a DingTalk IdP to a WeCom IdP. However, you can manually bind IDaaS to different IdPs. For example, you can scan a QR code by using WeCom to log in to IDaaS and use OpenID Connect (OIDC)-supported IdP federated authentication to log in to IDaaS. |
-|  | Bind OTP | After the administrator enables 2FA based on one-time password (OTP), the user can use this field to bind OTP. |
+| Basic information | Username | The username of the account that is used to log in to the portal. The username uniquely identifies the account and can be changed later. Note The initial username is left empty for an account that is imported from DingTalk. You must specify a username when you create an account in IDaaS. |
+| 9 | > Document Version: 2026063 |   |
 
-### Access the IDaaS portal from
+|   | Display Name | The nickname or name of the user. You can click Change to change the display name. |
+|---|---|---|
+|   | / | The fields that are created on the Account > Field Management page in the IDaaS console can be displayed in this section. |
+| Extended information |   |   |
+| Security information | Mobile Phone Number | We recommend that you specify this parameter. This parameter is required in scenarios such as login, password resetting, and two-factor authentication (2FA). If you do not bind a mobile phone number or an email address, you cannot perform 2FA by default. We recommend that you bind a mobile phone number or an email address before you enable Bind Two-factor Authentication for Logons. For more information, see Two- factor authentication. |
+|   | Email Address | We recommend that you specify this parameter. This parameter is required in scenarios such as login, password resetting, and 2FA. If you do not bind a mobile phone number or an email address, you cannot perform 2FA by default. We recommend that you bind a mobile phone number or an email address before you enable Bind Two-factor Authentication for Logons. For more information, see Two- factor authentication. |
+|   | Password | The administrator can determine the password complexity. |
+| Bind Third-Party Account | / | Bind external enterprise identities that can be used to log in to the IDaaS portal. You can bind and unbind accounts. Accounts imported from an identity provider (IdP) are bound to IDaaS by default and cannot be unbound. Note You cannot bind IDaaS that is automatically bound to an IdP to another IdP. For example, you cannot bind IDaaS bound to a DingTalk IdP to a WeCom IdP. However, you can manually bind IDaaS to different IdPs. For example, you can scan a QR code by using WeCom to log in to IDaaS and use OpenID Connect (OIDC)-supported IdP federated authentication to log in to IDaaS. |
+|   | Bind OTP | After the administrator enables 2FA based on one-time password (OTP), the user can use this field to bind OTP. |
+
+### 2.3 Access the IDaaS portal from the DingTalk console
 
 **the DingTalk console**
 
@@ -959,7 +1115,11 @@ This topic describes how platform employees access the Identity as a Service (ID
 
 **IDaaS and DingTalk integration overview**
 
-The process of associating DingTalk accounts with IDaaS is the same as that of enabling In the process of enabling the IDaaS applications, the administrator specifies the DingTalk contacts that can access IDaaS applications. The accounts of the specified DingTalk contacts can be synchronized to IDaaS, or the accounts can be used to directly access the IDaaS portal from the DingTalk console. All accounts that are imported from DingTalk to IDaaS do not need to be associated with IDaaS. They can be used to access the IDaaS portal from the DingTalk console. ​ IDaaS accounts that are not imported from DingTalk must be associated with a DingTalk user ID specified by the `userId` parameter before the accounts are used to access applications. ​ You must perform authentication by using a method other than logging in with a QR code. You can access the IDaaS portal only when your account is authenticated. ​ You do not need to associate the account again.
+The process of associating DingTalk accounts with IDaaS is the same as that of enabling DingTalk third-party applications. ​ In the process of enabling the IDaaS applications, the administrator specifies the DingTalk contacts that can access IDaaS applications. The accounts of the specified DingTalk contacts can be synchronized to IDaaS, or the accounts can be used to directly access the IDaaS portal from the DingTalk console.
+
+**Associate IDaaS accounts**
+
+All accounts that are imported from DingTalk to IDaaS do not need to be associated with IDaaS. They can be used to access the IDaaS portal from the DingTalk console. ​ IDaaS accounts that are not imported from DingTalk must be associated with a DingTalk user ID specified by the `userId` parameter before the accounts are used to access applications. ​ You must perform authentication by using a method other than logging in with a QR code. You can access the IDaaS portal only when your account is authenticated. ​ You do not need to associate the account again.
 
 **Obtain mobile numbers or email addresses from DingTalk**
 
@@ -967,7 +1127,7 @@ Accounts that are imported from DingTalk cannot be used to implement some key fe
 **requests permissions** on your mobile number or email address is displayed.
 After you agree to the request, IDaaS can obtain your mobile number or email address and automatically fill it for the IDaaS account. ​
 
-### Login by scanning DingTalk
+### 2.4 Login by scanning DingTalk QR codes
 
 **QR codes**
 
@@ -975,35 +1135,47 @@ This topic describes how to log in to accounts by scanning QR codes, which is a 
 
 **Prerequisites**
 
-Your account is bound to DingTalk by the IDaaS administrator, and the feature of login by scanning QR codes is enabled. For more information, see Associate IDaaS with DingTalk outbound direction. On the login page, select QR Scan Sign-In from Other Methods to go to the page that shows the DingTalk QR code. Use your DingTalk app to scan the QR code.
+Your account is bound to DingTalk by the IDaaS administrator, and the feature of login by scanning QR codes is enabled. For more information, see Associate IDaaS with DingTalk outbound direction.
+
+**Login by scanning DingTalk QR codes**
+
+On the login page, select QR Scan Sign-In from Other Methods to go to the page that shows the DingTalk QR code. Use your DingTalk app to scan the QR code.
 
 **Note**
 
 Note: If QR Scan Sign-In is not displayed, your administrator must go to the login menu to check whether this feature is enabled.
 
-| No. | Step | Description |
-|---|---|---|
-
 **Possible results after you scan the QR code**
 
-After you scan the QR code by using DingTalk, you may encounter one of the following situations. When the DingTalk account that you use to log in is bound to IDaaS, the following page appears. After you confirm your login, you are logged in.
+After you scan the QR code by using DingTalk, you may encounter one of the following situations.
+1. **QR code login is available**
+When the DingTalk account that you use to log in is bound to IDaaS, the following page appears. After you confirm your login, you are logged in.
 2. **IDaaS does not recognize your identity**
-For accounts that are not imported from DingTalk, you must manually bind the accounts to After the QR code is scanned, the following page appears. You must select **Use Existing**
+For accounts that are not imported from DingTalk, you must manually bind the accounts to IDaaS to enable login with the QR code. ​ After the QR code is scanned, the following page appears. You must select **Use Existing**
 **IDaaS User** to proceed to the IDaaS account authentication step. ​
 You must perform authentication by using a method other than QR Scan Sign-In. After you are authenticated, the DingTalk account is bound to the IDaaS account, and the login succeeds. ​ You do not need to bind the account again.
 
-### General login page
+### 2.5 General login page
 
 Identity as a Service (IDaaS) provides a login page that allows users to use their IDaaS accounts to log in to the IDaaS user portal or the connected applications.
 
 **Note**
 
-Each IDaaS instance has a unique login URL, which can be viewed in Quick Start, Accounts, Sign-In, and other pages. The following table describes the three steps in the preceding figure.
+Each IDaaS instance has a unique login URL, which can be viewed in Quick Start, Accounts, Sign-In, and other pages.
+
+**Login process**
+
+The following table describes the three steps in the preceding figure.
+
+| No. | Step | Description |
+|---|---|---|
 
 | 1 | Perform two-factor authentication (2FA) | Required only when password-based login is used. For more information, see Two-factor authentication. |
 |---|---|---|
 | 2 | Forcibly change the password | This feature will be available later. |
 | 3 | Select an application user | Required when the service provider (SP) initiates single sign-on (SSO). After the login, you must select an application identity to initiate SSO. |
+
+**Login page**
 
 **Two-factor authentication page**
 
@@ -1011,15 +1183,25 @@ For more information, see Two-factor authentication.
 
 **Select an application user**
 
+You can assume different roles when you use an IDaaS account to access an application. You can select multiple application users to assume different roles. For more information, see Configure SAML application users. For SP-initiated SSO, if the logged-in IDaaS account has multiple application users available, you must select one user to log in to the application.
+
+**Login exceptions**
+
 | Security measure | Operation | Exception |
 |---|---|---|
 | CAPTCHA verification | Password-based login | In a browser, after the login fails once, all logins by using the account name and password must be subject to CAPTCHA verification. |
 | Account locking | Password-based login | If an account fails to log in 10 times consecutively within 5 minutes, the account will be locked. If an account supports multiple login methods (such as by using the password and mobile number), the number of login failures by using different login methods are all counted. An account can be unlocked in the following ways. An account that is locked is automatically unlocked after five minutes. An administrator can click Unlock in the Actions column on the Accounts page to unlock an account. An account will be automatically unlocked after you reset the password. (Not supported) |
 
-You can assume different roles when you use an IDaaS account to access an application. You can select multiple application users to assume different roles. For more information, see Configure SAML application users. For SP-initiated SSO, if the logged-in IDaaS account has multiple application users available, you must select one user to log in to the application.
-
 | SMS or email verification code | Login, 2FA, and password resetting | You can request a verification code that is sent by email or SMS every 60 seconds. When you are waiting for a verification code that is sent by using one method (SMS or email), you can still request another verification code by using the other method. The same verification code can be entered for up to 3 times. If you enter an incorrect verification code for three consecutive times, the verification code becomes invalid. You must request another verification code. |
 |---|---|---|
+
+## 3 Accounts
+
+### 3.1 Create an account or an organization
+
+**organization**
+
+This topic describes how to create an account in the Identity as a Service (IDaaS) console. The following table describes the methods that you can use to create accounts.
 
 | Method | Description |
 |---|---|
@@ -1027,15 +1209,9 @@ You can assume different roles when you use an IDaaS account to access an applic
 | Call API operations to import accounts | IDaaS provides API operations for account management. Developers can call these API operations to import accounts in batches. |
 | Manually create accounts | Administrators can create accounts in the IDaaS console. |
 
-## Accounts
+After you import the accounts and organizations, you can manage them on the **Accounts** page.
 
-### Create an account or an
-
-**organization**
-
-This topic describes how to create an account in the Identity as a Service (IDaaS) console. The following table describes the methods that you can use to create accounts. After you import the accounts and organizations, you can manage them on the **Accounts** page.
-
-### Manage accounts
+### 3.2 Manage accounts
 
 Identity as a Service (IDaaS) allows an administrator to view the details of an account and change the account status. . Log in to the IDaaS console. In the left-side navigation pane, choose User > Accounts and Orgs. On the **Account** page, find the account that you want to manage and click the account name or click **Details** in the Actions column to go to the account details page.
 
@@ -1067,7 +1243,11 @@ An administrator can manually unbind a one-time password (OTP) from an account. 
 
 **WebAuthn-registered authenticator**
 
-An administrator can register a WebAuthn authenticator for an account or remove a WebAuthn authenticator from an account. An administrator can view the applications that the current account is authorized to access.
+An administrator can register a WebAuthn authenticator for an account or remove a WebAuthn authenticator from an account.
+
+**View accessible applications**
+
+An administrator can view the applications that the current account is authorized to access.
 
 **Change the status of the account**
 
@@ -1077,15 +1257,19 @@ In the upper-right corner of the account details page, you can click the buttons
 
 An administrator can reset the password of the specified account. The password must meet the complexity rules. You can click **Generate** to automatically generate a password that meets the complexity rules. You can also click Copy Password to copy the account name and new password and send them to your team members. .
 
-### Move an account
+### 3.3 Move an account
 
 Identity as a Service (IDaaS) allows you to move an account from an organization to another. ​ Organizations of an account can be classified into the following types: Primary organization: the primary organization to which the account belongs. Secondary organization: the secondary organization to which the account belongs. Generally, the primary organization indicates the position of an account in the organizational structure of an enterprise, and the secondary organizations are used to specify multiple parent organizations for an account. , An account inherits the permissions of its parent organizations. The parent organizations include the primary organization and secondary organizations. The primary organization and secondary organizations have no distinction in business logic in IDaaS.
 
 **Specify multiple organizations when you create an account**
 
-When you create an account, the current organization is specified as the primary organization of the account by default. The primary organization cannot be changed. If you want to change the primary organization, select another organization before you create the account. Alternatively, you can move the account from the primary organization to another after the account is created. ​ Administrators can specify multiple secondary organizations for the account. After an account is created, you can move the account from the current primary organization to another and change the secondary organizations of the account. In the **Move User** panel, change the primary organization of the account or manage the secondary organizations of the account.
+When you create an account, the current organization is specified as the primary organization of the account by default. The primary organization cannot be changed. If you want to change the primary organization, select another organization before you create the account. Alternatively, you can move the account from the primary organization to another after the account is created. ​ Administrators can specify multiple secondary organizations for the account.
 
-### Account lifecycle
+**Move an account**
+
+After an account is created, you can move the account from the current primary organization to another and change the secondary organizations of the account. In the **Move User** panel, change the primary organization of the account or manage the secondary organizations of the account.
+
+### 3.4 Account lifecycle
 
 **Normal**
 
@@ -1107,7 +1291,23 @@ If an account is at risk or an employee is on a leave of absence, you can disabl
 
 Unlocked: An account can be unlocked in one of the following situations: The account is automatically unlocked when the lock expires. An administrator can click Unlock in the Actions column on the **Accounts** page to unlock the account.
 
-### Field management
+### 3.5 Field management
+
+This topic describes the field management feature of Identity as a Service (IDaaS), which allows you to view basic fields and configure permissions. This topic also describes how to create, configure, and use extended fields to help administrators flexibly manage user information fields.
+
+**Basic fields**
+
+**Introduction**
+
+Basic fields are system-predefined fields that display the basic information of users, such as the username, email address, and phone number. This feature allows administrators to perform the following operations: View the basic fields predefined by the system. Configure how the fields are displayed in the user portal. Manage the edit permissions of users on specific fields.
+
+**Procedure**
+
+1. **Go to the basic field management page**
+i. Log in to the IDaaS console. Select an IDaaS instance and click **Console** in the Actions column. ii. In the left-side navigation pane, choose **User > Extended Fields**.
+2. **View editable fields**
+i. On the Basic Fields tab, select **Editable Fields Only** above the list. ii. Then, the list displays only fields that users can edit.
+3. **Introduction to columns of the basic field list**
 
 | Column | Description |
 |---|---|
@@ -1119,26 +1319,7 @@ Unlocked: An account can be unlocked in one of the following situations: The acc
 | User Permissions | Indicates whether the field is invisible, visible, or editable to end users. |
 | Actions | Users can edit only the display name, email, and phone number fields. |
 
-This topic describes the field management feature of Identity as a Service (IDaaS), which allows you to view basic fields and configure permissions. This topic also describes how to create, configure, and use extended fields to help administrators flexibly manage user information fields.
-
-**Basic fields**
-
-Basic fields are system-predefined fields that display the basic information of users, such as the username, email address, and phone number. This feature allows administrators to perform the following operations: View the basic fields predefined by the system. Configure how the fields are displayed in the user portal. Manage the edit permissions of users on specific fields.
-
-**Procedure**
-
-i. Log in to the IDaaS console. Select an IDaaS instance and click **Console** in the Actions column. ii. In the left-side navigation pane, choose **User > Extended Fields**.
-2. **View editable fields**
-i. On the Basic Fields tab, select **Editable Fields Only** above the list. ii. Then, the list displays only fields that users can edit.
-3. **Introduction to columns of the basic field list**
 4. **Configure permissions on basic fields**
-
-| Parameter | Description | Editable |
-|---|---|---|
-| Field Display Name | The display name of the field. | Yes |
-| Field ID | The unique identifier of the field. The identifier can contain lowercase letters and underscores ( ). It _ must start with a lowercase letter. . | No |
-| Field Type | The display mode of the field on a page. Valid values: Input Field Drop-down List Check Box | No |
-
 i. Find an editable field in the basic field list. ii. Click **Modify** in the Actions column. This button is available only for the Display Name, Email Address, and Mobile Phone Number fields. iii. In the panel that appears, configure user permissions on the field. Invisible: The field is invisible to users. Visible: The field is visible to users. Editable: Users are allowed to edit the field. iv. Click **Confirm** to save the configuration.
 
 **Note**
@@ -1146,6 +1327,8 @@ i. Find an editable field in the basic field list. ii. Click **Modify** in the A
 Basic fields are system-predefined fields. You cannot delete or add basic fields.
 
 **Extended fields**
+
+**Introduction**
 
 IDaaS allows administrators to create extended fields to store additional account attributes, such as fields that display the employee ID, birthday, and region. Administrators can create and use extended fields on the Extended Fields tab.
 
@@ -1156,6 +1339,12 @@ Extended fields can be created only for accounts.
 **Create an extended field**
 
 Administrators can go to the **Extended Fields** tab and click **Create Field** to create extended fields. The following table describes the parameters for creating an extended field.
+
+| Parameter | Description | Editable |
+|---|---|---|
+| Field Display Name | The display name of the field. | Yes |
+| Field ID | The unique identifier of the field. The identifier can contain lowercase letters and underscores ( ). It _ must start with a lowercase letter. . | No |
+| Field Type | The display mode of the field on a page. Valid values: Input Field Drop-down List Check Box | No |
 
 | Field Type: Input Field | If you select Input Field as Field Type, you must specify the following parameters: Data Type: the data type of the field. You can set the parameter to String or Numeric. Default Value: the default value that the system uses if no value is specified for the field. This parameter is similar to the DEFAULT parameter in a relational database. | Data Type: No Default Value: Yes |
 |---|---|---|
@@ -1169,13 +1358,13 @@ Administrators can go to the **Extended Fields** tab and click **Create Field** 
 | Encryption | To enhance security, IDaaS allows you to encrypt sensitive information before the information is stored in a database. | No |
 | User Permissions | Administrators have full permissions on extended fields. In some scenarios, the permissions of users on an extended field must be limited. You can use this parameter to grant the necessary permissions on the current extended field to users. Valid values: Invisible: The field is invisible to users. Visible: The field is visible to users but users cannot modify the value of the field. Editable: The field is visible to users, and users can modify the value of the field. | Yes |
 
-| Method | Description |
-|---|---|
-| Dev/OpenAPI | The application obtains the extended fields of the specified account for data synchronization and management. Developer API or OpenAPI can return all extended fields of the account without additional configurations. For more information, see the corresponding API operation in Developer Guide. |
-
 **Specify the values of extended fields**
 
-After you create and enable an extended field, the extended field is ready for use. Administrators can go to the **Accounts and Orgs** page and click **Create User**. In the panel that appears, click the **Extended Fields** tab and specify the values of all extended fields. If you set User Permissions to Visible, users can view the extended field in their IDaaS application portal by performing the following operations: In the left-side navigation pane, click **My Account**. On the page that appears, view the extended fields and their values in the
+After you create and enable an extended field, the extended field is ready for use. Administrators can go to the **Accounts and Orgs** page and click **Create User**. In the panel that appears, click the **Extended Fields** tab and specify the values of all extended fields.
+
+**User self-service**
+
+If you set User Permissions to Visible, users can view the extended field in their IDaaS application portal by performing the following operations: In the left-side navigation pane, click **My Account**. On the page that appears, view the extended fields and their values in the
 **Extended Information** section.
 If you set User Permissions to Editable, users can click Change next to an extended field to modify the value of the field.
 
@@ -1183,21 +1372,36 @@ If you set User Permissions to Editable, users can click Change next to an exten
 
 The following table describes the methods that can be used by an application to obtain the extended fields of an account.
 
+| Method | Description |
+|---|---|
+| Dev/OpenAPI | The application obtains the extended fields of the specified account for data synchronization and management. Developer API or OpenAPI can return all extended fields of the account without additional configurations. For more information, see the corresponding API operation in Developer Guide. |
+
 | id token or userinfo _ field for an OIDC- based SSO account | After OpenID Connect (OIDC)-based single sign-on (SSO) is performed, the application can obtain the extended fields of the current account. By default, the extended fields are not returned in the SSO result. Administrators can configure the extended fields to be returned in the extended id token field. The extended fields obtained from the _ userinfo field of OIDC are the same as those returned in the id token _ field. Configure an extended field in the following format: user.customFieldMap.$Field key$.Field value . |
 |---|---|
 | Attribute Statements field for an SAML SSO account | After Security Assertion Markup Language (SAML)-based SSO is performed, the application can obtain the extended fields of the current account. By default, the extended fields are not returned in the SSO result. Administrators can configure the extended fields to be returned in the SAML Attribute Statements field. The extended fields are returned in the SAML response. |
 
-|  | id token _ |
+|   | id token _ |
 |---|---|
-| userinfo |  |
+| userinfo |   |
 
-### Advanced expressions for
+### 3.6 Advanced expressions for account fields
 
 **account fields**
 
-This topic describes how to use advanced expressions for account fields in a built-in expression engine of Identity as a Service (IDaaS). This topic also provides detailed model fields, functions, and examples. IDaaS has a built-in expression engine. In Security Assertion Markup Language (SAML) and OpenID Connect (OIDC) applications, you can use advanced expressions to add parameters to the response information. When an application requires additional parameters, and the parameters need to be converted, concatenated, or checked, you can use expressions to process and add the parameters. Similarly, when you configure the mappings between fields on IDaaS and those from an identity provider (IdP), you can also use expressions to assign values to the fields. This topic provides examples in the last section to help you understand what the expressions are used for and how to specify expressions. ​ The following figure shows a single sign-on (SSO) setting for OIDC applications. You can extend fields in the `id_token` to be returned. You can enter the advanced expression `full_phone` as the value of an extended field to obtain the required results. For more information, see SAML 2.0 SSO and OIDC SSO. An expression consists of the following two parts: Model: User that corresponds to an IDaaS account and AppUser that corresponds to an application account. Function: execution logic.
+This topic describes how to use advanced expressions for account fields in a built-in expression engine of Identity as a Service (IDaaS). This topic also provides detailed model fields, functions, and examples.
+
+**Overview**
+
+IDaaS has a built-in expression engine. In Security Assertion Markup Language (SAML) and OpenID Connect (OIDC) applications, you can use advanced expressions to add parameters to the response information. When an application requires additional parameters, and the parameters need to be converted, concatenated, or checked, you can use expressions to process and add the parameters. Similarly, when you configure the mappings between fields on IDaaS and those from an identity provider (IdP), you can also use expressions to assign values to the fields. This topic provides examples in the last section to help you understand what the expressions are used for and how to specify expressions. ​ The following figure shows a single sign-on (SSO) setting for OIDC applications. You can extend fields in the `id_token` to be returned. You can enter the advanced expression `full_phone` as the value of an extended field to obtain the required results. For more information, see SAML 2.0 SSO and OIDC SSO. An expression consists of the following two parts: Model: User that corresponds to an IDaaS account and AppUser that corresponds to an application account. Function: execution logic.
 
 **Models**
+
+1. . User**
+The following fields are available in the User model. If you want to use one of the following fields in an expression, you can add the user. prefix to the field, such as `user.username` or
+
+```
+ user.lockExpireTime .
+```
 
 | Field Display Name | Field ID | Data Type | Required | Unique | User Permiss ions | Description |
 |---|---|---|---|---|---|---|
@@ -1211,13 +1415,6 @@ This topic describes how to use advanced expressions for account fields in a bui
 | Source Type | userSourceT ype | String | No | No | Visible | The source of the user. Valid values: build in _ ding talk _ ad ldap we com _ lark idp auto build _ _ |
 | Source ID | userSourceId | String | No | No | Visible | The source ID. |
 
-1. . User**
-The following fields are available in the User model. If you want to use one of the following fields in an expression, you can add the user. prefix to the field, such as `user.username` or
-
-```
- user.lockExpireTime .
-```
-
 | Status | status | String | No | No | Visible | The status of the user. Valid values: enabled disabled |
 |---|---|---|---|---|---|---|
 | Descriptio n | description | String | No | No | Visible | The description. |
@@ -1229,29 +1426,15 @@ The following fields are available in the User model. If you want to use one of 
 | Update Time | updateTime | Number | No | No | Visible | The time when the account was last updated. The value is a UNIX timestamp. Unit: milliseconds. |
 
 2. . App User**
-
-| Field | Description |
-|---|---|
-| username | The username of the application account. |
-
-| Functi on | Definition | Description |  | Example |  |  |
-|---|---|---|---|---|---|---|
-| Append | Append(str1, str2, ..., strn) | Concatenates input strings into a new string, which is the result of str1+str2+... . |  | Input: Append("str1", "@example.com") . Output: str1@example.com . |  |  |
-|  |  |  |  |  | Append("str1", |  |
-|  |  |  | t strings into h is the result | "@example.com") |  |  |
-| Join | Join(source1, source2, ..., sourceN, separator) | Combines multiple source values into a string. The source values are separated by a delimiter (;). |  | Input: Join("str1", "str2", 123,"-") . Output: "str1-str2- 123" . |  |  |
-
-| Join("str1", |  |
-|---|---|
-
-|  | 123" |
-|---|---|
-
 The following field is available in the AppUser model. If you want to use the following field in an expression, you can add the appUser. prefix to the field. The field is then referenced as
 
 ```
  appUser.username .
 ```
+
+| Field | Description |
+|---|---|
+| username | The username of the application account. |
 
 3. . IdP User**
 The IdP User model is used to synchronize data between IDaaS and an identity provider. For example, if you want to use the DingTalk workplace field in an expression, you can add the idpUser. prefix to the field. The field is then referenced as `idpUser.work_place` . For more information about the fields in the IdP model, see the documentation of the relevant IdP. For example, if the IdP is DingTalk, see the View user details topic of the DingTalk documentation.
@@ -1264,6 +1447,19 @@ If you want to use an expression to bind IDaaS to an OIDC IdP, you must add the 
 
 The following table describes the available functions and the corresponding examples.
 
+| Functi on | Definition | Description |   | Example |   |   |
+|---|---|---|---|---|---|---|
+| Append | Append(str1, str2, ..., strn) | Concatenates input strings into a new string, which is the result of str1+str2+... . |   | Input: Append("str1", "@example.com") . Output: str1@example.com . |   |   |
+|   |   |   |   |   | Append("str1", |   |
+|   |   |   | t strings into h is the result | "@example.com") |   |   |
+| Join | Join(source1, source2, ..., sourceN, separator) | Combines multiple source values into a string. The source values are separated by a delimiter (;). |   | Input: Join("str1", "str2", 123,"-") . Output: "str1-str2- 123" . |   |   |
+
+| Join("str1", |   |
+|---|---|
+
+|   | 123" |
+|---|---|
+
 | Coalesc e | Coalesce(source1, source2, ..., sourceN, defaultValue) | Returns the first non-null value among the specified arguments. If all arguments are null, Coalesce returns NULL. A non-null argument is greater than 0 in length. | Input: Coalesce("", user.phoneRegion, "86") . Output: If the country code of the mobile phone number is empty, 86 is returned. |
 |---|---|---|---|
 | IIF | IIF(condition, whenTrue, whenFalse) | Performs a ternary operation. The IIF function returns whenTrue if the condition evaluates to TRUE, and returns whenFalse if the condition evaluates to FALSE. | Example 1: Input: IIF(true, 1, 2) . Output: 1 . Example 2: Input: IIF(false, 1, 2) . Output: 2 . |
@@ -1271,26 +1467,26 @@ The following table describes the available functions and the corresponding exam
 | IsNullOr Empty | IsNullOrEmpty(valu e) | Returns true if the value is null or an empty string. | Example 1: Input: IsNullOrEmpty(user.email ) . Output: If no email address is specified, true is returned. Example 2: Input: IsNullOrEmpty("") . Output: true . |
 | Now | Now() | Returns the current date and time in UTC in the yyyy-MM- dd'T'HH:mm:ssXXX format. | Output: 2021-11 01T09:52:11Z. |
 
-|  |  |  | Coalesce("", |
+|   |   |   | Coalesce("", |
 |---|---|---|---|
-|  | null value | user.phoneRegion, |  |
-| among the specified arguments. If all arguments are |  |  |  |
-|  |  | "86") |  |
+|   | null value | user.phoneRegion, |   |
+| among the specified arguments. If all arguments are |   |   |   |
+|   |   | "86") |   |
 
-|  |  | IsNullOrEmpty(user.email |  |
+|   |   | IsNullOrEmpty(user.email |   |
 |---|---|---|---|
-|  | ) |  |  |
+|   | ) |   |   |
 
-| StringR eplace | StringReplace("hell o $VariableName", "$VariableName", ReplaceString) |  | Replaces characters or substrings with other |  | Input: StringReplace("hello $str", "$str", "world") . Output: hello world . |  |
+| StringR eplace | StringReplace("hell o $VariableName", "$VariableName", ReplaceString) |   | Replaces characters or substrings with other |   | Input: StringReplace("hello $str", "$str", "world") . Output: hello world . |   |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  | StringReplace("hello |
-|  |  |  |  | with other | $str", "$str", |  |
-|  |  |  | characters or substrings in the desired string. |  |  |  |
-| Trim | Trim(source) |  | Removes all leading and trailing whitespace characters from the source string. |  | Input: Trim(" 123 ") . Output: 123 . |  |
-| TrimLef t | TrimLeft(source) |  | Removes whitespace characters from the left side of the source string. |  | Input: TrimLeft(" 123 ") . Output: 123 . |  |
-| TrimRig ht | TrimRight(source) |  | Removes whitespace characters from the right side of the source string. |  | Input: TrimRight(" 123 ") . Output: 123 . |  |
-| ToLowe r | ToLower(source) |  | Converts the source string to uppercase or lowercase. |  | Input: ToLower(" Abc ") . Output: abc . |  |
-| ToUppe r | ToUpper(source) |  | Converts the source string to uppercase. |  | Input: ToUpper(" Abc ") . Output: ABC . |  |
+|   |   |   |   |   |   | StringReplace("hello |
+|   |   |   |   | with other | $str", "$str", |   |
+|   |   |   | characters or substrings in the desired string. |   |   |   |
+| Trim | Trim(source) |   | Removes all leading and trailing whitespace characters from the source string. |   | Input: Trim(" 123 ") . Output: 123 . |   |
+| TrimLef t | TrimLeft(source) |   | Removes whitespace characters from the left side of the source string. |   | Input: TrimLeft(" 123 ") . Output: 123 . |   |
+| TrimRig ht | TrimRight(source) |   | Removes whitespace characters from the right side of the source string. |   | Input: TrimRight(" 123 ") . Output: 123 . |   |
+| ToLowe r | ToLower(source) |   | Converts the source string to uppercase or lowercase. |   | Input: ToLower(" Abc ") . Output: abc . |   |
+| ToUppe r | ToUpper(source) |   | Converts the source string to uppercase. |   | Input: ToUpper(" Abc ") . Output: ABC . |   |
 
 | Substri ng | Substring(source, fromIndex, endIndex) | Returns a substring of the source string. The index of the substring is in the [fromIndex, endIndex] format. source: The source string, which is required. The value of the source string can be of any data type supported by the syntax. fromIndex: Required. The value of this parameter must be of the integer type. If the value of this parameter is not of the integer type, null is returned. endIndex: Required. The value of this parameter must be of the integer type. If the value of this parameter is not of the integer type, null is returned. | Example 1: Input: Substring("0123456", 1, 5) . Output: 1234 . Example 2: Input: Substring("0123456", - 1, 7) . Output: 0123456 . Example 3: Input: Substring("0123456", "1", 5) . Output: null. |
 |---|---|---|---|
@@ -1298,58 +1494,58 @@ The following table describes the available functions and the corresponding exam
 | Array | Array(source1, source2,...) | Combines multiple values into an array. The value can be of the Object type. | Input: Array(1, 2, 3) . Output: [1, 2, 3] . |
 | ArrayAd d | ArrayAdd(Array(), "test") | Adds another array to an array. | Input: ArrayAdd(Array(), "test") . Output: ["test"] . |
 
-| Substring("0123456", 1, |  |
+| Substring("0123456", 1, |   |
 |---|---|
 
-| Substring("0123456", - |  |
+| Substring("0123456", - |   |
 |---|---|
 
-|  |  | Substring("0123456", |  |
+|   |   | Substring("0123456", |   |
 |---|---|---|---|
-| this parameter must integer type. If the | "1", 5) |  |  |
+| this parameter must integer type. If the | "1", 5) |   |   |
 
-| ArrayAdd(Array(), |  |
+| ArrayAdd(Array(), |   |
 |---|---|
 
-| ArrayM ap | ArrayMap($ArrayOb ject, item.ObjectPrope __ rty) |  | Obtains the values of an attribute in an array and returns a new array that contains the obtained values. |  | Obtains the IDs of the groups to which the user belongs. Input: ArrayMap(user.groups, item.groupId) . __ Output: ["groupId1","groupId2"," groupId3"] . |  |  |
+| ArrayM ap | ArrayMap($ArrayOb ject, item.ObjectPrope __ rty) |   | Obtains the values of an attribute in an array and returns a new array that contains the obtained values. |   | Obtains the IDs of the groups to which the user belongs. Input: ArrayMap(user.groups, item.groupId) . __ Output: ["groupId1","groupId2"," groupId3"] . |   |   |
 |---|---|---|---|---|---|---|---|
-| ArrayIn dex | ArrayIndex(Array(), n) |  | Obtains elements from an array at a specific index starting from 0. |  | Input: ArrayIndex(Array(1,2,3), 0) . Output: 1 . |  |  |
-| ArrayJoi n | ArrayJoin(Array(), str) |  | Concatenates the elements of an array into a string by using a specified delimiter. |  | Input: ArrayJoin(Array(1,2,3), "-") . Output: "1-2-3" . |  |  |
-| Object | Object(key1, value1, key2, value2, ...) |  |  |  | Input: Object("key1", |  |  |
-|  |  |  |  |  |  | Object("key1", |  |
-|  |  |  |  |  | "value1", "key2", |  |  |
-|  |  |  | Creates an object by using a specified key-value pair. | by using a |  |  |  |
-|  |  |  |  |  | "value2") |  |  |
-|  |  |  | The number of parameters can be 0 or an even number. |  |  |  |  |
-| ObjectI ndex | ObjectIndex(user, "username") |  | Specifies the value of an attribute of an object. |  | The code ObjectIndex(user, "username") is equivalent to user.username . |  |  |
-| ObjectT oJsonSt ring | ObjectToJsonString( user.groups) |  | Converts an object into a JSON string. |  | - |  |  |
-| Contain s | Contains(str1,str2) |  | Checks whether a string contains a specified substring. If the string contains a specified substring, true is returned. Otherwise, false is returned. |  | Example 1: Input: Contains("test", "t") . Output: true . Example 2: Input: Contains("test", "a") . Output: false . |  |  |
+| ArrayIn dex | ArrayIndex(Array(), n) |   | Obtains elements from an array at a specific index starting from 0. |   | Input: ArrayIndex(Array(1,2,3), 0) . Output: 1 . |   |   |
+| ArrayJoi n | ArrayJoin(Array(), str) |   | Concatenates the elements of an array into a string by using a specified delimiter. |   | Input: ArrayJoin(Array(1,2,3), "-") . Output: "1-2-3" . |   |   |
+| Object | Object(key1, value1, key2, value2, ...) |   |   |   | Input: Object("key1", |   |   |
+|   |   |   |   |   |   | Object("key1", |   |
+|   |   |   |   |   | "value1", "key2", |   |   |
+|   |   |   | Creates an object by using a specified key-value pair. | by using a |   |   |   |
+|   |   |   |   |   | "value2") |   |   |
+|   |   |   | The number of parameters can be 0 or an even number. |   |   |   |   |
+| ObjectI ndex | ObjectIndex(user, "username") |   | Specifies the value of an attribute of an object. |   | The code ObjectIndex(user, "username") is equivalent to user.username . |   |   |
+| ObjectT oJsonSt ring | ObjectToJsonString( user.groups) |   | Converts an object into a JSON string. |   | - |   |   |
+| Contain s | Contains(str1,str2) |   | Checks whether a string contains a specified substring. If the string contains a specified substring, true is returned. Otherwise, false is returned. |   | Example 1: Input: Contains("test", "t") . Output: true . Example 2: Input: Contains("test", "a") . Output: false . |   |   |
 
-|  |  | ArrayMap(user.groups, |  |
+|   |   | ArrayMap(user.groups, |   |
 |---|---|---|---|
-| new array that | item.groupId) __ |  |  |
+| new array that | item.groupId) __ |   |   |
 
-|  |  | ["groupId1","groupId2"," |  |
+|   |   | ["groupId1","groupId2"," |   |
 |---|---|---|---|
-|  | groupId3"] |  |  |
+|   | groupId3"] |   |   |
 
-| ArrayIndex(Array(1,2,3), |  |
+| ArrayIndex(Array(1,2,3), |   |
 |---|---|
 
-| ArrayJoin(Array(1,2,3), |  |
+| ArrayJoin(Array(1,2,3), |   |
 |---|---|
 
-|  |  | {"key1": "value1", |  |
+|   |   | {"key1": "value1", |   |
 |---|---|---|---|
-|  | "key2": "value2"} |  |  |
+|   | "key2": "value2"} |   |   |
 
-| value of an n object. | "username") |  |
+| value of an n object. | "username") |   |
 |---|---|---|
 
-| Contains("test", |  |
+| Contains("test", |   |
 |---|---|
 
-| Contains("test", |  |
+| Contains("test", |   |
 |---|---|
 
 | Or | Or(true,false,...,true ) | Represents the OR operator and must contain at least two conditions. If a condition is evaluated as true, true is returned. If all specified conditions are evaluated as false, false is returned. | Example 1: Input: Or(true,false) . Output: true . Example 2: Input: Or(true,true,false) . Output: true . Example 3: Input: Or(false,false) . Output: false . |
@@ -1357,126 +1553,151 @@ The following table describes the available functions and the corresponding exam
 | And | And(true,false,...,tru e) | Represents the AND operator and must contain at least two conditions. If all specified conditions are evaluated as true, true is returned. If a condition is evaluated as false, false is returned. | Example 1: Input: And(true,false) . Output: false . Example 2: Input: And(true,true,false) . Output: false . Example 3: Input: And(true,true,true) . Output: true . |
 | xOr | xOr(true,false,...,tru e) | Represents the XOR operator and can contain only two conditions. If both conditions are the same, false is returned. If one condition is true and the other condition is false, true is returned. | Example 1: Input: xOr(true,false) . Output: true . Example 2: Input: xOr(true,true) . Output: false . Example 3: Input: And(false,false) . Output: false . |
 
-| StartsW ith | StartsWith(str1, str2) | Checks whether a string starts with a specified prefix and can contain only two parameters. |  | Example 1: Input: StartsWith("test", "t") . Output: true . Example 2: Input: StartsWith("test", "e") . Output: false . |  |  |
+| StartsW ith | StartsWith(str1, str2) | Checks whether a string starts with a specified prefix and can contain only two parameters. |   | Example 1: Input: StartsWith("test", "t") . Output: true . Example 2: Input: StartsWith("test", "e") . Output: false . |   |   |
 |---|---|---|---|---|---|---|
-| Split | Split("str1,str2,str3" ) | Returns an array after the string is split. |  | Example 1: Input: Split("str1,str2,str3"," ,") . Output: Array(str1,str2,str3) . |  |  |
-|  |  |  |  |  | Split("str1,str2,str3"," |  |
-|  |  |  | split. | ,") |  |  |
-| Equals | Equals(str1,str2) | Compares two strings to determine whether the strings are the same. Equals(str1,str2) The Equals(str1,str2,false) function is used to check whether two strings are the same while considering case sensitivity. The Equals(str1,str2,true) function is used to check whether two strings are the same without considering case sensitivity. |  | Example 1: Input: Equals("test","Test") . Output: false . Example 2: Input: Equals("test","Test",tru e) . Output: true . Example 3: Input: Equals("test","Test",fal se) . Output: false . |  |  |
-|  |  |  |  |  | Equals("test","Test",fal |  |
-| Current TimeMil lis | CurrentTimeMillis() | Returns the current UNIX timestamp. Unit: milliseconds. |  | - |  |  |
+| Split | Split("str1,str2,str3" ) | Returns an array after the string is split. |   | Example 1: Input: Split("str1,str2,str3"," ,") . Output: Array(str1,str2,str3) . |   |   |
+|   |   |   |   |   | Split("str1,str2,str3"," |   |
+|   |   |   | split. | ,") |   |   |
+| Equals | Equals(str1,str2) | Compares two strings to determine whether the strings are the same. Equals(str1,str2) The Equals(str1,str2,false) function is used to check whether two strings are the same while considering case sensitivity. The Equals(str1,str2,true) function is used to check whether two strings are the same without considering case sensitivity. |   | Example 1: Input: Equals("test","Test") . Output: false . Example 2: Input: Equals("test","Test",tru e) . Output: true . Example 3: Input: Equals("test","Test",fal se) . Output: false . |   |   |
+|   |   |   |   |   | Equals("test","Test",fal |   |
+| Current TimeMil lis | CurrentTimeMillis() | Returns the current UNIX timestamp. Unit: milliseconds. |   | - |   |   |
 
-| Equals("test","Test",tru |  |
+| Equals("test","Test",tru |   |
 |---|---|
 
-| SamlArr ay | SamlArray(Array()) |  |  |  |  | Input: SamlArray(Array("group1"," group2")) SAML response output: <saml2:Attribute Name="grouIdArray" |  |
+| SamlArr ay | SamlArray(Array()) |   |   |   |   | Input: SamlArray(Array("group1"," group2")) SAML response output: <saml2:Attribute Name="grouIdArray" |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | NameFormat="urn:oasis:name |  |
-|  |  |  |  |  |  | s:tc:SAML:2.0:attrname- |  |
-|  |  |  |  |  |  | format:unspecified"> |  |
-|  |  |  | Converts an array into elements in a SAML response. Only SAML SSO is available. |  |  |  |  |
+|   |   |   |   |   |   | NameFormat="urn:oasis:name |   |
+|   |   |   |   |   |   | s:tc:SAML:2.0:attrname- |   |
+|   |   |   |   |   |   | format:unspecified"> |   |
+|   |   |   | Converts an array into elements in a SAML response. Only SAML SSO is available. |   |   |   |   |
 
-|  |  | SamlArray(Array("group1"," |  |
+|   |   | SamlArray(Array("group1"," |   |
 |---|---|---|---|
-|  | group2")) |  |  |
+|   | group2")) |   |   |
 
-| <saml2:Attribute |  |
+| <saml2:Attribute |   |
 |---|---|
 
-|  |  | SamlArray(Array("group1" |  |
+|   |   | SamlArray(Array("group1" |   |
 |---|---|---|---|
-|  | ,"group2")) |  |  |
+|   | ,"group2")) |   |   |
 
-| Scenario | Sample expression |  |
+**Examples**
+
+| Scenario | Sample expression |   |
 |---|---|---|
-| Append "@example.com" to a username. | Append(user.username, "@example.com") |  |
-| Return the specified email address. Return a mobile number if no email address is specified. | Coalesce(user.email, user.phoneNumber) |  |
-| Use the default mobile phone | IIF(IsNullOrEmpty(user.phoneNumber), "1888888****", user.phoneNumber) |  |
-|  |  | IIF(IsNullOrEmpty(user.phoneNumber), "1888888****", |
-| number if no mobile phone number is specified. | user.phoneNumber) |  |
+| Append "@example.com" to a username. | Append(user.username, "@example.com") |   |
+| Return the specified email address. Return a mobile number if no email address is specified. | Coalesce(user.email, user.phoneNumber) |   |
+| Use the default mobile phone | IIF(IsNullOrEmpty(user.phoneNumber), "1888888****", user.phoneNumber) |   |
+|   |   | IIF(IsNullOrEmpty(user.phoneNumber), "1888888****", |
+| number if no mobile phone number is specified. | user.phoneNumber) |   |
 
-| Concatenate the country code of a mobile phone number and the mobile phone number with a hyphen (-). | Join(user.phoneRegion, user.phoneNumber, "-") |  |
+| Concatenate the country code of a mobile phone number and the mobile phone number with a hyphen (-). | Join(user.phoneRegion, user.phoneNumber, "-") |   |
 |---|---|---|
-| Return a custom welcome message | StringReplace("hello $DisplayName", "$DisplayName", user.displayName) |  |
-|  |  | StringReplace("hello $DisplayName", "$DisplayName", |
-| that contains the display name of a user. | user.displayName) |  |
-| Replace the middle four digits of a mobile phone number with asterisks (*). | Append( SubString(user.phoneNumber, 0, 4), "****", SubString(user.phoneNumber, 8, 10) ) |  |
-| Extract the username from an email address. | SubstringBefore(user.email, "@") |  |
-| Assemble the email field in the | Array(Object("email", user.email, "type", "work", "primary", true)) |  |
-|  |  | Array(Object("email", user.email, "type", "work", |
-| array format in SCIM specifications. | "primary", true)) |  |
+| Return a custom welcome message | StringReplace("hello $DisplayName", "$DisplayName", user.displayName) |   |
+|   |   | StringReplace("hello $DisplayName", "$DisplayName", |
+| that contains the display name of a user. | user.displayName) |   |
+| Replace the middle four digits of a mobile phone number with asterisks (*). | Append( SubString(user.phoneNumber, 0, 4), "****", SubString(user.phoneNumber, 8, 10) ) |   |
+| Extract the username from an email address. | SubstringBefore(user.email, "@") |   |
+| Assemble the email field in the | Array(Object("email", user.email, "type", "work", "primary", true)) |   |
+|   |   | Array(Object("email", user.email, "type", "work", |
+| array format in SCIM specifications. | "primary", true)) |   |
 
-Sample User model in JSON:
+Sample User model in JSON: `{`
 
 ```json
-{
   "customFieldMap": {
         "place": {
             "fieldName": "place",
             "fieldValue": "beijing"
-        },
+```
+
+`},`
+
+```json
         "age": {
             "fieldName": "age",
             "fieldValue": "18"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "identityProviderUserMap": {
         "idp_m2gngriuenktdkxxxxxx": {
             "identityProviderId": "idp_m2gngriuenktdkxxxxxx",
             "identityProviderType": "ding_talk",
             "identityProviderExternalId": "corp_1234xxxxxxx",
             "identityProviderUserId": "b2ed5fc0xxxxx"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "organizationalUnits": [
-        {
+```
+
+`{`
+
+```json
             "organizationalUnitId": "ou_sdfadtaaxxxxxx",
             "organizationalUnitName": "name_001",
             "primary": false
-        },
-{
 ```
 
+`},` `{` `{`
+
 ```json
-        {
             "organizationalUnitId": "ou_werttxxxxxx",
             "organizationalUnitName": "name_002",
             "primary": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "primaryOrganizationalUnitId": "ou_werttxxxxxx",
     "customFields": [
-        {
-            "fieldName": "place",
-            "fieldValue": "beijing"
-        },
-        {
-            "fieldName": "age",
-            "fieldValue": "18"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "fieldName": "place",
+            "fieldValue": "beijing"
+```
+
+`},` `{`
+
+```json
+            "fieldName": "age",
+            "fieldValue": "18"
+```
+
+`}` `],`
 
 ```json
     "groups": [
-        {
+```
+
+`{`
+
+```json
             "groupId": "group_jp6al4sn4n4wjgjxxxxxx",
             "groupName": "group1",
             "groupExternalId": "group_jp6al4sn4n4wjgjxxxxxx"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "groupId": "group_vavikcxewkf5h3oxxxxxx",
             "groupName": "group2",
             "groupExternalId": "group_vavikcxewkf5h3oxxxxxx"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "userId": "user_x3zyd6cxxxxxxxxxxxxx",
@@ -1498,17 +1719,22 @@ Sample User model in JSON:
   "lockExpireTime": "-1",
   "createTime": "1730454582379",
   "updateTime": "1733479455307"
-}
 ```
 
-### Manage organizations
+`}`
+
+### 3.7 Manage organizations
 
 In Identity as a Service (IDaaS), you can manage organizations by using a tree structure. The organizations in IDaaS are equivalent to the departments in DingTalk and organizational units (OUs) in Active Directory (AD). An administrator can import organization trees from existing systems, such as DingTalk and AD, into IDaaS. An organization tree allows you to perform the following operations:
 1. View and manage the actual organizational structure of your enterprise.
 2. Grant a permission to an organization node. After you grant a permission to an organization
 node, all accounts that belong to the node have the permission.
 3. Specify the scope of synchronization and synchronize the data of organizations or accounts
-that belong to a specific node to an external node or synchronize the data from external nodes to the destination node. Log on to the IDaaS console. On the Employee Identity and Access Management (EIAM) page, click the required instance. In the left-side navigation pane, choose **Accounts** > Accounts and Orgs. The organization tree is displayed on the left, and the accounts or child organizations that belong to the current organization are displayed on the right. Click an organization in the **organization tree** on the left to manage the organization. By default, the root organization is selected, and the accounts and organizations that belong to the root organization are listed on the right. After you switch to the organization list on the right, you can perform the following operations on the organizations: Create an organization. Modify or move an organization. Delete an organization.
+that belong to a specific node to an external node or synchronize the data from external nodes to the destination node.
+
+**Manage organizations**
+
+Log on to the IDaaS console. On the Employee Identity and Access Management (EIAM) page, click the required instance. In the left-side navigation pane, choose **Accounts** > Accounts and Orgs. The organization tree is displayed on the left, and the accounts or child organizations that belong to the current organization are displayed on the right. Click an organization in the **organization tree** on the left to manage the organization. By default, the root organization is selected, and the accounts and organizations that belong to the root organization are listed on the right. After you switch to the organization list on the right, you can perform the following operations on the organizations: Create an organization. Modify or move an organization. Delete an organization.
 
 **Create, modify, or move an organization**
 
@@ -1522,7 +1748,7 @@ By default, if an organization has child organizations or accounts, the organiza
 
 An account must belong to only one organization node. When you create an account, you can specify the organization node to which the account belongs. You can change the organization node of the account later.
 
-### Manage groups
+### 3.8 Manage groups
 
 In Identity as a Service (IDaaS), you can add accounts to a group to manage the permissions of the accounts in a centralized manner. Administrators can add accounts of the same position or role to a group and grant access permissions on an application to the accounts in the group. For example, administrators can grant the access permissions on the sales management system to sales staff in a group. In IDaaS, a group is parallel to an account and an organization. A group does not belong to an organization node. Administrators can add an account of a random organization node to a group. On the **Group** page, administrators can perform the following basic group management operations. Create or modify a group. Manage members. Delete a group.
 
@@ -1542,20 +1768,20 @@ After you create a group, you can add members to the group. On the Group page, f
 
 This section describes how to grant the access permissions on an application to accounts in a group as an administrator. On the Applications page, click the application that you want to access. On the page that appears, click the **Sign-In** tab and click the **Authorize** tab. Then, click **Authorize**. In the Authorize dialog box, click the Group tab. Search for the group to which you want to grant the access permissions on the application. Then, click **Confirm**. The members in the group can access the application.
 
-| Inbound synchronization method | Source | Description |
-|---|---|---|
-
 **Delete a group**
 
 Administrators can delete a group. After a group is deleted, IDaaS removes all members from the group, and permissions are revoked from the accounts in the group. However, the accounts are not deleted.
 
-### Synchronize accounts
+### 3.9 Synchronize accounts
 
 This topic describes how to use Identity as a Service (IDaaS) to synchronize data and integrate upstream and downstream data. IDaaS can be used as a downstream system or an upstream system. You can synchronize upstream accounts such as DingTalk and Active Directory (AD) accounts to IDaaS. You can also synchronize accounts from IDaaS to applications such as Alibaba Cloud-related and selfdeveloped applications. IDaaS allows you to synchronize data in two directions: Inbound: Data is synchronized from stakeholders to IDaaS. Outbound: Data is synchronized from IDaaS to stakeholders. ​ The two-way data synchronization feature of IDaaS allows you to distribute data changes in AD or DingTalk to all stakeholders by using IDaaS.
 
 **Inbound synchronization**
 
 The following table describes the inbound synchronization methods that are supported by IDaaS.
+
+| Inbound synchronization method | Source | Description |
+|---|---|---|
 
 | Synchronization from identity providers (IdPs) | IdPs | IDaaS supports data synchronization from DingTalk, WeCom, AD, and OpenLDAP. For more information, see IdPs. If you want to synchronize data from non- standard IdPs, such as self-developed Identity and Access Management (IAM) and HR systems, to IDaaS, contact the IDaaS team to learn how to synchronize data by using the connector service. |
 |---|---|---|
@@ -1565,12 +1791,12 @@ The following table describes the inbound synchronization methods that are suppo
 | Synchronization by using API operations | Multiple types | IDaaS provides OpenAPI operations that can be used by developers to import multiple accounts at a time. For more information, see Developer Guide > List of operations by function. |
 | Synchronization based on the System for Cross-domain Identity Management (SCIM) protocol (not supported) | Applications | Some international applications support the SCIM protocol. |
 
-| Outbound synchronization method | Destination | Description |
-|---|---|---|
-
 **Outbound synchronization**
 
 The following table describes the outbound synchronization methods that are supported by IDaaS.
+
+| Outbound synchronization method | Destination | Description |
+|---|---|---|
 
 | Synchronization to IdPs | Terms related to identity providers | IDaaS supports data synchronization to DingTalk, including DingTalk Standard and DingTalk Enterprise. IDaaS does not support data synchronization to other IdPs such as AD, OpenLDAP, WeCom, and Lark. |
 |---|---|---|
@@ -1578,15 +1804,15 @@ The following table describes the outbound synchronization methods that are supp
 | Data push to applications by IDaaS | Applications | IDaaS can push data to applications in a fixed format. IDaaS can push data to applications by using event callbacks. For more information, see Synchronize accounts - IDaaS event callback. IDaaS can push data to applications over the SCIM protocol. For more information, see Synchronize IDaaS accounts to an application by using SCIM. Some applications in the marketplace provide fixed API operations for synchronization. The API operations can be pre-integrated with IDaaS for quick configuration and easy use. |
 | Data fetch from IDaaS | Applications | Applications can call developer API operations to obtain information of multiple accounts and organizations at a time for synchronization. For more information, see Developer Guide > List of operations by function. |
 
-| Category | Operation |
-|---|---|
-| Import | Import accounts to IDaaS by using a file. You can import the files of accounts that are exported from IDaaS Enterprise Identity Access Management (EIAM) 1.0. Import organizations and groups to IDaaS by using a file. This feature will be available soon. |
-
-### Import files and export data
+### 3.10 Import files and export data
 
 This topic describes how to import a file to Identity as a Service (IDaaS) and export data from IDaaS.
 
 **Scenarios**
+
+| Category | Operation |
+|---|---|
+| Import | Import accounts to IDaaS by using a file. You can import the files of accounts that are exported from IDaaS Enterprise Identity Access Management (EIAM) 1.0. Import organizations and groups to IDaaS by using a file. This feature will be available soon. |
 
 | Export | Export accounts to a file. Export organizations and groups to a file. This feature will be available soon. |
 |---|---|
@@ -1594,6 +1820,8 @@ This topic describes how to import a file to Identity as a Service (IDaaS) and e
 **Procedure**
 
 Log in to the IDaaS console. On the EIAM page, click the required instance. In the left-side navigation pane, choose **Accounts > Accounts and Orgs**. On the page that appears, import or export data.
+
+**Import accounts**
 
 **Create an import task**
 
@@ -1616,6 +1844,8 @@ You can only create and modify accounts. You cannot delete accounts. The import 
 
 On the **Import Record** tab, you can view the import records in the last two years and download the file of the task details within seven days.
 
+**Export accounts**
+
 **Create an export task**
 
 Choose **Export > Export Account**. On the Create Task tab of the Export Account panel, configure the **Export Scope** and **Description** parameters. You can specify the **export**
@@ -1626,6 +1856,14 @@ range.
 
 On the **Export Records** tab, you can view export records in the last two years and download the file of the task details within seven days.
 
+## 4 Applications
+
+### 4.1 Create Application
+
+#### 4.1.1 Application overview
+
+In Identity as a Service (IDaaS), applications provide access to the systems and services of your businesses. You can implement single sign-on (SSO) for applications and synchronize accounts between IDaaS and your applications. In IDaaS, applications are classified into the following types:
+
 | Priority | Application type | Description |
 |---|---|---|
 | 1 | Marketplace | The pre-integrated application templates provided by IDaaS. You can activate and access the applications from the application marketplace. More pre-integrated templates will be available in the IDaaS application marketplace. |
@@ -1633,19 +1871,15 @@ On the **Export Records** tab, you can view export records in the last two years
 | 3 | Custom applications | The applications that are not provided in the application marketplace and do not support standard protocols, but can be developed and integrated by using the IDaaS standards. |
 | 4 | Later versions that provide compatibility with legacy applications | For applications that do not fall within the preceding categories, IDaaS provides auto-population of passwords and stores passwords securely to implement SSO. |
 
-|  |  | Later |  |
+|   |   | Later |   |
 |---|---|---|---|
-|  | versions |  |  |
+|   | versions |   |   |
 
-## Applications
+If you want to connect an application to IDaaS for unified access and centralized account management, choose the application type based on the following flow chart.
 
-### Create Application
+#### 4.1.2 Application marketplace
 
-#### Application overview
-
-In Identity as a Service (IDaaS), applications provide access to the systems and services of your businesses. You can implement single sign-on (SSO) for applications and synchronize accounts between IDaaS and your applications. In IDaaS, applications are classified into the following types: If you want to connect an application to IDaaS for unified access and centralized account management, choose the application type based on the following flow chart.
-
-#### Application marketplace
+**Application marketplace**
 
 Identity as a Service (IDaaS) provides pre-integrated templates for common applications. You can search for and activate the templates that you require in the application marketplace and configure single sign-on (SSO) and synchronization.
 
@@ -1661,44 +1895,50 @@ Enterprise identity management systems use internationally accepted common ident
 
 Enterprise applications that use standard protocols have the following benefits: Higher maturity. Support for standard identity protocols demonstrates the maturity of an enterprise application. Wider applicability. Standard protocols enable the interoperability between account systems of an enterprise. An enterprise application that supports a set of standard protocols allows customers to choose the identity providers that are best suited to their needs. Higher security. Custom protocols involve security risks. International standard protocols undergo a strict process before they are released. Therefore, the protocols support a complete range of scenarios and ensure security.
 
-| Standard protocol | Description |
-|---|---|
-| OIDC | Released in 2014, OpenID Connect (OIDC) is an open authentication protocol that is built on top of the OAuth 2.0 authorization protocol. The OIDC protocol adds a layer of user authentication by issuing id token in _ the JSON Web Token (JWT) format, and is applicable to both authentication and authorization scenarios. It provides the best configuration and integration experience among modern identity management systems. |
-| SAML 2.0 | Released in 2005, Security Assertion Markup Language V2.0 (SAML 2.0) is still the most widely used SSO protocol in the world. Most mature enterprise applications support the SAML protocol. SAML 2.0 is an XML-based protocol and has poor adaptability in some edge scenarios for historical reasons. |
-| OAuth 2.0 | Released in 2012, OAuth 2.0 (RFC 6749) is the most commonly used authorization protocol. The implementation of the OAuth 2.0 protocol is divided between Authorization Server (AS) and Resource Server (RS). As a lightweight and flexible protocol, OAuth 2.0 is used for scenarios such as login by using WeChat and login by scanning a QR code with DingTalk. The capabilities of the OIDC protocol include the OAuth protocol. In IDaaS, you can use the OIDC protocol to replace the OAuth protocol. |
-
-| Integration level | Description | Benefits |
-|---|---|---|
-
 **Note**
 
 It takes a short time to integrate with standard protocols. If you are an enterprise application vendor and want to integrate your software with standard protocols, you can contact us. We will add your enterprise application to the IDaaS application marketplace to make it available for intended consumers.
 
 **Standard protocols supported by IDaaS**
 
+| Standard protocol | Description |
+|---|---|
+| OIDC | Released in 2014, OpenID Connect (OIDC) is an open authentication protocol that is built on top of the OAuth 2.0 authorization protocol. The OIDC protocol adds a layer of user authentication by issuing id token in _ the JSON Web Token (JWT) format, and is applicable to both authentication and authorization scenarios. It provides the best configuration and integration experience among modern identity management systems. |
+| SAML 2.0 | Released in 2005, Security Assertion Markup Language V2.0 (SAML 2.0) is still the most widely used SSO protocol in the world. Most mature enterprise applications support the SAML protocol. SAML 2.0 is an XML-based protocol and has poor adaptability in some edge scenarios for historical reasons. |
+| OAuth 2.0 | Released in 2012, OAuth 2.0 (RFC 6749) is the most commonly used authorization protocol. The implementation of the OAuth 2.0 protocol is divided between Authorization Server (AS) and Resource Server (RS). As a lightweight and flexible protocol, OAuth 2.0 is used for scenarios such as login by using WeChat and login by scanning a QR code with DingTalk. The capabilities of the OIDC protocol include the OAuth protocol. In IDaaS, you can use the OIDC protocol to replace the OAuth protocol. |
+
 You can search for `application_name` SSO in the search engine or application documentation to check whether the application that you want to connect to IDaaS supports SSO standard protocols.
 
 #### 4.1.4. 3. Custom applications
 
-An enterprise typically has a series of custom applications to support their business processes. Administrators can add custom applications to Identity as a Service (IDaaS) and connect the applications to IDaaS by performing the steps described in the IDaaS documentation. image.png IDaaS allows you to integrate the identity system of a custom application of your enterprise with IDaaS at three levels. We recommend that you verify the integration requirements from top to bottom.
+An enterprise typically has a series of custom applications to support their business processes. Administrators can add custom applications to Identity as a Service (IDaaS) and connect the applications to IDaaS by performing the steps described in the IDaaS documentation. image.png
+
+**Integration levels of custom applications**
+
+IDaaS allows you to integrate the identity system of a custom application of your enterprise with IDaaS at three levels. We recommend that you verify the integration requirements from top to bottom.
+
+| Integration level | Description | Benefits |
+|---|---|---|
 
 | Level 1: unified sign-in | Implement single sign-on (SSO). Integrate the Open ID Connect (OIDC) protocol to configure application accounts and grant access to the application. Allow enterprise accounts in IDaaS to log in to the application by using SSO. . Development documentation: Configure SSO for custom applications. | An employee navigates through all applications by using one set of login credentials. Unified authorization, management, and behavior audit. |
 |---|---|---|
 | Level 2: unified accounts | Implement account synchronization. Interface with the IDaaS synchronization API to eliminate identity silos. . Development documentation: Configure account synchronization for custom applications. | All modifications to the account data are synchronized to IDaaS. This makes account management easy and improves productivity. |
 | Level 3: unified permissions (not supported) | Implement permission hosting. Use the standard, flexible Role-Based Access Control (RBAC) model of IDaaS to host roles, menus, and features in applications in IDaaS for centralized permission management. | Realize fine-grained access control and standardize access permissions within the enterprise. Reduce the cost for developing complex and costly permission systems for custom applications. |
 
-### Manage Applications
+### 4.2 Manage Applications
 
-#### General configurations
+#### 4.2.1 General configurations
 
 Each application has some general configurations and feature-specific configurations. You can manage general configurations of applications on the General tab. To access the **General** tab, click **Applications** in the menu, find the application that you want to manage, and then click **Manage**. In the current version of Identity as a Service (IDaaS), administrators can enable or disable API operations and rotate secrets.
 
-| t exchange its | client id _ |  |
-|---|---|---|
-| access token _ |  |  |
-|  |  | to call thes |
+**API operations**
 
-IDaaS provides a variety of API operations for each application. You can enable some API operations for an application so that the application can call these API operations to implement certain features. The following API operations are provided: API operations for single sign-on (SSO) based on OpenID Connect (OIDC) API operations for permission management ( `coming soon` )
+IDaaS provides a variety of API operations for each application. You can enable some API operations for an application so that the application can call these API operations to implement certain features. The following API operations are provided: API operations for single sign-on (SSO) based on OpenID Connect (OIDC) API operations for account synchronization API operations for permission management ( `coming soon` )
+
+| t exchange its | client id _ |   |
+|---|---|---|
+| access token _ |   |   |
+|   |   | to call thes |
 
 **Note**
 
@@ -1708,18 +1948,6 @@ The `client_id` starts with "app_" and is about 26 characters in length. By defa
 
 You can customize the interval of secret rotation for each application. To make secret rotation easier, IDaaS allows you to configure at most two `client_secrets` for an application and enable at least one client_secret. During the rotation period, you can keep both of the `client_secrets` enabled. After you confirm that the old `client_secret` is no longer needed, you can delete the old client_secret. To ensure security, we recommend that you rotate secrets every three months or according to specific compliance requirements. The following steps show you how to rotate secrets:
 1. Create a new `client_secret` .
-
-| Parameter | Description |
-|---|---|
-| ID | The ID of the application. The application ID is for reference only and cannot be changed. |
-| Source | The template used to create the application. The source cannot be changed. Valid values: Template Application, Standard Protocol, and Custom Applications. |
-| Name | The display name of the application. |
-| Application Icon | The icon of the application. The icon file must be in the PNG or JPG format and cannot exceed 1 MB in size. We recommend that you set the pixel aspect ratio to 256*256. |
-
-| Application template type | Protocol | References |
-|---|---|---|
-| Pre-integrated templates in the application marketplace | SAML 2.0 | Create Application |
-
 2. Replace the old `client_secret` with the new one.
 3. Disable the old `client_secret` . When you disable a client_secret, you will be prompted
 the last time when this `client_secret` was used. After you confirm that the client_secret is no longer used, you can disable it.
@@ -1732,19 +1960,25 @@ the last time when this `client_secret` was used. After you confirm that the cli
 
 **Basic Information**
 
-#### Configure SSO
+| Parameter | Description |
+|---|---|
+| ID | The ID of the application. The application ID is for reference only and cannot be changed. |
+| Source | The template used to create the application. The source cannot be changed. Valid values: Template Application, Standard Protocol, and Custom Applications. |
+| Name | The display name of the application. |
+| Application Icon | The icon of the application. The icon file must be in the PNG or JPG format and cannot exceed 1 MB in size. We recommend that you set the pixel aspect ratio to 256*256. |
+
+#### 4.2.2 Configure SSO
 
 This topic describes how to configure single sign-on (SSO) in Identity as a Service (IDaaS). You must configure SSO before you can implement SSO. This topic describes the following SSO configuration items that are common to all applications: SSO status Application account Authorized scope For more information about the configuration steps, see the documentation for different application templates.
+
+| Application template type | Protocol | References |
+|---|---|---|
+| Pre-integrated templates in the application marketplace | SAML 2.0 | Create Application |
 
 | Standard protocol - Security Assertion Markup Language (SAML) | SAML 2.0 | SAML 2.0 SSO |
 |---|---|---|
 | Standard protocol - Open ID Connect (OIDC) | OIDC | OIDC SSO |
 | Custom applications | OIDC | Configure SSO for a custom application |
-
-| Option | Description |
-|---|---|
-| All Users | All accounts in IDaaS can access the application without additional authorization. |
-| Manually | You must specify the organizations and accounts that can access the application on the Authorize tab of the application. |
 
 **SSO status**
 
@@ -1758,14 +1992,14 @@ An application account is the unique identifier of a user in the application. Wh
 
 image.png You can select one of the following options to specify the users who can access the application.
 
-|  | Parameter | Description | Example |
-|---|---|---|---|
-| Basic settings (required) | ACS URL | The URL that directs IDaaS where to send its SAML responses after IDaaS authenticates a user. | https://signin.example. com/1021*****4813/sa ml/SSO |
-|  | SP Entity ID | The globally unique identifier of the application in IDaaS. In most cases, the identifier is a URI that can be obtained from the application. If the application has no special requirements, you can set the value to the Assertion Consumer Service (ACS) URL. | https://signin.example. com/1021*****4813/sa ml/SSO |
+| Option | Description |
+|---|---|
+| All Users | All accounts in IDaaS can access the application without additional authorization. |
+| Manually | You must specify the organizations and accounts that can access the application on the Authorize tab of the application. |
 
-#### SAML 2.0 SSO
+#### 4.2.3 SAML 2.0 SSO
 
-##### Configuration of SAML 2.0-based SSO
+##### 4.2.3.1 Configuration of SAML 2.0-based SSO
 
 The single sign-on (SSO) process requires interaction between Identity as a Service (IDaaS) and applications. You must configure SSO settings at both ends. In this topic, the Security Assertion Markup Language 2.0 (SAML 2.0) protocol is used as an example to describe how to configure SSO.
 
@@ -1781,22 +2015,26 @@ Some applications allow you to download configuration information metadata on th
 
 **IDaaS parameters**
 
-|  | App User | The NameID parameter defined in the SAML protocol. For more information, see Configure SAML application users. | IDaaS User Username |
+|   | Parameter | Description | Example |
 |---|---|---|---|
-|  | Authorize | For more information, see Configure SSO. | All Users |
+| Basic settings (required) | ACS URL | The URL that directs IDaaS where to send its SAML responses after IDaaS authenticates a user. | https://signin.example. com/1021*****4813/sa ml/SSO |
+|   | SP Entity ID | The globally unique identifier of the application in IDaaS. In most cases, the identifier is a URI that can be obtained from the application. If the application has no special requirements, you can set the value to the Assertion Consumer Service (ACS) URL. | https://signin.example. com/1021*****4813/sa ml/SSO |
+
+|   | App User | The NameID parameter defined in the SAML protocol. For more information, see Configure SAML application users. | IDaaS User Username |
+|---|---|---|---|
+|   | Authorize | For more information, see Configure SSO. | All Users |
 | Advanced settings (optional) | Default RelayState | The address to which the application automatically redirects after a successful identity provider- initiated (IdP-initiated) SSO. In a SAML response, the address is passed to the RelayState parameter. After the application reads the address, you are redirected to the address. | Level-2 menu page in the application |
-|  | NameIDFormat | The format of the NameID parameter defined in a SAML response. The NameIDFormat parameter is not specified for many applications. You do not need to modify this parameter. | 1.1 Unspecified |
-|  | Binding | The request method. Only Redirect-POST is supported. You do not need to modify this parameter. | Redirect-POST |
-|  | Sign Assertion | IDaaS signs all SAML requests. You cannot modify this parameter. | - |
-|  | Signing Algorithm | The asymmetric algorithm used to sign SAML requests. Only RSA-SHA256 is supported. You do not need to modify this parameter. | RSA-SHA256 |
+|   | NameIDFormat | The format of the NameID parameter defined in a SAML response. The NameIDFormat parameter is not specified for many applications. You do not need to modify this parameter. | 1.1 Unspecified |
+|   | Binding | The request method. Only Redirect-POST is supported. You do not need to modify this parameter. | Redirect-POST |
+|   | Sign Assertion | IDaaS signs all SAML requests. You cannot modify this parameter. | - |
+|   | Signing Algorithm | The asymmetric algorithm used to sign SAML requests. Only RSA-SHA256 is supported. You do not need to modify this parameter. | RSA-SHA256 |
 
-|  | Attribute Statements | A SAML response can contain additional information about a user, such as the email and name attributes. For more information, see Rules for configuring SAML Attribute Statements. | - |
+|   | Attribute Statements | A SAML response can contain additional information about a user, such as the email and name attributes. For more information, see Rules for configuring SAML Attribute Statements. | - |
 |---|---|---|---|
-|  | SSO Implemented By | Specifies whether SSO can be initiated only from the application or from the portal and the application. | Application Only |
-|  | IDaaS Sign-In URL | If the SSO Implemented By parameter is set to IDaaS & Application, you can specify this parameter. When you access the application from the portal, you are redirected to this URL, and a SAML login request is automatically sent to IDaaS. | - |
+|   | SSO Implemented By | Specifies whether SSO can be initiated only from the application or from the portal and the application. | Application Only |
+|   | IDaaS Sign-In URL | If the SSO Implemented By parameter is set to IDaaS & Application, you can specify this parameter. When you access the application from the portal, you are redirected to this URL, and a SAML login request is automatically sent to IDaaS. | - |
 
-| Parameter | Description | Example |
-|---|---|---|
+**Configuration in applications**
 
 **Upload an IDaaS configuration file**
 
@@ -1806,16 +2044,16 @@ To facilitate application configuration, IDaaS allows you to download the config
 
 You must specify IDaaS information in your application for integration. IDaaS displays the information that may be required by the application on the SSO configuration page. This facilitates configuration. The following table describes the parameters.
 
+| Parameter | Description | Example |
+|---|---|---|
+
 | IDP Entity ID | The identifier of IDaaS in the application. You may need to enter the identifier on the SSO configuration page of the application. | https://xxxxx.aliyunidaas.com |
 |---|---|---|
 | IdP Sign-in URL | The SAML protocol supports service provider-initiated (SP- initiated) SSO. You may need to enter the URL on the SSO configuration page of the application. | https://xxxxx.aliyunidaas.com.c n/saml/idp/saml1 |
 | (Not supported) SLO URL | The SAML protocol supports single logout (SLO). If you want to use this feature, you must enter the URL on the SSO configuration page of the application. | - |
 | Certificate | The electronic signature in the SSO result sent by IDaaS. The application can use the required public key to verify the signature and check whether the result is sent by IDaaS. This helps ensure security. | -----BEGIN CERTIFICATE----- MIIDEjCCAfqgAwIBAgIHAYnNmX 60izANBgkqhkiG9w0BAQsFADA pMRowGAYDVQQD..... |
 
-| Option | Description |
-|---|---|
-
-##### Configure accounts for an SAML-based
+##### 4.2.3.2 Configure accounts for an SAML-based application
 
 **application**
 
@@ -1824,6 +2062,9 @@ When Security Assertion Markup Language (SAML) is used for single sign-on (SSO),
 **SSO configurations**
 
 image.png You can choose from the following four options.
+
+| Option | Description |
+|---|---|
 
 | IDaaS Account | When a user initiates a single sign-on request to the current application, the IDaaS account information is used as the identity credentials of the application. If you select this option, make sure that the account for SSO has the same username in IDaaS and in the application. Otherwise, login may fail or an account mismatch may occur. ​ This is the most common configuration. This eliminates the need to configure a separate application account for each IDaaS account, saving time and effort. ​ Two sub-options are provided: IDaaS account name (Username) IDaaS email address (Email) |
 |---|---|
@@ -1835,47 +2076,48 @@ image.png You can choose from the following four options.
 
 If you select **Application Account** or **Primary Application Account** from the Application Account drop-down list on the SSO tab, you can configure the identities used by different accounts when the accounts access the application. ​ Click the **Application Account > Add Application Account**. A dialog box appears. image Search for the IDaaS account you want to manage by entering a keyword such as admin, root, mobile number, or Jerry. After you find the IDaaS account, click the account and add an application account for the account. Click Save to complete the configuration. ​
 
-| Type | Value | Description |
-|---|---|---|
-|  | user.username | The username. |
-|  | user.displayName | The display name. |
-|  | user.phone (phased out) | The mobile phone number that does not include the country code (phased out). |
-|  | user.phoneNumber | The mobile phone number that does not include the country code. |
-|  | user.email | The email address. |
-|  | user.status | The status of the user. Valid values: enabled disabled |
-|  | user.primaryOrganizationalUnitId | The ID of the primary organization to which the user belongs. |
-|  | ObjectToJsonString(user.organizationalUnits) | The information about the organization to which the user belongs. The value is a JSON array string. |
-
 **Note**
 
 You can configure multiple application accounts for an IDaaS account. When a user initiates an SSO request, the user can select one of the configured application accounts to log in to the application.
 
-##### Rules for configuring SAML Attribute
+##### 4.2.3.3 Rules for configuring SAML Attribute Statements
 
 **Statements**
 
 This topic describes the rules for configuring Security Assertion Markup Language (SAML) Attribute Statements and provides configuration examples.
 
-##### Rules for configuring SAML Attribute Statements
+**Rules for configuring SAML Attribute Statements**
 
-| Variable |  |  |
+| Type | Value | Description |
 |---|---|---|
-|  | ArrayJoin(ArrayMap(user.organizationalUnits, item.organizationalUnitId), ",") __ | The IDs of the organizations to which the user belongs. The value is a JSON array string. |
-|  | ObjectToJsonString(user.groups) | The information about the group to which the account belongs. The value is a JSON array string. |
-|  | ArrayJoin(ArrayMap(user.groups, item.groupId), __ ",") | The IDs of the groups to which the account belongs. The value is a JSON array string. |
-|  | ArrayJoin(ArrayMap(user.groups, item.groupExternalId), ",") __ | The external IDs of the groups to which the account belongs. The value is a JSON array string. |
-|  | ObjectToJsonString(user.customFields) | The information about all extended fields. The value is a JSON array string. |
-|  | user.customFieldMap.$fieldname$.fieldValue | The value of an extended field. |
-|  | appUser.username | The application account. |
-| Constant | Enclose constants in double quotation marks (""). |  |
-| Expression | An advanced feature. You can flexibly concatenate and change values by using expressions. For more information, see Advanced expressions for account fields. |  |
+|   | user.username | The username. |
+|   | user.displayName | The display name. |
+|   | user.phone (phased out) | The mobile phone number that does not include the country code (phased out). |
+|   | user.phoneNumber | The mobile phone number that does not include the country code. |
+|   | user.email | The email address. |
+|   | user.status | The status of the user. Valid values: enabled disabled |
+|   | user.primaryOrganizationalUnitId | The ID of the primary organization to which the user belongs. |
+|   | ObjectToJsonString(user.organizationalUnits) | The information about the organization to which the user belongs. The value is a JSON array string. |
+
+| Variable |   |   |
+|---|---|---|
+|   | ArrayJoin(ArrayMap(user.organizationalUnits, item.organizationalUnitId), ",") __ | The IDs of the organizations to which the user belongs. The value is a JSON array string. |
+|   | ObjectToJsonString(user.groups) | The information about the group to which the account belongs. The value is a JSON array string. |
+|   | ArrayJoin(ArrayMap(user.groups, item.groupId), __ ",") | The IDs of the groups to which the account belongs. The value is a JSON array string. |
+|   | ArrayJoin(ArrayMap(user.groups, item.groupExternalId), ",") __ | The external IDs of the groups to which the account belongs. The value is a JSON array string. |
+|   | ObjectToJsonString(user.customFields) | The information about all extended fields. The value is a JSON array string. |
+|   | user.customFieldMap.$fieldname$.fieldValue | The value of an extended field. |
+|   | appUser.username | The application account. |
+| Constant | Enclose constants in double quotation marks (""). |   |
+| Expression | An advanced feature. You can flexibly concatenate and change values by using expressions. For more information, see Advanced expressions for account fields. |   |
 
 **Examples of SAML expressions**
 
 **Example: the user object.**
 
+`{`
+
 ```json
-{
   ...
   "customFieldMap": {
         "place": {
@@ -1885,70 +2127,99 @@ This topic describes the rules for configuring Security Assertion Markup Languag
 
 ```json
             "fieldValue": "beijing"
-        },
+```
+
+`},`
+
+```json
         "age": {
             "fieldName": "age",
             "fieldValue": "18"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "identityProviderUserMap": {
         "idp_m2gngriuenktdkxxxxxx": {
             "identityProviderId": "idp_m2gngriuenktdkxxxxxx",
             "identityProviderType": "ding_talk",
             "identityProviderExternalId": "corp_1234xxxxxxx",
             "identityProviderUserId": "b2ed5fc0xxxxx"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "organizationalUnits": [
-        {
+```
+
+`{`
+
+```json
             "organizationalUnitId": "ou_sdfadtaaxxxxxx",
             "organizationalUnitName": "AD",
             "primary": false
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "organizationalUnitId": "ou_werttxxxxxx",
             "organizationalUnitName": "name_002",
             "primary": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "primaryOrganizationalUnitId": "ou_werttxxxxxx",
     "customFields": [
-        {
-            "fieldName": "place",
-            "fieldValue": "beijing"
-        },
-        {
-            "fieldName": "age",
-            "fieldValue": "18"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "fieldName": "place",
+            "fieldValue": "beijing"
+```
+
+`},` `{`
+
+```json
+            "fieldName": "age",
+            "fieldValue": "18"
+```
+
+`}` `],`
 
 ```json
     "groups": [
-        {
+```
+
+`{`
+
+```json
             "groupId": "group_jp6al4sn4n4wjgjxxxxxx",
             "groupName": "group1",
             "groupExternalId": "group_jp6al4sn4n4wjgjxxxxxx"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "groupId": "group_vavikcxewkf5h3oxxxxxx",
             "groupName": "group2",
             "groupExternalId": "group_vavikcxewkf5h3oxxxxxx"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```
   ...
-}
 ```
+
+`}`
 
 **SAML configuration example**
 
@@ -1968,7 +2239,7 @@ e="xsd:string"> [{"organizationalUnitId":"ou_sdfadtaaxxxxxx","organizationalUnit
 2. The following SAML response is returned after the organizationalUnitIds field in Attribute
 Statements is parsed by using the ArrayJoin(ArrayMap(user.organizationalUnits, __item.organizationalUnitId), ",") expression:
 
-```xml
+```
 <saml2:Attribute Name="organizationalUnitIds" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
   <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:typ
 e="xsd:string">
@@ -1991,7 +2262,7 @@ e="xsd:string"> [{"groupId":"group_jp6al4sn4n4wjgjxxxxxx","groupName":"group1","
 4. The following SAML response is returned after the groupIds field in Attribute Statements is
 parsed by using the ArrayJoin(ArrayMap(user.groups, __item.groupId), ",") expression:
 
-```xml
+```
 <saml2:Attribute Name="groupIds" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-for mat:unspecified">
   <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:typ
 e="xsd:string">
@@ -2003,7 +2274,7 @@ e="xsd:string">
 5. The groupExternalIds field in id_token is parsed by using the ArrayMap(user.groups,
 __item.groupExternalId) expression:
 
-```xml
+```
 <saml2:Attribute Name="groupExternalIds" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
   <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:typ
 e="xsd:string">
@@ -2015,7 +2286,7 @@ e="xsd:string">
 6. The following SAML response is returned after the groupId field in Attribute Statements is
 parsed by using the SamlArray(ArrayMap(user.groups, __item.groupId)) expression:
 
-```xml
+```
 <saml2:Attribute Name="grouIdArray" NameFormat="urn:oasis:names:tc:SAML:2.0:attrnameformat:unspecified">
   <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-
 instance"xsi:type="xsd:string">
@@ -2044,7 +2315,7 @@ instance"xsi:type="xsd:string">
 8. The following SAML response is returned after the age field in Attribute Statements is
 parsed by using the user.customFieldMap.age.fieldValue expression:
 
-```xml
+```
 <saml2:Attribute Name="age" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:u nspecified">
   <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:typ
 e="xsd:string">
@@ -2052,7 +2323,7 @@ e="xsd:string">
 </saml2:Attribute>
 ```
 
-##### Multi-relay state access
+##### 4.2.3.4 Multi-relay state access
 
 This topic describes the scenarios of the multi-relay state access feature and how to use the feature.
 
@@ -2066,22 +2337,19 @@ The multi-relay state access feature is available only for SAML applications tha
 
 **Procedure**
 
-Configure the **Default RelayState** and **Relay State** parameters in the Show Advanced Settings section for SAML applications that support standard protocols. Default RelayState: The URL of the page that is displayed after you click an application card in the IDaaS application portal and complete the SSO configuration. This parameter is optional. If you do not configure this parameter, the URL is determined by the application.
-
-| Grant type | Description |
-|---|---|
-| Client Credentials client credentials _ | The OIDC Client Credentials grant type permits an application to exchange its client id and client secret in IDaaS for an access token from _ _ the server to call the Developer APIs provided by IDaaS for the application. ​ You do not need to select the Client Credentials mode. If the application API is enabled, this mode is enabled. |
-| Authorization Code authorization code _ | Authorization Code is the most widely used login mode for OIDC applications in IDaaS. An application delegates login to IDaaS and parses the id token value returned by IDaaS to complete login verification. _ |
-
-Relay State: The multiple relay states that are displayed in the application card of the IDaaS application portal. After you click a card and complete the SSO configuration, you are redirected to the corresponding URL. You can configure this parameter only after you configure the Default Redirection URL parameter.
+Configure the **Default RelayState** and **Relay State** parameters in the Show Advanced Settings section for SAML applications that support standard protocols. Default RelayState: The URL of the page that is displayed after you click an application card in the IDaaS application portal and complete the SSO configuration. This parameter is optional. If you do not configure this parameter, the URL is determined by the application. Relay State: The multiple relay states that are displayed in the application card of the IDaaS application portal. After you click a card and complete the SSO configuration, you are redirected to the corresponding URL. You can configure this parameter only after you configure the Default Redirection URL parameter.
 
 **Note**
 
-After you configure the Default Redirection URL and Relay State parameters, the configurations take effect after you click Save. You do not need to update the identity provider (IdP) metadata on the application side. After you log in to the IDaaS application portal, the application card displays multiple relay states for applications for which the **Relay State** parameter is configured. You can directly click the application card to access the default redirection URL. You can also click the button in the lower part of the page to access the URLs of cloud services such as Quick BI and Alibaba Cloud DevOps.
+After you configure the Default Redirection URL and Relay State parameters, the configurations take effect after you click Save. You do not need to update the identity provider (IdP) metadata on the application side.
 
-#### OIDC SSO
+**Example**
 
-##### Configure SSO for an OIDC-based
+After you log in to the IDaaS application portal, the application card displays multiple relay states for applications for which the **Relay State** parameter is configured. You can directly click the application card to access the default redirection URL. You can also click the button in the lower part of the page to access the URLs of cloud services such as Quick BI and Alibaba Cloud DevOps.
+
+#### 4.2.4 OIDC SSO
+
+##### 4.2.4.1 Configure SSO for an OIDC-based application
 
 **application**
 
@@ -2095,16 +2363,14 @@ For more information about the SSO protocols supported by Identity as a Service 
 
 The following table describes the OIDC grant types supported by IDaaS. You can select more than one grant type.
 
+| Grant type | Description |
+|---|---|
+| Client Credentials client credentials _ | The OIDC Client Credentials grant type permits an application to exchange its client id and client secret in IDaaS for an access token from _ _ the server to call the Developer APIs provided by IDaaS for the application. ​ You do not need to select the Client Credentials mode. If the application API is enabled, this mode is enabled. |
+| Authorization Code authorization code _ | Authorization Code is the most widely used login mode for OIDC applications in IDaaS. An application delegates login to IDaaS and parses the id token value returned by IDaaS to complete login verification. _ |
+
 | Refresh Tokens refresh token _ | A refresh token is used to refresh the access token to extend the validity period of a session. Refresh Tokens are usually used together with the Authorization Code grant type. |
 |---|---|
 | Device Flow device | Device Flow is often used to connect non-web applications to IDaaS to implement SSO. Device Flow allows users to log in to the applications in a browser when a device is unable to display the IDaaS login page. |
-
-|  | Parameter | Description | Example |
-|---|---|---|---|
-| Basic settings (required) | Grant Types | The grant type that you want to select for an application. You can select more than one grant type. | Authorization Code Refresh Tokens |
-|  | Redirect URIs | The whitelist of redirect URIs. This parameter defines where users land after successful login or registration. Each redirect URI must be whitelisted. | http://www.xxxx/ oidc/sso http://www.xxxx/ oidc/sso2 |
-|  | Authorize | For more information, see SSO overview. | All Users |
-|  | scopes scopes | The identity information of a logged-in user that can be obtained by using the user information endpoint. You can select more than one type of information. openid email phone profile | openid email profile |
 
 For common enterprise web applications, we recommend that you select both the Authorization Code and Refresh Tokens grant types. For non-web applications, we recommend that you select both the Device Flow and Refresh Tokens grant types.
 
@@ -2114,19 +2380,30 @@ Other OIDC grant types are not supported by IDaaS.
 
 **Configuration in IDaaS**
 
-|  | PKCE | This parameter is available if you select Authorization Code in Grant Types. If this parameter is enabled, the Authorization Code grant type uses a more secure Proof Key for Code Exchange (PKCE) extension process. | By default, this option is not selected. |
+|   | Parameter | Description | Example |
 |---|---|---|---|
-| Advanced settings (optional) |  |  |  |
-|  | Code Challenge Method | This parameter is available only if PKCE is enabled. It specifies how a code challenge is generated in the PKCE extension. | - |
-|  | Validity Period for for access token _ | An access token is used to request IDaaS API operations. By default, the token is valid for 2 hours. After the access token expires, users must use the refresh token to renew the access token or log in again. | 2 hours |
-|  | Validity Period for for id token _ | An ID token is used to authenticate a user. The token is in the JSON Web Token (JWT) format. An ID token allows the application to authenticate a user by using a public key. After the ID token expires, users must use the refresh token to renew the ID token or log in again. | 10 hours |
-|  | Validity Period for for refresh token _ | A refresh token is used to obtain a new access token or a new ID token. After a refresh token expires, users need to log in again. | 30 days |
-|  | Extend id token _ | You can extend the payload field of id token to return non-sensitive _ user information. For more information, see Rules for the values of the extended OIDC id token fields. _ Note Note that fields added in payload are available to all users. Add fields as needed. | - |
-|  | id token _ Signing Algorithm | The asymmetric algorithm that is used to sign ID tokens. Only RSA-SHA256 is supported. | RSA-SHA256 |
+| Basic settings (required) | Grant Types | The grant type that you want to select for an application. You can select more than one grant type. | Authorization Code Refresh Tokens |
+|   | Redirect URIs | The whitelist of redirect URIs. This parameter defines where users land after successful login or registration. Each redirect URI must be whitelisted. | http://www.xxxx/ oidc/sso http://www.xxxx/ oidc/sso2 |
+|   | Authorize | For more information, see SSO overview. | All Users |
+|   | scopes scopes | The identity information of a logged-in user that can be obtained by using the user information endpoint. You can select more than one type of information. openid email phone profile | openid email profile |
 
-|  | SSO Implemented By | This parameter specifies whether SSO is implemented by an application or on the IDaaS login page. | Application Only |
+|   | PKCE | This parameter is available if you select Authorization Code in Grant Types. If this parameter is enabled, the Authorization Code grant type uses a more secure Proof Key for Code Exchange (PKCE) extension process. | By default, this option is not selected. |
 |---|---|---|---|
-|  | IDaaS Sign-in URL | If you set the SSO Implemented By parameter to IDaaS & Application, you can enter an IDaaS login URL. If you want to access an application on the IDaaS login page, enter the URL of the page where SSO can be implemented. If the URL receives login requests, the requests are immediately redirected to the authorization endpoint. | - |
+| Advanced settings (optional) |   |   |   |
+|   | Code Challenge Method | This parameter is available only if PKCE is enabled. It specifies how a code challenge is generated in the PKCE extension. | - |
+|   | Validity Period for for access token _ | An access token is used to request IDaaS API operations. By default, the token is valid for 2 hours. After the access token expires, users must use the refresh token to renew the access token or log in again. | 2 hours |
+|   | Validity Period for for id token _ | An ID token is used to authenticate a user. The token is in the JSON Web Token (JWT) format. An ID token allows the application to authenticate a user by using a public key. After the ID token expires, users must use the refresh token to renew the ID token or log in again. | 10 hours |
+|   | Validity Period for for refresh token _ | A refresh token is used to obtain a new access token or a new ID token. After a refresh token expires, users need to log in again. | 30 days |
+|   | Extend id token _ | You can extend the payload field of id token to return non-sensitive _ user information. For more information, see Rules for the values of the extended OIDC id token fields. _ Note Note that fields added in payload are available to all users. Add fields as needed. | - |
+|   | id token _ Signing Algorithm | The asymmetric algorithm that is used to sign ID tokens. Only RSA-SHA256 is supported. | RSA-SHA256 |
+
+|   | SSO Implemented By | This parameter specifies whether SSO is implemented by an application or on the IDaaS login page. | Application Only |
+|---|---|---|---|
+|   | IDaaS Sign-in URL | If you set the SSO Implemented By parameter to IDaaS & Application, you can enter an IDaaS login URL. If you want to access an application on the IDaaS login page, enter the URL of the page where SSO can be implemented. If the URL receives login requests, the requests are immediately redirected to the authorization endpoint. | - |
+
+**Configurations in the application**
+
+OIDC allows applications to use a set of standard and open IDaaS API operations to complete login authentication. ​ The following table describes these API operations.
 
 | Field | Description | Example |
 |---|---|---|
@@ -2136,25 +2413,11 @@ Other OIDC grant types are not supported by IDaaS.
 | Token Endpoint token | The token endpoint that the application uses to obtain an access token after the application receives an authorization code . | https://xxxxx.aliyunidaas.com.cn/oidc/t oken |
 | Public Key Endpoint JWKS | The JSON Web Key Set (JWKS) endpoint that is used to verify the ID token and complete SSO. The public key cannot be rotated. | https://xxxxx.aliyunidaas.com.cn/oidc1 /jwks |
 
-**Configurations in the application**
-
-OIDC allows applications to use a set of standard and open IDaaS API operations to complete The following table describes these API operations.
-
 | User Information Endpoint Userinfo | The endpoint that is used to obtain basic user information by using an access token after login. | https://xxxxx.aliyunidaas.com.cn/oidc1 /userinfo |
 |---|---|---|
 | Single Logout Endpoint SLO | The endpoint that is used to trigger single logout (SLO). | https://xxxxx.aliyunidaas.com.cn/oidc1 /logout |
 
-| Type | Value | Description |
-|---|---|---|
-|  | user.username | The username. |
-|  | user.displayName | The display name. |
-|  | user.phone (phased out) | The mobile phone number that does not include the country code (phased out). |
-|  | user.phoneNumber | The mobile phone number that does not include the country code. |
-|  | user.email | The email address. |
-|  | user.status | The status of the user. Valid values: enabled disabled |
-|  | user.primaryOrganizationalUnitI d | The ID of the primary organization to which the user belongs. |
-
-##### Rules for the values of the extended OIDC
+##### 4.2.4.2 Rules for the values of the extended OIDC id_token fields
 
 **id_token fields**
 
@@ -2162,173 +2425,211 @@ This topic describes the rules for the values of the extended OpenID Connect (OI
 
 **Rules for the values of the extended id_token fields**
 
-| Variable |  |  |
+| Type | Value | Description |
 |---|---|---|
-|  | user.organizationalUnits | The information about the organization to which the user belongs. |
-|  | ArrayMap(user.organizationalU nits, item.organizationalUnitId) __ | The IDs of all organizations to which the user belongs. The value is a JSON array. |
-|  | user.groups | The information about the group to which the account belongs. The value is a JSON array. |
-|  | ArrayMap(user.groups, item.groupId) __ | The IDs of the groups to which the account belongs. The value is a JSON array. |
-|  | ArrayMap(user.groups, item.groupExternalId) __ | The external IDs of the groups to which the account belongs. The value is a JSON array. |
-|  | user.customFields | The information about all extended fields. The value is a JSON array. |
-|  | user.customFieldMap.$fieldnam e$.fieldValue | The value of an extended field. |
-| Constant | Constants are enclosed in double quotation marks (""). |  |
-| Expression | An advanced feature. You can flexibly concatenate and change values by using expressions. For more information, see Advanced expressions for account fields. |  |
+|   | user.username | The username. |
+|   | user.displayName | The display name. |
+|   | user.phone (phased out) | The mobile phone number that does not include the country code (phased out). |
+|   | user.phoneNumber | The mobile phone number that does not include the country code. |
+|   | user.email | The email address. |
+|   | user.status | The status of the user. Valid values: enabled disabled |
+|   | user.primaryOrganizationalUnitI d | The ID of the primary organization to which the user belongs. |
 
-Example: the user object.
+| Variable |   |   |
+|---|---|---|
+|   | user.organizationalUnits | The information about the organization to which the user belongs. |
+|   | ArrayMap(user.organizationalU nits, item.organizationalUnitId) __ | The IDs of all organizations to which the user belongs. The value is a JSON array. |
+|   | user.groups | The information about the group to which the account belongs. The value is a JSON array. |
+|   | ArrayMap(user.groups, item.groupId) __ | The IDs of the groups to which the account belongs. The value is a JSON array. |
+|   | ArrayMap(user.groups, item.groupExternalId) __ | The external IDs of the groups to which the account belongs. The value is a JSON array. |
+|   | user.customFields | The information about all extended fields. The value is a JSON array. |
+|   | user.customFieldMap.$fieldnam e$.fieldValue | The value of an extended field. |
+| Constant | Constants are enclosed in double quotation marks (""). |   |
+| Expression | An advanced feature. You can flexibly concatenate and change values by using expressions. For more information, see Advanced expressions for account fields. |   |
+
+Example: the user object. `{`
 
 ```json
-{
   ...
   "customFieldMap": {
         "place": {
             "fieldName": "place",
             "fieldValue": "beijing"
-        },
+```
+
+`},`
+
+```json
         "age": {
             "fieldName": "age",
             "fieldValue": "18"
-        }
 ```
 
+`}` `},`
+
 ```json
-    },
     "identityProviderUserMap": {
         "idp_m2gngriuenktdkxxxxxx": {
             "identityProviderId": "idp_m2gngriuenktdkxxxxxx",
             "identityProviderType": "ding_talk",
             "identityProviderExternalId": "corp_1234xxxxxxx",
             "identityProviderUserId": "b2ed5fc0xxxxx"
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "organizationalUnits": [
-        {
+```
+
+`{`
+
+```json
             "organizationalUnitId": "ou_sdfadtaaxxxxxx",
             "organizationalUnitName": "AD",
             "primary": false
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "organizationalUnitId": "ou_werttxxxxxx",
             "organizationalUnitName": "name_002",
             "primary": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "primaryOrganizationalUnitId": "ou_werttxxxxxx",
     "customFields": [
-        {
-            "fieldName": "place",
-            "fieldValue": "beijing"
-        },
-        {
-            "fieldName": "age",
-            "fieldValue": "18"
-        }
 ```
 
-`],`
+`{`
+
+```json
+            "fieldName": "place",
+            "fieldValue": "beijing"
+```
+
+`},` `{`
+
+```json
+            "fieldName": "age",
+            "fieldValue": "18"
+```
+
+`}` `],`
 
 ```json
     "groups": [
-        {
+```
+
+`{`
+
+```json
             "groupId": "group_jp6al4sn4n4wjgjxxxxxx",
             "groupName": "group1",
             "groupExternalId": "group_jp6al4sn4n4wjgjxxxxxx"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "groupId": "group_vavikcxewkf5h3oxxxxxx",
             "groupName": "group2",
             "groupExternalId": "group_vavikcxewkf5h3oxxxxxx"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```
   ...
-}
 ```
+
+`}`
 
 **Examples of OIDC expressions**
 
 1. The organizationalUnits field in id_token is parsed by using the user.organizationalUnits
-expression. [
+expression. `[` `{`
 
 ```json
-  {
     "organizationalUnitId": "ou_sdfadtaaxxxxxx",
     "organizationalUnitName": "AD",
     "primary": false
-  },
-  {
+```
+
+`},` `{`
+
+```json
     "organizationalUnitId": "ou_werttxxxxxx",
     "organizationalUnitName": "name_002",
     "primary": true
-  }
 ```
 
-]
+`}` `]`
 2. The organizationalUnitIds field in id_token is parsed by using the
-ArrayMap(user.organizationalUnits, __item.organizationalUnitId) expression. [
+ArrayMap(user.organizationalUnits, __item.organizationalUnitId) expression. `[`
 
 ```
   "ou_sdfadtaaxxxxxx",
   "ou_werttxxxxxx"
 ```
 
-]
+`]`
 3. The groups field in id_token is parsed by using the user.groups expression.
-[
+`[` `{`
 
 ```json
-  {
     "groupId": "group_jp6al4sn4n4wjgjxxxxxx",
     "groupName": "group1",
     "groupExternalId": "group_jp6al4sn4n4wjgjxxxxxx"
-  },
-  {
+```
+
+`},` `{`
+
+```json
     "groupId": "group_vavikcxewkf5h3oxxxxxx",
     "groupName": "group2",
     "groupExternalId": "group_vavikcxewkf5h3oxxxxxx"
-  }
 ```
 
-]
+`}` `]`
 4. The groupIds field in id_token is parsed by using the ArrayMap(user.groups, __item.groupId)
-expression. [
+expression. `[`
 
 ```
     "group_jp6al4sn4n4wjgjxxxxxx",
     "group_vavikcxewkf5h3oxxxxxx"
 ```
 
-]
+`]`
 5. The groupExternalIds field in id_token is parsed by using the ArrayMap(user.groups,
-__item.groupExternalId) expression. [
+__item.groupExternalId) expression. `[`
 
 ```
     "group_jp6al4sn4n4wjgjxxxxxx",
     "group_vavikcxewkf5h3oxxxxxx"
 ```
 
-]
+`]`
 6. The customFields field in id_token is parsed by using the user.customFields expression.
-[
+`[` `{`
 
 ```json
-    {
       "fieldName": "place",
       "fieldValue": "beijing"
-    },
-    {
-      "fieldName": "age",
-      "fieldValue": "18"
-    }
 ```
 
-]
+`},` `{`
+
+```json
+      "fieldName": "age",
+      "fieldValue": "18"
+```
+
+`}` `]`
 7. The age field in id_token is parsed by using the user.customFieldMap.age.fieldValue
 expression.
 
@@ -2340,16 +2641,16 @@ expression.
 `at_hash` , `c_hash` , `nonce` , and `sid` .
 2. The following fields **are** rewritable: `sub` .
 
+**Rules for user information fields**
+
+Determine whether the following fields in id_token are rewritable based on the scope.
+
 | Field | Scope | Condition under which the field is not rewritable |
 |---|---|---|
 | email, email verified _ | email | When the scope contains the email field and the value (user.email) is not empty. |
 | phone number, phone number verified _ _ _ | phone | When the scope contains the phone field and the value (user.phoneNumber) is not empty. |
 | name, preferred username, updated at, _ _ locale | profile | When the scope contains the profile field. |
 | instance id, application id _ _ | instance | When the scope contains the instance field. |
-
-**Rules for user information fields**
-
-Determine whether the following fields in id_token are rewritable based on the scope.
 
 **Configuration suggestions**
 
@@ -2358,13 +2659,17 @@ rewritable.
 2. To make specific fields rewritable, make sure that the fields are not contained in the scope
 or their values are empty.
 
-##### Login by using OIDC Device Flow
+##### 4.2.4.3 Login by using OIDC Device Flow
 
 Among the authentication flows supported by OpenID Connect (OIDC), Device Flow allows all types of clients to complete the login process by using IDaaS. ​ Due to display limitations, devices may not have built-in login pages. The OIDC Device Flow separates the login process from devices by allowing users to log in through an external browser. ​
 
 **Note**
 
-This topic describes the applicable scenarios and processes of login by using the OIDC Device Flow. For more information about the APIs used in implementing the OIDC Device Flow, see API Reference. The following figure shows the inter-system process. The preparation phase requires no actions from the user. The device interacts with IDaaS and obtains the `user_code` , `device_code` , and verification_url. ​ The user_code and verification_url must be presented to the user. The user opens the verification_url in a browser and enters the user_code.
+This topic describes the applicable scenarios and processes of login by using the OIDC Device Flow. For more information about the APIs used in implementing the OIDC Device Flow, see API Reference. The following figure shows the inter-system process.
+
+**Step 1: Prepare for login**
+
+The preparation phase requires no actions from the user. The device interacts with IDaaS and obtains the `user_code` , `device_code` , and verification_url. ​ The user_code and verification_url must be presented to the user. The user opens the verification_url in a browser and enters the user_code.
 
 **Note**
 
@@ -2374,7 +2679,7 @@ You can add the user password to the login URL in the {{verification_url}}?user_
 
 After the verification_url is opened, the user will perform the operations in the following figures in sequence to complete the login. After the user is logged in, the user can go back to the device to check the login status. The polling request initiated by the device will return the authentication success message, which contains the `id_token` of the user. ​ You can use the JSON Web Key Set (JWKS) endpoint provided in the IDaaS OIDC application to obtain the public keys of the application, and use the public keys to verify the login status and obtain the user ID.
 
-##### M2M applications (machine-to-machine
+##### 4.2.4.4 M2M applications (machine-to-machine permission management)
 
 **permission management)**
 
@@ -2390,13 +2695,6 @@ gateway, associate access permissions on non-critical business API operations wi
 
 **Features**
 
-| Term | Description |
-|---|---|
-| M2M | M2M applications manage permission for machine-to-machine communication. M2M permission allocation and authentication do not require user involvement and can interact with API Gateway to implement API access control and interact with Resource Access Management (RAM) to allow access without using AccessKey pairs. Note An M2M application can serve as a client or a server. |
-| Client | The caller application (client in OAuth), which initiates access to protected resources. |
-| Server | The callee application or protected resource (resource server in OAuth), which represents an external resource entity. |
-| Audience identifier | The audience identifier defines the intended recipients of an access token. The audience identifier corresponds to the aud claim in JSON Web Token (JWT). This audience identifier cannot be modified. |
-
 M2M permission management is an identity management method that enables applications to communicate with one another without user involvement. Permissions are managed by IDaaS and authenticated by gateway services to control access from caller applications to protected resources and prevent unauthorized access.
 
 **Typical scenarios**
@@ -2410,6 +2708,15 @@ Customers who need to expose API services by using API gateways. All customers w
 **Key features**
 
 Credential management: The credentials that caller applications use to request `access` `tokens` are managed in IDaaS. Permission management: You can define caller applications and grant permissions to them. Pre-integrated gateways: IDaaS integrates with API Gateway to implement centralized application authentication.
+
+**Terms**
+
+| Term | Description |
+|---|---|
+| M2M | M2M applications manage permission for machine-to-machine communication. M2M permission allocation and authentication do not require user involvement and can interact with API Gateway to implement API access control and interact with Resource Access Management (RAM) to allow access without using AccessKey pairs. Note An M2M application can serve as a client or a server. |
+| Client | The caller application (client in OAuth), which initiates access to protected resources. |
+| Server | The callee application or protected resource (resource server in OAuth), which represents an external resource entity. |
+| Audience identifier | The audience identifier defines the intended recipients of an access token. The audience identifier corresponds to the aud claim in JSON Web Token (JWT). This audience identifier cannot be modified. |
 
 **Procedure**
 
@@ -2442,6 +2749,9 @@ Console in the Actions column.
 ```
 
 3. In the **Application Name** field, enter a name for the application and click **Add**.
+
+**View general settings**
+
 On the **Application** page, click the application that you want to view, and then click the
 **General** tab. On this tab, you can view and manage the general settings of the application,
 including the **basic formation, credential settings, network scopes, and other**
@@ -2461,10 +2771,6 @@ Choose **Application > Client Permission Management** to view the permissions gr
 
 **Manage server permissions**
 
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-| Authorization | String | Basic Base64(clientId:clientS ecret) The Base64-encoded client ID and client secret. | YXBwX201ZG9vemVzb m81Mmtxxxxxxxxx |
-
 1. Choose **Application > Server Permission Control** to configure the application as a
 callee application.
 
@@ -2483,9 +2789,11 @@ i. Permissions are recorded in IDaaS only as unique identifiers. You must manual
 3. You can view or manage the permissions of the called applications, such as granting and
 revoking permissions, in the **Authorized Applications** section.
 
-###### Call examples of M2M Client Token
+###### 4.2.4.4.1 Call examples of M2M Client Token
 
 This topic provides examples on how to use an M2M client token in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS) to obtain an access token in OAuth 2.0 client mode and call an API operation to implement authentication between systems.
+
+**Call examples**
 
 **Authentication method: client_secret_basic**
 
@@ -2493,20 +2801,20 @@ This topic provides examples on how to use an M2M client token in Employee Ident
 
 **Header parameters**
 
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+| Authorization | String | Basic Base64(clientId:clientS ecret) The Base64-encoded client ID and client secret. | YXBwX201ZG9vemVzb m81Mmtxxxxxxxxx |
+
 | Content-Type | String | The content type. Set the value to application/x-www- form-urlencoded. | application/x-www- form-urlencoded |
 |---|---|---|---|
+
+**Request parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
 | grant type _ | String | The permission type. Set the value to client credentials. _ | client credentials _ |
 | scope | String | The requested scope of permissions. The value is in the resourceServerIdentifi er+"\|"+scope format. For example, if resourceServerIdentifi er is http://www.example.c om and scope is read:file, the returned result is http://www.example.c om\|read:file. You can obtain all authorized scopes by using the resource server identifier parameter. | http://aliyun.com\|read: file |
-| client id _ | string | The application ID. |  |
-
-| Parameter | Type | Nullable | Description |
-|---|---|---|---|
-| access token _ | String | No | The value of the access token. |
-
-**Request parameters**
+| client id _ | string | The application ID. |   |
 
 **Sample request**
 
@@ -2516,31 +2824,28 @@ curl --location --request POST 'https://XXXX.aliyunidaas.com/api/v2/iauths_syste
 
 **Response parameters**
 
+| Parameter | Type | Nullable | Description |
+|---|---|---|---|
+| access token _ | String | No | The value of the access token. |
+
 | expires in _ | Long | No | The validity period of the token. Unit: seconds. |
 |---|---|---|---|
 | expires at _ | Long | No | The time when the token expires. The value is a UNIX timestamp. Unit: seconds. |
 | token type _ | String | No | The type of the token. |
 
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-| Content-Type | String | The content type. Set the value to application/x-www- form-urlencoded. | application/x-www- form-urlencoded |
-
-| Parameter | Type | Description | Example |
-|---|---|---|---|
-| grant type _ | String | The permission type. Set the value to client credentials. _ | client credentials _ |
-| client id _ | String | The application ID. |  |
-
 **Sample response**
 
+`{`
+
 ```json
-{
   "token_type": "Bearer",
   "access_token":
 "AT8csE2sepE4TT9j45xFgRGhEDyS3ovfZDF68Ac4aaQ7c4dBpUahD1cYSCFQbsfpM9ysSArv1pTszcGTZEJK11yG 2GKWd4cf33ZVGsgPfLwYDPX2ZRCUpThTaWoxtXCs9zeZzGwxjc5xtasaQMeuE8PuGeHg9SyMzKxJQVv9ubQhoFXjQ PUotUms4R2M9SBLpWSCaGDf3oiJ5WCuGyMzJdrrdQeLSB7dU9P1iKbjxGWCmwaMLMkUWZBKsAeYi3xjJmpMsuLq38 KAV5bttwi8z8cafuweuNvwdjfZYCYvNbRAt1nB9Bxn9Q99rdpYawU3eH3UvzkvMYoJ5wtnGSsPJ9B7NHBkxxHUG",
   "expires_in": 3600,
   "expires_at": 1733710213
-}
 ```
+
+`}`
 
 **Authentication method: client_secret_post**
 
@@ -2548,14 +2853,20 @@ curl --location --request POST 'https://XXXX.aliyunidaas.com/api/v2/iauths_syste
 
 **Header parameters**
 
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+| Content-Type | String | The content type. Set the value to application/x-www- form-urlencoded. | application/x-www- form-urlencoded |
+
 **Request parameters**
 
-| client secret _ | String | The application secret. |  |
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+| grant type _ | String | The permission type. Set the value to client credentials. _ | client credentials _ |
+| client id _ | String | The application ID. |   |
+
+| client secret _ | String | The application secret. |   |
 |---|---|---|---|
 | scope | String | The requested scope of permissions. The value is in the resourceServerIdentifi er+"\|"+scope format. For example, if resourceServerIdentifi er is http://www.example.c om and scope is read:file, the returned result is http://www.example.c om\|read:file. You can obtain all authorized scopes by using the resource server identifier parameter. | http://aliyun.com\|read: file |
-
-| 33 |  | > Doc | ument Version: 2026063 |
-|---|---|---|---|
 
 **Sample request**
 
@@ -2565,15 +2876,17 @@ curl --location --request POST 'https://XXXX.aliyunidaas.com/api/v2/iauths_syste
 
 **Sample response**
 
+`{`
+
 ```json
-{
   "token_type": "Bearer",
   "access_token":
 "AT8csE2sepE4TT9j45xFgRGhEDyS3ovfZDF68Ac4aaQ7c4dBpUahD1cYSCFQbsfpM9ysSArv1pTszcGTZEJK11yG 2GKWd4cf33ZVGsgPfLwYDPX2ZRCUpThTaWoxtXCs9zeZzGwxjc5xtasaQMeuE8PuGeHg9SyMzKxJQVv9ubQhoFXjQ PUotUms4R2M9SBLpWSCaGDf3oiJ5WCuGyMzJdrrdQeLSB7dU9P1iKbjxGWCmwaMLMkUWZBKsAeYi3xjJmpMsuLq38 KAV5bttwi8z8cafuweuNvwdjfZYCYvNbRAt1nB9Bxn9Q99rdpYawU3eH3UvzkvMYoJ5wtnGSsPJ9B7NHBkxxHUG",
   "expires_in": 3600,
   "expires_at": 1733710213
-}
 ```
+
+`}`
 
 **Authentication method: client_secret_jwt**
 
@@ -2581,23 +2894,23 @@ curl --location --request POST 'https://XXXX.aliyunidaas.com/api/v2/iauths_syste
 
 **Header parameters**
 
+| 33 |   | > Doc | ument Version: 2026063 |
+|---|---|---|---|
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
 | Content-Type | String | The content type. Set the value to application/x-www- form-urlencoded. | application/x-www- form-urlencoded |
 
+**Request parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
 | grant type _ | String | The permission type. Set the value to client credentials. _ | client credentials _ |
-| client id _ | String | The application ID. |  |
-| client assertion type _ _ | String | The client assertion type. Set the value to urn:ietf:params:oauth: client-assertion- type:jwt-bearer. |  |
-| client assertion _ | String | The signature issued by the client by using client secret. The _ value is in the JSON Web Token (JWT) format. The signature algorithm is HS256. For more information, see Appendix 2. |  |
-
-**Request parameters**
+| client id _ | String | The application ID. |   |
+| client assertion type _ _ | String | The client assertion type. Set the value to urn:ietf:params:oauth: client-assertion- type:jwt-bearer. |   |
+| client assertion _ | String | The signature issued by the client by using client secret. The _ value is in the JSON Web Token (JWT) format. The signature algorithm is HS256. For more information, see Appendix 2. |   |
 
 | scope | String | The requested scope of permissions. The value is in the resourceServerIdentifi er+"\|"+scope format. For example, if resourceServerIdentifi er is http://www.example.c om and scope is read:file, the returned result is http://www.example.c om\|read:file. You can obtain all authorized scopes by using the resource server identifier parameter. | http://aliyun.com\|read: file |
-|---|---|---|---|
-
-| Parameter | Type | Description | Example |
 |---|---|---|---|
 
 **Sample request**
@@ -2616,15 +2929,17 @@ wt-bearer' \
 
 **Sample response**
 
+`{`
+
 ```json
-{
   "token_type": "Bearer",
   "access_token":
 "AT8csE2sepE4TT9j45xFgRGhEDyS3ovfZDF68Ac4aaQ7c4dBpUahD1cYSCFQbsfpM9ysSArv1pTszcGTZEJK11yG 2GKWd4cf33ZVGsgPfLwYDPX2ZRCUpThTaWoxtXCs9zeZzGwxjc5xtasaQMeuE8PuGeHg9SyMzKxJQVv9ubQhoFXjQ PUotUms4R2M9SBLpWSCaGDf3oiJ5WCuGyMzJdrrdQeLSB7dU9P1iKbjxGWCmwaMLMkUWZBKsAeYi3xjJmpMsuLq38 KAV5bttwi8z8cafuweuNvwdjfZYCYvNbRAt1nB9Bxn9Q99rdpYawU3eH3UvzkvMYoJ5wtnGSsPJ9B7NHBkxxHUG",
   "expires_in": 3600,
   "expires_at": 1733710213
-}
 ```
+
+`}`
 
 **Authentication method: private_key_jwt**
 
@@ -2632,26 +2947,23 @@ wt-bearer' \
 
 **Header parameters**
 
+| Parameter | Type | Description | Example |
+|---|---|---|---|
+
 | Content-Type | String | The content type. Set the value to application/x-www- form-urlencoded. | application/x-www- form-urlencoded |
 |---|---|---|---|
+
+**Request parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
 | grant type _ | String | The permission type. Set the value to client credentials. _ | client credentials _ |
-| client id _ | String | The application ID. |  |
-| client assertion type _ _ | String | The client assertion type. Set the value to urn:ietf:params:oauth:clie nt-assertion-type:jwt- bearer. |  |
-| client assertion _ | String | The signature issued by the client by using the private key. The value is in the JWT format. The signature algorithm is RS256. For more information, see Appendix 1. |  |
+| client id _ | String | The application ID. |   |
+| client assertion type _ _ | String | The client assertion type. Set the value to urn:ietf:params:oauth:clie nt-assertion-type:jwt- bearer. |   |
+| client assertion _ | String | The signature issued by the client by using the private key. The value is in the JWT format. The signature algorithm is RS256. For more information, see Appendix 1. |   |
 | scope | String | The requested scope of permissions. The value is in the resourceServerIdentifier+ "\|"+scope format. For example, if resourceServerIdentifier is http://www.example.com and scope is read:file, the returned result is http://www.example.com\| read:file. You can obtain all authorized scopes by using the resource server identifier parameter. | http://aliyun.com\|rea d:file |
 
-**Request parameters**
-
 **Sample request**
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | invalid request _ | Require parameter variable: grant type _ | A required parameter is not specified in the request, the specified parameter value is invalid, or a parameter value is in an invalid format. |
-| 400 | authentication req _ uired | Authentication required, allowed authentication methods: [client secret basic, _ _ client secret post, _ _ client secret jwt, _ _ private key jwt] _ _ | The authentication method is invalid. The following authentication methods are supported: client secret basic, _ _ client secret post, _ _ client secret jwt, _ _ private key jwt _ _ |
-| 400 | invalid client crede _ _ ntial | Invalid client assertion, _ reasons(s): [expired] | The client assertion is invalid and the token is expired. |
 
 ```bash
 curl --request POST \
@@ -2667,17 +2979,25 @@ wt-bearer' \
 
 **Sample response**
 
+`{`
+
 ```json
-{
   "token_type": "Bearer",
   "access_token":
 "AT8csE2sepE4TT9j45xFgRGhEDyS3ovfZDF68Ac4aaQ7c4dBpUahD1cYSCFQbsfpM9ysSArv1pTszcGTZEJK11yG 2GKWd4cf33ZVGsgPfLwYDPX2ZRCUpThTaWoxtXCs9zeZzGwxjc5xtasaQMeuE8PuGeHg9SyMzKxJQVv9ubQhoFXjQ PUotUms4R2M9SBLpWSCaGDf3oiJ5WCuGyMzJdrrdQeLSB7dU9P1iKbjxGWCmwaMLMkUWZBKsAeYi3xjJmpMsuLq38 KAV5bttwi8z8cafuweuNvwdjfZYCYvNbRAt1nB9Bxn9Q99rdpYawU3eH3UvzkvMYoJ5wtnGSsPJ9B7NHBkxxHUG",
   "expires_in": 3600,
   "expires_at": 1733710213
-}
 ```
 
+`}`
+
 **Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | invalid request _ | Require parameter variable: grant type _ | A required parameter is not specified in the request, the specified parameter value is invalid, or a parameter value is in an invalid format. |
+| 400 | authentication req _ uired | Authentication required, allowed authentication methods: [client secret basic, _ _ client secret post, _ _ client secret jwt, _ _ private key jwt] _ _ | The authentication method is invalid. The following authentication methods are supported: client secret basic, _ _ client secret post, _ _ client secret jwt, _ _ private key jwt _ _ |
+| 400 | invalid client crede _ _ ntial | Invalid client assertion, _ reasons(s): [expired] | The client assertion is invalid and the token is expired. |
 
 | 400 | invalid grant _ | Invalid or not supported grant type: _ authorization code _ | The type of the permission is not supported. |
 |---|---|---|---|
@@ -2749,9 +3069,9 @@ e with your key.
                 .compact();
         System.out.println("Generated JWT token:");
         System.out.println(jwt);
-    }
-}
 ```
+
+`}` `}`
 
 ```java
 import java.security.KeyFactory; import java.security.PrivateKey; import java.security.PublicKey; import java.security.spec.PKCS8EncodedKeySpec; import java.security.spec.X509EncodedKeySpec; import java.util.Base64; /**
@@ -2776,7 +3096,11 @@ eption {
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         return keyFactory.generatePrivate(keySpec);
-    }
+```
+
+`}`
+
+```
     public static PublicKey getPublicKeyFromString(String publicKeyStr) throws Except
 ion {
         // Remove the PEM header and footer.
@@ -2790,9 +3114,9 @@ ion {
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(encoded);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         return keyFactory.generatePublic(keySpec);
-    }
-}
 ```
+
+`}` `}`
 
 **Appendix 2: Use Java to generate a JWT signature based on the**
 
@@ -2849,16 +3173,20 @@ with your key
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
         return jwt;
-    }
+```
+
+`}`
+
+```java
     public static void main(String[] args) throws Exception{
         // Generate a JWT.
         String jwt = generateJwt();
         System.out.println("Generated JWT: " + jwt);
-    }
-}
 ```
 
-#### Configure SSO for custom applications
+`}` `}`
+
+#### 4.2.5 Configure SSO for custom applications
 
 IDaaS greatly simplifies configurations and supports single sign-on (SSO) for custom applications.
 
@@ -2866,34 +3194,34 @@ IDaaS greatly simplifies configurations and supports single sign-on (SSO) for cu
 
 To configure SSO, you only need to enter the address for processing SSO requests in the Redirect URIs parameter in the Identity as a Service (IDaaS) console and use the default values for other parameters.
 
-|  | Parameter | Description | Example |
+|   | Parameter | Description | Example |
 |---|---|---|---|
 | Basic Information (required) | Redirect URIs | The whitelist of redirect URIs. This parameter defines where users log in with the redirect uri _ parameter. IDaaS redirects user requests only after the redirect URI is on the whitelist. | http://www.xxxx/oidc/s so http://www.xxxx/oidc/s so2 |
-|  | Authorize | For more information, see Configure SSO. | All Users |
-|  | scopes | The identity information of a logged-in user that can be obtained by using the UserInfo endpoint. You can select one or more types of user information. openid email phone profile | openid, email, and profile |
-|  | Validity Period for access token _ | An access token is used to request IDaaS API operations. Default value: 20 minutes. Minimum value: 5 minutes. Maximum value: 24 hours. If an access token expires, you must use a refresh token to renew the access token or log in again. | 20 minutes |
+|   | Authorize | For more information, see Configure SSO. | All Users |
+|   | scopes | The identity information of a logged-in user that can be obtained by using the UserInfo endpoint. You can select one or more types of user information. openid email phone profile | openid, email, and profile |
+|   | Validity Period for access token _ | An access token is used to request IDaaS API operations. Default value: 20 minutes. Minimum value: 5 minutes. Maximum value: 24 hours. If an access token expires, you must use a refresh token to renew the access token or log in again. | 20 minutes |
 
-| Advanced Settings (optional) |  |  |  |
+| Advanced Settings (optional) |   |   |   |
 |---|---|---|---|
-|  | Validity Period for id token _ | An ID token is used to authenticate a user. The token is in the JSON Web Token (JWT) format. An ID token allows the application to authenticate a user by using a public key. After the ID token expires, users must use the refresh token to renew the ID token or log in again. For more information about the format of an ID token, see Tokens in IDaaS. | 10 hours |
-|  | Validity Period for refresh token _ | A refresh token is used to obtain a new access token or a new ID token. After a refresh token expires, users need to log in again. | 30 days |
-|  | Extend id token _ | You can extend the payload field of id token to return _ non-sensitive user information, without repeatedly calling the UserInfo endpoint. Note that fields added in payload are available to all users. Add fields as needed. | - |
-|  | SSO Implemented By | OIDC allows applications to implement SSO. If you select IDaaS & Application, you must specify the IDaaS Sign- In URL parameter. | IDaaS & Application |
+|   | Validity Period for id token _ | An ID token is used to authenticate a user. The token is in the JSON Web Token (JWT) format. An ID token allows the application to authenticate a user by using a public key. After the ID token expires, users must use the refresh token to renew the ID token or log in again. For more information about the format of an ID token, see Tokens in IDaaS. | 10 hours |
+|   | Validity Period for refresh token _ | A refresh token is used to obtain a new access token or a new ID token. After a refresh token expires, users need to log in again. | 30 days |
+|   | Extend id token _ | You can extend the payload field of id token to return _ non-sensitive user information, without repeatedly calling the UserInfo endpoint. Note that fields added in payload are available to all users. Add fields as needed. | - |
+|   | SSO Implemented By | OIDC allows applications to implement SSO. If you select IDaaS & Application, you must specify the IDaaS Sign- In URL parameter. | IDaaS & Application |
 
-|  | IDaaS Sign-in URL | The URL of the page where SSO can be implemented. If the URL receives login requests, the requests are immediately redirected to the authorization endpoint. | http://www.xxxx/oidc/l ogin |
+|   | IDaaS Sign-in URL | The URL of the page where SSO can be implemented. If the URL receives login requests, the requests are immediately redirected to the authorization endpoint. | http://www.xxxx/oidc/l ogin |
 |---|---|---|---|
-|  | Signing Algorithm | The asymmetric algorithm that is used to sign ID tokens. Only RSA-SHA256 is supported. | SHA256 |
-|  | Logout Redirect URIs | The whitelist of redirect URIs for applications when users log out of IDaaS. An application can initiate a single logout (SLO) request that contains this parameter. | http://www.xxxx.com |
+|   | Signing Algorithm | The asymmetric algorithm that is used to sign ID tokens. Only RSA-SHA256 is supported. | SHA256 |
+|   | Logout Redirect URIs | The whitelist of redirect URIs for applications when users log out of IDaaS. An application can initiate a single logout (SLO) request that contains this parameter. | http://www.xxxx.com |
+
+**Configurations in the application**
+
+OIDC allows applications to use a set of standard and open IDaaS API operations to complete login authentication. The following table describes these API operations.
 
 | Field | Description | Example |
 |---|---|---|
 | Issuer | The source of the token specified by id token . It is _ also the base URL of the following API operations. | https://xxxxx.aliyunidaas.com/o idc1 |
 | Discovery endpoint Discovery | The endpoint that is used to obtain metadata, such as a directory of endpoints, supported grant types, and parameters. The metadata is available to all users. | https://xxxxx.aliyunidaas.com/o idc1/.well-known/openid- configuration |
 | Authorization endpoint Authorization | The endpoint from which the application requests SSO. | https://xxxxx.aliyunidaas.com/o idc/authorize |
-
-**Configurations in the application**
-
-OIDC allows applications to use a set of standard and open IDaaS API operations to complete login authentication. The following table describes these API operations.
 
 | Token endpoint token | The Token endpoint that the application uses to obtain an access token after the application receives an authorization code . | https://xxxxx.aliyunidaas.com/o auth2/token |
 |---|---|---|
@@ -2904,7 +3232,7 @@ OIDC allows applications to use a set of standard and open IDaaS API operations 
 
 For more information, see **Developer Guide > Configure SSO for custom applications** .
 
-#### Advanced: SLO
+#### 4.2.6 Advanced: SLO
 
 Single logout (SLO) refers to the global logout initiated by an application. When you logged on to an application by implementing single sign-on (SSO) from Identity as a Service (IDaaS) and then want to log out, you can initiate a global logout on the application to terminate the application sessions as well as the primary IDaaS logon session. IDaaS implements SLO based on the OpenID Connect (OIDC) protocol. Currently, you can log out of only self-developed applications and OIDC applications by using SLO.
 
@@ -2933,18 +3261,16 @@ If you want to be redirected to the application page instead of being prompted t
 ( post_logout_redirect_uris ).
 ```
 
-The administrator can click **Applications**, find this application in the application list, and then click **Manage** in the Actions column corresponding to the application. On the page that appears, click the **Sign-In** tab and then the **SSO** subtab. Click Show Advanced Settings, find the **Logout Redirect URIs** field, and then enter a complete URI for redirecting to the application. Up to five **logout redirect URIs** can be configured as a whitelist. The value of the `post_logout_redirect_uris` parameter that is contained in the logout request sent to the SLO endpoint must be included in this whitelist for the redirection to take effect.
-
-| Parameter | Req uire d | Description |
-|---|---|---|
-
-After the configuration is saved, you can include the `post_logout_redirect_uris` parameter in the request sent to the SLO endpoint to implement redirection upon logout.
+The administrator can click **Applications**, find this application in the application list, and then click **Manage** in the Actions column corresponding to the application. On the page that appears, click the **Sign-In** tab and then the **SSO** subtab. Click Show Advanced Settings, find the **Logout Redirect URIs** field, and then enter a complete URI for redirecting to the application. Up to five **logout redirect URIs** can be configured as a whitelist. The value of the `post_logout_redirect_uris` parameter that is contained in the logout request sent to the SLO endpoint must be included in this whitelist for the redirection to take effect. After the configuration is saved, you can include the `post_logout_redirect_uris` parameter in the request sent to the SLO endpoint to implement redirection upon logout.
 
 **Automatic logout**
 
 To log out and redirect to the application page without manual confirmation, include the `id_token_hint` parameter in the request sent to the SLO endpoint after you configure the
 **Logout Redirect URIs** field.
 The following table describes the parameters supported by the SLO endpoint.
+
+| Parameter | Req uire d | Description |
+|---|---|---|
 
 | id token hint _ _ | No | This parameter is required to implement automatic logout. It verifies whether a logout request is valid. Pass the value of id token , which is the same as the _ session ID and is issued by IDaaS during SSO. Note If it differs from the session ID in IDaaS, manually confirm the logout. Even if it expires, do not manually confirm the logout because the value of id token is the same _ as the session ID. This limit is a security design in the OIDC protocol specifications to prevent malicious logout. |
 |---|---|---|
@@ -2970,7 +3296,7 @@ The SLO feature in IDaaS has the following limits: IDaaS can implement SLO based
 
 OpenID Connect RP-Initiated Logout 1.0
 
-#### Grant application permissions
+#### 4.2.7 Grant application permissions
 
 You can grant permissions to access an application to organizations or accounts. Accounts that do not have the required permissions cannot access the application.
 
@@ -2990,15 +3316,19 @@ After you grant permissions to an organization, all accounts under the organizat
 
 Click Authorize. The Authorize dialog box appears. image.png Search for the IDaaS organization or account in the dialog box. Select the organization or account to which you want to grant permissions. ​ Confirm the selected organization or account and click Confirm.
 
-#### Synchronize accounts - IDaaS event
+#### 4.2.8 Synchronize accounts - IDaaS event callbacks
 
 **callbacks**
 
-You can synchronize organizations and accounts between Identity as a Service (IDaaS) and applications. For more information, see Synchronize accounts. IDaaS allows you to synchronize all IDaaS accounts to an application at one time. IDaaS can also send notifications on incremental changes. Go to the **Provisioning** tab, turn on Provision IDaaS Accounts to Application, and configure the **Synchronization Scope** parameter. After you configure the **Synchronization Scope** parameter, the application can obtain the organization and account information from the specified IDaaS node.
+You can synchronize organizations and accounts between Identity as a Service (IDaaS) and applications. For more information, see Synchronize accounts. IDaaS allows you to synchronize all IDaaS accounts to an application at one time. IDaaS can also send notifications on incremental changes.
+
+**Synchronize accounts**
+
+Go to the **Provisioning** tab, turn on Provision IDaaS Accounts to Application, and configure the **Synchronization Scope** parameter. After you configure the **Synchronization Scope** parameter, the application can obtain the organization and account information from the specified IDaaS node.
 
 **Configure push parameters**
 
-Click the **Synchronize IDaaS Users on Application** tab. IDaaS supports the following application synchronization modes:
+Click the **Synchronize IDaaS Users on Application** tab. IDaaS supports the following application synchronization modes: Shortcut mode: the event callback mode defined by IDaaS. This mode is recommended for most applications. System for Cross-domain Identity Management (SCIM) mode: This mode is suitable for applications supporting SCIM clients. For more information, see Synchronize IDaaS accounts to an application by using SCIM. Configure the basic push parameters. The following table describes the parameters.
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -3008,17 +3338,15 @@ Click the **Synchronize IDaaS Users on Application** tab. IDaaS supports the fol
 | URL for Receiving Synchronization Requests | The URL that is used to receive synchronization requests. The URL must follow the rules in Developer Guide and serve multiple purposes including connection testing, account reception, and organization reception. For more information, see Developer Guide > Overview. | https://www.example. com/accounts/provisio n |
 | Encryption | If you select this option, service data is encrypted by using a key and then transmitted. If you need to transmit data over the Internet, we recommend that you select this option to ensure secure data transmission. | The option is cleared. |
 
-Shortcut mode: the event callback mode defined by IDaaS. This mode is recommended for most applications. System for Cross-domain Identity Management (SCIM) mode: This mode is suitable for applications supporting SCIM clients. For more information, see Synchronize IDaaS accounts to an application by using SCIM. Configure the basic push parameters. The following table describes the parameters.
-
-| Encryption Key |  | The key that is used to encrypt service data. The key can be generated by IDaaS or manually |  |  | 2fdc67ca538cc9500b |  |  |
+| Encryption Key |   | The key that is used to encrypt service data. The key can be generated by IDaaS or manually |   |   | 2fdc67ca538cc9500b |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | 2fdc67ca538cc9500b |  |
-|  |  |  |  | e data. | cad6518390feb937b58e |  |  |
-|  |  |  | be generated by IDaaS or manually |  |  |  |  |
-|  |  |  |  |  | 9102b00bffb30a292112 |  |  |
-|  |  | specified. |  |  |  |  |  |
-|  |  |  |  |  | fdf626 |  |  |
-| Password Synchronization |  | If you select this option, plaintext passwords are passed in the data of a specific event. The following events are supported: Create User Change Account Password (changing or resetting the password) If you select Service Data Encryption at the same time, passwords and service data are encrypted during transmission. |  |  | The option is cleared. |  |  |
+|   |   |   |   |   |   | 2fdc67ca538cc9500b |   |
+|   |   |   |   | e data. | cad6518390feb937b58e |   |   |
+|   |   |   | be generated by IDaaS or manually |   |   |   |   |
+|   |   |   |   |   | 9102b00bffb30a292112 |   |   |
+|   |   | specified. |   |   |   |   |   |
+|   |   |   |   |   | fdf626 |   |   |
+| Password Synchronization |   | If you select this option, plaintext passwords are passed in the data of a specific event. The following events are supported: Create User Change Account Password (changing or resetting the password) If you select Service Data Encryption at the same time, passwords and service data are encrypted during transmission. |   |   | The option is cleared. |   |   |
 
 After you configure the push parameters, you can subscribe to change events to receive notifications when events occur.
 
@@ -3027,12 +3355,9 @@ After you configure the push parameters, you can subscribe to change events to r
 IDaaS defines more than 10 types of account and organization change events. The events are classified into incremental change events and full change events. For more information, see **Developer Guide > Contact events**. After the configuration is complete, you can perform the following operations only if Provision IDaaS Accounts to Application is turned on. Click **Test Connectivity** to verify that the connection is valid, the network access is stable, and the request can be processed as expected. Click **Push Now** to initiate a full synchronization task. To receive event requests sent from IDaaS, you must complete the integration steps in
 **Developer Guide > Overview**.
 
-#### Synchronize IDaaS accounts to an
+#### 4.2.9 Synchronize IDaaS accounts to an application by using SCIM
 
 **application by using SCIM**
-
-| Parameter | Description |
-|---|---|
 
 This topic describes how to use System for Cross-domain Identity Management (SCIM) to synchronize accounts from Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS) to an application. With SCIM, enterprises can efficiently synchronize user and organization data to third-party applications, which simplifies identity management and improves O&M efficiency. This topic describes the procedure, API operation calls, and usage notes to help enterprises quickly integrate identity information across systems.
 
@@ -3043,6 +3368,9 @@ You cannot synchronize organizations to downstream applications by using SCIM in
 **Procedure**
 
 On the **Provisioning** tab of the **Application** page, administrators can set the Push Mode parameter to SCIM Protocol. This way, accounts can be synchronized to a SCIM-enabled application by using SCIM. To synchronize accounts from IDaaS to an application by using SCIM, you must configure both IDaaS and the application. The following table describes the topics related to how to synchronize accounts to RAM or CloudSSO. If you want to synchronize accounts to other applications by using SCIM, refer to the corresponding topic. The method for configuring SCIM-based account synchronization is similar to that for configuring the event callback-based shortcut mode. You need to first specify the synchronization scope and configure the SCIM client parameters. The following table describes the parameters.
+
+| Parameter | Description |
+|---|---|
 
 | Outbound IP Address | Add the outbound IP address of IDaaS to the whitelist of the application to ensure that IDaaS requests can be received as expected. |
 |---|---|
@@ -3060,7 +3388,7 @@ After you save the configuration, we recommend that you click **Test Connectivit
 
 RFC7643: System for Cross-domain Identity Management: Core Schema RFC7644: System for Cross-domain Identity Management: Protocol
 
-#### Synchronize data from an application
+#### 4.2.10 Synchronize data from an application to IDaaS by using SCIM
 
 **to IDaaS by using SCIM**
 
@@ -3083,13 +3411,6 @@ instance.
 1. In the application list, find the created application and click the application name to go to
 the details page of the application.
 2. Click the **Provisioning** tab and configure the **Provisioning Scope** parameter.
-
-| SCIM Field | IDaaS Field | Description |
-|---|---|---|
-| id | userId | The unique ID of the user. |
-| userName | username | The username. |
-| displayName | displayName | The display name of the user. |
-
 3. Click the **Synchronize Application to IDaaS** tab and select a value from the
 **Synchronization Scope** drop-down list.
 
@@ -3120,6 +3441,12 @@ for which you want to enable the corresponding API operations. Then, click **Sav
 
 **User:**
 
+| SCIM Field | IDaaS Field | Description |
+|---|---|---|
+| id | userId | The unique ID of the user. |
+| userName | username | The username. |
+| displayName | displayName | The display name of the user. |
+
 | phoneNumbers [type eq "work"] | phoneNumber | The mobile phone number of the user. Numbers that include the country code must start with a plus sign (+). You can add only one mobile phone number, and it must be of the work type. |
 |---|---|---|
 | phoneRegion | phoneRegion | The country or region code of the mobile phone number. If you do not configure this field and the number includes the country code, the code is truncated. If you specify a value that differs from the country code of the number, an error is reported. If you configure this field and the number does not include the country code, the default value 86 is used. |
@@ -3128,23 +3455,23 @@ for which you want to enable the corresponding API operations. Then, click **Sav
 | active | status | The status of the user. Valid values: true: The user is enabled. false: The user is disabled. |
 | password | password | The password displayed in plaintext. If the format is incorrect, an error is reported. |
 | urn:ietf:params:scim:sch emas:extension:enterpris e:2.0:User organization | - | - |
-|  | organizationId | The ID of the organization to which the account belongs. If you do not configure this field, the account is assigned to the synchronization target. If you specify an organization, the account is assigned to the specified organization. |
+|   | organizationId | The ID of the organization to which the account belongs. If you do not configure this field, the account is assigned to the synchronization target. If you specify an organization, the account is assigned to the specified organization. |
+
+**Group:**
 
 | SCIM Field | IDaaS Field | Description |
 |---|---|---|
-
-**Group:**
 
 | id | groupId | The unique ID of the group. |
 |---|---|---|
 | displayName | groupName | The name of the group. |
 | externalId | groupExternalId | The external ID of the group. |
 | members type value $ref | - | The group member. |
-|  | - | The type of the group member. Set the value to User. |
-|  | userId | The unique ID of the user. |
-|  | - | The complete URL of the member. |
+|   | - | The type of the group member. Set the value to User. |
+|   | userId | The unique ID of the user. |
+|   | - | The complete URL of the member. |
 
-#### Open API operations
+#### 4.2.11 Open API operations
 
 Identity as a Service (IDaaS) provides open API operations to application developers. . You can call these API operations to synchronize accounts and organizations to IDaaS and manage the lifecycle of employees, including onboarding, offboarding, and transfer. . The IDaaS administrator has full management permissions on applications. The administrator can specify whether to expose the API operations and manage the permissions on the API operations.
 
@@ -3162,24 +3489,24 @@ The Developer API operations in IDaaS are different from Alibaba Cloud OpenAPI a
 
 **Data permissions**
 
-| Operation description | OpenAPI | Can be called by your Apsara Stack tenant account | Can be called by using the cloud service that hosts the application |
-|---|---|---|---|
-| Updates the name and logo of the application. | UpdateApplicationInfo | No | Yes |
-| Updates the description of the application. | UpdateApplicationDescription | Yes | Yes |
-| Deletes the application. | DeleteApplication | No | Yes |
-| Enables the application. | EnableApplication | No | Yes |
-
 You can configure the **Synchronization Scope** parameter on the Provisioning tab to limit the scope of available data. image.png Only data within the specified synchronization scope can be queried or used to create resources by calling API operations. . You can manage the synchronization scope on the Provisioning tab.
 
 **Development and integration**
 
 For more information, see **Developer Guide > Application development APIs**. .
 
-#### Management permissions on Apsara
+#### 4.2.12 Management permissions on Apsara Stack applications
 
 **Stack applications**
 
 Apsara Stack Identify as a Service (IDaaS) is committed to providing secure identity services for the Apsara Stack ecosystem. Therefore, stable IDaaS services and application configurations are important to customers. Guided by the principle that the user who creates a resource must manage and destroy the resource, the lifecycle of application resources is managed in cloud services. Operations including application creation, configuration, management, and deletion are performed in cloud services. Applications cannot be managed in IDaaS. For example, Apsara Stack services are prioritized and displayed as ecosystem partners in the marketplace. These services cannot be created in IDaaS and must be created in the corresponding consoles. Then, you can bind these services to IDaaS instances by using the user management feature to create applications in IDaaS. The following figure shows how Robotic Process Automation (RPA) is displayed in the IDaaS marketplace. The lifecycle of a cloud service application is managed in the cloud service, and different permissions are required for using different API operations and features. When a regular user attempts to perform unauthorized operations on the application of a cloud service, the `InvalidOperation.ResourceManagedByCloudProduct` error code is returned. The following table describes the permissions required for calling API operations.
+
+| Operation description | OpenAPI | Can be called by your Apsara Stack tenant account | Can be called by using the cloud service that hosts the application |
+|---|---|---|---|
+| Updates the name and logo of the application. | UpdateApplicationInfo | No | Yes |
+| Updates the description of the application. | UpdateApplicationDescription | Yes | Yes |
+| Deletes the application. | DeleteApplication | No | Yes |
+| Enables the application. | EnableApplication | No | Yes |
 
 | Disables the application. | DisableApplication | No | Yes |
 |---|---|---|---|
@@ -3202,11 +3529,11 @@ Apsara Stack Identify as a Service (IDaaS) is committed to providing secure iden
 | Disables the client secret of the application. | DisableApplicationClientSecre t | No | Yes |
 | Other operations related to the application and read- only operations. | - | Yes | Yes |
 
-### Configurations of common
+### 4.3 Configurations of common applications
 
 ## applications
 
-#### Configure 2FA for establishing SSL-VPN
+#### 4.3.1 Configure 2FA for establishing SSL-VPN connections in Alibaba Cloud
 
 **connections in Alibaba Cloud**
 
@@ -3296,17 +3623,30 @@ certificate to the OpenVPN\config directory. In this example, the certificate is
 3. Start OpenVPN and enter the username and password for authentication.
 客户端验证账号密码
 
+## 5 Login
+
+### 5.1 General settings
+
+This topic describes the login methods supported by Identity-as-a-Service Enterprise Identity Access Management (EIAM IDaaS), including passwords, test message verification codes, logins from other third-party applications such as WeChat and DingTalk, and multi-factor authentication (MFA). This helps administrators flexibly configure enterprise-class authentication policies to improve account security.
+
+**Login methods**
+
+1. **Three built-in login methods of IDaaS**
+
 | Login method | Description |
 |---|---|
 | Login by using the IDaaS account password | By default, this login method is enabled. Users log in with their account usernames and passwords stored in IDaaS. Users who do not have an account username or password cannot log in by using this method. For example, an account that is recently imported from DingTalk and does not have an account username or password in IDaaS cannot use this login method. |
 | Test message verification code | This method is disabled by default and can be manually enabled. To use this login method, the user must associate a mobile phone number with their account. Users can view the text message, but cannot modify the text message. No text message fee is charged by the current version. |
 | Web Authentication (WebAuthn) | Users can use their hardware identity to log in with security and convenience based on the WebAuthn protocol. For more information, see WebAuthn login. |
 
-## Login
+2. **Add a login method**
+Other login methods provided in IDaaS must be enabled based on the Identity Provider (IdP) configuration. When an administrator adds an IdP, a login capability may be automatically added as a login method. When you enable this feature for the first time, the corresponding login method is automatically created. For example, if Sign-In with QR Code is disabled on the IdPs page, the QR Code (DingTalk) login method is also disabled on the Authentication Methods tab. ​
+3. **Disable a login method**
+After a login method is disabled, it becomes unavailable and is not displayed on the login page.
 
-### General settings
+**Login settings**
 
-This topic describes the login methods supported by Identity-as-a-Service Enterprise Identity Access Management (EIAM IDaaS), including passwords, test message verification codes, logins from other third-party applications such as WeChat and DingTalk, and multi-factor authentication (MFA). This helps administrators flexibly configure enterprise-class authentication policies to improve account security. Other login methods provided in IDaaS must be enabled based on the Identity Provider (IdP) configuration. When an administrator adds an IdP, a login capability may be automatically added as a login method. When you enable this feature for the first time, the corresponding login method is automatically created. For example, if Sign-In with QR Code is disabled on the IdPs page, the QR Code (DingTalk) login method is also disabled on the Authentication Methods tab. ​ After a login method is disabled, it becomes unavailable and is not displayed on the login page.
+1. **Configure basic settings for IDaaS login**
 2. **The following table describes the parameters.**
 i. **Skip Logon Page**: After this feature is enabled, only one login method is available. The login method must be based on the OpenID Connect (OIDC) authentication protocol or Lark login. When users access the login page of IDaaS, they can directly redirect to the login page for authentication. a. **Validation rules when you save the configuration.** If multiple login methods are enabled, the following message appears: In this case, the configuration cannot be saved. If only one login method is enabled, the configuration is saved. b. **Prompts of IdP conflicts.** If you attempt to enable multiple login methods on the
 **IdPs** page or in the **Sign In > General > Authentication Methods** tab when the
@@ -3316,27 +3656,31 @@ i. **Skip Logon Page**: After this feature is enabled, only one login method is 
 
 The login page is skipped only when both of the following conditions are met: Only one of the Lark or OIDC authentication sources is enabled, and the Skip Logon Page feature is enabled. Otherwise, the Skip Logon Page feature does not take effect even if it is enabled. ii. **PC Primary Authentication Method**: the default login method of IDaaS displayed on the PC. Users can switch to another login method. iii. **Prioritized Authentication Method for Mobile Apps**: the default login method of IDaaS displayed on the mobile app. Users can switch to another login method. iv. **Session Validity Period**: the session persistence period for browser login. After the session persistence period ends, the user needs to log in again. This is a security mechanism. In this example, the session persistence period is set to 8 hours. v. **Idle Session Timeout Period**: the idle session timeout period. After the timeout period ends, the user needs to complete authentication again. This is to prevent unauthorized access. In this example, the idle session timeout period is set to 2 hours.
 
-| Mode | Scenario | Description |
-|---|---|---|
-| Intelligent (recommend ed) | If the system detects the following high-risk login behaviors, the intelligent mode is automatically triggered to improve account security: 1. Login from a uncommonly used geographic location. For example, a user based in Beijing logs in from a foreign country or an uncommonly used CIDR block. 2. Login from a uncommonly used device For example, a user logs in from an uncommonly used mobile phone, an uncommonly used browser, or a new account. 3. High-risk operations. For example, a user attempts to gain sensitive permissions, such as console administrator permissions, or frequently changes account security settings, such as repeated password resets. 4. Risks detected by system security policies. For example, the system detects proxies or VPN services in the login environment or successful login after multiple login failures. | IDaaS Enterprise Identity Access Management (EIAM) decides whether 2FA is required based on the context. This mode ensures security and provides smooth user experience. |
-| Always | 1. Security-sensitive business systems. 2. Scenarios in which regulatory compliance check is required at each login. 3. Privileged accounts such as administrator accounts. | 2FA is required for each login. |
-
-| Method | Description |
-|---|---|
-
-### Authentication configuration
+### 5.2 Authentication configuration
 
 **5.2.1. 2FA**
 
-This topic describes the two-factor authentication (2FA) feature and how to bind 2FA methods to users when they log in to Identity as a Service (IDaaS). IDaaS supports 2FA. To ensure security and meet compliance requirements, users are required to complete 2FA after logging in with a password. For your security, 2FA is enabled by default.
+This topic describes the two-factor authentication (2FA) feature and how to bind 2FA methods to users when they log in to Identity as a Service (IDaaS).
+
+**Configure 2FA**
+
+IDaaS supports 2FA. To ensure security and meet compliance requirements, users are required to complete 2FA after logging in with a password. For your security, 2FA is enabled by default.
 
 **Modes**
 
 IDaaS supports the following modes of 2FA.
 
+| Mode | Scenario | Description |
+|---|---|---|
+| Intelligent (recommend ed) | If the system detects the following high-risk login behaviors, the intelligent mode is automatically triggered to improve account security: 1. Login from a uncommonly used geographic location. For example, a user based in Beijing logs in from a foreign country or an uncommonly used CIDR block. 2. Login from a uncommonly used device For example, a user logs in from an uncommonly used mobile phone, an uncommonly used browser, or a new account. 3. High-risk operations. For example, a user attempts to gain sensitive permissions, such as console administrator permissions, or frequently changes account security settings, such as repeated password resets. 4. Risks detected by system security policies. For example, the system detects proxies or VPN services in the login environment or successful login after multiple login failures. | IDaaS Enterprise Identity Access Management (EIAM) decides whether 2FA is required based on the context. This mode ensures security and provides smooth user experience. |
+| Always | 1. Security-sensitive business systems. 2. Scenarios in which regulatory compliance check is required at each login. 3. Privileged accounts such as administrator accounts. | 2FA is required for each login. |
+
 **2FA methods**
 
 IDaaS supports various 2FA methods. Administrators can enable multiple 2FA methods at the same time.
+
+| Method | Description |
+|---|---|
 
 | DaaS | User Guide·Logi |
 |---|---|
@@ -3347,16 +3691,20 @@ IDaaS supports various 2FA methods. Administrators can enable multiple 2FA metho
 | Email verification code | An email that contains a 6-digit verification code is sent to the email address of an IDaaS EIAM user. This method is unavailable for accounts that are not associated with an email address. You can view the email content on the Branding > Email Template page. For more information, see Email template. |
 | WebAuthn | The WebAuthn authenticator is used as a second factor to implement hardware-level secure and convenient authentication. For more information, see WebAuthn login. An administrator can register a WebAuthn authenticator for an account or remove a WebAuthn authenticator from an account. |
 
-| Condition | Description |
-|---|---|
-
 **Note**
 
-An IDaaS EIAM user must bind at least one 2FA method to the account to complete 2FA. We recommend that you enable 2FA for logins or make sure that all IDaaS users can use at least one method to complete 2FA. For more information, see Bind a 2FA method at login. After 2FA is enabled, all IDaaS EIAM users can use the feature. Users can choose a method to complete 2FA. The following figure shows an example. After you enable 2FA for logins, users can bind available 2FA methods to their accounts during logins if the specified binding conditions are met.
+An IDaaS EIAM user must bind at least one 2FA method to the account to complete 2FA. We recommend that you enable 2FA for logins or make sure that all IDaaS users can use at least one method to complete 2FA. For more information, see Bind a 2FA method at login. After 2FA is enabled, all IDaaS EIAM users can use the feature. Users can choose a method to complete 2FA. The following figure shows an example.
+
+**Bind a 2FA method at login**
+
+After you enable 2FA for logins, users can bind available 2FA methods to their accounts during logins if the specified binding conditions are met.
 
 **Binding conditions**
 
 Users can bind 2FA methods to their accounts during logins only if the accounts meet all the enabled binding conditions.
+
+| Condition | Description |
+|---|---|
 
 | No Two-factor Authentication Method in Use | This condition is met if an account is not bound to any of the enabled two- factor authentication methods. For example, if the text message verification code method is enabled but an account is associated only with an email address, this condition is met. |
 |---|---|
@@ -3367,7 +3715,7 @@ Users can bind 2FA methods to their accounts during logins only if the accounts 
 
 If a user meets the enabled binding conditions, the user can bind available 2FA methods to the account. In the following example, both the SMS (text message verification code) and email methods are enabled for the IAAS EIAM instance, but only SMS is enabled as the available 2FA method. In this case, if the account of a user is not associated with a mobile number and an email address, the user can bind a mobile number but not an email address as the 2FA method to the account during logins.
 
-#### WebAuthn login
+#### 5.2.2 WebAuthn login
 
 This topic describes how to configure and enable Web Authentication (WebAuthn) authentication in Enterprise Identity Access Management (EIAM) of Identity as a Service (IDaaS). WebAuthn provides a more secure and convenient password-free login experience. This topic describes the benefits of WebAuthn authentication and configuration procedure to help administrators quickly integrate WebAuthn authentication with their EIAM system.
 
@@ -3389,13 +3737,15 @@ Administrators cannot manage the authenticators of users. Each user can individu
 
 **Applicable scenarios**
 
+**Scenario 1: Password-free login**
+
 WebAuthn can be used for password-free login. This is one of the most common and convenient scenarios in which WebAuthn is used. On the IDaaS login page, a user enters a username and selects a WebAuthn authentication method for verification. The user is logged in to the application after the user passes the authentication. This method can be used to log in to all web applications. The following flowchart shows the process. On the **General** tab of the **Sign-In** page, the WebAuthn authenticator method is displayed in the **Authentication Methods** section. By default, this method is disabled. You must enable the method before you can use the method. After you enable the method, the WebAuthn login option is available on the login page. Then, the user can log in by using WebAuthn. The following figure shows an example on how to use macOS Touch ID for login. IDaaS obtains information about the registered authenticator of a specific account. If the authenticator is not registered, an error occurs and the authenticator cannot be used.
 
 **Scenario 2: Multi-factor authentication (MFA)**
 
 WebAuthn can be used for MFA. This is also one of the most common and most secure scenarios in which WebAuthn is used. If MFA is enabled, users must be re-authenticated after they enter a username and password. Users can use a WebAuthn authenticator for secure login. The following flowchart shows the process. On the **Authentication Configuration** tab of the **Sign-In** page, click the Two-Factor Authentication tab. Turn on Two-factor Authentication, select **WebAuthn**, and then click Save. Then, users must be re-authenticated after they enter a username and password on the login page. If users registered a WebAuthn authenticator, users can use WebAuthn to complete identity authentication in a quick and secure manner. The following figure shows an example on how to use macOS Touch ID for MFA.
 
-#### CAPTCHA verification
+#### 5.2.3 CAPTCHA verification
 
 Completely Automated Public Turing Test to Tell Computers and Humans Apart (CAPTCHA) verification is a two-factor authentication (2FA) mechanism provided by Identity as a Service (IDaaS) to distinguish between humans and bots or attackers. CAPTCHA verification effectively blocks malicious behaviors, such as brute-force attacks, spam registration, and brushing, to improve system security. This topic describes how to configure and enable CAPTCHA verification.
 
@@ -3411,10 +3761,12 @@ business scenario.
 
 **Procedure**
 
+1. . Go to the CAPTCHA Verification page**
 1. Log in to the IDaaS Console and find the IDaaS instance that you want to manage.
 2. In the left-side navigation pane, **Sign In** and go to the **Authentication Configuration**
 page.
 3. Click the **CAPTCHA Verification** tab.
+2. . Enable CAPTCHA verification**
 1. **Enable CAPTCHA verification**: Select **Enable CAPTCHA Verification** to enable this
 feature.
 2. **Select a verification method.** Select a **verification method** that is suitable for your
@@ -3428,7 +3780,17 @@ business scenario.
 
 Before you enable CAPTCHA verification, familiarize yourself with the characteristics and applicable scenarios of CAPTCHA verification. Select an appropriate CAPTCHA verification method based on your actual business requirements to balance security and user experience. Regularly check the configurations and status of CAPTCHA verification to ensure that it operates effectively under the latest security requirements.
 
-### Password policies
+### 5.3 Password policies
+
+Apsara Stack Identity as a Service (IDaaS) allows administrators to centrally manage password policies to enhance account security. This topic describes the password policy management feature of IDaaS, including password complexity, initial password, password expiration, password history, forgotten password, and high-risk password detection.
+
+**Overview of password policies**
+
+IDaaS allows administrators to centrally manage the following password policies: Password complexity Initial password Password expiration Password history Forgotten password High-risk password detection
+
+**Password complexity**
+
+Passwords are one of the weakest components in network security. A stronger password means higher security. On the **Password Policy** tab of the **Sign-In** page, IDaaS provides five complexity templates from which you can choose based on different scenarios. The following table describes the five complexity templates.
 
 | Complexity template | Password requirement |
 |---|---|
@@ -3438,11 +3800,7 @@ Before you enable CAPTCHA verification, familiarize yourself with the characteri
 | Recommended | A minimum of 10 characters. It must contain uppercase letters, lowercase letters, digits, and special characters. It cannot contain the account name. |
 | Complex | A minimum of 16 characters. It must contain uppercase letters, lowercase letters, digits, and special characters. It cannot contain the account name, display name (pinyin), mobile phone number, or email prefix. |
 
-Apsara Stack Identity as a Service (IDaaS) allows administrators to centrally manage password policies to enhance account security. This topic describes the password policy management feature of IDaaS, including password complexity, initial password, password expiration, password history, forgotten password, and high-risk password detection. IDaaS allows administrators to centrally manage the following password policies: Password complexity Initial password Password expiration Password history Forgotten password High-risk password detection
-
-**Password complexity**
-
-Passwords are one of the weakest components in network security. A stronger password means higher security. On the **Password Policy** tab of the **Sign-In** page, IDaaS provides five complexity templates from which you can choose based on different scenarios. The following table describes the five complexity templates. If you are an administrator, you can select one of the templates and change the configuration on demand, or directly customize the complexity configuration. After you complete the configuration, click Save for the configuration to take effect. . The changed complexity rules do not affect existing passwords, but apply to new passwords.
+If you are an administrator, you can select one of the templates and change the configuration on demand, or directly customize the complexity configuration. After you complete the configuration, click Save for the configuration to take effect. . The changed complexity rules do not affect existing passwords, but apply to new passwords.
 
 **Important**
 
@@ -3503,11 +3861,15 @@ If your account is not configured with a mobile phone number or email address, a
 
 IDaaS maintains a database that contains a great number of compromised passwords. When users change the password, a security check is triggered on the new password, and the check result is displayed on the same page. This feature is enabled by default and cannot be disabled. It is not displayed in the console. The following figure shows a prompt of password detection. If users are prompted that the new password has been found in a security leak, this password may be exploited by attackers. We recommend that you do not use this password in this case.
 
-## Logs
+## 6 Logs
 
-### Management operations
+### 6.1 Management operations
 
-This topic describes the operations that administrators can perform on the Manage tab of the Log page in the Identity as a Service (IDaaS) console. On this tab, administrators can view, search, and manage logs of system management operations for auditing and troubleshooting. IDaaS generates logs of key operations performed by administrators and users. The retention period of the logs is 180 days. Within the retention period, administrators can view and search logs in order to audit, trace, and analyze management operations.
+This topic describes the operations that administrators can perform on the Manage tab of the Log page in the Identity as a Service (IDaaS) console. On this tab, administrators can view, search, and manage logs of system management operations for auditing and troubleshooting.
+
+**Introduction**
+
+IDaaS generates logs of key operations performed by administrators and users. The retention period of the logs is 180 days. Within the retention period, administrators can view and search logs in order to audit, trace, and analyze management operations.
 
 **Procedure**
 
@@ -3522,9 +3884,12 @@ i. After you specify the filter conditions, click **Search**. ii. To clear all f
 5. **View log details**.
 The search result is displayed in a table that consists of the following columns. i. **Time**: the time when the operation was performed. ii. **Operator**: the account that was used to perform the operation. iii. **Event Type**: the type of the operation. iv. **Object**: the object on which the operation was performed. v. **Event Result**: the result of the operation. Click a log entry to view the detailed information.
 
-### User behavior
+### 6.2 User behavior
 
 The log module of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) can record user behavior in details, which helps enterprises monitor and manage user behavior. This topic describes how to query and manage logs on the User Behavior tab of the log module.
+
+**Introduction**
+
 **User behavior records**: record the key information about user behavior, including the
 behavior, time, object, and result.
 **Purpose of logs**: help administrators monitor, audit, and manage user behavior in order
@@ -3556,21 +3921,16 @@ Group, IdPs, or application.
 3. **Perform a search**
 i. After you specify the filter conditions, click **Search**. ii. To clear all filter conditions, click **Reset**. iii. You can select **Hide After Search** to automatically hide the Advanced Search section after you perform a search.
 4. **View log details**
-The search result is displayed in a table that consists of the following columns. i. **Time**: the time when the event occurred. ii. **Operator**: the ID or name of the user who performed the operation. iii. **Event Type**: the type of the operation, such as basic authentication or CAPTCHA verification.
+The search result is displayed in a table that consists of the following columns. i. **Time**: the time when the event occurred. ii. **Operator**: the ID or name of the user who performed the operation. iii. **Event Type**: the type of the operation, such as basic authentication or CAPTCHA verification. iv. **Object**: the object on which the operation was performed, such as User Portal and Password. v. **Event Result**: the result of the operation, such as Successful or Failed. Click a log entry to view the details.
 
-|  | Inbound | Outbound |
+### 6.3 Synchronization logs
+
+Synchronization logs are a special type of logs. Identity as a Service (IDaaS) records and displays synchronization logs. The following table describes scenarios in which operations are recorded as synchronization logs, management logs, or user logs.
+
+|   | Inbound | Outbound |
 |---|---|---|
 | Recorded as synchronization logs | Synchronization from an identity provider (IdP) | Pushed by IDaaS to an application Pushed by IDaaS to an IdP (not supported) |
 | Not recorded as synchronization logs but as management logs or user logs | OpenAPI Developer API (not supported) System for Cross-domain Identity Management (SCIM) API (not supported) Lazy loading (not supported) | Pulled by an application from IDaaS |
-
-| Trigger module | Events that require task records | Events that require only logs |
-|---|---|---|
-
-iv. **Object**: the object on which the operation was performed, such as User Portal and Password. v. **Event Result**: the result of the operation, such as Successful or Failed. Click a log entry to view the details.
-
-### Synchronization logs
-
-Synchronization logs are a special type of logs. Identity as a Service (IDaaS) records and displays synchronization logs. The following table describes scenarios in which operations are recorded as synchronization logs, management logs, or user logs.
 
 **Note**
 
@@ -3582,10 +3942,15 @@ A task is a collection of synchronization logs. When an operation involves synch
 
 **Events that trigger task records**
 
+| Trigger module | Events that require task records | Events that require only logs |
+|---|---|---|
+
 | IdPs IdP | Batch import (timed/manual) from an IdP One-time full synchronization to an IdP (not supported) | Synchronization of a single data change from an IdP to IDaaS Synchronization of a single data change from IDaaS to an IdP |
 |---|---|---|
 | Applications | Synchronization of accounts to an application at a time | Synchronization of a single data change in IDaaS |
 | Accounts | Manually triggered synchronization of organizations or accounts (not supported) | - |
+
+**Synchronization task status**
 
 | Status | Description |
 |---|---|
@@ -3595,17 +3960,19 @@ A task is a collection of synchronization logs. When an operation involves synch
 | Running | Synchronization tasks are still running. The task list is refreshed every five seconds. |
 | Initial State | An exception occurs during execution, which causes the synchronization tasks to fail. In this case, you can re-trigger the synchronization tasks. This is a rare exception. |
 
-**Synchronization task status**
-
 **Log details**
 
 Administrators can view the status and details of each synchronization request and search for data. If a synchronization request fails to be executed, you can view the cause of the failure. After troubleshooting, you can handle this exception in two ways: Manually change the data. Go to the corresponding system and manually change the data to be synchronized this time. Push the data again. Push the data again at the synchronization source. Make sure that data duplication does not occur.
 
-## Branding
+## 7 Branding
 
-### Branding
+### 7.1 Branding
 
-This topic describes how to configure branding information in the Identity as a Service (IDaaS) console, including enterprise information, login page style, text, terms of service, and default redirect settings. The branding feature allows you to manage the system default brand and configure the enterprise information and login page.
+This topic describes how to configure branding information in the Identity as a Service (IDaaS) console, including enterprise information, login page style, text, terms of service, and default redirect settings.
+
+**Overview**
+
+The branding feature allows you to manage the system default brand and configure the enterprise information and login page.
 
 **Default brand**
 
@@ -3622,6 +3989,8 @@ Page limits: The **Style Settings** and **Text Settings** tabs are not displayed
 i. **Enterprise Icon**: Upload an enterprise logo to be displayed on the login page and portal page. The file must be in the PNG or JPG format and cannot exceed 1 MB in size. We recommend that you set the pixel aspect ratio to 256*256. ii. **Favicon**: The enterprise favicon is displayed on the Login Page and Portal Page browser tabs. The file must be in the PNG format. We recommend that you use a square image whose pixel aspect ratio to 32*32. iii. **Enterprise Name**: Enter an enterprise name that is 1 to 64 characters in length. You can set an enterprise name for different languages. iv. **Preview**: In the upper-right corner of the page, select **PC** or **Mobile** to preview the configurations in real time.
 3. Publish the configurations. Click **Save and Publish** at the bottom of the page to
 immediately apply the configurations.
+
+**Configure the login page**
 
 **Style settings**
 
@@ -3678,24 +4047,24 @@ Click **Save and Publish** at the bottom of the page to immediately apply the co
 Click **Branding** in the left-side navigation pane and find the brand that you want to manage. On the Branding page, find the brand that you want to configure and click
 **Configure** in the **Login Page Configuration** section.
 2. Select the default application to which you want to redirect users.
-i. Click the Search icon on the right of the **Default Redirection Application** field.
-
-| Item | Description |
-|---|---|
-| Terms | You need to prepare a reminder for terms and one or more links to the terms that users must agree to. |
-| An IDaaS instance | You can use the custom term capability only after you create an IDaaS instance. |
-
-ii. In the list that appears, select the application that you want to use as the default redirect destination, such as MyApp and IDaaS Application Portal.
+i. Click the Search icon on the right of the **Default Redirection Application** field. ii. In the list that appears, select the application that you want to use as the default redirect destination, such as MyApp and IDaaS Application Portal.
 3. Save the configurations.
 Click **Save** in the lower-left corner to save the configurations.
 
-### Custom terms
+### 7.2 Custom terms
+
+**Overview**
 
 The custom term feature allows you to display terms, such as terms of service and privacy policy, on the login page of Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). When a user is logged in, the user is considered to have agreed to the relevant terms. This feature helps you meet the enterprise compliance requirements.
 
 **Preparations**
 
 We recommend that you prepare the following items before you configure custom terms.
+
+| Item | Description |
+|---|---|
+| Terms | You need to prepare a reminder for terms and one or more links to the terms that users must agree to. |
+| An IDaaS instance | You can use the custom term capability only after you create an IDaaS instance. |
 
 **Enable the custom term feature**
 
@@ -3715,26 +4084,23 @@ IDaaS EIAM manages only the acceptance of terms and the revocation of acceptance
 
 After a user revokes acceptance of terms, the administrator can view the revocation record on the User tab of the Log page of the IDaaS instance.
 
-### SMS gateway
+### 7.3 SMS gateway
 
 After an SMS gateway is configured in IDaaS, user-specific operations trigger the sending of SMS messages to implement secure, efficient, and compliant authentication and notification features. This topic describes how to configure an SMS gateway.
+
+**Supported channel service providers**
 
 | Supported channel service provider | SMS sending scope |
 |---|---|
 | Alibaba Cloud SMS(to Chinese Mainland) | Chinese mainland |
 | Alibaba Cloud SMS(to regions outside Chinese Mainland) | Outside the Chinese mainland |
 
-| Parameter | Description |
-|---|---|
-| Channel Name | The name of the channel. |
-| Channel Service Provider | Valid values: Alibaba Cloud SMS(to Chinese Mainland) and Alibaba Cloud SMS(to regions outside Chinese Mainland). Important This parameter cannot be modified after submission. Proceed with caution If you have users in the Chinese mainland and outside the Chinese mainland, you need to configure the two channels. |
-| Scope | This parameter is used to distinguish channels for sending SMS messages. |
-
-**Supported channel service providers**
-
 **Usage notes**
 
 If a username in a message to be sent contains a period symbol (.), the system automatically replaces the period (.) with an asterisk (*) for security reasons.
+
+**Step 1: Add an SMS gateway**
+
 1. In the left-side navigation pane, click **Branding**. On the page that appears, click the **SMS**
 **Gateway** tab.
 2. Click **Add SMS Gateway**. In the dialog box that appears, enter a gateway name, and then
@@ -3745,8 +4111,21 @@ click **Confirm**. image
 1. Find the gateway that you want to manage and click **Edit** in the **Actions** column.
 2. In the panel that appears, click **Create**. In the **Create Channel** dialog box, configure the
 following parameters and click **Confirm**.
+
+| Parameter | Description |
+|---|---|
+| Channel Name | The name of the channel. |
+| Channel Service Provider | Valid values: Alibaba Cloud SMS(to Chinese Mainland) and Alibaba Cloud SMS(to regions outside Chinese Mainland). Important This parameter cannot be modified after submission. Proceed with caution If you have users in the Chinese mainland and outside the Chinese mainland, you need to configure the two channels. |
+| Scope | This parameter is used to distinguish channels for sending SMS messages. |
+
 3. Configure the parameters for the channel. In this example, the **Channel Service Provider**
 parameter is set to **Alibaba Cloud SMS(to Chinese Mainland)**.
+
+**Note**
+
+If you set the **Channel Service Provider** parameter to **Alibaba Cloud SMS(to**
+**regions outside Chinese Mainland)**, pay attention to the following configuration
+differences: On the **Channel Configuration** tab, you do not need to configure the signature, but you need to configure **SenderID**. **SenderID** must be consistent with the configuration in the SMS gateway. Otherwise, messages fail to be sent. You do not need to configure data on the **Gateway Template** tab. i. On the **Channel Configuration** tab, configure the following parameters.
 
 | Parameter | Description |
 |---|---|
@@ -3757,15 +4136,21 @@ parameter is set to **Alibaba Cloud SMS(to Chinese Mainland)**.
 | Signature | The signature that has been filed in the SMS gateway. |
 | Network Access Endpoint | Important If a paid instance is released upon expiration or unsubscribed, IDaaS EIAM automatically deletes the related dedicated endpoint. If you need to use a public endpoint or another dedicated endpoint, you must switch the endpoint. If an IDaaS instance uses a dedicated endpoint, the IDaaS instance is provided with a dedicated and custom private outbound IP address and a public outbound IP address. |
 
-**Note**
-
-If you set the **Channel Service Provider** parameter to **Alibaba Cloud SMS(to**
-**regions outside Chinese Mainland)**, pay attention to the following configuration
-differences: On the **Channel Configuration** tab, you do not need to configure the signature, but you need to configure **SenderID**. **SenderID** must be consistent with the configuration in the SMS gateway. Otherwise, messages fail to be sent. You do not need to configure data on the **Gateway Template** tab. i. On the **Channel Configuration** tab, configure the following parameters. We recommend that you click **Send a text message to the test mobile number** to conduct a test before you click **Save**. ii. On the **Gateway Template** tab, configure the parameters. Configure the **Text Message Language** and **Template Code** parameters for your SMS scenario. The following SMS scenarios are supported: OTP via SMS, OTP via SMS (2FA), Phone-Number Change Verification, Authentication via SMS, Initialize Password, and Password Reset by Administrator.
+We recommend that you click **Send a text message to the test mobile number** to conduct a test before you click **Save**. ii. On the **Gateway Template** tab, configure the parameters. Configure the **Text Message Language** and **Template Code** parameters for your SMS scenario. The following SMS scenarios are supported: OTP via SMS, OTP via SMS (2FA), Phone-Number Change Verification, Authentication via SMS, Initialize Password, and Password Reset by Administrator.
 **Text Message Language**: **Simplified Chinese (zh-Hans-CN)** and **English (en-US)**
 are supported.
 **Template Code**: the unique identifier of the SMS template that is approved by the
 SMS service provider.
+
+### 7.4 Email gateways
+
+This topic describes how to configure and use a custom email gateway.
+
+**Overview**
+
+Identity as a Service (IDaaS) allows you to add custom email gateways to your instance. This way, you can configure email templates in different languages and send email notifications that contain enterprise brand information to users.
+
+**Terms**
 
 | Term | Description |
 |---|---|
@@ -3773,18 +4158,14 @@ SMS service provider.
 | custom email gateway | The email gateway that you add to your IDaaS instance. To add a custom gateway, activate an email gateway service such as Alibaba Cloud Direct Mail. |
 | default email gateway | The email gateway that is used by your IDaaS instance to send email notifications to users. The default email gateway can be the initial email gateway or a custom email gateway. |
 
+**Preparations**
+
+To facilitate the configuration process, we recommend that you make the following preparations before you configure a custom email gateway.
+
 | Item | Description |
 |---|---|
 | Email gateway | You need to activate an email gateway service such as Alibaba Cloud Direct Mail to send emails to users. In addition, you need to create an email domain name and sender address in advance for sending emails. |
 | Create an instance | Create an IDaaS instance. |
-
-### Email gateways
-
-This topic describes how to configure and use a custom email gateway. Identity as a Service (IDaaS) allows you to add custom email gateways to your instance. This way, you can configure email templates in different languages and send email notifications that contain enterprise brand information to users.
-
-**Preparations**
-
-To facilitate the configuration process, we recommend that you make the following preparations before you configure a custom email gateway.
 
 **Add a custom email gateway**
 
@@ -3810,13 +4191,9 @@ If you specify a custom email gateway as the default email gateway and the custo
 
 IDaaS allows you to remove custom email gateways. After you remove a gateway, the configuration of the gateway is cleared and cannot be restored.
 
-| The AD domain server and ENI belong to the same Apsara Stack VPC |  | If your AD domain server and the ENI of your EIAM instance belong to the same Apsara Stack VPC, you must implement access control by using the following method: Configure the security group to which the AD domain server belongs to allow access from the IP address of the ENI. |
-|---|---|---|
-| The AD domain server and ENI belong to different Apsara Stack VPCs |  | If your AD domain server and the ENI of your EIAM instance belong to different Apsara Stack VPCs, you must implement access control by using the following methods: Connect the two Apsara Stack VPCs by using a Cloud Enterprise Network (CEN) instance. Configure the security group to which the AD domain server belongs to allow access from the IP address of the ENI. |
+## 8 Other configurations
 
-## Other configurations
-
-### Network endpoints
+### 8.1 Network endpoints
 
 Network endpoints implement network access for Identity as a Service (IDaaS) instances. This topic describes endpoints and how to configure and use endpoints in IDaaS.
 
@@ -3828,16 +4205,24 @@ A dedicated endpoint is an exclusive endpoint for an Employee Identity and Acces
 
 After an IDaaS instance connects to your Apsara Stack VPC over a private network, you can synchronize the data of Active Directory (AD) domains, Lightweight Directory Access Protocol (LDAP) servers, and applications, and enable the AD authentication and LDAP authentication features, without the need to enable Internet-facing ports. The following sections describe network access in different scenarios. In the following examples, an AD domain server is used.
 
-| The AD domain server belongs to a data center or a third-party cloud service provider |  | If the AD domain server belongs to a data center or a third-party cloud service platform, you must implement access control by using the following methods: Connect the Apsara Stack VPC to the data center or cloud service platform to which the AD domain server belongs by using a leased line, such as a VPN gateway. Configure the firewall of the AD domain server to allow access from the IP address of the ENI. |
+| The AD domain server and ENI belong to the same Apsara Stack VPC |   | If your AD domain server and the ENI of your EIAM instance belong to the same Apsara Stack VPC, you must implement access control by using the following method: Configure the security group to which the AD domain server belongs to allow access from the IP address of the ENI. |
+|---|---|---|
+| The AD domain server and ENI belong to different Apsara Stack VPCs |   | If your AD domain server and the ENI of your EIAM instance belong to different Apsara Stack VPCs, you must implement access control by using the following methods: Connect the two Apsara Stack VPCs by using a Cloud Enterprise Network (CEN) instance. Configure the security group to which the AD domain server belongs to allow access from the IP address of the ENI. |
+
+| The AD domain server belongs to a data center or a third-party cloud service provider |   | If the AD domain server belongs to a data center or a third-party cloud service platform, you must implement access control by using the following methods: Connect the Apsara Stack VPC to the data center or cloud service platform to which the AD domain server belongs by using a leased line, such as a VPN gateway. Configure the firewall of the AD domain server to allow access from the IP address of the ENI. |
 |---|---|---|
 
 **Dedicated access to the Internet**
 
 After an EIAM instance connects to your Apsara Stack VPC over a private network, you can associate an Elastic IP Address (EIP) with the ENI of the EIAM instance or associate an Internet NAT gateway with your Apsara Stack VPC. This way, the EIAM instance can use a public IP address to access the Internet. You can specify the public IP address as the trusted IP address in WeCom to meet your requirements for WeCom access.
 
-### Network scopes
+### 8.2 Network scopes
 
-This topic introduces network scopes and describes how to configure network scopes. You can use the network scope feature to dynamically adjust the IP addresses of certain features, such as conditional access, without the need to modify other configurations.
+This topic introduces network scopes and describes how to configure network scopes.
+
+**Overview**
+
+You can use the network scope feature to dynamically adjust the IP addresses of certain features, such as conditional access, without the need to modify other configurations.
 
 **Add a network scope**
 
@@ -3851,9 +4236,9 @@ Only the classic network is supported. You can add IPv4 and IPv6 addresses or CI
 
 You can delete a network scope that is no longer required. You cannot restore the network scope after you delete it. When you delete a network scope, the system checks whether it is in use. If the network scope is in use, you cannot delete it.
 
-## Use Cases
+## 9 Use Cases
 
-### Synchronize AD domain data
+### 9.1 Synchronize AD domain data to DingTalk
 
 **to DingTalk**
 
@@ -3970,7 +4355,7 @@ identity provider. In the preceding figure, the field identifier of workplace is
 
 **account, a text message is sent, as shown in the following figure.**
 
-### Log in to applications from
+### 9.2 Log in to applications from DingTalk through SSO
 
 **DingTalk through SSO**
 
@@ -3996,7 +4381,7 @@ Grant accounts the permissions to access the application. You can select All Use
 
 **Step 4: Generate the application endpoint**
 
-Generate the endpoint of the application in the following format: https://{IDaaS user portal You can obtain the IDaaS user portal address from the `instance list` in the IDaaS console, as shown in the following figure. You can obtain the ID of the application from the **Application** page of the instance in the IDaaS console, as shown in the following figure. The generated endpoint is as follows: https://bm6sxxxx.aliyunidaas.com/login/go/app_mmhsgpkmsxxxxxxxxxxxxxxxx
+Generate the endpoint of the application in the following format: https://{IDaaS user portal address}/login/go/{IDaaS application ID} You can obtain the IDaaS user portal address from the `instance list` in the IDaaS console, as shown in the following figure. You can obtain the ID of the application from the **Application** page of the instance in the IDaaS console, as shown in the following figure. The generated endpoint is as follows: https://bm6sxxxx.aliyunidaas.com/login/go/app_mmhsgpkmsxxxxxxxxxxxxxxxx
 
 **Step 5: Create an application in DingTalk**
 
@@ -4010,7 +4395,7 @@ address is optional. Users can log in to the application in the DingTalk PC cons
 
 After you test the DingTalk application, release the application. After the application is released, you can set the visibility scope of the application. You can authorize all employees, specific employees, or only administrators to access the application. The **Specific Employees** option allows you to grant access permissions by user, organization, or role. After you grant permissions, administrators can set an application portal for specific employees or all employees. Employees can also add their portals in the console. After a user clicks the icon of the application in the DingTalk console, the user is automatically logged in. During the auto login process, IDaaS finds the corresponding IDaaS account based on the DingTalk account of the user, and then matches it with the application account. This way, the user is able to log in to the application through SSO.
 
-### Use an AD or OpenLDAP
+### 9.3 Use an AD or OpenLDAP account to log in to a third-party application
 
 **account to log in to a third-party**
 
@@ -4020,7 +4405,7 @@ This topic describes how to use Identity as a Service (IDaaS) to log in to a thi
 
 **Scenarios**
 
-IDaaS supports data synchronization with AD domains and delegated authentication. This allows you to log in to hundreds of applications by using an AD or OpenLDAP account. To achieve the preceding goals, you must synchronize an AD account to IDaaS and add an application that supports single sign-on (SSO) to IDaaS. This configuration allows your enterprise account to log in to a third-party application by using an AD account.
+IDaaS supports data synchronization with AD domains and delegated authentication. This allows you to log in to hundreds of applications by using an AD or OpenLDAP account. To achieve the preceding goals, you must synchronize an AD account to IDaaS and add an application that supports single sign-on (SSO) to IDaaS**.** This configuration allows your enterprise account to log in to a third-party application by using an AD account.
 
 **Note**
 
@@ -4046,7 +4431,14 @@ Add an application in IDaaS and configure SSO for the application. In this topic
 
 **Note**
 
-When you associate a Resource Access Management (RAM) user, specify the username of the AD account that is synchronized to IDaaS as the username of the IDaaS account, and use the username of the RAM user as the username of the application account. Grant accounts the permissions to access the application. You can select All Users or Manually for the Authorize parameter on the **SSO** tab. If you select Manually for the Authorize parameter, you must grant permissions by account or organization on the **Authorize** tab. An account can access the application only after the account is granted access permissions. If you added an SAML application such as Resource Access Management (RAM), you can configure the Application User parameter on the SSO tab. IDaaS passes the username of the IDaaS account or the username of the application account to the application. Then, the application uses the username to match the corresponding account for login. If existing accounts are available, make sure that they correspond to IDaaS accounts. If they do not correspond to IDaaS accounts, you must create accounts in the application in advance.
+When you associate a Resource Access Management (RAM) user, specify the username of the AD account that is synchronized to IDaaS as the username of the IDaaS account, and use the username of the RAM user as the username of the application account.
+
+**Step 4: Grant application permissions**
+
+Grant accounts the permissions to access the application. You can select All Users or Manually for the Authorize parameter on the **SSO** tab. If you select Manually for the Authorize parameter, you must grant permissions by account or organization on the **Authorize** tab. An account can access the application only after the account is granted access permissions. If you added an SAML application such as Resource Access Management (RAM), you can configure the Application User parameter on the SSO tab. IDaaS passes the username of the IDaaS account or the username of the application account to the application. Then, the application uses the username to match the corresponding account for login. If existing accounts are available, make sure that they correspond to IDaaS accounts. If they do not correspond to IDaaS accounts, you must create accounts in the application in advance.
+
+**Step 5. Configure a login method**
+
 1. In the IDaaS console, click **Sign-In**.
 2. Enable AD delegated authentication.
 3. Optional. Configure the default login method.
@@ -4068,7 +4460,7 @@ username and password. Otherwise, click the AD icon.
 username and password. Otherwise, click the AD icon.
 3. In the IDaaS application portal, click the application icon to log in to the application.
 
-### Use AD, LDAP, or IDaaS
+### 9.4 Use AD, LDAP, or IDaaS accounts to log in to DingTalk Enterprise
 
 **accounts to log in to DingTalk**
 
@@ -4101,11 +4493,21 @@ recommend that you map the userid to the IDaaS userId or username field. For mor
 
 **Step 3: Create an application in IDaaS**
 
-IDaaS is pre-integrated with DingTalk Enterprise. You can configure SSO for DingTalk Enterprise after simple configurations. IDaaS supports various login methods, including AD, LDAP, IDaaS username and password, and IDaaS text message verification. In addition, IDaaS supports 2FA and password policies. For more information, see General settings, 2FA, and Password policies.
+IDaaS is pre-integrated with DingTalk Enterprise. You can configure SSO for DingTalk Enterprise after simple configurations.
+
+**Step 4: Configure a login method**
+
+IDaaS supports various login methods, including AD, LDAP, IDaaS username and password, and IDaaS text message verification. In addition, IDaaS supports 2FA and password policies. For more information, see General settings, 2FA, and Password policies.
 
 **Note**
 
-The DingTalk login method is not displayed on the DingTalk mobile app. If you want users to log in by using an AD or LDAP account, you can customize the settings of the AD or LDAP IdP. Configure the `userPrincipalName` , `sAMAccountName` , `uid` , and `mail` field to specify the login username. You can also personalize the IDaaS login page, which is displayed when users log in to DingTalk Enterprise. For more information, see Branding. After the administrator completes the preceding steps, users can log in to DingTalk Enterprise by using their AD, LDAP, or IDaaS accounts. The login method is supported for the desktop client, mobile app, and web client of DingTalk Enterprise. Open the desktop client of DingTalk Enterprise and click **Dedicated Account Login**.
+The DingTalk login method is not displayed on the DingTalk mobile app. If you want users to log in by using an AD or LDAP account, you can customize the settings of the AD or LDAP IdP. Configure the `userPrincipalName` , `sAMAccountName` , `uid` , and `mail` field to specify the login username. You can also personalize the IDaaS login page, which is displayed when users log in to DingTalk Enterprise. For more information, see Branding.
+
+**User login procedure**
+
+After the administrator completes the preceding steps, users can log in to DingTalk Enterprise by using their AD, LDAP, or IDaaS accounts. The login method is supported for the desktop client, mobile app, and web client of DingTalk Enterprise.
+1. . Click Dedicate Account Login**
+Open the desktop client of DingTalk Enterprise and click **Dedicated Account Login**.
 2. . Enter the organization code**
 Enter the organization code and click **Next** to go to the IDaaS login page. For more information about how to obtain the organization code, click the link below the button.
 3. . Enter the account password**
@@ -4113,7 +4515,7 @@ On the IDaaS login page, enter the account password. The administrator can set t
 4. . Bind a mobile phone number**
 At your first login, you need to bind your mobile phone number to DingTalk Enterprise. Then, you can log in to DingTalk Enterprise and use its features.
 
-### Use Alibaba Cloud IDaaS to
+### 9.5 Use Alibaba Cloud IDaaS to synchronize account data from DingTalk, WeCom, Feishu, AD, and other IdPs to Alibaba Cloud RAM
 
 **synchronize account data from**
 
@@ -4142,9 +4544,11 @@ Grant permissions to the OAuth application and create an application secret.
 
 **Step 2: Configure SCIM synchronization in IDaaS**
 
+**Step 3: Synchronize accounts**
+
 After you click **Push Now**, the accounts within the specified synchronization scope are synchronized to RAM.
 
-### Synchronize accounts and
+### 9.6 Synchronize accounts and groups to CloudSSO by using SCIM in Alibaba Cloud IDaaS
 
 **groups to CloudSSO by using SCIM**
 
@@ -4177,9 +4581,13 @@ If you require more flexibility in the configuration, you can use a standard SCI
 5. Configure the Operation and Field Mapping parameters.
 i. **Operation**: Administrators can subscribe to the change events that they want to follow to receive instant push notifications. When a change occurs on the accounts within the specified synchronization scope in IDaaS, IDaaS automatically synchronizes the change to the application. ii. **Field Mapping**: This parameter displays the field mappings involved in SCIM-based synchronization. You can modify the field mappings based on your business requirements.
 6. Test the connection.
-After you save the configuration, we recommend that you click **Test Connectivity** to check whether the configuration is valid. You can click **Push Now** to synchronize all accounts within the specified synchronization scope to CloudSSO based on your business requirements. After you click **Push Now**, the accounts within the specified synchronization scope are synchronized to CloudSSO. If the accounts in the specified synchronization scope are synchronized to CloudSSO, you can go to the **Log > Provisioning > Tasks** page to view synchronization logs.
+After you save the configuration, we recommend that you click **Test Connectivity** to check whether the configuration is valid. You can click **Push Now** to synchronize all accounts within the specified synchronization scope to CloudSSO based on your business requirements.
 
-### Synchronize accounts to RAM
+**Step 3: Synchronize accounts**
+
+After you click **Push Now**, the accounts within the specified synchronization scope are synchronized to CloudSSO. If the accounts in the specified synchronization scope are synchronized to CloudSSO, you can go to the **Log > Provisioning > Tasks** page to view synchronization logs.
+
+### 9.7 Synchronize accounts to RAM by using SCIM in Apsara Stack IDaaS
 
 **by using SCIM in Apsara Stack**
 
@@ -4195,6 +4603,8 @@ application.
 applications within the account.
 
 **Step 1: Create and authorize an OAuth application in the RAM**
+
+**console**
 
 1. Log in to the `RAM console` by using your Apsara Stack tenant account.
 2. In the left-side navigation pane, choose **OAuth Preview > Enterprise Application >**
@@ -4224,12 +4634,12 @@ In the left-side navigation pane, click **Application**. On the page that appear
 2. Go to the **Provisioning** tab, specify the synchronization scope, and click **Save**.
 3. Turn on **Provision IDaaS Accounts to Application**.
 4. Configure basic parameters.
-i. Specify `client_id` and `client_secret` . a. Log in to the `RAM console` . In the left-side navigation pane, choose **Integrations >**
+i. Specify `client_id` and `client_secret` **.** a. Log in to the `RAM console` . In the left-side navigation pane, choose **Integrations >**
 **OAuth Preview**.
 b. Find the application that is used for SCIM synchronization and click its name to go to the details page. c. In the **Basic Information** section of the details page, you can view **Application ID,**
 **which is client_id**.
-d. **AppSecretValue** displays the **client_secret** generated in Step 1. ii. Operation: Administrators can subscribe to specified change events, such as user creation, update, and deletion. When a change occurs in IDaaS, the system automatically triggers synchronization and pushes the change to the destination application in real time. iii. Full Scope: If you select this option, the corresponding data is pushed to the application after you click Push Now.
-5. Field Mapping: You can customize SCIM field mappings and modify attribute matching rules
+d. **AppSecretValue** displays the **client_secret** generated in Step 1. ii. Operation**:** Administrators can subscribe to specified change events, such as user creation, update, and deletion. When a change occurs in IDaaS, the system automatically triggers synchronization and pushes the change to the destination application in real time. iii. Full Scope: If you select this option, the corresponding data is pushed to the application after you click Push Now.
+5. Field Mapping**:** You can customize SCIM field mappings and modify attribute matching rules
 on demand. After you modify the mappings, click **Save** to ensure that data is accurately synchronized.
 6. After you complete the configuration, click **Save**. We recommend that you click **Test**
 **Connectivity** to check whether the configuration is valid.
@@ -4239,17 +4649,23 @@ You can click Push Now to synchronize all accounts within the specified synchron
 
 After you click **Push Now**, the accounts within the specified synchronization scope are synchronized to RAM.
 
-### Use IDaaS to log in to Apsara
+### 9.8 Use IDaaS to log in to Apsara Stack DevOps from IdPs such as AD, DingTalk, and WeCom
 
 **Stack DevOps from IdPs such as**
 
 **AD, DingTalk, and WeCom**
 
-This topic describes how to use Identity as a Service (IDaaS) to log in to Apsara Stack DevOps by using a user that belongs to an identity provider (IdP), such as DingTalk, WeCom, Lark, Active Directory (AD), OpenLDAP, Okta, or Microsoft Entra ID (formerly Azure AD). IDaaS is a cloud-native, cost-effective, convenient, and standard identity and permission management system designed for enterprise users. You can connect IDaaS to multiple upstream IdPs. This way, you can log in to a downstream application, such as Apsara Stack DevOps, by initiating single sign-on (SSO) as an IdP user and achieve the following synchronizations:
+This topic describes how to use Identity as a Service (IDaaS) to log in to Apsara Stack DevOps by using a user that belongs to an identity provider (IdP), such as DingTalk, WeCom, Lark, Active Directory (AD), OpenLDAP, Okta, or Microsoft Entra ID (formerly Azure AD).
+
+**Overview**
+
+IDaaS is a cloud-native, cost-effective, convenient, and standard identity and permission management system designed for enterprise users. You can connect IDaaS to multiple upstream IdPs. This way, you can log in to a downstream application, such as Apsara Stack DevOps, by initiating single sign-on (SSO) as an IdP user and achieve the following synchronizations:
 **Data synchronization**: Synchronize data of the upstream IdP user to IDaaS and then from
 IDaaS to the downstream application.
 **Authentication synchronization**: Log in to IDaaS and then the downstream application
 by using the IdP user. For more information about the IdPs supported by IDaaS, see IdPs.
+
+**Examples**
 
 **Access an application from the IDaaS application portal**
 
@@ -4266,11 +4682,7 @@ click Create.
 
 **Step 2. Bind IDaaS to the IdP**
 
-You can bind IDaaS to multiple standard upstream IdPs. You can also bind IDaaS to nonstandard IdPs, such as self-managed data centers, by using private Connector components. For more information about how to bind IDaaS to different IdPs, see the following topics:
-
-### Bind a DingTalk first-party application to IDaaS
-
-Connect IDaaS to Lark
+You can bind IDaaS to multiple standard upstream IdPs. You can also bind IDaaS to nonstandard IdPs, such as self-managed data centers, by using private Connector components. For more information about how to bind IDaaS to different IdPs, see the following topics: Connect IDaaS to Lark
 
 **Step 3. Configure Apsara Stack DevOps SSO**
 
@@ -4284,7 +4696,7 @@ Apsara Stack DevOps SSO is based on Apsara Stack user-based SSO. You can configu
 
 Apsara Stack DevOps users must be synchronized from RAM. You can synchronize accounts in IDaaS to RAM and then synchronize the RAM users to Apsara Stack DevOps. For more information, see the following topics: Synchronize accounts in IDaaS to RAM: Synchronize accounts to RAM by using SCIM in Apsara Stack IDaaS. Synchronize RAM users to Apsara Stack DevOps: Add RAM users.
 
-### Configure Alibaba Cloud API
+### 9.9 Configure Alibaba Cloud API Gateway
 
 **Gateway**
 
@@ -4292,7 +4704,11 @@ This topic describes how to use Alibaba Cloud API Gateway and machine-to-machine
 
 **Prerequisites**
 
-You have an M2M application server and client in Identity as a Service (IDaaS). To implement M2M authentication for your API operations and ensure that callers are trusted and their permissions are controlled, you need to follow the following three steps:
+You have an M2M application server and client in Identity as a Service (IDaaS).
+
+**Overview**
+
+To implement M2M authentication for your API operations and ensure that callers are trusted and their permissions are controlled, you need to follow the following three steps:
 1. Register your API operations with Alibaba Cloud API Gateway.
 2. Grant permissions to your M2M client.
 3. Configure plug-ins in API Gateway to associate the API operations to be protected with the
@@ -4308,13 +4724,6 @@ permission scopes of your M2M client.
 your business endpoint with Alibaba Cloud API Gateway. This simplifies the management of the API operations for your business. i. Attach your business endpoint to the backend service that you created.
 3. After you create the backend service, manage the API operations within the backend
 service. i. Find the backend service that you created, and click **Create API** in the Actions column. The Create API page appears. ii. In the Basic Information step, set Security Authentication to **No Authentication** for this example. Then, click Next. iii. In the Define API Request step, specify the **Request Path** and **HTTP Method** parameters. iv. When you define the backend service for the API operation, enter the actual request path. When a caller calls the API operation by using the specified request path, the request is mapped to the actual backend path. v. Select the response ContentType and complete the API operation creation.
-
-| Public key endpoint in the console | Public key content displayed in the browser |
-|---|---|
-
-| Script configuration before replacement --- parameter: id token # Obtain _ the JWT from the specified parameter, which corresponds to the API operation parameter. parameterLocation: query # The location from which the JWT is read. Valid values: query and header. This parameter is optional if Request Mode for the bound API is set to Map (Filter Out Unknown Parameters) or Map (Pass-through Unknown Parameters). This parameter is required if Request Mode for the bound API is set to Pass-through. bypassEmptyToken: false # Specifies whether to forward requests that do not include tokens to backend | Script configuration after replacement --- parameter: id token # The _ parameter from which the JWT is read. It corresponds to a parameter in an API request. parameterLocation: query # The location from which the JWT is read. Valid values: query and header. This parameter is optional if Request Mode for the bound API is set to Map (Filter Out Unknown Parameters) or Map (Pass-through Unknown Parameters). This parameter is required if Request Mode for the bound API is set to Pass-through. bypassEmptyToken: false # Specifies whether to forward requests that do not include tokens to backend |
-|---|---|
-
 4. After you create the API operation, debug it in the console to verify that it is available and
 runs as expected. i. Prepare the debugging environment. Select an environment and publish the API operation. ii. Debug the API operation in the staging environment by sending a request. In this example, the result meets expectations. This indicates that the API operation is available.
 
@@ -4334,11 +4743,19 @@ Log in to the `API Gateway console` . In the left-side navigation pane, choose *
 Enter the script configuration. The JSON Web Key (JWK) information in the script must match the public key of the M2M server. In the `IDaaS console` , navigate to your **M2M**
 **application**. In the **Application Settings** section, copy the URL of the **Public Key**
 **Endpoint**. Open the URL in a browser to view the public key information. The following
-figure shows the public key information for this example. Replace the jwk section in the following script with the JWT public key information that you retrieved.
+figure shows the public key information for this example.
 
-|  | services without verification. claimParameters: # The claims to be converted into parameters. API Gateway maps JWT claims to backend parameters. - claimName: aud # The name of the JWT claim, which can be public or private. |  |  | that do not include tokens to backend services without verification. claimParameters: # The claims to be converted into parameters. API Gateway maps JWT claims to backend parameters. - claimName: aud # The name of the JWT claim, which can be public or private. |  |
+| Public key endpoint in the console | Public key content displayed in the browser |
+|---|---|
+
+Replace the jwk section in the following script with the JWT public key information that you retrieved.
+
+| Script configuration before replacement --- parameter: id token # Obtain _ the JWT from the specified parameter, which corresponds to the API operation parameter. parameterLocation: query # The location from which the JWT is read. Valid values: query and header. This parameter is optional if Request Mode for the bound API is set to Map (Filter Out Unknown Parameters) or Map (Pass-through Unknown Parameters). This parameter is required if Request Mode for the bound API is set to Pass-through. bypassEmptyToken: false # Specifies whether to forward requests that do not include tokens to backend | Script configuration after replacement --- parameter: id token # The _ parameter from which the JWT is read. It corresponds to a parameter in an API request. parameterLocation: query # The location from which the JWT is read. Valid values: query and header. This parameter is optional if Request Mode for the bound API is set to Map (Filter Out Unknown Parameters) or Map (Pass-through Unknown Parameters). This parameter is required if Request Mode for the bound API is set to Pass-through. bypassEmptyToken: false # Specifies whether to forward requests that do not include tokens to backend |
+|---|---|
+
+|   | services without verification. claimParameters: # The claims to be converted into parameters. API Gateway maps JWT claims to backend parameters. - claimName: aud # The name of the JWT claim, which can be public or private. |   |   | that do not include tokens to backend services without verification. claimParameters: # The claims to be converted into parameters. API Gateway maps JWT claims to backend parameters. - claimName: aud # The name of the JWT claim, which can be public or private. |   |
 |---|---|---|---|---|---|
-|  | parameterName: aud # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: scope # The name of the JWT claim, which can be public or private. parameterName: scope # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: client id # _ The name of the JWT claim, which can be public or private. parameterName: client id # The _ name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. preventJtiReplay: false # Specifies whether to enable the anti-replay check for jti. Default value: false. # # The following content needs to be replaced. jwk: kty: RSA e: AQAB use: sig kid: O8fpdhrViq2zaaaBEWZITz # If only one JWK is configured, kid is optional. If the JWT includes a kid, API Gateway checks the consistency of kid. alg: RS256 |  |  | parameterName: aud # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: scope # The name of the JWT claim, which can be public or private. parameterName: scope # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: client id # _ The name of the JWT claim, which can be public or private. parameterName: client id # The _ name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. preventJtiReplay: false # Specifies whether to enable the anti-replay check for jti. Default value: false. # # Public key in the JWK jwk: kty: RSA e: AQAB use: sig kid: AUTHSKEY7Ph6QS83xkN76oRwvZsJT68ejJ4PdAX mk # If only one JWK is configured, kid is optional. If the JWT includes a kid, API Gateway checks the consistency of kid. alg: RS256 |  |
+|   | parameterName: aud # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: scope # The name of the JWT claim, which can be public or private. parameterName: scope # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: client id # _ The name of the JWT claim, which can be public or private. parameterName: client id # The _ name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. preventJtiReplay: false # Specifies whether to enable the anti-replay check for jti. Default value: false. # # The following content needs to be replaced. jwk: kty: RSA e: AQAB use: sig kid: O8fpdhrViq2zaaaBEWZITz # If only one JWK is configured, kid is optional. If the JWT includes a kid, API Gateway checks the consistency of kid. alg: RS256 |   |   | parameterName: aud # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: scope # The name of the JWT claim, which can be public or private. parameterName: scope # The name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. - claimName: client id # _ The name of the JWT claim, which can be public or private. parameterName: client id # The _ name of the backend parameter, to which the JWT claim is mapped. location: query # The location of the backend parameter, to which the JWT claim is mapped. Valid values: query, header, path, and formData. preventJtiReplay: false # Specifies whether to enable the anti-replay check for jti. Default value: false. # # Public key in the JWK jwk: kty: RSA e: AQAB use: sig kid: AUTHSKEY7Ph6QS83xkN76oRwvZsJT68ejJ4PdAX mk # If only one JWK is configured, kid is optional. If the JWT includes a kid, API Gateway checks the consistency of kid. alg: RS256 |   |
 
 | n: qSVxcknOm0uCq5vGsOmaorPDzHUubBmZZ4UXj- 9do7w9X1uKFXAnqfto4TepSNuYU2bA - _ tzSLAGBsR- BqvT6w9SjxakeiyQpVmexxnDw5WZwpWenUAcYrf SPEoNU- 0hAQwFYgqZwJQMN8ptxkd0170PFauwACOx4Hfr- 9FPGy8NCoIO4MfLXzJ3mJ7xqgIZp3NIOGXz- GIAbCf13ii7kSStpYqN3L zzpvXUAos1FJ9IPXR _ V84tIZpFVh2lmRh0h8ImK- vI42dwlD hOIzayL1Xno2R0T-d5AwTSdnep7g- _ Fwu8- sj4cCRWq3bd61Zs2QOJ8iustH0vSRMYdP5oYQ | n: i1tIYhXvfilaJi8kaIS8EpgsnDp6G4c1lEg2qRD - _ 1lY8jOIWAVcetq89itl7rjFJ9gmbKGBMJoutaxG HtbAkY0aINkg1 n 0NnNTZDt2UC1UNJaZh12bkY _ _ yubRLA t6JS8PVSr5bpse1SErvDiumqU9CjxBUC _ d4K8R0ALxOwup6yY5gVT4Juia1bEVGPlJ- RnuMvXXbVmwuklKTiWNfBFw1lCDPftfzKVEDTXt 4VphAWOT-CyZKJ8hcYiTnd VaAYxjMQSCxmE- _ utrdXGhyDUaQobs0myvD2eJfzcSWG- qOTC7Hin8bvXIQ v9BkJO3D6uoLpB14XQozWVTX _ aPTIw |
 |---|---|
@@ -4349,12 +4766,9 @@ Set Plug-in Type to **Parametric Access Control**. Enter the script content to i
 
 | The script on the right uses the clientId and scope for verification as an example. condition: "$clientId = 'app m7hfgn66xkyyxlhpkiw5kjen _ hy' and $scope like '%user:read:one%'" clientId is the application ID of the M2M client. scope is the permission scope of the M2M client. Replace these two parameters based on your business requirements. | --- # # In this example, the API request path is /{userId}/... # JWT authentication is enabled for the API request. Two claims, userId and userType, are available in the JWT. # The following plug-in verification conditions apply: # - If userType is set to admin, requests in all paths are allowed. # - If userType is set to user, only requests with the /{userId} path are allowed. parameters: scope: "Token:scope" clientId: "Token:client id" _ # # Rules are defined based on the preceding parameters. For each API request, the plug-in checks the rules in sequence. If a condition in a rule is met, the result is true and the action |
 |---|---|
-|  | that is specified by ifTrue is performed. If a condition in a rule is not met, the result is false and the action that is specified by ifFalse is performed. # The action ALLOW indicates that the request is allowed. The action DENY indicates that the request is denied and an error code is returned to the client. # If neither the ALLOW nor DENY action is performed, the plug-in proceeds to check the next condition. rules: - name: checkScope condition: "$clientId = 'app m7hfgn66xkyyxlhpkiw5kjenhy' and $scope like _ '%user:read:one%'" ifFalse: "DENY" statusCode: 403 errorMessage: "No permission by client id: ${clientId}" responseHeaders: Content-Type: application/json X-IDaaS-clientId: ${clientId} X-IDaaS-scope: ${scope} responseBody: \| <Reason>No permission by client id: ${clientId}</Reason> |
+|   | that is specified by ifTrue is performed. If a condition in a rule is not met, the result is false and the action that is specified by ifFalse is performed. # The action ALLOW indicates that the request is allowed. The action DENY indicates that the request is denied and an error code is returned to the client. # If neither the ALLOW nor DENY action is performed, the plug-in proceeds to check the next condition. rules: - name: checkScope condition: "$clientId = 'app m7hfgn66xkyyxlhpkiw5kjenhy' and $scope like _ '%user:read:one%'" ifFalse: "DENY" statusCode: 403 errorMessage: "No permission by client id: ${clientId}" responseHeaders: Content-Type: application/json X-IDaaS-clientId: ${clientId} X-IDaaS-scope: ${scope} responseBody: \| <Reason>No permission by client id: ${clientId}</Reason> |
 
 **Bind the plug-ins to the API operation**
-
-| client secret is the application secret of the _ M2M client. client id is the application ID of the M2M client. _ grant type is the fixed at client credentials. _ _ scope is the audience identifier of the M2M server plus the permission scope. In this example, scope is https://xxxx.aliyunidaas.com\|user:read:one. |  |
-|---|---|
 
 After you create the two plug-ins, bind them to the API operation. This creates a mapping between the permission scope and the API operation. In this example, this binding allows the user:read:one permission scope to control access to the hello API operation. For each of the two plug-ins, click **Bind API** in the Actions column to bind the plug-in to the API operation.
 
@@ -4366,6 +4780,9 @@ After you complete the preceding procedure, obtain an authorization token from t
 
 Use the `client_secret_post authentication method` to obtain a token. Perform the following steps: Copy the Issuer URL of the M2M server. Enter the client_secret, client_id, grant_type, and scope request parameters. Send a request to the Issuer URL.
 
+| client secret is the application secret of the _ M2M client. client id is the application ID of the M2M client. _ grant type is the fixed at client credentials. _ _ scope is the audience identifier of the M2M server plus the permission scope. In this example, scope is https://xxxx.aliyunidaas.com\|user:read:one. |   |
+|---|---|
+
 **Debug the API operation**
 
 Use the second-level domain of the group as the request URL. You can find this domain in the group details. The input parameters are the token location and token parameter identifier that you defined in the JWT Authentication plug-in. In this example, the input parameter key is id_token, and the value is the token that you retrieved in the previous step. The request returns the expected result. This indicates that the M2M client has permissions to access the hello API operation.
@@ -4374,18 +4791,11 @@ Use the second-level domain of the group as the request URL. You can find this d
 
 For more information about the features of M2M applications, see M2M applications (machine-to-machine permission management). For information about how to use Alibaba Cloud Resource Access Management (RAM) to implement access without an AccessKey pair, see Use RAM to configure AccessKey-free access.
 
-### Use RAM to configure
+### 9.10 Use RAM to configure AccessKey-free access
 
 **AccessKey-free access**
 
 This topic describes how to use Identity as a Service (IDaaS) together with Resource Access Management (RAM) to configure AccessKey-free access for a Machine-to-Machine (M2M) application and obtain a Security Token Service (STS) token.
-
-| Parameter | Description |
-|---|---|
-| IdP Name | The name must be unique within an Apsara Stack tenant account. |
-| Issuer URL | The URL of the issuer that is provided by an external identity provider (IdP). The URL of the issuer must start with https and be a valid URL. The URL cannot contain query parameters that follow a question mark ( ? ), logon information that is identified by at signs ( @ ), or a fragment that is identified by number signs ( # ). |
-| Fingerprint | The fingerprint that is generated based on the HTTPS certificate of an external IdP. You can use a fingerprint to prevent the URL of the issuer from being hijacked or tampered with. After you specify a valid value for Issuer URL, you can click Obtain Fingerprint. Apsara Stack will calculate the fingerprint. We recommend that you calculate the fingerprint on your computer. For example, you can use OpenSSL to calculate the fingerprint . Then, you can compare the calculation result with the calculation result provided by Apsara Stack. If the calculation results are different, the URL of the issuer may have been attacked. Make sure that you enter a valid fingerprint. Note If you want to rotate the certificate of your IdP, we recommend that you generate the fingerprint of the new certificate and add the fingerprint to the OIDC IdP that you created in the RAM console before the rotation. After at least one day, rotate the certificate. You can delete the previous fingerprint after you obtain an STS token. |
-| Client IDs | The ID that is generated for an application when you register the application in the external IdP. When you apply for an OIDC token from an external IdP, you must use a client ID. The client ID is specified in the aud field of the OIDC token that is issued. When you create an OIDC IdP, you must configure the client ID. If you want to use the OIDC token to obtain an STS token, Apsara Stack checks whether the client ID that is specified in the aud field is the same as the client ID that you configured in the OIDC IdP. You can assume a RAM role only when the client IDs are the same. If multiple clients need to access Apsara Stack resources, you can configure multiple client IDs. You can configure a maximum of 50 client IDs. |
 
 **Prerequisites**
 
@@ -4401,6 +4811,13 @@ to-machine permission management) .
 2. On the **Role-based SSO** tab, click the **OIDC** tab. Then, click **Add IdP**.
 3. On the **Create IdP** page, configure the following parameters.
 
+| Parameter | Description |
+|---|---|
+| IdP Name | The name must be unique within an Apsara Stack tenant account. |
+| Issuer URL | The URL of the issuer that is provided by an external identity provider (IdP). The URL of the issuer must start with https and be a valid URL. The URL cannot contain query parameters that follow a question mark ( ? ), logon information that is identified by at signs ( @ ), or a fragment that is identified by number signs ( # ). |
+| Fingerprint | The fingerprint that is generated based on the HTTPS certificate of an external IdP. You can use a fingerprint to prevent the URL of the issuer from being hijacked or tampered with. After you specify a valid value for Issuer URL, you can click Obtain Fingerprint. Apsara Stack will calculate the fingerprint. We recommend that you calculate the fingerprint on your computer. For example, you can use OpenSSL to calculate the fingerprint . Then, you can compare the calculation result with the calculation result provided by Apsara Stack. If the calculation results are different, the URL of the issuer may have been attacked. Make sure that you enter a valid fingerprint. Note If you want to rotate the certificate of your IdP, we recommend that you generate the fingerprint of the new certificate and add the fingerprint to the OIDC IdP that you created in the RAM console before the rotation. After at least one day, rotate the certificate. You can delete the previous fingerprint after you obtain an STS token. |
+| Client IDs | The ID that is generated for an application when you register the application in the external IdP. When you apply for an OIDC token from an external IdP, you must use a client ID. The client ID is specified in the aud field of the OIDC token that is issued. When you create an OIDC IdP, you must configure the client ID. If you want to use the OIDC token to obtain an STS token, Apsara Stack checks whether the client ID that is specified in the aud field is the same as the client ID that you configured in the OIDC IdP. You can assume a RAM role only when the client IDs are the same. If multiple clients need to access Apsara Stack resources, you can configure multiple client IDs. You can configure a maximum of 50 client IDs. |
+
 | Earliest Issuance Time Allowed | The time limit on an OIDC token. If an OIDC token is issued earlier than the time limit, the OIDC token cannot be used to obtain an STS token. Default value: 12 hours. Valid values: 1 to 168 hours. |
 |---|---|
 | Remarks | The description of the OIDC IdP. |
@@ -4414,10 +4831,6 @@ to-machine permission management) .
 2. In the editor, follow the steps shown in the following figure to add an **IdP**.
 3. In the **Add principal** dialog box, select the IdP that you created from the **Identity**
 **Provider** drop-down list and click **OK**.
-
-| M2M applications (machine-to-machine permission |  |
-|---|---|
-
 4. After the IdP is added, the following iss and aud conditions are generated by default. You
 can modify or delete both conditions or add other conditions.
 5. The following example demonstrates how to add a sub condition. You can add other
@@ -4426,6 +4839,10 @@ conditions as needed. After you complete the configuration, click **OK**.
 **Note**
 
 **Value**: Enter the value of **ResourceServer Identifier** of the M2M application
+server. For more information about how to add M2M applications and view
+
+| M2M applications (machine-to-machine permission |   |
+|---|---|
 
 ```
 management) .
@@ -4450,8 +4867,7 @@ Replace the following placeholder parameters with the configuration of your appl
 <YOUR_SERVER_AUD_IDENTIFIER> with the actual values specified for the M2M application
 ```
 
-.
-#
+`.` `#`
 
 ```bash
 # <YOUR_SERVER_ISSUER_ENDPOINT>: the issuer. View Endpoint in Resources Server Applic
@@ -4464,7 +4880,7 @@ plication > General Configuration > Credential Management and replace it.
 ntifier in Resources Server Application > General Configuration > Permission Applicat ion > Audience Identifier and replace it.
 ```
 
-#
+`#`
 
 ```bash
 curl --location --request POST 'https://<YOUR_SERVER_ISSUER_ENDPOINT>.aliyunidaas.com/api/v2/iauths_system/oauth2/toke
@@ -4506,7 +4922,7 @@ For more information about the **AssumeRoleWithOIDC** operation, refer to API Re
 
 OIDCProviderArn: Go to the **Basic Information** page of the OIDC IdP role that you created and obtain the ARN from the **Trust Policy**. RoleArn: Go to the **Basic Information** page of the OIDC IdP role that you created and obtain the **ARN**. OIDCToken: Enter the M2M token that you obtained. RoleSessionName: This is a user-defined field that does not have special requirements. It is used only as a role identifier.
 
-### Synchronize users or groups
+### 9.11 Synchronize users or groups from Azure AD to IDaaS by using SCIM
 
 **from Azure AD to IDaaS by using**
 
@@ -4565,7 +4981,7 @@ check whether the users and group are synchronized. The **Source** of users sync
 3. On the **Account > Organization** tab, view the group synchronized from Azure AD.
 After you perform the preceding steps, you can synchronize users in Azure AD to IDaaS by using SCIM to automate user management. If you encounter issues during synchronization, contact your account manager or technical support.
 
-### Synchronize users or groups
+### 9.12 Synchronize users or groups from Okta to IDaaS by using SCIM
 
 **from Okta to IDaaS by using SCIM**
 
@@ -4602,7 +5018,7 @@ i. **Configure an SCIM connection.** In the SCIM Connection section, click Edit 
 
 **Important**
 
-Attributes that do not exist in the Okta user configuration cannot be mapped. icon. After you complete the configurations, click **Save**. This step is optional.
+Attributes that do not exist in the Okta user configuration cannot be mapped. c. To adjust field mappings, click the icon. After you complete the configurations, click **Save**. This step is optional.
 4. **Synchronize users**. To assign users to the application, click the **Assignments** tab, choose
 **Assign** > **Assign to People**, select users, and then click **Assign**. Modify related attributes
 based on your business requirements. Then, click **Save and Go Back** and select the users that you want to synchronize.
@@ -4619,7 +5035,7 @@ Make sure that Okta and IDaaS use the same password policies. You can configure 
 2. Go to the User or Group page to view the synchronized users or groups. **Source** for the
 synchronized users or groups is automatically displayed as **SCIM Import**. After you perform the preceding steps, you can synchronize users or user groups in Okta to Alibaba Cloud IDaaS for centralized identity management. This solution reduces manual operations and improves management efficiency and security. If you need further assistance, contact your account manager or technical support.
 
-### Use IDaaS to implement
+### 9.13 Use IDaaS to implement user-based SSO and role-based SSO for Grafana
 
 **user-based SSO and role-based**
 
@@ -4780,22 +5196,26 @@ ion callbacks is the Grafana address. root_url =http://60.***.***.144:3000
 
 **Important**
 
-You can replace **role_attribute_path** based on your business requirements. For more information, see Configure role mapping. All values that contain ****** need to be replaced by the actual values obtained from IDaaS.
+You can replace **role_attribute_path** based on your business requirements. For more information, see Configure role mapping. All values that contain ****** need to be replaced by the actual values obtained from IDaaS. iii. **Role mapping (role_attribute_path) rules:** `roles[*]` : The array named `roles` that is extracted from the user attributes. In most cases, the array contains a list of user roles returned by OAuth or LDAP.
 
-| contains(roles[*], 'admin') |  | : C |
+| contains(roles[*], 'admin') |   | : C |
 |---|---|---|
-| element whose value is |  |  |
+| element whose value is |   |   |
 
-| roles |  | array |
+`contains(roles[*], 'admin')` : Checks whether the `roles` array contains an If the `roles` array contains `'admin'` , the user role is set to `'GrafanaAdmin'` , which indicates Grafana super administrators.
+
+| roles |   | array |
 |---|---|---|
-| to |  |  |
+| to |   |   |
 
-| If the | roles |  |
+If the `roles` array does not contain `'admin'` but contains `'editor'` , the user role is set to `'Editor'` , which has editor permissions.
+
+| If the | roles |   |
 |---|---|---|
-| 'Viewer' |  |  |
-|  |  | , w |
+| 'Viewer' |   |   |
+|   |   | , w |
 
-iii. **Role mapping (role_attribute_path) rules:** `roles[*]` : The array named `roles` that is extracted from the user attributes. In most cases, the array contains a list of user roles returned by OAuth or LDAP. If the `roles` array contains `'admin'` , the user role is set to `'GrafanaAdmin'` , which indicates Grafana super administrators.
+If the `roles` array does not contain `'admin'` or `'editor'` , the user role is set to `'Viewer'` , which has viewer permission.
 2. **Restart the Grafana service.** Save the configuration changes and restart the Grafana
 service to make sure that the changes are applied.
 
@@ -4811,7 +5231,7 @@ On the Grafana login page, click **Sign in with AllCloud IDaaS**. If you are not
 
 If the SSO login option is not displayed, you must confirm that **IDaaS** is correctly enabled as an identity provider (IdP) in the Grafana configuration file.
 2. **Role-based SSO**
-Create different role groups in IDaaS and add the users to be authorized to the groups. i. Assign different roles to the users in IDaaS, such as `admin` , `editor` ,, `viewer` . ii. Authorize the group to the OIDC application created in IDaaS. iii. Use users with different roles to log in to Grafana through SSO. iv. Check whether the user permissions are as expected:
+Create different role groups in IDaaS and add the users to be authorized to the groups. i. Assign different roles to the users in IDaaS, such as `admin` , `editor` ,**,** `viewer` . ii. Authorize the group to the OIDC application created in IDaaS. iii. Use users with different roles to log in to Grafana through SSO. iv. Check whether the user permissions are as expected:
 **Admin**: The Grafana super administrator can manage data sources and users.
 **Editor**: Editors can create and modify dashboards, but cannot manage users.
 **Viewer**: Viewers can only view the dashboard.
@@ -4821,7 +5241,7 @@ v. If the role mappings are not as expected, check the `role_attribute_path` con
 
 Grafana uses the OAuth 2.0 protocol to implement SSO. However, only SSO processes that are initiated by Grafana service providers (SPs) are supported. SSO processes that are initiated by IdPs are not supported. Before you use the SSO feature, make sure that your IDaaS account username is the same as the Grafana username. Otherwise, you need to associate the accounts in IDaaS or create a corresponding user in Grafana.
 
-### Log in to IDaaS applications
+### 9.14 Log in to IDaaS applications from Lark by using SSO
 
 **from Lark by using SSO**
 
@@ -4889,7 +5309,7 @@ your username or password.
 
 Connect IDaaS to Lark Apsara Stack user-based SSO
 
-### Log in to IDaaS applications
+### 9.15 Log in to IDaaS applications in WeCom through SSO
 
 **in WeCom through SSO**
 
@@ -4937,7 +5357,7 @@ a. For more information about how to obtain the URL of the IDaaS portal, see Acc
 2. If you are logged in, you will directly enter the application page without the need to re-enter
 your username or password.
 
-### Configure SSO for AI Coding
+### 9.16 Configure SSO for AI Coding Assistant Lingma
 
 **Assistant Lingma**
 
@@ -4951,9 +5371,9 @@ column of the instance.
 2. In the left-side navigation pane, click **Application**. On the Application page, click **Add**
 **Application** and then click the **Standard Protocols** tab.
 3. On the General tab, obtain the **client_id** and **client_secret**, which are required for binding
-the application to IDaaS.
+the application to IDaaS**.**
 4. Go to the **Sign In > SSO** tab.
-i. Turn on SSO. ii. Enter the callback URL that is used in Step 3 in the Redirect URIs field. iii. Authorize: Select All Users. iv. In the Application Settings section, obtain the issuer, which is required for binding the application to IDaaS. After you complete the configuration, click Save.
+i. Turn on SSO. ii. Enter the callback URL that is used in Step 3 in the Redirect URIs field. iii. Authorize: Select All Users. iv. In the Application Settings section, obtain the issuer, which is required for binding the application to IDaaS**.** After you complete the configuration, click Save.
 
 **Step 2: Create an Apsara DevOps Enterprise Edition instance**
 
@@ -4968,17 +5388,15 @@ i. Log in to the `Apsara DevOps console` and click Enterprise Edition in the men
 
 **Note**
 
-For security reasons, Internet and private network access are disabled by default after an Enterprise Edition instance is created. You need to configure network settings after the instance status changes to In Use. i. Select the Enterprise Edition instance and click **Name/Enterprise ID** to view its details, including the current network status. ii. In the Access Network Configuration section, click **Go to Modify**.
+For security reasons, Internet and private network access are disabled by default after an Enterprise Edition instance is created. You need to configure network settings after the instance status changes to In Use. i. Select the Enterprise Edition instance and click **Name/Enterprise ID** to view its details, including the current network status. ii. In the Access Network Configuration section, click **Go to Modify**. iii. On the Network Configuration tab, click **Modify Configuration**. Select **Use Public**
+**Network Access** or **Use VPC Access**.
+a. Configure access to the Internet a. Select Use Public Network Access. b. For security reasons, you must configure an IP address whitelist when you enable Internet access.
 
 | Example | Description |
 |---|---|
 | 127.0.0.1 | Allows access only from the local host. |
 | 0.0.0.0/0 | Allows access from all IP addresses. |
 | 10.10.10.0/24. | Allows access only from 10.10.10.0/24. |
-
-iii. On the Network Configuration tab, click **Modify Configuration**. Select **Use Public**
-**Network Access** or **Use VPC Access**.
-a. Configure access to the Internet a. Select Use Public Network Access. b. For security reasons, you must configure an IP address whitelist when you enable Internet access.
 
 **Note**
 

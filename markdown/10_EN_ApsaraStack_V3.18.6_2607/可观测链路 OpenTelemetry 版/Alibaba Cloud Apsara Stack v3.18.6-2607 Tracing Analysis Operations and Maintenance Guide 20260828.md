@@ -3,14 +3,34 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Operations and 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 22
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "37f3489d788387fa_Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Operations and Maintenance Guide 20260828.p"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%8F%AF%E8%A7%82%E6%B5%8B%E9%93%BE%E8%B7%AF%20OpenTelemetry%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Tracing%20Analysis%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Tracing Analysis Operations and Maintenance Guide 20260828
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+- 2 Service architecture
+  - 2.1 System architecture
+  - 2.2 Deployment architecture
+  - 2.3 Server roles
+- 3 System inspection
+  - 3.1 Log on to the Apsara Uni-manager Operations Console
+  - 3.2 Log on to the Apsara Infrastructure Management console
+  - 3.3 Inspect Diamond
+  - 3.4 Inspect HBase
+  - 3.5 Inspect JStorm
+  - 3.6 Inspect ESDB
+  - 3.7 Inspect Collector
+  - 3.8 Inspect the Tracing Analysis console
+- 4 Security maintenance
+  - 4.1 Account and password maintenance
+  - 4.2 Log audit
+
+## 1 O&M overview
 
 This guide helps O&M engineers perform preventive maintenance on Apsara Stack Tracing Analysis to ensure the long-term stable operation of the system. O&M engineers can follow the instructions in this guide to handle the system issues that are identified during maintenance. If O&M engineers encounter system issues that are not covered in this guide, they can contact Apsara Stack technical support.
 
@@ -26,13 +46,13 @@ To ensure a stable system and prevent unexpected events, O&M engineers must comp
 
 O&M engineers can contact Apsara Stack technical support for help during the maintenance.
 
-## Service architecture
+## 2 Service architecture
 
-### System architecture
+### 2.1 System architecture
 
 This topic describes the system architecture of Tracing Analysis. In Apsara Stack, Tracing Analysis consists of the console and API service. Other services such as core computing and storage are dependent on TLog. For more information, see Deployment architecture.
 
-### Deployment architecture
+### 2.2 Deployment architecture
 
 This topic describes the deployment architecture of Tracing Analysis.
 
@@ -50,7 +70,7 @@ This topic describes the deployment architecture of Tracing Analysis.
 |   | ESDB | This component belongs to TLog. The ESDB cluster is responsible for storing the detailed data of Tracing Analysis. |
 |   | TLog-Console | This component belongs to TLog and is responsible for managing collection points and distributing collection rules. |
 
-### Server roles
+### 2.3 Server roles
 
 This topic describes the server roles of Tracing Analysis.
 
@@ -72,9 +92,9 @@ This topic describes the server roles of Tracing Analysis.
 |   |   |   | tlog- tlogService.TlogC onsole# | This server role is the TLog console. |
 |---|---|---|---|---|
 
-## System inspection
+## 3 System inspection
 
-### Log on to the Apsara Uni-
+### 3.1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -99,7 +119,7 @@ Obtain the username and password that are used to log in to the Apsara Unimanage
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 
-### Log on to the Apsara
+### 3.2 Log on to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -128,7 +148,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Apsara Infrastructure Management > Resources** .
 
-### Inspect Diamond
+### 3.3 Inspect Diamond
 
 This topic describes how to inspect Diamond.
 1. Log on to the Apsara Infrastructure Management console.
@@ -138,7 +158,7 @@ This topic describes how to inspect Diamond.
 **Details** in the **Actions** column to check whether the instances of `middleWare-jmenv` are
 in a normal state. If so, the `middleWare-jmenv` service is normal. If not, contact on-site technical support.
 
-### Inspect HBase
+### 3.4 Inspect HBase
 
 This topic describes how to inspect HBase.
 1. Log on to the Apsara Infrastructure Management console.
@@ -183,7 +203,7 @@ scan 'tlog-biz',LIMIT=>10
 
 If so, the service is normal. If not, contact on-site technical support.
 
-### Inspect JStorm
+### 3.5 Inspect JStorm
 
 This topic describes how to inspect JStorm.
 1. Log on to the Apsara Infrastructure Management console.
@@ -215,7 +235,7 @@ jstorm list
 
 If so, the service is normal. If not, contact on-site technical support.
 
-### Inspect ESDB
+### 3.6 Inspect ESDB
 
 This topic describes how to inspect ESDB.
 1. Log on to the Apsara Infrastructure Management console.
@@ -272,7 +292,7 @@ arms_trace_armsmg_7042-04-13 arms_trace_armsmg_2476-02-17 arms_trace_armsmg_7040
 
 If the cluster does not have abnormal indexes, the service is normal.
 
-### Inspect Collector
+### 3.7 Inspect Collector
 
 This topic describes how to inspect Collector.
 1. Log on to the Apsara Infrastructure Management console.
@@ -304,21 +324,21 @@ curl -v 127.0.0.1:8080
 
 As shown in the preceding figure, if the command output contains `200 OK` and `true` , the service is normal. Otherwise, contact on-site support.
 
-### Inspect the Tracing Analysis
+### 3.8 Inspect the Tracing Analysis console
 
 **console**
 
 Log on to the user-side environment. If you can open the Tracing Analysis console, the service is normal. Otherwise, contact on-site support.
 
-## Security maintenance
+## 4 Security maintenance
 
-### Account and password
+### 4.1 Account and password maintenance
 
 **maintenance**
 
 The accounts and passwords of Tracing Analysis are the same as those of the Apsara Unimanager Management Console. The accounts and passwords of TLog are the same as those of the Apsara Uni-manager Operations Console.
 
-### Log audit
+### 4.2 Log audit
 
 This topic describes the logs of Tracing Analysis. Table 1. Tracing Analysis console
 

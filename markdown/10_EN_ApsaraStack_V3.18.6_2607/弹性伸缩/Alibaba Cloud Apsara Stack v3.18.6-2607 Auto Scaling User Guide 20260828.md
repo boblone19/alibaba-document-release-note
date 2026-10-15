@@ -3,20 +3,95 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling User Guide 20260828
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 75
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling User Guide 20260828.pdf"
+source_pdf: "f25bba39f752b976_Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Auto%20Scaling%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Auto Scaling User Guide 20260828
 
-## What is Auto Scaling?
+## Table of Contents
+
+- 1 What is Auto Scaling?
+- 2 Notes
+  - 2.1 Precautions
+  - 2.2 Manual operations
+  - 2.3 Usage limits
+  - 2.4 Scaling group status
+  - 2.5 Scaling processes
+  - 2.6 Remove unhealthy ECS instances
+  - 2.7 Rollback of failed instances in a scaling activity
+  - 2.8 Instance lifecycle management
+- 3 Quick start
+  - 3.1 Quick Start overview
+  - 3.2 Log on to the Auto Scaling console
+  - 3.3 Create scaling groups
+  - 3.4 Create a scaling configuration
+  - 3.5 Enable a scaling group
+  - 3.6 Create a scaling rule
+  - 3.7 Create a scheduled task
+  - 3.8 Create an event-triggered task
+- 4 Scaling groups
+  - 4.1 Create scaling groups
+  - 4.2 Expected number of instances
+  - 4.3 Enable a scaling group
+  - 4.4 View a scaling group
+  - 4.5 Edit scaling groups
+  - 4.6 Disable scaling groups
+  - 4.7 Delete a scaling group
+- 5 Instances
+  - 5.1 View the instance list
+  - 5.2 Manually add instances to a scaling group
+  - 5.3 Put an instance into the Standby state
+  - 5.4 Move an instance out of the Standby state
+  - 5.5 Put an instance into the Protected state
+  - 5.6 Move an instance out of the Protected state
+  - 5.7 Manually remove an instance from a scaling group
+  - 5.8 Manually delete an instance
+- 6 Scaling configurations
+  - 6.1 Create a scaling configuration
+  - 6.2 View scaling configurations
+  - 6.3 Modify a scaling configuration
+  - 6.4 Apply a scaling configuration
+  - 6.5 Delete a scaling configuration
+- 7 Scaling activities
+  - 7.1 View scaling activity details
+  - 7.2 Resolve scaling activity exceptions
+- 8 Scaling rules
+  - 8.1 Create a scaling rule
+  - 8.2 View scaling rules
+  - 8.3 Modify a scaling rule
+  - 8.4 Execute a scaling rule
+  - 8.5 Delete a scaling rule
+- 9 Scheduled tasks
+  - 9.1 Create scheduled tasks
+  - 9.2 View scheduled tasks
+  - 9.3 Modify a scheduled task
+  - 9.4 Disable a scheduled task
+  - 9.5 Enable a scheduled task
+  - 9.6 Delete a scheduled task
+- 10 Event-triggered tasks
+  - 10.1 Create an event-triggered task
+  - 10.2 View event-triggered tasks
+  - 10.3 Modify an event-triggered task
+  - 10.4 Disable an event-triggered task
+  - 10.5 Enable an event-triggered task
+  - 10.6 Delete an event-triggered task
+- 11 Enable the notification feature
+  - 11.1 Create event notification rules
+  - 11.2 View event notification rules
+  - 11.3 Edit event notification rules
+  - 11.4 Delete event notification rules
+- 12 Manage operation logs
+  - 12.1 View operation logs
+
+## 1 What is Auto Scaling?
 
 Auto Scaling automatically adjusts your elastic computing resources based on your business requirements and policies that you define. When demand for services spikes, Auto Scaling automatically scales out Elastic Compute Service (ECS) instances based on your configurations to maintain sufficient computing resources. When demand for services drops, Auto Scaling automatically scales in ECS instances to save costs. Auto Scaling provides the following features: Scale-out When demand for services suddenly grows, Auto Scaling automatically scales out the underlying resources. This ensures that resources are not overloaded and maintains the responsiveness of your servers. For example, if the vCPU utilization of ECS instances exceeds 80%, Auto Scaling scales out ECS resources based on your configurations. During the scale-out event, Auto Scaling automatically creates ECS instances, adds the ECS instances to a scaling group, and then adds the new instances to the backend server groups of the associated Server Load Balancer (SLB) instances and the whitelists of the associated ApsaraDB RDS instances. The following figure shows how a scale-out event is implemented. Scale-in When demand for services drops, Auto Scaling automatically releases underlying resources to prevent waste of resources and reduce costs. For example, if the vCPU utilization of ECS instances in a scaling group falls below 30%, Auto Scaling automatically scales in ECS instances based on your configurations. During the scale-in event, Auto Scaling removes ECS instances from the scaling group and also from the backend server groups of the associated SLB instances and the whitelists of the associated ApsaraDB RDS instances. The following figure shows how a scale-in event is implemented. Elastic recovery If ECS instances in a scaling group are not in the Running state, Auto Scaling considers the instances to be unhealthy. If an ECS instance is considered unhealthy, Auto Scaling automatically releases the instance and creates a new one. This process is called elastic recovery. Elastic recovery ensures that the number of healthy ECS instances in a scaling group does not fall below the minimum number of ECS instances that you specified for the scaling group. The following figure shows how an elastic recovery event is implemented.
 
-## Notes
+## 2 Notes
 
-### Precautions
+### 2.1 Precautions
 
 This topic describes the precautions when you use Auto Scaling (ESS).
 
@@ -32,7 +107,7 @@ Only one scaling activity can be executed at a time in a scaling group. An ongoi
 
 During the cooldown period, if you manually execute a scaling task, such as a scaling rule or scheduled task, the task is immediately executed without waiting for the cooldown period to expire. The cooldown period starts after the last ECS instance is added to or removed from a scaling group during a scaling activity.
 
-### Manual operations
+### 2.2 Manual operations
 
 If you perform a manual operation when an Auto Scaling operation is in progress, the manual operation takes precedence. Auto Scaling supports manual operations, such as the deletion of automatically created Elastic Compute Service (ECS) instances from the ECS console. The following table describes how Auto Scaling processes manual operations.
 
@@ -53,14 +128,14 @@ If you perform a manual operation when an Auto Scaling operation is in progress,
 | ApsaraDB RDS | A user revokes the ApsaraDB RDS API permissions granted to Auto Scaling. | Auto Scaling rejects all scaling activity requests for the scaling groups that are associated with ApsaraDB RDS instances. |
 |---|---|---|
 
-### Usage limits
+### 2.3 Usage limits
 
 This topic describes the limits that apply when you use Auto Scaling. Auto Scaling only supports automatically increasing or decreasing the number of Elastic Compute Service (ECS) instances in a scaling group. It does not support automatic upgrade or downgrade of the vCPU, memory, or bandwidth configurations of a single ECS instance. Applications deployed on ECS instances in a scaling group must be stateless and horizontally scalable. Auto Scaling may automatically release ECS instances in a scaling group. Therefore, these instances are not suitable for storing session records, application data, or logs. If necessary, you can store session records and other state information on independent state servers, store application data in ApsaraDB RDS, and store logs in Simple Log Service. For more information, see the **What is ApsaraDB RDS** section of **ApsaraDB RDS Product**
 **Introduction** and the **What is****Simple Log Service** section of **Simple Log Service**
 **Product Introduction**.
 You can add up to 1,000 ECS instances to a scaling group.
 
-### Scaling group status
+### 2.4 Scaling group status
 
 This topic describes the console status and API status of scaling groups.
 
@@ -74,7 +149,7 @@ This topic describes the console status and API status of scaling groups.
 | Disabled | Inactive |
 | Deleting | Deleting |
 
-### Scaling processes
+### 2.5 Scaling processes
 
 Before you use Auto Scaling, you must understand the processes related to scaling activities.
 
@@ -90,13 +165,13 @@ Manually add instances i. Check the health status and boundary conditions of the
 
 If you want to manually add an instance to a scaling group, the instance type of the instance must be the same as that specified in the active scaling configuration of the scaling group. Therefore, you must set the weight to the SLB weight value that is specified in the active scaling configuration. vii. The cooldown period starts after the scaling activity is complete. Manually remove instances i. Check the health status and boundary conditions of the scaling group. ii. Assign the activity ID and execute the scaling activity. iii. SLB stops forwarding traffic to ECS instances. iv. Remove the ECS instances from SLB after 60 seconds. v. Remove the ECS instances from the whitelist of the associated ApsaraDB RDS instance. vi. Modify Total Capacity. vii. Remove the ECS instances from the scaling group. viii. After the scaling activity is complete, the cooldown period starts.
 
-### Remove unhealthy ECS
+### 2.6 Remove unhealthy ECS instances
 
 ## instances
 
 Before you use ESS, you must understand information about the removal of unhealthy ECS instances. After an ECS instance is added to a scaling group, ESS checks the status of the instance on a regular basis. If the ECS instance is not in the Running state, ESS removes the ECS instance from the scaling group. The removal method depends on how the ECS instance is added: If an ECS instance is automatically created, ESS immediately removes and releases it. If an ECS instance is manually added, ESS immediately removes it, but does not stop or release it. The removal of unhealthy ECS instances is not limited by the MinSize value. After the unhealthy ECS instances are removed, the number of ECS instances (Total Capacity) may fall below the MinSize value. In this case, ESS automatically creates ECS instances based on the difference between the actual instance number and MinSize value to ensure that the total number of ECS instances is equal to the MinSize value.
 
-### Rollback of failed instances in
+### 2.7 Rollback of failed instances in a scaling activity
 
 **a scaling activity**
 
@@ -106,7 +181,7 @@ Before you use Auto Scaling, you must understand how instance rollback works whe
 
 When ECS instance rollback occurs in a scaling group, the number of ECS instances does not reach the expected value. This may prevent the scaling group from providing sufficient compute resources or maintaining metric values. In this case, you can use other methods to add ECS instances and ensure that the scaling group meets your business requirements. Automatically add ECS instances When you create ECS instances by calling API operations, Auto Scaling uses the Alibaba Cloud Resource Access Management (RAM) service. The rolled-back ECS instances still incur charges from the time of successful creation until automatic release. For example, five ECS instances in a scaling group must be added to the backend server group of an SLB instance. After creation, two instances are successfully added and three instances fail to be added. Auto Scaling automatically releases the three failed ECS instances. The scaling activity is complete, but the status shows **Partially Succeeded**. On the **Scaling Activities** page, you can view the status, total number of instances after scaling, start time, end time, and description of each scaling activity. A status of Partially Succeeded indicates that the scaling activity only partially succeeded. Click the activity to expand the details panel and view the cause, status information, and detailed information. For example, since the quota for ECS instances that can be attached to the SLB backend server group has been reached, the request to add five ECS instances results in only two being created, and the system marked this activity as as Partially Succeeded. Manually add ECS instances When you manually add existing instances, Auto Scaling automatically removes the rolledback ECS instances from the scaling group but does not release these ECS instances.
 
-### Instance lifecycle
+### 2.8 Instance lifecycle management
 
 **management**
 
@@ -128,19 +203,15 @@ An ECS instance in a scaling group can change to the following status during its
 
 An ECS instance in a scaling group can change to the following health status: Healthy Unhealthy If an ECS instance is not in the Running state, Auto Scaling considers the instance unhealthy and automatically removes it from the scaling group. Auto Scaling stops and releases automatically created ECS instances. Auto Scaling does not stop or release manually added ECS instances.
 
-## Quick start
+## 3 Quick start
 
-### Quick Start overview
+### 3.1 Quick Start overview
 
-This topic describes how to use Auto Scaling to automatically scale your resources. It introduces the main features and operations of Auto Scaling and explains how the resource overview can help you quickly understand your resource layout. The following procedure describes how to create a scaling group and enable automatic scaling: Manually execute the scaling rule Trigger a scheduled task to Create a Create and apply a Enable the Create a execute the scaling rule scaling scaling scaling rule scaling group configuration group Trigger an event-triggered task toexecutethescalingrule
-1. Create scaling groups
-A scaling group defines properties such as the maximum and minimum number of instances it can contain and the scale-in policy.
+This topic describes how to use Auto Scaling to automatically scale your resources. It introduces the main features and operations of Auto Scaling and explains how the resource overview can help you quickly understand your resource layout. The following procedure describes how to create a scaling group and enable automatic scaling: Manually execute the scaling rule Trigger a scheduled task to Create a Create and apply a Enable the Create a execute the scaling rule scaling scaling scaling rule scaling group configuration group Trigger an event-triggered task toexecutethescalingrule A scaling group defines properties such as the maximum and minimum number of instances it can contain and the scale-in policy.
 2. Create and use a scaling configuration
 A scaling configuration is a template that Auto Scaling uses to automatically create Elastic Compute Service (ECS) instances. It specifies configurations such as the instance type and image.
 3. Enable the scaling group
-Scaling activities can occur only in enabled scaling groups. If a scaling group has an active scaling configuration, a message prompts you to enable the group. You can also enable the scaling group from the list of scaling groups.
-4. Create a scaling rule
-A scaling rule triggers scaling activities. It specifies the number of instances to add to or remove from a scaling group. For example, you can create a scaling rule to add one ECS instance.
+Scaling activities can occur only in enabled scaling groups. If a scaling group has an active scaling configuration, a message prompts you to enable the group. You can also enable the scaling group from the list of scaling groups. A scaling rule triggers scaling activities. It specifies the number of instances to add to or remove from a scaling group. For example, you can create a scaling rule to add one ECS instance.
 5. Execute the scaling rule
 You can execute a scaling rule in one of the following ways to scale instances in a scaling group:
 **Manual execution**: Manually execute a scaling rule to meet temporary business needs.
@@ -165,7 +236,7 @@ The following table describes the main features.
 | ESS scaling group maximum instance quota | Total: The sum of the maximum number of instances that are allowed for all scaling groups in the current organization and its sub- organizations. Assigned: The portion of the total instance quota that the current organization assigned to its sub-organizations. Used: The sum of the maximum number of instances for all scaling groups that are created by the current organization and its sub- organizations. Assignment rate = Assigned/Total. Usage rate = Used/Total. |
 | Top 10 scaling group quota usage | This section displays the top 10 organizations ranked by their scaling group quota usage. The Resource Usage Trend shows the quota usage for scaling groups in each organization, sorted by their quota usage rate. Note You can view resource usage trends for the last 7, 15, and 30 days. |
 
-### Log on to the Auto Scaling
+### 3.2 Log on to the Auto Scaling console
 
 **console**
 
@@ -214,7 +285,7 @@ a. After you log on with your username and password, the Bind Virtual MFA Device
 Enter the six-digit MFA code and click **Authenticate**.
 6. In the top navigation bar, choose **Products > Computing > Auto Scaling ESS**.
 
-### Create scaling groups
+### 3.3 Create scaling groups
 
 A scaling group is a group of Elastic Compute Service (ECS) instances that can be used for similar business purposes. If you want to enable automatic increase or decrease of a specific type of instances based on policies to cope with evolving business demands, you can create scaling groups to automatically adjust computing power (the number of instances). For example, when you create a scaling group, you can specify a maximum number and a minimum number of instances to empower the automatic scaling feature. This topic describes how to create a scaling group.
 
@@ -262,7 +333,7 @@ The scaling group that you created is displayed on the **Scaling Groups** page b
 **Disable** state. You must create and enable a scaling configuration for the scaling group. For
 more information, see Create a scaling configuration.
 
-### Create a scaling configuration
+### 3.4 Create a scaling configuration
 
 This topic describes how to create a scaling configuration for a scaling group. Auto Scaling uses the instance types that are specified in the scaling configuration to create instances.
 
@@ -315,7 +386,7 @@ parameters.
 
 After the scaling configuration is created, the scaling configuration enters the **Disable** state and is displayed in your scaling configuration list. You can click Apply in the Actions column to enable the scaling configuration. Auto Scaling can create ECS instances in a scaling group that has an enabled scaling configuration. For more information, see Apply a scaling configuration.
 
-### Enable a scaling group
+### 3.5 Enable a scaling group
 
 This topic describes how to enable a scaling group. Auto Scaling can trigger scaling activities and create instances in a scaling group only after the scaling group is enabled.
 
@@ -332,7 +403,7 @@ The scaling group is in the **Disable** state. The scaling group has a scaling c
 
 The status of the scaling group is changed from **Disable** to **Enable** in the **Status** column.
 
-### Create a scaling rule
+### 3.6 Create a scaling rule
 
 This topic describes how to create a scaling rule. You can specify the number of instances that you want to add to or remove from a scaling group. For example, you can create a scaling rule to add one instance to a scaling group.
 
@@ -360,7 +431,7 @@ parameters.
 
 On the Scaling Rules tab, you can view the information about the new scaling rule, such as the scaling rule name or ID, rule type, time when the rule is executed, and action that is specified in the rule.
 
-### Create a scheduled task
+### 3.7 Create a scheduled task
 
 This topic describes how to create a scheduled task. If your business workloads are predictable, you can create a scheduled task to prepare sufficient computing resources before the business workloads increase and release excess computing resources after the business workloads decrease.
 
@@ -390,7 +461,7 @@ parameters.
 
 On the Scheduled Tasks page, the scheduled task that you created appears. You can view the information about the scheduled task, such as the scaling group for which the scheduled task is created, scaling rule that is specified in the scheduled task, task status, and task description.
 
-### Create an event-triggered
+### 3.8 Create an event-triggered task
 
 **task**
 
@@ -422,9 +493,9 @@ table describes the parameters.
 
 On the Event-triggered Tasks page, the event-triggered task that you created appears. You can view the information about the event-triggered task, such as the monitoring type, statistical period, alert condition, and task description.
 
-## Scaling groups
+## 4 Scaling groups
 
-### Create scaling groups
+### 4.1 Create scaling groups
 
 A scaling group is a group of Elastic Compute Service (ECS) instances that can be used for similar business purposes. If you want to enable automatic increase or decrease of a specific type of instances based on policies to cope with evolving business demands, you can create scaling groups to automatically adjust computing power (the number of instances). For example, when you create a scaling group, you can specify a maximum number and a minimum number of instances to empower the automatic scaling feature. This topic describes how to create scaling groups.
 
@@ -470,7 +541,7 @@ The scaling group that you created is displayed in the scaling group list but is
 **Disabled** state. You must create and enable a scaling configuration for the scaling group.
 For more information, see Create scaling configurations.
 
-### Expected number of instances
+### 4.2 Expected number of instances
 
 If you enable the Expected Number of Instances feature for a scaling group, Auto Scaling adjusts the number of instances in the scaling group to maintain the specified expected number. Auto Scaling also flexibly executes parallel scaling activities, without the need for manual intervention. This topic describes the usage notes, instance change patterns, and usage examples of the Expected Number of Instances feature.
 
@@ -588,7 +659,7 @@ Expected number of instances: 1 Number of stable instances: 1. The scaling rule 
 
 Result: After you execute the event-triggered task, the expected number of instances is changed from 1 to 4. The scaling activity caused by the event-triggered task is a non-parallel scaling activity and cannot be immediately executed. The request to execute the add1 scaling rule is rejected, and the expected number of instances remains unchanged. After the non-parallel scaling activity is complete, three ECS instances are created, and the number of stable instances in the scaling group is changed to 4.
 
-### Enable a scaling group
+### 4.3 Enable a scaling group
 
 This topic describes how to enable a scaling group. Auto Scaling can trigger scaling activities and create instances in a scaling group only after the scaling group is enabled.
 
@@ -605,7 +676,7 @@ The scaling group is in the **Disable** state. The scaling group has a scaling c
 
 The status of the scaling group is changed from **Disable** to **Enable** in the **Status** column.
 
-### View a scaling group
+### 4.4 View a scaling group
 
 After you create a scaling group, you can view the details of the scaling group. If you have multiple existing scaling groups, you can view the list of scaling groups. The details of a scaling group include its basic information, instance list, instance configuration sources, and scaling rules.
 1. Log on to the Auto Scaling console.
@@ -647,7 +718,7 @@ configuration of the scaling group. You can also go to the **Instance**
 **Configuration Sources** tab of the scaling group details page to view the
 effective scaling configuration.
 
-### Edit scaling groups
+### 4.5 Edit scaling groups
 
 If your current scaling group's properties no longer meet your needs, you can update them— such as adjusting the maximum or minimum number of instances—without creating a new scaling group.
 
@@ -669,7 +740,7 @@ If no scaling configuration exists, create one before modifying the **Select a s
 6. Click **OK**.
 After editing a scaling group, you can view its updated properties. For example, the new scaling configuration appears in the **Scaling Group Configuration** column.
 
-### Disable scaling groups
+### 4.6 Disable scaling groups
 
 If a scaling group is **enabled** but no longer needed for scaling activities, you can disable it. Once disabled, the scaling group rejects all subsequent scaling requests.
 
@@ -683,7 +754,7 @@ Ensure the scaling group you want to disable has no **ongoing** scaling activiti
 5. In the message that appears, click **OK**.
 The scaling group status updates from **Enabled** to **Disabled**.
 
-### Delete a scaling group
+### 4.7 Delete a scaling group
 
 This topic describes how to permanently delete a scaling group. When you delete a scaling group, Auto Scaling removes and releases instances that are automatically created, removes instances that are manually added, and deletes the scaling configurations and scaling rules. However, the scheduled tasks and event-triggered tasks that are associated with the scaling group are not deleted.
 
@@ -700,9 +771,9 @@ The scaling group is no longer needed.
 
 After you delete the scaling group and refresh the Scaling Groups page, the scaling group does not appear.
 
-## Instances
+## 5 Instances
 
-### View the instance list
+### 5.1 View the instance list
 
 After you manually or automatically add instances to a scaling group, you can query details about the instance list in the scaling group, the number of instances in the scaling group, and the cooldown time as needed.
 1. Log on to the Auto Scaling console.
@@ -772,7 +843,7 @@ in the scaling group, in seconds.
 
 The Stopped, Pending Add, and Pending Remove states are unavailable.
 
-### Manually add instances to a
+### 5.2 Manually add instances to a scaling group
 
 **scaling group**
 
@@ -800,7 +871,7 @@ click **OK**.
 After you manually add instances to the scaling group, the instances appear on the **Add**
 **Manually** tab.
 
-### Put an instance into the
+### 5.3 Put an instance into the Standby state
 
 **Standby state**
 
@@ -820,7 +891,7 @@ To select an automatically created instance, click the **Auto Created** tab. To 
 in the **Actions** column.
 8. Click **OK**.
 
-### Move an instance out of the
+### 5.4 Move an instance out of the Standby state
 
 **Standby state**
 
@@ -840,7 +911,7 @@ To select an automatically created instance, click the **Auto Create** tab. To s
 **Actions** column.
 8. Click **OK**.
 
-### Put an instance into the
+### 5.5 Put an instance into the Protected state
 
 **Protected state**
 
@@ -860,7 +931,7 @@ To select an automatically created instance, click the **Auto Created** tab. To 
 column.
 8. Click **OK**.
 
-### Move an instance out of the
+### 5.6 Move an instance out of the Protected state
 
 **Protected state**
 
@@ -876,7 +947,7 @@ To select an automatically created instance, click the **Auto Create** tab. To s
 **Actions** column.
 8. Click **OK**.
 
-### Manually remove an instance
+### 5.7 Manually remove an instance from a scaling group
 
 **from a scaling group**
 
@@ -900,7 +971,7 @@ To select an automatically created instance, click the **Auto Created** tab. To 
 **Scaling Group** in the **Actions** column.
 8. Click **OK**.
 
-### Manually delete an instance
+### 5.8 Manually delete an instance
 
 If you no longer need an instance, you can manually remove the instance from your scaling group and permanently delete the instance.
 
@@ -923,9 +994,9 @@ column.
 8. Click **OK**.
 s
 
-## Scaling configurations
+## 6 Scaling configurations
 
-### Create a scaling configuration
+### 6.1 Create a scaling configuration
 
 You can define a scaling configuration to specify the instance template for automatic scaling. When a scale-out is triggered in the scaling group, Auto Scaling uses the scaling configuration as the template to scale out instances. This simplifies instance creation and management and improves the success rate of scale-outs. This topic describes how to create a scaling configuration.
 
@@ -978,7 +1049,7 @@ s s
 8. Click **Submit**.
 After the scaling configuration is created, the scaling configuration enters the **Disabled** state and is displayed in your scaling configuration list. You can click Apply in the Operation column to enable the scaling configuration. Auto Scaling can create ECS instances only in a scaling group for which a scaling configuration is enabled. For more information, see Apply a scaling configuration. You can also modify or delete a scaling configuration based on your business requirements.
 
-### View scaling configurations
+### 6.2 View scaling configurations
 
 This topic describes how to view scaling configurations.
 1. Log on to the Auto Scaling console.
@@ -990,7 +1061,7 @@ The scaling groups that correspond to the specified organization, resource set, 
 6. View scaling configurations.
 On the Scaling Configuration Sources tab, you can view information about the scaling configurations such as instance families, images, system disk categories, data disks, and status.
 
-### Modify a scaling configuration
+### 6.3 Modify a scaling configuration
 
 This topic describes how to modify a scaling configuration. You can modify the information about a scaling configuration based on your business requirements.
 1. Log on to the Auto Scaling console.
@@ -1005,7 +1076,7 @@ s
 For more information about the parameters of the scaling configuration, see Create a scaling configuration.
 8. Click **Submit**.
 
-### Apply a scaling configuration
+### 6.4 Apply a scaling configuration
 
 This topic describes how to apply a scaling configuration. You can create multiple scaling configurations for a scaling group and apply one of the scaling configurations based on your business requirements.
 1. Log on to the Auto Scaling console.
@@ -1021,7 +1092,7 @@ column. You can put only one scaling configuration into the **Enable** state in 
 
 The status of the scaling configuration changes from **Disable** to **Enable** in the **Status** column.
 
-### Delete a scaling configuration
+### 6.5 Delete a scaling configuration
 
 This topic describes how to delete a scaling configuration that you no longer require. After you delete a scaling configuration, Elastic Compute Service (ECS) instances that are created based on the scaling configuration are retained in the scaling group.
 
@@ -1037,9 +1108,9 @@ The scaling configuration is in the **Disable** state.
 column.
 7. Click **OK**.
 
-## Scaling activities
+## 7 Scaling activities
 
-### View scaling activity details
+### 7.1 View scaling activity details
 
 You can view scaling activity details to check the results of scaling activities triggered by scheduled jobs, alarm tasks, or manual execution of scaling rules.
 
@@ -1056,7 +1127,7 @@ The possible statuses of a scaling activity include **Rejected**, **Executing**,
 5. On the scaling group details page, click the **Scaling Activities** tab to view scaling activity
 details. You can view the ID, total number of instances after the change, start time, end time, description and cause, status information, and activity status for each scaling activity.
 
-### Resolve scaling activity
+### 7.2 Resolve scaling activity exceptions
 
 **exceptions**
 
@@ -1080,9 +1151,9 @@ of a scaling activity.
 **Technical support**: If the exception persists after you complete the DIY troubleshooting,
 submit a ticket to ask for technical support.
 
-## Scaling rules
+## 8 Scaling rules
 
-### Create a scaling rule
+### 8.1 Create a scaling rule
 
 A scaling rule specifies the specific action performed in a scale-out or scale-in. The execution of a scaling rule triggers a scaling activity or enables the automatic adjustment of the boundary values of a scaling group. For example, you can create a scaling rule to add one instance to a scaling group. This topic describes how to create a scaling rule.
 
@@ -1115,7 +1186,7 @@ On the **Scaling Rules** tab, you can view the settings of the following paramet
 **Actions**. You can also click **Execute**, **Edit**, or **Delete** in the **Operation** column of the scaling
 rule based on your business requirements.
 
-### View scaling rules
+### 8.2 View scaling rules
 
 This topic describes how to view scaling rules.
 1. Log on to the Auto Scaling console.
@@ -1129,9 +1200,9 @@ On the Scaling Rules tab, you can view information about the scaling rules, such
 
 **What to do next**
 
-On the Scaling Rules tab, you can manage the scaling rules. For example, you can click Edit, Execute, or Delete in the **Actions** column. For more information, see the following topics: Modify a scaling rule Execute a scaling rule Delete a scaling rule
+On the Scaling Rules tab, you can manage the scaling rules. For example, you can click Edit, Execute, or Delete in the **Actions** column. For more information, see the following topics:
 
-### Modify a scaling rule
+### 8.3 Modify a scaling rule
 
 This topic describes how to modify a scaling rule. You can modify the information about a scaling rule, such as the rule name, action that is specified in the rule, and cooldown time.
 1. Log on to the Auto Scaling console.
@@ -1144,7 +1215,7 @@ This topic describes how to modify a scaling rule. You can modify the informatio
 time based on your business requirements.
 8. Click **OK**.
 
-### Execute a scaling rule
+### 8.4 Execute a scaling rule
 
 This topic describes how to manually execute a scaling rule.
 
@@ -1167,7 +1238,7 @@ If the total number of instances in a scaling group is out of the specified rang
 
 On the **Scaling Activity** tab, a scaling activity is generated. You can view the execution status of the scaling activity.
 
-### Delete a scaling rule
+### 8.5 Delete a scaling rule
 
 This topic describes how to delete a scaling rule that you no longer require.
 1. Log on to the Auto Scaling console.
@@ -1178,9 +1249,9 @@ This topic describes how to delete a scaling rule that you no longer require.
 6. Find the scaling rule that you want to delete and click **Delete** in the **Actions** column.
 7. Click **OK**.
 
-## Scheduled tasks
+## 9 Scheduled tasks
 
-### Create scheduled tasks
+### 9.1 Create scheduled tasks
 
 If your business workloads have specific patterns, you can create scheduled tasks to prepare sufficient computing resources for peak-hours or release idle computing resources during offpeak hours. This ensures your business continuity at a minimum resource cost. This topic describes how to create scheduled tasks for a scaling group.
 
@@ -1219,7 +1290,7 @@ After you create a scheduled task, you can view the values of the following para
 **Disable**, or **Delete** in the **Operation** column of the scheduled task based on your business
 requirements.
 
-### View scheduled tasks
+### 9.2 View scheduled tasks
 
 This topic describes how to view scheduled tasks.
 1. Log on to the Auto Scaling console.
@@ -1243,9 +1314,9 @@ On the **Scheduled Tasks** page, you can view information about scheduled tasks,
 
 On the **Scheduled Tasks** page, you can manage a specific scheduled task. You can click
 **Edit**, **Disable**, **Enable**, or **Delete** in the **Operation** column of the scheduled task that you
-want to manage. Modify a scheduled task Disable a scheduled task Enable a scheduled task Delete a scheduled task
+want to manage.
 
-### Modify a scheduled task
+### 9.3 Modify a scheduled task
 
 This topic describes how to modify a scheduled task. You can modify the information about a scheduled task, such as the scheduled task name and description, point in time at which the scheduled task is executed, resource for which the scheduled task is created, scaling rule that is specified in the scheduled task, and timeout period during which Auto Scaling can retry the scheduled task.
 1. Log on to the Auto Scaling console.
@@ -1257,7 +1328,7 @@ This topic describes how to modify a scheduled task. You can modify the informat
 If you select Recurrence Interval Settings (Advanced) when you create the scheduled task, you can modify the Recurrence Interval and Expires At settings. However, you cannot clear Recurrence Interval Settings (Advanced). For more information about other parameter settings, see Create scheduled tasks.
 6. Click **OK**.
 
-### Disable a scheduled task
+### 9.4 Disable a scheduled task
 
 This topic describes how to disable a scheduled task that you no longer require.
 
@@ -1275,7 +1346,7 @@ The scheduled task is in the **Running** state.
 
 The status of the scheduled task changes from **Running** to **Stop** in the **Status** column.
 
-### Enable a scheduled task
+### 9.5 Enable a scheduled task
 
 This topic describes how to enable a scheduled task. You can enable a scheduled task that is in the Stop state. This way, Auto Scaling automatically executes the scheduled task at the specified point in time.
 
@@ -1293,7 +1364,7 @@ The scheduled task is in the **Stop** state.
 
 The status of the scheduled task changes from **Stop** to **Running** in the **Status** column.
 
-### Delete a scheduled task
+### 9.6 Delete a scheduled task
 
 This topic describes how to permanently delete a scheduled task that you no longer require.
 1. Log on to the Auto Scaling console.
@@ -1303,9 +1374,9 @@ This topic describes how to permanently delete a scheduled task that you no long
 **Delete** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-## Event-triggered tasks
+## 10 Event-triggered tasks
 
-### Create an event-triggered
+### 10.1 Create an event-triggered task
 
 **task**
 
@@ -1337,7 +1408,7 @@ table describes the parameters.
 
 On the Event-triggered Tasks page, the event-triggered task that you created appears. You can view the information about the event-triggered task, such as the monitoring type, statistical period, alert condition, and task description.
 
-### View event-triggered tasks
+### 10.2 View event-triggered tasks
 
 This topic describes how to view event-triggered tasks.
 1. Log on to the Auto Scaling console.
@@ -1354,7 +1425,7 @@ You can select multiple filter options to narrow down the search results.
 |---|---|
 | Scaling Group ID | You can search for an event-triggered task by scaling group ID. |
 
-### Modify an event-triggered
+### 10.3 Modify an event-triggered task
 
 **task**
 
@@ -1375,7 +1446,7 @@ business requirements. For more information about the parameters of event-trigge
 
 6. In the Execute Scaling Rule message, click **OK**.
 
-### Disable an event-triggered
+### 10.4 Disable an event-triggered task
 
 **task**
 
@@ -1391,7 +1462,7 @@ The event-triggered task is in the **Normal** or **Insufficient Data** state.
 disable and click **Disable** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-### Enable an event-triggered
+### 10.5 Enable an event-triggered task
 
 **task**
 
@@ -1407,7 +1478,7 @@ The event-triggered task is in the Disable state.
 and click **Enable** in the **Actions** column.
 5. In the message that appears, click **OK**.
 
-### Delete an event-triggered
+### 10.6 Delete an event-triggered task
 
 **task**
 
@@ -1420,11 +1491,11 @@ and click **Delete** in the **Actions** column.
 5. In the message that appears, click **OK**.
 n feature
 
-## Enable the notification
+## 11 Enable the notification feature
 
 **feature**
 
-### Create event notification
+### 11.1 Create event notification rules
 
 **rules**
 
@@ -1449,7 +1520,7 @@ your business requirements.
 
 On the **Notification Settings** tab, you can view your newly created event notification rule, including details like the event type and notification method. n feature
 
-### View event notification rules
+### 11.2 View event notification rules
 
 Once an event notification rule is created, you can view details like the event type and notification method on the **Notification Settings** tab. This topic describes how to view event notification rules.
 1. Log on to the Auto Scaling console.
@@ -1459,9 +1530,9 @@ Once an event notification rule is created, you can view details like the event 
 5. On the scaling group details page, click the **Notification Settings** tab.
 6. On the **Notification Settings** tab, view details like **Event Notification Type** and
 **Notification Method**. You can also click **Delete** or **Edit** in the **Operation** column to
-manage event notification rules. For more information about how to manage event notification rules, see the following topics: Edit event notification rules Delete event notification rules
+manage event notification rules. For more information about how to manage event notification rules, see the following topics:
 
-### Edit event notification rules
+### 11.3 Edit event notification rules
 
 This topic describes how to edit event notification rules.
 1. Log on to the Auto Scaling console.
@@ -1484,7 +1555,7 @@ n feature
 
 8. Click **OK**.
 
-### Delete event notification
+### 11.4 Delete event notification rules
 
 **rules**
 
@@ -1499,9 +1570,9 @@ column.
 7. In the message that appears, click **Delete**.
 gs
 
-## Manage operation logs
+## 12 Manage operation logs
 
-### View operation logs
+### 12.1 View operation logs
 
 On the **Operation Logs** page, you can view operation events, operators, and operation names. This topic describes how to view operation logs and their details.
 1. Log on to the Auto Scaling console.

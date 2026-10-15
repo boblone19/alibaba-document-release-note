@@ -3,16 +3,145 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 373
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary_Secondary Edition) User Guide 20260831.pdf"
+source_pdf: "1e649a57cb95f10e_Secondary Edition) User Guide 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%95%B0%E6%8D%AE%E5%BA%93%20PolarDB/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20POLARDB%20PolarDB%20for%20PostgreSQL%20%28Primary/Secondary%20Edition%29%20User%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for POLARDB PolarDB for PostgreSQL (Primary/Secondary Edition) User Guide 20260831
 
+## Table of Contents
+
+- 1 Log on to the Cloud-native Database PolarDB console
+- 2 Instance types
+- 3 Quick Start
+  - 3.1 Limits
+  - 3.2 Get started with PolarDB for PostgreSQL Primary/Secondary Edition
+- 4 Instances
+  - 4.1 Create an instance
+  - 4.2 Restart an instance
+  - 4.3 Change specifications
+  - 4.4 Configure a maintenance window
+  - 4.5 Primary/standby switchover
+  - 4.6 Release an instance
+  - 4.7 Upgrade a minor engine version
+  - 4.8 Manage instances in the recycle bin
+  - 4.9 Read-only instance
+    - 4.9.1 Overview
+    - 4.9.2 Create a read-only instance
+    - 4.9.3 View details of read-only instances
+  - 4.10 Modify the values of parameters for an instance
+  - 4.11 Manage tags
+- 5 Database connection
+  - 5.1 View and manage instance endpoints and ports
+  - 5.2 Connect to an instance
+  - 5.3 Use DMS to log on to a PolarDB for PostgreSQL instance that uses local disks
+  - 5.4 Configure the hybrid access solution
+  - 5.5 Change the network type of an instance
+- 6 Accounts
+  - 6.1 Create an account
+  - 6.2 Reset the password
+  - 6.3 Delete an account
+  - 6.4 Lock an account
+- 7 Databases
+  - 7.1 Create a database
+  - 7.2 Delete a database
+- 8 Monitoring
+  - 8.1 View monitoring data
+  - 8.2 Configure an alert rule
+- 9 Cloud Monitor
+  - 9.1 View performance metrics
+  - 9.2 Alert history
+  - 9.3 Alert rules
+    - 9.3.1 Create an alert rule
+    - 9.3.2 Manage alert rules
+- 10 Data security
+  - 10.1 Configure an IP address whitelist
+  - 10.2 Configure SSL encryption
+  - 10.3 Configure TDE
+  - 10.4 SQL audit
+- 11 Backup
+  - 11.1 Back up data
+  - 11.2 Download data backup files and log backup files
+  - 11.3 Restore full data
+  - 11.4 Restore data of databases and tables
+- 12 Plug-in management
+  - 12.1 Supported extensions
+  - 12.2 Manage extensions
+  - 12.3 GanosBase TSDB
+    - 12.3.1 Quick start
+  - 12.4 Heterogeneous data access
+    - 12.4.1 mysql_fdw
+    - 12.4.2 oss_fdw
+  - 12.5 WAL logical decoding
+    - 12.5.1 decoderbufs (decode to ProtoBuf)
+    - 12.5.2 wal2json
+  - 12.6 Similarity calculation
+    - 12.6.1 hll
+    - 12.6.2 imgsmlr (similar images)
+    - 12.6.3 smlar
+  - 12.7 Full-text search
+    - 12.7.1 Quick start
+    - 12.7.2 pg_bigm
+    - 12.7.3 pg_jieba
+    - 12.7.4 rum (full-text search acceleration)
+  - 12.8 PGVector
+  - 12.9 AGE (graph database)
+  - 12.10 hypopg (hypothetical indexes)
+  - 12.11 ip4r (network address storage)
+  - 12.12 pg_cron
+  - 12.13 pg_profile (resource monitoring)
+  - 12.14 pg_sphere (spherical data calculations)
+  - 12.15 pgAudit
+  - 12.16 sequential_uuid (UUID generation)
+  - 12.17 pg_pathman
+  - 12.18 zhparser
+  - 12.19 pldebugger
+  - 12.20 Use PASE for efficient vector search
+  - 12.21 pg_hint_plan
+  - 12.22 varbitx
+  - 12.23 pg_search (BM25 index)
+- 13 Manage logs
+- 14 CloudDBA
+  - 14.1 Overview of CloudDBA
+  - 14.2 Perform quick diagnostics
+    - 14.2.1 Manage sessions
+    - 14.2.2 Use the real-time monitoring feature
+    - 14.2.3 Lock analysis
+    - 14.2.4 View storage overview
+  - 14.3 Performance Trend
+  - 14.4 Slow query logs
+  - 14.5 Diagnostic reports
+- 15 AI capabilities
+  - 15.1 Intelligent migration
+    - 15.1.1 Intelligent migration guide
+    - 15.1.2 AI Migration Assistant
+    - 15.1.3 Migrate data from a PolarDB for PostgreSQL 14 cluster to a PolarDB for PostgreSQL 16 cluster through visualized operations
+      - 15.1.3.1 Prechecks
+        - 15.1.3.1.1 Syntax compatibility check
+        - 15.1.3.1.2 Plug-in compatibility check
+        - 15.1.3.1.3 Account migration
+      - 15.1.3.2 Use DTS to migrate data
+        - 15.1.3.2.1 Data migration
+        - 15.1.3.2.2 Data synchronization
+    - 15.1.4 Migrate data from ApsaraDB RDS for PostgreSQL to PolarDB for PostgreSQL through visualized operations
+      - 15.1.4.1 Use DTS to migrate data
+        - 15.1.4.1.1 Migrate data
+        - 15.1.4.1.2 Data synchronization
+        - 15.1.4.1.3 View data migration tasks
+      - 15.1.4.2 Prechecks
+        - 15.1.4.2.1 Syntax compatibility check
+        - 15.1.4.2.2 Check the compatibility of extensions
+        - 15.1.4.2.3 Migrate accounts from the ApsaraDB RDS for PostgreSQL instance to the PolarDB for PostgreSQL cluster
+  - 15.2 AI-native operations for MCP services
+  - 15.3 Best practices for connecting PolarDB for PostgreSQL to Dify by using the MCP service
+- 16 Appendix
+  - 16.1 Authorize a tenant organization to access SLB
+  - 16.2 Launch templates
+
 g on to the Cloud-native Databas e PolarDB console
 
-## Log on to the Cloud-native
+## 1 Log on to the Cloud-native Database PolarDB console
 
 **Database PolarDB console**
 
@@ -46,7 +175,7 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 **native Database PolarDB**.
 stance types
 
-## Instance types
+## 2 Instance types
 
 This topic describes the instance types of PolarDB for PostgreSQL.
 
@@ -94,9 +223,9 @@ stance types
 
 uick Start
 
-## Quick Start
+## 3 Quick Start
 
-### Limits
+### 3.1 Limits
 
 To ensure stability and security, PolarDB for PostgreSQL clusters that run Primary/Secondary Edition have certain limits, as listed in the following table.
 
@@ -114,25 +243,21 @@ To ensure stability and security, PolarDB for PostgreSQL clusters that run Prima
 
 uick Start
 
-### Get started with PolarDB for
+### 3.2 Get started with PolarDB for PostgreSQL Primary/Secondary Edition
 
 **PostgreSQL Primary/Secondary**
 
 **Edition**
 
-To quickly launch a PolarDB for PostgreSQL Primary/Secondary Edition instance, you need to create the instance, configure a whitelist, create a database, create an account, and then connect to the instance. This topic describes how to create a PolarDB for PostgreSQL Primary/Secondary Edition instance. You must perform the following steps before you can use a PolarDB for PostgreSQL instance.
-1. Create an instance
-PolarDB for PostgreSQL instances are virtualized database servers. You can create PolarDB for PostgreSQL instances based on your business requirements. You can create and manage multiple databases on a PolarDB for PostgreSQL instance.
-2. Configure an IP address whitelist
-To ensure the security and stability of databases, after you create a PolarDB for PostgreSQL Primary/Secondary Edition instance, you need to add the IP addresses or CIDR blocks of clients to a whitelist to allow external access to the instance. Whitelists provide controlled access to PolarDB for PostgreSQL Primary/Secondary Edition instances at the highest security level. We recommend that you maintain whitelists regularly. Configuring whitelists for your instance does not affect the workloads on the instance.
+To quickly launch a PolarDB for PostgreSQL Primary/Secondary Edition instance, you need to create the instance, configure a whitelist, create a database, create an account, and then connect to the instance. This topic describes how to create a PolarDB for PostgreSQL Primary/Secondary Edition instance. You must perform the following steps before you can use a PolarDB for PostgreSQL instance. PolarDB for PostgreSQL instances are virtualized database servers. You can create PolarDB for PostgreSQL instances based on your business requirements. You can create and manage multiple databases on a PolarDB for PostgreSQL instance. To ensure the security and stability of databases, after you create a PolarDB for PostgreSQL Primary/Secondary Edition instance, you need to add the IP addresses or CIDR blocks of clients to a whitelist to allow external access to the instance. Whitelists provide controlled access to PolarDB for PostgreSQL Primary/Secondary Edition instances at the highest security level. We recommend that you maintain whitelists regularly. Configuring whitelists for your instance does not affect the workloads on the instance.
 3. Create a database and create an account
 Before you get started with PolarDB for PostgreSQL Primary/Secondary Edition, you must create a database and an account for the instance.
 4. Use Data Management (DMS) to log in to the PolarDB for PostgreSQL instance
 After you create a PolarDB for PostgreSQL instance, configure an IP address whitelist, and create a database and an account. Then, you can connect to the instance by using a database client. stances
 
-## Instances
+## 4 Instances
 
-### Create an instance
+### 4.1 Create an instance
 
 This topic describes how to use the ApsaraDB for PolarDB private cloud console to create an ApsaraDB for PostgreSQL primary/standby edition instance.
 
@@ -195,7 +320,7 @@ panel on the right to confirm your settings. stances You can click **Save as lau
 **er Guide**.
 5. After you complete the configuration, click **Submit**.
 
-### Restart an instance
+### 4.2 Restart an instance
 
 This topic describes how to manually restart a local disk-based PolarDB for PostgreSQL instance. This applies if the number of connections exceeds the specified threshold or if a local disk-based PolarDB for PostgreSQL instance has performance issues.
 
@@ -214,7 +339,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 When you restart an instance, applications are disconnected from the instance. We recommend that you make appropriate service arrangements before you restart an instance. Proceed with caution.
 4. In the dialog box that appears, click **OK**.
 
-### Change specifications
+### 4.3 Change specifications
 
 This topic describes how to change the instance type and storage space of a local disk-based PolarDB for PostgreSQL instance.
 
@@ -231,7 +356,7 @@ the **Cluster Edition**, **Storage Class**, **Instance Type**, **Storage Capacit
 5. Click **Submit**.
 stances
 
-### Configure a maintenance
+### 4.4 Configure a maintenance window
 
 **window**
 
@@ -257,7 +382,7 @@ right of **Maintenance Window**.
 4. Select a maintenance window and click **Yes**.
 The maintenance window is displayed in UTC+8.
 
-### Primary/standby switchover
+### 4.5 Primary/standby switchover
 
 ApsaraDB for PolarDB supports primary/standby switchover. This feature ensures high availability by promoting the standby node to primary, either automatically or manually, if the primary node becomes unavailable.
 
@@ -283,7 +408,7 @@ specified time, and then click **OK**.
 
 During a primary/standby switchover, operations such as managing databases and accounts or switching network types cannot be performed. Schedule the switchover within a maintenance window.
 
-### Release an instance
+### 4.6 Release an instance
 
 This topic describes how to release a local disk-based PolarDB for PostgreSQL instance. You can release a local disk-based PolarDB for PostgreSQL instance based on your business requirements.
 
@@ -299,7 +424,7 @@ click **Release an instance**.
 3. In the message that appears, click **OK**.
 stances
 
-### Upgrade a minor engine
+### 4.7 Upgrade a minor engine version
 
 **version**
 
@@ -324,7 +449,7 @@ If this button does not appear, the kernel is already the latest version.
 
 If you do not select a target minor version, the system upgrades the instance to the latest minor engine version by default.
 
-### Manage instances in the
+### 4.8 Manage instances in the recycle bin
 
 **recycle bin**
 
@@ -358,9 +483,9 @@ click **Recycle Bin**.
 3. Find the released instance and click **Destroy now** in the Operation column. In the message
 that appears, click **OK**.
 
-### Read-only instance
+### 4.9 Read-only instance
 
-#### Overview
+#### 4.9.1 Overview
 
 PolarDB for PostgreSQL allows you to create read-only instances. In scenarios in which PolarDB for PostgreSQL has a small number of write requests but a large number of read requests, you can create read-only instances to offload read requests from the primary instance. This topic describes the features and limits of read-only instances. If a large number of read requests overwhelm the primary instance, service interruptions may occur. In this case, you can create one or more read-only instances to offload read traffic from the primary instance. This scales the read capacity of the database system and improves application throughput. stances Read-only instances are deployed in the same region as the primary instance but may reside in different zones. The following figure shows the topology of read-only instances.
 
@@ -372,7 +497,7 @@ PolarDB for PostgreSQL allows you to create read-only instances. In scenarios in
 
 Specifications of a read-only instance can be different from those of the primary instance and can be changed at any time, which facilitates elastic scaling. Read-only instances do not require database or account maintenance, because their database and account information is synchronized with the primary instance. The whitelists of read-only instances can be configured independently. System performance monitoring is provided. PolarDB for PostgreSQL provides a variety of optimization suggestions. For example, it provides storage engine check, primary key check, large table check, and check for excessive indexes and missing indexes. You can optimize databases based on the optimization suggestions and your applications.
 
-#### Create a read-only instance
+#### 4.9.2 Create a read-only instance
 
 This topic describes how to create a read-only instance, which you can use to handle large numbers of read requests.
 
@@ -413,7 +538,7 @@ stances
 
 5. After you complete the configuration, click **Confirm Order**.
 
-#### View details of read-only instances
+#### 4.9.3 View details of read-only instances
 
 This topic describes how to view details of read-only instances. You can go to the Basic Information page of a read-only instance from the Instances Using Local Disks page or from the read-only instance list of the primary instance. Read-only instances are managed in the same manner as primary instances. The Basic Information page shows the management operations that can be performed.
 
@@ -440,7 +565,7 @@ displayed.
 4. Click the ID of the read-only instance to go to the Basic Information page of the read-only
 instance.
 
-### Modify the values of
+### 4.10 Modify the values of parameters for an instance
 
 **parameters for an instance**
 
@@ -635,7 +760,7 @@ stances
 | timezon e | UTC | UTC | ^'(((UTC) (-){0,1} (\d\|[1- 9]\d\|1([0- 5... | No | Sets the time zone for the database. This affects the display and storage of timestamps. The default value is typically the system time zone. |
 | vacuum _ defer cl _ eanup a _ ge | 0 | 0 | [0- 1000000] | No | Specifies the number of transactions by which VACUUM operations will defer the cleanup of dead tuples. This is used to reduce cleanup conflicts caused by concurrent transactions. The value can be 0 or a positive integer. The default value is 0, which means immediate cleanup. |
 
-### Manage tags
+### 4.11 Manage tags
 
 stances If you have a large number of instances, you can create multiple tags and add the tags to the instances. Then, you can query instances by tag. This topic describes how to manage tags.
 
@@ -672,9 +797,9 @@ icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, click the
 icon to the right of the tag and click **OK**. atabase connection
 
-## Database connection
+## 5 Database connection
 
-### View and manage instance
+### 5.1 View and manage instance endpoints and ports
 
 **endpoints and ports**
 
@@ -744,7 +869,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 After you disable IPv6, the services that access the database by using an IPv6 address are disconnected from the database and interrupted. Before you proceed, make sure that no service is connected to the database by using an IPv6 address.
 5. Click **OK**.
 
-### Connect to an instance
+### 5.2 Connect to an instance
 
 This topic describes how to use Data Management (DMS) or the pgAdmin 4 client to connect to an ApsaraDB RDS instance.
 
@@ -785,7 +910,7 @@ following figure. atabase connection
 
 The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
-### Use DMS to log on to a
+### 5.3 Use DMS to log on to a PolarDB for PostgreSQL instance that uses local disks
 
 **PolarDB for PostgreSQL instance**
 
@@ -822,7 +947,7 @@ atabase connection
 5. Click **Login**.
 If you want the browser to save the password, select **Remember password** and then click **Login**.
 
-### Configure the hybrid access
+### 5.4 Configure the hybrid access solution
 
 **solution**
 
@@ -862,7 +987,7 @@ this case, your PolarDB for PostgreSQL cluster runs in hybrid access mode. Both 
 6. Add the private IP address of the required ECS instance to the whitelist of the PolarDB for
 PostgreSQL cluster. This allows the ECS instance to connect to the cluster over the internal network. If no IP address whitelists of the VPC network type are available, create one. For more information, see Configure an IP address whitelist.
 
-### Change the network type of
+### 5.5 Change the network type of an instance
 
 **an instance**
 
@@ -909,9 +1034,9 @@ The classic network endpoint is retained, and a new VPC endpoint is generated. I
 7. Add the internal IP addresses of ECS instances in the selected VPC to a VPC whitelist. This
 allows the ECS instances to access the PolarDB instance over the internal network. If no VPC whitelists are available, create a whitelist. If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed. counts
 
-## Accounts
+## 6 Accounts
 
-### Create an account
+### 6.1 Create an account
 
 After you create a PolarDB for PostgreSQL instance and configure a whitelist, you must create a database account to connect to the instance and manage data. This topic describes how to create privileged and standard accounts.
 
@@ -1022,7 +1147,7 @@ counts
 | EXECUTE | √ | √ |
 | USAGE | √ | √ |
 
-### Reset the password
+### 6.2 Reset the password
 
 This topic describes how to use the PolarDB for PostgreSQL console to reset the password of your account if you forget the password.
 
@@ -1042,7 +1167,7 @@ column.
 5. In the dialog box that appears, enter and confirm the new password, and then click **OK**.
 The password must meet the following requirements: It must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: ! @ # $ % ^ & * ( ) _ + - =
 
-### Delete an account
+### 6.3 Delete an account
 
 You can delete a database account in the PolarDB console.
 
@@ -1061,7 +1186,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 5. In the message that appears, click **OK**.
 Accounts in the processing state cannot be deleted.
 
-### Lock an account
+### 6.4 Lock an account
 
 You can lock a database account in the console.
 
@@ -1090,9 +1215,9 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 5. In the message that appears, click **OK**.
 atabases
 
-## Databases
+## 7 Databases
 
-### Create a database
+### 7.1 Create a database
 
 Before you get started with aPolarDB for PostgreSQL cluster, you must create a database for the cluster. This topic describes how to create a database on a PolarDB for PostgreSQL cluster.
 
@@ -1148,7 +1273,7 @@ create database test;
 
 7. Click **Execute**.
 
-### Delete a database
+### 7.2 Delete a database
 
 This topic describes how to delete a database from a PolarDB instance.
 
@@ -1183,9 +1308,9 @@ drop database <database name>;
 7. Click execute.
 onitoring
 
-## Monitoring
+## 8 Monitoring
 
-### View monitoring data
+### 8.1 View monitoring data
 
 PolarDB provides a wide range of performance metrics. This topic describes how to view resource monitoring data in the PolarDB console.
 
@@ -1220,7 +1345,7 @@ onitoring
 | Long-running Transactions | The number of long-running transactions for the instance. |
 | Long-running XA Transactions | The number of long-running XA transactions for the instance. |
 
-### Configure an alert rule
+### 8.2 Configure an alert rule
 
 This topic describes how to create alert rules in the PolarDB console. This allows you to identify and handle exceptions at the earliest opportunity.
 
@@ -1254,9 +1379,9 @@ onitoring
 7. After you complete the configuration, click **OK**.
 oud Monitor
 
-## Cloud Monitor
+## 9 Cloud Monitor
 
-### View performance metrics
+### 9.1 View performance metrics
 
 PolarDB for MySQL V2.0 provides rich performance metrics and second-level monitoring frequency, which allow you to easily track the status of clusters and address operational challenges.
 
@@ -1276,7 +1401,7 @@ and **read-only instances**. View performance metrics
 3. In the **time granularity** drop-down list, select **1 Minute** or **1 Hour** (default value) as the
 data collection interval.
 
-### Alert history
+### 9.2 Alert history
 
 After an alert is triggered, you can view its history. You can also export and download the alert history for local data analytics.
 
@@ -1299,9 +1424,9 @@ oud Monitor
 | Export alert history | i. On the Alert History page, click in the upper-right corner. ii. In the Export Task dialog box, set Time Range and Task Name. Then, click OK. |
 |---|---|
 
-### Alert rules
+### 9.3 Alert rules
 
-#### Create an alert rule
+#### 9.3.1 Create an alert rule
 
 Create an alert rule that triggers alerts for a cloud service based on specified metric thresholds and promptly notifies relevant users.
 
@@ -1350,7 +1475,7 @@ oud Monitor
 
 This example creates an alert rule named "example" for an Elastic Compute Service (ECS) instance to monitor its CPU utilization. The rule triggers a Critical alert if the maximum CPU utilization is greater than or equal to 70% for three occurrences within five detection periods. The following figure shows the rule description configuration for this scenario. oud Monitor
 
-#### Manage alert rules
+#### 9.3.2 Manage alert rules
 
 From the list of alert rules, you can modify, enable, disable, and delete rules.
 
@@ -1382,9 +1507,9 @@ oud Monitor
 
 ata security
 
-## Data security
+## 10 Data security
 
-### Configure an IP address
+### 10.1 Configure an IP address whitelist
 
 **whitelist**
 
@@ -1406,7 +1531,7 @@ Edit the default group: locate the `default` group and click **Edit** in the Ope
 5. In the panel that appears, you can:
 Delete an existing IP address or CIDR block. Click **Add** and enter the IP address or CIDR block to be authorized. For example, `10.10.10.0/24` indicates that the `10.10.10.x` range is allowed. ata security Separate multiple entries with commas (,). Do not contain spaces before or after the commas. Example: `192.168.0.1,172.16.213.9,2001:db8::/32` . Click **Load the internal IP address of the ECS instance** . The internal IP addresses of all ECS instances under the current account are automatically listed for quick selection. Click **Import File (.txt)** to import IP addresses in the `.txt` format. After you add an IP address to the `default` group, the system automatically removes the default reserved address `127.0.0.1` . Once the network type of the custom group is selected, it cannot be changed. Configure it carefully based on the actual service protocol stack.
 
-### Configure SSL encryption
+### 10.2 Configure SSL encryption
 
 This topic describes how to make data transmission more secure by configuring Secure Sockets Layer (SSL) encryption. You must enable SSL encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required applications. SSL is used to encrypt connections at the transport layer and enhance the security and integrity of the transmitted data. However, SSL encryption increases the round-trip time.
 
@@ -1508,7 +1633,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 encryption.
 5. In the dialog box that appears, click **OK**.
 
-### Configure TDE
+### 10.3 Configure TDE
 
 PolarDB supports the Transparent Data Encryption (TDE) feature. TDE encrypts and decrypts data files in real time. It encrypts data files when they are written to disks, and decrypts data files when they are loaded to the memory from disks. After you enable TDE for your instance, the size of data files in your instance does not increase. You can use TDE without the need to modify the configurations of your application.
 
@@ -1538,7 +1663,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 3. In the left-side navigation pane, click **Data Security**.
 4. On the page that appears, click the **TDE** tab. View **TDE Status**.
 
-### SQL audit
+### 10.4 SQL audit
 
 PolarDB supports an SQL audit feature that you can use to view SQL details and periodically audit SQL records.
 
@@ -1587,9 +1712,9 @@ instance, which takes you to the **basic information** page. ata security
 
 This action cannot be undone. Proceed with caution. ackup
 
-## Backup
+## 11 Backup
 
-### Back up data
+### 11.1 Back up data
 
 This topic describes how to back up a PolarDB for PostgreSQL cluster. You can configure a backup policy that allows PolarDB for PostgreSQL to automatically back up your cluster. You can also manually back up your cluster.
 
@@ -1648,7 +1773,7 @@ ackup A: No, you cannot disable the data backup feature for your PolarDB for Pos
 2. Q: Can I disable log backup for a PolarDB for PostgreSQL cluster?
 A: Yes, you can disable the log backup feature for your PolarDB for PostgreSQL cluster. To disable the log backup feature, perform the following steps: Log on to the PolarDB console, go to the Backup Settings tab of your PolarDB for PostgreSQL cluster, and modify the backup settings to disable the log backup feature.
 
-### Download data backup files
+### 11.2 Download data backup files and log backup files
 
 **and log backup files**
 
@@ -1687,7 +1812,7 @@ wget -c '<Download URL of the backup file>' -O <File name>
 
 The -c option enables the resumable download feature. The -O option saves the downloaded file by using the specified name. We recommend that you use the file name contained in the download URL. If the URL contains more than one parameter, we recommend that you enclose the URL in a pair of single quotation marks (').
 
-### Restore full data
+### 11.3 Restore full data
 
 PolarDB supports cloning a new instance from a backup set or a point in time, fully restoring the database data, account information, and instance configuration of the primary instance. The cloned instance runs independently without affecting the primary instance, and supports custom configurations such as specifications and network settings. This is suitable for scenarios such as full recovery after accidental deletion or corruption of the primary instance, audit backtracking, and quick build of a test environment. This topic is suitable for full data restoration. For more information about how to restore data of databases and tables, see Restore data of databases and tables.
 
@@ -1763,7 +1888,7 @@ ackup
 
 7. After you complete the configuration, click **Submit**.
 
-### Restore data of databases
+### 11.4 Restore data of databases and tables
 
 **and tables**
 
@@ -1832,9 +1957,9 @@ information, and then click **OK**.
 
 After the restore completes, you can connect to the database and view the data restored to the original instance.
 
-## Plug-in management
+## 12 Plug-in management
 
-### Supported extensions
+### 12.1 Supported extensions
 
 This topic describes the extensions and extension versions supported by PolarDB for PostgreSQL.
 
@@ -1947,7 +2072,7 @@ SELECT * FROM pg_available_extensions;
 |---|---|---|---|---|
 | zhparser | 2.2 | 2.2 | 1 | Supports full-text Chinese searches. |
 
-### Manage extensions
+### 12.2 Manage extensions
 
 This topic describes how to install and uninstall an extension for a PolarDB for PostgreSQL instance. Extension management allows you to flexibly enable advanced features such as PostGIS, full-text retrieval, and vector computing to meet diverse business requirements.
 
@@ -2015,7 +2140,7 @@ uninstalled. You can also use the extension type filter in the same area to quic
 5. Select the extensions that you want to uninstall and click **Batch Detach**.
 6. In the message that appears, click **OK**.
 
-### GanosBase TSDB
+### 12.3 GanosBase TSDB
 
 Time Series Databases (TSDBs) are specially designed to efficiently store and process time series data. Time series data is a sequence of data points arranged in chronological order. Each data point usually contains a timestamp and one or more values (metrics). Time series data is widely used in fields such as Internet of Things (IoT), monitoring systems, financial transactions, industrial control, sensor networks, meteorological records, and server metric monitoring.
 
@@ -2087,7 +2212,7 @@ The operational data and energy consumption data of smart grid and hydropower st
 
 Equipment status monitoring and production process control in the manufacturing industry generate a large amount of time series data. TSDBs implement equipment health management and capacity optimization.
 
-#### Quick start
+#### 12.3.1 Quick start
 
 GanosBase TSDB is a time series database service that is provided as an extension of PolarDB for PostgreSQL. GanosBase TSDB inherits all the features of PolarDB for PostgreSQL clusters, such as shared storage, one primary node and multiple read-only nodes, and backup and restoration. GanosBase TSDB is compatible with TimescaleDB Apache 2.0 and provides advanced features such as continuous aggregates, compression, and statistical analysis of time series data. This topic describes the terms of time series databases and the usage of GanosBase TSDB, including how to start, upgrade, and use GanosBase TSDB.
 
@@ -2581,9 +2706,9 @@ data points), and keep core features or trends of raw data. The following method
 
 TimescaleDB: an open-source time series database built on top of PostgreSQL, optimized for managing time series data such as sensor readings, monitoring metrics, and financial data. It retains the full SQL functionality of PostgreSQL, and provides efficient storage, fast write, and complex query capabilities for time series data. GanosBase TSDB: a time series engine developed on top of TimescaleDB. It is provided as an extension of the PolarDB for PostgreSQL clusters and inherits all capabilities of PolarDB such as shared storage, one primary node and multiple read-only nodes, and backup and restoration. GanosBase TSDB and TimescaleDB mainly differ in features. TimescaleDB Apache 2 Edition is released under the Apache 2.0 license, which is an open-source license that allows users to use or modify the source code. However, this edition provides only basic features. GanosBase TSDB provides advanced features such as continuous aggregates, data series compression, and cold-hot tiered storage in Object Storage Service (OSS) in addition to the basic features provided by TimescaleDB.
 
-### Heterogeneous data access
+### 12.4 Heterogeneous data access
 
-#### mysql_fdw
+#### 12.4.1 mysql_fdw
 
 `mysql_fdw` is an open source third-party extension that allows PolarDB for PostgreSQL clusters to read data from and write data to PolarDB for MySQL instances, ApsaraDB RDS for MySQL instances, and self-managed MySQL instances.
 
@@ -2673,7 +2798,7 @@ explain verbose SELECT count(*) FROM ft_test ;
 (4 rows)
 ```
 
-#### oss_fdw
+#### 12.4.2 oss_fdw
 
 This topic describes the overview, limits, and usage of the oss_fdw extension.
 
@@ -3067,9 +3192,9 @@ Sample result:
 DROP EXTENSION oss_fdw;
 ```
 
-### WAL logical decoding
+### 12.5 WAL logical decoding
 
-#### decoderbufs (decode to ProtoBuf)
+#### 12.5.1 decoderbufs (decode to ProtoBuf)
 
 decoderbufs is an output plugin for the PostgreSQL logical decoder that decodes data into the Protocol Buffers format for logical replication.
 
@@ -3135,7 +3260,7 @@ The following table describes the mapping between PostgreSQL types and decoderbu
 | PostGIS geometry | datum point _ |
 | PostGIS geography | datum point _ |
 
-#### wal2json
+#### 12.5.2 wal2json
 
 PolarDB for PostgreSQL provides the wal2json plug-in to generate logical log files in the JSON format.
 
@@ -3285,9 +3410,9 @@ DROP TABLE IF EXISTS tbl; CREATE TABLE tbl (id int); SELECT 'init' FROM pg_creat
 SELECT count(*) = 1, count(distinct ((data::json)->'xid')::text) = 1 FROM pg_logical_slot_get_changes( 'regression_slot', NULL, NULL, 'format-version', '1', 'include-xids', '1');
 ```
 
-### Similarity calculation
+### 12.6 Similarity calculation
 
-#### hll
+#### 12.6.1 hll
 
 This topic describes the hll extension, which supports the HyperLogLog data type to estimate metrics such as page views (PVs) and unique visitors (UVs).
 
@@ -3554,7 +3679,7 @@ Sample result:
 (1 row)
 ```
 
-#### imgsmlr (similar images)
+#### 12.6.2 imgsmlr (similar images)
 
 `imgsmlr` is a third-party extension for PolarDB for PostgreSQL and supports similar image searches. The `imgsmlr` extension uses the `Haar` wavelet transform algorithm to fetch feature values from images, such as PNG and GIF files. It then uses an index to retrieve similar images.
 
@@ -3673,7 +3798,7 @@ FROM
 DROP EXTENSION imgsmlr;
 ```
 
-#### smlar
+#### 12.6.3 smlar
 
 Similarity calculation of large amounts of data is key in areas such as e-commerce and search engine. Simple implementations of similarity calculation consume large amounts of resources and provide low performance. smlar is an open-source third-party extension for PolarDB for PostgreSQL. It provides functions that can calculate data similarity in databases and similarity operators that support Generalized Search Tree (GiST) and Generalized Inverted Index (GIN) indexes. The smlar extension supports all built-in data types of PostgreSQL.
 
@@ -3695,7 +3820,6 @@ SELECT smlar('{3,2}'::int[], '{3,2,1}');
 Sample result:
 
 ```
-  smlar
 ----------
  0.816497
 (1 row)
@@ -3708,7 +3832,6 @@ SELECT smlar('{1,4,6}'::int[], '{5,4,6}', 'N.i / (N.a + N.b)' );
 Sample result:
 
 ```
-  smlar
 ----------
  0.333333
 (1 row)
@@ -3747,9 +3870,9 @@ DROP EXTENSION smlar;
 | smlar.tf method STRING _ | The method used to calculate the term frequency (TF). Default value: n. Valid values: n: simple counting log: 1 + log(n) const: 1 |
 | smlar.idf plus one BOOL _ _ | The method used to calculate the inverse document frequency (IDF). Default value: FALSE. Valid values: FALSE: log(d/df) TRUE: log(1 + d/df) |
 
-### Full-text search
+### 12.7 Full-text search
 
-#### Quick start
+#### 12.7.1 Quick start
 
 This topic describes the basic operations of full-text search for PolarDB for PostgreSQL, including extension installation and uninstallation, table creation, index creation, and performing queries.
 
@@ -3914,7 +4037,7 @@ Sample result:
 DROP EXTENSION rum CASCADE; DROP EXTENSION pg_jieba CASCADE;
 ```
 
-#### pg_bigm
+#### 12.7.2 pg_bigm
 
 The pg_bigm extension in PolarDB for PostgreSQL supports full-text search and allows you to create a 2-gram Generalized Inverted Index (GIN) index to accelerate full-text search.
 
@@ -3972,9 +4095,7 @@ Sample result:
 
 ```
   tool
----------
- pg_bigm
-(1 row)
+--------- (1 row)
 ```
 
 Uninstall the pg_bigm extension.
@@ -4159,7 +4280,7 @@ The pg_trgm extension in PolarDB for PostgreSQL uses the 3-gram model to impleme
 | Similarity search | Supported | Supported |
 | Maximum size of an indexed column | 238,609,291 bytes, which are approximately 228 MB | 107,374,180 bytes, which are approximately 102 MB |
 
-#### pg_jieba
+#### 12.7.3 pg_jieba
 
 pg_jieba is an open source third-party extension used for full-text search in Chinese.
 
@@ -4322,7 +4443,7 @@ Sample result:
 (1 row)
 ```
 
-#### rum (full-text search acceleration)
+#### 12.7.4 rum (full-text search acceleration)
 
 When a standard Generalized Inverted Index (GIN) is used for full-text search, performance may degrade in scenarios such as result sorting, phrase queries, and sorting by timestamp. A GIN index stores neither token positions nor additional information, which leads to an additional scan during query execution. The `RUM` extension addresses GIN performance bottlenecks by storing token positions or additional columns, such as timestamps, in the RUM index. As a result, the `RUM` extension is efficient in full-text search scenarios that require sorting and can improve query performance. It is suitable for applications that require sorting by relevance or time, such as log analysis and article search.
 
@@ -4810,7 +4931,7 @@ You can execute the following SQL statement to uninstall the RUM extension.
 DROP EXTENSION rum;
 ```
 
-### PGVector
+### 12.8 PGVector
 
 PGVector is a high-performance database extension for vector similarity searches and supports multiple algorithms and data types. You can use this extension to efficiently store and query vector embeddings. This topic describes the background information, implementation principles, usage, and references of PGVector.
 
@@ -4903,7 +5024,7 @@ In `val vector_ip_ops` , val is the column on which you want to create an index,
 
 For more information about the embedding process of vectors, see the output of Chinese mainland and international text embedding models.
 
-### AGE (graph database)
+### 12.9 AGE (graph database)
 
 PolarDB for PostgreSQL provides an extension to implement graph databases. You can query graphs in a database by using Cypher. This topic describes the basic concepts and usage of graph databases.
 
@@ -5014,7 +5135,7 @@ After you uninstall the extension, reset the search path and pre-load libraries.
 ALTER DATABASE <dbname> RESET search_path; ALTER USER <username> RESET search_path; ALTER DATABASE <dbname> RESET session_preload_libraries; ALTER USER <username> RESET session_preload_libraries;
 ```
 
-### hypopg (hypothetical
+### 12.10 hypopg (hypothetical indexes)
 
 **indexes)**
 
@@ -5270,7 +5391,7 @@ Sample result:
 -------------- (1 row)
 ```
 
-### ip4r (network address
+### 12.11 ip4r (network address storage)
 
 **storage)**
 
@@ -5411,7 +5532,7 @@ Sample result:
 DROP EXTENSION ip4r;
 ```
 
-### pg_cron
+### 12.12 pg_cron
 
 `pg_cron` is a third-party extension supported by PolarDB for PostgreSQL. It allows you to use the cron syntax to execute SQL statements on schedule in PolarDB for PostgreSQL. You can execute SQL statements to create scheduled tasks and configure automatic execution for the tasks at a specified point in time or time interval. This topic describes the background information and working principles of the pg_cron extension. Examples of using the extension are also provided.
 
@@ -5678,7 +5799,7 @@ Execute specified SQL statements on the fourth day of each month.
 SELECT cron.schedule('* * 4 * *', 'SELECT 1;');
 ```
 
-### pg_profile (resource
+### 12.13 pg_profile (resource monitoring)
 
 **monitoring)**
 
@@ -5842,7 +5963,7 @@ psql -Aqtc "SELECT get_report('server',1,2)" \
    -U <privileged_account_for_the_profile_database_cluster>
 ```
 
-### pg_sphere (spherical data
+### 12.14 pg_sphere (spherical data calculations)
 
 **calculations)**
 
@@ -5981,7 +6102,7 @@ latitude ---------- (1 row)
 
 For more information, see the official pg_sphere documentation.
 
-### pgAudit
+### 12.15 pgAudit
 
 PolarDB for PostgreSQL supports the pgAudit extension that can produce audit logs required to comply with government, financial, or ISO certifications. Audit logs help you analyze faults and operations on your clusters to obtain information about data queries.
 
@@ -6051,7 +6172,7 @@ DROP EXTENSION pgaudit;
 
 For more information, see pgAudit documentation.
 
-### sequential_uuid (UUID
+### 12.16 sequential_uuid (UUID generation)
 
 **generation)**
 
@@ -6111,7 +6232,7 @@ Sample result:
 
 The default values for these parameters are suitable for most scenarios.
 
-### pg_pathman
+### 12.17 pg_pathman
 
 This topic describes how to use the pg_pathman extension.
 
@@ -7305,7 +7426,7 @@ Sample result:
 (24 rows)
 ```
 
-### zhparser
+### 12.18 zhparser
 
 This topic describes how to enable the zhparser extension and customize a Chinese word segment dictionary in PolarDB for PostgreSQL.
 
@@ -7353,7 +7474,7 @@ Execute the following statements to customize a Chinese word segment dictionary:
 
 `SELECT to_tsquery('testzhcfg', '`保障房资金压力'); Instructions to use custom word segments: A maximum of 1 million custom word segments can be added. If the number of word segments exceeds the limit, the word segments outside the limit are not processed. Ensure that the number of word segments is within this range. The custom and default word segment dictionaries take effect at the same time. Each word segment can be a maximum of 128 bytes in length. The section after the 128th byte will be truncated. After adding, deleting, or changing word segments, execute the `SELECT` zhprs_sync_dict_xdb(); statement and re-establish a connection to make the operation take effect.
 
-### pldebugger
+### 12.19 pldebugger
 
 PolarDB for PostgreSQL supports multiple stored procedure languages (SPLs) such as PL/pgSQL, PL/Python, PL/Perl, PL/Tcl, and PL/Java. You can use these SPLs to create functions or stored procedures. PolarDB provides the pldebugger extension to debug stored procedures.
 
@@ -7396,7 +7517,7 @@ Sample result:
 
 `current_connection` : the number of existing connections. `max_connection` : the default maximum number of connections. The preceding example shows that six connections are used. Each pldebugger debugging process requires two connections. Therefore, three debugging processes exist in the preceding example. A maximum of three pldebugger processes are allowed.
 
-### Use PASE for efficient
+### 12.20 Use PASE for efficient vector search
 
 **vector search**
 
@@ -7537,7 +7658,7 @@ Examples
 
 Product Quantization for Nearest Neighbor Search Herve J ́egou, Matthijs Douze, Cordelia Schmid. Product quantization for nearest neighbor search. Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs Yu.A.Malkov, D.A.Yashunin. Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs.
 
-### pg_hint_plan
+### 12.21 pg_hint_plan
 
 This topic describes the pg_hint_plan extension. You can use this extension to add hints to SQL statements. The hints specify how you want the SQL statements to be executed. This way, you can optimize the execution plans of the SQL statements.
 
@@ -7786,7 +7907,7 @@ The following table lists all supported hint syntaxes. You can add the hints as 
 
 The pg_hint_plan extension can also specify the execution plan generated during a cross-node parallel execution. During a cross-node parallel execution, the Rows(table table[ table...] correction) hint is not supported. The hints for join methods can be used only to join two tables, and the hints for join order can be used only for all tables.
 
-### varbitx
+### 12.22 varbitx
 
 The varbit extension that is provided in the PostgreSQL Community edition supports only simple BIT-type operation functions. The varbitx extension in PolarDB for PostgreSQL supports more BIT-type operations in more scenarios. These scenarios include real-time user profile recommendation, access control advertising, and ticketing.
 
@@ -7926,7 +8047,7 @@ Sample result:
 (1 row)
 ```
 
-### pg_search (BM25 index)
+### 12.23 pg_search (BM25 index)
 
 This topic describes how to use the `pg_search` extension in PolarDB for PostgreSQL. `pg_search` is a full-text search extension based on the BM25 ranking algorithm. It provides high-performance, low-latency text search capabilities through a custom index access method. The extension supports keyword searches, phrase searches, fuzzy matching, and filtering with mixed conditions, and can be combined with numeric, boolean, and datetime fields for querying and sorting.
 
@@ -8042,7 +8163,7 @@ SELECT id,pgsearch.score(id) FROM test WHERE description @@@ 'apple' AND rating>
 
 anage logs
 
-## Manage logs
+## 13 Manage logs
 
 All PolarDB for PostgreSQL clusters support log management. You can use the primary/secondary switchover logs of a PolarDB for PostgreSQL cluster for troubleshooting. This topic describes how to manage the logs of a PolarDB for PostgreSQL cluster.
 
@@ -8064,9 +8185,9 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 
 oudDBA
 
-## CloudDBA
+## 14 CloudDBA
 
-### Overview of CloudDBA
+### 14.1 Overview of CloudDBA
 
 CloudDBA is a cloud service for database self-detection, self-repair, self-optimization, selfmaintenance, and self-security based on machine learning and expertise. CloudDBA helps you ensure stable, secure, and efficient databases without worrying about the management complexity and service failures caused by manual operations.
 
@@ -8074,9 +8195,9 @@ CloudDBA is a cloud service for database self-detection, self-repair, self-optim
 
 In PolarDB, CloudDBA leverages the core technical capabilities of Database Autonomy Service (DAS) to deeply integrate intelligent diagnosis and autonomous features into the PolarDB console. It provides a one‑stop database management experience and includes the following features: One‑click diagnosis: The One‑click diagnosis feature of PolarDB for PostgreSQL integrates selected capabilities of DAS, including session management, real‑time performance monitoring, lock analysis, and space analysis. This allows you to easily review diagnosis and optimization results. The details are as follows: Session management: You can view abnormal sessions, such as transactions that have not been committed for a long time, export or terminate sessions, and quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation. Real-time performance: You can view and monitor key metrics such as QPS, TPS, and network traffic for the target instance. Lock analysis: When database issues such as deadlocks, transaction blocking, or metadata lock waits occur, you can use the lock analysis feature provided by DAS to visually diagnose lock-wait relationships. This helps quickly identify the root cause of blocking and the dependency chain, which significantly improves troubleshooting efficiency and ensures the stability and high availability of database services. Storage analysis: You can view the storage usage, estimated days of remaining space, and detailed space usage of individual tables, including fragmentation and space anomaly diagnostics. Performance trends: This feature allows you to monitor key metrics such as CPU utilization, memory usage, IOPS, slow queries, and long-running transactions in real time and analyze historical data. This feature also allows you to compare metrics over multiple time periods and customize monitoring dashboard to improve performance and troubleshoot faults. Slow query log analysis: You can view slow query log trends and statistics. Diagnostic report: It helps you evaluate the operational status of database instances and identify performance bottlenecks and potential risks. You can manually trigger diagnostics. You can also configure scheduled tasks to automatically generate reports.
 
-### Perform quick diagnostics
+### 14.2 Perform quick diagnostics
 
-#### Manage sessions
+#### 14.2.1 Manage sessions
 
 oudDBA This topic describes how to use the session management feature of Database Autonomy Service (DAS) to monitor, analyze, and intervene in active sessions of database instances in real time. You can view abnormal sessions, such as transactions that have not been committed for a long period of time, export or terminate sessions, and quickly locate performance bottlenecks, blocking sources, and high-risk operations to ensure stable and efficient database operation.
 
@@ -8105,7 +8226,7 @@ You can view summarized session information by user, access source, or database,
 
 You can export session statistics by summary, user, access source, or database.
 
-#### Use the real-time monitoring feature
+#### 14.2.2 Use the real-time monitoring feature
 
 Database Autonomy Service (DAS) provides real-time performance monitoring by collecting key operational metrics of database instances at a high frequency and presenting the data in visual charts and tables. This helps you identify instance load status, locate the root causes of performance jitter, and evaluate resource saturation.
 
@@ -8178,7 +8299,7 @@ The upper-right corner displays the remaining refresh count. You can manually co
 
 Establish a baseline: During stable business periods, observe and record normal QPS, TPS, and CPU usage as a benchmark for subsequent fault comparison. Perform correlation analysis: Avoid viewing a single metric in isolation. For example, when QPS drops, immediately check whether InnoDB row lock waits increase or slow queries increase, and observe forwhether physical reads show abnormal fluctuations in physical reads. Watch for spikes: Sudden spikes in charts typically correspond to specific business events (such as scheduled jobs starts or flash sales). Cross-referencing the timestampCorrelating the point in time with business logs helps you quickly locate the issue.
 
-#### Lock analysis
+#### 14.2.3 Lock analysis
 
 When database issues, such as deadlocks, occur, you can use the lock analysis feature provided by Database Autonomy Service (DAS) for quick diagnosis. DAS can analyze the latest deadlock logs and visually diagnose lock-wait relationships. This helps quickly identify the root cause of blocking and the dependency chain, which significantly improves troubleshooting efficiency and ensures the stability and high availability of database services.
 
@@ -8194,7 +8315,7 @@ on the **Lock Analysis** tab. If multiple deadlocks have occurred, DAS analyzes 
 **Details** column of the diagnostic task list under recent deadlock analysis to view the
 results of deadlock diagnostic tasks that were triggered during the time range. oudDBA
 
-#### View storage overview
+#### 14.2.4 View storage overview
 
 Database Autonomy Service (DAS) provides the storage analysis feature that allows you to view the overall storage usage and estimated days of remaining available storage for a database instance. You can also check the storage usage, space fragmentation, and space anomaly diagnostics for a tablespace in the database.
 
@@ -8212,7 +8333,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 **Storage Analysis** tab.
 PolarDB for PostgreSQL supports displaying tablespace information at the schema level. This allows you to distinguish between tablespaces with the same name across different schemas. It makes it easier to locate the storage usage of a business module. On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
 
-### Performance Trend
+### 14.3 Performance Trend
 
 This topic describes how to use CloudDBA to view the performance trend of a PolarDB for PostgreSQL instance. You can monitor key metrics in real time and analyze historical data. These metrics include CPU, memory, IOPS, slow queries, and long-running transactions. The feature also supports performance trend comparison and custom monitoring dashboards to help you efficiently tune performance and troubleshoot failures.
 
@@ -8237,7 +8358,7 @@ page.
 3. In the navigation pane on the left, click **CloudDBA > Performance Trend**.
 On the **Performance Trend** tab, view the performance trend of each metric within the selected time range. Click **More Metrics** to select the metrics whose performance trends you want to view. In a metric trend chart, click **Details** to enlarge the chart. You can also change the time range to view the change trends of the metric over different periods. On the **Performance Trend Comparison** tab, set two time ranges and click **View** to see a chart that compares the performance trends. On the **Custom Chart** tab, create custom monitoring dashboards as needed. You can display multiple required performance monitoring metrics in a single chart for easier troubleshooting and analysis. If this is your first time, first click **Add Monitoring Dashboard**.
 
-### Slow query logs
+### 14.4 Slow query logs
 
 In PolarDB, CloudDBA provides the slow query log analysis feature that allows you to view the trends and execution details of slow queries and obtain optimization suggestions for your PolarDB instances.
 
@@ -8251,7 +8372,7 @@ click **Management** in the **Operation** column to go to the **Basic Informatio
 For more information, see the **Slow query logs** topic in **Database Autonomy**
 **Service (DAS) > User Guide.** .
 
-### Diagnostic reports
+### 14.5 Diagnostic reports
 
 oudDBA Database Autonomy Service (DAS) provides the diagnostic report feature to help you assess the status of database instances and identify performance bottlenecks and potential risks. You can manually trigger a diagnostic or configure a scheduled task to automatically generate a report. Currently, this feature can only assess the status of database instances and display the identified issues. It does not provide any optimization suggestions. You need to troubleshoot the issues based on the generated report.
 
@@ -8285,11 +8406,11 @@ The list on the page shows all available diagnostic reports. Click **View Report
 
 Click **View Report** to go to the diagnostic report details page. Then, click **Download** to download the report to your on-premises machine for archiving or sharing. capabilities
 
-## AI capabilities
+## 15 AI capabilities
 
-### Intelligent migration
+### 15.1 Intelligent migration
 
-#### Intelligent migration guide
+#### 15.1.1 Intelligent migration guide
 
 Intelligent One-Click Migration of PolarDB is a one-stop database migration platform built on DTS capabilities. It provides an end-to-end visual guided workflow that covers scenario selection, prechecks, task configuration, and endpoint switching. Through automated configuration and seamless switchover, it enables transparent application migration with zero downtime. In addition, the integrated AI Migration Assistant supports intelligent Q&A, log diagnostics, and optimization recommendations, significantly improving both migration efficiency and success rates.
 
@@ -8364,7 +8485,7 @@ databases and click **Switch Endpoint**.
 
 Seamless application migration is implemented with zero downtime. The switchover process can be traced and rolled back with high security.
 
-#### AI Migration Assistant
+#### 15.1.2 AI Migration Assistant
 
 AI Migration Assistant is an intelligent tool that supports the one-click migration platform. It uses the Data Transmission Service (DTS) Model Context Protocol (MCP) to provide natural language Q&A, task status queries, and diagnostic capabilities. This helps you resolve issues related to migration path queries, configuration guidance, and error handling during the migration process.
 
@@ -8386,7 +8507,7 @@ User question: For a migration path from an RDS for PostgreSQL cloud instance to
 
 User question: Is DTS migration task `l65e721` running correctly? If there are errors, how do I resolve them? AI response: DTS MCP automatically pulls the task's real-time status, latency trends, synchronization progress, throughput, and error logs to accurately assess its health. If an error or potential threat is detected, the AI assistant generates a diagnostic report and recommends a solution. This approach reduces the response time for failures and the need for manual intervention, which decreases tickets and alerts by 30%.
 
-#### Migrate data from a PolarDB for
+#### 15.1.3 Migrate data from a PolarDB for PostgreSQL 14 cluster to a PolarDB for PostgreSQL 16 cluster through visualized operations
 
 **PostgreSQL 14 cluster to a PolarDB for**
 
@@ -8943,9 +9064,9 @@ describes the parameters.
 Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. capabilities If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 0. Wait until **Success Rate** displays 100% and then click **Back**.
 
-##### Prechecks
+##### 15.1.3.1 Prechecks
 
-###### Syntax compatibility check
+###### 15.1.3.1.1 Syntax compatibility check
 
 This topic describes how to perform a syntax compatibility check.
 
@@ -9001,7 +9122,7 @@ The following results show that all check items passed the compatibility checks:
 Performing Consistency Checks ----------------------------- Checking cluster versions ok Checking database user is the install user ok Checking database connection settings ok Checking for prepared transactions ok Checking for system-defined composite types in user tables ok Checking for reg* data types in user tables ok Checking for contrib/isn with bigint-passing mismatch ok Checking for user-defined encoding conversions ok Checking for user-defined postfix operators ok Checking for incompatible polymorphic functions ok Checking for presence of required libraries ok Checking database user is the install user ok Checking for prepared transactions ok Checking for new cluster tablespace directories ok *Clusters are compatible*
 ```
 
-###### Plug-in compatibility check
+###### 15.1.3.1.2 Plug-in compatibility check
 
 capabilities This topic describes how to perform a plug-in compatibility check. Run the following command on PostgreSQL 14 and 16 respectively to check the available extensions:
 
@@ -9011,7 +9132,7 @@ SELECT * FROM pg_available_extensions;
 
 Before migration, you need to manually create the plug-ins in the respective database.
 
-###### Account migration
+###### 15.1.3.1.3 Account migration
 
 This topic describes how to migrate an account. The account permissions on a PolarDB for PostgreSQL 16 cluster are the same as those on a PolarDB for PostgreSQL 14 cluster. You only need to export and import the account permissions.
 1. Export user permissions from the source database as follows:
@@ -9328,9 +9449,9 @@ PostgreSQL database:
 SELECT privilege_type FROM information_schema.table_privileges WHERE grantee = 'app_user' AND table_name = '<TABLE_NAME>' AND table_schema = 'public';
 ```
 
-##### Use DTS to migrate data
+##### 15.1.3.2 Use DTS to migrate data
 
-###### Data migration
+###### 15.1.3.2.1 Data migration
 
 This topic describes how to migrate data. You can migrate data from an on-premises database, self-managed database, or thirdparty database to an Alibaba Cloud database. This method is suitable for one-time tasks, such as cloud migration, database sharding, and database scale-out.
 
@@ -9410,7 +9531,7 @@ Before you can start the data migration task, DTS performs a precheck. You can s
 8. Wait until **Success Rate** displays 100% and then click **Back**.
 If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
-###### Data synchronization
+###### 15.1.3.2.2 Data synchronization
 
 capabilities This topic describes how to synchronize data. The data synchronization feature is mainly used for table-level continuous tasks. It is applicable to the following scenarios: active geo-redundancy, disaster recovery, data backup, data synchronization across clouds, load balancing, cloud business intelligence (BI) systems, and real-time data warehousing.
 
@@ -9487,7 +9608,7 @@ capabilities
 Before you can start the data synchronization task, DTS performs a precheck. You can start the data synchronization task only after the task passes the precheck. If the task fails to pass the precheck, click **View Details** next to each failed item. After you troubleshoot the issues based on the causes, run a precheck again.
 9. Wait until **Success Rate** displays 100% and then click **Back**.
 
-#### Migrate data from ApsaraDB RDS for
+#### 15.1.4 Migrate data from ApsaraDB RDS for PostgreSQL to PolarDB for PostgreSQL through visualized operations
 
 **PostgreSQL to PolarDB for PostgreSQL**
 
@@ -10175,9 +10296,9 @@ Switch to the endpoint of the destination database during the migration process.
 6. . (Optional) Roll back the migration**
 If you want to roll back the migration, perform Step 5 to switch to the endpoint of the source database. capabilities
 
-##### Use DTS to migrate data
+##### 15.1.4.1 Use DTS to migrate data
 
-###### Migrate data
+###### 15.1.4.1.1 Migrate data
 
 This topic describes how to migrate data. You can migrate data from an on-premises database, self-managed database, or thirdparty database to an Alibaba Cloud database. This method is suitable for one-time tasks, such as cloud migration, database sharding, and database scale-out.
 1. Log on to the Data Transmission Service (DTS) console. On the **Data Migration** page, click
@@ -10241,7 +10362,7 @@ Before you can start the data migration task, DTS performs a precheck. You can s
 7. Wait until **Success Rate** displays 100% and then click **Back**.
 If Incremental Data Migration is not selected, wait until the migration task is complete. If Incremental Data Migration is selected, the migration task does not automatically stop. In this case, you must wait until the migration task enters the **Running** state and is not delayed, and then manually stop the task.
 
-###### Data synchronization
+###### 15.1.4.1.2 Data synchronization
 
 This topic describes how to synchronize data. The data synchronization feature is mainly used for table-level continuous tasks. It is applicable to the following scenarios: active geo-redundancy, disaster recovery, data backup, data synchronization across clouds, load balancing, cloud business intelligence (BI) systems, and real-time data warehousing.
 1. Log on to the Data Transmission Service (DTS) console. In the left-side navigation pane,
@@ -10304,7 +10425,7 @@ Before you can start the data synchronization task, DTS performs a precheck. You
 7. Wait until Success Rate displays 100% and then click **Back**.
 capabilities
 
-###### View data migration tasks
+###### 15.1.4.1.3 View data migration tasks
 
 This topic describes how to view data migration tasks and their status.
 
@@ -10315,9 +10436,9 @@ This topic describes how to view data migration tasks and their status.
 3. Select the migration instance whose migration status and progress you want to view.
 To view detailed information, click **Task Details** for the migration instance.
 
-##### Prechecks
+##### 15.1.4.2 Prechecks
 
-###### Syntax compatibility check
+###### 15.1.4.2.1 Syntax compatibility check
 
 This topic describes how to perform a syntax compatibility check.
 
@@ -10400,11 +10521,11 @@ Performing Consistency Checks ----------------------------- Checking cluster ver
 
 If an incompatible issue is detected, we recommend that you switch to another version based on the PostgreSQL manual.
 
-###### Check the compatibility of extensions
+###### 15.1.4.2.2 Check the compatibility of extensions
 
 This topic describes how to check the compatibility of extensions. Perform the check on both the ApsaraDB RDS for PostgreSQL instance and the PolarDB for PostgreSQL instance to identify extension compatibility issues. For more information about extension compatibility, see List of plug-ins supported by ApsaraDB RDS for PostgreSQL and List of plug-ins supported by PolarDB for PostgreSQL.
 
-###### Migrate accounts from the ApsaraDB
+###### 15.1.4.2.3 Migrate accounts from the ApsaraDB RDS for PostgreSQL instance to the PolarDB for PostgreSQL cluster
 
 **RDS for PostgreSQL instance to the PolarDB for**
 
@@ -10725,7 +10846,7 @@ PostgreSQL cluster.
 SELECT privilege_type FROM information_schema.table_privileges WHERE grantee = 'app_user' AND table_name = '<TABLE_NAME>' AND table_schema = 'public';
 ```
 
-### AI-native operations for MCP
+### 15.2 AI-native operations for MCP services
 
 **services**
 
@@ -10779,7 +10900,7 @@ capabilities
 | Query performance data. | DescribeDBInstancePerf ormance | Provides performance metrics. This helps users monitor and optimize database performance. |
 | Query slow logs. | DescribeSlowLogs | Helps users identify and optimize slow SQL statements. This improves database efficiency. |
 
-### Best practices for connecting
+### 15.3 Best practices for connecting PolarDB for PostgreSQL to Dify by using the MCP service
 
 **PolarDB for PostgreSQL to Dify by**
 
@@ -10847,11 +10968,7 @@ After the AI Gateway instance is created, you can obtain the external IP address
 **Step 2: Create and configure a PolarDB for PostgreSQL cluster**
 
 1. **Create a PolarDB for PostgreSQL cluster**
-When you create a PolarDB for PostgreSQL cluster, set the network type to **VPC** and make sure that the selected VPC **is the same as the VPC** for the ACK cluster on which the AI Gateway instance depends.
-2. Create a database
-capabilities After you create a PolarDB for PostgreSQL cluster, open the **Databases** tab of the instance details page. Create a database named `mcp_db_server` , and insert test data into the database. You can use DMS or a client to connect to the database and insert test data into the database. For more information, see Use DMS to log in to a PolarDB for PostgreSQL instance that uses local disks.
-3. Create an account
-On the **Accounts** tab of the instance details page, create a regular account and grant it the read-only permissions on the database that you created in the previous step. Currently, the MCP service supports only data query. **It does not support data**
+When you create a PolarDB for PostgreSQL cluster, set the network type to **VPC** and make sure that the selected VPC **is the same as the VPC** for the ACK cluster on which the AI Gateway instance depends. capabilities After you create a PolarDB for PostgreSQL cluster, open the **Databases** tab of the instance details page. Create a database named `mcp_db_server` , and insert test data into the database. You can use DMS or a client to connect to the database and insert test data into the database. For more information, see Use DMS to log in to a PolarDB for PostgreSQL instance that uses local disks. On the **Accounts** tab of the instance details page, create a regular account and grant it the read-only permissions on the database that you created in the previous step. Currently, the MCP service supports only data query. **It does not support data**
 **changes or deletions**. Therefore, you need to grant only the read-only permissions.
 4. **Configure a database whitelist**
 Click the **Data Security** tab of the instance details page, and add the external IP address obtained in Substep 3 of Step 1 to the whitelist of the database.
@@ -10925,9 +11042,9 @@ Edit the JSON configuration: Configure `server_name` based on your business requ
 
 i. After you save the MCP configuration, click **Studio** and then select a specific application. ii. After you open the application and add MCP-related tools, you can interact with the large language model in the chatbox on the right. ppendix
 
-## Appendix
+## 16 Appendix
 
-### Authorize a tenant
+### 16.1 Authorize a tenant organization to access SLB
 
 **organization to access SLB**
 
@@ -10947,7 +11064,7 @@ corner. Select **Server Load Balancer** for the **Service Name** parameter, and 
 **Name** parameter.
 5. Click **OK**.
 
-### Launch templates
+### 16.2 Launch templates
 
 A launch template contains the configuration information required to create an instance. It stores key configuration settings, such as the instance type, storage, and network information, but excludes unique details like the instance name and password. You can use a launch template to quickly create an instance, which simplifies instance creation by eliminating the need to configure each parameter individually.
 

@@ -3,16 +3,107 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Auto Scaling Developer Gui
 product_version: "V3.16.2"
 doc_version: "20220916"
 pdf_pages: 249
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Auto Scaling Developer Guide 20220916.pdf"
+source_pdf: "12685efb8a4b44d0_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Auto Scaling Developer Guide 20220916.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Auto%20Scaling%20Developer%20Guide%2020220916.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Auto Scaling Developer Guide
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Make API calls
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 View the information about API operations
+  - 2.3 Obtain AccessKey credentials
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain the endpoint of Auto Scaling
+  - 2.7 Obtain Auto Scaling SDKs
+- 3 Examples of using Auto Scaling SDK for Java
+  - 3.1 Getting started
+  - 3.2 Work with Auto Scaling SDK for Java
+    - 3.2.1 Install Auto Scaling SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Use Auto Scaling SDK for Java to initiate requests
+    - 3.2.5 Handle errors
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples of Auto Scaling SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use Auto Scaling SDK for Python
+    - 4.2.1 Install Auto Scaling SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Use Auto Scaling SDK for Python to initiate requests
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Examples of using Auto Scaling SDK for Go
+  - 5.1 Getting started
+  - 5.2 Work with Auto Scaling SDK for Go
+    - 5.2.1 Install Go SDK
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API reference
+  - 6.1 API Reference
+    - 6.1.1 API usage instructions
+    - 6.1.2 Make API requests
+    - 6.1.3 Request structure
+    - 6.1.4 Common parameters
+    - 6.1.5 Responses
+      - 6.1.5.1 Successful response examples
+      - 6.1.5.2 Sample error responses
+    - 6.1.6 Request signatures
+    - 6.1.7 Scaling groups
+      - 6.1.7.1 CreateScalingGroup
+      - 6.1.7.2 ModifyScalingGroup
+      - 6.1.7.3 EnableScalingGroup
+      - 6.1.7.4 DisableScalingGroup
+      - 6.1.7.5 DeleteScalingGroup
+      - 6.1.7.6 DescribeScalingGroups
+      - 6.1.7.7 DescribeScalingInstances
+      - 6.1.7.8 DescribeScalingActivities
+    - 6.1.8 Scaling configurations
+      - 6.1.8.1 CreateScalingConfiguration
+      - 6.1.8.2 DescribeScalingConfigurations
+      - 6.1.8.3 DeleteScalingConfiguration
+    - 6.1.9 Scaling rules
+      - 6.1.9.1 CreateScalingRule
+      - 6.1.9.2 ModifyScalingRule
+      - 6.1.9.3 DescribeScalingRules
+      - 6.1.9.4 DeleteScalingRule
+    - 6.1.10 Scaling tasks
+      - 6.1.10.1 ExecuteScalingRule
+      - 6.1.10.2 AttachInstances
+      - 6.1.10.3 RemoveInstances
+      - 6.1.10.4 DetachInstances
+    - 6.1.11 Scheduled tasks
+      - 6.1.11.1 CreateScheduledTask
+      - 6.1.11.2 ModifyScheduledTask
+      - 6.1.11.3 DescribeScheduledTasks
+      - 6.1.11.4 DeleteScheduledTask
+    - 6.1.12 Error codes
+      - 6.1.12.1 Client errors
+      - 6.1.12.2 Server errors
+    - 6.1.13 Ensure idempotence
+- 7 Appendixes
+  - 7.1 Call the ASAPI gateway
+  - 7.2 Use the ASAPI gateway to make API calls
+    - 7.2.1 Obtain an endpoint of ASAPI
+    - 7.2.2 Generate an endpoint for ASAPI
+    - 7.2.3 Obtain Apsara Stack SDKs
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Centerpage by using a browser.
@@ -22,7 +113,7 @@ documentation This topic describes how to view the desired product development d
 5. In the upper-right corner of the product documentation section, click View Det ails or Download
 PDF.
 
-### Make API calls
+### 1.2 Make API calls
 
 You can use the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway to call ASAPI operations. In Apsara Stack Enterprise V3.16.0 and later, the POP gateway is used by default to ensure that the user experience in Apsara Stack is the same as the user experience in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call ASAPI operations. Not e You can continue to use the ASAPI gateway to call API operations in Apsara Stack whose version is earlier than V3.16.0. For more information, see Call the ASAPI gateway, Obtain an endpoint of ASAPI, and Obtain Apsara Stack SDKs. Flowchart Procedure
 1. Obtain AccessKey credentials.
@@ -36,9 +127,9 @@ Refer to the developer guide of the cloud service that you want to use to learn 
 5. Obtain the endpoint of the cloud service.
 6. Obtain the cloud service SDKs and call API operations.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment staff. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the
@@ -48,7 +139,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the information about API
+### 2.2 View the information about API operations
 
 operations You must obtain a service name, API operation name, and API version. All the information is required when you use SDKs. Procedure
 1. Log on to the API Tool console.
@@ -57,7 +148,7 @@ operations You must obtain a service name, API operation name, and API version. 
 operation name in the search box, and then click the search icon.
 4. View and remember the service name, API operation name, and API version.
 
-### Obtain AccessKey credentials
+### 2.3 Obtain AccessKey credentials
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You must use one of the preceding types of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain AccessKey credentials that are assigned by RAM. Context The AccessKey ID and AccessKey secret contained in AccessKey credentials are used to perform symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt a signature. You can use RAM or STS to assign AccessKey credentials: The AccessKey credentials that are assigned by RAM to a third party consist of an AccessKey ID and an AccessKey secret. The AccessKey credentials that are assigned by STS to a third party consist of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey credentials for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey credentials of organizations. We recommend that you use the AccessKey credentials of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey credentials of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey credentials of a personal account are managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey credentials of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -85,7 +176,7 @@ want to obtain.
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey credentials of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack. Context STS allows you to use temporary credentials to access your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS? Procedure
 1. Obtain the `RAM role` .
@@ -199,7 +290,7 @@ ined in the previous step.
 
 `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common header parameters
 
 header parameters You must specify multiple header parameters when you call Apsara Stack API operations. This topic describes the common header parameters and how to obtain the values of the parameters. This topic also describes the return values of specific parameters after you call API operations. Header parameters
 
@@ -230,7 +321,7 @@ Response parameters The following table describes the additional response parame
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of Auto
+### 2.6 Obtain the endpoint of Auto Scaling
 
 Scaling This topic describes how to obtain the endpoint of Auto Scaling. Context When you call Auto Scaling API operations by using the Portable OpenAPI Proxy (POP) gateway, you must obtain the endpoint of Auto Scaling. You can contact an Alibaba Cloud on-site O&M engineer to obtain the endpoint. You can also perform the following steps to obtain the endpoint. Procedure
 1. Log on to Apsara Infrastructure Management.
@@ -243,7 +334,7 @@ icon to the right of Service and search for `ess` .
 5. Find the `ess-coordinator` service, right-click the Service Regist rat ion column, and then select
 Show More from the shortcut menu. On the Det ails page, view the ess.openapi.endpoint value. The value is the `endpoint` of Auto Scaling.
 
-### Obtain Auto Scaling SDKs
+### 2.7 Obtain Auto Scaling SDKs
 
 When you call Auto Scaling API operations by using the Portable OpenAPI Proxy (POP) gateway, you must obtain Auto Scaling SDKs. This topic describes how to obtain Alibaba Cloud SDKs. Background information To use Auto Scaling SDKs, you must install Auto Scaling SDKs and Alibaba Cloud core libraries. For example, to use Auto Scaling SDK for Java, you must download `aliyun-java-sdk-ess` and `aliyun-`
 
@@ -253,11 +344,11 @@ java-sdk-core .
 
 Auto Scaling SDKs encapsulate the API that was released on August 28, 2014. The SDKs identify callers based on the AccessKey credentials and provide features such as automatic signing. This way, you can call API operations to create and manage resources. Alibaba Cloud SDKs include code and examples. You can create cloud applications by using an SDK for the programming language that you require. We recommend that you use the SDK core library that is provided by Alibaba Cloud. The SDK core library is suitable for all cloud services and is compatible with Apsara Stack. References The SDKs for Java, Python, Go, and other programming languages are provided. You can obtain the SDKs from Alibaba Cloud SDKs based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. Auto Scaling SDK for Java
 
-## Examples of using Auto
+## 3 Examples of using Auto Scaling SDK for Java
 
 Scaling SDK for Java
 
-### Getting started
+### 3.1 Getting started
 
 This topic describes how to obtain and use Auto Scaling SDK for Java. Prerequisites An Apsara Stack tenant account that has the permissions on Auto Scaling SDK for Java and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. The endpoint of Auto Scaling is obtained. For information about how to obtain the endpoint of Auto Scaling, see Obtain the endpoint of Auto Scaling. Java Development Kit (JDK) 1.8 or later is installed. SDKs for Java provided by Alibaba Cloudrequire JDK 1.8 or later. Install Auto Scaling SDK for Java If you use Apache Maven to manage a Java project, you need to only import the JAR file to the pom.xml file of the project. To use an Auto Scaling SDK, you must install the SDK core library and the Auto Scaling SDK. We recommend that you use version 4.5.17 or later for the SDK core library. In this example, Auto Scaling SDK uses version 3.2.0. Use Auto Scaling SDK for Java To use Auto Scaling SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
@@ -345,11 +436,11 @@ specified resources.
 
 `}` `}` `}`
 
-### Work with Auto Scaling SDK for
+### 3.2 Work with Auto Scaling SDK for Java
 
 Java
 
-#### Install Auto Scaling SDK for Java
+#### 3.2.1 Install Auto Scaling SDK for Java
 
 This topic describes how to install and use Auto Scaling SDK for Java. Auto Scaling SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Auto Scaling SDK for Java by adding Maven dependencies or downloading the SDK. For more information, see Alibaba Cloud SDKs. To use the development tool kit of Auto Scaling, you must install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java. We recommend that you use the core library version 4.5.17 or later and Auto Scaling SDK for Java version 2.1.1. Auto Scaling SDK for Java To install the core library of Alibaba Cloud SDK for Java and Auto Scaling SDK for Java, you must add the following dependencies to the pom.xml file. For information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -365,7 +456,7 @@ This topic describes how to install and use Auto Scaling SDK for Java. Auto Scal
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Java supports authentication based on an AccessKey pair. For information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -378,7 +469,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Not e In the preceding sample code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. Auto Scaling SDK for Java Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
@@ -398,7 +489,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Use Auto Scaling SDK for Java to initiate
+#### 3.2.4 Use Auto Scaling SDK for Java to initiate requests
 
 requests This topic describes how to use Auto Scaling SDK for Java to initiate a request. Procedure Auto Scaling SDK for Java
 1. Create an AcsClient.
@@ -443,7 +534,7 @@ If an exception occurs or if you require the original HTTP response, call `doAct
 HttpResponse response = client.doAction(request);
 ```
 
-#### Handle errors
+#### 3.2.5 Handle errors
 
 If an error occurs on the server side or SDK side, the Apsara Stack Java SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Apsara Stack Java SDK. You are only required to handle the errors on the server side according to the error message. Auto Scaling SDK for Java `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -474,7 +565,7 @@ try {
 
 `}`
 
-#### Use CommonRequest to call API operations
+#### 3.2.6 Use CommonRequest to call API operations
 
 If you want to call Auto Scaling API operations for which no SDK is provided, or if the requests and responses of API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call Auto Scaling API operations. You can use CommonRequest to call all API operations. Benefits CommonRequest provides the following benefits:
 1. Lightweight: You need to only download the core package. You do not need to download and
@@ -560,11 +651,11 @@ ecurityToken field in the request parameters.
 
 `}` `}` `}` uto Scaling SDK for Python
 
-## Call examples of Auto Scaling
+## 4 Call examples of Auto Scaling SDK for Python
 
 SDK for Python
 
-### Getting started
+### 4.1 Getting started
 
 This topic describes how to obtain and use Auto Scaling SDK for Python. Prerequisites An Apsara Stack tenant account and an AccessKey pair are obtained. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For more information, see Obtain AccessKey credentials. The endpoint of Auto Scaling is obtained. For more information, see Obtain the endpoint of Auto Scaling. Install Auto Scaling SDK for Python
 1. Install the SDK core library.
@@ -616,9 +707,9 @@ request = CreateScalingGroupRequest() request.set_accept_format('json') # Specif
 response = clt.do_action_with_exception(request) print response
 ```
 
-### Use Auto Scaling SDK for Python
+### 4.2 Use Auto Scaling SDK for Python
 
-#### Install Auto Scaling SDK for Python
+#### 4.2.1 Install Auto Scaling SDK for Python
 
 This topic describes how to install and use Auto Scaling SDK for Python. Context Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x.x or later. You can install Auto Scaling SDK for Python by using pip. Not e To use the SDK for Python of a cloud service, you must install the core library of Apsara Stack SDK for Python. For example, if you want to use Auto Scaling SDK for Python, you must install the core library of Apsara Stack SDK for Python and Auto Scaling SDK for Python. Procedure
 1. Install the core library.
@@ -647,7 +738,7 @@ If you use Python 3.x.x, run the following command:
 pip3 install aliyun-python-sdk-ess
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Auto Scaling SDK for Python supports authentication based on AccessKey credentials. For information about how to obtain the AccessKey credentials, see Obtain AccessKey credentials. If you want to use your AccessKey credentials to access Apsara Stack, you must specify the AccessKey credentials as the authentication credentials when you initialize the client. Not ice Do not disclose code that may contain your AccessKey credentials. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack tenant account may be compromised.
 
@@ -657,7 +748,7 @@ clt = client.AcsClient(secret_id, secret_key, region_id)
 
 Not e In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 The Python SDK supports using HTTP and HTTPS to initiate API requests. When using the Python SDK, you can specify a protocol (HTTP or HTTPS) for a specific request to use, or set a global default protocol for all requests to use. Not e The default protocol (HTTP or HTTPS) of a product takes precedence over the global default protocol you set. Add OpenSSL dependency uto Scaling SDK for Python HTTPS of the Python SDK depends on the OpenSSL support in Python. To use Alibaba Cloud SDK to send HTTPS requests, you must add OpenSSL support in Python.
 
@@ -685,7 +776,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Use Auto Scaling SDK for Python to initiate
+#### 4.2.4 Use Auto Scaling SDK for Python to initiate requests
 
 requests This topic describes how to use Auto Scaling SDK for Python to initiate a request. Procedure
 1. Import the Auto Scaling SDK for Python.
@@ -714,7 +805,7 @@ uto Scaling SDK for Python
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -735,7 +826,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API operations
+#### 4.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of Auto Scaling that do not provide an SDK or if the requests and responses do not meet your business requirements, you can use CommonRequest. CommonRequest supports all API operations. Benefits CommonRequest provides the following benefits:
 1. Lightweight: You need to only download the core package. You do not need to download and
@@ -781,11 +872,11 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 Auto Scaling SDK for Go
 
-## Examples of using Auto
+## 5 Examples of using Auto Scaling SDK for Go
 
 Scaling SDK for Go
 
-### Getting started
+### 5.1 Getting started
 
 Alibaba Cloud SDK for Go allows you to access services without the need for complex coding. This topic describes how to obtain and use Auto Scaling SDK for Go. Environment preparation An Apsara Stack tenant account and an AccessKey pair are obtained. The account must have the required permissions. The AccessKey pair consists of an AccessKey ID and an AccessKey secret. For information about how to obtain AccessKey pairs, see Obtain AccessKey credentials. The endpoint of Auto Scaling is obtained. For more information, see Obtain the endpoint of Auto Scaling. Install the core package of Apsara Stack SDK for Go Apsara Stack SDK for Go supports Go 1.10.x or later. You can run the following command to install the core package:
 
@@ -852,17 +943,17 @@ essKey secret.
 request.Scheme = "HTTPS"
 ```
 
-### Work with Auto Scaling SDK for
+### 5.2 Work with Auto Scaling SDK for Go
 
 Go
 
-#### Install Go SDK
+#### 5.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 Auto Scaling SDK for Go When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Auto Scaling SDK for Go supports authentication based on an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following sample code provides an example on how to initialize an Auto Scaling client:
 
@@ -878,7 +969,7 @@ ey secret.
 
 Not e In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use Auto Scaling SDK for Go to initiate a request. To use Auto Scaling SDK for Go to initiate a request, perform the following steps:
 1. Import Auto Scaling SDK for Go
@@ -911,7 +1002,7 @@ request := ess.CreateDescribeScalingGroupsAttributeRequest() request.InstanceId 
 response, err := essClient.DescribeScalingGroupsAttribute(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 If an error occurs on the server or in the SDK when you can use Auto Scaling SDK for Go, a `ServerError` or a `ClientError` error is returned. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface and can be handled in a similar manner as standard Go errors. Handle errors In the following sample code, the DescribeScalingGroups operation is used to describe how to handle errors.
 
@@ -971,7 +1062,7 @@ response, err := essClient.DescribeScalingGroups(request) if serverError, ok := 
 
 `}`
 
-#### Use CommonRequest to call API operations
+#### 5.2.5 Use CommonRequest to call API operations
 
 You can use CommonRequest to call API operations in the following scenarios: You want to call Auto Scaling API operations that do not provide SDKs. The requests and responses of the API operations that you called by using an Auto Scaling SDK do not meet your business requirements. You can use CommonRequest to call all API operations. Benefits CommonRequest provides the following benefits:
 1. Lightweight: You need to only download the core package. You do not need to download and
@@ -1063,11 +1154,11 @@ stance ID. If you want to modify, delete, or query an instance, you must configu
 
 `}`
 
-## API reference
+## 6 API reference
 
-### API Reference
+### 6.1 API Reference
 
-#### API usage instructions
+#### 6.1.1 API usage instructions
 
 Before you can call Auto Scaling API operations, you must be granted the required permissions on Auto Scaling API in the Auto Scaling console. The following table describes the errors that occur if you are not granted the required permissions.
 
@@ -1076,15 +1167,15 @@ Before you can call Auto Scaling API operations, you must be granted the require
 | 403 | Forbidden.Unsubscribed | Do not have permission to access this API. | The error message returned because Auto Scaling is not activated and you do not have the permissions to call Auto Scaling API operations. |
 | 403 | Forbidden.Unauthorized | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 
-#### Make API requests
+#### 6.1.2 Make API requests
 
 Call an Auto Scaling API operation, send an HTTP GET request to the Auto Scaling API server, and then add corresponding parameters to the request based on the description of the corresponding API operation. After the request is processed, the system returns a result.
 
-#### Request structure
+#### 6.1.3 Request structure
 
 This topic describes the structure of an API request. Endpoints For information about how to obtain an endpoint, see Generate the endpoint of ASAPI. Protocols You can send requests over HTTP or HTTPS. For a higher level of security, we recommend that you send requests over HTTPS. Methods You can use the HTTP GET method to send the request for calling an API operation. If you use this method, the request parameters must be included in the URL of the request. Parameters For each request, you must specify the operation that you want to perform, such as CreateScalingGroup. Additionally, each request must contain the common request parameters and operation-specific request parameters. Encoding All requests and responses are encoded in UTF-8.
 
-#### Common parameters
+#### 6.1.4 Common parameters
 
 Common request parameters Common request parameters must be included in all API requests. The following table describes the common request parameters.
 
@@ -1116,9 +1207,9 @@ to query. Obtain the values of common header parameters
 
 Not e When you call Auto Scaling API operations, you must configure the x-acsorganizationid, x-acs-resourcegroupid, and x-acs-instanceid header parameters to specify the organization ID, resource set ID, and instance ID. You cannot configure the x-acs-instanceid header parameter to call API operations to create instances and query instances. If you do not configure the preceding header parameters, the call is directed to the root resource set and organization. Common response parameters API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-#### Responses
+#### 6.1.5 Responses
 
-##### Successful response examples
+##### 6.1.5.1 Successful response examples
 
 API responses use the HTTP response format where a 2xx status code indicates a successful call and a 4xx or 5xx status code indicates a failed call. Responses can be returned in either the JSON or XML format. You can specify the response format in the request. The default response format is XML. Not e Sample responses in our API documents are formatted in a way that is easier for you to read. The actual responses are not formatted with line breaks or indentation. Responses in the XML format include information about whether the request succeeds and specific service data.
 
@@ -1139,7 +1230,7 @@ JSON format `{`
 
 `}`
 
-##### Sample error responses
+##### 6.1.5.2 Sample error responses
 
 When an error occurs during an API call, no result data is returned. You can locate the cause of an error based on the error codes defined by each API operation, the error code table in the appendix Client errors, and Server errors. When an error occurs on an HTTP request for an API operation, a 4xx or 5xx HTTP status code is returned. The response body includes the error code and error message. The response body also contains a globally unique request ID (RequestId) and the ID of the site you accessed with this request (HostId). XML format
 
@@ -1163,7 +1254,7 @@ JSON format `{`
 
 `}`
 
-#### Request signatures
+#### 6.1.6 Request signatures
 
 This topic describes how to use the request signature to verify the identity of the API caller. Auto Scaling authenticates each access request. Therefore, each request must contain signature information, regardless of whether the request is sent over HTTP or HTTPS. Auto Scaling implements symmetric encryption by using an AccessKey pair to verify the identity of the request sender. You can obtain the AccessKey ID and the AccessKey secret in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The AccessKey ID is used to verify the identity of a user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. Perform the following operations to sign an access request:
 1. Create a canonicalized query string by using request parameters.
@@ -1207,9 +1298,9 @@ http://ess.example.com/?TimeStamp=2014-08-15T11%3A10%3A07Z&Format=xml&AccessKeyI
 
 The signature string is used as the value of the Signature parameter, and the parameter is added to the request URL.
 
-#### Scaling groups
+#### 6.1.7 Scaling groups
 
-##### CreateScalingGroup
+##### 6.1.7.1 CreateScalingGroup
 
 Creates a scaling group. A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios. You can create up to 50 scaling groups in one region. A scaling group does not immediately take effect after you create it. You must call the EnableScalingGroup operation to enable the scaling group. After the scaling group is enabled, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group. Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are associated with a scaling group must reside in the same region as the scaling group. For more information, see the Regions and zones topic in ECS documentation. If you specify an SLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the specified SLB instance. The default weight of an ECS instance added to the backend server group is 50. The specified SLB instance must meet the following requirements: The SLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the status of the specified SLB instance. The health check feature is enabled on all listener ports configured for the SLB instance. Otherwise, the scaling group cannot be created. If you specify an ApsaraDB RDS instance when you create a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the whitelist that manages access to the specified ApsaraDB RDS instance. The specified ApsaraDB RDS instance must meet the following requirements: The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the status of the specified ApsaraDB RDS instance. The number of IP addresses in the whitelist that manages access to the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the Configure a whitelist topic in ApsaraDB RDS documentation. If the MultiAZPolicy parameter of the scaling group is set to COST_OPTIMIZED, the following rules apply: You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the percentages of pay-as-you-go instances and preemptible instances based on the cost optimization policy. This instance allocation method is prioritized during scaling. If OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools is not specified, the instance types provided at the lowest cost are used to create instances based on the cost optimization policy. Request parameters
 
@@ -1378,7 +1469,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | TemplateVersion.NotNu mber | The input parameter "LaunchTemplateVersio n" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersion parameter contains non-digit characters. |
 
-##### ModifyScalingGroup
+##### 6.1.7.2 ModifyScalingGroup
 
 Modifies a scaling group. You cannot modify the following parameters: RegionId LoadBalancerId Not e If you want to associate a Server Load Balancer (SLB) instance with a scaling group, call the AttachLoadBalancers operation. If you want to disassociate an SLB instance from a scaling group, call the DetachLoadBalancers operation. DBInstanceId Not e If you want to associate an ApsaraDB RDS instance with a scaling group, call the AttachDBInstances operation. If you want to disassociate an ApsaraDB RDS instance from a scaling group, call the DetachDBInstances operation. You can call this operation to modify a scaling group only when the scaling group is in the Active or Inactive state. If you enable a new scaling configuration, Elastic Compute Service (ECS) instances that are created based on the previous scaling configuration still run as expected in the scaling group. If the total number of instances in the scaling group is greater than the allowed maximum number after you change the value of the MaxSize parameter, Auto Scaling automatically removes instances from the scaling group to ensure that the number of instances is within the new range. If the total number of instances in the scaling group is less than the allowed minimum number after you change the value of the MinSize parameter, Auto Scaling automatically adds instances to the scaling group to ensure that the number of instances is within the new range. Request parameters
 
@@ -1480,7 +1571,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | TemplateVersion.NotNu mber | The input parameter "LaunchTemplateVersio n" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersion parameter of the launch template contains non- digit characters. |
 
-##### EnableScalingGroup
+##### 6.1.7.3 EnableScalingGroup
 
 Enables a scaling group. You can call this operation to enable a scaling group that is in the Inactive state and has an instance configuration source. The instance configuration source can be a scaling configuration, a launch template, or the Elastic Compute Service (ECS) instances that you specified when you created the scaling group. If a scaling group is not in the Inactive state or does not have an instance configuration source, you cannot call this operation to enable the scaling group. Not e A scaling group can have only one active instance configuration source at a time. When you call this operation to enable a scaling group, you can specify a scaling configuration or a launch template for the scaling group. If an instance configuration source is configured for the scaling group before you call this operation, the scaling configuration or launch template that you specify in the request overwrites the original scaling configuration or launch template. If you specify a value for the InstanceId.N parameter when you call the operation, Auto Scaling checks whether the total number of ECS instances is within the range allowed for the scaling group after you call the operation. If the total number of ECS instances is less than the minimum number of instances allowed in the scaling group, Auto Scaling automatically creates the required number of pay-as-you-go ECS instances to maintain the minimum number. For example, if the minimum number of instances allowed in your scaling group is five, and you specify the InstanceId.N parameter to add two created ECS instances to the scaling group, Auto Scaling automatically creates three instances in the scaling group after the two instances are added. If the total number of instances is greater than the maximum number of instances allowed in the scaling group, the operation fails. Request parameters
 
@@ -1573,7 +1664,7 @@ Sample success responses `XML` format
 | 400 | TemplateMissingParam eter.SecurityGroup | The input parameter "SecurityGroup" that is mandatory for processing this request is not supplied. | The error message returned because the SecurityGroup parameter that is required for the specified launch template is not specified. |
 | 400 | TemplateVersion.NotNu mber | The input parameter "LaunchTemplateVersio n" is supposed to be a string representing the version number. | The error message returned because the fixed version number that is specified for the LaunchTemplateVersion parameter contains non-digit characters. |
 
-##### DisableScalingGroup
+##### 6.1.7.4 DisableScalingGroup
 
 Disables a scaling group. The scaling activity that is being executed before this operation is called continues until the scaling activity is complete. Scaling activity requests that are issued after this operation is called are rejected. You can call this operation only if the scaling group is in the Active state. Request parameters
 
@@ -1614,7 +1705,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScalingGroupId.N otFound | The specified scaling group does not exist. | The error message returned because the specified scaling group does not exist within your Apsara Stack tenant account. |
 
-##### DeleteScalingGroup
+##### 6.1.7.5 DeleteScalingGroup
 
 Deletes a scaling group. When a scaling group is deleted, the scaling configurations, rules, activities, and scaling requests that are associated with the scaling group are also deleted. The following tasks and instances are not deleted after a scaling group is deleted: scheduled tasks, event-triggered tasks, Server Load Balancer (SLB) instances, and ApsaraDB RDS instances. Request parameters
 
@@ -1661,7 +1752,7 @@ Sample success responses `XML` format
 | 403 | Forbidden.Unauthorized | A required authorization for the specified action is not supplied. | The error message returned because Auto Scaling is not authorized to call the specified operation. |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | The error message returned because the specified scaling group contains ECS instances. |
 
-##### DescribeScalingGroups
+##### 6.1.7.6 DescribeScalingGroups
 
 Queries scaling groups. A scaling group can have the following states during its lifecycle: Active: The scaling group is active. Scaling groups that are in the Active state can receive requests to execute scaling rules and trigger scaling activities. Inactive: The scaling group is inactive. Scaling groups that are in the Inactive state cannot receive any requests to execute scaling rules. Deleting: The scaling group is being deleted. Scaling groups that are in the Deleting state cannot receive any requests to execute scaling rules. Request parameters
 
@@ -1877,7 +1968,7 @@ igurationId>
 
 `]` `}` `}` `]` `}` `}`
 
-##### DescribeScalingInstances
+##### 6.1.7.7 DescribeScalingInstances
 
 Queries the Elastic Compute Service (ECS) instances in a scaling group and the details of the instances. You can query the ECS instances in a scaling group by specifying the scaling group ID, scaling configuration ID, health status, lifecycle status, and how an ECS instance is created. Request parameters
 
@@ -1997,7 +2088,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-##### DescribeScalingActivities
+##### 6.1.7.8 DescribeScalingActivities
 
 Queries one or more scaling activities. You can specify a scaling group ID to query all scaling activities in the scaling group. You can filter query results based on the status of scaling activities. You can query scaling activities that are executed in the previous 30 days. Request parameters
 
@@ -2092,9 +2183,9 @@ otal Capacity from \"0\" to \"1\".",
 
 `}` `}` `}`
 
-#### Scaling configurations
+#### 6.1.8 Scaling configurations
 
-##### CreateScalingConfiguration
+##### 6.1.8.1 CreateScalingConfiguration
 
 Creates a scaling configuration. Auto Scaling automatically scales out Elastic Compute Service (ECS) instances based on a scaling configuration. ECS instances can be configured in the following modes: InstancePatternInfo.N: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and price limit. The system creates ECS instances of an instance type that is provided at the lowest price based on your configurations. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types. InstanceType: In this mode, you must specify an instance type. InstanceTypes.N: In this mode, you must specify multiple instance types. InstanceTypeOverride.N: In this mode, you must specify multiple instance types and weights for the instance types. Cpu and Memory: In this mode, you can specify the Cpu and Memory parameters to configure the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price. This mode is available only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration. Not e You cannot specify the InstanceType, InstanceTypes.N, InstanceTypeOverride.N, and Cpu and Memory parameters at the same time. If you specify the InstanceTypes.N parameter, the InstanceType parameter is ignored. You can specify only the InstanceType parameter and the InstancePatternInfo.N parameter or the InstanceTypes.N parameter and the InstancePatternInfo.N parameter at the same time. In this case, Auto Scaling preferentially creates instances of the instance type specified by the InstanceType parameter or the InstanceTypes.N parameter. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances of the instance type that is specified by the InstancePatternInfo.N parameter. Request parameters
 
@@ -2315,7 +2406,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | QuotaExceeded.Security GroupInstance | Instance quota exceeded in the specified security group. | The error message returned because the maximum number of ECS instances that can be associated with the specified security group is reached. |
 
-##### DescribeScalingConfigurations
+##### 6.1.8.2 DescribeScalingConfigurations
 
 Queries one or more scaling configurations. Request parameters
 
@@ -2541,7 +2632,7 @@ nfigurationName>
 
 `}` `}` `}` `}` `}`
 
-##### DeleteScalingConfiguration
+##### 6.1.8.3 DeleteScalingConfiguration
 
 Deletes a scaling configuration. You cannot delete a scaling configuration in one of the following scenarios: The scaling configuration in your scaling group is in the Active state. Your scaling group contains Elastic Compute Service (ECS) instances that are created based on the scaling configuration. Request parameters
 
@@ -2593,9 +2684,9 @@ Sample success responses `XML` format
 | 400 | IncorrectScalingConfigur ationLifecycleState | The current lifecycle state of specified scaling configuration does not support this action. | The error message returned because the specified scaling configuration is in the Active state. |
 | 400 | InstanceInUse | You cannot delete a scaling configuration or scaling group while there is an instance associated with it. | The error message returned because the scaling group contains ECS instances that are created based on the specified scaling configuration. |
 
-#### Scaling rules
+#### 6.1.9 Scaling rules
 
-##### CreateScalingRule
+##### 6.1.9.1 CreateScalingRule
 
 Creates a scaling rule. A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances. This way, the number of ECS instances is still within the specified range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged. You can create scaling rules based on input parameters. If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0. If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group. If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that must be scaled: Value of TotalCapacity × Value of AdjustmentValue/100. If the cooldown time (Cooldown) is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group. A scaling group can have up to 10 scaling rules. The following API operations use the unique identifier that is indicated by the ScalingRuleAri parameter of a scaling rule returned by this operation: ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier. CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier. Request parameters
 
@@ -2712,7 +2803,7 @@ p1dvirgwkoowxk7****"
 | 400 | InvalidStepAdjustments. MaxNum | Your scaling rule can have at most %s StepAdjustments. | The error message returned because the maximum number of step adjustments in the scaling group has been reached. |
 | 400 | StepBeyondPermitRang e | Specific parameter "%s" beyond permit range. | The error message returned because the specified upper limit or lower limit of the step adjustment is invalid. |
 
-##### ModifyScalingRule
+##### 6.1.9.2 ModifyScalingRule
 
 Modifies a scaling rule. Request parameters
 
@@ -2814,7 +2905,7 @@ Sample success responses `XML` format
 | 400 | InvalidStepAdjustments. MaxNum | Your scaling rule can have at most %s StepAdjustments. | The error message returned because the maximum number of step adjustments in the scaling group has been reached. |
 | 400 | StepBeyondPermitRang e | Specific parameter "%s" beyond permit range. | The error message returned because the specified upper limit or lower limit of the step adjustment is invalid. |
 
-##### DescribeScalingRules
+##### 6.1.9.3 DescribeScalingRules
 
 Queries all scaling rules in a scaling group and information about the scaling rules. You can query all scaling rules in a scaling group by specifying the ID of the scaling group and filter scaling rules that are returned by scaling rule ID, name, unique identifier, and type. Request parameters
 
@@ -2968,7 +3059,7 @@ qrZdjlookc0UkE3dA****",
 
 `}` `]` `}` `}`
 
-##### DeleteScalingRule
+##### 6.1.9.4 DeleteScalingRule
 
 Deletes a scaling rule. Request parameters
 
@@ -3012,9 +3103,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScalingRuleId.Not Found | The specified scaling rule does not exist. | The error message returned because the specified scaling rule does not exist within the Apsara Stack tenant account. |
 
-#### Scaling tasks
+#### 6.1.10 Scaling tasks
 
-##### ExecuteScalingRule
+##### 6.1.10.1 ExecuteScalingRule
 
 Executes a scaling rule. Before you call this operation, make sure that the following conditions are met: The scaling group is in the Active state. No scaling activities are in progress in the scaling group. If no scaling activities in the scaling group are in progress, the operation can trigger scaling activities without the need to wait for the cooldown time to expire. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can check the returned ScalingActivityId parameter to obtain the status of the scaling activity. If the number of Elastic Compute Service (ECS) instances that you want to add causes the number of instances in the scaling group to exceed the MaxSize value, the rule Total Capacity = MaxSize takes effect. If the number of ECS instances that you want to remove causes the number of instances in the scaling group to be less than the MinSize value, the rule Total Capacity = MinSize takes effect. Request parameters
 
@@ -3098,7 +3189,7 @@ Sample success responses `XML` format
 | 400 | MetricValueBeyondPerm itRange | Specific parameter "%s" beyond permit range. | The error message returned because the specified metric value is invalid. |
 | 400 | BreachThresholdBeyond PermitRange | Specific parameter "%s" beyond permit range. | The error message returned because the specified threshold is invalid. |
 
-##### AttachInstances
+##### 6.1.10.2 AttachInstances
 
 Adds Elastic Compute Service (ECS) instances to a scaling group. Before you add ECS instances to a scaling group, take note of the following items: The ECS instances and the scaling group must reside in the same region. The ECS instances must be in the Running state. The ECS instances are not added to other scaling groups. The ECS instances use the subscription or pay-as-you-go billing method. If the VswitchID parameter is specified for the scaling group, the ECS instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group. If the VswitchID parameter is not specified for the scaling group, the ECS instances must not reside in VPCs. You can call this operation to add ECS instances to a scaling group only if the scaling group is in the Active state. You can call this operation only if no scaling activities are in progress in the scaling group. If no scaling activities are in progress in the scaling group, the operation can trigger scaling activities even before the cooldown period ends. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the ScalingActivityId parameter in the response. If the total number of ECS instances in the scaling group is greater than the value that you specify for the MaxSize parameter after you add a specific number of ECS instances to the scaling group, the call fails. ECS instances that you manually add to the scaling group are not associated with the active scaling configuration in the scaling group. Request parameters
 
@@ -3178,7 +3269,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | IncorrectCapacity.MaxSi ze | To attach the instances, the total capacity will be greater than the MaxSize. | The error message returned because the total number of ECS instances that is indicated by the Total Capacity parameter exceeds the specified value of the MaxSize parameter after ECS instances are added to the specified scaling group. |
 
-##### RemoveInstances
+##### 6.1.10.3 RemoveInstances
 
 Removes Elastic Compute Service (ECS) instances from a scaling group. Before you call this operation, make sure that the following requirements are met: The scaling group is in the Active state. No scaling activity is in progress in the scaling group. If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires. The cooldown time is specified by the DefaultCooldown parameter. When an automatically created ECS instance is removed from a scaling group, the instance is stopped and released. When a manually added ECS instance is removed from a scaling group, the ECS instance is not stopped or released. A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can use the value of the ScalingActivityId parameter in the response to check the status of the scaling activity. If the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter, the call fails. Request parameters
 
@@ -3242,7 +3333,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | IncorrectCapacity.MinSiz e | To remove the instances, the total capacity will be lesser than the MinSize. | The error message the difference between the number of existing ECS instances that is specified by the TotalCapacity parameter and the number of ECS instances that you want to remove is less than the value of the MinSize parameter. |
 
-##### DetachInstances
+##### 6.1.10.4 DetachInstances
 
 Removes one or more Elastic Compute Service (ECS) instances from a scaling group. After ECS instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances that are removed from the scaling group to other scaling groups. After you remove an ECS instance by calling the DetachInstances operation, the ECS instance is not stopped or released. Before you call the DetachInstances operation, make sure that the following conditions are met: The specified scaling group is enabled. The specified scaling group cannot have a scaling activity in progress. If no scaling activities in the scaling group are in progress, the DetachInstances operation can trigger scaling activities without the need to wait for the cooldown period to end. A successful call to the DetachInstances operation indicates only that the request for the call is accepted. The scaling activity can be triggered, but may fail to be executed. You can use the ScalingActivityId parameter in the response to query the status of the scaling activity. The difference between the number of existing ECS instances in the specified scaling group and the number of ECS instances that you want to remove must be greater than or equal to the value of the MinSize parameter. Otherwise, an error message is returned. Request parameters
 
@@ -3308,9 +3399,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidInstanceId.NotFou nd | Instance “XXX” does not exist. | The error message returned because the specified ECS instance does not exist. |
 
-#### Scheduled tasks
+#### 6.1.11 Scheduled tasks
 
-##### CreateScheduledTask
+##### 6.1.11.1 CreateScheduledTask
 
 Creates a scheduled task. You can create up to 20 scheduled tasks within an Apsara Stack tenant account. If a scheduled task fails to trigger a scaling rule due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling rule after the period ends, the task is automatically skipped. If multiple tasks are scheduled at similar points in time to execute scaling rules in the same scaling group, the earliest task executes the scaling activity first. Other tasks may attempt to execute their scaling rules during their launch expiration time, but only one scaling activity can be triggered in a scaling group at a time. If the previous scaling activity is complete and another scheduled task executes the scaling rule during the period that is specified by the LaunchExpirationTime parameter, the scaling rule in the scheduled task is executed, and a new scaling activity is triggered. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task. Request parameters
 
@@ -3394,7 +3485,7 @@ Sample success responses `XML` format
 | 400 | QuotaExceeded.Schedul edTask | Scheduled task quota exceeded. | The error message returned because the maximum number of scheduled tasks has been reached. |
 | 400 | ScheduledAction.Region Mismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | The error message returned because the specified scaling rule and the specified scheduled task do not reside in the same region. |
 
-##### ModifyScheduledTask
+##### 6.1.11.2 ModifyScheduledTask
 
 Modifies a scheduled task. A scheduled task supports two scaling methods. If you specify the `ScheduledAction` parameter, the scaling method of the scheduled task is to specify an existing scaling rule that you want to execute when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter, the scaling method of the scheduled task is to specify the minimum number, maximum number, or expected number of instances in the scaling group for which you create the scheduled task. Not e You cannot specify the ScheduledAction and ScalingGroupId parameters at the same time. Request parameters
 
@@ -3470,7 +3561,7 @@ Sample success responses `XML` format
 | 400 | InvalidScheduledTaskNa me.Duplicate | The specified value of parameter ScheduledTaskName is duplicated. | The error message returned because the specified name of the scheduled task already exists. |
 | 400 | ScheduledAction.Region Mismatch | The specified scheduled task and the specified scheduled action are not in the same Region. | The error message returned because the specified scaling rule and the specified scheduled task do not reside in the same region. |
 
-##### DescribeScheduledTasks
+##### 6.1.11.3 DescribeScheduledTasks
 
 Queries scheduled tasks. You can query scheduled tasks based on scaling rule, task ID, and task name. Request parameters
 
@@ -3604,7 +3695,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DeleteScheduledTask
+##### 6.1.11.4 DeleteScheduledTask
 
 Deletes scheduled tasks. Request parameters
 
@@ -3648,9 +3739,9 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 404 | InvalidScheduledTaskId. NotFound | The specified scheduled task does not exist. | The error message returned because the specified scheduled task does not exist within the Apsara Stack tenant account. |
 
-#### Error codes
+#### 6.1.12 Error codes
 
-##### Client errors
+##### 6.1.12.1 Client errors
 
 This topic describes the details of errors caused by clients.
 
@@ -3675,7 +3766,7 @@ This topic describes the details of errors caused by clients.
 | 403 | Forbidden.UserVerificati on | Your user account is not verified by Aliyun. | The error message returned because the real-name verification is not complete. |
 | 400 | ResourceNotAvailable | Resource you requested is not available in this region or zone. | The error message returned because Auto Scaling is unavailable in the specified region. |
 
-##### Server errors
+##### 6.1.12.2 Server errors
 
 This topic describes the details of errors caused by servers.
 
@@ -3684,13 +3775,13 @@ This topic describes the details of errors caused by servers.
 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. | The error message returned because the server fails to process the request. |
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | The error message returned because the server fails to process this request. |
 
-#### Ensure idempotence
+#### 6.1.13 Ensure idempotence
 
 This topic describes how to ensure that requests are idempotent by using ClientToken. If a request times out or an internal server error occurs when the ExecuteScalingRule operation is called to create or release ECS instances, the client may attempt to resend the request. In this case, the client provides the ClientToken parameter to prevent the server from creating or releasing more instances than intended. The ClientToken parameter also ensures that requests are idempotent. The ClientToken value is a unique and case-sensitive string that is generated by the client. The token can only contain ASCII characters and cannot exceed 64 characters in length. If the same ClientToken value is used to call the CreateInstance operation, the server returns identical request results with identical ScalingActivityId values. Therefore, when the request is resent due to an error, the same ClientToken value can ensure that only one scaling activity is created and the corresponding ScalingActivityId value is obtained. If you provide a used ClientToken value and other request parameters are different, Auto Scaling returns the `IdempotentParameterMismatch` error code. Note: You must specify the SignatureNonce, Timestamp, and Signature parameters again before the request is resent because Auto Scaling uses SignatureNonce to prevent replay attacks and uses Timestamp to mark the time of each request. Therefore, you must provide different SignatureNonce and Timestamp values. This also produces a different Signature value. Typically, you only need to configure the client to resend a request in the case of Error 503 (ServiceUnAvailable) or no response. If Error 200 is returned, a retry can obtain the same result as that of the previous request, but the server status is not affected. If Error 4xx or 500 is returned, the request cannot be retried unless the error message states `Try it later` .
 
-## Appendixes
+## 7 Appendixes
 
-### Call the ASAPI gateway
+### 7.1 Call the ASAPI gateway
 
 You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Flowchart Procedure
 1. Obtain ASAPI SDK.
@@ -3744,11 +3835,11 @@ erFeature.PrettyFormat));
 
 `}`
 
-### Use the ASAPI gateway to make
+### 7.2 Use the ASAPI gateway to make API calls
 
 API calls
 
-#### Obtain an endpoint of ASAPI
+#### 7.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -3820,7 +3911,7 @@ name.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
 file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Generate an endpoint for ASAPI
+#### 7.2.2 Generate an endpoint for ASAPI
 
 This topic describes how to generate an endpoint for ASAPI.
 1. Log on to the OPS1 server.
@@ -3838,7 +3929,7 @@ kubectl get ingress -n ascm |grep asapiserver
 https://<domain>/asapi/v3
 ```
 
-#### Obtain Apsara Stack SDKs
+#### 7.2.3 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -3879,13 +3970,13 @@ Apsara Stack SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-#### What is STS?
+#### 7.3.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

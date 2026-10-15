@@ -2,18 +2,64 @@
 title: "Cloud Security Firewall Developer Guide 20251212"
 product_version: "V3.18.6"
 pdf_pages: 114
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Developer Guide 20251212.pdf"
+source_pdf: "7703c5b6813f39c3_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Developer Guide 20251212.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Firewall%20Developer%20Guide%2020251212.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Security Firewall Developer Guide 20251212
 
-Cloud Security Firewall
+## Table of Contents
 
-## Preparations
+- 1 Preparations
+  - 1.1 Log on to the Developer Portal console
+  - 1.2 Obtain an AccessKey pair
+- 2 Use POP to make API calls
+  - 2.1 Preparations
+  - 2.2 SDK for Java
+  - 2.3 SDK for Go
+  - 2.4 Python version
+- 3 API common parameters
+- 4 Cloud Firewall
+  - 4.1 Invocation method
+    - 4.1.1 Request structure
+    - 4.1.2 Request signatures
+    - 4.1.3 Common parameters
+    - 4.1.4 Response structure
+  - 4.2 Firewall switch
+    - 4.2.1 PutEnableFwSwitch
+    - 4.2.2 PutDisableFwSwitch
+    - 4.2.3 PutEnableAllFwSwitch
+    - 4.2.4 PutDisableAllFwSwitch
+    - 4.2.5 UpdateResourceDetails
+    - 4.2.6 PutEnableAllResourceFwSwitch
+    - 4.2.7 PutDisableAllResourceFwSwitch
+  - 4.3 VPC firewalls
+    - 4.3.1 CreateVpcFirewallControlPolicy
+    - 4.3.2 DescribeVpcFirewallControlPolicy
+    - 4.3.3 ModifyVpcFirewallControlPolicy
+    - 4.3.4 ModifyVpcFirewallControlPolicyPosition
+    - 4.3.5 DeleteVpcFirewallControlPolicy
+    - 4.3.6 DescribeVpcFirewallPolicyPriorUsed
+    - 4.3.7 DescribeVpcFirewallAclGroupList
+    - 4.3.8 ResetVpcFirewallRuleHitCount
+  - 4.4 Access control
+    - 4.4.1 DescribePolicyPriorUsed
+    - 4.4.2 ModifyControlPolicyPosition
+    - 4.4.3 DescribeControlPolicy
+    - 4.4.4 AddControlPolicy
+    - 4.4.5 DeleteControlPolicy
+    - 4.4.6 ModifyControlPolicy
+  - 4.5 Address books
+    - 4.5.1 AddAddressBook
+    - 4.5.2 DeleteAddressBook
+    - 4.5.3 ModifyAddressBook
+    - 4.5.4 DescribeAddressBook
+- 5 Error codes
 
-### Log on to the Developer Portal
+## 1 Preparations
+
+### 1.1 Log on to the Developer Portal console
 
 **console**
 
@@ -37,13 +83,6 @@ When you log on to the Apsara Uni-manager Management Console for the first time,
 4. If multi-factor authentication (MFA) is enabled for your account, perform the following
 operations based on your scenario: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator: a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Re-enter your username and password as described in Step 2, and click **Log On**. c. Enter the 6-digit MFA code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter the 6-digit MFA code and click **Authenticate**.
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The region, such as cn-hangzhou-*. |
-| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain the organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
-
-Cloud Security Firewall
-
 **Note**
 
 For more information about how to bind and enable an MFA device, see the **Bind and**
@@ -51,7 +90,7 @@ For more information about how to bind and enable an MFA device, see the **Bind 
 **Console User Guide**.
 5. In the top menu bar, choose **Products > Application Services > Developer Portal**.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair assigned by RAM.
 
@@ -63,11 +102,18 @@ An AccessKey pair is used to verify the identity of a request sender based on sy
 
 The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. To obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The region, such as cn-hangzhou-*. |
+| x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain the organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
+
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain the resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
 |---|---|
 | x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
 
-Cloud Security Firewall To obtain the AccessKey pair of a personal account, perform the following operations:
+**Obtain an AccessKey pair for personal accounts**
+
+To obtain the AccessKey pair of a personal account, perform the following operations:
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the page, click your profile picture and select **Personal**
 **Information**.
@@ -76,7 +122,11 @@ personal account.
 
 **Note**
 
-The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential. To obtain the AccessKey pair of an organization, perform the following operations:
+The AccessKey pair provides full permissions on cloud resources within your Alibaba Cloud account. You must keep the AccessKey pair confidential.
+
+**Obtain an AccessKey pair for organizations**
+
+To obtain the AccessKey pair of an organization, perform the following operations:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the navigation pane on the left, choose **Resource Management > Organization**
@@ -84,11 +134,11 @@ The AccessKey pair provides full permissions on cloud resources within your Alib
 4. In the organization chart, click the name of the target level-1 organization.
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the AccessKey information of the organization.
-Cloud Security Firewall
+e API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### Preparations
+### 2.1 Preparations
 
 You can use the POP gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations required before calling API operations.
 
@@ -112,7 +162,7 @@ parameter name.
 
 **Obtain an endpoint from Apsara Infrastructure Management**
 
-Cloud Security Firewall To use the POP gateway to call Apsara Stack API operations, you must use the service endpoint. You can obtain an endpoint from onsite Alibaba Cloud O&M engineers. You can also obtain service endpoints by yourself. In this example, API Gateway is used to demonstrate how to obtain the endpoints of a cloud service.
+e API calls To use the POP gateway to call Apsara Stack API operations, you must use the service endpoint. You can obtain an endpoint from onsite Alibaba Cloud O&M engineers. You can also obtain service endpoints by yourself. In this example, API Gateway is used to demonstrate how to obtain the endpoints of a cloud service.
 1. Go to the Apsara Uni-manager Operations Console.
 2. In the top menu bar, choose **Platform Operation**> **Apsara Infrastructure**
 **Management** > **O&M Tools**.
@@ -126,10 +176,14 @@ Cloud Security Firewall To use the POP gateway to call Apsara Stack API operatio
 
 icon.
 7. Click the text information in the **Service Registration** column of the `apigateway` service.
-In the **Registration Variable** dialog box that appears, view the apigateway.openapi.endpoint value, which is the `Endpoint` . For information about how to obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack API operations through the POP gateway, see the **Obtain common header parameters** section under
+In the **Registration Variable** dialog box that appears, view the apigateway.openapi.endpoint value, which is the `Endpoint` .
+
+**Obtain common parameters**
+
+For information about how to obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack API operations through the POP gateway, see the **Obtain common header parameters** section under
 **Preparations** in this guide.
 
-### SDK for Java
+### 2.2 SDK for Java
 
 Before you use point of presence (POP) SDK for Java to make API calls, you must first understand the remote procedure call (RPC) and resource-oriented architecture (ROA) styles.
 
@@ -151,7 +205,7 @@ RPC call example with the following API information: product (apigateway), opera
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; importcomaliyuncsexceptionsClientException;
 ```
 
-Cloud Security Firewall
+e API calls
 
 ```java
 import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -199,7 +253,7 @@ resources.
         // request.putHeadParameter("x-acs-instanceid", "");
 ```
 
-Cloud Security Firewall
+e API calls
 
 ```java
         try {
@@ -212,12 +266,9 @@ Cloud Security Firewall
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-ROA call example with the following API information: product (CR), operation (GetNamespaceList), and version (2016-06-07). Sample code:
+`}` `}` `}` ROA call example with the following API information: product (CR), operation (GetNamespaceList), and version (2016-06-07). Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -250,7 +301,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 API
 ```
 
-i Cloud Security Firewall
+`i` e API calls
 
 ```java
         // Specify the API version
@@ -286,20 +337,19 @@ the x-acs-security-token field to the header
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java Cloud Security Firewall
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can configure the following setting: Java e API calls
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 2.3 SDK for Go
 
 This topic describes how to work with the POP SDK for Go.
 
@@ -318,7 +368,7 @@ Remote procedure call (RPC) and resource-oriented architecture (ROA) styles are 
 
 **Examples**
 
-RPC example API information: product (apigateway), API operation (DescribeApiGroups), and version (2016-07-14). The following sample code provides an example: Cloud Security Firewall
+RPC example API information: product (apigateway), API operation (DescribeApiGroups), and version (2016-07-14). The following sample code provides an example: e API calls
 
 ```java
 package main import (
@@ -327,7 +377,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -354,12 +404,15 @@ erations, you must specify the SecurityToken parameter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-ROA example API information: product (CR), API operation (GetNamespaceList), and version (2016-06-07). Sample code: Cloud Security Firewall
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` ROA example API information: product (CR), API operation (GetNamespaceList), and version (2016-06-07). Sample code: e API calls
 
 ```java
 package main import (
@@ -369,7 +422,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -397,31 +450,36 @@ acs-security-token field to the header
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Proxy settings**
 
-You can configure a proxy in one of the following ways when you call API operations: Method 1: Configure a proxy by using environment variables. Specify the HTTP_PROXY and HTTPS_PROXY environment variables, or specify the NO_PROXY environment variable. Sample code: Cloud Security Firewall
+You can configure a proxy in one of the following ways when you call API operations: Method 1: Configure a proxy by using environment variables. Specify the HTTP_PROXY and HTTPS_PROXY environment variables, or specify the NO_PROXY environment variable. Sample code: e API calls
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Specify the HTTP_PROXY environment
 variable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Specify the HTTPS_PROXY environm
-ent variable. }
+ent variable.
 ```
 
-Method 2: Configure a proxy on the client. Sample code:
+`}` Method 2: Configure a proxy on the client. Sample code:
 
 ```
 // The proxy settings on the client take precedence over the environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -447,13 +505,13 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 // Configure HTTPSInsecure for the request (affects only the current request) request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Query the HTTPSInsecure sett ing for the request.
 ```
 
-Cloud Security Firewall The HTTPSInsecure setting takes effect for the client only when you do not specify the HTTPSInsecure parameter for the request.
+e API calls The HTTPSInsecure setting takes effect for the client only when you do not specify the HTTPSInsecure parameter for the request.
 
 ```
 // Configure HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true for t he client. isInsecure := client.GetHTTPSInsecure() // Query the HTTPSInsecure setting for the client.
 ```
 
-### Python version
+### 2.4 Python version
 
 This topic describes how to use POP Python SDK to call cloud product APIs.
 
@@ -483,7 +541,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set timeout
     verify=False, # Ignore certificate or verify='<certificate location>'
+```
+
 );
+
+```python
 # Use with https
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -492,11 +554,12 @@ def describe_api_groups():
     # Create request and set parameters
 ```
 
-Cloud Security Firewall
+e API calls
 
-```python
+```bash
     request = CommonRequest()
     # When using sts ak to call rpc interface, you need to add SecurityToken field in p
+arameters
     # params = {"PageSize":"10","PageNumber":"1","SecurityToken":"<your-
 SecurityToken>"};
     params = {"PageSize":"10","PageNumber":"1"};
@@ -512,7 +575,11 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional, required for modify & delete operations
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -541,7 +608,7 @@ os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 
 **HTTPS configuration**
 
-Cloud Security Firewall The following describes how to access OpenAPI using HTTPS protocol.
+e API calls The following describes how to access OpenAPI using HTTPS protocol.
 
 **Using HTTPS protocol**
 
@@ -552,7 +619,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # Region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use https client.do_action_with_exception(request)
@@ -570,7 +637,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Ignore SSL certificate verification
 ```
 
-)
+`)`
 
 **Specify CA certificate file**
 
@@ -580,7 +647,13 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # Certification path
 ```
 
-)
+`)` rameters
+
+## 3 API common parameters
+
+**Common request parameters**
+
+You must include common request parameters in all API requests. Table 1. Common request parameters
 
 | Name | Type | Requi red | Description |
 |---|---|---|---|
@@ -591,51 +664,35 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | RegionId | Strin g | Yes | The region ID of the service. |
 | Product | Strin g | Yes | The name of the service to which the operation belongs. Valid values: Auditprivate: Alibaba Cloud Security basic component. yundunnextsoc: Security Operations Center (SOC). Sas: Threat Detection Service. aegis: Server Guard. yundun-css: Container Protection. secspy: Network Traffic Detection and Response. Ddosprivate: DDoS traffic scrubbing. hsm-private: Cloud Hardware Security Module (CloudHSM). Cloudfw: Cloud Firewall. Sddp: Sensitive Data Protection. semawaf: Web Application Firewall. soar: Security Operations Center (SOC)-Orchestration and Response. |
 
-Cloud Security Firewall
-
-## API common parameters
-
-**Common request parameters**
-
-You must include common request parameters in all API requests. Table 1. Common request parameters
+rameters
 
 | EndpointPre | Strin g | Yes | The prefix in the endpoint of the service to which the operation belongs. Valid values: auditprivate: Alibaba Cloud Security basic component. yundunnextsoc-pop: Security Operations Center (SOC). tds: Threat Detection Service. aegis: Server Guard. yundun-css: Container Protection. secspy-share: Network Traffic Detection and Response. ddosprivate: DDoS traffic scrubbing. hsmprivate: Cloud Hardware Security Module (CloudHSM). cloudfw: Cloud Firewall. sddp-api: Sensitive Data Protection. semawaf: Web Application Firewall. soar: Security Operations Center (SOC)-Orchestration and Response. |
 |---|---|---|---|
-
-Cloud Security Firewall
 
 **Common response parameters**
 
 Responses are returned in the HTTP response format: A 2xx HTTP status code indicates a successful call. A 4xx or 5xx HTTP status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestId regardless of whether the call is successful.
 
-|  | endpoint |  | : The endpoin |
-|---|---|---|---|
-| [RegionId].example.com |  |  |  |
-|  | Action | : the name of t |  |
+## 4 Cloud Firewall
 
-Cloud Security Firewall
+### 4.1 Invocation method
 
-## Cloud Firewall
+#### 4.1.1 Request structure
 
-### Invocation method
-
-#### Request structure
-
-Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests.
-
-**Description**
-
-You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
+Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request syntax is as follows:
 
 ```
 http://endpoint/?Action=xx&parameters
 ```
 
-where: For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description.
+where:
 
-**Example**
+|   | endpoint |   | : The endpoin |
+|---|---|---|---|
+| [RegionId].example.com |   |   |   |
+|   | Action | : the name of t |   |
 
-The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
+`endpoint` : The endpoint of the Web Application Firewall (WAF) API is `semawaf.` `Action` : the name of the operation being performed. For example, to query the Apsara Stack Security features that are deployed, you must set the Action parameter to DescribeFeatures. `parameters` : the request parameters for the operation. Separate multiple parameters with ampersands (&). Request parameters include both common parameters and operationspecific parameters. Common parameters include information such as the API version number and authentication information. For more information about operation-specific parameters, see the corresponding operation description. The following example demonstrates how to call the DescribeFeatures operation to query the Apsara Stack Security features that are deployed:
 
 ```
 https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures&AccessKeyId=key-t est&Format=JSON&SecureTransport=true&SignatureMethod=HMAC- SHA1&SignatureNonce=15215528852396&SignatureVersion=1.0&SourceIp=1xxxx6&Timestamp=2018- 03-02Txxxxxxx&Version=2018-01-16&Signature=xxxx%xxxx%3D
@@ -647,6 +704,18 @@ API requests are presented in the following easy-to-read format in this document
 https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Version=2020-07-01 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
+#### 4.1.2 Request signatures
+
+Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
+
+**Authorization**
+
+To ensure the security of your account, we recommend that you use a RAM user to call API operations. Before you use a RAM user to call an API operation, you must grant the RAM user the required permissions by creating an policy and attaching the policy to the RAM user.
+
+**Signature**
+
+You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. When you manually make an API request, you must use the AccessKey secret to calculate an HMAC value based on the encoded and sorted request string. The HMAC value is the signature. For more information, see the definition in RFC 2104. The following parameters are used in the following procedure to describe how to calculate a signature.
+
 | Parameter | Description |
 |---|---|
 | Endpoint | http://tds.[RegionId].example.com/? |
@@ -654,31 +723,11 @@ https://yundunprivate.[RegionId].example.com/?Action=DescribeFeatures &Format=JS
 | Common parameters except Signature | &Timestamp=2018-12-24T12:46:24Z &Format=JSON &AccessKeyId=<yourAccessKeyId> &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2018-12-03 &SignatureVersion=1.0 |
 | Access Key Secret | <yourAccessKeySecret> |
 
-Cloud Security Firewall
-
-#### Request signatures
-
-Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
-
-**Authorization**
-
-To ensure the security of your account, we recommend that you use a RAM user to call API operations. Before you use a RAM user to call an API operation, you must grant the RAM user the required permissions by creating an policy and attaching the policy to the RAM user. You must sign all API requests to ensure security. Alibaba Cloud uses the request signature to verify the identity of the API caller. When you manually make an API request, you must use the AccessKey secret to calculate an HMAC value based on the encoded and sorted request string. The HMAC value is the signature. For more information, see the definition in RFC 2104. The following parameters are used in the following procedure to describe how to calculate a signature.
 1. Create a canonicalized query string by arranging the request parameters.
 
 **Note**
 
-The request parameters include operation-specific parameters and all common request parameters except Signature. i. Sort the request parameters. Sort the request parameters in alphabetical order. ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| Version | String | Yes | The version number of the API. The value is in the format of YYYY-MM-DD. Set the value to 2018-01-16. |
-| AccessKeyId | String | Yes | The AccessKey ID provided to you by Alibaba Cloud. |
-| Signature | String | Yes | The signature string of the current request. |
-| SignatureMethod | String | Yes | The encryption method of the signature string. Set the value to HMAC-SHA1. |
-| Timestamp | String | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. For example, 2014-05-26T12:00:00Z indicates 20:00:00 on May 26, 2014 (UTC+8). |
-| SignatureVersion | String | Yes | The version of the signature encryption algorithm. Set the value to 1.0. |
-
-Cloud Security Firewall iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the pairs of parameter names and values that are connected by using equal signs (=) in alphabetical order. Connect the pairs with ampersands (&) to create a canonicalized query string.
+The request parameters include operation-specific parameters and all common request parameters except Signature. i. Sort the request parameters. Sort the request parameters in alphabetical order. ii. Encode the parameters. Encode the canonicalized query string in UTF-8 based on the following rules: Uppercase letters, lowercase letters, digits, and some special characters such as hyphens (-), underscores (_), periods (.), and tildes (~) do not need to be encoded. Other characters must be percent encoded in the %XY format. XY represents the ASCII code of the characters in hexadecimal notation. For example, double quotation marks (") are encoded as %22. Extended UTF-8 characters are encoded in the %XY%ZA… format. Spaces must be encoded as %20. Do not encode spaces as plus signs (+). iii. Connect the encoded parameter names and values by using equal signs (=). iv. Sort the pairs of parameter names and values that are connected by using equal signs (=) in alphabetical order. Connect the pairs with ampersands (&) to create a canonicalized query string.
 2. Create a string-to-sign from the encoded canonicalized query string based on the following
 rule:
 
@@ -700,22 +749,25 @@ LEW8N4y7Uasop******
 5. Add the signature string to the request as the Signature parameter. The result is the signed
 API request.
 
-#### Common parameters
+#### 4.1.3 Common parameters
 
 Common request parameters must be included in all Apsara Stack Security API requests, such as the API version number and authentication information.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| Version | String | Yes | The version number of the API. The value is in the format of YYYY-MM-DD. Set the value to 2018-01-16. |
+| AccessKeyId | String | Yes | The AccessKey ID provided to you by Alibaba Cloud. |
+| Signature | String | Yes | The signature string of the current request. |
+| SignatureMethod | String | Yes | The encryption method of the signature string. Set the value to HMAC-SHA1. |
+| Timestamp | String | Yes | The timestamp of the request. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. For example, 2014-05-26T12:00:00Z indicates 20:00:00 on May 26, 2014 (UTC+8). |
+| SignatureVersion | String | Yes | The version of the signature encryption algorithm. Set the value to 1.0. |
 
 | SignatureNonce | String | Yes | A unique, random number used to prevent replay attacks. You must use different numbers for different requests. |
 |---|---|---|---|
 | ResourceOwnerA ccount | String | No | The owner account (the logon username) of the resource you want to access by using this API request. |
 | Format | String | No | The format of the response. Valid values: JSON and XML. Default value: XML. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | PutEnableFwSwi tch | The operation that you want to perform. Set the value to PutEnableFwSwitch |
-
-Cloud Security Firewall
-
-#### Response structure
+#### 4.1.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -731,17 +783,25 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 **Sample responses (JSON format)**
 
+`{`
+
 ```json
-{ "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */ }
+"RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
-### Firewall switch
+`}`
 
-#### PutEnableFwSwitch
+### 4.2 Firewall switch
+
+#### 4.2.1 PutEnableFwSwitch
 
 Enables a firewall for specific assets.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | PutEnableFwSwi tch | The operation that you want to perform. Set the value to PutEnableFwSwitch |
 
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 |---|---|---|---|---|
@@ -750,13 +810,11 @@ Enables a firewall for specific assets.
 | RegionList.N | RepeatL ist | No | ["cn- hangzhou","cn- shanghai"] | The list of regions. |
 | ResourceTypeLis t.N | RepeatL ist | No | ["EcsPublicIp","N atEip"] | The list of asset types. Valid values: BastionHostIP (Bastionhost) EcsEIP (ECS EIP) EcsPublicIP (public IP addresses of Elastic Compute Service (ECS) instances) EIP EniEIP (EIP of elastic network interfaces (ENIs)) NatEIP (NAT EIP) SlbEIP (SLB EIP) SlbPublicIP (SLB public IP) NatPublicIP (NAT public IP) HAVIP (HA VIP) |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF73**** | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -774,6 +832,16 @@ Sample success responses `XML` format
 
 `JSON` format
 
+```json
+{"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
+```
+
+#### 4.2.2 PutDisableFwSwitch
+
+Turns off a firewall switch.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | PutDisableFwSwi tch | The operation that you want to perform. Set the value to PutDisableFwSwitch |
@@ -783,38 +851,13 @@ Sample success responses `XML` format
 | RegionList.N | RepeatL ist | No | ["cn- hangzhou","cn- shanghai"] | The list of regions. |
 | ResourceTypeLis t.N | RepeatL ist | No | ["EcsPublicIp","N atEip"] | The list of asset types. Valid values: BastionHostIP (Bastionhost) EcsEIP (ECS EIP) EcsPublicIP (public IP addresses of Elastic Compute Service (ECS) instances) EIP EniEIP (EIP of elastic network interfaces (ENIs)) NatEIP (NAT EIP) SlbEIP (SLB EIP) SlbPublicIP (SLB public IP) NatPublicIP (NAT public IP) HAVIP (HA VIP) |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Cloud Security Firewall
-
-```json
-{"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
-```
-
-#### PutDisableFwSwitch
-
-Turns off a firewall switch.
-
-**Request parameters**
-
 **Response parameters**
 
-| RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF73**** | The ID of the request. |
-|---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | PutEnableAllFwS witch | The operation that you want to perform. Set the value to PutEnableAllFwSwitch |
-| SourceIp | String | No | 1.XX.XX.4 | The source IP address of the request. |
-| Lang | String | No | zh | The language of the content in the request and response messages. zh: Chinese en: English |
-| InstanceId | String | No | i-**** | The ID of the ECS instance. |
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF73**** | The ID of the request. |
 
-Cloud Security Firewall
+| RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF73**** | The ID of the request. |
+|---|---|---|---|
 
 **Examples**
 
@@ -836,26 +879,24 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### PutEnableAllFwSwitch
+#### 4.2.3 PutEnableAllFwSwitch
 
 Enables all firewall switches.
 
 **Request parameters**
 
-**Response parameters**
-
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-| Action | String | Yes | PutDisableAllFw Switch | The operation that you want to perform. Set the value to PutDisableAllFwSwitch. |
-| SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+| Action | String | Yes | PutEnableAllFwS witch | The operation that you want to perform. Set the value to PutEnableAllFwSwitch |
+| SourceIp | String | No | 1.XX.XX.4 | The source IP address of the request. |
 | Lang | String | No | zh | The language of the content in the request and response messages. zh: Chinese en: English |
 | InstanceId | String | No | i-**** | The ID of the ECS instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF73**** | The ID of the request. |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -877,27 +918,28 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### PutDisableAllFwSwitch
+#### 4.2.4 PutDisableAllFwSwitch
 
 Turns off all firewall switches.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | PutDisableAllFw Switch | The operation that you want to perform. Set the value to PutDisableAllFwSwitch. |
+| SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
+| Lang | String | No | zh | The language of the content in the request and response messages. zh: Chinese en: English |
+| InstanceId | String | No | i-**** | The ID of the ECS instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | B2841452-CB8D- 4F7D-B247- 38E1CF73**** | The ID of the request. |
 
 **Examples**
 
 Sample requests
-
-| Parame ter | Typ e | Locati on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Query | No | 192.0.x.x | The source IP address of the access request. |
-| Lang | Strin g | Query | No | zh | The language of the response message. Valid values: zh (default): Chinese. en: English. |
-| Desc | Strin g | Query | No | Description of the traffic redirection configuration | The business description. |
-| IpaddrList | Repe atList | Query | No | ["192.0.X.X","192.0.X.X"] | The list of IP addresses. IpaddrList, RegionList, and ResourceTypeList cannot all be empty. Specify a value for at least one of these parameters. |
-| RegionList | Repe atList | Query | No | ['cn-wulan-env182- amtest182001-a'] | The list of regions. |
-
-Cloud Security Firewall
 
 ```
 http(s)://[Endpoint]/?Action=PutDisableAllFwSwitch &<Common request parameters>
@@ -915,7 +957,7 @@ Sample success responses `XML` format
 {"RequestId":"B2841452-CB8D-4F7D-B247-38E1CF73****"}
 ```
 
-#### UpdateResourceDetails
+#### 4.2.5 UpdateResourceDetails
 
 Updates the details of a resource in Cloud Firewall.
 
@@ -925,22 +967,26 @@ This operation uses common request headers. For more information, see Common req
 
 **Request parameters**
 
-|  | Cloud Security | Firewall |  |  | Dev | eloper Guide·Cloud Firewal | l |
+| Parame ter | Typ e | Locati on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| SourceIp | Strin g | Query | No | 192.0.x.x | The source IP address of the access request. |
+| Lang | Strin g | Query | No | zh | The language of the response message. Valid values: zh (default): Chinese. en: English. |
+| Desc | Strin g | Query | No | Description of the traffic redirection configuration | The business description. |
+| IpaddrList | Repe atList | Query | No | ["192.0.X.X","192.0.X.X"] | The list of IP addresses. IpaddrList, RegionList, and ResourceTypeList cannot all be empty. Specify a value for at least one of these parameters. |
+| RegionList | Repe atList | Query | No | ['cn-wulan-env182- amtest182001-a'] | The list of regions. |
+
+|   | Cloud Security | Firewall |   |   | Dev | eloper Guide·Cloud Firewal | l |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ResourceT ypeList | Repe atList | Query | No | [eip] | The list of resource types. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2C29FE9D-14D8- 4DF8-A3CC- 6B62B4F0DECF | The ID of the request. |
-
-| Parame ter name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| SourceIp | Strin g | Query | No | 192.0.x.x | The source IP address of the request. |
-
-**Response parameters**
 
 **Examples**
 
@@ -952,13 +998,19 @@ http(s)://[Endpoint]/?Action=UpdateResourceDetails &Common request parameters
 
 Response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"2C29FE9D-14D8-4DF8-A3CC-6B62B4F0DECF"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### PutEnableAllResourceFwSwitch
+`{`
+
+```json
+ "RequestId":"2C29FE9D-14D8-4DF8-A3CC-6B62B4F0DECF"
+```
+
+`}`
+
+#### 4.2.6 PutEnableAllResourceFwSwitch
 
 Enables or disables all resource switches for Cloud Firewall.
 
@@ -970,16 +1022,18 @@ This operation uses only common request headers. For more information, see Commo
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| SourceIp | Strin g | Query | No | 192.0.x.x | The source IP address of the request. |
+
+| Parame ter name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | Lang | Strin g | Query | No | zh | The language of the response message. Valid values: `zh` (Chinese) and `en` (English). Default value: `zh`. |
 | InstanceId | Strin g | Query | No | **** | The instance ID. |
+
+**Response parameters**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2C29FE9D-14D8- 4DF8-A3CC- 6B62B4F0DECF | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -991,13 +1045,19 @@ http(s)://[Endpoint]/?Action=PutEnableAllResourceFwSwitch &<Common request param
 
 Response example `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"2C29FE9D-14D8-4DF8-A3CC-6B62B4F0DECF"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-#### PutDisableAllResourceFwSwitch
+`{`
+
+```json
+ "RequestId":"2C29FE9D-14D8-4DF8-A3CC-6B62B4F0DECF"
+```
+
+`}`
+
+#### 4.2.7 PutDisableAllResourceFwSwitch
 
 Disables protection for all resources in Cloud Firewall.
 
@@ -1013,13 +1073,11 @@ This operation uses common request headers. No special request headers are requi
 | Lang | Strin g | Query | No | zh | The language of the response message. Valid values: zh (Chinese) and en (English). The default value is zh. |
 | InstanceId | Strin g | Query | No | **** | The instance ID. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2C29FE9D-14D8- 4DF8-A3CC- 6B62B4F0DECF | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response data**
 
 **Examples**
 
@@ -1031,15 +1089,21 @@ http(s)://[Endpoint]/?Action=PutDisableAllResourceFwSwitch &Common request param
 
 Sample response `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"2C29FE9D-14D8-4DF8-A3CC-6B62B4F0DECF"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-### VPC firewalls
+`{`
 
-#### CreateVpcFirewallControlPolicy
+```json
+ "RequestId":"2C29FE9D-14D8-4DF8-A3CC-6B62B4F0DECF"
+```
+
+`}`
+
+### 4.3 VPC firewalls
+
+#### 4.3.1 CreateVpcFirewallControlPolicy
 
 Creates an access control policy to a specific policy group for a VPC firewall.
 
@@ -1057,16 +1121,12 @@ The VPC firewall instances that are used to protect each Cloud Enterprise Networ
 | Description | String | Yes | test | The description of the access control policy. |
 | Destination | String | Yes | 80 | The destination port in the access control policy. Note If the DestPortType parameter is set to port, you must specify this parameter. |
 
-Cloud Security Firewall
-
 | DestinationTy pe | String | Yes | net | The type of the destination address in the access control policy. net: CIDR block group: destination address book domain: destination domain name |
 |---|---|---|---|---|
 | NewOrder | String | Yes | -1 | The priority of the access control policy. The priority value starts from 1. A smaller value indicates a higher priority. Note The value -1 indicates the lowest priority. |
 | Proto | String | Yes | TCP | The type of the security protocol in the access control policy. If you are not sure about the protocol type, you can set this parameter to ANY. TCP UDP ICMP |
 | Source | String | Yes | 10.2.3.0/24 | The source address in the access control policy. If the SourceType parameter is set to net , the value of this parameter is the source CIDR block. Example: 10.2.3.0/24. If the SourceType parameter is set to group , the value of this parameter is the name of the source address book. Example: db group. _ |
 | SourceType | String | Yes | net | The type of the source address in the access control policy. Valid values: net: source CIDR block group: source address book |
-
-Cloud Security Firewall
 
 | VpcFirewallId | String | Yes | vfw- a42bbb7b88714 8c9**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the ID of the CEN instance is used. Example: cen- ervw5jbw1234*****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb748c91234*****. |
 |---|---|---|---|---|
@@ -1075,21 +1135,14 @@ Cloud Security Firewall
 | DestPortType | String | No | net | The type of the destination port in the access control policy. port group: port address book |
 | DestPortGroup | String | No | my port group _ _ | The name of the destination port address book in the access control policy. Note If the DestPortType parameter is set to group , you must specify this parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclUuid | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 
-Cloud Security Firewall
-
-**Response parameters**
-
 | RequestId | String | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -1102,22 +1155,26 @@ http(s)://[Endpoint]/?Action=CreateVpcFirewallControlPolicy &VpcFirewallId=vfw-a
 Sample success responses `XML` format
 
 ```xml
+<CreateVpcFirewallControlPolicyResponse>
   <RequestId>CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D</RequestId>
   <AclUuid>00281255-d220-4db1-8f4f-c4d*********</AclUuid>
+</CreateVpcFirewallControlPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D",
     "AclUuid": "00281255-d220-4db1-8f4f-c4d*********"
-}
 ```
+
+`}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpcFirewallControlPolicy
+#### 4.3.2 DescribeVpcFirewallControlPolicy
 
 Queries the information of the access control policies for a specific VPC firewall.
 
@@ -1127,6 +1184,9 @@ The VPC firewall instances that are used to protect each Cloud Enterprise Networ
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DescribeVpcFire wallControlPolic y | The operation that you want to perform. Set the value to DescribeVpcFirewallControlPolic y. |
 |---|---|---|---|---|
 | CurrentPage | String | Yes | 1 | The page number of the current page. Default value: 1. |
@@ -1134,33 +1194,25 @@ The VPC firewall instances that are used to protect each Cloud Enterprise Networ
 | VpcFirewallId | String | Yes | vfw- a42bbb7b88714 8c9**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a CEN instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb7b887148c9****. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
-Cloud Security Firewall
-
 | Source | String | No | 10.0.1.0/24 | The source address in the access control policy. Fuzzy match is supported. Valid values: If the SourceType parameter is set to net , the value of this parameter is the source CIDR block. Example: 10.0.1.0/24. If the SourceType parameter is set to group , the value of this parameter is the name of the source address book. Example: db group. _ If the SourceType parameter is not specified, all sources are queried. Note The valid values of this parameter depend on the value of the SourceType parameter. |
 |---|---|---|---|---|
-
-Cloud Security Firewall
 
 | Destination | String | No | 10.0.3.0 | The destination address in the access control policy. Fuzzy match is supported. Valid values: If the DestinationType parameter is set to net , the value of this parameter is the destination CIDR block. Example: 10.0.3.0/24. If the DestinationType is set to domain , the value of this parameter is the destination domain name. Example: aliyun.com. If the DestinationType parameter is set to group , the value of this parameter is the name of the destination address book. Example: db group. _ If the DestinationType parameter is not specified, all destination addresses are queried. Note The valid values of this parameter depend on the value of the DestinationType parameter. |
 |---|---|---|---|---|
 | Description | String | No | test | The description of the access control policy. Fuzzy match is supported. Note If this parameter is not specified, the descriptions of all access control policies are queried. |
 | Proto | String | No | TCP | The type of the protocol in the access control policy. Valid values: TCP UDP ICMP ANY, which indicates all types of protocols |
 
-Cloud Security Firewall
-
 | AclAction | String | No | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic. drop: denies the traffic. log: monitors the traffic. If this parameter is not specified, access control policies that specify all the preceding actions are queried. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Policys | Array |  | The information of the access control policy. |
+| Policys | Array |   | The information of the access control policy. |
 | AclAction | String | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic. drop: denies the traffic. log: monitors the traffic. |
 | AclUuid | String | 00281255-d220- 4db1-8f4f- c4df221a**** | The ID of the access control policy. |
 | ApplicationId | String | 10** | The application ID in the access control policy. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 | ApplicationNa me | String | HTTP | The type of the application that the access control policy supports. Valid values: HTTP HTTPS MySQL SMTP SMTPS RDP VNC SSH Redis MQTT MongoDB Memcache SSL ANY, which indicates all types of applications |
 |---|---|---|---|
@@ -1170,16 +1222,12 @@ Cloud Security Firewall
 | DestPortGroup Ports | List | [80,443] | The ports in the destination port address book. |
 | DestPortType | String | port | The type of the destination port in the access control policy. Valid values: port group: port address book |
 
-Cloud Security Firewall
-
 | Destination | String | 10.0.3.0/24 | The destination address in the access control policy. Valid values: If the DestinationType parameter is set to net , the value of this parameter is the destination CIDR block. Example: 10.0.3.0/24. If the DestinationType parameter is set to domain , the value of this parameter is the destination domain name. Example: aliyuncs.com. If the DestinationType parameter is set to group , the value of this parameter is the name of the destination address book. Example: db group. _ Note The valid values of this parameter depend on the value of the DestinationType parameter. |
 |---|---|---|---|
 | DestinationGro upCidrs | List | ["10.0.4.0/24", "10.0.0.1/32"] | The CIDR blocks in the destination address book. |
 | DestinationTy pe | String | net | The type of the destination address in the access control policy. Valid values: net: destination CIDR block group: destination address book domain: destination domain name |
 | Direction | String | in | The direction of traffic to which the access control policy applies. Valid values: in: inbound traffic out: outbound traffic |
 | HitTimes | Integer | 100 | The number of hits for the access control policy. |
-
-Cloud Security Firewall
 
 | Order | Integer | 1 | The priority of the access control policy. The priority value starts from 1. A smaller value indicates a higher priority. The value -1 indicates the lowest priority. |
 |---|---|---|---|
@@ -1190,11 +1238,9 @@ Cloud Security Firewall
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | TotalCount | String | 20 | The total number of the access control policies. |
 
-Cloud Security Firewall
-
 **Examples**
 
-Sample requests Cloud Security Firewall
+Sample requests
 
 ```
 http(s)://[Endpoint]/?Action=DescribeVpcFirewallControlPolicy &VpcFirewallId=vfw-a42bbb7b887148c9**** &CurrentPage=1 &PageSize=10 &<Common request parameters>
@@ -1227,21 +1273,19 @@ Sample success responses `XML` format
 </DescribeVpcFirewallControlPolicyResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Cloud Security Firewall
+`JSON` format `{`
 
 ```json
-{
     "TotalCount":1,
     "PageNo":1,
     "PageSize":10,
     "RequestId":"A08BC58F-A83D-43EB-BC31-2F0D723929CC",
     "Policys":[
-        {
+```
+
+`{`
+
+```json
             "DestinationGroupCidrs":[
 ```
 
@@ -1274,18 +1318,15 @@ Cloud Security Firewall
 ```json
             "AclUuid":"53d82f0e-9bf1-4761-ab3b-a070b4811234",
             "Destination":"10.2.1.1/32"
-        }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### ModifyVpcFirewallControlPolicy
+#### 4.3.3 ModifyVpcFirewallControlPolicy
 
 Modifies the configuration of an access control policy in a specific policy group for a VPC firewall.
 
@@ -1295,6 +1336,9 @@ The VPC firewall instances that are used to protect each Cloud Enterprise Networ
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | ModifyVpcFirew allControlPolicy | The operation that you want to perform. Set the value to ModifyVpcFirewallControlPolicy. |
 |---|---|---|---|---|
 | AclAction | String | Yes | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic. drop: denies the traffic. log: monitors the traffic. |
@@ -1302,14 +1346,10 @@ The VPC firewall instances that are used to protect each Cloud Enterprise Networ
 | ApplicationNa me | String | Yes | HTTP | The type of applications to which the access control policy applies. Valid values: ANY FTP HTTP HTTPS MySQL SMTP SMTPS RDP VNC SSH Redis MQTT MongoDB Memcache SSL ANY, which indicates all types of applications |
 | Description | String | Yes | test | The description of the access control policy. |
 
-Cloud Security Firewall
-
 | Destination | String | Yes | 10.2.3.0/24 | The destination address in the access control policy. If the DestinationType parameter is set to net , the value of this parameter is the destination CIDR block. Example: 10.2.3.0/24. If the DestinationType parameter is set to group , the value of this parameter is the name of the destination address book. Example: db group. _ If the DestinationType parameter is set to domain , the value of this parameter is the destination domain name. Example: *.aliyuncs.com. |
 |---|---|---|---|---|
 | DestinationTy pe | String | Yes | net | The type of the destination address in the access control policy. Valid values: net: CIDR block group: destination address book domain: destination domain name |
 | Proto | String | Yes | TCP | The type of the security protocol in the access control policy. Valid values: ANY, which indicates all types of protocols TCP UDP ICMP |
-
-Cloud Security Firewall
 
 | Source | String | Yes | 10.2.4.0/24 | The source address in the access control policy. Valid values: If the SourceType parameter is set to net , the value of this parameter is the source CIDR block. Example: 10.2.4.0/24 If the SourceType parameter is set to group , the value of this parameter is the name of the source address book. Example: db group _ |
 |---|---|---|---|---|
@@ -1318,19 +1358,15 @@ Cloud Security Firewall
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | DestPort | String | No | 80 | The destination port in the access control policy. |
 
-Cloud Security Firewall
-
 | DestPortType | String | No | port | The type of the destination port in the access control policy. port group: port address book |
 |---|---|---|---|---|
 | DestPortGroup | String | No | my port group _ _ | The name of the destination port address book in the access control policy. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -1343,18 +1379,28 @@ http(s)://[Endpoint]/?Action=ModifyVpcFirewallControlPolicy &VpcFirewallId=vfw-a
 Sample success responses `XML` format
 
 ```xml
+<ModifyVpcFirewallControlPolicyResponse>
   <RequestId>CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D</RequestId>
+</ModifyVpcFirewallControlPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
-}
 ```
 
+`}`
+
+**Error codes**
+
 For a list of error codes, see Error codes.
+
+#### 4.3.4 ModifyVpcFirewallControlPolicyPosition
+
+Modifies the priority of an access control policy in a specific policy group for a VPC firewall.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1364,26 +1410,11 @@ For a list of error codes, see Error codes.
 | VpcFirewallId | String | Yes | vfw- a42bbb7b88714 8c9**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb7b887148c9****. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 850A84D6-0DE4- 4797-A1E8- 00090125EEB1 | The ID of the request. |
-
-Cloud Security Firewall
-
-#### ModifyVpcFirewallControlPolicyPosition
-
-Modifies the priority of an access control policy in a specific policy group for a VPC firewall.
-
-**Request parameters**
-
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteVpcFirewa llControlPolicy | The operation that you want to perform. Set the value to DeleteVpcFirewallControlPolicy. |
-| AclUuid | String | Yes | 00281255-d220- 4db1-8f4f- c4df2214**** | The ID of the access control policy. To delete an access control policy, you must specify the ID of the policy. You can call the DescribeVpcFirewallControlPolic y operation to obtain the ID. |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -1401,17 +1432,19 @@ Sample success responses `XML` format
 </ModifyVpcFirewallControlPolicyPositionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "850A84D6-0DE4-4797-A1E8-00090125EEB1"
-}
 ```
+
+`}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### DeleteVpcFirewallControlPolicy
+#### 4.3.5 DeleteVpcFirewallControlPolicy
 
 Deletes an access control policy from a specific policy group for a VPC firewall.
 
@@ -1421,17 +1454,20 @@ The VPC firewall instances that are used to protect each Cloud Enterprise Networ
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteVpcFirewa llControlPolicy | The operation that you want to perform. Set the value to DeleteVpcFirewallControlPolicy. |
+| AclUuid | String | Yes | 00281255-d220- 4db1-8f4f- c4df2214**** | The ID of the access control policy. To delete an access control policy, you must specify the ID of the policy. You can call the DescribeVpcFirewallControlPolic y operation to obtain the ID. |
+
 | VpcFirewallId | String | Yes | vfw- a42bbb7b88714 8c91**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a CEN instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb7b887148c9****. |
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -1444,16 +1480,28 @@ http(s)://[Endpoint]/?Action=DeleteVpcFirewallControlPolicy &VpcFirewallId=vfw-a
 Sample success responses `XML` format
 
 ```xml
+<DeleteVpcFirewallControlPolicyResponse>
   <RequestId>CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D</RequestId>
+</DeleteVpcFirewallControlPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
-}
 ```
+
+`}`
+
+**Error codes**
+
+For a list of error codes, see Error codes.
+
+#### 4.3.6 DescribeVpcFirewallPolicyPriorUsed
+
+Queries the priority range of the access control policies in a specific policy group for a VPC firewall.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1461,29 +1509,15 @@ Sample success responses `XML` format
 | VpcFirewallId | String | Yes | vfw- a42bbb7b88714 8c9**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw- a42bbb7b887148c9****. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | End | Integer | 150 | The lowest priority for the access control policy. |
 
-Cloud Security Firewall For a list of error codes, see Error codes.
-
-#### DescribeVpcFirewallPolicyPriorUsed
-
-Queries the priority range of the access control policies in a specific policy group for a VPC firewall.
-
-**Request parameters**
-
-**Response parameters**
-
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 |---|---|---|---|
 | Start | Integer | 1 | The highest priority for the access control policy. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeVpcFire wallAclGroupList | The operation that you want to perform. Set the value to DescribeVpcFirewallAclGroupList . |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -1503,23 +1537,29 @@ Sample success responses `XML` format
 </DescribeVpcFirewallPolicyPriorUsedResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D",
     "Start": 1,
     "End": 150
-}
 ```
+
+`}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-#### DescribeVpcFirewallAclGroupList
+#### 4.3.7 DescribeVpcFirewallAclGroupList
 
 Queries information about all access control policy groups for a VPC firewall.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeVpcFire wallAclGroupList | The operation that you want to perform. Set the value to DescribeVpcFirewallAclGroupList . |
 
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 |---|---|---|---|---|
@@ -1527,21 +1567,17 @@ Queries information about all access control policy groups for a VPC firewall.
 | CurrentPage | String | No | 1 | The page number of the current page. Default value: 1 |
 | PageSize | String | No | 10 | The number of entries to return on each page. Maximum value: 50. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AclGroupList | Array |  | The information about the access control policy group. |
+| AclGroupList | Array |   | The information about the access control policy group. |
 | AclGroupId | String | vfw- a42bbb7b887148c 9**** | The ID of the access control policy group. You can call the DescribeVpcFirewallAclGroupList operation to obtain the ID. Valid values: If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the ID of the CEN instance is used. Example: cen-ervw0g12b5jbw****. If the VPC firewall is used to protect an Express Connect, the ID of the VPC firewall instance is used. Example: vfw-a42bbb7b887148c9****. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 | AclGroupName | String | group test _ | The name of the access control policy group. If the VPC firewall is used to protect a CEN instance, the name of the CEN instance is used. If the VPC firewall is used to protect an Express Connect, the name of the VPC firewall is used. |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of access control policy groups. |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -1569,9 +1605,11 @@ Sample success responses `XML` format
 {"TotalCount":1,"AclGroupList":[{"AclGroupId":"vfwa42bbb7b887148c9****","AclGroupName":"group_test"}]}
 ```
 
+**Error codes**
+
 For a list of error codes, see Error codes.
 
-#### ResetVpcFirewallRuleHitCount
+#### 4.3.8 ResetVpcFirewallRuleHitCount
 
 Resets the count on hits of an access control policy in a specific policy group for a VPC firewall.
 
@@ -1583,13 +1621,11 @@ Resets the count on hits of an access control policy in a specific policy group 
 | AclUuid | String | Yes | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. To delete an access control policy, you must specify the ID of the policy. You can call the DescribeVpcFirewallControlPolicy operation to obtain the ID. |
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -1602,16 +1638,30 @@ http(s)://[Endpoint]/?Action=ResetVpcFirewallRuleHitCount &AclUuid=00281255-d220
 Sample success responses `XML` format
 
 ```xml
+<ResetVpcFirewallRuleHitCountResponse>
   <RequestId>CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D</RequestId>
+</ResetVpcFirewallRuleHitCountResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
-}
 ```
+
+`}`
+
+**Error codes**
+
+For a list of error codes, see Error codes.
+
+### 4.4 Access control
+
+#### 4.4.1 DescribePolicyPriorUsed
+
+Queries the priority range of access control policies that match specific query conditions.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1620,34 +1670,15 @@ Sample success responses `XML` format
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The language of the content in the request and response messages. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | End | Integer | 150 | The lowest priority of existing access control policies. Note -1 indicates the lowest priority. |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2**** | The ID of the request. |
 
-Cloud Security Firewall For a list of error codes, see Error codes.
-
-### Access control
-
-#### DescribePolicyPriorUsed
-
-Queries the priority range of access control policies that match specific query conditions.
-
-**Request parameters**
-
-**Response parameters**
-
 | Start | Integer | 1 | The highest priority of existing access control policies. Note 0 indicates the highest priority. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyControlPol icyPosition | The operation that you want to perform. Set the value to ModifyControlPolicyPosition. |
-| Direction | String | Yes | in | The direction of the traffic to which the access control policy applies. in: inbound traffic out: outbound traffic |
-| NewOrder | String | Yes | 1 | The new priority of the access control policy. |
-| OldOrder | String | Yes | 5 | The original priority of the access control policy. |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -1669,27 +1700,28 @@ Sample success responses `XML` format
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****","Start":"1","End":"150"}
 ```
 
-#### ModifyControlPolicyPosition
+#### 4.4.2 ModifyControlPolicyPosition
 
 Modifies the priority of an access control policy.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyControlPol icyPosition | The operation that you want to perform. Set the value to ModifyControlPolicyPosition. |
+| Direction | String | Yes | in | The direction of the traffic to which the access control policy applies. in: inbound traffic out: outbound traffic |
+| NewOrder | String | Yes | 1 | The new priority of the access control policy. |
+| OldOrder | String | Yes | 5 | The original priority of the access control policy. |
+
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 |---|---|---|---|---|
 | Lang | String | No | zh | The language of the content in the request and response messages. zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 850A84D6-0DE4- 4797-A1E8- 00090125**** | The ID of the request. |
-
-| Name | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeControl Policy | The operation that you want to perform. Set the value to DescribeControlPolicy. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -1711,11 +1743,15 @@ Sample success responses `XML` format
 {"RequestId":"850A84D6-0DE4-4797-A1E8-00090125****"}
 ```
 
-#### DescribeControlPolicy
+#### 4.4.3 DescribeControlPolicy
 
 Queries information about all access control policies.
 
 **Request parameters**
+
+| Name | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeControl Policy | The operation that you want to perform. Set the value to DescribeControlPolicy. |
 
 | CurrentPage | String | Yes | 1 | The page number of the current page. Default value: 1. |
 |---|---|---|---|---|
@@ -1725,30 +1761,24 @@ Queries information about all access control policies.
 | Lang | String | No | zh | The language of the content in the request and response messages. Valid values: zh: Chinese en: English |
 | Source | String | No | 1.2.3.5 | The source address in the access control policy. Fuzzy match is supported. Valid values: Source CIDR block (when SourceType is set to net ) Example: 10.0.1.0/24 Source address book name (when SourceType is set to group ) Example: db group _ Source location (when SourceType is set to location ) Example: beijing (You can use Chinese or English for the query) Empty (indicates that all access control sources are queried) Note The valid values of this parameter depend on the value of the SourceType parameter. |
 
-Cloud Security Firewall
-
 | Destination | String | No | 1.2.3.0 | The destination address in the access control policy. Fuzzy match is supported. Valid values: Destination CIDR block (when DestinationType is set to net ) Example: 10.0.3.0/24 Destination domain name (when DestinationType is set to domain ) Example: aliyun Destination address book name (when DestinationType is set to group ) For example: db group is empty _ (this queries the destination addresses of all access control policies). Destination location (when DestinationType is set to location ) Example: beijing (You can use Chinese or English for the query) Empty (indicates that all destination addresses in access control policies are queried) Note The valid values of this parameter depend on the value of the DestinationType parameter. |
 |---|---|---|---|---|
 | Description | String | No | test | The description of the access control policy. Fuzzy match is supported. Note If this parameter is left empty, the descriptions of all access control policies are queried. |
-
-Cloud Security Firewall
 
 | Proto | String | No | TCP | The type of protocol in the access control policy. Valid values: TCP UDP ICMP ANY (indicates all types of protocols) Empty (indicates all types of protocols) |
 |---|---|---|---|---|
 | AclAction | String | No | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic drop: deny log: observation Empty: all action types |
 
+**Response parameters**
+
 | Name | Type | Example | Description |
 |---|---|---|---|
 | PageNo | String | 1 | The page number of the current page. |
 | PageSize | String | 10 | The number of entries returned per page. |
-| Policys | Array of DataItem |  | The information about the access control policy. |
+| Policys | Array of DataItem |   | The information about the access control policy. |
 | AclAction | String | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic drop: denies the traffic log: observation |
 | AclUuid | String | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. |
 | ApplicationId | String | 10*** | The application ID in the access control policy. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 | ApplicationNa me | String | HTTP | The type of the application that the access control policy supports. Valid values: FTP HTTP HTTPS Memcache MongoDB MQTT MySQL RDP Redis SMTP SMTPS SSH SSL VNC ANY (indicates all types of applications) |
 |---|---|---|---|
@@ -1758,14 +1788,10 @@ Cloud Security Firewall
 | DestPortGroup Ports | List | [80,443] | The ports in the destination port address book. |
 | DestPortType | String | port | The type of the destination port in the access control policy. Valid values: port: port group: port address book |
 
-Cloud Security Firewall
-
 | Destination | String | 1.2.3.4/24 | The destination address in the access control policy. Valid values: Destination IP address or CIDR block (when DestinationType is set to net) Example: 10.0.3.0/24 Destination domain name (when DestinationType is set to domain) Example: aliyuncs.com Destination address book name (when DestinationType is set to group) Example: db group _ Destination location name (when DestinationType is set to location; for more information about location codes, see AddControlPolicy) Example: ["BJ11", "ZB"] Note The valid values of this parameter depend on the value of the DestinationType parameter. |
 |---|---|---|---|
 | DestinationGro upCidrs | List | ["1.2.3.0/24", "1.2.3.1/32"] | The CIDR blocks in the destination address book. |
 | DestinationGro upType | String | ip | The type of the destination address book in the access control policy. Valid values: ip: an address book that includes one or more IP addresses tag: an address book that includes one or more IP addresses with ECS tags domain: an address book that includes one or more domain names threat: an address book that includes one or more malicious IP addresses or domain names backsrc: an address book that includes one or more back-to-origin addresses of Anti-DDoS Pro or Anti-DDoS Premium instances or WAF instances |
-
-Cloud Security Firewall
 
 | DestinationTy pe | String | net | The type of the destination address in the access control policy. Valid values: net: destination CIDR block group: destination address book domain: destination domain name location: destination location |
 |---|---|---|---|
@@ -1776,22 +1802,16 @@ Cloud Security Firewall
 | Order | Integer | 1 | The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority. Note －1 indicates the lowest priority. |
 | Proto | String | TCP | The type of the protocol in the access control policy. Valid values: ANY TCP UDP ICMP |
 
-Cloud Security Firewall
-
 | Release | String | true | Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: true: The access control policy is enabled. false: The access control policy is disabled. |
 |---|---|---|---|
 | Source | String | 1.2.3.0/24 | The source address in the access control policy. Valid values: Source CIDR block (when SourceType is set to net ) Example: 10.0.1.0/24 Source address book name (when SourceType is set to group ) Example: db group _ Source location (when SourceType is set to location; for more information about location codes, see AddControlPolicy) |
 | SourceGroupCi drs | List | ["10.0.0.0/24", "10.0.0.1/32"] | The CIDR blocks in the source address book. |
 | SourceGroupT ype | String | ip | The type of the source address book in the access control policy. Valid values: ip: an address book that includes one or more IP addresses tag: an address book that includes one or more IP addresses with ECS tags domain: an address book that includes one or more domain names threat: an address book that includes one or more malicious IP addresses or domain names backsrc: an address book that includes one or more back-to-origin addresses of Anti-DDoS Pro or Anti-DDoS Premium instances or WAF instances |
 
-Cloud Security Firewall
-
 | SourceType | String | net | The type of the source address in the access control policy. Valid values: net: source CIDR block group: source address book location: source location |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 | TotalCount | String | 100 | The total number of the returned access control policies. |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -1801,9 +1821,10 @@ Sample requests
 http(s)://[Endpoint]/?Action=DescribeControlPolicy &CurrentPage=1 &Direction=in &PageSize=10 &<Common request parameters>
 ```
 
-Sample success responses `XML` format Cloud Security Firewall
+Sample success responses `XML` format
 
 ```xml
+<DescribeControlPolicyResponse>
   <TotalCount>58</TotalCount>
   <PageNo>1</PageNo>
   <PageSize>10</PageSize>
@@ -1827,24 +1848,22 @@ Sample success responses `XML` format Cloud Security Firewall
         <DnsResult>1.1.1.1,2.2.2.2</DnsResult>
         <DnsResultTime>1579261141</DnsResultTime>
   </Policys>
+</DescribeControlPolicyResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AddControlPolic y | The operation that you want to perform. Set the value to AddControlPolicy. |
-
-Cloud Security Firewall
+`JSON` format `{`
 
 ```json
-{
     "TotalCount":58,
     "PageNo":1,
     "PageSize":10,
     "RequestId":"A08BC58F-A83D-43EB-BC31-2F0D723929CC",
     "Policys":[
-        {
+```
+
+`{`
+
+```json
             "DestinationGroupCidrs":[
 ```
 
@@ -1880,84 +1899,63 @@ Cloud Security Firewall
             "Destination":"1.1.1.1/32",
             "DnsResult": "1.1.1.1,2.2.2.2",
             "DnsResultTime": 1579261141
-        }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-#### AddControlPolicy
+#### 4.4.4 AddControlPolicy
 
 Creates an access control policy.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | AddControlPolic y | The operation that you want to perform. Set the value to AddControlPolicy. |
 
 | AclAction | String | Yes | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic drop: denies the traffic log: monitors the traffic |
 |---|---|---|---|---|
 | ApplicationName | String | Yes | HTTP | The type of applications to which the access control policy applies. Valid values: FTP HTTP HTTPS Memcache MongoDB MQTT MySQL RDP Redis SMTP SMTPS SSH SSL VNC ANY (indicates all types of applications) |
 | Description | String | Yes | test | The description of the access control policy. |
 
-Cloud Security Firewall
-
 | Destination | String | Yes | 1.2.3.4/24 | The destination address in the access control policy. Valid values: If the DestinationType parameter is set to net , the value of this parameter is the destination CIDR block. Example: 1.2.3.4/24 If the DestinationType parameter is set to group , the value of this parameter is the name of the destination address book. Example: db group _ If the DestinationType parameter is set to domain , the value of this parameter is the destination domain name. Example: *.aliyuncs.com If the DestinationType parameter is set to location , the value of this parameter is the destination location. For more information about the location codes, see the following section. Example: ["BJ11", "ZB"] |
 |---|---|---|---|---|
 | DestinationType | String | Yes | net | The type of the destination address in the access control policy. Valid values: net: destination CIDR block group: destination address book domain: destination domain name location: destination location |
 | Direction | String | Yes | in | The direction of the traffic to which the access control policy applies. Valid values: in: inbound traffic out: outbound traffic |
-
-Cloud Security Firewall
 
 | NewOrder | String | Yes | -1 | The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority. Note －1 indicates the lowest priority. |
 |---|---|---|---|---|
 | Proto | String | Yes | TCP | The protocol type in the access control policy. Valid values: ANY Note If you are not sure about the protocol type, you can set this parameter to ANY. TCP UDP ICMP |
 | Source | String | Yes | 1.2.3.0/24 | The source address in the access control policy. Valid values: If the SourceType parameter is set to net , the value of this parameter is the source CIDR block. Example: 1.2.3.0/24 If the SourceType parameter is set to group , the value of this parameter is the name of the source address book. Example: db group _ If the SourceType parameter is set to location , the value of this parameter is the source location. For more information about the location codes, see the following section. Example: ["BJ11", "ZB"] |
 
-Cloud Security Firewall
-
 | SourceType | String | Yes | net | The type of the source address in the access control policy. Valid values: net: source CIDR block group: source address book location: source location |
 |---|---|---|---|---|
 | SourceIp | String | No | 1.2.3.5 | The source IP address of the request. |
 | Lang | String | No | zh | The language of the content in the request and response. Valid values: zh: Chinese en: English |
 
-Cloud Security Firewall
-
 | DestPort | String | No | 80 | The destination port in the access control policy. Valid values: If the protocol type is ICMP , the value of the DestPort parameter is empty. Note If the protocol type is ICMP , access control based on destination ports is not supported. If the protocol type is TCP , UDP , or ANY , and the destination port type (DestPortType) is group , the value of the DestPort parameter is empty. Note If you set the destination port type to group (destination port address book) in the access control policy, you do not need to specify a destination port number. All ports that the access control policy controls are included in the destination port address book. If the protocol type is TCP , UDP , or ANY , and the destination port type (DestPortType) is port , the value of the DestPort parameter is the destination port number. |
 |---|---|---|---|---|
 | DestPortType | String | No | port | The type of the destination port in the access control policy. Valid values: port: port group: port address book |
-
-Cloud Security Firewall
 
 | DestPortGroup | String | No | my port group _ _ | The name of the destination port address book in the access control policy. Note If the DestPortType parameter is set to group , you must specify the name of the destination port address book. |
 |---|---|---|---|---|
 | Release | String | No | true | Specifies whether to enable the access control policy. By default, an access control policy is enabled after it is created. Valid values: true: enables the access control policy false: does not enable the access control policy |
 
-Cloud Security Firewall The following section lists the location codes: China: ZD Beijing: BJ11 Tianjin: TJ12 Hebei: HB13 Shanxi: SX14 Liaoning: LN21 Jilin: JL22 Shanghai: SH31 Jiangsu: JS32 Zhejiang: ZJ33 Anhui: AH34 Fujian: FJ35 Jiangxi: JX36 Shandong: SD37 Henan: HN41 Hubei: HB42 Hunan: HN43 Guangdong: GD44 Hainan: HN46 Chongqing: CQ50 Sichuan: SC51 Guizhou: GZ52 Yunnan: YN53
+The following section lists the location codes: China: ZD Beijing: BJ11 Tianjin: TJ12 Hebei: HB13 Shanxi: SX14 Liaoning: LN21 Jilin: JL22 Shanghai: SH31 Jiangsu: JS32 Zhejiang: ZJ33 Anhui: AH34 Fujian: FJ35 Jiangxi: JX36 Shandong: SD37 Henan: HN41 Hubei: HB42 Hunan: HN43 Guangdong: GD44 Hainan: HN46 Chongqing: CQ50 Sichuan: SC51 Guizhou: GZ52 Yunnan: YN53 Shaanxi: SX61 Gansu: GS62 Qinghai: QH63 Heilongjiang: HLJ23 Xizang: XZ54 Guangxi: GX45 Nei Mongol: NMG15 Ningxia: NX64 Xinjiang: XJ65 Taiwan: TW Hong Kong S.A.R: HK Macao S.A.R: MO Locations outside China: ZB Asia (excluding China): ZC Europe: EU Africa: AF North America: NA South America: LA Oceania: OA Antarctica: AQ
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AclUuid | String | 00281255-d220- 4db1-8f4f- c4df221a**** | The ID of the access control policy that is created on the Internet firewall. |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2**** | The ID of the request. |
 
-Cloud Security Firewall Shaanxi: SX61 Gansu: GS62 Qinghai: QH63 Heilongjiang: HLJ23 Xizang: XZ54 Guangxi: GX45 Nei Mongol: NMG15 Ningxia: NX64 Xinjiang: XJ65 Taiwan: TW Hong Kong S.A.R: HK Macao S.A.R: MO Locations outside China: ZB Asia (excluding China): ZC Europe: EU Africa: AF North America: NA South America: LA Oceania: OA Antarctica: AQ
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteControlPol icy | The operation that you want to perform. Set the value to DeleteControlPolicy. |
-| AclUuid | String | Yes | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. To delete an access control policy, you must provide the ID of the policy. You can call the DescribeControlPolicy operation to obtain the ID. |
-| Direction | String | Yes | in | The direction of the traffic to which the access control policy applies. Valid values: in: inbound traffic out: outbound traffic |
-
-Cloud Security Firewall
-
 ```
-&AclAction=accept &ApplicationName=ANY &Description=demo_rule_1 &Destination=1.2.3.4/24 &DestinationType=net &Direction=in &NewOrder=-1 &Proto=TCP &Source=1.2.3.0/24 &SourceType=net &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddControlPolicy &AclAction=accept &ApplicationName=ANY &Description=demo_rule_1 &Destination=1.2.3.4/24 &DestinationType=net &Direction=in &NewOrder=-1 &Proto=TCP &Source=1.2.3.0/24 &SourceType=net &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1972,26 +1970,27 @@ Sample success responses `XML` format
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****","AclUuid":"00281255-d220-4db1-8f4fc4df221a****"}
 ```
 
-#### DeleteControlPolicy
+#### 4.4.5 DeleteControlPolicy
 
 Deletes an access control policy.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteControlPol icy | The operation that you want to perform. Set the value to DeleteControlPolicy. |
+| AclUuid | String | Yes | 00281255-d220- 4db1-8f4f- c4df221ad84c | The ID of the access control policy. To delete an access control policy, you must provide the ID of the policy. You can call the DescribeControlPolicy operation to obtain the ID. |
+| Direction | String | Yes | in | The direction of the traffic to which the access control policy applies. Valid values: in: inbound traffic out: outbound traffic |
+
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the traffic. |
 |---|---|---|---|---|
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
@@ -2004,22 +2003,27 @@ http(s)://[Endpoint]/?Action=DeleteControlPolicy &AclUuid=00281255-d220-4db1-8f4
 Sample success responses `XML` format
 
 ```xml
+<DeleteControlPolicyResponse>
   <RequestId>CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D</RequestId>
+</DeleteControlPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
-}
 ```
 
-#### ModifyControlPolicy
+`}`
+
+#### 4.4.6 ModifyControlPolicy
 
 Modifies the configurations of an access control policy.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | AclAction | String | Yes | accept | The action that Cloud Firewall performs on the traffic. Valid values: accept: allows the traffic. drop: denies the traffic. log: monitors the traffic. |
 |---|---|---|---|---|
@@ -2028,15 +2032,11 @@ Modifies the configurations of an access control policy.
 | ApplicationNa me | String | Yes | HTTP | The type of the application that the access control policy supports. Valid values: ANY HTTP HTTPS MySQL SMTP SMTPS RDP VNC SSH Redis MQTT MongoDB Memcache SSL Note The value ANY indicates all types of applications. |
 | Description | String | Yes | test | The description of the access control policy. |
 
-Cloud Security Firewall
-
 | Destination | String | Yes | 1.2.3.4/24 | The destination address in the access control policy. If the DestinationType parameter is set to net, the value of this parameter is the destination CIDR block. Example: 1.2.3.4/24. If the DestinationType parameter is set to group, the value of this parameter is the name of the destination address book. Example: db group. _ If the DestinationType parameter is set to domain, the value of this parameter is the destination domain name. Example: *.aliyuncs.com. If the DestinationType parameter is set to location, the value of this parameter is the destination location. For more information about location codes, see AddControlPolicy. Example: ["BJ11", "ZB"]. |
 |---|---|---|---|---|
 | DestinationTy pe | String | Yes | net | The type of the destination address in the access control policy. Valid values: net: CIDR block group: destination address book domain: destination domain name location: destination location |
 | Direction | String | Yes | in | The direction of the traffic to which the access control policy applies. Valid values: in: inbound traffic out: outbound traffic |
 | Proto | String | Yes | TCP | The type of the security protocol in the access control policy. If you are not sure about the protocol type, you can set this parameter to ANY. ANY TCP UDP ICMP |
-
-Cloud Security Firewall
 
 | Source | String | Yes | 1.2.3.0/24 | The source address in the access control policy. If the SourceType parameter is set to net, the value of this parameter is the source CIDR block. Example: 1.2.3.0/24. If the SourceType parameter is set to group, the value of this parameter is the name of the source address book. Example: db group. _ If the SourceType parameter is set to location, the value of this parameter is the source location. For more information about location codes, see AddControlPolicy. Example: ["BJ11", "ZB"]. |
 |---|---|---|---|---|
@@ -2047,20 +2047,13 @@ Cloud Security Firewall
 | Lang | String | No | zh | The natural language of the request and response. Valid values: zh: Chinese en: English |
 | SourceIp | String | No | 1.2.3.5 | The source IP address of the request. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-Cloud Security Firewall
-
-**Response parameters**
-
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2837D | The ID of the request. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -2073,26 +2066,33 @@ http(s)://[Endpoint]/?Action=ModifyControlPolicy &AclAction=accept &AclUuid=0028
 Sample success responses `XML` format
 
 ```xml
+<ModifyControlPolicy>
    <RequestId>CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D</RequestId>
+</ModifyControlPolicy>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D"
-}
 ```
+
+`}`
+
+**Error codes**
 
 For a list of error codes, see Error codes.
 
-### Address books
+### 4.5 Address books
 
-#### AddAddressBook
+#### 4.5.1 AddAddressBook
 
 Creates an address book for access control. Supported address book types include IP address books, ECS tag-based address books, port address books, and domain name address books.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | AddAddressBook | The operation that you want to perform. Set the value to AddAddressBook. |
 |---|---|---|---|---|
@@ -2104,28 +2104,24 @@ Creates an address book for access control. Supported address book types include
 | AddressList | String | No | 1.2.3.4/32, 1.2.3.0/24 | The addresses that you want to add to the address book. Separate multiple addresses with commas (,). This parameter is required when GroupType is set to ip, port, or domain. When GroupType is set to ip, specify IP addresses in the address list. Example: 1.2.3.4/32, 1.2.3.0/24 When GroupType is set to port, specify ports or port ranges in the address list. Example: 80, 100/200 When GroupType is set to domain, specify domain names in the address list. Example: demo1.aliyun.com, demo2.aliyun.com |
 | AutoAddTagEcs | String | No | 1 | Specifies whether to automatically add public IP addresses of ECS instances to the address book if the instances match the specified tags. 1: automatically add 0: do not automatically add |
 
-Cloud Security Firewall
-
 | TagRelation | String | No | and | The logical relation among the ECS tags that you want to match. and: The tags have an AND relationship. Only the public IP addresses of ECS instances that match all specified tags are added to the address book. or: The tags have an OR relationship. The public IP addresses of ECS instances that match any of the specified tags are added to the address book. |
 |---|---|---|---|---|
 | TagList.N.TagKe y | String | No | key1 | The key of ECS tag N that you want to match. |
 | TagList.N.TagVal ue | String | No | value1 | The value of ECS tag N that you want to match. |
+
+**Returned data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | GroupUuid | String | f04ac7ce-628b- 4cb7-be61- 310222b7**** | The UUID of the returned address book. |
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2**** | The ID of the request. |
 
-Cloud Security Firewall
-
-**Returned data**
-
 **Examples**
 
 Sample requests
 
 ```
-&Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.2.3.4/32,1.2.3.0/24 &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddAddressBook &Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.2.3.4/32,1.2.3.0/24 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2140,6 +2136,12 @@ Sample success responses `XML` format
 {"GroupUuid":"f04ac7ce-628b-4cb7-be61-310222b7****","RequestId":"CBF1E9B7-D6A0-4E9E-AD3 E-2B47E6C2****"}
 ```
 
+#### 4.5.2 DeleteAddressBook
+
+Deletes an address book for access control.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DeleteAddressB ook | The operation that you want to perform. Set the value to DeleteAddressBook. |
@@ -2147,26 +2149,18 @@ Sample success responses `XML` format
 | SourceIp | String | No | 1.2.3.4 | The source IP address of the request. |
 | Lang | String | No | zh | The language of the content in the request and response messages. zh: Chinese en: English |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2**** | The ID of the request. |
-
-Cloud Security Firewall
-
-#### DeleteAddressBook
-
-Deletes an address book for access control.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad &<Common request parameters>
+http(s)://[Endpoint]/?Action=DeleteAddressBook &GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2176,6 +2170,16 @@ Sample success responses `XML` format
 ```
 
 `JSON` format
+
+```json
+{"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****"}
+```
+
+#### 4.5.3 ModifyAddressBook
+
+Modifies an address book for access control.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2187,38 +2191,24 @@ Sample success responses `XML` format
 | Lang | String | No | zh | The language of the content in the request and response messages. zh: Chinese en: English |
 | AddressList | String | No | 1.1.1.1/32, 2.2.2.0/24 | The addresses in the address book. Separate multiple addresses with commas (,). This parameter is required when GroupType is set to ip, port, or domain. If GroupType is set to ip, specify IP addresses. Example: 1.2.3.4/32, 1.2.3.0/24 If GroupType is set to port, specify ports or port ranges. Example: 80, 100/200 If GroupType is set to domain, specify domain names. Example: demo1.aliyun.com, demo2.aliyun.com |
 
-Cloud Security Firewall
-
-```json
-{"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****"}
-```
-
-#### ModifyAddressBook
-
-Modifies an address book for access control.
-
-**Request parameters**
-
 | AutoAddTagEcs | String | No | 1 | Specifies whether to automatically add public IP addresses of ECS instances to the address book if the instances match the specified tags. 1: yes 0: no |
 |---|---|---|---|---|
 | TagRelation | String | No | and | The logical relation among ECS tags. and: The public IP addresses of ECS instances are added to the address book only when the instances match all specified tags. or: The public IP addresses of ECS instances are added to the address book when the instances match any of the specified tags. |
 | TagList.N.TagKe y | String | No | key1 | The key of ECS tag N that you want to match. |
 | TagList.N.TagVal ue | String | No | value1 | The value of ECS tag N that you want to match. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | CBF1E9B7-D6A0- 4E9E-AD3E- 2B47E6C2**** | The ID of the request. |
-
-Cloud Security Firewall
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad &Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.1.1.1/32,2.2.2.0/24 &<Common request parameters>
+http(s)://[Endpoint]/?Action=ModifyAddressBook &GroupUuid=0657ab9d-fe8b-4174-b2a6-6baf358ea4ad &Description=DEMO address book &GroupName=demo_address_book &GroupType=ip &AddressList=1.1.1.1/32,2.2.2.0/24 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -2232,6 +2222,12 @@ Sample success responses `XML` format
 ```json
 {"RequestId":"CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2****"}
 ```
+
+#### 4.5.4 DescribeAddressBook
+
+Queries the details of an address book for access control.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2244,19 +2240,11 @@ Sample success responses `XML` format
 | GroupType | String | No | ip | The type of the address book. Valid values: ip: IP address book domain: domain name address book port: port address book tag: ECS tag-based address book |
 | ContainPort | String | No | 80 | Details about the address book that contains ports. This parameter only takes effect when the GroupType parameter is set to port. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Acls | Array of Acl |  | The information about the address book. |
-
-Cloud Security Firewall
-
-#### DescribeAddressBook
-
-Queries the details of an address book for access control.
-
-**Request parameters**
-
-**Response parameters**
+| Acls | Array of Acl |   | The information about the address book. |
 
 | AddressList | List | [ "1.2.3.4/32", "0.0.0.0/0" ] | The addresses in the address book. |
 |---|---|---|---|
@@ -2268,11 +2256,9 @@ Queries the details of an address book for access control.
 | GroupType | String | ip | The type of the address book. Valid values: ip: IP address book domain: domain name address book port: port address book tag: ECS tag-based address book |
 | GroupUuid | String | f04ac7ce-628b- 4cb7-be61- 310222b718e8 | The ID of the address book. |
 | ReferenceCou nt | Integer | 3 | The number of times the address book is referenced. |
-| TagList | Array of TagListItem |  | Details about the ECS tags that can be automatically added to the address book. |
+| TagList | Array of TagListItem |   | Details about the ECS tags that can be automatically added to the address book. |
 | TagKey | String | key1 | The key of the ECS tag. |
 | TagValue | String | value1 | The value of the ECS tag. |
-
-Cloud Security Firewall
 
 | TagRelation | String | and | The logical relationship among ECS tags. and: Only the public IP addresses of ECS instances that match all the specific tags can be added to the address book. or: The public IP addresses of ECS instances that match any of the specific tags can be added to the address book. |
 |---|---|---|---|
@@ -2280,8 +2266,6 @@ Cloud Security Firewall
 | PageSize | String | 10 | The number of entries per page. |
 | RequestId | String | B36F150A-1E27- 43AA-B72C- D2AC712F09DA | The ID of the request. |
 | TotalCount | String | 100 | The number of address books. |
-
-Cloud Security Firewall
 
 **Examples**
 
@@ -2294,6 +2278,7 @@ http(s)://[Endpoint]/?Action=DescribeAddressBook &<Common request parameters>
 Sample success responses `XML` format
 
 ```xml
+<DescribeAddressBook>
    <TotalCount>123</TotalCount>
    <PageSiNo>1</PageSiNo>
    <PageSize>1</PageSize>
@@ -2313,18 +2298,22 @@ Sample success responses `XML` format
       <GroupUuid>a3c5e-018e-4c08-bea8-eafc95d1a54e</GroupUuid>
       <Global>0</Global>
    </Acls>
+</DescribeAddressBook>
 ```
 
-Cloud Security Firewall `JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalCount":123,
     "PageSiNo": 1,
     "PageSize": 1,
     "RequestId":"B36F150A-1E27-43AA-B72C-D2AC712F09DA",
     "Acls":[
-        {
+```
+
+`{`
+
+```json
             "Description":"9-3 IP address book",
             "GroupType":"ip",
             "AddressList":[
@@ -2350,14 +2339,13 @@ Cloud Security Firewall `JSON` format
             "AddressListCount":2,
             "GroupUuid":"a3c5e-018e-4c08-bea8-eafc95d1a54e",
             "Global":0
-        }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
+## 5 Error codes
+
+This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -2373,12 +2361,6 @@ Cloud Security Firewall `JSON` format
 | yd.error.all.ConsoleSystemError 1011 _ | The regionId parameter is not specified. | The error message returned because the RegionId parameter is not specified. Check the parameter. |
 | yd.error.all.ConsoleSystemError 1012 _ | The format of the specified regionId parameter is invalid. | The error message returned because the format of the specified RegionId parameter is invalid. Check the parameter. |
 
-Cloud Security Firewall
-
-## Error codes
-
-This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
-
 | yd.error.all.ConsoleSystemError 1013 _ | The parameter is not specified. | The error message returned because the parameter is not specified. Check the parameter and try again. |
 |---|---|---|
 | yd.error.all.ConsoleSystemError 1014 _ | The format of the specified parameter is invalid. | The error message returned because the format of the specified parameter is invalid. Check the parameter and try again. |
@@ -2391,11 +2373,11 @@ This topic describes the error codes returned for operations in Apsara Stack Sec
 | yd.error.all.ServerError | A server error occurred. | The error message returned because a server error occurred. Try again later or contact Alibaba Cloud technical support. |
 | yd.error.all.UnkownError | An unknown error occurred. | The error message returned because an unknown error occurred. Try again later or contact Alibaba Cloud technical support. |
 
+Table 2. Error codes specific to Threat Detection Service
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.sas.1 | The specified field does not exist in the metadata. | The error message returned because the field you queried does not exist in the metadata. Check the request and try again. |
-
-Cloud Security Firewall Table 2. Error codes specific to Threat Detection Service
 
 | yd.error.sas.2 | An error occurred while invoking the task engine. Try again. | The error message returned because the system failed to invoke the task engine. Try again later. |
 |---|---|---|
@@ -2412,10 +2394,10 @@ Cloud Security Firewall Table 2. Error codes specific to Threat Detection Servic
 | yd.error.sas.500 | A system error occurred. | The error message returned because a system error occurred. Contact Alibaba Cloud technical support. |
 | yd.error.sas.501 | The feature is not available in the current version. | The error message returned because the version you used does not support this feature. |
 
-Cloud Security Firewall
-
 | yd.error.sas.502 | You are not authorized to access the server. | The error message returned because you are not authorized to manage the server. |
 |---|---|---|
+
+Table 3. Error codes specific to Anti-DDoS Service
 
 | Error code | Error message | Description |
 |---|---|---|
@@ -2430,8 +2412,6 @@ Cloud Security Firewall
 | yd.error.ddos.IP SEGMENT REP _ _ EAT | One CIDR block cannot be used in different regions. Enter another CIDR block. | The error message returned because the specified CIDR block is invalid. Check the CIDR block specified in the request parameter. |
 | yd.error.ddos.IP SEGMENT ALR _ _ EADY | The specified CIDR block already exists. | The error message returned because the specified CIDR block is in use. Check the CIDR block specified in the request parameter. |
 
-Cloud Security Firewall Table 3. Error codes specific to Anti-DDoS Service
-
 | yd.error.ddos.IP SEGMENT MAS _ _ K LENGTH ERR _ _ | The mask can contain a maximum of 24 bits. | The error message returned because the mask contains more than 24 bits. Check the mask of the CIDR block specified in the request parameter. |
 |---|---|---|
 | yd.error.ddos.QUERY REGION L _ _ IST ERR _ | An error occurred while obtaining the region list. | The error message returned because the system failed to obtain the region list. Try again later. |
@@ -2444,8 +2424,6 @@ Cloud Security Firewall Table 3. Error codes specific to Anti-DDoS Service
 | yd.error.ddos.QUERY BEAVER _ _ URL ERR _ | An error occurred while obtaining the URL of Network Detection and Response. | The error message returned because the system failed to obtain the URL of Network Detection and Response. Check the network connection to Network Detection and Response and try again. |
 | yd.error.ddos.SET VALVE INVA _ _ LID | The threshold validation failed. Check the thresholds and enter correct values. | The error message returned because the threshold verification failed. Check the thresholds and try again. |
 
-Cloud Security Firewall
-
 | yd.error.ddos.VALVE DEFAULT _ _ ALREADY | The specified request is invalid. You cannot add the default threshold. | The error message returned because the system failed to add the default threshold. The default threshold can only be modified. |
 |---|---|---|
 | yd.error.ddos.NOT BELONG BE _ _ AVER IP SEGMENT _ _ | Check whether the specified CIDR block belongs to the internal network of Network Detection and Response. | The error message returned because the CIDR block you entered does not belong to the internal network of Network Detection and Response. Check the CIDR block. |
@@ -2454,9 +2432,13 @@ Cloud Security Firewall
 | yd.error.ddos.IS OPENED _ | Enabled. | The error message returned because the specified switch has been turned on. |
 | yd.error.ddos.IS CLOSED _ | Disabled. | The error message returned because the specified switch has been turned off. |
 
+Table 4. Error codes specific to Server Guard
+
 | Error code | Error message | Description |
 |---|---|---|
 | yd.error.aqs.REQUEST FAILED _ | Request failed. Try again later. | The error message returned because the request failed. Try again later. |
+
+Table 7. Error codes specific to Cloud Firewall
 
 | Error code | Error message |
 |---|---|
@@ -2468,8 +2450,6 @@ Cloud Security Firewall
 | yd.error.code.-360104 | The specified application is invalid. Try again. |
 | yd.error.code.-360105 | An error occurred while obtaining the logs. |
 | yd.error.code.-360106 | An error occurred while obtaining the logs. |
-
-Cloud Security Firewall
 
 | yd.error.code.-360107 | The specified UID is invalid.Try again. |
 |---|---|
@@ -2498,8 +2478,6 @@ Cloud Security Firewall
 | yd.error.code.-360130 | The specified ECS instance is unavailable. |
 | yd.error.code.-360131 | An unknown error occurred. |
 
-Cloud Security Firewall
-
 | yd.error.code.-360132 | An error occurred while searching the route table. |
 |---|---|
 | yd.error.code.-360133 | The ID of the firewall is invalid. |
@@ -2524,8 +2502,6 @@ Cloud Security Firewall
 | yd.error.code.-360152 | The endpoint is invalid. |
 | yd.error.code.-360153 | The endpoint is invalid. |
 | yd.error.code.-360154 | A timeout error occurred while creating the endpoint. |
-
-Cloud Security Firewall
 
 | yd.error.code.-360155 | A timeout error occurred while deleting the endpoint. |
 |---|---|
@@ -2555,8 +2531,6 @@ Cloud Security Firewall
 | yd.error.code.-360179 | An error occurred while calling the operation. |
 | yd.error.code.-360180 | The number of VPCs that are attached to the CEN instance is insufficient. |
 
-Cloud Security Firewall
-
 | yd.error.code.-360181 | The firewall of the CEN instance is overwritten. You do not need to create a firewall. |
 |---|---|
 | yd.error.code.-360182 | The security group does not exist. |
@@ -2582,8 +2556,6 @@ Cloud Security Firewall
 | yd.error.code.-360202 | The specified network instance ID is invalid. |
 | yd.error.code.-360203 | The specified VPC does not exist. |
 | yd.error.code.-360204 | A timeout error occurred while creating a VPC. |
-
-Cloud Security Firewall
 
 | yd.error.code.-360205 | A timeout error occurred while creating a VPC. |
 |---|---|
@@ -2612,8 +2584,6 @@ Cloud Security Firewall
 | yd.error.code.-360309 | An error occurred while updating the information about the cluster. |
 | yd.error.code.-360310 | An error occurred while updating the Express Connect circuit. |
 
-Cloud Security Firewall
-
 | yd.error.code.-360311 | An error occurred while inserting the VLAN. |
 |---|---|
 | yd.error.code.-360312 | An error occurred while querying the IP address pool. |
@@ -2638,8 +2608,6 @@ Cloud Security Firewall
 | yd.error.code.-360407 | An error occurred while updating the attributes of the VBR. |
 | yd.error.code.-360408 | An error occurred while querying the VBR. |
 | yd.error.code.-360409 | An error occurred while creating the RI. |
-
-Cloud Security Firewall
 
 | yd.error.code.-360410 | An error occurred while updating the attributes of the RI. |
 |---|---|
@@ -2667,8 +2635,6 @@ Cloud Security Firewall
 | yd.error.code.-193201 | The specified parameters are insufficient. |
 | yd.error.code.-193202 | The specified parameter value is invalid. |
 | yd.error.code.-193203 | The specified time is invalid. |
-
-Cloud Security Firewall
 
 | yd.error.code.-193204 | The parameter is invalid. |
 |---|---|
@@ -2699,8 +2665,6 @@ Cloud Security Firewall
 | yd.error.code.-200106 | The IP address in the address book is invalid. Check the parameter and enter another value. |
 | yd.error.code.-200107 | The address book already exists. |
 
-Cloud Security Firewall
-
 | yd.error.code.-200108 | An error occurred. Try again. |
 |---|---|
 | yd.error.code.-200109 | The address book is in use and cannot be deleted. |
@@ -2727,8 +2691,6 @@ Cloud Security Firewall
 | yd.error.code.-200130 | The number of address books exceeds the upper limit. |
 | yd.error.code.-200200 | A backend error occurred. |
 | yd.error.code.-200201 | A backend error occurred. |
-
-Cloud Security Firewall
 
 | yd.error.code.-200202 | A backend error occurred. |
 |---|---|
@@ -2761,8 +2723,6 @@ Cloud Security Firewall
 | yd.error.code.-210400 | An error occurred. Try again. |
 | yd.error.code.200 | Success |
 
-Cloud Security Firewall
-
 | yd.error.code.-230100 | The request method is invalid. |
 |---|---|
 | yd.error.code.-230101 | Authentication failed. |
@@ -2792,8 +2752,6 @@ Cloud Security Firewall
 | yd.error.code.-230125 | The submitted information is invalid. |
 | yd.error.code.-230126 | The rule is not changed. You do not need to publish the rule. |
 
-Cloud Security Firewall
-
 | yd.error.code.-230127 | The security group ID is invalid. |
 |---|---|
 | yd.error.code.-230128 | The IP address in the rule is invalid. |
@@ -2811,16 +2769,14 @@ Cloud Security Firewall
 | yd.error.code.-230302 | A backend error occurred. |
 | yd.error.code.-230400 | An unknown error occurred. |
 
+**Error codes specific to Network Detection and Response**
+
 | Error code | Error message | Description |
 |---|---|---|
 | ErrorNeedLogin.-210204 | need login (You are not logged on.) | The error message returned because you are not logged on. Log on first. |
 | ErrorAuthentication.-210101 | authentication error (An authentication error occurred.) | The error message returned because an authentication error occurred. Use a RAM role that has the required permissions. |
 | ErrorParametersAliUid.-210902 | invalid AliUid (The value of the AliUid parameter is invalid.) | The error message returned because the value of the AliUid parameter is invalid. Specify a valid value. |
 | ErrorParametersIpType.-210920 | invalid para ip type (The value of the ipType parameter is invalid.) | The error message returned because the value of the ipType parameter is invalid. Specify a valid value. |
-
-Cloud Security Firewall
-
-**Error codes specific to Network Detection and Response**
 
 | ErrorParametersSrcIP.-210919 | invalid para src ip (The value of the SrcIP parameter is invalid.) | The error message returned because the value of the SrcIP parameter is invalid. Specify a valid value. |
 |---|---|---|
@@ -2836,13 +2792,9 @@ Cloud Security Firewall
 | ErrorSourceAddressGroup.- 210304 | get source address in address group failed (Failed to obtain source addresses from the address group.) | The error message returned because the system failed to obtain source addresses from the address group. |
 | ErrorSourceAddressRange.- 210306 | source address range error, must be like \"192.168.XX.XX/192.168.XX.X X\" (The source address range is invalid. Example: \"192.168.XX.XX/192.168.XX.X X\") | The error message returned because the source address range is invalid. Specify the value in the \"192.168.XX.XX/192.168.XX.X X\" format. |
 
-Cloud Security Firewall
-
 | ErrorDestAddressGroup.- 210305 | get dest address in address group failed (Failed to obtain destination addresses from the address group.) | The error message returned because the system failed to obtain destination addresses from the address group. |
 |---|---|---|
 | ErrorNoBeaverRules.-210226 | no beaver rules for online (The specified Network Detection and Response rule does not exist.) | The error message returned because the specified Network Detection and Response rule does not exist. |
 | ErrorDBUpdate.-210121 | internal error: sql update (An internal error occurred while executing the UPDATE statement.) | The error message returned because an internal error occurred while executing the UPDATE statement. |
 | ErrorDBDelete.-210123 | internal error: sql delete (An internal error occurred while executing the DELETE statement.) | The error message returned because an internal error occurred while executing the DELETE statement. |
 | ErrorMarshalJSON.-210125 | internal error: marshal json (An internal error occurred while marshaling JSON data.) | The error message returned because an internal error occurred while marshaling JSON data. |
-
-Cloud Security Firewall

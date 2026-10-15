@@ -3,16 +3,64 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilo
 product_version: "V3.18.6_2607"
 doc_version: "20260901"
 pdf_pages: 71
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot User Guide 20260901.pdf"
+source_pdf: "c04636321de5cabf_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot User Guide 20260901.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1%E5%B9%B3%E5%8F%B0/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Uni-manager%20Apsara%20Copilot%20User%20Guide%2020260901.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Uni-manager Apsara Copilot User Guide 20260901
 
+## Table of Contents
+
+- 1 Access control of Apsara Copilot
+- 2 Configurations of Apsara Copilot
+  - 2.1 Personalized configuration
+  - 2.2 Accuracy evaluation
+    - 2.2.1 Evaluation case management
+      - 2.2.1.1 Create an evaluation case
+      - 2.2.1.2 Manage an evaluation case
+    - 2.2.2 Evaluation dataset management
+      - 2.2.2.1 Create an evaluation dataset
+      - 2.2.2.2 Manage an evaluation dataset
+    - 2.2.3 Evaluation task management
+      - 2.2.3.1 Create an evaluation task
+      - 2.2.3.2 Manage an evaluation task
+    - 2.2.4 Accuracy rate analysis
+  - 2.3 Model configuration
+  - 2.4 Knowledge base management
+    - 2.4.1 Create a knowledge base
+    - 2.4.2 Edit a knowledge base
+    - 2.4.3 Configure the chunking policy
+    - 2.4.4 Delete a knowledge base
+    - 2.4.5 Import a file
+    - 2.4.6 View file details
+    - 2.4.7 Ingest files
+    - 2.4.8 Delete a file
+    - 2.4.9 View the knowledge graph
+    - 2.4.10 View the mind map
+    - 2.4.11 Retrieval configuration and retrieval testing
+  - 2.5 AI-assisted cloud resource management
+    - 2.5.1 AI-assisted creation
+    - 2.5.2 AI-assisted configuration change
+- 3 Application of Apsara Copilot
+  - 3.1 Apsara Copilot conversation
+  - 3.2 Skill management
+  - 3.3 Expert management
+  - 3.4 Memory management
+  - 3.5 Cron job management
+  - 3.6 Text selection Q&A
+  - 3.7 AI analysis
+  - 3.8 AI-based bill analysis
+  - 3.9 AI billing rule analysis
+  - 3.10 Unified resource search
+- 4 Apsara Copilot operations analytics
+- 5 View operation logs
+- 6 Appendix
+  - 6.1 Log in to the Apsara Uni-manager Management Console
+
 s control of Apsara Copilot
 
-## Access control of Apsara
+## 1 Access control of Apsara Copilot
 
 **Copilot**
 
@@ -25,11 +73,11 @@ This topic describes how to implement the access control of Apsara Copilot by co
 permissions, and custom permissions for the role. For more information about the configurations, see the "Manage custom roles" topic in User Guide of the Apsara Uni-manager Management Console. In the **Application Permissions** step, search for and find Apsara Stack Assistant and select the permissions that you want to grant to the role based on your business requirements.
 6. After the role is created, assign the role to users.
 
-## Configurations of Apsara
+## 2 Configurations of Apsara Copilot
 
 **Copilot**
 
-### Personalized configuration
+### 2.1 Personalized configuration
 
 Enable or disable the intelligent assistant and configure personalized settings for the AI assistant. The default user for this operation is the operations administrator.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -60,13 +108,13 @@ restore the default settings, click **Restore Factory Settings** at the bottom o
 |   | Conversation Icon | Set the conversation icon for the intelligent assistant. The recommended image aspect ratio is 1:1 (for example, 100 pixels x 100 pixels), and the supported formats are GIF, PNG, JPG, and JPEG. |
 | Preferred Style | Answer Style | The supported styles are Expert Mode, Simple Mode, and Servic Mode. Expert Mode: This style is rigorous, well-structured, and uses standardized terminology. It is suitable for technical support engineers to implement in-depth Q&A, architecture design, and best practice guidance. Simple Mode: This style is concise and information-dense, with no redundant expressions. It is suitable for quick responses, operation guides, and troubleshooting scenarios. Service Mode: This style is patient, friendly, and proactively guiding. It is suitable for improving employee satisfaction and service trust. |
 
-### Accuracy evaluation
+### 2.2 Accuracy evaluation
 
 The system provides the accuracy evaluation feature that allows you to evaluate the accuracy of Apsara Copilot. By configuring evaluation cases, evaluation datasets, and evaluation tasks, you can initiate automated accuracy evaluation and export a detailed evaluation report.
 
-#### Evaluation case management
+#### 2.2.1 Evaluation case management
 
-##### Create an evaluation case
+##### 2.2.1.1 Create an evaluation case
 
 This topic describes how to create an evaluation case. You are an operations administrator.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -87,7 +135,7 @@ This topic describes how to create an evaluation case. You are an operations adm
 
 7. Click **Add Use Case**.
 
-##### Manage an evaluation case
+##### 2.2.1.2 Manage an evaluation case
 
 This topic describes how to manage an evaluation case after it is created. You can view and delete the evaluation case. You are an operations administrator. An evaluation case is created.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -101,9 +149,9 @@ This topic describes how to manage an evaluation case after it is created. You c
 | View the evaluation case | Find the evaluation case and click View in the Actions column. In the Evaluation Case Details panel, you can view the evaluation case details, including the associated evaluation datasets. Note The evaluation case code can be copied with one click. To do so, move the pointer over the code and click the icon. An associated evaluation dataset can be disassociated from the current evaluation case. To do so, find the evaluation dataset in the list and click Disassociate in the Actions column. |
 | Delete the evaluation case | i. Find the evaluation case and click Delete in the Actions. ii. In the message that appears, click OK. |
 
-#### Evaluation dataset management
+#### 2.2.2 Evaluation dataset management
 
-##### Create an evaluation dataset
+##### 2.2.2.1 Create an evaluation dataset
 
 This topic describes how to create an evaluation set. You are an operations administrator by default. You have created evaluation cases.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -126,7 +174,7 @@ information.
 
 7. Click **Create Evaluation Dataset**.
 
-##### Manage an evaluation dataset
+##### 2.2.2.2 Manage an evaluation dataset
 
 This topic describes how to manage an evaluation dataset after it is created. You can view, modify, and delete the evaluation dataset. You are an operations administrator. An evaluation dataset is created.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -141,9 +189,9 @@ This topic describes how to manage an evaluation dataset after it is created. Yo
 | Modify the evaluation dataset | i. Find the evaluation dataset and click Modify in the Actions column. ii. In the Modify Evaluation Dataset panel, modify the Evaluation Dataset Name and Description parameters. iii. Click OK. |
 | Delete the evaluation dataset | i. Find the evaluation dataset and click Delete in the Actions column. ii. In the message that appears, click OK. |
 
-#### Evaluation task management
+#### 2.2.3 Evaluation task management
 
-##### Create an evaluation task
+##### 2.2.3.1 Create an evaluation task
 
 This topic describes how to create an evaluation task. You are an operations administrator by default. You have created an evaluation dataset.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -169,7 +217,7 @@ This topic describes how to create an evaluation task. You are an operations adm
 7. Click **Create Evaluation Task**.
 After you create an evaluation task, the system does not automatically start the task. You must click **Start Evaluation** in the **Actions** column to start the evaluation task.
 
-##### Manage an evaluation task
+##### 2.2.3.2 Manage an evaluation task
 
 This topic describes how to manage an evaluation task. You are an operations administrator by default. You have created an evaluation task.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -198,7 +246,7 @@ current use case.
 | Delete the evaluation task | i. In the Actions column, click and select Delete. ii. In the message that appears, click OK. |
 | Perform a re-evaluation | i. If the evaluation task fails, click Re-evaluate in the Actions column. ii. In the message that appears, click OK. |
 
-#### Accuracy rate analysis
+#### 2.2.4 Accuracy rate analysis
 
 View the accuracy status of Apsara Copilot. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -214,7 +262,7 @@ View the accuracy status of Apsara Copilot. The operator is an operations admini
 | Question Classification Statistics | Displays question classification statistics as a column chart. You can switch between Day Dimension or Month Dimension. |
 | Data Details | Enter the start date and end date for your query to view detailed data within the specified time range. You can switch between Day Dimension or Month Dimension Click View Report in the Actions column of a detail entry to go to the evaluation report details page. Click above the list to download the detailed data to your local device. |
 
-### Model configuration
+### 2.3 Model configuration
 
 Manage and configure your AI models, including large language models, embedding models, and rerank models. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -242,9 +290,9 @@ Manage and configure your AI models, including large language models, embedding 
 | Delete the model | i. In the model card section, click Delete in the upper-right corner. ii. Click OK. |
 | Change the default model | In the model card section, click Set as Default Model at the bottom to change the default model based on business requirements. |
 
-### Knowledge base management
+### 2.4 Knowledge base management
 
-#### Create a knowledge base
+#### 2.4.1 Create a knowledge base
 
 Create vector and graph knowledge bases on the Knowledge Base Management page. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -269,7 +317,7 @@ Create vector and graph knowledge bases on the Knowledge Base Management page. T
 
 6. Click **OK**.
 
-#### Edit a knowledge base
+#### 2.4.2 Edit a knowledge base
 
 You can modify the configuration when updates are available for a knowledge base. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -283,7 +331,7 @@ in the upper-right corner of the target knowledge base card, and select **Modify
 more information about configuration items, see Create a knowledge base.
 6. Click **OK**.
 
-#### Configure the chunking policy
+#### 2.4.3 Configure the chunking policy
 
 Adjusting chunking parameters controls how the system splits text, which affects retrieval quality and document loading efficiency. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -297,7 +345,7 @@ in the upper-right corner of the target knowledge base card and select **Configu
 detailed descriptions of chunking policies, see Create a knowledge base. The preset policies align with the followingRAGFlow chunking policies: General, QA, Book, and Laws. If you leave this parameter blank, the system uses the default policy of the knowledge base.
 6. Click **OK**.
 
-#### Delete a knowledge base
+#### 2.4.4 Delete a knowledge base
 
 Delete any knowledge base you no longer need. The operater is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -310,7 +358,7 @@ in the upper-right corner of the target knowledge base card and select **Delete*
 operation.
 6. Click **OK**.
 
-#### Import a file
+#### 2.4.5 Import a file
 
 Import files into a knowledge base. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -323,7 +371,7 @@ Import files into a knowledge base. The operator is an operations administrator 
 Supported file types include txt, md, doc, docx, pdf, pptx, csv, xlsx, and html.
 7. Click **OK**.
 
-#### View file details
+#### 2.4.6 View file details
 
 The file details page displays file preview and chunks information. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -333,7 +381,7 @@ The file details page displays file preview and chunks information. The operator
 4. Click the name of a knowledge base to go to its details page.
 5. On the **Knowledge Base Details** page, click the file name to view its details.
 
-#### Ingest files
+#### 2.4.7 Ingest files
 
 After importing files, you can ingest them. The operator is an operations administrator by default. The file status is **Parsed**.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -351,7 +399,7 @@ After importing files, you can ingest them. The operator is an operations admini
 6. (Optional) Perform other related operations.
 After ingesting a file, the file status changes to **Indexed**. You can download the file. If file ingestion fails, the file status changes to **Index Error**. You can retry the operation.
 
-#### Delete a file
+#### 2.4.8 Delete a file
 
 The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -362,7 +410,7 @@ The operator is an operations administrator by default.
 5. On the **Knowledge Base Details** page, click **Delete** in the **Actions** column.
 6. Click **OK**.
 
-#### View the knowledge graph
+#### 2.4.9 View the knowledge graph
 
 View the generated knowledge graph in a graph-type knowledge base. The operator is an operations administrator by default. The knowledge base is of graph type.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -375,7 +423,7 @@ in the upper-right corner of the list.
 6. On the **Knowledge Graph** tab, view the generated knowledge graph. If no knowledge
 graph exists, click **Generate Now**. The knowledge graph displays nodes and their relationships. Enter a node name in the drop-down list at the top to search for and view the specific node. Click a node in the graph to display its description, network metrics, tags, and associations. Control the knowledge graph view. Click in the upper-right corner of the knowledge graph to zoom in. Click in the upper-right corner of the knowledge graph to zoom out. Click in the upper-right corner of the knowledge graph to enter fullscreen mode. Click in the upper-right corner of the knowledge graph to restore the default view.
 
-#### View the mind map
+#### 2.4.10 View the mind map
 
 View the generated mind map. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -388,7 +436,7 @@ in the upper-right corner of the list.
 6. On the **Mind Map** tab, view the generated mind map.
 Click **Regenerate** above the mind map to regenerate the mind map. Enter a node name above the mind map to search by node. Control the display of the mind map. Enter a percentage in the upper-right corner of the mind map to adjust the display scale. Click in the upper-right corner of the mind map to zoom in. Click in the upper-right corner of the mind map to zoom out. Click in the upper-right corner of the mind map to enter full-screen mode. Click in the upper-right corner of the mind map to restore the default view.
 
-#### Retrieval configuration and retrieval
+#### 2.4.11 Retrieval configuration and retrieval testing
 
 **testing**
 
@@ -408,13 +456,13 @@ Query mode supports **hybrid** or **mix**. iii. Click **OK**.
 7. Perform retrieval testing. Enter search content in the text box and click **Search**.
 Query Mode: The right side displays the currently configured query mode. Advanced Keywords: advanced keywords extracted from the search content. Basic Keywords: basic keywords extracted from the search content. The section below displays the retrieved information.
 
-### AI-assisted cloud resource
+### 2.5 AI-assisted cloud resource management
 
 **management**
 
 You can use custom configurations to better manage your cloud resources.
 
-#### AI-assisted creation
+#### 2.5.1 AI-assisted creation
 
 Configure personalized scenarios for AI-assisted creation of cloud services. The operator is an operations administrator by default.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -435,7 +483,7 @@ Configure personalized scenarios for AI-assisted creation of cloud services. The
 
 After you configure assisted creation for a cloud service, Apsara Copilot intelligently plans and assists users in creating resources based on personalized scenarios.
 
-#### AI-assisted configuration change
+#### 2.5.2 AI-assisted configuration change
 
 You can configure rules for the AI-assisted configuration change of cloud products. These rules are used to analyze and provide recommendations when you upgrade or downgrade a cloud product. The operator is an operations administrator by default.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -479,11 +527,11 @@ You can configure rules for the AI-assisted configuration change of cloud produc
 
 After configuring the AI-assisted configuration change for a cloud product, Apsara Assistant uses the applied rules to provide recommendations during an upgrade or downgrade. ation of Apsara Copilot
 
-## Application of Apsara
+## 3 Application of Apsara Copilot
 
 **Copilot**
 
-### Apsara Copilot conversation
+### 3.1 Apsara Copilot conversation
 
 Apsara Copilot allows you to ask platform and cloud service questions in natural language, consult the AI for information, and engage in intelligent conversations with the AI. The operations administrator has enabled the display of the intelligent assistant in
 **Configurations** > **Apsara Copilot** > **Custom Settings** section of the Apsara Uni-manager
@@ -508,7 +556,7 @@ ation of Apsara Copilot
 
 ation of Apsara Copilot
 
-### Skill management
+### 3.2 Skill management
 
 Install and manage skills to extend the capabilities of Apsara Copilot in conversations.
 1. Log on to the Apsara Uni-manager Management Console.
@@ -526,7 +574,7 @@ ation of Apsara Copilot
 | Enable or disable a skill | Click the enable or disable button on the right side of a skill card. : The skill is disabled. : The skill is enabled. Note You can enable or disable custom skills only. |
 | Delete a skill | i. Move the pointer over a skill card and click on the right side. Note You can delete custom skills only. After deleting a skill, the skill becomes unavailable, and cannot be recovered. Proceed with caution. ii. In the dialog box, click Delete. |
 
-### Expert management
+### 3.3 Expert management
 
 ation of Apsara Copilot An expert is a preset domain-specific agent on the Apsara Uni-manager Operations Console. Expert agents work together to provide you with comprehensive intelligent cloud management capabilities.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -542,7 +590,7 @@ disable expert agents.
 | View expert capabilities | Hover the pointer over an expert card to view the capability description of the expert agent. |
 | Enable or disable expert capabilities | Click the enable or disable button on the right side of an expert card. : The expert agent is disabled. : The expert agent is enabled. Note If an expert agent is not purchased, you cannot enable or disable it, or use its capabilities. |
 
-### Memory management
+### 3.4 Memory management
 
 The system automatically learns and retains your usage preferences as memories. You can also manually create custom memories.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -565,7 +613,7 @@ ation of Apsara Copilot
 | Delete a memory | i. Move the pointer over the memory title and click . ii. In the dialog box, click Confirm delete. |
 |---|---|
 
-### Cron job management
+### 3.5 Cron job management
 
 A cron job is a task that runs automatically on a schedule and that you can also trigger manually at any time.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -591,7 +639,7 @@ ation of Apsara Copilot
 | Delete a cron job | i. Move the pointer over the cron job card and clickD elete. ii. In the dialog box, click Delete. |
 |---|---|
 
-### Text selection Q&A
+### 3.6 Text selection Q&A
 
 Selecting text on the console page automatically triggers the Q&A feature for the selected content. The operations administrator has enabled the text selection feature in **Configurations** >
 **Apsara Copilot** > **Custom Settings**.
@@ -600,13 +648,13 @@ Selecting text on the console page automatically triggers the Q&A feature for th
 **Consult Apsara Copilot** in the op-up.
 3. Apsara Copilot automatically triggers the Q&A feature for the selected content.
 
-### AI analysis
+### 3.7 AI analysis
 
 Apsara Copilot provides data analysis capabilities powered by AI analysis. ation of Apsara Copilot For detailed operations on AI analysis, see the **Data analysis** > **Custom analysis** >
 **Intelligent analysis** section in the **Apsara Uni-manager Management Console User**
 **Guide**.
 
-### AI-based bill analysis
+### 3.8 AI-based bill analysis
 
 Billing data is complex and voluminous. Users struggle to identify underlying trends or potential issues from raw numbers. Apsara Copilot provides AI-based bill analysis capabilities that deliver multi-dimensional insights into billing data. This helps platform users understand resource usage and cost patterns more quickly and efficiently, enabling them to control expenses effectively. Simultaneously, it offers intelligent analytics for platform operators— including anomaly detection in bill fluctuations and trend forecasting—to ensure billing accuracy and optimize operational strategies for revenue growth.
 
@@ -632,11 +680,11 @@ ation of Apsara Copilot
 
 **Hourly Details**
 
-### AI billing rule analysis
+### 3.9 AI billing rule analysis
 
 Apsara Copilot provides AI analysis for billing rule scenarios. For detailed operations of AI billing rule analysis, see the **Pricing** > **AI billing rule analysis** section in Apsara Uni-manager Management Console User Guide. ation of Apsara Copilot
 
-### Unified resource search
+### 3.10 Unified resource search
 
 Unified resource search is a core capability of the Apsara Copilot intelligent management digital assistant. You can quickly search for cloud resources across products and regions using natural language, and filter by dimensions such as organization, region, status, and tag to efficiently locate and manage them.
 
@@ -717,7 +765,7 @@ Unified resource search depends on the intelligent management digital assistant 
 **management agent** on the expert management page.
 Search results are limited by your permissions, showing only the resources you have access to. You can combine multiple filter conditions in a single command. The intelligent management digital assistant automatically parses the command and returns resources that meet all conditions simultaneously. To view more resource details, click a resource name in the search results to go to the resource details page in the console of the corresponding cloud service. a Copilot operations analytics
 
-## Apsara Copilot operations
+## 4 Apsara Copilot operations analytics
 
 **analytics**
 
@@ -736,7 +784,7 @@ Apsara Copilot provides an operations analytics dashboard to help customers bett
 
 a Copilot operations analytics peration logs
 
-## View operation logs
+## 5 View operation logs
 
 This topic describes how to view the operation logs of Apsara Copilot.
 1. Log in to the Apsara Uni-manager Management Console.
@@ -749,9 +797,9 @@ Resource Type, Event Type, Resource ID, Source IP, Event ID, and Start/End Time,
 6. Find the operation log whose details you want to view and click **View** in the **Details**
 column. peration logs dix
 
-## Appendix
+## 6 Appendix
 
-### Log in to the Apsara Uni-
+### 6.1 Log in to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 

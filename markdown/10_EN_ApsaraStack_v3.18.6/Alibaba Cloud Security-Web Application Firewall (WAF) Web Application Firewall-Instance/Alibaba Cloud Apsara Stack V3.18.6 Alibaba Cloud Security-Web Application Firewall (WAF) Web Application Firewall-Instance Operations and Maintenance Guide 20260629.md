@@ -3,16 +3,23 @@ title: "Alibaba Cloud Security-Web Application Firewall (WAF) Web Application Fi
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 10
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Web Application Firewall-Instance Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "7fa13c1d30579b98_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Web Applica"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Web%20Application%20Firewall-Instance%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Security-Web Application Firewall (WAF) Web Application Firewall-Instance Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to Cloud Shield Operations Center
+- 2 Instance management
+- 3 Rule management
+- 4 Metrics
+
 ations Center
 
-## Log on to Cloud Shield
+## 1 Log on to Cloud Shield Operations Center
 
 **Operations Center**
 
@@ -46,7 +53,7 @@ The password is 10 to 20 characters in length.
 
 You can view information on the pages of **Cloud Shield Operations Center**.
 
-## Instance management
+## 2 Instance management
 
 This topic describes how to upgrade a Web Application Firewall (WAF) instance and how to view the version and status of the WAF instance.
 
@@ -70,7 +77,7 @@ the **Operation** column.
 4. In the message that appears, confirm the information and click **OK**.
 You can also select multiple WAF instances and click **Batch Upgrade** in the lower part of the page.
 
-## Rule management
+## 3 Rule management
 
 You can create custom Web Application Firewall (WAF) rules based on your business requirements and network environment to monitor the operations of WAF. This topic describes how to create and manage WAF rules.
 
@@ -101,7 +108,7 @@ parameters and click **OK**.
 
 After you create a custom rule, you can perform the following operations on the rule: In the upper part of the page, specify **Mode**, **Severity**, and **Status** to filter custom rules. Find the rule that you want to manage and click **Edit** in the **Actions** column to modify the information about the rule. Select multiple rules, click **More operations** in the upper part of the page, and then select Enable Rule, Disable Rule, or Delete Rule to enable, disable, or delete the rules, respectively, at a time.
 
-## Metrics
+## 4 Metrics
 
 This topic describes how to view the metrics of instance-based Web Application Firewall (WAF).
 

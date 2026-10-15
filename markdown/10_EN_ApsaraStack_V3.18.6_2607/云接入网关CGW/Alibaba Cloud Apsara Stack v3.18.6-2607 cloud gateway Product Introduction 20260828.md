@@ -3,20 +3,27 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Product Introducti
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Product Introduction 20260828.pdf"
+source_pdf: "159ad28459af55a0_Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3CGW/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20cloud%20gateway%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 cloud gateway Product Introduction 20260828
 
+## Table of Contents
+
+- 1 Cloud Gateway
+- 2 Product Details
+- 3 Product Value
+- 4 Features
+
 way
 
-## Cloud Gateway
+## 1 Cloud Gateway
 
 Cloud Gateway (CGW) is designed to provide scenario-specific network services to help you efficiently build hybrid clouds and migrate workloads to the clouds. CGW is an ideal service for migrating your infrastructure from a public or private cloud to a hybrid cloud. ails
 
-## Product Details
+## 2 Product Details
 
 The Cloud Access Gateway provides network services for specific scenarios. It helps customers quickly migrate to the cloud and flexibly build hybrid clouds. This service meets the diverse requirements that arise as cloud infrastructure evolves from private or public clouds to hybrid clouds.
 
@@ -32,7 +39,7 @@ This feature diagnoses nodes in the Computing Power Network (CPN). It performs p
 
 Intelligent computing servers connect to a VPC through the computing power platform access gateway, which is a dedicated CHSW device. This connection enables unified management of intelligent computing server resources. The system supports features such as instance management, operation history, bare metal networking, and O&M configuration. These features are used to perform daily O&M tasks for the computing power platform access gateway. ue
 
-## Product Value
+## 3 Product Value
 
 The Cloud Access Gateway delivers comprehensive, efficient, secure, easy-to-use, and visual network services for Apsara Stack customers.
 
@@ -48,7 +55,7 @@ Provides network access capabilities for intelligent computing scenarios, delive
 
 Enables intelligent computing server access to a virtual private cloud (VPC). Compatibility: Requires no modifications to intelligent computing servers. Supports connecting intelligent computing servers to the VPC network through a forward gateway. Enables reuse of existing servers to protect your investment. Unified Management: Integrates with Alibaba Cloud VPC products to connect ECS and intelligent computing servers and provide unified resource management. Ease of Use: Integrates with intelligent computing server management to enable unified management and on-demand allocation of intelligent computing server resources. Automatically configures tenant networks for intelligent computing servers when resources are allocated. Security: Supports multi-tenant isolation for intelligent computing server networks. Intelligent computing server networks are isolated from the underlying cloud platform network.
 
-## Features
+## 4 Features
 
 Cloud Access Gateway provides network connectivity services for various scenarios to help enterprises quickly migrate to the cloud and flexibly build hybrid clouds.
 

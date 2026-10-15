@@ -3,18 +3,145 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore Developer Guide
 product_version: "V3.16.2"
 doc_version: "20220905"
 pdf_pages: 189
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore Developer Guide 20220905.pdf"
+source_pdf: "f452860a8b25a2b9_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore Developer Guide 20220905.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Tablestore%20Developer%20Guide%2020220905.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Tablestore Developer Guide
 
-## API reference
+## Table of Contents
 
-### API-based operations
+- 1 API reference
+  - 1.1 API-based operations
+    - 1.1.1 GetRow
+    - 1.1.2 PutRow
+    - 1.1.3 UpdateRow
+    - 1.1.4 DeleteRow
+    - 1.1.5 GetRange
+    - 1.1.6 BatchGetRow
+    - 1.1.7 BatchWriteRow
+    - 1.1.8 CreateTable
+    - 1.1.9 ListTable
+    - 1.1.10 DeleteTable
+    - 1.1.11 UpdateTable
+    - 1.1.12 DescribeTable
+    - 1.1.13 ComputeSplitPointsBySize
+    - 1.1.14 ListStream
+    - 1.1.15 DescribeStream
+    - 1.1.16 GetShardIterator
+    - 1.1.17 GetStreamRecord
+    - 1.1.18 Tablestore ProtocolBuffer message definitions
+    - 1.1.19 CreateIndex
+    - 1.1.20 DeleteIndex
+  - 1.2 DataType
+    - 1.2.1 ActionType
+    - 1.2.2 CapacityUnit
+    - 1.2.3 ColumnPaginationFilter
+    - 1.2.4 ComparatorType
+    - 1.2.5 CompositeColumnValueFilter
+    - 1.2.6 Condition
+    - 1.2.7 ConsumedCapacity
+    - 1.2.8 Direction
+    - 1.2.9 Error
+    - 1.2.10 Filter
+    - 1.2.11 PrimaryKeyOption
+    - 1.2.12 FilterType
+    - 1.2.13 LogicalOperator
+    - 1.2.14 OperationType
+    - 1.2.15 PartitionRange
+    - 1.2.16 PlainBuffer
+    - 1.2.17 PrimaryKeySchema
+    - 1.2.18 PrimaryKeyType
+    - 1.2.19 ReservedThroughput
+    - 1.2.20 ReservedThroughputDetails
+    - 1.2.21 ReturnContent
+    - 1.2.22 ReturnType
+    - 1.2.23 RowExistenceExpectation
+    - 1.2.24 RowInBatchGetRowResponse
+    - 1.2.25 RowInBatchWriteRowRequest
+    - 1.2.26 RowInBatchWriteRowResponse
+    - 1.2.27 SingleColumnValueFilter
+    - 1.2.28 StreamDetails
+    - 1.2.29 StreamRecord
+    - 1.2.30 StreamSpecification
+    - 1.2.31 TableInBatchGetRowRequest
+    - 1.2.32 TableInBatchGetRowResponse
+    - 1.2.33 TableInBatchWriteRowRequest
+    - 1.2.34 TableInBatchWriteRowResponse
+    - 1.2.35 TableMeta
+    - 1.2.36 TableOptions
+    - 1.2.37 TimeRange
+- 2 SDK reference
+  - 2.1 Java SDK
+    - 2.1.1 Overview
+    - 2.1.2 Installation
+    - 2.1.3 Initialization
+    - 2.1.4 Use Tablestore SDK for Java
+      - 2.1.4.1 Table-level operations
+      - 2.1.4.2 Single-row operations
+      - 2.1.4.3 Multi-row operations
+      - 2.1.4.4 Auto-increment function of the primary key column
+      - 2.1.4.5 Conditional update
+      - 2.1.4.6 Filters
+      - 2.1.4.7 Global secondary indexes
+      - 2.1.4.8 Tunnel Service
+        - 2.1.4.8.1 Quick start
+        - 2.1.4.8.2 Configure tunnel clients
+        - 2.1.4.8.3 Create tunnels
+        - 2.1.4.8.4 Query the tunnel information about a data table
+        - 2.1.4.8.5 Query the information about a tunnel
+        - 2.1.4.8.6 Delete tunnels
+    - 2.1.5 Error handling
+  - 2.2 Python SDK
+    - 2.2.1 Overview
+    - 2.2.2 Installation
+    - 2.2.3 Initialization
+    - 2.2.4 Use the SDK
+      - 2.2.4.1 Table-level operations
+      - 2.2.4.2 Single-row operations
+      - 2.2.4.3 Multi-row operations
+      - 2.2.4.4 Global secondary indexes
+    - 2.2.5 Error handling
+  - 2.3 Go SDK
+    - 2.3.1 Overview
+    - 2.3.2 Installation
+    - 2.3.3 Initialization
+    - 2.3.4 Use the SDK
+      - 2.3.4.1 Table-level operations
+      - 2.3.4.2 Single-row operations
+      - 2.3.4.3 Multi-row operations
+      - 2.3.4.4 Tunnel Service
+        - 2.3.4.4.1 Installation
+        - 2.3.4.4.2 Quick start
+        - 2.3.4.4.3 Configuration items
+        - 2.3.4.4.4 Error handling
+  - 2.4 NodeJS SDK
+    - 2.4.1 Overview
+    - 2.4.2 Installation
+    - 2.4.3 Initialization
+    - 2.4.4 Data types
+    - 2.4.5 Use the SDK
+      - 2.4.5.1 Table-level operations
+      - 2.4.5.2 Single-row operations
+      - 2.4.5.3 Multi-row operations
+    - 2.4.6 Error handling
+  - 2.5. .NET SDK
+    - 2.5.1 Overview
+    - 2.5.2 Installation
+    - 2.5.3 Initialization
+    - 2.5.4 Use the SDK
+      - 2.5.4.1 Table-level operations
+      - 2.5.4.2 Single-row operations
+      - 2.5.4.3 Multiple-row operations
+    - 2.5.5 Error handling
+  - 2.6 Obtain an AccessKey pair
 
-#### GetRow
+## 1 API reference
+
+### 1.1 API-based operations
+
+#### 1.1.1 GetRow
 
 Reads a single row of data based on the specified primary key. Request syntax
 
@@ -68,7 +195,7 @@ message GetRowResponse {
 
 CU consumption If the requested row does not exist, one read CU is consumed. If the requested row exists, the number of consumed read CUs is rounded up from the calculation result of the following formula: Number of consumed read CUs = (Size of data in all primary key columns of the row + Size of data in the attribute columns that are read)/4 KB. If the request times out and the results are undefined, CUs may or may not be consumed. If an HTTP status code 5xx is returned, which indicates that an internal error occurred, the operation does not consume CUs. If other errors are returned, one read CU is consumed.
 
-#### PutRow
+#### 1.1.2 PutRow
 
 Inserts a row. If the row exists, the existing data is overwritten. Otherwise, a new row is added. Request syntax
 
@@ -110,7 +237,7 @@ message PutRowResponse {
 
 CU consumption If the row that you want to insert does not exist, the number of CUs that are consumed varies based on the value that you specified for the condition parameter. If the value of the condition parameter is IGNORE, the number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = (Size of data in all primary key columns of the row + Size of data in attribute columns that you want to insert)/4 KB. If the value of the condition parameter is EXPECT_NOT_EXIST, both write and read CUs are consumed. The number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = (Size of data in all primary key columns of the row + Size of data in attribute columns that you want to insert)/4 KB. The number of consumed read CUs is rounded up from the calculation result of the following formula: Number of consumed read CUs = Size of the data in all primary key columns of the row/4 KB. If the value of the condition parameter is EXPECT_EXIST, the row fails to be inserted. One write CU and one read CU are consumed. If the row that you want to insert exists, the number of CUs that are consumed varies based on the value that you specified for the condition parameter. If the value of the condition parameter is IGNORE, the number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = (Size of data in all primary key columns of the row + Size of data in attribute columns that you want to insert)/4 KB. If the value of the condition parameter is EXPECT_EXIST, both write and read CUs are consumed. The number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = (Size of data in all primary key columns of the row + Size of data in attribute columns that you want to insert)/4 KB. The number of consumed read CUs is rounded up from the calculation result of the following formula: Number of consumed read CUs = Size of the data in all primary key columns of the row/4 KB. If the value of the condition parameter is EXPECT_NOT_EXIST, the row fails to be inserted. One write CU and one read CU are consumed. When you use conditional update, the number of consumed CUs is calculated by using the preceding formulas if the operation succeeds. If the operation fails, one write CU and one read CU are consumed. If the request times out and the results are undefined, CUs may or may not be consumed. If an HTTP status code 5xx is returned, which indicates that an internal error occurred, the operation does not consume CUs. If other errors are returned, one write CU is consumed.
 
-#### UpdateRow
+#### 1.1.3 UpdateRow
 
 Updates the data of a row. Not e If the specified row does not exist, a new row is inserted. If the specified row exists, the values of the specified columns are added, modified, or deleted based on the request. Request syntax
 
@@ -150,7 +277,7 @@ message UpdateRowResponse {
 
 CU consumption If the row that you want to update does not exist, the number of CUs that are consumed varies based on the value that you specified for the condition parameter. If the value of the condition parameter is IGNORE, the number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = (Size of data in all primary key columns of the row + Size of data in attribute columns that you want to update)/4 KB. If UpdateRow contains an attribute column that you want to delete, the length of the column name is calculated as the size of data in the column. If the value of the condition parameter is EXPECT_EXIST, data fails to be written to the row. One write CU and one read CU are consumed. If the row that you want to update exists, the number of CUs that are consumed varies based on the value that you specified for the condition parameter. If the value of the condition parameter is IGNORE, the number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = (Size of data in all primary key columns of the row + Size of data in attribute columns that you want to update)/4 KB. If UpdateRow contains an attribute column that you want to delete, the length of the column name is calculated as the size of data in the column. If the value of the condition parameter is EXPECT_EXIST, both write and read CUs are consumed. The number of consumed write CUs is rounded up from the calculation result of the formula that is used when the value of the condition parameter is IGNORE. The number of consumed read CUs is rounded up from the calculation result of the following formula: Number of consumed read CUs = Size of data in all primary key columns of the row/4 KB. If the request times out and the results are undefined, CUs may or may not be consumed. If an HTTP status code 5xx is returned, which indicates that an internal error occurred, the operation does not consume CUs. If other errors are returned, one read CU and one write CU are consumed.
 
-#### DeleteRow
+#### 1.1.4 DeleteRow
 
 Deletes a row of data. Request syntax
 
@@ -189,7 +316,7 @@ message DeleteRowResponse {
 
 CU consumption If the row that you want to delete does not exist, the number of CUs that are consumed varies based on the value that you specified for the condition parameter. If the value of the condition parameter is IGNORE, the number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = Size of the data in all primary key columns of the row/4 KB. If the value of the condition parameter is EXPECT_EXIST, the row fails to be deleted. One write CU and one read CU are consumed. If the row that you want to delete exists, the number of CUs that are consumed varies based on the value that you specified for the condition parameter. If the value of the condition parameter is IGNORE, the number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = Size of the data in all primary key columns of the row/4 KB. If the value of the condition parameter is EXPECT_EXIST, both write and read CUs are consumed. The number of consumed write CUs is rounded up from the calculation result of the following formula: Number of consumed write CUs = Size of the data in all primary key columns of the row/4 KB. The number of consumed read CUs is rounded up from the calculation result of the following formula: Number of consumed read CUs = Size of the data in all primary key columns of the row/4 KB. If the request times out and the results are undefined, CUs may or may not be consumed. If an HTTP status code 5xx is returned, which indicates that an internal error occurred, the operation does not consume CUs. If other errors are returned, one write CU is consumed.
 
-#### GetRange
+#### 1.1.5 GetRange
 
 Reads data whose primary key is within a specified range. Request syntax
 
@@ -251,7 +378,7 @@ message GetRangeResponse {
 
 CU consumption The number of read CUs that are consumed for the GetRange operation is rounded up from the calculation result of the following formula: Number of consumed read CUs = (Size of the data in all primary key columns of the rows that meet the query conditions + Size of the data in the attribute columns that are read)/4 KB. If the request times out and the results are undefined, CUs may or may not be consumed. If an HTTP status code 5xx is returned, which indicates that an internal error occurred, the operation does not consume CUs. If other errors are returned, one read CU is consumed.
 
-#### BatchGetRow
+#### 1.1.6 BatchGetRow
 
 Action You can use the BatchGetRow API to simultaneously read data in several rows from one or more tables. The BatchGetRow operation is a set of multiple GetRow operations. The execution, returning of results, and CU consumption of each individual operation are carried out independently. Compared with the execution of a large number of GetRow operations, the use of BatchGetRow can reduce the request response time and increase the data read rate. Request structure
 
@@ -269,7 +396,7 @@ message BatchGetRowResponse {
 
 t ables: Type: repeated TableInBatchGetRowResponse The value of this parameter corresponds to the data to be read in each table. The TableInBatchGetRowResponse object order in the response is the same as the TableInBatchGetRowRequest object order in BatchGetRowRequest. The object order of each RowInBatchGetRowResponse under TableInBatchGetRowResponse is the same as that of RowInBatchGetRowRequest under TableInBatchGetRowRequest. If a row does not exist or contains no data in the specified columns_to_get, a corresponding RowInBatchGetRowResponse still appears in TableInBatchGetRowResponse. However, the primary_key_columns and attribute_columns of the row are null. If a row fails to be read, the is_ok value in RowInBatchGetRowResponse for the row is false and the row is null. Not e The BatchGetRow operation may partially fail at the row level. However, it still returns an HTTP status code of 200. The application must check for errors in RowInBatchGetRowResponse to confirm the execution results for each row and then proceed accordingly. CU consumpt ion: If the entire operation fails, it does not consume any CU. If the request times out and the results are undefined, a CU may or may not be consumed. In other situations, each RowInBatchGetRowRequest operation is considered as one GetRow operation when write CUs are calculated.
 
-#### BatchWriteRow
+#### 1.1.7 BatchWriteRow
 
 Action You can use the BatchWriteRow API to simultaneously insert, modify, or delete data in several rows in one or more tables. It is a set of multiple PutRow, UpdateRow, and DeleteRow operations. The execution, returning of results, and capacity unit (CU) consumption of each individual operation are carried out independently. Compared with the execution of a large number of write operations, the use of BatchWriteRow can reduce the request response time and increase the data write rate. Request structure
 
@@ -287,7 +414,7 @@ message BatchWriteRowResponse {
 
 t ables: Type: TableInBatchWriteRowResponse This parameter specifies the response information corresponding to the operations for each table. The response information contains the execution results, error codes, and number of CUs consumed. The TableInBatchWriteRowResponse object order in the response is the same as the TableInBatchWriteRowRequest object order in BatchWriteRowRequest. The RowInBatchWriteRowResponse object orders contained in put_rows, update_rows, and delete_rows in each TableInBatchWriteRowRequest are the same as the respective PutRowInBatchWriteRowRequest, UpdateRowInBatchWriteRowRequest, and DeleteRowInBatchWriteRowRequestobject orders contained in put_rows, update_rows, and delete_rows in TableInBatchWriteRowRequest. If a row fails to be read, the is_ok value of the row in RowInBatchWriteRowResponse is false. Not e The BatchWriteRow operation may partially fail at the row level. However, it still returns an HTTP status code of 200. The application must check for errors in RowInBatchWriteRowResponse to confirm the execution results for each row and then proceed accordingly. CU consumpt ion: If the entire operation fails, it does not consume any CUs. If the request times out and the results are undefined, a CU may or may not be consumed. In other situations, each PutRowInBatchWriteRowRequest, UpdateRowInBatchWriteRowRequestDelete, or RowInBatchWriteRowRequest operation is considered as one write operation when write CUs are calculated.
 
-#### CreateTable
+#### 1.1.8 CreateTable
 
 Creates a table based on the specified schema. Usage notes You cannot perform read or write operations on a table immediately after you create the table. In most cases, you can perform read and write operations on a table about one minute after the table is created. You can create up to 1,024 tables in an instance. If you need to create more tables in an instance, contact Alibaba Cloud customer service. Request syntax
 
@@ -312,7 +439,7 @@ Response syntax
 message CreateTableResponse {
 ```
 
-#### ListTable
+#### 1.1.9 ListTable
 
 Action You can use the ListTable API to obtain the names of all tables created in the current instance. Request structure
 
@@ -329,7 +456,7 @@ message ListTableResponse {
 
 t able_names: Type: repeated string This parameter specifies the names of all tables in the current instance. Note If a table is created, its table name can be returned by ListTableResponse, but this does not necessarily mean that this table can be read or written at the time.
 
-#### DeleteTable
+#### 1.1.10 DeleteTable
 
 Action You can use the DeleteTable API to delete the specified table in an instance. Request structure
 
@@ -346,7 +473,7 @@ message DeleteTableResponse {
 
 If the response of DeleteTable does not contain an error, the table has been deleted.
 
-#### UpdateTable
+#### 1.1.11 UpdateTable
 
 Action You can use the UpdateTable API to update the reserved read or write throughput settings of the specified table. New settings take effect within one minute of a successful update. Request structure
 
@@ -368,7 +495,7 @@ message UpdateTableResponse {
 
 reserved_t hroughput _det ails: Type: ReservedThroughputDetails After the update, the reserved read/write throughput settings information of the table contains the current reserved throughput settings, the time these settings were last updated, and the number of times they have been lowered on the current date. t able_opt ions: Type: TableOptions The latest value of the table_options parameter after the modification. Note The minimum interval between updates to the reserved read/write throughput of a table is two minutes. If the current UpdateTable operation is requested within two minutes of the previous operation, it will be rejected. The reserved read/write throughput of a table can be raised or lowered an unlimited number of times within a single day (from 00:00:00 to 00:00:00 the next day in UTC time).
 
-#### DescribeTable
+#### 1.1.12 DescribeTable
 
 Action You can use the DescribeTable API to query the structure information and reserved read/write throughput value of the specified table. Request structure
 
@@ -390,7 +517,7 @@ message DescribeTableResponse {
 
 t able_met a: Type: TableMeta This parameter specifies the schema of the table. The schema is the same as the schema provided when the table is created. reserved_t hroughput _det ails: Type: ReservedThroughputDetails This parameter specifies the reserved read/write throughput settings information of the table. The information contains the current reserved read/write throughput settings, the time these settings were last updated, and the number of times they have been lowered on the current date. t able_opt ions: Type: TableOptions This parameter specifies the latest value of the table_options parameter. St reamSpecif icat ion: Type: StreamSpecification Required: no This parameter specifies whether to enable Stream-related attributes. shard_split s: Type: bytes This parameter specifies the split points of all partitions in the current table.
 
-#### ComputeSplitPointsBySize
+#### 1.1.13 ComputeSplitPointsBySize
 
 Action You can use the ComputeSplitPointsBySize API to logically split data in a table into several partitions whose sizes are close to the specified size. The API can return the split points between the partitions and prompt about hosts where the partitions reside. This API is typically used to implement plans on compute engines, such as concurrency plans. Request structure
 
@@ -458,7 +585,7 @@ consumed: Type: ConsumedCapacity This parameter specifies the number of CUs cons
 
 CU consumption The number of consumed read CUs is the same as that of the partitions. No write CUs are consumed.
 
-#### ListStream
+#### 1.1.14 ListStream
 
 Action You can use the ListStream API to obtain information about the stream that is enabled for all tables in the current instance. Request structure
 
@@ -480,7 +607,7 @@ message Stream {
 
 st ream_id: Type: repeated string This parameter specifies the ID of the current stream. t able_name: Type: required string This parameter specifies the name of the table for which the current stream is enabled. creat ion_t ime: Type: required int64 This parameter specifies the time the current stream is enabled.
 
-#### DescribeStream
+#### 1.1.15 DescribeStream
 
 Action You can use the DescribeStream API to obtain information about the partitions of the current stream. Request structure
 
@@ -510,7 +637,7 @@ message StreamShard {
 
 st ream_id: Type: required string This parameter specifies the ID of the current stream. expirat ion_t ime: Type: required int32 This parameter specifies the expiration time of the stream. t able_name: Type: required string This parameter specifies the name of the table for which the current stream is enabled. creat ion_t ime: Type: required int32 This parameter specifies the time the current stream is enabled. st ream_st at us: Type: required StreamStatus This parameter specifies the status of the current stream, which can be enabling or active. shards: Type: required StreamShard This parameter specifies the information about the streamShard, including the partition ID, parent partition ID, and information about the neighbor partition of the parent partition (applicable when the parent partition is merged). next _shard_id: Type: optional string This parameter specifies the start ID of the next partition in a paging query. Note Data reading for the parent partition must be completed before data of the current partition is read.
 
-#### GetShardIterator
+#### 1.1.16 GetShardIterator
 
 Action You can use the GetShardIterator API to obtain the response of the start iterator for reading the record information of the current partition. Request structure
 
@@ -529,7 +656,7 @@ message GetShardIteratorResponse {
 
 shard_it erat or: Type: required string This parameter specifies the start iterator for reading the record of the current partition.
 
-#### GetStreamRecord
+#### 1.1.17 GetStreamRecord
 
 Action You can use the GetStreamRecord API to obtain the incremental content of the current partition. Request structure
 
@@ -553,7 +680,7 @@ message GetStreamRecordResponse {
 
 St reamRecord: Type: repeated StreamRecord This parameter specifies the record entry for reading the current partition. shard_it erat or: Type: required string This parameter specifies the iterator for reading the current partition next time. consumed: Type: ConsumedCapacity This parameter specifies the number of CUs consumed by this operation. The sum of data in all rows of a table for stream read is calculated based on the following formula: Number of consumed read CUs = (Size of actually read columns/4 KB) rounded up.
 
-#### Tablestore ProtocolBuffer message
+#### 1.1.18 Tablestore ProtocolBuffer message definitions
 
 definitions This topic describes the detailed definitions of table_store.proto and table_store_filter.proto. table_store.proto
 
@@ -955,7 +1082,7 @@ message Filter {
     required bytes filter = 2;  // Serialized string of filter of the type
 ```
 
-#### CreateIndex
+#### 1.1.19 CreateIndex
 
 You can call this operation to create an index table for the specified base table. Request syntax
 
@@ -972,7 +1099,7 @@ main_table_name Type: string. Required: yes. This parameter specifies the name o
 message CreateIndexResponse {
 ```
 
-#### DeleteIndex
+#### 1.1.20 DeleteIndex
 
 You can call this operation to delete an index table from the specified base table. Request syntax
 
@@ -988,9 +1115,9 @@ main_table_name Type: string. Required: yes. This parameter specifies the name o
 message DropIndexResponse {
 ```
 
-### DataType
+### 1.2 DataType
 
-#### ActionType
+#### 1.2.1 ActionType
 
 ActionType specifies the operation type in the response of the GetStreamRecord operation. Operation types include: PUT_ROW indicates that the operation type is PutRow. UPDATE_ROW indicates that the operation type is UpdateRow. DELETE_ROW indicates that the operation type is DeleteRow. Enumeration values
 
@@ -1001,7 +1128,7 @@ enum ActionType {
     DELETE_ROW = 3;
 ```
 
-#### CapacityUnit
+#### 1.2.2 CapacityUnit
 
 CapacityUnit specifies the number of CUs consumed in an operation, or reserved read/write throughput of a table. Data structure
 
@@ -1013,7 +1140,7 @@ message CapacityUnit {
 
 read: Type: int32 Description: the number of read CUs consumed by this operation or the reserved read throughput for this table. writ e: Type: int32 Description: the number of write CUs consumed by this operation or the reserved write throughput for this table.
 
-#### ColumnPaginationFilter
+#### 1.2.3 ColumnPaginationFilter
 
 ColumnPaginationFilter specifies the filtering conditions for reading wide rows. This API is applicable to the Filter function. Data structure
 
@@ -1025,7 +1152,7 @@ message ColumnPaginationFilter {
 
 of f set : Type: int32 Description: the position of the column to start reading from. limit : Type: int32 Description: the number of columns to be read.
 
-#### ComparatorType
+#### 1.2.4 ComparatorType
 
 ComparatorType is an arithmetical operator. It includes the following enumeration types: CT_EQUAL indicates equal to. CT_NOT_EQUAL indicates not equal to. CT_GREATER_THAN indicates greater than. CT_GREATER_EQUAL indicates not smaller than. CT_LESS_THAN indicates smaller than. CT_LESS_EQUAL indicates not greater than. Enumeration values
 
@@ -1039,7 +1166,7 @@ enum ComparatorType {
  CT_LESS_EQUAL = 6;
 ```
 
-#### CompositeColumnValueFilter
+#### 1.2.5 CompositeColumnValueFilter
 
 CompositeColumnValueFilter specifies a group of conditions, for example, column_a > 5 AND column_b = 10. This API is applicable to the ConditionUpdate and Filter functions. Data structure
 
@@ -1051,7 +1178,7 @@ message CompositeColumnValueFilter {
 
 combinat or: Type: LogicalOperator Description: the logical operator. sub_f ilt er: Type: Filter Description: the sub-condition expression.
 
-#### Condition
+#### 1.2.6 Condition
 
 Condition specifies the row judgment conditions in PutRow, UpdateRow, and DeleteRow. It contains the row_existence and column_condition parameters. Data structure
 
@@ -1063,7 +1190,7 @@ message Condition {
 
 row_exist ence: Type: RowExistenceExpectation Description: the row existence check settings for this row. column_condit ion: Type: bytes Description: the column condition settings. This parameter indicates the binary data (in bytes) after the filter is serialized in the Protobuf format.
 
-#### ConsumedCapacity
+#### 1.2.7 ConsumedCapacity
 
 ConsumedCapacity indicates the number of capacity units (CUs) consumed by an operation. Data structure
 
@@ -1074,7 +1201,7 @@ message ConsumedCapacity {
 
 capacit y_unit : Type: CapacityUnit Description: the number of CUs consumed by this operation.
 
-#### Direction
+#### 1.2.8 Direction
 
 Direction indicates the data query order in the GetRange operation. The two Direction operations are: FORWARD indicates that the query proceeds in ascending order of primary key values. BACKWARD indicates that the query proceeds in descending order of primary key values. Enumeration values
 
@@ -1084,7 +1211,7 @@ enum Direction {
  BACKWARD = 1;
 ```
 
-#### Error
+#### 1.2.9 Error
 
 Error indicates an error message returned when an operation fails. This parameter is also used to indicate errors for single-row requests in the BatchGetRow and BatchWriteRow operations. Data structure
 
@@ -1096,7 +1223,7 @@ Error {
 
 code: Type: string Description: the error code for the specified single-row operation. message: Type: string Description: the error message for the specified single-row operation.
 
-#### Filter
+#### 1.2.10 Filter
 
 Filter specifies the column-based conditions. This API is applicable to the Conditional Update and Filter functions. Data structure
 
@@ -1108,7 +1235,7 @@ message Filter {
 
 t ype: Type: FilterType Description: the column condition type. f ilt er: Type: bytes Description: the binary data generated after the condition statements of CompositeColumnValueFilter, ColumnPaginationFilter, or SingleColumnValueFilter are serialized in the Protobuf format.
 
-#### PrimaryKeyOption
+#### 1.2.11 PrimaryKeyOption
 
 PrimaryKeyOption specifies the attribute value of a primary key. Currently, it only supports AUTO_INCREMENT. Enumeration values
 
@@ -1117,7 +1244,7 @@ enum PrimaryKeyOption {
  AUTO_INCREMENT = 1;
 ```
 
-#### FilterType
+#### 1.2.12 FilterType
 
 FilterType specifies the type for condition updates or filters. The types include: FT_SINGLE_COLUMN_VALUE indicates a single-column condition. FT_COMPOSITE_COLUMN_VALUE indicates a multi-column composite condition. FT_COLUMN_PAGINATION indicates a wide-row read condition. Enumeration values
 
@@ -1128,7 +1255,7 @@ enum FilterType {
  FT_COLUMN_PAGINATION = 3;
 ```
 
-#### LogicalOperator
+#### 1.2.13 LogicalOperator
 
 LogicalOperator specifies the enumeration type. The enumeration types include: LO_NOT indicates NOT. LO_AND indicates AND. LO_OR indicates OR. Enumeration values
 
@@ -1139,7 +1266,7 @@ enum LogicalOperator {
  LO_OR = 3;
 ```
 
-#### OperationType
+#### 1.2.14 OperationType
 
 OperationType indicates the modification method for one column in UpdateRow. The types of operations include: PUT indicates that a column is inserted or data in this column is overwritten. UPDATE indicates that a column is updated. DELETE indicates that a column is deleted. Enumeration values
 
@@ -1150,7 +1277,7 @@ enum OperationType {
  DELETE = 3;
 ```
 
-#### PartitionRange
+#### 1.2.15 PartitionRange
 
 PartitionRange specifies the partition range. Data structure
 
@@ -1162,7 +1289,7 @@ message PartitionRange {
 
 begin: Type: bytes Description: the starting key of the partition. The partition range is a left-closed right-open interval, which includes the starting key. end: Type: bytes Description: the ending key of the partition. The partition range is a left-closed right-open interval, which excludes the ending key.
 
-#### PlainBuffer
+#### 1.2.16 PlainBuffer
 
 Compared with Protocol Buffer, PlainBuffer delivers better performance for serialization and resolution of small objects. Therefore, PlainBuffer is used to format data in Tablestore. Format definition
 
@@ -1232,7 +1359,7 @@ Example A row contains two primary key columns and four attribute columns. The d
  <Cell4>[0x3][0x4][7][column4][0x5][0x6][1]
 ```
 
-#### PrimaryKeySchema
+#### 1.2.17 PrimaryKeySchema
 
 PrimaryKeySchema specifies the attribute value of a primary key. Data structure
 
@@ -1245,7 +1372,7 @@ message PrimaryKeySchema {
 
 name: Type: string Description: the name of the column. t ype: Type: PrimaryKeyType Description: the type of the column. opt ion: Type: PrimaryKeyOption Description: the additional attribute value of the column.
 
-#### PrimaryKeyType
+#### 1.2.18 PrimaryKeyType
 
 PrimaryKeyType specifies the type of a primary key. Enumeration data types INTEGER STRING BINARY
 
@@ -1256,7 +1383,7 @@ enum PrimaryKeyType {
  BINARY = 3;
 ```
 
-#### ReservedThroughput
+#### 1.2.19 ReservedThroughput
 
 ReservedThroughput indicates the reserved read/write throughput value for a table. Data structure
 
@@ -1267,7 +1394,7 @@ message ReservedThroughput {
 
 capacit y_unit : Type: CapacityUnit Description: the current reserved read/write throughput value for the table.
 
-#### ReservedThroughputDetails
+#### 1.2.20 ReservedThroughputDetails
 
 ReservedThroughputDetails indicates the reserved read/write throughput information of a table. Data structure
 
@@ -1281,7 +1408,7 @@ message ReservedThroughputDetails {
 
 capacit y_unit : Type: CapacityUnit Description: the reserved read/write throughput value for this table. last _increase_t ime: Type: int64 Description: the last time the reserved read/write throughput capacity was raised for this table. The value uses UTC time, in seconds. last _decrease_t ime: Type: int64 Description: the last time the reserved read/write throughput capacity was lowered for this table. The value uses UTC time, in seconds. number_of _decreases_t oday: Type: int32 Description: the number of times the reserved read/write throughput capacity was lowered for this table on the current calendar day.
 
-#### ReturnContent
+#### 1.2.21 ReturnContent
 
 ReturnContent specifies the content of the returned data. Data structure
 
@@ -1292,7 +1419,7 @@ message ReturnContent {
 
 ret urn_t ype: Type: ReturnType Description: the type of the returned data.
 
-#### ReturnType
+#### 1.2.22 ReturnType
 
 ReturnType specifies the type of the returned data. Enumeration data types
 
@@ -1304,7 +1431,7 @@ enum ReturnType {
 
 RT_NONE: the default value. This parameter indicates that no value is returned. RT_PK: This parameter indicates that the primary key is returned.
 
-#### RowExistenceExpectation
+#### 1.2.23 RowExistenceExpectation
 
 RowExistenceExpectation specifies conditions for row existence. Enumeration types are as follows: IGNORE indicates that the row existence check is not performed. EXPECT_EXIST indicates that the row is expected to exist. EXPECT_NOT_EXIST indicates that this row is not expected to exist. Enumeration values
 
@@ -1315,7 +1442,7 @@ enum RowExistenceExpectation {
     EXPECT_NOT_EXIST = 2;
 ```
 
-#### RowInBatchGetRowResponse
+#### 1.2.24 RowInBatchGetRowResponse
 
 RowInBatchGetRowResponse indicates a row of data in the response of the BatchGetRow operation. Data structure
 
@@ -1330,7 +1457,7 @@ message RowInBatchGetRowResponse {
 
 is_ok: Type: bool Description: determines whether the operation for this row succeeds. If true is returned, the row is read and error is invalid. If false is returned, the row fails to be read and the row is invalid. error: Type: Error Description: the error message for this row operation. consumed: Type: ConsumedCapacity Description: the number of capacity units consumed by this row operation. row: Type: bytes The read data is encoded in the PlainBuffer format. If this row does not exist, null is returned. next _t oken: Type: bytes This parameter specifies the starting position of a wide row in the next read operation. This function is currently unavailable.
 
-#### RowInBatchWriteRowRequest
+#### 1.2.25 RowInBatchWriteRowRequest
 
 RowInBatchWriteRowRequest indicates the information of the row to be written, updated, or deleted in the BatchWriteRow operation. Data structure
 
@@ -1344,7 +1471,7 @@ message RowInBatchWriteRowRequest {
 
 t ype: Type: OperationType Description: the operation type. row_change: Type: bytes Description: the data in a row that contains the primary key and attribute columns. The columns are encoded in the PlainBuffer format. condit ion: Type: Condition Description: the value of conditional update, including the row existence condition and columnbased condition. ret urn_cont ent : Type: ReturnContent Required: no This parameter specifies the data type after the row is written. Currently, only the primary key is returned, which is used for the auto-increment function of the primary key column.
 
-#### RowInBatchWriteRowResponse
+#### 1.2.26 RowInBatchWriteRowResponse
 
 RowInBatchWriteRowResponse indicates the write operation result for a row in the response of the BatchWriteRow operation. Data structure
 
@@ -1357,7 +1484,7 @@ message RowInBatchWriteRowResponse {
 
 is_ok: Type: bool Description: determines whether the operation for this row succeeds. If the value is true, the row is written and error is invalid. If the value is false, this row fails to be written. error: Type: Error Description: the error message for this row operation. consumed: Type: ConsumedCapacity Description: the number of capacity units consumed by this row operation.
 
-#### SingleColumnValueFilter
+#### 1.2.27 SingleColumnValueFilter
 
 SingleColumnValueFilter specifies a single condition, for example, column_a > 5. This API is applicable to the ConditionUpdate and Filter functions. Data structure
 
@@ -1372,7 +1499,7 @@ message SingleColumnValueFilter {
 
 comparat or: Type: ComparatorType Description: the comparison type. column_name: Type: string Description: the column name. column_value: Type: bytes Description: the value of ColumnValue serialized by protobuf. f ilt er_if _missing: Type: bool Description: determines whether a filtering condition is applicable if the column of a row does not exist. Assume that the condition is column_a > 0, and the value of filter_if_missing is true. If column_a does not exist for a row, the condition column_a > 0 is true. lat est _version_only: Type: bool Description: determines whether a condition is applicable only for the latest version. If the value is true, the value of the latest version is checked to determine whether it meets the condition. If the value is false, the values of all versions are checked to determine whether they meet the conditions.
 
-#### StreamDetails
+#### 1.2.28 StreamDetails
 
 StreamDetails indicates the stream information of a table. Data structure
 
@@ -1386,7 +1513,7 @@ message StreamDetails {
 
 enable_st ream: Type: required bool Description: determines whether stream is enabled for the table. st ream_id: Type: optional string Description: the ID of the table stream. expirat ion_t ime: Type: optional int32 Description: the expiration time of the table stream. last _enable_t ime: Type: optional int64 Description: the time to enable the table stream.
 
-#### StreamRecord
+#### 1.2.29 StreamRecord
 
 StreamRecord indicates a row of data in the response of the GetStreamRecord operation. Data structure
 
@@ -1398,7 +1525,7 @@ StreamRecord indicates a row of data in the response of the GetStreamRecord oper
 
 act ion_t ype: Type: required ActionType Description: the operation type of the row. record: Type: required bytes Description: the data content of the row.
 
-#### StreamSpecification
+#### 1.2.30 StreamSpecification
 
 StreamSpecification indicates the stream specification of a table. Data structure
 
@@ -1410,7 +1537,7 @@ message StreamSpecification {
 
 enable_st ream: Type: bool Description: determines whether stream is enabled for the table. expirat ion_t ime: Type: int32 Description: the expiration time of the table stream.
 
-#### TableInBatchGetRowRequest
+#### 1.2.31 TableInBatchGetRowRequest
 
 TableInBatchGetRowRequest indicates the request information of the table to be read in the BatchGetRow operation. Data structure
 
@@ -1433,7 +1560,7 @@ e read data is written to BlockCache.
 
 t able_name: Type: string Description: the name of the table. primary_key: Type: repeated bytes Required: yes This parameter specifies all primary key columns in the row, including the primary key names and values. The primary key columns are encoded in the PlainBuffer format. t oken: Type: repeated bytes Required: no This parameter specifies the starting position of a wide row in the next read operation. This function is currently unavailable. columns_t o_get : Type: repeated string Description: the names of all columns to be returned from this table. t ime_range: Type: TimeRange Required: At least one of the time_range and max_versions parameters must be specified. This parameter specifies the range of timestamps to read versions of data. Unit: millisecond. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. To query data of a time range, specify start_time and end_time. To query data of a specific timestamp, specify specific_time. Example: If the value of time_range is (100, 200), the timestamp of the returned column data must be within the range of [100, 200). max_versions: Type: int32 Required: At least one of the max_versions and time_range parameters must be specified. This parameter specifies the maximum number of versions of data to be returned. Example: If the value of max_versions is 2, data of a maximum of two versions is returned for each column. cache_blocks: Type: bool Required: no This parameter specifies whether the read data is written to BlockCache. The default value is true. This parameter cannot be set to false. f ilt er: Type: bytes Required: no This parameter specifies the expression of the filtering condition. It indicates the binary data after the filter is serialized in the Protobuf format. st art _column: Type: string Required: no This parameter specifies the first column to be read. It is useful for reading wide rows. The response contains the specified starting column. The column names are sorted lexicographically. Example: If a table contains columns A, B, and C, and the value of start_column is B, the data is read starting from column B. Columns B and C are returned. end_column: Type: string Required: no This parameter specifies the last column to be read. It is useful for reading wide rows. The response does not contain the specified ending column. The column names are sorted lexicographically. Example: If a table contains columns A, B, and C, and the value of end_column is B, the reading stops at column B. Only column A is returned.
 
-#### TableInBatchGetRowResponse
+#### 1.2.32 TableInBatchGetRowResponse
 
 TableInBatchGetRowResponse indicates data in a table in the response of the BatchGetRow operation. Data structure
 
@@ -1445,7 +1572,7 @@ message TableInBatchGetRowResponse {
 
 t able_name: Type: string Description: the name of the table. rows: Type: repeated RowInBatchGetRowResponse Description: data of all rows read from the table.
 
-#### TableInBatchWriteRowRequest
+#### 1.2.33 TableInBatchWriteRowRequest
 
 TableInBatchWriteRowRequest indicates the request information of the table to be written in the BatchWriteRow operation. Data structure
 
@@ -1457,7 +1584,7 @@ message TableInBatchWriteRowRequest {
 
 t able_name: Type: string Description: the name of the table. rows: Type: repeated RowInBatchWriteRowRequest Description: the information of the row to be inserted, updated, or deleted in the table.
 
-#### TableInBatchWriteRowResponse
+#### 1.2.34 TableInBatchWriteRowResponse
 
 TableInBatchWriteRowResponse indicates the write results for a table in the BatchWriteRow operation. Data structure
 
@@ -1471,7 +1598,7 @@ message TableInBatchWriteRowResponse {
 
 t able_name: Type: string Description: the name of the table. put _rows: Type: RowInBatchWriteRowResponse Description: the result of the PutRow operation for the table. updat e_rows: Type: RowInBatchWriteRowResponse Description: the result of the UpdateRow operation for the table. delet e_rows: Type: RowInBatchWriteRowResponse Description: the result of the DeleteRow operation for the table.
 
-#### TableMeta
+#### 1.2.35 TableMeta
 
 TableMeta indicates the structure information of a table. Data structure
 
@@ -1483,7 +1610,7 @@ message TableMeta {
 
 t able_name: Type: string. Description: the name of the table. primary_key: Type: PrimaryKeySchema Description: all primary key columns of the table.
 
-#### TableOptions
+#### 1.2.36 TableOptions
 
 TableOptions indicates the table parameters, including TimeToLive and MaxVersions. Data structure
 
@@ -1497,7 +1624,7 @@ cally modified.
 
 t ime_t o_live: Type: int32 Description: the retention time of data stored in this table, in seconds. max_versions: Type: int32 Description: the maximum number of versions stored in this table. deviat ion_cell_version_in_sec: Type: int64 Description: the maximum version deviation. This parameter is used to forbid writing data that deviates from the expected output. For example, if the value of deviation_cell_version_in_sec is 1,000 and the current timestamp is 10,000, the allowed timestamp range to be written is [10,000 - 1,000, 10,000 + 1,000].
 
-#### TimeRange
+#### 1.2.37 TimeRange
 
 TimeRange specifies the timestamp range or timestamp value to query. Data structure
 
@@ -1510,15 +1637,15 @@ message TimeRange {
 
 st art _t ime: Type: int64 Description: the starting timestamp, in milliseconds. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. end_t ime: Type: int64 Description: the ending timestamp, in milliseconds. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX. specif ic_t ime: Type: int64 Description: the specific timestamp, in milliseconds. You can set either specific_time to query a specific timestamp, or a combination of start_time and end_time to query a range of timestamps. The minimum value of the timestamp is 0. The maximum value of the timestamp is INT64.MAX.
 
-## SDK reference
+## 2 SDK reference
 
-### Java SDK
+### 2.1 Java SDK
 
-#### Overview
+#### 2.1.1 Overview
 
 This topic describes how to use Tablestore SDK for Java. This topic applies to Tablestore SDK for Java V5.0.0 or later. Prerequisites An authorized account is created, and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret is obtained. For more information about how to obtain and view your AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. Compatibility Latest version: 5.13.5 Tablestore SDK for Java V4.x.x: compatible. Tablestore SDK for Java V2.x.x: incompatible.
 
-#### Installation
+#### 2.1.2 Installation
 
 This topic describes the prerequisites, version compatibility, and versions of Tablestore SDK for Java. This topic applies to Tablestore SDK for Java V5.0.0 or later. Prerequisites JDK 6.0 or later is available. Installation methods You can install Tablestore SDK for Java by using one of the following two methods: Add dependencies to a Maven project To use Tablestore SDK for Java in Maven, you need to only add the corresponding dependencies to the pom.xml file. In this example, Tablestore SDK for Java V5.13.5 is used. Add the following content to <dependencies>:
 
@@ -1532,7 +1659,7 @@ This topic describes the prerequisites, version compatibility, and versions of T
 
 Import the JAR package into Eclipse In this example, Tablestore SDK for Java V5.13.5 is used. To import the JAR package into Eclipse, perform the following steps: i. Download the Tablestore SDK for Java package. ii. Decompress the Tablestore SDK for Java package. iii. Copy the tablestore-<versionId>.jar file and all files in the lib folder to your project. <versionId> specifies the version of Tablestore SDK for Java. For example, the file name for V5.13.5 is tablestore-5.13.5.jar. iv. Right-click your project name in Eclipse and choose Propert ies > Java Build Pat h > Add JARs. v. Select all JAR files that you copied in Step 3. Sample programs Tablestore SDK for Java provides a variety of sample programs for your reference or use. You can decompress the downloaded SDK package and view the sample programs in the examples folder.
 
-#### Initialization
+#### 2.1.3 Initialization
 
 OTSClient is a client for Tablestore. OTSClient provides various methods that you can use to manage tables and perform read and write operations on a single row or multiple rows. Before you can use Tablestore SDK for Java to send a request, you must initialize an OTSClient instance and modify the default configurations of ClientConfiguration. Obtain an endpoint An endpoint is a domain name that is used to access a Tablestore instance in a region. The following table describes the examples of endpoints in the supported formats.
 
@@ -1558,18 +1685,16 @@ Use the custom configurations to create a SyncClient
 
 HTTPS Upgrade to Java 7 for connection based on HTTPS. Multithreading Multithreading is supported. We recommend that you use the same OTSClient object to run multithreading tasks.
 
-#### Use Tablestore SDK for Java
+#### 2.1.4 Use Tablestore SDK for Java
 
-##### Table-level operations
+##### 2.1.4.1 Table-level operations
 
-Tablestore SDK for Java provides the following table-level operations: CreateTable, ListTable, DeleteTable, UpdateTable, and DescribeTable. CreateTable When you create a table in Tablestore, you must specify TableMeta and TableOptions. You can also set ReservedThroughput. Not e After the table is created, Tablestore loads partitions of the table to a specified node. And you can read data from or write data to the table within a few seconds. An exception may occur if you immediately attempt to read from or write to the table after you create the table. TableMeta TableMeta includes the name and primary key schema of the table.
+Tablestore SDK for Java provides the following table-level operations: CreateTable, ListTable, DeleteTable, UpdateTable, and DescribeTable. CreateTable When you create a table in Tablestore, you must specify TableMeta and TableOptions. You can also set ReservedThroughput. Not e After the table is created, Tablestore loads partitions of the table to a specified node. And you can read data from or write data to the table within a few seconds. An exception may occur if you immediately attempt to read from or write to the table after you create the table. TableMeta includes the name and primary key schema of the table.
 
 | Parameter | Description |
 |---|---|
 | TableName | The name of the table. |
 | List | The definition of the primary key. The primary key of a table can contain one to four primary key columns. Primary key columns are sorted in the order in which they are added. For example, PRIMARY KEY (A, B, C) and PRIMARY KEY (A, C, B) have different primary key schemas. Tablestore sorts rows based on the values of all primary key columns. The first primary key column serves as the partition key. Data with the same partition key value is stored in the same partition. Therefore, we recommend that you assign no more than 10 GB of data with the same partition key value. Otherwise, individual partitions are too large and cannot be split. We recommend that you distribute requests in an even manner to read and write data to different partition keys for load balancing. Attribute columns are optional. Different rows in Tablestore can have different data columns. The names of attribute columns can be specified when data is written. |
-
-TableOptions
 
 | Parameter | Description |
 |---|---|
@@ -1653,7 +1778,7 @@ private static void deleteTable(SyncClient client) {
     client.deleteTable(request);
 ```
 
-##### Single-row operations
+##### 2.1.4.2 Single-row operations
 
 Tablestore SDK for Java provides the following single-row operations: PutRow, GetRow, UpdateRow, and DeleteRow. PutRow You can call this operation to insert a row of data. If this row already exists, it is overwritten. When you perform PutRow, you can use conditional update to set conditions for the existence of the row to write or values in certain columns of the existing row. For more information, see Conditional update. Example 1 The following code provides an example on how to write a row that contains 10 attribute columns and write one version of data for each column. The version number (timestamp) is specified by the server.
 
@@ -1923,7 +2048,7 @@ fromLong(100)));
             client.deleteRow(new DeleteRowRequest(rowDeleteChange));
 ```
 
-##### Multi-row operations
+##### 2.1.4.3 Multi-row operations
 
 Tablestore SDK for Java provides multi-row operations such as BatchGetRow, BatchWriteRow, GetRange, and createRangeIterator. BatchGetRow You can call this operation to read data from multiple rows by sending a single request. The parameters are the same as those of the GetRow operation. Note that BatchGetRow uses the same parameter configurations for all rows. For example, if ColumnsToGet is set to colA, only the value of colA is read for all the rows. Similar to the use of the BatchWriteRow operation, you must check the response when you use the BatchGetRow operation. If the operation fails for some rows, an exception may not occur, but information about the failed rows is stored in BatchGetRowResponse. You can use the BatchGetRowResponse#getFailedRows method to query information about the failed rows. Use the BatchGetRowResponse#isAllSucceed method to determine whether all rows is obtained. Examples The following code provides an example on how to read 10 rows of data, and configure the version conditions, columns to read, and filters:
 
@@ -2142,7 +2267,7 @@ e:");
                 System.out.println(row);
 ```
 
-##### Auto-increment function of the primary key
+##### 2.1.4.4 Auto-increment function of the primary key column
 
 column This topic describes how to create an auto-increment primary key column. An auto-increment primary key column cannot be the partition key. If you write data to a table that contains an auto-increment primary key column, you do not need to specify a value for the auto-increment primary key column because Tablestore generates a value for the auto-increment primary key column. The generated value for the auto-increment primary key column is unique, and all values in auto-increment primary key columns increase sequentially in a partition. This feature applies to system design scenarios that require auto-increment primary key columns, such as item IDs on e-commerce websites, user IDs of large websites, post IDs in forums, and message IDs in chat tools. Not e Tablestore SDK for Java V4.2.0 and later support auto-increment function of the primary key column. Features Auto-increment function of the primary key column have the following features: The values in auto-increment primary key columns are unique and increase sequentially but not always continuously in a partition. The data type of the value in an auto-increment primary key column is 64-bit signed long integer. You can create an auto-increment primary key column for a table. Tables that contain and do not contain auto-increment primary key columns can be in the same instance. Not e Auto-increment function of the primary key column do not affect the rule of conditional update. Limits Auto-increment function of the primary key column has the following limits: You can create at most one auto-increment primary key column for a table. An auto-increment primary key column cannot be the partition key. You can create an auto-increment primary key column only when you create a table. You cannot create an auto-increment primary key column for an existing table. An auto-increment primary key column can only be an integer column. The data type of the generated value for an auto-increment primary key column is 64-bit signed long integer. An auto-increment column cannot be an attribute column. API operations The following table lists the operations for auto-increment function of the primary key column.
 
@@ -2211,7 +2336,7 @@ ult. If ReturnType is not set, no result is returned by default.
         System.out.println("Write CapacityUnit:" + cu.getWriteCapacityUnit());
 ```
 
-##### Conditional update
+##### 2.1.4.5 Conditional update
 
 If you use conditional update, data in the table can be updated only when the conditions are met. If the conditions are not met, the update fails. Conditional update supports arithmetic operations including =, !, =, >, >=, <, and <= and logic operations including NOT, AND, and OR. You can use a combination of up to 10 conditions in an update operation. You can use conditional update in the PutRow, UpdateRow, DeleteRow, and BatchWriteRow operations. Conditional updates can be used to implement optimistic locking. When you update a row, the value of the specified column is obtained. For example, the value in Column A is 1. Obtain the value in Column A and set a condition that t he value in Column A is 1. Update t he value in Column A t o 2. If Column A of the row is updated by other clients, the update fails. Column-based judgment conditions include column-based conditions and the row existence condition.
 
@@ -2311,7 +2436,7 @@ nValueCondition.CompareOperator.EQUAL, ColumnValue.fromLong(col0Value));
          System.out.println(ex.toString());
 ```
 
-##### Filters
+##### 2.1.4.6 Filters
 
 Tablestore filters are used to filter the query results on the server side. The server returns only the rows or columns that match the filter conditions. Filters can be used for GetRow, BatchGetRow, and GetRange operations. Tablestore supports only SingleColumnValueFilter and CompositeColumnValueFilter, which are used to determine whether to filter out a row based on reference column values. SingleColumnValueFilter can be used to determine whether to filter out of a row based on a single reference column value. CompositeColumnValueFilter can be used to determine whether to filter out of a row based on the combination of multiple reference column values. Note that filters are used to filter the read data. Therefore, the reference columns used by SingleColumnValueFilter or CompositeColumnValueFilter must be included in the read data. If the data to read does not contain the reference columns, filters cannot obtain the values in the reference columns. Examples The following code provides an example on how to construct a SingleColumnValueFilter:
 
@@ -2349,7 +2474,7 @@ olumnValueFilter.LogicOperator.OR);
         composite2.addFilter(single3);
 ```
 
-##### Global secondary indexes
+##### 2.1.4.7 Global secondary indexes
 
 This topic describes how to create, use, and delete a global secondary index. Create a global secondary index You can create a global secondary index when you create a table. You can also create a global secondary index for an existing table. Create a global secondary index when you create a table
 
@@ -2524,9 +2649,9 @@ the name of the index table that you want to delete and the name of the correspo
     client.deleteIndex(request); // Delete the index table.
 ```
 
-##### Tunnel Service
+##### 2.1.4.8 Tunnel Service
 
-###### Quick start
+###### 2.1.4.8.1 Quick start
 
 This topic describes how to use Tablestore SDK for Java to get start with Tunnel Service. The sample code is provided at the end of this topic. Get started with Tunnel Service Tablestore SDK for Java allows you to use Tunnel Service.
 1. Initialize a tunnel client.
@@ -2627,7 +2752,7 @@ ne.
             tunnelClient.shutdown();
 ```
 
-###### Configure tunnel clients
+###### 2.1.4.8.2 Configure tunnel clients
 
 Tunnel Service is built on the Tablestore API to provide tunnels that are used to consume data in full, incremental, and differential modes. After you create a tunnel for a data table, you can use the tunnel to consume historical and incremental data in the data table. A tunnel client is the automatic data consumption framework of Tunnel Service. The tunnel client detects heartbeats to perform the following operations: Detect active channels. Update the status of channels and channel connections. Initialize, run, and terminate data processing tasks. TunnelWorkerConfig allows you to configure custom parameters for a tunnel client based on your business requirements. The following table describes the parameters.
 
@@ -2654,7 +2779,7 @@ Tunnel Service is built on the Tablestore API to provide tunnels that are used t
 | Memory control | maxChannelParallel | The concurrency level of channels to read and process data for memory control. The default value is -1, which indicates that the concurrency level is unlimited. Not e This configuration applies only to Tablestore SDK for Java V5.4.0 or later. |
 | Maximum backoff time | maxRetryIntervalInMillis | The reference value that is used to calculate the maximum backoff time for the tunnel. Default value: 2000 ms. Minimum value: 200 ms. The maximum backoff time is a random number based on the reference value. Valid values: 0.75 × maxRetryIntervalInMillis to 1.25 × maxRetryIntervalInMillis. Not e This configuration applies only to Tablestore SDK for Java V5.4.0 or later. If the amount of data that must be processed is smaller than 900 KB or 500 pieces for each export, the tunnel client uses exponential backoff for the tunnel until the maximum backoff time is reached. |
 
-###### Create tunnels
+###### 2.1.4.8.3 Create tunnels
 
 You can call the CreateTunnel operation to create one or more tunnels for a data table. When you create a tunnel, you must specify the data table name, tunnel name, and tunnel type. Request parameters
 
@@ -2683,7 +2808,7 @@ Example
     System.out.println("TunnelId: " + resp.getTunnelId());
 ```
 
-###### Query the tunnel information about a data
+###### 2.1.4.8.4 Query the tunnel information about a data table
 
 table You can call this operation to query the tunnel information about a specified data table. Request parameters
 
@@ -2725,7 +2850,7 @@ ical support through DingTalk.
         System.out.println("\tExpired: " + info.isExpired());
 ```
 
-###### Query the information about a tunnel
+###### 2.1.4.8.5 Query the information about a tunnel
 
 You can call the DescribeTunnel operation to query information about the channels in a specified tunnel. A channel corresponds to a shard for the Stream operation of Tablestore. Request parameters
 
@@ -2772,7 +2897,7 @@ of the client and a random string.
         System.out.println("\tChannelCount: " + ci.getChannelCount());
 ```
 
-###### Delete tunnels
+###### 2.1.4.8.6 Delete tunnels
 
 You can call the DeleteTunnel operation to delete a tunnel from a data table by specifying the names of the data table and tunnel. Request parameters
 
@@ -2802,17 +2927,17 @@ private static void deleteTunnel(TunnelClient client, String tableName, String t
     System.out.println("RequestId: " + resp.getRequestId());
 ```
 
-#### Error handling
+#### 2.1.5 Error handling
 
 This topic describes the error handling methods in Tablestore SDK for Java. Methods Tablestore SDK for Python handles errors as exceptions. If an operation fails, an exception is returned. Not e Batch operations such as BatchGetRow and BatchWriteRow can be called only after the system verifies that no exception is returned and that the status of each row is successful. Exceptions Tablestore SDK for Java has two types of exceptions: OTSClientError and OTSServiceError. Both are inherited from Exception. OTSClientError: an internal SDK exception, such as an invalid parameter value. OTSException: a server error parsed from a server error message. OTSServiceError contains the following parameters: getHttpStatus(): an HTTP status code, such as 200 or 404. getErrorCode(): an error type string returned by Tablestore. getRequestId(): the UUID that identifies a request. If you cannot solve the problem, record this request ID and contact Tablestore technical support for help.
 
-### Python SDK
+### 2.2 Python SDK
 
-#### Overview
+#### 2.2.1 Overview
 
 This topic describes how to install and use Tablestore SDK for Python. The content in this topic applies to Tablestore SDK for Python V4.x.x. Prerequisites An authorized account is created, and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret is obtained. For more information about how to obtain and view your AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. Download Tablestore SDK for Python You can download Tablestore SDK for Python on GitHub. Compatibility Tablestore SDK for Python V5.x.x: compatible. Tablestore SDK for Python V4.x.x: compatible. Tablestore SDK for Python V2.x.x: incompatible. Tablestore SDK for Python V2.x.x supports primary key columns in random order, which are no longer supported in Tablestore SDK for Python V4.0.0 or later. Compared with Tablestore SDK for Python V2.x.x, the following changes are made to Tablestore SDK for Python V4.x.x or later: The package name is changed from ots2 to tablestore. The TableOptions parameter is added for the Client.create_table operation. The type of the primary_key parameter is changed from dict to list for the put_row, get_row, and update_row operations to ensure the sequence of primary key columns. The type of the attribute_columns parameter is changed from dict to list for the put_row and update_row operations. The timestamp parameter is added to the attribute_columns parameter for the put_row and update_row operations. The max_version and time_range parameters are added for the get_row and get_range operations. You must specify at least one of max_version and time_range. The return_type parameter is added for the put_row, update_row, and delete_row operations. Only RT_PK is supported to return the primary key value of the current row. The return_row parameter is added for the put_row, update_row, and delete_row operations. If you set return_type to RT_PK in the request, the primary key value of the row is returned in return_row. Version Latest version: 5.2.1.
 
-#### Installation
+#### 2.2.2 Installation
 
 This topic describes how to install Tablestore SDK for Python. Prerequisites Python 2 or Python 3 is available. Installation Method 1: Use pip Run the following command to install Tablestore SDK for Python:
 
@@ -2844,7 +2969,7 @@ Uninstall Tablestore SDK for Python Run the following command to uninstall Table
 sudo pip uninstall tablestore
 ```
 
-#### Initialization
+#### 2.2.3 Initialization
 
 OTSClient is a client for Tablestore. OTSClient provides various methods that you can use to perform operations on tables, a single row, and multiple rows. Obtain an endpoint An endpoint is the domain name that is used to access a Tablestore instance in a region. To query an endpoint, perform the following operations:
 1. Log on to the Tablestore console.
@@ -2869,9 +2994,9 @@ ots_client = OTSClient('endpoint', 'STS.K8h*******GB77', 'CkuDj******Wn6', 'inst
 
 HTTPS HTTPS is supported in Tablestore SDK for Python V2.0.8 or later. OpenSSL 0.9.8j or later is required. We recommend that you use OpenSSL 1.0.2d. The Tablestore SDK for Python V2.0.8 release package contains a certifi package that can be installed and used. To update the root certificate, download the latest root certificate from Root Certificate.
 
-#### Use the SDK
+#### 2.2.4 Use the SDK
 
-##### Table-level operations
+##### 2.2.4.1 Table-level operations
 
 Tablestore SDK for Python provides the following table-level operations: CreateTable, ListTable, DeleteTable, UpdateTable, and DescribeTable. CreateTable You can call this operation to create a table based on the specified table structure. Not e After the table is created, it takes several seconds to load the table. During this period, read and write operations on the table may fail. You can use applications to perform operations on the table data only after the table is loaded. You must specify the primary key when you create a table. A primary key contains one to four primary key columns. Each primary key column has a name and a data type. API operation
 
@@ -3052,7 +3177,7 @@ except Exception:
 
 For the detailed sample code, visit DeleteTable@GitHub.
 
-##### Single-row operations
+##### 2.2.4.2 Single-row operations
 
 Tablestore SDK for Python provides the following single-row operations: PutRow, GetRow, UpdateRow, and DeleteRow. PutRow You can call this operation to insert a row of data. If this row already exists, it is overwritten. API operation
 
@@ -3282,7 +3407,7 @@ t_id:%s" % (e.get_http_status(), e.get_error_code(), e.get_error_message(), e.ge
 
 For the detailed sample code, visit DeleteRow@GitHub.
 
-##### Multi-row operations
+##### 2.2.4.3 Multi-row operations
 
 Tablestore SDK for Python provides multi-row operations, such as BatchGetRow, BatchWriteRow, and GetRange. BatchGetRow You can call this operation to read several rows of data from one or more tables. The BatchGetRow operation is a set of multiple GetRow operations. The execution, returning of results, and capacity unit (CU) consumption of each individual operation are carried out independently. Compared with the execution of a large number of GetRow operations, the use of BatchGetRow can reduce the response time for requests and increase the data read rate. API operation
 
@@ -3579,7 +3704,7 @@ d:%s" % (e.get_http_status(), e.get_error_code(), e.get_error_message(), e.get_r
 
 For the detailed sample code, visit GetRange@GitHub.
 
-##### Global secondary indexes
+##### 2.2.4.4 Global secondary indexes
 
 This topic describes how to create and delete a global secondary index. Create a global secondary index You can create a global secondary index when you create a table. You can also create a global secondary index for an existing table. The fields of a global secondary index must be specified in defined_columns when you create a table. Create a global secondary index when you create a table
 
@@ -3606,17 +3731,17 @@ Delete a global secondary index Delete an index table.
 client.delete_secondary_index(table_name, 'index1')
 ```
 
-#### Error handling
+#### 2.2.5 Error handling
 
 This topic describes the error handling methods and retry policies in Tablestore SDK for Python. Methods Tablestore SDK for Python handles errors as exceptions. If the operation succeeds, the called operation does not return an exception. If the operation fails, an exception is returned. Not e Batch operations such as BatchGetRow and BatchWriteRow can be called only after the system verifies that no exception is returned and that the status of each row is successful. Exceptions Tablestore SDK for Python has two types of exceptions: OTSClientError and OTSServiceError. Both are inherited from Exception. OTSClientError: an internal SDK exception, such as an invalid parameter value or a failure to parse the results returned by the server. OTSServiceError: a server error that comes from the resolution of a server error message. OTSServiceError contains the following parameters: get_http_status: an HTTP status code, such as 200 and 404. get_error_code: an error type string returned by Tablestore. get_error_message: an error message string returned by Tablestore. get_request_id: the UUID that identifies a request. If you cannot solve the problem, record this request ID and contact Tablestore technical support for help. Retry Tablestore SDK for Python automatically retries an operation when an error occurs. In the default retry policy, the maximum retry attempts is 20, and the maximum retry interval is 3,000 ms. For more information about the retry policies for throttling errors and internal server errors related to write operations, see tablestore/retry.py. You can also customize a retry policy by inheriting the RetryPolicy class, and configure the custom retry policy when you create an OTSClient object. Tablestore SDK for Python provides the following retry policies: DefaultRetryPolicy: the default retry policy. Only read operations are retried. The maximum retry attempts is 20, and the maximum retry interval is 3,000 ms. NoRetryPolicy: no operation is retried. NoDelayRetryPolicy: a retry policy without any delays. Exercise caution when you configure this policy. WriteRetryPolicy: the write operations are retried based on the default retry policy.
 
-### Go SDK
+### 2.3 Go SDK
 
-#### Overview
+#### 2.3.1 Overview
 
 This topic describes how to install and use Tablestore SDK for Go. Prerequisites An authorized account is created, and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret is obtained. For more information about how to obtain and view your AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. Download and install Tablestore SDK for Go For the download path of Tablestore SDK for Go, including the package, source code and examples, visit SDK package. For more information about how to install Tablestore SDK for Go, see Installation. Version Latest version: 5.0.2
 
-#### Installation
+#### 2.3.2 Installation
 
 This topic describes how to install Tablestore SDK for Go. Preparations Go 1.4 or later is available. Installation methods Run the following command to install Tablestore SDK for Go:
 
@@ -3624,7 +3749,7 @@ This topic describes how to install Tablestore SDK for Go. Preparations Go 1.4 o
     go get github.com/aliyun/aliyun-tablestore-go-sdk
 ```
 
-#### Initialization
+#### 2.3.3 Initialization
 
 TableStoreClient is a client for Tablestore. TableStoreClient provides various methods that you can use to perform operations on tables, a single row, and multiple rows. Obtain an endpoint An endpoint is a domain name that is used to access a Tablestore instance in a region. To query an endpoint, perform the following steps:
 1. Log on to the Tablestore console.
@@ -3641,9 +3766,9 @@ Examples
 client = NewClient("your_instance_endpoint", "your_instance_name", "your_user_id", "your _user_key")
 ```
 
-#### Use the SDK
+#### 2.3.4 Use the SDK
 
-##### Table-level operations
+##### 2.3.4.1 Table-level operations
 
 Tablestore SDK for Go provides the following table-level operations: CreateTable, ListTable, DeleteTable, UpdateTable, and DescribeTable. CreateTable You can call this operation to create a table based on the specified table structure. Not e After a table is created, it takes several seconds to load the table. During this period, the read and write operations on the table may fail. You can use applications to perform operations on the table data only after the table is loaded. You must specify the primary key when you create a table. A primary key can contain one to four primary key columns. Each primary key column has a name and a data type. API operation
 
@@ -3751,7 +3876,7 @@ deleteReq := new(tablestore.DeleteTableRequest) deleteReq.TableName = tableName 
 
 For the detailed sample code, visit DeleteTable@GitHub.
 
-##### Single-row operations
+##### 2.3.4.2 Single-row operations
 
 Tablestore SDK for Go provides the following single-row operations: PutRow, GetRow, UpdateRow, and DeleteRow. PutRow You can call this operation to insert data into a specified row. API operation
 
@@ -3896,7 +4021,7 @@ XIST)
 
 For the detailed sample code, visit DeleteRow@GitHub.
 
-##### Multi-row operations
+##### 2.3.4.3 Multi-row operations
 
 Tablestore SDK for Go provides multi-row operations such as BatchGetRow, BatchWriteRow, GetRange, and GetByIterator. BatchGetRow You can call this operation to simultaneously read multiple rows of data from one or more tables. The BatchGetRow operation is a set of multiple GetRow operations. The execution, returning of results, and capacity unit (CU) consumption of each individual operation are carried out independently. Compared with the execution of a large number of GetRow operations, the use of BatchGetRow can reduce the response time for requests and increase the data read rate. API operation
 
@@ -4026,11 +4151,11 @@ tPrimaryKey
 
 For the detailed sample code, visit GetRange@GitHub.
 
-##### Tunnel Service
+##### 2.3.4.4 Tunnel Service
 
 This topic describes how to use Tunnel Service.
 
-###### Installation
+###### 2.3.4.4.1 Installation
 
 This topic describes how to install Tunnel Service. Download the source code package
 
@@ -4044,7 +4169,7 @@ Install dependencies You can go to the tunnel directory and use the dep tool to 
 go get -u go.uber.org/zap go get github.com/cenkalti/backoff go get github.com/golang/protobuf/proto go get github.com/satori/go.uuid go get github.com/stretchr/testify/assert go get github.com/smartystreets/goconvey/convey go get github.com/golang/mock/gomock go get gopkg.in/natefinch/lumberjack.v2
 ```
 
-###### Quick start
+###### 2.3.4.4.2 Quick start
 
 This topic describes how to use Tablestore SDK for Go to get started with Tunnel Service. Tablestore SDK for Go allows you to perform operations such as creating tunnels, querying tunnel information, and deleting tunnels in Tunnel Service. Get started with Tunnel Service Tablestore SDK for Go allows you to use Tunnel Service.
 1. Initialize a tunnel client.
@@ -4125,7 +4250,7 @@ _, err := tunnelClient.DeleteTunnel(req) if err != nil {
    log.Fatal("delete test tunnel failed", err)
 ```
 
-###### Configuration items
+###### 2.3.4.4.3 Configuration items
 
 This topic describes the configuration items of Tunnel Service. Tunnel client When you initialize a tunnel client, you can customize client configurations by using the NewTunnelClientWithConfig operation. If the config parameter is not specified or is set to nil, DefaultTunnelConfig is used.
 
@@ -4228,7 +4353,7 @@ Log management The following examples show the default configurations of logs an
 
 `})`
 
-###### Error handling
+###### 2.3.4.4.4 Error handling
 
 This topic describes the error handling methods in Tablestore SDK for Go. After Tunnel Service receives an abnormal request, Tunnel Service returns an HTTP status code and an error message in the Protobuf format. Error message format Error messages are returned in the following Protobuf format:
 
@@ -4254,13 +4379,13 @@ Error codes When you use Tablestore SDK for Go, you need to handle only error co
 | 410 | OTSResourceGone | The error message returned because the request sent to obtain the heartbeat information about the tunnel client times out. | Use the tunnel ID to reconnect to Tunnel Service. |
 | 503 | OTSTunnelServerUnavail able | The error message returned because an internal error occurs. | Use exponential backoff to retry the request. |
 
-### NodeJS SDK
+### 2.4 NodeJS SDK
 
-#### Overview
+#### 2.4.1 Overview
 
 This topic describes how to use Tablestore SDK for Node.js. The content in this topic applies to Tablestore SDK for Node.js V4.x.x or later. Prerequisites An authorized account is created, and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret is obtained. For more information about how to obtain and view your AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. Download Tablestore SDK for Node.js Download Tablestore SDK for Node.js from GitHub. For more information, visit GitHub. Version Latest version: 5.1.0
 
-#### Installation
+#### 2.4.2 Installation
 
 This topic describes how to install Tablestore SDK for Node.js. Preparations Node.js 4.0 or later is installed. Not e We recommend that you do not use Node.js later than 12.0 and earlier than 12.14 to avoid compatibility problems. Install Tablestore SDK for Node.js Run the following command to install Tablestore SDK for Node.js:
 
@@ -4270,7 +4395,7 @@ npm install tablestore
 
 Not e If you encounter any network problems when you use npm, you can use the npm image provided by Taobao. Sample programs Tablestore SDK for Node.js provides a variety of sample programs for your reference and use. You can obtain the sample programs by using one of the following methods: Download and decompress the Tablestore SDK for Node.js package. Find the sample programs in the examples folder. Access Tablestore SDK for Node.js on GitHub.
 
-#### Initialization
+#### 2.4.3 Initialization
 
 TableStore.Client is a client for Tablestore. TableStore.Client provides various methods that you can use to perform operations on tables, a single row, and multiple rows. Obtain an endpoint An endpoint is a domain name that is used to access a Tablestore instance in a region. To query an endpoint, perform the following steps:
 1. Log on to the Tablestore console.
@@ -4281,7 +4406,7 @@ On the Instance Details tab, you can view the endpoints of the instance in the I
 var client = new TableStore.Client({ accessKeyId: '<your access key id>', accessKeySecret: '<your access key secret>', endpoint: '<your endpoint>', instancename: '<your instance name>', maxRetries:20,// The default number of retry attempts is 20. You can ignore this parameter. });
 ```
 
-#### Data types
+#### 2.4.4 Data types
 
 Tablestore supports five data types. This topic describes how each of these data types corresponds to those supported in Tablestore SDK for Node.js.
 
@@ -4302,9 +4427,9 @@ var str = numberB.toNumber();
     str = numberB.toString();
 ```
 
-#### Use the SDK
+#### 2.4.5 Use the SDK
 
-##### Table-level operations
+##### 2.4.5.1 Table-level operations
 
 Tablestore SDK for Node.js provides the following table-level operations: CreateTable, ListTable, DeleteTable, UpdateTable, and DescribeTable. CreateTable You can call this operation to create a table based on the specified table structure. Not e After the table is created, it can take several seconds to load the table. During this period, the read and write operations on the table may fail. You can use applications to perform operations on the table data only after the table is loaded. You must specify the primary key when you create a table. A primary key can contain one to four primary key columns. Each primary key column has a name and a data type. API operation
 
@@ -4494,7 +4619,7 @@ client.deleteTable(params, function (err, data) {
 
 For the detailed sample code, visit DeleteTable@GitHub.
 
-##### Single-row operations
+##### 2.4.5.2 Single-row operations
 
 Tablestore SDK for Node.js provides the following single-row operations: PutRow, GetRow, UpdateRow, and DeleteRow. PutRow You can call this operation to insert data into a specified row. Operation
 
@@ -4651,7 +4776,7 @@ client.deleteRow(params, function (err, data) {
 
 For the detailed sample code, visit DeleteRow@GitHub.
 
-##### Multi-row operations
+##### 2.4.5.3 Multi-row operations
 
 Tablestore SDK for Node.js provides multi-row operations, such as BatchGetRow, BatchWriteRow, and GetRange. BatchGetRow You can call this operation to simultaneously read multiple rows of data from one or more tables. The BatchGetRow operation is a set of multiple GetRow operations. The execution, returning of results, and capacity unit (CU) consumption of each individual operation are carried out independently. Compared with the execution of a large number of GetRow operations, the use of BatchGetRow can reduce the response time for requests and increase the data read rate. API operation
 
@@ -4823,7 +4948,7 @@ ued.
 
 For the detailed sample code, visit GetRange@GitHub.
 
-#### Error handling
+#### 2.4.6 Error handling
 
 This topic describes the error handling methods and retry policies in Tablestore SDK for Node.js. Methods Tablestore SDK for Node.js handles errors as exceptions. If the operation succeeds, the called operation does not return an exception. If the operation fails, an exception is returned. Not e Batch operations such as BatchGetRow and BatchWriteRow can be called only after the system verifies that no exception is returned and that the status of each row is successful. Exceptions All errors are handled by Tablestore SDK for Node.js in a unified manner, and are returned as the value of the err parameter by using the callback method. Before you obtain the returned data, you must check whether the err parameter has a value. If an error occurs at the server side of Tablestore, the request ID is returned. The request ID is the UUID that identifies a request. If you cannot solve the problem, record this request ID and contact Tablestore technical support for help. Retry The system automatically retries the operation when an error occurs in the SDK. The default policy sets a maximum of 20 retry attempts and a maximum retry interval of 3000 ms. For more information about how the system retries the operation on throttling errors and read-related internal server errors, see
 
@@ -4833,15 +4958,15 @@ This topic describes the error handling methods and retry policies in Tablestore
 
 ### 2.5. .NET SDK
 
-#### Overview
+#### 2.5.1 Overview
 
 This topic describes how to use Tablestore SDK for .NET. Prerequisites An authorized account is created, and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret is obtained. For more information about how to obtain and view your AccessKey pair in the Apsara Uni-manager Management Console, see Obtain an AccessKey pair. Download Tablestore SDK for .NET Download the SDK installation package from NuGet. For more information about the download path, visit https://www.nuget.org/packages/Aliyun.TableStore.SDK/4.1.4. Download the source code from GitHub. For more information about the download path, visit GitHub. Compatibility Tablestore SDK for .NET V3.x.x: compatible. Tablestore SDK for .NET V2.x.x: Some operations are incompatible. The Condition.IGNORE, Condition.EXPECT_EXIST, and Condition.EXPECT_NOT_EXIST parameters are deleted. The DLL file name is changed from Aliyun.dll to Aliyun.TableStore.dll. Version Latest version: 4.1.4.
 
-#### Installation
+#### 2.5.2 Installation
 
 This topic describes how to install Tablestore SDK for .NET. Version dependency Windows .NET 4.0 or later is required. Visual Studio 2010 or later is required. Install Tablestore SDK for .NET in Windows Install by using NuGet i. After you install NuGet, create a project or open an existing project in Visual Studio, and then choose T ools > NuGet Package Manager > Manage NuGet Packages f or Solut ion. Not e If Visual Studio does not have NuGet installed, download and install NuGet. For more information about the download path, visit NuGet. ii. Enter aliyun.tablestore in the search box and click Search. Find Aliyun.TableStore.SDK in the search results. iii. Select the latest version, and click Inst all. After the installation is complete. Tablestore SDK for .NET is added to the project for application. Install by importing a project i. Download the source code from GitHub. For more information about the download path, visit GitHub. Not e If Git is not installed, download and install Git. For more information about the download path, visit git. ii. In Visual Studio, right-click and select Solut ion from the menu that appears, choose Add > Exist ing project s. iii. In the dialog box that appears, select the aliyun-tablestore-sdk.csproj file, and click Open. iv. Right-click and select Your project . Choose Ref erences > Add Ref erence from the shortcut menu. In the dialog box that appears, click the Project s tab, and select the aliyun-tablestoresdk project. v. Click OK.
 
-#### Initialization
+#### 2.5.3 Initialization
 
 TableStoreClient is a client for Tablestore. TableStoreClient provides various methods that you can use to perform operations on tables, a single row, and multiple rows. Obtain an endpoint An endpoint is a domain name that is used to access a Tablestore instance in a region. To query an endpoint, perform the following steps:
 1. Log on to the Tablestore console.
@@ -4894,9 +5019,9 @@ Sample code Not e You can configure the ConnectionLimit parameter in OTSClientCo
 
 Multithreading Multithreading is supported. We recommend that you use the same OTSClient object to run multithreading tasks.
 
-#### Use the SDK
+#### 2.5.4 Use the SDK
 
-##### Table-level operations
+##### 2.5.4.1 Table-level operations
 
 Tablestore SDK for .NET provides the following table-level operations: CreateTable, ListTable, DeleteTable, UpdateTable, and DescribeTable. CreateTable You can call this operation to create a table based on the specified table structure. Not e After the table is created, it takes several seconds to load the table. During this period, read and write operations on the table may fail. You can use applications to perform operations on the table data only after the table is loaded. You must specify the primary key when you create a table. A primary key contains one to four primary key columns. Each primary key column has a name and a data type. API operation
 
@@ -5134,7 +5259,7 @@ Examples The following code provides an example on how to delete a table:
 
 For the detailed sample code, visit DeleteTable@GitHub.
 
-##### Single-row operations
+##### 2.5.4.2 Single-row operations
 
 The Tablestore SDK provides the following APIs for single-row operations: PutRow, GetRow, UpdateRow, and DeleteRow. PutRow You can use the PutRow API to insert data into a specified row. API
 
@@ -5490,7 +5615,7 @@ layed.
 
 Not e You can use conditional statements to delete rows. To view the detailed code, see DeleteRow@GitHub.
 
-##### Multiple-row operations
+##### 2.5.4.3 Multiple-row operations
 
 The Tablestore SDK provides the following APIs for multiple-row operations: BatchGetRow, BatchWriteRow, GetRange, and GetRangeIterator. BatchGetRow You can use the BatchGetRow API to simultaneously read several rows of data from one or more tables. The BatchGetRow operation is a set of multiple GetRow operations. The execution, returning of results, and capacity unit (CU) consumption of each individual operation are carried out independently. Compared with the execution of a large number of GetRow operations, the use of BatchGetRow can reduce the request response time and increase the data read rate. API
 
@@ -5750,11 +5875,11 @@ usiveStartPrimaryKey,
 
 Not e You can use conditional statements to filter the data read through an iterator. To view the detailed code, see GetRangeIterator@GitHub.
 
-#### Error handling
+#### 2.5.5 Error handling
 
 This topic describes the error handling methods and retry policies in Tablestore SDK for .NET. Method The Tablestore .NET SDK adopts the Exception method to handle errors. If an operation succeeds, the called API does not throw an exception. If the operation fails, an exception is thrown. Not e Batch operation APIs such as BatchGetRow and BatchWriteRow are called only when the status check of each row is successful. Error The Tablestore .NET SDK has two types of exceptions: OTSClientException and OTSServerException. Both are inherited from Exception. OTSClientException: indicates an internal SDK exception, such as an incorrect parameter value or a failure to parse the results returned by the server. OTSServerException: indicates a server error arising from the resolution of a server error message. OTSServerException has the following components: HttpStatusCode: an HTTP status code, such as 200 or 404. ErrorCode: an error type string returned by Tablestore. ErrorMessage: an error message string returned by Tablestore. RequestId: the UUID that uniquely identifies a request. If a problem persists, submit the request ID to Tablestore technical support personnel to obtain help. Retry The system retries an operation when an error occurs in the SDK. The operation is retried three times at a maximum interval of two seconds by default. For more information, see the Aliyun.OTS.Retry.DefaultRetryPolicy class. You can modify RetryPolicy in OTSClientConfig to customize a retry policy.
 
-### Obtain an AccessKey pair
+### 2.6 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Obtain the AccessKey pair of a personal account To obtain the AccessKey pair of a personal account, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console.

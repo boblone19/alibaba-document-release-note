@@ -3,16 +3,156 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Operatio
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 210
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "256579df72aca124_Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Operations and Maintenance Guide 202"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%20ECS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elastic%20Compute%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 ECS operations and maintenance
+  - 2.1 Computing O&M overview
+  - 2.2 Cluster O&M
+    - 2.2.1 View compute clusters
+    - 2.2.2 Log in to the AG of a cluster
+    - 2.2.3 Manage computing clusters
+      - 2.2.3.1 Get an overview of a compute cluster
+      - 2.2.3.2 Manage cluster configurations
+        - 2.2.3.2.1 View cluster configurations
+        - 2.2.3.2.2 Configure cluster-level CPU oversold ratios
+      - 2.2.3.3 Manage computing servers
+        - 2.2.3.3.1 View computing servers
+        - 2.2.3.3.2 Manage server status
+  - 2.3 Computing servers
+    - 2.3.1 Manage computing servers
+      - 2.3.1.1 View computing servers
+      - 2.3.1.2 View O&M details about a computing server
+      - 2.3.1.3 Diagnose a computing server
+      - 2.3.1.4 Lock physical machines
+      - 2.3.1.5 Unlock a computing server
+      - 2.3.1.6 Activate a computing server
+      - 2.3.1.7 Migrate all instances from a computing server
+      - 2.3.1.8 Deactivate a physical machine for maintenance
+      - 2.3.1.9 View audit logs
+    - 2.3.2 View computing server-level migration tasks
+    - 2.3.3 ECS physical machine O&M
+  - 2.4 DRP O&M
+    - 2.4.1 Create a dedicated resource pool
+    - 2.4.2 View the details of a dedicated resource pool
+    - 2.4.3 Manage DRPs
+      - 2.4.3.1 Add a server to a dedicated resource pool
+      - 2.4.3.2 Remove a server from a dedicated resource pool
+      - 2.4.3.3 Change the administrator account ID
+      - 2.4.3.4 Modify an on-failure physical machine replacement policy
+      - 2.4.3.5 Manage server status
+    - 2.4.4 Delete a dedicated resource pool
+  - 2.5 ECS
+      - 2.5.1.1 View ECS instances
+      - 2.5.1.2 View the details of an ECS instance
+      - 2.5.1.3 Manage instance status
+        - 2.5.1.3.1 Start instances
+        - 2.5.1.3.2 Stop instances
+        - 2.5.1.3.3 Restart instances
+      - 2.5.1.4 Migrate an instance
+      - 2.5.1.5 View migration logs in Server Controller
+      - 2.5.1.6 ISO management
+      - 2.5.1.7 Modify the internal bandwidth of instances
+    - 2.5.2 Disks
+      - 2.5.2.1 View disks
+      - 2.5.2.2 View disk details
+      - 2.5.2.3 View snapshots
+    - 2.5.3 Images
+      - 2.5.3.1 Overview
+      - 2.5.3.2 View images
+      - 2.5.3.3 Manage ISO images
+      - 2.5.3.4 Convert the format of an image
+      - 2.5.3.5 Unpublish an image
+    - 2.5.4 Snapshots
+      - 2.5.4.1 Overview
+      - 2.5.4.2 View snapshots
+      - 2.5.4.3 View audit logs
+      - 2.5.4.4 View automatic snapshot policies
+    - 2.5.5 ENIs
+      - 2.5.5.1 View the details of an ENI
+      - 2.5.5.2 View audit logs
+    - 2.5.6 Security groups
+      - 2.5.6.1 Overview
+      - 2.5.6.2 View the details of a security group
+      - 2.5.6.3 Security group configurations
+      - 2.5.6.4 View audit logs
+    - 2.5.7 O&M devices
+      - 2.5.7.1 Attach a USB device to an instance
+      - 2.5.7.2 Attach a CD-ROM device
+  - 2.6 Specifications and capacity O&M
+    - 2.6.1 Analyze compute capacity
+    - 2.6.2 Instance type management
+      - 2.6.2.1 All Specifications
+      - 2.6.2.2 Custom instance types
+        - 2.6.2.2.1 Create a custom instance type
+        - 2.6.2.2.2 View a custom instance type
+        - 2.6.2.2.3 Disable custom instance types
+        - 2.6.2.2.4 View audit logs
+    - 2.6.3 Resource reservations
+      - 2.6.3.1 Create a resource reservation for an instance
+      - 2.6.3.2 Create a resource reservation for a physical machine
+  - 2.7 Migration task management
+    - 2.7.1 Manage migration tasks
+      - 2.7.1.1 Create an ECS migration task
+      - 2.7.1.2 Create a computing server-level migration task
+      - 2.7.1.3 Create a batch ECS migration task
+      - 2.7.1.4 Create a batch machine migration task
+      - 2.7.1.5 Create a cluster-level migration task
+      - 2.7.1.6 Off-peak migration tasks
+      - 2.7.1.7 View migration tasks
+      - 2.7.1.8 Stop a migration task
+    - 2.7.2 Configure migration constraints
+    - 2.7.3 View CPU compatibility configurations
+  - 2.8 ECS intelligent O&M
+    - 2.8.1 ECS events
+      - 2.8.1.1 View ECS instance events
+      - 2.8.1.2 Physical machine events
+    - 2.8.2 ECS maintenance events
+      - 2.8.2.1 Physical machine O&M
+      - 2.8.2.2 Instance O&M
+    - 2.8.3 ECS workflows
+    - 2.8.4 ECS diagnostics
+  - 2.9 Computing O&M configurations
+    - 2.9.1 View monitoring settings
+    - 2.9.2 Configure O&M actions
+      - 2.9.2.1 Configure throttling for a proactive O&M action
+      - 2.9.2.2 Configure the approval process for a proactive O&M action
+    - 2.9.3 Modify the release time of a disk
+  - 2.10 View O&M audit logs
+  - 2.11 Tiangong O&M
+    - 2.11.1 View Tiangong services
+    - 2.11.2 View Tiangong workflows
+  - 2.12 ECS Operation Assistant
+- 3 ECS Diagnose
+  - 3.2 Instance O&M
+  - 3.3 View O&M events
+  - 3.4 Configure OpsCode throttling rules
+- 4 Hot migration of disks
+  - 4.1 Use the CDS Ops tool to hot migrate disks
+  - 4.2 Automatically migrate disks in the HaiTu console
+- 5 Inspection
+  - 5.1 Overview
+  - 5.2 Cluster basic health inspection
+    - 5.2.1 Overview
+    - 5.2.2 Monitoring inspection
+    - 5.2.3 Inspection of basic software package versions
+    - 5.2.4 Inspections of basic public resources
+  - 5.3 Cluster resource inspection
+    - 5.3.1 Overview
+    - 5.3.2 Cluster inventory inspection
+    - 5.3.3 VM inspection
+  - 5.4 What do I do if a split-brain issue occurs in the data centers in which ECS is deployed in disaster recovery mode?
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -28,11 +168,11 @@ Press the Enter key. ager Operations Console You can click the current language 
 Obtain the username and password that are used to log on to the Apsara Uni-manager Operations Console from the deployment engineer or an administrator. If you log on to the Apsara Uni-manager Operations Console for the first time, you must change the password of your username. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. ager Operations Console The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log On**.
 
-## ECS operations and
+## 2 ECS operations and maintenance
 
 **maintenance**
 
-### Computing O&M overview
+### 2.1 Computing O&M overview
 
 This topic describes the Overview page of the Compute Operations Console. On the Overview page, you can obtain a high-level overview of services in IaaS O&M, stay updated with service status, and view service information, such as diagnostics results, alerts, inventory usage, core metrics, and health status.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -71,9 +211,9 @@ By default, the metric statistics of all clusters are displayed. To view the sta
 0. In the **Health Status of Services** section, view the health status of each service.
 Click the name of a service that you want to view. In the **Deployed Machines** dialog box, view information about the service, including the service status, server role, IP address of the physical machine on which the service is deployed, hostname, cluster, description, and the Apsara Stack service to which the service belongs.
 
-### Cluster O&M
+### 2.2 Cluster O&M
 
-#### View compute clusters
+#### 2.2.1 View compute clusters
 
 This topic describes how to query and view information about all compute clusters, including the total number of clusters, the number of clusters that have not reached the desired state, the number of clusters that have reached the desired state, the cluster names, cluster types, and cluster instance types.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -96,7 +236,7 @@ displayed. You can view the basic information, instance resources, and inventory
 **Configuration** tab. You can view the configurations of a cluster and the change records
 of the cluster configurations. For more information, see Manage cluster configurations. Manage computing servers. On the Compute Cluster O&M page, find the cluster that you want to view and click the cluster name in the **Cluster Name/Alias** column. On the Computing Cluster O&M Details page, click the **Computing Servers** tab. You can view the basic information and O&M details of a computing server in a cluster, or manage the business status of a computing server, such as manually locking a server. For more information, see Manage computing servers. Log on to the Admin Gateway (AG) of the cluster that you want to manage to perform simple O&M on VMs. For more information, see Log on to the AG of a cluster.
 
-#### Log in to the AG of a cluster
+#### 2.2.2 Log in to the AG of a cluster
 
 You can log in to the Admin Gateway (AG) of a cluster to go to the Terminal Service page. Then, you can perform O&M operations on VMs in the cluster by using the CLI. This topic describes how to log in to the AG of a cluster from the Compute Cluster O&M page.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -112,9 +252,9 @@ Service page appears.
 6. In the left-side navigation pane, click **vmXXX**. In the dialog box that appears, select the
 server account to be used to log in to the AG. Then, you can perform O&M operations at the right-side CLI. vmXXX indicates the VM ID.
 
-#### Manage computing clusters
+#### 2.2.3 Manage computing clusters
 
-##### Get an overview of a compute cluster
+##### 2.2.3.1 Get an overview of a compute cluster
 
 In the Compute Operations Console, you can view the details of a compute cluster on the Overview tab of the Computing Cluster Details page. The details include the basic information about the cluster, statistics about computing server resources, numbers of Elastic Compute Service (ECS) instances, distribution of physical servers by state, distribution of ECS instances by state, inventory utilization, and inventory of instances by instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -148,9 +288,9 @@ In the **ECS Instance Distribution Across States** section, view the distributio
 
 In the **Inventory Usage** section, view the total amount of resources, the amount of used resources, and the percentage of used resources in all resources. In the **Inventory** section, view the inventory details of instances by instance type in the cluster. The inventories of public and dedicated resources are included. All resources: include public and dedicated resources. Public resources: the resources that are available to all users. drp-xxxx: indicates the dedicated resources in a dedicated resource pool. The dedicated resources are available only to users who have access to the corresponding dedicated resource pool.
 
-##### Manage cluster configurations
+##### 2.2.3.2 Manage cluster configurations
 
-###### View cluster configurations
+###### 2.2.3.2.1 View cluster configurations
 
 This topic describes how to view the configurations of a cluster, including the values of configuration items and the time when configuration items were last modified.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -165,7 +305,7 @@ The **Configure CPU Oversold Ratio** tab is displayed by default.
 CPU oversold ratio configuration records on the **CPU Oversold Ratio Configuration**
 **Records** tab.
 
-###### Configure cluster-level CPU oversold
+###### 2.2.3.2.2 Configure cluster-level CPU oversold ratios
 
 **ratios**
 
@@ -214,9 +354,9 @@ However, the CPU oversold ratios of specific servers failed to be changed due to
 
 When you reduce the CPU oversold ratio of a cluster, the system only checks whether the number of used vCPUs of the entire cluster instead of individual servers exceeds the threshold. As a result, the number of unused vCPUs on specific servers may be negative. In this case, you can perform hot or cold migration to move some ECS instances to other servers.
 
-##### Manage computing servers
+##### 2.2.3.3 Manage computing servers
 
-###### View computing servers
+###### 2.2.3.3.1 View computing servers
 
 This topic describes how to view computing servers in a computing cluster and how to view the details of each computing server. The details include the basic server information, O&M details, and information about Elastic Compute Service (ECS) instances that are deployed on the server.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -234,7 +374,7 @@ For more information about the Status column, see Get an overview of a computing
 7. View O&M details of a computing server and the details of ECS instances that are deployed
 on the computing server. View O&M details of a computing server. a. Click the name of a computing server in the **Hostname/Alias** column. b. View O&M details of the computing server on the **Computing Server Details** page. For more information, see View O&M details about a computing server. View the details of the ECS instances that are deployed on the computing server. a. Click the number in the **ECS Instances** column. b. In the **Instance List** panel, view the values in the Instance ID, Status, Instance Name, CPU, and Memory columns of each instance. c. To view the details of an ECS instance, click the instance ID in the **Instance ID** column. The **Instance Details** page appears, which displays the basic information and configurations of the instance. For more information, see Query VMs.
 
-###### Manage server status
+###### 2.2.3.3.2 Manage server status
 
 This topic describes how to manage the status of computing servers (NCs) in a cluster. You can manually lock, unlock, and activate computing servers.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -255,11 +395,11 @@ you can perform on computing servers.
 |---|---|---|
 | Business Launch | You can activate servers in the no heartbeat, mlock, rlock, failover, and initializing states. | i. On the Computing Servers tab, find the server that you want to activate and click Business Launch in the Operation column. ii. In the dialog box that appears, configure the Reason parameter. iii. Click OK. |
 
-### Computing servers
+### 2.3 Computing servers
 
-#### Manage computing servers
+#### 2.3.1 Manage computing servers
 
-##### View computing servers
+##### 2.3.1.1 View computing servers
 
 This topic describes how to view computing servers and the details of each computing server. The details of each computing server include the hostname, IP address, model, number of CPU cores, memory size, CPU processor, compute type, whether it is a dedicated host, business status, and compute cluster to which the computing server belongs.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -284,7 +424,7 @@ i. Find the computing server that you want to view and click its name in the
 **Hostname/Alias** column.
 ii. On the **Computing Server O&M** page, view the O&M information about the computing server. For more information, see View O&M details about a computing server.
 
-##### View O&M details about a computing
+##### 2.3.1.2 View O&M details about a computing server
 
 **server**
 
@@ -314,7 +454,7 @@ The following table describes the parameters on the page.
 | Machine Migration Tasks | Displays the list of server-level migration tasks and the details of each task, including the task ID, number of migrated instances, destination physical machine, task status, migration progress, start time, update time, and task creator. You can click Details in the Operation column of a server-level migration task to view its details, such as the task status, destination physical machine, migration type, and number of retries, in the panel that appears. Note Cold migration: migrates instances in the Pending state. Hot migration: migrates instances in the Running state. You can click Terminate Task in the Operation column of a server-level migration task to cancel the task. In the message that appears, click OK. For more information, see Stop a migration task. |
 | Operation Audit | Displays information about audited operations. During the O&M process of the computing server, all operations that may cause risks are audited. You can view the historical operations in the Apsara Uni-manager Operations Console, historical POP API calls, and historical server controller API calls for the computing server. For more information, see Audit logs. |
 
-##### Diagnose a computing server
+##### 2.3.1.3 Diagnose a computing server
 
 This topic describes how to diagnose a computing server and view the diagnostic results.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -336,7 +476,7 @@ the **Machine ID** field.
 |---|---|---|
 | 3 | Exception list | The list of exceptions that are related to the diagnostic object. |
 
-##### Lock physical machines
+##### 2.3.1.4 Lock physical machines
 
 You can lock physical machines based on your business requirements. If a physical machine is locked, you cannot create instances on it.
 
@@ -353,7 +493,7 @@ By default, the **Computing Servers** tab of the Computing Server O&M page appea
 **Operated By**, **Change Ticket Title**, and **Reason** parameters.
 6. Click **OK**.
 
-##### Unlock a computing server
+##### 2.3.1.5 Unlock a computing server
 
 You can unlock a computing server to allow the server to be scheduled. After you unlock a computing server, the server is automatically activated and you can schedule instances to the server.
 
@@ -371,7 +511,7 @@ icon in the **Operation** column, and then click **Unlock**.
 operation.
 6. Click **OK**.
 
-##### Activate a computing server
+##### 2.3.1.6 Activate a computing server
 
 This topic describes how to activate a computing server.
 
@@ -392,7 +532,7 @@ icon in the **Operation** column, and then select **Activate**.
 5. In the dialog box that appears, confirm the hostname and enter the reason.
 6. Then, click **OK**.
 
-##### Migrate all instances from a computing
+##### 2.3.1.7 Migrate all instances from a computing server
 
 **server**
 
@@ -450,7 +590,7 @@ described in the following table.
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-##### Deactivate a physical machine for
+##### 2.3.1.8 Deactivate a physical machine for maintenance
 
 **maintenance**
 
@@ -499,7 +639,7 @@ Apsara Infrastructure Management and requires an extended period of time to comp
 **Confirmation** section of the maintenance details page. Then, in the dialog box that
 appears, click **OK**. The procedure of deactivating the physical machine for maintenance is automatically executed. When **Step9: Finish** is complete, the procedure is complete and the physical machine is automatically added back to its original computing cluster. If **Step8: expandTianjiClusterMachineExternal** remains in the **Waiting** (**rolling**) state, check the status and the **rolling** progress of the computing cluster to which the physical machine belongs.
 
-##### View audit logs
+##### 2.3.1.9 View audit logs
 
 Server O&M operations that may introduce risks are audited. You can view the historical operations in the Apsara Uni-manager Operations Console, historical POP API calls, and historical server controller API calls for a computing server.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -512,7 +652,7 @@ By default, the **Computing Servers** tab of the Computing Server O&M page appea
 5. In the **Audit Operations** panel, view audit logs.
 For more information, see View O&M audit logs.
 
-#### View computing server-level migration
+#### 2.3.2 View computing server-level migration tasks
 
 **tasks**
 
@@ -550,7 +690,7 @@ that you want to manage and view its details in the migration task list. The fol
 | Operation | Click Details to view information about the computing server-level migration task in the task details panel. The task details panel consists of the following sections: Basic Information: This section displays the basic information about the migration task, such as the task ID, number of Elastic Compute Service (ECS) instances, and task status. Instances: This section displays a list of ECS instances involved in the migration task. For more information about the parameters in the instance list, see the "View ECS migration tasks" step in the "Procedure" section of the View migration tasks topic. Note Each entry displayed in the instance list is a subtask of the machine migration task. Each subtask migrates an ECS instance. The information about each subtask is also displayed on the ECS Migration Tasks tab. On this tab, you can search for a subtask by ECS instance ID. Click Terminate Task to stop the computing server-level migration task. For more information about the usage notes and limits that apply when you stop a migration task, see Stop a migration task. |
 |---|---|
 
-#### ECS physical machine O&M
+#### 2.3.3 ECS physical machine O&M
 
 You can use the Elastic Compute Service (ECS) physical machine O&M feature to create and view physical machine maintenance tasks. Physical machines can be shut down or scaled in for maintenance.
 
@@ -629,11 +769,11 @@ Infrastructure Management and requires an extended period of time to complete. V
 **Maintenance Completed** in the **AsoAuthorizationWork** step, and then
 click **OK** in the dialog box that appears. If the **expandTianjiClusterMachineExternal** step remains in the **rolling** state, check the corresponding cluster and the rolling progress in the Apsara Infrastructure Management console. After the **Finish** step is complete, the offline maintenance of the physical machine is complete. Whether the physical machine is added back to the original compute cluster depends on the operation type selected when you create the physical machine maintenance task.
 
-### DRP O&M
+### 2.4 DRP O&M
 
 A Dedicated Resource Pool (DRP) is a resource pool dedicated to a tenant. A DRP is visible and available only to the corresponding tenant. Other tenants cannot access the DRP without authorization. DRPs are created by O&M administrators and assigned to tenants. DRPs allow you to allocate resources in a flexible manner, share resources among tenants, and perform O&M operations in a centralized manner. By creating a DRP, Apsara Stack O&M administrators can grant the permissions on a group of physical machines to a single tenant for exclusive use. This eliminates physical resource competition among tenants to implement resource isolation. Tenants can also obtain detailed attribute information about DRPs, including the number of vCPUs, memory size, list of available instance types, number of remaining specifications, and permissions to adjust oversold ratios. This allows tenants to plan resources independently, meet security compliance requirements, and optimize deployment costs. DRPs support the deployment set feature. Deployment sets can be used to constrain the instance affinity within a DRP.
 
-#### Create a dedicated resource pool
+#### 2.4.1 Create a dedicated resource pool
 
 This topic describes how to create a dedicated resource pool.
 
@@ -687,7 +827,7 @@ following table and click **Submit**.
 | Other Information | Instance Scheduling Policy | Yes | Specifies whether the instances in the dedicated resource pool can be temporarily removed from the dedicated resource pool when a physical machine in the dedicated resource pool becomes abnormal and the resources are insufficient. Valid values: Do Not Allow Removal of Instances from Dedicated Resource Pool: The instances in the dedicated resource pool remain stopped and cannot be removed from the dedicated resource pool when a physical machine in the dedicated resource pool becomes abnormal and the resources are insufficient. Allow Removal of Instances from Dedicated Resource Pool: The instances can be temporarily removed from the dedicated resource pool. The removed instances still belong to the dedicated resource pool. When the dedicated resource pool has sufficient resources, you can add the instances to the dedicated resource pool by restarting, starting, or migrating the instances. |
 |   | Reason | Yes | The reason for creating the dedicated resource pool. |
 
-#### View the details of a dedicated
+#### 2.4.2 View the details of a dedicated resource pool
 
 **resource pool**
 
@@ -719,9 +859,9 @@ The **Overview** tab of the Dedicated Resource Pool Details page appears by defa
 7. Click the **Computing Servers** tab to view the information about the servers in the
 dedicated resource pool.
 
-#### Manage DRPs
+#### 2.4.3 Manage DRPs
 
-##### Add a server to a dedicated resource pool
+##### 2.4.3.1 Add a server to a dedicated resource pool
 
 This topic describes how to scale out a dedicated resource pool.
 
@@ -739,7 +879,7 @@ to manage and click its ID in the **Dedicated Resource Pool ID/Name** column. Th
 7. In the Add Server panel, select the physical server that you want to add to the dedicated
 resource pool and click **OK**.
 
-##### Remove a server from a dedicated
+##### 2.4.3.2 Remove a server from a dedicated resource pool
 
 **resource pool**
 
@@ -758,7 +898,7 @@ resource pool and click **Remove from Dedicated Resource Pool** in the **Operati
 7. In the Remove from Dedicated Resource Pool message, confirm the information about the
 dedicated resource pool and the physical server to be removed, and click **OK**.
 
-##### Change the administrator account ID
+##### 2.4.3.3 Change the administrator account ID
 
 The administrator account ID is the ID of the dedicated resource pool administrator, which corresponds to the UID of the level-1 organization to which the administrator belongs. This topic describes how to change the administrator account ID for a dedicated resource pool.
 
@@ -779,7 +919,7 @@ from the drop-down list or directly enter an account ID in the field, and then c
 **management > Organization management > Manage organizations** in **Apsara Uni-**
 **manager Management Console User Guide**.
 
-##### Modify an on-failure physical machine
+##### 2.4.3.4 Modify an on-failure physical machine replacement policy
 
 **replacement policy**
 
@@ -800,7 +940,7 @@ machine is automatically added to the dedicated resource pool. After the physica
 **Automatically Replace Physical Machines**: If a physical machine fails, an available
 physical machine in the public resource pool is automatically added to the dedicated resource pool. After the physical machine recovers, it is automatically added to the public resource pool. a. The added physical machine must be in the same cluster as the physical machine that fails. b. Automatic replacement is initiated only when no ECS instance runs on the failed physical machine (all ECS instances are migrated to other physical machines).
 
-##### Manage server status
+##### 2.4.3.5 Manage server status
 
 This topic describes how to manage the status of servers in a dedicated resource pool, including locking and unlocking a server and activating a server.
 1. Log on to the Apsara Uni-manager Operations Console.
@@ -819,7 +959,7 @@ the operations that you can perform on the computing servers.
 | Unlock NC | You can unlock servers in the no heartbeat, mlock, or rlock state. After you unlock a server, the server is automatically activated and you can schedule instances to the server. | i. On the Computing Servers tab, find the server that you want to unlock and click Unlock NC in the Operation column. ii. In the Unlock NC dialog box, confirm the server and enter a reason for this operation in the Reason field. iii. Click OK. |
 | Activate | You can activate servers in the no heartbeat, mlock, rlock, failover, or initializing state. | i. On the Computing Servers tab, find the server that you want to activate and click Activate in the Operation column. ii. In the dialog box that appears, confirm the server and enter a reason for this operation in the Reason field. iii. Click OK. |
 
-#### Delete a dedicated resource pool
+#### 2.4.4 Delete a dedicated resource pool
 
 **Prerequisites**
 
@@ -833,11 +973,11 @@ to delete and click **Delete** in the **Operation** column.
 5. In the Delete Dedicated Resource Pool dialog box, confirm the information about the
 dedicated resource pool, enter a reason for this operation in the **Reason** field, and then click **OK**.
 
-### ECS
+### 2.5 ECS
 
-#### VM
+#### 2.5.1 VM
 
-##### View ECS instances
+##### 2.5.1.1 View ECS instances
 
 This topic describes how to search for Elastic Compute Service (ECS) instances and view information about the instances, such as the physical machines (computing servers) on which the instances reside, the clusters to which the instances belong, and the hostnames, aliases, status, networks, and bandwidth of the instances.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -862,7 +1002,7 @@ i. In the upper-right corner of the Computing Servers tab, click the icon. ii. I
 6. View the values in the Host, Host Name/Alias, Cluster, CPU/Memory, Status, Private IP/Public
 IP Address, RDMA IP, and Bandwidth columns corresponding to an ECS instance. View the details of an ECS instance. On the **ECS Instances** page, click the ID of an ECS instance in the **Instance ID/Name** column to view the details of the instance on the Instance Details page. For more information about instances, see View the details of an instance. View the O&M details of the computing server that hosts an ECS instance. On the **ECS Instances** page, click the **NC IP** address in the **Host** column corresponding to an ECS instance to view the O&M details of the computing server that hosts the instance on the Computing Server Details page. For more information, see View O&M details about a computing server. View the O&M details of the computing cluster to which an ECS instance belongs. On the **ECS Instances** page, click the cluster name in the **Cluster** column corresponding to an ECS instance to view the O&M details of the computing cluster to which the instance belongs on the Computing Cluster Details page. For more information, see Get an overview of a compute cluster.
 
-##### View the details of an ECS instance
+##### 2.5.1.2 View the details of an ECS instance
 
 This topic describes how to view the details of an Elastic Compute Service (ECS) instance and perform operations on the instance.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -902,9 +1042,9 @@ requirements. The following table describes the sections and tabs on the Instanc
 |---|---|
 | Audit Operations | On this tab, you can view the historical operations that were performed on the instance in the Apsara Uni-manager Operations Console and the historical POP API calls and historical Server Controller API calls that were made for the instance. For more information, see Audit logs. |
 
-##### Manage instance status
+##### 2.5.1.3 Manage instance status
 
-###### Start instances
+###### 2.5.1.3.1 Start instances
 
 If an Elastic Compute Service (ECS) instance is in a state in which the instance cannot provide services, such as the Stopped state, you must start the instance before you can use it.
 
@@ -923,7 +1063,7 @@ To start multiple instance at the same time, select the instances and click **St
 6. In the dialog box that appears, enter a reason for the operation in the **Reason** field.
 7. Click **OK**.
 
-###### Stop instances
+###### 2.5.1.3.2 Stop instances
 
 You can stop instances that you no longer use.
 
@@ -945,7 +1085,7 @@ box that appears.
 6. In the dialog box that appears, enter a reason for the operation in the **Reason** field.
 7. Click **OK**.
 
-###### Restart instances
+###### 2.5.1.3.3 Restart instances
 
 After you change the login passwords or install system updates for Elastic Compute Service (ECS) instances, you must restart the instances.
 
@@ -968,7 +1108,7 @@ that appears.
 operation.
 7. Click **OK**.
 
-##### Migrate an instance
+##### 2.5.1.4 Migrate an instance
 
 If an Elastic Compute Service (ECS) instance or the physical server (NC) that hosts it fails, you can migrate the instance to a healthy NC to ensure system stability. An instance can be migrated using cold migration or hot migration, depending on its status. This topic describes how to migrate a single ECS instance.
 
@@ -1176,7 +1316,7 @@ The hypervisor layer returns an error after the control plane successfully sends
 |---|---|---|---|
 | 3030 |   | CPU compatibility check failed. The instruction set currently perceivable by the VM is partially unavailable on the destination. |   |
 
-##### View migration logs in Server Controller
+##### 2.5.1.5 View migration logs in Server Controller
 
 In the Compute Operations Console, you can view the migration logs of an Elastic Compute Service (ECS) instance in Server Controller, including hot migration and cold migration that are performed on the ECS instance.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1197,7 +1337,7 @@ In the Compute Operations Console, you can view the migration logs of an Elastic
 |   | failed | Displays migration tasks that failed. |
 |   | migrating | Displays migration tasks that are running. |
 
-##### ISO management
+##### 2.5.1.6 ISO management
 
 You can mount an ISO file to or unmount an ISO file from an Elastic Compute Service (ECS) instance. After you mount an ISO file to an instance, the instance enters the Rescue mode and you can perform operations on the instance.
 
@@ -1219,7 +1359,7 @@ To unmount an ISO file, find the ISO file in the **Mounted ISOs** section and cl
 6. In the dialog box that appears, enter an operator name, a ticket title, and a reason and
 click **OK**.
 
-##### Modify the internal bandwidth of instances
+##### 2.5.1.7 Modify the internal bandwidth of instances
 
 You can modify the maximum inbound and outbound internal bandwidth of Elastic Compute Service (ECS) instances. The internal bandwidth is the bandwidth for communication between ECS instances that reside in the same region and virtual private cloud (VPC). You can modify the bandwidth within the maximum value supported by the instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1239,9 +1379,9 @@ Internal Bandwidth, and Reason parameters. The unit of bandwidth is KB/s.
 
 You can modify the internal bandwidth only for ECS instances that are in the Pending, Running, Shutted, or ShutFailure state. You can modify the internal bandwidth of multiple instances at a time. If you modify the internal bandwidth of a single instance, the current inbound and outbound internal bandwidth values of the instance are displayed by default. If you modify the internal bandwidth of multiple instances at a time, these values are not displayed. The outbound internal bandwidth takes effect only for an instance that has more than 4 CPU cores. The maximum inbound and outbound internal bandwidth is 1,048,576,000 KB/s (1,000 Gbit/s) respectively.
 
-#### Disks
+#### 2.5.2 Disks
 
-##### View disks
+##### 2.5.2.1 View disks
 
 You can view a list of disks and the details of each disk. The details include the basic information of the disk, and Elastic Compute Service (ECS) instances and compute clusters that are associated with the disk.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1253,7 +1393,7 @@ search for disks. In the upper-right corner of the page, select **All in ECS Pro
 5. View information about the disks, including disk ID, disk types, disk capacity, associated
 ECS instances, and mount targets. To view the details of a disk, find the disk and click the disk ID in the **Disk ID/Name** column to go to the **Disk Details** page. For more information, see View disk details. To view the details of the ECS instance to which a disk is attached, find the disk and click the instance ID in the **ECS Instance** column to go to the **Instance Details** page. For more information, see Query VMs. To view the details of the compute cluster to which a disk belongs, find the disk and click the cluster name in the **Cluster** column to go to the **Compute Cluster O&M Details** page. For more information, see the **Manage compute clusters** chapter. The following disk types are supported: system disk and data disk. The following disk categories are supported: local SSD, standard SSD, ultra disk, standard performance disk, and Premium ESSD.
 
-##### View disk details
+##### 2.5.2.2 View disk details
 
 You can view the details of disks, such as the basic information and the snapshot information.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1265,7 +1405,7 @@ column.
 5. View the basic information and snapshot information of the disk.
 Basic Information: the disk ID, disk ID in the server controller, disk name, disk type, disk category, disk capacity, and mount point. Snapshot Information: the ID of the automatic snapshot policy.
 
-##### View snapshots
+##### 2.5.2.3 View snapshots
 
 You can view the snapshots of disks, manage snapshots, and view automatic snapshot policies.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1275,13 +1415,13 @@ You can view the snapshots of disks, manage snapshots, and view automatic snapsh
 4. Find the disk that you want to view and click **View Snapshots** in the **Operation** column.
 For more information, see View snapshots.
 
-#### Images
+#### 2.5.3 Images
 
-##### Overview
+##### 2.5.3.1 Overview
 
 An image is a template for running environments within Elastic Compute Service (ECS) instances. An image includes an operating system and pre-installed applications. An image works as a copy that stores data from one or more disks. An ECS image may store data from a system disk or from both system and data disks. You can use an image to create an ECS instance or replace the system disk of an ECS instance.
 
-##### View images
+##### 2.5.3.2 View images
 
 In the Compute Operations Console, you can view a list of images and the information about each image.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1297,7 +1437,7 @@ search box and specify the image type. Then, the image is displayed in the image
 If you set the **Image Type** parameter to **Custom Image**, you must configure the
 **Apsara Stack Tenant Account ID** parameter.
 
-##### Manage ISO images
+##### 2.5.3.3 Manage ISO images
 
 This topic describes how to upload an ISO file, check the system type of the ISO file, and check whether the ISO file can be mounted.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1321,7 +1461,7 @@ ISO file by name in the search box.
 
 If you want to mount an ISO file to an instance, make sure that the ISO file and the instance have the same architecture type. Otherwise, the instance may fail to start or fail to run as expected. If you mount an ISO file that is not fully adapted to an instance, a timeout error may occur when you stop the instance. The timeout period for the stop operation is 500 seconds. After the period elapses, the instance is forcibly stopped. After you mount an ISO file to an instance, you cannot perform management operations, such as hot configuration changes or hot migrations, on the instance. Unmount the ISO file at the earliest opportunity to restore the availability of the instance and prevent exceptions.
 
-##### Convert the format of an image
+##### 2.5.3.4 Convert the format of an image
 
 You are not allowed to import Virtual Machine Disk format (VMDK) images to the Apsara Unimanager Operations Console. To import a VMDK image, you can convert a VMDK image into a RAW image. This topic describes how to convert a VMDK image into a RAW image.
 
@@ -1350,7 +1490,7 @@ To obtain the required AccessKey ID and AccessKey secret, log on to the Apsara U
 6. Click **OK** to convert the format of the image and check whether the conversion is
 successful.
 
-##### Unpublish an image
+##### 2.5.3.5 Unpublish an image
 
 This topic describes how to unpublish an image. After you unpublish an image, the image is no longer displayed in the image list.
 
@@ -1365,13 +1505,13 @@ The **Images** tab of the Image page appears by default. On this tab, find the i
 4. In the Deprecate dialog box, confirm the image ID, specify a reason for this operation, and
 then click **OK**.
 
-#### Snapshots
+#### 2.5.4 Snapshots
 
-##### Overview
+##### 2.5.4.1 Overview
 
 Snapshots are point-in-time copies of disks. You can use snapshots to back up data or create custom images. When you use disks, you may encounter the following scenarios: You want to use the data of a disk to write or save data to a different disk. Disks provide secure storage for your data. However, data that is stored on a disk may be incorrect due to specific reasons, such as application errors or application vulnerabilities that are exploited. If this occurs, a mechanism is required to help restore your instance to a desired state. Apsara Stack allows you to create snapshots to back up disk data at specific points in time. You can create disk snapshots on a schedule to ensure business continuity.
 
-##### View snapshots
+##### 2.5.4.2 View snapshots
 
 In the Compute Operations Console, you can view snapshots and the details of each snapshot.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1385,7 +1525,7 @@ The **Apsara Stack Tenant Account ID** parameter is required.
 5. View the information about each snapshot, such as the snapshot ID or name, snapshot ID in
 Server Controller, snapshot type, disk ID or type, and snapshot creation progress. The snapshot ID in Server Controller indicates the unique ID that is generated for a snapshot when the snapshot is created. This ID is only used in the Server Controller database for Elastic Compute Service (ECS). The supported snapshot types include system snapshot, user snapshot, scheduled snapshot, and snapshot copy.
 
-##### View audit logs
+##### 2.5.4.3 View audit logs
 
 This topic describes how to view the audit logs of a snapshot.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1401,7 +1541,7 @@ column.
 6. In the **Audit Operations** panel, view the operations that were performed in the Apsara
 Uni-manager Operations Console, POP API calls, and API calls in Server Controller.
 
-##### View automatic snapshot policies
+##### 2.5.4.4 View automatic snapshot policies
 
 You can apply automatic snapshot policies to system disks and data disks to automatically create snapshots of the disks on a periodical basis. You can view the details of each automatic snapshot policy, including the policy ID, policy name, and number of associated disks.
 
@@ -1417,9 +1557,9 @@ By default, the **Snapshots** tab is displayed.
 5. On the **Automatic Snapshot Policies** tab, view the details of each automatic snapshot
 policy, including the policy ID, policy name, and number of associated disks.
 
-#### ENIs
+#### 2.5.5 ENIs
 
-##### View the details of an ENI
+##### 2.5.5.1 View the details of an ENI
 
 In the Compute Operations Console, you can view the list of elastic network interfaces (ENIs) and the details of each ENI.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1433,7 +1573,7 @@ Service (ECS) instance. View the details of the specified ENI. In the ENI list, 
 **Instance ID** column to go to the Instance Details page. On the **Instance Details** page,
 view the details of the ECS instance. For more information about ECS instances, see View the details of an instance.
 
-##### View audit logs
+##### 2.5.5.2 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical API calls in Server Controller for elastic network interfaces (ENIs).
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1446,13 +1586,13 @@ You can view the historical operations that were performed in the Apsara Uni-man
 6. In the **Audit Operations** panel, view the operations that were performed in the Apsara
 Uni-manager Operations Console, POP API calls, and API calls in Server Controller. For more information, see View O&M audit logs.
 
-#### Security groups
+#### 2.5.6 Security groups
 
-##### Overview
+##### 2.5.6.1 Overview
 
 A security group is a virtual firewall that provides Stateful Packet Inspection (SPI). Security groups provide virtual firewall-like functionality and are used for network access control for one or more ECS instances. They are important means of network security isolation and are used to divide security domains on the cloud. Security group rules can permit the inbound and outbound traffic of the ECS instances associated with the security group. You can authorize or cancel security group rules at any time. Changes to security group rules are automatically applied to ECS instances that are members of the security group. When you configure security group rules, ensure that the rules are concise and easy to manage. If you associate an instance with multiple security groups, hundreds of rules may apply to the instance, which may cause connection errors when you access the instance.
 
-##### View the details of a security group
+##### 2.5.6.2 View the details of a security group
 
 In the Compute Operations Console, you can view the information about each security group in the security group list, including the region, network type, virtual private cloud (VPC) ID, associated Elastic Compute Service (ECS) instances, and creation time. You can also view the details of a security group on the details page. The details include the basic information, inbound and outbound rules of the security group, and the details of ECS instances that are associated with the security group.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1483,7 +1623,7 @@ basic information, inbound and outbound rules of the security group, and the det
 
 View the associated ECS instances Click the **Instances** tab to view the ECS instances that are associated with the security group.
 
-##### Security group configurations
+##### 2.5.6.3 Security group configurations
 
 The maximum number of inbound and outbound rules for each security group is 1,000. If you need to raise this limit, you can increase the number to 2,000 on the Security Group Configurations tab. We recommend that you periodically clear redundant rules to improve management efficiency.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1502,7 +1642,7 @@ inbound and outbound rules for each security group under the account can reach 2
 **Type**: The default value is **Security Group Whitelist**.
 If you want to remove the limit on the number of security group rules, find the added configuration and click **Delete** in the **Actions** column.
 
-##### View audit logs
+##### 2.5.6.4 View audit logs
 
 You can view the historical operations that were performed in the Apsara Uni-manager Operations Console, historical POP API calls, and historical Server Controller API calls for security groups.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1516,9 +1656,9 @@ You can view the basic information of each security group in the security group 
 5. In the **Audit Operations** panel, view the operation records on the Operations in the Apsara
 Uni-manager Operations Console, POP API Calls, and Server Controller API Calls tabs. For more information, see Audit logs.
 
-#### O&M devices
+#### 2.5.7 O&M devices
 
-##### Attach a USB device to an instance
+##### 2.5.7.1 Attach a USB device to an instance
 
 This topic describes how to attach a USB device on a physical machine to an Elastic Compute Service (ECS) instance.
 
@@ -1539,7 +1679,7 @@ device.
 7. If the USB device is no longer in use, click **Detach** in the Operation column to detach the
 USB device.
 
-##### Attach a CD-ROM device
+##### 2.5.7.2 Attach a CD-ROM device
 
 This topic describes how to attach a CD-ROM device from a physical server to an Elastic Compute Service (ECS) instance.
 
@@ -1560,11 +1700,11 @@ the Instance, Device Name, CD-ROM Device File Address, and MD5 Verification para
 8. If a CD-ROMB device is no longer needed, find the CD-ROMB device in the device list and
 click **Detach** in the Operation column to detach the CD-ROM device.
 
-### Specifications and capacity
+### 2.6 Specifications and capacity O&M
 
 **O&M**
 
-#### Analyze compute capacity
+#### 2.6.1 Analyze compute capacity
 
 This topic describes how to query the inventory usage of Elastic Compute Service (ECS) instance types. This helps you understand trends in ECS capacity and inventory usage.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1580,9 +1720,9 @@ time range in the upper-right corner to view the usage trends of vCPUs and memor
 **Inventory**: In the **Inventory** section, select a zone and a resource type in the upper-left
 corner. Then, enter an instance type to view its inventory information.
 
-#### Instance type management
+#### 2.6.2 Instance type management
 
-##### All Specifications
+##### 2.6.2.1 All Specifications
 
 In the Compute Operations Console, you can view all instance types and the details of each instance type.
 
@@ -1605,9 +1745,9 @@ see Disable custom instance types.
 8. Click **Operation Records** in the Operation column of the instance type. In the Operation
 Records panel, view the historical operations that were performed on the instance type in the Apsara Uni-manager Operations Console and historical POP API calls that were made for the instance type. For more information, see View audit logs.
 
-##### Custom instance types
+##### 2.6.2.2 Custom instance types
 
-###### Create a custom instance type
+###### 2.6.2.2.1 Create a custom instance type
 
 When existing instance types cannot meet your business requirements, you can add custom instance types in the Compute Operations Console and create instances of the custom instance types.
 
@@ -1675,7 +1815,7 @@ After a custom instance type is created, some time is required for the instance 
 
 The new custom instance type is displayed on the Custom Specifications page. After you add a custom instance type, you can create instances based on it by selecting the instance type. For more information, see the **Instances > Create an instance** chapter of User Guide - Elastic Compute Service in the Apsara Stack Documentation Center.
 
-###### View a custom instance type
+###### 2.6.2.2.2 View a custom instance type
 
 You can view existing custom instance types in the Compute Operations Console and the details of each custom instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1690,7 +1830,7 @@ memory (GiB), maximum number of attachable disks, maximum number of attachable E
 6. Click **Details** in the **Operation** column of the instance type. In the Instance Type Details
 panel, view the basic information and extended attributes of the instance type.
 
-###### Disable custom instance types
+###### 2.6.2.2.3 Disable custom instance types
 
 In the Compute Operations Console, you can disable the custom instance types that you no longer require. After you disable a custom instance type, you can no longer select the custom instance type when you create instances.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1702,7 +1842,7 @@ that you want to disable and click **Disable** in the **Operation** column.
 5. In the dialog box that appears, specify a reason and click **OK**.
 If a custom instance type was used to create instances, you cannot disable the instance type. To re-enable a custom instance type that you disabled, find the instance type and click **Enable** in the **Operation** column. After you disable or enable a custom instance type, you must wait for the disable or enable operation to take effect. After you disable or enable a custom instance type, you must wait for the disable or enable operation to take effect. Do not perform operations on the instance type until the status of the instance type changes to **Disabled** or **Enabled**.
 
-###### View audit logs
+###### 2.6.2.2.4 View audit logs
 
 You can view the historical operations that are performed in the Apsara Uni-manager Operations Console and the historical POP API calls that are made for a custom instance type.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -1714,9 +1854,9 @@ that you want to manage and click **Operation Records** in the **Operation** col
 5. In the **Operation Records** panel, view the historical operations that are performed in the
 Apsara Uni-manager Operations Console and the historical POP API calls that are made for the custom instance type.
 
-#### Resource reservations
+#### 2.6.3 Resource reservations
 
-##### Create a resource reservation for an
+##### 2.6.3.1 Create a resource reservation for an instance
 
 **instance**
 
@@ -1735,7 +1875,7 @@ Reservation dialog box, configure the Instance ID, Reservation Name, Expiration 
 
 To create a resource reservation specific to an ECS instance, make sure that the ECS instance is in the Running or Stopped state. After a resource reservation is created for an ECS instance, resources on a different physical server are reserved for the ECS instance. After an ECS instance for which a resource reservation is created is cold migrated, hot migrated, or failed over to the physical server where the reserved resources reside, the ECS instance uses the reserved resources. The reserved resources expire 6 hours after the resource reservation expires.
 
-##### Create a resource reservation for a
+##### 2.6.3.2 Create a resource reservation for a physical machine
 
 **physical machine**
 
@@ -1755,11 +1895,11 @@ view the information about the physical machines for which resources are reserve
 Physical Machine Reservation dialog box, configure the Physical Machine IP Address, Reservation Name, Expiration Time, and Reservation Description parameters.
 6. Click **OK**.
 
-### Migration task management
+### 2.7 Migration task management
 
-#### Manage migration tasks
+#### 2.7.1 Manage migration tasks
 
-##### Create an ECS migration task
+##### 2.7.1.1 Create an ECS migration task
 
 If an Elastic Compute Service (ECS) instance or a physical server that hosts an ECS instance fails, you can migrate the instance from the failed physical server to another physical server to ensure system stability. This topic describes how to create an ECS migration task.
 
@@ -1835,7 +1975,7 @@ This feature is used to create a scheduling task for ECS instance hot migration 
 7. For cold migration, click **Submit**. For hot migration, click **Pre-migration Check**. After the
 precheck is passed, click **Submit**. You can view the status and progress of the migration task in the task list. For more information, see View migration tasks.
 
-##### Create a computing server-level migration
+##### 2.7.1.2 Create a computing server-level migration task
 
 **task**
 
@@ -1887,7 +2027,7 @@ described in the following table.
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-##### Create a batch ECS migration task
+##### 2.7.1.3 Create a batch ECS migration task
 
 If an ECS instance or the physical server that hosts it fails, you can migrate the instance to a healthy physical server to ensure system stability. In addition to migrating a single instance or performing a full-copy migration, you can also migrate multiple instances simultaneously. This topic describes how to perform a batch migration of ECS instances.
 
@@ -1949,7 +2089,7 @@ By default, the **ECS Migration Tasks** tab under the **Task List** tab is displ
 **Submit**.
 You can view the status of the migration task in the task list. For more information, see View migration tasks. If the migration task is no longer required, you can stop it. For more information, see Stop a migration task.
 
-##### Create a batch machine migration task
+##### 2.7.1.4 Create a batch machine migration task
 
 This topic describes how to migrate all Elastic Compute Service (ECS) instances on computing servers to other computing servers at a time.
 
@@ -1988,7 +2128,7 @@ described in the following table.
 6. Select **I have read the preceding notes and confirm this operation** and click **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-##### Create a cluster-level migration task
+##### 2.7.1.5 Create a cluster-level migration task
 
 This topic describes how to migrate all Elastic Compute Service (ECS) instances from all physical machines in a cluster to another cluster.
 
@@ -2028,7 +2168,7 @@ described in the following table.
 **Submit**.
 You can view the status and progress of the migration task in the task list. For more information, see View migration tasks. You can stop the migration task if it is no longer needed. For more information, see Stop a migration task.
 
-##### Off-peak migration tasks
+##### 2.7.1.6 Off-peak migration tasks
 
 Hot migrations of Elastic Compute Service (ECS) instances can affect the performance of large-scale services. They can cause temporary service downtime or slow responses, which impacts business continuity and the user experience. To minimize this impact, you can analyze your services to identify off-peak periods and then schedule hot migrations within recommended time windows.
 
@@ -2107,7 +2247,7 @@ iii. In the **Instance Migration Plans** area, perform operations as needed.
 4. Cancel the task:
 After you cancel an off-peak migration task, the associated data analysis task that is running in the background does not stop immediately. These instances are still counted toward the total number of instances being analyzed in the environment. If you try to create a new off-peak migration task at this time, an error message may appear indicating that the number of instances being analyzed exceeds the limit of 100. You must wait for the previous analysis task to finish before you can create a new one. i. In the **Operation** column, click **Cancel Task**. ii. In the dialog box that appears, click **OK**.
 
-##### View migration tasks
+##### 2.7.1.7 View migration tasks
 
 After you create a migration task, you can view information about the migration task in the migration task list, such as the task ID, instance information, machine information, task status, task success rate, task execution result, migration reason, and operator.
 
@@ -2246,7 +2386,7 @@ On the Tasks tab, click the **Cluster-level Migration Tasks** tab and view infor
 | Operator | The account used to create the cluster-level migration task. |
 | Operation | Details: Click Details to view information about the cluster-level migration task in the task details panel. The task details panel consists of the following sections: Basic Information: This section displays the basic information about the cluster-level migration task, including the task ID, number of physical machines, and task status. Physical Machines: This section displays the physical machines involved in the cluster-level migration task. Click Details in the Actions column of a physical machine to view the ECS instances migrated from the physical machine. Cancel Task: Click Cancel Task to cancel the cluster-level migration task. For more information about the usage notes and limits that apply when you stop a migration task, see Stop a migration task. Pause Task: Click Pause Task to pause the cluster-level migration task. Restore Task: Click Restore Task to resume the paused cluster-level migration task. |
 
-##### Stop a migration task
+##### 2.7.1.8 Stop a migration task
 
 This topic describes how to stop an in-progress migration task. A migration task, such as a machine migration task, a batch Elastic Compute Service (ECS) migration task, a batch machine migration task, or a cluster-level migration task, includes multiple subtasks. You can stop a migration task based on your business requirements.
 
@@ -2277,7 +2417,7 @@ You can click **Details** in the **Operation** column of a migration task to vie
 **Migration Tasks** tab. To view the details of a batch machine migration task or a cluster-
 level migration task, you can click **Details** in the **Operation** column of the task. For more information, see View migration tasks.
 
-#### Configure migration constraints
+#### 2.7.2 Configure migration constraints
 
 Customize the migration task constraints if the default migration rate and timeout do not meet your business requirements. Migration tasks created after you modify the default migration rate and timeout will use the new default settings.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -2368,7 +2508,7 @@ migration rate.
 | Enable Off-peak Migration | Yes: Off-peak migration tasks are displayed in the task list. No: Off-peak migration tasks are not displayed in the task list. | Yes |
 | Off-peak Migration Rate | The rate that ASO allows for off-peak migration. Unit: MBps. Value range: 20 to 2000. | 800 |
 
-#### View CPU compatibility configurations
+#### 2.7.3 View CPU compatibility configurations
 
 If **Enhanced Hot Migration Compatibility** is enabled when you create a hot migration task for an Elastic Compute Service (ECS) instance, the migration is successful only if the CPUs of the source and destination physical machines are compatible. A CPU incompatibility issue causes the hot migration task to fail. Before you enable the **Enhanced Hot Migration**
 **Compatibility** feature, we recommend that you follow the procedure in this topic to view the
@@ -2390,11 +2530,11 @@ You can view CPU compatibility information in the CPU list. You can search for C
 | Source CPU Model | The CPU model of the physical machine that hosts the ECS instances to be migrated. |
 | Destination CPU Model | The CPU model of the physical machine to which the ECS instances are migrated. |
 
-### ECS intelligent O&M
+### 2.8 ECS intelligent O&M
 
-#### ECS events
+#### 2.8.1 ECS events
 
-##### View ECS instance events
+##### 2.8.1.1 View ECS instance events
 
 You can query events by instance. This allows you to know the exceptions of Elastic Compute Service (ECS) instances.
 
@@ -2421,7 +2561,7 @@ the instance.
 **Name** column to view the O&M details of the compute cluster to which the instance
 belongs.
 
-##### Physical machine events
+##### 2.8.1.2 Physical machine events
 
 In the Compute Operations Console, you can use the Elastic Compute Service (ECS) physical machine events feature to analyze the impact of physical machine events. If the breakdown of an ECS physical machine triggers the ECS instance migration process, you can view the migrated ECS instances.
 
@@ -2455,9 +2595,9 @@ machine event to go to the **Computing Server O&M** page. For more information, 
 9. Click the cluster name in the **Cluster** column to go to the **Compute Cluster O&M Details**
 page. For more information, see Get an overview of a computing cluster.
 
-#### ECS maintenance events
+#### 2.8.2 ECS maintenance events
 
-##### Physical machine O&M
+##### 2.8.2.1 Physical machine O&M
 
 You can view proactive O&M workflows in the ECS O&M Events module. You can also submit proactive O&M events and repair tickets for local disks.
 
@@ -2571,7 +2711,7 @@ ii. In the message that appears, click **OK**. Cancel a workflow i. Find the wor
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
 ii. In the message that appears, click **OK**.
 
-##### Instance O&M
+##### 2.8.2.2 Instance O&M
 
 You can use ECS O&M events to view active O&M workflows of ECS instances and modify the workflow status.
 
@@ -2609,7 +2749,7 @@ ii. In the message that appears, click **OK**. Cancel a workflow i. Find the wor
 **Status** in the **Operation** column, and then select **Cancel Workflow**.
 ii. In the message that appears, click **OK**.
 
-#### ECS workflows
+#### 2.8.3 ECS workflows
 
 This topic describes how to view the Elastic Compute Service (ECS) workflow information and manage ECS workflows.
 
@@ -2659,7 +2799,7 @@ The workflow that you want to terminate is in the **HUMAN_PROCESSING** state.
 **Terminate** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
-#### ECS diagnostics
+#### 2.8.4 ECS diagnostics
 
 The Elastic Compute Service (ECS) diagnostics feature supports end-to-end exception diagnostics for physical machines and ECS instances. If an exception occurs on an ECS instance (VM) or a host (NC), you can diagnose the exception on the End-to-end Demarcation or Batch Diagnosis tab and identify the exception cause based on the diagnostics result.
 
@@ -2692,11 +2832,11 @@ You can view the diagnostics information in the following columns: **Diagnostic 
 **NcIP**, **Local Disk**, **Machine Status**, **Exception Occurred At**, **Severity Level**, and
 **Possible Cause**.
 
-### Computing O&M
+### 2.9 Computing O&M configurations
 
 **configurations**
 
-#### View monitoring settings
+#### 2.9.1 View monitoring settings
 
 This topic describes how to enable the feature of pushing alerts to the alert list in the Apsara Uni-manager Operations Console for an Elastic Compute Service (ECS) monitoring metric and configure alert levels.
 
@@ -2759,9 +2899,9 @@ modify the parameters of monitoring metrics. The following table describes the p
 6. Click **OK**.
 You can find a metric in the monitoring metric list and view the alert levels in the JSONformatted array displayed in the **Apsara Uni-manager Operations Console Alert Level** column.
 
-#### Configure O&M actions
+#### 2.9.2 Configure O&M actions
 
-##### Configure throttling for a proactive O&M
+##### 2.9.2.1 Configure throttling for a proactive O&M action
 
 **action**
 
@@ -2800,7 +2940,7 @@ If a proactive O&M action exceeds a regional or cluster-wide throttling limit, t
 | Cluster-wide Throttling Window (Minutes) | The maximum number of times that the workflow of the proactive O&M action can be executed in the cluster. We recommend that you set this parameter to 1. |
 | Throttling Policy | Set this parameter to Cancel, which specifies that the workflow is canceled when the proactive O&M action exceeds a throttling limit. |
 
-##### Configure the approval process for a
+##### 2.9.2.2 Configure the approval process for a proactive O&M action
 
 **proactive O&M action**
 
@@ -2840,7 +2980,7 @@ the **Operation** column. In the dialog box that appears, configure the paramete
 | Support for Manual Reporting | Specifies whether you can submit proactive O&M events related to the proactive O&M action on the Proactive O&M page. Default value: Yes. Important If you set this parameter to No, you cannot submit proactive O&M events related to the proactive O&M action on the Proactive O&M page. Proceed with caution when you set this parameter to No. |
 | Approval for Manually Reported O&M Workflow | Specifies whether manually submitted proactive O&M events require approval. Default value: Yes. Important If you set this parameter to No, the proactive O&M action can be performed without the need for approval. |
 
-#### Modify the release time of a disk
+#### 2.9.3 Modify the release time of a disk
 
 On the Computing O&M Configurations page, you can specify the disk release time based on your business requirements. This feature is used to prevent resource waste and ensure data security and business continuity. O&M engineers can specify the disk release time in the Compute Operations Console to complete O&M based on the actual business requirements.
 
@@ -2861,7 +3001,7 @@ described in the following table and click **Submit**.
 | Disk Reclamation Time | If you set this parameter to a value in the range of 0 to 48: The period after which disks that are released together with associated instances are reclaimed by PANGU. A released disk is automatically reclaimed after 0 to 48 hours after the associated instance is released. The disk can be used as expected after it is reclaimed. If you set this parameter to -1: The disk reclamation time is not specified. The disk is reclaimed based on the default policy of ECS. When the instance is released, the disk is released or reclaimed based on the policy. |
 | Description | The reason for adjusting the disk release time. |
 
-### View O&M audit logs
+### 2.10 View O&M audit logs
 
 The Compute Operations Console provides traceability of resource operations. In the Compute Operations Console, you can view the historical operations performed on resources, historical POP API calls, and historical Server Controller API calls and identify high-risk operations.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -2880,9 +3020,9 @@ that you can view on each tab.
 |---|---|
 | Server Controller API Calls | In the upper part of the tab, enter an operation, a request ID, or a request IP address in the Keyword field, specify a time range for the Time Range parameter, and then click Search. In the API call list, view the following information about the calls: operation, request ID, request time, response code, request IP address, request duration, and request parameters. |
 
-### Tiangong O&M
+### 2.11 Tiangong O&M
 
-#### View Tiangong services
+#### 2.11.1 View Tiangong services
 
 This topic describes how to view the basic information about cloud services that are deployed on Elastic Compute Service (ECS) in the Tiangong 2.0 architecture.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -2910,7 +3050,7 @@ resource template of the machine group. Find the machine group that you want to 
 **(Created/Total)** column. In the Instance Details panel, view the status of the
 instances.
 
-#### View Tiangong workflows
+#### 2.11.2 View Tiangong workflows
 
 This topic describes how to view the workflow of the Tiangong adaptation layer triggered by the task sent by Apsara Infrastructure Management, including the status information such as resource processing and instance cloning. You can also perform O&M operations on the workflow.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -2936,7 +3076,7 @@ i. Find the workflow that you want to manage and click **View workflow logs** in
 **Operation** column.
 ii. In the Workflow logs panel, specify a time range and view the workflow logs within the specified time range. You can view the information about each log, including the time, log level, and log content. You can view logs only within the previous seven days.
 
-### ECS Operation Assistant
+### 2.12 ECS Operation Assistant
 
 Elastic Compute Service (ECS) Operation Assistant is an ECS O&M agent based on the cloud platform. It supports three features: resource query, alert analysis, and event diagnosis.
 
@@ -3035,9 +3175,9 @@ The instance `i-9nh00jr6nk4lmrsb****` has been restarting recently, diagnose it.
 
 The event diagnosis result contains the following two parts: Event list: includes the event name, event description, affected resources, event level, number of occurrences, and event cause. Event summary: includes event analysis and handling suggestions.
 
-## ECS Diagnose
+## 3 ECS Diagnose
 
-### NC O&M
+### 3.1 NC O&M
 
 After you diagnose the exceptions of an Elastic Compute Service (ECS) instance or a host on the End-to-end Demarcation page, you can use the NC O&M feature of proactive O&M to handle the exceptions.
 
@@ -3237,7 +3377,7 @@ migration of VMs using preemptible disks during host downtime. It preempts resou
 | parallel | The concurrency. Default value: 2. |
 | preLock | Specifies whether to flag this O&M event as locked. If it is flagged as locked, other O&M events for the same machine cannot be submitted. |
 
-### Instance O&M
+### 3.2 Instance O&M
 
 This topic describes how to use the instance O&M feature of proactive O&M to handle exceptions.
 
@@ -3335,7 +3475,7 @@ This workflow does not require configuration settings. You can use this workflow
 
 This workflow does not require configuration settings. You can use this workflow without any settings.
 
-### View O&M events
+### 3.3 View O&M events
 
 The O&M event list can record O&M events submitted by network computer (NC) O&M, virtual machine (VM) O&M, and alert center. This topic describes how to search for and view event information in the O&M event list, including the ID, resource type, status, author, extended field, and workflow of an O&M event.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -3366,7 +3506,7 @@ The system displays the basic information about all O&M events. The following ta
 | Operation | You can modify the status of the O&M event: submitError: A failure occurs when the event is being submitted. ignore: The event is ignored. No further operation is performed. wait: The system waits for subsequent operations or retries the event. plan: The O&M event is to be executed. scheduled: The O&M event is in the progress. fail: The O&M event failed. limited: The O&M event is not executed and is terminated based on the throttling policy. blacked: The O&M event is added to the blacklist for specific reasons and is not executed. abort: The O&M event is interrupted or proactively terminated during execution. success: The event is successfully processed. Note In the lower-left corner of the page, clickB atch Change Status to update the status of multiple O&M events. |
 |---|---|
 
-### Configure OpsCode throttling
+### 3.4 Configure OpsCode throttling rules
 
 **rules**
 
@@ -3413,9 +3553,9 @@ On the opscode Throttling Rules page, you can view the **Modified By** and
 7. (Optional) If you no longer require an OpsCode throttling rule, you can delete it.
 i. In the OpsCode throttling rule list, find the rule that you want to delete and click the icon in the **Operation** column. ii. In the dialog box that is displayed, click **OK**.
 
-## Hot migration of disks
+## 4 Hot migration of disks
 
-### Use the CDS Ops tool to hot
+### 4.1 Use the CDS Ops tool to hot migrate disks
 
 **migrate disks**
 
@@ -3450,7 +3590,7 @@ After you create hot migration jobs to migrate cloud disks, you can view the mig
 **Actions** column. In the **Close** message, click **OK**.
 Stop a hot migration job To stop a hot migration job in the Prepared, Created, Running, Verify, Verifying, or Verified state, find the hot migration job and click **Stop** in the **Actions** column. In the **Stop** message, click **OK**.
 
-### Automatically migrate disks in
+### 4.2 Automatically migrate disks in the HaiTu console
 
 **the HaiTu console**
 
@@ -3503,31 +3643,31 @@ Make sure that the selected migration type is correct. To export the information
 6. Click **Submit**. In the message that appears, click **OK**.
 Wait until all disk data is migrated. When the task status changes to Done and the number of failures is 0, all disk data in the tasks is migrated.
 
-## Inspection
+## 5 Inspection
 
-### Overview
+### 5.1 Overview
 
 ECS inspection includes cluster basic health inspection and cluster resources inspection.
 
-### Cluster basic health
+### 5.2 Cluster basic health inspection
 
 ## inspection
 
-#### Overview
+#### 5.2.1 Overview
 
 Cluster basic health inspection includes monitoring inspection, inspection of basic software package versions, and basic public resources inspection.
 
-#### Monitoring inspection
+#### 5.2.2 Monitoring inspection
 
 This topic describes basic monitoring inspections and connectivity monitoring inspections.
 
-#### Inspection of basic software package
+#### 5.2.3 Inspection of basic software package versions
 
 **versions**
 
 This topic describes the version inspections of Server Controller components, Apsara system, virtualization packages, and basic service packages.
 
-#### Inspections of basic public resources
+#### 5.2.4 Inspections of basic public resources
 
 This topic describes ISO inspections and base image inspections.
 
@@ -3551,13 +3691,13 @@ houyiregiondb select image_no,status,visibility,platform, region_no from image;
 
 Check whether the base image works as expected. You can call the create_instance operation to create virtual machines (VMs) from the base image, and check whether the VMs run as expected.
 
-### Cluster resource inspection
+### 5.3 Cluster resource inspection
 
-#### Overview
+#### 5.3.1 Overview
 
 Cluster resource inspection includes cluster inventory inspection and VM inspection.
 
-#### Cluster inventory inspection
+#### 5.3.2 Cluster inventory inspection
 
 This topic describes the inspections of available cluster resources. The available resources of a cluster are measured by the number of virtual machines (VMs) that can be created from the resources. You can query the database that is installed in a cluster for the resources available in the cluster. For example, to query the available resources of a cluster that can be used to create VMs that each have 16 vCPUs and 64 GB of memory, run the following command:
 
@@ -3579,7 +3719,7 @@ NC status inspection checks whether the status of a physical machine, also known
 | nc down _ | Non-default cluster | Unstable | The physical machine works as expected or is down. |
 | offline | Default cluster | Unstable | The physical machine goes offline. |
 
-#### VM inspection
+#### 5.3.3 VM inspection
 
 This topic describes pending VM inspections, VM state inspections, and VM resource inspections.
 
@@ -3617,7 +3757,7 @@ sudo virsh list | grep $name
 
 Obtain information about CPU and memory by viewing the corresponding fields.
 
-### What do I do if a split-brain
+### 5.4 What do I do if a split-brain issue occurs in the data centers in which ECS is deployed in disaster recovery mode?
 
 **issue occurs in the data centers in**
 

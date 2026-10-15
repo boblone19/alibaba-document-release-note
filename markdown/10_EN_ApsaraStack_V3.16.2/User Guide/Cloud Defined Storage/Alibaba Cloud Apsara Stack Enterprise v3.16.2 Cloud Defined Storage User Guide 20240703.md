@@ -3,28 +3,493 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Cloud Defined Storage User
 product_version: "V3.16.2"
 doc_version: "20240703"
 pdf_pages: 691
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Cloud Defined Storage User Guide 20240703.pdf"
+source_pdf: "9bcad0cf564935c0_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Cloud Defined Storage User Guide 20240703.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8CDS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Cloud%20Defined%20Storage%20User%20Guide%2020240703.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Cloud Defined Storage User Guide
 
+## Table of Contents
+
+- 1 Cloud Defined Storage
+- 2 OSS
+  - 2.1 What is OSS?
+    - 2.1.1 Features
+      - 2.1.1.1 Manage buckets
+        - 2.1.1.1.1 Create a bucket
+        - 2.1.1.1.2 ACL
+        - 2.1.1.1.3 Static website hosting
+        - 2.1.1.1.4 Logging
+        - 2.1.1.1.5 Lifecycle rules
+      - 2.1.1.2 Manage objects
+        - 2.1.1.2.1 Upload objects
+        - 2.1.1.2.2 ACL
+        - 2.1.1.2.3 Download objects
+        - 2.1.1.2.4 Search for objects
+        - 2.1.1.2.5 Manage objects by using directories
+        - 2.1.1.2.6 Object tagging
+      - 2.1.1.3 Data security
+        - 2.1.1.3.1 Erasure coding
+        - 2.1.1.3.2 Resource isolation
+        - 2.1.1.3.3 Disaster recovery
+        - 2.1.1.3.4 Access permissions and account authorization
+        - 2.1.1.3.5 Server-side encryption
+        - 2.1.1.3.6 Client-side encryption
+        - 2.1.1.3.7 Versioning
+      - 2.1.1.4 Data processing
+        - 2.1.1.4.1 IMG
+        - 2.1.1.4.2 Video snapshots
+  - 2.2 Usage notes
+  - 2.3 Quick start
+    - 2.3.1 Log on to the OSS console
+    - 2.3.2 Create a bucket
+    - 2.3.3 Upload objects
+    - 2.3.4 Obtain object URLs
+  - 2.4 Buckets
+    - 2.4.1 View bucket information
+    - 2.4.2 Delete buckets
+    - 2.4.3 Modify bucket ACLs
+    - 2.4.4 Configure static website hosting
+    - 2.4.5 Configure hotlink protection for a bucket
+    - 2.4.6 Configure CORS
+    - 2.4.7 Configure lifecycle rules
+    - 2.4.8 Configure storage quota
+    - 2.4.9 Configure bucket tagging
+    - 2.4.10 Versioning
+    - 2.4.11 Bind a VPC
+    - 2.4.12 Configure CRR rules
+    - 2.4.13 Configure cross-cloud replication
+    - 2.4.14 Log management
+      - 2.4.14.1 Configure logging
+      - 2.4.14.2 Real-time log query
+    - 2.4.15 Image processing
+      - 2.4.15.1 Configure image styles
+      - 2.4.15.2 Configure source image protection
+  - 2.5 Objects
+    - 2.5.1 Search for objects
+    - 2.5.2 Configure object ACLs
+    - 2.5.3 Configure object metadata
+    - 2.5.4 Create directories
+    - 2.5.5 Download objects
+    - 2.5.6 Delete objects
+    - 2.5.7 Manage parts
+    - 2.5.8 Configure object tagging
+    - 2.5.9 Configure bucket policies to authorize other users to access OSS resources
+  - 2.6 Add OSS paths
+  - 2.7 Create single tunnels
+  - 2.8 CSG
+    - 2.8.1 What is CSG?
+    - 2.8.2 Usage notes
+    - 2.8.3 Quick start
+    - 2.8.4 File gateways
+      - 2.8.4.1 Manage file gateways
+      - 2.8.4.2 Manage shares
+      - 2.8.4.3 Manage cache disks
+      - 2.8.4.4 Create an SMB user
+      - 2.8.4.5 Access shares
+        - 2.8.4.5.1 Access an NFS share
+        - 2.8.4.5.2 Access an SMB share
+      - 2.8.4.6 Update a gateway
+      - 2.8.4.7 Appendix
+        - 2.8.4.7.1 Permissions required by a gateway to operate OSS buckets
+- 3 NAS
+  - 3.1 What is NAS?
+  - 3.2 Usage notes
+  - 3.3 Quick start
+    - 3.3.1 Log on to the NAS console
+    - 3.3.2 Create a file system
+    - 3.3.3 Create a permission group and add rules
+    - 3.3.4 Create a mount target
+    - 3.3.5 Mount an NFS file system
+    - 3.3.6 Mount an SMB file system
+  - 3.4 File systems
+    - 3.4.1 View the details of a file system
+    - 3.4.2 Delete a file system
+    - 3.4.3 Scale up a file system
+  - 3.5 Mount targets
+    - 3.5.1 View mount targets
+    - 3.5.2 Enable or disable a mount target
+    - 3.5.3 Delete a mount target
+    - 3.5.4 Modify the permission group of a mount target
+  - 3.6 Permission groups
+    - 3.6.1 View permission groups
+    - 3.6.2 Delete a permission group
+    - 3.6.3 Manage permission group rules
+  - 3.7 Directory-level ACLs that grant the read and write access
+    - 3.7.1 Overview
+    - 3.7.2 Features
+    - 3.7.3 Use POSIX ACLs to control access
+    - 3.7.4 Use NFSv4 ACLs to control access
+- 4 EBS
+  - 4.1 EBS
+    - 4.1.1 Features
+      - 4.1.1.1 Overview
+      - 4.1.1.2 Triplicate storage
+      - 4.1.1.3 Erasure coding
+      - 4.1.1.4 EBS device encryption
+      - 4.1.1.5 EBS device resizing
+      - 4.1.1.6 Snapshots
+        - 4.1.1.6.1 Overview
+        - 4.1.1.6.2 Mechanisms
+        - 4.1.1.6.3 Specifications of ECS Snapshot 2.0
+      - 4.1.1.7 Async replication
+  - 4.2 Log on to the Apsara Uni-manager Management Console
+  - 4.3 Getting started
+    - 4.3.1 Create a disk
+    - 4.3.2 Attach disks
+    - 4.3.3 Partition and format a disk
+      - 4.3.3.1 Format a data disk on a Linux instance
+      - 4.3.3.2 Format a data disk on a Windows ECS instance
+  - 4.4 Disks
+    - 4.4.1 Search for and view a disk
+    - 4.4.2 Modify the properties of a disk
+    - 4.4.3 Modify the name and description of a disk
+    - 4.4.4 Resize a disk
+    - 4.4.5 Enable the multi-attach feature for disks that support NVMe
+      - 4.4.5.1 Overview of disks that support NVMe
+      - 4.4.5.2 Enable the multi-attach feature for disks
+    - 4.4.6 Encrypt a disk
+      - 4.4.6.1 Encrypt a system disk
+      - 4.4.6.2 Encrypt a data disk
+    - 4.4.7 Roll back a disk by using a snapshot
+    - 4.4.8 Re-initialize disks
+      - 4.4.8.1 Re-initialize a system disk
+      - 4.4.8.2 Re-initialize a data disk
+    - 4.4.9 Detach a data disk
+    - 4.4.10 Release a data disk
+  - 4.5 Snapshots
+    - 4.5.1 Disk snapshots
+      - 4.5.1.1 Create a snapshot
+      - 4.5.1.2 Search for and view a snapshot
+      - 4.5.1.3 Roll back a disk by using a snapshot
+      - 4.5.1.4 Create a custom image from a snapshot
+      - 4.5.1.5 Delete one or more snapshots at a time
+    - 4.5.2 Snapshot-consistent groups
+      - 4.5.2.1 Create a snapshot-consistent group
+      - 4.5.2.2 Search for and view a snapshot-consistent group
+      - 4.5.2.3 Roll back disks by using a snapshot-consistent group
+      - 4.5.2.4 Delete a snapshot-consistent group
+  - 4.6 Automatic snapshot policies
+    - 4.6.1 Create an automatic snapshot policy
+    - 4.6.2 Search for and view an automatic snapshot policy
+    - 4.6.3 Modify an automatic snapshot policy
+    - 4.6.4 Enable or disable an automatic snapshot policy
+    - 4.6.5 Delete an automatic snapshot policy
+  - 4.7 Async replication
+    - 4.7.1 Create a replication pair
+    - 4.7.2 View replication pairs
+    - 4.7.3 Modify a replication pair
+    - 4.7.4 Activate a replication pair to enable async replication
+    - 4.7.5 Stop a replication pair to disable async replication
+    - 4.7.6 Use the async replication feature to implement disaster recovery for a primary disk
+    - 4.7.7 Delete a replication pair
+  - 4.8 Storage sets
+    - 4.8.1 Create a storage set
+    - 4.8.2 View storage sets
+    - 4.8.3 Modify a storage set
+    - 4.8.4 Delete a storage set
+  - 4.9 Replication pair-consistent groups
+    - 4.9.1 Create a replication pair-consistent group
+    - 4.9.2 View replication pair-consistent groups
+    - 4.9.3 Modify a replication pair-consistent group
+    - 4.9.4 Add replication pairs to a replication pair-consistent group
+    - 4.9.5 Remove replication pairs from a replication pair-consistent group
+    - 4.9.6 Activate a replication pair-consistent group to enable async replication
+    - 4.9.7 Stop a replication pair-consistent group to disable async replication
+    - 4.9.8 Use replication pair-consistent groups to implement disaster recovery
+    - 4.9.9 Delete a replication pair-consistent group
+  - 4.10 Appendix
+    - 4.10.1 Manage tags
+- 5 Log Service
+  - 5.1 What is Log Service?
+  - 5.2 Quick start
+    - 5.2.1 Procedure
+    - 5.2.2 Log on to the Log Service console
+    - 5.2.3 Obtain an AccessKey pair
+    - 5.2.4 Manage a project
+    - 5.2.5 Manage a Metricstore
+    - 5.2.6 Manage Logstores
+    - 5.2.7 Manage shards
+    - 5.2.8 Terms
+      - 5.2.8.1 Terms
+      - 5.2.8.2 Log
+      - 5.2.8.3 Log group
+      - 5.2.8.4 Project
+      - 5.2.8.5 Logstore
+      - 5.2.8.6 Metricstore
+      - 5.2.8.7 Metric
+      - 5.2.8.8 Shard
+      - 5.2.8.9 Topic
+  - 5.3 Data collection
+    - 5.3.1 Collection by Logtail
+      - 5.3.1.1 Overview
+        - 5.3.1.1.1 Logtail overview
+        - 5.3.1.1.2 Log collection process of Logtail
+        - 5.3.1.1.3 Logtail configuration files and record files
+      - 5.3.1.2 Installation
+        - 5.3.1.2.1 Install Logtail on a Linux server
+        - 5.3.1.2.2 Install Logtail in Windows
+        - 5.3.1.2.3 Set the startup parameters of Logtail
+      - 5.3.1.3 Logtail machine group
+        - 5.3.1.3.1 Overview
+        - 5.3.1.3.2 Configure a user identifier
+        - 5.3.1.3.3 Create an IP address-based machine group
+        - 5.3.1.3.4 Create a custom ID-based machine group
+        - 5.3.1.3.5 View server groups
+        - 5.3.1.3.6 Modify a server group
+        - 5.3.1.3.7 View the status of a server group
+        - 5.3.1.3.8 Delete a machine group
+        - 5.3.1.3.9 Manage a Logtail configuration
+      - 5.3.1.4 Collect text logs
+        - 5.3.1.4.1 Configure text log collection
+        - 5.3.1.4.2 Collect logs in simple mode
+        - 5.3.1.4.3 Collect logs in full regex mode
+        - 5.3.1.4.4 Collect logs in delimiter mode
+        - 5.3.1.4.5 Collect logs in JSON mode
+        - 5.3.1.4.6 Collect logs in NGINX mode
+        - 5.3.1.4.7 Collect logs in IIS mode
+        - 5.3.1.4.8 Collect logs in Apache mode
+        - 5.3.1.4.9 Configure parsing scripts
+        - 5.3.1.4.10 Time formats
+        - 5.3.1.4.11 Import historical log files
+        - 5.3.1.4.12 Log topics
+      - 5.3.1.5 Collect container logs
+        - 5.3.1.5.1 Overview
+        - 5.3.1.5.2 Install the Logtail component
+        - 5.3.1.5.3 Use the Log Service console to collect container text logs in DaemonSet mode
+        - 5.3.1.5.4 Use the Log Service console to collect container stdout and stderr in DaemonSet mode
+        - 5.3.1.5.5 Use CRDs to collect container logs in DaemonSet mode
+        - 5.3.1.5.6 Use CRDs to collect container text logs in Sidecar mode
+        - 5.3.1.5.7 Use the Log Service console to collect container text logs in Sidecar mode
+        - 5.3.1.5.8 Collect logs from standard Docker containers
+        - 5.3.1.5.9 Collect Kubernetes events
+        - 5.3.1.5.10 Collect container text logs
+        - 5.3.1.5.11 Collect container stdout and stderr logs
+        - 5.3.1.5.12 Collect standard Docker logs
+      - 5.3.1.6 Custom plug-ins
+        - 5.3.1.6.1 Collect MySQL binary logs
+        - 5.3.1.6.2 Collect MySQL query results
+        - 5.3.1.6.3 Collect syslogs
+        - 5.3.1.6.4 Customize Logtail plug-ins to process data
+      - 5.3.1.7 Limits
+    - 5.3.2 Other collection methods
+      - 5.3.2.1 Use the web tracking feature to collect logs
+      - 5.3.2.2 Collect logs over the syslog protocol
+      - 5.3.2.3 Use SDKs to collect logs
+        - 5.3.2.3.1 Producer Library
+        - 5.3.2.3.2 Log4j Appender
+        - 5.3.2.3.3 Logback Appender
+        - 5.3.2.3.4 Golang Producer Library
+        - 5.3.2.3.5 Python logging
+      - 5.3.2.4 Collect common logs
+        - 5.3.2.4.1 Collect Log4j logs
+        - 5.3.2.4.2 Collect Python logs
+        - 5.3.2.4.3 Collect Node.js logs
+        - 5.3.2.4.4 Collect WordPress logs
+        - 5.3.2.4.5 ThinkPHP logs
+        - 5.3.2.4.6 Collect Unity3D logs
+  - 5.4 Query and analysis
+    - 5.4.1 Log search overview
+    - 5.4.2 Log analysis overview
+    - 5.4.3 Configure indexes
+    - 5.4.4 Query and analyze logs
+    - 5.4.5 Download logs
+    - 5.4.6 Index data type
+      - 5.4.6.1 Overview
+      - 5.4.6.2 Text type
+      - 5.4.6.3 Numeric type
+      - 5.4.6.4 JSON type
+    - 5.4.7 Query syntax and functions
+      - 5.4.7.1 Search syntax
+      - 5.4.7.2 LiveTail
+      - 5.4.7.3 LogReduce
+      - 5.4.7.4 Contextual query
+      - 5.4.7.5 Saved search
+      - 5.4.7.6 Quick analysis
+      - 5.4.7.7 Other features
+    - 5.4.8 SQL syntax and functions
+      - 5.4.8.1 General aggregate functions
+      - 5.4.8.2 Security check functions
+      - 5.4.8.3 Map functions and operators
+      - 5.4.8.4 Approximate functions
+      - 5.4.8.5 Mathematical statistics functions
+      - 5.4.8.6 Mathematical calculation functions
+      - 5.4.8.7 String functions
+      - 5.4.8.8 Date and time functions
+      - 5.4.8.9 URL functions
+      - 5.4.8.10 Regular expression functions
+      - 5.4.8.11 JSON functions
+      - 5.4.8.12 Type conversion functions
+      - 5.4.8.13 IP functions
+      - 5.4.8.14 GROUP BY clause
+      - 5.4.8.15 Window functions
+      - 5.4.8.16 HAVING clause
+      - 5.4.8.17 ORDER BY clause
+      - 5.4.8.18 LIMIT syntax
+      - 5.4.8.19 Conditional expressions
+      - 5.4.8.20 Nested subquery
+      - 5.4.8.21 Array functions and operators
+      - 5.4.8.22 Binary string functions
+      - 5.4.8.23 Bitwise functions
+      - 5.4.8.24 Interval-valued comparison and periodicity-valued comparison functions
+      - 5.4.8.25 Comparison functions and operators
+      - 5.4.8.26 Lambda expressions
+      - 5.4.8.27 Logical functions
+      - 5.4.8.28 Column aliases
+      - 5.4.8.29 JOIN queries on a Logstore and a MySQL database
+      - 5.4.8.30 Geospatial functions
+      - 5.4.8.31 Geography functions
+      - 5.4.8.32 JOIN clause
+      - 5.4.8.33 UNNEST clause
+    - 5.4.9 Machine learning syntax and functions
+      - 5.4.9.1 Overview
+      - 5.4.9.2 Smooth functions
+      - 5.4.9.3 Multi-period estimation functions
+      - 5.4.9.4 Change point detection functions
+      - 5.4.9.5 Maximum value detection function
+      - 5.4.9.6 Prediction and anomaly detection functions
+      - 5.4.9.7 Time series decomposition function
+      - 5.4.9.8 Time series clustering functions
+      - 5.4.9.9 Frequent pattern statistics function
+      - 5.4.9.10 Differential pattern statistics function
+      - 5.4.9.11 Root cause analysis function
+      - 5.4.9.12 Correlation analysis functions
+      - 5.4.9.13 Kernel density estimation function
+    - 5.4.10 Advanced analysis
+      - 5.4.10.1 Optimize queries
+      - 5.4.10.2 Use cases
+      - 5.4.10.3 Examples of time field conversion
+    - 5.4.11 Associate Log Service with external data sources
+      - 5.4.11.1 Overview
+      - 5.4.11.2 Associate Log Service with a MySQL database
+      - 5.4.11.3 Associate Log Service with an OSS bucket
+      - 5.4.11.4 Associate Log Service with a hosted CSV file
+    - 5.4.12 Visual analysis
+      - 5.4.12.1 Charts
+        - 5.4.12.1.1 Chart overview
+        - 5.4.12.1.2 Display query results in a table
+        - 5.4.12.1.3 Display query results on a line chart
+        - 5.4.12.1.4 Display query results on a column chart
+        - 5.4.12.1.5 Display query results on a bar chart
+        - 5.4.12.1.6 Display query results on a pie chart
+        - 5.4.12.1.7 Display query results on an area chart
+        - 5.4.12.1.8 Display query results on a single value chart
+        - 5.4.12.1.9 Display query results on a progress bar
+        - 5.4.12.1.10 Display query results on a map
+        - 5.4.12.1.11 Display query results on a flow chart
+        - 5.4.12.1.12 Display query results in a Sankey diagram
+        - 5.4.12.1.13 Display query results on a word cloud
+        - 5.4.12.1.14 Display query results on a treemap chart
+      - 5.4.12.2 Dashboard
+        - 5.4.12.2.1 Overview
+        - 5.4.12.2.2 Create and delete a dashboard
+        - 5.4.12.2.3 Manage a dashboard in display mode
+        - 5.4.12.2.4 Manage a dashboard in edit mode
+        - 5.4.12.2.5 Configure a drill-down event
+        - 5.4.12.2.6 Add a filter
+        - 5.4.12.2.7 Manage a Markdown chart
+    - 5.4.13 Visualized data analytics
+  - 5.5 Alerts
+    - 5.5.1 Overview
+    - 5.5.2 Configure an alarm
+      - 5.5.2.1 Configure an alert rule
+      - 5.5.2.2 Authorize a RAM user to manage alert rules
+      - 5.5.2.3 Configure alert notification methods
+    - 5.5.3 Modify and view an alarm
+      - 5.5.3.1 Modify an alert rule
+      - 5.5.3.2 View alert statistics
+      - 5.5.3.3 Manage alerts
+    - 5.5.4 Relevant syntax and fields for reference
+      - 5.5.4.1 Syntax of conditional expressions in alert rules
+      - 5.5.4.2 Fields in alert logs
+    - 5.5.5 FAQ
+      - 5.5.5.1 A DingTalk alert notification fails to be sent and the error message "send webhook failed: unable to send request: Post" is reported. Why?
+  - 5.6 Real-time consumption
+    - 5.6.1 Overview
+    - 5.6.2 Consume log data
+    - 5.6.3 Consumption by consumer groups
+      - 5.6.3.1 Use consumer groups to consume log data
+      - 5.6.3.2 View the status of a consumer group
+    - 5.6.4 Use Storm to consume log data
+    - 5.6.5 Use Flume to consume log data
+    - 5.6.6 Use open source Flink to consume log data
+    - 5.6.7 Use Logstash to consume log data
+    - 5.6.8 Use Spark Streaming to consume log data
+    - 5.6.9 Use Realtime Compute to consume log data
+  - 5.7 Data shipping
+    - 5.7.1 Ship logs to OSS
+      - 5.7.1.1 Overview
+      - 5.7.1.2 Ship log data from Log Service to OSS
+      - 5.7.1.3 Obtain the ARN of a RAM role
+      - 5.7.1.4 Storage Formats
+      - 5.7.1.5 Decompress Snappy compressed files
+  - 5.8 Time series storage
+    - 5.8.1 Data import
+      - 5.8.1.1 Collect metric data from hosts
+      - 5.8.1.2 Import metrics collected by Telegraf
+        - 5.8.1.2.1 Telegraf overview
+        - 5.8.1.2.2 Collect metric data from MySQL servers
+        - 5.8.1.2.3 Collect metric data from Java applications or Tomcat servers
+        - 5.8.1.2.4 Collect metric data from NGINX servers
+      - 5.8.1.3 Collect metric data from Prometheus
+        - 5.8.1.3.1 Collect metric data from Prometheus by using the Remote Write Protocol
+        - 5.8.1.3.2 Collect metric data from Prometheus by using a Logtail plug-in
+    - 5.8.2 Query and analysis
+      - 5.8.2.1 Overview of query and analysis of time series data
+      - 5.8.2.2 Query and analyze time series data
+    - 5.8.3 Visualization
+      - 5.8.3.1 Configure a time series chart
+      - 5.8.3.2 Send time series data from Log Service to Grafana
+  - 5.9 RAM
+    - 5.9.1 Overview
+    - 5.9.2 Create a RAM role
+    - 5.9.3 Create a user
+    - 5.9.4 Create a user group
+    - 5.9.5 Add a user to a user group
+    - 5.9.6 Create a policy
+    - 5.9.7 Grant a RAM user the permissions to manage a project
+    - 5.9.8 Grant permissions to a RAM role
+    - 5.9.9 Use custom policies to grant permissions to a RAM user
+  - 5.10 Monitor Log Service
+    - 5.10.1 Overview
+    - 5.10.2 Manage service logs
+    - 5.10.3 Log types
+    - 5.10.4 Service log dashboards
+  - 5.11 FAQ
+    - 5.11.1 Log collection
+      - 5.11.1.1 How do I troubleshoot errors that occur when I use Logtail to collect logs?
+      - 5.11.1.2 What can I do if Log Service does not receive heartbeats from a Logtail client?
+      - 5.11.1.3 How do I query the status of local log collection?
+      - 5.11.1.4 How do I debug a regular expression?
+      - 5.11.1.5 How do I optimize regular expressions?
+      - 5.11.1.6 How do I use the full regex mode to collect log entries in multiple formats?
+      - 5.11.1.7 How do I specify time formats for logs?
+      - 5.11.1.8 How do I configure non-printable characters in a sample log?
+      - 5.11.1.9 How do I troubleshoot errors that occur when I collect logs from containers?
+      - 5.11.1.10 How do I obtain the labels and environment variables of a container?
+    - 5.11.2 Log search and analysis
+      - 5.11.2.1 FAQ about log query
+      - 5.11.2.2 What can I do if I cannot obtain the required results from a log query?
+      - 5.11.2.3 What are the differences between log consumption and log query?
+      - 5.11.2.4 How do I resolve common errors that occur when I query log data?
+      - 5.11.2.5 Why data queries are inaccurate?
+      - 5.11.2.6 How do I configure indexes for historical log data?
+    - 5.11.3 Alarm
+      - 5.11.3.1 FAQ about alerts
+    - 5.11.4 What do I do if the Forbidden.SLS::ListProject error occurs when I log on to the Apsara Uni-manager Management Console?
+
 e
 
-## Cloud Defined Storage
+## 1 Cloud Defined Storage
 
 Cloud Defined Storage (CDS) is a distributed file storage system provided by Alibaba Cloud. CDS features high security, high reliability, low cost, centralized management, and elastic resource scaling, which allows efficient data storage and retrieval. Based on Object Storage Service (OSS), Log Service, Apsara File Storage NAS, and Elastic Block Storage (EBS), CDS provides storage for unstructured data such as files, images, and videos, and supports log storage, query, and analysis features. This allows users in different industries to access unstructured data and process massive amounts of logs. CDS is ideal to provide unstructured data storage and log services in big data scenarios such as mobile application and large websites. CDS offers a one-stop storage solution for users in different industries that is cost-effective, secure, and reliable.
 
-## OSS
+## 2 OSS
 
-### What is OSS?
+### 2.1 What is OSS?
 
-Object Storage Service (OSS) is a secure, cost-effective, and highly reliable cloud storage service provided by Alibaba Cloud.
-
-**Overview**
-
-OSS is an object storage service based on key-value pairs. Files uploaded to OSS are stored as objects in buckets. You can obtain the content of an object based on the object key. Compared with user-created server storage, OSS has outstanding advantages in reliability, security, costeffectiveness, and data processing capabilities. OSS enables you to store and retrieve a variety of unstructured data objects, such as text, images, audios, and videos over networks anytime. In OSS, you can perform the following operations: Create a bucket and upload objects to the bucket. Obtain an object URL from OSS to share or download the object. Modify the attributes or metadata of a bucket or an object. You can also configure the access control list (ACL) of the bucket or the object. Perform basic and advanced operations in the OSS console. Perform basic and advanced operations by using OSS SDKs or calling RESTful API operations in your application.
+Object Storage Service (OSS) is a secure, cost-effective, and highly reliable cloud storage service provided by Alibaba Cloud. OSS is an object storage service based on key-value pairs. Files uploaded to OSS are stored as objects in buckets. You can obtain the content of an object based on the object key. Compared with user-created server storage, OSS has outstanding advantages in reliability, security, costeffectiveness, and data processing capabilities. OSS enables you to store and retrieve a variety of unstructured data objects, such as text, images, audios, and videos over networks anytime. In OSS, you can perform the following operations: Create a bucket and upload objects to the bucket. Obtain an object URL from OSS to share or download the object. Modify the attributes or metadata of a bucket or an object. You can also configure the access control list (ACL) of the bucket or the object. Perform basic and advanced operations in the OSS console. Perform basic and advanced operations by using OSS SDKs or calling RESTful API operations in your application.
 
 **Basic concepts**
 
@@ -44,8 +509,6 @@ Object operations in OSS are atomic. Operations can either succeed or fail witho
 
 OSS is a distributed object storage service that stores objects based on key-value pairs. You can retrieve object content based on unique object keys. For example, the object name test1/test.jpg does not necessarily indicate that the object is stored in a directory named test1. In OSS, test1/test.jpg is only a string. There is nothing essentially different between test1/test.jpg and a.jpg. Therefore, similar amounts of resources are consumed regardless of which object you access. A file system uses a typical tree index structure. To access a file named test1/test.jpg, you must first access the test1 directory and then search for the test.jpg file in this directory. This makes it easy for a file system to support folder operations, such as renaming, deleting, and moving directories because these operations are only performed on directories. However, the performance of a file system depends on the capacity of a single device. The more files and directories that are created in the file system, the more resources and time are consumed. You can simulate similar folder functions of a file system in OSS, but such operations are costly. For example, if you want to rename the test1 directory as test2, OSS must copy all objects whose names start with test1/ to generate objects whose names start with test2. This operation consumes a large amount of resources. Therefore, we recommend that you do not perform such operations in OSS. Objects stored in OSS cannot be modified. A specific operation must be called to append an object. The generated objects are different from the objects uploaded by using other methods. To modify an object, you must upload the entire object again. A file system allows you to modify files. You can modify the content at a specified offset location or truncate the end of a file. These features make file systems suitable for more general scenarios. However, OSS supports a large amount of concurrent access, whereas the performance of a file system is subject to the performance of a single device. We recommend that you do not map operations on OSS objects to file systems because it is inefficient. If you attach OSS as a file system, we recommend that you only add new files, delete files, and read files. You can make full use of OSS advantages, such as the capability to process and store large amounts of unstructured data such as images, videos, and documents.
 
-**Limits**
-
 | Limit | Description |
 |---|---|
 | Bucket | You can create a maximum of 100 buckets. After a bucket is created, its name and region cannot be modified. |
@@ -53,7 +516,7 @@ OSS is a distributed object storage service that stores objects based on key-val
 | Delete objects | Deleted objects cannot be recovered. You can delete up to 100 objects at a time from the console. To delete more than 100 objects at a time, you must call API operations or use an OSS SDK. |
 | Lifecycle rules | You can configure up to 1,000 lifecycle rules for each bucket. |
 
-#### Features
+#### 2.1.1 Features
 
 **2.1.1.1. Manage buckets**
 
@@ -81,11 +544,7 @@ You can configure the access control list (ACL) of a bucket when you create the 
 
 **2.1.1.1.3. Static website hosting**
 
-Static websites are websites in which all web pages consist only of static content, including scripts such as JavaScript code that is run on the client. You can use the static website hosting feature to host your static website on an Object Storage Service (OSS) bucket and use the endpoint of the bucket to access the website.
-
-**Usage notes**
-
-When you configure static website hosting, you must specify the default homepage and the default 404 page for the website. The default homepage appears when you use a browser to access the static website hosted on an OSS bucket. The default homepage functions in a similar manner to the index.html file of a website. The object that you specify as the default homepage must be an object that is stored in the root directory of the bucket and allows anonymous access. The object must be in the HTML format. The default 404 page is the error page returned by OSS. When you use a browser to access the static website hosted on an OSS bucket and a 404 error occurs, OSS returns the default 404 page. The object that you specify as the default 404 page must be an object that is stored in the root directory of the bucket and allows anonymous access. The object must be in one of the following formats: HTML, JPG, PNG, BMP, and WebP.
+Static websites are websites in which all web pages consist only of static content, including scripts such as JavaScript code that is run on the client. You can use the static website hosting feature to host your static website on an Object Storage Service (OSS) bucket and use the endpoint of the bucket to access the website. When you configure static website hosting, you must specify the default homepage and the default 404 page for the website. The default homepage appears when you use a browser to access the static website hosted on an OSS bucket. The default homepage functions in a similar manner to the index.html file of a website. The object that you specify as the default homepage must be an object that is stored in the root directory of the bucket and allows anonymous access. The object must be in the HTML format. The default 404 page is the error page returned by OSS. When you use a browser to access the static website hosted on an OSS bucket and a 404 error occurs, OSS returns the default 404 page. The object that you specify as the default 404 page must be an object that is stored in the root directory of the bucket and allows anonymous access. The object must be in one of the following formats: HTML, JPG, PNG, BMP, and WebP.
 
 **Configurations**
 
@@ -127,8 +586,6 @@ The following naming conventions apply to log objects that are stored in OSS:
 | YYYY-mm-DD-HH-MM-SS | The time when the log object is created. The items of this field indicate the year, month, day, hour, minute, and second in sequence. |
 | UniqueString | The string generated by OSS to uniquely identify the log object. |
 
-**Usage notes**
-
 The source bucket for which access logs are generated and the destination bucket in which the log objects are stored can be the same bucket or different buckets. However, the destination bucket must belong to the same account in the same region as the source bucket. OSS generates bucket access logs on an hourly basis. However, requests in the previous hour may be recorded in the logs generated for the subsequent hour. Before you disable logging, OSS keeps generating access logs. Delete log objects that you no longer need based on lifecycle rules to reduce storage costs. OSS adds more fields to access logs in the future. We recommend that developers consider potential compatibility issues when they develop log processing tools.
 
 **2.1.1.1.5. Lifecycle rules**
@@ -137,11 +594,7 @@ You can configure lifecycle rules to regularly delete expired objects and parts 
 
 **Scenarios**
 
-You can configure a lifecycle rule to regularly delete objects that are no longer accessed or convert the storage class of non-hot data to Infrequent Access (IA), Archive, or Cold Archive. This improves data management efficiency and saves storage costs. You can manually delete up to 1,000 objects each time. If a bucket contains more than 1,000 objects and you want to delete all objects from the bucket, you must delete the objects multiple times. In this case, you can configure a lifecycle rule to delete all objects in the bucket the next day. This way, all objects in the bucket can be deleted the next day.
-
-**Usage notes**
-
-Number of lifecycle rules You can configure up to 1,000 lifecycle rules for each bucket. Effective time After you configure a lifecycle rule, OSS loads the rule within 24 hours. After the lifecycle rule is loaded, OSS runs the rule every day at 08:00:00 (UTC+8) and completes the operations that are triggered by the rule within 24 hours. The interval between the last modified time of an object and the time when the lifecycle rule is run must be longer than 24 hours. For example, if you configure a lifecycle rule for a bucket to delete objects one day after they are uploaded, objects that are uploaded on July 20, 2020 are deleted on a different date based on the specific time when the objects are uploaded. Objects uploaded before 08:00:00 (UTC+8) are deleted from 08:00:00 (UTC+8) on July 21, 2020 to 08:00:00 (UTC+8) on July 22, 2020. Objects uploaded after 08:00:00 (UTC+8) are deleted from 08:00:00 (UTC+8) on July 22, 2020 to 08:00:00 (UTC+8) on July 23, 2020.
+You can configure a lifecycle rule to regularly delete objects that are no longer accessed or convert the storage class of non-hot data to Infrequent Access (IA), Archive, or Cold Archive. This improves data management efficiency and saves storage costs. You can manually delete up to 1,000 objects each time. If a bucket contains more than 1,000 objects and you want to delete all objects from the bucket, you must delete the objects multiple times. In this case, you can configure a lifecycle rule to delete all objects in the bucket the next day. This way, all objects in the bucket can be deleted the next day. Number of lifecycle rules You can configure up to 1,000 lifecycle rules for each bucket. Effective time After you configure a lifecycle rule, OSS loads the rule within 24 hours. After the lifecycle rule is loaded, OSS runs the rule every day at 08:00:00 (UTC+8) and completes the operations that are triggered by the rule within 24 hours. The interval between the last modified time of an object and the time when the lifecycle rule is run must be longer than 24 hours. For example, if you configure a lifecycle rule for a bucket to delete objects one day after they are uploaded, objects that are uploaded on July 20, 2020 are deleted on a different date based on the specific time when the objects are uploaded. Objects uploaded before 08:00:00 (UTC+8) are deleted from 08:00:00 (UTC+8) on July 21, 2020 to 08:00:00 (UTC+8) on July 22, 2020. Objects uploaded after 08:00:00 (UTC+8) are deleted from 08:00:00 (UTC+8) on July 22, 2020 to 08:00:00 (UTC+8) on July 23, 2020.
 
 **Important**
 
@@ -174,11 +627,7 @@ Object Storage Service (OSS) provides a variety of object download methods that 
 
 **2.1.1.2.4. Search for objects**
 
-If a large number of objects are stored in your buckets, you can search for an object by specifying the prefix that the object name contains.
-
-**Usage notes**
-
-Search rules You can search for objects by prefix. The string used to search for objects is case-sensitive and cannot contain forward slashes (/). Search results When you specify a prefix to search for an object in the root directory or a specified directory of a bucket, only the objects or subdirectories whose names contain the specified prefix are returned. Objects in subdirectories cannot be returned.
+If a large number of objects are stored in your buckets, you can search for an object by specifying the prefix that the object name contains. Search rules You can search for objects by prefix. The string used to search for objects is case-sensitive and cannot contain forward slashes (/). Search results When you specify a prefix to search for an object in the root directory or a specified directory of a bucket, only the objects or subdirectories whose names contain the specified prefix are returned. Objects in subdirectories cannot be returned.
 
 **Examples**
 
@@ -236,11 +685,7 @@ You can create a directory in the OSS console. After you create a directory, you
 
 **2.1.1.2.6. Object tagging**
 
-Object tags can be used to classify objects. You can configure lifecycle rules and ACLs for objects based on their tags.
-
-**Usage notes**
-
-The object tagging feature uses a key-value pair to identify an object. You can add tags to objects when and after you upload objects. A maximum of 10 tags can be configured for each object. Tags associated with an object must have unique tag keys. A tag key can be up to 128 bytes in length. A tag value can be up to 256 bytes in length. Tag keys and tag values are case-sensitive. The key and the value of a tag can contain letters, digits, spaces, and the following special characters: + - = . _ : / Only the bucket owner and authorized users have read and write permissions on object tags. These permissions are independent of object access control lists (ACLs). In cross-region replication (CRR), object tags are replicated to the destination bucket.
+Object tags can be used to classify objects. You can configure lifecycle rules and ACLs for objects based on their tags. The object tagging feature uses a key-value pair to identify an object. You can add tags to objects when and after you upload objects. A maximum of 10 tags can be configured for each object. Tags associated with an object must have unique tag keys. A tag key can be up to 128 bytes in length. A tag value can be up to 256 bytes in length. Tag keys and tag values are case-sensitive. The key and the value of a tag can contain letters, digits, spaces, and the following special characters: + - = . _ : / Only the bucket owner and authorized users have read and write permissions on object tags. These permissions are independent of object access control lists (ACLs). In cross-region replication (CRR), object tags are replicated to the destination bucket.
 
 **Configure lifecycle rules for objects with the same tags**
 
@@ -414,11 +859,7 @@ To use this method for client-side encryption, you must generate and manage CMKs
 
 **Important**
 
-CMKs and unencrypted data are not sent to OSS. Therefore, keep your CMKs secure. If a CMK is lost, objects encrypted by using the data keys generated by this CMK cannot be decrypted. Data keys are randomly generated by the client.
-
-**Usage notes**
-
-To perform client-side encryption on objects that are larger than 5 GB in size before you upload the objects, you must use multipart upload. When you use multipart upload to upload an object, you must specify the total size of the object and the size of each part. The size of each part except for the last part must be the same and be a multiple of 16 bytes. After you upload objects encrypted on the client, object metadata related to client-side encryption is protected. In this case, CopyObject cannot be called to modify object metadata.
+CMKs and unencrypted data are not sent to OSS. Therefore, keep your CMKs secure. If a CMK is lost, objects encrypted by using the data keys generated by this CMK cannot be decrypted. Data keys are randomly generated by the client. To perform client-side encryption on objects that are larger than 5 GB in size before you upload the objects, you must use multipart upload. When you use multipart upload to upload an object, you must specify the total size of the object and the size of each part. The size of each part except for the last part must be the same and be a multiple of 16 bytes. After you upload objects encrypted on the client, object metadata related to client-side encryption is protected. In this case, CopyObject cannot be called to modify object metadata.
 
 **2.1.1.3.7. Versioning**
 
@@ -474,11 +915,7 @@ You can add Image Processing (IMG) parameters to GetObject requests to process i
 
 **2.1.1.4.2. Video snapshots**
 
-This topic describes the parameters that you can configure to capture video snapshots and provides examples.
-
-**Usage notes**
-
-When you capture video snapshots, you are charged based on the number of captured images. Object Storage Service (OSS) can capture images from video objects only in the H.264 and H.265 formats. By default, OSS does not automatically store captured images. You must manually download the captured images to your local storage devices.
+This topic describes the parameters that you can configure to capture video snapshots and provides examples. When you capture video snapshots, you are charged based on the number of captured images. Object Storage Service (OSS) can capture images from video objects only in the H.264 and H.265 formats. By default, OSS does not automatically store captured images. You must manually download the captured images to your local storage devices.
 
 **Parameters**
 
@@ -507,7 +944,7 @@ Use the default mode to capture the image at the fiftieth second of the video ac
 process=video/snapshot,t_50000,f_jpg,w_800,h_600
 ```
 
-### Usage notes
+### 2.2 Usage notes
 
 Before you use OSS, you must understand the following content: To allow other users to use all or part of OSS features, you must create RAM users and grant permissions to the users by configuring RAM policies. Before you use OSS, you must also understand the following limits.
 
@@ -520,18 +957,15 @@ Before you use OSS, you must understand the following content: To allow other us
 | Delete objects | Deleted objects cannot be recovered. You can delete up to 100 objects at a time in the OSS console. To delete more than 100 objects at a time, you must call an API operation or use an SDK. |
 | Lifecycle | You can configure up to 1,000 lifecycle rules for each bucket. |
 
-### Quick start
+### 2.3 Quick start
 
-#### Log on to the OSS console
+#### 2.3.1 Log on to the OSS console
 
 This topic describes how to log on to the Object Storage Service (OSS) console.
 
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
-
-**Procedure**
-
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
 You can click the current language in the upper-right corner to switch to another language.
 2. Enter your username and password.
@@ -560,12 +994,9 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 **Management Console User Guide**.
 5. In the top navigation bar, choose **Products > Object Storage Service**.
 
-#### Create a bucket
+#### 2.3.2 Create a bucket
 
 OSS stores files as objects in buckets. When you upload files to OSS, you must create a bucket or select an existing bucket. This topic describes how to create a bucket.
-
-**Procedure**
-
 1. Log on to the OSS console. For more information, see Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click **Create Bucket**.
 3. In the **Create Bucket** panel, set the required parameters.
@@ -590,7 +1021,7 @@ The following table describes the parameters.
 4. Click **OK**.
 After the bucket is created, you can go to the **Overview** tab of the bucket details page to view information about the bucket, such as the organization, resource set, domain names, basic settings, and bound VPCs.
 
-#### Upload objects
+#### 2.3.3 Upload objects
 
 After you create a bucket, you can upload objects to it.
 
@@ -601,9 +1032,6 @@ A bucket is created. For more information, see Create a bucket.
 **Background information**
 
 You can upload an object of any format to a bucket. You can use the OSS console to upload an object up to 5 GB in size. To upload an object larger than 5 GB, use OSS SDKs or call an API operation.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. Click **Buckets**. On the Buckets page that appears, click the name of the bucket to which you want to upload
 objects.
@@ -625,35 +1053,28 @@ During the upload process, you can click **Cancel All** to cancel all upload tas
 
 Do not refresh or close the **Upload Tasks** panel when objects are being uploaded. Otherwise, the upload tasks are interrupted.
 
-#### Obtain object URLs
+#### 2.3.4 Obtain object URLs
 
 You can obtain the URL of an uploaded object and share the URL with other users to preview or download the object.
 
 **Prerequisites**
 
 An object is uploaded to the bucket. For more information, see Upload objects.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
 3. Click the **Files** tab.
-4. Obtain object URLs
 Obtain the URL of a single object. Click the name of the object whose URL you want to obtain, or click **View Details** in the Actions column that corresponds to the object. In the **View Details** panel, click **Copy File URL**. Batch export URL lists Select the objects that you want to share. Choose **Batch Operation > Export URL List**.
 
-### Buckets
+### 2.4 Buckets
 
-#### View bucket information
+#### 2.4.1 View bucket information
 
 You can view the detailed information about created buckets in the Object Storage Service (OSS) console.
 
 **Prerequisites**
 
 A bucket is created. For more information, see Create a bucket.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -661,7 +1082,7 @@ upload objects.
 **Resource Set**,**Domain Names**, **Basic Settings**, and **VPC**.
 You can use domain names to manage a bucket over HTTP or HTTPS. You can view the storage quota of a bucket in the **Basic Settings** section. For more information, see Configure storage quota.
 
-#### Delete buckets
+#### 2.4.2 Delete buckets
 
 You can delete a bucket in the OSS console.
 
@@ -672,16 +1093,13 @@ All objects and parts in the bucket are deleted. For more information, see Delet
 **Warning**
 
 Deleted objects, parts, and buckets cannot be recovered. Exercise caution when you delete objects, parts, and buckets.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
 3. In the upper-right corner, click **Delete Bucket**.
 4. In the message that appears, click **Confirm**.
 
-#### Modify bucket ACLs
+#### 2.4.3 Modify bucket ACLs
 
 OSS provides access control list (ACL) to control access to buckets. By default, the ACL of a bucket is private when you create the bucket. You can modify the ACL of a bucket after the bucket is created.
 
@@ -696,9 +1114,6 @@ You can set the ACL of a bucket to one of the following values: Private: Only th
 **Warning**
 
 If you set the ACL of a bucket to Public Read or Public Read/Write, other users can read the data in the bucket without authentication, which may result in security risks. To ensure the security of your data, we recommend that you set the ACL of your bucket to private.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -706,16 +1121,13 @@ upload objects.
 4. Click **Configure**. Modify the bucket ACL.
 5. Click **Save**.
 
-#### Configure static website hosting
+#### 2.4.4 Configure static website hosting
 
 You can configure static website hosting for a bucket in the Object Storage Service (OSS) console so that users can access the website by using the domain name of the bucket.
 
 **Prerequisites**
 
 A bucket is created. For more information, see Create a bucket.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -729,7 +1141,7 @@ upload objects.
 
 5. Click **Save**.
 
-#### Configure hotlink protection for a bucket
+#### 2.4.5 Configure hotlink protection for a bucket
 
 You can configure hotlink protection for a bucket in the Object Storage Service (OSS) console to prevent data in your bucket from being accessed by unauthorized domain names.
 
@@ -740,9 +1152,6 @@ A bucket is created. For more information, see Create a bucket.
 **Background information**
 
 The hotlink protection feature allows you to configure a Referer whitelist for a bucket. This way, only requests from domain names included in the Referer whitelist can access your data in the bucket. You can configure Referer whitelists based on the Referer header field in HTTP and HTTPS requests. After you configure a Referer whitelist for a bucket, OSS verifies requests to objects in the bucket only when the requests are initiated from signed URLs or anonymous users. Requests that contain the Authorization field in the header are not verified.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -751,7 +1160,7 @@ upload objects.
 Enter domain names or IP addresses in the **Referer Whitelist** field. Separate multiple Referers by using line feed. You can use asterisks (*) and question marks (?) as wildcards. Examples: If you add www.example.com to the Referer whitelist, requests sent from URLs that start with www.example.com, such as www.example.com/123 and www.example.com.cn are allowed. If you add *www.example.com/ to the Referer whitelist, requests sent from http://www.example.com/ and https://www.example.com/ are allowed. You can use an asterisk (*) as a wildcard character to specify zero or multiple characters. For example, if you add *.example.com to the Referer whitelist, requests sent from URLs such as help.example.com and www.example.com are allowed. You can use a question mark (?) as a wildcard character to specify a single character. For example, if you add example?.com to the Referer whitelist, requests sent from URLs such as examplea.com and exampleb.com are allowed. You can add domain names or IP addresses that include a port number, such as www.example.com:8080 and 10.10.10.10:8080, to the Referer whitelist. Select whether to turn on **Allow Empty Referer** to allow requests in which the Referer field is empty. An HTTP or HTTPS request with an empty Referer field indicates that the request does not contain the Referer field or the value of the Referer field is empty. If you do not allow empty Referers fields, only HTTP or HTTPS requests which include an allowed Referer field can access the objects in the bucket. By default, if you use the bucket endpoint to preview an MP4 object, the browser sends a request that contains the Referer field and a request that does not contain the Referer field at the same time. Therefore, to allow access to the MP4 objects in your bucket, you must not only add the bucket endpoint to the Referer whitelist but also allow empty Referer fields. To preview a non-MP4 object by using the bucket domain name, you need only to allow empty Referer fields.
 5. Click **Save**.
 
-#### Configure CORS
+#### 2.4.6 Configure CORS
 
 You can configure cross-origin resource sharing (CORS) in the Object Storage Service (OSS) console to enable cross-origin access.
 
@@ -762,9 +1171,6 @@ A bucket is created. For more information, see Create a bucket.
 **Background information**
 
 OSS provides cross-origin resource sharing (CORS) over HTML5 to implement cross-origin access. When OSS receives a cross-origin request (or an OPTIONS request) for a bucket, OSS reads the CORS rules of the bucket and checks the relevant permissions. OSS matches the rules one after another. If OSS finds the first match, OSS returns corresponding headers. If the request fails to match the CORS rules, OSS does not include CORS headers in the response.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -785,7 +1191,7 @@ following table.
 You can configure up to 10 CORS rules for each bucket.
 5. Click **Confirm**.
 
-#### Configure lifecycle rules
+#### 2.4.7 Configure lifecycle rules
 
 You can configure lifecycle rules to regularly delete expired objects and parts to save storage costs.
 
@@ -796,9 +1202,6 @@ A bucket is created. For more information, see Create a bucket.
 **Background information**
 
 Take note of the following items when you configure lifecycle rules for a bucket: After a lifecycle rule is configured, it is loaded within 24 hours and takes effect within 24 hours after it is loaded. Check the configurations of a rule before you save the rule. Objects that are deleted based on lifecycle rules cannot be recovered. Configure lifecycle rules based on your requirements. You can configure up to 100 lifecycle rules for a bucket in the Object Storage Service (OSS) console. To configure more rules, use OSS SDKs.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -829,7 +1232,7 @@ Parameters for versioned buckets Configure the parameters in the **Basic Setting
 
 5. Click **Confirm**.
 
-#### Configure storage quota
+#### 2.4.8 Configure storage quota
 
 If the capacity of a bucket reaches the specified storage quota, write operations such as PutObject, MultipartUpload, CopyObject, PostObject, and AppendObject cannot be performed on the bucket. This topic describes how to configure the storage quota of a bucket in Object Storage Service (OSS).
 
@@ -840,9 +1243,6 @@ A bucket is created. For more information, see Create a bucket.
 **Background information**
 
 Take note of the following items when you configure the storage quota of a bucket: Before you configure the storage quota of a bucket, make sure that the quota does not limit your business because write operations cannot be performed if the bucket capacity reaches the quota. In general, it takes about an hour for OSS to determine whether the bucket capacity exceeds the storage quota. In some cases, it can take longer than one hour.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket that you
 want to manage.
@@ -856,16 +1256,13 @@ After you submit, you can click **Back to Console** in the pop-up dialog box to 
 7. View the storage quota of a bucket
 i. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket whose quota you want to view. ii. On the **Details** tab, find the **Basic Settings** section. iii. View the storage quota of the bucket. A message that indicates the storage quota of the bucket is displayed below **Basic Settings**. Example: The storage quota of the bucket is 2 (TB). Please ensure that the quota is larger than the storage capacity that you use.
 
-#### Configure bucket tagging
+#### 2.4.9 Configure bucket tagging
 
 Bucket tags can be configured to classify and manage buckets. For example, you can list buckets that have specific tags or configure the access control list (ACL) of buckets that have specific tags.
 
 **Background information**
 
 The bucket tagging feature uses a key-value pair to identify a bucket. You can add tags to buckets that are used for different purposes and manage the buckets by tags. Only the bucket owner or authorized Resource Access Management (RAM) users can configure tagging for the bucket. Otherwise, 403 Forbidden is returned with the error code AccessDenied. A tag is a key-value pair. You can configure up to 20 tags for a bucket. Each tag must have a key. The key of a tag can be up to 64 bytes in length and cannot start with `http://` , `https://` , or `Aliyun` . The value of a tag can be up to 128 bytes in length and can be empty. The key and value of a tag must be UTF-8-encoded.
-
-**Procedure**
-
 1. View publishing history.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket for which you
 want to configure tagging.
@@ -875,7 +1272,7 @@ want to configure tagging.
 bucket.
 6. Click **Save**.
 
-#### Versioning
+#### 2.4.10 Versioning
 
 OSS allows you to configure versioning for a bucket to protect objects that are stored in the bucket. After you enable versioning for a bucket, data that is overwritten or deleted in the bucket is saved as a previous version. After you configure versioning for a bucket, you can recover objects in the bucket to a previous version to protect your data from being accidentally overwritten or deleted.
 
@@ -930,16 +1327,13 @@ want to delete. In the message that appears, click **OK**. To delete multiple pr
 
 Deleted previous versions cannot be recovered. Exercise caution when you perform this operation. If you delete the current version of an object, the latest previous version becomes the current version. You can also configure lifecycle rules to automatically delete previous versions on a regular basis. For more information, see Configure lifecycle rules.
 
-#### Bind a VPC
+#### 2.4.11 Bind a VPC
 
 You can bind your bucket to a specified virtual private cloud (VPC) network to allow only requests from IP addresses within the VPC network to access your bucket.
 
 **Prerequisites**
 
 A VPC network is created. For more information, see the "Create a VPC" topic in **Apsara Stack VPC User Guide**.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket that you
 want to manage.
@@ -949,7 +1343,7 @@ You can also click **Create VPC** to create a new VPC network.
 5. Click **Submit**.
 After you bind a VPC, you can click **Back to Console** in the pop-up dialog box to go back to the **Overview** page.
 
-#### Configure CRR rules
+#### 2.4.12 Configure CRR rules
 
 Cross-region replication (CRR) allows you to automatically and asynchronously (in near real-time) replicate Object Storage Service (OSS) objects from a bucket in a region to another bucket in another region. CRR also allows you to replicate operations, such as the creation, overwriting, and deletion of objects, from a source bucket to a destination bucket.
 
@@ -960,9 +1354,6 @@ The source bucket and destination bucket are created. For more information, see 
 **Background information**
 
 CRR can help you meet compliance requirements for cross-region disaster recovery or data replication. Objects in the destination bucket are exact replicas of objects in the source bucket. The objects have the same object names, object content, and object metadata, such as the creation time, owner, user metadata, and access control lists (ACLs).
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket for which you
 want to configure a CRR rule.
@@ -983,7 +1374,7 @@ table.
 5. Click **Confirm**.
 After you configure a CRR rule, the replication task starts in 3 to 5 minutes. Then, you can view the replication progress. In CRR, data is asynchronously replicated in near real time. The period of time that is required to replicate data from the source bucket to the destination bucket may range from a few minutes to a few hours, depending on the data size. If you want to replicate an object encrypted based on KMS from the source bucket to the destination bucket, KMS must be configured for the destination bucket. Otherwise, data replication fails.
 
-#### Configure cross-cloud replication
+#### 2.4.13 Configure cross-cloud replication
 
 You can use the cross-cloud replication feature to synchronize OSS data between two clouds. This topic describes how to configure cross-cloud replication.
 
@@ -1043,7 +1434,7 @@ want to configure cross-cloud replication.
 
 5. Click **OK** to save your settings.
 
-#### Log management
+#### 2.4.14 Log management
 
 **2.4.14.1. Configure logging**
 
@@ -1052,9 +1443,6 @@ When you access Object Storage Service (OSS), a large number of access logs are 
 **Prerequisites**
 
 A bucket is created. For more information, see Create a bucket.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1123,7 +1511,7 @@ iv. Click **15 Minutes(Relative)** to specify the time range for the query state
 __time__>1558013658 AND __time__< 1558013660 .
 ```
 
-v. Click **Search & Analyze**. Query results contain query and analysis results in a log distribution histogram, on the Raw Logs tab, and on the Graph tab. You can also perform operations on the results. For example, you can configure alerts and create saved searches. Log distribution histogram The log distribution histogram shows the distribution of returned logs in different periods of time. Alert You can click **Save as Alert** to configure alerts for query and analysis results. Saved search You can click **Save Search** to save a query statement as a saved search. Raw log You can click the Table or Raw Data option on the **Raw Logs** tab to analyze the distribution of a field over a period of time, view the context of the specified log in the raw file, monitor the log content in real time, and extract key log information. Graph On the **Graph** tab, you can view the visual query and analysis results, add charts to the dashboard, download logs, and configure interactive behaviors. LogReduce tab On the **LogReduce** tab, you can click **Enable LogReduce** to cluster similar logs during log collection. Method 2: Query real-time logs on the **Dashboard** tab i. Log on to the OSS console. ii. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket that you want to manage. iii. Click the **Dashboard** tab to analyze logs. Dashboard allows you to view four reports that are immediately available.
+v. Click **Search & Analyze**. Query results contain query and analysis results in a log distribution histogram, on the Raw Logs tab, and on the Graph tab. You can also perform operations on the results. For example, you can configure alerts and create saved searches. Log distribution histogram The log distribution histogram shows the distribution of returned logs in different periods of time. Alert You can click **Save as Alert** to configure alerts for query and analysis results. You can click **Save Search** to save a query statement as a saved search. Raw log You can click the Table or Raw Data option on the **Raw Logs** tab to analyze the distribution of a field over a period of time, view the context of the specified log in the raw file, monitor the log content in real time, and extract key log information. Graph On the **Graph** tab, you can view the visual query and analysis results, add charts to the dashboard, download logs, and configure interactive behaviors. LogReduce tab On the **LogReduce** tab, you can click **Enable LogReduce** to cluster similar logs during log collection. Method 2: Query real-time logs on the **Dashboard** tab i. Log on to the OSS console. ii. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket that you want to manage. iii. Click the **Dashboard** tab to analyze logs. Dashboard allows you to view four reports that are immediately available.
 **Access Center**: displays the overall operating status including the PV, UV, traffic, and distribution of access
 over the Internet.
 **Audit Center**: displays statistics of object operations including read, write, and delete operations.
@@ -1143,7 +1531,7 @@ upload objects.
 3. Click Logging and then click **Real-time Log Query**. On the Real-time Log Query tab, click **Disable Real-time**
 **Log Query**.
 
-#### Image processing
+#### 2.4.15 Image processing
 
 **2.4.15.1. Configure image styles**
 
@@ -1213,9 +1601,6 @@ oss-process=style/StyleName .
 ```
 
 Use the file URL that contains a signature in the format of https://BucketName.Endpoint/ObjectName?Signature .
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1229,14 +1614,11 @@ the following table.
 | Delimiters | If you set the custom delimiter, use the delimiter to replace ? x-oss-process=style/ to further simplify the IMG URL. OSS supports the following delimiters: hyphens (-), underscores ( ), forward slashes (/), _ and exclamation points (!). Click the check box before the delimiter that you want to select. For example, if you set the delimiter to an exclamation point (!), the IMG URL can be simplified to http(s)//:BucketName.Endpoint/ObjectName!StyleName . |
 
 5. Click **Confirm**.
-
-**FAQ**
-
 Q: Why is HTTP status code 403 returned when I directly access a protected image, whereas HTTP status code 200 is returned when I access the image over Content Delivery Network (CDN)? A: One possible cause is that the request is redirected to access a private bucket over CDN. Source image protection is applicable only to objects that are accessed by anonymous users. Q: How can my source image still be accessed by using a signed URL when source image protection is enabled for the image? Source image protection applies only to objects that can be accessed by anonymous users. Access by signed URLs is not anonymous. Therefore, the source image can be accessed by using a signed URL even if you enable source image protection.
 
-### Objects
+### 2.5 Objects
 
-#### Search for objects
+#### 2.5.1 Search for objects
 
 You can search for objects whose names contain specific prefixes in buckets or folders in the OSS console.
 
@@ -1247,9 +1629,6 @@ Objects are uploaded to the bucket. For more information, see Upload objects.
 **Background information**
 
 When you search for objects based on a prefix, search strings are case-sensitive and cannot contain forward slashes (/). You can search for objects only in the root directory of the current bucket or in the current directory. Directories and objects stored in subdirectories cannot be searched.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1257,16 +1636,13 @@ upload objects.
 4. Search for objects.
 Search for objects and subdirectories in the root directory. In the upper-right corner, enter the prefix to search in the search box and press Enter or click the icon to search for related objects. Objects and subdirectories whose names contain the specified prefix within the root directory of the bucket are displayed. Search for objects and subdirectories in a specified directory Click the directory in which the objects or subdirectories that you want to search for are stored. In the upperright corner, enter the prefix to search in the search box and press Enter or click the icon to search for related objects. Objects and subdirectories whose names contain the specified prefix within the current directory are displayed.
 
-#### Configure object ACLs
+#### 2.5.2 Configure object ACLs
 
 You can configure the ACL of an object in the OSS console to control access to the object.
 
 **Prerequisites**
 
 An object is uploaded to the bucket. For more information, see Upload objects.
-
-**Procedure**
-
 1. View publishing history.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1284,16 +1660,13 @@ including anonymous users can only read objects in the bucket.
 incurred by such operations are charged to the owner of the bucket. Exercise caution when you set the object ACL to this value.
 6. Click **Confirm**.
 
-#### Configure object metadata
+#### 2.5.3 Configure object metadata
 
 Objects that are stored in Object Storage Service (OSS) consist of keys, data, and object metadata. Object metadata describes the object. Object metadata includes standard HTTP headers and user metadata. You can create custom HTTP request policies such as object cache policies and forced object download policies by configuring standard HTTP headers. You can also configure user metadata to identify the purposes or attributes of objects.
 
 **Background information**
 
 You can configure object metadata for up to 100 objects at a time in the OSS console.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1316,7 +1689,7 @@ Configure HTTP headers for multiple objects Select one or more objects. Choose *
 
 6. Click **Confirm**.
 
-#### Create directories
+#### 2.5.4 Create directories
 
 You can use the OSS console to create and simulate basic features of directories in Windows. This topic describes how to create a directory by using the OSS console.
 
@@ -1327,9 +1700,6 @@ A bucket is created. For more information, see Create a bucket.
 **Background information**
 
 OSS does not use a hierarchical structure to store objects, but instead uses a flat structure. All elements are stored in buckets as objects. To help organize objects and simplify management, the OSS console displays objects whose names end with a forward slash (/) as directories. The objects can be uploaded and downloaded. You can use directories in the OSS console in the same manner as you use directories in Windows. The OSS console displays objects whose names end with a forward slash (/) as directories, regardless of whether these objects contain data. The objects can only be downloaded by calling an API operation or by using OSS SDKs.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1339,19 +1709,16 @@ The directory name must comply with the following conventions: The name can cont
 5. Click **OK**.
 After you create a directory, you can click or **Permanently Delete** in the Actions column corresponding to the directory to delete the directory and the data in the directory.
 
-#### Download objects
+#### 2.5.5 Download objects
 
 After you upload objects to a bucket, you can download the objects to the default download path of your browser or a specified local path.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
 3. Click the **Files** tab, and then download single or multiple objects.
 Download a single object Method 1: Choose **More > Download** in the Actions column that corresponds to the object that you want to download. Method 2: Click the name of the object that you want to download, or click **View Details** in the Actions column that corresponds to the object you want to download. In the **View Details** panel, click **Download**. Download multiple objects Select the objects that you want to download. Then, choose **Batch Operation > Download**. You can download up to 100 objects at a time in the OSS console.
 
-#### Delete objects
+#### 2.5.6 Delete objects
 
 You can delete uploaded objects in the OSS console when they are no longer needed.
 
@@ -1362,9 +1729,6 @@ You can delete a single object or batch delete multiple objects. You can batch d
 **Important**
 
 Deleted objects cannot be recovered. Exercise caution when you delete objects.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1372,16 +1736,13 @@ upload objects.
 Delete a single object Choose **More > Permanently Delete** in the Actions column corresponding to the target object. Delete multiple objects at a time Select the objects that you want to delete, and then choose **Batch Operation > Permanently Delete**.
 4. In the message that appears, click **OK**.
 
-#### Manage parts
+#### 2.5.7 Manage parts
 
 When you use multipart upload to upload an object, the object is split into several parts. After all of the parts are uploaded to the OSS server, you can call CompleteMultipartUpload to combine the parts into a complete object.
 
 **Background information**
 
 You can also configure lifecycle rules to clear parts that are not needed on a regular basis. For more information, see Configure lifecycle rules.
-
-**Procedure**
-
 1. View publishing history.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name to which you want to
 upload objects.
@@ -1390,16 +1751,13 @@ upload objects.
 To delete all parts in the bucket, select all parts and then click **Delete All**. To delete specific parts in the bucket, select these parts and then click **Delete**.
 5. In the message that appears, click **OK**.
 
-#### Configure object tagging
+#### 2.5.8 Configure object tagging
 
 You can configure object tagging to classify objects. Object tagging uses key-value pairs to identify objects. You can perform operations on multiple objects that have the same tag. For example, you can configure lifecycle rules for objects that have the same tag.
 
 **Background information**
 
 Object tagging uses key-value pairs to identify objects. You can manage multiple objects that have the same tag. For example, you can configure lifecycle rules for objects that have the same tag or authorize Resource Access Management (RAM) users to access objects that have the same tag. When you configure object tagging, take note of the following items: A maximum of 10 tags can be configured for each object. The tags of the same object must have unique tag keys. A tag key can be up to 128 bytes in length. A tag value can be up to 256 bytes in length. Tag keys and tag values are case-sensitive. The key and value of a tag can contain letters, digits, spaces, and the following characters: + - = . _ : / Only the bucket owner and authorized users have read and write permissions on object tags. These permissions are independent of object access control lists (ACLs). In cross-region replication (CRR), object tags are also replicated to the destination bucket.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation pane, click **Buckets**. On the Buckets page, click the name of the bucket that you
 want to manage.
@@ -1409,7 +1767,7 @@ want to manage.
 You can click **Add** to add up to more 10 tags to the object.
 6. Click **Confirm**.
 
-#### Configure bucket policies to authorize other
+#### 2.5.9 Configure bucket policies to authorize other users to access OSS resources
 
 **users to access OSS resources**
 
@@ -1576,7 +1934,7 @@ After you configure a bucket policy for a bucket, you can use the following meth
 
 OSS console Log on to the OSS console. In the left-side navigation pane, click the + icon next to **My OSS Paths**. In the Add Path panel, add the bucket name and the object path specified in the bucket policy. For more information, see Add OSS paths.
 
-### Add OSS paths
+### 2.6 Add OSS paths
 
 You can add the paths of OSS resources in the console for quicker access.
 
@@ -1598,16 +1956,13 @@ example/test/.
 folder of the bucket named example, set File Path to
 4. Click **Confirm**.
 
-### Create single tunnels
+### 2.7 Create single tunnels
 
 You can create single tunnels between OSS and a virtual private cloud (VPC) to access OSS resources from the VPC.
 
 **Prerequisites**
 
 A VPC network and a vSwitch are created. For more information, see the "Create a VPC" and "Create a vSwitch" topics in **Apsara Stack VPC User Guide**.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. In the left-side navigation panel, click **Single Tunnel**.
 3. On the **Single Tunnel** page, click **Create**.
@@ -1628,9 +1983,9 @@ After you create the single tunnel, you can click **Back to Console** in the pop
 **Single Tunnel** page.
 You can view the information about the single tunnel that you create on the **Single Tunnel** page. If you no longer use a single tunnel, click **Delete** in the Actions column corresponding to the single tunnel to delete the single tunnel.
 
-### CSG
+### 2.8 CSG
 
-#### What is CSG?
+#### 2.8.1 What is CSG?
 
 Cloud Storage Gateway (CSG) is a gateway service that can be deployed on Apsara Stack. CSG uses OSS buckets as backend storage devices. CSG provides on-premises and cloud applications with standard file services over the Network File System (NFS) and Server Message Block (SMB) protocols. CSG supports only file gateways. File gateways use OSS buckets as backend storage devices, and map the object directory structure of OSS buckets to NAS file systems. You can read and write all objects in a specified OSS bucket over standard NFS and SMB protocols. CSG also uses on-premises storage to cache hot data, and provides high-performance data access in addition to the large storage capacity of OSS buckets. File gateways are compatible with the Portable Operating System Interface (POSIX) and third-party backup software.
 
@@ -1640,15 +1995,11 @@ The following figure shows the architecture of CSG.
 
 **Scenarios**
 
-File gateways Build a file storage service for a large file system when local storage is limited. Store data as objects in the cloud, and allow applications to access the data in a file system without the need to modify code.
+Build a file storage service for a large file system when local storage is limited. Store data as objects in the cloud, and allow applications to access the data in a file system without the need to modify code.
 
-#### Usage notes
+#### 2.8.2 Usage notes
 
-Before you run CSG instances, we recommend that you read the following usage notes.
-
-**File gateways**
-
-You can create file gateways only by using the recommended CIDR block or its subnets of a VPC. You may have a large number of files exist in the same directory of an OSS bucket. For example, hundreds of thousands or even millions of subdirectories or files exist in the root directory or under a specific directory of an OSS bucket. In this case, file gateways are not suitable due to extremely slow access to subdirectories or files. In most cases, if you want to use file gateways to manage files, we recommend that you place at most 100,000 files in a single directory. Files gateways reserve 20% of the cache disk space to cache metadata and use the rest of the space to cache data. The stored metadata refers to the metadata of different files, including the size and last modification time of each file. In this case, if a file is discarded, a file gateway creates a metadata file so that you can view the information about the discarded file when you access folders from the client. If you want to read the discarded file, the file gateway retrieves the data of the discarded file from the OSS bucket to the cache disk. The space required to cache the metadata on the cache disk determines the maximum number of files that are supported by the current share. In most cases, a share with a cache disk of 100 GB in size supports at most 10 million files. You can check the value of the Available Metadata Space parameter of shares when you use the file gateway. Generally, you can consider whether to scale out the cache disk when the remaining space is about 3 GB. Files written to file gateways are asynchronously synchronized to OSS buckets. Before the files are synchronized to OSS buckets by using file gateways, we recommend that you do not modify or delete the files by using other gateways or tools, such as ossutil or ossfs. Otherwise, data inconsistency may occur. We recommend that you do not frequently interrupt the upload of large files to NFS or SMB shares. The system uploads files by using multipart uploads. If you interrupt the upload of large files, file fragments are generated in the associated OSS bucket. These file fragments occupy the capacity of the OSS bucket. Therefore, the storage usage of the OSS bucket is slightly higher than the total file size. The cache capacity for file sharing is calculated based on the following formula: Recommended local cache capacity = [Application bandwidth (Mbit/s) - Backend bandwidth of a gateway (Mbit/s)] × Write duration (seconds) × 1.2. To obtain better performance when you access data from local clients, you can estimate the total amount of hot data. Compare the total amount of hot data with the recommended on-premises cache capacity and select the higher value as the capacity of the on-premises cache disk. If you want to write large files by using a file gateway, the size of each file must be smaller than 30% of the cache disk capacity. You cannot write multiple large files at the same time. If you write multiple large files at the same time, the cache disk space is exhausted. File gateways support sparse files. If a sparse file fails to be uploaded to a file gateway, run the following command to convert the format of the sparse file:
+Before you run CSG instances, we recommend that you read the following usage notes. You can create file gateways only by using the recommended CIDR block or its subnets of a VPC. You may have a large number of files exist in the same directory of an OSS bucket. For example, hundreds of thousands or even millions of subdirectories or files exist in the root directory or under a specific directory of an OSS bucket. In this case, file gateways are not suitable due to extremely slow access to subdirectories or files. In most cases, if you want to use file gateways to manage files, we recommend that you place at most 100,000 files in a single directory. Files gateways reserve 20% of the cache disk space to cache metadata and use the rest of the space to cache data. The stored metadata refers to the metadata of different files, including the size and last modification time of each file. In this case, if a file is discarded, a file gateway creates a metadata file so that you can view the information about the discarded file when you access folders from the client. If you want to read the discarded file, the file gateway retrieves the data of the discarded file from the OSS bucket to the cache disk. The space required to cache the metadata on the cache disk determines the maximum number of files that are supported by the current share. In most cases, a share with a cache disk of 100 GB in size supports at most 10 million files. You can check the value of the Available Metadata Space parameter of shares when you use the file gateway. Generally, you can consider whether to scale out the cache disk when the remaining space is about 3 GB. Files written to file gateways are asynchronously synchronized to OSS buckets. Before the files are synchronized to OSS buckets by using file gateways, we recommend that you do not modify or delete the files by using other gateways or tools, such as ossutil or ossfs. Otherwise, data inconsistency may occur. We recommend that you do not frequently interrupt the upload of large files to NFS or SMB shares. The system uploads files by using multipart uploads. If you interrupt the upload of large files, file fragments are generated in the associated OSS bucket. These file fragments occupy the capacity of the OSS bucket. Therefore, the storage usage of the OSS bucket is slightly higher than the total file size. The cache capacity for file sharing is calculated based on the following formula: Recommended local cache capacity = [Application bandwidth (Mbit/s) - Backend bandwidth of a gateway (Mbit/s)] × Write duration (seconds) × 1.2. To obtain better performance when you access data from local clients, you can estimate the total amount of hot data. Compare the total amount of hot data with the recommended on-premises cache capacity and select the higher value as the capacity of the on-premises cache disk. If you want to write large files by using a file gateway, the size of each file must be smaller than 30% of the cache disk capacity. You cannot write multiple large files at the same time. If you write multiple large files at the same time, the cache disk space is exhausted. File gateways support sparse files. If a sparse file fails to be uploaded to a file gateway, run the following command to convert the format of the sparse file:
 
 ```
 dd if=<sparse file name> of=<sparse file name> conv=notrunc bs=1M
@@ -1656,7 +2007,7 @@ dd if=<sparse file name> of=<sparse file name> conv=notrunc bs=1M
 
 The size of the sparse file cannot exceed the available capacity of the cache disk. The names of file gateways and directories must be encoded in UTF-8. File gateways only support file and directory names that are encoded in UTF-8. Other formats are not supported. For example, if you mount an NFS file share of a file gateway on a Windows CSG agent, the files and directories that have Chinese names cannot be created. In this case, a 0x8007045D error is returned. If the size of a file in a file gateway exceeds 256 MB, we recommend that you disable the versioning feature for the associated OSS bucket. Otherwise, a timeout error may occur when the gateway uploads metadata to the associated bucket. This affects the performance of the gateway.
 
-#### Quick start
+#### 2.8.3 Quick start
 
 After you use file gateways to map the objects and folders in OSS buckets to the files and directories in Apsara File Storage NAS file systems, you can read and write all objects in a specified OSS bucket by using the NFS and SMB protocols. CSG uses on-premises storage to cache hot data, and provides high-performance data access in addition to the large storage capacity of OSS buckets.
 
@@ -1759,7 +2110,7 @@ parameters. You can configure settings in the Advanced Settings step only if you
 
 After you create a shared directory, you can access the shared directory. For more information, see Access an NFS share and Access an SMB share.
 
-#### File gateways
+#### 2.8.4 File gateways
 
 **2.8.4.1. Manage file gateways**
 
@@ -1814,8 +2165,6 @@ After a gateway is deployed, you can view the information about the gateway on t
 After a gateway is deployed, click the name of the gateway on the **Gateways** page. Then, you can perform the following operations on different pages based on your business requirements. On the **Share** page, you can create a share and restart NFS shares or SMB shares. For more information, see Manage shares. On the **Details** page, you can view the basic information about the gateway, including the name, ID, version, type, status, creation time, and activation time. On the **Cache** page, you can view the information about the cache disks and scale out a cache disk. For more information, see Manage cache disks. On the **SMB Users** page, you can create and delete SMB users. For more information, see Create an SMB user.
 
 **What to do next**
-
-Manage shares
 
 **2.8.4.2. Manage shares**
 
@@ -1963,9 +2312,6 @@ icon.
 **2.8.4.4. Create an SMB user**
 
 This topic describes how to create a Server Message Block (SMB) user. SMB users can access SMB shares.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. Click **Cloud Storage Gateways** in the left-side navigation pane.
 3. On the **Gateways** page, find the gateway for which you want to create an SMB user and click the ID of the
@@ -1997,11 +2343,7 @@ mount.nfs 192.168.0.0:/shares local-directory
 
 Parameter description: `192.168.0.0:/shares` : the mount target of the gateway. The mount target consists of the IPv4 address of the gateway and the name of the NFS share. Specify the mount target based on your business requirements. To view the mount target of the gateway, go to the **Share** tab of the gateway. `local-directory` : a local directory of the client. Specify a directory that supports read and write operations. You cannot specify a directory that does not exist.
 4. Run the **df -h** command to check the mount result.
-If information similar to the following output appears, the NFS share is mounted to the local directory of the client. After the NFS share is mounted, you can view the capacity of the file system that is managed by the NFS share.
-
-**Access an NFS share**
-
-After an NFS share is mounted, you can access the NFS share in the same way that you access a local directory. If you have write permissions on the NFS share, you can write data to the NFS share. If you have read-only permissions on the NFS share, you can only read data from the NFS share. A share of a gateway is synchronized with the Object Storage Service (OSS) bucket associated with the share. When you manage a share, the changes to the share are also applied to the associated OSS bucket.
+If information similar to the following output appears, the NFS share is mounted to the local directory of the client. After the NFS share is mounted, you can view the capacity of the file system that is managed by the NFS share. After an NFS share is mounted, you can access the NFS share in the same way that you access a local directory. If you have write permissions on the NFS share, you can write data to the NFS share. If you have read-only permissions on the NFS share, you can only read data from the NFS share. A share of a gateway is synchronized with the Object Storage Service (OSS) bucket associated with the share. When you manage a share, the changes to the share are also applied to the associated OSS bucket.
 
 **Enable automatic mounting of an NFS share**
 
@@ -2041,9 +2383,6 @@ This topic describes how to access a Server Message Block (SMB) share of a gatew
 **Prerequisites**
 
 An SMB share is created. For more information, see Create a share. You can mount up to eight Network File System (NFS) or SMB shares to a gateway. If you have not created an SMB user, you can access SMB shares from a client as a public user by default. If you have created an SMB user, you must grant read and write or read-only permissions to the user before the user can access SMB shares. For more information, see Configure an SMB share. After you change the permissions of an SMB user, run the **net use /delete < share path >** command to delete the share in the Windows operating system. You do not need to restart the client.
-
-**Procedure**
-
 1. Log on to the ECS console. For more information, see the **Log on to the ECS console** topic in ECS User Guide.
 2. Connect to your Windows ECS instance. For more information, see the **Connect to an instance** topic in ECS
 User Guide.
@@ -2059,9 +2398,6 @@ After an SMB share is mounted, you can access the SMB share in the same way that
 **2.8.4.6. Update a gateway**
 
 By default, each gateway that you create is of the latest version. You can update a gateway only if a later gateway version is available. This topic describes how to update a gateway.
-
-**Procedure**
-
 1. Log on to the OSS console.
 2. Click **Cloud Storage Gateways** in the left-side navigation pane.
 3. On the **Gateways** page, find the gateway that you want to update and click **Upgrade** in the Actions column.
@@ -2116,13 +2452,13 @@ If you create a share for a gateway by using a custom OSS bucket domain name, th
 
 `]`
 
-## NAS
+## 3 NAS
 
-### What is NAS?
+### 3.1 What is NAS?
 
 Apsara File Storage NAS is a cloud service that provides file storage solutions for compute nodes. The compute nodes include Elastic Compute Service (ECS) instances, instances, and Container Service for Kubernetes (ACK) clusters. NAS provides standard file access protocols. You can use the distributed file storage solution that provides shared access, scalability, high reliability, and high performance without the need to modify the configurations of the applications. You can mount a NAS file system on multiple compute nodes at a time. This reduces a large number of costs in data transmission and synchronization. You can perform the following operations: Create a NAS file system and mount target. Create a permission group for the file system and add rules to the permission group. This allows access from specific IP addresses or CIDR blocks to the file system. This also allows you to grant different levels of access permissions to the IP addresses or CIDR blocks. Mount the file system on compute nodes. The compute nodes include ECS instances and ACK clusters. NAS allows you to access the file system by using the Network File System (NFS) and Server Message Block (SMB) protocols. You can also call POSIX-based APIs to access the file system. Manage file systems, mount targets, and permission groups in the NAS console. Call NAS API operations to manage file systems.
 
-### Usage notes
+### 3.2 Usage notes
 
 Before you use NAS, take note of the following limits.
 
@@ -2154,18 +2490,15 @@ NAS supports the SMB 2.1 protocol and later versions. NAS also supports operatin
 
 Before you delete a NAS file system, you must unmount the file system from the compute node on which you mounted the file system by using a mount target. Then, delete the mount target and the file system.
 
-### Quick start
+### 3.3 Quick start
 
-#### Log on to the NAS console
+#### 3.3.1 Log on to the NAS console
 
 This topic describes how to log on to the Apsara File Storage NAS console.
 
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
-
-**Procedure**
-
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
 You can click the current language in the upper-right corner to switch to another language.
 2. Enter your username and password.
@@ -2194,16 +2527,13 @@ Enter a six-digit MFA verification code and click **Authenticate**. For informat
 **Management Console User Guide**.
 5. In the top navigation bar, click **Products**. In the **Storage** section, click **Apsara File Storage NAS**.
 
-#### Create a file system
+#### 3.3.2 Create a file system
 
 This topic describes how to create a file system in the Apsara File Storage NAS console.
 
 **Background information**
 
 Before you create a file system, take note of the following items: You can use an Alibaba Cloud account to create up to 1,000 file systems. The maximum capacity of a Performance NAS file system is 1 PB. If you want to increase the maximum storage capacity, we recommend that you contact Alibaba Cloud technical support.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. In the left-side navigation pane, choose **File System > File System List**. On the page that appears, click
 **Create File System**.
@@ -2226,7 +2556,7 @@ The following table describes the parameters.
 
 4. After you configure the preceding parameters, click **Submit**.
 
-#### Create a permission group and add rules
+#### 3.3.3 Create a permission group and add rules
 
 This topic describes how to create a permission group and add rules to the permission group in the Apsara File Storage NAS console.
 
@@ -2268,7 +2598,7 @@ The following table describes the parameters.
 
 5. Click **OK** to create the rule.
 
-#### Create a mount target
+#### 3.3.4 Create a mount target
 
 After an Apsara File Storage NAS file system is created, you must create a mount target for the file system. Then, you can use the mount target to mount the file system on compute nodes. The compute nodes include Elastic Compute Service (ECS) instances and Container Service for Kubernetes (ACK) clusters. This topic describes how to create a mount target.
 
@@ -2279,9 +2609,6 @@ The following operations are completed: Create a file system of application mana
 **Background information**
 
 A mount target is an endpoint that resides in a virtual private cloud (VPC) or the classic network. Each mount target corresponds to a file system. NAS file systems support mount targets of the VPC and classic network types. You can use a mount target to mount a file system on multiple compute nodes for shared access. The compute nodes include ECS instances and ACK nodes.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > File System List**.
 3. Find the file system and click **Management** in the Actions column.
@@ -2305,7 +2632,7 @@ If you want to create a mount target in the classic network, configure the param
 
 7. Click **OK** to create the mount target.
 
-#### Mount an NFS file system
+#### 3.3.5 Mount an NFS file system
 
 Before you mount a file system, you must create the file system and a mount target for the file system. Then, you can use the mount target to mount the file system on compute nodes. The compute nodes include Elastic Compute Service (ECS) instances and Container Service for Kubernetes (ACK) clusters. This topic describes how to mount a Network File System (NFS) file system.
 
@@ -2363,7 +2690,7 @@ If the output that is similar to the following information appears, the mount is
 4. After the SMB file system is mounted, you can read data from and write data to the NAS file systems on the ECS
 instance. You can access the file system the same way you access a local directory. The following figure shows an example.
 
-#### Mount an SMB file system
+#### 3.3.6 Mount an SMB file system
 
 Before you mount a file system, you must create the file system and a mount target for the file system. Then, you can use the mount target to mount the file system on compute nodes such as Elastic Compute Service (ECS) instances. This topic describes how to mount a Server Message Block (SMB) file system.
 
@@ -2381,9 +2708,6 @@ Workstation a. Choose **All Programs > Accessories > Run**, or press `Win+R` and
 click **Advanced**. c. In the **Advanced TCP/IP Settings** dialog box, choose **WINS > Enable NetBIOS over TCP/IP**. d. Choose **All Programs > Accessories > Run**, or press `Win+R` and enter `services.msc` to go to the Services console. e. Make sure that the TCP/IP NetBIOS Helper service is in the **Started** state and the startup type is
 **Automatic**.
 By default, the TCP/IP NetBIOS Helper service is in the Started state.
-
-**Procedure**
-
 1. Log on to the Windows ECS instance. For more information, see the **Connect to an instance** section of the Get
 started topic in ECS User Guide.
 2. Open the Command Prompt and run the following command to mount an SMB file system:
@@ -2404,18 +2728,15 @@ If the output that is similar to the following information appears, the mount is
 4. After the SMB file system is mounted, you can read data from and write data to the NAS file systems on the ECS
 instance.
 
-### File systems
+### 3.4 File systems
 
-#### View the details of a file system
+#### 3.4.1 View the details of a file system
 
 This topic describes how to view the details of a file system. The details include the information about the file system and the attached mount targets. You can view the details of a file system in the Apsara File Storage NAS console.
 
 **Prerequisites**
 
 A file system is created. For information about how to detach a tag policy from an object, see Create a file system.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > File System List**.
 3. Find the file system and click **Management** to go to the details page of the file system.
@@ -2425,16 +2746,13 @@ includes the ID, region, protocol type, and storage specifications.
 **Mounting Targets**: In this section, the list of mount targets attached to the file system is displayed. You can
 manage the mount targets and view the clients on which the file system is mounted.
 
-#### Delete a file system
+#### 3.4.2 Delete a file system
 
 This topic describes how to delete a file system in the Apsara File Storage NAS console.
 
 **Prerequisites**
 
 The number of mount targets is 0. For more information about how to view the number of mount targets, see View the details of a file system.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > File System List**.
 3. Find the file system that you want to manage, and click **Manage**.
@@ -2444,7 +2762,7 @@ The number of mount targets is 0. For more information about how to view the num
 Before you can delete a file system, you must remove all mount targets from the file system. Proceed with caution when you delete a file system. After a file system is deleted, the data on the file system cannot be restored. Make sure that all data is backed up.
 4. In the **Delete File System** dialog box, click **OK** to complete the deletion.
 
-#### Scale up a file system
+#### 3.4.3 Scale up a file system
 
 If the used space of an Apsara File Storage NAS file system reaches the specified capacity, data can no longer be written to the file system. To ensure the availability of the NAS service, we recommend that you scale up the file system before the used space reaches the specified capacity. This topic describes how to scale up a file system in the NAS console.
 
@@ -2455,59 +2773,47 @@ A file system is created. For more information, see Create a file system.
 **Important**
 
 A file system can be scaled up but cannot be scaled down. A Performance NAS file system can be scaled out to up to 1 PB. .
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. In the left-side navigation pane, choose **File System > File System List**.
 3. Find the file system and click **Upgrade** in the **Operations** column.
 4. In the **Upgrade** dialog box, specify a desired capacity for the file system in the **New Total Capacity** field.
 5. Click **OK**.
 
-### Mount targets
+### 3.5 Mount targets
 
-#### View mount targets
+#### 3.5.1 View mount targets
 
 This topic describes how to view mount targets in the Apsara File Storage NAS console.
 
 **Background information**
 
 The following operations are completed: Create a file system of application management in Kubernetes clusters Create a permission group and add rules of application management in ECS clusters Optional. The update package is verified.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > File System List**.
 3. Find the file system and click **Management** in the Actions column.
 4. In the left-side navigation pane, click **Mounting Targets**. On the **Mounting Target** tab, view the mount
 targets of the file system.
 
-#### Enable or disable a mount target
+#### 3.5.2 Enable or disable a mount target
 
 This topic describes how to enable or disable a mount target. You can control access to a mount target from clients by enabling or disabling the mount target.
 
 **Prerequisites**
 
 The following operations are completed: Create a file system of application management in Kubernetes clusters Create a permission group and add rules of application management in ECS clusters Optional. The update package is verified.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > File System List**.
 3. Find the file system and click **Management** in the Actions column.
 4. In the left-side navigation pane, click **Mounting Targets**. After you find the mount target that you want to
 disable or enable, you can perform the following operations: To disable the mount target, click **Disable**. In the Disable Mount Target dialog box, click **OK** to deny access to the mount target from clients. To enable the mount target, click **Enable**. In the Enable Mount Target dialog box, click **OK** to allow access to the mount target from clients.
 
-#### Delete a mount target
+#### 3.5.3 Delete a mount target
 
 This topic describes how to delete a mount target in the Apsara File Storage NAS console.
 
 **Prerequisites**
 
 A file system is unmounted from the compute node such as an Elastic Compute Service (ECS) instance and Container Service for Kubernetes (ACK) cluster on which you mounted the file system by using a mount target.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > File System List**.
 3. Find the file system and click **Management** in the Actions column.
@@ -2519,16 +2825,13 @@ A file system is unmounted from the compute node such as an Elastic Compute Serv
 Proceed with caution when you delete a mount target. After you delete a mount target, you cannot restore the mount target.
 6. In the Delete Permission Group message, click **OK**.
 
-#### Modify the permission group of a mount target
+#### 3.5.4 Modify the permission group of a mount target
 
 You must add a permission group to each mount target. You can modify the permission group of a mount target in the Apsara File Storage NAS console.
 
 **Prerequisites**
 
 The following operations are completed: Create a file system of application management in Kubernetes clusters Create a permission group and add rules of application management in ECS clusters Optional. The update package is verified.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **File System > File System List**.
 3. Find the file system and click **Management** in the Actions column.
@@ -2536,22 +2839,19 @@ The following operations are completed: Create a file system of application mana
 5. Find the mount target that you want to modify and click **Modify Permission Group**.
 6. In the **Modify Permission Group** dialog box, change the permission group and click **OK**.
 
-### Permission groups
+### 3.6 Permission groups
 
-#### View permission groups
+#### 3.6.1 View permission groups
 
 This topic describes how to view permission groups in the Apsara File Storage console.
 
 **Prerequisites**
 
 A permission group is created. For information about how to detach a tag policy from an object, see Create a permission group and add rules.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **File System > Permission Group** and view the permission groups.
 
-#### Delete a permission group
+#### 3.6.2 Delete a permission group
 
 This topic describes how to delete a permission group in the Apsara File Storage NAS console.
 
@@ -2567,16 +2867,13 @@ A permission group is created. For more information, see Create a permission gro
 Permission groups in use cannot be deleted. Before you can delete a permission group, you must remove the permission group from the linked mount target.
 4. In the Delete Permission Group dialog box, click **OK**.
 
-#### Manage permission group rules
+#### 3.6.3 Manage permission group rules
 
 This topic describes how to manage permission group rules in the Apsara File Storage NAS console. The management includes viewing the details of rules, modifying rules, and deleting rules.
 
 **Prerequisites**
 
 A permission group and a permission group rule are created. For more information, see Create a permission group and add rules.
-
-**Procedure**
-
 1. Log on to the NAS console.
 2. Choose **NAS > Permission Group**.
 3. Find the target permission group and click **Manage**.
@@ -2585,11 +2882,11 @@ View all rules for the permission group. Modify a rule. Find the target rule and
 **authorization address**, **read/write permissions**, **user permission**, and **priority**.
 Delete a rule. Find the target rule and click **Delete**. In the Delete Rule dialog box, click **OK**.
 
-### Directory-level ACLs that grant the
+### 3.7 Directory-level ACLs that grant the read and write access
 
 **read and write access**
 
-#### Overview
+#### 3.7.1 Overview
 
 Apsara File Storage NAS supports NFSv4 access control lists (ACLs) and Portable Operating System Interface for UNIX (POSIX) ACLs. This topic introduces POSIX ACLs and NFSv4 ACLs and describes the usage notes for these ACLs. Access control and user management are important for enterprise users who need to share files among different users and groups by using a shared file system. To control access to different files and directories, you can grant users and groups different types of access. NAS provides Network File System (NFS) ACLs to allow you to meet specific requirements. An ACL consists of one or more access control entries (ACEs) that each grant a user or group one or more permissions to access a file or directory. The NFSv3 protocol implements access control by using the file mode creation mask (umask). The POSIX ACL feature is an extension to this permission model. You can grant permissions to specific users and groups in addition to the owner, group, and other classes. In a file system, a directory or file can inherit the permissions from its parent directory. For more information, see acl(5) - Linux man page. The NFSv4 ACL feature is an extension to the NFSv4 protocol. Compared with POSIX ACLs, NFSv4 ACLs provide finer-grained access control. For more information, see nfs4_acl(5) - Linux man page. You can use the NFSv3 protocol to mount a file system to which NFSv4 ACLs are applied. After the file system is mounted, the NFSv4 ACLs are converted into POSIX ACLs. You can also use the NFSv4 protocol to mount a file system to which POSIX ACLs are applied. After the file system is mounted, the POSIX ACLs are converted into NFSv4 ACLs. However, NFSv4 ACLs and POSIX ACLs are not fully compatible. The interaction between ACLs and the umask is not in an ideal state. NFSv3 file systems do not support locks. Therefore, if you use NFS ACLs, we recommend that you use the NFSv4 protocol to mount file systems and configure only NFS ACLs for the file systems. We also recommend that you do not use the umask or POSIX ACLs along with NFSv4 ACLs. For more information, see Features.
 
@@ -2601,7 +2898,7 @@ We recommend that you use the default method that allows a subdirectory or file 
 
 We recommend that you use UIDs or GIDs such as UID 1001 to configure ACLs. We recommend that you do not configure the umask along with NFSv4 ACLs. The `nfs4_setfacl` command provides multiple options such as the -a, -x, and -m options to add, remove, and modify ACEs. We recommend that you run the `nfs4_setfacl -e <file>` command to edit an ACL in an editor. NAS NFSv4 ACLs support Allow ACEs rather than Deny ACEs. All users have the permissions that are granted to everyone. Therefore, we recommend that you grant the least permissions to everyone. If everyone has more permissions than an ACE, a security vulnerability may exist. NFSv4 ACLs support fine-grained permissions. In most cases, permission control based on fine-grained write permissions is unnecessary. For example, if a user has the write-data (w) access to a file but does not have the append-data (a) access, an error may occur when the user writes data to the file. The same issue occurs for a directory. To prevent unexpected permission errors, we recommend that you specify a capital W when you run the `nfs4_setfacl` command to configure an ACL. The `nfs4_setfacl` command specifies full write access. For a file, W is expanded to wadT. For a directory, W is expanded to wadTD. We recommend that you use the default method that allows a subdirectory or a file to inherit the ACL from the parent directory. Then, you do not need to configure another ACL when you create a file or subdirectory in the parent directory. A file system scans all ACEs each time it performs a permission check. To ensure optimal performance, we recommend that you retain a minimum number of ACEs. If redundant ACLs exist, the performance of the file system degrades. Proceed with caution when you configure ACLs by using the recursive method ( `nfs4_setfacl -R` ). A large amount of metadata is generated when you apply an ACL recursively to a directory that contains a large number of files and subdirectories. This may negatively affect your business. Before you configure ACLs, we recommend that you manage groups and the corresponding permissions. For example, you can add a user to one or more groups. To add, remove, or change permissions for a user, you can move the user to a group that has the required permissions. You need to modify the ACL of the group only if the group structure changes. We recommend that you configure ACLs for groups rather than individual users. This is a simple and time-saving method to implement access control.
 
-#### Features
+#### 3.7.2 Features
 
 This topic describes the features of NFSv4 access control lists (ACLs) and POSIX ACLs.
 
@@ -2897,11 +3194,7 @@ file. Example 2: Migrate the ACL of a directory.
 | # file: file2 user::--- user:player:r-x group::--- mask::r-x other::--x |   |   |   |
 | Run the | cp -ar dir1 dir2 |   | command to copy the ACL of the dir1 directory to the dir2 directory. |
 
-The number of POSIX ACLs is limited. By default, NAS supports a maximum of 100,000 different ACLs in each file system. Each ACL can contain a maximum of 500 ACEs. We recommend that you do not exceed the limits of ACLs or ACEs. Otherwise, more time and resources are consumed to verify permissions.
-
-**FAQ**
-
-Why are deny ACEs not supported? The position of an ACE that resides in an ACL is important. The sequence for ACEs that reside in an NFSv4 ACL is random. A deny ACE may be placed in any position of an NFSv4 ACL. For example, an ACL contains two ACEs: A::Alice:r and D::Alice:r. The position of the ACEs determines whether the user named Alice has the write permissions. When you configure an ACL, you must consider the position of each ACE. The number of ACEs in an ACL has a sharp increase. The ACEs in an ACL may be difficult to combine and deduplicate because it is not mandatory to sequence ACEs. The number of ACEs may increase up to tens or hundreds over a long period of time. To manage the final permissions that are produced by these ACEs, you need to check each ACE. The check process is strenuous and time-consuming. The interactions between the umask and ACLs become more complex after deny ACEs are applied. This is because deny features do not exist in the umask. If deny ACEs are available, you may need to add several ACEs to an ACL when the umask is changed. For example, if you change the umask to -rw-rw-rw, you need to add the following ACEs to the ACL. You must add the ACEs in sequence at the beginning of the ACL.
+The number of POSIX ACLs is limited. By default, NAS supports a maximum of 100,000 different ACLs in each file system. Each ACL can contain a maximum of 500 ACEs. We recommend that you do not exceed the limits of ACLs or ACEs. Otherwise, more time and resources are consumed to verify permissions. Why are deny ACEs not supported? The position of an ACE that resides in an ACL is important. The sequence for ACEs that reside in an NFSv4 ACL is random. A deny ACE may be placed in any position of an NFSv4 ACL. For example, an ACL contains two ACEs: A::Alice:r and D::Alice:r. The position of the ACEs determines whether the user named Alice has the write permissions. When you configure an ACL, you must consider the position of each ACE. The number of ACEs in an ACL has a sharp increase. The ACEs in an ACL may be difficult to combine and deduplicate because it is not mandatory to sequence ACEs. The number of ACEs may increase up to tens or hundreds over a long period of time. To manage the final permissions that are produced by these ACEs, you need to check each ACE. The check process is strenuous and time-consuming. The interactions between the umask and ACLs become more complex after deny ACEs are applied. This is because deny features do not exist in the umask. If deny ACEs are available, you may need to add several ACEs to an ACL when the umask is changed. For example, if you change the umask to -rw-rw-rw, you need to add the following ACEs to the ACL. You must add the ACEs in sequence at the beginning of the ACL.
 
 ```
 A::OWNER@:rw D::OWNER@:x A::GROUP@:rw D::GROUP@:x A::EVERYONE@:rw D::EVERYONE@:x
@@ -2915,7 +3208,7 @@ A::OWNER@:rw A::GROUP@:rw A::EVERYONE@:rw
 
 Conversions between NFSv4 ACLs and POSIX ACLs are not supported. POSIX ACLs do not support deny ACEs. If deny ACEs are included in an NFSv4 ACL, you cannot convert the ACL to a POSIX ACL.
 
-#### Use POSIX ACLs to control access
+#### 3.7.3 Use POSIX ACLs to control access
 
 This topic describes how to configure Portable Operating System Interface (POSIX) access control lists (ACLs) to control access to the files and directories in an NFSv3 file system.
 
@@ -2935,8 +3228,6 @@ An NFSv3 file system is mounted. For more information, see Mount an NFS file sys
 | setfacl -k file1 | Removes all default ACEs from the file1 file. |
 | nfs4 setfacl -R -m g:players:rw dir _ | Grants the players group the read and write permissions on the files and subdirectories in the dir directory. |
 | setfacl -d -m g:players:rw dir1 | Grants the players group the read and write permissions on the new files and subdirectories in the dir1 directory. |
-
-**Procedure**
 
 To control access to files and directories by configuring NFS ACLs, perform the following steps:
 1. Create users and groups.
@@ -3032,7 +3323,7 @@ information, the admini user does not have permissions on the dir0/file file.
 getfacl: dir0/file: Permission denied
 ```
 
-#### Use NFSv4 ACLs to control access
+#### 3.7.4 Use NFSv4 ACLs to control access
 
 This topic describes how to configure NFSv4 access control lists (ACLs) and use the ACLs to control access to the files or directories in an NFSv4 file system.
 
@@ -3069,8 +3360,6 @@ You can mount an NFSv4 file system on a Linux Elastic Compute Service (ECS) inst
 | nfs4 setfacl -a A:fdg:10001:rW dir1 _ | Adds an ACE that grants the read and write permissions on new files and subdirectories in the dir1 directory to a group principal named 10001. |
 |---|---|
 | nfs4 setfacl -a A:fg:10001:rx dir1 _ | Adds an ACE that grants the read, write, and execute permissions on all new files in the dir1 directory to a group principal named 10001. |
-
-**Procedure**
 
 To control access to files and directories by configuring NFSv4 ACLs, perform the following steps.
 1. Create users and groups.
@@ -3185,25 +3474,15 @@ information appears, the admini user does not have permissions on the dir0/file 
 Invalid filename: dir0/file
 ```
 
-## EBS
+## 4 EBS
 
-### EBS
+### 4.1 EBS
 
-Elastic Block Storage (EBS) is a persistent random block storage service with low latency and high reliability and is designed for Elastic Compute Service (ECS).
-
-**Overview**
-
-EBS provides EBS devices based on a distributed storage architecture. The EBS console provides you with an allin-one solution for EBS management in the cloud. You can use the EBS console to manage enterprise-level features and other features such as storage resource management, monitoring, performance analysis, disaster recovery, and alerting. As a centralized service platform for the entire EBS infrastructure, the EBS console informs you of resources in the cloud to best support business and optimize costs by analyzing long-term data trends.
-
-**Terms**
+Elastic Block Storage (EBS) is a persistent random block storage service with low latency and high reliability and is designed for Elastic Compute Service (ECS). EBS provides EBS devices based on a distributed storage architecture. The EBS console provides you with an allin-one solution for EBS management in the cloud. You can use the EBS console to manage enterprise-level features and other features such as storage resource management, monitoring, performance analysis, disaster recovery, and alerting. As a centralized service platform for the entire EBS infrastructure, the EBS console informs you of resources in the cloud to best support business and optimize costs by analyzing long-term data trends.
 
 **block storage**
 
-Block storage devices offer high performance and reduce latency. You can partition and format these devices and create file systems on the devices to meet the data storage requirements of your business.
-
-**EBS**
-
-EBS provide ECS instances with block-level storage that features low latency, persistent, and high-reliability. EBS devices use the triplicate distributed mechanism to ensure data durability for ECS instances. EBS devices can be created, released, and resized at any time. EBS devices including system and data disks can be resized online without interrupting their services. When you are resizing an EBS device, you do not need to stop the ECS instance to which the EBS device is attached or detach the EBS device from the ECS instance.
+Block storage devices offer high performance and reduce latency. You can partition and format these devices and create file systems on the devices to meet the data storage requirements of your business. EBS provide ECS instances with block-level storage that features low latency, persistent, and high-reliability. EBS devices use the triplicate distributed mechanism to ensure data durability for ECS instances. EBS devices can be created, released, and resized at any time. EBS devices including system and data disks can be resized online without interrupting their services. When you are resizing an EBS device, you do not need to stop the ECS instance to which the EBS device is attached or detach the EBS device from the ECS instance.
 
 **disk**
 
@@ -3211,19 +3490,7 @@ Disks are block-level EBS devices that use the triplicate mechanism and support 
 
 **snapshot**
 
-A snapshot is a point-in-time backup of a disk and is used to back up or restore the disk.
-
-**async replication**
-
-The async replication feature can asynchronously replicate data from a primary disk in one zone to a secondary disk in another zone in the same region on a periodic basis. In async replication, the data on the primary disk may be inconsistent with that on the secondary disk.
-
-**EBS**
-
-EBS provides disks. A disk can be attached to a single ECS instance that resides within the same zone as the disk.
-
-**Disks**
-
-Disks are block-level storage devices designed for ECS instances. Disks are classified into the following categories based on their performance or purposes.
+A snapshot is a point-in-time backup of a disk and is used to back up or restore the disk. The async replication feature can asynchronously replicate data from a primary disk in one zone to a secondary disk in another zone in the same region on a periodic basis. In async replication, the data on the primary disk may be inconsistent with that on the secondary disk. EBS provides disks. A disk can be attached to a single ECS instance that resides within the same zone as the disk. Disks are block-level storage devices designed for ECS instances. Disks are classified into the following categories based on their performance or purposes.
 
 **Performance-based classification**
 
@@ -3255,7 +3522,7 @@ that offers enhanced random I/O and data reliability.
 **Shared ultra disk**: uses a hybrid SSD and HDD storage medium.
 An ECS instance can have up to 16 data disks including cloud disks and shared disks.
 
-#### Features
+#### 4.1.1 Features
 
 **4.1.1.1. Overview**
 
@@ -3275,11 +3542,7 @@ If your applications are data-sensitive, we recommend that you encrypt the EBS d
 
 **Elastic storage**
 
-You can resize EBS devices to meet increasing storage requirements as your business and application data grow. For more information, see EBS device resizing.
-
-**Disaster recovery**
-
-Async replication is a feature that protects data across zones in a region based on the data replication capability of EBS. This feature can asynchronously replicate data between EBS devices in different zones in the same region for disaster recovery. You can use this feature to implement disaster recovery for critical business to protect data in your databases and improve business continuity. For more information, see Async replication. If a replication pair and a replication pair-consistent group have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone), the replication pair and replication pair-consistent group replicate data in the same direction. You can add replication pairs that replicate data between the production site and disaster recovery site in the same direction as a replication pair-consistent group to the group so that you can manage these replication pairs as a batch by using the group.
+You can resize EBS devices to meet increasing storage requirements as your business and application data grow. For more information, see EBS device resizing. Async replication is a feature that protects data across zones in a region based on the data replication capability of EBS. This feature can asynchronously replicate data between EBS devices in different zones in the same region for disaster recovery. You can use this feature to implement disaster recovery for critical business to protect data in your databases and improve business continuity. For more information, see Async replication. If a replication pair and a replication pair-consistent group have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone), the replication pair and replication pair-consistent group replicate data in the same direction. You can add replication pairs that replicate data between the production site and disaster recovery site in the same direction as a replication pair-consistent group to the group so that you can manage these replication pairs as a batch by using the group.
 
 **4.1.1.2. Triplicate storage**
 
@@ -3419,7 +3682,7 @@ The following table describes the terms related to the async replication feature
 
 **Use scenarios**
 
-The async replication feature is suitable for users who require high data security and need to implement disaster recovery and cross-zone migrations of business data. Disaster recovery If the primary disk in a replication pair fails, you can perform a failover to switch the primary and secondary disks over. During the failover, the failover feature disconnects the original replication link and fails services over to the disaster recovery system by attaching the new primary disk (original secondary disk) to an Elastic Compute Service (ECS) instance that is used for disaster recovery. Cross-zone data migration in the same region If you want to migrate your business data across zones within the same region, you can use the reverse replication sub-feature, instead of the image or snapshot replication feature.
+The async replication feature is suitable for users who require high data security and need to implement disaster recovery and cross-zone migrations of business data. If the primary disk in a replication pair fails, you can perform a failover to switch the primary and secondary disks over. During the failover, the failover feature disconnects the original replication link and fails services over to the disaster recovery system by attaching the new primary disk (original secondary disk) to an Elastic Compute Service (ECS) instance that is used for disaster recovery. Cross-zone data migration in the same region If you want to migrate your business data across zones within the same region, you can use the reverse replication sub-feature, instead of the image or snapshot replication feature.
 
 **Precautions**
 
@@ -3458,7 +3721,7 @@ The limits described in the following table apply to primary and secondary disks
 | Enable multi- attach | Not supported | × | × | You cannot enable the multi-attach feature for a disk. |
 | Migrate disks along with ECS instances | Not supported | × | × | N/A. |
 
-### Log on to the Apsara Uni-manager
+### 4.2 Log on to the Apsara Uni-manager Management Console
 
 **Management Console**
 
@@ -3467,9 +3730,6 @@ This topic describes how to log on to the Apsara Uni-manager Management Console.
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser.
-
-**Procedure**
-
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter key.
 2. Enter your username and password.
 Obtain the username and password from an operations administrator.
@@ -3486,18 +3746,15 @@ If you have forgotten your password, click Forgot Password. On the page that app
 following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**. For more information, see the **Bind a virtual MFA device to enable MFA** topic in **Apsara**
 **Uni-manager Operations Console User Guide**.
 
-### Getting started
+### 4.3 Getting started
 
-#### Create a disk
+#### 4.3.1 Create a disk
 
 You can separately create a data disk and then attach it to an Elastic Compute Service (ECS) instance to increase the storage space of the instance. This topic describes how to create an empty data disk. You cannot separately create system disks in ECS.
 
 **Background information**
 
 We recommend that you determine the number and sizes of data disks before you create them. Take note of the following limits: Up to 16 data disks can be attached to an instance. Disks and Shared Block Storage devices share this quota. Each Shared Block Storage device can be attached to up to four instances at the same time. Each premium performance disk, standard performance disk, ultra disk, ultra Shared Block Storage device, standard SSD, or SSD Shared Block Storage device can have a maximum capacity of 32 TiB. Disks cannot be merged in ECS. Disks are independent of each other. You cannot merge the capacity of disks by formatting the disks. We recommend that you do not use Logical Volume Manager (LVM) to create logical volumes across multiple disks because a snapshot can back up the data of only a single disk. If you create a logical volume across disks, data inconsistency may occur when you roll back a disk by using a snapshot.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -3531,7 +3788,7 @@ The created disk is displayed in the disk list and is in the **Available** state
 
 You need to attach the disk to an instance. For more information, see Attach disks.
 
-#### Attach disks
+#### 4.3.2 Attach disks
 
 You can attach disks that are separately created as data disks to instances. Before you attach a disk to an ECS instance, make sure that the disk and the instance are located in the same region and zone.
 
@@ -3572,7 +3829,7 @@ If you select **Release Disk with Instance**, the disk is released when the ECS 
 
 After the disk is attached to the instance, you need to initialize the disk. For more information, see Format a data disk on a Linux instance and Format a data disk on a Windows ECS instance.
 
-#### Partition and format a disk
+#### 4.3.3 Partition and format a disk
 
 **4.3.3.1. Format a data disk on a Linux instance**
 
@@ -3581,9 +3838,6 @@ After you separately create a data disk, the data disk is not partitioned or for
 **Prerequisites**
 
 The disk is attached to an ECS instance.
-
-**Procedure**
-
 1. Connect to the instance. For more information, see the Connect to instances section in **ECS User Guide**.
 2. Run the **fdisk -l** command to view all data disks attached to the instance.
 If /dev/vdb is not displayed in the command output, no data disk is attached to the ECS instance. Check whether the data disk that you want to manage is attached to the instance.
@@ -3665,9 +3919,6 @@ After you separately create a data disk, the data disk is not partitioned or for
 **Prerequisites**
 
 The disk is attached to an ECS instance.
-
-**Procedure**
-
 1. In the lower-left corner of the screen, click the **Server Manager** icon.
 2. In the left-side navigation pane of the Server Manager window, choose **Storage > Disk Management**.
 3. Right-click an empty partition and select **New Simple Volume**.
@@ -3680,14 +3931,11 @@ The default value is the maximum value of the disk space. You can specify the pa
 We recommend that you format the partitions with the default settings provided by the wizard.
 8. After you complete the configurations, click **Finish** to close the wizard.
 
-### Disks
+### 4.4 Disks
 
-#### Search for and view a disk
+#### 4.4.1 Search for and view a disk
 
 You can view all the disks that you create, search for a specific disk and view its details.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -3711,12 +3959,9 @@ Select a field from the field drop-down list and enter a keyword in the search b
 5. In the **Disk ID/Name** column, click the disk ID.
 The basic information and attachment information are displayed in the disk details panel. You can perform the following operations based on your business requirements: Modify the description of the disk In the **Basic Information** section, click **Modify Disk Description** to modify the disk description. For more information, see Modify the name and description of a disk. Modify the properties of the disk In the **Attachment Information** section, click **Modify Disk Properties** to modify the disk properties. For more information, see Modify the properties of a disk.
 
-#### Modify the properties of a disk
+#### 4.4.2 Modify the properties of a disk
 
 You can modify the properties of a created disk, including Release Disk with Instance and Release Automatic Snapshots with Disk.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -3730,12 +3975,9 @@ disk is attached is deleted. If you do not select this option, the disk enters t
 the disk are released when the disk is deleted. If you do not select this option, the automatic snapshots are retained after the disk is deleted.
 6. Click **OK**.
 
-#### Modify the name and description of a disk
+#### 4.4.3 Modify the name and description of a disk
 
 You can modify the name and description of a created disk.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -3751,7 +3993,7 @@ The name of the disk must be 2 to 128 characters in length and start with a lett
 
 6. Click **OK**.
 
-#### Resize a disk
+#### 4.4.4 Resize a disk
 
 You can resize system disks and data disks online. After a disk is resized, you do not need to restart the instance to which the disk is attached for the new disk capacity to take effect.
 
@@ -3772,8 +4014,6 @@ When you resize a disk, take note of the limits described in the following table
 | Maximum capacity | Premium performance disks and standard performance disks: 32,768 GiB Ultra disk and standard SSDs: 32,768 GiB SSD Shared Block Storage devices and ultra Shared Block Storage devices: 32,768 GiB |
 | Related operations | When you resize a disk, only the capacity of the disk is expanded. The sizes of partitions and file systems do not change. You must manually re-allocate the storage space on a disk after the disk is expanded. You cannot shrink a resized disk by means such as rolling it back. |
 
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -3793,7 +4033,7 @@ The new capacity must be greater than the current capacity.
 
 When you resize a disk, only the capacity of the disk is expanded. The sizes of partitions and file systems do not change. You must manually re-allocate the storage space on a disk after the disk is expanded.
 
-#### Enable the multi-attach feature for disks that
+#### 4.4.5 Enable the multi-attach feature for disks that support NVMe
 
 **support NVMe**
 
@@ -3803,11 +4043,7 @@ Non-Volatile Memory Express (NVMe) is a host controller interface protocol used 
 
 **Premium performance disks that support NVMe**
 
-Premium performance disks can be attached to multiple ECS instances. After premium performance disks are attached to multiple instances, the disks support concurrent read and write access from these ECS instances and provide high reliability, high concurrency, and high performance. Premium performance disks provide the multiattach and I/O blocking features. After the multi-attach feature is enabled for a premium performance disk, the disk can be attached to up to 16 ECS instances at a time. You can run NVMe commands to manage the permissions of ECS instances on premium performance disks. For more information about NVMe commands, see NVM Express Base Specification. The preceding features improve service availability without compromising data reliability. If a single point of failure (SPOF) occurs, you can use a premium performance disk to quickly schedule and restore data. Data sharing among multiple ECS instances greatly reduces storage costs and improves service flexibility. Premium performance disks are suitable for high-availability databases and distributed database clusters that each consist of one write node and multiple read-only nodes. Premium performance disks can be attached to ECS instances that support NVMe. For example, after premium performance disks are attached to Linux instances based on NVMe, you can run the **lsblk** command to check the device names and partition names of the disks, as shown in the following figure. Description of the command output: The device names of the premium performance disks are displayed in the `/dev/nvmeXn1` format. Examples: /dev/nvme0n1, /dev/nvme1n1, and /dev/nvme2n1. The partition names of the premium performance disks are displayed in the `<Device name of the` `disk>p<Partition number>` format. Examples: /dev/nvme0n1p1, /dev/nvme1n1p1, and /dev/nvme1n1p2. Shared NVMe disks support the multi-attach feature. You can attach a shared NVMe disk to multiple ECS instances to help migrate high-availability services to the cloud. For more information, see Enable the multiattach feature for disks.
-
-**Limits**
-
-Before you attach premium performance disks to an ECS instance based on NVMe, the resources of the instance must meet the limits described in the following table.
+Premium performance disks can be attached to multiple ECS instances. After premium performance disks are attached to multiple instances, the disks support concurrent read and write access from these ECS instances and provide high reliability, high concurrency, and high performance. Premium performance disks provide the multiattach and I/O blocking features. After the multi-attach feature is enabled for a premium performance disk, the disk can be attached to up to 16 ECS instances at a time. You can run NVMe commands to manage the permissions of ECS instances on premium performance disks. For more information about NVMe commands, see NVM Express Base Specification. The preceding features improve service availability without compromising data reliability. If a single point of failure (SPOF) occurs, you can use a premium performance disk to quickly schedule and restore data. Data sharing among multiple ECS instances greatly reduces storage costs and improves service flexibility. Premium performance disks are suitable for high-availability databases and distributed database clusters that each consist of one write node and multiple read-only nodes. Premium performance disks can be attached to ECS instances that support NVMe. For example, after premium performance disks are attached to Linux instances based on NVMe, you can run the **lsblk** command to check the device names and partition names of the disks, as shown in the following figure. Description of the command output: The device names of the premium performance disks are displayed in the `/dev/nvmeXn1` format. Examples: /dev/nvme0n1, /dev/nvme1n1, and /dev/nvme2n1. The partition names of the premium performance disks are displayed in the `<Device name of the` `disk>p<Partition number>` format. Examples: /dev/nvme0n1p1, /dev/nvme1n1p1, and /dev/nvme1n1p2. Shared NVMe disks support the multi-attach feature. You can attach a shared NVMe disk to multiple ECS instances to help migrate high-availability services to the cloud. For more information, see Enable the multiattach feature for disks. Before you attach premium performance disks to an ECS instance based on NVMe, the resources of the instance must meet the limits described in the following table.
 
 | Item | Limits |
 |---|---|
@@ -3823,11 +4059,7 @@ When you create a premium performance disk, you can enable the multi-attach feat
 
 **Benefits**
 
-This feature is suitable for high-availability databases and distributed database clusters that each consists of one write node and multiple read-only nodes. This feature provides the following benefits: Usage of NVMe commands: NVMe commands can be used to manage permissions of ECS instances on premium performance disks. This helps improve service availability without compromising data durability. For more information about NVMe commands, see NVM Express Base Specification. Cross-instance data sharing: This feature enables data sharing across multiple ECS instances to reduce storage costs and improve service flexibility. Disaster recovery: This feature allows quick scheduling of services to normal ECS instances to ensure service continuity in single-point-of-failure (SPOF) scenarios.
-
-**Limits**
-
-The following limits apply to the multi-attach feature: The following instance families support the feature. ecs.ebmg7s-se-x25-c1m8 ecs.ebmg7m-se-x25-c1m8 ecs.ebmg7x-se-x25-c1m8 ecs.ebmg7s-se-numaoff-x25-c1m8 ecs.ebmg7m-se-numaoff-x25-c1m8 ecs.ebmg7x-se-numaoff-x25-c1m8 ecs.g7x-se-x25 Data disks are supported but system disks are not supported. The multi-attach feature can be enabled only when you create premium performance disks. This feature cannot be enabled or disabled after premium performance disks are created. After the multi-attach feature is enabled for a premium performance disk, we recommend that you use cluster file systems such as Oracle Cluster File System version 2 (OCFS2), Global File System 2 (GFS2), Veritas Cluster File System (Veritas CFS), Oracle Automatic Storage Management Cluster File System (Oracle ACFS), and Databricks File System (DBFS) on the disk.
+This feature is suitable for high-availability databases and distributed database clusters that each consists of one write node and multiple read-only nodes. This feature provides the following benefits: Usage of NVMe commands: NVMe commands can be used to manage permissions of ECS instances on premium performance disks. This helps improve service availability without compromising data durability. For more information about NVMe commands, see NVM Express Base Specification. Cross-instance data sharing: This feature enables data sharing across multiple ECS instances to reduce storage costs and improve service flexibility. Disaster recovery: This feature allows quick scheduling of services to normal ECS instances to ensure service continuity in single-point-of-failure (SPOF) scenarios. The following limits apply to the multi-attach feature: The following instance families support the feature. ecs.ebmg7s-se-x25-c1m8 ecs.ebmg7m-se-x25-c1m8 ecs.ebmg7x-se-x25-c1m8 ecs.ebmg7s-se-numaoff-x25-c1m8 ecs.ebmg7m-se-numaoff-x25-c1m8 ecs.ebmg7x-se-numaoff-x25-c1m8 ecs.g7x-se-x25 Data disks are supported but system disks are not supported. The multi-attach feature can be enabled only when you create premium performance disks. This feature cannot be enabled or disabled after premium performance disks are created. After the multi-attach feature is enabled for a premium performance disk, we recommend that you use cluster file systems such as Oracle Cluster File System version 2 (OCFS2), Global File System 2 (GFS2), Veritas Cluster File System (Veritas CFS), Oracle Automatic Storage Management Cluster File System (Oracle ACFS), and Databricks File System (DBFS) on the disk.
 
 **Warning**
 
@@ -3890,7 +4122,7 @@ icon in the **Actions** column, and then select **Attach**.
 and click **OK**. You can attach the disk to only a single instance each time you perform the preceding steps. To attach the disk to multiple ECS instances, repeat the preceding steps. After the disk is attached, you can check that the status of the disk changes to **Running** on the **Disks** page. You can also view the attachment information of the disk on one or more ECS instances in the **Attachment**
 **Information** section on the details panel of the disk.
 
-#### Encrypt a disk
+#### 4.4.6 Encrypt a disk
 
 **4.4.6.1. Encrypt a system disk**
 
@@ -3964,9 +4196,6 @@ the system disk is encrypted.
 **4.4.6.2. Encrypt a data disk**
 
 In the scenarios that require data security and regulatory compliance, you can encrypt disks to secure your data stored in ECS. After a data disk is created, you cannot change its encryption state. If you want to encrypt a data disk, enable encryption for the disk when you create it.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -3981,16 +4210,13 @@ When you create the disk, take note of the following parameter settings:
 For more information about disk configuration parameters, seeCreate a disk.
 6. Click **Submit**.
 
-#### Roll back a disk by using a snapshot
+#### 4.4.7 Roll back a disk by using a snapshot
 
 If you have created a snapshot for a disk, you can use the rollback feature to restore the data of the disk to a specific point in time. The disk rollback operation is irreversible. After the disk is rolled back, the data stored on the disk before the operation is performed cannot be recovered. Exercise caution when you perform this operation.
 
 **Prerequisites**
 
 A snapshot of the disk to be rolled back is created, and no other snapshot is being created for the disk. For more information, see Create a snapshot. The disk is not released. The instance to which the disk belongs is in the **Stopped** state.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4003,7 +4229,7 @@ column.
 
 After a disk is rolled back, the host configuration file and the configurations, such as the hostname, SSH key pair, password, network, system source, and clock source, are initialized. You must reconfigure the settings. If you resized a disk after you created a snapshot for the disk, the size of the disk is also rolled back after you roll back the disk. To make the disk revert to the size before the rollback, you must log on to the instance to resize the file system. For more information, see Resize a disk.
 
-#### Re-initialize disks
+#### 4.4.8 Re-initialize disks
 
 **4.4.8.1. Re-initialize a system disk**
 
@@ -4020,9 +4246,6 @@ The result of disk re-initialization depends on the disk type and how the disk w
 **Warning**
 
 After a disk is re-initialized, all data stored on the disk is deleted. We recommend that you create snapshots for a disk to back up data before you re-initialize the disk. The automatic snapshot policy applied to the system disk before the re-initialization remains valid. The IP addresses and disk IDs of the instance remain unchanged. The automatic and manual snapshots of the system disk remain available. You can use these snapshots to roll back the disk. For more information, see Roll back a disk by using a snapshot.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -4072,9 +4295,6 @@ Snapshots are created for the data disk. For more information, see Create a snap
 **Background information**
 
 The state of a data disk after it is re-initialized varies based on its initial state when it was created and the operating system that the instance runs: The data disk is restored to the initial state when it was created: The data disk becomes an empty disk if it was originally an empty disk. The data disk stores the data recorded in the source snapshot if the data disk was created from a snapshot. For a Windows instance, after you re-initialize a data disk, the data disk is ready for use without the need for additional operations, regardless of its initial state. For a Linux instance: If a data disk was created from a snapshot, the data disk stores only the data recorded in the source snapshot after the data disk is re-initialized. You do not need to mount the partitions again, but all the data generated after the disk was created is lost. If a data disk was created as an empty disk, all the data and file systems on the disk are lost after the data disk is re-initialized. You must reformat and partition the disk, and then mount the partitions again.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -4086,7 +4306,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 
 For a Linux instance, if the data disk was created as an empty disk, you must format the data disk after you reinitialize it. For more information, see Format a data disk on a Linux instance. After the data disk is re-initialized, you must redeploy applications and reconfigure the settings on the disk to restore your business as soon as possible.
 
-#### Detach a data disk
+#### 4.4.9 Detach a data disk
 
 You can detach a data disk from an ECS instance if the disk is no longer needed. You must detach a data disk from an instance before you can attach the disk to another instance in the same zone. This topic describes how to detach a data disk.
 
@@ -4181,16 +4401,13 @@ After you perform the preceding steps to detach the data disk, you can choose **
 
 You can attach the data disk to another instance in the same zone. For more information, see Attach disks. If the data disk is no longer needed, you can back up the data stored on the disk and then release the disk. For more information, see Create a snapshot and Release a data disk.
 
-#### Release a data disk
+#### 4.4.10 Release a data disk
 
 You can manually release the data disks that you no longer need. If a data disk is released, all data stored on the disk is also released. This topic describes how to release a data disk on the Disks page in the ECS console.
 
 **Prerequisites**
 
 The data disk to be released is in the **Available** state. If the data disk is attached to an instance, you must detach the disk from the instance before you can release the disk.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -4199,9 +4416,9 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 icon in the **Actions** column, and then select **Release**.
 5. In the message that appears, click **Release**.
 
-### Snapshots
+### 4.5 Snapshots
 
-#### Disk snapshots
+#### 4.5.1 Disk snapshots
 
 **4.5.1.1. Create a snapshot**
 
@@ -4218,9 +4435,6 @@ Up to 64 snapshots can be retained for each disk. Snapshots can be used in the f
 **Important**
 
 You cannot use a data disk snapshot to create custom images. Create a data disk from a data disk snapshot. To create a data disk from a data disk snapshot, set the Use Snapshot parameter to Yes and then specify a snapshot on the Create Disk page. For more information, see Create a disk. The size of the created disk is determined by the size of the specified snapshot and cannot be changed. When you reset such a disk, the disk data is also restored to the data of the snapshot at the time when the disk was created. When you create a snapshot, take note of the following items: For each disk, the first snapshot is a full snapshot and subsequent snapshots are incremental snapshots. It takes longer to create the first snapshot. The amount of time it takes to create an incremental snapshot depends on the volume of data that has been changed since the last snapshot. The more data that has changed, the longer it takes. If you want to use a snapshot immediately after it is created, you can enable the instant access feature. We recommend that you create snapshots during off-peak hours.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Disks**.
@@ -4238,9 +4452,6 @@ You can go to the Snapshots page to check the creation progress of the snapshot.
 **4.5.1.2. Search for and view a snapshot**
 
 You can search for and view the created snapshots and their details.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4263,9 +4474,6 @@ If you have created a snapshot for a disk, you can use the rollback feature to r
 **Prerequisites**
 
 A snapshot of the disk to be rolled back is created, and no other snapshot is being created for the disk. For more information, see Create a snapshot. The disk is not released. The instance to which the disk belongs is in the **Stopped** state.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4289,9 +4497,6 @@ A system disk snapshot is created. For more information, see Create a snapshot.
 **Background information**
 
 Before you create custom images from snapshots, take note of the following items: Notes on snapshots used to create custom images: A custom image can be created from a system disk snapshot or from a system disk snapshot and one or more data disk snapshots. Data disk snapshots alone cannot be used to create custom images. Both encrypted and unencrypted snapshots can be used to create custom images. Notes on custom images: Custom images cannot be used across regions.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4316,9 +4521,6 @@ In the ECS console, you can delete a snapshot that is no longer needed.
 **Prerequisites**
 
 Deleted snapshots cannot be restored. Proceed with caution. If a system disk snapshot has been used to create a custom image, the snapshot cannot be deleted.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4327,7 +4529,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 To delete a single snapshot, find the snapshot and click **Delete** in the **Actions** column. To delete multiple snapshots at a time, select the snapshots and click **Delete** in the lower-left corner of the Snapshots page.
 5. In the message that appears, click **Delete**.
 
-#### Snapshot-consistent groups
+#### 4.5.2 Snapshot-consistent groups
 
 **4.5.2.1. Create a snapshot-consistent group**
 
@@ -4340,9 +4542,6 @@ You can use snapshot-consistent groups to simultaneously create snapshots for mu
 **Precautions**
 
 Before you use the snapshot-consistent group feature, take note of the following items: Notes on the creation of a snapshot-consistent group based on an instance: To ensure that services are not affected, we recommend that you create the snapshot-consistent group during off-peak hours. The instance must be in the **Running** or **Stopped** state. Only standard performance disks and premium performance disks are supported. The disks involved must be in the **In Use** state. If the instance has disks of other categories attached, you can select only standard performance disks or premium performance disks on the instance to create a snapshot-consistent group. A single snapshot-consistent group can contain snapshots of up to 16 disks, including the system disks and data disks, and the total size of the disks cannot exceed 32 TiB. Snapshots that you created are retained until they are deleted. We recommend that you delete unnecessary snapshots on a regular basis to control the total size. For more information, see Delete one or more snapshots at a time. Notes on the amount of time required to create a snapshot-consistent group: The amount of time required to create a snapshot-consistent group depends on the total size of the selected disks for which to create snapshots. The first snapshot of each disk is a full snapshot. It takes longer to create the first snapshot than the subsequent snapshots. Subsequent snapshots are incremental snapshots. The amount of time required varies based on the amount of data changed since the previous snapshot. If you want to use a snapshot immediately after it is created, you can enable the instant access feature.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4368,9 +4567,6 @@ After a snapshot-consistent group is created, you can use the snapshot-consisten
 **4.5.2.2. Search for and view a snapshot-consistent group**
 
 You can search for the created snapshot-consistent groups and view their details.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4400,9 +4596,6 @@ Before you use a snapshot-consistent group to roll back disks on instances, make
 The rollback operation cannot be reversed. When a disk is rolled back, if data changes were made to the disk from the time the snapshot-consistent group was created until the disk is rolled back, all these data changes are lost. To prevent data loss caused by accidental operations, we recommend that you create a snapshot-consistent group to back up the disk data before you roll back disks. The instances are in the **Stopped** state. For more information, see the Stop an instance section under
 **Instance > Manage instance status** in **ECS User Guide**.
 The disks that correspond to the snapshots contained in the snapshot-consistent group have not been released or detached or do not have snapshots being created. The operating systems of the instances have not been replaced since the snapshot-consistent group was created. The snapshots of the disks have not been deleted from the snapshot-consistent group. If the snapshot of a disk has been deleted from the snapshot-consistent group, the disk cannot be rolled back by using the snapshotconsistent group. The snapshot-consistent group can be used to roll back only other disks whose snapshots are contained in the group.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4425,9 +4618,6 @@ You can delete a snapshot-consistent group if it is no longer used.
 **Background information**
 
 When you delete a snapshot-consistent group, the system does not delete the disk snapshots that have been used to create custom images. You must delete the images that are created by using the disk snapshots before you can delete the disk snapshots.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Snapshots**.
@@ -4439,18 +4629,15 @@ To delete multiple snapshot-consistent groups at a time, select the snapshot-con
 **Delete** in the lower part of the snapshot-consistent group list.
 5. In the message that appears, click **Delete**.
 
-### Automatic snapshot policies
+### 4.6 Automatic snapshot policies
 
-#### Create an automatic snapshot policy
+#### 4.6.1 Create an automatic snapshot policy
 
 Automatic snapshot policies can be applied to system disks and data disks to periodically create snapshots for the disks. You can use automatic snapshot policies to improve data security and fault tolerance.
 
 **Background information**
 
 Automatic snapshot policies can effectively eliminate the following risks that may be brought about by manual snapshots: You may deploy applications such as personal websites or databases on an ECS instance. If the instance is exposed to attacks or encounters system vulnerabilities, you may be unable to manually create snapshots at the earliest opportunity. In this case, you can use the latest automatic snapshots to roll back the affected disks to restore data and reduce loss. You can also specify an automatic snapshot policy to create snapshots before you perform regular system maintenance tasks. This ensures that snapshots are created on a regular basis and eliminates the need to manually create snapshots. You can retain up to 64 snapshots for each disk. If the maximum number of snapshots for a disk is reached, the earliest automatic snapshot is automatically deleted when a new automatic snapshot is created.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Automatic Snapshot Policies**.
@@ -4477,14 +4664,11 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 
 After the automatic snapshot policy is created, you must apply the policy to a disk. For more information, see Enable or disable an automatic snapshot policy.
 
-#### Search for and view an automatic snapshot
+#### 4.6.2 Search for and view an automatic snapshot policy
 
 **policy**
 
 You can search for and view the created automatic snapshot policies.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Automatic Snapshot Policies**.
@@ -4498,12 +4682,9 @@ automatic snapshot policy: Select a field from the field drop-down list and ente
 | Policy ID | Enter a complete policy ID or a keyword. |
 | Tag | Select a tag key or a tag value to search for the automatic snapshot policies to which the tag is added. |
 
-#### Modify an automatic snapshot policy
+#### 4.6.3 Modify an automatic snapshot policy
 
 You can modify the configurations of a created automatic snapshot policy, including the policy name, snapshot creation time, execution frequency, and retention period.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Automatic Snapshot Policies**.
@@ -4513,16 +4694,13 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 For more information about policy configurations, see Create an automatic snapshot policy. Changes made to the retention period do not affect the existing snapshots and take effect only on subsequent snapshots.
 6. Click **OK**.
 
-#### Enable or disable an automatic snapshot policy
+#### 4.6.4 Enable or disable an automatic snapshot policy
 
 You can enable automatic snapshot policies for disks. After an automatic snapshot policy is enabled for a disk, snapshots are automatically created for the disk based on the time points and frequency specified in the policy.
 
 **Background information**
 
 We recommend that you enable automatic snapshot policies to create automatic snapshots during off-peak hours. You can manually create snapshots for disks that already have automatic snapshot policies enabled. When an automatic snapshot is being created for a disk, you must wait for the creation task to be complete before you can create a manual snapshot for the disk.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Automatic Snapshot Policies**.
@@ -4532,12 +4710,9 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 5. In the **Apply or Cancel Policy** dialog box, enable or disable the automatic snapshot policy for disks based on
 your business requirements. If you want to enable the automatic snapshot policy, click the **Disks Without Policy Applied** tab, select disks as required, and then click **Apply Policy** in the lower part of the disk list. If you want to disable the automatic snapshot policy, click the **Disks with Policy Applied** tab, select disks as required, and then click **Cancel Policy** in the lower part of the disk list.
 
-#### Delete an automatic snapshot policy
+#### 4.6.5 Delete an automatic snapshot policy
 
 You can delete automatic snapshot policies that are no longer needed. After you delete an automatic snapshot policy, the policy is automatically disabled for the disks that have the policy enabled.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Storage & Snapshots > Automatic Snapshot Policies**.
@@ -4545,9 +4720,9 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 4. Find the automatic snapshot policy that you want to delete and click **Delete Policy** in the **Actions** column.
 5. In the message that appears, click **Delete**.
 
-### Async replication
+### 4.7 Async replication
 
-#### Create a replication pair
+#### 4.7.1 Create a replication pair
 
 Before you can use the async replication feature to implement disaster recovery across zones within the same region, you must create a replication pair. This topic describes how to create a replication pair.
 
@@ -4558,9 +4733,6 @@ The primary disk from which to replicate data and the secondary disk to which to
 **Background information**
 
 When you create a replication pair, take note of the following items: You can select a premium performance disk or system disk as the primary disk in the replication pair. The selected disk cannot be encrypted or being resized. The async replication feature replicates data from primary disks to secondary disks and the replicated data overwrites the original data on the secondary disks. We recommend that you use an empty disk as the secondary disk. The primary and secondary disks must be of the same category and have the same performance level and capacity. A disk can belong to only one replication pair.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise Feature > EBS Async Replication**.
@@ -4587,12 +4759,9 @@ describes the parameters.
 
 After the replication pair is created, you must enable the async replication feature to implement disaster recovery for disks across zones in the same region. For more information, see Activate a replication pair to enable async replication. If you want to manage multiple replication pairs with the same data replication direction, you can create a replication pair-consistent group and add the replication pairs to the replication pair-consistent group. For more information, see Create a replication pair-consistent group and Add replication pairs to a replication pairconsistent group.
 
-#### View replication pairs
+#### 4.7.2 View replication pairs
 
 This topic describes how to view the created replication pairs.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -4604,16 +4773,13 @@ The columns include **PairID/Name**, **Description**, **Status**, **Primary Disk
 **Disk/Region/Zone**, **Replication Group**, **Creation Time**, **Bandwidth(Mbps)**, and **Recent recovery point**.
 If the statuses of a replication pair on the Primary Site and Secondary Site tabs are different for an extended period of time, contact Alibaba Cloud technical support.
 
-#### Modify a replication pair
+#### 4.7.3 Modify a replication pair
 
 After you create a replication pair, you can modify the name, RPO, and bandwidth of the replication pair based on your business requirements.
 
 **Background information**
 
 When you modify a replication pair, take note of the following items: You can modify only a replication pair that is in the **Created** or **Stopped** state. If a replication pair is added to a replication pair-consistent group, the RPO of the replication pair cannot be modified.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -4624,7 +4790,7 @@ You need to select the region in which the primary disk in the replicate pair is
 6. In the **Modify Replication Pair** dialog box, modify the name, description, RPO, and bandwidth of the
 replication pair as required, and then click **Confirm**. For more information about the parameters used to configure a replication pair, see Create a replication pair. If the RPO and bandwidth of the replication pair are modified, the modifications take effect when data is synchronized in the next RPO period.
 
-#### Activate a replication pair to enable async
+#### 4.7.4 Activate a replication pair to enable async replication
 
 **replication**
 
@@ -4641,9 +4807,6 @@ When you activate a replication pair to enable the async replication feature, ta
 If require manual synchronization, make sure that the replication pair is in the **Created**, **One-time**
 **Synchronizing**, or **Stopped** state.
 If you have added the replication pair to a replication pair-consistent group, you cannot separately perform activate, stop, failover, and reverse replication operations on the replication pair.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -4659,7 +4822,7 @@ disk. After async replication is enabled for a replication pair, data stored on 
 7. In the **Activate Replication Pair** dialog box, click **Copy Data** or **OK** based on your business requirements.
 If you click **Copy Data**, the system immediately starts data synchronization. If you click **OK**, the system starts a synchronization task and initiates data synchronization after half of the recovery point objective (RPO) period. If you activate a replication pair for the first time, the replication pair enters the **Initial Syncing** state. You need to wait until data is synchronized from the primary disk to the secondary disk. After the replication pair is activated and initial data synchronization is complete, the state of the replication pair changes to **Normal**. Subsequently, the system asynchronously replicates data from the primary disk to the secondary disk based on the RPO of the replication pair. This implements disaster recovery across zones in the same region. In the **Recent recovery point** column that corresponds to the replication pair, you can check when data was last replicated from the primary disk to the secondary disk.
 
-#### Stop a replication pair to disable async
+#### 4.7.5 Stop a replication pair to disable async replication
 
 **replication**
 
@@ -4670,9 +4833,6 @@ After you activate a replication pair to enable the async replication feature, y
 When you stop a replication pair to disable the async replication feature, take note of the following items: The replication pair must be in the **Initial Syncing**, **One-time Synchronizing**, **Syncing**, **Normal**, **Stopping**,
 **Stopped**, or **Stop Failed** state.
 If you have added the replication pair to a replication pair-consistent group, you cannot separately perform activate, stop, failover, and reverse replication operations on the replication pair.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -4683,7 +4843,7 @@ You need to select the region in which the primary disk in the replicate pair is
 **Operation** column.
 If you want to stop multiple replication pairs at a time, you can select the replication pairs and click **Batch Stop** in the lower part of the page. The state of the replication pair changes to **Stopped**.
 
-#### Use the async replication feature to implement
+#### 4.7.6 Use the async replication feature to implement disaster recovery for a primary disk
 
 **disaster recovery for a primary disk**
 
@@ -4730,7 +4890,7 @@ You must activate the replication pair in this step to asynchronously replicate 
 7. **Optional:**Revert the replication relationship between the primary disk and secondary disk in the replication
 pair. After you perform the preceding steps to perform a reverse replication, the original replication relationship in the replication pair is reversed. If you want to revert the replication relationship, perform the following steps: i. View the region in the **Secondary Disk/Region/Zone** column that corresponds to the replication pair and select the region in the top navigation bar to switch to that region. ii. Find the replication pair on which you have performed a reverse replication. Move the pointer over the icon in the Operation column to perform a **failover** and **reverse replication** again. iii. After the replication relationship in the replication pair is reverted, click **Activate** in the **Operation** column to activate the replication pair again.
 
-#### Delete a replication pair
+#### 4.7.7 Delete a replication pair
 
 The functionality of disks in a replication pair is limited. If an existing replication pair is no longer needed for disaster recovery or needs to be replaced, you can delete it. This topic describes how to delete a replication pair.
 
@@ -4739,9 +4899,6 @@ The functionality of disks in a replication pair is limited. If an existing repl
 When you delete a replication pair, take note of the following items: The replication pair must be in the **Created**, **Creation Failed**, **Stopped**, **Failover Completed**, **Deleting**,
 **Deletion Failed**, **Deleted**, or **Invalid** state.
 After the replication pair is deleted, the primary and secondary disks in the replication pair are retained. If the replication pair is added to a replication pair-consistent group, you can delete the replication pair only after it is removed from the replication pair-consistent group. After a replication pair is stopped and deleted, data is no longer replicated from the primary disk to the secondary disk on a periodic basis. Before you delete a replication pair, properly manage your business status and business data storage to ensure data security of the primary disk and prevent data loss. We recommend that you create disk snapshots or snapshot-consistent groups to back up disk data. For more information about snapshots, see Create a snapshot.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -4753,9 +4910,9 @@ You need to select the region where the disk that serves as the primary disk in 
 6. In the message that appears, click **OK**.
 When the replication pair is deleted, the secondary disk rolls back to the point in time when the last async replication was complete and drops all the data that is being replicated from the primary disk. The functionality limits are lifted from the secondary disk. You can attach the secondary disk and read data from or write data to the secondary disk.
 
-### Storage sets
+### 4.8 Storage sets
 
-#### Create a storage set
+#### 4.8.1 Create a storage set
 
 You can classify Elastic Block Storage (EBS) clusters based on dimensions such as the business type, and associate the EBS clusters with different partitions in a storage set. This allows you to isolate EBS clusters of different business types.
 
@@ -4763,9 +4920,6 @@ You can classify Elastic Block Storage (EBS) clusters based on dimensions such a
 
 When you create a storage set, take note of the following items: The number of partitions in a storage set must be greater than or equal to 2. If you want to create a disk in a specified EBS cluster, create a storage set, and associate the EBS cluster with a partition of the storage set on CDS Ops, which is the unified O&M platform of Cloud Defined Storage (CDS). Then, select the storage set and partition to which the EBS cluster belongs when you create a disk by using the storage set in the Elastic Compute Service (ECS) console. For more information about how to associate an EBS cluster with a partition in a storage set, see the "Manage storage sets" topic under Resource management in
 **CDS O&M Guide**.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise Feature > Storage Set**.
@@ -4786,12 +4940,9 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 
 After you create a storage set, you can click the ID of the storage set and create a disk in the storage set. For more information, see Create a disk.
 
-#### View storage sets
+#### 4.8.2 View storage sets
 
 This topic describes how to view the created storage sets and their details.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Storage Set**.
@@ -4804,12 +4955,9 @@ then click the icon. The one or more storage sets that meet the filter condition
 | Storage Set ID | Enter the full ID of a storage set to search for the storage set. Only exact match is supported. Fuzzy match is not supported. |
 | Storage Set Name | Enter the name or a name keyword of a storage set to search for the storage set. Fuzzy match is supported. |
 
-#### Modify a storage set
+#### 4.8.3 Modify a storage set
 
 After you create a storage set, you can modify the name of the storage set based on your business requirements.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Storage Set**.
@@ -4818,16 +4966,13 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 column.
 5. In the **Modify Storage Set** dialog box, modify the name of the storage set and click **Confirm**.
 
-#### Delete a storage set
+#### 4.8.4 Delete a storage set
 
 This topic describes how to delete a storage set that is no longer needed.
 
 **Background information**
 
 When you delete a storage set, take note of the following items: If a disk exists in the storage set to be deleted, the system reports an error. Before you delete a storage set, you must view the existing disks in the storage set and release them by performing the following steps: On the **Storage Set** page of the Elastic Block Storage (EBS) console, click the ID of the storage set that you want to delete. The **Disks** page in the Elastic Compute Service (ECS) console appears. On the Disks page, you can view the disks in the storage set. For more information about how to release a disk, see Release a data disk.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Storage Set**.
@@ -4836,18 +4981,15 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 column.
 5. In the message that appears, click **OK**.
 
-### Replication pair-consistent groups
+### 4.9 Replication pair-consistent groups
 
-#### Create a replication pair-consistent group
+#### 4.9.1 Create a replication pair-consistent group
 
 You can create a replication pair-consistent group to manage replication pairs between the primary site and the secondary site in a centralized manner.
 
 **Background information**
 
 When you create a replication pair-consistent group, take note of the following items: Replication pair-consistent groups support asynchronous disaster recovery across regions or zones in the same region. If a replication pair and a replication pair-consistent group have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone), the replication pair and the replication pair-consistent group replicate data in the same direction. A replication pair can be added to a replication pair-consistent group only if the replication pair and the replication pair-consistent group replicate data in the same direction. After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the replication pairs in place of their original RPOs.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise Feature > Replication Pair-Consistent Group**.
@@ -4872,12 +5014,9 @@ table and click **Confirm**.
 
 After a replication pair-consistent group is created, you can add replication pairs that replicate data in the same direction as the group to the group. For more information, see Add replication pairs to a replication pair-consistent group.
 
-#### View replication pair-consistent groups
+#### 4.9.2 View replication pair-consistent groups
 
 This topic describes how to view the created replication pair-consistent groups.
-
-**Procedure**
-
 1. Log on to the ECS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Elastic Computing > Elastic Compute Service**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Replication Pair-Consistent**
@@ -4891,16 +5030,13 @@ multiple columns. The columns include **Replication Group ID/name**, **Descripti
 **Point**.
 If the statuses of a replication pair-consistent group on the Primary Site and Secondary Site tabs are different for an extended period of time, contact Alibaba Cloud technical support.
 
-#### Modify a replication pair-consistent group
+#### 4.9.3 Modify a replication pair-consistent group
 
 After a replication pair-consistent group is created, you can modify its name and recovery point objective (RPO) based on your business requirements.
 
 **Background information**
 
 Before you modify a replication pair-consistent group, make sure that the group is in the **Created** or **Stopped** state.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -4912,7 +5048,7 @@ and click **Modify** in the **Operation** column.
 6. In the **Edit replication group** dialog box, modify the parameters of the replication pair-consistent group as
 needed and click **OK**. For more information about the parameters, see Create a replication pair-consistent group. After you modify the RPO of a replication pair-consistent group, the new configuration takes effect when data is synchronized in the next RPO period.
 
-#### Add replication pairs to a replication pair-
+#### 4.9.4 Add replication pairs to a replication pair-consistent group
 
 **consistent group**
 
@@ -4925,9 +5061,6 @@ A replication pair-consistent group is created. For more information, see Create
 **Background information**
 
 When you add replication pairs to a replication pair-consistent group, take note of the following items: If a replication pair and a replication pair-consistent group have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone), the replication pair and the replication pair-consistent group replicate data in the same direction. A replication pair can be added to a replication pair-consistent group only if the replication pair and the replication pair-consistent group replicate data in the same direction. You can add up to 256 replication pairs to a single replication pair-consistent group. The replication pairs and the replication pair-consistent group must be in the **Created** or **Stopped** state. After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the replication pairs in place of their original RPOs. After you add a replication pair to a replication pair-consistent group, you cannot separately perform activate, stop, failover, and reverse replication operations on the replication pair. You cannot modify the recovery point objective (RPO) of the replication pair.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Replication Pair-Consistent**
@@ -4946,7 +5079,7 @@ replication pairs that you want to add and click **OK**.
 
 After replication pairs are added to the replication pair-consistent group, you must enable async replication for the replication pairs in the replication pair-consistent group. For more information, see Activate a replication pairconsistent group to enable async replication.
 
-#### Remove replication pairs from a replication pair-
+#### 4.9.5 Remove replication pairs from a replication pair-consistent group
 
 **consistent group**
 
@@ -4955,9 +5088,6 @@ You can remove multiple replication pairs from a replication pair-consistent gro
 **Background information**
 
 Before you remove replication pairs from a replication pair-consistent group, make sure that the replication pairconsistent group is in the **Created** or **Stopped** state.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Replication Pair-Consistent**
@@ -4970,7 +5100,7 @@ You must switch to the production region of the replication pair-consistent grou
 7. In the replication pair list, select the replication pairs that you want to remove. In the lower part of the page,
 click **Batch Remove**.
 
-#### Activate a replication pair-consistent group to
+#### 4.9.6 Activate a replication pair-consistent group to enable async replication
 
 **enable async replication**
 
@@ -4982,9 +5112,6 @@ If you require automatic synchronization, make sure that the replication pair-co
 **Created**, **Synchronizing**, **Normal**, or **Stopped** state.
 If you require manual synchronization, make sure that the replication pair-consistent group is in the **Created**,
 **One-time Synchronizing**, or **Stopped** state.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Replication Pair-Consistent**
@@ -5001,7 +5128,7 @@ After the replication pair-consistent group is activated and initial data synchr
 **Recent recovery point** column that corresponds to the replication pair-consistent group, you can check when
 data was last replicated from disks in the primary site to disks in the secondary site.
 
-#### Stop a replication pair-consistent group to
+#### 4.9.7 Stop a replication pair-consistent group to disable async replication
 
 **disable async replication**
 
@@ -5011,9 +5138,6 @@ After replication pairs in replication pair-consistent groups are activated, if 
 
 Before you stop a replication pair-consistent group, make sure that the group is in the **One-time Synchronizing**,
 **Synchronizing**, **Normal**, **Stopping**, **Stop Failed**, or **Stopped** state.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Asynchronous Replication**.
@@ -5023,7 +5147,7 @@ You must switch to the production region of the replication pair-consistent grou
 5. In the replication pair-consistent group list, find the replication pair-consistent group that you want to stop and
 click **Stop** in the **Operation** column. If you want to stop multiple replication pair-consistent groups at a time, select the replication pair-consistent groups and click **Batch stop** in the lower part of the page. The state of the replication pair-consistent group changes to **Stopped**.
 
-#### Use replication pair-consistent groups to
+#### 4.9.8 Use replication pair-consistent groups to implement disaster recovery
 
 **implement disaster recovery**
 
@@ -5067,7 +5191,7 @@ After this step is performed, the data stored on the original secondary disks is
 consistent group. After you perform the preceding steps to perform a reverse replication, the replication relationship between the original primary and secondary sites in the replication pair-consistent group is reversed. To revert the replication relationship, perform the following steps: i. View the region in the **Disaster Recovery Region/Zone** column that corresponds to the replication pairconsistent group and select the region in the top navigation bar to switch to that region. ii. Find the replication pair-consistent group on which you have performed a reverse replication. Move the pointer over the icon in the Operation column and perform a **failover** and **reverse replication** again. iii. After the replication relationship in the replication pair-consistent group is reverted, click **Activate** in the
 **Operation** column to activate the replication pair-consistent group again.
 
-#### Delete a replication pair-consistent group
+#### 4.9.9 Delete a replication pair-consistent group
 
 You can delete a replication pair-consistent group that you no longer need.
 
@@ -5076,9 +5200,6 @@ You can delete a replication pair-consistent group that you no longer need.
 When you delete a replication pair-consistent group, take note of the following items: The replication pair-consistent group must be in the **Created**, **Creation Failed**, **Stopped**, **Failover**
 **completed**, **Deleting**, **Deletion Failed**, or **Invalid** state.
 Before you delete a replication pair-consistent group, make sure that all replication pairs in the replication pairconsistent group are removed. For more information, see Remove replication pairs from a replication pairconsistent group.
-
-**Procedure**
-
 1. Log on to the EBS console.
 i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigation bar, choose **Products > Storage > Elastic Block Storage**.
 2. In the left-side navigation pane, choose **Enterprise-Grade Capabilities > Replication Pair-Consistent**
@@ -5090,9 +5211,9 @@ You must switch to the production region of the replication pair-consistent grou
 6. In the message that appears, click **OK**.
 After the replication pair-consistent group is deleted, the secondary disks roll back to the point in time when the last asynchronous replication was complete and drop all the data that is being replicated from the primary disks.
 
-### Appendix
+### 4.10 Appendix
 
-#### Manage tags
+#### 4.10.1 Manage tags
 
 You can classify and manage resources such as disks, snapshots, and automatic snapshot policies by adding tags to the resources. You can also filter the resources based on the tags.
 
@@ -5141,15 +5262,15 @@ If you want to add tags to automatic snapshot policies, choose **Storage & Snaps
 5. In the **Remove Tags** dialog box, remove one or more tags from the selected resources.
 After you click **Tags**, you are redirected to the **Tag management** page. On this page, you can create tags and add them to resources, view the resources to which the tags are added, and remove the tags from the resources. i. Click the icon next to a tag. To remove more tags, repeat this step multiple times. ii. Click **OK**. iii. In the **The tags are edited for the resources.** message, view the selected resources and the tags that are removed from the resources, and then click **Close**. The removed tags are no longer displayed in the **Tag** drop-down list.
 
-## Log Service
+## 5 Log Service
 
-### What is Log Service?
+### 5.1 What is Log Service?
 
 Log Service is a cloud-native monitoring and analysis platform that provides large-scale, low-cost, and real-time services to process log data. Log Service allows you to collect, query, analyze, visualize, consume, and ship log data. Log Service also allows you to configure alerts. This helps improve the digital capabilities of your business in scenarios such as R&D, O&M, operations, and security. Log Service is tested and verified by Alibaba Group in various big data scenarios. You can collect, consume, query, and analyze data without the need to develop separate features. Log Service provides the following features: Log collection: Log Service allows you to collect various types of logs in real time, such as events, binary logs, and text logs by using multiple methods. For example, you can use Logtail and JavaScript to collect logs. Query and analysis: Log Service allows you to query and analyze the collected logs in real time and view analysis results on charts and dashboards. Alerting: Log Service can run query statements at regular intervals after an alert task is created. If the results match the specified conditions, Log Service sends an alert to the specified contacts in real time. You can specify the conditions and contacts when you create the alert task. Real-time consumption: Log Service provides real-time consumption interfaces that log consumers can use to consume the collected logs. Shipping: Log Service allows you to ship the collected logs to Object Storage Service (OSS) in real time.
 
-### Quick start
+### 5.2 Quick start
 
-#### Procedure
+#### 5.2.1 Procedure
 
 This topic describes the basic procedure to use Log Service. You can follow this procedure to create projects, create Logstores, and collect log data. The following figure shows the procedure. Figure 1. Procedure
 1. Optional. Obtain an AccessKey pair.
@@ -5167,16 +5288,13 @@ Log Service allows you to configure alert rules based on query and analysis resu
 7. Consume logs.
 Log Service allows you to consume logs by using multiple methods, such as a Spark Streaming client, Storm spout, and Flink connector. For more information, see Real-time consumption.
 
-#### Log on to the Log Service console
+#### 5.2.2 Log on to the Log Service console
 
 This topic describes how to log on to the Log Service console.
 
 **Prerequisites**
 
 The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
-
-**Procedure**
-
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
 You can click the current language in the upper-right corner to switch to another language.
 2. Enter your username and password.
@@ -5194,7 +5312,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 5. On the page that appears, select an organization and region, and then click **Access as Administrator**. The
 home page of the Log Service console is displayed.
 
-#### Obtain an AccessKey pair
+#### 5.2.3 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -5239,7 +5357,7 @@ To obtain the AccessKey pair of an organization, perform the following operation
 6. In the Management AccessKey, view the AccessKey pair of the organization.
 An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
-#### Manage a project
+#### 5.2.4 Manage a project
 
 A project in Log Service is a resource management unit that is used to separate and manage different resources. This topic describes how to create and delete a project in the Log Service console.
 
@@ -5285,7 +5403,7 @@ After you delete a project, all log data that is stored in the project and the c
 
 For more information, see **API Reference** in **Log Service Developer Guide**.
 
-#### Manage a Metricstore
+#### 5.2.5 Manage a Metricstore
 
 This topic describes how to create, modify, and delete a Metricstore in the Log Service console.
 
@@ -5331,7 +5449,7 @@ delete and choose
 After you delete a Metricstore, all metric data in the Metricstore is deleted and cannot be restored. Proceed with caution.
 2. In the message that appears, click **OK**.
 
-#### Manage Logstores
+#### 5.2.6 Manage Logstores
 
 A Logstore in Log Service is used to collect, store, and query logs. This topic describes how to create, modify, and delete a Logstore in the Log Service console.
 
@@ -5389,7 +5507,7 @@ After you delete a Logstore, all logs in the Logstore are deleted and cannot be 
 | Query a Logstore | Query a Logstore: GetLogstore Query all Logstores: ListLogstore |
 | Modify a Logstore | UpdateLogstore |
 
-#### Manage shards
+#### 5.2.7 Manage shards
 
 Log data on which read and write operations can be performed is stored in a shard of a Logstore. This topic describes how to split, merge, and delete shards in the Log Service console.
 
@@ -5440,7 +5558,7 @@ Automatic deletion If you specify a data retention period when you create a Logs
 | Merge shards | MergeShards |
 | Query shards | ListShard |
 
-#### Terms
+#### 5.2.8 Terms
 
 **5.2.8.1. Terms**
 
@@ -5462,8 +5580,6 @@ This topic introduces the terms that are used in Log Service.
 | topic | A topic is a basic management unit in Log Service. You can specify topics when you collect logs. This way, Log Service can classify logs by topic. |
 | endpoint | An endpoint of Log Service is a URL that is used to access a project and the data of the project. To access the projects in different regions, you must use different endpoints. To access the projects in the same region over an internal network or the Internet, you must also use different endpoints. For more information, see Obtain the endpoint of Log Service in Developer Guide. |
 | AccessKey pair | An AccessKey pair is an identity credential that consists of an AccessKey ID and an AccessKey secret. The AccessKey ID and AccessKey secret are used for symmetric encryption and identity authentication. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt and verify a signature string. The AccessKey secret must be kept confidential. For more information, see Obtain an AccessKey pair in Developer Guide. |
-
-**Data collection**
 
 | Term | Description |
 |---|---|
@@ -5599,9 +5715,9 @@ Log Service allows you to split and merge shards. After you split a shard, two m
 
 A topic is a basic management unit in Log Service. When you collect logs, you can specify topics to identify the logs. You can use topics to identify logs that are generated by different services, users, and instances. For example, System A consists of an HTTP request processing module, a cache module, a logic processing module, and a storage module. You can set the log topic of the HTTP request processing module to http_module, the log topic of the cache module to cache_module, the log topic of the logic processing module to logic_module, and the log topic of the storage module to store_module. After the logs of the preceding modules are collected and saved to the same Logstore, you can identify logs based on the topics. If you do not need to identify logs in a Logstore, set the topic to Null - Do not generate topic when you collect logs. A topic can be an empty string. The following figure shows the relationships between Logstores, topics, and shards.
 
-### Data collection
+### 5.3 Data collection
 
-#### Collection by Logtail
+#### 5.3.1 Collection by Logtail
 
 **5.3.1.1. Overview**
 
@@ -5611,11 +5727,7 @@ Logtail is a log collection agent that is provided by Log Service. You can use L
 
 **Benefits**
 
-Supports non-intrusive log collection based on log files. You do not need to modify your application code. Your applications are not affected when Logtail collects logs. Allows you to collect text logs, binary logs, HTTP data, and container logs. Allows you to collect logs from standard containers, swarm clusters, and Kubernetes clusters. Handles exceptions during log collection. If a network or server exception occurs, Logtail retries log collection and caches logs on local servers to ensure data security. Provides centralized management based on Log Service. After you install Logtail on servers and create a machine group and Logtail configurations, Logtail collects logs from the servers and sends the logs to Log Service. Provides a comprehensive self-protection mechanism. The CPU, memory, and network resources that Logtail can use are limited. This ensures that Logtail does not affect the performance of other services on the server.
-
-**Limits**
-
-For more information about the limits of Logtail, see Limits.
+Supports non-intrusive log collection based on log files. You do not need to modify your application code. Your applications are not affected when Logtail collects logs. Allows you to collect text logs, binary logs, HTTP data, and container logs. Allows you to collect logs from standard containers, swarm clusters, and Kubernetes clusters. Handles exceptions during log collection. If a network or server exception occurs, Logtail retries log collection and caches logs on local servers to ensure data security. Provides centralized management based on Log Service. After you install Logtail on servers and create a machine group and Logtail configurations, Logtail collects logs from the servers and sends the logs to Log Service. Provides a comprehensive self-protection mechanism. The CPU, memory, and network resources that Logtail can use are limited. This ensures that Logtail does not affect the performance of other services on the server. For more information about the limits of Logtail, see Limits.
 
 **Configuration process**
 
@@ -5625,15 +5737,9 @@ Install Logtail on servers from which you want to collect logs. For more informa
 2. Create a machine group.
 Log Service allows you to create a custom ID-based machine group or an IP address-based machine group. For more information, see Create an IP address-based machine group and Create a custom ID-based machine group.
 3. Create a Logtail configuration and apply it to the machine group.
-After you complete the preceding procedure, Logtail collects logs from your server and sends the logs to the specified Logstore. You can use the Log Service console, call API operations, or use SDKs to query logs.
-
-**Terms**
-
-Machine group: A machine group contains one or more servers from which logs of a specific type are collected. After you apply Logtail configurations to a machine group, Log Service collects logs from the servers in the machine group based on the configurations. You can set an IP address-based identifier or a custom identifier for a machine group. Then, you can manage the servers in the machine group based on the identifier. You can create and delete a machine group, add servers to a machine group, and remove servers from a machine group in the Log Service console. Logtail: Logtail is a log collection agent that is provided by Log Service. Logtail runs on servers to collect logs from the servers. For more information, see Install Logtail on a Linux server or Install Logtail in Windows. For a Linux-based server, Logtail is installed in the /usr/local/ilogtail directory. Logtail initiates the following processes whose names start with ilogtail: a log collection process and a daemon process. The logs of Logtail are stored in the /usr/local/ilogtail/ilogtail.LOG file. For a Windows-based server, Logtail is installed in the C:\Program Files\Alibaba\Logtail directory (32-bit system) or C:\Program Files (x86)\Alibaba\Logtail directory (64-bit system). Choose **Control Panel >**
+After you complete the preceding procedure, Logtail collects logs from your server and sends the logs to the specified Logstore. You can use the Log Service console, call API operations, or use SDKs to query logs. Machine group: A machine group contains one or more servers from which logs of a specific type are collected. After you apply Logtail configurations to a machine group, Log Service collects logs from the servers in the machine group based on the configurations. You can set an IP address-based identifier or a custom identifier for a machine group. Then, you can manage the servers in the machine group based on the identifier. You can create and delete a machine group, add servers to a machine group, and remove servers from a machine group in the Log Service console. Logtail: Logtail is a log collection agent that is provided by Log Service. Logtail runs on servers to collect logs from the servers. For more information, see Install Logtail on a Linux server or Install Logtail in Windows. For a Linux-based server, Logtail is installed in the /usr/local/ilogtail directory. Logtail initiates the following processes whose names start with ilogtail: a log collection process and a daemon process. The logs of Logtail are stored in the /usr/local/ilogtail/ilogtail.LOG file. For a Windows-based server, Logtail is installed in the C:\Program Files\Alibaba\Logtail directory (32-bit system) or C:\Program Files (x86)\Alibaba\Logtail directory (64-bit system). Choose **Control Panel >**
 **Administrative Tools > Services**. On the Services window, you can view the LogtailDaemon service. The
 logs of Logtail are stored in the `ilogtail.LOG` file. Logtail configurations: Logtail configurations are a set of policies that Logtail uses to collect logs. You can specify the data source and collection mode to create custom Logtail configurations for log collection. The configurations specify how to collect logs from servers, parse the logs, and send the logs to a specified Logstore.
-
-**Features**
 
 | Feature | Description |
 |---|---|
@@ -5905,11 +6011,7 @@ This topic describes how to install, upgrade, and uninstall Logtail on a Linux s
 
 **Supported operating systems**
 
-You can install Logtail on servers that run one of the following x86-64 Linux operating systems: Aliyun Linux 2 Red Hat Enterprise Linux 6, Red Hat Enterprise Linux 7, and Red Hat Enterprise Linux 8 CentOS Linux 6, CentOS Linux 7, and CentOS Linux 8 Debian GNU/Linux 8, Debian GNU/Linux 9, and Debian GNU/Linux 10 Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04, and Ubuntu 20.04 SUSE Linux Enterprise Server 11, SUSE Linux Enterprise Server 12, and SUSE Linux Enterprise Server 15 openSUSE Leap 15.1, openSUSE Leap 15.2, and openSUSE Leap 42.3 Glibc 2.5 or later
-
-**Procedure**
-
-If you run the installation command on a server on which Logtail is installed, the installer uninstalls Logtail from the server, deletes the `/usr/local/ilogtail` directory, and then reinstalls Logtail. If the installation is successful, Logtail starts when the system reboots.
+You can install Logtail on servers that run one of the following x86-64 Linux operating systems: Aliyun Linux 2 Red Hat Enterprise Linux 6, Red Hat Enterprise Linux 7, and Red Hat Enterprise Linux 8 CentOS Linux 6, CentOS Linux 7, and CentOS Linux 8 Debian GNU/Linux 8, Debian GNU/Linux 9, and Debian GNU/Linux 10 Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04, and Ubuntu 20.04 SUSE Linux Enterprise Server 11, SUSE Linux Enterprise Server 12, and SUSE Linux Enterprise Server 15 openSUSE Leap 15.1, openSUSE Leap 15.2, and openSUSE Leap 42.3 Glibc 2.5 or later If you run the installation command on a server on which Logtail is installed, the installer uninstalls Logtail from the server, deletes the `/usr/local/ilogtail` directory, and then reinstalls Logtail. If the installation is successful, Logtail starts when the system reboots.
 1. Run the following command to download the Logtail installer:
 
 ```
@@ -6012,9 +6114,6 @@ This topic describes how to install Logtail on a Windows server.
 **Supported systems**
 
 Logtail supports the following Windows operating systems: Windows 7 (Client) 32-bit Windows 7 (Client) 64-bit Windows Server 2008 32-bit Windows Server 2008 64-bit Windows Server 2012 64-bit Windows Server 2016 64-bit
-
-**Procedure**
-
 1. Download the installation package.
 Run the following command to download the installation package:
 
@@ -6073,9 +6172,6 @@ Log Service limits the collection performance of Logtail. This way, Logtail does
 **Scenarios**
 
 You can modify the startup parameters of Logtail in the following scenarios: You want to collect a large number of log files and the log files occupy a large amount of memory. For example, you want to collect more than 100 files or monitor more than 5,000 files in specific directories at the same time. Log data is transmitted at a high speed, which causes high CPU utilization. For example, Logtail collects log data at a speed higher than 2 MB/s in simple mode and at a speed higher than 1 MB/s in full regex mode. Logtail sends data to Log Service at a speed higher than 20 MB/s.
-
-**Set the startup parameters of Logtail**
-
 1. On the server on which Logtail is installed, open the /usr/local/ilogtail/ilogtail_config.json file.
 2. Set the startup parameters of Logtail based on your business requirements.
 The following example shows how to configure startup parameters: `{`
@@ -6174,9 +6270,6 @@ A server is available. The server can be an Elastic Compute Service (ECS) instan
 **Background information**
 
 If your server is an ECS instance that belongs to another Apsara Stack tenant account, a server that is provided by a third-party cloud service provider, or a self-managed data center, you must specify the ID of your Apsara Stack tenant account as a user identifier on your server after Logtail is installed. Then, the Apsara Stack tenant account can use Logtail to collect logs from the server. If you do not configure a user identifier on your server, Log Service cannot receive the heartbeat of the server and Logtail cannot collect logs from the server.
-
-**Procedure**
-
 1. View the ID of your Apsara Stack tenant account.
 i. Log on to the Log Service console. For more information, see Log on to the Log Service console. ii. In the top navigation bar, click **Enterprise**. iii. In the left-side navigation pane, click **Organizations**. iv. Select the account that you want to view and click **Obtain an accesskey** v. In the **AccessKey** dialog box, view the ID of the Apsara Stack tenant account.
 2. Log on to the server and specify the ID of the Apsara Stack tenant account as a user identifier.
@@ -6195,9 +6288,6 @@ Log Service allows you to create an IP address-based machine group. This topic d
 **Prerequisites**
 
 A project and a Logstore are created. At least one server is available. If you use an Elastic Compute Service (ECS) instance, you must make sure that the ECS instance and Log Service project belong to the same Apsara Stack tenant account and reside in the same region. If the ECS instance belongs to another Apsara Stack tenant account, you must configure a user identifier for the ECS instance before you create an IP address-based machine group. If the server is provided by a thirdparty cloud service provider or is deployed in a self-managed data center, you must also configure a user identifier. For more information, see Configure a user identifier. Logtail is installed on the server. For more information, see Install Logtail on a Linux server and Install Logtail in Windows.
-
-**Procedure**
-
 1. Obtain the IP addresses of the servers.
 The IP addresses that are obtained by Logtail are recorded in the **ip** field of the app_info.json file. On the servers where Logtail is installed, you can go to the following path to check the app_info.json file: Linux: /usr/local/ilogtail/app_info.json 64-bit Windows: C:\Program Files (x86)\Alibaba\Logtail\app_info.json 32-bit Windows: C:\Program Files\Alibaba\Logtail\app_info.json The following figure shows the IP address of the server in Linux.
 2. Log on to the Log Service console.
@@ -6234,9 +6324,6 @@ A project and a Logstore are created. For more information, see Create a project
 **Background information**
 
 Custom ID-based machine groups offer significant benefits in the following scenarios: If your servers reside in multiple custom network environments such as virtual private clouds (VPCs), some IP addresses of the servers may conflict. In this case, Logtail cannot collect logs as expected. You can use a custom ID to prevent this issue. If you want to add multiple servers to a machine group, you can set the same custom ID for new servers as the machine group. Log Service identifies the custom ID and adds the servers with the same custom ID to the machine group.
-
-**Procedure**
-
 1. Create a file named user_defined_id in a specified directory.
 Linux: Store the file in the /etc/ilogtail/user_defined_id directory. Windows: Store the file in the C:\LogtailData\user_defined_ided_id directory.
 2. Set a custom ID for the server.
@@ -6288,9 +6375,6 @@ Windows: i. Choose **Start Menu > Control Panel > Administrative Tools > Service
 **5.3.1.3.5. View server groups**
 
 This topic describes how to view the server groups of a project on the **Server Groups** page in the Log Service console.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. Find the target project in the project list and click the project name.
 3. In the left-side navigation pane of the page that appears, click the **Server Groups** icon to display the list of
@@ -6299,9 +6383,6 @@ server groups. You can view all server groups of the project.
 **5.3.1.3.6. Modify a server group**
 
 This topic describes how to modify a server group in the Log Service console. After you create a server group, you can modify the parameters of the server group.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. Find the target project in the project list and click the project name.
 3. In the left-side navigation pane of the page that appears, click the **Server Groups** icon to display the list of
@@ -6313,9 +6394,6 @@ The name of the server group cannot be modified.
 **5.3.1.3.7. View the status of a server group**
 
 This topic describes how to view the status of a server group in the Log Service console. You can view the heartbeat information of Logtail to check whether Logtail is installed on the servers in a server group.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. Find the target project in the project list and click the project name.
 3. In the left-side navigation pane of the page that appears, click the **Server Groups** icon to display the list of
@@ -6326,9 +6404,6 @@ If the heartbeat is **OK**, Logtail is installed on the servers in the server gr
 **5.3.1.3.8. Delete a machine group**
 
 This topic describes how to delete a machine group in the Log Service console. You can delete a machine group if you no longer need to collect logs from the machine group.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to delete a machine group.
 3. In the left-side navigation pane, click the
@@ -6382,10 +6457,7 @@ Log Service provides a configuration wizard that you can use to configure log co
 
 **Collection modes**
 
-Logtail supports various collection modes, such as simple mode, full regex mode, delimiter mode, JSON mode, NGINX configuration mode, IIS configuration mode, and Apache configuration mode. Collect logs in simple mode Collect logs in full regex mode Collect logs in delimiter mode Collect logs in JSON mode Collect logs in NGINX mode Collect logs in IIS mode Collect logs in Apache mode
-
-**Procedure**
-
+Logtail supports various collection modes, such as simple mode, full regex mode, delimiter mode, JSON mode, NGINX configuration mode, IIS configuration mode, and Apache configuration mode.
 1. Log on to the Log Service console.
 2. In the **Import Data** section, select a data source.
 Select a data source based on your business requirements. Log Service supports the following data sources of text logs: **RegEx - Text Log** , **Single Line - Text Log** , **Multi-Line - Text Log** , **Delimiter Mode - Text Log** ,
@@ -6449,9 +6521,6 @@ A project and a Logstore are created. For more information, see Create a project
 **Background information**
 
 The simple mode supports the following types of text logs: Single-line text log Each log line is collected as a log. Two logs in a log file are separated by a line feed. In single-line mode, you must specify the directories and names of log files. Then, Logtail collects logs by line from the specified files. Multi-line text log Multiple log lines are collected as a log by default. In multi-line mode, you must specify the directories and names of log files. In addition, you must enter a sample log and configure a regular expression to match the start part in the first line of a log. Logtail uses the regular expression to match the start part in the first line of a log and reckons unmatched lines as part of the log. If you collect logs in simple mode, the timestamp of a log indicates the system time of the server when the log is collected.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. Select a data source.
 Select **Single Line - Text Log** .
@@ -6503,9 +6572,6 @@ You can use the full regex mode to extract custom fields from logs. This topic d
 **Background information**
 
 If you want to collect multi-line logs and extract fields from the logs, we recommend that you use regular expressions. Log Service can generate a regular expression based on a sample log that you specify in the Import Data wizard. However, you must modify a regular expression before it can match fields in the sample log as expected. For more information, see How do I debug a regular expression?.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. Select a data source.
 Select **RegEx - Text Log** .
@@ -6569,9 +6635,6 @@ Log Service allows you to collect logs in delimiter mode. After logs are collect
 **Prerequisites**
 
 A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the **Import Data** section, select **Delimiter Mode - Text Log** .
 3. Select the project and Logstore. Then, click **Next**.
@@ -6673,8 +6736,6 @@ JSON logs can be written in the object or array structure. A log in the object s
 {"url": "POST /PutData? Category=YunOsAccountOpLog&AccessKeyId=U0Ujpek********&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Top raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D HTTP/1.1", "ip": "10.200.98.220", "user-agent": "aliyun-sdk -java", "request": {"status": "200", "latency": "18204"}, "time": "05/Jan/2020:13:30:28"} {"url": "POST /PutData? Category=YunOsAccountOpLog&AccessKeyId=U0Ujpek********&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Top raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D HTTP/1.1", "ip": "10.200.98.210", "user-agent": "aliyun-sdk -java", "request": {"status": "200", "latency": "10204"}, "time": "05/Jan/2020:13:30:29"}
 ```
 
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the **Import Data** section, select **JSON - Text Log**.
 3. Select the project and Logstore. Then, click **Next**.
@@ -6729,9 +6790,6 @@ Log Service allows you to collect NGINX logs and perform multidimensional log an
 **Prerequisites**
 
 A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the **Import Data** section, select **Nginx - Text Log** .
 3. Select the project and Logstore. Then, click **Next**.
@@ -6825,9 +6883,6 @@ Log Service allows you to collect Internet Information Services (IIS) logs and p
 **Prerequisites**
 
 A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. Logs are generated on the server in the IIS, NCSA Common, or W3C Extended format. We recommend that you use the W3C Extended log format. If you select the W3C Extended format, you must configure the fields in the W3C Logging Fields dialog box. To do so, you must select **Bytes Sent (sc-bytes)** and **Bytes Received (cs-bytes)** and use the default settings for other fields.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. Select a data source.
 In the Import Data section, select **IIS - Text Log**.
@@ -6937,9 +6992,6 @@ Log Service allows you to collect Apache logs and perform multidimensional log a
 **Prerequisites**
 
 A project and a Logstore are created. For more information, see Create a project and Create a Logstore. Ports 80 and 443 are enabled for the server from which you want to collect logs. The print format, log path, and log file name are specified in the Apache configuration file. For more information, see Appendix: log formats and sample logs.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. Select a data source.
 In the Import Data section, select **Apache - Text Log**.
@@ -7172,9 +7224,6 @@ Logtail V0.16.15 (Linux), Logtail V1.0.0.1 (Windows), or later is installed on t
 **Background information**
 
 Logtail collects logs based on the modifications in the log files that are monitored. Logtail can also collect logs by loading events from local files. Logtail collects historical logs by loading local events. You must import historical log files to the installation directory of Logtail. The directory varies based on the operating system. Linux: /usr/local/ilogtail Windows: 32-bit: C:\Program Files\Alibaba\Logtail 64-bit: C:\Program Files (x86)\Alibaba\Logtail The maximum interval between the time when a local event is generated and the time when the local event is imported is 1 minute. If a local event is loaded, Logtail sends the `LOAD_LOCAL_EVENT_ALARM` message to the server. If you want to import a large number of log files, we recommend that you modify the startup parameters of Logtail to increase the value of the **cpu_usage_limit** parameter to **2** or more and increase the value of the **mem_usage_limit** parameter to **512 MB** or more. For more information, see Set the startup parameters of Logtail.
-
-**Procedure**
-
 1. Obtain the unique identifier of the Logtail configuration.
 Open the user_log_config.json file in the directory where Logtail is installed. You can obtain the unique identifier of the Logtail configuration from this file. For example, to obtain the unique identifier of the Logtail configuration in a Linux server, run the following command:
 
@@ -7231,11 +7280,7 @@ The following example shows how to configure a local event in Linux by using the
     "name": "access.log.2017-08-09"
 ```
 
-`}` `]`
-
-**FAQ**
-
-How do I check whether Logtail loads a Logtail configuration? After you save the local_event.json file, Logtail loads the configurations of the local event to the memory within 1 minute. Then, the content of the local_event.json file is deleted. You can use the following methods to check whether the Logtail configuration is loaded. i. If no content exists in the local_event.json file, Logtail reads the local event from the file. ii. Check whether the ilogtail.LOG file in the Logtail installation directory contains the **process local event** parameter. If the content in the local_event.json file is cleared but the **process local event** parameter does not exist, the content of the local_event.json file may be invalid and filtered out. Why am I unable to collect a log file after a Logtail configuration is loaded? The Logtail configuration is invalid. The configurations of the local event in the local_event.json file are invalid. The log file does not exist in the path that is specified in the Logtail configuration. The log file has been collected by Logtail.
+`}` `]` How do I check whether Logtail loads a Logtail configuration? After you save the local_event.json file, Logtail loads the configurations of the local event to the memory within 1 minute. Then, the content of the local_event.json file is deleted. You can use the following methods to check whether the Logtail configuration is loaded. i. If no content exists in the local_event.json file, Logtail reads the local event from the file. ii. Check whether the ilogtail.LOG file in the Logtail installation directory contains the **process local event** parameter. If the content in the local_event.json file is cleared but the **process local event** parameter does not exist, the content of the local_event.json file may be invalid and filtered out. Why am I unable to collect a log file after a Logtail configuration is loaded? The Logtail configuration is invalid. The configurations of the local event in the local_event.json file are invalid. The log file does not exist in the path that is specified in the Logtail configuration. The log file has been collected by Logtail.
 
 **5.3.1.4.12. Log topics**
 
@@ -7357,7 +7402,6 @@ Do not delete the `config-operation-log` Logstore.
 
 **Self-managed Kubernetes clusters**
 
-1. Log on to the Log Service console
 2. Create a project whose name starts with `k8s-log-custom-` .
 Example: k8s-log-custom-sd89ehdq. For more information, see Create a project.
 3. Log on to your Kubernetes cluster.
@@ -7391,11 +7435,7 @@ After the component is installed, a machine group named k8s-group-${your_k8s_clu
 
 **Important**
 
-Do not delete the `config-operation-log` Logstore. If you install the component in a self-managed Kubernetes cluster, Logtail is granted the `privileged` permissions. This helps prevent the `container text file busy` error that occurs when other pods are deleted. For more information, see Bug 1468249, Bug 1441737, and Issue 34538.
-
-**FAQ**
-
-How do I collect and send container logs from multiple Kubernetes clusters to the same Log Service project? Alibaba Cloud ACK clusters If you want to collect and send container logs from multiple ACK clusters to the same Log Service project, you must select the same project when you create the ACK clusters. Self-managed Kubernetes clusters If you want to collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project, you must set the **{your-project-suffix}** parameter to the same value when you install the Logtail component in each of the Kubernetes clusters. You can collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project only if the Kubernetes clusters reside in the same region. How do I view the logs of Logtail? The logs of Logtail are stored in the files named ilogtail.LOG and logtail_plugin.LOG in the /usr/local/ilogtail/ directory of a Logtail container. The stdout and stderr of the Logtail container are not for reference. You can ignore the following stdout and stderr:
+Do not delete the `config-operation-log` Logstore. If you install the component in a self-managed Kubernetes cluster, Logtail is granted the `privileged` permissions. This helps prevent the `container text file busy` error that occurs when other pods are deleted. For more information, see Bug 1468249, Bug 1441737, and Issue 34538. How do I collect and send container logs from multiple Kubernetes clusters to the same Log Service project? Alibaba Cloud ACK clusters If you want to collect and send container logs from multiple ACK clusters to the same Log Service project, you must select the same project when you create the ACK clusters. Self-managed Kubernetes clusters If you want to collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project, you must set the **{your-project-suffix}** parameter to the same value when you install the Logtail component in each of the Kubernetes clusters. You can collect and send container logs from multiple self-managed Kubernetes clusters to the same Log Service project only if the Kubernetes clusters reside in the same region. How do I view the logs of Logtail? The logs of Logtail are stored in the files named ilogtail.LOG and logtail_plugin.LOG in the /usr/local/ilogtail/ directory of a Logtail container. The stdout and stderr of the Logtail container are not for reference. You can ignore the following stdout and stderr:
 
 ```
 start umount useless mount points, /shm$|/merged$|/mqueue$ umount: /logtail_host/var/lib/docker/overlay2/3fd0043af174cb0273c3c7869500fbe2bdb95d13b1e110172ef57fe840c82155/merg : must be superuser to unmount umount: /logtail_host/var/lib/docker/overlay2/d5b10aa19399992755de1f85d25009528daa749c1bf8c16edff44beab6e69718/merg : must be superuser to unmount umount: /logtail_host/var/lib/docker/overlay2/5c3125daddacedec29df72ad0c52fac800cd56c6e880dc4e8a640b1e16c22dbe/merg : must be superuser to unmount ...... xargs: umount: exited with status 255; aborting umount done start logtail ilogtail is running logtail status: ilogtail is running
@@ -7479,15 +7519,7 @@ This topic describes how to create a Logtail configuration in the Log Service co
 
 **Prerequisites**
 
-The Logtail component is installed. For more information, see Install the Logtail component.
-
-**Features**
-
-Logtail can collect container text logs, and then upload the text logs together with container metadata to Log Service. Logtail supports the following features: Allows you to specify a log file path in a container. You do not need to manually map the log file path to a path on the host. Uses the container label whitelist to specify containers from which text logs are collected. Uses the container label blacklist to specify containers from which text logs are not collected. Uses the environment variable whitelist to specify containers from which text logs are collected. Uses the environment variable blacklist to specify containers from which text logs are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container text logs. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which text logs are collected. Uses the Kubernetes label whitelist to specify containers from which text logs are collected. Uses the Kubernetes label blacklist to specify containers from which text logs are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container text logs.
-
-**Limits**
-
-If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects text logs from the container. If collection latency exists, some text logs that are collected before the container is stopped may be lost. For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount a volume to the directory of logs. Then, a temporary directory is generated. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted to the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted to the /var/log/service directory and you set the collection directory to /var/log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory.
+The Logtail component is installed. For more information, see Install the Logtail component. Logtail can collect container text logs, and then upload the text logs together with container metadata to Log Service. Logtail supports the following features: Allows you to specify a log file path in a container. You do not need to manually map the log file path to a path on the host. Uses the container label whitelist to specify containers from which text logs are collected. Uses the container label blacklist to specify containers from which text logs are not collected. Uses the environment variable whitelist to specify containers from which text logs are collected. Uses the environment variable blacklist to specify containers from which text logs are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container text logs. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which text logs are collected. Uses the Kubernetes label whitelist to specify containers from which text logs are collected. Uses the Kubernetes label blacklist to specify containers from which text logs are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container text logs. If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects text logs from the container. If collection latency exists, some text logs that are collected before the container is stopped may be lost. For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount a volume to the directory of logs. Then, a temporary directory is generated. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted to the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted to the /var/log/service directory and you set the collection directory to /var/log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory.
 
 | /logtail host _ |   | direct |
 |---|---|---|
@@ -7624,19 +7656,11 @@ This topic describes how to create a Logtail configuration in the Log Service co
 
 **Prerequisites**
 
-The Logtail component is installed. For more information, see Install the Logtail component. A Logstore is created in the project that you use to install the Logtail component. For more information, see Create a Logstore.
-
-**Features**
-
-Logtail can collect container stdout and stderr, and then upload the stdout and stderr together with container metadata to Log Service. Logtail supports the following features: Collects stdout and stderr. Uses the container label whitelist to specify containers from which stdout and stderr are collected. Uses the container label blacklist to specify containers from which stdout and stderr are not collected. Uses the environment variable whitelist to specify containers from which stdout and stderr are collected. Uses the environment variable blacklist to specify containers from which stdout and stderr are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container stdout and stderr. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which stdout and stderr are collected. Uses the Kubernetes label whitelist to specify containers from which stdout and stderr are collected. Uses the Kubernetes label blacklist to specify containers from which stdout and stderr are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container stdout and stderr.
+The Logtail component is installed. For more information, see Install the Logtail component. A Logstore is created in the project that you use to install the Logtail component. For more information, see Create a Logstore. Logtail can collect container stdout and stderr, and then upload the stdout and stderr together with container metadata to Log Service. Logtail supports the following features: Collects stdout and stderr. Uses the container label whitelist to specify containers from which stdout and stderr are collected. Uses the container label blacklist to specify containers from which stdout and stderr are not collected. Uses the environment variable whitelist to specify containers from which stdout and stderr are collected. Uses the environment variable blacklist to specify containers from which stdout and stderr are not collected. Collects multi-line logs. For example, Logtail can collect Java stack logs. Automatically associates container metadata that needs to be uploaded together with the collected container stdout and stderr. The metadata includes container names, image names, pod names, namespaces, and environment variables. If a container runs in a Kubernetes cluster, Logtail also supports the following features: Uses Kubernetes namespaces, pod names, and container names to specify containers from which stdout and stderr are collected. Uses the Kubernetes label whitelist to specify containers from which stdout and stderr are collected. Uses the Kubernetes label blacklist to specify containers from which stdout and stderr are not collected. Automatically associates Kubernetes labels that need to be uploaded together with the collected container stdout and stderr.
 
 **Implementation**
 
-Logtail communicates with the domain socket of Docker. Logtail queries all Docker containers and identifies the containers from which stdout and stderr are collected by using the specified labels and environment variables. Logtail runs the `docker logs` command to collect logs from the specified containers. When Logtail collects stdout and stderr from a container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is stopped and then started, Logtail collects logs from the last checkpoint.
-
-**Limits**
-
-You can use the Log Service console to collect stdout and stderr in DaemonSet mode only if Logtail runs V0.16.0 or later and runs on Linux. For more information about Logtail versions and version updates, see Install Logtail on a Linux server. Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can change the cache time by modifying the `BeginLineTimeoutMs` parameter. We recommend that you do not specify a value less than 1000 with millisecond precision. If you specify a value that is less than 1000, an error may occur. If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects stdout or stderr from the container. If collection latency exists, some stdout and stderr that are collected before the container is stopped may be lost. The logging driver collects stdout and stderr only in the JSON format from containers that use the Docker engine. By default, stdout and stderr that are collected from different containers by using the same Logtail configuration have the same context. If you want to specify a different context for the stdout and stderr that are collected from each container, you must create a Logtail configuration for each container. By default, the collected data is stored in the `content` field. Logtail can process the collected data. For more information, see Customize Logtail plug-ins to process data.
+Logtail communicates with the domain socket of Docker. Logtail queries all Docker containers and identifies the containers from which stdout and stderr are collected by using the specified labels and environment variables. Logtail runs the `docker logs` command to collect logs from the specified containers. When Logtail collects stdout and stderr from a container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is stopped and then started, Logtail collects logs from the last checkpoint. You can use the Log Service console to collect stdout and stderr in DaemonSet mode only if Logtail runs V0.16.0 or later and runs on Linux. For more information about Logtail versions and version updates, see Install Logtail on a Linux server. Logtail collects data from containers that use the Docker engine or containerd engine. Docker: Logtail accesses the Docker engine in the /run/docker.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. containerd: Logtail accesses the containerd engine in the /run/containerd/containerd.sock directory. Make sure that the directory exists and Logtail has the permissions to access the directory. By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can change the cache time by modifying the `BeginLineTimeoutMs` parameter. We recommend that you do not specify a value less than 1000 with millisecond precision. If you specify a value that is less than 1000, an error may occur. If Logtail detects the `die` event on a container that is stopped, Logtail no longer collects stdout or stderr from the container. If collection latency exists, some stdout and stderr that are collected before the container is stopped may be lost. The logging driver collects stdout and stderr only in the JSON format from containers that use the Docker engine. By default, stdout and stderr that are collected from different containers by using the same Logtail configuration have the same context. If you want to specify a different context for the stdout and stderr that are collected from each container, you must create a Logtail configuration for each container. By default, the collected data is stored in the `content` field. Logtail can process the collected data. For more information, see Customize Logtail plug-ins to process data.
 
 **Create a Logtail configuration**
 
@@ -8012,9 +8036,6 @@ or updated Logtail configuration and perform hot reloading.
 5. Logtail collects stdout and stderr logs or text logs from each container based on the obtained Logtail
 configuration.
 6. Logtail sends the collected container logs to Log Service.
-
-**Limits**
-
 Limits on text log collection If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting text logs from the container. If collection latency occurs, some text logs that are generated before the container is stopped may be lost. Logtail cannot access the symbolic link of a container. You must specify an actual path as the collection directory. If a volume is mounted on the data directory of a container, Logtail cannot collect data from the parent directory of the data directory. You must specify the complete path of the data directory as the collection directory. For example, if a volume is mounted on the /var/log/service directory and you set the collection directory to /var/log, Logtail cannot collect logs from the /var/log directory. You must specify /var/log/service as the collection directory.
 
 | /logtail host _ |   | direct |
@@ -9217,7 +9238,6 @@ kubectl apply -f sidecar.yaml
 
 **Step 2: Create a machine group**
 
-1. Log on to the Log Service console
 2. In the Projects section, click the project that you use to install Logtail components.
 3. In the left-side navigation pane, choose **Resources > Machine Groups**.
 4. In the **Machine Groups** list, choose
@@ -9234,7 +9254,6 @@ parameters.
 
 **Step 3: Create a Logtail configuration**
 
-1. Log on to the Log Service console
 2. In the **Import Data** section, click **RegEx - Text Log** .
 In this example, a Logtail configuration is created to collect text logs in full regex mode. For information about how to collect text logs in other modes, see Collect text logs.
 3. Select a project and a Logstore. Then, click **Next**.
@@ -9515,15 +9534,7 @@ hostname: cn-hangzhou.i-***********" level: Normal pod_id: 2a360760-**** pod_nam
 
 **5.3.1.5.10. Collect container text logs**
 
-Logtail can collect and upload container text logs together with container metadata to Log Service.
-
-**Features**
-
-Logtail can collect and upload container text logs together with container metadata to Log Service. Compared with basic log file collection, Docket file collection by using Logtail has the following features: Allows you to specify the log path of a container without the need to manually map the log path of the container to a path on the host. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java Stack logs. Supports automatic labeling for Docker container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers.
-
-**Limits**
-
-Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting logs from the container. If collection latency occurs, some logs that are collected before the container is stopped may be lost. Docker storage driver: For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount the log directory on the on-premises host. Logtail running mode: Logtail must run in a container and must be deployed based on Logtail deployment solutions.
+Logtail can collect and upload container text logs together with container metadata to Log Service. Logtail can collect and upload container text logs together with container metadata to Log Service. Compared with basic log file collection, Docket file collection by using Logtail has the following features: Allows you to specify the log path of a container without the need to manually map the log path of the container to a path on the host. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java Stack logs. Supports automatic labeling for Docker container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers. Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting logs from the container. If collection latency occurs, some logs that are collected before the container is stopped may be lost. Docker storage driver: For Docker containers, only overlay and overlay2 storage drivers are supported. If other storage drivers are used, you must mount the log directory on the on-premises host. Logtail running mode: Logtail must run in a container and must be deployed based on Logtail deployment solutions.
 
 **Step 1: Deploy and configure Logtail**
 
@@ -9600,19 +9611,11 @@ Logtail can collect and upload container standard output (stdout) and standard e
 
 **Prerequisites**
 
-A project and a Logstore are created. For more information, see Create a project and Create a Logstore. The alibaba-log-controller Helm package is installed. For more information, see Install Logtail.
-
-**Features**
-
-Logtail can collect container stdout and stderr logs, and upload the stdout and stderr logs together with container metadata to Log Service. The following features are supported by Logtail to collect container stdout and stderr logs: Collects stdout and stderr logs in real time. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java stack logs. Supports automatic labeling for Docker container logs. Supports automatic labeling for Kubernetes container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers.
+A project and a Logstore are created. For more information, see Create a project and Create a Logstore. The alibaba-log-controller Helm package is installed. For more information, see Install Logtail. Logtail can collect container stdout and stderr logs, and upload the stdout and stderr logs together with container metadata to Log Service. The following features are supported by Logtail to collect container stdout and stderr logs: Collects stdout and stderr logs in real time. Uses labels to specify containers for log collection. Uses labels to exclude containers from log collection. Uses environment variables to specify containers for log collection. Uses environment variables to exclude containers from log collection. Supports multi-line logs such as Java stack logs. Supports automatic labeling for Docker container logs. Supports automatic labeling for Kubernetes container logs. The preceding labels are retrieved by running the docker inspect command. These labels are different from the labels that are specified in a Kubernetes cluster. The preceding environment variables are the same as the environment variables that are specified to start containers.
 
 **Implementation**
 
-A Logtail container uses a UNIX domain socket to communicate with the Docker daemon. The Logtail container queries all Docker containers and finds the specified Docker containers based on the specified labels and environment variables. Logtail runs the `docker logs` command to collect the logs of the specified Docker containers. When Logtail collects the stdout and stderr logs of a Docker container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is restarted, Logtail collects logs from the last checkpoint.
-
-**Limits**
-
-Logtail version: Only Logtail V0.16.0 or later that runs on Linux can be used to collect stdout and stderr logs. For more information, see Install Logtail on a Linux server. Permissions: By default, Logtail uses the `/var/run/docker.sock` socket to access the Docker engine. You must make sure that a UNIX domain socket is available and the Logtail container has permissions to access the Docker engine. Multi-line logs: By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can set the cache time by specifying the `BeginLineTimeoutMs` parameter. The value of the `BeginLineTimeoutMs` parameter cannot be less than 1,000 ms. Otherwise, an error may occur. Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting stdout and stderr logs from the container. If collection latency occurs, some stdout and stderr logs that are collected before the container is stopped may be lost. Docker logging driver: The logging driver collects stdout and stderr logs only in the JSON format from containers that use the Docker engine. Context: By default, logs that are collected from different containers by using a Logtail configuration are in the same context. If you want the logs of each container to be in different contexts, create a Logtail configuration for each container. Data processing: The collected data is contained in the `content` field. You can process the data by using a common processing method. For more information, see Customize Logtail plug-ins to process data.
+A Logtail container uses a UNIX domain socket to communicate with the Docker daemon. The Logtail container queries all Docker containers and finds the specified Docker containers based on the specified labels and environment variables. Logtail runs the `docker logs` command to collect the logs of the specified Docker containers. When Logtail collects the stdout and stderr logs of a Docker container, Logtail periodically stores checkpoints to a checkpoint file. If Logtail is restarted, Logtail collects logs from the last checkpoint. Logtail version: Only Logtail V0.16.0 or later that runs on Linux can be used to collect stdout and stderr logs. For more information, see Install Logtail on a Linux server. Permissions: By default, Logtail uses the `/var/run/docker.sock` socket to access the Docker engine. You must make sure that a UNIX domain socket is available and the Logtail container has permissions to access the Docker engine. Multi-line logs: By default, the last multi-line log that is collected by Logtail is cached for 3 seconds. This prevents the multi-line log from being split into multiple logs due to output latency. You can set the cache time by specifying the `BeginLineTimeoutMs` parameter. The value of the `BeginLineTimeoutMs` parameter cannot be less than 1,000 ms. Otherwise, an error may occur. Stop policy: If Logtail detects the `die` event on a container that is stopped, Logtail stops collecting stdout and stderr logs from the container. If collection latency occurs, some stdout and stderr logs that are collected before the container is stopped may be lost. Docker logging driver: The logging driver collects stdout and stderr logs only in the JSON format from containers that use the Docker engine. Context: By default, logs that are collected from different containers by using a Logtail configuration are in the same context. If you want the logs of each container to be in different contexts, create a Logtail configuration for each container. Data processing: The collected data is contained in the `content` field. You can process the data by using a common processing method. For more information, see Customize Logtail plug-ins to process data.
 
 **Create a Logtail configuration**
 
@@ -9908,11 +9911,7 @@ Collect the JSON logs of the containers whose labels include `app=monitor` . The
 
 **5.3.1.5.12. Collect standard Docker logs**
 
-This topic describes how to use Logtail to collect standard Docker logs and upload these logs together with the container metadata to Log Service.
-
-**Procedure**
-
-Figure 1. Procedure
+This topic describes how to use Logtail to collect standard Docker logs and upload these logs together with the container metadata to Log Service. Figure 1. Procedure
 1. Deploy a Logtail container.
 2. Configure a Logtail server group.
 Create a server group with a custom ID in the Log Service console. The container cluster can automatically scale up or down based on data traffic.
@@ -10036,15 +10035,7 @@ Logtail acts as a secondary MySQL node to communicate with the primary MySQL nod
 1. Logtail acts as a secondary MySQL node and sends a dump request to the primary MySQL node.
 2. After the primary MySQL node receives the dump request, the node sends binary logs to Logtail in real time.
 3. Logtail performs operations such as event parsing, event filtering, and data parsing on binary logs. Then,
-Logtail uploads the parsed data to Log Service.
-
-**Features**
-
-Binary logs can be incrementally collected. This way, you can collect data related to the update operations that are performed on your databases. MySQL databases such as ApsaraDB RDS for MySQL are supported. Multiple methods are provided to filter data in databases, such as regular expressions. You can specify the positions of binary log files. Checkpoints are used to synchronize data storage status.
-
-**Limits**
-
-Binary logs of MySQL 8.0 or later cannot be collected. The binary logging feature must be enabled for your MySQL database, and the binlog_format parameter must be set to ROW for the database. By default, the feature is enabled for an RDS database. You can run the following command to check whether the binary logging feature is enabled:
+Logtail uploads the parsed data to Log Service. Binary logs can be incrementally collected. This way, you can collect data related to the update operations that are performed on your databases. MySQL databases such as ApsaraDB RDS for MySQL are supported. Multiple methods are provided to filter data in databases, such as regular expressions. You can specify the positions of binary log files. Checkpoints are used to synchronize data storage status. Binary logs of MySQL 8.0 or later cannot be collected. The binary logging feature must be enabled for your MySQL database, and the binlog_format parameter must be set to ROW for the database. By default, the feature is enabled for an RDS database. You can run the following command to check whether the binary logging feature is enabled:
 
 ```
 show variables like "log_bin";
@@ -10080,11 +10071,7 @@ The ID of the secondary MySQL node whose role Logtail assumes must be unique on 
 
 **Scenarios**
 
-The MySQL binary logging feature applies to scenarios in which you need to synchronize large amounts of data and require high performance. Query and analyze the incremental data of databases in real time. Audit the operations that are performed on databases. Use Log Service to query and analyze database updates, visualize query and analysis results, transform data for stream computing, export log data to MaxCompute for offline computing, and export log data to Object Storage Service (OSS) for long-term storage.
-
-**Usage notes**
-
-We recommend that you increase resource limits on Logtail to accommodate traffic surges and prevent data risks. If the limits are exceeded, Logtail may be forced to restart. You can modify the related parameters in the /usr/local/ilogtail/ilogtail_config.json file. For more information, see Set the startup parameters of Logtail. The following example shows how to increase the limit on CPU utilization to two cores and the limit on memory usage to 2,048 MB: `{`
+The MySQL binary logging feature applies to scenarios in which you need to synchronize large amounts of data and require high performance. Query and analyze the incremental data of databases in real time. Audit the operations that are performed on databases. Use Log Service to query and analyze database updates, visualize query and analysis results, transform data for stream computing, export log data to MaxCompute for offline computing, and export log data to Object Storage Service (OSS) for long-term storage. We recommend that you increase resource limits on Logtail to accommodate traffic surges and prevent data risks. If the limits are exceeded, Logtail may be forced to restart. You can modify the related parameters in the /usr/local/ilogtail/ilogtail_config.json file. For more information, see Set the startup parameters of Logtail. The following example shows how to increase the limit on CPU utilization to two cores and the limit on memory usage to 2,048 MB: `{`
 
 ```json
     ...
@@ -10107,16 +10094,13 @@ We recommend that you enable the global transaction identifier (GTID) feature on
 |---|---|
 | (binlog.1005, 4) |   |
 
-For example, a data block is in the checkpoint range from `(binlog.100, 4)` to `(binlog.105, 4)` on the primary MySQL node, and in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the secondary MySQL node. Logtail has obtained the data from the primary node and updated the local checkpoint to `(binlog.105, 4)` . If a primary/secondary switchover is triggered and no error occurs, Logtail continues to
+For example, a data block is in the checkpoint range from `(binlog.100, 4)` to `(binlog.105, 4)` on the primary MySQL node, and in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the secondary MySQL node. Logtail has obtained the data from the primary node and updated the local checkpoint to `(binlog.105, 4)` . If a primary/secondary switchover is triggered and no error occurs, Logtail continues to collect binary logs from the new primary node based on the local checkpoint `(binlog.105, 4)` . However, the
 
 | heckpoint | (binlog.105, 4) |   |   | . However, th |
 |---|---|---|---|---|
 | (binlog.1000, 4) |   | to | (binlog.1005, 4) |   |
 
-collect binary logs from the new primary node based on the local checkpoint `(binlog.105, 4)` . However, the sequence number of the data that is in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the new primary node is greater than the sequence number of the data that is requested by Logtail. The new primary node returns all data in the range to Logtail. This leads to repeated data collection.
-
-**Procedure**
-
+sequence number of the data that is in the checkpoint range from `(binlog.1000, 4)` to `(binlog.1005, 4)` on the new primary node is greater than the sequence number of the data that is requested by Logtail. The new primary node returns all data in the range to Logtail. This leads to repeated data collection.
 1. Log on to the Simple Log Service console.
 2. In the **Import Data** section, select **MySQL BinLog - Plug-in** .
 3. Select the project and Logstore. Then, click **Next**.
@@ -10278,19 +10262,11 @@ Logtail is installed on the server from which you want to collect MySQL query re
 
 **Implementation**
 
-Logtail executes the SELECT statement that is specified in a Logtail configuration on a regular basis, and then uploads the query results to Log Service. After Logtail obtains query results, Logtail saves the value of the CheckPoint field in the results to the Logtail server. The next time Logtail executes the SELECT statement, Logtail adds the value of the CheckPoint field to the SELECT statement. This way, Logtail can collect incremental data.
-
-**Features**
-
-MySQL databases are supported. You can configure paged query settings. You can specify time zones. You can specify timeout periods. The values of the CheckPoint field can be saved. SSL is supported. You can specify the maximum size of data that can be collected at a time.
+Logtail executes the SELECT statement that is specified in a Logtail configuration on a regular basis, and then uploads the query results to Log Service. After Logtail obtains query results, Logtail saves the value of the CheckPoint field in the results to the Logtail server. The next time Logtail executes the SELECT statement, Logtail adds the value of the CheckPoint field to the SELECT statement. This way, Logtail can collect incremental data. MySQL databases are supported. You can configure paged query settings. You can specify time zones. You can specify timeout periods. The values of the CheckPoint field can be saved. SSL is supported. You can specify the maximum size of data that can be collected at a time.
 
 **Scenarios**
 
-Collect incremental data based on marks such as an auto-increment ID or a point in time. Synchronize data based on filter conditions.
-
-**Procedure**
-
-The following procedure describes how to synchronize incremental data from a MySQL database to Log Service. In this procedure, the logtail.VersionOs field is synchronized every 10 seconds and the value of the count parameter in this field is greater than 0. The value of the initial checkpoint is 2017-09-25 11:00:00. Logs are paginated and each page contains 100 logs. The checkpoint of each page is saved. The procedure includes the following steps:
+Collect incremental data based on marks such as an auto-increment ID or a point in time. Synchronize data based on filter conditions. The following procedure describes how to synchronize incremental data from a MySQL database to Log Service. In this procedure, the logtail.VersionOs field is synchronized every 10 seconds and the value of the count parameter in this field is greater than 0. The value of the initial checkpoint is 2017-09-25 11:00:00. Logs are paginated and each page contains 100 logs. The checkpoint of each page is saved. The procedure includes the following steps:
 1. Log on to the Simple Log Service console.
 2. Select a data source.
 In the **Import Data** section, select **MySQL Query Result - Plug-in** .
@@ -10398,11 +10374,7 @@ This topic describes how to create a Logtail configuration in the Log Service co
 
 **Prerequisites**
 
-Logtail is installed on the server from which you want to collect syslogs. For more information, see Install Logtail on a Linux server or Install Logtail in Windows. Linux servers support Logtail V0.16.13 or later. Windows servers support Logtail V1.0.0.8 or later.
-
-**Overview**
-
-Linux servers allow you to use syslog agents such as rsyslog to forward on-premises syslogs to the IP address and port of a specified server. After you apply a Logtail configuration to the specified server, the Logtail plug-in specified in the configuration receives the forwarded syslogs over TCP or UDP. The plug-in also parses the syslogs based on the specified syslog protocol, and extracts the facility, tag(program), severity, and content fields from the syslogs. The syslog protocols defined in RFC 3164 and RFC 5424 are supported. For more information, see RFC 5424 and RFC 3164. You can configure multiple Logtail plug-ins based on your business requirements. For example, you can configure two Logtail plug-ins to listen on 127.0.0.1:9999 over TCP and UDP.
+Logtail is installed on the server from which you want to collect syslogs. For more information, see Install Logtail on a Linux server or Install Logtail in Windows. Linux servers support Logtail V0.16.13 or later. Windows servers support Logtail V1.0.0.8 or later. Linux servers allow you to use syslog agents such as rsyslog to forward on-premises syslogs to the IP address and port of a specified server. After you apply a Logtail configuration to the specified server, the Logtail plug-in specified in the configuration receives the forwarded syslogs over TCP or UDP. The plug-in also parses the syslogs based on the specified syslog protocol, and extracts the facility, tag(program), severity, and content fields from the syslogs. The syslog protocols defined in RFC 3164 and RFC 5424 are supported. For more information, see RFC 5424 and RFC 3164. You can configure multiple Logtail plug-ins based on your business requirements. For example, you can configure two Logtail plug-ins to listen on 127.0.0.1:9999 over TCP and UDP.
 
 **Implementation**
 
@@ -10517,17 +10489,9 @@ After Logtail collects and sends syslogs to Log Service, you can view the logs i
 
 **5.3.1.6.4. Customize Logtail plug-ins to process data**
 
-If you have complex logs that cannot be parsed in basic modes such as full regex, NGINX, and JSON, you can use Logtail plug-ins to parse the logs. You can configure Logtail plug-ins for one or more processing methods. Then, Logtail executes the processing methods in sequence.
-
-**Limits**
-
-Performance limits If a plug-in is used to process data, Logtail consumes more resources. Most of these resources are CPU resources. You can modify the Logtail parameter settings based on your business requirements. For more information, see Set the startup parameters of Logtail. Limits on text logs Log Service allows you to process text logs in basic modes such as full regex, NGINX, or JSON. Log Service also allows you to use Logtail plug-ins to process text logs. However, Logtail plug-ins have the following limits on text logs: If you enable the plug-in processing feature, some advanced features of the specified mode become unavailable. For example, you cannot configure the filter, upload raw logs, specify the system time zone, drop logs that fail to be parsed, or upload incomplete logs in delimiter mode. Plug-ins use the line mode to process text logs. In this mode, file-level metadata such as __tag__:__path__ and __topic__ is stored in each log. If you use Logtail plug-ins to process data, the following limits apply to tagrelated features: You cannot use the contextual query and LiveTail features because these features depend on fields such as
+If you have complex logs that cannot be parsed in basic modes such as full regex, NGINX, and JSON, you can use Logtail plug-ins to parse the logs. You can configure Logtail plug-ins for one or more processing methods. Then, Logtail executes the processing methods in sequence. Performance limits If a plug-in is used to process data, Logtail consumes more resources. Most of these resources are CPU resources. You can modify the Logtail parameter settings based on your business requirements. For more information, see Set the startup parameters of Logtail. Limits on text logs Log Service allows you to process text logs in basic modes such as full regex, NGINX, or JSON. Log Service also allows you to use Logtail plug-ins to process text logs. However, Logtail plug-ins have the following limits on text logs: If you enable the plug-in processing feature, some advanced features of the specified mode become unavailable. For example, you cannot configure the filter, upload raw logs, specify the system time zone, drop logs that fail to be parsed, or upload incomplete logs in delimiter mode. Plug-ins use the line mode to process text logs. In this mode, file-level metadata such as __tag__:__path__ and __topic__ is stored in each log. If you use Logtail plug-ins to process data, the following limits apply to tagrelated features: You cannot use the contextual query and LiveTail features because these features depend on fields such as
 **__tag__:__path__**.
-The name of the **__topic__** field is renamed to **__log_topic__**. Fields such as **__tag__:__path__** no longer have original field indexes. You must configure indexes for these fields.
-
-**Usage notes**
-
-When you configure data processing methods, you must set the key in the configuration file to **processors** and set the value to an array of JSON objects. Each object of the array contains the details of a processing method. Each processing method contains the **type** and **detail** fields. The **type** field specifies the type of the processing method and the **detail** field contains configuration details.
+The name of the **__topic__** field is renamed to **__log_topic__**. Fields such as **__tag__:__path__** no longer have original field indexes. You must configure indexes for these fields. When you configure data processing methods, you must set the key in the configuration file to **processors** and set the value to an array of JSON objects. Each object of the array contains the details of a processing method. Each processing method contains the **type** and **detail** fields. The **type** field specifies the type of the processing method and the **detail** field contains configuration details.
 
 ```json
 "processors" : [
@@ -11392,7 +11356,7 @@ This topic describes the limits of Logtail. These limits apply when you collect 
 | Log collection latency | A latency of less than 1 second exists between the point in time when a log is written to a disk and the point in time when Logtail collects the log. However, if the log collection speed is restricted, the latency increases. |
 | Log upload policy | Before Logtail uploads logs, Logtail aggregates the logs in the same file. The log upload starts if the number of logs exceeds 2,000, the total size of logs exceeds 2 MB, or the log collection duration exceeds 3 seconds. |
 
-#### Other collection methods
+#### 5.3.2 Other collection methods
 
 **5.3.2.1. Use the web tracking feature to collect logs**
 
@@ -11400,11 +11364,7 @@ Log Service provides the web tracking feature that you can use to collect logs f
 
 **Background information**
 
-You can use the web tracking feature to collect user information from browsers, iOS apps, or Android apps. The information includes: Browsers, operating systems, and resolutions that are used by users. User browsing behavior, such as the number of clicks and purchases on a website. The amount of time that users spend on an app and whether users are active users.
-
-**Usage notes**
-
-After you enable the web tracking feature for a Logstore, the write permissions on the Logstore are granted to anonymous users from the Internet. This may generate dirty data. The HTTP body of each GET request cannot exceed 16 KB. You can use the POST method to call the PutLogs API operation and write a maximum of 3 MB or 4,096 log entries to Log Service.
+You can use the web tracking feature to collect user information from browsers, iOS apps, or Android apps. The information includes: Browsers, operating systems, and resolutions that are used by users. User browsing behavior, such as the number of clicks and purchases on a website. The amount of time that users spend on an app and whether users are active users. After you enable the web tracking feature for a Logstore, the write permissions on the Logstore are granted to anonymous users from the Internet. This may generate dirty data. The HTTP body of each GET request cannot exceed 16 KB. You can use the POST method to call the PutLogs API operation and write a maximum of 3 MB or 4,096 log entries to Log Service.
 
 **Step 1: Enable the web tracking feature**
 
@@ -11519,15 +11479,7 @@ The track_ua.gif file contains custom parameters that you want to upload to Log 
 
 **5.3.2.2. Collect logs over the syslog protocol**
 
-This topic describes how to collect logs from a server over the syslog protocol. If you use this method, you do not need to use third-party agents to forward collected logs.
-
-**Limits**
-
-Syslogs must conform to RFC 5424. The maximum size of each log is 64 KB. TCP-based Transport Layer Security (TLS) 1.2 must be used for data transmission.
-
-**Procedure**
-
-To upload data over the syslog protocol, associate the protocol with the endpoint of Log Service. Set the port number of the syslog protocol to 10009. Select the endpoint of your project. Specify a project, Logstore, and AccessKey pair for Log Service in the STRUCTURED-DATA field of syslogs. The following table describes the parameters.
+This topic describes how to collect logs from a server over the syslog protocol. If you use this method, you do not need to use third-party agents to forward collected logs. Syslogs must conform to RFC 5424. The maximum size of each log is 64 KB. TCP-based Transport Layer Security (TLS) 1.2 must be used for data transmission. To upload data over the syslog protocol, associate the protocol with the endpoint of Log Service. Set the port number of the syslog protocol to 10009. Select the endpoint of your project. Specify a project, Logstore, and AccessKey pair for Log Service in the STRUCTURED-DATA field of syslogs. The following table describes the parameters.
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -11643,8 +11595,6 @@ ii. Run the `sudo /etc/init.d/syslog-ng restart` , `sudo service syslog-ng resta
 ```
  logger hello world! .
 ```
-
-**FAQ**
 
 How can I send syslogs to Log Service? You can use Ncat commands to send syslogs to Log Service. The command checks whether the network connection is normal and whether the AccessKey pair is authorized to send syslogs. If Ncat is not installed on your host, you can run the `sudo yum install nmap-ncat` command to install Ncat. For example, you can run the following command to send a syslog to Log Service. The project in Log Service is named `test-project-1` and the Logstore is named `test-logstore-1` . The project resides in the China (Qingdao) region (cn-qingdaoenv12-d01). The AccessKey ID of the RAM user with the write permission is `<yourAccessKeyId>` , and the AccessKey secret is `<yourAccessKeySecret>` . The timestamp of the syslog uses UTC+0, for example, 2019-03-28T03:00:15.003Z. In UTC+8, this time is 2019-03-28T11:00:15.003. Ncat commands cannot automatically check whether the network is disconnected. You must enter a syslog and press Enter to send the syslog within 30 seconds after you run the Ncat command.
 
@@ -11934,8 +11884,6 @@ The following example shows sample logs:
 2015-03-04 23:21:59,682 - log_test.py:16 - tst - first info message 2015-03-04 23:21:59,682 - log_test.py:17 - tst - first debug message
 ```
 
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the **Import Data** section, select **RegEx - Text Log** .
 3. Select the project and Logstore. Then, click **Next**.
@@ -12130,9 +12078,6 @@ This topic describes how to use the web tracking feature of Log Service to colle
 **Background information**
 
 Unity3D is a cross-platform game engine that is developed by Unity Technologies. You can use the engine to create 3D video games, VR buildings, real-time 3D animation, and other interactive content. In this example, Unity Debug.Log is used to describe how to collect Unity3D logs.
-
-**Procedure**
-
 1. Enable the web tracking feature.
 For more information, see Use the web tracking feature to collect logs.
 2. Create a Unity3D logging handler.
@@ -12223,9 +12168,9 @@ using UnityEngine; using System.Collections; public class LogglyTest : MonoBehav
 4. View logs in the Log Service console.
 After you run the Unity3D application, logs are generated and sent to Log Service. You can view the logs in the Log Service console.
 
-### Query and analysis
+### 5.4 Query and analysis
 
-#### Log search overview
+#### 5.4.1 Log search overview
 
 Log Service allows you to search for 1 billion to hundreds of billions of rows of log data within seconds. This topic describes the syntax and limits of the log search feature and provides examples.
 
@@ -12248,8 +12193,6 @@ Example
 * | SELECT status, count(*) AS PV GROUP BY status
 ```
 
-**Limits**
-
 Each project supports a maximum of 1,000 concurrent search statements at the same time. For example, 1,000 users can concurrently search for data in all Logstores of a project at the same time. You can specify a maximum of 30 keywords for each search statement. The maximum size of a field value is 10 KB. If the size of a field value exceeds 10 KB, the excess content is not queried. The returned logs are displayed on multiple pages. Each page displays a maximum of 100 search results. Log Service performs the DOM operation only on the first 10,000 characters of a log. If you perform a fuzzy search, Log Service searches for 100 words that meet the specified conditions. Logs that contain one or more of the 100 words and meet the search conditions are returned.
 
 **Search methods**
@@ -12258,7 +12201,7 @@ Each project supports a maximum of 1,000 concurrent search statements at the sam
 
 Before you search for logs, you must make sure that logs are collected and indexes are configured for the fields. Indexes are used in a storage structure to sort one or more columns of log data. For more information, see Configure indexes. Use the Log Service console Log on to the Log Service console. On the Search & Analysis page of a Logstore, specify a time range and execute a search statement. For more information, see Query and analyze logs and Search syntax. Call API operations Call the GetLogs and GetHistograms operations to search for log data. For more information, see the GetLogs and GetHistograms topics of API Reference in **Developer Guide**.
 
-#### Log analysis overview
+#### 5.4.2 Log analysis overview
 
 Log Service provides the log analysis feature. This feature allows you to search for log data and use SQL functions to analyze the data. This topic describes the syntax and limits of the analytic statements. This topic also provides the SQL functions that you can call when you use the log analysis feature. If you want to use the log analysis feature, you must turn on **Enable Analytics** when you configure indexes for log fields. For more information, see Configure indexes. If you turn on **Enable Analytics**, you can analyze log data within seconds without additional costs.
 
@@ -12281,15 +12224,13 @@ Example
 * | SELECT status, count(*) AS PV GROUP BY status
 ```
 
-**Limits**
-
 Each project supports a maximum of 15 concurrent analytic statements at the same time. For example, 15 users can concurrently execute analytic statements in all Logstores of a project at the same time. You can analyze only the data that is written to Log Service after the log analysis feature is enabled. By default, an analytic statement returns a maximum of 100 rows of data. If you want to view more data, use a LIMIT clause. For more information, see LIMIT syntax. The maximum size of a field value is 16 KB. If the size of a field value exceeds 16 KB, the excess content is not analyzed. The maximum timeout period for an analytic statement is 55 seconds. Each shard supports only 1 GB of data for an analytic statement. The value of a double-type field can contain a maximum of 52 digits after the decimal point. If the number of digits after the decimal point is greater than 52, the accuracy of the field value is compromised.
 
 **SQL functions and syntax**
 
-This section lists the SQL functions and syntax that Log Service supports. The following aggregate functions are available for SELECT statements: General aggregate functions Security check functions Map functions and operators Approximate functions Mathematical statistics functions Mathematical calculation functions String functions Date and time functions URL functions Regular expression functions JSON functions Type conversion functions IP functions Array functions and operators Binary string functions Bitwise functions Interval-valued comparison and periodicity-valued comparison functions Comparison functions and operators Lambda expressions Logical functions Geospatial functions Geography functions Machine learning syntax and functions GROUP BY clause Window functions HAVING clause ORDER BY clause LIMIT syntax Conditional expressions UNNEST clause Column aliases Nested subquery
+This section lists the SQL functions and syntax that Log Service supports. The following aggregate functions are available for SELECT statements: Interval-valued comparison and periodicity-valued comparison functions
 
-#### Configure indexes
+#### 5.4.3 Configure indexes
 
 Indexes are used in a storage structure to sort one or more columns of log data. You can query and analyze log data only after you configure indexes. Query and analysis results vary based on index configurations. Therefore, you must configure indexes based on your business requirements.
 
@@ -12366,16 +12307,13 @@ If the indexing feature is not enabled, click **Enable**.
 6. Click **OK**.
 The index configurations take effect within 1 minute.
 
-#### Query and analyze logs
+#### 5.4.4 Query and analyze logs
 
 After you enable the indexing feature and configure indexes for a Logstore, you can query and analyze the logs that are stored in the Logstore in real time.
 
 **Prerequisites**
 
 Logs are collected and stored in a Logstore. For more information, see Data collection. The indexing feature is enabled and indexes are configured. For more information, see Configure indexes.
-
-**Query and analyze logs**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project to which the Logstore belongs.
 3. Choose **Log Storage > Logstores**. On the Logstores tab, click the Logstore where logs are stored.
@@ -12389,16 +12327,13 @@ You can select a relative time or a time frame. You can also specify a custom ti
 
 **Manage query and analysis results**
 
-You can view the query and analysis results in a log distribution histogram, on the Raw Logs tab, or in a chart that is displayed on the Graph tab. You can also configure alerts and saved searches. By default, only 100 rows of data are returned after you execute a query statement. You can use a LIMIT clause to change the number of returned rows. For more information, see LIMIT syntax. Log distribution histogram The log distribution histogram displays the distribution of query and analysis results in different time ranges. If you move the pointer over a green rectangle, you can view the time range that is represented by the rectangle and the number of logs that are obtained within the time range. If you click the green rectangle, you can view a more fine-grained log distribution. You can also view the query and analysis results on the **Raw Logs** tab. Raw Logs tab On the **Raw Logs** tab, you can view the logs that match your search conditions. Quick analysis: You can use this feature to analyze the distribution of a specific field within a specific period of time. For more information, see Quick analysis. Contextual query: If you click the icon of a log and select **Context View**, you can view the context of the log. For more information, see Contextual query. The contextual query feature supports only the log data that is collected by Logtail. LiveTail: If you click the icon of a log on the **Raw Log** tab, you can monitor logs in real time and extract important information. For more information, see LiveTail. LiveTail can monitor and extract only the log data that is collected by Logtail. Log download: To download logs, click the download icon, select a method, and then click **OK**. For more information, see Download logs. Column settings: You can click the icon and select **Column Settings** to specify the columns that you want to display in the table. The column names are field names, and the column content is used as field values. To view the log content on the tab, select **Content**. JSON configurations: You can click the icon and select **JSON Configurations** to specify the levels of JSON data. Tag configurations: On the **Raw Data** tab, you can click the icon and select **Tag Configurations** to hide fields that are less important. Charts If you turn on Enable Analytics when you configure indexes for fields and use query statements to query logs, you can view the analysis results on the **Graph** tab. Log Service provides multiple chart types, such as tables, line charts, and bar charts. You can select a chart type to display analysis results. For more information, see Chart overview. Log Service allows you to create dashboards to perform real-time data analysis. You can click **Add to New**
+You can view the query and analysis results in a log distribution histogram, on the Raw Logs tab, or in a chart that is displayed on the Graph tab. You can also configure alerts and saved searches. By default, only 100 rows of data are returned after you execute a query statement. You can use a LIMIT clause to change the number of returned rows. For more information, see LIMIT syntax. Log distribution histogram The log distribution histogram displays the distribution of query and analysis results in different time ranges. If you move the pointer over a green rectangle, you can view the time range that is represented by the rectangle and the number of logs that are obtained within the time range. If you click the green rectangle, you can view a more fine-grained log distribution. You can also view the query and analysis results on the **Raw Logs** tab. Raw Logs tab On the **Raw Logs** tab, you can view the logs that match your search conditions. Quick analysis: You can use this feature to analyze the distribution of a specific field within a specific period of time. For more information, see Quick analysis. Contextual query: If you click the icon of a log and select **Context View**, you can view the context of the log. For more information, see Contextual query. The contextual query feature supports only the log data that is collected by Logtail. LiveTail: If you click the icon of a log on the **Raw Log** tab, you can monitor logs in real time and extract important information. For more information, see LiveTail. LiveTail can monitor and extract only the log data that is collected by Logtail. Log download: To download logs, click the download icon, select a method, and then click **OK**. For more information, see Download logs. Column settings: You can click the icon and select **Column Settings** to specify the columns that you want to display in the table. The column names are field names, and the column content is used as field values. To view the log content on the tab, select **Content**. JSON configurations: You can click the icon and select **JSON Configurations** to specify the levels of JSON data. Tag configurations: On the **Raw Data** tab, you can click the icon and select **Tag Configurations** to hide fields that are less important. If you turn on Enable Analytics when you configure indexes for fields and use query statements to query logs, you can view the analysis results on the **Graph** tab. Log Service provides multiple chart types, such as tables, line charts, and bar charts. You can select a chart type to display analysis results. For more information, see Chart overview. Log Service allows you to create dashboards to perform real-time data analysis. You can click **Add to New**
 **Dashboard** to save query statements as charts to a dashboard. For more information, see Dashboard
-overview. Drill-down analysis allows you to view more details of analysis results. You can configure the drill-down parameters and add a chart to the dashboard. Then, you can click the values in the chart to view the analysis results in multiple dimensions. For more information, see Configure a drill-down event. LogReduce tab On the **LogReduce** tab, you can click **Enable LogReduce** to cluster similar logs. For more information, see LogReduce. Alerts On the Search & Analysis page, click **Save as Alert** to create an alert monitoring rule for query results. For more information, see Alert overview. Saved searches On the Search & Analysis page, you can click **Save Search** to save a query statement as a saved search. For more information, see Saved search.
+overview. Drill-down analysis allows you to view more details of analysis results. You can configure the drill-down parameters and add a chart to the dashboard. Then, you can click the values in the chart to view the analysis results in multiple dimensions. For more information, see Configure a drill-down event. LogReduce tab On the **LogReduce** tab, you can click **Enable LogReduce** to cluster similar logs. For more information, see LogReduce. On the Search & Analysis page, click **Save as Alert** to create an alert monitoring rule for query results. For more information, see Alert overview. Saved searches On the Search & Analysis page, you can click **Save Search** to save a query statement as a saved search. For more information, see Saved search.
 
-#### Download logs
+#### 5.4.5 Download logs
 
 This topic describes how to download logs from Log Service to an on-premises host.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the name of the project in which you want to download logs.
 3. Click the
@@ -12411,7 +12346,7 @@ icon.
 comma-separated values (CSV) format.
 **Download All Logs Using Command Line Tool**: Download all logs as prompted.
 
-#### Index data type
+#### 5.4.6 Index data type
 
 **5.4.6.1. Overview**
 
@@ -12435,11 +12370,7 @@ The following table describes the supported data types.
 
 **5.4.6.2. Text type**
 
-This topic describes how to query text data.
-
-**Usage notes**
-
-Similar to search engines, Log Service queries text data based on terms. Therefore, you must set the Delimiter and Case Sensitive parameters when you configure indexes. Case Sensitive switch You can specify whether searches are case-sensitive. For example, you want to query a log entry that contains
+This topic describes how to query text data. Similar to search engines, Log Service queries text data based on terms. Therefore, you must set the Delimiter and Case Sensitive parameters when you configure indexes. Case Sensitive switch You can specify whether searches are case-sensitive. For example, you want to query a log entry that contains
 
 ```
  internalError .
@@ -12451,13 +12382,13 @@ If you turn off Case Sensitive, searches are case-insensitive, and you can find 
 /url/pic/abc.gif
 ```
 
-If you do not specify a delimiter, the entire string is processed as a single word in the `/url/pic/abc.gif` format. In this case, you can find the log entry by using the entire string as a keyword for exact match or by using the `/url/pic/*` keyword for fuzzy match. If you set the delimiter to a forward slash (/), the content is divided into the following three words: `url` , `pic` , and `abc.gif` . You can find the log entry by using one of the three words. You can also use part of each word to search for the log entry in fuzzy match mode. For example, you can find the log entry by using the `url` , `abc.gif` , or `pi*` keyword. You can also find
+If you do not specify a delimiter, the entire string is processed as a single word in the `/url/pic/abc.gif` format. In this case, you can find the log entry by using the entire string as a keyword for exact match or by using the `/url/pic/*` keyword for fuzzy match. If you set the delimiter to a forward slash (/), the content is divided into the following three words: `url` , `pic` , and `abc.gif` . You can find the log entry by using one of the three words. You can also use part of each word to search for the log entry in fuzzy match mode. For example, you can find the log entry by using the `url` , `abc.gif` , or `pi*` keyword. You can also find the log entry by using the `/url/pic/abc.gif` keyword. The /url/pic/abc.gif keyword is split into the following
 
 | ing the | /url/pic/abc.gif |
 |---|---|
 | url and pic and abc.gif |   |
 
-the log entry by using the `/url/pic/abc.gif` keyword. The /url/pic/abc.gif keyword is split into the following If you set the delimiter to a forward slash (/) and a period (.), the content is split into the following four words: `url` , `pic` , `abc` , and `gif` . You can specify appropriate delimiters to extend query ranges. Full Text Index switch By default, after you turn on Full Text Index, the data type of all fields, except the time field, is set to text. You do not need to specify keys. For example, you want to query a log entry that consists of the following four fields:
+If you set the delimiter to a forward slash (/) and a period (.), the content is split into the following four words: `url` , `pic` , `abc` , and `gif` . You can specify appropriate delimiters to extend query ranges. Full Text Index switch By default, after you turn on Full Text Index, the data type of all fields, except the time field, is set to text. You do not need to specify keys. For example, you want to query a log entry that consists of the following four fields:
 
 ```
 time:2018-01-02 12:00:00 level:"error" status:200 message:"some thing is error in this field" [20180102 12:00:00],200,error,some thing is error in this field
@@ -12467,11 +12398,7 @@ Prefixes are not required for full-text indexes. If you use error as a keyword, 
 
 **5.4.6.3. Numeric type**
 
-When you configure indexes, you can set the data type of a field to a numeric type. Then, you can query the value of the field by value range.
-
-**Usage notes**
-
-You can query the value of a field by using a numeric range only after you set the data type of the field to long or double. If the value of a log field is an integer, we recommend that you set the data type of the field to long when you configure indexes. If the value of a log field is a floating-point number, we recommend that you set the data type of the field to double when you configure indexes.
+When you configure indexes, you can set the data type of a field to a numeric type. Then, you can query the value of the field by value range. You can query the value of a field by using a numeric range only after you set the data type of the field to long or double. If the value of a log field is an integer, we recommend that you set the data type of the field to long when you configure indexes. If the value of a log field is a floating-point number, we recommend that you set the data type of the field to double when you configure indexes.
 
 **Important**
 
@@ -12499,11 +12426,7 @@ status = 200
 
 **5.4.6.4. JSON type**
 
-If the value of a field is in the JSON format, you can set the data type of the field to JSON when you configure indexes. This topic describes how to set the data type of a field to JSON and provides some examples.
-
-**Usage notes**
-
-You can set the data type of a field in JSON objects to long, double, or text based on the field value, and turn on Enable Analytics to enable the analysis feature. After you turn on Enable Analytics, Log Service allows you to query and analyze fields in JSON objects. For partially valid JSON-formatted data, only the valid parts can be parsed in Log Service. The following example shows an incomplete JSON log entry. Log Service can parse the **conctent.remote_addr**,
+If the value of a field is in the JSON format, you can set the data type of the field to JSON when you configure indexes. This topic describes how to set the data type of a field to JSON and provides some examples. You can set the data type of a field in JSON objects to long, double, or text based on the field value, and turn on Enable Analytics to enable the analysis feature. After you turn on Enable Analytics, Log Service allows you to query and analyze fields in JSON objects. For partially valid JSON-formatted data, only the valid parts can be parsed in Log Service. The following example shows an incomplete JSON log entry. Log Service can parse the **conctent.remote_addr**,
 **content.request.request_length**, and **content.request.request_method** fields.
 
 ```
@@ -12588,7 +12511,7 @@ Use SQL statements to analyze fields. You must configure each JSON field. A JSON
 * | select avg("message.usedTime") as avg_time ,"message.methodName"  group by "message.methodName"
 ```
 
-#### Query syntax and functions
+#### 5.4.7 Query syntax and functions
 
 **5.4.7.1. Search syntax**
 
@@ -12716,9 +12639,6 @@ In online O&M scenarios, you may need to monitor log data in real time and extra
 **Benefits**
 
 Logs are monitored in real time and filtered by keyword. Logs are collected and indexed based on the configurations of log collection. Log fields are delimited. This allows you to query contextual logs that contain delimiters. A log file can be found based on a log in the log file. This allows you to monitor the log file in real time without the need to log on to a server.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. Click the
@@ -12870,9 +12790,6 @@ payment failure. The contextual query feature does not support syslog logs.
 **Benefits**
 
 You can identify the causes of failures without the need to modify applications or log file formats. You can query the context of a log from a log file that is collected from a server in the Log Service console. You do not need to log on to the server to query the context. You can specify a time range to find suspicious logs before you perform a contextual query in the Log Service console. This improves troubleshooting efficiency. You do not need to worry about data loss that is caused by insufficient server storage or log file rotation. You can view historical log data in the Log Service console at any time.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to perform contextual queries.
 3. Click the
@@ -12943,25 +12860,14 @@ Log Service provides the quick analysis feature that allows you to analyze the d
 
 **Prerequisites**
 
-Indexes are configured and the analysis feature is enabled for specified fields. For more information, see Configure indexes.
-
-**Features**
-
-Allows you to analyze the first 100,000 log entries that are returned for a query. When you perform quick analysis on log entries within a specified time range, Log Service collects the first 100,000 log entries. If you use a saved search to query all data in a Logstore, you must delete the **Limit**
+Indexes are configured and the analysis feature is enabled for specified fields. For more information, see Configure indexes. Allows you to analyze the first 100,000 log entries that are returned for a query. When you perform quick analysis on log entries within a specified time range, Log Service collects the first 100,000 log entries. If you use a saved search to query all data in a Logstore, you must delete the **Limit**
 **100000** clause.
 Groups fields of the text type and provides statistics about the top 10 groups. Generates **approx_distinct** statements for fields of the text type. Supports histogram-based statistics about the approximate distribution of fields of the long and double type. Histogram-based statistics group sampling data and calculate the average value of each group. Searches for the maximum, minimum, average, or sum of fields of the long and double type. Generates a query statement based on quick analysis.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the project in which you want to perform quick analysis.
 3. Click the name of the Logstore in which you want to perform quick analysis.
 4. On the **Raw Logs** tab, click the field that you want to analyze in the **Quick Analysis** column.
-Provide grouping statistics for fields of the TEXT type and approximate distribution histogram-based statistics for fields of the LONG and DOUBLE type. For more information, see Text type or Long and double types. Provide query statements. Click the icon next to the destination field. You are redirected to the **Graph** tab. A query statement for grouping statistics is provided in the search box. Calculate the number of unique values of a field. In the Quick Analysis column, click **Count Distinct Values** under the destination field. You can obtain the number of unique values of the ${keyName} field. Display field names or aliases Click the icon to specify whether to display field names or aliases. Aliases can be set when you configure indexes. For example, if you set the alias of **host_name** to **host**, **host** is displayed in the Quick Analysis column after you select **Show Field Aliases**. If you do not set an alias for a field, the field name is displayed after you select **Show Field Aliases**.
-
-**Text type**
-
-The quick analysis feature provides grouping statistics for fields of the TEXT type. If you use this method, the first 100,000 log entries are grouped and the ratios of the top 10 groups are returned. For example, you can obtain the following result based on grouping statistics of **request_method**. The GET method is the most common request method.
+Provide grouping statistics for fields of the TEXT type and approximate distribution histogram-based statistics for fields of the LONG and DOUBLE type. For more information, see Text type or Long and double types. Provide query statements. Click the icon next to the destination field. You are redirected to the **Graph** tab. A query statement for grouping statistics is provided in the search box. Calculate the number of unique values of a field. In the Quick Analysis column, click **Count Distinct Values** under the destination field. You can obtain the number of unique values of the ${keyName} field. Display field names or aliases Click the icon to specify whether to display field names or aliases. Aliases can be set when you configure indexes. For example, if you set the alias of **host_name** to **host**, **host** is displayed in the Quick Analysis column after you select **Show Field Aliases**. If you do not set an alias for a field, the field name is displayed after you select **Show Field Aliases**. The quick analysis feature provides grouping statistics for fields of the TEXT type. If you use this method, the first 100,000 log entries are grouped and the ratios of the top 10 groups are returned. For example, you can obtain the following result based on grouping statistics of **request_method**. The GET method is the most common request method.
 
 **Long and double types**
 
@@ -12975,21 +12881,13 @@ Log Service allows you to query log data by using various statements. It also pr
 
 After the index feature is enabled, enter one or more keywords in the search box and set the query time range. Then, click **Search & Analyze** to view the number of log entries displayed in a histogram, the raw logs, and the available charts. The histogram shows the time-based distribution of log entry occurrences. In the histogram, you can view the changes in the number of matched log entries over a period of time. You can click a rectangular to view the information about the occurrences within the specified time. On the Raw Logs tab, you can view the matched log data in chronological order. You can click the triangle symbol next to **Time** to switch between the **chronological order** and **reverse**
 **chronological order**.
-You can click **Display Content Column** and then you can select **New Line** or **Full Line** to display the log entries. You can also set Truncate Character String. You can click the **keyword** of a field value in the log content to view all log entries that contain this keyword. You can click the icon in the upper-right corner of the Raw Logs tab to download the query results in the CSV format. You can also click **Column Settings** to select fields from the displayed raw log entries. This provides you with an easier way to view target field values of each raw log entry in new columns. You can click **Context View** to view the 15 log entries before and after the current log entry in a log file. For more information, see Contextual query. The contextual query feature applies only to the data that is uploaded by using Logtail.
-
-**Charts**
-
-After you have enabled the index feature and entered a search and analytic statement, you can select a chart on the **Graph** tab to visualize the query results. Multiple types of charts are provided, such as the table and line chart. You can select a chart type and configure the chart based on your business requirements. You can add charts to a **dashboard**. For more information, see Create and delete a dashboard. You can configure drill-down analysis for a chart. After you add a chart to a dashboard, you can click the chart data to trigger a drill down event and explore in-depth details about the data. For more information about how to configure drill-down analysis, see Configure a drill-down event.
+You can click **Display Content Column** and then you can select **New Line** or **Full Line** to display the log entries. You can also set Truncate Character String. You can click the **keyword** of a field value in the log content to view all log entries that contain this keyword. You can click the icon in the upper-right corner of the Raw Logs tab to download the query results in the CSV format. You can also click **Column Settings** to select fields from the displayed raw log entries. This provides you with an easier way to view target field values of each raw log entry in new columns. You can click **Context View** to view the 15 log entries before and after the current log entry in a log file. For more information, see Contextual query. The contextual query feature applies only to the data that is uploaded by using Logtail. After you have enabled the index feature and entered a search and analytic statement, you can select a chart on the **Graph** tab to visualize the query results. Multiple types of charts are provided, such as the table and line chart. You can select a chart type and configure the chart based on your business requirements. You can add charts to a **dashboard**. For more information, see Create and delete a dashboard. You can configure drill-down analysis for a chart. After you add a chart to a dashboard, you can click the chart data to trigger a drill down event and explore in-depth details about the data. For more information about how to configure drill-down analysis, see Configure a drill-down event.
 
 **Dashboards**
 
-Log Service provides the dashboard feature that can visualize the results of search and analytic statements. For more information, see Create and delete a dashboard.
+Log Service provides the dashboard feature that can visualize the results of search and analytic statements. For more information, see Create and delete a dashboard. Log Service allows you to configure alerts for your dashboard or the charts on your dashboard. You can configure rules to receive alerts from Log Service. For more information, see Configure an alert rule.
 
-**Alerts**
-
-Log Service allows you to configure alerts for your dashboard or the charts on your dashboard. You can configure rules to receive alerts from Log Service. For more information, see Configure an alert rule.
-
-#### SQL syntax and functions
+#### 5.4.8 SQL syntax and functions
 
 **5.4.8.1. General aggregate functions**
 
@@ -13025,11 +12923,7 @@ Security check functions in Log Services are designed based on the globally shar
 
 **Scenarios**
 
-O&M personnel of enterprises and institutions in Internet, gaming, information, and other industries that require robust O&M services can use security check functions to identify suspicious requests or attacks. They can also use the functions to implement in-depth analysis and defend against potential attacks. O&M personnel of enterprises and institutions in banking, securities, e-commerce, and other industries that require strong protection for internal assets can use security check functions to identify requests to suspicious websites and downloads initiated by trojans. Then the O&M personnel can take immediate actions to prevent potential losses.
-
-**Features**
-
-Reliability: built upon the globally shared WhiteHat Security asset library that is updated in a timely manner. Efficiency: capable of screening millions of IP addresses, domain names, and URLs within seconds. Ease of use: supports the analysis of network logs by using the security_check_ip, security_check_domain, and security_check_url functions. Flexibility: supports interactive queries, report creation, and alert configurations and subsequent actions.
+O&M personnel of enterprises and institutions in Internet, gaming, information, and other industries that require robust O&M services can use security check functions to identify suspicious requests or attacks. They can also use the functions to implement in-depth analysis and defend against potential attacks. O&M personnel of enterprises and institutions in banking, securities, e-commerce, and other industries that require strong protection for internal assets can use security check functions to identify requests to suspicious websites and downloads initiated by trojans. Then the O&M personnel can take immediate actions to prevent potential losses. Reliability: built upon the globally shared WhiteHat Security asset library that is updated in a timely manner. Efficiency: capable of screening millions of IP addresses, domain names, and URLs within seconds. Ease of use: supports the analysis of network logs by using the security_check_ip, security_check_domain, and security_check_url functions. Flexibility: supports interactive queries, report creation, and alert configurations and subsequent actions.
 
 **Functions**
 
@@ -15570,8 +15464,6 @@ An external store is created. For more information, see Associate Log Service wi
 
 **Background information**
 
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the name of the project that you want to manage.
 3. Choose **Log Storage > Logstores**. On the Logstores tab, click the Logstore that you want to manage.
@@ -15734,9 +15626,6 @@ This topic describes the syntax of geography functions and provides some example
 **5.4.8.32. JOIN clause**
 
 You can use JOIN clauses in SQL statements to join multiple tables by using fields that are shared by the tables. In Log Service, you can join one or more Logstores. You can also join Logstores with ApsaraDB RDS instances. This topic describes how to join different Logstores.
-
-**Procedure**
-
 1. Download the latest version of the Log Service SDK for Python.
 2. Call the GetProjectLogs operation to query logs.
 
@@ -15850,19 +15739,11 @@ To visualize the result of the numeric_histogram function, execute the following
 t(key, value)
 ```
 
-#### Machine learning syntax and functions
+#### 5.4.9 Machine learning syntax and functions
 
 **5.4.9.1. Overview**
 
-Log Service provides the machine learning feature that supports multiple algorithms and calling methods. You can use SELECT statements and machine learning functions to call machine learning algorithms and analyze the characteristics of one or more fields within a specific period of time. Log Service offers various time series analysis algorithms. You can call these algorithms to solve problems that are related to time series data. For example, you can predict time series, detect time series anomalies, decompose time series, and cluster multiple time series. In addition, the algorithms are compatible with standard SQL functions. This simplifies the usage of the algorithms and improves the efficiency of troubleshooting.
-
-**Features**
-
-Supports various smooth operations on single-time series data. Supports algorithms that are used for the prediction, anomaly detection, change point detection, inflection point detection, and multi-period estimation of single-time series data. Supports decomposition operations on single-time series data. Supports various clustering algorithms for multi-time series data. Supports multi-field pattern mining based on the sequence of numeric data or text.
-
-**Limits**
-
-When you use the machine learning feature of Log Service, take note of the following limits: The specified time series data must be sampled based on the same interval. The specified time series data cannot contain data that is repeatedly sampled from the same point in time. The processing capacity cannot exceed the maximum capacity. The following table describes the limits.
+Log Service provides the machine learning feature that supports multiple algorithms and calling methods. You can use SELECT statements and machine learning functions to call machine learning algorithms and analyze the characteristics of one or more fields within a specific period of time. Log Service offers various time series analysis algorithms. You can call these algorithms to solve problems that are related to time series data. For example, you can predict time series, detect time series anomalies, decompose time series, and cluster multiple time series. In addition, the algorithms are compatible with standard SQL functions. This simplifies the usage of the algorithms and improves the efficiency of troubleshooting. Supports various smooth operations on single-time series data. Supports algorithms that are used for the prediction, anomaly detection, change point detection, inflection point detection, and multi-period estimation of single-time series data. Supports decomposition operations on single-time series data. Supports various clustering algorithms for multi-time series data. Supports multi-field pattern mining based on the sequence of numeric data or text. When you use the machine learning feature of Log Service, take note of the following limits: The specified time series data must be sampled based on the same interval. The specified time series data cannot contain data that is repeatedly sampled from the same point in time. The processing capacity cannot exceed the maximum capacity. The following table describes the limits.
 
 | Item | Description |
 |---|---|
@@ -16930,7 +16811,7 @@ by time)
 
 Response
 
-#### Advanced analysis
+#### 5.4.10 Advanced analysis
 
 **5.4.10.1. Optimize queries**
 
@@ -17166,7 +17047,7 @@ Sample SQL statement
 y day order by day asc
 ```
 
-#### Associate Log Service with external data
+#### 5.4.11 Associate Log Service with external data sources
 
 **sources**
 
@@ -17206,9 +17087,6 @@ Data is collected and stored in Log Service. For more information, see Data coll
 **Background information**
 
 The external storage feature of Log Service allows you to associate Log Service with databases that are deployed on ApsaraDB RDS for MySQL instances, self-managed MySQL databases that are deployed on Elastic Compute Service (ECS) instances, and self-managed MySQL databases that are created in other scenarios. The external storage feature also allows you to write query and analysis results to the MySQL databases for processing. In the following descriptions, the ApsaraDB RDS for MySQL instances are referred to as RDS instances.
-
-**Procedure**
-
 1. Configure an allowlist for your MySQL database.
 If you use a MySQL database that is deployed on an RDS instance, add the following CIDR blocks to the allowlist: 100.104.0.0/16, 11.194.0.0/16, and 11.201.0.0/16. For more information, see **Configure an**
 **allowlist** in **ApsaraDB RDS User Guide**.
@@ -17276,8 +17154,6 @@ aliyunlog log delete_external_store --project_name="log-rds-demo" --store_name=a
 
 **What to do next**
 
-JOIN queries on a Logstore and a MySQL database
-
 **5.4.11.3. Associate Log Service with an OSS bucket**
 
 This topic describes how to create an external store to associate Log Service with an Object Storage Service (OSS) bucket.
@@ -17289,10 +17165,6 @@ Logs are collected. For more information, see Data collection. The indexing feat
 **Benefits**
 
 The external storage feature that is used to associate Log Service with OSS buckets provides the following benefits: Reduced O&M workload: You can perform lightweight association analysis without the need to store all data in one storage system. High efficiency: You can use SQL statements to analyze data and view the analysis results within seconds. You can also create charts based on analysis results that are commonly queried. Then, you can click the charts to view the analysis results.
-
-**Procedure**
-
-1. Log on to the Log Service console
 2. In the Projects section, click the project that you want to manage.
 3. Choose **Log Storage > Logstores**. On the Logstores tab, click the Logstore that you want to manage.
 4. On the page that appears, enter a query statement in the search box and click **Search & Analyze**.
@@ -17342,23 +17214,17 @@ Logs are collected. For more information, see Data collection. Indexes are confi
 **Service Developer Guide**.
 Log Service SDK for Python V0.7.3 and later are supported. You can use the **pip install aliyun-log-python-**
 **sdk -U** command to upgrade the SDK.
-
-**Limits**
-
 Only one CSV file can be associated at a time. After you delete an external store, you cannot create an external store that has the same name as the deleted external store. You can associate Log Service with a CSV file that contains no more than 50 MB of data. The CSV file is uploaded to Log Service after it is compressed by using the SDK. The size of the file after compression must be less than 9.9 MB.
 
 **Sample data**
 
-The Logstore stores the logon operations of a user, and the CSV file records the basic information about the user, such as the gender and age. After you associate the Logstore with the CSV file, you can analyze the metrics for user properties. Logstore
+The Logstore stores the logon operations of a user, and the CSV file records the basic information about the user, such as the gender and age. After you associate the Logstore with the CSV file, you can analyze the metrics for user properties.
 
 ```
 userid:100001 action:login __time__:1637737306
 ```
 
 CSV file
-
-**Procedure**
-
 1. Use Log Service SDK for Python to create an external store.
 For more information about Log Service SDK for Python, see **Log Service SDK for Python** in **Log Service**
 **Developer Guide**.
@@ -17392,7 +17258,6 @@ res.log_print()
 | csv file _ | The path and name of the CSV file. |
 | Table schema | The properties of the virtual external table, including the column names and data types. The following section shows an example of a table schema. You can replace the table schema based on your business scenario. [ {"name" : "userid", "type" : "bigint"}, {"name" : "nick", "type" : "varchar"}, {"name" : "gender", "type" : "varchar"}, {"name" : "province", "type" : "varchar"}, {"name" : "age", "type" : "bigint"} ] |
 
-2. Log on to the Log Service console
 3. In the Projects section, click the project that you want to manage.
 4. Choose **Log Storage > Logstores**. On the Logstores tab, click the Logstore where logs are stored.
 5. Execute the following statement to check whether the external store is created.
@@ -17410,7 +17275,7 @@ The Logstore is associated with the CSV file based on the value of the **userid*
 * | SELECT * FROM website_log JOIN user_meta ON website_log.userid = user_meta.userid
 ```
 
-#### Visual analysis
+#### 5.4.12 Visual analysis
 
 **5.4.12.1. Charts**
 
@@ -17422,11 +17287,7 @@ Log Service allows you to render query and analysis results into visualized char
 
 Indexes are configured and the analysis feature is enabled. To enable the analysis feature, turn on **Enable**
 **Analytics** for the fields in the **Search & Analysis** panel. For more information, see Configure indexes.
-Before you configure charts, we recommend that you are familiar with the log analysis feature. For more information, see Log analysis overview. You must specify an analytic statement in a query statement. Log Service cannot display charts based on query results.
-
-**Usage notes**
-
-When you execute multiple query statements in sequence, the **Value Column**, **X Axis**, or **Y Axis** configurations are not automatically modified based on the current query statement. The X-axis and Y-axis configurations may remain the same as the configurations in the previous query statement. In this case, the query and analysis result of the current query statement cannot be automatically displayed on a chart. If the following errors occur, you must modify the **Properties** settings based on the current query statement: The dimensions that you selected are not in the query results. Check and modify the Properties settings. X Axis or Y Axis is unavailable. Check and modify the Properties settings.
+Before you configure charts, we recommend that you are familiar with the log analysis feature. For more information, see Log analysis overview. You must specify an analytic statement in a query statement. Log Service cannot display charts based on query results. When you execute multiple query statements in sequence, the **Value Column**, **X Axis**, or **Y Axis** configurations are not automatically modified based on the current query statement. The X-axis and Y-axis configurations may remain the same as the configurations in the previous query statement. In this case, the query and analysis result of the current query statement cannot be automatically displayed on a chart. If the following errors occur, you must modify the **Properties** settings based on the current query statement: The dimensions that you selected are not in the query results. Check and modify the Properties settings. X Axis or Y Axis is unavailable. Check and modify the Properties settings.
 
 **Chart configurations**
 
@@ -17442,8 +17303,6 @@ Charts are used to display query and analysis results. On the Graph tab, you can
 
 **Supported chart types**
 
-Display query results in a table Display query results on a line chart Display query results on a column chart Display query results on a bar chart Display query results on a pie chart Display query results on an area chart Display query results on a single value chart Display query results on a progress bar Display query results on a map Display query results in a Sankey diagram Display query results on a word cloud Display query results on a treemap chart
-
 **5.4.12.1.2. Display query results in a table**
 
 Tables are used to sort and display data for quick reference and analysis. All query results that match specified query statements can be rendered into visualized charts. By default, query results are displayed in a table.
@@ -17451,9 +17310,6 @@ Tables are used to sort and display data for quick reference and analysis. All q
 **Components**
 
 Table header Row Column Where: The number of columns can be specified by using a `SELECT` statement. The number of rows is calculated based on the number of log entries in a specified time range. The default clause is `LIMIT 100` .
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17491,9 +17347,6 @@ This topic describes how to configure a line chart to display query results.
 **Background information**
 
 Line charts are used to analyze the changes of field values based on an ordered data type. In most cases, the analysis is based on a specified time range. You can use a line chart to analyze the following change characteristics of field values over a specified period of time: Increment or decrement Increment or decrement rate Increment or decrement pattern, for example, periodicity Peak value and bottom value You can use line charts to analyze the changes of field values over a specified period of time. You can also use line charts to analyze the changes of multiple field values in multiple lines over the same period. This way, you can analyze the relationship between different fields. For example, the values of a field are proportional or inversely proportional to the values of another field. Each line chart consists of the following elements: X-axis Left Y-axis Right Y-axis (optional) Data point Line of trend changes Legend
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17551,9 +17404,6 @@ This topic describes how to configure a column chart to display query results.
 **Background information**
 
 A column chart uses vertical or horizontal bars to show the values of different categories. You can use a column chart to count the number of values in each category. Each column chart consists of the following elements: X-axis (horizontal) Y-axis (vertical) Rectangular bar Legend By default, column charts in Log Service use vertical bars. Each rectangular bar has a fixed width and a variable height that indicates a value. If you select multiple columns of data for the Y-axis, a grouped column chart is used to display the data.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17598,9 +17448,6 @@ This topic describes how to configure a bar chart to display query results.
 **Background information**
 
 A bar chart is a horizontal column chart that is used to analyze the top N values of fields. You can configure a bar chart in a similar manner in which you configure a column chart. Each bar chart consists of the following elements: X-axis (vertical) Y-axis (horizontal) Rectangular bar Legend Each rectangular bar has a fixed height and a variable width. The variable width indicates a value. If multiple columns of data are mapped to the Y-axis, you can use a grouped bar chart to display the data.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17637,9 +17484,6 @@ A pie chart is used to show the percentages of different categories of data. The
 **Types**
 
 Log Service provides the following types of standard pie charts: pie chart, donut chart, and polar area chart. Donut chart A donut chart is a variant of a pie chart that has a hollow center. Compared with a pie chart, a donut chart provides the following advantages: Displays more information, such as the total number of occurrences of all field values. Allows you to compare data between two donut charts based on ring lengths. Data across different pie charts is difficult to compare. Polar area chart A polar area chart is a column chart in the polar coordinate system. Each category of data is represented by a segment with the same angle, and the radius of each segment varies based on the value. Compared with a pie chart, a polar area chart provides the following advantages: If a query statement returns no more than 10 log entries, you can use a pie chart to display the query results. If a query statement returns 10 to 30 log entries, you can use a polar area chart to display the query results. Enlarges the differences among the values of categories because the area of the segment correlates with the square of the radius. Therefore, the polar area chart is suitable for the comparison of similar values. A circle can be used to display a periodic pattern. Therefore, you can use a polar area chart to analyze value changes in different periods, such as weeks and months.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17690,9 +17534,6 @@ This topic describes how to configure an area chart to display query results.
 **Background information**
 
 An area chart is built based on a line chart. The colored section between a line and the axis is an area. The color is used to highlight the trend. An area chart is similar to a line chart and shows the changes of numeric values over a specified period of time. An area chart is used to highlight the overall data trend. Both line charts and area charts display the trend and relationship between numeric values instead of specific values. Each area chart consists of the following elements: X-axis (horizontal) Y-axis (vertical) Area segment
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17738,9 +17579,6 @@ This topic describes how to configure a single value chart to display query resu
 **Background information**
 
 A single value chart highlights a single value. Log Service supports the following types of single value charts: Rectangle Frame: shows a general value. Dial: shows the difference between the current value and a specified threshold value. Compare Numb Chart: shows the SQL query results of interval-valued comparison and periodicity-valued comparison functions. For more information, see Interval-valued comparison and periodicity-valued comparison functions. By default, Rectangle Frame is selected. Rectangle Frame is the most basic type of single value chart to display data at a specified point. In most cases, this chart type is used to show the key information at a specified point in time. To display a proportional metric, you can select Dial. Each single value chart consists of the following elements: Numeric value Unit (optional) Description (optional) Chart type
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17836,9 +17674,6 @@ This topic describes how to configure a progress bar to display query results.
 **Background information**
 
 A progress bar shows the percentage of the actual value of a field to the maximum value of the field. You can configure the properties of a progress bar to change the style and configure display rules for the progress bar. Each progress bar consists of the following elements: Actual value Unit (optional) Total value
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17886,9 +17721,6 @@ This topic describes how to configure a map to display query results.
 **Background information**
 
 You can color and mark a map to display geographic data. Log Service provides the map of China. The display modes of an AMap include the anchor point and heat map. You can use specific functions in query statements to display analysis results as maps. Each map consists of the following elements: Map canvas Colored area
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17922,9 +17754,6 @@ This topic describes how to configure a flow chart to display query results.
 **Background information**
 
 A flow chart, also known as ThemeRiver, is a stacked area chart around a central axis. The banded branches with different colors indicate different categorical data. The width of the band indicates the numeric value. By default, the time information of the data is mapped to the X-axis. A flow chart can display the data in three dimensions. You can select Line Chart or Column Chart for the Chart Types parameter. If you select Column Chart, a stacked column chart is displayed. In a stacked column chart, each category of data starts from the top of the last column of categorical data.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -17971,9 +17800,6 @@ A Sankey diagram is a type of flow chart. A Sankey diagram shows the flow from o
 | node3 | node4 | 5 |
 
 The following figure shows the data relationships in a Sankey diagram.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -18004,9 +17830,6 @@ This topic describes how to configure a word cloud to display query results.
 **Background information**
 
 A word cloud shows text data. A word cloud is a cloud-like and colored image composed of words. You can use a word cloud to display a large amount of text data. The font size or color of a word indicates the significance of the word. This allows you to identify whether a word is significant in an efficient manner. The words in a word cloud are sorted.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -18038,9 +17861,6 @@ This topic describes how to configure a treemap chart to display query results.
 **Background information**
 
 A treemap chart consists of multiple rectangles that represent the data volumes. A larger rectangle area represents a larger proportion of the categorical data.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project in which you want to configure a chart.
 3. Click the name of the Logstore in which you want to configure a chart.
@@ -18068,15 +17888,7 @@ Select `host` for **Legend Filter** and select `count` for **Value Column**.
 
 **5.4.12.2.1. Overview**
 
-A dashboard provided by Log Service is a platform where you can analyze data in real time. You can add multiple charts to a dashboard for data analysis. Each chart is a visualized search and analytic statement. A dashboard allows you to view the charts of multiple search and analytic statements at one time. When you open or refresh the dashboard, the statements of the charts run automatically. After you add a chart to a dashboard, you can configure Configure a drill-down event for the chart. Then you can click the chart on the dashboard to further analyze data and obtain more fine-grained analysis results.
-
-**Limits**
-
-You can create a maximum of 50 dashboards for a project. Each dashboard can contain a maximum of 50 analysis charts.
-
-**Features**
-
-A dashboard has two modes: display mode and edit mode. Manage a dashboard in display mode In the display mode, you can configure multiple display settings on the dashboard page. Dashboard: You can specify the time range, the automatic refresh interval, full screen, and the display mode of the title for the dashboard, configure alerts for all charts on the dashboard, and filter chart data based on the Add a filter. Chart: You can view the analysis details of a specified chart, specify the time range and configure alerts for the chart, download logs and the chart, and check whether drill-down analysis is configured for the chart. Manage a dashboard in edit mode In the edit mode, you can change the configurations of the dashboard and charts. Dashboard: You can use a dashboard as a canvas and add Manage a Markdown chart, custom charts, text, icons, and other chart elements to the dashboard. You can also add lines between chart elements that are self-adaptive to the positions of the charts. You can also add Add a filter, which can be used to filter chart data in the display mode. In addition, you can configure display gridlines to help arrange chart elements such as icons in an orderly manner. Chart: You can also edit a chart on the dashboard. You can modify the statement, properties, and interactive behavior such as drill-down analysis of the chart.
+A dashboard provided by Log Service is a platform where you can analyze data in real time. You can add multiple charts to a dashboard for data analysis. Each chart is a visualized search and analytic statement. A dashboard allows you to view the charts of multiple search and analytic statements at one time. When you open or refresh the dashboard, the statements of the charts run automatically. After you add a chart to a dashboard, you can configure Configure a drill-down event for the chart. Then you can click the chart on the dashboard to further analyze data and obtain more fine-grained analysis results. You can create a maximum of 50 dashboards for a project. Each dashboard can contain a maximum of 50 analysis charts. A dashboard has two modes: display mode and edit mode. In the display mode, you can configure multiple display settings on the dashboard page. Dashboard: You can specify the time range, the automatic refresh interval, full screen, and the display mode of the title for the dashboard, configure alerts for all charts on the dashboard, and filter chart data based on the Add a filter. Chart: You can view the analysis details of a specified chart, specify the time range and configure alerts for the chart, download logs and the chart, and check whether drill-down analysis is configured for the chart. In the edit mode, you can change the configurations of the dashboard and charts. Dashboard: You can use a dashboard as a canvas and add Manage a Markdown chart, custom charts, text, icons, and other chart elements to the dashboard. You can also add lines between chart elements that are self-adaptive to the positions of the charts. You can also add Add a filter, which can be used to filter chart data in the display mode. In addition, you can configure display gridlines to help arrange chart elements such as icons in an orderly manner. Chart: You can also edit a chart on the dashboard. You can modify the statement, properties, and interactive behavior such as drill-down analysis of the chart.
 
 **5.4.12.2.2. Create and delete a dashboard**
 
@@ -18127,11 +17939,7 @@ Log Service supports the following types of time ranges: Relative: queries log d
 
 **Enter the edit mode**
 
-In the Dashboard list, click the dashboard that you want to modify. On the page that appears, click **Edit** to enter the edit mode. In edit mode, you can perform multiple operations on the dashboard and the charts on the dashboard. For more information, see Manage a dashboard in edit mode.
-
-**Configure an alert rule**
-
-In the upper-right corner of the chart, click and select
+In the Dashboard list, click the dashboard that you want to modify. On the page that appears, click **Edit** to enter the edit mode. In edit mode, you can perform multiple operations on the dashboard and the charts on the dashboard. For more information, see Manage a dashboard in edit mode. In the upper-right corner of the chart, click and select
 **>Create Alert** to create an alert rule for the charts on
 the dashboard. For more information, see Configure an alert rule.
 
@@ -18201,9 +18009,6 @@ The indexing feature is enabled and indexes are configured. For more information
 **Background information**
 
 Drilling is required for data analysis. This feature allows you to analyze data in a fine-grained manner or coarsegrained manner. Drilling includes roll-up and drill-down. Drill-down allows you to obtain more details in analysis results. This way, you extract more value from data and make better decisions for your business.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. Click the name of the project that you want to manage.
 3. Click the
@@ -18306,9 +18111,6 @@ If you set the filter type to Replace Variable, you must configure placeholder v
 **Background information**
 
 A filter is used to modify query statements or replace placeholder variables for all charts on a dashboard. Each chart displays the query and analysis result of a query statement, which is in the [search query] | [sql query] format. After you add a filter to a dashboard, the filter condition or variables that you specify for the filter apply to the query statement that corresponds to each chart on the dashboard. The following types of filters are supported: Filter: uses key-value pairs as a filter condition. The filter condition is added to the start of a query statement by using the **AND** or **NOT** operator. For example, the **Key: Value AND [search query] | [sql query]** statement queries logs that contain **Key:Value** in the query result of the [search query] | [sql query] statement. For the Filter type, you can select or enter multiple key-value pairs. If you specify multiple key-value pairs, the logical OR operator is used between the pairs. Replace Variable: uses a variable and the value of the variable. If the variable that you specify for the filter is configured for existing charts on the dashboard, the variable in the query statement of each chart is automatically replaced by the variable value that you specify for the filter. This applies to all charts for which the same variable is configured.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. Click the name of the project that you want to manage.
 3. In the left-side navigation pane, click the Dashboard icon.
@@ -18410,17 +18212,13 @@ Preview Special tag Markdown syntax
 
 Result
 
-#### Visualized data analytics
+#### 5.4.13 Visualized data analytics
 
-### Alerts
+### 5.5 Alerts
 
-#### Overview
+#### 5.5.1 Overview
 
-Log Service provides the alerting feature. You can configure alert rules to trigger alerts based on query and analysis results. After you create an alert rule, Log Service checks related query and analysis results on a regular basis. If a query and analysis result meets the trigger condition that you specify in the alert rule, Log Service sends an alert notification. This way, you can monitor the service status in real time.
-
-**Limits**
-
-The following table describes the limits of the alerting feature in Log Service.
+Log Service provides the alerting feature. You can configure alert rules to trigger alerts based on query and analysis results. After you create an alert rule, Log Service checks related query and analysis results on a regular basis. If a query and analysis result meets the trigger condition that you specify in the alert rule, Log Service sends an alert notification. This way, you can monitor the service status in real time. The following table describes the limits of the alerting feature in Log Service.
 
 | Item | Description |
 |---|---|
@@ -18434,7 +18232,7 @@ The following table describes the limits of the alerting feature in Log Service.
 
 An alert rule is associated with one or more charts in a dashboard. Each chart displays the result of a query statement. You can associate an alert rule with one or more search statements or query statements. A search statement returns the log entries that meet the specified search condition. For example, you can execute the **error** statement to search for the log entries that are generated in the previous 15 minutes and contain **error**. A total of 154 log entries are returned. Each log entry consists of keyvalue pairs. You can specify a trigger condition based on the value of a key. If the number of returned log entries exceeds 100, Log Service checks only the first 100 log entries. If one of the log entries meets the specified condition, an alert is triggered. A query statement consists of a search statement and an analytic statement. The analytic statement analyzes the log entries that meet the search condition and returns a result. For example, the * | select sum(case when status='ok' then 1 else 0 end) *1.0/count(1) as ratio statement returns the percentage of the log entries in which the value of the status field is **ok**. If you set the trigger condition of an alert rule to **ratio < 0.9**, an alert is triggered if the percentage of the log entries whose status code is **ok** is less than 90%.
 
-#### Configure an alarm
+#### 5.5.2 Configure an alarm
 
 **5.5.2.1. Configure an alert rule**
 
@@ -18447,9 +18245,6 @@ Logs are collected and stored in a Logstore. The indexing feature is enabled and
 **Background information**
 
 Log Service allows you to configure alert rules based on charts. You can create an alert rule for a query statement on the Search & Analysis page. After you create the alert rule, a chart that shows the query result of the query statement is automatically created on the specified dashboard. You can also create an alert rule for one or more existing charts on a dashboard. Create a chart and configure an alert rule for the chart After you create an alert rule for a query statement, a chart that shows the query result of the query statement is automatically created on the specified dashboard. When you create an alert rule for a query statement on the Search & Analysis page, you must specify a dashboard and a name for the chart. Create an alert rule for existing charts on a dashboard If you create an alert rule for multiple existing charts, you can specify one or more charts with which you want to associate the alert rule. You can specify a conditional expression for each chart, and combine the conditional expressions into a trigger condition of the alert rule. The following section describes how to configure an alert rule for multiple existing charts on a dashboard. If you modify the query statement of a chart with which an alert rule is associated, you must update the query statement in the alert rule. For more information, see Modify an alert rule. For information about common configurations for alert rules, see FAQ about alerts.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. In the left-side navigation pane, click the
@@ -18480,9 +18275,6 @@ Log Service supports the following alert notification methods: WebHook-Custom an
 **5.5.2.2. Authorize a RAM user to manage alert rules**
 
 You can use your Apsara Stack tenant account to authorize a RAM user to manage alert rules. This topic describes how to create a RAM user and authorize the RAM user to manage alert rules.
-
-**Procedure**
-
 1. Log on to the ASCM console ASCM console as an administrator.
 2. Create a RAM role.
 3. Create a policy.
@@ -18542,7 +18334,6 @@ Replace the content in the Policy Document field with the following script. Repl
 `}` `]` `}`
 4. Create a user.
 5. Create a user group.
-6. Add a user to a user group
 7. Grant permissions to a RAM role.
 
 **5.5.2.3. Configure alert notification methods**
@@ -18610,14 +18401,11 @@ You must reference valid variables. If a referenced variable does not exist or i
 | Results | The parameters and results of a query. The value is of the array type. For more information, see Fields in alert logs. Note The Results variable can contain the information of up to 100 alerts. | [ { "EndTime": 1542507580, "FireResult": { " time ": __ __ "1542453580", "count": "0" }, "LogStore": "test- logstore", "Query": "* \| SELECT COUNT(*) as count", "RawResultCount": 1, "RawResults": [ { " time ": __ __ "1542453580", "count": "0" } ], "StartTime": 1542453580 } ] | The first query starts at ${Results[0].StartTime} and ends at ${Results[0].EndTime}. The alert is triggered ${Results[0].FireResult.count} times. Note In this example, 0 is the serial number of a chart. For more information, see How can I view the serial number of a chart? |
 |---|---|---|---|
 
-#### Modify and view an alarm
+#### 5.5.3 Modify and view an alarm
 
 **5.5.3.1. Modify an alert rule**
 
 This topic describes how to modify an alert rule. After you create an alert rule, you can modify the chart that is associated with the alert rule, and then update the alert rule. If you associate a query statement with an alert rule, you can modify the query statement to modify the alert rule.
-
-**Procedure**
-
 1. Log on to the Simple Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. In the left-side navigation pane, click the
@@ -18699,15 +18487,11 @@ After the alert notification feature is suspended, you can view the value of **M
 
 After you delete an alert, the alert cannot be restored. Proceed with caution. In the upper-right corner of the **Alert Overview** page, click **Delete Alert**.
 
-#### Relevant syntax and fields for reference
+#### 5.5.4 Relevant syntax and fields for reference
 
 **5.5.4.1. Syntax of conditional expressions in alert rules**
 
-Log Service checks whether the specified trigger conditions are met based on the execution results of conditional expressions specified in alert rules. The result of a specified query statement is used as input, and the fields in the result of set operations are used as variables. If the condition that is specified in a conditional expression is met, an alert is triggered.
-
-**Limits**
-
-The conditional expressions that you can specify in an alert rule have the following limits: Negative numbers must be enclosed in parentheses (), for example, x+(-100)<100. Numeric values are converted to 64-bit floating-point numbers. If a comparison operator such as equal-to (==) is used, errors may occur. Variable names can contain only letters and digits, and must start with a letter. A conditional expression must be 1 to 128 characters in length. You can specify up to 1,000 conditions in a conditional expression. If the evaluation result of each condition in a conditional expression is false, the evaluation result of the conditional expression is false. An alert rule can be associated with a maximum of three charts or query statements. An alert is triggered only if the result of the specified conditional expression is true. For example, if a conditional expression is 100+100, the result is 200 and is not true, and no alert is triggered. Log Service reserves the words true and false. Log Service also reserves the special characters dollar sign ($) and period (.). You cannot use the reserved words and special characters as variables.
+Log Service checks whether the specified trigger conditions are met based on the execution results of conditional expressions specified in alert rules. The result of a specified query statement is used as input, and the fields in the result of set operations are used as variables. If the condition that is specified in a conditional expression is met, an alert is triggered. The conditional expressions that you can specify in an alert rule have the following limits: Negative numbers must be enclosed in parentheses (), for example, x+(-100)<100. Numeric values are converted to 64-bit floating-point numbers. If a comparison operator such as equal-to (==) is used, errors may occur. Variable names can contain only letters and digits, and must start with a letter. A conditional expression must be 1 to 128 characters in length. You can specify up to 1,000 conditions in a conditional expression. If the evaluation result of each condition in a conditional expression is false, the evaluation result of the conditional expression is false. An alert rule can be associated with a maximum of three charts or query statements. An alert is triggered only if the result of the specified conditional expression is true. For example, if a conditional expression is 100+100, the result is 200 and is not true, and no alert is triggered. Log Service reserves the words true and false. Log Service also reserves the special characters dollar sign ($) and period (.). You cannot use the reserved words and special characters as variables.
 
 **Syntax**
 
@@ -18801,7 +18585,7 @@ After you configure an alert rule, Log Service automatically creates a Logstore 
 |---|---|---|
 | FireResultAsKv | The log entry that records the triggers of an alert. The log entry is formatted in key-value pairs. Note This field can be used as a template variable. No data is stored to a Logstore for this field. | [foo:0] |
 
-#### FAQ
+#### 5.5.5 FAQ
 
 **5.5.5.1. A DingTalk alert notification fails to be sent and the**
 
@@ -18863,9 +18647,9 @@ i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 **Base/Platforms > Apsara Infrastructure Management Framework**.
 iii. In the left-side navigation pane, click **Project & Cluster O&M**. On the page that appears, enter `sls` in the search box. In the search result, click the SlsEtlFramework# server role. iv. On the **Instances** tab, find the instance that you want to use and click Actions in the Actions column. v. Click **Restart**.
 
-### Real-time consumption
+### 5.6 Real-time consumption
 
-#### Overview
+#### 5.6.1 Overview
 
 Log Service provides the real-time log consumption feature that allows you to read and write full data in the firstin, first-out (FIFO) order. This feature is similar to the features provided by Kafka. This topic describes the types of real-time consumption. The following table describes the methods that you can use to process log data after the log data is sent to Log Service.
 
@@ -18883,9 +18667,9 @@ Log Service allows you to pull log data and consume the data in real time. The f
 1. Obtain a cursor based on the start time and end time of data consumption.
 2. Read log data based on the cursor and step parameters and return the position of the next cursor.
 3. Move the cursor to continuously consume log data.
-Use an SDK to consume log data Log Service provides SDKs in multiple programming languages, such as Java, Python, and Go. You can use an SDK to consume log data. Use consumer groups to consume log data Log Service provides an advanced method that allows you to consume log data by using consumer groups. A consumer group is a lightweight computing framework that allows multiple consumers to consume data from a Logstore at the same time. Shards are automatically allocated to consumers in a consumer group. Data is consumed in sequence based on the time when data is written to the Logstore. After a breakpoint, consumers can continue to consume data by using checkpoints. You can use consumer group SDKs in multiple programming languages, such as Go, Python, and Java, to consume log data. Use real-time computing systems to consume log data Use Spark Streaming to consume log data. Use Storm to consume log data Use open source Flink to consume log data Use open source services to consume log data Use Flume to consume log data
+Use an SDK to consume log data Log Service provides SDKs in multiple programming languages, such as Java, Python, and Go. You can use an SDK to consume log data. Log Service provides an advanced method that allows you to consume log data by using consumer groups. A consumer group is a lightweight computing framework that allows multiple consumers to consume data from a Logstore at the same time. Shards are automatically allocated to consumers in a consumer group. Data is consumed in sequence based on the time when data is written to the Logstore. After a breakpoint, consumers can continue to consume data by using checkpoints. You can use consumer group SDKs in multiple programming languages, such as Go, Python, and Java, to consume log data. Use real-time computing systems to consume log data Use Spark Streaming to consume log data. Use open source services to consume log data
 
-#### Consume log data
+#### 5.6.2 Consume log data
 
 This topic describes how to use an SDK to consume log data and preview log data in the Log Service console.
 
@@ -18933,24 +18717,18 @@ icon next to the Logstore, and then select **Consumption Preview**.
 4. In the **Consumption Preview** panel, select a shard and a time range, and then click **Preview**.
 The Consumption Preview panel displays the log data of the first 10 packets in the specified time range.
 
-#### Consumption by consumer groups
+#### 5.6.3 Consumption by consumer groups
 
 **5.6.3.1. Use consumer groups to consume log data**
 
 If you use consumer groups to consume log data, you do not need to focus on factors such as Log Service implementation, load balancing among consumers, and failovers that may occur. This way, you can focus on the business logic during log data consumption.
-
-**Terms**
 
 | Term | Description |
 |---|---|
 | consumer group | A consumer group consists of multiple consumers. Each consumer in a consumer group consumes different data in a Logstore. You can create a maximum of 30 consumer groups for a Logstore. |
 | consumer | The consumers in a consumer group consume data. The name of each consumer in a consumer group must be unique. |
 
-A Logstore has multiple shards. A consumer library allocates shards to the consumers in a consumer group based on the following rules: You can allocate a shard to only one consumer. Each consumer can consume data from multiple shards. After you add a consumer to a consumer group, shards that are allocated to the consumer group are reallocated to each consumer for load balancing. The shards are reallocated based on the preceding rules. A consumer library stores checkpoints. This way, consumers can resume data consumption from a checkpoint and do not consume data after a program fault is resolved.
-
-**Procedure**
-
-You can use Java, Python, or Go to create consumers and consume data. The following procedure uses Java as an example:
+A Logstore has multiple shards. A consumer library allocates shards to the consumers in a consumer group based on the following rules: You can allocate a shard to only one consumer. Each consumer can consume data from multiple shards. After you add a consumer to a consumer group, shards that are allocated to the consumer group are reallocated to each consumer for load balancing. The shards are reallocated based on the preceding rules. A consumer library stores checkpoints. This way, consumers can resume data consumption from a checkpoint and do not consume data after a program fault is resolved. You can use Java, Python, or Go to create consumers and consume data. The following procedure uses Java as an example:
 1. Add Maven dependencies.
 
 ```xml
@@ -19098,11 +18876,7 @@ class SampleLogHubProcessorFactory implements ILogHubProcessorFactory {
         return new SampleLogHubProcessor();
 ```
 
-`}` `}` For more information, see Java, Python, and Go.
-
-**View the status of a consumer group**
-
-You can use the Log Service console, call the API, or use an SDK to view the progress of your data consumption. For more information, see View the status of a consumer group.
+`}` `}` For more information, see Java, Python, and Go. You can use the Log Service console, call the API, or use an SDK to view the progress of your data consumption. For more information, see View the status of a consumer group.
 
 **Related operations**
 
@@ -19316,17 +19090,13 @@ endCursor).GetCursorTime();
 
 `}` `}` `}` `}`
 
-#### Use Storm to consume log data
+#### 5.6.4 Use Storm to consume log data
 
 Log Service LogHub provides efficient and reliable log collection and consumption channels. You can use services such as Logtail or SDKs to collect log data in real time. After log data is collected and sent to Log Service, you can use stream computing systems such as Spark Streaming and Apache Storm to consume the log data. To reduce the costs of data consumption, Log Service provides LogHub Storm spouts to read data from Log Service in real time.
 
 **Architecture and implementation**
 
-In the following figure, LogHub Storm spouts are enclosed in red dashed-line boxes. Each Storm topology has a group of spouts that work together to read data from a Logstore. Spouts in different topologies are independent of each other. Each topology is identified by the unique name of a LogHub consumer group. Spouts in the same topology use a consumer group to perform load balancing and automatic failover. For more information, see Use consumer groups to consume log data. Spouts in a topology read data from a Logstore in real time, and then send the data to bolts in the topology. The spouts save consumption checkpoints to the LogHub server on a regular basis. Figure 1. Architecture and implementation
-
-**Limits**
-
-You can create a maximum of 10 consumer groups to consume log data from a Logstore. If you no longer need a consumer group, you can call the DeleteConsumerGroup operation of the SDK for Java to delete the consumer group. We recommend that you configure the same number of spouts for a Logstore as the number of shards in the Logstore. This is because a single spout may not be able to process a large amount of data from multiple shards. If the data volume in a shard exceeds the processing capacity of a single spout, you can split the shard to reduce the data volume in each shard. LogHub Storm spouts and bolts must use the ack method to check whether log data is sent from spouts to bolts and whether the data is processed by the bolts.
+In the following figure, LogHub Storm spouts are enclosed in red dashed-line boxes. Each Storm topology has a group of spouts that work together to read data from a Logstore. Spouts in different topologies are independent of each other. Each topology is identified by the unique name of a LogHub consumer group. Spouts in the same topology use a consumer group to perform load balancing and automatic failover. For more information, see Use consumer groups to consume log data. Spouts in a topology read data from a Logstore in real time, and then send the data to bolts in the topology. The spouts save consumption checkpoints to the LogHub server on a regular basis. Figure 1. Architecture and implementation You can create a maximum of 10 consumer groups to consume log data from a Logstore. If you no longer need a consumer group, you can call the DeleteConsumerGroup operation of the SDK for Java to delete the consumer group. We recommend that you configure the same number of spouts for a Logstore as the number of shards in the Logstore. This is because a single spout may not be able to process a large amount of data from multiple shards. If the data volume in a shard exceeds the processing capacity of a single spout, you can split the shard to reduce the data volume in each shard. LogHub Storm spouts and bolts must use the ack method to check whether log data is sent from spouts to bolts and whether the data is processed by the bolts.
 
 **Examples**
 
@@ -19483,16 +19253,13 @@ The following code provides an example to show how to add Maven dependencies for
 </dependency>
 ```
 
-#### Use Flume to consume log data
+#### 5.6.5 Use Flume to consume log data
 
 This topic describes how to use Flume to consume log data. You can use the aliyun-log-flume plug-in to connect Log Service to Flume and write log data to Log Service or consume log data from Log Service.
 
 **Background information**
 
 The aliyun-log-flume plug-in connects Log Service to Flume. When Log Service is connected to Flume, you can use Flume to connect Log Service to other systems such as Hadoop distributed file system (HDFS) and Kafka. The aliyun-log-flume plug-in provides sinks and sources to connect Log Service to Flume. Sink: reads data from other data sources and writes the data to Log Service. Source: consumes log data from Log Service and writes the log data to other systems. For more information, visit GitHub.
-
-**Procedure**
-
 1. Download and install Flume. For more information, see Flume.
 2. Download the aliyun-log-flume plug-in and save the plug-in in the cd/***/flume/lib directory. To download the
 plug-in, click aliyun-log-flume-1.3.jar.
@@ -19559,7 +19326,7 @@ You can configure a source for Flume to ship data from Log Service to other data
 
 For more information about how to configure a source, visit GitHub.
 
-#### Use open source Flink to consume log data
+#### 5.6.6 Use open source Flink to consume log data
 
 Log Service provides the flink-log-connector agent to connect with Flink. This topic describes how to connect Log Service with Flink to consume log data.
 
@@ -19750,16 +19517,9 @@ configProps);
 
 `}` `}` `}`
 
-#### Use Logstash to consume log data
+#### 5.6.7 Use Logstash to consume log data
 
-Log Service provides Logstash that you can use to consume log data. You can configure the Logstash input plugin to read log data from Log Service, and then write the data to other systems, such as Kafka and Hadoop Distributed File System (HDFS).
-
-**Features**
-
-Distributed collaborative consumption: You can configure multiple servers to consume log data from a Logstore at the same time. High performance: If you use a Java consumer group, the consumption speed of a single-core CPU can reach 20 MB/s. High reliability: Log Service saves consumption checkpoints. This mechanism resumes log consumption from the last checkpoint after a consumption exception is resolved. Automatic load balancing: Shards are automatically allocated based on the number of consumers in a consumer group. If you add a consumer to a consumer group or remove a consumer from the consumer group, shards are automatically reallocated.
-
-**Procedure**
-
+Log Service provides Logstash that you can use to consume log data. You can configure the Logstash input plugin to read log data from Log Service, and then write the data to other systems, such as Kafka and Hadoop Distributed File System (HDFS). Distributed collaborative consumption: You can configure multiple servers to consume log data from a Logstore at the same time. High performance: If you use a Java consumer group, the consumption speed of a single-core CPU can reach 20 MB/s. High reliability: Log Service saves consumption checkpoints. This mechanism resumes log consumption from the last checkpoint after a consumption exception is resolved. Automatic load balancing: Shards are automatically allocated based on the number of consumers in a consumer group. If you add a consumer to a consumer group or remove a consumer from the consumer group, shards are automatically reallocated.
 1. Install Logstash.
 i. Download the Logstash installation package. ii. Decompress the package that you downloaded to the specified directory.
 2. Install the Logstash input plug-in.
@@ -19823,7 +19583,7 @@ output {
 
 `}`
 
-#### Use Spark Streaming to consume log data
+#### 5.6.8 Use Spark Streaming to consume log data
 
 After Log Service collects log data, you can use Spark Streaming to consume the data. The Spark SDK provided by Alibaba Cloud allows you to consume log data from Log Service in Receiver or Direct mode. You must add the following Maven dependency:
 
@@ -19990,7 +19750,7 @@ host:port=localhost:2181>
 
 `}` `}` For more information, visit GitHub.
 
-#### Use Realtime Compute to consume log data
+#### 5.6.9 Use Realtime Compute to consume log data
 
 You can use Realtime Compute (Blink) to create a schema for data in Log Service and consume the data. This topic describes how to use Realtime Compute to create a schema for data in Log Service. This topic also describes the attribute fields and data type mapping that you can configure when you create a schema.
 
@@ -20076,13 +19836,11 @@ The string data type in Log Service is mapped to the varchar data type in Realti
 12:00:00 .
 ```
 
-**Usage notes**
-
 Blink 2.2.0 or earlier versions do not support shard scaling. If you split or merge shards when a job is reading data from a Logstore, the job fails and cannot continue. In this case, you must restart the job. You cannot delete or recreate a Logstore whose log data is being consumed, regardless of the Blink version. In Blink version 1.6.0 and earlier, the read performance may be affected if you specify a consumer group to consume log data from a Logstore that contains a large number of shards. You cannot define the map data type in Realtime Compute when you create a schema for data in Log Service. Fields that do not exist are set to null. Fields can be converted in a random order. However, we recommend that you convert the fields in the same order as the fields in the schema. If no new data is written to a shard, the latency of a job increases. In this case, you must change the number of concurrent tasks in the job to the number of shards in which data is read and written. To extract fields from tags such as `__tag__:__hostname__` and `__tag__:__path__` , you can delete the __tag__: prefix and follow the method used to extract attribute fields. You cannot extract this type of data during debugging. We recommend that you use the onpremises debugging method and the print method to display data in logs.
 
-### Data shipping
+### 5.7 Data shipping
 
-#### Ship logs to OSS
+#### 5.7.1 Ship logs to OSS
 
 **5.7.1.1. Overview**
 
@@ -20111,9 +19869,6 @@ Log data is collected. For more information, see Log collection methods. OSS is 
 **Background information**
 
 Log Service can automatically ship log data from a Logstore to an OSS bucket. You can set a custom retention period for the log data in the OSS bucket. Permanent retention is supported. You can use data processing platforms such as E-MapReduce and Data Lake Analytics (DLA) or use custom programs to consume log data from the OSS bucket.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the project from which you want to ship log data to OSS.
 3. On the Logstores tab, click the **>** icon on the left of the specific Logstore and choose **Data Transformation >**
@@ -20192,9 +19947,6 @@ Retry a shipping task By default, if a shipping task fails, Log Service retries 
 **5.7.1.3. Obtain the ARN of a RAM role**
 
 When you use a RAM user to ship data from Log Service to Object Storage Service (OSS), you must first create a Resource Access Management (RAM) role and specify the ARN of the RAM role. This topic describes how to create a RAM role and obtain the ARN of a RAM role.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the top navigation bar, click **Configurations**.
 3. On the **Service-Linked Roles** page, click **Create Service-linked Role**.
@@ -20313,9 +20065,9 @@ Log Service allows you to decompress Snappy compressed files by using the decomp
 ./snappy_tool 03_1453457006548078722_44148.snappy 03_1453457006548078722_44148 compressed.size: 2217186 snappy::Uncompress return: 1 uncompressed.size: 25223660
 ```
 
-### Time series storage
+### 5.8 Time series storage
 
-#### Data import
+#### 5.8.1 Data import
 
 **5.8.1.1. Collect metric data from hosts**
 
@@ -20323,14 +20075,7 @@ Log Service allows you to collect metric data from hosts by using Logtail. The m
 
 **Prerequisites**
 
-Logtail V0.16.40 or later is installed on a Linux server. For more information, see Install Logtail on a Linux server.
-
-**Limits**
-
-Windows servers are not supported. Metric data related to GPUs and hardware status cannot be collected.
-
-**Procedure**
-
+Logtail V0.16.40 or later is installed on a Linux server. For more information, see Install Logtail on a Linux server. Windows servers are not supported. Metric data related to GPUs and hardware status cannot be collected.
 1. Log on to the Log Service console.
 2. In the **Import Data** section, click **Host Monitoring Data**.
 3. In the **Specify Logstore** step, select the project and the Metricstore that you want to use. Then, click **Next**.
@@ -20484,9 +20229,6 @@ Logtail V0.16.48 or later is installed on a Linux server. For more information, 
 **Limit**
 
 Only MySQL 5.5 or later is supported.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the **Import Data** section, click **MySQL Monitoring Data**.
 3. In the **Specify Logstore** step, select the project and the Metricstore that you want to use. Then, click **Next**.
@@ -20509,8 +20251,6 @@ If you enable a machine group immediately after you create the machine group, th
 | Server List | Click the + icon to add the MySQL server and configure the following parameters: Account: the username of the account that is used to log on to the MySQL server. Note We recommend that you create a dedicated account to monitor the data of the MySQL server and grant the account only the permissions that are required to monitor data. Password: the password of the account. Address: the endpoint of the MySQL server. The endpoint can be the IP address, hostname, or domain name of the server. Port: the port number of the MySQL server. The default value is 3306. You can add multiple MySQL servers based on your business requirements. |
 |---|---|
 | Custom Tags | Create a custom tag in Custom Tags. The created tag is added to the data that is collected based on the Logtail configuration. You can use custom tags to identify the data that is collected based on different Logtail configurations in a Metricstore. You can click the + icon to create a custom tag. You can create multiple custom tags. The custom tags are added to all data that is collected based on the Logtail configuration. |
-
-**FAQ**
 
 How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service.
 
@@ -20581,8 +20321,6 @@ curl http://127.0.0.1:7777/jolokia/
 # Sample response
 {"request":{"type":"version"},"value":{"agent":"1.6.2","protocol":"7.2","config": {"listenForHttpService":"true","maxCollectionSize":"0","authIgnoreCerts":"false","agentId":"30.43.124.186- 752-5b091b5d-jvm","debug":"false","agentType":"jvm","policyLocation":"classpath:\/jolokiaaccess.xml","agentContext":"\/jolokia","serializeException":"false","mimeType":"text\/plain","maxDepth":"15" thMode":"basic","authMatch":"any","discoveryEnabled":"true","streaming":"true","canonicalNaming":"true","hist MaxEntries":"10","allowErrorDetails":"true","allowDnsReverseLookup":"true","realm":"jolokia","includeStackTra :"true","maxObjects":"0","useRestrictorService":"false","debugMaxEntries":"100"},"info": {"product":"tomcat","vendor":"Apache","version":"8.5.57"}},"timestamp":1602663330,"status":200}⏎
 ```
-
-**FAQ**
 
 How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service.
 
@@ -20662,8 +20400,6 @@ parameters.
 | Server List | Click the + icon to add the NGINX server and configure the following parameters: Address: the endpoint of the NGINX server. Port: the port number of the NGINX server. Path: the URI of the NGINX status module. Example:/ private/nginx status. For _ information about how to configure the NGINX status module, see Step 1: Configure the NGINX status module. You can add multiple NGINX servers based on your business requirements. |
 | Custom Tags | Create a custom tag in Custom Tags. The created tag is added to the data that is collected based on the Logtail configuration. You can use custom tags to identify the data that is collected based on different Logtail configurations in a Metricstore. You can click the + icon to create a custom tag. You can create multiple custom tags. The custom tags are added to all data that is collected based on the Logtail configuration. |
 
-**FAQ**
-
 How do I check whether Telegraf is collecting data as expected? You can check the logs of the /etc/ilogtail/telegraf/telegraf.log file on your server. You can use Log Service to collect this log file and search for the required information in Log Service.
 
 **What to do next**
@@ -20680,11 +20416,7 @@ Prometheus is a cloud native application that you can use to collect and monitor
 
 **Prerequisites**
 
-A Metricstore is created. For more information, see Create a Metricstore. Prometheus is installed. For more information, see GETTING STARTED. Data collection rules are configured in Prometheus. For more information, see scrape_config.
-
-**Procedure**
-
-Log Service supports the Remote Write Protocol. You can use the remote write feature of Prometheus to import metric data to Log Service. Before you can use the remote write feature, you must perform the following steps to enable the feature in Prometheus:
+A Metricstore is created. For more information, see Create a Metricstore. Prometheus is installed. For more information, see GETTING STARTED. Data collection rules are configured in Prometheus. For more information, see scrape_config. Log Service supports the Remote Write Protocol. You can use the remote write feature of Prometheus to import metric data to Log Service. Before you can use the remote write feature, you must perform the following steps to enable the feature in Prometheus:
 1. Log on to the server on which Prometheus is installed.
 2. Open the configuration file and configure the parameters based on your business scenario. The following table
 describes the parameters. For more information, see remote_write.
@@ -20726,8 +20458,6 @@ Log Service allows you to collect various types of Prometheus metrics by using a
 **Prerequisites**
 
 A Metricstore is created. For more information, see Manage a Metricstore.
-
-**Procedure**
 
 **Important**
 
@@ -20781,7 +20511,7 @@ If you want to append custom fields, such as the IP address of the server on whi
 
 Query and analyze data After metric data is collected, you can query and analyze the data on the Query & Analysis page of the Metricstore. For more information, see Query and analyze time series data. Visualize query and analysis results in Log Service You can create a time series chart and add the chart to a dashboard to view the query and analysis results. You can also configure alert rules. Visualize data on Grafana Log Service allows you to send time series data to Grafana for visualization. For more information, see Send time series data from Log Service to Grafana.
 
-#### Query and analysis
+#### 5.8.2 Query and analysis
 
 **5.8.2.1. Overview of query and analysis of time series data**
 
@@ -20862,8 +20592,6 @@ The following table describes the schema of a table that is returned by the `pro
 |---|---|---|
 | series | map<varchar, varchar> | The time series. |
 
-**Limits**
-
 A Metricstore supports only the query API endpoints of Prometheus, such as /query and /query_range. Other API endpoints, such as /admin, /alerts, and /rules, are not supported. If you use the combination of SQL and PromQL for query and analysis, a maximum of 11,000 points in time can be returned for a query. If you use the combination of SQL and PromQL for query and analysis, the metric name and label that you specify must comply with the naming conventions. For more information, see Metricstore.
 
 **5.8.2.2. Query and analyze time series data**
@@ -20872,11 +20600,7 @@ This topic describes how to query and analyze time series data in a Metricstore 
 
 **Prerequisites**
 
-Time series data is collected. For more information, see Collect time series data.
-
-**Procedure**
-
-Only the combination of the SQL syntax and the PromQL syntax is supported on the query page of a Metricstore. If you want to use the standard SQL syntax, click the **Search & Analyze** button in the upperright corner of the query page to go to the Search & Analysis page of the Metricstore.
+Time series data is collected. For more information, see Collect time series data. Only the combination of the SQL syntax and the PromQL syntax is supported on the query page of a Metricstore. If you want to use the standard SQL syntax, click the **Search & Analyze** button in the upperright corner of the query page to go to the Search & Analysis page of the Metricstore.
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. Choose **Time Series Storage > Metricstore**. On the Metricstore tab, click the Metricstore that you want to
@@ -20918,7 +20642,7 @@ promql_query_range('sum(sum_over_time(pv:host:status:method:upstream_name:upstre
 | Share query and analysis results | In the upper-right corner of the query page, clickS hare to copy the URL of the page. You can send the URL to other users who have the permissions to query the time series data in the Metricstore. The query and analysis results that are displayed when you copy the URL are also displayed when a user visits the URL. |
 | Go to the Search & Analysis page | In the upper-right corner of the query page, clickS earch & Analyze. |
 
-#### Visualization
+#### 5.8.3 Visualization
 
 **5.8.3.1. Configure a time series chart**
 
@@ -20927,9 +20651,6 @@ This topic describes how to configure a time series chart.
 **Background information**
 
 Time series charts are designed for Metricstores. A time series chart displays the results of one or more queries on data that is collected from Prometheus and stored to a Metricstore.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. Choose **Time Series Storage > Metricstore**. On the Metricstore tab, click the Metricstore that you want to
@@ -21010,18 +20731,15 @@ Log Service is compatible with the query API of Prometheus. You can configure Lo
 | Querying label values | GET /api/v1/label/<label name>/values _ |
 | Finding series by label matchers | GET /api/v1/series POST /api/v1/series |
 
-### RAM
+### 5.9 RAM
 
-#### Overview
+#### 5.9.1 Overview
 
 Resource Access Management (RAM) is a resource access control service provided by Apsara Stack. You can use RAM to manage users, including employees, systems, and applications. You can also use RAM to grant users permissions to access resources. RAM provides the following features: RAM Role To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role. This role specifies the operations that the cloud service can perform on the resources. Only system administrators and level-1 organization administrators can create RAM roles. User group You can create multiple RAM users for an organization and grant the users different permissions on the same cloud resources in the organization. You can create RAM user groups to classify and authorize RAM users within your Apsara Stack tenant account. This simplifies the management of RAM users and their permissions. You can create RAM policies to grant permissions to different user groups.
 
-#### Create a RAM role
+#### 5.9.2 Create a RAM role
 
 To authorize a cloud service in a level-1 organization to use other resources in the organization, you must create a RAM role. This RAM role specifies the operations that the cloud service can perform on the resources.
-
-**Procedure**
-
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -21029,12 +20747,9 @@ To authorize a cloud service in a level-1 organization to use other resources in
 5. On the **Roles - Create RAM Role** page, configure the **Role Name** and **Description** parameters.
 6. Click **Create**.
 
-#### Create a user
+#### 5.9.3 Create a user
 
 You can create a user and assign the user different roles as an administrator to meet different requirements for system access control.
-
-**Procedure**
-
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Users**.
@@ -21059,7 +20774,7 @@ You can create a user and assign the user different roles as an administrator to
 
 6. Click **OK**.
 
-#### Create a user group
+#### 5.9.4 Create a user group
 
 You can create a user group in a selected organization and grant permissions to the users within the group at the same time.
 
@@ -21070,9 +20785,6 @@ An organization is created.
 **Background information**
 
 Relationships between user groups and users: A user group can contain zero or more users. A user does not need to belong to a user group. A user can be added to multiple user groups. Relationships between user groups and organizations: A user group belongs to only one organization. You can create multiple user groups within an organization. Relationships between user groups and roles: Only one role can be assigned to each user group. A role can be assigned to multiple user groups. When a role is assigned to a user group, the permissions that the role has are automatically granted to the users within the user group. Relationships between user groups and resource sets: Zero or more user groups can be added to a resource set. A user group can be added to multiple resource sets.
-
-**Procedure**
-
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -21081,12 +20793,9 @@ Relationships between user groups and users: A user group can contain zero or mo
 parameters.
 6. Click **OK**.
 
-#### Add a user to a user group
+#### 5.9.5 Add a user to a user group
 
 You can add a user to a user group.
-
-**Procedure**
-
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **User Groups**.
@@ -21095,12 +20804,9 @@ You can add a user to a user group.
 arrow to move the user to the right section.
 6. Click **OK**.
 
-#### Create a policy
+#### 5.9.6 Create a policy
 
 To use a cloud service to access other cloud resources, you must create a policy and attach it to a user group.
-
-**Procedure**
-
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -21110,7 +20816,7 @@ column to go to the **Roles** page.
 6. Click **Add Permission Policy**.
 7. In the Add Permission Policy dialog box, enter the information about the policy.
 
-#### Grant a RAM user the permissions to manage a
+#### 5.9.7 Grant a RAM user the permissions to manage a project
 
 ##### project
 
@@ -21120,9 +20826,6 @@ This topic describes how to grant a Resource Access Management (RAM) user the pe
 
 A RAM user is created. For more information, see Create a user. A resource set is created and the RAM user is added to the resource set. For more information, see **Enterprise**
 **Center > Resource Sets** in **Apsara Uni-manager Management Console User Guide** .
-
-**Procedure**
-
 1.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Data Permissions**.
@@ -21133,12 +20836,9 @@ In this example, the instance is a Log Service project whose name is test-projec
 7. Grant the RAM user the permissions to manage the project.
 If you turn on the Action switch of the **Update Project** permission, the RAM user can modify the project that is selected in Step 6.
 
-#### Grant permissions to a RAM role
+#### 5.9.8 Grant permissions to a RAM role
 
 When you grant permissions to a RAM role, all users in the user groups that are assigned this role share the granted permissions.
-
-**Procedure**
-
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Roles**.
@@ -21149,7 +20849,7 @@ column to go to the **Roles** page.
 7. In the dialog box that appears, select a RAM policy and click **OK**.
 If no RAM policies are available, see Create a policy.
 
-#### Use custom policies to grant permissions to a
+#### 5.9.9 Use custom policies to grant permissions to a RAM user
 
 **RAM user**
 
@@ -21481,9 +21181,9 @@ The permissions to write data to a specified project To grant a RAM user only th
 
 `}` `]` `}`
 
-### Monitor Log Service
+### 5.10 Monitor Log Service
 
-#### Overview
+#### 5.10.1 Overview
 
 The service log feature of Log Service helps you record log data about the operations that are performed on the resources of a project. This feature also provides dashboards that allow you to analyze data in multiple dimensions. You can use this feature to view the service status of Log Service in real time and improve O&M efficiency.
 
@@ -21514,7 +21214,7 @@ By default, the following Logtail-related dashboards are created after you enabl
 **Logtail Monitoring** and **Logtail Collection Statistics**. The Logtail Monitoring dashboard helps you monitor
 Logtail exceptions such as regular expression mismatches and log data parsing failures.
 
-#### Manage service logs
+#### 5.10.2 Manage service logs
 
 This topic describes how to enable and disable the service log feature. This topic also describes how to modify service log configurations.
 
@@ -21633,13 +21333,9 @@ permissions: `{`
 
 `}` `]` `}`
 
-#### Log types
+#### 5.10.3 Log types
 
-Log Service provides the service log feature. You can use this feature to generate different types of logs. This topic describes the log types and the fields for each log type.
-
-**Log types**
-
-If you enable the service log feature, you must select the types of the logs that you want to generate. The following table describes the log types.
+Log Service provides the service log feature. You can use this feature to generate different types of logs. This topic describes the log types and the fields for each log type. If you enable the service log feature, you must select the types of the logs that you want to generate. The following table describes the log types.
 
 | Log type | Overview | Logstore | Log source | Description |   |   |
 |---|---|---|---|---|---|---|
@@ -21873,7 +21569,7 @@ The following table describes the fields that are included in the detail_metric 
 | start time _ | The start time. | 2021-07-20 16:19:22 |
 | used sending concurrency _ _ | The number of packets that are concurrently sent. | 0 |
 
-#### Service log dashboards
+#### 5.10.4 Service log dashboards
 
 After you enable the service log feature, Log Service automatically creates the following dashboards based on the log types that you selected to display the related statistics: Operations Statistics, Logtail Collection Statistics, Logtail Monitoring, and Consumer Group Monitoring.
 
@@ -21897,18 +21593,15 @@ This dashboard displays the statistics about Logtail errors and alerts to help y
 
 This dashboard displays the statistics about consumer groups, including the volume of data consumed from shards, consumption delay, and the details of consumer groups.
 
-### FAQ
+### 5.11 FAQ
 
-#### Log collection
+#### 5.11.1 Log collection
 
 **5.11.1.1. How do I troubleshoot errors that occur when I use**
 
 **Logtail to collect logs?**
 
 If the preview page is blank or the No Data message appears on the query page after you create a Logtail configuration to collect logs, perform the steps that are described in the topic to troubleshoot the issue.
-
-**Procedure**
-
 1. Check whether Log Service receives heartbeats from the machine group.
 You can view the Logtail heartbeat status in the Log Service console. For more information, see View the status of a server group. If the heartbeat status is OK, perform the next step. If the heartbeat status is FAIL, identify the cause of the failure. For more information, see What can I do if Log Service does not receive heartbeats from a Logtail client?.
 2. Check whether the Logtail configuration is created.
@@ -21976,11 +21669,7 @@ On a Windows server, perform the following steps: On **Control Panel**, choose *
 
 **5.11.1.3. How do I query the status of local log collection?**
 
-You can use the status query feature of Logtail to query the health status of Logtail and the log collection status. You can also use this feature to troubleshoot log collection issues and customize status monitoring for log collection.
-
-**Usage notes**
-
-After you install a Logtail client that supports the status query feature, you can query the local log collection status by running commands on the client. For more information about how to install Logtail, see Install Logtail on a Linux server.
+You can use the status query feature of Logtail to query the health status of Logtail and the log collection status. You can also use this feature to troubleshoot log collection issues and customize status monitoring for log collection. After you install a Logtail client that supports the status query feature, you can query the local log collection status by running commands on the client. For more information about how to install Logtail, see Install Logtail on a Linux server.
 
 | /etc/init.d/ilogtaild -h |   | command on a client t |
 |---|---|---|
@@ -22368,9 +22057,6 @@ If you select the full regex mode when you configure Logtail to collect and pars
 **Background information**
 
 To debug the regular expression that you specified in the Log Service console, you can click **Validate** in the console and check the following results: If the regular expression is used to match the start part of the first line in a log entry, check whether the regular expression can match the expected number of log entries. If the fields are extracted by the regular expression, check whether the value of each field meets your requirements. You can use online tools such as regex101.com and regextester.com to debug a regular expression. You can copy and paste the regular expression that is generated by Log Service to an online tool, and specify a sample log entry as the test string. If you use the full regex mode, Log Service automatically generates a regular expression based on the sample log entry that you specify. However, the regular expression may fail to match the message field in multi-line log entries as expected. The following example shows how to use the regex101.com tool to debug a regular expression.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. In the Projects section, click the project that you want to manage.
 3. On the **Log Storage** > **Logstores** tab, find the Logstore that you want to manage and choose **Data Import >**
@@ -22425,9 +22111,6 @@ This topic describes how to configure non-printable characters in a sample log.
 **Background information**
 
 If you collect logs in delimiter mode, Log Service allows you to specify a non-printable character as the delimiter or quote. Non-printable characters are characters whose decimal ASCII codes are within the range of 1 to 31 and 127. If you use a non-printable character as a delimiter or quote, you must find the hexadecimal ASCII code of the character and enter the character in the following format: `0xHexadecimal ASCII code of the non-printable` `character` . For example, a sample log is `123456780` . You can specify 0x01 as the delimiter and 0x02 as the quote, and then enter a non-printable character 0x01 between the digits 5 and 6.
-
-**Procedure**
-
 1. Log on to the Log Service console.
 2. Right-click the blank space on the browser and select **Inspect** from the shortcut menu.
 3. On the page that appears, click the **Console** tab.
@@ -22617,7 +22300,7 @@ The 2ba4ebdaf503 variable in the command is the ID of a container. Replace the v
 docker exec 2ba4ebdaf503 env
 ```
 
-#### Log search and analysis
+#### 5.11.2 Log search and analysis
 
 **5.11.2.1. FAQ about log query**
 
@@ -22767,7 +22450,7 @@ Cause The SQL computing needs to read an excessively large amount of data. In th
 
 You cannot directly configure indexes for historical log data in Log Service. To configure indexes for historical log data, you can use DataWorks or the command line interface (CLI) to move data into another Logstore. Indexes take effect on log data that is collected after the indexes are configured. You cannot use indexes to search and analyze historical log data. To configure indexes for historical log data, you can use either of the following two methods: Configure indexes in a new Logstore and then use DataWorks to move data into the Logstore. After you configure indexes in a new Logstore, you can use DataWorks to move historical log data from the Logstore where it is stored to the new Logstore. Then you can use the configured indexes to search and analyze the data. After you configure indexes in a new Logstore, you can use the CLI to export historical log data from the Logstore where it is stored to the new Logstore. The preceding two methods copy historical log data and then export the data into a Logstore. They do not change or delete the data.
 
-#### Alarm
+#### 5.11.3 Alarm
 
 **5.11.3.1. FAQ about alerts**
 
@@ -22797,7 +22480,7 @@ For example, after you set the notification method to WebHook-DingTalk Bot, the 
 
 This error message is returned because the security settings of the latest chatbot are invalid. You can reconfigure the security settings. For more information, see WebHook-DingTalk Bot. If the issue persists or other error messages are returned, submit a ticket.
 
-#### What do I do if the Forbidden.SLS::ListProject
+#### 5.11.4 What do I do if the Forbidden.SLS::ListProject error occurs when I log on to the Apsara Uni-manager Management Console?
 
 **error occurs when I log on to the Apsara Uni-manager**
 

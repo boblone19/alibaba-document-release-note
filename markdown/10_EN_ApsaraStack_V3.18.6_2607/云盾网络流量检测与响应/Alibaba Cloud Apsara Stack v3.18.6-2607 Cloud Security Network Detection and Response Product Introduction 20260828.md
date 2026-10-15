@@ -3,16 +3,25 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 18
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Product Introduction 20260828.pdf"
+source_pdf: "9db737535b45d61c_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Product Introd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Network%20Detection%20and%20Response%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is NDR?
+- 2 Benefits
+- 3 Architecture
+- 4 Functions and features
+- 5 Use scenarios
+- 6 Terms
+
 ?
 
-## What is NDR?
+## 1 What is NDR?
 
 Network Detection and Response (NDR) uses a variety of threat detection engines and threat intelligence to detect network attacks at the Internet and internal network perimeters and takes appropriate measures to defend against attacks.
 
@@ -20,7 +29,7 @@ Network Detection and Response (NDR) uses a variety of threat detection engines 
 
 NDR is a service that can analyze big data in real time within microseconds. It is the first line of defense against attacks. NDR performs in-depth packet analysis on mirrored traffic of data centers to detect various attacks and abnormal behaviors in real time. In addition, NDR accurately identifies network threats based on custom thresholds and can work together with other security systems. NDR is dedicated to detecting and responding to attacks in network traffic before, during, and after events. Before events, NDR provides preventive measures such as port antiscanning and threat intelligence. During events, NDR provides detection and blocking capabilities such as intrusion detection system (IDS), web IDS, behavior analysis, and oneclick blocking. After events, NDR provides tracing capabilities such as protocol log collection for all traffic and malicious packet retention. In addition, NDR can be used with Security Orchestration, Automation and Response (SOAR) to perform detection and response orchestration. This implements automated operations on all traffic.
 
-## Benefits
+## 2 Benefits
 
 Apsara Stack Security is a leading service in the cloud security industry and has received various certifications from relevant authorities. Apsara Stack Security safeguards Apsara Stack environments with advanced security systems and security technologies.
 
@@ -45,7 +54,7 @@ Apsara Stack Security is developed based on ten years of experience in the cloud
 | Comprehensive protection system that supports unified detection and emergency response | Traditional security services add devices to enhance security capabilities. The devices can collect only device logs and status data, and display the data on the management platform. The devices cannot collaborate to provide additional features. | Apsara Stack Security provides comprehensive Internet protection to ensure the security of networks, servers, applications, data, and user identities. The security modules automatically interact with each other to respond to security issues and share intelligence. |
 | Compatibility with all data center environments and decoupling from specific cloud platforms | Most traditional security services are provided as hardware appliances. Due to this reason, the services are incompatible with the cloud platforms that adopt the Software Defined Network (SDN) technology. | Apsara Stack Security is developed based on interactions between servers and the operating system, and performs data analysis to detect threats at the data ingress and egress of networks. This ensures that Apsara Stack Security is compatible with all data center environments and avoids the complex network topology in data centers. |
 
-## Architecture
+## 3 Architecture
 
 NDR detects and analyzes inbound and outbound traffic on a packet-by-packet basis through traffic mirroring.
 
@@ -169,7 +178,7 @@ NDR is deployed in bypass mode, which is transparent to your business systems. N
 | CSW | A Customer Switch (CSW) provides access to your internal backbone networks, including access to virtual private clouds (VPCs) by using leased lines, and performs route distribution and exchange between the internal network and the Internet. A CSW can encapsulate Virtual Extensible LAN (VXLAN) packets sent from leased lines to Extendable Gateways (XGWs). |
 | LSW | An Integrated Access Switch (LSW) functions as gateways to provide access to various cloud services, such as VPC and Server Load Balancer (SLB). Each cloud service server, such as the XGW, SLB, or OPS server, is connected to two LSWs. These servers exchange routing information by using Open Shortest Path First (OSPF). The two LSWs exchange routing information with each other by using Internal Border Gateway Protocol (IBGP). The LSWs exchange routing information with DSWs and CSWs by using External Border Gateway Protocol (eBGP). |
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the functions and features of NDR.
 
@@ -245,7 +254,7 @@ This topic describes the functions and features of NDR.
 
 os
 
-## Use scenarios
+## 5 Use scenarios
 
 Network Detection and Response (NDR) provides flexible and scalable network security solutions for users of different scales and from various sectors, such as industry, agriculture, transportation, public service, finance, and education.
 
@@ -257,7 +266,7 @@ Apsara Stack for public services allows users from the public service sector to 
 
 Apsara Stack for finance can help users build an in-depth security protection system. Users can deploy NDR, Anti-DDoS, and Cloud Firewall at the data egress of Apsara Stack to perform in-depth detection and protection against attacks at the network layer, deploy WAF to filter out malicious traffic at the application layer, and deploy the Server Guard agent on hosts to ensure terminal security. Apsara Stack Security collects network-wide security logs to perform centralized big data modeling and analysis and eliminate security silos. Users can deploy security protection systems in the cloud based on the x86 architecture, eliminating the need for traditional security hardware.
 
-## Terms
+## 6 Terms
 
 This topic describes terms related to Network Detection and Response (NDR).
 

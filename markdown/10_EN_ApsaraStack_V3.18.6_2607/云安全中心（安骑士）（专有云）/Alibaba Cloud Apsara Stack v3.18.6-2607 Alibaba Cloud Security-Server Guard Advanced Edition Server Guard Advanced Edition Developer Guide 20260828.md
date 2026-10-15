@@ -3,16 +3,131 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Gu
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 225
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Developer Guide 20260828.pdf"
+source_pdf: "627989fb0694ca97_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E5%AE%89%E9%AA%91%E5%A3%AB%EF%BC%89%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Security-Server%20Guard%20Advanced%20Edition%20Server%20Guard%20Advanced%20Edition%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Security-Server Guard Advanced Edition Server Guard Advanced Edition Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Obtain API information and
+- 1 Preparations
+  - 1.1 Obtain API information and the endpoint of an API operation
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain the values of common request headers
+  - 1.4 Obtain an AccessKey pair assigned by STS
+- 2 Call examples
+  - 2.1 Call examples for SDK for Java
+    - 2.1.1 Use SDK
+      - 2.1.1.1 Install SDK for Java
+      - 2.1.1.2 Use CommonRequest
+  - 2.2 Call examples for SDK for Python
+    - 2.2.1 Use SDK
+      - 2.2.1.1 Install SDK for Python
+      - 2.2.1.2 Use CommonRequest
+  - 2.3 Call examples for SDK for Go
+    - 2.3.1 Use SDK
+      - 2.3.1.1 Install the core package of SDK for Go
+      - 2.3.1.2 Use CommonRequest
+- 3 Common parameters
+- 4 API documentation
+  - 4.1 Make API requests
+    - 4.1.1 Request structure
+    - 4.1.2 Signature mechanism
+    - 4.1.3 Common request parameters
+    - 4.1.4 Response structure
+  - 4.2 Asset management
+    - 4.2.1 DescribeCloudCenterInstances
+    - 4.2.2 DescribePropertyScaDetail
+    - 4.2.3 DescribeAssetDetailByUuid
+    - 4.2.4 DescribeGroupSummary
+    - 4.2.5 DescribeGroupStruct
+    - 4.2.6 DescribeAllEntity
+    - 4.2.7 DescribeEntityList
+    - 4.2.8 DescribeMachines
+    - 4.2.9 DescribeMachineDetail
+    - 4.2.10 DescribePropertyStatistic
+    - 4.2.11 DescribePropertyPortItem
+    - 4.2.12 DescribePropertyPortDetail
+    - 4.2.13 DescribePropertyProcItem
+    - 4.2.14 DescribePropertyProcDetail
+    - 4.2.15 DescribePropertySoftwareItem
+    - 4.2.16 DescribePropertySoftwareDetail
+    - 4.2.17 DescribePropertyUserItem
+    - 4.2.18 DescribePropertyUserDetail
+    - 4.2.19 DescribeTopRiskyAssets
+    - 4.2.20 CreateAssetGroup
+    - 4.2.21 DescribePropertyUserChangeItem
+  - 4.3 Vulnerability management
+    - 4.3.1 DescribeTarget
+    - 4.3.2 DescribeVulTargetStatistics
+    - 4.3.3 DescribeTargetConfig
+    - 4.3.4 DescribeVulConfig
+    - 4.3.5 DescribeAutoDelConfig
+    - 4.3.6 DescribeVulLevel
+    - 4.3.7 DescribeVulWhitelist
+    - 4.3.8 DescribeGroupedVul
+    - 4.3.9 DescribeVulList
+    - 4.3.10 DescribeVulDetails
+    - 4.3.11 DescribeVulNumStatistics
+    - 4.3.12 DescribeVulLevelStatistics
+    - 4.3.13 DescribeVulMachineList
+  - 4.4 Baseline check
+    - 4.4.1 DescribeStratetyDetail
+    - 4.4.2 DescribeStrategyTarget
+    - 4.4.3 DescribeUuidConfig
+    - 4.4.4 DescribeUserSetting
+    - 4.4.5 DescribeRiskWhiteList
+    - 4.4.6 DescribeStratety
+    - 4.4.7 DescribeStrategyExecDetail
+    - 4.4.8 DescribeRiskType
+    - 4.4.9 Describesummary
+    - 4.4.10 ListBaselineCheckWhiteRecord
+  - 4.5 Unusual logon detection
+    - 4.5.1 DescribeBaseConfigs
+    - 4.5.2 DescribeSwitchConfigs
+    - 4.5.3 DescribeConfigTarget
+    - 4.5.4 ModifyBaseConfig
+    - 4.5.5 DeleteBaseConfig
+    - 4.5.6 ModifySwitchConfig
+  - 4.6 Webshell detection
+    - 4.6.1 DescribeCategoryCount
+    - 4.6.2 DescribeWebshell
+    - 4.6.3 DescribeQuaraFile
+    - 4.6.4 RollbackQuaraFile
+    - 4.6.5 DescribeWebPath
+    - 4.6.6 ModifyWebPath
+    - 4.6.7 OperateTrojan
+  - 4.7 Exception detection on hosts
+    - 4.7.1 DescribeSuspEventTypes
+    - 4.7.2 DescribeSuspTrendStatistics
+    - 4.7.3 DescribeSuspiciousExportInfo
+    - 4.7.4 OperateSuspiciousEvent
+    - 4.7.5 OperateLoginLog
+    - 4.7.6 DescribeVirusInfo
+    - 4.7.7 CreateSuspiciousExport
+    - 4.7.8 CreateFileProtectRule
+    - 4.7.9 UpdateFileProtectRule
+    - 4.7.10 ListFileProtectEventExport
+  - 4.8 Retrieval of host logs
+    - 4.8.1 DescribeFilterFields
+    - 4.8.2 DescribeHistogram
+    - 4.8.3 DescribeLogInfo
+    - 4.8.4 DescribeLogItems
+    - 4.8.5 CreateLogQuery
+    - 4.8.6 DescribeLogQuery
+    - 4.8.7 DeleteLogQuery
+  - 4.9 APIs for host rule settings
+    - 4.9.1 CreateAntiBruteForceRule
+    - 4.9.2 ModifyAntiBruteForceRule
+    - 4.9.3 DescribeAntiBruteForceRules
+    - 4.9.4 DescribeInstanceAntiBruteForceRules
+- 5 Error codes
+
+## 1 Preparations
+
+### 1.1 Obtain API information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -35,7 +150,7 @@ navigation bar.
 7. Select an API operation and obtain the POP endpoint of the cloud service on the Parameter
 tab.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of access credential for authentication when you make an API request. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -76,7 +191,7 @@ want to obtain.
 5. On the right side of the page that appears, click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 1.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -124,7 +239,7 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain an AccessKey pair
+### 1.4 Obtain an AccessKey pair assigned by STS
 
 **assigned by STS**
 
@@ -239,13 +354,13 @@ STS. The STS token is obtained in the previous step.
         System.out.println(e.getErrMsg());
 ```
 
-## Call examples
+## 2 Call examples
 
-### Call examples for SDK for Java
+### 2.1 Call examples for SDK for Java
 
-#### Use SDK
+#### 2.1.1 Use SDK
 
-##### Install SDK for Java
+##### 2.1.1.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -257,7 +372,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest
+##### 2.1.1.2 Use CommonRequest
 
 Before you call the SDK for Java to access the endpoint of a cloud service by using the Point of Presence (POP) gateway, you must familiarize yourself with the call style of the cloud service. The following call styles are supported: remote procedure call (RPC) and resource-oriented architecture (ROA).
 
@@ -409,13 +524,13 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Call examples for SDK for
+### 2.2 Call examples for SDK for Python
 
 **Python**
 
-#### Use SDK
+#### 2.2.1 Use SDK
 
-##### Install SDK for Python
+##### 2.2.1.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -433,7 +548,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest
+##### 2.2.1.2 Use CommonRequest
 
 This topic describes how to use the POP Python software development kit (SDK) to call cloud product APIs.
 
@@ -563,11 +678,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-### Call examples for SDK for Go
+### 2.3 Call examples for SDK for Go
 
-#### Use SDK
+#### 2.3.1 Use SDK
 
-##### Install the core package of SDK for Go
+##### 2.3.1.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -575,7 +690,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Use CommonRequest
+##### 2.3.1.2 Use CommonRequest
 
 This topic describes how to use the POP Go software development kit (SDK) to make API calls.
 
@@ -730,7 +845,7 @@ The client-level setting takes effect only if the request-level setting is not s
 
 ters
 
-## Common parameters
+## 3 Common parameters
 
 **Common request parameters**
 
@@ -754,11 +869,11 @@ ters
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-## API documentation
+## 4 API documentation
 
-### Make API requests
+### 4.1 Make API requests
 
-#### Request structure
+#### 4.1.1 Request structure
 
 Apsara Stack Security API is based on Remote Procedure Call (RPC). This topic describes the structure of the API requests. You can send an HTTP request to call an API operation. The URL of the request must be in the following format:
 
@@ -787,7 +902,7 @@ API requests are presented in the following easy-to-read format in this document
 https://yundunprivate.[ RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Version=2018-01-16 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### Signature mechanism
+#### 4.1.2 Signature mechanism
 
 Alibaba Cloud Security authenticates every access request. You must include a signature in each request that you send over the HTTP or HTTPS protocol.
 
@@ -827,7 +942,7 @@ LEW8N4y7Uasop******
 5. Add the resulting signature value to the request parameters as the Signature parameter.
 This completes the request signing process.
 
-#### Common request parameters
+#### 4.1.3 Common request parameters
 
 The following table describes the common request parameters that are used to indicate information such as the API version and authentication information.
 
@@ -849,7 +964,7 @@ The following table describes the common request parameters that are used to ind
 |---|---|---|
 |   | DDThh:mm:ssZ |   |
 
-#### Response structure
+#### 4.1.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -869,9 +984,9 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 "RequestId": "4C467B38-3910-447D-87BC-AC049166F216", /* Returned data */
 ```
 
-### Asset management
+### 4.2 Asset management
 
-#### DescribeCloudCenterInstances
+#### 4.2.1 DescribeCloudCenterInstances
 
 You can call the DescribeCloudCenterInstances operation to query for assets that meet specific search criteria, such as an instance name or a region. This operation supports both paged queries and the NextToken method. The NextToken method is recommended.
 
@@ -1155,7 +1270,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeCloudCenterInstancesRespon
 </DescribeCloudCenterInstancesResponse>
 ```
 
-#### DescribePropertyScaDetail
+#### 4.2.2 DescribePropertyScaDetail
 
 Queries the details of middleware on the Asset Fingerprints page.
 
@@ -1378,7 +1493,7 @@ controller****</ImageName>
 </DescribePropertyScaDetailResponse>
 ```
 
-#### DescribeAssetDetailByUuid
+#### 4.2.3 DescribeAssetDetailByUuid
 
 You can call the DescribeAssetDetailByUuid operation to query the details and extended information of a server asset by its UUID.
 
@@ -1552,7 +1667,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <DescribeAssetDetailByUuidResponse>
 </DescribeAssetDetailByUuidResponse>
 ```
 
-#### DescribeGroupSummary
+#### 4.2.4 DescribeGroupSummary
 
 You can call this operation to obtain a list of asset groups.
 
@@ -1629,7 +1744,7 @@ Sample responses (JSON format)
  "RequestId":"B9FB5483-3CA6-4520-9F89-068ED6AAC6EE"
 ```
 
-#### DescribeGroupStruct
+#### 4.2.5 DescribeGroupStruct
 
 You can call this operation to query the asset group structure.
 
@@ -1714,7 +1829,7 @@ Sample response (JSON format)
     "GroupId":0
 ```
 
-#### DescribeAllEntity
+#### 4.2.6 DescribeAllEntity
 
 You can call this operation to query information about all servers.
 
@@ -1762,7 +1877,7 @@ Sample response (JSON format)
 
 `]`
 
-#### DescribeEntityList
+#### 4.2.7 DescribeEntityList
 
 You can call this operation to query servers of a specified type. For example, you can query servers by security event type.
 
@@ -1834,7 +1949,7 @@ Sample response (JSON format)
 
 `]`
 
-#### DescribeMachines
+#### 4.2.8 DescribeMachines
 
 You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group.
 
@@ -1884,7 +1999,7 @@ Sample response (JSON format)
     "RequestId":"C984123D-C8E0-4974-9CEE-ADD0596C46DB"
 ```
 
-#### DescribeMachineDetail
+#### 4.2.9 DescribeMachineDetail
 
 You can call this operation to query the detailed information about a specified server.
 
@@ -1942,7 +2057,7 @@ Sample response (JSON format)
         "InstanceName":"****"
 ```
 
-#### DescribePropertyStatistic
+#### 4.2.10 DescribePropertyStatistic
 
 You can call this operation to query the server statistics.
 
@@ -1994,7 +2109,7 @@ Sample responses (JSON format)
  "RequestId":"C1CACE7E-E868-4E44-A52E-4CB1463B62BB"
 ```
 
-#### DescribePropertyPortItem
+#### 4.2.11 DescribePropertyPortItem
 
 You can call this operation to obtain a list of listener ports on hosts.
 
@@ -2045,7 +2160,7 @@ Sample responses (JSON format)
  "Count":1
 ```
 
-#### DescribePropertyPortDetail
+#### 4.2.12 DescribePropertyPortDetail
 
 You can call this operation to query detailed information about a listening port.
 
@@ -2114,7 +2229,7 @@ Sample response (JSON format)
     "Count":1
 ```
 
-#### DescribePropertyProcItem
+#### 4.2.13 DescribePropertyProcItem
 
 You can call this operation to obtain a list of server processes.
 
@@ -2165,7 +2280,7 @@ Sample responses (JSON format)
  "Count":1
 ```
 
-#### DescribePropertyProcDetail
+#### 4.2.14 DescribePropertyProcDetail
 
 You can call this operation to query server process details.
 
@@ -2246,7 +2361,7 @@ Sample response (JSON format)
     "Count":1
 ```
 
-#### DescribePropertySoftwareItem
+#### 4.2.15 DescribePropertySoftwareItem
 
 You can call this operation to query servers that have been installed with the specified application.
 
@@ -2298,7 +2413,7 @@ Sample responses (JSON format)
  "count": 1,
 ```
 
-#### DescribePropertySoftwareDetail
+#### 4.2.16 DescribePropertySoftwareDetail
 
 You can call this operation to query the details of software installed on a server.
 
@@ -2364,7 +2479,7 @@ Sample response (JSON format)
     "Count":1
 ```
 
-#### DescribePropertyUserItem
+#### 4.2.17 DescribePropertyUserItem
 
 You can call this operation to query user account information.
 
@@ -2421,7 +2536,7 @@ Sample responses (JSON format)
  "Count": 2
 ```
 
-#### DescribePropertyUserDetail
+#### 4.2.18 DescribePropertyUserDetail
 
 You can call this operation to query user account details.
 
@@ -2501,7 +2616,7 @@ Sample response (JSON format)
 
 `]`
 
-#### DescribeTopRiskyAssets
+#### 4.2.19 DescribeTopRiskyAssets
 
 You can call this operation to query top N vulnerable servers.
 
@@ -2546,7 +2661,7 @@ Sample response (JSON format)
 
 `]`
 
-#### CreateAssetGroup
+#### 4.2.20 CreateAssetGroup
 
 API for user login
 
@@ -2577,7 +2692,7 @@ Sample success response `JSON` format
  "GroupId":"12345"
 ```
 
-#### DescribePropertyUserChangeItem
+#### 4.2.21 DescribePropertyUserChangeItem
 
 Queries the records of property changes for users in Security Center.
 
@@ -2649,9 +2764,9 @@ Response example `JSON` format
 
 `]`
 
-### Vulnerability management
+### 4.3 Vulnerability management
 
-#### DescribeTarget
+#### 4.3.1 DescribeTarget
 
 You can call this operation to query the servers that are checked for the specified type of risks in vulnerability management.
 
@@ -2696,7 +2811,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### DescribeVulTargetStatistics
+#### 4.3.2 DescribeVulTargetStatistics
 
 You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration.
 
@@ -2744,7 +2859,7 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
-#### DescribeTargetConfig
+#### 4.3.3 DescribeTargetConfig
 
 You can call this operation to query the vulnerability scanning configuration information of a specified server.
 
@@ -2786,7 +2901,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### DescribeVulConfig
+#### 4.3.4 DescribeVulConfig
 
 You can call this operation to query the global scanning configuration for each vulnerability type.
 
@@ -2821,7 +2936,7 @@ Sample responses (JSON format)
    "Type":"cve"
 ```
 
-#### DescribeAutoDelConfig
+#### 4.3.5 DescribeAutoDelConfig
 
 You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings.
 
@@ -2849,7 +2964,7 @@ Sample responses (JSON format)
  "Days":7
 ```
 
-#### DescribeVulLevel
+#### 4.3.6 DescribeVulLevel
 
 You can call this operation to query the vulnerability severities that require attention.
 
@@ -2879,7 +2994,7 @@ Sample responses (JSON format)
  "ConcernLevels":["high","medium"]
 ```
 
-#### DescribeVulWhitelist
+#### 4.3.7 DescribeVulWhitelist
 
 You can call this operation to obtain the whitelist of vulnerabilities.
 
@@ -2928,7 +3043,7 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
-#### DescribeGroupedVul
+#### 4.3.8 DescribeGroupedVul
 
 You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard.
 
@@ -3011,7 +3126,7 @@ Sample responses (JSON format)
  "CurrentPage":1
 ```
 
-#### DescribeVulList
+#### 4.3.9 DescribeVulList
 
 You can call this operation to obtain the vulnerability list of the specified host asset.
 
@@ -3101,7 +3216,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### DescribeVulDetails
+#### 4.3.10 DescribeVulDetails
 
 You can call this operation to query detailed information about a vulnerability.
 
@@ -3174,7 +3289,7 @@ es for Linux operating systems. The use-after-free vulnerability is found in the
  "RequestId": "70DEE6B7-A167-4B5D-ADAA-3631443D5190"
 ```
 
-#### DescribeVulNumStatistics
+#### 4.3.11 DescribeVulNumStatistics
 
 You can call this operation to query vulnerability statistics.
 
@@ -3231,7 +3346,7 @@ Sample responses (JSON format)
     "VulLaterSum":0
 ```
 
-#### DescribeVulLevelStatistics
+#### 4.3.12 DescribeVulLevelStatistics
 
 You can call this operation to obtain the statistics on vulnerabilities by vulnerability severity.
 
@@ -3318,7 +3433,7 @@ Sample responses (JSON format)
  "RequestId":"9B062D3F-AD5A-4D3E-9A7A-45CAC2713FC0"
 ```
 
-#### DescribeVulMachineList
+#### 4.3.13 DescribeVulMachineList
 
 You can call this operation to query the vulnerability statistics of a specified server.
 
@@ -3386,9 +3501,9 @@ Sample responses (JSON format)
  "RequestId":"A3F8BE63-9BA1-450D-BB5D-CE9205E6645D"
 ```
 
-### Baseline check
+### 4.4 Baseline check
 
-#### DescribeStratetyDetail
+#### 4.4.1 DescribeStratetyDetail
 
 You can call this operation to query the details of a specified baseline check policy.
 
@@ -3471,7 +3586,7 @@ Sample responses (JSON format)
 
 `]` `]`
 
-#### DescribeStrategyTarget
+#### 4.4.2 DescribeStrategyTarget
 
 You can call this operation to query the information about asset groups to which a specified baseline check policy applies.
 
@@ -3515,7 +3630,7 @@ Sample responses (JSON format)
  "requestId": "B44F545D-15CF-4A57-B8BF-4340D15D0507"
 ```
 
-#### DescribeUuidConfig
+#### 4.4.3 DescribeUuidConfig
 
 You can call this operation to check whether baseline check is enabled for a specified server.
 
@@ -3551,7 +3666,7 @@ Sample responses (JSON format)
     "RequestId": "A89978FE-BC35-427E-A4B1-7AEEAE741CC2",
 ```
 
-#### DescribeUserSetting
+#### 4.4.4 DescribeUserSetting
 
 You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check.
 
@@ -3579,7 +3694,7 @@ Sample responses (JSON format)
  "RequestId":"0A079FE2-0D1B-4A4D-A4EF-D02B5DDE12A7"
 ```
 
-#### DescribeRiskWhiteList
+#### 4.4.5 DescribeRiskWhiteList
 
 You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check.
 
@@ -3630,7 +3745,7 @@ Sample responses (JSON format)
  "Count":1
 ```
 
-#### DescribeStratety
+#### 4.4.6 DescribeStratety
 
 You can call this operation to query the execution details of a specified baseline check policy.
 
@@ -3692,7 +3807,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### DescribeStrategyExecDetail
+#### 4.4.7 DescribeStrategyExecDetail
 
 You can call this operation to query the execution details of a baseline check policy.
 
@@ -3741,7 +3856,7 @@ Sample responses (JSON format)
        "FailCount": 0,
 ```
 
-#### DescribeRiskType
+#### 4.4.8 DescribeRiskType
 
 You can call this operation to query all types of risks detected in baseline check and view the number of risks that have been detected by a baseline check policy or on the specified servers for a specific risk type.
 
@@ -3813,7 +3928,7 @@ Sample responses (JSON format)
  "count": 1,
 ```
 
-#### Describesummary
+#### 4.4.9 Describesummary
 
 You can call this operation to query the risks detected in baseline check by risk type.
 
@@ -3882,7 +3997,7 @@ n1. Checks whether the logon port is the default port 22\n2 and whether the root
 
 `]`
 
-#### ListBaselineCheckWhiteRecord
+#### 4.4.10 ListBaselineCheckWhiteRecord
 
 Retrieves the details of baseline check whitelist records.
 
@@ -3969,9 +4084,9 @@ The following is a sample response in `JSON` format.
 | 500 | ServerError | ServerError | ServerError |
 | 403 | NoPermission | NoPermission | The caller does not have the required permissions. |
 
-### Unusual logon detection
+### 4.5 Unusual logon detection
 
-#### DescribeBaseConfigs
+#### 4.5.1 DescribeBaseConfigs
 
 You can call this operation to query the logon security settings.
 
@@ -4033,7 +4148,7 @@ Sample responses (JSON format)
  "CurrentPage": 1
 ```
 
-#### DescribeSwitchConfigs
+#### 4.5.2 DescribeSwitchConfigs
 
 You can call this operation to query the logon security configuration records in the logon security settings.
 
@@ -4084,7 +4199,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### DescribeConfigTarget
+#### 4.5.3 DescribeConfigTarget
 
 You can call this operation to query the information about servers to which a specified logon security configuration record applies.
 
@@ -4123,7 +4238,7 @@ Sample responses (JSON format)
  "RequestId": "B8064EA4-9472-4D03-B7D1-6684DB5CD0BE",
 ```
 
-#### ModifyBaseConfig
+#### 4.5.4 ModifyBaseConfig
 
 You can call this operation to modify logon security settings.
 
@@ -4156,7 +4271,7 @@ Sample responses (JSON format)
  "RequestId":"BB8F5902-BD50-49AB-B124-18E9CA92BB99"
 ```
 
-#### DeleteBaseConfig
+#### 4.5.5 DeleteBaseConfig
 
 You can call this operation to delete a logon security setting, such as an approved logon location or IP address.
 
@@ -4189,7 +4304,7 @@ Sample response (JSON format)
     "RequestId":"E3785090-CFF4-4C53-82E4-08F902586053"
 ```
 
-#### ModifySwitchConfig
+#### 4.5.6 ModifySwitchConfig
 
 You can call this operation to modify the setting about whether to enable a logon security configuration record to identify a valid logon to a server in the logon security settings.
 
@@ -4223,9 +4338,9 @@ Sample responses (JSON format)
  "RequestId":"3F2C126D-870B-4AE4-8604-58BDECF873F4"
 ```
 
-### Webshell detection
+### 4.6 Webshell detection
 
-#### DescribeCategoryCount
+#### 4.6.1 DescribeCategoryCount
 
 You can call this operation to query the number of webshells detected by Server Guard.
 
@@ -4255,7 +4370,7 @@ Sample responses (JSON format)
     "Webshell": 2
 ```
 
-#### DescribeWebshell
+#### 4.6.2 DescribeWebshell
 
 You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path.
 
@@ -4335,7 +4450,7 @@ Sample response (JSON format)
     "RequestId": "E4B254AE-5CB1-4810-8B51-A08DF5697F25"
 ```
 
-#### DescribeQuaraFile
+#### 4.6.3 DescribeQuaraFile
 
 You can call this operation to obtain the list of quarantined files.
 
@@ -4391,7 +4506,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### RollbackQuaraFile
+#### 4.6.4 RollbackQuaraFile
 
 You can call this operation to restore a specified quarantined file.
 
@@ -4421,7 +4536,7 @@ Sample responses (JSON format)
  "RequestId":"0C7FAD74-83FA-4671-9250-A5F2A64F437A",
 ```
 
-#### DescribeWebPath
+#### 4.6.5 DescribeWebPath
 
 You can call this operation to query the Web directories defined in webshell settings.
 
@@ -4475,7 +4590,7 @@ Sample response (JSON format)
 
 `]`
 
-#### ModifyWebPath
+#### 4.6.6 ModifyWebPath
 
 You can call this operation to modify the Web directory in webshell settings.
 
@@ -4504,7 +4619,7 @@ Sample responses (JSON format)
  "RequestId":"7B6AD7C9-0F8D-4126-B8AA-6DC308B0B534"
 ```
 
-#### OperateTrojan
+#### 4.6.7 OperateTrojan
 
 You can call this operation to handle detected webshells.
 
@@ -4537,9 +4652,9 @@ Sample responses (JSON format)
     "SuccessCount": 1
 ```
 
-### Exception detection on hosts
+### 4.7 Exception detection on hosts
 
-#### DescribeSuspEventTypes
+#### 4.7.1 DescribeSuspEventTypes
 
 You can call this operation to query the unusual event types.
 
@@ -4577,7 +4692,7 @@ Sample responses (JSON format)
 
 `]`
 
-#### DescribeSuspTrendStatistics
+#### 4.7.2 DescribeSuspTrendStatistics
 
 You can call this operation to query the chart data on different types of unusual server events on each day.
 
@@ -4609,7 +4724,7 @@ Sample responses (JSON format)
  "SuspiciousItems":[ ]
 ```
 
-#### DescribeSuspiciousExportInfo
+#### 4.7.3 DescribeSuspiciousExportInfo
 
 You can call this operation to query an unusual event export task.
 
@@ -4657,7 +4772,7 @@ Sample response (JSON format)
 shanghai.example.com/export/suspicious_20180208_1518071576098.zip? Expires=1518075176&OSSAccessKeyId=<yourAccessKeyId>&Signature=xxxx%xxxx%3D"
 ```
 
-#### OperateSuspiciousEvent
+#### 4.7.4 OperateSuspiciousEvent
 
 You can call this operation to handle detected unusual events.
 
@@ -4685,7 +4800,7 @@ Sample responses (JSON format)
  "RequestId":"654A6FD8-B55D-4D6B-AAFF-4122503D108B"
 ```
 
-#### OperateLoginLog
+#### 4.7.5 OperateLoginLog
 
 You can call this operation to label a detected unusual logon event as handled.
 
@@ -4713,7 +4828,7 @@ Sample responses (JSON format)
  "RequestId":"BE391ABB-6B7C-4C41-9F6C-862C1DEE3905"
 ```
 
-#### DescribeVirusInfo
+#### 4.7.6 DescribeVirusInfo
 
 You can call this operation to upload the MD5 values of files and use Alibaba Cloud Antivirus to determine whether the files are malicious programs.
 
@@ -4743,7 +4858,7 @@ Sample responses (JSON format)
  "Data": true
 ```
 
-#### CreateSuspiciousExport
+#### 4.7.7 CreateSuspiciousExport
 
 You can call this operation to export the information about unusual events on servers based on search conditions.
 
@@ -4784,7 +4899,7 @@ Sample responses (JSON format)
     "Id": 387
 ```
 
-#### CreateFileProtectRule
+#### 4.7.8 CreateFileProtectRule
 
 User logon
 
@@ -4835,7 +4950,7 @@ Response example `JSON` format
  "RuleId":123
 ```
 
-#### UpdateFileProtectRule
+#### 4.7.9 UpdateFileProtectRule
 
 Modifies a core file protection rule.
 
@@ -4899,7 +5014,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <UpdateFileProtectRuleResponse>
 </UpdateFileProtectRuleResponse>
 ```
 
-#### ListFileProtectEventExport
+#### 4.7.10 ListFileProtectEventExport
 
 Call the ListFileProtectEventExport operation to query alert events for core file monitoring.
 
@@ -5066,9 +5181,9 @@ HTTP/1.1 200 OK Content-Type:application/xml <ListFileProtectEventExportResponse
 | 500 | -2000 | DefenceAtLeastOneConfig | At least one protection directory is needed. |
 | 500 | -100 | InternalError | The request processing has failed due to some unknown error. |
 
-### Retrieval of host logs
+### 4.8 Retrieval of host logs
 
-#### DescribeFilterFields
+#### 4.8.1 DescribeFilterFields
 
 You can call this operation to query the filter fields of a specified server log search condition.
 
@@ -5106,7 +5221,7 @@ Sample responses (JSON format)
  "RequestID":"883e1e3d-4443-4206-871c-6c0625c01332"
 ```
 
-#### DescribeHistogram
+#### 4.8.2 DescribeHistogram
 
 You can call this operation to obtain the statistics on server logs generated within a specified time frame.
 
@@ -5155,7 +5270,7 @@ Sample responses (JSON format)
 
 `0,` `0,` `0,` `0,` `0,` `0,` `]` `]`
 
-#### DescribeLogInfo
+#### 4.8.3 DescribeLogInfo
 
 You can call this operation to query the server log fields based on specified query conditions.
 
@@ -5259,7 +5374,7 @@ Sample responses (JSON format)
 
 `},` `]`
 
-#### DescribeLogItems
+#### 4.8.4 DescribeLogItems
 
 You can call this operation to query the server log details that are returned by a query.
 
@@ -5338,7 +5453,7 @@ Sample responses (JSON format)
  "ProcessTotalCount":0
 ```
 
-#### CreateLogQuery
+#### 4.8.5 CreateLogQuery
 
 You can call this operation to create or save server log search conditions.
 
@@ -5369,7 +5484,7 @@ Sample responses (JSON format)
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
-#### DescribeLogQuery
+#### 4.8.6 DescribeLogQuery
 
 You can call this operation to query the saved server log search conditions.
 
@@ -5410,7 +5525,7 @@ snapshot\",\"id\":\"aegis-snapshot-host\",\"fields\": [{\"name\":\"ip\",\"type\"
 
 `]`
 
-#### DeleteLogQuery
+#### 4.8.7 DeleteLogQuery
 
 You can call this operation to delete the saved server log search conditions.
 
@@ -5437,9 +5552,9 @@ Sample responses (JSON format)
  "RequestId":"415AE1FC-3C11-4AA9-A06F-DE13D3430366"
 ```
 
-### APIs for host rule settings
+### 4.9 APIs for host rule settings
 
-#### CreateAntiBruteForceRule
+#### 4.9.1 CreateAntiBruteForceRule
 
 Creates a brute-force attacks protection rule.
 
@@ -5484,7 +5599,7 @@ Response example `JSON` format
   "RuleId":123
 ```
 
-#### ModifyAntiBruteForceRule
+#### 4.9.2 ModifyAntiBruteForceRule
 
 Call the ModifyAntiBruteForceRule operation to modify a brute-force attacks protection rule.
 
@@ -5546,7 +5661,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <ModifyAntiBruteForceRuleResponse>
 
 "PageInfo":{ "TotalCount":10, "PageSize":10, "CurrentPage":1, "Count":1 }, "RequestId":"F0A8A039-930D-5EC1-97C8-************", "Rules":[ "Uuid":"49e25e0f-bb51-4a5a-a1b3-13a4ddaa****", "Id":1, "Name":"test" ]
 
-#### DescribeAntiBruteForceRules
+#### 4.9.3 DescribeAntiBruteForceRules
 
 This operation queries the brute-force attacks protection rules that you have created.
 
@@ -5627,7 +5742,7 @@ Response example `JSON` format
 
 `]` `XML` format
 
-#### DescribeInstanceAntiBruteForceRules
+#### 4.9.4 DescribeInstanceAntiBruteForceRules
 
 Retrieves a list of servers that have active brute-force attack defense rules.
 
@@ -5696,7 +5811,7 @@ Response example `JSON` format
 
 `]`
 
-## Error codes
+## 5 Error codes
 
 This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 

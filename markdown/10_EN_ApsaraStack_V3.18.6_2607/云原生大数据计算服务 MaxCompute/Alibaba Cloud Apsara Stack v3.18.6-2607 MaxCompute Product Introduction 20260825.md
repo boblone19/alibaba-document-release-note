@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Product Introduction 
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 24
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Product Introduction 20260825.pdf"
+source_pdf: "c92dc4b83fa79c53_Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%20MaxCompute/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20MaxCompute%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 MaxCompute Product Introduction 20260825
 
-## MaxCompute
+## Table of Contents
+
+- 1 MaxCompute
+  - 1.1 Features
+  - 1.2 Product value
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 MaxCompute
 
 MaxCompute is a highly efficient, highly available, and low-cost **EB-level** computing service for big data. It is independently developed by Alibaba Cloud. This service is used within Alibaba Group to process exabytes of data each day. MaxCompute is a distributed system designed for big data processing. As one of the core services in the Alibaba Cloud computing solution, MaxCompute is used to store and compute structured data. MaxCompute is designed to support multiple tenants and provide features such as data security and horizontal scaling. It provides a centralized graphical user interface (GUI) and centralized APIs for various data processing tasks of different users based on an abstract job processing framework. MaxCompute is primarily used to store and compute batch structured data. It provides solutions for large-scale data warehouses, along with big data analytics and modeling services. The goal of MaxCompute is to simplify the process of analyzing large volumes of data. This lets you perform big data analysis without needing to understand the underlying details of distributed computing.
 
-### Features
+### 1.1 Features
 
 MaxCompute is a data processing platform developed by Alibaba Group to process large amounts of data. MaxCompute provides channels for data uploads and downloads, a range of computing and analysis features including MaxCompute SQL and MaxCompute MapReduce, and comprehensive security solutions.
 
@@ -38,7 +46,7 @@ SDK is a toolkit that MaxCompute provides for developers.
 
 MaxCompute provides powerful security services to ensure user data security.
 
-### Product value
+### 1.2 Product value
 
 MaxCompute is designed for storing and computing batch structured data. It provides solutions for large-scale data warehouses and big data analysis and modeling services.
 
@@ -102,7 +110,7 @@ Cross-domain computing pattern Allows you to specify compute clusters to use com
 
 MaxCompute supports using CPUs, hard disks, memory, and network interface controllers (NICs) with different specifications in a single-component cluster to maximize compatibility with existing devices, provided that cluster performance is not affected.
 
-### Scenarios
+### 1.3 Scenarios
 
 MaxCompute is suitable for storage and computing in scenarios in which more than 100 GB of data is involved. MaxCompute can process up to exabytes of data and is widely used in Alibaba Group. MaxCompute is suitable for various big data processing scenarios, such as data warehousing and business intelligence (BI) analysis for large Internet enterprises, website log analysis, e-commerce transaction analysis, and exploration of user characteristics and interests.
 
@@ -150,7 +158,7 @@ enterprises, eliminates the technical bottleneck in processing and analysis of l
 **Easy use of Machine learning platform** : The performance of algorithm models directly
 affects the revenue of the customer. The machine learning platform of MaxCompute is easy to use and is a good choice to meet the business requirements of the customer.
 
-### Features
+### 1.4 Features
 
 This topic outlines the features of Alibaba Cloud MaxCompute.
 

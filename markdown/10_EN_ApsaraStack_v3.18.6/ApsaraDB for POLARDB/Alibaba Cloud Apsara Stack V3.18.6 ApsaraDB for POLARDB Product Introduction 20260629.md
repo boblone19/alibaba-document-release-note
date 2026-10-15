@@ -2,22 +2,39 @@
 title: "ApsaraDB for POLARDB Product Introduction 20260629"
 product_version: "V3.18.6"
 pdf_pages: 29
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB Product Introduction 20260629.pdf"
+source_pdf: "f51f43f3dbb92fd6_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for POLARDB Product Introduction 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20POLARDB%20Product%20Introduction%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for POLARDB Product Introduction 20260629
 
-ApsaraDB for POLARDB ails
+## Table of Contents
 
-## Product details
+- 1 Product details
+- 2 Benefits
+- 3 Scenarios
+- 4 Features
+  - 4.1 Features of PolarDB for MySQL
+    - 4.1.1 Primary/Secondary edition
+  - 4.2 Features of PolarDB for PostgreSQL
+    - 4.2.1 Primary/Secondary edition
+  - 4.3 Features of PolarDB-X
+    - 4.3.1 Features
+
+ails
+
+## 1 Product details
 
 PolarDB is a powerful cloud-native database. It delivers high availability, high performance, and easy scalability, making it suitable for enterprise applications of any scale.
 
 **Product engine introduction**
 
-PolarDB offers three database engines: PolarDB for MySQL, PolarDB for PostgreSQL, and PolarDB Converged Edition (Centralized & Distributed) (short for PolarDB-X). You can quickly create a database instance that suits your application scenario. PolarDB for MySQL Edition PolarDB for MySQL Edition is Alibaba Cloud's self-developed cloud-native relational database. It provides you with database services featuring ultra-high elasticity and performance, high availability and reliability, and cost-effectiveness. This edition uses a high-availability architecture consisting of one primary instance and one standby instance. These instances are deployed on different physical machines, either in the same data center or across different data centers. Data is synchronized between them via streaming replication (log transmission). Requests are routed directly to the primary instance via Server Load Balancer (SLB). The primary/standby highavailability architecture remains available even if one node fails. If the standby instance fails, the management and control component initiates a standby database rebuild process on a third machine (other than the primary and standby nodes). This restores the standard one-primary-one-standby configuration. Since all traffic accessing the connection string is directed to the primary database, neither the standby database failure nor its rebuild process affects business availability. PolarDB for PostgreSQL Edition This edition uses a high-availability architecture consisting of one primary instance and one standby instance. These instances are deployed on different physical machines, either in the same data center or across different data centers. Data is synchronized between them via streaming replication (log transmission). Requests are routed directly to the primary instance via Server Load Balancer (SLB). The primary/standby highavailability architecture remains available even if one node fails. If the standby instance fails, the management and control component initiates a standby database rebuild process on a third machine (other than the primary and standby nodes). This restores the standard one-primary-one-standby configuration. Since all traffic accessing the connection string is directed to the primary database, neither the standby database failure nor its rebuild process affects business availability. PolarDB Converged Edition (Centralized & Distributed) (short for PolarDB-X) PolarDB-X is a high-performance, cloud-native distributed database designed and developed by Alibaba Group. It delivers high throughput, large storage capacity, low latency, easy scalability, and ultra-high availability for the cloud era. PolarDB-X has consistently supported all business related to Alibaba Group's Double 11 Shopping Festival. After more than a decade of refinement, it delivers strong data consistency, high system stability, and rapid cluster elasticity. It is widely used in public sectors including finance, judicial and taxation services, transportation and logistics, and power and energy. PolarDB-X firmly follows an open, self-controlled development path. It builds distributed capabilities around the open-source MySQL ecosystem, minimizing learning and usage costs for users. ails ApsaraDB for POLARDB
+PolarDB offers three database engines: PolarDB for MySQL, PolarDB for PostgreSQL, and PolarDB Converged Edition (Centralized & Distributed) (short for PolarDB-X). You can quickly create a database instance that suits your application scenario. PolarDB for MySQL Edition PolarDB for MySQL Edition is Alibaba Cloud's self-developed cloud-native relational database. It provides you with database services featuring ultra-high elasticity and performance, high availability and reliability, and cost-effectiveness. PolarDB for MySQL Primary/Secondary Edition This edition uses a high-availability architecture consisting of one primary instance and one standby instance. These instances are deployed on different physical machines, either in the same data center or across different data centers. Data is synchronized between them via streaming replication (log transmission). Requests are routed directly to the primary instance via Server Load Balancer (SLB). The primary/standby highavailability architecture remains available even if one node fails. If the standby instance fails, the management and control component initiates a standby database rebuild process on a third machine (other than the primary and standby nodes). This restores the standard one-primary-one-standby configuration. Since all traffic accessing the connection string is directed to the primary database, neither the standby database failure nor its rebuild process affects business availability. PolarDB for PostgreSQL Edition This edition uses a high-availability architecture consisting of one primary instance and one standby instance. These instances are deployed on different physical machines, either in the same data center or across different data centers. Data is synchronized between them via streaming replication (log transmission). Requests are routed directly to the primary instance via Server Load Balancer (SLB). The primary/standby highavailability architecture remains available even if one node fails. If the standby instance fails, the management and control component initiates a standby database rebuild process on a third machine (other than the primary and standby nodes). This restores the standard one-primary-one-standby configuration. Since all traffic accessing the connection string is directed to the primary database, neither the standby database failure nor its rebuild process affects business availability. PolarDB Converged Edition (Centralized & Distributed) (short for PolarDB-X) PolarDB-X is a high-performance, cloud-native distributed database designed and developed by Alibaba Group. It delivers high throughput, large storage capacity, low latency, easy scalability, and ultra-high availability for the cloud era. PolarDB-X has consistently supported all business related to Alibaba Group's Double 11 Shopping Festival. After more than a decade of refinement, it delivers strong data consistency, high system stability, and rapid cluster elasticity. It is widely used in public sectors including finance, judicial and taxation services, transportation and logistics, and power and energy. PolarDB-X firmly follows an open, self-controlled development path. It builds distributed capabilities around the open-source MySQL ecosystem, minimizing learning and usage costs for users.
+
+**Product details**
+
+ails
 
 **PolarDB for MySQLEdition**
 
@@ -49,7 +66,7 @@ Data backup
     - Automatic backup: The system generates a default automatic backup policy when you
 create an instance. The system performs full physical backups periodically based on the policy and uploads them to Object Storage Service (OSS). You can modify settings such as the backup cycle, retention period, and backup task scheduling time for the automatic backup policy on the O&M console.
     - Manual backup: You can manually create physical backups on the O&M console.
-Log backup ApsaraDB for POLARDB ails The system periodically uploads logs generated by instances to OSS and rotates them promptly after successful upload to save disk space on physical machines. You can modify settings such as the number of retained logs and the log retention period on the O&M console. Restore from a backup set PolarDB allows you to create a new instance from an existing backup set. Clone instance PolarDB allows you to clone an existing instance to create a new one. The new instance is independent and inherits only data from the original instance at the time of cloning. Point-in-time recovery PolarDB supports point-in-time recovery. To use this feature, you must ensure that a full backup set is available before your target point in time and that all WAL logs between the full backup set and the target point in time are stored in OSS. Point-in-time recovery creates a new instance that is independent of the original one.
+Log backup ails The system periodically uploads logs generated by instances to OSS and rotates them promptly after successful upload to save disk space on physical machines. You can modify settings such as the number of retained logs and the log retention period on the O&M console. Restore from a backup set PolarDB allows you to create a new instance from an existing backup set. Clone instance PolarDB allows you to clone an existing instance to create a new one. The new instance is independent and inherits only data from the original instance at the time of cloning. Point-in-time recovery PolarDB supports point-in-time recovery. To use this feature, you must ensure that a full backup set is available before your target point in time and that all WAL logs between the full backup set and the target point in time are stored in OSS. Point-in-time recovery creates a new instance that is independent of the original one.
 
 **TDE**
 
@@ -77,7 +94,7 @@ A single system offers both centralized and distributed architectures, allowing 
 
 **Cloud-native database**
 
-The system integrates seamlessly with the cloud platform, enabling unified network management, monitoring and alerting, O&M, authentication, tenant planning, and quota management. ails ApsaraDB for POLARDB
+The system integrates seamlessly with the cloud platform, enabling unified network management, monitoring and alerting, O&M, authentication, tenant planning, and quota management. ails
 
 **Two database-level modes: DRDS (database and table**
 
@@ -103,7 +120,7 @@ You can flexibly allocate physical machines to create multiple resource pools wi
 
 **Resource efficiency**
 
-Storage nodes adopt a one-primary, one-secondary, plus log architecture. This design guarantees zero data loss across three nodes while consuming the resources of only approximately 2.3 replicas, thereby reducing software and hardware procurement costs by 23%. ApsaraDB for POLARDB ails
+Storage nodes adopt a one-primary, one-secondary, plus log architecture. This design guarantees zero data loss across three nodes while consuming the resources of only approximately 2.3 replicas, thereby reducing software and hardware procurement costs by 23%. ails
 
 **Native MySQL global Binlog**
 
@@ -139,11 +156,13 @@ PolarDB-X features a comprehensive account and permission system compatible with
 
 **Permissions**
 
-On the console, you can achieve unified multi-level tenant management, including dynamic resource configuration, usage statistics, and strict resource isolation. Premission management and fine-grained user operation auditing are provided. ails ApsaraDB for POLARDB A robust permission authentication and isolation mechanism is provided to ensure the privacy of your data. Resource isolation is supported via the multi-tenant mode. ApsaraDB for POLARDB
+On the console, you can achieve unified multi-level tenant management, including dynamic resource configuration, usage statistics, and strict resource isolation. Premission management and fine-grained user operation auditing are provided. ails A robust permission authentication and isolation mechanism is provided to ensure the privacy of your data. Resource isolation is supported via the multi-tenant mode.
 
-## Benefits
+## 2 Benefits
 
 You can use the cloud-native database PolarDB just as you would a traditional database. PolarDB has the following benefits:
+
+**PolarDB for MySQL**
 
 **Cost-effective**
 
@@ -169,6 +188,8 @@ Comprehensive security measures, such as whitelists, VPC networks, and multi-rep
 
 Using the snapshot technology of the underlying distributed storage, the entire backup process does not require locks. This results in higher efficiency and reduced impact.
 
+**PolarDB for PostgreSQL**
+
 **Simple and easy to use**
 
 Fully compatible with PostgreSQL and highly compatible with Oracle syntax. Your code and applications require few or no modifications.
@@ -187,7 +208,9 @@ A cluster can contain one primary node and up to 15 read-only nodes. This meets 
 
 **High availability and reliability for data security**
 
-ApsaraDB for POLARDB The Primary/Secondary Edition uses a primary-secondary high availability architecture. It can maintain availability if one node fails. If the secondary node fails, the management component rebuilds the secondary database on a different healthy machine. This restores the normal primary-secondary state. The failure and reconstruction of the secondary database do not affect business availability because all traffic from the connection string is directed to the primary database.
+The Primary/Secondary Edition uses a primary-secondary high availability architecture. It can maintain availability if one node fails. If the secondary node fails, the management component rebuilds the secondary database on a different healthy machine. This restores the normal primary-secondary state. The failure and reconstruction of the secondary database do not affect business availability because all traffic from the connection string is directed to the primary database.
+
+**PolarDB-X**
 
 **Cloud-native and MySQL ecosystem**
 
@@ -199,9 +222,9 @@ To maximize cloud database scalability, PolarDB-X uses a Shared-Nothing system a
 
 **Transparent distributed experience**
 
-PolarDB-X aims to provide an experience of operating a distributed database that is as simple as using a standalone MySQL database. To achieve this, PolarDB-X offers the following easy-to-use, transparent distributed capabilities: By default, PolarDB-X uses automatic sharding based on the primary key. This removes the need to design a **partition key** when you migrate data and services, and enables automatic sharding. High-performance, strong consistency distributed transactions. PolarDB-X uses the selfdeveloped X-Paxos protocol to ensure a recovery point objective (RPO) of 0 during failover. It also uses a Timestamp Oracle (TSO) policy and distributed Multi-Version Concurrency Control (MVCC) to guarantee the isolation and consistency of distributed transactions. Distributed linear scaling. PolarDB-X uses a partitioning policy based on consistent hashing for effective load balancing and hot spot suppression. During scale-out, it maintains computation pushdown and data consistency with zero impact on your business. Parallel processing and throttling capabilities provide strong support for business continuity during scaling. Global binary logging and globally consistent backups. These features solve the challenges of streaming data from each node of a distributed database to downstream systems, along with recovery consistency issues caused by different backup times across nodes. ApsaraDB for POLARDB
+PolarDB-X aims to provide an experience of operating a distributed database that is as simple as using a standalone MySQL database. To achieve this, PolarDB-X offers the following easy-to-use, transparent distributed capabilities: By default, PolarDB-X uses automatic sharding based on the primary key. This removes the need to design a **partition key** when you migrate data and services, and enables automatic sharding. High-performance, strong consistency distributed transactions. PolarDB-X uses the selfdeveloped X-Paxos protocol to ensure a recovery point objective (RPO) of 0 during failover. It also uses a Timestamp Oracle (TSO) policy and distributed Multi-Version Concurrency Control (MVCC) to guarantee the isolation and consistency of distributed transactions. Distributed linear scaling. PolarDB-X uses a partitioning policy based on consistent hashing for effective load balancing and hot spot suppression. During scale-out, it maintains computation pushdown and data consistency with zero impact on your business. Parallel processing and throttling capabilities provide strong support for business continuity during scaling. Global binary logging and globally consistent backups. These features solve the challenges of streaming data from each node of a distributed database to downstream systems, along with recovery consistency issues caused by different backup times across nodes.
 
-## Scenarios
+## 3 Scenarios
 
 PolarDB, a cloud-native database, is designed for a wide range of business scenarios. It delivers high performance, high availability, and high scalability to meet diverse business needs.
 
@@ -236,13 +259,15 @@ ensuring an efficient and low-risk transition.
 
 SQL compatibility: Industry-leading compatibility for data types, SQL syntax, stored procedures, and packages is provided. Critical feature compatibility: Partitioned tables, CONNECT BY, DBLINK, PL/SQL, stored procedures, flashback, and global indexes are supported. Client compatibility: PolarDB is fully compatible with Oracle OCI, Pro*C, Java, Windows, and .NET drivers, and provides client compatibility tools.
 **Efficient, low-risk Oracle migration** (lower cost, shorter cycle, fewer modifications, and
-reduced risk): ApsaraDB for POLARDB PolarDB provides assessment and analysis tools to evaluate compatibility and estimate modification effort. Automatic conversion capabilities reduce adaptation costs and ensure predictable project timelines. Data Transmission Service (DTS) tools is supported to guarantee migration integrity. Full and incremental synchronization ensures uninterrupted service during migration. Twoway synchronization allows rollback in case of anomalies, keeping migration risks under control. PolarDB provides end-to-end expert support covering assessment, migration implementation, and performance optimization.
+reduced risk): PolarDB provides assessment and analysis tools to evaluate compatibility and estimate modification effort. Automatic conversion capabilities reduce adaptation costs and ensure predictable project timelines. Data Transmission Service (DTS) tools is supported to guarantee migration integrity. Full and incremental synchronization ensures uninterrupted service during migration. Twoway synchronization allows rollback in case of anomalies, keeping migration risks under control. PolarDB provides end-to-end expert support covering assessment, migration implementation, and performance optimization.
 
 **Multi-model AI scenarios and Agent long-term memory**
 
 In RAG and Memory scenarios, using a single multi-model database can significantly reduce database costs and enable multiple technical approaches via plugins. The following describes a typical long-term memory scenario for a database: Memory engine: We recommend the Mem0 framework, an advanced memory framework designed for AI Agents. It integrates long-term and short-term memory, and categorizes information into working, factual, and situational types. Furthermore, it natively supports PolarDB's vector and graph data engines. Base data engine: The PolarDB for PostgreSQL edition natively integrates the PGVector vector engine and a graph engine compatible with Apache AGE. This all-in-one architecture avoids the complexity of stitching together multiple systems and leverages cloud-native capabilities to ensure exceptional performance and scalability.
 
 **PolarDB Converged Edition (Centralized & Distributed)**
+
+**(PolarDB-X)**
 
 **High-load, low-latency transactions**
 
@@ -260,7 +285,6 @@ distributed linear scaling mechanism that maintains compute pushdown and data co
 
 **Centralized data storage**
 
-ApsaraDB for POLARDB
 **Scenario**: Also known as data centralization or data aggregation, this scenario typically
 resides in the Operational Data Store (ODS) layer of an enterprise data architecture and serves to consolidate data from various vertical business sources. The primary requirements for this scenario include high-concurrency writes, large-capacity storage, multi-dimensional queries, and low-cost data egress.
 
@@ -282,246 +306,224 @@ large enterprises undergoing digital transformation. As a core foundational soft
 **Product capabilities**: PolarDB Converged Edition (Centralized & Distributed) is Alibaba
 Cloud's self-developed cloud-native distributed database, designed for autonomy and control. It offers multiple deployment models—including public cloud, Apsara Stack, DBStack, and software editions—and features comprehensive delivery and service teams. It has already helped over a hundred enterprises complete commercial database replacements, core database distributed transformations, distributed database technical training, and architectural consulting.
 
-| Feature category |  | Description |
-|---|---|---|
-| Instance management | Create an instance | Create a PolarDB for MySQL Primary/Secondary Edition instance. |
-|  | Restart an instance | Restart an instance to quickly restore its state. |
-|  | Change configuration | Change an instance's configuration, such as specifications or storage space, if the current configuration does not meet application requirements or is too high or too low. |
-|  | Set a maintenance window | The default maintenance window is 02:00 to 06:00. We recommend that you set the maintenance window to off- peak hours to avoid potential impact on services. |
-|  | Release an instance | Release an instance after deleting all databases in it. |
-|  | Upgrade a minor engine version | Upgrade the minor engine version automatically or manually. Minor engine version upgrades involve performance improvements, new features, or bug fixes. |
-|  | Set instance parameters | View and modify values of some parameters. Query parameter modification records. |
-|  | Read-only instances | Add a read-only instance. Read-only instances offload database pressure from the primary instance when the database has many read requests and few write requests. |
-|  | Tag management | Create multiple tags. Attach different tags to instances for categorization. Then, filter instances using these tags. |
+## 4 Features
 
-ApsaraDB for POLARDB
-
-## Features
-
-### Features of PolarDB for
+### 4.1 Features of PolarDB for MySQL
 
 **MySQL**
 
 This topic describes the features of PolarDB for MySQL.
 
-#### Primary/Secondary edition
+#### 4.1.1 Primary/Secondary edition
 
 This topic describes the features of Alibaba Cloud PolarDB for MySQLPrimary/Secondary Edition, helping you quickly understand the product capabilities.
 
+| Feature category |   | Description |
+|---|---|---|
+| Instance management | Create an instance | Create a PolarDB for MySQL Primary/Secondary Edition instance. |
+|   | Restart an instance | Restart an instance to quickly restore its state. |
+|   | Change configuration | Change an instance's configuration, such as specifications or storage space, if the current configuration does not meet application requirements or is too high or too low. |
+|   | Set a maintenance window | The default maintenance window is 02:00 to 06:00. We recommend that you set the maintenance window to off- peak hours to avoid potential impact on services. |
+|   | Release an instance | Release an instance after deleting all databases in it. |
+|   | Upgrade a minor engine version | Upgrade the minor engine version automatically or manually. Minor engine version upgrades involve performance improvements, new features, or bug fixes. |
+|   | Set instance parameters | View and modify values of some parameters. Query parameter modification records. |
+|   | Read-only instances | Add a read-only instance. Read-only instances offload database pressure from the primary instance when the database has many read requests and few write requests. |
+|   | Tag management | Create multiple tags. Attach different tags to instances for categorization. Then, filter instances using these tags. |
+
 | Database management | Account management | Manage database account permissions. Two types of database accounts are supported: privileged accounts and standard accounts. |
 |---|---|---|
-|  | Create a database | After you create a PolarDB for MySQL instance and configure a whitelist, create databases and accounts within the instance. |
-|  | Delete a database | Delete deprecated databases. |
-|  | Database connections | View and modify database connection addresses. Log in to the database of a PolarDB for MySQL instance by using Alibaba Cloud Data Management Service (DMS). Use the hybrid access feature to smoothly migrate a classic network to a virtual private cloud (VPC) without service interruption. Switch the network type of an instance between classic network and virtual private cloud. Switch the VPC and vSwitch of an instance. |
-|  | Database proxy | Use the dedicated proxy service,which provides advanced features such as read/write splitting, connection pooling, and transaction splitting. |
+|   | Create a database | After you create a PolarDB for MySQL instance and configure a whitelist, create databases and accounts within the instance. |
+|   | Delete a database | Delete deprecated databases. |
+|   | Database connections | View and modify database connection addresses. Log in to the database of a PolarDB for MySQL instance by using Alibaba Cloud Data Management Service (DMS). Use the hybrid access feature to smoothly migrate a classic network to a virtual private cloud (VPC) without service interruption. Switch the network type of an instance between classic network and virtual private cloud. Switch the VPC and vSwitch of an instance. |
+|   | Database proxy | Use the dedicated proxy service,which provides advanced features such as read/write splitting, connection pooling, and transaction splitting. |
 | Monitoring and alerts | View system resources and engine monitoring | View comprehensive performance monitoring items. Select a query time to view corresponding monitoring data. |
-|  | Set an alert rule | Create alert rules to promptly detect abnormal instance monitoring data and handle it quickly. |
+|   | Set an alert rule | Create alert rules to promptly detect abnormal instance monitoring data and handle it quickly. |
 | Cloud Monitor | View a monitoring dashboard | View Cloud Monitor metrics to quickly locate O&M issues. |
-|  | Set an alert rule | Create alert rules to trigger alerts when cloud service monitoring metrics reach specified thresholds and notify relevant users promptly. |
-|  | View alert history | After an alert is triggered, view alert history filtered by cloud product, cloud service instance, alert level, and more. Export and download alert history for local data analysis. |
-|  | Set a whitelist | Set a whitelist to enhance database security and stability. |
+|   | Set an alert rule | Create alert rules to trigger alerts when cloud service monitoring metrics reach specified thresholds and notify relevant users promptly. |
+|   | View alert history | After an alert is triggered, view alert history filtered by cloud product, cloud service instance, alert level, and more. Export and download alert history for local data analysis. |
+|   | Set a whitelist | Set a whitelist to enhance database security and stability. |
 
-ApsaraDB for POLARDB
-
-| roduct Introduction· | Features ApsaraDB for POLARD |  |
+| roduct Introduction· | Features ApsaraDB for POLARD |   |
 |---|---|---|
-| Data security |  |  |
-|  | IP type and whitelist | Assign either IPv4 single-stack or IPv4/IPv6 dual-stack addresses to accommodate diverse network environment requirements. In dual-stack mode, independent IPv6 whitelists can be configured to enforce precise access control. |
-|  | Set SSL encryption | Enable Secure Sockets Layer (SSL) encryption and install the SSL CA certificate on required application services to improve link security. |
-|  | Set TDE | Transparent Data Encryption (TDE) performs real-time I/O encryption and decryption on data files. Data is encrypted before being written to disk and decrypted when read from disk into memory. |
-|  | SQL audit | View SQL details. Audit SQL regularly. |
+| Data security |   |   |
+|   | IP type and whitelist | Assign either IPv4 single-stack or IPv4/IPv6 dual-stack addresses to accommodate diverse network environment requirements. In dual-stack mode, independent IPv6 whitelists can be configured to enforce precise access control. |
+|   | Set SSL encryption | Enable Secure Sockets Layer (SSL) encryption and install the SSL CA certificate on required application services to improve link security. |
+|   | Set TDE | Transparent Data Encryption (TDE) performs real-time I/O encryption and decryption on data files. Data is encrypted before being written to disk and decrypted when read from disk into memory. |
+|   | SQL audit | View SQL details. Audit SQL regularly. |
 | Service availability | Automatic or manual primary/secondary switchover | Set primary and secondary instances for automatic or manual switchover. After a switchover, the original primary instance becomes the secondary instance. |
-|  | Modify data replication method | Set the data replication method between PolarDB for MySQL primary and secondary instances to improve cloud database availability. |
+|   | Modify data replication method | Set the data replication method between PolarDB for MySQL primary and secondary instances to improve cloud database availability. |
 | Backup and restore | Backup methods | Manual backup and automatic backup methods are supported. |
-|  | Download data backups and log backups | Download unencrypted data backups and log backups for archiving data or restoring data to local databases. |
-|  | One-click binlog upload | Upload binlog with one click to save log backups to Object Storage Service (OSS). |
-|  | Database recovery | Create a new instance that replicates the content of the primary instance exactly, including instance data and settings. Clone instances are mainly used to restore primary instance data or create multiple identical instances in batches. |
+|   | Download data backups and log backups | Download unencrypted data backups and log backups for archiving data or restoring data to local databases. |
+|   | One-click binlog upload | Upload binlog with one click to save log backups to Object Storage Service (OSS). |
+|   | Database recovery | Create a new instance that replicates the content of the primary instance exactly, including instance data and settings. Clone instances are mainly used to restore primary instance data or create multiple identical instances in batches. |
 
 | Autonomous service | One-click diagnostics | Use the one-click diagnostics feature to diagnose instances and view visualized diagnostic results. |
 |---|---|---|
-|  | Session management | Use the instance session feature to view and manage sessions of target instances. |
-|  | Real-time performance | View real-time performance of MySQL. |
-|  | Storage analysis | Use the storage analysis feature to promptly detect abnormal database space and prevent impacts on database stability. |
-|  | Lock analysis | View and analyze the most recent deadlock in the database. |
-|  | Performance trend | View performance trends in multiple ways. You can view the performance trend range, compare performance trends, and view the customized performance trends. |
-|  | Slow SQL statements | View slow log trends, execution details, and suggestions. |
-|  | Diagnostic report | Create and view diagnostic reports. |
+|   | Session management | Use the instance session feature to view and manage sessions of target instances. |
+|   | Real-time performance | View real-time performance of MySQL. |
+|   | Storage analysis | Use the storage analysis feature to promptly detect abnormal database space and prevent impacts on database stability. |
+|   | Lock analysis | View and analyze the most recent deadlock in the database. |
+|   | Performance trend | View performance trends in multiple ways. You can view the performance trend range, compare performance trends, and view the customized performance trends. |
+|   | Slow SQL statements | View slow log trends, execution details, and suggestions. |
+|   | Diagnostic report | Create and view diagnostic reports. |
 | Log management | Log query | Query error logs, slow log details, and primary/secondary switchover logs of instances to help locate and analyze faults. |
 | Parameter management | Set instance parameters | View and modify values of some parameters. Trace parameter change history. |
-|  | Use parameter templates | Use parameter templates to centrally manage identical or partially identical parameter configurations across multiple instances. Quickly apply templates to target instances to improve parameter management and instance configuration efficiency. |
+|   | Use parameter templates | Use parameter templates to centrally manage identical or partially identical parameter configurations across multiple instances. Quickly apply templates to target instances to improve parameter management and instance configuration efficiency. |
 | Recycle bin | Recover an instance | Use the instance-level recycle bin. After an instance is deleted, recover it from the recycle bin. Modify the recycle bin's retention period. |
-|  | Destroy an instance | Destroying an instance also destroys all backups except cross-region backups, including regular data backups, log backups, and permanent backups. |
-
-ApsaraDB for POLARDB
+|   | Destroy an instance | Destroying an instance also destroys all backups except cross-region backups, including regular data backups, log backups, and permanent backups. |
 
 | Intelligent data migration | Migrate from RDS MySQL to PolarDB for MySQL | Migrating from RDS MySQL to PolarDB for MySQL is supported by PolarDB. |
 |---|---|---|
-|  | Migrate from PolarDB for MySQL 5.7 to PolarDB for MySQL 8.0 | Migrating PolarDB for MySQL 5.7 to PolarDB for MySQL 8.0 is supported by PolarDB. |
+|   | Migrate from PolarDB for MySQL 5.7 to PolarDB for MySQL 8.0 | Migrating PolarDB for MySQL 5.7 to PolarDB for MySQL 8.0 is supported by PolarDB. |
 
-| Feature category |  | Description |
-|---|---|---|
-| Instance management | Create an instance | Create a PolarDB for PostgreSQLActive-Standby Edition instance. |
-|  | Restart an instance | Restart an instance to quickly restore its status. |
-|  | Modify the configuration | If an instance's configuration is excessive or insufficient for your application's requirements, you can change its specifications or storage space. |
-|  | Set a maintenance window | The default maintenance window is 02:00 to 06:00. We recommend that you set the maintenance window to off- peak hours as needed. This helps prevent potential impact on your business during maintenance. |
-|  | Perform a primary/secondary switchover | To ensure high availability of databases, PolarDB provides the primary/secondary switchover feature. The system automatically switches to the secondary instance when the primary instance is unavailable. You can also manually switch your business to the secondary instance. |
-|  | Release an instance | After all databases in an instance are deleted, you can release the instance. |
-
-ApsaraDB for POLARDB
-
-### Features of PolarDB for
+### 4.2 Features of PolarDB for PostgreSQL
 
 **PostgreSQL**
 
-#### Primary/Secondary edition
+#### 4.2.1 Primary/Secondary edition
 
 This topic describes the features of Alibaba Cloud PolarDB for PostgreSQL Primary/Secondary Edition (formerly known as PolarDB for PostgreSQL with local disks). This helps you quickly understand the product's capabilities.
 
-|  | Recycle bin | Restore instances: The recycle bin allows you to restore deleted instances. You can also modify the retention period for instances in the recycle bin. Destroy instances: When you destroy an instance, the system destroys all backups except cross-region backups. These backups include regular data backups, log backups, and permanent backups. |
+| Feature category |   | Description |
 |---|---|---|
-|  | Read-only instances | Add a read-only instance. Read-only instances offload database pressure from the primary instance when the database has many read requests and few write requests. |
-|  | Configure instance parameters | View and modify the values of some parameters. Query parameter modification records. |
-|  | Tag | Create multiple tags. Add different tags to your instances to classify them. Then, you can filter instances by tag. |
+| Instance management | Create an instance | Create a PolarDB for PostgreSQLActive-Standby Edition instance. |
+|   | Restart an instance | Restart an instance to quickly restore its status. |
+|   | Modify the configuration | If an instance's configuration is excessive or insufficient for your application's requirements, you can change its specifications or storage space. |
+|   | Set a maintenance window | The default maintenance window is 02:00 to 06:00. We recommend that you set the maintenance window to off- peak hours as needed. This helps prevent potential impact on your business during maintenance. |
+|   | Perform a primary/secondary switchover | To ensure high availability of databases, PolarDB provides the primary/secondary switchover feature. The system automatically switches to the secondary instance when the primary instance is unavailable. You can also manually switch your business to the secondary instance. |
+|   | Release an instance | After all databases in an instance are deleted, you can release the instance. |
+
+|   | Recycle bin | Restore instances: The recycle bin allows you to restore deleted instances. You can also modify the retention period for instances in the recycle bin. Destroy instances: When you destroy an instance, the system destroys all backups except cross-region backups. These backups include regular data backups, log backups, and permanent backups. |
+|---|---|---|
+|   | Read-only instances | Add a read-only instance. Read-only instances offload database pressure from the primary instance when the database has many read requests and few write requests. |
+|   | Configure instance parameters | View and modify the values of some parameters. Query parameter modification records. |
+|   | Tag | Create multiple tags. Add different tags to your instances to classify them. Then, you can filter instances by tag. |
 | Quick migration | Migrate data from ApsaraDB RDS for PostgreSQL to PolarDB for PostgreSQL via GUI | Migrate data from ApsaraDB RDS for PostgreSQL to PolarDB for PostgreSQL through visualized operations. |
 | Database connections | Connect to PolarDB databases by using clients | Connect to PolarDB databases by using the pgAdmin4 client. |
-|  | Log in to a PolarDB database by using DMS | Log in to a database in a PolarDB instance by using Data Management (DMS) of Alibaba Cloud. |
-|  | Hybrid access | PolarDB for PostgreSQL instances support hybrid access. This feature allows you to smoothly migrate from the classic network to a virtual private cloud (VPC) without interrupting access. |
-|  | Manage internal endpoints and ports | View and change the internal endpoint and port number of a PolarDB for PostgreSQL cluster on the PolarDB console. |
-|  | Change the network type | Switch the network type of instances between the classic network and virtual private cloud. |
-|  | Create an account | Create two types of database accounts: privileged accounts and standard accounts. |
-| > Document Version: | 20260629 2 |  |
+|   | Log in to a PolarDB database by using DMS | Log in to a database in a PolarDB instance by using Data Management (DMS) of Alibaba Cloud. |
+|   | Hybrid access | PolarDB for PostgreSQL instances support hybrid access. This feature allows you to smoothly migrate from the classic network to a virtual private cloud (VPC) without interrupting access. |
+|   | Manage internal endpoints and ports | View and change the internal endpoint and port number of a PolarDB for PostgreSQL cluster on the PolarDB console. |
+|   | Change the network type | Switch the network type of instances between the classic network and virtual private cloud. |
+|   | Create an account | Create two types of database accounts: privileged accounts and standard accounts. |
+| > Document Version: | 20260629 2 |   |
 
-ApsaraDB for POLARDB
-
-| roduct Introduction· | Features ApsaraDB for POLARD |  |
+| roduct Introduction· | Features ApsaraDB for POLARD |   |
 |---|---|---|
-| Account management |  |  |
-|  | Reset an account | Reset the password of an account on the PolarDB console. |
-|  | Delete an account | Delete a database account on the PolarDB console. |
+| Account management |   |   |
+|   | Reset an account | Reset the password of an account on the PolarDB console. |
+|   | Delete an account | Delete a database account on the PolarDB console. |
 | Database management | Create a database | After you create a PolarDB for PostgreSQL instance and configure a whitelist, create a database and an account in the instance. |
-|  | Delete a database | Delete deprecated databases. |
+|   | Delete a database | Delete deprecated databases. |
 | Monitoring and alerts | View monitoring data | View resource monitoring data of instances on the PolarDB console. |
-|  | Configure alert rules | Create alert rules on the PolarDB console. |
+|   | Configure alert rules | Create alert rules on the PolarDB console. |
 | Cloud Monitor | View a monitoring dashboard | View Cloud Monitor metrics to quickly locate O&M issues. |
-|  | Configure alert rules | Create alert rules to trigger alerts when cloud service monitoring metrics reach specified thresholds and notify relevant users promptly. |
-|  | View alert history | After an alert is triggered, view alert history filtered by cloud product, cloud service instance, alert level, and more. Export and download alert history for local data analysis. |
+|   | Configure alert rules | Create alert rules to trigger alerts when cloud service monitoring metrics reach specified thresholds and notify relevant users promptly. |
+|   | View alert history | After an alert is triggered, view alert history filtered by cloud product, cloud service instance, alert level, and more. Export and download alert history for local data analysis. |
 | Data security | Configure an IP whitelist | Configure a whitelist to enhance database security and stability. |
-|  | IP type and whitelist | Assign either IPv4 single-stack or IPv4/IPv6 dual-stack addresses to accommodate diverse network environment requirements. In dual-stack mode, independent IPv6 whitelists can be configured to enforce precise access control. |
-|  | Configure SSL encryption | Enable Secure Sockets Layer (SSL) encryption and install the SSL CA certificate on required application services to improve link security. |
-|  | Set TDE | Transparent Data Encryption (TDE) performs real-time I/O encryption and decryption on data files. Data is encrypted before being written to disk and decrypted when read from disk into memory. |
-| 2 | > Document Version: 2026062 |  |
+|   | IP type and whitelist | Assign either IPv4 single-stack or IPv4/IPv6 dual-stack addresses to accommodate diverse network environment requirements. In dual-stack mode, independent IPv6 whitelists can be configured to enforce precise access control. |
+|   | Configure SSL encryption | Enable Secure Sockets Layer (SSL) encryption and install the SSL CA certificate on required application services to improve link security. |
+|   | Set TDE | Transparent Data Encryption (TDE) performs real-time I/O encryption and decryption on data files. Data is encrypted before being written to disk and decrypted when read from disk into memory. |
+| 2 | > Document Version: 2026062 |   |
 
-|  | SQL audit | View SQL details. Audit SQL periodically. |
+|   | SQL audit | View SQL details. Audit SQL periodically. |
 |---|---|---|
-|  | Back up data | Adjust the backup policy to set automatic backup cycles for PolarDB data backups and log backups. You can also manually back up PolarDB data. |
-|  | Download data backup files and log backup files | Download unencrypted data backup files and log backup files. Archive the backup files that you downloaded and use the backup files to restore data to on-premises databases. |
-| Backup and restoration |  |  |
-|  | Restore data | Create a new instance that replicates the content of the primary instance exactly, including instance data and settings. Clone instances are mainly used to restore primary instance data or create multiple identical instances in batches. |
+|   | Back up data | Adjust the backup policy to set automatic backup cycles for PolarDB data backups and log backups. You can also manually back up PolarDB data. |
+|   | Download data backup files and log backup files | Download unencrypted data backup files and log backup files. Archive the backup files that you downloaded and use the backup files to restore data to on-premises databases. |
+| Backup and restoration |   |   |
+|   | Restore data | Create a new instance that replicates the content of the primary instance exactly, including instance data and settings. Clone instances are mainly used to restore primary instance data or create multiple identical instances in batches. |
 | Plugin management | Plugin management | Install and uninstall extension plugins. Flexibly enable advanced features such as spatial geographic information (PostGIS), full-text query, and vector computation to meet diverse business requirements. |
 | Log management | Log query | Query error logs, slow log details, and primary/secondary switchover logs of instances to help locate and analyze faults. |
 | Parameter configuration | Modifiable parameters | Modify the values of modifiable parameters. |
-|  | View the parameter modification history | View the parameter modification history. |
+|   | View the parameter modification history | View the parameter modification history. |
 | CloudDBA | Quick diagnosis | Use the quick diagnosis feature to diagnose instances and obtain visualized diagnostic results. |
-|  | Slow SQL queries | View the trends and statistics of slow queries. |
+|   | Slow SQL queries | View the trends and statistics of slow queries. |
+
+### 4.3 Features of PolarDB-X
+
+#### 4.3.1 Features
+
+This topic describes the features of Alibaba Cloud PolarDB-X to help you quickly understand the product capabilities.
 
 | Category | Feature | Description |
 |---|---|---|
 
-ApsaraDB for POLARDB
-
-### Features of PolarDB-X
-
-#### Features
-
-This topic describes the features of Alibaba Cloud PolarDB-X to help you quickly understand the product capabilities.
-
 | Instance management | Add a read-only instance | Create read-only instances to provide read-only cluster resources with isolated link traffic, to ensure the stability of online services and the primary cluster, and to support Hybrid Transactional/Analytical Processing (HTAP) workloads. |
 |---|---|---|
-|  | Add or remove nodes | Add or remove nodes for an existing primary instance and read-only instances simultaneously. |
-|  | View instance details | Query the list of existing instances and information for each instance. |
-|  | Log in to a database | Log in to instances and manage database instances through a graphical interface. |
-|  | Manage an account | A database account permission system is provided. The standalone MySQL-like account and permission system is supported to ensure operational security of accounts with different roles. Perform operations such as modifying account permissions, locking accounts, and deleting accounts. |
-|  | Release an instance | After you delete all databases under the instance, you can release the instance and restore resource inventory. |
-|  | Instance version | MySQL 5.7 and 8.0 are supported. |
-|  | Restart an instance | Restart an instance to quickly restore the instance status. |
-|  | Upgrade the instance version | Smoothly upgrade instance versions. Compatibility between old and new versions, and performance evaluation are also provided. |
-|  | Upgrade or downgrade an instance | Upgrade or downgrade existing instances. |
-|  | Create a database | Create distributed databases that support tens of millions of concurrent data and store petabytes of data. |
+|   | Add or remove nodes | Add or remove nodes for an existing primary instance and read-only instances simultaneously. |
+|   | View instance details | Query the list of existing instances and information for each instance. |
+|   | Log in to a database | Log in to instances and manage database instances through a graphical interface. |
+|   | Manage an account | A database account permission system is provided. The standalone MySQL-like account and permission system is supported to ensure operational security of accounts with different roles. Perform operations such as modifying account permissions, locking accounts, and deleting accounts. |
+|   | Release an instance | After you delete all databases under the instance, you can release the instance and restore resource inventory. |
+|   | Instance version | MySQL 5.7 and 8.0 are supported. |
+|   | Restart an instance | Restart an instance to quickly restore the instance status. |
+|   | Upgrade the instance version | Smoothly upgrade instance versions. Compatibility between old and new versions, and performance evaluation are also provided. |
+|   | Upgrade or downgrade an instance | Upgrade or downgrade existing instances. |
+|   | Create a database | Create distributed databases that support tens of millions of concurrent data and store petabytes of data. |
 
-ApsaraDB for POLARDB
-
-| psaraDB for POLARDB |  |  |
+| psaraDB for POLARDB |   |   |
 |---|---|---|
-| Database management |  |  |
-|  | Configure parameters | Configure parameters for an instance or a database. |
-|  | Manage security features | Configure database whitelists, three-role mode, and Secure Sockets Layer (SSL) encryption. |
-|  | Manage a database | Query the list of existing databases, character sets, and account information. Delete a database. |
-|  | Manage a table | Query the table structure, shard keys, table properties, and status. |
-|  | Log in to a database | Use Data Management Service (DMS) to log in to databases to perform O&M. |
-|  | Account management | A database account permission system is provided. The standalone MySQL-like account and permission system is supported to ensure operational security of accounts with different roles. |
+| Database management |   |   |
+|   | Configure parameters | Configure parameters for an instance or a database. |
+|   | Manage security features | Configure database whitelists, three-role mode, and Secure Sockets Layer (SSL) encryption. |
+|   | Manage a database | Query the list of existing databases, character sets, and account information. Delete a database. |
+|   | Manage a table | Query the table structure, shard keys, table properties, and status. |
+|   | Log in to a database | Use Data Management Service (DMS) to log in to databases to perform O&M. |
+|   | Account management | A database account permission system is provided. The standalone MySQL-like account and permission system is supported to ensure operational security of accounts with different roles. |
 | Data restoration | Configure a backup policy | Set the backup retention period, backup cycle (accurate to day), backup time (accurate to hour), and backup method (physical backup). |
-|  | Query the backup progress | Query the backup progress. |
-|  | Query a backup set | Query backup sets that have been completed. |
-|  | Back up data | Back up instances. Quick backup and consistent backup are provided. Physical backup is supported. |
-|  | Restore data | Restore data to new instances based on backup sets or point-in-time consistency. |
-|  | Manage the table recycle bin | Enable or disable the table recycle bin feature. Dropped tables are retained in the recycle bin for two hours. You can restore or delete tables in the recycle bin. |
+|   | Query the backup progress | Query the backup progress. |
+|   | Query a backup set | Query backup sets that have been completed. |
+|   | Back up data | Back up instances. Quick backup and consistent backup are provided. Physical backup is supported. |
+|   | Restore data | Restore data to new instances based on backup sets or point-in-time consistency. |
+|   | Manage the table recycle bin | Enable or disable the table recycle bin feature. Dropped tables are retained in the recycle bin for two hours. You can restore or delete tables in the recycle bin. |
 | Performance monitoring | View performance monitoring metrics | Monitor instance status through performance metrics and quickly locate O&M issues with fine- grained monitoring data. |
 
 | Cloud Monitor | View a monitoring dashboard | View Cloud Monitor metrics to quickly locate O&M issues. |
 |---|---|---|
-|  | Set an alert rule | Create alert rules to trigger alerts when cloud service monitoring metrics reach specified thresholds and notify relevant users promptly. |
-|  | View alert history | After an alert is triggered, view alert history filtered by cloud product, cloud service instance, alert level, and more. Export and download alert history for local data analysis. |
+|   | Set an alert rule | Create alert rules to trigger alerts when cloud service monitoring metrics reach specified thresholds and notify relevant users promptly. |
+|   | View alert history | After an alert is triggered, view alert history filtered by cloud product, cloud service instance, alert level, and more. Export and download alert history for local data analysis. |
 | Centralized and distributed integration | Centralized databases | Three-node centralized databases are supported. |
-|  | Migration from centralized to distributed architecture | Migrate data to distributed architecture through Data Transmission Service (DTS). |
+|   | Migration from centralized to distributed architecture | Migrate data to distributed architecture through Data Transmission Service (DTS). |
 | Hardware support | Hygon | Hygon 2, 3, and 4 are supported. |
-|  | Kunpeng | Kunpeng chips are supported. |
-|  | Phytium chips | Phytium chips are supported. |
-|  | Yitian | Yitian chips are supported. |
-|  | x86 hybrid instruction set architecture | Hybrid instruction set architecture within clusters is supported. |
-|  | Arm hybrid instruction set architecture | Hybrid instruction set architecture within clusters is supported. |
+|   | Kunpeng | Kunpeng chips are supported. |
+|   | Phytium chips | Phytium chips are supported. |
+|   | Yitian | Yitian chips are supported. |
+|   | x86 hybrid instruction set architecture | Hybrid instruction set architecture within clusters is supported. |
+|   | Arm hybrid instruction set architecture | Hybrid instruction set architecture within clusters is supported. |
 | Instance migration | Migration assessment | Create a migration task from PolarDB-X 1.0 to PolarDB-X 2.0 through a graphical interface. |
-|  | One-click migration | Create a migration task through a graphical interface for Migration from RDS MySQL to PolarDB-X 2.0 Migration from PolarDB-X 2.0 to PolarDB-X 2.0 |
-
-ApsaraDB for POLARDB
+|   | One-click migration | Create a migration task through a graphical interface for Migration from RDS MySQL to PolarDB-X 2.0 Migration from PolarDB-X 2.0 to PolarDB-X 2.0 |
 
 | Security management | Enable SSL connections | Enable SSL connections. |
 |---|---|---|
-|  | Download CA certificates | Download CA certificates. |
-|  | Update a validity period | Update the validity period of SSL links. |
-|  | Configure an IP whitelist | Configure a whitelist to enhance database security and stability. |
-|  | IP type and allowlist | Assign either IPv4 single-stack or IPv4/IPv6 dual- stack addresses to accommodate diverse network environment requirements. In dual-stack mode, independent IPv6 whitelists can be configured to enforce precise access control. |
-|  | Parallel computing | Distributed parallel computing is supported to improve efficiency in processing large-scale data. |
-|  | Batch processing | Batch data processing is supported to reduce network overhead and increase throughput. |
-|  | Query caching | Query result caching is implemented to reduce computational costs of repeated queries. |
-|  | Data compression | Advanced data compression algorithms are used to reduce storage space usage. |
-|  | Stored procedure optimization | Stored procedure execution paths are optimized to reduce execution time. |
-|  | Function call optimization | Efficiency of built-in function calls is improved to reduce function call overhead. |
-|  | Index selection optimization | The optimal index strategy is automatically selected to enhance query performance. |
-|  | Statistics information maintenance | Statistics information is regularly updated to ensure that the query optimizer makes the best decisions. |
-|  | Data locality optimization | Data locality principles are used to reduce data access latency. |
+|   | Download CA certificates | Download CA certificates. |
+|   | Update a validity period | Update the validity period of SSL links. |
+|   | Configure an IP whitelist | Configure a whitelist to enhance database security and stability. |
+|   | IP type and allowlist | Assign either IPv4 single-stack or IPv4/IPv6 dual- stack addresses to accommodate diverse network environment requirements. In dual-stack mode, independent IPv6 whitelists can be configured to enforce precise access control. |
+|   | Parallel computing | Distributed parallel computing is supported to improve efficiency in processing large-scale data. |
+|   | Batch processing | Batch data processing is supported to reduce network overhead and increase throughput. |
+|   | Query caching | Query result caching is implemented to reduce computational costs of repeated queries. |
+|   | Data compression | Advanced data compression algorithms are used to reduce storage space usage. |
+|   | Stored procedure optimization | Stored procedure execution paths are optimized to reduce execution time. |
+|   | Function call optimization | Efficiency of built-in function calls is improved to reduce function call overhead. |
+|   | Index selection optimization | The optimal index strategy is automatically selected to enhance query performance. |
+|   | Statistics information maintenance | Statistics information is regularly updated to ensure that the query optimizer makes the best decisions. |
+|   | Data locality optimization | Data locality principles are used to reduce data access latency. |
 
-ApsaraDB for POLARDB
-
-| High-performance distributed kernel |  |  |
+| High-performance distributed kernel |   |   |
 |---|---|---|
-|  | Data prefetching mechanism | Data prefetching is implemented to preload potentially needed data blocks and reduce wait time. |
-|  | Data partitioning policies | Multiple data partitioning policies are supported, such as range partitioning, list partitioning, and hash partitioning. |
-|  | Data skew processing | Data skew issues are automatically detected and processed to ensure system stability. |
-|  | Dynamic execution plan adjustment | Execution plans are dynamically adjusted based on real-time workloads to adapt to varying workloads. |
-|  | Resource scheduling optimization | Resource scheduling algorithms are optimized to improve resource utilization. |
-|  | Concurrency control | Efficient concurrency control mechanism is implemented to reduce lock conflicts. |
-|  | Deadlock detection and recovery | Deadlocks are automatically detected and resolved to ensure normal system operation. |
-|  | Transaction management | Comprehensive transaction management is provided to ensure data consistency. |
-|  | Log management | The log management process is optimized to reduce log write overhead. |
-|  | Cache consistency | Cache consistency across multiple nodes is ensured to avoid dirty reads. |
-|  | Data synchronization | Efficient data synchronization mechanisms are provided to ensure data consistency. |
-|  | Data replication | Multiple data replication modes are supported, such as synchronous replication and asynchronous replication. |
-|  | Data sharding | Automated data sharding policies are implemented to improve uniformity of data distribution. |
-| 8 | > Document Version: 2026062 |  |
+|   | Data prefetching mechanism | Data prefetching is implemented to preload potentially needed data blocks and reduce wait time. |
+|   | Data partitioning policies | Multiple data partitioning policies are supported, such as range partitioning, list partitioning, and hash partitioning. |
+|   | Data skew processing | Data skew issues are automatically detected and processed to ensure system stability. |
+|   | Dynamic execution plan adjustment | Execution plans are dynamically adjusted based on real-time workloads to adapt to varying workloads. |
+|   | Resource scheduling optimization | Resource scheduling algorithms are optimized to improve resource utilization. |
+|   | Concurrency control | Efficient concurrency control mechanism is implemented to reduce lock conflicts. |
+|   | Deadlock detection and recovery | Deadlocks are automatically detected and resolved to ensure normal system operation. |
+|   | Transaction management | Comprehensive transaction management is provided to ensure data consistency. |
+|   | Log management | The log management process is optimized to reduce log write overhead. |
+|   | Cache consistency | Cache consistency across multiple nodes is ensured to avoid dirty reads. |
+|   | Data synchronization | Efficient data synchronization mechanisms are provided to ensure data consistency. |
+|   | Data replication | Multiple data replication modes are supported, such as synchronous replication and asynchronous replication. |
+|   | Data sharding | Automated data sharding policies are implemented to improve uniformity of data distribution. |
+| 8 | > Document Version: 2026062 |   |
 
-ApsaraDB for POLARDB
-
-|  | Data migration | Convenient data migration tools are provided to simplify the migration process. |
+|   | Data migration | Convenient data migration tools are provided to simplify the migration process. |
 |---|---|---|
-
-ApsaraDB for POLARDB

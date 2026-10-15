@@ -3,14 +3,95 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud User Guide
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 161
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud User Guide 20260828.pdf"
+source_pdf: "1d3b203602bdd79f_Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C%20VPC/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Virtual%20Private%20Cloud%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Virtual Private Cloud User Guide 20260828
 
-## What is VPC?
+## Table of Contents
+
+- 1 What is VPC?
+- 2 Log on to the VPC console
+- 3 Quick start
+  - 3.1 Plan networks
+  - 3.2 Plan a VPC
+  - 3.3 Create a VPC with an IPv4 CIDR block
+  - 3.4 Create a VPC with an IPv6 CIDR block
+  - 3.5 Add subnet routes to a route table
+  - 3.6 Configure a NAT gateway
+  - 3.7 Configure an EIP
+  - 3.8 Enable IPv6 for a VPC
+  - 3.9 Enable IPv6 for a vSwitch
+- 4 Overview
+- 5 VPCs
+  - 5.1 VPC overview
+  - 5.2 Create and manage VPCs
+  - 5.3 Create resources in a VPC
+  - 5.4 Manage CIDR blocks
+    - 5.4.1 Manage secondary IPv4 CIDR blocks
+    - 5.4.2 Manage secondary IPv6 CIDR blocks
+  - 5.5 VPC topology
+  - 5.6 Attach a CEN instance to a VPC across accounts
+- 6 Route tables
+  - 6.1 Overview
+  - 6.2 Create and manage custom route tables
+  - 6.3 Manage custom route entries
+  - 6.4 Manage custom route tables and vSwitches
+- 7 vSwitches
+  - 7.1 Overview
+  - 7.2 Create and manage vSwitches
+  - 7.3 Deploy cloud resources in a vSwitch
+- 8 Network ACLs
+  - 8.1 Overview
+  - 8.2 Create and manage network ACLs
+  - 8.3 Manage associated resources
+  - 8.4 Manage network ACL rules
+    - 8.4.1 Scenarios
+    - 8.4.2 Configure inbound rules
+    - 8.4.3 Configure outbound rules
+- 9 Elastic IP Addresses (EIPs)
+  - 9.1 Log on to the EIP console
+  - 9.2 Overview of EIP
+  - 9.3 Create and manage EIPs
+  - 9.4 Associate an EIP with a cloud resource
+  - 9.5 Disassociate an EIP from a cloud resource
+  - 9.6 View monitoring data
+- 10 NAT gateways
+  - 10.1 Overview
+  - 10.2 Create and manage NAT gateways
+  - 10.3 Manage EIPs and NAT gateways
+  - 10.4 Create and manage DNAT entries
+  - 10.5 Create and manage SNAT entries
+  - 10.6 Create and manage a NAT service plan
+  - 10.7 View monitoring data
+- 11 IPv6 gateways
+  - 11.1 Overview
+  - 11.2 Create and manage IPv6 gateways
+  - 11.3 Manage IPv6 Internet bandwidth
+  - 11.4 Manage egress-only rules
+- 12 HAVIPs
+  - 12.1 Overview
+  - 12.2 Create and manage HAVIPs
+  - 12.3 Manage associated resources
+    - 12.3.1 Associate an HAVIP with an EIP
+    - 12.3.2 Disassociate an HAVIP from an EIP
+    - 12.3.3 Associate HAVIPs with backend cloud resources
+      - 12.3.3.1 Associates an HAVIP with an ECS instance
+      - 12.3.3.2 Associate an HAVIP with an ENI
+      - 12.3.3.3 Work with Keepalived to enable primary/secondary switchover
+    - 12.3.4 Disassociate HAVIPs from backend cloud resources
+      - 12.3.4.1 Disassociate an HAVIP from an ECS instance
+      - 12.3.4.2 Disassociate an HAVIP from an ENI
+- 13 DHCP options sets
+  - 13.1 Overview of DHCP options sets
+  - 13.2 Create and manage DHCP options sets
+  - 13.3 Manage a DHCP options set and VPCs
+- 14 Manage operation logs
+- 15 Manage tags
+
+## 1 What is VPC?
 
 Virtual private clouds (VPCs) are private networks deployed on Apsara Stack. VPCs are logically isolated from each other. You can manage your VPCs and Apsara Stack resources in your VPCs.
 
@@ -34,7 +115,7 @@ Network ACLs allow you to implement access control for a VPC. You can configure 
 
 Apsara Stack provides multiple connection methods. You can connect a VPC to the Internet, a data center, or another VPC. Connect a VPC to the Internet You can connect a VPC to the Internet by associating elastic IP addresses (EIPs) with resources in the VPC or configuring NAT gateways. This way, resources in the VPC can communicate with the Internet. Connect a VPC to another VPC You can establish high-performance and secure connections between VPCs by creating a pair of router interfaces. Connect a VPC to a data center You can connect a VPC to a data center over Express Connect circuits. This allows you to smoothly migrate on-premises applications to the cloud. nsole
 
-## Log on to the VPC console
+## 2 Log on to the VPC console
 
 This topic describes how to log on to the Apsara Uni-manager Management Console to manage your virtual private clouds (VPCs). In this example, the Google Chrome browser is used.
 
@@ -63,9 +144,9 @@ operations based on your scenario: Scenario 1: You log on to the Apsara Uni-mana
 the Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**.
 
-## Quick start
+## 3 Quick start
 
-### Plan networks
+### 3.1 Plan networks
 
 If you want to use virtual private cloud (VPC) to deploy your services, you need to plan networks for your VPC based on your current business requirements and future expansion. This ensures that your current services can run as expected and allows business growth. To ensure service stability and network scalability, you need to consider security isolation, disaster recovery, and O&M costs. Improperly designed networks are not suitable for future business growth and may even bring unexpected risks. If the existing network architecture does not meet your business growth requirements, network reconstruction incurs high costs and may affect your current business. Therefore, it is essential to properly design your networks from multiple levels and dimensions.
 
@@ -213,7 +294,7 @@ Security isolation includes service isolation, resource isolation, and network i
 
 You can plan disaster recovery based on your service architecture to ensure data security and service availability. If you have high requirements for disaster recovery, you can deploy VPCs in different regions and deploy vSwitches in different zones. This implements cross-region and crosszone disaster recovery. If your service requires fast response, high concurrency, and enhanced data security, you can use SLB to implement cluster recovery, session persistence, and cross-zone deployment. If you want to connect your data centers to VPCs by using high-speed and stable connections, you can use Express Connect circuits. This ensures data synchronization, prevents SPOFs, and improves service availability. If you have high requirements for service availability, you can use the high-availability virtual IP address (HAVIP) feature together with Keepalived or Heartbeat to create a highavailability network architecture. This ensures that service IP addresses remain unchanged during switchover and improves service availability. You can focus on the disaster recovery capability of cloud services. For example, ApsaraDB RDS uses the active/standby architecture. Active endpoints and standby endpoints can be deployed in the same zone or different zones in a region. If you want to improve service availability, you can deploy endpoints in different zones to implement cross-zone disaster recovery. Before you create a VPC, make sure that you consider the following items: current business scale and future expansion, security isolation, service availability and disaster recovery, costs, numbers of VPCs and vSwitches, and CIDR blocks allocated to VPCs and vSwitches.
 
-### Plan a VPC
+### 3.2 Plan a VPC
 
 Before you create virtual private clouds (VPCs) and vSwitches, you must decide the quantities and CIDR blocks of VPCs and vSwitches. How many VPCs do I need? How many vSwitches do I need? How do I specify CIDR blocks? How do I specify CIDR blocks if I want to connect a VPC to another VPC or a data center?
 
@@ -235,7 +316,7 @@ When you create VPCs and vSwitches, you must specify their private IP addresses 
 
 If you want to connect a VPC to another VPC or a data center, make sure that the CIDR blocks do not overlap with each other. When you plan CIDR blocks, take note of the following items: We recommend that you specify different CIDR blocks for different VPCs. You can use the subnets of standard CIDR blocks if the provided CIDR blocks are insufficient. If you cannot specify different CIDR blocks for different VPCs, try to specify different CIDR blocks for vSwitches that belong to different VPCs. If neither of the preceding requirements is met, make sure that the CIDR blocks specified for the vSwitches that need to communicate with each other are different.
 
-### Create a VPC with an IPv4
+### 3.3 Create a VPC with an IPv4 CIDR block
 
 **CIDR block**
 
@@ -311,7 +392,7 @@ EIP. Select **ECS Instance** from the drop-down list.
 **Select The to Bind**: the ECS instance with which you want to associate with the EIP.
 Select the ECS instance that you created in Step 4.
 
-### Create a VPC with an IPv6
+### 3.4 Create a VPC with an IPv6 CIDR block
 
 **CIDR block**
 
@@ -399,7 +480,7 @@ Communication between services that are assigned IPv4 addresses and services tha
 
 Log on to the ECS instance and **ping** an IPv6 service to verify the network connectivity.
 
-### Add subnet routes to a route
+### 3.5 Add subnet routes to a route table
 
 **table**
 
@@ -475,7 +556,7 @@ the **Route Table ID/Name** column or **Manage** in the **Actions** column.
 7. In the dialog box that appears, select the vSwitch with which you want to associate the
 route table and click **OK**.
 
-### Configure a NAT gateway
+### 3.6 Configure a NAT gateway
 
 SNAT and DNAT allow Elastic Compute Service (ECS) instances in a virtual private cloud (VPC) to communicate with the Internet by using a NAT gateway. This topic describes how to configure SNAT and DNAT.
 
@@ -577,7 +658,7 @@ table and click **OK**.
 |---|---|
 | Entry Name | Enter a name for the SNAT entry. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), and hyphens (-). The name must start with a letter. _ |
 
-### Configure an EIP
+### 3.7 Configure an EIP
 
 This topic describes how to create an elastic IP address (EIP) and associate the EIP with an Elastic Compute Service (ECS) instance. This allows the ECS instance to access the Internet.
 
@@ -649,7 +730,7 @@ Log on to the ECS instance associated with the EIP and run the following command
 ping <a public domain name>
 ```
 
-### Enable IPv6 for a VPC
+### 3.8 Enable IPv6 for a VPC
 
 When you create a virtual private cloud (VPC), you can configure both an IPv4 CIDR block and an IPv6 CIDR block for the VPC. By default, IPv4 is enabled and cannot be disabled. You can specify whether to enable IPv6. After IPv6 is enabled, the system automatically creates a free IPv6 gateway for the VPC. You can use the IPv6 gateway to manage IPv6 Internet bandwidth and configure egress-only rules.
 
@@ -665,7 +746,7 @@ For more information, see the "Create a VPC" section of the Create and manage a 
 
 For more information, see the "Enable IPv6 for a VPC" section of the Enable IPv6 for a VPC topic.
 
-### Enable IPv6 for a vSwitch
+### 3.9 Enable IPv6 for a vSwitch
 
 After you enable IPv6 for a virtual private cloud (VPC), you can specify IPv6 CIDR blocks for vSwitches in the VPC. This way, cloud resources in vSwitches deployed in the VPC can communicate with each other by using IPv6 addresses.
 
@@ -681,7 +762,7 @@ For more information, see the "Create a vSwitch" section of the Create and manag
 
 For more information, see the "Enable IPv6 for a vSwitch" section of the Create and manage a vSwitch topic.
 
-## Overview
+## 4 Overview
 
 You can view information on the overview page of the virtual private cloud (VPC) console, such as instance counts, quota usage, and topology.
 
@@ -697,9 +778,9 @@ Detailed information about all VPCs and Elastic IP Addresses can be found in the
 The **VPC Organization Quota Usage** section shows the VPC quota consumption over the past 7, 15, or 30 days. The **EIP Organization Quota Usage** section displays the EIP quota consumption for the last 7, 15, or 30 days. Click the VPC in the **VPC Topology** section to view its network topology. You can enter the instance ID of the target VPC in the upper right corner of **VPC**
 **Topology**.
 
-## VPCs
+## 5 VPCs
 
-### VPC overview
+### 5.1 VPC overview
 
 A virtual private cloud (VPC) is a dedicated private network in the cloud that allows you to configure and manage a logically isolated network. You have full control over your VPC. For example, you can specify CIDR blocks and configure route tables and gateways for your VPC. You can also deploy Apsara Stack resources, such as Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, and Server Load Balancer (SLB) instances in your VPC.
 
@@ -730,7 +811,7 @@ VPC supports both IPv4 and IPv6. By default, IPv4 is used. You can enable IPv6 b
 
 By default, IPv4 and IPv6 addresses are used only for communication within VPCs. Cloud resources deployed in different vSwitches that belong to the same VPC can communicate with each other within the VPC. To connect a VPC to another VPC or a data center, you can use Express Connect or VPN Gateway. To enable cloud resources in a VPC to communicate with the Internet, configure the following items: IPv4 addresses You can configure NAT gateways or associate EIPs with ECS instances in the VPC. This way, the ECS instances can communicate with the Internet by using IPv4 addresses. IPv6 addresses To enable cloud resources in the VPC to communicate with the Internet by using IPv6 addresses, you must purchase an IPv6 Internet bandwidth plan. You can configure egressonly rules for IPv6 addresses. This allows cloud resources in the VPC to access the Internet by using IPv6 addresses. However, IPv6 clients cannot access the cloud resources in the VPC over the Internet.
 
-### Create and manage VPCs
+### 5.2 Create and manage VPCs
 
 A virtual private cloud (VPC) is an isolated, private network that you can create in the cloud. You have full control over your VPC. For example, you can select IP address ranges, configure route tables, and set up gateways. This topic describes how to create and manage VPCs.
 
@@ -844,7 +925,7 @@ or click **Manage** in the **Actions** column.
 2. On the **VPC Details** page, you can manage the VPC.
 The Instance Overview card displays key information about the VPC, such as its instance ID, status, region, and CIDR block, and provides statistics for various VPC resources. Click **Enable IPv6** next to **IPv6 CIDR Block** to enable an IPv6 CIDR block for the VPC. For more information, see Enable IPv6 for a VPC. Click the number below a specific VPC resource on the right side of the card to view the list of corresponding resources in the VPC. VPC resources include route tables, vSwitches, security groups, NAT Gateways, network ACLs, IPv6 gateways, ECS instances, requester VPCs for VPC peering, accepter VPCs for VPC peering, and accepter VBRs. Click the **Basic Information** tab to view or manage the basic information of the VPC and its vRouter. In the **VPC Basic Information** section, click the icon to the right of **VPC Name** to modify the VPC name. In the **VPC Basic Information** section, click the icon to the right of **Description** to modify the VPC description. In the **VPC Basic Information** section, click the icon next to **Tags** to edit the VPC tags. In the **Router Basic Information** section, click the icon next to **Router Name** to modify the router name. In the **VRouter Basic Information** section, click the icon next to **Description** to edit the vSwitch description. Click the **CIDR Block Management** tab to manage the secondary CIDR blocks of the VPC. Click **IPv4 CIDR Block** to manage the secondary IPv4 CIDR blocks of the VPC. For more information, see Manage secondary IPv4 CIDR blocks. Click **IPv6 CIDR Block** to manage the secondary IPv6 CIDR blocks of the VPC. For more information, see Manage secondary IPv6 CIDR blocks. Click the **VPC Topology** tab to view the topology of the VPC. For more information, see VPC topology. Click the **CEN Cross-account Authorization** tab to grant permissions to a CEN instance to allow the VPC to be attached to the CEN instance. For more information, see CEN cross-account authorization. Click the **Operation Logs** tab to view all operation logs for the VPC. For more information, see Operation logs. Click **Delete** in the upper-right corner to delete the VPC.
 
-### Create resources in a VPC
+### 5.3 Create resources in a VPC
 
 This topic describes how to create resources in a virtual private cloud (VPC). You can create vSwitches, Elastic Compute Service (ECS) instances, and ApsaraDB for RDS instances in a VPC.
 
@@ -859,9 +940,9 @@ and perform the following operations: To create a vSwitch, click **Create vSwitc
 For more information about how to configure the parameters to create an ECS instance, see **Quick start** > **Create an ECS instance** in the **ECS User Guide**. To create an ApsaraDB RDS instance, click the **More** icon in the **Actions** column and select **Create ApsaraDB RDS Instance**. In the **Create ApsaraDB RDS Instance** dialog box, configure the parameters. For more information about how to configure the parameters to create an ApsaraDB RDS instance, see **Quick start** > **Create an ApsaraDB RDS instance** in the **ApsaraDB**
 **RDS User Guide**.
 
-### Manage CIDR blocks
+### 5.4 Manage CIDR blocks
 
-#### Manage secondary IPv4 CIDR blocks
+#### 5.4.1 Manage secondary IPv4 CIDR blocks
 
 After a virtual private cloud (VPC) is created, you can manage secondary IPv4 CIDR blocks of the VPC.
 
@@ -910,7 +991,7 @@ or click **Manage** in the **Actions** column.
 and click **Delete** in the **Actions** column.
 7. In the message that appears, click **OK**.
 
-#### Manage secondary IPv6 CIDR blocks
+#### 5.4.2 Manage secondary IPv6 CIDR blocks
 
 After a virtual private cloud (VPC) is created, you can add secondary IPv6 CIDR blocks to the VPC and manage the added secondary IPv6 CIDR blocks.
 
@@ -954,7 +1035,7 @@ or click **Manage** in the **Actions** column.
 and click **Delete** in the **Actions** column.
 7. In the message that appears, click **OK**.
 
-### VPC topology
+### 5.5 VPC topology
 
 The VPC topology feature provides a visual overview of your cloud resources and network assets within a VPC. From this topology, you can go directly to a resource's management console to make adjustments.
 
@@ -979,7 +1060,7 @@ You can select **Expand All vSwitches** to view all vSwitches within the VPC. Yo
 | VPC external access | Lists the VPC's internet-facing network resources and their counts. Click any resource with a numeric count to open its list page for viewing and management. VPC peering connection: Enables communication between two VPCs. VPC-VBR connection: Enables communication between a VPC and a Virtual Border Router (VBR). NAT gateway: Provides Network Address Translation (NAT), which allows servers in the VPC to access the internet and offer internet-facing services. Classic Network SLB: Enables the VPC to provide services to external networks. EIP: Enables a cloud resource in a VPC to communicate with the internet. VPN gateway: Establishes a secure and reliable private connection over the internet between a VPC and an on-premises data center, corporate network, or remote devices through an encrypted tunnel. IPv6 gateway: Manages IPv6 traffic for a VPC. You can configure IPv6 public bandwidth and egress-only rules to control inbound and outbound traffic. |
 | VPC internal resources | Lists the vSwitches within the VPC and the resources they contain. |
 
-### Attach a CEN instance to a
+### 5.6 Attach a CEN instance to a VPC across accounts
 
 **VPC across accounts**
 
@@ -1020,9 +1101,9 @@ or click **Manage** in the **Actions** column.
 6. In the authorization record list, find the authorization record that you want to manage and
 click **Delete** in the **Actions** column.
 
-## Route tables
+## 6 Route tables
 
-### Overview
+### 6.1 Overview
 
 Route tables are used to manage and control network traffic. Proper route configurations enhance network flexibility and security. You can configure routes and specify proper next hop types to control network traffic, optimize traffic paths, reduce latency, and improve network performance. You can also associate different route tables with different vSwitches to implement traffic control and isolation. This improves network flexibility.
 
@@ -1155,7 +1236,7 @@ The following figure shows that a VPC, whose CIDR block is 172.16.0.0/12, is con
 |---|---|---|
 | 192.168.0.0/16 | VPN gateway | The VPN gateway that you created |
 
-### Create and manage custom
+### 6.2 Create and manage custom route tables
 
 ## route tables
 
@@ -1213,7 +1294,7 @@ the **Route Table ID/Name** column or **Manage** in the **Actions** column.
 2. On the details page of the route table, you can perform the following operations:
 On the **Basic Information** tab, you can view and manage the basic information about the route table, manage custom route entries, and manage the vSwitches associated with the route table. In the **Basic Information** section, click the VPC ID next to the **VPC ID** parameter to view the basic information about the VPC to which the route table belongs. In the **Basic Information** section, click the icon next to the **Route Table Name** parameter to modify the name of the route table. In the **Basic Information** section, click the icon next to the **Description** parameter to modify the description of the route table. On the **Routing Entry List** tab, you can manage the route entries in the route table. For more information, see Manage custom route entries. On the **Associated vSwitches** tab, you can manage the vSwitches associated with the route table. For more information, see Manage custom route tables and vSwitches. On the **Operation Log** tab, you can view all operation logs of the route table. For more information, see Manage operation logs.
 
-### Manage custom route entries
+### 6.3 Manage custom route entries
 
 Each item in a route table is a route entry. A route entry specifies the destination to which network traffic is routed. You can also add a custom route entry to route traffic to a specific destination. You can add custom route entries to the system route tables and custom route tables of a virtual private cloud (VPC).
 
@@ -1277,7 +1358,7 @@ in the **Actions** column.
 dialog box that appears to confirm the operation and click **OK**.
 4. In the **Delete Route Entry** message, click **OK**.
 
-### Manage custom route tables
+### 6.4 Manage custom route tables and vSwitches
 
 **and vSwitches**
 
@@ -1317,9 +1398,9 @@ You can disassociate a custom route table from a vSwitch. After a custom route t
 route table and click **Unbind** in the **Actions** column.
 3. In the message that appears, click **OK**.
 
-## vSwitches
+## 7 vSwitches
 
-### Overview
+### 7.1 Overview
 
 A vSwitch is a network switching device in a virtual private cloud (VPC) and supports the functionality of a physical switch. It enables communication between VMs and between VMs and physical networks. A vSwitch is a key component of the virtual infrastructure and exists on the host as a core component of the virtual network.
 
@@ -1327,7 +1408,7 @@ A vSwitch is a network switching device in a virtual private cloud (VPC) and sup
 
 Your VPCs are dedicated for your use. You can deploy cloud resources in vSwitches in your VPC. A vSwitch in a VPC serves as a subnet of the VPC. You cannot directly deploy cloud resources in a VPC. You must deploy cloud resources in the vSwitches of a VPC. A vSwitch is a basic network device in a VPC and provides network isolation and connection capabilities for cloud resources in the VPC. You can deploy a VPC only in one region and cannot deploy a VPC across regions. However, a VPC covers all zones of the region to which the VPC belongs. When you create a VPC, you must create at least one vSwitch. You can create one or more vSwitches in a zone to create one or more subnets for the VPC. You can deploy cloud resources of different security levels or features in different subnets. This enhances the flexibility, security, and efficiency of network management. By default, the subnets in a VPC can communicate with each other.
 
-### Create and manage vSwitches
+### 7.2 Create and manage vSwitches
 
 After you create a virtual private cloud (VPC), you can create vSwitches to create one or more subnets for the VPC. By default, the subnets in a VPC can communicate with each other.
 
@@ -1433,7 +1514,7 @@ In the **vSwitch Basic Information** section, click **Associate** next to the **
 **Table** parameter to view the basic information about the route table that is associated
 with the vSwitch. Click **Delete** in the upper-right corner to delete the vSwitch. On the **Operation Log** tab, you can view all operation logs of the vSwitch. For more information, see Manage operation logs.
 
-### Deploy cloud resources in a
+### 7.3 Deploy cloud resources in a vSwitch
 
 **vSwitch**
 
@@ -1454,9 +1535,9 @@ following operations to deploy cloud resources in the vSwitch: Choose **... > Cr
 RDS instance. For more information about how to configure the parameters to create an ApsaraDB RDS instance, see **Quick start** > **Create an ApsaraDB RDS instance** in the **ApsaraDB**
 **RDS User Guide**.
 
-## Network ACLs
+## 8 Network ACLs
 
-### Overview
+### 8.1 Overview
 
 Network access control lists (ACLs) allow you to implement access control for virtual private clouds (VPCs). You can configure network ACL rules and associate a network ACL with a vSwitch. This way, you can control the inbound and outbound traffic of Elastic Compute Service (ECS) instances that are connected to the vSwitch.
 
@@ -1505,7 +1586,7 @@ The following figure shows how network ACLs and security groups are applied to e
 
 The following flowchart shows how to use a network ACL.
 
-### Create and manage network
+### 8.2 Create and manage network ACLs
 
 **ACLs**
 
@@ -1570,7 +1651,7 @@ In the **Network ACL Basic Information** section, click the icon next to the
 **Description** parameter to modify the description of the network ACL.
 Click the **Associated Resource** tab to manage the vSwitches associated with the network ACL. For more information, see Manage associated resources. Click the **Inbound Rule** tab to manage the inbound rules of the network ACL. For more information, see Configure inbound rules. Click the **Outbound Rule** tab to manage the outbound rules of the network ACL. For more information, see Configure outbound rules. On the **Operation Logs** tab, view all operation logs of the network ACL. For more information, see Manage operation logs.
 
-### Manage associated resources
+### 8.3 Manage associated resources
 
 After you create a network access control list (ACL), you can associate it with a vSwitch to control traffic of the Elastic Compute Service (ECS) instances connected to the vSwitch.
 
@@ -1605,9 +1686,9 @@ You can disassociate a network ACL from a vSwitch. After the network ACL is disa
 want to manage and click **Unbind** in the **Actions** column.
 7. In the message that appears, click **OK**.
 
-### Manage network ACL rules
+### 8.4 Manage network ACL rules
 
-#### Scenarios
+#### 8.4.1 Scenarios
 
 If you are familiar with the ports that are commonly used by ECS instances, you can specify them in access control list (ACL) rules to facilitate precise network traffic filtering. This topic describes the ports that are commonly used by ECS instances and the application scenarios of these ports.
 
@@ -1683,7 +1764,7 @@ Clients use different ports to initiate requests. You can select different port 
 | Windows Server 2008 and later | 49152/65535 |
 | NAT gateway | 1024/65535 |
 
-#### Configure inbound rules
+#### 8.4.2 Configure inbound rules
 
 After you create a network access control list (ACL), you can add inbound rules to the network ACL. You can use inbound rules to control how Elastic Compute Service (ECS) instances connected to a vSwitch are accessed over the Internet or the VPC.
 
@@ -1728,7 +1809,7 @@ After you create inbound rules, you can perform the operations described in the 
 |---|---|
 | Sort inbound rules | Network ACL rules take effect in descending order of priority. A smaller value indicates a higher priority. You can sort network ACL rules to change the priority of a specific network ACL rule. 1. In the upper-left corner of the Inbound Rule tab, clickS ort. 2. In the Sort dialog box, find the rule whose priority you want to change, drag ang drop the rule, and then click OK. Note Rules are listed in descending order of priority. |
 
-#### Configure outbound rules
+#### 8.4.3 Configure outbound rules
 
 After you create a network access control list (ACL) for a virtual private cloud (VPC), you can create outbound rules in the network ACL. You can use outbound rules to control how Elastic Compute Service (ECS) instances connected to a vSwitch access other resources over the Internet or the VPC.
 
@@ -1775,9 +1856,9 @@ After outbound rules are created, you can perform the operations that are descri
 
 EIPs)
 
-## Elastic IP Addresses (EIPs)
+## 9 Elastic IP Addresses (EIPs)
 
-### Log on to the EIP console
+### 9.1 Log on to the EIP console
 
 This topic describes how to log on to the Apsara Uni-manager Management Console to manage your elastic IP addresses (EIPs). In this example, the Google Chrome browser is used.
 
@@ -1809,7 +1890,7 @@ the Apsara Uni-manager Management Console User Guide.
 Method 2: i. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**. ii. In the left-side navigation pane, click .
 6. In the top navigation bar, select the region in which your EIPs reside.
 
-### Overview of EIP
+### 9.2 Overview of EIP
 
 EIPs) An elastic IP address (EIP) is a public IP address that you can purchase and use as an independent resource. You can associate an EIP with an Elastic Compute Service (ECS) instance, an internal-facing Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP). If you want to associate an EIP with an ECS instance, SLB instance, or secondary ENI, make sure that the cloud resource with which you want to associate the EIP is deployed in a virtual private cloud (VPC). An EIP is a NAT IP address provisioned on the Internet-facing gateway of Apsara Stack and is mapped to the associated cloud resource by using NAT. After an EIP is associated with a cloud resource, the cloud resource can use the EIP to communicate with the Internet.
 
@@ -1830,7 +1911,7 @@ The following table describes the differences between an EIP and the static publ
 
 EIPs provide the following benefits: Purchase and use as independent resources You can purchase and use an EIP as an independent resource. EIPs are not bundled with other computing or storage resources. Flexible association and disassociation You can associate an EIP with a cloud resource based on your business requirements. You can also disassociate and release an EIP that you no longer need. Adjustable maximum bandwidth You can modify the maximum bandwidth of an EIP at any time based on your business requirements. The modification immediately takes effect.
 
-### Create and manage EIPs
+### 9.3 Create and manage EIPs
 
 An elastic IP address (EIP) is an IP address that can be created as an independent resource and allows your website deployed on the cloud to access the Internet. EIPs)
 
@@ -1907,7 +1988,7 @@ On the **Basic Information** tab, view and modify the basic information and maxi
 **Configurations** to upgrade the maximum bandwidth of the EIP.
 Click the **Monitoring** tab to view the monitoring information about the EIP. For more information, see View monitoring data. Click the **Operation Log** tab to view all operation logs of the EIP. For more information, see Manage operation logs.
 
-### Associate an EIP with a cloud
+### 9.4 Associate an EIP with a cloud resource
 
 **resource**
 
@@ -1976,7 +2057,7 @@ After you associate an EIP with a high-availability virtual IP address (HAVIP), 
 | Instance Type | Select HAVIP. |
 | Select the to Bind | Select the HAVIP to be associated with the EIP. Note An HAVIP can be associated with only one EIP. You can enter a keyword or specify advanced filter conditions to search for a specific secondary ENI. You can also click Create HaVip to create an HAVIP. |
 
-### Disassociate an EIP from a
+### 9.5 Disassociate an EIP from a cloud resource
 
 **cloud resource**
 
@@ -1990,7 +2071,7 @@ To disassociate one EIP from a cloud resource, click **Unbind** in the **Actions
 3. In the message that appears, click **OK**.
 EIPs)
 
-### View monitoring data
+### 9.6 View monitoring data
 
 You can monitor the status of an elastic IP address (EIP) to find abnormal monitoring data and quickly troubleshoot issues.
 
@@ -2000,9 +2081,9 @@ You can monitor the status of an elastic IP address (EIP) to find abnormal monit
 2. On the **Elastic IP Addresses** page, find the EIP that you want to view and use one of the
 following methods to view the monitoring data. View the monitoring data on the **EIP** page a. Click the icon in the **Monitor** column. b. The **Monitoring** panel appears. You can view the monitoring data on this panel. View the monitoring data on the **EIP Details** page a. Click the ID of the EIP. b. On the **EIP Details** page, click the **Monitoring** tab to view the monitoring data. By default, the system displays monitoring data collected within the previous hour. You can select other time ranges or click **Custom** to specify a custom time range.
 
-## NAT gateways
+## 10 NAT gateways
 
-### Overview
+### 10.1 Overview
 
 NAT gateways are enterprise-class gateways that provide the Source Network Address Translation (SNAT) and Destination NAT (DNAT) features. Each NAT gateway provides a throughput capacity of up to 10 Gbit/s. NAT gateways also support cross-zone disaster recovery.
 
@@ -2048,7 +2129,7 @@ NAT gateways support the following specifications: small, medium, large, and sup
 | Large | 200,000 | 10,000 |
 | Super large-1 | 1,000,000 | 50,000 |
 
-### Create and manage NAT
+### 10.2 Create and manage NAT gateways
 
 **gateways**
 
@@ -2124,7 +2205,7 @@ In the **Specification Information** section, you can manage the specifications 
 **Specification** parameter and click **Confirm Order**.
 On the **DNAT** tab, you can manage the DNAT table of the NAT gateway. For more information, see Create and manage DNAT entries. On the **SNAT** tab, you can manage the SNAT table of the NAT gateway. For more information, see Create and manage SNAT entries. On the **NAT Service Plan** tab, you can manage the NAT service plans of the NAT gateway. For more information, see Create and manage a NAT service plan. On the **Operation Log** tab, you can view all operation logs of the NAT gateway. For more information, see Manage operation logs. On the **Monitoring** tab, you can view the monitoring information about the NAT gateway. For more information, see View monitoring data.
 
-### Manage EIPs and NAT
+### 10.3 Manage EIPs and NAT gateways
 
 **gateways**
 
@@ -2160,7 +2241,7 @@ If you do not want a NAT gateway to communicate with the Internet by using an EI
 5. In the **Disassociate EIP** dialog box, select the EIP that you want to disassociate, and click
 **OK**.
 
-### Create and manage DNAT
+### 10.4 Create and manage DNAT entries
 
 **entries**
 
@@ -2224,7 +2305,7 @@ If you delete a DNAT entry, the ECS instance configured with the DNAT entry cann
 you want to delete and click **Delete** in the **Actions** column. Method 2: On the **DNAT** tab of the **NAT Gateway Details** page, select the DNAT entries that you want to delete and click **Delete** below the list.
 2. In the message that appears, click **OK**.
 
-### Create and manage SNAT
+### 10.5 Create and manage SNAT entries
 
 **entries**
 
@@ -2283,7 +2364,7 @@ You can delete an SNAT entry if the ECS instances that have no public IP address
 you want to delete and click **Delete** in the **Actions** column. Method 2: On the **SNAT** tab of the **NAT Gateway Details** page, select the SNAT entries that you want to delete and click **Delete** below the SNAT entry list.
 2. In the message that appears, click **OK**.
 
-### Create and manage a NAT
+### 10.6 Create and manage a NAT service plan
 
 **service plan**
 
@@ -2362,7 +2443,7 @@ You can delete a NAT service plan that you no longer need. Before you delete a N
 NAT service plan that you want to delete and click **Delete**.
 2. In the **Delete Bandwidth Package** message, click **OK**.
 
-### View monitoring data
+### 10.7 View monitoring data
 
 This topic describes how to monitor Virtual Private Cloud (VPC) resources by using CloudMonitor. You can also set threshold-triggered alert rules and monitor the traffic of a VPN gateway. When a threshold is reached, a notification is sent to you.
 
@@ -2394,9 +2475,9 @@ The following table describes only the parameters that are related to this topic
 |---|---|
 | Threshold and Alert Level | Valid values of the alert level: Critical, Warning, and Info. Valid values of the aggregate value type: Average, Minimum, and Maximum. Valid values of the monitoring period: continuous, 5 consecutive cycles, 10 consecutive cycles, 15 consecutive cycles, 30 consecutive cycles, and 60 consecutive cycles. Valid values of the comparison relationship between the monitoring data and alert threshold: >, >=, <, <=, =, !=, Year-on-year increase at the same time yesterday, Year-on-year decline at the same time yesterday, Increase compared with the last monitoring cycle, Decline compared with the last monitoring cycle, Increase compared with the last week, and Decline compared with the last week. You also need to set an alert threshold and a trigger count. An alert is generated if the monitoring data reaches the specified threshold for the specified number of times at a specific interval. |
 
-## IPv6 gateways
+## 11 IPv6 gateways
 
-### Overview
+### 11.1 Overview
 
 IPv6 gateways route IPv6 traffic to and from virtual private clouds (VPCs). You can configure IPv6 Internet bandwidth and egress-only rules to control inbound and outbound IPv6 traffic.
 
@@ -2438,7 +2519,7 @@ A single IPv6 gateway can provide 10-gigabit throughput to process a large numbe
 
 You can manage the Internet communication capabilities of IPv6 addresses by adjusting the Internet bandwidth and configuring egress-only rules.
 
-### Create and manage IPv6
+### 11.2 Create and manage IPv6 gateways
 
 **gateways**
 
@@ -2514,7 +2595,7 @@ On the **IPv6 Gateway Details** tab, you can view and manage the basic informati
 
 On the **IPv6 Public Network Bandwidth** tab, you can manage the Internet bandwidth of the IPv6 gateway. For more information, see Manage IPv6 Internet bandwidth. On the **Egress-only Rules** tab, you can manage egress-only rules for the IPv6 gateway. For more information, see Manage egress-only rules. On the **Operation Logs** tab, you can view all operation logs of the IPv6 gateway. For more information, see Manage operation logs.
 
-### Manage IPv6 Internet
+### 11.3 Manage IPv6 Internet bandwidth
 
 **bandwidth**
 
@@ -2557,7 +2638,7 @@ If an IPv6 address does not require access from or to the Internet, you can disa
 condition to filter IPv6 addresses.
 2. In the message that appears, click **OK**.
 
-### Manage egress-only rules
+### 11.4 Manage egress-only rules
 
 After you enable IPv6 Internet bandwidth for an IPv6 address, the IPv6 address can be used for communication over the Internet. You can create egress-only rules for the IPv6 address to allow only outbound IPv6 traffic.
 
@@ -2603,9 +2684,9 @@ ID in the **IPv6 Gateway ID/Name** column or **Manage** in the **Actions** colum
 click **Delete** in the **Actions** column. You can specify a filter condition to filter egress-only rules.
 7. In the message that appears, click **OK**.
 
-## HAVIPs
+## 12 HAVIPs
 
-### Overview
+### 12.1 Overview
 
 High-availability virtual IP addresses (HAVIPs) are private IP addresses that can be created and released as independent resources. You can use HAVIPs with high-availability software such as Keepalived to provide services in active/standby mode. This improves the availability of your services.
 
@@ -2617,7 +2698,7 @@ Each Elastic Compute Service (ECS) instance is assigned a private IP address as 
 
 HAVIPs support flexible configurations in the following scenarios: Scenario 1: Internal-facing high-availability services In the following figure, two ECS instances are associated with the same HAVIP. Keepalived is configured for the ECS instances to provide an internal-facing high-availability service. Other instances in the same virtual private cloud (VPC) can access the service. The HAVIP serves as the service address. If the primary ECS instance is down, the secondary ECS instance takes over. This improves the availability of the service. Scenario 2: Internet-facing high-availability services In the following figure, two ECS instances are associated with the same HAVIP. Keepalived is configured and the HAVIP is associated with an elastic IP address (EIP) for the ECS instances to provide an Internet-facing high-availability service. The EIP that is associated with the HAVIP serves as the service address. If the primary ECS instance is down, the secondary ECS instance takes over. This improves the availability of the service.
 
-### Create and manage HAVIPs
+### 12.2 Create and manage HAVIPs
 
 A high-availability virtual IP address (HAVIP) is a private IP address that can be created and released as an independent resource. You can use HAVIPs with high-availability software to provide services in active/standby mode. This improves the availability of your services. This topic describes how to create and manage HAVIPs in the console.
 
@@ -2684,9 +2765,9 @@ column.
 2. On the **High availability virtual IP details** page, perform the following operations to
 manage the HAVIP: On the **Basic Information** tab, you can view and manage the basic information about the HAVIP and associate the HAVIP with an EIP or other cloud resources. In the **Basic Information** section, click the VPC ID next to the **VPC ID** parameter to view the basic information about the VPC to which the HAVIP belongs. In the **Basic Information** section, click the vSwitch ID next to the **vSwitch** parameter to view the basic information about the vSwitch to which the HAVIP belongs. In the **Basic Information** section, click the icon next to the **HaVip Name** parameter to modify the name of the HAVIP. In the **Basic Information** section, click the icon next to the **Description** parameter to modify the description of the HAVIP. In the **Associate With Resource** section, you can manage the resources associated with the HAVIP. For more information, see Manage associated resources. On the **Operation Log** tab, you can view all operation logs of the HAVIP. For more information, see Manage operation logs.
 
-### Manage associated resources
+### 12.3 Manage associated resources
 
-#### Associate an HAVIP with an EIP
+#### 12.3.1 Associate an HAVIP with an EIP
 
 You can associate a high-availability virtual IP address (HAVIP) with an elastic IP address (EIP). This way, the HAVIP can provide services over the Internet by using the EIP.
 
@@ -2706,7 +2787,7 @@ An EIP is created. For more information, see the "Apply for an EIP" section of t
 6. In the **Associate EIP** dialog box, select an EIP and click **OK**.
 The EIP must meet the following requirements: The EIP and the HAVIP are deployed in the same region. The EIP is in the Available state.
 
-#### Disassociate an HAVIP from an EIP
+#### 12.3.2 Disassociate an HAVIP from an EIP
 
 This topic describes how to disassociate a high-availability virtual IP address (HAVIP) from an elastic IP address (EIP). After you disassociate an HAVIP from an EIP, the HAVIP can no longer provide services over the Internet by using the EIP.
 
@@ -2721,11 +2802,11 @@ This topic describes how to disassociate a high-availability virtual IP address 
 **Resource** section, click **Disassociate** in the **EIP** section.
 6. In the Disassociate EIP message, click **OK**.
 
-#### Associate HAVIPs with backend cloud
+#### 12.3.3 Associate HAVIPs with backend cloud resources
 
 **resources**
 
-##### Associates an HAVIP with an ECS instance
+##### 12.3.3.1 Associates an HAVIP with an ECS instance
 
 You can associate a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This way, the ECS instance can announce the HAVIP and obtain multiple private IP addresses by using Address Resolution Protocol (ARP).
 
@@ -2756,7 +2837,7 @@ An HAVIP can be associated with 10 ECS instances or 10 secondary ENIs. However, 
 |---|---|
 | Associate With Resource | The ECS instance with which you want to associate the HAVIP. The ECS instance must meet the following requirements: The ECS instance is deployed in a VPC. The ECS instance and the HAVIP belong to the same vSwitch. |
 
-##### Associate an HAVIP with an ENI
+##### 12.3.3.2 Associate an HAVIP with an ENI
 
 You can associate a high-availability virtual IP address (HAVIP) with an elastic network interface (ENI). This way, an Elastic Compute Service (ECS) instance can advertise the HAVIP and obtain multiple private IP addresses by using Address Resolution Protocol (ARP).
 
@@ -2787,7 +2868,7 @@ An HAVIP can be associated with 10 ECS instances or 10 secondary ENIs. However, 
 | ENI | The ENI with which you want to associate the HAVIP. The ENI and HAVIP must belong to the same vSwitch. |
 |---|---|
 
-##### Work with Keepalived to enable
+##### 12.3.3.3 Work with Keepalived to enable primary/secondary switchover
 
 **primary/secondary switchover**
 
@@ -2951,11 +3032,11 @@ echo "ECS 2" > index.html #The secondary instance returns "ECS 2". python3 -m ht
 2. Run `curl <havip_private_ip>:8000` on other ECS instances in the VPC. `ECS 1` is
 returned. If the primary instance is down, `ECS 2` is returned. Make sure that the security group of the primary and secondary instances allows HTTP requests in the VPC to access port 8000.
 
-#### Disassociate HAVIPs from backend
+#### 12.3.4 Disassociate HAVIPs from backend cloud resources
 
 **cloud resources**
 
-##### Disassociate an HAVIP from an ECS
+##### 12.3.4.1 Disassociate an HAVIP from an ECS instance
 
 **instance**
 
@@ -2974,7 +3055,7 @@ This topic describes how to disassociate a high-availability virtual IP address 
 **Unbind** in the **Actions** column.
 7. In the message that appears, click **OK**.
 
-##### Disassociate an HAVIP from an ENI
+##### 12.3.4.2 Disassociate an HAVIP from an ENI
 
 This topic describes how to disassociate a high-availability virtual IP address (HAVIP) from an elastic network interface (ENI). After the HAVIP is disassociated from the ENI, the ECS instance associated with the ENI cannot announce the HAVIP over Address Resolution Protocol (ARP).
 
@@ -2991,9 +3072,9 @@ This topic describes how to disassociate a high-availability virtual IP address 
 **Actions** column.
 7. In the message that appears, click **OK**.
 
-## DHCP options sets
+## 13 DHCP options sets
 
-### Overview of DHCP options
+### 13.1 Overview of DHCP options sets
 
 **sets**
 
@@ -3012,7 +3093,7 @@ The following table describes how a DHCP options set is applied to new and exist
 | Existing ECS instances (ECS instances that are created in the VPC before the DHCP options set is associated with the VPC). | If one of the following operations is performed, the DHCP options are synchronized to the existing ECS instances in the VPC: Restart the ECS instance. Restart the DHCP Client service. Restart the network service. |
 | New ECS instances (ECS instances that are created in the VPC after the DHCP options set is associated with the VPC). | No operation is required. The DHCP options are automatically synchronized to the newly created ECS instances in the VPC. |
 
-### Create and manage DHCP
+### 13.2 Create and manage DHCP options sets
 
 **options sets**
 
@@ -3084,7 +3165,7 @@ click its ID in the **Instance ID/Name** column or click **View Details** in the
 2. On the **DHCP Options Set Details** page, you can perform the following operations to
 manage the DHCP options set. In the **Basic Information** section, click the icon next to the **Instance Name** parameter to modify the name of the DHCP options set. The name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. In the **Basic Information** section, click the icon next to the **Description** parameter to modify the description of the DHCP options set. The description can be empty. If you enter a description, it must be 1 to 256 characters in length, and must start with a letter. It cannot start with `http://` or `https://` . In the lower part of the **Basic Information** section, manage the VPCs associated with the DHCP options set. For more information, see Manage a DHCP options set and VPCs.
 
-### Manage a DHCP options set
+### 13.3 Manage a DHCP options set and VPCs
 
 **and VPCs**
 
@@ -3118,7 +3199,7 @@ manage and click **Disassociate** in the **Actions** column.
 6. In the message that appears, click **OK**.
 gs
 
-## Manage operation logs
+## 14 Manage operation logs
 
 Virtual Private Cloud (VPC) allows you to view the operation logs of all VPC resources. The operation logs record the instance status, operation source, operation time, and API call details. You can analyze and trace historical operations based on the operation logs.
 
@@ -3179,7 +3260,7 @@ gs
 **Actions** column. In the **Operation Details** panel, view the operation details in the **Basic**
 **Information** and **API Call Details** sections.
 
-## Manage tags
+## 15 Manage tags
 
 Virtual private cloud (VPC) allows you to use tags to mark and classify VPC resources. This facilitates resource search and aggregation. This topic describes how to manage tags for VPCs. You can manage tags for other VPC resources by referring to this topic.
 

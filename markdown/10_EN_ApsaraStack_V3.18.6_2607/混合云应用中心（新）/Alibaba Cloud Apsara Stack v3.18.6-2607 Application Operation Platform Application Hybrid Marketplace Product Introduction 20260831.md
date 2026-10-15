@@ -3,20 +3,28 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform A
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace Product Introduction 20260831.pdf"
+source_pdf: "1a365df91fa5a9f2_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplac"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%B7%B7%E5%90%88%E4%BA%91%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BF%83%EF%BC%88%E6%96%B0%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Operation%20Platform%20Application%20Hybrid%20Marketplace%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Operation Platform Application Hybrid Marketplace Product Introduction 20260831
 
-## Hybrid cloud application
+## Table of Contents
+
+- 1 Hybrid cloud application center
+  - 1.1 Product details
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Functions and features
+
+## 1 Hybrid cloud application center
 
 **center**
 
 The Hybrid Cloud Application Center (Application Hybrid Marketplace, AHM) is the third product development and delivery pipeline alongside the Apsara Stack infrastructure Tianji and PaaS platform. It primarily supports the deployment of third-party ISV or Alibaba Cloud internal SaaS applications in Apsara Stack scenarios. AHM uses cloud platform tenant-side resources for application delivery, with the goal of expanding the Apsara Stack product ecosystem.
 
-### Product details
+### 1.1 Product details
 
 Application Center provides customers with convenient and fast application delivery and deployment methods.
 
@@ -36,7 +44,7 @@ Supports viewing application deployment task status and execution progress. When
 
 Supports creating Docker image repositories for clusters, providing different image services for different clusters. When deploying applications, the system reads the image repository configuration to obtain the image source.
 
-### Benefits
+### 1.2 Benefits
 
 Application Center integrates various services and resources into a complete solution through standard protocols and Infrastructure as Code (IaC) orchestration engines, enabling one-click deployment of this complete solution to customer Apsara Stack environments.
 
@@ -56,11 +64,11 @@ With the one-click product deployment mechanism, users can complete the delivery
 
 Application Center integrates infrastructure monitoring capabilities and supports automated O&M through custom policies. We are committed to creating a simplified operations management system that enables customers and service providers to quickly complete basic O&M actions on the Application Center platform.
 
-### Scenarios
+### 1.3 Scenarios
 
 Apsara Stack has been deployed in numerous enterprises. Enterprise customers increasingly want to make better use of this cloud platform and hope to introduce more high-quality cloud products (such as Alibaba Cloud and third-party ISV SaaS products) to meet more of their business requirements. Application Center supports the sales and deployment of Alibaba Cloud or third-party ISV applications in Apsara Stack scenarios, meeting customers' diverse product application needs in the Apsara Stack environment. Application Center is mainly used in the following scenarios: Third-party ISV suppliers join the Apsara Stack platform to publish various cloud products and applications Decoupling of base version dependencies, enabling rapid deployment of iterative Alibaba Cloud internal products and applications Cloud products and applications that need to be deployed on the tenant side to utilize comprehensive Apsara Stack product capabilities
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic describes the features of Hybrid Cloud Application Center.
 

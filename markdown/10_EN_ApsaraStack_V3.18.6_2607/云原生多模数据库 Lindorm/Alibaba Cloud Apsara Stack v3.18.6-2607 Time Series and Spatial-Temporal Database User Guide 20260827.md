@@ -3,26 +3,69 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 49
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database User Guide 20260827.pdf"
+source_pdf: "c3d117f917445b85_Alibaba Cloud Apsara Stack v3.18.6-2607 Time  Series and Spatial-Temporal  Database User Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%A4%9A%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%20Lindorm/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Time%20%20Series%20and%20Spatial-Temporal%20%20Database%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Time Series and Spatial-Temporal Database User Guide 20260827
 
-## What is Lindorm?
+## Table of Contents
+
+- 1 What is Lindorm?
+- 2 Getting started with Lindorm
+  - 2.1 Log on to the ApsaraDB for Lindorm console
+  - 2.2 Create a Lindorm instance
+  - 2.3 Configure a whitelist
+  - 2.4 Create an LTS instance
+- 3 Instance management
+  - 3.1 View the endpoint of a Lindorm instance
+  - 3.2 Activate a classic network endpoint
+  - 3.3 Release an instance
+  - 3.4 Version update
+  - 3.5 Restart an engine
+  - 3.6 Scale nodes
+- 4 LindormTable
+  - 4.1 Overview
+  - 4.2 Connect to LindormTable
+  - 4.3 Cluster management
+    - 4.3.1 Cluster management system
+    - 4.3.2 Grouping management
+    - 4.3.3 Namespace management
+    - 4.3.4 User management
+    - 4.3.5 ACL-based permission management
+    - 4.3.6 Data query
+- 5 LindormTSDB
+  - 5.1 Overview
+    - 5.1.1 Overview
+    - 5.1.2 Features
+    - 5.1.3 Comparison with TSDB
+  - 5.2 Getting started
+    - 5.2.1 Overview
+  - 5.3 O&M guide
+    - 5.3.1 Database management
+      - 5.3.1.1 Manage databases
+    - 5.3.2 User and permission management
+    - 5.3.3 Create a two-way synchronization task to implement disaster recovery
+- 6 LTS
+  - 6.1 Overview of LTS
+  - 6.2 Log on to the cluster management system
+- 7 Appendix
+  - 7.1 Authorize a tenant organization to access SLB
+
+## 1 What is Lindorm?
 
 Lindorm is a cloud native multi-model database service that allows you to store data of all sizes. Lindorm provides low-cost storage for large volumes of data. Lindorm supports wide table models and is compatible with the standard APIs of multiple open source services, such as Apache HBase, OpenTSDB, and SQL. Lindorm provides databases that are suitable for scenarios such as the Internet, Internet of Things (IoT), Internet of Vehicles (IoV), advertising, social networking, monitoring, gaming, and risk control scenarios. Lindorm provides technical support for the core business of Alibaba Group. Lindorm uses a cloud native multi-model architecture in which computing is decoupled from storage. Lindorm provides benefits such as elasticity, cost-effectiveness, ease of use, high compatibility, and high stability. It allows you to store and analyze data such as metadata, logs, bills, tags, messages, reports, dimension tables, result tables, feeds, user personas, device data, monitoring data, sensor data, small files, and small pictures. Lindorm provides the following core capabilities: Data interoperability: Lindorm supports wide table models. It provides a unified API and also supports the APIs of multiple open source database management systems. Data can be transferred and synchronized between models. This makes application development more agile, flexible, and efficient. Cost-effectiveness: Lindorm can handle tens of millions of concurrent requests and respond with a latency of a few milliseconds. Lindorm greatly reduces the storage cost by using high-density and cost-effective media, automatic cold and hot data separation, and adaptive compression. Cloud-native support and high scalability: Lindorm allows you to scale computing and storage resources separately. Lindorm also provides serverless services that you can scale based on actual usage. Open data ecosystem: Lindorm provides multiple simplified management capabilities such as data exchanges, processing, and subscription. It can be seamlessly integrated with systems such as MySQL, Spark, Flink, and Kafka.
 
 **Multi-modal capabilities**
 
-Lindorm supports wide table models and Lindorm Tunnel Service (LTS). It provides a unified API and supports the APIs of multiple open source database management systems. Data can be transferred and synchronized between models. This makes application development more agile, flexible, and efficient. The core multi-model capabilities are provided by LindormTable. LindormTable LindormTable is used to store large amounts of key-value data and table data. It provides global secondary indexes, multi-dimensional queries, dynamic columns, and Time to Live (TTL). It is applicable to scenarios such as metadata storage, orders, bills, user personas, social networking information, feeds, and logs. LindormTable is compatible with the open standards of multiple types of open source software, such as Apache HBase. LindormTable supports tens of millions of concurrent requests, separation of cold and hot data, and hundreds of petabytes of data storage. Compared with the performance delivered by open source Apache HBase, the throughput is increased by 2 to 6 times, the percentile 99% (P99) latency is reduced by 90%, the mean time to repair (MTTR) is reduced by 90%, the data compression ratio is increased by 100%, and the comprehensive storage cost is reduced by 50%. LTS LTS provides easy-to-use capabilities, including data exchange, processing, and change tracking. You can use these capabilities to migrate data, track real-time data changes, dump data to data lakes, and synchronize data from data warehouses to Lindorm databases. You can also use these capabilities to back up and restore data, and implement multi-active redundancy based on units. This way, LTS provides an all-in-one data ecosystem service for Lindorm. A combination of HBase and Elasticsearch or a combination of HBase, OpenTSDB, and Elasticsearch is used in some scenarios, such as monitoring, social networking, and advertising. In such cases, you may face multiple pain points, such as complex architectures, complex queries, weak consistency, high cost, and misalignment of features. The cloud native multi-model capabilities of Lindorm can help you resolve these pain points to ensure efficient innovations. indorm
+Lindorm supports wide table models and Lindorm Tunnel Service (LTS). It provides a unified API and supports the APIs of multiple open source database management systems. Data can be transferred and synchronized between models. This makes application development more agile, flexible, and efficient. The core multi-model capabilities are provided by LindormTable. LindormTable is used to store large amounts of key-value data and table data. It provides global secondary indexes, multi-dimensional queries, dynamic columns, and Time to Live (TTL). It is applicable to scenarios such as metadata storage, orders, bills, user personas, social networking information, feeds, and logs. LindormTable is compatible with the open standards of multiple types of open source software, such as Apache HBase. LindormTable supports tens of millions of concurrent requests, separation of cold and hot data, and hundreds of petabytes of data storage. Compared with the performance delivered by open source Apache HBase, the throughput is increased by 2 to 6 times, the percentile 99% (P99) latency is reduced by 90%, the mean time to repair (MTTR) is reduced by 90%, the data compression ratio is increased by 100%, and the comprehensive storage cost is reduced by 50%. LTS provides easy-to-use capabilities, including data exchange, processing, and change tracking. You can use these capabilities to migrate data, track real-time data changes, dump data to data lakes, and synchronize data from data warehouses to Lindorm databases. You can also use these capabilities to back up and restore data, and implement multi-active redundancy based on units. This way, LTS provides an all-in-one data ecosystem service for Lindorm. A combination of HBase and Elasticsearch or a combination of HBase, OpenTSDB, and Elasticsearch is used in some scenarios, such as monitoring, social networking, and advertising. In such cases, you may face multiple pain points, such as complex architectures, complex queries, weak consistency, high cost, and misalignment of features. The cloud native multi-model capabilities of Lindorm can help you resolve these pain points to ensure efficient innovations. indorm
 
-## Getting started with
+## 2 Getting started with Lindorm
 
 **Lindorm**
 
-### Log on to the ApsaraDB for
+### 2.1 Log on to the ApsaraDB for Lindorm console
 
 **Lindorm console**
 
@@ -46,7 +89,7 @@ indorm
 5. In the top navigation bar, click **Products**, then click **ApsaraDB for Lindorm** in the
 **Database Services** section.
 
-### Create a Lindorm instance
+### 2.2 Create a Lindorm instance
 
 This topic describes how to create a Lindorm instance in the Lindorm console.
 
@@ -87,7 +130,7 @@ indorm
 
 4. Click **Confirm Order**.
 
-### Configure a whitelist
+### 2.3 Configure a whitelist
 
 This topic describes how to configure a whitelist for a Lindorm instance. Before you use a Lindorm instance, you must add the IP addresses or CIDR blocks to an instance whitelist to allow access from those addresses. This improves database security and stability. A properly configured whitelist can enhance the security of your instance. We recommend that you perform regular maintenance on your whitelists.
 
@@ -120,7 +163,7 @@ indorm
 
 6. Click **OK**.
 
-### Create an LTS instance
+### 2.4 Create an LTS instance
 
 Lindorm Tunnel Service (LTS) is a data ecosystem service that is customized based on the characteristics of Lindorm business scenarios. This topic describes how to create an LTS instance in the Lindorm console.
 
@@ -152,9 +195,9 @@ An Apsara Stack tenant account is created.
 4. Click **Submit**.
 t
 
-## Instance management
+## 3 Instance management
 
-### View the endpoint of a
+### 3.1 View the endpoint of a Lindorm instance
 
 **Lindorm instance**
 
@@ -170,7 +213,7 @@ instance ID or click **Manage** in the **Actions** column.
 4. On the **Database Connection** page, select the engine that you want to manage to view
 the endpoint and port. You can also turn on the IPv6 switch on the right side of an endpoint to connect to a database by using an IPv6 address.
 
-### Activate a classic network
+### 3.2 Activate a classic network endpoint
 
 **endpoint**
 
@@ -187,7 +230,7 @@ instance ID or click **View Instance Details** in the **Actions** column.
 The **Activate the classic network address** button appears only when the instance is in the **Running** state.
 6. In the **Activate the classic network address** message, click **OK**.
 
-### Release an instance
+### 3.3 Release an instance
 
 If you no longer need a Lindorm instance, you can release the instance. This topic describes how to release a Lindorm instance. t
 
@@ -202,7 +245,7 @@ the **Actions** column.
 
 After an instance is released, all data in the instance is deleted. Exercise caution when you release an instance.
 
-### Version update
+### 3.4 Version update
 
 This topic describes how to upgrade a Lindorm instance and how to upgrade a Lindorm Tunnel Service (LTS) instance.
 
@@ -226,7 +269,7 @@ The system performs a rolling upgrade on a cluster to ensure that the Lindorm se
 **Upgrade Minor Version**.
 t The **Upgrade Minor Version** button appears only when a new version is available. The button does not appear when the current version is the latest.
 
-### Restart an engine
+### 3.5 Restart an engine
 
 This topic describes how to restart an engine of a Lindorm instance.
 
@@ -241,7 +284,7 @@ want to manage.
 right side.
 5. In the **Restart Engine** message, click **OK**.
 
-### Scale nodes
+### 3.6 Scale nodes
 
 This topic describes how to change the number of nodes for an engine of a Lindorm instance.
 
@@ -258,9 +301,9 @@ want to manage.
 The number of nodes ranges from 2 to 20.
 6. Click **Submit**.
 
-## LindormTable
+## 4 LindormTable
 
-### Overview
+### 4.1 Overview
 
 LindormTable is a wide table engine service provided by Lindorm to allow you to store large amounts of semi-structured and structured data in distributed storage. LindormTable can store various types of data, such as metadata, orders, bills, profiles, social networking information, feeds, and logs. LindormTable is compatible with standard APIs of open source software and services such as Apache HBase. LindormTable supports hundreds of trillions of rows in a single table, tens of millions of concurrent queries per second (QPS), responses to queries within milliseconds, and disaster recovery that ensures strong consistency across data centers. LindormTable can meet the business requirements for the storage and query of large amounts of data.
 
@@ -364,7 +407,7 @@ High availability: Lindorm supports active-standby or active-active disaster rec
 
 Use Lindorm SQL to connect to LindormTable. Lindorm SQL provides an excellent developer experience. We recommend that you use this method. Use the Apache HBase API to connect to LindormTable. This method is suitable for applications that are developed based on Apache HBase. LindormTable allows you to use multiple connection methods to access a wide table at the same time. You can use one of the preceding methods to access the same data table.
 
-### Connect to LindormTable
+### 4.2 Connect to LindormTable
 
 If you want to use LindormTable SQL client to connect to a Lindorm instance, you must obtain an endpoint that can be used to connect to the instance, the corresponding username, and the corresponding password. This topic describes how to obtain the endpoint.
 
@@ -375,9 +418,9 @@ If you want to use LindormTable SQL client to connect to a Lindorm instance, you
 3. In the left-side navigation pane, click **Database Connections**. The **Wide Table Engine**
 tab appears by default. On this tab, view Lindorm wide table SQL address. Lindorm instances support access over Virtual Private Cloud (VPC) and over the classic network. The private endpoint of a Lindorm instance is used to connect to the instance over a VPC and can be obtained from the Lindorm console. The classic network endpoint of a Lindorm instance is used to connect to the instance over the classic network and can be obtained only after you apply for it.
 
-### Cluster management
+### 4.3 Cluster management
 
-#### Cluster management system
+#### 4.3.1 Cluster management system
 
 You can use the cluster management system to view the resource usage of a Lindorm cluster and centrally manage data stored in the cluster. This topic describes the pages in the cluster management system.
 
@@ -406,7 +449,7 @@ The cluster management system consists of the dashboard, data management, and da
 |   | ACL management | You can manage the permissions of the users of the cluster. You can grant permissions to users or revoke permissions from users. |
 | Data query | N/A | You can query the information about a table by using an SQL statement. |
 
-#### Grouping management
+#### 4.3.2 Grouping management
 
 Lindorm provides a grouping feature, which allows you to create groups to isolate tenants. You can add region servers to different groups, and each group hosts different tables. This way, resources are isolated. This topic describes how to use the cluster management system to manage groups.
 
@@ -476,7 +519,7 @@ Do not move a table to a group that does not contain region servers. Otherwise, 
 3. In the **Move Group** dialog box, specify **target group**.
 4. Click **OK**.
 
-#### Namespace management
+#### 4.3.3 Namespace management
 
 Namespaces are logical groups for tables in Lindorm. You can use the same name for tables that belong to different namespaces. Lindorm provides a default namespace. If you do not specify a namespace, the system uses the default namespace. This topic describes how to use the cluster management system to manage namespaces.
 
@@ -501,7 +544,7 @@ Before you delete a namespace, you must delete all tables in the namespace. Othe
 
 For information about how to specify a group for a namespace, see the Specify a group for a namespace section of the Grouping management topic.
 
-#### User management
+#### 4.3.4 User management
 
 Lindorm supports user authentication. You need only to provide a username and password for user authentication. Your password is stored as ciphertext on the server and is transmitted as ciphertext during the authentication process. This way, passwords cannot be used or forged even if they are intercepted by unauthorized users. This topic describes how to use the cluster management system to manage users.
 
@@ -531,7 +574,7 @@ After you create a user, the password of the user cannot be viewed in the system
 **Operation** column.
 3. In the message that appears, click **OK**.
 
-#### ACL-based permission management
+#### 4.3.5 ACL-based permission management
 
 This topic describes how to use the cluster management system to manage access control list (ACL)-based permissions.
 
@@ -585,7 +628,7 @@ If you no longer need to use the ACL feature, you can disable the feature. After
 2. Turn on or turn off **ACL**.
 3. In the message that appears, click **yes**.
 
-#### Data query
+#### 4.3.6 Data query
 
 Lindorm allows you to query data stored in tables by executing SQL statements in the cluster management system. This topic describes how to use the cluster management system to query data in tables.
 
@@ -622,15 +665,15 @@ SQL Executor.
 6. Optional. Turn on **HexString** to view the query result when the hexadecimal string is used.
 7. Click **Execute**.
 
-## LindormTSDB
+## 5 LindormTSDB
 
 **Important**
 
 Starting September 1, 2024, you can **no longer purchase LindormTSDB**. If you purchased LindormTSDB and migrated data to LindormTSDB by using TSDB before September 1, 2024, you can still use LindormTSDB as expected.
 
-### Overview
+### 5.1 Overview
 
-#### Overview
+#### 5.1.1 Overview
 
 Lindorm provides a **high-performance, cost-efficient, stable, and reliable** online time series engine named LindormTSDB. LindormTSDB provides multiple capabilities such as efficient data reading and writing, storage based on a high compression ratio, and time series data aggregation.
 
@@ -667,7 +710,7 @@ If you use other programming languages to access LindormTSDB, see the **HTTP-bas
 If you are a database administrator or a data analyst, see the **Use Lindorm-cli to connect**
 **to and use LindormTSDB** topic of **Connection guide** in **Lindorm Developer Guide**.
 
-#### Features
+#### 5.1.2 Features
 
 This topic describes the features of LindormTSDB.
 
@@ -677,21 +720,11 @@ LindormTSDB provides efficient and concurrent reading and writing capabilities. 
 
 **Data writing**
 
-You can use one of the following methods to write data to LindormTSDB: Use the INSERT statement of SQL. We recommend that you use Java Database Connectivity (JDBC) to connect to LindormTSDB if you choose this method. Use a compatible device to write data over the Message Queuing Telemetry Transport (MQTT) protocol. Use the InfluxDB line protocol to write data. Use the OpenTSDB API to write data. Use Prometheus to write monitoring data to the remote storage.
-
-**Data query**
-
-You can execute SQL statements to query data or use the OpenTSDB API to query data. You can also use the data query feature in the Lindorm console to visualize the queried data based on data groups, downsampling, and spatial aggregation.
+You can use one of the following methods to write data to LindormTSDB: Use the INSERT statement of SQL. We recommend that you use Java Database Connectivity (JDBC) to connect to LindormTSDB if you choose this method. Use a compatible device to write data over the Message Queuing Telemetry Transport (MQTT) protocol. Use the InfluxDB line protocol to write data. Use the OpenTSDB API to write data. Use Prometheus to write monitoring data to the remote storage. You can execute SQL statements to query data or use the OpenTSDB API to query data. You can also use the data query feature in the Lindorm console to visualize the queried data based on data groups, downsampling, and spatial aggregation.
 
 **Data management**
 
-**Database management**
-
-Time series data stored in different databases is isolated. You can execute SQL statements to specify the interval between time-based partitions and the time-to-live (TTL) values of data for these databases. For more information, see Manage databases.
-
-**User and permission management**
-
-You can verify the identities of the users that want to access your time series data and check the permissions that the users have on the storage that stores the time series data. You can execute SQL statements or use the Lindorm console to manage the users in LindormTSDB and the permissions of these users. For more information, see User and permission management.
+Time series data stored in different databases is isolated. You can execute SQL statements to specify the interval between time-based partitions and the time-to-live (TTL) values of data for these databases. For more information, see Manage databases. You can verify the identities of the users that want to access your time series data and check the permissions that the users have on the storage that stores the time series data. You can execute SQL statements or use the Lindorm console to manage the users in LindormTSDB and the permissions of these users. For more information, see User and permission management.
 
 **Efficient time series data storage technologies**
 
@@ -709,7 +742,7 @@ LindormTSDB provides an O&M system that you can use to maintain your Lindorm ins
 
 LindormTSDB provides the following solutions to ensure the security of your data and Lindorm instances: LindormTSDB allows you to access your instances over virtual private clouds (VPCs) to ensure the security of the instances. LindormTSDB allows you to manage user permissions at the database level. This enables data access in a more fine-grained manner. By default, LindormTSDB creates multiple replicas of data to ensure data availability.
 
-#### Comparison with TSDB
+#### 5.1.3 Comparison with TSDB
 
 This topic compares the features provided by LindormTSDB and Time Series Database (TSDB). LindormTSDB is a next-generation time series engine that is developed based on TSDB. LindormTSDB is a new service that is developed by Alibaba Cloud and is compatible with most API operations that are provided by TSDB. The following table describes the similarities and differences between LindormTSDB and TSDB.
 
@@ -726,9 +759,9 @@ This topic compares the features provided by LindormTSDB and Time Series Databas
 | Performan ce | LindormTSDB can be scaled up to write tens of millions of data points per second. | TSDB can be scaled up to write millions of data points per second. |
 | Applicatio n scenarios | LindormTSDB can be widely used in IoT scenarios, Industrial Internet of Things (IIoT) scenarios, and the performance monitoring of enterprise applications. | TSDB is used for the performance monitoring of enterprise applications. |
 
-### Getting started
+### 5.2 Getting started
 
-#### Overview
+#### 5.2.1 Overview
 
 This topic describes how to connect to LindormTSDB of Lindorm and provides references to help you use LindormTSDB.
 
@@ -751,11 +784,11 @@ following table describes the methods, scenarios, and relevant references.
 | Use a JDBC driver | The Java Database Connectivity (JDBC) API is used in the code of your application to connect to various heterogeneous databases. An object- relational mapping (ORM) framework for data access, such as MyBatis, is included in the code of your application. | For more information, see the Use the JDBC driver for Lindorm to connect to and use LindormTSDB topic of Connection guide in Lindorm Developer Guide. |
 | Use Lindorm-cli | N/A | For more information, see the Use Lindorm-cli to connect to and use LindormTSDB topic of Connection guide in Lindorm Developer Guide. |
 
-### O&M guide
+### 5.3 O&M guide
 
-#### Database management
+#### 5.3.1 Database management
 
-##### Manage databases
+##### 5.3.1.1 Manage databases
 
 This topic describes the concepts related to databases in LindormTSDB and the features that are provided by LindormTSDB for time series data.
 
@@ -786,7 +819,7 @@ Modify the attributes of a database You can modify the attributes of a database 
 **reference** in **Lindorm Developer Guide**.
 Query the attributes of a database You can query the attributes of a database in LindormTSDB. For more information about the SQL syntax used to query the attributes of a database, see the **DESCRIBE DATABASE** topic of **SQL syntax reference** in **Lindorm Developer Guide**.
 
-#### User and permission management
+#### 5.3.2 User and permission management
 
 This topic describes how access control is performed in LindormTSDB and how to manage users and permissions in LindormTSDB.
 
@@ -933,7 +966,7 @@ The user information and permission data that are used in LindormTSDB can also b
 
 Users that are created in LindormTable can be granted the TRASH permission. The TRASH permission does not take effect in LindormTSDB. If a namespace in LindormTable has the same name as a database in LindormTSDB and a user is granted permissions on the namespace, the user has permissions to access the database with the same name in LindormTSDB by default. Similarly, if a namespace in LindormTSDB has the same name as a database in LindormTable and a user is granted permissions on the namespace, the user has permissions to access the database with the same name in LindormTable by default.
 
-#### Create a two-way synchronization task
+#### 5.3.3 Create a two-way synchronization task to implement disaster recovery
 
 **to implement disaster recovery**
 
@@ -991,9 +1024,9 @@ page.
 Lindorm TSDB Incremental Sync page, click create new job and specify the source and destination clusters.
 7. Click **Create** to create a real-time synchronization task.
 
-## LTS
+## 6 LTS
 
-### Overview of LTS
+### 6.1 Overview of LTS
 
 Lindorm Tunnel Service (LTS) is a data ecosystem service that is customized for Lindorm business scenarios. LTS provides easy-to-use capabilities, including data exchange, processing, and change tracking. You can use these capabilities to migrate data, track realtime data changes, dump data to data lakes, and synchronize data from Lindorm to data warehouses. You can also use these capabilities to back up and restore data, and implement multi-active redundancy based on units. This way, LTS provides an all-in-one data ecosystem service for Lindorm.
 
@@ -1025,7 +1058,7 @@ Apache HBase. LTS allows you to process data at the physical file level. This is
 
 Cluster migration Scenarios Data migration from HBase to Lindorm. The switchover of cluster networks. For example, the network type is changed from the classic network to a virtual private cloud (VPC). Data migration between data centers across regions. Workload decoupling. Benefits Both the historical data and real-time incremental data can be migrated during one migration task. When data is being migrated, LTS does not interact with the source HBase or Lindorm cluster. LTS reads data only from the Hadoop Distributed File System (HDFS) of the source cluster. This minimizes the impact on the online business that runs on the source cluster. In most cases, compared with data migration at the API layer, data replication at the file layer can help you reduce more than 50% of the migration traffic. LTS is efficient. Each node can migrate data at a rate of up to 100 MB/s. You can add nodes for horizontal scaling to migrate terabytes or even petabytes of data. LTS provides stable services by retrying failed tasks. It monitors the synchronization rates and progress of tasks in real time and reports alerts when tasks fail. LTS ensures data accuracy by verifying the synchronized data. Automatic schema synchronization is supported to ensure consistent partitions. Decoupling online business from offline business LTS allows you to synchronize online business data in real time to HDFS or Object Storage Service (OSS) storage. LTS can work with components of big data services, such as Spark and MapReduce, to analyze data. This ensures that online business queries are not affected. Primary/secondary disaster recovery LTS supports two-way data synchronization between a primary cluster and a secondary cluster. When the primary cluster fails, you can switch to the secondary cluster to reduce the impact on your workloads. After the primary cluster recovers, you can use LTS to synchronize the incremental data from the secondary cluster to the primary cluster. Historical data storage in ApsaraDB RDS databases In scenarios where historical data, such as transaction orders, is stored, performance bottlenecks may occur in ApsaraDB RDS databases due to the ever-increasing data size. Periodic data archiving or sharding is complicated and causes high costs. LTS allows you to synchronize data from ApsaraDB RDS to LindormTable in real time to separate hot data from cold data. LindormTable provides features such as automatic horizontal scaling, highconcurrency queries, multi-dimensional indexing, and lightweight analysis. Lindorm Streams allows you to track data changes in sequence. LTS also allows you to synchronize data from LindormTable to other analytics systems for complex data analysis.
 
-### Log on to the cluster
+### 6.2 Log on to the cluster management system
 
 **management system**
 
@@ -1043,9 +1076,9 @@ instance ID or click **View Instance Details** in the **Actions** column.
 3. In the **LTS WebUI Access** section, click **ClusterManager** to log on to the cluster
 management system.
 
-## Appendix
+## 7 Appendix
 
-### Authorize a tenant
+### 7.1 Authorize a tenant organization to access SLB
 
 **organization to access SLB**
 

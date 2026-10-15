@@ -3,16 +3,52 @@ title: "Elastic Compute Service Introduction to Instance Families and Instance T
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 57
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Introduction to Instance Families and Instance Types 20260629.pdf"
+source_pdf: "2d3c695b236540a2_Alibaba Cloud Apsara Stack V3.18.6 Elastic Compute Service Introduction to Instance Families and Ins"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Elastic%20Compute%20Service%20Introduction%20to%20Instance%20Families%20and%20Instance%20Types%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Elastic Compute Service Introduction to Instance Families and Instance Types
 
+## Table of Contents
+
+- 1 Instance families and instance types
+- 2 Intel-based instance families
+  - 2.1 Shared
+  - 2.2 Dedicated
+  - 2.3 ECS Bare Metal Instance families
+  - 2.4 Heterogeneous computing and heterogeneous bare metal
+  - 2.5 Super Computing Cluster (SCC)
+  - 2.6 Local HDD
+  - 2.7 Burstable instance families
+  - 2.8 Network-enhanced
+  - 2.9 Storage-enhanced instance families
+  - 2.10 Trusted computing
+  - 2.11 Local SSD
+- 3 Yitian instance family
+  - 3.1 Shared
+  - 3.2 Dedicated instances
+- 4 Hygon-based instance families
+  - 4.1 Shared
+  - 4.2 Dedicated
+  - 4.3 Heterogeneous computing
+  - 4.4 Local HDD
+  - 4.5 Local SSD
+  - 4.6 Super Computing Cluster
+  - 4.7 Network-enhanced
+  - 4.8 Storage-enhanced
+- 5 Kunpeng-based instance families
+  - 5.1 Shared
+  - 5.2 Dedicated
+  - 5.3 Local HDD
+  - 5.4 Network-enhanced
+- 6 Feiteng-based instance families
+  - 6.1 Shared
+  - 6.2 Dedicated
+
 milies and instance types
 
-## Instance families and
+## 1 Instance families and instance types
 
 **instance types**
 
@@ -52,11 +88,11 @@ Resources are allocated differently to ECS instances of different types. For all
 
 Specific specifications have limits in usage. The following specifications do not support custom settings: CPU credits Non-Uniform Memory Access (NUMA) ON option Bare metal instance specifications vGPUs Super Computing Cluster (SCC) instance specifications
 
-## Intel-based instance
+## 2 Intel-based instance families
 
 **families**
 
-### Shared
+### 2.1 Shared
 
 Shared instances suit business scenarios that do not require high virtual machine performance, such as small and medium-sized websites and web applications, development environments, build servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and general application services. This topic describes the specific attributes, specification sizes, and virtualization technologies of shared instance families.
 
@@ -81,7 +117,7 @@ Shared instances suit business scenarios that do not require high virtual machin
 | ecs.mn4v 2 | Intel V4/V5/V6 | KVM | 40 vCPU, 48 vCPU, 56 vCPU, 64 vCPU, 80 vCPU, 96 vCPU | 10 G, 25 G | Specification sizes (vCPU): 1, 2, 4, 8, 16, 32 Compute-to-memory ratio: 1:4 Supports IPv6 addresses. |
 | ecs.e4v2 | Intel V4/V5/V6 | KVM | 40 vCPU, 48 vCPU, 64 vCPU, 56 vCPU, 80 vCPU, 96 vCPU | 10 G, 25 G | Specification sizes (vCPU): 1, 2, 4, 8, 16 Compute-to-memory ratio: 1:8 Supports IPv6 addresses. |
 
-### Dedicated
+### 2.2 Dedicated
 
 Dedicated instance families suit business scenarios that require high virtual machine performance, such as high packet forwarding rate scenarios, web frontend servers, data analysis, batch computing, video encoding, and high-performance scientific and engineering applications. This topic describes specific attributes, specification sizes, and virtualization technologies of dedicated instance families.
 
@@ -146,7 +182,7 @@ Dedicated instance families suit business scenarios that require high virtual ma
 | ecs.g5 | Intel V5 | Second- generation SHENLONG architecture | 104 vCPU | 25 G | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 64, 86, and 88. Compute-to-memory ratio: 1:4. |
 | ecs.r5 | Intel V5 | Second- generation SHENLONG architecture | 104 vCPU | 25 G | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 64, 86, and 88. Compute-to-memory ratio: 1:8 |
 
-### ECS Bare Metal Instance
+### 2.3 ECS Bare Metal Instance families
 
 **families**
 
@@ -185,7 +221,7 @@ Elastic Compute Service (ECS) Bare Metal Instance families provide robust comput
 | ecs.ebmg5 | Intel V5 | First- generation SHENLONG architectur e | 96 vCPUs | 10 G | Provides the ecs.ebmg5.24xlarge instance type with 96 vCPUs and 384 GiB of memory. |
 | ecs.ebmg5 s | Intel V5 | Second- generation SHENLONG architectur e | 96 vCPUs | 25 G | Provides the ecs.ebmg5s.24xlarge instance type with 96 vCPUs and 384 GiB of memory. |
 
-### Heterogeneous computing and
+### 2.4 Heterogeneous computing and heterogeneous bare metal
 
 **heterogeneous bare metal**
 
@@ -252,7 +288,7 @@ Heterogeneous computing and heterogeneous bare metal instances work with various
 | ecs.gn5i | Intel V4 | KVM | 56 vCPU or 64 vCPU | 10 G or 25 G | Equipped with one to two NVIDIA P4 GPUs. The computing-to- memory ratio is 1:4. |
 | ecs.gn5t | Intel V4 | KVM | 64 vCPU | 10 G or 25 G | Equipped with two to eight NVIDIA 1080Ti GPUs. The computing-to- memory ratio is approximately 1:4. |
 
-### Super Computing Cluster
+### 2.5 Super Computing Cluster (SCC)
 
 **(SCC)**
 
@@ -279,7 +315,7 @@ SCCs are dedicated to HPC scenarios. To use SCCs, the hyper-threading feature mu
 | ecs.sccg5ib | Intel V5 | First- generation SHENLONG architectur e | 96 vCPU | 10 GB | Uses a 100 GB InfiniBand network. |
 |---|---|---|---|---|---|
 
-### Local HDD
+### 2.6 Local HDD
 
 Local HDD instances suit business scenarios that require big data computing and storage analysis, such as massive data storage and offline computing. These instances meet the requirements of distributed computing workloads represented by Hadoop for instance storage performance, storage capacity, and internal bandwidth. This topic describes specific attributes, specification sizes, and virtualization technologies of local HDD instance families.
 
@@ -306,7 +342,7 @@ Local HDD instances suit business scenarios that require big data computing and 
 | ecs.d4s- 16x1t-k10 | Intel V4 | KVM | 56 vCPU | 10 G | The host is equipped with sixteen 1 TB SATA HDDs. |
 | ecs.d2-zyy | Intel V5/V6 | KVM | 40 vCPU, 48 vCPU, 64 vCPU, 80 vCPU, 96 vCPU, 104 vCPU | 10 G, 25 G | The host is equipped with twelve 8 TB SATA HDDs. |
 
-### Burstable instance families
+### 2.7 Burstable instance families
 
 Burstable instance families provide baseline CPU performance with the ability to burst above the baseline by spending CPU credits. These instance types are suitable for business scenarios that do not require high performance of virtual machines, such as web applications and small and medium-sized websites. This topic describes the attributes, specifications, and virtualization technologies of burstable instance families.
 
@@ -314,7 +350,7 @@ Burstable instance families provide baseline CPU performance with the ability to
 |---|---|---|---|---|---|
 | ecs.t5 | Intel V5/V6 | KVM | 40 vCPU, 48 vCPU, 64 vCPU, 80 vCPU, 96 vCPU, 104 vCPU | 10 Gbps, 25 Gbps | Provides baseline CPU performance with the ability to burst above the baseline by spending CPU credits. |
 
-### Network-enhanced
+### 2.8 Network-enhanced
 
 Network-enhanced instance families are optimized for network-intensive scenarios. The network metrics of network-enhanced instance families are significantly higher than those of general-purpose instance families of the same generation. This ensures that networkenhanced instance families can meet the requirements of various scenarios. Networkenhanced instance families are especially suitable for scenarios that require higher network performance than general-purpose instance families. This topic describes the attributes, specifications, and virtualization technologies of network-enhanced instance families.
 
@@ -329,7 +365,7 @@ Network-enhanced instance families are optimized for network-intensive scenarios
 | ecs.ne7m- k25 | Intel V7 | KVM | 96 vCPUs | 25 G | Instance sizes (vCPUs): 8, 12, 16, 24, 32, 40, 48, 56, 64, and 72 CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 |
 | ecs.ne7m- k10 | Intel V7 | KVM | 96 vCPUs | 10 G | Instance sizes (vCPUs): 8, 12, 16, 24, 32, 40, 48, 56, 64, and 72 CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 |
 
-### Storage-enhanced instance
+### 2.9 Storage-enhanced instance families
 
 **families**
 
@@ -346,7 +382,7 @@ Storage-enhanced instance families are optimized for storage-intensive scenarios
 | ecs.g7s-se- x25 | Intel V7 | Third- generation SHENLONG architectur e | 64 vCPU | 25 GB | CPU-to-memory ratio: 1:8. |
 | ecs.ebmg7 x-se- numaoff- x25-c1m8 | Intel V7 | Third- generation SHENLONG architectur e | 128 vCPU | 25 GB | CPU-to-memory ratio: 1:8. Supports Shared Block Storage and lets you disable NUMA mode. |
 
-### Trusted computing
+### 2.10 Trusted computing
 
 Trusted computing instances use UEFI secure firmware, virtual Trusted Platform Modules (vTPM/vTCM), and remote attestation services to measure boot processes and verify integrity. This process ensures that your instances are secure and trustworthy. This topic describes the properties, instance sizes, and virtualization technologies of trusted computing instance families.
 
@@ -354,7 +390,7 @@ Trusted computing instances use UEFI secure firmware, virtual Trusted Platform M
 |---|---|---|---|---|---|
 | ecs.g7x- vtpm-k25 | Intel V7 | KVM | 128vCPU | 25 G | Supports ENI Trunking Compute-to-memory ratio: 1:1, 1:2, 1:3, 1:4, 1:6, 1:8 |
 
-### Local SSD
+### 2.11 Local SSD
 
 Local SSD instances are I/O-intensive local disk storage instances which suit business scenarios that demand extremely high storage I/O performance and have a high-availability architecture at the application layer, such as NoSQL non-relational databases, MPP data warehouses, and distributed file systems.
 
@@ -369,9 +405,9 @@ Local SSD instances are I/O-intensive local disk storage instances which suit bu
 
 ce family
 
-## Yitian instance family
+## 3 Yitian instance family
 
-### Shared
+### 3.1 Shared
 
 Shared instances suit business scenarios that do not require high virtual machine performance, such as small to medium-sized websites and web applications, developer environments, build servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and general application services. This topic describes the properties, specification sizes, and virtualization technologies of shared instance families.
 
@@ -380,7 +416,7 @@ Shared instances suit business scenarios that do not require high virtual machin
 | ecs.s8-yt- k | Yitian 710 | KVM | 128 vCPU | 10 Gbps, 25 Gbps | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64 Compute-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, 1:8 |
 | ecs.s8- numaon- yt-k | Yitian 710 | KVM | 128 vCPU | 10 Gbps, 25 Gbps | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64 Compute-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, 1:8 Supports NUMA ON confifiguration. |
 
-### Dedicated instances
+### 3.2 Dedicated instances
 
 Dedicated instances suit business scenarios that require high virtual machine performance, such as high packet forwarding rate scenarios, web frontend servers, data analysis, batch computing, video encoding, and high-performance scientific and engineering applications. This topic describes specific attributes, specification sizes, and virtualization technologies of dedicated instance families.
 
@@ -397,11 +433,11 @@ ce family
 
 d instance families
 
-## Hygon-based instance
+## 4 Hygon-based instance families
 
 **families**
 
-### Shared
+### 4.1 Shared
 
 Shared instances suit business scenarios that do not require high virtual machine performance, such as small and medium-sized websites and web applications, development environments, build servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and general application services. This topic describes the specific attributes, specification sizes, and virtualization technologies of shared instance families.
 
@@ -413,7 +449,7 @@ Shared instances suit business scenarios that do not require high virtual machin
 | ecs.s6 -hg-k | Hygon 2 | KVM | 64 vCPU, 128 vCPU | 10 G, 25 G | Compute-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, 1:8 Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64 |
 | ecs.gh g-s | Hygon 1 | Shenlong Generatio n 2 | 128 vCPU | 10 G, 25 G | Compute-to-memory ratio: 1:4 Specification sizes (vCPU): 2, 4, 8, 12, 16, 32, 64, 96, 128 |
 
-### Dedicated
+### 4.2 Dedicated
 
 d instance families Dedicated instances suit business scenarios that require high virtual machine performance, such as high packet forwarding rate scenarios, frontend web servers, data analysis, batch computing, video encoding, and high-performance scientific and engineering applications. This topic describes the specific attributes, specification sizes, and virtualization technologies of dedicated instance families.
 
@@ -468,7 +504,7 @@ d instance families
 |---|---|---|---|---|---|
 | ecs.ghg | Hygon 1/2 | Second- generation Shenlong | 128 vCPU | 10 G, 25 G | Compute-to-memory ratio: 1:4. |
 
-### Heterogeneous computing
+### 4.3 Heterogeneous computing
 
 Hygon heterogeneous computing instances work with various accelerators, such as Hygon 1 and Hygon 3. These instances suit business scenarios including AI inference, computer vision, speech recognition and synthesis, machine translation, recommendation systems, real-time rendering, deep learning, and scientific computing. This topic describes the specific attributes, instance sizes, and virtualization technologies of the heterogeneous computing instance family.
 
@@ -510,7 +546,7 @@ d instance families
 | ecs.gh6vx -hg-k10 | Hygon 3 | KVM | 128 vCPU | 10 G | Equipped with 2 or 8 Hygon DCU Z100L units. |
 | ecs.gn6hv | Hygon 1 | KVM | 128 vCPU | 10 G, 25 G | Equipped with 1 to 2 NVIDIA V100 units. The computing-to- memory ratio is approximately 1:4. |
 
-### Local HDD
+### 4.4 Local HDD
 
 Local HDD instances are suitable for business scenarios such as mass storage and offline computing that have high requirements for big data computing, storage, and analysis and can meet the high requirements of distributed computing services such as Hadoop in terms of storage performance, storage capacity, and internal bandwidth. This topic describes the attributes, specifications, and virtualization technologies of instance families equipped with local HDDs.
 
@@ -518,7 +554,7 @@ Local HDD instances are suitable for business scenarios such as mass storage and
 |---|---|---|---|---|---|
 | ecs.dhg | Hygon 1/2 | KVM | 64 vCPU, 128 vCPU | 10 G, 25 G | Uses twelve 8-TB SATA HDDs. |
 
-### Local SSD
+### 4.5 Local SSD
 
 d instance families Local SSD instances are suitable for I/O-intensive applications that require high performance and low latency, such as NoSQL databases (including Cassandra and MongoDB), MPP data warehouses, distributed file systems, and search scenarios that use solutions such as Elasticsearch. This topic describes the attributes, specifications, and virtualization technologies of instance families equipped with local SSDs.
 
@@ -527,7 +563,7 @@ d instance families Local SSD instances are suitable for I/O-intensive applicati
 | ecs.i7x- 4x4t-hg- k10 | Hygon 3 | KVM | 128 vCPUs | 10 GB | An instance is equipped with four Non-Volatile Memory Express (NVMe) SSDs of 3,840 GB. |
 | ecs.i7x- 4x4t-hg- k25 | Hygon 3 | KVM | 128 vCPUs | 25 GB | An instance is equipped with four NVMe SSDs of 3,840 GB. |
 
-### Super Computing Cluster
+### 4.6 Super Computing Cluster
 
 Super Computing Cluster (SCC) instance families provide computing cluster services with ultimate computing performance and parallel efficiency using high-speed InfiniBand networks on top of Elastic Compute Service (ECS) bare metal instances. SCC instance families are suitable for scenarios such as high-performance computing, artificial intelligence, machine learning, scientific and engineering computing, data analytics, and audio and video processing. This topic describes the attributes, specifications, and virtualization technologies of SCC instance families.
 
@@ -539,7 +575,7 @@ SCCs are dedicated to HPC scenarios. To use SCCs, the hyper-threading feature mu
 |---|---|---|---|---|---|
 | ecs.sccg7x- roce-hg- x25-c1m4 | Hygon 3 | Third- generation SHENLONG architectur e | 128 vCPU | 25 G | Supports Remote Direct Memory Access (RDMA) over Converged Ethernet (RoCE) network interface controllers (NICs). |
 
-### Network-enhanced
+### 4.7 Network-enhanced
 
 d instance families Network-enhanced instance families are optimized for network-intensive scenarios. The network metrics of network-enhanced instance families are significantly higher than those of general-purpose instance families of the same generation. This ensures that networkenhanced instance families can meet the requirements of various scenarios. Networkenhanced instance families are especially suitable for scenarios that require higher network performance than general-purpose instance families. This topic describes the attributes, specifications, and virtualization technologies of network-enhanced instance families.
 
@@ -549,7 +585,7 @@ d instance families Network-enhanced instance families are optimized for network
 | ecs.ne8m- hg-k25 | Hygon 4 | KVM | 96 vCPU | 25 GB | Specification sizes (vCPU): 2, 4, 8, 16, 32, 64, and 72. Compute-to-memory ratios: 1:2, 1:4, 1:6, and 1:8. |
 | ecs.ne7x- hg-k25 | Hygon 3 | KVM | 128 vCPU | 25 GB | Specification sizes (vCPU): 2, 4, 8, 16, 32, 64, 72, 96, and 104. Compute-to-memory ratios: 1:2, 1:4, 1:6, and 1:8. |
 
-### Storage-enhanced
+### 4.8 Storage-enhanced
 
 Storage-enhanced instances optimize EBS-related capabilities, such as cloud disk bandwidth and cloud disk IOPS, and suit storage-intensive application scenarios. This article describes specific attributes, specification sizes, and virtualization technologiesof storage-enhanced instance families.
 
@@ -565,11 +601,11 @@ d instance families
 
 sed instance families
 
-## Kunpeng-based instance
+## 5 Kunpeng-based instance families
 
 **families**
 
-### Shared
+### 5.1 Shared
 
 Shared instance families suits business scenarios that do not require high virtual machine performance, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and general application services. This topic describes the attributes, specification sizes, and virtualization technologies of shared instance families.
 
@@ -579,7 +615,7 @@ Shared instance families suits business scenarios that do not require high virtu
 | ecs.s5-kp- k | Kunpeng9 20 | KVM | 64 vCPUs, 96 vCPUs, 128 vCPUs | 10 G, 25 G | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, and 64. CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8. |
 | ecs.gkp-s | Kunpeng9 20 | KVM | / | 10 G, 25 G | CPU-to-memory ratio: 1:4. |
 
-### Dedicated
+### 5.2 Dedicated
 
 Dedicated instances suit business scenarios that require high virtual machine performance, such as high packet forwarding rate scenarios, frontend servers, data analysis, batch computing, video encoding, and high-performance scientific and engineering applications. This topic describes the specific attributes, specification sizes, and virtualization technologies of dedicated instance families.
 
@@ -616,7 +652,7 @@ sed instance families
 | ecs.gkp | Kunpeng920 | KVM | 96 vCPU | 10 G, 25 G | Compute-to-memory ratio: 1:4. |
 | ecs.gkp- m | Kunpeng920 | Second- generation Shenlong architecture | / | 10 G, 25 G | Compute-to-memory ratio: 1:4. |
 
-### Local HDD
+### 5.3 Local HDD
 
 Instance families equipped with local HDDs are suitable for business scenarios such as mass storage and offline computing that have high requirements for big data computing, storage, and analysis and can meet the high requirements of distributed computing services such as Hadoop in terms of storage performance, storage capacity, and internal bandwidth. This topic describes the attributes, specifications, and virtualization technologies of instance families equipped with local HDDs. sed instance families
 
@@ -624,7 +660,7 @@ Instance families equipped with local HDDs are suitable for business scenarios s
 |---|---|---|---|---|---|
 | ecs.dkp | Kunpeng920 | KVM | 64 vCPU, 96 vCPU | 10 Gbps, 25 Gbps | Equipped with twelve 8- TB SATA HDDs. |
 
-### Network-enhanced
+### 5.4 Network-enhanced
 
 Network-enhanced instances are optimized for network-intensive application scenarios. All network metrics improve significantly and exceed those of general-purpose instance families from the same generation, meeting vertical scenario requirements. This instance type is especially suitable for scenarios that require higher network performance than generalpurpose instances. This topic describes specific attributes, specification sizes, and virtualization technologies of network-enhanced instance families.
 
@@ -636,11 +672,11 @@ Network-enhanced instances are optimized for network-intensive application scena
 
 ed instance families
 
-## Feiteng-based instance
+## 6 Feiteng-based instance families
 
 **families**
 
-### Shared
+### 6.1 Shared
 
 Shared instances suit business scenarios that do not require high virtual machine performance, such as small and medium-sized websites and web applications, development environments, build servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and general application services. This topic describes specific attributes, specification sizes, and virtualization technologies of shared instance families.
 
@@ -650,7 +686,7 @@ Shared instances suit business scenarios that do not require high virtual machin
 | ecs.s5-ft- k | FT-2000+ | KVM | 64 vCPU | 10 G, 25 G | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64 Compute-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, 1:8 |
 | ecs.s6-ft- k | FT-S2500 | KVM | 128 vCPU | 10 G, 25 G | Specification sizes (vCPU): 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64 Compute-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, 1:8 |
 
-### Dedicated
+### 6.2 Dedicated
 
 Dedicated instances suit business scenarios that require high virtual machine performance, such as high packet forwarding rate scenarios, web frontend servers, data analysis, batch computing, video encoding, and high-performance scientific and engineering applications. This topic describes specific attributes, specification sizes, and virtualization technologies of dedicated instance families.
 

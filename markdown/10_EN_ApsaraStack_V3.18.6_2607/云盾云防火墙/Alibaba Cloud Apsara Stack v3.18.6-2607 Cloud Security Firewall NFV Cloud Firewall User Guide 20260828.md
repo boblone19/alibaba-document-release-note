@@ -3,16 +3,51 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Clou
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 205
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall User Guide 20260828.pdf"
+source_pdf: "e45362d6af123ea3_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall User Guide 202608"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20NFV%20Cloud%20Firewall%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall User Guide 20260828
 
+## Table of Contents
+
+- 1 Usage notes
+- 2 Getting started
+  - 2.1 User roles and permissions
+  - 2.2 Log on to the Apsara Uni-manager Management Console
+- 3 NFV Cloud Firewall
+  - 3.1 Firewalls
+    - 3.1.1 Create a vFW cluster
+    - 3.1.2 Create a disaster recovery vFW cluster
+    - 3.1.3 View and log in to an ECS instance
+    - 3.1.4 Create an endpoint for a vFW cluster
+    - 3.1.5 Add a vFW route
+    - 3.1.6 Quick bypass
+    - 3.1.7 View details of a vFW cluster
+  - 3.2 CIDR block management
+    - 3.2.1 Create a CIDR block
+    - 3.2.2 Manage CIDR blocks
+  - 3.3 Route configuration
+    - 3.3.1 Create a route
+    - 3.3.2 Advertise and withdraw a route
+    - 3.3.3 Manage routes
+  - 3.4 Dedicated hosts
+    - 3.4.1 Create a dedicated host group
+    - 3.4.2 Manage dedicated host groups
+  - 3.5 System settings
+    - 3.5.1 Cross-organization resource authorization
+    - 3.5.2 Workflows
+  - 3.6 Best practices
+    - 3.6.1 VPC-VPC protection within an organization by NFV Cloud Firewall in a single data center
+    - 3.6.2 VPC-VPC protection across organizations by NFV Cloud Firewall in a single data center
+    - 3.6.3 vSwitch-vSwitch protection within an organization by NFV Cloud Firewall in a single data center
+    - 3.6.4 Configure the bypass and restoration features of NFV Cloud Firewall
+    - 3.6.5 VPC-data center protection by NFV Cloud Firewall in a single data center
+
 sage notes
 
-## Usage notes
+## 1 Usage notes
 
 This topic describes the usage notes for the Security Orchestration, Automation, and Response (SOAR) User Guide and the configuration requirements for the on-premises computer used to log on to Apsara Stack Security Center.
 
@@ -31,9 +66,9 @@ You can log on to Apsara Stack Security Center only when your on-premises comput
 
 etting started
 
-## Getting started
+## 2 Getting started
 
-### User roles and permissions
+### 2.1 User roles and permissions
 
 This topic describes the user roles involved in Apsara Stack Security. The roles available in Apsara Stack Security are all default roles. You cannot create custom roles. Before you log in to Apsara Stack Security, make sure that your account is assigned the required role. For more information, see the Default roles in Apsara Stack Security section of this topic. Table 1: Default roles in Apsara Stack Security
 
@@ -47,7 +82,7 @@ This topic describes the user roles involved in Apsara Stack Security. The roles
 If you do not have an account or a role, contact the administrator to create a user and assign a role to the user. For more information, see **Create a user** in **Apsara Uni-manager**
 **Management Console User Guide**.
 
-### Log on to the Apsara Uni-
+### 2.2 Log on to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -83,15 +118,15 @@ For information about how to bind and enable MFA, see the **Security Center** >
 **Multi-factor Authentication** > **Manage Multi-factor Authentication** section in
 the Apsara Uni-manager Management Console User Guide.
 
-## NFV Cloud Firewall
+## 3 NFV Cloud Firewall
 
-### Firewalls
+### 3.1 Firewalls
 
 **Quotas on NFV Cloud Firewall**
 
 In the upper-right corner of the **Firewalls** page, you can view the firewall capacity, which indicates the throughput of the firewall purchased for the site. You can configure quotas in Quota Management in the Apsara Uni-manager Management Console.
 
-#### Create a vFW cluster
+#### 3.1.1 Create a vFW cluster
 
 This topic describes how to create a virtual firewall (vFW) cluster.
 
@@ -128,7 +163,7 @@ select a region from the **Region** drop-down list and click **Access with Autho
 | ECS Image ID | Select an ECS image ID. |
 | Description | Enter a description for the cluster. The description can be 1 to 255 characters in length. |
 
-#### Create a disaster recovery vFW cluster
+#### 3.1.2 Create a disaster recovery vFW cluster
 
 A disaster recovery (DR) cluster is a redundancy mechanism that prevents network failure and security risks caused by single points of failure (SPOF). This topic describes how to create a DR vFW cluster.
 
@@ -161,7 +196,7 @@ parameters, and then click **OK**.
 |---|---|
 | Description | Enter a description for the cluster. The description can be 1 to 255 characters in length. |
 
-#### View and log in to an ECS instance
+#### 3.1.3 View and log in to an ECS instance
 
 This topic describes how to view and log in to an Elastic Compute Service (ECS) instance in a virtual firewall (vFW) cluster.
 
@@ -182,7 +217,7 @@ network. You can create only one login method over the classic network.
 **VPC Network**: You can click **Create** and select a vSwitch ID to create a login method
 over a virtual private cloud (VPC). You can create only one login method over a VPC.
 
-#### Create an endpoint for a vFW cluster
+#### 3.1.4 Create an endpoint for a vFW cluster
 
 An endpoint defines a security control node for inbound and outbound traffic. The node directs traffic to the virtual firewall (vFW) cluster for security detection and policy execution. This topic describes how to create an endpoint for a vFW cluster.
 
@@ -216,7 +251,7 @@ select a region from the **Region** drop-down list and click **Access with Autho
 After you create the endpoint, return to the Details page. You can find that the endpoint is in the **Running** state, and the endpoint ID and IP address are displayed. In the **VFW Interface** section, a vFW interface is automatically added based on the endpoint information. If the Configuration Details column of the vFW interface displays
 **Published**, the endpoint workflow is completed.
 
-#### Add a vFW route
+#### 3.1.5 Add a vFW route
 
 A virtual firewall (vFW) route controls the traffic path and ensures the execution of security policies. This topic describes how to create a vFW route.
 
@@ -244,7 +279,7 @@ click **OK**. Click the **IPv4 Route** or **IPv6 Route** tab based on your busin
 | Destination CIDR Block | Enter the destination CIDR block to which the vFW route applies. The CIDR block defines the scope of traffic to be regulated by the vFW route. |
 | Description | Enter a description. The description can be 1 to 255 characters in length. |
 
-#### Quick bypass
+#### 3.1.6 Quick bypass
 
 The quick bypass feature is designed for emergency scenarios. It temporarily bypasses the security detection and filtering features of firewalls without affecting business continuity. This feature works with Virtual Private Cloud (VPC) and Express Connect to implement failover. This topic describes how to enable and disable the quick bypass feature.
 
@@ -264,7 +299,7 @@ click **OK**. The **verification code** is the UID of the level 1 organization. 
 
 If you click **One-click Bypass**, all VPC routes from the vFW cluster are automatically withdrawn. If you click **One-click Revert**, advertisement of VPC routes to the vFW cluster is resumed.
 
-#### View details of a vFW cluster
+#### 3.1.7 View details of a vFW cluster
 
 This topic describes how to view the details about a virtual firewall (vFW) cluster.
 
@@ -279,9 +314,9 @@ select a region from the **Region** drop-down list and click **Access with Autho
 You can view information in the following sections: **Cluster Information**, **Bypass**, **ECS**
 **Info**, **Endpoint**, **VFW Interface**, and **VFW Route**.
 
-### CIDR block management
+### 3.2 CIDR block management
 
-#### Create a CIDR block
+#### 3.2.1 Create a CIDR block
 
 CIDR blocks provide a flexible way to represent IP address ranges. NFV Cloud Firewall uses these CIDR blocks to simplify the configuration of security policies and ensure fine-grained control of network traffic. Before you can create a virtual firewall (vFW) cluster, you need to create a CIDR block. This topic describes how to create a CIDR block.
 
@@ -309,7 +344,7 @@ select a region from the **Region** drop-down list and click **Access with Autho
 | IPv4 CIDR | length> |
 |---|---|
 
-#### Manage CIDR blocks
+#### 3.2.2 Manage CIDR blocks
 
 This topic describes how to view and delete CIDR blocks.
 
@@ -336,9 +371,9 @@ select a region from the **Region** drop-down list and click **Access with Autho
 4. Find the CIDR block that you want to delete and click **Delete** in the **Operation** column.
 5. In the **Tips** message, check the information and click **OK**.
 
-### Route configuration
+### 3.3 Route configuration
 
-#### Create a route
+#### 3.3.1 Create a route
 
 This topic describes how to create a route to redirect traffic.
 
@@ -393,7 +428,7 @@ configured.
 
 After the route is created, the route is in the **Unpublish** status by default. You need to manually advertise the route before the route can be displayed in the VPC route table.
 
-#### Advertise and withdraw a route
+#### 3.3.2 Advertise and withdraw a route
 
 After you create a route, you need to advertise the route. After the route is advertised, it is displayed in the route table of the virtual private cloud (VPC). This topic describes how to advertise and withdraw a route.
 
@@ -422,7 +457,7 @@ select a region from the **Region** drop-down list and click **Access with Autho
 3. In the left-side navigation pane, click **Route Configuration**.
 Withdraw a single route a. Find the route that you want to withdraw and click **Undo** in the **Operation** column. b. In the **Tips** message, confirm the settings and click **OK**. Withdraw multiple routes at the same time a. Select the routes that you want to withdraw and click **Undo** below the route list. b. In the **Tips** message, confirm the settings and click **OK**.
 
-#### Manage routes
+#### 3.3.3 Manage routes
 
 This topic describes how to view, modify, and delete routes.
 
@@ -463,9 +498,9 @@ select a region from the **Region** drop-down list and click **Access with Autho
 4. Find the route that you want to delete and click **Delete** in the **Operation** column.
 5. In the **Tips** message, check the information and click **OK**.
 
-### Dedicated hosts
+### 3.4 Dedicated hosts
 
-#### Create a dedicated host group
+#### 3.4.1 Create a dedicated host group
 
 Dedicated hosts define a deployment mode in which physical servers are for exclusive use. In this mode, the entire physical server (host) can be exclusive only to you to ensure that the NFV Cloud Firewall instance is physically isolated from the instances of other tenants. This enhances security and helps you meet compliance requirements.
 
@@ -492,7 +527,7 @@ parameters, and then click **OK**.
 5. Find the host group, click **Create Dedicated Host**, enter a name and a description, and
 then click **OK**.
 
-#### Manage dedicated host groups
+#### 3.4.2 Manage dedicated host groups
 
 This topic describes how to manage host groups.
 
@@ -529,9 +564,9 @@ select a region from the **Region** drop-down list and click **Access with Autho
 4. Find the host group that you want to delete and click **Delete** in the **Operation** column.
 5. In the **Tips** message, check the information and click **OK**.
 
-### System settings
+### 3.5 System settings
 
-#### Cross-organization resource
+#### 3.5.1 Cross-organization resource authorization
 
 **authorization**
 
@@ -596,7 +631,7 @@ Account A0 in Step 1.
 
 Log in to the console with **Account A0**. In the cluster authorized in Step 2, configure traffic redirection routes and virtual firewall (vFW) routes to protect network traffic between the VPCs of account B0.
 
-#### Workflows
+#### 3.5.2 Workflows
 
 This topic describes how to view the workflow details of a virtual firewall (vFW) cluster or an endpoint task.
 
@@ -629,13 +664,13 @@ icon to the left of the task ID to view the task details.
 6. Click the
 icon in each step to view the details of each subtask.
 
-### Best practices
+### 3.6 Best practices
 
 **Note**
 
 The following best practices are created based on Apsara Stack V3.18.6. As the service continues to iterate, some console pages, parameter names, or options may have changed. For example, the **CIDR** parameter is changed to **IPv4 CIDR** and the **IPv6 CIDR** parameter is added. The **IP Stack** parameter is added when you create a virtual firewall (vFW) endpoint. When you perform operations, the console shall prevail. The core operation logic and process remain unchanged.
 
-#### VPC-VPC protection within an
+#### 3.6.1 VPC-VPC protection within an organization by NFV Cloud Firewall in a single data center
 
 **organization by NFV Cloud Firewall in a single**
 
@@ -1108,7 +1143,7 @@ to VPC1 NFV to VPCN NFV
 
 vSwitch3 10.3.1.0/24 ECS3 ep3
 
-#### VPC-VPC protection across
+#### 3.6.2 VPC-VPC protection across organizations by NFV Cloud Firewall in a single data center
 
 **organizations by NFV Cloud Firewall in a**
 
@@ -1578,7 +1613,7 @@ i. Run the `ping <ECS3 IP>` command on ECS1 to test the connectivity to ECS3. Th
 2. Log in to the Apsara Uni-manager Management Console to view logs.
 Choose **Policy > Security Policy > Policy**, find the desired policy, and check whether the **number of hits** increases. Choose **Monitor > Log > Session Log**, set **Time** to **Real-time**, and check whether ping (corresponding to ICMP) and SSH (corresponding to TCP) logs are generated. In addition, check whether session logs containing source and destination IP addresses related to the test are generated.
 
-#### vSwitch-vSwitch protection within an
+#### 3.6.3 vSwitch-vSwitch protection within an organization by NFV Cloud Firewall in a single data center
 
 **organization by NFV Cloud Firewall in a single**
 
@@ -1948,7 +1983,7 @@ Choose **Policy > Security Policy > Policy**, find the desired policy, and check
 **Solution**: Yes. In vSwitch-vSwitch protection scenarios, a vSwitch is equivalent to a VPC.
 Therefore, you need to create an endpoint for each vSwitch and associate a separate route table with each vSwitch on NFV Cloud Firewall.
 
-#### Configure the bypass and restoration
+#### 3.6.4 Configure the bypass and restoration features of NFV Cloud Firewall
 
 **features of NFV Cloud Firewall**
 
@@ -2437,7 +2472,7 @@ Before you configure NFV Cloud Firewall for VPC-VPC protection, you can add an E
 
 The reliability of NFV Cloud Firewall modes in descending order is as follows: single-data center standalone mode (1 x 1) < single-data center dual-node HA mode (1 x 2) < disaster recovery cluster + standalone mode (2 x 1) < disaster recovery cluster + dual-node HA mode (2 x 2).
 
-#### VPC-data center protection by NFV
+#### 3.6.5 VPC-data center protection by NFV Cloud Firewall in a single data center
 
 **Cloud Firewall in a single data center**
 
@@ -2456,8 +2491,6 @@ Data is exchanged through the HUB_VPC between the production VPC and data center
 **Traffic Redirection by**
 
 **HUB_VPC and Data Center**
-
-**NFV Cloud Firewall**
 
 Destination Next Hop to_IDC 172.16.0.0/16 IDC Production VPC HUB_VPC to_VPC 10.1.0.0/16 VRouter 10.1.0.0/16 192.168.33.0/16 to_hubvpc 192.168.33.0/24 VRouter Destination CSW
 
@@ -2945,8 +2978,6 @@ Solution: Yes.
 **Network Integration That Connects**
 
 **Traffic Redirection by**
-
-**NFV Cloud Firewall**
 
 **HUB_VPC and Data Center**
 

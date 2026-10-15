@@ -3,21 +3,39 @@ title: "Application Real-time Monitoring Service Operations and Maintenance Guid
 product_version: "V3.18.6"
 doc_version: "20251205"
 pdf_pages: 31
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Application Real-time Monitoring Service Operations and Maintenance Guide 20251205.pdf"
+source_pdf: "d0ab88ac4729e9b8_Alibaba Cloud Apsara Stack V3.18.6 Application Real-time Monitoring Service Operations and Maintenan"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1%20ARMS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Application%20Real-time%20Monitoring%20Service%20Operations%20and%20Maintenance%20Guide%2020251205.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Application Real-time Monitoring Service Operations and Maintenance Guide
 
-## O&M overview
+## Table of Contents
 
-### System architecture
+- 1 O&M overview
+  - 1.1 System architecture
+  - 1.2 Deployment architecture
+  - 1.3 Server role list
+- 2 High-risk operations
+- 3 Routine maintenance
+  - 3.1 Log on to the Apsara Uni-manager Operations Console
+  - 3.2 Log on to the Apsara Infrastructure Management console
+  - 3.3 Inspect components
+  - 3.4 Perform O&M operations on ESDB
+- 4 Troubleshooting
+- 5 Alert handling
+- 6 Log reference
+- 7 FAQ
+- 8 Upgrade guide
+
+## 1 O&M overview
+
+### 1.1 System architecture
 
 This topic describes the system architecture of Application Real-Time Monitoring Service (ARMS). Data Query Console API Service TLog-Console Diamond Middware- ZooKeeper TLogst JStorm JStorm Data Aggregation Elasticsearch HBase JStorm Cluster Cluster Cluster Traces Log Collection (StarAgent) Collector Collector Collector Collector Cluster Active Active Active Reporting Reporting Reporting Application Application ARMS ARMS ARMS Application A Agent B Agent Agent In Apsara Stack, ARMS consists of the console and API service. Other services such as core computing and storage are dependent on TLog. For more information, see **Deployment**
 **architecture**.
 
-### Deployment architecture
+### 1.2 Deployment architecture
 
 This topic describes the meaning of components in the ARMS deployment architecture.
 
@@ -32,7 +50,7 @@ This topic describes the meaning of components in the ARMS deployment architectu
 |   | ESDB | This component belongs to TLog. It is mainly responsible for storing the detailed data of ARMS Application Monitoring. |
 |   | TLog-Console | This component belongs to TLog. It is mainly responsible for collection point management and collection rule distribution. |
 
-### Server role list
+### 1.3 Server role list
 
 This topic describes the server roles available in ARMS.
 
@@ -52,7 +70,7 @@ This topic describes the server roles available in ARMS.
 |   |   |   | tlog-tlogService.TlogInit# | TLog DB resource initialization. |
 |   |   |   | tlog- tlogService.TlogConsole# | TLog console. |
 
-## High-risk operations
+## 2 High-risk operations
 
 Proceed with caution when performing high-risk operations during O&M tasks. High-risk operations in ARMS O&M are deletion of resources.
 
@@ -68,9 +86,9 @@ If you delete a resource, the tasks assigned to that resource cannot be automati
 
 We recommend that you do not delete resources under any circumstances.
 
-## Routine maintenance
+## 3 Routine maintenance
 
-### Log on to the Apsara Uni-
+### 3.1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -96,7 +114,7 @@ You can select a language from the drop-down list in the upper-right corner of t
 Obtain the username and password used to log on to the Apsara Uni-manager Operations Console from a deployment engineer or an administrator. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, the password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains special characters, such as exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%). The password must be 10 to 20 characters in length.
 4. Click **Log In** to log on to the Apsara Uni-manager Operations Console.
 
-### Log on to the Apsara
+### 3.2 Log on to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -124,7 +142,7 @@ over **Platform Operations**.
 6. In the **Apsara Infrastructure Management** section, click the module that you want to
 access.
 
-### Inspect components
+### 3.3 Inspect components
 
 This topic describes common system inspection methods.
 
@@ -191,7 +209,7 @@ normal.
 
 Log on to the Application Real-Time Monitoring Service (ARMS) console. If the logon is successful, the ARMS console is normal.
 
-### Perform O&M operations on
+### 3.4 Perform O&M operations on ESDB
 
 **ESDB**
 
@@ -305,7 +323,7 @@ curl IP:PORT/_cluster/settings -d
 
 GUI-based operations Install Kibana.
 
-## Troubleshooting
+## 4 Troubleshooting
 
 This topic describes how to troubleshoot some common issues. Table 1. Troubleshooting methods for common issues
 
@@ -331,7 +349,7 @@ This topic describes how to troubleshoot some common issues. Table 1. Troublesho
 | A basic module issue occurs. | The ARMS data pulling delay is too high. | Log on to the TLog console, click Collection Points in the Actions column of the arms cloud group, and _ view the details of collection points arms cloud1 to _ arms cloudx. _ If the status is normal, this issue is not related to the collection process. If data continues to flow into the file but the status of the collection points is abnormal or it has been over 15 minutes since the last data pulling, the issue is related to JStorm. | For more information about JStorm inspection, see Inspect components. |
 |---|---|---|---|
 
-## Alert handling
+## 5 Alert handling
 
 This topic describes how to handle common alerts.
 
@@ -381,7 +399,7 @@ su admin #Switch to the admin user and run the following commands. ps aux | grep
  $CATALINA_HOME/bin/startup.sh # Run the Tomcat startup script.
 ```
 
-## Log reference
+## 6 Log reference
 
 This topic describes the common log files of each component of Application Real-Time Monitoring Service (ARMS), including the log paths and descriptions.
 
@@ -455,7 +473,7 @@ This topic describes the common log files of each component of Application Real-
 | /home/hadoop/cluster-data/hbase/logs/hbase- xxx-regionserver-xxx.log | The Region Server logs. |
 | /home/hadoop/cluster-data/hbase/logs/hbase- xxx-zookeeper-xxx.log | The ZooKeeper logs. |
 
-## FAQ
+## 7 FAQ
 
 This topic provides answers to some frequently asked questions about the O&M of Application Real-Time Monitoring Service (ARMS).
 
@@ -772,6 +790,6 @@ If an issue occurs, you usually need to check the baseline version. You can perf
 4. On the **Desired State Configuration** tab, click the tag.conf file in the left-side file list. The
 value of `__zhuque_tags_productCommitId` in the file is the commit ID of ARMS.
 
-## Upgrade guide
+## 8 Upgrade guide
 
 This topic describes important considerations before performing a system upgrade. Typically, the product upgrades automatically with the platform, requiring no additional operations from you. Although manual upgrades are possible for specific requirements, we strongly recommend against them under all circumstances. Manual upgrades can interfere with future automatic upgrades and pose potential threats to business continuity. If you have specific requirements, you can contact Alibaba Cloud on-site personnel to obtain the operation guide for manual upgrades.

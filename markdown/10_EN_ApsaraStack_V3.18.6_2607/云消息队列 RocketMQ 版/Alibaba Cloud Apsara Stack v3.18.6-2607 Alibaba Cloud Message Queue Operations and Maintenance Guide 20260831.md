@@ -3,18 +3,88 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Oper
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 63
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide 20260831.pdf"
+source_pdf: "2d2ed928dc4f6580_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20Operations%20and%20Maintenance%20Guide%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Operations and Maintenance Guide 20260831
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+  - 1.1 System architecture
+  - 1.2 O&M architecture
+  - 1.3 Updates
+- 2 Operations console guide for ApsaraMQ for RocketMQ
+  - 2.1 Log in to the RocketMQ Operations Console
+  - 2.2 Overview
+  - 2.3 Manage brokers
+  - 2.4 NameServer management
+  - 2.5 Metadata management
+  - 2.6 Copilot
+    - 2.6.1 Hot upgrade
+    - 2.6.2 Disaster recovery deployment
+    - 2.6.3 Disaster recovery removal
+    - 2.6.4 Capacity analysis
+    - 2.6.5 Cluster inspection
+    - 2.6.6 Topic migration
+  - 2.7 Operational audit
+- 3 High-risk operations
+  - 3.1 Levels of O&M operations
+  - 3.2 High-risk operations and files
+- 4 O&M preparation
+- 5 Routine maintenance
+  - 5.1 Component inspection and monitoring
+    - 5.1.1 Manual inspection
+      - 5.1.1.1 Name server inspection
+      - 5.1.1.2 Console inspection
+      - 5.1.1.3 Controller inspection
+      - 5.1.1.4 Broker inspection
+      - 5.1.1.5 Address Server inspection
+      - 5.1.1.6 Diamond Server inspection
+      - 5.1.1.7 DAuth inspection
+      - 5.1.1.8 Tlog console inspection
+  - 5.2 Service inspection and monitoring
+  - 5.3 Logs
+- 6 O&M commands
+  - 6.1 Overview
+  - 6.2 View all O&M commands
+  - 6.3 updateTopic
+  - 6.4 deleteTopic
+  - 6.5 topicList
+  - 6.6 topicClusterList
+  - 6.7 topicRoute
+  - 6.8 updateTopicPerm
+  - 6.9 topicStatus
+  - 6.10 brokerStatus
+  - 6.11 wipeWritePerm
+  - 6.12 updateBrokerConfig
+  - 6.13 producerConnection
+  - 6.14 consumerConnection
+  - 6.15 brokerConsumeStats
+  - 6.16 updateSubGroup
+  - 6.17 deleteSubGroup
+  - 6.18 consumerProgress
+  - 6.19 consumerStatus
+  - 6.20 queryMsgById
+  - 6.21 queryMsgByKey
+  - 6.22 queryMsgByOffset
+  - 6.23 printMsg
+  - 6.24 clusterList
+  - 6.25 resetOffsetByTime
+- 7 O&M activities
+  - 7.1 Instance throttling
+- 8 Capacity assessment
+  - 8.1 Name Server connections
+  - 8.2 Broker connections
+- 9 Log reference
+
+## 1 O&M overview
 
 This topic describes the product architecture and O&M architecture of ApsaraMQ for RocketMQ.
 
-### System architecture
+### 1.1 System architecture
 
 This topic is intended to help you understand the system architecture and components of ApsaraMQ for RocketMQ during O&M. ApsaraMQ for RocketMQ provides components that are responsible for service discovery, data storage, authentication, configuration, log collection, and high availability. Figure 1. System architecture ApsaraMQ for RocketMQ consists of the following components:
 
@@ -54,7 +124,7 @@ Controller is used to perform primary/secondary switchover for brokers to achiev
 
 Housekeeping regularly checks the health status of the core link of ApsaraMQ for RocketMQ, covering core business, kernel parameters, application configurations, application metrics, and the console. If exceptions are detected, an alert is triggered at the earliest opportunity to ensure the high availability of the ApsaraMQ for RocketMQ cluster.
 
-### O&M architecture
+### 1.2 O&M architecture
 
 This topic is intended to help you understand the O&M architecture of Message Queue for Apache RocketMQ. The O&M operations of Message Queue for Apache RocketMQ rely on command lines.
 
@@ -65,7 +135,7 @@ This topic is intended to help you understand the O&M architecture of Message Qu
 |---|---|---|
 | Shutdown maintenance | Check and verify the statuses of containers and components. Stop and start containers and components. | Command line,Apsara Uni- manager Operations Console. |
 
-### Updates
+### 1.3 Updates
 
 This topic describes the updates of ApsaraMQ for RocketMQ from V3.8.0 to V3.18.3 to help you get started with the updated version.
 
@@ -101,11 +171,11 @@ Compatible configuration: Use a producer ID to identify a producer and a consume
 // When you create a producer, you must set the PropertyKeyConst.ProducerId paramet er. properties.put(PropertyKeyConst.ProducerId, "The original PID-XXX or the GID-XXX"); // When you create a consumer, you must set the PropertyKeyConst.ConsumerId paramet er. properties.put(PropertyKeyConst.ConsumerId, "The original CID-XXX or the GID-XXX");
 ```
 
-## Operations console guide
+## 2 Operations console guide for ApsaraMQ for RocketMQ
 
 **for ApsaraMQ for RocketMQ**
 
-### Log in to the RocketMQ
+### 2.1 Log in to the RocketMQ Operations Console
 
 **Operations Console**
 
@@ -126,7 +196,7 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 5. In the top navigation bar, choose **Product Operation > Middleware > RocketMQ**
 **Operations Console**.
 
-### Overview
+### 2.2 Overview
 
 This topic describes the core features and key metrics of ApsaraMQ for RocketMQ so that you can better understand the running status and health status of ApsaraMQ for RocketMQ instances.
 
@@ -147,7 +217,7 @@ usage TOP Broker, Inflow TPS TOP Broker, Outflow TPS TOP Broker, Alarm Statistic
 | Alarm Statistics | This section displays the total number of alerts with different severity levels, such as P1 Critical, P2 Major, P3 Minor, and P4 Warning. |
 | Last 5 alarm records | This section displays the most recent five alert records, including the alert item, severity, and alert time. Click View more to go to the Alert List page. On this page, you can view the alert information, including real-time alerts that are not handled and historical alerts that are handled. |
 
-### Manage brokers
+### 2.3 Manage brokers
 
 This topic describes how to view and manage brokers.
 
@@ -230,7 +300,7 @@ list, and then complete the operation as prompted.
 3. Repeat step 2 until the repair process is complete.
 In the **Status Repair Topology** section, you can view the broker's lifecycle state machine in real time.
 
-### NameServer management
+### 2.4 NameServer management
 
 This topic describes how to view the information about a NameServer node.
 
@@ -257,7 +327,7 @@ The NameServer management module in the RocketMQ Operations Console is used to m
 4. Click **Details** in the **Operation** column of the NameServer node. In the **Details** dialog box,
 view the keys and values of the NameServer node.
 
-### Metadata management
+### 2.5 Metadata management
 
 On the Metadata Management page, you can view and manage the virtual private cloud (VPC) configurations associated with an ApsaraMQ for RocketMQ cluster, view and modify ApsaraMQ for RocketMQ metadata, configure IP address whitelists, and manage instances and cloud product accounts.
 
@@ -297,9 +367,9 @@ On the **Cloud Product Account Management** tab, you can view and modify the acc
 **Name/ID**, **Cloud Product**, and **Status**.
 Modify the account information about a cloud service: Find the account that you want to modify and click **Edit** in the **Operation** column. In the **Edit Account** dialog box, modify the values of **Cloud Product** and **Status** and click **OK**. You cannot modify the value of the **Account Name/ID** parameter.
 
-### Copilot
+### 2.6 Copilot
 
-#### Hot upgrade
+#### 2.6.1 Hot upgrade
 
 This topic describes how to create a hot upgrade task.
 
@@ -347,7 +417,7 @@ When **Upgrade Status** of the primary and secondary nodes is **Upgrade complete
 **HA status** is **SYNC_STATE**, click **Release write prohibition** in the **Operation** column for
 the primary and secondary nodes. In the message that appears, click **OK**.
 
-#### Disaster recovery deployment
+#### 2.6.2 Disaster recovery deployment
 
 This topic describes how to deploy disaster recovery for a single cluster and scale out a disaster recovery cluster.
 
@@ -423,7 +493,7 @@ After the original secondary node is promoted to the primary node, **Add a secon
 **node** appears in the **Operation** column.
 Click **Add a secondary node**, select a secondary node, and click **OK** to add the second secondary node in the secondary data center, synchronize the cached metadata file to the broker, and set the broker to read and write prohibiting. Meanwhile, the information about the second secondary node is inserted into the broker_name table.
 
-#### Disaster recovery removal
+#### 2.6.3 Disaster recovery removal
 
 This topic describes how to remove a disaster recovery relationship.
 
@@ -474,7 +544,7 @@ secondary node, and then click **OK**. This operation stops the broker and remov
  /home/admin/store/config/subscriptionGroup.json .
 ```
 
-#### Capacity analysis
+#### 2.6.4 Capacity analysis
 
 You can view the performance metrics of a cluster within a specified time range, including the cluster-level resource usage overview and historical resource usage trends.
 
@@ -495,7 +565,7 @@ rate, and total throughput of the cluster. The dotted orange line in the chart r
 **Save time trend**: displays the trend chart of the retention period of messages on the
 broker. The default message retention period is 72 hours.
 
-#### Cluster inspection
+#### 2.6.5 Cluster inspection
 
 You can use the **cluster inspection** feature to inspect clusters and generate cluster inspection reports.
 
@@ -605,7 +675,7 @@ item.
 **OK**.
 A higher score indicates a greater weight, and the sum of the scores for all inspection items does not need to be equal to 100.
 
-#### Topic migration
+#### 2.6.6 Topic migration
 
 The topic migration feature allows you to migrate the data of a specified topic from the source cluster to the destination cluster in a smooth and secure manner. This feature is widely used in scenarios such as cluster scaling, cross-region migration, architecture upgrades, and disaster recovery failovers. It ensures zero-downtime, transparent data migration with no impact on business operations.
 
@@ -677,7 +747,7 @@ the **Operation** column.
 2. In the message that appears, read the tips and then click **OK**.
 When you retry a migration task, the task will resume execution from the failed step.
 
-### Operational audit
+### 2.7 Operational audit
 
 This topic describes how to view the logs of operations performed on an ApsaraMQ for RocketMQ 4.x cluster.
 
@@ -691,13 +761,13 @@ operation logs.
 **Department ID**, **Operation type**, **Operation Time**, **Action Item**, and **Operation**
 **parameters**.
 
-## High-risk operations
+## 3 High-risk operations
 
-### Levels of O&M operations
+### 3.1 Levels of O&M operations
 
 O&M operations are classified into the following three levels based on the business scenarios and risk degree: G1, G2, and G3. When you perform O&M operations as Level-1 and Level-2 support engineers, take note of the following rules: G1: You can follow the instructions in related documents, without the need to apply for changes. Such operations will not affect the business. G2: Before you can follow the instructions in related documents, you must apply for changes and obtain approval from the product line. Such operations will not affect the business. G3: Before you can follow the instructions in related documents, you must submit a ticket to apply for changes and obtain approval from the product line and customer. Such operations may affect the business.
 
-### High-risk operations and files
+### 3.2 High-risk operations and files
 
 This topic describes the high-risk operations that you must pay special attention to and the high-risk files that cannot be randomly deleted during O&M.
 
@@ -719,7 +789,7 @@ High-risk files are the files that cannot be randomly deleted. When you process 
 | /home/admin/store/config/subsc riptionGroup.json | Stores the consumer group configurations. | This file is managed by brokers and cannot be manually deleted. |
 | /home/admin/store/config/topic s.json | Stores the topic configurations. | This file is managed by brokers and cannot be manually deleted. |
 
-## O&M preparation
+## 4 O&M preparation
 
 This topic describes the logon portal, account, permissions, and tools required for O&M. Table 1. O&M preparation
 
@@ -728,7 +798,7 @@ This topic describes the logon portal, account, permissions, and tools required 
 | Secure Shell (SSH) clients such as MobaXterm and PuTTY | Used to log on to the servers where related components reside. | The account used to log on to the servers must be granted permissions to perform related operations. However, we recommend that you do not use the root or admin account. |
 | Account | Used to log on to the Message Queue for Apache RocketMQ console or the servers where related components reside. | You can obtain the username and password for logging on to the console from the technical support engineers of Message Queue for Apache RocketMQ. The account used to log on to the servers must be granted permissions to perform related operations. However, we recommend that you do not use the root or admin account. |
 
-## Routine maintenance
+## 5 Routine maintenance
 
 ApsaraMQ for RocketMQ inspection and monitoring cover two aspects: components and services.
 
@@ -740,17 +810,17 @@ Monitor the statuses of the following ApsaraMQ for RocketMQ components: Address 
 
 Inspect and monitor the core link of ApsaraMQ for RocketMQ during operation, covering core business, kernel parameters, application configurations, application metrics, and the console.
 
-### Component inspection and
+### 5.1 Component inspection and monitoring
 
 **monitoring**
 
 Component inspection and monitoring for ApsaraMQ for RocketMQ cover the following aspects: Inspection: Periodically perform a dial test on URLs or ports to determine whether ApsaraMQ for RocketMQ components are normal. Inspections in HTTP, TCP, ping, and JDBC modes are supported. Monitoring: Collect logs from clients by using Tlog. Aggregate container monitoring data and custom metrics to measure the status of system operation.
 
-#### Manual inspection
+#### 5.1.1 Manual inspection
 
 Linux commands are used for manual inspection. You can set specific parameters based on the actual environment.
 
-##### Name server inspection
+##### 5.1.1.1 Name server inspection
 
 1. Log on to the container of a name server.
 2. Run the ps aux|grep -i NamesrvStartup command to check whether the state of the Java
@@ -758,7 +828,7 @@ process of the name server is normal.
 3. Run the `ss -s` command to check the number of connections. If the number of
 connections is more than half of the maximum number of connections that are allowed for the name server, submit a ticket to contact O&M engineers.
 
-##### Console inspection
+##### 5.1.1.2 Console inspection
 
 The Message Queue for Apache RocketMQ console is a web system deployed in Tomcat. Perform the following steps to perform routine inspection:
 1. Log on to the container of the Message Queue for Apache RocketMQ console.
@@ -772,7 +842,7 @@ exists.
 directory.
 6. Check whether the disk size is sufficient in /home/admin.
 
-##### Controller inspection
+##### 5.1.1.3 Controller inspection
 
 1. Log on to the container of a controller.
 2. Run the ps aux|grep -i FailoverStartUp command to check whether the state of the
@@ -782,7 +852,7 @@ Java process of the controller is normal.
 4. Check the files in the `/home/admin/logs/rocketmqlogs/*.log` path to determine whether an
 obvious exception error exists.
 
-##### Broker inspection
+##### 5.1.1.4 Broker inspection
 
 1. Log on to the container of a broker.
 2. Run the ps aux|grep brokerStartup command to view the process information.
@@ -795,14 +865,14 @@ connections are in use, contact after-sales engineers.
 7. Check the commit log after a message is sent.
 i. Check whether a file is generated in the /home/admin/store/commitlog directory. ii. Run the du -sh /home/admin/store/commitlog/* command to check whether new data is written to the file. iii. Run the `sh /home/admin/rmq/bin/mqadmin clusterlist` command to view the message sending and receiving status of all brokers in the cluster. Check the message sending and receiving status of the current broker.
 
-##### Address Server inspection
+##### 5.1.1.5 Address Server inspection
 
 1. Log on to the container of an Address Server.
 An Address Server is an NGINX process module. By default, HTTP port 8080 is enabled.
 2. Run the `curl -v 'http://localhost:8080/rocketmq/nsaddr4broker-internal'` command to
 check the configurations of Name Servers on the Address Server. If the configurations of Name Servers are normal, the status code 200 and the content in /home/admin/cai/htdocs/rocketmq/nsaddr4broker-internal are returned.
 
-##### Diamond Server inspection
+##### 5.1.1.6 Diamond Server inspection
 
 1. Log on to the container of a Diamond Server.
 2. Run the `df -lh` command to check the disk space. This prevents exceptions caused by
@@ -820,7 +890,7 @@ can connect to each other with a low latency.
 6. Run the `tsar --nginx --load --cpu -l -i3` command to verify that the load on Diamond
 Servers is in a controllable range. The single-server queries per second (QPS) limit is approximately 4,000. We recommend that the single-server QPS be less than 500, the number of processes that are being executed be less than the number of CPU cores, and the CPU utilization be less than 20%.
 
-##### DAuth inspection
+##### 5.1.1.7 DAuth inspection
 
 DAuth is a web system deployed in Tomcat. Perform the following steps to perform routine inspection:
 1. Log on to the container of DAuth.
@@ -842,25 +912,25 @@ Run the curl 'http://jmenv.tbsite.net:8080/diamond-server/diamond-unit-spas'
 
 command to obtain the server list of the Diamond Spas unit. Ping each server. Make sure that the latency is less than 10 ms.
 
-##### Tlog console inspection
+##### 5.1.1.8 Tlog console inspection
 
 Log on to the container of the Tlog console. Run the ps aux|grep tomcat command to check the Tomcat process. Run the `df -h` command to check the disk space. Run the `curl -v 'http://localhost'` command to check whether the access is normal.
 
-### Service inspection and
+### 5.2 Service inspection and monitoring
 
 **monitoring**
 
 The Housekeeping component of Message Queue for Apache RocketMQ is responsible for service inspection. Housekeeping periodically inspects various metrics of Message Queue for Apache RocketMQ, and records alert information in the /home/admin/logs/aliware-mq-hkagent/warning.log file in the container of Housekeeping. The metrics of Message Queue for Apache RocketMQ are fixed and cannot be changed.
 
-### Logs
+### 5.3 Logs
 
 Logs are one of the most important O&M methods for ApsaraMQ for RocketMQ. They are used for monitoring and troubleshooting. Therefore, routine log maintenance is required. ApsaraMQ for RocketMQ logs include basic monitoring logs, service monitoring logs, container monitoring logs, and Java virtual machine (JVM) monitoring logs. For more information, see Log reference.
 
-## O&M commands
+## 6 O&M commands
 
 Backend O&M commands are provided for experienced O&M engineers. We recommend that you perform related operations in the ApsaraMQ for RocketMQ console.
 
-### Overview
+### 6.1 Overview
 
 Message Queue for Apache RocketMQ provides a backend O&M tool to facilitate routine O&M. The O&M tool is named sh mqadmin in the /home/admin/rmq/bin/ directory. To run O&M commands, you must log on to the container of a Name Server or broker.
 1. Run the docker exec -it <Name Server or broker container ID> /bin/bash command to log
@@ -881,7 +951,7 @@ Run the clusterList command to show the cluster list and details: `./mqadmin clu
 
 The naming rules for the resources contained in instances with or without namespaces have been changed in Message Queue for Apache RocketMQ V3.8.1 and later. Take note of the following rules: Topic naming Instances with namespaces: instanceid%topic Instances without namespaces: topic Group ID naming Instances with namespaces: instanceid%gid Instances without namespaces: gid For information about instance namespaces, see Updates.
 
-### View all O&M commands
+### 6.2 View all O&M commands
 
 Table 1. mqadmin
 
@@ -911,7 +981,7 @@ Table 1. mqadmin
 | clusterList | View the cluster information. |
 | resetOffsetByTime | Reset the offset. |
 
-### updateTopic
+### 6.3 updateTopic
 
 Table 1. updateTopic
 
@@ -927,7 +997,7 @@ Table 1. updateTopic
 | -w | No | The number of writable queues. Default value: 8. |
 | -t | Yes | The name of the topic. |
 
-### deleteTopic
+### 6.4 deleteTopic
 
 This command is high-risk. Proceed with caution. Table 1. deleteTopic
 
@@ -937,7 +1007,7 @@ This command is high-risk. Proceed with caution. Table 1. deleteTopic
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 | -p | Yes | The name of the topic. |
 
-### topicList
+### 6.5 topicList
 
 Table 1. topicList
 
@@ -945,7 +1015,7 @@ Table 1. topicList
 |---|---|---|
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### topicClusterList
+### 6.6 topicClusterList
 
 Table 1. topicClusterList
 
@@ -954,7 +1024,7 @@ Table 1. topicClusterList
 | -n | Yes | The address of the Name Server. Example: 192.168.0.1:9876. |
 | -t | Yes | The name of the topic. |
 
-### topicRoute
+### 6.7 topicRoute
 
 Table 1. topicRoute
 
@@ -963,7 +1033,7 @@ Table 1. topicRoute
 | -t | Yes | The name of the topic. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### updateTopicPerm
+### 6.8 updateTopicPerm
 
 This command is high-risk. Proceed with caution. Table 1. updateTopicPerm
 
@@ -975,7 +1045,7 @@ This command is high-risk. Proceed with caution. Table 1. updateTopicPerm
 | -t | Yes | The name of the topic. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### topicStatus
+### 6.9 topicStatus
 
 Table 1. topicStatus
 
@@ -983,7 +1053,7 @@ Table 1. topicStatus
 |---|---|---|
 | -t | Yes | The name of the topic. |
 
-### brokerStatus
+### 6.10 brokerStatus
 
 Table 1. brokerStatus
 
@@ -993,7 +1063,7 @@ Table 1. brokerStatus
 | -c | Yes if -b is empty | The name of the cluster. |
 | -n | Yes | The address of the Name Server. Example: 192.168.0.1:9876. |
 
-### wipeWritePerm
+### 6.11 wipeWritePerm
 
 This command is high-risk. Proceed with caution. Table 1. wipeWritePerm
 
@@ -1001,7 +1071,7 @@ This command is high-risk. Proceed with caution. Table 1. wipeWritePerm
 |---|---|
 | Yes | The name of the broker. |
 
-### updateBrokerConfig
+### 6.12 updateBrokerConfig
 
 This command is high-risk. Proceed with caution. Table 1. updateBrokerConfig
 
@@ -1013,7 +1083,7 @@ This command is high-risk. Proceed with caution. Table 1. updateBrokerConfig
 | -v | Yes | The value of the broker configuration item. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### producerConnection
+### 6.13 producerConnection
 
 Table 1. producerConnection
 
@@ -1022,7 +1092,7 @@ Table 1. producerConnection
 | -g | Yes | The group ID of the producer. The format of the value varies depending on whether the instance has a namespace. If the instance has a namespace, the value is in the format of instanceid%gid. If the instance does not have a namespace, the value is in the format of gid. |
 | -t | Yes | The name of the topic. |
 
-### consumerConnection
+### 6.14 consumerConnection
 
 Table 1. consumerConnection
 
@@ -1031,7 +1101,7 @@ Table 1. consumerConnection
 | -g | Yes | The group ID of the consumer group. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### brokerConsumeStats
+### 6.15 brokerConsumeStats
 
 Table 1. brokerConsumeStats
 
@@ -1042,7 +1112,7 @@ Table 1. brokerConsumeStats
 |---|---|---|
 | -t | No | The timeout period, in milliseconds. Default value: 50000. |
 
-### updateSubGroup
+### 6.16 updateSubGroup
 
 Table 1. updateSubGroup
 
@@ -1058,7 +1128,7 @@ Table 1. updateSubGroup
 | -r | No | The maximum number of consumption retries. If the maximum number of consumption retries is exceeded for a message, the message is delivered to the dead-letter queue and no more delivery attempts are made. |
 | -s | No | Specifies whether to enable consumption. |
 
-### deleteSubGroup
+### 6.17 deleteSubGroup
 
 This command is high-risk. Proceed with caution. Table 1. deleteSubGroup
 
@@ -1069,7 +1139,7 @@ This command is high-risk. Proceed with caution. Table 1. deleteSubGroup
 | -g | Yes | The name of the consumer group. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### consumerProgress
+### 6.18 consumerProgress
 
 Table 1. consumerProgress
 
@@ -1078,7 +1148,7 @@ Table 1. consumerProgress
 | -g | Yes | The group ID of the consumer group. The format of the value varies depending on whether the instance has a namespace. If the instance has a namespace, the value is in the format of instanceid%gid. If the instance does not have a namespace, the value is in the format of gid. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### consumerStatus
+### 6.19 consumerStatus
 
 Table 1. consumerStatus
 
@@ -1089,7 +1159,7 @@ Table 1. consumerStatus
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 | -s | No | Specifies whether to display the stack information. |
 
-### queryMsgById
+### 6.20 queryMsgById
 
 Table 1. queryMsgById
 
@@ -1098,7 +1168,7 @@ Table 1. queryMsgById
 | -i | Yes | The ID of the message. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### queryMsgByKey
+### 6.21 queryMsgByKey
 
 Table 1. queryMsgByKey
 
@@ -1108,7 +1178,7 @@ Table 1. queryMsgByKey
 | -t | Yes | The name of the topic. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### queryMsgByOffset
+### 6.22 queryMsgByOffset
 
 Table 1. queryMsgByOffset
 
@@ -1119,7 +1189,7 @@ Table 1. queryMsgByOffset
 | -b | Yes | The address of the broker on which the topic resides. |
 | -t | Yes | The name of the topic. |
 
-### printMsg
+### 6.23 printMsg
 
 Table 1. printMsg
 
@@ -1132,7 +1202,7 @@ Table 1. printMsg
 | -c | No | The encoding format, such as UTF-8 or GBK. |
 | -t | Yes | The name of the topic. |
 
-### clusterList
+### 6.24 clusterList
 
 Table 1. clusterList
 
@@ -1142,7 +1212,7 @@ Table 1. clusterList
 | -i | No | The interval between executions, in seconds. |
 | -n | Yes | The addresses of Name Servers. The value is in the format of ip:port;ip:port. |
 
-### resetOffsetByTime
+### 6.25 resetOffsetByTime
 
 This command may cause messages to be repeatedly consumed or skipped without consumption. Table 1. resetOffsetByTime
 
@@ -1152,9 +1222,9 @@ This command may cause messages to be repeatedly consumed or skipped without con
 | -s | Yes | The time. Specify the time in the format of yyyy- MM-dd#HH:mm:ss:SS. |
 | -t | Yes | The name of the topic. |
 
-## O&M activities
+## 7 O&M activities
 
-### Instance throttling
+### 7.1 Instance throttling
 
 By default, throttling is disabled for ApsaraMQ for RocketMQ instances. The system does not limit the outbound message Transactions per Second (TPS). To limit the outbound message TPS, you can enable the instance throttling feature.
 
@@ -1197,9 +1267,9 @@ i. Log in to the Apsara Uni-manager Operations Console. ii. In the top navigatio
 5. Find **privateCloud.trafficLimit** in the search results and turn on the switch in the **Current**
 **Value** column.
 
-## Capacity assessment
+## 8 Capacity assessment
 
-### Name Server connections
+### 8.1 Name Server connections
 
 **Metrics**
 
@@ -1208,7 +1278,7 @@ Log on to the mq-namesrv container and run the ss -s command.
 **Benchmark and resource usage threshold** :
 If more than half of the connections are in use, contact O&M engineers.
 
-### Broker connections
+### 8.2 Broker connections
 
 **Metrics**
 
@@ -1217,7 +1287,7 @@ Log on to the mq-broker container and run the ss -s command.
 **Benchmark and resource usage threshold** :
 If more than half of the connections are in use, contact O&M engineers.
 
-## Log reference
+## 9 Log reference
 
 You can check logs to view the status of each Message Queue for Apache RocketMQ component or locate faults during O&M. This topic lists the paths of all the log files of Message Queue for Apache RocketMQ components and provides relevant descriptions. Table 1. Component logs
 

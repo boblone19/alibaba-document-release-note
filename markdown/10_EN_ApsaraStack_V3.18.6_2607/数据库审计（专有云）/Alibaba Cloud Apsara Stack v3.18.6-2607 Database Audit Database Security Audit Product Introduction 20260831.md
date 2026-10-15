@@ -3,22 +3,31 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 14
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Product Introduction 20260831.pdf"
+source_pdf: "cfd195aa9790bb58_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Product Introduction "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1%EF%BC%88%E4%B8%93%E6%9C%89%E4%BA%91%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Audit%20Database%20Security%20Audit%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Audit Database Security Audit Product Introduction 20260831
 
+## Table of Contents
+
+- 1 Database Security Audit Product Introduction
+- 2 Features
+- 3 What is Database Security Audit?
+- 4 Service architecture
+- 5 Common scenarios
+- 6 Deployment mode
+
 udit Product Introduction
 
-## Database Security Audit
+## 1 Database Security Audit Product Introduction
 
 **Product Introduction**
 
 Database Security Audit supports audit on the process and behavior of accessing selfmanaged databases in the cloud and ApsaraDB services, and supports association with application users for operation audit. It also monitors the risks, status, performance, and statement distribution in real time. Database Security Audit provides a cloud database audit service that can be quickly deployed and easily maintained by using database-based UI languages, intelligent protocol recognition, visualized status display, and interactive risk tracking that supports drill-down.
 
-## Features
+## 2 Features
 
 This topic describes the features of Database Audit.
 
@@ -62,13 +71,13 @@ This topic describes the features of Database Audit.
 
 curity Audit?
 
-## What is Database Security
+## 3 What is Database Security Audit?
 
 **Audit?**
 
 Data has become a new driver of business decision-making, a new content of trade in goods and services, and even a new means of comprehensive social governance. To ensure the security of important data and the normal operation of databases, Database Security Audit acts as a scout to protect database security, monitor data security, gain insights into data risks, and help users complete security compliance, user behavior analysis, O&M monitoring, risk audit, incident tracing, and security audit in scenarios related to database security. Database Security Audit is an accurate database security audit system based on database protocol parsing and SQL parsing technologies. The system provides the capabilities of comprehensive data behavior audit and timely detection of data risks, which can meet the requirements of data security compliance, risk monitoring and tracing, user behavior analysis, and auxiliary business optimization. The system adopts a browser/server (B/S) architecture. Users can log in to the system by using a browser on a connected terminal over the network. By using an effective database monitoring method, the system monitors the behaviors of accessing and operating databases and the return results to conduct a comprehensive audit. The system provides a security monitoring engine to allow users to customize different audit rules, and generates risk records and alerts for risky database operations such as database collision attacks, high-risk operations, important object queries, database vulnerability exploitations, and SQL injections. The engine also allows users to add trusted statements to a whitelist. The system provides search and statistics collection capabilities to implement user behavior analysis and risk tracing.
 
-## Service architecture
+## 4 Service architecture
 
 The architecture of Database Security Audit is divided into the traffic capture, protocol parsing, data processing, and system management layers. Table Repair System Repair RMAgent Database Rule Engine Management Management Management Management
 
@@ -156,7 +165,7 @@ The audit data is sent to the data center and stored in multiple tables. The sys
 
 Database Security Audit provides a variety of auxiliary capabilities, such as table repair, system repair, data backup cleanup and recovery, monitoring, and keep-alive, to further ensure the normal operation of databases. The web console provides many system management capabilities, such as database management and rule management.
 
-## Common scenarios
+## 5 Common scenarios
 
 **Compliance**
 
@@ -178,7 +187,7 @@ Database Security Audit provides the SQL learning and SQL whitelist capabilities
 
 Database Security Audit provides database risk alerting and supports policy configuration and real-time alerting for risky behavior such as SQL injections, database vulnerability attacks, excessive data downloads, and dangerous SQL statements (such as the DELETE statement without a WHERE clause).
 
-## Deployment mode
+## 6 Deployment mode
 
 This topic describes the deployment mode of Database Security Audit. Database Security Audit supports agent-based deployment. The RMAgent component is deployed on a database server (or the server of an application system that accesses the database) to collect the traffic of the server network interface controller (NIC) or local loopback traffic to complete data collection, and delivers the captured database traffic to the specified audit device through the NIC allocated by the server. The audit device uses a builtin and independent process to receive and parse the collected database traffic to complete the audit operation. The system supports multi-agent deployment, batch installation, and centralized management.
 **Usage notes**:

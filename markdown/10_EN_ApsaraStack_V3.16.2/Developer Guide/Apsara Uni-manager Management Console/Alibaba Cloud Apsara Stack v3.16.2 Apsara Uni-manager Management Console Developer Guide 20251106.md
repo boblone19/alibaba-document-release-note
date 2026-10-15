@@ -3,18 +3,190 @@ title: "Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console
 product_version: "V3.16.2"
 doc_version: "20251106"
 pdf_pages: 607
-source_pdf: "Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide 20251106.pdf"
+source_pdf: "469e7d0de43f2a54_Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide 20251106.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E7%BB%9F%E4%B8%80%E4%BA%91%E7%AE%A1/Alibaba%20Cloud%20Apsara%20Stack%20v3.16.2%20Apsara%20Uni-manager%20Management%20Console%20Developer%20Guide%2020251106.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.16.2 Apsara Uni-manager Management Console Developer Guide
 
+## Table of Contents
+
+- 1 Preparations
+  - 1.1 Obtain API information
+  - 1.2 Obtain AccessKey credentials
+  - 1.3 Obtain the values of common request headers
+- 2 Use SDKs
+  - 2.1 Use POP to make API calls
+    - 2.1.1 Obtain service endpoints
+    - 2.1.2 Obtain an SDK
+    - 2.1.3 Call examples for SDK for Java
+      - 2.1.3.1 Getting started
+      - 2.1.3.2 Use SDK
+        - 2.1.3.2.1 Install an SDK for Java
+        - 2.1.3.2.2 Configure authentication credentials
+        - 2.1.3.2.3 Configure connection requests
+        - 2.1.3.2.4 Initiate a request
+        - 2.1.3.2.5 Handle errors
+        - 2.1.3.2.6 Use CommonRequest to call API operations
+    - 2.1.4 Call examples for SDK for Python
+      - 2.1.4.1 Getting started
+      - 2.1.4.2 Use SDK
+        - 2.1.4.2.1 Install the SDK for Python
+        - 2.1.4.2.2 Configure authentication credentials
+        - 2.1.4.2.3 Set HTTPS requests
+        - 2.1.4.2.4 Initiate a request
+        - 2.1.4.2.5 Handle errors
+        - 2.1.4.2.6 Use CommonRequest to call API operations
+    - 2.1.5 Call examples for SDK for Go
+      - 2.1.5.1 Getting started
+      - 2.1.5.2 Use SDK
+        - 2.1.5.2.1 Install the core package of SDK for Go
+        - 2.1.5.2.2 Configure authentication credentials
+        - 2.1.5.2.3 Initiate a request
+        - 2.1.5.2.4 Handle errors
+        - 2.1.5.2.5 Use CommonRequest to call API operations
+  - 2.2 Use ASAPI to call API operations
+    - 2.2.1 ASAPI overview
+    - 2.2.2 Obtain the endpoint of ASAPI
+    - 2.2.3 Obtain ASAPI SDKs
+    - 2.2.4 SDK for Java
+    - 2.2.5 SDK for Python
+    - 2.2.6 Use SDK for Node.js to call API operations
+- 3 HTTP requests
+  - 3.1 Overview
+  - 3.2 Request syntax
+  - 3.3 Signature method
+  - 3.4 Responses
+- 4 Apsara Uni-manager Management Console API Reference
+  - 4.1 Common parameters
+  - 4.2 Apsara Uni-manager Management Console authentication
+  - 4.3 List of operations by function
+    - 4.3.1 Enterprise
+      - 4.3.1.1 Organizations
+        - 4.3.1.1.1 UpdateOrganization
+        - 4.3.1.1.2 UpdateSupportRegionsForOrg
+        - 4.3.1.1.3 GetOrganization
+        - 4.3.1.1.4 GetOrganizationList
+        - 4.3.1.1.5 RemoveOrganization
+        - 4.3.1.1.6 ListResourceGroupByOrgId
+        - 4.3.1.1.7 CreateOrganization
+        - 4.3.1.1.8 GetPrivateCloudAccountByOrganizationId
+      - 4.3.1.2 Resource sets
+        - 4.3.1.2.1 CreateResourceGroup
+        - 4.3.1.2.2 UnbindAscmUserAndResourceGroup
+        - 4.3.1.2.3 UpdateResourceGroup
+        - 4.3.1.2.4 RemoveResourceGroup
+        - 4.3.1.2.5 ListResourceGroup
+        - 4.3.1.2.6 BindAscmUserAndResourceGroup
+        - 4.3.1.2.7 ListAscmUsersInsideResourceGroup
+      - 4.3.1.3 Roles
+        - 4.3.1.3.1 SetDefaultRole
+        - 4.3.1.3.2 ListRoles
+        - 4.3.1.3.3 ListActiveRoles
+      - 4.3.1.4 Users
+        - 4.3.1.4.1 AddUser
+        - 4.3.1.4.2 AddRoleToUser
+        - 4.3.1.4.3 ResetPasswordByLoginName
+        - 4.3.1.4.4 GetLoginPolicyByLoginName
+        - 4.3.1.4.5 UpdatePassword
+        - 4.3.1.4.6 RemoveUserByLoginName
+        - 4.3.1.4.7 GetUserInfo
+        - 4.3.1.4.8 ListUsers
+        - 4.3.1.4.9 ActivateUser
+        - 4.3.1.4.10 ListDeletedUsers
+        - 4.3.1.4.11 ListResourceGroupByAscmUserId
+        - 4.3.1.4.12 ModifyUserInformation
+        - 4.3.1.4.13 RecoverUserByLoginName
+        - 4.3.1.4.14 DeactivateUser
+      - 4.3.1.5 User groups
+        - 4.3.1.5.1 ListUserGroups
+        - 4.3.1.5.2 CreateUserGroup
+        - 4.3.1.5.3 ListUsersInUserGroup
+        - 4.3.1.5.4 AddUsersToUserGroup
+        - 4.3.1.5.5 AddRoleToUserGroup
+        - 4.3.1.5.6 AddResourceSetToUserGroup
+        - 4.3.1.5.7 RemoveUsersFromUserGroup
+        - 4.3.1.5.8 RemoveRoleFromUserGroup
+        - 4.3.1.5.9 RemoveResourceSetFromUserGroup
+        - 4.3.1.5.10 DeleteUserGroup
+      - 4.3.1.6 Logon policies
+        - 4.3.1.6.1 AddLoginPolicy
+        - 4.3.1.6.2 CheckLoginPolicy
+        - 4.3.1.6.3 ListLoginPolicies
+        - 4.3.1.6.4 ModifyLoginPolicy
+        - 4.3.1.6.5 GetLoginPolicyById
+    - 4.3.2 Operations
+      - 4.3.2.1 CreateQuota
+      - 4.3.2.2 DescribeGpdbModifiableInstanceType
+      - 4.3.2.3 UpdateQuota
+      - 4.3.2.4 DeleteQuota
+      - 4.3.2.5 GetQuota
+      - 4.3.2.6 MeteringQuery
+      - 4.3.2.7 SelectCommonSpec
+      - 4.3.2.8 AddCommonSpec
+      - 4.3.2.9 UpdateCommonSpecStatus
+      - 4.3.2.10 BillQuery
+    - 4.3.3 Cloud services
+      - 4.3.3.1 DescribeModifiableInstanceType
+      - 4.3.3.2 DescribeSeriesIdFamilies
+      - 4.3.3.3 GroupCommonSpec
+      - 4.3.3.4 DescribeInstanceTypeFamilies
+      - 4.3.3.5 GetRegionsByProduct
+      - 4.3.3.6 BindBucketPolicy
+      - 4.3.3.7 UnBindBucketPolicy
+    - 4.3.4 Configurations
+      - 4.3.4.1 RemoveLoginPolicyById
+      - 4.3.4.2 GetPasswordPolicy
+      - 4.3.4.3 ResetPasswordPolicy
+      - 4.3.4.4 SetPasswordPolicy
+      - 4.3.4.5 ListRAMServiceRoles
+      - 4.3.4.6 ListRAMPolicies
+      - 4.3.4.7 ListRAMPoliciesForUser
+      - 4.3.4.8 RemoveLoginPolicyByName
+    - 4.3.5 Parameters related to the MeteringQuery operation
+      - 4.3.5.1 ECS
+      - 4.3.5.2 SLB
+      - 4.3.5.3 OSS
+      - 4.3.5.4 EIP
+      - 4.3.5.5 VPC
+      - 4.3.5.6 ApsaraDB RDS for MySQL
+      - 4.3.5.7 Tablestore
+      - 4.3.5.8 ApsaraDB for Redis
+      - 4.3.5.9 AnalyticDB for PostgreSQL
+      - 4.3.5.10 ApsaraDB for MongoDB
+      - 4.3.5.11 Message Queue for Apache RocketMQ
+      - 4.3.5.12 ApsaraDB RDS for PostgreSQL
+      - 4.3.5.13 ApsaraDB RDS for SQL Server
+      - 4.3.5.14 Log Service
+      - 4.3.5.15 EBS
+      - 4.3.5.16 Snapshots
+      - 4.3.5.17 Auto Scaling
+      - 4.3.5.18 API Gateway
+- 5 CloudMonitor API Reference
+  - 5.1 Common parameters
+  - 5.2 Metrics for Apsara Stack services
+  - 5.3 API Reference
+    - 5.3.1 Cloud Products
+      - 5.3.1.1 DescribeProjectMeta
+      - 5.3.1.2 DescribeMetricLast
+      - 5.3.1.3 DescribeMetricList
+      - 5.3.1.4 DescribeMetricMetaList
+    - 5.3.2 Threshold-triggered alert rules
+      - 5.3.2.1 DescribeMetricRuleList
+      - 5.3.2.2 PutResourceMetricRule
+      - 5.3.2.3 DescribeMetricRuleCount
+      - 5.3.2.4 DeleteMetricRules
+      - 5.3.2.5 EnableMetricRules
+      - 5.3.2.6 DisableMetricRules
+      - 5.3.2.7 DescribeAlertingMetricRuleResources
+      - 5.3.2.8 DeleteMetricRuleResources
+
 rations
 
-## Preparations
+## 1 Preparations
 
-### Obtain API information
+### 1.1 Obtain API information
 
 To call API operations by using an SDK, you must first obtain information about the service name, API operation name, and API version.
 
@@ -32,7 +204,7 @@ down list, enter a keyword of an operation name in the search box, and then clic
 5. In the search result, you can view the **cloud service name**, **API operation name**, and
 **API version**.
 
-### Obtain AccessKey credentials
+### 1.2 Obtain AccessKey credentials
 
 AccessKey credentials are assigned by Resource Access Management (RAM) .
 
@@ -85,7 +257,7 @@ want to obtain AccessKey pairs.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the Management AccessKey dialog box, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 1.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -174,11 +346,11 @@ The following table describes the common response parameters that are returned b
 
 DKs
 
-## Use SDKs
+## 2 Use SDKs
 
-### Use POP to make API calls
+### 2.1 Use POP to make API calls
 
-#### Obtain service endpoints
+#### 2.1.1 Obtain service endpoints
 
 This topic describes how to obtain service endpoints.
 
@@ -206,7 +378,7 @@ and then select **Show More** from the shortcut menu. On the **Details** page, v
 
 DKs
 
-#### Obtain an SDK
+#### 2.1.2 Obtain an SDK
 
 To call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) gateway, you must use an SDK of your cloud service. This topic describes how to obtain an SDK of your cloud service. An SDK includes code and examples. You can create cloud applications by using an SDK for the programming language that you require. SDKs for Java, Python, and Go are perfectly supported. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.
 
@@ -214,9 +386,9 @@ To call Apsara Stack API operations by using the Portable OpenAPI Proxy (POP) ga
 
 We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
-#### Call examples for SDK for Java
+#### 2.1.3 Call examples for SDK for Java
 
-##### Getting started
+##### 2.1.3.1 Getting started
 
 This topic describes how to obtain and use an SDK for Java.
 
@@ -323,9 +495,9 @@ resources.
 
 `}` `}` `}`
 
-##### Use SDK
+##### 2.1.3.2 Use SDK
 
-###### Install an SDK for Java
+###### 2.1.3.2.1 Install an SDK for Java
 
 This topic describes how to install and use the SDK for Java of your cloud service. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK package. For more information, visit Alibaba Cloud SDKs. To use the development tool kit for a cloud service, you must install the core library of Apsara Stack SDK for Java and the SDK for Java of your cloud service. We recommend that you use the latest version of the core library of Apsara Stack SDK for Java. For example, to use ECS SDK for Java, you must install the core library of Apsara Stack SDK for Java and ECS SDK for Java, and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDKs. DKs
 
@@ -341,7 +513,7 @@ This topic describes how to install and use the SDK for Java of your cloud servi
 </dependency>
 ```
 
-###### Configure authentication credentials
+###### 2.1.3.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. Apsara Stack SDK for Java supports authentication based on an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -360,7 +532,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Replace the parameters in the preceding sample code with your actual information. Delete the angle brackets (<>) in your code.
 
-###### Configure connection requests
+###### 2.1.3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. DKs
 
@@ -390,7 +562,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-###### Initiate a request
+###### 2.1.3.2.4 Initiate a request
 
 This topic describes how to use the SDK for Java of a cloud service to initiate a request.
 
@@ -440,7 +612,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-###### Handle errors
+###### 2.1.3.2.5 Handle errors
 
 If the server or SDK encounters an error when you use the SDK for Java, the SDK returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by the SDK for Java. You only need to handle server errors based on error messages generated on the server side. `ServerException` indicates a server error. `ClientException` indicates an SDK error. The following error indicates that the AccessKey ID is invalid. You must specify a valid AccessKey ID.
 
@@ -472,7 +644,7 @@ baba Cloud technical support.
 
 `}`
 
-###### Use CommonRequest to call API
+###### 2.1.3.2.6 Use CommonRequest to call API operations
 
 #### operations
 
@@ -747,9 +919,9 @@ application/json, use the following method to pass parameters:
 
 `}` `}` `}`
 
-#### Call examples for SDK for Python
+#### 2.1.4 Call examples for SDK for Python
 
-##### Getting started
+##### 2.1.4.1 Getting started
 
 This topic describes how to obtain and use an SDK for Python.
 
@@ -813,9 +985,9 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 response = clt.do_action_with_exception(request) print response # The print statement in Python 2.x. If you use Python 3.x, use print( response).
 ```
 
-##### Use SDK
+##### 2.1.4.2 Use SDK
 
-###### Install the SDK for Python
+###### 2.1.4.2.1 Install the SDK for Python
 
 This topic describes how to install and use the SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip.
 
@@ -847,7 +1019,7 @@ pip3 install aliyun-python-sdk-ecs
 
 DKs
 
-###### Configure authentication credentials
+###### 2.1.4.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an authorized account for authentication. The SDKs for Python support AccessKey pair-based authentication. For more information about how to obtain an AccessKey pair, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -859,7 +1031,7 @@ Do not disclose any code containing your AccessKey pair. For example, do not com
 clt = AcsClient(access_key, access_secret, region_id)
 ```
 
-###### Set HTTPS requests
+###### 2.1.4.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
 
@@ -893,7 +1065,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-###### Initiate a request
+###### 2.1.4.2.4 Initiate a request
 
 This topic describes how to use the SDK for Python of a cloud service to initiate a request.
 
@@ -923,7 +1095,7 @@ request = DescribeInstancesRequest() request.set_accept_format('json')
 response = clt.do_action_with_exception(request) print response
 ```
 
-###### Handle errors
+###### 2.1.4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -944,7 +1116,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-###### Use CommonRequest to call API
+###### 2.1.4.2.6 Use CommonRequest to call API operations
 
 #### operations
 
@@ -1088,9 +1260,9 @@ If the request method is POST or PUT and the ContentType value is application/js
 response = client.do_action_with_exception(request) print(str(response, encoding = 'utf-8'))
 ```
 
-#### Call examples for SDK for Go
+#### 2.1.5 Call examples for SDK for Go
 
-##### Getting started
+##### 2.1.5.1 Getting started
 
 This topic describes how to obtain and use an SDK for Go.
 
@@ -1168,9 +1340,9 @@ func main() {
 request.Scheme = "HTTPS"
 ```
 
-##### Use SDK
+##### 2.1.5.2 Use SDK
 
-###### Install the core package of SDK for Go
+###### 2.1.5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package: DKs
 
@@ -1178,7 +1350,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-###### Configure authentication credentials
+###### 2.1.5.2.2 Configure authentication credentials
 
 When you use an Apsara Stack SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. Apsara Stack SDKs for Go support AccessKey pair-based authentication. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client.
 
@@ -1197,7 +1369,7 @@ Do not disclose any code containing your AccessKey pair. For example, do not com
 
 Replace the parameters in the preceding sample code with your actual information. Delete the angle brackets (<>) in your code.
 
-###### Initiate a request
+###### 2.1.5.2.3 Initiate a request
 
 This topic uses Elastic Compute Service (ECS) SDK for Go as an example to show how to initiate a request by using the SDK for Go of a specific cloud service.
 1. Import ECS SDK for Go.
@@ -1236,7 +1408,7 @@ request := ecs.CreateDescribeInstancesRequest()
 response, err := ecsClient.DescribeInstances(request)
 ```
 
-###### Handle errors
+###### 2.1.5.2.4 Handle errors
 
 When you use Apsara Stack SDK for Go, a `ClientError` or a `ServerError` is returned if an error occurs on the SDK side or on the server side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors.
 
@@ -1316,7 +1488,7 @@ response, err := ecsClient.DescribeInstances(request) if serverError, ok := err.
 
 `}`
 
-###### Use CommonRequest to call API
+###### 2.1.5.2.5 Use CommonRequest to call API operations
 
 #### operations
 
@@ -1517,11 +1689,11 @@ ollowing method to pass parameters:
 
 `}`
 
-### Use ASAPI to call API
+### 2.2 Use ASAPI to call API operations
 
 #### operations
 
-#### ASAPI overview
+#### 2.2.1 ASAPI overview
 
 This topic describes the architecture and features of the Apsara Stack API (ASAPI). The ASAPI is a unified ingress gateway for Apsara Stack services and a main component of the Apsara Uni-manager Management Console. The ASAPI provides a unified method for you to manage and make API calls. You can use Apsara Stack SDK to centrally make API calls to Apsara Stack services, including Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). DKs The ASAPI allows you to make API calls to manage and maintain Apsara Stack services. Make API calls to implement enterprise-grade management. For example, you can manage organizations, users, roles, resource sets, and logon policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage operations. For example, you can manage quotas, usage statistics, specifications, and password policies. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to manage resources. For example, you can create, delete, query, or modify cloud resources. These operations are provided by Apsara Stack services. If you call an API operation to create an ECS instance or a VPC, the API operation is provided by ECS or VPC. Make API calls to query monitoring metrics of Apsara Stack services. These operations are provided by the Apsara Uni-manager Management Console. Make API calls to perform O&M. For example, you can manage monitoring and alerting, inventories, tasks, and physical servers. These operations are provided by the Apsara Unimanager Operations Console. For more information, see the developer guide of the corresponding Apsara Stack service. For information about API operations used to manage organization users, see Apsara Unimanager Management Console Developer Guide. For information about the API operation used to create an ECS instance, see ECS Developer Guide. DKs
 
@@ -1529,7 +1701,7 @@ This topic describes the architecture and features of the Apsara Stack API (ASAP
 
 If the "Use Apsara Stack SDK to make API calls" section is included in the developer guide of an Apsara Stack service, the ASAPI is supported by the Apsara Stack service. In this case, you can make API calls based on the developer guide.
 
-#### Obtain the endpoint of ASAPI
+#### 2.2.2 Obtain the endpoint of ASAPI
 
 You can obtain the endpoint of ASAPI by replacing the variables. The actual values of the variables can be obtained in the Apsara Uni-manager Operations Console.
 
@@ -1626,7 +1798,7 @@ intranet-domain value.
 
 Do not include ${global:} in the endpoint of ASAPI that you use.
 
-#### Obtain ASAPI SDKs
+#### 2.2.3 Obtain ASAPI SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. You can download the general package of ASAPI SDKs by using one of the following methods: Go to the **Other Resources** section at the lower part of the Apsara Stack documentation page. Click ASAPI SDK package. After the package is downloaded, select a language and version based on your local environment. DKs
 
@@ -1634,7 +1806,7 @@ Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can u
 
 The general package of ASAPI SDKs includes ASAPI SDKs for Java, Python, and Node.js. ASAPI SDK for Java version 1.0.6.7-RELEASE supports Apsara Stack Agility v3.6 and later, Apsara Stack Enterprise v3.14.0 and later, Apsara Stack Enterprise v3.13.0 SP002+, and Apsara Stack Enterprise v3.12.0 SP006+. ASAPI SDK for Java version 1.0.2.5-RELEASE supports Apsara Stack Enterprise v3.12.0, Apsara Stack Enterprise v3.13.0, and Apsara Stack Agility v3.5. ASAPI SDK for Python version 2.4.7.1-RELEASE supports Apsara Stack Agility v3.6 and later, Apsara Stack Enterprise v3.14.0 and later, Apsara Stack Enterprise v3.13.0 SP002+, and Apsara Stack Enterprise v3.12.0 SP006+. ASAPI SDK for Python version 2.2.1.1-RELEASE supports Apsara Stack Enterprise v3.12.0, Apsara Stack Enterprise v3.13.0, and Apsara Stack Agility v3.5. ASAPI SDK for Node.js provides full version support for each edition.
 
-#### SDK for Java
+#### 2.2.4 SDK for Java
 
 After you install Apsara Stack API (ASAPI) SDK for Java, you can write code to call Apsara Stack API operations by using ASAPI.
 
@@ -1837,7 +2009,7 @@ If a network proxy exists between your environment and the ASAPI network, you ne
 Cloud cloud = new Cloud(); // Set the IP address. cloud.setConfig("proxy_host", "<IP>"); // Set the port. cloud.setConfig("proxy_port", "<Port>"); // Create an ASClient connection to use a network proxy. ASClient client = new ASClient(cloud);
 ```
 
-#### SDK for Python
+#### 2.2.5 SDK for Python
 
 After you install Apsara Stack SDK for Python, you can write code to call API operations by using Apsara Stack API (ASAPI).
 
@@ -2002,7 +2174,7 @@ import os
 os.environ['http_proxy'] = "http://x.x.x.x:xxxx" os.environ['https_proxy'] = "https://x.x.x.x:xxxx"
 ```
 
-#### Use SDK for Node.js to call API
+#### 2.2.6 Use SDK for Node.js to call API operations
 
 #### operations
 
@@ -2150,9 +2322,9 @@ enableProxy: true, // Specify whether to configure a proxy. If you want to confi
 
 requests
 
-## HTTP requests
+## 3 HTTP requests
 
-### Overview
+### 3.1 Overview
 
 This topic describes how to call Apsara Stack APIs registered with ASAPI by sending HTTP requests.
 
@@ -2160,7 +2332,7 @@ This topic describes how to call Apsara Stack APIs registered with ASAPI by send
 
 We recommend that you use SDKs to call API operations instead of using HTTP requests. Currently, ASAPI provides SDKs for Node.js, Python, and Java, which save you from the signing process. If you use an SDK to initiate requests, you can skip this topic. The request URL consists of different parameters but has a fixed request structure. The URL contains common request parameters, your signature, and operation-specific parameters. Sample request URLs are provided for each API operation. These URLs are not encoded, which makes them easy to read. Before you initiate a request, you must encode the request URL. After the request is verified, the results are returned. Response parameters are returned if the call is successful, whereas an error message is returned if the call fails. You can troubleshoot issues based on the error message.
 
-### Request syntax
+### 3.2 Request syntax
 
 ASAPI allows you to initiate HTTP GET requests based on URLs. Each URL must contain request parameters. This topic describes the syntax of HTTP GET requests and provides the endpoint of ASAPI.
 
@@ -2184,7 +2356,7 @@ For more information about how to obtain the endpoint of ASAPI, see Obtain the e
 10. You also need to specify other parameters and common request parameters in an
 API operation. For more information, see the related API reference documentation and Common parameters.
 
-### Signature method
+### 3.3 Signature method
 
 This topic describes how to sign HTTP API requests. Apsara Stack uses the request signature to verify the identity of the requester. Specifically, Apsara Stack uses an AccessKey pair to perform symmetric encryption and verify the identity of the requester.
 
@@ -2347,7 +2519,7 @@ https://public.asapi.aliyuns.com/asapi/v3/? AccessKeyId=testid&Action=GetOrganiz
 requests
 5. Use a browser or a tool such as cURL or Wget to send an HTTP request.
 
-### Responses
+### 3.4 Responses
 
 Responses are returned only in the JSON format. If a return code is greater than or equal to 200 and less than 300, a success response is returned. Otherwise, an error response is returned.
 
@@ -2417,13 +2589,13 @@ If a request fails, the following information is returned: requests `{`
 
 `}`
 
-## Apsara Uni-manager
+## 4 Apsara Uni-manager Management Console API Reference
 
 **Management Console API**
 
 **Reference**
 
-### Common parameters
+### 4.1 Common parameters
 
 Common parameters are classified into common request parameters, common request headers, and common response parameters.
 
@@ -2515,7 +2687,7 @@ want to perform the operation. x-acs-organizationid specifies the ID of the orga
 
 `}`
 
-### Apsara Uni-manager
+### 4.2 Apsara Uni-manager Management Console authentication
 
 **Management Console**
 
@@ -2534,13 +2706,13 @@ If you use the AccessKey pair of a personal account to call an API operation, yo
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain the ID of a resource set, see ListResourceGroup. |
 | x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an ECS instance, you can obtain the ID from the ECS instance list. |
 
-### List of operations by function
+### 4.3 List of operations by function
 
-#### Enterprise
+#### 4.3.1 Enterprise
 
-##### Organizations
+##### 4.3.1.1 Organizations
 
-###### UpdateOrganization
+###### 4.3.1.1.1 UpdateOrganization
 
 Updates an organization.
 
@@ -2666,7 +2838,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### UpdateSupportRegionsForOrg
+###### 4.3.1.1.2 UpdateSupportRegionsForOrg
 
 Updates the list of zones in an organization.
 
@@ -2733,7 +2905,7 @@ POST null HTTP/1.1 Common request headers
 
 `}`
 
-###### GetOrganization
+###### 4.3.1.1.3 GetOrganization
 
 Queries the information about an organization.
 
@@ -2852,7 +3024,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### GetOrganizationList
+###### 4.3.1.1.4 GetOrganizationList
 
 Queries the list of organizations.
 
@@ -2978,7 +3150,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### RemoveOrganization
+###### 4.3.1.1.5 RemoveOrganization
 
 Deletes an organization.
 
@@ -3045,7 +3217,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListResourceGroupByOrgId
+###### 4.3.1.1.6 ListResourceGroupByOrgId
 
 Queries the list of resource sets in an organization.
 
@@ -3166,7 +3338,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### CreateOrganization
+###### 4.3.1.1.7 CreateOrganization
 
 Creates an organization.
 
@@ -3355,9 +3527,9 @@ POST /ascm/auth/user/getPrivateCloudAccountByOrganizationId HTTP/1.1 Common requ
 {"redirect":"false","cost":"1000","code":"200","data": {"aliyunid":"1","primaryKey":"212530506704030466"},"success":"true","pureListData":"true" message":"success"}
 ```
 
-##### Resource sets
+##### 4.3.1.2 Resource sets
 
-###### CreateResourceGroup
+###### 4.3.1.2.1 CreateResourceGroup
 
 Creates a resource set.
 
@@ -3445,7 +3617,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### UnbindAscmUserAndResourceGroup
+###### 4.3.1.2.2 UnbindAscmUserAndResourceGroup
 
 Unbinds one or more users from a resource set.
 
@@ -3507,7 +3679,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### UpdateResourceGroup
+###### 4.3.1.2.3 UpdateResourceGroup
 
 Updates a resource set.
 
@@ -3589,7 +3761,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### RemoveResourceGroup
+###### 4.3.1.2.4 RemoveResourceGroup
 
 Deletes a resource set.
 
@@ -3653,7 +3825,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListResourceGroup
+###### 4.3.1.2.5 ListResourceGroup
 
 Queries the list of resource sets that are visible to your account.
 
@@ -3773,7 +3945,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### BindAscmUserAndResourceGroup
+###### 4.3.1.2.6 BindAscmUserAndResourceGroup
 
 Binds users to a resource set.
 
@@ -3836,7 +4008,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListAscmUsersInsideResourceGroup
+###### 4.3.1.2.7 ListAscmUsersInsideResourceGroup
 
 Queries the list of users in a resource set.
 
@@ -4981,9 +5153,9 @@ iTi
 
 `}`
 
-##### Roles
+##### 4.3.1.3 Roles
 
-###### SetDefaultRole
+###### 4.3.1.3.1 SetDefaultRole
 
 Sets a default role.
 
@@ -5033,7 +5205,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListRoles
+###### 4.3.1.3.2 ListRoles
 
 Queries the list of available roles of a user.
 
@@ -5168,7 +5340,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListActiveRoles
+###### 4.3.1.3.3 ListActiveRoles
 
 Queries the list of roles that can be bound.
 
@@ -5297,9 +5469,9 @@ Sample success responses `XML` format
 
 `}`
 
-##### Users
+##### 4.3.1.4 Users
 
-###### AddUser
+###### 4.3.1.4.1 AddUser
 
 Creates a user.
 
@@ -6734,7 +6906,7 @@ bl"
 
 `}`
 
-###### AddRoleToUser
+###### 4.3.1.4.2 AddRoleToUser
 
 Binds a role to a user.
 
@@ -6786,7 +6958,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ResetPasswordByLoginName
+###### 4.3.1.4.3 ResetPasswordByLoginName
 
 Resets the password of a user.
 
@@ -6835,7 +7007,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### GetLoginPolicyByLoginName
+###### 4.3.1.4.4 GetLoginPolicyByLoginName
 
 Queries the logon policy that is bound to a user.
 
@@ -6972,7 +7144,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### UpdatePassword
+###### 4.3.1.4.5 UpdatePassword
 
 Modifies a password.
 
@@ -7024,7 +7196,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### RemoveUserByLoginName
+###### 4.3.1.4.6 RemoveUserByLoginName
 
 Deletes a user.
 
@@ -7076,7 +7248,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### GetUserInfo
+###### 4.3.1.4.7 GetUserInfo
 
 Queries the information of a user.
 
@@ -7925,7 +8097,7 @@ SOUC_US
 
 `}`
 
-###### ListUsers
+###### 4.3.1.4.8 ListUsers
 
 Queries the list of available users.
 
@@ -8796,7 +8968,7 @@ Id" "5013"
 
 `}`
 
-###### ActivateUser
+###### 4.3.1.4.9 ActivateUser
 
 Activates a user. When a user is activated, all AccessKey pairs of the user are activated. This operation is supported by Apsara Stack Enterprise Edition V3.12.0 SP016 or later. This operation is supported by Apsara Stack Enterprise Edition V3.14.0 SP013 or later.
 
@@ -9300,7 +9472,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1 Common request headers
 3,id:1,organizationVisibility:organizationVisibility.global,cuserId:admin}], rganization": {"muserId":"admin","internal":"true","multiCloudStatus":"master","level":"0.1","name":"te ","supportRegions":"cn-qingdao-env17d01","ctime":"1606791494471","alias":"test","id":"2","mtime":"1606791494471","uuid":"2312 ,"cuserId":"admin","parentId":"1","supportRegionList":"[\"cn-qingdao-env17d01\"]"}}],"userRoles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"true","muserId":"admin","arId":"123"," de":"ROLE_RESOURCE_USER","description":"desc_test","active":"true","roleType":"ROLETYPE_A M","default":"false","ownerOrganizationId":"1","enable":"true","roleName":"name","roleLev ":"2","id":"1","organizationVisibility":"defaultRole.resourceUser.description","cuserId": dmin"}],"accessKeys":[{"ctime":"123141313","id":"1","region":"cn-qingdao-env17-d01","cu serId":"admin","status":"ACTIVE","accesskeyId":"1"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"true","muserId":"admin","arId":"ar-1 11","code":"ROLE_RESOURCE_USER","description":"desc","active":"true","roleType":"ROLETYPE SCM","default":"false","ownerOrganizationId":"1","enable":"true","roleName":"name","roleL el":"1","id":"1","organizationVisibility":"defaultRole.resourceUser.description","cuserId "admin"}],"defaultRole": {"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"ar-1 23","code":"ROLE_RESOURCE_USER","description":"role_test","active":"true","roleType":"ROL YPE_ASCM","default":"true","ownerOrganizationId":"1","enable":"true","roleName":"name","r eLevel":"11","id":"1","organizationVisibility":"defaultRole.resourceUser.description"},"l inPolicy": {"muserId":"admin","default":"false","ownerOrganizationId":"1","enable":"true","name":"te _policy","rule":"ALLOW","id":"1","organizationVisibility":"organizationVisibility.global" lpId":"123","cuserId":"admin","ipRanges": [{"protocol":"IPV4","ipRange":"0.0.0.0/0","loginPolicyId":"1"}],"timeRanges":[{"startTi me":"00:00","loginPolicyId":"1","endTime":"24:00"}]},"organization": {"muserId":"admin","internal":"true","multiCloudStatus":"master","level":"0.1","name":"te ","supportRegions":"cn-qingdao-env17d01","ctime":"1231244123123","alias":"test","id":"1","mtime":"23124231234123","uuid":"123 ,"cuserId":"admin","parentId":"0","supportRegionList":"[cn-qingdao-env17d01]"}},"success":"true","pureListData":"true","message":"success"}
 ```
 
-###### ListDeletedUsers
+###### 4.3.1.4.10 ListDeletedUsers
 
 Queries the list of deleted users.
 
@@ -9428,7 +9600,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListResourceGroupByAscmUserId
+###### 4.3.1.4.11 ListResourceGroupByAscmUserId
 
 Queries the list of resource sets of a user.
 
@@ -9516,7 +9688,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ModifyUserInformation
+###### 4.3.1.4.12 ModifyUserInformation
 
 Modifies the information of a user.
 
@@ -10370,7 +10542,7 @@ d01</supportRegions>
 
 `}`
 
-###### RecoverUserByLoginName
+###### 4.3.1.4.13 RecoverUserByLoginName
 
 Restores a deleted user.
 
@@ -11078,7 +11250,7 @@ AdSbO
 
 `}`
 
-###### DeactivateUser
+###### 4.3.1.4.14 DeactivateUser
 
 Deactivates a user. When a user is deactivated, all AccessKey pairs of the user are deactivated. This operation is supported by Apsara Stack Enterprise Edition V3.12.0 SP016 or later. This operation is supported by Apsara Stack Enterprise Edition V3.14.0 SP013 or later.
 
@@ -11599,9 +11771,9 @@ use
 {"muserId":"admin","internal":"true","multiCloudStatus":"master","level":"1","name":"TEST "supportRegions":"cn-qingdao-env17d01","ctime":"123124123","alias":"test","id":"1","mtime":"15134123123","uuid":"123123","c erId":"admin","parentId":"2","supportRegionList":"[\"cn-qingdao-env17d01\"]"}}],"userRoles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"true","muserId":"admin","arId":"ar-1 23","code":"ROLE_RESOURCE_USER","description":"desc","active":"true","roleType":"ROLETYPE SCM","default":"true","ownerOrganizationId":"1","enable":"true","roleName":"name","roleLe l":"1","id":"1","organizationVisibility":"defaultRole.resourceUser.description","cuserId" admin"}],"accessKeys": [{"ctime":"12314123123123","id":"1","region":"abc","cuserId":"admin","status":"ACTIVE","a esskeyId":"1"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"true","muserId":"admin","arId":"ar-1 23","code":"ROLE_RESOURCE_USER","description":"role_desc","active":"true","roleType":"ROL YPE_ASCM","default":"true","ownerOrganizationId":"1","enable":"true","roleName":"name","r eLevel":"1","id":"1","organizationVisibility":"defaultRole.resourceUser.description","cus Id":"admin"}],"defaultRole": {"roleRange":"test","rAMRole":"false","muserId":"admin","arId":"ar- 123","code":"ROLE_RESOURCE_USER","description":"test_desc","active":"true","roleType":"RO TYPE_RAM","default":"false","ownerOrganizationId":"1","enable":"true","roleName":"test"," leLevel":"1234","id":"1","organizationVisibility":"organizationVisibility.global"},"login licy": {"muserId":"admin","default":"true","ownerOrganizationId":"1","enable":"true","name":"tes ,"rule":"ALLOW","id":"1","organizationVisibility":"organizationVisibility.global","lpId": 23","cuserId":"admin","ipRanges": [{"protocol":"IPV4","ipRange":"0.0.0.0/0","loginPolicyId":"1"}],"timeRanges":[{"startTi me":"00:00","loginPolicyId":"1","endTime":"24:00"}]},"organization": {"muserId":"admin","internal":"true","multiCloudStatus":"master","level":"0.1","name":"te ","supportRegions":"cn-qingdao-env17d01","ctime":"18635345234","alias":"test","id":"1","mtime":"18239237283","uuid":"1231","c erId":"admin","parentId":"0","supportRegionList":"[cn-qingdao-env17d01]"}},"success":"true","pureListData":"true","message":"success"}
 ```
 
-##### User groups
+##### 4.3.1.5 User groups
 
-###### ListUserGroups
+###### 4.3.1.5.1 ListUserGroups
 
 Queries a user group.
 
@@ -11827,7 +11999,7 @@ Sample success responses `XML` format
 {"redirect":"false","cost":"1000","code":"200","data": [{"organizationId":"1","groupName":"test","augId":"1122","createTimeStamp":"1606791494471 "description":"a","id":"1","resourceSets": [{"organizationId":"1","creator":"admin","resourceGroupName":"res_test","gmtCreated":"160 91494471","rsId":"123a","id":"1"}],"users": [{"cellphoneNum":"12345678911","muserId":"admin","aliyunUser":"false","backendAccountType "RamUser","enableDingTalk":"false","accountType":"1","active":"true","mtime":"16067914944 ","organizationId":"1","password":"H2xWNY8oitAhxMWLhtyjsO1fRkYoCRcErAgP9Hd0IXp2f5rRSmArS" default":"false","loginTime":"1606791494471","deleted":"false","userLoginCtrlId":"123","l inName":"test","ctime":"1606791494471","mobileNationCode":"86","id":"1","ramUser":"false" enableEmail":"false","enableShortMessage":"false","email":"1***@123.com","defaultRoleId":" ,"username":"test"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"123a" code":"ROLE_RESOURCE_USER","description":"aa","active":"true","roleType":"ROLETYPE_ASCM", efault":"false","ownerOrganizationId":"1","enable":"false","roleName":"role_test","roleLe l":"0.1","id":"1","organizationVisibility":"organizationVisibility.global","cuserId":"adm "}],"organization": {"muserId":"admin","internal":"false","multiCloudStatus":"master","level":"0.1","name":"t t","supportRegions":"[\"cn-qingdao-env17d01\"]","ctime":"1606791494471","alias":"test","id":"1","mtime":"1606791494471","uuid":"1 3","cuserId":"123","parentId":"0","supportRegionList":"cn-qingdao-env17d01"}}],"success":"true","pageInfo": {"total":"10","totalPage":"2","pageSize":"5","currentPage":"1"},"pureListData":"false","m sage":"success"}
 ```
 
-###### CreateUserGroup
+###### 4.3.1.5.2 CreateUserGroup
 
 Creates a user group.
 
@@ -12053,7 +12225,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","data": {"organizationId":"1","groupName":"group_test","augId":"12312","createTimeStamp":"1606791 4471","description":"group_test","id":"1","resourceSets": [{"organizationId":"1","creator":"admin","resourceGroupName":"res_test","gmtCreated":"160 91494471","rsId":"123121a","id":"12"}],"users": [{"cellphoneNum":"16067914944","muserId":"admin","aliyunUser":"false","backendAccountType "RamUser","enableDingTalk":"false","accountType":"1","active":"true","mtime":"16067914944 ","organizationId":"1","password":"H2xWNY8oitAhxMWLhtyjsO1fRkYoCRcErAgP9Hd0IXp2f5rRSmArS" default":"true","loginTime":"1606791494471","deleted":"false","userLoginCtrlId":"12","log Name":"test","ctime":"1606791494471","mobileNationCode":"86","id":"1","ramUser":"true","e bleEmail":"false","enableShortMessage":"false","email":"1***@123.com","defaultRoleId":"1", sername":"test"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"12312 ,"code":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_AS ","default":"false","ownerOrganizationId":"1","enable":"true","roleName":"role_test","rol evel":"1","id":"1","organizationVisibility":"organizationVisibility.global","cuserId":"ad n"}],"organization": {"muserId":"admin","internal":"false","multiCloudStatus":"master","level":"0.1","name":"t t","supportRegions":"[\"cn-qingdao-env17d01\"]","ctime":"1638345831","alias":"test","id":"1","mtime":"1638345831","uuid":"e2469ed 527d-11ec-85ab-0a80ff2603de","cuserId":"admin","parentId":"1","supportRegionList":"cn-q ingdao-env17-d01"}},"success":"true","pureListData":"false","message":"success"}
 ```
 
-###### ListUsersInUserGroup
+###### 4.3.1.5.3 ListUsersInUserGroup
 
 Queries users in a user group.
 
@@ -12644,7 +12816,7 @@ d01","cuserId":"admin","dtUserId":"1","status":"active","accesskeyId":"JGdgSN2p*
 d01","personNum":"12","mtime":"15123222","uuid":"1231231","parentId":"1","multiCloudStatu :"master","childrenOrder":"343,44,33","name":"test","ctime":"1622311","alias":"test","res rceGroupNum":"10","id":"1","cuserId":"admin","status":"active","extraInfo":"aaa","support gionList":"[\"cn-qingdao-****-d01\"]"},"userGroups": {"organizationId":"1","groupName":"group_test","augId":"1231","createTimeStamp":"16067914 471","description":"test","id":"123","resourceSets": [{"organizationId":"1","creator":"admin","gmtModified":"1606791494471","resourceGroupName "res_test","organizationName":"testz","gmtCreated":"1606791494471","modifier":"admin","rs ":"123a","description":"test","resourceGroupType":"1","id":"1"}],"users": [{"backendAccountType":"RamUser","telephoneNum":"123123123","enableDingTalk":"false","des iption":"test","parentPk":"1234123","organizationId":"1","default":"true","password":"afa wedf","loginTime":"1606791494471","userLoginCtrlId":"1","loginName":"admin","id":"1","ena eShortMessage":"false","defaultRoleId":"1","email":"1***@123.com","cellphoneNum":"12341234 31","accountType":"1","active":"true","dtUserId":"1","multiCloudStatus":"master","deleted "false","pk":"123","mobileNationCode":"86","enableEmail":"false","extraInfo":"1","usernam :"admin"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"132","arId":"123a"," de":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_ASCM", efault":"false","ownerOrganizationId":"1","enable":"true","roleName":"test","roleLevel":" ,"id":"1","cuserId":"admin","organizationVisibility":"organizationVisibility.global","pri legeCodes":"[\"123\"]","systemPrivilegeCodes":"[\"123\"]"}],"organization":{"dtOrgId":" 1","muserId":"admin","internal":"false","level":"1","description":"test","supportRegions" cn-qingdao-****d01","personNum":"12","mtime":"1606791494471","uuid":"asd123","parentId":"1","multiCloudS tus":"master","childrenOrder":"343,44,33","name":"test","ctime":"1606791494471","alias":" st","resourceGroupNum":"10","id":"2","cuserId":"admin","status":"active","extraInfo":"123 "supportRegionList":"[\"cn-qingdao-****d01\"]"}}},"success":"true","pureListData":"false","message":"success"}
 ```
 
-###### AddUsersToUserGroup
+###### 4.3.1.5.4 AddUsersToUserGroup
 
 Adds users to a user group.
 
@@ -12702,7 +12874,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-###### AddRoleToUserGroup
+###### 4.3.1.5.5 AddRoleToUserGroup
 
 Adds a role to one or more user groups.
 
@@ -12761,7 +12933,7 @@ POST /ascm/auth/user/addRoleToUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-###### AddResourceSetToUserGroup
+###### 4.3.1.5.6 AddResourceSetToUserGroup
 
 Binds a resource set to a user group.
 
@@ -12823,7 +12995,7 @@ POST /ascm/auth/user/addResourceSetToUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-###### RemoveUsersFromUserGroup
+###### 4.3.1.5.7 RemoveUsersFromUserGroup
 
 Removes users from a user group.
 
@@ -12881,7 +13053,7 @@ POST /ascm/auth/user/removeUsersFromUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-###### RemoveRoleFromUserGroup
+###### 4.3.1.5.8 RemoveRoleFromUserGroup
 
 Removes a role from a user group.
 
@@ -12941,7 +13113,7 @@ POST /ascm/auth/user/removeRoleFromUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-###### RemoveResourceSetFromUserGroup
+###### 4.3.1.5.9 RemoveResourceSetFromUserGroup
 
 Deletes a resource set from a user group.
 
@@ -12999,7 +13171,7 @@ POST /ascm/auth/user/removeResourceSetFromUserGroup HTTP/1.1 Common request head
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-###### DeleteUserGroup
+###### 4.3.1.5.10 DeleteUserGroup
 
 Deletes a user group.
 
@@ -13058,9 +13230,9 @@ POST /ascm/auth/user/deleteUserGroup HTTP/1.1 Common request headers
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-##### Logon policies
+##### 4.3.1.6 Logon policies
 
-###### AddLoginPolicy
+###### 4.3.1.6.1 AddLoginPolicy
 
 Creates a logon policy.
 
@@ -13166,7 +13338,7 @@ Sample success responses `XML` format
 {"redirect":"false","cost":"1000","code":"200","data": {"muserId":"admin","default":"true","ownerOrganizationId":"1","enable":"true","name":"def ltLoginPolicy.name","rule":"ALLOW","description":"desc_test","id":"1","organizationVisibi ty":"organizationVisibility.global","lpId":"111","cuserId":"admin","ipRanges":[{"protoc ol":"IPV4","ipRange":"0.0.0.0/0","loginPolicyId":"1"}],"timeRanges": [{"startTime":"00:00","loginPolicyId":"1","endTime":"24:00"}]},"success":"true","pureList ta":"true","message":"success"}
 ```
 
-###### CheckLoginPolicy
+###### 4.3.1.6.2 CheckLoginPolicy
 
 Checks a logon policy.
 
@@ -13221,7 +13393,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### ListLoginPolicies
+###### 4.3.1.6.3 ListLoginPolicies
 
 Queries the list of logon policies.
 
@@ -13391,7 +13563,7 @@ not returned.
 
 `}`
 
-###### ModifyLoginPolicy
+###### 4.3.1.6.4 ModifyLoginPolicy
 
 Modifies a logon policy.
 
@@ -13537,7 +13709,7 @@ Sample success responses `XML` format
 
 `}`
 
-###### GetLoginPolicyById
+###### 4.3.1.6.5 GetLoginPolicyById
 
 Queries the information of a logon policy.
 
@@ -13672,11 +13844,11 @@ Sample success responses `XML` format
 
 `}`
 
-#### Operations
+#### 4.3.2 Operations
 
-##### CreateQuota
+##### 4.3.2.1 CreateQuota
 
-You can call this operation to create a quota. ECS
+You can call this operation to create a quota.
 
 ```json
     {"productName":"ECS",
@@ -13684,16 +13856,9 @@ You can call this operation to create a quota. ECS
     "totalDisk_cloud_ssd":100,"totalDisk_cloud_efficiency":100}}
 ```
 
-OSS
-
 ```json
 {"productName":"OSS",
     "quotaBody":{"totalAmount":100}}
-```
-
-VPC
-
-```json
  {"productName":"VPC",
     "quotaBody":{"totalVPC":100}}
 ```
@@ -13703,11 +13868,6 @@ ApsaraDB RDS
 ```json
  {"productName":"RDS",
     "quotaBody":{"totalCpu":100,"totalMem":100,"totalDisk":100}}
-```
-
-SLB
-
-```json
 {"productName":"SLB",
     "quotaBody":{"totalVipInternal":100,"totalVipPublic":100}}
 ```
@@ -13717,11 +13877,6 @@ MaxCompute (ODPS)
 ```json
 {"productName":"ODPS",
     "quotaBody":{"totalCu":100,"totalDisk":100}}
-```
-
-EIP
-
-```json
 {"productName":"EIP",
     "quotaBody":{"totalEIP":100}}
 ```
@@ -13873,7 +14028,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeGpdbModifiableInstanceType
+##### 4.3.2.2 DescribeGpdbModifiableInstanceType
 
 You can call this operation to query the AnalyticDB for PostgreSQL instance types that can be upgraded or downgraded.
 
@@ -13986,7 +14141,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UpdateQuota
+##### 4.3.2.3 UpdateQuota
 
 You can call this operation to update a quota.
 
@@ -14091,7 +14246,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DeleteQuota
+##### 4.3.2.4 DeleteQuota
 
 Deletes a quota.
 
@@ -14157,7 +14312,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetQuota
+##### 4.3.2.5 GetQuota
 
 Queries a quota.
 
@@ -14326,7 +14481,7 @@ Sample success responses `XML` format
 {"redirect":"false","cost":"1000","code":"200","data": {"usedVipInternal":"1","allocateDisk_cloud_ssd":"100","muserId":"admin","cluster":"cn-q ingdao-env17d01","allocateVipPublic":"1","totalVipInternal":"1","usedAmount":"1","allocateAmount":"1" totalDisk_cloud_efficiency":"100","usedMQ":"1","allocateCu":"1","totalDisk":"100","totalV ":"1","usedDisk_cloud_ssd":"100","totalDisk_cloud_ssd":"100","totalCpu":"1","usedVPC":"1" ctime":"1608519825999","totalCu":"1","usedGpu":"1","id":"1","allocateMem":"100","cuserId" admin","allocateDisk_cloud_efficiency":"100","allocateDisk":"100","usedCpu":"1","totalGpu "100","allocateMQ":"5","totalVipPublic":"1","quotaTypeId":"1","totalMQ":"1","usedCu":"1", sedVipPublic":"1","totalMem":"100","allocateVipInternal":"1","allocateVPC":"1","allocateG ":"100","targetType":"mysql","usedDisk":"100","usedMem":"100","allocateCpu":"1","usedDisk loud_efficiency":"100","totalAmount":"10","quotaType":"organization","allocateHAVIP":"5", tFlag":"false","totalHAVIP":"1","usedHAVIP":"1","region":"cn-qingdao-env17d01"},"success":"true","requestId":"111","pureListData":"false","message":"200"}
 ```
 
-##### MeteringQuery
+##### 4.3.2.6 MeteringQuery
 
 You can call this operation to query the metering data.
 
@@ -14468,7 +14623,7 @@ Sample success responses in JSON format `{`
 
 `}`
 
-##### SelectCommonSpec
+##### 4.3.2.7 SelectCommonSpec
 
 Queries the specifications of a service based on a filter condition.
 
@@ -14582,7 +14737,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### AddCommonSpec
+##### 4.3.2.8 AddCommonSpec
 
 Adds custom specifications.
 
@@ -14655,7 +14810,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UpdateCommonSpecStatus
+##### 4.3.2.9 UpdateCommonSpecStatus
 
 You can call this operation to enable or disable specifications.
 
@@ -14703,9 +14858,9 @@ Sample success responses `XML` format
 
 `}`
 
-##### BillQuery
+##### 4.3.2.10 BillQuery
 
-Queries the bills of cloud services. You can query the bills of the following services: Elastic Compute Service (ECS) Object Storage Service (OSS) Server Load Balancer (SLB) Elastic IP Address (EIP) Virtual Private Cloud (VPC) ApsaraDB RDS Apsara File Storage NAS Tablestore PolarDB-X V1.0 ApsaraDB for Redis AnalyticDB for MySQL V3.0 AnalyticDB for PostgreSQL ApsaraDB for MongoDB Message Queue (MQ) ApsaraDB RDS for PostgreSQL ApsaraDB RDS for SQL Server Log Service Elastic Block Storage (EBS) Snapshot Auto Scaling ApsaraDB for HBase API Gateway Time Series Database (TSDB) AnalyticDB for MySQL V2.0
+Queries the bills of cloud services. You can query the bills of the following services: Elastic Compute Service (ECS) Object Storage Service (OSS) Server Load Balancer (SLB) Elastic IP Address (EIP) Virtual Private Cloud (VPC) ApsaraDB RDS Apsara File Storage NAS PolarDB-X V1.0 AnalyticDB for MySQL V3.0 Message Queue (MQ) Elastic Block Storage (EBS) Snapshot ApsaraDB for HBase Time Series Database (TSDB) AnalyticDB for MySQL V2.0
 
 **Request headers**
 
@@ -14891,9 +15046,9 @@ POST /ascm/billing/billing/web/query/public HTTP/1.1 Common request header
 
 `}`
 
-#### Cloud services
+#### 4.3.3 Cloud services
 
-##### DescribeModifiableInstanceType
+##### 4.3.3.1 DescribeModifiableInstanceType
 
 You can call this operation to query the Elastic Compute Service (ECS) instance types that can be upgraded or downgraded.
 
@@ -15021,7 +15176,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeSeriesIdFamilies
+##### 4.3.3.2 DescribeSeriesIdFamilies
 
 Queries instance families.
 
@@ -15156,7 +15311,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GroupCommonSpec
+##### 4.3.3.3 GroupCommonSpec
 
 You can call this operation to query the valid values of the specifications-specific fields.
 
@@ -15220,7 +15375,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### DescribeInstanceTypeFamilies
+##### 4.3.3.4 DescribeInstanceTypeFamilies
 
 You can call this operation to query Elastic Compute Service (ECS) instance families.
 
@@ -15300,7 +15455,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetRegionsByProduct
+##### 4.3.3.5 GetRegionsByProduct
 
 Queries the region list of a service.
 
@@ -15362,7 +15517,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-##### BindBucketPolicy
+##### 4.3.3.6 BindBucketPolicy
 
 Associates a policy with an OSS bucket.
 
@@ -15419,7 +15574,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### UnBindBucketPolicy
+##### 4.3.3.7 UnBindBucketPolicy
 
 Disassociates a policy from an OSS bucket.
 
@@ -15476,9 +15631,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Configurations
+#### 4.3.4 Configurations
 
-##### RemoveLoginPolicyById
+##### 4.3.4.1 RemoveLoginPolicyById
 
 Deletes a logon policy.
 
@@ -15529,7 +15684,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### GetPasswordPolicy
+##### 4.3.4.2 GetPasswordPolicy
 
 Queries a password policy.
 
@@ -15620,7 +15775,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ResetPasswordPolicy
+##### 4.3.4.3 ResetPasswordPolicy
 
 Resets a password policy.
 
@@ -15711,7 +15866,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### SetPasswordPolicy
+##### 4.3.4.4 SetPasswordPolicy
 
 Modifies a password policy.
 
@@ -15813,7 +15968,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ListRAMServiceRoles
+##### 4.3.4.5 ListRAMServiceRoles
 
 Queries the list of RAM roles.
 
@@ -15942,7 +16097,7 @@ Sample success responses `XML` format
 {"redirect":"false","cost":"1000","code":"200","data": [{"organizationId":"","aliyunUserId":"","product":"","organizationName":"","assumeRolePol yDocument":"","roleId":"1","roleName":"defaultRole.resourceUser.name","description":"","i :"","roleType":"ROLETYPE_ASCM","region":"cn-qingdao-env17-d01","arn":"","policies":[{"p olicyDocument":"","ramRoleId":"","ramGroupId":"","policyName":"","description":"","ascmRa olicyId":"","aliyunUserId":"","privilegeId":"","attachDate":"","policyType":"","id":"","r ourceSetId":"","region":"","defaultVersion":""}]}],"success":"true","pageInfo":{"total" :"10","totalPage":"2","pageSize":"5","currentPage":"1"},"pureListData":"false","message": uccess"}
 ```
 
-##### ListRAMPolicies
+##### 4.3.4.6 ListRAMPolicies
 
 Queries the list of RAM policies.
 
@@ -16060,7 +16215,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### ListRAMPoliciesForUser
+##### 4.3.4.7 ListRAMPoliciesForUser
 
 Queries the list of RAM policies that are attached to a role.
 
@@ -16123,7 +16278,7 @@ POST /ascm/auth/dataPrivilege/listRAMPoliciesForUser HTTP/1.1 Common request hea
 {"redirect":"false","cost":"1000","code":"200","data": [{"ascmRamPolicyId":"1","aliyunUserId":"123","policyDocument":"ccc","ramGroupId":"1","pol yName":"test","attachDate":"1638414294","policyType":"1","description":"test","id":"1","r ion":"cn-qingdao-env17-d01","defaultVersion":"3"}],"success":"true","pageInfo":{"total" :"10","totalPage":"2","pageSize":"5","currentPage":"1"},"pureListData":"false","message": uccess"}
 ```
 
-##### RemoveLoginPolicyByName
+##### 4.3.4.8 RemoveLoginPolicyByName
 
 Deletes a logon policy.
 
@@ -16180,11 +16335,11 @@ POST /ascm/auth/loginPolicy/removeLoginPolicyByName HTTP/1.1 Common request head
 {"redirect":"false","cost":"1000","code":"200","success":"true","pureListData":"false","m sage":"success"}
 ```
 
-#### Parameters related to the
+#### 4.3.5 Parameters related to the MeteringQuery operation
 
 **MeteringQuery operation**
 
-##### ECS
+##### 4.3.5.1 ECS
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Elastic Compute Service (ECS).
 
@@ -16236,7 +16391,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | SysDiskSize | System disk | The size of the system disk. Unit: GB. |
 | DataDiskSize | Data disk size | The size of the data disk. Unit: GB. |
 
-##### SLB
+##### 4.3.5.2 SLB
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Server Load Balancer (SLB).
 
@@ -16279,7 +16434,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MeteringStorageUtiliza tion Maximum _ | Maximum capacity value | The maximum capacity value obtained from CloudMonitor at the specified end time. Unit: byte. |
 | MeteringStorageUtiliza tion Minimum _ | Minimum capacity value | The minimum capacity value obtained from CloudMonitor at the specified end time. Unit: byte. |
 
-##### OSS
+##### 4.3.5.3 OSS
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Object Storage Service (OSS).
 
@@ -16325,7 +16480,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MeteringStorageUtiliza tion Maximum _ | Maximum capacity value | The maximum capacity value obtained from CloudMonitor at the end time. Unit: byte. |
 | MeteringStorageUtiliza tion Minimum _ | Minimum capacity value | The minimum capacity value obtained from CloudMonitor at the end time. Unit: byte. |
 
-##### EIP
+##### 4.3.5.4 EIP
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to EIP.
 
@@ -16363,7 +16518,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | BindInstanceName | Name of the associated instance | The name of the instance with which the EIP is associated. In this example, the name of an ECS instance is returned. |
 | Bandwidth | Maximum bandwidth | The maximum bandwidth of the EIP. Unit: Mbit/s. |
 
-##### VPC
+##### 4.3.5.5 VPC
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Virtual Private Cloud (VPC).
 
@@ -16395,7 +16550,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | IsDefault | Default VPC | Indicates whether the VPC is the default VPC in the region. Valid values: true: The VPC is the default VPC in the region. false: The VPC is not the default VPC in the region. |
 
-##### ApsaraDB RDS for MySQL
+##### 4.3.5.6 ApsaraDB RDS for MySQL
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB RDS for MySQL.
 
@@ -16470,7 +16625,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | MemoryUsage Minimu _ m | Minimum memory usage | The minimum memory usage obtained from CloudMonitor at the specified end time. |
 
-##### Tablestore
+##### 4.3.5.7 Tablestore
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Tablestore.
 
@@ -16498,7 +16653,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | Status | Instance status | The status of the instance. |
 | Version | Engine version | The database engine version. |
 
-##### ApsaraDB for Redis
+##### 4.3.5.8 ApsaraDB for Redis
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB for Redis.
 
@@ -16566,7 +16721,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | MemoryUsage Maxim _ um | Maximum memory usage | The maximum memory usage obtained from CloudMonitor at the specified end time. |
 | MemoryUsage Minimu _ m | Minimum memory usage | The minimum memory usage obtained from CloudMonitor at the specified end time. |
 
-##### AnalyticDB for PostgreSQL
+##### 4.3.5.9 AnalyticDB for PostgreSQL
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parametersGPDBspecific to AnalyticDB for PostgreSQL.
 
@@ -16616,7 +16771,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | DBInstanceStorage | Storage | The storage capacity of the instance. Unit: GB. |
 | DBInstanceCpuCores | CPU | The number of CPU cores. |
 
-##### ApsaraDB for MongoDB
+##### 4.3.5.10 ApsaraDB for MongoDB
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB for MongoDB.
 
@@ -16685,7 +16840,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | QPS Maximum _ | Maximum QPS | The maximum QPS obtained from CloudMonitor at the specified end time. |
 | QPS Minimum _ | Minimum QPS | The minimum QPS obtained from CloudMonitor at the specified end time. |
 
-##### Message Queue for Apache RocketMQ
+##### 4.3.5.11 Message Queue for Apache RocketMQ
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Message Queue for Apache RocketMQ.
 
@@ -16714,7 +16869,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | instanceStatus | Instance status | The status of the instance. |
 | topicCapacity | Topic capacity | The number of topics. |
 
-##### ApsaraDB RDS for PostgreSQL
+##### 4.3.5.12 ApsaraDB RDS for PostgreSQL
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB RDS for PostgreSQL.
 
@@ -16770,7 +16925,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | DBMaxQuantity | Maximum number of databases that can be created | The maximum number of databases that can be created on the instance. |
 | DBInstanceStorage | Storage | The storage capacity of the instance. Unit: GB. |
 
-##### ApsaraDB RDS for SQL Server
+##### 4.3.5.13 ApsaraDB RDS for SQL Server
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to ApsaraDB RDS for SQL Server.
 
@@ -16833,7 +16988,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | DBInstanceStorage | Storage | The storage capacity of the instance. Unit: GB. |
 
-##### Log Service
+##### 4.3.5.14 Log Service
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Log Service.
 
@@ -16863,7 +17018,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | RawSum | Total data size | The total size of data occupied by Log Service. Unit: byte. |
 | IndexSize | Volume of index data | The volume of index data between the specified start time and the specified end time, and also at the specified start time. Unit byte. |
 
-##### EBS
+##### 4.3.5.15 EBS
 
 After you call the MeteringQuery operation to query statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to EBS.
 
@@ -16894,7 +17049,7 @@ After you call the MeteringQuery operation to query statistical data, common res
 | Type | Disk type | The type of the cloud disk or local disk. Valid values: system: system disk data: data disk |
 | DiskSize | Disk size | The size of the cloud disk or local disk. Unit: GiB. |
 
-##### Snapshots
+##### 4.3.5.16 Snapshots
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to the snapshot feature.
 
@@ -16936,7 +17091,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 |---|---|---|
 | RetentionDays | Retention period of the automatic snapshot | The retention period of the automatic snapshot. |
 
-##### Auto Scaling
+##### 4.3.5.17 Auto Scaling
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to Auto Scaling.
 
@@ -16979,7 +17134,7 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 | MinSize | Minimum number of instances | The minimum number of ECS instances in the scaling group. |
 | DefaultCooldown | Default cooldown time | The default cooldown time of the scaling group. Unit: seconds. During the cooldown time, Auto Scaling executes only scaling activities that are triggered by CloudMonitor event-triggered tasks. |
 
-##### API Gateway
+##### 4.3.5.18 API Gateway
 
 After you call the MeteringQuery operation to obtain statistical data, common response parameters and service-specific response parameters are returned. This topic describes the response parameters specific to API Gateway.
 
@@ -17001,11 +17156,11 @@ After you call the MeteringQuery operation to obtain statistical data, common re
 
 Monitor API Reference
 
-## CloudMonitor API
+## 5 CloudMonitor API Reference
 
 **Reference**
 
-### Common parameters
+### 5.1 Common parameters
 
 **Common request parameters**
 
@@ -17054,7 +17209,7 @@ identify the instance on which you want to perform the operation, and the organi
 
 API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-### Metrics for Apsara Stack
+### 5.2 Metrics for Apsara Stack services
 
 **services**
 
@@ -17565,11 +17720,11 @@ Monitor API Reference
 | NodeDiskUtilizati on | % | NodeDiskUtilizati on | userId and instanceId | The disk usage of the instance node. |
 | NodeHeapMemor yUtilization | % | NodeHeapMemor yUtilization | userId and instanceId | The HeapMemory usage of the instance node. |
 
-### API Reference
+### 5.3 API Reference
 
-#### Cloud Products
+#### 5.3.1 Cloud Products
 
-##### DescribeProjectMeta
+##### 5.3.1.1 DescribeProjectMeta
 
 You can call this operation to query information of monitored services in Cloud Monitor. The information obtained by this operation includes the service description, namespace, and tags.
 
@@ -17659,7 +17814,7 @@ The response content varies with the services that are actually monitored. `JSON
 
 `},` `]` `}` `}`
 
-##### DescribeMetricLast
+##### 5.3.1.2 DescribeMetricLast
 
 You can call this operation to query the latest monitoring data of a monitored object.
 
@@ -17953,7 +18108,7 @@ Monitor API Reference
 
 `}`
 
-##### DescribeMetricList
+##### 5.3.1.3 DescribeMetricList
 
 Monitor API Reference You can call this operation to query the monitoring data of time series metrics of Apsara Stack services in a specified period. For more information about how to assign values to the Namespace, Project, Metric, Period, and Dimensions parameters for Apsara Stack services, see Metrics for Apsara Stack services.
 
@@ -18235,7 +18390,7 @@ Monitor API Reference
 
 `}`
 
-##### DescribeMetricMetaList
+##### 5.3.1.4 DescribeMetricMetaList
 
 Queries the descriptions of time series metrics that are supported in CloudMonitor. This operation is used with DescribeMetricList and DescribeMetricLast.
 
@@ -18931,9 +19086,9 @@ he specified time range",
 
 `}` `]` `}` `}`
 
-#### Threshold-triggered alert rules
+#### 5.3.2 Threshold-triggered alert rules
 
-##### DescribeMetricRuleList
+##### 5.3.2.1 DescribeMetricRuleList
 
 Queries alert rules. Monitor API Reference
 
@@ -19133,7 +19288,7 @@ Monitor API Reference
 { &quot;RequestId&quot;:&quot;0F05309F-8863-4B2A-8F52-C6AA00E701B4&quot;, &quot;Alarms&quot;:{ &quot;Alarm&quot;:[ { &quot;Period&quot;:60, &quot;Statistics&quot;:&quot;Average&quot;, &quot;GroupName&quot;:&quot;Group name&quot ;, &quot;Webhook&quot;:&quot;&quot;, &quot;Subject&quot;:&quot;aaabbb&quot;, &quot;Effe ctiveInterval&quot;:&quot;00:00-23:59&quot;, &quot;RuleName&quot;:&quot;My alert rule&q uot;, &quot;NoEffectiveInterval&quot;:&quot;&quot;, &quot;GroupId&quot;:&quot;3596360&quot;, &quot;EvaluationCount&quot;:3, &quot;MetricName&quot;:&quot;cpu_total&quot;, &quot;State&quot;:&quot;OK&quot;, &quot;T hreshold&quot;:&quot;92&quot;, &quot;Enable&quot;:true, &quot;SilenceTime&quot;:86400, &quot;Dimensions&quot;:&quot;[{}]&quot;, &quot;RuleId&quot;:&quot;a151cd6023eacee2f0978e03863cc1697c89508e2b61****&quot;, &quot; Namespace&quot;:&quot;acs_ecs_dashboard&quot;, &quot;ContactGroups&quot;:&quot;Test&quot;, &quot;ComparisonOperator&quot;:&quot;>=&quot;, &quot;Escalations&quot;:{ &quot;Critical&quot;:{ &quot;Statistics&quot;:&quot;Average&quot;, &quot;Threshold&quot;:&quot;92&quot;, &quot;Times&quot;:3, &quot;ComparisonOperator&quot;:&quot;GreaterThanOrEqualToThreshold&quot; }, &quot;Info&quot;:{}, &quot;Warn&quot;:{} }, &quot;Resources&quot;:&quot; [{\&quot;instanceId\&quot;:\&quot;i-a2d5q7pm3f12****\&quot;}]&quot; }, { &quot;Period&quot;:60, &quot;Statistics&quot;:&quot;Average&quot;, &quot;GroupName&quot;:&quot;demo&quot;, &quot;Webhook&quot;:&quot;&quot;, &quot;Subject&quot;:&quot;${serviceType}-${metricName}- ${levelDescription}Notification(${dimensions})&quot;, &quot;EffectiveInterval&quot;:&quot;00:00-23:59&quot;, &quot;RuleName&quot;:&quot;xxxxxxxxxxxxxxx&quot;, &quot;NoEffectiveInterval&quot;:&quot;&quot;, &quot;GroupId&quot;:&quot;12345&quot;, &q uot;EvaluationCount&quot;:3, &quot;MetricName&quot;:&quot;cpu_total&quot;, &quot;State&quot;:&quot;OK&quot;, &quot;Threshold&quot;:&quot;90&quot;, &quot;Enable&quot;:true, &quot;SilenceTime&quot;:86400, &quot;Dimensions&quot;:&quot;[{ }]&quot;, &quot;RuleId&quot;:&quot;alarmRule_uuid_adbe286748952b82c6a4ebe3a07521697bb706****&quot;, &quot;Namespace&quot;:&quot;acs_ecs_dashboard&quot;, &quot;ContactGroups&quot;:&quot;rongfei&quot;, &quot;ComparisonOperator&quot;:&quot;>=&quot;, &quot;Escalations&quot;:{ &quot;Critical&quot;:{ &quot;Statistics&quot;:&quot;Average&quot;, &quot;Threshold&quot;:&quot;6666&quot;, &quot;Times&quot;:3, &quot;ComparisonOperator&quot;:&quot;GreaterThanOrEqualToThreshold&quot; }, &quot;Info&quot;:{}, &quot;Warn&quot;:{} }, &quot;Resources&quot;:&quot; [{\&quot;instanceId\&quot;:\&quot;host-fTcUci7****\&quot;}&quot; } ] }, &quot;Success&quot;:true, &quot;Code&quot;:&quot;200&quot;, &quot;Total&quot;:102 }
 ```
 
-##### PutResourceMetricRule
+##### 5.3.2.2 PutResourceMetricRule
 
 Creates an alert rule for a performance metric of a resource. For more information about the sample values of request parameters such as `Namespace` , `MetricName` and `Dimensions` for cloud services, see Metrics for Apsara Stack services.
 
@@ -19229,7 +19384,7 @@ p;<公共请求参数`>` Sample success responses `XML` format
 
 `}`
 
-##### DescribeMetricRuleCount
+##### 5.3.2.3 DescribeMetricRuleCount
 
 Queries the number of alert rules in each state.
 
@@ -19301,7 +19456,7 @@ Sample success responses `XML` format Monitor API Reference
 
 `}` `}`
 
-##### DeleteMetricRules
+##### 5.3.2.4 DeleteMetricRules
 
 You can call this operation to delete one or more alert rules.
 
@@ -19355,7 +19510,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### EnableMetricRules
+##### 5.3.2.5 EnableMetricRules
 
 Enables one or more alert rules.
 
@@ -19415,7 +19570,7 @@ Sample success responses `XML` format
 
 For a list of error codes, visit the API Error Center.
 
-##### DisableMetricRules
+##### 5.3.2.6 DisableMetricRules
 
 You can call this operation to disable one or more alert rules.
 
@@ -19465,7 +19620,7 @@ Monitor API Reference Sample success responses `XML` format
 
 `}`
 
-##### DescribeAlertingMetricRuleResources
+##### 5.3.2.7 DescribeAlertingMetricRuleResources
 
 You can call this operation to query the resources that have active alerts triggered based on an alert rule.
 
@@ -19565,7 +19720,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` `}`
 
-##### DeleteMetricRuleResources
+##### 5.3.2.8 DeleteMetricRuleResources
 
 Monitor API Reference Disassociates resources from an alert rule.
 

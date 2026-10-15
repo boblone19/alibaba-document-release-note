@@ -3,20 +3,77 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DN
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 68
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260828.pdf"
+source_pdf: "a014db00a23569aa_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide "
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Within%20Cloud%29%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Within Cloud) User Guide 20260828
 
+## Table of Contents
+
+- 1 What is Apsara Stack DNS?
+- 2 User roles and permissions
+- 3 Log on to the Apsara Stack DNS console
+- 4 DNS within cloud
+  - 4.1 Internal DNS resolution management
+    - 4.1.1 Overview
+    - 4.1.2 Global internal domain names
+      - 4.1.2.1 Add and manage global internal domain names
+      - 4.1.2.2 Parsing configuration
+        - 4.1.2.2.1 Add and manage DNS records
+    - 4.1.3 Global forwarding configurations
+      - 4.1.3.1 Overview
+      - 4.1.3.2 Global forwarding domain names
+        - 4.1.3.2.1 Add and manage forwarding domain names
+      - 4.1.3.3 Enable default forwarding
+    - 4.1.4 Global recursive resolution
+      - 4.1.4.1 Overview
+      - 4.1.4.2 Recursive ACL policy
+        - 4.1.4.2.1 Add and manage ACL policies
+      - 4.1.4.3 Enable global recursive resolution
+    - 4.1.5 Manage cached records
+  - 4.2 IP Address Line Configuration
+    - 4.2.1 Add and manage global lines
+- 5 Private DNS
+  - 5.1 PrivateZone (DNS Standard Edition only)
+    - 5.1.1 Tenant internal domain name
+      - 5.1.1.1 Add and manage tenant internal domain names
+      - 5.1.1.2 Parsing configuration
+        - 5.1.1.2.1 Add and manage DNS records
+      - 5.1.1.3 Associate a domain name with a VPC
+      - 5.1.1.4 Disassociate a domain name from a VPC
+    - 5.1.2 Tenant forwarding configurations
+      - 5.1.2.1 Tenant forwarding domain names
+        - 5.1.2.1.1 Add and manage tenant forwarding domain names
+        - 5.1.2.1.2 Associate a domain name with a VPC
+        - 5.1.2.1.3 Disassociate a domain name from a VPC
+      - 5.1.2.2 Tenant default forwarding configurations
+        - 5.1.2.2.1 Add and manage default forwarding configurations
+        - 5.1.2.2.2 Associate a tenant default forwarding configuration with a VPC
+        - 5.1.2.2.3 Disassociate a tenant default forwarding configuration from a VPC
+  - 5.2 Private lines
+    - 5.2.1 Add and manage private lines
+- 6 Global scheduling
+  - 6.1 Scheduling instances
+    - 6.1.1 Create and manage scheduling instances
+    - 6.1.2 Configure a scheduling instance
+      - 6.1.2.1 Create and manage access policies for a scheduling instance
+  - 6.2 Address pool
+    - 6.2.1 Create and manage address pools
+    - 6.2.2 Perform health checks
+- 7 System management
+  - 7.1 Manage logs
+- 8 Manage tags
+- 9 View operation logs
+
 DNS?
 
-## What is Apsara Stack DNS?
+## 1 What is Apsara Stack DNS?
 
 Apsara Stack DNS is a service that provides Domain Name System (DNS) resolution in an Apsara Stack environment. It lets you set rules and policies to map domain names to IP addresses, which redirects domain name requests from clients to resources such as cloud resources, business systems on a corporate intranet, or service resources from an Internet Service Provider (ISP). Apsara Stack DNS provides basic DNS resolution and scheduling services for Virtual Private Cloud (VPC) environments. You can use Apsara Stack DNS in your VPC to perform the following operations: Access other ECS instances deployed in your VPC. Access cloud service instances provided by Apsara Stack. Access custom enterprise business systems. Access Internet services and businesses. Establish network connections between DNS and user-created DNS over a leased line. sions
 
-## User roles and permissions
+## 2 User roles and permissions
 
 | Role | Permission |
 |---|---|
@@ -28,7 +85,7 @@ Apsara Stack DNS is a service that provides Domain Name System (DNS) resolution 
 
 Stack DNS console
 
-## Log on to the Apsara Stack
+## 3 Log on to the Apsara Stack DNS console
 
 **DNS console**
 
@@ -59,21 +116,21 @@ operations based on your scenario: Scenario 1: You log on to the Apsara Uni-mana
 the Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, choose **Products > Network > Alibaba Cloud DNS**.
 
-## DNS within cloud
+## 4 DNS within cloud
 
-### Internal DNS resolution
+### 4.1 Internal DNS resolution management
 
 **management**
 
 Internal DNS resolution management allows you to manage global internal domain names, global forwarding configurations, and global recursive resolution configurations that you have created in Apsara Stack.
 
-#### Overview
+#### 4.1.1 Overview
 
 This feature is designed for multicloud integration scenarios. It syncs configuration information globally across multiple clouds to provide global domain name resolution for all applications.
 
-#### Global internal domain names
+#### 4.1.2 Global internal domain names
 
-##### Add and manage global internal domain
+##### 4.1.2.1 Add and manage global internal domain names
 
 **names**
 
@@ -138,9 +195,9 @@ want to delete. In the **Actions** column, click the icon and then click **Delet
 
 On the **Global Internal Domain Name** page, click **Operation Logs** in the **Actions** column to view the operation logs for the corresponding domain name. For more information, see View operation logs.
 
-##### Parsing configuration
+##### 4.1.2.2 Parsing configuration
 
-###### Add and manage DNS records
+###### 4.1.2.2.1 Add and manage DNS records
 
 This topic describes how to add a Domain Name System (DNS) record for a global internal domain name in the Apsara Stack DNS console.
 
@@ -203,15 +260,15 @@ text box and click **OK**. Delete a DNS record Find the DNS record that you want
 **OK**.
 Delete multiple DNS records at a time Select the DNS records that you want to delete at a time and click **Batch Delete** in the lower-left corner of the record list. In the message that appears, click **OK**.
 
-#### Global forwarding configurations
+#### 4.1.3 Global forwarding configurations
 
-##### Overview
+##### 4.1.3.1 Overview
 
 All operations on global forwarding domain names require system administrator permissions. Apsara Stack DNS forwards specific domain names to other DNS servers for resolution. Apsara Stack DNS can forward requests with or without recursion. In the mode of forwarding without recursion, only the specified DNS server is used to resolve domain names. If the resolution fails or times out, a message is returned to the DNS client to indicate that the current request fails. In the mode of forwarding with recursion, the specified DNS server is preferentially used to resolve domain names. If the resolution fails, the local DNS server is used.
 
-##### Global forwarding domain names
+##### 4.1.3.2 Global forwarding domain names
 
-###### Add and manage forwarding domain
+###### 4.1.3.2.1 Add and manage forwarding domain names
 
 **names**
 
@@ -273,7 +330,7 @@ you want to delete, click the icon in the **Actions** column to expand the menu,
 
 On the **Global Forwarding Domain Names** tab, find the domain name whose operation logs you want to view and click **Operation Log** in the **Actions** column. For more information, see View operation logs.
 
-##### Enable default forwarding
+##### 4.1.3.3 Enable default forwarding
 
 This topic describes how to enable default forwarding in the Apsara Uni-manager Management Console. This operation requires administrator permissions.
 
@@ -298,15 +355,15 @@ Global Domain Names page, click the **Global Forwarding Configurations** tab, an
 
 5. Click **Submit**.
 
-#### Global recursive resolution
+#### 4.1.4 Global recursive resolution
 
-##### Overview
+##### 4.1.4.1 Overview
 
 Recursive access control list (ACL) policies are used to specify whether to recursively send DNS requests to the Internet. Recursive resolution defined in such ACL policies takes precedence over global recursive resolution.
 
-##### Recursive ACL policy
+##### 4.1.4.2 Recursive ACL policy
 
-###### Add and manage ACL policies
+###### 4.1.4.2.1 Add and manage ACL policies
 
 This topic describes how to add an access control list (ACL) policy in the Apsara Uni-manager Management Console. This operation requires administrator permissions.
 
@@ -337,10 +394,10 @@ Query ACL policies Click **Advanced Filter** and enter an ACL policy name in the
 **Actions** column. In the dialog box that appears, enter a description in the **Description**
 text box and click **OK**. Delete an ACL policy Single deletion: Click **Delete** in the **Actions** column of the ACL policy you want to delete. In the dialog box that appears, click **OK**. Batch deletion: Select multiple ACL policies that you want to delete, and click **Batch**
 **Delete** in the lower-left corner of the page. In the dialog box that appears, click **OK**.
-View operation logs Find the ACL policy whose operation logs you want to view and click **Operation Logs** in the
+Find the ACL policy whose operation logs you want to view and click **Operation Logs** in the
 **Actions** column. For more information, see View operation logs.
 
-##### Enable global recursive resolution
+##### 4.1.4.3 Enable global recursive resolution
 
 **Prerequisites**
 
@@ -356,7 +413,7 @@ If recursive resolution is enabled, recursive Domain Name System (DNS) queries c
 Global Domain Names page, click the **Global Recursive Resolution** tab, and then click the **Global Default Recursion** subtab.
 4. Turn on or off **Global Recursive Resolution** and then click **Submit**.
 
-#### Manage cached records
+#### 4.1.5 Manage cached records
 
 Domain names that are queried by using global forwarding or recursion are cached. This topic describes how to view and clear the cached records in the Apsara Uni-manager Management Console. This operation requires administrator permissions.
 
@@ -377,11 +434,11 @@ Click **Clear Cache**. In the **Clear Cache** dialog box, configure the followin
 | Domain Name | Enter a domain name. |
 | Domain Name Matching Method | Select a matching method for domain names. If you select Suffix Match, the cached DNS records of all the domain names with the same suffix as the domain name that you specified are cleared. If you select Exact Match, only the cached DNS records of the domain name that you specified are cleared. |
 
-### IP Address Line Configuration
+### 4.2 IP Address Line Configuration
 
 The IP Address Line Configuration tab allows you to define lines based on IP addresses. The lines are used to group request sources to achieve intelligent load balancing.
 
-#### Add and manage global lines
+#### 4.2.1 Add and manage global lines
 
 This topic describes how to add a global line in the Apsara Uni-manager Management Console.
 
@@ -413,20 +470,20 @@ Modify the sorting method Find the line whose sorting method you want to modify 
 
 **Important**
 
-If you want to delete a line, you must disassociate the line from all scheduling instances and the resolution configurations of global lines. Single deletion: Click **Delete** in the **Actions** column of the line you want to delete. In the dialog box that appears, click **OK**. Batch deletion: Select multiple lines that you want to delete, and click **Batch Delete** in the lower-left corner of the page. In the dialog box that appears, click **OK**. View operation logs Find the line whose operation logs you want to view and click **Operation Logs** in the
+If you want to delete a line, you must disassociate the line from all scheduling instances and the resolution configurations of global lines. Single deletion: Click **Delete** in the **Actions** column of the line you want to delete. In the dialog box that appears, click **OK**. Batch deletion: Select multiple lines that you want to delete, and click **Batch Delete** in the lower-left corner of the page. In the dialog box that appears, click **OK**. Find the line whose operation logs you want to view and click **Operation Logs** in the
 **Actions** column. For more information, see View operation logs.
 
-## Private DNS
+## 5 Private DNS
 
-### PrivateZone (DNS Standard
+### 5.1 PrivateZone (DNS Standard Edition only)
 
 **Edition only)**
 
 The PrivateZone feature allows you to create VPC-specific tenant domain names. You can bind the domain names to VPCs as required to achieve tenant isolation.
 
-#### Tenant internal domain name
+#### 5.1.1 Tenant internal domain name
 
-##### Add and manage tenant internal domain
+##### 5.1.1.1 Add and manage tenant internal domain names
 
 **names**
 
@@ -484,9 +541,9 @@ name, such as **Latency**, **ParsingSucceeded**, **Total number of analyses**, *
 **ParsingSucceededbyQname**, and **ParsingTotalbyQname**.
 You can query data by time range or metric.
 
-##### Parsing configuration
+##### 5.1.1.2 Parsing configuration
 
-###### Add and manage DNS records
+###### 5.1.1.2.1 Add and manage DNS records
 
 **Adds a DNS record**
 
@@ -545,7 +602,7 @@ text box and click **OK**. Delete a DNS record Find the DNS record that you want
 **OK**.
 Delete multiple DNS records at a time Select the DNS records that you want to delete at a time and click **Batch Delete** in the lower-left corner of the record list. In the message that appears, click **OK**.
 
-##### Associate a domain name with a VPC
+##### 5.1.1.3 Associate a domain name with a VPC
 
 Tenant resources are isolated based on virtual private clouds (VPCs). Simply configuring domain name resolution data does not take effect by default. You must associate the domain name with a VPC for it to take effect.
 
@@ -563,7 +620,7 @@ VPC that you want to associate with the domain name from the **Associate VPC** d
 
 **You can select multiple VPCs for association.**
 
-##### Disassociate a domain name from a VPC
+##### 5.1.1.4 Disassociate a domain name from a VPC
 
 This topic describes how to disassociate a domain name from a virtual private cloud (VPC).
 
@@ -582,11 +639,11 @@ Method 2: On the **VPCs** page, select one or multiple VPCs that you want to dis
 6. In the message that appears, click **OK**.
 The VPC from which you disassociate the domain name is no longer displayed on the VPCs page.
 
-#### Tenant forwarding configurations
+#### 5.1.2 Tenant forwarding configurations
 
-##### Tenant forwarding domain names
+##### 5.1.2.1 Tenant forwarding domain names
 
-###### Add and manage tenant forwarding
+###### 5.1.2.1.1 Add and manage tenant forwarding domain names
 
 **domain names**
 
@@ -649,7 +706,7 @@ On the **Tenant Forwarding Domain Names** tab, find the domain name whose operat
 
 On the **Tenant Forwarding Domain Names** tab, you can add tags to domain names for management. For more information, see Manage tags.
 
-###### Associate a domain name with a VPC
+###### 5.1.2.1.2 Associate a domain name with a VPC
 
 Tenant resources are isolated based on virtual private clouds (VPCs). Simply configuring domain name resolution data does not take effect by default. You must associate the domain name with a VPC for it to take effect.
 
@@ -665,7 +722,7 @@ manage and click **Associate VPC** in the **Actions** column.
 5. In the **Associate VPC** dialog box, select a region from the **Region** drop-down list, select a
 VPC that you want to associate with the domain name from the **Associate VPC** drop-down list, and then click **OK**. You can select multiple VPCs.
 
-###### Disassociate a domain name from a VPC
+###### 5.1.2.1.3 Disassociate a domain name from a VPC
 
 This topic describes how to disassociate a domain name from a virtual private cloud (VPC).
 
@@ -684,9 +741,9 @@ Method 2: On the **VPCs** page, select one or multiple VPCs that you want to dis
 6. In the message that appears, click **OK**.
 The VPC from which you disassociate the domain name is no longer displayed on the VPCs page.
 
-##### Tenant default forwarding configurations
+##### 5.1.2.2 Tenant default forwarding configurations
 
-###### Add and manage default forwarding
+###### 5.1.2.2.1 Add and manage default forwarding configurations
 
 **configurations**
 
@@ -750,7 +807,7 @@ On the **Tenant Default Forwarding Configurations** tab, find the configuration 
 
 On the **Tenant Default Forwarding Configurations** tab, you can add tags to configurations for management. For more information, see Manage tags.
 
-###### Associate a tenant default forwarding
+###### 5.1.2.2.2 Associate a tenant default forwarding configuration with a VPC
 
 **configuration with a VPC**
 
@@ -772,7 +829,7 @@ to manage and click **Associate VPC** in the **Actions** column.
 5. In the **Associate VPC** dialog box, select a region from the **Region** drop-down list, select a
 VPC that you want to associate with the domain name from the **Associate VPC** drop-down list, and then click **OK**. You can select multiple VPCs.
 
-###### Disassociate a tenant default forwarding
+###### 5.1.2.2.3 Disassociate a tenant default forwarding configuration from a VPC
 
 **configuration from a VPC**
 
@@ -793,11 +850,11 @@ Method 2: On the **VPCs** page, select one or multiple VPCs that you want to dis
 6. In the message that appears, click **OK**.
 The VPC from which you disassociate the configuration is no longer displayed on the VPCs page.
 
-### Private lines
+### 5.2 Private lines
 
 Apsara Stack DNS allows you to define lines based on IP addresses on the Private Line page. The lines are used to group request sources to achieve intelligent load balancing. The lines can be referenced by private domain names for VPCs.
 
-#### Add and manage private lines
+#### 5.2.1 Add and manage private lines
 
 A private line is an address library that identifies the source of a Domain Name System (DNS) request. This topic describes how to add and manage private lines.
 
@@ -859,13 +916,13 @@ On the **Private Line** page, find the line whose operation logs you want to vie
 
 On the **Private Line** page, you can add tags to private lines for management. For more information, see Manage tags.
 
-## Global scheduling
+## 6 Global scheduling
 
-### Scheduling instances
+### 6.1 Scheduling instances
 
 The Scheduling Instance page displays all existing scheduling instances. You can create, delete, modify, and configure scheduling instances on this page. You must associate an address pool and a scheduling domain with the instance.
 
-#### Create and manage scheduling
+#### 6.1.1 Create and manage scheduling instances
 
 **instances**
 
@@ -902,10 +959,10 @@ Search for a scheduling instance Click **Advanced Filter** and enter a schedulin
 After you delete a scheduling instance, domain names using the instance cannot be resolved. Proceed with caution. Single deletion: Click **Delete** in the **Actions** column of the instance you want to delete. In the dialog box that appears, click **OK**. Batch deletion: Select multiple scheduling instances that you want to delete, and click
 **Batch Delete** in the lower-left corner of the page. In the dialog box that appears, click
 **OK**.
-View operation logs Find the scheduling instance whose operation logs you want to view and click **Operation**
+Find the scheduling instance whose operation logs you want to view and click **Operation**
 **Log** in the **Actions** column. For more information, see View operations logs.
 
-#### Configure a scheduling instance
+#### 6.1.2 Configure a scheduling instance
 
 You can create, delete, modify, and query access policies for scheduling instances.
 
@@ -976,7 +1033,7 @@ Conflict restrictions for multiple address types
 | Same DNS request source: Scenario 5 | Domain Name | IPv6 | Addition and coexistence not allowed |
 | Same DNS request source: Scenario 6 | Domain Name | Domain Name | Addition and coexistence are allowed if the following conditions are met: i. The two secondary address pools must be the same address pool. ii. One primary address pool must be IPv4, and the other must be IPv6. |
 
-##### Create and manage access policies for a
+##### 6.1.2.1 Create and manage access policies for a scheduling instance
 
 **scheduling instance**
 
@@ -1019,9 +1076,9 @@ Modify an access policy
 
 You can modify an access policy to resolve different address pools based on different DNS request sources. If you do not change the primary or secondary address pool when you modify an access policy, no primary/secondary switchover will be triggered. If you change one of the address pools, the system applies the following rules: i. Manual switchover mode: If the secondary address pool is deleted, the system forcibly switches traffic to the primary address pool. If the secondary address pool is not deleted, the effective address pool does not change. ii. Automatic switchover mode: The system determines the address pool that takes effect based on the availability of the newly selected address pools. Exercise caution when you change the address pools. Find the access policy that you want to modify and click **Edit** in the **Actions** column. In the dialog box that appears, modify the information and click **OK**. For more information, see Create an access policy. Delete an access policy Find the access policy that you want to delete and click **Delete** in the **Actions** column. In the dialog box that appears, click **OK**.
 
-### Address pool
+### 6.2 Address pool
 
-#### Create and manage address pools
+#### 6.2.1 Create and manage address pools
 
 Address pools are used to associate scheduling instances. This topic describes how to create and manage address pools.
 
@@ -1082,7 +1139,7 @@ click **Delete** in the **Actions** column. Method 2: On the **Address Pool** pa
 
 On the **Address Pool** page, find the address pool whose operation logs you want to view and click **Operation Logs** in the **Actions** column. For more information, see View operations logs.
 
-#### Perform health checks
+#### 6.2.2 Perform health checks
 
 Only the addresses whose health check results are normal can be returned. This topic describes how to perform health checks on the addresses in an address pool.
 
@@ -1130,9 +1187,9 @@ For more information about the parameters, see Create a health check.
 **Delete** in the **Actions** column.
 2. In the message that appears, click **OK**.
 
-## System management
+## 7 System management
 
-### Manage logs
+### 7.1 Manage logs
 
 This topic describes how to view the alert information of a Domain Name System (DNS) cluster.
 
@@ -1147,7 +1204,7 @@ Click the icon in the upper-right corner to show or hide items in the alert log 
 **Address Restored to Available**.
 Enter a **keyword** to filter alert logs that you want to view. Select a time period to filter alert logs that you want to view.
 
-## Manage tags
+## 8 Manage tags
 
 Alibaba Cloud DNS supports tags. You can use tags to mark and classify instances, such as tenant internal domain names, tenant forwarding domain name lists, tenant default forwarding configurations, and private lines. This helps you search for and group resources. This topic describes how to manage and use tags.
 
@@ -1187,7 +1244,7 @@ After you attach tags to instances, you can use the tags to quickly find them. 1
 4. In the dialog box that appears, select a **Tag Key** and a **Tag Value**. Then, click **Search**. The
 system filters the instances based on the selected tag key and tag value.
 
-## View operation logs
+## 9 View operation logs
 
 You can view the operation logs for your Alibaba Cloud DNS instances. These logs provide information such as the instance status, the source and time of an operation, and API call details. This information helps you analyze and trace historical operations.
 

@@ -2,20 +2,46 @@
 title: "OpenTrek Dev Operations and Maintenance Guide 20260630"
 product_version: "V3.18.6"
 pdf_pages: 76
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 OpenTrek Dev Operations and Maintenance Guide 20260630.pdf"
+source_pdf: "795b53190216de4a_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek Dev Operations and Maintenance Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/OpenTrek%20Dev/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20Dev%20Operations%20and%20Maintenance%20Guide%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # OpenTrek Dev Operations and Maintenance Guide 20260630
 
-OpenTrek Dev Operations and M
+## Table of Contents
 
-## O&M overview
+- 1 O&M overview
+- 2 View the monitoring dashboard
+- 3 View alert notifications
+- 4 FAQ
+  - 4.1 Agent
+    - 4.1.1 Troubleshoot agent issues
+    - 4.1.2 Agent node execution failure
+  - 4.2 Data center
+    - 4.2.1 Dataset management
+      - 4.2.1.1 Datasets
+      - 4.2.1.2 Data files
+      - 4.2.1.3 Data subsets
+    - 4.2.2 Data processing
+      - 4.2.2.1 Create a knowledge base parsing service
+        - 4.2.2.1.1 Upload a custom image
+        - 4.2.2.1.2 Create an AI gateway
+        - 4.2.2.1.3 Create a Kafka instance and a topic
+        - 4.2.2.1.4 Create a VLM inference service
+      - 4.2.2.2 Troubleshoot knowledge base document parsing issues
+      - 4.2.2.3 Perform a hot upgrade on the image of a knowledge base parsing service
+      - 4.2.2.4 Troubleshooting processing tasks
+      - 4.2.2.5 Perform a hot update on a control application
+      - 4.2.2.6 Perform a hot update on an offline image
+      - 4.2.2.7 FAQ about video data processing
+  - 4.3 Connect to a model
 
-Module Studio Exclusive is developed on top of cloud-native and AI-generated content (AIGC) technologies and is built based on Kubernetes. Basic Linux experience and Kubernetes O&M experience help you easily get started with basic O&M of the Agile Edition. This chapter describes the O&M objectives, requirements, precautions, and troubleshooting methods. OpenTrek Dev Operations and M
+## 1 O&M overview
 
-## View the monitoring
+Module Studio Exclusive is developed on top of cloud-native and AI-generated content (AIGC) technologies and is built based on Kubernetes. Basic Linux experience and Kubernetes O&M experience help you easily get started with basic O&M of the Agile Edition. This chapter describes the O&M objectives, requirements, precautions, and troubleshooting methods. oring dashboard
+
+## 2 View the monitoring dashboard
 
 **dashboard**
 
@@ -61,7 +87,7 @@ Click the dashboard sfm-tenant-cluster-pod-dashboard to view Pod metrics such as
 
 **Java application monitoring dashboard**
 
-Click the dashboard sfm-tenant-basic-java-dashboard to view application and Pod metrics such as HTTP, JVM, and Dubbo. OpenTrek Dev Operations and M
+Click the dashboard sfm-tenant-basic-java-dashboard to view application and Pod metrics such as HTTP, JVM, and Dubbo. oring dashboard
 
 **Go application (Gin framework) monitoring dashboard**
 
@@ -69,9 +95,9 @@ Click the dashboard sfm-tenant-basic-go-gin-dashboard to view application and Po
 
 **Go application (Arrow framework) monitoring dashboard**
 
-Click the dashboard sfm-tenant-basic-go-arrow-dashboard to view application and Pod metrics such as HTTP, Go heap, and Goroute. OpenTrek Dev Operations and M
+Click the dashboard sfm-tenant-basic-go-arrow-dashboard to view application and Pod metrics such as HTTP, Go heap, and Goroute. ications
 
-## View alert notifications
+## 3 View alert notifications
 
 **Control-side alert notifications**
 
@@ -81,7 +107,7 @@ Log in to the Apsara Uni-manager Operations Console. In the top navigation bar, 
 
 **Alert rules**
 
-Click Alert Rules. On the Alert Rules page, select sfm from the drop-down list of the advanced filter cloud product to view the configuration of the alert rule. To modify the alert rule configuration, click Modify Rule. OpenTrek Dev Operations and M
+Click Alert Rules. On the Alert Rules page, select sfm from the drop-down list of the advanced filter cloud product to view the configuration of the alert rule. To modify the alert rule configuration, click Modify Rule. ications
 
 **Configure alert notifications**
 
@@ -93,19 +119,21 @@ Log in to the Managed Service for Prometheus 2.0 console.
 
 **Alert rules**
 
-OpenTrek Dev Operations and M The tag of alert rules for Model Studio Exclusive is SfmAlertRule. You can filter alert rules by using this tag. You can select a state in the Current status column to filter the corresponding alerts.
+ications The tag of alert rules for Model Studio Exclusive is SfmAlertRule. You can filter alert rules by using this tag. You can select a state in the Current status column to filter the corresponding alerts.
 
 **Configure alert notifications**
 
-You can use the SfmAlertRule tag to filter Model Studio Exclusive alert rules. Set the number of entries per page to 100, select all rules, and then click Configure notification method below the list. OpenTrek Dev Operations and M
+You can use the SfmAlertRule tag to filter Model Studio Exclusive alert rules. Set the number of entries per page to 100, select all rules, and then click Configure notification method below the list.
 
-## FAQ
+## 4 FAQ
 
 This chapter provides answers to some frequently asked questions about Model Studio Exclusive. For more information, see the troubleshooting topic of each module.
 
-### Agent
+### 4.1 Agent
 
-#### Troubleshoot agent issues
+#### 4.1.1 Troubleshoot agent issues
+
+**Query agent progress**
 
 **Prerequisites**
 
@@ -118,8 +146,6 @@ Database query: Query data in the business database ibp_system of an agent. Most
 **Database schema SQL statements**
 
 **Query task data**
-
-OpenTrek Dev Operations and M
 
 ```
 -- Query the task execution process. -- index_name_1 indicates the execution result of the task. Pay attention to failed tas ks. -- index_name_2 indicates the task type, which is the node type on the left side of the canvas. -- index_name_2='LogTsak ' indicates the task generated in the first step. -- index_name_2='UiTask ' indicates the task generated in the last step. -- gmt_create indicates the estimated execution duration of each node. -- UiTask and gmt_create of LogTsak can be used to evaluate the duration of a complete Q&A process. -- CAST(feature AS JSON)->> 'startTime' indicates the start time of the API operation. -- CAST(feature AS JSON)->> 'endTime' indicates the end time of the API operation. -- unique_code indicates the task ID. select * from ibp_task where index_name_7 = 'Session_ID' order by id desc; -- If multiple requests are initiated from a session, add the following condition: inde x_name_5 = 'Request ID'. -- index_name_2 = 'AgentInvocationTask' indicates the agent task. -- You need to obtain the session ID of the agent task for further recursive troublesho oting. select CAST(feature AS JSON) ->> 'CHILD_INFO' from "ibp_task" where index_name_2 = 'AgentInvocationTask' and unique_code = 'Task ID from Step 1'; // If the task ID cannot be obtained in some scenarios, use keywords to query the log a nd find the matching task ID. select content from "ibp_record" where title like 'Print the input parameters%' and task_unique_code = 'Task ID from Step 1';
@@ -136,8 +162,6 @@ order by task_unique_code,gmt_create asc;
 **Log solutions**
 
 **Analyze the duration of a request**
-
-OpenTrek Dev Operations and M
 
 ```bash
 Replace requestId with the actual request ID. -- Query the progress of a request in the log that is output in real time. kubectl get pods -A -o jsonpath='{range .items[*]} {.metadata.namespace}/{.metadata.name}{"\n"}{end}' | grep ibp-agent | while IFS=/ read -r ns pod; do
@@ -157,14 +181,12 @@ Contact the caller to obtain the exception information carried in the response b
 Replace Exception description with the specific onsite exception information. -- Query the progress of a request in the log that is output in real time. kubectl get pods -A -o jsonpath='{range .items[*]} {.metadata.namespace}/{.metadata.name}{"\n"}{end}' | grep ibp-agent | while IFS=/ read -r ns pod; do
     echo "Processing $ns/$pod" >&2
     kubectl exec -n "$ns" "$pod" -- bash -c 'cat /home/admin/logs/ibp-agent.log 2>&1 |
-grep --line-buffered -C 200 "Exception description" 2>/dev/null' done > output1.log 2>&1 -- Query the progress of a request in historical logs. -- You can modify the following value. The asterisk (*) indicates the specific point in kubectl get pods -A -o jsonpath='{range .items[*]} {.metadata.namespace}/{.metadata.name}{"\n"}{end}' | grep ibp-agent | while IFS=/ read -r ns pod; do
+grep --line-buffered -C 200 "Exception description" 2>/dev/null' done > output1.log 2>&1 -- Query the progress of a request in historical logs. -- You can modify the following value. The asterisk (*) indicates the specific point in time, such as ibp-agent.log.2025-05-08.* -- /home/admin/logs/ibp-agent.log.* kubectl get pods -A -o jsonpath='{range .items[*]} {.metadata.namespace}/{.metadata.name}{"\n"}{end}' | grep ibp-agent | while IFS=/ read -r ns pod; do
     echo "Processing $ns/$pod" >&2
     kubectl exec -n "$ns" "$pod" -- bash -c 'zcat /home/admin/logs/ibp-agent.log.* 2>&1
 | grep --line-buffered -C 200 "Exception description" 2>/dev/null'
 done > output1.log 2>&1 llmConsumeStream, sessionId=7d84076b-42eb-47b8-abe4-89c33b2489fd, cat agent.log | grep 'llmConsumeStream' | grep sessionId | grep node_id
 ```
-
-OpenTrek Dev Operations and M
 
 **Traffic metrics by agent (Scheduled collection on the on site**
 
@@ -178,7 +200,9 @@ OpenTrek Dev Operations and M
 -- Total number of created sessions select count(*) from ibp_agent_session; -- Total number of active sessions (new or initiated requests) by day. SELECT
     TO_CHAR(gmt_modified, 'YYYYMMDD') AS days,
     COUNT(*)
-FROM WHERE
+FROM
+    ibp_agent_session
+WHERE
     gmt_modified > '2025-01-15 08:00:00'
 GROUP BY
     TO_CHAR(gmt_modified, 'YYYYMMDD')
@@ -200,10 +224,15 @@ GROUP BY
     TO_CHAR(gmt_create, 'YYYYMMDD')
 ORDER BY
     days;
+```
+
+**Traffic statistics by agent**
+
+```
 -- Set a value range for gmt_create. -- Configure the agent_code and agent_version fields to specify a specific agent versio
 ```
 
-`n.` OpenTrek Dev Operations and M
+`n.`
 
 ```
 SELECT
@@ -225,23 +254,35 @@ ORDER BY
   h."agent_name",
   n.*
 from
-  (
+```
+
+`(`
+
+```
     SELECT
       agent_code,
       TO_CHAR(gmt_create, 'YYYYMMDD') AS days,
       COUNT(*) as number
     FROM
-      (
+```
+
+`(`
+
+```
         SELECT
           b.agent_code,
           b.agent_version,
           a.gmt_create
         FROM
-          (
+```
+
+`(`
+
+```
             select
 ```
 
-*
+`*`
 
 ```
             from
@@ -254,6 +295,7 @@ from
       ) m
     GROUP BY
       TO_CHAR(gmt_create, 'YYYYMMDD'),
+      agent_code
     ORDER BY
       days desc,
       number desc
@@ -261,7 +303,7 @@ from
   LEFT JOIN "ibp_agent_ref" h on n."agent_code" = h."agent_code"
 ```
 
-OpenTrek Dev Operations and M
+**Memory consumed by agent requests**
 
 ```
 -- Descriptions of returned fields: task type, session ID, request ID, and disk space o ccupied by task data. -- Response condition: Task data that occupies more than 1 MB of disk space within the specified time range SELECT
@@ -272,8 +314,6 @@ FROM ibp_task WHERE gmt_create > '2025-10-20 21:16:00' and pg_column_size(featur
 ```
 
 **Number of model node calls**
-
-OpenTrek Dev Operations and M
 
 ```
 -- Platform wide. SELECT
@@ -292,8 +332,10 @@ ORDER BY
     COUNT(*)
 FROM
     (SELECT a.index_name_5,b."agent_code" ,b."agent_version",a.gmt_create
+     FROM "ibp_task" a LEFT JOIN "ibp_agent_session"  b
      on a.index_name_7 = b.session_code
      and a.index_name_2 = 'LLMReasoningTask'
+     and b.agent_code = '' and b.agent_version =''
     ) m
 WHERE
     gmt_create > '' and  gmt_create < ''
@@ -307,8 +349,6 @@ ORDER BY
 **Number of calls to other external service nodes (API, RAG, or**
 
 **KC)**
-
-OpenTrek Dev Operations and M
 
 ```
 SELECT
@@ -351,8 +391,6 @@ su admin /usr/local/bin/python3 javastack.py
     return None, None
 ```
 
-OpenTrek Dev Operations and M
-
 ```python
 def dump_thread_stack(pid, jdk_bin, stack_file):
     try:
@@ -365,7 +403,7 @@ def dump_thread_stack(pid, jdk_bin, stack_file):
             stack_file,
 ```
 
-]
+`]`
 
 ```python
         # Run the jcmd command.
@@ -401,7 +439,7 @@ def main():
         sorted(stacks.items(), key=lambda item: len(item[1]), reverse=True)
 ```
 
-)
+`)`
 
 ```
     result = ""
@@ -410,13 +448,11 @@ def main():
 str(len(stacks[stack]))+"intotal "+" "join(stacks[stack])+"\n"
 ```
 
-OpenTrek Dev Operations and M
-
 ```
             str(len(stacks[stack])) + " in total, " + " , ".join(stacks[stack]) + "\n"
 ```
 
-)
+`)`
 
 ```python
         result += stack + "\n\n"
@@ -433,7 +469,7 @@ if __name__ == "__main__":
 Obtain the process ID (PID), as shown in the following figure.
 
 ```
--- Replace pid with the actual PID and run the following command to download the agent. dump file.
+-- Replace pid with the actual PID and run the following command to download the agent. dump file. /opt/graalvm/bin/jstack pid > agent.dump
 ```
 
 **O&M database status**
@@ -465,8 +501,6 @@ FROM pg_stat_activity GROUP BY datname ORDER BY connection_count DESC;
 ```
 
 **View the real-time status of the database**
-
-OpenTrek Dev Operations and M
 
 ```
 SELECT
@@ -504,12 +538,6 @@ from "ibp_task" WHERE index_name_7 = 'Actual session ID' and index_name_5 = 'Act
 
 **Data backlog**
 
-| session id _ | Session ID |
-|---|---|
-| request id _ | Request ID |
-
-OpenTrek Dev Operations and M
-
 ```
 -- Query large-sized tables related to the agent. select count(*) from ibp_task where gmt_create < '2025-12-16 10:33:39.559'; select count(*) from ibp_record where gmt_create < '2025-12-16 10:33:39.559'; select count(*) from ibp_agent_cmd_message icm where gmt_create < '2025-12-16 10:33:39 .559'; select count(*) from ibp_agent_stream_thougths iast where gmt_create < '2025-12-16 10 :33:39.559'; select count(*) from ibp_agent_memory_fragment iamf where gmt_create < '2025-12-16 1 0:33:39.559'; -- Query table capacity usage (in PostgreSQL database). SELECT
     schemaname AS table_schema,
@@ -539,19 +567,22 @@ ORDER BY
 
 **Table fields**
 
-Record the Q&A of each session
+ibp_agent_cmd_message Record the Q&A of each session
+
+| session id _ | Session ID |
+|---|---|
+| request id _ | Request ID |
 
 | from id _ | The source. In agent answers, from id is _ session id. _ |
 |---|---|
 | to id _ | The destination. In agent questions, to id is _ session id. _ |
 | message | Content of the question or answer. |
 
-OpenTrek Dev Operations and M
-
 **SQL statements**
 
 ```xml
     select *
+    from ibp_agent_cmd_message
     <where>
       <if test="requestId != null">
         request_id = #{requestId}
@@ -562,12 +593,16 @@ OpenTrek Dev Operations and M
         </if>
         <if test="sessionId == null">
           session_id in (
+          SELECT session_code  FROM ibp_agent_session
+          WHERE agent_code =  #{agentCode}
+          <if test="agentVersion != null">
+            and agent_version = #{agentVersion}
           </if>
           order by id desc
           limit 100
 ```
 
-)
+`)`
 
 ```
         </if>
@@ -583,10 +618,9 @@ OpenTrek Dev Operations and M
 
 **Table fields**
 
-ibp_task Record the information about tasks created on each node and the task execution and invocation information OpenTrek Dev Operations and M
+ibp_task Record the information about tasks created on each node and the task execution and invocation information `{`
 
 ```json
-{
   "unique_code":""
  "index_name_1":"result",     // The execution result.
  "index_name_2":"taskType",   // The task type, which starts with LogTask and ends with
@@ -602,7 +636,12 @@ UiTask.
  "index_name_11":"isFire",    // Whether the task is scheduled.
  "index_name_12":"breakPoint" // The break-point label.
  "feature":"" // The extension fields, including request and response parameters.
-} LogTask: The logging task.
+```
+
+`}`
+
+```
+LogTask: The logging task.
     LLMReasoningTask: The model task.
     ScriptInvocationTask: The script task.
     ToolInvocationTask: The tool task.
@@ -620,15 +659,17 @@ Table ibp_record
 
 **Chain-of-thought**
 
-#### Agent node execution failure
+Data ibp_agent_stream_thougths
 
-During the debugging phase, the execution of the agent node fails. Example: OpenTrek Dev Operations and M Find the red dot on the canvas to locate the failed node, and obtain the specific error details in the response or error message on the right side of the page. Then, go back to the design page to fix the node. If the operation is performed by calling the API, click Effect Tracking on the agent version page. Find the task based on the session ID and request ID, and go to the details page and system log to identify the cause of failure. OpenTrek Dev Operations and M
+#### 4.1.2 Agent node execution failure
 
-### Data center
+During the debugging phase, the execution of the agent node fails. Example: Find the red dot on the canvas to locate the failed node, and obtain the specific error details in the response or error message on the right side of the page. Then, go back to the design page to fix the node. If the operation is performed by calling the API, click Effect Tracking on the agent version page. Find the task based on the session ID and request ID, and go to the details page and system log to identify the cause of failure.
 
-#### Dataset management
+### 4.2 Data center
 
-##### Datasets
+#### 4.2.1 Dataset management
+
+##### 4.2.1.1 Datasets
 
 This topic describes the issues that may arise when you use datasets, the possible causes, and the solutions.
 1. . The dataset list reports the following error message:**
@@ -646,9 +687,9 @@ Problem: The dataset list reports the following error message: Contact the O&M a
 
 **unchanged.**
 
-Problem: After a file is uploaded and a new subset is created, the number of rows or size displayed on the Datasets page is unchanged. Cause: The dataset statistics on the Datasets page are updated every 1 hour. The number of rows and size of the statistics are the size of the subsets, excluding the original file. Workaround: Check the Datasets page 1 hour after the file is uploaded. OpenTrek Dev Operations and M
+Problem: After a file is uploaded and a new subset is created, the number of rows or size displayed on the Datasets page is unchanged. Cause: The dataset statistics on the Datasets page are updated every 1 hour. The number of rows and size of the statistics are the size of the subsets, excluding the original file. Workaround: Check the Datasets page 1 hour after the file is uploaded.
 
-##### Data files
+##### 4.2.1.2 Data files
 
 This topic describes the issues that may arise when you use data files, and the possible causes of and solutions to the issues.
 1. . A CROS error occurs when you upload a file**
@@ -670,7 +711,7 @@ Cause: HTTPS is not enabled for the OSS bucket. Solution: Log in to the OSS cons
 
 **upload files**
 
-Problem: "The OSS Access Key Id you provided does not exist in our records" is reported when you call API operations to obtain the upload credential of a dataset to upload a file. Cause: The temporary credential has expired. Temporary credentials automatically expire upon the expiration time. OpenTrek Dev Operations and M Solution: Obtain the expiration time returned by the temporary credential API operation, and renew the credential again before it expires.
+Problem: "The OSS Access Key Id you provided does not exist in our records" is reported when you call API operations to obtain the upload credential of a dataset to upload a file. Cause: The temporary credential has expired. Temporary credentials automatically expire upon the expiration time. Solution: Obtain the expiration time returned by the temporary credential API operation, and renew the credential again before it expires.
 4. . "Access denied by authorizer's policy" is reported when you**
 
 **perform operations on a file by using a temporary credential**
@@ -679,7 +720,7 @@ Problem: "Access denied by authorizer's policy" is reported when you perform ope
 5. ** `"403 Forbidden"` **is reported when you delete a file**
 Problem: On the Dataset > Data File tab, files can be uploaded and viewed, but the `403` `Forbidden` error is reported when you click Delete. Cause: Deletion permissions are not granted to the OSS role. Solution: Check the OSS resources that you use and the role. Assign the `DeleteObject` permission to the role in the OSS console.
 
-##### Data subsets
+##### 4.2.1.3 Data subsets
 
 This topic describes the issues that may arise when you use the data subsets, the possible causes, and the solutions.
 1. . "No found any file types match supported type" is reported**
@@ -692,7 +733,7 @@ Issue: "No found any file types match supported type" is reported when your atte
 
 **attempt to create or update a subset fails**
 
-OpenTrek Dev Operations and M Issue: "Found multi file modal in your paths" is reported when your attempt to create or update a subset fails. Cause: When you configure a data file for a data subset, files of multiple modes are selected. Solution: Retain only one model of files based on the error message.
+Issue: "Found multi file modal in your paths" is reported when your attempt to create or update a subset fails. Cause: When you configure a data file for a data subset, files of multiple modes are selected. Solution: Retain only one model of files based on the error message.
 3. . The system prompts that the paging data in the view is too**
 
 **large to be previewed when you attempt to preview a subset**
@@ -701,16 +742,16 @@ Issue: The system prompts that the paging data in the view is too large to be pr
 4. . Subset creation or update fails**
 Issue: After you open a dataset, the Create Subset and Update Subset buttons are dimmed. As a result, you cannot create or update subsets. Cause: Only the dataset creator and namespace administrator have the permissions to modify subsets. Solution: Acquire the namespace administrator role.
 
-#### Data processing
+#### 4.2.2 Data processing
 
-##### Create a knowledge base parsing service
+##### 4.2.2.1 Create a knowledge base parsing service
 
 1. . Create an online service**
 The procedure to creating an online service is the same as to creating an online parsing service path.
 
 **1.1. Basic information**
 
-Turn on Image Deployment. You do not need to select a model. OpenTrek Dev Operations and M
+Turn on Image Deployment. You do not need to select a model.
 
 **1.2. Select a resource group**
 
@@ -718,7 +759,7 @@ If you use document deep analysis, you need to select a resource pool with intel
 
 **1.3. Select a service image**
 
-OpenTrek Dev Operations and M For the production environment, you can select a public image. Select a CPU for basic parsing and a GPU for deep parsing.
+For the production environment, you can select a public image. Select a CPU for basic parsing and a GPU for deep parsing.
 
 **Images for the Enterprise edition:**
 
@@ -730,20 +771,18 @@ For more information about how to upload a custom image, see Upload a custom ima
 
 **1.4. Configure the service**
 
-Classic Network Access: must be enabled. However, it can be skipped when you turn on AI Gateway. AI Gateway: Optional. The AI gateway supports monitoring. You can enable asynchronous inference. For more information, see Create an AI gateway. Port: Configure Service Port and Container Port, as shown in the following figure. Startup Commands: Enter the startup command, as shown in the following figure. Environment Variables: Enter environment variables, as shown in the following figure. SERVER_WORKERS indicates the inference parallelism capability, which can be adjusted based on the resource configuration.
+Classic Network Access: must be enabled. However, it can be skipped when you turn on AI Gateway. AI Gateway: Optional. The AI gateway supports monitoring. You can enable asynchronous inference. For more information, see Create an AI gateway. Port: Configure Service Port and Container Port, as shown in the following figure. Startup Commands: Enter the startup command, as shown in the following figure. Environment Variables: Enter environment variables, as shown in the following figure. SERVER_WORKERS indicates the inference parallelism capability, which can be adjusted based on the resource configuration. The following table describes some other parameters:
 
 | Environment variable | Description | Suggested configuration | Value |
 |---|---|---|---|
 | SERVER WORKERS _ | The number of workers (maximum number of concurrent requests). | 8 | 8 |
-| SERVER PORT _ | Service port number | 8001 |  |
+| SERVER PORT _ | Service port number | 8001 |   |
 | RUNTIME SHARE PAT _ _ H | The path to store log files and artifacts. | /runtime share _ | /runtime share _ |
 | START TRITON SERVE _ _ R | Specifies whether to start the Triton inference server. | 1 | 1 |
 
-OpenTrek Dev Operations and M The following table describes some other parameters:
-
 **1.5. Advanced settings (optional)**
 
-Enable asynchronous inference, which allows you to manage Kafka request queues and persist parsing results. For more information about how to create a Kafka instance and a topic for asynchronous inference, see Create a Kafka instance and a topic. OpenTrek Dev Operations and M
+Enable asynchronous inference, which allows you to manage Kafka request queues and persist parsing results. For more information about how to create a Kafka instance and a topic for asynchronous inference, see Create a Kafka instance and a topic.
 
 **1.6. Create the service**
 
@@ -751,13 +790,17 @@ After you click OK, a record is added to the service list, as shown in the follo
 
 **1.7. Associate with an API key**
 
-Create an API key. We recommend that you do not use the admin account. Associate the service with the API key. OpenTrek Dev Operations and M After the online service is started, you need to go to the operation management page to connect it to a model before you can use the service. Switch the user who created the API key to the resource administrator role, and go to the operation management page. Click + Access model, select Online Parsing Service as the model type, and select the API key that is associated with the service. You can select Global Space as the effective space. OpenTrek Dev Operations and M After the model is created, debug it until it is error-free, and then click Debugging passed. The button becomes green. Return to the model list, find the model, and then click Enable. Then, the model is available in the knowledge base.
+Create an API key. We recommend that you do not use the admin account. Associate the service with the API key.
 
-###### Upload a custom image
+**1.8 Connect to a model**
+
+After the online service is started, you need to go to the operation management page to connect it to a model before you can use the service. Switch the user who created the API key to the resource administrator role, and go to the operation management page. Click + Access model, select Online Parsing Service as the model type, and select the API key that is associated with the service. You can select Global Space as the effective space. After the model is created, debug it until it is error-free, and then click Debugging passed. The button becomes green. Return to the model list, find the model, and then click Enable. Then, the model is available in the knowledge base.
+
+###### 4.2.2.1.1 Upload a custom image
 
 **Upload an image**
 
-Apsara Stack Container Registry requires you to create a repository in your test resource set and change the password. In most cases, the AliOS%1688 is used. OpenTrek Dev Operations and M
+Apsara Stack Container Registry requires you to create a repository in your test resource set and change the password. In most cases, the AliOS%1688 is used.
 
 ```bash
 # Upload a local image to the remote end.
@@ -776,19 +819,25 @@ d01.inter.env17e.shuguang.com/aipaas_test/data-mixer-operators:2.1.1-hotx.3-gpu-
 
 **Custom images**
 
-OpenTrek Dev Operations and M Note: You must manually add a version for uploaded images.
+Note: You must manually add a version for uploaded images.
 
-###### Create an AI gateway
+###### 4.2.2.1.2 Create an AI gateway
 
 **Create a cluster**
 
-https://one.console.con.env17e.shuguang.com/cop/gateway Take note of the following two items: OpenTrek Dev Operations and M An error was reported when I saved the configurations. However, the gateway is eventually created.
+https://one.console.con.env17e.shuguang.com/cop/gateway Take note of the following two items:
+
+**Create an AI gateway**
+
+An error was reported when I saved the configurations. However, the gateway is eventually created.
 
 **Configure the AI gateway**
 
-OpenTrek Dev Operations and M Associate with the gateway that you created.
+Associate with the gateway that you created.
 
-###### Create a Kafka instance and a topic
+###### 4.2.2.1.3 Create a Kafka instance and a topic
+
+**Create a Kafka instance**
 
 First, find the ID of the virtual private cloud (VPC) in which the cluster of the AI gateway is created and record the VPC ID. When you enable asynchronous inference, the vSwitch ID is prompted. Record the vSwitch ID. Create a Kafka instance and use the preceding VPC and vSwitch.
 
@@ -798,11 +847,11 @@ Create a user. Username: aistudio. Password: Admin123@ascm. Creates three access
 
 **Create a partition**
 
-###### Create a VLM inference service
+###### 4.2.2.1.4 Create a VLM inference service
 
 **Create a service**
 
-Step 0: Go to the MaaS marketplace to download the desired model. In this example, the Qwen 2.5 model is used. In this case, search for `Qwen2.5-VL-7B-Instruct` . OpenTrek Dev Operations and M Step 1: Create an online service, select 16 cores, 64 GB, 64 GB of shared memory, and 1 GPU (A10 or A100). Step 2: Select an image, such as nvidia-vllm-lws. Step 3: Select the model `Qwen2.5-VL-7B-Instruct` and the mount path `/models/Qwen2.5-VL-`
+Step 0: Go to the MaaS marketplace to download the desired model. In this example, the Qwen 2.5 model is used. In this case, search for `Qwen2.5-VL-7B-Instruct` . Step 1: Create an online service, select 16 cores, 64 GB, 64 GB of shared memory, and 1 GPU (A10 or A100). Step 2: Select an image, such as nvidia-vllm-lws. Step 3: Select the model `Qwen2.5-VL-7B-Instruct` and the mount path `/models/Qwen2.5-VL-`
 
 ```
 7B-Instruct .
@@ -818,27 +867,28 @@ python3 -m vllm.entrypoints.openai.api_server --max_num_batched_tokens 65536 --d
 
 **Test the model**
 
-Check the call information. The office network is accessible over the classic network address. Note that you need to manually allow access to the address. OpenTrek Dev Operations and M
+Check the call information. The office network is accessible over the classic network address. Note that you need to manually allow access to the address.
 
 ```json
 curl -X POST 'http://d4e36c8d.classic.inter.env17e.shuguang.com/v1/chat/completions' \ -H 'Authorization: Bearer sk-3daefc8d0d0b9040b7' \ -H 'Content-Type: application/json' \ -d '{
     "messages": [
-        {
+```
+
+`{`
+
+```json
             "role": "user",
             "content": [
-                {
+```
+
+`{`
+
+```json
                     "text": "Who is Columbus?",
                     "type": "text"
-                }
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
     "model": "Qwen2.5-VL-7B-Instruct",
@@ -847,38 +897,45 @@ curl -X POST 'http://d4e36c8d.classic.inter.env17e.shuguang.com/v1/chat/completi
     "presence_penalty": 0.0,
     "max_tokens": null,
     "stream": false
-}'
 ```
 
-OpenTrek Dev Operations and M
+`}'`
 
 ```json
 curl -X POST 'http://d4e36c8d.classic.inter.env17e.shuguang.com/v1/chat/completions' \ -H 'Authorization: Bearer sk-3daefc8d0d0b9040b7' \ -H 'Content-Type: application/json' \ -d '{
     "messages": [
-        {
+```
+
+`{`
+
+```json
             "role": "user",
             "content": [
-                {
+```
+
+`{`
+
+```json
                     "image_url": {
                         "url": "http://dke.oss-cn-wulan-env17e-d01-
 a.inter.env17e.shuguang.com/datasets%2Ftest%2Fimage_0001.jpg? Expires=1762528157&OSSAccessKeyId=w0mbe5gdBHxX4y5r&Signature=GZFQYP%2BSwh4NHl3iA%2BWi7NCU c%3D"
-                    },
+```
+
+`},`
+
+```json
                     "type": "image_url"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "text": "You are an intelligent image description assistant, please
 use short statements to describe the content of the figure. ",
                     "type": "text"
-                }
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`}` `]` `}` `],`
 
 ```json
     "model": "Qwen2.5-VL-7B-Instruct",
@@ -887,39 +944,40 @@ use short statements to describe the content of the figure. ",
     "presence_penalty": 0.0,
     "max_tokens": null,
     "stream": false
-}'
 ```
 
-##### Troubleshoot knowledge base document
+`}'`
+
+##### 4.2.2.2 Troubleshoot knowledge base document parsing issues
 
 **parsing issues**
 
 **Check service availability**
 
-Log in to Model Studio Exclusive as a resource set administrator or an O&M administrator. OpenTrek Dev Operations and M Click the online parsing service that you want to check and click Debugging to test the service availability. The result shows that the service is available.
+Log in to Model Studio Exclusive as a resource set administrator or an O&M administrator. Click the online parsing service that you want to check and click Debugging to test the service availability. The result shows that the service is available.
 
 **View service logs**
 
-Log in to the AI Studio console. On the Online Service page, find the online parsing service that you deployed and click Details in the Actions column. OpenTrek Dev Operations and M On the Resource Instance tab, view the status of the replicas. Click Logs in the Actions column to check whether errors are reported. To view the complete log, go to the Events & Logs tab. OpenTrek Dev Operations and M If the instance status is abnormal, go to the Events tab to view the Kubernetes events.
+Log in to the AI Studio console. On the Online Service page, find the online parsing service that you deployed and click Details in the Actions column. On the Resource Instance tab, view the status of the replicas. Click Logs in the Actions column to check whether errors are reported. To view the complete log, go to the Events & Logs tab. If the instance status is abnormal, go to the Events tab to view the Kubernetes events.
 
-## FAQ
+**FAQ**
 
 1. . Why is an online services restart due to an OOM killer event?**
-If an online instance receives a large number of concurrent requests or a significantly large file, the parsing process may be restarted due to out-of-memory (OOM) issues. You can change the service configuration and adjust the CPU, memory, and shared memory configurations based on your business requirements. Recommended configurations: NVIDIA GPUs: single-replica 8 cores, 32 GB, and 16 GB of shared memory, with 8 workers. APG GPUs: single-replica 8 cores, 80 GB, and 16 GB of shared memory, with 4 workers. Hygon GPUs: single-replica 8 cores, 80 GB, and 16 GB of shared memory, with 4 workers. OpenTrek Dev Operations and M Huawei GPUs: single-replica 8 cores, 80 GB, and 16 GB of shared memory, with 4 workers. To change the configurations of a service, stop the service first. On the Online Service page, find the service that you want to change and choose Service Configuration> Change Resource in the Actions column. In the dialog box that appears, change the resource configurations and click OK. Then, click Restart in the Actions column to restart the service. OpenTrek Dev Operations and M
+If an online instance receives a large number of concurrent requests or a significantly large file, the parsing process may be restarted due to out-of-memory (OOM) issues. You can change the service configuration and adjust the CPU, memory, and shared memory configurations based on your business requirements. Recommended configurations: NVIDIA GPUs: single-replica 8 cores, 32 GB, and 16 GB of shared memory, with 8 workers. APG GPUs: single-replica 8 cores, 80 GB, and 16 GB of shared memory, with 4 workers. Hygon GPUs: single-replica 8 cores, 80 GB, and 16 GB of shared memory, with 4 workers. Huawei GPUs: single-replica 8 cores, 80 GB, and 16 GB of shared memory, with 4 workers. To change the configurations of a service, stop the service first. On the Online Service page, find the service that you want to change and choose Service Configuration> Change Resource in the Actions column. In the dialog box that appears, change the resource configurations and click OK. Then, click Restart in the Actions column to restart the service.
 
-##### Perform a hot upgrade on the image of a
+##### 4.2.2.3 Perform a hot upgrade on the image of a knowledge base parsing service
 
 **knowledge base parsing service**
 
 Step 1: Push the image that requires a hot update to the tenant-side Container Registry instance, create a custom image, and add an image version. For more information, see Upload a custom image. Step 2: Stop the online service and click Modify Configurations. In the panel that appears, select the custom image that you uploaded and click OK. Return to the service list, find the service and click Restart to restart the service.
 
-##### Troubleshooting processing tasks
+##### 4.2.2.4 Troubleshooting processing tasks
 
 1. . View the execution log of a processing task**
 
 **1.1. Go to the Log tab**
 
-Go to the Task Execution Overview page, search for the task by its name or enter the name and click O&M in the Operation column, find the job that you want to view, and click Detail in the Operation column. OpenTrek Dev Operations and M Click the Log tab.
+Go to the Task Execution Overview page, search for the task by its name or enter the name and click O&M in the Operation column, find the job that you want to view, and click Detail in the Operation column. Click the Log tab.
 
 **1.2. Check the task configuration**
 
@@ -927,7 +985,7 @@ Find `cfg.process is:` and find the corresponding parameter setting. Confirm whi
 
 **1.3. Find the operator that triggers the error**
 
-Run the `- OP [` command to query which operators are executed and which triggers the error. OpenTrek Dev Operations and M A summary log entry is generated after every operator is executed. The log entry includes the execution time and number of output samples.
+Run the `- OP [` command to query which operators are executed and which triggers the error. A summary log entry is generated after every operator is executed. The log entry includes the execution time and number of output samples.
 
 **1.4. Check the error details**
 
@@ -936,7 +994,7 @@ As shown in the preceding figure, you can find the cause of error in the stack t
 
 **file conversion failure**
 
-The log includes the soffice and logic of the conversion failure. If the source file cannot be automatically converted to a PDF file for parsing, the file may be excessively large or corrupted. OpenTrek Dev Operations and M
+The log includes the soffice and logic of the conversion failure. If the source file cannot be automatically converted to a PDF file for parsing, the file may be excessively large or corrupted.
 3. . Thoroughly analyze the error. The error message includes**
 
 **both expand_page_images_to_rows_mapper and**
@@ -969,7 +1027,7 @@ In the PDF parsing path, an error is reported when the preset conversion file fo
 1. First, use the corresponding PC application, such as Word, Excel, or LibreOffice, to open the
 file, and confirm that the file can be opened.
 2. Save the file as a new file and compare the size difference between the source and new
-files, such as the following document. The result shows that the files are not the same. This indicates that the original file format is invalid and is automatically fixed by the application. OpenTrek Dev Operations and M
+files, such as the following document. The result shows that the files are not the same. This indicates that the original file format is invalid and is automatically fixed by the application.
 3. Parse the new file, and it can work as expected.
 4. Directly save the source file as a PDF file on the PC and analyze the PDF file.
 5. . Analyze the content of the knowledge chunks to find**
@@ -978,7 +1036,7 @@ files, such as the following document. The result shows that the files are not t
 
 **chunkBboxs contains duplicate chunks.**
 
-In the list of chunks, chunkBboxes contains duplicate chunks. For example, in the knowledge chunks of the following file, two chunks with different chunkContent have the same chunkBboxs. Cause: The parsing result of the file is split into different paragraphs by page and saved as a result list. The length of the paragraphs varies. If the length of a paragraph exceeds the upper limit of a knowledge chunk, the paragraph is split into two chunks. Both chunks include the same chunkBboxes, which is used to trace the source of the chunk. The first knowledge chunk ends at the text "... lifeless". Before the text "... lifeless", an overlap token is added to the second chunk, and the text is: OpenTrek Dev Operations and M
+In the list of chunks, chunkBboxes contains duplicate chunks. For example, in the knowledge chunks of the following file, two chunks with different chunkContent have the same chunkBboxs. Cause: The parsing result of the file is split into different paragraphs by page and saved as a result list. The length of the paragraphs varies. If the length of a paragraph exceeds the upper limit of a knowledge chunk, the paragraph is split into two chunks. Both chunks include the same chunkBboxes, which is used to trace the source of the chunk. The first knowledge chunk ends at the text "... lifeless". Before the text "... lifeless", an overlap token is added to the second chunk, and the text is:
 6. . The PPU environment reports the following error message:**
 
 **processor running error: [500] in ensemble**
@@ -1001,7 +1059,7 @@ Symptom: The Triton service runs as expected for the first few times after it is
 [5. 14:29:16, May 30, 2025] triton_python_b invoked oom-killer: gfp_mask=0xcc0(GFP_KERNEL), order=0, oom_score_adj=0 [5. 14:29:16, May 30, 2025] oom_kill_process.cold + 0xb/0x28 [14:29:16, May 30, 2025] [ pid ] uid tgid total_vm rss pgtables_bytes swapents oom_score_adj name [5. 14:29:16, May 30, 2025] oom-kill:constraint=CONSTRAINT_MEMCG,nodemask= (null),cpuset=0d3888b689ecbb71ff8e119e700b4302822812bbb6fd16dd6cb68ddb7467d944,mems_allow =0- 1,oom_memcg=/docker/0d3888b689ecbb71ff8e119e700b4302822812bbb6fd16dd6cb68ddb7467d944,task emcg=/docker/0d3888b689ecbb71ff8e119e700b4302822812bbb6fd16dd6cb68ddb7467d944,task=triton ython_b,pid=1355052,uid=0 [5. 14:29:19, May 30, 2025] oom_reaper: reaped process 1355052 (triton_python_b), now a non-rss:0kB, file-rss:0kB, shmem-rss:9896kB
 ```
 
-In the Docker startup parameters, 8 GB of memory is allocated, and mem_swap is enabled. OpenTrek Dev Operations and M Run the docker stats command to check whether the allocated memory takes effect. The following dependencies and triton-ppu base images are not aligned. The misalignment does not affect the business.
+In the Docker startup parameters, 8 GB of memory is allocated, and mem_swap is enabled. Run the docker stats command to check whether the allocated memory takes effect. The following dependencies and triton-ppu base images are not aligned. The misalignment does not affect the business.
 7. . The PPU environment report the following error message:**
 
 **layout_analysis.utils.element.DocException: process page**
@@ -1015,9 +1073,9 @@ The model timed out during processing and reduced the concurrency from np=4 to n
 
 **unable to enqueue for inference table_cell_detect_0_1**
 
-The path execution log shows that the PDF file can be recognized by other models, but an error is reported when the table parsing submodel is executed. The chunk generated from table parsing in the dataset execution result is empty. OpenTrek Dev Operations and M Troubleshooting algorithms executed on the site detect that the model files are compiled by using the H20 drive. On-site table parsing reports an error. Solve the issue by directly compiling the model files on the site. If similar issues arise, check the GPU model and drive. Contact on-site algorithm engineers for model compiling if necessary, and generate compatible model files.
+The path execution log shows that the PDF file can be recognized by other models, but an error is reported when the table parsing submodel is executed. The chunk generated from table parsing in the dataset execution result is empty. Troubleshooting algorithms executed on the site detect that the model files are compiled by using the H20 drive. On-site table parsing reports an error. Solve the issue by directly compiling the model files on the site. If similar issues arise, check the GPU model and drive. Contact on-site algorithm engineers for model compiling if necessary, and generate compatible model files.
 9. . File download from the parsing path fails**
-In the current version, Referer configuration is enabled for all web services. For example, hotlink protection is enabled for Object Storage Service (OSS). OpenTrek Dev Operations and M The address of the hotlink protection configuration must be the same as the Referer configuration used in the environment. The HTTPS protocol is not used in the inter.env*.*.com address in the preceding figure. The service can run as expected only if the address starts with https://.
+In the current version, Referer configuration is enabled for all web services. For example, hotlink protection is enabled for Object Storage Service (OSS). The address of the hotlink protection configuration must be the same as the Referer configuration used in the environment. The HTTPS protocol is not used in the inter.env*.*.com address in the preceding figure. The service can run as expected only if the address starts with https://.
 10. . Startup failures of common GPU model services. If a service**
 
 **cannot run, check for image packing errors. If such errors exist,**
@@ -1026,7 +1084,7 @@ In the current version, Referer configuration is enabled for all web services. F
 
 **image.**
 
-Screenshot of the error: OpenTrek Dev Operations and M
+Screenshot of the error:
 
 **Note: In versions 211 and earlier, the following error is reported because the**
 
@@ -1034,7 +1092,7 @@ Screenshot of the error: OpenTrek Dev Operations and M
 
 **image. You only need to manually restart the container.**
 
-When an error-free Triton model is started, all model services are in the ready state. OpenTrek Dev Operations and M The model can be started without errors, but the Triton service cannot be called: Run the `dmesg -T` command to check for OOM killer events. Ask the algorithm for memory requirements: OpenTrek Dev Operations and M Adjust the memory, include the limits and requests, of the Deployment corresponding to the online service to 50 GB as needed.
+When an error-free Triton model is started, all model services are in the ready state. The model can be started without errors, but the Triton service cannot be called: Run the `dmesg -T` command to check for OOM killer events. Ask the algorithm for memory requirements: Adjust the memory, include the limits and requests, of the Deployment corresponding to the online service to 50 GB as needed.
 12. . The DCU environment reports that the online parsing**
 
 **service failed to be called.**
@@ -1056,7 +1114,7 @@ kubectl get pod -A | grep elastic | grep Running
 kubectl exec -it -n xlm-cluster-alpqxj dke-elastic-pod-lpl4pm6l3uhn-54d8688777-k4qd8 -c server -- bash
 ```
 
-Run `cat /home/admin/bin/start.sh` to query the startup command of the Triton inference server. OpenTrek Dev Operations and M Copy the command marked by the red box and execute the command directly on the terminal. You can view the log `tail -fn1000 /tmp/tritonserver.log` for verification. If all table models are ready, the model can be started as expected.
+Run `cat /home/admin/bin/start.sh` to query the startup command of the Triton inference server. Copy the command marked by the red box and execute the command directly on the terminal. You can view the log `tail -fn1000 /tmp/tritonserver.log` for verification. If all table models are ready, the model can be started as expected.
 14. . Common bounding box (bbox) logic in document deep**
 
 **analysis task results**
@@ -1073,13 +1131,13 @@ Page size: width = 800, height = 600 bbox: x0 = 100, y0 = 150, x1 = 300, y1 = 25
 
 **Calculation:**
 
-x0/width = 100/800 = 0.1250 y0/height = 150/600 = 0.2500 (y1-y0) ÷ height = (250-150) ÷ 600 = 100 ÷ 600 ≈ 0.1667 OpenTrek Dev Operations and M (x1-x0)/width = (300-100)/800 = 200/800 = 0.2500
+x0/width = 100/800 = 0.1250 y0/height = 150/600 = 0.2500 (y1-y0) ÷ height = (250-150) ÷ 600 = 100 ÷ 600 ≈ 0.1667 (x1-x0)/width = (300-100)/800 = 200/800 = 0.2500
 
 **Meaning:**
 
 The bbox starts at 12.5% on the left and 25% on the top of the image, with a height of 16.67% of the image and a width of 25%.
 
-##### Perform a hot update on a control
+##### 4.2.2.5 Perform a hot update on a control application
 
 **application**
 
@@ -1114,9 +1172,8 @@ kubectl edit deploy -n sfm data-engine-console
 
 After the modification, the image automatically restarts. The following status shows that the image is updated. After the update, check whether the service features are affected.
 
-##### Perform a hot update on an offline image
+##### 4.2.2.6 Perform a hot update on an offline image
 
-OpenTrek Dev Operations and M
 1. . Obtain the image file**
 In most cases, the image file is an OCI file, which is provided by the manufacturer or the R&D team.
 2. . Distribute the image to the customer repository**
@@ -1156,7 +1213,7 @@ siness requirements. docker run --rm -it --name skopeo -v /root/data-mixer/2.1.1
 
 **3.1. Standard update process**
 
-OpenTrek Dev Operations and M Because the suffix `-MMDD-release` is added to the tag, you need to modify the default image tag for database update. For more information about how to connect to a database, see the "Other questions" section of this topic. Tag for an offline image with an NVIDIA GPU: Tag for an offline image in the PPU environment:
+Because the suffix `-MMDD-release` is added to the tag, you need to modify the default image tag for database update. For more information about how to connect to a database, see the "Other questions" section of this topic. Tag for an offline image with an NVIDIA GPU: Tag for an offline image in the PPU environment:
 
 ```bash
 # Update the corresponding tag based on the value.
@@ -1170,7 +1227,7 @@ update kn_kv set value='2.1.0-full-tritonserver-inclmodel-0810-release' where va
 
 **not contain the customer GPU model.**
 
-For example, no support is provided for less commonly used Huawei, Hygon, and NVIDIA A800, H200, and H100 models. Therefore, you need to manually add the mappings between the GPU model and image tag to the database. In some projects, the GPU model is manually specified. Make sure that you check the model before you modify data in the database. The following figure shows the H200 GPU model in the resource group. In this case, execute the following SQL statements. The value is the image tag of data-mixeroperators. OpenTrek Dev Operations and M
+For example, no support is provided for less commonly used Huawei, Hygon, and NVIDIA A800, H200, and H100 models. Therefore, you need to manually add the mappings between the GPU model and image tag to the database. In some projects, the GPU model is manually specified. Make sure that you check the model before you modify data in the database. The following figure shows the H200 GPU model in the resource group. In this case, execute the following SQL statements. The value is the image tag of data-mixeroperators.
 
 ```
 insert into public.kn_kv (key, value) values ('process.imageTag.NVIDIA-H200', '2.1.1-non-sci-tritonserver-inclmodel');
@@ -1184,17 +1241,15 @@ New tasks directly read the image tag from the database and directly use the new
 
 **4.2. Existing tasks**
 
-The image tag of existing tasks do not automatically update. You need to decommission the task, modify the image tag, save the configuration, and publish the task again. Save the configurations without modification. OpenTrek Dev Operations and M After you publish the task, click Run to apply the new tag.
+The image tag of existing tasks do not automatically update. You need to decommission the task, modify the image tag, save the configuration, and publish the task again. Save the configurations without modification. After you publish the task, click Run to apply the new tag.
 
 **4.3. Confirm that you want to use the new image**
 
-On the Task Execution Overview page, find the task that you want to view, click Detail in the Operation column, and then click the Log tab. Find the log entry that starts with "Successfully pulled image". If the tag is the one that you configured, the image is updated. OpenTrek Dev Operations and M
+On the Task Execution Overview page, find the task that you want to view, click Detail in the Operation column, and then click the Log tab. Find the log entry that starts with "Successfully pulled image". If the tag is the one that you configured, the image is updated.
 
 **Other questions**
 
 **How do I connect to a DKE database?**
-
-OpenTrek Dev Operations and M
 
 ```bash
 # Query the information about the console database connection.
@@ -1205,7 +1260,7 @@ kubectl exec -n sfm $(kubectl get pods -n sfm -l "app=data-engine-console" -o js
 e different. _AUTOCONF_postgres_host=pc-xxx.pg.polardb.rds.aliyuncs.com _AUTOCONF_postgres_port=3433 _AUTOCONF_postgres_database_knDataEngine=kn_data_engine_ctl _AUTOCONF_postgres_username_knDataEngine=polar_admin _AUTOCONF_postgres_password_knDataEngine=xxx
 ```
 
-##### FAQ about video data processing
+##### 4.2.2.7 FAQ about video data processing
 
 **Output dataset**
 
@@ -1229,7 +1284,7 @@ In the pipeline log, the execution result is empty.
 
 **Cause**
 
-OpenTrek Dev Operations and M In the following processing task log, after the image_aspect_ratio_filter operator is executed, an empty dataset is returned. The error message is OP [image_aspect_ratio_filter] returns empty dataset. After comparing the input dataset with the operator parameter settings, you found that the input data is all portrait images, but the minimum aspect ratio of the operator is 1. As a result, all inout data is filtered out.
+In the following processing task log, after the image_aspect_ratio_filter operator is executed, an empty dataset is returned. The error message is OP [image_aspect_ratio_filter] returns empty dataset. After comparing the input dataset with the operator parameter settings, you found that the input data is all portrait images, but the minimum aspect ratio of the operator is 1. As a result, all inout data is filtered out.
 
 ```
 2025-09-11 17:09:01.682 | INFO | data_mixer_operators.manager.download_manager:130
@@ -1253,7 +1308,7 @@ Modify the parameter settings of the operator based on the actual requirements.
 
 **Symptom**
 
-The video parsing result contains eight keyframes. However, after the frame extraction template is executed, the result subset contains only two samples. OpenTrek Dev Operations and M
+The video parsing result contains eight keyframes. However, after the frame extraction template is executed, the result subset contains only two samples.
 
 **Cause**
 
@@ -1267,8 +1322,6 @@ Check the number of samples returned by each operator in the processing task log
 [2025-09-17 11:06:52.543] 2025-09-17 11:06:52.542 | INFO | data_mixer_operators.utils.trace_utils:36 - ==|> VideoParseOfflineMapper took 1286.2090 seconds <|== [2025-09-17 11:06:52.575] 2025-09-17 11:06:52.574 | INFO | data_mixer_operators.core.data:261 - OP [video_parse_offline_mapper] Done in 1286.211s. Left 20 samples.
 ```
 
-OpenTrek Dev Operations and M
-
 **Audio extraction, conversion, and upload -**
 
 **audio_extract_mapper**
@@ -1277,7 +1330,7 @@ OpenTrek Dev Operations and M
 
 **Error message**
 
-The log of a processing task contains the following error message: Output file #0 does not contain any stream. OpenTrek Dev Operations and M
+The log of a processing task contains the following error message: Output file #0 does not contain any stream.
 
 ```
 2025-09-08 18:04:12.006 | ERROR | data_mixer_operators.utils.exception_utils:13 - Tr aceback (most recent call last):
@@ -1285,7 +1338,7 @@ The log of a processing task contains the following error message: Output file #
 operators/data_mixer_operators/ops/mapper/audio_extract_mapper.py", line 156, in proces
 ```
 
-s
+`s`
 
 ```
     raise RuntimeError(f"FFmpeg execution failed (Code: {process.returncode}): {stderr_
@@ -1323,7 +1376,7 @@ The input video file does not contain audio, which causes the operator execution
 
 **Solution**
 
-OpenTrek Dev Operations and M Use the built-in operator to filter out videos without audio.
+Use the built-in operator to filter out videos without audio.
 
 **No ASR model is not available**
 
@@ -1339,10 +1392,9 @@ No Apsara Stack Resilience (ASR) service is deployed, or the service has been de
 
 Log in to the AI Studio console, and use the public image cpu-funasr to deploy an online service. We recommend that you allocate 16 cores and 32 GB (no GPU is required) to a single instance. A maximum of 13 concurrent input streams. The following procedure describes only the key steps. For more information, see the AI Studio Documentation.
 1. Deploy an online service in AI Studio
-OpenTrek Dev Operations and M OpenTrek Dev Operations and M
 2. Register an AI Studio model service for Model Studio Exclusive.
 
-### Connect to a model
+### 4.3 Connect to a model
 
 **Troubleshoot model connectivity failures in AI Studio**
 
@@ -1352,14 +1404,14 @@ Check whether the operation tenant area and the AI Studio model service network 
 
 **Model Studio**
 
-Check the current login method. You must select Access with Authorized Role when you log in to the Model Studio console. OpenTrek Dev Operations and M Redirect to AI Studio and check whether the online model service list contains a running model service.
+Check the current login method. You must select Access with Authorized Role when you log in to the Model Studio console. Redirect to AI Studio and check whether the online model service list contains a running model service.
 
 **Troubleshoot empty API key list when you connect a model to**
 
 **Model Studio**
 
-Redirect to AI Studio as a resource set administrator, and check whether the API key is associated with the corresponding model service. OpenTrek Dev Operations and M
+Redirect to AI Studio as a resource set administrator, and check whether the API key is associated with the corresponding model service.
 
 **Check the status of AI Studio**
 
-Query AI Studio online services based on the service ID. Check whether the AI gateway is enabled, whether the AI gateway is allowed in the access control settings, and whether the VPC address exists. OpenTrek Dev Operations and M Check the validity of the API key
+Query AI Studio online services based on the service ID. Check whether the AI gateway is enabled, whether the AI gateway is allowed in the access control settings, and whether the VPC address exists. Check the validity of the API key

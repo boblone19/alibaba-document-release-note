@@ -2,16 +2,39 @@
 title: "Apsara Copilot Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 57
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot Developer Guide 20260701.pdf"
+source_pdf: "7a47711f2befff97_Alibaba Cloud Apsara Stack V3.18.6 Apsara Copilot Developer Guide 20260701.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E9%A3%9E%E5%A4%A9%E5%8A%A9%E7%90%86/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Copilot%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Copilot Developer Guide 20260701
 
-## Preparations
+## Table of Contents
 
-### Obtain the information and
+- 1 Preparations
+  - 1.1 Obtain the information and the endpoint of an API operation
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain the values of common request headers
+  - 1.4 Obtain access credentials assigned by STS
+- 2 Use POP to make API calls
+  - 2.1 Preparations
+  - 2.2 SDK for Java
+  - 2.4 Python version
+- 3 API list
+  - 3.1 IntelligentAnalysis
+  - 3.2 IntelligentSearch
+  - 3.3 IntelligentQa
+  - 3.4 CreateChat
+  - 3.5 IntelligentCoding
+  - 3.6 GetChatHistory
+  - 3.7 ListHistoryChats
+  - 3.8 PushChatMessage
+  - 3.9 MessageFeedback
+  - 3.10 DeleteChat
+
+## 1 Preparations
+
+### 1.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -34,14 +57,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region, such as cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For information about how to obtain an organization ID, see the "GetOrganizationList" section in Apsara Uni- manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni- manager Management Console Developer Guide. |
-| x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
-
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -54,6 +70,13 @@ An account that assumes the operations administrator or level-1 organization adm
 AccessKey supports the following authorization methods: Use RAM to authorize the AccessKey ID and AccessKey secret to third-party requesters. Use STS to authorize the AccessKey ID, AccessKey secret, and security token to third-party requesters. This topic describes how to obtain an AccessKey pair authorized by RAM. For more information about how to obtain an AccessKey pair authorized by STS, see **Obtain an STS**
 **AccessKey pair**.
 We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur.
+
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region, such as cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For information about how to obtain an organization ID, see the "GetOrganizationList" section in Apsara Uni- manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni- manager Management Console Developer Guide. |
+| x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
 
 **Warning**
 
@@ -82,7 +105,7 @@ want to obtain AccessKey pairs.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-### Obtain the values of common
+### 1.3 Obtain the values of common request headers
 
 **request headers**
 
@@ -100,11 +123,6 @@ You must provide multiple request headers when you call API operations in Apsara
 
 You must call a specific API operation to obtain an organization ID. You can obtain an organization ID by using the online debugging feature in the Apsara Uni-manager Management Console.
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI**
 **Explorer**.
 3. On the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging** in the top
@@ -141,16 +159,16 @@ You can obtain the ID of an instance in the cloud service console of the Apsara 
 
 The following table describes the additional response parameters that are returned by default when you call API operations to query the instances of cloud services.
 
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+
 | ResourceGroup | The ID of a resource set. |
 |---|---|
 | DepartmentName | The name of the organization. |
 | Department | The ID of an organization. |
 
-|  | stsAK |
-|---|---|
-| RAM role |  |
-
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -167,6 +185,13 @@ STS allows you to manage temporary access credentials for your Apsara Stack reso
 **Information**.
 iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
 
+|   | stsAK |
+|---|---|
+| RAM role |   |
+
+2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ),
+and STS token ( `stsToken` ) by assuming the `RAM role` .
+
 ```
 public static void main(String[] args) {
      ASClient asClient = new ASClient();
@@ -180,7 +205,7 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -194,7 +219,6 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
@@ -206,7 +230,7 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -218,12 +242,11 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### Preparations
+### 2.1 Preparations
 
 You can use the POP gateway to call Apsara Stack API operations in the same way as you do for Alibaba Cloud. This topic describes the required preparations.
 
@@ -265,7 +288,7 @@ you can view the domain value. This value is the `Endpoint` .
 
 For information about how to obtain common parameters, such as the organization ID, resource set ID, region ID, and instance ID, see the **Obtain common header parameters** section in the **Preparations** topic of this guide. These parameters are used to call Apsara Stack API operations through the POP gateway.
 
-### SDK for Java
+### 2.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -340,9 +363,6 @@ operations.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
@@ -408,9 +428,6 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 **Important**
@@ -421,7 +438,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Go
+### 2.3 Go
 
 This topic describes how to use the POP Go software development kit (SDK) to make API calls.
 
@@ -450,7 +467,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -478,9 +495,7 @@ eter.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
 
 The API information for the ROA example is as follows: Product (CR), API operation (GetNamespaceList), and Version (2016-06-07). The following code is an example:
@@ -493,7 +508,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -522,9 +537,7 @@ eld to the header.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
 **Set a proxy**
@@ -536,14 +549,14 @@ import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
 Set the proxy on the client. The following code is an example:
@@ -578,7 +591,7 @@ The client-level setting takes effect only if the request-level setting is not s
 // Set HTTPSInsecure for the client (affects all requests sent by the client). client.SetHTTPSInsecure(true) // Set HTTPSInsecure for the clien t to true. isInsecure := client.GetHTTPSInsecure() // Get the HTTPSInsecure setting f or the client.
 ```
 
-### Python version
+### 2.4 Python version
 
 This topic describes how to use the POP Python software development kit (SDK) to call cloud product APIs.
 
@@ -607,7 +620,11 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Set the timeout period.
     verify=False, # Ignore the certificate or set verify='<certificate_path>'.
+```
+
 );
+
+```python
 # Use with HTTPS.
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -635,7 +652,6 @@ SecurityToken>"};
         "x-acs-organizationid":"<your-OrganizationID>"
         # Optional. Required for modify and delete operations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -675,7 +691,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # Region ID
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Use HTTPS. client.do_action_with_exception(request)
@@ -693,7 +709,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Ignore SSL certificate verification.
 ```
 
-)
+`)`
 
 **Specify a CA certificate file**
 
@@ -703,21 +719,29 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # Certificate path
 ```
 
-)
+`)`
+
+## 3 API list
+
+### 3.1 IntelligentAnalysis
+
+The system supports intelligent data querying for the following scenarios: 1. Cloud platform billing and cost analysis: The system provides annual and monthly billing statistics, trend analysis, and year-over-year or month-over-month calculations at the organization, resource set, and resource levels. 2. Cloud resource optimization and governance analysis: The system analyzes resource idleness, bottlenecks, and health status at the organization, resource set, and resource levels. 3. Cloud resource statistics: The system counts cloud resources and calculates utilization rates by organization, resource set, and other dimensions. This API uses Server-Sent Events (SSE) for communication. Its response type is text/eventstream, meaning the server returns data progressively via streaming transmission. Clients continuously listen to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the response"}. Clients can parse and process these events one by one to achieve dynamic updates and real-time feedback.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see Common request parameters.
+
+**Request syntax**
+
+```
+POST /api/open/api/IntelligentAnalysis HTTP/1.1
+```
+
+**Request parameters**
 
 | Parameter | Typ e | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | messages | Arra y | Body | No | [{"role":"user","content":" Help me query the ECS instance with IP xx under organization xx"}] | The parameter "messages" is a list composed of multiple maps (List<Map<String, Object>>), representing the user's utterances in a conversation. Each map object represents a single message and contains the following two fixed fields: role: A required string whose value must be "user", indicating the sender's role. content: A required string that represents the user's question or input. |
-
-## API list
-
-### IntelligentAnalysis
-
-The system supports intelligent data querying for the following scenarios: 1. Cloud platform billing and cost analysis: The system provides annual and monthly billing statistics, trend analysis, and year-over-year or month-over-month calculations at the organization, resource set, and resource levels. 2. Cloud resource optimization and governance analysis: The system analyzes resource idleness, bottlenecks, and health status at the organization, resource set, and resource levels. 3. Cloud resource statistics: The system counts cloud resources and calculates utilization rates by organization, resource set, and other dimensions. This API uses Server-Sent Events (SSE) for communication. Its response type is text/eventstream, meaning the server returns data progressively via streaming transmission. Clients continuously listen to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the response"}. Clients can parse and process these events one by one to achieve dynamic updates and real-time feedback. This operation uses common request headers only. For more information, see Common request parameters.
-
-**Request syntax**
-
-**Request parameters**
 
 | domain | Strin g | Body | No | cloud optimized _ | The data domain for intelligent analysis. Available data domains include: bill analysis: The cost _ analysis domain. resource analysis: The _ resource analysis domain. cloud optimized: The _ cloud optimization domain. |
 |---|---|---|---|---|---|
@@ -727,22 +751,24 @@ The system supports intelligent data querying for the following scenarios: 1. Cl
 
 Sample requests
 
+```
+POST /api/open/api/IntelligentAnalysis HTTP/1.1 Content-Type: application/json Accept: text/event-stream x-acs-userid: 5003 x-acs-roleid: 1
+```
+
+`{`
+
 ```json
-Content-Type: application/json Accept: text/event-stream x-acs-userid: 5003 x-acs-roleid: 1 {
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "role": "user",
       "content": "Count the top 5 level-1 organizations with the most ECS instances"
-    }
 ```
 
-]
-
-```
-}
-```
-
-Sample success responses `JSON` format
+`]` Sample success responses `JSON` format
 
 ```json
 data: {"choices": [{"delta": {"role": "function", "name": "action_node_type", "content" : "data_analysis", "status": "waiting", "extra": {}}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStep>Data retrieval intent</TeamixStep>", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "The user wants to count the top 5 level-1 organizations with the most ECS instances. The mo st relevant table is the resource instance table in the resource analysis domain, invol ving the organization and resource type dimensions and the instance count metric. I wil l filter for data where the resource type is ECS instance, aggregate by organization, a
@@ -754,21 +780,29 @@ nd select the top 5 level-1 organizations by instance count.", "phase": "execute
 "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStep>Query and display data</TeamixStep>", "phase": "execute", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "<Te amixStepEnd />", "phase": "execute", "status": "done", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "**Data domain**: Resourc e analysis domain, **Table**: Resource instance table, **Dimensions**: Organization, Re source type, **Metric**: Instance count", "reasonContent": "", "phase": "answer", "stat us": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "reasonContent": "", "phase": "answer", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "```TeamixModule{\"moduleInfo\": {\"name\": \"renderAIPanel\",\"hideLoadTime\": true}, \"moduleProps\": {\"title\": \"Top 5 level-1 organizations with the most ECS instances\ ", \"description\": \"\", \"chartConfig\": {\"type\": \"bar\", \"config\": {\"column\": true, \"zoom\": true}}, \"dataSource\": {\"success\": true, \"type\": \"chart\", \"tabl e\": [{\"data\": [[\"ascmTest\", 118], [\"iaas_test\", 100], [\"acs-autotest\", 26], [\ "amc-storage\", 21], [\"coms standard org\", 13]], \"name\": \"ECS instance count\"}], \"tableName\": \"Top 5 level-1 organizations with the most ECS instances\"}, \"dataConfig\": {\"type\": \"apsara-copilot\", \"request\": { \"url\": \"/data/api.json\", \"method\": \"POST\", \"data\": {\"$product\": \"ascm\", \"$version \": \"2025-03-10\", \"$action\": \"GetAnalysisDataForCard\", \"cardId\": \"3dd606e9-d07 1-4364-8a41-042b1387390e\", \"cardVersion\": \"v1\"}}}}}```", "reasonContent": "", "pha se": "answer", "status": "ongoing", "chatSource": "", "chatSourceProps": null}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "status": "ongoing", "phase": "answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "### Data interpretation", "status": "ongoing", "phase":"answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "According to the statist ical results", "status": "ongoing", "phase": "answer"}}]}
 ```
 
-| Parameter | Type | Positio n | Require d | Example | Description |
-|---|---|---|---|---|---|
-| messages | Json | Body | No | {"messages": [{"role":"user","content": "Help me query the ECS instance with IP xx under organization xx"}]} | The parameter "messages" is a list composed of multiple maps (List<Map<String, Object>>), representing the user's utterances in a conversation. Each map object represents a single message and contains the following two fixed fields: role: A required string whose value must be "user", indicating the message sender's role. content: A required string that represents the user's question or input. |
-
 ```json
 data: {"choices": [{"delta": {"role": "assistant", "content": "...<Summary and analysis text>", "status": "ongoing", "phase": "answer"}}]} data: {"choices": [{"delta": {"role": "assistant", "content": "", "status": "ongoing", "phase": "answer"}}]} data: [DONE]
 ```
 
-### IntelligentSearch
+### 3.2 IntelligentSearch
 
-Intelligent search for cloud service instances, organizations, resource sets, and users. This API uses Server-Sent Events (SSE) for communication. The response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the answer"}. The client can parse and process these events one by one to achieve dynamic updates and real-time feedback. This operation uses common request headers only. For more information, see the documentation on common request parameters.
+Intelligent search for cloud service instances, organizations, resource sets, and users. This API uses Server-Sent Events (SSE) for communication. The response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the answer"}. The client can parse and process these events one by one to achieve dynamic updates and real-time feedback.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/IntelligentSearch HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Positio n | Require d | Example | Description |
+|---|---|---|---|---|---|
+| messages | Json | Body | No | {"messages": [{"role":"user","content": "Help me query the ECS instance with IP xx under organization xx"}]} | The parameter "messages" is a list composed of multiple maps (List<Map<String, Object>>), representing the user's utterances in a conversation. Each map object represents a single message and contains the following two fixed fields: role: A required string whose value must be "user", indicating the message sender's role. content: A required string that represents the user's question or input. |
 
 Streaming response
 
@@ -776,32 +810,32 @@ Streaming response
 
 Sample requests
 
+```
+POST /api/open/api/IntelligentSearch HTTP/1.1
+```
+
+`{`
+
 ```json
-{
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "role": "user",
       "content": "Query the ECS instances I created"
-    }
 ```
 
-]
-
-```
-}
-```
-
-Sample success responses `JSON` format
+`]` Sample success responses `JSON` format `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
 `XML` format
@@ -810,17 +844,13 @@ Sample success responses `JSON` format
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### IntelligentQa
+### 3.3 IntelligentQa
 
-The cloud product knowledge Q&A answers questions about using and configuring the cloud platform and cloud resources. The system supports two modes: context-aware conversations based on dialogue history, and single-turn Q&A without dialogue history. API description This API uses Server-Sent Events (SSE) for communication. Its response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A.
+The cloud product knowledge Q&A answers questions about using and configuring the cloud platform and cloud resources. The system supports two modes: context-aware conversations based on dialogue history, and single-turn Q&A without dialogue history. API description This API uses Server-Sent Events (SSE) for communication. Its response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the answer"}. The client can parse and process these events one by one to enable dynamic updates and real-time feedback.
 
-| Parameter | Type | Position | Require d | Example | Description |
-|---|---|---|---|---|---|
-| outerId | Strin g | Body | No | 123456 | The user ID of the external application. |
-| outerType | Strin g | Body | No | coms | The type identifier for the external application. |
-| chatId | Strin g | Body | No | 8932b258-75b5-42e7- 8c52-0be053a88d64 | The chat session ID. The system enables stateful mode if you provide this parameter; Otherwise, it runs in stateless mode. |
+**Preparations**
 
-During the response, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the answer"}. The client can parse and process these events one by one to enable dynamic updates and real-time feedback. If you need to use chat management, create a chat or prepare a valid chatId first.
+If you need to use chat management, create a chat or prepare a valid chatId first.
 
 **Notes**
 
@@ -828,17 +858,33 @@ When you provide the chatId parameter, the system activates stateful mode and pe
 
 **Best practices**
 
-For continuous conversation scenarios: First, call CreateChat to create a session and obtain a chatId. Then, use this chatId in subsequent requests to maintain conversation context. For single Q&A scenarios: Call the API directly without passing the chatId parameter to achieve lightweight question answering. This API uses common request headers only. For more information, see the documentation on common request parameters.
+For continuous conversation scenarios: First, call CreateChat to create a session and obtain a chatId. Then, use this chatId in subsequent requests to maintain conversation context. For single Q&A scenarios: Call the API directly without passing the chatId parameter to achieve lightweight question answering.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/IntelligentQa HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Position | Require d | Example | Description |
+|---|---|---|---|---|---|
+| outerId | Strin g | Body | No | 123456 | The user ID of the external application. |
+| outerType | Strin g | Body | No | coms | The type identifier for the external application. |
+| chatId | Strin g | Body | No | 8932b258-75b5-42e7- 8c52-0be053a88d64 | The chat session ID. The system enables stateful mode if you provide this parameter; Otherwise, it runs in stateless mode. |
 
 | model | Strin g | Body | No | qwen3 | The name of the model to use. Note This parameter is optional. If you do not specify it, the system uses the default model. |
 |---|---|---|---|---|---|
 | parentId | Strin g | Body | No | 5d2db7cc-4182-4a80- a9b7-a9d49a460a1f | The parent message ID. Note This parameter is optional, but required if you provide chatId. |
 | messages | Json | Body | No | Stateless: {"messages": [{"role":"user","content": "Q&A content"}]} Stateful: [{"role":"user","msgId":"4 2511985-4941-49d1- ac10- 7573ff19671f","content": "Briefly answer the previous question","chatSourcePro ps": {"intranetSearch":false}} ] | The list of messages. Note The parameter "messages" is a list composed of multiple maps (List<Map<String, Object>>), representing the user's utterances in a conversation. Each map object represents a single message and contains the following two fixed fields: role: A required string whose value must be "user", indicating the message sender's role. content: A required string that represents the user's question or input. msgId: String type, representing the current message ID, required if you provide chatId. chatSourceProps: Object type. chatSourceProps.intran etSearch: Boolean type, indicating whether to enable intranet search. |
 | product | Strin g | Body | No | ECS | The product code, such as ECS or VPC. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -849,46 +895,43 @@ For continuous conversation scenarios: First, call CreateChat to create a sessio
 | errorMessage | String | "" | The error message. |
 | httpCode | Integer | 200 | The HTTP status code. |
 
-**Response parameters**
-
 The return type is StreamingResponse. The response format is text/event-stream (SSE), meaning the server returns data progressively via event stream. During streaming transmission, the server sends each piece of data as an independent event. The event content is a JSON object containing the content field. The content field is of the string type and carries the answer content generated progressively by the model. Example: data: {\"content\": \"This is the first segment of the answer\"}.
 
 **Examples**
 
 Sample requests
 
+```
+POST /api/open/api/IntelligentQa HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "chatId": "8932b258-75b5-42e7-8c52-0be053a88d64",
   "parentId": "2e469579-5c6f-4f55-accb-ae339a1aff78",
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "role": "user",
       "msgId": "42511985-4941-49d1-ac10-7573ff19671f",
       "content": "Briefly answer the previous question",
       "chatSourceProps": {
         "intranetSearch": false
-      }
-    }
 ```
 
-]
-
-```
-}
-```
-
-Sample success responses `JSON` format
+`]` Sample success responses `JSON` format `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"\"\"",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
 `XML` format
@@ -897,9 +940,13 @@ Sample success responses `JSON` format
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>&quot;&quot;</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### CreateChat
+### 3.4 CreateChat
 
-Create a new chat and return its globally unique identifier and the generated title (by default, the title is the user's first input). API description Prepare a message ID (msgId). It must be a non-empty string. Prepare the chat content (content). It must be a non-empty string. Optionally, provide external application identifiers (outerType and outerId). You must pass both outerType and outerId. Do not use only one of them.
+Create a new chat and return its globally unique identifier and the generated title (by default, the title is the user's first input). API description
+
+**Preparations**
+
+Prepare a message ID (msgId). It must be a non-empty string. Prepare the chat content (content). It must be a non-empty string. Optionally, provide external application identifiers (outerType and outerId). You must pass both outerType and outerId. Do not use only one of them.
 
 **Notes**
 
@@ -907,9 +954,19 @@ Both msgId and content are required parameters and cannot be empty. content must
 
 **Best practices**
 
-Call this API when a user starts a new chat. This API uses common request headers only. For more information, see the documentation on common request parameters.
+Call this API when a user starts a new chat.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
+
+```
+POST /api/open/api/CreateChat HTTP/1.1
+```
+
+**Request parameters**
 
 | Parameter | Type | Position | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -918,15 +975,13 @@ Call this API when a user starts a new chat. This API uses common request header
 | msgId | Strin g | Body | No | 8158be15-ccf5-4e57- a3b9-68c7af900000 | The unique identifier of the first message. Note This parameter is required. |
 | content | Strin g | Body | No | What can the AI assistant do for me? | The conten of the chat, which serves as the conversation title. Note This parameter is required. |
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | The dynamic prompt message. |
 | success | Boolean | true | The return status. Success: true. Failure: false. |
 | message | String | success | The response message. |
-
-**Request parameters**
-
-**Response data**
 
 | errorCode | String | UnknownError | The error code. |
 |---|---|---|---|
@@ -940,40 +995,39 @@ Call this API when a user starts a new chat. This API uses common request header
 
 Sample requests
 
+```
+POST /api/open/api/CreateChat HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
     "msgId": "8158be15-ccf5-4e57-a3b9-68c7af900000",
     "content": "What is the AI assistant?",
     "outerId":"123456",
     "outerType":"coms"
-}
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "data":{
   "chatId":"8158be15-ccf5-4e57-a3b9-68c7af900000",
   "title":"What is the AI assistant?"
- },
+```
+
+`},`
+
+```json
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"System exception",
  "errorCode":"UnknownError",
  "message":"success",
  "httpCode":200
-}
 ```
 
 `XML` format
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | INTERNAL ERROR _ | %s | An internal error occurred. The system carries a dynamic error code and dynamic error message from the business layer. |
-
-| Parameter | Type | Position | Require d | Example | Description |
-|---|---|---|---|---|---|
 
 ```xml
 <data>
@@ -984,24 +1038,39 @@ Sample success responses `JSON` format
 
 **Error codes**
 
-### IntelligentCoding
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | INTERNAL ERROR _ | %s | An internal error occurred. The system carries a dynamic error code and dynamic error message from the business layer. |
 
-Generate code samples for Open Platform OpenAPI and Terraform. This API uses Server-Sent Events (SSE) for communication. The response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response process, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the response"}. The client can parse and process these events one by one to achieve dynamic updates and real-time feedback. This API uses common request headers only. For more information, see the documentation on common request parameters.
+### 3.5 IntelligentCoding
+
+Generate code samples for Open Platform OpenAPI and Terraform. This API uses Server-Sent Events (SSE) for communication. The response type is text/eventstream, meaning the server returns data progressively via streaming transmission. The client listens continuously to the event stream to receive each segment of the response from the server in real time. This approach suits scenarios requiring segmented output or longduration processing, such as model inference and real-time Q&A. During the response process, the server sends each piece of data as an independent event. The typical format is: data: {"content": "This is the first segment of the response"}. The client can parse and process these events one by one to achieve dynamic updates and real-time feedback.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/IntelligentCoding HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Position | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | messages | Json | Body | No | {"messages": [{"role":"user","content": "Help me write OpenAPI code to create an ECS instance"}]} | The parameter "messages" is a list composed of multiple maps (List<Map<String, Object>>), representing the user's utterances in a chat. Each map object represents a single message and contains the following two fixed fields: role: A required string whose value must be "user", indicating the message sender's role. content: A required string that represents the user's question or input. |
 |---|---|---|---|---|---|
 | product | Strin g | Body | No | ECS | The code of the cloud service. |
 | scene | Strin g | Body | No | api code gen _ _ | api code gen: Answers _ _ user questions about OpenAPI code generation and SDK integration. It provides sample code for Open Platform APIs. terraform code gen: _ _ Answers user questions about Terraform code generation and usage. It provides developers with Terraform templates and sample code to help users efficiently manage cloud resources such as ECS, VPC, and MQ by using Terraform. code check: Answers _ user questions about code diagnostics. This includes diagnosing sample code for private SDKs, Terraform resources, and Java, Python, and Golang code. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | The dynamic prompt messages. |
-
-**Response parameters**
 
 | data | String | [{}] | The returned data. |
 |---|---|---|---|
@@ -1012,17 +1081,21 @@ Generate code samples for Open Platform OpenAPI and Terraform. This API uses Ser
 
 **Examples**
 
-Sample requests Sample success responses `JSON` format
+Sample requests
+
+```
+POST /api/open/api/IntelligentCoding HTTP/1.1
+```
+
+Sample success responses `JSON` format `{`
 
 ```json
-{
  "data":"[{}]",
  "success":true,
  "dynamicMessages":"[]",
  "errorMessage":"A system exception occurred.",
  "errorCode":"500",
  "httpCode":200
-}
 ```
 
 `XML` format
@@ -1031,18 +1104,11 @@ Sample requests Sample success responses `JSON` format
 <data>[{}]</data> <success>true</success> <dynamicMessages>[]</dynamicMessages> <errorMessage>A system exception occurred.</errorMessage> <errorCode>500</errorCode> <httpCode>200</httpCode>
 ```
 
-### GetChatHistory
+### 3.6 GetChatHistory
 
 Retrieve the complete chat history by chat ID. API description
 
-| Parameter | Type | Position | Require d | Example | Description |
-|---|---|---|---|---|---|
-| outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
-| outerType | Strin g | Body | No | coms | The type identifier of the external application. Note This parameter is optional. You must use it together with outerId. |
-| chatId | Strin g | Body | No | fe5ad98e-0ed7-4f99- 8bf6-cbf9d3e878f9 | The unique identifier of the chat. Note This parameter is required. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+**Preparations**
 
 Obtain a valid chatId.
 
@@ -1052,13 +1118,30 @@ The chatId parameter is required and cannot be empty. Filter chats from specific
 
 **Best practices**
 
-Call this API to retrieve the complete chat history when a user opens a historical chat. This API uses common request headers only. For more information, see the documentation on common request parameters.
+Call this API to retrieve the complete chat history when a user opens a historical chat.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/GetChatHistory HTTP/1.1
+```
+
 **Request parameters**
 
+| Parameter | Type | Position | Require d | Example | Description |
+|---|---|---|---|---|---|
+| outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
+| outerType | Strin g | Body | No | coms | The type identifier of the external application. Note This parameter is optional. You must use it together with outerId. |
+| chatId | Strin g | Body | No | fe5ad98e-0ed7-4f99- 8bf6-cbf9d3e878f9 | The unique identifier of the chat. Note This parameter is required. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | dynamicMessa ges | List | [] | The dynamic prompt messages. |
 |---|---|---|---|
@@ -1097,29 +1180,38 @@ Call this API to retrieve the complete chat history when a user opens a historic
 
 | --messages | Map | {"ecd0f609-9fd5- 49d7-a3bc- dddd89658100": {"role":"assistant", "reasonContent":" Intent recognition Document understanding and analysis Retrieving relevant documents and analyzing them to generate a reference answer for you.","thinkingEna bled":0,"rating":0," childrenIds": [],"msgId":"ecd0f6 09-9fd5-49d7- a3bc- dddd89658100","ty pe":"content","cont ent":"### The AI assistant provides intelligent support for your cloud services, helping you use cloud products and services more simply and efficiently.","parent Id":"02fab45f- 5770-45b9-85e2- dc8e4defa06a","ch atSource":"default" ,"actionNodeType": "rag","timestamp": | The message dictionary. The key is the message ID, and the value is the message object. |
 |---|---|---|---|
-|  |  | "2026-01- 22T09:04:45Z"},"0 2fab45f-5770- 45b9-85e2- dc8e4defa06a": {"role":"user","thin kingEnabled":0,"rat ing":0,"childrenIds" :["ecd0f609-9fd5- 49d7-a3bc- dddd89658100"]," msgId":"02fab45f- 5770-45b9-85e2- dc8e4defa06a","ty pe":"content","cont ent":"What can the AI assistant do for me?","chatSource": |  |
+|   |   | "2026-01- 22T09:04:45Z"},"0 2fab45f-5770- 45b9-85e2- dc8e4defa06a": {"role":"user","thin kingEnabled":0,"rat ing":0,"childrenIds" :["ecd0f609-9fd5- 49d7-a3bc- dddd89658100"]," msgId":"02fab45f- 5770-45b9-85e2- dc8e4defa06a","ty pe":"content","cont ent":"What can the AI assistant do for me?","chatSource": |   |
+
+"default","actionNo
 
 **Examples**
 
-Sample requests "default","actionNo deType":"default"," timestamp":"2026- 01- 22T09:04:29Z"}}
+deType":"default"," timestamp":"2026- Sample requests 22T09:04:29Z"}}
+
+```
+POST /api/open/api/GetChatHistory HTTP/1.1 Content-Type: application/json
+```
+
+`{`
 
 ```json
-Content-Type: application/json {
   "outerId": "123456",
   "outerType": "coms",
   "chatId": "ff536d45-014c-43ca-a97f-f7e4dca3bed9"
-}
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "chatId": "8a5544e8-6704-4981-9241-caa15fd9fc3d",
     "chat": {
         "chatId": "8a5544e8-6704-4981-9241-caa15fd9fc3d",
         "messages": [
-            {
+```
+
+`{`
+
+```json
                 "role": "user",
                 "thinkingEnabled": 0,
                 "rating": 0,
@@ -1137,8 +1229,11 @@ Sample success responses `JSON` format
 me?",
                 "actionNodeType": "default",
                 "timestamp": "2026-01-22T09:04:29Z"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "role": "assistant",
                 "reasonContent": "<TeamixStep>Intent recognition</TeamixStep><TeamixStep
 End /><TeamixStep>Document understanding and analysis</TeamixStep>Retrieving relevant d ocuments and analyzing them to generate a reference answer for you.<TeamixStepEnd />",
@@ -1153,7 +1248,6 @@ cloud services, helping you use cloud products and services more simply and effi
                 "parentId": "02fab45f-5770-45b9-85e2-dc8e4defa06a",
                 "actionNodeType": "rag",
                 "timestamp": "2026-01-22T09:04:45Z"
-            }
 ```
 
 `],`
@@ -1161,9 +1255,6 @@ cloud services, helping you use cloud products and services more simply and effi
 ```json
         "history": {
 ```
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
 
 ```json
             "currentId": "ecd0f609-9fd5-49d7-a3bc-dddd89658100",
@@ -1183,7 +1274,11 @@ ur cloud services, helping you use cloud products and services more simply and e
                     "chatSource": "default",
                     "actionNodeType": "rag",
                     "timestamp": "2026-01-22T09:04:45Z"
-                },
+```
+
+`},`
+
+```json
                 "02fab45f-5770-45b9-85e2-dc8e4defa06a": {
                     "role": "user",
                     "thinkingEnabled": 0,
@@ -1202,28 +1297,31 @@ r me?",
                     "chatSource": "default",
                     "actionNodeType": "default",
                     "timestamp": "2026-01-22T09:04:29Z"
-                }
-            }
-        },
+```
+
+`},`
+
+```json
         "title": "In one sentence, tell me what the AI Assistant can do for me?",
         "chatType": "default"
-    },
+```
+
+`},`
+
+```json
     "namespace": "default",
     "title": "In one sentence, tell me what the AI Assistant can do for me?"
-}
 ```
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 |---|---|---|---|
 
-| Parameter | Type | Position | Require d | Example | Description |
-|---|---|---|---|---|---|
-| outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
-| outerType | Strin g | Body | No | coms | The type identifier of the external application. Note This parameter is optional. You must use it together with outerId. |
-
-### ListHistoryChats
+### 3.7 ListHistoryChats
 
 List a user's chat history. API description
 
@@ -1233,15 +1331,30 @@ By default, the system returns the 20 most recent records. You can specify the n
 
 **Best practices**
 
-Call this API when a user views the chat history list. This API is suitable for building a chat history page that allows users to quickly browse and select previous chats. This API uses common request headers only. For more information, see the documentation on common request parameters.
+Call this API when a user views the chat history list. This API is suitable for building a chat history page that allows users to quickly browse and select previous chats.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/ListHistoryChats HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Position | Require d | Example | Description |
+|---|---|---|---|---|---|
+| outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
+| outerType | Strin g | Body | No | coms | The type identifier of the external application. Note This parameter is optional. You must use it together with outerId. |
 
 | namespac e | Strin g | Body | No | default | The namespace. Note This parameter is optional. By default, the system queries chats under default. |
 |---|---|---|---|---|---|
 | pageSize | Integ er | Body | No | 20 | The number of chats to return. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1255,62 +1368,66 @@ Call this API when a user views the chat history list. This API is suitable for 
 | -updated | String | 2026-01- 22T08:29:12Z | The last modification time. |
 | success | Boolean | true | The return status. Success: true. Failure: false. |
 
-**Response parameters**
-
 | message | String | success | The return message. |
 |---|---|---|---|
 | errorCode | String | UnknownError | The error code. |
 | errorMessage | String | System exception | The error message. |
 | httpCode | Integer | 200 | The HTTP status code. |
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-
 **Examples**
 
 Sample requests
 
+```
+POST /api/open/api/ListHistoryChats HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "pageSize": 20,
   "outerId": "123456",
   "outerType": "coms"
-}
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "data": [
-        {
+```
+
+`{`
+
+```json
             "chatId": "b6aaa1fe-9cbd-40e7-b70b-53f0865e6192",
             "created": "2026-01-22T08:28:51Z",
             "namespace": "default",
             "title": "What can the AI assistant do for me?",
             "updated": "2026-01-22T08:29:12Z",
             "chatType": "default"
-        }
 ```
 
 `],`
 
 ```json
     "success": true
-}
 ```
 
 **Error codes**
 
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 |---|---|---|---|
 
-| Parameter | Type | Position | Require d | Example | Description |
-|---|---|---|---|---|---|
+### 3.8 PushChatMessage
 
-### PushChatMessage
+Save historical chat messages. API description
 
-Save historical chat messages. API description Obtain a valid chatId. Prepare the list of messages to push, including message ID, content, role, and other information. Ensure the parent-child relationships in the message list are correct (linked by parentId).
+**Preparations**
+
+Obtain a valid chatId. Prepare the list of messages to push, including message ID, content, role, and other information. Ensure the parent-child relationships in the message list are correct (linked by parentId).
 
 **Notes**
 
@@ -1318,11 +1435,22 @@ The chatId parameter is required and cannot be empty. The message sequence must 
 
 **Best practices**
 
-After Apsara Copilot generates a response, push the response message and the question to the chat history. This operation uses common request headers only. For more information, see the documentation on common request parameters.
+After Apsara Copilot generates a response, push the response message and the question to the chat history.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/PushChatMessage HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Position | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
 |---|---|---|---|---|---|
@@ -1333,13 +1461,13 @@ After Apsara Copilot generates a response, push the response message and the que
 | messages | Json | Body | No | [ { "chatSource": "rag", "msgId": "8158be15-ccf5- 4e57-a3b9- 68c7af9a1220", "parentId": null, "content": "What is the AI assistant?", "role": "user", "reasonContent": "", "phase": "answer" }, { "actionNodeType": "rag", "msgId": "8158be15-ccf5- 4e57-a3b9- 68c7af9a1221", "parentId": "8158be15- ccf5-4e57-a3b9- 68c7af9a1220", "content": "Omit answer content", "role": "assistant", "reasonContent": " Intent recognition The user asks about the functional scope of the AI assistant, intending to understand available services and capabilities. Document understanding and analysis Retrieving relevant documents and analyzing them to generate a reference answer for you.", "phase": "answer", "model": "qwen3" } ] | The list of messages to push. Note This parameter is required. Fields chatSource: The source of the message. The default value is rag . msgId: The unique ID of the message. parentId: The unique ID of the parent message, establishing parent- child relationships between messages. role: The role of the message (user/assistant). content: The content of the message, either a question or an answer. reasonContent: The reasoning process. phase: The generation phase. The default value is answer . model: The language model used. actionNodeType: The default value is rag . |
 |---|---|---|---|---|---|
 
+**Response data**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | The dynamic prompt messages. |
 | success | Boolean | true | The return status. Success: true. Failure: false. |
 | message | String | success | The return message. |
-
-**Response data**
 
 | errorCode | String | UnknownError | The error code. |
 |---|---|---|---|
@@ -1350,13 +1478,22 @@ After Apsara Copilot generates a response, push the response message and the que
 
 Sample requests
 
+```
+POST /api/open/api/PushChatMessage HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "outerId":"123456",
   "outerType":"coms",
   "chatId": "fe5ad98e-0ed7-4f99-8bf6-cbf9d3e878f9",
   "messages": [
-    {
+```
+
+`{`
+
+```json
       "chatSource": "rag",
       "msgId": "8158be15-ccf5-4e57-a3b9-68c7af9a1220",
       "parentId": null,
@@ -1364,8 +1501,11 @@ Content-Type: application/json {
       "role": "user",
       "reasonContent": "",
       "phase": "answer"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "actionNodeType": "rag",
       "msgId": "8158be15-ccf5-4e57-a3b9-68c7af9a1221",
       "parentId": "8158be15-ccf5-4e57-a3b9-68c7af9a1220",
@@ -1375,36 +1515,33 @@ Content-Type: application/json {
 the functional scope of the AI assistant, intending to understand available services an d capabilities. <TeamixStepEnd /><TeamixStep>Document understanding and analysis</TeamixStep>Retrieving relevant documents and analyzing them to generate a reference answer for you.<TeamixSte pEnd />",
       "phase": "answer",
       "model": "qwen3"
-    }
 ```
 
 `],`
 
 ```json
   "actionNodeType": "rag"
-}
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
+
+```json
+    "success": true
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 
-| Parameter | Type | Position | Require d | Example | Description |
-|---|---|---|---|---|---|
+### 3.9 MessageFeedback
 
-```json
-{
-    "success": true
-}
-```
+Use this API to submit rating feedback for a specific chat message. It supports thumbs-up and thumbs-down operations. API description
 
-**Error codes**
+**Preparations**
 
-### MessageFeedback
-
-Use this API to submit rating feedback for a specific chat message. It supports thumbs-up and thumbs-down operations. API description Obtain a valid chatId and msgId. Determine the user's rating for the message (for example, 1 indicates a thumbs-up, -1 indicates a thumbs-down).
+Obtain a valid chatId and msgId. Determine the user's rating for the message (for example, 1 indicates a thumbs-up, -1 indicates a thumbs-down).
 
 **Notes**
 
@@ -1412,11 +1549,22 @@ chatId and msgId must exist and be valid. You can filter chats from specific sou
 
 **Best practices**
 
-Call this API after the user performs a thumbs-up or thumbs-down operation on a response. This API uses common request headers only. For more information, see the documentation on common request parameters.
+Call this API after the user performs a thumbs-up or thumbs-down operation on a response.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/MessageFeedback HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Position | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
 |---|---|---|---|---|---|
@@ -1426,11 +1574,11 @@ Call this API after the user performs a thumbs-up or thumbs-down operation on a 
 | rating | Integ er | Body | No | 1 | The user's rating for this message. Note This parameter is required. Thumbs-up: 1 / Thumbs-down: -1 |
 | reason | Strin g | Body | No | ignore | The reason for performing this operation. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | dynamicMessa ges | List | [] | The dynamic prompt messages. |
-
-**Response parameters**
 
 | success | Boolean | true | The return status. Success: true. Failure: false. |
 |---|---|---|---|
@@ -1439,43 +1587,43 @@ Call this API after the user performs a thumbs-up or thumbs-down operation on a 
 | errorMessage | String | System exception | The error message. |
 | httpCode | Integer | 200 | The HTTP status code. |
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
-
 **Examples**
 
 Sample requests
 
+```
+POST /api/open/api/MessageFeedback HTTP/1.1 Content-Type: application/json
+```
+
+`{`
+
 ```json
-Content-Type: application/json {
   "chatId": "fe5ad98e-0ed7-4f99-8bf6-cbf9d3e878f9",
   "msgId": "8158be15-ccf5-4e57-a3b9-68c7af9a1221",
   "rating": -1,
   "reason": ""
-}
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "success": true,
     "message": "success"
-}
 ```
 
 **Error code**
 
-### DeleteChat
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
 
-| Parameter | Type | Positio n | Require d | Example | Description |
-|---|---|---|---|---|---|
-| outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
-| outerType | Strin g | Body | No | coms | The type identifier of the external application. Note This parameter is optional. You must use it together with outerId. |
-| chatId | Strin g | Body | Yes | 2a902b57-dd58-416f- b190-cba7dc74e12c | The unique identifier of the chat to delete. Note This parameter is required. |
+### 3.10 DeleteChat
 
-Delete the specified chat record. API description Obtain a valid chatId.
+Delete the specified chat record. API description
+
+**Preparations**
+
+Obtain a valid chatId.
 
 **Notes**
 
@@ -1483,11 +1631,27 @@ The chatId parameter is required and cannot be empty. You can filter chats from 
 
 **Best practices**
 
-Call this API when the user confirms the deletion of a specific chat. Use this API to clean up unnecessary historical chat records. This API uses common request headers only. For more information, see the documentation on common request parameters.
+Call this API when the user confirms the deletion of a specific chat. Use this API to clean up unnecessary historical chat records.
+
+**Request headers**
+
+This API uses common request headers only. For more information, see the documentation on common request parameters.
 
 **Request syntax**
 
+```
+POST /api/open/api/DeleteChat HTTP/1.1
+```
+
 **Request parameters**
+
+| Parameter | Type | Positio n | Require d | Example | Description |
+|---|---|---|---|---|---|
+| outerId | Strin g | Body | No | 123456 | The user ID of the external application. Note This parameter is optional. You must use it together with outerType. |
+| outerType | Strin g | Body | No | coms | The type identifier of the external application. Note This parameter is optional. You must use it together with outerId. |
+| chatId | Strin g | Body | Yes | 2a902b57-dd58-416f- b190-cba7dc74e12c | The unique identifier of the chat to delete. Note This parameter is required. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1500,31 +1664,35 @@ Call this API when the user confirms the deletion of a specific chat. Use this A
 | data | Struct | {} | The returned data. |
 | -chatId | String | d96cbf45-f2a7- 4dea-b745- e4069d171e79 | The unique identifier of the deleted chat. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
 
-```json
-Content-Type: application/json {
-    "chatId": "2a902b57-dd58-416f-b190-cba7dc74e12c"
-}
+```
+POST /api/open/api/DeleteChat HTTP/1.1 Content-Type: application/json
 ```
 
-Sample success responses `JSON` format
+`{`
+
+```json
+    "chatId": "2a902b57-dd58-416f-b190-cba7dc74e12c"
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+    "data": {
+        "chatId": "d96cbf45-f2a7-4dea-b745-e4069d171e79"
+```
+
+`},`
+
+```json
+    "success": true
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 500 | INTERNAL ERROR _ | %s | An internal error. The system carries a dynamic error code and a dynamic error message from the business layer. |
-
-```json
-{
-    "data": {
-        "chatId": "d96cbf45-f2a7-4dea-b745-e4069d171e79"
-    },
-    "success": true
-}
-```
-
-**Error codes**

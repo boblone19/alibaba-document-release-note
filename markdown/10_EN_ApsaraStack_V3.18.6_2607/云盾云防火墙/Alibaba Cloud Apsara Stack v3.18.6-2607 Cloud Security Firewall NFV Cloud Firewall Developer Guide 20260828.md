@@ -3,16 +3,134 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Clou
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 178
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Developer Guide 20260828.pdf"
+source_pdf: "70c8f5427401b671_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Developer Guide 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Firewall%20NFV%20Cloud%20Firewall%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Firewall NFV Cloud Firewall Developer Guide 20260828
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 API call process
+- 2 Preparations
+  - 2.1 Obtain the information and endpoint of an API opeation
+  - 2.2 Obtain an AccessKey pair
+  - 2.3 Obtain an STS AccessKey pair
+  - 2.4 Get common header parameters
+- 3 Use POP to make API calls
+  - 3.1 Prerequisites for API calls
+  - 3.2 Java edition
+  - 3.3 Python version
+  - 3.4 Go edition
+- 4 NFV Cloud Firewall API list
+  - 4.1 CIDR block management
+    - 4.1.1 CreateCidr
+    - 4.1.2 CreateVpcIpv6Cidr
+    - 4.1.3 DeleteCidr
+    - 4.1.4 ListCidrs
+    - 4.1.5 ListCidrsAll
+    - 4.1.6 ListVpcIpv6IspOptions
+  - 4.2 NFV Cloud Firewall Cluster
+    - 4.2.1 BypassCluster
+    - 4.2.2 BypassClusterRecover
+    - 4.2.3 CreateCluster
+    - 4.2.4 CreateDisasterCluster
+    - 4.2.5 DeleteCluster
+    - 4.2.6 GetAllRegionsInfo
+    - 4.2.7 GetAsynTaskResult
+    - 4.2.8 GetBypassInfo
+    - 4.2.9 GetGateWay
+    - 4.2.10 ListApps
+    - 4.2.11 ListClusterDetail
+    - 4.2.12 ListClusterMonitors
+    - 4.2.13 ListClusterResources
+    - 4.2.14 ListClusters
+    - 4.2.15 ListClustersByApp
+    - 4.2.16 ListEcsInstanceTypes
+    - 4.2.17 ListVfwSpecOptions
+    - 4.2.18 ModifyClusterInfo
+    - 4.2.19 QueryMemberDetail
+  - 4.3 Dedicated hosts
+    - 4.3.1 CreateDdhCluster
+    - 4.3.2 CreateDdhHost
+    - 4.3.3 DeleteDdhCluster
+    - 4.3.4 DeleteDdhHost
+    - 4.3.5 ListDdhApps
+    - 4.3.6 ListDdhClusters
+    - 4.3.7 ListDdhClustersByClsIds
+    - 4.3.8 ListDdhEcsType
+    - 4.3.9 ListDdhHosts
+    - 4.3.10 ListDdhHostType
+    - 4.3.11 ListZones
+    - 4.3.12 ModifyDdhClusterInfo
+    - 4.3.13 ModifyDdhHostInfo
+  - 4.4 Endpoint
+    - 4.4.1 CreateForwardingPolicy
+    - 4.4.2 DeleteForwardingPolicy
+    - 4.4.3 EnableForwardingPolicyByEcs
+    - 4.4.4 ListForwardingPolicies
+    - 4.4.5 ListForwardingPolicyOptions
+    - 4.4.6 ListSlaveEnis
+    - 4.4.7 UpdateForwardingPolicy
+  - 4.5 Cross-organization resource authorization
+    - 4.5.1 AddSharingUser
+    - 4.5.2 CreateOrgAuthorization
+    - 4.5.3 DeleteOrgAuthorization
+    - 4.5.4 DeleteSharingUser
+    - 4.5.5 DescribeOrgAuthorization
+    - 4.5.6 GetAuthorization
+    - 4.5.7 GrantAuthorize
+    - 4.5.8 ListSharingUserLocal
+    - 4.5.9 ListVpcResource
+    - 4.5.10 UpdateOrgAuthorization
+  - 4.6 Manage images
+    - 4.6.1 ListImages
+  - 4.7 License
+    - 4.7.1 GetVfwQuota
+  - 4.8 Access Control
+    - 4.8.1 CheckRamRoleExists
+  - 4.9 Asynchronous task
+    - 4.9.1 GetAsynTaskDetail
+  - 4.10 Tunnel Management
+    - 4.10.1 CreateClassicTunnel
+    - 4.10.2 CreateVpcTunnel
+    - 4.10.3 DeleteClassicTunnel
+    - 4.10.4 DeleteVpcTunnel
+    - 4.10.5 GetVncPwd
+    - 4.10.6 GetVncUrl
+    - 4.10.7 ListClassicTunnels
+    - 4.10.8 ListVpcTunnels
+  - 4.11 Firewall interface
+    - 4.11.1 ListVfwInterfaces
+    - 4.11.2 PublishVfwInterfaces
+    - 4.11.3 UnPublishVfwInterfaces
+  - 4.12 Firewall routing
+    - 4.12.1 CreateVfwRoutes
+    - 4.12.2 DelVfwRoutes
+    - 4.12.3 GetVfwRouteConfigStatus
+    - 4.12.4 ListVfwRouteEntries
+    - 4.12.5 ListVfwRouteOptions
+    - 4.12.6 PublishVfwRoutes
+    - 4.12.7 UnPublishVfwRoutes
+  - 4.13 VPC routing
+    - 4.13.1 BatchPublishRoutes
+    - 4.13.2 BatchUnPublishRoutes
+    - 4.13.3 CreateRouteEntry
+    - 4.13.4 DeleteRouteEntry
+    - 4.13.5 GetRouteConfigStatus
+    - 4.13.6 ListRouteEntries
+    - 4.13.7 ListRouteEntryOptions
+    - 4.13.8 ModifyRouteEntry
+    - 4.13.9 ModifyRoutePolicyName
+    - 4.13.10 PublishRoutes
+    - 4.13.11 UnPublishRoutes
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 **documentation**
 
@@ -37,7 +155,7 @@ use.
 5. In the upper-right corner of the product documentation section, click **View Details** or
 **Download PDF**.
 
-### API call process
+### 1.2 API call process
 
 Alibaba Cloud Apsara Stack supports calling Apsara Stack APIs through the POP gateway. To provide you with an experience consistent with Public Cloud, starting from Enterprise Edition V3.16.0, Apsara Stack APIs use the POP gateway by default. This topic describes the process for calling Apsara Stack APIs through the POP Gateway.
 
@@ -83,9 +201,9 @@ Obtain parameters, such as the regionID, organization ID, and resource set ID, r
 and endpoint of an API opeation or Prerequisites for API calls.
 5. Call the cloud product API.
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and
+### 2.1 Obtain the information and endpoint of an API opeation
 
 **endpoint of an API opeation**
 
@@ -107,7 +225,7 @@ The API information on the OpenAPI Explorer page of the Apsara Uni-manager Manag
 7. Click the API operation that you want to call and obtain the POP endpoint information on the
 Parameter tab.
 
-### Obtain an AccessKey pair
+### 2.2 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -149,7 +267,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey pair
+### 2.3 Obtain an STS AccessKey pair
 
 This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations.
 
@@ -275,7 +393,7 @@ btained in the previous step.
 
 `}` `}`
 
-### Get common header
+### 2.4 Get common header parameters
 
 **parameters**
 
@@ -399,9 +517,9 @@ The following table describes the common response parameters that are returned b
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-## Use POP to make API calls
+## 3 Use POP to make API calls
 
-### Prerequisites for API calls
+### 3.1 Prerequisites for API calls
 
 Like Alibaba Cloud Public Cloud, Alibaba Cloud Apsara Stack allows you to call APIs through the Public Open Platform (POP) gateway. This topic describes the preparations you must make before calling the APIs.
 
@@ -443,7 +561,7 @@ the endpoint of NFV.
 
 To obtain parameters such as organization ID, resource set ID, region ID, and instance ID that are used when you call Apsara Stack APIs through the POP gateway, see the Get common header parameters section in Preparations of this manual.
 
-### Java edition
+### 3.2 Java edition
 
 This topic describes how to call NFV Cloud Firewall API operations by using CommonRequest.
 
@@ -595,7 +713,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### Python version
+### 3.3 Python version
 
 This topic describes how to use CommonRequest to call the NFV Cloud Firewall API.
 
@@ -733,7 +851,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 
 `)`
 
-### Go edition
+### 3.4 Go edition
 
 This topic describes how to use CommonRequest to call the NFV Cloud Firewall API and configure network and security parameters such as proxy and SSL verification.
 
@@ -902,11 +1020,11 @@ If no setting is configured for a request, the setting configured on the client 
 // Configure HTTPSInsecure on the client. This setting applies to all requests sent by the client. client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true on th e client. isInsecure := client.GetHTTPSInsecure() // Obtain the HTTPSInsecure settin g on the client.
 ```
 
-## NFV Cloud Firewall API list
+## 4 NFV Cloud Firewall API list
 
-### CIDR block management
+### 4.1 CIDR block management
 
-#### CreateCidr
+#### 4.1.1 CreateCidr
 
 Creates a CIDR block. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -928,7 +1046,7 @@ Creates a CIDR block. This operation uses common request headers. For more infor
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | CidrId | String | 12 | The index of the CIDR block. |
 
-#### CreateVpcIpv6Cidr
+#### 4.1.2 CreateVpcIpv6Cidr
 
 Allocates an IPv6 CIDR block to a virtual private cloud (VPC). This operation uses common request headers. For more information, see Common request parameters.
 
@@ -946,7 +1064,7 @@ Allocates an IPv6 CIDR block to a virtual private cloud (VPC). This operation us
 |---|---|---|---|
 | Ipv6CidrBlock | String | 2408:XXXX:0:a600: :/56 | The IPv6 CIDR block of the VPC. |
 
-#### DeleteCidr
+#### 4.1.3 DeleteCidr
 
 Deletes configurations of a specified CIDR block. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -961,7 +1079,7 @@ Deletes configurations of a specified CIDR block. This operation uses common req
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### ListCidrs
+#### 4.1.4 ListCidrs
 
 Lists the CIDR blocks in a specified virtual private cloud (VPC) or network range. This operation uses common request headers and does not have operation-specific request headers. For more information, see Common request parameters.
 
@@ -1004,7 +1122,7 @@ Lists the CIDR blocks in a specified virtual private cloud (VPC) or network rang
 |---|---|---|---|
 | -- ResourceGrou pName | String | resource-test | The name of the resource set. |
 
-#### ListCidrsAll
+#### 4.1.5 ListCidrsAll
 
 Lists all configured CIDR blocks, including all CIDR blocks related to virtual private cloud (VPC), subnets, and custom routes. This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
 
@@ -1043,7 +1161,7 @@ Lists all configured CIDR blocks, including all CIDR blocks related to virtual p
 |---|---|---|---|
 | -- ResourceGrou pName | String | res test _ | The name of the resource set. |
 
-#### ListVpcIpv6IspOptions
+#### 4.1.6 ListVpcIpv6IspOptions
 
 Lists the Internet Service Provider (ISP) options supported by the virtual private cloud (VPC) IPv6 CIDR block. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -1070,9 +1188,9 @@ Lists the Internet Service Provider (ISP) options supported by the virtual priva
 | - AvailableZoneI d | String | cn-neimeng- envxxx- amtest210001-a | The ID of the zone. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-### NFV Cloud Firewall Cluster
+### 4.2 NFV Cloud Firewall Cluster
 
-#### BypassCluster
+#### 4.2.1 BypassCluster
 
 Bypasses cluster routing and connects directly to backend service nodes. Use this for debugging, troubleshooting, or specific traffic direct-connect scenarios. This operation uses common request headers and has no special request headers. See the documentation for common request parameters.
 
@@ -1093,7 +1211,7 @@ Bypasses cluster routing and connects directly to backend service nodes. Use thi
 | BypassStatus | String | Normal | The bypass status. |
 | BypassProgres s | String | 100% | The bypass progress. |
 
-#### BypassClusterRecover
+#### 4.2.2 BypassClusterRecover
 
 Bypasses the cluster recovery process and enters the normal service state directly. Use this operation during failover to skip time-consuming steps such as consistency check or data synchronization. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -1114,7 +1232,7 @@ Bypasses the cluster recovery process and enters the normal service state direct
 | BypassStatus | String | success | The status. |
 | BypassProgres s | String | 100% | The bypass progress. |
 
-#### CreateCluster
+#### 4.2.3 CreateCluster
 
 Creates a new cluster resource. This operation uses common request headers and does not have special request headers. For more information, see the documentation for common request parameters.
 
@@ -1157,7 +1275,7 @@ Creates a new cluster resource. This operation uses common request headers and d
 | TaskId | String | t-000000000001 | The task ID. |
 | VnfId | String | a5656cf9-8b23- 4cba-bcc6- 5365627***** | The Virtualized Network Function (VNF) ID. |
 
-#### CreateDisasterCluster
+#### 4.2.4 CreateDisasterCluster
 
 Createa a disaster recovery cluster to achieve high availability and disaster recovery capabilities across regions or zones. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
 
@@ -1202,7 +1320,7 @@ Createa a disaster recovery cluster to achieve high availability and disaster re
 | TaskId | String | t-000000000001 | The ID of the task. |
 | VnfId | String | a5656cf9-8b23- 4cba-bcc6- 5365627xxxxx | The ID of the Virtualized Network Function (VNF). |
 
-#### DeleteCluster
+#### 4.2.5 DeleteCluster
 
 Deletes a specified cluster resource and its associated configurations and data. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -1219,7 +1337,7 @@ Deletes a specified cluster resource and its associated configurations and data.
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TaskId | String | t-000000000001 | The ID of the task. |
 
-#### GetAllRegionsInfo
+#### 4.2.6 GetAllRegionsInfo
 
 Retrieves the list of geographic regions, typically including hierarchical data such as countries, provinces, and cities. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -1240,7 +1358,7 @@ Retrieves the list of geographic regions, typically including hierarchical data 
 | -RegionName | String | region01 | The name of the region. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### GetAsynTaskResult
+#### 4.2.7 GetAsynTaskResult
 
 Retrieves the execution result of an asynchronous task. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -1270,7 +1388,7 @@ Retrieves the execution result of an asynchronous task. This operation uses comm
 | ---Seq | String | 1 | The execution sequence. |
 | ---Name | String | eni delete _ | The name. |
 
-#### GetBypassInfo
+#### 4.2.8 GetBypassInfo
 
 Retrieves bypass information to query details such as the current bypass status, configuration, and operational parameters of a device or system. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
 
@@ -1290,7 +1408,7 @@ Retrieves bypass information to query details such as the current bypass status,
 | BypassStatus | String | success | The bypass status. |
 | BypassProgres s | String | 100% | The bypass progress. |
 
-#### GetGateWay
+#### 4.2.9 GetGateWay
 
 Retrieves gateway information. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -1312,7 +1430,7 @@ Retrieves gateway information. This operation uses common request headers only. 
 | GateWayIp | String | 192.168.1.1 | The gateway IP address. |
 | GatewayIpv6Ip | String | 2020:210:6:10::1 | The IPv6 address of the gateway. |
 
-#### ListApps
+#### 4.2.10 ListApps
 
 Lists applications that are installed or available in the system. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1333,7 +1451,7 @@ Lists applications that are installed or available in the system. This operation
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The total number of records. |
 
-#### ListClusterDetail
+#### 4.2.11 ListClusterDetail
 
 Retrieves details of a specified cluster, including its configuration, status, nodes, and resources. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
 
@@ -1360,7 +1478,7 @@ Retrieves details of a specified cluster, including its configuration, status, n
 | --ResSpec | String | standard | The resource specification. |
 | --ResRole | String | master | The resource role. |
 
-#### ListClusterMonitors
+#### 4.2.12 ListClusterMonitors
 
 Lists the configuration information of cluster monitoring metrics. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -1387,7 +1505,7 @@ Lists the configuration information of cluster monitoring metrics. This operatio
 | -- ConfigSyncSta tus | String | success | The status. |
 | -- HealthCheckSt atus | String | success | The status. |
 
-#### ListClusterResources
+#### 4.2.13 ListClusterResources
 
 Lists the overview information of all resources (such as pods, services, and deployments) in the cluster. This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
 
@@ -1432,7 +1550,7 @@ Lists the overview information of all resources (such as pods, services, and dep
 | --ServiceIpGw | String | 192.168.1.1 | The gateway for the service IP address. |
 | -- HealthyStatus | String | success | The health status. |
 
-#### ListClusters
+#### 4.2.14 ListClusters
 
 Lists all clusters that the current user has permission to access. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
 
@@ -1485,7 +1603,7 @@ Lists all clusters that the current user has permission to access. This operatio
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The page size. |
 
-#### ListClustersByApp
+#### 4.2.15 ListClustersByApp
 
 Queries the list of clusters associated with an application by its name. API description
 
@@ -1664,7 +1782,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 </Clusters>
 ```
 
-#### ListEcsInstanceTypes
+#### 4.2.16 ListEcsInstanceTypes
 
 Lists the available Elastic Compute Service (ECS) instance types on Alibaba Cloud. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1689,7 +1807,7 @@ Lists the available Elastic Compute Service (ECS) instance types on Alibaba Clou
 | Memory | String | 1024 | The memory size. |
 |---|---|---|---|
 
-#### ListVfwSpecOptions
+#### 4.2.17 ListVfwSpecOptions
 
 Lists the available specifications for virtual firewalls, such as CPU, memory, and throughput. This operation uses common request headers. No special request headers apply. For more information, see Common request parameters.
 
@@ -1714,7 +1832,7 @@ Lists the available specifications for virtual firewalls, such as CPU, memory, a
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The total number. |
 
-#### ModifyClusterInfo
+#### 4.2.18 ModifyClusterInfo
 
 Modifies basic cluster information, such as the cluster name and description. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -1735,7 +1853,7 @@ Modifies basic cluster information, such as the cluster name and description. Th
 | Field | String | name | The modified field. |
 | Value | String | test | The tag value. |
 
-#### QueryMemberDetail
+#### 4.2.19 QueryMemberDetail
 
 Queries details of a member. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1764,9 +1882,9 @@ Queries details of a member. This operation uses common request headers. For mor
 | ServiceVs | String | vsw-xxx | The service vSwitch. |
 | ServiceIp | String | 192.168.1.1 | The service IP address. |
 
-### Dedicated hosts
+### 4.3 Dedicated hosts
 
-#### CreateDdhCluster
+#### 4.3.1 CreateDdhCluster
 
 Creates a dedicated host cluster. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1788,7 +1906,7 @@ Creates a dedicated host cluster. This operation uses common request headers. Fo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | ClusterRecordI d | Integer | 1 | The ID of the host group. |
 
-#### CreateDdhHost
+#### 4.3.2 CreateDdhHost
 
 Creates a dedicated host. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1810,7 +1928,7 @@ Creates a dedicated host. This operation uses common request headers. For more i
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | HostRecordId | String | 1 | The ID of the host record. |
 
-#### DeleteDdhCluster
+#### 4.3.3 DeleteDdhCluster
 
 Deletes a Dedicated Host (DDH) cluster. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1825,7 +1943,7 @@ Deletes a Dedicated Host (DDH) cluster. This operation uses common request heade
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### DeleteDdhHost
+#### 4.3.4 DeleteDdhHost
 
 Deletes a dedicated host. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1840,7 +1958,7 @@ Deletes a dedicated host. This operation uses common request headers. For more i
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-#### ListDdhApps
+#### 4.3.5 ListDdhApps
 
 ListS applications deployed on Dedicated Host (DDH). This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1867,7 +1985,7 @@ ListS applications deployed on Dedicated Host (DDH). This operation uses common 
 | --AppName | String | ahas-demo | The name of the application. |
 | --CreateTime | String | 2024-10-14 08:00:00 | The creation time. |
 
-#### ListDdhClusters
+#### 4.3.6 ListDdhClusters
 
 Lists dedicated host clusters. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -1912,7 +2030,7 @@ Lists dedicated host clusters. This operation uses common request headers. For m
 | --- AvailableVcpu s | Integer | 5 | The number of available vCPUs. |
 | ---TotalVcpus | Integer | 12 | The total number of vCPUs. |
 
-#### ListDdhClustersByClsIds
+#### 4.3.7 ListDdhClustersByClsIds
 
 Queries Dedicated Cluster (DDH) information by the cluster ID list. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -1947,7 +2065,7 @@ Queries Dedicated Cluster (DDH) information by the cluster ID list. This operati
 | --- AvailableVcpu s | Integer | 100 | The number of available vCPUs. |
 | ---TotalVcpus | Integer | 100 | The total number of vCPUs. |
 
-#### ListDdhEcsType
+#### 4.3.8 ListDdhEcsType
 
 Lists the Elastic Compute Service (ECS) instance types supported on Dedicated Host (DDH). This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2011,7 +2129,7 @@ HTTP/1.1 200 OK Content-Type:application/json
  <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId>
 ```
 
-#### ListDdhHosts
+#### 4.3.9 ListDdhHosts
 
 Lists the details of a dedicated hosts. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2053,7 +2171,7 @@ Lists the details of a dedicated hosts. This operation uses common request heade
 | --- AvailableVcpu s | Integer | 20 | The number of remaining vCPUs. |
 | ---TotalVcpus | Integer | 20 | The total number of vCPUs. |
 
-#### ListDdhHostType
+#### 4.3.10 ListDdhHostType
 
 Lists the host types supported by Dedicated Host (DDH), including host models with different specifications, resource capacities, and applicable scenarios. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2073,7 +2191,7 @@ Lists the host types supported by Dedicated Host (DDH), including host models wi
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TotalCount | Integer | 100 | The number of entries in the list. |
 
-#### ListZones
+#### 4.3.11 ListZones
 
 Lists zone information. The system typically uses this operation in cloud services or distributed systems to retrieve a list of selectable geographical regions or fault domains. This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
 
@@ -2095,7 +2213,7 @@ Lists zone information. The system typically uses this operation in cloud servic
 | --ZoneId | String | cn-hangzhou-h | The zone ID. |
 | --ZoneName | String | Hangzhou Zone H | The name of the zone. |
 
-#### ModifyDdhClusterInfo
+#### 4.3.12 ModifyDdhClusterInfo
 
 Modifies the information of a dedicated host cluster. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2146,7 +2264,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <Field>name</Field> <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Value>test</Value>
 ```
 
-#### ModifyDdhHostInfo
+#### 4.3.13 ModifyDdhHostInfo
 
 Modifies the attributes of a dedicated host, such as its name, description, or tags. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2169,9 +2287,9 @@ Modifies the attributes of a dedicated host, such as its name, description, or t
 | Field | String | key-test | The modified field. |
 | Value | String | value-test | The new value of the field. |
 
-### Endpoint
+### 4.4 Endpoint
 
-#### CreateForwardingPolicy
+#### 4.4.1 CreateForwardingPolicy
 
 Creates a forwarding policy to define the forwarding rules and behavior of network traffic. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2199,7 +2317,7 @@ Creates a forwarding policy to define the forwarding rules and behavior of netwo
 | ForwardingPoli cyId | String | task-123 | The ID of the forwarding rule. |
 | TaskId | String | t-000000000001 | The ID of the task. |
 
-#### DeleteForwardingPolicy
+#### 4.4.2 DeleteForwardingPolicy
 
 Deletes a specified forwarding rule. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2216,7 +2334,7 @@ Deletes a specified forwarding rule. This operation uses common request headers.
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | TaskId | String | task-xxx | The ID of the task. |
 
-#### EnableForwardingPolicyByEcs
+#### 4.4.3 EnableForwardingPolicyByEcs
 
 EnableS the forwarding rule configured via the Elastic Compute Service (ECS) instance. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2233,7 +2351,7 @@ EnableS the forwarding rule configured via the Elastic Compute Service (ECS) ins
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-#### ListForwardingPolicies
+#### 4.4.4 ListForwardingPolicies
 
 Lists all forwarding rules configured in the current network environment. The list includes basic information such as rule name, match conditions, action type, and priority. This operation uses common request headers only. No special request headers are required. For more information, see Common request parameters.
 
@@ -2299,7 +2417,7 @@ Lists all forwarding rules configured in the current network environment. The li
 | ----ResId | String | resource-***** | The resource ID. |
 | ----VlanId | String | 2696 | The VLAN ID. |
 
-#### ListForwardingPolicyOptions
+#### 4.4.5 ListForwardingPolicyOptions
 
 Lists the optional parameters for forwarding rules, typically including pagination, filtering, and sorting options. This operation uses common request headers and does not require special request headers. For more information, see the documentation for common request parameters.
 
@@ -2329,7 +2447,7 @@ Lists the optional parameters for forwarding rules, typically including paginati
 | -VpcCidrBlock | String | 192.168.0.0/16 | The CIDR block of the VPC. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-#### ListSlaveEnis
+#### 4.4.6 ListSlaveEnis
 
 Lists all secondary Elastic Network Interfaces (ENIs) associated with the specified primary ENI. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2357,7 +2475,7 @@ Lists all secondary Elastic Network Interfaces (ENIs) associated with the specif
 | --VlanId | String | 1678 | The VLAN ID. |
 | -- ForwardingSta tus | String | success | The status. |
 
-#### UpdateForwardingPolicy
+#### 4.4.7 UpdateForwardingPolicy
 
 Updates a forwarding rule to modify the configuration of an existing network traffic forwarding rule, such as match conditions, actions, priority, and other parameters. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2377,11 +2495,11 @@ Updates a forwarding rule to modify the configuration of an existing network tra
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-### Cross-organization resource
+### 4.5 Cross-organization resource authorization
 
 **authorization**
 
-#### AddSharingUser
+#### 4.5.1 AddSharingUser
 
 Adds a shared user. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2403,7 +2521,7 @@ Adds a shared user. This operation uses common request headers. For more informa
 | SharingId | String | abc123xyz | The ID of the sharing. |
 | RequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the request. |
 
-#### CreateOrgAuthorization
+#### 4.5.2 CreateOrgAuthorization
 
 Creates authorization information for an organization. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2430,7 +2548,7 @@ Creates authorization information for an organization. This operation uses commo
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 | TaskId | String | t-0000000***** | The ID of the task. |
 
-#### DeleteOrgAuthorization
+#### 4.5.3 DeleteOrgAuthorization
 
 Deletes authorization information for an organization. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2453,7 +2571,7 @@ Deletes authorization information for an organization. This operation uses commo
 | ForwardingPoli cyId | String | fp-123 | The ID of the forwarding policy. |
 | TaskId | String | task-123 | The ID of the task. |
 
-#### DeleteSharingUser
+#### 4.5.4 DeleteSharingUser
 
 Deletes a shared user. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2472,7 +2590,7 @@ Deletes a shared user. This operation uses common request headers. For more info
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### DescribeOrgAuthorization
+#### 4.5.5 DescribeOrgAuthorization
 
 Queries the authorization information of an organization. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2520,7 +2638,7 @@ Queries the authorization information of an organization. This operation uses co
 | PageSize | Integer | 10 | The page size. |
 |---|---|---|---|
 
-#### GetAuthorization
+#### 4.5.6 GetAuthorization
 
 Retrieves authorization information or access permissions. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -2542,7 +2660,7 @@ Retrieves authorization information or access permissions. This operation uses c
 | Code | String | 200 | The status code. A value of 200 indicates a successful call. |
 | Message | String | success | The message. |
 
-#### GrantAuthorize
+#### 4.5.7 GrantAuthorize
 
 Grants users or roles the permission to access specific resources or perform specific operations. This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
 
@@ -2564,7 +2682,7 @@ Grants users or roles the permission to access specific resources or perform spe
 | Code | String | 200 | The status code. |
 | Message | String | success | The additional message. |
 
-#### ListSharingUserLocal
+#### 4.5.8 ListSharingUserLocal
 
 Lists local shared users. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2603,7 +2721,7 @@ Lists local shared users. This operation uses common request headers and does no
 | PageNumber | Integer | 10 | The page number. |
 | PageSize | Integer | 10 | The page size. |
 
-#### ListVpcResource
+#### 4.5.9 ListVpcResource
 
 Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Balancer, and RDS instances, within the specified virtual private cloud (VPC) and their associated information. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2628,7 +2746,7 @@ Lists all cloud resources, such as Elastic Compute Service (ECS), Server Load Ba
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 | TotalCount | Integer | 100 | The number of entries in the list. |
 
-#### UpdateOrgAuthorization
+#### 4.5.10 UpdateOrgAuthorization
 
 Updates authorization information for an organization. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2656,9 +2774,9 @@ Updates authorization information for an organization. This operation uses commo
 |---|---|---|---|
 | TaskId | String | task-123 | The ID of the task. |
 
-### Manage images
+### 4.6 Manage images
 
-#### ListImages
+#### 4.6.1 ListImages
 
 Lists all available image information. This operation uses common request headers. No special request headers exist. For more information, see Common request parameters.
 
@@ -2683,9 +2801,9 @@ Lists all available image information. This operation uses common request header
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 | TotalCount | Integer | 100 | The number of entries in the list. |
 
-### License
+### 4.7 License
 
-#### GetVfwQuota
+#### 4.7.1 GetVfwQuota
 
 Retrieves the quota information for a virtual firewall. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2710,9 +2828,9 @@ Retrieves the quota information for a virtual firewall. This operation uses comm
 | -Allocate | Float | 5.0 | The amount allocated to child organizations. |
 | -Used | Float | 1.0 | The used capacity. |
 
-### Access Control
+### 4.8 Access Control
 
-#### CheckRamRoleExists
+#### 4.8.1 CheckRamRoleExists
 
 Checks whether the specified Resource Access Management (RAM) role exists. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2725,9 +2843,9 @@ Checks whether the specified Resource Access Management (RAM) role exists. This 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-### Asynchronous task
+### 4.9 Asynchronous task
 
-#### GetAsynTaskDetail
+#### 4.9.1 GetAsynTaskDetail
 
 Retrieves detailed information about an asynchronous task. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2773,9 +2891,9 @@ Retrieves detailed information about an asynchronous task. This operation uses c
 | PageNumber | Integer | 10 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-### Tunnel Management
+### 4.10 Tunnel Management
 
-#### CreateClassicTunnel
+#### 4.10.1 CreateClassicTunnel
 
 Creates a classic network tunnel to establish a secure and stable network connection in a classic network environment. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2791,7 +2909,7 @@ Creates a classic network tunnel to establish a secure and stable network connec
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### CreateVpcTunnel
+#### 4.10.2 CreateVpcTunnel
 
 Creates a virtual private cloud (VPC) tunnel to establish a secure and private network connection between different network environments, such as between an on-premises IDC and a VPC, or between VPCs across regions. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -2819,7 +2937,7 @@ Creates a virtual private cloud (VPC) tunnel to establish a secure and private n
 | --TunnelStatus | String | Success | The status of the tunnel. Valid values: Success: The tunnel is enabled. Failed: The tunnel is disabled. |
 | --Id | String | tunnel-xxx | The ID of the tunnel. |
 
-#### DeleteClassicTunnel
+#### 4.10.3 DeleteClassicTunnel
 
 Deletes the classic network tunnel connection. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -2837,7 +2955,7 @@ Deletes the classic network tunnel connection. This operation uses only common r
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | VncPwd | String | 123456 | The Virtual Network Computing (VNC) password. |
 
-#### DeleteVpcTunnel
+#### 4.10.4 DeleteVpcTunnel
 
 DeleteS the specified virtual private cloud (VPC) tunnel connection. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2852,7 +2970,7 @@ DeleteS the specified virtual private cloud (VPC) tunnel connection. This operat
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### GetVncPwd
+#### 4.10.5 GetVncPwd
 
 Retrieves the password for Virtual Network Computing (VNC) remote desktop connection. This operation uses common request headers only. For more information, see Common request parameters.
 
@@ -2868,7 +2986,7 @@ Retrieves the password for Virtual Network Computing (VNC) remote desktop connec
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | VncPwd | String | 123456 | The password for VNC remote desktop connection. |
 
-#### GetVncUrl
+#### 4.10.6 GetVncUrl
 
 Queires the Virtual Network Computing (VNC) remote control connection string for a virtual machine or an instance. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -2884,7 +3002,7 @@ Queires the Virtual Network Computing (VNC) remote control connection string for
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | VncUrl | String | vnc://192.168.1.1:5 901 | The VNC URL. |
 
-#### ListClassicTunnels
+#### 4.10.7 ListClassicTunnels
 
 Lists tunnel connection information for the classic network type. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2910,7 +3028,7 @@ Lists tunnel connection information for the classic network type. This operation
 | --TunnelStatus | String | Success | The status of the tunnel. Success Failed |
 | --Id | String | tunnel-xxx | The ID of the tunnel. |
 
-#### ListVpcTunnels
+#### 4.10.8 ListVpcTunnels
 
 Lists all VPN tunnel configurations under the specified virtual private cloud (VPC). This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -2936,9 +3054,9 @@ Lists all VPN tunnel configurations under the specified virtual private cloud (V
 | --TunnelStatus | String | failed | The status of the tunnel. |
 | --Id | String | tunnel-123 | The ID of the tunnel. |
 
-### Firewall interface
+### 4.11 Firewall interface
 
-#### ListVfwInterfaces
+#### 4.11.1 ListVfwInterfaces
 
 Lists all network interface information associated with a virtual firewall. This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
@@ -2994,7 +3112,7 @@ Lists all network interface information associated with a virtual firewall. This
 | PageSize | Integer | 10 | The page size. |
 | PageNumber | Integer | 10 | The page number. |
 
-#### PublishVfwInterfaces
+#### 4.11.2 PublishVfwInterfaces
 
 Publishes the network interface configuration of a virtual firewall so that external systems or orchestrators can discover and manage it. This operation uses common request headers and has no special request headers. For more information, see the documentation for common request parameters.
 
@@ -3021,7 +3139,7 @@ Publishes the network interface configuration of a virtual firewall so that exte
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-#### UnPublishVfwInterfaces
+#### 4.11.3 UnPublishVfwInterfaces
 
 Revokes the configuration that publishes virtual firewall interfaces. This action removes published virtual firewall interfaces from the network service or cancels their external exposure. This operation uses common request headers only. No special request headers apply. For details, see the documentation for common request parameters.
 
@@ -3047,9 +3165,9 @@ Revokes the configuration that publishes virtual firewall interfaces. This actio
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-### Firewall routing
+### 4.12 Firewall routing
 
-#### CreateVfwRoutes
+#### 4.12.1 CreateVfwRoutes
 
 Creates routing rules for a virtual firewall. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
 
@@ -3076,7 +3194,7 @@ Creates routing rules for a virtual firewall. This operation uses common request
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-#### DelVfwRoutes
+#### 4.12.2 DelVfwRoutes
 
 Deletes route table entries of a virtual firewall. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3101,7 +3219,7 @@ Deletes route table entries of a virtual firewall. This operation uses common re
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The ID of the request. |
 
-#### GetVfwRouteConfigStatus
+#### 4.12.3 GetVfwRouteConfigStatus
 
 Retrieves the route configuration status of the virtual firewall. This operation uses common request headers and does not require any special request headers. For more information, see Common request parameters.
 
@@ -3119,7 +3237,7 @@ Retrieves the route configuration status of the virtual firewall. This operation
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | Status | String | success | The configuration status. |
 
-#### ListVfwRouteEntries
+#### 4.12.4 ListVfwRouteEntries
 
 Lists route entries for a virtual firewall (VFW). This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
 
@@ -3165,7 +3283,7 @@ Lists route entries for a virtual firewall (VFW). This operation uses common req
 |---|---|---|---|
 | PageNumber | Integer | 10 | The page number. |
 
-#### ListVfwRouteOptions
+#### 4.12.5 ListVfwRouteOptions
 
 Lists routing configuration options for a virtual firewall. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -3194,7 +3312,7 @@ Lists routing configuration options for a virtual firewall. This operation uses 
 | - VpcIpv6CidrBl ock | String | 2401:b2c0::/56 | The IPv6 CIDR block. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 
-#### PublishVfwRoutes
+#### 4.12.6 PublishVfwRoutes
 
 Publishes the routing information of a virtual firewall to the network so that other devices can learn and forward traffic to subnets managed by the virtual firewall. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3222,7 +3340,7 @@ Publishes the routing information of a virtual firewall to the network so that o
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 |---|---|---|---|
 
-#### UnPublishVfwRoutes
+#### 4.12.7 UnPublishVfwRoutes
 
 Revokes the publication of route entries for a virtual firewall. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -3248,9 +3366,9 @@ Revokes the publication of route entries for a virtual firewall. This operation 
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-***** | The request ID. |
 
-### VPC routing
+### 4.13 VPC routing
 
-#### BatchPublishRoutes
+#### 4.13.1 BatchPublishRoutes
 
 Publishes route configurations in batches. This operation uses only common request headers. For more information, see Common request parameters.
 
@@ -3274,7 +3392,7 @@ Publishes route configurations in batches. This operation uses only common reque
 | - PeerRequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the peer request. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### BatchUnPublishRoutes
+#### 4.13.2 BatchUnPublishRoutes
 
 Unpublishes specified route entries in batches. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3297,7 +3415,7 @@ Unpublishes specified route entries in batches. This operation uses common reque
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The request ID. |
 |---|---|---|---|
 
-#### CreateRouteEntry
+#### 4.13.3 CreateRouteEntry
 
 Creates a route entry in the route table. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -3367,7 +3485,7 @@ Creates a route entry in the route table. This operation uses common request hea
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | RouteGroupId | String | rg-xxx | The ID of the route group. |
 
-#### DeleteRouteEntry
+#### 4.13.4 DeleteRouteEntry
 
 Deletes a route entry from the route table. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3382,7 +3500,7 @@ Deletes a route entry from the route table. This operation uses common request h
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### GetRouteConfigStatus
+#### 4.13.5 GetRouteConfigStatus
 
 Retrieves the route configuration status. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
@@ -3398,7 +3516,7 @@ Retrieves the route configuration status. This operation uses common request hea
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 | Status | String | Success | The return status. |
 
-#### ListRouteEntries
+#### 4.13.6 ListRouteEntries
 
 Lists route entries in a route table. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3503,7 +3621,7 @@ Lists route entries in a route table. This operation uses common request headers
 | --ResourceId | String | cn-neimeng- envxxx-d01 | The resource ID. |
 | --RouteType | String | standard | The route type. |
 
-#### ListRouteEntryOptions
+#### 4.13.7 ListRouteEntryOptions
 
 Lists the query parameter options for route entries. These options typically include configurations for pagination, filtering, and sorting. This operation uses common request headers and does not require special request headers. For more information, see the documentation of common request parameters.
 
@@ -3561,7 +3679,7 @@ Lists the query parameter options for route entries. These options typically inc
 | - VpcIpv6CidrBl ock | String | 2408:XXXX:0:6a::/5 6 | The IPv6 CIDR block. |
 | RequestId | String | F0A8A039-930D- 5EC1-97C8-****** | The ID of the request. |
 
-#### ModifyRouteEntry
+#### 4.13.8 ModifyRouteEntry
 
 Modifies the specified route entry in the route table. This operation uses common request headers and does not have special request headers. For more information, see Common request parameters.
 
@@ -3624,7 +3742,7 @@ Modifies the specified route entry in the route table. This operation uses commo
 |---|---|---|---|
 | RequestId | String | F0A8A039-930D- 5EC1-97C8- ************ | The ID of the request. |
 
-#### ModifyRoutePolicyName
+#### 4.13.9 ModifyRoutePolicyName
 
 Modifies the name of a routing policy. This operation uses common request headers. For more information, see Common request parameters.
 
@@ -3643,7 +3761,7 @@ Modifies the name of a routing policy. This operation uses common request header
 | RouteGroupId | String | rg-xxx | The ID of the route group. |
 | Name | String | test | The name of the metric. |
 
-#### PublishRoutes
+#### 4.13.10 PublishRoutes
 
 Publishes routing information to register a service's access path with the service gateway or registration center so that external requests route correctly to the corresponding service instance. This operation uses common request headers and has no special request headers. For more information, see Common request parameters.
 
@@ -3668,7 +3786,7 @@ Publishes routing information to register a service's access path with the servi
 | PeerRouteEntr yId | String | 1001 | The ID of the peer route entry. |
 | PeerRequestId | String | A1B2C3D4-E5F6- 7890-ABCD- EF1234567890 | The ID of the peer request. |
 
-#### UnPublishRoutes
+#### 4.13.11 UnPublishRoutes
 
 Unpublishes the specified routes so they no longer provide external services or are discoverable. This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 

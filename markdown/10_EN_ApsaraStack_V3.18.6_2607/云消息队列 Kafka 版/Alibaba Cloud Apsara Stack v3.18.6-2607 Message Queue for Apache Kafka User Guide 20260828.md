@@ -3,14 +3,167 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka U
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 241
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828.pdf"
+source_pdf: "1e7e30b9d7c067aa_Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20Kafka%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Message%20Queue%20for%20Apache%20Kafka%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka User Guide 20260828
 
-## What is ?
+## Table of Contents
+
+- 1 What is ?
+- 2 Console operations
+  - 2.1 Log on to the console
+  - 2.2 Getting started
+    - 2.2.1 Create a topic
+    - 2.2.2 Send messages
+    - 2.2.3 Query messages
+  - 2.3 Instances
+    - 2.3.1 Manage instances
+    - 2.3.2 Configure instance relationships
+    - 2.3.3 Obtain the endpoint of an instance
+    - 2.3.4 Configure instance parameters
+    - 2.3.5 View the instance monitoring information
+    - 2.3.6 View the operation logs of an instance
+  - 2.4 Topics
+    - 2.4.1 Create topics
+    - 2.4.2 View the list of topics
+    - 2.4.3 View partition status in a topic
+    - 2.4.4 View the subscriptions of a topic
+    - 2.4.5 Modify topic configurations
+    - 2.4.6 Increase the number of partitions in a topic
+    - 2.4.7 Migrate topic partitions
+  - 2.5 Consumer groups
+    - 2.5.1 Create a consumer group
+    - 2.5.2 View the list of consumer groups
+    - 2.5.3 View the consumer status of a consumer group
+    - 2.5.4 Reset the consumer offset of a consumer group
+  - 2.6 Messages
+    - 2.6.1 Send messages
+    - 2.6.2 Query messages
+  - 2.7 ACL
+    - 2.7.1 Create SASL users
+    - 2.7.2 Grant permissions to SASL users
+    - 2.7.3 Configure an ACL
+    - 2.7.4 Change the passwords of SASL users
+    - 2.7.5 Delete SASL users
+    - 2.7.6 Delete the permissions of SASL users
+    - 2.7.7 Download an ACL certificate
+  - 2.8 VIPs
+    - 2.8.1 Create a VIP
+    - 2.8.2 Delete a VIP
+    - 2.8.3 Request a domain name
+  - 2.9 Data integration
+    - 2.9.1 Message routing
+      - 2.9.1.1 Manage replicators
+      - 2.9.1.2 Cloud information
+      - 2.9.1.3 Tasks
+        - 2.9.1.3.1 Remote tasks
+        - 2.9.1.3.2 Local tasks
+    - 2.9.2 Connect
+      - 2.9.2.1 clickhouse-sink-connector
+      - 2.9.2.2 github-source-connector
+      - 2.9.2.3 hbase-sink-connector
+      - 2.9.2.4 lindorm-search-sink-connector
+      - 2.9.2.5 lindorm-tsdb-sink-connector
+      - 2.9.2.6 lindorm-vector-sink-connector
+      - 2.9.2.7 lindorm-widetable-sink-connector
+      - 2.9.2.8 mariadb-sink-connector
+      - 2.9.2.9 mariadb-source-connector
+      - 2.9.2.10 maxcompute-sink-connector
+      - 2.9.2.11 maxcompute-source-connector
+      - 2.9.2.12 opensearch-sink-connector
+      - 2.9.2.13 oracle-sink-connector
+      - 2.9.2.14 oracle-source-connector
+      - 2.9.2.15 polardb-for-oracle-sink-connector
+      - 2.9.2.16 polardb-for-oracle-source-connector
+      - 2.9.2.17 sqlserver-sink-connector
+      - 2.9.2.18 sqlserver-source-connector
+      - 2.9.2.19 tidb-sink-connector
+      - 2.9.2.20 http-sink-connector
+      - 2.9.2.21 http-source-connector
+      - 2.9.2.22 kafka-mirror-source-connector
+      - 2.9.2.23 analyticdb-for-mysql-sink-connector
+      - 2.9.2.24 analyticdb-for-postgresql-sink-connector
+      - 2.9.2.25 elasticsearch-sink-connector
+      - 2.9.2.26 flink-job-sink-connector
+      - 2.9.2.27 hologres-sink-connector
+      - 2.9.2.28 hologres-source-connector
+      - 2.9.2.29 localfs-sink-connector
+      - 2.9.2.30 localfs-source-connector
+      - 2.9.2.31 mongodb-sink-connector
+      - 2.9.2.32 mongodb-source-connector
+      - 2.9.2.33 mysql-sink-connector.json
+      - 2.9.2.34 mysql-source-connector.json
+      - 2.9.2.35 oceanbase-mysql-sink-connector
+      - 2.9.2.36 oceanbase-mysql-source-connector
+      - 2.9.2.37 oss-sink-connector
+      - 2.9.2.38 oss-source-connector
+      - 2.9.2.39 otlp-sls-sink-connector
+      - 2.9.2.40 otlp-source-connector
+      - 2.9.2.41 polardb-for-mysql-sink-connector
+      - 2.9.2.42 polardb-for-mysql-source-connector
+      - 2.9.2.43 polardb-for-postgresql-sink-connector
+      - 2.9.2.44 polardb-for-postgresql-source-connector
+      - 2.9.2.45 polardb-x-2.0-sink-connector
+      - 2.9.2.46 polardb-x-2.0-source-connector
+      - 2.9.2.47 postgresql-sink-connector.json
+      - 2.9.2.48 postgresql-source-connector.json
+      - 2.9.2.49 prometheus-sink-connector
+      - 2.9.2.50 prometheus-source-connector
+      - 2.9.2.51 redis-sink-connector
+      - 2.9.2.52 redis-source-connector
+      - 2.9.2.53 sls-sink-connector
+      - 2.9.2.54 sls-source-connector
+      - 2.9.2.55 spark-sink-connector
+      - 2.9.2.56 tablestore-sink-connector
+      - 2.9.2.57 tablestore-source-connector
+      - 2.9.2.58 syslog-source-connector
+      - 2.9.2.59 hdfs3-sink-connector
+      - 2.9.2.60 hdfs3-source-connector
+      - 2.9.2.61 neo4j-sink-connector
+      - 2.9.2.62 neo4j-source-connector
+      - 2.9.2.63 ftp-sink-connector
+      - 2.9.2.64 ftp-source-connector
+      - 2.9.2.65 sftp-sink-connector
+      - 2.9.2.66 sftp-source-connector
+      - 2.9.2.67 mqtt-sink-connector
+      - 2.9.2.68 mqtt-source-connector
+      - 2.9.2.69 rocketmq-sink-connector
+      - 2.9.2.70 rocketmq-source-connector
+      - 2.9.2.71 Transform configuration
+    - 2.9.3 Ingest data to data lakes
+  - 2.10 Zone-disaster recovery
+    - 2.10.1 Solution overview
+    - 2.10.2 Create replica clusters
+  - 2.11 Data migration
+    - 2.11.1 Cloud migration
+      - 2.11.1.1 Migrate data of topics and groups to the cloud
+    - 2.11.2 Cloud‑to‑Cloud Migration
+      - 2.11.2.1 Use the ApsaraMQ for Kafka console to migrate services from one ApsaraMQ for Kafka instance to another
+      - 2.11.2.2 Cloud‑to‑Cloud Migration using the Kafka data migration tool
+  - 2.12 KSQLDB
+- 3 Pod command operations
+  - 3.1 Command verification
+    - 3.1.1 Create topics
+    - 3.1.2 Send messages
+    - 3.1.3 Consume messages
+  - 3.2 Topics
+    - 3.2.1 Create topics
+    - 3.2.2 View the status of a topic
+    - 3.2.3 View the current offset of a partition
+    - 3.2.4 View the list of topics
+    - 3.2.5 Increase the number of partitions in a topic
+    - 3.2.6 Modify topic configurations
+  - 3.3 Consumer groups
+    - 3.3.1 View the consumer status of a consumer group
+    - 3.3.2 View the list of consumer groups
+  - 3.4 Messages
+    - 3.4.1 Send messages
+    - 3.4.2 Consume messages
+
+## 1 What is ?
 
 ApsaraMQ for Kafka is a distributed, high-throughput, and scalable message queue service provided by Alibaba Cloud. Used in big data fields such as log collection, monitoring data aggregation, streaming data processing, and online and offline analytics, ApsaraMQ for Kafka is an indispensable part of the big data ecosystem.
 
@@ -22,9 +175,9 @@ ApsaraMQ for Kafka provides fully managed services for open source Apache Kafka 
 
 ApsaraMQ for Kafka provides a rich application ecosystem that covers the following fields: Big data: ApsaraMQ for Kafka is used in fields such as website behavior analysis, log aggregation, application monitoring, streaming data processing, and online and offline data analytics. Data integration: ApsaraMQ for Kafka allows you to import messages to offline data warehouses such as MaxCompute, Object Storage Service (OSS), ApsaraDB RDS, Hadoop, and HBase. Stream computing integration: ApsaraMQ for Kafka integrates stream computing engines such as Realtime Compute, E-MapReduce, Spark, and Storm.
 
-## Console operations
+## 2 Console operations
 
-### Log on to the console
+### 2.1 Log on to the console
 
 This topic describes how to log on to the ApsaraMQ for Kafka console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. A browser is available. We recommend that you use the Google Chrome browser.
 
@@ -49,9 +202,9 @@ For more information, see the **Bind a virtual MFA device to enable**
 5. In the top navigation bar, choose **Products > Middleware > ApsaraMQ for Kafka**.
 6. On the **ApsaraMQ for Kafka** page, select the organization and region and click **Kafka**.
 
-### Getting started
+### 2.2 Getting started
 
-#### Create a topic
+#### 2.2.1 Create a topic
 
 In ApsaraMQ for Kafka, topics are used to store messages published by producers. Before you send and receive messages, you must create a topic.
 
@@ -71,7 +224,7 @@ parameters and click **OK**. The following table describes the parameters.
 | Instance | The ID of the instance on which the topic is created. |
 | Number of partitions | The number of partitions in the topic. We recommend that the number of partitions be a multiple of 6 to reduce data skew risks. Valid values: 1 to 48. |
 
-#### Send messages
+#### 2.2.2 Send messages
 
 After you create a topic, you can send messages to the topic in the ApsaraMQ for Kafka console.
 
@@ -87,7 +240,7 @@ the **Operation** column.
 message in the **Partition** field and the message key and message value in the **Message**
 **Key** and **Message Value** fields. Then, click **OK**.
 
-#### Query messages
+#### 2.2.3 Query messages
 
 After you send a message, you can query the message.
 
@@ -141,9 +294,9 @@ time, and then click **Query**. The queried message is displayed on the **Messag
 5. **(Optional)** If you want to download the key or value of a message, select the message and
 click **Download message** next to **Key** or **Value**.
 
-### Instances
+### 2.3 Instances
 
-#### Manage instances
+#### 2.3.1 Manage instances
 
 In ApsaraMQ for Kafka, an instance is used to store information about topics and group IDs. This topic describes how to create, scale out, and release an instance in the ApsaraMQ for Kafka console. This topic also describes how to view the details of an instance in the console. Sufficient physical resources are reserved to ensure the successful creation of an instance.
 
@@ -250,7 +403,7 @@ After you release an instance, all data in the instance is deleted and cannot be
 in the **Operation** column. `confirm`, and then click **OK**.
 2. In the dialog box that appears, read the note, enter
 
-#### Configure instance relationships
+#### 2.3.2 Configure instance relationships
 
 Users in a resource group can view an ApsaraMQ for Kafka instance and perform operations on the instance only after you configure the relationships of the instance.
 
@@ -283,7 +436,7 @@ manage and click **Home configuration** in the **Operation** column.
 instance belongs and click **OK**. On the **Instance relationship configuration** page, you can see the value in the
 **Operation** column of the corresponding instance changes to **Configured**.
 
-#### Obtain the endpoint of an instance
+#### 2.3.3 Obtain the endpoint of an instance
 
 This topic describes how to obtain the endpoint of an ApsaraMQ for Kafka instance. The instance ownership is configured. For more information, see Configure instance relationships. A VIP is created. For more information, see Create a VIP.
 
@@ -300,7 +453,7 @@ instance name, or click **Details** in the **Operation** column.
 4. On the **Instance details** page, click the **Access point information** tab to obtain the
 endpoint of the instance, such as SASL_SSL, PLAINTEXT, and SASL_PLAINTEXT.
 
-#### Configure instance parameters
+#### 2.3.4 Configure instance parameters
 
 This topic describes how to configure the parameters of an ApsaraMQ for Kafka instance. After you modify the parameters of an ApsaraMQ for Kafka instance, the running of the instance is affected. Confirm before you modify instance parameters.
 
@@ -342,7 +495,7 @@ The default configurations are optimal configurations. We recommend that you do 
 4. After you modify a parameter, click **Modify** in the **Operation** column of the parameter.
 5. In the **Modify configuration** message, click **OK**.
 
-#### View the instance monitoring
+#### 2.3.5 View the instance monitoring information
 
 **information**
 
@@ -378,7 +531,7 @@ You can also click **View more** in the upper-right corner of the Monitoring tab
 |---|---|
 | Monitoring metric | The monitoring metrics. In this example, the granularity is set to broker. You can view the following metrics: Broker Message production traffic (BYTE), Broker message consumption traffic (BYTE), Broker Message production request frequency (count), Number of Broker messages produced (count), and Broker message consumption request frequency (count). For more information about monitoring metrics, see the supported metrics of ApsaraMQ for Kafka in the CloudMonitor User Guide in Apsara Stack Documentation Center. You can also click the icon in the upper-right corner of each monitoring chart to quickly create an alert rule. |
 
-#### View the operation logs of an instance
+#### 2.3.6 View the operation logs of an instance
 
 This topic describes how to view the operation logs of an ApsaraMQ for Kafka instance. This helps you quickly identify the cause of exceptions that occur when you manage or use ApsaraMQ for Kafka and improve troubleshooting efficiency.
 
@@ -401,9 +554,9 @@ the instance.
 instance and its related resources in the last seven days. You can select a filter condition from the drop-down list next to **Operator**. You can also click **Advanced Filter** to filter the operations by **Operator**, **Operation**
 **Name**, **Execution Status**, **Operation Source IP**, and **Operation Time**.
 
-### Topics
+### 2.4 Topics
 
-#### Create topics
+#### 2.4.1 Create topics
 
 In ApsaraMQ for Kafka, topics are used to store messages published by producers. Before you send and receive messages, you must create a topic.
 
@@ -423,7 +576,7 @@ parameters and click **OK**. The following table describes the parameters.
 | Instance | The ID of the instance on which the topic is created. |
 | Number of partitions | The number of partitions in the topic. We recommend that the number of partitions be a multiple of 6 to reduce data skew risks. Valid values: 1 to 48. |
 
-#### View the list of topics
+#### 2.4.2 View the list of topics
 
 This topic describes how to view the list of topics.
 
@@ -436,7 +589,7 @@ instance name, or click **Details** in the **Operation** column.
 4. Click the **Topic management** tab.
 5. On the **Topic management** tab, view the list of topics.
 
-#### View partition status in a topic
+#### 2.4.3 View partition status in a topic
 
 After you create a topic, you can view the status of each partition in the topic.
 
@@ -459,7 +612,7 @@ In the **Partition status** panel, the status of all partitions in the topic is 
 | ISR | The in-sync replicas. |
 | Leader | The leader replica. Messages are sent to and received from the leader. |
 
-#### View the subscriptions of a topic
+#### 2.4.4 View the subscriptions of a topic
 
 After you create a topic, you can view the online consumer groups that subscribe to the topic.
 
@@ -483,7 +636,7 @@ In the panel that appears, you can view all consumer groups that subscribe to th
 | No. | The serial number. |
 | Consumer Group ID | The ID of the online consumer group that subscribes to the topic. If the group ID is offline, you cannot view the topic. |
 
-#### Modify topic configurations
+#### 2.4.5 Modify topic configurations
 
 After you create a topic, you can modify the configurations of the topic.
 
@@ -507,7 +660,7 @@ click **Modify**, select or enter a target value, and click **OK**.
 | max.message.bytes(Maximum message size(bytes)) | The maximum size of a message that the topic can receive from a producer. Valid values: 1048576 bytes to 10485760 bytes. |
 | retention.bytes(The total amount of data saved for each partition under each topic(bytes)) | The total amount of data stored in each partition in each topic. Valid values: -1 , or 268435456 bytes to 1073741824bytes. Note The value -1 indicates that the log size of the partition has no limit. |
 
-#### Increase the number of partitions in a
+#### 2.4.6 Increase the number of partitions in a topic
 
 **topic**
 
@@ -528,7 +681,7 @@ icon in the **Operation** column, and then click **Increase the number of partit
 
 The number of partitions ranges from 1 to 48. To reduce the risk of data skew, we recommend that you select a multiple of 6. For special requirements, submit a ticket for consultation.
 
-#### Migrate topic partitions
+#### 2.4.7 Migrate topic partitions
 
 This topic describes how to migrate topic partitions on a scaled-out ApsaraMQ for Kafka instance. An ApsaraMQ for Kafka instance is deployed and its value of **Expansion status** is
 **Expanded**. For more information about how to scale out an instance, see the "Scale out an
@@ -565,9 +718,9 @@ instance name, or click **Details** in the **Operation** column.
 6. In the **Confirm** dialog box, confirm the topics for which you want to rebalance messages
 and click **OK**.
 
-### Consumer groups
+### 2.5 Consumer groups
 
-#### Create a consumer group
+#### 2.5.1 Create a consumer group
 
 This topic describes how to create a consumer group.
 
@@ -596,7 +749,7 @@ View sample code: Click **Code sample** in the **Operation** column. Then, the s
 **receiving**, and **configuration file** templates. You can click **Copy** to copy the code.
 To delete a consumer group, click **Delete** in the **Operation** column of the consumer group. In the message that appears, click **OK**.
 
-#### View the list of consumer groups
+#### 2.5.2 View the list of consumer groups
 
 This topic describes how to view the list of consumer groups.
 
@@ -609,7 +762,7 @@ instance name, or click **Details** in the **Operation** column.
 4. On the **Instance details** page, click the **Group management** tab.
 5. On the **Group management** tab, view the list of consumer groups.
 
-#### View the consumer status of a
+#### 2.5.3 View the consumer status of a consumer group
 
 **consumer group**
 
@@ -644,7 +797,7 @@ the topic list of the **Consumption status** panel and click **Details** in the 
 | Consumption point | The offset from which messages are consumed in the partition. |
 | Accumulation | The total number of accumulated messages in the current partition. The value is calculated by using the following formula: Total number of accumulated messages = Maximum offset - Consumer offset. Note This parameter is a key metric. If a large number of messages are accumulated, consumers may be blocked, or the consumption rate cannot keep up with the production rate. In this case, you need to analyze the consumer running status and improve the consumption speed. |
 
-#### Reset the consumer offset of a
+#### 2.5.4 Reset the consumer offset of a consumer group
 
 **consumer group**
 
@@ -678,9 +831,9 @@ click **Reset consumption point** in the **Operation** column.
 6. In the **Reset consumer point** dialog box, select the topic from the **Topic** drop-down list,
 select a method used to reset the consumption offset, and then click **OK**.
 
-### Messages
+### 2.6 Messages
 
-#### Send messages
+#### 2.6.1 Send messages
 
 After you create a topic, you can send messages to the topic in the ApsaraMQ for Kafka console.
 
@@ -696,7 +849,7 @@ the **Operation** column.
 message in the **Partition** field and the message key and message value in the **Message**
 **Key** and **Message Value** fields. Then, click **OK**.
 
-#### Query messages
+#### 2.6.2 Query messages
 
 After you send a message, you can query the message.
 
@@ -748,9 +901,9 @@ time, and then click **Query**. The queried message is displayed on the **Messag
 5. **(Optional)** If you want to download the key or value of a message, select the message and
 click **Download message** next to **Key** or **Value**.
 
-### ACL
+### 2.7 ACL
 
-#### Create SASL users
+#### 2.7.1 Create SASL users
 
 This topic describes how to create a Simple Authentication and Security Layer (SASL) user. The ACL feature is enabled for the ApsaraMQ for Kafka instance. For more information, see Enable ACL.
 
@@ -771,7 +924,7 @@ following table describes the parameters.
 | Password | The password of the SASL user. |
 | Type | The type of the SASL user. ApsaraMQ for Kafka supports the following SASL mechanism: SCRAM: a username and password verification mechanism that provides higher security than PLAIN. ApsaraMQ for Kafka uses SCRAM-SHA- 256. |
 
-#### Grant permissions to SASL users
+#### 2.7.2 Grant permissions to SASL users
 
 This topic describes how to grant permissions to a Simple Authentication and Security Layer (SASL) user. An SASL user is created. For more information, see Create SASL users.
 
@@ -800,7 +953,7 @@ table describes the parameters.
 |---|---|
 | Whitelist address | The IP address that you want to add to the ACL. Only the IP addresses and ports in the ACL can access the ApsaraMQ for Kafka instance. |
 
-#### Configure an ACL
+#### 2.7.3 Configure an ACL
 
 This topic describes how to configure an access control list (ACL) for an ApsaraMQ for Kafka instance. After an ACL is configured for an ApsaraMQ for Kafka instance, only the IP addresses and ports in the ACL can be used to access the instance. An ApsaraMQ for Kafka instance is deployed and is in the **In service** state.
 
@@ -839,7 +992,7 @@ instance name, or click **Details** in the **Operation** column.
 **Operation** column.
 6. In the **Delete ACL** dialog box, click **OK**.
 
-#### Change the passwords of SASL users
+#### 2.7.4 Change the passwords of SASL users
 
 This topic describes how to change the password of a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
 
@@ -854,7 +1007,7 @@ the **Operation** column.
 **Modify** in the **Operation** column.
 6. In the **Modify SASL users** dialog box, enter a new password and click **OK**.
 
-#### Delete SASL users
+#### 2.7.5 Delete SASL users
 
 This topic describes how to delete a Simple Authentication and Security Layer (SASL) user. A SASL user is created. For more information, see Create SASL users.
 
@@ -869,7 +1022,7 @@ the **Operation** column.
 **Operation** column.
 6. In the **Delete SASL user** message, click **OK**.
 
-#### Delete the permissions of SASL users
+#### 2.7.6 Delete the permissions of SASL users
 
 This topic describes how to delete the permissions that are granted to a Simple Authentication and Security Layer (SASL) user. Permissions are granted to the SASL user. For more information, see Grant permissions to SASL users.
 
@@ -886,7 +1039,7 @@ you want to delete and click **Query**.
 **Operation** column.
 7. In the **Delete ACL** message, click **OK**.
 
-#### Download an ACL certificate
+#### 2.7.7 Download an ACL certificate
 
 This topic describes how to download an Access Control List (ACL) certificate. The endpoint type for the target instance is SASL. The endpoint information contains values for SASL_SSL and SASL_PLAINTEXT.
 
@@ -900,9 +1053,9 @@ instance name, or click **Details** in the **Operation** column.
 5. On the **SASL Permissions** tab, click **Download ACL Certificate** to download the
 certificate to your local computer.
 
-### VIPs
+### 2.8 VIPs
 
-#### Create a VIP
+#### 2.8.1 Create a VIP
 
 This topic describes how to create a virtual IP address (VIP).
 
@@ -939,7 +1092,7 @@ instance name, or click **Details** in the **Operation** column.
 
 To create a VIP, you must update the ApsaraMQ for Kafka network and restart the ApsaraMQ for Kafka service. This process takes approximately 10 minutes for each ApsaraMQ for Kafka node.
 
-#### Delete a VIP
+#### 2.8.2 Delete a VIP
 
 This topic describes how to delete a VIP.
 
@@ -957,7 +1110,7 @@ instance name, or click **Details** in the **Operation** column.
 
 After you delete a VIP, the ApsaraMQ for Kafka instance becomes unavailable. Proceed with caution.
 
-#### Request a domain name
+#### 2.8.3 Request a domain name
 
 This topic describes how to request a domain name for a virtual IP address (VIP) endpoint that does not have a domain name prefix. The VIP endpoint does not have a domain name prefix.
 
@@ -971,13 +1124,13 @@ instance name, or click **Details** in the **Operation** column.
 **Domain Name**.
 5. In the **Request Domain Name** window, enter a domain name prefix, and click **OK**.
 
-### Data integration
+### 2.9 Data integration
 
-#### Message routing
+#### 2.9.1 Message routing
 
 You can use the message routing feature to create and manage message synchronization clouds, remote tasks, and local tasks.
 
-##### Manage replicators
+##### 2.9.1.1 Manage replicators
 
 This topic describes how to create and view replicators in the ApsaraMQ for Kafka console.
 
@@ -1034,7 +1187,7 @@ During the restart of a replicator, message replication between the source and d
 3. On the **Replicator** tab, click **Restart** in the Operation column of the desired replicator.
 4. In the message that appears, click **OK**.
 
-##### Cloud information
+##### 2.9.1.2 Cloud information
 
 This topic describes how to create and manage a message synchronization cloud.
 
@@ -1085,11 +1238,11 @@ You can perform the following steps to delete a message synchronization cloud.
 delete and click **Delete** in the **Operation** column.
 5. In the **Confirm** message, click **OK**.
 
-##### Tasks
+##### 2.9.1.3 Tasks
 
 This topic describes how to create and manage remote tasks and local tasks.
 
-###### Remote tasks
+###### 2.9.1.3.1 Remote tasks
 
 This topic describes how to create and manage remote tasks.
 
@@ -1159,7 +1312,7 @@ You can perform the following steps to delete a remote task.
 **Operation** column.
 5. In the **Confirm** message, click **OK**.
 
-###### Local tasks
+###### 2.9.1.3.2 Local tasks
 
 This topic describes how to create and manage local tasks.
 
@@ -1254,7 +1407,7 @@ icon in the
 **Operation** column, and then select **Delete**.
 5. In the **Confirm** message, click **OK**.
 
-#### Connect
+#### 2.9.2 Connect
 
 This topic describes how to manage connects and connectors.
 
@@ -1463,7 +1616,7 @@ column, or click **Details** in the **Operation** column to open the **Connector
 4. On the **Connector list** page, click **Details** in the **Operation** column of the desired
 connector. Restart a failed task: On the **Connector Details** page, click **Restart** in the **Operation** column of the failed task. In the message that appears, click OK. Restart all failed tasks: On the **Connector Details** page, click **Restart Failed Tasks** in the upper-right corner. In the message that appears, click OK.
 
-##### clickhouse-sink-connector
+##### 2.9.2.1 clickhouse-sink-connector
 
 This topic describes how to configure the parameters for clickhouse-sink-connector. You are creating a connector, and the connector type is set to clickhouse-sink-connector. For more information about how to create a connector, see Create a connect. ClickHouse is deployed.
 
@@ -1507,7 +1660,7 @@ This topic describes how to configure the parameters for clickhouse-sink-connect
 |---|---|
 | Exactly Once | Specifies whether to enable the exact-once semantics. After the exact-once semantics is enabled, the connector maintains a deduplication table (KeeperMap) on the ClickHouse server to record committed ApsaraMQ for Kafka offsets. When tasks are restarted, already-written records are skipped to prevent duplicates. After the exact-once semantics is disabled, the at-least-once semantics applies, where minor data duplication may occur after fault recovery and restarts. We recommend that you enable the exact-once semantics in the production environment. |
 
-##### github-source-connector
+##### 2.9.2.2 github-source-connector
 
 This topic describes how to configure the parameters for github-source-connector. You are creating a connector, and the connector type is set to github-source-connector. For more information about how to create a connector, see Connect. GitHub is deployed.
 
@@ -1584,7 +1737,7 @@ This topic describes how to configure the parameters for github-source-connector
 | Proxy Password | Optional. The password of the authentication proxy. |
 |---|---|
 
-##### hbase-sink-connector
+##### 2.9.2.3 hbase-sink-connector
 
 This topic describes how to configure the parameters for hbase-sink-connector. You are creating a connector, and the connector type is set to hbase-sink-connector. For more information about how to create a connector, see Create a connect. An HBase database is deployed.
 
@@ -1639,7 +1792,7 @@ This topic describes how to configure the parameters for hbase-sink-connector. Y
 | Master Principal | The Kerberos principal of the HBase Master (HMaster) server. |
 | RegionServer Principal | The Kerberos principal of the HBase RegionServer. |
 
-##### lindorm-search-sink-connector
+##### 2.9.2.4 lindorm-search-sink-connector
 
 This topic describes how to configure the parameters for lindorm-search-sink-connector. You are creating a connector, and the connector type is set to lindorm-search-sink-connector. For more information about how to create a connector, see Connect.
 
@@ -1687,7 +1840,7 @@ This topic describes how to configure the parameters for lindorm-search-sink-con
 |---|---|
 | Retry Backoff (ms) | The time interval between two consecutive retries. Unit: milliseconds. |
 
-##### lindorm-tsdb-sink-connector
+##### 2.9.2.5 lindorm-tsdb-sink-connector
 
 This topic describes how to configure the parameters for lindorm-tsdb-sink-connector. You are creating a connector, and the connector type is set to lindorm-tsdb-sink-connector. For more information about how to create a connector, see Connect.
 
@@ -1737,7 +1890,7 @@ This topic describes how to configure the parameters for lindorm-tsdb-sink-conne
 | Max Retries | The maximum number of retries in the event of a transient error. |
 | Retry Backoff (ms) | The time interval between two consecutive retries. Unit: milliseconds. |
 
-##### lindorm-vector-sink-connector
+##### 2.9.2.6 lindorm-vector-sink-connector
 
 This topic describes how to configure the parameters for lindorm-vector-sink-connector. You are creating a connector, and the connector type is set to lindorm-vector-sink-connector. For more information about how to create a connector, see Connect.
 
@@ -1789,7 +1942,7 @@ This topic describes how to configure the parameters for lindorm-vector-sink-con
 |---|---|
 | Retry Backoff (ms) | The time interval between two consecutive retries. Unit: milliseconds. |
 
-##### lindorm-widetable-sink-connector
+##### 2.9.2.7 lindorm-widetable-sink-connector
 
 This topic describes how to configure the parameters for lindorm-widetable-sink-connector. You are creating a connector, and the connector type is set to lindorm-widetable-sinkconnector. For more information about how to create a connector, see Connect.
 
@@ -1835,7 +1988,7 @@ This topic describes how to configure the parameters for lindorm-widetable-sink-
 | Max Retries | The maximum number of retries in the event of a transient error. |
 | Retry Backoff (ms) | The time interval between two consecutive retries. Unit: milliseconds. |
 
-##### mariadb-sink-connector
+##### 2.9.2.8 mariadb-sink-connector
 
 This topic describes how to configure the parameters for mariadb-sink-connector. You are creating a connector, and the connector type is set to mariadb-sink-connector. For more information about how to create a connector, see Create a connect. A MariaDB database is deployed.
 
@@ -1880,7 +2033,7 @@ This topic describes how to configure the parameters for mariadb-sink-connector.
 | Quote Identifiers | Specifies whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### mariadb-source-connector
+##### 2.9.2.9 mariadb-source-connector
 
 This topic describes how to configure the parameters for mariadb-source-connector. You are creating a connector, and the connector type is set to mariadb-source-connector. For more information about how to create a connector, see Create a connect. A MariaDB database is deployed.
 
@@ -1923,7 +2076,7 @@ This topic describes how to configure the parameters for mariadb-source-connecto
 |---|---|
 | Value Schema Enable | Specifies whether to include schema information in message values. Valid values: Enable Disable |
 
-##### maxcompute-sink-connector
+##### 2.9.2.10 maxcompute-sink-connector
 
 This topic describes how to configure the parameters for maxcompute-sink-connector. You are creating a connector, and the connector type is set to maxcompute-sink-connector. For more information about how to create a connector, see Create a connect.
 
@@ -1969,7 +2122,7 @@ This topic describes how to configure the parameters for maxcompute-sink-connect
 |---|---|
 | Value Converter | The value converter class. The default value is org.apache.kafka.connect.storage.StringConverter and cannot be modified. |
 
-##### maxcompute-source-connector
+##### 2.9.2.11 maxcompute-source-connector
 
 This topic describes how to configure the parameters for maxcompute-source-connector. You are creating a connector, and the connector type is set to maxcompute-sourceconnector. For more information about how to create a connector, see Create a connect.
 
@@ -2013,7 +2166,7 @@ This topic describes how to configure the parameters for maxcompute-source-conne
 |---|---|
 | Value Converter | The value converter class. The default value is org.apache.kafka.connect.storage.StringConverter and cannot be modified. |
 
-##### opensearch-sink-connector
+##### 2.9.2.12 opensearch-sink-connector
 
 This topic describes how to configure the parameters for opensearch-sink-connector. You are creating a connector, and the connector type is set to opensearch-sink-connector. For more information about how to create a connector, see Connect. OpenSearch is deployed.
 
@@ -2056,7 +2209,7 @@ This topic describes how to configure the parameters for opensearch-sink-connect
 | Batch Size | The maximum number of documents that can be included in each bulk request. |
 | Max Retries | The maximum number of retries in the event of an error. |
 
-##### oracle-sink-connector
+##### 2.9.2.13 oracle-sink-connector
 
 This topic describes how to configure the parameters for oracle-sink-connector. You are creating a connector, and the connector type is set to oracle-sink-connector. For more information about how to create a connector, see Create a connect. An Oracle database is deployed.
 
@@ -2100,7 +2253,7 @@ This topic describes how to configure the parameters for oracle-sink-connector. 
 |---|---|
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### oracle-source-connector
+##### 2.9.2.14 oracle-source-connector
 
 This topic describes how to configure the parameters for oracle-source-connector. You are creating a connector, and the connector type is set to oracle-source-connector. For more information about how to create a connector, see Create a connect. An Oracle database is deployed.
 
@@ -2146,7 +2299,7 @@ This topic describes how to configure the parameters for oracle-source-connector
 | Value Schema Enable | Specifies whether to include schema information in message values. Valid values: Enable Disable |
 |---|---|
 
-##### polardb-for-oracle-sink-connector
+##### 2.9.2.15 polardb-for-oracle-sink-connector
 
 This topic describes how to configure the parameters for polardb-for-oracle-sink-connector. You are creating a connector, and the connector type is set to polardb-for-oracle-sinkconnector. For more information about how to create a connector, see Create a connector.
 
@@ -2191,7 +2344,7 @@ This topic describes how to configure the parameters for polardb-for-oracle-sink
 | Quote Identifiers | Specifies whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### polardb-for-oracle-source-connector
+##### 2.9.2.16 polardb-for-oracle-source-connector
 
 This topic describes how to configure the parameters for polardb-for-oracle-source-connector. You are creating a connector, and the connector type is set to polardb-for-oracle-sourceconnector. For more information about how to create a connector, see Create a connect.
 
@@ -2231,7 +2384,7 @@ This topic describes how to configure the parameters for polardb-for-oracle-sour
 |---|---|
 | Topic Connector Replacement Rule | The topic name replacement rule, which cannot be changed. |
 
-##### sqlserver-sink-connector
+##### 2.9.2.17 sqlserver-sink-connector
 
 This topic describes how to configure the parameters for sqlserver-sink-connector. You are creating a connector, and the connector type is set to sqlserver-sink-connector. For more information about how to create a connector, see Create a connect. An SQL Server database is deployed.
 
@@ -2278,7 +2431,7 @@ This topic describes how to configure the parameters for sqlserver-sink-connecto
 | Quote Identifiers | Specifies whether to use quotation marks ("") to enclose table names and column names. The default value is true. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### sqlserver-source-connector
+##### 2.9.2.18 sqlserver-source-connector
 
 This topic describes how to configure the parameters for sqlserver-source-connector. You are creating a connector, and the connector type is set to sqlserver-source-connector. For more information about how to create a connector, see Create a connect. An SQL Server database is deployed.
 
@@ -2317,7 +2470,7 @@ This topic describes how to configure the parameters for sqlserver-source-connec
 | Key Schema Enable | Specifies whether to include schema information in message keys. Valid values: Enable Disable |
 | Value Schema Enable | Specifies whether to include schema information in message values. Valid values: Enable Disable |
 
-##### tidb-sink-connector
+##### 2.9.2.19 tidb-sink-connector
 
 This topic describes how to configure the parameters for tidb-sink-connector. You are creating a connector, and the connector type is set to tidb-sink-connector. For more information about how to create a connector, see Create a connect.
 
@@ -2364,7 +2517,7 @@ This topic describes how to configure the parameters for tidb-sink-connector. Yo
 |---|---|
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### http-sink-connector
+##### 2.9.2.20 http-sink-connector
 
 This topic describes how to configure the parameters for http-sink-connector. You are creating a connector, and the connector type is set to http-sink-connector. For more information about how to create a connector, see Create a connect.
 
@@ -2428,7 +2581,7 @@ Configure multiple HTTP push destinations. You can specify a separate URL and a 
 | Custom Headers | The custom headers of the endpoint. If you do not specify a header, the headers specified in the global configurations are used. |
 | Authentication Type | The authentication method of this endpoint. None BasicAuth Basic Auth: Enter the username of the basic authentication account. Password: Enter the password of the basic authentication account. Custom Header (API Key) Header Name: the name of the custom authentication header. Header Value: the value of the custom authentication header. OAuth2 Client Credentials Token URL: the endpoint of the OAuth2 token. Client ID: the OAuth2 client ID. Client Secret: the OAuth2 client secret. |
 
-##### http-source-connector
+##### 2.9.2.21 http-source-connector
 
 This topic describes how to configure the parameters for http-source-connector. You are creating a connector, and the connector type is set to http-source-connector. For more information about how to create a connector, see Create a connect.
 
@@ -2505,7 +2658,7 @@ Configure multiple HTTP push destinations. You can specify a separate URL and a 
 | Custom Headers | The custom request headers of the endpoint. |
 | Authentication Type | The authentication method of this endpoint. None BasicAuth Basic Auth: Enter the username of the basic authentication account. Password: Enter the password of the basic authentication account. Custom Header (API Key) Header Name: the name of the custom authentication header. Header Value: the value of the custom authentication header. OAuth2 Client Credentials Token URL: the endpoint of the OAuth2 token. Client ID: the OAuth2 client ID. Client Secret: the OAuth2 client secret. |
 
-##### kafka-mirror-source-connector
+##### 2.9.2.22 kafka-mirror-source-connector
 
 This topic describes how to configure the parameters for kafka-mirror-source-connector. You are creating a connector, and the connector type is set to kafka-mirror-source-connector. For more information about how to create a connector, see Create a connect.
 
@@ -2567,7 +2720,7 @@ This topic describes how to configure the parameters for kafka-mirror-source-con
 | Topic Refresh Interval (seconds) | The time interval at which new topics in the source cluster are periodically checked for. |
 | Consumer Auto Offset Reset | The starting position of the first consumption. From Earliest From Latest |
 
-##### analyticdb-for-mysql-sink-connector
+##### 2.9.2.23 analyticdb-for-mysql-sink-connector
 
 This topic describes how to configure the parameters for analyticdb-for-mysql-sink-connector. You are creating a connector, and the connector type is set to analyticdb-for-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2618,7 +2771,7 @@ This topic describes how to configure the parameters for analyticdb-for-mysql-si
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 |---|---|
 
-##### analyticdb-for-postgresql-sink-connector
+##### 2.9.2.24 analyticdb-for-postgresql-sink-connector
 
 This topic describes how to configure the parameters for analyticdb-for-postgresql-sinkconnector. You are creating a connector, and the connector type is set to analyticdb-for-postgresql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2663,7 +2816,7 @@ This topic describes how to configure the parameters for analyticdb-for-postgres
 | Quote Identifiers | Specify whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### elasticsearch-sink-connector
+##### 2.9.2.25 elasticsearch-sink-connector
 
 This topic describes how to configure the parameters for Elasticsearch-sink-connector. You are creating a connector, and the connector type is set to Elasticsearch-sink-connector. For more information about how to create a connector, see Create a connector.
 
@@ -2690,7 +2843,7 @@ This topic describes how to configure the parameters for Elasticsearch-sink-conn
 |---|---|
 | Kafka Topics | The Kafka topics from which messages will be consumed. |
 
-##### flink-job-sink-connector
+##### 2.9.2.26 flink-job-sink-connector
 
 This topic describes how to configure the parameters for flink-job-sink-connector. You are creating a connector, and the connector type is set to flink-job-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2740,7 +2893,7 @@ This topic describes how to configure the parameters for flink-job-sink-connecto
 |---|---|
 | Value Converter | The value converter class. The default value is org.apache.kafka.connect.json.JsonConverter and cannot be modified. |
 
-##### hologres-sink-connector
+##### 2.9.2.27 hologres-sink-connector
 
 This topic describes how to configure the parameters for hologres-sink-connector. You are creating a connector, and the connector type is set to hologres-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2792,7 +2945,7 @@ This topic describes how to configure the parameters for hologres-sink-connector
 | Quote Identifiers | Specify whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### hologres-source-connector
+##### 2.9.2.28 hologres-source-connector
 
 This topic describes how to configure the parameters for hologres-source-connector. You are creating a connector, and the connector type is set to hologres-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2830,7 +2983,7 @@ This topic describes how to configure the parameters for hologres-source-connect
 | Key Schema Enable | Specify whether to include schema information in message keys. Valid values: Enable Disable |
 | Value Schema Enable | Specify whether to include schema information in message values. Valid values: Enable Disable |
 
-##### localfs-sink-connector
+##### 2.9.2.29 localfs-sink-connector
 
 This topic describes how to configure the parameters for localfs-sink-connector. You are creating a connector, and the connector type is set to localfs-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2875,7 +3028,7 @@ This topic describes how to configure the parameters for localfs-sink-connector.
 |---|---|
 | Kafka Topics | The Kafka topics from which messages will be consumed. Separate multiple topics with commas (,). |
 
-##### localfs-source-connector
+##### 2.9.2.30 localfs-source-connector
 
 This topic describes how to configure the parameters for localfs-source-connector. You are creating a connector, and the connector type is set to localfs-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2917,7 +3070,7 @@ This topic describes how to configure the parameters for localfs-source-connecto
 | Kafka Broker Address | The address of the Kafka broker used to store status. |
 | Status Topic | The name of the topic for tracing the file processing status. |
 
-##### mongodb-sink-connector
+##### 2.9.2.31 mongodb-sink-connector
 
 This topic describes how to configure the parameters for mongodb-sink-connector. You are creating a connector, and the connector type is set to mongodb-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2951,7 +3104,7 @@ This topic describes how to configure the parameters for mongodb-sink-connector.
 | ID Strategy | The document id field generation policy. Valid values: _ Extract id from Value _ Auto Generate ObjectId |
 | Write Strategy | The mode in which data is written to ApsaraDB for MongoDB. Valid values: Upsert Mode Insert Only |
 
-##### mongodb-source-connector
+##### 2.9.2.32 mongodb-source-connector
 
 This topic describes how to configure the parameters for mongodb-source-connector. You are creating a connector, and the connector type is set to mongodb-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -2987,7 +3140,7 @@ This topic describes how to configure the parameters for mongodb-source-connecto
 | Full Document Mode | Specify whether an update operation returns the entire document. Valid values: Full Document Changed Fields Only |
 | Startup Mode | The startup mode of the connector. Valid values: Start from Latest Copy Existing then CDC |
 
-##### mysql-sink-connector.json
+##### 2.9.2.33 mysql-sink-connector.json
 
 This topic describes how to configure the parameters for mysql-sink-connector. You are creating a connector, and the connector type is set to mysql-sink-connector. For more information about how to create a connector, see Create a connector.
 
@@ -3027,7 +3180,7 @@ This topic describes how to configure the parameters for mysql-sink-connector. Y
 | Quote Identifiers | Specifies whether to use quotation marks for table and column names. Default value: true . |
 | Field Include List | The field that you want to include. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### mysql-source-connector.json
+##### 2.9.2.34 mysql-source-connector.json
 
 This topic describes how to configure the parameters for mysql-source-connector. You are creating a connector, and the connector type is set to mysql-source-connector. For more information about how to create a connector, see Create a connector.
 
@@ -3061,7 +3214,7 @@ This topic describes how to configure the parameters for mysql-source-connector.
 | Schema History Kafka Servers | The host and port pairs used by the connector to establish the initial connection to the Kafka cluster for retrieving the previously stored database schema history. The Kafka cluster should be the one used by the Kafka connect process. |
 | Schema History Kafka Topic | The name of the Kafka topic where the connector stores the database schema history. |
 
-##### oceanbase-mysql-sink-connector
+##### 2.9.2.35 oceanbase-mysql-sink-connector
 
 This topic describes how to configure the parameters for oceanbase-mysql-sink-connector. You are creating a connector, and the connector type is set to oceanbase-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3108,7 +3261,7 @@ This topic describes how to configure the parameters for oceanbase-mysql-sink-co
 | Quote Identifiers | Specify whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### oceanbase-mysql-source-connector
+##### 2.9.2.36 oceanbase-mysql-source-connector
 
 This topic describes how to configure the parameters for oceanbase-mysql-source-connector. You are creating a connector, and the connector type is set to oceanbase-mysql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3150,7 +3303,7 @@ This topic describes how to configure the parameters for oceanbase-mysql-source-
 |---|---|
 | Value Schema Enable | Specify whether to include schema information in message values. Valid values: Enable Disable |
 
-##### oss-sink-connector
+##### 2.9.2.37 oss-sink-connector
 
 This topic describes how to configure the parameters for oss-sink-connector. You are creating a connector, and the connector type is set to oss-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3187,7 +3340,7 @@ This topic describes how to configure the parameters for oss-sink-connector. You
 |---|---|---|
 |   | {{start offset}} _ |   |
 
-##### oss-source-connector
+##### 2.9.2.38 oss-source-connector
 
 This topic describes how to configure the parameters for oss-source-connector. You are creating a connector, and the connector type is set to oss-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3236,7 +3389,7 @@ This topic describes how to configure the parameters for oss-source-connector. Y
 | Kafka Broker Address | The address of the Kafka broker used to store status. |
 | Status Topic | The name of the topic for tracing the file processing status. |
 
-##### otlp-sls-sink-connector
+##### 2.9.2.39 otlp-sls-sink-connector
 
 This topic describes how to configure the parameters for otlp-sls-sink-connector. You are creating a connector, and the connector type is set to otlp-sls-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3283,7 +3436,7 @@ This topic describes how to configure the parameters for otlp-sls-sink-connector
 |---|---|
 | Value Converter | The value converter class. The StringConverter is used to process OTLP data and cannot be changed. |
 
-##### otlp-source-connector
+##### 2.9.2.40 otlp-source-connector
 
 This topic describes how to configure the parameters for otlp-source-connector. You are creating a connector, and the connector type is set to otlp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3329,7 +3482,7 @@ This topic describes how to configure the parameters for otlp-source-connector. 
 | Message Queue Size | The size of the internal message queue for each signal type. New messages are discarded when the queue is full. Default value: 10000. Valid values: 100 to 1000000. |
 |---|---|
 
-##### polardb-for-mysql-sink-connector
+##### 2.9.2.41 polardb-for-mysql-sink-connector
 
 This topic describes how to configure the parameters for polardb-for-mysql-sink-connector. You are creating a connector, and the connector type is set to polardb-for-mysql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3374,7 +3527,7 @@ This topic describes how to configure the parameters for polardb-for-mysql-sink-
 | Quote Identifiers | Specify whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### polardb-for-mysql-source-connector
+##### 2.9.2.42 polardb-for-mysql-source-connector
 
 This topic describes how to configure the parameters for polardb-for-mysql-source-connector. You are creating a connector, and the connector type is set to polardb-for-mysql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3415,7 +3568,7 @@ This topic describes how to configure the parameters for polardb-for-mysql-sourc
 |   | <table> |
 |---|---|
 
-##### polardb-for-postgresql-sink-connector
+##### 2.9.2.43 polardb-for-postgresql-sink-connector
 
 This topic describes how to configure the parameters for polardb-for-postgresql-sinkconnector. You are creating a connector, and the connector type is set to polardb-for-postgresql-sinkconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3460,7 +3613,7 @@ This topic describes how to configure the parameters for polardb-for-postgresql-
 | Quote Identifiers | Specify whether to use quotation marks ("") to enclose table names and column names. The default value is true and cannot be modified. |
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### polardb-for-postgresql-source-connector
+##### 2.9.2.44 polardb-for-postgresql-source-connector
 
 This topic describes how to configure the parameters for polardb-for-postgresql-sourceconnector. You are creating a connector, and the connector type is set to polardb-for-postgresql-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3500,7 +3653,7 @@ This topic describes how to configure the parameters for polardb-for-postgresql-
 |---|---|
 | Topic Connector Replacement Rule | The topic name replacement rule, which cannot be changed. |
 
-##### polardb-x-2.0-sink-connector
+##### 2.9.2.45 polardb-x-2.0-sink-connector
 
 This topic describes how to configure the parameters for polardb-x-2.0-sink-connector. You are creating a connector, and the connector type is set to polardb-x-2.0-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3547,7 +3700,7 @@ This topic describes how to configure the parameters for polardb-x-2.0-sink-conn
 |---|---|
 | Field Include List | The list of fields to be included. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### polardb-x-2.0-source-connector
+##### 2.9.2.46 polardb-x-2.0-source-connector
 
 This topic describes how to configure the parameters for polardb-x-2.0-source-connector. You are creating a connector, and the connector type is set to polardb-x-2.0-sourceconnector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3585,7 +3738,7 @@ This topic describes how to configure the parameters for polardb-x-2.0-source-co
 |   | <table> |
 |---|---|
 
-##### postgresql-sink-connector.json
+##### 2.9.2.47 postgresql-sink-connector.json
 
 This topic describes how to configure the parameters for postgresql-sink-connector. You are creating a connector, and the connector type is set to postgresql-sink-connector. For more information about how to create a connector, see Create a connector.
 
@@ -3625,7 +3778,7 @@ This topic describes how to configure the parameters for postgresql-sink-connect
 | Quote Identifiers | Specifies whether to use quotation marks for table and column names. Default value: true . |
 | Field Include List | The fields that you want to include. Separate multiple fields with commas (,). If you leave this parameter empty, all fields are included. |
 
-##### postgresql-source-connector.json
+##### 2.9.2.48 postgresql-source-connector.json
 
 This topic describes how to configure the parameters for postgresql-source-connector. You are creating a connector, and the connector type is set to postgresql-source-connector. For more information about how to create a connector, see Create a connector.
 
@@ -3662,7 +3815,7 @@ This topic describes how to configure the parameters for postgresql-source-conne
 |---|---|
 | Topic Connector Replacement Rule | The replacement rule for topic names, which defaults to $1 $2 $3 . Underscores ( ) are used to replace the _ _ _ default dot ( . ) separators. |
 
-##### prometheus-sink-connector
+##### 2.9.2.49 prometheus-sink-connector
 
 This topic describes how to configure the parameters for prometheus-sink-connector. You are creating a connector, and the connector type is set to prometheus-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3712,7 +3865,7 @@ This topic describes how to configure the parameters for prometheus-sink-connect
 | Max Retries | The maximum number of attempts to retry a failed request. |
 | Retry Backoff (ms) | The initial backoff in milliseconds. It increases exponentially after each retry attempt. |
 
-##### prometheus-source-connector
+##### 2.9.2.50 prometheus-source-connector
 
 This topic describes how to configure the parameters for prometheus-source-connector. You are creating a connector, and the connector type is set to prometheus-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3750,7 +3903,7 @@ This topic describes how to configure the parameters for prometheus-source-conne
 | Max Retries | The maximum number of attempts to retry a failed request. |
 | Retry Backoff (ms) | The initial backoff in milliseconds. It increases exponentially after each retry attempt. |
 
-##### redis-sink-connector
+##### 2.9.2.51 redis-sink-connector
 
 This topic describes how to configure the parameters for redis-sink-connector. You are creating a connector, and the connector type is set to redis-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3793,7 +3946,7 @@ This topic describes how to configure the parameters for redis-sink-connector. Y
 |---|---|
 | Null Value Behavior | The policy used to handle null values. Valid values: IGNORE DELETE FAIL |
 
-##### redis-source-connector
+##### 2.9.2.52 redis-source-connector
 
 This topic describes how to configure the parameters for redis-source-connector. You are creating a connector, and the connector type is set to redis-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3837,7 +3990,7 @@ This topic describes how to configure the parameters for redis-source-connector.
 | Batch Timeout (ms) | The timeout period for sending messages in batches. Unit: milliseconds. Default value: 1000. |
 | Max Retries | The maximum number of attempts to retry a write failure. Default value: 3. Valid values: 0 to 10. |
 
-##### sls-sink-connector
+##### 2.9.2.53 sls-sink-connector
 
 This topic describes how to configure the parameters for sls-sink-connector. You are creating a connector, and the connector type is set to sls-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3875,7 +4028,7 @@ This topic describes how to configure the parameters for sls-sink-connector. You
 |---|---|
 | Value Converter | The serialization format of message values, which is automatically selected based on Data Format. JSON Format (json): The JSON converter is used. Raw String (raw): The string converter is used. Note The value cannot be modified. |
 
-##### sls-source-connector
+##### 2.9.2.54 sls-source-connector
 
 This topic describes how to configure the parameters for sls-source-connector. You are creating a connector, and the connector type is set to sls-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3921,7 +4074,7 @@ This topic describes how to configure the parameters for sls-source-connector. Y
 |---|---|
 | Value Converter | The serialization format of message values. The JSON converter is used and cannot be changed. |
 
-##### spark-sink-connector
+##### 2.9.2.55 spark-sink-connector
 
 This topic describes how to configure the parameters for spark-sink-connector. You are creating a connector, and the connector type is set to spark-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -3971,7 +4124,7 @@ This topic describes how to configure the parameters for spark-sink-connector. Y
 |---|---|
 | Value Converter | The value converter class. The default value is org.apache.kafka.connect.json.JsonConverter and cannot be modified. |
 
-##### tablestore-sink-connector
+##### 2.9.2.56 tablestore-sink-connector
 
 This topic describes how to configure the parameters for tablestore-sink-connector. You are creating a connector, and the connector type is set to tablestore-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4023,7 +4176,7 @@ This topic describes how to configure the parameters for tablestore-sink-connect
 |---|---|
 | Value Converter | The value converter class. The default value is org.apache.kafka.connect.json.JsonConverter and cannot be modified. |
 
-##### tablestore-source-connector
+##### 2.9.2.57 tablestore-source-connector
 
 This topic describes how to configure the parameters for tablestore-source-connector. You are creating a connector, and the connector type is set to tablestore-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4067,7 +4220,7 @@ This topic describes how to configure the parameters for tablestore-source-conne
 |---|---|
 | Value Converter | The value converter class. The default value is org.apache.kafka.connect.json.JsonConverter . |
 
-##### syslog-source-connector
+##### 2.9.2.58 syslog-source-connector
 
 This topic describes how to configure the parameters for syslog-source-connector. You are creating a connector, and the connector type is set to syslog-source-connector. For more information about how to create a connector, see Create a connect.
 
@@ -4140,7 +4293,7 @@ This topic describes how to configure the parameters for syslog-source-connector
 | Value Converter | The message value serializer. |
 | Include Schema | Specifies whether the JSON output includes schema wrapping. Apsara Stack does not provide a schema registry. Therefore, we recommend that you disable this feature. |
 
-##### hdfs3-sink-connector
+##### 2.9.2.59 hdfs3-sink-connector
 
 This topic describes how to configure the parameters for connectors of the type hdfs3-sinkconnector. You are creating a connector, and the connector type is hdfs3-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4194,7 +4347,7 @@ This topic describes how to configure the parameters for connectors of the type 
 | Retry Backoff (ms) | The initial retry backoff (exponential). |
 |---|---|
 
-##### hdfs3-source-connector
+##### 2.9.2.60 hdfs3-source-connector
 
 This topic describes how to configure the parameters for connectors of the type hdfs3-sourceconnector. You are creating a connector, and the connector type is hdfs3-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4229,7 +4382,7 @@ This topic describes how to configure the parameters for connectors of the type 
 | Batch Size | The maximum number of records returned per poll operation. |
 | On Malformed Records | Skip: Skip JSON lines that cannot be parsed and generate a log. Fail: Report an error of parsing failure and stop the task. |
 
-##### neo4j-sink-connector
+##### 2.9.2.61 neo4j-sink-connector
 
 This topic describes how to configure the parameters for connectors of the type neo4j-sinkconnector. You are creating a connector, and the connector type is neo4j-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4277,7 +4430,7 @@ This topic describes how to configure the parameters for connectors of the type 
 | Retry Time | The maximum cumulative retry duration. Example: 30s or 5m. |
 | Error Tolerance | Fail (none): Report a failure when a error occurs. All: Skip error records. It is recommended that you use this policy with the dead-letter queue (DLQ) feature. DLQ Topic: Send records that cannot be written to Neo4j to this topic. You must create this topic in advance. |
 
-##### neo4j-source-connector
+##### 2.9.2.62 neo4j-source-connector
 
 This topic describes how to configure the parameters for connectors of the type neo4j-sourceconnector. You are creating a connector, and the connector type is neo4j-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4317,7 +4470,7 @@ This topic describes how to configure the parameters for connectors of the type 
 | Start From | The initial start position. Now: Start from the new data after startup. Earliest: Start from all historical data. User Provided: Start From Value: Example: timestamp value 1700000000000. |
 | Payload Mode | Compact: Output compact JSON results (recommended for downstream consumption). Extended: Retain the type information (nested structure) on each field. |
 
-##### ftp-sink-connector
+##### 2.9.2.63 ftp-sink-connector
 
 This topic describes how to configure the parameters for connectors of the type ftp-sinkconnector. You are creating a connector, and the connector type is ftp-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4364,7 +4517,7 @@ This topic describes how to configure the parameters for connectors of the type 
 |---|---|
 | Retry Backoff (ms) | The retry backoff time. |
 
-##### ftp-source-connector
+##### 2.9.2.64 ftp-source-connector
 
 This topic describes how to configure the parameters for connectors of the type ftp-sourceconnector. You are creating a connector, and the connector type is ftp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4417,7 +4570,7 @@ This topic describes how to configure the parameters for connectors of the type 
 | Max Retries | The maximum number of retries upon a failure. |
 | Retry Backoff (ms) | The retry backoff time. |
 
-##### sftp-sink-connector
+##### 2.9.2.65 sftp-sink-connector
 
 This topic describes how to configure the parameters for connectors of the type sftp-sinkconnector. You are creating a connector, and the connector type is sftp-sink-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4464,7 +4617,7 @@ This topic describes how to configure the parameters for connectors of the type 
 |---|---|
 | Retry Backoff (ms) | The retry backoff time. |
 
-##### sftp-source-connector
+##### 2.9.2.66 sftp-source-connector
 
 This topic describes how to configure the parameters for connectors of the type sftp-sourceconnector. You are creating a connector, and the connector type is sftp-source-connector. For more information about how to create a connector, see the Create a connector section in the Connect topic.
 
@@ -4517,7 +4670,7 @@ This topic describes how to configure the parameters for connectors of the type 
 | Max Retries | The maximum number of retries upon a failure. |
 | Retry Backoff (ms) | The retry backoff time. |
 
-##### mqtt-sink-connector
+##### 2.9.2.67 mqtt-sink-connector
 
 This topic describes how to configure the parameters for mqtt-sink-connector. You are creating a connector, and the connector type is set to mqtt-sink-connector. For more information about how to create a connector, see Connect.
 
@@ -4570,7 +4723,7 @@ This topic describes how to configure the parameters for mqtt-sink-connector. Yo
 | Value Schema Enable | Specifies whether the JSON converter requires the message value to carry a schema. This parameter takes effect only for JSON Converter. Valid values: Enable Disable |
 |---|---|
 
-##### mqtt-source-connector
+##### 2.9.2.68 mqtt-source-connector
 
 This topic describes how to configure the parameters for mqtt-source-connector. You are creating a connector, and the connector type is set to mqtt-source-connector. For more information about how to create a connector, see Connect.
 
@@ -4622,7 +4775,7 @@ This topic describes how to configure the parameters for mqtt-source-connector. 
 | Value Schema Enable | Specifies whether the JSON converter requires the message value to carry a schema. This parameter takes effect only for JSON Converter. Valid values: Enable Disable |
 |---|---|
 
-##### rocketmq-sink-connector
+##### 2.9.2.69 rocketmq-sink-connector
 
 This topic describes how to configure the parameters for rocketmq-sink-connector. You are creating a connector, and the connector type is set to rocketmq-sink-connector. For more information about how to create a connector, see Connect.
 
@@ -4665,7 +4818,7 @@ This topic describes how to configure the parameters for rocketmq-sink-connector
 |---|---|
 | Enable DLQ | Specifies whether to enable the dead-letter queue. Enable Disable |
 
-##### rocketmq-source-connector
+##### 2.9.2.70 rocketmq-source-connector
 
 This topic describes how to configure the parameters for rocketmq-source-connector. You are creating a connector, and the connector type is set to rocketmq-source-connector. For more information about how to create a connector, see Connect.
 
@@ -4702,7 +4855,7 @@ This topic describes how to configure the parameters for rocketmq-source-connect
 | Max Retries | The maximum number of retries for a failed request. |
 | Retry Backoff (ms) | The initial retry backoff time, which increases exponentially. Unit: milliseconds. |
 
-##### Transform configuration
+##### 2.9.2.71 Transform configuration
 
 This article describes how to configure conditional predicates and converters.
 
@@ -4877,7 +5030,7 @@ None
 | Regular Expression (regex) | The regular expression to be used. |
 | Replacement String (replacement) | The string for replacement. Use java.util.regex.Matcher#replaceFirst() . |
 
-#### Ingest data to data lakes
+#### 2.9.3 Ingest data to data lakes
 
 Ingesting data to data lakes is a process of persisting real-time or offline data from a Kafka message queue to a data lake after data cleansing and conversion.
 
@@ -4946,9 +5099,9 @@ You cannot restore a data ingestion task after you delete it. Make sure that imp
 the **Operation** column.
 2. Click **OK**.
 
-### Zone-disaster recovery
+### 2.10 Zone-disaster recovery
 
-#### Solution overview
+#### 2.10.1 Solution overview
 
 ApsaraMQ for Kafka provides zone-disaster recovery capabilities for financial business that requires high data stability and regulatory compliance. In the zone-disaster recovery solution provided by ApsaraMQ for Kafka, a primary cluster and a secondary cluster are deployed in two data centers that reside in the same zone. The primary cluster provides external services, and the KafkaReplicator component synchronizes data from the primary cluster to the secondary cluster. If both clusters run as expected, all data in the primary cluster, including messages and consumer offsets, is backed up to the secondary cluster. If the primary cluster fails, you can use the ApsaraMQ for Kafka console or the Application Service Registration (ASR) mechanism to switch business from the primary cluster to the secondary cluster. Failure scenarios include a disruption of the hardware or software environment that prevents timely service recovery, or a catastrophic event such as a fire or natural disaster that results in a full data center rebuild. The secondary cluster then handles service requests. Once the primary cluster is restored, you can switch business back to the primary cluster.
 
@@ -4960,7 +5113,7 @@ The following figure shows the zone-disaster recovery architecture in which two 
 
 After you implement a zone-disaster recovery solution, you must change the connection endpoint of the application client from the virtual IP address (VIP) of the primary ApsaraMQ for Kafka cluster to the domain name of the secondary ApsaraMQ for Kafka cluster. Otherwise, you cannot connect to the secondary ApsaraMQ for Kafka cluster during a disaster recovery switchover.
 
-#### Create replica clusters
+#### 2.10.2 Create replica clusters
 
 This topic describes how to create a replica cluster and establish a replication relationship to provide disaster recovery capabilities by using ApsaraMQ for Kafka instances. Two ApsaraMQ for Kafka instances are deployed. One of the instances is used in production environments and the other is used in zone-disaster recovery environments. Make sure that KafkaReplicator is deployed in the clusters to which the instances belong. If KafkaReplicator is not deployed, contact ApsaraMQ for Kafka technical support to deploy it.
 1. Log on to the ApsaraMQ for Kafka console.
@@ -5020,11 +5173,11 @@ After you delete a replica cluster, synchronization tasks that are running are s
 **Delete** in the **Operation** column.
 4. In the **Delete a cluster** dialog box, click **OK**.
 
-### Data migration
+### 2.11 Data migration
 
-#### Cloud migration
+#### 2.11.1 Cloud migration
 
-##### Migrate data of topics and groups to the
+##### 2.11.1.1 Migrate data of topics and groups to the cloud
 
 **cloud**
 
@@ -5160,9 +5313,9 @@ The topic fails to be migrated, and an error shown in the following figure is re
 
 The group fails to be migrated, and an error shown in the following figure is reported, which indicates that the value of the bootstrapServers parameter is invalid.
 
-#### Cloud‑to‑Cloud Migration
+#### 2.11.2 Cloud‑to‑Cloud Migration
 
-##### Use the ApsaraMQ for Kafka console to
+##### 2.11.2.1 Use the ApsaraMQ for Kafka console to migrate services from one ApsaraMQ for Kafka instance to another
 
 **migrate services from one ApsaraMQ for Kafka**
 
@@ -5194,7 +5347,7 @@ This topic describes how to use the ApsaraMQ for Kafka console to migrate servic
 5. After the local task is created, you can view its basic information and status in the task list
 on the **Tasks** tab.
 
-##### Cloud‑to‑Cloud Migration using the Kafka
+##### 2.11.2.2 Cloud‑to‑Cloud Migration using the Kafka data migration tool
 
 **data migration tool**
 
@@ -5450,7 +5603,7 @@ Kill the process:
 kill -9 xxx
 ```
 
-### KSQLDB
+### 2.12 KSQLDB
 
 This topic describes how to manage an Apache Kafka KSQL cluster.
 
@@ -5510,11 +5663,11 @@ and query statements. Execute a KSQL statement: Enter the KSQL statement in the 
 
 Deleted KSQL clusters cannot be restored. Proceed with caution. ions
 
-## Pod command operations
+## 3 Pod command operations
 
-### Command verification
+### 3.1 Command verification
 
-#### Create topics
+#### 3.1.1 Create topics
 
 This topic describes how to create a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5553,7 +5706,7 @@ __consumer_offsets test
 
 The ___consumer_offsets topic is automatically created by the system. The topic is used to store offsets committed by each topic.
 
-#### Send messages
+#### 3.1.2 Send messages
 
 This topic describes how to send messages to a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5587,7 +5740,7 @@ Run the java -Dlog4j.configuration=file:/home/admin/kafka-pkgs/log4j.properties 
 
 to send messages by enabling logging for debugging.
 
-#### Consume messages
+#### 3.1.3 Consume messages
 
 This topic describes how to consume messages from a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5626,9 +5779,9 @@ Run the java -Dlog4j.configuration=file:/home/admin/kafka-pkgs/log4j.properties 
 
 `earliest --printAll true` command to consume messages by enabling logging for debugging.
 
-### Topics
+### 3.2 Topics
 
-#### Create topics
+#### 3.2.1 Create topics
 
 This topic describes how to create a topic. ions The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5667,7 +5820,7 @@ __consumer_offsets test
 
 The ___consumer_offsets topic is automatically created by the system. The topic is used to store offsets committed by each topic.
 
-#### View the status of a topic
+#### 3.2.2 View the status of a topic
 
 This topic describes how to view the status of a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5717,7 +5870,7 @@ Isr: 1003,1002,1001
 Isr: 1003,1002,1001
 ```
 
-#### View the current offset of a partition
+#### 3.2.3 View the current offset of a partition
 
 The current offset of a partition is the latest message that is sent to the consumer by the ApsaraMQ for Kafka broker. This topic describes how to view the current offset of a partition. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5753,7 +5906,7 @@ Sample output: ions
 Value 16761
 ```
 
-#### View the list of topics
+#### 3.2.4 View the list of topics
 
 This topic describes how to view the list of topics. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5779,7 +5932,7 @@ This topic describes how to view the list of topics. The information about the m
 CMDTest __consumer_offsets demo test test1 test2
 ```
 
-#### Increase the number of partitions in a
+#### 3.2.5 Increase the number of partitions in a topic
 
 **topic**
 
@@ -5851,7 +6004,7 @@ Isr: 1001,1002,1003
 Isr: 1002,1003,1001
 ```
 
-#### Modify topic configurations
+#### 3.2.6 Modify topic configurations
 
 If the configurations of a topic do not meet your business requirements, you can modify the configurations of the topic. ions The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -5932,9 +6085,9 @@ ions
 | retention.ms | The period of time for which messages are retained in a topic. Valid values: 1 to 168. Unit: hours. |
 | max.message.bytes | The maximum size of a message that the topic can receive from a producer. Valid values: 1 to 10. Unit: MB. |
 
-### Consumer groups
+### 3.3 Consumer groups
 
-#### View the consumer status of a
+#### 3.3.1 View the consumer status of a consumer group
 
 **consumer group**
 
@@ -5994,7 +6147,7 @@ test 2 16516 16516 0 -
 -               -
 ```
 
-#### View the list of consumer groups
+#### 3.3.2 View the list of consumer groups
 
 This topic describes how to view the list of consumer groups. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -6022,9 +6175,9 @@ CID_test
 
 ions
 
-### Messages
+### 3.4 Messages
 
-#### Send messages
+#### 3.4.1 Send messages
 
 This topic describes how to send messages to a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 
@@ -6055,7 +6208,7 @@ Run the java -Dlog4j.configuration=file:/home/admin/kafka-pkgs/log4j.properties 
 
 to send messages by enabling logging for debugging.
 
-#### Consume messages
+#### 3.4.2 Consume messages
 
 This topic describes how to consume messages from a topic. The information about the master node in ApsaraMQ for Kafka is obtained.
 

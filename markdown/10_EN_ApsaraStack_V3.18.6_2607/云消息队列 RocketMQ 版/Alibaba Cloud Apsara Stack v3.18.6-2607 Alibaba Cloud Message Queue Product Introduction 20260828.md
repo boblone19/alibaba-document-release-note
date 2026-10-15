@@ -3,22 +3,33 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Prod
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 27
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Product Introduction 20260828.pdf"
+source_pdf: "5b6ba39b945f66da_Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Product Introduction 20260828.pd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20RocketMQ%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Alibaba%20Cloud%20Message%20Queue%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Alibaba Cloud Message Queue Product Introduction 20260828
 
+## Table of Contents
+
+- 1 What is Message Queue for Apache RocketMQ?
+- 2 Product details
+- 3 Benefits
+- 4 Features
+- 5 Scenarios
+- 6 Instance types
+- 7 Limits
+- 8 Terms
+
 sage Queue for Apache RocketM Q?
 
-## What is Message Queue for
+## 1 What is Message Queue for Apache RocketMQ?
 
 **Apache RocketMQ?**
 
 Message Queue for Apache RocketMQ is a distributed messaging middleware that is developed by Alibaba Cloud based on Apache RocketMQ. This Alibaba Cloud service features low latency, high concurrency, high availability, and high reliability. Message Queue for Apache RocketMQ is a core service in the enterprise-level Internet architecture. Using the highly available distributed cluster technology, this service offers a series of messaging services in the cloud, including message subscription and delivery, message tracing and query, scheduled or delayed messages, and resource statistics. Message Queue for Apache RocketMQ provides asynchronous decoupling and load shifting for distributed application systems. It also supports various features for Internet applications, including massive message accumulation, high throughput, and reliable message consumption retry. It is one of the core Alibaba Cloud services that are used to support the Double 11 Shopping Festival. Message Queue for Apache RocketMQ supports access by using TCP. It also supports the Java, C++,and .NET programming languages. This facilitates quick access to Message Queue for Apache RocketMQ for applications that are developed in different programming languages. ails
 
-## Product details
+## 2 Product details
 
 This topic describes how ApsaraMQ for RocketMQ works and the key features of ApsaraMQ for RocketMQ. ApsaraMQ for RocketMQ supports connections over TCP and HTTP from clients that are developed in multiple programming languages, offers high performance and reliability based on multiple replicas, and provides multi-dimensional O&M and management tools. It also supports enterprise-class features, such as message traces and dead-letter queues.
 
@@ -111,7 +122,7 @@ independent service or on a hybrid cloud architecture.
 **O&M management**: Apsara Stack supports O&M management tools such as the mqadmin
 command set and API operations. You can integrate various management tools with the ApsaraMQ for RocketMQ console and perform unified O&M operations.
 
-## Benefits
+## 3 Benefits
 
 As a professional messaging middleware, ApsaraMQ for RocketMQ provides various benefits such as high reliability, high availability, and high performance. It also supports multiple protocols and independent deployment.
 
@@ -173,7 +184,7 @@ open source Apache RocketMQ requires manual operations and are limited by the ha
 6. **Multi-chip support**: ApsaraMQ for RocketMQ allows you to deploy heterogeneous chips in
 multiple clusters. However, open source Apache RocketMQ clusters must use the same type of chip.
 
-## Features
+## 4 Features
 
 Message Queue for Apache RocketMQ is a distributed messaging middleware service built on Apache RocketMQ. It provides SDKs for multiple programming languages and a wide range of management tools. The service also offers purpose-built features for different use cases, such as dead-letter queues and message queries. The following sections describe these features in detail.
 
@@ -281,7 +292,7 @@ CloudMonitor provides real-time resource monitoring, data collection and visuali
 | Overload protection | If traffic exceeds system capacity, overload protection ensures that services operating within the capacity limits remain unaffected. |
 | Geo-redundancy | The service uses bidirectional data synchronization between instances and traffic switching capabilities to decouple service recovery from fault recovery to ensure business continuity in fault scenarios. |
 
-## Scenarios
+## 5 Scenarios
 
 ApsaraMQ for RocketMQ is applicable for distributed transactions, real-time computing, Internet of Things (IoT) applications, and large-scale cache synchronization.
 
@@ -313,7 +324,7 @@ IoT devices connect to the cloud by using ApsaraMQ for MQTT for bidirectional co
 
 In business promotion activities such as the Double 11 Shopping Festival, each branch has a wide range of products, and the price of each product changes in real time. A huge number of concurrent access requests for the product database results in long response time on the web page of each branch. In centralized caching mode, the bandwidth becomes a bottleneck which blocks access requests to product prices. ApsaraMQ for RocketMQ can reduce the page response time by means of large-scale cache synchronization for different branches. This allows customers to access product prices. Figure 4. Large-scale cache synchronization es
 
-## Instance types
+## 6 Instance types
 
 This topic describes the instance types that Message Queue for Apache RocketMQ supports. You can use this information to select an instance type that meets your requirements.
 
@@ -328,7 +339,7 @@ Message Queue for Apache RocketMQ provides the following instance types:
 | 60xlarge | 88 | 368 | 1800 | 60000 | 3000 |
 | 80xlarge | 120 | 496 | 1800 | 80000 | 3500 |
 
-## Limits
+## 7 Limits
 
 This topic describes the limits on specific metrics in Message Queue for Apache RocketMQ. To avoid system exception errors, do not exceed the limits when you use Message Queue for Apache RocketMQ. The following table describes the limits. Table 1. Limits of Message Queue for Apache RocketMQ
 
@@ -345,7 +356,7 @@ This topic describes the limits on specific metrics in Message Queue for Apache 
 | Concurrent scheduled messages | 200 for a default cluster | If the default limit does not meet your requirements, contact Alibaba Cloud technical support to submit a request. |
 | Concurrent transactional messages | 200 for a default cluster | If the default limit does not meet your requirements, contact Alibaba Cloud technical support to submit a request. |
 
-## Terms
+## 8 Terms
 
 This topic introduces the terms related to Message Queue for Apache RocketMQ to help you better understand and use this service.
 

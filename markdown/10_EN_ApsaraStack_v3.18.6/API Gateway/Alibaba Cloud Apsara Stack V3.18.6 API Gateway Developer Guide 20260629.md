@@ -2,16 +2,333 @@
 title: "API Gateway Developer Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 613
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 API Gateway Developer Guide 20260629.pdf"
+source_pdf: "2cb4be679fa1f0ba_Alibaba Cloud Apsara Stack V3.18.6 API Gateway Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/API%20%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20API%20Gateway%20Developer%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # API Gateway Developer Guide 20260629
 
-## Preparations
+## Table of Contents
 
-### Obtain API information and
+- 1 Preparations
+  - 1.1 Obtain API information and endpoints
+  - 1.2 Obtain an AccessKey
+  - 1.3 Get common header parameters
+  - 1.4 Obtain an STS AccessKey
+  - 1.5 Obtain user and role information
+  - 1.6 Obtain the region ID and organization ID
+- 2 Calling Apsara Stack APIs through a POP gateway
+  - 2.1 Java version
+  - 2.2 Common API call methods
+    - 2.2.1 API call - Cluster management
+    - 2.2.2 API call - Instance management
+    - 2.2.3 API Gateway
+      - 2.2.3.1 API call - Origin management
+      - 2.2.3.2 API call - Service management
+      - 2.2.3.3 API call - Group management
+      - 2.2.3.4 API call - Route management
+      - 2.2.3.5 API call - Policy configuration management
+      - 2.2.3.6 API call - Consumer management
+      - 2.2.3.7 API call - Domain name management
+      - 2.2.3.8 API call - Route plugin management
+      - 2.2.3.9 API call - Certificate management
+    - 2.2.4 AI Gateway
+      - 2.2.4.1 API call - Plugin management
+      - 2.2.4.2 API call - Built-In Plug-In management
+      - 2.2.4.3 API Call - Model API Management
+      - 2.2.4.4 API call - MCP management
+- 3 API Gateway
+  - 3.1 Cluster management
+    - 3.1.1 ListClusters
+    - 3.1.2 GetK8sClusterInfoByGwInstanceId
+    - 3.1.3 GetK8sClusterName
+    - 3.1.4 ImportCluster
+    - 3.1.5 UpdateCluster
+    - 3.1.6 CancelImportCluster
+    - 3.1.7 CheckConnectCluster
+    - 3.1.8 ListK8sAllNamespaces
+    - 3.1.9 ListAllNamespaces
+  - 3.2 Instance Management
+    - 3.2.1 ListInstances
+    - 3.2.2 ListAllInstances
+    - 3.2.3 ListInstancesByServiceId
+    - 3.2.4 GetInstanceInfo
+    - 3.2.5 CreateInstance
+    - 3.2.6 AscmCreateInstance
+    - 3.2.7 ModifyInstance
+    - 3.2.8 ModifyInstanceImageUrl
+    - 3.2.9 UpgradeInstance
+    - 3.2.10 DeleteInstance
+    - 3.2.11 RestartInstance
+    - 3.2.12 StopInstance
+    - 3.2.13 RefreshInstance
+    - 3.2.14 CreateInstanceDeployConfig
+    - 3.2.15 GetInstanceDeployDeployConfig
+    - 3.2.16 GetInstanceDeployMsg
+    - 3.2.17 GetCustomDeployConfig
+    - 3.2.18 GetInstanceAccessModeConfig
+    - 3.2.19 GetResource
+    - 3.2.20 ModifyResource
+  - 3.3 Group Management
+    - 3.3.1 ModifyGroup
+    - 3.3.2 CreateGroup
+    - 3.3.3 ListGroups
+    - 3.3.4 GetAllGroups
+    - 3.3.5 GetGroup
+    - 3.3.6 DeleteGroup
+    - 3.3.7 AddGroupDomain
+    - 3.3.8 DeleteGroupDomain
+  - 3.4 Ingress management
+    - 3.4.1 CreateRoute
+    - 3.4.2 BatchDeleteRoute
+    - 3.4.3 ListRoutes
+    - 3.4.4 ListRoutesByAppId
+    - 3.4.5 ListRoutesByGwInstanceId
+    - 3.4.6 GetAllRoutePath
+    - 3.4.7 GetRoute
+    - 3.4.8 GetProtocolByRoute
+    - 3.4.9 ModifyRoute
+    - 3.4.10 DeleteRoute
+    - 3.4.11 ChangeRouteStatus
+  - 3.5 Source Management
+    - 3.5.1 ListSources
+    - 3.5.2 ListAllSources
+    - 3.5.3 GetSource
+    - 3.5.4 CreateSource
+    - 3.5.5 ModifySource
+    - 3.5.6 DeleteSource
+    - 3.5.7 BatchDeleteSource
+  - 3.6 Service Management
+    - 3.6.1 ListServices
+    - 3.6.2 ListAllServices
+    - 3.6.3 GetService
+    - 3.6.4 CreateService
+    - 3.6.5 ModifyService
+    - 3.6.6 ModifyNode
+    - 3.6.7 DeleteService
+    - 3.6.8 BatchDeleteService
+    - 3.6.9 ImportServices
+  - 3.7 Consumer management
+    - 3.7.1 ListApps
+    - 3.7.2 ListAppsByGwInstanceId
+    - 3.7.3 GetApp
+    - 3.7.4 CreateApp
+    - 3.7.5 ModifyApp
+    - 3.7.6 DeleteApp
+    - 3.7.7 ModifyAppOpenStatus
+    - 3.7.8 ModifyAppWhiteListStatus
+    - 3.7.9 GetAppAuth
+    - 3.7.10 CreateAppAuth
+    - 3.7.11 BatchCreateAppAuthByRoute
+    - 3.7.12 ModifyAppAuthStatus
+    - 3.7.13 DeleteAppAuth
+    - 3.7.14 RefreshToken
+    - 3.7.15 ResetSecretKey
+    - 3.7.16 HandlerConsumerAuth
+    - 3.7.17 CreateAppAuthByRoute
+    - 3.7.18 BatchDeleteApp
+  - 3.8 Plugin Management
+    - 3.8.1 ListPlugins
+    - 3.8.2 ListOpenPlugins
+    - 3.8.3 ListGlobalPlugins
+    - 3.8.4 ListRoutePlugins
+    - 3.8.5 GetPlugin
+    - 3.8.6 CreatePlugin
+    - 3.8.7 CreateGlobalPlugin
+    - 3.8.8 CreateRoutePlugin
+    - 3.8.9 ModifyPlugin
+    - 3.8.10 ModifyGlobalPlugin
+    - 3.8.11 ModifyRoutePlugin
+    - 3.8.12 DeletePlugin
+    - 3.8.13 DeleteGlobalPlugin
+    - 3.8.14 DeleteRoutePlugin
+    - 3.8.15 ModifyGlobalPluginStatus
+    - 3.8.16 ModifyRoutePluginStatus
+    - 3.8.17 ListPluginUsage
+  - 3.9 Policy Management
+    - 3.9.1 ModifyStrategyConfig
+    - 3.9.2 CreateStrategyConfig
+    - 3.9.3 ListStrategies
+    - 3.9.4 ListStrategyConfigs
+    - 3.9.5 GetStrategy
+    - 3.9.6 GetStrategyConfig
+    - 3.9.7 GetRoutePolicies
+    - 3.9.8 ModifyRoutePolicy
+    - 3.9.9 DeleteStrategyConfig
+    - 3.9.10 ModifyStrategyConfigStatus
+  - 3.10 Domain name management
+    - 3.10.1 ListDomains
+    - 3.10.2 ListAllDomains
+    - 3.10.3 GetDomain
+    - 3.10.4 CreateDomain
+    - 3.10.5 ModifyDomain
+    - 3.10.6 DeleteDomain
+  - 3.11 Certificate Management
+    - 3.11.1 ListCertificates
+    - 3.11.2 ListAllServerCertificates
+    - 3.11.3 ListAllCACertificates
+    - 3.11.4 GetCertificate
+    - 3.11.5 CreateCertificate
+    - 3.11.6 ModifyCertificate
+    - 3.11.7 DeleteCertificate
+  - 3.12 Other
+    - 3.12.1 GetTotalityInfo
+    - 3.12.2 GetSettings
+    - 3.12.3 GetSlsStatistics
+- 4 AI Gateway
+  - 4.1 Cluster management
+    - 4.1.1 ListClusters
+    - 4.1.2 GetK8sClusterInfoByGwInstanceId
+    - 4.1.3 GetK8sClusterName
+    - 4.1.4 ImportCluster
+    - 4.1.5 UpdateCluster
+    - 4.1.6 CancelImportCluster
+    - 4.1.7 CheckConnectCluster
+    - 4.1.8 ListK8sAllNamespaces
+    - 4.1.9 ListAllNamespaces
+  - 4.2 Instance Management
+    - 4.2.1 ListInstances
+    - 4.2.2 ListAllInstances
+    - 4.2.3 ListInstancesByServiceId
+    - 4.2.4 GetInstanceInfo
+    - 4.2.5 CreateInstance
+    - 4.2.6 AscmCreateInstance
+    - 4.2.7 ModifyInstance
+    - 4.2.8 ModifyInstanceImageUrl
+    - 4.2.9 UpgradeInstance
+    - 4.2.10 DeleteInstance
+    - 4.2.11 RestartInstance
+    - 4.2.12 StopInstance
+    - 4.2.13 RefreshInstance
+    - 4.2.14 CreateInstanceDeployConfig
+    - 4.2.15 GetInstanceDeployDeployConfig
+    - 4.2.16 GetInstanceDeployMsg
+    - 4.2.17 GetCustomDeployConfig
+    - 4.2.18 GetInstanceAccessModeConfig
+    - 4.2.19 GetResource
+    - 4.2.20 ModifyResource
+  - 4.3 Group Management
+    - 4.3.1 ModifyGroup
+    - 4.3.2 CreateGroup
+    - 4.3.3 ListGroups
+    - 4.3.4 GetAllGroups
+    - 4.3.5 GetGroup
+    - 4.3.6 DeleteGroup
+    - 4.3.7 AddGroupDomain
+    - 4.3.8 DeleteGroupDomain
+  - 4.4 Ingress management
+    - 4.4.1 ListRoutes
+    - 4.4.2 ListRoutesByAppId
+    - 4.4.3 ListRoutesByGwInstanceId
+    - 4.4.4 GetAllRoutePath
+    - 4.4.5 GetRoute
+    - 4.4.6 GetProtocolByRoute
+    - 4.4.7 ModifyRoute
+    - 4.4.8 DeleteRoute
+    - 4.4.9 CreateRoute
+    - 4.4.10 ChangeRouteStatus
+    - 4.4.11 BatchDeleteRoute
+  - 4.5 Source Management
+    - 4.5.1 BatchDeleteSource
+    - 4.5.2 ListSources
+    - 4.5.3 ListAllSources
+    - 4.5.4 GetSource
+    - 4.5.5 CreateSource
+    - 4.5.6 ModifySource
+    - 4.5.7 DeleteSource
+  - 4.6 Service Management
+    - 4.6.1 ImportServices
+    - 4.6.2 ListServices
+    - 4.6.3 ListAllServices
+    - 4.6.4 GetService
+    - 4.6.5 CreateService
+    - 4.6.6 ModifyService
+    - 4.6.7 ModifyNode
+    - 4.6.8 DeleteService
+    - 4.6.9 BatchDeleteService
+  - 4.7 MCP service management
+    - 4.7.1 DeleteMcpServerConsumers
+    - 4.7.2 AddMcpServerConsumers
+    - 4.7.3 ListMcpServers
+    - 4.7.4 GetMcpServer
+    - 4.7.5 CreateMcpServer
+    - 4.7.6 DeleteMcpServer
+    - 4.7.7 ListMcpServerConsumers
+    - 4.7.8 SwaggerToMcpConfig
+    - 4.7.9 GetSsePathSuffix
+    - 4.7.10 UpdateMcpServer
+  - 4.8 Consumer management
+    - 4.8.1 BatchDeleteApp
+    - 4.8.2 ListApps
+    - 4.8.3 ListAppsByGwInstanceId
+    - 4.8.4 GetApp
+    - 4.8.5 CreateApp
+    - 4.8.6 ModifyApp
+    - 4.8.7 DeleteApp
+    - 4.8.8 ModifyAppOpenStatus
+    - 4.8.9 ModifyAppWhiteListStatus
+    - 4.8.10 GetAppAuth
+    - 4.8.11 CreateAppAuth
+    - 4.8.12 BatchCreateAppAuthByRoute
+    - 4.8.13 ModifyAppAuthStatus
+    - 4.8.14 DeleteAppAuth
+    - 4.8.15 RefreshToken
+    - 4.8.16 ResetSecretKey
+    - 4.8.17 HandlerConsumerAuth
+    - 4.8.18 CreateAppAuthByRoute
+  - 4.9 Plugin Management
+    - 4.9.1 ListPlugins
+    - 4.9.2 ListOpenPlugins
+    - 4.9.3 ListGlobalPlugins
+    - 4.9.4 ListRoutePlugins
+    - 4.9.5 GetPlugin
+    - 4.9.6 CreatePlugin
+    - 4.9.7 CreateGlobalPlugin
+    - 4.9.8 CreateRoutePlugin
+    - 4.9.9 ModifyPlugin
+    - 4.9.10 ModifyGlobalPlugin
+    - 4.9.11 ModifyRoutePlugin
+    - 4.9.12 DeletePlugin
+    - 4.9.13 DeleteGlobalPlugin
+    - 4.9.14 DeleteRoutePlugin
+    - 4.9.15 ModifyGlobalPluginStatus
+    - 4.9.16 ModifyRoutePluginStatus
+    - 4.9.17 ListPluginUsage
+  - 4.10 Policy Management
+    - 4.10.1 ModifyStrategyConfig
+    - 4.10.2 CreateStrategyConfig
+    - 4.10.3 ListStrategies
+    - 4.10.4 ListStrategyConfigs
+    - 4.10.5 GetStrategy
+    - 4.10.6 GetStrategyConfig
+    - 4.10.7 GetRoutePolicies
+    - 4.10.8 ModifyRoutePolicy
+    - 4.10.9 DeleteStrategyConfig
+    - 4.10.10 ModifyStrategyConfigStatus
+  - 4.11 Domain name management
+    - 4.11.1 ListDomains
+    - 4.11.2 ListAllDomains
+    - 4.11.3 GetDomain
+    - 4.11.4 CreateDomain
+    - 4.11.5 ModifyDomain
+    - 4.11.6 DeleteDomain
+  - 4.12 Certificate Management
+    - 4.12.1 ListCertificates
+    - 4.12.2 ListAllServerCertificates
+    - 4.12.3 ListAllCACertificates
+    - 4.12.4 GetCertificate
+    - 4.12.5 CreateCertificate
+    - 4.12.6 ModifyCertificate
+    - 4.12.7 DeleteCertificate
+  - 4.13 Other
+    - 4.13.1 GetTotalityInfo
+    - 4.13.2 GetSettings
+    - 4.13.3 GetSlsStatistics
+
+## 1 Preparations
+
+### 1.1 Obtain API information and endpoints
 
 **endpoints**
 
@@ -33,13 +350,17 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 7. Select the desired API operation. Obtain the POP Endpoint information for the cloud product,
 which is displayed under the parameter name.
 
-### Obtain an AccessKey
+### 1.2 Obtain an AccessKey
 
 An AccessKey supports two authorization patterns: Resource Access Management (RAM) and Security Token Service (STS). You can use an AccessKey from either pattern to initiate a call. This topic describes how to obtain an AccessKey that uses RAM authorization.
 
 **Background information**
 
-An AccessKey uses an AccessKey ID and an AccessKey secret for symmetric encryption to authenticate the identity of a request sender. The AccessKey ID identifies the user, and the AccessKey secret is a string used to create an encrypted signature. The two authorization patterns for an AccessKey are: RAM authorization, which grants an AccessKey ID and an AccessKey secret to a third-party requester. STS authorization, which grants an AccessKey ID, an AccessKey secret, and a security token to a third-party requester. For more information, see Obtain an STS AccessKey.
+An AccessKey uses an AccessKey ID and an AccessKey secret for symmetric encryption to authenticate the identity of a request sender. The AccessKey ID identifies the user, and the AccessKey secret is a string used to create an encrypted signature. The two authorization patterns for an AccessKey are: RAM authorization, which grants an AccessKey ID and an AccessKey secret to a third-party requester. STS authorization, which grants an AccessKey ID, an AccessKey secret, and a security token to a third-party requester. For more information, see Obtain an STS AccessKey. The Apsara Uni-manager Management Console provides individual AccessKeys and organization AccessKeys. Only operations administrators and primary organization administrators can obtain organization AccessKeys. You can use an individual account AccessKey to call the APIs of the Apsara Uni-manager Management Console and related cloud products. If you use an individual account AccessKey, you must add the following restrictive parameters to the header. Otherwise, a permission error may occur:
+
+**Warning**
+
+An individual account AccessKey is a restricted AccessKey managed by the permission system of the Apsara Uni-manager Management Console, whereas an organization AccessKey has broader permissions. Therefore, administrators must confirm the security of operations that use an organization AccessKey.
 
 | Parameter | Description |
 |---|---|
@@ -47,12 +368,6 @@ An AccessKey uses an AccessKey ID and an AccessKey secret for symmetric encrypti
 | x-acs-organizationid | The ID of the corresponding organization in the Apsara Uni-manager Management Console. For more information, see the GetOrganizationList topic in the Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-resourcegroupid | The ID of the corresponding resource set in the Apsara Uni-manager Management Console. For more information, see the ListResourceGroup topic in the Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which you want to perform an operation. For example, you can find the instance ID of an ECS instance in the ECS instance list. |
-
-The Apsara Uni-manager Management Console provides individual AccessKeys and organization AccessKeys. Only operations administrators and primary organization administrators can obtain organization AccessKeys. You can use an individual account AccessKey to call the APIs of the Apsara Uni-manager Management Console and related cloud products. If you use an individual account AccessKey, you must add the following restrictive parameters to the header. Otherwise, a permission error may occur:
-
-**Warning**
-
-An individual account AccessKey is a restricted AccessKey managed by the permission system of the Apsara Uni-manager Management Console, whereas an organization AccessKey has broader permissions. Therefore, administrators must confirm the security of operations that use an organization AccessKey.
 
 **Obtain an individual account AccessKey**
 
@@ -77,7 +392,7 @@ To obtain an organization AccessKey, perform the following steps:
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization AccessKey information.
 
-### Get common header
+### 1.3 Get common header parameters
 
 **parameters**
 
@@ -98,13 +413,6 @@ You can obtain the organization ID by calling an API. You can use the online API
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top menu bar, click **Products**, and then choose **Developer Tools** > **APIs And**
 **Tools** > **Developer Portal**.
-
-| Name | Description |
-|---|---|
-| ResourceGroupName | The name of the resource group. |
-| ResourceGroup | The ID of the resource group. |
-| DepartmentName | The name of the organization. |
-
 3. On the **Developer Portal** page, choose **API Integration** > **API Debugging**.
 4. Click the
 button, choose **Cloud Platform** > **Unified Cloud Management Platform**, and set **Version** to **2019-05-10**.
@@ -136,10 +444,16 @@ You can obtain the instance ID from the instance list of a cloud product in the 
 
 When you call an API to list resource instances of a cloud product, the following parameters are returned by default.
 
+| Name | Description |
+|---|---|
+| ResourceGroupName | The name of the resource group. |
+| ResourceGroup | The ID of the resource group. |
+| DepartmentName | The name of the organization. |
+
 | Department | The ID of the organization. |
 |---|---|
 
-### Obtain an STS AccessKey
+### 1.4 Obtain an STS AccessKey
 
 This topic describes how to use Security Token Service (STS) to call product APIs in Apsara Stack.
 
@@ -172,7 +486,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -186,9 +505,9 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. Use the STS credentials to call product APIs, as shown in the following example.
 
 ```java
@@ -208,11 +527,11 @@ previous step.
         Client credentialClient = new Client(credentialConfig);
         // Continue to call the API. For more information, see the complete API docum
 entation.
-    }
-}
 ```
 
-### Obtain user and role
+`}` `}`
+
+### 1.5 Obtain user and role information
 
 **information**
 
@@ -239,11 +558,14 @@ i. In the left-side navigation pane, select **User Management > User Management*
 5. Add the user to a resource set.
 i. On the **System Users** tab, find the newly created user and click the username. ii. On the **Resource Sets** tab, click **Join Resource Set** above the list. iii. In the **Join Resource Set** dialog box, select the user role from the **Select Role Type** drop-down list, select the resource sets to join in the **Select Resource Set** list, and then click **OK**.
 
-### Obtain the region ID and
+### 1.6 Obtain the region ID and organization ID
 
 **organization ID**
 
 This topic describes how to obtain the region ID and organization ID.
+
+**Obtain the region ID**
+
 1. Log in to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, select **Enterprise**.
 3. **Resource Management > Region Management**.
@@ -259,22 +581,13 @@ the **Region List** and obtain the Region ID.
 4. On the **Gateway Instance** page, open the developer tools, click the Network tab, and then
 refresh the page.
 5. In the search box, enter **ListResourceGroupByOrgId**. Click the API operation name. On
-the Preview tab on the right, obtain the organization ID.
+the Preview tab on the right, obtain the organization ID. Stack APIs through a POP gatewa y
 
-| Parameter | Description |
-|---|---|
-| regionId | The ID of the region. See Obtain the region ID and organization ID. |
-| AccessKeyId | The AccessKey ID of the user. See Obtain an AccessKey. |
-| AccessKeySecret | The AccessKey secret of the user. See Obtain an AccessKey. |
-| endpoint | The endpoint for API access. See Obtain API information and endpoints. |
-
-y
-
-## Calling Apsara Stack APIs
+## 2 Calling Apsara Stack APIs through a POP gateway
 
 **through a POP gateway**
 
-### Java version
+### 2.1 Java version
 
 **Environment requirements**
 
@@ -302,11 +615,18 @@ Apsara Stack environment. -->
 
 **Configuration instructions**
 
+| Parameter | Description |
+|---|---|
+| regionId | The ID of the region. See Obtain the region ID and organization ID. |
+| AccessKeyId | The AccessKey ID of the user. See Obtain an AccessKey. |
+| AccessKeySecret | The AccessKey secret of the user. See Obtain an AccessKey. |
+| endpoint | The endpoint for API access. See Obtain API information and endpoints. |
+
+Stack APIs through a POP gatewa y
+
 | organizationId | The ID of the organization. See Obtain the region ID and organization ID. |
 |---|---|
 | httpProxy | The proxy endpoint (optional). Contact Alibaba Cloud on-site personnel to obtain this information. |
-
-y
 
 **Code example**
 
@@ -326,7 +646,11 @@ public class Sample {
     private static final String LIST_ROUTES = "/route/listRoutes";
     public static void main(String[] args) throws ClientException {
         listRoutes();
-    }
+```
+
+`}`
+
+```
     /**
      * Example of querying a route list
 ```
@@ -339,7 +663,7 @@ public class Sample {
         request.put("current", 1);
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         request.put("size", 10);
@@ -358,16 +682,22 @@ JSON.parseObject(httpResponse.getHttpContentString());
                     records.forEach(record -> {
                         System.out.println(JSON.toJSONString(record));
                     });
-                }
-            }
+```
+
+`}` `}`
+
+```java
             System.out.println(jsonObject);
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Common request method
 ```
 
-*
+`*`
 
 ```
      * @param param Request parameters
@@ -388,7 +718,11 @@ e methodType) throws ClientException {
 FormatType.JSON);
         initDefaultHeader(request, methodType);
         return client.getCommonResponse(request);
-    }
+```
+
+`}`
+
+```
     static {
         // Create a DefaultAcsClient instance and initialize it.
         DefaultProfile profile = DefaultProfile.getProfile(
@@ -401,16 +735,20 @@ FormatType.JSON);
         profile.setHttpClientConfig(httpClientConfig);
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
         client = new DefaultAcsClient(profile);
-    }
+```
+
+`}`
+
+```
     /**
      * Configure request headers.
 ```
 
-*
+`*`
 
 ```
      * @param request Request object
@@ -440,14 +778,14 @@ lling application.
         request.setSysProduct("csb-cop");
         // Set the API version.
         request.setSysVersion("2023-02-06");
-    }
-}
 ```
+
+`}` `}`
 
 **Step examples**
 
 1. . Initialize the client**
-Create `DefaultProfile` and configure information such as the AccessKey ID, AccessKey secret, and endpoint: y
+Create `DefaultProfile` and configure information such as the AccessKey ID, AccessKey secret, and endpoint: Stack APIs through a POP gatewa y
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -479,7 +817,7 @@ request.putHeadParameter("x-acs-caller-sdk-source", "your-app-name"); request.pu
 ```
 
 5. . Send the request and process the response**
-y
+Stack APIs through a POP gatewa y
 
 ```java
 CommonResponse response = client.getCommonResponse(request); HttpResponse httpResponse = response.getHttpResponse(); if (httpResponse.getStatus() == 200) {
@@ -488,10 +826,9 @@ CommonResponse response = client.getCommonResponse(request); HttpResponse httpRe
         Object data = jsonObject.get("data");
         // Process the returned data.
         System.out.println(JSON.toJSONString(data));
-    }
-}
 ```
 
+`}` `}`
 6. . Handle exceptions**
 
 ```java
@@ -502,8 +839,9 @@ try {
     // Handle client exceptions.
     System.out.println("ErrorCode: " + e.getErrCode());
     System.out.println("ErrorMessage: " + e.getErrMsg());
-}
 ```
+
+`}`
 
 **Call method for self-managed ACK environments**
 
@@ -519,6 +857,35 @@ Find the IP address of `cop-gateway-admin-svc` and use it as the endpoint.
 
 **Code example**
 
+Stack APIs through a POP gatewa y
+
+```
+static {
+    // Create a DefaultAcsClient instance and initialize it.
+    DefaultProfile profile = DefaultProfile.getProfile(
+            "-",  // The region ID is not required.
+            "-",  // The AccessKey ID is not required.
+            "-"); // The AccessKey secret is not required.
+    client = new DefaultAcsClient(profile);
+```
+
+`}`
+
+```java
+private static <T extends AcsResponse> void initDefaultHeader(CommonRequest request, Me thodType methodType) {
+    // The authentication header specific to self-managed ACK environments.
+    request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
+    request.putHeadParameter("X-CSB-OPENAPI", "true");
+    request.setSysMethod(methodType);
+    request.setSysDomain("<IP address of the console service>");
+    request.setSysProduct("csb-cop");
+    request.setSysVersion("2023-02-06");
+```
+
+`}`
+
+**Common API paths**
+
 | Feature | API path |
 |---|---|
 | Query the instance list | /gatewayInstance/listInstances |
@@ -527,36 +894,15 @@ Find the IP address of `cop-gateway-admin-svc` and use it as the endpoint.
 | Create a route | /route/createRoute |
 | Query the domain name list | /domain/listDomains |
 
-y
-
-```java
-static {
-    // Create a DefaultAcsClient instance and initialize it.
-    DefaultProfile profile = DefaultProfile.getProfile(
-            "-",  // The region ID is not required.
-            "-",  // The AccessKey ID is not required.
-            "-"); // The AccessKey secret is not required.
-    client = new DefaultAcsClient(profile);
-} private static <T extends AcsResponse> void initDefaultHeader(CommonRequest request, Me thodType methodType) {
-    // The authentication header specific to self-managed ACK environments.
-    request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
-    request.putHeadParameter("X-CSB-OPENAPI", "true");
-    request.setSysMethod(methodType);
-    request.setSysDomain("<IP address of the console service>");
-    request.setSysProduct("csb-cop");
-    request.setSysVersion("2023-02-06");
-}
-```
-
-**Common API paths**
-
-### Common API call methods
+### 2.2 Common API call methods
 
 **Overview**
 
 This document describes the common API call methods for the API Gateway console, including request format, response format, and authentication method. These methods apply to all interfaces of API Gateway (SCG) and AI Gateway (Higress).
 
 **Basic interface information**
+
+Stack APIs through a POP gatewa y
 
 | Item | Description |
 |---|---|
@@ -566,27 +912,26 @@ This document describes the common API call methods for the API Gateway console,
 | Character encoding | UTF-8 |
 | Interface prefix | / |
 
+**Unified request format**
+
+**Request headers**
+
 | Parameter | Required | Description |
 |---|---|---|
 | Content-Type | Yes | application/json . |
 | Authorization | Yes | The user authentication token. |
 | x-acs-request-id | No | The request trace ID for log tracing. |
 
-y
-
-**Unified request format**
-
-**Request headers**
-
 **Request body**
 
-All APIs use a JSON-formatted request body. The basic structure is as follows:
+All APIs use a JSON-formatted request body. The basic structure is as follows: `{`
 
 ```json
-{
   "gwInstanceId": "xxx",
-}
+  ... // Other business parameters
 ```
+
+`}`
 
 **Note**
 
@@ -596,12 +941,16 @@ Most APIs require the gwInstanceId parameter to specify the gateway instance for
 
 **Response structure**
 
+Stack APIs through a POP gatewa y
+
 | Parameter | Type | Description |
 |---|---|---|
 | requestId | String | The request trace ID. |
 | code | Integer | The response status code. |
 | msg | String | The response message. The system returns an error message if an error occurs. |
 | data | Object | The response data, which is the business data. |
+
+**Status code description**
 
 | Status code | Description |
 |---|---|
@@ -610,50 +959,39 @@ Most APIs require the gwInstanceId parameter to specify the gateway instance for
 | 400 | The request parameters are invalid. |
 | 401 | Unauthorized or authentication failed. |
 
-y
-
-**Status code description**
-
 **Successful response example**
 
+`{`
+
 ```json
-{
   "requestId": "abc****456",
   "code": 200,
   "msg": null,
   "data": {
     "routeId": "route-001",
     "routeName": "test-route"
-  }
-}
 ```
+
+`}` `}`
 
 **Failed response example**
 
-| Method | Description |
-|---|---|
-| Request header | Authorization: Bearer <api-key> or x- api-key: <api-key> . |
-| Query parameter | ?api key=<api-key> . _ |
-
-|  |  | Authorization: Bearer <api-key> |
-|---|---|---|
-|  | api-key: <api-key> |  |
-
-y
+Stack APIs through a POP gatewa y `{`
 
 ```json
-{
   "requestId": "ab****f456",
   "code": 500,
   "msg": "Route not found",
   "data": null
-}
 ```
+
+`}`
 
 **Paged response example**
 
+`{`
+
 ```json
-{
   "requestId": "ab****456",
   "code": 200,
   "msg": null,
@@ -666,12 +1004,7 @@ y
       { "id": "2", "name": "item-2" }
 ```
 
-]
-
-```
-  }
-}
-```
+`]` `}` `}`
 
 **Authentication method**
 
@@ -687,28 +1020,22 @@ Or use cookie-based authentication (for the web console).
 
 **Consumer authentication (API call)**
 
-When calling a gateway API, the consumer passes the API key in one of the following ways: The specific authentication method depends on the authentication configuration of the gateway instance.
+When calling a gateway API, the consumer passes the API key in one of the following ways:
+
+| Method | Description |
+|---|---|
+| Request header | Authorization: Bearer <api-key> or x- api-key: <api-key> . |
+| Query parameter | ?api key=<api-key> . _ |
+
+|   |   | Authorization: Bearer <api-key> |
+|---|---|---|
+|   | api-key: <api-key> |   |
+
+The specific authentication method depends on the authentication configuration of the gateway instance.
 
 **General parameter description**
 
-| Parameter | Type | Default value | Description |
-|---|---|---|---|
-| current | Integer | 1 | The current page number. |
-| size | Integer | 10 | The number of entries per page. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| searchName | String | The search keyword. The system performs a fuzzy match by name. |
-
-| Module | API path | Description |
-|---|---|---|
-| Route management | /route | Manage route configurations. |
-| Service management | /service | Manage service registration. |
-| Domain name management | /domain | Manage domain name bindings. |
-| Consumer management | /app | Manage consumers and API keys. |
-| Certificate management | /certificate | Manage SSL certificates. |
-
-y
+Stack APIs through a POP gatewa y
 
 **Gateway instance ID (gwInstanceId)**
 
@@ -718,11 +1045,32 @@ Most APIs require the gateway instance ID to identify the target instance for th
 
 List query APIs support the following pagination parameters:
 
+| Parameter | Type | Default value | Description |
+|---|---|---|---|
+| current | Integer | 1 | The current page number. |
+| size | Integer | 10 | The number of entries per page. |
+
 **Search parameters**
 
 List query APIs support the following search parameters:
 
+| Parameter | Type | Description |
+|---|---|---|
+| searchName | String | The search keyword. The system performs a fuzzy match by name. |
+
 **API overview**
+
+**API Gateway (SCG) APIs**
+
+| Module | API path | Description |
+|---|---|---|
+| Route management | /route | Manage route configurations. |
+| Service management | /service | Manage service registration. |
+| Domain name management | /domain | Manage domain name bindings. |
+| Consumer management | /app | Manage consumers and API keys. |
+| Certificate management | /certificate | Manage SSL certificates. |
+
+Stack APIs through a POP gatewa y
 
 | Origin management | /source | Manage service origins. |
 |---|---|---|
@@ -730,6 +1078,8 @@ List query APIs support the following search parameters:
 | Policy configuration | /strategyConfig | Manage policy instances. |
 | Instance management | /gatewayInstance | Manage gateway instances. |
 | Cluster management | /k8sCluster | Manage Kubernetes clusters. |
+
+**AI Gateway (Higress) APIs**
 
 | Module | API path | Description |
 |---|---|---|
@@ -739,8 +1089,6 @@ List query APIs support the following search parameters:
 | Model API | /modelapi | Manage model APIs. |
 | Policy configuration | /strategyConfig | Configure plugin policies. |
 
-y
-
 **Note**
 
 The AI Gateway shares the same API paths as the API Gateway for route, service, domain name, consumer, and certificate management, but implements different logic.
@@ -749,15 +1097,15 @@ The AI Gateway shares the same API paths as the API Gateway for route, service, 
 
 **Business exceptions**
 
-When a business logic exception occurs, the system returns:
+When a business logic exception occurs, the system returns: `{`
 
 ```json
-{
   "code": 500,
   "msg": "<error message>",
   "data": null
-}
 ```
+
+`}` Stack APIs through a POP gatewa y Common business exceptions:
 
 | Error message | Description |
 |---|---|
@@ -766,29 +1114,25 @@ When a business logic exception occurs, the system returns:
 | Permission denied | Insufficient permissions. |
 | Instance not found | The gateway instance does not exist. |
 
-y Common business exceptions:
-
 **Parameter validation exceptions**
 
-When request parameter validation fails, the system returns:
+When request parameter validation fails, the system returns: `{`
 
 ```json
-{
   "code": 500,
   "msg": "<field> <error message>",
   "data": null
-}
 ```
 
-Example:
+`}` Example: `{`
 
 ```json
-{
   "code": 500,
   "msg": "gwInstanceId must not be blank",
   "data": null
-}
 ```
+
+`}`
 
 **Request examples**
 
@@ -804,21 +1148,28 @@ curl -X POST 'http://localhost:8080/route/createRoute' \
     "routeName": "test-route",
     "path": "/api/test",
     "serviceId": "service-001"
-  }'
 ```
+
+`}'`
 
 **HTTP request example**
 
-y
+Stack APIs through a POP gatewa y
+
+```
+POST /route/createRoute HTTP/1.1 Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token>
+```
+
+`{`
 
 ```json
-Host: localhost:8080 Content-Type: application/json Authorization: Bearer <token> {
   "gwInstanceId": "instance-001",
   "routeName": "test-route",
   "path": "/api/test",
   "serviceId": "service-001"
-}
 ```
+
+`}`
 
 **Best practice**
 
@@ -831,7 +1182,7 @@ Use pagination parameters for list operations to avoid excessive data volume. Ob
 4. . Instance differentiation**
 Confirm the gateway type that corresponds to `gwInstanceId` before you perform an operation. Some API Gateway and AI Gateway operations share the same path but behave differently. Call `/gatewayInstance/getInstance` to query instance details and confirm the type.
 
-#### API call - Cluster management
+#### 2.2.1 API call - Cluster management
 
 **Overview**
 
@@ -841,19 +1192,7 @@ The cluster management module provides features to import, query, and update Kub
 
 **Authentication method**
 
-| Item | Content |
-|---|---|
-| URL | /k8s/importCluster |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| k8sClusterName | String | Yes | The name of the cluster. The name must contain 2 to 128 characters and start with a letter. |
-| k8sClusterType | String | No | The cluster type: self-built: Self- managed Kubernetes cluster container-service: Container Service Kubernetes cluster |
-| configContent | String | Conditional | The configuration content of the KubeConfig file. Note You must specify this parameter for self-managed clusters. |
-
-y
+Stack APIs through a POP gatewa y
 **Self-managed ACK environment**: Add `X-CSB-TOKEN: csb@2022` and `X-CSB-OPENAPI:`
 `true` to the request header.
 **Enterprise Edition environment**: Add `x-acs-organizationid` and `x-acs-caller-sdk-`
@@ -867,29 +1206,32 @@ Import a Kubernetes cluster to the gateway console.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /k8s/importCluster |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on ImportK8sClusterRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| k8sClusterName | String | Yes | The name of the cluster. The name must contain 2 to 128 characters and start with a letter. |
+| k8sClusterType | String | No | The cluster type: self-built: Self- managed Kubernetes cluster container-service: Container Service Kubernetes cluster |
+| configContent | String | Conditional | The configuration content of the KubeConfig file. Note You must specify this parameter for self-managed clusters. |
+
+Stack APIs through a POP gatewa y
 
 | k8sClusterAttribute | Object | Conditional | The extended attributes of the cluster. Note You must specify this parameter for Container Service clusters. |
 |---|---|---|---|
 
-| Parameter | Type | Required |  | Description |  |  |  |  |
-|---|---|---|---|---|---|---|---|---|
-| csClusterId | String | Conditional |  | The ID of the Container Service cluster. Note You must specify this parameter when the type is container- service . |  |  |  |  |
-|  |  |  |  |  |  | container- |  |  |
-|  |  |  |  |  | service |  |  |  |
-
-| Item | Content |
-|---|---|
-| URL | /k8s/listClusters |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-y
-
 **k8sClusterAttribute structure**
+
+| Parameter | Type | Required |   | Description |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|
+| csClusterId | String | Conditional |   | The ID of the Container Service cluster. Note You must specify this parameter when the type is container- service . |   |   |   |   |
+|   |   |   |   |   |   | container- |   |   |
+|   |   |   |   |   | service |   |   |   |
 
 **Query the cluster list**
 
@@ -899,25 +1241,23 @@ Query the Kubernetes cluster list by page.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /k8s/listClusters |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on ListK8sClusterRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+Stack APIs through a POP gatewa y
 
 | current | Integer | Yes | The current page number. The value starts from 1. |
 |---|---|---|---|
 | size | Integer | Yes | The number of entries per page. |
 | clusterName | String | No | The name of the cluster. This parameter supports fuzzy search. |
-
-| Item | Content |
-|---|---|
-| URL | /k8s/getClusterList |
-| Method | POST |
-| Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-| URL | /k8s/updateCluster |
-| Method | POST |
-
-y
 
 **Query all clusters**
 
@@ -927,7 +1267,11 @@ Query the list of all Kubernetes clusters without pagination.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /k8s/getClusterList |
+| Method | POST |
+| Content-Type | application/json |
 
 This API requires no request parameters.
 
@@ -939,27 +1283,22 @@ Update the information of a Kubernetes cluster.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /k8s/updateCluster |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters (based on UpdateK8sClusterRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | clusterCode | String | Yes | The cluster code. |
 | k8sClusterAttribute | String | Yes | The extended attributes of the cluster (JSON string). |
-
-| Item | Content |
-|---|---|
-| URL | /k8s/cancelImportCluster |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| k8sClusterCode | String | Yes | The cluster code. |
-
-y
-
-**Request parameters (based on UpdateK8sClusterRequest)**
 
 **Cancel cluster import**
 
@@ -969,9 +1308,19 @@ Cancel the import of a Kubernetes cluster.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /k8s/cancelImportCluster |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on**
 
 **CancelImportK8sClusterRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| k8sClusterCode | String | Yes | The cluster code. |
 
 **Test the cluster connection**
 
@@ -981,31 +1330,21 @@ Test whether the Kubernetes cluster connection is normal.
 
 **Request information**
 
+Stack APIs through a POP gatewa y
+
 | Item | Content |
 |---|---|
 | URL | /k8s/checkConnectCluster |
 | Method | POST |
 | Content-Type | application/json |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| clusterCode | String | Yes | The cluster code. |
-
-| Item | Content |
-|---|---|
-| URL | /k8s/getK8sClusterName |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| clusterCode | String | Yes | The cluster code. |
-
-y
-
 **Request parameters (based on**
 
 **CheckK8sClusterConnectRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| clusterCode | String | Yes | The cluster code. |
 
 **Query the cluster name**
 
@@ -1015,13 +1354,25 @@ Query the cluster name based on the cluster code.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /k8s/getK8sClusterName |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on GetK8sClusterNameRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| clusterCode | String | Yes | The cluster code. |
 
 **Query cluster information associated with an instance**
 
 **API description**
 
-Query the associated Kubernetes cluster information based on the instance ID.
+Query the associated Kubernetes cluster information based on the instance ID. Stack APIs through a POP gatewa y
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -1029,15 +1380,11 @@ Query the associated Kubernetes cluster information based on the instance ID.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on GetK8sClusterInfoRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Request information**
-
-**Request parameters (based on GetK8sClusterInfoRequest)**
 
 **Common Request call examples**
 
@@ -1056,9 +1403,9 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
 publicstaticvoidmain(String[]args)throwsException{
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```java
+```
     public static void main(String[] args) throws Exception {
         IAcsClient client = createClient();
         // ========== Import a self-managed Kubernetes cluster ==========
@@ -1075,7 +1422,11 @@ y
         getK8sClusterName(client, clusterCode);
         // ========== Cancel cluster import ==========
         // cancelImportCluster(client, clusterCode);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -1084,11 +1435,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -1096,8 +1454,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -1105,7 +1466,7 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 request.setSysMethod(MethodType.POST);
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
         request.setSysMethod(MethodType.POST);
@@ -1113,7 +1474,11 @@ y
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Import a self-managed Kubernetes cluster (based on ImportK8sClusterRequest)
 ```
@@ -1124,6 +1489,7 @@ y
     private static String importSelfBuiltCluster(IAcsClient client) throws Exception {
         Map<String, Object> request = new HashMap<>();
         request.put("k8sClusterName", "my-self-built-cluster");         // [Required] Cl
+uster name
         request.put("k8sClusterType", "self-built");                    // [Optional] Cl
 uster type: self-built
         request.put("configContent", "your-kubeconfig-content");        // [Required] Ku
@@ -1143,8 +1509,11 @@ clusterCode);
             System.out.println("importSelfBuiltCluster failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Import an ACK cluster (based on ImportK8sClusterRequest)
 ```
@@ -1159,13 +1528,14 @@ tion {
 cluster ID
         Map<String, Object> request = new HashMap<>();
         request.put("k8sClusterName", "my-cs-cluster");                  // [Required] C
+luster name
         request.put("k8sClusterType", "container-service");              // [Required] C
 luster type: container-service
         request.put("k8sClusterAttribute", attribute);                   // [Required] C
 luster extended attributes
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         CommonRequest commonRequest = createBaseRequest("/k8s/importCluster");
@@ -1183,8 +1553,11 @@ clusterCode);
             System.out.println("importContainerServiceCluster failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Query the cluster list (based on ListK8sClusterRequest)
 ```
@@ -1204,8 +1577,13 @@ Cluster name (fuzzy search)
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listClusters: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Query all clusters
 ```
@@ -1219,10 +1597,9 @@ response.getHttpResponse().getHttpContentString());
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("getClusterList: " +
 response.getHttpResponse().getHttpContentString());
-    }
 ```
 
-y
+`}` Stack APIs through a POP gatewa y
 
 ```
     /**
@@ -1241,8 +1618,13 @@ Cluster code
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("checkConnectCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Query the cluster name (based on GetK8sClusterNameRequest)
 ```
@@ -1259,8 +1641,13 @@ Cluster code
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getK8sClusterName: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Query the cluster information associated with an instance (based on
 GetK8sClusterInfoRequest)
@@ -1283,15 +1670,9 @@ FormatType.JSON);
 response.getHttpResponse().getHttpContentString());
 ```
 
-| k8sClusterType | Description |
-|---|---|
-| self-built | Self-managed Kubernetes cluster. You must provide the KubeConfig. |
-| container-service | ACK cluster. You must provide the cluster ID. |
-
-y
+Stack APIs through a POP gatewa y `}`
 
 ```
-    }
     /**
      * Update a cluster (based on UpdateK8sClusterRequest)
 ```
@@ -1310,8 +1691,13 @@ Cluster extended attributes in JSON format
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("updateCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Cancel cluster import (based on CancelImportK8sClusterRequest)
 ```
@@ -1328,14 +1714,22 @@ luster code
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("cancelImportCluster: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **Cluster type description**
 
+| k8sClusterType | Description |
+|---|---|
+| self-built | Self-managed Kubernetes cluster. You must provide the KubeConfig. |
+| container-service | ACK cluster. You must provide the cluster ID. |
+
 **Response code description**
+
+Stack APIs through a POP gatewa y
 
 | Code | Description |
 |---|---|
@@ -1344,15 +1738,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-| Item | Content |
-|---|---|
-| URL | /gatewayInstance/createInstance |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-#### API call - Instance management
+#### 2.2.2 API call - Instance management
 
 **Overview**
 
@@ -1375,7 +1761,15 @@ Create a new gateway instance.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /gatewayInstance/createInstance |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on CreateGwInstanceRequest)**
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1392,15 +1786,23 @@ Create a new gateway instance.
 | deployConfigContent | String | No | The custom deployment configuration. |
 | accessModeConfigCon tent | String | No | The access mode configuration. |
 
-y
-
 **Query the list of instances**
+
+Stack APIs through a POP gatewa y
+
+**API description**
+
+Query gateway instances by page.
+
+**Request information**
 
 | Item | Content |
 |---|---|
 | URL | /gatewayInstance/listInstances |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on ListGwInstancesRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1412,15 +1814,7 @@ y
 | status | Integer | No | Filter by instance status. |
 | brokerEngineType | String | No | Filter by engine type. |
 
-y
-
-**API description**
-
-Query gateway instances by page.
-
-**Request information**
-
-**Request parameters (based on ListGwInstancesRequest)**
+**List all instances**
 
 **API description**
 
@@ -1428,28 +1822,13 @@ List all gateway instances without pagination.
 
 **Request information**
 
+Stack APIs through a POP gatewa y
+
 | Item | Value |
 |---|---|
 | URL | /gatewayInstance/listAllInstances |
 | Method | POST |
 | Content-Type | application/json |
-
-| Item | Value |
-|---|---|
-| URL | /gatewayInstance/getInstanceInfo |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the instance. |
-
-| Item | Content |
-|---|---|
-
-y
-
-**Request parameters**
 
 No request parameters are required.
 
@@ -1461,7 +1840,17 @@ Query detailed information by instance ID.
 
 **Request information**
 
+| Item | Value |
+|---|---|
+| URL | /gatewayInstance/getInstanceInfo |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on GetInstanceInfoRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the instance. |
 
 **Modify an instance**
 
@@ -1471,29 +1860,22 @@ Modify the name of the instance.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+
+Stack APIs through a POP gatewa y
+
 | URL | /gatewayInstance/modifyInstance |
 |---|---|
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on ModifyInstanceRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the instance. |
 | instanceName | String | Yes | The new name of the instance. |
-
-| Item | Content |
-|---|---|
-| URL | /gatewayInstance/deleteInstance |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the instance. |
-
-y
-
-**Request parameters (based on ModifyInstanceRequest)**
 
 **Delete an instance**
 
@@ -1503,13 +1885,25 @@ Delete the specified gateway instance.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /gatewayInstance/deleteInstance |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on DeleteGwInstanceRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the instance. |
 
 **Restart an instance**
 
 **API description**
 
-Restart the specified gateway instance.
+Restart the specified gateway instance. Stack APIs through a POP gatewa y
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -1517,25 +1911,13 @@ Restart the specified gateway instance.
 | Method | POST |
 | Content-Type | application/json |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the instance. |
-
-| Item | Content |
-|---|---|
-| URL | /gatewayInstance/stopInstance |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the instance. |
-
-y
-
-**Request information**
-
 **Request parameters (based on RestartGwInstanceRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the instance. |
+
+**Stop instance**
 
 **API description**
 
@@ -1543,11 +1925,25 @@ Stop the specified gateway instance.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /gatewayInstance/stopInstance |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on StopInstanceRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the instance. |
+
+**Upgrade instance**
 
 **API description**
 
-Upgrade the instance to the latest version.
+Upgrade the instance to the latest version. Stack APIs through a POP gatewa y
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -1555,26 +1951,13 @@ Upgrade the instance to the latest version.
 | Method | POST |
 | Content-Type | application/json |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the instance. |
-
-| Item | Content |
-|---|---|
-| URL | /gatewayInstance/modifyResource |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the instance. |
-| instanceClass | String | No | The specification of the instance. |
-
-y
-
-**Request information**
-
 **Request parameters (based on UpgradeGwInstanceRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the instance. |
+
+**Modify instance resources**
 
 **API description**
 
@@ -1582,23 +1965,26 @@ Scale the instance up or down by modifying its specification and node count.
 
 **Request information**
 
-**Request parameters (based on**
-
-| instanceNumber | Integer | No | The number of instance nodes. |
-|---|---|---|---|
-| specificationTemplate | Integer | No | The specification template. |
-
 | Item | Content |
 |---|---|
-| URL | /gatewayInstance/getResource |
+| URL | /gatewayInstance/modifyResource |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on**
+
+**ModifyInstanceResourceRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the instance. |
+| instanceClass | String | No | The specification of the instance. |
 
-y
+Stack APIs through a POP gatewa y
+
+| instanceNumber | Integer | No | The number of instance nodes. |
+|---|---|---|---|
+| specificationTemplate | Integer | No | The specification template. |
 
 **Query instance resources**
 
@@ -1608,7 +1994,17 @@ Query the specification and node information of an instance.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /gatewayInstance/getResource |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on GetInstanceResourceRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the instance. |
 
 **Common request call examples**
 
@@ -1618,7 +2014,7 @@ The following examples show how to call the instance management API by using Com
 import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.HashMap; import java.util.Map; public class InstanceApiDemo {
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
     // ========== Environment configuration (modify according to the actual
@@ -1643,7 +2039,11 @@ environment) ==========
         getResource(client, instanceId);
         // ========== Delete the instance ==========
         // deleteInstance(client, instanceId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -1652,11 +2052,18 @@ environment) ==========
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -1664,25 +2071,22 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
 ```
 
-t `tH` `dP` t
+`t` `tH` `dP` `t` `("` `i` `ti`
 
 ```
-("
+id" ORGANIZATIONID)
 ```
 
-i `ti`
+Stack APIs through a POP gatewa y
 
 ```
-id"
-```
-
-y
-
-```java
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -1692,7 +2096,11 @@ y
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Create an instance (based on CreateGwInstanceRequest)
 ```
@@ -1730,11 +2138,9 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createInstance failed: " + result.getString("msg"));
             return null;
-        }
-    }
 ```
 
-y
+`}` `}` Stack APIs through a POP gatewa y
 
 ```
     /**
@@ -1761,8 +2167,13 @@ createBaseRequest("/gatewayInstance/listInstances");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listInstances: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Query instance details (based on GetInstanceInfoRequest)
 ```
@@ -1774,13 +2185,19 @@ response.getHttpResponse().getHttpContentString());
 Exception {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
+nstance ID
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/getInstanceInfo");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getInstanceInfo: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Modify the instance name (based on ModifyInstanceRequest)
 ```
@@ -1792,10 +2209,10 @@ response.getHttpResponse().getHttpContentString());
 xception {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
-request.put("instanceName","modified-instance-name");
+nstance ID request.put("instanceName","modified-instance-name");
 ```
 
-`//` y
+`//` Stack APIs through a POP gatewa y
 
 ```
 equest.put( staceae,
@@ -1809,15 +2226,20 @@ stace ae);
 
 `//`
 
-```
+```java
 【Required】New instance name
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/modifyInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Query instance resources (based on GetInstanceResourceRequest)
 ```
@@ -1829,13 +2251,19 @@ response.getHttpResponse().getHttpContentString());
 ption {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
+nstance ID
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/getResource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getResource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Modify instance resources (based on ModifyInstanceResourceRequest)
 ```
@@ -1847,6 +2275,7 @@ response.getHttpResponse().getHttpContentString());
 xception {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
+nstance ID
         request.put("instanceClass", "large");                           //
 【Optional】Instance specification
         request.put("instanceNumber", 3);                                //
@@ -1856,11 +2285,11 @@ createBaseRequest("/gatewayInstance/modifyResource");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyResource: " +
 response.getHttpResponse().getHttpContentString());
-    }
 ```
 
-y
+`}` Stack APIs through a POP gatewa y
 
 ```
     /**
@@ -1874,13 +2303,19 @@ y
 Exception {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
+nstance ID
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/restartInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("restartInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Stop the instance (based on StopInstanceRequest)
 ```
@@ -1892,13 +2327,19 @@ response.getHttpResponse().getHttpContentString());
 eption {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
+nstance ID
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/stopInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("stopInstance: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Delete the instance (based on DeleteGwInstanceRequest)
 ```
@@ -1910,12 +2351,24 @@ response.getHttpResponse().getHttpContentString());
 xception {
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", gwInstanceId);                       // 【Required】I
+nstance ID
         CommonRequest commonRequest =
 createBaseRequest("/gatewayInstance/deleteInstance");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteInstance: " +
 ```
+
+Stack APIs through a POP gatewa y
+
+```
+response.getHttpResponse().getHttpContentString());
+```
+
+`}` `}`
+
+**Instance status description**
 
 | status | Status name | Description |
 |---|---|---|
@@ -1928,6 +2381,8 @@ FormatType.JSON);
 | 6 | updating | The system is updating (upgrading or scaling). |
 | 7 | stopping | The instance is stopping. |
 
+**Engine type description**
+
 | brokerEngineType | Description |
 |---|---|
 | SCG | Spring Cloud Gateway (API gateway). |
@@ -1935,19 +2390,9 @@ FormatType.JSON);
 | SHARED SCG _ | Shared Spring Cloud Gateway. |
 | CLOUD NATIVE GATEWAY _ _ | Cloud-native gateway. |
 
-y
-
-```
-response.getHttpResponse().getHttpContentString());
-    }
-}
-```
-
-**Instance status description**
-
-**Engine type description**
-
 **Response code description**
+
+Stack APIs through a POP gatewa y
 
 | code | Description |
 |---|---|
@@ -1956,17 +2401,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-| Module | Documentation | API path prefix | Description |
-|---|---|---|---|
-| Cluster management | API call - Cluster management | /k8s | Import Kubernetes clusters, perform connection tests, and query cluster information. |
-| Instance management | API call - Instance management | /gatewayInstance | Create gateway instances. Scale gateway instances. Restart gateway instances. Upgrade gateway instances. |
-
-| Module | Documentation | API path prefix | Core features |
-|---|---|---|---|
-
-y
-
-#### API Gateway
+#### 2.2.3 API Gateway
 
 This document provides an overview of the OpenAPI interface system for API Gateway (SCG, Spring Cloud Gateway). The API Gateway offers complete traffic management, service governance, and security authentication features. It supports automated management and integration through OpenAPI.
 
@@ -1975,6 +2410,18 @@ This document provides an overview of the OpenAPI interface system for API Gatew
 **API module overview**
 
 **Infrastructure layer**
+
+| Module | Documentation | API path prefix | Description |
+|---|---|---|---|
+| Cluster management | API call - Cluster management | /k8s | Import Kubernetes clusters, perform connection tests, and query cluster information. |
+| Instance management | API call - Instance management | /gatewayInstance | Create gateway instances. Scale gateway instances. Restart gateway instances. Upgrade gateway instances. |
+
+**API Gateway business layer**
+
+| Module | Documentation | API path prefix | Core features |
+|---|---|---|---|
+
+Stack APIs through a POP gatewa y
 
 | Route management | API call - Route management | /route | Create routes. Configure predicates and filters. Debug routes. |
 |---|---|---|---|
@@ -1987,11 +2434,6 @@ This document provides an overview of the OpenAPI interface system for API Gatew
 | Route plugin management | API call - Route plugin management | /routePlugin | Create and configure route-level plugins. |
 | Group management | API call - Group management | /group | Group routes. Configure base paths. Associate domain names. |
 
-| Header | Value | Description |
-|---|---|---|
-
-y
-
 **Authentication method**
 
 API Gateway OpenAPI supports two authentication methods:
@@ -2000,20 +2442,23 @@ API Gateway OpenAPI supports two authentication methods:
 
 This method applies to on-premises deployments or self-managed Kubernetes environments.
 
+| Header | Value | Description |
+|---|---|---|
+
+Stack APIs through a POP gatewa y
+
 | X-CSB-TOKEN | csb@2022 | The authentication token. |
 |---|---|---|
 | X-CSB-OPENAPI | true | The OpenAPI call identifier. |
+
+**Enterprise edition environment**
+
+This method applies to the Alibaba Cloud Enterprise Edition environment. You must use a valid AccessKey ID and AccessKey secret for signature authentication.
 
 | Header | Value | Description |
 |---|---|---|
 | x-acs-organizationid | Organization ID | The identifier of the enterprise organization. |
 | x-acs-caller-sdk-source | Source identifier | The identifier of the call source. |
-
-y
-
-**Enterprise edition environment**
-
-This method applies to the Alibaba Cloud Enterprise Edition environment. You must use a valid AccessKey ID and AccessKey secret for signature authentication.
 
 **Typical usage scenarios**
 
@@ -2044,6 +2489,11 @@ This method applies to the Alibaba Cloud Enterprise Edition environment. You mus
 3. Manage instances. Upgrade instances.
 4. Manage policy configurations. Adjust throttling thresholds.
 5. Manage routes. Debug and test routes.
+Stack APIs through a POP gatewa y
+
+**Core data types**
+
+**Source type (SCG)**
 
 | sourceType | Type name | Description |
 |---|---|---|
@@ -2051,6 +2501,8 @@ This method applies to the Alibaba Cloud Enterprise Edition environment. You mus
 | 2 | Microservice namespace (EDAS) | The EDAS microservice namespace. |
 | 3 | Eureka | The Eureka registration center. |
 | 5 | Database | The database origin. |
+
+**Authentication type**
 
 | authType | Type name | Description |
 |---|---|---|
@@ -2062,22 +2514,18 @@ This method applies to the Alibaba Cloud Enterprise Edition environment. You mus
 | 6 | API GATEWAY _ | API Gateway authentication. |
 | 7 | CSB AUTH _ | CSB authentication. |
 
+**Certificate type**
+
 | certType | Type name | Description |
 |---|---|---|
 | 0 | Server certificate | The HTTPS domain name certificate. |
 
-y
-
-**Core data types**
-
-**Source type (SCG)**
-
-**Authentication type**
-
-**Certificate type**
+Stack APIs through a POP gatewa y
 
 | 1 | CA certificate | Two-way TLS authentication. |
 |---|---|---|
+
+**Instance status**
 
 | status | Status name | Description |
 |---|---|---|
@@ -2089,10 +2537,16 @@ y
 | 6 | updating | The instance is updating. |
 | 7 | stopping | The instance is stopping. |
 
+**Cluster type**
+
 | k8sClusterType | Description |
 |---|---|
 | self-built | Self-built Kubernetes. |
 | container-service | Container Service for Kubernetes. |
+
+**Response format**
+
+All APIs return a unified JSON format. The response codes are described as follows:
 
 | code | Description |
 |---|---|
@@ -2100,37 +2554,17 @@ y
 | 400 | The parameters are invalid. |
 | 403 | You do not have sufficient permissions. |
 
-y
-
-**Instance status**
-
-**Cluster type**
-
-**Response format**
-
-All APIs return a unified JSON format. The response codes are described as follows:
+Stack APIs through a POP gatewa y
 
 | 500 | An internal server error occurred. |
 |---|---|
 
-| Item | Content |
-|---|---|
-| URL | /source/createSource |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| sourceName | String | Yes | The name of the origin. |
-
-y
-
-##### API call - Origin management
+##### 2.2.3.1 API call - Origin management
 
 **Overview**
 
 The origin management module provides functions to create, delete, modify, and query service registration centers. Origins are used for service discovery. SCG supports four origin types: Nacos, microservice namespace (EDAS), Eureka, and Database.
+**Applicable engine**: SCG (API Gateway)
 **API path prefix**: `/source`
 
 **Authentication method**
@@ -2148,12 +2582,27 @@ Create an origin for a service registry.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /source/createSource |
+| Method | POST |
+| Content-Type | application/json |
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| sourceName | String | Yes | The name of the origin. |
+
+Stack APIs through a POP gatewa y
 
 | sourceType | Integer | Yes | The type of the origin: 1: Nacos 2: Microservice space (EDAS) 3: Eureka 5: Database |
 |---|---|---|---|
 | description | String | No | The description of the origin. |
 | sourceStruct | Object | Yes | The configuration structure of the origin. Note The configuration structure varies depending on the origin type. |
+
+**sourceStruct configurations for different origin types**
+
+**Nacos (sourceType=1):**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2163,14 +2612,12 @@ Create an origin for a service registry.
 | nacosAccessKey | String | No | The AccessKey for Nacos authentication. |
 | nacosSecretKey | String | No | The SecretKey for Nacos authentication. |
 
-y
-
-**sourceStruct configurations for different origin types**
-
-**Nacos (sourceType=1):**
+Stack APIs through a POP gatewa y
 
 | checkType | Integer | No | The validation type: 0: No validation 1: Validate connection |
 |---|---|---|---|
+
+**Microservice namespace/EDAS (sourceType=2):**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2181,18 +2628,18 @@ y
 | edasAccessKey | String | Yes | The AccessKey of EDAS. |
 | edasSecretKey | String | Yes | The SecretKey of EDAS. |
 
+**Eureka (sourceType=3):**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
-y
-
-**Microservice namespace/EDAS (sourceType=2):**
-
-**Eureka (sourceType=3):**
+Stack APIs through a POP gatewa y
 
 | eurekaRegistry | String | Yes | The endpoint of the Eureka registration center. |
 |---|---|---|---|
 | checkType | Integer | No | The verification type: 0: No verification 1: Verify connection |
+
+**Database (sourceType=5):**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2204,13 +2651,6 @@ y
 | maxIdleConnection | Integer | No | The maximum number of idle connections. |
 | connectionIdleTime | Integer | No | The idle time of a connection, in seconds. |
 
-| Item | Content |
-|---|---|
-
-y
-
-**Database (sourceType=5):**
-
 **Query the origin list**
 
 **API description**
@@ -2218,6 +2658,11 @@ y
 Query origins by page.
 
 **Request information**
+
+| Item | Content |
+|---|---|
+
+Stack APIs through a POP gatewa y
 
 | URL | /source/listSources |
 |---|---|
@@ -2232,16 +2677,6 @@ Query origins by page.
 | sourceName | String | No | The name of the origin. Fuzzy search is supported. |
 | sourceType | Integer | No | The filter condition for the origin type. |
 
-| Item | Content |
-|---|---|
-| URL | /source/getSource |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-**Request parameters**
-
 **Query origin details**
 
 **API description**
@@ -2250,26 +2685,18 @@ Query detailed information by origin ID.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /source/getSource |
+| Method | POST |
+| Content-Type | application/json |
+
+Stack APIs through a POP gatewa y
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | sourceId | String | Yes | The ID of the origin. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-| Item | Content |
-|---|---|
-| URL | /source/modifySource |
-| Method | POST |
-| Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-| URL | /source/deleteSource |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-**Request parameters**
 
 **Modify origin**
 
@@ -2279,7 +2706,11 @@ Modify an existing origin configuration.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /source/modifySource |
+| Method | POST |
+| Content-Type | application/json |
 
 Same as the parameters for creating an origin. You must also specify `sourceId` .
 
@@ -2291,14 +2722,18 @@ Delete the specified origin.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /source/deleteSource |
+| Method | POST |
+| Content-Type | application/json |
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | sourceId | String | Yes | The ID of the origin. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
 
 **Common Request call examples**
 
@@ -2325,9 +2760,9 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
         // String eurekaSourceId = createEurekaSource(client);
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```java
+```
         // ========== Create Database origin ==========
         // String dbSourceId = createDatabaseSource(client);
         // ========== List origins ==========
@@ -2338,7 +2773,11 @@ y
         modifySource(client, nacosSourceId);
         // ========== Delete origin ==========
         deleteSource(client, nacosSourceId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -2347,11 +2786,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -2359,8 +2805,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -2370,11 +2819,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
      * Create Nacos origin
@@ -2422,8 +2875,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createNacosSource failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create EDAS namespace origin
 ```
@@ -2437,7 +2893,7 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
 【Required】EDASnamespaceID
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
 【Required】EDAS namespace ID
@@ -2470,8 +2926,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createEdasSource failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create Eureka origin
 ```
@@ -2494,7 +2953,7 @@ equired】Eureka registration center address
 CommonRequestcommonRequest=createBaseRequest("/source/createSource");
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         CommonRequest commonRequest  createBaseRequest(/source/createSource);
@@ -2511,8 +2970,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createEurekaSource failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create Database origin
 ```
@@ -2551,7 +3013,7 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         if (result.getInteger("code") == 200) {
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
             String sourceId = result.getString("data");
@@ -2561,8 +3023,11 @@ y
             System.out.println("createDatabaseSource failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * List origins
 ```
@@ -2586,8 +3051,13 @@ result.getString("msg"));
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listSources: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Get origin details
 ```
@@ -2596,7 +3066,11 @@ response.getHttpResponse().getHttpContentString());
 
 ```java
     private static void getSource(IAcsClient client, String sourceId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("sourceId", sourceId);                                  // 【Required
 】Origin ID
@@ -2606,11 +3080,11 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getSource: " +
 response.getHttpResponse().getHttpContentString());
-    }
 ```
 
-y
+`}` Stack APIs through a POP gatewa y
 
 ```
     /**
@@ -2641,8 +3115,13 @@ on {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifySource: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Delete origin
 ```
@@ -2661,10 +3140,13 @@ on {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteSource: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}` Stack APIs through a POP gatewa y
+
+**Origin type description (SCG)**
 
 | sourceType | Type name | Description |
 |---|---|---|
@@ -2673,10 +3155,14 @@ response.getHttpResponse().getHttpContentString());
 | 3 | Eureka | The Eureka registration center. |
 | 5 | Database | The database origin (MySQL/PostgreSQL). |
 
+**Database type description**
+
 | databaseType | Type name | Description |
 |---|---|---|
 | 0 | MySQL | The MySQL database. |
 | 1 | PostgreSQL | The PostgreSQL database. |
+
+**Response code description**
 
 | code | Description |
 |---|---|
@@ -2685,35 +3171,13 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-y
-
-**Origin type description (SCG)**
-
-**Database type description**
-
-**Response code description**
-
-##### API call - Service management
+##### 2.2.3.2 API call - Service management
 
 **Overview**
 
 The service management module provides features to create, delete, modify, and query backend services. A service is the target of route forwarding. It can be a static node, a discovered service, or an imported service.
 **Applicable engine**: SCG / Higress (The API is engine-agnostic and works universally.)
-
-| Item | Content |
-|---|---|
-| URL | /microservice/createService |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| name | String | Yes | The name of the service (identifier in the gateway). |
-| upstreamType | Integer | Yes | The upstream type: 1: Static node 2: Service discovery 3: Service import |
-| loadBalanceType | Integer | Yes | The load balancing type (see description below). |
-
-y
+Stack APIs through a POP gatewa y
 **API path prefix**: `/microservice/**`
 
 **Authentication method**
@@ -2731,7 +3195,22 @@ Create a new backend service.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /microservice/createService |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on CreateMicroserviceRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| name | String | Yes | The name of the service (identifier in the gateway). |
+| upstreamType | Integer | Yes | The upstream type: 1: Static node 2: Service discovery 3: Service import |
+| loadBalanceType | Integer | Yes | The load balancing type (see description below). |
+
+Stack APIs through a POP gatewa y
 
 | protocol | String | Yes | The protocol: HTTP GRPC Webservice Dubbo HSF |
 |---|---|---|---|
@@ -2743,12 +3222,16 @@ Create a new backend service.
 | isOpenHealthCheck | Boolean | No | Specifies whether to enable health check. |
 | healthCheckStruct | HealthCheckStruct | No | The health check configuration (SCG). |
 
-y
+Stack APIs through a POP gatewa y
 
 | activeHealthCheckStru ct | ActiveHealthCheckStru ct | No | The active health check configuration (Higress). |
 |---|---|---|---|
 | proxyServerName | String | No | The name of the proxy server. |
 | isDisasterRecovery | Boolean | No | Specifies whether the service is for disaster recovery. Default value is false. |
+
+**Load balancing type description (based on**
+
+**LoadBalanceTypeEnum)**
 
 | Value | Type name | Description | Applicable scenario |
 |---|---|---|---|
@@ -2760,15 +3243,40 @@ y
 | 6 | CONSISTENT HASH _ | Consistent hash. | Higress Nacos |
 | 7 | LEAST CONN _ | Least connections. | Higress Nacos |
 
-y
-
-**Load balancing type description (based on**
-
-**LoadBalanceTypeEnum)**
-
 **serviceStruct configuration description**
 
 **Static node (upstreamType=1):**
+
+Stack APIs through a POP gatewa y `{`
+
+```json
+    "nodes": [
+```
+
+`{`
+
+```json
+            "ip": "192***.*.100",     // Required. The IP address of the node.
+            "port": 8080,              // Required. The port.
+            "weight": 100,             // Optional. The weight. Default value is 100.
+            "enable": true             // Optional. Specifies whether to enable the node
+. Default value is true.
+```
+
+`}` `]` `}`
+
+**Nacos service discovery (upstreamType=2):**
+
+`{`
+
+```json
+    "nacosNamespaceId": "public",      // Required. The ID of the Nacos namespace.
+    "nacosGroupName": "DEFAULT_GROUP"  // Optional. The name of the Nacos group.
+```
+
+`}`
+
+**HealthCheckStruct structure (SCG health check)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2781,36 +3289,11 @@ y
 | httpSuccesses | int | Yes | The success threshold. |
 | httpFailures | int | Yes | The failure threshold. |
 
-y
+Stack APIs through a POP gatewa y
 
-```json
-{
-    "nodes": [
-        {
-            "ip": "192***.*.100",     // Required. The IP address of the node.
-            "port": 8080,              // Required. The port.
-            "weight": 100,             // Optional. The weight. Default value is 100.
-            "enable": true             // Optional. Specifies whether to enable the node
-. Default value is true.
-        }
-```
+**ActiveHealthCheckStruct structure (Higress active health**
 
-]
-
-```
-}
-```
-
-**Nacos service discovery (upstreamType=2):**
-
-```json
-{
-    "nacosNamespaceId": "public",      // Required. The ID of the Nacos namespace.
-    "nacosGroupName": "DEFAULT_GROUP"  // Optional. The name of the Nacos group.
-}
-```
-
-**HealthCheckStruct structure (SCG health check)**
+**check)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2824,24 +3307,26 @@ y
 | httpHost | String | No | The host for the HTTP health check. |
 | expectedStatuses | List | Conditional | The expected status codes, such as ["200", "301"]. |
 
-|  |  |  | protocol=http |
+|   |   |   | protocol=http |
 |---|---|---|---|
-
-y
-
-**ActiveHealthCheckStruct structure (Higress active health**
 
 **Query the list of services**
 
 **API description**
 
-Query the list of services by page.
+Query the list of services by page. Stack APIs through a POP gatewa y
+
+**Request information**
 
 | Item | Content |
 |---|---|
 | URL | /microservice/listServices |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on**
+
+**GatewayServiceListByPageRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -2855,13 +3340,15 @@ Query the list of services by page.
 | sourceTypeList | List | No | The list of source types. |
 | provider | String | No | The provider of the AI gateway. |
 
-y
+Stack APIs through a POP gatewa y
+
+**Query service details**
+
+**API description**
+
+Query the detailed information of a service by its service ID.
 
 **Request information**
-
-**Request parameters (based on**
-
-**GatewayServiceListByPageRequest)**
 
 | Item | Content |
 |---|---|
@@ -2874,24 +3361,6 @@ y
 | serviceId | String | Yes | The ID of the service. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-| Item | Content |
-|---|---|
-| URL | /microservice/modifyService |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-**Query service details**
-
-**API description**
-
-Query the detailed information of a service by its service ID.
-
-**Request information**
-
-**Request parameters**
-
 **Modify a service**
 
 **API description**
@@ -2900,7 +3369,11 @@ Modify an existing service configuration.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /microservice/modifyService |
+| Method | POST |
+| Content-Type | application/json |
 
 The parameters are the same as those for creating a service. You must also specify
 
@@ -2908,25 +3381,9 @@ The parameters are the same as those for creating a service. You must also speci
  serviceId .
 ```
 
-| Item | Content |
-|---|---|
-| URL | /microservice/modifyNode |
-| Method | POST |
-| Content-Type | application/json |
+Stack APIs through a POP gatewa y
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| serviceId | String | Yes | The ID of the service. |
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| nodes | List | Yes | The list of nodes. |
-
-| Item | Content |
-|---|---|
-| URL | /microservice/deleteService |
-| Method | POST |
-| Content-Type | application/json |
-
-y
+**Modify service nodes**
 
 **API description**
 
@@ -2934,7 +3391,19 @@ Modify the node configuration of a service individually.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /microservice/modifyNode |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on UpdateNodeRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| serviceId | String | Yes | The ID of the service. |
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| nodes | List | Yes | The list of nodes. |
 
 **Delete a service**
 
@@ -2944,12 +3413,26 @@ Delete a specified service.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /microservice/deleteService |
+| Method | POST |
+| Content-Type | application/json |
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | serviceId | String | Yes | The ID of the service. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
+
+**Delete services in batches**
+
+**API description**
+
+Delete multiple services in batches.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -2962,25 +3445,19 @@ Delete a specified service.
 | serviceIds | List | Yes | The list of service IDs. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-| Item | Content |
-|---|---|
-| URL | /microservice/listAllServices |
-
-y
-
-**API description**
-
-Delete multiple services in batches.
-
-**Request information**
-
-**Request parameters**
+**List all services**
 
 **API description**
 
 List all services under the gateway instance (without pagination).
 
 **Request information**
+
+| Item | Content |
+|---|---|
+| URL | /microservice/listAllServices |
+
+Stack APIs through a POP gatewa y
 
 | Method | POST |
 |---|---|
@@ -2990,10 +3467,6 @@ List all services under the gateway instance (without pagination).
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | serviceType | Integer | No | The filter for service type. |
-
-y
-
-**Request parameters**
 
 **Common Request call examples**
 
@@ -3012,7 +3485,7 @@ aged ACK console address
     private static final String ENTERPRISE_ENDPOINT = "csb.cn-****.aliyuncs.com";
 ```
 
-i t
+`i` `t`
 
 ```
 tti
@@ -3024,13 +3497,13 @@ tti
 lSti ACCESSKEYID
 ```
 
-" k
+`"` `k`
 
 ```
 id"
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
     private static final String ACCESS_KEY_ID = "your-access-key-id";
@@ -3044,11 +3517,19 @@ y
         String serviceId = createFixedNodeService(client);
         // ========== Create Nacos service discovery service ==========
         // String nacosServiceId = createNacosService(client);
+        // ========== List services ==========
         listServices(client);
+        // ========== Get service details ==========
         getService(client, serviceId);
+        // ========== Modify service ==========
         modifyService(client, serviceId);
+        // ========== Delete service ==========
         deleteService(client, serviceId);
-    }
+```
+
+`}`
+
+```
     /**
      * Create client (common for self-managed ACK and Enterprise Edition)
 ```
@@ -3064,11 +3545,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -3076,14 +3564,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-}
 ```
 
-y
+`}` Stack APIs through a POP gatewa y `}` `}`
 
 ```java
-        }
-    }
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -3093,7 +3578,11 @@ y
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Create fixed-node service
 ```
@@ -3126,6 +3615,7 @@ Upstream type: 1 - fixed node
         request.put("loadBalanceType", 3);                                  // [Required]
 Load balancing type: 3 - round robin
         request.put("protocol", "HTTP");                                    // [Required]
+Protocol
         request.put("serviceStruct", serviceStruct);                        //
 [Required] Service structure configuration
         request.put("serviceType", 0);                                      // [Optional]
@@ -3136,13 +3626,13 @@ Service type: 0 - RPC service
 Whether health check is enabled CommonRequestcommonRequest=createBaseRequest("/microservice/createService");
 ```
 
-y `Co` o
+Stack APIs through a POP gatewa y `Co` `o`
 
 ```
 equestco
 ```
 
-o
+`o`
 
 ```java
 equest ceateBaseequest(/ cose ce/ceateSe ce);
@@ -3160,8 +3650,11 @@ serviceId);
             System.out.println("createFixedNodeService failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create Nacos service discovery service
 ```
@@ -3187,6 +3680,7 @@ Upstream type: 2 - service discovery
         request.put("loadBalanceType", 3);                                  // [Required]
 Load balancing type
         request.put("protocol", "HTTP");                                    // [Required]
+Protocol
         request.put("serviceName", "user-service");                         //
 [Required] Service name in registry
         request.put("serviceSourceType", 1);                                // [Required]
@@ -3200,7 +3694,7 @@ Source type: 1 - NACOS
 FormatType.JSON);
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         CommonResponse response = client.getCommonResponse(commonRequest);
@@ -3214,9 +3708,13 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createNacosService failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
+     * Create service with health check
 ```
 
 `*/`
@@ -3256,7 +3754,7 @@ Request timeout (seconds)
 [Required] Whether enabled
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         // activeHealthCheckStruct.put("protocol", "http");                   // [Requir
@@ -3299,8 +3797,11 @@ serviceId);
             System.out.println("createServiceWithHealthCheck failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * List services (based on GatewayServiceListByPageRequest)
 ```
@@ -3314,9 +3815,9 @@ result.getString("msg"));
 [Required] Gateway instance ID
 ```
 
-`//` y
+`//` Stack APIs through a POP gatewa y
 
-```
+```java
         request.put("current", 1);                                          // [Required]
 Current page number
         request.put("size", 10);                                            // [Required]
@@ -3331,9 +3832,15 @@ l] Service ID (exact search)
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listServices: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Get service details
 ```
 
 `*/`
@@ -3343,15 +3850,22 @@ response.getHttpResponse().getHttpContentString());
 n {
         Map<String, Object> request = new HashMap<>();
         request.put("serviceId", serviceId);                                // [Required]
+Service ID
         request.put("gwInstanceId", GW_INSTANCE_ID);                        //
 [Required] Gateway instance ID
         CommonRequest commonRequest = createBaseRequest("/microservice/getService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getService: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Modify service
 ```
 
 `*/`
@@ -3369,9 +3883,9 @@ tion {
 Map<String Object>request=newHashMap<>();
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("serviceId", serviceId);                                // [Required]
 ID of the service to modify
@@ -3384,15 +3898,22 @@ Upstream type
         request.put("loadBalanceType", 1);                                  // [Required]
 Load balancing type
         request.put("protocol", "HTTP");                                    // [Required]
+Protocol
         request.put("serviceStruct", serviceStruct);                        //
 [Required] Service structure configuration
         CommonRequest commonRequest = createBaseRequest("/microservice/modifyService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyService: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Delete service
 ```
 
 `*/`
@@ -3402,15 +3923,22 @@ response.getHttpResponse().getHttpContentString());
 tion {
         Map<String, Object> request = new HashMap<>();
         request.put("serviceId", serviceId);                                // [Required]
+Service ID
         request.put("gwInstanceId", GW_INSTANCE_ID);                        //
 [Required] Gateway instance ID
         CommonRequest commonRequest = createBaseRequest("/microservice/deleteService");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteService: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Batch delete services
 ```
 
 `*/`
@@ -3425,11 +3953,30 @@ List of service IDs
 [Required]GatewayinstanceID
 ```
 
+Stack APIs through a POP gatewa y
+
+```java
+[Required] Gateway instance ID
+        CommonRequest commonRequest =
+createBaseRequest("/microservice/batchDeleteService");
+        commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
+FormatType.JSON);
+        CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("batchDeleteService: " +
+response.getHttpResponse().getHttpContentString());
+```
+
+`}` `}`
+
+**Upstream type description**
+
 | upstreamType | Description | Configuration method |
 |---|---|---|
 | 1 | Static node | Configure the IP address, port, and weight in serviceStruct.nodes . |
 | 2 | Service discovery | Specify the service name in the registration center by using serviceName . You must configure sourceId . |
 | 3 | Service import | Import a service from an existing source. |
+
+**Protocol type description**
 
 | protocol | Description |
 |---|---|
@@ -3439,25 +3986,9 @@ List of service IDs
 | Dubbo | The Dubbo RPC protocol. |
 | HSF | The HSF RPC protocol. |
 
-y
-
-```
-[Required] Gateway instance ID
-        CommonRequest commonRequest =
-createBaseRequest("/microservice/batchDeleteService");
-        commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
-FormatType.JSON);
-        CommonResponse response = client.getCommonResponse(commonRequest);
-response.getHttpResponse().getHttpContentString());
-    }
-}
-```
-
-**Upstream type description**
-
-**Protocol type description**
-
 **Response code description**
+
+Stack APIs through a POP gatewa y
 
 | code | Description |
 |---|---|
@@ -3466,15 +3997,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-| Item | Content |
-|---|---|
-| URL | /group/createGroup |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-##### API call - Group management
+##### 2.2.3.3 API call - Group management
 
 **Overview**
 
@@ -3497,7 +4020,15 @@ Create a new route group.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /group/createGroup |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on CreateGroupRequest)**
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3511,7 +4042,7 @@ Create a new route group.
 | domainIds | List | No | The list of associated domain IDs. |
 | isDisasterRecovery | Boolean | No | Specifies whether the group is for disaster recovery. Default value: false. |
 
-y
+**List groups**
 
 **API description**
 
@@ -3519,11 +4050,15 @@ Query the list of route groups by page.
 
 **Request information**
 
+Stack APIs through a POP gatewa y
+
 | Item | Content |
 |---|---|
 | URL | /group/listGroups |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on ListGroupsRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -3537,11 +4072,15 @@ Query the list of route groups by page.
 | editable | Boolean | No | Filter by whether the group is editable. |
 | isDisasterRecovery | Boolean | No | Filter by whether the group is for disaster recovery. |
 
-y
-
-**Request parameters (based on ListGroupsRequest)**
-
 **Query group details**
+
+Stack APIs through a POP gatewa y
+
+**API description**
+
+Query detailed information by group ID.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -3549,27 +4088,12 @@ y
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on GetGroupRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | groupId | String | Yes | The ID of the group. |
-
-| Item | Content |
-|---|---|
-| URL | /group/modifyGroup |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-y
-
-**API description**
-
-Query detailed information by group ID.
-
-**Request information**
 
 **Modify a group**
 
@@ -3579,7 +4103,18 @@ Modify the configuration of an existing group.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /group/modifyGroup |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on ModifyGroupRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+Stack APIs through a POP gatewa y
 
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 |---|---|---|---|
@@ -3589,6 +4124,14 @@ Modify the configuration of an existing group.
 | description | String | No | The description of the group. |
 | domainIds | List | No | The list of associated domain IDs. |
 | defaultDomainForRout e | Boolean | No | Specifies whether to generate a default domain name for the route. |
+
+**Delete a group**
+
+**API description**
+
+Delete the specified group.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -3600,39 +4143,10 @@ Modify the configuration of an existing group.
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-y
-
-**Delete a group**
-
-**API description**
-
-Delete the specified group.
-
-**Request information**
-
-**Request parameters**
+Stack APIs through a POP gatewa y
 
 | groupId | String | Yes | The ID of the group. |
 |---|---|---|---|
-
-| Item | Content |
-|---|---|
-| URL | /group/addGroupDomain |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| groupId | String | Yes | The ID of the group. |
-| domainIds | List | Yes | The list of domain IDs to add. |
-
-| Item | Content |
-|---|---|
-| URL | /group/deleteGroupDomain |
-| Method | POST |
-
-y
 
 **Add a domain name for a group**
 
@@ -3642,7 +4156,21 @@ Add an associated domain name for a group.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /group/addGroupDomain |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on AddGroupDomainRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| groupId | String | Yes | The ID of the group. |
+| domainIds | List | Yes | The list of domain IDs to add. |
+
+**Delete group domain**
 
 **API description**
 
@@ -3650,14 +4178,31 @@ Delete the domain name associated with the group.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /group/deleteGroupDomain |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters (based on DeleteGroupDomainRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | groupId | String | Yes | The ID of the group. |
 | domainId | String | Yes | The ID of the domain name to delete. |
+
+**Query all groups**
+
+**API description**
+
+Query all groups under the gateway instance without pagination.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -3669,20 +4214,6 @@ Delete the domain name associated with the group.
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-y
-
-**Request parameters (based on DeleteGroupDomainRequest)**
-
-**Query all groups**
-
-**API description**
-
-Query all groups under the gateway instance without pagination.
-
-**Request information**
-
-**Request parameters**
-
 **Common request call example**
 
 The following example shows how to call the group management API by using the common request method. The difference between a self-managed ACK environment and an enterprise edition environment lies only in the authentication setting.
@@ -3691,7 +4222,7 @@ The following example shows how to call the group management API by using the co
 import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; importcomali ncsCommonReqest
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.Arrays; import java.util.HashMap; import java.util.List; import java.util.Map; public class GroupApiDemo {
@@ -3706,21 +4237,32 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
     private static final String GW_INSTANCE_ID = "your-gw-instance-id";
     public static void main(String[] args) throws Exception {
         IAcsClient client = createClient();
+        // ========== Create group ==========
         String groupId = createGroup(client);
+        // ========== List groups ==========
         listGroups(client);
+        // ========== Get group details ==========
         getGroup(client, groupId);
+        // ========== Modify group ==========
         modifyGroup(client, groupId);
+        // ========== Add group domain ==========
         addGroupDomain(client, groupId, Arrays.asList("domain-id-xxx"));
+        // ========== Delete group domain ==========
         deleteGroupDomain(client, groupId, "domain-id-xxx");
+        // ========== Delete group ==========
         deleteGroup(client, groupId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
 if(ISSELFHOSTED){
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```java
+```
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
             return new DefaultAcsClient(profile);
@@ -3728,11 +4270,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -3740,8 +4289,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -3751,8 +4303,13 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
+     * Create group (based on CreateGroupRequest)
 ```
 
 `*/`
@@ -3777,7 +4334,7 @@ nal】Whether to generate a default domain for routing
         // request.put("domainIds", Arrays.asList("domain-id-xxx"));           // 【Opti
 ```
 
-y q p , y p
+Stack APIs through a POP gatewa y `q` `p` `,` `y` `p`
 
 ```java
 onal】List of associated domain IDs
@@ -3796,9 +4353,13 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createGroup failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
+     * List groups (based on ListGroupsRequest)
 ```
 
 `*/`
@@ -3822,9 +4383,15 @@ nal】Filter by disaster recovery status
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listGroups: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Get group details (based on GetGroupRequest)
 ```
 
 `*/`
@@ -3834,9 +4401,9 @@ response.getHttpResponse().getHttpContentString());
         Map<String, Object> request = new HashMap<>();
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```
+```java
         request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【Required
 】Gateway instance ID
         request.put("groupId", groupId);                                    // 【Required
@@ -3845,16 +4412,26 @@ y
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getGroup: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Modify group (based on ModifyGroupRequest)
 ```
 
 `*/`
 
 ```java
     private static void modifyGroup(IAcsClient client, String groupId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【Required
 】Gateway instance ID
@@ -3870,8 +4447,13 @@ l】Group description
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyGroup: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Add group domain (based on AddGroupDomainRequest)
 ```
@@ -3891,14 +4473,19 @@ domainIds) throws Exception {
         CommonRequest commonRequest = createBaseRequest("/group/addGroupDomain");
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```
+```java
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("addGroupDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Delete group domain (based on DeleteGroupDomainRequest)
 ```
@@ -3919,16 +4506,26 @@ ainId) throws Exception {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteGroupDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Delete group
 ```
 
 `*/`
 
 ```java
     private static void deleteGroup(IAcsClient client, String groupId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【Required
 】Gateway instance ID
@@ -3938,9 +4535,15 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteGroup: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Get all groups
 ```
 
 `*/`
@@ -3949,17 +4552,35 @@ response.getHttpResponse().getHttpContentString());
     private static void getAllGroups(IAcsClient client) throws Exception {
 ```
 
-M
+`M`
 
 ```
 <Sti Obj
 ```
 
-`t>` t H `hM`
+`t>` `t` `H` `hM`
 
 ```
 <>()
 ```
+
+Stack APIs through a POP gatewa y
+
+```java
+        Map<String, Object> request = new HashMap<>();
+        request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【Required
+】Gateway instance ID
+        CommonRequest commonRequest = createBaseRequest("/group/getAllGroups");
+        commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
+FormatType.JSON);
+        CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getAllGroups: " +
+response.getHttpResponse().getHttpContentString());
+```
+
+`}` `}`
+
+**Group attribute description**
 
 | Attribute | Description |
 |---|---|
@@ -3971,46 +4592,20 @@ M
 | editable | Whether the group is editable: true: The group is editable. false: The group is not editable (such as the DEFAULT group). |
 | isDisasterRecovery | Whether the group is a disaster recovery group. |
 
+**Response code description**
+
 | code | Description |
 |---|---|
 | 200 | The request succeeded. |
 | 400 | The parameters are invalid. |
 
-y
-
-```
-        Map<String, Object> request = new HashMap<>();
-        request.put("gwInstanceId", GW_INSTANCE_ID);                        // 【Required
-】Gateway instance ID
-        CommonRequest commonRequest = createBaseRequest("/group/getAllGroups");
-        commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
-FormatType.JSON);
-        CommonResponse response = client.getCommonResponse(commonRequest);
-response.getHttpResponse().getHttpContentString());
-    }
-}
-```
-
-**Group attribute description**
-
-**Response code description**
+Stack APIs through a POP gatewa y
 
 | 403 | You do not have sufficient permissions. |
 |---|---|
 | 500 | An internal server error occurred. |
 
-| Item | Content |
-|---|---|
-| URL | /route/checkCreateRoute |
-| Method | POST |
-| Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-
-y
-
-##### API call - Route management
+##### 2.2.3.4 API call - Route management
 
 **Overview**
 
@@ -4033,6 +4628,12 @@ Validate parameters before you create a route. The system checks whether the rou
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /route/checkCreateRoute |
+| Method | POST |
+| Content-Type | application/json |
+
 **Create a route**
 
 **API description**
@@ -4041,10 +4642,19 @@ Create a new routing rule.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+
+Stack APIs through a POP gatewa y
+
 | URL | /route/createRoute |
 |---|---|
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on RouteCreateRequest +**
+
+**AbstractRouteRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4055,11 +4665,7 @@ Create a new routing rule.
 | serviceType | String | Yes | The type of service: SINGLE: Single service WEIGHTED: Weighted |
 | serviceId | String | Conditional | The ID of the backend service. Note This parameter is required in single- service mode. |
 
-y
-
-**Request parameters (based on RouteCreateRequest +**
-
-**AbstractRouteRequest)**
+Stack APIs through a POP gatewa y
 
 | serviceIds | List | Conditional | The list of services and their weights. Note This parameter is required in weighted mode. |
 |---|---|---|---|
@@ -4073,7 +4679,7 @@ y
 | cookie | List | No | The list of cookie matching conditions. |
 | queryParam | List | No | The list of query parameter matching conditions. |
 
-y
+Stack APIs through a POP gatewa y
 
 | domainIds | List | No | The list of associated domain IDs. |
 |---|---|---|---|
@@ -4083,46 +4689,36 @@ y
 | disasterRecoveryServi ceIds | List | No | The list of disaster recovery service IDs and their weights. |
 | hsfMethodMappingCon fig | HsfMethodMappingCon fig | No | The HSF method mapping configuration. This applies only to HSF protocol configurations. |
 
+**RoutePath structure**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | matchType | String | Yes | The match type: PRE: Prefix EXACT: Exact REGEX: Regex |
 | matchValue | String | No | The match value. |
 | caseSensitive | Boolean | No | Specifies whether the match is case- sensitive. |
 
+**KvPair structure**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | key | String | Yes | The key name. |
 
-y
-
-**RoutePath structure**
-
-**KvPair structure**
-
-| PI Gateway |  | Stack A | PIs through a POP gatew |
+| PI Gateway |   | Stack A | PIs through a POP gatew |
 |---|---|---|---|
+
+y
 
 | value | String | Yes | The key value. |
 |---|---|---|---|
+
+**ServiceAndWeight structure**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | serviceId | String | Yes | The ID of the service. |
 | weight | Integer | Yes | The weight. Valid values: 0 to 100. |
 
-| Item | Content |
-|---|---|
-| URL | /route/listRoutes |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| current | Integer | Yes | The page number. The value starts from 1. |
-| size | Integer | Yes | The number of entries per page. |
-
-**ServiceAndWeight structure**
+**List routes**
 
 **API description**
 
@@ -4130,7 +4726,21 @@ Query routes by page.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /route/listRoutes |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on RouteListRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| current | Integer | Yes | The page number. The value starts from 1. |
+| size | Integer | Yes | The number of entries per page. |
+
+Stack APIs through a POP gatewa y
 
 | routeName | String | No | The name of the route. Fuzzy search is supported. |
 |---|---|---|---|
@@ -4143,13 +4753,6 @@ Query routes by page.
 | routePath | String | No | The path of the route. Fuzzy search is supported. |
 | isDisasterRecovery | Boolean | No | Indicates whether the route is for disaster recovery. |
 
-| Item | Content |
-|---|---|
-| URL | /route/getRoute |
-| Method | POST |
-
-y
-
 **Query route details**
 
 **API description**
@@ -4157,6 +4760,13 @@ y
 Query the detailed information of a route by its ID.
 
 **Request information**
+
+| Item | Content |
+|---|---|
+| URL | /route/getRoute |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
 
 | Content-Type | application/json |
 |---|---|
@@ -4166,21 +4776,6 @@ Query the detailed information of a route by its ID.
 | routeId | String | Yes | The ID of the route. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-| Item | Content |
-|---|---|
-| URL | /route/modifyRoute |
-| Method | POST |
-| Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-| URL | /route/deleteRoute |
-| Method | POST |
-
-y
-
-**Request parameters**
-
 **Modify a route**
 
 **API description**
@@ -4189,7 +4784,11 @@ Modify an existing route configuration.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /route/modifyRoute |
+| Method | POST |
+| Content-Type | application/json |
 
 The request parameters are the same as those for creating a route. You must also specify
 
@@ -4205,28 +4804,20 @@ Delete the specified route.
 
 **Request information**
 
-| Content-Type | application/json |
-|---|---|
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| routeId | String | Yes | The ID of the route. |
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-
 | Item | Content |
 |---|---|
-| URL | /route/changeRouteStatus |
+| URL | /route/deleteRoute |
 | Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
+|---|---|
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | routeId | String | Yes | The ID of the route. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Request parameters**
 
 **Modify the enabled status of a route**
 
@@ -4240,10 +4831,29 @@ This API applies only to the SCG engine. The Higress engine does not support thi
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /route/changeRouteStatus |
+| Method | POST |
+| Content-Type | application/json |
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| routeId | String | Yes | The ID of the route. |
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+
+Stack APIs through a POP gatewa y
 
 | enableStatus | Boolean | Yes | true: Enable the route. false: Disable the route. |
 |---|---|---|---|
+
+**Delete routes in batches**
+
+**API description**
+
+Delete multiple routes in batches.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -4256,16 +4866,6 @@ This API applies only to the SCG engine. The Higress engine does not support thi
 | routeIds | List | Yes | The list of route IDs. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-y
-
-**API description**
-
-Delete multiple routes in batches.
-
-**Request information**
-
-**Request parameters**
-
 **Common request call examples**
 
 The following examples show how to call the route management API by using the common request method. The difference between a self-managed ACK environment and an enterprise edition environment lies only in the authentication parameter settings.
@@ -4274,7 +4874,7 @@ The following examples show how to call the route management API by using the co
 import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.ArrayList;
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
 import java.util.Arrays; import java.util.HashMap; import java.util.List; import java.util.Map; public class RouteApiDemo {
@@ -4297,18 +4897,28 @@ aged ACK console address
         IAcsClient client = createClient();
         // ========== Validate before creating route ==========
         checkCreateRoute(client);
+        // ========== Create route ==========
         String routeId = createRoute(client);
+        // ========== List routes ==========
         listRoutes(client);
+        // ========== Get route details ==========
         getRoute(client, routeId);
+        // ========== Modify route ==========
         modifyRoute(client, routeId);
+        // ========== Change route status ==========
         changeRouteStatus(client, routeId, false);
+        // ========== Delete route ==========
         deleteRoute(client, routeId);
-    }
+```
+
+`}`
+
+```
     /**
      * Create client (common for self-managed ACK and enterprise edition)
 ```
 
-`*/` y
+`*/` Stack APIs through a POP gatewa y
 
 ```java
     private static IAcsClient createClient() {
@@ -4319,11 +4929,18 @@ aged ACK console address
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -4331,8 +4948,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -4342,7 +4962,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Validate before creating route
 ```
@@ -4356,9 +4980,15 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("checkCreateRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Create route
 ```
 
 `*/`
@@ -4368,7 +4998,7 @@ response.getHttpResponse().getHttpContentString());
 Map<String Object>request=buildRouteRequest();
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         Map<String, Object> request = buildRouteRequest();
@@ -4385,8 +5015,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createRoute failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Build route request parameters
 ```
@@ -4428,7 +5061,7 @@ T/REGEX
 lue
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
 lue
@@ -4473,8 +5106,13 @@ case-sensitive
         // request.put("disasterRecoveryServiceId", "disaster-service-id");   //
 [Optional] Disaster recovery service ID
         return request;
-    }
+```
+
+`}`
+
+```
     /**
+     * List routes
 ```
 
 `*/`
@@ -4484,9 +5122,9 @@ case-sensitive
         Map<String, Object> request = new HashMap<>();
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```
+```java
         request.put("gwInstanceId", GW_INSTANCE_ID);                        //
 [Required] Gateway instance ID
         request.put("current", 1);                                          // [Required]
@@ -4503,9 +5141,15 @@ l] Enable status filter
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listRoutes: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Get route details
 ```
 
 `*/`
@@ -4521,34 +5165,51 @@ Route ID
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Modify route
 ```
 
 `*/`
 
 ```java
     private static void modifyRoute(IAcsClient client, String routeId) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> request = buildRouteRequest();
         request.put("routeId", routeId);                                    // [Required]
 Route ID to modify
         request.put("routeName", "route-demo-01-modified");                 //
+[Optional] Modify route name
         request.put("order", 200);                                          // [Optional]
 Modify priority
 ```
 
-y
+Stack APIs through a POP gatewa y
 
-```
+```java
         CommonRequest commonRequest = createBaseRequest("/route/modifyRoute");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Change route status
 ```
 
 `*/`
@@ -4567,16 +5228,26 @@ Route ID
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("changeRouteStatus: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Delete route
 ```
 
 `*/`
 
 ```java
     private static void deleteRoute(IAcsClient client, String routeId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("routeId", routeId);                                    // [Required]
 Route ID
@@ -4586,25 +5257,18 @@ Route ID
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
-    /**
 ```
 
-`*/`
+`}`
 
-| matchType | Description | Example |
-|---|---|---|
-| PRE | Prefix match. | /api/** matches all paths that start with /api/ . |
-| EXACT | Exact match. | /api/user matches only /api/user . |
-| REGEX | Regex match. | Use a regular expression to match the path. |
+```
+    /**
+     * Batch delete routes
+```
 
-| serviceType | Description | Usage |
-|---|---|---|
-| SINGLE | Single service | Use serviceId to specify one backend service. |
-| WEIGHTED | Weighted service | Use serviceIds to specify multiple services and their weights. |
-
-y
+`*/` Stack APIs through a POP gatewa y
 
 ```java
     private static void batchDeleteRoutes(IAcsClient client, List<String> routeIds) thr
@@ -4618,16 +5282,30 @@ Route ID list
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("batchDeleteRoute: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **Path matching type description**
 
+| matchType | Description | Example |
+|---|---|---|
+| PRE | Prefix match. | /api/** matches all paths that start with /api/ . |
+| EXACT | Exact match. | /api/user matches only /api/user . |
+| REGEX | Regex match. | Use a regular expression to match the path. |
+
 **Service type description**
 
+| serviceType | Description | Usage |
+|---|---|---|
+| SINGLE | Single service | Use serviceId to specify one backend service. |
+| WEIGHTED | Weighted service | Use serviceIds to specify multiple services and their weights. |
+
 **Response code descriptions**
+
+Stack APIs through a POP gatewa y
 
 | code | Description |
 |---|---|
@@ -4636,15 +5314,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-| Item | Content |
-|---|---|
-| URL | /strategyConfig/createStrategyConfig |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-##### API call - Policy configuration management
+##### 2.2.3.5 API call - Policy configuration management
 
 **Overview**
 
@@ -4667,7 +5337,13 @@ Create a new policy configuration. The structure of the `config` field varies by
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /strategyConfig/createStrategyConfig |
+| Method | POST |
+| Content-Type | application/json |
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -4681,12 +5357,6 @@ Create a new policy configuration. The structure of the `config` field varies by
 | appIds | List | No | The list of associated consumer IDs. |
 | domainIds | List | No | The list of associated domain IDs. |
 
-| Item | Content |
-|---|---|
-| URL | /strategyConfig/listStrategyConfigs |
-
-y
-
 **Query the list of policy configurations**
 
 **API description**
@@ -4694,6 +5364,12 @@ y
 Query the list of policy configurations by page.
 
 **Request information**
+
+| Item | Content |
+|---|---|
+| URL | /strategyConfig/listStrategyConfigs |
+
+Stack APIs through a POP gatewa y
 
 | Method | POST |
 |---|---|
@@ -4709,15 +5385,6 @@ Query the list of policy configurations by page.
 | serviceId | String | No | The ID of the associated service used for filtering. |
 | appId | String | No | The ID of the associated consumer used for filtering. |
 
-| Item | Content |
-|---|---|
-| URL | /strategyConfig/getStrategyConfig |
-| Method | POST |
-
-y
-
-**Request parameters**
-
 **Query policy configuration details**
 
 **API description**
@@ -4726,8 +5393,15 @@ Query detailed information by policy configuration ID.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /strategyConfig/getStrategyConfig |
+| Method | POST |
+
 | tack APIs through a POP gatewa | API Gatewa |
 |---|---|
+
+y
 
 | Content-Type | application/json |
 |---|---|
@@ -4737,20 +5411,6 @@ Query detailed information by policy configuration ID.
 | strategyConfigId | String | Yes | The ID of the policy configuration. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-| Item | Content |
-|---|---|
-| URL | /strategyConfig/modifyStrategyConfig |
-| Method | POST |
-| Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-
-| 33 | > Document Version: 2026062 |
-|---|---|
-
-**Request parameters**
-
 **Modify policy configuration**
 
 **API call description**
@@ -4759,7 +5419,11 @@ Modify an existing policy configuration.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /strategyConfig/modifyStrategyConfig |
+| Method | POST |
+| Content-Type | application/json |
 
 Use the same parameters as those for creating a policy configuration. Additionally, specify
 
@@ -4775,21 +5439,37 @@ Enable or disable a policy configuration.
 
 **Request information**
 
-|  | Developer Guide·Calling Apsara |
+| Item | Content |
 |---|---|
 
-| URL |  | /strategyConfig/modifyStrategyConfigStatus |  |  |
+| 33 | > Document Version: 2026062 |
+|---|---|
+
+|   | Developer Guide·Calling Apsara |
+|---|---|
+
+Stack APIs through a POP gatewa y
+
+| URL |   | /strategyConfig/modifyStrategyConfigStatus |   |   |
 |---|---|---|---|---|
-|  |  |  | /strategyConfig/modifyStrategyConfigStatus |  |
-|  | RL |  |  |  |
-| Method |  | POST |  |  |
-| Content-Type |  | application/json |  |  |
+|   |   |   | /strategyConfig/modifyStrategyConfigStatus |   |
+|   | RL |   |   |   |
+| Method |   | POST |   |   |
+| Content-Type |   | application/json |   |   |
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | strategyConfigId | String | Yes | The ID of the policy configuration. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | isOpen | Boolean | Yes | true: Enable the policy false: Disable the policy |
+
+**Delete a policy configuration**
+
+**API description**
+
+Delete a specified policy configuration.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -4800,25 +5480,11 @@ Enable or disable a policy configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
-y
-
-**Request parameters**
-
-**Delete a policy configuration**
-
-**API description**
-
-Delete a specified policy configuration.
-
-**Request information**
-
-**Request parameters**
+Stack APIs through a POP gatewa y
 
 | strategyConfigId | String | Yes | The ID of the policy configuration. |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
 
 **Common Request call examples**
 
@@ -4847,7 +5513,7 @@ Enterprise organization ID
     public static void main(String[] args) throws Exception {
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
         // Initialize client
@@ -4882,7 +5548,11 @@ y
         modifyStrategyConfigStatus(client, flowControlStrategyId, false);
         // ========== Delete policy configuration ==========
         deleteStrategyConfig(client, flowControlStrategyId);
-    }
+```
+
+`}`
+
+```
     /**
      * Create client (common for self-managed ACK and Enterprise Edition)
 ```
@@ -4894,7 +5564,7 @@ y
         if (IS_SELF_HOSTED) {
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
             // Self-managed ACK environment: AK/SK do not need to be filled in
@@ -4905,8 +5575,11 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Get endpoint
 ```
@@ -4916,7 +5589,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 ```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```
     /**
      * Set authentication headers (common for self-managed ACK and Enterprise Edition)
 ```
@@ -4933,8 +5610,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             // Enterprise Edition environment authentication
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create base request object
 ```
@@ -4951,7 +5631,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     // ========== Policy configuration creation examples ==========
     /**
      * 1. Flow control policy (Flow Control Policy)
@@ -4962,13 +5646,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 
 ```java
     private static String createFlowControlStrategy(IAcsClient client) throws Exception
-{
 ```
 
-y
+`{` Stack APIs through a POP gatewa y `{`
 
 ```
-{
         // Flow control rule configuration
         Map<String, Object> flowRule = new HashMap<>();
         flowRule.put("resource", "route-id-xxx");                           // 【Required
@@ -5013,13 +5695,17 @@ strategy: 0-exact, 1-regex
         request.put("strategyConfigName", "route-flow-control");
         request.put("config", config);
         return executeCreate(client, request, "Flow Control Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 2. Timeout policy (Timeout Policy)
 *configstructure:RequestTimeoutConfig
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
       config structure: RequestTimeoutConfig
@@ -5038,7 +5724,11 @@ y
         request.put("strategyConfigName", "route-timeout");
         request.put("config", config);
         return executeCreate(client, request, "Timeout Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 3. Circuit breaker policy (Circuit Breaker Policy)
      * config structure: CacheRouteFuse
@@ -5081,7 +5771,7 @@ disabled, 1-enabled
         config.put("isOpenFuse", true);                                     // 【Required
 ```
 
-y gp p , q
+Stack APIs through a POP gatewa y `g``p` `p` `,` `q`
 
 ```
 】Whether to enable circuit breaking
@@ -5099,7 +5789,11 @@ y gp p , q
         request.put("strategyConfigName", "route-circuit-breaker");
         request.put("config", config);
         return executeCreate(client, request, "Circuit Breaker Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 4. Cross-domain policy (Cross-domain Policy)
      * config structure: RouteCross
@@ -5134,11 +5828,15 @@ y gp p , q
         request.put("strategyConfigName", "route-cors");
         request.put("config", config);
         return executeCreate(client, request, "Cross-domain Policy");
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
      * 5. Caching policy (Caching Policy)
@@ -5174,7 +5872,11 @@ l】Allowed cacheable status codes
         request.put("strategyConfigName", "route-cache");
         request.put("config", config);
         return executeCreate(client, request, "Caching Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 6. IP allowlist and blocklist policy (IP Blacklist and Whitelist Policy)
      * config structure: RouteIpBlockConfig
@@ -5198,7 +5900,7 @@ l】Allowed cacheable status codes
         List<Map<String, Object>> ipBlockRules = new ArrayList<>();
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
         ipBlockRules.add(allowRule);
@@ -5214,7 +5916,11 @@ y
         request.put("strategyConfigName", "route-ip-block");
         request.put("config", config);
         return executeCreate(client, request, "IP Allowlist and Blocklist Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 7. ACL permission control policy (ACL Permission Control Policy)
      * config structure: RouteACLConfig
@@ -5249,10 +5955,9 @@ y
         request.put("strategyConfigName", "route-acl");
         request.put("config", config);
         return executeCreate(client, request, "ACL Permission Control Policy");
-    }
 ```
 
-y
+`}` Stack APIs through a POP gatewa y
 
 ```
     /**
@@ -5282,7 +5987,11 @@ l】Response body
         request.put("strategyConfigName", "route-mock");
         request.put("config", config);
         return executeCreate(client, request, "MOCK Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 9. Request tracing policy (Request Tracing Policy)
      * config structure: RouteTracingConfig
@@ -5305,7 +6014,11 @@ l】Response body
         request.put("strategyConfigName", "route-tracing");
         request.put("config", config);
         return executeCreate(client, request, "Request Tracing Policy");
-    }
+```
+
+`}`
+
+```
     /**
      * 10. Request body size limit policy (Request Size Limit Policy)
      * config structure: DataSize
@@ -5317,11 +6030,15 @@ l】Response body
 privatestaticStringcreateRequestSizeStrategy(IAcsClientclient)throwsException
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
     private static String createRequestSizeStrategy(IAcsClient client) throws Exception
-{
+```
+
+`{`
+
+```
         Map<String, Object> config = new HashMap<>();
         config.put("dataSize", "10MB");                                     // 【Required
 】Maximum request body size (supports KB/MB/GB units)
@@ -5331,7 +6048,11 @@ y
         request.put("strategyConfigName", "route-request-size");
         request.put("config", config);
         return executeCreate(client, request, "Request Size Limit Policy");
-    }
+```
+
+`}`
+
+```
     // ========== Common operation methods ==========
     /**
      * Execute creation of policy configuration
@@ -5358,8 +6079,11 @@ rategyId);
             System.out.println("create " + strategyName + " failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Query policy configuration list
 ```
@@ -5377,25 +6101,18 @@ createBaseRequest("/strategyConfig/listStrategyConfigs");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 ```
 
-y q p
+Stack APIs through a POP gatewa y `q` `p` `(` `j` `y` `(` `q` `),` `,`
 
-```
-(
-```
-
-j y
-
-```
-(
-```
-
-q `),` ,
-
-```
+```java
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listStrategyConfigs: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Query policy configuration details
 ```
@@ -5413,8 +6130,13 @@ createBaseRequest("/strategyConfig/getStrategyConfig");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getStrategyConfig: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Modify policy configuration status
 ```
@@ -5435,7 +6157,11 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("modifyStrategyConfigStatus: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Delete policy configuration
 ```
@@ -5450,6 +6176,26 @@ strategyConfigId) throws Exception {
         request.put("gwInstanceId", GW_INSTANCE_ID);
 ```
 
+Stack APIs through a POP gatewa y
+
+```java
+        CommonRequest commonRequest =
+createBaseRequest("/strategyConfig/deleteStrategyConfig");
+        commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
+FormatType.JSON);
+        CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteStrategyConfig: " +
+response.getHttpResponse().getHttpContentString());
+```
+
+`}` `}`
+
+**Policy type description (strategyName)**
+
+The policy type uses the English identifier `strategyName` . Different engines support different policy types.
+
+**SCG policy (for SCG engine)**
+
 | strategyName | Category | Description |
 |---|---|---|
 | Authentication Policy | Authentication | The system supports authentication methods such as JWT, BASIC, and APIKEY, as well as custom authentication to protect application security. |
@@ -5459,24 +6205,7 @@ strategyConfigId) throws Exception {
 | MOCK Policy | Transformation | Set filtering rules and return values to handle data objects that are difficult to construct or obtain. |
 | Signature Policy | Security | The system generates signatures for requests passing through the gateway. |
 
-y
-
-```
-        CommonRequest commonRequest =
-createBaseRequest("/strategyConfig/deleteStrategyConfig");
-        commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
-FormatType.JSON);
-        CommonResponse response = client.getCommonResponse(commonRequest);
-response.getHttpResponse().getHttpContentString());
-    }
-}
-```
-
-**Policy type description (strategyName)**
-
-The policy type uses the English identifier `strategyName` . Different engines support different policy types.
-
-**SCG policy (for SCG engine)**
+Stack APIs through a POP gatewa y
 
 | Cross-domain Policy | Transformation | Documents or scripts from one domain can request resources from another domain through the gateway. |
 |---|---|---|
@@ -5487,32 +6216,32 @@ The policy type uses the English identifier `strategyName` . Different engines s
 | Request Size Limit Policy | Traffic | The system limits the maximum size of the request body. |
 | HSF Protocol Mapping Policy | Transformation | The system controls the specific HSF method targeted by routing and sets HTTP-to- HSF parameter format mappings. |
 
-|  | IP Blacklist and | Securit |
+|   | IP Blacklist and | Securit |
 |---|---|---|
-| Whitelist Policy |  |  |
+| Whitelist Policy |   |   |
 
-|  | ACL Permission Control | Au |
+|   | ACL Permission Control | Au |
 |---|---|---|
-| Policy |  |  |
+| Policy |   |   |
 
-|  | Request Size Limit |
+|   | Request Size Limit |
 |---|---|
-| Policy |  |
+| Policy |   |
 
-|  | HSF Protocol Mapping |  |
+|   | HSF Protocol Mapping |   |
 |---|---|---|
-| Policy |  |  |
+| Policy |   |   |
+
+**Higress policies (for Higress engine)**
+
+**Authentication policies**
 
 | strategyName | Description |
 |---|---|
 | basic-auth | Authenticate and authorize based on the HTTP Basic Auth standard. |
 | hmac-auth | Generate signatures based on the HMAC algorithm to authenticate and authorize identities. |
 
-y
-
-**Higress policies (for Higress engine)**
-
-**Authentication policies**
+Stack APIs through a POP gatewa y
 
 | jwt-auth | Authenticate and authorize based on JSON Web Token. |
 |---|---|
@@ -5520,6 +6249,8 @@ y
 | oauth | Authenticate and authorize based on OAuth2. |
 | oidc | Verify user identity based on the OpenID Connect standard. |
 | ext-auth | Send authorization requests to external authorization services to check client request permissions. |
+
+**Security policies**
 
 | strategyName | Description |
 |---|---|
@@ -5529,20 +6260,20 @@ y
 | request-validation | Validate the body and header data of forwarded requests. |
 | waf | Configure WAF rules based on OWASP ModSecurity CRS. |
 
+**Traffic policies**
+
 | strategyName | Description |
 |---|---|
 | key-rate-limit | Limit traffic based on specific key values. |
 | cluster-key-rate-limit | Limit traffic at the cluster level based on specific key values. |
 
-y
-
-**Security policies**
-
-**Traffic policies**
+Stack APIs through a POP gatewa y
 
 | cache-control | Add Expires and Cache-Control headers to responses. |
 |---|---|
 | cors | Enable CORS on the server to return HTTP response headers. |
+
+**Transformation policies**
 
 | strategyName | Description |
 |---|---|
@@ -5554,20 +6285,26 @@ y
 | model-mapper | Map model parameter values in LLM protocols according to specified rules. |
 | model-router | Route requests based on the model parameter in LLM protocols. |
 
+**Observability policies**
+
 | strategyName | Description |
 |---|---|
 | traffic-tag | Tag traffic by adding request headers based on weight or request content. |
 | log-request-response | Record request and response information for debugging and monitoring. |
 
-y
+**Other policies**
 
-**Transformation policies**
-
-**Observability policies**
+Stack APIs through a POP gatewa y
 
 | strategyName | Description |
 |---|---|
 | opa | Implement OPA policy control. |
+
+**Policy scope description (scope)**
+
+You can apply policies to different scopes. The priority is: **route > domain > service >**
+
+**consumer > instance.**
 
 | scope | bitMask | Description |
 |---|---|---|
@@ -5577,6 +6314,11 @@ y
 | CONSUMER | 8 | Apply the policy to a specific consumer. |
 | DOMAIN | 16 | Apply the policy to a specific domain. |
 
+**Composite scope**: You can apply a policy to multiple scopes simultaneously. For example,
+`scope=3` means applying the policy to both instance and route (INSTANCE + ROUTE = 1 + 2 = 3).
+
+**Response code description**
+
 | code | Description |
 |---|---|
 | 200 | The operation succeeded. |
@@ -5584,33 +6326,9 @@ y
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-y
+##### 2.2.3.6 API call - Consumer management
 
-**Policy scope description (scope)**
-
-You can apply policies to different scopes. The priority is: **route > domain > service >**
-
-**consumer > instance.**
-
-**Composite scope**: You can apply a policy to multiple scopes simultaneously. For example,
-`scope=3` means applying the policy to both instance and route (INSTANCE + ROUTE = 1 + 2 = 3).
-
-**Response code description**
-
-##### API call - Consumer management
-
-| Item | Content |
-|---|---|
-| URL | /application/createApp |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| appName | String | Yes | The name of the consumer. |
-
-y
+Stack APIs through a POP gatewa y
 
 **Overview**
 
@@ -5633,7 +6351,18 @@ Create a new consumer (application).
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /application/createApp |
+| Method | POST |
+| Content-Type | application/json |
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| appName | String | Yes | The name of the consumer. |
+
+Stack APIs through a POP gatewa y
 
 | authType | Integer | Yes | The authentication type: 1: BASIC 2: OAuth2 3: JWT 4: CUSTOM 5: API KEY _ 6: API GATEWAY _ 7: CSB AUTH _ |
 |---|---|---|---|
@@ -5642,14 +6371,6 @@ Create a new consumer (application).
 | description | String | No | The description of the consumer. |
 | expireTime | Long | No | The expiration timestamp in milliseconds. A value of null indicates that the key never expires. |
 
-| Item | Content |
-|---|---|
-| URL | /application/listApps |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
 **List consumers**
 
 **API description**
@@ -5657,6 +6378,16 @@ y
 List consumers by page.
 
 **Request information**
+
+| Item | Content |
+|---|---|
+| URL | /application/listApps |
+| Method | POST |
+| Content-Type | application/json |
+
+Stack APIs through a POP gatewa y
+
+**Request parameters (based on AppRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -5668,15 +6399,6 @@ List consumers by page.
 | appType | Integer | No | The application category: 0: Backend application 1: Portal application |
 | isDisasterRecovery | Boolean | No | Specifies whether to filter disaster recovery consumers. |
 
-| Item | Content |
-|---|---|
-| URL | /application/getApp |
-| Method | POST |
-
-y
-
-**Request parameters (based on AppRequest)**
-
 **Query consumer details**
 
 **API description**
@@ -5685,6 +6407,13 @@ Query the detailed information based on the consumer ID.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /application/getApp |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
 |---|---|
 
@@ -5692,6 +6421,14 @@ Query the detailed information based on the consumer ID.
 |---|---|---|---|
 | appId | String | Yes | The ID of the consumer. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
+
+**Modify a consumer**
+
+**API description**
+
+Modify the configuration of an existing consumer.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -5705,22 +6442,18 @@ Query the detailed information based on the consumer ID.
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | appName | String | Yes | The name of the consumer. |
 
-y
-
-**Request parameters**
-
-**Modify a consumer**
-
-**API description**
-
-Modify the configuration of an existing consumer.
-
-**Request information**
-
-**Request parameters**
+Stack APIs through a POP gatewa y
 
 | description | String | No | The description of the consumer. |
 |---|---|---|---|
+
+**Delete a consumer**
+
+**API description**
+
+Delete the specified consumer.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -5733,23 +6466,6 @@ Modify the configuration of an existing consumer.
 | appId | String | Yes | The ID of the consumer. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-| Item | Content |
-|---|---|
-| URL | /application/batchDeleteApp |
-| Method | POST |
-
-y
-
-**Delete a consumer**
-
-**API description**
-
-Delete the specified consumer.
-
-**Request information**
-
-**Request parameters**
-
 **Delete consumers in batches**
 
 **API description**
@@ -5758,6 +6474,13 @@ Delete multiple consumers in batches.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /application/batchDeleteApp |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
 |---|---|
 
@@ -5765,6 +6488,14 @@ Delete multiple consumers in batches.
 |---|---|---|---|
 | appIds | List | Yes | The list of consumer IDs. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
+
+**Refresh token**
+
+**API description**
+
+Refresh the token (authentication credential) of the consumer.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -5777,18 +6508,6 @@ Delete multiple consumers in batches.
 | appId | String | Yes | The ID of the consumer. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-y
-
-**Request parameters**
-
-**API description**
-
-Refresh the token (authentication credential) of the consumer.
-
-**Request information**
-
-**Request parameters**
-
 **Query all consumers**
 
 **API description**
@@ -5796,6 +6515,8 @@ Refresh the token (authentication credential) of the consumer.
 Query all consumers under the gateway instance without pagination.
 
 **Request information**
+
+Stack APIs through a POP gatewa y
 
 | Item | Content |
 |---|---|
@@ -5806,10 +6527,6 @@ Query all consumers under the gateway instance without pagination.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Request parameters**
 
 **Common Request call examples**
 
@@ -5828,7 +6545,7 @@ import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import
     private static final String ACCESS_KEY_SECRET = "your-access-key-secret";
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
     private static final String ORGANIZATION_ID = "your-org-id";
@@ -5848,7 +6565,11 @@ y
         modifyApp(client, appId);
         // ========== Delete consumer ==========
         deleteApp(client, appId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -5857,11 +6578,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -5869,19 +6597,22 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
 ```
 
-t `tS` D
+`t` `tS` `D` `i``(`
 
 ```
-i( tEd it())
+tEd it())
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
         request.setSysDomain(getEndpoint());
@@ -5891,7 +6622,11 @@ y
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Create BASIC authentication consumer
 ```
@@ -5929,8 +6664,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createBasicConsumer failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create API Key authentication consumer
 ```
@@ -5944,7 +6682,7 @@ result.getString("msg"));
 】GatewayinstanceID
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
 】Gateway instance ID
@@ -5968,8 +6706,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createApiKeyConsumer failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * List consumers
 ```
@@ -5995,12 +6736,17 @@ result.getString("msg"));
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listApps: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
 ```
 
-y /
+Stack APIs through a POP gatewa y `/`
 
 ```
      * Get consumer details
@@ -6019,8 +6765,13 @@ y /
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Modify consumer
 ```
@@ -6042,8 +6793,13 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Delete consumer
 ```
@@ -6062,15 +6818,17 @@ response.getHttpResponse().getHttpContentString());
 FormatType.JSON);
 ```
 
-| authType | Type name | Description |
-|---|---|---|
+Stack APIs through a POP gatewa y
 
-y
+```java
+        CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteApp: " +
+response.getHttpResponse().getHttpContentString());
+```
+
+`}`
 
 ```
-        CommonResponse response = client.getCommonResponse(commonRequest);
-response.getHttpResponse().getHttpContentString());
-    }
     /**
      * Batch delete consumers
 ```
@@ -6089,16 +6847,26 @@ Exception {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("batchDeleteApp: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Refresh token
 ```
 
 `*/`
 
 ```java
     private static void refreshToken(IAcsClient client, String appId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("appId", appId);                                        // 【Required
 】Consumer ID
@@ -6108,12 +6876,18 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("refreshToken: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
 
+`}` `}`
+
 **Authentication type description**
+
+| authType | Type name | Description |
+|---|---|---|
+
+Stack APIs through a POP gatewa y
 
 | 1 | BASIC | HTTP Basic authentication with username and password. |
 |---|---|---|
@@ -6124,6 +6898,8 @@ response.getHttpResponse().getHttpContentString());
 | 6 | API GATEWAY _ | API gateway authentication. |
 | 7 | CSB AUTH _ | CSB authentication. |
 
+**Response code description**
+
 | code | Description |
 |---|---|
 | 200 | The request succeeded. |
@@ -6131,11 +6907,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-y
-
-**Response code description**
-
-##### API call - Domain name management
+##### 2.2.3.7 API call - Domain name management
 
 **Overview**
 
@@ -6147,22 +6919,7 @@ engines.)
 **Authentication method**
 
 **Self-managed ACK environment**: Add `X-CSB-TOKEN: csb@2022` and `X-CSB-OPENAPI:`
-`true` to the request header.
-
-| Item | Content |
-|---|---|
-| URL | /domain/createDomain |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| domain | String | Yes | The domain name, such as api.example.com . |
-| protocol | String | Yes | The protocol type: HTTP or HTTPS. |
-| certificateId | String | Conditional | The ID of the certificate. Note This parameter is required when you use the HTTPS protocol. |
-
-y
+`true` to the request header. Stack APIs through a POP gatewa y
 **Enterprise Edition environment**: Add `x-acs-organizationid` and `x-acs-caller-sdk-`
 `source` to the request header and use a valid AccessKey pair.
 
@@ -6174,9 +6931,24 @@ Create a new domain name configuration.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /domain/createDomain |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on**
 
 **CreateOrUpdateDomainRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| domain | String | Yes | The domain name, such as api.example.com . |
+| protocol | String | Yes | The protocol type: HTTP or HTTPS. |
+| certificateId | String | Conditional | The ID of the certificate. Note This parameter is required when you use the HTTPS protocol. |
+
+Stack APIs through a POP gatewa y
 
 | caCertificateId | String | No | The ID of the CA certificate. Use this parameter for mutual authentication. |
 |---|---|---|---|
@@ -6184,18 +6956,7 @@ Create a new domain name configuration.
 | subjectDn | String | No | The header that contains information about the owner of the client certificate. |
 | issuerDn | String | No | The header that contains information about the issuer of the client certificate. |
 
-| Item | Content |
-|---|---|
-| URL | /domain/listDomains |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-| current | Integer | Yes | The page number. The value starts from 1. |
-
-y
+**List domains**
 
 **API description**
 
@@ -6203,28 +6964,25 @@ List domains by page.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /domain/listDomains |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on ListDomainsRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+| current | Integer | Yes | The page number. The value starts from 1. |
+
+Stack APIs through a POP gatewa y
 
 | size | Integer | Yes | The number of entries per page. |
 |---|---|---|---|
 | domain | String | No | The domain name for fuzzy search. |
 | protocol | String | No | The protocol type for filtering. |
-
-| Item | Content |
-|---|---|
-| URL | /domain/getDomain |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| domainId | String | Yes | The ID of the domain name. |
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-| Item | Content |
-|---|---|
-
-y
 
 **Query domain name details**
 
@@ -6234,6 +6992,19 @@ Query the detailed information of a domain name by its ID.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /domain/getDomain |
+| Method | POST |
+| Content-Type | application/json |
+
+**Request parameters (based on GetDomainRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| domainId | String | Yes | The ID of the domain name. |
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+
 **Modify a domain name**
 
 **API description**
@@ -6242,25 +7013,15 @@ Modify an existing domain name configuration.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+
+Stack APIs through a POP gatewa y
+
 | URL | /domain/modifyDomain |
 |---|---|
 | Method | POST |
 | Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-| URL | /domain/deleteDomain |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| domainId | String | Yes | The ID of the domain name. |
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Request parameters**
 
 Use the same parameters as those for creating a domain name. Additionally, you must specify `domainId` .
 
@@ -6272,7 +7033,18 @@ Delete the specified domain name.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /domain/deleteDomain |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on DeleteDomainRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| domainId | String | Yes | The ID of the domain name. |
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
 
 **List all domain names**
 
@@ -6281,6 +7053,8 @@ Delete the specified domain name.
 List all domain names under the gateway instance (without pagination).
 
 **Request information**
+
+Stack APIs through a POP gatewa y
 
 | Item | Content |
 |---|---|
@@ -6291,10 +7065,6 @@ List all domain names under the gateway instance (without pagination).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Request parameters**
 
 **Common Request call examples**
 
@@ -6315,7 +7085,7 @@ ted ACK console address
     private static final String ACCESS_KEY_SECRET = "your-access-key-secret";
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
     private static final String ORGANIZATION_ID = "your-org-id";
@@ -6329,10 +7099,17 @@ y
         // String httpsDomainId = createHttpsDomain(client);
         // ========== List Domain Names ==========
         listDomains(client);
+        // ========== Get Domain Name details ==========
         getDomain(client, httpDomainId);
+        // ========== Modify Domain Name ==========
         modifyDomain(client, httpDomainId);
+        // ========== Delete Domain Name ==========
         deleteDomain(client, httpDomainId);
-    }
+```
+
+`}`
+
+```
     /**
      * Create client (common for self-hosted ACK and Enterprise Edition)
 ```
@@ -6348,11 +7125,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -6360,11 +7144,9 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
 ```
 
-y
+`}` `}` Stack APIs through a POP gatewa y
 
 ```java
     private static CommonRequest createBaseRequest(String uriPattern) {
@@ -6376,7 +7158,11 @@ y
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Create an HTTP Domain Name (based on CreateOrUpdateDomainRequest)
 ```
@@ -6405,8 +7191,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createHttpDomain failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create an HTTPS Domain Name (with certificate)
 ```
@@ -6426,7 +7215,7 @@ Protocol type: HTTPS
 [Required]CertificateID(requiredforHTTPS)
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
 [Required] Certificate ID (required for HTTPS)
@@ -6451,8 +7240,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
         } else {
             System.out.println("createHttpsDomain failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * List Domain Names (based on ListDomainsRequest)
 ```
@@ -6476,19 +7268,24 @@ Number of entries per page
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listDomains: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Get Domain Name details (based on GetDomainRequest)
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```
 Get
 ```
 
-oa
+`o``a`
 
 ```
 aedeta s(basedo Getoa equest)
@@ -6498,7 +7295,11 @@ aedeta s(basedo Getoa equest)
 
 ```java
     private static void getDomain(IAcsClient client, String domainId) throws Exception
-{
+```
+
+`{`
+
+```java
         Map<String, Object> request = new HashMap<>();
         request.put("domainId", domainId);                                  // [Required]
 Domain Name ID
@@ -6508,9 +7309,15 @@ Domain Name ID
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Modify Domain Name
 ```
 
 `*/`
@@ -6531,8 +7338,13 @@ Protocol type
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonRequest(commonRequest);
+        System.out.println("modifyDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Delete Domain Name (based on DeleteDomainRequest)
 ```
@@ -6550,24 +7362,19 @@ Domain Name ID
         CommonRequest commonRequest = createBaseRequest("/domain/deleteDomain");
 ```
 
-| protocol | Description |
-|---|---|
-| HTTP | The HTTP protocol does not require a certificate. |
-| HTTPS | The HTTPS protocol requires binding an SSL certificate. |
+Stack APIs through a POP gatewa y
 
-| clientAuth | Description |
-|---|---|
-| 0 | No client authentication. |
-| 1 | Enable mutual authentication. |
-
-y
-
-```
+```java
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteDomain: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * List all Domain Names
 ```
@@ -6583,16 +7390,29 @@ response.getHttpResponse().getHttpContentString());
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listAllDomains: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **Protocol type description**
 
+| protocol | Description |
+|---|---|
+| HTTP | The HTTP protocol does not require a certificate. |
+| HTTPS | The HTTPS protocol requires binding an SSL certificate. |
+
 **Client authentication type description**
 
+| clientAuth | Description |
+|---|---|
+| 0 | No client authentication. |
+| 1 | Enable mutual authentication. |
+
 **Response code description**
+
+Stack APIs through a POP gatewa y
 
 | code | Description |
 |---|---|
@@ -6601,14 +7421,7 @@ response.getHttpResponse().getHttpContentString());
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-| Item | Content |
-|---|---|
-| URL | /route/createRoutePlugin |
-| Method | POST |
-
-y
-
-##### API call - Route plugin management
+##### 2.2.3.8 API call - Route plugin management
 
 **Overview**
 
@@ -6636,6 +7449,13 @@ This applies only to the SCG engine.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /route/createRoutePlugin |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
 |---|---|
 
@@ -6647,15 +7467,6 @@ This applies only to the SCG engine.
 | pluginName | String | Yes | The name of the plugin. |
 | pluginConfig | Object | Yes | The configuration of the plugin in JSON format. |
 | isOpen | Boolean | No | Specifies whether to enable the plugin. Default value: true. |
-
-| Item | Content |
-|---|---|
-| URL | /route/listRoutePlugins |
-| Method | POST |
-
-y
-
-**Request parameters**
 
 **Query the plugin list for a route**
 
@@ -6669,6 +7480,13 @@ This API call applies only to the SCG engine.
 
 **Request information**
 
+| Item | Content |
+|---|---|
+| URL | /route/listRoutePlugins |
+| Method | POST |
+
+Stack APIs through a POP gatewa y
+
 | Content-Type | application/json |
 |---|---|
 
@@ -6679,18 +7497,7 @@ This API call applies only to the SCG engine.
 | current | Integer | Yes | The current page number. The value starts from 1. |
 | size | Integer | Yes | The number of entries per page. |
 
-| Item | Content |
-|---|---|
-| URL | /route/modifyRoutePlugin |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-y
-
-**Request parameters**
+**Modify route plugin**
 
 **API description**
 
@@ -6702,13 +7509,34 @@ This applies only to the SCG engine.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /route/modifyRoutePlugin |
+| Method | POST |
+| Content-Type | application/json |
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+Stack APIs through a POP gatewa y
 
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 |---|---|---|---|
 | routeId | String | Yes | The ID of the route. |
 | routePluginId | String | Yes | The ID of the route plugin. |
 | pluginConfig | Object | Yes | The new plugin configuration. |
+
+**Modify route plugin status**
+
+**API description**
+
+Enable or disable the route plugin.
+
+**Important**
+
+This feature applies only to the SCG engine.
+
+**Request information**
 
 | Item | Content |
 |---|---|
@@ -6722,22 +7550,22 @@ This applies only to the SCG engine.
 | routeId | String | Yes | The ID of the route. |
 | routePluginId | String | Yes | The ID of the route plugin. |
 
-y
+Stack APIs through a POP gatewa y
+
+| isOpen | Boolean | Yes | true: Enable the plugin. false: Disable the plugin. |
+|---|---|---|---|
+
+**Delete route plugin**
 
 **API description**
 
-Enable or disable the route plugin.
+Delete the plugin configuration of a route.
 
 **Important**
 
 This feature applies only to the SCG engine.
 
 **Request information**
-
-**Request parameters**
-
-| isOpen | Boolean | Yes | true: Enable the plugin. false: Disable the plugin. |
-|---|---|---|---|
 
 | Item | Content |
 |---|---|
@@ -6751,20 +7579,6 @@ This feature applies only to the SCG engine.
 | routeId | String | Yes | The ID of the route. |
 | routePluginId | String | Yes | The ID of the route plugin. |
 
-y
-
-**API description**
-
-Delete the plugin configuration of a route.
-
-**Important**
-
-This feature applies only to the SCG engine.
-
-**Request information**
-
-**Request parameters**
-
 **Common request call example**
 
 The following example shows how to use the Common Request method to call the route Plugin management API. The difference between a self-hosted ACK environment and an Enterprise Edition environment lies only in the authentication parameter settings.
@@ -6773,7 +7587,7 @@ The following example shows how to use the Common Request method to call the rou
 import com.alibaba.fastjson.JSON; import com.alibaba.fastjson.JSONObject; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse;
 ```
 
-y p y p
+Stack APIs through a POP gatewa y `p` `y` `p`
 
 ```java
 import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; import java.util.HashMap; import java.util.Map; public class RoutePluginApiDemo {
@@ -6790,13 +7604,21 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
     private static final String PLUGIN_ID = "your-plugin-id";
     public static void main(String[] args) throws Exception {
         IAcsClient client = createClient();
+        // ========== Create route Plugin ==========
         String routePluginId = createRoutePlugin(client);
+        // ========== List route Plugins ==========
         listRoutePlugins(client);
+        // ========== Modify route Plugin ==========
         modifyRoutePlugin(client, routePluginId);
         // ========== Modify route Plugin status ==========
         modifyRoutePluginStatus(client, routePluginId, false);
+        // ========== Delete route Plugin ==========
         deleteRoutePlugin(client, routePluginId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -6805,16 +7627,18 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
 ```
 
-y
+`}` Stack APIs through a POP gatewa y `}`
 
 ```java
-    }
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -6822,8 +7646,11 @@ y
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -6833,8 +7660,13 @@ y
         request.setSysVersion("2023-02-06");
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
+     * Create route Plugin
 ```
 
 `*/`
@@ -6864,7 +7696,7 @@ y
 FormatType.JSON);
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         CommonResponse response = client.getCommonResponse(commonRequest);
@@ -6878,9 +7710,13 @@ routePluginId);
         } else {
             System.out.println("createRoutePlugin failed: " + result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
+     * List route Plugins
 ```
 
 `*/`
@@ -6900,9 +7736,15 @@ routePluginId);
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listRoutePlugins: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Modify route Plugin
 ```
 
 `*/`
@@ -6921,15 +7763,15 @@ ws Exception {
 】Route ID
 ```
 
-t
+`//`【`R` `t`
 
 ```
 t(" tPl iId" tPl iId)
 ```
 
-`//`【R i d y
+`i` `d` Stack APIs through a POP gatewa y
 
-```
+```java
         request.put("routePluginId", routePluginId);                        // 【Required
 】Route Plugin ID
         request.put("pluginConfig", pluginConfig);                          // 【Required
@@ -6938,9 +7780,15 @@ t(" tPl iId" tPl iId)
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyRoutePlugin: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Modify route Plugin status
 ```
 
 `*/`
@@ -6964,8 +7812,13 @@ FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
         System.out.println("modifyRoutePluginStatus: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
+     * Delete route Plugin
 ```
 
 `*/`
@@ -6985,22 +7838,16 @@ ws Exception {
 FormatTypeJSON);
 ```
 
-| code | Description |
-|---|---|
-| 200 | The operation succeeded. |
-| 400 | A parameter error occurred. |
-| 403 | You do not have sufficient permissions. |
-| 500 | An internal server error occurred. |
+Stack APIs through a POP gatewa y
 
-y
-
-```
+```java
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteRoutePlugin: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **Notes**
 
@@ -7008,7 +7855,14 @@ The route Plugin applies only to the SCG engine. Use the policy configuration mo
 
 **Response code description**
 
-##### API call - Certificate management
+| code | Description |
+|---|---|
+| 200 | The operation succeeded. |
+| 400 | A parameter error occurred. |
+| 403 | You do not have sufficient permissions. |
+| 500 | An internal server error occurred. |
+
+##### 2.2.3.9 API call - Certificate management
 
 **Overview**
 
@@ -7025,6 +7879,14 @@ The certificate management module manages SSL/TLS certificates. You can create, 
 
 **Create a certificate**
 
+Stack APIs through a POP gatewa y
+
+**API call description**
+
+Create an SSL/TLS certificate.
+
+**Request information**
+
 | Item | Content |
 |---|---|
 | URL | /certificate/createCertificate |
@@ -7039,15 +7901,15 @@ The certificate management module manages SSL/TLS certificates. You can create, 
 | cert | String | Yes | The content of the certificate in PEM format. |
 | key | String | Conditional | The content of the private key. Note This parameter is required for server certificates. |
 
-y
+Stack APIs through a POP gatewa y
+
+**Query the certificate list**
 
 **API call description**
 
-Create an SSL/TLS certificate.
+Query certificates by page.
 
 **Request information**
-
-**Request parameters**
 
 | Item | Content |
 |---|---|
@@ -7063,21 +7925,6 @@ Create an SSL/TLS certificate.
 | name | String | No | The certificate name for fuzzy search. |
 | certType | Integer | No | The filter for certificate type. |
 
-| Item | Content |
-|---|---|
-
-y
-
-**Query the certificate list**
-
-**API call description**
-
-Query certificates by page.
-
-**Request information**
-
-**Request parameters**
-
 **Query certificate details**
 
 **API call description**
@@ -7085,6 +7932,11 @@ Query certificates by page.
 Query detailed information by certificate ID.
 
 **Request information**
+
+| Item | Content |
+|---|---|
+
+Stack APIs through a POP gatewa y
 
 | URL | /certificate/getCertificate |
 |---|---|
@@ -7096,16 +7948,6 @@ Query detailed information by certificate ID.
 | certificateId | String | Yes | The ID of the certificate. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-| Item | Content |
-|---|---|
-| URL | /certificate/modifyCertificate |
-| Method | POST |
-| Content-Type | application/json |
-
-y
-
-**Request parameters**
-
 **Modify a certificate**
 
 **API call description**
@@ -7114,7 +7956,11 @@ Modify an existing certificate configuration.
 
 **Request information**
 
-**Request parameters**
+| Item | Content |
+|---|---|
+| URL | /certificate/modifyCertificate |
+| Method | POST |
+| Content-Type | application/json |
 
 These parameters are the same as those for creating a certificate. You must also specify
 
@@ -7130,6 +7976,8 @@ Delete the specified certificate.
 
 **Request information**
 
+Stack APIs through a POP gatewa y
+
 | Item | Content |
 |---|---|
 | URL | /certificate/deleteCertificate |
@@ -7140,10 +7988,6 @@ Delete the specified certificate.
 |---|---|---|---|
 | certificateId | String | Yes | The ID of the certificate. |
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Request parameters**
 
 **Common Request call examples**
 
@@ -7161,7 +8005,7 @@ environment) ==========
 privatestaticfinalStringORGANIZATIONID="your-org-id";
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
     private static final String ORGANIZATION_ID = yourorgid;
@@ -7172,12 +8016,17 @@ y
         String certId = createServerCertificate(client);
         // ========== Create a CA certificate ==========
         // String caCertId = createCACertificate(client);
+        // ========== List certificates ==========
         listCertificates(client);
         // ========== Get certificate details ==========
         getCertificate(client, certId);
         // ========== Delete a certificate ==========
         deleteCertificate(client, certId);
-    }
+```
+
+`}`
+
+```java
     private static IAcsClient createClient() {
         if (IS_SELF_HOSTED) {
             DefaultProfile profile = DefaultProfile.getProfile("-", "-", "-");
@@ -7186,11 +8035,18 @@ y
             DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 ACCESS_KEY_ID, ACCESS_KEY_SECRET);
             return new DefaultAcsClient(profile);
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static String getEndpoint() {
         return IS_SELF_HOSTED ? SELF_HOSTED_ENDPOINT : ENTERPRISE_ENDPOINT;
-    }
+```
+
+`}`
+
+```java
     private static void setAuthHeaders(CommonRequest request) {
         if (IS_SELF_HOSTED) {
             request.putHeadParameter("X-CSB-TOKEN", "csb@2022");
@@ -7198,8 +8054,11 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         } else {
             request.putHeadParameter("x-acs-organizationid", ORGANIZATION_ID);
             request.putHeadParameter("x-acs-caller-sdk-source", "OpenApiDemo");
-        }
-    }
+```
+
+`}` `}`
+
+```java
     private static CommonRequest createBaseRequest(String uriPattern) {
         CommonRequest request = new CommonRequest();
         request.setSysDomain(getEndpoint());
@@ -7209,13 +8068,16 @@ ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         request.setSysVersion("2023-02-06");
 ```
 
-y q y
+Stack APIs through a POP gatewa y `q` `y` `(` );
 
 ```
-( );
         setAuthHeaders(request);
         return request;
-    }
+```
+
+`}`
+
+```
     /**
      * Create a server certificate
 ```
@@ -7258,8 +8120,11 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createServerCertificate failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
      * Create a CA certificate
 ```
@@ -7270,7 +8135,7 @@ result.getString("msg"));
     private static String createCACertificate(IAcsClient client) throws Exception {
 ```
 
-y
+Stack APIs through a POP gatewa y
 
 ```java
         String caCertContent = "-----BEGIN CERTIFICATE-----\n" +
@@ -7300,9 +8165,13 @@ JSON.parseObject(response.getHttpResponse().getHttpContentString());
             System.out.println("createCACertificate failed: " +
 result.getString("msg"));
             return null;
-        }
-    }
+```
+
+`}` `}`
+
+```
     /**
+     * List certificates
 ```
 
 `*/`
@@ -7326,13 +8195,19 @@ createBaseRequest("/certificate/listCertificates");
 FormatType.JSON);
 ```
 
-y
+Stack APIs through a POP gatewa y
+
+```java
+        CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("listCertificates: " +
+response.getHttpResponse().getHttpContentString());
+```
+
+`}`
 
 ```
-        CommonResponse response = client.getCommonResponse(commonRequest);
-response.getHttpResponse().getHttpContentString());
-    }
     /**
+     * Get certificate details
 ```
 
 `*/`
@@ -7349,8 +8224,13 @@ Exception {
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("getCertificate: " +
 response.getHttpResponse().getHttpContentString());
-    }
+```
+
+`}`
+
+```
     /**
      * Modify a certificate
 ```
@@ -7383,22 +8263,17 @@ createBaseRequest("/certificate/modifyCertificate");
 FormatType.JSON);
 ```
 
-| certType | Type name | Description |
-|---|---|---|
-| 0 | Server Certificate | Use this certificate for HTTPS domains. You must provide both the certificate and the private key. |
-| 1 | CA Certificate | Use this certificate for mutual TLS authentication. |
+Stack APIs through a POP gatewa y
 
-| code | Description |
-|---|---|
-| 200 | The request succeeded. |
-| 400 | A parameter error occurred. |
+```java
+        CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("modifyCertificate: " +
+response.getHttpResponse().getHttpContentString());
+```
 
-y
+`}`
 
 ```
-        CommonResponse response = client.getCommonResponse(commonRequest);
-response.getHttpResponse().getHttpContentString());
-    }
     /**
      * Delete a certificate
 ```
@@ -7418,33 +8293,33 @@ createBaseRequest("/certificate/deleteCertificate");
         commonRequest.setHttpContent(JSONObject.toJSONBytes(request), "UTF-8",
 FormatType.JSON);
         CommonResponse response = client.getCommonResponse(commonRequest);
+        System.out.println("deleteCertificate: " +
 response.getHttpResponse().getHttpContentString());
-    }
-}
 ```
+
+`}` `}`
 
 **Certificate type description**
 
+| certType | Type name | Description |
+|---|---|---|
+| 0 | Server Certificate | Use this certificate for HTTPS domains. You must provide both the certificate and the private key. |
+| 1 | CA Certificate | Use this certificate for mutual TLS authentication. |
+
 **Response code description**
+
+| code | Description |
+|---|---|
+| 200 | The request succeeded. |
+| 400 | A parameter error occurred. |
+
+Stack APIs through a POP gatewa y
 
 | 403 | You do not have sufficient permissions. |
 |---|---|
 | 500 | An internal server error occurred. |
 
-| Module | Documentation | API path prefix | Description |
-|---|---|---|---|
-| Cluster management | API call - Cluster management | /k8s | Import Kubernetes clusters. Test connections. Query cluster information. |
-| Instance management | API call - Instance management | /gatewayInstance | Create gateway instances. Scale instances. Restart instances. Upgrade instances. |
-
-| Module | Documentation | API path prefix | Core features |
-|---|---|---|---|
-| Plugin management | API call - Plugin management | /plugin | Create, query, modify, and delete Wasm plugins. |
-| Built-in plug-in management | API call - Built-In Plug- In management | /strategyConfig | Manage policies for Model APIs. |
-| MCP service management | API call - MCP management | /mcpServer | Create MCP services. Authorize MCP services. Manage consumers. |
-
-y
-
-#### AI Gateway
+#### 2.2.4 AI Gateway
 
 This document provides an overview of the OpenAPI interface system for AI Gateway (Higress). AI Gateway supports features such as AI model proxy, MCP service, and plugin extension. You can use OpenAPI to automate management and integration.
 
@@ -7454,9 +8329,26 @@ This document provides an overview of the OpenAPI interface system for AI Gatewa
 
 **Infrastructure layer**
 
+| Module | Documentation | API path prefix | Description |
+|---|---|---|---|
+| Cluster management | API call - Cluster management | /k8s | Import Kubernetes clusters. Test connections. Query cluster information. |
+| Instance management | API call - Instance management | /gatewayInstance | Create gateway instances. Scale instances. Restart instances. Upgrade instances. |
+
+**AI Gateway business layer**
+
+| Module | Documentation | API path prefix | Core features |
+|---|---|---|---|
+| Plugin management | API call - Plugin management | /plugin | Create, query, modify, and delete Wasm plugins. |
+| Built-in plug-in management | API call - Built-In Plug- In management | /strategyConfig | Manage policies for Model APIs. |
+| MCP service management | API call - MCP management | /mcpServer | Create MCP services. Authorize MCP services. Manage consumers. |
+
+Stack APIs through a POP gatewa y
+
 | Model API management | API Call - Model API Management | /modelapi | Configure AI model APIs. Authorize AI model APIs. Manage policies for AI model APIs. |
 |---|---|---|---|
 | AI service management | Implement through the service management interface. | /microservice | Configure AI service providers, including provider, baseUrl, and apiKey. |
+
+**General-purpose business layer**
 
 | Module | Description |
 |---|---|
@@ -7467,25 +8359,27 @@ This document provides an overview of the OpenAPI interface system for AI Gatewa
 | Route management | The API interfaces are the same as those of SCG. Higress does not support the policy configuration method of SCG (use policy configuration management instead). |
 | Origin management | Higress origin types: Nacos DNS domain name Static address Kubernetes cluster |
 
-y
-
-**General-purpose business layer**
-
 **Authentication method**
 
 AI Gateway OpenAPI supports two authentication methods:
 
 **Self-managed ACK environment**
 
+Stack APIs through a POP gatewa y
+
 | Header | Value | Description |
 |---|---|---|
 | X-CSB-TOKEN | csb@2022 | The authentication token. |
 | X-CSB-OPENAPI | true | The OpenAPI call identifier. |
 
+**Enterprise edition environment**
+
 | Header | Value | Description |
 |---|---|---|
 | x-acs-organizationid | Organization ID | The enterprise organization identifier. |
 | x-acs-caller-sdk-source | Origin identifier | The call origin identifier. |
+
+**Origin type (Higress)**
 
 | sourceType | Type name | Description |
 |---|---|---|
@@ -7494,21 +8388,21 @@ AI Gateway OpenAPI supports two authentication methods:
 | 7 | Static address | Static IP or domain name address. |
 | 8 | DNS | DNS domain name resolution. |
 
+**Key differences from SCG**
+
+**Service management differences**
+
 | Feature | SCG | Higress |
 |---|---|---|
 | Import services | Supported | Not supported. |
 | Manage proxy servers | Not supported | Supported (listProxyServers, createProxyServer, and others). |
 
-y
-
-**Enterprise edition environment**
-
-**Origin type (Higress)**
-
-**Key differences from SCG**
+Stack APIs through a POP gatewa y
 
 | Get service instances | Supported | Not supported. |
 |---|---|---|
+
+**Differences in route management**
 
 | Feature | SCG | Higress |
 |---|---|---|
@@ -7518,22 +8412,16 @@ y
 | Cross-origin configuration | Supported (at the route level) | Not supported. |
 | Route plugin management | Supported (at the route level) | Not supported. Use plugin management instead. |
 
-| Item | Content |
-|---|---|
-
-y
-
-**Differences in route management**
-
 **Differences in policy configuration**
 
 SCG uses route-level policy configuration. Higress uses a separate policy configuration management module.
 
-##### API call - Plugin management
+##### 2.2.4.1 API call - Plugin management
 
 **Overview**
 
 The Plugin management module creates, configures, and manages Wasm plugins. Higress supports two types: custom plugins and global plugins.
+**Applicable engine**: Higress (AI Gateway)
 **API path prefix**: `/plugin` (custom plugin), `/globalPlugin` (global plugin)
 
 **Authentication method**
@@ -7543,15 +8431,24 @@ The Plugin management module creates, configures, and manages Wasm plugins. Higr
 **Enterprise edition environment**: Add `x-acs-organizationid` and `x-acs-caller-sdk-`
 `source` to the request header, and use a valid AK/SK.
 
+**Custom plug-in management**
+
 **Create a custom plug-in**
+
+| Item | Content |
+|---|---|
 
 | tack APIs through a POP gatewa | API Gatewa |
 |---|---|
+
+y
 
 | URL | /plugin/createPlugin |
 |---|---|
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on CreatePluginRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7561,20 +8458,20 @@ The Plugin management module creates, configures, and manages Wasm plugins. Higr
 | downloadURL | String | Yes | The download URL of the Wasm plug-in. |
 | config | List | No | The list of plug-in configuration parameters. |
 
+**Query the plug-in list**
+
 | Item | Content |
 |---|---|
 | URL | /plugin/listPlugins |
 | Method | POST |
 | Content-Type | application/json |
 
-| 97 |  | > Doc | ument Version: 2026062 |
+**Request parameters (based on ListGlobalPluginsRequest)**
+
+| 97 |   | > Doc | ument Version: 2026062 |
 |---|---|---|---|
 
-**Request parameters (based on CreatePluginRequest)**
-
-**Query the plug-in list**
-
-**Request parameters (based on ListGlobalPluginsRequest)**
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7583,32 +8480,34 @@ The Plugin management module creates, configures, and manages Wasm plugins. Higr
 | size | Integer | Yes | The number of entries per page. |
 | searchName | String | No | The name of the plug- in. Fuzzy search is supported. |
 
+**Query the plug-in details**
+
 | Item | Content |
 |---|---|
 | URL | /plugin/getPlugin |
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on GetPluginByIdRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | pluginId | String | Yes | The ID of the plug-in. |
 
+**Modify a plug-in**
+
 | Item | Content |
 |---|---|
 | URL | /plugin/modifyPlugin |
 
-y
-
-**Query the plug-in details**
-
-**Request parameters (based on GetPluginByIdRequest)**
-
-**Modify a plug-in**
+Stack APIs through a POP gatewa y
 
 | Method | POST |
 |---|---|
 | Content-Type | application/json |
+
+**Request parameters (based on ModifyPluginRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7619,26 +8518,26 @@ y
 | downloadURL | String | No | The download URL of the Wasm plug-in. |
 | config | List | No | The configuration parameters of the plug-in. |
 
+**Delete a plug-in**
+
 | Item | Content |
 |---|---|
 | URL | /plugin/deletePlugin |
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on DeletePluginRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
-y
-
-**Request parameters (based on ModifyPluginRequest)**
-
-**Delete a plug-in**
-
-**Request parameters (based on DeletePluginRequest)**
+Stack APIs through a POP gatewa y
 
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 |---|---|---|---|
 | pluginId | String | Yes | The ID of the plug-in. |
+
+**Query plug-in usage**
 
 | Item | Content |
 |---|---|
@@ -7646,10 +8545,14 @@ y
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on ListPluginUsageRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | pluginId | String | Yes | The ID of the plug-in. |
+
+**List all enabled plugins**
 
 | Item | Content |
 |---|---|
@@ -7660,24 +8563,24 @@ y
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
-y
-
-**Query plug-in usage**
-
-**Request parameters (based on ListPluginUsageRequest)**
-
-**List all enabled plugins**
-
-**Request parameters**
+Stack APIs through a POP gatewa y
 
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 |---|---|---|---|
+
+**Global plug-in management**
+
+The global plug-in takes effect on all routes under the gateway instance.
+
+**Create a global plug-in**
 
 | Item | Content |
 |---|---|
 | URL | /globalPlugin/createGlobalPlugin |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on CreateGlobalPluginRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7687,19 +8590,19 @@ y
 | status | Boolean | Yes | Specifies whether to enable the plug-in. |
 | config | String | No | The plug-in configuration. This value is a JSON string. |
 
+**List global plug-ins**
+
 | Item | Content |
 |---|---|
 
-y The global plug-in takes effect on all routes under the gateway instance.
-
-**Create a global plug-in**
-
-**Request parameters (based on CreateGlobalPluginRequest)**
+Stack APIs through a POP gatewa y
 
 | URL | /globalPlugin/listGlobalPlugins |
 |---|---|
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on ListGlobalPluginsRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7708,28 +8611,28 @@ y The global plug-in takes effect on all routes under the gateway instance.
 | size | Integer | Yes | The number of entries per page. |
 | searchName | String | No | The plug-in name for fuzzy search. |
 
+**Edit global plug-in**
+
 | Item | Content |
 |---|---|
 | URL | /globalPlugin/modifyGlobalPlugin |
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on ModifyGlobalPluginRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 
-y
-
-**Request parameters (based on ListGlobalPluginsRequest)**
-
-**Edit global plug-in**
-
-**Request parameters (based on ModifyGlobalPluginRequest)**
+Stack APIs through a POP gatewa y
 
 | routePluginId | String | Yes | The ID of the global plug-in instance. |
 |---|---|---|---|
 | order | Integer | No | The execution order. |
 | config | String | No | The plug-in configuration. |
+
+**Edit global plug-in status**
 
 | Item | Content |
 |---|---|
@@ -7743,22 +8646,34 @@ y
 | routePluginId | String | Yes | The ID of the global plug-in instance. |
 | status | Boolean | Yes | Indicates whether to enable the plug-in. |
 
+**Delete global plug-in**
+
 | Item | Content |
 |---|---|
 | URL | /globalPlugin/deleteGlobalPlugin |
 | Method | POST |
 | Content-Type | application/json |
 
-y
+Stack APIs through a POP gatewa y
 
-**Edit global plug-in status**
-
-**Request parameters**
+**Request parameters (based on DeleteGlobalPluginRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | routePluginId | String | Yes | The ID of the global plug-in instance. |
+
+**Response format**
+
+All APIs return a unified JSON format: `{`
+
+```json
+  "code": 200,
+  "msg": "success",
+  "data": {}
+```
+
+`}`
 
 | code | Description |
 |---|---|
@@ -7767,26 +8682,7 @@ y
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-| Plug-in name | Feature description | Scenario |
-|---|---|---|
-
-y
-
-**Request parameters (based on DeleteGlobalPluginRequest)**
-
-**Response format**
-
-All APIs return a unified JSON format:
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {}
-}
-```
-
-##### API call - Built-In Plug-In management
+##### 2.2.4.2 API call - Built-In Plug-In management
 
 **Overview**
 
@@ -7794,20 +8690,16 @@ The AI Gateway (Higress) supports multiple built-in Wasm plug-ins to implement f
 
 **Built-In Plug-In list**
 
+| Plug-in name | Feature description | Scenario |
+|---|---|---|
+
+Stack APIs through a POP gatewa y
+
 | key-auth | Authenticate consumers. | Perform API key authentication for consumers. |
 |---|---|---|
 | ai-token-ratelimit | Throttle AI tokens. | Apply token-level throttling to Model APIs. |
 | ai-security-guard | Enforce AI security policies. | Perform content moderation for Model APIs. |
 | cluster-key-rate-limit | Throttle cluster QPS. | Apply global QPS throttling to Model APIs. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| global auth _ | Boolean | No | Specifies whether to enable authentication globally. The default value is false. |
-| keys | Set | Yes | The fields from which the system obtains the API key, such as Authorization and x-api-key . |
-| in header _ | Boolean | No | Specifies whether to obtain the key from request headers. The default value is true. |
-| in query _ | Boolean | No | Specifies whether to obtain the key from query parameters. The default value is false. |
-
-y
 
 **key-auth plug-in**
 
@@ -7819,7 +8711,16 @@ The key-auth plug-in authenticates consumers for API requests. The plug-in uses 
 
 **Global configuration**
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| global auth _ | Boolean | No | Specifies whether to enable authentication globally. The default value is false. |
+| keys | Set | Yes | The fields from which the system obtains the API key, such as Authorization and x-api-key . |
+| in header _ | Boolean | No | Specifies whether to obtain the key from request headers. The default value is true. |
+| in query _ | Boolean | No | Specifies whether to obtain the key from query parameters. The default value is false. |
+
 **Consumer configuration (consumers)**
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -7831,45 +8732,35 @@ The key-auth plug-in authenticates consumers for API requests. The plug-in uses 
 | in query _ | Boolean | No | The location information at the Consumer level, which inherits the global configuration. |
 | keys | Set | No | The key field at the Consumer level, which inherits the global configuration. |
 
-y
-
 **Configuration example**
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| enabled | Boolean | Yes | Specifies whether to enable the policy. The default value is false. |
-| ruleItems | List | Yes | The list of throttling rule items. |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| limitByType | String | Yes | The type of throttling condition. |
-
-y
+Stack APIs through a POP gatewa y `{`
 
 ```json
-{
   "global_auth": false,
   "in_header": true,
   "in_query": false,
   "keys": ["Authorization", "x-api-key"],
   "consumers": [
-    {
+```
+
+`{`
+
+```json
       "name": "consumer-1",
       "credential": "Bearer api-key-12345",
       "description": "Test consumer"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "name": "consumer-2",
       "credentials": ["key-1", "key-2"],
       "description": "Multi-key consumer"
-    }
 ```
 
-]
-
-```
-}
-```
+`}` `]` `}`
 
 **ai-token-ratelimit plugin**
 
@@ -7879,17 +8770,36 @@ The AI Token Throttling plugin controls token-level throttling for Model APIs. T
 
 **Configuration structure**
 
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| enabled | Boolean | Yes | Specifies whether to enable the policy. The default value is false. |
+| ruleItems | List | Yes | The list of throttling rule items. |
+
 **Throttling rule item (AiTokenLimitRuleItem)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| limitByType | String | Yes | The type of throttling condition. |
+
+Stack APIs through a POP gatewa y
 
 | limitByValue | String | Yes | The value of the throttling condition, such as a header name or a parameter name. |
 |---|---|---|---|
 | limitKeys | List | Yes | The list of throttling key configurations. |
+
+**Valid values of limitByType:**
+
+`consumer` : Throttle by consumer. `model` : Throttle by model. `header` : Throttle by request header. `param` : Throttle by query parameter.
+
+**Throttling key configuration (AiTokenLimitKey)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | key | String | Yes | The matching key- value. |
 | timeUnit | String | Yes | The time unit for throttling. |
 | tokenLimit | Integer | Yes | The number of tokens for throttling. |
+
+**Valid values of timeUnit:**
 
 | Value | Description |
 |---|---|
@@ -7898,70 +8808,56 @@ The AI Token Throttling plugin controls token-level throttling for Model APIs. T
 | PER HOUR _ | Per hour. |
 | PER DAY _ | Per day. |
 
-y
-
-**Valid values of limitByType:**
-
-`consumer` : Throttle by consumer. `model` : Throttle by model. `header` : Throttle by request header. `param` : Throttle by query parameter.
-
-**Throttling key configuration (AiTokenLimitKey)**
-
-**Valid values of timeUnit:**
-
 **Configuration example**
 
-| Parameter | Type | Required | Default value | Description |
-|---|---|---|---|---|
-| enabled | Boolean | Yes | false | Specifies whether to enable the policy. |
-
-y
+Stack APIs through a POP gatewa y `{`
 
 ```json
-{
   "enabled": true,
   "ruleItems": [
-    {
+```
+
+`{`
+
+```json
       "limitByType": "consumer",
       "limitByValue": "",
       "limitKeys": [
-        {
+```
+
+`{`
+
+```json
           "key": "consumer-1",
           "timeUnit": "PER_MINUTE",
           "tokenLimit": 1000
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "key": "consumer-2",
           "timeUnit": "PER_HOUR",
           "tokenLimit": 5000
-        }
 ```
 
-]
+`}` `]` `},` `{`
 
 ```json
-    },
-    {
       "limitByType": "model",
       "limitByValue": "",
       "limitKeys": [
-        {
+```
+
+`{`
+
+```json
           "key": "gpt-4",
           "timeUnit": "PER_DAY",
           "tokenLimit": 10000
-        }
 ```
 
-]
-
-```
-    }
-```
-
-]
-
-```
-}
-```
+`}` `]` `}` `]` `}`
 
 **ai-security-guard plugin**
 
@@ -7971,63 +8867,55 @@ The AI security policy plugin performs content moderation for Model APIs. The pl
 
 **Configuration structure**
 
-|  | accessUrl |  | String | No | - | The access URL. The system automatically populates this parameter. |
-|---|---|---|---|---|---|---|
-|  | checkRequestEn abled |  | Boolean | No | false | Specifies whether to check request content. |
-|  |  | checkRequestEn | Bool |  |  |  |
-|  | abled |  |  |  |  |  |
-|  | checkResponseE nabled |  | Boolean | No | false | Specifies whether to check response content. |
-|  |  | checkResponseE | Boole |  |  |  |
-|  | nabled |  |  |  |  |  |
-|  | streamChunkSiz e |  | Integer | No | 100 | The chunk size for streaming responses. |
-|  |  | streamChunkSiz |  |  |  |  |
-|  | e |  |  |  |  |  |
-|  | timeoutSeconds |  | Integer | No | 1 | The timeout period, in seconds. |
-|  |  | timeoutSeconds |  |  |  |  |
-|  | denyMessage |  | String | No | - | The response message when the content is illegal. |
-|  | requestCheckSe rvice |  | String | No | - | The name of the request check service. |
-|  |  | requestCheckSe | Strin |  |  |  |
-|  | rvice |  |  |  |  |  |
-|  | responseCheckS ervice |  | String | No | - | The name of the response check service. |
-|  |  | responseCheckS | String |  |  |  |
-|  | ervice |  |  |  |  |  |
-|  | riskLevelBar |  | String | No | low | The risk level threshold for interception. |
+| Parameter | Type | Required | Default value | Description |
+|---|---|---|---|---|
+| enabled | Boolean | Yes | false | Specifies whether to enable the policy. |
 
-|  |  | riskLevelBar |
+Stack APIs through a POP gatewa y
+
+|   | accessUrl |   | String | No | - | The access URL. The system automatically populates this parameter. |
+|---|---|---|---|---|---|---|
+|   | checkRequestEn abled |   | Boolean | No | false | Specifies whether to check request content. |
+|   |   | checkRequestEn | Bool |   |   |   |
+|   | abled |   |   |   |   |   |
+|   | checkResponseE nabled |   | Boolean | No | false | Specifies whether to check response content. |
+|   |   | checkResponseE | Boole |   |   |   |
+|   | nabled |   |   |   |   |   |
+|   | streamChunkSiz e |   | Integer | No | 100 | The chunk size for streaming responses. |
+|   |   | streamChunkSiz |   |   |   |   |
+|   | e |   |   |   |   |   |
+|   | timeoutSeconds |   | Integer | No | 1 | The timeout period, in seconds. |
+|   |   | timeoutSeconds |   |   |   |   |
+|   | denyMessage |   | String | No | - | The response message when the content is illegal. |
+|   | requestCheckSe rvice |   | String | No | - | The name of the request check service. |
+|   |   | requestCheckSe | Strin |   |   |   |
+|   | rvice |   |   |   |   |   |
+|   | responseCheckS ervice |   | String | No | - | The name of the response check service. |
+|   |   | responseCheckS | String |   |   |   |
+|   | ervice |   |   |   |   |   |
+|   | riskLevelBar |   | String | No | low | The risk level threshold for interception. |
+
+|   |   | riskLevelBar |
 |---|---|---|
+
+**Valid values of riskLevelBar:**
 
 | Value | Description |
 |---|---|
 | max | Detects content but does not intercept it. Only records are generated. |
 | high | Intercepts only high-risk content. |
 
-y
-
-**Valid values of riskLevelBar:**
+Stack APIs through a POP gatewa y
 
 | medium | Intercepts medium-risk and higher-risk content. |
 |---|---|
 | low | Intercepts low-risk and higher-risk content. |
 
-|  | Parameter |  | Type | Required | Default value | Description |
-|---|---|---|---|---|---|---|
-|  | enabled |  | Boolean | Yes | false | Specifies whether to enable the policy. |
-|  | queryPerSecond |  | Integer | No | - | The number of requests allowed per second. |
-|  |  | queryPerSecond |  |  |  |  |
-|  | queryPerMinute |  | Integer | No | - | The number of requests allowed per minute. |
-|  |  | queryPerMinute |  |  |  |  |
-|  | queryPerHour |  | Integer | No | - | The number of requests allowed per hour. |
-|  | queryPerDay |  | Integer | No | - | The number of requests allowed per day. |
-
-|  |  | queryPerHour |
-|---|---|---|
-
-y
-
 **Configuration example**
 
+`{`
+
 ```json
-{
   "enabled": true,
   "checkRequestEnabled": true,
   "checkResponseEnabled": true,
@@ -8037,8 +8925,9 @@ y
   "requestCheckService": "dc_llm_query_moderation",
   "responseCheckService": "dc_llm_response_moderation",
   "riskLevelBar": "medium"
-}
 ```
+
+`}`
 
 **cluster-key-rate-limit plugin**
 
@@ -8048,6 +8937,47 @@ The cluster QPS throttling plugin controls global QPS throttling for Model APIs.
 
 **Configuration structure**
 
+|   | Parameter |   | Type | Required | Default value | Description |
+|---|---|---|---|---|---|---|
+|   | enabled |   | Boolean | Yes | false | Specifies whether to enable the policy. |
+|   | queryPerSecond |   | Integer | No | - | The number of requests allowed per second. |
+|   |   | queryPerSecond |   |   |   |   |
+|   | queryPerMinute |   | Integer | No | - | The number of requests allowed per minute. |
+|   |   | queryPerMinute |   |   |   |   |
+|   | queryPerHour |   | Integer | No | - | The number of requests allowed per hour. |
+|   | queryPerDay |   | Integer | No | - | The number of requests allowed per day. |
+
+|   |   | queryPerHour |
+|---|---|---|
+
+Stack APIs through a POP gatewa y
+
+**Important**
+
+You can specify only one time window, and its value must be greater than 0.
+
+**Configuration example**
+
+`{`
+
+```json
+  "enabled": true,
+  "queryPerSecond": 100
+```
+
+`}` or `{`
+
+```json
+  "enabled": true,
+  "queryPerMinute": 6000
+```
+
+`}`
+
+**Plugin scope**
+
+Higress plugins support multi-level scope configuration, listed in descending order of priority:
+
 | Scope | Enumeration value | Priority | Description |
 |---|---|---|---|
 | Route | ROUTE | 1 | Configuration for a specific route. |
@@ -8056,35 +8986,17 @@ The cluster QPS throttling plugin controls global QPS throttling for Model APIs.
 | Consumer | CONSUMER | 4 | Configuration for a specific consumer (disabled). |
 | Instance | INSTANCE | 5 | Global instance-level configuration. |
 
-y
+**Usage**
 
-**Important**
-
-You can specify only one time window, and its value must be greater than 0.
-
-**Configuration example**
-
-```json
-{
-  "enabled": true,
-  "queryPerSecond": 100
-}
-```
-
-or
-
-```json
-{
-  "enabled": true,
-  "queryPerMinute": 6000
-}
-```
-
-**Plugin scope**
-
-Higress plugins support multi-level scope configuration, listed in descending order of priority: Configure built-in plugins primarily through the following interfaces:
+Configure built-in plugins primarily through the following interfaces:
 1. **Policy configuration interface** ( `/strategyConfig` )
-Configure plugin policies for Model APIs. Create, modify, delete, and query policy configurations.
+Configure plugin policies for Model APIs. Create, modify, delete, and query policy configurations. Stack APIs through a POP gatewa y Primarily apply to `ai-token-ratelimit` , `ai-security-guard` , and `cluster-key-rate-` `limit` .
+2. **Consumer authentication interface** ( `/strategyConfig/handlerConsumerAuth` )
+Configure consumer authentication policies. Automatically create and manage `key-auth` plugin configurations.
+3. **Global plugin interface** ( `/globalPlugin` )
+Configure plugins at the global level. Support plugin configuration at the route, domain, and service levels.
+
+**Related interfaces**
 
 | Interface | Path | Description |
 |---|---|---|
@@ -8105,41 +9017,47 @@ Configure plugin policies for Model APIs. Create, modify, delete, and query poli
 | /strategyConfig/deleteStra | Delete a pl |
 |---|---|
 
-|  |  | /strategyConfig/getStrateg | Query t |
+|   |   | /strategyConfig/getStrateg | Query t |
 |---|---|---|---|
-| tStrategyConfig | yConfig |  |  |
+| tStrategyConfig | yConfig |   |   |
 
-|  |  | /strategyConfig/listStrate | Query the |
+|   |   | /strategyConfig/listStrate | Query the |
 |---|---|---|---|
-| tStrategyConfigs | gyConfigs |  |  |
+| tStrategyConfigs | gyConfigs |   |   |
 
-|  |  | /strategyConfig/modifyStra | Enable or disable |
+|   |   | /strategyConfig/modifyStra | Enable or disable |
 |---|---|---|---|
-| difyStrategyConfigStatus | tegyConfigStatus |  |  |
+| difyStrategyConfigStatus | tegyConfigStatus |   |   |
 
-|  |  | /strategyConfig/handlerCon | Handle co |
+|   |   | /strategyConfig/handlerCon | Handle co |
 |---|---|---|---|
-| ndlerConsumerAuth | sumerAuth |  |  |
+| ndlerConsumerAuth | sumerAuth |   |   |
 
-y Primarily apply to `ai-token-ratelimit` , `ai-security-guard` , and `cluster-key-rate-` `limit` .
-2. **Consumer authentication interface** ( `/strategyConfig/handlerConsumerAuth` )
-Configure consumer authentication policies. Automatically create and manage `key-auth` plugin configurations.
-3. **Global plugin interface** ( `/globalPlugin` )
-Configure plugins at the global level. Support plugin configuration at the route, domain, and service levels.
-
-**Related interfaces**
-
-##### API Call - Model API Management
+##### 2.2.4.3 API Call - Model API Management
 
 **Overview**
 
 The Model API Management module creates, configures, authorizes, and manages policies for AI model APIs. The model API centrally manages the routing for calling multiple AI models.
+**Applicable engine**: Higress (AI Gateway)
+Stack APIs through a POP gatewa y
+**API path prefix**: `/modelapi`
+
+**Authentication method**
+
+**Self-managed ACK environment**: Add `X-CSB-TOKEN: csb@2022` and `X-CSB-OPENAPI:`
+`true` to the request header.
+**Enterprise Edition environment**: Add `x-acs-organizationid` and `x-acs-caller-sdk-`
+`source` to the request header, and use a valid AK/SK.
+
+**Create model API**
 
 | Item | Content |
 |---|---|
 | URL | /modelapi/createModelApi |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on CreateModelApiRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8152,19 +9070,7 @@ The Model API Management module creates, configures, authorizes, and manages pol
 | domainNameList | List | No | The list of domain names. |
 | protocol | String | Yes | The protocol type. |
 
-y
-**API path prefix**: `/modelapi`
-
-**Authentication method**
-
-**Self-managed ACK environment**: Add `X-CSB-TOKEN: csb@2022` and `X-CSB-OPENAPI:`
-`true` to the request header.
-**Enterprise Edition environment**: Add `x-acs-organizationid` and `x-acs-caller-sdk-`
-`source` to the request header, and use a valid AK/SK.
-
-**Create model API**
-
-**Request parameters (based on CreateModelApiRequest)**
+Stack APIs through a POP gatewa y
 
 | sceneType | String | Yes | The scenario type. |
 |---|---|---|---|
@@ -8172,25 +9078,13 @@ y
 | observationConfig | Object | No | The observation configuration. |
 | fallback | Object | No | The fallback configuration. |
 
+**Update model API**
+
 | Item | Content |
 |---|---|
 | URL | /modelapi/updateModelApi |
 | Method | POST |
 | Content-Type | application/json |
-
-| Item | Content |
-|---|---|
-| URL | /modelapi/deleteModelApi |
-| Method | POST |
-| Content-Type | application/json |
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| gwInstanceId | String | Yes | The ID of the gateway instance. |
-
-y
-
-**Update model API**
 
 **Request parameters (based on UpdateModelApiRequest)**
 
@@ -8198,13 +9092,27 @@ These parameters are the same as those for creating a model API. You must also s
 
 **Delete model API**
 
+| Item | Content |
+|---|---|
+| URL | /modelapi/deleteModelApi |
+| Method | POST |
+| Content-Type | application/json |
+
 **Request parameters (based on DeleteModelApiRequest)**
 
-| PI Gateway |  | Develo Stack A | per Guide·Calling Apsara PIs through a POP gatew |
+| Parameter | Type | Required | Description |
 |---|---|---|---|
+| gwInstanceId | String | Yes | The ID of the gateway instance. |
+
+| PI Gateway |   | Develo Stack A | per Guide·Calling Apsara PIs through a POP gatew |
+|---|---|---|---|
+
+y
 
 | id | String | Yes | The ID of the model API. |
 |---|---|---|---|
+
+**Query model API details**
 
 | Item | Content |
 |---|---|
@@ -8212,10 +9120,14 @@ These parameters are the same as those for creating a model API. You must also s
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on GetModelApiRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | id | String | Yes | The ID of the model API. |
+
+**Query model API list**
 
 | Item | Content |
 |---|---|
@@ -8223,16 +9135,12 @@ These parameters are the same as those for creating a model API. You must also s
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on ListModelApisRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
-**Query model API details**
-
-**Request parameters (based on GetModelApiRequest)**
-
-**Query model API list**
-
-**Request parameters (based on ListModelApisRequest)**
+Stack APIs through a POP gatewa y
 
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 |---|---|---|---|
@@ -8242,32 +9150,36 @@ These parameters are the same as those for creating a model API. You must also s
 | protocol | String | No | The protocol type for filtering. |
 | sceneType | String | No | The scenario type for filtering. |
 
+**Query model API associated routes**
+
 | Item | Content |
 |---|---|
 | URL | /modelapi/listModelApiRoutes |
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on ListModelApiRoutesRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | id | String | Yes | The ID of the model API. |
 
-y
-
-**Query model API associated routes**
-
-**Request parameters (based on ListModelApiRoutesRequest)**
-
 **Authorization management**
 
 **Query the list of authorized consumers**
+
+Stack APIs through a POP gatewa y
 
 | Item | Content |
 |---|---|
 | URL | /modelapi/listModelApiConsumers |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on**
+
+**ListModelApiConsumersRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8276,31 +9188,29 @@ y
 | current | Integer | Yes | The current page number. |
 | size | Integer | Yes | The number of entries per page. |
 
+**Enable or disable model API authentication**
+
 | Item | Content |
 |---|---|
 | URL | /modelapi/changeModelApiAuthStatus |
 | Method | POST |
 | Content-Type | application/json |
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-y
-
-**Request parameters (based on**
-
-**ListModelApiConsumersRequest)**
-
-**Enable or disable model API authentication**
-
 **Request parameters (based on**
 
 **ChangeModelApiAuthStatusRequest)**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+Stack APIs through a POP gatewa y
 
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 |---|---|---|---|
 | id | String | Yes | The ID of the model API. |
 | authenticationConfig | Object | Yes | The authentication configuration. |
+
+**Batch authorize model API**
 
 | Item | Content |
 |---|---|
@@ -8308,38 +9218,44 @@ y
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on BatchGrantModelApiRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | modelApiId | String | Yes | The ID of the model API. |
 | consumerIds | List | Yes | The list of consumer IDs. |
 
+**Revoke model API authorization**
+
 | Item | Content |
 |---|---|
 | URL | /modelapi/revokeModelApiGrant |
 | Method | POST |
 
-y
-
-**Batch authorize model API**
-
-**Request parameters (based on BatchGrantModelApiRequest)**
-
-**Revoke model API authorization**
+Stack APIs through a POP gatewa y
 
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters (based on RevokeModelApiGrantRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | authId | String | Yes | The ID of the authorization record. |
 
+**Policy management**
+
+**Edit model API policy**
+
 | Item | Content |
 |---|---|
 | URL | /modelapi/modifyModelApiPolicy |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on CommonPolicyModifyRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8348,15 +9264,9 @@ y
 | configType | String | Yes | The type of the policy. |
 | configData | Object | Yes | The configuration data of the policy. |
 
-y
-
-**Request parameters (based on RevokeModelApiGrantRequest)**
-
-**Edit model API policy**
-
-**Request parameters (based on CommonPolicyModifyRequest)**
-
 **Query model API policy configuration**
+
+Stack APIs through a POP gatewa y
 
 | Item | Content |
 |---|---|
@@ -8369,6 +9279,8 @@ y
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | id | String | Yes | The ID of the model API. |
 
+**Protocol type description**
+
 | protocol | Description |
 |---|---|
 | OPENAI COMPATIBLE _ | The OpenAI-compatible protocol. |
@@ -8376,25 +9288,33 @@ y
 | HTTP CUSTOM _ | The custom HTTP protocol. |
 | WS CUSTOM _ | The custom WebSocket protocol. |
 
+**Scenario type description**
+
 | sceneType | Description |
 |---|---|
 | TEXT GENERATION _ | Text generation. |
 | IMAGE GENERATION _ | Image generation. |
 | VIDEO GENERATION _ | Video generation. |
 
-y
-
-**Request parameters**
-
-**Protocol type description**
-
-**Scenario type description**
+Stack APIs through a POP gatewa y
 
 | SPEECH SYNTHESIS _ | Speech synthesis. |
 |---|---|
 | TEXT RERANK _ | Text reranking. |
 | EMBEDDING | Vectorization. |
 | OTHER | Other. |
+
+**Response format**
+
+All APIs return a unified JSON format: `{`
+
+```json
+  "code": 200,
+  "msg": "success",
+  "data": {}
+```
+
+`}`
 
 | code | Description |
 |---|---|
@@ -8403,25 +9323,12 @@ y
 | 403 | You do not have sufficient permissions. |
 | 500 | An internal server error occurred. |
 
-y
-
-**Response format**
-
-All APIs return a unified JSON format:
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {}
-}
-```
-
-##### API call - MCP management
+##### 2.2.4.4 API call - MCP management
 
 **Overview**
 
 The MCP management module creates, configures, and authorizes MCP (Model Context Protocol) services. The MCP service enables interaction between AI Agents and external tools or data.
+**Applicable engine**: Higress (AI Gateway)
 **API path prefix**: `/mcpServer`
 
 **Authentication method**
@@ -8429,13 +9336,17 @@ The MCP management module creates, configures, and authorizes MCP (Model Context
 **Self-managed ACK environment**: Add `X-CSB-TOKEN: csb@2022` and `X-CSB-OPENAPI:`
 `true` to the request header.
 **Enterprise Edition environment**: Add `x-acs-organizationid` and `x-acs-caller-sdk-`
-`source` to the request header, and use a valid AK/SK.
+`source` to the request header, and use a valid AK/SK. Stack APIs through a POP gatewa y
+
+**Create an MCP service**
 
 | Item | Content |
 |---|---|
 | URL | /mcpServer/createMcpServer |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on CreateMcpServerRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8447,11 +9358,7 @@ The MCP management module creates, configures, and authorizes MCP (Model Context
 | type | String | Yes | The MCP class: OPEN API _ DATABASE DIRECT ROUTE _ |
 | rawConfigurations | String | No | The raw configuration in YAML format (defined by tools). |
 
-y
-
-**Create an MCP service**
-
-**Request parameters (based on CreateMcpServerRequest)**
+Stack APIs through a POP gatewa y
 
 | dbConfig | Object | Conditional | The database configuration. Note This parameter is required when type is DATABASE. |
 |---|---|---|---|
@@ -8460,29 +9367,35 @@ y
 | consumerAuthInfo | Object | No | The consumer authentication configuration. |
 | observabilityEnabled | Boolean | No | Specifies whether to enable observability. |
 
+**HigressServiceTarget structure**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | serviceId | String | Yes | The ID of the service. |
+
+**Edit an MCP service**
 
 | Item | Content |
 |---|---|
 | URL | /mcpServer/updateMcpServer |
 
-y
-
-**HigressServiceTarget structure**
-
-**Edit an MCP service**
+Stack APIs through a POP gatewa y
 
 | Method | POST |
 |---|---|
 | Content-Type | application/json |
+
+The parameters are the same as those for creating an MCP service.
+
+**List MCP services**
 
 | Item | Content |
 |---|---|
 | URL | /mcpServer/listMcpServers |
 | Method | POST |
 | Content-Type | application/json |
+
+**Request parameters (based on ListMcpServerRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8491,30 +9404,26 @@ y
 | size | Integer | Yes | The number of entries per page. |
 | name | String | No | Search by MCP service name. |
 
+**Get MCP service details**
+
 | Item | Content |
 |---|---|
 | URL | /mcpServer/getMcpServer |
 | Method | POST |
 
-y
-
-**Request parameters**
-
-The parameters are the same as those for creating an MCP service.
-
-**List MCP services**
-
-**Request parameters (based on ListMcpServerRequest)**
-
-**Get MCP service details**
+Stack APIs through a POP gatewa y
 
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters (based on GetMcpServerRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | mcpServerName | String | Yes | The name of the MCP service. |
+
+**Delete MCP service**
 
 | Item | Content |
 |---|---|
@@ -8522,31 +9431,33 @@ The parameters are the same as those for creating an MCP service.
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on McpServerIdRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | mcpServerName | String | Yes | The name of the MCP service. |
+
+**Convert Swagger to MCP configuration**
 
 | Item | Content |
 |---|---|
 | URL | /mcpServer/swaggerToMcpConfig |
 | Method | POST |
 
-y
-
-**Request parameters (based on GetMcpServerRequest)**
-
-**Delete MCP service**
-
-**Request parameters (based on McpServerIdRequest)**
+Stack APIs through a POP gatewa y
 
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters (based on SwaggerRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
 | swaggerContent | String | Yes | The content of the Swagger/OpenAPI document. |
+
+**Get the SSE path suffix**
 
 | Item | Content |
 |---|---|
@@ -8554,29 +9465,27 @@ y
 | Method | POST |
 | Content-Type | application/json |
 
+**Request parameters (based on GetSsePathSuffixRequest)**
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | gwInstanceId | String | Yes | The ID of the gateway instance. |
+
+**Consumer authorization management**
+
+**Authorize consumers**
 
 | Item | Content |
 |---|---|
 | URL | /mcpServer/addMcpServerConsumers |
 | Method | POST |
 
-y
-
-**Request parameters (based on SwaggerRequest)**
-
-**Get the SSE path suffix**
-
-**Request parameters (based on GetSsePathSuffixRequest)**
-
-**Consumer authorization management**
-
-**Authorize consumers**
+Stack APIs through a POP gatewa y
 
 | Content-Type | application/json |
 |---|---|
+
+**Request parameters (based on McpServerConsumersRequest)**
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8584,11 +9493,17 @@ y
 | mcpServerName | String | Yes | The name of the MCP service. |
 | consumerIds | List | Yes | The list of consumer IDs. |
 
+**Revoke authorization from consumers**
+
 | Item | Content |
 |---|---|
 | URL | /mcpServer/deleteMcpServerConsumers |
 | Method | POST |
 | Content-Type | application/json |
+
+Same as the parameters for authorizing consumers.
+
+**Query the list of authorized consumers**
 
 | Item | Content |
 |---|---|
@@ -8596,19 +9511,11 @@ y
 | Method | POST |
 | Content-Type | application/json |
 
-y
-
-**Request parameters (based on McpServerConsumersRequest)**
-
-**Revoke authorization from consumers**
-
-**Request parameters**
-
-Same as the parameters for authorizing consumers.
-
-**Query the list of authorized consumers**
-
 **Request parameters (based on**
+
+**ListMcpServerConsumersRequest)**
+
+Stack APIs through a POP gatewa y
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -8617,38 +9524,48 @@ Same as the parameters for authorizing consumers.
 | current | Integer | Yes | The current page number. |
 | size | Integer | Yes | The number of entries per page. |
 
+**MCP type description**
+
 | type | Description |
 |---|---|
 | OPEN API _ | The OpenAPI type. The system generates tools based on Swagger documentation. |
 | DATABASE | The database type. The system supports MySQL, PostgreSQL, SQLite, and ClickHouse. |
 | DIRECT ROUTE _ | The direct route type. |
 
+**Response format**
+
+All APIs return a unified JSON format: `{`
+
+```json
+  "code": 200,
+  "msg": "success",
+  "data": {}
+```
+
+`}`
+
 | code | Description |
 |---|---|
 | 200 | The operation succeeded. |
 | 400 | A parameter error occurred. |
 
-y
-
-**MCP type description**
-
-**Response format**
-
-All APIs return a unified JSON format:
-
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": {}
-}
-```
+Stack APIs through a POP gatewa y
 
 | 403 | Insufficient permissions. |
 |---|---|
 | 500 | An internal server error occurred. |
 
-y
+## 3 API Gateway
+
+### 3.1 Cluster management
+
+#### 3.1.1 ListClusters
+
+Queries a list of clusters.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8663,22 +9580,6 @@ y
 | data | Struct | {} | The data. |
 | -records | Array | [] | The list of records. |
 | -- k8sClusterCod e | String | k8s-cluster-001 | The code of the Kubernetes cluster. |
-
-## API Gateway
-
-### Cluster management
-
-#### ListClusters
-
-Queries a list of clusters.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | -- k8sClusterNa me | String | production-cluster | The name of the Kubernetes cluster. |
 |---|---|---|---|
@@ -8701,6 +9602,14 @@ This operation has no special request headers. For more information about common
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
+#### 3.1.2 GetK8sClusterInfoByGwInstanceId
+
+Queries Kubernetes cluster information based on a gateway instance ID.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -8714,22 +9623,18 @@ This operation has no special request headers. For more information about common
 | - k8sClusterNa me | String | production-cluster | The name of the Kubernetes cluster. |
 | -masterUrl | String | https://k8s- master.example.co m:6443 | The URL of the master node. |
 
-#### GetK8sClusterInfoByGwInstanceId
-
-Queries Kubernetes cluster information based on a gateway instance ID.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | - k8sClusterStat us | Integer | 1 | The status of the Kubernetes cluster. |
 |---|---|---|---|
 | - k8sClusterStat usDesc | String | Running | The description of the Kubernetes cluster status. |
 | - k8sClusterImp ortDateTime | String | 2024-10-14 10:00:00 | The time when the Kubernetes cluster was imported. |
+
+#### 3.1.3 GetK8sClusterName
+
+Queries the name of a Kubernetes cluster.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8741,23 +9646,13 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | Operation successful. | The message |
 | data | String | {} | The returned data. |
 
-#### GetK8sClusterName
-
-Queries the name of a Kubernetes cluster.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ImportCluster
+#### 3.1.4 ImportCluster
 
 Imports a cluster.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8772,16 +9667,7 @@ Imports a cluster.
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### UpdateCluster
+#### 3.1.5 UpdateCluster
 
 Updates a cluster.
 
@@ -8789,7 +9675,8 @@ Updates a cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | clusterCod e | Strin g | Body | No | cluster-001 | The cluster code. |
 |---|---|---|---|---|---|
@@ -8801,6 +9688,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
+#### 3.1.6 CancelImportCluster
+
+Cancels the import of a cluster.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | k8sCluster Code | Strin g | Body | No | k8s-cluster-001 | The code of the Kubernetes cluster. |
@@ -8811,22 +9706,16 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The data |
 
-**Response parameters**
+| Developer Guide·A | PI Gateway |   | API Gatewa |
+|---|---|---|---|
 
-#### CancelImportCluster
+#### 3.1.7 CheckConnectCluster
 
-Cancels the import of a cluster.
+Checks the connection status of a cluster.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Gateway |  | API Gatewa |
-|---|---|---|---|
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8840,27 +9729,13 @@ This operation uses common request headers. No special request headers are requi
 | -connectStatus | Integer | 1 | The connection status. |
 | - connectStatus Desc | String | Connected | The description of the connection status. |
 
-#### CheckConnectCluster
-
-Checks the connection status of a cluster.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListK8sAllNamespaces
+#### 3.1.8 ListK8sAllNamespaces
 
 Queries all namespaces in the Kubernetes.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8872,6 +9747,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The returned data. |
 
+#### 3.1.9 ListAllNamespaces
+
+Lists all namespaces.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -8882,25 +9765,21 @@ This operation uses only common request headers. For more information, see Commo
 | data | Array | {} | The data. |
 | -namespaceId | String | ns-abc123 | The namespace ID. |
 
-**Response parameters**
-
-#### ListAllNamespaces
-
-Lists all namespaces.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - namespaceNa me | String | Production environment | The namespace name. |
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The response message. |
+
+### 3.2 Instance Management
+
+#### 3.2.1 ListInstances
+
+Queries a list of instances.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -8911,18 +9790,6 @@ This operation uses only common request headers. For more information, see Commo
 | deployMod e | Strin g | Body | No | rolling | The deployment mode. |
 | status | Integ er | Body | No | 1 | The status. |
 | brokerEngi neType | Strin g | Body | No | RocketMQ | The type of the message engine. |
-
-### Instance Management
-
-#### ListInstances
-
-Queries a list of instances.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -8941,8 +9808,6 @@ This operation uses only common request headers. For more information, see Commo
 | --- serviceName | String | user-service | The name of the service. |
 | --edasAppInfos | Array | [] | The list of EDAS application information. |
 | ---appId | String | 12345678 | The ID of the application. |
-
-**Response parameters**
 
 | --- edasNamespa ceId | String | edas-ns-001 | The ID of the EDAS namespace. |
 |---|---|---|---|
@@ -8987,14 +9852,7 @@ This operation uses only common request headers. For more information, see Commo
 | -current | Integer | 1 | The number of the current page. |
 | -size | Integer | 100 | The size. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| data | Array | {} | The data. |
-| -accessMode | Array | [] | A list of access modes. |
-| --ips | String | [] | A list of IP addresses. |
-| --ports | String | [] | A list of ports. |
-
-#### ListAllInstances
+#### 3.2.2 ListAllInstances
 
 Queries a list of all instances.
 
@@ -9002,7 +9860,12 @@ Queries a list of all instances.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| data | Array | {} | The data. |
+| -accessMode | Array | [] | A list of access modes. |
+| --ips | String | [] | A list of IP addresses. |
+| --ports | String | [] | A list of ports. |
 
 | --externalIps | String | [] | A list of external IP addresses. |
 |---|---|---|---|
@@ -9017,10 +9880,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-#### ListInstancesByServiceId
+#### 3.2.3 ListInstancesByServiceId
 
 This operation queries a list of instances.
 
@@ -9028,7 +9888,8 @@ This operation queries a list of instances.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9043,17 +9904,7 @@ This operation uses only common request headers. For more information, see Commo
 | -serviceStruct | Map | {} | The service structure. |
 | -instanceList | Map | {} | The list of instances. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| code | Integer | 200 | The response code. |
-
-**Response parameters**
-
-#### GetInstanceInfo
+#### 3.2.4 GetInstanceInfo
 
 Queries information about an instance.
 
@@ -9061,9 +9912,13 @@ Queries information about an instance.
 
 This operation uses only common request headers. For more information, see the Common Request Parameters document.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| code | Integer | 200 | The response code. |
 
 | msg | String | Operation successful | The message. |
 |---|---|---|---|
@@ -9120,6 +9975,14 @@ This operation uses only common request headers. For more information, see the C
 |---|---|---|---|
 | -vSwitchId | String | vsw- bp1234567890 | The ID of the virtual switch. |
 
+#### 3.2.5 CreateInstance
+
+Creates an instance.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eName | Strin g | Body | No | Production Gateway Instance | The name of the gateway instance. |
@@ -9130,16 +9993,6 @@ This operation uses only common request headers. For more information, see the C
 | vpcId | Strin g | Body | No | vpc-bp1234567890 | The ID of the VPC. |
 | vswId | Strin g | Body | No | vsw-1234567890 | The ID of the vSwitch. |
 | ingressNa me | Strin g | Body | No | my-ingress | The name of the Ingress. |
-
-#### CreateInstance
-
-Creates an instance.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | brokerEngi neType | Strin g | Body | No | RocketMQ | The type of the message engine. |
 |---|---|---|---|---|---|
@@ -9154,14 +10007,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eName | Strin g | Body | No | production-gateway- instance | The gateway instance name. |
-| clusterCod e | Strin g | Body | No | cluster-001 | Cluster code. |
-
-**Response parameters**
-
-#### AscmCreateInstance
+#### 3.2.6 AscmCreateInstance
 
 Creates an instance.
 
@@ -9169,7 +10015,10 @@ Creates an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eName | Strin g | Body | No | production-gateway- instance | The gateway instance name. |
+| clusterCod e | Strin g | Body | No | cluster-001 | Cluster code. |
 
 | instanceN umber | Strin g | Body | No | INS20240101001 | Instance number. |
 |---|---|---|---|---|---|
@@ -9212,6 +10061,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
+#### 3.2.7 ModifyInstance
+
+Modifies an instance.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -9223,22 +10080,16 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
 
-**Response parameters**
+| PI Gateway |   |   | Developer Guide·API Gatewa |
+|---|---|---|---|
 
-#### ModifyInstance
+#### 3.2.8 ModifyInstanceImageUrl
 
-Modifies an instance.
+Modifies the image URL of an instance.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·API Gatewa |
-|---|---|---|---|
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9251,22 +10102,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### ModifyInstanceImageUrl
-
-Modifies the image URL of an instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### UpgradeInstance
+#### 3.2.9 UpgradeInstance
 
 Upgrades an instance.
 
@@ -9274,7 +10110,8 @@ Upgrades an instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common Request Parameters document.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -9284,6 +10121,14 @@ This operation uses common request headers. No special request headers are requi
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
+
+#### 3.2.10 DeleteInstance
+
+Deletes an instance.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9296,22 +10141,16 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-**Response parameters**
+| PI Gateway |   |   | Developer Guide·API Gatewa |
+|---|---|---|---|
 
-#### DeleteInstance
+#### 3.2.11 RestartInstance
 
-Deletes an instance.
+Restarts an instance.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·API Gatewa |
-|---|---|---|---|
+This operation includes only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9323,23 +10162,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-#### RestartInstance
-
-Restarts an instance.
-
-**Request headers**
-
-This operation includes only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### StopInstance
+#### 3.2.12 StopInstance
 
 Stops an instance.
 
@@ -9347,13 +10170,23 @@ Stops an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
+
+#### 3.2.13 RefreshInstance
+
+Refreshes an instance.
+
+**Request headers**
+
+This operation uses only common request headers. For more information about these headers, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9366,20 +10199,6 @@ This operation uses only common request headers. For more information, see Commo
 | data | Struct | {} | The returned data. |
 | -accessMode | Array | [] | The list of access modes. |
 | --ips | String | [] | The list of IP addresses. |
-
-**Response parameters**
-
-#### RefreshInstance
-
-Refreshes an instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information about these headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --ports | String | [] | The list of ports. |
 |---|---|---|---|
@@ -9397,7 +10216,13 @@ This operation uses only common request headers. For more information about thes
 | -modifyTime | String | 2024-10-14 12:30:00 | The update time. |
 | -tid | String | t-123456789 | The task ID. |
 
-#### CreateInstanceDeployConfig
+#### 3.2.14 CreateInstanceDeployConfig
+
+Creates an instance deployment configuration.
+
+**Request headers**
+
+This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9412,14 +10237,6 @@ This operation uses only common request headers. For more information about thes
 | ports | Repe atLis t | Body | No | [] | The list of ports. |
 | -port | Integ er | Body | No | 8080 | The port number. |
 | -targetPort | Strin g | Body | No | 8080 | The target port. |
-
-Creates an instance deployment configuration.
-
-**Request headers**
-
-This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | -nodePort | Integ er | Body | No | 30080 | The node port. |
 |---|---|---|---|---|---|
@@ -9439,10 +10256,16 @@ This operation uses common request headers. Special request headers are not requ
 | data | Struct | {} | The data. |
 | - deployConfigY amlStr | String | apiVersion: apps/v1 kind: Deployment | The deployment configuration as a YAML string. |
 
-**Response parameters**
-
 | - accessModeCo nfigYamlStr | String | mode: public enabled: true | The access mode configuration as a YAML string. |
 |---|---|---|---|
+
+#### 3.2.15 GetInstanceDeployDeployConfig
+
+Queries the deployment configuration of an instance.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9454,22 +10277,7 @@ This operation uses common request headers. Special request headers are not requ
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### GetInstanceDeployDeployConfig
-
-Queries the deployment configuration of an instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetInstanceDeployMsg
+#### 3.2.16 GetInstanceDeployMsg
 
 Queries the deployment message of an instance.
 
@@ -9477,7 +10285,8 @@ Queries the deployment message of an instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -9498,8 +10307,6 @@ This operation uses common request headers. No special request headers are requi
 | ---ipType | String | IPv4 | The IP address type. |
 | --name | String | my-resource | The name. |
 | --isReady | Boolean | true | Whether it is ready. |
-
-**Response parameters**
 
 | - deploymentNa me | String | app-deployment | The deployment name. |
 |---|---|---|---|
@@ -9524,6 +10331,14 @@ This operation uses common request headers. No special request headers are requi
 | --namespace | String | prod-ns | The namespace. |
 | --clusterCode | String | cluster-001 | The cluster code. |
 
+#### 3.2.17 GetCustomDeployConfig
+
+Queries a custom deployment configuration.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -9537,20 +10352,16 @@ This operation uses common request headers. No special request headers are requi
 | - serviceYamlStr | String | apiVersion: v1 kind: Service | The service YAML string. |
 | -jarStr | String | my-service.jar | The JAR file name. |
 
-#### GetCustomDeployConfig
-
-Queries a custom deployment configuration.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -wgetStr | String | wget https://example.co m/file | The Wget command string. |
 |---|---|---|---|
+
+#### 3.2.18 GetInstanceAccessModeConfig
+
+Retrieves the access mode configuration of an instance.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9562,22 +10373,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The response message. |
 | data | Map | {} | The data |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### GetInstanceAccessModeConfig
-
-Retrieves the access mode configuration of an instance.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetResource
+#### 3.2.19 GetResource
 
 Queries the resources of an instance.
 
@@ -9585,7 +10381,8 @@ Queries the resources of an instance.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 |---|---|---|---|---|---|
@@ -9606,8 +10403,6 @@ This operation uses common request headers. For more information, see Common req
 | - backupVSwitc hId | String | vsw- bp1234567890 | The ID of the backup vSwitch. |
 | -thirdZoneId | String | cn-hangzhou-c | The ID of the third zone. |
 
-**Response parameters**
-
 | - thirdVSwitchId | String | vsw-third-001 | The ID of the vSwitch in the third zone. |
 |---|---|---|---|
 | -zoneType | String | primary | The type of the zone. |
@@ -9625,7 +10420,7 @@ This operation uses common request headers. For more information, see Common req
 | --amount | String | 100.00 | The amount. |
 | --unit | String | requests/second | The unit. |
 
-#### ModifyResource
+#### 3.2.20 ModifyResource
 
 Modifies the resources of an instance.
 
@@ -9651,12 +10446,18 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-**Request parameters**
-
-**Response parameters**
-
 | data | String | {} | The data. |
 |---|---|---|---|
+
+### 3.3 Group Management
+
+#### 3.3.1 ModifyGroup
+
+This operation modifies a group.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9671,23 +10472,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-### Group Management
-
-#### ModifyGroup
-
-This operation modifies a group.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 3.3.2 CreateGroup
+
+Creates a group.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9702,21 +10497,17 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-#### CreateGroup
-
-Creates a group.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 3.3.3 ListGroups
+
+Retrieves a list of groups.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9731,18 +10522,6 @@ This operation uses common request headers. No special request headers are requi
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Struct | {} | The data. |
-
-#### ListGroups
-
-Retrieves a list of groups.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | -records | Array | [] | The list of records. |
 |---|---|---|---|
@@ -9766,6 +10545,14 @@ This operation uses only common request headers. For more information, see Commo
 | -size | Integer | 100 | The size. |
 |---|---|---|---|
 
+#### 3.3.4 GetAllGroups
+
+Retrieves a list of all groups.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -9781,18 +10568,6 @@ This operation uses only common request headers. For more information, see Commo
 | --createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | -groupId | String | group-123456 | The ID of the group. |
 
-#### GetAllGroups
-
-Retrieves a list of all groups.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The ID of the gateway instance. |
 |---|---|---|---|
 | -name | String | my-resource | The name |
@@ -9805,11 +10580,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-#### GetGroup
+#### 3.3.5 GetGroup
 
 Queries the details of a group.
 
@@ -9817,7 +10588,9 @@ Queries the details of a group.
 
 This operation uses common request headers and does not use special request headers. For more information about common request headers, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | groupId | Strin g | Body | No | group-123456 | The group ID. |
 |---|---|---|---|---|---|
@@ -9839,12 +10612,18 @@ This operation uses common request headers and does not use special request head
 | -description | String | This is an example service. | The description. |
 | - defaultDomain | String | api.example.com | The default domain name. |
 
-**Response parameters**
-
 | -editable | Boolean | true | Indicates whether the group is editable. |
 |---|---|---|---|
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
+
+#### 3.3.6 DeleteGroup
+
+Deletes a group.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9857,23 +10636,13 @@ This operation uses common request headers and does not use special request head
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### DeleteGroup
-
-Deletes a group.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### AddGroupDomain
+#### 3.3.7 AddGroupDomain
 
 Adds a domain name to a group.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9887,18 +10656,11 @@ Adds a domain name to a group.
 | msg | String | success | The returned message. If the request is successful, 'success' is returned. If the request fails, an error message is returned. |
 | data | String | true | The returned data. If the operation is successful, the string 'true' is returned. |
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
-Request example
+Request example `{`
 
 ```json
-{
   "gwInstanceId": "gw-cn-wwo36s5y001",
   "groupId": "16782",
   "domainIds": [
@@ -9906,13 +10668,23 @@ Request example
     "3413"
 ```
 
-]
+`]` `}` Successful response example `JSON` format `{`
 
-```
-}
+```json
+  "code": 200,
+  "msg": "success",
+  "data": "true"
 ```
 
-Successful response example `JSON` format
+`}`
+
+#### 3.3.8 DeleteGroupDomain
+
+Deletes a domain name from a group.
+
+**Request headers**
+
+This operation does not have special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -9926,29 +10698,9 @@ Successful response example `JSON` format
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": "true"
-}
-```
+### 3.4 Ingress management
 
-#### DeleteGroupDomain
-
-Deletes a domain name from a group.
-
-**Request headers**
-
-This operation does not have special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Ingress management
-
-#### CreateRoute
+#### 3.4.1 CreateRoute
 
 Creates a route.
 
@@ -9958,8 +10710,9 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+`{`
+
 ```json
-{
   "gwInstanceId": "string",
   "groupId": "string",
   "serviceId": "string",
@@ -9975,17 +10728,24 @@ This operation uses only common request headers. For more information, see Commo
     "matchType": "string",
     "matchValue": "string",
     "caseSensitive": true
-  },
+```
+
+`},`
+
+```json
   "openStripPrefix": true,
   "serviceType": "string",
   "serviceIds": [
-    {
-      "serviceId": "string",
-      "weight": 0
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "serviceId": "string",
+      "weight": 0
+```
+
+`}` `],`
 
 ```json
   "enableStatus": true,
@@ -9999,33 +10759,42 @@ This operation uses only common request headers. For more information, see Commo
 
 ```json
   "header": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "cookie": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "queryParam": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "domainIds": [
@@ -10033,6 +10802,35 @@ This operation uses only common request headers. For more information, see Commo
 ```
 
 `],`
+
+```json
+  "routeId": "string",
+  "hsfMethodMappingConfig": {
+    "hsfMethod": "string",
+    "parameterMappingList": [
+```
+
+`{`
+
+```json
+        "name": "string",
+        "schema": {
+          "type": "string",
+          "items": "string",
+          "array": true,
+          "primitive": true,
+          "generic": true
+```
+
+`},`
+
+```json
+        "location": "string",
+        "required": true,
+        "order": 0
+```
+
+`}` `]` `}` `}`
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10043,35 +10841,6 @@ This operation uses only common request headers. For more information, see Commo
 | serviceId | Strin g | Body | No | service-123456 | The service ID. |
 | serviceTyp e | Strin g | Body | No | REST | The service type. |
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-```json
-  "routeId": "string",
-  "hsfMethodMappingConfig": {
-    "hsfMethod": "string",
-    "parameterMappingList": [
-      {
-        "name": "string",
-        "schema": {
-          "type": "string",
-          "items": "string",
-          "array": true,
-          "primitive": true,
-          "generic": true
-        },
-        "location": "string",
-        "required": true,
-        "order": 0
-      }
-```
-
-]
-
-```
-  }
-}
-```
-
-**Request parameters**
 
 | methods | Repe atLis t | Body | No | [] | A list of request methods. |
 |---|---|---|---|---|---|
@@ -10106,7 +10875,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
+#### 3.4.2 BatchDeleteRoute
+
+Deletes multiple routes at once.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10121,19 +10896,7 @@ This operation uses only common request headers. For more information, see Commo
 | -successIds | String | [] | List of successful IDs. |
 | -failedIds | String | [] | List of failed IDs. |
 
-#### BatchDeleteRoute
-
-Deletes multiple routes at once.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListRoutes
+#### 3.4.3 ListRoutes
 
 Queries a list of routes.
 
@@ -10142,6 +10905,10 @@ Queries a list of routes.
 This operation uses only common request headers. For more information, see Common request parameters.
 
 **Request syntax**
+
+```
+POST /route/listRoutes HTTP/1.1
+```
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10156,12 +10923,8 @@ This operation uses only common request headers. For more information, see Commo
 | groupNam e | Strin g | Body | No | test | The name of the group. |
 | domainNa me | Strin g | Body | No | example.com | The domain name. |
 
-| > Document Versi | on: 20260629 |  | 28 |
+| > Document Versi | on: 20260629 |   | 28 |
 |---|---|---|---|
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10194,18 +10957,12 @@ This operation uses only common request headers. For more information, see Commo
 Request example
 
 ```
-{ }
+POST /route/listRoutes HTTP/1.1
 ```
 
-Response example `JSON` format
-
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size. |
-| current | Integ er | Body | No | 1 | The current page number. |
+`{` `}` Response example `JSON` format `{`
 
 ```json
-{
  "msg":"",
  "code":"",
  "data":{
@@ -10213,7 +10970,11 @@ Response example `JSON` format
   "current":"",
   "size":"",
   "records":[
-   {
+```
+
+`{`
+
+```json
     "routePath":"",
     "groupName":"",
     "routeId":"",
@@ -10224,28 +10985,25 @@ Response example `JSON` format
     "serviceName":"",
     "enableStatus":"",
     "path":[
-     {
+```
+
+`{`
+
+```json
       "matchType":"",
       "caseSensitive":"",
       "matchValue":""
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "routeName":""
-   }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
- }
-}
-```
-
-#### ListRoutesByAppId
+#### 3.4.4 ListRoutesByAppId
 
 Queries a list of routes.
 
@@ -10253,7 +11011,10 @@ Queries a list of routes.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size. |
+| current | Integ er | Body | No | 1 | The current page number. |
 
 | total | Integ er | Body | No | 1000 | The total number of entries. |
 |---|---|---|---|---|---|
@@ -10275,8 +11036,6 @@ This operation uses only common request headers. For more information, see Commo
 | --serviceName | String | user-service | The service name. |
 | -- serviceProtoco l | String | HTTP | The service protocol. |
 
-**Response parameters**
-
 | --authId | String | auth 123456 _ | The authentication ID. |
 |---|---|---|---|
 | --authStatus | Integer | 1 | The authentication status. |
@@ -10285,6 +11044,14 @@ This operation uses only common request headers. For more information, see Commo
 | -size | Integer | 100 | The size. |
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+#### 3.4.5 ListRoutesByGwInstanceId
+
+Queries a list of routes.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10296,18 +11063,6 @@ This operation uses only common request headers. For more information, see Commo
 | data | Array | {} | The data. |
 | -routeId | String | route-123456 | The route ID. |
 
-#### ListRoutesByGwInstanceId
-
-Queries a list of routes.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -routeName | String | user-service-route | The route name. |
 |---|---|---|---|
 | -routePath | String | /api/v1/users | The route path. |
@@ -10316,6 +11071,14 @@ This operation uses only common request headers. For more information, see Commo
 | - serviceProtoco l | String | HTTP | The service protocol. |
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
+
+#### 3.4.6 GetAllRoutePath
+
+Retrieves all routing paths.
+
+**Request headers**
+
+No special request headers are required for this operation. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10326,21 +11089,17 @@ This operation uses only common request headers. For more information, see Commo
 | Code | Integer | 200 | The response code. |
 | Msg | String | The operation was successful. | The message |
 
-#### GetAllRoutePath
-
-Retrieves all routing paths.
-
-**Request headers**
-
-No special request headers are required for this operation. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Data | Struct | {} | The data |
 |---|---|---|---|
 | -RoutePaths | String | [] | The list of routing paths. |
+
+#### 3.4.7 GetRoute
+
+Queries the details of a specified route.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10356,18 +11115,6 @@ No special request headers are required for this operation. For more information
 | -methods | String | [] | The list of request methods. |
 | -header | Array | [] | The list of request headers. |
 | --key | String | api-key-001 | The key. |
-
-#### GetRoute
-
-Queries the details of a specified route.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --value | String | example-value | The value. |
 |---|---|---|---|
@@ -10593,7 +11340,7 @@ This operation uses only common request headers. For more information, see Commo
 | -- isEnableDown stream | Boolean | true | Indicates whether to enable downstream tracing. |
 | -- isEnableTracin g | Boolean | true | Indicates whether to enable tracing. |
 
-#### GetProtocolByRoute
+#### 3.4.8 GetProtocolByRoute
 
 Queries the protocol of a route.
 
@@ -10613,14 +11360,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-**Request parameters**
-
-**Response parameters**
-
-#### ModifyRoute
+#### 3.4.9 ModifyRoute
 
 Modifies a route.
 
@@ -10628,7 +11368,8 @@ Modifies a route.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -10643,7 +11384,7 @@ This operation uses only common request headers. For more information, see Commo
 | header | Repe atList | Body | No | [{"key":"X-Version", "value":"v2"}] | A list of request header conditions for the route to match. This is used to implement header- based routing. |
 | -key | Strin g | Body | No | api-key-001 | The key. |
 
-|  | Developer Gui | de·API G | ateway |  |  | API Gatewa | y |
+|   | Developer Gui | de·API G | ateway |   |   | API Gatewa | y |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -10660,7 +11401,7 @@ This operation uses only common request headers. For more information, see Commo
 | stripPrefix | Integ er | Body | No | 2 | If openStripPrefix is set to true, this parameter specifies the number of path levels to strip before forwarding the request to the backend service. For example, if the path is /api/v2/users and stripPrefix is 2, the backend service receives /users. |
 | requestTi meout | Integ er | Body | No | 5000 | The timeout period for the gateway to request the backend service. Unit: milliseconds. |
 
-| A | PI Gateway |  |  |  | De | veloper Guide·API Gatewa | y |
+| A | PI Gateway |   |   |   | De | veloper Guide·API Gatewa | y |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -10678,13 +11419,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | success | The returned message. If the operation is successful, success is typically returned. |
 | data | String | rt-a1b2c3d4e5f6 | The returned data. If the operation is successful, the ID of the modified route is typically returned. |
 
-**Response parameters**
-
-#### DeleteRoute
+#### 3.4.10 DeleteRoute
 
 Deletes a route.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10697,18 +11438,7 @@ Deletes a route.
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| routeId | Strin g | Body | No | route-123456 | The ID of the route. |
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ChangeRouteStatus
+#### 3.4.11 ChangeRouteStatus
 
 Changes the status of a route.
 
@@ -10716,7 +11446,10 @@ Changes the status of a route.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| routeId | Strin g | Body | No | route-123456 | The ID of the route. |
 
 | enableStat us | Bool ean | Body | No | true | The enabled status of the route. |
 |---|---|---|---|---|---|
@@ -10727,19 +11460,9 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size. |
-| current | Integ er | Body | No | 1 | The current page number. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| sourceId | Strin g | Body | No | src-123456 | The source ID. |
-| sourceNa me | Strin g | Body | No | Internal System | The source name. |
+### 3.5 Source Management
 
-**Response parameters**
-
-### Source Management
-
-#### ListSources
+#### 3.5.1 ListSources
 
 Queries a list of sources.
 
@@ -10747,7 +11470,13 @@ Queries a list of sources.
 
 This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size. |
+| current | Integ er | Body | No | 1 | The current page number. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| sourceId | Strin g | Body | No | src-123456 | The source ID. |
+| sourceNa me | Strin g | Body | No | Internal System | The source name. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10766,11 +11495,13 @@ This operation uses common request headers. No special request headers are used.
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-**Response parameters**
+#### 3.5.2 ListAllSources
 
 Queries a list of all sources.
 
-#### ListAllSources
+**Request header**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10788,19 +11519,13 @@ Queries a list of all sources.
 | code | Integer | 200 | The response code. |
 | msg | String | The operation is successful. | The message. |
 
-**Request header**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetSource
+#### 3.5.3 GetSource
 
 Queries a source.
 
 **Request headers**
+
+This operation uses common request headers and does not have special request headers. For more information, see the document on common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10820,14 +11545,16 @@ Queries a source.
 | -description | String | This is a sample service. | The description. |
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 
-This operation uses common request headers and does not have special request headers. For more information, see the document on common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
 |---|---|---|---|
+
+#### 3.5.4 CreateSource
+
+Creates a source.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10842,21 +11569,19 @@ This operation uses common request headers and does not have special request hea
 | sourceTyp e | Integ er | Body | No | 1 | The type of the source. |
 | sourceStru ct | Json | Body | No | {} | The structure of the source. |
 
-#### CreateSource
-
-Creates a source.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 3.5.5 ModifySource
+
+Modifies a source.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10867,25 +11592,19 @@ This operation uses only common request headers. For more information, see Commo
 | description | Strin g | Body | No | This is a sample service. | The description. |
 | sourceTyp e | Integ er | Body | No | 1 | The source type. |
 
-**Response parameters**
-
-#### ModifySource
-
-Modifies a source.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 3.5.6 DeleteSource
+
+Deletes a source.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10898,23 +11617,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### DeleteSource
-
-Deletes a source.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### BatchDeleteSource
+#### 3.5.7 BatchDeleteSource
 
 Deletes sources in batches.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10929,18 +11638,9 @@ Deletes sources in batches.
 | -successIds | String | [] | The successful IDs. |
 | -failedIds | String | [] | A list of IDs of the sources that failed to be deleted. |
 
-| 17 |  |  |  | > D | ocument Version: 2026062 |
-|---|---|---|---|---|---|
+### 3.6 Service Management
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Service Management
-
-#### ListServices
+#### 3.6.1 ListServices
 
 Queries a list of services.
 
@@ -10948,7 +11648,8 @@ Queries a list of services.
 
 This operation uses common request headers and does not require any special request headers. For more information, see the Common Parameters document.
 
-**Request parameters**
+| 17 |   |   |   | > D | ocument Version: 2026062 |
+|---|---|---|---|---|---|
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -10970,9 +11671,7 @@ This operation uses common request headers and does not require any special requ
 | ---port | Integer | 8080 | The port number. |
 | ---weight | Integer | 100 | The weight. |
 
-**Response parameters**
-
-| Developer Guide·A | PI Gateway |  | API Gatewa |
+| Developer Guide·A | PI Gateway |   | API Gatewa |
 |---|---|---|---|
 
 | ---enable | Boolean | true | Indicates whether the node is enabled. |
@@ -10992,6 +11691,14 @@ This operation uses common request headers and does not require any special requ
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The number of the returned page. |
 
+#### 3.6.2 ListAllServices
+
+Queries the list of all services.
+
+**Request header**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -11006,19 +11713,7 @@ This operation uses common request headers and does not require any special requ
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ListAllServices
-
-Queries the list of all services.
-
-**Request header**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetService
+#### 3.6.3 GetService
 
 Retrieves the details of a service.
 
@@ -11044,10 +11739,6 @@ This operation uses common request headers. No special request headers are requi
 | - strategyConfig s | Array | [] | The list of policy configurations. |
 | --scopes | String | [] | The list of authorization scopes. |
 | -- strategyConfig Id | String | strategy-config- 001 | The policy configuration ID. |
-
-**Request parameters**
-
-**Response parameters**
 
 | -- strategyConfig Name | String | Default Policy | The policy configuration name. |
 |---|---|---|---|
@@ -11101,15 +11792,13 @@ This operation uses common request headers. No special request headers are requi
 | -- httpSuccesses | Integer | 3 | The number of consecutive successful HTTP checks. |
 | --httpFailures | Integer | 5 | The number of consecutive failed HTTP checks. |
 
-#### CreateService
+#### 3.6.4 CreateService
 
 Creates a service.
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11127,13 +11816,19 @@ This operation uses common request headers. For more information, see Common req
 | protocol | Strin g | Body | No | HTTP | The protocol. |
 | serviceId | Strin g | Body | No | service-123456 | The ID of the service. |
 
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 3.6.5 ModifyService
+
+This operation modifies a service.
+
+**Request headers**
+
+This operation requires only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11144,16 +11839,6 @@ This operation uses common request headers. For more information, see Common req
 | description | Strin g | Body | No | This is a sample service. | The description. |
 | upstreamT ype | Integ er | Body | No | 1 | The upstream type. |
 | serviceSou rceType | Integ er | Body | No | 1 | The service source type. |
-
-#### ModifyService
-
-This operation modifies a service.
-
-**Request headers**
-
-This operation requires only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | serviceTyp e | Integ er | Body | No | REST | The service type. |
 |---|---|---|---|---|---|
@@ -11169,12 +11854,7 @@ This operation requires only common request headers. For more information, see C
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
-#### ModifyNode
+#### 3.6.6 ModifyNode
 
 Modifies a service node.
 
@@ -11182,7 +11862,8 @@ Modifies a service node.
 
 This operation uses only common request headers. For more information, see the document about common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 |---|---|---|---|---|---|
@@ -11196,13 +11877,7 @@ This operation uses only common request headers. For more information, see the d
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | test-service | The instance ID. |
-
-**Response parameters**
-
-#### DeleteService
+#### 3.6.7 DeleteService
 
 Deletes a service.
 
@@ -11212,7 +11887,13 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
-**Request parameters**
+```
+POST /microservice/deleteService HTTP/1.1
+```
+
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | test-service | The instance ID. |
 
 | serviceId | Strin g | Body | No | service-123456 | The service ID. |
 |---|---|---|---|---|---|
@@ -11223,30 +11904,25 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
 **Examples**
 
 Sample request
 
 ```
-{ }
+POST /microservice/deleteService HTTP/1.1
 ```
 
-Sample successful response `JSON` format
+`{` `}` Sample successful response `JSON` format `{`
 
 ```json
-{
  "msg":"",
  "code":"",
  "data":""
-}
 ```
 
-#### BatchDeleteService
+`}`
+
+#### 3.6.8 BatchDeleteService
 
 Deletes multiple services at a time.
 
@@ -11254,7 +11930,8 @@ Deletes multiple services at a time.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -11268,15 +11945,7 @@ This operation uses common request headers. No special request headers are requi
 | -successIds | String | [] | List of success IDs. |
 | -failedIds | String | [] | List of failed IDs. |
 
-| Parameter Name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| description | Strin g | Body | No | This is a sample service | The description. |
-| loadBalanc eType | Integ er | Body | No | 1 | The load balancing type. |
-
-**Response parameters**
-
-#### ImportServices
+#### 3.6.9 ImportServices
 
 This operation imports services.
 
@@ -11284,7 +11953,11 @@ This operation imports services.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter Name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| description | Strin g | Body | No | This is a sample service | The description. |
+| loadBalanc eType | Integ er | Body | No | 1 | The load balancing type. |
 
 | serviceTyp e | Integ er | Body | No | REST | The service type. |
 |---|---|---|---|---|---|
@@ -11301,11 +11974,9 @@ This operation uses common request headers. For more information, see Common req
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The messages |
 
-**Response parameters**
+### 3.7 Consumer management
 
-### Consumer management
-
-#### ListApps
+#### 3.7.1 ListApps
 
 Queries a list of consumers.
 
@@ -11330,10 +12001,6 @@ This operation uses common request headers. No special request headers are requi
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Request parameters**
-
-**Response parameters**
 
 | code | Integer | 200 | The response code. |
 |---|---|---|---|
@@ -11368,10 +12035,7 @@ This operation uses common request headers. No special request headers are requi
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### ListAppsByGwInstanceId
+#### 3.7.2 ListAppsByGwInstanceId
 
 Queries a list of applications by gateway instance ID.
 
@@ -11379,7 +12043,8 @@ Queries a list of applications by gateway instance ID.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -11399,8 +12064,6 @@ This operation uses only common request headers. For more information, see Commo
 | --createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | --updateTime | String | 2024-10-14 15:00:00 | The update time. |
 | -appId | String | 12345678 | The application ID. |
-
-**Response parameters**
 
 | -appName | String | Sample Application | The application name. |
 |---|---|---|---|
@@ -11443,6 +12106,14 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
+#### 3.7.3 GetApp
+
+Queries a consumer.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common parameters document.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | appId | Strin g | Body | No | 12345678 | The ID of the application. |
@@ -11454,18 +12125,6 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Struct | {} | The data. |
 | -groups | String | [] | The list of groups. |
-
-#### GetApp
-
-Queries a consumer.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the Common parameters document.
-
-**Request parameters**
-
-**Response parameters**
 
 | -appTags | Array | [] | The list of application tags. |
 |---|---|---|---|
@@ -11535,15 +12194,13 @@ This operation uses only common request headers. For more information, see the C
 | --redirectUris | String | https://example.co m/callback | The redirection URI. |
 | --pkce | Boolean | true | Indicates whether Proof Key for Code Exchange (PKCE) is enabled. |
 
-#### CreateApp
+#### 3.7.4 CreateApp
 
 Creates a consumer.
 
 **Request headers**
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11579,13 +12236,13 @@ This operation uses common request headers and does not require special request 
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
-
-#### ModifyApp
+#### 3.7.5 ModifyApp
 
 Modifies a consumer.
 
 **Request header**
+
+This operation uses common request headers. For more information, see the topic on common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11602,10 +12259,6 @@ Modifies a consumer.
 | authType | Integ er | Body | No | jwt | The authentication type. |
 | useWhiteLi st | Bool ean | Body | No | true | Specifies whether to use a whitelist. |
 | ipWhiteList | Strin g | Body | No | [] | The IP address whitelist. |
-
-This operation uses common request headers. For more information, see the topic on common request parameters.
-
-**Request parameters**
 
 | appName | Strin g | Body | No | ExampleApp | The application name. |
 |---|---|---|---|---|---|
@@ -11636,14 +12289,7 @@ This operation uses common request headers. For more information, see the topic 
 | msg | String | The operation was successful. | The returned message. |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| appId | Strin g | Body | No | 12345678 | The application ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-**Response parameters**
-
-#### DeleteApp
+#### 3.7.6 DeleteApp
 
 Deletes a consumer.
 
@@ -11651,13 +12297,24 @@ Deletes a consumer.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| appId | Strin g | Body | No | 12345678 | The application ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 3.7.7 ModifyAppOpenStatus
+
+Enables or disables a consumer application.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11671,22 +12328,16 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-**Response parameters**
+| Developer Guide·A | PI Gateway |   | API Gatewa |
+|---|---|---|---|
 
-#### ModifyAppOpenStatus
+#### 3.7.8 ModifyAppWhiteListStatus
 
-Enables or disables a consumer application.
+Modifies the status of a consumer whitelist.
 
-**Request header**
+**Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Gateway |  | API Gatewa |
-|---|---|---|---|
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11700,27 +12351,13 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### ModifyAppWhiteListStatus
-
-Modifies the status of a consumer whitelist.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetAppAuth
+#### 3.7.9 GetAppAuth
 
 Queries the authorization for a consumer.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11741,11 +12378,13 @@ This operation uses common request headers. No special request headers are requi
 | - serviceProtoco l | String | HTTP | The service protocol. |
 | -authStatus | Integer | 1 | The authentication status. |
 
-**Response parameters**
+#### 3.7.10 CreateAppAuth
 
 Creates a consumer authorization.
 
-#### CreateAppAuth
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11757,21 +12396,7 @@ Creates a consumer authorization.
 | Msg | String | Operation successful | The response message. |
 | Data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| appId | Strin g | Body | No | 12345678 | The ID of the application. |
-| routeId | Repe atLis t | Body | No | route-123456 | The ID of the route. |
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### BatchCreateAppAuthByRoute
+#### 3.7.11 BatchCreateAppAuthByRoute
 
 Grants batch authorization to consumers.
 
@@ -11779,7 +12404,11 @@ Grants batch authorization to consumers.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| appId | Strin g | Body | No | 12345678 | The ID of the application. |
+| routeId | Repe atLis t | Body | No | route-123456 | The ID of the route. |
 
 | authStatus | Integ er | Body | No | 1 | The authentication status. |
 |---|---|---|---|---|---|
@@ -11790,6 +12419,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
 
+#### 3.7.12 ModifyAppAuthStatus
+
+Modifies the authorization status of a consumer.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -11799,20 +12436,6 @@ This operation uses only common request headers. For more information, see Commo
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
-
-**Response parameters**
-
-#### ModifyAppAuthStatus
-
-Modifies the authorization status of a consumer.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
@@ -11826,12 +12449,7 @@ This operation uses only common request headers. For more information, see Commo
 | -authStatus | Integer | 1 | The authorization status. |
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The gateway instance ID. |
 
-| Parameter name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| authId | Strin g | Body | No | auth 123456 _ | The authorization ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-
-#### DeleteAppAuth
+#### 3.7.13 DeleteAppAuth
 
 Deletes a consumer authorization.
 
@@ -11839,13 +12457,24 @@ Deletes a consumer authorization.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| authId | Strin g | Body | No | auth 123456 _ | The authorization ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
+
+#### 3.7.14 RefreshToken
+
+Refreshes a token.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11856,18 +12485,6 @@ This operation uses common request headers. No special request headers are requi
 | expireTim e | Integ er | Body | No | 2025-10-14 23:59:59 | The expiration time. |
 | appSecret | Strin g | Body | No | as abcdefghijklmnop _ | The application ciphertext. |
 | requestHe ader | Strin g | Body | No | Content-Type | The request header. |
-
-**Response parameters**
-
-#### RefreshToken
-
-Refreshes a token.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | token | Strin g | Body | No | eyJhbGciOiJIUzI1NiIsInR5c CI6IkpXVCJ9... | The token. |
 |---|---|---|---|---|---|
@@ -11895,6 +12512,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
+#### 3.7.15 ResetSecretKey
+
+Resets a secret key.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | appId | Strin g | Body | No | 12345678 | The ID of the application. |
@@ -11904,23 +12529,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-**Response parameters**
-
-#### ResetSecretKey
-
-Resets a secret key.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message |
 |---|---|---|---|
 | data | Boolean | {} | The data |
+
+#### 3.7.16 HandlerConsumerAuth
+
+Queries the authentication information for a consumer.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11935,19 +12554,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### HandlerConsumerAuth
+#### 3.7.17 CreateAppAuthByRoute
 
-Queries the authentication information for a consumer.
+Create a consumer authorization.
 
-**Request header**
+**Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### CreateAppAuthByRoute
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11962,20 +12575,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation is successful. | The message. |
 | data | String | {} | The data. |
 
-| > Document V | ersion: 2 | 026062 | 9 |  | 35 |
-|---|---|---|---|---|---|
-
-Create a consumer authorization.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### BatchDeleteApp
+#### 3.7.18 BatchDeleteApp
 
 Deletes consumers in a batch.
 
@@ -11983,7 +12583,8 @@ Deletes consumers in a batch.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| > Document V | ersion: 2 | 026062 | 9 |   | 35 |
+|---|---|---|---|---|---|
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -11998,15 +12599,9 @@ This operation uses only common request headers. For more information, see Commo
 | -successIds | String | [] | Successful IDs |
 | -failedIds | String | [] | Failed IDs |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| current | Integ er | Body | No | 1 | The current page number. |
+### 3.8 Plugin Management
 
-**Response parameters**
-
-### Plugin Management
-
-#### ListPlugins
+#### 3.8.1 ListPlugins
 
 Queries a list of plugins.
 
@@ -12014,7 +12609,9 @@ Queries a list of plugins.
 
 This operation has no special request headers. For more information about common request headers, see the common request parameters document.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| current | Integ er | Body | No | 1 | The current page number. |
 
 | size | Integ er | Body | No | 100 | The size. |
 |---|---|---|---|---|---|
@@ -12036,14 +12633,20 @@ This operation has no special request headers. For more information about common
 | --description | String | This is an example service. | The description. |
 | --downloadURL | String | https://example.co m/download/file.zip | The download URL. |
 
-**Response parameters**
-
 | --type | Integer | 1 | The type. |
 |---|---|---|---|
 | --used | Boolean | false | Indicates whether the plugin is used. |
 | -size | Integer | 100 | The size. |
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+#### 3.8.2 ListOpenPlugins
+
+Lists the open plugins.
+
+**Request headers**
+
+This operation uses only the common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12056,18 +12659,6 @@ This operation has no special request headers. For more information about common
 |---|---|---|---|
 | data | Array | {} | The data. |
 | -config | Array | [] | The list of configurations. |
-
-#### ListOpenPlugins
-
-Lists the open plugins.
-
-**Request headers**
-
-This operation uses only the common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --name | String | my-resource | The name. |
 |---|---|---|---|
@@ -12082,11 +12673,7 @@ This operation uses only the common request headers. For more information, see C
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parameter name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| current | Integ er | Body | No | 1 | The current page number. |
-
-#### ListGlobalPlugins
+#### 3.8.3 ListGlobalPlugins
 
 Retrieves a list of global plugins.
 
@@ -12094,7 +12681,9 @@ Retrieves a list of global plugins.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| current | Integ er | Body | No | 1 | The current page number. |
 
 | size | Integ er | Body | No | 100 | The size. |
 |---|---|---|---|---|---|
@@ -12116,13 +12705,19 @@ This operation uses common request headers. For more information, see Common req
 | --createTime | String | 2024-10-14 08:00:00 | The time when the plugin was created. |
 | --updateTime | String | 2024-10-14 15:00:00 | The time when the plugin was last updated. |
 
-**Response parameters**
-
 | --order | Integer | 100 | The sort number. |
 |---|---|---|---|
 | -size | Integer | 100 | The size. |
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+#### 3.8.4 ListRoutePlugins
+
+Queries a list of routing plugins.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12135,18 +12730,6 @@ This operation uses common request headers. For more information, see Common req
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
-
-#### ListRoutePlugins
-
-Queries a list of routing plugins.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | msg | String | Operation successful. | The message. |
 |---|---|---|---|
@@ -12166,9 +12749,13 @@ This operation uses common request headers. For more information, see Common req
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
+#### 3.8.5 GetPlugin
+
 Retrieves a plugin.
 
-#### GetPlugin
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12188,18 +12775,18 @@ Retrieves a plugin.
 | -pluginName | String | rate-limiter | The plugin name. |
 | -description | String | This is a sample service. | Description. |
 
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -downloadURL | String | https://example.co m/download/file.zip | The download URL. |
 |---|---|---|---|
 | -type | Integer | 1 | The type. |
 | -used | Boolean | false | Indicates whether the plugin is used. |
+
+#### 3.8.6 CreatePlugin
+
+Creates a plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12211,23 +12798,19 @@ This operation uses only common request headers. For more information, see Commo
 | -name | Strin g | Body | No | my-resource | The name. |
 | -required | Bool ean | Body | No | true | Specifies whether the configuration is required. |
 
-#### CreatePlugin
-
-Creates a plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
+
+#### 3.8.7 CreateGlobalPlugin
+
+Creates a global plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the common request parameters document.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12241,21 +12824,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-#### CreateGlobalPlugin
-
-Creates a global plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the common request parameters document.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 3.8.8 CreateRoutePlugin
+
+Creates a routing plugin.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12271,20 +12850,16 @@ This operation uses only common request headers. For more information, see the c
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### CreateRoutePlugin
-
-Creates a routing plugin.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | data | String | {} | The data. |
 |---|---|---|---|
+
+#### 3.8.9 ModifyPlugin
+
+Modifies a plugin.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12300,21 +12875,17 @@ This operation uses common request headers. No special request headers are requi
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-#### ModifyPlugin
-
-Modifies a plugin.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 3.8.10 ModifyGlobalPlugin
+
+Modifies a global plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12330,20 +12901,16 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The response message. |
 | data | String | {} | The data. |
 
-#### ModifyGlobalPlugin
+| PI Gateway |   |   | Developer Guide·API Gatewa |
+|---|---|---|---|
 
-Modifies a global plugin.
+#### 3.8.11 ModifyRoutePlugin
+
+Modifies a routing plugin.
 
 **Request headers**
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·API Gatewa |
-|---|---|---|---|
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12360,17 +12927,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyRoutePlugin
+#### 3.8.12 DeletePlugin
 
-Modifies a routing plugin.
+Deletes a plugin.
 
 **Request headers**
 
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+This operation requires only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12383,23 +12946,7 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-
-#### DeletePlugin
-
-Deletes a plugin.
-
-**Request headers**
-
-This operation requires only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### DeleteGlobalPlugin
+#### 3.8.13 DeleteGlobalPlugin
 
 Deletes a global plugin.
 
@@ -12407,7 +12954,9 @@ Deletes a global plugin.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 
 | routePlugi nId | Strin g | Body | No | plugin-route-001 | The ID of the routing plugin. |
 |---|---|---|---|---|---|
@@ -12417,6 +12966,14 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 3.8.14 DeleteRoutePlugin
+
+Deletes a route plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common request parameters document.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12428,23 +12985,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-**Response parameters**
-
-#### DeleteRoutePlugin
-
-Deletes a route plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message |
 |---|---|---|---|
 | data | String | {} | The data |
+
+#### 3.8.15 ModifyGlobalPluginStatus
+
+Modifies the status of a global plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12460,20 +13011,16 @@ This operation uses only common request headers. For more information, see the C
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyGlobalPluginStatus
+| PI Gateway |   |   | Developer Guide·API Gatewa |
+|---|---|---|---|
 
-Modifies the status of a global plugin.
+#### 3.8.16 ModifyRoutePluginStatus
+
+Modifies the status of a route plugin.
 
 **Request headers**
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·API Gatewa |
-|---|---|---|---|
+This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12490,17 +13037,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-#### ModifyRoutePluginStatus
+#### 3.8.17 ListPluginUsage
 
-Modifies the status of a route plugin.
+Queries the usage of plugins.
 
-**Request headers**
+**Request header**
 
-This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12518,23 +13061,21 @@ This operation uses common request headers. No special request headers are used.
 | --routeId | String | route-123456 | The route ID. |
 | --routeName | String | user-service-route | The route name. |
 
-#### ListPluginUsage
-
-Queries the usage of plugins.
-
-**Request header**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --status | Boolean | 1 | The status. |
 |---|---|---|---|
 | -size | Integer | 100 | The size. |
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+### 3.9 Policy Management
+
+#### 3.9.1 ModifyStrategyConfig
+
+Modifies a policy configuration.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12545,18 +13086,6 @@ This operation uses common request headers. For more information, see Common req
 | rawConfig | Strin g | Body | No | {"timeout":30} | Original configuration. |
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 | routeId | Strin g | Body | No | route-123456 | The routing ID. |
-
-### Policy Management
-
-#### ModifyStrategyConfig
-
-Modifies a policy configuration.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | serviceId | Strin g | Body | No | service-123456 | The service ID. |
 |---|---|---|---|---|---|
@@ -12575,7 +13104,13 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
+#### 3.9.2 CreateStrategyConfig
+
+Creates a strategy configuration.
+
+**Request header**
+
+This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12591,16 +13126,6 @@ This operation uses common request headers. No special request headers are requi
 | domainId | Strin g | Body | No | domain-123456 | The domain ID. |
 | routeIds | Repe atLis t | Body | No | [] | A list of route IDs. |
 
-#### CreateStrategyConfig
-
-Creates a strategy configuration.
-
-**Request header**
-
-This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
 | serviceIds | Repe atLis t | Body | No | [] | A list of service IDs. |
 |---|---|---|---|---|---|
 | appIds | Repe atLis t | Body | No | [] | A list of application IDs. |
@@ -12614,12 +13139,7 @@ This operation uses common request headers and requires no special request heade
 | msg | String | Operation successful | The message |
 | data | String | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
-#### ListStrategies
+#### 3.9.3 ListStrategies
 
 Queries a list of policies.
 
@@ -12627,7 +13147,8 @@ Queries a list of policies.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | size | Integ er | Body | No | 100 | The size |
 |---|---|---|---|---|---|
@@ -12648,8 +13169,6 @@ This operation uses only common request headers. For more information, see Commo
 | --description | String | This is an example service. | The description. |
 | -- supportCascad e | Integer | 1 | Indicates whether cascading is supported. |
 
-**Response parameters**
-
 | -- rawConfigExa mple | String | {"enabled":true} | An example of the raw configuration. |
 |---|---|---|---|
 | --order | Integer | 100 | The order number. |
@@ -12661,13 +13180,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size. |
-| current | Integ er | Body | No | 1 | The current page number. |
-| strategyCo nfigName | Strin g | Body | No | Default Policy | The name of the policy configuration. |
-
-#### ListStrategyConfigs
+#### 3.9.4 ListStrategyConfigs
 
 Queries a list of policy configurations.
 
@@ -12675,7 +13188,11 @@ Queries a list of policy configurations.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size. |
+| current | Integ er | Body | No | 1 | The current page number. |
+| strategyCo nfigName | Strin g | Body | No | Default Policy | The name of the policy configuration. |
 
 | strategyCo nfigId | Strin g | Body | No | strategy-config-001 | The ID of the policy configuration. |
 |---|---|---|---|---|---|
@@ -12695,8 +13212,6 @@ This operation uses common request headers. For more information, see Common req
 | -- strategyName | String | throttling policy | The name of the policy. |
 | --status | Boolean | 1 | The status. |
 | --createTime | String | 2024-10-14 08:00:00 | The creation time. |
-
-**Response parameters**
 
 | --updateTime | String | 2024-10-14 15:00:00 | The update time. |
 |---|---|---|---|
@@ -12723,6 +13238,14 @@ This operation uses common request headers. For more information, see Common req
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
+#### 3.9.5 GetStrategy
+
+Queries a policy.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -12737,18 +13260,6 @@ This operation uses common request headers. For more information, see Common req
 | -uiStyles | String | [] | The list of UI styles. |
 | -strategyName | String | throttling policy | The name of the policy. |
 
-#### GetStrategy
-
-Queries a policy.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -strategyTitle | String | Advanced Throttling | The title of the policy. |
 |---|---|---|---|
 | -description | String | This is an example service. | The description. |
@@ -12756,6 +13267,14 @@ This operation uses only common request headers. For more information, see Commo
 | - rawConfigExa mple | String | {"enabled":true} | An example of the raw configuration. |
 | -order | Integer | 100 | The sort number. |
 | -document | String | API operation document | The document. |
+
+#### 3.9.6 GetStrategyConfig
+
+Queries a policy configuration.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12765,18 +13284,6 @@ This operation uses only common request headers. For more information, see Commo
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
-
-#### GetStrategyConfig
-
-Queries a policy configuration.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
@@ -12820,6 +13327,14 @@ This operation uses common request headers. No special request headers are requi
 | ---id | String | 123456 | The ID. |
 |---|---|---|---|
 
+#### 3.9.7 GetRoutePolicies
+
+Queries routing policies.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -12835,18 +13350,6 @@ This operation uses common request headers. No special request headers are requi
 | --path | String | /api/v1/resource | The path. |
 | --host | String | api.example.com | The host address. |
 | -headerControl | Struct | {} | The request header control configuration. |
-
-#### GetRoutePolicies
-
-Queries routing policies.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --enabled | Boolean | true | Indicates whether the feature is enabled. |
 |---|---|---|---|
@@ -12881,12 +13384,7 @@ This operation uses common request headers. For more information, see Common par
 | --enabled | Boolean | true | Indicates whether the feature is enabled. |
 | -- fallbackStrate gy | String | default | The fallback strategy. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| configType | Strin g | Body | No | yaml | The configuration type. |
-| configData | Json | Body | No | {} | The configuration data. |
-
-#### ModifyRoutePolicy
+#### 3.9.8 ModifyRoutePolicy
 
 Modifies a routing policy.
 
@@ -12894,7 +13392,10 @@ Modifies a routing policy.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| configType | Strin g | Body | No | yaml | The configuration type. |
+| configData | Json | Body | No | {} | The configuration data. |
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -12906,6 +13407,14 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
+#### 3.9.9 DeleteStrategyConfig
+
+Deletes a policy configuration.
+
+**Request headers**
+
+This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -12915,23 +13424,17 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-**Response parameters**
-
-#### DeleteStrategyConfig
-
-Deletes a policy configuration.
-
-**Request headers**
-
-This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 3.9.10 ModifyStrategyConfigStatus
+
+Modifies the status of a policy configuration.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12945,23 +13448,15 @@ This operation uses common request headers and requires no special request heade
 | msg | String | The operation was successful. | The response message. |
 | data | String | {} | The data |
 
-#### ModifyStrategyConfigStatus
+### 3.10 Domain name management
 
-Modifies the status of a policy configuration.
+#### 3.10.1 ListDomains
+
+Queries a list of domain names.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Domain name management
-
-#### ListDomains
-
-Queries a list of domain names.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -12979,14 +13474,6 @@ Queries a list of domain names.
 | --DomainId | String | 00efd71a-770e- 4255-b54e- 6fe5659baffe | The domain name ID. |
 | --CertificateId | String | 12345678-1234- 1234-1234- 12345678**** | The certificate ID. |
 
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -- CertificateNam e | String | myCertificate | The name of the SSL certificate. |
 |---|---|---|---|
 | --Domain | String | www.aliyun.com | The domain name. |
@@ -13002,22 +13489,17 @@ This operation uses common request headers. No special request headers are requi
 
 **Examples**
 
-Sample response in `JSON` format
-
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| serviceTyp e | Integ er | Body | No | REST | The service type. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+Sample response in `JSON` format `{`
 
 ```json
-{
  "Msg":"success",
  "Data":{
   "Records":[
-   {
+```
+
+`{`
+
+```json
     "DomainId":"00efd71a-770e-4255-b54e-6fe5659baffe",
     "CertificateId":"12345678-1234-1234-1234-12345678****",
     "CreateTime":"2024-03-15T01:46Z",
@@ -13028,21 +13510,25 @@ Sample response in `JSON` format
     "ClientAuth":0,
     "CaCertificateName":"test",
     "CaCertificateId":"00efd71a-770e-4255-b54e-6fe5659baffe"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Size":20,
   "Total":1,
   "Current":1
- },
- "Code":200
-}
 ```
 
-#### ListAllDomains
+`},`
+
+```json
+ "Code":200
+```
+
+`}`
+
+#### 3.10.2 ListAllDomains
 
 Queries a list of all domain names.
 
@@ -13050,9 +13536,13 @@ Queries a list of all domain names.
 
 This operation requires only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| serviceTyp e | Integ er | Body | No | REST | The service type. |
 
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | data | Array | {} | The data |
 |---|---|---|---|
@@ -13069,15 +13559,13 @@ This operation requires only common request headers. For more information, see C
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetDomain
+#### 3.10.3 GetDomain
 
 Queries the details of a domain name.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13099,8 +13587,6 @@ This operation uses only common request headers. For more information, see Commo
 | -domain | String | api.example.com | The domain name. |
 | -protocol | String | HTTP | The protocol. |
 
-**Response parameters**
-
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 |---|---|---|---|
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
@@ -13110,13 +13596,7 @@ This operation uses only common request headers. For more information, see Commo
 | -subjectDn | String | CN=example.com, O=Example,C=CN | The subject distinguished name (DN) of the certificate. |
 | -issuerDn | String | CN=Example CA, O=Example Inc, C=CN | The issuer DN. |
 
-| Parameter name | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| protocol | Strin g | Body | No | HTTP | The protocol. |
-
-#### CreateDomain
+#### 3.10.4 CreateDomain
 
 Creates a domain name.
 
@@ -13124,7 +13604,11 @@ Creates a domain name.
 
 This operation uses common request headers and does not use special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter name | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| protocol | Strin g | Body | No | HTTP | The protocol. |
 
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
 |---|---|---|---|---|---|
@@ -13140,12 +13624,7 @@ This operation uses common request headers and does not use special request head
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
-#### ModifyDomain
+#### 3.10.5 ModifyDomain
 
 Modifies a domain name.
 
@@ -13153,7 +13632,8 @@ Modifies a domain name.
 
 This operation uses common request headers and does not have any special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
 |---|---|---|---|---|---|
@@ -13172,13 +13652,13 @@ This operation uses common request headers and does not have any special request
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
-
-#### DeleteDomain
+#### 3.10.6 DeleteDomain
 
 Deletes a domain name.
 
 **Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13191,20 +13671,9 @@ Deletes a domain name.
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size |
-| current | Integ er | Body | No | 1 | The current page number. |
+### 3.11 Certificate Management
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Certificate Management
-
-#### ListCertificates
+#### 3.11.1 ListCertificates
 
 Retrieves a list of certificates.
 
@@ -13212,7 +13681,10 @@ Retrieves a list of certificates.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size |
+| current | Integ er | Body | No | 1 | The current page number. |
 
 | sni | Strin g | Body | No | example.com | The Server Name Indication (SNI) domain name. |
 |---|---|---|---|---|---|
@@ -13233,12 +13705,18 @@ This operation uses only common request headers. For more information, see Commo
 | --certificateId | String | cert-987654 | The certificate ID. |
 | --certType | Integer | 1 | The certificate type. |
 
-**Response parameters**
-
 | -size | Integer | 100 | The size |
 |---|---|---|---|
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+#### 3.11.2 ListAllServerCertificates
+
+Queries the list of all server certificates.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13251,23 +13729,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | Map | {} | The data |
 
-#### ListAllServerCertificates
-
-Queries the list of all server certificates.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListAllCACertificates
+#### 3.11.3 ListAllCACertificates
 
 Retrieves the list of all CA certificates.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13287,11 +13755,13 @@ Retrieves the list of all CA certificates.
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
+#### 3.11.4 GetCertificate
+
+Queries a certificate.
+
+**Request headers**
+
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13310,18 +13780,6 @@ This operation uses only common request headers. For more information, see Commo
 | - privateKeyLen | Integer | 2048 | The length of the private key. |
 | -fingerPrint | String | a1b2c3d4e5f6 | Fingerprint. |
 
-#### GetCertificate
-
-Queries a certificate.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -signerCN | String | Example Corp | The common name (CN) of the signer. |
 |---|---|---|---|
 | -signerOU | String | IT Department | The organizational unit (OU) of the signer. |
@@ -13331,15 +13789,7 @@ This operation uses only common request headers. For more information, see Commo
 | -certType | Integer | 1 | The certificate type. |
 | -SN | String | SN12345678 | The serial number. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
-| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
-| certificate Name | Strin g | Body | No | MyCert | The certificate name. |
-
-#### CreateCertificate
+#### 3.11.5 CreateCertificate
 
 Creates a certificate.
 
@@ -13347,7 +13797,13 @@ Creates a certificate.
 
 This operation uses common request headers and no special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
+| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
+| certificate Name | Strin g | Body | No | MyCert | The certificate name. |
 
 | certType | Integ er | Body | No | 1 | The certificate type. |
 |---|---|---|---|---|---|
@@ -13359,16 +13815,7 @@ This operation uses common request headers and no special request headers. For m
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
-| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
-
-**Response parameters**
-
-#### ModifyCertificate
+#### 3.11.6 ModifyCertificate
 
 Modifies a certificate.
 
@@ -13376,7 +13823,12 @@ Modifies a certificate.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
+| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
 
 | certificate Name | Strin g | Body | No | MyCert | The certificate name. |
 |---|---|---|---|---|---|
@@ -13389,6 +13841,14 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
+#### 3.11.7 DeleteCertificate
+
+Deletes a certificate.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
@@ -13397,24 +13857,20 @@ This operation uses common request headers. For more information, see Common req
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
-#### DeleteCertificate
-
-Deletes a certificate.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | code | Integer | 200 | The response code. |
 |---|---|---|---|
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
+
+### 3.12 Other
+
+#### 3.12.1 GetTotalityInfo
+
+This operation queries summary information.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13428,20 +13884,6 @@ This operation uses only common request headers. For more information, see Commo
 | -routeTotal | Integer | 150 | The number of routes. |
 | -serverCount | Integer | 5 | The number of servers. |
 
-### Other
-
-#### GetTotalityInfo
-
-This operation queries summary information.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | - interfaceCount | Integer | 50 | The number of interfaces. |
 |---|---|---|---|
 | - todayRequest Count | Integer | 15000 | The number of requests today. |
@@ -13449,6 +13891,14 @@ This operation uses only common request headers. For more information, see Commo
 | -backAppTotal | Integer | 10 | The total number of backend applications. |
 | - mcpServerCou nt | Integer | 3 | The number of MCP servers. |
 | -strategyCount | Integer | 5 | The number of policies. |
+
+#### 3.12.2 GetSettings
+
+Queries system settings.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13460,19 +13910,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The message |
 | data | Struct | {} | The data |
 
-#### GetSettings
-
-Queries system settings.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Gateway |  | API Gatewa |
+| Developer Guide·A | PI Gateway |   | API Gatewa |
 |---|---|---|---|
 
 | - supportDeploy Modes | String | [] | A list of supported deployment modes. |
@@ -13490,15 +13928,13 @@ This operation uses common request headers. No special request headers are requi
 | -licenseEnable | Boolean | true | Indicates whether the license is enabled. |
 | - customPluginE nable | Boolean | true | Indicates whether custom plugins are enabled. |
 
-#### GetSlsStatistics
+#### 3.12.3 GetSlsStatistics
 
 Queries statistics information from Simple Log Service (SLS).
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13519,12 +13955,22 @@ This operation uses common request headers. For more information, see Common req
 | -- TotalRequestC ount | Long | 500000 | The total number of requests. |
 | -- FailedRequest Count | Long | 150 | The number of failed requests. |
 
-**Response parameters**
-
 | -Total | Long | 1000 | The total number of entries. |
 |---|---|---|---|
 | -Current | Long | 1 | The current page number. |
 | -Size | Long | 100 | The size |
+
+## 4 AI Gateway
+
+### 4.1 Cluster management
+
+#### 4.1.1 ListClusters
+
+Queries a list of clusters.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13539,22 +13985,6 @@ This operation uses common request headers. For more information, see Common req
 | data | Struct | {} | The data. |
 | -records | Array | [] | The list of records. |
 | -- k8sClusterCod e | String | k8s-cluster-001 | The code of the Kubernetes cluster. |
-
-## AI Gateway
-
-### Cluster management
-
-#### ListClusters
-
-Queries a list of clusters.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | -- k8sClusterNa me | String | production-cluster | The name of the Kubernetes cluster. |
 |---|---|---|---|
@@ -13577,6 +14007,14 @@ This operation has no special request headers. For more information about common
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
+#### 4.1.2 GetK8sClusterInfoByGwInstanceId
+
+Queries Kubernetes cluster information based on a gateway instance ID.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -13590,22 +14028,18 @@ This operation has no special request headers. For more information about common
 | - k8sClusterNa me | String | production-cluster | The name of the Kubernetes cluster. |
 | -masterUrl | String | https://k8s- master.example.co m:6443 | The URL of the master node. |
 
-#### GetK8sClusterInfoByGwInstanceId
-
-Queries Kubernetes cluster information based on a gateway instance ID.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | - k8sClusterStat us | Integer | 1 | The status of the Kubernetes cluster. |
 |---|---|---|---|
 | - k8sClusterStat usDesc | String | Running | The description of the Kubernetes cluster status. |
 | - k8sClusterImp ortDateTime | String | 2024-10-14 10:00:00 | The time when the Kubernetes cluster was imported. |
+
+#### 4.1.3 GetK8sClusterName
+
+Queries the name of a Kubernetes cluster.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13617,23 +14051,13 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | Operation successful. | The message |
 | data | String | {} | The returned data. |
 
-#### GetK8sClusterName
-
-Queries the name of a Kubernetes cluster.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ImportCluster
+#### 4.1.4 ImportCluster
 
 Imports a cluster.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13648,16 +14072,7 @@ Imports a cluster.
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### UpdateCluster
+#### 4.1.5 UpdateCluster
 
 Updates a cluster.
 
@@ -13665,7 +14080,8 @@ Updates a cluster.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | clusterCod e | Strin g | Body | No | cluster-001 | The cluster code. |
 |---|---|---|---|---|---|
@@ -13677,6 +14093,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
+#### 4.1.6 CancelImportCluster
+
+Cancels the import of a cluster.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | k8sCluster Code | Strin g | Body | No | k8s-cluster-001 | The code of the Kubernetes cluster. |
@@ -13687,22 +14111,16 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The data |
 
-**Response parameters**
+| PI Gateway |   |   | Developer Guide·AI Gatewa |
+|---|---|---|---|
 
-#### CancelImportCluster
+#### 4.1.7 CheckConnectCluster
 
-Cancels the import of a cluster.
+Checks the connection status of a cluster.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·AI Gatewa |
-|---|---|---|---|
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13716,27 +14134,13 @@ This operation uses common request headers. No special request headers are requi
 | -connectStatus | Integer | 1 | The connection status. |
 | - connectStatus Desc | String | Connected | The description of the connection status. |
 
-#### CheckConnectCluster
-
-Checks the connection status of a cluster.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListK8sAllNamespaces
+#### 4.1.8 ListK8sAllNamespaces
 
 Queries all namespaces in the Kubernetes.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13748,6 +14152,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The returned data. |
 
+#### 4.1.9 ListAllNamespaces
+
+Lists all namespaces.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parame ter | Typ e | Locati on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -13758,25 +14170,21 @@ This operation uses only common request headers. For more information, see Commo
 | data | Array | {} | The data. |
 | -namespaceId | String | ns-abc123 | The namespace ID. |
 
-**Response parameters**
-
-#### ListAllNamespaces
-
-Lists all namespaces.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - namespaceNa me | String | Production environment | The namespace name. |
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The response message. |
+
+### 4.2 Instance Management
+
+#### 4.2.1 ListInstances
+
+Queries a list of instances.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -13787,18 +14195,6 @@ This operation uses only common request headers. For more information, see Commo
 | deployMod e | Strin g | Body | No | rolling | The deployment mode. |
 | status | Integ er | Body | No | 1 | The status. |
 | brokerEngi neType | Strin g | Body | No | RocketMQ | The type of the message engine. |
-
-### Instance Management
-
-#### ListInstances
-
-Queries a list of instances.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -13817,8 +14213,6 @@ This operation uses only common request headers. For more information, see Commo
 | --- serviceName | String | user-service | The name of the service. |
 | --edasAppInfos | Array | [] | The list of EDAS application information. |
 | ---appId | String | 12345678 | The ID of the application. |
-
-**Response parameters**
 
 | --- edasNamespa ceId | String | edas-ns-001 | The ID of the EDAS namespace. |
 |---|---|---|---|
@@ -13863,14 +14257,7 @@ This operation uses only common request headers. For more information, see Commo
 | -current | Integer | 1 | The number of the current page. |
 | -size | Integer | 100 | The size. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| data | Array | {} | The data. |
-| -accessMode | Array | [] | A list of access modes. |
-| --ips | String | [] | A list of IP addresses. |
-| --ports | String | [] | A list of ports. |
-
-#### ListAllInstances
+#### 4.2.2 ListAllInstances
 
 Queries a list of all instances.
 
@@ -13878,7 +14265,12 @@ Queries a list of all instances.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| data | Array | {} | The data. |
+| -accessMode | Array | [] | A list of access modes. |
+| --ips | String | [] | A list of IP addresses. |
+| --ports | String | [] | A list of ports. |
 
 | --externalIps | String | [] | A list of external IP addresses. |
 |---|---|---|---|
@@ -13893,10 +14285,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-#### ListInstancesByServiceId
+#### 4.2.3 ListInstancesByServiceId
 
 This operation queries a list of instances.
 
@@ -13904,7 +14293,8 @@ This operation queries a list of instances.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -13919,17 +14309,7 @@ This operation uses only common request headers. For more information, see Commo
 | -serviceStruct | Map | {} | The service structure. |
 | -instanceList | Map | {} | The list of instances. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| code | Integer | 200 | The response code. |
-
-**Response parameters**
-
-#### GetInstanceInfo
+#### 4.2.4 GetInstanceInfo
 
 Queries information about an instance.
 
@@ -13937,9 +14317,13 @@ Queries information about an instance.
 
 This operation uses only common request headers. For more information, see the Common Request Parameters document.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| code | Integer | 200 | The response code. |
 
 | msg | String | Operation successful | The message. |
 |---|---|---|---|
@@ -13996,6 +14380,14 @@ This operation uses only common request headers. For more information, see the C
 |---|---|---|---|
 | -vSwitchId | String | vsw- bp1234567890 | The ID of the virtual switch. |
 
+#### 4.2.5 CreateInstance
+
+Creates an instance.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eName | Strin g | Body | No | Production Gateway Instance | The name of the gateway instance. |
@@ -14006,16 +14398,6 @@ This operation uses only common request headers. For more information, see the C
 | vpcId | Strin g | Body | No | vpc-bp1234567890 | The ID of the VPC. |
 | vswId | Strin g | Body | No | vsw-1234567890 | The ID of the vSwitch. |
 | ingressNa me | Strin g | Body | No | my-ingress | The name of the Ingress. |
-
-#### CreateInstance
-
-Creates an instance.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | brokerEngi neType | Strin g | Body | No | RocketMQ | The type of the message engine. |
 |---|---|---|---|---|---|
@@ -14030,14 +14412,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eName | Strin g | Body | No | production-gateway- instance | The gateway instance name. |
-| clusterCod e | Strin g | Body | No | cluster-001 | Cluster code. |
-
-**Response parameters**
-
-#### AscmCreateInstance
+#### 4.2.6 AscmCreateInstance
 
 Creates an instance.
 
@@ -14045,7 +14420,10 @@ Creates an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eName | Strin g | Body | No | production-gateway- instance | The gateway instance name. |
+| clusterCod e | Strin g | Body | No | cluster-001 | Cluster code. |
 
 | instanceN umber | Strin g | Body | No | INS20240101001 | Instance number. |
 |---|---|---|---|---|---|
@@ -14088,6 +14466,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
+#### 4.2.7 ModifyInstance
+
+Modifies an instance.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -14099,22 +14485,16 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
 
-**Response parameters**
+| Developer Guide·A | I Gateway |   | API Gatewa |
+|---|---|---|---|
 
-#### ModifyInstance
+#### 4.2.8 ModifyInstanceImageUrl
 
-Modifies an instance.
+Modifies the image URL of an instance.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | I Gateway |  | API Gatewa |
-|---|---|---|---|
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14127,22 +14507,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### ModifyInstanceImageUrl
-
-Modifies the image URL of an instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### UpgradeInstance
+#### 4.2.9 UpgradeInstance
 
 Upgrades an instance.
 
@@ -14150,7 +14515,8 @@ Upgrades an instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see the Common Request Parameters document.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -14160,6 +14526,14 @@ This operation uses common request headers. No special request headers are requi
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
+
+#### 4.2.10 DeleteInstance
+
+Deletes an instance.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14172,22 +14546,16 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-**Response parameters**
+| Developer Guide·A | I Gateway |   | API Gatewa |
+|---|---|---|---|
 
-#### DeleteInstance
+#### 4.2.11 RestartInstance
 
-Deletes an instance.
+Restarts an instance.
 
 **Request headers**
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | I Gateway |  | API Gatewa |
-|---|---|---|---|
+This operation includes only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14199,23 +14567,7 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message |
 | data | Map | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-#### RestartInstance
-
-Restarts an instance.
-
-**Request headers**
-
-This operation includes only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### StopInstance
+#### 4.2.12 StopInstance
 
 Stops an instance.
 
@@ -14223,13 +14575,23 @@ Stops an instance.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Boolean | {} | The data. |
+
+#### 4.2.13 RefreshInstance
+
+Refreshes an instance.
+
+**Request headers**
+
+This operation uses only common request headers. For more information about these headers, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14242,20 +14604,6 @@ This operation uses only common request headers. For more information, see Commo
 | data | Struct | {} | The returned data. |
 | -accessMode | Array | [] | The list of access modes. |
 | --ips | String | [] | The list of IP addresses. |
-
-**Response parameters**
-
-#### RefreshInstance
-
-Refreshes an instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information about these headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --ports | String | [] | The list of ports. |
 |---|---|---|---|
@@ -14273,7 +14621,13 @@ This operation uses only common request headers. For more information about thes
 | -modifyTime | String | 2024-10-14 12:30:00 | The update time. |
 | -tid | String | t-123456789 | The task ID. |
 
-#### CreateInstanceDeployConfig
+#### 4.2.14 CreateInstanceDeployConfig
+
+Creates an instance deployment configuration.
+
+**Request headers**
+
+This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14288,14 +14642,6 @@ This operation uses only common request headers. For more information about thes
 | ports | Repe atLis t | Body | No | [] | The list of ports. |
 | -port | Integ er | Body | No | 8080 | The port number. |
 | -targetPort | Strin g | Body | No | 8080 | The target port. |
-
-Creates an instance deployment configuration.
-
-**Request headers**
-
-This operation uses common request headers. Special request headers are not required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | -nodePort | Integ er | Body | No | 30080 | The node port. |
 |---|---|---|---|---|---|
@@ -14315,10 +14661,16 @@ This operation uses common request headers. Special request headers are not requ
 | data | Struct | {} | The data. |
 | - deployConfigY amlStr | String | apiVersion: apps/v1 kind: Deployment | The deployment configuration as a YAML string. |
 
-**Response parameters**
-
 | - accessModeCo nfigYamlStr | String | mode: public enabled: true | The access mode configuration as a YAML string. |
 |---|---|---|---|
+
+#### 4.2.15 GetInstanceDeployDeployConfig
+
+Queries the deployment configuration of an instance.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14330,22 +14682,7 @@ This operation uses common request headers. Special request headers are not requ
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### GetInstanceDeployDeployConfig
-
-Queries the deployment configuration of an instance.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetInstanceDeployMsg
+#### 4.2.16 GetInstanceDeployMsg
 
 Queries the deployment message of an instance.
 
@@ -14353,7 +14690,8 @@ Queries the deployment message of an instance.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -14374,8 +14712,6 @@ This operation uses common request headers. No special request headers are requi
 | ---ipType | String | IPv4 | The IP address type. |
 | --name | String | my-resource | The name. |
 | --isReady | Boolean | true | Whether it is ready. |
-
-**Response parameters**
 
 | - deploymentNa me | String | app-deployment | The deployment name. |
 |---|---|---|---|
@@ -14400,6 +14736,14 @@ This operation uses common request headers. No special request headers are requi
 | --namespace | String | prod-ns | The namespace. |
 | --clusterCode | String | cluster-001 | The cluster code. |
 
+#### 4.2.17 GetCustomDeployConfig
+
+Queries a custom deployment configuration.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -14413,20 +14757,16 @@ This operation uses common request headers. No special request headers are requi
 | - serviceYamlStr | String | apiVersion: v1 kind: Service | The service YAML string. |
 | -jarStr | String | my-service.jar | The JAR file name. |
 
-#### GetCustomDeployConfig
-
-Queries a custom deployment configuration.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -wgetStr | String | wget https://example.co m/file | The Wget command string. |
 |---|---|---|---|
+
+#### 4.2.18 GetInstanceAccessModeConfig
+
+Retrieves the access mode configuration of an instance.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14438,22 +14778,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The response message. |
 | data | Map | {} | The data |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### GetInstanceAccessModeConfig
-
-Retrieves the access mode configuration of an instance.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetResource
+#### 4.2.19 GetResource
 
 Queries the resources of an instance.
 
@@ -14461,7 +14786,8 @@ Queries the resources of an instance.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 |---|---|---|---|---|---|
@@ -14482,8 +14808,6 @@ This operation uses common request headers. For more information, see Common req
 | - backupVSwitc hId | String | vsw- bp1234567890 | The ID of the backup vSwitch. |
 | -thirdZoneId | String | cn-hangzhou-c | The ID of the third zone. |
 
-**Response parameters**
-
 | - thirdVSwitchId | String | vsw-third-001 | The ID of the vSwitch in the third zone. |
 |---|---|---|---|
 | -zoneType | String | primary | The type of the zone. |
@@ -14501,7 +14825,7 @@ This operation uses common request headers. For more information, see Common req
 | --amount | String | 100.00 | The amount. |
 | --unit | String | requests/second | The unit. |
 
-#### ModifyResource
+#### 4.2.20 ModifyResource
 
 Modifies the resources of an instance.
 
@@ -14527,12 +14851,18 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-**Request parameters**
-
-**Response parameters**
-
 | data | String | {} | The data. |
 |---|---|---|---|
+
+### 4.3 Group Management
+
+#### 4.3.1 ModifyGroup
+
+This operation modifies a group.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14547,23 +14877,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-### Group Management
-
-#### ModifyGroup
-
-This operation modifies a group.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 4.3.2 CreateGroup
+
+Creates a group.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14578,21 +14902,17 @@ This operation uses common request headers. For more information, see Common req
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-#### CreateGroup
-
-Creates a group.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 4.3.3 ListGroups
+
+Retrieves a list of groups.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14607,18 +14927,6 @@ This operation uses common request headers. No special request headers are requi
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Struct | {} | The data. |
-
-#### ListGroups
-
-Retrieves a list of groups.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | -records | Array | [] | The list of records. |
 |---|---|---|---|
@@ -14642,6 +14950,14 @@ This operation uses only common request headers. For more information, see Commo
 | -size | Integer | 100 | The size. |
 |---|---|---|---|
 
+#### 4.3.4 GetAllGroups
+
+Retrieves a list of all groups.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -14657,18 +14973,6 @@ This operation uses only common request headers. For more information, see Commo
 | --createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | -groupId | String | group-123456 | The ID of the group. |
 
-#### GetAllGroups
-
-Retrieves a list of all groups.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The ID of the gateway instance. |
 |---|---|---|---|
 | -name | String | my-resource | The name |
@@ -14681,11 +14985,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-#### GetGroup
+#### 4.3.5 GetGroup
 
 Queries the details of a group.
 
@@ -14693,7 +14993,9 @@ Queries the details of a group.
 
 This operation uses common request headers and does not use special request headers. For more information about common request headers, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | groupId | Strin g | Body | No | group-123456 | The group ID. |
 |---|---|---|---|---|---|
@@ -14715,12 +15017,18 @@ This operation uses common request headers and does not use special request head
 | -description | String | This is an example service. | The description. |
 | - defaultDomain | String | api.example.com | The default domain name. |
 
-**Response parameters**
-
 | -editable | Boolean | true | Indicates whether the group is editable. |
 |---|---|---|---|
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
+
+#### 4.3.6 DeleteGroup
+
+Deletes a group.
+
+**Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14733,23 +15041,13 @@ This operation uses common request headers and does not use special request head
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### DeleteGroup
-
-Deletes a group.
-
-**Request headers**
-
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### AddGroupDomain
+#### 4.3.7 AddGroupDomain
 
 Adds a domain name to a group.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14763,18 +15061,11 @@ Adds a domain name to a group.
 | msg | String | success | The returned message. If the request is successful, 'success' is returned. If the request fails, an error message is returned. |
 | data | String | true | The returned data. If the operation is successful, the string 'true' is returned. |
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
-Request example
+Request example `{`
 
 ```json
-{
   "gwInstanceId": "gw-cn-wwo36s5y001",
   "groupId": "16782",
   "domainIds": [
@@ -14782,13 +15073,23 @@ Request example
     "3413"
 ```
 
-]
+`]` `}` Successful response example `JSON` format `{`
 
-```
-}
+```json
+  "code": 200,
+  "msg": "success",
+  "data": "true"
 ```
 
-Successful response example `JSON` format
+`}`
+
+#### 4.3.8 DeleteGroupDomain
+
+Deletes a domain name from a group.
+
+**Request headers**
+
+This operation does not have special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14802,31 +15103,21 @@ Successful response example `JSON` format
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-```json
-{
-  "code": 200,
-  "msg": "success",
-  "data": "true"
-}
-```
+### 4.4 Ingress management
 
-#### DeleteGroupDomain
-
-Deletes a domain name from a group.
-
-**Request headers**
-
-This operation does not have special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Ingress management
-
-#### ListRoutes
+#### 4.4.1 ListRoutes
 
 Queries a list of routes.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
+**Request syntax**
+
+```
+POST /route/listRoutes HTTP/1.1
+```
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14839,14 +15130,6 @@ Queries a list of routes.
 | gwInstanc eId | Strin g | Body | No | i-demo | The ID of the gateway instance. |
 | routeId | Strin g | Body | No | xxx-xxx-xxx-xxx | The ID of the route. |
 | groupNam e | Strin g | Body | No | test | The name of the group. |
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request syntax**
-
-**Request parameters**
 
 | domainNa me | Strin g | Body | No | example.com | The domain name. |
 |---|---|---|---|---|---|
@@ -14868,8 +15151,6 @@ This operation uses only common request headers. For more information, see Commo
 | --groupId | String | group-123456 | The ID of the group. |
 | --groupName | String | Default group | The name of the group. |
 
-**Response parameters**
-
 | --path | Struct | /api/v1/resource | The path. |
 |---|---|---|---|
 | ---matchType | String | prefix | The match type. |
@@ -14884,18 +15165,12 @@ This operation uses only common request headers. For more information, see Commo
 Request example
 
 ```
-{ }
+POST /route/listRoutes HTTP/1.1
 ```
 
-Response example `JSON` format
-
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size. |
-| current | Integ er | Body | No | 1 | The current page number. |
+`{` `}` Response example `JSON` format `{`
 
 ```json
-{
  "msg":"",
  "code":"",
  "data":{
@@ -14903,7 +15178,11 @@ Response example `JSON` format
   "current":"",
   "size":"",
   "records":[
-   {
+```
+
+`{`
+
+```json
     "routePath":"",
     "groupName":"",
     "routeId":"",
@@ -14914,28 +15193,25 @@ Response example `JSON` format
     "serviceName":"",
     "enableStatus":"",
     "path":[
-     {
+```
+
+`{`
+
+```json
       "matchType":"",
       "caseSensitive":"",
       "matchValue":""
-     }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "routeName":""
-   }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
- }
-}
-```
-
-#### ListRoutesByAppId
+#### 4.4.2 ListRoutesByAppId
 
 Queries a list of routes.
 
@@ -14943,7 +15219,10 @@ Queries a list of routes.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size. |
+| current | Integ er | Body | No | 1 | The current page number. |
 
 | total | Integ er | Body | No | 1000 | The total number of entries. |
 |---|---|---|---|---|---|
@@ -14965,8 +15244,6 @@ This operation uses only common request headers. For more information, see Commo
 | --serviceName | String | user-service | The service name. |
 | -- serviceProtoco l | String | HTTP | The service protocol. |
 
-**Response parameters**
-
 | --authId | String | auth 123456 _ | The authentication ID. |
 |---|---|---|---|
 | --authStatus | Integer | 1 | The authentication status. |
@@ -14975,6 +15252,14 @@ This operation uses only common request headers. For more information, see Commo
 | -size | Integer | 100 | The size. |
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+#### 4.4.3 ListRoutesByGwInstanceId
+
+Queries a list of routes.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -14986,18 +15271,6 @@ This operation uses only common request headers. For more information, see Commo
 | data | Array | {} | The data. |
 | -routeId | String | route-123456 | The route ID. |
 
-#### ListRoutesByGwInstanceId
-
-Queries a list of routes.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -routeName | String | user-service-route | The route name. |
 |---|---|---|---|
 | -routePath | String | /api/v1/users | The route path. |
@@ -15006,6 +15279,14 @@ This operation uses only common request headers. For more information, see Commo
 | - serviceProtoco l | String | HTTP | The service protocol. |
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
+
+#### 4.4.4 GetAllRoutePath
+
+Retrieves all routing paths.
+
+**Request headers**
+
+No special request headers are required for this operation. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15016,21 +15297,17 @@ This operation uses only common request headers. For more information, see Commo
 | Code | Integer | 200 | The response code. |
 | Msg | String | The operation was successful. | The message |
 
-#### GetAllRoutePath
-
-Retrieves all routing paths.
-
-**Request headers**
-
-No special request headers are required for this operation. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Data | Struct | {} | The data |
 |---|---|---|---|
 | -RoutePaths | String | [] | The list of routing paths. |
+
+#### 4.4.5 GetRoute
+
+Queries the details of a specified route.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15046,18 +15323,6 @@ No special request headers are required for this operation. For more information
 | -methods | String | [] | The list of request methods. |
 | -header | Array | [] | The list of request headers. |
 | --key | String | api-key-001 | The key. |
-
-#### GetRoute
-
-Queries the details of a specified route.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --value | String | example-value | The value. |
 |---|---|---|---|
@@ -15283,7 +15548,7 @@ This operation uses only common request headers. For more information, see Commo
 | -- isEnableDown stream | Boolean | true | Indicates whether to enable downstream tracing. |
 | -- isEnableTracin g | Boolean | true | Indicates whether to enable tracing. |
 
-#### GetProtocolByRoute
+#### 4.4.6 GetProtocolByRoute
 
 Queries the protocol of a route.
 
@@ -15303,14 +15568,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-**Request parameters**
-
-**Response parameters**
-
-#### ModifyRoute
+#### 4.4.7 ModifyRoute
 
 Modifies a route.
 
@@ -15318,7 +15576,8 @@ Modifies a route.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -15333,7 +15592,7 @@ This operation uses only common request headers. For more information, see Commo
 | header | Repe atList | Body | No | [{"key":"X-Version", "value":"v2"}] | A list of request header conditions for the route to match. This is used to implement header- based routing. |
 | -key | Strin g | Body | No | api-key-001 | The key. |
 
-|  | Developer Gui | de·AI Ga | teway |  |  | API Gatewa | y |
+|   | Developer Gui | de·AI Ga | teway |   |   | API Gatewa | y |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -15350,7 +15609,7 @@ This operation uses only common request headers. For more information, see Commo
 | stripPrefix | Integ er | Body | No | 2 | If openStripPrefix is set to true, this parameter specifies the number of path levels to strip before forwarding the request to the backend service. For example, if the path is /api/v2/users and stripPrefix is 2, the backend service receives /users. |
 | requestTi meout | Integ er | Body | No | 5000 | The timeout period for the gateway to request the backend service. Unit: milliseconds. |
 
-| A | PI Gateway |  |  |  | D | eveloper Guide·AI Gatewa | y |
+| A | PI Gateway |   |   |   | D | eveloper Guide·AI Gatewa | y |
 |---|---|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -15368,13 +15627,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | success | The returned message. If the operation is successful, success is typically returned. |
 | data | String | rt-a1b2c3d4e5f6 | The returned data. If the operation is successful, the ID of the modified route is typically returned. |
 
-**Response parameters**
-
-#### DeleteRoute
+#### 4.4.8 DeleteRoute
 
 Deletes a route.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15387,13 +15646,7 @@ Deletes a route.
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### CreateRoute
+#### 4.4.9 CreateRoute
 
 Creates a route.
 
@@ -15403,8 +15656,9 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request syntax**
 
+`{`
+
 ```json
-{
   "gwInstanceId": "string",
   "groupId": "string",
   "serviceId": "string",
@@ -15420,20 +15674,27 @@ This operation uses only common request headers. For more information, see Commo
     "matchType": "string",
     "matchValue": "string",
     "caseSensitive": true
-  },
+```
+
+`},`
+
+```json
   "openStripPrefix": true,
 ```
 
 ```json
   "serviceType": "string",
   "serviceIds": [
-    {
-      "serviceId": "string",
-      "weight": 0
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "serviceId": "string",
+      "weight": 0
+```
+
+`}` `],`
 
 ```json
   "enableStatus": true,
@@ -15447,33 +15708,42 @@ This operation uses only common request headers. For more information, see Commo
 
 ```json
   "header": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "cookie": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "queryParam": [
-    {
-      "key": "string",
-      "value": "string"
-    }
 ```
 
-`],`
+`{`
+
+```json
+      "key": "string",
+      "value": "string"
+```
+
+`}` `],`
 
 ```json
   "domainIds": [
@@ -15487,7 +15757,11 @@ This operation uses only common request headers. For more information, see Commo
   "hsfMethodMappingConfig": {
     "hsfMethod": "string",
     "parameterMappingList": [
-      {
+```
+
+`{`
+
+```json
         "name": "string",
         "schema": {
           "type": "string",
@@ -15495,19 +15769,17 @@ This operation uses only common request headers. For more information, see Commo
           "array": true,
           "primitive": true,
           "generic": true
-        },
+```
+
+`},`
+
+```json
         "location": "string",
         "required": true,
         "order": 0
-      }
 ```
 
-]
-
-```
-  }
-}
-```
+`}` `]` `}` `}`
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15523,8 +15795,6 @@ This operation uses only common request headers. For more information, see Commo
 | -key | Strin g | Body | No | api-key-001 | The key. |
 | -value | Strin g | Body | No | example-value | The value. |
 | cookie | Repe at list | Body | No | [] | A list of cookies. |
-
-**Request parameters**
 
 | -key | Strin g | Body | No | api-key-001 | The key. |
 |---|---|---|---|---|---|
@@ -15554,14 +15824,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| routeId | Strin g | Body | No | route-123456 | The ID of the route. |
-
-**Response parameters**
-
-#### ChangeRouteStatus
+#### 4.4.10 ChangeRouteStatus
 
 Changes the status of a route.
 
@@ -15569,7 +15832,10 @@ Changes the status of a route.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| routeId | Strin g | Body | No | route-123456 | The ID of the route. |
 
 | enableStat us | Bool ean | Body | No | true | The enabled status of the route. |
 |---|---|---|---|---|---|
@@ -15579,6 +15845,14 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
+
+#### 4.4.11 BatchDeleteRoute
+
+Deletes multiple routes at once.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15590,24 +15864,20 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | Operation succeeded | The message. |
 
-**Response parameters**
-
-#### BatchDeleteRoute
-
-Deletes multiple routes at once.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see the document on common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | data | Struct | {} | The data. |
 |---|---|---|---|
 | -successIds | String | [] | List of successful IDs. |
 | -failedIds | String | [] | List of failed IDs. |
+
+### 4.5 Source Management
+
+#### 4.5.1 BatchDeleteSource
+
+Deletes sources in batches.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15621,22 +15891,16 @@ This operation uses common request headers. No special request headers are requi
 | data | Struct | {} | The data. |
 | -successIds | String | [] | The successful IDs. |
 
-### Source Management
+| -failedIds | String | [] | A list of IDs of the sources that failed to be deleted. |
+|---|---|---|---|
 
-#### BatchDeleteSource
+#### 4.5.2 ListSources
 
-Deletes sources in batches.
+Queries a list of sources.
 
 **Request headers**
 
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| -failedIds | String | [] | A list of IDs of the sources that failed to be deleted. |
-|---|---|---|---|
+This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15653,18 +15917,6 @@ This operation uses only common request headers. For more information, see Commo
 | data | Struct | {} | The data. |
 | -records | Array | [] | The list of records. |
 
-#### ListSources
-
-Queries a list of sources.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --sourceId | String | src-123456 | The source ID. |
 |---|---|---|---|
 | --sourceName | String | Internal System | The source name. |
@@ -15677,12 +15929,7 @@ This operation uses common request headers. No special request headers are used.
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-| Name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| serviceTyp e | Integ er | Body | No | REST | The service type. |
-
-#### ListAllSources
+#### 4.5.3 ListAllSources
 
 Queries a list of all sources.
 
@@ -15690,7 +15937,10 @@ Queries a list of all sources.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| serviceTyp e | Integ er | Body | No | REST | The service type. |
 
 | Name | Type | Example | Description |
 |---|---|---|---|
@@ -15703,14 +15953,7 @@ This operation uses common request headers. For more information, see Common req
 | code | Integer | 200 | The response code. |
 | msg | String | The operation is successful. | The message. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| sourceId | Strin g | Body | No | src-123456 | The ID of the source. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-
-**Response parameters**
-
-#### GetSource
+#### 4.5.4 GetSource
 
 Queries a source.
 
@@ -15718,9 +15961,10 @@ Queries a source.
 
 This operation uses common request headers and does not have special request headers. For more information, see the document on common request parameters.
 
-**Request parameters**
-
-**Response parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| sourceId | Strin g | Body | No | src-123456 | The ID of the source. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -15736,10 +15980,7 @@ This operation uses common request headers and does not have special request hea
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### CreateSource
+#### 4.5.5 CreateSource
 
 Creates a source.
 
@@ -15747,7 +15988,8 @@ Creates a source.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | sourceId | Strin g | Body | No | src-123456 | The ID of the source. |
 |---|---|---|---|---|---|
@@ -15767,9 +16009,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
+#### 4.5.6 ModifySource
 
-#### ModifySource
+Modifies a source.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15786,21 +16032,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-Modifies a source.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### DeleteSource
+#### 4.5.7 DeleteSource
 
 Deletes a source.
 
 **Request headers**
+
+This operation has no special request headers. For more information about common request headers, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -15813,20 +16051,9 @@ Deletes a source.
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter Name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| description | Strin g | Body | No | This is a sample service | The description. |
+### 4.6 Service Management
 
-This operation has no special request headers. For more information about common request headers, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Service Management
-
-#### ImportServices
+#### 4.6.1 ImportServices
 
 This operation imports services.
 
@@ -15834,7 +16061,10 @@ This operation imports services.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter Name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| description | Strin g | Body | No | This is a sample service | The description. |
 
 | loadBalanc eType | Integ er | Body | No | 1 | The load balancing type. |
 |---|---|---|---|---|---|
@@ -15852,9 +16082,7 @@ This operation uses common request headers. For more information, see Common req
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The messages |
 
-**Response parameters**
-
-#### ListServices
+#### 4.6.2 ListServices
 
 Queries a list of services.
 
@@ -15881,10 +16109,6 @@ This operation uses common request headers and does not require any special requ
 | ---ip | String | 192.168.1.100 | The IP address. |
 | ---port | Integer | 8080 | The port number. |
 
-**Request parameters**
-
-**Response parameters**
-
 | ---weight | Integer | 100 | The weight. |
 |---|---|---|---|
 | ---enable | Boolean | true | Indicates whether the node is enabled. |
@@ -15903,6 +16127,14 @@ This operation uses common request headers and does not require any special requ
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The number of the returned page. |
 
+#### 4.6.3 ListAllServices
+
+Queries the list of all services.
+
+**Request header**
+
+This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -15917,19 +16149,7 @@ This operation uses common request headers and does not require any special requ
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ListAllServices
-
-Queries the list of all services.
-
-**Request header**
-
-This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetService
+#### 4.6.4 GetService
 
 Retrieves the details of a service.
 
@@ -15955,10 +16175,6 @@ This operation uses common request headers. No special request headers are requi
 | - strategyConfig s | Array | [] | The list of policy configurations. |
 | --scopes | String | [] | The list of authorization scopes. |
 | -- strategyConfig Id | String | strategy-config- 001 | The policy configuration ID. |
-
-**Request parameters**
-
-**Response parameters**
 
 | -- strategyConfig Name | String | Default Policy | The policy configuration name. |
 |---|---|---|---|
@@ -16012,15 +16228,13 @@ This operation uses common request headers. No special request headers are requi
 | -- httpSuccesses | Integer | 3 | The number of consecutive successful HTTP checks. |
 | --httpFailures | Integer | 5 | The number of consecutive failed HTTP checks. |
 
-#### CreateService
+#### 4.6.5 CreateService
 
 Creates a service.
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16038,13 +16252,19 @@ This operation uses common request headers. For more information, see Common req
 | protocol | Strin g | Body | No | HTTP | The protocol. |
 | serviceId | Strin g | Body | No | service-123456 | The ID of the service. |
 
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 4.6.6 ModifyService
+
+This operation modifies a service.
+
+**Request headers**
+
+This operation requires only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16055,16 +16275,6 @@ This operation uses common request headers. For more information, see Common req
 | description | Strin g | Body | No | This is a sample service. | The description. |
 | upstreamT ype | Integ er | Body | No | 1 | The upstream type. |
 | serviceSou rceType | Integ er | Body | No | 1 | The service source type. |
-
-#### ModifyService
-
-This operation modifies a service.
-
-**Request headers**
-
-This operation requires only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | serviceTyp e | Integ er | Body | No | REST | The service type. |
 |---|---|---|---|---|---|
@@ -16080,12 +16290,7 @@ This operation requires only common request headers. For more information, see C
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
-#### ModifyNode
+#### 4.6.7 ModifyNode
 
 Modifies a service node.
 
@@ -16093,7 +16298,8 @@ Modifies a service node.
 
 This operation uses only common request headers. For more information, see the document about common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 |---|---|---|---|---|---|
@@ -16107,13 +16313,7 @@ This operation uses only common request headers. For more information, see the d
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | test-service | The instance ID. |
-
-**Response parameters**
-
-#### DeleteService
+#### 4.6.8 DeleteService
 
 Deletes a service.
 
@@ -16123,7 +16323,13 @@ This operation uses common request headers. No special request headers are requi
 
 **Request syntax**
 
-**Request parameters**
+```
+POST /microservice/deleteService HTTP/1.1
+```
+
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | test-service | The instance ID. |
 
 | serviceId | Strin g | Body | No | service-123456 | The service ID. |
 |---|---|---|---|---|---|
@@ -16134,30 +16340,25 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
 **Examples**
 
 Sample request
 
 ```
-{ }
+POST /microservice/deleteService HTTP/1.1
 ```
 
-Sample successful response `JSON` format
+`{` `}` Sample successful response `JSON` format `{`
 
 ```json
-{
  "msg":"",
  "code":"",
  "data":""
-}
 ```
 
-#### BatchDeleteService
+`}`
+
+#### 4.6.9 BatchDeleteService
 
 Deletes multiple services at a time.
 
@@ -16165,7 +16366,8 @@ Deletes multiple services at a time.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -16179,16 +16381,9 @@ This operation uses common request headers. No special request headers are requi
 | -successIds | String | [] | List of success IDs. |
 | -failedIds | String | [] | List of failed IDs. |
 
-| Parameter name | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| mcpServer Name | Strin g | Body | No | mcp-server-prod | The name of the MCP Server. |
+### 4.7 MCP service management
 
-**Response parameters**
-
-### MCP service management
-
-#### DeleteMcpServerConsumers
+#### 4.7.1 DeleteMcpServerConsumers
 
 Deletes consumers from an MCP Server.
 
@@ -16196,7 +16391,10 @@ Deletes consumers from an MCP Server.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter name | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| mcpServer Name | Strin g | Body | No | mcp-server-prod | The name of the MCP Server. |
 
 | consumers | Repe atLis t | Body | No | [] | The list of consumers. |
 |---|---|---|---|---|---|
@@ -16207,6 +16405,14 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | Operation successful | The response message. |
 | data | String | {} | The returned data. |
 
+#### 4.7.2 AddMcpServerConsumers
+
+Adds consumers to an MCP Server.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -16216,24 +16422,18 @@ This operation uses common request headers. For more information, see Common req
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
-#### AddMcpServerConsumers
-
-Adds consumers to an MCP Server.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | code | Integer | 200 | The response code. |
 |---|---|---|---|
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
+
+#### 4.7.3 ListMcpServers
+
+Retrieves a list of MCP services.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16247,18 +16447,6 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The returned message. |
-
-#### ListMcpServers
-
-Retrieves a list of MCP services.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | data | Struct | {} | The data |
 |---|---|---|---|
@@ -16295,7 +16483,7 @@ This operation uses only common request headers. For more information, see Commo
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
-#### GetMcpServer
+#### 4.7.4 GetMcpServer
 
 Queries an MCP service.
 
@@ -16322,10 +16510,6 @@ This operation uses common request headers. Special request headers are not requ
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The ID of the gateway instance. |
 | -name | String | my-resource | The name. |
 
-**Request parameters**
-
-**Response parameters**
-
 | -description | String | This is an example service | Description. |
 |---|---|---|---|
 | - rawConfigurati ons | String | config1,config2 | The list of raw configurations. |
@@ -16348,6 +16532,14 @@ This operation uses common request headers. Special request headers are not requ
 |---|---|---|---|
 | -- transportType | String | HTTP | The transport type. |
 
+#### 4.7.5 CreateMcpServer
+
+Creates an MCP service.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see the Common Parameters document.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | id | Strin g | Body | No | 123456 | The ID. |
@@ -16358,16 +16550,6 @@ This operation uses common request headers. Special request headers are not requ
 | -name | Strin g | Body | No | my-resource | The name |
 | -port | Integ er | Body | No | 8080 | The port number of a service. |
 | -version | Strin g | Body | No | 1.0.0 | The version number of a service. |
-
-#### CreateMcpServer
-
-Creates an MCP service.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see the Common Parameters document.
-
-**Request parameters**
 
 | -weight | Integ er | Body | No | 100 | The weight. |
 |---|---|---|---|---|---|
@@ -16385,9 +16567,7 @@ This operation uses only common request headers. For more information, see the C
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
-
-#### DeleteMcpServer
+#### 4.7.6 DeleteMcpServer
 
 Deletes an MCP server.
 
@@ -16406,17 +16586,7 @@ This operation has no special request headers. For more information about common
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size |
-| current | Integ er | Body | No | 1 | The page number. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListMcpServerConsumers
+#### 4.7.7 ListMcpServerConsumers
 
 This operation queries the list of consumers for an MCP service.
 
@@ -16424,7 +16594,11 @@ This operation queries the list of consumers for an MCP service.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size |
+| current | Integ er | Body | No | 1 | The page number. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | mcpServer Name | Strin g | Body | No | mcp-server-prod | The MCP server name. |
 |---|---|---|---|---|---|
@@ -16445,7 +16619,13 @@ This operation uses only common request headers. For more information, see Commo
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size |
 
-**Response parameters**
+#### 4.7.8 SwaggerToMcpConfig
+
+Converts a Swagger file into an MCP configuration.
+
+**Request header**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16458,23 +16638,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The message |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The instance ID of the gateway. |
-
-#### SwaggerToMcpConfig
-
-Converts a Swagger file into an MCP configuration.
-
-**Request header**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetSsePathSuffix
+#### 4.7.9 GetSsePathSuffix
 
 Queries the Server-Sent Events (SSE) path suffix of the MCP service.
 
@@ -16482,13 +16646,23 @@ Queries the Server-Sent Events (SSE) path suffix of the MCP service.
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The instance ID of the gateway. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data |
+
+#### 4.7.10 UpdateMcpServer
+
+Updates an MCP service.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common request parameters document.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16498,18 +16672,6 @@ This operation uses common request headers and does not require special request 
 | domains | Repe atLis t | Body | No | [] | List of domain names |
 | services | Repe atLis t | Body | No | [] | List of services |
 | -name | Strin g | Body | No | my-resource | The name. |
-
-**Response parameters**
-
-#### UpdateMcpServer
-
-Updates an MCP service.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the Common request parameters document.
-
-**Request parameters**
 
 | -port | Integ er | Body | No | 8080 | Port number. |
 |---|---|---|---|---|---|
@@ -16529,7 +16691,15 @@ This operation uses only common request headers. For more information, see the C
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
+### 4.8 Consumer management
+
+#### 4.8.1 BatchDeleteApp
+
+Deletes consumers in a batch.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16544,21 +16714,7 @@ This operation uses only common request headers. For more information, see the C
 | -successIds | String | [] | Successful IDs |
 | -failedIds | String | [] | Failed IDs |
 
-### Consumer management
-
-#### BatchDeleteApp
-
-Deletes consumers in a batch.
-
-**Request header**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListApps
+#### 4.8.2 ListApps
 
 Queries a list of consumers.
 
@@ -16583,10 +16739,6 @@ This operation uses common request headers. No special request headers are requi
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Request parameters**
-
-**Response parameters**
 
 | code | Integer | 200 | The response code. |
 |---|---|---|---|
@@ -16621,10 +16773,7 @@ This operation uses common request headers. No special request headers are requi
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### ListAppsByGwInstanceId
+#### 4.8.3 ListAppsByGwInstanceId
 
 Queries a list of applications by gateway instance ID.
 
@@ -16632,7 +16781,8 @@ Queries a list of applications by gateway instance ID.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 |---|---|---|---|---|---|
@@ -16652,8 +16802,6 @@ This operation uses only common request headers. For more information, see Commo
 | --createTime | String | 2024-10-14 08:00:00 | The creation time. |
 | --updateTime | String | 2024-10-14 15:00:00 | The update time. |
 | -appId | String | 12345678 | The application ID. |
-
-**Response parameters**
 
 | -appName | String | Sample Application | The application name. |
 |---|---|---|---|
@@ -16696,6 +16844,14 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
+#### 4.8.4 GetApp
+
+Queries a consumer.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the Common parameters document.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | appId | Strin g | Body | No | 12345678 | The ID of the application. |
@@ -16707,18 +16863,6 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Struct | {} | The data. |
 | -groups | String | [] | The list of groups. |
-
-#### GetApp
-
-Queries a consumer.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the Common parameters document.
-
-**Request parameters**
-
-**Response parameters**
 
 | -appTags | Array | [] | The list of application tags. |
 |---|---|---|---|
@@ -16788,15 +16932,13 @@ This operation uses only common request headers. For more information, see the C
 | --redirectUris | String | https://example.co m/callback | The redirection URI. |
 | --pkce | Boolean | true | Indicates whether Proof Key for Code Exchange (PKCE) is enabled. |
 
-#### CreateApp
+#### 4.8.5 CreateApp
 
 Creates a consumer.
 
 **Request headers**
 
 This operation uses common request headers and does not require special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16832,13 +16974,13 @@ This operation uses common request headers and does not require special request 
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
-
-#### ModifyApp
+#### 4.8.6 ModifyApp
 
 Modifies a consumer.
 
 **Request header**
+
+This operation uses common request headers. For more information, see the topic on common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16855,10 +16997,6 @@ Modifies a consumer.
 | authType | Integ er | Body | No | jwt | The authentication type. |
 | useWhiteLi st | Bool ean | Body | No | true | Specifies whether to use a whitelist. |
 | ipWhiteList | Strin g | Body | No | [] | The IP address whitelist. |
-
-This operation uses common request headers. For more information, see the topic on common request parameters.
-
-**Request parameters**
 
 | appName | Strin g | Body | No | ExampleApp | The application name. |
 |---|---|---|---|---|---|
@@ -16889,14 +17027,7 @@ This operation uses common request headers. For more information, see the topic 
 | msg | String | The operation was successful. | The returned message. |
 | data | String | {} | The data |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| appId | Strin g | Body | No | 12345678 | The application ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-**Response parameters**
-
-#### DeleteApp
+#### 4.8.7 DeleteApp
 
 Deletes a consumer.
 
@@ -16904,13 +17035,24 @@ Deletes a consumer.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| appId | Strin g | Body | No | 12345678 | The application ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 4.8.8 ModifyAppOpenStatus
+
+Enables or disables a consumer application.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16924,22 +17066,16 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
-**Response parameters**
+| PI Gateway |   |   | Developer Guide·AI Gatewa |
+|---|---|---|---|
 
-#### ModifyAppOpenStatus
+#### 4.8.9 ModifyAppWhiteListStatus
 
-Enables or disables a consumer application.
+Modifies the status of a consumer whitelist.
 
-**Request header**
+**Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·AI Gatewa |
-|---|---|---|---|
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16953,27 +17089,13 @@ This operation uses common request headers. No special request headers are requi
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### ModifyAppWhiteListStatus
-
-Modifies the status of a consumer whitelist.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### GetAppAuth
+#### 4.8.10 GetAppAuth
 
 Queries the authorization for a consumer.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -16994,11 +17116,13 @@ This operation uses common request headers. No special request headers are requi
 | - serviceProtoco l | String | HTTP | The service protocol. |
 | -authStatus | Integer | 1 | The authentication status. |
 
-**Response parameters**
+#### 4.8.11 CreateAppAuth
 
 Creates a consumer authorization.
 
-#### CreateAppAuth
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17010,21 +17134,7 @@ Creates a consumer authorization.
 | Msg | String | Operation successful | The response message. |
 | Data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| appId | Strin g | Body | No | 12345678 | The ID of the application. |
-| routeId | Repe atLis t | Body | No | route-123456 | The ID of the route. |
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### BatchCreateAppAuthByRoute
+#### 4.8.12 BatchCreateAppAuthByRoute
 
 Grants batch authorization to consumers.
 
@@ -17032,7 +17142,11 @@ Grants batch authorization to consumers.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| appId | Strin g | Body | No | 12345678 | The ID of the application. |
+| routeId | Repe atLis t | Body | No | route-123456 | The ID of the route. |
 
 | authStatus | Integ er | Body | No | 1 | The authentication status. |
 |---|---|---|---|---|---|
@@ -17043,6 +17157,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
 
+#### 4.8.13 ModifyAppAuthStatus
+
+Modifies the authorization status of a consumer.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -17052,20 +17174,6 @@ This operation uses only common request headers. For more information, see Commo
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
-
-**Response parameters**
-
-#### ModifyAppAuthStatus
-
-Modifies the authorization status of a consumer.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
@@ -17079,12 +17187,7 @@ This operation uses only common request headers. For more information, see Commo
 | -authStatus | Integer | 1 | The authorization status. |
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The gateway instance ID. |
 
-| Parameter name | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| authId | Strin g | Body | No | auth 123456 _ | The authorization ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-
-#### DeleteAppAuth
+#### 4.8.14 DeleteAppAuth
 
 Deletes a consumer authorization.
 
@@ -17092,13 +17195,24 @@ Deletes a consumer authorization.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter name | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| authId | Strin g | Body | No | auth 123456 _ | The authorization ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
+
+#### 4.8.15 RefreshToken
+
+Refreshes a token.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17109,18 +17223,6 @@ This operation uses common request headers. No special request headers are requi
 | expireTim e | Integ er | Body | No | 2025-10-14 23:59:59 | The expiration time. |
 | appSecret | Strin g | Body | No | as abcdefghijklmnop _ | The application ciphertext. |
 | requestHe ader | Strin g | Body | No | Content-Type | The request header. |
-
-**Response parameters**
-
-#### RefreshToken
-
-Refreshes a token.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | token | Strin g | Body | No | eyJhbGciOiJIUzI1NiIsInR5c CI6IkpXVCJ9... | The token. |
 |---|---|---|---|---|---|
@@ -17148,6 +17250,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | Map | {} | The data. |
 
+#### 4.8.16 ResetSecretKey
+
+Resets a secret key.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | appId | Strin g | Body | No | 12345678 | The ID of the application. |
@@ -17157,23 +17267,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-**Response parameters**
-
-#### ResetSecretKey
-
-Resets a secret key.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message |
 |---|---|---|---|
 | data | Boolean | {} | The data |
+
+#### 4.8.17 HandlerConsumerAuth
+
+Queries the authentication information for a consumer.
+
+**Request header**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17188,19 +17292,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-#### HandlerConsumerAuth
+#### 4.8.18 CreateAppAuthByRoute
 
-Queries the authentication information for a consumer.
+Create a consumer authorization.
 
-**Request header**
+**Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### CreateAppAuthByRoute
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17215,27 +17313,15 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation is successful. | The message. |
 | data | String | {} | The data. |
 
-Create a consumer authorization.
+### 4.9 Plugin Management
 
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Plugin Management
-
-#### ListPlugins
+#### 4.9.1 ListPlugins
 
 Queries a list of plugins.
 
 **Request header**
 
 This operation has no special request headers. For more information about common request headers, see the common request parameters document.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17257,8 +17343,6 @@ This operation has no special request headers. For more information about common
 | --gwInstanceId | String | i- c0a81bb16a1524a 17 | The ID of the gateway instance. |
 | --pluginName | String | rate-limiter | The plugin name. |
 
-**Response parameters**
-
 | --description | String | This is an example service. | The description. |
 |---|---|---|---|
 | --downloadURL | String | https://example.co m/download/file.zip | The download URL. |
@@ -17268,14 +17352,7 @@ This operation has no special request headers. For more information about common
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| current | Integ er | Body | No | 1 | The current page number. |
-| size | Integ er | Body | No | 100 | The size. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| searchNa me | Strin g | Body | No | Search keyword | The search keyword. |
-
-#### ListOpenPlugins
+#### 4.9.2 ListOpenPlugins
 
 Lists the open plugins.
 
@@ -17283,9 +17360,12 @@ Lists the open plugins.
 
 This operation uses only the common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| current | Integ er | Body | No | 1 | The current page number. |
+| size | Integ er | Body | No | 100 | The size. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| searchNa me | Strin g | Body | No | Search keyword | The search keyword. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -17303,15 +17383,13 @@ This operation uses only the common request headers. For more information, see C
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ListGlobalPlugins
+#### 4.9.3 ListGlobalPlugins
 
 Retrieves a list of global plugins.
 
 **Request header**
 
 This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17333,8 +17411,6 @@ This operation uses common request headers. For more information, see Common req
 | --config | String | [] | The list of configurations. |
 | --status | Boolean | 1 | The status. |
 
-**Response parameters**
-
 | --createTime | String | 2024-10-14 08:00:00 | The time when the plugin was created. |
 |---|---|---|---|
 | --updateTime | String | 2024-10-14 15:00:00 | The time when the plugin was last updated. |
@@ -17343,15 +17419,7 @@ This operation uses common request headers. For more information, see Common req
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
 
-| Parameter Name | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| current | Integ er | Body | No | 1 | The current page number. |
-| size | Integ er | Body | No | 100 | Size |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| routeId | Strin g | Body | No | route-123456 | The routing ID. |
-| searchNa me | Strin g | Body | No | Search keyword | Search by name |
-
-#### ListRoutePlugins
+#### 4.9.4 ListRoutePlugins
 
 Queries a list of routing plugins.
 
@@ -17359,9 +17427,13 @@ Queries a list of routing plugins.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response parameters**
+| Parameter Name | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| current | Integ er | Body | No | 1 | The current page number. |
+| size | Integ er | Body | No | 100 | Size |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| routeId | Strin g | Body | No | route-123456 | The routing ID. |
+| searchNa me | Strin g | Body | No | Search keyword | Search by name |
 
 | Parameter Name | Type | Example | Description |
 |---|---|---|---|
@@ -17385,6 +17457,14 @@ This operation uses common request headers. For more information, see Common req
 | -current | Integer | 1 | The current page number. |
 |---|---|---|---|
 
+#### 4.9.5 GetPlugin
+
+Retrieves a plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -17400,18 +17480,6 @@ This operation uses common request headers. For more information, see Common req
 | --required | Boolean | true | Indicates whether the parameter is required. |
 | -pluginId | String | plugin-123456 | The plugin ID. |
 
-#### GetPlugin
-
-Retrieves a plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -gwInstanceId | String | i- c0a81bb16a1524a 17 | The gateway instance ID. |
 |---|---|---|---|
 | -pluginName | String | rate-limiter | The plugin name. |
@@ -17420,15 +17488,7 @@ This operation uses only common request headers. For more information, see Commo
 | -type | Integer | 1 | The type. |
 | -used | Boolean | false | Indicates whether the plugin is used. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| pluginNam e | Strin g | Body | No | rate-limiter | The plugin name. |
-| description | Strin g | Body | No | This is an example service. | The description. |
-| downloadU RL | Strin g | Body | No | https://example.com/dow nload/file.zip | The download URL. |
-| config | Repe atLis t | Body | No | [] | The configuration list. |
-
-#### CreatePlugin
+#### 4.9.6 CreatePlugin
 
 Creates a plugin.
 
@@ -17436,7 +17496,13 @@ Creates a plugin.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| pluginNam e | Strin g | Body | No | rate-limiter | The plugin name. |
+| description | Strin g | Body | No | This is an example service. | The description. |
+| downloadU RL | Strin g | Body | No | https://example.com/dow nload/file.zip | The download URL. |
+| config | Repe atLis t | Body | No | [] | The configuration list. |
 
 | -name | Strin g | Body | No | my-resource | The name. |
 |---|---|---|---|---|---|
@@ -17448,6 +17514,14 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
+#### 4.9.7 CreateGlobalPlugin
+
+Creates a global plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see the common request parameters document.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -17456,23 +17530,19 @@ This operation uses only common request headers. For more information, see Commo
 | status | Bool ean | Body | No | 1 | The status. |
 | config | Strin g | Body | No | [] | The list of configurations. |
 
-**Response parameters**
-
-#### CreateGlobalPlugin
-
-Creates a global plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see the common request parameters document.
-
-**Request parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 4.9.8 CreateRoutePlugin
+
+Creates a routing plugin.
+
+**Request header**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17483,25 +17553,19 @@ This operation uses only common request headers. For more information, see the c
 | status | Bool ean | Body | No | 1 | The status. |
 | config | Strin g | Body | No | [] | The list of configurations. |
 
-**Response parameters**
-
-#### CreateRoutePlugin
-
-Creates a routing plugin.
-
-**Request header**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 4.9.9 ModifyPlugin
+
+Modifies a plugin.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17513,21 +17577,19 @@ This operation uses common request headers. No special request headers are requi
 | -name | Strin g | Body | No | my-resource | The name. |
 | -required | Bool ean | Body | No | true | Specifies whether the configuration is required. |
 
-#### ModifyPlugin
-
-Modifies a plugin.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
+
+#### 4.9.10 ModifyGlobalPlugin
+
+Modifies a global plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17540,24 +17602,18 @@ This operation uses common request headers. No special request headers are requi
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
-#### ModifyGlobalPlugin
-
-Modifies a global plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | code | Integer | 200 | The response code. |
 |---|---|---|---|
 | msg | String | The operation was successful. | The response message. |
 | data | String | {} | The data. |
+
+#### 4.9.11 ModifyRoutePlugin
+
+Modifies a routing plugin.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17572,21 +17628,17 @@ This operation uses only common request headers. For more information, see Commo
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-#### ModifyRoutePlugin
-
-Modifies a routing plugin.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | The operation was successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 4.9.12 DeletePlugin
+
+Deletes a plugin.
+
+**Request headers**
+
+This operation requires only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17599,27 +17651,13 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
 
-#### DeletePlugin
-
-Deletes a plugin.
-
-**Request headers**
-
-This operation requires only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### DeleteGlobalPlugin
+#### 4.9.13 DeleteGlobalPlugin
 
 Deletes a global plugin.
 
 **Request header**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17632,15 +17670,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| routeId | Strin g | Body | No | route-123456 | The ID of the route. |
-| routePlugi nId | Strin g | Body | No | plugin-route-001 | The ID of the route plugin. |
-
-**Response parameters**
-
-#### DeleteRoutePlugin
+#### 4.9.14 DeleteRoutePlugin
 
 Deletes a route plugin.
 
@@ -17648,15 +17678,25 @@ Deletes a route plugin.
 
 This operation uses only common request headers. For more information, see the Common request parameters document.
 
-**Request parameters**
-
-**Response parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| routeId | Strin g | Body | No | route-123456 | The ID of the route. |
+| routePlugi nId | Strin g | Body | No | plugin-route-001 | The ID of the route plugin. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data |
+
+#### 4.9.15 ModifyGlobalPluginStatus
+
+Modifies the status of a global plugin.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17670,21 +17710,17 @@ This operation uses only common request headers. For more information, see the C
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 
-#### ModifyGlobalPluginStatus
-
-Modifies the status of a global plugin.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | msg | String | Operation successful. | The message. |
 |---|---|---|---|
 | data | String | {} | The data. |
+
+#### 4.9.16 ModifyRoutePluginStatus
+
+Modifies the status of a route plugin.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17700,20 +17736,16 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### ModifyRoutePluginStatus
-
-Modifies the status of a route plugin.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are used. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | data | String | {} | The data. |
 |---|---|---|---|
+
+#### 4.9.17 ListPluginUsage
+
+Queries the usage of plugins.
+
+**Request header**
+
+This operation uses common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17730,24 +17762,22 @@ This operation uses common request headers. No special request headers are used.
 | -records | Array | [] | The list of records. |
 | --routeId | String | route-123456 | The route ID. |
 
-#### ListPluginUsage
-
-Queries the usage of plugins.
-
-**Request header**
-
-This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | --routeName | String | user-service-route | The route name. |
 |---|---|---|---|
 | --status | Boolean | 1 | The status. |
 | -size | Integer | 100 | The size. |
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+### 4.10 Policy Management
+
+#### 4.10.1 ModifyStrategyConfig
+
+Modifies a policy configuration.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter Name | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17757,18 +17787,6 @@ This operation uses common request headers. For more information, see Common req
 | config | Json | Body | No | [] | The list of configurations. |
 | rawConfig | Strin g | Body | No | {"timeout":30} | Original configuration. |
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-
-### Policy Management
-
-#### ModifyStrategyConfig
-
-Modifies a policy configuration.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
 
 | routeId | Strin g | Body | No | route-123456 | The routing ID. |
 |---|---|---|---|---|---|
@@ -17787,10 +17805,16 @@ This operation uses common request headers. No special request headers are requi
 | code | Integer | 200 | The response code. |
 | msg | String | Operation successful. | The message. |
 
-**Response parameters**
-
 | data | String | {} | The data. |
 |---|---|---|---|
+
+#### 4.10.2 CreateStrategyConfig
+
+Creates a strategy configuration.
+
+**Request header**
+
+This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
 
 | Parameter Name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17804,16 +17828,6 @@ This operation uses common request headers. No special request headers are requi
 | appId | Strin g | Body | No | 12345678 | The application ID. |
 | mcpServer Id | Strin g | Body | No | mcp-server-001 | The ID of the MCP server. |
 | domainId | Strin g | Body | No | domain-123456 | The domain ID. |
-
-#### CreateStrategyConfig
-
-Creates a strategy configuration.
-
-**Request header**
-
-This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | routeIds | Repe atLis t | Body | No | [] | A list of route IDs. |
 |---|---|---|---|---|---|
@@ -17829,17 +17843,13 @@ This operation uses common request headers and requires no special request heade
 | msg | String | Operation successful | The message |
 | data | String | {} | The data. |
 
-**Response parameters**
-
-#### ListStrategies
+#### 4.10.3 ListStrategies
 
 Queries a list of policies.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -17860,8 +17870,6 @@ This operation uses only common request headers. For more information, see Commo
 | --strategyTitle | String | Advanced Throttling | The policy title. |
 | --description | String | This is an example service. | The description. |
 
-**Response parameters**
-
 | -- supportCascad e | Integer | 1 | Indicates whether cascading is supported. |
 |---|---|---|---|
 | -- rawConfigExa mple | String | {"enabled":true} | An example of the raw configuration. |
@@ -17874,11 +17882,7 @@ This operation uses only common request headers. For more information, see Commo
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size. |
-
-#### ListStrategyConfigs
+#### 4.10.4 ListStrategyConfigs
 
 Queries a list of policy configurations.
 
@@ -17886,7 +17890,9 @@ Queries a list of policy configurations.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size. |
 
 | current | Integ er | Body | No | 1 | The current page number. |
 |---|---|---|---|---|---|
@@ -17906,8 +17912,6 @@ This operation uses common request headers. For more information, see Common req
 | -- strategyConfig Id | String | strategy-config- 001 | The ID of the policy configuration. |
 | -- strategyConfig Name | String | Default Policy | The name of the policy configuration. |
 | -- strategyName | String | throttling policy | The name of the policy. |
-
-**Response parameters**
 
 | --status | Boolean | 1 | The status. |
 |---|---|---|---|
@@ -17936,6 +17940,14 @@ This operation uses common request headers. For more information, see Common req
 | -current | Integer | 1 | The current page number. |
 | -size | Integer | 100 | The size. |
 
+#### 4.10.5 GetStrategy
+
+Queries a policy.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
@@ -17948,18 +17960,6 @@ This operation uses common request headers. For more information, see Common req
 | data | Struct | {} | The data. |
 | -scopes | String | [] | The list of authorization scopes. |
 
-#### GetStrategy
-
-Queries a policy.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -uiStyles | String | [] | The list of UI styles. |
 |---|---|---|---|
 | -strategyName | String | throttling policy | The name of the policy. |
@@ -17970,12 +17970,7 @@ This operation uses only common request headers. For more information, see Commo
 | -order | Integer | 100 | The sort number. |
 | -document | String | API operation document | The document. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| strategyCo nfigId | Strin g | Body | No | strategy-config-001 | The ID of the policy configuration. |
-
-#### GetStrategyConfig
+#### 4.10.6 GetStrategyConfig
 
 Queries a policy configuration.
 
@@ -17983,9 +17978,10 @@ Queries a policy configuration.
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| strategyCo nfigId | Strin g | Body | No | strategy-config-001 | The ID of the policy configuration. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -18031,6 +18027,14 @@ This operation uses common request headers. No special request headers are requi
 | ---name | String | my-resource | The name. |
 | ---id | String | 123456 | The ID. |
 
+#### 4.10.7 GetRoutePolicies
+
+Queries routing policies.
+
+**Request headers**
+
+This operation uses common request headers. For more information, see Common parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
@@ -18043,18 +18047,6 @@ This operation uses common request headers. No special request headers are requi
 | data | Struct | {} | The data. |
 | -rewrite | Struct | {} | The rewrite configuration. |
 | --enabled | Boolean | true | Indicates whether the feature is enabled. |
-
-#### GetRoutePolicies
-
-Queries routing policies.
-
-**Request headers**
-
-This operation uses common request headers. For more information, see Common parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | --path | String | /api/v1/resource | The path. |
 |---|---|---|---|
@@ -18092,10 +18084,7 @@ This operation uses common request headers. For more information, see Common par
 | --enabled | Boolean | true | Indicates whether the feature is enabled. |
 | -- fallbackStrate gy | String | default | The fallback strategy. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-#### ModifyRoutePolicy
+#### 4.10.8 ModifyRoutePolicy
 
 Modifies a routing policy.
 
@@ -18103,7 +18092,8 @@ Modifies a routing policy.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | configType | Strin g | Body | No | yaml | The configuration type. |
 |---|---|---|---|---|---|
@@ -18117,14 +18107,7 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
-| strategyCo nfigId | Strin g | Body | No | strategy-config-001 | The ID of the policy configuration. |
-
-**Response parameters**
-
-#### DeleteStrategyConfig
+#### 4.10.9 DeleteStrategyConfig
 
 Deletes a policy configuration.
 
@@ -18132,15 +18115,24 @@ Deletes a policy configuration.
 
 This operation uses common request headers and requires no special request headers. For more information, see Common request parameters.
 
-**Request parameters**
-
-**Response parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The ID of the gateway instance. |
+| strategyCo nfigId | Strin g | Body | No | strategy-config-001 | The ID of the policy configuration. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message |
 | data | String | {} | The data. |
+
+#### 4.10.10 ModifyStrategyConfigStatus
+
+Modifies the status of a policy configuration.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18154,20 +18146,18 @@ This operation uses common request headers and requires no special request heade
 | msg | String | The operation was successful. | The response message. |
 | data | String | {} | The data |
 
-#### ModifyStrategyConfigStatus
+| Developer Guide·A | I Gateway |   | API Gatewa |
+|---|---|---|---|
 
-Modifies the status of a policy configuration.
+### 4.11 Domain name management
+
+#### 4.11.1 ListDomains
+
+Queries a list of domain names.
 
 **Request headers**
 
 This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | I Gateway |  | API Gatewa |
-|---|---|---|---|
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18182,21 +18172,7 @@ This operation uses common request headers. No special request headers are requi
 | Msg | String | success | The status description. If `Code` is `200`, `Msg` is usually empty. |
 | Data | Struct | {} | The response data. |
 
-### Domain name management
-
-#### ListDomains
-
-Queries a list of domain names.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| PI Gateway |  |  | Developer Guide·AI Gatewa |
+| PI Gateway |   |   | Developer Guide·AI Gatewa |
 |---|---|---|---|
 
 | -Records | Array | [] | The record that returns the data result. |
@@ -18217,22 +18193,17 @@ This operation uses common request headers. No special request headers are requi
 
 **Examples**
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| serviceTyp e | Integ er | Body | No | REST | The service type. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Sample response in `JSON` format
+Sample response in `JSON` format `{`
 
 ```json
-{
  "Msg":"success",
  "Data":{
   "Records":[
-   {
+```
+
+`{`
+
+```json
     "DomainId":"00efd71a-770e-4255-b54e-6fe5659baffe",
     "CertificateId":"12345678-1234-1234-1234-12345678****",
     "CreateTime":"2024-03-15T01:46Z",
@@ -18243,21 +18214,25 @@ Sample response in `JSON` format
     "ClientAuth":0,
     "CaCertificateName":"test",
     "CaCertificateId":"00efd71a-770e-4255-b54e-6fe5659baffe"
-   }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "Size":20,
   "Total":1,
   "Current":1
- },
- "Code":200
-}
 ```
 
-#### ListAllDomains
+`},`
+
+```json
+ "Code":200
+```
+
+`}`
+
+#### 4.11.2 ListAllDomains
 
 Queries a list of all domain names.
 
@@ -18265,9 +18240,13 @@ Queries a list of all domain names.
 
 This operation requires only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| serviceTyp e | Integ er | Body | No | REST | The service type. |
 
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | data | Array | {} | The data |
 |---|---|---|---|
@@ -18284,15 +18263,13 @@ This operation requires only common request headers. For more information, see C
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
-#### GetDomain
+#### 4.11.3 GetDomain
 
 Queries the details of a domain name.
 
 **Request headers**
 
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18314,8 +18291,6 @@ This operation uses only common request headers. For more information, see Commo
 | -domain | String | api.example.com | The domain name. |
 | -protocol | String | HTTP | The protocol. |
 
-**Response parameters**
-
 | -createTime | String | 2024-10-14 08:00:00 | The creation time. |
 |---|---|---|---|
 | -updateTime | String | 2024-10-14 15:00:00 | The update time. |
@@ -18325,13 +18300,7 @@ This operation uses only common request headers. For more information, see Commo
 | -subjectDn | String | CN=example.com, O=Example,C=CN | The subject distinguished name (DN) of the certificate. |
 | -issuerDn | String | CN=Example CA, O=Example Inc, C=CN | The issuer DN. |
 
-| Parameter name | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| protocol | Strin g | Body | No | HTTP | The protocol. |
-
-#### CreateDomain
+#### 4.11.4 CreateDomain
 
 Creates a domain name.
 
@@ -18339,7 +18308,11 @@ Creates a domain name.
 
 This operation uses common request headers and does not use special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter name | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| protocol | Strin g | Body | No | HTTP | The protocol. |
 
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
 |---|---|---|---|---|---|
@@ -18355,12 +18328,7 @@ This operation uses common request headers and does not use special request head
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
-
-#### ModifyDomain
+#### 4.11.5 ModifyDomain
 
 Modifies a domain name.
 
@@ -18368,7 +18336,8 @@ Modifies a domain name.
 
 This operation uses common request headers and does not have any special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | domainId | Strin g | Body | No | domain-123456 | The domain name ID. |
 |---|---|---|---|---|---|
@@ -18387,13 +18356,13 @@ This operation uses common request headers and does not have any special request
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
-**Response parameters**
-
-#### DeleteDomain
+#### 4.11.6 DeleteDomain
 
 Deletes a domain name.
 
 **Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18406,20 +18375,9 @@ Deletes a domain name.
 | msg | String | Operation successful. | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| size | Integ er | Body | No | 100 | The size |
-| current | Integ er | Body | No | 1 | The current page number. |
+### 4.12 Certificate Management
 
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-### Certificate Management
-
-#### ListCertificates
+#### 4.12.1 ListCertificates
 
 Retrieves a list of certificates.
 
@@ -18427,7 +18385,10 @@ Retrieves a list of certificates.
 
 This operation uses only common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| size | Integ er | Body | No | 100 | The size |
+| current | Integ er | Body | No | 1 | The current page number. |
 
 | sni | Strin g | Body | No | example.com | The Server Name Indication (SNI) domain name. |
 |---|---|---|---|---|---|
@@ -18448,12 +18409,18 @@ This operation uses only common request headers. For more information, see Commo
 | --certificateId | String | cert-987654 | The certificate ID. |
 | --certType | Integer | 1 | The certificate type. |
 
-**Response parameters**
-
 | -size | Integer | 100 | The size |
 |---|---|---|---|
 | -total | Integer | 1000 | The total number of entries. |
 | -current | Integer | 1 | The current page number. |
+
+#### 4.12.2 ListAllServerCertificates
+
+Queries the list of all server certificates.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18466,23 +18433,13 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful | The message. |
 | data | Map | {} | The data |
 
-#### ListAllServerCertificates
-
-Queries the list of all server certificates.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-#### ListAllCACertificates
+#### 4.12.3 ListAllCACertificates
 
 Retrieves the list of all CA certificates.
 
 **Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18502,11 +18459,13 @@ Retrieves the list of all CA certificates.
 | code | Integer | 200 | The response code. |
 | msg | String | The operation was successful. | The message. |
 
+#### 4.12.4 GetCertificate
+
+Queries a certificate.
+
+**Request headers**
+
 This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18525,18 +18484,6 @@ This operation uses only common request headers. For more information, see Commo
 | - privateKeyLen | Integer | 2048 | The length of the private key. |
 | -fingerPrint | String | a1b2c3d4e5f6 | Fingerprint. |
 
-#### GetCertificate
-
-Queries a certificate.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | -signerCN | String | Example Corp | The common name (CN) of the signer. |
 |---|---|---|---|
 | -signerOU | String | IT Department | The organizational unit (OU) of the signer. |
@@ -18546,15 +18493,7 @@ This operation uses only common request headers. For more information, see Commo
 | -certType | Integer | 1 | The certificate type. |
 | -SN | String | SN12345678 | The serial number. |
 
-| Parameter | Type | Loca tion | Required | Example | Description |
-|---|---|---|---|---|---|
-| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
-| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
-| certificate Name | Strin g | Body | No | MyCert | The certificate name. |
-
-#### CreateCertificate
+#### 4.12.5 CreateCertificate
 
 Creates a certificate.
 
@@ -18562,7 +18501,13 @@ Creates a certificate.
 
 This operation uses common request headers and no special request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Loca tion | Required | Example | Description |
+|---|---|---|---|---|---|
+| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
+| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
+| certificate Name | Strin g | Body | No | MyCert | The certificate name. |
 
 | certType | Integ er | Body | No | 1 | The certificate type. |
 |---|---|---|---|---|---|
@@ -18574,16 +18519,7 @@ This operation uses common request headers and no special request headers. For m
 | msg | String | Operation successful | The message. |
 | data | String | {} | The data. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
-| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
-| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
-| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
-
-**Response parameters**
-
-#### ModifyCertificate
+#### 4.12.6 ModifyCertificate
 
 Modifies a certificate.
 
@@ -18591,7 +18527,12 @@ Modifies a certificate.
 
 This operation uses common request headers. For more information, see Common request parameters.
 
-**Request parameters**
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
+| gwInstanc eId | Strin g | Body | No | i-c0a81bb16a1524a17 | The gateway instance ID. |
+| certificates | Strin g | Body | No | cert1,cert2 | The list of certificates. |
+| privateKey | Strin g | Body | No | -----BEGIN PRIVATE KEY---- - | The private key. |
 
 | certificate Name | Strin g | Body | No | MyCert | The certificate name. |
 |---|---|---|---|---|---|
@@ -18604,6 +18545,14 @@ This operation uses common request headers. For more information, see Common req
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data. |
 
+#### 4.12.7 DeleteCertificate
+
+Deletes a certificate.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
+
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
 | certificateI d | Strin g | Body | No | cert-987654 | The certificate ID. |
@@ -18612,24 +18561,20 @@ This operation uses common request headers. For more information, see Common req
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
-#### DeleteCertificate
-
-Deletes a certificate.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | code | Integer | 200 | The response code. |
 |---|---|---|---|
 | msg | String | The operation was successful. | The message. |
 | data | String | {} | The data |
+
+### 4.13 Other
+
+#### 4.13.1 GetTotalityInfo
+
+This operation queries summary information.
+
+**Request headers**
+
+This operation uses only common request headers. For more information, see Common request parameters.
 
 | Parameter name | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18643,20 +18588,6 @@ This operation uses only common request headers. For more information, see Commo
 | -routeTotal | Integer | 150 | The number of routes. |
 | -serverCount | Integer | 5 | The number of servers. |
 
-### Other
-
-#### GetTotalityInfo
-
-This operation queries summary information.
-
-**Request headers**
-
-This operation uses only common request headers. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
 | - interfaceCount | Integer | 50 | The number of interfaces. |
 |---|---|---|---|
 | - todayRequest Count | Integer | 15000 | The number of requests today. |
@@ -18664,6 +18595,14 @@ This operation uses only common request headers. For more information, see Commo
 | -backAppTotal | Integer | 10 | The total number of backend applications. |
 | - mcpServerCou nt | Integer | 3 | The number of MCP servers. |
 | -strategyCount | Integer | 5 | The number of policies. |
+
+#### 4.13.2 GetSettings
+
+Queries system settings.
+
+**Request headers**
+
+This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18675,19 +18614,7 @@ This operation uses only common request headers. For more information, see Commo
 | msg | String | Operation successful. | The message |
 | data | Struct | {} | The data |
 
-#### GetSettings
-
-Queries system settings.
-
-**Request headers**
-
-This operation uses common request headers. No special request headers are required. For more information, see Common request parameters.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | I Gateway |  | API Gatewa |
+| Developer Guide·A | I Gateway |   | API Gatewa |
 |---|---|---|---|
 
 | - supportDeploy Modes | String | [] | A list of supported deployment modes. |
@@ -18705,15 +18632,13 @@ This operation uses common request headers. No special request headers are requi
 | -licenseEnable | Boolean | true | Indicates whether the license is enabled. |
 | - customPluginE nable | Boolean | true | Indicates whether custom plugins are enabled. |
 
-#### GetSlsStatistics
+#### 4.13.3 GetSlsStatistics
 
 Queries statistics information from Simple Log Service (SLS).
 
 **Request headers**
 
 This operation uses common request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | Parameter | Type | Loca tion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -18733,8 +18658,6 @@ This operation uses common request headers. For more information, see Common req
 | --OutputToken | Long | 2048 | The number of output tokens. |
 | -- TotalRequestC ount | Long | 500000 | The total number of requests. |
 | -- FailedRequest Count | Long | 150 | The number of failed requests. |
-
-**Response parameters**
 
 | -Total | Long | 1000 | The total number of entries. |
 |---|---|---|---|

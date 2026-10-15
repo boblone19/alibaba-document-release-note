@@ -3,16 +3,491 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 1118
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service User Guide 20260828.pdf"
+source_pdf: "4f849141928a0a61_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service User Guide 20260828
 
+## Table of Contents
+
+- 1 What is Enterprise Distributed Application Service (EDAS)?
+- 2 What is Alibaba Cloud Application Server
+- 3 Quick start
+  - 3.1 Log on to the Apsara Uni-manager Operations Console
+  - 3.2 Get started with EDAS
+  - 3.3 Log on to the EDAS console
+  - 3.4 Log on to the ACK console
+  - 3.5 Log on to the Container Registry (ACR) console
+  - 3.6 Select an environment to deploy applications
+  - 3.7 Use a JAR or WAR package to deploy a Java microservices application in an ACK cluster
+  - 3.8 Use an image to deploy a Java microservices application in an ACK cluster
+  - 3.9 Deploy Java microservice applications in an ECS environment
+  - 3.10 Deploy multi-language microservices to K8s with images
+  - 3.11 FAQ for getting started
+- 4 Application development
+  - 4.1 Overview of application development
+  - 4.2 Use Spring Cloud to develop applications
+    - 4.2.1 Spring Cloud overview
+    - 4.2.2 Implement service registration and discovery
+    - 4.2.3 Implement load balancing
+    - 4.2.4 Implement configuration management
+    - 4.2.5 Build a service gateway
+  - 4.3 Use Dubbo to develop applications
+    - 4.3.1 Dubbo overview
+    - 4.3.2 Use Spring Boot to develop Dubbo microservice applications
+  - 4.4 Use HSF to develop applications
+    - 4.4.1 HSF overview
+    - 4.4.2 Start the lightweight configuration registry
+    - 4.4.3 Use Ali-Tomcat to develop applications
+      - 4.4.3.1 Ali-Tomcat overview
+      - 4.4.3.2 Install Ali-Tomcat and Pandora
+      - 4.4.3.3 Configure startup for an IDE runtime environment
+        - 4.4.3.3.1 Configure the IntelliJ IDEA development environment
+      - 4.4.3.4 Develop HSF applications (EDAS-SDK)
+        - 4.4.3.4.1 Download a demo project
+        - 4.4.3.4.2 Define service interfaces
+        - 4.4.3.4.3 Implement services as a provider
+          - 4.4.3.4.3.1 Implement a service interface with code
+          - 4.4.3.4.3.2 Configure services
+          - 4.4.3.4.3.3 Checklist of provider configuration properties
+          - 4.4.3.4.3.4 Publish services in the development environment
+          - 4.4.3.4.3.5 Other JVM startup parameters
+        - 4.4.3.4.4 Subscribe to services as a consumer
+          - 4.4.3.4.4.1 Consumer configuration
+          - 4.4.3.4.4.2 Act as a consumer to use services
+          - 4.4.3.4.4.3 Consumer configuration properties
+        - 4.4.3.4.5 Use HSF features
+          - 4.4.3.4.5.1 Add the edas-sdk dependency to the pom.xml file
+          - 4.4.3.4.5.2 Implicit parameter passing
+          - 4.4.3.4.5.3 Asynchronous calls
+          - 4.4.3.4.5.4 Generic calls
+        - 4.4.3.4.6 Query services
+          - 4.4.3.4.6.1 Query HSF services in a development environment
+          - 4.4.3.4.6.2 Query HSF services in an online environment
+      - 4.4.3.5 Migrate Dubbo applications to HSF (not recommended)
+        - 4.4.3.5.1 Notes for developing Dubbo applications
+        - 4.4.3.5.2 Modify Dubbo application configurations
+        - 4.4.3.5.3 Convert JAR packages to WAR packages
+        - 4.4.3.5.4 Run programs
+        - 4.4.3.5.5 Compatibility between Dubbo and HSF
+    - 4.4.4 Use Pandora Boot to develop applications
+      - 4.4.4.1 Pandora Boot overview
+      - 4.4.4.2 Configure the local repository path and the lightweight configuration center of EDAS
+      - 4.4.4.3 Use Pandora Boot to develop HSF applications
+        - 4.4.4.3.1 Example of HSF application development
+          - 4.4.4.3.1.1 Create a service provider
+          - 4.4.4.3.1.2 Create a service consumer
+        - 4.4.4.3.2 Advanced HSF features
+        - 4.4.4.3.3 Local debugging
+        - 4.4.4.3.4 Publish to EDAS
+      - 4.4.4.4 Develop RESTful applications (not recommended)
+        - 4.4.4.4.1 Terms
+        - 4.4.4.4.2 Service registration and discovery
+          - 4.4.4.4.2.1 Preparations
+          - 4.4.4.4.2.2 Implement service registration and discovery
+          - 4.4.4.4.2.3 Local debugging
+          - 4.4.4.4.2.4 Publish applications to EDAS
+          - 4.4.4.4.2.5 Migrate from Eureka
+          - 4.4.4.4.2.6 FAQ
+        - 4.4.4.4.3 Distributed tracing
+          - 4.4.4.4.3.1 Connect to EagleEye
+          - 4.4.4.4.3.2 Distributed tracing example
+          - 4.4.4.4.3.3 FAQ
+      - 4.4.4.5 Migrate Dubbo applications to HSF (not recommended)
+    - 4.4.5 The HSF call process
+    - 4.4.6 Asynchronous calls
+    - 4.4.7 Generic calls
+    - 4.4.8 Call context
+    - 4.4.9 Select a serialization method
+    - 4.4.10 Configure a time-out period
+    - 4.4.11 Configure a provider thread pool
+    - 4.4.12 API manual
+    - 4.4.13 Set JVM -D startup parameters
+- 5 Application management for Kubernetes clusters
+  - 5.1 Resource management
+    - 5.1.1 Overview of Kubernetes resource management
+    - 5.1.2 Manage microservice namespaces
+      - 5.1.2.1 Manage microservices namespaces in the EDAS console
+      - 5.1.2.2 Manage a microservices namespace by calling API operations
+    - 5.1.3 Manage Kubernetes clusters
+      - 5.1.3.1 Use the console to manage Kubernetes clusters
+      - 5.1.3.2 Manage Kubernetes clusters using API operations
+  - 5.2 Create and deploy applications in Kubernetes clusters
+    - 5.2.1 Create and deploy applications overview (Kubernetes)
+    - 5.2.2 Java applications
+      - 5.2.2.1 Use JAR packages or WAR packages to deploy applications
+        - 5.2.2.1.1 Use a JAR or WAR package to deploy a Java microservices application in an ACK cluster
+      - 5.2.2.2 Use images to deploy applications
+        - 5.2.2.2.1 Create an application image
+        - 5.2.2.2.2 Upload a local image
+        - 5.2.2.2.3 Deploy a Java microservice to a K8s cluster
+    - 5.2.3 Multi-language applications
+      - 5.2.3.1 Use images to deploy multi-language microservices applications in Kubernetes clusters
+    - 5.2.4 Advanced settings
+      - 5.2.4.1 Configure microservices governance
+      - 5.2.4.2 Service Mesh
+      - 5.2.4.3 Configure scheduling rules
+      - 5.2.4.4 Configure a startup command
+      - 5.2.4.5 Configure distributed sessions
+      - 5.2.4.6 Configure environment variables
+      - 5.2.4.7 Configure persistent storage
+      - 5.2.4.8 Configure local storage
+      - 5.2.4.9 Configure application lifecycle hooks and probes
+      - 5.2.4.10 Configure Tomcat
+      - 5.2.4.11 Configure Java startup parameters
+      - 5.2.4.12 Configuration management
+      - 5.2.4.13 Configure labels
+      - 5.2.4.14 Configure annotations
+      - 5.2.4.15 Configure DNS
+      - 5.2.4.16 Configure throttling and degradation
+      - 5.2.4.17 Configure sidecar containers and init containers
+      - 5.2.4.18 Configure a container SecurityContext
+      - 5.2.4.19 Configure a pod SecurityContext
+      - 5.2.4.20 Service accounts
+      - 5.2.4.21 Configure monitoring and administration
+      - 5.2.4.22 Configure log collection
+      - 5.2.4.23 Configure Intra-zone provider first routing
+    - 5.2.5 Use a StatefulSet to create a stateful application
+  - 5.3 Upgrade and roll back applications (Kubernetes)
+    - 5.3.1 Overview of application upgrades and rollbacks (Kubernetes clusters)
+    - 5.3.2 Release-to-all-at-once mode (applicable to Kubernetes clusters)
+      - 5.3.2.1 Use the EDAS console to release an application to all instances in a Kubernetes cluster at a time
+      - 5.3.2.2 Single-batch deployment to a K8s cluster by API
+      - 5.3.2.3 Use Cloud Toolkit to deploy a Kubernetes application in a single batch
+    - 5.3.3 Phased release (applicable to Kubernetes clusters)
+      - 5.3.3.1 Phased release (applicable to Kubernetes clusters)
+      - 5.3.3.2 Phased release of a K8s application by API
+    - 5.3.4 Canary release (applicable to Kubernetes clusters)
+      - 5.3.4.1 Use the EDAS console to implement canary releases of applications in Kubernetes clusters
+      - 5.3.4.2 Canary release in a K8s cluster using an API
+    - 5.3.5 Roll back an application (applicable to Kubernetes clusters)
+      - 5.3.5.1 Roll back a Kubernetes application using the console
+      - 5.3.5.2 Roll back a K8s application by using an API
+      - 5.3.5.3 Stop and roll back an application update in a Kubernetes cluster by calling an API operation
+    - 5.4.1 CI/CD overview (for Kubernetes)
+    - 5.4.2 Jenkins
+      - 5.4.2.1 Create a continuous integration workflow using Jenkins
+      - 5.4.2.2 Use an EDAS plug-in in Jenkins to build a job for application deployment
+      - 5.4.2.3 Set parameters for deploying an application with edas-jenkins-plugin in Jenkins
+  - 5.5 Application O&M
+    - 5.5.1 Overview of application O&M
+    - 5.5.2 Manage the application lifecycle
+    - 5.5.3 View application changes
+    - 5.5.4 View application events
+    - 5.5.5 View instance deployment information
+    - 5.5.6 Access to an application (service exposure)
+      - 5.5.6.1 Application access overview
+      - 5.5.6.2 Add Server Load Balancer (SLB)
+      - 5.5.6.3 Reuse a Server Load Balancer (SLB) instance
+      - 5.5.6.4 Expose services of multi-cluster applications using SLB
+      - 5.5.6.5 Add a service
+      - 5.5.6.6 Create an application route (Ingress)
+    - 5.5.7 Application scaling
+      - 5.5.7.1 Manually scale applications
+      - 5.5.7.2 Auto Scaling (Kubernetes)
+    - 5.5.8 Throttling and degradation
+    - 5.5.9 Class library management
+    - 5.5.10 J2EE configuration
+      - 5.5.10.1 Startup Parameter Configuration
+      - 5.5.10.2 Web Container
+        - 5.5.10.2.1 Container configuration
+        - 5.5.10.2.2 Access Logs
+        - 5.5.10.2.3 HTTP Channel Management
+        - 5.5.10.2.4 Virtual Host Management
+        - 5.5.10.2.5 Configure Session Sharing
+      - 5.5.10.3 EJB
+        - 5.5.10.3.1 Stateless Session Bean Management
+        - 5.5.10.3.2 Stateful Session Bean Management
+        - 5.5.10.3.3 Singleton Session Bean Configuration Management
+        - 5.5.10.3.4 Message-driven bean configuration management
+      - 5.5.10.4 Resource management
+        - 5.5.10.4.1 JDBC configuration
+        - 5.5.10.4.2 JMS service
+          - 5.5.10.4.2.1 JMS Adapter Configuration
+          - 5.5.10.4.2.2 JMS connection factory
+          - 5.5.10.4.2.3 JMS destination
+        - 5.5.10.4.3 Job Manager
+        - 5.5.10.4.4 Microservice Interoperability Configuration
+        - 5.5.10.4.5 AI Configuration Management
+      - 5.5.10.5 Simple Log Service
+        - 5.5.10.5.1 System log configuration
+    - 5.5.11 Log management
+      - 5.5.11.1 View real-time logs
+      - 5.5.11.2 View log directories
+      - 5.5.11.3 View file logs
+      - 5.5.11.4 Dynamic log configuration
+    - 5.5.12 Application management
+      - 5.5.12.1 Export applications
+      - 5.5.12.2 Import an application
+      - 5.5.12.3 Clone an application
+      - 5.5.12.4 Export application reports
+    - 5.5.13 View the service list
+  - 5.6 Monitoring
+    - 5.6.1 Application overview
+    - 5.6.2 Application details
+    - 5.6.3 Interface calls
+    - 5.6.4 Advanced monitoring
+    - 5.6.5 Alerting
+      - 5.6.5.1 Manage contacts
+      - 5.6.5.2 Create and manage contact groups
+      - 5.6.5.3 Create an alert
+      - 5.6.5.4 Manage alerts
+      - 5.6.5.5 Set up DingTalk robot alerts
+- 6 Application management for ECS clusters
+  - 6.1 Overview of application hosting (ECS)
+  - 6.2 Resource management
+    - 6.2.1 Overview of ECS resource management
+    - 6.2.2 Microservice namespace management
+      - 6.2.2.1 Manage microservices namespaces in the console
+      - 6.2.2.2 Manage a microservices namespace by calling API operations
+    - 6.2.3 ECS cluster management
+      - 6.2.3.1 Create an ECS cluster in the console
+      - 6.2.3.2 Create an ECS cluster by calling an API operation
+      - 6.2.3.3 Scale out an ECS cluster using the console
+      - 6.2.3.4 Scale out an ECS cluster using an API
+      - 6.2.3.5 Manage ECS clusters
+      - 6.2.3.6 Manage instance groups for an application in an ECS cluster using the console
+      - 6.2.3.7 Manage application instance groups in an ECS cluster using APIs
+    - 6.2.4 ECS instance management
+      - 6.2.4.1 Install EDAS Agent on an ECS instance
+    - 6.2.5 Create a hybrid cloud ECS cluster
+    - 6.2.6 Sync VPC
+    - 6.2.7 Manage resource groups
+  - 6.3 Create and deploy applications
+    - 6.3.1 Overview of Application Creation and Deployment (ECS)
+    - 6.3.2 Create and deploy an application in an ECS cluster
+    - 6.3.3 Deploy applications in hybrid cloud clusters
+    - 6.3.4 Create an application in an ECS cluster using an API
+  - 6.4 Update and roll back applications
+    - 6.4.1 Overview of application upgrades and rollbacks (ECS)
+    - 6.4.2 At-a-time release (applicable to ECS clusters)
+      - 6.4.2.1 Upgrade an application in an ECS cluster using the console
+      - 6.4.2.2 Deploy an application to an ECS cluster in a single batch using an API
+      - 6.4.2.3 Use the toolkit-maven-plugin plug-in to update an application in an ECS cluster
+      - 6.4.2.4 Use the CLI to quickly deploy an application to an ECS cluster
+    - 6.4.3 Phased release in an ECS cluster
+      - 6.4.3.1 Release an application in phases in the EDAS console
+      - 6.4.3.2 Release an application in phases in an ECS cluster using an API
+      - 6.4.3.3 Use the toolkit-maven-plugin plug-in to perform a phased release of an application on an ECS cluster
+      - 6.4.3.4 Perform a phased release of an application using Cloud Toolkit
+    - 6.4.4 Canary release
+      - 6.4.4.1 Release an application in canary mode in an ECS cluster in the EDAS console
+      - 6.4.4.2 Release an application in an ECS cluster in canary mode using an API
+    - 6.4.5 Roll back applications
+      - 6.4.5.1 Roll back applications in ECS clusters using the console
+      - 6.4.5.2 Use an API to roll back an application in an ECS cluster to a historical version
+      - 6.4.5.3 Stop an application upgrade process in an ECS cluster using an API
+    - 6.5.1 Create a continuous integration workflow using Jenkins
+  - 6.6 Application monitoring
+    - 6.6.1 Application monitoring overview
+    - 6.6.2 Application overview
+    - 6.6.3 Application Details
+    - 6.6.4 Interface calls
+    - 6.6.5 Advanced monitoring
+    - 6.6.6 Alerting
+      - 6.6.6.1 Manage contacts
+      - 6.6.6.2 Create and manage a contact group
+      - 6.6.6.3 Create an alert
+      - 6.6.6.4 Manage alerts
+      - 6.6.6.5 Set up DingTalk robot alerts
+  - 6.7 Application O&M
+    - 6.7.1 Manage the lifecycle of applications in ECS clusters
+    - 6.7.2 Server loading balancing
+      - 6.7.2.1 Overview
+      - 6.7.2.2 Application-dedicated SLB instance
+      - 6.7.2.3 Distribute traffic by port when sharing an SLB instance
+      - 6.7.2.4 Use domain names or URLs to distribute traffic on a shared SLB instance
+      - 6.7.2.5 Use URLs to distribute traffic to application instance groups
+    - 6.7.3 Application scale-out and scale-in
+      - 6.7.3.1 Manually scale out and scale in an application
+      - 6.7.3.2 Perform auto scaling on applications in ECS clusters
+    - 6.7.4 Throttling and degradation
+    - 6.7.5 Upgrade or downgrade the runtime environment
+    - 6.7.6 Application settings
+      - 6.7.6.1 Configure JVM parameters
+      - 6.7.6.2 Configure Tomcat
+      - 6.7.6.3 Configure application lifecycle mount scripts
+      - 6.7.6.4 Bind an SLB instance to EDAS
+      - 6.7.6.5 Set JVM -D startup configuration parameters
+      - 6.7.6.6 Locality Priority routing
+    - 6.7.7 Change Records
+      - 6.7.7.1 View application changes
+      - 6.7.7.2 Change process error codes
+    - 6.7.8 Library management
+    - 6.7.9 J2EE Configuration
+      - 6.7.9.1 Startup parameter configuration
+      - 6.7.9.2 Web containers
+        - 6.7.9.2.1 Container Configuration
+        - 6.7.9.2.2 Access logs
+        - 6.7.9.2.3 HTTP Channel Management
+        - 6.7.9.2.4 Manage virtual hosts
+        - 6.7.9.2.5 Session Sharing Configuration
+      - 6.7.9.3 EJB
+        - 6.7.9.3.1 Stateless Session Bean Management
+        - 6.7.9.3.2 Stateful Session Bean Management
+        - 6.7.9.3.3 Singleton session bean configuration
+        - 6.7.9.3.4 Message-Driven Bean configuration management
+      - 6.7.9.4 Resource Management
+        - 6.7.9.4.1 JDBC Configuration
+        - 6.7.9.4.2 JMS Service
+          - 6.7.9.4.2.1 JMS Adapter Configuration
+          - 6.7.9.4.2.2 JMS Connection Factory
+          - 6.7.9.4.2.3 JMS destinations
+        - 6.7.9.4.3 Work Manager
+        - 6.7.9.4.4 Microservice Interoperability Configuration
+        - 6.7.9.4.5 AI configuration management
+      - 6.7.9.5 Simple Log Service
+        - 6.7.9.5.1 System log configuration
+    - 6.7.10 Logs
+      - 6.7.10.1 Log management
+      - 6.7.10.2 Log management
+      - 6.7.10.3 Dynamic log configuration
+    - 6.7.11 Security Center
+      - 6.7.11.1 Security groups
+      - 6.7.11.2 Custom access rules
+      - 6.7.11.3 Cloud service access rules
+    - 6.7.12 Application management
+      - 6.7.12.1 Export application reports
+- 7 Application management
+  - 7.1 Helm applications
+  - 7.2 Create an application route
+  - 7.3 Application template
+  - 7.4 Multi-cluster application
+  - 7.5 Source code/Software package list
+- 8 Microservice governance
+  - 8.1 Microservice governance overview
+  - 8.2 Spring Cloud service governance
+    - 8.2.1 Query Spring Cloud services
+    - 8.2.2 Query Spring Cloud service traces
+    - 8.2.3 Ensure the availability of Spring Cloud applications using outlier ejection
+    - 8.2.4 Implement access control on Spring Cloud applications using service authentication
+  - 8.3 Service Mesh
+    - 8.3.1 Introduction to Service Mesh
+      - 8.3.1.1 What is Service Mesh
+        - 8.3.1.1.1 Service architecture
+        - 8.3.1.1.2 Features
+      - 8.3.1.2 Benefits
+      - 8.3.1.3 Service architecture
+      - 8.3.1.4 Features
+        - 8.3.1.4.1 Mesh management
+        - 8.3.1.4.2 Service administration
+        - 8.3.1.4.3 External services
+        - 8.3.1.4.4 Ingress gateway
+        - 8.3.1.4.5 End-to-end routing
+        - 8.3.1.4.6 Service topology
+      - 8.3.1.5 Scenarios
+      - 8.3.1.6 Limits
+    - 8.3.2 Service query
+    - 8.3.3 Ingress Gateway
+    - 8.3.4 Service administration
+      - 8.3.4.1 Implement microservice traffic governance using Service Mesh
+      - 8.3.4.2 Add a Spring Cloud service to a service mesh
+      - 8.3.4.3 Add Dubbo Application to Service Mesh
+      - 8.3.4.4 Implement zero trust security using service mesh
+      - 8.3.4.5 View service monitoring data
+      - 8.3.4.6 Manage versions and configure Sidecar resources
+      - 8.3.4.7 Support K8s Service Registration to Nacos/Eureka
+      - 8.3.4.8 Support canary releases for Service Mesh applications
+    - 8.3.5 End-to-End Routing
+    - 8.3.6 External services
+    - 8.3.7 Service topology
+  - 8.4 Dubbo service governance
+    - 8.4.1 Query Dubbo Services
+    - 8.4.2 Query Dubbo service traces
+    - 8.4.3 Ensure the availability of Dubbo applications using outlier ejection
+    - 8.4.4 Implement Access Control for Dubbo Applications Using Service Authentication
+  - 8.5 HSF service governance
+    - 8.5.1 Query HSF services
+    - 8.5.2 Query HSF service traces
+    - 8.5.3 HSF service groups
+    - 8.5.4 End-to-end traffic adjustment
+      - 8.5.4.1 Introduction to end-to-end traffic shaping
+      - 8.5.4.2 How to upgrade a single application using end-to-end traffic adjustment
+      - 8.5.4.3 Use end-to-end traffic adjustment to troubleshoot application issues
+      - 8.5.4.4 Create an end-to-end traffic adjustmentenvironment
+      - 8.5.4.5 Monitor Phased Release Traffic
+      - 8.5.4.6 Limits on end-to-end throttling
+      - 8.5.4.7 End-to-end traffic adjustment policy
+      - 8.5.4.8 Traffic adjustment rule parameters
+  - 8.6 Multilingual service governance
+    - 8.6.1 Query Multi-language Application Services
+    - 8.6.2 Deploy multilingual applications using canary release
+    - 8.6.3 Monitor polyglot applications
+    - 8.6.4 Configure traffic governance policies for multilingual applications
+    - 8.6.5 Polyglot microservice administration FAQ
+  - 8.7 End-to-end traffic adjustment
+    - 8.7.1 Introduction to end-to-end traffic adjustment
+    - 8.7.2 Use end-to-end traffic shaping to route traffic to target applications
+- 9 Configuration management
+  - 9.1 Configuration Management
+    - 9.1.1 Configuration Management Overview
+    - 9.1.2 Configuration management terms
+    - 9.1.3 Create a configuration
+    - 9.1.4 Synchronize application configurations
+    - 9.1.5 Manage configurations
+    - 9.1.6 View, compare, and roll back historical configurations
+    - 9.1.7 Listener query
+  - 9.2 Manage configuration templates
+- 10 Resource management
+  - 10.1 Sync a VPC
+  - 10.2 Manage microservices namespaces in the console
+  - 10.3 Manage ECS resources
+    - 10.3.1 Import ECS instances
+    - 10.3.2 Create an ECS cluster
+  - 10.4 Manage Kubernetes resources
+    - 10.4.1 Create and import a Container Service for Kubernetes cluster
+    - 10.4.2 Kubernetes Configurations
+      - 10.4.2.1 Manage ConfigMaps
+      - 10.4.2.2 Manage secrets
+  - 10.5 Service Mesh management
+    - 10.5.1 Manage ASM instances
+    - 10.5.2 Connect multiple registry types to Service Mesh
+    - 10.5.3 Improve service mesh observability using Prometheus
+  - 10.6 Manage resource groups
+  - 10.7 Manage a dedicated registry and configuration center
+- 11 Component center
+  - 11.1 Batch operations
+- 12 System administration
+  - 12.1 Profile
+  - 12.2 Permission assistant
+  - 12.3 Account switch
+  - 12.4 License consumption details
+  - 12.5 Operation logs
+- 13 Permission management
+  - 13.1 Overview of Permission Management
+  - 13.2 Account systems
+  - 13.3 Log in to the Apsara Uni-manager Management Console
+  - 13.4 EDAS built-in permission management
+    - 13.4.1 RAM users
+    - 13.4.2 Manage EDAS built-in permissions
+  - 13.5 RAM Permission Management
+    - 13.5.1 Introduction to RAM users
+    - 13.5.2 Create users and user groups
+    - 13.5.3 Create a RAM role and grant authorization to users
+    - 13.5.4 Verify the RAM permissions of a new user
+    - 13.5.5 Access policy example library
+  - 13.6 View all permissions
+  - 13.7 Use Permission Assistant to grant permissions to applications by cluster
+- 14 FAQ
+  - 14.1 Known issues and solutions
+  - 14.2 Development FAQ
+    - 14.2.1 Ali-Tomcat issues
+    - 14.2.2 Lightweight configuration center FAQ
+    - 14.2.3 HSF FAQ
+    - 14.2.4 HSF error codes
+  - 14.3 Usage FAQ
+    - 14.3.1 Account management
+    - 14.3.2 Resource management
+    - 14.3.3 Application lifecycle class
+    - 14.3.4 Troubleshoot EDAS Agent issues
+    - 14.3.5 Troubleshoot change process issues
+    - 14.3.6 Troubleshoot issues in a change process
+
 prise Distributed Application Serv ice (EDAS)?
 
-## What is Enterprise
+## 1 What is Enterprise Distributed Application Service (EDAS)?
 
 **Distributed Application**
 
@@ -68,7 +543,7 @@ Cloud-native applications are applications that are developed to run on the clou
 
 ba Cloud Application Server
 
-## What is Alibaba Cloud
+## 2 What is Alibaba Cloud Application Server
 
 **Application Server**
 
@@ -120,9 +595,9 @@ For enterprises transforming to a microservices model, Alibaba Cloud Application
 
 For enterprises needing to upgrade to a cloud-native architecture, Alibaba Cloud Application Server provides complete containerization support, enabling enterprises to quickly develop and deploy cloud-native applications.
 
-## Quick start
+## 3 Quick start
 
-### Log on to the Apsara Uni-
+### 3.1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -148,11 +623,11 @@ You can click the current language in the upper-right corner to switch to anothe
 Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-### Get started with EDAS
+### 3.2 Get started with EDAS
 
 This Quick Start shows how to deploy Java microservice application demos (such as Spring Cloud, Dubbo, and HSF) and multi-language microservice application images to different Enterprise Distributed Application Service (EDAS) environments, such as Elastic Compute Service (ECS) and Kubernetes (K8s) clusters. You can complete each deployment scenario in 30 minutes. EDAS provides Nacos as the default service registry for applications. You can also create other types of service registries, such as Eureka or ZooKeeper. If the service registry and the application deployment environment can communicate over the network, you can deploy applications to EDAS without modifying any code. This enables service registration and discovery and lets you use the application hosting, microservice, and cloud-native application Platform as a Service (PaaS) capabilities provided by EDAS. For more information, see What is Enterprise Distributed Application Service (EDAS)?. Yes (Deploy or migrate directly without Application already running changing the code or configuration) Smoothly migrate a on Alibaba Cloud? microservice application to EDAS No No (Develop an application from Application already developed? Develop an scratch) application Yes Select a cluster type for application deployment ECS cluster K8s cluster Deploy a Java microservice application in a K8s cluster Deploy a multi-language microservice application in a K8s cluster Deploy a Java microservice application
 
-### Log on to the EDAS console
+### 3.3 Log on to the EDAS console
 
 This topic describes how to log on to the Enterprise Distributed Application Service (EDAS) console.
 
@@ -183,7 +658,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 **Enterprise Distributed Application Service** console.
 6. In the top menu bar, select an organization, a resource set, and a region.
 
-### Log on to the ACK console
+### 3.4 Log on to the ACK console
 
 This topic describes how to log on to the Container Service for Kubernetes (ACK) console.
 
@@ -214,7 +689,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 select an organization and region, and then click **Access With Authorized Role** or
 **Access As Administrator** to access the ACK console.
 
-### Log on to the Container
+### 3.5 Log on to the Container Registry (ACR) console
 
 **Registry (ACR) console**
 
@@ -244,7 +719,7 @@ If you have forgotten your password, click Forgot Password. On the page that app
 4. In the menu bar at the top of the page, choose **Products > Compute > Container**
 **Service > Container Registry**.
 
-### Select an environment to
+### 3.6 Select an environment to deploy applications
 
 **deploy applications**
 
@@ -357,7 +832,7 @@ In the Kubernetes environment, elastic scaling refers to the scaling of pods. Ty
 
 In the ECS environment, mounted scripts run specified commands when the deployment process reaches a specific stage. You can mount scripts to four lifecycle stages: preparing an instance, starting the application, stopping the application, and destroying the instance. The Kubernetes environment provides only the PostStart and PreStop lifecycle hooks. These hooks do not directly correspond to the lifecycle stages of an ECS application. Therefore, you must modify your scripts when you migrate an application that uses mounted scripts to a Kubernetes environment. For scripts mounted to run before the instance preparation stage, orchestrate them into a Dockerfile and build them into the image. For scripts mounted to run before the application start stage, you can also orchestrate them into a Dockerfile and build them into the image. In a pod, preparing an instance and starting the application are part of the same process. For scripts mounted to run after the application start stage, configure them in the PostStart hook. For scripts mounted to run before the instance stop stage, configure them in the PreStop hook. For scripts mounted to run after the instance stops, perform cleanup during the application's graceful shutdown. For example, you can run cleanup tasks in a Java ShutdownHook or in a process that listens for the SIGTERM signal. You can also move the scripts to the PreStop hook if needed. For scripts mounted to run before the instance is destroyed, perform cleanup during the application's graceful shutdown. For example, you can run cleanup tasks in a Java ShutdownHook or in a process that listens for the SIGTERM signal. You can also move the scripts to the PreStop hook if needed. In a pod, destroying an instance and stopping an instance are part of the same process.
 
-### Use a JAR or WAR package to
+### 3.7 Use a JAR or WAR package to deploy a Java microservices application in an ACK cluster
 
 **deploy a Java microservices**
 
@@ -541,7 +1016,7 @@ It may take several minutes to deploy the application. During the process, you c
 
 After the application is deployed, you can add an Internet-facing Server Load Balancer (SLB) instance to allow access to the application over the Internet. You can also add an internalfacing SLB instance to allow all nodes in the same VPC to access the application over an internal network. For more information, see Add Server Load Balancer (SLB) or Reuse a Server Load Balancer (SLB) instance.
 
-### Use an image to deploy a Java
+### 3.8 Use an image to deploy a Java microservices application in an ACK cluster
 
 **microservices application in an**
 
@@ -727,7 +1202,7 @@ It may take several minutes to deploy the application. During the process, you c
 
 After the application is deployed, you can add an Internet-facing Server Load Balancer (SLB) instance to allow access to the application over the Internet. You can also add an internalfacing SLB instance to allow all nodes in the same VPC to access the application over an internal network. For more information, see Add Server Load Balancer (SLB) or Reuse a Server Load Balancer (SLB) instance.
 
-### Deploy Java microservice
+### 3.9 Deploy Java microservice applications in an ECS environment
 
 **applications in an ECS**
 
@@ -737,7 +1212,7 @@ To help you quickly learn how to deploy microservice applications in Enterprise 
 
 **Prerequisites**
 
-Import ECS Create an ECS cluster
+Import ECS
 
 **Background information**
 
@@ -813,7 +1288,7 @@ Verify that the string is echoed at the bottom of the page. If the **Data Return
 2020-08-25T10:00:01.866Z : Consumer received. 2020-08-25T10:00:01.878Z : Provider rec eived. Provider processed after sleep 1 second! Echo String: "Hello EDAS" 2020-08-25T 10:00:02.878Z : Provider Return 2020-08-25T10:00:02.882Z : Consumer Return
 ```
 
-### Deploy multi-language
+### 3.10 Deploy multi-language microservices to K8s with images
 
 **microservices to K8s with images**
 
@@ -1010,7 +1485,7 @@ the precheck is complete, click **Continue**. You may need to wait several minut
 progress and related logs. After the application is created and deployed, you can go to the **Application Overview** page to check the state of the pod. If the pod is in the **Running** state, the application is released. You can click the state of the pod to view the advanced settings of the application instance, such as **Workload**, **Pods**, and **Startup Command**.
 7. Repeat the preceding steps to deploy the client-side application.
 
-### FAQ for getting started
+### 3.11 FAQ for getting started
 
 If you encounter problems when you create and deploy applications in EDAS, refer to the solutions in this topic.
 
@@ -1065,9 +1540,9 @@ Select another ECS instance. The operating system of the instance must be 64-bit
 
 For applications deployed in an ECS cluster, you can change the application port by modifying the Tomcat port in the application configuration on the application details page. For applications deployed in a Kubernetes cluster, you can change the application port only by specifying it in the code or by attaching a Server Load Balancer (SLB) instance. evelopment
 
-## Application development
+## 4 Application development
 
-### Overview of application
+### 4.1 Overview of application development
 
 **development**
 
@@ -1083,11 +1558,11 @@ evelopment
 | HSF | HSF connects different business systems and decouples them by minimizing implementation dependencies. For distributed applications, HSF unifies the methods for publishing and calling services. This helps you develop distributed applications and use or provide common functional modules more easily and quickly. HSF abstracts away complex technical details of the distributed realm, such as remote communication, serialization, performance loss, and the implementation of synchronous and asynchronous calls. Note Dubbo 3.0 unifies the technologies of the Dubbo and HSF frameworks. In EDAS, you can easily upgrade HSF applications to Dubbo 3.0 applications. After the upgrade, HSF applications can continue to use their original development methods. They can also use the more comprehensive service administration features that EDAS provides for Dubbo applications. | HSF introduction Start the lightweight configuration and registration center Develop applications using Ali- Tomcat Develop applications using Pandora Boot A single call process Asynchronous calls Generalized calls Call context Serialization method selection Timeout configuration Server-side thread pool configuration API reference JVM -D startup configuration parameters |
 |---|---|---|
 
-### Use Spring Cloud to develop
+### 4.2 Use Spring Cloud to develop applications
 
 **applications**
 
-#### Spring Cloud overview
+#### 4.2.1 Spring Cloud overview
 
 EDAS supports the native Spring Cloud microservice framework. You can deploy your applications to Enterprise Distributed Application Service (EDAS) without changing your code or configurations. This lets you use enterprise-level features such as application hosting and microservice administration. These administration features include service search, canary releases, outlier ejection, and graceful shutdown. You also have access to monitoring, alerting, and application diagnostics. These features help improve the stability and security of your applications.
 
@@ -1133,7 +1608,7 @@ The following table describes the version compatibility between Spring Cloud, Sp
 
 For information about versions not listed in the table, see the Version Guide.
 
-#### Implement service registration and
+#### 4.2.2 Implement service registration and discovery
 
 **discovery**
 
@@ -1426,7 +1901,7 @@ evelopment
 
 For more information about Spring Cloud Alibaba Nacos Discovery, see the open source version of Nacos Discovery.
 
-#### Implement load balancing
+#### 4.2.3 Implement load balancing
 
 Spring Cloud uses Ribbon components to balance loads. Ribbon provides load balancing algorithms for software at clients. In Spring Cloud, the underlying load balancing for RestTemplate and FeignClient is implemented by Ribbon.
 
@@ -1516,7 +1991,7 @@ public class MyService { @Autowired // Inject the EchoService that was construct
 
 RestTemplate Access `/echo-rest/rest-test` multiple times to check whether the requests are forwarded to different instances. Feign Access `/echo-feign/feign-test` multiple times to check whether the requests are forwarded to different instances.
 
-#### Implement configuration management
+#### 4.2.4 Implement configuration management
 
 When developing Spring Cloud applications, you can use Nacos (https://nacos.io) to manage application configurations in on-premises environments. Nacos is an open-source implementation of Application Configuration Management (ACM). After deploying an application to Enterprise Distributed Application Service (EDAS), you can manage and push application configurations using the integrated ACM service. You can follow the instructions in this topic to develop a sample application from scratch and use Spring Cloud Alibaba Nacos Config to manage configurations. You can also download the nacos-config-example demo.
 
@@ -1701,7 +2176,7 @@ evelopment
 
 For more information about configuration items, see the open-source Spring Cloud Alibaba Nacos Config documentation.
 
-#### Build a service gateway
+#### 4.2.5 Build a service gateway
 
 This topic describes how to use Nacos with Spring Cloud Gateway and Spring Cloud Netflix Zuul to build a service gateway for your application.
 
@@ -1901,9 +2376,7 @@ requests with the `/provider1/` prefix are routed to the backend service named
  zuul.routes.opensource-provider1.serviceId=service-provider
 ```
 
-v. Run the main function in the `ZuulApplication` startup class to start the service. vi. Log on to the local Nacos Server console at http://127.0.0.1:8848/nacos. The default username and password are both nacos. In the navigation pane on the left, choose Service Management > Service List. The service list contains spring-cloud-zuul-nacos, and you can view its details. This indicates that the gateway started and registered successfully. Next, create a downstream service to verify the request forwarding feature of the gateway.
-2. Create a service provider
-For more information, see Implement service registration and discovery. Example of a service provider startup class: evelopment
+v. Run the main function in the `ZuulApplication` startup class to start the service. vi. Log on to the local Nacos Server console at http://127.0.0.1:8848/nacos. The default username and password are both nacos. In the navigation pane on the left, choose Service Management > Service List. The service list contains spring-cloud-zuul-nacos, and you can view its details. This indicates that the gateway started and registered successfully. Next, create a downstream service to verify the request forwarding feature of the gateway. For more information, see Implement service registration and discovery. Example of a service provider startup class: evelopment
 
 ```java
 @SpringBootApplication @EnableDiscoveryClient public class ProviderApplication {
@@ -1925,11 +2398,11 @@ For more information, see Implement service registration and discovery. Example 
 3. Verify the results.
 Local verification Start the Zuul service gateway and service provider locally. Access the Zuul gateway to forward a request to the backend service. The result indicates a successful call. Verification in EDAS When you deploy an application to EDAS, EDAS automatically uses a higher-priority method to configure the Nacos Server address, service port, namespace, access key, secret key, and context path. No extra configuration is required. You can keep or delete the original configuration.
 
-### Use Dubbo to develop
+### 4.3 Use Dubbo to develop applications
 
 **applications**
 
-#### Dubbo overview
+#### 4.3.1 Dubbo overview
 
 EDAS supports the native Dubbo microservice framework. By adding dependencies and modifying configurations, you can enable enterprise-level EDAS capabilities for microservices developed in this framework without modifying your code. These capabilities include application hosting, microservice administration, monitoring and alerts, and application diagnostics.
 
@@ -1946,7 +2419,7 @@ load balancing algorithm. If the call fails, the consumer calls another provider
 6. The consumer and provider store the cumulative number of calls and call durations in
 memory. Every minute, they send statistical data to the monitoring center.
 
-#### Use Spring Boot to develop Dubbo
+#### 4.3.2 Use Spring Boot to develop Dubbo microservice applications
 
 **microservice applications**
 
@@ -2226,11 +2699,11 @@ Consumer evelopment
 
 2. Run the **mvn clean package** command to package the local application into a JAR file.
 
-### Use HSF to develop
+### 4.4 Use HSF to develop applications
 
 **applications**
 
-#### HSF overview
+#### 4.4.1 HSF overview
 
 High-speed Service Framework (HSF) is a distributed remote procedure call (RPC) service framework that is widely used within Alibaba. HSF connects different business systems and decouples their implementation dependencies. HSF provides a unified method for publishing and invoking services for distributed applications. This simplifies the development of distributed applications and the process of providing or using shared functional modules. HSF also abstracts away complex technical details, such as remote communication, serialization, performance overhead, and the implementation of synchronous or asynchronous calls.
 
@@ -2259,7 +2732,7 @@ features. These features include service registration and discovery, implicit pa
 **Pandora Boot**: This method depends on Pandora and provides most HSF features,
 including service registration and discovery and asynchronous calls. The application can be packaged into a standalone JAR file for deployment.
 
-#### Start the lightweight configuration
+#### 4.4.2 Start the lightweight configuration registry
 
 **registry**
 
@@ -2323,9 +2796,9 @@ evelopment Verification consists of two parts. Verify the availability of the li
 
 After you configure the hosts file, you can access the lightweight configuration registry using the domain name and port number: `jmenv.tbsite.net:8080` . The home page of the lightweight configuration registry is shown in the following figure. If the home page does not appear, check the `logs/start.log` log file in the installation folder to find the cause of the startup failure and resolve the issue. Verify feature availability. The lightweight configuration registry provides features such as service registration, discovery, configuration management, and namespaces. The configuration management and namespace features are available only if you have previously used Nacos. The verification process for feature availability depends on whether you are a new user or have previously used the lightweight configuration center or Nacos. If you have previously used the lightweight configuration center or Nacos, you can verify feature availability by testing your application after you start the lightweight configuration registry. If you are a new user, you must add and modify configurations in your application after you download and start the lightweight configuration registry. We recommend that you verify feature availability by following the development documents for the specific features that you want to use.
 
-#### Use Ali-Tomcat to develop applications
+#### 4.4.3 Use Ali-Tomcat to develop applications
 
-##### Ali-Tomcat overview
+##### 4.4.3.1 Ali-Tomcat overview
 
 evelopment Ali-Tomcat and Pandora are required to develop High-speed Service Framework (HSF) applications. Ali-Tomcat is a runtime container required by services in Enterprise Distributed Application Service (EDAS). It integrates core features such as service publishing, subscription, and call tracing. You can publish applications in this container in both development and runtime environments. Pandora is a lightweight isolation container, also known as taobao-hsf.sar. It isolates dependencies between applications and middleware, and between different middleware. Pandora for EDAS integrates various middleware plug-ins for features such as service discovery, configuration push, and call tracing. You can use these plug-ins to monitor, administer, track, and analyze EDAS applications for comprehensive operations and maintenance (O&M).
 
@@ -2333,7 +2806,7 @@ evelopment Ali-Tomcat and Pandora are required to develop High-speed Service Fra
 
 In EDAS, only HSF applications in WAR package format require Ali-Tomcat.
 
-##### Install Ali-Tomcat and Pandora
+##### 4.4.3.2 Install Ali-Tomcat and Pandora
 
 Ali-Tomcat and Pandora are containers required by the Enterprise Distributed Application Service (EDAS) runtime. They integrate core features such as service publishing, subscription, and call chain tracing. Applications must be published in these containers to run. This topic describes how to install Ali-Tomcat and Pandora.
 
@@ -2362,13 +2835,13 @@ Ali-Tomcat, such as d:\work\tomcat\deploy\. The directory structure is as follow
 
 On Windows, navigate to the directory to view its structure.
 
-##### Configure startup for an IDE runtime
+##### 4.4.3.3 Configure startup for an IDE runtime environment
 
 **environment**
 
 This document describes how to configure the IntelliJ IDEA development environment.
 
-###### Configure the IntelliJ IDEA development
+###### 4.4.3.3.1 Configure the IntelliJ IDEA development environment
 
 **environment**
 
@@ -2389,9 +2862,9 @@ such as -Dpandora.location=d:\work\tomcat\deploy\taobao-hsf.sar.
 6. Click **Apply** or **OK** to complete the configuration.
 evelopment
 
-##### Develop HSF applications (EDAS-SDK)
+##### 4.4.3.4 Develop HSF applications (EDAS-SDK)
 
-###### Download a demo project
+###### 4.4.3.4.1 Download a demo project
 
 A demo project is a code sample that is provided for users as a reference. This topic describes how to download a demo project.
 
@@ -2408,7 +2881,7 @@ All code described in this topic is available in the official demo. You can down
 2. Decompress the downloaded package.
 After you decompress the package, three Maven projects are available: itemcenter-api, itemcenter, and detail. Among the demo projects: The itemcenter-api project provides interface definitions. The detail project is a consumer application. The itemcenter project is a service provider application.
 
-###### Define service interfaces
+###### 4.4.3.4.2 Define service interfaces
 
 HSF services are implemented based on interfaces. After an interface is defined, the provider can implement a specific service through this interface. The consumer also subscribes to the service over this interface.
 
@@ -2432,11 +2905,11 @@ public interface ItemService {
 `}` evelopment The interface provides two methods: getItemById and getItemByName, indicating that the com.alibaba.edas.carshop.itemcenter.ItemService service provides the getItemById and getItemByName methods.
 2. Define new service interfaces based on planning or actual implementation.
 
-###### Implement services as a provider
+###### 4.4.3.4.3 Implement services as a provider
 
 The provider implements an interface to provide specific services. Besides code implementation, you must define the XML file used for service publishing because HSF is implemented based on the Spring framework.
 
-###### Implement a service interface with
+###### 4.4.3.4.3.1 Implement a service interface with code
 
 **code**
 
@@ -2465,7 +2938,7 @@ package com.alibaba.edas.carshop.itemcenter; public class ItemServiceImpl implem
 
 `}` `}`
 
-###### Configure services
+###### 4.4.3.4.3.2 Configure services
 
 This topic describes how to configure provider services.
 
@@ -2491,7 +2964,7 @@ evelopment
 
 evelopment
 
-###### Checklist of provider configuration
+###### 4.4.3.4.3.3 Checklist of provider configuration properties
 
 **properties**
 
@@ -2522,7 +2995,7 @@ Tag configuration example: evelopment
     </hsf:provider>
 ```
 
-###### Publish services in the development
+###### 4.4.3.4.3.4 Publish services in the development environment
 
 **environment**
 
@@ -2535,7 +3008,7 @@ information, see Startup configurations during IDE operation.
 2. After the service runs properly, you can query the service you published in the configuration
 center. For more information, see Query HSF services in a development environment or Query HSF services in an online environment.
 
-###### Other JVM startup parameters
+###### 4.4.3.4.3.5 Other JVM startup parameters
 
 This topic describes additional JVM startup parameters. You can use the following startup parameters for the service provider to change the behavior of the High-Speed Service Framework (HSF).
 
@@ -2546,11 +3019,11 @@ This topic describes additional JVM startup parameters. You can use the followin
 | -Dhsf.server.max.poolsize | Specifies the maximum size of the HSF provider thread pool. The default value is 600 . |
 | -Dhsf.server.min.poolsize | Specifies the minimum size of the HSF provider thread pool. The default value is 50 . |
 
-###### Subscribe to services as a consumer
+###### 4.4.3.4.4 Subscribe to services as a consumer
 
 evelopment Service subscription for consumers is coded in two steps. In the first step, use the <hsf:consumer/> tag in the Spring profile to define a bean. In the second step, the bean can be retrieved from the Spring context when you use the bean. In the demo project, detail shows a consumer-specific example.
 
-###### Consumer configuration
+###### 4.4.3.4.4.1 Consumer configuration
 
 This topic describes the service configuration for consumers. A consumer's configuration file includes Maven dependencies and Spring configurations, similar to a producer. The Maven dependencies are the same for both. For more information, see Service configuration. In addition to the required Spring configurations, you must add a consumer definition to the Spring configuration file. The High-Speed Service Framework (HSF) uses this definition to subscribe to required services from the service center. The following code shows the content of the /resource/hsf-consumer-beans.xml file and provides explanations:
 
@@ -2576,7 +3049,7 @@ service provider. HSF queries and subscribes to the required service based on th
 </beans>
 ```
 
-###### Act as a consumer to use services
+###### 4.4.3.4.4.2 Act as a consumer to use services
 
 This topic provides sample code for consuming a service. The following sample code is from the demo: evelopment
 
@@ -2599,7 +3072,7 @@ configuration.
 
 `}` `}`
 
-###### Consumer configuration properties
+###### 4.4.3.4.4.3 Consumer configuration properties
 
 This topic describes the consumer configuration properties. In addition to the `Interface` and `Version` properties shown in the sample code, you can also use the properties listed in the following table.
 
@@ -2630,11 +3103,11 @@ The following code provides an example of a tag configuration.
     </hsf:consumer>
 ```
 
-###### Use HSF features
+###### 4.4.3.4.5 Use HSF features
 
 This topic describes how to use the features of High-speed Service Framework (HSF). A Demo that covers all features is available for download.
 
-###### Add the edas-sdk dependency to the
+###### 4.4.3.4.5.1 Add the edas-sdk dependency to the pom.xml file
 
 **pom.xml file**
 
@@ -2648,7 +3121,7 @@ This topic describes how to add the edas-sdk dependency to the pom.xml file. To 
 </dependency>
 ```
 
-###### Implicit parameter passing
+###### 4.4.3.4.5.2 Implicit parameter passing
 
 evelopment In most cases, implicit parameter passing is used to pass simple key-value (KV) data based on a method that does not call API operations. This method is similar to cookies. Only strings can be passed in parameters. You can pass a single parameter or multiple parameters.
 
@@ -2682,7 +3155,7 @@ Map<String,String> map=rpcContext.getAttachments(); Set<String> set=map.keySet()
 
 `}`
 
-###### Asynchronous calls
+###### 4.4.3.4.5.3 Asynchronous calls
 
 You can implement asynchronous calls using Callback or Future methods.
 
@@ -2746,7 +3219,7 @@ Parallel invocation within a method:
 
 `}`
 
-###### Generic calls
+###### 4.4.3.4.5.4 Generic calls
 
 Generic calls do not depend on service APIs and can combine interfaces, methods, and parameters for remote procedure calls (RPCs).
 
@@ -2801,11 +3274,11 @@ svc.$invoke("dealMsg", new String[] { "java.lang.String" }, new Object[] { "hell
 // First, construct the GenericTestDO entity object. This entity has the ID and nam e properties. GenericTestDO genericTestDO = new GenericTestDO(); genericTestDO.setId(1980l); genericTestDO.setName("genericTestDO-tst"); // Use PojoUtils to generate the pojo description of the second-party package. Obje ct comp = PojoUtils.generalize(genericTestDO); // Call the service in generic mode. svc.$invoke("dealGenericTestDO",new String[] { "com.alibaba.demo.generic.domain.GenericTestDO" }, new Object[] { comp });
 ```
 
-###### Query services
+###### 4.4.3.4.6 Query services
 
 Enterprise Distributed Application Service (EDAS) supports service registration for Dubbo and High-speed Service Framework (HSF). However, you cannot view Dubbo services in the EDAS console if they are published to an external registry, such as ZooKeeper. This topic describes how to query HSF services.
 
-###### Query HSF services in a development
+###### 4.4.3.4.6.1 Query HSF services in a development environment
 
 **environment**
 
@@ -2828,7 +3301,7 @@ By default, after the configuration center starts, it uses the address of the fi
 3. View the corresponding service providers and service consumers.
 Providers list page Enter an IP address in the search box and click **Search** to find the services that are provided by the machine with that IP address. Enter a service name or service group in the search box to find the IP addresses that provide this service. Consumers list page Enter an IP address in the search box and click **Search** to find the services that are invoked by the machine with that IP address. Enter a service name or service group in the search box to find the IP addresses that have invoked this service.
 
-###### Query HSF services in an online
+###### 4.4.3.4.6.2 Query HSF services in an online environment
 
 **environment**
 
@@ -2857,11 +3330,11 @@ If the service that you want to query does not appear in the corresponding servi
 **Software Version** in the navigation pane on the left of the service information page. If you
 are not using the latest version, confirm that the corresponding HSF group is created. Confirm that the machine's host does not have special network bindings. Normally, online machines do not require any host bindings. Confirm that the network and Elastic Compute Service (ECS) security group configurations for the machine do not have obvious restrictions.
 
-##### Migrate Dubbo applications to HSF (not
+##### 4.4.3.5 Migrate Dubbo applications to HSF (not recommended)
 
 **recommended)**
 
-###### Notes for developing Dubbo applications
+###### 4.4.3.5.1 Notes for developing Dubbo applications
 
 This topic describes considerations for developing Dubbo applications.
 1. Dubbo configuration files support multiple consumer groups. However, Enterprise
@@ -2873,7 +3346,7 @@ remote method invocation (RMI) and Hessian. However, EDAS supports only the Dubb
 4. The method for retrieving RPC contextual information differs between Dubbo and EDAS.
 Dubbo uses the RpcContext.getContext() method, while EDAS uses com.taobao.hsf.util.RequestCtxUtil through its internal High-speed Service Framework (HSF). After a service is transformed for EDAS, calling RpcContext.getContext() causes the following error: "Caused by: java.lang.UnsupportedOperationException: not support getInvocation method in HSF".
 
-###### Modify Dubbo application configurations
+###### 4.4.3.5.2 Modify Dubbo application configurations
 
 evelopment You can migrate applications developed using Dubbo to HSF by steps such as modifying the application configuration, configuring multiple registries, and converting JAR to WAR. However, we recommend that new users do not use this method because EDAS supports applications in the native Dubbo framework. For more information about developing applications that use the native Dubbo framework, see Develop Dubbo microservice applications with Spring Boot. EDAS supports two methods for configuring Dubbo applications, which can be producers or consumers: XML file configuration and annotation configuration. This topic provides examples of both methods. XML configuration for a producer
 
@@ -2927,7 +3400,7 @@ group="dubbogroup" lazy="true" loadbalance="random">
 
 The following parameters are optional: version, group, lazy, loadbalance, async, and return. All other options are required. You can change the order of the parameters in the XML file as needed. Registry configurations do not take effect in EDAS. All Dubbo services are automatically registered with the EDAS configuration center. No manual configuration is required.
 
-###### Convert JAR packages to WAR packages
+###### 4.4.3.5.3 Convert JAR packages to WAR packages
 
 Enterprise Distributed Application Service (EDAS) supports only web projects that are packaged in the WAR format. Therefore, if your project is released in the JAR format, you must convert it to the WAR format first.
 
@@ -2946,11 +3419,11 @@ Figure 2. Add the web.xml file configuration
 3. Configure the web.xml file to load the configuration file.
 Figure 3. Configure the web.xml file to load the configuration file evelopment
 
-###### Run programs
+###### 4.4.3.5.4 Run programs
 
 This topic describes two methods to run programs. You can right-click the Tomcat4E plugin to start a web project. This method is common for test environments because it runs the project directly in an Integrated Development Environment (IDE). The setup is simple and requires minimal configuration. If you have multiple projects, make sure their Tomcat ports are unique. For more information, see Install Ali-Tomcat and Pandora. You can access the Enterprise Distributed Application Service (EDAS) console to publish WAR projects.
 
-###### Compatibility between Dubbo and HSF
+###### 4.4.3.5.5 Compatibility between Dubbo and HSF
 
 This topic describes the compatibility between Dubbo and High-speed Service Framework (HSF). The following table describes the compatibility between service properties in the Dubbo configuration file and HSF.
 
@@ -2993,15 +3466,15 @@ evelopment
 
 After you confirm the configuration compatibility, you can debug and publish your applications as described in the preceding sections.
 
-#### Use Pandora Boot to develop
+#### 4.4.4 Use Pandora Boot to develop applications
 
 **applications**
 
-##### Pandora Boot overview
+##### 4.4.4.1 Pandora Boot overview
 
 Pandora Boot is a lightweight service built on Pandora. Pandora Boot is based on Pandora and Fat Jar technologies. You can start a Pandora environment directly in an Integrated Development Environment (IDE), which greatly improves your development and debugging efficiency. Pandora Boot is deeply integrated with Spring Boot AutoConfigure, allowing you to benefit from the convenience of the Spring Boot framework. Both Spring Boot users who need High-speed Service Framework (HSF) and existing Pandora Boot users can use Pandora Boot to develop Enterprise Distributed Application Service (EDAS) applications.
 
-##### Configure the local repository path and
+##### 4.4.4.2 Configure the local repository path and the lightweight configuration center of EDAS
 
 **the lightweight configuration center of EDAS**
 
@@ -3094,17 +3567,17 @@ If the Maven packaging command runs without errors from the command line, but yo
 
 For instructions on configuring the lightweight configuration center, see Start the lightweight configuration and registration center.
 
-##### Use Pandora Boot to develop HSF
+##### 4.4.4.3 Use Pandora Boot to develop HSF applications
 
 **applications**
 
 evelopment Enterprise Distributed Application Service (EDAS) fully supports Spring Cloud applications. Therefore, you can directly deploy Spring Cloud applications to EDAS. Spring Boot is based on the "Build Anything" concept. It simplifies complex XML configuration problems. Spring Cloud is based on the "Coordinate Anything" concept. It simplifies distributed microservice development by providing many spring-cloud-starter components for easy integration. EDAS also implements its own Spring Cloud Starter HSF. Therefore, you can use Spring Cloud to develop High-speed Service Framework (HSF) applications. This topic describes how to use Spring Cloud to develop HSF applications.
 
-###### Example of HSF application development
+###### 4.4.4.3.1 Example of HSF application development
 
 This topic provides an example to demonstrate how to develop an HSF application based on Spring Cloud. To develop an HSF application, you must create a service provider and a service consumer.
 
-###### Create a service provider
+###### 4.4.4.3.1.1 Create a service provider
 
 Learn how to create a service provider and publish services through an interface.
 
@@ -3221,7 +3694,7 @@ container from exiting after the business code finishes running.
 
 `}` `}` evelopment
 
-###### Create a service consumer
+###### 4.4.4.3.1.2 Create a service consumer
 
 This example shows how to create a service consumer. The consumer calls the service provider using the API that HSFProvider provides.
 
@@ -3328,7 +3801,7 @@ in multiple places using @Autowired. An HSF Consumer is typically used in multip
 
 `}` `}`
 
-###### Advanced HSF features
+###### 4.4.4.3.2 Advanced HSF features
 
 This topic describes how to use Pandora Boot to develop advanced High-speed Service Framework (HSF) features, such as unit testing and asynchronous calls.
 
@@ -3583,7 +4056,7 @@ The following code is an example of AsyncEchoResponseListener:
 
 `}` The console outputs 1513068791916 123. This proves that the onAppResponse method in AsyncEchoResponseListener obtained the timestamp content that was passed by CallbackInvocationContext before the call. evelopment
 
-###### Local debugging
+###### 4.4.4.3.3 Local debugging
 
 After you develop a High-Speed Service Framework (HSF) application, debug the application locally before you publish it.
 
@@ -3635,7 +4108,7 @@ The path specified by **-Dpandora.location** must be an absolute path and must b
 
 Start the service and call it to verify a successful response.
 
-###### Publish to EDAS
+###### 4.4.4.3.4 Publish to EDAS
 
 After the code for service discovery and calls is debugged in an on-premises environment, you can publish it to Enterprise Distributed Application Service (EDAS).
 
@@ -3647,13 +4120,13 @@ For more information about how to create an application, see Application Managem
 3. To deploy the application to EDAS, upload the FatJar package from the target directory. You
 do not need to modify any configurations. For more information about how to deploy applications, see Create and deploy an application in an ECS cluster.
 
-##### Develop RESTful applications (not
+##### 4.4.4.4 Develop RESTful applications (not recommended)
 
 **recommended)**
 
 This topic describes how to develop RESTful applications based on Spring Cloud in Enterprise Distributed Application Service (EDAS).
 
-###### Terms
+###### 4.4.4.4.1 Terms
 
 This document explains terms and concepts that you may encounter when you develop applications based on Spring Cloud.
 
@@ -3681,11 +4154,11 @@ EagleEye is a distributed tracing system that is developed by Alibaba. It traces
 
 High-speed Service Framework (HSF) is a distributed service framework used within Alibaba. HSF supports developers of distributed applications by providing unified methods for publishing and invoking services. This makes it easier to develop distributed applications and to provide or use shared functional modules. Developers do not need to handle the complex details of distributed systems, such as remote communication, performance overhead, call transparency, or the implementation of synchronous or asynchronous call methods.
 
-###### Service registration and discovery
+###### 4.4.4.4.2 Service registration and discovery
 
 This topic describes how to implement service registration and discovery by using Spring Cloud.
 
-###### Preparations
+###### 4.4.4.4.2.1 Preparations
 
 Before you develop service registration and discovery using Spring Cloud, you must complete the required preparations.
 
@@ -3701,7 +4174,7 @@ Maven 3.x or later is required. Add the EDAS private server address to your Mave
 
 evelopment For local development and debugging, you must start the lightweight configuration center. The lightweight configuration center provides a lightweight version of EDAS service discovery and configuration management. For more information and downloads, see the Start the lightweight configuration center section.
 
-###### Implement service registration and
+###### 4.4.4.4.2.2 Implement service registration and discovery
 
 **discovery**
 
@@ -3925,7 +4398,7 @@ Configure the service name and the HTTP request for the method. Set the service 
  server.port=18082
 ```
 
-###### Local debugging
+###### 4.4.4.4.2.3 Local debugging
 
 After you enable service discovery and calls, you can debug the code in a local environment before you deploy the application.
 
@@ -3967,7 +4440,7 @@ The path specified by -Dpandora.location must be an absolute path and must be pl
 3. Start the service, use the `curl` command to call the consumer and provider, and then
 verify that the calls are successful. Alternatively, you can paste the URL into the address bar of your browser and check the response to verify the result.
 
-###### Publish applications to EDAS
+###### 4.4.4.4.2.4 Publish applications to EDAS
 
 After the code for service discovery and calling is debugged in an on-premises environment, it can be published to Enterprise Distributed Application Service (EDAS).
 
@@ -3980,7 +4453,7 @@ as a FatJar. evelopment
 3. To deploy the application to EDAS, upload the FatJar package in the target directory. You do
 not need to configure the application. For more information about how to deploy an application, see the Application management section.
 
-###### Migrate from Eureka
+###### 4.4.4.4.2.5 Migrate from Eureka
 
 For the connected Eureka application for service registration and discovery, you can perform two steps to connect services to the EDAS service registration and discovery center.
 
@@ -4024,7 +4497,7 @@ After the replacement:
  </dependency>
 ```
 
-###### FAQ
+###### 4.4.4.4.2.6 FAQ
 
 This topic describes possible issues and solutions for scenarios where service registration and discovery are implemented based on Spring Cloud.
 
@@ -4064,11 +4537,11 @@ java -jar -Dvipserver.server.port=8080 sc-vip-server-0.0.1-SNAPSHOT.jar
 
 Before you deploy the application to Enterprise Distributed Application Service (EDAS), restore the default configuration to exclude taobao-hsf.sar.
 
-###### Distributed tracing
+###### 4.4.4.4.3 Distributed tracing
 
 To reduce development costs and improve development efficiency, EDAS provides the EagleEye component for distributed tracing. After the EagleEye tracking point is configured in the code, you can use the distributed tracing function of EDAS without considering log collection, analysis, and storage. This topic describes how to enable the distributed tracing feature of EDAS.
 
-###### Connect to EagleEye
+###### 4.4.4.4.3.1 Connect to EagleEye
 
 Before you use the distributed tracing feature, you must connect to EagleEye.
 
@@ -4142,7 +4615,7 @@ To package the pandora-boot project into a FatJar using Maven, add the following
 
 After you complete these configurations, you can use the distributed tracing feature of EDAS. You do not need to set up a collection and analysis system.
 
-###### Distributed tracing example
+###### 4.4.4.4.3.2 Distributed tracing example
 
 This document provides an example of how to perform distributed tracing for an application.
 
@@ -4183,7 +4656,7 @@ tool such as Postman or make the call directly in a browser. To make observation
 3. In the navigation pane on the left, click **Interface Call** to view the upstream and
 downstream services in the trace.
 
-###### FAQ
+###### 4.4.4.4.3.3 FAQ
 
 This topic describes issues that may occur during distributed tracing and their solutions.
 
@@ -4203,7 +4676,7 @@ AsyncRestTemplate must modify the automatic tracking configuration during the cl
 
 To create the pandora-boot project as a FatJar package in Maven, you must add the packaging plug-in of pandora-boot-maven-plugin to pom.xml. To prevent conflicts with other packaging plug-ins, do not add other FatJar plug-ins to the plugin field in build.
 
-##### Migrate Dubbo applications to HSF (not
+##### 4.4.4.5 Migrate Dubbo applications to HSF (not recommended)
 
 **recommended)**
 
@@ -4267,7 +4740,7 @@ import com.taobao.pandora.boot.PandoraBootstrap; import org.springframework.boot
 
 `}` `}`
 
-#### The HSF call process
+#### 4.4.5 The HSF call process
 
 This topic describes the call process of High-speed Service Framework (HSF). An HSF call is initiated by a consumer and sent to a provider over the network. The provider then returns the result to the consumer over the network. This process involves multithreaded interactions and various domain objects within HSF. The following figure shows the HSF call process. evelopment
 
@@ -4289,7 +4762,7 @@ evelopment
 | 10 | The HSF consumer's I/O thread receives the binary content. It decodes the content to generate a response communication object and then wakes up the client thread. |
 | 11 | The client thread deserializes the communication response object. The user receives the final response object, and the remote call is complete. |
 
-#### Asynchronous calls
+#### 4.4.6 Asynchronous calls
 
 This topic describes how to make asynchronous calls in High-speed Service Framework (HSF).
 
@@ -4471,7 +4944,7 @@ Configure an HSF interface method for callback calls using annotations
 
 The callback function is invoked by a separate thread pool, which uses a LinkedBlockingQueue infinite queue. Do not perform time-consuming operations in the callback function because this can affect onAppResponse callbacks for other requests. By default, the corePoolSize and maxPoolSize of the callback thread pool are equal to the number of instance CPUs. You can use the following -D parameters to customize the configuration. Minimum size of the callback thread pool: `-Dhsf.callback.min.poolsize` Maximum size of the callback thread pool: `-Dhsf.callback.max.poolsize`
 
-#### Generic calls
+#### 4.4.7 Generic calls
 
 Unlike normal calls, which require client-side business JAR packages, generic calls do not depend on these packages. Generic calls use the GenericService interface to invoke a service by passing the method name, method signature, and parameter values. This approach is useful for components such as gateway applications that cannot depend on the client packages for all services. The service testing feature of hsf-ops also uses generic calls.
 
@@ -4546,7 +5019,7 @@ value="com.alibaba.middleware.hsf.guide.api.service.OrderService"/>
 
 evelopment For generic calls, routing rules do not take effect by default if the client does not have the interface class. The performance of a generic call is lower than that of a normal call. Set `-Dhsf.generic.throw.exception=true` to throw business exceptions. The default value is `false`, which generalizes the exception and returns it as a `Map`. If the exception class exists locally but is not a RuntimeException or its subclass, UndeclaredThrowableException is thrown. This happens because the exception is not declared on com.taobao.hsf.remoting.service.GenericService. You can retrieve the actual exception using `getCause`. If the exception class does not exist locally, com.taobao.hsf.util.GenericInvocationException is thrown.
 
-#### Call context
+#### 4.4.8 Call context
 
 The call context includes call properties and transmitted custom data other than interfacespecific parameters. The call properties include the IP address, name of the application that initiates the call, and timeout period.
 
@@ -4590,7 +5063,7 @@ Retrieve the context by using the methods of the provider.
 //get context data RPCContext rpcContext = RPCContext.getServerContext(); String myContext = (String)rpcContext.getAttachment("tetantId");
 ```
 
-#### Select a serialization method
+#### 4.4.9 Select a serialization method
 
 The serialization process converts a Java object into a byte array that can be transmitted over a network. The deserialization process converts a byte array into a Java object.
 
@@ -4646,7 +5119,7 @@ o the Spring bean ID of the HSF service to publish. -->
 </bean>
 ```
 
-#### Configure a time-out period
+#### 4.4.10 Configure a time-out period
 
 This topic describes how to configure a timeout period when you develop High-Speed Service Framework (HSF) applications.
 
@@ -4760,7 +5233,7 @@ Use annotations to configure HSF services. The following annotation configuratio
 
 `}` `}` evelopment
 
-#### Configure a provider thread pool
+#### 4.4.11 Configure a provider thread pool
 
 This topic describes how to configure a provider thread pool when you develop High-Speed Service Framework (HSF) applications.
 
@@ -4822,7 +5295,7 @@ ii. Configure `@HSFProvider` for the implementation class. The following annotat
 
 `}` `}`
 
-#### API manual
+#### 4.4.12 API manual
 
 Among the API operations of HSF applications, the key API operations are the operations that are related to creating provider beans and consumer beans.
 
@@ -5018,7 +5491,7 @@ does not need to be configured. To block the consumer bean, set this property to
 </bean>
 ```
 
-#### Set JVM -D startup parameters
+#### 4.4.13 Set JVM -D startup parameters
 
 This topic describes the configuration information about JVM -D startup parameters when you develop High-speed Service Framework (HSF) applications.
 
@@ -5130,13 +5603,13 @@ Specifies the global timeout period of the HSF consumer.
 
 evelopment Determines whether the HSF call duration includes time-consuming logic, such as connection creation and address selection. The default value of `hsf.invocation.timeout.sensitive` is false. anagement for Kubernetes cluste rs
 
-## Application management
+## 5 Application management for Kubernetes clusters
 
 **for Kubernetes clusters**
 
-### Resource management
+### 5.1 Resource management
 
-#### Overview of Kubernetes resource
+#### 5.1.1 Overview of Kubernetes resource management
 
 **management**
 
@@ -5167,9 +5640,9 @@ During daily operations and maintenance (O&M), you might manage multiple Kuberne
 
 The process for hosting an application is similar for both Alibaba Cloud Kubernetes clusters and hybrid cloud clusters. In both cases, the application is hosted on one or more pods.
 
-#### Manage microservice namespaces
+#### 5.1.2 Manage microservice namespaces
 
-##### Manage microservices namespaces in the
+##### 5.1.2.1 Manage microservices namespaces in the EDAS console
 
 **EDAS console**
 
@@ -5219,7 +5692,7 @@ To delete a microservices namespace, the following prerequisites must be met: Th
 1. In the **Actions** column of the microservices namespace list, click **Delete**.
 2. In the **Confirm** dialog box, click **Delete**.
 
-##### Manage a microservices namespace by
+##### 5.1.2.2 Manage a microservices namespace by calling API operations
 
 **calling API operations**
 
@@ -5354,9 +5827,9 @@ After you create, edit, or delete a microservices namespace, you can call the Li
 
 `}`
 
-#### Manage Kubernetes clusters
+#### 5.1.3 Manage Kubernetes clusters
 
-##### Use the console to manage Kubernetes
+##### 5.1.3.1 Use the console to manage Kubernetes clusters
 
 **clusters**
 
@@ -5494,7 +5967,7 @@ When you create a service mesh, ASM may perform the following operations based o
 
 Use a JAR or WAR package to deploy a Java microservice application in a Kubernetes cluster Use an image to deploy a Java microservice application in a Kubernetes cluster Use an image to deploy a multi-language microservice application in a Kubernetes environment
 
-##### Manage Kubernetes clusters using API
+##### 5.1.3.2 Manage Kubernetes clusters using API operations
 
 **operations**
 
@@ -5646,7 +6119,7 @@ The following sample response is returned after you call the GetK8sCluster opera
 
 `}` Check the value of the **ClusterImportStatus** parameter in the response to determine whether the import or removal was successful. The following table describes the valid values for **ClusterImportStatus**: 0: The cluster is not imported. 1: The cluster is imported. 2: The import failed. 3: The cluster is being imported. 4: The cluster is removed.
 
-### Create and deploy
+### 5.2 Create and deploy applications in Kubernetes clusters
 
 **applications in Kubernetes**
 
@@ -5654,7 +6127,7 @@ The following sample response is returned after you call the GetK8sCluster opera
 
 anagement for Kubernetes cluste rs
 
-#### Create and deploy applications
+#### 5.2.1 Create and deploy applications overview (Kubernetes)
 
 **overview (Kubernetes)**
 
@@ -5686,13 +6159,13 @@ You can host polyglot applications on EDAS using custom container images. Istio 
 
 To create multiple polyglot applications in a Kubernetes environment at once, call the InsertK8sApplication API. For more information, see the **EDAS Developer Guide**, specifically the **InsertK8sApplication** section.
 
-#### Java applications
+#### 5.2.2 Java applications
 
-##### Use JAR packages or WAR packages to
+##### 5.2.2.1 Use JAR packages or WAR packages to deploy applications
 
 **deploy applications**
 
-###### Use a JAR or WAR package to deploy a
+###### 5.2.2.1.1 Use a JAR or WAR package to deploy a Java microservices application in an ACK cluster
 
 **Java microservices application in an ACK cluster**
 
@@ -5899,9 +6372,9 @@ It may take several minutes to deploy the application. During the process, you c
 
 anagement for Kubernetes cluste rs After the application is deployed, you can add an Internet-facing Server Load Balancer (SLB) instance to allow access to the application over the Internet. You can also add an internalfacing SLB instance to allow all nodes in the same VPC to access the application over an internal network. For more information, see Add Server Load Balancer (SLB) or Reuse a Server Load Balancer (SLB) instance.
 
-##### Use images to deploy applications
+##### 5.2.2.2 Use images to deploy applications
 
-###### Create an application image
+###### 5.2.2.2.1 Create an application image
 
 You can use local development tools to package an application into a WAR or JAR file. After you package the application, you can create an application image from the file and upload the image to an Alibaba Cloud image repository for application deployment. This topic describes how to build an Enterprise Distributed Application Service (EDAS) application image using a Dockerfile and upload the image to an Alibaba Cloud image repository.
 
@@ -6149,7 +6622,7 @@ anagement for Kubernetes cluste rs
 
 Also, do not use the /home/admin/.spas_key/default file because this file is overwritten when the pod starts.
 
-###### Upload a local image
+###### 5.2.2.2.2 Upload a local image
 
 To deploy an application in a Kubernetes cluster using a local Nginx image, you must first upload the image.
 
@@ -6197,7 +6670,7 @@ You set the region and namespace when you create the repository, so you do not n
 4. On the **Basic Information** page of the new repository, upload the image by following the
 instructions on the **Operation Guide** tab.
 
-###### Deploy a Java microservice to a K8s
+###### 5.2.2.2.3 Deploy a Java microservice to a K8s cluster
 
 **cluster**
 
@@ -6408,9 +6881,9 @@ It may take several minutes to deploy the application. During the process, you c
 
 After the application is deployed, you can add an Internet-facing Server Load Balancer (SLB) instance to allow access to the application over the Internet. You can also add an internalfacing SLB instance to allow all nodes in the same VPC to access the application over an internal network. For more information, see Add Server Load Balancer (SLB) or Reuse a Server Load Balancer (SLB) instance.
 
-#### Multi-language applications
+#### 5.2.3 Multi-language applications
 
-##### Use images to deploy multi-language
+##### 5.2.3.1 Use images to deploy multi-language microservices applications in Kubernetes clusters
 
 **microservices applications in Kubernetes clusters**
 
@@ -6636,9 +7109,9 @@ the precheck is complete, click **Continue**. You may need to wait several minut
 progress and related logs. After the application is created and deployed, you can go to the **Application Overview** page to check the state of the pod. If the pod is in the **Running** state, the application is released. You can click the state of the pod to view the advanced settings of the application instance, such as **Workload**, **Pods**, and **Startup Command**.
 7. Repeat the preceding steps to deploy the client-side application.
 
-#### Advanced settings
+#### 5.2.4 Advanced settings
 
-##### Configure microservices governance
+##### 5.2.4.1 Configure microservices governance
 
 Enterprise Distributed Application Service (EDAS) enables Spring Cloud and Dubbo applications to connect to Microservices Engine (MSE) for non-intrusive microservices governance. You can configure features such as service registration and discovery, empty list protection, and graceful start when you create or deploy applications in EDAS. This topic describes how to configure microservices governance. anagement for Kubernetes cluste rs
 
@@ -6778,7 +7251,7 @@ The application restarts after you click **OK**. Perform this operation during o
 
 On the application's **Change List** page, you can view the details of the change. If the change is executed successfully, the application is deployed and the configurations take effect. anagement for Kubernetes cluste rs
 
-##### Service Mesh
+##### 5.2.4.2 Service Mesh
 
 EDAS provides an integrated Service Mesh (ASM) for deploying multi-language applications. This feature provides efficient communication, unified administration, and security control for services across different languages.
 
@@ -6817,7 +7290,7 @@ In the upper part of the **Application Overview** page, click **View Details**. 
 **List** page, view the application change process. Wait several minutes until the application
 is deployed. After the application change process is complete, view the status of the instance in the **Basic Information** section of the **Application Overview** page. If the status shows that a pod is running, the application is deployed.
 
-##### Configure scheduling rules
+##### 5.2.4.3 Configure scheduling rules
 
 When you create or deploy an application in a Container Service for Kubernetes (ACK) cluster, you can modify the scheduling rules for application instances as needed. To enhance high availability, you can deploy pod instances across as many zones and nodes as possible.
 
@@ -6971,7 +7444,7 @@ Table 4. Add a toleration scheduling rule
 
 The application restarts after you click **OK**. Perform this operation during off-peak hours. anagement for Kubernetes cluste rs
 
-##### Configure a startup command
+##### 5.2.4.4 Configure a startup command
 
 In the Enterprise Distributed Application Service (EDAS) console, you can use an image, a JAR package, or a WAR package to deploy an application in a Kubernetes cluster. If you are proficient in Docker and Java Virtual Machine (JVM) and want to customize startup parameters, you can configure the startup and runtime commands for your container.
 
@@ -7065,7 +7538,7 @@ After you click **OK**, the application restarts to apply the changes.
 
 Method 1: On the **Change Records** page for the application, view the change details. A successful change indicates that the deployment was successful and the new configuration has taken effect. Method 2: On the **Application Overview** page, click the pod status link next to **Running Status**. In the **Container Group (Pod)** section, check the **Status** of the pod. If a green circle appears, the pod is running, which indicates that the deployment was successful and the new configuration has taken effect.
 
-##### Configure distributed sessions
+##### 5.2.4.5 Configure distributed sessions
 
 EDAS supports distributed sessions by automatically injecting configuration information as environment variables. This allows monolithic applications deployed in EDAS to scale horizontally using shared sessions.
 
@@ -7130,7 +7603,7 @@ To ensure a successful verification, use the same cookie.
 curl -c cookie.txt "slb:port/set?key=name&value=tom" curl -b cookie.txt slb:port/get?key=name
 ```
 
-##### Configure environment variables
+##### 5.2.4.6 Configure environment variables
 
 Applications require specific environment variables to run. For example, before a Java application can run its commands, you must configure the JAVA_HOME and PATH environment variables. This topic describes how to configure environment variables for applications in the Enterprise Distributed Application Service (EDAS) console.
 
@@ -7241,7 +7714,7 @@ After you add variables from a configuration item in batches, you must also set 
 
 Method 1: On the **Change Records** page for the application, view the change details. A successful change indicates that the deployment was successful and the new configuration has taken effect. Method 2: On the **Application Overview** page, click the pod status link next to **Running Status**. In the **Container Group (Pod)** section, check the **Status** of the pod. If a green circle appears, the pod is running, which indicates that the deployment was successful and the new configuration has taken effect.
 
-##### Configure persistent storage
+##### 5.2.4.7 Configure persistent storage
 
 anagement for Kubernetes cluste rs By default, data stored in a container is not persistent and is lost when the container is destroyed. Because data loss can be disastrous in a production environment, EDAS Kubernetes clusters support mounting Persistent Volume Claims (PVCs). This feature provides data persistence for application instances and allows multiple instances to share data.
 
@@ -7343,7 +7816,7 @@ anagement for Kubernetes cluste rs
 
 Clicking **OK** restarts and updates the application.
 
-##### Configure local storage
+##### 5.2.4.8 Configure local storage
 
 You can configure local storage to mount files or directories from a host's file system to a pod.
 
@@ -7434,7 +7907,7 @@ anagement for Kubernetes cluste rs
 
 Method 1: On the **Change Records** page for the application, view the change details. A successful change indicates that the deployment was successful and the new configuration has taken effect. Method 2: On the **Application Overview** page, click the pod status link next to **Running Status**. In the **Container Group (Pod)** section, check the **Status** of the pod. If a green circle appears, the pod is running, which indicates that the deployment was successful and the new configuration has taken effect.
 
-##### Configure application lifecycle hooks and
+##### 5.2.4.9 Configure application lifecycle hooks and probes
 
 **probes**
 
@@ -7580,7 +8053,7 @@ probe is considered successful if the port is open. All modes for Liveness, Read
 
 After you configure an application lifecycle hook, verify the result. For example, you configure a PostStart hook to write `Hello from the postStart handler` to a file. anagement for Kubernetes cluste rs After the application is deployed, use a web shell to check whether the file contains `Hello` `from the postStart handler` . If the text exists, the configuration is successful.
 
-##### Configure Tomcat
+##### 5.2.4.10 Configure Tomcat
 
 When you create or deploy an application in a Container Service for Kubernetes (ACK) cluster using a WAR or JAR package, you can configure parameters such as the application port, access path, and maximum number of threads.
 
@@ -7658,7 +8131,7 @@ After you click **OK**, the application is restarted. Perform this operation dur
 6. On the application's **Change History** page, view the change details. If the status is
 **Succeeded**, the deployment is successful and the configuration has taken effect.
 
-##### Configure Java startup parameters
+##### 5.2.4.11 Configure Java startup parameters
 
 When you create or deploy an application in a Container Service for Kubernetes (ACK) cluster, you can use Java startup parameters to configure the JVM memory, garbage collection (GC) policy, and service registration and discovery. A proper configuration of Java startup parameters helps reduce GC overhead, shorten server response time, and increase throughput.
 
@@ -7746,7 +8219,7 @@ The application restarts after you click **OK**.
 
 Method 1: On the **Change Records** page for the application, view the change details. A successful change indicates that the deployment was successful and the new configuration has taken effect. Method 2: anagement for Kubernetes cluste rs On the **Application Overview** page, click the pod status link next to **Running Status**. In the **Container Group (Pod)** section, check the **Status** of the pod. If a green circle appears, the pod is running, which indicates that the deployment was successful and the new configuration has taken effect.
 
-##### Configuration management
+##### 5.2.4.12 Configuration management
 
 You can mount existing configuration items or secrets as files to a specified directory in a container. This injects configuration information into the container. This topic describes how to configure mounts for an application in the EDAS console.
 
@@ -7837,7 +8310,7 @@ deployment takes a few minutes to complete. After the change is complete, go to 
 **Basic Information** section on the **Application Overview** page to view the running status
 of the instance. If the status is Pod Running, the deployment is successful.
 
-##### Configure labels
+##### 5.2.4.13 Configure labels
 
 anagement for Kubernetes cluste rs In a microservices model, a Kubernetes cluster can host many applications, each with multiple versions, which results in many pods. In the EDAS console, you can configure labels for an application to tag all of its pods. Labels are key-value pairs that identify a group of pods. Using a label selector, you can filter for pods with specific labels, which makes it easier to manage them as a group. This topic describes how to configure labels for application pods during application creation or deployment.
 
@@ -7932,7 +8405,7 @@ NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES sc-client-
 
 The output shows that the pods of the two applications are on the same node.
 
-##### Configure annotations
+##### 5.2.4.14 Configure annotations
 
 In Kubernetes, you can use annotations to attach metadata to application pods. This stores extra information that tools and libraries can retrieve without affecting the operation of the pod. Annotations support both structured and unstructured data. They can also contain characters that are not allowed in labels. This topic describes how to add non-identifying metadata to an application during deployment.
 
@@ -7983,7 +8456,7 @@ kubectl get pod
 
 The output shows that the demo-annotation: demo-annotation-value key-value pair exists in the **metadata.annotations** of the application pod.
 
-##### Configure DNS
+##### 5.2.4.15 Configure DNS
 
 In Kubernetes, you can configure the DNS policy for an application's pods. This policy controls how pods access DNS services and handle domain name resolution, ensuring that they can find and communicate with other services. This topic describes how to set the DNS policy, DNS configuration, and host aliases for an application when you create it.
 
@@ -8046,7 +8519,7 @@ anagement for Kubernetes cluste rs
 
 6. When you are finished, click **OK**.
 
-##### Configure throttling and degradation
+##### 5.2.4.16 Configure throttling and degradation
 
 anagement for Kubernetes cluste rs You can redeploy applications in Container Service for Kubernetes (ACK) clusters to connect them to the trial version of Application High Availability Service (AHAS). After an application is connected, you can monitor its traffic in real time on the embedded monitoring page in Enterprise Distributed Application Service (EDAS). This feature provides comprehensive visualization to help ensure your application's availability. This topic describes how to configure throttling and degradation rules for microservices using a Dubbo application as an example.
 
@@ -8171,7 +8644,7 @@ using Spring properties, you must also import the `spring-boot-starter-ahas-` `s
 
 `sentinel` dependency. For Zuul 1.x gateways, import the `spring-cloud-zuul-` `starter-ahas-sentinel` dependency. No other dependencies are required. You cannot connect Dubbo 2.7.x or later applications to AHAS by deploying them from the EDAS console. To connect these applications, you must add protection dependencies directly to your application code.
 
-##### Configure sidecar containers and init
+##### 5.2.4.17 Configure sidecar containers and init containers
 
 **containers**
 
@@ -8220,7 +8693,7 @@ i. After the data in the dialog box is refreshed, confirm the precheck items and
 
 anagement for Kubernetes cluste rs For more information about other configuration items for creating or deploying an application, see the Advanced Configuration documentation.
 
-##### Configure a container SecurityContext
+##### 5.2.4.18 Configure a container SecurityContext
 
 A container SecurityContext is a Kubernetes object that defines security settings at the container level. The `runAsUser`, `runAsGroup`, and `fsGroup` settings control container behavior, improve security, and enhance resource control. This topic describes how to configure these settings.
 
@@ -8344,7 +8817,7 @@ drwxr-xr-x 2 nobody nobody 4.0K Oct 25 12:00 test-dir -rw-r--r-- 1 nobody nobody
 
 The output shows that the `test` file and the `test-dir` folder in the `/tmp` directory are owned by the `nobody` user and group. anagement for Kubernetes cluste rs
 
-##### Configure a pod SecurityContext
+##### 5.2.4.19 Configure a pod SecurityContext
 
 A pod SecurityContext is a Kubernetes object that defines security settings at the pod level. You can set `runAsUser`, `runAsGroup`, and `fsGroup` to control the behavior of a pod and its containers. This improves security and resource control. This topic describes how to configure these settings.
 
@@ -8458,7 +8931,7 @@ drwxr-xr-x 2 nobody nobody 4.0K Oct 25 12:00 test-dir -rw-r--r-- 1 nobody nobody
 
 The output shows that the UID and GID of the test file and the test-dir directory created in the `/tmp` directory correspond to the nobody user.
 
-##### Service accounts
+##### 5.2.4.20 Service accounts
 
 In EDAS, you can attach a service account to an application to manage its access permissions for pods.
 
@@ -8503,7 +8976,7 @@ and select a **Service Account Name**. After you complete the configuration, cli
 **Execution Successful**, the deployment is successful and the configuration has taken
 effect.
 
-##### Configure monitoring and administration
+##### 5.2.4.21 Configure monitoring and administration
 
 EDAS supports custom upgrades for the Application Real-Time Monitoring Service agent. If the agent has issues or needs an upgrade, you can use this feature to obtain a more stable and powerful version.
 
@@ -8566,7 +9039,7 @@ After you click **OK**, the application is restarted to apply the update. anagem
 
 Method 1: On the **Change Records** page for the application, view the change details. A successful change indicates that the deployment was successful and the new configuration has taken effect. Method 2: On the **Application Overview** page, click the pod status link next to **Running Status**. In the **Container Group (Pod)** section, check the **Status** of the pod. If a green circle appears, the pod is running, which indicates that the deployment was successful and the new configuration has taken effect.
 
-##### Configure log collection
+##### 5.2.4.22 Configure log collection
 
 When you create or deploy an application in a Kubernetes cluster, you can enable Simple Log Service (SLS) to send business log files, container standard output (stdout), and standard error (stderr) to SLS. In SLS, you can view logs without line limits and perform automatic aggregation and analysis. This topic describes how to configure log collection.
 
@@ -8662,7 +9135,7 @@ down list, select **Container Service For Kubernetes Cluster**. In the applicati
 4. In the navigation pane on the left, click **Log Center**, and then click the **Log File** tab.
 On the **Log File** tab, view the collected log information. If log data is displayed, the log collection is configured successfully. In the **Actions** column, click **View File Log** to query and analyze logs in the Simple Log Service console.
 
-##### Configure Intra-zone provider first
+##### 5.2.4.23 Configure Intra-zone provider first routing
 
 **routing**
 
@@ -8680,7 +9153,7 @@ To use the Intra-zone Provider First feature, enable Intra-zone Provider First f
 3. On the **Basic Information** page of the application, go to the **Application Settings**
 section, turn on Locality Priority, and set the **Threshold**. anagement for Kubernetes cluste rs
 
-#### Use a StatefulSet to create a stateful
+#### 5.2.5 Use a StatefulSet to create a stateful application
 
 **application**
 
@@ -8781,11 +9254,11 @@ i. On the precheck result page of the **Confirm Application Change Precheck** di
 
 After the application is deployed, you can add an Internet-facing Server Load Balancer (SLB) instance to allow access to the application over the Internet. You can also add an internalfacing SLB instance to allow all nodes in the same virtual private cloud (VPC) to access the application over an internal network. For more information, see Add Server Load Balancer (SLB) or Reuse an SLB instance.
 
-### Upgrade and roll back
+### 5.3 Upgrade and roll back applications (Kubernetes)
 
 **applications (Kubernetes)**
 
-#### Overview of application upgrades and
+#### 5.3.1 Overview of application upgrades and rollbacks (Kubernetes clusters)
 
 **rollbacks (Kubernetes clusters)**
 
@@ -8813,11 +9286,11 @@ Roll back to a previous version: For more information, see the **EDAS Developer 
 **RollbackApplication** section.
 anagement for Kubernetes cluste rs
 
-#### Release-to-all-at-once mode (applicable
+#### 5.3.2 Release-to-all-at-once mode (applicable to Kubernetes clusters)
 
 **to Kubernetes clusters)**
 
-##### Use the EDAS console to release an
+##### 5.3.2.1 Use the EDAS console to release an application to all instances in a Kubernetes cluster at a time
 
 **application to all instances in a Kubernetes cluster**
 
@@ -8869,7 +9342,7 @@ environment variables, and application lifecycle management.
 
 Go to the application details page. In the left-side navigation pane, click **Change Records**. Check the status of the corresponding release. If the value of the **Execution status** parameter is **Success**, the release succeeds.
 
-##### Single-batch deployment to a K8s cluster
+##### 5.3.2.2 Single-batch deployment to a K8s cluster by API
 
 **by API**
 
@@ -9081,7 +9554,7 @@ Check the value of the **changeOrderInfo.Status** parameter in the response to d
 
 If the value of the **changeOrderInfo.Status** parameter in the response is 3, the deployment failed. You can analyze the cause using the **TaskMessage** parameter, fix the issue, and then deploy the application again.
 
-##### Use Cloud Toolkit to deploy a Kubernetes
+##### 5.3.2.3 Use Cloud Toolkit to deploy a Kubernetes application in a single batch
 
 **application in a single batch**
 
@@ -9198,11 +9671,11 @@ If you use EDAS on Apsara Stack Enterprise Edition, you must also configure an E
 **Appearance & Behavior > Endpoint**.
 2. On the **Endpoint** page, set the Endpoint and click **Apply and Close**.
 
-#### Phased release (applicable to
+#### 5.3.3 Phased release (applicable to Kubernetes clusters)
 
 **Kubernetes clusters)**
 
-##### Phased release (applicable to Kubernetes
+##### 5.3.3.1 Phased release (applicable to Kubernetes clusters)
 
 **clusters)**
 
@@ -9278,7 +9751,7 @@ Go to the application details page. In the left-side navigation pane, click **Ch
 
 During a phased release, if the application is not updated to the new version on one or more instances, the phased release is in the **Executing** state. When you monitor an upgrade, if you notice that an application instance in the first batch stops responding, you can go to the Change Details page of the instance and click **Roll Back** to roll back the released instance to the previous service package and configuration. If an exception occurs during batch release, see How do I resolve problems in a change process? for troubleshooting. Exceptions such as deployment package unavailability and health check failures may lead to failures of application updates. The current application update is automatically terminated, and the application is rolled back. During an update, the maximum timeout period for a single phase is 30 minutes. If the update process is suspended due to a timeout error, you must go to the **Change Details** page to terminate the release and roll back the application.
 
-##### Phased release of a K8s application by API
+##### 5.3.3.2 Phased release of a K8s application by API
 
 This topic describes how to use the EDAS Java SDK to perform a phased release of an application. The application can be deployed from a JAR package, a WAR package, or an image.
 
@@ -9503,13 +9976,13 @@ The following response is returned: `{`
 
 This example uses a **phased release in two batches with manual confirmation** scenario. You only need to manually confirm one batch. If you need to manually confirm multiple batches, select the pipeline ID (PipelineId) for the correct batch and repeat this step. When you repeat this step, wait for the specified **batch deployment interval**. The default interval is 10 seconds.
 
-#### Canary release (applicable to
+#### 5.3.4 Canary release (applicable to Kubernetes clusters)
 
 **Kubernetes clusters)**
 
 anagement for Kubernetes cluste rs
 
-##### Use the EDAS console to implement canary
+##### 5.3.4.1 Use the EDAS console to implement canary releases of applications in Kubernetes clusters
 
 **releases of applications in Kubernetes clusters**
 
@@ -9594,7 +10067,7 @@ If you find problems with the new application version during verification, click
 
 After the canary release is complete, go to the **Application Overview** page and verify that the **Deployment Package** at the top of the page is the new application version.
 
-##### Canary release in a K8s cluster using an
+##### 5.3.4.2 Canary release in a K8s cluster using an API
 
 **API**
 
@@ -9938,11 +10411,11 @@ Call the GetChangeOrderInfo operation to view the details of the change process.
 
 Check the value of the **changeOrderInfo.Status** parameter in the response to determine whether the canary release was successful. The following list describes the possible values for **changeOrderInfo.Status**: 0: Pending 1: Processing 2: Succeeded 3: Failed 6: Terminated 8: Waiting for manual confirmation for the next batch (in manual batch release mode). 9: Waiting for the next batch to run (in automatic batch release mode). 10: Failed due to a system exception
 
-#### Roll back an application (applicable to
+#### 5.3.5 Roll back an application (applicable to Kubernetes clusters)
 
 **Kubernetes clusters)**
 
-##### Roll back a Kubernetes application using
+##### 5.3.5.1 Roll back a Kubernetes application using the console
 
 **the console**
 
@@ -9979,7 +10452,7 @@ This section describes how to roll back an application by deploying a previous v
 column. anagement for Kubernetes cluste rs After you confirm the deployment of the previous version, the system rolls back the application to that version. The rollback is successful if the **Execution Status** is
 **Succeeded**.
 
-##### Roll back a K8s application by using an API
+##### 5.3.5.2 Roll back a K8s application by using an API
 
 This topic describes how to use the EDAS Java SDK to roll back an application in a K8s cluster to a specific historical version.
 
@@ -10088,7 +10561,7 @@ Check the value of the **changeOrderInfo.Status** parameter in the returned resu
 
 0: Preparing 1: In progress 2: Succeeded 3: Failed 6: Aborted 8: Waiting for manual confirmation for the next batch (Manual Batch Release) 9: Waiting for the next batch (Automatic Batch Release) 10: Failed due to a system exception
 
-##### Stop and roll back an application update in
+##### 5.3.5.3 Stop and roll back an application update in a Kubernetes cluster by calling an API operation
 
 **a Kubernetes cluster by calling an API operation**
 
@@ -10189,9 +10662,9 @@ anagement for Kubernetes cluste rs
 
 If the value of the **changeOrderInfo.Status** parameter in the response is 3, the application rollback failed. You can analyze the cause of the error based on the value of the **TaskMessage** parameter in the response. After you resolve the issue, upgrade the application again.
 
-### CI/CD
+### 5.4 CI/CD
 
-#### CI/CD overview (for Kubernetes)
+#### 5.4.1 CI/CD overview (for Kubernetes)
 
 Continuous integration (CI) and continuous deployment (CD) are essential for the continuous iteration of applications. Enterprise Distributed Application Service (EDAS) lets you use Jenkins and Apsara DevOps to implement CI/CD for your applications.
 
@@ -10199,9 +10672,9 @@ Continuous integration (CI) and continuous deployment (CD) are essential for the
 
 Jenkins is an open-source tool that helps you continuously build and test software projects. You can also use Jenkins to monitor external jobs. You can host your code in GitLab and then use Jenkins to implement CI for EDAS applications. For more information, see Use Jenkins for continuous integration. The edas-jenkins-plugin is integrated with Jenkins. This plug-in lets you use Jenkins to continuously deploy applications to EDAS. For more information, see Use an EDAS plug-in in Jenkins to build a job for application deployment.
 
-#### Jenkins
+#### 5.4.2 Jenkins
 
-##### Create a continuous integration workflow
+##### 5.4.2.1 Create a continuous integration workflow using Jenkins
 
 **using Jenkins**
 
@@ -10314,7 +10787,7 @@ sh-3.2# tree -L 1 carshop carshop ├── detail ├── itemcenter ├─�
 
 In this structure, detail, itemcenter, and itemcenter-api are submodules. To deploy the itemcenter module, you must set a clean install build goal for the parent project. Then, set a `clean package toolkit:deploy` build goal for the itemcenter module.
 
-##### Use an EDAS plug-in in Jenkins to build a
+##### 5.4.2.2 Use an EDAS plug-in in Jenkins to build a job for application deployment
 
 **job for application deployment**
 
@@ -10551,7 +11024,7 @@ The **Build History** section lists the build records for the project. Click a r
 
 For more information, see Parameter settings for deploying applications using edas-jenkinsplugin in Jenkins.
 
-##### Set parameters for deploying an
+##### 5.4.2.3 Set parameters for deploying an application with edas-jenkins-plugin in Jenkins
 
 **application with edas-jenkins-plugin in Jenkins**
 
@@ -10646,11 +11119,11 @@ anagement for Kubernetes cluste rs
 | Resource Quota |   |
 | Application Management |   |
 
-### Application O&M
+### 5.5 Application O&M
 
 anagement for Kubernetes cluste rs
 
-#### Overview of application O&M
+#### 5.5.1 Overview of application O&M
 
 Enterprise Distributed Application Service (EDAS) provides a range of features for application operations and maintenance (O&M). These features include lifecycle management, application access management, application scaling, throttling and degradation, change records, an event center, and log management.
 
@@ -10670,7 +11143,7 @@ anagement for Kubernetes cluste rs
 |---|---|
 | Log management | EDAS provides the following three types of logs: Real-time logs for applications deployed in EDAS Kubernetes clusters. If an application is abnormal, you can view the real-time logs to troubleshoot pod-related problems. For more information, see View real-time logs. Add log directories to favorites, view logs, and search for logs. You can view instance-level and application-level logs online to troubleshoot application exceptions. For more information, see View log directories. EDAS is connected to Simple Log Service (SLS). If you enable Simple Log Service when you create or deploy an application, you can view the file logs of the application. For more information, see View file logs. |
 
-#### Manage the application lifecycle
+#### 5.5.2 Manage the application lifecycle
 
 After you host an application from a Container Service for Kubernetes (ACK) cluster on Enterprise Distributed Application Service (EDAS), you can manage the application lifecycle in the EDAS console. You can deploy new versions, deploy historical versions, and scale the application. You can also perform more granular lifecycle management by editing the YAML file.
 
@@ -10754,7 +11227,7 @@ In the upper-right corner of the **Basic Information** page, click **View YAML**
 1. In the upper-right corner of the **Basic Information** page, click **Delete**.
 2. In the **Confirm** dialog box, click **OK**.
 
-#### View application changes
+#### 5.5.3 View application changes
 
 After you perform lifecycle actions in EDAS, such as deploying, starting, scaling out, or scaling in an application, you can view the current change status on the application details page. You can also view historical change records for the application on the change history page.
 
@@ -10839,7 +11312,7 @@ that you want to view to open the **Basic Information** page.
 3. In the navigation pane on the left of the **Basic Information** page, click **Change History**.
 The **Change History** page displays all change records for the application, such as release time, end time, change type, execution status, and publisher. To view more details about a change record, click the record.
 
-#### View application events
+#### 5.5.4 View application events
 
 In the Enterprise Distributed Application Service (EDAS) console, you can view event information for applications that are deployed in Kubernetes (K8s) clusters. This helps you understand the application runtime status and quickly identify problems. This topic describes how to view application events in the console.
 
@@ -10865,7 +11338,7 @@ Table 1. Application event filter conditions
 
 Pay close attention to **Warning**-level events and check your application.
 
-#### View instance deployment information
+#### 5.5.5 View instance deployment information
 
 This topic describes the deployment information for pods in a Kubernetes (K8s) cluster. This information includes details such as runtime duration, running status, logs, and instance configurations. You can use this information to evaluate the stability and efficiency of your cluster.
 
@@ -10890,11 +11363,11 @@ anagement for Kubernetes cluste rs
 **Configuration** page, you can view the configuration. Click **Package And Download**
 **Configuration** to download the configuration.
 
-#### Access to an application (service
+#### 5.5.6 Access to an application (service exposure)
 
 **exposure)**
 
-##### Application access overview
+##### 5.5.6.1 Application access overview
 
 Applications deployed to an EDAS Kubernetes (K8s) environment are not directly accessible by other applications. This topic describes several ways to expose applications.
 
@@ -10913,7 +11386,7 @@ anagement for Kubernetes cluste rs
 |---|---|---|
 | Access based on Ingress forwarding rules | Add one or more application routes (K8s Ingresses) for a Service. When an external HTTP request accesses a backend service, the Ingress controller parses the Ingress routing rules. The controller then forwards the HTTP traffic to the corresponding Service based on these rules. | Add an application route (Ingress) |
 
-##### Add Server Load Balancer (SLB)
+##### 5.5.6.2 Add Server Load Balancer (SLB)
 
 After you create an application in an EDAS Kubernetes cluster, you can add an Internet-facing or internal-facing Server Load Balancer (SLB) instance to the application to enable access from the internet or an internal network. This topic uses an application in a Container Service for Kubernetes cluster as an example to describe how to add an Internet-facing SLB instance.
 
@@ -10980,7 +11453,7 @@ the specifications of the SLB instance, add more SLB instances to distribute the
 
 access the application's home page. For example: `115.xx.XX.XX:80` . If the IP address and port information is not displayed next to Server Load Balancer, the SLB instance failed to attach. Check the change log to view the details of the failure and troubleshoot the issue.
 
-##### Reuse a Server Load Balancer (SLB)
+##### 5.5.6.3 Reuse a Server Load Balancer (SLB) instance
 
 **instance**
 
@@ -11013,7 +11486,7 @@ The main performance metrics of an SLB instance include **Maximum**
 **Connections**, **New Connections Per Second**, and **Queries Per Second**. If the traffic
 to your application exceeds the performance capacity of the SLB instance, you can add more SLB instances to distribute the traffic load.
 
-##### Expose services of multi-cluster
+##### 5.5.6.4 Expose services of multi-cluster applications using SLB
 
 **applications using SLB**
 
@@ -11115,7 +11588,7 @@ for i in {1..10}; do curl -s Your load balancing (public network) |grep 'sc serv
 
 anagement for Kubernetes cluste rs
 
-##### Add a service
+##### 5.5.6.5 Add a service
 
 Services within the same Kubernetes cluster in EDAS cannot use an Internet or private Server Load Balancer (SLB) to access each other. To enable access between services within the cluster, you can add a Kubernetes Service to an application. This topic describes how to add a Service and verify this access.
 
@@ -11208,7 +11681,7 @@ Connecting to 10.XX.XX.XX:8081 (10.XX.XX.XX:8081) index.html 100% |*************
 
 This example is for a web service. The log output varies for other service types.
 
-##### Create an application route (Ingress)
+##### 5.5.6.6 Create an application route (Ingress)
 
 An Ingress in Enterprise Distributed Application Service (EDAS) is a collection of routing rules that route external HTTP traffic to internal Services. You can use these application routes, which are Kubernetes (K8s) Ingresses, to access various Services within a cluster based on specific forwarding rules. This topic describes how to configure an application route and its forwarding rules in the EDAS console.
 
@@ -11260,9 +11733,9 @@ After the application route is created, it appears in the application route list
 
 In a browser, access the `domain name/path` specified in the forwarding rule. Verify that you can access the backend service that corresponds to the Service.
 
-#### Application scaling
+#### 5.5.7 Application scaling
 
-##### Manually scale applications
+##### 5.5.7.1 Manually scale applications
 
 This topic describes how to manually scale applications by increasing or decreasing the number of instances. This helps you use resources efficiently and reduce costs while maintaining service quality.
 
@@ -11293,7 +11766,7 @@ anagement for Kubernetes cluste rs After the change is complete, check the runni
 **Information** area of the **Basic Information** page. If the status is Pod running, the
 application was scaled successfully.
 
-##### Auto Scaling (Kubernetes)
+##### 5.5.7.2 Auto Scaling (Kubernetes)
 
 Auto scaling is a critical operations and maintenance (O&M) capability for managing distributed applications. The auto scaling feature in EDAS monitors the status of each application instance and dynamically scales instances. This process ensures the quality of service (QoS) and improves application availability.
 
@@ -11355,7 +11828,7 @@ activities. On this page, you can search for specific events and view their deta
 
 After an elastic policy is enabled, you can **Delete**, **Disable**, **Enable**, and **Edit** it.
 
-#### Throttling and degradation
+#### 5.5.8 Throttling and degradation
 
 Enterprise Distributed Application Service (EDAS) uses Application High Availability Service (AHAS) to provide throttling and degradation features for Spring Cloud, Dubbo, and Highspeed Service Framework (HSF) applications. You can view throttling and degradation details and dynamically change rules to ensure the availability of your applications.
 
@@ -11396,7 +11869,7 @@ feature from the menu. AHAS provides the following throttling and degradation fe
 
 anagement for Kubernetes cluste rs
 
-#### Class library management
+#### 5.5.9 Class library management
 
 Class library management provides a centralized way to manage and isolate the Java class libraries (JAR packages) that your applications depend on. This helps resolve common issues in traditional deployments, such as class conflicts, versioning issues, and redundant packaging.
 
@@ -11430,11 +11903,11 @@ anagement for Kubernetes cluste rs Scenario 1: Multiple business systems use Spr
 **Management**.
 2. On the Library Management page, click **Upload File** to upload the JAR package.
 
-#### J2EE configuration
+#### 5.5.10 J2EE configuration
 
 J2EE configuration in EDAS provides the core method for parameter tuning and behavior customization of Alibaba application server running on ECS. It enables developers and O&M engineers to flexibly adapt to business needs, improve system performance and security, and achieve standardized, centralized middleware management.
 
-##### Startup Parameter Configuration
+##### 5.5.10.1 Startup Parameter Configuration
 
 Startup parameter configuration allows developers and Operations and Maintenance (O&M) engineers to dynamically adjust Java Virtual Machine (JVM) behavior, system properties, and platform integration parameters without modifying application code. This improves application deployment flexibility and O&M efficiency.
 
@@ -11483,11 +11956,11 @@ anagement for Kubernetes cluste rs
 |---|---|---|
 | Submit | Click Submit to save the configuration items in the form. | None |
 
-##### Web Container
+##### 5.5.10.2 Web Container
 
 EDAS Web Container configuration provides a standardized, configurable, and easy-tomanage runtime environment for enterprise Java web applications. It bridges traditional J2EE applications and modern cloud-native architecture. Using this feature, you gain the elasticity and administration benefits of the cloud platform while ensuring your existing application architecture remains stable and compatible.
 
-###### Container configuration
+###### 5.5.10.2.1 Container configuration
 
 Container configuration lets you flexibly set the character set (such as UTF-8) for requests and responses, ensuring consistent data encoding between the frontend and backend. You can also configure the session timeout duration to precisely control how long a user's logon session remains valid, improving both security and the user experience.
 
@@ -11516,7 +11989,7 @@ anagement for Kubernetes cluste rs
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save your configuration. | None |
 
-###### Access Logs
+###### 5.5.10.2.2 Access Logs
 
 This topic describes access log configurations, including file prefixes and suffixes, log format, and retention period. It provides lightweight, reliable, and scalable observability for J2EE applications.
 
@@ -11549,7 +12022,7 @@ anagement for Kubernetes cluste rs
 | Reset | Click Reset to restore the default values. | None |
 | Submit | Click Submit to save the configurations in the form. | None |
 
-###### HTTP Channel Management
+###### 5.5.10.2.3 HTTP Channel Management
 
 anagement for Kubernetes cluste rs The HTTP Channel Management feature provides fine-grained control over the listening ports and communication parameters of web containers. This feature lets you flexibly define the service ports, protocol behavior, and connection policies that applications expose. This ensures that applications can securely and efficiently accept and process HTTP/HTTPS requests in a cloud-native environment.
 
@@ -11676,7 +12149,7 @@ anagement for Kubernetes cluste rs
 8. On the **HTTP Channel Management** page, in the channel list, click **Enable** in the
 **Actions** column. In the **Confirm Enabling** dialog box, click **OK** to enable the channel.
 
-###### Virtual Host Management
+###### 5.5.10.2.4 Virtual Host Management
 
 Configure virtual hosts to enable Single Sign-On (SSO). This shares the logon status among multiple applications that use the same domain name. You can also configure remote filters to control access or block requests from specific IP addresses or CIDR blocks. This improves security and O&M flexibility.
 
@@ -11728,7 +12201,7 @@ host details.
 **Confirm Deletion** dialog box, click **OK** to delete the virtual host.
 anagement for Kubernetes cluste rs
 
-###### Configure Session Sharing
+###### 5.5.10.2.5 Configure Session Sharing
 
 This topic describes how to configure Redis session sharing for J2EE applications in EDAS to ensure consistent and highly available user session states across multiple application instances.
 
@@ -11753,11 +12226,11 @@ You have created a Kubernetes cluster with the application runtime environment s
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the configuration settings. | None |
 
-##### EJB
+##### 5.5.10.3 EJB
 
 EDAS supports configuration management for Enterprise JavaBeans (EJB) to ensure stable operation and efficient operations and maintenance (O&M).
 
-###### Stateless Session Bean Management
+###### 5.5.10.3.1 Stateless Session Bean Management
 
 anagement for Kubernetes cluste rs When EDAS supports J2EE applications, it delivers high concurrent processing, efficient resource utilization, and seamless horizontal scaling through fine-grained configuration management of stateless session bean instances.
 
@@ -11796,7 +12269,7 @@ anagement for Kubernetes cluste rs
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the form settings. | None |
 
-###### Stateful Session Bean Management
+###### 5.5.10.3.2 Stateful Session Bean Management
 
 When supporting J2EE applications, EDAS manages parameters such as session timeout duration and the number of passivated instances for stateful session beans. This balances memory usage against session availability and ensures user state consistency and system stability in multi-instance environments.
 
@@ -11823,7 +12296,7 @@ click **Submit**.
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the form settings. | None |
 
-###### Singleton Session Bean Configuration
+###### 5.5.10.3.3 Singleton Session Bean Configuration Management
 
 **Management**
 
@@ -11848,7 +12321,7 @@ and click **Submit**.
 | Reset | Click Reset to restore the default values. | None |
 | Submit | Click Submit to save the configuration settings. | None |
 
-###### Message-driven bean configuration
+###### 5.5.10.3.4 Message-driven bean configuration management
 
 **management**
 
@@ -11877,11 +12350,11 @@ anagement for Kubernetes cluste rs
 | Reset | Click Reset to restore the default values. | None |
 | Submit | Click Submit to save the settings on the form. | None |
 
-##### Resource management
+##### 5.5.10.4 Resource management
 
 The Resource Management feature in Alibaba Cloud Enterprise Distributed Application Service (EDAS) enables you to centrally configure and manage core resources, such as database connections (JDBC), JMS services, work managers, microservice interoperability, and AI configuration management. This significantly reduces integration complexity when migrating traditional Java EE applications to the cloud.
 
-###### JDBC configuration
+###### 5.5.10.4.1 JDBC configuration
 
 The JDBC resource management feature in EDAS allows traditional J2EE applications to host database connections in a cloud-native environment. This improves O&M efficiency and ensures stability.
 
@@ -12036,11 +12509,11 @@ its **Details**.
 6. On the **Connection Pool Management** page, click **Actions**, then click **Delete**. In the
 **Confirm Deletion** dialog box, click **OK** to delete the connection pool.
 
-###### JMS service
+###### 5.5.10.4.2 JMS service
 
 Quickly configure and manage JMS resources on the EDAS platform to integrate traditional EJB applications with message middleware efficiently.
 
-###### JMS Adapter Configuration
+###### 5.5.10.4.2.1 JMS Adapter Configuration
 
 The EDAS JMS adapter configuration serves as the core connection layer for JMS services and defines the communication bridge between J2EE applications and underlying message middleware. This configuration enables you to specify message service endpoints flexibly.
 
@@ -12065,7 +12538,7 @@ You have created a Kubernetes cluster with an application runtime environment of
 |   |   | defaultJMSResourceAdapter |
 |---|---|---|
 
-###### JMS connection factory
+###### 5.5.10.4.2.2 JMS connection factory
 
 The JMS connection factory configuration in EDAS is a core component of JMS service resource management. It enables you to visualize and configure connection pool parameters, such as the maximum and minimum number of connections, wait timeout, and idle timeout.
 
@@ -12112,7 +12585,7 @@ details.
 6. On the **JMS Connection Factory** page, click **Actions**, then click **Delete**. In the **Confirm**
 **Deletion** dialog box, click **OK** to delete the connection factory.
 
-###### JMS destination
+###### 5.5.10.4.2.3 JMS destination
 
 The EDAS JMS destination configuration is a core component of the JMS service resource system. This feature enables you to create JMS-compliant Queue or Topic resources and bind them to standard JNDI names, supporting flexible and reliable message routing and communication models. anagement for Kubernetes cluste rs
 
@@ -12151,7 +12624,7 @@ to view or edit its details.
 **Operation** column for the destination that you want to delete. In the **Confirm Deletion**
 dialog box, click **OK**.
 
-###### Job Manager
+###### 5.5.10.4.3 Job Manager
 
 The EDAS Job Manager standardizes concurrent resource management for J2EE applications. You can configure core thread pool parameters, such as thread prefix, core and maximum thread count, idle timeout, and queue capacity, to improve application stability and high availability (HA).
 
@@ -12194,7 +12667,7 @@ view or edit the work manager details.
 6. On the **Work Manager Management** page, click **Delete** in the **Actions** column. In the
 **Confirm Deletion** dialog box, click **OK**.
 
-###### Microservice Interoperability
+###### 5.5.10.4.4 Microservice Interoperability Configuration
 
 **Configuration**
 
@@ -12223,7 +12696,7 @@ anagement for Kubernetes cluste rs
 | Submit | Click Submit to save the configuration items in the form. | None |
 |---|---|---|
 
-###### AI Configuration Management
+###### 5.5.10.4.5 AI Configuration Management
 
 EDAS seamlessly integrates AI capabilities into traditional applications by centrally configuring key parameters such as API keys, Large Language Model (LLM) service endpoints, organization IDs, project IDs, and callback keys. This enables enterprises to quickly achieve intelligent upgrades while maintaining their existing architecture.
 
@@ -12264,11 +12737,11 @@ view or edit its details.
 6. In the AI configuration list on the **AI Configuration** page, click **Delete** in the **Actions**
 column. In the **Confirm Deletion** dialog box, click **OK**.
 
-##### Simple Log Service
+##### 5.5.10.5 Simple Log Service
 
 The EDAS J2EE Simple Log Service enables you to define log behavior flexibly without modifying your code, improving O&M efficiency and system observability.
 
-###### System log configuration
+###### 5.5.10.5.1 System log configuration
 
 System log configuration is a core component of the EDAS J2EE log service. It centrally manages system-level logs from underlying components such as containers, EJB, JMS, and JDBC during application runtime. These logs include startup logs, transaction logs, connection pool status, and deployment information. Visual configurations provide fine-grained control over log output behavior, storage policies, and performance.
 
@@ -12298,9 +12771,9 @@ anagement for Kubernetes cluste rs
 | Asynchronous log queue cache size | The default value is 8000. This is an unbounded queue. | 8000 |
 | Log level | Select a log level. ALL. FINEST. FINER. FINE. CONFIG. INFO. WARNING. SEVERE. OFF. | ALL |
 
-#### Log management
+#### 5.5.11 Log management
 
-##### View real-time logs
+##### 5.5.11.1 View real-time logs
 
 This topic describes how to view the real-time logs of applications that are deployed in Kubernetes clusters.
 
@@ -12320,7 +12793,7 @@ anagement for Kubernetes cluste rs
 **Name** drop-down list.
 To automatically update the logs every 10 seconds, click **Enable Real-time Refresh**. To export logs, click **Export Logs**, set the log start time and size, and then click Export.
 
-##### View log directories
+##### 5.5.11.2 View log directories
 
 You can check instance and application logs to troubleshoot application issues. Enterprise Distributed Application Service (EDAS) lets you add log directories to your favorites, view logs, and search for logs. This topic describes how to view instance logs.
 
@@ -12371,7 +12844,7 @@ click **Stop Online Viewing**.
 2. In the **Cancel Online Viewing** dialog box, confirm the log directory to be removed from
 your favorites, and then click **OK**.
 
-##### View file logs
+##### 5.5.11.3 View file logs
 
 anagement for Kubernetes cluste rs Enterprise Distributed Application Service (EDAS) is connected to Log Service. If you enable the Log Service feature when you create or deploy an application in a Container Service for Kubernetes (ACK) cluster in EDAS, you can view the log files of the application. This topic describes how to enable the Log Service feature for an application and view the log files of the application.
 
@@ -12390,7 +12863,7 @@ By default, the log file feature is disabled. Contact an O&M engineer to enable 
 6. Query and analyze logs in the Simple Log Service console. For more information, see
 **Simple Log Service User Guide > Query and Analyze Logs**.
 
-##### Dynamic log configuration
+##### 5.5.11.4 Dynamic log configuration
 
 Applications typically use logging frameworks, such as logback and log4j, to record logs. You can configure log levels in a log configuration file, and the log content is then output to a file. EDAS lets you modify and apply log configurations at runtime. You can create a log configuration in the EDAS console, add content by entering it manually or scraping an existing configuration, and select the objects to which the configuration applies. The configuration takes effect immediately after it is enabled. This topic describes how to configure dynamic logs.
 
@@ -12524,9 +12997,9 @@ For the log4j2 framework, the YAML and JSON formats may not be validated effecti
 
 This is supported.
 
-#### Application management
+#### 5.5.12 Application management
 
-##### Export applications
+##### 5.5.12.1 Export applications
 
 EDAS lets you export application configurations and packages to your local machine to reduce Operations and Maintenance (O&M) costs. anagement for Kubernetes cluste rs
 
@@ -12565,7 +13038,7 @@ When you import or export application data, the following application informatio
 
 You cannot import, export, or clone any application information that is not in the list above.
 
-##### Import an application
+##### 5.5.12.2 Import an application
 
 You can upload local applications to EDAS for management, or import applications that are already published in ACK.
 
@@ -12622,7 +13095,7 @@ You can import applications that are published in ACK to manage them in EDAS.
 and **Deployment**. In the **Target** section, specify the target **Application Name**,
 **Microservices Namespace**, **Cluster**, and **Kubernetes Namespace**. Then, click **OK**.
 
-##### Clone an application
+##### 5.5.12.3 Clone an application
 
 You can clone applications to create copies for migration.
 
@@ -12644,7 +13117,7 @@ Only Open Application Model (OAM) applications in Kubernetes (K8s) clusters can 
 **Confirm**.
 In the upper-right corner of the **Application List** page, click **Import/Export Records** to view the application cloning progress and details.
 
-##### Export application reports
+##### 5.5.12.4 Export application reports
 
 You can use EDAS to export application information as an Excel file to your local computer. This feature helps reduce Operations and Maintenance (O&M) costs.
 
@@ -12672,7 +13145,7 @@ If you do not select Export Resource Instance List, the exported file contains t
 **Package Type**, **Creation Time**, **Last Modified Time**, **Application Description**, **Internet-**
 **facing SLB Instance**, and **Internal-facing SLB**.
 
-#### View the service list
+#### 5.5.13 View the service list
 
 You can use Enterprise Distributed Application Service (EDAS) to view the service list and details for deployed Spring Cloud, Dubbo, and HSF applications. This topic describes how to view the service list.
 
@@ -12698,9 +13171,9 @@ anagement for Kubernetes cluste rs
 You can also view **Spring Cloud**, **Dubbo**, and **HSF** services in the **Microservice**
 **Administration** section on the EDAS home page.
 
-### Monitoring
+### 5.6 Monitoring
 
-#### Application overview
+#### 5.6.1 Application overview
 
 EDAS integrates the Application Monitoring feature of ARMS. After you create an application in EDAS, you can view time series charts on the Application Overview page. These charts show metrics such as the invocation count for services that the application provides, the invocation count for dependent services, and system information.
 
@@ -12739,7 +13212,7 @@ You can edit or delete a custom topology.
 4. If the current topology is no longer needed, click **Delete** in the upper-right corner to delete
 it.
 
-#### Application details
+#### 5.6.2 Application details
 
 anagement for Kubernetes cluste rs The Application Details page for Enterprise Distributed Application Service (EDAS) integrates multiple monitoring features from Application Real-time Monitoring Service (ARMS). You can use this page to quickly identify faulty and slow APIs, reproduce call parameters, detect memory leaks, and discover system bottlenecks. This greatly improves the efficiency of diagnosing online problems.
 
@@ -12792,7 +13265,7 @@ The **Upstream Applications** tab displays timing curves for the response time, 
 
 On the **API Snapshots** tab, you can view information such as the API name, its associated application, response time, and TraceID.
 
-#### Interface calls
+#### 5.6.3 Interface calls
 
 This topic describes the interface calls feature of application monitoring.
 
@@ -12835,7 +13308,7 @@ The **Downstream Trace** tab displays the downstream interfaces of the applicati
 
 Select an interface on the left side of the page to view information about a single call. This information includes the generation time, interface name, application, time consumed, status, and TraceId.
 
-#### Advanced monitoring
+#### 5.6.4 Advanced monitoring
 
 Application Real-Time Monitoring Service (ARMS) is an application performance management (APM) product from Alibaba Cloud. EDAS seamlessly connects with ARMS. You can enable advanced monitoring to use the APM features of ARMS to monitor applications deployed on EDAS. This provides in-depth insights into your application's performance.
 
@@ -12864,9 +13337,9 @@ On the page that appears, you can view the following application information: **
 After you connect EDAS applications to ARMS for advanced monitoring, you can monitor them. For more information about application monitoring features, see the **User Guide for**
 **Application Real-Time Monitoring Service (ARMS) > Application Monitoring** section.
 
-#### Alerting
+#### 5.6.5 Alerting
 
-##### Manage contacts
+##### 5.6.5.1 Manage contacts
 
 When an alert rule is triggered, the system sends notifications to a specified contact group. You must create contacts before you can create a contact group. When you create a contact, you can provide a mobile number and an email address to receive notifications, or a DingTalk robot webhook URL for automatic alert notifications.
 
@@ -12917,7 +13390,7 @@ the **Contacts** tab, click **Create Webhook**.
 
 To search for a contact, go to the **Contacts** tab and select **Name**, **Mobile**, or **Email** from the drop-down list. Enter the contact's full or partial name, mobile number, or email address in the search box and click the search icon. To update a contact's information, click **Edit** in the **Operations** column for that contact. In the **Edit Contact** dialog box, modify the information and click **Confirm**. To delete a single contact, click **Delete** in the **Operations** column for that contact, and then click **Confirm** in the dialog box that appears. To delete multiple contacts, select the checkboxes for the contacts that you want to delete, click **Batch Delete**, and then click **Confirm** in the dialog box that appears.
 
-##### Create and manage contact groups
+##### 5.6.5.2 Create and manage contact groups
 
 When you create an alert rule, you can specify a contact group to receive alert notifications. If an alert is triggered, EDAS sends notifications to the contacts in that group. This topic describes how to create and manage contact groups.
 
@@ -12959,7 +13432,7 @@ You can remove contacts from the group in the expanded view. To remove a contact
 
 Before you delete a contact group, make sure that it is not used by any monitoring jobs. Otherwise, features such as alerting may fail. anagement for Kubernetes cluste rs
 
-##### Create an alert
+##### 5.6.5.3 Create an alert
 
 You can create alerts to define rules for specific monitored objects. When a rule is triggered, the system sends an alert notification to a specified contact group. This prompts you to take the necessary action to resolve the issue.
 
@@ -13027,7 +13500,7 @@ anagement for Kubernetes cluste rs The alert data revision policy can be set to 
 
 You can query and delete alert records in the alert management system.
 
-##### Manage alerts
+##### 5.6.5.4 Manage alerts
 
 On the Alert Policies page, you can manage all the alert rules within your Alibaba Cloud account and query the history of alert events and alert notifications.
 
@@ -13069,7 +13542,7 @@ Alert notifications are sent only if the trigger status is **Triggered**. In thi
 4. Click the **Alarm Post History** tab to view the history of the alert notifications that are sent
 for triggered alerts. The alert notifications include text messages and emails.
 
-##### Set up DingTalk robot alerts
+##### 5.6.5.5 Set up DingTalk robot alerts
 
 You can add a DingTalk robot webhook URL to send alert notifications to a DingTalk group. This helps you receive immediate notifications for alert events and improves your O&M efficiency.
 
@@ -13142,11 +13615,11 @@ i. Set Notification Method to **DingTalk Robot**. ii. For Notification Recipient
 
 The DingTalk robot alert is configured. When an alert is triggered, an alert notification is sent to the specified DingTalk group. anagement for ECS clusters
 
-## Application management
+## 6 Application management for ECS clusters
 
 **for ECS clusters**
 
-### Overview of application
+### 6.1 Overview of application hosting (ECS)
 
 **hosting (ECS)**
 
@@ -13158,11 +13631,11 @@ You can host Java applications in Enterprise Distributed Application Service (ED
 
 **hosting**
 
-O&M Monitoring Service administration Canary Unpublish End-to-end traffic Graceful Elastic scaling Load shutdown adjustment balancing Application Application details API overview calls Outlier ejection Throttling and ... Change records Events and degradation logs
+O&M Service administration Canary Unpublish End-to-end traffic Graceful Elastic scaling Load shutdown adjustment balancing Application API calls Outlier ejection Throttling and ... Events and degradation
 
 **CI/CD**
 
-Jenkins Apsara Devops Creation Upgrade and and deployment rollback Image JAR/WAR Console API
+Apsara Devops Creation Upgrade and and deployment rollback Image JAR/WAR Console API
 
 **ECS**
 
@@ -13195,9 +13668,9 @@ anagement for ECS clusters
 | Application O&M | EDAS provides various O&M features for applications. These features include the following: Manage application lifecycle Load balancing Elastic scaling Throttling and degradation View application changes Manage logs | For more information, see the following topics: Manage the application lifecycle (ECS) Server Load Balancer overview Auto-scale applications in an ECS cluster Throttling and Degradation View application changes Log introduction |
 |---|---|---|
 
-### Resource management
+### 6.2 Resource management
 
-#### Overview of ECS resource management
+#### 6.2.1 Overview of ECS resource management
 
 Enterprise Distributed Application Service (EDAS) is a Platform as a Service (PaaS) offering that provides application environments in Elastic Compute Service (ECS) and Kubernetes. This topic describes the resources in the ECS environment and how to manage them in EDAS. The ECS environment in EDAS includes microservices namespaces, virtual private clouds (VPCs), clusters, and ECS instances.
 
@@ -13212,9 +13685,9 @@ anagement for ECS clusters
 | Clust er | A cluster is a collection of cloud resources required to run applications. EDAS provides two types of ECS clusters: Alibaba Cloud ECS clusters and hybrid cloud ECS clusters. | You can create, scale out (add instances), manage, and delete Alibaba Cloud ECS clusters and hybrid cloud ECS clusters. Alibaba Cloud ECS clusters Create an ECS cluster in the console Scale out an ECS cluster in the console Manage ECS clusters Create a hybrid cloud ECS cluster | Alibaba Cloud ECS clusters For more information, see Create an ECS cluster in the EDAS console. For more information, see Scale out an ECS cluster in the EDAS console. For more information, see Manage ECS clusters. Hybrid cloud ECS clusters For more information, see Create a hybrid cloud ECS cluster. |
 | ECS | ECS is a fundamental cloud computing service provided by Alibaba Cloud. You can use ECS instances to deploy applications. | EDAS provides a link to the ECS buy page where you can create instances. The primary management operation for an ECS instance in EDAS is to install the EDAS Agent. Note When you create an ECS instance, you can also install the EDAS Agent by selecting the EDAS base image. | For more information, see Install EDAS Agent for an ECS instance. |
 
-#### Microservice namespace management
+#### 6.2.2 Microservice namespace management
 
-##### Manage microservices namespaces in the
+##### 6.2.2.1 Manage microservices namespaces in the console
 
 **console**
 
@@ -13265,7 +13738,7 @@ You can delete a microservices namespace only if the following prerequisites are
 delete and click **Delete** in the **Actions** column.
 2. In the **Confirm** dialog box, click **Delete**.
 
-##### Manage a microservices namespace by
+##### 6.2.2.2 Manage a microservices namespace by calling API operations
 
 **calling API operations**
 
@@ -13405,9 +13878,9 @@ anagement for ECS clusters The following code shows a sample response from the L
 
 `}`
 
-#### ECS cluster management
+#### 6.2.3 ECS cluster management
 
-##### Create an ECS cluster in the console
+##### 6.2.3.1 Create an ECS cluster in the console
 
 An Enterprise Distributed Application Service (EDAS) ECS cluster provides a deployment environment for your applications. To host applications in an EDAS ECS environment, you must first create an ECS cluster. This topic describes how to create an Alibaba Cloud ECS cluster.
 
@@ -13447,7 +13920,7 @@ After the cluster is created, a **Creation successful** message is displayed at 
 
 After the cluster is created, it is empty. You must add ECS instances to the cluster. For more information, see Scale out an ECS cluster in the console.
 
-##### Create an ECS cluster by calling an API
+##### 6.2.3.2 Create an ECS cluster by calling an API operation
 
 **operation**
 
@@ -13552,7 +14025,7 @@ After you create an ECS cluster, you can call the ListCluster operation to query
 
 `}`
 
-##### Scale out an ECS cluster using the console
+##### 6.2.3.3 Scale out an ECS cluster using the console
 
 After you create an Elastic Compute Service (ECS) cluster, the cluster is empty and does not contain any ECS instances. You must add instances to the cluster. You may also need to scale out the cluster to accommodate business growth. In both cases, you need to import ECS instances into the cluster.
 
@@ -13633,9 +14106,9 @@ checks, contact technical support.
 
 **Related topics**
 
-Create an ECS cluster in the EDAS console Manage ECS clusters
+Create an ECS cluster in the EDAS console
 
-##### Scale out an ECS cluster using an API
+##### 6.2.3.4 Scale out an ECS cluster using an API
 
 This topic describes how to use the Enterprise Distributed Application Service (EDAS) SDK for Java to call an API and scale out an Elastic Compute Service (ECS) cluster.
 
@@ -13737,7 +14210,7 @@ After you purchase or add ECS instances, call the ListClusterMembers operation t
 
 `}`
 
-##### Manage ECS clusters
+##### 6.2.3.5 Manage ECS clusters
 
 This topic describes how to view, manage, and delete Elastic Compute Service (ECS) clusters. It also describes how to manage the ECS instances and applications in the clusters.
 
@@ -13810,7 +14283,7 @@ You cannot delete a cluster if it contains instances.
 
 For more information, see Create an ECS cluster using the console and Scale out an ECS cluster using the console.
 
-##### Manage instance groups for an application
+##### 6.2.3.6 Manage instance groups for an application in an ECS cluster using the console
 
 **in an ECS cluster using the console**
 
@@ -13901,7 +14374,7 @@ If a group contains no instances and you no longer need it, you can delete the g
 button.
 2. In the **Delete Group** dialog box, click **Delete**.
 
-##### Manage application instance groups in an
+##### 6.2.3.7 Manage application instance groups in an ECS cluster using APIs
 
 **ECS cluster using APIs**
 
@@ -14300,9 +14773,9 @@ Select a verification method based on the operation that you performed. Create a
 
 `}`
 
-#### ECS instance management
+#### 6.2.4 ECS instance management
 
-##### Install EDAS Agent on an ECS instance
+##### 6.2.4.1 Install EDAS Agent on an ECS instance
 
 The Enterprise Distributed Application Service (EDAS) Agent is a daemon program that runs on an Elastic Compute Service (ECS) instance to manage communication between an EDAS cluster and the applications on the instance. You must install the EDAS Agent on an ECS instance before you can deploy an application to it in EDAS.
 
@@ -14381,7 +14854,7 @@ namespace. You can then view the status in the **Agent Status** column. A status
 
 The procedure to update the EDAS Agent is the same as the procedure to install it using a command script. For more information, see Manually install the EDAS Agent using a command script.
 
-#### Create a hybrid cloud ECS cluster
+#### 6.2.5 Create a hybrid cloud ECS cluster
 
 **Background information**
 
@@ -14440,7 +14913,7 @@ names and the **Health Check** status of the added instances. If the **Health Ch
 
 After you create a hybrid cloud ECS cluster, you can deploy applications to it. The deployment method is the same as that for a standard ECS cluster. For more information, see Application creation and deployment overview (ECS).
 
-#### Sync VPC
+#### 6.2.6 Sync VPC
 
 A virtual private cloud (VPC) is a custom private network built on Alibaba Cloud. VPCs are logically isolated from each other. This service is ideal for users who require high network security and have some network management experience. A VPC that you create in the VPC console automatically syncs to the EDAS console, but with a short delay. You can manually sync a VPC to avoid delays that may affect your operations.
 
@@ -14469,7 +14942,7 @@ anagement for ECS clusters
 | IPv6 CIDR block | The IPv6 CIDR block that you set when you create the VPC. |
 | Status | A VPC has one of two statuses: active or configuring. |
 
-#### Manage resource groups
+#### 6.2.7 Manage resource groups
 
 If you use an Alibaba Cloud account to purchase resources and use Resource Access Management (RAM) users for application operations and maintenance (O&M), you can use resource groups to manage permissions. EDAS lets you grant a RAM user permissions on a specific resource group. The RAM user can then manage all resources within that resource group. For more information, see Permission management overview.
 
@@ -14541,11 +15014,11 @@ EDAS console.
 3. Find the target user. In the **Actions** column, click **Resource Group Authorized**.
 4. In the **Resource Group Authorized** dialog box, select a resource group and click **OK**.
 
-### Create and deploy
+### 6.3 Create and deploy applications
 
 **applications**
 
-#### Overview of Application Creation and
+#### 6.3.1 Overview of Application Creation and Deployment (ECS)
 
 **Deployment (ECS)**
 
@@ -14571,7 +15044,7 @@ Create and deploy applications in the appropriate ECS environment as needed. Dif
 
 During your first deployment, choose a deployment method based on your scenario. Then follow the related documentation to create and deploy your application. Quickly try application creation and deployment Deploy a sample application to an ECS environment. The ECS environment includes a microservices namespace, VPC, and cluster. For step-by-step instructions, see Deploy a Java microservice application in an ECS environment. Alibaba Cloud deployment Deploy an existing application to an Alibaba Cloud ECS environment. For step-by-step instructions, see Create and deploy an application in an ECS cluster. Hybrid cloud deployment Deploy an existing application to a hybrid cloud ECS environment. For step-by-step instructions, see Deploy an application in a hybrid cloud.
 
-#### Create and deploy an application in an
+#### 6.3.2 Create and deploy an application in an ECS cluster
 
 **ECS cluster**
 
@@ -14745,7 +15218,7 @@ anagement for ECS clusters
 
 For more information, see Manage application lifecycle (ECS).
 
-#### Deploy applications in hybrid cloud
+#### 6.3.3 Deploy applications in hybrid cloud clusters
 
 **clusters**
 
@@ -14763,7 +15236,7 @@ EDAS lets you deploy applications in hybrid cloud ECS clusters and provides comp
 
 The procedure for deploying an application in a hybrid cloud ECS cluster is the same as for an ECS cluster. For more information, see Create and deploy an application in an ECS cluster.
 
-#### Create an application in an ECS cluster
+#### 6.3.4 Create an application in an ECS cluster using an API
 
 **using an API**
 
@@ -14881,11 +15354,11 @@ After you create the application in the ECS cluster, call the ListApplication AP
 
 `}`
 
-### Update and roll back
+### 6.4 Update and roll back applications
 
 **applications**
 
-#### Overview of application upgrades and
+#### 6.4.1 Overview of application upgrades and rollbacks (ECS)
 
 **rollbacks (ECS)**
 
@@ -14905,11 +15378,11 @@ anagement for ECS clusters The upgrade scenarios, policies, and methods vary dep
 
 If an error occurs during or after an application upgrade, you can roll the application back to its previous version. After you fix the error, you can upgrade the application again. Rollback during an upgrade: If an error occurs during the upgrade, you can stop the process and roll back the application. Rollback after an upgrade: If the upgrade is complete but you find an issue with the new version, you can roll back the application by deploying a previous version. For more information, see Use the console to roll back an application (ECS cluster). anagement for ECS clusters
 
-#### At-a-time release (applicable to ECS
+#### 6.4.2 At-a-time release (applicable to ECS clusters)
 
 **clusters)**
 
-##### Upgrade an application in an ECS cluster
+##### 6.4.2.1 Upgrade an application in an ECS cluster using the console
 
 **using the console**
 
@@ -14965,7 +15438,7 @@ anagement for ECS clusters ii. Click the **Basic Information** tab, and in the *
 **Information** tab, check whether the application's **Deployment Package** is the
 upgraded deployment package. iii. On the **Basic Information** page, click the **Instance Deployment Information** tab. On the **Instance Deployment Information** tab, check whether the **Running Status** of each instance in the target group is **Normal**.
 
-##### Deploy an application to an ECS cluster in
+##### 6.4.2.2 Deploy an application to an ECS cluster in a single batch using an API
 
 **a single batch using an API**
 
@@ -15076,7 +15549,7 @@ anagement for ECS clusters Check the value of the **changeOrderInfo.Status** par
 **changeOrderInfo.Status** are:
 0: Ready 1: In progress 2: Successful 3: Failed 6: Terminated 8: Waiting for manual confirmation to proceed to the next batch in a manual phased release. 9: Waiting for the next batch to be processed in an automatic phased release. 10: Failed due to a system exception.
 
-##### Use the toolkit-maven-plugin plug-in to
+##### 6.4.2.3 Use the toolkit-maven-plugin plug-in to update an application in an ECS cluster
 
 **update an application in an ECS cluster**
 
@@ -15188,7 +15661,7 @@ verify that the application is upgraded successfully. For more information, see 
 
 The toolkit-maven-plugin plug-in is supported in Apsara Stack Enterprise Edition V3.8.0 and later. Before you use the plug-in, you must configure an EDAS Endpoint for it. Contact EDAS technical support to obtain the Endpoint.
 
-##### Use the CLI to quickly deploy an
+##### 6.4.2.4 Use the CLI to quickly deploy an application to an ECS cluster
 
 **application to an ECS cluster**
 
@@ -15314,11 +15787,11 @@ If the application fails to deploy, you can troubleshoot the issue based on the 
 
 **References**
 
-For more information, see the following topics: Create and deploy an application in an ECS cluster Upgrade an application in an ECS cluster using the toolkit-maven-plugin plug-in Deploy an application in an ECS cluster from IntelliJ IDEA using Cloud Toolkit
+For more information, see the following topics: Upgrade an application in an ECS cluster using the toolkit-maven-plugin plug-in Deploy an application in an ECS cluster from IntelliJ IDEA using Cloud Toolkit
 
-#### Phased release in an ECS cluster
+#### 6.4.3 Phased release in an ECS cluster
 
-##### Release an application in phases in the
+##### 6.4.3.1 Release an application in phases in the EDAS console
 
 **EDAS console**
 
@@ -15369,7 +15842,7 @@ i. On the application details page, click **Basic Information** in the left-side
 **Information** tab, you can check whether **Deployment Package** shows the latest
 deployment package. iii. On the **Basic Information** page, click the **Instance Deployment Information** tab. On the **Instance Deployment Information** tab, check whether the **Running Status** column of each instance in the desired group is **Normal**.
 
-##### Release an application in phases in an ECS
+##### 6.4.3.2 Release an application in phases in an ECS cluster using an API
 
 **cluster using an API**
 
@@ -15541,7 +16014,7 @@ The following response is returned: `{`
 To confirm multiple batches, repeat this step for each batch, selecting the correct
 **PipelineId** each time.
 
-##### Use the toolkit-maven-plugin plug-in to
+##### 6.4.3.3 Use the toolkit-maven-plugin plug-in to perform a phased release of an application on an ECS cluster
 
 **perform a phased release of an application on an**
 
@@ -15631,7 +16104,7 @@ the application was successfully upgraded or deployed. For more information, see
 
 The toolkit-maven-plugin plug-in is available for Apsara Stack V3.8.0 and later. Before you use the plug-in, configure the EDAS Endpoint. Contact EDAS technical support to obtain the Endpoint.
 
-##### Perform a phased release of an application
+##### 6.4.3.4 Perform a phased release of an application using Cloud Toolkit
 
 **using Cloud Toolkit**
 
@@ -15697,9 +16170,9 @@ You can manage Maven build tasks in Cloud Toolkit for IntelliJ IDEA. You can als
 **EDAS ECS Cluster** dialog box.
 anagement for ECS clusters After the phased release starts, deployment logs are displayed in the Terminal section of IntelliJ IDEA. You can monitor the deployment progress and check the result in the logs.
 
-#### Canary release
+#### 6.4.4 Canary release
 
-##### Release an application in canary mode in
+##### 6.4.4.1 Release an application in canary mode in an ECS cluster in the EDAS console
 
 **an ECS cluster in the EDAS console**
 
@@ -15768,7 +16241,7 @@ After the phased release, on the **Basic Information** page, check that the **De
 **Package** is the new application version. On the **Instance Deployment Information** page,
 check that the **Running Status** of the application instance is **Normal**.
 
-##### Release an application in an ECS cluster in
+##### 6.4.4.2 Release an application in an ECS cluster in canary mode using an API
 
 **canary mode using an API**
 
@@ -15961,9 +16434,9 @@ Check the value of the **changeOrderInfo.Status** parameter in the response to d
 **changeOrderInfo.Status**:
 0: Ready 1: In progress 2: Successful 3: Failed anagement for ECS clusters 6: Terminated 8: Waiting for manual confirmation to trigger the next batch in a manual phased release. 9: Waiting for the next batch to be triggered in an automatic phased release. 10: Failed due to a system exception.
 
-#### Roll back applications
+#### 6.4.5 Roll back applications
 
-##### Roll back applications in ECS clusters
+##### 6.4.5.1 Roll back applications in ECS clusters using the console
 
 **using the console**
 
@@ -16025,7 +16498,7 @@ i. On the application details page, click **Basic Information** in the left navi
 **Package** is a historical package.
 iii. On the **Basic Information** page, click the **Instance Deployment Information** tab. On the **Instance Deployment Information** tab, check that the **Running Status** of each instance in the target group is **Normal**.
 
-##### Use an API to roll back an application in an
+##### 6.4.5.2 Use an API to roll back an application in an ECS cluster to a historical version
 
 **ECS cluster to a historical version**
 
@@ -16126,7 +16599,7 @@ only.
 
 Check the value of the **changeOrderInfo.Status** parameter in the response to determine whether the application was successfully rolled back to the historical version. The following list describes the valid values of **changeOrderInfo.Status**: 0: Preparing. 1: In progress. 2: Succeeded. 3: Failed. 6: Terminated. 8: In a manual phased release, the system is waiting for manual confirmation to proceed with the next batch. 9: In an automatic phased release, the system is waiting to proceed with the next batch. 10: Failed due to a system exception.
 
-##### Stop an application upgrade process in an
+##### 6.4.5.3 Stop an application upgrade process in an ECS cluster using an API
 
 **ECS cluster using an API**
 
@@ -16204,9 +16677,9 @@ After you stop the application upgrade, call the GetChangeOrderInfo operation to
 
 Check the value of the **changeOrderInfo.Status** parameter in the result to determine if the application upgrade was successfully stopped. The **changeOrderInfo.Status** parameter can have the following values: 0: Ready. 1: In progress. 2: Succeeded. 3: Failed. 6: Stopped. 8: Waiting for manual confirmation to proceed to the next phase in a manual phased release. 9: Waiting for the next phase to start in an automatic phased release. 10: Failed due to a system exception.
 
-### CI/CD
+### 6.5 CI/CD
 
-#### Create a continuous integration
+#### 6.5.1 Create a continuous integration workflow using Jenkins
 
 **workflow using Jenkins**
 
@@ -16320,7 +16793,7 @@ The procedure for creating a Jenkins job for a multi-module project is similar t
 
 submodule. Take the Demo project as an example. The project structure is as follows: `detail`, `itemcenter`, and `itemcenter-api` are submodules. To deploy the `itemcenter` module, you must set a `clean install` build target in the parent project. Then, set a `clean` `package toolkit:deploy` build target in the `itemcenter` module. anagement for ECS clusters
 
-### Application monitoring
+### 6.6 Application monitoring
 
 Application monitoring accurately displays an application's real-time traffic and historical data. Use this information to monitor application health and to quickly locate and resolve issues. EDAS provides monitoring features through Application Real-Time Monitoring Service (ARMS). These features include application overviews, application details, and interface calls.
 
@@ -16346,7 +16819,7 @@ Reason: This issue occurs after an upgrade because the EDAS monitoring solution 
 2. Switch to the admin user and run the `edas refresh-apm` command.
 anagement for ECS clusters
 
-#### Application monitoring overview
+#### 6.6.1 Application monitoring overview
 
 Enterprise Distributed Application Service (EDAS) is integrated with Application Real-Time Monitoring Service (ARMS). This lets you monitor the health status and key metrics of Java applications deployed in EDAS within Elastic Compute Service (ECS) environments. You can also configure alert rules for monitoring metrics to promptly detect and resolve abnormal conditions or faults. This ensures the health and availability of your applications.
 
@@ -16369,9 +16842,9 @@ monitoring, the application is billed according to the billing rules of ARMS.
 
 **Alerting**
 
-You can create alert rules for monitoring metrics. If an alert rule is triggered, the system sends a notification to an alert contact group using your specified notification methods. This allows the contacts to take prompt action. References: Manage contacts anagement for ECS clusters Create and manage contact groups Create alerts Manage alerts
+You can create alert rules for monitoring metrics. If an alert rule is triggered, the system sends a notification to an alert contact group using your specified notification methods. This allows the contacts to take prompt action. References: anagement for ECS clusters Create alerts
 
-#### Application overview
+#### 6.6.2 Application overview
 
 On the **Application Overview** page, you can view key health metrics for an application. These metrics include overall indicators such as total requests and average response time, metrics for provided and dependent services, and system information such as CPU and memory usage.
 
@@ -16411,7 +16884,7 @@ You can edit or delete a custom topology.
 4. If the current topology is no longer needed, click **Delete** in the upper-right corner to delete
 it.
 
-#### Application Details
+#### 6.6.3 Application Details
 
 The EDAS application details page integrates various ARMS monitoring capabilities. This page helps you quickly identify faulty and slow interfaces, reproduce call parameters, detect memory leaks, and discover system bottlenecks, which significantly improves the efficiency of diagnosing online issues.
 
@@ -16464,7 +16937,7 @@ The **Upstream Applications** tab displays time series curves for the response t
 
 On the **Interface Snapshot** tab, you can view the interface name, its associated application, and information such as its time consumption status and TraceID.
 
-#### Interface calls
+#### 6.6.4 Interface calls
 
 The Interface Calls feature monitors your application's interface calls. You can view details such as SQL analysis, NoSQL call analysis, error analysis, upstream and downstream services, and interface snapshots.
 
@@ -16505,7 +16978,7 @@ The **Upstream** and **Downstream** tabs list the upstream services that call th
 
 After you select an API, you can view the details for each of its individual calls. These details include the creation time, API name, parent application, time consumed, status, and TraceId.
 
-#### Advanced monitoring
+#### 6.6.5 Advanced monitoring
 
 Application Real-Time Monitoring Service (ARMS) is an Alibaba Cloud application performance management (APM) product. EDAS seamlessly integrates with ARMS, allowing you to enable advanced monitoring for in-depth performance management of your applications deployed in EDAS.
 
@@ -16532,9 +17005,9 @@ On this page, you can view the application's **Overview Analysis**, **Applicatio
 **System Info**, and **Statistical Analysis**.
 For more information about using ARMS application monitoring for your EDAS application, see the **Application Real-Time Monitoring Service User Guide > Application Details** section.
 
-#### Alerting
+#### 6.6.6 Alerting
 
-##### Manage contacts
+##### 6.6.6.1 Manage contacts
 
 When an alert rule is triggered, notifications are sent to the contact group that you specified. Before you create a contact group, you must create contacts. When you create a contact, you can specify a mobile phone number and an email address on which the contact can receive notifications. You can also provide the webhook URL of a DingTalk chatbot that can be used to automatically send alert notifications.
 
@@ -16590,7 +17063,7 @@ anagement for ECS clusters
 To search for a contact on the **Contacts** tab, select **Name**, **Mobile Number**, or **Email** from the drop-down list. Enter all or part of the name, mobile number, or email address in the search box, and then click the search icon. To update a contact, click **Edit** in the **Actions** column for the contact. In the dialog box that appears, edit the information and click **OK**. To delete a contact, click **Delete** in the **Actions** column for the contact. In the **Delete** dialog box, click **OK**. To delete multiple contacts, select the contacts that you want to delete, click **Batch**
 **Delete Contacts**, and then click **OK** in the **Prompt** dialog box.
 
-##### Create and manage a contact group
+##### 6.6.6.2 Create and manage a contact group
 
 When you create an alert rule, you can specify a contact group as the receiver of alert notifications. If the alert rule is triggered, Enterprise Distributed Application Service (EDAS) sends alert notifications to the contacts in this contact group. This topic describes how to create a contact group.
 
@@ -16633,9 +17106,7 @@ Before you delete a contact group, make sure that no monitoring jobs are running
 
 **References**
 
-Manage contacts Set up DingTalk robot alerts Manage alerts
-
-##### Create an alert
+##### 6.6.6.3 Create an alert
 
 You can create alerts to define rules for specific monitored objects. When a rule is triggered, the system sends an alert notification to a contact group using your specified method, prompting you to take the necessary action to resolve the issue.
 
@@ -16701,7 +17172,7 @@ The alert data revision policy can be set to Fill with 0, Fill with 1, or Fill w
 
 You can query and delete alert records in alert management.
 
-##### Manage alerts
+##### 6.6.6.4 Manage alerts
 
 On the Alert Policies page, you can manage all the alert rules within your Alibaba Cloud account and query the history of alert events and alert notifications.
 
@@ -16746,7 +17217,7 @@ Alert notifications are sent only if the trigger status is **Triggered**. In thi
 4. Click the **Alarm Post History** tab to view the history of the alert notifications that are sent
 for triggered alerts. The alert notifications include text messages and emails.
 
-##### Set up DingTalk robot alerts
+##### 6.6.6.5 Set up DingTalk robot alerts
 
 You can add a DingTalk robot webhook URL to send alert notifications to a DingTalk group. This helps you receive immediate notifications for alert events and improves your O&M efficiency.
 
@@ -16819,11 +17290,11 @@ i. Set Notification Method to **DingTalk Robot**. ii. For Notification Recipient
 
 The DingTalk robot alert is configured. When an alert is triggered, an alert notification is sent to the specified DingTalk group.
 
-### Application O&M
+### 6.7 Application O&M
 
 anagement for ECS clusters
 
-#### Manage the lifecycle of applications in
+#### 6.7.1 Manage the lifecycle of applications in ECS clusters
 
 **ECS clusters**
 
@@ -16867,9 +17338,9 @@ anagement for ECS clusters On the **Instance Deployment Information** tab, click
 To restart a running application instance, click **Restart** in the **Actions** column on the
 **Instance Deployment Information** tab. This action stops the instance and then restarts it.
 
-#### Server loading balancing
+#### 6.7.2 Server loading balancing
 
-##### Overview
+##### 6.7.2.1 Overview
 
 If you use Enterprise Distributed Application Service (EDAS) to host applications in an Elastic Compute Service (ECS) environment, you can attach a Server Load Balancer (SLB) instance to an application. The SLB instance distributes traffic to multiple backend application instances (ECS instances) based on forwarding rules. This increases service capacity and improves application availability. Operations that you perform on the SLB instance in the EDAS console are synchronized with the SLB console in real time. You do not need to perform the same operations in both the EDAS and SLB consoles.
 
@@ -16896,7 +17367,7 @@ anagement for ECS clusters
 | Using a domain name or URL to distribute traffic when multiple applications share an SLB instance. | Use a domain name or URL to forward traffic (shared SLB instance) |
 |---|---|
 
-##### Application-dedicated SLB instance
+##### 6.7.2.2 Application-dedicated SLB instance
 
 In an ECS cluster, you can attach a Server Load Balancer (SLB) instance to a specific application. The SLB instance then forwards traffic from its IP address to all instances of the application.
 
@@ -16962,7 +17433,7 @@ iv. On the **Confirm SLB Change** tab, review the SLB instance settings. If the 
 If the `IP:Port` is not displayed to the right of **Load Balancer (Internet)**, the SLB instance failed to attach. View the change records and details to troubleshoot the failure. For more information, see View Application Changes.
 2. In a browser, enter the copied `IP:Port` to verify that you can access the application.
 
-##### Distribute traffic by port when sharing an
+##### 6.7.2.3 Distribute traffic by port when sharing an SLB instance
 
 **SLB instance**
 
@@ -17068,7 +17539,7 @@ second application. iv. On the **Confirm SLB Change** tab, review the informatio
 6. Verify that you can access the second application using the IP address and port of the
 attached SLB instance. For more information, see Verify the results.
 
-##### Use domain names or URLs to distribute
+##### 6.7.2.4 Use domain names or URLs to distribute traffic on a shared SLB instance
 
 **traffic on a shared SLB instance**
 
@@ -17170,7 +17641,7 @@ forwarding rule. anagement for ECS clusters i. Return to the **Basic Information
 
 If the `IP:Port` does not appear next to **Server Load Balancer (Internet)**, the SLB instance failed to attach. View the change records and details to identify and resolve the issue. ii. In a browser, access the copied `IP:Port` to check whether you can access the application.
 
-##### Use URLs to distribute traffic to
+##### 6.7.2.5 Use URLs to distribute traffic to application instance groups
 
 **application instance groups**
 
@@ -17215,9 +17686,9 @@ A vServer group can be attached to only one application or application group. b.
 
 Access the URLs of the two application groups to verify that you can successfully access the application.
 
-#### Application scale-out and scale-in
+#### 6.7.3 Application scale-out and scale-in
 
-##### Manually scale out and scale in an
+##### 6.7.3.1 Manually scale out and scale in an application
 
 **application**
 
@@ -17250,7 +17721,7 @@ select the **Microservices Namespace**. From the **Cluster Type** drop-down list
 5. On the **Instance Deployment Information** page, take the instance offline.
 If the instance is in the **Running** state, click **Stop** and then click **Delete**. If the instance is **Stopped**, click **Delete**.
 
-##### Perform auto scaling on applications in
+##### 6.7.3.2 Perform auto scaling on applications in ECS clusters
 
 **ECS clusters**
 
@@ -17306,7 +17777,7 @@ anagement for ECS clusters
 After you configure the scaling rules, you can view the results of any automatic scale-out or scale-in operations in the following ways: On the **Basic Information** page of the application, check if the number of instances has changed. In the navigation pane on the left of the application details page, click **Change History**. For a change record where the **Change Type** is Scale Out or **Scale In** and the source is
 **auto_scale**, click **View** in the **Actions** column to view the details.
 
-#### Throttling and degradation
+#### 6.7.4 Throttling and degradation
 
 Enterprise Distributed Application Service (EDAS) supports throttling and degradation for Spring Cloud, Dubbo, and High-speed Service Framework (HSF) applications using Application High Availability Service (AHAS). EDAS lets you view throttling and degradation details and change rules in real time to ensure the availability of your applications.
 
@@ -17360,7 +17831,7 @@ as throttling, fencing, and degradation. You can also use this page to manage th
 Cloud account and its RAM users. The logs include details such as resource names, operation content, operation times, and operator IDs. This lets you track changes to applications and resources. For more information, see **AHAS User Guide > Operation**
 **Logs**.
 
-#### Upgrade or downgrade the runtime
+#### 6.7.5 Upgrade or downgrade the runtime environment
 
 **environment**
 
@@ -17395,11 +17866,11 @@ You do not need to restart the application after the runtime environment is upgr
 6. Return to the **Basic Information** page and view the application runtime environment
 version in the Application Information area. If the upgrade is successful, the target version is displayed. If the upgrade fails, a change log is generated. For more information, see Troubleshooting guide for change processes. If necessary, contact the EDAS helpdesk or roll back the application runtime environment to the original version.
 
-#### Application settings
+#### 6.7.6 Application settings
 
 On the Application Settings page, you can set the JVM parameters, Tomcat, SLB, and health check of applications.
 
-##### Configure JVM parameters
+##### 6.7.6.1 Configure JVM parameters
 
 You can configure Java Virtual Machine (JVM) parameters to enable the container parameter setting when an application is started. Specified valid JVM parameters help reduce the overhead of GC. This shortens the server response time and improves throughput.
 
@@ -17431,7 +17902,7 @@ You can hover the pointer over the icon next to a parameter to view its descript
 
 After you complete the configuration, the message JVM parameters configured successfully appears in the upper-right corner of the page.
 
-##### Configure Tomcat
+##### 6.7.6.2 Configure Tomcat
 
 EDAS supports parameter settings for the Tomcat container. You can configure the port, application access path, and the number of connections in the connection pool for the Tomcat container in the EDAS console.
 
@@ -17468,7 +17939,7 @@ Click **Advanced Configuration** to configure the entire **server.xml** file. Af
 
 After you complete the configuration, the message Tomcat parameters configured successfully appears in the upper-right corner of the page.
 
-##### Configure application lifecycle mount
+##### 6.7.6.3 Configure application lifecycle mount scripts
 
 **scripts**
 
@@ -17522,7 +17993,7 @@ anagement for ECS clusters
 
 You can find the execution status of the **Send Remote Commands** command in the deployment logs. Look for the **InvocationId**.
 
-##### Bind an SLB instance to EDAS
+##### 6.7.6.4 Bind an SLB instance to EDAS
 
 In an ECS cluster, you can bind a Server Load Balancer (SLB) instance to your application to enable load balancing.
 
@@ -17608,7 +18079,7 @@ When traffic management is enabled and the application is bound to an SLB instan
 
 If you do not need traffic management, you can disable it on the application's Basic Information page in the EDAS console. This action uninstalls Tengine, updates the application configuration, and restarts the application. If you must use traffic management, go to the SLB console and configure the health check settings to allow HTTP 4xx status codes.
 
-##### Set JVM -D startup configuration
+##### 6.7.6.5 Set JVM -D startup configuration parameters
 
 **parameters**
 
@@ -17722,7 +18193,7 @@ Specifies the global timeout period of the HSF consumer.
 
 anagement for ECS clusters Determines whether the HSF call duration includes time-consuming logic, such as connection creation and address selection. The default value of `hsf.invocation.timeout.sensitive` is false.
 
-##### Locality Priority routing
+##### 6.7.6.6 Locality Priority routing
 
 Zone affinity ensures that an application prioritizes service providers in the same zone during service invocation. Applications that use protocols such as Spring Cloud, Dubbo, or HSF support zone-affinity invocation. This topic describes how to enable zone-affinity invocation for Elastic Compute Service (ECS) applications.
 
@@ -17748,9 +18219,9 @@ environment is an earlier version, you must upgrade it to use this feature. For 
 4. On the **Basic Information** page of the application, in the **Application Settings** section,
 click **Edit** to the right of **Microservice Governance**. In the dialog box that appears, turn on Locality Priority and set the **Threshold**.
 
-#### Change Records
+#### 6.7.7 Change Records
 
-##### View application changes
+##### 6.7.7.1 View application changes
 
 After you perform lifecycle actions in Enterprise Distributed Application Service (EDAS), such as application deployment, startup, and scaling, you can view the current change status on the Application Details page. You can also view the historical change records for the application on the Change Records page.
 
@@ -17775,7 +18246,7 @@ view all change records for the application.
 2. In the Actions column, click **View** to see the details of the change and the information for
 each step.
 
-##### Change process error codes
+##### 6.7.7.2 Change process error codes
 
 When you change an application in an Elastic Compute Service (ECS) cluster using the EDAS console, a change record is generated. This topic describes the error messages and error codes that can occur during the change process.
 
@@ -18035,7 +18506,7 @@ When you deploy an application using a custom WAR/JAR URL, this error occurs if 
 
 Verify that the URL is correct. Log on to the ECS instance and run the `wget` command to manually download the package from the URL. Check if the download completes within 5 minutes. anagement for ECS clusters
 
-#### Library management
+#### 6.7.8 Library management
 
 Library management is used to manage and isolate the Java class libraries (JAR packages) that applications depend on. This resolves common issues in traditional deployments, such as class conflicts, version inconsistencies, and redundant packaging.
 
@@ -18069,11 +18540,11 @@ anagement for ECS clusters Scenario 1: Multiple business systems use Spring Boot
 **Management**.
 2. On the Library Management page, click **Upload File** to upload the JAR package.
 
-#### J2EE Configuration
+#### 6.7.9 J2EE Configuration
 
 J2EE configuration in EDAS is a core feature for parameter tuning and behavior customization of Alibaba Cloud application servers hosted on ECS. This feature helps developers and O&M engineers adapt to business needs, improve system performance and security, and achieve standardized, centralized middleware management.
 
-##### Startup parameter configuration
+##### 6.7.9.1 Startup parameter configuration
 
 Startup parameter configuration enables developers and operations engineers to dynamically adjust Java Virtual Machine (JVM) behavior, system properties, and platform integration parameters without modifying application code. This increases deployment flexibility and improves operational efficiency.
 
@@ -18122,11 +18593,11 @@ anagement for ECS clusters
 |---|---|---|
 | Submit | Click Submit to save the configuration items in the form. | None |
 
-##### Web containers
+##### 6.7.9.2 Web containers
 
 EDAS provides a standardized, configurable, and easy-to-use feature for configuring Web containers for enterprise Java Web applications. This feature serves as a critical bridge between traditional J2EE applications and modern cloud-native architecture, allowing you to leverage the elasticity and administration benefits of the cloud platform while maintaining the stability and compatibility of your existing application architecture.
 
-###### Container Configuration
+###### 6.7.9.2.1 Container Configuration
 
 You can use container configuration to set the character set for requests and responses, such as UTF-8, to ensure consistent encoding between the frontend and backend. You can also set the session timeout to control how long a user's login session remains valid. This improves both security and the user experience.
 
@@ -18155,7 +18626,7 @@ anagement for ECS clusters
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save your configuration. | None |
 
-###### Access logs
+###### 6.7.9.2.2 Access logs
 
 This topic describes how to configure access logs for J2EE applications. You can configure settings such as file prefixes and suffixes, log formats, and retention periods. Access logs provide a lightweight, reliable, and extensible method for application monitoring.
 
@@ -18188,7 +18659,7 @@ anagement for ECS clusters
 | Reset | Click Reset to restore the default values. | None |
 | Submit | Click Submit to save the configurations in the form. | None |
 
-###### HTTP Channel Management
+###### 6.7.9.2.3 HTTP Channel Management
 
 anagement for ECS clusters HTTP channel management controls the listening ports and communication parameters of web containers. This feature enables you to define service ports, protocol behavior, and connection policies for applications flexibly. It ensures that applications securely and efficiently receive and process HTTP or HTTPS requests in a cloud-native environment.
 
@@ -18315,7 +18786,7 @@ anagement for ECS clusters
 8. On the **HTTP Channel Management** page, in the channel list, click **Enable** in the
 **Actions** column. In the **Confirm Enabling** dialog box, click **OK** to enable the channel.
 
-###### Manage virtual hosts
+###### 6.7.9.2.4 Manage virtual hosts
 
 Use virtual host configurations to enable single sign-on (SSO), which shares logon states across multiple applications under the same domain name. You can also configure a Remote Filter to control access or block requests from specific IP addresses or CIDR blocks. This improves security and operations and maintenance flexibility.
 
@@ -18367,7 +18838,7 @@ host details.
 **Confirm Deletion** dialog box, click **OK** to delete the virtual host.
 anagement for ECS clusters
 
-###### Session Sharing Configuration
+###### 6.7.9.2.5 Session Sharing Configuration
 
 This topic describes how to configure Redis-based session sharing for J2EE applications in EDAS. This ensures consistent and highly available user session states across multiple instances.
 
@@ -18392,11 +18863,11 @@ You have created an ECS cluster for an application server. For more information,
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the configuration settings. | None |
 
-##### EJB
+##### 6.7.9.3 EJB
 
 EDAS supports configuration management for Enterprise JavaBeans (EJB) to ensure stable operation and efficient O&M.
 
-###### Stateless Session Bean Management
+###### 6.7.9.3.1 Stateless Session Bean Management
 
 EDAS supports fine-grained configuration management for stateless session bean instances in J2EE applications. This approach enables high-concurrency processing, efficient resource use, and easy horizontal scaling. anagement for ECS clusters
 
@@ -18435,7 +18906,7 @@ anagement for ECS clusters
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the form settings. | None |
 
-###### Stateful Session Bean Management
+###### 6.7.9.3.2 Stateful Session Bean Management
 
 EDAS supports J2EE applications by managing configuration parameters for stateful session beans, such as session timeout and the number of passivated instances. This balances memory usage with session availability and ensures consistent user state and system stability across multiple instances.
 
@@ -18461,7 +18932,7 @@ click **Submit**. anagement for ECS clusters
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the form settings. | None |
 
-###### Singleton session bean configuration
+###### 6.7.9.3.3 Singleton session bean configuration
 
 When EDAS supports J2EE applications, it configures the access timeout for singleton session beans. This setting limits how long a client waits to acquire an instance lock under concurrent contention. If the client does not gain access before the timeout expires, EDAS throws an exception. This prevents threads from blocking for extended periods and helps maintain system responsiveness and stability.
 
@@ -18484,7 +18955,7 @@ and click **Submit**. anagement for ECS clusters
 | Reset | Click Reset to restore the default values. | None |
 | Submit | Click Submit to save the configuration settings. | None |
 
-###### Message-Driven Bean configuration
+###### 6.7.9.3.4 Message-Driven Bean configuration management
 
 **management**
 
@@ -18513,11 +18984,11 @@ anagement for ECS clusters
 | Submit | Click Submit to save the settings on the form. | None |
 |---|---|---|
 
-##### Resource Management
+##### 6.7.9.4 Resource Management
 
 In Alibaba Cloud Enterprise Distributed Application Service (EDAS), the Resource Management feature centrally configures and manages core resources such as database connections (JDBC), JMS services, work managers, microservice interoperability, and AI configuration management. This reduces the complexity of migrating traditional Java EE applications to the cloud.
 
-###### JDBC Configuration
+###### 6.7.9.4.1 JDBC Configuration
 
 Using the JDBC resource management capability in EDAS, traditional J2EE applications can easily host database connections in a cloud-native environment. This improves operations and maintenance (O&M) efficiency and ensures stability.
 
@@ -18668,11 +19139,11 @@ its **Details**.
 6. On the **Connection Pool Management** page, click **Actions**, then click **Delete**. In the
 **Confirm Deletion** dialog box, click **OK** to delete the connection pool.
 
-###### JMS Service
+###### 6.7.9.4.2 JMS Service
 
 You can quickly configure and manage JMS resources on the EDAS platform to efficiently integrate traditional EJB applications with messaging middleware.
 
-###### JMS Adapter Configuration
+###### 6.7.9.4.2.1 JMS Adapter Configuration
 
 The EDAS JMS adapter configuration serves as the core connection layer for JMS services. It establishes a communication bridge between J2EE applications and underlying message middleware. Use this configuration to flexibly specify the message service endpoint.
 
@@ -18702,7 +19173,7 @@ anagement for ECS clusters
 |---|---|---|
 | apter Name |   |   |
 
-###### JMS Connection Factory
+###### 6.7.9.4.2.2 JMS Connection Factory
 
 The JMS connection factory configuration in EDAS is a core component of JMS service resource management. You can configure connection pool parameters visually, such as the maximum and minimum number of connections, wait timeout, and idle timeout.
 
@@ -18749,7 +19220,7 @@ details.
 6. On the **JMS Connection Factory** page, click **Actions**, then click **Delete**. In the **Confirm**
 **Deletion** dialog box, click **OK** to delete the connection factory.
 
-###### JMS destinations
+###### 6.7.9.4.2.3 JMS destinations
 
 The destination configuration for Java Message Service (JMS) is a key feature of the Enterprise Distributed Application Service (EDAS) service resource system. This feature lets you create JMS-compliant resources, such as queues or topics. You can then attach standard Java Naming and Directory Interface (JNDI) names to these resources to build flexible and reliable message routing and communication models.
 
@@ -18788,7 +19259,7 @@ to view or edit its details.
 **Operation** column for the destination that you want to delete. In the **Confirm Deletion**
 dialog box, click **OK**.
 
-###### Work Manager
+###### 6.7.9.4.3 Work Manager
 
 The EDAS Work Manager provides standardized concurrent resource management for J2EE applications. Configure core thread pool parameters—such as thread prefix names, core and maximum thread counts, idle timeouts, and queue capacities—to ensure application stability and high availability (HA).
 
@@ -18830,7 +19301,7 @@ view or edit the work manager details.
 6. On the **Work Manager Management** page, click **Delete** in the **Actions** column. In the
 **Confirm Deletion** dialog box, click **OK**.
 
-###### Microservice Interoperability
+###### 6.7.9.4.4 Microservice Interoperability Configuration
 
 **Configuration**
 
@@ -18855,7 +19326,7 @@ An Ali Application Server application has been created in an ECS cluster. For mo
 | Reset | Click Reset to restore default values. | None |
 | Submit | Click Submit to save the configuration items in the form. | None |
 
-###### AI configuration management
+###### 6.7.9.4.5 AI configuration management
 
 anagement for ECS clusters AI configuration centrally manages key parameters such as API keys, Large Language Model (LLM) service endpoints, organization IDs, project IDs, and callback keys. EDAS uses this configuration to seamlessly integrate AI capabilities into traditional applications. This helps you quickly implement intelligent upgrades while retaining your existing architecture.
 
@@ -18896,11 +19367,11 @@ view or edit its details.
 6. In the AI configuration list on the **AI Configuration** page, click **Delete** in the **Actions**
 column. In the **Confirm Deletion** dialog box, click **OK**. anagement for ECS clusters
 
-##### Simple Log Service
+##### 6.7.9.5 Simple Log Service
 
 EDAS J2EE Simple Log Service allows for flexible definition of log behavior without requiring code modification, thereby improving Operations and Maintenance (O&M) efficiency and system observability.
 
-###### System log configuration
+###### 6.7.9.5.1 System log configuration
 
 System log configuration is a core component of the EDAS J2EE Simple Log Service. It provides centralized management for system-level logs generated by underlying components —such as containers, EJB, JMS, and Java Database Connectivity (JDBC)—while an application runs. These logs include startup logs, transaction logs, connection pool status, and deployment information. Use the visual configuration to apply fine-grained control over log output behavior, storage policies, and performance.
 
@@ -18930,9 +19401,9 @@ anagement for ECS clusters
 | Asynchronous log queue cache size | The default value is 8000. This is an unbounded queue. | 8000 |
 | Log level | Select a log level. ALL. FINEST. FINER. FINE. CONFIG. INFO. WARNING. SEVERE. OFF. | ALL |
 
-#### Logs
+#### 6.7.10 Logs
 
-##### Log management
+##### 6.7.10.1 Log management
 
 Enterprise Distributed Application Service (EDAS) collects and organizes logs from every deployed application and surfaces them in the EDAS console. Instead of logging on to individual Elastic Compute Service (ECS) instances or Kubernetes pods, view, search, and download logs from a single interface.
 
@@ -18970,7 +19441,7 @@ log entries. See View application logs and perform distributed search.
 
 To analyze logs offline or archive them for diagnosis, download log files from the EDAS console to your local device.
 
-##### Log management
+##### 6.7.10.2 Log management
 
 If your application encounters an exception, you can check the instance and application logs to troubleshoot the problem. Enterprise Distributed Application Service (EDAS) provides features for online viewing of log directories and logs.
 
@@ -19094,7 +19565,7 @@ remove, select **Delete Associated Objects From Simple Log Service** as needed, 
 
 Selecting **Delete Associated Objects From Simple Log Service** deletes the associated objects, such as the project and Logstore. This action deletes all data in the Logstore.
 
-##### Dynamic log configuration
+##### 6.7.10.3 Dynamic log configuration
 
 Introduction Applications use logging frameworks, such as logback and log4j, to record logs. Log levels and output destinations are defined in log configuration files. Enterprise Distributed Application Service (EDAS) lets you modify log configurations at runtime, and the changes take effect immediately. In the EDAS console, you can create a log configuration, add content or scrape an existing configuration, and select the objects to which the configuration applies. This topic describes how to configure dynamic logs.
 
@@ -19228,9 +19699,9 @@ For the log4j2 framework, the YAML and JSON formats may not be validated effecti
 
 This is supported.
 
-#### Security Center
+#### 6.7.11 Security Center
 
-##### Security groups
+##### 6.7.11.1 Security groups
 
 **Prerequisites**
 
@@ -19293,7 +19764,7 @@ the name of a specific application.
 4. In the security group list, select the checkboxes for the target security groups. Below the
 list, click **Batch Remove**. In the dialog box, click **OK**.
 
-##### Custom access rules
+##### 6.7.11.2 Custom access rules
 
 **Prerequisites**
 
@@ -19386,7 +19857,7 @@ anagement for ECS clusters
 4. On the **Custom Access Rules** page, on the **Inbound** or **Outbound** tab, find the rule you
 want to remove and click **Remove** in the Actions column. In the dialog box that appears, click **OK**.
 
-##### Cloud service access rules
+##### 6.7.11.3 Cloud service access rules
 
 **Prerequisites**
 
@@ -19432,9 +19903,9 @@ top menu bar, select a region. At the top of the page, select a **Microservices 
 4. On the **Cloud Service Access Rules** page, select a target Alibaba Cloud service. In the
 instance list, select the checkboxes for the target instances and click **Batch Remove** below the list. In the dialog box that appears, click **OK**.
 
-#### Application management
+#### 6.7.12 Application management
 
-##### Export application reports
+##### 6.7.12.1 Export application reports
 
 EDAS lets you export application information to a local Excel file. This helps reduce your operations and maintenance (O&M) costs.
 
@@ -19464,9 +19935,9 @@ If you clear the Export Resource Instance List checkbox, the exported file conta
 **Description**, **Internet-facing SLB Instance**, and **Internal-facing SLB**.
 anagement
 
-## Application management
+## 7 Application management
 
-### Helm applications
+### 7.1 Helm applications
 
 EDAS is an enterprise-grade microservice management platform provided by Alibaba Cloud. It integrates Helm features to improve the efficiency and flexibility of application deployments.
 
@@ -19536,7 +20007,7 @@ configuration and click **OK**.
 3. In the Helm application list, click **Delete** in the Actions column for the target application. In
 the **Notice** dialog box, click **OK**.
 
-### Create an application route
+### 7.2 Create an application route
 
 An EDAS Ingress is a collection of routing rules that directs external HTTP/HTTPS traffic to internal Services. You can configure different application routes (Kubernetes Ingresses) to access different Services within a cluster using various forwarding rules. This topic describes how to configure application routes and forwarding rules in the EDAS console.
 
@@ -19601,7 +20072,7 @@ After the route is created, it appears in the application route list. You can vi
 
 In a browser, access the `Domain Name/Path` specified in the routing rule. Verify that you can access the backend service that corresponds to the Service.
 
-### Application template
+### 7.3 Application template
 
 You can use an application template to deploy the same application configuration to multiple applications, release and manage applications in multiple Kubernetes clusters, and implement continuous O&M of related applications and rollback between different application versions.
 
@@ -19713,7 +20184,7 @@ message, click **Save**.
 3. On the **Application Template** page, find the application template that you want to delete
 and click **Delete** in the Actions column. In the **OK** message, click **Delete**.
 
-### Multi-cluster application
+### 7.4 Multi-cluster application
 
 You can use a multi-cluster application template to create a multi-cluster application.
 
@@ -19826,7 +20297,7 @@ anagement
 3. On the Multi-cluster Applications page, click the name of the multi-cluster application that
 you want to delete or click **Delete** in the Actions column. In the **OK** message, click **Delete**.
 
-### Source code/Software package
+### 7.5 Source code/Software package list
 
 **list**
 
@@ -19900,9 +20371,9 @@ deployment process takes a few minutes. After the deployment is complete, go to 
 **Instance Deployment Information** tab on the application's **Basic Information** page to
 view the running status of the instance. If the running status is **Normal**, the application is successfully deployed. governance
 
-## Microservice governance
+## 8 Microservice governance
 
-### Microservice governance
+### 8.1 Microservice governance overview
 
 ##### overview
 
@@ -19912,11 +20383,11 @@ Microservice governance is one of important features in EDAS. In EDAS, you can p
 |---|---|---|---|
 | Query Spring Cloud services Query Spring Cloud service call traces Ensure the availability of Spring Cloud applications with outlier ejection Implement access control for Spring Cloud applications with service authentication | Query Dubbo services Query Dubbo service call traces Ensure the availability of Dubbo applications with outlier ejection Implement access control for Dubbo applications with service authentication | Query HSF services Query HSF service call traces View HSF service statistics | Query services of multilingual applications Canary release for multilingual applications Implement access control for multilingual applications with service authentication Monitor multilingual applications Configure traffic governance policies for multilingual applications |
 
-### Spring Cloud service
+### 8.2 Spring Cloud service governance
 
 **governance**
 
-#### Query Spring Cloud services
+#### 8.2.1 Query Spring Cloud services
 
 You can use EDAS to query the list of deployed Spring Cloud application services and view service details.
 
@@ -19972,13 +20443,13 @@ The **Interface Metadata** section displays the class and request method for eac
 
 The **Metadata** section displays service metadata and includes metadata that is provided by EDAS for microservice capabilities.
 
-#### Query Spring Cloud service traces
+#### 8.2.2 Query Spring Cloud service traces
 
 You can log on to the EDAS console to query the traces of Spring Cloud services that are deployed in EDAS. EDAS is integrated with Application Real-Time Monitoring Service (ARMS). You can use ARMS to query service traces and holographic events. For more information, see **Application Real-**
 **Time Monitoring Service (ARMS) User Guide > Query Service Traces**.
 governance
 
-#### Ensure the availability of Spring Cloud
+#### 8.2.3 Ensure the availability of Spring Cloud applications using outlier ejection
 
 **applications using outlier ejection**
 
@@ -20061,7 +20532,7 @@ After you create and configure an outlier ejection policy, the outlier ejection 
 
 On the **Outlier Ejection** list, you can click **Edit** or **Delete** to manage an outlier ejection policy. governance
 
-#### Implement access control on Spring
+#### 8.2.4 Implement access control on Spring Cloud applications using service authentication
 
 **Cloud applications using service**
 
@@ -20125,19 +20596,19 @@ After you create and enable the service authentication rule, verify that it work
 
 After creating a service authentication rule, you can **edit**, **close**, or **open** it based on its current state. When the rule is no longer needed, you can **delete** it.
 
-### Service Mesh
+### 8.3 Service Mesh
 
 governance
 
-#### Introduction to Service Mesh
+#### 8.3.1 Introduction to Service Mesh
 
-##### What is Service Mesh
+##### 8.3.1.1 What is Service Mesh
 
 Alibaba Cloud Service Mesh (ASM) is a service mesh platform that is compatible with the open-source Istio service mesh. It simplifies service administration by handling traffic routing and splitting for service invocations, authentication for inter-service communication, and mesh observability. This greatly reduces the workload for developers and O&M.
 
-###### Service architecture
+###### 8.3.1.1.1 Service architecture
 
-The following figure shows the service architecture of ASM. Compatible Extensions and Declarative API/kubectl with Istio integrations Fine-grained flow Simple Log Zero-trust security Heterogeneous Tracing Analysis WASM management interoperability extension Service Control plane Prometheus EDAS Container Lifecycle management Multi-cluster Network deployment diagnostics monitoring service
+The following figure shows the service architecture of ASM. Compatible Extensions and Declarative API/kubectl with Istio integrations Fine-grained flow Simple Log Zero-trust security Heterogeneous Tracing Analysis WASM management interoperability extension Service Control plane Prometheus EDAS Container Lifecycle management Multi-cluster Network deployment diagnostics service
 
 |   | pod Proxy Service A |
 |---|---|
@@ -20157,11 +20628,11 @@ The following figure shows the service architecture of ASM. Compatible Extension
 
 Data plane Multi-cluster support ACK ACK ACK-A Selfcluster managed cluster managed cluster K8scluster
 
-###### Features
+###### 8.3.1.1.2 Features
 
 Alibaba Cloud Service Mesh (ASM) provides a unified service mesh for core scenarios, such as managing services across hybrid clouds, multiclouds, and multiple clusters, and migrating non-containerized applications. ASM offers the following features: Unified management, observability, and traffic shaping for application services on connected clusters in Kubernetes, hybrid cloud, and multicloud environments. Unified traffic management for containerized environments. Reduced O&M costs. Support for hosting microservices that use a variety of protocols.
 
-##### Benefits
+##### 8.3.1.2 Benefits
 
 You can create and upgrade a service mesh with a single click in the console. You can flexibly define Istio resources, such as virtual services, destination rules, and ingress gateways, in the console.
 
@@ -20178,7 +20649,7 @@ governance
 | High stability | A dedicated team ensures the stability of managed services. |
 | High availability | High availability for the control plane and gateway. |
 
-##### Service architecture
+##### 8.3.1.3 Service architecture
 
 The Service Mesh architecture is composed of its components (Istiod, Envoy, and the console) and your Kubernetes cluster. The overall architecture is as follows:
 
@@ -20195,15 +20666,15 @@ The Service Mesh architecture is composed of its components (Istiod, Envoy, and 
 
 Business value User interface Capabilities
 
-##### Features
+##### 8.3.1.4 Features
 
 governance Service Mesh is the core Alibaba Cloud product for microservice administration, offering a wide range of features such as service mesh management and service administration.
 
-###### Mesh management
+###### 8.3.1.4.1 Mesh management
 
 The mesh components view displays the number of instances, monitoring status, and resources for each service mesh component. This provides a clear overview of the status of your mesh components. You can use mesh management to create a service mesh in a specified Kubernetes (K8s) cluster and manage the components of existing Service Mesh instances. This includes managing settings such as high availability (HA) for the ingress gateway and the Istiod control plane, AccessLog, and resource configurations for global sidecars, ingress gateways, Istiod, and observability components. You can also configure the control plane to connect to service registries such as ZooKeeper, Nacos, Consul, and Eureka. Multi-cluster configurations are also supported, which lets you manage multiple clusters for cross-cluster service communication and administration.
 
-###### Service administration
+###### 8.3.1.4.2 Service administration
 
 This feature provides service administration for microservices, supporting the seamless migration of services such as Spring Cloud and Dubbo into a service mesh and enabling interoperability between non-Java and Java services.
 
@@ -20225,23 +20696,23 @@ governance
 | Service registration | Register microservices with service registries, such as Eureka and Nacos, to enable interoperability with services in existing registries. |
 | Tag-based routing | Configure routing rules based on weight and content. Use tag-based routing to manage routing for multiple existing versions. |
 
-###### External services
+###### 8.3.1.4.3 External services
 
 You can add external services to your service mesh and configure their settings, such as their domain names, addresses, and tags.
 
-###### Ingress gateway
+###### 8.3.1.4.4 Ingress gateway
 
 An ingress gateway exposes HTTP and HTTPS services and provides tag-based routing.
 
-###### End-to-end routing
+###### 8.3.1.4.5 End-to-end routing
 
 Service Mesh uses lane technology to create isolated environments in seconds. Developers use these environments for development, testing, and protecting services during critical business periods. Precise traffic routing rules minimize the blast radius and enable end-to-end routing across the entire call chain, making development and testing significantly more efficient.
 
-###### Service topology
+###### 8.3.1.4.6 Service topology
 
 The service topology displays a topology graph of service invocations across the entire Service Mesh. It also shows information for multiple clusters, such as service invocation metrics, traffic flow, and success rates.
 
-##### Scenarios
+##### 8.3.1.5 Scenarios
 
 governance Service Mesh (ASM) is ideal for scenarios that require traffic management, security management, fault recovery, observability, and migration to a microservice architecture. This topic describes common scenarios for using ASM.
 
@@ -20265,11 +20736,11 @@ ASM makes it easy to implement observability between services. Its powerful, rel
 
 governance You can use ASM to implement agile development and deployment, which accelerates your business iteration cycles. In a production environment, you can decompose your application into microservices and manage them in an Alibaba Cloud image repository. This lets you iterate on each microservice independently, while Alibaba Cloud provides capabilities for scheduling, orchestration, deployment, and phased releases. Load balancing and service discovery support Layer 4 and Layer 7 request forwarding and backend attachment. A rich set of scheduling and recovery policies supports service-level affinity scheduling, high availability (HA), and disaster recovery across zones. ASM supports monitoring at the microservice and container levels, along with Auto Scaling for microservices.
 
-##### Limits
+##### 8.3.1.6 Limits
 
 Service Mesh supports Kubernetes cluster versions 1.18 to 1.22 on X86 and ARM64 architectures.
 
-#### Service query
+#### 8.3.2 Service query
 
 Use EDAS to view the list of services and service details for your multilingual applications.
 
@@ -20297,7 +20768,7 @@ service name in the service list.
 5. On the **Service Details** page, view detailed information about the service.
 Service details include **basic information** and **service invocation relationships**.
 
-#### Ingress Gateway
+#### 8.3.3 Ingress Gateway
 
 This topic describes how to expose services to external traffic using an ingress gateway. governance
 
@@ -20335,9 +20806,9 @@ governance Click **Actions**, then click **Delete** to stop exposing the service
 
 Deleting the exposure stops external access to the service. Proceed with caution.
 
-#### Service administration
+#### 8.3.4 Service administration
 
-##### Implement microservice traffic governance
+##### 8.3.4.1 Implement microservice traffic governance using Service Mesh
 
 **using Service Mesh**
 
@@ -20548,7 +21019,7 @@ governance
 |   | Traffic destination | Select the destination region of the traffic. |
 |   | Traffic ratio | The percentage of total traffic that is routed from the source region to the destination region. |
 
-##### Add a Spring Cloud service to a service
+##### 8.3.4.2 Add a Spring Cloud service to a service mesh
 
 **mesh**
 
@@ -20679,7 +21150,7 @@ the left.
 
 After registering your Spring Cloud service with the service mesh, you can govern traffic for the service.
 
-##### Add Dubbo Application to Service Mesh
+##### 8.3.4.3 Add Dubbo Application to Service Mesh
 
 Register Dubbo services with Service Mesh and then perform traffic governance on them. This topic uses a Dubbo service as an example to describe how to register a Dubbo application with EDAS Service Mesh.
 
@@ -20737,7 +21208,7 @@ the left.
 
 After registering Dubbo services with Service Mesh, you can perform traffic governance on them.
 
-##### Implement zero trust security using
+##### 8.3.4.4 Implement zero trust security using service mesh
 
 ##### service mesh
 
@@ -20797,7 +21268,7 @@ governance
 
 governance
 
-##### View service monitoring data
+##### 8.3.4.5 View service monitoring data
 
 Alibaba Cloud Service Mesh supports monitoring service traffic. When a service receives a request, the service mesh records monitoring data such as the average request count and the average response time in milliseconds. This topic describes how to view service traffic monitoring data.
 
@@ -20809,7 +21280,7 @@ Alibaba Cloud Service Mesh supports monitoring service traffic. When a service r
 3. On the **Service Administration** page, click the name of the target service. On the **Service**
 **Details** page, click the **Runtime Monitoring** tab to view the monitoring data.
 
-##### Manage versions and configure Sidecar
+##### 8.3.4.6 Manage versions and configure Sidecar resources
 
 **resources**
 
@@ -20827,7 +21298,7 @@ for the current service.
 5. On the **Version Management** page, find the target service's **Version**. In the **Actions**
 column, click **Edit Sidecar Resources** to configure the Sidecar resources for that service. Click to view the instance list. In the **Actions** column, click **Restart** to restart the instance.
 
-##### Support K8s Service Registration to
+##### 8.3.4.7 Support K8s Service Registration to Nacos/Eureka
 
 **Nacos/Eureka**
 
@@ -20844,7 +21315,7 @@ governance
 4. On the **Service Details** page, click **Service Registration**, configure the **Port Number**,
 **Registry Type**, and **Registry Address**, then click **Register**.
 
-##### Support canary releases for Service Mesh
+##### 8.3.4.8 Support canary releases for Service Mesh applications
 
 **applications**
 
@@ -20860,7 +21331,7 @@ Perform canary releases for services that use Service Mesh.
 5. Select the new image to deploy and configure a grayscale rule. You can use either a
 weight-based or content-based rule.
 
-#### End-to-End Routing
+#### 8.3.5 End-to-End Routing
 
 Service Mesh provides a traffic lane feature that isolates related application versions into independent runtime environments called lanes. You can configure routing rules to direct requests to specific application versions for end-to-end traffic control. This topic describes how to implement end-to-end traffic control using Service Mesh.
 
@@ -20960,7 +21431,7 @@ View traffic comparison On the **Services** tab, click **Actions** and then clic
 
 Deleting a lane also deletes all services published in that lane. This action does not affect the services in the baseline environment.
 
-#### External services
+#### 8.3.6 External services
 
 This topic describes how to add external services to a service mesh.
 
@@ -21022,7 +21493,7 @@ governance
 
 When you delete an external service, all its associated content is deleted.
 
-#### Service topology
+#### 8.3.7 Service topology
 
 Service Mesh integrates with Alibaba Cloud Application Real-Time Monitoring Service (ARMS), Tracing Analysis, and ARMS Prometheus to provide observability. You can view tracing data, service invocation topologies, and visualization dashboards.
 
@@ -21033,9 +21504,9 @@ Service Mesh integrates with Alibaba Cloud Application Real-Time Monitoring Serv
 | Service topology | View the invocation relationships and performance status between services. 1. Log on to the EDAS console. 2. In the navigation pane on the left, choose Microservices Governance > Service Mesh. 3. On the Service Mesh page, click Service Topology in the navigation pane on the left. On the Service Topology page, view the invocation relationships and performance status between services. | Before you use the service topology feature, a Prometheus service is required. By default, the monitoring service provided by AECP is used. If the required component is not deployed, you can use ARMS Prometheus instead. |
 | Tracing Analysis | View Tracing Analysis monitoring data on the application details page. 1. Log on to the EDAS console. 2. In the navigation pane on the left, click Application List. 3. On the Application List page, find the target application and click its name. On the Application Details page, view the Tracing Analysis monitoring data. | You must purchase the Tracing Analysis service to use its monitoring features. |
 
-### Dubbo service governance
+### 8.4 Dubbo service governance
 
-#### Query Dubbo Services
+#### 8.4.1 Query Dubbo Services
 
 Use EDAS to view the list of deployed Dubbo services and examine service details.
 
@@ -21081,11 +21552,11 @@ Metadata consists of two categories: **Metadata** and **Interface Metadata**.
 microservice capabilities.
 **Interface Metadata**: Includes **Method Name**, **Parameter List**, and **Return Type**.
 
-#### Query Dubbo service traces
+#### 8.4.2 Query Dubbo service traces
 
 You can log in to the EDAS console to query traces for Dubbo services deployed in EDAS. EDAS is integrated with Application Real-Time Monitoring Service (ARMS). You can use ARMS to query service invocation traces and holistic diagnostic events. For more information, see the **Application Real-Time Monitoring Service User Guide > Query Invocation Traces** section. governance
 
-#### Ensure the availability of Dubbo
+#### 8.4.3 Ensure the availability of Dubbo applications using outlier ejection
 
 **applications using outlier ejection**
 
@@ -21166,7 +21637,7 @@ In the outlier ejection policy list, click **Edit** in the **Actions** column of
 
 In the list of outlier ejection policies, click **Delete** in the **Actions** column for the target policy, and then click **Confirm** in the dialog box that appears.
 
-#### Implement Access Control for Dubbo
+#### 8.4.4 Implement Access Control for Dubbo Applications Using Service Authentication
 
 **Applications Using Service Authentication**
 
@@ -21221,9 +21692,9 @@ After you create a service authentication rule, you can manage it on the **Servi
 **Authentication** page by clicking **Edit**, **Enable**, **Disable**, or **Delete** in the **Actions** column
 for that rule.
 
-### HSF service governance
+### 8.5 HSF service governance
 
-#### Query HSF services
+#### 8.5.1 Query HSF services
 
 Use EDAS to query the service list and service details for your deployed HSF applications.
 
@@ -21264,12 +21735,12 @@ The service invocation relationship includes the lists of **Service Providers** 
 **Consumers**, along with their **IP**, **Port**, **Serialization Method**, and **Timeout**
 information.
 
-#### Query HSF service traces
+#### 8.5.2 Query HSF service traces
 
 You can use the EDAS console to query traces of HSF services deployed in EDAS. EDAS is integrated with Application Real-Time Monitoring Service (ARMS). You can use ARMS to query service traces and holographic events. For more information, see **Application Real-**
 **Time Monitoring Service (ARMS) User Guide > Query Service Traces**.
 
-#### HSF service groups
+#### 8.5.3 HSF service groups
 
 HSF service groups display the runtime status of all services for all applications within a tenant over the last 24 hours. This status includes the number of service calls, call duration, and call errors. These groups provide a clear comparison of services across your entire system.
 
@@ -21298,9 +21769,9 @@ page, you can view the service group information.
 click **Delete** in the Actions column.
 4. In the Delete **Service Group** dialog box, click **Delete**.
 
-#### End-to-end traffic adjustment
+#### 8.5.4 End-to-end traffic adjustment
 
-##### Introduction to end-to-end traffic shaping
+##### 8.5.4.1 Introduction to end-to-end traffic shaping
 
 Canary release helps developers smoothly update applications to a later version. Enterprise Distributed Application Service (EDAS) supports canary traffic adjustment on a single application and end-to-end traffic adjustment on multiple applications.
 
@@ -21331,7 +21802,7 @@ governance EDAS manages canary releases by defining a traffic adjustment environ
 
 The end-to-end traffic adjustment solution of EDAS implements canary release and traffic adjustment using the EDAS console. The solution provides the following flexible features: You only need to prepare instance resources for the applications that require a phased release. You do not need to build an entirely new business system. Multiple grayscale environments are supported. This allows different applications to have their own grayscale controls, and an application can participate in multiple grayscale environments at the same time. Call chain grayscale is supported. This allows multiple applications to be in the same traffic shaping environment. Grayscale traffic detected in an upstream stage can pass through intermediate, non-grayscale application stages and still be routed to the corresponding grayscale application instance in a downstream stage.
 
-##### How to upgrade a single application using
+##### 8.5.4.2 How to upgrade a single application using end-to-end traffic adjustment
 
 #### end-to-end traffic adjustment
 
@@ -21453,7 +21924,7 @@ list, select **default group**. Then click **OK**.
 5. Return to the **Instance Deployment Information** page. In the upper-right corner of the
 canary group section, click **Delete Group**.
 
-##### Use end-to-end traffic adjustment to
+##### 8.5.4.3 Use end-to-end traffic adjustment to troubleshoot application issues
 
 **troubleshoot application issues**
 
@@ -21510,7 +21981,7 @@ application D’s canary group. governance i. Use **traffic monitoring** in the 
 8. Check whether traffic distribution generally meets expectations and troubleshoot issues in
 the canary groups of applications B and D. i. Use **traffic monitoring** in the canary group to check traffic distribution, confirm whether canary rules take effect, and verify if traffic distribution matches expectations. For details, see Monitor canary traffic. ii. Troubleshoot issues in the canary groups of applications B and D using canary traffic. If troubleshooting completes successfully, disable the canary environment and delete the canary groups for applications B and D (and delete the traffic adjustment environment). If configuration errors are found or a version update is needed during troubleshooting, update the application or configuration, redeploy, and validate again. Because application D is still under active troubleshooting, the traffic adjustment environment remains enabled. Only the canary instances for application B are removed.
 
-##### Create an end-to-end traffic
+##### 8.5.4.4 Create an end-to-end traffic adjustmentenvironment
 
 **adjustmentenvironment**
 
@@ -21588,7 +22059,7 @@ and **Select Group**.
 new rule.
 7. In the **Included Applications** section, click **Add Application** to add a new application.
 
-##### Monitor Phased Release Traffic
+##### 8.5.4.5 Monitor Phased Release Traffic
 
 After a phased release, monitor traffic to verify success and assess the traffic status of applications and instances.
 
@@ -21626,7 +22097,7 @@ period.
 6. Monitor the phased release traffic data for the selected application in the traffic shaping
 environment. The phased release traffic data for a specific application is consistent with the traffic monitoring for a single application. For more information, see Monitor Phased Release Traffic for a Single Application.
 
-##### Limits on end-to-end throttling
+##### 8.5.4.6 Limits on end-to-end throttling
 
 End-to-end throttling enables flexible canary release methods. It also poses some limits and leads to specific conventions. If an application instance group belongs to multiple throttling environments, throttling conflicts may occur. Therefore, during end-to-end throttling, one application instance group can belong to only one throttling environment.
 
@@ -21654,7 +22125,7 @@ An application may use both single application throttling and end-to-end throttl
 
 In single application throttling mode, the HTTP or HSF rules of an application are subject to the uniqueness limit. One ingress endpoint of an application can be defined by only one HTTP or HSF rule. The following list defines an ingress endpoint: For the HTTP protocol, an endpoint refers to an application, and only one group can be set for an application. For the HSF protocol, an endpoint refers to an interface method of an application. During single application throttling, only one HTTP rule can be defined for one application. Furthermore, an interface method of an application can be used only in one HSF rule.
 
-##### End-to-end traffic adjustment policy
+##### 8.5.4.7 End-to-end traffic adjustment policy
 
 In canary release, you can specify a traffic adjustment rule and deploy a new version by using multiple policies. This is because the order of these two operations is not limited. The following table describes several available combination methods for canary release. You can evaluate the methods and choose an appropriate method based on your requirements.
 
@@ -21673,7 +22144,7 @@ governance
 
 We recommend that you use the third method. This method is simple and can ensure that only canary traffic enters the canary release environment. However, only a few canary application instances exist in the early phase of the deployment, and application instances may be affected by heavy canary traffic after the canary release. Therefore, make sure that the traffic received by instances is in the expected range. End-to-end traffic adjustment is similar to single-application traffic adjustment. The difference is that specifying a traffic adjustment rule is changed to creating a canary release environment in end-to-end traffic adjustment.
 
-##### Traffic adjustment rule parameters
+##### 8.5.4.8 Traffic adjustment rule parameters
 
 A canary release allows you to create traffic adjustment rules by HTTP and HSF, whose parameter settings are different. You can configure parameters for HTTP traffic adjustment rules based on the cookie, HTTP header, and URL parameter values. You can determine traffic based on the remainder range or list after the mod operation (mod 100). This type of rule is easy to configure and is not described in detail in this topic. If a parameter value contains a non-digit character, this character is converted to a digit by using the hash algorithm. If you use complex parameters, we recommend that you use lists to determine the traffic. This topic describes the parameters of HSF traffic adjustment rules. The end-to-end canary release allows you to obtain a property of a parameter by using a parameter expression. The following table describes supported parameter expressions.
 
@@ -21799,13 +22270,13 @@ public class Person {
 
 `}` You can configure the following rules. governance
 
-### Multilingual service
+### 8.6 Multilingual service governance
 
 **governance**
 
 The multilingual service governance feature of Enterprise Distributed Application Service (EDAS) is developed based on the Service Mesh (ASM) technology and is application-centric. By default, EDAS does not offer this feature for free. You have to pay a certain amount of fees to use this feature.
 
-#### Query Multi-language Application
+#### 8.6.1 Query Multi-language Application Services
 
 **Services**
 
@@ -21832,7 +22303,7 @@ service name in the service list.
 5. On the **Service Details** page, view the service’s detailed information.
 governance Service details include **basic information** and **service invocation relationships**.
 
-#### Deploy multilingual applications using
+#### 8.6.2 Deploy multilingual applications using canary release
 
 #### canary release
 
@@ -21897,7 +22368,7 @@ If you find problems with the new application version during verification, click
 
 After the canary release completes, go to the **Application Overview** page. At the top, confirm that the **Deployment package** shows the new application version.
 
-#### Monitor polyglot applications
+#### 8.6.3 Monitor polyglot applications
 
 This topic describes the monitoring features for polyglot applications in EDAS.
 
@@ -21936,7 +22407,7 @@ On the **Application Details** page, you can view the application's **Requests**
 In the navigation pane on the left, choose **Application Monitoring > API Calls**. governance On the **API Calls** page, you can view the application's **Requests**, **Response time**,
 **Errors**, **Upstream**, **Downstream**, and **Tracing**.
 
-#### Configure traffic governance policies
+#### 8.6.4 Configure traffic governance policies for multilingual applications
 
 **for multilingual applications**
 
@@ -21981,7 +22452,7 @@ governance
 |   | Delay fault | Requests to this service edition are experiencing latency. Fault percentage: Percentage of requests affected by the fault. Delay: Delay time, in seconds. Enter a positive integer, such as 1, 2, or 3. |
 |   | Interruption Fault | Abort requests targeting this service version and return a predefined status code. Failure Percentage: The percentage of requests that will fail. HTTP status code: Status code returned when the fault triggers. Default: 500. |
 
-#### Polyglot microservice administration
+#### 8.6.5 Polyglot microservice administration FAQ
 
 ###### FAQ
 
@@ -22007,9 +22478,9 @@ When you deploy polyglot microservice applications in EDAS, application names mu
 
 If you use SkyWalking as the observability tool for your AECP cluster, you must install the SkyWalking component before you deploy your services.
 
-### End-to-end traffic adjustment
+### 8.7 End-to-end traffic adjustment
 
-#### Introduction to end-to-end traffic
+#### 8.7.1 Introduction to end-to-end traffic adjustment
 
 **adjustment**
 
@@ -22027,7 +22498,7 @@ Ingress application The traffic entry point for a microservice system. An ingres
 
 Applications that use end-to-end traffic adjustment do not support canary releases. If you use Spring Cloud Gateway as an ingress gateway, the Spring Cloud Gateway version must be 2.1.x or later. The quotas for lane groups and lanes vary based on the EDAS edition: Standard Edition: You can create a maximum of one lane group across all regions. Within this lane group, you can create a maximum of five lanes. All editions except for Professional and Platinum are considered Standard Edition. Professional Edition: You can create a maximum of 10 lane groups across all regions. Within each lane group, you can create a maximum of 50 lanes. Platinum Edition: You can create a maximum of 10 lane groups across all regions. Within each lane group, you can create a maximum of 50 lanes. The quotas for lane groups and lanes are fixed. governance To request a quota increase, contact technical support for assistance.
 
-#### Use end-to-end traffic shaping to route
+#### 8.7.2 Use end-to-end traffic shaping to route traffic to target applications
 
 **traffic to target applications**
 
@@ -22153,11 +22624,11 @@ A2[172.20.**.**] -> B2[172.20.**.**] -> C[172.20.**.**]
 
 management
 
-## Configuration management
+## 9 Configuration management
 
-### Configuration Management
+### 9.1 Configuration Management
 
-#### Configuration Management Overview
+#### 9.1.1 Configuration Management Overview
 
 This integration lets you centrally manage application configurations in EDAS.
 
@@ -22173,7 +22644,7 @@ EDAS provides application configuration management . You can select the configur
 | View historical versions and roll back configuration s | If a configuration has an issue, you can query its historical versions and roll it back to a specific historical version. |
 | Query listener information | After you modify a configuration, check if the updated configuration was pushed to the instances that are listening for it. |
 
-#### Configuration management terms
+#### 9.1.2 Configuration management terms
 
 This topic describes the terms related to configuration management.
 
@@ -22249,7 +22720,7 @@ Applications register listeners with the configuration management system through
 
 The configuration management client SDK automatically saves configuration snapshots to the local machine. If the client loses connectivity to the configuration management server, it falls back to the latest snapshot to keep the application running. Snapshots work similarly to local commits in Git or cache. Cache is updated at an appropriate time. Unlike a cache, snapshots do not expire.
 
-#### Create a configuration
+#### 9.1.3 Create a configuration
 
 You can extract variables and parameters from code and manage them in a configuration file. The configuration is retrieved from the file when the code is executed. This lets you change parameters quickly and reduces code maintenance costs. This topic describes how to create a configuration.
 
@@ -22282,7 +22753,7 @@ management
 
 The created configuration appears in the list on the **Configuration List** page.
 
-#### Synchronize application configurations
+#### 9.1.4 Synchronize application configurations
 
 Your applications may be deployed across multiple environments such as the development and staging environments, or across multiple regions. In this case, you may need to synchronize the configurations of the applications among the environments or regions. You can create multiple microservices namespaces, create configurations in one of the microservices namespaces, and then synchronize the configurations to the other microservices namespaces.
 
@@ -22336,7 +22807,7 @@ management
 | Same configuration | The method that is used to manage duplicate configurations between the source and destination microservices namespaces. If the data ID and group of a configuration are the same as those of another configuration, the two configurations are considered duplicate. Valid values: Terminate import: terminates the import process. The selected configurations are not synchronized to the destination microservices namespace. Skip: skips duplicate configurations and synchronizes other configurations to the destination microservices namespace. Overwrite: uses the selected configurations to overwrite the duplicate configurations in the destination microservices namespace. |
 | Configuration file | Click Upload a file and select the .zip file that you exported. Important Do not modify the configurations in the .zip file on your on-premises machine before you import the configurations. Otherwise, the import may fail. We recommend that you modify the configurations after you import the .zip file to the destination namespace. |
 
-#### Manage configurations
+#### 9.1.5 Manage configurations
 
 management After a configuration is created, you can publish the configuration to your applications. Changes in configurations are frequent. You may need to regularly manage configuration updates. This topic describes how to query, modify, and delete configurations in the Enterprise Distributed Application Service (EDAS) console.
 
@@ -22381,7 +22852,7 @@ ii. In the **Delete configuration** message, confirm the configuration and click
 **Batch Delete** below the configuration list.
 ii. In the **Batch delete configuration** message, confirm the configuration and click **OK**.
 
-#### View, compare, and roll back historical
+#### 9.1.6 View, compare, and roll back historical configurations
 
 **configurations**
 
@@ -22407,7 +22878,7 @@ confirm. Click **Compare Configurations** in the **Operation** column for the ta
 
 Configuration Management stores change records for only 30 days.
 
-#### Listener query
+#### 9.1.7 Listener query
 
 After you modify a configuration, you can check whether the updates have been pushed to the instances that monitor it. This feature is available only for clients that use the configuration listener API.
 
@@ -22424,7 +22895,7 @@ the **Data ID** of the configuration that you want to query, and then click the 
 
 If you set the Query Dimension parameter to **Configuration**, the query returns the instances to which the configuration is pushed and the push status. If you set the Query Dimension parameter to **IP**, the query returns all configurations that are monitored by the instance with the specified IP address.
 
-### Manage configuration
+### 9.2 Manage configuration templates
 
 **templates**
 
@@ -22484,11 +22955,11 @@ of the target template.
 **Mapping** of the configuration template.
 nagement
 
-## Resource management
+## 10 Resource management
 
 This topic describes the resources used by Enterprise Distributed Application Service (EDAS) and explains how to manage them. The EDAS console lets you view and use resources, such as Elastic Compute Service (ECS) and Server Load Balancer (SLB) instances. EDAS manages these resources at the application layer. EDAS also provides a resource group management feature. This feature lets you manage resource permissions for Alibaba Cloud accounts and Resource Access Management (RAM) users, which is useful when multiple users or departments use EDAS.
 
-### Sync a VPC
+### 10.1 Sync a VPC
 
 A virtual private cloud (VPC) is a custom private network built on Alibaba Cloud. VPCs are logically isolated from each other. This service is ideal for users who require high network security and have some network management experience. A VPC that you create in the VPC console automatically syncs to the EDAS console, but with a short delay. You can manually sync a VPC to avoid delays that may affect your operations.
 
@@ -22515,7 +22986,7 @@ Table 1. VPC parameter descriptions
 
 nagement
 
-### Manage microservices
+### 10.2 Manage microservices namespaces in the console
 
 **namespaces in the console**
 
@@ -22553,9 +23024,9 @@ nagement
 | Allow Remote Debugging | To enable device-cloud interconnection for an application, go to the edit page of the microservices namespace where the application is deployed and turn on Allow Remote Debugging. For more information about device-cloud debugging, see Introduction to device-cloud interconnection. |
 | Description | Enter a description for the microservices namespace. |
 
-### Manage ECS resources
+### 10.3 Manage ECS resources
 
-#### Import ECS instances
+#### 10.3.1 Import ECS instances
 
 Before you deploy applications in EDAS, you must import ECS instances to a specified cluster and install EDAS Agent.
 
@@ -22630,7 +23101,7 @@ choose **Resource Management** > **ECS**.
 2. On the **ECS** page, select the destination region from the top menu bar and a microservices
 namespace. You can then view the status in the **Agent Status** column. A status of **Online** or **Online Docker** indicates that the EDAS Agent is installed. If the installation fails, the status is **Unknown**.
 
-#### Create an ECS cluster
+#### 10.3.2 Create an ECS cluster
 
 Applications must be deployed in clusters. This topic describes how to create an ECS cluster and add ECS instances.
 
@@ -22677,11 +23148,11 @@ two ways: **Import ECS Instances** or **Select from Existing Clusters**.
 **namespace** and **source cluster**. Then, select the ECS instances in the ECS instance list.
 Click **>** to add them to the right pane. Then, click **Next**. The subsequent operations are the same as for importing ECS instances. After you add ECS instances, return to the cluster details page to check the health status of the ECS instances. A health status of **Normal** indicates that the ECS instances are added successfully.
 
-### Manage Kubernetes
+### 10.4 Manage Kubernetes resources
 
 **resources**
 
-#### Create and import a Container Service
+#### 10.4.1 Create and import a Container Service for Kubernetes cluster
 
 **for Kubernetes cluster**
 
@@ -22713,9 +23184,9 @@ the **Actions** column, click **Import**.
 then click **Import**. When the import status of the Container Service for Kubernetes cluster is **Import**
 **succeeded**, the cluster is successfully imported into EDAS.
 
-#### Kubernetes Configurations
+#### 10.4.2 Kubernetes Configurations
 
-##### Manage ConfigMaps
+##### 10.4.2.1 Manage ConfigMaps
 
 You can use ConfigMaps to store non-confidential configurations, such as Java Virtual Machine (JVM) heap memory, JVM properties, and Java agent parameters. This topic describes how to manage ConfigMaps.
 
@@ -22851,7 +23322,7 @@ Do not delete a ConfigMap that is being used by an application. If you do, the a
 You can filter for the configuration items by **Configuration Item Name** or **K8s**
 **Namespace**.
 
-##### Manage secrets
+##### 10.4.2.2 Manage secrets
 
 In an Enterprise Distributed Application Service (EDAS) Kubernetes environment, you can use secrets to store sensitive information, such as passwords and certificates. This topic describes how to manage secrets.
 
@@ -22939,9 +23410,9 @@ nagement
 
 If an application uses this secret, you must disassociate the secret from the application before you delete it.
 
-### Service Mesh management
+### 10.5 Service Mesh management
 
-#### Manage ASM instances
+#### 10.5.1 Manage ASM instances
 
 This topic describes how to view service mesh details and uninstall a service mesh.
 
@@ -22980,7 +23451,7 @@ click **Uninstall** in the **Actions** column.
 
 You must first remove all services from the service mesh. nagement
 
-#### Connect multiple registry types to
+#### 10.5.2 Connect multiple registry types to Service Mesh
 
 ##### Service Mesh
 
@@ -22998,7 +23469,7 @@ page appears.
 5. In the **Integrate Registry** dialog box, configure **Registry Type**, **Registry Address**, and
 **Namespace**. Then click **OK**.
 
-#### Improve service mesh observability
+#### 10.5.3 Improve service mesh observability using Prometheus
 
 **using Prometheus**
 
@@ -33492,7 +33963,7 @@ P99",
             "h": 6,
 ```
 
-### Manage resource groups
+### 10.6 Manage resource groups
 
 Resource groups in Enterprise Distributed Application Service (EDAS) help you organize your resources. You can also use them to control account permissions. Grant a RAM user permissions on a resource group. The RAM user can then manage all resources in that group.
 
@@ -33549,7 +34020,7 @@ nagement
 2. In the **Edit Resource Group** dialog box, change the name and description, and then click
 **OK**.
 
-### Manage a dedicated registry
+### 10.7 Manage a dedicated registry and configuration center
 
 **and configuration center**
 
@@ -33659,9 +34130,9 @@ After you change the configuration, the instance automatically restarts for the 
 
 After you release the instance, all service registration and configuration information on the instance is removed and cannot be recovered. If your client is still connected to this instance, a connection error will occur, which will cause the microservice application to fail. Before you proceed, carefully verify the instance that you want to release. enter
 
-## Component center
+## 11 Component center
 
-### Batch operations
+### 11.1 Batch operations
 
 In the EDAS console, run commands to perform batch operations on ECS instances that have the EDAS agent installed.
 
@@ -33690,9 +34161,9 @@ View operation results and details After the command runs, a new **Execution Res
 **End Time**, **Command**, and **Status**.
 If you are logged on with an Alibaba Cloud account, you can view all batch operation commands executed by the account and all Resource Access Management (RAM) users that belong to the account. If you are logged on as a RAM user, you can view only the batch operation commands that you executed. The records are sorted by creation time in descending order. You can also sort them by end time or status. In the **Details** column, click **View** to open the **View Details** page. nistration
 
-## System administration
+## 12 System administration
 
-### Profile
+### 12.1 Profile
 
 If you set a Resource Access Management (RAM) user as an alert contact, you must update the user's profile.
 
@@ -33703,7 +34174,7 @@ If you set a Resource Access Management (RAM) user as an alert contact, you must
 3. On the **Profile** page, update the information in the **Account**, **Contact**, **Mobile Phone**, and
 **Email** fields, and then click **OK**.
 
-### Permission assistant
+### 12.2 Permission assistant
 
 The EDAS Permission Assistant is a tool that generates Resource Access Management (RAM) permission policies. This tool helps you quickly create EDAS-related permission policies in RAM and migrate permission management from built-in EDAS RAM users to standard RAM users.
 
@@ -34468,7 +34939,7 @@ nistration
 
 `]` `}` `]` `}`
 
-### Account switch
+### 12.3 Account switch
 
 View the current logon account.
 
@@ -34480,7 +34951,7 @@ View the current logon account.
 displayed. nistration
 4. Click the card to go to the Overview page.
 
-### License consumption details
+### 12.4 License consumption details
 
 EDAS is a cloud-native Platform as a Service (PaaS) that hosts distributed applications and manages microservices. It provides comprehensive solutions that cover application development, deployment, monitoring, and O&M. A license is consumed when an application is created successfully. No license is consumed if the application fails to be created.
 
@@ -34507,7 +34978,7 @@ The number of authorized vCPUs consumed is calculated using the following formul
 select a **Feature Module**, and enter a **Name**. The consumption details list displays the **Feature Module**, **Name**, **Actual Application**
 **VCPUs**, **License Feature Coefficient**, and **Actual License Consumption**.
 
-### Operation logs
+### 12.5 Operation logs
 
 nistration You can view operation logs in the Enterprise Distributed Application Service (EDAS) console. If you log on with an Alibaba Cloud account, you can query the operation logs for the account and all its RAM users. If you log on as a RAM user, you can query only the operation logs for that user.
 
@@ -34528,9 +34999,9 @@ On the **Basic Information** page, you can view the **Application Information** 
 **Application Settings**.
 anagement
 
-## Permission management
+## 13 Permission management
 
-### Overview of Permission
+### 13.1 Overview of Permission Management
 
 **Management**
 
@@ -34622,7 +35093,7 @@ anagement Built-in EDAS permissions and RAM permissions do not have a one-to-one
 | Application Management - Configure container and edit application JVM parameters | edas:ConfigApplication edas:ReadApplication | acs:edas:*:*:namespace/*/appli cation/${applicationId} |
 | Application Management - Set log path | edas:ManageAppLog edas:ReadApplication | acs:edas:*:*:namespace/*/appli cation/${applicationId} |
 
-### Account systems
+### 13.2 Account systems
 
 EDAS provides a built-in account system and integrates with Alibaba Cloud Resource Access Management (RAM) to enhance security and simplify enterprise-level account management.
 
@@ -34634,7 +35105,7 @@ anagement Account systems include concepts such as Alibaba Cloud accounts, RAM u
 
 The following scenario explains how to use the EDAS account systems. After the required resources are prepared, three departments, each with an Alibaba Cloud account, create their own sub-accounts or RAM users to assign and manage permissions and resources. Account A grants all ECS resources and all permissions to sub-account or RAM user a. Account B creates two roles: application administrator and operations administrator. It grants these roles to sub-accounts or RAM users b1 and b2, respectively. Account C creates a role to view applications and grants it to sub-account or RAM user c. anagement B A Assign resources and Assign resources and Assign resources and permissions permissions permissions b2 c b1 a
 
-### Log in to the Apsara Uni-
+### 13.3 Log in to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -34688,15 +35159,15 @@ parameters, enter the verification code, and then click **Confirm**. anagement
 
 Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-### EDAS built-in permission
+### 13.4 EDAS built-in permission management
 
 **management**
 
-#### RAM users
+#### 13.4.1 RAM users
 
 When you use EDAS, different roles are often required for different tasks. To separate duties, an Alibaba Cloud account can assign specific roles and resources to RAM users. This permission model is similar to the relationship between system users and regular users in Linux, where a system user can grant permissions to or revoke permissions from a regular user. The relationship between an Alibaba Cloud account and a RAM user is as follows: In EDAS, an Alibaba Cloud account can attach RAM users to avoid sharing account keys. By assigning the least privilege to RAM users, you can efficiently manage your enterprise and ensure that each user has specific duties. When an Alibaba Cloud account is attached to a RAM user, a mapping relationship is created that is valid only within EDAS. In other environments, the Alibaba Cloud account and the RAM user are independent accounts. An Alibaba Cloud account can function as a primary account with attached RAM users. The same account can also be a RAM user of another Alibaba Cloud account.
 
-#### Manage EDAS built-in permissions
+#### 13.4.2 Manage EDAS built-in permissions
 
 Manage EDAS built-in permissions using your Alibaba Cloud account. This includes creating roles, granting roles to RAM users, authorizing applications for RAM users, and authorizing resource groups for RAM users.
 
@@ -34745,11 +35216,11 @@ click **OK**. Return to the **RAM Users** page. The authorized resource groups a
 To adjust authorized resource groups, repeat the authorization steps. In the **Authorize**
 **Resource Groups** dialog box, adjust the resource groups in both lists.
 
-### RAM Permission
+### 13.5 RAM Permission Management
 
 **Management**
 
-#### Introduction to RAM users
+#### 13.5.1 Introduction to RAM users
 
 When you use EDAS, different users often perform different tasks. An Alibaba Cloud account can assign specific roles and resources to Resource Access Management (RAM) users to separate responsibilities. anagement
 
@@ -34757,7 +35228,7 @@ When you use EDAS, different users often perform different tasks. An Alibaba Clo
 
 The relationships between an Alibaba Cloud account and RAM users are as follows: In EDAS, an Alibaba Cloud account can attach RAM users. This practice avoids sharing account keys and lets you assign the least privilege to RAM users. This enables efficient enterprise management with clearly defined responsibilities. When an Alibaba Cloud account attaches a RAM user, a mapping is created. This mapping is valid only within EDAS. Outside of this environment, the Alibaba Cloud account and the RAM user are independent accounts. An Alibaba Cloud account can be a primary account that attaches RAM users. It can also be a RAM user attached to another Alibaba Cloud account.
 
-#### Create users and user groups
+#### 13.5.2 Create users and user groups
 
 An Alibaba Cloud account can create users and assign roles to them. This helps meet the system's access control requirements.
 
@@ -34851,7 +35322,7 @@ the **Actions** column.
 5. In the **Add User** dialog box, select the target user from the organization in the list on the
 left. Click the icon to add the user to the list on the right. Then, click **OK**. anagement
 
-#### Create a RAM role and grant
+#### 13.5.3 Create a RAM role and grant authorization to users
 
 **authorization to users**
 
@@ -34899,7 +35370,7 @@ anagement
 
 iv. In the **Add Access Policy** dialog box, select the target access policy, then click **OK**. anagement
 
-#### Verify the RAM permissions of a new
+#### 13.5.4 Verify the RAM permissions of a new user
 
 **user**
 
@@ -34945,7 +35416,7 @@ anagement
 to delete, and then click **Delete** in the **Actions** column.
 3. In the **Note** dialog box, click **Delete**.
 
-#### Access policy example library
+#### 13.5.5 Access policy example library
 
 This document describes the fine-grained permission rules and access policies for EDAS in RAM.
 
@@ -35454,8 +35925,6 @@ To delete an application, you must also grant permissions to view applications. 
 
 `}`
 
-**Log Management**
-
 **Important**
 
 To manage application logs, you must also grant permissions to view the application. This lets you find the application whose logs you want to manage. `{`
@@ -35588,8 +36057,6 @@ anagement `{`
 **Microservice management**
 
 This section describes authorization for microservice management scenarios.
-
-**Query Services**
 
 **Note**
 
@@ -35761,11 +36228,7 @@ System O&M includes permissions to view operation logs, execute batch operations
        "Effect": "Allow"
 ```
 
-`}` `]` `}` anagement
-
-**Operation Logs**
-
-`{`
+`}` `]` `}` anagement `{`
 
 ```json
    "Version": "1",
@@ -35782,7 +36245,7 @@ System O&M includes permissions to view operation logs, execute batch operations
 
 `}` `]` `}`
 
-### View all permissions
+### 13.6 View all permissions
 
 You can view all permissions in the EDAS console.
 
@@ -35792,7 +36255,7 @@ You can view all permissions in the EDAS console.
 2. In the left-side menu bar, choose **System administration > All permissions**.
 3. Click a level to view its permissions.
 
-### Use Permission Assistant to
+### 13.7 Use Permission Assistant to grant permissions to applications by cluster
 
 **grant permissions to applications**
 
@@ -35817,11 +36280,11 @@ anagement
 7. Find the access policy that you configured. Click Edit to view the permissions that you
 added.
 
-## FAQ
+## 14 FAQ
 
 This topic describes the common problems and solutions during product development and use.
 
-### Known issues and solutions
+### 14.1 Known issues and solutions
 
 This topic describes known issues in this version of the product and their solutions.
 
@@ -35873,11 +36336,11 @@ This error message is misleading. You can safely close the error dialog box. The
 
 The cluster list displays all ECS instances in the cluster, regardless of permissions. However, the ECS management page and the application scale-out list show only the instances that the RAM user is explicitly authorized to access. If an ECS instance is not authorized for the RAM user, the user cannot view or manage that instance from these pages.
 
-### Development FAQ
+### 14.2 Development FAQ
 
 The development FAQ covers Ali-Tomcat, lightweight configuration center, HSF, HSF error codes, and other development problems.
 
-#### Ali-Tomcat issues
+#### 14.2.1 Ali-Tomcat issues
 
 This topic describes common Ali-Tomcat issues and their solutions during development.
 
@@ -35923,7 +36386,7 @@ Check whether the bottom of the error stack trace points to your own code. For e
 |   |   |   |   |   |   |   | jmenv.tbsite.net |   |
 |   | .rule.Router |   |   |   |   |   |   |   |
 
-#### Lightweight configuration center FAQ
+#### 14.2.2 Lightweight configuration center FAQ
 
 This topic describes the common issues related to the lightweight configuration center and their solutions.
 
@@ -35953,7 +36416,7 @@ You can also find the published service in the **service list**. ii. On the **Ed
 
 To prevent service invocation errors, do not change the content that follows the IP address unless it is necessary. iii. Click **OK**. iv. You can restart the service. The service is then re-registered with the new address. After the modification, the service consumer can directly call the service. You can view the logs in the {user.home}\logs\configclient\config-client.log directory to check the actual IP address called by the service. Check the content next to the keyword **Data-received** in the logs to view the complete information about the called service.
 
-#### HSF FAQ
+#### 14.2.3 HSF FAQ
 
 **Locate and solve HSF problems**
 
@@ -36041,7 +36504,7 @@ This error indicates that the class corresponding to the interface failed to loa
 **Solution**:
 Confirm that the applications are in the same virtual private cloud (VPC) and region. Applications cannot connect if they are in different VPCs or regions. Confirm that the applications are in the same security group. If they are in different security groups, you must open port 12200. You can run the `telnet 10.10.1.1 12200` command to check whether the port is reachable. If the port is not reachable, check the firewall settings of the server at **10.10.1.1**.
 
-#### HSF error codes
+#### 14.2.4 HSF error codes
 
 **Error code: HSF-0001**
 
@@ -36195,15 +36658,15 @@ desired IP address.
 **Solutions**: A TCP connection cannot be established between the current instance and the
 corresponding address. Check whether the corresponding remote address and port can be connected.
 
-### Usage FAQ
+### 14.3 Usage FAQ
 
 Common problems during development are related to accounts, resources, application lifecycle, and monitoring and alarms.
 
-#### Account management
+#### 14.3.1 Account management
 
 Q: Can I create multiple RAM users? A: Yes. Q: Who can grant application operation permissions for RAM users? EDAS allows you to grant application operation permissions to RAM users only by using the primary account.
 
-#### Resource management
+#### 14.3.2 Resource management
 
 This topic describes common issues and solutions related to resource management.
 **Problem**: The EDAS Agent does not report data and its version number is not displayed on
@@ -36254,7 +36717,7 @@ or in the application scale-out list?
 **Answer**: The cluster list displays all ECS instances in the cluster, regardless of permissions.
 However, the ECS list and the application scale-out list check whether the RAM user has been granted permissions for each ECS instance. If a RAM user has not been granted permissions for an ECS instance, that instance is not displayed in those lists.
 
-#### Application lifecycle class
+#### 14.3.3 Application lifecycle class
 
 **Question:** Does the EDAS Agent restart automatically after the server restarts?
 **Answer:** Yes. The EDAS Agent restarts automatically after the server restarts. However,
@@ -36329,7 +36792,7 @@ balancing? Can I use SLB?
 2. You do not need to configure load balancing for applications that are RPC service providers.
 EDAS provides native load balancing support for these applications.
 
-#### Troubleshoot EDAS Agent issues
+#### 14.3.4 Troubleshoot EDAS Agent issues
 
 **Symptoms**
 
@@ -36376,7 +36839,7 @@ then run `pkill -9 staragent && /home/staragent/bin/agent.sh start` . Then, exec
 -select * from ecs where serial-num=""; /home/staragent/conf/staragent.conf
 ```
 
-#### Troubleshoot change process issues
+#### 14.3.5 Troubleshoot change process issues
 
 **Symptoms**
 
@@ -36395,7 +36858,7 @@ Tomcat and application logs to troubleshoot the issue.
 3. Start the change process again and check whether a command delivery timeout results in
 this issue.
 
-#### Troubleshoot issues in a change
+#### 14.3.6 Troubleshoot issues in a change process
 
 **process**
 

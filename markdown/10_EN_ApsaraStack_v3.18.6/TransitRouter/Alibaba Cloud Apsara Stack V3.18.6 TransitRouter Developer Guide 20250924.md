@@ -2,12 +2,115 @@
 title: "TransitRouter Developer Guide 20250924"
 product_version: "V3.18.6"
 pdf_pages: 258
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 TransitRouter Developer Guide 20250924.pdf"
+source_pdf: "d3d630d48d7ace8e_Alibaba Cloud Apsara Stack V3.18.6 TransitRouter Developer Guide 20250924.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20TransitRouter%20Developer%20Guide%2020250924.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # TransitRouter Developer Guide 20250924
+
+## Table of Contents
+
+- 1 API References
+  - 1.1 List of operations by function
+  - 1.2 CEN instances
+    - 1.2.1 ModifyCenAttribute
+    - 1.2.2 DescribeCenAttachedChildInstances
+    - 1.2.3 DescribeCenAttachedChildInstanceAttribute
+    - 1.2.4 DeleteCen
+    - 1.2.5 DescribeCens
+    - 1.2.6 CreateCen
+    - 1.2.7 DescribeChildInstanceRegions
+  - 1.3 Transit routers
+    - 1.3.1 CreateTransitRouter
+    - 1.3.2 DeleteTransitRouter
+    - 1.3.3 UpdateTransitRouter
+    - 1.3.4 ListTransitRouters
+    - 1.3.5 ListTransitRouterAvailableResource
+  - 1.4 Transit router CIDR blocks
+    - 1.4.1 CreateTransitRouterCidr
+    - 1.4.2 ModifyTransitRouterCidr
+    - 1.4.3 ListTransitRouterCidr
+    - 1.4.4 ListTransitRouterCidrAllocation
+    - 1.4.5 DeleteTransitRouterCidr
+  - 1.5 VPC connections
+    - 1.5.1 CreateTransitRouterVpcAttachment
+    - 1.5.2 UpdateTransitRouterVpcAttachmentAttribute
+    - 1.5.3 ListTransitRouterVpcAttachments
+    - 1.5.4 DeleteTransitRouterVpcAttachment
+    - 1.5.5 UpdateTransitRouterVpcAttachmentZones
+    - 1.5.6 ListGrantVSwitchesToCen
+  - 1.6 VBR connections
+    - 1.6.1 CreateTransitRouterVbrAttachment
+    - 1.6.2 ListTransitRouterVbrAttachments
+    - 1.6.3 UpdateTransitRouterVbrAttachmentAttribute
+    - 1.6.4 DeleteTransitRouterVbrAttachment
+  - 1.7 Connect attachments
+    - 1.7.1 CreateTransitRouterConnectAttachment
+    - 1.7.2 UpdateTransitRouterConnectAttachmentAttribute
+    - 1.7.3 ListTransitRouterConnectAttachments
+    - 1.7.4 CreateTransitRouterConnectPeer
+    - 1.7.5 ListTransitRouterConnectPeers
+    - 1.7.6 DeleteTransitRouterConnectPeer
+    - 1.7.7 DeleteTransitRouterConnectAttachment
+  - 1.8 Cross-account authorization
+    - 1.8.1 GrantInstanceToTransitRouter
+    - 1.8.2 RevokeInstanceFromTransitRouter
+    - 1.8.3 DescribeGrantRulesToCen
+    - 1.8.4 DescribeGrantRulesToResource
+  - 1.9 Custom routes
+    - 1.9.1 CreateTransitRouterRouteEntry
+    - 1.9.2 UpdateTransitRouterRouteEntry
+    - 1.9.3 ListTransitRouterRouteEntries
+    - 1.9.4 DeleteTransitRouterRouteEntry
+  - 1.10 Routing
+    - 1.10.1 ListCenChildInstanceRouteEntriesToAttachment
+    - 1.10.2 DescribeRouteConflict
+    - 1.10.3 DescribeCenRegionDomainRouteEntries
+    - 1.10.4 DescribeCenChildInstanceRouteEntries
+  - 1.11 Custom route tables
+    - 1.11.1 UpdateTransitRouterRouteTable
+    - 1.11.2 DeleteTransitRouterRouteTable
+    - 1.11.3 ListTransitRouterRouteTables
+    - 1.11.4 CreateTransitRouterRouteTable
+  - 1.12 Route learning
+    - 1.12.1 DisableTransitRouterRouteTablePropagation
+    - 1.12.2 ListTransitRouterRouteTablePropagations
+    - 1.12.3 EnableTransitRouterRouteTablePropagation
+  - 1.13 Associated forwarding
+    - 1.13.1 DissociateTransitRouterAttachmentFromRouteTable
+    - 1.13.2 ListTransitRouterRouteTableAssociations
+    - 1.13.3 AssociateTransitRouterAttachmentWithRouteTable
+  - 1.14 Multicast
+    - 1.14.1 CreateTransitRouterMulticastDomain
+    - 1.14.2 ModifyTransitRouterMulticastDomain
+    - 1.14.3 ListTransitRouterMulticastDomains
+    - 1.14.4 DeleteTransitRouterMulticastDomain
+    - 1.14.5 AssociateTransitRouterMulticastDomain
+    - 1.14.6 DisassociateTransitRouterMulticastDomain
+    - 1.14.7 ListTransitRouterMulticastDomainAssociations
+    - 1.14.8 RegisterTransitRouterMulticastGroupSources
+    - 1.14.9 DeregisterTransitRouterMulticastGroupSources
+    - 1.14.10 RegisterTransitRouterMulticastGroupMembers
+    - 1.14.11 DeregisterTransitRouterMulticastGroupMembers
+    - 1.14.12 ListTransitRouterMulticastGroups
+    - 1.14.13 ListGrantVSwitchEnis
+    - 1.14.14 ListTransitRouterMulticastDomainVSwitches
+  - 1.15 Routing policies
+    - 1.15.1 CreateCenRouteMap
+    - 1.15.2 ModifyCenRouteMap
+    - 1.15.3 DescribeCenRouteMaps
+    - 1.15.4 DeleteCenRouteMap
+  - 1.16 Health checks
+    - 1.16.1 EnableCenVbrHealthCheck
+    - 1.16.2 DisableCenVbrHealthCheck
+    - 1.16.3 DescribeCenVbrHealthCheck
+
+## 1 API References
+
+### 1.1 List of operations by function
+
+This topic provides a list of the APIs for transit routers.
 
 | API operation | Description |
 |---|---|
@@ -30,12 +133,6 @@ converter: line-classifier (PyMuPDF)
 | API operation | Description |
 |---|---|
 | CreateTransitRouterCidr | Creates a CIDR block for a transit router. |
-
-## API References
-
-### List of operations by function
-
-This topic provides a list of the APIs for transit routers.
 
 | ModifyTransitRouterCidr | Modify the CIDR block of a transit router. |
 |---|---|
@@ -84,6 +181,8 @@ This topic provides a list of the APIs for transit routers.
 | UpdateTransitRouterRouteEntry | Modifies the name and description of a route in a route table of a transit router. |
 | DeleteTransitRouterRouteEntry | Deletes a static route from a route table of a transit router. |
 | ListTransitRouterRouteEntries | Queries the information about routes in a route table of a transit router. |
+
+**Routes**
 
 | API operation | Description |
 |---|---|
@@ -143,13 +242,9 @@ This topic provides a list of the APIs for transit routers.
 | DescribeCenVbrHealthCheck | Queries the health check configuration of a VBR in a region. |
 | DisableCenVbrHealthCheck | Disables the health check feature for a VBR. |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the CEN instance. |
+### 1.2 CEN instances
 
-### CEN instances
-
-#### ModifyCenAttribute
+#### 1.2.1 ModifyCenAttribute
 
 Modifies the name and description of a Cloud Enterprise Network (CEN) instance.
 
@@ -161,18 +256,20 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the CEN instance. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | Name | String | Query | No | test | The name of the CEN instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), and _ hyphens (-). The name must start with a letter and cannot start with http:// or https:// . |
 | Description | String | Query | No | cen | The description of the CEN instance. The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with http:// or https:// . |
 | ProtectionL evel | String | Query | No | REDUCED | The level of CIDR block overlapping. Set the value to REDUCED (default). This value specifies that CIDR blocks can overlap but cannot be the same. |
 | Action | String | Query | No | ModifyCenAttribute | The operation that you want to perform. Set the value to ModifyCenAttribute . |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 13526224-5780- 4426-8BDF- BC8B08700F22 | The request ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -182,22 +279,17 @@ http(s)://[Endpoint]/?Action=ModifyCenAttribute &CenId=cen-7qthudw0ll6jmc**** &C
 
 Sample success responses `JSON` format
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | INVALID OPERATION _ _ ENHANCE PROTECTIO _ N LEVEL _ | InvalidOperation.EnhanceProtectio nLevel | Your request to enhance CBN protection level cannot be processed. Please contact customer support to continue this operation. |
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeCenAttachedChildIns tances | The operation that you want to perform. The operation that you want to perform. Set the value to DescribeCenAttachedChild Instances. |
-| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"13526224-5780-4426-8BDF-BC8B08700F22"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"13526224-5780-4426-8BDF-BC8B08700F22"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>13526224-5780-4426-8BDF-BC8B08700F22</RequestId>
@@ -205,7 +297,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DescribeCenAttachedChildInstances
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | INVALID OPERATION _ _ ENHANCE PROTECTIO _ N LEVEL _ | InvalidOperation.EnhanceProtectio nLevel | Your request to enhance CBN protection level cannot be processed. Please contact customer support to continue this operation. |
+
+#### 1.2.2 DescribeCenAttachedChildInstances
 
 Queries the network instances that are attached to a Cloud Enterprise Network (CEN) instance.
 
@@ -220,22 +316,27 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DescribeCenAttachedChildIns tances | The operation that you want to perform. The operation that you want to perform. Set the value to DescribeCenAttachedChild Instances. |
+| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
+
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. Default value: 10. Valid values: 1 to 50. |
 |---|---|---|---|---|---|
 | CenId | String | Query | Yes | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
 | ChildInstanc eType | String | Query | No | VPC | The type of network instance. Valid values: VPC: virtual private cloud (VPC) VBR: virtual border router (VBR) |
 | ChildInstanc eRegionId | String | Query | No | cn-qingdao-env66-d01 | The region ID of the network instance. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ChildInstances | Array |  | The information about the network instances. |
+| ChildInstances | Array |   | The information about the network instances. |
 | -CenId | String | cen- j3jzhw1zpau2km**** | The ID of the CEN instance. |
 | -ChildInstanceId | String | vpc- 8vb1lu55yt9rlwgxl*** * | The ID of the network instance. |
 | - ChildInstanceTyp e | String | VPC | The type of network instance. Valid values: VPC VBR |
 | - ChildInstanceRe gionId | String | cn-qingdao-env66- d01 | The region ID of the network instance. |
 | - ChildInstanceOw nerId | Long | 1688000000000000 | The UID of the level-1 organization to which the network instance belongs. |
-
-**Response parameters**
 
 | -Status | String | Attached | The status of the network instance. Valid values: Attaching: The network instance is being attached to the CEN instance. Attached: The network instance is attached to the CEN instance. Detaching: The network instance is being detached from the CEN instance. |
 |---|---|---|---|
@@ -255,8 +356,13 @@ http(s)://[Endpoint]/?Action=DescribeCenAttachedChildInstances &CenId=cen-j3jzhw
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"B2063B16-852B-5B66-B73D-4ED4D1A5E5C2",
@@ -269,22 +375,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "ChildInstanceOwnerId":1688000000000000,
   "ChildInstanceId":"vpc-8vb1lu55yt9rlwgxl****",
   "ChildInstanceRegionId":"cn-qingdao-env66-d01"
- }
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeCenAttachedChildIns tanceAttribute | The operation that you want to perform. Set the value to DescribeCenAttachedChild InstanceAttribute. |
-| CenId | String | Query | Yes | cen-5mv960yjhja0dh**** | The ID of the CEN instance. |
-| ChildInstanc eId | String | Query | Yes | vpc-2zebdboka7d7t37vo**** | The ID of the network instance that is attached to the CEN instance. |
-| ChildInstanc eType | String | Query | Yes | VPC | The type of network instance. Valid values: VPC VBR |
-| ChildInstanc eRegionId | String | Query | Yes | cn-qingdao-env66-d01 | The region ID of the network instance. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>B2063B16-852B-5B66-B73D-4ED4D1A5E5C2</RequestId> <PageNumber>1</PageNumber> <ChildInstances>
@@ -298,7 +391,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </ChildInstances>
 ```
 
-#### DescribeCenAttachedChildInstanceAttribute
+#### 1.2.3 DescribeCenAttachedChildInstanceAttribute
 
 Queries the information about a network instance, such as a virtual private cloud (VPC) or a virtual border router (VBR), that is attached to a Cloud Enterprise Network (CEN) instance.
 
@@ -308,7 +401,18 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DescribeCenAttachedChildIns tanceAttribute | The operation that you want to perform. Set the value to DescribeCenAttachedChild InstanceAttribute. |
+| CenId | String | Query | Yes | cen-5mv960yjhja0dh**** | The ID of the CEN instance. |
+| ChildInstanc eId | String | Query | Yes | vpc-2zebdboka7d7t37vo**** | The ID of the network instance that is attached to the CEN instance. |
+| ChildInstanc eType | String | Query | Yes | VPC | The type of network instance. Valid values: VPC VBR |
+| ChildInstanc eRegionId | String | Query | Yes | cn-qingdao-env66-d01 | The region ID of the network instance. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | RequestId | String | ADD98358-D265- 4060-87CB- A2427F5A8944 | The request ID. |
 |---|---|---|---|
@@ -331,13 +435,13 @@ http(s)://[Endpoint]/?Action=DescribeCenAttachedChildInstanceAttribute &CenId=ce
 
 Sample success responses `JSON` format
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | INSTANCE NOT EXIST _ _ | ParameterError | The parameter is error. |
-| 400 |  | SystemBusy | The system is busy. Please try again later. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "Status":"Attached",
  "ChildInstanceType":"VPC",
  "RequestId":"ADD98358-D265-4060-87CB-A2427F5A8944",
@@ -347,10 +451,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "ChildInstanceName":"defaultvpc",
  "ChildInstanceId":"vpc-2zebdboka7d7t37vo****",
  "ChildInstanceRegionId":"cn-qingdao-env66-d01"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <Status>Attached</Status> <ChildInstanceType>VPC</ChildInstanceType> <RequestId>ADD98358-D265-4060-87CB-A2427F5A8944</RequestId> <CenId>cen-5mv960yjhja0dh****</CenId> <ChildInstanceAttachTime>2018-07-30T07:53Z</ChildInstanceAttachTime> <ChildInstanceOwnerId>1688000000000000</ChildInstanceOwnerId> <ChildInstanceName>defaultvpc</ChildInstanceName> <ChildInstanceId>vpc-2zebdboka7d7t37vo****</ChildInstanceId> <ChildInstanceRegionId>cn-qingdao-env66-d01</ChildInstanceRegionId>
@@ -358,7 +461,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DeleteCen
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | INSTANCE NOT EXIST _ _ | ParameterError | The parameter is error. |
+| 400 |   | SystemBusy | The system is busy. Please try again later. |
+
+#### 1.2.4 DeleteCen
 
 Deletes a Cloud Enterprise Network (CEN) instance.
 
@@ -368,42 +476,40 @@ Before you delete a CEN instance, make sure that the following resources are not
 
 **Request headers**
 
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
+
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
 | CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the Cloud Enterprise Network (CEN) instance. |
 | Action | String | Query | No | DeleteCen | The operation that you want to perform. Set the value to DeleteCen. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5903EE99-D542- 4E14-BC65- AAC1CB2D3D03 | The request ID. |
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | OperationFailed.Delet eCenWithCustomRout eTable | OperationFailed.DeleteCenWithCus tomRouteTable | Operation failed because you are not allowed to delete the CEN with the custom transit router route table. |
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Example**
-
 Sample requests
 
 ```
-&CenId=cen-7qthudw0ll6jmc**** &Common request parameters
+http(s)://[Endpoint]/?Action=DeleteCen &CenId=cen-7qthudw0ll6jmc**** &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"5903EE99-D542-4E14-BC65-AAC1CB2D3D03"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"5903EE99-D542-4E14-BC65-AAC1CB2D3D03"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>5903EE99-D542-4E14-BC65-AAC1CB2D3D03</RequestId>
@@ -411,17 +517,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | OperationFailed.Delet eCenWithCustomRout eTable | OperationFailed.DeleteCenWithCus tomRouteTable | Operation failed because you are not allowed to delete the CEN with the custom transit router route table. |
+
 | 400 | OperationFailed.Delet eCenWithRouteEntry | OperationFailed.DeleteCenWithRou teEntry | Operation failed because you are not allowed to delete the CEN with the transit router route entry. |
 |---|---|---|---|
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
-| PageSize | Integ er | Query | No | 10 | The number of entries to return on each page. Valid values: 1 to 50. Default value: 10. |
-| Filter | Repea tList | Query | No |  | The filter conditions. You can specify at most five filter conditions in each call. |
-| -Key | String |  | No | CenId | The filter key. Valid values: CenId: the ID of a CEN instance. Name: the name of a CEN instance. By default, the logical operator among filter conditions is AND. Information about a CEN instance is returned only if the CEN instance matches all filter conditions. You can specify at most five filter conditions in each request. |
-
-#### DescribeCens
+#### 1.2.5 DescribeCens
 
 Queries the information about a Cloud Enterprise Network (CEN) instance.
 
@@ -431,28 +534,35 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| -Value | Repea tList |  | No | cen-0xyeagctz5sfg9**** | The value of the filter condition. This parameter sets the value of a filter key. You can specify multiple values for a filter key. The logical operator among multiple filter values is OR. If a CEN instance matches one or more of the values that you specify, the CEN instance matches the filter condition. You can specify at most five values in each filter condition. |
+| Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
-| Tag | Repea tList | Query | No |  | The information about the tag. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | tagtest | The tag keys. The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
-| -Value | String |  | No | tagtest | The tag values. The tag values can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
+| PageSize | Integ er | Query | No | 10 | The number of entries to return on each page. Valid values: 1 to 50. Default value: 10. |
+| Filter | Repea tList | Query | No |   | The filter conditions. You can specify at most five filter conditions in each call. |
+| -Key | String |   | No | CenId | The filter key. Valid values: CenId: the ID of a CEN instance. Name: the name of a CEN instance. By default, the logical operator among filter conditions is AND. Information about a CEN instance is returned only if the CEN instance matches all filter conditions. You can specify at most five filter conditions in each request. |
+
+| -Value | Repea tList |   | No | cen-0xyeagctz5sfg9**** | The value of the filter condition. This parameter sets the value of a filter key. You can specify multiple values for a filter key. The logical operator among multiple filter values is OR. If a CEN instance matches one or more of the values that you specify, the CEN instance matches the filter condition. You can specify at most five values in each filter condition. |
+|---|---|---|---|---|---|
+| Tag | Repea tList | Query | No |   | The information about the tag. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | tagtest | The tag keys. The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| -Value | String |   | No | tagtest | The tag values. The tag values can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
 | Action | String | Query | No | DescribeCens | The operation that you want to perform. Set the value to DescribeCens. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalCount | Integer | 1 | The total number of entries returned. |
 | PageSize | Integer | 10 | The number of entries returned on each page. |
 
-**Response parameters**
-
-| TransitRouter |  |  | Developer Guide·API Reference |
+| TransitRouter |   |   | Developer Guide·API Reference |
 |---|---|---|---|
 
 | RequestId | String | 2BFA6822-240E- 4E27-B4C8- AA400EF7474D | The request ID. |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The number of the page returned. |
-| Cens | Array |  | The information about the CEN instance. |
-| -Tags | Array |  | The IDs of the tags that are added to the CEN instance. |
+| Cens | Array |   | The information about the CEN instance. |
+| -Tags | Array |   | The IDs of the tags that are added to the CEN instance. |
 | --Key | String | tagkey | The label key. |
 | --Value | String | tagvalue | The tag value. |
 | -Status | String | Active | The status of the CEN instance. Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted. |
@@ -463,23 +573,21 @@ This operation does not have operation-specific request headers and uses only co
 | -ProtectionLevel | String | REDUCED | The level of CIDR block overlapping. REDUCED: Overlapped CIDR blocks are allowed. This value specifies that CIDR blocks can overlap but CIDR blocks cannot be duplicates. |
 | -Name | String | nametest | The name of the CEN instance. |
 
-**Example**
-
 Sample requests
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | INVALID TAG KEY _ _ | InvalidTagKey | The tag keys are not valid. |
-| 400 | INVALID TAG VALUE _ _ | InvalidTagValue | The tag values are not valid. |
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=DescribeCens &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"2BFA6822-240E-4E27-B4C8-AA400EF7474D",
@@ -491,16 +599,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "-Tags":{
    "Value":"tagvalue",
    "Key":"tagkey"
-  },
+```
+
+`},`
+
+```json
   "Ipv6Level":"DISABLED",
   "CreationTime":"2019-10-22T07:44Z",
   "CenId":"cen-0xyeagctz5sfg9****",
   "Name":"nametest"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>2BFA6822-240E-4E27-B4C8-AA400EF7474D</RequestId> <PageNumber>1</PageNumber> <Cens>
@@ -520,14 +630,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
-| Name | String | Query | No | testname | The name of the CEN instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), and hyphens _ (-). The name must start with a letter and cannot start with http:// or https:// . |
-| Description | String | Query | No | testdesc | The description of the CEN instance. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with http:// or https:// . |
-| ProtectionLe vel | String | Query | No | REDUCED | The level of CIDR block overlapping. Set the value to REDUCED (default). This value specifies that CIDR blocks can overlap but cannot be the same. |
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | INVALID TAG KEY _ _ | InvalidTagKey | The tag keys are not valid. |
+| 400 | INVALID TAG VALUE _ _ | InvalidTagValue | The tag values are not valid. |
 
-#### CreateCen
+#### 1.2.6 CreateCen
 
 Creates a Cloud Enterprise Network (CEN) instance.
 
@@ -537,54 +645,52 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Tag | Repea tList | Query | No |  | The information about the tag. You can specify up to 20 tags in each call. |
+| Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
-| -Key | String |  | No | tagtest | The tag keys. The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
-| -Value | String |  | No | tagtest | The tag values. The tag values can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
+| Name | String | Query | No | testname | The name of the CEN instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), and hyphens _ (-). The name must start with a letter and cannot start with http:// or https:// . |
+| Description | String | Query | No | testdesc | The description of the CEN instance. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with http:// or https:// . |
+| ProtectionLe vel | String | Query | No | REDUCED | The level of CIDR block overlapping. Set the value to REDUCED (default). This value specifies that CIDR blocks can overlap but cannot be the same. |
+
+| Tag | Repea tList | Query | No |   | The information about the tag. You can specify up to 20 tags in each call. |
+|---|---|---|---|---|---|
+| -Key | String |   | No | tagtest | The tag keys. The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| -Value | String |   | No | tagtest | The tag values. The tag values can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
 | Action | String | Query | Yes | CreateCen | The operation that you want to perform. Set the value to CreateCen. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0C2EE7A8-74D4- 4081-8236- CEBDE3BBCF50 | The request ID. |
 | CenId | String | cen- dc4vwznpwbobrl**** | The ID of the CEN instance. |
 
-**Response parameters**
-
-**Example**
-
 Sample requests
 
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=CreateCen &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| ProductType | String | Query | No | VPC | The type of the network instance. Valid values: VPC: virtual private cloud (VPC) VBR: virtual border router (VBR) |
-| Action | String | Query | No | DescribeChildInstanceRegion s | The operation that you want to perform. The operation that you want to perform. Set the value to DescribeChildInstanceReg ions. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | D5CEED59-36AA- 47CC-9D81- 16F71C46BD80 | The request ID. |
-| Regions | Array |  | The regions. |
-| -RegionId | String | cn-qingdao-env17e- d01 | The region ID. |
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50",
- "CenId":"cen-dc4vwznpwbobrl****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50",
+ "CenId":"cen-dc4vwznpwbobrl****"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50</RequestId> <CenId>cen-dc4vwznpwbobrl****</CenId>
 ```
 
-#### DescribeChildInstanceRegions
+#### 1.2.7 DescribeChildInstanceRegions
 
 Queries the regions of network instances connected to a transit routers.
 
@@ -594,16 +700,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| ProductType | String | Query | No | VPC | The type of the network instance. Valid values: VPC: virtual private cloud (VPC) VBR: virtual border router (VBR) |
+| Action | String | Query | No | DescribeChildInstanceRegion s | The operation that you want to perform. The operation that you want to perform. Set the value to DescribeChildInstanceReg ions. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | D5CEED59-36AA- 47CC-9D81- 16F71C46BD80 | The request ID. |
+| Regions | Array |   | The regions. |
+| -RegionId | String | cn-qingdao-env17e- d01 | The region ID. |
 
 | -LocalName | String | cn-qingdao-env17e- d01 | The region name. |
 |---|---|---|---|
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | Abs.MissingOwnerIdOr OwnerAccount | MissingParameter.OwnerIdOrOwne rAccount | The input parameter OwnerAccount or OwnerId that is mandatory for processing this request is not supplied |
-
-**Example**
 
 Sample requests
 
@@ -613,17 +724,20 @@ http(s)://[Endpoint]/?Action=DescribeChildInstanceRegions &Common request parame
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"D5CEED59-36AA-47CC-9D81-16F71C46BD80",
  "Regions":{
   "RegionId":"cn-qingdao-env17e-d01",
   "LocalName":"cn-qingdao-env17e-d01"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>D5CEED59-36AA-47CC-9D81-16F71C46BD80</RequestId> <Regions>
@@ -634,9 +748,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-### Transit routers
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | Abs.MissingOwnerIdOr OwnerAccount | MissingParameter.OwnerIdOrOwne rAccount | The input parameter OwnerAccount or OwnerId that is mandatory for processing this request is not supplied |
 
-#### CreateTransitRouter
+### 1.3 Transit routers
+
+#### 1.3.1 CreateTransitRouter
 
 Creates a transit router.
 
@@ -659,26 +777,53 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRout erDescriptio n | String | Query | No | testdesc | The description of the transit router. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. true : performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
 | SupportMult icast | Boolea n | Query | No | false | Specifies whether to enable the multicast feature for the transit router. Valid values: false (default): disables multicast. true : enables multicast. |
-| Tag | Repeat List | Query | No |  | The tags. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys. |
+| Tag | Repeat List | Query | No |   | The tags. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys. |
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
-| -Value | String |  | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
-| TransitRout erCidrList | Repeat List | Query | No |  | The CIDR blocks of the transit router. You can specify at most five CIDR blocks in each call. |
-| -Cidr | String |  | No | 192.168.10.0/24 | The CIDR block of the transit router. |
-| -Name | String |  | No | nametest | The name of the transit router CIDR block. The name must be 1 to 128 characters in length. |
-| -Description | String |  | No | desctest | The description of the transit router CIDR block. The description must be 1 to 256 characters in length. |
-| - PublishCidr Route | Boolea n |  | No | true | Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router. true (default): yes false : no |
+| -Value | String |   | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
+| TransitRout erCidrList | Repeat List | Query | No |   | The CIDR blocks of the transit router. You can specify at most five CIDR blocks in each call. |
+| -Cidr | String |   | No | 192.168.10.0/24 | The CIDR block of the transit router. |
+| -Name | String |   | No | nametest | The name of the transit router CIDR block. The name must be 1 to 128 characters in length. |
+| -Description | String |   | No | desctest | The description of the transit router CIDR block. The description must be 1 to 256 characters in length. |
+| - PublishCidr Route | Boolea n |   | No | true | Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router. true (default): yes false : no |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TransitRouterId | String | tr- uf6llz2286805i44g*** * | The ID of the transit router. |
 | RequestId | String | 404DA7EC-F495- 44B5-B543- 6EDCDF90F3D1 | The request ID. |
 
-**Response parameters**
-
 **Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateTransitRouter &CenId=cen-j3jzhw1zpau2km**** &RegionId=cn-qingdao-env66-d01 &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"404DA7EC-F495-44B5-B543-6EDCDF90F3D1",
+ "TransitRouterId":"tr-uf6llz2286805i44g****"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>404DA7EC-F495-44B5-B543-6EDCDF90F3D1</RequestId> <TransitRouterId>tr-uf6llz2286805i44g****</TransitRouterId>
+```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -694,35 +839,7 @@ This operation does not have operation-specific request headers and uses only co
 | 400 | CIDR CONFLICT _ | OperationFailed.CidrConflict | Operation is invalid because the cidr conflict. |
 | 400 | IllegalParam.RegionId | IllegalParam.Region | The specified region is invalid. |
 
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=CreateTransitRouter &CenId=cen-j3jzhw1zpau2km**** &RegionId=cn-qingdao-env66-d01 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"404DA7EC-F495-44B5-B543-6EDCDF90F3D1",
- "TransitRouterId":"tr-uf6llz2286805i44g****"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>404DA7EC-F495-44B5-B543-6EDCDF90F3D1</RequestId> <TransitRouterId>tr-uf6llz2286805i44g****</TransitRouterId>
-```
-
-**Error codes**
-
-#### DeleteTransitRouter
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DeleteTransitRouter | The operation that you want to perform. Set the value to DeleteTransitRouter . |
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
+#### 1.3.2 DeleteTransitRouter
 
 Deletes a transit router.
 
@@ -738,14 +855,19 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | DeleteTransitRouter | The operation that you want to perform. Set the value to DeleteTransitRouter . |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the request. true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
 | TransitRout erId | String | Query | Yes | tr-uf654ttymmljlvh2x**** | The ID of the transit router. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6DE3EE92-39C8- 4BBD-A3AD- F568D74741BB | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -757,13 +879,17 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouter &TransitRouterId=tr-uf654ttymml
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"6DE3EE92-39C8-4BBD-A3AD-F568D74741BB"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"6DE3EE92-39C8-4BBD-A3AD-F568D74741BB"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>6DE3EE92-39C8-4BBD-A3AD-F568D74741BB</RequestId>
@@ -779,12 +905,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | INVALID OPERATION _ _ CCN ATTACHED _ | OperationFailed.CCNAttached | Can not delete transit router because CCN still attached. |
 | 400 | INVALID OPERATION _ _ BANDWIDTH LIMIT EX _ _ IST | OperationFailed.BandwidthLimitExi st | Operation is invalid because a bandwidth limit exist. |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | UpdateTransitRouter | The operation that you want to perform. Set the value to UpdateTransitRouter . |
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
-
-#### UpdateTransitRouter
+#### 1.3.3 UpdateTransitRouter
 
 Modifies the name and description of a transit router.
 
@@ -793,6 +914,11 @@ Modifies the name and description of a transit router.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | UpdateTransitRouter | The operation that you want to perform. Set the value to UpdateTransitRouter . |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -808,17 +934,6 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | E9963DD7-998B- 4F92-892D- 8293CB49EE81 | The request ID. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | OperationUnsupporte d.RegionId | OperationUnsupported.RegionId | The specified region ID is not supported. |
-| 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListTransitRouters | The operation that you want to perform. Set the value to ListTransitRouters . |
-
-**Example**
-
 Sample requests
 
 ```
@@ -827,13 +942,17 @@ http(s)://[Endpoint]/?Action=UpdateTransitRouter &RegionId=cn-qingdao-env17e-d01
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"E9963DD7-998B-4F92-892D-8293CB49EE81"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"E9963DD7-998B-4F92-892D-8293CB49EE81"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>E9963DD7-998B-4F92-892D-8293CB49EE81</RequestId>
@@ -841,7 +960,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error code**
 
-#### ListTransitRouters
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | OperationUnsupporte d.RegionId | OperationUnsupported.RegionId | The specified region ID is not supported. |
+| 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
+
+#### 1.3.4 ListTransitRouters
 
 Queries the information about transit routers that are connected to a Cloud Enterprise Network (CEN) instance.
 
@@ -851,7 +975,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eferences |  |  | TransitRoute |
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListTransitRouters | The operation that you want to perform. Set the value to ListTransitRouters . |
+
+| Developer Gui | de·API R | eferences |   |   | TransitRoute |
 |---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
@@ -861,31 +989,31 @@ This operation does not have operation-specific request headers and uses only co
 | CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
 | TransitRout erId | String | Query | No | tr-uf654ttymmljlvh2x**** | The ID of the transit router. |
 | RegionId | String | Query | No | cn-qingdao-env66-d01 | The region ID of the transit router. You can call the DescribeRegions operation to query the most recent region list. |
-| Tag | Repeat List | Query | No |  | The tags. You can specify at most 20 tags in each call. |
-| -Key | String |  | No | TagKey | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys in each call. |
-| -Value | String |  | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
+| Tag | Repeat List | Query | No |   | The tags. You can specify at most 20 tags in each call. |
+| -Key | String |   | No | TagKey | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys in each call. |
+| -Value | String |   | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
-| FeatureFilte r | Repeat List | Query | No |  | The field that is used to enable or disable a feature of the transit router. |
-| -Key | String |  | No | Multicast | The value of the field that is used to enable or disable a feature of the transit router. Only the Multicast field is supported, which specifies the multicast feature. |
-| -Value | Repeat List |  | No | Enabled | The field values. The Multicast field supports only one value. Valid values: Enabled : enables multicast. Disabled : disables multicast. |
+| FeatureFilte r | Repeat List | Query | No |   | The field that is used to enable or disable a feature of the transit router. |
+| -Key | String |   | No | Multicast | The value of the field that is used to enable or disable a feature of the transit router. Only the Multicast field is supported, which specifies the multicast feature. |
+| -Value | Repeat List |   | No | Enabled | The field values. The Multicast field supports only one value. Valid values: Enabled : enables multicast. Disabled : disables multicast. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouters | Array |  | The list of transit routers. |
-| - TransitRouterCid rList | Array |  | The CIDR blocks of the transit routers. |
+| TransitRouters | Array |   | The list of transit routers. |
+| - TransitRouterCid rList | Array |   | The CIDR blocks of the transit routers. |
 | --Cidr | String | 192.168.1.0/24 | The CIDR block of the transit router. |
 | --Name | String | CIDRname | The name of the transit router CIDR block. |
 | --Description | String | CIDRdesc | The description of the transit router CIDR block. |
 | -- TransitRouterCid rId | String | cidr- 46p5ceg21e8152**** | The ID of the transit router CIDR block. |
 | -- PublishCidrRoute | Boolean | true | Indicates whether the system is allowed to automatically add routes that point to the CIDR block to the route table of the transit router. true : yes false : no |
-| -Tags | Array |  | The tags. |
+| -Tags | Array |   | The tags. |
 | --Key | String | TagKey | The tag key. |
 
-**Response parameters**
-
-| Developer Guide· | API References |  | TransitRoute |
+| Developer Guide· | API References |   | TransitRoute |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -909,10 +1037,6 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The number of the returned page. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | INVALID PARAMETER _ _ COMBINATION TRASN _ IT ROUTER _ | InvalidParameterCombination.Tran sitRouter | Region ID is required if no TransitRouterId or CenId specified. |
-
 **Examples**
 
 Sample requests
@@ -923,19 +1047,29 @@ http(s)://[Endpoint]/?Action=ListTransitRouters &Common request parameters
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"68521297-5FA6-46CB-B4EB-658F1C68C8CC",
  "PageNumber":1,
+ "TransitRouters":{
   "Status":"Active",
   "Type":"Enterprise",
   "SupportMulticast":false,
   "-Tags":{
    "Value":"TagValue",
    "Key":"TagKey"
-  },
+```
+
+`},`
+
+```json
   "CreationTime":"2021-03-15T09:39Z",
   "CenId":"cen-j3jzhw1zpau2km****",
   "TransitRouterDescription":"testdesc",
@@ -947,16 +1081,24 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "TransitRouterCidrId":"cidr-46p5ceg21e8152****",
    "PublishCidrRoute":true,
    "Name":"CIDRname"
-  },
+```
+
+`},`
+
+```json
   "TransitRouterId":"tr-bp1su1ytdxtataupl****",
   "AliUid":1210123456123456
- }
-}
 ```
+
+`}` `}`
 
 **Error codes**
 
-| Developer Gu | ide·API References |  | TransitRoute |
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | INVALID PARAMETER _ _ COMBINATION TRASN _ IT ROUTER _ | InvalidParameterCombination.Tran sitRouter | Region ID is required if no TransitRouterId or CenId specified. |
+
+| Developer Gu | ide·API References |   | TransitRoute |
 |---|---|---|---|
 
 | HttpCod e | Error code | Error message | Description |
@@ -964,25 +1106,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | FILTER VALUE NOT S _ _ _ UPPORT | InvalidOperation.UnsupportFilterVa lue | The specified FeatureFilter Value is not supported by this operation. |
 | 400 | InvalidParameter.Feat ureFilter | InvalidOperation.UnsupportFilter | The specified FeatureFilter is not supported by this operation. |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListTransitRouterAvailableR esource | The operation that you want to perform. Set the value to ListTransitRouterAvailab leResource . |
-| RegionId | String | Query | No | cn-qingdao-env66-d01 | The ID of the region where the transit router is deployed. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
-| SupportMult icast | Boolea n | Query | No | false | Specifies whether to query only the zones in which the multicast feature is supported. Valid values: true : yes After you call ListTransitRouterAvail ableResource , if no zone is returned, it indicates that the transit router does not support the multicast feature. false: : no |
-
-#### ListTransitRouterAvailableResource
+#### 1.3.5 ListTransitRouterAvailableResource
 
 Queries the zones that support transit routers in a region.
 
 **Usage notes**
 
-You can call the ListTransitRouterAvailableResource operation to query the zones that support transit routers in a region. to **true** , general-purpose zones that support transit routers are queried. to **true** , zones in which transit routers support multicast are queried.
+You can call the ListTransitRouterAvailableResource operation to query the zones that support transit routers in a region. If you do not set **SupportMulticast** to **true** , general-purpose zones that support transit routers are queried. If you set **SupportMulticast** to **true** , zones in which transit routers support multicast are queried.
 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListTransitRouterAvailableR esource | The operation that you want to perform. Set the value to ListTransitRouterAvailab leResource . |
+| RegionId | String | Query | No | cn-qingdao-env66-d01 | The ID of the region where the transit router is deployed. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
+| SupportMult icast | Boolea n | Query | No | false | Specifies whether to query only the zones in which the multicast feature is supported. Valid values: true : yes After you call ListTransitRouterAvail ableResource , if no zone is returned, it indicates that the transit router does not support the multicast feature. false: : no |
 
 **Response parameters**
 
@@ -1003,28 +1145,38 @@ http(s)://[Endpoint]/?Action=ListTransitRouterAvailableResource &Common request 
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"B4F480E0-4E76-5E43-9966-8322C28A158A",
- "AvailableZones":"cn-qingdao-env17e-amtest17001-a"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"B4F480E0-4E76-5E43-9966-8322C28A158A",
+ "AvailableZones":"cn-qingdao-env17e-amtest17001-a"
+```
+
+`}` `XML` format
 
 ```xml
 <SlaveZones>cn-qingdao-env17e-amtest17001-a</SlaveZones> <RequestId>B4F480E0-4E76-5E43-9966-8322C28A158A</RequestId> <MasterZones>cn-qingdao-env17e-amtest17001-a</MasterZones> <AvailableZones>cn-qingdao-env17e-amtest17001-a</AvailableZones>
 ```
 
-### Transit router CIDR blocks
+### 1.4 Transit router CIDR blocks
 
-#### CreateTransitRouterCidr
+#### 1.4.1 CreateTransitRouterCidr
 
 Creates a transit router CIDR block.
 
 **Usage notes**
 
-Custom CIDR blocks for transit routers are supported. The CIDR block of a transit router is similar to the CIDR block of the loopback interface of a router. IP addresses within the CIDR blocks can be allocated to Connect peers. For more information, see **Instance management** > **Transit router CIDR blocks** in Transit Router User Guide. The CreateTransitRouterCidr operation can be used to create a CIDR block only after you create a transit router. The CIDR block must meet the following requirements: Each transit router supports at most five CIDR blocks. The subnet mask of the CIDR block of a transit router must be 16 bits to 24 bits in length.
+Custom CIDR blocks for transit routers are supported. The CIDR block of a transit router is similar to the CIDR block of the loopback interface of a router. IP addresses within the CIDR blocks can be allocated to Connect peers. For more information, see **Instance management** > **Transit router CIDR blocks** in Transit Router User Guide. The CreateTransitRouterCidr operation can be used to create a CIDR block only after you create a transit router. The CIDR block must meet the following requirements: Each transit router supports at most five CIDR blocks. The subnet mask of the CIDR block of a transit router must be 16 bits to 24 bits in length. You cannot specify 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the CIDR blocks of transit routers. The CIDR blocks of each transit router cannot overlap with the CIDR blocks of the network instances that need to communicate with each other by using the Cloud Enterprise Network (CEN) instance. The CIDR block of each transit router on the same CEN instance must be unique.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1034,39 +1186,22 @@ Custom CIDR blocks for transit routers are supported. The CIDR block of a transi
 | RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the transit router. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 | Name | String | Query | No | nametest | The name of the transit router CIDR block. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores ( ), _ and hyphens (-). The name must start with a letter but cannot start with http:// or https:// . |
 
-You cannot specify 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the CIDR blocks of transit routers. The CIDR blocks of each transit router cannot overlap with the CIDR blocks of the network instances that need to communicate with each other by using the Cloud Enterprise Network (CEN) instance. The CIDR block of each transit router on the same CEN instance must be unique.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
 | Description | String | Query | No | desctest | The description of the transit router CIDR block. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 |---|---|---|---|---|---|
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. |
 | Cidr | String | Query | Yes | 192.168.10.0/24 | The CIDR block of the transit router. |
 | PublishCidrR oute | Boole an | Query | No | true | Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router. true (default): yes false: no. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TransitRouterCid rId | String | cidr- 0zv0q9crqpntzz**** | The ID of the transit router CIDR block. |
 | RequestId | String | 0876E54E-3E36- 5C31-89F0- 9EE8A9266F9A | The request ID. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | OverLappingExist.Cidr | OverLappingExist.Cidr | The cidr overlapping exist. |
-| 400 | OperationUnsupporte d.TransitRouterCidr | OperationUnsupported.TransitRout erCidr | Transit region does not support the operation. |
-| 400 | IllegalParam.Cidr | IllegalParam.Cidr | The specified cidr is invalid. |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
 
 ```
 http(s)://[Endpoint]/?Action=CreateTransitRouterCidr &TransitRouterId=tr-p0w3x8c9em72a40nw**** &RegionId=cn-qingdao-env17e-d01 &Cidr=192.168.10.0/24 &Common request parameters
@@ -1074,14 +1209,18 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterCidr &TransitRouterId=tr-p0w3x8c
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A",
- "TransitRouterCidrId":"cidr-0zv0q9crqpntzz****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A",
+ "TransitRouterCidrId":"cidr-0zv0q9crqpntzz****"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId> <TransitRouterCidrId>cidr-0zv0q9crqpntzz****</TransitRouterCidrId>
@@ -1089,7 +1228,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### ModifyTransitRouterCidr
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | OverLappingExist.Cidr | OverLappingExist.Cidr | The cidr overlapping exist. |
+| 400 | OperationUnsupporte d.TransitRouterCidr | OperationUnsupported.TransitRout erCidr | Transit region does not support the operation. |
+| 400 | IllegalParam.Cidr | IllegalParam.Cidr | The specified cidr is invalid. |
+
+#### 1.4.2 ModifyTransitRouterCidr
 
 Modifies the CIDR block of a transit router.
 
@@ -1102,6 +1247,9 @@ Before you modify the CIDR block of a transit router, we recommend that you read
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1122,14 +1270,11 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | PublishCidr Route | Boolea n | Query | No | true | Specifies whether to allow the system to automatically add routes that point to the CIDR block to the route table of the transit router. true : yes false : no |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0876E54E-3E36- 5C31-89F0- 9EE8A9266F9A | The request ID. |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-
-**Response parameters**
 
 **Examples**
 
@@ -1141,19 +1286,23 @@ http(s)://[Endpoint]/?Action=ModifyTransitRouterCidr &TransitRouterId=tr-gw8ergo
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId>
 ```
 
-#### ListTransitRouterCidr
+#### 1.4.3 ListTransitRouterCidr
 
 Queries the CIDR blocks of a transit router.
 
@@ -1162,6 +1311,9 @@ Queries the CIDR blocks of a transit router.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1175,9 +1327,11 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true : performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| CidrLists | Array |  | The CIDR blocks of the transit router. |
+| CidrLists | Array |   | The CIDR blocks of the transit router. |
 | - TransitRouterCid rId | String | cidr- 0zv0q9crqpntzz**** | The ID of the transit router CIDR block. |
 | -Family | String | IPv4 | The type of the CIDR block. The value is IPv4 , which indicates that the CIDR block is of the IPv4 type. |
 | -Name | String | nametest | The name of the transit router CIDR block. |
@@ -1185,8 +1339,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Cidr | String | 192.168.10.0/24 | The CIDR block of the transit router. |
 | - PublishCidrRoute | Boolean | true | Indicates whether the system is allowed to automatically add routes that point to the CIDR block to the route table of the transit router. true : yes false : no |
 | -TransitRouterId | String | tr- p0w3x8c9em72a40n w**** | The ID of the transit router. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1202,8 +1354,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterCidr &TransitRouterId=tr-p0w3x8c9e
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A",
  "CidrLists":{
   "Description":"desctest",
@@ -1213,11 +1370,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "PublishCidrRoute":true,
   "Name":"nametest",
   "TransitRouterId":"tr-p0w3x8c9em72a40nw****"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId> <CidrLists>
@@ -1231,7 +1386,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </CidrLists>
 ```
 
-#### ListTransitRouterCidrAllocation
+#### 1.4.4 ListTransitRouterCidrAllocation
 
 Queries how IP addresses within the CIDR block of a transit router are allocated.
 
@@ -1263,9 +1418,11 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterCid rAllocations | Array |  | The information about the CIDR blocks that have IP addresses allocated to network instances. |
+| TransitRouterCid rAllocations | Array |   | The information about the CIDR blocks that have IP addresses allocated to network instances. |
 | - TransitRouterCid rId | String | cidr- 0zv0q9crqpntzz**** | The ID of the transit router CIDR block. |
 | - AllocatedCidrBlo ck | String | 192.168.10.0/28 | The CIDR blocks that have been allocated to network instances. |
 | -AttachmentId | String | tr-attach- 2nalp6yksc805w**** | The ID of the network instance connection. |
@@ -1274,8 +1431,6 @@ This operation does not have operation-specific request headers and uses only co
 | NextToken | String | FFmyTO70tTpLG6I3F mYAXGKPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If NextToken is empty, no next page exists. If the value returned of NextToken is not empty, the value indicates the token that is used for the next query. |
 | RequestId | String | 0876E54E-3E36- 5C31-89F0- 9EE8A9266F9A | The request ID. |
 | TotalCount | Integer | 1 | The total number of entries returned. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1291,8 +1446,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterCidrAllocation &TransitRouterId=tr
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A",
@@ -1303,11 +1463,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "TransitRouterCidrId":"cidr-0zv0q9crqpntzz****",
   "AllocatedCidrBlock":"192.168.10.0/28",
   "AttachmentId":"tr-attach-2nalp6yksc805w****"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId> <MaxResults>1</MaxResults> <TransitRouterCidrAllocations>
@@ -1319,17 +1477,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </TransitRouterCidrAllocations>
 ```
 
+#### 1.4.5 DeleteTransitRouterCidr
+
 Deletes a transit router CIDR block.
-
-#### DeleteTransitRouterCidr
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DeleteTransitRouterCidr | The operation that you want to perform. Set the value to DeleteTransitRouterCid r . |
-| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
-| TransitRout erId | String | Query | Yes | tr- p0w3x8c9em72a40nwXXXX | The ID of the transit router. |
-| TransitRout erCidrId | String | Query | Yes | cidr-0zv0q9crqpntzzXXXX | The ID of the transit router CIDR block. You can call the ListTransitRouterCidr operation to query the ID of a transit router CIDR block. |
-| RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the transit router. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
 
 **Usage notes**
 
@@ -1343,13 +1493,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | DeleteTransitRouterCidr | The operation that you want to perform. Set the value to DeleteTransitRouterCid r . |
+| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
+| TransitRout erId | String | Query | Yes | tr- p0w3x8c9em72a40nwXXXX | The ID of the transit router. |
+| TransitRout erCidrId | String | Query | Yes | cidr-0zv0q9crqpntzzXXXX | The ID of the transit router CIDR block. You can call the ListTransitRouterCidr operation to query the ID of a transit router CIDR block. |
+| RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the transit router. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0876E54E-3E36- 5C31-89F0- 9EE8A9266F9A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -1361,13 +1519,17 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterCidr &TransitRouterId=tr-p0w3x8c
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId>
@@ -1379,13 +1541,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 |---|---|---|---|
 | 400 | CIDR BLOCK ALLOCA _ _ TED | OperationFailed.CidrBlockAllocated | Cidr blocks are allocated from the cidr, which should be released first. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | CreateTransitRouterVpcAttac hment | The operation that you want to perform. Set the value to CreateTransitRouterVpcAt tachment. |
+### 1.5 VPC connections
 
-### VPC connections
-
-#### CreateTransitRouterVpcAttachment
+#### 1.5.1 CreateTransitRouterVpcAttachment
 
 Creates a virtual private cloud (VPC) connection on a transit router.
 
@@ -1399,6 +1557,10 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | CreateTransitRouterVpcAttac hment | The operation that you want to perform. Set the value to CreateTransitRouterVpcAt tachment. |
+
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 |---|---|---|---|---|---|
 | CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the Cloud Enterprise Network (CEN) instance. |
@@ -1410,23 +1572,23 @@ This operation does not have operation-specific request headers and uses only co
 
 | VpcOwnerId | Long | Query | No | 1250123456123456 | The UID of the level-1 organization to which the VPC belongs. By default, the UID of the current level-1 organization is specified. If you want to connect to a network instance that belongs to a different account, this parameter is required. |
 |---|---|---|---|---|---|
-| ChargeType | String | Query | No |  |  |
+| ChargeType | String | Query | No |   |   |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
-| ZoneMappin gs | Repea tList | Query | Yes |  | A vSwitch that is deployed in a zone supported by transit routers. You can specify at most 10 vSwitches in each call. |
-| -VSwitchId | String |  | Yes | vsw-bp1a214sbus8z3b54**** | A vSwitch that is deployed in a zone supported by transit routers. You can specify at most 10 vSwitches in each call. |
-| -ZoneId | String |  | Yes | cn-qingdao-env17e- amtest17001-a | The ID of the zone that supports transit routers. You can call the DescribeZones operation to query the most recent zone list. You can specify at most 10 zones in each call. |
+| ZoneMappin gs | Repea tList | Query | Yes |   | A vSwitch that is deployed in a zone supported by transit routers. You can specify at most 10 vSwitches in each call. |
+| -VSwitchId | String |   | Yes | vsw-bp1a214sbus8z3b54**** | A vSwitch that is deployed in a zone supported by transit routers. You can specify at most 10 vSwitches in each call. |
+| -ZoneId | String |   | Yes | cn-qingdao-env17e- amtest17001-a | The ID of the zone that supports transit routers. You can call the DescribeZones operation to query the most recent zone list. You can specify at most 10 zones in each call. |
 
-| Tag | Repea tList | Query | No |  | The tags. You can specify at most 20 tags in each call. |
+| Tag | Repea tList | Query | No |   | The tags. You can specify at most 20 tags in each call. |
 |---|---|---|---|---|---|
-| -Key | String |  | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys. |
-| -Value | String |  | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
+| -Key | String |   | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys. |
+| -Value | String |   | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Limit |
 |---|---|---|---|
 | TransitRouterAtt achmentId | String | tr-attach- ia340z7xis7t5s**** | The ID of the VPC connection. |
 | RequestId | String | C087A369-82B9- 43EF-91F4- 4B63A9C6E6B6 | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -1437,6 +1599,25 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterVpcAttachment &VpcId=vpc-bp1kbjc
 ```
 
 Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "TransitRouterAttachmentId":"tr-attach-ia340z7xis7t5s****",
+ "RequestId":"C087A369-82B9-43EF-91F4-4B63A9C6E6B6"
+```
+
+`}` `XML` format
+
+```xml
+<TransitRouterAttachmentId>tr-attach-ia340z7xis7t5s****</TransitRouterAttachmentId> <RequestId>C087A369-82B9-43EF-91F4-4B63A9C6E6B6</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -1449,21 +1630,6 @@ Sample success responses `JSON` format
 | 400 | IllegalParam.ZoneId | IllegalParam.ZoneId | The specified ZoneId is illegal. |
 | 400 | IllegalParam.ChargeTy pe | IllegalParam.ChargeType | The specified ChargeType is illegal. |
 | 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | The specified TransitRouterId is not found. |
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TransitRouterAttachmentId":"tr-attach-ia340z7xis7t5s****",
- "RequestId":"C087A369-82B9-43EF-91F4-4B63A9C6E6B6"
-}
-```
-
-`XML` format
-
-```xml
-<TransitRouterAttachmentId>tr-attach-ia340z7xis7t5s****</TransitRouterAttachmentId> <RequestId>C087A369-82B9-43EF-91F4-4B63A9C6E6B6</RequestId>
-```
-
-**Error codes**
 
 | 400 | INVALID OPERATION _ _ RESOURCE ATTACHM _ ENT STATUS _ | IncorrectStatus.Attachment | The resource is not in a valid state for the attachment operation. |
 |---|---|---|---|
@@ -1483,13 +1649,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
 | 400 | CEN FULL LEVEL NOT _ _ _ SUPPORT TR _ _ | OperationUnsupported.CenFullLev el | CEN full level does not support TransitRouter |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | UpdateTransitRouterVpcAtt achmentAttribute | The operation that you want to perform. Set the value to UpdateTransitRouterVpc AttachmentAttribute . |
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
-| TransitRout erAttachme ntId | String | Query | Yes | tr-attach-nls9fzkfat8934**** | The ID of the VPC connection. |
-| TransitRout erAttachme ntName | String | Query | No | testname | The name of the VPC connection. The name must be 2 to 128 characters in length, and can contain digits, underscores ( ), and _ hyphens (-). It must start with a letter. |
-
 **1.5.2.**
 
 #### UpdateTransitRouterVpcAttachmentAttribute
@@ -1504,14 +1663,21 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | UpdateTransitRouterVpcAtt achmentAttribute | The operation that you want to perform. Set the value to UpdateTransitRouterVpc AttachmentAttribute . |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
+| TransitRout erAttachme ntId | String | Query | Yes | tr-attach-nls9fzkfat8934**** | The ID of the VPC connection. |
+| TransitRout erAttachme ntName | String | Query | No | testname | The name of the VPC connection. The name must be 2 to 128 characters in length, and can contain digits, underscores ( ), and _ hyphens (-). It must start with a letter. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | TransitRout erAttachme ntDescriptio n | String | Query | No | testdesc | The description of the VPC connection. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https:// . |
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. true : performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E61D334-4025- 41EF-9145- FC327B35301D | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -1523,13 +1689,23 @@ http(s)://[Endpoint]/?Action=UpdateTransitRouterVpcAttachmentAttribute &TransitR
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"7E61D334-4025-41EF-9145-FC327B35301D"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"7E61D334-4025-41EF-9145-FC327B35301D"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>7E61D334-4025-41EF-9145-FC327B35301D</RequestId>
+```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -1540,18 +1716,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | QUOTA FULL PER TR _ _ _ _ VPC AUTO ROUTE _ _ | QuotaExceeded.VpcAutoRoutesPub lishPerTransitRouter | The count of VPC instance which set autoRoutesPublish in transitRouter is over limit. |
 | 400 | VPN ASSOCIATED _ | InvalidOperation.VpnAssociated | The operation is not supported because the VPC is associated with VPN. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListTransitRouterVpcAttachm ents | The operation that you want to perform. Set the value to ListTransitRouterVpcAtta chments. |
-| CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
-
-```xml
-<RequestId>7E61D334-4025-41EF-9145-FC327B35301D</RequestId>
-```
-
-**Error codes**
-
-#### ListTransitRouterVpcAttachments
+#### 1.5.3 ListTransitRouterVpcAttachments
 
 Queries the virtual private cloud (VPC) connections on a transit router.
 
@@ -1565,6 +1730,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListTransitRouterVpcAttachm ents | The operation that you want to perform. Set the value to ListTransitRouterVpcAtta chments. |
+| CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
+
 | RegionId | String | Query | No | cn-qingdao-env66-d01 | The region ID of the transit router. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 |---|---|---|---|---|---|
 | TransitRoute rAttachment Id | String | Query | No | tr-attach-nls9fzkfat8934**** | The ID of the VPC connection. |
@@ -1572,25 +1742,25 @@ This operation does not have operation-specific request headers and uses only co
 | MaxResults | Integ er | Query | No | 20 | The number of entries per page. Default value: 20. |
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXGK Pd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first query and no subsequent queries are to be sent, ignore this parameter. If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results. |
 | VpcId | String | Query | No | vpc-bp1kbjcre9vtsebo1**** | The VPC ID. |
-| Tag | Repea tList | Query | No |  | The tags. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| Tag | Repea tList | Query | No |   | The tags. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
 
-| -Value | String |  | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| -Value | String |   | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterAtt achments | Array |  | The information about the VPC connection. |
-| -ZoneMappings | Array |  | The primary and secondary zones of the VPC connection and the vSwitches and elastic network interfaces (ENIs) of the VPC. |
+| TransitRouterAtt achments | Array |   | The information about the VPC connection. |
+| -ZoneMappings | Array |   | The primary and secondary zones of the VPC connection and the vSwitches and elastic network interfaces (ENIs) of the VPC. |
 | --ZoneId | String | cn-qingdao-env17e- amtest17001-a | The zone ID of the vSwitch. |
 | --VSwitchId | String | vsw- bp1a214sbus8z3b54* *** | The vSwitch ID. |
 | -- NetworkInterface Id | String | eni- bp149hmyaqegerml** ** | The ID of the ENI created in the vSwitch of the transit router. |
-| -Tags | Array |  | The tags. |
+| -Tags | Array |   | The tags. |
 | --Key | String | tagtest | The tag key. |
 | --Value | String | tagtest | The tag value. |
 | -CreationTime | String | 2021-06-15T02:14Z | The time when the VPC connection was created. The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in Coordinated Universal Time (UTC). |
-
-**Response parameters**
 
 | -Status | String | Attached | The status of the VPC connection. Attached: The VPC connection is created on the transit router. Attaching: The VPC connection is being created on the transit router. Detaching: The VPC connection is being deleted from the transit router. |
 |---|---|---|---|
@@ -1619,8 +1789,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterVpcAttachments &Common request par
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"C97FF53F-3EF8-4883-B459-60E171924B23",
@@ -1631,7 +1806,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "-Tags":{
    "Value":"tagtest",
    "Key":"tagtest"
-  },
+```
+
+`},`
+
+```json
   "TransitRouterAttachmentName":"testname",
   "ResourceType":"VPC",
   "VpcOwnerId":1250123456123456,
@@ -1642,23 +1821,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ZoneId":"cn-qingdao-env17e-amtest17001-a",
    "VSwitchId":"vsw-bp1a214sbus8z3b54****",
    "NetworkInterfaceId":"eni-bp149hmyaqegerml****"
-  },
-  "TransitRouterAttachmentDescription":"testdesc",
-  "TransitRouterId":"tr-bp1su1ytdxtataupl****"
- }
-}
 ```
 
-`XML` format
+`},`
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is invalid. |
-| 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TransitRouter is invalid. |
-| 400 | IllegalParam.Region | IllegalParam.Region | The specified Region is invalid. |
-| 400 | IllegalParam.CenId | IllegalParam.CenId | The specified CenId is invalid. |
-| 400 | IllegalParam.TransitRo uterId | IllegalParam.TransitRouterId | The specified TransitRouterId is invalid. |
-| 400 | IllegalParam.CenId Or RegionId | IllegalParam.CenIdOrRegionId | The specified CenId or RegionId is invalid. |
+```json
+  "TransitRouterAttachmentDescription":"testdesc",
+  "TransitRouterId":"tr-bp1su1ytdxtataupl****"
+```
+
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>C97FF53F-3EF8-4883-B459-60E171924B23</RequestId> <MaxResults>20</MaxResults> <TransitRouterAttachments>
@@ -1686,7 +1858,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DeleteTransitRouterVpcAttachment
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is invalid. |
+| 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TransitRouter is invalid. |
+| 400 | IllegalParam.Region | IllegalParam.Region | The specified Region is invalid. |
+| 400 | IllegalParam.CenId | IllegalParam.CenId | The specified CenId is invalid. |
+| 400 | IllegalParam.TransitRo uterId | IllegalParam.TransitRouterId | The specified TransitRouterId is invalid. |
+| 400 | IllegalParam.CenId Or RegionId | IllegalParam.CenIdOrRegionId | The specified CenId or RegionId is invalid. |
+
+#### 1.5.4 DeleteTransitRouterVpcAttachment
 
 Deletes a virtual private cloud (VPC) connection from a transit router.
 
@@ -1694,24 +1875,24 @@ Deletes a virtual private cloud (VPC) connection from a transit router.
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
+**Request parameters**
+
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
 | TransitRout erAttachme ntId | String | Query | Yes | tr-attach-ia340z7xis7t5s**** | The ID of the VPC connection. |
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and sends the request. true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 
-**Request parameters**
-
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | Force | Boolea n | Query | No | false | Specifies whether to forcefully delete the VPC connection. Valid values: false (default): checks resources such as associated forwarding correlations and route learning policies that are related to the VPC connection before it is deleted. If such resources exist, the VPC connection is not deleted and an error message is returned. true : deletes the VPC connection and all resources that are related to the VPC connection. |
 | Action | String | Query | No | DeleteTransitRouterVpcAtta chment | The operation that you want to perform. Set the value to DeleteTransitRouterVpc Attachment . |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 7E61D334-4025- 41EF-9145- FC327B35301D | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -1723,13 +1904,17 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterVpcAttachment &TransitRouterAtta
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"7E61D334-4025-41EF-9145-FC327B35301D"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"7E61D334-4025-41EF-9145-FC327B35301D"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>7E61D334-4025-41EF-9145-FC327B35301D</RequestId>
@@ -1753,7 +1938,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | UNESPECTED VPC RE _ _ SULT | IncorrectStatus.Vpc | The resource is not in a valid state for the operation. |
 | 400 | OperationFailed.Route EntryExist | OperationFailed.RouteEntryExist | Operation failed because the TransitRouterAttachment exists in RouteTable. |
 
-#### UpdateTransitRouterVpcAttachmentZones
+#### 1.5.5 UpdateTransitRouterVpcAttachmentZones
 
 Modifies the zones and vSwitches that are associated with a virtual private cloud (VPC) connection.
 
@@ -1765,29 +1950,57 @@ When you associate a zone and a vSwitch with a VPC connection, make sure that th
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No |  | The operation that you want to perform. Set the value to UpdateTransitRouterVpc AttachmentZones . |
-| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
-| DryRun | Boolea n | Query | No | false | Specifies whether to perform a dry run, without performing the actual request. Valid values: true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the zones and vSwitches of the VPC connection are modified. |
-| TransitRout erAttachme ntId | String | Query | Yes | tr-attach- 9bbqyygouv4cpn**** | The ID of the VPC connection. |
-
 **Request parameters**
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
-| AddZoneMa ppings | Repeat List | Query | No |  | The zones and vSwitches that you want to associate with the VPC connection. |
-| -VSwitchId | String |  | No | vsw-wz9f5izl6wshndmta**** | The ID of the vSwitch that you want to associate with the VPC connection. You can specify at most 10 vSwitches in each call. If the VPC belongs to the current organization, you can call the DescribeVSwitches operation to query the IDs of vSwitches and zones in the VPC. If the VPC does not belong to the current organization, you can call the ListGrantVSwitchesToCen operation to query the IDs of vSwitches and zones in the VPC. |
-| -ZoneId | String |  | No | cn-qingdao-env17e- amtest17001-a | The ID of the zone where the vSwitch that you want to associate with the VPC connection is deployed. You can specify at most 10 vSwitches in each call. |
-| RemoveZon eMappings | Repeat List | Query | No |  | The zones and vSwitches that you want to disassociate from the VPC connection. |
-| -VSwitchId | String |  | No | vsw-wz9f5izl6wshndmta**** | The ID of the vSwitch that you want to disassociate from the VPC connection. You can specify at most 10 vSwitches in each call. |
-| -ZoneId | String |  | No | cn-qingdao-env17e- amtest17001-a | The ID of the zone where the vSwitch that you want to disassociate from the VPC connection is deployed. You can specify at most 10 vSwitches in each call. |
+| Action | String | Query | No |   | The operation that you want to perform. Set the value to UpdateTransitRouterVpc AttachmentZones . |
+| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
+| DryRun | Boolea n | Query | No | false | Specifies whether to perform a dry run, without performing the actual request. Valid values: true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the zones and vSwitches of the VPC connection are modified. |
+| TransitRout erAttachme ntId | String | Query | Yes | tr-attach- 9bbqyygouv4cpn**** | The ID of the VPC connection. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| AddZoneMa ppings | Repeat List | Query | No |   | The zones and vSwitches that you want to associate with the VPC connection. |
+| -VSwitchId | String |   | No | vsw-wz9f5izl6wshndmta**** | The ID of the vSwitch that you want to associate with the VPC connection. You can specify at most 10 vSwitches in each call. If the VPC belongs to the current organization, you can call the DescribeVSwitches operation to query the IDs of vSwitches and zones in the VPC. If the VPC does not belong to the current organization, you can call the ListGrantVSwitchesToCen operation to query the IDs of vSwitches and zones in the VPC. |
+| -ZoneId | String |   | No | cn-qingdao-env17e- amtest17001-a | The ID of the zone where the vSwitch that you want to associate with the VPC connection is deployed. You can specify at most 10 vSwitches in each call. |
+| RemoveZon eMappings | Repeat List | Query | No |   | The zones and vSwitches that you want to disassociate from the VPC connection. |
+| -VSwitchId | String |   | No | vsw-wz9f5izl6wshndmta**** | The ID of the vSwitch that you want to disassociate from the VPC connection. You can specify at most 10 vSwitches in each call. |
+| -ZoneId | String |   | No | cn-qingdao-env17e- amtest17001-a | The ID of the zone where the vSwitch that you want to disassociate from the VPC connection is deployed. You can specify at most 10 vSwitches in each call. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 595AE52F-49FF-5788- A677-0DD1467941A1 | The request ID. |
 
-**Response parameters**
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateTransitRouterVpcAttachmentZones &TransitRouterAttachmentId=tr-attach-9bbqyygouv4cpn**** &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"595AE52F-49FF-5788-A677-0DD1467941A1"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>595AE52F-49FF-5788-A677-0DD1467941A1</RequestId>
+```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -1803,41 +2016,7 @@ This operation does not have operation-specific request headers and uses only co
 | 400 | VPC SWITCH STATUS _ _ ERROR _ | IncorrectStatus.VpcSwitch | The resource is not in a valid state for the attachment operation. |
 | 404 | InvalidZoneId.NotFoun d | IllegalParam.ZoneId | The specified ZoneId is illegal. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateTransitRouterVpcAttachmentZones &TransitRouterAttachmentId=tr-attach-9bbqyygouv4cpn**** &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"595AE52F-49FF-5788-A677-0DD1467941A1"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>595AE52F-49FF-5788-A677-0DD1467941A1</RequestId>
-```
-
-**Error codes**
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListGrantVSwitchesToCen | The operation that you want to perform. Set the value to ListGrantVSwitchesToCe n . |
-| RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the VPC. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
-| CenId | String | Query | Yes | cen-44m0p68spvlrqq**** | The ID of the CEN instance. |
-| VpcId | String | Query | Yes | vpc- bp12ge2tq5gzdc915**** | The VPC ID. |
-| PageNumbe r | Integer | Query | No | 1 | The page number. Default value: 1 . |
-| PageSize | Integer | Query | No | 10 | The number of entries per page. Valid values: 1 to 50 . Default value: 10 . |
-| ZoneId | String | Query | No | cn-qingdao-env17e- amtest17001-a | The zone ID of the vSwitch. If you specify a zone ID, the system queries the information about the vSwitches in the specified zone. If you do not specify a zone ID, the system queries the information about the vSwitches in all zones. You can call the DescribeZones operation to query the most recent zone list. |
-
-#### ListGrantVSwitchesToCen
+#### 1.5.6 ListGrantVSwitchesToCen
 
 Queries the information about vSwitches in virtual private clouds (VPCs) that belong to a different Alibaba Cloud account than the Cloud Enterprise Network (CEN) instance.
 
@@ -1851,9 +2030,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListGrantVSwitchesToCen | The operation that you want to perform. Set the value to ListGrantVSwitchesToCe n . |
+| RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the VPC. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
+| CenId | String | Query | Yes | cen-44m0p68spvlrqq**** | The ID of the CEN instance. |
+| VpcId | String | Query | Yes | vpc- bp12ge2tq5gzdc915**** | The VPC ID. |
+| PageNumbe r | Integer | Query | No | 1 | The page number. Default value: 1 . |
+| PageSize | Integer | Query | No | 10 | The number of entries per page. Valid values: 1 to 50 . Default value: 10 . |
+| ZoneId | String | Query | No | cn-qingdao-env17e- amtest17001-a | The zone ID of the vSwitch. If you specify a zone ID, the system queries the information about the vSwitches in the specified zone. If you do not specify a zone ID, the system queries the information about the vSwitches in all zones. You can call the DescribeZones operation to query the most recent zone list. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| VSwitches | Array |  | The information about the vSwitch. |
+| VSwitches | Array |   | The information about the vSwitch. |
 | -VpcId | String | vpc- bp12ge2tq5gzdc915* *** | The ID of the VPC to which the vSwitch belongs. |
 | -ZoneId | String | cn-qingdao-env17e- amtest17001-a | The zone ID of the vSwitch. |
 | -VSwitchId | String | vsw- bp1194lh263wx1gsk* *** | The vSwitch ID. |
@@ -1861,10 +2052,6 @@ This operation does not have operation-specific request headers and uses only co
 | RequestId | String | A9288C78-881A- 5D30-A8A9- 68E05EE0A086 | The request ID. |
 | PageNumber | Integer | 1 | The page number. |
 | TotalCount | Integer | 2 | The total number of entries returned. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -1874,8 +2061,13 @@ http(s)://[Endpoint]/?Action=ListGrantVSwitchesToCen &RegionId=cn-qingdao-env17e
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":2,
  "PageSize":10,
  "RequestId":"A9288C78-881A-5D30-A8A9-68E05EE0A086",
@@ -1884,17 +2076,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "VpcId":"vpc-bp12ge2tq5gzdc915****",
   "ZoneId":"cn-qingdao-env17e-amtest17001-a",
   "VSwitchId":"vsw-bp1194lh263wx1gsk****"
- }
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | CreateTransitRouterVbrAttac hment | The operation that you want to perform. Set the value to CreateTransitRouterVbrAt tachment. |
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
-| CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>2</TotalCount> <PageSize>10</PageSize> <RequestId>A9288C78-881A-5D30-A8A9-68E05EE0A086</RequestId> <PageNumber>1</PageNumber> <VSwitches>
@@ -1904,9 +2088,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </VSwitches>
 ```
 
-### VBR connections
+### 1.6 VBR connections
 
-#### CreateTransitRouterVbrAttachment
+#### 1.6.1 CreateTransitRouterVbrAttachment
 
 Connects a virtual border router (VBR) to a transit router.
 
@@ -1920,6 +2104,12 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | CreateTransitRouterVbrAttac hment | The operation that you want to perform. Set the value to CreateTransitRouterVbrAt tachment. |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
+| CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
+
 | TransitRoute rId | String | Query | No | tr-bp1su1ytdxtataupl**** | The ID of the transit router. |
 |---|---|---|---|---|---|
 | RegionId | String | Query | No | cn-qingdao-env17e-d01 | The region ID of the VBR. You can call the DescribeRegions operation to query the most recent region list. |
@@ -1931,27 +2121,18 @@ This operation does not have operation-specific request headers and uses only co
 
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and sends the request. true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request. |
 |---|---|---|---|---|---|
-| Tag | Repea tList | Query | No |  | The information about the tag. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | TagKey | The tag key of the VPN connection. The tag keys cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
-| -Value | String |  | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| Tag | Repea tList | Query | No |   | The information about the tag. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | TagKey | The tag key of the VPN connection. The tag keys cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| -Value | String |   | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | TransitRouterAtt achmentId | String | tr-attach- ia340z7xis7t5s**** | The ID of the VBR connection. |
 |---|---|---|---|
 | RequestId | String | C087A369-82B9- 43EF-91F4- 4B63A9C6E6B6 | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | NoPermission.AliyunS erviceRolePolicyForCE N | NoPermission.AliyunServiceRolePol icyForCEN | You are not authorized to create the service linked role. Role Name: AliyunServiceRolePolicyForCEN. Service Name: cen.aliyuncs.com. Make sure that the user has been granted the ram:CreateServiceLinkedRole permission. |
-| 400 | OperationUnsupporte d.TransitRouterRegion Id | OperationUnsupported.TransitRout erRegionId | The specified TransitRouterRegion does not support the operation. |
-| 400 | InvalidCenId.NotFoun d | InvalidCenId.NotFound | CenId is not found. |
-| 400 | INVALID OPERATION _ _ RESOURCE ATTACHM _ ENT STATUS _ | InvalidStatus.ResourceStatus | The resource is not in a valid state for the attachment operation. |
-
-**Example**
 
 Sample requests
 
@@ -1961,20 +2142,31 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterVbrAttachment &VbrId=vbr-bp1svad
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TransitRouterAttachmentId":"tr-attach-ia340z7xis7t5s****",
- "RequestId":"C087A369-82B9-43EF-91F4-4B63A9C6E6B6"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "TransitRouterAttachmentId":"tr-attach-ia340z7xis7t5s****",
+ "RequestId":"C087A369-82B9-43EF-91F4-4B63A9C6E6B6"
+```
+
+`}` `XML` format
 
 ```xml
 <TransitRouterAttachmentId>tr-attach-ia340z7xis7t5s****</TransitRouterAttachmentId> <RequestId>C087A369-82B9-43EF-91F4-4B63A9C6E6B6</RequestId>
 ```
 
 **Error codes**
+
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | NoPermission.AliyunS erviceRolePolicyForCE N | NoPermission.AliyunServiceRolePol icyForCEN | You are not authorized to create the service linked role. Role Name: AliyunServiceRolePolicyForCEN. Service Name: cen.aliyuncs.com. Make sure that the user has been granted the ram:CreateServiceLinkedRole permission. |
+| 400 | OperationUnsupporte d.TransitRouterRegion Id | OperationUnsupported.TransitRout erRegionId | The specified TransitRouterRegion does not support the operation. |
+| 400 | InvalidCenId.NotFoun d | InvalidCenId.NotFound | CenId is not found. |
+| 400 | INVALID OPERATION _ _ RESOURCE ATTACHM _ ENT STATUS _ | InvalidStatus.ResourceStatus | The resource is not in a valid state for the attachment operation. |
 
 | 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | TransitRouterId is not found. |
 |---|---|---|---|
@@ -1985,12 +2177,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | DEVICE MODEL FORB _ _ IDDEN | Forbidden.VbrDeviceModel | Attach VBR on some access device models are forbidden. |
 | 403 | INVALID OPERATION _ _ DEVICE MODEL FORB _ _ IDDEN | Forbidden.VbrDeviceModel | The attached VBR on some access device models are not supported. Please submit a ticket to continue using this VBR on CEN. |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
-| RegionId | String | Query | No | cn-qingdao-env66-d01 | The region ID of the transit router. You can call the DescribeRegions operation to query the most recent region list. |
-
-#### ListTransitRouterVbrAttachments
+#### 1.6.2 ListTransitRouterVbrAttachments
 
 Queries virtual border router (VBR) connections on a transit router.
 
@@ -2006,13 +2193,18 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| CenId | String | Query | No | cen-j3jzhw1zpau2km**** | The ID of the CEN instance. |
+| RegionId | String | Query | No | cn-qingdao-env66-d01 | The region ID of the transit router. You can call the DescribeRegions operation to query the most recent region list. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | TransitRout erAttachme ntId | String | Query | No | tr-attach- oyf70wfuorwx87**** | The ID of the VBR connection. |
 | TransitRout erId | String | Query | No | tr-bp1su1ytdxtataupl**** | The ID of the transit router. |
 | MaxResults | Integer | Query | No | 20 | The number of entries per page. Default value: 20 . |
 | NextToken | String | Query | No | dd20**** | The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. |
-| Tag | Repeat List | Query | No |  | The tags. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
-| -Value | String |  | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| Tag | Repeat List | Query | No |   | The tags. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | tagtest | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| -Value | String |   | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
 | Action | String | Query | No | ListTransitRouterVbrAttach ments | The operation that you want to perform. Set the value to ListTransitRouterVbrAtta chments . |
 
 **Response parameters**
@@ -2023,8 +2215,8 @@ This operation does not have operation-specific request headers and uses only co
 | NextToken | String | dd20**** | The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. |
 | RequestId | String | F42D9616-29EB- 4E75-8CA8- 9654D4E07501 | The request ID. |
 | MaxResults | Integer | 20 | The number of entries per page. |
-| TransitRouterAtt achments | Array |  | A list of VBR connections. |
-| -Tags | Array |  | The tags. |
+| TransitRouterAtt achments | Array |   | A list of VBR connections. |
+| -Tags | Array |   | The tags. |
 | --Key | String | tagtest | The tag key. |
 | --Value | String | tagtest | The tag value. |
 | -CreationTime | String | 2021-06-15T15:20Z | The time when the VBR connection was established. The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in Coordinated Universal Time (UTC). |
@@ -2052,8 +2244,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterVbrAttachments &Common request par
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"dd20****",
  "RequestId":"F42D9616-29EB-4E75-8CA8-9654D4E07501",
@@ -2065,7 +2262,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "-Tags":{
    "Value":"tagtest",
    "Key":"tagtest"
-  },
+```
+
+`},`
+
+```json
   "VbrOwnerId":1250123456123456,
   "CreationTime":"2021-06-15T15:20Z",
   "TransitRouterAttachmentName":"testa",
@@ -2074,23 +2275,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "VbrId":"vbr-bp1svadp4lq38janc****",
   "TransitRouterAttachmentDescription":"testdesc",
   "TransitRouterId":"tr-bp1su1ytdxtataupl****"
- }
-}
 ```
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is invalid. |
-| 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TransitRouter is invalid. |
-| 400 | IllegalParam.Region | IllegalParam.Region | The specified Region is invalid. |
-| 400 | IllegalParam.CenId | IllegalParam.CenId | The specified CenId is invalid. |
-| 400 | IllegalParam.TransitRo uterId | IllegalParam.TransitRouterId | The specified TransitRouterId is invalid. |
-| 400 | IllegalParam.CenId Or RegionId | IllegalParam.CenIdOrRegionId | The specified CenId or RegionId is invalid. |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>dd20****</NextToken> <RequestId>F42D9616-29EB-4E75-8CA8-9654D4E07501</RequestId> <MaxResults>20</MaxResults> <TransitRouterAttachments>
@@ -2114,7 +2301,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### UpdateTransitRouterVbrAttachmentAttribute
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is invalid. |
+| 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TransitRouter is invalid. |
+| 400 | IllegalParam.Region | IllegalParam.Region | The specified Region is invalid. |
+| 400 | IllegalParam.CenId | IllegalParam.CenId | The specified CenId is invalid. |
+| 400 | IllegalParam.TransitRo uterId | IllegalParam.TransitRouterId | The specified TransitRouterId is invalid. |
+| 400 | IllegalParam.CenId Or RegionId | IllegalParam.CenIdOrRegionId | The specified CenId or RegionId is invalid. |
+
+#### 1.6.3 UpdateTransitRouterVbrAttachmentAttribute
 
 Modifies the name and description of a virtual border router (VBR) connection that is created on a transit router.
 
@@ -2123,6 +2319,9 @@ Modifies the name and description of a virtual border router (VBR) connection th
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2137,11 +2336,11 @@ This operation does not have operation-specific request headers and uses only co
 | AutoPublish RouteEnabl ed | Boolea n | Query | No | true | Specifies whether to allow the transit router to automatically advertise routes to the VBR. Valid values: true false |
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. true : performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 91B36DC3-FF8A- 45C3-AC1E- 456B1789136D | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -2153,24 +2352,17 @@ http(s)://[Endpoint]/?Action=UpdateTransitRouterVbrAttachmentAttribute &TransitR
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"91B36DC3-FF8A-45C3-AC1E-456B1789136D"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidTransitRouterAt tachmentId.NotFound | InvalidTransitRouterAttachmentId. NotFound | TransitRouterAttachmentId is not found. |
-| 400 | IncorrectStatus.Transi tRouterAttachmentId | IncorrectStatus.TransitRouterAttac hment | The status of TransitRouterAttachment is incorrect. |
+```json
+ "RequestId":"91B36DC3-FF8A-45C3-AC1E-456B1789136D"
+```
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DeleteTransitRouterVbrAtta chment | The operation that you want to perform. Set the value to DeleteTransitRouterVbrA ttachment . |
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
-| TransitRout erAttachme ntId | String | Query | Yes | tr-attach-9nlnjv7by7n7a**** | The ID of the VBR connection. |
+`}` `XML` format
 
 ```xml
 <RequestId>91B36DC3-FF8A-45C3-AC1E-456B1789136D</RequestId>
@@ -2178,7 +2370,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DeleteTransitRouterVbrAttachment
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidTransitRouterAt tachmentId.NotFound | InvalidTransitRouterAttachmentId. NotFound | TransitRouterAttachmentId is not found. |
+| 400 | IncorrectStatus.Transi tRouterAttachmentId | IncorrectStatus.TransitRouterAttac hment | The status of TransitRouterAttachment is incorrect. |
+
+#### 1.6.4 DeleteTransitRouterVbrAttachment
 
 Deletes a virtual border router (VBR) connection from an Enterprise Edition transit router.
 
@@ -2190,16 +2387,20 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | DeleteTransitRouterVbrAtta chment | The operation that you want to perform. Set the value to DeleteTransitRouterVbrA ttachment . |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token . The request ID may be different for each request. |
+| TransitRout erAttachme ntId | String | Query | Yes | tr-attach-9nlnjv7by7n7a**** | The ID of the VBR connection. |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and sends the request. true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request. |
 | Force | Boolea n | Query | No | false | Specifies whether to forcefully delete the VBR connection. Valid values: false (default): checks for resources related to the VBR connection, such as associated forwarding and route learning policies. If such resources exist, the ECR connection is not deleted and an error message is returned. true : deletes the VBR connection and related resources. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 3EDA94DE-0AE5- 41FC-A91E- 7170E408E0FD | The request ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -2208,6 +2409,24 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterVbrAttachment &TransitRouterAtta
 ```
 
 Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"3EDA94DE-0AE5-41FC-A91E-7170E408E0FD"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>3EDA94DE-0AE5-41FC-A91E-7170E408E0FD</RequestId>
+```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -2219,26 +2438,9 @@ Sample success responses `JSON` format
 | 400 | OperationUnsupporte d.TransitRouterType | OperationUnsupported.TransitRout erType | The specified TransitRouterType does not support the operation. |
 | 400 | ATTACHMENT REFERE _ NCED BY VPC ROUTE _ _ _ ENTRY _ | InstanceReferenced.VpcRouteEntry | The specified attachment is referenced by vpc route entry. |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
+### 1.7 Connect attachments
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"3EDA94DE-0AE5-41FC-A91E-7170E408E0FD"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>3EDA94DE-0AE5-41FC-A91E-7170E408E0FD</RequestId>
-```
-
-**Error codes**
-
-### Connect attachments
-
-#### CreateTransitRouterConnectAttachment
+#### 1.7.1 CreateTransitRouterConnectAttachment
 
 Creates a Connect attachment.
 
@@ -2247,6 +2449,9 @@ Creates a Connect attachment.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2266,18 +2471,12 @@ This operation does not have operation-specific request headers and uses only co
 | Protocol | String | Query | No | gre | The protocol that is used to encapsulate data packets in the tunnel. Set the value to gre . |
 | TransportTy pe | String | Query | No | AllVbr | The type of the tunnel. Set the value to AllVbr , which specifies that all VBRs attached to the transit router are connected to the Connect attachment to transmit data. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TransitRouterAtt achmentId | String | tr-attach- 8b586cj3ugv12r**** | The ID of the Connect attachment. |
 | RequestId | String | 8B5DD40A-3A29- 5AC0-B8DA- 05FD10D5C893 | The request ID. |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | UpdateTransitRouterConnec tAttachmentAttribute | The operation that you want to perform. Set the value to UpdateTransitRouterCon nectAttachmentAttribut e . |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -2287,14 +2486,18 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterConnectAttachment &Common reques
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TransitRouterAttachmentId":"tr-attach-8b586cj3ugv12r****",
- "RequestId":"8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "TransitRouterAttachmentId":"tr-attach-8b586cj3ugv12r****",
+ "RequestId":"8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893"
+```
+
+`}` `XML` format
 
 ```xml
 <TransitRouterAttachmentId>tr-attach-8b586cj3ugv12r****</TransitRouterAttachmentId> <RequestId>8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893</RequestId>
@@ -2314,6 +2517,10 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | UpdateTransitRouterConnec tAttachmentAttribute | The operation that you want to perform. Set the value to UpdateTransitRouterCon nectAttachmentAttribut e . |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true : performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. |
 | TransitRout erAttachme ntId | String | Query | Yes | tr-attach- 8b586cj3ugv12r**** | The ID of the Connect attachment. |
@@ -2323,15 +2530,15 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | TransitRout erAttachme ntDescriptio n | String | Query | No | desctest | The new description of the Connect attachment. The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with http:// or https:// . |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0876E54E-3E36- 5C31-89F0- 9EE8A9266F9A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -2343,19 +2550,23 @@ http(s)://[Endpoint]/?Action=UpdateTransitRouterConnectAttachmentAttribute &Tran
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"0876E54E-3E36-5C31-89F0-9EE8A9266F9A"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>0876E54E-3E36-5C31-89F0-9EE8A9266F9A</RequestId>
 ```
 
-#### ListTransitRouterConnectAttachments
+#### 1.7.3 ListTransitRouterConnectAttachments
 
 Queries the information about Connect attachments.
 
@@ -2375,6 +2586,8 @@ parameter.
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
+**Request parameters**
+
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | Action | String | Query | No | ListTransitRouterConnectAtt achments | The operation that you want to perform. Set the value to ListTransitRouterConnec tAttachments . |
@@ -2385,13 +2598,11 @@ This operation does not have operation-specific request headers and uses only co
 | MaxResults | Integer | Query | No | 20 | The number of entries per page. Default value: 20 . |
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterAtt achments | Array |  | The information about the Connect attachments. |
-
-**Request parameters**
-
-**Response parameters**
+| TransitRouterAtt achments | Array |   | The information about the Connect attachments. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2425,8 +2636,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterConnectAttachments &Common request
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50",
@@ -2444,15 +2660,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "ResourceOwnerId":1250123456123456,
   "TransitRouterAttachmentDescription":"desctest",
   "TransitRouterId":"tr-p0wr9p28r92d598y6****"
- }
-}
 ```
 
-`XML` format
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | CreateTransitRouterConnec tPeer | The operation that you want to perform. Set the value to CreateTransitRouterCon nectPeer . |
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50</RequestId> <MaxResults>20</MaxResults> <TransitRouterAttachments>
@@ -2471,7 +2681,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </TransitRouterAttachments>
 ```
 
-#### CreateTransitRouterConnectPeer
+#### 1.7.4 CreateTransitRouterConnectPeer
 
 Adds a Connect peer.
 
@@ -2484,6 +2694,10 @@ Before you add a Connect peer to a transit router, make sure that a CIDR block i
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
 
 **Request parameters**
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | CreateTransitRouterConnec tPeer | The operation that you want to perform. Set the value to CreateTransitRouterCon nectPeer . |
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2501,12 +2715,6 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRouterCo nnectPeerId | String | tr-connect-peer- ax66ixf6ubbajw**** | The ID of the Connect peer. |
 | RequestId | String | BCF96FD3-17C1- 58DA-B9D6- 2CC347A71D79 | The request ID. |
 
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListTransitRouterConnectPe ers | The operation that you want to perform. Set the value to ListTransitRouterConnec tPeers . |
-
-**Example**
-
 Sample requests
 
 ```
@@ -2515,20 +2723,24 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterConnectPeer &TransitRouterAttach
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TransitRouterConnectPeerId":"tr-connect-peer-ax66ixf6ubbajw****",
- "RequestId":"BCF96FD3-17C1-58DA-B9D6-2CC347A71D79"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "TransitRouterConnectPeerId":"tr-connect-peer-ax66ixf6ubbajw****",
+ "RequestId":"BCF96FD3-17C1-58DA-B9D6-2CC347A71D79"
+```
+
+`}` `XML` format
 
 ```xml
 <TransitRouterConnectPeerId>tr-connect-peer-ax66ixf6ubbajw****</TransitRouterConnectPeerId> <RequestId>BCF96FD3-17C1-58DA-B9D6-2CC347A71D79</RequestId>
 ```
 
-#### ListTransitRouterConnectPeers
+#### 1.7.5 ListTransitRouterConnectPeers
 
 Queries the information about a Connect peer.
 
@@ -2548,23 +2760,27 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | ListTransitRouterConnectPe ers | The operation that you want to perform. Set the value to ListTransitRouterConnec tPeers . |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | TransitRout erAttachme ntId | String | Query | No | tr-attach- k4x7usyt7hj719**** | The ID of the Connect attachment. |
 | TransitRout erConnectP eerId | String | Query | No | tr-connect-peer- anr505utij7pvr**** | The ID of the Connect peer. |
 | MaxResults | Integer | Query | No | 20 | The number of entries per page. Default value: 20 . |
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterCo nnectPeers | Array |  | The information about the Connect peer. |
+| TransitRouterCo nnectPeers | Array |   | The information about the Connect peer. |
 | -CreationTime | String | 2022-12-12T07:31Z | The time when the Connect peer was created. The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC. |
 | -Status | String | Active | The status of the Connect peer. Valid values: Creating : The Connect peer is being created. Active : The Connect peer is available. Deleting : The Connect peer is being deleted. |
 | - TransitRouterCo nnectPeerId | String | tr-connect-peer- anr505utij7pvr**** | The ID of the Connect peer. |
 | - TransitRouterAtt achmentId | String | tr-attach- k4x7usyt7hj719**** | The ID of the Connect attachment. |
 | - TransitRouterCo nnectPeerName | String | nametest | The name of the Connect peer. |
 
-**Response parameters**
-
-| TransitRouter |  |  | Developer Guide·API Reference |
+| TransitRouter |   |   | Developer Guide·API Reference |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2589,12 +2805,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterConnectPeers &Common request param
 
 Sample success responses `JSON` format
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | MissingParam.TrConn ectPeerId Or TrAttachmentId | MissingParam.TrConnectPeerIdOrTr AttachmentId | The parameter TrConnectPeerId Or TrAttachmentId is mandatory. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"23CC4215-69A5-5635-8249-65AD25B02E91",
@@ -2610,11 +2827,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "TransitRouterRegionId":"ap-southeast-2",
   "TransitRouterId":tr-p0wa3m41xs8806q2n****,
   "TransitRouterConnectPeerPeerIp":"10.0.0.1"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>23CC4215-69A5-5635-8249-65AD25B02E91</RequestId> <MaxResults>20</MaxResults> <TransitRouterConnectPeers>
@@ -2633,7 +2848,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DeleteTransitRouterConnectPeer
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | MissingParam.TrConn ectPeerId Or TrAttachmentId | MissingParam.TrConnectPeerIdOrTr AttachmentId | The parameter TrConnectPeerId Or TrAttachmentId is mandatory. |
+
+#### 1.7.6 DeleteTransitRouterConnectPeer
 
 Deletes a Connect peer.
 
@@ -2650,19 +2869,11 @@ This operation does not have operation-specific request headers and uses only co
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform a dry run, without performing the actual request. Valid values: true : performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed. |
 | TransitRout erConnectP eerId | String | Query | No | tr-connect-peer- y5osf8cbw1d75e**** | The ID of the Connect peer. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 8B5DD40A-3A29- 5AC0-B8DA- 05FD10D5C893 | The request ID. |
-
-**Response parameters**
-
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | INVALID OPERATION _ _ MULTICAST GROUP E _ _ XIST | OperationFailed.MulticastGroupExi st | Operation is failed because connect peer exists in multicast groups. |
-
-| Paramete r | Type | Positio n | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DeleteTransitRouterConnect Attachment | The operation that you want to perform. Set the value to DeleteTransitRouterCon nectAttachment . |
 
 **Examples**
 
@@ -2674,13 +2885,17 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterConnectPeer &Common request para
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893</RequestId>
@@ -2688,7 +2903,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DeleteTransitRouterConnectAttachment
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | INVALID OPERATION _ _ MULTICAST GROUP E _ _ XIST | OperationFailed.MulticastGroupExi st | Operation is failed because connect peer exists in multicast groups. |
+
+#### 1.7.7 DeleteTransitRouterConnectAttachment
 
 Deletes a Connect attachment.
 
@@ -2700,6 +2919,10 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | DeleteTransitRouterConnect Attachment | The operation that you want to perform. Set the value to DeleteTransitRouterCon nectAttachment . |
+
+| Paramete r | Type | Positio n | Required | Example | Description |
+|---|---|---|---|---|---|
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 42665544**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boolea n | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: true : performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. |
 | TransitRout erAttachme ntId | String | Query | No | tr-attach- r6g0m3epjehw57**** | The ID of the Connect attachment. |
@@ -2708,13 +2931,11 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | Force | Boolea n | Query | No | false | Specifies whether to forcefully delete the Connect attachment. Valid values: false (default): Check resource dependencies such as Connect peers and multicast groups before deleting the Connect attachment. If a resource dependency exists, the Connect attachment is not deleted and an error message is returned. true : Delete the Connect attachment and all resource dependencies. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9878790A-5C16- 5A59-A6CB- 79B28C04637D | The request ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -2724,21 +2945,33 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterConnectAttachment &Common reques
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"9878790A-5C16-5A59-A6CB-79B28C04637D"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"9878790A-5C16-5A59-A6CB-79B28C04637D"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>9878790A-5C16-5A59-A6CB-79B28C04637D</RequestId>
 ```
 
-### Cross-account authorization
+### 1.8 Cross-account authorization
 
-#### GrantInstanceToTransitRouter
+#### 1.8.1 GrantInstanceToTransitRouter
+
+Grants a transit router the permissions to connect to a network instance that belongs to another Alibaba Cloud account.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -2749,23 +2982,39 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The ID of the region where the network instance is deployed. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 | CenOwnerId | Long | Query | Yes | 1250123456123456 | The UID of the level-1 organization to which the CEN instance belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | RequestId | String | C6E5992C-A57B- 5A6C-9B26- 568074DC68BA | The request ID. |
 
-Grants a transit router the permissions to connect to a network instance that belongs to another Alibaba Cloud account.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
+
+```
+http(s)://[Endpoint]/?Action=GrantInstanceToTransitRouter &CenId=cen-44m0p68spvlrqq**** &InstanceId=vpc-bp1h8vbrbcgohcju5**** &InstanceType=VPC &RegionId=cn-qingdao-env17e-d01 &CenOwnerId=1250123456123456 &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"C6E5992C-A57B-5A6C-9B26-568074DC68BA"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>C6E5992C-A57B-5A6C-9B26-568074DC68BA</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -2776,31 +3025,15 @@ Sample requests
 | 400 | InvalidVbr.NotFound | InvalidVbr.NotFound | vbr is not found. |
 | 404 | INSTANCE NOT EXIST _ _ | InvalidInstanceId.NotFound | InstanceId is not found. |
 
-```
-http(s)://[Endpoint]/?Action=GrantInstanceToTransitRouter &CenId=cen-44m0p68spvlrqq**** &InstanceId=vpc-bp1h8vbrbcgohcju5**** &InstanceType=VPC &RegionId=cn-qingdao-env17e-d01 &CenOwnerId=1250123456123456 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"C6E5992C-A57B-5A6C-9B26-568074DC68BA"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>C6E5992C-A57B-5A6C-9B26-568074DC68BA</RequestId>
-```
-
-**Error codes**
-
-#### RevokeInstanceFromTransitRouter
+#### 1.8.2 RevokeInstanceFromTransitRouter
 
 Revokes the permissions that a transit router requires to connect to network instances that belong to another Alibaba Cloud account.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -2811,25 +3044,15 @@ Revokes the permissions that a transit router requires to connect to network ins
 | RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The ID of the region where the network instance is deployed. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 | CenOwnerId | Long | Query | Yes | 1250123456123456 | The UID of the level-1 organization to which the Cloud Enterprise Network (CEN) instance belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | RequestId | String | AA4BFFD1-5090- 5896-935F- 4B353557F1A8 | The request ID. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeGrantRulesToCen | The operation that you want to perform. Set the value to DescribeGrantRulesToCen . |
-| RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the network instance. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
-| CenId | String | Query | Yes | cen-nye53d7p3hzyu4**** | The ID of the CEN instance. |
 
 ```
 http(s)://[Endpoint]/?Action=RevokeInstanceFromTransitRouter &CenId=cen-44m0p68spvlrqq**** &InstanceId=vpc-bp1h8vbrbcgohcju5**** &InstanceType=VPC &RegionId=cn-qingdao-env17e-d01 &CenOwnerId=1250123456123456 &Common request parameters
@@ -2837,19 +3060,23 @@ http(s)://[Endpoint]/?Action=RevokeInstanceFromTransitRouter &CenId=cen-44m0p68s
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"AA4BFFD1-5090-5896-935F-4B353557F1A8"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"AA4BFFD1-5090-5896-935F-4B353557F1A8"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>AA4BFFD1-5090-5896-935F-4B353557F1A8</RequestId>
 ```
 
-#### DescribeGrantRulesToCen
+#### 1.8.3 DescribeGrantRulesToCen
 
 Queries the network instances within a different Alibaba Cloud account that Cloud Enterprise Network (CEN) has the permissions to access.
 
@@ -2859,17 +3086,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DescribeGrantRulesToCen | The operation that you want to perform. Set the value to DescribeGrantRulesToCen . |
+| RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the network instance. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
+| CenId | String | Query | Yes | cen-nye53d7p3hzyu4**** | The ID of the CEN instance. |
+
 | ProductType | String | Query | Yes | VPC | The type of network instance. Valid values: VPC: virtual private cloud (VPC) VBR: virtual border router (VBR) |
 |---|---|---|---|---|---|
 | MaxResults | Long | Query | No | 20 | If you do not set MaxResults, it indicates that you do not need to query results in batches. The value of MaxResults in the response indicates the total number of entries returned. If you specify a value for MaxResults, it indicates that you need to query results in batches. The value of MaxResults indicates the number of entries to return in each batch. Valid values: 1 to 100. The value of MaxResults in the response indicates the number of entries in the current batch. We recommend that you set MaxResults to 20. |
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXGK Pd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| GrantRules | Array |  | The permissions that are granted to the CEN instance. |
+| GrantRules | Array |   | The permissions that are granted to the CEN instance. |
 | - ChildInstanceTyp e | String | VPC | The type of network instance. Valid values: VPC: VPC VBR: VBR |
-
-**Response parameters**
 
 | - ChildInstanceRe gionId | String | cn-qingdao-env17e- d01 | The region ID of the network instance. |
 |---|---|---|---|
@@ -2892,14 +3125,13 @@ http(s)://[Endpoint]/?Action=DescribeGrantRulesToCen &RegionId=cn-qingdao-env17e
 
 Sample success responses `JSON` format
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParameter | InvalidParameter | Invalid parameter. |
-| 400 | MissingParameter | MissingParameter | Missing parameter. |
-| 400 | SDK.InvalidRegionId : Can not find endpoint to access. | InvalidParameter.RegionId | The specified Region Id is invalid. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "RequestId":"4906B209-8613-5C19-9CC9-B7A3FFDA731C",
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
@@ -2912,11 +3144,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "ChildInstanceOwnerId":1250123456123456,
   "ChildInstanceId":"vpc-bp1rgeww9mdstuuar****",
   "ChildInstanceRegionId":"cn-qingdao-env17e-d01"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <RequestId>4906B209-8613-5C19-9CC9-B7A3FFDA731C</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults> <GrantRules>
@@ -2932,13 +3162,21 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DescribeGrantRulesToResource
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParameter | InvalidParameter | Invalid parameter. |
+| 400 | MissingParameter | MissingParameter | Missing parameter. |
+| 400 | SDK.InvalidRegionId : Can not find endpoint to access. | InvalidParameter.RegionId | The specified Region Id is invalid. |
+
+#### 1.8.4 DescribeGrantRulesToResource
 
 Queries permissions granted to Cloud Enterprise Network (CEN) instances that belong to another Alibaba Cloud account.
 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -2948,15 +3186,15 @@ This operation does not have operation-specific request headers and uses only co
 | ProductTyp e | String | Query | Yes | VPC | The type of network instance. Valid values: VPC : virtual private cloud (VPC) ExpressConnect : virtual border router (VBR) |
 | MaxResults | Integer | Query | No | 20 | If you do not set MaxResults , it indicates that you do not need to query results in batches. The value of MaxResults indicates the total number of entries. If you specify a value for MaxResults , it indicates that you need to query results in batches. The value of MaxResults indicates the number of entries to return in each batch. Valid values: 1 to 100 . The value of MaxResults in the response indicates the number of entries in the current batch. We recommend that you set MaxResults to 20 . |
 
-**Request parameters**
-
 | Paramete r | Type | Positio n | Required | Example | Description |
 |---|---|---|---|---|---|
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| GrantRules | Array |  | The permissions that are granted to the CEN instance. |
+| GrantRules | Array |   | The permissions that are granted to the CEN instance. |
 | -CenOwnerId | Long | 1250123456123456 | The UID of the level-1 organization to which the CEN instance belongs. |
 | -CenId | String | cen- 44m0p68spvlrqq**** | The ID of the CEN instance. |
 | NextToken | String | FFmyTO70tTpLG6I3F mYAXGKPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If NextToken is empty, no next page exists. If the value returned of NextToken is not empty, the value indicates the token that is used for the next query. |
@@ -2964,17 +3202,9 @@ This operation does not have operation-specific request headers and uses only co
 | TotalCount | Integer | 1 | The total number of entries returned. |
 | MaxResults | Integer | 1 | If no value is specified for MaxResults , query results are returned in one batch. The value of MaxResults indicates the total number of entries. If a value is specified for MaxResults , query results are returned in batches. The value of MaxResults in the response indicates the number of entries in the current batch. |
 
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidParameter | InvalidParameter | Invalid parameter. |
-| 400 | MissingParameter | MissingParameter | Missing parameter. |
-| 400 | SDK.InvalidRegionId : Can not find endpoint to access. | InvalidParameter.RegionId | The specified Region Id is invalid. |
 
 ```
 http(s)://[Endpoint]/?Action=DescribeGrantRulesToResource &RegionId=cn-qingdao-env17e-d01 &ResourceId=vpc-p0wfut1iqauelpdpb**** &ProductType=VPC &Common request parameters
@@ -2982,8 +3212,13 @@ http(s)://[Endpoint]/?Action=DescribeGrantRulesToResource &RegionId=cn-qingdao-e
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"C6E5992C-A57B-5A6C-9B26-568074DC68BA",
@@ -2991,11 +3226,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "GrantRules":{
   "CenOwnerId":1250123456123456,
   "CenId":"cen-44m0p68spvlrqq****"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>C6E5992C-A57B-5A6C-9B26-568074DC68BA</RequestId> <MaxResults>1</MaxResults> <GrantRules>
@@ -3006,9 +3239,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-### Custom routes
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidParameter | InvalidParameter | Invalid parameter. |
+| 400 | MissingParameter | MissingParameter | Missing parameter. |
+| 400 | SDK.InvalidRegionId : Can not find endpoint to access. | InvalidParameter.RegionId | The specified Region Id is invalid. |
 
-#### CreateTransitRouterRouteEntry
+### 1.9 Custom routes
+
+#### 1.9.1 CreateTransitRouterRouteEntry
 
 Adds a route to a route table of a transit router.
 
@@ -3032,23 +3271,14 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRoute rRouteEntry NextHopId | String | Query | No | tr-attach-nls9fzkfat8934**** | The ID of the network instance connection that you want to specify as the next hop. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TransitRouterRo uteEntryId | String | rte- 75eg4jprkvk0pw**** | The route ID. |
 
-**Response parameters**
-
 | RequestId | String | 835E7F4B-B380-4E0F- 96A5-6EA572388047 | The request ID. |
 |---|---|---|---|
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-| 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
-| 400 | TransitRouterRouteEn tryNextHopId.NotFoun d | TransitRouterRouteEntryNextHopId .NotFound | TransitRouterRouteEntryNextHopId is not found. |
-| 400 | OperationFailed.Creat eRouteEntryWithCCN Attachment | OperationFailed.CreateRouteEntry WithCCNAttachment | Operation failed because Create RouteEntry to CCN Attachment does not support. |
-| 400 | QuotaExceeded.Transi tRouterRoutEntry | QuotaExceeded.TransitRouterRout Entry | TransitRouterRoutEntry quota exceeded. |
-| 400 | IllegalParam.TransitRo uterDestinationCidrBl ock | IllegalParam.TransitRouterDestinati onCidrBlock | TransitRouterDestinationCidrBlock is illegal. |
 
 **Examples**
 
@@ -3060,20 +3290,33 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterRouteEntry &TransitRouterRouteTa
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"835E7F4B-B380-4E0F-96A5-6EA572388047",
- "TransitRouterRouteEntryId":"rte-75eg4jprkvk0pw****"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"835E7F4B-B380-4E0F-96A5-6EA572388047",
+ "TransitRouterRouteEntryId":"rte-75eg4jprkvk0pw****"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>835E7F4B-B380-4E0F-96A5-6EA572388047</RequestId> <TransitRouterRouteEntryId>rte-75eg4jprkvk0pw****</TransitRouterRouteEntryId>
 ```
 
 **Error codes**
+
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
+| 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
+| 400 | TransitRouterRouteEn tryNextHopId.NotFoun d | TransitRouterRouteEntryNextHopId .NotFound | TransitRouterRouteEntryNextHopId is not found. |
+| 400 | OperationFailed.Creat eRouteEntryWithCCN Attachment | OperationFailed.CreateRouteEntry WithCCNAttachment | Operation failed because Create RouteEntry to CCN Attachment does not support. |
+| 400 | QuotaExceeded.Transi tRouterRoutEntry | QuotaExceeded.TransitRouterRout Entry | TransitRouterRoutEntry quota exceeded. |
+| 400 | IllegalParam.TransitRo uterDestinationCidrBl ock | IllegalParam.TransitRouterDestinati onCidrBlock | TransitRouterDestinationCidrBlock is illegal. |
 
 | 400 | InstanceExist.TransitR outerRouteEntry | InstanceExist.TransitRouterRouteE ntry | The instance TransitRouterRouteEntry already exists. |
 |---|---|---|---|
@@ -3087,11 +3330,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | ROUTE CONFLICT _ | OperationFailed.CreateRouteEntry WithSameDestinationCidrBlock | Operation failed because Create RouteEntry with same destination cidrblock does not support. |
 | 400 | InvalidDestinationCidr Block.NotFound | InvalidDestinationCidrBlock.NotFou nd | DestinationCidrBlock is not found. |
 
-| Parameter | Type | Positi on | Required | Examples | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | UpdateTransitRouterRouteEn try | The operation that you want to perform. Set the value to UpdateTransitRouterRout eEntry. |
-
-#### UpdateTransitRouterRouteEntry
+#### 1.9.2 UpdateTransitRouterRouteEntry
 
 Modifies the name and description of a route that belongs to a route table of a transit router.
 
@@ -3101,6 +3340,10 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Examples | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | UpdateTransitRouterRouteEn try | The operation that you want to perform. Set the value to UpdateTransitRouterRout eEntry. |
+
 | TransitRoute rRouteEntryI d | String | Query | Yes | rte-ksssq7kto4wfdx**** | The route ID. |
 |---|---|---|---|---|---|
 | TransitRoute rRouteEntry Name | String | Query | No | testname | The new name of the route. The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ -. _ |
@@ -3108,9 +3351,39 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and sends the request. true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | RequestId | String | 2D69CCEA-42D0- 48B2-8C9A- 9BB207F76D6E | The request ID. |
+
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=UpdateTransitRouterRouteEntry &TransitRouterRouteEntryId=rte-ksssq7kto4wfdx**** &Action=UpdateTransitRouterRouteEntry &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -3119,33 +3392,7 @@ This operation does not have operation-specific request headers and uses only co
 | 400 | InvalidName | InvalidName | Name is invalid. |
 | 400 | InvalidDescription | InvalidDescription | Description is invalid. |
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateTransitRouterRouteEntry &TransitRouterRouteEntryId=rte-ksssq7kto4wfdx**** &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E</RequestId>
-```
-
-**Error codes**
-
-#### ListTransitRouterRouteEntries
+#### 1.9.3 ListTransitRouterRouteEntries
 
 Queries the information about routes that belong to a route table of a transit router.
 
@@ -3168,14 +3415,14 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | TransitRoute rRouteEntryI ds | Repea tList | Query | No | rte-oklkgwmj97z6dn**** | The route ID. You can use this parameter to query only static routes in the specified route table. This parameter conflicts with other query conditions except for TransitRouterRouteEntry Names. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterRo uteEntries | Array |  | A list of routes. |
+| TransitRouterRo uteEntries | Array |   | A list of routes. |
 | - TransitRouterRo uteEntryId | String | rte- oklkgwmj97z6dn**** | The route ID. This parameter is returned only for static routes. |
 | - TransitRouterRo uteEntryDestinat ionCidrBlock | String | 192.168.0.0/24 | The destination CIDR block of the route. |
 | - TransitRouterRo uteEntryType | String | Static | The type of the route. Valid values: Static: static route. Propagated: route automatically learned by the route table. |
-
-**Response parameters**
 
 | -CreateTime | String | 2021-06-15T07:01Z | The time when the route was created. The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in Coordinated Universal Time (UTC). This parameter is returned only for static routes. |
 |---|---|---|---|
@@ -3203,14 +3450,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterRouteEntries &TransitRouterRouteTa
 
 Sample success responses `JSON` format
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.TransitRo uterRouteTableId | IllegalParam.TransitRouterRouteTa bleId | TransitRouterRouteTableId is illegal. |
-| 400 | IllegalParam.TransitRo uterRouteEntryStatus | IllegalParam.TransitRouterRouteEn tryStatus | TransitRouterRouteEntryStatus is illegal. |
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | NextToken is illegal. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":6,
  "NextToken":"fce19****",
  "RequestId":"C3835E5E-1504-4344-B1BB-98A4110F1079",
@@ -3227,11 +3473,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "OperationalMode":false,
   "TransitRouterRouteEntryId":"rte-oklkgwmj97z6dn****",
   "TransitRouterRouteEntryStatus":"Active"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>6</TotalCount> <NextToken>fce19****</NextToken> <RequestId>C3835E5E-1504-4344-B1BB-98A4110F1079</RequestId> <MaxResults>20</MaxResults> <TransitRouterRouteEntries> <TransitRouterRouteEntryDestinationCidrBlock>192.168.0.0/24</TransitRouterRouteEntryDestinationCidrB
@@ -3255,16 +3499,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.TransitRo uterRouteTableId | IllegalParam.TransitRouterRouteTa bleId | TransitRouterRouteTableId is illegal. |
+| 400 | IllegalParam.TransitRo uterRouteEntryStatus | IllegalParam.TransitRouterRouteEn tryStatus | TransitRouterRouteEntryStatus is illegal. |
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | NextToken is illegal. |
+
 | 400 | ParamExclusive.Transi tRouterRouteEntryIds AndTransitRouterRout eEntryStatus | ParamExclusive.RouteEntryIdsAnd Status | TransitRouterRouteEntryIds and TransitRouterRouteEntryStatus is mutually exclusive. |
 |---|---|---|---|
 | 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
 | 404 | ROUTE TABLE NOT F _ _ _ OUND | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DeleteTransitRouterRouteEnt ry | The operation that you want to perform. Set the value to DeleteTransitRouterRoute Entry. |
-
-#### DeleteTransitRouterRouteEntry
+#### 1.9.4 DeleteTransitRouterRouteEntry
 
 Deletes a static route from a route table of a transit router.
 
@@ -3284,6 +3530,10 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DeleteTransitRouterRouteEnt ry | The operation that you want to perform. Set the value to DeleteTransitRouterRoute Entry. |
+
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 |---|---|---|---|---|---|
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. If the request passes the dry run, the route is deleted. true: performs only a dry run. The route is not deleted after the request passes the dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
@@ -3295,16 +3545,11 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRoute rRouteEntry NextHopId | String | Query | No | tr-attach-nls9fzkfat8934**** | The ID of the network instance connection that you want to specify as the next hop. |
 | TransitRoute rRouteTableI d | String | Query | No | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 2D69CCEA-42D0- 48B2-8C9A- 9BB207F76D6E | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-| 400 | InvalidTransitRouterR outeEntryId.NotFound | IllegalParam.TransitRouterRouteEn tryId | TransitRouterRouteEntryId is not found. |
-
-**Response parameters**
 
 **Examples**
 
@@ -3316,13 +3561,17 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterRouteEntry &Common request param
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>2D69CCEA-42D0-48B2-8C9A-9BB207F76D6E</RequestId>
@@ -3330,19 +3579,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
+| 400 | InvalidTransitRouterR outeEntryId.NotFound | IllegalParam.TransitRouterRouteEn tryId | TransitRouterRouteEntryId is not found. |
+
 | 400 | ParamExclusive.Route EntryIdAndTransitRou terRouteTableIdOrDes tCidrBlock | ParamExclusive.RouteEntryIdAndR outeTableIdOrDestCidrBlock | RouteEntryId and TransitRouterRouteTableIdOrDestC idrBlock is mutually exclusive. |
 |---|---|---|---|
 | 400 | InvalidTransitRouterR outeEntry.NotFound | IllegalParam.TransitRouterRouteEn tryId | TransitRouterRouteEntryId is not found. |
 
-| Paramete r | Type | Positio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListCenChildInstanceRouteE ntriesToAttachment | The operation that you want to perform. Set the value to ListCenChildInstanceRou teEntriesToAttachment . |
-| MaxResults | Integer | Query | No | 20 | The number of entries per page. Default value: 20 . |
-| NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first query and no subsequent queries are to be sent, ignore this parameter. If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results. |
-| CenId | String | Query | No | cen-dc4vwznpwbobrl**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-| ChildInstanc eRouteTabl eId | String | Query | Yes | vtb-bp174d1gje79u1g4t**** | The ID of the route table of the network instance. |
-
-### Routing
+### 1.10 Routing
 
 **1.10.1.**
 
@@ -3356,20 +3602,30 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
-| Developer Gui | de·API R | eferences |  |  | TransitRoute |
+| Paramete r | Type | Positio n | Required | Examples | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListCenChildInstanceRouteE ntriesToAttachment | The operation that you want to perform. Set the value to ListCenChildInstanceRou teEntriesToAttachment . |
+| MaxResults | Integer | Query | No | 20 | The number of entries per page. Default value: 20 . |
+| NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first query and no subsequent queries are to be sent, ignore this parameter. If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results. |
+| CenId | String | Query | No | cen-dc4vwznpwbobrl**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+| ChildInstanc eRouteTabl eId | String | Query | Yes | vtb-bp174d1gje79u1g4t**** | The ID of the route table of the network instance. |
+
+| Developer Gui | de·API R | eferences |   |   | TransitRoute |
 |---|---|---|---|---|---|
 
 | Paramete r | Type | Positio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | TransitRout erAttachme ntId | String | Query | Yes | tr-attach- r6g0m3epjehw57**** | The ID of the network instance connection. |
 | ServiceType | String | Query | No | TR | Specifies whether the route is hosted. If the parameter is empty, the route is not hosted. A value of TR indicates that the route is hosted on a transit router. |
-| RouteFilter | Repeat List | Query | No |  | The filter condition for the destination CIDR block. |
-| -Key | String |  | No | prefix-exact-match | The match mode of the route. Set the value to prefix-exact-match , which specifies exact match. |
-| -Value | Repeat List |  | No | 10.0.0.0/8 | The destination CIDR blocks. |
+| RouteFilter | Repeat List | Query | No |   | The filter condition for the destination CIDR block. |
+| -Key | String |   | No | prefix-exact-match | The match mode of the route. Set the value to prefix-exact-match , which specifies exact match. |
+| -Value | Repeat List |   | No | 10.0.0.0/8 | The destination CIDR blocks. |
+
+**Response parameters**
 
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
-| RouteEntry | Array |  | Detailed information about the route. |
+| RouteEntry | Array |   | Detailed information about the route. |
 | -CenId | String | cen- 9adwg6ghpq8oq4dp7 q | The ID of the CEN instance. |
 | - TransitRouterAtt achmentId | String | tr-attach- y463sghkkv1loe**** | The ID of the network instance connection. |
 | -Status | String | Available | The route status. Valid values: Available : The route is available. Pending : The route is being configured. Modifying : the route is being modified. |
@@ -3377,9 +3633,7 @@ This operation does not have operation-specific request headers and uses only co
 | - DestinationCidrB lock | String | 10.0.0.0/8 | The destination CIDR block of the route. |
 | - ChildInstanceRo uteTableId | String | vtb- bp1tlaj1c4nxr2t3e**** | The ID of the route table of the network instance. |
 
-**Response parameters**
-
-| TransitRouter |  |  | Developer Guide·API Reference |
+| TransitRouter |   |   | Developer Guide·API Reference |
 |---|---|---|---|
 
 | Parameter | Type | Examples | Description |
@@ -3397,8 +3651,13 @@ http(s)://[Endpoint]/?Action=ListCenChildInstanceRouteEntriesToAttachment &Child
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RouteEntry":{
   "TransitRouterAttachmentId":"tr-attach-y463sghkkv1loe****",
   "Status":"Available",
@@ -3406,13 +3665,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "CenId":"cen-9adwg6ghpq8oq4dp7q",
   "DestinationCidrBlock":"10.0.0.0/8",
   "ChildInstanceRouteTableId":"vtb-bp1tlaj1c4nxr2t3e****"
- },
- "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
- "RequestId":"530BC816-F575-412A-AAB2-435125D26328"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+ "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
+ "RequestId":"530BC816-F575-412A-AAB2-435125D26328"
+```
+
+`}` `XML` format
 
 ```xml
 <RouteEntry>
@@ -3441,12 +3703,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | INVALID OPERATION _ _ CBN INSTANCE STAT _ _ US | OperationFailed.CenInstanceStatus | The CEN instance is not in a valid state for the operation. |
 | 400 | ATTACHMENT NOT F _ _ OUND | ResourceNotFound.TransitRouterAt tachment | The specified TransitRouterAttachment does not exist. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeRouteConflict | The operation that you want to perform. Set the value to DescribeRouteConflict. |
-| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
-
-#### DescribeRouteConflict
+#### 1.10.2 DescribeRouteConflict
 
 Queries overlapping routes of a network instance.
 
@@ -3456,6 +3713,11 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DescribeRouteConflict | The operation that you want to perform. Set the value to DescribeRouteConflict. |
+| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
+
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. Default value: 10. Valid values: 1 to 50. |
 |---|---|---|---|---|---|
 | ChildInstanc eId | String | Query | Yes | vpc-rj9gt5nll27onu**** | The ID of the network instance that you want to query. |
@@ -3464,15 +3726,15 @@ This operation does not have operation-specific request headers and uses only co
 | ChildInstanc eRouteTable Id | String | Query | Yes | vtb-bp174d1gje79u1g4t**** | The ID of the route table that you want to query. |
 | DestinationC idrBlock | String | Query | No | 172.16.0.0/16 | The destination CIDR block of the overlapping route. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| RouteConflicts | Array |  | A list of overlapping routes. |
+| RouteConflicts | Array |   | A list of overlapping routes. |
 | - DestinationCidrB lock | String | 172.16.0.0/16 | The destination CIDR block of the overlapping route. |
 | -RegionId | String | cn-qingdao-env66- d01 | The region ID of the peer network instance on which the overlapping routes are found. |
 | -InstanceId | String | vpc- rj9gt5nll27onu**** | The ID of the peer network instance on which the overlapping routes are found. |
 | -InstanceType | String | VPC | The type of the peer network instance on which the conflicting routes are found. Valid values: VPC VBR |
-
-**Response parameters**
 
 | -Status | String | conflict | The cause of overlapping routes. Valid values: conflict: Routes have the same destination CIDR block. overflow: The number of routes in the route table configured on another network instance has reached the upper limit. |
 |---|---|---|---|
@@ -3491,8 +3753,13 @@ http(s)://[Endpoint]/?Action=DescribeRouteConflict &ChildInstanceId=vpc-rj9gt5nl
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"EE3A2CC7-41F1-58DB-8306-CFC99D9C747B",
@@ -3503,19 +3770,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "DestinationCidrBlock":"172.16.0.0/16",
   "RegionId":"cn-qingdao-env66-d01",
   "InstanceType":"VPC"
- }
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeCenRegionDomainR outeEntries | The operation that you want to perform. Set the value to DescribeCenRegionDomai nRouteEntries. |
-| CenId | String | Query | Yes | cen-7qthudw0ll6j**** | The ID of the CEN instance. |
-| CenRegionId | String | Query | Yes | cn-qingdao-env66-d01 | The region ID. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
-| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
-| PageSize | Integ er | Query | No | 10 | The number of entries per page. Default value: 10. Valid values: 1 to 50. |
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>EE3A2CC7-41F1-58DB-8306-CFC99D9C747B</RequestId> <PageNumber>1</PageNumber> <RouteConflicts>
@@ -3527,7 +3784,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </RouteConflicts>
 ```
 
-#### DescribeCenRegionDomainRouteEntries
+#### 1.10.3 DescribeCenRegionDomainRouteEntries
 
 Queries the routes of a Cloud Enterprise Network (CEN) instance in a region.
 
@@ -3537,23 +3794,31 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DescribeCenRegionDomainR outeEntries | The operation that you want to perform. Set the value to DescribeCenRegionDomai nRouteEntries. |
+| CenId | String | Query | Yes | cen-7qthudw0ll6j**** | The ID of the CEN instance. |
+| CenRegionId | String | Query | Yes | cn-qingdao-env66-d01 | The region ID. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
+| PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
+| PageSize | Integ er | Query | No | 10 | The number of entries per page. Default value: 10. Valid values: 1 to 50. |
+
 | Status | String | Query | No | Active | The route status. Valid values: Active (default): available routes Candidate: candidate routes Standby: standby routes Rejected: rejected routes Prohibited: prohibited routes All (default value): all routes in the current region |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| CenRouteEntries | Array |  | A list of routes. |
+| CenRouteEntries | Array |   | A list of routes. |
 | -AsPaths | Normal | 65501 | The AS path of the route. |
 | -Communities | Normal | 65501:1 | The community attributes of the route. |
-| - CenRouteMapRe cords | Array |  | The routing policy that the route matches in the inbound direction. |
+| - CenRouteMapRe cords | Array |   | The routing policy that the route matches in the inbound direction. |
 | --RegionId | String | cn-qingdao-env66- d01 | The region ID of the routing policy. |
 | --RouteMapId | String | cenrmap- dbarzidzp7ek4k**** | The routing policy ID. |
-| - CenOutRouteMa pRecords | Array |  | The routing policy that the route matches in the outbound direction. |
+| - CenOutRouteMa pRecords | Array |   | The routing policy that the route matches in the outbound direction. |
 | --RegionId | String | cn-qingdao-env66- d01 | The region ID of the routing policy. |
 | --RouteMapId | String | cenrmap- dbarzidzp7ek4k**** | The routing policy ID. |
 | - DestinationCidrB lock | String | 192.168.1.0/24 | The destination CIDR block of the route. |
-
-**Response parameters**
 
 | -Type | String | CEN | The route type. Valid values: CEN: the route that is advertised by CEN Custom: a custom route System: a system route |
 |---|---|---|---|
@@ -3578,8 +3843,13 @@ http(s)://[Endpoint]/?Action=DescribeCenRegionDomainRouteEntries &CenId=cen-7qth
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":4,
  "PageSize":10,
  "RequestId":"004E99FB-E996-5777-888E-BA1D8F215407",
@@ -3595,26 +3865,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "-CenRouteMapRecords":{
    "RegionId":"cn-qingdao-env66-d01",
    "RouteMapId":"cenrmap-cz5axczdxb7yfu****"
-  },
+```
+
+`},`
+
+```json
   "AsPaths":"65501",
   "DestinationCidrBlock":"192.168.1.0/24",
   "NextHopInstanceId":"vpc-bp1j8728mm6pweeod****",
   "-CenOutRouteMapRecords":{
    "RegionId":"cn-qingdao-env66-d01",
    "RouteMapId":"cenrmap-dbarzidzp7ek4k****"
-  }
- }
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeCenChildInstanceRo uteEntries | The operation that you want to perform. Set the value to DescribeCenChildInstance RouteEntries. |
-| CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the CEN instance. |
-| ChildInstanc eId | String | Query | Yes | vpc-bp18sth14qii3pnvo**** | The ID of the network instance. |
-| ChildInstanc eType | String | Query | Yes | VPC | The type of the network instance. Valid values: VPC: virtual private cloud (VPC) VBR: virtual border router (VBR) |
+`}` `}` `}` `XML` format
 
 ```xml
 <TotalCount>4</TotalCount> <PageSize>10</PageSize> <RequestId>004E99FB-E996-5777-888E-BA1D8F215407</RequestId> <PageNumber>1</PageNumber> <CenRouteEntries>
@@ -3639,7 +3903,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </CenRouteEntries>
 ```
 
-#### DescribeCenChildInstanceRouteEntries
+#### 1.10.4 DescribeCenChildInstanceRouteEntries
 
 Queries the routes of a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
 
@@ -3649,23 +3913,30 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DescribeCenChildInstanceRo uteEntries | The operation that you want to perform. Set the value to DescribeCenChildInstance RouteEntries. |
+| CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the CEN instance. |
+| ChildInstanc eId | String | Query | Yes | vpc-bp18sth14qii3pnvo**** | The ID of the network instance. |
+| ChildInstanc eType | String | Query | Yes | VPC | The type of the network instance. Valid values: VPC: virtual private cloud (VPC) VBR: virtual border router (VBR) |
+
 | Status | String | Query | No | Active | The route status. Valid values: Active: available routes Candidate: candidate routes Standby: standby routes Rejected: rejected routes Prohibited: prohibited routes All (default value): all routes |
 |---|---|---|---|---|---|
 | PageNumber | Integ er | Query | No | 1 | The number of the page to return. Default value: 1. |
 | PageSize | Integ er | Query | No | 10 | The number of entries per page. Default value: 10. Valid values: 1 to 50. |
 | ChildInstanc eRegionId | String | Query | No | cn-qingdao-env66-d01 | The ID of the region where the network instance is deployed. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| CenRouteEntries | Array |  | The information about the routes. |
+| CenRouteEntries | Array |   | The information about the routes. |
 | -Communities | Normal | 65501:1 | The community attributes of the routes. |
 | -AsPaths | Normal | 65501 | The AS path of the routes. |
-| - CenRouteMapRe cords | Array |  | The routing policy that the routes match. |
+| - CenRouteMapRe cords | Array |   | The routing policy that the routes match. |
 | --RouteMapId | String | cenrmap- w4yf7toozfol3q**** | The routing policy ID. |
 | --RegionId | String | cn-qingdao-env66- d01 | The region ID of the peer network instance on which the overlapping routes are found. |
-| -Conflicts | Array |  | A list of overlapping routes. |
-
-**Response parameters**
+| -Conflicts | Array |   | A list of overlapping routes. |
 
 | --Status | String | conflict | The cause of the overlapping routes. Valid values: conflict: The routes have the same destination CIDR block. overflow: The number of routes in the route table configured on another network instance has reached the upper limit. |
 |---|---|---|---|
@@ -3701,8 +3972,13 @@ http(s)://[Endpoint]/?Action=DescribeCenChildInstanceRouteEntries &CenId=cen-7qt
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":4,
  "PageSize":10,
  "RequestId":"17A57456-EF48-419D-9AE6-9B03D9996018",
@@ -3717,7 +3993,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "DestinationCidrBlock":"192.168.1.0/24",
    "RegionId":"cn-qingdao-env66-d01",
    "InstanceType":"VBR"
-  },
+```
+
+`},`
+
+```json
   "DestinationCidrBlock":"10.0.0.0/24",
   "OperationalMode":true,
   "NextHopInstanceId":"vbr-bp13gtbhdp0pfqg6s****",
@@ -3727,19 +4007,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "-CenRouteMapRecords":{
    "RegionId":"cn-qingdao-env66-d01",
    "RouteMapId":"cenrmap-w4yf7toozfol3q****"
-  },
-  "AsPaths":"65501",
-  "PublishStatus":"Published"
- }
-}
 ```
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | UpdateTransitRouterRouteTa ble | The operation that you want to perform. Set the value to UpdateTransitRouterRout eTable. |
-| TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
+`},`
 
-`XML` format
+```json
+  "AsPaths":"65501",
+  "PublishStatus":"Published"
+```
+
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>4</TotalCount> <PageSize>10</PageSize> <RequestId>17A57456-EF48-419D-9AE6-9B03D9996018</RequestId> <PageNumber>1</PageNumber> <CenRouteEntries>
@@ -3768,9 +4045,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </CenRouteEntries>
 ```
 
-### Custom route tables
+### 1.11 Custom route tables
 
-#### UpdateTransitRouterRouteTable
+#### 1.11.1 UpdateTransitRouterRouteTable
 
 Modifies the name and description of a route table that belongs to a transit router.
 
@@ -3780,23 +4057,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | UpdateTransitRouterRouteTa ble | The operation that you want to perform. Set the value to UpdateTransitRouterRout eTable. |
+| TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
+
 | TransitRoute rRouteTable Name | String | Query | No | testname | The new name of the route table. The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ - _ |
 |---|---|---|---|---|---|
 | TransitRoute rRouteTable Description | String | Query | No | testdesc | The new description of the route table. The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ -. You _ can also leave the description empty. |
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9D6D5548-F271- 41C4-AA9F- A62F5599085B | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
-| 400 | InvalidName | InvalidName | Name is invalid. |
-| 400 | InvalidDescription | InvalidDescription | Description is invalid. |
-
-**Response parameters**
 
 **Examples**
 
@@ -3808,13 +4084,17 @@ http(s)://[Endpoint]/?Action=UpdateTransitRouterRouteTable &TransitRouterRouteTa
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"9D6D5548-F271-41C4-AA9F-A62F5599085B"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"9D6D5548-F271-41C4-AA9F-A62F5599085B"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>9D6D5548-F271-41C4-AA9F-A62F5599085B</RequestId>
@@ -3822,13 +4102,25 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### DeleteTransitRouterRouteTable
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
+| 400 | InvalidName | InvalidName | Name is invalid. |
+| 400 | InvalidDescription | InvalidDescription | Description is invalid. |
+
+#### 1.11.2 DeleteTransitRouterRouteTable
 
 Deletes a custom route table of a transit router.
 
 **Usage notes**
 
-You cannot delete the default route table of a transit router. Before you delete a custom route table, make sure that the following requirements are met: The route table is not associated with an associated forwarding correlation. For more information about how to delete an associated forwarding correlation, see DissociateTransitRouterAttachmentFromRouteTable. The route table is not associated with a route learning policy. For more information about how to delete a route learning correlation, see DisableTransitRouterRouteTablePropagation.
+You cannot delete the default route table of a transit router. Before you delete a custom route table, make sure that the following requirements are met: The route table is not associated with an associated forwarding correlation. For more information about how to delete an associated forwarding correlation, see DissociateTransitRouterAttachmentFromRouteTable. The route table is not associated with a route learning policy. For more information about how to delete a route learning correlation, see DisableTransitRouterRouteTablePropagation. The route table does not contain a custom route. For more information about how to delete a custom route, see DeleteTransitRouterRouteEntry.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -3837,27 +4129,11 @@ You cannot delete the default route table of a transit router. Before you delete
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the request. true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 | TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1xbcgpgcz9axl9m**** | The ID of the custom route table. |
 
-The route table does not contain a custom route. For more information about how to delete a custom route, see DeleteTransitRouterRouteEntry.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | EAB2F133-8556- 4D7C-9E91- 7EE4FE9CC7D2 | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | OperationFailed.Delet eSystemRouteTable | OperationFailed.DeleteSystemRout eTable | Operation failed because You are not allowed to Delete System Transit Route Table. |
-| 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
-| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-| 400 | MissingParam.Transit RouterRouteTableId | MissingParam.TransitRouterRouteT ableId | The parameter TransitRouterRouteTableId is mandatory. |
-| 400 | IncorrectStatus.Transi tRouterRouteTable | IncorrectStatus.TransitRouterRoute Table | TransitRouterRouteTable status is invalid. |
-
-**Response parameters**
 
 **Examples**
 
@@ -3869,13 +4145,17 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterRouteTable &TransitRouterRouteTa
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"EAB2F133-8556-4D7C-9E91-7EE4FE9CC7D2"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"EAB2F133-8556-4D7C-9E91-7EE4FE9CC7D2"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>EAB2F133-8556-4D7C-9E91-7EE4FE9CC7D2</RequestId>
@@ -3883,19 +4163,20 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | OperationFailed.Delet eSystemRouteTable | OperationFailed.DeleteSystemRout eTable | Operation failed because You are not allowed to Delete System Transit Route Table. |
+| 400 | InvalidTransitRouterR outeTableId.NotFound | InvalidTransitRouterRouteTableId.N otFound | TransitRouterRouteTableId is not found. |
+| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
+| 400 | MissingParam.Transit RouterRouteTableId | MissingParam.TransitRouterRouteT ableId | The parameter TransitRouterRouteTableId is mandatory. |
+| 400 | IncorrectStatus.Transi tRouterRouteTable | IncorrectStatus.TransitRouterRoute Table | TransitRouterRouteTable status is invalid. |
+
 | 400 | OperationFailed.Delet eRouteTableWithAsso ciation | OperationFailed.DeleteRouteTable WithAssociation | Operation failed because you are not allowed to delete TransitRouterRouteTable with association |
 |---|---|---|---|
 | 400 | OperationFailed.Delet eRouteTableWithProp agation | OperationFailed.DeleteRouteTable WithPropagation | Operation failed because you are not allowed to delete transit router route table with propagation |
 | 400 | OperationFailed.Delet eRouteTableWithRout eEntry | OperationFailed.DeleteRouteTable WithRouteEntry | Operation failed because you are not allowed to delete transit touter route table with route entry |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | ListTransitRouterRouteTables | The operation that you want to perform. Set the value to ListTransitRouterRouteTa bles. |
-| MaxResults | Integ er | Query | No | 20 | The number of entries per page. Valid values: 1 to 100. Default value: 20. |
-| NextToken | String | Query | No | dd20**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
-| TransitRoute rRouteTable Type | String | Query | No | Custom | The type of route table. Valid values: Custom: custom route table System: default route table |
-
-#### ListTransitRouterRouteTables
+#### 1.11.3 ListTransitRouterRouteTables
 
 Queries the route tables of a transit router.
 
@@ -3905,21 +4186,30 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | ListTransitRouterRouteTables | The operation that you want to perform. Set the value to ListTransitRouterRouteTa bles. |
+| MaxResults | Integ er | Query | No | 20 | The number of entries per page. Valid values: 1 to 100. Default value: 20. |
+| NextToken | String | Query | No | dd20**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
+| TransitRoute rRouteTable Type | String | Query | No | Custom | The type of route table. Valid values: Custom: custom route table System: default route table |
+
 | TransitRoute rId | String | Query | Yes | tr-uf654ttymmljlvh2x**** | The ID of the transit router. |
 |---|---|---|---|---|---|
 | TransitRoute rRouteTable Status | String | Query | No | Active | The state of the route table. Valid values: Valid values: Creating: The route table is being created. Deleting: The route table is being deleted. Active: The route table is available. |
 | TransitRoute rRouteTable Names | Repea tList | Query | No | testname | The name of the route table. You can query at most 20 route tables in each call. If you specify both the TransitRouterRouteT ableNames and TransitRouterRouteT ableIds parameters, make sure that the specified name and ID belong to the same route table. |
 | TransitRoute rRouteTableI ds | Repea tList | Query | No | vtb-bp1l8awdb4iuo9uwu**** | The ID of the route table. You can query at most 20 route tables in each call. |
-| Tag | Repea tList | Query | No |  | The tags. You can specify at most 20 tags in each call. |
-| -Key | String |  | No | test | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys. |
+| Tag | Repea tList | Query | No |   | The tags. You can specify at most 20 tags in each call. |
+| -Key | String |   | No | test | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify at most 20 tag keys. |
 
-| -Value | String |  | No | test | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
+| -Value | String |   | No | test | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify at most 20 tag values in each call. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterRo uteTables | Array |  | A list of route tables. |
-| -Tags | Array |  | The tags. |
+| TransitRouterRo uteTables | Array |   | A list of route tables. |
+| -Tags | Array |   | The tags. |
 | --Key | String | test | The tag key. |
 | --Value | String | test | The tag value. |
 | - TransitRouterRo uteTableStatus | String | Active | The state of the route table. Valid values: Creating: The route table is being created. Deleting: The route table is being deleted. Active: The route table is available. |
@@ -3927,8 +4217,6 @@ This operation does not have operation-specific request headers and uses only co
 | -CreateTime | String | 2021-03-15T09:39Z | The time when the route table was created. The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in Coordinated Universal Time (UTC). |
 | - TransitRouterRo uteTableId | String | vtb- bp1dudbh2d5na6b50 **** | The ID of the route table. |
 | - TransitRouterRo uteTableName | String | testname | The name of the route table. |
-
-**Response parameters**
 
 | - TransitRouterRo uteTableDescript ion | String | testdesc | The description of the route table. |
 |---|---|---|---|
@@ -3947,8 +4235,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterRouteTables &TransitRouterId=tr-uf
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"dd20****",
  "RequestId":"82678F4A-C9F7-4CC1-8BF0-D619A63BFC57",
@@ -3960,24 +4253,22 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "-Tags":{
    "Value":"test",
    "Key":"test"
-  },
-  "CreateTime":"2021-03-15T09:39Z",
-  "TransitRouterRouteTableName":"testname"
- },
- "MaxResults":20
-}
 ```
 
-`XML` format
+`},`
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | NextToken is illegal |
-| 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | TransitRouterId is not found. |
+```json
+  "CreateTime":"2021-03-15T09:39Z",
+  "TransitRouterRouteTableName":"testname"
+```
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | CreateTransitRouterRouteTa ble | The operation that you want to perform. Set the value to CreateTransitRouterRoute Table. |
+`},`
+
+```json
+ "MaxResults":20
+```
+
+`}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>dd20****</NextToken> <RequestId>82678F4A-C9F7-4CC1-8BF0-D619A63BFC57</RequestId> <TransitRouterRouteTables>
@@ -3996,7 +4287,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### CreateTransitRouterRouteTable
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | NextToken is illegal |
+| 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | TransitRouterId is not found. |
+
+#### 1.11.4 CreateTransitRouterRouteTable
 
 Creates a custom route table for a transit router.
 
@@ -4006,6 +4302,10 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | CreateTransitRouterRouteTa ble | The operation that you want to perform. Set the value to CreateTransitRouterRoute Table. |
+
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 |---|---|---|---|---|---|
 | TransitRoute rRouteTable Name | String | Query | No | testname | The name of the custom route table. The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ -. _ |
@@ -4014,26 +4314,18 @@ This operation does not have operation-specific request headers and uses only co
 
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run. Valid values: false (default): performs a dry run and sends the request. true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 |---|---|---|---|---|---|
-| Tag | Repea tList | Query | No |  | The tags. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | test | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
-| -Value | String |  | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| Tag | Repea tList | Query | No |   | The tags. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | test | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| -Value | String |   | No | tagtest | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | TransitRouterRo uteTableId | String | vtb- bp1xbcgpgcz9axl9m* *** | The ID of the custom route table. |
 |---|---|---|---|
 | RequestId | String | 599904C8-A3DA- 4E5F-83B6- D5364E664247 | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | TransitRouterId is not found |
-| 400 | OperationFailed.CCNT rNotSupport | OperationFailed.CCNTrNotSupport | Operation failed because the CCN transit router does not support route table. |
-| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-| 400 | MissingParam.Transit RouterId | MissingParam.TransitRouterId | The parameter TransitrouterId is mandatory. |
-| 400 | OperationFailed.Basic TrNotSupport | OperationFailed.BasicTrNotSupport | Operation failed because the Basic TransitRouter does not support RouteTable |
 
 **Examples**
 
@@ -4045,14 +4337,18 @@ http(s)://[Endpoint]/?Action=CreateTransitRouterRouteTable &TransitRouterId=tr-b
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "TransitRouterRouteTableId":"vtb-bp1xbcgpgcz9axl9m****",
- "RequestId":"599904C8-A3DA-4E5F-83B6-D5364E664247"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "TransitRouterRouteTableId":"vtb-bp1xbcgpgcz9axl9m****",
+ "RequestId":"599904C8-A3DA-4E5F-83B6-D5364E664247"
+```
+
+`}` `XML` format
 
 ```xml
 <TransitRouterRouteTableId>vtb-bp1xbcgpgcz9axl9m****</TransitRouterRouteTableId> <RequestId>599904C8-A3DA-4E5F-83B6-D5364E664247</RequestId>
@@ -4060,18 +4356,19 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidTransitRouterId .NotFound | InvalidTransitRouterId.NotFound | TransitRouterId is not found |
+| 400 | OperationFailed.CCNT rNotSupport | OperationFailed.CCNTrNotSupport | Operation failed because the CCN transit router does not support route table. |
+| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
+| 400 | MissingParam.Transit RouterId | MissingParam.TransitRouterId | The parameter TransitrouterId is mandatory. |
+| 400 | OperationFailed.Basic TrNotSupport | OperationFailed.BasicTrNotSupport | Operation failed because the Basic TransitRouter does not support RouteTable |
+
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouter | TransitRouter status is invalid. |
 |---|---|---|---|
 | 400 | QuotaExceeded.Transi tRouterRoutTable | QuotaExceeded.TransitRouterRout Table | TransitRouterRoutTable quota exceeded. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DisableTransitRouterRouteTa blePropagation | The operation that you want to perform. Set the value to DisableTransitRouterRout eTablePropagation. |
-| TransitRoute rAttachment Id | String | Query | Yes | tr-attach-vx6iwhjr1x1j78**** | The ID of the network instance connection. |
-| TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
-| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
-
-### Route learning
+### 1.12 Route learning
 
 **1.12.1.**
 
@@ -4085,17 +4382,21 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DisableTransitRouterRouteTa blePropagation | The operation that you want to perform. Set the value to DisableTransitRouterRout eTablePropagation. |
+| TransitRoute rAttachment Id | String | Query | Yes | tr-attach-vx6iwhjr1x1j78**** | The ID of the network instance connection. |
+| TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
+| ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
+
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | A7C43F99-B1E5- 4A53-AB64- 4BAE8AF4484E | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-
-**Response parameters**
 
 **Examples**
 
@@ -4107,13 +4408,17 @@ http(s)://[Endpoint]/?Action=DisableTransitRouterRouteTablePropagation &TransitR
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"A7C43F99-B1E5-4A53-AB64-4BAE8AF4484E"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"A7C43F99-B1E5-4A53-AB64-4BAE8AF4484E"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>A7C43F99-B1E5-4A53-AB64-4BAE8AF4484E</RequestId>
@@ -4121,23 +4426,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+
 | 400 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
 |---|---|---|---|
 | 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListTransitRouterRouteTableP ropagations | The operation that you want to perform. Set the value to ListTransitRouterRouteTa blePropagations. |
-| MaxResults | Integ er | Query | No | 50 | The number of entries per page. Default value: 50. |
-| NextToken | String | Query | No | dd20**** | The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. |
-| TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
-| TransitRoute rAttachment Id | String | Query | No | tr-attach-vx6iwhjr1x1j78**** | The ID of the network instance connection. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| TransitRouterPro pagations | Array |  | A list of route learning correlations. |
-
-#### ListTransitRouterRouteTablePropagations
+#### 1.12.2 ListTransitRouterRouteTablePropagations
 
 Queries the route learning correlations of a route table that belongs to a transit router.
 
@@ -4147,7 +4443,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListTransitRouterRouteTableP ropagations | The operation that you want to perform. Set the value to ListTransitRouterRouteTa blePropagations. |
+| MaxResults | Integ er | Query | No | 50 | The number of entries per page. Default value: 50. |
+| NextToken | String | Query | No | dd20**** | The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. |
+| TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
+| TransitRoute rAttachment Id | String | Query | No | tr-attach-vx6iwhjr1x1j78**** | The ID of the network instance connection. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| TransitRouterPro pagations | Array |   | A list of route learning correlations. |
 
 | -Status | String | Active | The status of the route learning correlation. Valid values: Enabling Disabling Active |
 |---|---|---|---|
@@ -4170,16 +4478,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterRouteTablePropagations &TransitRou
 
 Sample success responses `JSON` format
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The parameter NextToken is invalid. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | EnableTransitRouterRouteTa blePropagation | The operation that you want to perform. Set the value to EnableTransitRouterRout eTablePropagation. |
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":2,
  "NextToken":"dd20****",
  "RequestId":"04C81E0D-945E-4D61-A561-3DEA322F243B",
@@ -4190,11 +4495,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "TransitRouterRouteTableId":"vtb-bp1dudbh2d5na6b50****",
   "ResourceId":"vpc-bp1h8vbrbcgohcju5****",
   "ResourceType":"VPC"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>2</TotalCount> <NextToken>dd20****</NextToken> <RequestId>04C81E0D-945E-4D61-A561-3DEA322F243B</RequestId> <MaxResults>50</MaxResults> <TransitRouterPropagations>
@@ -4208,7 +4511,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### EnableTransitRouterRouteTablePropagation
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The parameter NextToken is invalid. |
+
+#### 1.12.3 EnableTransitRouterRouteTablePropagation
 
 Creates a route learning correlation.
 
@@ -4218,27 +4525,23 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | EnableTransitRouterRouteTa blePropagation | The operation that you want to perform. Set the value to EnableTransitRouterRout eTablePropagation. |
+
 | TransitRoute rAttachment Id | String | Query | Yes | tr-attach-nls9fzkfat8934**** | The ID of the network instance connection. |
 |---|---|---|---|---|---|
 | TransitRoute rRouteTableI d | String | Query | Yes | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | RequestId | String | 59CF8BF9-DE61- 421E-B903- D56AF46A303C | The request ID. |
 |---|---|---|---|
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
-| 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
 
 **Examples**
 
@@ -4250,13 +4553,17 @@ http(s)://[Endpoint]/?Action=EnableTransitRouterRouteTablePropagation &TransitRo
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"59CF8BF9-DE61-421E-B903-D56AF46A303C"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"59CF8BF9-DE61-421E-B903-D56AF46A303C"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>59CF8BF9-DE61-421E-B903-D56AF46A303C</RequestId>
@@ -4264,7 +4571,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-### Associated forwarding
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
+| 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
+
+### 1.13 Associated forwarding
 
 **1.13.1.**
 
@@ -4278,6 +4590,9 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | Action | String | Query | No | DissociateTransitRouterAttac hmentFromRouteTable | The operation that you want to perform. Set the value to DissociateTransitRouterAt tachmentFromRouteTable . |
 |---|---|---|---|---|---|
 | TransitRoute rAttachment Id | String | Query | Yes | tr-attach-nls9fzkfat8934**** | The ID of the network instance connection. |
@@ -4285,17 +4600,11 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and sends the request. true: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the system returns the ID of the request. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74- 4534-BD0E- 403F3EE64CAF | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IncorrectStatus.Status | IncorrectStatus.Status | RouteTableAssociation status is invalid. |
-| 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
-| 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4307,13 +4616,17 @@ http(s)://[Endpoint]/?Action=DissociateTransitRouterAttachmentFromRouteTable &Tr
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"4EC47282-1B74-4534-BD0E-403F3EE64CAF"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"4EC47282-1B74-4534-BD0E-403F3EE64CAF"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId>
@@ -4321,7 +4634,13 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### ListTransitRouterRouteTableAssociations
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IncorrectStatus.Status | IncorrectStatus.Status | RouteTableAssociation status is invalid. |
+| 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
+| 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
+
+#### 1.13.2 ListTransitRouterRouteTableAssociations
 
 Queries the associated forwarding correlations that are created for a route table of a transit router or a network instance connection.
 
@@ -4329,7 +4648,13 @@ Queries the associated forwarding correlations that are created for a route tabl
 
 When you call ListTransitRouterRouteTableAssociations, you must set at least one of the
 **TransitRouterRouteTableId** and **TransitRouterAttachmentId** parameters.
-To query the network instance connections that are in an associated forwarding relationship with a transit router route table, specify only the **TransitRouterRouteTableId** parameter.
+To query the network instance connections that are in an associated forwarding relationship with a transit router route table, specify only the **TransitRouterRouteTableId** parameter. To query the transit router route table that is in an associated forwarding relationship with a network instance connection, specify only the **TransitRouterAttachmentId** parameter. To query the associated forwarding correlations between network instance connections and transit router route tables, specify both the **TransitRouterRouteTableId** and **TransitRouterAttachmentId** parameters. If an associated forwarding correlation is created between the network instance connection and the route table of the Enterprise Edition transit router, the information about the associated forwarding correlation is returned. If no associated forwarding correlation is created between the network instance connection and the route table of the Enterprise Edition transit router, **TransitRouterAssociations** in the response is empty.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4339,20 +4664,12 @@ To query the network instance connections that are in an associated forwarding r
 | TransitRoute rRouteTableI d | String | Query | No | vtb-bp1dudbh2d5na6b50**** | The ID of the route table of the transit router. |
 | TransitRoute rAttachment Id | String | Query | No | tr-attach-nls9fzkfat8934**** | The ID of the network instance connection. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-To query the transit router route table that is in an associated forwarding relationship with a network instance connection, specify only the **TransitRouterAttachmentId** parameter. To query the associated forwarding correlations between network instance connections and transit router route tables, specify both the **TransitRouterRouteTableId** and **TransitRouterAttachmentId** parameters. If an associated forwarding correlation is created between the network instance connection and the route table of the Enterprise Edition transit router, the information about the associated forwarding correlation is returned. If no associated forwarding correlation is created between the network instance connection and the route table of the Enterprise Edition transit router, **TransitRouterAssociations** in the response is empty.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| TransitRouterAss ociations | Array |  | A list of associated forwarding correlations. |
+| TransitRouterAss ociations | Array |   | A list of associated forwarding correlations. |
 |---|---|---|---|
 | - TransitRouterAtt achmentId | String | tr-attach- nls9fzkfat8934**** | The ID of the network instance connection. |
 | -Status | String | Associating | The status of the associated forwarding correlation. Valid values: Active Associating Dissociating |
@@ -4374,15 +4691,13 @@ http(s)://[Endpoint]/?Action=ListTransitRouterRouteTableAssociations &Common req
 
 Sample success responses `JSON` format
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The parameter NextToken is invalid. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "NextToken":"a415****",
  "RequestId":"F6B1D9AB-176D-4399-801D-8BC576F4EB0D",
@@ -4393,11 +4708,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "TransitRouterRouteTableId":"vtb-bp1dudbh2d5na6b50****",
   "ResourceId":"vpc-bp1h8vbrbcgohcju5****",
   "ResourceType":"VPC"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <NextToken>a415****</NextToken> <RequestId>F6B1D9AB-176D-4399-801D-8BC576F4EB0D</RequestId> <MaxResults>50</MaxResults> <TransitRouterAssociations>
@@ -4410,6 +4723,10 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```
 
 **Error codes**
+
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The parameter NextToken is invalid. |
 
 **1.13.3.**
 
@@ -4427,6 +4744,9 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | Action | String | Query | No | AssociateTransitRouterAttach mentWithRouteTable | The operation that you want to perform. Set the value to AssociateTransitRouterAt tachmentWithRouteTable. |
 |---|---|---|---|---|---|
 | TransitRoute rAttachment Id | String | Query | Yes | tr-attach-nls9fzkfat8934**** | The ID of the network instance connection. |
@@ -4434,17 +4754,11 @@ This operation does not have operation-specific request headers and uses only co
 | ClientToken | String | Query | No | 02fb3da4-130e-11e9-8e44- 001**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform only a dry run, without performing the actual request. Valid values: false (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. true: performs only a dry run. If you use this value, the system checks whether the required parameters are set, and whether the request syntax is valid. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4EC47282-1B74- 4534-BD0E- 403F3EE64CAF | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | AssociationExist.Trans itRouterTable | AssociationExist.TransitRouterTabl e | The specified association already exists. |
-| 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
-| 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4456,13 +4770,17 @@ http(s)://[Endpoint]/?Action=AssociateTransitRouterAttachmentWithRouteTable &Tra
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"4EC47282-1B74-4534-BD0E-403F3EE64CAF"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"4EC47282-1B74-4534-BD0E-403F3EE64CAF"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF</RequestId>
@@ -4470,15 +4788,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-### Multicast
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | AssociationExist.Trans itRouterTable | AssociationExist.TransitRouterTabl e | The specified association already exists. |
+| 404 | InvalidRouteTableId.N otFound | InvalidRouteTableId.NotFound | The specified RouteTableId is not found. |
+| 404 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
 
-#### CreateTransitRouterMulticastDomain
+### 1.14 Multicast
+
+#### 1.14.1 CreateTransitRouterMulticastDomain
 
 A multicast domain is created.
 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4490,22 +4816,47 @@ This operation does not have operation-specific request headers and uses only co
 | TransitRoute rMulticastDo mainName | String | Query | No | nametest | The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores ( ), and hyphens _ (-). |
 | TransitRoute rMulticastDo mainDescrip tion | String | Query | No | desctest | The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores ( ), and hyphens _ (-). |
 
-**Request parameters**
-
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without performing the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error message is returned. false (default): performs a dry run and sends the request. |
 |---|---|---|---|---|---|
-| Tag | Repea tList | Query | No |  | The information about the tag. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | TagKey | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
-| -Value | String |  | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| Tag | Repea tList | Query | No |   | The information about the tag. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | TagKey | The tag key. The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| -Value | String |   | No | TagValue | The tag value. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TransitRouterMul ticastDomainId | String | tr-mcast-domain- 40cwj0rgzgdtam**** | The ID of the multicast domain. |
 
-**Response parameters**
-
 | RequestId | String | 94E19C6F-206F-5223- 9A63-64B85851BC04 | The request ID. |
 |---|---|---|---|
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateTransitRouterMulticastDomain &Action=CreateTransitRouterMulticastDomain &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"94E19C6F-206F-5223-9A63-64B85851BC04",
+ "TransitRouterMulticastDomainId":"tr-mcast-domain-40cwj0rgzgdtam****"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>94E19C6F-206F-5223-9A63-64B85851BC04</RequestId> <TransitRouterMulticastDomainId>tr-mcast-domain-40cwj0rgzgdtam**** </TransitRouterMulticastDomainId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4517,31 +4868,6 @@ This operation does not have operation-specific request headers and uses only co
 | 400 | INVALID OPERATION _ _ TRANSITROUTER NOT _ EXIST _ | InvalidOperation.TransitRouterNotE xist | Operation is invalid because the transit router not exist. |
 | 400 | INVALID OPERATION _ _ CBN INSTANCE STAT _ _ US | InvalidOperation.CENInstanceStatu s | The CEN instance is not in a valid state for the operation. |
 
-**Example**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=CreateTransitRouterMulticastDomain &Action=CreateTransitRouterMulticastDomain &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"94E19C6F-206F-5223-9A63-64B85851BC04",
- "TransitRouterMulticastDomainId":"tr-mcast-domain-40cwj0rgzgdtam****"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>94E19C6F-206F-5223-9A63-64B85851BC04</RequestId> <TransitRouterMulticastDomainId>tr-mcast-domain-40cwj0rgzgdtam****
-```
-
-**Error codes**
-
 | 400 | IncorrectStatus.Transi tRouterInstance | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
 |---|---|---|---|
 | 400 | OperationUnsupporte d.TransitRouterType | OperationUnsupported.TransitRout erType | The specified TransitRouterType does not support the operation. |
@@ -4552,11 +4878,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouter | The status of TransitRouter is incorrect. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | ModifyTransitRouterMulticast Domain | The operation that you want to perform. Set the value to ModifyTransitRouterMulti castDomain. |
-
-#### ModifyTransitRouterMulticastDomain
+#### 1.14.2 ModifyTransitRouterMulticastDomain
 
 Modifies the name and description of a multicast domain.
 
@@ -4565,6 +4887,10 @@ Modifies the name and description of a multicast domain.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
 
 **Request parameters**
+
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | ModifyTransitRouterMulticast Domain | The operation that you want to perform. Set the value to ModifyTransitRouterMulti castDomain. |
 
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 4266**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
 |---|---|---|---|---|---|
@@ -4575,11 +4901,11 @@ This operation does not have operation-specific request headers and uses only co
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. This parameter is not in use. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 26273D23-5CB0- 5EFC-AF5F- 78A5448084C9 | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -4591,13 +4917,23 @@ http(s)://[Endpoint]/?Action=ModifyTransitRouterMulticastDomain &TransitRouterMu
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"26273D23-5CB0-5EFC-AF5F-78A5448084C9"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"26273D23-5CB0-5EFC-AF5F-78A5448084C9"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>26273D23-5CB0-5EFC-AF5F-78A5448084C9</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4606,19 +4942,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidTransitRouterM ulticastDomainId.NotF ound | InvalidMulticastDomainId.NotFound | The specified MulticastDomainId is not found. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | ListTransitRouterMulticastDo mains | The operation that you want to perform. Set the value to ListTransitRouterMulticastDo mains. |
-| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426655440000 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
-| CenId | String | Query | No | cen-a7syd349kne38g**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-
-```xml
-<RequestId>26273D23-5CB0-5EFC-AF5F-78A5448084C9</RequestId>
-```
-
-**Error codes**
-
-#### ListTransitRouterMulticastDomains
+#### 1.14.3 ListTransitRouterMulticastDomains
 
 Queries the information about multicast domains.
 
@@ -4633,22 +4957,30 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | ListTransitRouterMulticastDo mains | The operation that you want to perform. Set the value to ListTransitRouterMulticastDo mains. |
+| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426655440000 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
+| CenId | String | Query | No | cen-a7syd349kne38g**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+
 | TransitRoute rId | String | Query | No | tr-p0wr9p28r92d598y6**** | The ID of the transit router. |
 |---|---|---|---|---|---|
 | TransitRoute rMulticastDo mainId | String | Query | No | tr-mcast-domain- 3r3bvbypxqheej**** | The ID of the multicast domain. |
 | RegionId | String | Query | No | cn-qingdao-env17e-d01 | The region ID of the transit router. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 | MaxResults | Long | Query | No | 20 | The number of entries per page. Default value: 20. |
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXGK Pd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first query and no subsequent queries are to be sent, ignore this parameter. If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results. |
-| Tag | Repea tList | Query | No |  | The information about the tag. You can specify up to 20 tags in each call. |
-| -Key | String |  | No | TagKey | The tag keys. The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
+| Tag | Repea tList | Query | No |   | The information about the tag. You can specify up to 20 tags in each call. |
+| -Key | String |   | No | TagKey | The tag keys. The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . You can specify up to 20 tag keys. |
 
-| -Value | String |  | No | TagValue | The tag values. The tag values can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
+| -Value | String |   | No | TagValue | The tag values. The tag values can be an empty string. It can be up to 128 characters in length, and cannot contain http:// or https:// . It cannot start with aliyun or acs: . Each tag key must have a unique tag value. You can specify up to 20 tag values in each call. |
 |---|---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterMul ticastDomains | Array |  | The information about the multicast domain. |
-| -Tags | Array |  | The tags. |
+| TransitRouterMul ticastDomains | Array |   | The information about the multicast domain. |
+| -Tags | Array |   | The tags. |
 | --Key | String | TagKey | The tag key. |
 | --Value | String | TagValue | The tag value. |
 | - TransitRouterMul ticastDomainId | String | tr-mcast-domain- 3r3bvbypxqheej**** | The ID of the multicast domain. |
@@ -4657,8 +4989,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Status | String | Active | The status of the multicast domain. The valid value is Active, which indicates that the multicast domain is available. |
 | -TransitRouterId | String | tr- bp1c23ijrl6d6c226h** * | The ID of the transit router. |
 | RequestId | String | 8A0F93D1-FD6C- 56FC-B6D2- 668FC92D12D2 | The request ID. |
-
-**Response parameters**
 
 | TotalCount | Integer | 1 | The total number of entries returned. |
 |---|---|---|---|
@@ -4675,26 +5005,51 @@ http(s)://[Endpoint]/?Action=ListTransitRouterMulticastDomains &Common request p
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "RequestId":"8A0F93D1-FD6C-56FC-B6D2-668FC92D12D2",
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "MaxResults":20,
+ "TransitRouterMulticastDomains":{
   "Status":"Active",
   "-Tags":{
    "Value":"TagValue",
    "Key":"TagKey"
-  },
+```
+
+`},`
+
+```json
   "TransitRouterMulticastDomainId":"tr-mcast-domain-3r3bvbypxqheej****",
   "TransitRouterMulticastDomainName":"nametest",
   "TransitRouterMulticastDomainDescription":"desctest",
   "TransitRouterId":"tr-bp1c23ijrl6d6c226h***"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
+
+```xml
+<TotalCount>1</TotalCount> <RequestId>8A0F93D1-FD6C-56FC-B6D2-668FC92D12D2</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults> <TransitRouterMulticastDomains>
+ <Status>Active</Status>
+ <-Tags>
+  <Value>TagValue</Value>
+  <Key>TagKey</Key>
+ </-Tags>
+ <TransitRouterMulticastDomainId>tr-mcast-domain-3r3bvbypxqheej****
+</TransitRouterMulticastDomainId>
+ <TransitRouterMulticastDomainName>nametest</TransitRouterMulticastDomainName>
+ <TransitRouterMulticastDomainDescription>desctest</TransitRouterMulticastDomainDescription>
+ <TransitRouterId>tr-bp1c23ijrl6d6c226h***</TransitRouterId>
+</TransitRouterMulticastDomains>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4702,26 +5057,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TrInstance is illegal. |
 | 400 | IllegalParam.CenId | IllegalParam.CenId | The specified CenId is illegal. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | DeleteTransitRouterMulticast Domain | The operation that you want to perform. Set the value to DeleteTransitRouterMulti castDomain. |
-
-```xml
-<TotalCount>1</TotalCount> <RequestId>8A0F93D1-FD6C-56FC-B6D2-668FC92D12D2</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults>
- <Status>Active</Status>
- <-Tags>
-  <Value>TagValue</Value>
-  <Key>TagKey</Key>
- </-Tags>
- <TransitRouterMulticastDomainId>tr-mcast-domain-3r3bvbypxqheej****
- <TransitRouterMulticastDomainName>nametest</TransitRouterMulticastDomainName>
- <TransitRouterMulticastDomainDescription>desctest</TransitRouterMulticastDomainDescription>
- <TransitRouterId>tr-bp1c23ijrl6d6c226h***</TransitRouterId>
-```
-
-**Error codes**
-
-#### DeleteTransitRouterMulticastDomain
+#### 1.14.4 DeleteTransitRouterMulticastDomain
 
 Deletes a multicast domain.
 
@@ -4735,18 +5071,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | DeleteTransitRouterMulticast Domain | The operation that you want to perform. Set the value to DeleteTransitRouterMulti castDomain. |
+
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 4266**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
 |---|---|---|---|---|---|
 | TransitRoute rMulticastDo mainId | String | Query | Yes | tr-mcast-domain- 40cwj0rgzgdtam**** | The ID of the multicast domain. |
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a only dry run, without performing the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and sends the request. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 40194E53-2484- 5831-BB53- E11D123C1A32 | The request ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -4755,6 +5093,24 @@ http(s)://[Endpoint]/?Action=DeleteTransitRouterMulticastDomain &TransitRouterMu
 ```
 
 Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"40194E53-2484-5831-BB53-E11D123C1A32"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>40194E53-2484-5831-BB53-E11D123C1A32</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4767,21 +5123,7 @@ Sample success responses `JSON` format
 | 400 | INVALID OPERATION _ _ MULTICAST DOMAIN I _ _ N GROUP _ | InvalidOperation.MulticastDomainI nGroup | Operation is invalid because multicast domain has registered as multicast group member. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"40194E53-2484-5831-BB53-E11D123C1A32"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>40194E53-2484-5831-BB53-E11D123C1A32</RequestId>
-```
-
-**Error codes**
-
-#### AssociateTransitRouterMulticastDomain
+#### 1.14.5 AssociateTransitRouterMulticastDomain
 
 Associates the vSwitch of a virtual private cloud (VPC) with a multicast domain.
 
@@ -4790,6 +5132,10 @@ Associates the vSwitch of a virtual private cloud (VPC) with a multicast domain.
 A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch is not associated with other multicast domains. For more information about how to disassociate a vSwitch from a multicast domain, see DisassociateTransitRouterMulticastDomain. The VPC of the vSwitch must be associated with a transit router. For more information, see CreateTransitRouterVpcAttachment.
 
 **Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -4800,13 +5146,37 @@ A vSwitch can be associated with only one multicast domain. Make sure that the v
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without performing the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error message is returned. false (default): performs a dry run and sends the request. |
 | VSwitchIds | Repea tList | Query | No | vsw-p0wxk12u6okfkr8xy**** | The IDs of the vSwitches. You can specify at most five vSwitches in each call. A multicast domain can be associated with at most 10 vSwitches. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F88AC12C-943B- 50E9-A344- 4F8820BB07A7 | The request ID. |
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=AssociateTransitRouterMulticastDomain &TransitRouterMulticastDomainId=tr-mcast-domain-91wpg6wbhchjeq**** &TransitRouterAttachmentId=tr-attach-g3kz2k3u76amsk**** &Action=AssociateTransitRouterMulticastDomain &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"F88AC12C-943B-50E9-A344-4F8820BB07A7"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>F88AC12C-943B-50E9-A344-4F8820BB07A7</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -4817,32 +5187,6 @@ This operation does not have operation-specific request headers and uses only co
 | 400 | IncorrectStatus.Attach ment | IncorrectStatus.Attachment | The status of Attachment is incorrect. |
 | 400 | MissingParam.VSwitch Ids | MissingParam.VSwitchIds | The parameter VSwitchIds is mandatory. |
 
-**Response parameters**
-
-**Example**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=AssociateTransitRouterMulticastDomain &TransitRouterMulticastDomainId=tr-mcast-domain-91wpg6wbhchjeq**** &TransitRouterAttachmentId=tr-attach-g3kz2k3u76amsk**** &Action=AssociateTransitRouterMulticastDomain &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"F88AC12C-943B-50E9-A344-4F8820BB07A7"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>F88AC12C-943B-50E9-A344-4F8820BB07A7</RequestId>
-```
-
-**Error codes**
-
 | 400 | INSTANCE NOT EXIST _ _ | InstanceNotExist | The instance is not exist. |
 |---|---|---|---|
 | 400 | OperationUnsupporte d.CLOUD BOX VPC N _ _ _ OT SUPPORT _ | OperationUnsupported.CloudBoxVp c | The specified CloudBoxVpc does not support the operation. |
@@ -4851,11 +5195,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 | 400 | OperationFailed.- 100118 | OperationUnsupported.VpcRegion | The specified Region is not support for this operation. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | DisassociateTransitRouterMul ticastDomain | The operation that you want to perform. Set the value to DisassociateTransitRouter MulticastDomain. |
-
-#### DisassociateTransitRouterMulticastDomain
+#### 1.14.6 DisassociateTransitRouterMulticastDomain
 
 Disassociates vSwitches from a multicast domain.
 
@@ -4869,6 +5209,10 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | DisassociateTransitRouterMul ticastDomain | The operation that you want to perform. Set the value to DisassociateTransitRouter MulticastDomain. |
+
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426655440000 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
 |---|---|---|---|---|---|
 | TransitRoute rMulticastDo mainId | String | Query | Yes | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast domain. |
@@ -4876,23 +5220,13 @@ This operation does not have operation-specific request headers and uses only co
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. |
 | VSwitchIds | Repea tList | Query | No | vsw-p0w9s2ig1jnwgrbzl**** | The vSwitch IDs. You can specify at most five vSwitch IDs in each call. This parameter is required. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | RequestId | String | 6F6B3FF0-45D1- 5416-B189- C45A42A0222B | The request ID. |
 |---|---|---|---|
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidMulticastDomai nId.NotFound | InvalidMulticastDomainId.NotFound | The specified MulticastDomainId is not found. |
-| 400 | IncorrectStatus.Multic astDomain | IncorrectStatus.MulticastDomain | The status of MulticastDomain is incorrect. |
-| 400 | INSTANCE STATUS N _ _ OT SUPPORT _ | InstanceStatusNotSupport | The status of instance not support the operation. |
-| 400 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
-| 400 | IncorrectStatus.Attach ment | IncorrectStatus.Attachment | The status of Attachment is incorrect. |
-| 400 | IllegalParam.Attachm entId | IllegalParam.AttachmentId | The specified AttachmentId is illegal. |
-| 400 | INVALID OPERATION _ _ MULTICAST GROUP E _ _ XIST | InvalidOperation.MulticastGroupExi st | Operation is invalid because multicast groups exist. |
 
 **Examples**
 
@@ -4904,13 +5238,17 @@ http(s)://[Endpoint]/?Action=DisassociateTransitRouterMulticastDomain &TransitRo
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"6F6B3FF0-45D1-5416-B189-C45A42A0222B"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"6F6B3FF0-45D1-5416-B189-C45A42A0222B"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>6F6B3FF0-45D1-5416-B189-C45A42A0222B</RequestId>
@@ -4918,16 +5256,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidMulticastDomai nId.NotFound | InvalidMulticastDomainId.NotFound | The specified MulticastDomainId is not found. |
+| 400 | IncorrectStatus.Multic astDomain | IncorrectStatus.MulticastDomain | The status of MulticastDomain is incorrect. |
+| 400 | INSTANCE STATUS N _ _ OT SUPPORT _ | InstanceStatusNotSupport | The status of instance not support the operation. |
+| 400 | InvalidAttachmentId.N otFound | InvalidAttachmentId.NotFound | The specified AttachmentId is not found. |
+| 400 | IncorrectStatus.Attach ment | IncorrectStatus.Attachment | The status of Attachment is incorrect. |
+| 400 | IllegalParam.Attachm entId | IllegalParam.AttachmentId | The specified AttachmentId is illegal. |
+| 400 | INVALID OPERATION _ _ MULTICAST GROUP E _ _ XIST | InvalidOperation.MulticastGroupExi st | Operation is invalid because multicast groups exist. |
+
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 |---|---|---|---|
-
-| Paramete r | Type | Positio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | ListTransitRouterMulticastD omainAssociations | The operation that you want to perform. Set the value to ListTransitRouterMultica stDomainAssociations . |
-| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 4266**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
-| TransitRout erMulticast DomainId | String | Query | No | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast domain. |
-| TransitRout erAttachme ntId | String | Query | No | tr-attach- p90y3ymbbwuvy5**** | The ID of the network instance connection. |
-| ResourceTy pe | String | Query | No | VPC | The type of resource associated with the multicast domain. Valid value: VPC . |
 
 **1.14.7.**
 
@@ -4941,7 +5281,11 @@ You must specify at least one of the **TransitRouterMulticastDomainId** and
 
 **TransitRouterAttachmentId**
 
-parameters. To query the information about the vSwitches in a VPC that are associated with a multicast domain, specify the **TransitRouterAttachmentId** parameter. To query the information about the vSwitches that are associated with a multicast domain, specify the parameter.
+parameters. To query the information about the vSwitches in a VPC that are associated with a multicast domain, specify the **TransitRouterAttachmentId** parameter. To query the information about the vSwitches that are associated with a multicast domain, specify the
+
+**TransitRouterMulticastDomainId**
+
+parameter.
 
 **Request headers**
 
@@ -4951,20 +5295,28 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Examples | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | Yes | ListTransitRouterMulticastD omainAssociations | The operation that you want to perform. Set the value to ListTransitRouterMultica stDomainAssociations . |
+| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 4266**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
+| TransitRout erMulticast DomainId | String | Query | No | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast domain. |
+| TransitRout erAttachme ntId | String | Query | No | tr-attach- p90y3ymbbwuvy5**** | The ID of the network instance connection. |
+| ResourceTy pe | String | Query | No | VPC | The type of resource associated with the multicast domain. Valid value: VPC . |
+
+| Paramete r | Type | Positio n | Required | Examples | Description |
+|---|---|---|---|---|---|
 | ResourceId | String | Query | No | vpc-p0w9alkte4w2htrqe**** | The ID of the resource associated with the multicast domain. |
 | MaxResults | Long | Query | No | 20 | The number of entries per page. Default value: 20 . |
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXG KPd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
 | VSwitchIds | Repeat List | Query | No | vsw-p0w9s2ig1jnwgrbzl**** | The vSwitch IDs. You can specify at most 20 vSwitch IDs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| TransitRouterMul ticastAssociation s | Array |  | The information about the resource associated with the multicast domain. |
+| TransitRouterMul ticastAssociation s | Array |   | The information about the resource associated with the multicast domain. |
 | - TransitRouterMul ticastDomainId | String | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast domain. |
 | - TransitRouterAtt achmentId | String | tr-attach- p90y3ymbbwuvy5**** | The ID of the network instance connection. |
 | -VSwitchId | String | vsw- p0wxk12u6okfkr8xy** ** | The vSwitch ID. |
 | -Status | String | Dissociating | The status of the associated resource. Valid values: Associated : The resource is associated with the multicast domain. Associating : The resource is being associated with the multicast domain. Dissociating : The resource is being disassociated from the multicast domain. |
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4986,14 +5338,15 @@ http(s)://[Endpoint]/?Action=ListTransitRouterMulticastDomainAssociations &Commo
 
 Sample success responses `JSON` format
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is illegal. |
-| 400 | IllegalParam.TransitRo uterMulticastDomainI d | IllegalParam.TransitRouterMulticas tDomainId | The specified TransitRouterMulticastDomainId is illegal. |
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
+ "TransitRouterMulticastAssociations":{
   "TransitRouterAttachmentId":"tr-attach-p90y3ymbbwuvy5****",
   "Status":"Dissociating",
   "ResourceId":"vpc-p0w9b7g9l90yofr0n****",
@@ -5001,28 +5354,37 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "VSwitchId":"vsw-p0wxk12u6okfkr8xy****",
   "ResourceType":"VPC",
   "ResourceOwnerId":1210123456123456
- },
+```
+
+`},`
+
+```json
  "RequestId":"1CD0969B-A605-5D2D-BFF0-699FD182FB7F",
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "MaxResults":20
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
-<TotalCount>1</TotalCount>
+<TotalCount>1</TotalCount> <TransitRouterMulticastAssociations>
  <TransitRouterAttachmentId>tr-attach-p90y3ymbbwuvy5****</TransitRouterAttachmentId>
  <Status>Dissociating</Status>
  <ResourceId>vpc-p0w9b7g9l90yofr0n****</ResourceId>
  <TransitRouterMulticastDomainId>tr-mcast-domain-91wpg6wbhchjeq****
+</TransitRouterMulticastDomainId>
  <VSwitchId>vsw-p0wxk12u6okfkr8xy****</VSwitchId>
  <ResourceType>VPC</ResourceType>
  <ResourceOwnerId>1210123456123456</ResourceOwnerId>
-<RequestId>1CD0969B-A605-5D2D-BFF0-699FD182FB7F</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults>
+</TransitRouterMulticastAssociations> <RequestId>1CD0969B-A605-5D2D-BFF0-699FD182FB7F</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults>
 ```
 
 **Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is illegal. |
+| 400 | IllegalParam.TransitRo uterMulticastDomainI d | IllegalParam.TransitRouterMulticas tDomainId | The specified TransitRouterMulticastDomainId is illegal. |
 
 **1.14.8.**
 
@@ -5034,6 +5396,12 @@ Creates a multicast source.
 
 You can specify only elastic network interfaces (ENIs) as multicast sources. Before you call RegisterTransitRouterMulticastGroupSources, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see AssociateTransitRouterMulticastDomain.
 
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
+
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
 | Action | String | Query | Yes | RegisterTransitRouterMultica stGroupSources | The operation that you want to perform. Set the value to RegisterTransitRouterMul ticastGroupSources. |
@@ -5041,24 +5409,16 @@ You can specify only elastic network interfaces (ENIs) as multicast sources. Bef
 | TransitRoute rMulticastDo mainId | String | Query | Yes | tr-mcast-domain- 5mjb5gjb6dgu98**** | The ID of the multicast group to which the multicast source belongs. |
 | GroupIpAddr ess | String | Query | Yes | 239.XX.XX.2 | The IP address of the multicast group to which the multicast source belongs. Valid values: 224.0.0.1 to 239.255.255.254. If the multicast group does not exist in the multicast domain, the system automatically creates the multicast group in the multicast domain. |
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. |
 |---|---|---|---|---|---|
 | VpcId | String | Query | No | vpc-wz9fusm6zq8uy7cfa**** | The ID of the VPC to which the ENI belongs. If the ENI belongs to the current Alibaba Cloud account, ignore this parameter. If the ENI belongs to a different Alibaba Cloud account, you must set this parameter. |
 | NetworkInter faceIds | Repea tList | Query | No | eni-p0w92o2wupc3c05t**** | The ENI IDs. This parameter is required. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 9C5D5D70-0AFF- 5E5C-8D8A- E92C90C8FB08 | The request ID. |
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -5067,6 +5427,24 @@ http(s)://[Endpoint]/?Action=RegisterTransitRouterMulticastGroupSources &Transit
 ```
 
 Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"9C5D5D70-0AFF-5E5C-8D8A-E92C90C8FB08"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>9C5D5D70-0AFF-5E5C-8D8A-E92C90C8FB08</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5082,31 +5460,10 @@ Sample success responses `JSON` format
 | 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ ASSOCIATION NOT EX _ _ IST | InvalidOperation.MulticastDomainA ssociationNotExist | Operation is invalid because multicast association domain association not exist. |
 | 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ ASSOCIATION STATUS _ | InvalidOperation.MulticastDomainA ssociationStatus | Operation is invalid, due to multicast domain association not Active. |
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"9C5D5D70-0AFF-5E5C-8D8A-E92C90C8FB08"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>9C5D5D70-0AFF-5E5C-8D8A-E92C90C8FB08</RequestId>
-```
-
-**Error codes**
-
 | 400 | QUOTA FULL MULTIC _ _ AST GROUP PER DO _ _ _ MAIN | QuotaFull.MulticastGroupPerDomai n | The number of multicast group has exceed the maximum value that can be created. |
 |---|---|---|---|
 | 400 | QUOTA FULL MULTIC _ _ AST SOURCE PER GR _ _ _ OUP | QuotaFull.MulticastSourcePerGroup | The number of multicast group source has exceed the maximum value that can be created. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-
-| Parameter | Type | Positi on | Required | Examples | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | DeregisterTransitRouterMulti castGroupSources | The operation that you want to perform. Set the value to DeregisterTransitRouterM ulticastGroupSources. |
-| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 4266**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
-| TransitRoute rMulticastDo mainId | String | Query | Yes | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast group to which the multicast source belongs. |
-| GroupIpAddr ess | String | Query | Yes | 239.XX.XX.2 | The IP address of the multicast group to which the multicast source belongs. |
 
 **1.14.9.**
 
@@ -5120,15 +5477,22 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Examples | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | DeregisterTransitRouterMulti castGroupSources | The operation that you want to perform. Set the value to DeregisterTransitRouterM ulticastGroupSources. |
+| ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 4266**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
+| TransitRoute rMulticastDo mainId | String | Query | Yes | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast group to which the multicast source belongs. |
+| GroupIpAddr ess | String | Query | Yes | 239.XX.XX.2 | The IP address of the multicast group to which the multicast source belongs. |
+
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a dry run, without sending the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. |
 |---|---|---|---|---|---|
 | NetworkInter faceIds | Repea tList | Query | No | eni-p0weuda3lszwzjly**** | The IDs of the multicast sources that you want to delete. You can delete at most five multicast sources from a multicast group in each call. This parameter is required. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 53E7E8BE-7F4E- 5458-ACCA- 9B5C1D6A642D | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -5140,13 +5504,23 @@ http(s)://[Endpoint]/?Action=DeregisterTransitRouterMulticastGroupSources &Trans
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"53E7E8BE-7F4E-5458-ACCA-9B5C1D6A642D"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"53E7E8BE-7F4E-5458-ACCA-9B5C1D6A642D"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>53E7E8BE-7F4E-5458-ACCA-9B5C1D6A642D</RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5154,16 +5528,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ STATUS | InvalidOperation.MulticastDomainS tatus | Operation is invalid, due to multicast domain not Active. |
 | 400 | IncorrectStatus.Multic astGroup | IncorrectStatus.MulticastGroup | The status of MulticastGroup is incorrect. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | Yes | RegisterTransitRouterMultica stGroupMembers | The operation that you want to perform. Set the value to RegisterTransitRouterMul ticastGroupMembers. |
-
-```xml
-<RequestId>53E7E8BE-7F4E-5458-ACCA-9B5C1D6A642D</RequestId>
-```
-
-**Error codes**
 
 **1.14.10.**
 
@@ -5181,6 +5545,10 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | Yes | RegisterTransitRouterMultica stGroupMembers | The operation that you want to perform. Set the value to RegisterTransitRouterMul ticastGroupMembers. |
+
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426655440000 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request. |
 |---|---|---|---|---|---|
 | TransitRoute rMulticastDo mainId | String | Query | Yes | tr-mcast-domain- 91wpg6wbhchjeq**** | The ID of the multicast domain to which the multicast members belong. |
@@ -5191,16 +5559,11 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | NetworkInter faceIds | Repea tList | Query | No | eni-p0weuda3lszwzjly**** | The ENI ID. You can specify multiple ENIs in each call. Make sure that the total number of specified ENIs and multicast domains does not exceed five. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | EB985B7E-2CF8- 5EC9-A7DB- F7C82ABD3ACE | The request ID. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-
-**Response parameters**
-
-**Example**
 
 Sample requests
 
@@ -5210,19 +5573,26 @@ http(s)://[Endpoint]/?Action=RegisterTransitRouterMulticastGroupMembers &Transit
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"EB985B7E-2CF8-5EC9-A7DB-F7C82ABD3ACE"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"EB985B7E-2CF8-5EC9-A7DB-F7C82ABD3ACE"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>EB985B7E-2CF8-5EC9-A7DB-F7C82ABD3ACE</RequestId>
 ```
 
 **Error codes**
+
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
 
 | 400 | IllegalParam.GroupIpA ddress | IllegalParam.GroupIpAddress | The specified GroupIpAddress is illegal. |
 |---|---|---|---|
@@ -5252,9 +5622,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | QUOTA FULL MULTIC _ _ AST PEER MEMBER P _ _ _ ER GROUP _ | QuotaFull.MulticastPeerMemberPer Group | The number of multicast group member peer domain has exceed the maximum value that can be created. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-
 **1.14.11.**
 
 #### DeregisterTransitRouterMulticastGroupMembers
@@ -5267,6 +5634,9 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | Action | String | Query | Yes | DeregisterTransitRouterMulti castGroupMembers | The operation that you want to perform. Set the value to DeregisterTransitRouterM ulticastGroupMembers. |
 |---|---|---|---|---|---|
 | ClientToken | String | Query | No | 123e4567-e89b-12d3-a456- 426655440000 | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. |
@@ -5275,22 +5645,13 @@ This operation does not have operation-specific request headers and uses only co
 | DryRun | Boole an | Query | No | false | Specifies whether to perform a only dry run, without performing the actual request. Valid values: true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned. false (default): performs a dry run and performs the actual request. |
 | NetworkInter faceIds | Repea tList | Query | No | eni-p0weuda3lszwzjly**** | The IDs of ENIs. You can delete multiple ENIs at a time. Make sure that you specify 5 ENIs or less. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | RequestId | String | 61D0A553-5E4E- 53B5-9DA3- 01CBA076A286 | The request ID. |
 |---|---|---|---|
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidTransitRouterM ulticastDomainId.NotF ound | InvalidTransitRouterMulticastDoma inId.NotFound | The specified TransitRouterMulticastDomainId is not found. |
-| 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ STATUS | InvalidOperation.MulticastDomainS tatus | Operation is invalid, due to multicast domain not Active. |
-| 400 | IncorrectStatus.Multic astGroup | IncorrectStatus.MulticastGroup | The status of MulticastGroup is incorrect. |
-| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
-
-**Example**
 
 Sample requests
 
@@ -5300,13 +5661,17 @@ http(s)://[Endpoint]/?Action=DeregisterTransitRouterMulticastGroupMembers &Trans
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"61D0A553-5E4E-53B5-9DA3-01CBA076A286"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"61D0A553-5E4E-53B5-9DA3-01CBA076A286"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>61D0A553-5E4E-53B5-9DA3-01CBA076A286</RequestId>
@@ -5314,13 +5679,26 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-#### ListTransitRouterMulticastGroups
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidTransitRouterM ulticastDomainId.NotF ound | InvalidTransitRouterMulticastDoma inId.NotFound | The specified TransitRouterMulticastDomainId is not found. |
+| 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ STATUS | InvalidOperation.MulticastDomainS tatus | Operation is invalid, due to multicast domain not Active. |
+| 400 | IncorrectStatus.Multic astGroup | IncorrectStatus.MulticastGroup | The status of MulticastGroup is incorrect. |
+| 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
+
+#### 1.14.12 ListTransitRouterMulticastGroups
 
 Queries the multicast sources and members in a multicast domain.
 
 **Usage notes**
 
-You can call the ListTransitRouterMulticastGroups operation to query the multicast sources and members in a multicast domain. Multicast sources and members are also known as multicast resources. If you set **GroupIpAddress**, the system queries multicast resources in the multicast domain by multicast group.
+You can call the ListTransitRouterMulticastGroups operation to query the multicast sources and members in a multicast domain. Multicast sources and members are also known as multicast resources. If you set **GroupIpAddress**, the system queries multicast resources in the multicast domain by multicast group. If you set **VSwitchIds**, the system queries multicast resources in the multicast domain by vSwitch. If you set **ResourceType**, the system queries the multicast resources of the specified type in the multicast domain. If you set **ResourceId**, the system queries multicast resources by resource. If you set only **TransitRouterMulticastDomainId**, the system queries all the multicast resources in the multicast domain.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -5332,14 +5710,6 @@ You can call the ListTransitRouterMulticastGroups operation to query the multica
 | ResourceTyp e | String | Query | No | VPC | The type of the multicast resource. Set the value to VPC to query multicast resources in a VPC. |
 | ResourceId | String | Query | No | vpc-p0w9alkte4w2htrqe**** | The ID of the resource associated with the multicast resource. |
 
-If you set **VSwitchIds**, the system queries multicast resources in the multicast domain by vSwitch. If you set **ResourceType**, the system queries the multicast resources of the specified type in the multicast domain. If you set **ResourceId**, the system queries multicast resources by resource. If you set only **TransitRouterMulticastDomainId**, the system queries all the multicast resources in the multicast domain.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
 | MaxResults | Long | Query | No | 20 | The number of entries per page. Default value: 20. |
 |---|---|---|---|---|---|
 | NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXGK Pd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first query and no subsequent queries are to be sent, ignore this parameter. If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results. |
@@ -5348,11 +5718,11 @@ This operation does not have operation-specific request headers and uses only co
 | VSwitchIds | Repea tList | Query | No | vsw-p0w9s2ig1jnwgrbzl**** | The IDs of the vSwitches. You can specify at most 20 IDs. |
 | NetworkInter faceIds | Repea tList | Query | No | eni-p0weuda3lszwzjly**** | The IDs of ENIs. You can specify up to 20 ENIs. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
-| TransitRouterMul ticastGroups | Array |  | A list of multicast groups. |
-
-**Response parameters**
+| TransitRouterMul ticastGroups | Array |   | A list of multicast groups. |
 
 | -GroupIpAddress | String | 239.XX.XX.2 | The IP address of the multicast group to which the multicast resource belongs. |
 |---|---|---|---|
@@ -5385,12 +5755,18 @@ http(s)://[Endpoint]/?Action=ListTransitRouterMulticastGroups &Common request pa
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "RequestId":"FB3C4A16-0933-5850-9D43-0C3EA37BCBFB",
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "MaxResults":20,
+ "TransitRouterMulticastGroups":{
   "TransitRouterAttachmentId":"tr-attach-g3kz2k3u76amsk****",
   "Status":"Registered",
   "GroupMember":true,
@@ -5406,22 +5782,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "ResourceId":"vpc-p0w9alkte4w2htrqe****",
   "TransitRouterMulticastDomainId":"tr-mcast-domain-kx0vk0v7fz8kx4****",
   "GroupSource":false
- }
-}
 ```
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is illegal. |
-| 400 | IllegalParam.TransitRo uterMulticastDomainI d | IllegalParam.TransitRouterMulticas tDomainId | The specified TransitRouterMulticastDomainId is illegal. |
-
-| Parameter | Type | Positi on | Required | Examples | Description |
-|---|---|---|---|---|---|
-
-`XML` format
+`}` `}` `XML` format
 
 ```xml
-<TotalCount>1</TotalCount> <RequestId>FB3C4A16-0933-5850-9D43-0C3EA37BCBFB</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults>
+<TotalCount>1</TotalCount> <RequestId>FB3C4A16-0933-5850-9D43-0C3EA37BCBFB</RequestId> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <MaxResults>20</MaxResults> <TransitRouterMulticastGroups>
  <TransitRouterAttachmentId>tr-attach-g3kz2k3u76amsk****</TransitRouterAttachmentId>
  <Status>Registered</Status>
  <GroupMember>true</GroupMember>
@@ -5433,15 +5799,23 @@ HTTP/1.1 200 OK Content-Type:application/json {
  <ResourceOwnerId>1250123456123456</ResourceOwnerId>
  <GroupIpAddress>239.XX.XX.2</GroupIpAddress>
  <PeerTransitRouterMulticastDomainId>tr-mcast-domain-91wpg6wbhchjeq****
+</PeerTransitRouterMulticastDomainId>
  <MemberType>Static</MemberType>
  <ResourceId>vpc-p0w9alkte4w2htrqe****</ResourceId>
  <TransitRouterMulticastDomainId>tr-mcast-domain-kx0vk0v7fz8kx4****
+</TransitRouterMulticastDomainId>
  <GroupSource>false</GroupSource>
+</TransitRouterMulticastGroups>
 ```
 
 **Error codes**
 
-#### ListGrantVSwitchEnis
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is illegal. |
+| 400 | IllegalParam.TransitRo uterMulticastDomainI d | IllegalParam.TransitRouterMulticas tDomainId | The specified TransitRouterMulticastDomainId is illegal. |
+
+#### 1.14.13 ListGrantVSwitchEnis
 
 Queries the information about elastic network interfaces (ENIs) that can serve as multicast sources or multicast members in a virtual private cloud (VPC).
 
@@ -5455,15 +5829,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Examples | Description |
+|---|---|---|---|---|---|
+
 | Action | String | Query | Yes | ListGrantVSwitchEnis | The operation that you want to perform. Set the value to ListGrantVSwitchEnis. |
 |---|---|---|---|---|---|
 | CenId | String | Query | Yes | cen-a7syd349kne38g**** | The ID of the Cloud Enterprise Network (CEN) instance to which the VPC is attached. |
 | VpcId | String | Query | Yes | vpc-p0w9alkte4w2htrqe**** | The VPC ID. |
 | VSwitchId | String | Query | Yes | vsw-p0w9s2ig1jnwgrbzl**** | The ID of a vSwitch in the VPC. You can specify only one vSwitch in each call. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
-| GrantVSwitchEni s | Array |  | The information about the ENI. |
+| GrantVSwitchEni s | Array |   | The information about the ENI. |
 | -VpcId | String | vpc- p0w9alkte4w2htrqe** ** | The VPC ID. |
 | -VSwitchId | String | vsw- p0w9s2ig1jnwgrbzl*** * | The vSwitch ID. |
 | - NetworkInterface Id | String | eni- p0w172vv82kxzb49** ** | The ENI ID. |
@@ -5471,14 +5850,6 @@ This operation does not have operation-specific request headers and uses only co
 | - TransitRouterFla g | Boolean | false | Indicates whether the ENI is created by a transit router. Valid values: true false ENIs that are created by transit routers cannot be used as multicast sources or members. |
 | RequestId | String | DBFE1736-2F33- 5309-9954- 875B11E9519D | The request ID. |
 | TotalCount | String | 6 | The total number of entries returned. |
-
-**Response parameters**
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidCenId.NotFoun d | InvalidCenId.NotFound | The specified CenId is not found. |
-| 400 | InvalidVpcId.NotFound | InvalidVpcId.NotFound | The specified VpcId is not found. |
-| 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ ASSOCIATION NOT EX _ _ IST | InvalidOperation.MulticastDomainA ssociationNotExist | Operation is invalid because multicast association domain association not exist. |
 
 **Examples**
 
@@ -5490,8 +5861,13 @@ http(s)://[Endpoint]/?Action=ListGrantVSwitchEnis &CenId=cen-a7syd349kne38g**** 
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":"6",
  "RequestId":"DBFE1736-2F33-5309-9954-875B11E9519D",
  "GrantVSwitchEnis":{
@@ -5500,11 +5876,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "VpcId":"vpc-p0w9alkte4w2htrqe****",
   "VSwitchId":"vsw-p0w9s2ig1jnwgrbzl****",
   "NetworkInterfaceId":"eni-p0w172vv82kxzb49****"
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>6</TotalCount> <RequestId>DBFE1736-2F33-5309-9954-875B11E9519D</RequestId> <GrantVSwitchEnis>
@@ -5518,18 +5892,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | ListTransitRouterMulticastDo mainVSwitches | The operation that you want to perform. Set the value to ListTransitRouterMulticas tDomainVSwitches. |
-| CenId | String | Query | Yes | cen-44m0p68spvlrqq**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-| VpcId | String | Query | Yes | vpc-p0wr1cd4fcuxy3ui0**** | The VPC ID. |
-| MaxResults | Integ er | Query | No | 20 | The number of entries per page. Minimum value: 0. Default value: 20. |
-| NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXGK Pd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
-| VSwitchIds | Repea tList | Query | No | The vSwitch IDs. | The vSwitch IDs. You can specify at most 50 vSwitch IDs in each call. |
-
-| Parameter | Type | Example | Description |
+| HttpCode | Error code | Error message | Description |
 |---|---|---|---|
-| VSwitchIds | String | vsw- p0w5ejr9bzfsttiza**** | The vSwitch IDs. |
+| 400 | InvalidCenId.NotFoun d | InvalidCenId.NotFound | The specified CenId is not found. |
+| 400 | InvalidVpcId.NotFound | InvalidVpcId.NotFound | The specified VpcId is not found. |
+| 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ ASSOCIATION NOT EX _ _ IST | InvalidOperation.MulticastDomainA ssociationNotExist | Operation is invalid because multicast association domain association not exist. |
 
 **1.14.14.**
 
@@ -5543,17 +5910,26 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | ListTransitRouterMulticastDo mainVSwitches | The operation that you want to perform. Set the value to ListTransitRouterMulticas tDomainVSwitches. |
+| CenId | String | Query | Yes | cen-44m0p68spvlrqq**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+| VpcId | String | Query | Yes | vpc-p0wr1cd4fcuxy3ui0**** | The VPC ID. |
+| MaxResults | Integ er | Query | No | 20 | The number of entries per page. Minimum value: 0. Default value: 20. |
+| NextToken | String | Query | No | FFmyTO70tTpLG6I3FmYAXGK Pd**** | The pagination token that is used in the next request to retrieve a new page of results. Valid values: If this is your first request or no next requests are to be sent, you do not need to specify this parameter. You must specify the token that is obtained from the previous query as the value of the NextToken parameter. |
+| VSwitchIds | Repea tList | Query | No | The vSwitch IDs. | The vSwitch IDs. You can specify at most 50 vSwitch IDs in each call. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| VSwitchIds | String | vsw- p0w5ejr9bzfsttiza**** | The vSwitch IDs. |
 
 | NextToken | String | FFmyTO70tTpLG6I3F mYAXGKPd**** | A pagination token. It can be used in the next request to retrieve a new page of results. Valid values: If NextToken is empty, no next page exists. If the value returned of NextToken is not empty, the value indicates the token that is used for the next query. |
 |---|---|---|---|
 | RequestId | String | B0E7E43C-979A- 5130-AA0D- B3ADA69E0827 | The request ID. |
 | TotalCount | Integer | 2 | The total number of entries returned. |
 | MaxResults | Integer | 20 | The number of entries per page. |
-
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is invalid. |
 
 **Examples**
 
@@ -5565,17 +5941,21 @@ http(s)://[Endpoint]/?Action=ListTransitRouterMulticastDomainVSwitches &CenId=ce
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":2,
  "NextToken":"FFmyTO70tTpLG6I3FmYAXGKPd****",
  "RequestId":"B0E7E43C-979A-5130-AA0D-B3ADA69E0827",
  "VSwitchIds":"vsw-p0w5ejr9bzfsttiza****",
  "MaxResults":20
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <TotalCount>2</TotalCount> <NextToken>FFmyTO70tTpLG6I3FmYAXGKPd****</NextToken> <RequestId>B0E7E43C-979A-5130-AA0D-B3ADA69E0827</RequestId> <VSwitchIds>vsw-p0w5ejr9bzfsttiza****</VSwitchIds> <MaxResults>20</MaxResults>
@@ -5583,19 +5963,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is invalid. |
+
 | 400 | IllegalParam.TrInstanc e | IllegalParam.TrInstance | The specified TransitRouter is invalid. |
 |---|---|---|---|
 | 400 | IllegalParam.Region | IllegalParam.Region | The specified Region is invalid. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | CreateCenRouteMap | The operation that you want to perform. Set the value to CreateCenRouteMap. |
-| CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-| CenRegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the routing policy. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
+### 1.15 Routing policies
 
-### Routing policies
-
-#### CreateCenRouteMap
+#### 1.15.1 CreateCenRouteMap
 
 Creates a routing policy.
 
@@ -5605,14 +5983,20 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | CreateCenRouteMap | The operation that you want to perform. Set the value to CreateCenRouteMap. |
+| CenId | String | Query | Yes | cen-7qthudw0ll6jmc**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+| CenRegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the routing policy. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
+
 | TransmitDire ction | String | Query | Yes | RegionIn | The direction in which the routing policy is applied. Valid values: RegionIn: Routes are advertised to the gateways in the regions that are connected by the CEN instance. For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region. RegionOut: Routes are advertised from the gateways in the regions that are connected by the CEN instance. For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the same region, or to gateways deployed in other regions. |
 |---|---|---|---|---|---|
 | Description | String | Query | No | desctest | The description of the routing policy. The description must be 2 to 256 characters in length, and can contain letters, digits, hyphens (-), periods (.), and underscores ( ). It must start _ with a letter and cannot start with http:// or https:// . |
 | Priority | Integ er | Query | Yes | 3 | Enter a priority for the routing policy. Valid values: 1 to 100. A smaller value indicates a higher priority. You cannot specify the same priority for routing policies that apply in the same region and direction. The system evaluates routes based on the match conditions of routing policies in descending order of priority. A smaller value specifies a higher priority. To sort routing policies in the expected order, you must specify appropriate values. |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
+| https:// |   |
 
 | MapResult | String | Query | Yes | Permit | The action to be performed on a route that meets all the match conditions. Valid values: Permit Deny |
 |---|---|---|---|---|---|
@@ -5652,22 +6036,39 @@ This operation does not have operation-specific request headers and uses only co
 | PrependAsP ath | Repea tList | Query | No | 65501 | The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes. The AS paths vary based on the direction in which the routing policy is applied: If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied. If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition. This parameter specifies the action to be performed when a route meets the match condition. You can specify at most 32 AS numbers. |
 |---|---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RouteMapId | String | cenrmap- w4yf7toozfol3q**** | The ID of the routing policy. |
 | RequestId | String | 62172DD5-6BAC- 45DF-8D44- 56SDF467BAC | The request ID. |
 
-**Response parameters**
-
-**Example**
-
 Sample requests
 
 ```
-&CenId=cen-7qthudw0ll6jmc**** &CenRegionId=cn-qingdao-env17e-d01 &TransmitDirection=RegionIn &Priority=3 &MapResult=Permit &Common request parameters
+http(s)://[Endpoint]/?Action=CreateCenRouteMap &CenId=cen-7qthudw0ll6jmc**** &CenRegionId=cn-qingdao-env17e-d01 &TransmitDirection=RegionIn &Priority=3 &MapResult=Permit &Common request parameters
 ```
 
-Sample success responses
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"62172DD5-6BAC-45DF-8D44-56SDF467BAC",
+ "RouteMapId":"cenrmap-w4yf7toozfol3q****"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>62172DD5-6BAC-45DF-8D44-56SDF467BAC</RequestId> <RouteMapId>cenrmap-w4yf7toozfol3q****</RouteMapId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5681,26 +6082,19 @@ Sample success responses
 | 400 | INVALID OPERATION _ _ TRANSITROUTER NOT _ EXIST _ | Invid.Parameter | TransitRouter not exist. |
 | 400 | PARAMETER ILLEGAL _ _ RMAP SRC INSTANCE _ _ | Invid.Parameter | SourceInstanceId is invalid. |
 
-`JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"62172DD5-6BAC-45DF-8D44-56SDF467BAC",
- "RouteMapId":"cenrmap-w4yf7toozfol3q****"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>62172DD5-6BAC-45DF-8D44-56SDF467BAC</RequestId> <RouteMapId>cenrmap-w4yf7toozfol3q****</RouteMapId>
-```
-
-**Error codes**
-
 | 400 | PARAMETER ILLEGAL _ _ RMAP DEST INSTANC _ _ E | Invid.Parameter | DestinationInstanceId is invalid. |
 |---|---|---|---|
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
+
+#### 1.15.2 ModifyCenRouteMap
+
+Modifies a routing policy of a Cloud Enterprise Network (CEN) instance.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -5711,19 +6105,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | Description | String | Query | No | desctest | The description of the routing policy. The description cannot start with http:// or https:// . It must start with a letter and can contain letters, digits, hyphens (-), periods (.), and underscores ( ). _ |
 | MapResult | String | Query | Yes | Permit | The action to be performed on a route that meets all the match conditions. Valid values: Permit Deny |
 
-|  | http:// |
+|   | http:// |
 |---|---|
-| https:// |  |
-
-#### ModifyCenRouteMap
-
-Modifies a routing policy of a Cloud Enterprise Network (CEN) instance.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
+| https:// |   |
 
 | NextPriority | Integ er | Query | No | 20 | The priority of the next routing policy that you want to associate with the current routing policy. This parameter takes effect only when the MapResult parameter is set to Permit. This way, the permitted route is matched against the next routing policy. The region and direction of the routing policy to be associated must be the same as those of the current routing policy. The priority of the routing policy to be associated must be lower than the priority of the current routing policy. |
 |---|---|---|---|---|---|
@@ -5762,13 +6146,41 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | PrependAsP ath | Repea tList | Query | No | 65501 | The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes. The AS paths vary based on the direction in which the routing policy is applied: If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied. If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition. This parameter specifies the action to be performed when a route meets the match condition. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 
-**Response parameters**
-
 | RequestId | String | 54B48E3D-DF70- 471B-AA93- 08E683A1B457 | The request ID. |
 |---|---|---|---|
+
+**Examples**
+
+Sample requests
+
+```
+http(s)://[Endpoint]/?Action=ModifyCenRouteMap &CenId=cen-7qthudw0ll6jmc**** &CenRegionId=cn-qingdao-env17e-d01 &RouteMapId=cenrmap-abcdedfghij**** &MapResult=Permit &Priority=10 &Common request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B457\t"
+```
+
+`}` `XML` format
+
+```xml
+<RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457 </RequestId>
+```
+
+**Error codes**
 
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
@@ -5778,32 +6190,18 @@ This operation does not have operation-specific request headers and uses only co
 | 400 | PARAMETER ILLEGAL _ _ RMAP WITH GW REGI _ _ _ ON GW ZONE EMPTY _ _ _ | Invid.Parameter | When using GatewayRegionId, GatewayZoneId must not be null |
 | 400 | PARAMETER ILLEGAL _ _ RMAP WITH GW REGI _ _ _ ON SRC REGION ILLE _ _ _ GAL | Invid.Parameter | When using GatewayRegionId, SourceRegionId must not be the same with tr region id |
 
-**Examples**
-
-Sample requests
-
-```
-&CenId=cen-7qthudw0ll6jmc**** &CenRegionId=cn-qingdao-env17e-d01 &RouteMapId=cenrmap-abcdedfghij**** &MapResult=Permit &Priority=10 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"54B48E3D-DF70-471B-AA93-08E683A1B457\t"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>54B48E3D-DF70-471B-AA93-08E683A1B457 </RequestId>
-```
-
-**Error codes**
-
 | 400 | PARAMETER ILLEGAL _ _ RMAP GW REGION ID _ _ _ | Invid.Parameter | GatewayRegionId is invalid |
 |---|---|---|---|
+
+#### 1.15.3 DescribeCenRouteMaps
+
+Queries information about routing policies.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
+
+**Request parameters**
 
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -5814,27 +6212,17 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | RouteMapId | String | Query | No | cenrmap- y40mxdvf7joc12**** | The ID of the routing policy. |
 | CenRegionId | String | Query | No | cn-qingdao-env66-d01 | The region ID of the routing policy. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 
-#### DescribeCenRouteMaps
-
-Queries information about routing policies.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters section of the Common parameters topic.
-
-**Request parameters**
-
 | TransmitDire ction | String | Query | No | RegionOut | The direction in which the routing policy applies. Valid values: RegionIn: Routes are advertised to the gateways in the regions that are connected by the CEN instance. For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region. RegionOut: Routes are advertised from the gateways in the regions that are connected by the CEN instance. For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the same region, or to gateways deployed in other regions. |
 |---|---|---|---|---|---|
 | TransitRoute rRouteTableI d | String | Query | No | vtb- gw8nx3515m1mbd1z1**** | The route table ID of the transit router with which the routing policy is associated. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| RouteMaps | Array |  | The information about the routing policy. |
+| RouteMaps | Array |   | The information about the routing policy. |
 | - SourceRegionIds | Normal | cn-qingdao-env66- d01 | The IDs of the source regions to which the routes belong. |
 | - SourceChildInsta nceTypes | Normal | VPC | The types of source network instances to which the routes belong. VPC VBR |
-
-**Response parameters**
 
 | - DestinationRoute TableIds | Normal | vtb-adefrgtr144vf**** | The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs. The destination route table IDs are valid only when the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to route tables in the current region. |
 |---|---|---|---|
@@ -5887,8 +6275,13 @@ http(s)://[Endpoint]/?Action=DescribeCenRouteMaps &CenId=cen-wx12mmlt17ld82**** 
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"24CE1987-D1D1-5324-9BAD-2750B60E6ABB",
@@ -5925,15 +6318,9 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "CommunityMatchMode":"Include",
   "MatchAsns":"65501",
   "SourceRegionIds":"cn-qingdao-env66-d01"
- }
-}
 ```
 
-`XML` format
-
-| Parameter | Type | Type | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DeleteCenRouteMap | The operation that you want to perform. Set the value to DeleteCenRouteMap. |
+`}` `}` `XML` format
 
 ```xml
 <TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>24CE1987-D1D1-5324-9BAD-2750B60E6ABB</RequestId> <PageNumber>1</PageNumber> <RouteMaps>
@@ -5971,7 +6358,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 </RouteMaps>
 ```
 
-#### DeleteCenRouteMap
+#### 1.15.4 DeleteCenRouteMap
 
 Deletes a routing policy.
 
@@ -5981,38 +6368,40 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Type | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DeleteCenRouteMap | The operation that you want to perform. Set the value to DeleteCenRouteMap. |
+
 | CenId | String | Query | Yes | cen-7qthudw0ll6jm**** | The ID of the Cloud Enterprise Network (CEN) instance. |
 |---|---|---|---|---|---|
 | CenRegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The region ID of the routing policy. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
 | RouteMapId | String | Query | Yes | cenrmap-abcdedfghij**** | The routing policy ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5903EE99-D542- 4E14-BC65- AAC1CB2D3D03 | The request ID. |
 
-| HttpCode | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | INVALID OPERATION _ _ ROUTE MAP STATUS _ _ | IncorrectStatus.RouteMap | Operation Failed. The specified route map is configuring, please try again later. |
-
-**Response parameters**
-
-**Example**
-
 Sample requests
 
 ```
-&CenId=cen-7qthudw0ll6jm**** &CenRegionId=cn-qingdao-env17e-d01 &RouteMapId=cenrmap-abcdedfghij**** &Common request parameters
+http(s)://[Endpoint]/?Action=DeleteCenRouteMap &CenId=cen-7qthudw0ll6jm**** &CenRegionId=cn-qingdao-env17e-d01 &RouteMapId=cenrmap-abcdedfghij**** &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"5903EE99-D542-4E14-BC65-AAC1CB2D3D03"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"5903EE99-D542-4E14-BC65-AAC1CB2D3D03"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>5903EE99-D542-4E14-BC65-AAC1CB2D3D03</RequestId>
@@ -6020,19 +6409,16 @@ HTTP/1.1 200 OK Content-Type:application/json {
 
 **Error codes**
 
+| HttpCode | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | INVALID OPERATION _ _ ROUTE MAP STATUS _ _ | IncorrectStatus.RouteMap | Operation Failed. The specified route map is configuring, please try again later. |
+
 | 400 | INVALID OPERATION _ _ TRANSITROUTER NOT _ EXIST _ | InvalidOperation.TransitRouterNotE xist | Operation is invalid because the transit router not exist. |
 |---|---|---|---|
 
-| Paramete r | Type | Positio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | EnableCenVbrHealthCheck | The operation that you want to perform. Set the value to EnableCenVbrHealthChe ck . |
-| CenId | String | Query | Yes | cen-hahhfskfkseig**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-| VbrInstance RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The ID of the region where the VBR is deployed. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
-| VbrInstance Id | String | Query | Yes | vbr- wz95o9aylj181n5mzk**** | The VBR ID. |
+### 1.16 Health checks
 
-### Health checks
-
-#### EnableCenVbrHealthCheck
+#### 1.16.1 EnableCenVbrHealthCheck
 
 Enables the health check feature for a virtual border router (VBR) to detect anomalies on Express Connect circuits. You can modify the health check configuration of a VBR based on business requirements.
 
@@ -6048,6 +6434,13 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Examples | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | EnableCenVbrHealthCheck | The operation that you want to perform. Set the value to EnableCenVbrHealthChe ck . |
+| CenId | String | Query | Yes | cen-hahhfskfkseig**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+| VbrInstance RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The ID of the region where the VBR is deployed. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
+| VbrInstance Id | String | Query | Yes | vbr- wz95o9aylj181n5mzk**** | The VBR ID. |
+
+| Paramete r | Type | Positio n | Required | Examples | Description |
+|---|---|---|---|---|---|
 | HealthChec kSourceIp | String | Query | No | 192.XX.XX.1 | The source IP address of the health check. You can set the source IP address in the following ways: Automatic IP Address (recommended): The system automatically assigns an IP address from the 100.96.0.0/16 CIDR block. Custom IP Address : You must specify an idle IP address from the 10.0.0.0/8, 192.168.0.0/16, or 172.16.0.0/12 CIDR block. The specified IP address must not conflict with the IP address of the VBR on the Alibaba Cloud side, the IP address of the VBR on the customer side, or other IP addresses with which the VBR communicates through the CEN instance. |
 | HealthChec kTargetIp | String | Query | Yes | 10.XX.XX.1 | The destination IP address of health check. Set the destination IP address to the IP address of the VBR on the customer side. |
 | VbrInstance OwnerId | Long | Query | No | 1250123456123456 | The UID of the level-1 organization to which the VBR belongs. This parameter is required if the VBR and CEN instance belong to different organizations. |
@@ -6058,11 +6451,11 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|---|---|
 | HealthChec kOnly | Boolea n | Query | No | false | Specifies whether to enable probing during the health check. Valid values: true : enables probing. If probing is enabled, the system does not switch to another route when the detected route is not reachable. Make sure that a redundant route is available. Otherwise, network disconnections may occur. false : disables probing. Probing is disabled by default. If a redundant route is specified, the system switches to the redundant route when the detected route is not reachable. |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
 | RequestId | String | 1F59F19C-EFD2- 40B1-94D5- 65B40CA8E34A | The request ID. |
-
-**Response parameters**
 
 **Examples**
 
@@ -6074,17 +6467,23 @@ http(s)://[Endpoint]/?Action=EnableCenVbrHealthCheck &CenId=cen-hahhfskfkseig***
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"1F59F19C-EFD2-40B1-94D5-65B40CA8E34A"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"1F59F19C-EFD2-40B1-94D5-65B40CA8E34A"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>1F59F19C-EFD2-40B1-94D5-65B40CA8E34A</RequestId>
 ```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
@@ -6093,17 +6492,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | PARAMETER ILLEGAL _ _ SOURCEIP OR TARGE _ _ TIP | Illegal.SourceIpOrTargetIp | The specified source IP address or destination IP address is invalid. |
 | 400 | INVALID OPERATION _ _ VBR OR VPC CBN AT _ _ _ _ TACHMENT STATUS _ | OperationFailed.StatusNotSupport | The VBR or VPC instance to CBN attachment is not in a valid state for the operation. |
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DisableCenVbrHealthCheck | The operation that you want to perform. Set the value to DisableCenVbrHealthChec k. |
-| CenId | String | Query | Yes | cen-sjfoejfghhjgghjghkg**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-| VbrInstance RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The ID of the region where the VBR is deployed. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
-| VbrInstanceI d | String | Query | Yes | vbr-wz95o9aylj181n5**** | The VBR ID. |
-| VbrInstance OwnerId | Long | Query | No | 1250123456123456 | The UID of the level-1 organization to which the VBR belongs. The parameter is required if the VBR and the CEN instance belong to different organizations. |
-
-**Error codes**
-
-#### DisableCenVbrHealthCheck
+#### 1.16.2 DisableCenVbrHealthCheck
 
 Disables the health check feature for a virtual border router (VBR).
 
@@ -6113,16 +6502,19 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | String | Query | No | DisableCenVbrHealthCheck | The operation that you want to perform. Set the value to DisableCenVbrHealthChec k. |
+| CenId | String | Query | Yes | cen-sjfoejfghhjgghjghkg**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+| VbrInstance RegionId | String | Query | Yes | cn-qingdao-env17e-d01 | The ID of the region where the VBR is deployed. You can call the DescribeChildInstanceRegion s operation to query the most recent region list. |
+| VbrInstanceI d | String | Query | Yes | vbr-wz95o9aylj181n5**** | The VBR ID. |
+| VbrInstance OwnerId | Long | Query | No | 1250123456123456 | The UID of the level-1 organization to which the VBR belongs. The parameter is required if the VBR and the CEN instance belong to different organizations. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | A278B8A6-A5B8- 4FDE-9F70- 95F0F6A1D68A | The request ID. |
-
-| Paramete r | Type | Positio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| Action | String | Query | No | DescribeCenVbrHealthChec k | The operation that you want to perform. Set the value to DescribeCenVbrHealthCh eck . |
-| CenId | String | Query | No | cen-6hpdgj7ni6pz1k**** | The ID of the Cloud Enterprise Network (CEN) instance. |
-
-**Response parameters**
 
 **Examples**
 
@@ -6134,19 +6526,23 @@ http(s)://[Endpoint]/?Action=DisableCenVbrHealthCheck &CenId=cen-sjfoejfghhjgghj
 
 Sample success responses `JSON` format
 
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"A278B8A6-A5B8-4FDE-9F70-95F0F6A1D68A"
-}
+```
+HTTP/1.1 200 OK Content-Type:application/json
 ```
 
-`XML` format
+`{`
+
+```json
+ "RequestId":"A278B8A6-A5B8-4FDE-9F70-95F0F6A1D68A"
+```
+
+`}` `XML` format
 
 ```xml
 <RequestId>A278B8A6-A5B8-4FDE-9F70-95F0F6A1D68A</RequestId>
 ```
 
-#### DescribeCenVbrHealthCheck
+#### 1.16.3 DescribeCenVbrHealthCheck
 
 Queries the health check configuration of a virtual border router (VBR) in a region.
 
@@ -6158,23 +6554,28 @@ This operation does not have operation-specific request headers and uses only co
 
 | Paramete r | Type | Positio n | Required | Examples | Description |
 |---|---|---|---|---|---|
+| Action | String | Query | No | DescribeCenVbrHealthChec k | The operation that you want to perform. Set the value to DescribeCenVbrHealthCh eck . |
+| CenId | String | Query | No | cen-6hpdgj7ni6pz1k**** | The ID of the Cloud Enterprise Network (CEN) instance. |
+
+| Paramete r | Type | Positio n | Required | Examples | Description |
+|---|---|---|---|---|---|
 | VbrInstance RegionId | String | Query | Yes | cn-qingdao-env66-d01 | The ID of the region where the VBR is deployed. You can call the DescribeChildInstanceRegio ns operation to query the most recent region list. |
 | VbrInstance Id | String | Query | No | vbr-bp1kznorjeembsuhl**** | The VBR ID. |
 | VbrInstance OwnerId | Long | Query | No | 253460731706911258 | The UID of the level-1 organization to which the VBR belongs. This parameter is required if the VBR and CEN instance belong to different organizations. |
 | PageNumbe r | Integer | Query | No | 1 | The number of the page to return. Default value: 1 . |
 | PageSize | Integer | Query | No | 10 | The number of entries per page. Valid values: 1 to 50 . Default value: 10 . |
 
+**Response parameters**
+
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
-| VbrHealthChecks | Array |  | The health check configuration of the VBR. |
+| VbrHealthChecks | Array |   | The health check configuration of the VBR. |
 | - HealthCheckTarg etIp | String | 192.XX.XX.1 | The destination IP address for health checks. |
 | -VbrInstanceId | String | vbr- bp1kznorjeembsuhl** ** | The VBR ID. |
 | - VbrInstanceRegi onId | String | cn-qingdao-env66- d01 | The ID of the region where the VBR is deployed. |
 | -CenId | String | cen- 6hpdgj7ni6pz1k**** | The ID of the CEN instance. |
 | - HealthyThreshol d | Integer | 8 | The number of probe packets that are sent during the health check. |
 | - HealthCheckInte rval | Integer | 2 | The time interval at which probe packets are sent during the health check. Unit: seconds. |
-
-**Response parameters**
 
 | Parameter | Type | Examples | Description |
 |---|---|---|---|
@@ -6195,12 +6596,18 @@ http(s)://[Endpoint]/?Action=DescribeCenVbrHealthCheck &VbrInstanceRegionId=cn-q
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalCount":1,
  "PageSize":10,
  "RequestId":"B8C9702E-304A-4E18-AC89-BE2D91C2C176",
  "PageNumber":1,
+ "VbrHealthChecks":{
   "VbrInstanceRegionId":"cn-qingdao-env66-d01",
   "HealthCheckInterval":2,
   "VbrInstanceId":"vbr-bp1kznorjeembsuhl****",
@@ -6209,14 +6616,12 @@ HTTP/1.1 200 OK Content-Type:application/json {
   "CenId":"cen-6hpdgj7ni6pz1k****",
   "HealthCheckTargetIp":"192.XX.XX.1",
   "HealthCheckOnly":false
- }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
-<TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>B8C9702E-304A-4E18-AC89-BE2D91C2C176</RequestId> <PageNumber>1</PageNumber>
+<TotalCount>1</TotalCount> <PageSize>10</PageSize> <RequestId>B8C9702E-304A-4E18-AC89-BE2D91C2C176</RequestId> <PageNumber>1</PageNumber> <VbrHealthChecks>
  <VbrInstanceRegionId>cn-qingdao-env66-d01</VbrInstanceRegionId>
  <HealthCheckInterval>2</HealthCheckInterval>
  <VbrInstanceId>vbr-bp1kznorjeembsuhl****</VbrInstanceId>
@@ -6226,4 +6631,5 @@ HTTP/1.1 200 OK Content-Type:application/json {
  <PacketLoss  />
  <HealthCheckTargetIp>192.XX.XX.1</HealthCheckTargetIp>
  <HealthCheckOnly>false</HealthCheckOnly>
+</VbrHealthChecks>
 ```

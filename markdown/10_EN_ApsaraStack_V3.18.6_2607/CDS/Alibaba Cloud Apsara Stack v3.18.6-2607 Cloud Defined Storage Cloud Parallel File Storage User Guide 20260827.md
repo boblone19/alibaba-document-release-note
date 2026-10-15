@@ -3,14 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Para
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide 20260827.pdf"
+source_pdf: "b02c58be144e61bb_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Cloud%20Parallel%20File%20Storage%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Cloud Parallel File Storage User Guide 20260827
 
-## CPFS
+## Table of Contents
+
+- 1 CPFS
+- 2 Getting started
+  - 2.1 Log in to the CPFS console
+  - 2.2 Create a CPFS file system
+  - 2.3 Usage limits
+- 3 CPFS file systems
+  - 3.1 Manage CPFS file systems
+  - 3.2 Scale up a CPFS file system
+  - 3.3 Resource monitoring
+  - 3.4 Data flow
+- 4 FAQ
+  - 4.1 No inventory for sales
+
+## 1 CPFS
 
 Cloud Parallel File Storage (CPFS) is a high-performance parallel file system of Apsara Stack.
 
@@ -18,9 +33,9 @@ Cloud Parallel File Storage (CPFS) is a high-performance parallel file system of
 
 CPFS is a high-performance parallel file system of Apsara Stack, which meets the requirements of various high-performance computing scenarios. CPFS provides a unified namespace and supports shared access to file systems among multiple compute nodes over the Portable Operating System Interface (POSIX) protocol. It allows data access with submillisecond latency and reads or writes data with tens of GB/s of throughput. CPFS file systems can be used in I/O-intensive businesses that require high throughput and high IOPS, and involve a large number of files, such as AI training, autonomous driving, genomics computing, film rendering, oil exploration, weather forecast, and electronic design automation (EDA) simulation.
 
-## Getting started
+## 2 Getting started
 
-### Log in to the CPFS console
+### 2.1 Log in to the CPFS console
 
 You have obtained the service domain name for the Apsara Uni-manager Management Console from the deployment personnel. Use the Google Chrome browser.
 1. In the address bar of your browser, enter the service domain name for the Apsara Uni-
@@ -47,7 +62,7 @@ Enter the six-digit MFA code and click **Authenticate**.
 6. In the top navigation bar, choose **Products > Storage > CPFS** to go to the Cloud Parallel
 File Storage (CPFS) console.
 
-### Create a CPFS file system
+### 2.2 Create a CPFS file system
 
 This topic describes how to create a Cloud Parallel File Storage (CPFS) file system.
 1. Log in to the CPFS console.
@@ -71,13 +86,13 @@ information, see the **Quota management** topic in User Guide - Apsara Uni-manag
 6. After the file system is created, view its status, specifications, and capacity in the CPFS file
 system list. To manage a client cluster or mount a file system, log in to the Bare Metal Computing Platform (BMCP) console. For more information, see the "Clusters and nodes" section in Bare Metal Computing Platform User Guide.
 
-### Usage limits
+### 2.3 Usage limits
 
 This topic describes the usage limits of Cloud Parallel File Storage (CPFS). Only Performance-oriented CPFS file systems can be created. The maximum capacity of a file system is 1.7 PiB. You can mount a CPFS file system only to a Bare Metal Computing Platform (BMCP) cluster in the BMCP console. By default, mount targets are automatically created. You cannot create additional mount targets. You must scale up CPFS file systems when data is not read or written. Cluster scale-down is not supported.
 
-## CPFS file systems
+## 3 CPFS file systems
 
-### Manage CPFS file systems
+### 3.1 Manage CPFS file systems
 
 This topic describes how to view and delete a Cloud Parallel File Storage (CPFS) file system and modify the description of a CPFS file system. A CPFS file system is created. For more information, see Create a CPFS file system.
 
@@ -117,7 +132,7 @@ the pointer over the **Tag** column, and then click the icon.
 2. In the **Edit Tags** dialog box, configure the Tag Key and Tag Value parameters.
 3. Click **OK**.
 
-### Scale up a CPFS file system
+### 3.2 Scale up a CPFS file system
 
 This topic describes how to scale up a Cloud Parallel File Storage (CPFS) file system. Data is not read from or written to the CPFS file system.
 1. Log in to the CPFS console.
@@ -127,7 +142,7 @@ This topic describes how to scale up a Cloud Parallel File Storage (CPFS) file s
 parameter. The new total capacity cannot be lower than the current total capacity and cannot exceed the maximum total capacity. The maximum total capacity of a Performance-oriented CPFS file system is 1 PiB, and the scale-up granularity is 10 TiB.
 5. Click **Confirm Order** to complete the scale-up.
 
-### Resource monitoring
+### 3.3 Resource monitoring
 
 This topic describes how to view metrics and create alert rules for Cloud Parallel File Storage (CPFS) resources. A CPFS file system is created. For more information, see Create a CPFS file system.
 1. Log in to the CPFS console.
@@ -141,7 +156,7 @@ icon in the upper-right corner of a chart to create an alert rule. For more info
 **Management > CloudMonitor** in the top navigation bar and click **Alert Service** in the
 left-side navigation pane to view and manage the alert rule.
 
-### Data flow
+### 3.4 Data flow
 
 This topic describes how to configure data replication between Cloud Parallel File Storage (CPFS) and Object Storage Service (OSS).
 
@@ -169,11 +184,11 @@ The amount of data for a single data flow task cannot exceed 100 TiB.
 5. After a replication task is created, you can view relevant information of the replication task,
 such as task status, task type, task result, data source, destination path, description, and creation time, in the data flow task list.
 
-## FAQ
+## 4 FAQ
 
 This topic provides answers to frequently asked questions (FAQ) about Cloud Parallel File Storage (CPFS).
 
-### No inventory for sales
+### 4.1 No inventory for sales
 
 This topic describes solutions for the failure to create a Cloud Parallel File Storage (CPFS) file system due to insufficient inventory.
 

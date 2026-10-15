@@ -3,16 +3,340 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security Deve
 product_version: "V3.16.2"
 doc_version: "20220913"
 pdf_pages: 779
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security Developer Guide 20220913.pdf"
+source_pdf: "78da8dd8f7086333_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security Developer Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Apsara%20Stack%20Security%20Developer%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Apsara Stack Security Developer Guide
 
-## Preparations
+## Table of Contents
 
-### Log on to the API Tool console
+- 1 Preparations
+  - 1.1 Log on to the API Tool console
+  - 1.2 View the information about an operation
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain an AccessKey pair assigned by STS
+  - 1.5 Obtain an endpoint
+- 2 Call examples
+  - 2.1 Call examples for SDK for Java
+    - 2.1.1 Quick start
+    - 2.1.2 Use SDK
+      - 2.1.2.1 Install SDK for Java
+      - 2.1.2.2 Use CommonRequest to call API operations
+  - 2.2 Call examples for SDK for Python
+    - 2.2.1 Quick start
+    - 2.2.2 Use SDK
+      - 2.2.2.1 Install SDK for Python
+      - 2.2.2.2 Use CommonRequest to call API operations
+  - 2.3 Call examples for SDK for Go
+    - 2.3.1 Quick start
+    - 2.3.2 Use SDK
+      - 2.3.2.1 Install Go SDK
+      - 2.3.2.2 Use CommonRequest to call API operations
+- 3 Common parameters
+- 4 Server Guard
+  - 4.1 Asset management
+    - 4.1.1 DescribeGroupSummary
+    - 4.1.2 DescribeGroupStruct
+    - 4.1.3 DescribeAllEntity
+    - 4.1.4 DescribeEntityList
+    - 4.1.5 DescribeMachines
+    - 4.1.6 DescribeMachineDetail
+    - 4.1.7 DescribePropertyStatistic
+    - 4.1.8 DescribePropertyPortItem
+    - 4.1.9 DescribePropertyPortDetail
+    - 4.1.10 DescribePropertyProcItem
+    - 4.1.11 DescribePropertyProcDetail
+    - 4.1.12 DescribePropertySoftwareItem
+    - 4.1.13 DescribePropertySoftwareDetail
+    - 4.1.14 DescribePropertyUserItem
+    - 4.1.15 DescribePropertyUserDetail
+    - 4.1.16 DescribeTopRiskyAssets
+  - 4.2 Vulnerability management
+    - 4.2.1 DescribeTarget
+    - 4.2.2 DescribeVulTargetStatistics
+    - 4.2.3 DescribeTargetConfig
+    - 4.2.4 DescribeVulConfig
+    - 4.2.5 DescribeAutoDelConfig
+    - 4.2.6 DescribeVulLevel
+    - 4.2.7 DescribeVulWhitelist
+    - 4.2.8 DescribeGroupedVul
+    - 4.2.9 DescribeVulList
+    - 4.2.10 DescribeVulDetails
+    - 4.2.11 DescribeVulNumStatistics
+    - 4.2.12 DescribeVulLevelStatistics
+    - 4.2.13 DescribeVulMachineList
+  - 4.3 Baseline check
+    - 4.3.1 DescribeStratetyDetail
+    - 4.3.2 DescribeStrategyTarget
+    - 4.3.3 DescribeUuidConfig
+    - 4.3.4 DescribeUserSetting
+    - 4.3.5 DescribeRiskWhiteList
+    - 4.3.6 DescribeStratety
+    - 4.3.7 DescribeStrategyExecDetail
+    - 4.3.8 DescribeRiskType
+    - 4.3.9 Describesummary
+  - 4.4 Unusual logon detection
+    - 4.4.1 DescribeBaseConfigs
+    - 4.4.2 DescribeSwitchConfigs
+    - 4.4.3 DescribeConfigTarget
+  - 4.5 Webshell detection
+    - 4.5.1 DescribeCategoryCount
+    - 4.5.2 DescribeWebshell
+    - 4.5.3 DescribeQuaraFile
+  - 4.6 Exception detection on hosts
+    - 4.6.1 DescribeSuspEventTypes
+    - 4.6.2 DescribeSuspTrendStatistics
+    - 4.6.3 DescribeSuspiciousExportInfo
+  - 4.7 Retrieval of host logs
+    - 4.7.1 DescribeFilterFields
+    - 4.7.2 DescribeHistogram
+    - 4.7.3 DescribeLogInfo
+    - 4.7.4 DescribeLogItems
+- 5 Sensitive Data Discovery and Protection
+  - 5.1 APIs
+    - 5.1.1 DescribeDataAssets
+    - 5.1.2 DescribeInstances
+    - 5.1.3 DescribeTables
+    - 5.1.4 DescribePackages
+    - 5.1.5 DescribeColumns
+    - 5.1.6 DescribeOssObjects
+    - 5.1.7 DescribeOssObjectDetail
+    - 5.1.8 DescribeDeparts
+    - 5.1.9 DescribeAccounts
+    - 5.1.10 DescribeAccountDetail
+    - 5.1.11 DescribePrivileges
+    - 5.1.12 DescribeEventTypes
+    - 5.1.13 DescribeEvents
+    - 5.1.14 DescribeEventDetail
+    - 5.1.15 ModifyEventStatus
+    - 5.1.16 ModifyEventTypeStatus
+    - 5.1.17 ModifyDefaultLevel
+    - 5.1.18 DescribeRules
+    - 5.1.19 CreateRule
+    - 5.1.20 ModifyRule
+    - 5.1.21 ModifyRuleStatus
+    - 5.1.22 DeleteRule
+    - 5.1.23 DescribeDataLimitSet
+    - 5.1.24 CreateDataLimit
+    - 5.1.25 DeleteDataLimit
+- 6 Container Protection
+  - 6.1 DescribeImageInfoList
+  - 6.2 DescribeImageBaselineCheckSummary
+  - 6.3 DescribeImageBaselineItemList
+  - 6.4 DescribeImageListWithBaselineName
+  - 6.5 DescribeCycleTaskList
+  - 6.6 DescribeContainerCriteria
+  - 6.7 DescribeContainerFieldStatistics
+  - 6.8 DescribeContainerGroupedFieldDetail
+  - 6.9 DescribeContainerInstances
+  - 6.10 DescribeGroupedContainerInstances
+  - 6.11 DescribeImageCriteria
+  - 6.12 DescribeImageInstances
+  - 6.13 DescribeImageSecurityScanCount
+  - 6.14 GetRegistryScanDayNum
+  - 6.15 ListPrivateRegistryList
+  - 6.16 ListPrivateRegistryType
+  - 6.17 DescribeAlarmEventDetail
+  - 6.18 DescribeNsasSuspEventType
+  - 6.19 DescribeSecurityEventOperations
+  - 6.20 DescribeSuspEvents
+  - 6.21 DescribeEventLevelCount
+  - 6.22 DescribeConcernNecessity
+  - 6.23 DescribeGroupedVul
+  - 6.24 DescribeImageGroupedVulList
+  - 6.25 DescribeImageVulList
+  - 6.26 DescribeVulDetails
+  - 6.27 DescribeAllGroups
+  - 6.28 DescribeAssetDetailByUuid
+- 7 Threat Detection Service (TDS)
+  - 7.1 Asset management
+    - 7.1.1 DescribeFieldStatistics
+    - 7.1.2 DescribeGroupedTags
+    - 7.1.3 DescribeAllGroups
+    - 7.1.4 DescribeInstanceStatistics
+    - 7.1.5 DescribeCloudProductFieldStatistics
+    - 7.1.6 DescribeCloudCenterInstances
+    - 7.1.7 DescribeSummaryInfo
+  - 7.2 Secure score
+    - 7.2.1 DescribeSecureSuggestion
+  - 7.3 Security alerts
+    - 7.3.1 DescribeAlarmEventList
+    - 7.3.2 DescribeAlarmEventDetail
+    - 7.3.3 DescribeSuspEvents
+    - 7.3.4 DescribeSuspEventDetail
+  - 7.4 Configuration assessment
+    - 7.4.1 DescribeRiskItemType
+    - 7.4.2 StartBaselineSecurityCheck
+    - 7.4.3 DescribeRiskCheckSummary
+    - 7.4.4 DescribeRiskCheckResult
+    - 7.4.5 DescribeSecurityCheckScheduleConfig
+  - 7.5 Vulnerability management
+    - 7.5.1 DescribeVulList
+    - 7.5.2 DescribeVulWhitelist
+    - 7.5.3 DescribeConcernNecessity
+    - 7.5.4 DescribeGroupedVul
+    - 7.5.5 DescribeAutoDelConfig
+  - 7.6 Baseline check
+    - 7.6.1 DescribeCheckWarningSummary
+    - 7.6.2 DescribeStratety
+    - 7.6.3 DescribeStrategyExecDetail
+    - 7.6.4 DescribeCheckWarnings
+    - 7.6.5 DescribeCheckWarningDetail
+    - 7.6.6 DescribeWarningMachines
+  - 7.7 Asset fingerprints
+    - 7.7.1 DescribePropertyCount
+    - 7.7.2 DescribePropertyPortDetail
+    - 7.7.3 DescribePropertyProcDetail
+    - 7.7.4 DescribePropertyPortItem
+    - 7.7.5 DescribePropertyProcItem
+    - 7.7.6 DescribePropertySoftwareDetail
+    - 7.7.7 DescribePropertySoftwareItem
+    - 7.7.8 DescribePropertyUserDetail
+    - 7.7.9 DescribePropertyUserItem
+  - 7.8 Asset exposure
+    - 7.8.1 DescribeExposedInstanceList
+- 8 Network Traffic Monitoring System
+  - 8.1 IP address blocking
+    - 8.1.1 AddToBlackList
+    - 8.1.2 AddToWhiteList
+    - 8.1.3 DelFromBlackList
+    - 8.1.4 DelFromWhiteList
+    - 8.1.5 DescribeBlackList
+    - 8.1.6 DescribeWhiteList
+  - 8.2 Application-layer rules
+    - 8.2.1 DescribeL7Rule
+    - 8.2.2 SwitchL7RuleStatus
+    - 8.2.3 AddL7Rule
+    - 8.2.4 DelL7Rule
+- 9 Web Application Firewall
+  - 9.1 Website protection
+    - 9.1.1 DescribeWebsite
+    - 9.1.2 CreateWebsite
+    - 9.1.3 EditWebsite
+    - 9.1.4 ToggleWebsite
+    - 9.1.5 QueryAsyncTaskStatus
+    - 9.1.6 UploadResponsePage
+    - 9.1.7 DescribeInvalidWebsite
+    - 9.1.8 DeleteInvalidWebsite
+    - 9.1.9 DescribeInternetVip
+    - 9.1.10 CreateInternetVip
+    - 9.1.11 DeleteInternetVip
+    - 9.1.12 DescribeVpc
+    - 9.1.13 DescribeVSwitch
+    - 9.1.14 DescribeVpcVip
+    - 9.1.15 CreateVpcVip
+    - 9.1.16 DeleteVpcVip
+    - 9.1.17 DescribeEcs
+    - 9.1.18 DescribeSlb
+  - 9.2 HTTP flood protection rules
+    - 9.2.1 DescribeCCRuleTemplate
+    - 9.2.2 CreateCCRuleTemplate
+    - 9.2.3 EditCCRuleTemplate
+    - 9.2.4 ToggleCCRuleTemplate
+    - 9.2.5 DeleteCCRuleTemplate
+    - 9.2.6 ClearCCRestrictionList
+    - 9.2.7 DescribeCCWhitelist
+    - 9.2.8 CreateCCWhitelist
+    - 9.2.9 DeleteCCWhitelist
+  - 9.3 Custom rules
+    - 9.3.1 DescribePolicyRule
+    - 9.3.2 CreatePolicyRule
+    - 9.3.3 EditPolicyRule
+    - 9.3.4 TogglePolicyRule
+    - 9.3.5 DeletePolicyRule
+    - 9.3.6 EditPolicyRulePriority
+    - 9.3.7 GenerateFalsePositiveRuleCorrection
+    - 9.3.8 CreateDetectionModuleRule
+    - 9.3.9 EditDetectionModuleRule
+    - 9.3.10 EditPolicyRuleWebsiteBinding
+    - 9.3.11 DeletePolicyRuleWebsiteBinding
+  - 9.4 Protection policies
+    - 9.4.1 DescribePolicyGroup
+    - 9.4.2 CreatePolicyGroup
+    - 9.4.3 EditPolicyGroup
+    - 9.4.4 DeletePolicyGroup
+  - 9.5 Protection logs
+    - 9.5.1 QueryAsyncTaskStatus
+    - 9.5.2 QueryAttackDetectionLog
+    - 9.5.3 QueryAttackDetectionDetailLog
+    - 9.5.4 QueryAuditLog
+    - 9.5.5 QueryCCRuleExecutionLog
+    - 9.5.6 QueryFullAccessLog
+    - 9.5.7 QueryFullAccessDetailLog
+    - 9.5.8 QueryPerformanceStatistics
+  - 9.6 SSL certificate management
+    - 9.6.1 DescribeSSLCert
+    - 9.6.2 UploadSSLCert
+    - 9.6.3 EditSSLCert
+    - 9.6.4 DeleteSSLCert
+  - 9.7 System information
+    - 9.7.1 DescribeMetrics
+    - 9.7.2 DescribeNodeStatus
+    - 9.7.3 DescribeRealTimeAccess
+    - 9.7.4 DescribeAttackDetectionAggregationConfig
+    - 9.7.5 ToggleAttackDetectionAggregation
+- 10 Security Operations Center
+  - 10.1 Operations
+    - 10.1.1 DescribeAttacks
+    - 10.1.2 DescribeAlarms
+    - 10.1.3 DescribeVulFrangs
+    - 10.1.4 DescribeHcFrangs
+  - 10.2 SOAR
+    - 10.2.1 Playbooks
+      - 10.2.1.1 ModifyPlaybook
+      - 10.2.1.2 TriggerPlaybook
+      - 10.2.1.3 PublishPlaybook
+      - 10.2.1.4 StopOneAction
+      - 10.2.1.5 DescribePlaybook
+      - 10.2.1.6 DescribeSoarRecords
+    - 10.2.2 Intelligence
+      - 10.2.2.1 SyncBanRecord
+    - 10.2.3 Cases
+      - 10.2.3.1 CreateEventByAlert
+    - 10.2.4 Tasks
+      - 10.2.4.1 DescribeManualTaskInfo
+  - 10.3 Operations Center
+    - 10.3.1 QueryThreats
+    - 10.3.2 QueryThreatChartData
+- 11 Security Audit
+  - 11.1 APIs
+    - 11.1.1 CreateEventType
+    - 11.1.2 DescribeEventType
+    - 11.1.3 DeleteEventType
+    - 11.1.4 CreateLogFilter
+    - 11.1.5 DescribeLogFilter
+    - 11.1.6 DeleteLogFilter
+    - 11.1.7 CreateReceiver
+    - 11.1.8 DescribeReceiver
+    - 11.1.9 DeleteReceiver
+    - 11.1.10 CreateRule
+    - 11.1.11 DescribeRule
+    - 11.1.12 EnableRule
+    - 11.1.13 DisableRule
+    - 11.1.14 DeleteRule
+    - 11.1.15 CreateTask
+    - 11.1.16 DescribeTask
+    - 11.1.17 DeleteTask
+    - 11.1.18 DescribeSetting
+    - 11.1.19 ModifySetting
+    - 11.1.20 DescribeLogType
+    - 11.1.21 DescribeLogSource
+    - 11.1.22 DescribeLogCountStat
+    - 11.1.23 DescribeLog
+    - 11.1.24 DescribeEventRisk
+    - 11.1.25 DescribeEventRiskStat
+    - 11.1.26 DescribeEventTypeStat
+    - 11.1.27 DescribeEventCountStat
+    - 11.1.28 DescribeEvent
+    - 11.1.29 DescribeArchiveCountStat
+    - 11.1.30 DescribeArchive
+- 12 Error codes
+
+## 1 Preparations
+
+### 1.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press Enter.
@@ -23,7 +347,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### View the information about an
+### 1.2 View the information about an operation
 
 operation When you use a service SDK to call an operation of the service, you must obtain the service name, operation name, and API version. This topic describes how to view the information about an operation. Context The operations on the API Directory page are for reference only. For information about how to call operations, see API references of the corresponding services. If the information on the API Directory page is inconsistent with that in the API reference of the corresponding service, the information in the API reference takes precedence. Procedure
 1. Log on to the API Tool console.
@@ -32,7 +356,7 @@ operation When you use a service SDK to call an operation of the service, you mu
 of an operation name in the search box, and then click Search.
 4. View and record the service name, operation name, and API version.
 
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and AccessKey pairs assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of request senders. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an STS AccessKey pair. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, you must add the following parameters in request headers for access control. If you do not add the parameters, an error may occur. The error indicates that permissions are insufficient. Warning The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. The AccessKey pair of an organization has more permissions than the AccessKey pair of a personal account. If you want to obtain the AccessKey pair of an organization, make sure that you are authorized by an administrator. This helps ensure security.
 
@@ -57,7 +381,7 @@ to obtain.
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an AccessKey pair
+### 1.4 Obtain an AccessKey pair assigned by STS
 
 assigned by STS This topic describes how to use Security Token Service (STS) to make API calls. Background information Alibaba Cloud STS allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. An AccessKey pair assigned by STS consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to make API calls, you must use an AccessKey pair assigned by STS. For more information about STS, see What is STS? Procedure
 1. Obtain your `RAM role` .
@@ -168,7 +492,7 @@ S that is obtained in the previous step.
 
 `}` `}`
 
-### Obtain an endpoint
+### 1.5 Obtain an endpoint
 
 This topic describes how to obtain the endpoint of an Apsara Stack Security service. Context To use the POP gateway to call the API operations of a cloud service, you must specify the endpoint of the cloud service. You can obtain the endpoint from Apsara Stack onsite O&M engineers. You can also perform the following steps to obtain the endpoint. Procedure
 1. Log on to the Apsara Infrastructure Management console. In the left-side navigation pane, choose
@@ -194,11 +518,11 @@ i. Click Back t o Old Version to switch to Apsara Infrastructure Management of t
 <vip_ip> <Endpoint of the API that you want to request>
 ```
 
-## Call examples
+## 2 Call examples
 
-### Call examples for SDK for Java
+### 2.1 Call examples for SDK for Java
 
-#### Quick start
+#### 2.1.1 Quick start
 
 This topic describes how to obtain and use Apsara Stack SDK for Java. Prerequisites An Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret are obtained before you can use Apsara Stack SDK for Java. You can view and obtain your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. For more information about how to obtain the endpoint, see Obtain an endpoint. Java Development Kit (JDK) 1.8 or later is installed before you can use Apsara Stack SDK for Java. Installation If you use Apache Maven to manage a Java project, you need to only import the JAR file of Apsara Stack SDK for Java to the pom.xml file of the project. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. Usage To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
@@ -235,9 +559,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-#### Use SDK
+#### 2.1.2 Use SDK
 
-##### Install SDK for Java
+##### 2.1.2.1 Install SDK for Java
 
 This topic describes how to install and use Apsara Stack Security SDK for Java. Apsara Stack SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK. For more information, visit Alibaba Cloud SDKs. If you want to use Apsara Stack Security SDK for Java, you must install the core library of Apsara Stack SDK for Java. We recommend that you use V4.5.17 or later of the core library. When you install the core library, you must add the following dependency to the pom.xml file. For more information about the specific SDK version, visit Alibaba Cloud SDKs.
 
@@ -249,7 +573,7 @@ This topic describes how to install and use Apsara Stack Security SDK for Java. 
 </dependency>
 ```
 
-##### Use CommonRequest to call API operations
+##### 2.1.2.2 Use CommonRequest to call API operations
 
 Not e If you want to call the API operations of a service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations. Benefits CommonRequest provides the following benefits:
 1. Lightweight: You need to only download the core package. You do not need to download and
@@ -288,9 +612,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 
 `}` `}` `}`
 
-### Call examples for SDK for Python
+### 2.2 Call examples for SDK for Python
 
-#### Quick start
+#### 2.2.1 Quick start
 
 This topic describes how to obtain and use the SDK for Python. Prerequisites An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. For more information, see Obtain an AccessKey pair. The endpoint of a service is obtained. For more information, see . Install the core library of the SDK for Python If you use Python 2.x, run the following command:
 
@@ -318,9 +642,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 CommonRequest(domain='<your-endpoint>', version='<API-version>', action_name='<your-action>') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-#### Use SDK
+#### 2.2.2 Use SDK
 
-##### Install SDK for Python
+##### 2.2.2.1 Install SDK for Python
 
 This topic describes how to install and use SDK for Python. Apsara Stack SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Apsara Stack SDK for Python by using pip. Not e To use the SDK of an Apsara Stack service, you must install the core library of Apsara Stack SDK for Python. If you use Python 2.x, run the following command to install the core library:
 
@@ -334,7 +658,7 @@ If you use Python 3.x, run the following command to install the core library:
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Use CommonRequest to call API operations
+##### 2.2.2.2 Use CommonRequest to call API operations
 
 Not e If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations. Benefits CommonRequest provides the following benefits:
 1. Lightweight: You need only to download the core package. You do not need to download and
@@ -351,9 +675,9 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 our-action') request.add_query_param('PageNumber', '1') request.add_query_param('PageSize', '30') response = client.do_action_with_exception(request)
 ```
 
-### Call examples for SDK for Go
+### 2.3 Call examples for SDK for Go
 
-#### Quick start
+#### 2.3.1 Quick start
 
 Apsara Stack SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use the SDK for Go. Prerequisites An authorized account and an AccessKey pair (AccessKey ID and AccessKey secret) are obtained. You can obtain and view your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. The endpoint of a service is obtained. For more information, see . Install the core package of Apsara Stack SDK for Go Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -392,15 +716,15 @@ fmt.Print(response.GetHttpContentString())
 
 `}`
 
-#### Use SDK
+#### 2.3.2 Use SDK
 
-##### Install Go SDK
+##### 2.3.2.1 Install Go SDK
 
 This topic describes how to install the Go SDK. The Alibaba Cloud Go SDK supports Go 1.7 or later versions. Install the Go SDK manually.
 1. Download the source code of the Go SDK from the official site of Apsara Stack.
 2. Extract the package to the directory where the GO_PATH file of the current user resides.
 
-##### Use CommonRequest to call API operations
+##### 2.3.2.2 Use CommonRequest to call API operations
 
 Not e If you want to call the API operations of an Apsara Stack service that does not provide SDKs, you can use CommonRequest. You can use CommonRequest to call API operations. Benefits CommonRequest provides the following benefits:
 1. Lightweight: You need only to download the core package. You do not need to download and
@@ -449,7 +773,7 @@ _access_key_secret}")
 
 `}` ers
 
-## Common parameters
+## 3 Common parameters
 
 Common request parameters Common request parameters must be included in all Apsara Stack Security API requests. Table of common request parameters
 
@@ -470,11 +794,11 @@ ers
 
 Common response parameters API responses use the HTTP response format: A 2xx status code indicates a successful call. A 4xx or 5xx status code indicates a failed call. Responses are returned in the JSON format. Every response returns a unique RequestID regardless of whether the call is successful.
 
-## Server Guard
+## 4 Server Guard
 
-### Asset management
+### 4.1 Asset management
 
-#### DescribeGroupSummary
+#### 4.1.1 DescribeGroupSummary
 
 You can call this operation to obtain a list of asset groups. Request parameters
 
@@ -553,7 +877,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeGroupStruct
+#### 4.1.2 DescribeGroupStruct
 
 You can call this operation to query the asset group structure. Request parameters
 
@@ -638,7 +962,7 @@ Sample response (JSON format)
 
 `}`
 
-#### DescribeAllEntity
+#### 4.1.3 DescribeAllEntity
 
 You can call this operation to query information about all servers. Request parameters
 
@@ -686,7 +1010,7 @@ Sample response (JSON format)
 
 `]` `}`
 
-#### DescribeEntityList
+#### 4.1.4 DescribeEntityList
 
 You can call this operation to query servers of a specified type. For example, you can query servers by security event type. Request parameters
 
@@ -763,7 +1087,7 @@ Sample response (JSON format)
 
 `}` `]` `}`
 
-#### DescribeMachines
+#### 4.1.5 DescribeMachines
 
 You can call this operation to query servers that match the specified criteria. For example, you can query all servers in an asset group. Request parameters
 
@@ -816,7 +1140,7 @@ Sample response (JSON format)
 
 `}`
 
-#### DescribeMachineDetail
+#### 4.1.6 DescribeMachineDetail
 
 You can call this operation to query the detailed information about a specified server. Request parameters
 
@@ -875,7 +1199,7 @@ Sample response (JSON format)
 
 `}` `}`
 
-#### DescribePropertyStatistic
+#### 4.1.7 DescribePropertyStatistic
 
 You can call this operation to query the server statistics. Request parameters
 
@@ -933,7 +1257,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribePropertyPortItem
+#### 4.1.8 DescribePropertyPortItem
 
 You can call this operation to obtain a list of listener ports on hosts. Request parameters
 
@@ -989,7 +1313,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribePropertyPortDetail
+#### 4.1.9 DescribePropertyPortDetail
 
 You can call this operation to query detailed information about a listening port. Request parameters
 
@@ -1067,7 +1391,7 @@ Sample response (JSON format)
 
 `}`
 
-#### DescribePropertyProcItem
+#### 4.1.10 DescribePropertyProcItem
 
 You can call this operation to obtain a list of server processes. Request parameters
 
@@ -1118,7 +1442,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribePropertyProcDetail
+#### 4.1.11 DescribePropertyProcDetail
 
 You can call this operation to query server process details. Request parameters
 
@@ -1206,7 +1530,7 @@ Sample response (JSON format)
 
 `}`
 
-#### DescribePropertySoftwareItem
+#### 4.1.12 DescribePropertySoftwareItem
 
 You can call this operation to query servers that have been installed with the specified application. Request parameters
 
@@ -1264,7 +1588,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribePropertySoftwareDetail
+#### 4.1.13 DescribePropertySoftwareDetail
 
 You can call this operation to query the details of software installed on a server. Request parameters
 
@@ -1336,7 +1660,7 @@ Sample response (JSON format)
 
 `}`
 
-#### DescribePropertyUserItem
+#### 4.1.14 DescribePropertyUserItem
 
 You can call this operation to query user account information. Request parameters
 
@@ -1393,7 +1717,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribePropertyUserDetail
+#### 4.1.15 DescribePropertyUserDetail
 
 You can call this operation to query user account details. Request parameters
 
@@ -1472,7 +1796,7 @@ Sample response (JSON format)
 
 `}` `]` `}`
 
-#### DescribeTopRiskyAssets
+#### 4.1.16 DescribeTopRiskyAssets
 
 You can call this operation to query top N vulnerable servers. Request parameters
 
@@ -1518,9 +1842,9 @@ Sample response (JSON format)
 
 `}` `]` `}`
 
-### Vulnerability management
+### 4.2 Vulnerability management
 
-#### DescribeTarget
+#### 4.2.1 DescribeTarget
 
 You can call this operation to query the servers that are checked for the specified type of risks in vulnerability management. Request parameters
 
@@ -1571,7 +1895,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeVulTargetStatistics
+#### 4.2.2 DescribeVulTargetStatistics
 
 You can call this operation to query the information about target hosts for which vulnerability detection is enabled in the vulnerability management configuration. Request parameters
 
@@ -1622,7 +1946,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeTargetConfig
+#### 4.2.3 DescribeTargetConfig
 
 You can call this operation to query the vulnerability scanning configuration information of a specified server. Request parameters
 
@@ -1665,7 +1989,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeVulConfig
+#### 4.2.4 DescribeVulConfig
 
 You can call this operation to query the global scanning configuration for each vulnerability type. Request parameters
 
@@ -1702,7 +2026,7 @@ Sample responses (JSON format)
 
 `}` `}`
 
-#### DescribeAutoDelConfig
+#### 4.2.5 DescribeAutoDelConfig
 
 You can call this operation to query the number of days that an invalid vulnerability is kept for before it is automatically deleted in the vulnerability management settings. Request parameters
 
@@ -1732,7 +2056,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeVulLevel
+#### 4.2.6 DescribeVulLevel
 
 You can call this operation to query the vulnerability severities that require attention. Request parameters
 
@@ -1762,7 +2086,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeVulWhitelist
+#### 4.2.7 DescribeVulWhitelist
 
 You can call this operation to obtain the whitelist of vulnerabilities. Request parameters
 
@@ -1813,7 +2137,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeGroupedVul
+#### 4.2.8 DescribeGroupedVul
 
 You can call this operation to query information about the specified vulnerability group. The vulnerability management feature can display detected vulnerability records by group. A vulnerability group contains all servers with a specific vulnerability detected by Server Guard. Request parameters
 
@@ -1898,7 +2222,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeVulList
+#### 4.2.9 DescribeVulList
 
 You can call this operation to obtain the vulnerability list of the specified host asset. Request parameters
 
@@ -1987,7 +2311,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeVulDetails
+#### 4.2.10 DescribeVulDetails
 
 You can call this operation to query detailed information about a vulnerability. Request parameters
 
@@ -2066,7 +2390,7 @@ or Linux operating systems. The use-after-free vulnerability is found in the net
 
 `}`
 
-#### DescribeVulNumStatistics
+#### 4.2.11 DescribeVulNumStatistics
 
 You can call this operation to query vulnerability statistics. Request parameters
 
@@ -2123,7 +2447,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeVulLevelStatistics
+#### 4.2.12 DescribeVulLevelStatistics
 
 You can call this operation to obtain the statistics on vulnerabilities by vulnerability severity. Request parameters
 
@@ -2210,7 +2534,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeVulMachineList
+#### 4.2.13 DescribeVulMachineList
 
 You can call this operation to query the vulnerability statistics of a specified server. Request parameters
 
@@ -2284,9 +2608,9 @@ Sample responses (JSON format)
 
 `}`
 
-### Baseline check
+### 4.3 Baseline check
 
-#### DescribeStratetyDetail
+#### 4.3.1 DescribeStratetyDetail
 
 You can call this operation to query the details of a specified baseline check policy. Request parameters
 
@@ -2376,7 +2700,7 @@ Sample responses (JSON format)
 
 `}` `]` `}` `]` `}` `}`
 
-#### DescribeStrategyTarget
+#### 4.3.2 DescribeStrategyTarget
 
 You can call this operation to query the information about asset groups to which a specified baseline check policy applies. Request parameters
 
@@ -2425,7 +2749,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeUuidConfig
+#### 4.3.3 DescribeUuidConfig
 
 You can call this operation to check whether baseline check is enabled for a specified server. Request parameters
 
@@ -2466,7 +2790,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeUserSetting
+#### 4.3.4 DescribeUserSetting
 
 You can call this operation to query the number of days an invalid risk is kept for before it is automatically deleted in baseline check. Request parameters
 
@@ -2496,7 +2820,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeRiskWhiteList
+#### 4.3.5 DescribeRiskWhiteList
 
 You can call this operation to obtain the whitelist of risk items that are exempt from the baseline check. Request parameters
 
@@ -2553,7 +2877,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeStratety
+#### 4.3.6 DescribeStratety
 
 You can call this operation to query the execution details of a specified baseline check policy. Request parameters
 
@@ -2616,7 +2940,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeStrategyExecDetail
+#### 4.3.7 DescribeStrategyExecDetail
 
 You can call this operation to query the execution details of a baseline check policy. Request parameters
 
@@ -2665,7 +2989,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeRiskType
+#### 4.3.8 DescribeRiskType
 
 You can call this operation to query all types of risks detected in baseline check and view the number of risks that have been detected by a baseline check policy or on the specified servers for a specific risk type. Request parameters
 
@@ -2745,7 +3069,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### Describesummary
+#### 4.3.9 Describesummary
 
 You can call this operation to query the risks detected in baseline check by risk type. Request parameters
 
@@ -2817,9 +3141,9 @@ Checks whether the logon port is the default port 22\n2 and whether the root acc
 
 `}` `]` `}`
 
-### Unusual logon detection
+### 4.4 Unusual logon detection
 
-#### DescribeBaseConfigs
+#### 4.4.1 DescribeBaseConfigs
 
 You can call this operation to query the logon security settings. Request parameters
 
@@ -2890,7 +3214,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeSwitchConfigs
+#### 4.4.2 DescribeSwitchConfigs
 
 You can call this operation to query the logon security configuration records in the logon security settings. Request parameters
 
@@ -2939,7 +3263,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeConfigTarget
+#### 4.4.3 DescribeConfigTarget
 
 You can call this operation to query the information about servers to which a specified logon security configuration record applies. Request parameters
 
@@ -2988,9 +3312,9 @@ Sample responses (JSON format)
 
 `}`
 
-### Webshell detection
+### 4.5 Webshell detection
 
-#### DescribeCategoryCount
+#### 4.5.1 DescribeCategoryCount
 
 You can call this operation to query the number of webshells detected by Server Guard. Request parameters
 
@@ -3020,7 +3344,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeWebshell
+#### 4.5.2 DescribeWebshell
 
 You can call this operation to query records of webshell files that have been detected by Server Guard, including the detection time and webshell file path. Request parameters
 
@@ -3101,7 +3425,7 @@ Sample response (JSON format)
 
 `}`
 
-#### DescribeQuaraFile
+#### 4.5.3 DescribeQuaraFile
 
 You can call this operation to obtain the list of quarantined files. Request parameters
 
@@ -3161,9 +3485,9 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-### Exception detection on hosts
+### 4.6 Exception detection on hosts
 
-#### DescribeSuspEventTypes
+#### 4.6.1 DescribeSuspEventTypes
 
 You can call this operation to query the unusual event types. Request parameters
 
@@ -3199,7 +3523,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeSuspTrendStatistics
+#### 4.6.2 DescribeSuspTrendStatistics
 
 You can call this operation to query the chart data on different types of unusual server events on each day. Request parameters
 
@@ -3233,7 +3557,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeSuspiciousExportInfo
+#### 4.6.3 DescribeSuspiciousExportInfo
 
 You can call this operation to query an unusual event export task. Request parameters
 
@@ -3281,9 +3605,9 @@ Sample response (JSON format)
 
 `}`
 
-### Retrieval of host logs
+### 4.7 Retrieval of host logs
 
-#### DescribeFilterFields
+#### 4.7.1 DescribeFilterFields
 
 You can call this operation to query the filter fields of a specified server log search condition. Request parameters
 
@@ -3329,7 +3653,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeHistogram
+#### 4.7.2 DescribeHistogram
 
 You can call this operation to obtain the statistics on server logs generated within a specified time frame. Request parameters
 
@@ -3378,7 +3702,7 @@ Sample responses (JSON format)
 
 `0,` `0,` `0,` `0,` `0,` `0,` `]` `}` `]` `}`
 
-#### DescribeLogInfo
+#### 4.7.3 DescribeLogInfo
 
 You can call this operation to query the server log fields based on specified query conditions. Request parameters
 
@@ -3486,7 +3810,7 @@ Sample responses (JSON format)
 
 `},` `]` `}`
 
-#### DescribeLogItems
+#### 4.7.4 DescribeLogItems
 
 You can call this operation to query the server log details that are returned by a query. Request parameters
 
@@ -3571,13 +3895,13 @@ Sample responses (JSON format)
 
 `}` covery and Protection
 
-## Sensitive Data Discovery and
+## 5 Sensitive Data Discovery and Protection
 
 Protection
 
-### APIs
+### 5.1 APIs
 
-#### DescribeDataAssets
+#### 5.1.1 DescribeDataAssets
 
 Queries data assets globally based on the specified conditions. Request parameters
 
@@ -3647,7 +3971,7 @@ covery and Protection Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DescribeInstances
+#### 5.1.2 DescribeInstances
 
 You can call this operation to query instances, databases, projects, or buckets based on the specified conditions. Request parameters
 
@@ -3719,7 +4043,7 @@ Sample success response in JSON format
 
 `}` `]` `}`
 
-#### DescribeTables
+#### 5.1.3 DescribeTables
 
 Queries data asset tables of MaxCompute, ApsaraDB RDS, and Tablestore that SDDP is authorized to scan. Request parameters
 
@@ -3789,7 +4113,7 @@ Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DescribePackages
+#### 5.1.4 DescribePackages
 
 You can call this operation to query MaxCompute packages based on the specified conditions. Request parameters
 
@@ -3855,7 +4179,7 @@ covery and Protection Sample success response in JSON format
 
 `}` `]` `}`
 
-#### DescribeColumns
+#### 5.1.5 DescribeColumns
 
 Queries columns in tables of MaxCompute, ApsaraDB RDS, and Tablestore that SDDP is authorized to scan. Request parameters
 
@@ -3930,7 +4254,7 @@ Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DescribeOssObjects
+#### 5.1.6 DescribeOssObjects
 
 You can call this operation to query Object Storage Service (OSS) objects based on the specified conditions. Request parameters
 
@@ -3987,7 +4311,7 @@ Sample success response in JSON format covery and Protection
 
 `}` `]` `}`
 
-#### DescribeOssObjectDetail
+#### 5.1.7 DescribeOssObjectDetail
 
 You can call this operation to query the details of an Object Storage Service (OSS) object that SDDP is authorized to access. Request parameters
 
@@ -4043,7 +4367,7 @@ Sample success responses in JSON format
 
 `}` `]` `}` `}`
 
-#### DescribeDeparts
+#### 5.1.8 DescribeDeparts
 
 You can call this operation to query departments based on the specified conditions. Request parameters
 
@@ -4094,7 +4418,7 @@ Sample success response in JSON format covery and Protection
 
 `}` `]` `}`
 
-#### DescribeAccounts
+#### 5.1.9 DescribeAccounts
 
 Queries accounts based on the specific conditions. Request parameters
 
@@ -4171,7 +4495,7 @@ Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DescribeAccountDetail
+#### 5.1.10 DescribeAccountDetail
 
 Queries the details of an account based on its ID and type. Request parameters covery and Protection
 
@@ -4239,7 +4563,7 @@ Sample success responses in JSON format
 
 `}` `]` `}` `}`
 
-#### DescribePrivileges
+#### 5.1.11 DescribePrivileges
 
 covery and Protection Queries permissions of an account based on its ID and other specific conditions. Request parameters
 
@@ -4314,7 +4638,7 @@ Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DescribeEventTypes
+#### 5.1.12 DescribeEventTypes
 
 You can call this operation to query types of anomalous activities based on the specified conditions. Request parameters
 
@@ -4367,7 +4691,7 @@ ot protected",
 
 `}` `]` `}`
 
-#### DescribeEvents
+#### 5.1.13 DescribeEvents
 
 You can call this operation to query anomalous activities based on the specified conditions. Request parameters
 
@@ -4460,7 +4784,7 @@ Sample success response in JSON format covery and Protection
 
 `}` `]` `}`
 
-#### DescribeEventDetail
+#### 5.1.14 DescribeEventDetail
 
 You can call this operation to query the details of an anomalous activity based on the specified ID. Request parameters
 
@@ -4579,7 +4903,7 @@ a to risks and damage to the security baseline.",
 
 `}` `}`
 
-#### ModifyEventStatus
+#### 5.1.15 ModifyEventStatus
 
 You can call this operation to process an anomalous activity. Request parameters
 
@@ -4615,7 +4939,7 @@ Sample success response in JSON format
 
 `}`
 
-#### ModifyEventTypeStatus
+#### 5.1.16 ModifyEventTypeStatus
 
 Enables detection of exceptions of subtypes. Request parameters
 
@@ -4644,7 +4968,7 @@ Sample success responses in JSON format
 
 `}`
 
-#### ModifyDefaultLevel
+#### 5.1.17 ModifyDefaultLevel
 
 You can call this operation to set the default risk level or modify the risk levels of sensitive data. Request parameters
 
@@ -4674,7 +4998,7 @@ Sample success response in JSON format
 
 `}`
 
-#### DescribeRules
+#### 5.1.18 DescribeRules
 
 You can call this operation to query rules based on the specified conditions. Request parameters
 
@@ -4750,7 +5074,7 @@ Sample success response in JSON format covery and Protection
 
 `}`
 
-#### CreateRule
+#### 5.1.19 CreateRule
 
 You can call this operation to create a custom rule. Request parameters
 
@@ -4782,7 +5106,7 @@ Sample success response in JSON format
 
 `}`
 
-#### ModifyRule
+#### 5.1.20 ModifyRule
 
 You can call this operation to modify a custom rule. Request parameters
 
@@ -4815,7 +5139,7 @@ Sample success response in JSON format
 
 `}`
 
-#### ModifyRuleStatus
+#### 5.1.21 ModifyRuleStatus
 
 You can call this operation to enable or disable a rule. Request parameters
 
@@ -4845,7 +5169,7 @@ Sample success response in JSON format
 
 `}`
 
-#### DeleteRule
+#### 5.1.22 DeleteRule
 
 You can call this operation to delete a custom rule. Request parameters
 
@@ -4874,7 +5198,7 @@ Sample success response in JSON format
 
 `}`
 
-#### DescribeDataLimitSet
+#### 5.1.23 DescribeDataLimitSet
 
 You can call this operation to query the instances, databases, or buckets of a specified service that Sensitive Data Discovery and Protection (SDDP) is authorized to scan. Request parameters
 
@@ -4949,7 +5273,7 @@ Sample success response in JSON format covery and Protection
 
 `}` `]` `}` `}`
 
-#### CreateDataLimit
+#### 5.1.24 CreateDataLimit
 
 Authorizes SDDP to scan instances, databases, or buckets of a specified service. Request parameters
 
@@ -4991,7 +5315,7 @@ Sample success responses in JSON format
 
 `}`
 
-#### DeleteDataLimit
+#### 5.1.25 DeleteDataLimit
 
 Revokes permissions granted to SDDP for scanning instances, databases, or buckets of a specified service. Request parameters
 
@@ -5025,9 +5349,9 @@ Sample success responses in JSON format
 
 `}` on
 
-## Container Protection
+## 6 Container Protection
 
-### DescribeImageInfoList
+### 6.1 DescribeImageInfoList
 
 Queries the information about images. Request parameters
 
@@ -5261,7 +5585,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeImageBaselineItemList
+### 6.3 DescribeImageBaselineItemList
 
 Queries the baseline check items of an image. Request parameters
 
@@ -5517,7 +5841,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeCycleTaskList
+### 6.5 DescribeCycleTaskList
 
 Queries image scan tasks. Request parameters
 
@@ -5528,8 +5852,6 @@ Queries image scan tasks. Request parameters
 
 | eveloper Guide·Cont | ainer Protec | ti |   | Apsara Stack Securit |
 |---|---|---|---|---|
-
-on
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -5633,7 +5955,7 @@ Sample success responses `XML` format on
 
 `}`
 
-### DescribeContainerCriteria
+### 6.6 DescribeContainerCriteria
 
 Queries the conditions that are used to query containers. on Request parameters
 
@@ -5686,7 +6008,7 @@ on Sample success responses `XML` format
 
 `}`
 
-### DescribeContainerFieldStatistics
+### 6.7 DescribeContainerFieldStatistics
 
 Queries statistics of container risks. Request parameters
 
@@ -5867,7 +6189,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeContainerInstances
+### 6.9 DescribeContainerInstances
 
 Queries containers. Request parameters
 
@@ -6180,7 +6502,7 @@ Sample success responses `XML` format on
 
 `}`
 
-### DescribeImageCriteria
+### 6.11 DescribeImageCriteria
 
 Queries the search conditions that can be used to obtain images. Request parameters
 
@@ -6232,7 +6554,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeImageInstances
+### 6.12 DescribeImageInstances
 
 on Queries the information of images. Request parameters
 
@@ -6459,7 +6781,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### GetRegistryScanDayNum
+### 6.14 GetRegistryScanDayNum
 
 Queries the time setting for image scans. Request parameters
 
@@ -6512,7 +6834,7 @@ Sample success responses `XML` format
 
 `}` on
 
-### ListPrivateRegistryList
+### 6.15 ListPrivateRegistryList
 
 Queries third-party image repositories. Request parameters
 
@@ -6591,7 +6913,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### ListPrivateRegistryType
+### 6.16 ListPrivateRegistryType
 
 Queries the types of image repositories. Request parameters
 
@@ -6639,7 +6961,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeAlarmEventDetail
+### 6.17 DescribeAlarmEventDetail
 
 Queries the details of an exception. Request parameters
 
@@ -6779,7 +7101,7 @@ tory for malicious file downloads. Stop the malicious processes that are running
 
 `}` `}` `}` `}`
 
-### DescribeNsasSuspEventType
+### 6.18 DescribeNsasSuspEventType
 
 Queries the types of alert events. Request parameters
 
@@ -6943,7 +7265,7 @@ SupportedMisType>
 
 `}` `}` `}`
 
-### DescribeSuspEvents
+### 6.20 DescribeSuspEvents
 
 Queries exceptions. Request parameters on
 
@@ -7215,7 +7537,7 @@ on
 
 on `}`
 
-### DescribeEventLevelCount
+### 6.21 DescribeEventLevelCount
 
 Queries the severities of alerts. Request parameters
 
@@ -7281,7 +7603,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeConcernNecessity
+### 6.22 DescribeConcernNecessity
 
 Queries the severities of alert events. Request parameters on
 
@@ -7318,7 +7640,7 @@ Sample success responses `XML` format
 
 `}`
 
-### DescribeGroupedVul
+### 6.23 DescribeGroupedVul
 
 on Queries vulnerabilities by group. Request parameters
 
@@ -7450,7 +7772,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### DescribeImageGroupedVulList
+### 6.24 DescribeImageGroupedVulList
 
 Queries image vulnerabilities by group. Request parameters
 
@@ -7563,7 +7885,7 @@ Sample success responses `XML` format on
 
 `}` `}`
 
-### DescribeImageVulList
+### 6.25 DescribeImageVulList
 
 Queries image vulnerabilities. Request parameters
 
@@ -7749,7 +8071,7 @@ Sample success responses `XML` format on
 
 `}`
 
-### DescribeVulDetails
+### 6.26 DescribeVulDetails
 
 Queries the details of a vulnerability. Request parameters
 
@@ -7897,7 +8219,7 @@ wnload the patch from:\\n&lt;br /&gt;https://github.com/FasterXML/jackson-databi
 
 `}`
 
-### DescribeAllGroups
+### 6.27 DescribeAllGroups
 
 Queries the grouping information about servers. Request parameters
 
@@ -7957,7 +8279,7 @@ Sample success responses `XML` format on
 
 `}`
 
-### DescribeAssetDetailByUuid
+### 6.28 DescribeAssetDetailByUuid
 
 Queries the details of an asset by using the UUID of the asset. Request parameters
 
@@ -8102,11 +8424,11 @@ ist> </AssetDetail>
 
 `}` `}` Service (TDS)
 
-## Threat Detection Service (TDS)
+## 7 Threat Detection Service (TDS)
 
-### Asset management
+### 7.1 Asset management
 
-#### DescribeFieldStatistics
+#### 7.1.1 DescribeFieldStatistics
 
 Queries statistics of the assets. Request parameters
 
@@ -8182,7 +8504,7 @@ Sample success responses `XML` format
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeGroupedTags
+#### 7.1.2 DescribeGroupedTags
 
 Queries the statistics of asset tags. Request parameters
 
@@ -8246,7 +8568,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeAllGroups
+#### 7.1.3 DescribeAllGroups
 
 Queries the grouping information about servers. Request parameters
 
@@ -8335,7 +8657,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeInstanceStatistics
+#### 7.1.4 DescribeInstanceStatistics
 
 Queries risk information about an asset. Request parameters
 
@@ -8457,7 +8779,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeCloudProductFieldStatistics
+#### 7.1.5 DescribeCloudProductFieldStatistics
 
 Queries the statistics on cloud services that are protected by Threat Detection Service. Request parameters
 
@@ -8521,7 +8843,7 @@ Sample success responses `XML` format Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeCloudCenterInstances
+#### 7.1.6 DescribeCloudCenterInstances
 
 Queries the asset information on the Assets page, such as the name and region of an asset instance. Request parameters
 
@@ -8763,7 +9085,7 @@ otaCout:69,
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeSummaryInfo
+#### 7.1.7 DescribeSummaryInfo
 
 Queries the security information about an asset, such as the security score and the numbers of protected and unprotected assets. Request parameters
 
@@ -8818,9 +9140,9 @@ Sample success responses `XML` format
 
 `}` Service (TDS) Error codes For a list of error codes, see Error codes.
 
-### Secure score
+### 7.2 Secure score
 
-#### DescribeSecureSuggestion
+#### 7.2.1 DescribeSecureSuggestion
 
 Queries suggestions about how to manage the security risks that affect the security score. Request parameters
 
@@ -8842,8 +9164,6 @@ Response parameters
 
 | psara Stack Securi | ty |   | Developer Guide·Threat Detection |
 |---|---|---|---|
-
-Service (TDS)
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9090,9 +9410,9 @@ Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-### Security alerts
+### 7.3 Security alerts
 
-#### DescribeAlarmEventList
+#### 7.3.1 DescribeAlarmEventList
 
 Queries alert events on the Alerts page. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions. Request parameters
 
@@ -9260,7 +9580,7 @@ nal>
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeAlarmEventDetail
+#### 7.3.2 DescribeAlarmEventDetail
 
 Queries details of an alert event. An alert event consists of alerts and exceptions. Each alert event contains multiple exceptions. Request parameters
 
@@ -9456,7 +9776,7 @@ lnerabilities in parameter configuration, and resolve these issues.",
 
 `}` Service (TDS) Error codes For a list of error codes, see Error codes.
 
-#### DescribeSuspEvents
+#### 7.3.3 DescribeSuspEvents
 
 Queries information about exceptions. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions. Request parameters
 
@@ -9630,7 +9950,7 @@ s code into Linux scheduled tasks.",
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeSuspEventDetail
+#### 7.3.4 DescribeSuspEventDetail
 
 Service (TDS) Queries details of a specific exception. An alert event consists of alerts and exceptions. Each alert event is related to multiple exceptions. Request parameters
 
@@ -9837,9 +10157,9 @@ Service (TDS)
 
 `}` Service (TDS) Error codes For a list of error codes, see Error codes.
 
-### Configuration assessment
+### 7.4 Configuration assessment
 
-#### DescribeRiskItemType
+#### 7.4.1 DescribeRiskItemType
 
 Queries types of check items for cloud service configurations. Each check item is categorized into a type. Types of check items include identity authentication and permissions, network access control, log auditing, data security, monitoring and alerting, and basic security protection. Request parameters
 
@@ -9931,7 +10251,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### StartBaselineSecurityCheck
+#### 7.4.2 StartBaselineSecurityCheck
 
 Checks cloud service configurations. You can check all items or a specific item, and you can verify whether an item is already checked. Request parameters
 
@@ -9976,7 +10296,7 @@ Sample success responses `XML` format
 
 `}` Service (TDS) Error codes For a list of error codes, see Error codes.
 
-#### DescribeRiskCheckSummary
+#### 7.4.3 DescribeRiskCheckSummary
 
 Queries the summary of check items for cloud service configurations. The operation returns the following information: the number of risk items, the risk rate, the number of affected assets, the last check time, and the statistics of each type of check items. Request parameters
 
@@ -10236,7 +10556,7 @@ Service (TDS)
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeRiskCheckResult
+#### 7.4.4 DescribeRiskCheckResult
 
 Queries the results of check items by type or name. Request parameters
 
@@ -10494,7 +10814,7 @@ abled\\n\", \"url\": \"https://***.aliyun.com/#/secure\\n\" }",
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeSecurityCheckScheduleConfig
+#### 7.4.5 DescribeSecurityCheckScheduleConfig
 
 Queries the custom check cycle and time period. Request parameters
 
@@ -10555,9 +10875,9 @@ Sample success responses `XML` format
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-### Vulnerability management
+### 7.5 Vulnerability management
 
-#### DescribeVulList
+#### 7.5.1 DescribeVulList
 
 Queries vulnerabilities by type. Service (TDS) Request parameters
 
@@ -10837,7 +11157,7 @@ Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeVulWhitelist
+#### 7.5.2 DescribeVulWhitelist
 
 Queries the whitelist of vulnerabilities by page. Request parameters
 
@@ -10909,7 +11229,7 @@ Service (TDS) `JSON` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeConcernNecessity
+#### 7.5.3 DescribeConcernNecessity
 
 Queries the priority to fix the vulnerability. Request parameters
 
@@ -10964,7 +11284,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeGroupedVul
+#### 7.5.4 DescribeGroupedVul
 
 Queries information about vulnerabilities by group. Request parameters
 
@@ -11090,7 +11410,7 @@ Sample success responses `XML` format Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeAutoDelConfig
+#### 7.5.5 DescribeAutoDelConfig
 
 Queries the configurations for automatic vulnerability deletion. Request parameters
 
@@ -11129,9 +11449,9 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-### Baseline check
+### 7.6 Baseline check
 
-#### DescribeCheckWarningSummary
+#### 7.6.1 DescribeCheckWarningSummary
 
 Queries the statistical information about baseline check results. The information includes the number of servers on which a baseline check is performed, the number of baseline check items, and the last check pass rate. Request parameters
 
@@ -11874,7 +12194,7 @@ Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeStratety
+#### 7.6.2 DescribeStratety
 
 Queries the configurations of baseline check policies. Request parameters Service (TDS)
 
@@ -12022,7 +12342,7 @@ Sample success responses `XML` format Service (TDS)
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes. Service (TDS)
 
-#### DescribeStrategyExecDetail
+#### 7.6.3 DescribeStrategyExecDetail
 
 Queries the details of the latest baseline check by using a baseline check policy. The details include the time when the check is performed, the number of risk items, and the baseline risk details. Request parameters
 
@@ -12108,7 +12428,7 @@ Sample success responses `XML` format Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeCheckWarnings
+#### 7.6.4 DescribeCheckWarnings
 
 Queries specified risk items and check items of a specified server. Request parameters
 
@@ -12564,7 +12884,7 @@ Service (TDS)
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeCheckWarningDetail
+#### 7.6.5 DescribeCheckWarningDetail
 
 Queries the details of a specific check item. Request parameters
 
@@ -12635,7 +12955,7 @@ group /etc/gshadow\r\nchmod 0644 /etc/group \r\nchmod 0644 /etc/passwd \r\nchmod
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeWarningMachines
+#### 7.6.6 DescribeWarningMachines
 
 Queries information about servers on which a baseline check is performed. The information includes the statistics and status of risk items and IDs of the servers. Request parameters Service (TDS)
 
@@ -12734,9 +13054,9 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-### Asset fingerprints
+### 7.7 Asset fingerprints
 
-#### DescribePropertyCount
+#### 7.7.1 DescribePropertyCount
 
 Queries the statistics of asset fingerprints, including the numbers of processes, ports, software, users, and scheduled tasks. Request parameters
 
@@ -12794,7 +13114,7 @@ Sample success responses `XML` format Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribePropertyPortDetail
+#### 7.7.2 DescribePropertyPortDetail
 
 Queries the details of a port. Request parameters
 
@@ -13054,7 +13374,7 @@ Service (TDS)
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribePropertyProcDetail
+#### 7.7.3 DescribePropertyProcDetail
 
 Queries the details of a process. Request parameters
 
@@ -13222,7 +13542,7 @@ Service (TDS) `JSON` format
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes. Service (TDS)
 
-#### DescribePropertyPortItem
+#### 7.7.4 DescribePropertyPortItem
 
 Queries information about ports. Request parameters
 
@@ -13353,7 +13673,7 @@ Sample success responses `XML` format Service (TDS)
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribePropertyProcItem
+#### 7.7.5 DescribePropertyProcItem
 
 Queries information about all processes. Request parameters
 
@@ -13440,7 +13760,7 @@ Sample success responses `XML` format
 
 `}` `}` Error codes Service (TDS) For a list of error codes, see Error codes.
 
-#### DescribePropertySoftwareDetail
+#### 7.7.6 DescribePropertySoftwareDetail
 
 Queries the details of a software asset. Request parameters
 
@@ -13581,7 +13901,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribePropertySoftwareItem
+#### 7.7.7 DescribePropertySoftwareItem
 
 Queries information about all software assets. Request parameters Service (TDS)
 
@@ -13676,7 +13996,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribePropertyUserDetail
+#### 7.7.8 DescribePropertyUserDetail
 
 Queries the details of an account in the account list. Request parameters
 
@@ -13836,7 +14156,7 @@ Sample success responses `XML` format
 
 `}` `]` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribePropertyUserItem
+#### 7.7.9 DescribePropertyUserItem
 
 Queries the account information about an asset. Request parameters Service (TDS) q p
 
@@ -13934,9 +14254,9 @@ Sample success responses `XML` format
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-### Asset exposure
+### 7.8 Asset exposure
 
-#### DescribeExposedInstanceList
+#### 7.8.1 DescribeExposedInstanceList
 
 Queries the assets that are exposed. Request parameters
 
@@ -14043,13 +14363,13 @@ Sample success responses `XML` format
 
 onitoring System
 
-## Network Traffic Monitoring
+## 8 Network Traffic Monitoring System
 
 System
 
-### IP address blocking
+### 8.1 IP address blocking
 
-#### AddToBlackList
+#### 8.1.1 AddToBlackList
 
 Adds the source IP address of an attack to the blacklist. Request parameters
 
@@ -14099,7 +14419,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### AddToWhiteList
+#### 8.1.2 AddToWhiteList
 
 Adds the source IP address of an attack to the whitelist. Request parameters
 
@@ -14148,7 +14468,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DelFromBlackList
+#### 8.1.3 DelFromBlackList
 
 Removes the source IP address of an attack from the blacklist. Request parameters
 
@@ -14202,7 +14522,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DelFromWhiteList
+#### 8.1.4 DelFromWhiteList
 
 Removes the source IP address of an attack from the whitelist. Request parameters
 
@@ -14253,7 +14573,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeBlackList
+#### 8.1.5 DescribeBlackList
 
 Queries the details of the blacklist. Request parameters
 
@@ -14358,7 +14678,7 @@ Sample success responses `XML` format onitoring System
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeWhiteList
+#### 8.1.6 DescribeWhiteList
 
 onitoring System Queries the details of the whitelist. Request parameters
 
@@ -14465,9 +14785,9 @@ Sample success responses `XML` format
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-### Application-layer rules
+### 8.2 Application-layer rules
 
-#### DescribeL7Rule
+#### 8.2.1 DescribeL7Rule
 
 Queries the details of the application-layer rules that are used to block traffic. Request parameters
 
@@ -14643,7 +14963,7 @@ hsDesc>
 
 `}`
 
-#### SwitchL7RuleStatus
+#### 8.2.2 SwitchL7RuleStatus
 
 Changes the status of application-layer rules. Request parameters
 
@@ -14692,7 +15012,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### AddL7Rule
+#### 8.2.3 AddL7Rule
 
 Creates an HTTP rule. Request parameters
 
@@ -14752,7 +15072,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DelL7Rule
+#### 8.2.4 DelL7Rule
 
 Deletes application-layer rules. Request parameters
 
@@ -14800,11 +15120,11 @@ Sample success responses `XML` format
 
 `}` rewall
 
-## Web Application Firewall
+## 9 Web Application Firewall
 
-### Website protection
+### 9.1 Website protection
 
-#### DescribeWebsite
+#### 9.1.1 DescribeWebsite
 
 Queries the information about the websites that are protected by WAF. Request parameters
 
@@ -14859,7 +15179,7 @@ olicy_rules": [], "health_check_status": "", "backend_config": {"type": "proxy",
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreateWebsite
+#### 9.1.2 CreateWebsite
 
 Adds a website. Request parameters
 
@@ -14982,7 +15302,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### EditWebsite
+#### 9.1.3 EditWebsite
 
 Modifies the information about a specific website. Request parameters
 
@@ -15120,7 +15440,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### ToggleWebsite
+#### 9.1.4 ToggleWebsite
 
 Enables or disables WAF protection for a specific website. Request parameters
 
@@ -15188,7 +15508,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### QueryAsyncTaskStatus
+#### 9.1.5 QueryAsyncTaskStatus
 
 Queries the status of an asynchronous task. Request parameters
 
@@ -15247,7 +15567,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### UploadResponsePage
+#### 9.1.6 UploadResponsePage
 
 Uploads a response page file. Request parameters
 
@@ -15289,7 +15609,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeInvalidWebsite
+#### 9.1.7 DescribeInvalidWebsite
 
 Queries the information about the invalid websites that are discovered by the upgrade detection feature. Request parameters
 
@@ -15344,7 +15664,7 @@ om\"], \"backend_config\": {\"type\": \"proxy\", \"load_balance_policy\": \"Roun
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DeleteInvalidWebsite
+#### 9.1.8 DeleteInvalidWebsite
 
 Deletes a specific invalid website. If you use Apsara Stack Enterprise V3.12.0 or upgrade Apsara Stack Enterprise to a later version, WAF performs validity checks and measures invalid websites. Request parameters rewall
 
@@ -15385,7 +15705,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes. rewall
 
-#### DescribeInternetVip
+#### 9.1.9 DescribeInternetVip
 
 Queries the information about the virtual IP addresses (VIPs) on the Internet. Request parameters
 
@@ -15426,7 +15746,7 @@ rewall `JSON` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreateInternetVip
+#### 9.1.10 CreateInternetVip
 
 Creates a virtual IP address (VIP) on the Internet. Request parameters
 
@@ -15475,7 +15795,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DeleteInternetVip
+#### 9.1.11 DeleteInternetVip
 
 Deletes a virtual IP address (VIP) on the Internet. Request parameters rewall
 
@@ -15516,7 +15836,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeVpc
+#### 9.1.12 DescribeVpc
 
 rewall Queries the information about virtual private clouds (VPCs). Request parameters
 
@@ -15557,7 +15877,7 @@ esc": "", "cidr": "172.16.XX.XX/16"}]</Result> </DescribeVpcResponse>
 
 `}` rewall Error codes For a list of error codes, see Error codes.
 
-#### DescribeVSwitch
+#### 9.1.13 DescribeVSwitch
 
 Queries the information about the vSwitches in a specific virtual private cloud (VPC). Request parameters
 
@@ -15599,7 +15919,7 @@ ame\": \"zyp004\", \"vpcId\": \"vpc-tx9evaxvf65gt95gb****\", \"cidrBlock\": \"19
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeVpcVip
+#### 9.1.14 DescribeVpcVip
 
 Queries the information about the virtual IP addresses (VIPs) in a specific virtual private cloud (VPC). Request parameters
 
@@ -15645,7 +15965,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreateVpcVip
+#### 9.1.15 CreateVpcVip
 
 Creates a virtual IP address (VIP) in a specific virtual private cloud (VPC). Request parameters
 
@@ -15692,7 +16012,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DeleteVpcVip
+#### 9.1.16 DeleteVpcVip
 
 Deletes a virtual IP address (VIP) in a specific virtual private cloud (VPC). Request parameters
 
@@ -15734,7 +16054,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeEcs
+#### 9.1.17 DescribeEcs
 
 Queries the information about the Elastic Compute Service (ECS) instances in a specific virtual private cloud (VPC). Request parameters
 
@@ -15782,7 +16102,7 @@ nternetIp": "", "intranetIp": "192.168.XX.XX", "eip": "", "natIp": "6.6.XX.XX", 
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeSlb
+#### 9.1.18 DescribeSlb
 
 Queries the information about the Server Load Balancer (SLB) instances in a specific virtual private cloud (VPC). Request parameters
 
@@ -15829,11 +16149,11 @@ waf****\", \"status\": \"active\", \"networkType\": \"intranet\", \"ip\": \"192.
 
 `}` Error codes For a list of error codes, see Error codes.
 
-### HTTP flood protection rules
+### 9.2 HTTP flood protection rules
 
 rewall
 
-#### DescribeCCRuleTemplate
+#### 9.2.1 DescribeCCRuleTemplate
 
 Queries the information about HTTP flood protection rules. Request parameters
 
@@ -15882,7 +16202,7 @@ abled\": true, \"match_method\": {\"target_type\": \"CIDR\", \"period\": null, \
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreateCCRuleTemplate
+#### 9.2.2 CreateCCRuleTemplate
 
 Creates an HTTP flood protection rule. Request parameters
 
@@ -15969,7 +16289,7 @@ rue, \"match_method\": {\"target_type\": \"CIDR\", \"period\": 5, \"limit\": 5, 
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### EditCCRuleTemplate
+#### 9.2.3 EditCCRuleTemplate
 
 Modifies a specific HTTP flood protection rule. Request parameters
 
@@ -16059,7 +16379,7 @@ ue, \"match_method\": {\"target_type\": \"CIDR\", \"period\": 5, \"limit\": 5, \
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### ToggleCCRuleTemplate
+#### 9.2.4 ToggleCCRuleTemplate
 
 Enables or disables a specific HTTP flood protection rule. Request parameters
 
@@ -16123,7 +16443,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DeleteCCRuleTemplate
+#### 9.2.5 DeleteCCRuleTemplate
 
 Deletes a specific HTTP flood protection rule. Request parameters
 
@@ -16188,7 +16508,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### ClearCCRestrictionList
+#### 9.2.6 ClearCCRestrictionList
 
 Removes the restricted users in a specific HTTP flood protection rule. Request parameters
 
@@ -16253,7 +16573,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeCCWhitelist
+#### 9.2.7 DescribeCCWhitelist
 
 Queries the information about HTTP flood protection whitelists. Request parameters
 
@@ -16303,7 +16623,7 @@ _group": null, "comment": "", "create_time": "1594627457"}], "total": 1}</Result
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreateCCWhitelist
+#### 9.2.8 CreateCCWhitelist
 
 Creates an HTTP flood protection whitelist. Request parameters
 
@@ -16374,7 +16694,7 @@ get_ip_group\": null, \"comment\": \"\", \"create_time\": \"1598337455\"}]"
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DeleteCCWhitelist
+#### 9.2.9 DeleteCCWhitelist
 
 Deletes a specific HTTP flood protection whitelist. Request parameters
 
@@ -16445,9 +16765,9 @@ askList>
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-### Custom rules
+### 9.3 Custom rules
 
-#### DescribePolicyRule
+#### 9.3.1 DescribePolicyRule
 
 Queries the information about custom rules. Request parameters
 
@@ -16504,7 +16824,7 @@ et\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"decoded_path\": \"
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreatePolicyRule
+#### 9.3.2 CreatePolicyRule
 
 Creates a custom rule to deny, allow, or monitor requests. Request parameters
 
@@ -16633,7 +16953,7 @@ et\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"urlpath\": \"abced
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### EditPolicyRule
+#### 9.3.3 EditPolicyRule
 
 Modifies a specific custom rule. Request parameters rewall
 
@@ -16722,7 +17042,7 @@ et\": \"logic_expr\", \"pattern\": {\"$AND\": [{\"infix\": {\"urlpath\": \"abced
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### TogglePolicyRule
+#### 9.3.4 TogglePolicyRule
 
 Enables or disables a specific custom rule. Request parameters
 
@@ -16782,7 +17102,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DeletePolicyRule
+#### 9.3.5 DeletePolicyRule
 
 Deletes a specific custom rule. Request parameters
 
@@ -16841,7 +17161,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### EditPolicyRulePriority
+#### 9.3.6 EditPolicyRulePriority
 
 Modifies the priorities of custom rules for a specific website. The rules in PolicyRuleIdList are prioritized in descending order. Request parameters
 
@@ -16909,7 +17229,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### GenerateFalsePositiveRuleCorrection
+#### 9.3.7 GenerateFalsePositiveRuleCorrection
 
 Generates correction rules based on false positives. Request parameters
 
@@ -16969,7 +17289,7 @@ r\": \"139.162.XX.XX\"}, \"action\": \"allow\", \"comment\": \"Clear false posit
 
 `}` Error codes For a list of error codes, see Error codes. rewall
 
-#### CreateDetectionModuleRule
+#### 9.3.8 CreateDetectionModuleRule
 
 Creates a rule for detection module control. Request parameters
 
@@ -16984,8 +17304,6 @@ Creates a rule for detection module control. Request parameters
 
 | Developer Guide·We | b Application Fi |   |   | Apsara Stack Securit |
 |---|---|---|---|---|
-
-rewall
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -17081,7 +17399,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### EditDetectionModuleRule
+#### 9.3.9 EditDetectionModuleRule
 
 Modifies a specific rule for detection module control. Request parameters
 
@@ -17174,7 +17492,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### EditPolicyRuleWebsiteBinding
+#### 9.3.10 EditPolicyRuleWebsiteBinding
 
 Modifies the binding relationship between a specific website and its custom rules. Request parameters rewall
 
@@ -17242,7 +17560,7 @@ on generation\"]",
 
 `}` `}` rewall Error codes For a list of error codes, see Error codes.
 
-#### DeletePolicyRuleWebsiteBinding
+#### 9.3.11 DeletePolicyRuleWebsiteBinding
 
 Deletes the binding relationship between a specific website and specific custom rules. Request parameters
 
@@ -17307,9 +17625,9 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-### Protection policies
+### 9.4 Protection policies
 
-#### DescribePolicyGroup
+#### 9.4.1 DescribePolicyGroup
 
 Queries the information about protection policies. Request parameters
 
@@ -17375,7 +17693,7 @@ um_risk_action\": \"continue\", \"state\": \"enabled\", \"medium_risk_enable_log
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### CreatePolicyGroup
+#### 9.4.2 CreatePolicyGroup
 
 Creates a protection policy. Request parameters
 
@@ -17458,7 +17776,7 @@ rewall
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### EditPolicyGroup
+#### 9.4.3 EditPolicyGroup
 
 Modifies a specific protection policy. Request parameters
 
@@ -17578,7 +17896,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### DeletePolicyGroup
+#### 9.4.4 DeletePolicyGroup
 
 Deletes a specific protection policy. Request parameters
 
@@ -17619,9 +17937,9 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-### Protection logs
+### 9.5 Protection logs
 
-#### QueryAsyncTaskStatus
+#### 9.5.1 QueryAsyncTaskStatus
 
 Queries the status of an asynchronous task. Request parameters
 
@@ -17685,7 +18003,7 @@ on generation\"]",
 
 `}` `}` Error codes For a list of error codes, see Error codes.
 
-#### QueryAttackDetectionLog
+#### 9.5.2 QueryAttackDetectionLog
 
 Queries attack detection logs. Request parameters
 
@@ -17763,7 +18081,7 @@ Sample success responses `XML` format rewall
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### QueryAttackDetectionDetailLog
+#### 9.5.3 QueryAttackDetectionDetailLog
 
 Queries the details of a specific attack detection log. Request parameters
 
@@ -17810,7 +18128,7 @@ Sample success responses `XML` format rewall
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### QueryAuditLog
+#### 9.5.4 QueryAuditLog
 
 Queries system operations logs. Request parameters
 
@@ -17855,7 +18173,7 @@ Sample success responses `XML` format
 
 Error codes For a list of error codes, see Error codes.
 
-#### QueryCCRuleExecutionLog
+#### 9.5.5 QueryCCRuleExecutionLog
 
 Queries the logs on the execution of HTTP flood protection rules. Request parameters
 
@@ -17908,7 +18226,7 @@ rule_template_version\": \"39\", \"timestamp\": \"1594610400\", \"count\": \"100
 
 `}` Error codes For a list of error codes, see Error codes. rewall
 
-#### QueryFullAccessLog
+#### 9.5.6 QueryFullAccessLog
 
 Queries full access logs. Request parameters
 
@@ -17970,7 +18288,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### QueryFullAccessDetailLog
+#### 9.5.7 QueryFullAccessDetailLog
 
 Queries the details of a specific full access log. Request parameters
 
@@ -18017,7 +18335,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### QueryPerformanceStatistics
+#### 9.5.8 QueryPerformanceStatistics
 
 Queries the historical performance data of a specific node. Request parameters
 
@@ -18065,9 +18383,9 @@ Sample success responses `XML` format
 
 `}` rewall Error codes For a list of error codes, see Error codes.
 
-### SSL certificate management
+### 9.6 SSL certificate management
 
-#### DescribeSSLCert
+#### 9.6.1 DescribeSSLCert
 
 Queries the information about SSL certificates. Request parameters
 
@@ -18111,7 +18429,7 @@ t_cert_1\", \"signature\": \"329b059f298419c002fc69f1ee9a3df1\", \"info\": {\"se
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### UploadSSLCert
+#### 9.6.2 UploadSSLCert
 
 Uploads an SSL certificate. Request parameters
 
@@ -18123,8 +18441,6 @@ Uploads an SSL certificate. Request parameters
 
 | Developer Guide·We | b Application Fi |   |   | Apsara Stack Securit |
 |---|---|---|---|---|
-
-rewall
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -18164,7 +18480,7 @@ signature": "ec23ec040764d0cc078879582a375c2c", "info": {"serial": "0xdd45e828dc
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### EditSSLCert
+#### 9.6.3 EditSSLCert
 
 Modifies the name of a specific SSL certificate. Request parameters
 
@@ -18211,7 +18527,7 @@ rewall `JSON` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DeleteSSLCert
+#### 9.6.4 DeleteSSLCert
 
 Deletes a specific SSL certificate. Request parameters
 
@@ -18252,9 +18568,9 @@ rewall Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-### System information
+### 9.7 System information
 
-#### DescribeMetrics
+#### 9.7.1 DescribeMetrics
 
 Queries the monitoring metrics of physical WAF nodes. Request parameters
 
@@ -18300,7 +18616,7 @@ rmark\": 0.05619211156645502, \"throughput_read\": 368475, \"throughput_write\":
 
 `}` Error codes For a list of error codes, see Error codes. rewall
 
-#### DescribeNodeStatus
+#### 9.7.2 DescribeNodeStatus
 
 Queries the status information about physical WAF nodes. Request parameters
 
@@ -18372,7 +18688,7 @@ rewall
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeRealTimeAccess
+#### 9.7.3 DescribeRealTimeAccess
 
 Queries the monitoring information about access status. Request parameters
 
@@ -18382,8 +18698,6 @@ Queries the monitoring information about access status. Request parameters
 
 | psara Stack Securit | y |   |   | Developer Guide·Web Application F |
 |---|---|---|---|---|
-
-rewall
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -18464,7 +18778,7 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes.
 
-#### ToggleAttackDetectionAggregation
+#### 9.7.5 ToggleAttackDetectionAggregation
 
 Enables or disables the attack detection aggregation feature. Request parameters
 
@@ -18510,11 +18824,11 @@ Sample success responses `XML` format
 
 `}` Error codes For a list of error codes, see Error codes. s Center
 
-## Security Operations Center
+## 10 Security Operations Center
 
-### Operations
+### 10.1 Operations
 
-#### DescribeAttacks
+#### 10.1.1 DescribeAttacks
 
 You can call this operation to query attacks on users or on the platform based on specified conditions. Request parameters
 
@@ -18604,7 +18918,7 @@ Sample success responses in JSON format
 
 `}` Error codes For a list of error codes, visit the Error codes.
 
-#### DescribeAlarms
+#### 10.1.2 DescribeAlarms
 
 You can call this operation to query security alerts on users or on the platform based on specified conditions. Request parameters
 
@@ -18703,7 +19017,7 @@ Sample success responses in JSON format s Center
 
 `}` Error codes For a list of error codes, visit the Error codes.
 
-#### DescribeVulFrangs
+#### 10.1.3 DescribeVulFrangs
 
 You can call this operation to query vulnerabilities. Request parameters
 
@@ -18801,7 +19115,7 @@ Sample success responses in JSON format s Center
 
 `}` Error codes For a list of error codes, visit the Error codes.
 
-#### DescribeHcFrangs
+#### 10.1.4 DescribeHcFrangs
 
 You can call this operation to query the risks in the server configurations set by the user. Request parameters
 
@@ -18900,11 +19214,11 @@ Sample success responses in JSON format s Center
 
 `}` Error codes For a list of error codes, visit the Error codes.
 
-### SOAR
+### 10.2 SOAR
 
-#### Playbooks
+#### 10.2.1 Playbooks
 
-##### ModifyPlaybook
+##### 10.2.1.1 ModifyPlaybook
 
 Modifies a playbook. Request parameters
 
@@ -18957,7 +19271,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### TriggerPlaybook
+##### 10.2.1.2 TriggerPlaybook
 
 Runs a playbook. Request parameters
 
@@ -19002,7 +19316,7 @@ Sample success responses `XML` format
 
 `}`
 
-##### PublishPlaybook
+##### 10.2.1.3 PublishPlaybook
 
 Publishes a playbook. Request parameters s Center
 
@@ -19040,7 +19354,7 @@ Sample success responses s Center `XML` format
 
 `}`
 
-##### StopOneAction
+##### 10.2.1.4 StopOneAction
 
 Stops the task that is generated when a playbook is run. Request parameters
 
@@ -19075,7 +19389,7 @@ s Center `JSON` format
 
 `}`
 
-##### DescribePlaybook
+##### 10.2.1.5 DescribePlaybook
 
 Queries the details of a playbook. Request parameters
 
@@ -19226,7 +19540,7 @@ linkage_attack_ban_v62_test.jar",
 
 `}`
 
-##### DescribeSoarRecords
+##### 10.2.1.6 DescribeSoarRecords
 
 Queries the execution history of a playbook. Request parameters
 
@@ -19328,9 +19642,9 @@ Sample success responses `XML` format
 |   | { "TotalCount": 23, "PageSize": 20, "RequestId": "B57576EA-1F92-4810-8CC7-B27FEE6CD9DE", "PageNumber": 1, "SoarExecuteRecords": { "Status": "success", "Sao": "test rtap", _ "All": 1, "TriggerType": "manual", "SaoId": 531, "EndTime": 1641460993364, "TaskUuid": "cfa5cc68-9279-45fa-88a0-c79cca020efe", "StartTime": 1641460993348, "resultMessage": "\"\"", "ResultMessage": "\"\"", "SrcIp": "10.10.XX.XX", "Success": 1, "TriggerUser": "12385**452", "TriggerDataId": 1641460993340, "ResultLevel": "DEBUG", "TaskName": "test rtap", _ "DataSourceName": 4357, "EventId": 1641460993340, "RequestUuid": "a5a60946-3ad4-4e0d-92db-500da9619793", "RawEventReq": "{\\\"ac\\\":\\\"c60dcd29f8b0acc18028d0dc82d73d3b\\\",\\\"dataSource Name\\\":\\\"4357\\\",\\\"domainId\\\":\\\"ids-group\\\",\\\"eventId\\\":\\\"1641460993340\ \\",\\\"eventStr\\\":{},\\\"taskList\\\":[\\\"test rtap\\\"],\\\"taskTriggerList\\\":[],\\\ _ "tenantId\\\":\\\"baba\\\",\\\"triggerType\\\":\\\"manual\\\",\\\"triggerUser\\\":\\\"sys\\ \",\\\"ts\\\":\\\"1641460993340\\\"}\"" } } |   |
 |---|---|---|
 
-#### Intelligence
+#### 10.2.2 Intelligence
 
-##### SyncBanRecord
+##### 10.2.2.1 SyncBanRecord
 
 Synchronizes blocking records. Request parameters
 
@@ -19380,9 +19694,9 @@ Sample success responses `XML` format
 
 `}`
 
-#### Cases
+#### 10.2.3 Cases
 
-##### CreateEventByAlert
+##### 10.2.3.1 CreateEventByAlert
 
 Creates a case based on a threat event that is reported by Security Operations Center (SOC). Request parameters
 
@@ -19404,8 +19718,6 @@ s Center
 
 | Developer Guide·Secu | rity Operatio | n |   | Apsara Stack Securit |
 |---|---|---|---|---|
-
-s Center
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -19445,9 +19757,9 @@ Sample success responses `XML` format s Center
 
 `}`
 
-#### Tasks
+#### 10.2.4 Tasks
 
-##### DescribeManualTaskInfo
+##### 10.2.4.1 DescribeManualTaskInfo
 
 Queries the execution results. Request parameters
 
@@ -19584,9 +19896,9 @@ Sample success responses `XML` format
 
 `}` `}`
 
-### Operations Center
+### 10.3 Operations Center
 
-#### QueryThreats
+#### 10.3.1 QueryThreats
 
 Queries attack data in the Operations Center dashboard. Request parameters
 
@@ -19661,7 +19973,7 @@ Sample success responses `XML` format
 {"ToTime":"1641550177290","PageSize":"10","RequestId":"8010791A-3154-4154-ACB2-866E56A6**** ","HistogramInterval":"0","CurrentPage":"1","Datas":"{\"lastTime\":1641549724000,\"__logTim e\":1641549724287,\"process_way\":\"\"}","Total":"200","FromTime":"1641484800000"}
 ```
 
-#### QueryThreatChartData
+#### 10.3.2 QueryThreatChartData
 
 Queries the data in a chart of the Operations Center dashboard. Request parameters
 
@@ -19730,11 +20042,11 @@ Sample success responses `XML` format
 {"RequestId":"8010791A-3154-4154-ACB2-866E56A6****","Data":"{\"20\":{\"src_from,count\":\"2 3507\"}}"}
 ```
 
-## Security Audit
+## 11 Security Audit
 
-### APIs
+### 11.1 APIs
 
-#### CreateEventType
+#### 11.1.1 CreateEventType
 
 You can call this operation to create an audit event type. Request parameters
 
@@ -19788,7 +20100,7 @@ Sample responses (JSON format)
 
 `}` `}`
 
-#### DescribeEventType
+#### 11.1.2 DescribeEventType
 
 You can call this operation to query information about audit event types. Request parameters
 
@@ -19851,7 +20163,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DeleteEventType
+#### 11.1.3 DeleteEventType
 
 You can call this operation to delete an audit event type. Request parameters
 
@@ -19880,7 +20192,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### CreateLogFilter
+#### 11.1.4 CreateLogFilter
 
 You can call this operation to create a match criterion for audit log query. Request parameters
 
@@ -19952,7 +20264,7 @@ Sample responses (JSON format)
 
 `}` `}`
 
-#### DescribeLogFilter
+#### 11.1.5 DescribeLogFilter
 
 You can call this operation to query audit log filter criteria. Request parameters
 
@@ -20030,7 +20342,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DeleteLogFilter
+#### 11.1.6 DeleteLogFilter
 
 You can call this operation to delete audit log search conditions. Request parameters
 
@@ -20059,7 +20371,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### CreateReceiver
+#### 11.1.7 CreateReceiver
 
 Creates an alert recipient for audit events. Request parameters
 
@@ -20116,7 +20428,7 @@ Sample success responses in JSON format
 
 `}` `}`
 
-#### DescribeReceiver
+#### 11.1.8 DescribeReceiver
 
 Queries information about alert recipients. Request parameters
 
@@ -20178,7 +20490,7 @@ Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DeleteReceiver
+#### 11.1.9 DeleteReceiver
 
 You can call this operation to delete an audit event alert recipient. Request parameters
 
@@ -20207,7 +20519,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### CreateRule
+#### 11.1.10 CreateRule
 
 You can call this operation to create an audit rule. Request parameters
 
@@ -20285,7 +20597,7 @@ Sample responses (JSON format)
 
 `}` `}`
 
-#### DescribeRule
+#### 11.1.11 DescribeRule
 
 You can call this operation to query audit rules. Request parameters
 
@@ -20368,7 +20680,7 @@ t INCLUDE \"4\" OR target INCLUDE \"5\" OR target INCLUDE \"6\" ) AND ( action R
 
 `}` `]` `}`
 
-#### EnableRule
+#### 11.1.12 EnableRule
 
 You can call this operation to enable an audit rule. Request parameters
 
@@ -20397,7 +20709,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DisableRule
+#### 11.1.13 DisableRule
 
 You can call this operation to disable an audit rule. Request parameters
 
@@ -20426,7 +20738,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DeleteRule
+#### 11.1.14 DeleteRule
 
 You can call this operation to delete an audit rule. Request parameters
 
@@ -20455,7 +20767,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### CreateTask
+#### 11.1.15 CreateTask
 
 You can call this operation to create an export task. Request parameters
 
@@ -20502,7 +20814,7 @@ Sample responses (JSON format)
 
 `}` `}`
 
-#### DescribeTask
+#### 11.1.16 DescribeTask
 
 Queries information about export tasks. Request parameters
 
@@ -20563,7 +20875,7 @@ ample.com/download/20180228184412_243797.log?Expires=1519901052&OSSAccessKeyId=<
 
 `}` `]` `}`
 
-#### DeleteTask
+#### 11.1.17 DeleteTask
 
 You can call this operation to delete an export task. Request parameters
 
@@ -20592,7 +20904,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeSetting
+#### 11.1.18 DescribeSetting
 
 You can call this operation to query the system parameter settings of security audit. Request parameters
 
@@ -20634,7 +20946,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### ModifySetting
+#### 11.1.19 ModifySetting
 
 You can call this operation to modify the system parameter settings of Security Audit. Request parameters
 
@@ -20664,7 +20976,7 @@ Sample responses (JSON format)
 
 `}`
 
-#### DescribeLogType
+#### 11.1.20 DescribeLogType
 
 You can call this operation to obtain a list of log types. Request parameters
 
@@ -20698,7 +21010,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeLogSource
+#### 11.1.21 DescribeLogSource
 
 You can call this operation to query log source information. Request parameters
 
@@ -20758,7 +21070,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeLogCountStat
+#### 11.1.22 DescribeLogCountStat
 
 You can call this operation to query raw log statistics. Request parameters
 
@@ -20806,7 +21118,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeLog
+#### 11.1.23 DescribeLog
 
 Queries the details about raw logs. Request parameters
 
@@ -20895,7 +21207,7 @@ Sample success responses in JSON format
 
 `}` `]` `}`
 
-#### DescribeEventRisk
+#### 11.1.24 DescribeEventRisk
 
 You can call this operation to query the risk level information of an audit event. Request parameters
 
@@ -20929,7 +21241,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeEventRiskStat
+#### 11.1.25 DescribeEventRiskStat
 
 Queries audit event statistics by risk level. Request parameters
 
@@ -20971,7 +21283,7 @@ Sample success responses in JSON format
 
 `}` `]` `}` `]` `}`
 
-#### DescribeEventTypeStat
+#### 11.1.26 DescribeEventTypeStat
 
 You can call this operation to query audit event statistics by event type. Request parameters
 
@@ -21012,7 +21324,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-#### DescribeEventCountStat
+#### 11.1.27 DescribeEventCountStat
 
 You can call this operation to query audit event statistics. Request parameters
 
@@ -21055,7 +21367,7 @@ Sample responses (JSON format)
 
 `}` `]` `}` `]` `}`
 
-#### DescribeEvent
+#### 11.1.28 DescribeEvent
 
 Queries audit event details. Request parameters
 
@@ -21173,7 +21485,7 @@ ue('rashti','interscapular');\",\"db\":\" abdominales\",\"origin_time\":\"318955
 
 `}` `]` `}`
 
-#### DescribeArchiveCountStat
+#### 11.1.29 DescribeArchiveCountStat
 
 You can call this operation to query log and event archiving statistics. Request parameters
 
@@ -21216,7 +21528,7 @@ Sample responses (JSON format)
 
 `}` `]` `}` `]` `}`
 
-#### DescribeArchive
+#### 11.1.30 DescribeArchive
 
 You can call this operation to query log and event archive details. Request parameters
 
@@ -21281,7 +21593,7 @@ Sample responses (JSON format)
 
 `}` `]` `}`
 
-## Error codes
+## 12 Error codes
 
 This topic describes the error codes returned for operations in Apsara Stack Security. Common errors
 

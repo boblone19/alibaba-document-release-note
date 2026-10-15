@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops Product In
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops Product Introduction 20260902.pdf"
+source_pdf: "9423369a148302fa_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops  Product Introduction 20260902.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek-Ops%20%20Product%20Introduction%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek-Ops Product Introduction 20260902
 
-## Product Details
+## Table of Contents
+
+- 1 Product Details
+- 2 Benefits
+- 3 Common scenarios
+- 4 Functions and features
+- 5 Terms
+
+## 1 Product Details
 
 The agent operations and maintenance platform (OpenTrek Agent Operations Platform, referred to as OpenTrek-Ops) is an enterprise-level multi-intelligent body operation and management platform based on the xClaw paradigm, providing a "cloud and Agent" integrated operation and maintenance product solution based on "hosted, observable, evolvable". Provide full life cycle management for AI intelligence, and provide "cloud + Agent" supervision and control integrated operation and maintenance for business, ensuring the safe, controllable and large-scale landing of enterprise AI productivity, and enabling enterprise intelligence to use the cloud.
 
-## Benefits
+## 2 Benefits
 
 OpenTrek-Ops delivers a suite of key advantages, including out-of-the-box deployment, secure and controllable operations, full-stack observability, transparent costs, and projectbased management.
 
@@ -42,7 +50,7 @@ OpenTrek-Ops upgrades Agent Teams to Project Management. This feature allows you
 
 OpenTrek-Ops delivers full lifecycle management for agents and supports one-click deployment and batch O&M for agents. Batch O&M includes batch starting, stopping, decommissioning, restarting, and scaling of agents, as well as batch synchronizing, disabling, and deleting of skills. Leveraging ACK secure sandbox containerization, OpenTrek-Ops ensures operational stability and resource utilization in high-concurrency scenarios. This significantly reduces infrastructure setup and maintenance costs, helping enterprises rapidly build production-grade agent clusters.
 
-## Common scenarios
+## 3 Common scenarios
 
 OpenTrek-Ops is dedicated to the "Cloud + Agent" unified O&M scenarios for optimal AI utilization. It provides AI agents with full lifecycle management and business operations with integrated monitoring, management, and control, empowering enterprises to effectively manage and maintain their cloud-based agents.
 
@@ -76,7 +84,7 @@ Secure and controllable large-scale deployment of enterprise AI productivity Age
 
 Centered on agents as the primary entry point, OpenTrek-Ops bridges agent O&M with cloud platform O&M for business monitoring, management, and control. This enables rapid fault discovery, precise isolation, and swift recovery, ensuring continuous and stable business operations.
 
-## Functions and features
+## 4 Functions and features
 
 OpenTrek-Ops includes six core modules: Operations Overview, Operation Center, Security Center, Operations Analysis, System Settings, and AI Assistant. These modules provide core product features such as agent lifecycle management, project management, capability and plugin management, infrastructure management, security settings and audit logs, cost analysis, and conversational AI O&M assistant.
 
@@ -186,7 +194,7 @@ OpenTrek-Ops includes six core modules: Operations Overview, Operation Center, S
 | Tenant management | Add and manage tenants. |
 | Configuration management | Manage global platform configurations, supporting channel management, system configuration, and data subscription. |
 
-## Terms
+## 5 Terms
 
 | Concept | Description |
 |---|---|

@@ -3,14 +3,21 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic Fi
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Product Introduction 20260831.pdf"
+source_pdf: "e24be106bfa0cb1d_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Product Introd"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20Elastic%20File%20System%20NAS%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage Elastic File System NAS Product Introduction 20260831
 
-## Product details
+## Table of Contents
+
+- 1 Product details
+- 2 Product value
+- 3 Scenarios
+- 4 Functions and features
+
+## 1 Product details
 
 Alibaba Cloud Elastic File Storage NAS (EFA-NAS) is a file storage service for compute nodes such as Elastic Compute Service (ECS) instances, Elastic High Performance Computing (E- HPC), and container services. It is a shared, scalable, highly reliable, and high-performance distributed file system.
 
@@ -40,7 +47,7 @@ You can query operation logs through audit trail to meet enterprise audit and co
 
 Performance and capacity: The service meets both high-performance, low-latency requirements and mass low-cost storage needs. Multi-protocol interoperability and cross-platform access: Different systems can directly access the same data source to improve multi-platform collaboration efficiency. Flexible and elastic deployment: Online scaling and resource pooling adapt to different business lifecycles. High availability and data security: The combination of triplicate storage and erasure coding ensures high reliability and optimizes storage utilization. Fine-grained security and audit: Multi-level ACL permissions, security group policies, and access audits meet the security, compliance, and regulatory requirements of industries such as government and finance.
 
-## Product value
+## 2 Product value
 
 **High availability and data reliability**
 
@@ -66,7 +73,7 @@ The product provides fine-grained access control, encryption for data in transit
 
 The management console and APIs support real-time monitoring of capacity, performance, and health status. They also provide automatic alerts and scale-out. This improves O&M efficiency and control.
 
-## Scenarios
+## 3 Scenarios
 
 Network Attached Storage (NAS) is widely used in the government, enterprise, finance, and manufacturing sectors. EFS-NAS provides easy file sharing, flexible scaling, and robust security. Its core benefits include centralized management, flexible scale-out, fast retrieval, security protection, and cross-regional collaboration. These features address common challenges associated with traditional storage, such as limited capacity, performance issues, and difficulties with management and compliance.
 
@@ -82,7 +89,7 @@ File and image archive management: Centrally store customer images, scanned cont
 
 Industrial design and R&D data management: Centrally manage large files, such as computer-aided design (CAD) drawings, process documents, and test videos. NAS supports metadata tags and full-text search to speed up design iterations. Production process and quality traceability: Store process parameters, device logs, and inspection images from production lines. This enables fast queries based on criteria such as batch or time to support quality management. Cross-plant collaboration and supply chain sharing: Securely share production materials and order files among multiple factories and suppliers. This enables real-time collaboration and ensures version consistency.
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the functions and features of EFS-NAS.
 
